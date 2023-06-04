@@ -53,7 +53,7 @@ ov64_021E5900: ; 0x021E5900
 	str r0, [r4, r1]
 	mov r0, #0xb4
 	mov r1, #0x3b
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x61
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -347,7 +347,7 @@ ov64_021E5B10: ; 0x021E5B10
 	bl InitBgFromTemplate
 	mov r0, #0x61
 	mov r1, #0x3b
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -523,7 +523,7 @@ ov64_021E5CD0: ; 0x021E5CD0
 	bl G2dRenderer_SetSubSurfaceCoords
 	mov r0, #8
 	mov r1, #0x3b
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -607,7 +607,7 @@ ov64_021E5CD0: ; 0x021E5CD0
 	bl NARC_dtor
 	mov r0, #0x61
 	mov r1, #0x3b
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -925,28 +925,28 @@ ov64_021E607C: ; 0x021E607C
 	sub r1, #0x24
 	add r0, r1, #0
 	mov r1, #0x3b
-	bl String_ctor
+	bl String_New
 	mov r1, #0x4a
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	sub r1, #0x28
 	add r0, r1, #0
 	mov r1, #0x3b
-	bl String_ctor
+	bl String_New
 	mov r1, #0x4b
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	sub r1, #0x2c
 	add r0, r1, #0
 	mov r1, #0x3b
-	bl String_ctor
+	bl String_New
 	mov r1, #0x69
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	sub r1, #0xa4
 	add r0, r1, #0
 	mov r1, #0x3b
-	bl String_ctor
+	bl String_New
 	mov r1, #0x6a
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -2377,7 +2377,7 @@ ov64_021E6C1C: ; 0x021E6C1C
 	bl ReadWholeNarcMemberByIdPair
 	mov r0, #0x61
 	mov r1, #0x3b
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	add r0, sp, #0x30
 	ldrb r0, [r0, #1]

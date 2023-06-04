@@ -2379,7 +2379,7 @@ ov17_02202E28: ; 0x02202E28
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0xda
-	bl NARC_ctor
+	bl NARC_New
 	mov r2, #0
 	str r2, [sp]
 	ldr r1, [r5]
@@ -2508,7 +2508,7 @@ ov17_02202F0C: ; 0x02202F0C
 	str r0, [r1]
 	ldr r1, [r6]
 	mov r0, #0x80
-	bl String_ctor
+	bl String_New
 	add r1, r6, #0
 	add r1, #0xa4
 	str r0, [r1]
@@ -2642,7 +2642,7 @@ ov17_02203030: ; 0x02203030
 _0220303C:
 	ldr r0, [r5]
 	ldr r1, [r7]
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	mov r1, #0x66
 	lsl r1, r1, #2
 	str r0, [r6, r1]
@@ -2745,7 +2745,7 @@ ov17_022030A8: ; 0x022030A8
 	bl sub_0200D2A4
 	ldr r1, [r4]
 	mov r0, #0x12
-	bl NARC_ctor
+	bl NARC_New
 	mov r2, #0x19
 	lsl r2, r2, #4
 	str r0, [r4, r2]

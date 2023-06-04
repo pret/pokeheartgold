@@ -1072,7 +1072,7 @@ ov80_02238FA0: ; 0x02238FA0
 	add r5, r0, #0
 	mov r0, #0xb7
 	mov r1, #0x65
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -1231,7 +1231,7 @@ _022390DA:
 	bl ov80_0222ACA0
 	mov r1, #0x65
 	str r0, [sp, #0x10]
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #7
@@ -2157,7 +2157,7 @@ ov80_02239828: ; 0x02239828
 	add r5, r0, #0
 	mov r0, #0xb8
 	mov r1, #0x65
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #4]
 	mov r6, #0
 	add r4, r5, #0

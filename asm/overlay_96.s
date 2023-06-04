@@ -1092,7 +1092,7 @@ ov96_021E604C: ; 0x021E604C
 	lsl r2, r2, #2
 	ldr r1, [r1, r2]
 	mov r0, #0xa9
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [sp, #8]
@@ -5835,7 +5835,7 @@ ov96_021E8448: ; 0x021E8448
 	add r1, r0, #0
 	mov r0, #0x41
 	lsl r0, r0, #2
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	sub r1, r5, #1
 	add r2, sp, #0
@@ -5882,14 +5882,14 @@ ov96_021E8484: ; 0x021E8484
 	bl PokeathlonOvy_GetHeapID
 	add r1, r0, #0
 	mov r0, #0xa9
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x10]
 	ldr r0, [sp]
 	bl PokeathlonOvy_GetHeapID
 	add r1, r0, #0
 	mov r0, #0x41
 	lsl r0, r0, #2
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0xc]
 	mov r0, #0
 	str r0, [sp, #0x1c]
@@ -7837,11 +7837,11 @@ ov96_021E92E0: ; 0x021E92E0
 _021E92FE:
 	add r0, r7, #0
 	add r1, r5, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x34]
 	mov r0, #0xb
 	add r1, r5, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x38]
 	add r6, r6, #1
 	add r4, #0x18
@@ -16531,7 +16531,7 @@ ov96_021ED524: ; 0x021ED524
 	add r6, r0, #0
 	ldr r1, [r4]
 	mov r0, #0xb
-	bl String_ctor
+	bl String_New
 	mov r1, #0x28
 	mul r1, r5
 	add r1, r6, r1
@@ -17095,7 +17095,7 @@ ov96_021ED954: ; 0x021ED954
 	bl PokeathlonOvy_GetHeapID
 	add r1, r0, #0
 	mov r0, #0xa9
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp]
 	add r0, r4, #0
 	add r1, r5, #0
@@ -18776,7 +18776,7 @@ ov96_021EE5B4: ; 0x021EE5B4
 	mov r0, #0xdd
 	add r1, r6, #0
 	str r5, [r4, #8]
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #0xc]
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
@@ -18898,7 +18898,7 @@ ov96_021EE6A0: ; 0x021EE6A0
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	mov r0, #4
 	str r0, [sp]
@@ -19421,7 +19421,7 @@ ov96_021EEA94: ; 0x021EEA94
 	bl sub_0200DCE0
 	ldr r1, [sp, #0xc]
 	mov r0, #0x51
-	bl NARC_ctor
+	bl NARC_New
 	ldr r2, [sp, #0xc]
 	add r1, r5, #0
 	str r0, [sp, #0x14]
@@ -20485,7 +20485,7 @@ ov96_021EF2C0: ; 0x021EF2C0
 	bl MI_CpuFill8
 	mov r0, #0xdd
 	add r1, r6, #0
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #8]
 	add r0, r6, #0
 	bl BgConfig_Alloc
@@ -46797,7 +46797,7 @@ ov96_021FC450: ; 0x021FC450
 	ldr r1, [sp]
 	mov r0, #0x14
 	ldr r1, [r1]
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x14]
 	ldr r0, [sp]
 	mov r1, #1
@@ -54207,7 +54207,7 @@ ov96_021FFF3C: ; 0x021FFF3C
 _021FFF80:
 	mov r0, #0xb
 	add r1, r6, #0
-	bl String_ctor
+	bl String_New
 	mov r1, #0x17
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -54630,7 +54630,7 @@ ov96_022002F8: ; 0x022002F8
 	add r5, r1, #0
 	ldr r1, [r6]
 	mov r0, #0x14
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x14]
 	bl sub_02074490
 	add r1, r0, #0
@@ -69849,7 +69849,7 @@ ov96_02207CCC: ; 0x02207CCC
 _02207D10:
 	mov r0, #0xb
 	add r1, r6, #0
-	bl String_ctor
+	bl String_New
 	mov r1, #0x6a
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -70321,7 +70321,7 @@ ov96_022080F4: ; 0x022080F4
 	ldr r1, [sp, #8]
 	mov r0, #0x14
 	ldr r1, [r1]
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x20]
 	bl sub_02074490
 	add r1, r0, #0
@@ -73355,7 +73355,7 @@ ov96_02209840: ; 0x02209840
 	str r0, [r4, #0x14]
 	ldr r1, [r4]
 	mov r0, #0x14
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #0x50]
 	add sp, #0x4c
 	pop {r3, r4, pc}
@@ -74034,7 +74034,7 @@ _02209E14:
 _02209E4A:
 	ldr r1, [r6]
 	mov r0, #0xb
-	bl String_ctor
+	bl String_New
 	add r1, r5, #0
 	add r1, #0x12
 	str r0, [r4, #0x18]
@@ -105924,7 +105924,7 @@ _02219506:
 	str r0, [r4]
 	ldr r1, [r4, #4]
 	mov r0, #0x14
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #0x24]
 	ldr r0, [r4, #4]
 	add r3, r4, #0
@@ -105961,7 +105961,7 @@ _02219506:
 _02219590:
 	ldr r1, [r4, #4]
 	mov r0, #0xb
-	bl String_ctor
+	bl String_New
 	add r1, r5, #0
 	add r1, #0xb0
 	str r0, [r1]

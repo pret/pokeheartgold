@@ -52,7 +52,7 @@ _021E8006:
 	add r7, r0, #0
 	mov r0, #0xaf
 	add r1, r4, #0
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x20]
 	mov r0, #0
 	str r0, [sp, #0x1c]

@@ -2407,7 +2407,7 @@ ov109_021E6B5C: ; 0x021E6B5C
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0xab
-	bl NARC_ctor
+	bl NARC_New
 	mov r2, #0
 	str r2, [sp]
 	ldr r1, [r5]
@@ -2571,7 +2571,7 @@ ov109_021E6C9C: ; 0x021E6C9C
 	str r0, [r5, #0x28]
 	ldr r1, [r5]
 	mov r0, #0x80
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x2c]
 	ldr r0, [r5, #0x24]
 	mov r1, #0
@@ -2602,7 +2602,7 @@ _021E6CF0:
 	blt _021E6CF0
 	ldr r1, [r5]
 	mov r0, #4
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	add r1, r5, #0
 	add r1, #0x88
 	str r0, [r1]

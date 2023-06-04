@@ -13,7 +13,7 @@
 .public sub_02003B44
 .public sub_02003E5C
 .public PlaySE
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_GetCharData
@@ -93,7 +93,7 @@
 .public sub_02024B1C
 .public sub_02025224
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public GetMonData
 .public GetMonGender

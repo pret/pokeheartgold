@@ -57,26 +57,26 @@ ov63_0221BE20: ; 0x0221BE20
 	mov r0, #0x7d
 	lsl r0, r0, #2
 	mov r1, #0x3e
-	bl String_ctor
+	bl String_New
 	add r1, r5, #0
 	add r1, #0x8c
 	str r0, [r1]
 	mov r0, #0x7d
 	lsl r0, r0, #2
 	mov r1, #0x3e
-	bl String_ctor
+	bl String_New
 	add r1, r5, #0
 	add r1, #0x90
 	str r0, [r1]
 	mov r0, #0x65
 	mov r1, #0x3e
-	bl NARC_ctor
+	bl NARC_New
 	add r1, r5, #0
 	add r1, #0x94
 	str r0, [r1]
 	mov r0, #0xb4
 	mov r1, #0x3e
-	bl NARC_ctor
+	bl NARC_New
 	add r1, r5, #0
 	add r1, #0x98
 	str r0, [r1]
@@ -1122,7 +1122,7 @@ ov63_0221C6FC: ; 0x0221C6FC
 	add r5, r0, #0
 	mov r0, #8
 	mov r1, #0x3e
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -4266,7 +4266,7 @@ ov63_0221E114: ; 0x0221E114
 	stmia r2!, {r0, r1}
 	mov r0, #0xb4
 	mov r1, #0x3e
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x18]
 	ldr r0, [r6]
 	mov r7, #0
@@ -5639,7 +5639,7 @@ ov63_0221EC1C: ; 0x0221EC1C
 	stmia r2!, {r0, r1}
 	mov r0, #8
 	mov r1, #0x3e
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [sp]

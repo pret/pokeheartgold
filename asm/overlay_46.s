@@ -1054,7 +1054,7 @@ _02258FAE:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x58
 	add r1, r6, #0
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x2c]
 	ldr r0, [sp, #0x10]
 	mov r2, #0x33
@@ -1352,12 +1352,12 @@ ov46_022592EC: ; 0x022592EC
 	mov r0, #1
 	lsl r0, r0, #8
 	add r1, r4, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x18]
 	mov r0, #1
 	lsl r0, r0, #8
 	add r1, r4, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x1c]
 	ldr r0, [sp, #0x44]
 	str r6, [r5, #0x20]

@@ -2,7 +2,7 @@
 #pragma once
 .public PaletteData_LoadPalette
 .public PaletteData_GetUnfadedBuf
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_GetCharDataFromOpenNarc
 .public GfGfxLoader_GetScrnDataFromOpenNarc

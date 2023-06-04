@@ -50,7 +50,7 @@ ov32_0225D520: ; 0x0225D520
 	bl FontID_Alloc
 	ldr r0, _0225D5C8 ; =0x00000105
 	mov r1, #8
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	bl ov32_0225D60C
 	add r0, r6, #0
@@ -440,7 +440,7 @@ ov32_0225D84C: ; 0x0225D84C
 	bl String_dtor
 	mov r0, #4
 	mov r1, #8
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r0, #0x51
 	lsl r0, r0, #2
@@ -559,7 +559,7 @@ _0225D9A0:
 	str r0, [sp, #0x18]
 	mov r0, #0x40
 	mov r1, #8
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x14]
 	mov r0, #8
 	bl PlayerProfile_new

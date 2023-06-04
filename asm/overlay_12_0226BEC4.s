@@ -68,11 +68,11 @@ _0226BF30:
 _0226BF38:
 	mov r0, #7
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	mov r0, #8
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [sp]

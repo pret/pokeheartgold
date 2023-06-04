@@ -1173,7 +1173,7 @@ static int getTappedBallId(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 radi
 }
 
 static void createMonSprites(struct ChooseStarterAppWork *work) {
-    NARC *narc = NARC_ctor(NARC_application_choose_starter_choose_starter_sub_res, work->heapId);
+    NARC *narc = NARC_New(NARC_application_choose_starter_choose_starter_sub_res, work->heapId);
     int i;
     struct StarterChooseMonSpriteData *spriteData = &work->monSpriteData;
 

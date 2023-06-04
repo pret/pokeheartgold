@@ -32,7 +32,7 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
@@ -99,7 +99,7 @@
 .public sub_02013950
 .public sub_020139C8
 .public IsNighttime
-.public ListMenuItems_ctor
+.public ListMenuItems_New
 .public ListMenuItems_dtor
 .public ListMenuItems_AppendFromMsgData
 .public ListMenuItems_AddItem
@@ -181,7 +181,7 @@
 .public sub_02024ADC
 .public System_GetTouchNew
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public CopyU16ArrayToString
 .public sub_02026C44

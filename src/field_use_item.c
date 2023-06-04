@@ -476,7 +476,7 @@ static enum ItemUseError ItemCheckUseFunc_FishingRod(const struct ItemCheckUseDa
 static BOOL ItemFieldUseFunc_Generic(struct ItemFieldUseData *data) {
     struct RegisteredKeyItemUseMessagePrintTaskData *env = AllocFromHeap(11, sizeof(struct RegisteredKeyItemUseMessagePrintTaskData));
     env->state = 0;
-    env->strbuf = String_ctor(128, 11);
+    env->strbuf = String_New(128, 11);
     TryFormatRegisteredKeyItemUseMessage(data->fsys->savedata, env->strbuf, data->itemId, 11);
     FieldSys_CreateTask(data->fsys, Task_PrintRegisteredKeyItemUseMessage, env);
     return FALSE;
@@ -805,7 +805,7 @@ int UseRegisteredItemButtonInField(FieldSystem *fsys, u8 slot) {
 static void RegisteredItem_GoToPrintErrorTask(struct ItemFieldUseData *data, enum ItemUseError error) {
     struct RegisteredKeyItemUseMessagePrintTaskData *env = AllocFromHeap(11, sizeof(struct RegisteredKeyItemUseMessagePrintTaskData));
     env->state = 0;
-    env->strbuf = String_ctor(128, 11);
+    env->strbuf = String_New(128, 11);
     GetItemUseErrorMessage(Sav2_PlayerData_GetProfileAddr(data->fsys->savedata), env->strbuf, data->itemId, error, 11);
     FieldSys_CreateTask(data->fsys, Task_PrintRegisteredKeyItemUseMessage, env);
 }

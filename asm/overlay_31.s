@@ -132,7 +132,7 @@ ov31_0225D60C: ; 0x0225D60C
 	str r0, [r4, r1]
 	mov r0, #0x90
 	mov r1, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0x62
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -1201,7 +1201,7 @@ _0225DEBC:
 	bl String_dtor
 	mov r0, #0x10
 	mov r1, #0xb
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	ldr r1, [r5, #0x14]
 	ldr r0, _0225DF90 ; =0x00000283
@@ -1293,7 +1293,7 @@ ov31_0225DF98: ; 0x0225DF98
 	bl FillWindowPixelBuffer
 	mov r0, #6
 	mov r1, #0xb
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r0, #0x56
 	lsl r0, r0, #2
@@ -1620,7 +1620,7 @@ ov31_0225E20C: ; 0x0225E20C
 	bl String_dtor
 	mov r0, #5
 	mov r1, #0xb
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	mov r0, #0x56
 	lsl r0, r0, #2
@@ -1690,11 +1690,11 @@ ov31_0225E2D4: ; 0x0225E2D4
 	add r4, r1, #0
 	mov r0, #2
 	mov r1, #0xb
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r0, #2
 	mov r1, #0xb
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	mov r0, #0x56
 	lsl r0, r0, #2
@@ -1801,7 +1801,7 @@ ov31_0225E2D4: ; 0x0225E2D4
 	bl FillWindowPixelBuffer
 	mov r0, #9
 	mov r1, #0xb
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r0, #0x56
 	lsl r0, r0, #2

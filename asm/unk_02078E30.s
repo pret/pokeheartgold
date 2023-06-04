@@ -53,7 +53,7 @@ sub_02078E30: ; 0x02078E30
 	bl CreateHeap
 	mov r0, #0x15
 	mov r1, #0xc
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_02079BD8
@@ -1757,7 +1757,7 @@ _02079C26:
 _02079C5C:
 	mov r0, #0xb
 	mov r1, #0xc
-	bl String_ctor
+	bl String_New
 	str r0, [r5, r7]
 	add r6, r6, #1
 	add r5, #0x30
@@ -1766,13 +1766,13 @@ _02079C5C:
 	mov r0, #1
 	lsl r0, r0, #8
 	mov r1, #0xc
-	bl String_ctor
+	bl String_New
 	ldr r1, _02079CD8 ; =0x000007C8
 	str r0, [r4, r1]
 	mov r0, #1
 	lsl r0, r0, #8
 	mov r1, #0xc
-	bl String_ctor
+	bl String_New
 	ldr r1, _02079CDC ; =0x000007CC
 	mov r6, #0
 	str r0, [r4, r1]
@@ -1781,7 +1781,7 @@ _02079C5C:
 _02079C90:
 	mov r0, #0x20
 	mov r1, #0xc
-	bl String_ctor
+	bl String_New
 	str r0, [r5, r7]
 	add r6, r6, #1
 	add r5, r5, #4
@@ -2555,7 +2555,7 @@ sub_0207A2AC: ; 0x0207A2AC
 	add r6, r1, #0
 	mov r0, #0x14
 	mov r1, #0xc
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #8]
 	mov r4, #0
 _0207A2C0:
@@ -2690,7 +2690,7 @@ sub_0207A3C8: ; 0x0207A3C8
 	str r1, [sp, #4]
 	mov r0, #0x14
 	mov r1, #0xc
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #8]
 	mov r4, #0
 _0207A3DC:
@@ -2800,7 +2800,7 @@ sub_0207A4B4: ; 0x0207A4B4
 	str r1, [sp, #4]
 	mov r0, #0x14
 	mov r1, #0xc
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #8]
 	mov r4, #0
 _0207A4C8:
@@ -2910,7 +2910,7 @@ sub_0207A5A0: ; 0x0207A5A0
 	str r1, [sp, #4]
 	mov r0, #0x14
 	mov r1, #0xc
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #8]
 	mov r4, #0
 _0207A5B4:
@@ -3020,7 +3020,7 @@ sub_0207A68C: ; 0x0207A68C
 	str r1, [sp, #4]
 	mov r0, #0x14
 	mov r1, #0xc
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #8]
 	mov r4, #0
 _0207A6A0:

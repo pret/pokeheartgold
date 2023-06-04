@@ -11,7 +11,7 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_LoadScrnData
@@ -98,7 +98,7 @@
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public StringCopy
 .public CopyU16ArrayToString

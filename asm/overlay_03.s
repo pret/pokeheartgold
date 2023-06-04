@@ -262,7 +262,7 @@ _02254026:
 _0225403A:
 	add r0, r7, #0
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	ldr r1, [r6]
 	add r5, r5, #1
 	str r0, [r1, r4]
@@ -758,7 +758,7 @@ ov03_02254420: ; 0x02254420
 	beq _022544E6
 	mov r0, #0x10
 	mov r1, #4
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r4, _022544EC ; =ov03_022598A0
 	mov r5, #0
 	ldr r1, [r4]
@@ -1896,7 +1896,7 @@ ov03_02254D78: ; 0x02254D78
 	beq _02254E52
 	mov r0, #5
 	mov r1, #4
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r4, _02254E58 ; =ov03_022598A0
 	mov r5, #0
 	ldr r1, [r4]
@@ -3937,7 +3937,7 @@ _02255DD4:
 	bne _02255E66
 	add r0, r6, #2
 	mov r1, #4
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	str r0, [r5, #8]
 	mov r3, #1
 	str r3, [sp]
@@ -4155,7 +4155,7 @@ ov03_02255F98: ; 0x02255F98
 	mov r0, #3
 	mov r1, #4
 	ldr r4, _0225603C ; =ov03_02259838
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	str r0, [r5, #0xc]
 	mov r0, #0xa
 	str r0, [sp]
@@ -4323,11 +4323,11 @@ ov03_022560EC: ; 0x022560EC
 	str r0, [sp, #0x30]
 	mov r0, #0xb4
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x2c]
 	mov r0, #0xb4
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x28]
 	ldr r0, [sp, #0x14]
 	mov r2, #3
@@ -4994,19 +4994,19 @@ ov03_02256644: ; 0x02256644
 	str r0, [r4, #0x68]
 	mov r0, #0xb4
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x14]
 	mov r0, #0xb4
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x18]
 	mov r0, #0xb4
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x1c]
 	mov r0, #0xb4
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x20]
 	mov r0, #0xb
 	bl sub_02074944
@@ -5042,7 +5042,7 @@ ov03_022566D0: ; 0x022566D0
 	mov r0, #0xb4
 	mov r1, #4
 	add r7, r2, #0
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	add r1, r7, #0
@@ -5137,11 +5137,11 @@ ov03_02256730: ; 0x02256730
 	add r6, r0, #0
 	mov r0, #0xb4
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	mov r0, #0xb4
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x2c]
 	ldr r0, [sp, #0x14]
 	add r1, r6, #0
@@ -5884,7 +5884,7 @@ InitMartUI: ; 0x02256D34
 	mov r1, #0xb
 	str r0, [r4]
 	mov r0, #0x60
-	bl String_ctor
+	bl String_New
 	mov r1, #0x9d
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -6771,7 +6771,7 @@ _02257414:
 _0225744C:
 	mov r0, #0x82
 	mov r1, #0xb
-	bl String_ctor
+	bl String_New
 	add r1, r5, #0
 	mov r2, #0xb
 	add r6, r0, #0
@@ -10111,11 +10111,11 @@ ov03_02258DE8: ; 0x02258DE8
 	str r0, [r4, #0x2c]
 	mov r0, #0x80
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x30]
 	mov r0, #0x80
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x34]
 	ldr r0, [r4, #0x28]
 	mov r1, #1

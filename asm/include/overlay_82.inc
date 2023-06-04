@@ -18,7 +18,7 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public OverlayManager_run
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_GetPlttData
 .public GfGfxLoader_LoadCharDataFromOpenNarc
@@ -118,7 +118,7 @@
 .public sub_02024950
 .public sub_02024AA8
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public StringSetEmpty
 .public CopyU16ArrayToString

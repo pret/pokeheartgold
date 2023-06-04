@@ -2109,7 +2109,7 @@ ov70_02238900: ; 0x02238900
 	add r5, r0, #0
 	mov r0, #0x64
 	mov r1, #0x3d
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x18]
 	bl NNS_G2dInitOamManagerModule
 	mov r2, #1
@@ -3399,7 +3399,7 @@ ov70_02239330: ; 0x02239330
 	ldr r4, [r5, #4]
 	mov r0, #0x64
 	mov r1, #0x3d
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x60
 	str r1, [sp]
 	mov r1, #0x3d
@@ -3744,7 +3744,7 @@ ov70_02239614: ; 0x02239614
 	add r4, r0, #0
 	mov r0, #0xb4
 	mov r1, #0x3d
-	bl String_ctor
+	bl String_New
 	ldr r1, _02239638 ; =0x00000BBC
 	str r0, [r4, r1]
 	sub r1, #0x1c
@@ -4950,7 +4950,7 @@ ov70_02239FA4: ; 0x02239FA4
 	ldr r5, [r6, #4]
 	mov r0, #0x64
 	mov r1, #0x3d
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x60
 	str r1, [sp]
 	mov r1, #0x3d
@@ -5221,7 +5221,7 @@ ov70_0223A1E4: ; 0x0223A1E4
 	add r5, r0, #0
 	mov r0, #0xb4
 	mov r1, #0x3d
-	bl String_ctor
+	bl String_New
 	ldr r1, _0223A220 ; =0x00000BBC
 	str r0, [r5, r1]
 	sub r1, #0x1c
@@ -5237,7 +5237,7 @@ ov70_0223A1E4: ; 0x0223A1E4
 _0223A20A:
 	add r0, r7, #0
 	mov r1, #0x3d
-	bl String_ctor
+	bl String_New
 	str r0, [r5, r6]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -5434,7 +5434,7 @@ ov70_0223A384: ; 0x0223A384
 	add r4, r0, #0
 	mov r0, #2
 	mov r1, #0x3d
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r1, _0223A3D4 ; =0x000011AC
 	mov r2, #0x37
 	str r0, [r4, r1]
@@ -5678,11 +5678,11 @@ ov70_0223A578: ; 0x0223A578
 	add r7, r2, #0
 	add r6, r3, #0
 	ldr r4, [sp, #0x54]
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x1c]
 	mov r0, #0x12
 	mov r1, #0x3d
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x50]
 	ldr r2, [sp, #0x1c]
@@ -5868,11 +5868,11 @@ ov70_0223A72C: ; 0x0223A72C
 	mov r1, #0x3d
 	str r2, [sp, #8]
 	str r3, [sp, #0xc]
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	mov r0, #0x10
 	mov r1, #0x3d
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	add r0, r7, #0
 	mov r1, #0x31
@@ -6756,7 +6756,7 @@ ov70_0223AE98: ; 0x0223AE98
 	add r4, r2, r0
 	mov r0, #0xb4
 	mov r1, #0x3d
-	bl String_ctor
+	bl String_New
 	ldr r1, _0223AF18 ; =0x00000BBC
 	str r0, [r5, r1]
 	sub r1, #0x20
@@ -7999,7 +7999,7 @@ ov70_0223B8E0: ; 0x0223B8E0
 	ldr r5, [r6, #4]
 	mov r0, #0x64
 	mov r1, #0x3d
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x60
 	str r1, [sp]
 	mov r1, #0x3d
@@ -8421,7 +8421,7 @@ ov70_0223BC7C: ; 0x0223BC7C
 	add r4, r0, #0
 	mov r0, #0xb4
 	mov r1, #0x3d
-	bl String_ctor
+	bl String_New
 	ldr r1, _0223BCC8 ; =0x00000BBC
 	str r0, [r4, r1]
 	sub r1, #0x1c
@@ -10799,7 +10799,7 @@ ov70_0223CF74: ; 0x0223CF74
 	ldr r5, [r6, #4]
 	mov r0, #0x64
 	mov r1, #0x3d
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x60
 	str r1, [sp]
 	mov r1, #0x3d
@@ -11297,12 +11297,12 @@ ov70_0223D3BC: ; 0x0223D3BC
 	add r4, r0, #0
 	mov r0, #0x12
 	mov r1, #0x3d
-	bl String_ctor
+	bl String_New
 	ldr r1, _0223D400 ; =0x00000BB4
 	str r0, [r4, r1]
 	mov r0, #0xb4
 	mov r1, #0x3d
-	bl String_ctor
+	bl String_New
 	ldr r1, _0223D404 ; =0x00000BBC
 	str r0, [r4, r1]
 	sub r1, #0x1c
@@ -11981,7 +11981,7 @@ ov70_0223D934: ; 0x0223D934
 	add r4, r0, #0
 	mov r0, #3
 	mov r1, #0x3d
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r1, _0223D990 ; =0x000011AC
 	mov r2, #0x62
 	str r0, [r4, r1]
@@ -12220,7 +12220,7 @@ ov70_0223DB30: ; 0x0223DB30
 	add r4, r0, #0
 	mov r0, #3
 	mov r1, #0x3d
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r1, _0223DB8C ; =0x000011AC
 	mov r2, #0x57
 	str r0, [r4, r1]
@@ -13149,7 +13149,7 @@ ov70_0223E264: ; 0x0223E264
 	str r0, [sp, #0x18]
 	mov r0, #0x14
 	mov r1, #0x3d
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #0x10]
 	cmp r0, #0
@@ -14158,7 +14158,7 @@ ov70_0223EA6C: ; 0x0223EA6C
 	ldr r4, [r5, #4]
 	mov r0, #0x64
 	mov r1, #0x3d
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	mov r0, #0x40
 	str r0, [sp]
@@ -14442,7 +14442,7 @@ ov70_0223ECCC: ; 0x0223ECCC
 	add r4, r0, #0
 	mov r0, #0xb4
 	mov r1, #0x3d
-	bl String_ctor
+	bl String_New
 	ldr r1, _0223ED1C ; =0x00000BBC
 	str r0, [r4, r1]
 	mov r0, #0x3d
@@ -15539,11 +15539,11 @@ ov70_0223F508: ; 0x0223F508
 	str r2, [sp, #8]
 	str r3, [sp, #0xc]
 	ldr r7, [sp, #0x38]
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x18]
 	mov r0, #0xb
 	mov r1, #0x3d
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0xc]
 	ldr r2, [sp, #0x18]
@@ -15896,7 +15896,7 @@ _0223F7F4:
 _0223F7F8:
 	add r0, r6, #0
 	mov r1, #0x3d
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	mov r4, #0
 	str r0, [r7]
 	cmp r6, #0
@@ -16058,7 +16058,7 @@ ov70_0223F904: ; 0x0223F904
 	bl ov70_0223F8D0
 	mov r1, #0x3d
 	add r7, r0, #0
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	str r0, [r5]
 	mov r4, #0
 	b _0223F938
@@ -16456,7 +16456,7 @@ ov70_0223FC40: ; 0x0223FC40
 	add r4, r0, #0
 	mov r0, #0xb4
 	mov r1, #0x3d
-	bl String_ctor
+	bl String_New
 	ldr r1, _0223FC54 ; =0x00000BBC
 	str r0, [r4, r1]
 	pop {r4, pc}
@@ -23732,7 +23732,7 @@ ov70_02243458: ; 0x02243458
 	str r0, [sp, #8]
 	add r0, r0, #1
 	mov r1, #0x3d
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	str r0, [r6]
 	ldr r0, [sp, #0xc]
 	mov r4, #0
@@ -25529,7 +25529,7 @@ ov70_022442B4: ; 0x022442B4
 	ldr r4, [r0, #4]
 	mov r0, #0x58
 	mov r1, #0x3d
-	bl NARC_ctor
+	bl NARC_New
 	mov r2, #0
 	str r2, [sp]
 	mov r1, #0x3d
@@ -25982,13 +25982,13 @@ ov70_02244670: ; 0x02244670
 	add r4, r0, #0
 	mov r0, #0xb4
 	mov r1, #0x3d
-	bl String_ctor
+	bl String_New
 	ldr r1, _022446A0 ; =0x00000BBC
 	str r0, [r4, r1]
 	mov r0, #1
 	lsl r0, r0, #8
 	mov r1, #0x3d
-	bl String_ctor
+	bl String_New
 	ldr r1, _022446A4 ; =0x00000BEC
 	str r0, [r4, r1]
 	sub r1, #0x4c
@@ -27417,7 +27417,7 @@ ov70_0224512C: ; 0x0224512C
 	add r6, r1, #0
 	lsl r0, r0, #8
 	mov r1, #0x3d
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	ldr r0, _02245198 ; =0x00000BAC
 	add r1, r6, #0

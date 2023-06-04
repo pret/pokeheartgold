@@ -13,7 +13,7 @@ ov12_0226B8FC: ; 0x0226B8FC
 	mov r0, #8
 	add r1, r3, #0
 	add r7, r2, #0
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	str r6, [sp]
 	mov r0, #0x50

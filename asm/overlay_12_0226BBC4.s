@@ -13,7 +13,7 @@ ov12_0226BBC4: ; 0x0226BBC4
 	mov r0, #0xa4
 	add r1, r2, #0
 	add r7, r3, #0
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	str r6, [sp]
 	mov r1, #1

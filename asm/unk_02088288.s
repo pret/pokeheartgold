@@ -69,11 +69,11 @@ sub_02088298: ; 0x02088298
 	bl CreateHeap
 	mov r0, #0x27
 	mov r1, #0x13
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	mov r0, #0xa2
 	mov r1, #0x13
-	bl NARC_ctor
+	bl NARC_New
 	add r5, r0, #0
 	ldr r1, _02088414 ; =0x000007D8
 	add r0, r6, #0
@@ -105,7 +105,7 @@ sub_02088298: ; 0x02088298
 	str r0, [r4, r1]
 	mov r0, #0xb4
 	mov r1, #0x13
-	bl NARC_ctor
+	bl NARC_New
 	ldr r1, _02088418 ; =0x000007B8
 	str r0, [r4, r1]
 	mov r0, #0
@@ -751,25 +751,25 @@ sub_02088894: ; 0x02088894
 	str r0, [r4, r1]
 	mov r0, #0xc
 	mov r1, #0x13
-	bl String_ctor
+	bl String_New
 	mov r1, #0x23
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	mov r0, #0xc
 	mov r1, #0x13
-	bl String_ctor
+	bl String_New
 	mov r1, #0x8d
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #8
 	mov r1, #0x13
-	bl String_ctor
+	bl String_New
 	mov r1, #0x8e
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #0x80
 	mov r1, #0x13
-	bl String_ctor
+	bl String_New
 	ldr r1, _02088950 ; =0x000007AC
 	ldr r2, _02088954 ; =0x000002EE
 	str r0, [r4, r1]
@@ -781,7 +781,7 @@ sub_02088894: ; 0x02088894
 	str r0, [r4, r1]
 	mov r0, #8
 	mov r1, #0x13
-	bl String_ctor
+	bl String_New
 	mov r2, #0x7b
 	lsl r2, r2, #4
 	str r0, [r4, r2]

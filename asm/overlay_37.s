@@ -87,7 +87,7 @@ _021E5916:
 	str r0, [r4, #8]
 	mov r0, #0x4e
 	mov r1, #0x27
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	add r0, r4, #0
 	add r1, r7, #0
@@ -616,7 +616,7 @@ ov37_021E5E30: ; 0x021E5E30
 _021E5E46:
 	mov r0, #8
 	mov r1, #0x27
-	bl String_ctor
+	bl String_New
 	str r0, [r6, #0x14]
 	ldrb r1, [r4]
 	ldr r0, [sp, #4]
@@ -640,11 +640,11 @@ _021E5E46:
 	blt _021E5E46
 	mov r0, #0xa
 	mov r1, #0x27
-	bl String_ctor
+	bl String_New
 	str r0, [r7, #0x28]
 	mov r0, #0x50
 	mov r1, #0x27
-	bl String_ctor
+	bl String_New
 	str r0, [r7, #0x2c]
 	ldr r0, _021E5F0C ; =0x00004376
 	mov r2, #0
@@ -3651,7 +3651,7 @@ ov37_021E762C: ; 0x021E762C
 	mov r0, #0x50
 	mov r1, #0x27
 	add r4, r2, #0
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r0, [r5, #0x10]
 	add r1, r7, #0

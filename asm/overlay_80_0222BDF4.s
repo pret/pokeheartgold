@@ -1416,7 +1416,7 @@ ov80_0222C820: ; 0x0222C820
 	str r1, [sp, #4]
 	ldr r1, [r4, #0x34]
 	mov r0, #0xb8
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 _0222C848:
 	add r0, r6, #0
@@ -5249,7 +5249,7 @@ _0222E51C:
 _0222E538:
 	ldr r1, [r7, #0x34]
 	mov r0, #0x50
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x1c]
 	add r5, r5, #1
 	add r4, r4, #4
@@ -5433,7 +5433,7 @@ ov80_0222E690: ; 0x0222E690
 	ldr r1, [r1, #0x34]
 	add r6, r2, #0
 	add r7, r3, #0
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x8c
@@ -5951,7 +5951,7 @@ ov80_0222EA74: ; 0x0222EA74
 	ldr r1, [r1, #0x34]
 	add r7, r2, #0
 	add r4, r3, #0
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0x8c
@@ -6424,12 +6424,12 @@ ov80_0222EE14: ; 0x0222EE14
 	mov r0, #0x50
 	ldr r1, [r1, #0x34]
 	add r7, r2, #0
-	bl String_ctor
+	bl String_New
 	ldr r1, [r5]
 	add r4, r0, #0
 	ldr r1, [r1, #0x34]
 	mov r0, #0x50
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r0, [r5, #0x18]
 	mov r1, #0xf
@@ -6707,7 +6707,7 @@ ov80_0222F030: ; 0x0222F030
 	add r1, r2, #0
 	str r2, [sp, #0x24]
 	add r4, r3, #0
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x30]
 	mov r0, #0
 	str r0, [sp]
@@ -7072,7 +7072,7 @@ ov80_0222F33C: ; 0x0222F33C
 	add r5, r0, #0
 	mov r0, #0x15
 	mov r1, #0x65
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	bl sub_0207CAA0
 	str r4, [sp]

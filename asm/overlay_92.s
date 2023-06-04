@@ -1773,11 +1773,11 @@ ov92_0225D3CC: ; 0x0225D3CC
 	add r4, r0, #0
 	mov r0, #0xc1
 	mov r1, #0x71
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #0x48]
 	mov r0, #0xbd
 	mov r1, #0x71
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #0x4c]
 	mov r0, #0x71
 	bl BgConfig_Alloc
@@ -4007,7 +4007,7 @@ ov92_0225E3C4: ; 0x0225E3C4
 	bl sub_0200D68C
 	mov r0, #0xc8
 	mov r1, #0x71
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp]

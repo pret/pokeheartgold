@@ -202,7 +202,7 @@ static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y,
     }
 
     for (i = 0; i < 0x78; i++) {
-        unkPtr->stringArr_1C[i] = String_ctor(0x50, 4);
+        unkPtr->stringArr_1C[i] = String_New(0x50, 4);
     }
 
     *unkPtr->input = 0xEEEE;
@@ -237,7 +237,7 @@ static void ov01_02200E00(SCR_648_STRUCT *unkPtr) {
 }
 
 static void ov01_02200EC8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3) {
-    STRING *str = String_ctor(0x50, 4);
+    STRING *str = String_New(0x50, 4);
     ReadMsgDataIntoString(unkPtr->msgdata, strNo, str);
     StringExpandPlaceholders(unkPtr->msgfmt, unkPtr->stringArr_1C[unkPtr->totalItems], str);
     unkPtr->items[unkPtr->totalItems].text = unkPtr->stringArr_1C[unkPtr->totalItems];

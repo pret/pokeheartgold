@@ -8,7 +8,7 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_LoadFromNarc_GetSizeOut
 .public GfGfxLoader_LoadCharDataFromOpenNarc
@@ -153,7 +153,7 @@
 .public sub_02024ADC
 .public sub_02024AF8
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public String16_FormatInteger
 .public Thunk_G3X_Reset

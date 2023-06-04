@@ -538,7 +538,7 @@ _021E5FF2:
 	bl FillWindowPixelBuffer
 	ldr r1, [r5]
 	mov r0, #0x4c
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	ldr r0, [r5, #0x20]
 	mov r1, #2
@@ -731,7 +731,7 @@ _021E6162:
 	bl FillWindowPixelBuffer
 	ldr r1, [r5]
 	mov r0, #0x4c
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	ldr r0, [r5, #0x20]
 	mov r1, #3
@@ -1340,7 +1340,7 @@ ov56_021E6650: ; 0x021E6650
 	add r0, #0x18
 	str r0, [sp, #0x20]
 	mov r0, #0x4f
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	add r4, r0, #0
@@ -1883,7 +1883,7 @@ _021E6AF4:
 	str r0, [r4, #0x20]
 	ldr r1, [r4]
 	mov r0, #0x10
-	bl String_ctor
+	bl String_New
 	add r5, r0, #0
 	add r0, r4, #0
 	str r0, [sp, #0x18]

@@ -42,7 +42,7 @@
 .public LoadUserFrameGfx2
 .public ClearFrameAndWindow2
 .public IsPaletteFadeFinished
-.public ListMenuItems_ctor
+.public ListMenuItems_New
 .public ListMenuItems_dtor
 .public ListMenuItems_AppendFromMsgData
 .public ListMenuItems_AddItem
@@ -91,7 +91,7 @@
 .public sub_02024B68
 .public System_GetTouchNew
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public String16_FormatInteger
 .public Sav2_PlayerData_GetProfileAddr

@@ -18,7 +18,7 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_GetCharData
 .public GfGfxLoader_GetPlttData
@@ -133,7 +133,7 @@
 .public System_GetTouchHeld
 .public sub_02025364
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public Sav2_PlayerData_GetOptionsAddr
 .public Options_GetFrame

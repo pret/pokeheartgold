@@ -3473,7 +3473,7 @@ _021F6078:
 	str r1, [r0]
 	mov r0, #0x41
 	mov r1, #4
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #1
 	lsl r1, r1, #8
 	str r0, [r4, r1]

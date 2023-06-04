@@ -3183,7 +3183,7 @@ _02082678:
 _02082682:
 	mov r0, #5
 	mov r1, #0xc
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	mov r1, #0x82
 	lsl r1, r1, #4
 	str r0, [r5, r1]

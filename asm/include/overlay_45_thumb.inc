@@ -14,7 +14,7 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public OverlayManager_run
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_LoadFromOpenNarc
 .public GfGfxLoader_LoadFromOpenNarc_GetSizeOut
@@ -91,7 +91,7 @@
 .public sub_02025A9C
 .public sub_02025AAC
 .public sub_02025ABC
-.public String_ctor
+.public String_New
 .public String_dtor
 .public CopyStringToU16Array
 .public sub_02026E18

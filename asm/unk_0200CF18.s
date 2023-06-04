@@ -348,7 +348,7 @@ _0200D14C:
 	str r0, [r4, #8]
 	ldr r1, [r5]
 	mov r0, #0xaf
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x20]
 	mov r0, #0
 	str r0, [sp, #0x24]

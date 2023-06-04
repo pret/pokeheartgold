@@ -29,7 +29,7 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_GXLoadPal
 .public GfGfxLoader_GetCharData
@@ -218,7 +218,7 @@
 .public sub_02025364
 .public sub_02025380
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public PlayerProfile_GetPlayerName_NewString
 .public PlayerProfile_GetTrainerGender

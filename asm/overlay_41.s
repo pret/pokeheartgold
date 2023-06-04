@@ -426,7 +426,7 @@ ov41_02246170: ; 0x02246170
 	stmia r2!, {r0, r1}
 	mov r0, #0x1a
 	mov r1, #0xe
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #6
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -1098,7 +1098,7 @@ ov41_02246670: ; 0x02246670
 	add r4, r0, #0
 	mov r0, #0x1a
 	mov r1, #0xe
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #6
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -3943,7 +3943,7 @@ ov41_02247C7C: ; 0x02247C7C
 	mov r0, #1
 	lsl r0, r0, #8
 	mov r1, #0xd
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	ldr r0, _02247CF8 ; =0x000006E8
 	add r1, r4, #0
@@ -11944,7 +11944,7 @@ ov41_0224B6CC: ; 0x0224B6CC
 	ldr r1, [r4, #0x68]
 	add r5, r0, #0
 	mov r0, #0x1a
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #6
 	lsl r1, r1, #6
 	str r0, [r5, r1]
@@ -12950,7 +12950,7 @@ _0224BE9C:
 	bl sub_020247D4
 	mov r0, #0xc
 	mov r1, #0xd
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldr r0, [r5]
 	add r1, r7, #0
@@ -12987,7 +12987,7 @@ _0224BE9C:
 	bl BufferECWord
 	mov r0, #0xc8
 	mov r1, #0xd
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	ldr r0, [sp, #0x10]
 	mov r1, #0x2d

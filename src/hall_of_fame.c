@@ -28,7 +28,7 @@ void Sav2_HOF_RecordParty(HALL_OF_FAME *hof, PARTY *party, RTCDate *date) {
     if (hof->num_total < 9999) {
         HOFTEAM *team = &hof->parties[hof->next_record];
         int npokes = GetPartyCount(party);
-        STRING *string = String_ctor(POKEMON_NAME_LENGTH + 1, 0);
+        STRING *string = String_New(POKEMON_NAME_LENGTH + 1, 0);
         int i, j;
 
         MI_CpuClear16(team->party, sizeof(team->party));

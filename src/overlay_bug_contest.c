@@ -156,7 +156,7 @@ BOOL BugContest_BufferCaughtMonNick(BUGCONTEST *bugContest, MessageFormat *msgFm
         return FALSE;
     }
 
-    string = String_ctor(POKEMON_NAME_LENGTH+1+1, bugContest->heapId);
+    string = String_New(POKEMON_NAME_LENGTH+1+1, bugContest->heapId);
     GetMonData(bugContest->mon, MON_DATA_NICKNAME_3, string);
     BufferString(msgFmt, slot, string, 2, 1, 2);
     String_dtor(string);

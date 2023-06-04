@@ -5,7 +5,7 @@
 .public LoadFontPal0
 .public FontID_String_GetCenterAlignmentX
 .public PlaySE
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public NARC_ReadWholeMember
 .public GfGfxLoader_LoadCharData
@@ -76,7 +76,7 @@
 .public System_GetTouchNew
 .public sub_02025364
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public GetMonData
 .public GetMonIconNaixEx

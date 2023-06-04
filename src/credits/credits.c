@@ -242,7 +242,7 @@ BOOL CreditsApp_OvyInit(OVY_MANAGER *man, int *state) {
         InitBgLayers(work);
         InitSprites(work);
         work->pageWork.msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 0x1b8, HEAPID_CREDITS);
-        work->pageWork.string = String_ctor(256, HEAPID_CREDITS);
+        work->pageWork.string = String_New(256, HEAPID_CREDITS);
         DisplayWindow(work);
         SetPageSysTasks(work);
 
@@ -504,7 +504,7 @@ static void ov76_021E6170(CreditsAppWork *work) {
         AddCellOrAnimResObjFromNarc(work->_2dGfxResMan[GF_GFX_RES_TYPE_CELL], NARC_a_2_6_3, 2, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAPID_CREDITS);
     work->_2dGfxResObj[GF_GFX_RES_TYPE_ANIM] =
         AddCellOrAnimResObjFromNarc(work->_2dGfxResMan[GF_GFX_RES_TYPE_ANIM], NARC_a_2_6_3, 3, TRUE, 1, GF_GFX_RES_TYPE_ANIM, HEAPID_CREDITS);
-    work->cutsceneWork.narc = NARC_ctor(NARC_a_2_6_3, HEAPID_CREDITS);
+    work->cutsceneWork.narc = NARC_New(NARC_a_2_6_3, HEAPID_CREDITS);
 
     CutsceneWork *cutsceneWork = &work->cutsceneWork;
     NARC **narc = &cutsceneWork->narc;

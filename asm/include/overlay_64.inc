@@ -11,7 +11,7 @@
 .public OverlayManager_GetArgs
 .public ReadWholeNarcMemberByIdPair
 .public AllocAndReadWholeNarcMemberByIdPair
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_GXLoadPal
 .public GfGfxLoader_LoadCharDataFromOpenNarc
@@ -92,7 +92,7 @@
 .public sub_02024B1C
 .public sub_02024B34
 .public sub_02025224
-.public String_ctor
+.public String_New
 .public String_dtor
 .public Sav2_HOF_GetNumRecords
 .public Sav2_HOF_TranslateRecordIdx

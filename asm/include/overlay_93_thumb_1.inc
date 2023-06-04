@@ -24,7 +24,7 @@
 .public OverlayManager_GetArgs
 .public OverlayManager_run
 .public AllocAndReadWholeNarcMemberByIdPair
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
@@ -138,7 +138,7 @@
 .public Camera_InitFromTargetDistanceAndAngle
 .public sub_020233D8
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public Thunk_G3X_Reset
 .public sub_02026E50

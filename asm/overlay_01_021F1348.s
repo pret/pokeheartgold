@@ -214,7 +214,7 @@ ov01_021F147C: ; 0x021F147C
 	bl ov01_021F1478
 	add r1, r0, #0
 	mov r0, #0x67
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #0x18]
 	pop {r4, pc}
 	thumb_func_end ov01_021F147C

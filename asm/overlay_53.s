@@ -1034,12 +1034,12 @@ _021E613C:
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #0xa
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #0xa
-	bl String_ctor
+	bl String_New
 	mov r1, #0x11
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -1197,7 +1197,7 @@ _021E62C2:
 	mov r0, #1
 	ldr r1, [r4]
 	lsl r0, r0, #0xa
-	bl String_ctor
+	bl String_New
 	mov r2, #0x11
 	lsl r2, r2, #4
 	str r0, [r4, r2]
@@ -1488,7 +1488,7 @@ _021E650C:
 	mov r0, #1
 	ldr r1, [r7]
 	lsl r0, r0, #0xa
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r0, #1
 	ldr r1, [sp, #0x24]
@@ -4488,7 +4488,7 @@ ov53_021E7D70: ; 0x021E7D70
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #0xa
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r0, #1
 	lsl r0, r0, #8
@@ -4995,7 +4995,7 @@ ov53_021E816C: ; 0x021E816C
 	add r7, r1, #0
 	mov r0, #0xef
 	add r1, r4, #0
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x20
 	str r1, [sp]
 	mov r1, #0

@@ -9,7 +9,7 @@
 .public NewString_ReadMsgData
 .public AllocFromHeapAtEnd
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public CopyU16ArrayToString
 .public SavArray_get
 .public PlayerProfile_GetNamePtr

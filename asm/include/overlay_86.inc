@@ -15,7 +15,7 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_LoadFromNarc_GetSizeOut
 .public GfGfxLoader_LoadCharDataFromOpenNarc
@@ -97,7 +97,7 @@
 .public GX_EngineBToggleLayers
 .public sub_02025224
 .public sub_02025320
-.public String_ctor
+.public String_New
 .public String_dtor
 .public Sav2_PlayerData_GetOptionsAddr
 .public Options_GetFrame

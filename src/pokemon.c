@@ -2701,7 +2701,7 @@ struct UnkStruct_0200CF18 *sub_02070C24(Unk122_021E7C9C *r6, void *sp18, s32 sp1
     if (trainerClass == TRAINERCLASS_CASTLE_VALET) {
         r7 = 2;
     }
-    narc_r4 = NARC_ctor(sp24.narcId, heapId);
+    narc_r4 = NARC_New(sp24.narcId, heapId);
     sub_0200D504(r6, sp18, narc_r4, sp24.ncgr_id, 0, 1, r5 + 0x4E2F);
     sub_0200D68C(sp1C, 2, r6, sp18, narc_r4, sp24.nclr_id, 0, r7, 1, r5 + 0x4E2A);
     sub_0200D6EC(r6, sp18, narc_r4, sp24.ncer_id, 0, r5 + 0x4E27);
@@ -4119,7 +4119,7 @@ BOOL BoxmonBelongsToPlayer(BoxPokemon *boxMon, PLAYERPROFILE * profile, HeapID h
     u32 myGender = PlayerProfile_GetTrainerGender(profile);
     u32 otGender = GetBoxMonData(boxMon, MON_DATA_MET_GENDER, NULL);
     STRING * r7 = PlayerProfile_GetPlayerName_NewString(profile, heap_id);
-    STRING * r6 = String_ctor(PLAYER_NAME_LENGTH + 1, heap_id);
+    STRING * r6 = String_New(PLAYER_NAME_LENGTH + 1, heap_id);
     BOOL ret = FALSE;
     GetBoxMonData(boxMon, MON_DATA_OT_NAME_2, r6);
     if (myId == otId && myGender == otGender && StringCompare(r7, r6) == 0) {
@@ -4236,7 +4236,7 @@ BOOL SetTrMonCapsule(int a0, Pokemon *mon, HeapID heap_id) {
     if (a0 == 0) {
         return FALSE;
     }
-    narc = NARC_ctor(NARC_application_custom_ball_edit_gs_cb_data, heap_id);
+    narc = NARC_New(NARC_application_custom_ball_edit_gs_cb_data, heap_id);
     data = 1;
     NARC_ReadFromMember(narc, 0, (a0 - 1) * sizeof(CAPSULE), sizeof(CAPSULE), &capsule);
     SetMonData(mon, MON_DATA_CAPSULE, &data);

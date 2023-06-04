@@ -45,7 +45,7 @@ ov39_02227088: ; 0x02227088
 	bl MI_CpuFill8
 	ldr r1, [sp, #0x28]
 	mov r0, #0x3c
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
@@ -300,7 +300,7 @@ _0222722C:
 	mov r0, #1
 	ldr r1, [r4, #4]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0xff
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -2453,12 +2453,12 @@ ov39_02228140: ; 0x02228140
 	str r0, [r5, #0x2c]
 	mov r0, #0xb4
 	mov r1, #0x7c
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x34]
 	mov r0, #1
 	lsl r0, r0, #8
 	mov r1, #0x7c
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x3c]
 	ldr r0, [r5, #0x24]
 	mov r1, #0x1f
@@ -2879,7 +2879,7 @@ ov39_022285CC: ; 0x022285CC
 	ldr r4, [r0, #4]
 	mov r0, #0x58
 	mov r1, #0x7c
-	bl NARC_ctor
+	bl NARC_New
 	mov r2, #0
 	str r2, [sp]
 	mov r1, #0x7c
@@ -3387,7 +3387,7 @@ ov39_022289D0: ; 0x022289D0
 	add r6, r1, #0
 	lsl r0, r0, #8
 	mov r1, #0x7c
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	ldr r0, [r5, #0x2c]
 	add r1, r6, #0

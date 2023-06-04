@@ -1026,7 +1026,7 @@ static void sub_0206D038(Pokemon *mon, HeapID heapId) {
     u32 pid;
     Pokemon *tmpMon;
 
-    string = String_ctor(PLAYER_NAME_LENGTH + 1, heapId);
+    string = String_New(PLAYER_NAME_LENGTH + 1, heapId);
     tmpMon = AllocMonZeroed(heapId);
     species = (u16)GetMonData(mon, MON_DATA_SPECIES, NULL);
     for (i = 0; i < MAX_MON_MOVES; i++) {

@@ -464,11 +464,11 @@ ov43_0222A290: ; 0x0222A290
 	str r0, [r5, #4]
 	mov r0, #0x80
 	add r1, r6, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x58]
 	mov r0, #0x80
 	add r1, r6, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x5c]
 	ldr r0, [r4, #4]
 	bl sub_020183F0
@@ -736,7 +736,7 @@ ov43_0222A48C: ; 0x0222A48C
 	bl GX_SwapDisplay
 	mov r0, #0x55
 	add r1, r4, #0
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r5, #0x58]
 	bl ov43_0222A550
 	add r0, r5, #0
@@ -1280,19 +1280,19 @@ ov43_0222A8C0: ; 0x0222A8C0
 	bl AddWindowParameterized
 	mov r0, #0x80
 	add r1, r4, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x74]
 	mov r0, #0x80
 	add r1, r4, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x78]
 	mov r0, #0x80
 	add r1, r4, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x7c]
 	mov r0, #0x80
 	add r1, r4, #0
-	bl String_ctor
+	bl String_New
 	add r1, r5, #0
 	add r1, #0x80
 	str r0, [r1]
@@ -2305,7 +2305,7 @@ ov43_0222B0A0: ; 0x0222B0A0
 	bl FillWindowPixelBuffer
 	ldr r1, [sp, #0x18]
 	mov r0, #0x80
-	bl String_ctor
+	bl String_New
 	ldr r1, [sp, #0x14]
 	str r0, [r1, #0x3c]
 	ldr r0, [r5, #4]
@@ -2315,11 +2315,11 @@ ov43_0222B0A0: ; 0x0222B0A0
 	str r0, [r1, #0x38]
 	ldr r1, [sp, #0x18]
 	mov r0, #0x80
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	ldr r1, [sp, #0x18]
 	mov r0, #0x80
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x1c]
 	ldr r0, [r5, #4]
 	bl Sav2_PlayerData_GetProfileAddr
@@ -2779,7 +2779,7 @@ ov43_0222B4BC: ; 0x0222B4BC
 	mov r0, #0x80
 	add r1, r3, #0
 	add r7, r2, #0
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0x20
@@ -3436,7 +3436,7 @@ _0222B95A:
 _0222B9F4:
 	ldr r1, [sp, #0x1c]
 	mov r0, #4
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	add r1, r6, #0
 	add r1, #0xe4
 	ldr r5, [sp, #0x24]
@@ -3483,7 +3483,7 @@ _0222BA06:
 	bl ov43_0222A24C
 	ldr r1, [sp, #0x1c]
 	mov r0, #0x80
-	bl String_ctor
+	bl String_New
 	ldr r1, [sp, #0x18]
 	ldr r4, _0222BAB4 ; =ov43_0222EEB0
 	add r1, #0xd8
@@ -4910,7 +4910,7 @@ ov43_0222C550: ; 0x0222C550
 	bl FillWindowPixelBuffer
 	mov r0, #0x80
 	add r1, r6, #0
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r0, [r4, #0x54]
 	add r1, r7, #0
@@ -5629,7 +5629,7 @@ _0222CA8C:
 _0222CAD0:
 	ldr r1, [sp, #0x4c]
 	mov r0, #0x80
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r0, [sp, #0x44]
 	ldr r1, [sp, #0x18]
@@ -6158,11 +6158,11 @@ ov43_0222CE48: ; 0x0222CE48
 	bl FillWindowPixelBuffer
 	mov r0, #0x80
 	add r1, r7, #0
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r0, #0x80
 	add r1, r7, #0
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x20]
 	ldr r0, [sp, #0x14]
 	ldr r0, [r0, #4]
@@ -8644,11 +8644,11 @@ ov43_0222E220: ; 0x0222E220
 	str r0, [sp, #0x24]
 	mov r0, #0x80
 	add r1, r6, #0
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	mov r0, #0x80
 	add r1, r6, #0
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	str r4, [sp]
 	mov r0, #0x1e
@@ -9069,11 +9069,11 @@ ov43_0222E5B4: ; 0x0222E5B4
 	str r0, [sp, #0x24]
 	mov r0, #0x80
 	add r1, r6, #0
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	mov r0, #0x80
 	add r1, r6, #0
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	str r4, [sp]
 	mov r0, #0x1f
@@ -9288,11 +9288,11 @@ ov43_0222E78C: ; 0x0222E78C
 	str r0, [sp, #0x28]
 	ldr r1, [sp, #0x24]
 	mov r0, #0x80
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldr r1, [sp, #0x24]
 	mov r0, #0x80
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	str r4, [sp]
 	mov r0, #0x20
@@ -9461,11 +9461,11 @@ ov43_0222E904: ; 0x0222E904
 	str r0, [sp, #0x24]
 	mov r0, #0x80
 	add r1, r6, #0
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	mov r0, #0x80
 	add r1, r6, #0
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	str r4, [sp]
 	mov r0, #0x21
@@ -9611,11 +9611,11 @@ ov43_0222EA40: ; 0x0222EA40
 	str r0, [sp, #0x24]
 	mov r0, #0x80
 	add r1, r7, #0
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r0, #0x80
 	add r1, r7, #0
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	str r4, [sp]
 	mov r0, #0x2f

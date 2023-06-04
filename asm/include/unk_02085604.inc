@@ -11,7 +11,7 @@
 .public IsPaletteFadeFinished
 .public FreeToHeap
 .public System_GetTouchHeld
-.public String_ctor
+.public String_New
 .public String_dtor
 .public String16_FormatInteger
 .public StringCat

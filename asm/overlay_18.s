@@ -182,7 +182,7 @@ ov18_021E5A10: ; 0x021E5A10
 	mov r0, #1
 	lsl r0, r0, #8
 	add r1, r5, #0
-	bl String_ctor
+	bl String_New
 	add r5, r0, #0
 	beq _021E5A40
 	add r0, r4, #0
@@ -1170,7 +1170,7 @@ ov18_021E6244: ; 0x021E6244
 	mov r0, #1
 	lsl r0, r0, #0xa
 	mov r1, #0x25
-	bl String_ctor
+	bl String_New
 	ldr r1, _021E627C ; =0x00000664
 	str r0, [r4, r1]
 	pop {r4, pc}
@@ -1206,7 +1206,7 @@ ov18_021E62A8: ; 0x021E62A8
 	add r5, r0, #0
 	mov r0, #0x4b
 	mov r1, #0x25
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	add r2, r1, #0
 	mov r3, #0x25
@@ -5313,7 +5313,7 @@ ov18_021E8410: ; 0x021E8410
 	add r5, r6, r0
 	bl GetDexZknDataNarcID
 	mov r1, #0x25
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	ldr r0, [r6]
 	ldr r0, [r0, #4]
@@ -6432,7 +6432,7 @@ ov18_021E8C30: ; 0x021E8C30
 	bl FontID_Alloc
 	mov r0, #0x44
 	mov r1, #0x25
-	bl NARC_ctor
+	bl NARC_New
 	ldr r1, _021E8D28 ; =0x00000854
 	str r0, [r4, r1]
 	add r0, r4, #0
@@ -22961,7 +22961,7 @@ ov18_021F12FC: ; 0x021F12FC
 	add r4, r0, #0
 	mov r0, #0x14
 	mov r1, #0x25
-	bl NARC_ctor
+	bl NARC_New
 	ldr r1, _021F1310 ; =0x00000858
 	str r0, [r4, r1]
 	pop {r4, pc}
@@ -37978,7 +37978,7 @@ _021F8992:
 	bne _021F8992
 	ldr r1, [r4, #0x14]
 	mov r0, #0x44
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #0x1c]
 	mov r0, #9
 	mov r2, #0
@@ -38413,7 +38413,7 @@ _021F8CDA:
 	mov r0, #1
 	ldr r1, [r5, #0x14]
 	lsl r0, r0, #0xa
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x10]
 	mov r0, #0
 	str r0, [sp]
@@ -38940,7 +38940,7 @@ ov18_021F9150: ; 0x021F9150
 	add r5, r0, #0
 	bl ov18_021E5900
 	ldr r1, [r5, #0x14]
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #0x4d
 	str r0, [sp]

@@ -14,7 +14,7 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_GetCharData
 .public GfGfxLoader_GetPlttData
@@ -124,7 +124,7 @@
 .public sub_02025224
 .public System_GetTouchHeld
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public String16_FormatInteger
 .public sub_020270C4

@@ -1345,11 +1345,11 @@ ov45_0222A844: ; 0x0222A844
 	bl Sav2_Profile_PlayerName_set
 	mov r0, #0x20
 	add r1, r7, #0
-	bl String_ctor
+	bl String_New
 	str r0, [sp]
 	mov r0, #0x20
 	add r1, r7, #0
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #4]
 	ldr r1, [sp, #4]
 	add r0, r4, #0
@@ -9274,7 +9274,7 @@ _0222DF94:
 _0222DF98:
 	add r0, r7, #0
 	add r1, r6, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x10]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -14491,11 +14491,11 @@ _022304E2:
 	str r0, [r4, #0xc]
 	mov r0, #0x51
 	add r1, r7, #0
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x18]
 	mov r0, #0xd1
 	add r1, r7, #0
-	bl NARC_ctor
+	bl NARC_New
 	mov r2, #0
 	ldr r3, [sp, #0xc]
 	str r2, [sp]
@@ -15918,7 +15918,7 @@ ov45_02230F94: ; 0x02230F94
 	add r6, r1, #0
 	mov r0, #0x62
 	add r1, r7, #0
-	bl NARC_ctor
+	bl NARC_New
 	add r1, sp, #0xc
 	str r1, [sp]
 	add r1, r7, #0

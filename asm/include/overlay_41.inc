@@ -15,7 +15,7 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_LoadScrnData
@@ -181,7 +181,7 @@
 .public Destroy2DGfxResMan
 .public sub_020255A0
 .public sub_020255C4
-.public String_ctor
+.public String_New
 .public String_dtor
 .public sub_02026C44
 .public sub_02026CAC

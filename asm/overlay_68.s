@@ -209,7 +209,7 @@ ov68_021E5A58: ; 0x021E5A58
 	str r0, [r4, #4]
 	mov r0, #0x6e
 	mov r1, #0x42
-	bl NARC_ctor
+	bl NARC_New
 	add r5, r0, #0
 	bl ov68_021E5BA0
 	ldr r0, [r4, #4]
@@ -709,7 +709,7 @@ ov68_021E5EBC: ; 0x021E5EBC
 	mov r0, #1
 	lsl r0, r0, #8
 	mov r1, #0x42
-	bl String_ctor
+	bl String_New
 	mov r1, #1
 	lsl r1, r1, #8
 	str r0, [r4, r1]
@@ -1383,7 +1383,7 @@ ov68_021E6320: ; 0x021E6320
 	mov r0, #1
 	lsl r0, r0, #8
 	mov r1, #0x42
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x20]
 	add r0, r5, #0
 	add r0, #0xf8
@@ -1875,7 +1875,7 @@ ov68_021E6820: ; 0x021E6820
 	strb r0, [r5, r1]
 	ldrb r0, [r5, r1]
 	mov r1, #0x42
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	mov r1, #0x11
 	lsl r1, r1, #4
 	str r0, [r5, r1]

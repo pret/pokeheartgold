@@ -21,7 +21,7 @@
 .public PlayCry
 .public UnloadOverlayByID
 .public HandleLoadOverlay
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_LoadFromNarc_GetSizeOut
 .public GfGfxLoader_LoadCharDataFromOpenNarc
@@ -163,7 +163,7 @@
 .public sub_02025364
 .public sub_02025380
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public StringSetEmpty
 .public String16_FormatInteger

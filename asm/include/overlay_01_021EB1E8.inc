@@ -2,7 +2,7 @@
 #pragma once
 .public PlaySE
 .public StopSE
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public NARC_AllocAndReadWholeMember
 .public GfGfxLoader_LoadFromNarc

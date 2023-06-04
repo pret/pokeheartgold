@@ -26,7 +26,7 @@
 .public OverlayManager_GetArgs
 .public OverlayManager_run
 .public AllocAtEndAndReadWholeNarcMemberByIdPair
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_LoadScrnData
@@ -200,7 +200,7 @@
 .public System_GetTouchNew
 .public sub_02025364
 .public sub_02025380
-.public String_ctor
+.public String_New
 .public String_dtor
 .public GetStoragePCPointer
 .public Sav2_PlayerData_GetProfileAddr

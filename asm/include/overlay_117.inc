@@ -39,7 +39,7 @@
 .public Set2dSpriteVisibleFlag
 .public sub_02024A04
 .public sub_02024B78
-.public String_ctor
+.public String_New
 .public String_dtor
 .public G2x_SetBlendAlpha_
 .public memset

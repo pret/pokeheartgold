@@ -238,7 +238,7 @@ sub_0207ECE0: ; 0x0207ECE0
 	str r0, [sp, #8]
 	mov r0, #0x14
 	mov r1, #0xc
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x10]
 	mov r0, #0x30
 	add r4, r6, #0

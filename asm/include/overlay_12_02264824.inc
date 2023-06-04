@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public sub_02003E5C
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public NewString_ReadMsgData
 .public BufferBoxMonNickname
@@ -37,7 +37,7 @@
 .public sub_020249D4
 .public sub_02024B1C
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public Mon_GetBoxMon
 .public sub_02088080

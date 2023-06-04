@@ -1063,7 +1063,7 @@ ov02_02246398: ; 0x02246398
 	bl G2x_SetBlendAlpha_
 	ldr r1, [r5]
 	mov r0, #0xae
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x20
 	str r1, [sp]
 	ldr r1, [r5]
@@ -1667,7 +1667,7 @@ ov02_0224686C: ; 0x0224686C
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0xae
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x20
 	str r1, [sp]
 	ldr r1, [r5]
@@ -7404,12 +7404,12 @@ ov02_022493EC: ; 0x022493EC
 
 	thumb_func_start ov02_022493F0
 ov02_022493F0: ; 0x022493F0
-	ldr r3, _022493F8 ; =NARC_ctor
+	ldr r3, _022493F8 ; =NARC_New
 	mov r0, #0x5d
 	mov r1, #4
 	bx r3
 	.balign 4, 0
-_022493F8: .word NARC_ctor
+_022493F8: .word NARC_New
 	thumb_func_end ov02_022493F0
 
 	thumb_func_start ov02_022493FC
@@ -9141,12 +9141,12 @@ _0224A070: .word 0x04000008
 
 	thumb_func_start ov02_0224A074
 ov02_0224A074: ; 0x0224A074
-	ldr r3, _0224A07C ; =NARC_ctor
+	ldr r3, _0224A07C ; =NARC_New
 	mov r0, #0x5d
 	mov r1, #4
 	bx r3
 	.balign 4, 0
-_0224A07C: .word NARC_ctor
+_0224A07C: .word NARC_New
 	thumb_func_end ov02_0224A074
 
 	thumb_func_start ov02_0224A080
@@ -21292,7 +21292,7 @@ FollowPoke_TryPrintInteractionMessage: ; 0x0224FB9C
 	mov r0, #1
 	lsl r0, r0, #0xa
 	mov r1, #0xb
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x10]
 	ldr r0, [r5, #8]
 	add r1, r4, #0
@@ -21343,7 +21343,7 @@ ov02_0224FC08: ; 0x0224FC08
 	lsl r0, r0, #0xa
 	mov r1, #0xb
 	add r6, r2, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x10]
 	ldr r0, [r5, #8]
 	add r1, r4, #0
@@ -25694,7 +25694,7 @@ GetPhoneBookEntryName: ; 0x02251E74
 _02251E86:
 	mov r0, #8
 	add r1, r4, #0
-	bl String_ctor
+	bl String_New
 	add r5, r0, #0
 	b _02251EB2
 _02251E92:

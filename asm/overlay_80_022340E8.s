@@ -1093,7 +1093,7 @@ ov80_02234968: ; 0x02234968
 	beq _02234A1E
 	mov r0, #0xb7
 	mov r1, #0x65
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -1182,7 +1182,7 @@ ov80_02234A38: ; 0x02234A38
 	add r5, r1, #0
 	mov r0, #0xb7
 	mov r1, #0x65
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -1666,7 +1666,7 @@ _02234DDC:
 	bl memset
 	mov r0, #0xb7
 	mov r1, #0x65
-	bl NARC_ctor
+	bl NARC_New
 	add r1, r6, #0
 	add r2, sp, #8
 	mov r3, #0x65

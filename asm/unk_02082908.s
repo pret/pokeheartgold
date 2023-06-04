@@ -69,7 +69,7 @@ _0208291E:
 	str r0, [r4, r1]
 	mov r0, #0x1f
 	mov r1, #0x12
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	mov r0, #0x12
 	bl MessageFormat_new
@@ -970,7 +970,7 @@ sub_020830D8: ; 0x020830D8
 	ldr r1, [sp]
 	strh r0, [r4, #0x1c]
 	mov r0, #0x20
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x18]
 	mov r1, #0
 	str r1, [r4, #0x44]
@@ -1476,7 +1476,7 @@ sub_020834FC: ; 0x020834FC
 	beq _0208360C
 	mov r0, #0xc8
 	mov r1, #0x12
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	mov r0, #6
 	mov r1, #0
@@ -3501,7 +3501,7 @@ sub_02084540: ; 0x02084540
 	str r2, [sp, #0x1c]
 	str r3, [sp, #0x20]
 	mov r4, #0
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x28]
 	ldrh r1, [r7]
 	ldr r0, _02084630 ; =0x0000FFFF
@@ -3690,7 +3690,7 @@ _02084694:
 	blo _02084694
 	mov r0, #0x15
 	mov r1, #0x12
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	mov r5, #0
 _020846D6:

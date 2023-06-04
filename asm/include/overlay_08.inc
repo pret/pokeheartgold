@@ -13,7 +13,7 @@
 .public sub_02007200
 .public sub_02007234
 .public AllocAndReadWholeNarcMemberByIdPair
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public NARC_AllocAndReadWholeMember
 .public GfGfxLoader_LoadCharData
@@ -100,7 +100,7 @@
 .public GX_EngineBToggleLayers
 .public sub_02025224
 .public System_GetTouchNew
-.public String_ctor
+.public String_New
 .public String_dtor
 .public GetMonData
 .public GetMonExpBySpeciesAndLevel

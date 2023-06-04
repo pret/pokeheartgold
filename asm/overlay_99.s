@@ -525,7 +525,7 @@ _021E5CBE:
 	bl G2x_SetBlendAlpha_
 	ldr r1, [r5, #0xc]
 	mov r0, #0xb1
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r5, #8]
 	add sp, #0xf4
 	pop {r4, r5, r6, r7, pc}
@@ -2092,7 +2092,7 @@ _021E6992:
 	blt _021E6992
 	ldr r1, [r5, #0xc]
 	mov r0, #0xb1
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r5, #8]
 	add sp, #0x80
 	pop {r3, r4, r5, r6, r7, pc}
@@ -4022,11 +4022,11 @@ _021E783C:
 	bl ov98_0221F090
 	ldr r1, [r4, #0xc]
 	mov r0, #0xb1
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #4]
 	ldr r1, [r4, #0xc]
 	mov r0, #0x4a
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #8]
 	add r0, r4, #0
 	bl ov99_021E72C0
@@ -5717,7 +5717,7 @@ _021E85C6:
 	blt _021E85C6
 	ldr r1, [r5, #0xc]
 	mov r0, #0xb1
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r5, #8]
 	add sp, #0xb8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -7544,7 +7544,7 @@ ov99_021E93DC: ; 0x021E93DC
 	bl ov99_021E92EC
 	ldr r1, [r5, #0xc]
 	mov r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0x6f
 	lsl r1, r1, #2
 	str r0, [r4, r1]

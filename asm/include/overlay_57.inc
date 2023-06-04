@@ -20,7 +20,7 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_GetCharData
 .public GfGfxLoader_LoadCharDataFromOpenNarc
@@ -95,7 +95,7 @@
 .public sub_02013794
 .public sub_020137C0
 .public sub_020138E0
-.public ListMenuItems_ctor
+.public ListMenuItems_New
 .public ListMenuItems_dtor
 .public ListMenuItems_AddItem
 .public sub_02014DA0
@@ -164,7 +164,7 @@
 .public System_GetTouchNew
 .public sub_02025364
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public String16_FormatInteger
 .public sub_02026C44

@@ -1709,7 +1709,7 @@ _021E667C:
 	add r7, r0, #0
 	mov r0, #0x40
 	add r1, r5, #0
-	bl String_ctor
+	bl String_New
 	mov r1, #6
 	lsl r1, r1, #6
 	add r5, r0, #0
@@ -8052,7 +8052,7 @@ ov60_021E99B8: ; 0x021E99B8
 	mov r0, #0x42
 	lsl r0, r0, #2
 	mov r1, #0x4a
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x18]
 	mov r1, #7
 	ldr r0, [sp, #0xc]

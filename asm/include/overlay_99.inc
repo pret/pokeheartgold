@@ -7,7 +7,7 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
@@ -70,7 +70,7 @@
 .public GX_EngineBToggleLayers
 .public sub_0202529C
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public CopyU16ArrayToString
 .public PlayerProfile_GetTrainerGender

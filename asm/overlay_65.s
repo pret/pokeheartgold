@@ -35,7 +35,7 @@ ov65_0221BE20: ; 0x0221BE20
 	bl FontID_Alloc
 	mov r0, #0x34
 	mov r1, #0x1a
-	bl NARC_ctor
+	bl NARC_New
 	add r5, r0, #0
 	ldr r1, _0221BFA8 ; =0x000036CC
 	add r0, r6, #0
@@ -271,7 +271,7 @@ ov65_0221C08C: ; 0x0221C08C
 	add r5, r0, #0
 	mov r0, #0x34
 	mov r1, #0x1a
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	bl ov65_0221CE98
 	mov r0, #6
@@ -2831,7 +2831,7 @@ ov65_0221D5FC: ; 0x0221D5FC
 	mov r0, #0x14
 	mov r1, #0x1a
 	str r3, [sp, #8]
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r7, #0
@@ -3041,7 +3041,7 @@ _0221D7B0:
 	bne _0221D836
 	mov r0, #0xa
 	mov r1, #0x1a
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0x1c
@@ -3127,7 +3127,7 @@ _0221D842:
 	bl FillWindowPixelBuffer
 	mov r0, #0x14
 	mov r1, #0x1a
-	bl String_ctor
+	bl String_New
 	add r1, r6, #0
 	mov r2, #0x1a
 	add r5, r0, #0
@@ -4737,12 +4737,12 @@ ov65_0221E558: ; 0x0221E558
 	str r0, [sp]
 	add r0, r0, #1
 	mov r1, #0x1a
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r1, _0221E5F0 ; =0x00003688
 	str r0, [r5, r1]
 	mov r0, #0x64
 	mov r1, #0x1a
-	bl String_ctor
+	bl String_New
 	ldr r7, _0221E5EC ; =0x000036A0
 	add r6, r0, #0
 	mov r4, #0
@@ -5302,7 +5302,7 @@ ov65_0221E9A8: ; 0x0221E9A8
 	bl ov65_0221FB90
 	mov r0, #3
 	mov r1, #0x1a
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r1, _0221EA64 ; =0x00000668
 	mov r2, #0x11
 	str r0, [r4, r1]
@@ -6562,7 +6562,7 @@ ov65_0221F3F4: ; 0x0221F3F4
 	bl ov65_0221FB90
 	mov r0, #2
 	mov r1, #0x1a
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r1, _0221F4A0 ; =0x00000668
 	mov r2, #0x11
 	str r0, [r4, r1]

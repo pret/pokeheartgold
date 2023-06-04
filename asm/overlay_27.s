@@ -4674,7 +4674,7 @@ ov27_0225C4AC: ; 0x0225C4AC
 	add r5, r0, #0
 	mov r0, #0xef
 	mov r1, #8
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	ldr r2, _0225C53C ; =0x04001050
 	add r3, r1, #0
@@ -4743,7 +4743,7 @@ ov27_0225C540: ; 0x0225C540
 	add r5, r0, #0
 	mov r0, #0xef
 	mov r1, #8
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -4856,7 +4856,7 @@ ov27_0225C618: ; 0x0225C618
 	add r6, r0, #0
 	mov r0, #0xef
 	mov r1, #8
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]

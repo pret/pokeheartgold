@@ -2194,7 +2194,7 @@ ov08_0221CF38: ; 0x0221CF38
 	ldr r1, [r5]
 	mov r0, #0x47
 	ldr r1, [r1, #0xc]
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -2414,7 +2414,7 @@ ov08_0221D0F4: ; 0x0221D0F4
 	mov r0, #2
 	ldr r1, [r1, #0xc]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	ldr r1, _0221D148 ; =0x00001FB0
 	str r0, [r4, r1]
 	pop {r4, pc}
@@ -4077,7 +4077,7 @@ ov08_0221DDCC: ; 0x0221DDCC
 	ldr r1, [r1, #0xc]
 	mov r0, #0xc
 	str r2, [sp, #0x10]
-	bl String_ctor
+	bl String_New
 	ldr r1, [sp, #0x14]
 	str r0, [sp, #0x1c]
 	ldr r0, _0221DF60 ; =0x00001FA8
@@ -4477,7 +4477,7 @@ ov08_0221E120: ; 0x0221E120
 	mov r0, #0x10
 	ldr r1, [r1, #0xc]
 	add r7, r2, #0
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r0, _0221E198 ; =0x00001FA8
 	mov r1, #8
@@ -4551,7 +4551,7 @@ _0221E1CC:
 	ldr r1, [r4]
 	mov r0, #0x12
 	ldr r1, [r1, #0xc]
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r0, _0221E234 ; =0x00001FA8
 	mov r1, #9
@@ -4613,7 +4613,7 @@ ov08_0221E244: ; 0x0221E244
 	mov r0, #0x10
 	str r3, [sp, #0x14]
 	lsl r6, r2, #4
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldr r0, _0221E2E0 ; =0x00001FA8
 	ldr r1, [sp, #0x14]
@@ -4853,7 +4853,7 @@ ov08_0221E408: ; 0x0221E408
 	str r0, [sp, #0x18]
 	ldr r1, [r1, #0xc]
 	mov r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0
 	str r0, [sp, #0x1c]
 	str r1, [sp]
@@ -4920,7 +4920,7 @@ ov08_0221E408: ; 0x0221E408
 	str r0, [sp, #0x14]
 	ldr r1, [r1, #0xc]
 	mov r0, #0xe
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x10]
 	ldrb r0, [r4, #0x16]
 	lsl r0, r0, #0x19
@@ -5057,7 +5057,7 @@ ov08_0221E5DC: ; 0x0221E5DC
 	str r0, [sp, #0x10]
 	ldr r1, [r1, #0xc]
 	mov r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0
 	mov r2, #0x50
 	add r6, r0, #0
@@ -5167,7 +5167,7 @@ ov08_0221E6D8: ; 0x0221E6D8
 	str r0, [sp, #0x10]
 	ldr r1, [r1, #0xc]
 	mov r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0
 	mov r2, #0x50
 	add r6, r0, #0
@@ -5278,7 +5278,7 @@ ov08_0221E7D4: ; 0x0221E7D4
 	str r0, [sp, #0x10]
 	ldr r1, [r1, #0xc]
 	mov r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0
 	mov r2, #0x50
 	add r6, r0, #0
@@ -5391,7 +5391,7 @@ ov08_0221E8D4: ; 0x0221E8D4
 	str r0, [sp, #0x10]
 	ldr r1, [r1, #0xc]
 	mov r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0
 	mov r2, #0x50
 	add r6, r0, #0
@@ -5504,7 +5504,7 @@ ov08_0221E9D4: ; 0x0221E9D4
 	str r0, [sp, #0x10]
 	ldr r1, [r1, #0xc]
 	mov r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0
 	mov r2, #0x50
 	add r6, r0, #0
@@ -5655,7 +5655,7 @@ ov08_0221EAD4: ; 0x0221EAD4
 	str r0, [sp, #0x18]
 	ldr r1, [r1, #0xc]
 	mov r0, #8
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x1c]
 	mov r1, #0
 	str r1, [sp]
@@ -5701,7 +5701,7 @@ ov08_0221EAD4: ; 0x0221EAD4
 	str r0, [sp, #0x20]
 	ldr r1, [r1, #0xc]
 	mov r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0
 	str r0, [sp, #0x24]
 	str r1, [sp]
@@ -5895,7 +5895,7 @@ _0221ED8A:
 	str r0, [sp, #0x14]
 	ldr r1, [r1, #0xc]
 	mov r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0
 	add r7, r0, #0
 	str r1, [sp]
@@ -6033,7 +6033,7 @@ _0221EEBA:
 	str r0, [sp, #0x14]
 	ldr r1, [r1, #0xc]
 	mov r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0
 	add r7, r0, #0
 	str r1, [sp]
@@ -6281,7 +6281,7 @@ ov08_0221F07C: ; 0x0221F07C
 	str r0, [sp, #0x20]
 	ldr r1, [r1, #0xc]
 	mov r0, #6
-	bl String_ctor
+	bl String_New
 	mov r1, #0
 	str r0, [sp, #0x24]
 	str r1, [sp]
@@ -6325,7 +6325,7 @@ ov08_0221F07C: ; 0x0221F07C
 	str r0, [sp, #0x28]
 	ldr r1, [r1, #0xc]
 	mov r0, #6
-	bl String_ctor
+	bl String_New
 	mov r1, #0
 	str r0, [sp, #0x2c]
 	str r1, [sp]
@@ -6484,7 +6484,7 @@ ov08_0221F284: ; 0x0221F284
 	ldr r4, [r5, r0]
 	mov r0, #6
 	lsl r6, r2, #4
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldr r0, _0221F3C4 ; =0x00001FA8
 	mov r1, #0x2b
@@ -6630,7 +6630,7 @@ ov08_0221F3D0: ; 0x0221F3D0
 	ldr r4, [r5, r0]
 	mov r0, #6
 	lsl r6, r2, #4
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x14]
 	ldr r0, _0221F498 ; =0x00001FA8
 	mov r1, #0x2b
@@ -6946,7 +6946,7 @@ ov08_0221F658: ; 0x0221F658
 	str r0, [sp, #0x14]
 	ldr r1, [r1, #0xc]
 	mov r0, #0xc
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x10]
 	ldr r0, _0221F7A8 ; =0x00001FA8
 	ldr r1, _0221F7AC ; =ov08_02224FF4
@@ -8792,7 +8792,7 @@ ov08_02220668: ; 0x02220668
 	ldr r1, [r6]
 	mov r0, #0x14
 	ldr r1, [r1, #0xc]
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	ldr r0, [r6]
 	ldr r0, [r0, #8]
@@ -8904,7 +8904,7 @@ ov08_02220750: ; 0x02220750
 	add r4, r0, #0
 	ldr r1, [r1, #0xc]
 	mov r0, #0x27
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	bl sub_0208AD58
 	str r6, [sp]
@@ -9035,7 +9035,7 @@ ov08_02220878: ; 0x02220878
 	ldr r1, [r5]
 	mov r0, #0x15
 	ldr r1, [r1, #0xc]
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
@@ -14107,7 +14107,7 @@ ov08_022230F4: ; 0x022230F4
 	ldr r1, [r5]
 	mov r0, #0x4d
 	ldr r1, [r1, #0xc]
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -14236,7 +14236,7 @@ ov08_022231E8: ; 0x022231E8
 	mov r0, #2
 	ldr r1, [r1, #0xc]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x18]
 	pop {r4, pc}
 	.balign 4, 0
@@ -15275,7 +15275,7 @@ ov08_02223A3C: ; 0x02223A3C
 	ldr r1, [r1, #0xc]
 	mov r0, #0x82
 	add r4, #0x20
-	bl String_ctor
+	bl String_New
 	ldr r1, _02223A98 ; =0x0000114D
 	add r7, r0, #0
 	ldrb r2, [r5, r1]
@@ -15706,7 +15706,7 @@ ov08_02223D80: ; 0x02223D80
 	ldr r1, [r6]
 	mov r0, #0x12
 	ldr r1, [r1, #0xc]
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	ldr r0, [r6]
 	ldr r0, [r0]

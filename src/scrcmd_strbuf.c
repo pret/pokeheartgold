@@ -299,7 +299,7 @@ BOOL ScrCmd_209(SCRIPTCONTEXT* ctx) {
 }
 
 BOOL ScrCmd_BufferMapSecName(SCRIPTCONTEXT* ctx) {
-    STRING* str = String_ctor(22, 4);
+    STRING* str = String_New(22, 4);
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 mapno = ScriptGetVar(ctx);

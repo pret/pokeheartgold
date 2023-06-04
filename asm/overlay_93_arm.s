@@ -815,7 +815,7 @@ ov93_0225F9D8: ; 0x0225F9D8
 	mov r5, r0
 	mov r0, #0xc9
 	mov r1, #0x75
-	bl NARC_ctor
+	bl NARC_New
 	mov r4, r0
 	str r4, [sp]
 	mov r0, #0x3a

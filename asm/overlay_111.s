@@ -866,7 +866,7 @@ _021E5F8A:
 	blt _021E5F8A
 	ldr r1, [r5]
 	mov r0, #0xad
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r5, #0x1c]
 	add sp, #0xa0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1131,7 +1131,7 @@ ov111_021E6180: ; 0x021E6180
 	bl sub_0200D71C
 	ldr r1, [r5]
 	mov r0, #0x14
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x10]
 	mov r4, #0
 _021E61EE:
@@ -1200,7 +1200,7 @@ ov111_021E6268: ; 0x021E6268
 	add r1, r3, #0
 	add r6, r2, #0
 	str r3, [sp, #4]
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	add r0, r4, #0
 	bl Pokemon_GetIconNaix

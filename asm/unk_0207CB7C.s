@@ -696,7 +696,7 @@ sub_0207D0E4: ; 0x0207D0E4
 	add r0, r2, #0
 	mov r1, #0xc
 	str r2, [sp, #4]
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	mov r1, #0x82
 	lsl r1, r1, #4
 	str r0, [r5, r1]

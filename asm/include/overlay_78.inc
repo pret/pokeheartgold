@@ -6,7 +6,7 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public ReadWholeNarcMemberByIdPair
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public NARC_AllocAndReadWholeMember
 .public GfGfxLoader_LoadCharData
@@ -78,7 +78,7 @@
 .public sub_02024B34
 .public sub_02024B60
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public Sav2_PlayerData_GetProfileAddr
 .public PlayerProfile_GetTrainerGender

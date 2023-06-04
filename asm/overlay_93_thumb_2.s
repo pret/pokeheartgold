@@ -14,7 +14,7 @@ ov93_0225FBF0: ; 0x0225FBF0
 	mov r1, #0x75
 	add r5, r2, #0
 	add r4, r3, #0
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]

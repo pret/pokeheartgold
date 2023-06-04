@@ -34,7 +34,7 @@ void ZknData_LoadAll(struct ZknHeightWeight *zkn, int mode, HeapID heapId) {
     GF_ASSERT(zkn->height == NULL);
     GF_ASSERT(zkn->weight == NULL);
 
-    narc = NARC_ctor(GetDexZknDataNarcID(), heapId);
+    narc = NARC_New(GetDexZknDataNarcID(), heapId);
     zkn->height = ZknNarc_LoadHeight(narc, heapId);
     zkn->weight = ZknNarc_LoadWeight(narc, heapId);
 

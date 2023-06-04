@@ -894,7 +894,7 @@ ov78_021E6068: ; 0x021E6068
 	mov r0, #2
 	ldr r1, [r5]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r0, [r5, #4]
 	cmp r0, #2
@@ -915,7 +915,7 @@ _021E6096:
 	mov r0, #2
 	ldr r1, [r5]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x10]
 	ldr r0, [r5, #4]
 	cmp r0, #2
@@ -1275,7 +1275,7 @@ ov78_021E636C: ; 0x021E636C
 	ldr r7, [r5, #0x44]
 	ldr r4, [r5, #0x48]
 	mov r0, #0xa2
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	mov r1, #0
 	str r1, [sp]
@@ -1319,7 +1319,7 @@ ov78_021E636C: ; 0x021E636C
 	bl NARC_dtor
 	ldr r1, [r5]
 	mov r0, #0x7e
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x10]
 	mov r0, #0
 	str r0, [sp]
@@ -1554,7 +1554,7 @@ ov78_021E65BC: ; 0x021E65BC
 	bl sub_0200DCE0
 	mov r0, #0x51
 	add r1, r4, #0
-	bl NARC_ctor
+	bl NARC_New
 	add r1, r5, #0
 	add r2, r4, #0
 	str r0, [sp, #0x10]
@@ -1715,7 +1715,7 @@ _021E6714:
 _021E671A:
 	ldr r1, [sp, #0xc]
 	mov r0, #0x51
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0x20]
 	lsl r1, r6, #0x18

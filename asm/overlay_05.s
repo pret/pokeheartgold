@@ -731,7 +731,7 @@ _0221BF92:
 	mov r0, #5
 	ldr r1, [r1, #0x24]
 	lsl r0, r0, #6
-	bl String_ctor
+	bl String_New
 	ldr r1, _0221C014 ; =0x00000BB4
 	str r0, [r5, r1]
 	mov r0, #1
@@ -2814,7 +2814,7 @@ ov05_0221D094: ; 0x0221D094
 	ldr r1, [r5]
 	mov r0, #0x68
 	ldr r1, [r1, #0x24]
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -3117,7 +3117,7 @@ ov05_0221D318: ; 0x0221D318
 	ldr r1, [r5]
 	mov r0, #8
 	ldr r1, [r1, #0x24]
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -3802,7 +3802,7 @@ ov05_0221D890: ; 0x0221D890
 	ldr r1, [r5]
 	mov r0, #0x68
 	ldr r1, [r1, #0x24]
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -4265,7 +4265,7 @@ ov05_0221DC60: ; 0x0221DC60
 	ldr r1, [r5]
 	mov r0, #0x15
 	ldr r1, [r1, #0x24]
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -5087,7 +5087,7 @@ ov05_0221E2D8: ; 0x0221E2D8
 	ldr r1, [r5]
 	mov r0, #0x14
 	ldr r1, [r1, #0x24]
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	bl sub_02074490
 	add r3, r0, #0
@@ -5174,7 +5174,7 @@ ov05_0221E390: ; 0x0221E390
 	ldr r1, [r5]
 	mov r0, #0x15
 	ldr r1, [r1, #0x24]
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -5247,7 +5247,7 @@ ov05_0221E42C: ; 0x0221E42C
 	ldr r1, [r5]
 	mov r0, #0x27
 	ldr r1, [r1, #0x24]
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -5320,7 +5320,7 @@ ov05_0221E4C8: ; 0x0221E4C8
 	ldr r1, [r5]
 	mov r0, #0x15
 	ldr r1, [r1, #0x24]
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -5909,7 +5909,7 @@ ov05_0221E944: ; 0x0221E944
 	str r0, [sp, #8]
 	ldr r1, [r1, #0x24]
 	mov r0, #0x20
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	mov r4, #0
 	add r5, r6, #0

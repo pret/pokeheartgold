@@ -11,7 +11,7 @@ ov12_02265E28: ; 0x02265E28
 	add r5, r0, #0
 	mov r0, #8
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	ldr r0, [r5, #4]
 	bl ov12_0223A8E4

@@ -16,7 +16,7 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public NARC_AllocAndReadWholeMember
 .public GfGfxLoader_LoadCharDataFromOpenNarc
@@ -38,7 +38,7 @@
 .public DrawFrameAndWindow2
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public ListMenuItems_ctor
+.public ListMenuItems_New
 .public ListMenuItems_dtor
 .public ListMenuItems_AppendFromMsgData
 .public Main_SetVBlankIntrCB
@@ -84,7 +84,7 @@
 .public Camera_SetDistance
 .public Camera_GetDistance
 .public System_GetTouchNew
-.public String_ctor
+.public String_New
 .public String_dtor
 .public Thunk_G3X_Reset
 .public sub_02026E50

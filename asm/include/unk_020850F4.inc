@@ -10,7 +10,7 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public sub_0200D034
 .public sub_0200D108
@@ -37,7 +37,7 @@
 .public GX_EngineBToggleLayers
 .public GX_SwapDisplay
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public sub_02026CAC
 .public sub_0203A880

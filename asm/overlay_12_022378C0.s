@@ -402,11 +402,11 @@ _02237BDE:
 	bl MIi_CpuClear16
 	mov r0, #7
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	mov r0, #8
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ov12_0223BFC0
@@ -844,11 +844,11 @@ _02237FD8:
 	bl GF_CreateVramTransferManager
 	mov r0, #7
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r5, r0, #0
 	mov r0, #8
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ov12_0223BFC0
@@ -951,11 +951,11 @@ _02237FD8:
 	bl ov12_02266390
 	mov r0, #7
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	mov r0, #8
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r5, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -1018,7 +1018,7 @@ _02237FD8:
 	mov r0, #5
 	lsl r0, r0, #6
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x18]
 	ldr r0, [r4, #0x28]
 	mov r1, #0
@@ -4137,7 +4137,7 @@ _02239A46:
 	mov r0, #1
 	lsl r0, r0, #8
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r1, _02239C18 ; =0x0000039B
 	add r0, r4, #0

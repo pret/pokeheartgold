@@ -1984,7 +1984,7 @@ ov87_021E68DC: ; 0x021E68DC
 	add r5, r0, #0
 	mov r0, #0xcf
 	mov r1, #0x7a
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0xe
 	lsl r1, r1, #6
 	str r0, [r5, r1]
@@ -2004,12 +2004,12 @@ ov87_021E68DC: ; 0x021E68DC
 	mov r0, #0x96
 	lsl r0, r0, #2
 	mov r1, #0x7a
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x40]
 	mov r0, #0x96
 	lsl r0, r0, #2
 	mov r1, #0x7a
-	bl String_ctor
+	bl String_New
 	mov r1, #0x1a
 	str r0, [r5, #0x44]
 	mov r0, #0

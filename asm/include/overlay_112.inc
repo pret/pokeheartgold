@@ -27,7 +27,7 @@
 .public OverlayManager_run
 .public ReadWholeNarcMemberByIdPair
 .public AllocAndReadWholeNarcMemberByIdPair
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public NARC_AllocAndReadWholeMember
 .public GfGfxLoader_LoadCharData
@@ -191,7 +191,7 @@
 .public sub_02025224
 .public sub_02025320
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public StringCopy
 .public StringGetLength

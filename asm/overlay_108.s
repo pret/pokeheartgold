@@ -2598,7 +2598,7 @@ ov108_021E6D80: ; 0x021E6D80
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0xa6
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #6
 	str r0, [sp]
@@ -2851,7 +2851,7 @@ ov108_021E6F74: ; 0x021E6F74
 	str r0, [r5, r1]
 	ldr r1, [r5]
 	mov r0, #0x51
-	bl String_ctor
+	bl String_New
 	mov r1, #0xc3
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3164,12 +3164,12 @@ ov108_021E7224: ; 0x021E7224
 	add r4, r0, #0
 	ldr r1, [r4]
 	mov r0, #3
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r1, _021E729C ; =0x000004B4
 	str r0, [r4, r1]
 	ldr r1, [r4]
 	mov r0, #2
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r1, _021E72A0 ; =0x000004B8
 	mov r2, #7
 	str r0, [r4, r1]
@@ -4349,7 +4349,7 @@ ov108_021E7BB4: ; 0x021E7BB4
 	ldr r1, [r6]
 	mov r0, #0xa6
 	add r5, r2, #0
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	cmp r4, #6
 	blo _021E7BE6
@@ -6646,15 +6646,15 @@ ov108_021E8CD4: ; 0x021E8CD4
 	bl GF_ExpHeap_FndInitAllocator
 	mov r0, #0x28
 	add r1, r4, #0
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r5, #0x18]
 	mov r0, #0x6b
 	add r1, r4, #0
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r5, #0x1c]
 	mov r0, #0x6a
 	add r1, r4, #0
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r5, #0x20]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -8239,7 +8239,7 @@ ov108_021E9A60: ; 0x021E9A60
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0xe1
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -8479,14 +8479,14 @@ ov108_021E9C3C: ; 0x021E9C3C
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0xc5
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0xc6
 	lsl r1, r1, #2
 	str r0, [r5, r1]

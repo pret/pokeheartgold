@@ -1570,7 +1570,7 @@ ov113_021E650C: ; 0x021E650C
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0xf1
-	bl NARC_ctor
+	bl NARC_New
 	mov r2, #0
 	str r2, [sp]
 	ldr r1, [r5]
@@ -1755,12 +1755,12 @@ ov113_021E6680: ; 0x021E6680
 	mov r0, #2
 	ldr r1, [r4]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x4c]
 	mov r0, #2
 	ldr r1, [r4]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x50]
 	ldr r0, [r4, #0x44]
 	mov r1, #0
@@ -1938,7 +1938,7 @@ ov113_021E677C: ; 0x021E677C
 	bl sub_0200E2B4
 	ldr r1, [r5]
 	mov r0, #0x14
-	bl NARC_ctor
+	bl NARC_New
 	add r1, r5, #0
 	add r1, #0xfc
 	str r0, [r1]

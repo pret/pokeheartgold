@@ -19,7 +19,7 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public OverlayManager_run
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_GXLoadPal
 .public GfGfxLoader_LoadCharDataFromOpenNarc
@@ -64,7 +64,7 @@
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_020141C4
-.public ListMenuItems_ctor
+.public ListMenuItems_New
 .public ListMenuItems_dtor
 .public ListMenuItems_AppendFromMsgData
 .public sub_0201660C
@@ -145,7 +145,7 @@
 .public System_GetTouchNew
 .public GF_AssertFail
 .public sub_02025C88
-.public String_ctor
+.public String_New
 .public String_dtor
 .public StringSetEmpty
 .public StringCopy

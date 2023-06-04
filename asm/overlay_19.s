@@ -398,7 +398,7 @@ ov19_02259BC0: ; 0x02259BC0
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0xab
-	bl NARC_ctor
+	bl NARC_New
 	mov r3, #0
 	str r3, [sp]
 	ldr r1, [r5]
@@ -495,7 +495,7 @@ ov19_02259C68: ; 0x02259C68
 	str r0, [r6, #0x28]
 	ldr r1, [r6]
 	mov r0, #0x80
-	bl String_ctor
+	bl String_New
 	str r0, [r6, #0x2c]
 	ldr r0, [r6, #0x24]
 	mov r1, #0

@@ -3746,11 +3746,11 @@ ov102_021E91C4: ; 0x021E91C4
 	str r0, [sp, #0x20]
 	mov r0, #0x15
 	mov r1, #0x23
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x24]
 	mov r0, #0x15
 	mov r1, #0x23
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp, #0x2c]
@@ -4102,7 +4102,7 @@ ov102_021E94CC: ; 0x021E94CC
 	str r1, [r0]
 	mov r0, #0x4c
 	mov r1, #0x23
-	bl NARC_ctor
+	bl NARC_New
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ov102_021E978C
@@ -5905,7 +5905,7 @@ ov102_021EA314: ; 0x021EA314
 	str r0, [r4, #0x74]
 	mov r0, #0x80
 	mov r1, #0x23
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x7c]
 	ldr r2, _021EA37C ; =0x0000011B
 	mov r0, #0
@@ -7341,7 +7341,7 @@ _021EAE68:
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	mov r1, #0
-	bl String_ctor
+	bl String_New
 	mov r1, #0
 	add r6, r0, #0
 	add r0, r5, #0
@@ -8669,7 +8669,7 @@ _021EB898:
 	bl AddWindowParameterized
 	mov r0, #4
 	mov r1, #0x23
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	add r0, sp, #0x20
 	mov r1, #0xf
@@ -9173,7 +9173,7 @@ ov102_021EBC34: ; 0x021EBC34
 	str r0, [r4, #0xc]
 	mov r0, #0x20
 	mov r1, #0x23
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x3c]
 	mov r0, #0
 	str r0, [sp]

@@ -102,7 +102,7 @@ _020545AE:
 _020545BC:
 	mov r0, #0x41
 	mov r1, #0xb
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	ldr r0, [sp, #0xc]
 	mov r6, #0

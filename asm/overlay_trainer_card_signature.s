@@ -59,7 +59,7 @@ _021E80D6:
 	str r0, [r4]
 	mov r0, #0x5b
 	mov r1, #0x27
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	mov r0, #0x27
 	bl MessageFormat_new
@@ -471,7 +471,7 @@ ov52_021E84CC: ; 0x021E84CC
 _021E84DC:
 	mov r0, #8
 	mov r1, #0x27
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x18]
 	ldrb r1, [r5]
 	ldr r0, [sp]
@@ -487,15 +487,15 @@ _021E84DC:
 	blt _021E84DC
 	mov r0, #0x14
 	mov r1, #0x27
-	bl String_ctor
+	bl String_New
 	str r0, [r7, #0x2c]
 	mov r0, #0x28
 	mov r1, #0x27
-	bl String_ctor
+	bl String_New
 	str r0, [r7, #0x30]
 	mov r0, #0x50
 	mov r1, #0x27
-	bl String_ctor
+	bl String_New
 	str r0, [r7, #0x34]
 	ldr r0, _021E8560 ; =0x0000431A
 	mov r1, #0
@@ -2230,7 +2230,7 @@ ov52_021E927C: ; 0x021E927C
 	add r6, r1, #0
 	mov r0, #0x50
 	mov r1, #0x27
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	ldr r0, [r5, #0x14]
 	add r1, r6, #0

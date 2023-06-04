@@ -13,7 +13,7 @@
 .public sub_02003B50
 .public sub_02003D5C
 .public sub_02004AC8
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc

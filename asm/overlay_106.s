@@ -1994,7 +1994,7 @@ ov106_021E6814: ; 0x021E6814
 	ldr r0, _021E68A0 ; =ov106_021E70E0
 	str r0, [r4, #0x14]
 	mov r0, #0xf7
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #4]
 	bl ov106_021E6408
 	add r0, r4, #0

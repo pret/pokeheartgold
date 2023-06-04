@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public PlaySE
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public sub_0200D504
 .public sub_0200D68C

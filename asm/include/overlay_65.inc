@@ -20,7 +20,7 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public OverlayManager_run
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_GXLoadPal
 .public GfGfxLoader_GetCharData
@@ -66,7 +66,7 @@
 .public IsPaletteFadeFinished
 .public sub_02014494
 .public IsNighttime
-.public ListMenuItems_ctor
+.public ListMenuItems_New
 .public ListMenuItems_dtor
 .public ListMenuItems_AppendFromMsgData
 .public ListMenuItems_AddItem
@@ -138,7 +138,7 @@
 .public sub_02024B78
 .public sub_02025224
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public String16_FormatInteger
 .public CopyU16ArrayToString

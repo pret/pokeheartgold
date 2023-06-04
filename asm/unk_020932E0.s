@@ -2116,7 +2116,7 @@ sub_02094400: ; 0x02094400
 	add r5, r0, #0
 	ldr r1, [r5, #4]
 	mov r0, #0x14
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x1c]
 	mov r1, #1
 	ldr r0, [r5, #4]
@@ -2255,7 +2255,7 @@ sub_02094528: ; 0x02094528
 	add r6, r0, #0
 	ldr r1, [r6, #4]
 	mov r0, #0x14
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x20]
 	mov r1, #1
 	ldr r0, [r6, #4]
@@ -2410,7 +2410,7 @@ sub_02094668: ; 0x02094668
 	mov r0, #0x14
 	add r7, r2, #0
 	add r6, r3, #0
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x14]
 	mov r1, #1
 	ldr r0, [r4, #4]
@@ -2807,7 +2807,7 @@ _0209495C:
 	blt _0209495C
 	ldr r1, [r5, #4]
 	mov r0, #0x14
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r1, #1
 	ldr r0, [r5, #4]
@@ -3218,7 +3218,7 @@ sub_02094C88: ; 0x02094C88
 _02094CB2:
 	ldr r1, [r5, #4]
 	mov r0, #0x40
-	bl String_ctor
+	bl String_New
 	ldr r3, _02094D10 ; =0x0000463C
 	add r2, r6, #0
 	ldr r1, [r5, r3]

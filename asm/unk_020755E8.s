@@ -172,7 +172,7 @@ sub_02075630: ; 0x02075630
 	ldr r4, [r0]
 	ldr r1, [r5, #0x5c]
 	mov r0, #0xef
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	mov r1, #0
 	str r1, [sp]
@@ -702,7 +702,7 @@ sub_02075A7C: ; 0x02075A7C
 	str r0, [r4, #0x38]
 	mov r0, #0xb4
 	add r1, r5, #0
-	bl NARC_ctor
+	bl NARC_New
 	add r1, r4, #0
 	add r1, #0x84
 	str r0, [r1]
@@ -851,7 +851,7 @@ sub_02075A7C: ; 0x02075A7C
 	mov r0, #5
 	lsl r0, r0, #6
 	add r1, r5, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x10]
 	add r0, r5, #0
 	mov r1, #0x3c
@@ -3219,7 +3219,7 @@ _02076F38:
 	bl PaletteData_LoadNarc
 	ldr r1, [r5, #0x5c]
 	mov r0, #0xef
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]

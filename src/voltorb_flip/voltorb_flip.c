@@ -1446,7 +1446,7 @@ static void ov122_021E73FC(VoltorbFlipAppWork *work) {
     work->unk1C = sub_02018424(work->heapId, 0);
 
     for (int i = 0; i < 2; i++) {
-        work->menuItems[i] = ListMenuItems_ctor(sMenuMsgNos[i].size, work->heapId);
+        work->menuItems[i] = ListMenuItems_New(sMenuMsgNos[i].size, work->heapId);
 
         for (int j = 0; j < sMenuMsgNos[i].size; j++) {
             const u8 *msgNos = sMenuMsgNos[i].msgNos;
@@ -2024,7 +2024,7 @@ static void ov122_021E8094(OVY_MANAGER *man) {
     work->unk229 = Options_GetFrame(work->options);
     work->unk22A = Options_GetTextFrameDelay(work->options);
 
-    work->narc = NARC_ctor(NARC_a_2_6_4, work->heapId);
+    work->narc = NARC_New(NARC_a_2_6_4, work->heapId);
     work->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 0x27, work->heapId);
     work->msgFmt = MessageFormat_new(work->heapId);
     work->unk13C = sub_0201660C(work->heapId);

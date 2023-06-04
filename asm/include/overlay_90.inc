@@ -10,7 +10,7 @@
 .public PlaySE
 .public PlayFanfare
 .public IsFanfarePlaying
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
@@ -131,7 +131,7 @@
 .public sub_02024AA8
 .public sub_02024B68
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public Sav2_PlayerData_GetProfileAddr
 .public Sav2_PlayerData_GetOptionsAddr

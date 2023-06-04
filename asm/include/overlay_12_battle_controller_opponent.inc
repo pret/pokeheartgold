@@ -12,7 +12,7 @@
 .public PlaySE
 .public StopSE
 .public IsCryFinished
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public sub_02008550
 .public sub_020085DC

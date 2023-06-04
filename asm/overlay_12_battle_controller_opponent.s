@@ -737,7 +737,7 @@ ov12_02258D74: ; 0x02258D74
 	strb r1, [r4, r0]
 	mov r0, #0xb4
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x69
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -1774,11 +1774,11 @@ ov12_02259514: ; 0x02259514
 	bne _0225959A
 	mov r0, #7
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	mov r0, #8
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	add r0, r5, #0
 	bl ov12_0223A900
@@ -10732,11 +10732,11 @@ _0225DC9C:
 _0225DC9E:
 	mov r0, #7
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	mov r0, #8
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r5, r0, #0
 	ldrb r1, [r4, #9]
 	add r0, sp, #0x10
@@ -11084,11 +11084,11 @@ _0225DF70:
 _0225DF84:
 	mov r0, #7
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r5, r0, #0
 	mov r0, #8
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	mov r3, #0
 	str r3, [sp]
@@ -11114,11 +11114,11 @@ _0225DF84:
 _0225DFD0:
 	mov r0, #7
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r5, r0, #0
 	mov r0, #8
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	mov r3, #0
 	str r3, [sp]
@@ -11144,11 +11144,11 @@ _0225DFD0:
 _0225E01C:
 	mov r0, #7
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	mov r0, #8
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r5, r0, #0
 	add r0, r6, #0
 	bl ov12_0226AC64
@@ -11185,11 +11185,11 @@ _0225E06E:
 	bne _0225E0FA
 	mov r0, #7
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r5, r0, #0
 	mov r0, #8
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	mov r3, #0
 	str r3, [sp]
@@ -11475,11 +11475,11 @@ _0225E2B8:
 	bl ov12_02266AC0
 	mov r0, #7
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0xc]
 	mov r0, #8
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r5, sp, #0x14
 	str r0, [sp, #8]
 	mov r2, #0
@@ -11832,11 +11832,11 @@ _0225E5BE:
 _0225E5CA:
 	mov r0, #7
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	mov r0, #8
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r2, sp, #0x10
 	add r6, r0, #0
 	mov r0, #0
@@ -14464,11 +14464,11 @@ _0225FB00:
 _0225FB02:
 	mov r0, #7
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	mov r0, #8
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ov12_02266B34
@@ -14578,11 +14578,11 @@ _0225FBE4:
 	bne _0225FC76
 	mov r0, #7
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #8]
 	mov r0, #8
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	ldr r0, [r4, #4]
 	bl ov12_02264EB4

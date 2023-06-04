@@ -201,7 +201,7 @@ ov01_021EFC94: ; 0x021EFC94
 	str r6, [r4, #0x14]
 	mov r0, #0x6d
 	mov r1, #4
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #0x20]
 	ldr r1, [r4, #0x14]
 	cmp r1, #0

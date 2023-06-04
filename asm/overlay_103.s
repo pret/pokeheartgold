@@ -353,7 +353,7 @@ ov103_021ECC1C: ; 0x021ECC1C
 	add r5, r0, #0
 	mov r0, #0xfc
 	mov r1, #0x9d
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -612,7 +612,7 @@ ov103_021ECE18: ; 0x021ECE18
 	mov r0, #1
 	lsl r0, r0, #0xa
 	mov r1, #0x9d
-	bl String_ctor
+	bl String_New
 	mov r1, #0x23
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -722,7 +722,7 @@ ov103_021ECEEC: ; 0x021ECEEC
 	bl ov103_021ED2B8
 	mov r1, #0x9d
 	add r6, r0, #0
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	mov r1, #0x92
 	lsl r1, r1, #2
 	ldr r2, [r5, #0xc]
@@ -1167,7 +1167,7 @@ ov103_021ED23C: ; 0x021ED23C
 	add r5, r0, #0
 	mov r0, #0x4f
 	mov r1, #0x9d
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	ldrb r0, [r5, #0x1f]
 	ldr r1, [r5, #0xc]
@@ -3137,7 +3137,7 @@ ov103_021EE13C: ; 0x021EE13C
 	add r4, r0, #0
 	mov r0, #0x14
 	mov r1, #0x9d
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x9d
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -3346,7 +3346,7 @@ ov103_021EE2E0: ; 0x021EE2E0
 	add r5, r0, #0
 	mov r0, #0xfc
 	mov r1, #0x9d
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -3938,7 +3938,7 @@ ov103_021EE784: ; 0x021EE784
 	ldr r5, [r1, r0]
 	mov r0, #8
 	mov r1, #0x9d
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	add r0, r5, #0
 	bl Mail_GetAuthorNamePtr
