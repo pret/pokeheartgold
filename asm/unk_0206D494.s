@@ -783,7 +783,7 @@ _0206DA80:
 	str r0, [sp, #4]
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
-	bl StringCompare
+	bl String_Compare
 	add r7, r0, #0
 	ldr r0, [sp, #4]
 	bl String_Delete
@@ -812,7 +812,7 @@ _0206DAD2:
 	add r6, r0, #0
 	add r0, r7, #0
 	add r1, r6, #0
-	bl StringCompare
+	bl String_Compare
 	add r4, r0, #0
 	add r0, r6, #0
 	bl String_Delete

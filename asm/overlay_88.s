@@ -1768,7 +1768,7 @@ ov88_02259560: ; 0x02259560
 	add r7, r1, #0
 	add r6, r2, #0
 	add r4, r3, #0
-	bl StringCopy
+	bl String_Copy
 	mov r0, #1
 	strb r0, [r5]
 	mov r2, #0
@@ -1973,11 +1973,11 @@ _022596BC:
 	ldr r2, [sp, #0x34]
 	bl ReadMsgDataIntoString
 	ldr r0, [sp, #0x34]
-	bl StringCountLines
+	bl String_CountLines
 	str r0, [sp, #0x30]
 	ldr r0, [sp, #0x34]
 	ldrb r6, [r5, #8]
-	bl StringGetLength
+	bl String_GetLength
 	ldr r1, [sp, #0x1c]
 	add r0, r0, #1
 	bl String_New
@@ -1990,7 +1990,7 @@ _02259720:
 	ldr r1, [sp, #0x34]
 	add r0, r4, #0
 	add r2, r7, #0
-	bl StringGetLineN
+	bl String_GetLineN
 	ldrb r0, [r5, #9]
 	cmp r0, #0
 	beq _0225973A

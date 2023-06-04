@@ -278,9 +278,9 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public StringCopy
+.public String_Copy
 .public CopyU16ArrayToString
-.public String_c_str
+.public String_C_Str
 .public Thunk_G3X_Reset
 .public sub_02026E50
 .public Sav2_PlayerData_GetProfileAddr

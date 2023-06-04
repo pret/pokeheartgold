@@ -120,7 +120,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public StringSetEmpty
+.public String_SetEmpty
 .public CopyU16ArrayToString
 .public Sav2_PlayerData_GetProfileAddr
 .public Sav2_PlayerData_GetOptionsAddr

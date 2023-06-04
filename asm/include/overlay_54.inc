@@ -81,7 +81,7 @@
 .public sub_02025224
 .public String_New
 .public String_Delete
-.public StringSetEmpty
+.public String_SetEmpty
 .public Options_SetButtonModeOnMain
 .public Options_GetTextSpeed
 .public Options_SetTextSpeed

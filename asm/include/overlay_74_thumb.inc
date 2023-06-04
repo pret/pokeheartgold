@@ -178,7 +178,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public StringSetEmpty
+.public String_SetEmpty
 .public String16_FormatInteger
 .public CopyU16ArrayToString
 .public CopyU16ArrayToStringN

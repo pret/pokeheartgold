@@ -12,8 +12,8 @@
 .public FreeToHeap
 .public GF_AssertFail
 .public String_Delete
-.public StringGetLength
-.public String_c_str
+.public String_GetLength
+.public String_C_Str
 .public Save_TrainerHouse_Get
 .public SetupNativeScript
 .public ScriptReadHalfword

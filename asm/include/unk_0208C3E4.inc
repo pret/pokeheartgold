@@ -27,7 +27,7 @@
 .public ScheduleBgTilemapBufferTransfer
 .public AddTextPrinterParameterized2
 .public String_Delete
-.public StringCompare
+.public String_Compare
 .public AllocMonZeroed
 .public CopyBoxPokemonToPokemon
 .public GetMoveAttr

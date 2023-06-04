@@ -193,13 +193,13 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public StringCopy
-.public StringGetLength
+.public String_Copy
+.public String_GetLength
 .public CopyU16ArrayToString
 .public CopyU16ArrayToStringN
 .public CopyStringToU16Array
-.public StringCat
-.public StrAddChar
+.public String_Cat
+.public String_AddChar
 .public GetStoragePCPointer
 .public SaveGameNormal
 .public Save_ClearStatusFlags

@@ -2562,7 +2562,7 @@ _0203F5DA:
 	bne _0203F5F6
 	ldr r0, [r1, #0x18]
 	ldr r1, [r4, #0x10]
-	bl StringCompare
+	bl String_Compare
 	cmp r0, #0
 	bne _0203F618
 	ldr r0, [r4, #0xc]
@@ -2573,7 +2573,7 @@ _0203F5F6:
 	cmp r0, #5
 	bne _0203F618
 	ldr r0, [r1, #0x18]
-	bl String_c_str
+	bl String_C_Str
 	add r7, r0, #0
 	ldr r0, [r6, #0xc]
 	bl Save_FriendGroup_Get

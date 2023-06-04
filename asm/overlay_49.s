@@ -4851,7 +4851,7 @@ _0225AB64:
 	bl FillWindowPixelBuffer
 	ldr r0, [r5, #0x18]
 	add r1, r4, #0
-	bl StringCopy
+	bl String_Copy
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0x14]
@@ -4897,7 +4897,7 @@ _0225ABC4:
 	bl FillWindowPixelBuffer
 	ldr r0, [r5, #0x18]
 	add r1, r4, #0
-	bl StringCopy
+	bl String_Copy
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff
@@ -5064,7 +5064,7 @@ _0225ACE4:
 	bl FillWindowPixelBuffer
 	ldr r0, [r5, #0x18]
 	add r1, r4, #0
-	bl StringCopy
+	bl String_Copy
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #0x14]
@@ -23043,7 +23043,7 @@ _022639D8:
 	mov r0, #0
 	strh r0, [r4, #0xa]
 	ldr r0, [sp, #0x4c]
-	bl StringGetLength
+	bl String_GetLength
 	str r0, [sp, #0x50]
 	add r0, r5, #0
 	bl ov49_0225CB70
@@ -24159,7 +24159,7 @@ _02264392:
 	mov r0, #0
 	strh r0, [r4, #0xa]
 	ldr r0, [sp, #0x20]
-	bl StringGetLength
+	bl String_GetLength
 	str r0, [sp, #0x24]
 	add r0, r5, #0
 	bl ov49_0225CB70

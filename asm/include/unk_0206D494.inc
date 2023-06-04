@@ -11,7 +11,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public StringCompare
+.public String_Compare
 .public Sav2_PlayerData_GetProfileAddr
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetTrainerGender

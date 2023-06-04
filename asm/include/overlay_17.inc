@@ -117,7 +117,7 @@
 .public System_GetTouchNew
 .public String_New
 .public String_Delete
-.public StringCopy
+.public String_Copy
 .public Sav2_PlayerData_GetOptionsAddr
 .public Sav2_BerryPots_Get
 .public Sav2_BerryPotRTC_Get

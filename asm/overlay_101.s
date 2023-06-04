@@ -6562,7 +6562,7 @@ ov101_021EAA0C: ; 0x021EAA0C
 	add r0, r5, #0
 	add r0, #0xa4
 	ldr r0, [r0]
-	bl StringSetEmpty
+	bl String_SetEmpty
 	mov r0, #0x61
 	lsl r0, r0, #2
 	mov r7, #0
@@ -6772,7 +6772,7 @@ _021EAB5A:
 	add r0, r5, #0
 	add r0, #0x90
 	ldr r0, [r0]
-	bl StringSetEmpty
+	bl String_SetEmpty
 	ldr r1, [sp, #0x2c]
 	add r0, r5, #0
 	add r2, r5, #0
@@ -7094,7 +7094,7 @@ ov101_021EAE54: ; 0x021EAE54
 	add r0, r7, #0
 	add r0, #0xa4
 	ldr r0, [r0]
-	bl StringSetEmpty
+	bl String_SetEmpty
 	mov r0, #0x7d
 	lsl r0, r0, #2
 	add r0, r7, r0
@@ -21639,7 +21639,7 @@ _021F1F22:
 	cmp r2, #0xc8
 	bne _021F1F3C
 	ldr r0, [r4, #0x5c]
-	bl StringSetEmpty
+	bl String_SetEmpty
 	b _021F1F60
 _021F1F3C:
 	cmp r2, #0xc9
@@ -29843,7 +29843,7 @@ _021F5CFE:
 	strb r1, [r0]
 	ldr r0, [r4, #0x48]
 	ldr r1, [r4, #0x6c]
-	bl StringGetLineN
+	bl String_GetLineN
 	ldr r1, [r4, #0x48]
 	add r0, r4, #0
 	mov r2, #1
@@ -29882,7 +29882,7 @@ RadioPrintInit: ; 0x021F5D40
 	add r0, #0x62
 	strb r1, [r0]
 	ldr r0, [r4, #0x6c]
-	bl StringCountLines
+	bl String_CountLines
 	add r1, r4, #0
 	add r1, #0x63
 	strb r0, [r1]
@@ -29902,7 +29902,7 @@ RadioPrintInit: ; 0x021F5D40
 	strb r1, [r0]
 	ldr r0, [r4, #0x48]
 	ldr r1, [r4, #0x6c]
-	bl StringGetLineN
+	bl String_GetLineN
 	add r2, r4, #0
 	add r2, #0x66
 	ldrb r2, [r2]
@@ -30471,7 +30471,7 @@ ov101_021F61A4: ; 0x021F61A4
 	mov r1, #0
 	bl ReadMsgDataIntoString
 	ldr r0, [r4, #0x50]
-	bl StringSetEmpty
+	bl String_SetEmpty
 	pop {r4, pc}
 	nop
 _021F61C8: .word 0x000001A1
@@ -30548,7 +30548,7 @@ RadioShow_Unown_Init: ; 0x021F6234
 	mov r1, #0
 	bl ReadMsgDataIntoString
 	ldr r0, [r4, #0x50]
-	bl StringSetEmpty
+	bl String_SetEmpty
 	pop {r4, pc}
 	nop
 _021F6258: .word 0x0000019A
@@ -30939,7 +30939,7 @@ RadioShow_Commercials_Init: ; 0x021F6514
 	add r1, r6, #0
 	bl ReadMsgDataIntoString
 	ldr r0, [r5, #0x50]
-	bl StringSetEmpty
+	bl String_SetEmpty
 	add r0, r4, #0
 	add r0, #8
 	add r1, r6, #0
@@ -32752,7 +32752,7 @@ RadioShow_MahoganySignal_Init: ; 0x021F7324
 	mov r1, #0
 	bl ReadMsgDataIntoString
 	ldr r0, [r4, #0x50]
-	bl StringSetEmpty
+	bl String_SetEmpty
 	pop {r4, pc}
 	nop
 _021F7348: .word 0x00000199

@@ -670,7 +670,7 @@ _02082E52:
 _02082E6E:
 	ldr r0, [r4, #0x18]
 	add r1, r6, #0
-	bl StringCopy
+	bl String_Copy
 	add r0, r6, #0
 	bl String_Delete
 	ldr r0, [r4, #0x18]
@@ -694,7 +694,7 @@ _02082E8A:
 	add r5, r0, #0
 	ldr r0, [r4, #0x18]
 	add r1, r5, #0
-	bl StringCopy
+	bl String_Copy
 	add r0, r5, #0
 	bl String_Delete
 	ldr r0, [r4, #0x18]

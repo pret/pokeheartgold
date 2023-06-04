@@ -108,7 +108,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public StringCopy
+.public String_Copy
 .public sub_020270C4
 .public SaveGameNormal
 .public Save_CheckExtraChunksExist

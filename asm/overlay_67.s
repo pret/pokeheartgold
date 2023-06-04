@@ -1399,7 +1399,7 @@ _021E6406:
 	lsl r1, r1, #2
 	add r1, r7, r1
 	ldr r1, [r1, #0x64]
-	bl StringCopy
+	bl String_Copy
 	b _021E645A
 _021E6454:
 	add r1, r6, #0

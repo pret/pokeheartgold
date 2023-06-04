@@ -11,7 +11,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public String_c_str
+.public String_C_Str
 .public GetStoragePCPointer
 .public Sav2_SysInfo_RTC_Get
 .public Sav2_PlayerData_GetProfileAddr

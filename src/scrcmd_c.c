@@ -4046,7 +4046,7 @@ BOOL ScrCmd_571(SCRIPTCONTEXT *ctx) {
     BufferECWord(msgFmt, 3, r7);
     r7_str = ReadMsgData_ExpandPlaceholders(msgFmt, msgData, msg_0202_00001, 32);
     sp0_str = NewString_ReadMsgData(msgData, msg_0202_00000);
-    *p_ret = StringCompare(r7_str, sp0_str) == FALSE;
+    *p_ret = String_Compare(r7_str, sp0_str) == FALSE;
     String_Delete(r7_str);
     String_Delete(sp0_str);
     DestroyMsgData(msgData);

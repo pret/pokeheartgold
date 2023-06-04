@@ -119,7 +119,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public StringCopy
+.public String_Copy
 .public CopyU16ArrayToString
 .public CopyStringToU16Array
 .public Options_GetFrame

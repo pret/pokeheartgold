@@ -121,8 +121,8 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public StringSetEmpty
-.public StringCountLines
+.public String_SetEmpty
+.public String_CountLines
 .public Sav2_PlayerData_GetProfileAddr
 .public Sav2_PlayerData_GetOptionsAddr
 .public PlayerName_StringToFlat

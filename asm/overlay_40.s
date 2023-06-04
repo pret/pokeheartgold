@@ -11025,7 +11025,7 @@ ov40_02230E08: ; 0x02230E08
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r0, #0
-	bl StringSetEmpty
+	bl String_SetEmpty
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xd
@@ -20460,7 +20460,7 @@ _02235B66:
 	add r1, r7, #0
 	bl StringExpandPlaceholders
 	add r0, r7, #0
-	bl StringCountLines
+	bl String_CountLines
 	mov r5, #0
 	str r0, [sp, #0x14]
 	cmp r0, #0
@@ -20470,7 +20470,7 @@ _02235C18:
 	add r0, r4, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl StringGetLineN
+	bl String_GetLineN
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
@@ -20596,7 +20596,7 @@ _02235C96:
 	add r1, r7, #0
 	bl StringExpandPlaceholders
 	add r0, r7, #0
-	bl StringCountLines
+	bl String_CountLines
 	mov r5, #0
 	str r0, [sp, #0x14]
 	cmp r0, #0
@@ -20606,7 +20606,7 @@ _02235D48:
 	add r0, r4, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl StringGetLineN
+	bl String_GetLineN
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
@@ -46956,7 +46956,7 @@ _022435C2:
 	lsl r0, r0, #6
 	ldr r0, [r7, r0]
 	ldr r1, [sp, #4]
-	bl StringCat
+	bl String_Cat
 	mov r0, #0x81
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
@@ -49465,7 +49465,7 @@ _02244982:
 	b _022449CC
 _0224499E:
 	add r0, r4, #0
-	bl StringSetEmpty
+	bl String_SetEmpty
 	ldr r1, [sp, #0xc]
 	add r0, r4, #0
 	bl CopyU16ArrayToString
@@ -49531,7 +49531,7 @@ _02244A02:
 	add r2, r5, #0
 	bl GetMonData
 	add r0, r4, #0
-	bl StringSetEmpty
+	bl String_SetEmpty
 	add r0, r4, #0
 	add r1, r5, #0
 	bl CopyU16ArrayToString
@@ -49576,7 +49576,7 @@ ov40_02244A84: ; 0x02244A84
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r0, #0
-	bl StringSetEmpty
+	bl String_SetEmpty
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xd

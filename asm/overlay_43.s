@@ -550,13 +550,13 @@ ov43_0222A338: ; 0x0222A338
 	cmp r1, #0
 	beq _0222A348
 	ldr r0, [r5, #0x58]
-	bl StringCopy
+	bl String_Copy
 _0222A348:
 	cmp r4, #0
 	beq _0222A354
 	ldr r0, [r5, #0x5c]
 	add r1, r4, #0
-	bl StringCopy
+	bl String_Copy
 _0222A354:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -585,7 +585,7 @@ _0222A378:
 	bne _0222A404
 	add r0, r6, #0
 	add r1, sp, #0x1c
-	bl String_atoi
+	bl String_Atoi
 	add r7, r0, #0
 	ldr r0, [sp, #0x1c]
 	add r6, r1, #0
@@ -2122,7 +2122,7 @@ _0222AF88:
 	bl PlayerProfile_New
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x58]
-	bl String_c_str
+	bl String_C_Str
 	add r1, r0, #0
 	ldr r0, [sp, #0xc]
 	bl Sav2_Profile_PlayerName_Set
@@ -2134,7 +2134,7 @@ _0222AF88:
 	bl FreeToHeap
 	ldr r0, [r4, #0x5c]
 	add r1, sp, #0x10
-	bl String_atoi
+	bl String_Atoi
 	add r3, r0, #0
 	ldr r0, [sp, #0x10]
 	add r2, r1, #0
@@ -5971,7 +5971,7 @@ ov43_0222CD44: ; 0x0222CD44
 	bl CopyU16ArrayToString
 	b _0222CD84
 _0222CD80:
-	bl StringSetEmpty
+	bl String_SetEmpty
 _0222CD84:
 	mov r0, #0
 	str r0, [r5, #0x64]

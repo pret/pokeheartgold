@@ -303,7 +303,7 @@ sub_02051AAC: ; 0x02051AAC
 	add r2, r7, #0
 	bl ReadMsgDataIntoString
 	add r0, r7, #0
-	bl String_c_str
+	bl String_C_Str
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xf8

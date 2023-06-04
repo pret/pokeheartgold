@@ -157,7 +157,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public StringSetEmpty
+.public String_SetEmpty
 .public CopyU16ArrayToString
 .public Thunk_G3X_Reset
 .public GF_3DVramMan_Create

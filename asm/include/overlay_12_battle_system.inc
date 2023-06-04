@@ -34,7 +34,7 @@
 .public sub_02024B1C
 .public GF_AssertFail
 .public String_Delete
-.public StringCopy
+.public String_Copy
 .public PlayerProfile_GetTrainerGender
 .public PlayerProfile_CountBadges
 .public PlayerProfile_GetMoney

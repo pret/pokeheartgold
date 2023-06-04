@@ -3571,7 +3571,7 @@ _02203794:
 	add r1, #0xb0
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl StringCopy
+	bl String_Copy
 	add sp, #8
 	pop {r4, r5, r6, pc}
 _022037AA:

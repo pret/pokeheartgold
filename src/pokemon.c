@@ -746,7 +746,7 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void * dest) {
     case MON_DATA_NICKNAME_3:
         if (boxMon->checksum_fail) {
             STRING * buffer = GetSpeciesName(SPECIES_MANAPHY_EGG, 0);
-            StringCopy(dest, buffer);
+            String_Copy(dest, buffer);
             String_Delete(buffer);
         } else {
             CopyU16ArrayToString(dest, blockC->nickname);
@@ -4122,7 +4122,7 @@ BOOL BoxmonBelongsToPlayer(BoxPokemon *boxMon, PLAYERPROFILE * profile, HeapID h
     STRING * r6 = String_New(PLAYER_NAME_LENGTH + 1, heap_id);
     BOOL ret = FALSE;
     GetBoxMonData(boxMon, MON_DATA_OT_NAME_2, r6);
-    if (myId == otId && myGender == otGender && StringCompare(r7, r6) == 0) {
+    if (myId == otId && myGender == otGender && String_Compare(r7, r6) == 0) {
         ret = TRUE;
     }
     String_Delete(r6);

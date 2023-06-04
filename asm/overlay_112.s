@@ -23308,24 +23308,24 @@ ov112_021F13CC: ; 0x021F13CC
 	bl ReadMsgData_ExpandPlaceholders
 	add r7, r0, #0
 	add r0, r6, #0
-	bl StringGetLength
+	bl String_GetLength
 	add r4, r0, #0
 	add r0, r7, #0
-	bl StringGetLength
+	bl String_GetLength
 	add r0, r4, r0
 	ldr r1, [r5, #4]
 	add r0, r0, #2
 	bl String_New
 	add r1, r6, #0
 	add r4, r0, #0
-	bl StringCopy
+	bl String_Copy
 	mov r1, #0xe
 	add r0, r4, #0
 	lsl r1, r1, #0xc
-	bl StrAddChar
+	bl String_AddChar
 	add r0, r4, #0
 	add r1, r7, #0
-	bl StringCat
+	bl String_Cat
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff
@@ -23443,7 +23443,7 @@ _021F1514:
 	ldr r0, [r5, #0x64]
 	bl NewString_ReadMsgData
 	add r6, r0, #0
-	bl StringGetLength
+	bl String_GetLength
 	add r0, r0, #1
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
@@ -23473,7 +23473,7 @@ ov112_021F1548: ; 0x021F1548
 	add r1, r2, #0
 	bl NewString_ReadMsgData
 	add r4, r0, #0
-	bl StringGetLength
+	bl String_GetLength
 	add r0, r0, #1
 	lsl r0, r0, #0x10
 	lsr r7, r0, #0x10

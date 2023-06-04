@@ -12,9 +12,9 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public StringCompare
+.public String_Compare
 .public CopyU16ArrayToString
-.public String_c_str
+.public String_C_Str
 .public sub_020270C4
 .public GetStoragePCPointer
 .public LoadHallOfFame

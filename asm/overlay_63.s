@@ -4573,7 +4573,7 @@ _0221E39C:
 	add r5, #0x90
 	ldr r0, [r0]
 	ldr r1, [r5]
-	bl StringCompare
+	bl String_Compare
 	cmp r0, #0
 	beq _0221E3CC
 	mov r5, #2

@@ -115,7 +115,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public StringCompare
+.public String_Compare
 .public sub_02026EA4
 .public GF_3DVramMan_InitFrameTexVramManager
 .public GF_3DVramMan_InitFramePlttVramManager

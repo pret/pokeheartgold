@@ -1140,7 +1140,7 @@ ov54_021E6238: ; 0x021E6238
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl StringSetEmpty
+	bl String_SetEmpty
 	add r0, r6, #0
 	add r1, r5, #0
 	mov r2, #1
@@ -1150,7 +1150,7 @@ ov54_021E6238: ; 0x021E6238
 	add r7, #0x44
 _021E6282:
 	add r0, r5, #0
-	bl StringSetEmpty
+	bl String_SetEmpty
 	ldr r0, [r6, #0x28]
 	add r1, r4, #1
 	add r2, r5, #0
@@ -1176,7 +1176,7 @@ _021E6282:
 	cmp r4, #6
 	blo _021E6282
 	add r0, r5, #0
-	bl StringSetEmpty
+	bl String_SetEmpty
 	ldr r0, [r6, #0x28]
 	mov r1, #8
 	add r2, r5, #0
@@ -1195,7 +1195,7 @@ _021E6282:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl StringSetEmpty
+	bl String_SetEmpty
 	ldr r0, [r6, #0x28]
 	mov r1, #7
 	add r2, r5, #0

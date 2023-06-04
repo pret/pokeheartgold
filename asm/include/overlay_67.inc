@@ -88,7 +88,7 @@
 .public System_GetTouchNew
 .public String_New
 .public String_Delete
-.public StringCopy
+.public String_Copy
 .public CopyU16ArrayToString
 .public Sav2_PlayerData_GetOptionsAddr
 .public sub_0202D488
