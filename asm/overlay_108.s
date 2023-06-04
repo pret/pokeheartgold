@@ -2845,7 +2845,7 @@ ov108_021E6F74: ; 0x021E6F74
 	ldr r2, [r5]
 	mov r0, #1
 	mov r1, #0x11
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	mov r1, #0xc2
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -8472,7 +8472,7 @@ ov108_021E9C3C: ; 0x021E9C3C
 	ldr r2, [r5]
 	mov r0, #2
 	mov r1, #0x10
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	mov r1, #0x31
 	lsl r1, r1, #4
 	str r0, [r5, r1]

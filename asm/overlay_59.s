@@ -3305,7 +3305,7 @@ ov59_02239704: ; 0x02239704
 	ldr r2, [r5]
 	mov r0, #0x10
 	mov r1, #0x20
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r5, #0x60]
 	mov r0, #1
 	ldr r1, [r5]
@@ -7453,7 +7453,7 @@ ov59_0223B68C: ; 0x0223B68C
 	mov r0, #0x10
 	ldr r2, [r6]
 	add r1, r0, #0
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r6, #0x60]
 	mov r0, #1
 	ldr r1, [r6]

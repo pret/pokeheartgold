@@ -5900,7 +5900,7 @@ ov49_0225B308: ; 0x0225B308
 	mov r0, #8
 	mov r1, #0x40
 	add r2, r7, #0
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	ldr r1, [sp]
 	ldr r4, _0225B358 ; =ov49_02269714
 	str r0, [r1]

@@ -703,7 +703,7 @@ ov01_021FCB14: ; 0x021FCB14
 	mov r0, #8
 	mov r1, #0x40
 	mov r2, #4
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r4, #0x34]
 	pop {r4, pc}
 	thumb_func_end ov01_021FCB14

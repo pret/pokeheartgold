@@ -4829,7 +4829,7 @@ _021E7E62:
 	mov r0, #0xb
 	mov r1, #0x20
 	mov r2, #0x96
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	mov r1, #0xbd
 	lsl r1, r1, #4
 	str r0, [r4, r1]

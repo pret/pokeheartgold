@@ -4447,13 +4447,13 @@ ov40_0222DAA8: ; 0x0222DAA8
 
 	thumb_func_start ov40_0222DAB0
 ov40_0222DAB0: ; 0x0222DAB0
-	ldr r3, _0222DABC ; =MessageFormat_new_custom
+	ldr r3, _0222DABC ; =MessageFormat_New_Custom
 	add r2, r0, #0
 	mov r0, #4
 	mov r1, #0x40
 	bx r3
 	nop
-_0222DABC: .word MessageFormat_new_custom
+_0222DABC: .word MessageFormat_New_Custom
 	thumb_func_end ov40_0222DAB0
 
 	thumb_func_start ov40_0222DAC0

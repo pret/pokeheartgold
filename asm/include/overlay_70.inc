@@ -53,7 +53,7 @@
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
 .public ReadMsgData_ExpandPlaceholders
-.public MessageFormat_new_custom
+.public MessageFormat_New_Custom
 .public MessageFormat_delete
 .public BufferBoxMonSpeciesName
 .public BufferBoxMonNickname

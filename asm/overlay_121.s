@@ -2157,7 +2157,7 @@ ov121_021E69F0: ; 0x021E69F0
 	mov r0, #2
 	mov r1, #0x4c
 	mov r2, #0x9e
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r6, #0x68]
 	mov r0, #0x4c
 	mov r1, #0x9e

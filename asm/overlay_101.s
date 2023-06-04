@@ -1900,7 +1900,7 @@ ov101_021E85A8: ; 0x021E85A8
 	ldr r2, [r4]
 	mov r0, #2
 	mov r1, #0x5b
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	add r1, r4, #0
 	add r1, #0x8c
 	str r0, [r1]
@@ -13750,7 +13750,7 @@ ov101_021EE230: ; 0x021EE230
 	ldr r2, [r4]
 	mov r0, #2
 	mov r1, #0x5b
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	add r1, r4, #0
 	add r1, #0x8c
 	str r0, [r1]
@@ -18314,7 +18314,7 @@ ov101_021F05EC: ; 0x021F05EC
 	ldr r2, [r6]
 	mov r0, #2
 	mov r1, #0x20
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r6, #0x18]
 	mov r0, #0xa
 	ldr r1, [r6]
@@ -21507,7 +21507,7 @@ ov101_021F1D74: ; 0x021F1D74
 	ldr r2, [r4]
 	mov r0, #0x10
 	mov r1, #0x25
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r4, #0x50]
 	ldr r0, _021F1E7C ; =0x00000439
 	ldr r1, [r4]
@@ -29196,7 +29196,7 @@ ov101_021F57B8: ; 0x021F57B8
 	ldr r2, [r4]
 	mov r0, #8
 	mov r1, #0x33
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r4, #0x44]
 	ldr r1, [r4]
 	mov r0, #0x33

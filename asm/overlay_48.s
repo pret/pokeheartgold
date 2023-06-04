@@ -5413,7 +5413,7 @@ ov48_0225B068: ; 0x0225B068
 	mov r0, #8
 	mov r1, #0x40
 	add r2, r4, #0
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r5, #4]
 	mov r0, #0x80
 	add r1, r4, #0

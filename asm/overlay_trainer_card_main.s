@@ -2529,7 +2529,7 @@ _021E6F68:
 	mov r2, #0x19
 	str r0, [sp, #0x18]
 	mov r0, #6
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	add r4, r0, #0
 	ldr r0, _021E71CC ; =0x000033D4
 	mov r2, #0
@@ -2866,7 +2866,7 @@ _021E721C:
 	ldr r4, [r0, r1]
 	mov r0, #6
 	mov r1, #0x20
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	ldr r1, [sp, #0x18]
 	add r6, r0, #0
 	add r1, #0x33
@@ -3272,7 +3272,7 @@ _021E758E:
 	mov r0, #2
 	mov r1, #0x20
 	mov r2, #0x19
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	add r6, r0, #0
 	ldr r0, [r5, #0x18]
 	bl GetIGTHours

@@ -4529,7 +4529,7 @@ ov112_021E7C18: ; 0x021E7C18
 	str r0, [r4, r1]
 	mov r0, #0x10
 	mov r1, #0x20
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	ldr r1, _021E7C64 ; =0x0001E448
 	str r0, [r4, r1]
 	mov r0, #0x19
@@ -23157,7 +23157,7 @@ _021F129C:
 	ldr r2, [r5, #4]
 	mov r0, #0xd
 	mov r1, #0x20
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	add r4, r5, #0
 	ldr r6, _021F1320 ; =ov112_021FF350
 	str r0, [r5, #0x58]

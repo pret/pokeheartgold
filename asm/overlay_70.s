@@ -1610,7 +1610,7 @@ _02238446:
 	mov r0, #0xb
 	mov r1, #0x40
 	mov r2, #0x3d
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	ldr r1, _0223859C ; =0x00000B9C
 	ldr r2, _022385A0 ; =0x00000307
 	str r0, [r4, r1]

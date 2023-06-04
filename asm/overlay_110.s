@@ -1653,7 +1653,7 @@ ov110_021E6580: ; 0x021E6580
 	ldr r2, [r6]
 	mov r0, #6
 	mov r1, #0x10
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r6, #0x2c]
 	ldr r1, [r6]
 	mov r0, #0x80

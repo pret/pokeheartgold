@@ -28,7 +28,7 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public NewString_ReadMsgData
-.public MessageFormat_new_custom
+.public MessageFormat_New_Custom
 .public MessageFormat_delete
 .public sub_0200CF18
 .public sub_0200CF38
