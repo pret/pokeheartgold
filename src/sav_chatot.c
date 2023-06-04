@@ -24,7 +24,7 @@ BOOL Chatot_Exists(SOUND_CHATOT *chatot) {
     return chatot->exists;
 }
 
-void Chatot_invalidate(SOUND_CHATOT *chatot) {
+void Chatot_Invalidate(SOUND_CHATOT *chatot) {
     chatot->exists = FALSE;
 }
 

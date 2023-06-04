@@ -6831,7 +6831,7 @@ _0221F664:
 	bne _0221F6BC
 	ldr r0, [r5, #0x10]
 	bl Sav2_Chatot_Get
-	bl Chatot_invalidate
+	bl Chatot_Invalidate
 _0221F6BC:
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0

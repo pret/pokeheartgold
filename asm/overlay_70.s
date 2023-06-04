@@ -18347,7 +18347,7 @@ _02240A1A:
 	ldr r0, [r5]
 	ldr r0, [r0, #0x20]
 	bl Sav2_Chatot_Get
-	bl Chatot_invalidate
+	bl Chatot_Invalidate
 _02240A62:
 	cmp r6, #0
 	beq _02240A70

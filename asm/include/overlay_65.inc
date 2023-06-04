@@ -158,7 +158,7 @@
 .public sub_0202C338
 .public sub_0202C6F4
 .public Sav2_Chatot_Get
-.public Chatot_invalidate
+.public Chatot_Invalidate
 .public GameStats_Inc
 .public Save_SpecialRibbons_Get
 .public UpdatePokedexWithReceivedSpecies
