@@ -30,7 +30,7 @@
 .public BufferPlayersName
 .public MailMsg_GetExpandedString
 .public MailMsg_IsInit
-.public MailMsg_compare
+.public MailMsg_Compare
 .public SetKeyRepeatTimers
 .public FreeToHeap
 .public InitBgFromTemplate

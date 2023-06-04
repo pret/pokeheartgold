@@ -130,7 +130,7 @@ u16 MailMsg_GetMsgNo(const MAIL_MESSAGE *mailMessage) {
     return mailMessage->msg_no;
 }
 
-BOOL MailMsg_compare(const MAIL_MESSAGE *a, const MAIL_MESSAGE *b) {
+BOOL MailMsg_Compare(const MAIL_MESSAGE *a, const MAIL_MESSAGE *b) {
     int i;
     if (a->msg_bank != b->msg_bank || a->msg_no != b->msg_no) {
         return FALSE;

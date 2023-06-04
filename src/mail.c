@@ -61,7 +61,7 @@ void Mail_copy(const MAIL *src, MAIL *dst) {
     MI_CpuCopy8(src, dst, sizeof(MAIL));
 }
 
-BOOL Mail_compare(const MAIL *a, const MAIL *b) {
+BOOL Mail_Compare(const MAIL *a, const MAIL *b) {
     int i;
     if (a->author_otId != b->author_otId
     || a->author_gender != b->author_gender
@@ -80,7 +80,7 @@ BOOL Mail_compare(const MAIL *a, const MAIL *b) {
         }
     }
     for (i = 0; i < 3; i++) {
-        if (!MailMsg_compare(&a->unk_20[i], &b->unk_20[i])) {
+        if (!MailMsg_Compare(&a->unk_20[i], &b->unk_20[i])) {
             return FALSE;
         }
     }

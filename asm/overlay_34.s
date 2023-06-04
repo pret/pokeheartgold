@@ -1922,7 +1922,7 @@ _0225E450:
 	bne _0225E464
 	ldr r0, [sp]
 	add r1, #0x14
-	bl MailMsg_compare
+	bl MailMsg_Compare
 	cmp r0, #0
 	bne _0225E478
 _0225E464:
@@ -1957,7 +1957,7 @@ _0225E48E:
 	beq _0225E4A2
 	ldr r0, [sp]
 	add r1, #0x14
-	bl MailMsg_compare
+	bl MailMsg_Compare
 _0225E4A2:
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}

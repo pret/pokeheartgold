@@ -509,7 +509,7 @@ BOOL ScrCmd_KenyaCheck(SCRIPTCONTEXT *ctx) {
     MAIL *kenyaMail = NPCTrade_MakeKenyaMail();
     MAIL *mail = Mail_New(11);
     GetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
-    *kenya = Mail_compare(kenyaMail, mail);
+    *kenya = Mail_Compare(kenyaMail, mail);
     FreeToHeap(mail);
     FreeToHeap(kenyaMail);
     UnloadOverlayByID(FS_OVERLAY_ID(npc_trade));
@@ -533,7 +533,7 @@ BOOL ScrCmd_KenyaCheckPartyOrMailbox(SCRIPTCONTEXT *ctx) {
         Pokemon *mon = GetPartyMonByIndex(party, i);
         if (ItemIdIsMail(GetMonData(mon, MON_DATA_HELD_ITEM, NULL))) {
             GetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
-            if (Mail_compare(kenyaMail, mail)) {
+            if (Mail_Compare(kenyaMail, mail)) {
                 *kenya = TRUE;
                 FreeToHeap(mail);
                 FreeToHeap(kenyaMail);
@@ -546,7 +546,7 @@ BOOL ScrCmd_KenyaCheckPartyOrMailbox(SCRIPTCONTEXT *ctx) {
     i = 0;
     while (TRUE) {
         Mailbox_FetchMailToBuffer(mailbox->msgs, 0, i, mail);
-        if (Mail_TypeIsValid(mail) && Mail_compare(kenyaMail, mail)) {
+        if (Mail_TypeIsValid(mail) && Mail_Compare(kenyaMail, mail)) {
             *kenya = TRUE;
             break;
         }
