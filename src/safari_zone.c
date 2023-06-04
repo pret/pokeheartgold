@@ -193,7 +193,7 @@ void SafariZone_GetLinkLeaderToProfile(SAFARIZONE* safari_zone, PLAYERPROFILE* p
     PlayerProfile_SetTrainerGender(profile, link_leader->gender);
     PlayerProfile_SetLanguage(profile, link_leader->language);
     PlayerProfile_SetVersion(profile, link_leader->version);
-    Sav2_Profile_PlayerName_set(profile, link_leader->name);
+    Sav2_Profile_PlayerName_Set(profile, link_leader->name);
 }
 
 u8 SafariZone_GetLinkLeaderGender(SAFARIZONE* safari_zone) {

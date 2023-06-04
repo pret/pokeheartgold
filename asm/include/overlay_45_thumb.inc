@@ -99,7 +99,7 @@
 .public Sav2_SysInfo_RTC_Get
 .public Sav2_PlayerData_GetProfileAddr
 .public PlayerProfile_New
-.public Sav2_Profile_PlayerName_set
+.public Sav2_Profile_PlayerName_Set
 .public PlayerName_StringToFlat
 .public PlayerName_FlatToString
 .public PlayerProfile_GetPlayerName_NewString

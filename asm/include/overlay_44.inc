@@ -194,7 +194,7 @@
 .public Sav2_PlayerData_GetProfileAddr
 .public Sav2_PlayerData_GetOptionsAddr
 .public PlayerProfile_New
-.public Sav2_Profile_PlayerName_set
+.public Sav2_Profile_PlayerName_Set
 .public PlayerProfile_GetPlayerName_NewString
 .public PlayerProfile_GetTrainerID_VisibleHalf
 .public PlayerProfile_GetTrainerGender

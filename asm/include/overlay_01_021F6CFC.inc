@@ -18,7 +18,7 @@
 .public String_Delete
 .public Sav2_PlayerData_GetOptionsAddr
 .public PlayerProfile_New
-.public Sav2_Profile_PlayerName_set
+.public Sav2_Profile_PlayerName_Set
 .public Options_GetFrame
 .public sub_0202C23C
 .public sub_0202C254

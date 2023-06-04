@@ -66,7 +66,7 @@
 .public String_New
 .public String_Delete
 .public PlayerProfile_New
-.public Sav2_Profile_PlayerName_set
+.public Sav2_Profile_PlayerName_Set
 .public sub_0202C254
 .public sub_0202C6F4
 .public GXS_SetGraphicsMode

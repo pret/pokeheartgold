@@ -77,7 +77,7 @@ const u16 *Sav2_Misc_RivalName_Const_Get(const SAVE_MISC_DATA *saveMiscData) {
     return saveMiscData->rivalName;
 }
 
-void Sav2_Misc_RivalName_set(SAVE_MISC_DATA *saveMiscData, const STRING *name) {
+void Sav2_Misc_RivalName_Set(SAVE_MISC_DATA *saveMiscData, const STRING *name) {
     CopyStringToU16Array(name, saveMiscData->rivalName, PLAYER_NAME_LENGTH + 1);
 }
 

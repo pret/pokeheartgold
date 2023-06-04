@@ -2645,14 +2645,14 @@ _0203F682:
 	bl Sav2_PlayerData_GetProfileAddr
 	ldr r1, [r4, #0xc]
 	add r1, #0x1c
-	bl Sav2_Profile_PlayerName_set
+	bl Sav2_Profile_PlayerName_Set
 	pop {r4, r5, r6, pc}
 _0203F692:
 	ldr r0, [r5, #0xc]
 	bl Sav2_Misc_Get
 	ldr r1, [r4, #0xc]
 	ldr r1, [r1, #0x18]
-	bl Sav2_Misc_RivalName_set
+	bl Sav2_Misc_RivalName_Set
 	pop {r4, r5, r6, pc}
 _0203F6A2:
 	ldr r6, [r4, #4]

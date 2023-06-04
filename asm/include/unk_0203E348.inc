@@ -24,11 +24,11 @@
 .public Sav2_PlayerData_GetOptionsAddr
 .public Sav2_PlayerData_GetCoinsAddr
 .public PlayerProfile_Sizeof
-.public Sav2_Profile_PlayerName_set
+.public Sav2_Profile_PlayerName_Set
 .public Pokedex_GetNatDexFlag
 .public Sav2_Pokedex_Get
 .public Sav2_Misc_Get
-.public Sav2_Misc_RivalName_set
+.public Sav2_Misc_RivalName_Set
 .public Sav2_Mailbox_Get
 .public sub_0202B9B8
 .public SaveDressupData_GetFashionCase

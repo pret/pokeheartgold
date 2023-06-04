@@ -178,7 +178,7 @@
 .public Sav2_SysInfo_SetField4C
 .public PlayerProfile_New
 .public PlayerProfile_Init
-.public Sav2_Profile_PlayerName_set
+.public Sav2_Profile_PlayerName_Set
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetTrainerID_VisibleHalf
 .public PlayerProfile_GetTrainerGender

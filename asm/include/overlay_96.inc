@@ -288,7 +288,7 @@
 .public PlayerProfile_Sizeof
 .public PlayerProfile_Copy
 .public PlayerProfile_Init
-.public Sav2_Profile_PlayerName_set
+.public Sav2_Profile_PlayerName_Set
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetPlayerName_NewString
 .public PlayerProfile_GetTrainerID

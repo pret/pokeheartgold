@@ -4681,7 +4681,7 @@ _0221E4C0:
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r6, #0
-	bl Sav2_Profile_PlayerName_set
+	bl Sav2_Profile_PlayerName_Set
 	mov r0, #0xda
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
