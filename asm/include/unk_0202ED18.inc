@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public SaveArray_Get
-.public Save_FollowPoke_sizeof
+.public Save_FollowPoke_Sizeof
 .public Save_FollowPoke_Init
 .public Save_FollowPoke_Get
 .public SavFollowPoke_SetMapId

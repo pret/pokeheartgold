@@ -450,7 +450,7 @@ ov96_021E5C80: ; 0x021E5C80
 ov96_021E5C90: ; 0x021E5C90
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl PlayerProfile_sizeof
+	bl PlayerProfile_Sizeof
 	add r1, r0, #0
 	mov r0, #0xa1
 	lsl r0, r0, #2
@@ -521,7 +521,7 @@ ov96_021E5D24: ; 0x021E5D24
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl PlayerProfile_sizeof
+	bl PlayerProfile_Sizeof
 	mul r0, r4
 	add r0, r5, r0
 	pop {r3, r4, r5, pc}
@@ -8796,7 +8796,7 @@ ov96_021E99FC: ; 0x021E99FC
 	thumb_func_start ov96_021E9A04
 ov96_021E9A04: ; 0x021E9A04
 	push {r3, lr}
-	bl PlayerProfile_sizeof
+	bl PlayerProfile_Sizeof
 	lsl r0, r0, #2
 	pop {r3, pc}
 	.balign 4, 0

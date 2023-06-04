@@ -24,7 +24,7 @@ typedef struct DAYCARE {
     u8 padding_1DD[3];
 } DAYCARE;
 
-u32 Save_Daycare_sizeof(void);
+u32 Save_Daycare_Sizeof(void);
 void Save_Daycare_Init(DAYCARE* daycare);
 DAYCAREMON* Save_DayCare_GetMonX(DAYCARE* daycare, int i);
 BoxPokemon *DayCareMon_GetBoxMon(DAYCAREMON* dcmon);

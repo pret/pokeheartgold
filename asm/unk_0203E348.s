@@ -2114,7 +2114,7 @@ sub_0203F218: ; 0x0203F218
 	ldr r0, [r4, #0xc]
 	bl Save_GameStats_Get
 	str r0, [r5, #0x1c]
-	bl PlayerProfile_sizeof
+	bl PlayerProfile_Sizeof
 	add r1, r0, #0
 	mov r0, #0x20
 	bl AllocFromHeap

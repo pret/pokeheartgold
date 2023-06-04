@@ -6,7 +6,7 @@
 .public AllocFromHeap
 .public FreeToHeap
 .public GF_AssertFail
-.public PlayerProfile_sizeof
+.public PlayerProfile_Sizeof
 .public PlayerProfile_Copy
 .public PlayerProfile_GetTrainerID
 .public sub_020290B4

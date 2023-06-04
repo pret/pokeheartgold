@@ -1,7 +1,7 @@
 #include "global.h"
 #include "player_data.h"
 
-u32 Save_PlayerData_sizeof(void) {
+u32 Save_PlayerData_Sizeof(void) {
     return sizeof(PLAYERDATA);
 }
 
@@ -34,7 +34,7 @@ IGT* Save_PlayerData_GetIGTAddr(SAVEDATA* savedata) {
     return &player->igt;
 }
 
-u32 PlayerProfile_sizeof(void) {
+u32 PlayerProfile_Sizeof(void) {
     return sizeof(PLAYERPROFILE);
 }
 

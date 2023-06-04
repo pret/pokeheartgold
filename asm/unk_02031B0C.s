@@ -32,11 +32,11 @@ _020F6902:
 
 	.text
 
-	thumb_func_start Save_ApricornBox_sizeof
-Save_ApricornBox_sizeof: ; 0x02031B0C
+	thumb_func_start Save_ApricornBox_Sizeof
+Save_ApricornBox_Sizeof: ; 0x02031B0C
 	mov r0, #0x80
 	bx lr
-	thumb_func_end Save_ApricornBox_sizeof
+	thumb_func_end Save_ApricornBox_Sizeof
 
 	thumb_func_start sub_02031B10
 sub_02031B10: ; 0x02031B10

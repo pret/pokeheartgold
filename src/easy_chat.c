@@ -169,7 +169,7 @@ BOOL GetCategoryAndMsgNoByECWordIdx(u16 ecWord, u32 *category, u32 *msgno) {
     return FALSE;
 }
 
-u32 Save_EasyChat_sizeof(void) {
+u32 Save_EasyChat_Sizeof(void) {
     return sizeof(SAVE_EASY_CHAT_T);
 }
 

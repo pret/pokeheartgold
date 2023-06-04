@@ -31,7 +31,7 @@ u16 sub_0202B4E4(const MAIL *mail);
 MAIL_MESSAGE *Mail_GetUnk20Array(MAIL *mail, int i);
 void Mail_SetMessage(MAIL *mail, const MAIL_MESSAGE *src, int i);
 MAILBOX *Save_Mailbox_Get(SAVEDATA *saveData);
-u32 Save_Mailbox_sizeof(void);
+u32 Save_Mailbox_Sizeof(void);
 void Save_Mailbox_Init(MAILBOX *mailbox);
 MAIL *Mailbox_AllocAndFetchMailI(MAIL *msgs, int n, int i, HeapID heapId);
 int Mailbox_GetFirstEmptySlotIdx(MAILBOX *mailbox);

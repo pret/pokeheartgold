@@ -28,13 +28,13 @@ _0210F864:
 
 	.text
 
-	thumb_func_start GameStats_sizeof
-GameStats_sizeof: ; 0x0202CF1C
+	thumb_func_start GameStats_Sizeof
+GameStats_Sizeof: ; 0x0202CF1C
 	mov r0, #7
 	lsl r0, r0, #6
 	bx lr
 	.balign 4, 0
-	thumb_func_end GameStats_sizeof
+	thumb_func_end GameStats_Sizeof
 
 	thumb_func_start GameStats_Init
 GameStats_Init: ; 0x0202CF24

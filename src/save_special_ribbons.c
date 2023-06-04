@@ -2,7 +2,7 @@
 #include "save.h"
 #include "constants/save_arrays.h"
 
-u32 Save_SpecialRibbons_sizeof(void) {
+u32 Save_SpecialRibbons_Sizeof(void) {
     return sizeof(SaveSpecialRibbons);
 }
 

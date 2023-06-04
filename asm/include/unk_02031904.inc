@@ -2,7 +2,7 @@
 #pragma once
 .public GF_AssertFail
 .public SaveArray_Get
-.public Save_Pokeathlon_sizeof
+.public Save_Pokeathlon_Sizeof
 .public Save_Pokeathlon_Init
 .public Save_Pokeathlon_Get
 .public sub_02031974

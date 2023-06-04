@@ -71,7 +71,7 @@ typedef struct SavePokegear {
     PhoneContact phoneContacts[NUM_PHONE_CONTACTS]; // 60C
 } SavePokegear; // size=0x658
 
-u32 SaveData_GSPlayerMisc_sizeof(void);
+u32 SaveData_GSPlayerMisc_Sizeof(void);
 SavePokegear *SaveData_GSPlayerMisc_Get(SAVEDATA *saveData);
 MomsSavings *SaveData_GetMomsSavingsAddr(SAVEDATA *saveData);
 void SaveData_GSPlayerMisc_Init(SavePokegear *pokegear);

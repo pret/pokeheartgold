@@ -36,13 +36,13 @@ typedef struct SEALCASE {
 } SEALCASE;
 
 /*
- * u32 Save_SealCase_sizeof(void)
+ * u32 Save_SealCase_Sizeof(void)
  *
  * Gives the size of the Seal Case on the save file
  *
  * @returns: Size of SEALCASE
  */
-u32 Save_SealCase_sizeof(void);
+u32 Save_SealCase_Sizeof(void);
 
 /*
  * void Save_SealCase_Init(SEALCASE *sealCase)

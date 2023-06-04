@@ -17,7 +17,7 @@ void Save_BerryPotRTC_Init(struct GF_RTC_DateTime *dateTime) {
     GF_RTC_CopyDateTime(&dateTime->date, &dateTime->time);
 }
 
-u32 Save_Misc_sizeof(void) {
+u32 Save_Misc_Sizeof(void) {
     return sizeof(SAVE_MISC_DATA);
 }
 

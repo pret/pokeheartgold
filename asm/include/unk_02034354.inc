@@ -4,7 +4,7 @@
 .public FreeToHeap
 .public GF_AssertFail
 .public Save_PlayerData_GetProfileAddr
-.public PlayerProfile_sizeof
+.public PlayerProfile_Sizeof
 .public PlayerProfile_Copy
 .public PlayerProfile_Init
 .public PlayerProfile_IsNameEmpty

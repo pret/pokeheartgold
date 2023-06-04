@@ -3,7 +3,7 @@
 
 static BOOL Photo_IsUse(const PHOTO *photo);
 
-u32 Save_PhotoAlbum_sizeof(void) {
+u32 Save_PhotoAlbum_Sizeof(void) {
     return sizeof(PHOTO_ALBUM);
 }
 

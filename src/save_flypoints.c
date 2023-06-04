@@ -26,11 +26,11 @@ struct SavedMapObjectList {
     struct SavedMapObject subs[64];
 };
 
-u32 Save_FlyPoints_sizeof(void) {
+u32 Save_FlyPoints_Sizeof(void) {
     return sizeof(FLYPOINTS_SAVE);
 }
 
-u32 Save_MapObjects_sizeof(void) {
+u32 Save_MapObjects_Sizeof(void) {
     return sizeof(struct SavedMapObjectList);
 }
 

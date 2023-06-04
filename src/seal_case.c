@@ -1,11 +1,11 @@
 #include "seal_case.h"
 
-u32 Save_SealCase_sizeof(void) {
+u32 Save_SealCase_Sizeof(void) {
     return sizeof(SEALCASE);
 }
 
 void Save_SealCase_Init(SEALCASE *sealCase) {
-    MI_CpuClear8(sealCase, Save_SealCase_sizeof());
+    MI_CpuClear8(sealCase, Save_SealCase_Sizeof());
 }
 
 void CopyCapsule(const CAPSULE *src, CAPSULE *dest) {

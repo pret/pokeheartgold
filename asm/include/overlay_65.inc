@@ -201,7 +201,7 @@
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx
 .public sub_02074490
-.public SaveArray_Party_sizeof
+.public SaveArray_Party_Sizeof
 .public InitPartyWithMaxSize
 .public GetPartyCount
 .public GetPartyMonByIndex

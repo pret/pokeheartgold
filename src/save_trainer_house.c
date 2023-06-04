@@ -2,7 +2,7 @@
 #include "string_util.h"
 #include "constants/species.h"
 
-u32 Save_TrainerHouse_sizeof(void) {
+u32 Save_TrainerHouse_Sizeof(void) {
     return sizeof(TrainerHouseSave);
 }
 

@@ -258,7 +258,7 @@ MAILBOX *Save_Mailbox_Get(SAVEDATA *saveData) {
     return (MAILBOX *)SaveArray_Get(saveData, SAVE_MAILBOX);
 }
 
-u32 Save_Mailbox_sizeof(void) {
+u32 Save_Mailbox_Sizeof(void) {
     return sizeof(MAILBOX);
 }
 

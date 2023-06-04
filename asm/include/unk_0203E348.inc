@@ -23,7 +23,7 @@
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr
 .public Save_PlayerData_GetCoinsAddr
-.public PlayerProfile_sizeof
+.public PlayerProfile_Sizeof
 .public Save_Profile_PlayerName_set
 .public Pokedex_GetNatDexFlag
 .public Save_Pokedex_Get
