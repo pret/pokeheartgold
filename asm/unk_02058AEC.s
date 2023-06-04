@@ -1400,7 +1400,7 @@ _020595F0:
 	bl AllocFromHeapAtEnd
 	str r0, [r4, #0x48]
 	mov r0, #0xb
-	bl SaveArray_Party_alloc
+	bl SaveArray_Party_Alloc
 	mov r1, #3
 	str r0, [r4, #0x50]
 	bl InitPartyWithMaxSize

@@ -813,7 +813,7 @@ sub_02058640: ; 0x02058640
 	add r4, r1, #0
 	beq _0205865E
 	mov r0, #0xb
-	bl SaveArray_Party_alloc
+	bl SaveArray_Party_Alloc
 	ldr r1, _02058684 ; =_021D41C8
 	ldr r2, [r1]
 	str r0, [r2, #0x40]

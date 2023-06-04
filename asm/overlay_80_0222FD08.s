@@ -31,11 +31,11 @@ ov80_0222FD08: ; 0x0222FD08
 	ldr r1, _0222FED8 ; =_0223DD40
 	str r0, [r5]
 	ldr r5, [r1]
-	bl SaveArray_Party_alloc
+	bl SaveArray_Party_Alloc
 	ldr r1, _0222FEE0 ; =0x000004D4
 	str r0, [r5, r1]
 	mov r0, #0xb
-	bl SaveArray_Party_alloc
+	bl SaveArray_Party_Alloc
 	ldr r1, _0222FEE4 ; =0x000004D8
 	str r0, [r5, r1]
 	add r1, #0x1c

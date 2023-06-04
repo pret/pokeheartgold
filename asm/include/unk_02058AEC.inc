@@ -129,7 +129,7 @@
 .public GetMonData
 .public sub_02070D90
 .public Mon_GetBoxMon
-.public SaveArray_Party_alloc
+.public SaveArray_Party_Alloc
 .public InitPartyWithMaxSize
 .public AddMonToParty
 .public GetPartyCount

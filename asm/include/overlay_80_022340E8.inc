@@ -36,7 +36,7 @@
 .public GetMonData
 .public SetMonData
 .public GetMonExpBySpeciesAndLevel
-.public SaveArray_Party_alloc
+.public SaveArray_Party_Alloc
 .public AddMonToParty
 .public GetPartyCount
 .public GetPartyMonByIndex

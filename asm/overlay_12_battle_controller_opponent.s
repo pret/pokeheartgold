@@ -4057,7 +4057,7 @@ ov12_0225A700: ; 0x0225A700
 	ldr r1, [r4, #8]
 	str r0, [r1, #4]
 	mov r0, #5
-	bl SaveArray_Party_alloc
+	bl SaveArray_Party_Alloc
 	ldr r1, [r4, #8]
 	mov r6, #0
 	ldr r1, [r1, #4]
@@ -13792,7 +13792,7 @@ _0225F57E:
 	bl AllocFromHeap
 	str r0, [r4, #4]
 	mov r0, #5
-	bl SaveArray_Party_alloc
+	bl SaveArray_Party_Alloc
 	ldr r1, [r4, #4]
 	str r0, [r1]
 	ldr r0, [r4]

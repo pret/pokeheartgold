@@ -185,7 +185,7 @@ ENC_SLOT *BugContest_GetEncounterSlot(BUGCONTEST *bugContest, HeapID heapId) {
 
 void BugContest_BackUpParty(BUGCONTEST *bugContest) {
     int i;
-    bugContest->party_bak = SaveArray_Party_alloc(bugContest->heapId);
+    bugContest->party_bak = SaveArray_Party_Alloc(bugContest->heapId);
     bugContest->party_cur = SaveArray_PlayerParty_get(bugContest->saveData);
     Party_copy(bugContest->party_cur, bugContest->party_bak);
     bugContest->party_cur_num = GetPartyCount(bugContest->party_cur);

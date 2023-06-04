@@ -30,10 +30,10 @@ ov80_022324C4: ; 0x022324C4
 	mov r0, #0xb
 	str r0, [r4]
 	ldr r4, [r1]
-	bl SaveArray_Party_alloc
+	bl SaveArray_Party_Alloc
 	str r0, [r4, #0x28]
 	mov r0, #0xb
-	bl SaveArray_Party_alloc
+	bl SaveArray_Party_Alloc
 	str r0, [r4, #0x2c]
 	mov r0, #0xa2
 	ldr r1, [sp, #0x38]
