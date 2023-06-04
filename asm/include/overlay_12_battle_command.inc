@@ -8,7 +8,7 @@
 .public sub_0200602C
 .public PlaySE
 .public OverlayManager_New
-.public OverlayManager_delete
+.public OverlayManager_Delete
 .public OverlayManager_run
 .public GfGfxLoader_LoadFromNarc
 .public sub_020085EC

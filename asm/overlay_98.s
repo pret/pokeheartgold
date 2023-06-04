@@ -760,7 +760,7 @@ ov98_0221EB84: ; 0x0221EB84
 	ldr r0, [r5, #0x14]
 	bl String_Delete
 	ldr r0, [r5, #0x10]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r5, #0xc]
 	bl DestroyMsgData
 	ldr r0, [r5, #8]

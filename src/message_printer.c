@@ -56,7 +56,7 @@ MessagePrinter *MessagePrinter_New(u32 color1, u32 color2, u32 color3, HeapID he
     return messagePrinter;
 }
 
-void MessagePrinter_delete(MessagePrinter *messagePrinter)
+void MessagePrinter_Delete(MessagePrinter *messagePrinter)
 {
     if (messagePrinter != NULL) {
         if (messagePrinter->charData != NULL) {

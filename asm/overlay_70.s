@@ -1882,7 +1882,7 @@ ov70_022386F4: ; 0x022386F4
 	bl DestroyMsgData
 	ldr r0, _022387A0 ; =0x00000B9C
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r4, #0
 	bl ov70_0223887C
 	bl sub_02034DE0
@@ -19623,7 +19623,7 @@ ov70_02241468: ; 0x02241468
 	add r0, r5, #0
 	add r0, #0xb8
 	ldr r0, [r0]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	ldr r2, [r5, #0x24]
 	add r0, r5, #0
 	mov r1, #5
@@ -19877,7 +19877,7 @@ _0224166E:
 	add r0, r5, #0
 	add r0, #0xb8
 	ldr r0, [r0]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	ldr r1, [r5, #0x24]
 	cmp r1, #9
 	bne _022416E8
@@ -21219,7 +21219,7 @@ ov70_0224212C: ; 0x0224212C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x38]
-	bl MessagePrinter_delete
+	bl MessagePrinter_Delete
 	ldr r0, [r4, #0x1c]
 	bl sub_020195C0
 	add r0, r4, #0

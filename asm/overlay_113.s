@@ -1794,7 +1794,7 @@ ov113_021E66E4: ; 0x021E66E4
 	ldr r0, [r4, #0x4c]
 	bl String_Delete
 	ldr r0, [r4, #0x48]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x44]
 	bl DestroyMsgData
 	mov r0, #4

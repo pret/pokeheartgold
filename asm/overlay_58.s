@@ -15,7 +15,7 @@ ov58_022378C0: ; 0x022378C0
 	cmp r0, #0
 	beq _022378E0
 	ldr r0, [r4]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	mov r0, #0
 	str r0, [r4]
 	mov r0, #1

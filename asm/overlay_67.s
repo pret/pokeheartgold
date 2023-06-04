@@ -995,7 +995,7 @@ ov67_021E60F4: ; 0x021E60F4
 	ldr r0, [r4, #0x30]
 	bl String_Delete
 	ldr r0, [r4, #0x2c]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x28]
 	bl DestroyMsgData
 	pop {r4, pc}

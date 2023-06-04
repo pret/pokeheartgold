@@ -1308,7 +1308,7 @@ ov97_0221F020: ; 0x0221F020
 	ldr r0, [r7, #0x6c]
 	bl DestroyMsgData
 	ldr r0, [r7, #0x70]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r7, #0x74]
 	bl String_Delete
 	add r0, r7, #0

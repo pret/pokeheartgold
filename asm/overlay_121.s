@@ -2208,7 +2208,7 @@ _021E6A54:
 	ldr r0, [r6, #0x6c]
 	bl String_Delete
 	ldr r0, [r6, #0x68]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r6, #0x64]
 	bl DestroyMsgData
 	pop {r4, r5, r6, pc}

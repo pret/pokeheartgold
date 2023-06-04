@@ -264,7 +264,7 @@ _0225A1C8:
 	bl DestroyMsgData
 	ldr r0, _0225A2BC ; =0x000004AC
 	ldr r0, [r6, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r7, #0x55
 	mov r4, #0
 	add r5, r6, #0
@@ -5239,7 +5239,7 @@ ov27_0225C930: ; 0x0225C930
 	ldr r0, [r4, #0x4c]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x50]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov27_0225C930

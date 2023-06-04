@@ -3387,7 +3387,7 @@ _022397AA:
 	ldr r0, [r6, #0x64]
 	bl String_Delete
 	ldr r0, [r6, #0x60]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r6, #0x5c]
 	bl DestroyMsgData
 	mov r0, #4
@@ -7500,7 +7500,7 @@ ov59_0223B6FC: ; 0x0223B6FC
 	ldr r0, [r4, #0x64]
 	bl String_Delete
 	ldr r0, [r4, #0x60]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x5c]
 	bl DestroyMsgData
 	mov r0, #0

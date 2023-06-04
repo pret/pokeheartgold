@@ -127,7 +127,7 @@ _02096686:
 	cmp r0, #1
 	bne _02096734
 	ldr r0, [r4, #4]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	bl sub_020967BC
 	ldr r1, [r4, #0xc]
 	cmp r1, #0

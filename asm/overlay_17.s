@@ -2565,7 +2565,7 @@ _02202F84:
 	add r0, r6, #0
 	add r0, #0xa0
 	ldr r0, [r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r6, #0x9c
 	ldr r0, [r6]
 	bl DestroyMsgData

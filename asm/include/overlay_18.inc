@@ -64,13 +64,13 @@
 .public NewString_ReadMsgData
 .public GetSpeciesName
 .public MessageFormat_New
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferString
 .public BufferIntegerAsString
 .public BufferLandmarkName
 .public StringExpandPlaceholders
 .public MessagePrinter_New
-.public MessagePrinter_delete
+.public MessagePrinter_Delete
 .public PrintUIntOnWindow
 .public sub_0200CF18
 .public sub_0200CF38

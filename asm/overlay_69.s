@@ -903,7 +903,7 @@ ov69_021E6080: ; 0x021E6080
 	bl sub_02023120
 	ldr r0, _021E60EC ; =0x0000C080
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	bl sub_0201F63C
 	ldr r0, _021E60F0 ; =0x0000C010
 	ldr r0, [r4, r0]

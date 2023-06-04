@@ -46,12 +46,12 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public MessageFormat_New
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferIntegerAsString
 .public BufferItemName
 .public StringExpandPlaceholders
 .public MessagePrinter_New
-.public MessagePrinter_delete
+.public MessagePrinter_Delete
 .public sub_0200E398
 .public DrawFrameAndWindow1
 .public sub_0200E5D4

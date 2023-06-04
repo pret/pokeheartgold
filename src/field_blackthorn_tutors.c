@@ -9,7 +9,7 @@ struct MoveRelearner *MoveRelearner_New(HeapID heapId) {
     return ret;
 }
 
-void MoveRelearner_delete(struct MoveRelearner *moveRelearner) {
+void MoveRelearner_Delete(struct MoveRelearner *moveRelearner) {
     FreeToHeap(moveRelearner);
 }
 

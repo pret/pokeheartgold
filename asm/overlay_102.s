@@ -7371,7 +7371,7 @@ _021EAE68:
 	add r0, r6, #0
 	bl String_Delete
 	add r0, r5, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	b _021EAF34
 _021EAECA:
 	ldr r0, [r4, #0x78]

@@ -5766,7 +5766,7 @@ _02240C6C:
 	ldr r0, [r5, #0x1c]
 	bl DestroyMsgData
 	ldr r0, [r5, #0x20]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r5, #0x24]
 	bl String_Delete
 	ldr r0, [r5, #0x28]

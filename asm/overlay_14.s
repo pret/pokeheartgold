@@ -597,10 +597,10 @@ ov14_021E5DB8: ; 0x021E5DB8
 	bl String_Delete
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x24]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x1c]
-	bl MessagePrinter_delete
+	bl MessagePrinter_Delete
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x20]
 	bl DestroyMsgData
@@ -11755,7 +11755,7 @@ ov14_021EB2A8: ; 0x021EB2A8
 	pop {r4, pc}
 _021EB2BA:
 	ldr r0, [r4, #0x14]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	ldrb r2, [r4, #0x1e]
 	mov r1, #0xc
 	add r0, r4, #0

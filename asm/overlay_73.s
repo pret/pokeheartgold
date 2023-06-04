@@ -353,7 +353,7 @@ _021E5BD8:
 	ldr r0, [r6, #0x28]
 	bl DestroyMsgData
 	ldr r0, [r6, #0x24]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r6, #8]
 	mov r1, #0xc5
 	lsl r1, r1, #2
@@ -5049,7 +5049,7 @@ ov73_021E808C: ; 0x021E808C
 	mov r0, #0xbd
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r4, #0
 	bl ov73_021E8164
 	bl sub_02034DE0

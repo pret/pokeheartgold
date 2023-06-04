@@ -90,7 +90,7 @@ void FontID_Release(FontID fontId) {
             }
         }
         if (sFontWork->fontDataMan[fontId] != NULL) {
-            FontData_delete(sFontWork->fontDataMan[fontId]);
+            FontData_Delete(sFontWork->fontDataMan[fontId]);
             sFontWork->fontDataMan[fontId] = NULL;
         }
     }

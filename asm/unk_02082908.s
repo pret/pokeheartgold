@@ -927,7 +927,7 @@ _02083060:
 	mov r0, #0x5a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [sp, #0x10]
 	bl OverlayManager_FreeData
 	mov r0, #0

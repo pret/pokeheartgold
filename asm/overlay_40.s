@@ -3651,7 +3651,7 @@ _0222D410:
 	ldr r0, [sp, #0x14]
 	bl String_Delete
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	b _0222D504
 _0222D478:
 	cmp r2, #0x29
@@ -3708,7 +3708,7 @@ _0222D494:
 	ldr r0, [sp, #0x18]
 	bl String_Delete
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	b _0222D504
 _0222D4FC:
 	add r1, r2, #0
@@ -5625,7 +5625,7 @@ _0222E46A:
 	add r0, r5, #0
 	bl String_Delete
 	add r0, r4, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add sp, #0xd8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -6125,7 +6125,7 @@ _0222E884:
 	add r0, r4, #0
 	bl String_Delete
 	add r0, r7, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 _0222E890:
 	mov r0, #0x10
 	str r0, [sp]
@@ -6887,7 +6887,7 @@ _0222EEB4:
 	ldr r0, [sp, #0x50]
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add sp, #0x1fc
 	add sp, #0xe0
 	pop {r4, r5, r6, r7, pc}
@@ -7482,7 +7482,7 @@ _0222F36A:
 	ldr r0, [sp, #0x58]
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #8
 	ldrsh r0, [r4, r0]
 	str r0, [r4, #0xc]
@@ -9541,7 +9541,7 @@ _022302BA:
 	add r0, r4, #0
 	bl MessageFormat_ResetBuffers
 	add r0, r4, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add sp, #0x9c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -20504,7 +20504,7 @@ _02235C54:
 	add r0, r7, #0
 	bl String_Delete
 	ldr r0, [sp, #0x18]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 _02235C72:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
@@ -20640,7 +20640,7 @@ _02235D84:
 	add r0, r7, #0
 	bl String_Delete
 	ldr r0, [sp, #0x18]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 _02235DA2:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
@@ -23115,7 +23115,7 @@ ov40_0223707C: ; 0x0223707C
 	add r0, r7, #0
 	bl String_Delete
 	ldr r0, [sp, #0x14]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -27746,7 +27746,7 @@ _0223973A:
 	add r0, r6, #0
 	bl MessageFormat_ResetBuffers
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add sp, #0x1fc
 	add sp, #0x30
 	pop {r4, r5, r6, r7, pc}
@@ -29395,7 +29395,7 @@ ov40_0223A510: ; 0x0223A510
 	add r0, r4, #0
 	bl String_Delete
 	add r0, r7, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	b _0223A602
 _0223A58A:
 	cmp r4, #0x66
@@ -29442,7 +29442,7 @@ _0223A58A:
 	add r0, r4, #0
 	bl String_Delete
 	add r0, r7, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	b _0223A602
 _0223A5FA:
 	ldr r0, [r5, #0x48]
@@ -31018,7 +31018,7 @@ _0223B2BC:
 	add r0, r6, #0
 	bl String_Delete
 	add r0, r7, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 _0223B31A:
 	add r0, sp, #0x18
 	bl InitWindow
@@ -33464,7 +33464,7 @@ ov40_0223C710: ; 0x0223C710
 	add r0, r4, #0
 	bl String_Delete
 	add r0, r7, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	b _0223C7CE
 _0223C7C4:
 	ldr r0, [r5, #0x48]
@@ -36368,7 +36368,7 @@ _0223DE78:
 	add r0, r5, #0
 	bl String_Delete
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 _0223DE84:
 	mov r1, #0
 	str r1, [sp]
@@ -42066,7 +42066,7 @@ _02240D70:
 	add r0, r6, #0
 	bl String_Delete
 	add r0, r7, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 _02240DCE:
 	add r0, sp, #0x18
 	bl InitWindow
@@ -42182,7 +42182,7 @@ ov40_02240E28: ; 0x02240E28
 	add r0, r4, #0
 	bl String_Delete
 	add r0, r7, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	b _02240EE4
 _02240EDA:
 	ldr r0, [r5, #0x48]
@@ -42268,7 +42268,7 @@ ov40_02240F24: ; 0x02240F24
 	add r0, r4, #0
 	bl String_Delete
 	add r0, r7, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	b _02241014
 _02240F9C:
 	cmp r4, #0x66
@@ -42315,7 +42315,7 @@ _02240F9C:
 	add r0, r4, #0
 	bl String_Delete
 	add r0, r7, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	b _02241014
 _0224100C:
 	ldr r0, [r5, #0x48]
@@ -46116,7 +46116,7 @@ ov40_02242E4C: ; 0x02242E4C
 	add r0, r6, #0
 	bl MessageFormat_ResetBuffers
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -48726,7 +48726,7 @@ ov40_022442F0: ; 0x022442F0
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	b _02244372
 _0224436A:
 	ldr r0, [r5, #0x48]

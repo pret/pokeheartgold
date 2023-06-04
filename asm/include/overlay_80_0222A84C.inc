@@ -4,7 +4,7 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public MessageFormat_New_Custom
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public AllocFromHeap
 .public FreeToHeap
 .public GF_AssertFail

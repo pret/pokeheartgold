@@ -7288,7 +7288,7 @@ ov91_0225FD0C: ; 0x0225FD0C
 	ldr r0, [r4, #8]
 	bl DestroyMsgData
 	ldr r0, [r4, #4]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov91_0225FD0C

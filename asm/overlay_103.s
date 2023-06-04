@@ -635,7 +635,7 @@ ov103_021ECE54: ; 0x021ECE54
 	mov r0, #0x8b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0x8a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1558,7 +1558,7 @@ ov103_021ED568: ; 0x021ED568
 	pop {r4, pc}
 _021ED57A:
 	ldr r0, [r4, #0x10]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	ldr r2, [r4, #0x18]
 	mov r1, #0xc
 	add r3, r2, #0

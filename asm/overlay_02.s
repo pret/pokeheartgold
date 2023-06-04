@@ -21431,7 +21431,7 @@ FollowPoke_ExpandInteractionMessage: ; 0x0224FC8C
 	add r0, r6, #0
 	bl String_Delete
 	add r0, r4, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r5, #0
 	bl DestroyMsgData
 	pop {r3, r4, r5, r6, r7, pc}
@@ -21515,7 +21515,7 @@ _0224FD72:
 	add r0, r5, #0
 	bl String_Delete
 	add r0, r4, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r7, #0
 	bl DestroyMsgData
 	add sp, #8

@@ -87,7 +87,7 @@ _0225C5D8:
 	cmp r0, #1
 	bne _0225C6B4
 	ldr r0, [r5, #0x28]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	mov r0, #0
 	str r0, [r5, #0x28]
 	ldr r0, [r4]
@@ -114,7 +114,7 @@ _0225C610:
 	cmp r0, #1
 	bne _0225C6B4
 	ldr r0, [r5, #0x28]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	mov r0, #0
 	str r0, [r5, #0x28]
 	ldr r0, [r4]
@@ -147,7 +147,7 @@ _0225C654:
 	cmp r0, #1
 	bne _0225C6B4
 	ldr r0, [r5, #0x28]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	mov r1, #0
 	str r1, [r5, #0x28]
 	ldr r0, [r5, #0x38]
@@ -1043,7 +1043,7 @@ _0225CD72:
 	add r0, r4, #0
 	add r0, #0x84
 	ldr r0, [r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]

@@ -249,7 +249,7 @@ ov71_02246B58: ; 0x02246B58
 	bl DestroySysTask
 	bl sub_0203A914
 	ldr r0, [r4, #0xc]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x10]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x14]

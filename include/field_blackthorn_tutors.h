@@ -15,7 +15,7 @@ typedef struct MoveRelearner { //todo: move to unk_0203E348? rename to MoveRelea
 } MoveRelearner;
 
 struct MoveRelearner *MoveRelearner_New(HeapID heapId);
-void MoveRelearner_delete(struct MoveRelearner *moveRelearner);
+void MoveRelearner_Delete(struct MoveRelearner *moveRelearner);
 u16 *GetEligibleLevelUpMoves(Pokemon *mon, HeapID heapId);
 BOOL sub_0209186C(const u16 *ptr);
 

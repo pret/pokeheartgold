@@ -254,7 +254,7 @@ _02087C18:
 	cmp r0, #0
 	beq _02087C2C
 	ldr r0, [r4, #8]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	mov r0, #1
 	pop {r4, pc}
 _02087C2C:
@@ -433,7 +433,7 @@ _02087D88:
 	ldr r0, [r5, #0x10]
 	bl BattleSetup_Delete
 	ldr r0, [r5, #8]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	mov r0, #0
 	bl sub_02005B68
 	mov r0, #0

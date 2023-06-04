@@ -41,7 +41,7 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public MessageFormat_New
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
 .public sub_0200E5D4

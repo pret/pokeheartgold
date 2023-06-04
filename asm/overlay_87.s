@@ -1921,7 +1921,7 @@ _021E6816:
 	ldr r0, [r6, #0x38]
 	bl DestroyMsgData
 	ldr r0, [r6, #0x3c]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r6, #0x40]
 	bl String_Delete
 	ldr r0, [r6, #0x44]
@@ -1929,7 +1929,7 @@ _021E6816:
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
-	bl MessagePrinter_delete
+	bl MessagePrinter_Delete
 	mov r0, #0xe1
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]

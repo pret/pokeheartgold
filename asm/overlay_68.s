@@ -744,7 +744,7 @@ ov68_021E5F18: ; 0x021E5F18
 	add r0, r4, #0
 	add r0, #0xfc
 	ldr r0, [r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #1
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]
@@ -3562,7 +3562,7 @@ ov68_021E7568: ; 0x021E7568
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	add r0, r4, #0
 	bl ov68_021E5A58
 	ldr r1, [r4]

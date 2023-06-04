@@ -110,7 +110,7 @@ ECMAN *EasyChatManager_New(HeapID heapId) {
     return ret;
 }
 
-void EasyChatManager_delete(ECMAN *ecMan) {
+void EasyChatManager_Delete(ECMAN *ecMan) {
     int i;
 
     for (i = 0; i < EC_GROUP_MAX; i++) {

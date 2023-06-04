@@ -135,7 +135,7 @@ static BOOL _Task_ShowPrintedMessage(TaskManager *taskManager) {
     case 4:
         ClearFrameAndWindow2(&work->window, 0);
         RemoveWindow(&work->window);
-        MessageFormat_delete(work->msgFmt);
+        MessageFormat_Delete(work->msgFmt);
         DestroyMsgData(work->msgData);
         FreeBgTilemapBuffer(work->bgConfig, 3);
         FreeToHeap(work->bgConfig);

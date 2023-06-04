@@ -571,7 +571,7 @@ _0221C330:
 	cmp r0, #0
 	beq _0221C3B4
 	ldr r0, [r4, #0x4c]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	add r0, r4, #0
 	bl ov65_0221C08C
 	add r0, r6, #0
@@ -1851,15 +1851,15 @@ ov65_0221CD74: ; 0x0221CD74
 	mov r0, #0x63
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0x61
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0x66
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -5012,7 +5012,7 @@ _0221E77C:
 	mov r0, #0xda
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0x13
 	bl sub_02037AC0
 	mov r3, #0x61

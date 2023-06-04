@@ -734,7 +734,7 @@ ov01_021F7268: ; 0x021F7268
 	ldr r0, [r4, #0x3c]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x38]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0xc]
 	bl String_Delete
 	ldr r0, [r4, #8]

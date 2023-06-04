@@ -68,7 +68,7 @@ STRING *MailMsg_GetExpandedString(const MAIL_MESSAGE *mailMessage, HeapID heapId
     msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, sMessageBanks[mailMessage->msg_bank], heapId);
     string = ReadMsgData_ExpandPlaceholders(msgFmt, msgData, mailMessage->msg_no, heapId);
     DestroyMsgData(msgData);
-    MessageFormat_delete(msgFmt);
+    MessageFormat_Delete(msgFmt);
     return string;
 }
 

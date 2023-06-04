@@ -40,7 +40,7 @@
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
 .public MessageFormat_New_Custom
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferIntegerAsString
 .public StringExpandPlaceholders
 .public sub_0200E33C

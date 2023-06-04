@@ -37,7 +37,7 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public MessageFormat_New
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public StringExpandPlaceholders
 .public LoadUserFrameGfx1
 .public LoadUserFrameGfx2

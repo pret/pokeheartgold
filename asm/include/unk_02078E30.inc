@@ -25,14 +25,14 @@
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
 .public MessageFormat_New
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferBoxMonNickname
 .public BufferIntegerAsString
 .public BufferItemName
 .public BufferItemNameWithIndefArticle
 .public StringExpandPlaceholders
 .public MessagePrinter_New
-.public MessagePrinter_delete
+.public MessagePrinter_Delete
 .public sub_0200D020
 .public sub_0200D034
 .public sub_0200DD08

@@ -5940,7 +5940,7 @@ ov49_0225B35C: ; 0x0225B35C
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	ldr r0, [r6]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r4, #0
 	add r5, r6, #0
 _0225B36A:

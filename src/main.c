@@ -150,7 +150,7 @@ void Main_RunOverlayManager(void) {
         _02111868.queuedMainOverlayTemplate = NULL;
     }
     if (OverlayManager_run(_02111868.overlayManager)) {
-        OverlayManager_delete(_02111868.overlayManager);
+        OverlayManager_Delete(_02111868.overlayManager);
         _02111868.overlayManager = NULL;
         if (_02111868.mainOverlayId != FS_OVERLAY_ID_NONE) {
             UnloadOverlayByID(_02111868.mainOverlayId);

@@ -600,7 +600,7 @@ _02258CC8:
 	cmp r4, #9
 	blt _02258CC8
 	ldr r0, [r6, #0x24]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r6, #0x28]
 	bl String_Delete
 	ldr r0, [r6, #0x2c]

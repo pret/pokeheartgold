@@ -453,7 +453,7 @@ _0225D8B2:
 	ldr r0, [r6, #0x1c]
 	bl DestroyMsgData
 	ldr r0, [r6, #0x18]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r1, #0x72
 	lsl r1, r1, #2
 	add r0, r6, r1

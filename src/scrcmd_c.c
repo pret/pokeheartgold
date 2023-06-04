@@ -4050,7 +4050,7 @@ BOOL ScrCmd_571(SCRIPTCONTEXT *ctx) {
     String_Delete(r7_str);
     String_Delete(sp0_str);
     DestroyMsgData(msgData);
-    MessageFormat_delete(msgFmt);
+    MessageFormat_Delete(msgFmt);
     return FALSE;
 }
 

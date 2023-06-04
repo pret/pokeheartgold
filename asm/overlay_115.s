@@ -205,7 +205,7 @@ ov115_0225F158: ; 0x0225F158
 	add r0, r6, #0
 	bl DestroyMsgData
 	add r0, r4, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r5, #0
 	bl String_Delete
 	add r0, r7, #0
@@ -249,7 +249,7 @@ ov115_0225F1BC: ; 0x0225F1BC
 	add r0, r6, #0
 	bl DestroyMsgData
 	add r0, r4, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r5, #0
 	bl String_Delete
 	add r0, r7, #0

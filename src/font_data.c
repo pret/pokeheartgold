@@ -59,7 +59,7 @@ struct FontData *FontData_New(NarcId narcId, int fileId, int mode, BOOL isFixedW
     return ret;
 }
 
-void FontData_delete(struct FontData *fontData) {
+void FontData_Delete(struct FontData *fontData) {
     FreeLoadedFontResources(fontData);
     FontData_FreeWidthsAndNarc(fontData);
     FreeToHeap(fontData);

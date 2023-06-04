@@ -534,7 +534,7 @@ _02259CC4:
 	ldr r0, [r6, #0x2c]
 	bl String_Delete
 	ldr r0, [r6, #0x28]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r6, #0x24]
 	bl DestroyMsgData
 	mov r0, #4

@@ -1231,7 +1231,7 @@ ov43_0222A8A8: ; 0x0222A8A8
 	ldr r0, [r4, #0x54]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x50]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	pop {r4, pc}
 	thumb_func_end ov43_0222A8A8
 
@@ -5806,7 +5806,7 @@ _0222CC2A:
 	cmp r0, #0
 	beq _0222CD26
 	ldr r0, [r4]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x14]
 	cmp r0, #0
@@ -5833,7 +5833,7 @@ _0222CC64:
 	cmp r0, #0
 	beq _0222CD26
 	ldr r0, [r4]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	ldr r1, [r4, #4]
 	ldr r2, [r4, #8]
 	ldr r1, [r1, #0x18]
@@ -5879,7 +5879,7 @@ _0222CCCE:
 	cmp r0, #0
 	beq _0222CD26
 	ldr r0, [r4]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x14]
 	cmp r0, #0

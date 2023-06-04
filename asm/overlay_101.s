@@ -1973,7 +1973,7 @@ ov101_021E862C: ; 0x021E862C
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r4, #0x88
 	ldr r0, [r4]
 	bl DestroyMsgData
@@ -13858,7 +13858,7 @@ ov101_021EE2E8: ; 0x021EE2E8
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r4, #0x88
 	ldr r0, [r4]
 	bl DestroyMsgData
@@ -18369,7 +18369,7 @@ _021F0660:
 	ldr r0, [r6, #0x1c]
 	bl String_Delete
 	ldr r0, [r6, #0x18]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r6, #0x14]
 	bl DestroyMsgData
 	mov r0, #0
@@ -21578,7 +21578,7 @@ _021F1E88:
 	ldr r0, [r6, #0x54]
 	bl String_Delete
 	ldr r0, [r6, #0x50]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r6, #0x48]
 	bl DestroyMsgData
 	ldr r0, [r6, #0x44]
@@ -29248,7 +29248,7 @@ ov101_021F58A0: ; 0x021F58A0
 	ldr r0, [r4, #0x48]
 	bl String_Delete
 	ldr r0, [r4, #0x44]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x20]
 	bl DestroyMsgData
 	add r0, r4, #0

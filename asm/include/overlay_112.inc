@@ -19,7 +19,7 @@
 .public sub_02006B84
 .public IsFanfarePlaying
 .public OverlayManager_New
-.public OverlayManager_delete
+.public OverlayManager_Delete
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
@@ -62,7 +62,7 @@
 .public GetSpeciesName
 .public MessageFormat_New
 .public MessageFormat_New_Custom
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferString
 .public BufferSpeciesName
 .public BufferBoxMonNickname

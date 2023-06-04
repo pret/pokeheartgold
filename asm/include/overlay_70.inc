@@ -14,7 +14,7 @@
 .public sub_02007200
 .public sub_02007234
 .public OverlayManager_New
-.public OverlayManager_delete
+.public OverlayManager_Delete
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
@@ -54,7 +54,7 @@
 .public NewString_ReadMsgData
 .public ReadMsgData_ExpandPlaceholders
 .public MessageFormat_New_Custom
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferBoxMonSpeciesName
 .public BufferBoxMonNickname
 .public BufferIntegerAsString
@@ -63,7 +63,7 @@
 .public StringExpandPlaceholders
 .public MessageFormat_ResetBuffers
 .public MessagePrinter_New
-.public MessagePrinter_delete
+.public MessagePrinter_Delete
 .public sub_0200CDAC
 .public PrintUIntOnWindow
 .public sub_0200E33C

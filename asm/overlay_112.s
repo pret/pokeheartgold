@@ -4561,7 +4561,7 @@ ov112_021E7C6C: ; 0x021E7C6C
 	bl DestroyMsgData
 	ldr r0, _021E7CA0 ; =0x0001E448
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	pop {r4, pc}
 	nop
 _021E7C94: .word 0x0001E454
@@ -19468,7 +19468,7 @@ _021EF602:
 	cmp r0, #0
 	beq _021EF61C
 	ldr r0, [r4, #0x1c]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	mov r0, #3
 	str r0, [r4, #8]
 	b _021EF61C
@@ -21416,7 +21416,7 @@ ov112_021F051C: ; 0x021F051C
 	ldr r0, [r7, #0x68]
 	bl DestroyMsgData
 	ldr r0, [r7, #0x6c]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r7, #0x70]
 	bl String_Delete
 	add r0, r7, #0
@@ -23212,7 +23212,7 @@ _021F132E:
 	cmp r4, #4
 	blt _021F132E
 	ldr r0, [r6, #0x58]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r6, #0x5c]
 	bl DestroyMsgData
 	ldr r0, [r6, #0x60]

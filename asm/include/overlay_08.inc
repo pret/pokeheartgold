@@ -24,7 +24,7 @@
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
 .public MessageFormat_New
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferPlayersName
 .public BufferBoxMonNickname
 .public BufferIntegerAsString
@@ -34,7 +34,7 @@
 .public BufferTrainerNameFromDataStruct
 .public StringExpandPlaceholders
 .public MessagePrinter_New
-.public MessagePrinter_delete
+.public MessagePrinter_Delete
 .public sub_0200CDAC
 .public PrintUIntOnWindow
 .public sub_0200CE7C

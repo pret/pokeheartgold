@@ -48,7 +48,7 @@ BUGCONTEST *BugContest_New(FieldSystem *fsys, u32 weekday) {
     return bugContest;
 }
 
-void BugContest_delete(BUGCONTEST *bugContest) {
+void BugContest_Delete(BUGCONTEST *bugContest) {
     BugContest_RestoreParty_RetrieveCaughtPokemon(bugContest);
     FreeToHeap(bugContest->mon);
     FreeToHeap(bugContest);

@@ -182,6 +182,6 @@ void ShowCommunicationError(HeapID heap_id, u32 error, u32 error_code) {
 
     RemoveWindow(&window);
     DestroyMsgData(errors_msgdata);
-    MessageFormat_delete(messageFormat);
+    MessageFormat_Delete(messageFormat);
     FreeToHeap(bg_config);
 }

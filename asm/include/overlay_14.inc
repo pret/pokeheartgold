@@ -19,7 +19,7 @@
 .public UnloadOverlayByID
 .public HandleLoadOverlay
 .public OverlayManager_New
-.public OverlayManager_delete
+.public OverlayManager_Delete
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
@@ -39,7 +39,7 @@
 .public DestroyMsgData
 .public NewString_ReadMsgData
 .public MessageFormat_New
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferBoxMonSpeciesName
 .public BufferBoxMonNickname
 .public BufferIntegerAsString
@@ -48,7 +48,7 @@
 .public BufferItemName
 .public StringExpandPlaceholders
 .public MessagePrinter_New
-.public MessagePrinter_delete
+.public MessagePrinter_Delete
 .public sub_0200CDAC
 .public sub_0200CF18
 .public sub_0200CF38

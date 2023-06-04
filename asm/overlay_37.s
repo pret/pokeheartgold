@@ -365,7 +365,7 @@ _021E5BF8:
 	ldr r0, [r6, #0x10]
 	bl DestroyMsgData
 	ldr r0, [r6, #0xc]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r7]
 	add r0, r0, #1
 	str r0, [r7]
