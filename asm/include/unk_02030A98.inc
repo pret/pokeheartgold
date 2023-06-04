@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public CopyU16StringArray
-.public MailMsg_init_withBank
+.public MailMsg_Init_WithBank
 .public GetECWordIndexByPair
 .public GetCategoryAndMsgNoByECWordIdx
 .public AllocFromHeap

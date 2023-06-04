@@ -7,7 +7,7 @@
 .public DestroyMsgData
 .public NewString_ReadMsgData
 .public GetSpeciesName
-.public MailMsg_init_fromTemplate
+.public MailMsg_Init_FromTemplate
 .public MailMsg_Copy
 .public FreeToHeap
 .public GF_AssertFail

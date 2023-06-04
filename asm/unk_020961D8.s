@@ -41,7 +41,7 @@ sub_020961D8: ; 0x020961D8
 	str r6, [r4, #0x20]
 	add r0, #8
 	mov r1, #4
-	bl MailMsg_init_withBank
+	bl MailMsg_Init_WithBank
 	add r1, r4, #0
 	ldr r0, [r4, #0x14]
 	add r1, #8

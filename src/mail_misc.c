@@ -24,7 +24,7 @@ Unk02090C94 *sub_02090C94(u8 a0, u8 a1, SAVEDATA *saveData, u32 a3, HeapID heapI
     ptr->unk24 = a3;
 
     if (a0 == 2) {
-        MailMsg_init_withBank(&ptr->mailMessage, 3);
+        MailMsg_Init_WithBank(&ptr->mailMessage, 3);
     } else {
         for (int i = 0; i < 2; i++) {
             ptr->unk1C[i] = -1;

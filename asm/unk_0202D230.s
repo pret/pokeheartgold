@@ -54,7 +54,7 @@ sub_0202D254: ; 0x0202D254
 _0202D25C:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl MailMsg_init_fromTemplate
+	bl MailMsg_Init_FromTemplate
 	add r6, r6, #1
 	add r4, #8
 	add r5, #8

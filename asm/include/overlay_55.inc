@@ -7,7 +7,7 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public OverlayManager_Run
-.public MailMsg_init_withBank
+.public MailMsg_Init_WithBank
 .public MailMsg_IsInit
 .public MailMsg_Copy
 .public CreateHeap

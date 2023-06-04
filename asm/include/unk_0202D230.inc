@@ -3,7 +3,7 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoU16Array
-.public MailMsg_init_fromTemplate
+.public MailMsg_Init_FromTemplate
 .public MailMsg_Copy
 .public AllocFromHeap
 .public GF_AssertFail

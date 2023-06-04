@@ -3,7 +3,7 @@
 .public MessageFormat_New
 .public MessageFormat_Delete
 .public IsPaletteFadeFinished
-.public MailMsg_init_withBank
+.public MailMsg_Init_WithBank
 .public AllocFromHeap
 .public FreeToHeap
 .public Sav2_Misc_Get

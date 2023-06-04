@@ -219,7 +219,7 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SAVEDATA* saved
     MAIL_MESSAGE mail_message;
 
     for (i = 0; i < (s32)NELEMS(sMailMsgTemplates); i++) {
-        MailMsg_init_fromTemplate(&mail_message, &sMailMsgTemplates[i]);
+        MailMsg_Init_FromTemplate(&mail_message, &sMailMsgTemplates[i]);
         Mail_SetMessage(mail, &mail_message, (u8)i);
     }
 
