@@ -29,7 +29,7 @@ BOOL Chatot_checkCry(SOUND_CHATOT *a0) {
     u8 *r5 = GF_SdatGetAttrPtr(31);
     u8 *r4 = GF_SdatGetAttrPtr(54);
 
-    if (!Chatot_exists(a0)) {
+    if (!Chatot_Exists(a0)) {
         return FALSE;
     }
 
@@ -158,7 +158,7 @@ BOOL sub_02006EA0(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3, u8 a4) {
 }
 
 u32 sub_02006EFC(SOUND_CHATOT *chatot) {
-    if (!Chatot_exists(chatot)) {
+    if (!Chatot_Exists(chatot)) {
         return 0;
     }
 

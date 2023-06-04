@@ -20,7 +20,7 @@ SOUND_CHATOT *Sav2_Chatot_Get(SAVEDATA *saveData) {
     return SavArray_Get(saveData, SAVE_CHATOT);
 }
 
-BOOL Chatot_exists(SOUND_CHATOT *chatot) {
+BOOL Chatot_Exists(SOUND_CHATOT *chatot) {
     return chatot->exists;
 }
 

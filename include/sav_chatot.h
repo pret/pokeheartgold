@@ -12,7 +12,7 @@ u32 Sav2_Chatot_sizeof(void);
 void Sav2_Chatot_init(SOUND_CHATOT *chatot);
 SOUND_CHATOT *Chatot_New(HeapID heapId);
 SOUND_CHATOT *Sav2_Chatot_Get(SAVEDATA *saveData);
-BOOL Chatot_exists(SOUND_CHATOT *chatot);
+BOOL Chatot_Exists(SOUND_CHATOT *chatot);
 void Chatot_invalidate(SOUND_CHATOT *chatot);
 s8 *Chatot_GetData(SOUND_CHATOT *chatot);
 void Chatot_Decode(s8 *dest, const s8 *data);
