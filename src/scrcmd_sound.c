@@ -153,7 +153,7 @@ BOOL ScrNative_WaitFanfare(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_ChatotHasCry(SCRIPTCONTEXT *ctx) {
     u16 *retPtr = ScriptGetVarPointer(ctx);
     SOUND_CHATOT *chatot = Sav2_Chatot_Get(ctx->fsys->savedata);
-    if (Chatot_checkCry(chatot) == TRUE) {
+    if (Chatot_CheckCry(chatot) == TRUE) {
         *retPtr = TRUE;
         return FALSE;
     } else {
@@ -165,7 +165,7 @@ BOOL ScrCmd_ChatotHasCry(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_ChatotStartRecording(SCRIPTCONTEXT *ctx) {
     u16 *retPtr = ScriptGetVarPointer(ctx);
     GF_ASSERT(sub_02005518());
-    if (!Chatot_startRecording()) {
+    if (!Chatot_StartRecording()) {
         *retPtr = TRUE;
         return FALSE;
     } else {
@@ -175,13 +175,13 @@ BOOL ScrCmd_ChatotStartRecording(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_ChatotStopRecording(SCRIPTCONTEXT *ctx) {
-    Chatot_stopRecording();
+    Chatot_StopRecording();
     return TRUE;
 }
 
 BOOL ScrCmd_ChatotSaveRecording(SCRIPTCONTEXT *ctx) {
     SOUND_CHATOT *chatot = Sav2_Chatot_Get(ctx->fsys->savedata);
-    Chatot_saveRecording(chatot);
+    Chatot_SaveRecording(chatot);
     return TRUE;
 }
 
