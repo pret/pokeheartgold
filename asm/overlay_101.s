@@ -30286,8 +30286,8 @@ RadioShow_PokemonMusic_teardown: ; 0x021F6040
 	.balign 4, 0
 	thumb_func_end RadioShow_PokemonMusic_teardown
 
-	thumb_func_start RadioShow_PokemonMusic_print
-RadioShow_PokemonMusic_print: ; 0x021F6060
+	thumb_func_start RadioShow_PokemonMusic_Print
+RadioShow_PokemonMusic_Print: ; 0x021F6060
 	push {r3, r4, r5, lr}
 	sub sp, #0x10
 	add r5, r0, #0
@@ -30377,7 +30377,7 @@ _021F610E:
 	mov r0, #0
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
-	thumb_func_end RadioShow_PokemonMusic_print
+	thumb_func_end RadioShow_PokemonMusic_Print
 
 	thumb_func_start RadioShow_PokemonMusic_InitGMM
 RadioShow_PokemonMusic_InitGMM: ; 0x021F6114
@@ -30451,11 +30451,11 @@ RadioShow_PokeFlute_teardown: ; 0x021F6180
 	.balign 4, 0
 	thumb_func_end RadioShow_PokeFlute_teardown
 
-	thumb_func_start RadioShow_PokeFlute_print
-RadioShow_PokeFlute_print: ; 0x021F61A0
+	thumb_func_start RadioShow_PokeFlute_Print
+RadioShow_PokeFlute_Print: ; 0x021F61A0
 	mov r0, #0
 	bx lr
-	thumb_func_end RadioShow_PokeFlute_print
+	thumb_func_end RadioShow_PokeFlute_Print
 
 	thumb_func_start ov101_021F61A4
 ov101_021F61A4: ; 0x021F61A4
@@ -30528,11 +30528,11 @@ RadioShow_Unown_teardown: ; 0x021F6210
 	.balign 4, 0
 	thumb_func_end RadioShow_Unown_teardown
 
-	thumb_func_start RadioShow_Unown_print
-RadioShow_Unown_print: ; 0x021F6230
+	thumb_func_start RadioShow_Unown_Print
+RadioShow_Unown_Print: ; 0x021F6230
 	mov r0, #0
 	bx lr
-	thumb_func_end RadioShow_Unown_print
+	thumb_func_end RadioShow_Unown_Print
 
 	thumb_func_start RadioShow_Unown_Init
 RadioShow_Unown_Init: ; 0x021F6234
@@ -30607,8 +30607,8 @@ RadioShow_TeamRocket_teardown: ; 0x021F62A4
 	.balign 4, 0
 	thumb_func_end RadioShow_TeamRocket_teardown
 
-	thumb_func_start RadioShow_TeamRocket_print
-RadioShow_TeamRocket_print: ; 0x021F62C4
+	thumb_func_start RadioShow_TeamRocket_Print
+RadioShow_TeamRocket_Print: ; 0x021F62C4
 	push {r4, lr}
 	ldr r4, [r0, #0x1c]
 	ldrb r1, [r4, #4]
@@ -30634,7 +30634,7 @@ _021F62EE:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end RadioShow_TeamRocket_print
+	thumb_func_end RadioShow_TeamRocket_Print
 
 	thumb_func_start RadioShow_TeamRocket_Init
 RadioShow_TeamRocket_Init: ; 0x021F62F4
@@ -30714,8 +30714,8 @@ _021F6372:
 	pop {r4, pc}
 	thumb_func_end RadioShow_SerialRadioDrama_teardown
 
-	thumb_func_start RadioShow_SerialRadioDrama_print
-RadioShow_SerialRadioDrama_print: ; 0x021F638C
+	thumb_func_start RadioShow_SerialRadioDrama_Print
+RadioShow_SerialRadioDrama_Print: ; 0x021F638C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r4, [r5, #0x1c]
@@ -30790,7 +30790,7 @@ _021F6402:
 _021F641C:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end RadioShow_SerialRadioDrama_print
+	thumb_func_end RadioShow_SerialRadioDrama_Print
 
 	thumb_func_start RadioShow_SerialRadioDrama_Init
 RadioShow_SerialRadioDrama_Init: ; 0x021F6420
@@ -30883,8 +30883,8 @@ RadioShow_Commercials_teardown: ; 0x021F64B0
 	.balign 4, 0
 	thumb_func_end RadioShow_Commercials_teardown
 
-	thumb_func_start RadioShow_Commercials_print
-RadioShow_Commercials_print: ; 0x021F64D0
+	thumb_func_start RadioShow_Commercials_Print
+RadioShow_Commercials_Print: ; 0x021F64D0
 	push {r4, lr}
 	ldr r4, [r0, #0x1c]
 	ldrh r1, [r4, #4]
@@ -30920,7 +30920,7 @@ _021F6504:
 _021F6510:
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end RadioShow_Commercials_print
+	thumb_func_end RadioShow_Commercials_Print
 
 	thumb_func_start RadioShow_Commercials_Init
 RadioShow_Commercials_Init: ; 0x021F6514
@@ -31092,8 +31092,8 @@ RadioShow_PokemonSearchParty_teardown: ; 0x021F6658
 	.balign 4, 0
 	thumb_func_end RadioShow_PokemonSearchParty_teardown
 
-	thumb_func_start RadioShow_PokemonSearchParty_print
-RadioShow_PokemonSearchParty_print: ; 0x021F6678
+	thumb_func_start RadioShow_PokemonSearchParty_Print
+RadioShow_PokemonSearchParty_Print: ; 0x021F6678
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r4, [r5, #0x1c]
@@ -31170,7 +31170,7 @@ _021F66F2:
 _021F670C:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end RadioShow_PokemonSearchParty_print
+	thumb_func_end RadioShow_PokemonSearchParty_Print
 
 	thumb_func_start RadioShow_PokemonSearchParty_Init
 RadioShow_PokemonSearchParty_Init: ; 0x021F6710
@@ -31336,8 +31336,8 @@ RadioShow_BuenasPassword_teardown: ; 0x021F6840
 	.balign 4, 0
 	thumb_func_end RadioShow_BuenasPassword_teardown
 
-	thumb_func_start RadioShow_BuenasPassword_print
-RadioShow_BuenasPassword_print: ; 0x021F6860
+	thumb_func_start RadioShow_BuenasPassword_Print
+RadioShow_BuenasPassword_Print: ; 0x021F6860
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r4, [r5, #0x1c]
@@ -31419,7 +31419,7 @@ _021F68FC:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021F6900: .word FLAG_DAILY_HEARD_BUENAS_PASSWORD
-	thumb_func_end RadioShow_BuenasPassword_print
+	thumb_func_end RadioShow_BuenasPassword_Print
 
 	thumb_func_start RadioShow_BuenasPassword_Init
 RadioShow_BuenasPassword_Init: ; 0x021F6904
@@ -31541,8 +31541,8 @@ RadioShow_ThatTownThesePeople_teardown: ; 0x021F69E0
 	.balign 4, 0
 	thumb_func_end RadioShow_ThatTownThesePeople_teardown
 
-	thumb_func_start RadioShow_ThatTownThesePeople_print
-RadioShow_ThatTownThesePeople_print: ; 0x021F6A00
+	thumb_func_start RadioShow_ThatTownThesePeople_Print
+RadioShow_ThatTownThesePeople_Print: ; 0x021F6A00
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r4, [r5, #0x1c]
@@ -31631,7 +31631,7 @@ _021F6A8E:
 _021F6AA8:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end RadioShow_ThatTownThesePeople_print
+	thumb_func_end RadioShow_ThatTownThesePeople_Print
 
 	thumb_func_start RadioShow_ThatTownThesePeople_Init
 RadioShow_ThatTownThesePeople_Init: ; 0x021F6AAC
@@ -31806,8 +31806,8 @@ RadioShow_TrainerProfiles_teardown: ; 0x021F6BE4
 	.balign 4, 0
 	thumb_func_end RadioShow_TrainerProfiles_teardown
 
-	thumb_func_start RadioShow_TrainerProfiles_print
-RadioShow_TrainerProfiles_print: ; 0x021F6C04
+	thumb_func_start RadioShow_TrainerProfiles_Print
+RadioShow_TrainerProfiles_Print: ; 0x021F6C04
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r4, [r5, #0x1c]
@@ -31896,7 +31896,7 @@ _021F6C92:
 _021F6CAC:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end RadioShow_TrainerProfiles_print
+	thumb_func_end RadioShow_TrainerProfiles_Print
 
 	thumb_func_start RadioShow_TrainerProfiles_Init
 RadioShow_TrainerProfiles_Init: ; 0x021F6CB0
@@ -32022,8 +32022,8 @@ RadioShow_PokemonTalk_teardown: ; 0x021F6D78
 	pop {r4, pc}
 	thumb_func_end RadioShow_PokemonTalk_teardown
 
-	thumb_func_start RadioShow_PokemonTalk_print
-RadioShow_PokemonTalk_print: ; 0x021F6D98
+	thumb_func_start RadioShow_PokemonTalk_Print
+RadioShow_PokemonTalk_Print: ; 0x021F6D98
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r6, r0, #0
@@ -32211,7 +32211,7 @@ _021F6F0C:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end RadioShow_PokemonTalk_print
+	thumb_func_end RadioShow_PokemonTalk_Print
 
 	thumb_func_start RadioShow_PokemonTalk_Init
 RadioShow_PokemonTalk_Init: ; 0x021F6F14
@@ -32732,11 +32732,11 @@ RadioShow_MahoganySignal_teardown: ; 0x021F7300
 	.balign 4, 0
 	thumb_func_end RadioShow_MahoganySignal_teardown
 
-	thumb_func_start RadioShow_MahoganySignal_print
-RadioShow_MahoganySignal_print: ; 0x021F7320
+	thumb_func_start RadioShow_MahoganySignal_Print
+RadioShow_MahoganySignal_Print: ; 0x021F7320
 	mov r0, #0
 	bx lr
-	thumb_func_end RadioShow_MahoganySignal_print
+	thumb_func_end RadioShow_MahoganySignal_Print
 
 	thumb_func_start RadioShow_MahoganySignal_Init
 RadioShow_MahoganySignal_Init: ; 0x021F7324
@@ -33378,18 +33378,18 @@ ov101_021F89D8:
 	.byte 0xFF, 0x00, 0x00, 0x00
 
 ov101_021F8A04: ; 0x021F8A04
-	.word RadioShow_PokemonMusic_setup, RadioShow_PokemonMusic_print, RadioShow_PokemonMusic_teardown ; RADIO_STATION_POKEMON_MUSIC
-	.word RadioShow_PokemonTalk_setup, RadioShow_PokemonTalk_print, RadioShow_PokemonTalk_teardown ; RADIO_STATION_POKEMON_TALK
-	.word RadioShow_PokemonSearchParty_setup, RadioShow_PokemonSearchParty_print, RadioShow_PokemonSearchParty_teardown ; RADIO_STATION_POKEMON_SEARCH_PARTY
-	.word RadioShow_SerialRadioDrama_setup, RadioShow_SerialRadioDrama_print, RadioShow_SerialRadioDrama_teardown ; RADIO_STATION_SERIAL_RADIO_DRAMA
-	.word RadioShow_BuenasPassword_setup, RadioShow_BuenasPassword_print, RadioShow_BuenasPassword_teardown ; RADIO_STATION_BUENAS_PASSWORD
-	.word RadioShow_TrainerProfiles_setup, RadioShow_TrainerProfiles_print, RadioShow_TrainerProfiles_teardown ; RADIO_STATION_TRAINER_PROFILES
-	.word RadioShow_ThatTownThesePeople_setup, RadioShow_ThatTownThesePeople_print, RadioShow_ThatTownThesePeople_teardown ; RADIO_STATION_THAT_TOWN_THESE_PEOPLE
-	.word RadioShow_PokeFlute_setup, RadioShow_PokeFlute_print, RadioShow_PokeFlute_teardown ; RADIO_STATION_POKE_FLUTE
-	.word RadioShow_Unown_setup, RadioShow_Unown_print, RadioShow_Unown_teardown ; RADIO_STATION_UNOWN
-	.word RadioShow_TeamRocket_setup, RadioShow_TeamRocket_print, RadioShow_TeamRocket_teardown ; RADIO_STATION_TEAM_ROCKET
-	.word RadioShow_MahoganySignal_setup, RadioShow_MahoganySignal_print, RadioShow_MahoganySignal_teardown ; RADIO_STATION_MAHOGANY_SIGNAL
-	.word RadioShow_Commercials_setup, RadioShow_Commercials_print, RadioShow_Commercials_teardown ; RADIO_STATION_COMMERCIALS
+	.word RadioShow_PokemonMusic_setup, RadioShow_PokemonMusic_Print, RadioShow_PokemonMusic_teardown ; RADIO_STATION_POKEMON_MUSIC
+	.word RadioShow_PokemonTalk_setup, RadioShow_PokemonTalk_Print, RadioShow_PokemonTalk_teardown ; RADIO_STATION_POKEMON_TALK
+	.word RadioShow_PokemonSearchParty_setup, RadioShow_PokemonSearchParty_Print, RadioShow_PokemonSearchParty_teardown ; RADIO_STATION_POKEMON_SEARCH_PARTY
+	.word RadioShow_SerialRadioDrama_setup, RadioShow_SerialRadioDrama_Print, RadioShow_SerialRadioDrama_teardown ; RADIO_STATION_SERIAL_RADIO_DRAMA
+	.word RadioShow_BuenasPassword_setup, RadioShow_BuenasPassword_Print, RadioShow_BuenasPassword_teardown ; RADIO_STATION_BUENAS_PASSWORD
+	.word RadioShow_TrainerProfiles_setup, RadioShow_TrainerProfiles_Print, RadioShow_TrainerProfiles_teardown ; RADIO_STATION_TRAINER_PROFILES
+	.word RadioShow_ThatTownThesePeople_setup, RadioShow_ThatTownThesePeople_Print, RadioShow_ThatTownThesePeople_teardown ; RADIO_STATION_THAT_TOWN_THESE_PEOPLE
+	.word RadioShow_PokeFlute_setup, RadioShow_PokeFlute_Print, RadioShow_PokeFlute_teardown ; RADIO_STATION_POKE_FLUTE
+	.word RadioShow_Unown_setup, RadioShow_Unown_Print, RadioShow_Unown_teardown ; RADIO_STATION_UNOWN
+	.word RadioShow_TeamRocket_setup, RadioShow_TeamRocket_Print, RadioShow_TeamRocket_teardown ; RADIO_STATION_TEAM_ROCKET
+	.word RadioShow_MahoganySignal_setup, RadioShow_MahoganySignal_Print, RadioShow_MahoganySignal_teardown ; RADIO_STATION_MAHOGANY_SIGNAL
+	.word RadioShow_Commercials_setup, RadioShow_Commercials_Print, RadioShow_Commercials_teardown ; RADIO_STATION_COMMERCIALS
 	; file boundary
 ov101_021F8A94:
 	.short SEQ_GS_RADIO_MARCH, SEQ_GS_RADIO_KOMORIUTA, SEQ_GS_RADIO_R_101, SEQ_GS_RADIO_R_201
