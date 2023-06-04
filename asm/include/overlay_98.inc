@@ -7,7 +7,7 @@
 .public PaletteData_Init
 .public PaletteData_Free
 .public sub_02003F04
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_GXLoadPal
 .public GfGfxLoader_GetCharDataFromOpenNarc

@@ -733,7 +733,7 @@ ov86_021E5ECC: ; 0x021E5ECC
 	add r6, r1, #0
 	mov r0, #0xb7
 	mov r1, #0x79
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -799,7 +799,7 @@ ov86_021E5F58: ; 0x021E5F58
 	add r6, r1, #0
 	mov r0, #0xb7
 	mov r1, #0x79
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -2681,7 +2681,7 @@ ov86_021E6E98: ; 0x021E6E98
 	bl G2dRenderer_SetSubSurfaceCoords
 	mov r0, #0xb8
 	mov r1, #0x79
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #1
 	str r0, [sp]

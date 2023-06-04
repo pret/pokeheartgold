@@ -12,7 +12,7 @@
 .public OverlayManager_GetArgs
 .public ReadWholeNarcMemberByIdPair
 .public AllocAndReadWholeNarcMemberByIdPair
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_GXLoadPal
 .public GfGfxLoader_LoadCharDataFromOpenNarc

@@ -5829,7 +5829,7 @@ ov91_0225F0C0: ; 0x0225F0C0
 	bl memset
 	mov r0, #0xc8
 	add r1, r6, #0
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x78
 	add r7, r0, #0
 	str r1, [sp]
@@ -6413,7 +6413,7 @@ ov91_0225F508: ; 0x0225F508
 	bl ov91_0225FCD8
 	mov r0, #0xbd
 	add r1, r4, #0
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	ldr r0, _0225F63C ; =0x00001AB4
 	add r1, r6, #0

@@ -454,7 +454,7 @@ ov105_021E5CA4: ; 0x021E5CA4
 	add r7, r0, #0
 	mov r0, #0xf0
 	mov r1, #0x97
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #4]
 	add r0, r7, #0
 	add r0, #0x80

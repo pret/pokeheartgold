@@ -41,7 +41,7 @@ sub_0207F438: ; 0x0207F438
 	bl sub_0207DAD8
 	mov r0, #3
 	mov r1, #0xc
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	mov r1, #0x82
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -403,7 +403,7 @@ sub_0207F73C: ; 0x0207F73C
 	bl sub_0207DAD8
 	mov r0, #3
 	mov r1, #0xc
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	mov r1, #0x82
 	lsl r1, r1, #4
 	str r0, [r5, r1]

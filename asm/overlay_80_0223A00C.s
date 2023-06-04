@@ -37,7 +37,7 @@ ov80_0223A00C: ; 0x0223A00C
 	mov r1, #0x65
 	strh r0, [r4, #0x2a]
 	mov r0, #0x6d
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #0x24]
 	ldr r1, [r4, #0x20]
 	cmp r1, #0

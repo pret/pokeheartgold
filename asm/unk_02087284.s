@@ -752,7 +752,7 @@ sub_02087878: ; 0x02087878
 	add r4, r1, #0
 	ldr r1, [r5, #0x14]
 	mov r0, #0xbf
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r5]
 	add r0, r5, #0
 	add r1, r4, #0

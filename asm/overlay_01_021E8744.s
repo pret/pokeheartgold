@@ -146,7 +146,7 @@ _021E881E:
 	blt _021E881E
 	mov r0, #0x6a
 	mov r1, #4
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x13
 	lsl r1, r1, #4
 	str r0, [r7, r1]

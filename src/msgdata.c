@@ -47,7 +47,7 @@ static void ReadMsgData_ExistingTable_ExistingArray(MAT *table, u32 num, u16 *de
 }
 
 static void ReadMsgData_NewNarc_ExistingArray(NarcId narc_id, u32 group, u32 num, HeapID heap_id, u16 * dest) {
-    NARC * narc = NARC_ctor(narc_id, heap_id);
+    NARC * narc = NARC_New(narc_id, heap_id);
     u16 header[2];
     MAT_ENTRY alloc;
     if (narc != NULL) {
@@ -109,7 +109,7 @@ static STRING * ReadMsgData_ExistingTable_NewString(MAT * table, u32 num, HeapID
 }
 
 void ReadMsgData_NewNarc_ExistingString(NarcId narc_id, s32 group, u32 num, HeapID heap_id, STRING * dest) {
-    NARC * narc = NARC_ctor(narc_id, heap_id);
+    NARC * narc = NARC_New(narc_id, heap_id);
     if (narc != NULL) {
         ReadMsgData_ExistingNarc_ExistingString(narc, group, num, heap_id, dest);
         NARC_dtor(narc);
@@ -142,7 +142,7 @@ static void ReadMsgData_ExistingNarc_ExistingString(NARC * narc, u32 group, u32 
 }
 
 STRING * ReadMsgData_NewNarc_NewString(NarcId narc_id, u32 group, u32 num, HeapID heap_id) {
-    NARC * narc = NARC_ctor(narc_id, heap_id);
+    NARC * narc = NARC_New(narc_id, heap_id);
     STRING * string;
     if (narc != NULL) {
         string = ReadMsgData_ExistingNarc_NewString(narc, group, num, heap_id);
@@ -202,7 +202,7 @@ MSGDATA * NewMsgDataFromNarc(MsgDataLoadType type, NarcId narc_id, s32 file_id, 
                 return NULL;
             }
         } else {
-            msgData->lazy = NARC_ctor(narc_id, heap_id);
+            msgData->lazy = NARC_New(narc_id, heap_id);
         }
         msgData->type = (u16)type;
         msgData->narc_id = (u16)narc_id;

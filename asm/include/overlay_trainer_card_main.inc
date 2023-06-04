@@ -13,7 +13,7 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public NARC_AllocAndReadWholeMember
 .public GfGfxLoader_LoadCharData

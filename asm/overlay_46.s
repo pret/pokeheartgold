@@ -1054,7 +1054,7 @@ _02258FAE:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x58
 	add r1, r6, #0
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x2c]
 	ldr r0, [sp, #0x10]
 	mov r2, #0x33

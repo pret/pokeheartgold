@@ -1416,7 +1416,7 @@ ov80_0222C820: ; 0x0222C820
 	str r1, [sp, #4]
 	ldr r1, [r4, #0x34]
 	mov r0, #0xb8
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 _0222C848:
 	add r0, r6, #0
@@ -6707,7 +6707,7 @@ ov80_0222F030: ; 0x0222F030
 	add r1, r2, #0
 	str r2, [sp, #0x24]
 	add r4, r3, #0
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x30]
 	mov r0, #0
 	str r0, [sp]
@@ -7072,7 +7072,7 @@ ov80_0222F33C: ; 0x0222F33C
 	add r5, r0, #0
 	mov r0, #0x15
 	mov r1, #0x65
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	bl sub_0207CAA0
 	str r4, [sp]

@@ -3173,7 +3173,7 @@ ov59_02239604: ; 0x02239604
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0xdc
-	bl NARC_ctor
+	bl NARC_New
 	mov r2, #0
 	str r2, [sp]
 	ldr r1, [r5]
@@ -3527,7 +3527,7 @@ ov59_022398CC: ; 0x022398CC
 	ldr r1, [r6]
 	add r5, r0, r7
 	ldrh r0, [r0, r7]
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	mov r1, #0xa5
 	lsl r1, r1, #2
 	str r0, [r6, r1]
@@ -7318,7 +7318,7 @@ ov59_0223B590: ; 0x0223B590
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0xf4
-	bl NARC_ctor
+	bl NARC_New
 	mov r2, #0
 	str r2, [sp]
 	ldr r1, [r5]

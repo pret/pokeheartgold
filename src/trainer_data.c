@@ -79,7 +79,7 @@ BOOL TrainerMessageWithIdPairExists(u32 trainer_idx, u32 msg_id, HeapID heap_id)
 
     trTblSize = GetNarcMemberSizeByIdPair(NARC_poketool_trmsg_trtbl, 0);
     ReadFromNarcMemberByIdPair(&rdbuf[0], NARC_poketool_trmsg_trtblofs, 0, trainer_idx * 2, 2);
-    trTblNarc = NARC_ctor(NARC_poketool_trmsg_trtbl, heap_id);
+    trTblNarc = NARC_New(NARC_poketool_trmsg_trtbl, heap_id);
     while (rdbuf[0] != trTblSize) {
         NARC_ReadFromMember(trTblNarc, 0, rdbuf[0], 4, &rdbuf[1]);
         if (rdbuf[1] == trainer_idx && rdbuf[2] == msg_id) {
@@ -101,7 +101,7 @@ void GetTrainerMessageByIdPair(u32 trainer_idx, u32 msg_id, STRING * str, HeapID
 
     trTblSize = GetNarcMemberSizeByIdPair(NARC_poketool_trmsg_trtbl, 0);
     ReadFromNarcMemberByIdPair(&rdbuf[0], NARC_poketool_trmsg_trtblofs, 0, trainer_idx * 2, 2);
-    trTblNarc = NARC_ctor(NARC_poketool_trmsg_trtbl, heap_id);
+    trTblNarc = NARC_New(NARC_poketool_trmsg_trtbl, heap_id);
     while (rdbuf[0] != trTblSize) {
         NARC_ReadFromMember(trTblNarc, 0, rdbuf[0], 4, &rdbuf[1]);
         if (rdbuf[1] == trainer_idx && rdbuf[2] == msg_id) {

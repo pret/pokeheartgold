@@ -1370,7 +1370,7 @@ ov75_02247450: ; 0x02247450
 	mov r1, #0x74
 	str r0, [sp, #0x30]
 	mov r0, #0x58
-	bl NARC_ctor
+	bl NARC_New
 	mov r2, #0
 	str r2, [sp]
 	mov r1, #0x74
@@ -1625,7 +1625,7 @@ _02247636:
 	bl NARC_dtor
 	mov r0, #0xc7
 	mov r1, #0x74
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #8
 	mov r1, #0
@@ -1995,7 +1995,7 @@ _02247912:
 	bl AddWindowParameterized
 	add r0, r7, #0
 	mov r1, #0x74
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	add r1, r5, #0
 	add r1, #0xa0
 	mov r6, #0

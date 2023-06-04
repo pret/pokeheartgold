@@ -8052,7 +8052,7 @@ ov60_021E99B8: ; 0x021E99B8
 	mov r0, #0x42
 	lsl r0, r0, #2
 	mov r1, #0x4a
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x18]
 	mov r1, #7
 	ldr r0, [sp, #0xc]

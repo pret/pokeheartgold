@@ -4397,7 +4397,7 @@ ov112_021E7B18: ; 0x021E7B18
 	add r5, r0, #0
 	mov r0, #0xf9
 	mov r1, #0x9a
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -7681,7 +7681,7 @@ ov112_021E98A4: ; 0x021E98A4
 	add r5, r0, #0
 	mov r0, #0xf9
 	mov r1, #0x9a
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #5
 	mov r1, #0
@@ -8898,7 +8898,7 @@ ov112_021EA2C4: ; 0x021EA2C4
 	add r5, r0, #0
 	mov r0, #0xf9
 	mov r1, #0x9a
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -24987,7 +24987,7 @@ _021F2124:
 	str r4, [r0, #4]
 	mov r0, #0x51
 	add r1, r7, #0
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x28]
 	add r0, r4, #0
 	add r1, r6, #0
@@ -26707,7 +26707,7 @@ _021F2DF4:
 	bl GX_SwapDisplay
 	ldr r1, [r4, #4]
 	mov r0, #0xfb
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #0x10]
 	add r0, r4, #0
 	bl ov112_021F179C

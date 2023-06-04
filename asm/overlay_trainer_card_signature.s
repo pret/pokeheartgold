@@ -59,7 +59,7 @@ _021E80D6:
 	str r0, [r4]
 	mov r0, #0x5b
 	mov r1, #0x27
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	mov r0, #0x27
 	bl MessageFormat_new

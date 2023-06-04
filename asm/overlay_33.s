@@ -412,7 +412,7 @@ ov33_0225D84C: ; 0x0225D84C
 	add r5, r0, #0
 	mov r0, #0xef
 	mov r1, #8
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0xa0
 	str r1, [sp]
 	mov r1, #8

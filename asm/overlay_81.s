@@ -5873,7 +5873,7 @@ ov81_02240D64: ; 0x02240D64
 	add r5, r0, #0
 	mov r0, #0xb7
 	mov r1, #0x64
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0xf7
 	lsl r1, r1, #2
 	str r0, [r5, r1]

@@ -2390,7 +2390,7 @@ ov83_0223F200: ; 0x0223F200
 	add r5, r0, #0
 	mov r0, #0xb7
 	mov r1, #0x6b
-	bl NARC_ctor
+	bl NARC_New
 	ldr r1, _0223F594 ; =0x000007A8
 	str r0, [r5, r1]
 	add r0, r5, #0
@@ -5467,7 +5467,7 @@ _02240B98:
 	ldr r0, _02240C34 ; =0x00000861
 	mov r1, #0x6b
 	ldrb r0, [r5, r0]
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r1, _02240C40 ; =0x000004DC
 	mov r4, #0
 	str r0, [r5, r1]
@@ -9402,7 +9402,7 @@ ov83_02242BAC: ; 0x02242BAC
 	add r6, r0, #0
 	mov r0, #3
 	mov r1, #0x6b
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r1, _02242BE8 ; =0x00000844
 	ldr r5, _02242BEC ; =ov83_02247D6C
 	str r0, [r6, r1]
@@ -9437,7 +9437,7 @@ ov83_02242BF0: ; 0x02242BF0
 	add r4, r0, #0
 	mov r0, #5
 	mov r1, #0x6b
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r1, _02242C9C ; =0x00000844
 	mov r2, #0
 	str r0, [r4, r1]
@@ -9531,7 +9531,7 @@ ov83_02242CAC: ; 0x02242CAC
 	add r5, r0, #0
 	mov r0, #4
 	mov r1, #0x6b
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r1, _02242D4C ; =0x00000844
 	mov r2, #1
 	str r0, [r5, r1]
@@ -11858,7 +11858,7 @@ ov83_02243FD4: ; 0x02243FD4
 	add r5, r0, #0
 	mov r0, #0xb7
 	mov r1, #0x6b
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x56
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -17132,7 +17132,7 @@ ov83_02246AA4: ; 0x02246AA4
 	mov r0, #4
 	mov r1, #0x6b
 	mov r4, #0
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r1, _02246B5C ; =0x000005FC
 	mov r2, #2
 	str r0, [r5, r1]
@@ -17227,7 +17227,7 @@ ov83_02246B6C: ; 0x02246B6C
 	mov r0, #4
 	mov r1, #0x6b
 	mov r4, #0
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r1, _02246C1C ; =0x000005FC
 	mov r2, #2
 	str r0, [r5, r1]
@@ -17319,7 +17319,7 @@ ov83_02246C2C: ; 0x02246C2C
 	add r5, r0, #0
 	mov r0, #3
 	mov r1, #0x6b
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r1, _02246C6C ; =0x000005FC
 	mov r4, #0
 	str r0, [r5, r1]
@@ -17669,7 +17669,7 @@ _02246E4C:
 	str r0, [r5, r1]
 	mov r0, #0x12
 	mov r1, #0x6b
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r5, #0
 	add r7, r0, #0
 	mov r4, #4
@@ -17816,7 +17816,7 @@ _02246EFC:
 	bl ov83_02247314
 	mov r0, #0x14
 	mov r1, #0x6b
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	bl sub_02074490
 	add r2, r0, #0
@@ -18182,7 +18182,7 @@ ov83_02247314: ; 0x02247314
 	add r5, r0, #0
 	mov r0, #0x15
 	mov r1, #0x6b
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	bl sub_0207CA9C
 	add r2, r0, #0
@@ -18260,7 +18260,7 @@ ov83_022473BC: ; 0x022473BC
 	add r5, r0, #0
 	mov r0, #8
 	mov r1, #0x6b
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #2
 	str r0, [sp]

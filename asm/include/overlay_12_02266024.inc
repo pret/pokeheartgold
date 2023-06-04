@@ -13,7 +13,7 @@
 .public sub_02003B44
 .public sub_02003E5C
 .public PlaySE
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_GetCharData

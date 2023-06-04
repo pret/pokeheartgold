@@ -9700,7 +9700,7 @@ _0226AC84:
 	add r6, r0, #0
 	mov r0, #8
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	mov r0, #1
 	str r0, [sp]

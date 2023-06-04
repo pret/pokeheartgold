@@ -5,7 +5,7 @@
 .public LoadFontPal0
 .public FontID_String_GetCenterAlignmentX
 .public PlaySE
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public NARC_ReadWholeMember
 .public GfGfxLoader_LoadCharData

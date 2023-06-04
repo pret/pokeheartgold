@@ -13,7 +13,7 @@
 .public sub_02007200
 .public sub_02007234
 .public AllocAndReadWholeNarcMemberByIdPair
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public NARC_AllocAndReadWholeMember
 .public GfGfxLoader_LoadCharData

@@ -10,7 +10,7 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public sub_0200D034
 .public sub_0200D108

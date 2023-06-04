@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public sub_02003E5C
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public NewString_ReadMsgData
 .public BufferBoxMonNickname

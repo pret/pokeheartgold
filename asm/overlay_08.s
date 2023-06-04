@@ -2194,7 +2194,7 @@ ov08_0221CF38: ; 0x0221CF38
 	ldr r1, [r5]
 	mov r0, #0x47
 	ldr r1, [r1, #0xc]
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -8792,7 +8792,7 @@ ov08_02220668: ; 0x02220668
 	ldr r1, [r6]
 	mov r0, #0x14
 	ldr r1, [r1, #0xc]
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	ldr r0, [r6]
 	ldr r0, [r0, #8]
@@ -8904,7 +8904,7 @@ ov08_02220750: ; 0x02220750
 	add r4, r0, #0
 	ldr r1, [r1, #0xc]
 	mov r0, #0x27
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	bl sub_0208AD58
 	str r6, [sp]
@@ -9035,7 +9035,7 @@ ov08_02220878: ; 0x02220878
 	ldr r1, [r5]
 	mov r0, #0x15
 	ldr r1, [r1, #0xc]
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
@@ -14107,7 +14107,7 @@ ov08_022230F4: ; 0x022230F4
 	ldr r1, [r5]
 	mov r0, #0x4d
 	ldr r1, [r1, #0xc]
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -15706,7 +15706,7 @@ ov08_02223D80: ; 0x02223D80
 	ldr r1, [r6]
 	mov r0, #0x12
 	ldr r1, [r1, #0xc]
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	ldr r0, [r6]
 	ldr r0, [r0]

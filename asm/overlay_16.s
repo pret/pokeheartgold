@@ -572,12 +572,12 @@ ov16_02201820: ; 0x02201820
 
 	thumb_func_start ov16_02201840
 ov16_02201840: ; 0x02201840
-	ldr r3, _02201848 ; =NARC_ctor
+	ldr r3, _02201848 ; =NARC_New
 	add r1, r0, #0
 	mov r0, #0x42
 	bx r3
 	.balign 4, 0
-_02201848: .word NARC_ctor
+_02201848: .word NARC_New
 	thumb_func_end ov16_02201840
 
 	thumb_func_start ov16_0220184C

@@ -10,7 +10,7 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public NARC_ReadWholeMember
 .public GfGfxLoader_LoadCharDataFromOpenNarc
@@ -88,7 +88,7 @@
 .public sub_02013950
 .public sub_020139C8
 .public GF_RTC_GetTimeOfDayByHour
-.public ListMenuItems_ctor
+.public ListMenuItems_New
 .public ListMenuItems_dtor
 .public ListMenuItems_AppendFromMsgData
 .public sub_0201660C

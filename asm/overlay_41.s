@@ -426,7 +426,7 @@ ov41_02246170: ; 0x02246170
 	stmia r2!, {r0, r1}
 	mov r0, #0x1a
 	mov r1, #0xe
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #6
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -1098,7 +1098,7 @@ ov41_02246670: ; 0x02246670
 	add r4, r0, #0
 	mov r0, #0x1a
 	mov r1, #0xe
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #6
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -11944,7 +11944,7 @@ ov41_0224B6CC: ; 0x0224B6CC
 	ldr r1, [r4, #0x68]
 	add r5, r0, #0
 	mov r0, #0x1a
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #6
 	lsl r1, r1, #6
 	str r0, [r5, r1]

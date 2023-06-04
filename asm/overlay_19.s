@@ -398,7 +398,7 @@ ov19_02259BC0: ; 0x02259BC0
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0xab
-	bl NARC_ctor
+	bl NARC_New
 	mov r3, #0
 	str r3, [sp]
 	ldr r1, [r5]

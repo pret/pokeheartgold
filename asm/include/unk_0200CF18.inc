@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public sub_020032A4
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_LoadFromOpenNarc
 .public CreateSpriteResourcesHeader

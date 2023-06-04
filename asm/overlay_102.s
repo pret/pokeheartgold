@@ -4102,7 +4102,7 @@ ov102_021E94CC: ; 0x021E94CC
 	str r1, [r0]
 	mov r0, #0x4c
 	mov r1, #0x23
-	bl NARC_ctor
+	bl NARC_New
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ov102_021E978C

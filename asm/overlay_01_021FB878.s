@@ -54,24 +54,24 @@ ov01_021FB888: ; 0x021FB888
 	beq _021FB8D8
 	mov r0, #0x6b
 	mov r1, #4
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x23
 	lsl r1, r1, #6
 	str r0, [r4, r1]
 	mov r0, #0x28
 	mov r1, #4
-	bl NARC_ctor
+	bl NARC_New
 	b _021FB8EE
 _021FB8D8:
 	mov r0, #0x6c
 	mov r1, #4
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x23
 	lsl r1, r1, #6
 	str r0, [r4, r1]
 	mov r0, #0x94
 	mov r1, #4
-	bl NARC_ctor
+	bl NARC_New
 _021FB8EE:
 	ldr r1, _021FB8FC ; =0x000008B8
 	ldr r1, [r4, r1]

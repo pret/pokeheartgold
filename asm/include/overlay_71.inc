@@ -10,7 +10,7 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public GetNarcMemberSizeByIdPair
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_LoadScrnData

@@ -763,7 +763,7 @@ ov100_021E5EB4: ; 0x021E5EB4
 	add r4, r1, #0
 	ldr r1, [r5]
 	mov r0, #0x8f
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	add r0, r4, #0
 	add r0, #0x30
@@ -1014,7 +1014,7 @@ ov100_021E60C4: ; 0x021E60C4
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0x8f
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	ldr r0, [r5]
 	bl PaletteData_Init

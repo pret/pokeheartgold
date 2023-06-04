@@ -881,7 +881,7 @@ ov15_021F9AE4: ; 0x021F9AE4
 	add r4, r0, #0
 	mov r0, #0xf
 	mov r1, #6
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x91
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -9278,7 +9278,7 @@ ov15_021FDD70: ; 0x021FDD70
 	add r7, r0, #0
 	mov r0, #0xf
 	mov r1, #6
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x10]
 	ldr r0, _021FDF14 ; =0x00000808
 	mov r1, #6

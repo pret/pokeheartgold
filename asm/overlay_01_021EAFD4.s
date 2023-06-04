@@ -54,7 +54,7 @@ ov01_021EB00C: ; 0x021EB00C
 	mov r6, #0
 	mov r0, #0x8b
 	mov r1, #4
-	bl NARC_ctor
+	bl NARC_New
 	add r1, r6, #0
 	mov r2, #4
 	add r7, r0, #0

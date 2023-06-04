@@ -42,7 +42,7 @@
 .public LoadUserFrameGfx2
 .public ClearFrameAndWindow2
 .public IsPaletteFadeFinished
-.public ListMenuItems_ctor
+.public ListMenuItems_New
 .public ListMenuItems_dtor
 .public ListMenuItems_AppendFromMsgData
 .public ListMenuItems_AddItem

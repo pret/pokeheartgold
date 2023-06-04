@@ -7136,7 +7136,7 @@ ov74_0222A89C: ; 0x0222A89C
 _0222A8B8:
 	add r0, r7, #0
 	mov r1, #0x54
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	str r0, [r4, #0x7c]
 	mov r0, #0
 	mov r1, #0x1b
@@ -12110,7 +12110,7 @@ _0222D134:
 _0222D144:
 	add r0, r7, #0
 	mov r1, #0x55
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r1, _0222D1C4 ; =0x00002BCC
 	mov r2, #0xf7
 	str r0, [r5, r1]
@@ -15554,7 +15554,7 @@ _0222ED1E:
 _0222ED2E:
 	add r0, r7, #0
 	mov r1, #0x55
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	mov r1, #0xaf
 	lsl r1, r1, #6
 	str r0, [r5, r1]
@@ -22260,7 +22260,7 @@ ov74_02231FF4: ; 0x02231FF4
 	add r6, r0, #0
 	mov r0, #0x14
 	mov r1, #0x4c
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #1
 	str r0, [sp, #0x10]
 	mov r0, #0x4c

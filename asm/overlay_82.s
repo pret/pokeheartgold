@@ -1560,7 +1560,7 @@ ov82_0223E9E8: ; 0x0223E9E8
 	add r5, r0, #0
 	mov r0, #0xb7
 	mov r1, #0x69
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x22
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -3690,7 +3690,7 @@ _0223F996:
 	str r0, [r5, r1]
 	mov r0, #0x14
 	mov r1, #0x69
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x14]
 	bl Pokemon_GetIconNaix

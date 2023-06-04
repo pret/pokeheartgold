@@ -11,7 +11,7 @@
 .public sub_0200E5D4
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
-.public ListMenuItems_ctor
+.public ListMenuItems_New
 .public ListMenuItems_AddItem
 .public AllocFromHeap
 .public FreeToHeapExplicit

@@ -4995,7 +4995,7 @@ ov53_021E816C: ; 0x021E816C
 	add r7, r1, #0
 	mov r0, #0xef
 	add r1, r4, #0
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x20
 	str r1, [sp]
 	mov r1, #0

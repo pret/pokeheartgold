@@ -66,7 +66,7 @@ ov80_02239DD0: ; 0x02239DD0
 	mov r1, #0x65
 	str r4, [r0, #4]
 	mov r0, #0xb7
-	bl NARC_ctor
+	bl NARC_New
 	ldr r5, [sp, #8]
 	ldr r4, _02239EB0 ; =ov80_0223DB2C
 	str r0, [sp, #4]
@@ -100,7 +100,7 @@ _02239DFE:
 	bl NARC_dtor
 	mov r0, #0xb7
 	mov r1, #0x65
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x65
 	str r1, [sp]
 	mov r1, #0xe

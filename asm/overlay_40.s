@@ -30,7 +30,7 @@ ov40_0222B6E0: ; 0x0222B6E0
 	bl GF_CreateVramTransferManager
 	mov r0, #0xbf
 	mov r1, #0x6d
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #0x14]
 	mov r0, #0x6d
 	bl BgConfig_Alloc
@@ -8963,12 +8963,12 @@ _0222FE88: .word 0x000186A0
 
 	thumb_func_start ov40_0222FE8C
 ov40_0222FE8C: ; 0x0222FE8C
-	ldr r3, _0222FE94 ; =NARC_ctor
+	ldr r3, _0222FE94 ; =NARC_New
 	mov r0, #0x14
 	mov r1, #0x6d
 	bx r3
 	.balign 4, 0
-_0222FE94: .word NARC_ctor
+_0222FE94: .word NARC_New
 	thumb_func_end ov40_0222FE8C
 
 	thumb_func_start ov40_0222FE98

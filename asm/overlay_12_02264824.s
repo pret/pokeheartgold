@@ -491,7 +491,7 @@ ov12_02264BCC: ; 0x02264BCC
 	add r5, r0, #0
 	mov r0, #8
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	ldr r0, [r5, #0xc]
 	bl ov12_0223A8E4

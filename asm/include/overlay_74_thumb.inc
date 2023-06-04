@@ -24,7 +24,7 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public ReadWholeNarcMemberByIdPair
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public NARC_ReadWholeMember
 .public GfGfxLoader_LoadCharData
@@ -77,7 +77,7 @@
 .public sub_0200FBF4
 .public sub_02014494
 .public GF_RTC_CopyDate
-.public ListMenuItems_ctor
+.public ListMenuItems_New
 .public ListMenuItems_dtor
 .public ListMenuItems_AppendFromMsgData
 .public sub_02014A08

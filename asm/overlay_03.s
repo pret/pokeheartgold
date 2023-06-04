@@ -758,7 +758,7 @@ ov03_02254420: ; 0x02254420
 	beq _022544E6
 	mov r0, #0x10
 	mov r1, #4
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r4, _022544EC ; =ov03_022598A0
 	mov r5, #0
 	ldr r1, [r4]
@@ -1896,7 +1896,7 @@ ov03_02254D78: ; 0x02254D78
 	beq _02254E52
 	mov r0, #5
 	mov r1, #4
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r4, _02254E58 ; =ov03_022598A0
 	mov r5, #0
 	ldr r1, [r4]
@@ -3937,7 +3937,7 @@ _02255DD4:
 	bne _02255E66
 	add r0, r6, #2
 	mov r1, #4
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	str r0, [r5, #8]
 	mov r3, #1
 	str r3, [sp]
@@ -4155,7 +4155,7 @@ ov03_02255F98: ; 0x02255F98
 	mov r0, #3
 	mov r1, #4
 	ldr r4, _0225603C ; =ov03_02259838
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	str r0, [r5, #0xc]
 	mov r0, #0xa
 	str r0, [sp]

@@ -43,7 +43,7 @@ ov57_022378DC: ; 0x022378DC
 	str r0, [r4]
 	mov r0, #0xb4
 	mov r1, #0x34
-	bl NARC_ctor
+	bl NARC_New
 	ldr r1, _02237AE4 ; =0x0000045C
 	str r0, [r4, r1]
 	ldr r0, [r4]
@@ -2553,7 +2553,7 @@ _02238CA2:
 	asr r0, r0, #1
 	mov r1, #0x34
 	str r0, [sp, #0x14]
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	mov r1, #0x6f
 	lsl r1, r1, #2
 	str r0, [r7, r1]
@@ -5168,7 +5168,7 @@ _0223A120: ; jump table
 _0223A12E:
 	mov r0, #0x57
 	mov r1, #0x34
-	bl NARC_ctor
+	bl NARC_New
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ov57_02238DD0

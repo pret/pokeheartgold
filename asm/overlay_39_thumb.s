@@ -2879,7 +2879,7 @@ ov39_022285CC: ; 0x022285CC
 	ldr r4, [r0, #4]
 	mov r0, #0x58
 	mov r1, #0x7c
-	bl NARC_ctor
+	bl NARC_New
 	mov r2, #0
 	str r2, [sp]
 	mov r1, #0x7c

@@ -528,7 +528,7 @@ ov44_0222A1FC: ; 0x0222A1FC
 	bl SetKeyRepeatTimers
 	mov r0, #0x58
 	mov r1, #0x35
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x20]
 	mov r0, #0x35
 	bl BgConfig_Alloc
@@ -3894,7 +3894,7 @@ _0222BD1A:
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #0x58
 	mov r1, #0x35
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
@@ -4685,7 +4685,7 @@ _0222C388:
 	str r1, [r5, r0]
 	mov r0, #0x58
 	mov r1, #0x35
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	mov r0, #0x57
 	lsl r0, r0, #2
@@ -6775,7 +6775,7 @@ _0222D478:
 	add r0, r7, #1
 	mov r1, #0x35
 	str r2, [r3, #4]
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	mov r1, #0x55
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -7327,7 +7327,7 @@ _0222D908:
 _0222D928:
 	add r0, r7, #0
 	mov r1, #0x35
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	mov r1, #0x55
 	lsl r1, r1, #2
 	mov r6, #0
@@ -7991,7 +7991,7 @@ _0222DE58:
 	str r0, [sp, #0x18]
 	mov r0, #2
 	mov r1, #0x35
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	mov r1, #0x55
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -18818,7 +18818,7 @@ ov44_0223325C: ; 0x0223325C
 	bl GX_EngineBToggleLayers
 	mov r0, #0x58
 	add r1, r4, #0
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x20
 	str r1, [sp]
 	mov r1, #0xe

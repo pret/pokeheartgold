@@ -50,7 +50,7 @@ ov32_0225D520: ; 0x0225D520
 	bl FontID_Alloc
 	ldr r0, _0225D5C8 ; =0x00000105
 	mov r1, #8
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	bl ov32_0225D60C
 	add r0, r6, #0

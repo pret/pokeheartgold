@@ -19,7 +19,7 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public OverlayManager_run
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_GetScrnDataFromOpenNarc
 .public sub_02007FD4
@@ -67,7 +67,7 @@
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
 .public IsPaletteFadeFinished
-.public ListMenuItems_ctor
+.public ListMenuItems_New
 .public ListMenuItems_dtor
 .public ListMenuItems_AppendFromMsgData
 .public sub_0201660C

@@ -502,7 +502,7 @@ static void ov76_021E6170(CreditsAppWork *work) {
         AddCellOrAnimResObjFromNarc(work->_2dGfxResMan[GF_GFX_RES_TYPE_CELL], NARC_a_2_6_3, 2, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_CREDITS);
     work->_2dGfxResObj[GF_GFX_RES_TYPE_ANIM] =
         AddCellOrAnimResObjFromNarc(work->_2dGfxResMan[GF_GFX_RES_TYPE_ANIM], NARC_a_2_6_3, 3, TRUE, 1, GF_GFX_RES_TYPE_ANIM, HEAP_ID_CREDITS);
-    work->cutsceneWork.narc = NARC_ctor(NARC_a_2_6_3, HEAP_ID_CREDITS);
+    work->cutsceneWork.narc = NARC_New(NARC_a_2_6_3, HEAP_ID_CREDITS);
 
     CutsceneWork *cutsceneWork = &work->cutsceneWork;
     NARC **narc = &cutsceneWork->narc;

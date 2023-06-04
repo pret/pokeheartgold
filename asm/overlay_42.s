@@ -22,12 +22,12 @@ ov42_02227060: ; 0x02227060
 	mov r0, #0xb3
 	add r1, r6, #0
 	str r5, [r7, #4]
-	bl NARC_ctor
+	bl NARC_New
 	ldr r1, _02227104 ; =0x00002304
 	str r0, [r7, r1]
 	mov r0, #0xba
 	add r1, r6, #0
-	bl NARC_ctor
+	bl NARC_New
 	ldr r1, _02227108 ; =0x00002308
 	mov r4, #0
 	str r0, [r7, r1]

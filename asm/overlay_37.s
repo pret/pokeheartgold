@@ -87,7 +87,7 @@ _021E5916:
 	str r0, [r4, #8]
 	mov r0, #0x4e
 	mov r1, #0x27
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	add r0, r4, #0
 	add r1, r7, #0

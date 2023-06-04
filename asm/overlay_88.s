@@ -345,7 +345,7 @@ ov88_02258ABC: ; 0x02258ABC
 	add r5, r0, #0
 	mov r0, #0xc6
 	add r4, r1, #0
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #5
 	lsl r1, r1, #6
 	str r0, [r5, r1]

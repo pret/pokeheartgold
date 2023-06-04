@@ -42,7 +42,7 @@ _021E5916:
 	bl CreateHeap
 	mov r0, #0x54
 	mov r1, #0x32
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	ldr r1, _021E5A9C ; =0x00004A8C
 	add r0, r7, #0
@@ -5163,7 +5163,7 @@ ov73_021E8198: ; 0x021E8198
 	add r6, r0, #0
 	mov r0, #0x64
 	mov r1, #0x96
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x14]
 	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
@@ -5854,7 +5854,7 @@ ov73_021E8730: ; 0x021E8730
 	ldr r4, [r0, #4]
 	mov r0, #0x58
 	mov r1, #0x96
-	bl NARC_ctor
+	bl NARC_New
 	mov r2, #0
 	str r2, [sp]
 	mov r1, #0x96

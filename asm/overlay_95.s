@@ -2626,7 +2626,7 @@ ov95_021E6D70: ; 0x021E6D70
 	str r0, [r4, #0x3c]
 	mov r0, #0xb4
 	mov r1, #0x46
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #0x40]
 	mov r0, #0x46
 	bl BgConfig_Alloc
@@ -2981,7 +2981,7 @@ _021E70DA:
 _021E70E2:
 	ldr r1, [r5]
 	mov r0, #0xef
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp]

@@ -18,7 +18,7 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_GXLoadPal
 .public GfGfxLoader_GetCharData
@@ -78,7 +78,7 @@
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_02014510
-.public ListMenuItems_ctor
+.public ListMenuItems_New
 .public ListMenuItems_dtor
 .public ListMenuItems_AppendFromMsgData
 .public sub_0201660C

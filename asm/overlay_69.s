@@ -191,7 +191,7 @@ _021E5A9A:
 	str r0, [r4, r1]
 	ldr r1, [r4]
 	mov r0, #0x7b
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
@@ -974,7 +974,7 @@ ov69_021E6138: ; 0x021E6138
 	ldr r1, [sp, #8]
 	mov r0, #0x62
 	ldr r1, [r1]
-	bl NARC_ctor
+	bl NARC_New
 	ldr r1, [sp, #8]
 	mov r2, #0
 	str r2, [r1, #0xc]
@@ -1926,7 +1926,7 @@ ov69_021E68EC: ; 0x021E68EC
 	bl AddWindow
 	ldrh r0, [r6, #0x10]
 	ldr r1, [r5]
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r1, _021E6980 ; =0x0000C068
 	mov r7, #0
 	str r0, [r5, r1]
@@ -2012,7 +2012,7 @@ ov69_021E6994: ; 0x021E6994
 	str r0, [sp, #8]
 	ldr r1, [r5]
 	add r0, r6, #0
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r1, _021E6A44 ; =0x0000C068
 	mov r4, #0
 	str r0, [r5, r1]

@@ -23,7 +23,7 @@
 .public sub_02003E5C
 .public sub_02004EC4
 .public PlaySE
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public sub_0200B484
 .public sub_0200B5C0

@@ -21,7 +21,7 @@
 .public PlayCry
 .public UnloadOverlayByID
 .public HandleLoadOverlay
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_LoadFromNarc_GetSizeOut
 .public GfGfxLoader_LoadCharDataFromOpenNarc

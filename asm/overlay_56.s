@@ -1340,7 +1340,7 @@ ov56_021E6650: ; 0x021E6650
 	add r0, #0x18
 	str r0, [sp, #0x20]
 	mov r0, #0x4f
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	add r4, r0, #0

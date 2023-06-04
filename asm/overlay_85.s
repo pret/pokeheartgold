@@ -49,7 +49,7 @@ ov85_021E5900: ; 0x021E5900
 	str r0, [r6, #0x24]
 	mov r0, #0xbb
 	mov r1, #0x66
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x36
 	lsl r1, r1, #6
 	str r0, [r6, r1]
@@ -2936,7 +2936,7 @@ ov85_021E6F6C: ; 0x021E6F6C
 	bl sub_0200A080
 	mov r0, #0xd9
 	mov r1, #0x66
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -6487,7 +6487,7 @@ _021E88C8:
 	bl CreateHeap
 	mov r0, #0xd9
 	mov r1, #0x66
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	bne _021E890A
 	bl GF_AssertFail

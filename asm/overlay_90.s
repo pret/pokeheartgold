@@ -591,7 +591,7 @@ ov90_02258BD4: ; 0x02258BD4
 	str r6, [r4, #8]
 	mov r0, #0xc8
 	add r1, r5, #0
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #0xc]
 	add r0, r4, #0
 	add r0, #0x10
@@ -2032,7 +2032,7 @@ ov90_022596C8: ; 0x022596C8
 	add r5, r0, #0
 	mov r0, #0xc8
 	add r4, r1, #0
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x12
 	lsl r1, r1, #4
 	str r1, [sp]
@@ -4289,7 +4289,7 @@ ov90_0225A850: ; 0x0225A850
 	add r5, r0, #0
 	mov r0, #0xc8
 	add r4, r1, #0
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x12
 	lsl r1, r1, #4
 	str r1, [sp]

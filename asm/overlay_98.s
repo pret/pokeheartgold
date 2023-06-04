@@ -46,7 +46,7 @@ ov98_0221E5E0: ; 0x0221E5E0
 	str r0, [r4, #8]
 	ldr r1, [r4]
 	mov r0, #0x14
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #0x10]
 	mov r0, #0
 	mvn r0, r0

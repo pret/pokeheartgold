@@ -68,7 +68,7 @@ _0225D59E:
 _0225D5A6:
 	mov r0, #0xfd
 	mov r1, #8
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	bl ov28_0225D628
 	add r0, r5, #0
@@ -681,7 +681,7 @@ ov28_0225DA74: ; 0x0225DA74
 	add r5, r0, #0
 	mov r0, #0xe
 	mov r1, #8
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #7
 	str r0, [sp]

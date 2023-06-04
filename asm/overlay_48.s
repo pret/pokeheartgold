@@ -300,7 +300,7 @@ ov48_02258A80: ; 0x02258A80
 	mov r0, #0x62
 	add r1, r2, #0
 	str r2, [sp, #0x10]
-	bl NARC_ctor
+	bl NARC_New
 	mov r2, #0
 	str r2, [r5]
 	str r2, [sp]
@@ -1613,7 +1613,7 @@ ov48_02259464: ; 0x02259464
 	add r6, r1, #0
 	mov r0, #0xc0
 	add r1, r4, #0
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x51
 	lsl r1, r1, #2
 	str r0, [r5, r1]

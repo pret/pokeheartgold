@@ -1140,11 +1140,11 @@ ov72_02238194: ; 0x02238194
 	add r5, r0, #0
 	mov r0, #0xef
 	mov r1, #0x43
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x14]
 	mov r0, #0xee
 	mov r1, #0x43
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
@@ -2274,7 +2274,7 @@ ov72_02238B18: ; 0x02238B18
 	bne _02238B86
 	mov r0, #0x58
 	mov r1, #0x43
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #1
 	lsl r1, r1, #8
 	str r1, [sp]
@@ -2319,7 +2319,7 @@ ov72_02238B18: ; 0x02238B18
 _02238B86:
 	mov r0, #0xee
 	mov r1, #0x43
-	bl NARC_ctor
+	bl NARC_New
 	ldr r1, _02238BE8 ; =0x00001304
 	mov r2, #1
 	str r2, [r5, r1]
@@ -2372,7 +2372,7 @@ ov72_02238BEC: ; 0x02238BEC
 	ldr r4, [r0, #4]
 	mov r0, #0x58
 	mov r1, #0x43
-	bl NARC_ctor
+	bl NARC_New
 	mov r2, #0
 	str r2, [sp]
 	mov r1, #0x43
@@ -7193,7 +7193,7 @@ ov72_0223B0C4: ; 0x0223B0C4
 	add r4, r0, #0
 	ldr r1, [r4, #0x28]
 	mov r0, #0xef
-	bl NARC_ctor
+	bl NARC_New
 	add r1, r4, #0
 	add r1, #0x2f
 	ldrb r1, [r1]

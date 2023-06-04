@@ -69,11 +69,11 @@ sub_02088298: ; 0x02088298
 	bl CreateHeap
 	mov r0, #0x27
 	mov r1, #0x13
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	mov r0, #0xa2
 	mov r1, #0x13
-	bl NARC_ctor
+	bl NARC_New
 	add r5, r0, #0
 	ldr r1, _02088414 ; =0x000007D8
 	add r0, r6, #0
@@ -105,7 +105,7 @@ sub_02088298: ; 0x02088298
 	str r0, [r4, r1]
 	mov r0, #0xb4
 	mov r1, #0x13
-	bl NARC_ctor
+	bl NARC_New
 	ldr r1, _02088418 ; =0x000007B8
 	str r0, [r4, r1]
 	mov r0, #0

@@ -274,7 +274,7 @@ ov47_02258A1C: ; 0x02258A1C
 	add r6, r0, #0
 	mov r0, #0xd1
 	add r1, r4, #0
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #5
 	lsl r1, r1, #6
 	str r0, [r5, r1]

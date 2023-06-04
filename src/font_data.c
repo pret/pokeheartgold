@@ -77,7 +77,7 @@ static void FontData_Init(struct FontData *fontData, NarcId narcId, int fileId, 
         {GLYPHSHAPE_8x8, GLYPHSHAPE_8x16},
         {GLYPHSHAPE_16x8, GLYPHSHAPE_16x16}
     };
-    fontData->narc = NARC_ctor(narcId, heapId);
+    fontData->narc = NARC_New(narcId, heapId);
     if (fontData->narc != NULL) {
         NARC_GetMemberImageStartOffset(fontData->narc, fileId, &fontData->gmifOffset);
         NARC_ReadFromAbsolutePos(fontData->narc, fontData->gmifOffset, sizeof(struct FontHeader), &fontData->header);

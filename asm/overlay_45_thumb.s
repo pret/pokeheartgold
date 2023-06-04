@@ -14491,11 +14491,11 @@ _022304E2:
 	str r0, [r4, #0xc]
 	mov r0, #0x51
 	add r1, r7, #0
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x18]
 	mov r0, #0xd1
 	add r1, r7, #0
-	bl NARC_ctor
+	bl NARC_New
 	mov r2, #0
 	ldr r3, [sp, #0xc]
 	str r2, [sp]
@@ -15918,7 +15918,7 @@ ov45_02230F94: ; 0x02230F94
 	add r6, r1, #0
 	mov r0, #0x62
 	add r1, r7, #0
-	bl NARC_ctor
+	bl NARC_New
 	add r1, sp, #0xc
 	str r1, [sp]
 	add r1, r7, #0

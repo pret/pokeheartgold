@@ -3836,7 +3836,7 @@ _021E7A58:
 	bne _021E7A58
 	mov r0, #0x31
 	mov r1, #0x19
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x18]
 	mov r1, #0x8e
 	ldr r0, [sp, #0x14]

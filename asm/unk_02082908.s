@@ -69,7 +69,7 @@ _0208291E:
 	str r0, [r4, r1]
 	mov r0, #0x1f
 	mov r1, #0x12
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	mov r0, #0x12
 	bl MessageFormat_new

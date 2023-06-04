@@ -1619,7 +1619,7 @@ ov101_021E8370: ; 0x021E8370
 	add r6, r1, #0
 	ldr r1, [r5]
 	mov r0, #0x90
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	add r0, r6, #0
 	add r0, #0x1a
@@ -2128,7 +2128,7 @@ ov101_021E8790: ; 0x021E8790
 	add r6, r1, #0
 	ldr r1, [r5]
 	mov r0, #0x90
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r1, #0
 	mov r0, #7
@@ -13466,7 +13466,7 @@ ov101_021EDFF8: ; 0x021EDFF8
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0x90
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #0x42
 	str r0, [sp]
@@ -13872,7 +13872,7 @@ ov101_021EE350: ; 0x021EE350
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #2
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	add r1, r5, #0
 	add r1, #0xc0
 	str r0, [r1]
@@ -15644,7 +15644,7 @@ ov101_021EF130: ; 0x021EF130
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #2
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	str r0, [r5, #0x3c]
 	mov r1, #0x1b
 	add r2, r1, #0
@@ -15730,7 +15730,7 @@ ov101_021EF1D8: ; 0x021EF1D8
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0x91
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	ldrh r0, [r5, #0x12]
 	add r2, r4, #0
@@ -15806,7 +15806,7 @@ ov101_021EF26C: ; 0x021EF26C
 	add r6, r1, #0
 	ldr r1, [r5]
 	mov r0, #0x91
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r1, #0
 	mov r0, #7
@@ -17894,7 +17894,7 @@ ov101_021F0284: ; 0x021F0284
 	bl FontID_Alloc
 	ldr r1, [r5]
 	mov r0, #0x92
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	ldrb r0, [r5, #0x11]
 	add r2, r4, #0
@@ -18015,7 +18015,7 @@ ov101_021F0388: ; 0x021F0388
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0x92
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r1, #0
 	mov r0, #7
@@ -18639,7 +18639,7 @@ _021F088C:
 	ldr r1, [r7]
 	lsl r0, r0, #0x1d
 	lsr r0, r0, #0x1d
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r1, _021F08D8 ; =0x000004E8
 	mov r4, #0
 	str r0, [r6, r1]
@@ -27579,7 +27579,7 @@ ov101_021F4BC8: ; 0x021F4BC8
 	bl FontID_Alloc
 	ldr r1, [r5]
 	mov r0, #0x93
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x25
@@ -27715,7 +27715,7 @@ ov101_021F4CE8: ; 0x021F4CE8
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0x93
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r1, #0
 	mov r0, #7

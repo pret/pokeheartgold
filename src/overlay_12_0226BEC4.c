@@ -28,8 +28,8 @@ static void ov12_0226BF04(SysTask *task, void *_data) {
     case 0:
         GF_ASSERT(unkPtr != NULL);
         {
-            NARC *bgHandleNarc = NARC_ctor(NARC_a_0_0_7, HEAP_ID_BATTLE);
-            NARC *objHandleNarc = NARC_ctor(NARC_a_0_0_8, HEAP_ID_BATTLE);
+            NARC *bgHandleNarc = NARC_New(NARC_a_0_0_7, HEAP_ID_BATTLE);
+            NARC *objHandleNarc = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
             ov12_02266508(bgHandleNarc, objHandleNarc, unkPtr, 18, FALSE, NULL);
             NARC_dtor(bgHandleNarc);
             NARC_dtor(objHandleNarc);

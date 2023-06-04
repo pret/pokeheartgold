@@ -3,7 +3,7 @@
 void ListMenuItems_DestroyMenuStrings(LISTMENUITEM *items);
 LISTMENUITEM *ListMenuItems_SeekEnd(LISTMENUITEM *items, HeapID *heapId_p);
 
-LISTMENUITEM *ListMenuItems_ctor(u32 n, HeapID heapId) {
+LISTMENUITEM *ListMenuItems_New(u32 n, HeapID heapId) {
     int i;
     LISTMENUITEM *ret = AllocFromHeap(heapId, (n + 1) * sizeof(LISTMENUITEM));
     if (ret != NULL) {

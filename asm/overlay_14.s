@@ -11425,14 +11425,14 @@ ov14_021EAFAC: ; 0x021EAFAC
 	bl MI_CpuFill8
 	mov r0, #2
 	mov r1, #0xa
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x45
 	ldr r2, [r4, #0x34]
 	lsl r1, r1, #4
 	str r0, [r2, r1]
 	mov r0, #0x14
 	mov r1, #0xa
-	bl NARC_ctor
+	bl NARC_New
 	ldr r2, [r4, #0x34]
 	ldr r1, _021EB0DC ; =0x00000454
 	str r0, [r2, r1]

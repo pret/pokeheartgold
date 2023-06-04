@@ -7,7 +7,7 @@
 .public PlaySE
 .public sub_02007200
 .public sub_02007234
-.public NARC_ctor
+.public NARC_New
 .public NARC_dtor
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_LoadScrnData

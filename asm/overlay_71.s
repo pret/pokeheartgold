@@ -2118,7 +2118,7 @@ ov71_022478C8: ; 0x022478C8
 	str r0, [r4, #0x7c]
 	mov r0, #0xb4
 	mov r1, #0x39
-	bl NARC_ctor
+	bl NARC_New
 	add r1, r4, #0
 	add r1, #0x80
 	str r0, [r1]
@@ -9209,7 +9209,7 @@ ov71_0224B138: ; 0x0224B138
 	str r1, [r4, #0x74]
 	mov r0, #0xb4
 	mov r1, #0x39
-	bl NARC_ctor
+	bl NARC_New
 	add r1, r4, #0
 	add r1, #0x84
 	str r0, [r1]

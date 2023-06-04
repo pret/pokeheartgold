@@ -713,7 +713,7 @@ ov67_021E5EB0: ; 0x021E5EB0
 	bne _021E5F68
 	ldr r1, [r4]
 	mov r0, #0x76
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -749,7 +749,7 @@ ov67_021E5EB0: ; 0x021E5EB0
 	bl NARC_dtor
 	ldr r1, [r4]
 	mov r0, #0xb7
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -790,7 +790,7 @@ ov67_021E5EB0: ; 0x021E5EB0
 _021E5F68:
 	ldr r1, [r4]
 	mov r0, #0x76
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -1957,7 +1957,7 @@ ov67_021E6820: ; 0x021E6820
 	bl G2dRenderer_SetSubSurfaceCoords
 	ldr r1, [r5]
 	mov r0, #0x76
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #1
 	str r0, [sp]

@@ -553,7 +553,7 @@ static void BattleArcadeGameBoard_InitObjects(GAME_BOARD_WORK *work) {
     u16 yOffset, yOffset2;
     int i;
 
-    work->narc = NARC_ctor(NARC_a_1_8_3, HEAP_ID_GAME_BOARD);
+    work->narc = NARC_New(NARC_a_1_8_3, HEAP_ID_GAME_BOARD);
     ov84_0223E8DC(work);
     ov84_0223E934(work);
 
@@ -1312,7 +1312,7 @@ static void ov84_0223F4B4(GAME_BOARD_SUB_3E8 *work) {
 }
 
 static void ov84_0223F538(GAME_BOARD_SUB_3E8 *work) {
-    NARC *narc = NARC_ctor(NARC_a_0_2_1, HEAP_ID_GAME_BOARD);
+    NARC *narc = NARC_New(NARC_a_0_2_1, HEAP_ID_GAME_BOARD);
 
     work->resourceObj[2][0] = AddCharResObjFromOpenNarc(work->resourceMan[0], narc, sub_0207CA9C(), FALSE, 2, 1, HEAP_ID_GAME_BOARD);
     work->resourceObj[2][1] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_a_0_2_1, sub_0207CAA0(), FALSE, 2, 1, 3, HEAP_ID_GAME_BOARD);
@@ -1326,7 +1326,7 @@ static void ov84_0223F5E4(GAME_BOARD_SUB_3E8 *work, PARTY *playerParty, PARTY *o
     u32 i;
     Pokemon *playerMon;
     Pokemon *opponentMon;
-    NARC *narc = NARC_ctor(NARC_a_0_2_0, HEAP_ID_GAME_BOARD);
+    NARC *narc = NARC_New(NARC_a_0_2_0, HEAP_ID_GAME_BOARD);
 
     work->resourceObj[3][1] = AddPlttResObjFromNarc(work->resourceMan[1], NARC_a_0_2_0, sub_02074490(), FALSE, 3, 1, 3, HEAP_ID_GAME_BOARD);
     work->resourceObj[3][2] = AddCellOrAnimResObjFromOpenNarc(work->resourceMan[2], narc, sub_02074498(), FALSE, 3, GF_GFX_RES_TYPE_CELL, HEAP_ID_GAME_BOARD);

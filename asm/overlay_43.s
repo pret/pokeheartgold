@@ -736,7 +736,7 @@ ov43_0222A48C: ; 0x0222A48C
 	bl GX_SwapDisplay
 	mov r0, #0x55
 	add r1, r4, #0
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r5, #0x58]
 	bl ov43_0222A550
 	add r0, r5, #0
@@ -3436,7 +3436,7 @@ _0222B95A:
 _0222B9F4:
 	ldr r1, [sp, #0x1c]
 	mov r0, #4
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	add r1, r6, #0
 	add r1, #0xe4
 	ldr r5, [sp, #0x24]

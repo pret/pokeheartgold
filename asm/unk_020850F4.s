@@ -64,7 +64,7 @@ _0208512C:
 	str r0, [r2]
 	mov r0, #0xbe
 	mov r1, #0x6c
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0xbb
 	lsl r1, r1, #2
 	str r0, [r4, r1]
