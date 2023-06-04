@@ -469,7 +469,7 @@ _02092090:
 	add r0, r4, #0
 	ldr r1, _020920DC ; =0x000001E2
 	add r0, #0x1c
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	str r0, [r4, #0x34]
 	mov r0, #5
 	str r0, [r4, #4]

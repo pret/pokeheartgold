@@ -43,7 +43,7 @@ PokeathlonCourseApplication_OvyInit: ; 0x021E5900
 	add r1, r4, r2
 	add r0, r3, #0
 	mov r2, #0x5c
-	bl OverlayManager_new
+	bl OverlayManager_New
 	mov r1, #0xa
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -8307,7 +8307,7 @@ ov96_021E95F8: ; 0x021E95F8
 	str r6, [r4]
 	ldr r0, [sp, #8]
 	str r5, [r4, #0xc]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #1
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -8359,7 +8359,7 @@ ov96_021E966C: ; 0x021E966C
 	str r5, [r4]
 	ldr r0, [sp, #8]
 	str r6, [r4, #0xc]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #1
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -19019,7 +19019,7 @@ _021EE774:
 	bl NewMsgDataFromNarc
 	str r0, [r5, #0xc]
 	ldr r0, [r5, #0x14]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r5, #4]
 	bl ResetAllTextPrinters
 	ldr r1, [r5, #0x34]
@@ -19285,7 +19285,7 @@ _021EE9A8:
 	add r0, r4, #0
 	ldr r1, _021EE9B8 ; =0x000003D2
 	add r0, #0x18
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	str r0, [r4, #0x30]
 	pop {r4, pc}
 	nop
@@ -27939,7 +27939,7 @@ ov96_021F2EFC: ; 0x021F2EFC
 	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	ldr r0, [r5, #0x14]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0
 	str r1, [sp]
 	mov r2, #1
@@ -29734,7 +29734,7 @@ ov96_021F3BF0: ; 0x021F3BF0
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0x5c]
 	add r0, r5, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x60]
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -36267,7 +36267,7 @@ ov96_021F70AC: ; 0x021F70AC
 	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	ldr r0, [r5, #0x54]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #1
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -37343,7 +37343,7 @@ ov96_021F78C4: ; 0x021F78C4
 	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	add r0, r5, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	ldr r2, _021F792C ; =0x0000012F
 	add r1, r7, #0
 	add r3, r5, #0
@@ -45206,7 +45206,7 @@ ov96_021FB808: ; 0x021FB808
 	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	ldr r0, [r5]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #0x1e
@@ -53976,7 +53976,7 @@ _021FFDB0:
 	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	ldr r0, [r5, #0x14]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r3, #2
 	str r3, [sp]
 	mov r1, #1
@@ -54200,7 +54200,7 @@ ov96_021FFF3C: ; 0x021FFF3C
 	bl NewMsgDataFromNarc
 	str r0, [r7, #0x2c]
 	add r0, r6, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r7, #0x30]
 	mov r4, #0
 	add r5, r7, #0
@@ -60600,7 +60600,7 @@ ov96_0220337C: ; 0x0220337C
 	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	ldr r0, [r5, #0x44]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0
 	str r1, [sp]
 	mov r2, #1
@@ -69096,7 +69096,7 @@ ov96_02207774: ; 0x02207774
 	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	ldr r0, [r5, #0x14]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0
 	str r1, [sp]
 	mov r2, #1
@@ -69842,7 +69842,7 @@ ov96_02207CCC: ; 0x02207CCC
 	bl NewMsgDataFromNarc
 	str r0, [r7, #0x1c]
 	add r0, r6, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r7, #0x20]
 	mov r4, #0
 	add r5, r7, #0
@@ -74000,7 +74000,7 @@ ov96_02209DE4: ; 0x02209DE4
 	lsl r1, r1, #2
 	str r0, [r6, r1]
 	ldr r0, [r6]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0x97
 	lsl r1, r1, #2
 	str r0, [r6, r1]
@@ -84351,7 +84351,7 @@ _0220EDD4:
 	str r0, [r1, #0x18]
 	add r0, r1, #0
 	ldr r0, [r0]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	ldr r1, [sp]
 	str r0, [r1, #0x14]
 	ldr r1, [r1]
@@ -93563,7 +93563,7 @@ ov96_022136A4: ; 0x022136A4
 	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	ldr r0, [r5, #0x58]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0
 	str r1, [sp]
 	mov r2, #1
@@ -94942,7 +94942,7 @@ ov96_022140F4: ; 0x022140F4
 	bl NewMsgDataFromNarc
 	str r0, [sp, #0xc]
 	ldr r0, [r5, #0x58]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r7, r0, #0
 	ldr r0, [sp, #0xc]
 	ldr r1, _0221419C ; =0x00000133
@@ -95687,7 +95687,7 @@ ov96_0221464C: ; 0x0221464C
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0x34]
 	add r0, r5, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x38]
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -99788,7 +99788,7 @@ _02216584:
 	str r0, [r1, #0x14]
 	add r0, r1, #0
 	ldr r0, [r0]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	ldr r1, [sp]
 	str r0, [r1, #0x10]
 	ldr r1, [r1]

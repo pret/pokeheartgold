@@ -89,7 +89,7 @@ void sub_02092D8C(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr) {
     sub_02092BE8(sys, ptr, TRUE);
 }
 
-GearPhoneRingManager* GearPhoneRingManager_new(HeapID heapId, FieldSystem* sys) {
+GearPhoneRingManager* GearPhoneRingManager_New(HeapID heapId, FieldSystem* sys) {
     GearPhoneRingManager * ptr = AllocFromHeap(heapId, sizeof(GearPhoneRingManager));
     MI_CpuClear8(ptr, sizeof(GearPhoneRingManager));
     gearRingingManagerReset(ptr);

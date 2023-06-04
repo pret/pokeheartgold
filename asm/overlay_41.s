@@ -12928,7 +12928,7 @@ ov41_0224BE80: ; 0x0224BE80
 	bl GF_AssertFail
 _0224BE9C:
 	mov r0, #0xd
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r6, r0, #0
 	mov r0, #0x66
 	lsl r0, r0, #2

@@ -1784,7 +1784,7 @@ ov85_021E65D4: ; 0x021E65D4
 	ldr r0, _021E6608 ; =0x00000CA8
 	mov r1, #0xa
 	add r0, r4, r0
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	ldr r1, _021E660C ; =0x00000DC8
 	str r0, [r4, r1]
 	mov r0, #0x2d
@@ -3106,7 +3106,7 @@ ov85_021E705C: ; 0x021E705C
 	bl NewMsgDataFromNarc
 	str r0, [r4, #4]
 	mov r0, #0x66
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #8]
 	ldr r0, _021E713C ; =0x00000D84
 	add r1, r4, #0
@@ -6508,7 +6508,7 @@ _021E890A:
 	bl BgConfig_Alloc
 	str r0, [r4, #0x14]
 	mov r0, #0x66
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x34]
 	mov r0, #0
 	mov r1, #0x1b

@@ -41,7 +41,7 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
-.public MessageFormat_new
+.public MessageFormat_New
 .public MessageFormat_delete
 .public BufferPlayersName
 .public BufferBoxMonNickname

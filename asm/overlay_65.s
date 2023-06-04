@@ -59,12 +59,12 @@ ov65_0221BE20: ; 0x0221BE20
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #0x1a
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0x62
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #0x1a
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -4217,7 +4217,7 @@ _0221E0D6:
 	ldr r0, _0221E140 ; =_02103A1C
 	add r1, #0xc
 	mov r2, #0x1a
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r5, #0x4c]
 	str r4, [r5, #0x48]
 	pop {r3, r4, r5, pc}
@@ -4673,7 +4673,7 @@ _0221E4C0:
 	ldr r0, _0221E544 ; =0x0000367C
 	str r4, [r5, r0]
 	mov r0, #0x1a
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	add r6, r0, #0
 	ldr r0, _0221E548 ; =0x000036A0
 	add r1, r4, #0
@@ -5131,7 +5131,7 @@ ov65_0221E858: ; 0x0221E858
 	pop {r3, r4, pc}
 _0221E898:
 	mov r0, #0x1a
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0xda
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -6918,7 +6918,7 @@ ov65_0221F760: ; 0x0221F760
 	ldr r0, _0221F774 ; =0x000005B4
 	ldr r1, _0221F778 ; =0x000003D9
 	add r0, r4, r0
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	ldr r1, _0221F77C ; =0x000036B4
 	str r0, [r4, r1]
 	pop {r4, pc}

@@ -10,7 +10,7 @@ void Sav2_Chatot_init(SOUND_CHATOT *chatot) {
     chatot->exists = FALSE;
 }
 
-SOUND_CHATOT *Chatot_new(HeapID heapID) {
+SOUND_CHATOT *Chatot_New(HeapID heapID) {
     SOUND_CHATOT *chatot = AllocFromHeap(heapID, sizeof(SOUND_CHATOT));
     Sav2_Chatot_init(chatot);
     return chatot;

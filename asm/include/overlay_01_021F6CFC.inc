@@ -3,7 +3,7 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
-.public MessageFormat_new
+.public MessageFormat_New
 .public MessageFormat_delete
 .public BufferPlayersName
 .public StringExpandPlaceholders
@@ -17,7 +17,7 @@
 .public String_New
 .public String_Delete
 .public Sav2_PlayerData_GetOptionsAddr
-.public PlayerProfile_new
+.public PlayerProfile_New
 .public Sav2_Profile_PlayerName_set
 .public Options_GetFrame
 .public sub_0202C23C

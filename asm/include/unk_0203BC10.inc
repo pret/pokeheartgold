@@ -74,7 +74,7 @@
 .public sub_0203E4EC
 .public sub_0203E550
 .public sub_0203EA24
-.public PhoneUI_new
+.public PhoneUI_New
 .public sub_0203EE24
 .public sub_0203EFEC
 .public sub_0203F050

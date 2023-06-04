@@ -109,7 +109,7 @@ BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 
     MessageFormat *msgFmt;
 
     msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0010_bin, heap_id);
-    msgFmt = MessageFormat_new(heap_id);
+    msgFmt = MessageFormat_New(heap_id);
 
     if (itemId == ITEM_NONE) {
         fmtStr = NewString_ReadMsgData(msgData, msg_0010_00102);
@@ -167,7 +167,7 @@ void GetItemUseErrorMessage(PLAYERPROFILE *playerProfile, STRING *dest, u16 item
         STRING *string;
 
         msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0040_bin, heap_id);
-        msgFmt = MessageFormat_new(heap_id);
+        msgFmt = MessageFormat_New(heap_id);
         string = NewString_ReadMsgData(msgData, msg_0040_00037);
         BufferPlayersName(msgFmt, 0, playerProfile);
         StringExpandPlaceholders(msgFmt, dest, string);

@@ -9,9 +9,9 @@
 .public FlyPoints_GetPosition
 .public Save_FlyPoints_get
 .public FsysUnkSub108_Alloc
-.public BagCursor_new
+.public BagCursor_New
 .public sub_02092BB8
-.public GearPhoneRingManager_new
+.public GearPhoneRingManager_New
 .public FS_LoadOverlay
 .public FS_UnloadOverlay
 .public _u32_div_f

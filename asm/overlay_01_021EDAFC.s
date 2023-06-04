@@ -2199,7 +2199,7 @@ MoneyBoxSys_Update: ; 0x021EEB4C
 	bl NewMsgDataFromNarc
 	str r0, [sp, #0xc]
 	mov r0, #4
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r6, r0, #0
 	mov r0, #0x10
 	mov r1, #4
@@ -2335,7 +2335,7 @@ ov01_021EEC7C: ; 0x021EEC7C
 	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	mov r0, #4
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [sp, #0x10]
 	mov r0, #0x10
 	mov r1, #4
@@ -2553,7 +2553,7 @@ ov01_021EEE44: ; 0x021EEE44
 	bl NewMsgDataFromNarc
 	str r0, [sp, #0xc]
 	mov r0, #4
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r6, r0, #0
 	mov r0, #0x10
 	mov r1, #4

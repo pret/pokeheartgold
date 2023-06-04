@@ -32,7 +32,7 @@
 .public NewString_ReadMsgData
 .public ReadMsgData_ExpandPlaceholders
 .public GetSpeciesName
-.public MessageFormat_new
+.public MessageFormat_New
 .public MessageFormat_delete
 .public BufferString
 .public BufferPokeathlonCourseName

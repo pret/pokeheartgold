@@ -1341,7 +1341,7 @@ ov46_022592EC: ; 0x022592EC
 	add r0, r4, #0
 	add r7, r1, #0
 	add r6, r2, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r5]
 	ldr r2, [sp, #0x14]
 	mov r0, #0
@@ -1519,7 +1519,7 @@ _02259464:
 	add r0, r4, #0
 	add r0, #8
 	mov r1, #1
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	str r0, [r4, #0x24]
 _02259470:
 	pop {r4, pc}

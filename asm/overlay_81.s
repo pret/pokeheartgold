@@ -2086,7 +2086,7 @@ _0223EE8C:
 	ldr r0, _0223EF58 ; =_02103A1C
 	ldr r1, [r4, r1]
 	mov r2, #0x64
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #4]
 	ldrb r1, [r4, #0x13]
 	mov r0, #2
@@ -2956,7 +2956,7 @@ _0223F5C0:
 	ldr r0, _0223F680 ; =_02103A1C
 	ldr r1, [r4, r1]
 	mov r2, #0x64
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #4]
 	ldrb r1, [r4, #0x13]
 	mov r0, #2
@@ -5891,7 +5891,7 @@ ov81_02240D64: ; 0x02240D64
 	bl NewMsgDataFromNarc
 	str r0, [r5, #0x1c]
 	mov r0, #0x64
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r5, #0x20]
 	mov r0, #0x32
 	lsl r0, r0, #4

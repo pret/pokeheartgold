@@ -7257,7 +7257,7 @@ ov91_0225FCD8: ; 0x0225FCD8
 	add r4, r1, #0
 	add r5, r0, #0
 	add r0, r4, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r5, #4]
 	mov r0, #0
 	mov r1, #0x1b

@@ -3792,7 +3792,7 @@ ov49_0225A334: ; 0x0225A334
 	mov r0, #0x77
 	add r4, r1, #0
 	add r7, r2, #0
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	add r6, r0, #0
 	ldr r0, [r5, #0x34]
 	bl ov45_0222A53C
@@ -4933,7 +4933,7 @@ ov49_0225AC08: ; 0x0225AC08
 _0225AC16:
 	add r0, r4, #0
 	mov r1, #1
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
 	.balign 4, 0
@@ -7213,7 +7213,7 @@ _0225BC40:
 	mov r3, #4
 	bl ov49_0225BB14
 	ldr r0, [sp, #0x34]
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	str r0, [sp, #0x10]
 	ldr r0, [sp, #0x38]
 	ldr r1, [sp, #0x10]

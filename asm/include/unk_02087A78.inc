@@ -7,7 +7,7 @@
 .public sub_02005B68
 .public UnloadOverlayByID
 .public HandleLoadOverlay
-.public OverlayManager_new
+.public OverlayManager_New
 .public OverlayManager_delete
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
@@ -31,7 +31,7 @@
 .public GetMapMusic
 .public sub_02055198
 .public ScriptState_FlypointFlagAction
-.public BagCursor_new
+.public BagCursor_New
 .public sub_02087A78
 .public sub_02087A84
 .public sub_02087E10

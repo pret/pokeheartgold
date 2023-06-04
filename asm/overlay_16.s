@@ -884,10 +884,10 @@ ov16_02201A34: ; 0x02201A34
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl BagCursor_new
+	bl BagCursor_New
 	str r0, [r4, #0x18]
 	ldr r0, [r4]
-	bl BagCursor_new
+	bl BagCursor_New
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
 	.balign 4, 0
@@ -912,7 +912,7 @@ ov16_02201A60: ; 0x02201A60
 	ldr r0, _02201A74 ; =ov16_02201B68
 	ldr r2, [r4]
 	add r1, r4, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #8]
 	mov r0, #1
 	pop {r4, pc}
@@ -997,7 +997,7 @@ _02201B02:
 	ldr r0, _02201B20 ; =ov16_02201B78
 	ldr r1, [r4, #0x10]
 	ldr r2, [r4]
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #8]
 	mov r0, #3
 	add sp, #4

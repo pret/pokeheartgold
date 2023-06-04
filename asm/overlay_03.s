@@ -213,7 +213,7 @@ _02253F84:
 	ldr r1, [r1]
 	str r0, [r1, #0x78]
 	mov r0, #4
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	ldr r1, _02254050 ; =ov03_022598A0
 	ldr r2, [r1]
 	str r0, [r2, #0x7c]
@@ -229,17 +229,17 @@ _02253F84:
 	add r0, #0x40
 	bl InitWindow
 	mov r0, #4
-	bl MessageFormat_new
+	bl MessageFormat_New
 	ldr r1, _02254050 ; =ov03_022598A0
 	ldr r1, [r1]
 	str r0, [r1, #0x50]
 	mov r0, #4
-	bl MessageFormat_new
+	bl MessageFormat_New
 	ldr r1, _02254050 ; =ov03_022598A0
 	ldr r1, [r1]
 	str r0, [r1, #0x54]
 	mov r0, #4
-	bl MessageFormat_new
+	bl MessageFormat_New
 	ldr r1, _02254050 ; =ov03_022598A0
 	ldr r2, [r1]
 	str r0, [r2, #0x58]
@@ -4984,7 +4984,7 @@ ov03_02256644: ; 0x02256644
 	add r5, #0xa4
 	str r0, [r5]
 	mov r0, #4
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x64]
 	mov r0, #0
 	mov r1, #0x1b
@@ -5133,7 +5133,7 @@ ov03_02256730: ; 0x02256730
 	bl NewMsgDataFromNarc
 	str r0, [sp, #0x30]
 	mov r0, #4
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r6, r0, #0
 	mov r0, #0xb4
 	mov r1, #4
@@ -6302,7 +6302,7 @@ ov03_02257074: ; 0x02257074
 	add r1, #0x88
 	str r0, [r1]
 	mov r0, #0xb
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r4, #0x8c
 	str r0, [r4]
 	pop {r4, pc}

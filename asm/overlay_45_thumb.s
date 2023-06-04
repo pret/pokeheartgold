@@ -170,7 +170,7 @@ ov45_02229FF4: ; 0x02229FF4
 	add r5, r4, #0
 _0222A046:
 	add r0, r7, #0
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	add r1, r5, #0
 	add r1, #0xe8
 	add r6, r6, #1
@@ -4240,7 +4240,7 @@ ov45_0222BCC8: ; 0x0222BCC8
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	str r0, [r4]
 	pop {r4, pc}
 	.balign 4, 0
@@ -6694,7 +6694,7 @@ _0222CDD6:
 	ldrh r2, [r5, #0x3a]
 	ldr r1, [r4]
 	add r0, r6, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r5]
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov45_0222CDC4
@@ -6794,7 +6794,7 @@ ov45_0222CE78: ; 0x0222CE78
 	mov r4, #0
 _0222CE80:
 	add r0, r6, #0
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	str r0, [r5, #0x20]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -8963,7 +8963,7 @@ _0222DD8E:
 	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	ldr r0, [sp, #0x28]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	ldrb r6, [r4]
 	str r0, [sp, #0xc]
 	cmp r6, #9

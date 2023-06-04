@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public MessageFormat_new
+.public MessageFormat_New
 .public MessageFormat_delete
 .public IsPaletteFadeFinished
 .public MailMsg_init_withBank

@@ -1771,7 +1771,7 @@ ov100_021E66B0: ; 0x021E66B0
 	ldr r0, _021E66C4 ; =ov100_021E762C
 	ldr r2, [r4]
 	add r1, r4, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #0x70]
 	mov r0, #7
 	pop {r4, pc}
@@ -1878,7 +1878,7 @@ _021E6750:
 	ldr r0, _021E6790 ; =ov100_021E761C
 	ldr r1, [r4, #0x6c]
 	ldr r2, [r4]
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #0x70]
 	mov r0, #9
 	add sp, #4
@@ -1929,7 +1929,7 @@ ov100_021E67D4: ; 0x021E67D4
 	ldr r0, _021E67E8 ; =ov100_021E760C
 	ldr r2, [r4]
 	add r1, r4, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #0x70]
 	mov r0, #3
 	pop {r4, pc}
@@ -1991,7 +1991,7 @@ ov100_021E6840: ; 0x021E6840
 	ldr r0, _021E6854 ; =ov100_021E75FC
 	ldr r2, [r4]
 	add r1, r4, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #0x70]
 	mov r0, #0xb
 	pop {r4, pc}
@@ -2050,7 +2050,7 @@ ov100_021E68A8: ; 0x021E68A8
 	ldr r0, _021E68BC ; =ov100_021E763C
 	ldr r2, [r4]
 	add r1, r4, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #0x70]
 	mov r0, #5
 	pop {r4, pc}

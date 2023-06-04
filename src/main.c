@@ -58,7 +58,7 @@ void NitroMain(void) {
     FontID_Alloc(1, 3);
     FontID_Alloc(3, 3);
     _02111868.unk_10.unk_00 = -1;
-    _02111868.unk_10.savedata = SaveBlock2_new();
+    _02111868.unk_10.savedata = SaveBlock2_New();
     sub_02005D00();
     InitSoundData(Sav2_Chatot_get(_02111868.unk_10.savedata), Sav2_PlayerData_GetOptionsAddr(_02111868.unk_10.savedata));
     Init_Timer3();
@@ -145,7 +145,7 @@ void Main_RunOverlayManager(void) {
             HandleLoadOverlay(_02111868.queuedMainOverlayId, OVY_LOAD_NORMAL);
         }
         _02111868.mainOverlayId = _02111868.queuedMainOverlayId;
-        _02111868.overlayManager = OverlayManager_new(_02111868.queuedMainOverlayTemplate, &_02111868.unk_10, 0);
+        _02111868.overlayManager = OverlayManager_New(_02111868.queuedMainOverlayTemplate, &_02111868.unk_10, 0);
         _02111868.queuedMainOverlayId = FS_OVERLAY_ID_NONE;
         _02111868.queuedMainOverlayTemplate = NULL;
     }

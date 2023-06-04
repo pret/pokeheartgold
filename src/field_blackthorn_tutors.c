@@ -1,7 +1,7 @@
 #include "field_blackthorn_tutors.h"
 #include "pokemon.h"
 
-struct MoveRelearner *MoveRelearner_new(HeapID heapId) {
+struct MoveRelearner *MoveRelearner_New(HeapID heapId) {
     struct MoveRelearner *ret;
 
     ret = AllocFromHeap(heapId, sizeof(struct MoveRelearner));

@@ -84,7 +84,7 @@
 .public ClearFrameAndWindow2
 .public sub_0200EC0C
 .public DrawFrameAndWindow3
-.public WaitingIcon_new
+.public WaitingIcon_New
 .public sub_0200F450
 .public sub_0200F478
 .public BeginNormalPaletteFade
@@ -201,7 +201,7 @@
 .public GF_3DVramMan_Delete
 .public Sav2_PlayerData_GetProfileAddr
 .public Sav2_PlayerData_GetOptionsAddr
-.public PlayerProfile_new
+.public PlayerProfile_New
 .public PlayerProfile_GetTrainerID_VisibleHalf
 .public PlayerProfile_GetTrainerGender
 .public Options_GetTextFrameDelay

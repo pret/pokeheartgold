@@ -48,7 +48,7 @@ void FontWork_Init(void) {
 
 void FontID_Alloc(FontID fontId, HeapID heapId) {
     if (sFontWork->fontDataMan[fontId] == NULL) {
-        sFontWork->fontDataMan[fontId] = FontData_new(NARC_graphic_font, sFontArcParam[fontId][0], FONTARC_MODE_LAZY, sFontArcParam[fontId][1], heapId);
+        sFontWork->fontDataMan[fontId] = FontData_New(NARC_graphic_font, sFontArcParam[fontId][0], FONTARC_MODE_LAZY, sFontArcParam[fontId][1], heapId);
         sFontWork->fontDataRefCount[fontId] = 1;
     } else {
         sFontWork->fontDataRefCount[fontId]++;

@@ -637,7 +637,7 @@ ov53_021E5E6C: ; 0x021E5E6C
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r4]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0x46
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -4132,7 +4132,7 @@ _021E7A76:
 	ldr r0, _021E7C84 ; =_02102610
 	ldr r1, [r4, r1]
 	ldr r2, [r4]
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #0x14]
 	mov r0, #0x60
 	str r0, [r4, #0xc]
@@ -4955,7 +4955,7 @@ _021E8108:
 	ldr r0, [sp, #0x20]
 	strb r0, [r4, #0x18]
 	ldr r0, [sp, #4]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x14]
 	add r0, r6, #0
 	mov r1, #1

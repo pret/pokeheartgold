@@ -7,7 +7,7 @@
 .public GF_SndStartFadeOutBGM
 .public UnloadOverlayByID
 .public HandleLoadOverlay
-.public OverlayManager_new
+.public OverlayManager_New
 .public OverlayManager_delete
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
@@ -22,7 +22,7 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
-.public MessageFormat_new
+.public MessageFormat_New
 .public MessageFormat_delete
 .public BufferString
 .public BufferIntegerAsString
@@ -98,7 +98,7 @@
 .public SavArray_CalcCRC16
 .public Sav2_SysInfo_RTC_get
 .public Sav2_PlayerData_GetProfileAddr
-.public PlayerProfile_new
+.public PlayerProfile_New
 .public Sav2_Profile_PlayerName_set
 .public PlayerName_StringToFlat
 .public PlayerName_FlatToString

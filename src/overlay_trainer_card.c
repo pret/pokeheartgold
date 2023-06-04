@@ -83,7 +83,7 @@ static int TCardAppRunStep_Init(TrainerCardAppState *work) {
         FS_OVERLAY_ID(trainer_card_main)
     };
 
-    work->ov_mgr = OverlayManager_new(&template, work->parentData, work->heap_id);
+    work->ov_mgr = OverlayManager_New(&template, work->parentData, work->heap_id);
     return TRAINERCARD_RUN_EXEC;
 }
 
@@ -104,7 +104,7 @@ static int TCardAppRunStep_SignatureInit(TrainerCardAppState *work) {
         SignBackOfTrainerCardApp_OvyExit,
         FS_OVERLAY_ID(trainer_card_signature)
     };
-    work->ov_mgr = OverlayManager_new(&template, work->parentData->saveData, work->heap_id);
+    work->ov_mgr = OverlayManager_New(&template, work->parentData->saveData, work->heap_id);
     return TRAINERCARD_RUN_SIGNATURE_EXEC;
 }
 

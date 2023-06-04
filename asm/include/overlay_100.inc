@@ -11,7 +11,7 @@
 .public sub_02004EC4
 .public PlaySE
 .public sub_0200616C
-.public OverlayManager_new
+.public OverlayManager_New
 .public OverlayManager_delete
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData

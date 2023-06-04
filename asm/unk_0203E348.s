@@ -1085,8 +1085,8 @@ SwitchToPokegearApp_TownMap: ; 0x0203EA5C
 _0203EA80: .word _020FA3E4
 	thumb_func_end SwitchToPokegearApp_TownMap
 
-	thumb_func_start PhoneUI_new
-PhoneUI_new: ; 0x0203EA84
+	thumb_func_start PhoneUI_New
+PhoneUI_New: ; 0x0203EA84
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r0, #0xb
@@ -1105,10 +1105,10 @@ PhoneUI_new: ; 0x0203EA84
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end PhoneUI_new
+	thumb_func_end PhoneUI_New
 
-	thumb_func_start TownMap_new
-TownMap_new: ; 0x0203EAB0
+	thumb_func_start TownMap_New
+TownMap_New: ; 0x0203EAB0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -1129,7 +1129,7 @@ TownMap_new: ; 0x0203EAB0
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end TownMap_new
+	thumb_func_end TownMap_New
 
 	thumb_func_start sub_0203EAE0
 sub_0203EAE0: ; 0x0203EAE0

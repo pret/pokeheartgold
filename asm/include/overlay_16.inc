@@ -2,7 +2,7 @@
 #pragma once
 .public UnloadOverlayByID
 .public HandleLoadOverlay
-.public OverlayManager_new
+.public OverlayManager_New
 .public OverlayManager_delete
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
@@ -23,7 +23,7 @@
 .public BagGetQuantity
 .public BagViewCreate
 .public SaveGetBag
-.public BagCursor_new
+.public BagCursor_New
 .public MI_CpuFill8
 .public _s32_div_f
 .public ov15_BagApp_init

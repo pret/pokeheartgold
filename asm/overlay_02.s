@@ -21415,7 +21415,7 @@ FollowPoke_ExpandInteractionMessage: ; 0x0224FC8C
 	bl NewMsgDataFromNarc
 	add r5, r0, #0
 	add r0, r4, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
@@ -21453,7 +21453,7 @@ ov02_0224FCE0: ; 0x0224FCE0
 	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	add r0, r4, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r4, r0, #0
 	mov r0, #2
 	tst r0, r6

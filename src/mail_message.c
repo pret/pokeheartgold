@@ -57,7 +57,7 @@ STRING *MailMsg_GetExpandedString(const MAIL_MESSAGE *mailMessage, HeapID heapId
     STRING *string;
     int i;
 
-    msgFmt = MessageFormat_new(heapId);
+    msgFmt = MessageFormat_New(heapId);
     for (i = 0; i < MAILMSG_FIELDS_MAX; i++) {
         if (mailMessage->fields[i] == EC_WORD_NULL) {
             break;

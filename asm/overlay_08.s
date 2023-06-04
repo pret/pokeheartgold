@@ -2402,12 +2402,12 @@ ov08_0221D0F4: ; 0x0221D0F4
 	mov r0, #0xf
 	ldr r3, [r3, #0xc]
 	mov r1, #0xe
-	bl MessagePrinter_new
+	bl MessagePrinter_New
 	ldr r1, _0221D140 ; =0x00001FA4
 	str r0, [r4, r1]
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	ldr r1, _0221D144 ; =0x00001FAC
 	str r0, [r4, r1]
 	ldr r1, [r4]
@@ -14226,11 +14226,11 @@ ov08_022231E8: ; 0x022231E8
 	ldr r3, [r3, #0xc]
 	mov r1, #0xe
 	mov r2, #0
-	bl MessagePrinter_new
+	bl MessagePrinter_New
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x14]
 	ldr r1, [r4]
 	mov r0, #2

@@ -47,7 +47,7 @@ typedef struct BAG_VIEW {
 } BAG_VIEW; // size: 0x7C
 
 /*
- * BAG_VIEW *BagView_new(u8 heap_id)
+ * BAG_VIEW *BagView_New(u8 heap_id)
  *
  * Create a new BAG_VIEW
  *

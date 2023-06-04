@@ -13,7 +13,7 @@
 .public StopSE
 .public sub_02007200
 .public sub_02007234
-.public OverlayManager_new
+.public OverlayManager_New
 .public OverlayManager_delete
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
@@ -62,7 +62,7 @@
 .public BufferCityName
 .public StringExpandPlaceholders
 .public MessageFormat_ResetBuffers
-.public MessagePrinter_new
+.public MessagePrinter_New
 .public MessagePrinter_delete
 .public sub_0200CDAC
 .public PrintUIntOnWindow
@@ -74,7 +74,7 @@
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
-.public WaitingIcon_new
+.public WaitingIcon_New
 .public sub_0200F450
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
@@ -176,7 +176,7 @@
 .public Save_WriteFileAsync
 .public Sav2_SysInfo_GetField4C
 .public Sav2_SysInfo_SetField4C
-.public PlayerProfile_new
+.public PlayerProfile_New
 .public PlayerProfile_init
 .public Sav2_Profile_PlayerName_set
 .public PlayerProfile_GetNamePtr

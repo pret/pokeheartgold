@@ -1743,11 +1743,11 @@ _02079C26:
 	mov r1, #0xe
 	mov r2, #0
 	mov r3, #0xc
-	bl MessagePrinter_new
+	bl MessagePrinter_New
 	ldr r1, _02079CD0 ; =0x000007BC
 	str r0, [r4, r1]
 	mov r0, #0xc
-	bl MessageFormat_new
+	bl MessageFormat_New
 	ldr r1, _02079CD4 ; =0x000007C4
 	mov r6, #0
 	add r7, r1, #0

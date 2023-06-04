@@ -723,7 +723,7 @@ _0221BF92:
 	str r0, [r5, r1]
 	ldr r0, [r5]
 	ldr r0, [r0, #0x24]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0xbb
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -5900,11 +5900,11 @@ ov05_0221E944: ; 0x0221E944
 	mov r0, #0xf
 	mov r1, #0xe
 	mov r2, #0
-	bl MessagePrinter_new
+	bl MessagePrinter_New
 	str r0, [sp, #0xc]
 	ldr r0, [r6]
 	ldr r0, [r0, #0x24]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	ldr r1, [r6]
 	str r0, [sp, #8]
 	ldr r1, [r1, #0x24]
@@ -6002,7 +6002,7 @@ ov05_0221EA18: ; 0x0221EA18
 	sub r0, #0x3c
 	add r0, r4, r0
 	mov r1, #1
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	ldr r1, _0221EA34 ; =0x00000BC4
 	str r0, [r4, r1]
 _0221EA32:

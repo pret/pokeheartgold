@@ -547,7 +547,7 @@ ov117_0225F470: ; 0x0225F470
 	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	add r0, r5, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r4, r0, #0
 	mov r0, #0x80
 	add r1, r5, #0

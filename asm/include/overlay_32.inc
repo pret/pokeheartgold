@@ -28,7 +28,7 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public NewString_ReadMsgData
-.public MessageFormat_new
+.public MessageFormat_New
 .public MessageFormat_delete
 .public BufferPlayersName
 .public BufferIntegerAsString
@@ -65,7 +65,7 @@
 .public sub_02025224
 .public String_New
 .public String_Delete
-.public PlayerProfile_new
+.public PlayerProfile_New
 .public Sav2_Profile_PlayerName_set
 .public sub_0202C254
 .public sub_0202C6F4

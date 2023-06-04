@@ -16,7 +16,7 @@
 .public GF_SndGetFadeTimer
 .public PlaySE
 .public PlayCry
-.public OverlayManager_new
+.public OverlayManager_New
 .public OverlayManager_delete
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
@@ -39,7 +39,7 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public ReadMsgData_ExpandPlaceholders
-.public MessageFormat_new
+.public MessageFormat_New
 .public MessageFormat_delete
 .public BufferString
 .public StringExpandPlaceholders

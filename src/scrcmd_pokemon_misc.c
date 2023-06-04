@@ -1430,7 +1430,7 @@ BOOL ScrCmd_BugContestAction(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
 
     if (unkVar1 == 0) {
-        fsys->bugContest = BugContest_new(fsys, weekday);
+        fsys->bugContest = BugContest_New(fsys, weekday);
     } else {
         BugContest_delete(fsys->bugContest);
         fsys->bugContest = NULL;

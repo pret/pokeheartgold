@@ -1163,7 +1163,7 @@ ov18_021E6244: ; 0x021E6244
 	ldr r1, _021E6278 ; =0x0000065C
 	str r0, [r4, r1]
 	mov r0, #0x25
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0x66
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -17391,7 +17391,7 @@ _021EE556:
 	mov r1, #8
 	mov r2, #7
 	mov r3, #0x25
-	bl MessagePrinter_new
+	bl MessagePrinter_New
 	str r5, [sp]
 	mov r1, #0
 	str r1, [sp, #4]
@@ -38408,7 +38408,7 @@ _021F8CDA:
 	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	ldr r0, [r5, #0x14]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r6, r0, #0
 	mov r0, #1
 	ldr r1, [r5, #0x14]

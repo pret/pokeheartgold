@@ -136,7 +136,7 @@ static u32 Save_CalcPCBoxModifiedFlags(SAVEDATA *saveData);
 static u32 PCModifiedFlags_CountModifiedBoxes(u32 flags);
 static u32 PCModifiedFlags_GetIndexOfNthModifiedBox(u32 flags, u8 last);
 
-SAVEDATA *SaveBlock2_new(void) {
+SAVEDATA *SaveBlock2_New(void) {
     SAVEDATA *ret;
     int status;
     int sp4;

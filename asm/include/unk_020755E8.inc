@@ -21,7 +21,7 @@
 .public IsCryFinished
 .public PlayFanfare
 .public IsFanfarePlaying
-.public OverlayManager_new
+.public OverlayManager_New
 .public OverlayManager_delete
 .public OverlayManager_run
 .public NARC_New
@@ -48,7 +48,7 @@
 .public DestroyMsgData
 .public NewString_ReadMsgData
 .public ReadMsgData_ExpandPlaceholders
-.public MessageFormat_new
+.public MessageFormat_New
 .public MessageFormat_delete
 .public BufferBoxMonSpeciesName
 .public BufferBoxMonNickname
@@ -130,7 +130,7 @@
 .public Pokedex_SetMonCaughtFlag
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public Mail_new
+.public Mail_New
 .public GameStats_Inc
 .public GameStats_AddSpecial
 .public sub_0203A880

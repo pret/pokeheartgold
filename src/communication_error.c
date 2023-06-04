@@ -162,7 +162,7 @@ void ShowCommunicationError(HeapID heap_id, u32 error, u32 error_code) {
 
     ResetAllTextPrinters();
 
-    MessageFormat* messageFormat = MessageFormat_new(heap_id);
+    MessageFormat* messageFormat = MessageFormat_New(heap_id);
 
     AddWindow(bg_config, &window, &sCommunicationErrorWindowTemplate);
     FillWindowPixelRect(&window, 0xF, 0, 0, 208, 144);

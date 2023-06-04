@@ -1110,12 +1110,12 @@ ov15_021F9CBC: ; 0x021F9CBC
 	mov r1, #2
 	mov r2, #0
 	mov r3, #6
-	bl MessagePrinter_new
+	bl MessagePrinter_New
 	mov r1, #0xbb
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #6
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0xbd
 	lsl r1, r1, #2
 	str r0, [r4, r1]

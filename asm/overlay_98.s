@@ -733,7 +733,7 @@ _0221EB44:
 	bl NewMsgDataFromNarc
 	str r0, [r4, #8]
 	ldr r0, [sp]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x10]
 	mov r0, #1
 	ldr r1, [sp]

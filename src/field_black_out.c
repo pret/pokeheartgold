@@ -83,7 +83,7 @@ static void _DrawScurryMessageScreen(FieldSystem *fsys, TaskManager *taskManager
     sub_0200FBDC(1);
     _InitDisplays(env->bgConfig);
     env->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0203_bin, (HeapID)11);
-    env->msgFmt = MessageFormat_new((HeapID)11);
+    env->msgFmt = MessageFormat_New((HeapID)11);
     {
         static const WINDOWTEMPLATE _020FC51C = {
             3,

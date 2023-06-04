@@ -16,7 +16,7 @@
 .public sub_02003D5C
 .public sub_02003DE8
 .public PlaySE
-.public OverlayManager_new
+.public OverlayManager_New
 .public OverlayManager_delete
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
@@ -34,7 +34,7 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public NewString_ReadMsgData
-.public MessageFormat_new
+.public MessageFormat_New
 .public MessageFormat_delete
 .public sub_0200CF18
 .public sub_0200CF38

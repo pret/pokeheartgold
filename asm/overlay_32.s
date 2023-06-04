@@ -278,7 +278,7 @@ ov32_0225D748: ; 0x0225D748
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #8
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0x52
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -562,7 +562,7 @@ _0225D9A0:
 	bl String_New
 	str r0, [sp, #0x14]
 	mov r0, #8
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	str r0, [sp, #0x1c]
 	add r0, r5, #0
 	bl GetWindowWidth

@@ -51,7 +51,7 @@ _021E5916:
 	bl BgConfig_Alloc
 	str r0, [r4]
 	mov r0, #0x27
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0xc]
 	mov r0, #0
 	mov r1, #0x1b

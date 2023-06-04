@@ -2413,7 +2413,7 @@ ov83_0223F200: ; 0x0223F200
 	bl NewMsgDataFromNarc
 	str r0, [r5, #0x1c]
 	mov r0, #0x6b
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r5, #0x24]
 	mov r0, #0x96
 	lsl r0, r0, #2
@@ -2451,7 +2451,7 @@ _0223F268:
 	mov r1, #2
 	mov r2, #0
 	mov r3, #0x6b
-	bl MessagePrinter_new
+	bl MessagePrinter_New
 	ldr r1, _0223F598 ; =0x00000504
 	mov r2, #0
 	str r0, [r5, r1]
@@ -11876,7 +11876,7 @@ ov83_02243FD4: ; 0x02243FD4
 	bl NewMsgDataFromNarc
 	str r0, [r5, #0x20]
 	mov r0, #0x6b
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r5, #0x24]
 	mov r0, #0x96
 	lsl r0, r0, #2
@@ -11914,7 +11914,7 @@ _02244030:
 	mov r1, #2
 	mov r2, #0
 	mov r3, #0x6b
-	bl MessagePrinter_new
+	bl MessagePrinter_New
 	mov r1, #0xad
 	lsl r1, r1, #2
 	str r0, [r5, r1]

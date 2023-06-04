@@ -16,7 +16,7 @@
 .public Sav2_SysInfo_RTC_get
 .public Sav2_PlayerData_GetProfileAddr
 .public Sav2_PlayerData_GetOptionsAddr
-.public PlayerProfile_new
+.public PlayerProfile_New
 .public PlayerProfile_copy
 .public Sav2_Profile_PlayerName_set
 .public PlayerProfile_GetNamePtr
@@ -26,14 +26,14 @@
 .public PlayerProfile_SetMoney
 .public PlayerProfile_GetAvatar
 .public sub_020290FC
-.public Pokedex_new
+.public Pokedex_New
 .public Pokedex_copy
 .public Sav2_Pokedex_get
-.public Options_new
+.public Options_New
 .public Options_copy
 .public Save_PalPad_get
 .public sub_0202CA44
-.public Chatot_new
+.public Chatot_New
 .public Sav2_Chatot_get
 .public Chatot_copy
 .public Sav2_GameStats_get

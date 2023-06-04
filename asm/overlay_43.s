@@ -1206,7 +1206,7 @@ ov43_0222A87C: ; 0x0222A87C
 	add r4, r1, #0
 	add r5, r0, #0
 	add r0, r4, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r5, #0x50]
 	ldr r2, _0222A8A4 ; =0x0000030B
 	mov r0, #0
@@ -1539,7 +1539,7 @@ ov43_0222AB20: ; 0x0222AB20
 	bl sub_0202C6F4
 	add r7, r0, #0
 	add r0, r5, #0
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	add r5, r0, #0
 	add r0, r7, #0
 	add r1, r6, #0
@@ -1564,7 +1564,7 @@ ov43_0222AB5C: ; 0x0222AB5C
 	add r6, r1, #0
 	add r0, r3, #0
 	add r7, r2, #0
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_0202C6F4
@@ -2119,7 +2119,7 @@ _0222AF88:
 	cmp r0, #0
 	beq _0222B08A
 	add r0, r7, #0
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x58]
 	bl String_c_str
@@ -5795,7 +5795,7 @@ _0222CBE2:
 	ldr r0, _0222CD2C ; =_02102610
 	ldr r1, [r4, #4]
 	add r2, r6, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4]
 	mov r0, #1
 	strb r0, [r5, #8]
@@ -5814,7 +5814,7 @@ _0222CC2A:
 	ldr r0, _0222CD30 ; =_02102620
 	ldr r1, [r4, #8]
 	add r2, r6, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4]
 	mov r0, #2
 	strb r0, [r5, #8]
@@ -5868,7 +5868,7 @@ _0222CCAC:
 	ldr r0, _0222CD2C ; =_02102610
 	ldr r1, [r4, #4]
 	add r2, r6, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4]
 	mov r0, #5
 	strb r0, [r5, #8]

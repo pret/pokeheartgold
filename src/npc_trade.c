@@ -34,7 +34,7 @@ NPC_TRADE_WORK *NPCTrade_AllocWork(HeapID heapId, u32 tradeno) {
     ret->heapId = heapId;
     ret->tradeno = tradeno;
     ret->mon = AllocMonZeroed(heapId);
-    ret->profile = PlayerProfile_new(heapId);
+    ret->profile = PlayerProfile_New(heapId);
     PlayerProfile_init(ret->profile);
     {
         STRING *name;

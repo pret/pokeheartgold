@@ -2026,7 +2026,7 @@ static void ov122_021E8094(OVY_MANAGER *man) {
 
     work->narc = NARC_New(NARC_a_2_6_4, work->heapId);
     work->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 0x27, work->heapId);
-    work->msgFmt = MessageFormat_new(work->heapId);
+    work->msgFmt = MessageFormat_New(work->heapId);
     work->unk13C = sub_0201660C(work->heapId);
 
     ov122_021E7928(work);

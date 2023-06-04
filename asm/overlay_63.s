@@ -50,7 +50,7 @@ ov63_0221BE20: ; 0x0221BE20
 	add r1, #0x84
 	str r0, [r1]
 	mov r0, #0x3e
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r1, r5, #0
 	add r1, #0x88
 	str r0, [r1]

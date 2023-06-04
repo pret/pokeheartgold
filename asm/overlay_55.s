@@ -112,7 +112,7 @@ _021E59C0:
 	ldr r0, _021E5ADC ; =ov55_021E5BF4
 	ldr r1, [r4, #0x10]
 	ldr r2, [r4]
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #0xc]
 	mov r0, #1
 	str r0, [r6]
@@ -210,7 +210,7 @@ _021E5A86:
 	ldr r0, _021E5AE4 ; =ov55_021E5C04
 	ldr r1, [r4, #8]
 	ldr r2, [r4]
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #0xc]
 	mov r0, #4
 	str r0, [r6]

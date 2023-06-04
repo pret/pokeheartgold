@@ -2927,7 +2927,7 @@ ov70_02238F64: ; 0x02238F64
 	ldr r0, _02238F78 ; =0x00000F18
 	mov r1, #1
 	add r0, r4, r0
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	ldr r1, _02238F7C ; =0x000011BC
 	str r0, [r4, r1]
 	pop {r4, pc}
@@ -19595,7 +19595,7 @@ ov70_022413AC: ; 0x022413AC
 	ldr r0, _02241464 ; =_02103A1C
 	add r1, #0xbc
 	mov r2, #0x3d
-	bl OverlayManager_new
+	bl OverlayManager_New
 	add r1, r4, #0
 	add r1, #0xb8
 	str r0, [r1]
@@ -19836,7 +19836,7 @@ _02241618:
 	add r1, r4, #0
 	ldr r0, _02241644 ; =ov70_02245D50
 	add r1, #0xf8
-	bl OverlayManager_new
+	bl OverlayManager_New
 	add r1, r4, #0
 	add r1, #0xb8
 	str r0, [r1]
@@ -20091,7 +20091,7 @@ ov70_0224182C: ; 0x0224182C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r0, #0x3d
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	add r4, r0, #0
 	bl PlayerProfile_init
 	mov r1, #0x43
@@ -21146,7 +21146,7 @@ ov70_02242014: ; 0x02242014
 	mov r1, #0xe
 	mov r2, #2
 	mov r3, #0x3d
-	bl MessagePrinter_new
+	bl MessagePrinter_New
 	str r0, [r4, #0x38]
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}

@@ -72,7 +72,7 @@ _0208291E:
 	bl NARC_New
 	add r7, r0, #0
 	mov r0, #0x12
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0x5a
 	lsl r1, r1, #2
 	str r0, [r4, r1]

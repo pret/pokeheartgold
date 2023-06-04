@@ -128,7 +128,7 @@ ov89_02258800: ; 0x02258800
 	mov r1, #0x7d
 	bl FontID_Alloc
 	mov r0, #0x7d
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r5, #0x2c]
 	ldr r2, _02258AE0 ; =0x000002F2
 	mov r0, #0
@@ -8138,7 +8138,7 @@ ov89_0225C724: ; 0x0225C724
 	pop {r3, r4, r5, r6, r7, pc}
 _0225C768:
 	mov r0, #0x7d
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	add r6, r0, #0
 	add r0, r7, #0
 	add r1, r6, #0

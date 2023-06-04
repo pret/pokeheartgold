@@ -40,7 +40,7 @@ typedef struct UnkPokegearstruct_14{
 
 void sub_02092D80(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr);
 void sub_02092D8C(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr);
-GearPhoneRingManager* GearPhoneRingManager_new(HeapID heapId, FieldSystem* sys);
+GearPhoneRingManager* GearPhoneRingManager_New(HeapID heapId, FieldSystem* sys);
 void sub_02092DD8(GearPhoneRingManager * ptr);
 GearPhoneRingManager* Fsys_GetGearPhoneRingManager(FieldSystem* sys);
 void sub_02092DF4(GearPhoneRingManager* ptr);

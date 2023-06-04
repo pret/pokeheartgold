@@ -16,7 +16,7 @@
 
 typedef struct SaveBlock2 SAVEDATA;
 
-SAVEDATA *SaveBlock2_new(void);
+SAVEDATA *SaveBlock2_New(void);
 SAVEDATA *SaveBlock2_get(void);
 void *SavArray_get(SAVEDATA *saveData, int id);
 const void *SavArray_const_get(const SAVEDATA *saveData, int id);

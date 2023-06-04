@@ -742,11 +742,11 @@ sub_02088894: ; 0x02088894
 	mov r0, #1
 	mov r1, #2
 	mov r3, #0x13
-	bl MessagePrinter_new
+	bl MessagePrinter_New
 	ldr r1, _02088948 ; =0x0000079C
 	str r0, [r4, r1]
 	mov r0, #0x13
-	bl MessageFormat_new
+	bl MessageFormat_New
 	ldr r1, _0208894C ; =0x000007A8
 	str r0, [r4, r1]
 	mov r0, #0xc

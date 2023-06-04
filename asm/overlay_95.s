@@ -478,7 +478,7 @@ ov95_021E5CAC: ; 0x021E5CAC
 	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	mov r0, #0x46
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r5, r0, #0
 	add r0, r7, #0
 	add r1, r4, #0
@@ -2916,7 +2916,7 @@ _021E7042:
 	str r5, [r4, #0xc]
 	str r6, [r4, #4]
 	str r7, [r4, #8]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x14]
 	ldr r1, [r4]
 	mov r0, #4

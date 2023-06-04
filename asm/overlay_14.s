@@ -571,11 +571,11 @@ ov14_021E5D78: ; 0x021E5D78
 	mov r0, #1
 	mov r1, #2
 	mov r3, #0xa
-	bl MessagePrinter_new
+	bl MessagePrinter_New
 	ldr r1, [r4, #0x34]
 	str r0, [r1, #0x1c]
 	mov r0, #0xa
-	bl MessageFormat_new
+	bl MessageFormat_New
 	ldr r1, [r4, #0x34]
 	str r0, [r1, #0x24]
 	mov r0, #1
@@ -6586,7 +6586,7 @@ _021E8A06:
 	mov r2, #9
 	str r0, [r4, #0x30]
 	ldr r0, _021E8A78 ; =_02103A1C
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r5, #0x14]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -6666,7 +6666,7 @@ ov14_021E8ACC: ; 0x021E8ACC
 	ldr r0, _021E8B18 ; =ov15_022008B8
 	ldr r1, [r4, #0x18]
 	mov r2, #9
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #0x14]
 	mov r0, #0
 	add sp, #4
@@ -6720,7 +6720,7 @@ ov14_021E8B3C: ; 0x021E8B3C
 	ldr r0, _021E8B7C ; =_02102610
 	ldr r1, [r4, #0x18]
 	mov r2, #9
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #0x14]
 	mov r0, #0
 	add sp, #8

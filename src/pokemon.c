@@ -172,7 +172,7 @@ void CreateMon(Pokemon *mon, int species, int level, int fixedIV, int hasFixedPe
     MonEncryptSegment((u16 *)&mon->party, sizeof(mon->party), 0);
     ENCRYPT_PTY(mon);
     SetMonData(mon, MON_DATA_LEVEL, &level);
-    mail = Mail_new(0);
+    mail = Mail_New(0);
     SetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
     FreeToHeap(mail);
     capsule = 0;
@@ -3237,7 +3237,7 @@ void CopyBoxPokemonToPokemon(const BoxPokemon *src, Pokemon *dest) {
     SetMonData(dest, MON_DATA_STATUS, &sp0);
     SetMonData(dest, MON_DATA_HP, &sp0);
     SetMonData(dest, MON_DATA_MAXHP, &sp0);
-    mail = Mail_new(0);
+    mail = Mail_New(0);
     SetMonData(dest, MON_DATA_MAIL_STRUCT, mail);
     FreeToHeap(mail);
     SetMonData(dest, MON_DATA_CAPSULE, &sp0);
