@@ -226,5 +226,5 @@
 .public gSystem
 .public ov15_BagApp_Init
 .public ov15_BagApp_Exec
-.public ov15_BagApp_exit
+.public ov15_BagApp_Exit
 .public ov15_022008B8
