@@ -27,7 +27,7 @@
 .public ScriptState_GetVar4052
 .public AllocMonZeroed
 .public GetMonData
-.public SavArray_Party_alloc
+.public SavArray_Party_Alloc
 .public SavArray_Party_init
 .public GetPartyCount
 .public GetPartyMonByIndex

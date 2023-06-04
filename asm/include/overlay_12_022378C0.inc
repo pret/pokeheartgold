@@ -146,7 +146,7 @@
 .public MonApplyFriendshipMod
 .public GetMonGender
 .public MaskOfFlagNo
-.public SavArray_Party_alloc
+.public SavArray_Party_Alloc
 .public GetPartyCount
 .public GetPartyMonByIndex
 .public Party_copy

@@ -101,7 +101,7 @@
 .public SetMonData
 .public GetMonExpBySpeciesAndLevel
 .public CopyPokemonToPokemon
-.public SavArray_Party_alloc
+.public SavArray_Party_Alloc
 .public InitPartyWithMaxSize
 .public AddMonToParty
 .public GetPartyCount

@@ -87,7 +87,7 @@
 .public sub_020729FC
 .public sub_02072A20
 .public GetMoveAttr
-.public SavArray_Party_alloc
+.public SavArray_Party_Alloc
 .public InitPartyWithMaxSize
 .public AddMonToParty
 .public GetPartyCount

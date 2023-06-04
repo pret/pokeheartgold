@@ -33,7 +33,7 @@ ov80_022310C4: ; 0x022310C4
 	ldr r1, _022313A4 ; =ov80_0223DD44
 	str r0, [r4]
 	ldr r4, [r1]
-	bl SavArray_Party_alloc
+	bl SavArray_Party_Alloc
 	mov r1, #0x99
 	lsl r1, r1, #2
 	str r0, [r4, r1]

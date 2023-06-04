@@ -28,7 +28,7 @@
 .public ScriptState_GetVar4052
 .public AllocMonZeroed
 .public GetMonData
-.public SavArray_Party_alloc
+.public SavArray_Party_Alloc
 .public GetPartyMonByIndex
 .public SavArray_PlayerParty_get
 .public MI_CpuFill8

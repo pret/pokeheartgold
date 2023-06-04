@@ -88,7 +88,7 @@ _0205193C:
 	str r0, [r5, #0x18]
 	bl MIi_CpuClear32
 	add r0, r6, #0
-	bl SavArray_Party_alloc
+	bl SavArray_Party_Alloc
 	str r0, [r5, #4]
 	add r0, r6, #0
 	bl PlayerProfile_New

@@ -30,10 +30,10 @@ ov80_022340E8: ; 0x022340E8
 	mov r0, #0xb
 	str r0, [r5]
 	ldr r5, [r1]
-	bl SavArray_Party_alloc
+	bl SavArray_Party_Alloc
 	str r0, [r5, #0x70]
 	mov r0, #0xb
-	bl SavArray_Party_alloc
+	bl SavArray_Party_Alloc
 	str r0, [r5, #0x74]
 	mov r0, #0x2a
 	ldr r1, [sp, #0x38]
