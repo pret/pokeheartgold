@@ -397,7 +397,7 @@ ov30_0225D86C: ; 0x0225D86C
 	ldr r0, [r4, #0x38]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x3c]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov30_0225D86C

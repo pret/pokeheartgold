@@ -2761,7 +2761,7 @@ _0221D030:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0221D03E
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 _0221D03E:
 	ldr r0, _0221D050 ; =0x00000BAC
 	ldr r0, [r4, r0]
@@ -5936,9 +5936,9 @@ _0221E9A0:
 	ldr r0, [sp, #0x10]
 	bl DestroyMsgData
 	ldr r0, [sp, #0xc]
-	bl MessagePrinter_delete
+	bl MessagePrinter_Delete
 	ldr r0, [sp, #8]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov05_0221E944

@@ -526,7 +526,7 @@ static void BattleArcadeGameBoard_Delete(GAME_BOARD_WORK *work) {
     ov84_0223F418(&work->unk3E8);
 
     DestroyMsgData(work->msgData);
-    MessageFormat_delete(work->msgFmt);
+    MessageFormat_Delete(work->msgFmt);
     String_Delete(work->unk70);
     String_Delete(work->unk74);
 

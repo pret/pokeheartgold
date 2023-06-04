@@ -17,7 +17,7 @@
 .public PlaySE
 .public PlayCry
 .public OverlayManager_New
-.public OverlayManager_delete
+.public OverlayManager_Delete
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
@@ -40,7 +40,7 @@
 .public ReadMsgDataIntoString
 .public ReadMsgData_ExpandPlaceholders
 .public MessageFormat_New
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferString
 .public StringExpandPlaceholders
 .public sub_0200CF18

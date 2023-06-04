@@ -616,11 +616,11 @@ ov15_BagApp_exit: ; 0x021F982C
 	mov r0, #0xbb
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl MessagePrinter_delete
+	bl MessagePrinter_Delete
 	mov r0, #0xbd
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0x91
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]

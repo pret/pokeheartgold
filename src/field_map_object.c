@@ -19,7 +19,7 @@ MapObjectMan* sub_0205E0BC(FieldSystem* fsys, int object_count, HeapID heapId) {
     return ret;
 }
 
-void MapObjectMan_delete(MapObjectMan* manager) {
+void MapObjectMan_Delete(MapObjectMan* manager) {
     FreeToHeapExplicit(HEAP_ID_FIELD, MapObjectMan_GetObjects(manager));
     FreeToHeapExplicit(HEAP_ID_FIELD, manager);
 }

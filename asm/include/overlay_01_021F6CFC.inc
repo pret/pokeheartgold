@@ -4,7 +4,7 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public MessageFormat_New
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferPlayersName
 .public StringExpandPlaceholders
 .public LoadUserFrameGfx1

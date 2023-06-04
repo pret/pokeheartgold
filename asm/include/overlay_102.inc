@@ -32,7 +32,7 @@
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
 .public MessageFormat_New_Custom
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferPocketName
 .public StringExpandPlaceholders
 .public sub_0200DD88

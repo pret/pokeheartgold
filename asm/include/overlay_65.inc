@@ -14,7 +14,7 @@
 .public PlayCry
 .public sub_02006E4C
 .public OverlayManager_New
-.public OverlayManager_delete
+.public OverlayManager_Delete
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
@@ -51,7 +51,7 @@
 .public ReadMsgData_ExpandPlaceholders
 .public MessageFormat_New
 .public MessageFormat_New_Custom
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferPlayersName
 .public BufferBoxMonNickname
 .public LoadUserFrameGfx1

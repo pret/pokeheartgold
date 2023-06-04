@@ -142,7 +142,7 @@ ov63_0221BF28: ; 0x0221BF28
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r4, #0x84
 	ldr r0, [r4]
 	bl DestroyMsgData

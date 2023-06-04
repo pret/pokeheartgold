@@ -458,7 +458,7 @@ _0208E9C0:
 	bl FreeToHeap
 _0208E9CA:
 	ldr r0, [r4, #8]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #4]
 	bl DestroyMsgData
 	add r0, r4, #0

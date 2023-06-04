@@ -297,7 +297,7 @@ _0225405C:
 	ldr r0, [r0, #0x50]
 	cmp r0, #0
 	beq _0225408C
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, _022540E4 ; =ov03_022598A0
 	mov r1, #0
 	ldr r0, [r0]
@@ -308,7 +308,7 @@ _0225408C:
 	ldr r0, [r0, #0x54]
 	cmp r0, #0
 	beq _022540A2
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, _022540E4 ; =ov03_022598A0
 	mov r1, #0
 	ldr r0, [r0]
@@ -319,7 +319,7 @@ _022540A2:
 	ldr r0, [r0, #0x58]
 	cmp r0, #0
 	beq _022540B8
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, _022540E4 ; =ov03_022598A0
 	mov r1, #0
 	ldr r0, [r0]
@@ -4940,7 +4940,7 @@ _022565F6:
 	mov r1, #0
 	bl ov03_02255D68
 	ldr r0, [r4, #0x64]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x68]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x14]
@@ -5426,7 +5426,7 @@ _022569EC:
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [sp, #0x30]
 	bl DestroyMsgData
 	ldr r0, [sp, #0x18]
@@ -6321,7 +6321,7 @@ ov03_0225709C: ; 0x0225709C
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0x9d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -10144,7 +10144,7 @@ ov03_02258E88: ; 0x02258E88
 	ldr r0, [r4, #0x30]
 	bl String_Delete
 	ldr r0, [r4, #0x2c]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x28]
 	bl DestroyMsgData
 	add r0, r4, #0

@@ -65,7 +65,7 @@
 .public DestroyMsgData
 .public NewString_ReadMsgData
 .public MessageFormat_New
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferECWord
 .public StringExpandPlaceholders
 .public sub_0200E374

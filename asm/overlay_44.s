@@ -1139,7 +1139,7 @@ _0222A6F0:
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, _0222A754 ; =FS_OVERLAY_ID(OVY_42)
 	bl UnloadOverlayByID
 	pop {r3, r4, r5, r6, r7, pc}
@@ -11491,7 +11491,7 @@ ov44_0222FA28: ; 0x0222FA28
 	str r1, [r4, r0]
 	sub r0, #0x4c
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, _0222FA7C ; =0x00000B1C
 	mov r1, #0
 	str r1, [r4, r0]
@@ -19194,7 +19194,7 @@ ov44_02233678: ; 0x02233678
 	ldr r0, [r4, #8]
 	bl DestroyMsgData
 	ldr r0, [r4, #4]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov44_02233678

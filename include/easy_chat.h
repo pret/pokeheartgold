@@ -26,7 +26,7 @@ SAVE_EASY_CHAT_T *SaveData_EasyChat_get(SAVEDATA *saveData);
 u16 GetECWordIndexByPair(u32 msgBank, u32 word);
 u16 EasyChat_GetMsgBankForGroup(int category);
 void GetECWordIntoStringByIndex(u16 ecWord, STRING *dest);
-void EasyChatManager_delete(ECMAN *ecMan);
+void EasyChatManager_Delete(ECMAN *ecMan);
 void EasyChatManager_ReadWordIntoString(ECMAN *ecMan, u16 ecWord, STRING *dest);
 BOOL GetCategoryAndMsgNoByECWordIdx(u16 ecWord, u32 *category, u32 *msgno);
 u32 Save_EasyChat_sizeof(void);

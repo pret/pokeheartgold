@@ -127,13 +127,13 @@ BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 
         fmtStr = NewString_ReadMsgData(msgData, msg_0010_00058);
         BufferIntegerAsString(msgFmt, 0, get_num_coins(saveData), 5, STRCONVMODE_LEFT_ALIGN, TRUE);
     } else {
-        MessageFormat_delete(msgFmt);
+        MessageFormat_Delete(msgFmt);
         DestroyMsgData(msgData);
         return FALSE;
     }
     StringExpandPlaceholders(msgFmt, dest, fmtStr);
     String_Delete(fmtStr);
-    MessageFormat_delete(msgFmt);
+    MessageFormat_Delete(msgFmt);
     DestroyMsgData(msgData);
     return TRUE;
 }
@@ -172,7 +172,7 @@ void GetItemUseErrorMessage(PLAYERPROFILE *playerProfile, STRING *dest, u16 item
         BufferPlayersName(msgFmt, 0, playerProfile);
         StringExpandPlaceholders(msgFmt, dest, string);
         String_Delete(string);
-        MessageFormat_delete(msgFmt);
+        MessageFormat_Delete(msgFmt);
         DestroyMsgData(msgData);
     }
         break;

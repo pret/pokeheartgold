@@ -2434,10 +2434,10 @@ ov08_0221D14C: ; 0x0221D14C
 	bl DestroyMsgData
 	ldr r0, _0221D178 ; =0x00001FA4
 	ldr r0, [r4, r0]
-	bl MessagePrinter_delete
+	bl MessagePrinter_Delete
 	ldr r0, _0221D17C ; =0x00001FAC
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, _0221D180 ; =0x00001FB0
 	ldr r0, [r4, r0]
 	bl String_Delete
@@ -14249,9 +14249,9 @@ ov08_02223228: ; 0x02223228
 	ldr r0, [r4, #0x10]
 	bl DestroyMsgData
 	ldr r0, [r4, #0xc]
-	bl MessagePrinter_delete
+	bl MessagePrinter_Delete
 	ldr r0, [r4, #0x14]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x18]
 	bl String_Delete
 	pop {r4, pc}

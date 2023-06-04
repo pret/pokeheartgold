@@ -349,7 +349,7 @@ ov39_022272EC: ; 0x022272EC
 	mov r0, #0xfe
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0xfd
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -2636,7 +2636,7 @@ _02228394:
 	ldr r0, [r4, #0x24]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x20]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x38]
 	bl String_Delete
 	ldr r0, [r4, #0x3c]

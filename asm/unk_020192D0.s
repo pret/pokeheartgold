@@ -139,7 +139,7 @@ _020193CA:
 	cmp r0, #1
 	bne _0201945A
 	ldr r0, [r4, #8]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	ldr r0, [r4, #0x7c]
 	cmp r0, #1
 	bne _020193EC
@@ -172,7 +172,7 @@ _0201940E:
 	cmp r0, #1
 	bne _0201945A
 	ldr r0, [r4, #8]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -193,7 +193,7 @@ _0201943A:
 	cmp r0, #1
 	bne _0201945A
 	ldr r0, [r4, #8]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	mov r0, #0
 	str r0, [r4, #4]
 	ldr r0, [r5]

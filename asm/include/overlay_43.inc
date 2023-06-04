@@ -13,7 +13,7 @@
 .public UnloadOverlayByID
 .public HandleLoadOverlay
 .public OverlayManager_New
-.public OverlayManager_delete
+.public OverlayManager_Delete
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
@@ -51,7 +51,7 @@
 .public NewString_ReadMsgData
 .public GetSpeciesName
 .public MessageFormat_New
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferPlayersName
 .public BufferIntegerAsString
 .public BufferWiFiPlazaActivityName

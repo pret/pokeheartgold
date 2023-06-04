@@ -1577,7 +1577,7 @@ _022594BC:
 	ldr r0, [r4, #4]
 	bl DestroyMsgData
 	ldr r0, [r4]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov46_02259494

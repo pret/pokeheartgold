@@ -65,7 +65,7 @@
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
 .public MessageFormat_New
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferBoxMonSpeciesName
 .public BufferIntegerAsString
 .public StringExpandPlaceholders

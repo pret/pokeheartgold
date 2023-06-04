@@ -53,7 +53,7 @@ MessageFormat *MessageFormat_New_Custom(u32 nstr, u32 len, HeapID heapId) {
     return NULL;
 }
 
-void MessageFormat_delete(MessageFormat *messageFormat) {
+void MessageFormat_Delete(MessageFormat *messageFormat) {
     s32 i;
     GF_ASSERT(messageFormat->count != 0);
     if (messageFormat->fields != NULL) {

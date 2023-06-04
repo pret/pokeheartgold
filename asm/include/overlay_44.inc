@@ -68,7 +68,7 @@
 .public ReadMsgDataIntoString
 .public GetSpeciesName
 .public MessageFormat_New
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferPlayersName
 .public BufferIntegerAsString
 .public BufferWiFiPlazaActivityName

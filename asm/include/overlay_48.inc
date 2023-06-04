@@ -41,7 +41,7 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public MessageFormat_New_Custom
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferCountryName
 .public BufferCityName
 .public StringExpandPlaceholders

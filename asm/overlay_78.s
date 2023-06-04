@@ -615,7 +615,7 @@ ov78_021E5E24: ; 0x021E5E24
 	add r0, #0x18
 	bl RemoveWindow
 	ldr r0, [r4, #0x3c]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x38]
 	bl DestroyMsgData
 	pop {r4, pc}

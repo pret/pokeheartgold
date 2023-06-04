@@ -22,7 +22,7 @@
 .public PlayFanfare
 .public IsFanfarePlaying
 .public OverlayManager_New
-.public OverlayManager_delete
+.public OverlayManager_Delete
 .public OverlayManager_run
 .public NARC_New
 .public NARC_Delete
@@ -49,7 +49,7 @@
 .public NewString_ReadMsgData
 .public ReadMsgData_ExpandPlaceholders
 .public MessageFormat_New
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferBoxMonSpeciesName
 .public BufferBoxMonNickname
 .public BufferMoveName

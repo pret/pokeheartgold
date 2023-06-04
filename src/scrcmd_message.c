@@ -122,7 +122,7 @@ BOOL ScrCmd_444(SCRIPTCONTEXT *ctx) {
     u8 numLegendaryPokemonSeen = 0;
     MessageFormat *messageFormat = sub_0204B538(fsys->savedata, numEligiblePokemon, r2, r3, &numLegendaryPokemonSeen);
     ov01_021EF5C8(ctx, messageFormat, baseMessageNum + numLegendaryPokemonSeen, TRUE);
-    MessageFormat_delete(messageFormat);
+    MessageFormat_Delete(messageFormat);
     SetupNativeScript(ctx, ov01_021EF348);
     return TRUE;
 }

@@ -1006,7 +1006,7 @@ sub_02075D4C: ; 0x02075D4C
 	ldr r0, [r4, #8]
 	bl DestroyMsgData
 	ldr r0, [r4, #0xc]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x10]
 	bl FreeToHeap
 	ldr r0, [r4, #0x3c]
@@ -2138,7 +2138,7 @@ _02076752:
 	b _02076C76
 _02076754:
 	ldr r0, [r4, #0x38]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	mov r0, #0
 	str r0, [r4, #0x38]
 	ldr r1, [r4]

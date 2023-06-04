@@ -42,7 +42,7 @@
 .public NewString_ReadMsgData
 .public GetSpeciesNameIntoArray
 .public MessageFormat_New_Custom
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferString
 .public BufferCountryName
 .public BufferCityName

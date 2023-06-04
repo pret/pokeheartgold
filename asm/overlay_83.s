@@ -2309,14 +2309,14 @@ _0223F0F0:
 	ldr r0, [r5, #0x1c]
 	bl DestroyMsgData
 	ldr r0, [r5, #0x24]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r5, #0x28]
 	bl String_Delete
 	ldr r0, [r5, #0x2c]
 	bl String_Delete
 	ldr r0, _0223F1C0 ; =0x00000504
 	ldr r0, [r5, r0]
-	bl MessagePrinter_delete
+	bl MessagePrinter_Delete
 	mov r0, #4
 	bl FontID_Release
 	mov r6, #0
@@ -11777,7 +11777,7 @@ _02243EDC:
 	bl DestroyMsgData
 	ldr r0, [sp]
 	ldr r0, [r0, #0x24]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [sp]
 	ldr r0, [r0, #0x28]
 	bl String_Delete
@@ -11788,7 +11788,7 @@ _02243EDC:
 	ldr r0, [sp]
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl MessagePrinter_delete
+	bl MessagePrinter_Delete
 	mov r0, #4
 	bl FontID_Release
 	ldr r4, [sp]

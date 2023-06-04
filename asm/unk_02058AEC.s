@@ -1460,7 +1460,7 @@ _02059672:
 	ldr r0, [r4, #0x2c]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x28]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0xc]
 	bl String_Delete
 	ldr r0, [r4, #0x10]
@@ -2271,7 +2271,7 @@ _02059C6C:
 	ldr r0, [r4, #0x1c]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x18]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4]
 	bl String_Delete
 	ldr r0, [r4, #4]

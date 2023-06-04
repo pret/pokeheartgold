@@ -2145,7 +2145,7 @@ ov96_021E6814: ; 0x021E6814
 	mov r0, #0xa
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	mov r1, #0x7e
 	lsl r1, r1, #2
 	ldr r0, [r4, r1]
@@ -8324,7 +8324,7 @@ ov96_021E95F8: ; 0x021E95F8
 	bl ReadMsgData_ExpandPlaceholders
 	add r5, r0, #0
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x10]
 	add r1, r5, #0
 	bl StringCopy
@@ -8387,7 +8387,7 @@ ov96_021E966C: ; 0x021E966C
 	bl ReadMsgData_ExpandPlaceholders
 	add r6, r0, #0
 	add r0, r5, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x10]
 	add r1, r6, #0
 	bl StringCopy
@@ -19061,7 +19061,7 @@ ov96_021EE808: ; 0x021EE808
 	ldr r0, [r4, #0xc]
 	bl DestroyMsgData
 	ldr r0, [r4, #4]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
 	beq _021EE828
@@ -27968,7 +27968,7 @@ ov96_021F2EFC: ; 0x021F2EFC
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r4, #0
 	bl DestroyMsgData
 	add r0, r5, #4
@@ -29788,7 +29788,7 @@ _021F3C84:
 	cmp r5, #2
 	blt _021F3C84
 	ldr r0, [r7, #0x60]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r7, #0x5c]
 	bl DestroyMsgData
 	add r4, r7, #0
@@ -36297,7 +36297,7 @@ ov96_021F70AC: ; 0x021F70AC
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r4, #0
 	bl DestroyMsgData
 	add r5, #0x44
@@ -37364,7 +37364,7 @@ ov96_021F78C4: ; 0x021F78C4
 	add r0, r5, #0
 	bl String_Delete
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r7, #0
 	bl DestroyMsgData
 	add r0, r4, #0
@@ -45255,7 +45255,7 @@ ov96_021FB808: ; 0x021FB808
 	add r0, r6, #0
 	bl String_Delete
 	add r0, r4, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r7, #0
 	bl DestroyMsgData
 	add r5, #8
@@ -54013,7 +54013,7 @@ _021FFDB0:
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r4, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r6, #0
 	bl DestroyMsgData
 	add r0, r5, #4
@@ -54298,7 +54298,7 @@ _02200030:
 	blt _02200030
 	ldr r0, [sp]
 	ldr r0, [r0, #0x30]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [sp]
 	ldr r0, [r0, #0x2c]
 	bl DestroyMsgData
@@ -60629,7 +60629,7 @@ ov96_0220337C: ; 0x0220337C
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r4, #0
 	bl DestroyMsgData
 	add r0, r5, #4
@@ -69125,7 +69125,7 @@ ov96_02207774: ; 0x02207774
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r4, #0
 	bl DestroyMsgData
 	add r0, r5, #4
@@ -69931,7 +69931,7 @@ _02207DAC:
 	blt _02207DAC
 	ldr r0, [sp]
 	ldr r0, [r0, #0x20]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [sp]
 	ldr r0, [r0, #0x1c]
 	bl DestroyMsgData
@@ -73849,7 +73849,7 @@ _02209CB0:
 	mov r0, #0x97
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0x96
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
@@ -84376,7 +84376,7 @@ ov96_0220EE4C: ; 0x0220EE4C
 	add r0, #0x24
 	bl RemoveWindow
 	ldr r0, [r6, #0x14]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r6, #0x18]
 	bl DestroyMsgData
 	ldr r5, _0220EE88 ; =ov96_0221CF58
@@ -93593,7 +93593,7 @@ ov96_022136A4: ; 0x022136A4
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r4, #0
 	bl DestroyMsgData
 	add r5, #8
@@ -94995,7 +94995,7 @@ _02214140:
 	cmp r4, #4
 	blo _02214140
 	add r0, r7, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [sp, #0xc]
 	bl DestroyMsgData
 	add sp, #0x10
@@ -95702,7 +95702,7 @@ ov96_02214690: ; 0x02214690
 	ldr r0, [r4, #0x40]
 	bl FreeToHeap
 	ldr r0, [r4, #0x38]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x34]
 	bl DestroyMsgData
 	add r0, r4, #0
@@ -99813,7 +99813,7 @@ ov96_022165FC: ; 0x022165FC
 	add r0, #0x20
 	bl RemoveWindow
 	ldr r0, [r6, #0x10]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r6, #0x14]
 	bl DestroyMsgData
 	ldr r5, _02216638 ; =ov96_0221D738

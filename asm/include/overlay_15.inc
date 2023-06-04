@@ -32,7 +32,7 @@
 .public NewString_ReadMsgData
 .public ReadMsgData_ExpandPlaceholders
 .public MessageFormat_New
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferPlayersName
 .public BufferIntegerAsString
 .public BufferMoveName
@@ -40,7 +40,7 @@
 .public BufferItemNamePlural
 .public StringExpandPlaceholders
 .public MessagePrinter_New
-.public MessagePrinter_delete
+.public MessagePrinter_Delete
 .public PrintUIntOnWindow
 .public sub_0200CE7C
 .public sub_0200CF18

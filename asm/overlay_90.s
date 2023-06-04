@@ -1380,7 +1380,7 @@ ov90_022591D4: ; 0x022591D4
 	ldr r0, [r4, #8]
 	bl String_Delete
 	ldr r0, [r4, #4]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4]
 	bl DestroyMsgData
 	pop {r4, pc}

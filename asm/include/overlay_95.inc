@@ -45,7 +45,7 @@
 .public NewString_ReadMsgData
 .public ReadMsgData_ExpandPlaceholders
 .public MessageFormat_New
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferBoxMonSpeciesName
 .public StringExpandPlaceholders
 .public sub_0200CF18

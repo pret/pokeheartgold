@@ -514,7 +514,7 @@ ov95_021E5CAC: ; 0x021E5CAC
 	ldr r0, [sp, #0x14]
 	bl String_Delete
 	add r0, r5, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r6, #0
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2942,7 +2942,7 @@ _021E7082:
 	mov r0, #4
 	bl FontID_Release
 	ldr r0, [r4, #0x14]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0xc]
 	mov r1, #4
 	bl FreeBgTilemapBuffer

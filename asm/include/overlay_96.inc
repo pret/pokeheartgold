@@ -34,7 +34,7 @@
 .public UnloadOverlayByID
 .public HandleLoadOverlay
 .public OverlayManager_New
-.public OverlayManager_delete
+.public OverlayManager_Delete
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
@@ -86,7 +86,7 @@
 .public ReadMsgData_ExpandPlaceholders
 .public GetSpeciesName
 .public MessageFormat_New
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferString
 .public BufferPlayersName
 .public BufferIntegerAsString

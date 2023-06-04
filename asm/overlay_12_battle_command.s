@@ -2629,7 +2629,7 @@ _02246E5C:
 	add r0, r5, #0
 	bl sub_0208311C
 	ldr r0, [r4, #0x50]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	ldr r0, [r4]
 	mov r1, #2
 	bl ov12_0223BBF0

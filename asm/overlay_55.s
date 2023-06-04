@@ -15,7 +15,7 @@ ov55_021E5900: ; 0x021E5900
 	cmp r0, #0
 	beq _021E5920
 	ldr r0, [r4]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	mov r0, #0
 	str r0, [r4]
 	mov r0, #1

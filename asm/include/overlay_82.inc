@@ -47,12 +47,12 @@
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
 .public MessageFormat_New
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferIntegerAsString
 .public BufferTypeName
 .public StringExpandPlaceholders
 .public MessagePrinter_New
-.public MessagePrinter_delete
+.public MessagePrinter_Delete
 .public PrintUIntOnWindow
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2

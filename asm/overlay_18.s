@@ -1190,7 +1190,7 @@ ov18_021E6280: ; 0x021E6280
 	mov r0, #0x66
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, _021E62A4 ; =0x0000065C
 	ldr r0, [r4, r0]
 	bl DestroyMsgData
@@ -17403,7 +17403,7 @@ _021EE556:
 	mov r3, #2
 	bl PrintUIntOnWindow
 	add r0, r4, #0
-	bl MessagePrinter_delete
+	bl MessagePrinter_Delete
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -38567,7 +38567,7 @@ _021F8CDA:
 	mov r3, #0x14
 	bl ov18_021F9648
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r4, #0
 	bl DestroyMsgData
 	bl GetDexHeightMsgBank

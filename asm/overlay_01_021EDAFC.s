@@ -2244,7 +2244,7 @@ MoneyBoxSys_Update: ; 0x021EEB4C
 	add r0, r4, #0
 	bl String_Delete
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [sp, #0xc]
 	bl DestroyMsgData
 	add r0, r5, #0
@@ -2409,7 +2409,7 @@ _021EED04:
 	add r0, r6, #0
 	bl String_Delete
 	ldr r0, [sp, #0x10]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r7, #0
 	bl DestroyMsgData
 	ldr r0, [sp, #0xc]
@@ -2631,7 +2631,7 @@ ov01_021EEE44: ; 0x021EEE44
 	add r0, r4, #0
 	bl String_Delete
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [sp, #0xc]
 	bl DestroyMsgData
 	add r0, r5, #0

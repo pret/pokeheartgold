@@ -124,7 +124,7 @@ ov80_0222A920: ; 0x0222A920
 	bl GF_AssertFail
 _0222A930:
 	ldr r0, [r4, #0x44]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x48]
 	bl String_Delete
 	ldr r0, [r4, #0x4c]

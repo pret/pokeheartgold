@@ -1422,7 +1422,7 @@ ov100_021E6408: ; 0x021E6408
 	cmp r0, #0
 	beq _021E6428
 	ldr r0, [r4]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	mov r0, #0
 	str r0, [r4]
 	mov r0, #1

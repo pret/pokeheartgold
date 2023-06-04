@@ -6660,7 +6660,7 @@ ov45_0222CD90: ; 0x0222CD90
 	cmp r0, #0
 	beq _0222CDBA
 	ldr r0, [r4]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	add r0, r5, #0
 	str r0, [r4]
 	add r0, r4, #0
@@ -8987,7 +8987,7 @@ _0222DDCC:
 	add r0, r7, #0
 	bl DestroyMsgData
 	ldr r0, [sp, #0xc]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r4, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}

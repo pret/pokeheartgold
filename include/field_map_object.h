@@ -155,7 +155,7 @@ struct MapObjectInitArgs;
 
 // FIXME: Some of these declarations are static and don't belong in here.
 MapObjectMan *sub_0205E0BC(FieldSystem *fsys, int num, HeapID heapId);
-void MapObjectMan_delete(MapObjectMan *man);
+void MapObjectMan_Delete(MapObjectMan *man);
 void sub_0205E104(MapObjectMan* manager, u32 a1, u32 a2, u32 num_object_events, OBJECT_EVENT* object_events);
 MapObjectMan* MapObjectMan_New(u32 count);
 LocalMapObject* sub_0205E1D0(MapObjectMan* manager, OBJECT_EVENT* object_events, u32 map_no);

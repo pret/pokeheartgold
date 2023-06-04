@@ -17,7 +17,7 @@
 .public sub_02003DE8
 .public PlaySE
 .public OverlayManager_New
-.public OverlayManager_delete
+.public OverlayManager_Delete
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
@@ -35,7 +35,7 @@
 .public DestroyMsgData
 .public NewString_ReadMsgData
 .public MessageFormat_New
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public sub_0200CF18
 .public sub_0200CF38
 .public sub_0200CF6C

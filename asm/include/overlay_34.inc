@@ -25,7 +25,7 @@
 .public NewString_ReadMsgData
 .public ReadMsgData_ExpandPlaceholders
 .public MessageFormat_New
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferString
 .public BufferPlayersName
 .public MailMsg_GetExpandedString

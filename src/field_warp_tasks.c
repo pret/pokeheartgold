@@ -240,7 +240,7 @@ static void sub_02053210(FieldSystem *fsys) {
         sub_02056E38();
         PlayerAvatar_FreeToHeap(fsys->playerAvatar);
         MapObjectMan_RemoveAllActiveObjects(fsys->mapObjectMan);
-        MapObjectMan_delete(fsys->mapObjectMan);
+        MapObjectMan_Delete(fsys->mapObjectMan);
     }
 }
 

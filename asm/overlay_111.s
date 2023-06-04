@@ -1989,14 +1989,14 @@ ov111_021E685C: ; 0x021E685C
 	ldr r0, [r4, #0xc]
 	bl DestroyMsgData
 	ldr r0, [r4, #8]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
 	beq _021E687A
 	bl String_Delete
 _021E687A:
 	ldr r0, [r4, #4]
-	bl MessagePrinter_delete
+	bl MessagePrinter_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}

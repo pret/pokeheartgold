@@ -22,7 +22,7 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public MessageFormat_New
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public BufferIntegerAsString
 .public BufferMonthNameAbbr
 .public StringExpandPlaceholders

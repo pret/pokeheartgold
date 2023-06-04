@@ -1050,10 +1050,10 @@ _0207963E:
 	bl DestroyMsgData
 	ldr r0, _020796A8 ; =0x000007BC
 	ldr r0, [r6, r0]
-	bl MessagePrinter_delete
+	bl MessagePrinter_Delete
 	ldr r0, _020796AC ; =0x000007C4
 	ldr r0, [r6, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, _020796B0 ; =0x00000C74
 	ldr r0, [r6, r0]
 	cmp r0, #0

@@ -277,7 +277,7 @@ _021E82FC:
 	ldr r0, [r6, #0x14]
 	bl DestroyMsgData
 	ldr r0, [r6, #0x10]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r6, #0
 	bl ov52_021E8568
 	ldr r0, [sp]

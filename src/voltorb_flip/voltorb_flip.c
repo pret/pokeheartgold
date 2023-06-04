@@ -2069,7 +2069,7 @@ static void FreeOverlayData(OVY_MANAGER *man) {
     ov122_021E765C(work);
     ov122_021E79A4(work);
 
-    MessageFormat_delete(work->msgFmt);
+    MessageFormat_Delete(work->msgFmt);
     DestroyMsgData(work->msgData);
     NARC_Delete(work->narc);
     ov122_021E8068();

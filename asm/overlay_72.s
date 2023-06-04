@@ -1026,7 +1026,7 @@ _02238086:
 	mov r0, #0xbd
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r4, #0
 	bl ov72_02238160
 	bl sub_02034DE0

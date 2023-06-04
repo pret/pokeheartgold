@@ -85,6 +85,6 @@ BOOL ScrCmd_MoveRelearnerGetResult(SCRIPTCONTEXT *ctx) {
         *retPtr = 255;
     }
 
-    MoveRelearner_delete(moveRelearner);
+    MoveRelearner_Delete(moveRelearner);
     return FALSE;
 }

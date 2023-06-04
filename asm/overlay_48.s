@@ -5435,7 +5435,7 @@ ov48_0225B0A4: ; 0x0225B0A4
 	ldr r0, [r4]
 	bl DestroyMsgData
 	ldr r0, [r4, #4]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #8]
 	bl String_Delete
 	ldr r0, [r4, #0xc]

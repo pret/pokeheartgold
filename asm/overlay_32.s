@@ -292,7 +292,7 @@ ov32_0225D76C: ; 0x0225D76C
 	mov r0, #0x52
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]

@@ -15,7 +15,7 @@ OVY_MANAGER *OverlayManager_New(const OVY_MGR_TEMPLATE *template, void *args, He
     return ret;
 }
 
-void OverlayManager_delete(OVY_MANAGER *man) {
+void OverlayManager_Delete(OVY_MANAGER *man) {
     FreeToHeap(man);
 }
 

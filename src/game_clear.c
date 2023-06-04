@@ -336,7 +336,7 @@ static void GameClearSave_PrintSaveStatus(FieldSystem *fsys, GameClearWork *env,
         MessageFormat *msgFmt = MessageFormat_New(HEAP_ID_4);
         BufferPlayersName(msgFmt, 0, Save_PlayerData_GetProfileAddr(fsys->savedata));
         env->windowText = ReadMsgData_ExpandPlaceholders(msgFmt, msgData, msg_0040_00016, HEAP_ID_4);
-        MessageFormat_delete(msgFmt);
+        MessageFormat_Delete(msgFmt);
     } else {
         env->windowText = NewString_ReadMsgData(msgData, msg_0040_00018);
     }

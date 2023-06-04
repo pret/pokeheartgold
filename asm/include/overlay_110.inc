@@ -29,7 +29,7 @@
 .public DestroyMsgData
 .public NewString_ReadMsgData
 .public MessageFormat_New_Custom
-.public MessageFormat_delete
+.public MessageFormat_Delete
 .public sub_0200CF18
 .public sub_0200CF38
 .public sub_0200CF70

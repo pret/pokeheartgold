@@ -1466,7 +1466,7 @@ _0223E8E4:
 	ldr r0, [r6, #0x20]
 	bl DestroyMsgData
 	ldr r0, [r6, #0x24]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r6, #0x28]
 	bl String_Delete
 	ldr r0, [r6, #0x2c]
@@ -1474,7 +1474,7 @@ _0223E8E4:
 	add r0, r6, #0
 	add r0, #0x98
 	ldr r0, [r0]
-	bl MessagePrinter_delete
+	bl MessagePrinter_Delete
 	mov r4, #0
 	add r5, r6, #0
 _0223E94A:

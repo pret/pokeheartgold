@@ -177,7 +177,7 @@ static struct FieldUseMoveEnv *PartyMenuEnv_create(struct FieldMoveUseData *useD
     return ret;
 }
 
-static void PartyMenuEnv_delete(struct FieldUseMoveEnv *env) {
+static void PartyMenuEnv_Delete(struct FieldUseMoveEnv *env) {
     GF_ASSERT(env->magic == 0x19740205);
     FreeToHeap(env);
 }
@@ -210,7 +210,7 @@ static BOOL Task_UseCutInField(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     StartScriptFromMenu(taskManager, std_menu_cut, env->facingObject);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_delete(env);
+    PartyMenuEnv_Delete(env);
     return FALSE;
 }
 
@@ -292,7 +292,7 @@ static BOOL Task_UseSurfInField(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     StartScriptFromMenu(taskManager, std_menu_surf, NULL);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_delete(env);
+    PartyMenuEnv_Delete(env);
     return FALSE;
 }
 
@@ -328,7 +328,7 @@ static BOOL Task_UseStrengthInField(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     StartScriptFromMenu(taskManager, std_menu_strength, env->facingObject);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_delete(env);
+    PartyMenuEnv_Delete(env);
     return FALSE;
 }
 
@@ -360,7 +360,7 @@ static BOOL Task_UseRockSmashInField(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     StartScriptFromMenu(taskManager, std_menu_rock_smash, env->facingObject);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_delete(env);
+    PartyMenuEnv_Delete(env);
     return FALSE;
 }
 
@@ -395,7 +395,7 @@ static BOOL Task_UseWaterfallInField(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     StartScriptFromMenu(taskManager, std_menu_waterfall, NULL);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_delete(env);
+    PartyMenuEnv_Delete(env);
     return FALSE;
 }
 
@@ -436,7 +436,7 @@ static BOOL Task_UseRockClimbInField(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     StartScriptFromMenu(taskManager, std_menu_rock_climb, NULL);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_delete(env);
+    PartyMenuEnv_Delete(env);
     return FALSE;
 }
 
@@ -474,7 +474,7 @@ static BOOL Task_UseFlashInField(TaskManager *taskManager) {
         StartScriptFromMenu(taskManager, std_menu_flash, NULL);
     }
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_delete(env);
+    PartyMenuEnv_Delete(env);
     return FALSE;
 }
 
@@ -614,7 +614,7 @@ static BOOL Task_UseChatterInField(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     StartScriptFromMenu(taskManager, std_menu_chatter, NULL);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_delete(env);
+    PartyMenuEnv_Delete(env);
     return FALSE;
 }
 
@@ -652,7 +652,7 @@ static BOOL Task_UseWhirlpoolInField(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     StartScriptFromMenu(taskManager, std_menu_whirlpool, NULL);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_delete(env);
+    PartyMenuEnv_Delete(env);
     return FALSE;
 }
 
@@ -682,7 +682,7 @@ static BOOL Task_UseHeadbuttInField(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     StartScriptFromMenu(taskManager, std_menu_headbutt, env->facingObject);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_delete(env);
+    PartyMenuEnv_Delete(env);
     return FALSE;
 }
 

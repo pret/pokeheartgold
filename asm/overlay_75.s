@@ -157,7 +157,7 @@ _02246A82:
 	ldr r1, [r1, r2]
 	blx r1
 	ldr r0, [r4]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
@@ -1084,7 +1084,7 @@ _022471A4:
 	ldr r0, [r4, #0x24]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x20]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x3c]
 	bl String_Delete
 	ldr r0, [r4, #0x40]

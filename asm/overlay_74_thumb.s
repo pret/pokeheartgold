@@ -2024,7 +2024,7 @@ _02227FEA:
 	add r0, #0xec
 	str r2, [r0]
 	ldr r0, [sp, #0x28]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [sp, #0x24]
 	bl DestroyMsgData
 	mov r0, #1
@@ -4174,7 +4174,7 @@ ov74_02229084: ; 0x02229084
 	add r3, r2, #0
 	bl ov74_02235568
 	add r0, r4, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add sp, #0x20
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -4648,7 +4648,7 @@ ov74_0222947C: ; 0x0222947C
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [sp]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r6, #0
 	bl DestroyMsgData
 	ldr r0, _022295C4 ; =0x00003174
@@ -7366,7 +7366,7 @@ _0222AA86:
 	ldr r0, [r4, #0x10]
 	bl DestroyMsgData
 	ldr r0, [r4, #0xc]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0xff
 	str r0, [r4, #0x68]
 	add sp, #0x10
@@ -7698,7 +7698,7 @@ _0222ACEC:
 	add r3, r2, #0
 	bl ov74_02235568
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add sp, #0x5c
 	pop {r3, r4, r5, r6, pc}
 	nop
@@ -7788,7 +7788,7 @@ ov74_0222ADBC: ; 0x0222ADBC
 	bl ov74_0222AA18
 	ldr r0, [sp, #8]
 	str r7, [r4, #0x74]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [sp, #4]
 	bl DestroyMsgData
 	b _0222AE36
@@ -12220,7 +12220,7 @@ ov74_0222D1D4: ; 0x0222D1D4
 	add r0, r4, #0
 	bl DestroyMsgData
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -13170,7 +13170,7 @@ _0222D98A:
 	mov r0, #0x2a
 	lsl r0, r0, #8
 	ldr r0, [r5, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [sp, #0x14]
 	cmp r0, #0
 	bne _0222D9C2
@@ -13287,7 +13287,7 @@ _0222DA58:
 	mov r0, #0x2a
 	lsl r0, r0, #8
 	ldr r0, [r5, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 _0222DAB2:
 	ldr r0, _0222DAF4 ; =0x00002BD0
 	add r0, r5, r0
@@ -15216,7 +15216,7 @@ _0222EA5E:
 	ldr r0, [sp, #0x1c]
 	bl DestroyMsgData
 	add r0, r4, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r6, #0
 	add sp, #0x48
 	pop {r3, r4, r5, r6, r7, pc}
@@ -15292,7 +15292,7 @@ ov74_0222EA88: ; 0x0222EA88
 	mov r0, #0x2a
 	lsl r0, r0, #8
 	ldr r0, [r5, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -16110,7 +16110,7 @@ _0222F166:
 	mov r0, #0x2a
 	lsl r0, r0, #8
 	ldr r0, [r5, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [sp, #0x14]
 	cmp r0, #0
 	bne _0222F19E
@@ -16227,7 +16227,7 @@ _0222F234:
 	mov r0, #0x2a
 	lsl r0, r0, #8
 	ldr r0, [r5, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 _0222F28E:
 	ldr r0, _0222F2D0 ; =0x00002BC4
 	add r0, r5, r0
@@ -21600,7 +21600,7 @@ _02231AA6:
 	cmp r0, #0
 	bne _02231B02
 	ldr r0, [sp, #0x14]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 _02231B02:
 	ldr r0, [sp, #0x18]
 	bl DestroyMsgData
@@ -24245,7 +24245,7 @@ ov74_02232F9C: ; 0x02232F9C
 	add r0, r6, #0
 	bl String_Delete
 	add r0, r4, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r5, #0
 	bl ov74_02232F5C
 	add sp, #0x18
@@ -29222,7 +29222,7 @@ _02235542:
 	cmp r0, #0
 	bne _02235554
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 _02235554:
 	ldr r0, [sp, #0x10]
 	bl DestroyMsgData

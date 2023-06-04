@@ -770,7 +770,7 @@ ov16_02201948: ; 0x02201948
 	cmp r0, #0
 	beq _02201968
 	ldr r0, [r4]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	mov r0, #0
 	str r0, [r4]
 	mov r0, #1

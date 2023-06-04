@@ -244,7 +244,7 @@ _021E5B06:
 	cmp r0, #1
 	bne _021E5B22
 	ldr r0, [r4, #0x14]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	add r0, r6, #0
 	str r0, [r4, #0x14]
 	mov r0, #5
@@ -660,7 +660,7 @@ ov53_021E5EB8: ; 0x021E5EB8
 	mov r0, #0x46
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0x45
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -4978,7 +4978,7 @@ _021E8156:
 	add r0, r4, #0
 	bl ov53_021E8310
 	ldr r0, [r4, #0x14]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
