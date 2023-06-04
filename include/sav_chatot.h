@@ -13,7 +13,7 @@ void Save_Chatot_init(SOUND_CHATOT *chatot);
 SOUND_CHATOT *Chatot_New(HeapID heapId);
 SOUND_CHATOT *Save_Chatot_Get(SAVEDATA *saveData);
 BOOL Chatot_Exists(SOUND_CHATOT *chatot);
-void Chatot_invalidate(SOUND_CHATOT *chatot);
+void Chatot_Invalidate(SOUND_CHATOT *chatot);
 s8 *Chatot_GetData(SOUND_CHATOT *chatot);
 void Chatot_Decode(s8 *dest, const s8 *data);
 void Chatot_Encode(SOUND_CHATOT *chatot, const s8 *data);

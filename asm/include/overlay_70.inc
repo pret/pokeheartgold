@@ -192,7 +192,7 @@
 .public sub_0202CA8C
 .public sub_0202CA90
 .public Save_Chatot_Get
-.public Chatot_invalidate
+.public Chatot_Invalidate
 .public GameStats_Inc
 .public GameStats_AddSpecial
 .public Save_SpecialRibbons_Get

@@ -102,7 +102,7 @@ static void DayCareMon_CopyFromPartySlot(PARTY *party, int partyIdx, DAYCAREMON 
     DayCareMon_SetSteps(daycareMon, 0);
     RemoveMonFromParty(party, partyIdx);
     if (!PartyHasMon(party, SPECIES_CHATOT)) {
-        Chatot_invalidate(Save_Chatot_Get(saveData));
+        Chatot_Invalidate(Save_Chatot_Get(saveData));
     }
 }
 
