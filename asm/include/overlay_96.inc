@@ -285,7 +285,7 @@
 .public sub_02026E50
 .public Sav2_PlayerData_GetProfileAddr
 .public Sav2_PlayerData_GetOptionsAddr
-.public PlayerProfile_sizeof
+.public PlayerProfile_Sizeof
 .public PlayerProfile_Copy
 .public PlayerProfile_Init
 .public Sav2_Profile_PlayerName_set

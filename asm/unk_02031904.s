@@ -4,13 +4,13 @@
 
 	.text
 
-	thumb_func_start Save_Pokeathlon_sizeof
-Save_Pokeathlon_sizeof: ; 0x02031904
+	thumb_func_start Save_Pokeathlon_Sizeof
+Save_Pokeathlon_Sizeof: ; 0x02031904
 	mov r0, #0x2e
 	lsl r0, r0, #6
 	bx lr
 	.balign 4, 0
-	thumb_func_end Save_Pokeathlon_sizeof
+	thumb_func_end Save_Pokeathlon_Sizeof
 
 	thumb_func_start Save_Pokeathlon_Init
 Save_Pokeathlon_Init: ; 0x0203190C

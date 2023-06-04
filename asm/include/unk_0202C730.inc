@@ -4,7 +4,7 @@
 .public PRandom
 .public CopyStringToU16Array
 .public SavArray_Get
-.public Sav2_FriendGroup_sizeof
+.public Sav2_FriendGroup_Sizeof
 .public sub_0202C738
 .public Sav2_FriendGroup_Init
 .public sub_0202C78C

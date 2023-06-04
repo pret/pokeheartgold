@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public PlayerProfile_sizeof
+.public PlayerProfile_Sizeof
 .public sub_0203410C
 .public sub_020342B8
 .public sub_020342C0

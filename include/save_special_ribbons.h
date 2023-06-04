@@ -9,7 +9,7 @@ typedef struct SaveSpecialRibbons {
     u8 ribbons[NUM_SPECIAL_RIBBONS];
 } SaveSpecialRibbons;
 
-u32 Save_SpecialRibbons_sizeof(void);
+u32 Save_SpecialRibbons_Sizeof(void);
 void Save_SpecialRibbons_Init(SaveSpecialRibbons* argP);
 SaveSpecialRibbons* Save_SpecialRibbons_Get(SAVEDATA* data);
 

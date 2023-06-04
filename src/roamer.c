@@ -2,7 +2,7 @@
 #include "math_util.h"
 #include "constants/roamer.h"
 
-u32 Save_Roamers_sizeof(void) {
+u32 Save_Roamers_Sizeof(void) {
     return sizeof(ROAMER_SAVE);
 }
 

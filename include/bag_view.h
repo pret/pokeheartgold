@@ -58,13 +58,13 @@ typedef struct BAG_VIEW {
 BAG_VIEW *BagView_New(u8 heap_id);
 
 /*
- * u32 BagView_sizeof(void)
+ * u32 BagView_Sizeof(void)
  *
  * Gets the size of BAG_VIEW
  *
  * @return: Size of BAG_VIEW
  */
-u32 BagView_sizeof(void);
+u32 BagView_Sizeof(void);
 void sub_02077894(BAG_VIEW *a0, u8 a1);
 void sub_0207789C(BAG_VIEW *a0, SAVEDATA *a1, u8 a2, BAG_CURSOR *a3, u32 a4);
 

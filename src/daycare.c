@@ -1,6 +1,6 @@
 #include "daycare.h"
 
-u32 Sav2_Daycare_sizeof(void) {
+u32 Sav2_Daycare_Sizeof(void) {
     return sizeof(DAYCARE);
 }
 

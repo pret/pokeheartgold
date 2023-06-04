@@ -4,7 +4,7 @@
 #include "gf_rtc.h"
 #include "sav_system_info.h"
 
-u32 Sav2_SysInfo_sizeof(void) {
+u32 Sav2_SysInfo_Sizeof(void) {
     return sizeof(SYSINFO);
 }
 

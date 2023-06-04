@@ -28,7 +28,7 @@ struct PokemonStorageSystem {
 void PCStorage_GetBoxName(PC_STORAGE *pcStorage, u32 boxno, STRING *dest);
 BOOL PCStorage_PlaceMonInFirstEmptySlotInAnyBox(PC_STORAGE *storage, BoxPokemon *boxMon);
 void PCStorage_Init(PC_STORAGE *storage);
-u32 PCStorage_sizeof(void);
+u32 PCStorage_Sizeof(void);
 void PCStorage_InitializeBoxes(PC_STORAGE *storage);
 BOOL PCStorage_PlaceMonInBoxFirstEmptySlot(PC_STORAGE* storage, u32 boxno, BoxPokemon *boxMon);
 BOOL PCStorage_PlaceMonInBoxByIndexPair(PC_STORAGE* storage, u32 boxno, u32 slotno, BoxPokemon *boxMon);

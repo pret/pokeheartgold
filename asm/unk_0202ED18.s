@@ -4,11 +4,11 @@
 
 	.text
 
-	thumb_func_start Sav2_FollowPoke_sizeof
-Sav2_FollowPoke_sizeof: ; 0x0202ED18
+	thumb_func_start Sav2_FollowPoke_Sizeof
+Sav2_FollowPoke_Sizeof: ; 0x0202ED18
 	mov r0, #8
 	bx lr
-	thumb_func_end Sav2_FollowPoke_sizeof
+	thumb_func_end Sav2_FollowPoke_Sizeof
 
 	thumb_func_start Sav2_FollowPoke_Init
 Sav2_FollowPoke_Init: ; 0x0202ED1C

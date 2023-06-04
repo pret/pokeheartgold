@@ -49,7 +49,7 @@ typedef struct SAVE_MISC_DATA {
 
 void Sav2_BerryPots_Init(BERRY_POT *berryPot);
 void Sav2_BerryPotRTC_Init(struct GF_RTC_DateTime *dateTime);
-u32 Sav2_Misc_sizeof(void);
+u32 Sav2_Misc_Sizeof(void);
 void Sav2_Misc_Init(SAVE_MISC_DATA *saveMiscData);
 SAVE_MISC_DATA *Sav2_Misc_Get(SAVEDATA *saveData);
 const SAVE_MISC_DATA *Sav2_Misc_Const_Get(const SAVEDATA *saveData);

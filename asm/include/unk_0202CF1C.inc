@@ -6,7 +6,7 @@
 .public GF_AssertFail
 .public SavArray_Get
 .public Pokedex_CheckMonCaughtFlag
-.public GameStats_sizeof
+.public GameStats_Sizeof
 .public GameStats_Init
 .public Sav2_GameStats_Get
 .public GameStats_SetCapped

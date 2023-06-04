@@ -8,7 +8,7 @@ static MomsSavings *GSPlayerMisc_GetMomSavingsAddr(SavePokegear *pokegear);
 static void sub_0202EFC4(PhoneRematch *rematch);
 static void MomsSavingsInit(MomsSavings *momsSavings);
 
-u32 SaveData_GSPlayerMisc_sizeof(void) {
+u32 SaveData_GSPlayerMisc_Sizeof(void) {
     return sizeof(SavePokegear);
 }
 

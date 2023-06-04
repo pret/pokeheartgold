@@ -23,7 +23,7 @@
 .public Sav2_PlayerData_GetProfileAddr
 .public Sav2_PlayerData_GetOptionsAddr
 .public Sav2_PlayerData_GetCoinsAddr
-.public PlayerProfile_sizeof
+.public PlayerProfile_Sizeof
 .public Sav2_Profile_PlayerName_set
 .public Pokedex_GetNatDexFlag
 .public Sav2_Pokedex_Get

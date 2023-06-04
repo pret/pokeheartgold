@@ -2269,7 +2269,7 @@ ov65_0221D0EC: ; 0x0221D0EC
 	str r0, [r5, r1]
 	ldr r0, [r4, #0x10]
 	str r0, [r5, #4]
-	bl SavArray_Party_sizeof
+	bl SavArray_Party_Sizeof
 	add r1, r0, #0
 	mov r0, #0x1a
 	bl AllocFromHeap
@@ -2278,7 +2278,7 @@ ov65_0221D0EC: ; 0x0221D0EC
 	ldr r0, [r5, r1]
 	mov r1, #6
 	bl InitPartyWithMaxSize
-	bl SavArray_Party_sizeof
+	bl SavArray_Party_Sizeof
 	add r2, r0, #0
 	ldr r0, _0221D1C4 ; =0x00002228
 	mov r1, #0xff
