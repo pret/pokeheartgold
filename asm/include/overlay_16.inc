@@ -28,7 +28,7 @@
 .public _s32_div_f
 .public ov15_BagApp_Init
 .public ov15_BagApp_Exec
-.public ov15_BagApp_exit
+.public ov15_BagApp_Exit
 .public ov16_022014A0
 .public ov16_022015B0
 .public ov16_022015BC

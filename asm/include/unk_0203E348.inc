@@ -222,7 +222,7 @@
 .public ov14_021E5988
 .public ov15_BagApp_Init
 .public ov15_BagApp_Exec
-.public ov15_BagApp_exit
+.public ov15_BagApp_Exit
 .public ov16_0220196C
 .public ov16_022019B8
 .public ov16_02201A04
