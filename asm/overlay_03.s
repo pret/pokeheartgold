@@ -10107,7 +10107,7 @@ ov03_02258DE8: ; 0x02258DE8
 	mov r0, #3
 	mov r1, #0x10
 	mov r2, #4
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r4, #0x2c]
 	mov r0, #0x80
 	mov r1, #4

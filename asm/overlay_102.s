@@ -7336,7 +7336,7 @@ _021EAE68:
 	mov r0, #2
 	mov r1, #0x3c
 	mov r2, #0
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	add r5, r0, #0
 	mov r0, #0x4b
 	lsl r0, r0, #2

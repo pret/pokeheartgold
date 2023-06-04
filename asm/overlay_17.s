@@ -2502,7 +2502,7 @@ ov17_02202F0C: ; 0x02202F0C
 	mov r0, #0x10
 	ldr r2, [r6]
 	add r1, r0, #0
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	add r1, r6, #0
 	add r1, #0xa0
 	str r0, [r1]

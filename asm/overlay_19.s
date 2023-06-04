@@ -491,7 +491,7 @@ ov19_02259C68: ; 0x02259C68
 	ldr r2, [r6]
 	mov r0, #6
 	mov r1, #0x16
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r6, #0x28]
 	ldr r1, [r6]
 	mov r0, #0x80

@@ -19,10 +19,10 @@
 #include "msgdata/msg/msg_0191.h"
 
 MessageFormat *MessageFormat_new(HeapID heapId) {
-    return MessageFormat_new_custom(8, 32, heapId);
+    return MessageFormat_New_Custom(8, 32, heapId);
 }
 
-MessageFormat *MessageFormat_new_custom(u32 nstr, u32 len, HeapID heapId) {
+MessageFormat *MessageFormat_New_Custom(u32 nstr, u32 len, HeapID heapId) {
     MessageFormat *ret;
     int i;
 

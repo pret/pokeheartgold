@@ -110,7 +110,7 @@ ov31_0225D60C: ; 0x0225D60C
 	mov r0, #8
 	mov r1, #0x40
 	add r2, r0, #0
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	mov r2, #0x55
 	lsl r2, r2, #2
 	str r0, [r4, r2]

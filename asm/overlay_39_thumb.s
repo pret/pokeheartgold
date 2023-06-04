@@ -2430,7 +2430,7 @@ ov39_02228140: ; 0x02228140
 	mov r0, #0xb
 	mov r1, #0x40
 	mov r2, #0x7c
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r5, #0x20]
 	ldr r2, _022282F8 ; =0x00000307
 	mov r0, #0

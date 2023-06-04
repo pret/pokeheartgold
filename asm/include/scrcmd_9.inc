@@ -7,7 +7,7 @@
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
 .public GetSpeciesNameIntoArray
-.public MessageFormat_new_custom
+.public MessageFormat_New_Custom
 .public BufferString
 .public BufferIntegerAsString
 .public AllocFromHeap

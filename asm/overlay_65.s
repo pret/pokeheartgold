@@ -54,7 +54,7 @@ ov65_0221BE20: ; 0x0221BE20
 	mov r0, #0xc
 	mov r1, #0x16
 	mov r2, #0x1a
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	mov r1, #0x61
 	lsl r1, r1, #2
 	str r0, [r4, r1]

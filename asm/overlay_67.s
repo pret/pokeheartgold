@@ -966,7 +966,7 @@ ov67_021E60B4: ; 0x021E60B4
 	ldr r2, [r4]
 	mov r0, #2
 	mov r1, #0x40
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r4, #0x2c]
 	mov r0, #2
 	ldr r1, [r4]

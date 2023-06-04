@@ -86,7 +86,7 @@ _021E5960:
 	ldr r2, [r5]
 	mov r0, #8
 	mov r1, #0x40
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	ldr r1, _021E5A28 ; =0x0000C080
 	str r0, [r5, r1]
 	ldr r0, [r5]

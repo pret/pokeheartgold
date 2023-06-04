@@ -34,7 +34,7 @@ sub_0208E600: ; 0x0208E600
 	ldr r2, [r4]
 	mov r0, #9
 	mov r1, #0x20
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r4, #8]
 	str r5, [r4, #0xc]
 	str r6, [r4, #0x10]

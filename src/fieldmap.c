@@ -102,7 +102,7 @@ BOOL Task_RunScripts(TaskManager *taskman) {
     case 0:
         env->scriptContexts[0] = CreateScriptContext(fsys, env->activeScriptNumber);
         env->activeScriptContextCount = 1;
-        env->msgfmt = MessageFormat_new_custom(8, 64, HEAP_ID_FIELDMAP);
+        env->msgfmt = MessageFormat_New_Custom(8, 64, HEAP_ID_FIELDMAP);
         env->stringBuffer0 = String_New(1024, HEAP_ID_FIELDMAP);
         env->stringBuffer1 = String_New(1024, HEAP_ID_FIELDMAP);
         env->state++;

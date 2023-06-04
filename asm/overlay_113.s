@@ -1750,7 +1750,7 @@ ov113_021E6680: ; 0x021E6680
 	mov r0, #0x10
 	ldr r2, [r4]
 	add r1, r0, #0
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r4, #0x48]
 	mov r0, #2
 	ldr r1, [r4]

@@ -3344,7 +3344,7 @@ sub_0204B538: ; 0x0204B538
 	mov r0, #0x13
 	mov r1, #0xe
 	mov r2, #4
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	mov r1, #0
 	str r1, [sp]
 	mov r3, #1
