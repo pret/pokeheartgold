@@ -6,7 +6,7 @@
 	.public WMSP_GetRequestThread
 	.public WL_Terminate
 	.public WMSP_GetIndicateThread
-	.public WM_sp_init
+	.public WMSP_Init
 	.public OS_IRQTable
 	.public wmspW
 
@@ -6279,7 +6279,7 @@ WvrBegin: ; 0x03805A6C
 	str r3, [sp, #4]
 	str r7, [sp, #0x14]
 	str r2, [sp, #0xc]
-	bl __VENEER_WM_sp_init
+	bl __VENEER_WMSP_Init
 	add sp, sp, #0x50
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, lr}
 	bx lr
@@ -6289,12 +6289,12 @@ _03805B08: .word wvrWlWork
 _03805B0C: .word wvrWlStaElement
 	arm_func_end WvrBegin
 
-	arm_func_start __VENEER_WM_sp_init
-__VENEER_WM_sp_init: ; 0x03805B10
-	ldr pc, _03805B14 ; =WM_sp_init
+	arm_func_start __VENEER_WMSP_Init
+__VENEER_WMSP_Init: ; 0x03805B10
+	ldr pc, _03805B14 ; =WMSP_Init
 	.align 2, 0
-_03805B14: .word WM_sp_init
-	arm_func_end __VENEER_WM_sp_init
+_03805B14: .word WMSP_Init
+	arm_func_end __VENEER_WMSP_Init
 
 	arm_func_start WvrPxiWmSubstituteCallback
 WvrPxiWmSubstituteCallback: ; 0x03805B18

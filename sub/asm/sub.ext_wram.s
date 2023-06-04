@@ -9,8 +9,8 @@
 
 	.text
 
-	arm_func_start WM_sp_init
-WM_sp_init: ; 0x06000000
+	arm_func_start WMSP_Init
+WMSP_Init: ; 0x06000000
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
 	mov r4, r1
@@ -129,7 +129,7 @@ _060001BC: .word wmspRequestThread
 _060001C0: .word WMSP_RequestThread
 _060001C4: .word wmspW + 0x1128
 _060001C8: .word WmspPxiCallback
-	arm_func_end WM_sp_init
+	arm_func_end WMSP_Init
 
 	arm_func_start __VENEER_OS_InitMessageQueue
 __VENEER_OS_InitMessageQueue: ; 0x060001CC
