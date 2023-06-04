@@ -1054,7 +1054,7 @@ ov16_02201B68: ; 0x02201B68
 	.word ov17_02201C10, ov17_02201C78, ov17_02201D04, 0xFFFFFFFF
 
 ov16_02201B78: ; 0x02201B78
-	.word ov15_BagApp_Init, ov15_BagApp_exec, ov15_BagApp_exit, FS_OVERLAY_ID(OVY_15)
+	.word ov15_BagApp_Init, ov15_BagApp_Exec, ov15_BagApp_exit, FS_OVERLAY_ID(OVY_15)
 
 	.data
 
