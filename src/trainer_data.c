@@ -19,7 +19,7 @@ void EnemyTrainerSet_Init(BATTLE_SETUP *battleSetup, SAVEDATA *saveData, HeapID 
     STRING *string;
 
     msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0729_bin, heap_id);
-    rivalName = Sav2_Misc_RivalName_const_get(Sav2_Misc_const_get(saveData));
+    rivalName = Sav2_Misc_RivalName_Const_Get(Sav2_Misc_Const_Get(saveData));
     for (i = 0; i < 4; i++) {
         if (battleSetup->trainerId[i] != 0) {
             TrainerData_ReadTrData(battleSetup->trainerId[i], &trainer);
