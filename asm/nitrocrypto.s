@@ -569,7 +569,7 @@ _022377A0:
 	bne _022377D4
 	ldr r0, [sp, #4]
 	mov r1, r7
-	bl BN_copy
+	bl BN_Copy
 	add sp, sp, #0x7c
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
@@ -1118,7 +1118,7 @@ _02237F80:
 	bne _02237FB8
 	mov r0, sl
 	mov r1, r5
-	bl BN_copy
+	bl BN_Copy
 	add sp, sp, #0x18c
 	mov r0, #1
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, lr}
@@ -1480,7 +1480,7 @@ _02238494:
 	bl BN_set_word
 	mov r0, sb
 	mov r1, r8
-	bl BN_copy
+	bl BN_Copy
 	add sp, sp, #0xc
 	str fp, [r6]
 	mov r0, #1
@@ -1663,7 +1663,7 @@ BN_RECP_CTX_set: ; 0x0223873C
 	sub sp, sp, #4
 	mov r5, r0
 	mov r4, r1
-	bl BN_copy
+	bl BN_Copy
 	add r0, r5, #0x14
 	mov r1, #0
 	bl BN_set_word
@@ -1780,7 +1780,7 @@ BN_MONT_CTX_set_word: ; 0x0223888C
 	bxeq lr
 	add r0, r7, #0x20
 	add r4, r7, #0xc
-	bl BN_copy
+	bl BN_Copy
 	cmp r0, #0
 	addeq sp, sp, #0x14
 	moveq r0, #0
@@ -2413,7 +2413,7 @@ _0223918C:
 	beq _022391A0
 	mov r0, sb
 	mov r1, r7
-	bl BN_copy
+	bl BN_Copy
 _022391A0:
 	mov r0, #1
 	add sp, sp, #0x64
@@ -2499,7 +2499,7 @@ _02239290:
 	cmp r0, #0
 	beq _022392CC
 	ldr r1, [sp, #4]
-	bl BN_copy
+	bl BN_Copy
 	cmp r0, #0
 	addeq sp, sp, #0x4c
 	moveq r0, #0
@@ -2997,7 +2997,7 @@ _022399A4:
 	beq _022399F4
 	mov r0, sl
 	mov r1, r4
-	bl BN_copy
+	bl BN_Copy
 _022399F4:
 	mov r0, #1
 	add sp, sp, #4
@@ -4451,8 +4451,8 @@ _0223AE08:
 	bx lr
 	arm_func_end BN_clear
 
-	arm_func_start BN_copy
-BN_copy: ; 0x0223AE1C
+	arm_func_start BN_Copy
+BN_Copy: ; 0x0223AE1C
 	stmdb sp!, {r4, r5, lr}
 	sub sp, sp, #4
 	mov r5, r0
@@ -4493,7 +4493,7 @@ _0223AE9C:
 	add sp, sp, #4
 	ldmia sp!, {r4, r5, lr}
 	bx lr
-	arm_func_end BN_copy
+	arm_func_end BN_Copy
 
 	arm_func_start bn_expand2
 bn_expand2: ; 0x0223AEB4

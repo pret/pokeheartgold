@@ -8,7 +8,7 @@ OPTIONS* Options_New(HeapID heap_id) {
     return ret;
 }
 
-void Options_copy(OPTIONS* src, OPTIONS* dest) {
+void Options_Copy(OPTIONS* src, OPTIONS* dest) {
     MI_CpuCopy8(src, dest, sizeof(OPTIONS));
 }
 

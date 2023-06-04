@@ -27418,7 +27418,7 @@ _021F33B6:
 	bl sub_0202D660
 	add r1, r0, #0
 	add r0, r5, #0
-	bl MailMsg_copy
+	bl MailMsg_Copy
 	add r4, r4, #1
 	add r5, #8
 	cmp r4, #3

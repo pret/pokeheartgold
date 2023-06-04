@@ -21,7 +21,7 @@ POKEDEX *Pokedex_New(HeapID heapId) {
     return ret;
 }
 
-void Pokedex_copy(const POKEDEX *src, POKEDEX *dest) {
+void Pokedex_Copy(const POKEDEX *src, POKEDEX *dest) {
     MI_CpuCopy8(src, dest, sizeof(POKEDEX));
 }
 

@@ -77,7 +77,7 @@ void sub_02090D54(Unk02090C94 *a0, MAIL_MESSAGE *mailMessage) {
 }
 
 void sub_02090D60(Unk02090C94 *a0, MAIL_MESSAGE *mailMessage) {
-    MailMsg_copy(mailMessage, &a0->mailMessage);
+    MailMsg_Copy(mailMessage, &a0->mailMessage);
 }
 
 u8 sub_02090D70(Unk02090C94 *a0) {

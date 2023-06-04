@@ -39,7 +39,7 @@ u16* Save_PlayerData_GetCoinsAddr(SAVEDATA* savedata);
 IGT* Save_PlayerData_GetIGTAddr(SAVEDATA* savedata);
 u32 PlayerProfile_sizeof(void);
 PLAYERPROFILE* PlayerProfile_New(HeapID heap_id);
-void PlayerProfile_copy(const PLAYERPROFILE* src, PLAYERPROFILE* dest);
+void PlayerProfile_Copy(const PLAYERPROFILE* src, PLAYERPROFILE* dest);
 void PlayerProfile_init(PLAYERPROFILE* profile);
 BOOL PlayerProfile_IsNameEmpty(PLAYERPROFILE* profile);
 void Save_Profile_PlayerName_set(PLAYERPROFILE* profile, u16* name);

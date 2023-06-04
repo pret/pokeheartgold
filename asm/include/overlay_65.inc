@@ -143,7 +143,7 @@
 .public String16_FormatInteger
 .public CopyU16ArrayToString
 .public PlayerProfile_New
-.public PlayerProfile_copy
+.public PlayerProfile_Copy
 .public Save_Profile_PlayerName_set
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetPlayerName_NewString

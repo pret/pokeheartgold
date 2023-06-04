@@ -77,6 +77,6 @@ void Chatot_Encode(SOUND_CHATOT *chatot, const s8 *data) {
     }
 }
 
-void Chatot_copy(SOUND_CHATOT *dst, SOUND_CHATOT *src) {
+void Chatot_Copy(SOUND_CHATOT *dst, SOUND_CHATOT *src) {
     MI_CpuCopyFast(src, dst, sizeof(SOUND_CHATOT));
 }

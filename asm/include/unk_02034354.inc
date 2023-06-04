@@ -5,7 +5,7 @@
 .public GF_AssertFail
 .public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_sizeof
-.public PlayerProfile_copy
+.public PlayerProfile_Copy
 .public PlayerProfile_init
 .public PlayerProfile_IsNameEmpty
 .public sub_020290BC

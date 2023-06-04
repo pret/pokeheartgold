@@ -195,7 +195,7 @@ _021E5A40:
 	add r0, #0x14
 	lsl r1, r1, #3
 	add r1, r2, r1
-	bl MailMsg_copy
+	bl MailMsg_Copy
 	b _021E5A86
 _021E5A7C:
 	add r0, r4, #0
@@ -329,7 +329,7 @@ _021E5B8A:
 	add r1, r0, #0
 	lsl r0, r5, #3
 	add r0, r7, r0
-	bl MailMsg_copy
+	bl MailMsg_Copy
 	add r0, r5, #1
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10

@@ -286,7 +286,7 @@
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_sizeof
-.public PlayerProfile_copy
+.public PlayerProfile_Copy
 .public PlayerProfile_init
 .public Save_Profile_PlayerName_set
 .public PlayerProfile_GetNamePtr

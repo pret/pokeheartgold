@@ -520,12 +520,12 @@ ov25_02259CC4: ; 0x02259CC4
 	add r1, r5, #0
 	add r0, #0x24
 	add r1, #0x20
-	bl MailMsg_copy
+	bl MailMsg_Copy
 	add r0, r4, #0
 	add r5, #0x28
 	add r0, #0x2c
 	add r1, r5, #0
-	bl MailMsg_copy
+	bl MailMsg_Copy
 	mov r0, #0
 	str r0, [r4, #0x10]
 	pop {r3, r4, r5, pc}

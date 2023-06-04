@@ -17,12 +17,12 @@
 .public Save_WriteFileAsync
 .public SaveArray_CalcCRC16
 .public Save_PlayerData_GetOptionsAddr
-.public PlayerProfile_copy
+.public PlayerProfile_Copy
 .public sub_020291E8
 .public sub_0202925C
-.public Pokedex_copy
+.public Pokedex_Copy
 .public Save_Pokedex_get
-.public Options_copy
+.public Options_Copy
 .public sub_0202FBCC
 .public sub_0202FBD4
 .public sub_0202FBF0

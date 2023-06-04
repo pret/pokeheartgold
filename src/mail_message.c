@@ -143,7 +143,7 @@ BOOL MailMsg_Compare(const MAIL_MESSAGE *a, const MAIL_MESSAGE *b) {
     return TRUE;
 }
 
-void MailMsg_copy(MAIL_MESSAGE *dst, const MAIL_MESSAGE *src) {
+void MailMsg_Copy(MAIL_MESSAGE *dst, const MAIL_MESSAGE *src) {
     *dst = *src;
 }
 

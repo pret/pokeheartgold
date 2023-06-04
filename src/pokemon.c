@@ -447,7 +447,7 @@ static u32 GetMonDataInternal(Pokemon *mon, int attr, void * dest) {
     case MON_DATA_SPDEF:
         return mon->party.spdef;
     case MON_DATA_MAIL_STRUCT:
-        Mail_copy(&mon->party.mail, dest);
+        Mail_Copy(&mon->party.mail, dest);
         return 1;
     case MON_DATA_SEAL_COORDS:
         CopyCapsule(&mon->party.sealCoords, dest);
@@ -942,7 +942,7 @@ static void SetMonDataInternal(Pokemon *mon, int attr, const void * value) {
         mon->party.spdef = VALUE(u16);
         break;
     case MON_DATA_MAIL_STRUCT:
-        Mail_copy((const MAIL *)value, &mon->party.mail);
+        Mail_Copy((const MAIL *)value, &mon->party.mail);
         break;
     case MON_DATA_SEAL_COORDS:
         CopyCapsule((const CAPSULE *)value, &mon->party.sealCoords);

@@ -6,7 +6,7 @@
 .public LCRandom
 .public GF_AssertFail
 .public Save_PlayerData_GetProfileAddr
-.public PlayerProfile_copy
+.public PlayerProfile_Copy
 .public sub_020310BC
 .public sub_02031108
 .public sub_02031228

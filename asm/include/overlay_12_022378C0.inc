@@ -119,11 +119,11 @@
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
 .public PlayerProfile_New
-.public PlayerProfile_copy
+.public PlayerProfile_Copy
 .public PlayerProfile_GetPlayerName_NewString
 .public PlayerProfile_GetVersion
 .public Pokedex_New
-.public Pokedex_copy
+.public Pokedex_Copy
 .public Options_GetFrame
 .public GameStats_Inc
 .public sub_020302A4
@@ -149,7 +149,7 @@
 .public SaveArray_Party_Alloc
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public Party_copy
+.public Party_Copy
 .public sub_02074E5C
 .public sub_02074EC4
 .public sub_02075074

@@ -329,7 +329,7 @@ sub_02051AAC: ; 0x02051AAC
 	lsl r1, r1, #4
 	ldr r0, [sp, #0x14]
 	ldr r1, [r4, r1]
-	bl Options_copy
+	bl Options_Copy
 	add r0, r5, #0
 	bl Field_GetTimeOfDay
 	mov r1, #0x57
@@ -524,7 +524,7 @@ _02051CD4:
 	add r1, r5, r1
 	ldr r1, [r1, #4]
 	add r0, r6, #0
-	bl Party_copy
+	bl Party_Copy
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end sub_02051CC4
@@ -544,7 +544,7 @@ _02051CF4:
 	add r1, #0xf8
 	ldr r1, [r1]
 	add r0, r6, #0
-	bl PlayerProfile_copy
+	bl PlayerProfile_Copy
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_02051CE4
 
@@ -554,11 +554,11 @@ sub_02051D04: ; 0x02051D04
 	add r2, r0, r2
 	mov r0, #0x46
 	lsl r0, r0, #2
-	ldr r3, _02051D14 ; =Chatot_copy
+	ldr r3, _02051D14 ; =Chatot_Copy
 	ldr r0, [r2, r0]
 	bx r3
 	nop
-_02051D14: .word Chatot_copy
+_02051D14: .word Chatot_Copy
 	thumb_func_end sub_02051D04
 
 	thumb_func_start sub_02051D18
@@ -683,12 +683,12 @@ _02051E14:
 	lsl r1, r1, #4
 	ldr r0, [sp, #0x10]
 	ldr r1, [r5, r1]
-	bl Pokedex_copy
+	bl Pokedex_Copy
 	mov r1, #0x13
 	lsl r1, r1, #4
 	ldr r0, [sp, #8]
 	ldr r1, [r5, r1]
-	bl Options_copy
+	bl Options_Copy
 	ldr r1, [sp, #0xc]
 	add r0, r5, #0
 	mov r2, #0
@@ -906,12 +906,12 @@ _02052004:
 	lsl r1, r1, #4
 	ldr r0, [sp, #0xc]
 	ldr r1, [r5, r1]
-	bl Pokedex_copy
+	bl Pokedex_Copy
 	mov r1, #0x13
 	lsl r1, r1, #4
 	ldr r0, [sp, #4]
 	ldr r1, [r5, r1]
-	bl Options_copy
+	bl Options_Copy
 	ldr r1, [sp, #8]
 	add r0, r5, #0
 	mov r2, #0
@@ -1134,12 +1134,12 @@ _020521F6:
 	lsl r1, r1, #4
 	ldr r0, [sp, #0x18]
 	ldr r1, [r5, r1]
-	bl Pokedex_copy
+	bl Pokedex_Copy
 	mov r1, #0x13
 	lsl r1, r1, #4
 	ldr r0, [sp, #0x10]
 	ldr r1, [r5, r1]
-	bl Options_copy
+	bl Options_Copy
 	ldr r1, [sp, #0x14]
 	add r0, r5, #0
 	mov r2, #0
@@ -1350,10 +1350,10 @@ sub_0205239C: ; 0x0205239C
 	add r0, #0xf8
 	ldr r0, [r0]
 	add r1, r6, #0
-	bl PlayerProfile_copy
+	bl PlayerProfile_Copy
 	ldr r0, [r5, #4]
 	add r1, r7, #0
-	bl Party_copy
+	bl Party_Copy
 	mov r0, #0x42
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -1363,7 +1363,7 @@ sub_0205239C: ; 0x0205239C
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	ldr r1, [sp, #4]
-	bl Pokedex_copy
+	bl Pokedex_Copy
 	ldr r0, [r4, #0xc]
 	mov r6, #0
 	bl SaveArray_Flags_get
@@ -1414,7 +1414,7 @@ sub_02052444: ; 0x02052444
 	mov r0, #0x11
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl Pokedex_copy
+	bl Pokedex_Copy
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02052444
 

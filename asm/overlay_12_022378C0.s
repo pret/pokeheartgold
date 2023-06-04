@@ -1394,14 +1394,14 @@ _022384CE:
 _022384D6:
 	ldr r0, [r5, #0x68]
 	ldr r1, [r6, #4]
-	bl Party_copy
+	bl Party_Copy
 	ldr r0, [r5, #0x68]
 	bl FreeToHeap
 	add r1, r6, #0
 	add r1, #0xf8
 	ldr r0, [r5, #0x48]
 	ldr r1, [r1]
-	bl PlayerProfile_copy
+	bl PlayerProfile_Copy
 	ldr r0, [r5, #0x48]
 	bl FreeToHeap
 	ldr r0, [sp]
@@ -1426,7 +1426,7 @@ _022384D6:
 	lsl r1, r1, #4
 	ldr r0, [r4, #0x60]
 	ldr r1, [r7, r1]
-	bl Pokedex_copy
+	bl Pokedex_Copy
 	ldr r0, [r4, #0x60]
 	bl FreeToHeap
 	mov r0, #0x45
@@ -2032,7 +2032,7 @@ _02238A7A:
 	str r1, [r6, #0x48]
 	add r0, #0xf8
 	ldr r0, [r0]
-	bl PlayerProfile_copy
+	bl PlayerProfile_Copy
 	mov r0, #0x46
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -2099,7 +2099,7 @@ _02238AB8:
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
 	ldr r1, [r4, #0x60]
-	bl Pokedex_copy
+	bl Pokedex_Copy
 	mov r1, #0x45
 	lsl r1, r1, #2
 	ldr r0, [sp, #4]
@@ -2408,7 +2408,7 @@ _02238D86:
 	ldr r0, [sp, #4]
 	ldr r1, [r5, #0x68]
 	ldr r0, [r0, #4]
-	bl Party_copy
+	bl Party_Copy
 	ldr r0, [sp, #4]
 	add r6, r6, #1
 	add r0, r0, #4
@@ -2516,7 +2516,7 @@ _02238E68:
 	ldr r0, [sp, #4]
 	ldr r1, [r5, #0x68]
 	ldr r0, [r0, #4]
-	bl Party_copy
+	bl Party_Copy
 	ldr r0, [sp, #4]
 	add r6, r6, #1
 	add r0, r0, #4
@@ -2619,7 +2619,7 @@ _02238F42:
 	ldr r0, [sp, #4]
 	ldr r1, [r5, #0x68]
 	ldr r0, [r0, #4]
-	bl Party_copy
+	bl Party_Copy
 	ldr r0, [sp, #4]
 	add r6, r6, #1
 	add r0, r0, #4
@@ -2749,7 +2749,7 @@ _02239050:
 	ldr r0, [sp, #4]
 	ldr r1, [r7, #0x68]
 	ldr r0, [r0, #4]
-	bl Party_copy
+	bl Party_Copy
 	ldr r0, [r7, #0x68]
 	mov r5, #0
 	bl GetPartyCount
@@ -2844,7 +2844,7 @@ _0223911A:
 	ldr r0, [sp, #4]
 	ldr r1, [r5, #0x68]
 	ldr r0, [r0, #4]
-	bl Party_copy
+	bl Party_Copy
 	ldr r0, [sp, #4]
 	add r6, r6, #1
 	add r0, r0, #4
@@ -2971,7 +2971,7 @@ _02239220:
 	ldr r0, [sp, #4]
 	ldr r1, [r5, #0x68]
 	ldr r0, [r0, #4]
-	bl Party_copy
+	bl Party_Copy
 	ldr r0, [sp, #4]
 	add r6, r6, #1
 	add r0, r0, #4
@@ -3074,7 +3074,7 @@ _022392F2:
 	ldr r0, [sp, #4]
 	ldr r1, [r5, #0x68]
 	ldr r0, [r0, #4]
-	bl Party_copy
+	bl Party_Copy
 	ldr r0, [sp, #4]
 	add r6, r6, #1
 	add r0, r0, #4
@@ -3207,7 +3207,7 @@ _02239408:
 	ldr r0, [sp, #4]
 	ldr r1, [r7, #0x68]
 	ldr r0, [r0, #4]
-	bl Party_copy
+	bl Party_Copy
 	ldr r0, [r7, #0x68]
 	mov r5, #0
 	bl GetPartyCount

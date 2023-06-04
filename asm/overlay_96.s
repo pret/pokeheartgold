@@ -486,7 +486,7 @@ _021E5CAE:
 	ldr r0, [r0]
 	bl Save_PlayerData_GetProfileAddr
 	add r1, r4, #0
-	bl PlayerProfile_copy
+	bl PlayerProfile_Copy
 	pop {r3, r4, r5, r6, r7, pc}
 _021E5CEC:
 	sub r0, #0xa
@@ -504,7 +504,7 @@ _021E5CF8:
 	add r0, r6, #0
 	bl sub_02034818
 	add r1, r4, #0
-	bl PlayerProfile_copy
+	bl PlayerProfile_Copy
 	ldrb r0, [r5, r7]
 	add r6, r6, #1
 	cmp r6, r0

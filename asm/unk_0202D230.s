@@ -686,7 +686,7 @@ sub_0202D640: ; 0x0202D640
 	lsl r0, r5, #3
 	add r0, r1, r0
 	add r1, r4, #0
-	bl MailMsg_copy
+	bl MailMsg_Copy
 	pop {r3, r4, r5, pc}
 	nop
 _0202D65C: .word 0x00000ABC
