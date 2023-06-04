@@ -20,7 +20,7 @@
 .public sub_0200B00C
 .public sub_0200B0A8
 .public IsPaletteFadeFinished
-.public MailMsg_init_withBank
+.public MailMsg_Init_WithBank
 .public sub_020183F0
 .public sub_02018410
 .public CreateHeap

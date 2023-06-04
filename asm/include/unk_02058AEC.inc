@@ -19,7 +19,7 @@
 .public ListMenuCursorNew
 .public DestroyListMenuCursorObj
 .public ListMenuUpdateCursorObj
-.public MailMsg_init_default
+.public MailMsg_Init_Default
 .public CreateHeapAtEnd
 .public DestroyHeap
 .public AllocFromHeap

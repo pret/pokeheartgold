@@ -3,7 +3,7 @@
 .public PlaySE
 .public CreateSysTask
 .public DestroySysTask
-.public MailMsg_init_withBank
+.public MailMsg_Init_WithBank
 .public CreateHeapAtEnd
 .public DestroyHeap
 .public AllocFromHeap

@@ -3026,7 +3026,7 @@ sub_0203D3B8: ; 0x0203D3B8
 	str r0, [r4, r1]
 	add r0, sp, #4
 	mov r1, #4
-	bl MailMsg_init_withBank
+	bl MailMsg_Init_WithBank
 	mov r0, #0xe
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]

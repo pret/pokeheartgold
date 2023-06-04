@@ -25,7 +25,7 @@ void MailMsg_init(MAIL_MESSAGE *mailMessage) {
     }
 }
 
-void MailMsg_init_withBank(MAIL_MESSAGE *mailMessage, u16 msgBank) {
+void MailMsg_Init_WithBank(MAIL_MESSAGE *mailMessage, u16 msgBank) {
     int i;
     mailMessage->msg_bank = msgBank;
     mailMessage->msg_no = 0;
@@ -35,13 +35,13 @@ void MailMsg_init_withBank(MAIL_MESSAGE *mailMessage, u16 msgBank) {
 }
 
 // I've entered the Union Room
-void MailMsg_init_default(MAIL_MESSAGE *mailMessage) {
-    MailMsg_init_withBank(mailMessage, MAILMSG_BANK_0295_GMM);
+void MailMsg_Init_Default(MAIL_MESSAGE *mailMessage) {
+    MailMsg_Init_WithBank(mailMessage, MAILMSG_BANK_0295_GMM);
     mailMessage->msg_no = msg_0295_00005;
 }
 
-void MailMsg_init_fromTemplate(MAIL_MESSAGE *mailMessage, const MAIL_MSG_TEMPLATE *template) {
-    MailMsg_init_withBank(mailMessage, template->msg_bank);
+void MailMsg_Init_FromTemplate(MAIL_MESSAGE *mailMessage, const MAIL_MSG_TEMPLATE *template) {
+    MailMsg_Init_WithBank(mailMessage, template->msg_bank);
     mailMessage->msg_no = template->msg_no;
     if (template->ec_groups[0] > 0) {
         mailMessage->fields[0] = GetECWordIndexByPair(EasyChat_GetMsgBankForGroup(template->ec_groups[0]), template->ec_words[0]);

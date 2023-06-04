@@ -897,7 +897,7 @@ sub_0205B338: ; 0x0205B338
 	str r1, [r4, #4]
 	add r0, #0x14
 	str r1, [r4, #8]
-	bl MailMsg_init_withBank
+	bl MailMsg_Init_WithBank
 	mov r0, #0
 	str r0, [r4, #0x10]
 	str r0, [r4, #0xc]

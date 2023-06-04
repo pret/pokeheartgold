@@ -36,11 +36,11 @@ ov25_022598C0: ; 0x022598C0
 	add r0, r4, #0
 	ldr r1, _02259940 ; =ov25_02259D8C
 	add r0, #0x24
-	bl MailMsg_init_fromTemplate
+	bl MailMsg_Init_FromTemplate
 	add r4, #0x2c
 	ldr r1, _02259944 ; =ov25_02259D94
 	add r0, r4, #0
-	bl MailMsg_init_fromTemplate
+	bl MailMsg_Init_FromTemplate
 	b _0225990E
 _022598FE:
 	mov r1, #6
@@ -206,7 +206,7 @@ ScrCmd_809: ; 0x02259A30
 	bne _02259A6C
 	ldr r1, _02259AA4 ; =ov25_02259D84
 	add r0, sp, #8
-	bl MailMsg_init_fromTemplate
+	bl MailMsg_Init_FromTemplate
 	add r0, sp, #8
 	add r1, sp, #0x10
 	mov r2, #8

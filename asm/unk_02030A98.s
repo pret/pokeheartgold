@@ -1851,7 +1851,7 @@ _020316AA:
 	ble _020316C8
 	add r0, r4, #0
 	mov r1, #4
-	bl MailMsg_init_withBank
+	bl MailMsg_Init_WithBank
 	mov r0, #0
 	strh r0, [r4, #2]
 	ldr r0, _020316EC ; =0x0000011F

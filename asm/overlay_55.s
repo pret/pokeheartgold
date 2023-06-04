@@ -201,7 +201,7 @@ _021E5A7C:
 	add r0, r4, #0
 	add r0, #0x14
 	mov r1, #3
-	bl MailMsg_init_withBank
+	bl MailMsg_Init_WithBank
 _021E5A86:
 	add r1, r4, #0
 	ldr r0, [r4, #8]

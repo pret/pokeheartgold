@@ -2522,7 +2522,7 @@ sub_02059E88: ; 0x02059E88
 	cmp r0, #0
 	beq _02059EB4
 	add r0, sp, #0
-	bl MailMsg_init_default
+	bl MailMsg_Init_Default
 	add r0, sp, #0
 	bl sub_0205AB88
 	add r0, r4, #0
