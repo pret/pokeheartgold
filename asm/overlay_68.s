@@ -3556,7 +3556,7 @@ ov68_021E7568: ; 0x021E7568
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _021E75B6
 	mov r0, #0x6b

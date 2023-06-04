@@ -145,7 +145,7 @@ _02246A44:
 	b _02246ADE
 _02246A82:
 	ldr r0, [r4]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #1
 	bne _02246ADE
 	add r1, r4, #0

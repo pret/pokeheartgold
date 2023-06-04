@@ -666,7 +666,7 @@ ov82_0223E2A4: ; 0x0223E2A4
 	cmp r0, #0
 	bne _0223E2E8
 	ldr r0, [r4, #4]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #1
 	bne _0223E2E8
 	add r0, r4, #0

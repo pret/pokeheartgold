@@ -123,7 +123,7 @@ _02096670:
 	b _02096734
 _02096686:
 	ldr r0, [r4, #4]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #1
 	bne _02096734
 	ldr r0, [r4, #4]

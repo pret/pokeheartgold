@@ -2605,7 +2605,7 @@ _02246E18:
 	pop {r3, r4, r5, r6, r7, pc}
 _02246E2A:
 	ldr r0, [r4, #0x50]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _02246E82
 	ldr r2, [r4, #4]

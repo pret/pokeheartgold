@@ -7,7 +7,7 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public OverlayManager_run
+.public OverlayManager_Run
 .public GfGfxLoader_GetScrnData
 .public GfGfxLoader_GetScrnDataFromOpenNarc
 .public sub_020192D0

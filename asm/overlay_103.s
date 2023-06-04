@@ -1551,7 +1551,7 @@ ov103_021ED568: ; 0x021ED568
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	bne _021ED57A
 	mov r0, #7

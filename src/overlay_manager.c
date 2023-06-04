@@ -40,7 +40,7 @@ void *OverlayManager_GetArgs(OVY_MANAGER *man) {
     return man->args;
 }
 
-BOOL OverlayManager_run(OVY_MANAGER *man) {
+BOOL OverlayManager_Run(OVY_MANAGER *man) {
     switch (man->exec_state) {
     case 0:
         if (man->template.ovy_id != FS_OVERLAY_ID_NONE) {

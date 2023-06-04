@@ -23,7 +23,7 @@
 .public IsFanfarePlaying
 .public OverlayManager_New
 .public OverlayManager_Delete
-.public OverlayManager_run
+.public OverlayManager_Run
 .public NARC_New
 .public NARC_Delete
 .public GfGfxLoader_LoadCharData

@@ -11748,7 +11748,7 @@ ov14_021EB2A8: ; 0x021EB2A8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x14]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	bne _021EB2BA
 	mov r0, #0xa

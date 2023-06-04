@@ -33,6 +33,6 @@ void *OverlayManager_CreateAndGetData(OVY_MANAGER *man, u32 size, HeapID heapId)
 void *OverlayManager_GetData(OVY_MANAGER *man);
 void OverlayManager_FreeData(OVY_MANAGER *man);
 void *OverlayManager_GetArgs(OVY_MANAGER *man);
-BOOL OverlayManager_run(OVY_MANAGER *man);
+BOOL OverlayManager_Run(OVY_MANAGER *man);
 
 #endif //POKEHEARTGOLD_OVERLAY_MANAGER_H

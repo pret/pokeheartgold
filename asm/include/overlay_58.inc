@@ -6,7 +6,7 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public OverlayManager_run
+.public OverlayManager_Run
 .public sub_0200FBDC
 .public sub_0200FBF4
 .public Main_SetVBlankIntrCB

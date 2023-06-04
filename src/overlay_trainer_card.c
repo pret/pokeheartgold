@@ -23,7 +23,7 @@ static int TCardAppRunStep_SignatureInit(TrainerCardAppState *work);
 static int TCardAppRunStep_SignatureExec(TrainerCardAppState *work);
 
 static BOOL isSubprocFinished(OVY_MANAGER **man) {
-    if (*man && OverlayManager_run(*man)) {
+    if (*man && OverlayManager_Run(*man)) {
         OverlayManager_Delete(*man);
         *man = NULL;
         return TRUE;

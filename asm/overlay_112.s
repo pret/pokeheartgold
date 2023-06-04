@@ -19464,7 +19464,7 @@ _021EF5EE:
 	b _021EF61C
 _021EF602:
 	ldr r0, [r4, #0x1c]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _021EF61C
 	ldr r0, [r4, #0x1c]

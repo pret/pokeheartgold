@@ -83,7 +83,7 @@ _0225C5BC:
 	b _0225C6B4
 _0225C5D8:
 	ldr r0, [r5, #0x28]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #1
 	bne _0225C6B4
 	ldr r0, [r5, #0x28]
@@ -110,7 +110,7 @@ _0225C5F4:
 	b _0225C6B4
 _0225C610:
 	ldr r0, [r5, #0x28]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #1
 	bne _0225C6B4
 	ldr r0, [r5, #0x28]
@@ -143,7 +143,7 @@ _0225C638:
 	b _0225C6B4
 _0225C654:
 	ldr r0, [r5, #0x28]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #1
 	bne _0225C6B4
 	ldr r0, [r5, #0x28]

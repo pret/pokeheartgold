@@ -149,7 +149,7 @@ void Main_RunOverlayManager(void) {
         _02111868.queuedMainOverlayId = FS_OVERLAY_ID_NONE;
         _02111868.queuedMainOverlayTemplate = NULL;
     }
-    if (OverlayManager_run(_02111868.overlayManager)) {
+    if (OverlayManager_Run(_02111868.overlayManager)) {
         OverlayManager_Delete(_02111868.overlayManager);
         _02111868.overlayManager = NULL;
         if (_02111868.mainOverlayId != FS_OVERLAY_ID_NONE) {

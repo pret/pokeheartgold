@@ -11,7 +11,7 @@ ov55_021E5900: ; 0x021E5900
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _021E5920
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _021E5920
 	ldr r0, [r4]

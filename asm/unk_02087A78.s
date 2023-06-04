@@ -250,7 +250,7 @@ _02087C0E:
 	b _02087C2C
 _02087C18:
 	ldr r0, [r4, #8]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _02087C2C
 	ldr r0, [r4, #8]
@@ -403,7 +403,7 @@ _02087D46:
 	b _02087DEC
 _02087D5A:
 	ldr r0, [r5, #8]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _02087DEC
 	mov r0, #0x71
