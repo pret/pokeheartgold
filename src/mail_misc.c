@@ -131,7 +131,7 @@ BOOL sub_02090DC0(Unk02090C94 *a0, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2) {
         return msg1->msg_bank == a0->unk1C[0] && msg1->msg_no == a0->unk1C[1];
     case 2:
     default:
-        return MailMsg_compare(&a0->mailMessage, msg2);
+        return MailMsg_Compare(&a0->mailMessage, msg2);
     }
 }
 

@@ -17,7 +17,7 @@ MAIL *Mail_New(HeapID heap_id);
 void Mail_copy(const MAIL *src, MAIL *dest);
 void Mail_init(MAIL *mail);
 BOOL Mail_TypeIsValid(MAIL *mail);
-BOOL Mail_compare(const MAIL *a, const MAIL *b);
+BOOL Mail_Compare(const MAIL *a, const MAIL *b);
 void Mail_SetNewMessageDetails(MAIL *mail, u8 mailType, u8 mon_no, SAVEDATA *saveData);
 u32 Mail_GetOTID(const MAIL *mail);
 u16 *Mail_GetAuthorNamePtr(MAIL *mail);
