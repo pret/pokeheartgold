@@ -27,7 +27,7 @@
 .public MI_CpuFill8
 .public _s32_div_f
 .public ov15_BagApp_Init
-.public ov15_BagApp_exec
+.public ov15_BagApp_Exec
 .public ov15_BagApp_exit
 .public ov16_022014A0
 .public ov16_022015B0
