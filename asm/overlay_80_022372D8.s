@@ -616,7 +616,7 @@ _0223777E:
 	mov r1, #1
 	lsl r1, r1, #8
 	ldr r1, [r4, r1]
-	bl PlayerProfile_copy
+	bl PlayerProfile_Copy
 	add r1, r7, #1
 	lsl r1, r1, #1
 	add r1, r5, r1

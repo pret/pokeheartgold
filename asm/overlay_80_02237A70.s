@@ -320,7 +320,7 @@ _02237CC0:
 	mov r1, #1
 	lsl r1, r1, #8
 	ldr r1, [r4, r1]
-	bl PlayerProfile_copy
+	bl PlayerProfile_Copy
 	ldrb r1, [r5, #0x11]
 	add r0, sp, #0x18
 	mov r2, #0xb

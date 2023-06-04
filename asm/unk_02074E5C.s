@@ -454,7 +454,7 @@ _020750F4:
 	add r0, #0xf8
 	ldr r0, [r0]
 	add r1, r4, #0
-	bl PlayerProfile_copy
+	bl PlayerProfile_Copy
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -580,7 +580,7 @@ _020751CC:
 	add r4, #0x20
 	ldr r0, [r0, #4]
 	add r1, r4, #0
-	bl Party_copy
+	bl Party_Copy
 	mov r0, #1
 	pop {r4, pc}
 	thumb_func_end sub_020751B8
@@ -641,7 +641,7 @@ _02075234:
 	add r0, r4, #0
 	ldr r1, [r2, r1]
 	add r0, #0x20
-	bl Chatot_copy
+	bl Chatot_Copy
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -865,7 +865,7 @@ _020753BE:
 	add r5, #0x20
 	ldr r0, [r0, #4]
 	add r1, r5, #0
-	bl Party_copy
+	bl Party_Copy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

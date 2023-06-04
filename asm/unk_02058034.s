@@ -820,7 +820,7 @@ sub_02058640: ; 0x02058640
 	ldr r1, [r1]
 	add r0, r4, #0
 	ldr r1, [r1, #0x40]
-	bl Party_copy
+	bl Party_Copy
 _0205865E:
 	cmp r5, #0
 	beq _0205866C

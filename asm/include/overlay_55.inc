@@ -9,7 +9,7 @@
 .public OverlayManager_run
 .public MailMsg_init_withBank
 .public MailMsg_IsInit
-.public MailMsg_copy
+.public MailMsg_Copy
 .public CreateHeap
 .public DestroyHeap
 .public AllocFromHeap

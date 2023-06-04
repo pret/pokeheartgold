@@ -4,7 +4,7 @@
 .public LCRandom
 .public GF_AssertFail
 .public Sav2_PlayerData_GetProfileAddr
-.public PlayerProfile_copy
+.public PlayerProfile_Copy
 .public sub_02034818
 .public sub_0203769C
 .public BattleSetup_New

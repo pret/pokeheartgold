@@ -57,7 +57,7 @@ MAIL *Mail_New(HeapID heapId) {
     return ret;
 }
 
-void Mail_copy(const MAIL *src, MAIL *dst) {
+void Mail_Copy(const MAIL *src, MAIL *dst) {
     MI_CpuCopy8(src, dst, sizeof(MAIL));
 }
 
@@ -250,7 +250,7 @@ MAIL_MESSAGE *Mail_GetUnk20Array(MAIL *mail, int i) {
 
 void Mail_SetMessage(MAIL *mail, const MAIL_MESSAGE *src, int i) {
     if (i < NELEMS(mail->unk_20)) {
-        MailMsg_copy(&mail->unk_20[i], src);
+        MailMsg_Copy(&mail->unk_20[i], src);
     }
 }
 
@@ -283,7 +283,7 @@ void Mailbox_DeleteSlotI(MAIL *msgs, int n, int i) {
 void Mailbox_CopyMailToSlotI(MAIL *msgs, int n, int i, const MAIL *src) {
     MAIL *dest = Mailbox_GetPtrToSlotI(msgs, n, i);
     if (dest != NULL) {
-        Mail_copy(src, dest);
+        Mail_Copy(src, dest);
     }
 }
 
@@ -295,7 +295,7 @@ MAIL *Mailbox_AllocAndFetchMailI(MAIL *msgs, int n, int i, HeapID heapId) {
     const MAIL *src = Mailbox_GetPtrToSlotI(msgs, n, i);
     MAIL *ret = Mail_New(heapId);
     if (src != NULL) {
-        Mail_copy(src, ret);
+        Mail_Copy(src, ret);
     }
     return ret;
 }
@@ -305,7 +305,7 @@ void Mailbox_FetchMailToBuffer(MAIL *msgs, int n, int i, MAIL *dest) {
     if (src == NULL) {
         Mail_init(dest);
     } else {
-        Mail_copy(src, dest);
+        Mail_Copy(src, dest);
     }
 }
 

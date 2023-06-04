@@ -45,7 +45,7 @@ PLAYERPROFILE* PlayerProfile_New(HeapID heap_id) {
     return profile;
 }
 
-void PlayerProfile_copy(const PLAYERPROFILE* src, PLAYERPROFILE* dest) {
+void PlayerProfile_Copy(const PLAYERPROFILE* src, PLAYERPROFILE* dest) {
     MI_CpuCopy8(src, dest, sizeof(PLAYERPROFILE));
 }
 

@@ -14,7 +14,7 @@ typedef struct Mailbox {
 } MAILBOX;
 
 MAIL *Mail_New(HeapID heap_id);
-void Mail_copy(const MAIL *src, MAIL *dest);
+void Mail_Copy(const MAIL *src, MAIL *dest);
 void Mail_init(MAIL *mail);
 BOOL Mail_TypeIsValid(MAIL *mail);
 BOOL Mail_Compare(const MAIL *a, const MAIL *b);

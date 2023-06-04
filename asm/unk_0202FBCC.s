@@ -1191,7 +1191,7 @@ _0203043E:
 	add r0, #0xf8
 	ldr r0, [r0]
 	add r1, r6, #0
-	bl PlayerProfile_copy
+	bl PlayerProfile_Copy
 	mov r0, #0x46
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1216,7 +1216,7 @@ _0203043E:
 	ldr r0, [r0, r1]
 	ldr r1, _02030498 ; =0x00001C60
 	add r1, r7, r1
-	bl Options_copy
+	bl Options_Copy
 _02030488:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1404,7 +1404,7 @@ sub_020304F0: ; 0x020304F0
 	mov r1, #0x11
 	lsl r1, r1, #4
 	ldr r1, [r6, r1]
-	bl Pokedex_copy
+	bl Pokedex_Copy
 	ldr r5, [sp, #0x14]
 	ldr r1, _020306CC ; =0x00001150
 	add r0, r5, #0
@@ -1454,7 +1454,7 @@ _02030614:
 	add r1, #0xf8
 	ldr r0, [sp, #4]
 	ldr r1, [r1]
-	bl PlayerProfile_copy
+	bl PlayerProfile_Copy
 	ldr r0, [sp, #0x14]
 	add r5, r5, #4
 	add r1, r0, r7
@@ -1487,7 +1487,7 @@ _02030614:
 	mov r1, #0x13
 	lsl r1, r1, #4
 	ldr r1, [r6, r1]
-	bl Options_copy
+	bl Options_Copy
 	mov r5, #0x13
 	lsl r5, r5, #4
 	ldr r1, [r6, r5]

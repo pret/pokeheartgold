@@ -70,7 +70,7 @@
 .public sub_02059538
 .public sub_02068FC8
 .public SavArray_Party_Alloc
-.public Party_copy
+.public Party_Copy
 .public sub_02091574
 .public MI_CpuFill8
 .public ov03_02255BEC

@@ -2,7 +2,7 @@
 #pragma once
 .public FreeToHeap
 .public LCRandom
-.public PlayerProfile_copy
+.public PlayerProfile_Copy
 .public sub_02030BD0
 .public sub_02034818
 .public sub_0203769C

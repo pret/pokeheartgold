@@ -17,7 +17,7 @@
 .public Sav2_PlayerData_GetProfileAddr
 .public Sav2_PlayerData_GetOptionsAddr
 .public PlayerProfile_New
-.public PlayerProfile_copy
+.public PlayerProfile_Copy
 .public Sav2_Profile_PlayerName_set
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_SetTrainerGender
@@ -27,15 +27,15 @@
 .public PlayerProfile_GetAvatar
 .public sub_020290FC
 .public Pokedex_New
-.public Pokedex_copy
+.public Pokedex_Copy
 .public Sav2_Pokedex_get
 .public Options_New
-.public Options_copy
+.public Options_Copy
 .public Save_PalPad_get
 .public sub_0202CA44
 .public Chatot_New
 .public Sav2_Chatot_get
-.public Chatot_copy
+.public Chatot_Copy
 .public Sav2_GameStats_get
 .public SaveData_GetMomsSavingsAddr
 .public MomSavingsBalanceAction
@@ -106,7 +106,7 @@
 .public AddMonToParty
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public Party_copy
+.public Party_Copy
 .public SavArray_PlayerParty_get
 .public BagNew
 .public BagCopy

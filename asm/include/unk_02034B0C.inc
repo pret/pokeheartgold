@@ -7,7 +7,7 @@
 .public FreeToHeap
 .public GF_AssertFail
 .public PlayerProfile_sizeof
-.public PlayerProfile_copy
+.public PlayerProfile_Copy
 .public PlayerProfile_GetTrainerID
 .public sub_020290B4
 .public sub_02032B84

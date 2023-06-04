@@ -119,7 +119,7 @@
 .public sub_020145B4
 .public GF_RTC_TimeToSec
 .public GF_RTC_DateTimeToSec
-.public MailMsg_copy
+.public MailMsg_Copy
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
 .public SetKeyRepeatTimers

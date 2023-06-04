@@ -6822,7 +6822,7 @@ _0221F664:
 	eor r0, r1
 	bl sub_02034818
 	ldr r1, [r5, #0x34]
-	bl PlayerProfile_copy
+	bl PlayerProfile_Copy
 	ldr r1, _0221F710 ; =0x000001B9
 	add r0, r7, #0
 	str r6, [r5, #0x28]

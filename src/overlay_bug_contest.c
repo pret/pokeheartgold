@@ -187,7 +187,7 @@ void BugContest_BackUpParty(BUGCONTEST *bugContest) {
     int i;
     bugContest->party_bak = SavArray_Party_Alloc(bugContest->heapId);
     bugContest->party_cur = SavArray_PlayerParty_get(bugContest->saveData);
-    Party_copy(bugContest->party_cur, bugContest->party_bak);
+    Party_Copy(bugContest->party_cur, bugContest->party_bak);
     bugContest->party_cur_num = GetPartyCount(bugContest->party_cur);
     bugContest->lead_mon_idx = Save_GetPartyLeadAlive(bugContest->saveData);
     // You can only enter the contest with one pokemon, so
@@ -210,7 +210,7 @@ void BugContest_RestoreParty_RetrieveCaughtPokemon(BUGCONTEST *bugContest) {
     mon = AllocMonZeroed(bugContest->heapId);
     CopyPokemonToPokemon(GetPartyMonByIndex(bugContest->party_cur, 0), mon);
     Party_GetUnkSubSlot(bugContest->party_cur, &sub, 0);
-    Party_copy(bugContest->party_bak, bugContest->party_cur);
+    Party_Copy(bugContest->party_bak, bugContest->party_cur);
     Party_SafeCopyMonToSlot_ResetUnkSub(bugContest->party_cur, bugContest->lead_mon_idx, mon);
     Party_SetUnkSubSlot(bugContest->party_cur, &sub, bugContest->lead_mon_idx);
     FreeToHeap(mon);
