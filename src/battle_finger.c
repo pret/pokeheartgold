@@ -35,8 +35,6 @@ static const UnkStruct_0200D748 ov12_0226EBD4 = {
     .unk_30 = 0
 };
 
-extern const UnkStruct_0200D748 ov12_0226EBD4;
-
 BattleFinger *BattleFinger_New(void *a0, void *a1, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation, u32 a7, u32 a8) {
     BattleFinger *finger;
     UnkStruct_0200D748 unkStruct = ov12_0226EBD4;
