@@ -5763,3 +5763,6 @@ ov12_0226C1C8: ; 0x0226C1C8
 
 ov12_0226C2DC: ; 0x0226C2DC
 	.byte 0x02, 0x03, 0x04, 0x05
+
+	.section .sinit,4
+	.word ov12_022399BC

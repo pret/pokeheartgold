@@ -1,12 +1,12 @@
-#ifndef POKEHEARTGOLD_OVERLAY_12_0226BBC4_H
-#define POKEHEARTGOLD_OVERLAY_12_0226BBC4_H
+#ifndef POKEHEARTGOLD_BATTLE_FINGER_H
+#define POKEHEARTGOLD_BATTLE_FINGER_H
 
 #include "battle.h"
 #include "unk_0200E320.h"
 
 //This file handles the finger that comes up during the catching tutorial
 
-typedef struct {
+typedef struct BattleFinger {
     void *unk0;
     SysTask *task;
     int x;

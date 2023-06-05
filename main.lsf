@@ -576,9 +576,9 @@ Overlay OVY_12
     Object asm/overlay_12_02265E28.o
     Object asm/overlay_12_02266024.o
     Object asm/overlay_12_0226ADE0.o
+    Object src/battle_cursor.o
     Object asm/overlay_12_0226B8FC.o
     Object src/battle_finger.o
-    Object asm/battle_finger_data.o
     Object src/overlay_12_0226BEC4.o
 }
 Overlay OVY_13

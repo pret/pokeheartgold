@@ -5,10 +5,10 @@
 static void BattleFinger_Update(SysTask *task, void *data);
 static void ov12_0226BEB8(BattleFinger *finger);
 
-void BattleFinger_LoadResources(void *a0, void *a1, HeapID heapId, void *a3, u32 a4, u32 pal, u32 cell, u32 animation) {
+void BattleFinger_LoadResources(void *a0, void *a1, HeapID heapId, void *a3, u32 character, u32 pal, u32 cell, u32 animation) {
     NARC *narc = NARC_ctor(NARC_a_1_6_4, heapId);
     sub_0200D68C(a3, 3, a0, a1, narc, 1, 0, 1, 2, pal);
-    sub_0200D504(a0, a1, narc, 0, 0, 2, a4);
+    sub_0200D504(a0, a1, narc, 0, 0, 2, character);
     sub_0200D6EC(a0, a1, narc, 2, 0, cell);
     sub_0200D71C(a0, a1, narc, 3, 0, animation);
     NARC_dtor(narc);
@@ -21,7 +21,7 @@ void BattleFinger_FreeResources(void *a0, u32 character, u32 pal, u32 cell, u32 
     sub_0200D988(a0, animation);
 }
 
-/*
+
 static const UnkStruct_0200D748 ov12_0226EBD4 = {
     .x = 0,
     .y = 0,
@@ -30,10 +30,10 @@ static const UnkStruct_0200D748 ov12_0226EBD4 = {
     .unk_08 = 0,
     .pal = 0,
     .vram = NNS_G2D_VRAM_TYPE_2DSUB,
-    .unk_14 = {0, 0, 0, 0, 0xFFFF, 0xFFFF},
+    .unk_14 = {0, 0, 0, 0, -1, -1},
     .unk_2C = 0,
     .unk_30 = 0
-};*/
+};
 
 extern const UnkStruct_0200D748 ov12_0226EBD4;
 
@@ -107,11 +107,11 @@ static void BattleFinger_Update(SysTask *task, void *data) {
         }
     }
     
-    if (sub_0200DCFC(finger->unk0) == FALSE) {
+    if (!sub_0200DCFC(finger->unk0)) {
         return;
     }
     
-    if (finger->touchAnimationFlag == FALSE) {
+    if (!finger->touchAnimationFlag) {
         int yOffset;
         finger->angle += 1000;
         if (finger->angle >= 18000) {
@@ -122,7 +122,7 @@ static void BattleFinger_Update(SysTask *task, void *data) {
             }
         }
         
-        if (finger->touchAnimationFlag == FALSE) {
+        if (!finger->touchAnimationFlag) {
             yOffset = FX_MulInline(GF_SinDegNoWrap(finger->angle / 100), 14 << FX32_SHIFT) / FX32_ONE;
             sub_0200DDF4(finger->unk0, finger->x, finger->y - yOffset, finger->unk14);
         }
