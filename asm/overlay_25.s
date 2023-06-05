@@ -126,7 +126,7 @@ _022599A2:
 	mov r2, #0x10
 	bl MIi_CpuClear16
 	add r0, r4, #0
-	bl String_C_Str
+	bl String_cstr
 	add r1, r5, #0
 	add r1, #8
 	lsl r2, r6, #1
@@ -166,7 +166,7 @@ _022599F8:
 	mov r2, #0x14
 	bl MIi_CpuClear16
 	add r0, r4, #0
-	bl String_C_Str
+	bl String_cstr
 	add r1, r5, #0
 	add r1, #0x24
 	lsl r2, r6, #1

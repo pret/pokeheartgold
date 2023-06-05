@@ -650,7 +650,7 @@ void BufferDeptStoreFloorNo(MessageFormat *msgFmt, u32 fieldno, u32 floor) {
 }
 
 void StringExpandPlaceholders(MessageFormat * msgFmt, STRING * dest, STRING * src) {
-    const u16 * cstr = String_C_Str(src);
+    const u16 * cstr = String_cstr(src);
     String_SetEmpty(dest);
     while (*cstr != EOS) {
         if (*cstr == EXT_CTRL_CODE_BEGIN) {

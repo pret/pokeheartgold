@@ -125,14 +125,14 @@ u32 FontID_FlatArray_GetWidthFirstLine(FontID fontId, const u16 *string, u32 let
 
 u32 FontID_String_GetWidth(FontID fontId, STRING *string, u32 letterSpacing) {
     GF_ASSERT(sFontWork->fontDataMan[fontId] != NULL);
-    return GetStringWidth(sFontWork->fontDataMan[fontId], String_C_Str(string), letterSpacing);
+    return GetStringWidth(sFontWork->fontDataMan[fontId], String_cstr(string), letterSpacing);
 }
 
 BOOL FontID_String_AllCharsValid(FontID fontId, STRING *str0, STRING *str1) {
     GF_ASSERT(sFontWork->fontDataMan[fontId] != NULL);
     String_SetEmpty(str1);
     String_Cat_HandleTrainerName(str1, str0);
-    return StringAllCharsValid(sFontWork->fontDataMan[fontId], String_C_Str(str1));
+    return StringAllCharsValid(sFontWork->fontDataMan[fontId], String_cstr(str1));
 }
 
 u8 GetFontAttribute(FontID fontId, int attr) {
@@ -178,7 +178,7 @@ void LoadFontPal1(enum GFBgLayer layer, u32 baseAddr, HeapID heapId) {
 
 u32 FontID_String_GetWidthMultiline(FontID fontId, STRING *string, u32 letterSpacing) {
     GF_ASSERT(sFontWork->fontDataMan[fontId] != NULL);
-    return GetStringWidthMultiline(sFontWork->fontDataMan[fontId], String_C_Str(string), letterSpacing);
+    return GetStringWidthMultiline(sFontWork->fontDataMan[fontId], String_cstr(string), letterSpacing);
 }
 
 u32 FontID_String_GetCenterAlignmentX(FontID fontId, STRING *string, u32 letterSpacing, u32 windowWidth) {

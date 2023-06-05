@@ -585,7 +585,7 @@ _0222A378:
 	bne _0222A404
 	add r0, r6, #0
 	add r1, sp, #0x1c
-	bl String_Atoi
+	bl String_atoi
 	add r7, r0, #0
 	ldr r0, [sp, #0x1c]
 	add r6, r1, #0
@@ -2122,7 +2122,7 @@ _0222AF88:
 	bl PlayerProfile_New
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x58]
-	bl String_C_Str
+	bl String_cstr
 	add r1, r0, #0
 	ldr r0, [sp, #0xc]
 	bl Save_Profile_PlayerName_Set
@@ -2134,7 +2134,7 @@ _0222AF88:
 	bl FreeToHeap
 	ldr r0, [r4, #0x5c]
 	add r1, sp, #0x10
-	bl String_Atoi
+	bl String_atoi
 	add r3, r0, #0
 	ldr r0, [sp, #0x10]
 	add r2, r1, #0
