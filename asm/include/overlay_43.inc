@@ -149,9 +149,9 @@
 .public String_Delete
 .public String_SetEmpty
 .public String_Copy
-.public String_Atoi
+.public String_atoi
 .public CopyU16ArrayToString
-.public String_C_Str
+.public String_cstr
 .public Sav2_PlayerData_GetProfileAddr
 .public Sav2_PlayerData_GetOptionsAddr
 .public PlayerProfile_New

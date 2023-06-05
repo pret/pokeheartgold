@@ -140,7 +140,7 @@
 .public String_CountLines
 .public String_GetLineN
 .public CopyU16ArrayToStringN
-.public String_C_Str
+.public String_cstr
 .public sub_02026C44
 .public sub_02026CAC
 .public sub_02026CC4

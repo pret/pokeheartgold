@@ -218,7 +218,7 @@ void String16_FormatUnsignedLongLong(STRING * str, u64 num, u32 ndigits, STRCONV
     GF_ASSERT(0);
 }
 
-s64 String_Atoi(STRING * str, BOOL * flag) {
+s64 String_atoi(STRING * str, BOOL * flag) {
     s64 ret = 0ll;
     s64 pow10 = 1ll;
     if (str->size > 18) {
@@ -360,7 +360,7 @@ void CopyStringToU16Array(const STRING * str, u16 * buf, u32 length) {
     GF_ASSERT(0);
 }
 
-u16 * String_C_Str(STRING * str) {
+u16 * String_cstr(STRING * str) {
     ASSERT_STRING(str);
 
     return str->data;

@@ -280,7 +280,7 @@
 .public String_Delete
 .public String_Copy
 .public CopyU16ArrayToString
-.public String_C_Str
+.public String_cstr
 .public Thunk_G3X_Reset
 .public sub_02026E50
 .public Sav2_PlayerData_GetProfileAddr

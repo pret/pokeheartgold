@@ -13,7 +13,7 @@
 .public GF_AssertFail
 .public String_Delete
 .public String_GetLength
-.public String_C_Str
+.public String_cstr
 .public Save_TrainerHouse_Get
 .public SetupNativeScript
 .public ScriptReadHalfword

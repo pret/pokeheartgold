@@ -14,7 +14,7 @@
 .public String_Delete
 .public String_Compare
 .public CopyU16ArrayToString
-.public String_C_Str
+.public String_cstr
 .public sub_020270C4
 .public GetStoragePCPointer
 .public LoadHallOfFame

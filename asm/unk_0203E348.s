@@ -2573,7 +2573,7 @@ _0203F5F6:
 	cmp r0, #5
 	bne _0203F618
 	ldr r0, [r1, #0x18]
-	bl String_C_Str
+	bl String_cstr
 	add r7, r0, #0
 	ldr r0, [r6, #0xc]
 	bl Save_FriendGroup_Get
