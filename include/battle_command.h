@@ -75,7 +75,7 @@ BOOL BtlCmd_64(BattleSystem *bsys, BATTLECONTEXT *ctx);
 BOOL BtlCmd_65(BattleSystem *bsys, BATTLECONTEXT *ctx);
 BOOL BtlCmd_SetHealthbarStatus(BattleSystem *bsys, BATTLECONTEXT *ctx);
 BOOL BtlCmd_PrintTrainerMessage(BattleSystem *bsys, BATTLECONTEXT *ctx);
-u32 CalcPrizeMoney(BattleSystem *bsys, BATTLECONTEXT *ctx, int trainerIndex);
+u32 CalcPrizeMoney(BattleSystem *bsys, BATTLECONTEXT *ctx, s32 trainerIndex);
 BOOL BtlCmd_CalcPrizeMoney(BattleSystem *bsys, BATTLECONTEXT *ctx);
 BOOL BtlCmd_SetStatus2Effect(BattleSystem *bsys, BATTLECONTEXT *ctx);
 BOOL BtlCmd_CopyStatus2Effect(BattleSystem *bsys, BATTLECONTEXT *ctx);
@@ -233,10 +233,10 @@ BOOL BtlCmd_RefreshMonData(BattleSystem *bsys, BATTLECONTEXT *ctx);
 BOOL BtlCmd_222(BattleSystem *bsys, BATTLECONTEXT *ctx);
 BOOL BtlCmd_223(BattleSystem *bsys, BATTLECONTEXT *ctx);
 BOOL BtlCmd_EndScript(BattleSystem *bsys, BATTLECONTEXT *ctx);
-int BattleScriptReadWord(BATTLECONTEXT *ctx);
+s32 BattleScriptReadWord(BATTLECONTEXT *ctx);
 void InitBattleMsgData(BATTLECONTEXT *ctx, BATTLEMSGDATA *msgdata);
 void InitBattleMsg(BattleSystem *bsys, BATTLECONTEXT *ctx, BATTLEMSGDATA *msgdata, BATTLEMSG *msg);
-void UpdateFrienshipFainted(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
-int GetMoveMessageNo(BATTLECONTEXT *ctx, int move);
+void UpdateFrienshipFainted(BattleSystem *bsys, BATTLECONTEXT *ctx, s32 battlerId);
+s32 GetMoveMessageNo(BATTLECONTEXT *ctx, s32 move);
 
 #endif
