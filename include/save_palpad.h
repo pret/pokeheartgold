@@ -16,7 +16,7 @@ typedef struct SavePalPad {
     u8 filler_78[NUM_FRIENDS_PER_ENTRY];
 } SavePalPad;
 
-u32 Save_PalPad_Sizeof(void);
+u32 Save_PalPad_sizeof(void);
 SavePalPad *Save_PalPad_Get(SAVEDATA *saveData);
 void Save_PalPad_Init(SavePalPad *palPad);
 SavePalPad *PalPad_GetNthEntry(SavePalPad *arr, int n);

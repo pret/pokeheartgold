@@ -285,7 +285,7 @@
 .public sub_02026E50
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr
-.public PlayerProfile_Sizeof
+.public PlayerProfile_sizeof
 .public PlayerProfile_Copy
 .public PlayerProfile_Init
 .public Save_Profile_PlayerName_Set

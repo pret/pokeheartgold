@@ -4,11 +4,11 @@
 
 	.text
 
-	thumb_func_start Save_FollowPoke_Sizeof
-Save_FollowPoke_Sizeof: ; 0x0202ED18
+	thumb_func_start Save_FollowPoke_sizeof
+Save_FollowPoke_sizeof: ; 0x0202ED18
 	mov r0, #8
 	bx lr
-	thumb_func_end Save_FollowPoke_Sizeof
+	thumb_func_end Save_FollowPoke_sizeof
 
 	thumb_func_start Save_FollowPoke_Init
 Save_FollowPoke_Init: ; 0x0202ED1C

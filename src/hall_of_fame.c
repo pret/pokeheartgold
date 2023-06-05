@@ -15,7 +15,7 @@ static inline HOFTEAM *HallOfFame_SeekBack(HALL_OF_FAME *hof, int num) {
     return &hof->parties[ret];
 }
 
-u32 Save_HOF_Sizeof(void) {
+u32 Save_HOF_sizeof(void) {
     return sizeof(HALL_OF_FAME);
 }
 

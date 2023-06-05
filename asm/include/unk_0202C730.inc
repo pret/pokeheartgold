@@ -4,7 +4,7 @@
 .public PRandom
 .public CopyStringToU16Array
 .public SaveArray_Get
-.public Save_FriendGroup_Sizeof
+.public Save_FriendGroup_sizeof
 .public sub_0202C738
 .public Save_FriendGroup_Init
 .public sub_0202C78C

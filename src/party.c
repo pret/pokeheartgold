@@ -9,11 +9,11 @@
     GF_ASSERT(slot < (party)->core.maxCount);        \
 })
 
-u32 SaveArray_Party_Sizeof(void) {
+u32 SaveArray_Party_sizeof(void) {
     return sizeof(PARTY);
 }
 
-u32 PartyCore_Sizeof(void) {
+u32 PartyCore_sizeof(void) {
     return sizeof(PARTY_CORE);
 }
 

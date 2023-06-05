@@ -2,7 +2,7 @@
 
 static u8 sTempFlags[NUM_TEMP_FLAGS / 8] = {0};
 
-u32 SaveArray_Flags_Sizeof(void) {
+u32 SaveArray_Flags_sizeof(void) {
     return sizeof(SCRIPT_STATE);
 }
 

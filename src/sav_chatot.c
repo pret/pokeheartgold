@@ -1,7 +1,7 @@
 #include "sav_chatot.h"
 #include <nitro/mi/memory.h>
 
-u32 Save_Chatot_Sizeof(void) {
+u32 Save_Chatot_sizeof(void) {
     return sizeof(SOUND_CHATOT);
 }
 

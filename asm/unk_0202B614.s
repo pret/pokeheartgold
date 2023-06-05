@@ -504,13 +504,13 @@ _0202B984: .word 0x000004FC
 _0202B988: .word 0x000007F4
 	thumb_func_end Save_DressupData_Init
 
-	thumb_func_start Save_DressupData_Sizeof
-Save_DressupData_Sizeof: ; 0x0202B98C
+	thumb_func_start Save_DressupData_sizeof
+Save_DressupData_sizeof: ; 0x0202B98C
 	ldr r0, _0202B990 ; =0x00000834
 	bx lr
 	.balign 4, 0
 _0202B990: .word 0x00000834
-	thumb_func_end Save_DressupData_Sizeof
+	thumb_func_end Save_DressupData_sizeof
 
 	thumb_func_start sub_0202B994
 sub_0202B994: ; 0x0202B994

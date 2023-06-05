@@ -5,7 +5,7 @@
 .public DestroySysTask
 .public AllocFromHeap
 .public FreeToHeap
-.public PlayerProfile_Sizeof
+.public PlayerProfile_sizeof
 .public PlayerProfile_Copy
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetTrainerID
@@ -22,7 +22,7 @@
 .public sub_02037190
 .public sub_0203769C
 .public sub_02037B38
-.public PartyCore_Sizeof
+.public PartyCore_sizeof
 .public Party_Copy
 .public sub_02074E5C
 .public sub_02074EC4

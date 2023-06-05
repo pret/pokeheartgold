@@ -3,7 +3,7 @@
 .public GF_AssertFail
 .public Save_MysteryGift_Get
 .public SaveSubstruct_UpdateCRC
-.public Save_MysteryGift_Sizeof
+.public Save_MysteryGift_sizeof
 .public Save_MysteryGift_Init
 .public SaveMysteryGift_CardGetByIdx
 .public sub_0202DC2C

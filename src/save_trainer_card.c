@@ -1,6 +1,6 @@
 #include "save_trainer_card.h"
 
-u32 Save_TrainerCard_Sizeof(void) {
+u32 Save_TrainerCard_sizeof(void) {
     return sizeof(struct SaveTrainerCard);
 }
 

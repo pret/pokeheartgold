@@ -8,7 +8,7 @@ struct SaveTrainerCard {
     int signaturePointData[0x180];
 }; // size=0x620
 
-u32 Save_TrainerCard_Sizeof(void);
+u32 Save_TrainerCard_sizeof(void);
 void Save_TrainerCard_Init(struct SaveTrainerCard *data);
 struct SaveTrainerCard *Save_TrainerCard_Get(SAVEDATA *saveData);
 int *TrainerCard_GetSignature(struct SaveTrainerCard *data);

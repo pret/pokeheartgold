@@ -6,7 +6,7 @@ POKEWALKER *Save_Pokewalker_Get(SAVEDATA *saveData) {
     return SaveArray_Get(saveData, SAVE_POKEWALKER);
 }
 
-u32 Pokewalker_Sizeof(void) {
+u32 Pokewalker_sizeof(void) {
     return sizeof(POKEWALKER);
 }
 

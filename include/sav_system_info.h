@@ -25,7 +25,7 @@ typedef struct SYSINFO {
     u8 unk50[0xC];
 } SYSINFO;
 
-u32 Save_SysInfo_Sizeof(void);
+u32 Save_SysInfo_sizeof(void);
 void Save_SysInfo_Init(SYSINFO* sys_info);
 SYSINFO* Save_SysInfo_Get(SAVEDATA* savedata);
 SYSINFO_RTC* Save_SysInfo_RTC_Get(SAVEDATA* savedata);

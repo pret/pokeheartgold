@@ -113,18 +113,18 @@ sub_02074ED8: ; 0x02074ED8
 
 	thumb_func_start sub_02074EDC
 sub_02074EDC: ; 0x02074EDC
-	ldr r3, _02074EE0 ; =PlayerProfile_Sizeof
+	ldr r3, _02074EE0 ; =PlayerProfile_sizeof
 	bx r3
 	.balign 4, 0
-_02074EE0: .word PlayerProfile_Sizeof
+_02074EE0: .word PlayerProfile_sizeof
 	thumb_func_end sub_02074EDC
 
 	thumb_func_start sub_02074EE4
 sub_02074EE4: ; 0x02074EE4
-	ldr r3, _02074EE8 ; =PartyCore_Sizeof
+	ldr r3, _02074EE8 ; =PartyCore_sizeof
 	bx r3
 	.balign 4, 0
-_02074EE8: .word PartyCore_Sizeof
+_02074EE8: .word PartyCore_sizeof
 	thumb_func_end sub_02074EE4
 
 	thumb_func_start sub_02074EEC
@@ -479,7 +479,7 @@ _0207511C:
 	mov r0, #0
 	pop {r4, pc}
 _0207512A:
-	bl PlayerProfile_Sizeof
+	bl PlayerProfile_sizeof
 	add r4, #0x20
 	add r2, r0, #0
 	mov r0, #0x19
@@ -604,7 +604,7 @@ _020751F0:
 	mov r0, #0
 	pop {r4, pc}
 _020751FE:
-	bl PartyCore_Sizeof
+	bl PartyCore_sizeof
 	add r4, #0x20
 	add r2, r0, #0
 	mov r0, #0x1b
@@ -895,7 +895,7 @@ _020753EC:
 _020753FC:
 	cmp r4, #1
 	bne _02075412
-	bl PartyCore_Sizeof
+	bl PartyCore_sizeof
 	add r5, #0x20
 	add r2, r0, #0
 	mov r0, #0x1f
@@ -903,7 +903,7 @@ _020753FC:
 	bl sub_02036FD8
 	pop {r4, r5, r6, pc}
 _02075412:
-	bl PartyCore_Sizeof
+	bl PartyCore_sizeof
 	add r5, #0x20
 	add r2, r0, #0
 	mov r0, #0x20

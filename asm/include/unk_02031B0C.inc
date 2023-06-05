@@ -17,7 +17,7 @@
 .public PlayerProfile_GetTrainerGender
 .public PlayerProfile_GetVersion
 .public PlayerProfile_GetLanguage
-.public Save_ApricornBox_Sizeof
+.public Save_ApricornBox_sizeof
 .public sub_02031B10
 .public Save_ApricornBox_Get
 .public Save_ApricornBox_Init

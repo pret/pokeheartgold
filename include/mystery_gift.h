@@ -63,7 +63,7 @@ typedef struct {
     WonderCard cards[4];  // 920
 } MYSTERY_GIFT_SAVE; // size = 0x1680
 
-u32 Save_MysteryGift_Sizeof(void);
+u32 Save_MysteryGift_sizeof(void);
 void Save_MysteryGift_Init(MYSTERY_GIFT_SAVE *mg);
 
 #endif //POKEHEARTGOLD_MYSTERY_GIFT_H

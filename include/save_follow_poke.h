@@ -9,7 +9,7 @@ struct SaveFollowPoke {
     int unk_4_2:1;
 };
 
-u32 Save_FollowPoke_Sizeof(void);
+u32 Save_FollowPoke_sizeof(void);
 void Save_FollowPoke_Init(struct SaveFollowPoke *followPoke);
 struct SaveFollowPoke *Save_FollowPoke_Get(SAVEDATA *saveData);
 int SavFollowPoke_GetMapId(struct SaveFollowPoke *followPoke);
