@@ -3,7 +3,7 @@
 
 #include "battle.h"
 
-void ov12_0224E4FC(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 monIndex);
+void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 monIndex);
 void ov12_02256F78(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 monIndex);
 void Link_CheckTimeout(BATTLECONTEXT *ctx);
 int GetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 varId, int a3);

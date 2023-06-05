@@ -168,7 +168,7 @@
 .public ov12_0223BC98
 .public ov12_0223BCC8
 .public ov12_0223BCF0
-.public ov12_0223BD14
+.public BattleSystem_GetWinLoseFlags
 .public ov12_0223BD20
 .public ov12_0223BD2C
 .public ov12_0223BD3C

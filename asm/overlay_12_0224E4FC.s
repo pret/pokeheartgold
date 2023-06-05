@@ -6,8 +6,8 @@
 
 	.text
 
-    thumb_func_start ov12_0224E4FC
-ov12_0224E4FC: ; 0x0224E4FC
+    thumb_func_start BattleSystem_GetBattleMon
+BattleSystem_GetBattleMon: ; 0x0224E4FC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x28
 	add r7, r1, #0
@@ -582,7 +582,7 @@ _0224EA04: .word 0x00002DBC
 _0224EA08: .word 0x0000219C
 _0224EA0C: .word 0x00002DCC
 _0224EA10: .word 0xFFBFFFFF
-	thumb_func_end ov12_0224E4FC
+	thumb_func_end BattleSystem_GetBattleMon
 
 	thumb_func_start BattleController_EmitRefreshMonData
 BattleController_EmitRefreshMonData: ; 0x0224EA14
@@ -5599,8 +5599,8 @@ _02250F3C: .word 0x00002E7D
 _02250F40: .word 0x00002E4C
 	thumb_func_end ov12_02250D4C
 
-	thumb_func_start ov12_02250F44
-ov12_02250F44: ; 0x02250F44
+	thumb_func_start BattleContext_Init
+BattleContext_Init: ; 0x02250F44
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r1, _02251024 ; =0x00002144
 	add r5, r0, #0
@@ -5718,7 +5718,7 @@ _02251028: .word 0xFF800000
 _0225102C: .word 0xFFFFFEA1
 _02251030: .word 0x00003120
 _02251034: .word 0x000021A4
-	thumb_func_end ov12_02250F44
+	thumb_func_end BattleContext_Init
 
 	thumb_func_start ov12_02251038
 ov12_02251038: ; 0x02251038

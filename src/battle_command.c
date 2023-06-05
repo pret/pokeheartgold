@@ -1365,7 +1365,7 @@ BOOL BtlCmd_SwitchInDataUpdate(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     ctx->selectedMonIndex[battlerId] = ctx->unk_21A0[battlerId];
     ctx->unk_21A0[battlerId] = 6;
 
-    ov12_0224E4FC(bsys, ctx, battlerId, ctx->selectedMonIndex[battlerId]);
+    BattleSystem_GetBattleMon(bsys, ctx, battlerId, ctx->selectedMonIndex[battlerId]);
     ov12_02256F78(bsys, ctx, battlerId, ctx->selectedMonIndex[battlerId]);
 
     ctx->hpTemp = ctx->battleMons[1].hp;
@@ -3697,7 +3697,7 @@ BOOL BtlCmd_CheckHitRate(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int battlerIdTarget = GetBattlerIDBySide(bsys, ctx, sideTarget);
     int moveMsgNo = GetMoveMessageNo(ctx, move);
 
-    ov12_02248714(bsys, ctx, battlerIdAttacker, battlerIdTarget, moveMsgNo);
+    BattleSystem_CheckMoveHitEffect(bsys, ctx, battlerIdAttacker, battlerIdTarget, moveMsgNo);
 
     if (ctx->moveStatusFlag & 0x1fd849) {
         BattleScriptIncrementPointer(ctx, adrs);

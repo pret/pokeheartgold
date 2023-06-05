@@ -39,7 +39,7 @@
 .public ov12_0223B688
 .public ov12_0223B6B4
 .public ov12_0223B854
-.public ov12_0223BD14
+.public BattleSystem_GetWinLoseFlags
 .public ov12_0223BDC4
 .public ov12_0223BE68
 .public ov12_0223C140

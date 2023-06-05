@@ -4496,7 +4496,7 @@ BattleController_EmitSetBattleResults: ; 0x02264288
 	add r0, sp, #4
 	strb r1, [r0]
 	add r0, r5, #0
-	bl ov12_0223BD14
+	bl BattleSystem_GetWinLoseFlags
 	str r0, [sp, #8]
 	mov r1, #0
 	add r0, sp, #4

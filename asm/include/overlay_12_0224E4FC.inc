@@ -61,7 +61,7 @@
 .public ov12_0223BAF8
 .public BattleSys_Random
 .public ov12_0223BFEC
-.public ov12_0224E4FC
+.public BattleSystem_GetBattleMon
 .public BattleController_EmitRefreshMonData
 .public ReadBattleScriptFromNarc
 .public ov12_0224EBDC
@@ -87,7 +87,7 @@
 .public UnlockBattlerOutOfCurrentMove
 .public ov12_02250CFC
 .public ov12_02250D4C
-.public ov12_02250F44
+.public BattleContext_Init
 .public ov12_02251038
 .public InitSwitchWork
 .public InitFaintedWork
