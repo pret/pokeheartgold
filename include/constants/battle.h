@@ -1,6 +1,12 @@
 #ifndef POKEHEARTGOLD_CONSTANTS_BATTLE_H
 #define POKEHEARTGOLD_CONSTANTS_BATTLE_H
 
+//Battler IDs
+#define BATTLER_PLAYER  0
+#define BATTLER_ENEMY   1
+#define BATTLER_PLAYER2 2
+#define BATTLER_ENEMY2  3
+
 enum BattleSide {
     B_SIDE_ALL,
     B_SIDE_1,

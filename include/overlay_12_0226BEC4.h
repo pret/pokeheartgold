@@ -4,7 +4,7 @@
 #include "battle.h"
 #include "unk_0200E320.h"
 
-typedef struct {
+typedef struct UnkBattleStruct_0226BEC4 {
     BattleSystem *bsys;
     s16 state;
     s16 delay;

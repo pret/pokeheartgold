@@ -1,11 +1,9 @@
 #include "battle_cursor.h"
 #include "unk_0200CF18.h"
 
-//BattleCursor_Update
-void ov12_0226BB90(SysTask *task, void *data);
+static void BattleCursor_Update(SysTask *task, void *data);
 
-//BattleCursor_LoadResources
-void ov12_0226B8FC(void *a0, void *a1, void *a3, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation) {
+void BattleCursor_LoadResources(void *a0, void *a1, void *a3, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation) {
     NARC *narc = NARC_ctor(NARC_a_0_0_8, heapId);
     sub_0200D68C(a3, 3, a0, a1, narc, 80, 0, 1, 2, pal);
     sub_0200D504(a0, a1, narc, 250, 1, 2, character);
@@ -14,8 +12,7 @@ void ov12_0226B8FC(void *a0, void *a1, void *a3, HeapID heapId, u32 character, u
     NARC_dtor(narc);
 }
 
-//BattleCursor_FreeResources
-void ov12_0226B97C(void *a0, u32 character, u32 pal, u32 cell, u32 animation) {
+void BattleCursor_FreeResources(void *a0, u32 character, u32 pal, u32 cell, u32 animation) {
     sub_0200D958(a0, character);
     sub_0200D968(a0, pal);
     sub_0200D978(a0, cell);
@@ -35,8 +32,7 @@ static const UnkStruct_0200D748 ov12_0226EBA0 = {
     .unk_30 = 0
 };
 
-//BattleCursor_New
-BattleCursor *ov12_0226B9A4(void *a0, void *a1, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation, u32 a7, u32 a8) {
+BattleCursor *BattleCursor_New(void *a0, void *a1, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation, u32 a7, u32 a8) {
     BattleCursor *cursor;
     UnkStruct_0200D748 unkStruct;
     int i;
@@ -57,16 +53,13 @@ BattleCursor *ov12_0226B9A4(void *a0, void *a1, HeapID heapId, u32 character, u3
         sub_0200DCE8(cursor->unk0[i], FALSE);
     }
     
-    cursor->task = CreateSysTask(ov12_0226BB90, cursor, 0x9C40);
+    cursor->task = CreateSysTask(BattleCursor_Update, cursor, 0x9C40);
     
     return cursor;
 }
 
-//BattleCursor_Delete
-void ov12_0226BA28(BattleCursor *cursor) {
-    int i;
-    
-    for (i = 0; i < 5; i++) {
+void BattleCursor_Delete(BattleCursor *cursor) {    
+    for (int i = 0; i < 5; i++) {
         sub_0200D9DC(cursor->unk0[i]);
     }
     
@@ -110,8 +103,7 @@ void ov12_0226BB40(BattleCursor *cursor, int x, int y, int a3, fx32 a4) {
     sub_0200DCE8(cursor->unk0[4], TRUE);
 }
 
-//BattleCursor_Off
-void ov12_0226BB68(BattleCursor *cursor) {
+void BattleCursor_Disable(BattleCursor *cursor) {
     for (int i = 0; i < 5; i++) {
         sub_0200DCE8(cursor->unk0[i], FALSE);
     }
@@ -121,8 +113,7 @@ void ov12_0226BB84(BattleCursor *cursor) {
     sub_0200DCE8(cursor->unk0[4], FALSE);
 }
 
-//BattleCursor_Update
-static void ov12_0226BB90(SysTask *task, void *data) {
+static void BattleCursor_Update(SysTask *task, void *data) {
     BattleCursor *cursor = data;
     int i;
     

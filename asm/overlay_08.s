@@ -10762,7 +10762,7 @@ ov08_0222162C: ; 0x0222162C
 	ldr r2, [r5, r2]
 	ldr r3, [r3, #0xc]
 	add r4, r0, #0
-	bl ov12_0226B8FC
+	bl BattleCursor_LoadResources
 	ldr r3, _02221690 ; =0x0000B00C
 	mov r0, #0
 	str r3, [sp]
@@ -10777,7 +10777,7 @@ ov08_0222162C: ; 0x0222162C
 	ldr r2, [r2, #0xc]
 	add r0, r4, #0
 	add r3, #0xc
-	bl ov12_0226B9A4
+	bl BattleCursor_New
 	add r1, r0, #0
 	ldr r0, _02221694 ; =0x00002088
 	ldr r0, [r5, r0]
@@ -10799,7 +10799,7 @@ ov08_02221698: ; 0x02221698
 	ldr r0, _022216C0 ; =0x00002088
 	ldr r0, [r4, r0]
 	bl ov08_02224B84
-	bl ov12_0226BA28
+	bl BattleCursor_Delete
 	ldr r2, _022216C4 ; =0x0000B00C
 	ldr r0, _022216C8 ; =0x00001FB4
 	str r2, [sp]
@@ -10807,7 +10807,7 @@ ov08_02221698: ; 0x02221698
 	ldr r0, [r4, r0]
 	add r1, #0xc
 	add r3, r2, #0
-	bl ov12_0226B97C
+	bl BattleCursor_FreeResources
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -10963,7 +10963,7 @@ ov08_022217C8: ; 0x022217C8
 	ldr r0, _022217EC ; =0x00002088
 	ldr r0, [r4, r0]
 	bl ov08_02224B84
-	bl ov12_0226BB68
+	bl BattleCursor_Disable
 	pop {r4, pc}
 	.balign 4, 0
 _022217EC: .word 0x00002088
@@ -16127,7 +16127,7 @@ ov08_022240A8: ; 0x022240A8
 	ldr r1, [r5, r1]
 	ldr r2, [r5, #8]
 	ldr r3, [r3, #0xc]
-	bl ov12_0226B8FC
+	bl BattleCursor_LoadResources
 	ldr r3, _02224104 ; =0x0000B4BE
 	mov r1, #0xc3
 	str r3, [sp]
@@ -16143,7 +16143,7 @@ ov08_022240A8: ; 0x022240A8
 	ldr r1, [r5, r1]
 	ldr r2, [r2, #0xc]
 	add r0, r4, #0
-	bl ov12_0226B9A4
+	bl BattleCursor_New
 	add r1, r0, #0
 	ldr r0, [r5, #0x34]
 	bl ov08_02224B94
@@ -16160,7 +16160,7 @@ ov08_02224108: ; 0x02224108
 	add r4, r0, #0
 	ldr r0, [r4, #0x34]
 	bl ov08_02224B84
-	bl ov12_0226BA28
+	bl BattleCursor_Delete
 	ldr r3, _02224130 ; =0x0000B4B9
 	mov r0, #0xc3
 	add r1, r3, #5
@@ -16168,7 +16168,7 @@ ov08_02224108: ; 0x02224108
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r2, r1, #0
-	bl ov12_0226B97C
+	bl BattleCursor_FreeResources
 	add sp, #4
 	pop {r3, r4, pc}
 	nop
@@ -16223,7 +16223,7 @@ ov08_0222417C: ; 0x0222417C
 	bl ov08_02224BC0
 	ldr r0, [r4, #0x34]
 	bl ov08_02224B84
-	bl ov12_0226BB68
+	bl BattleCursor_Disable
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov08_0222417C

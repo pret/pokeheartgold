@@ -181,12 +181,12 @@
 .public ov12_0223B708
 .public ov12_0223B718
 .public ov12_022581D4
-.public ov12_0226B8FC
-.public ov12_0226B97C
-.public ov12_0226B9A4
-.public ov12_0226BA28
+.public BattleCursor_LoadResources
+.public BattleCursor_FreeResources
+.public BattleCursor_New
+.public BattleCursor_Delete
 .public ov12_0226BAFC
-.public ov12_0226BB68
+.public BattleCursor_Disable
 .public BattleFinger_LoadResources
 .public BattleFinger_FreeResources
 .public BattleFinger_New

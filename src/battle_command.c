@@ -97,8 +97,8 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 PokedexSetBattlerSeen(bsys, battlerId);
             }
         }
-        BattleSystem_SetExperienceEarnFlags(bsys, ctx, 1);
-        BattleSystem_SetExperienceEarnFlags(bsys, ctx, 3);
+        BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY);
+        BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY2);
         break;
     case B_SIDE_OPPONENT:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
@@ -114,8 +114,8 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     case B_SIDE_1:
         opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, ctx->battlerIdAttacker);
         if (!(opponentData->unk195 & 1)) {
-            BattleSystem_SetExperienceEarnFlags(bsys, ctx, 1);
-            BattleSystem_SetExperienceEarnFlags(bsys, ctx, 3);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY2);
         } else {
             BattleSystem_ClearExperienceEarnFlags(ctx, ctx->battlerIdAttacker);
             BattleSystem_SetExperienceEarnFlags(bsys, ctx, ctx->battlerIdAttacker);
@@ -126,8 +126,8 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     case B_SIDE_2:
         opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, ctx->battlerIdTarget);
         if (!(opponentData->unk195 & 1)) {
-            BattleSystem_SetExperienceEarnFlags(bsys, ctx, 1);
-            BattleSystem_SetExperienceEarnFlags(bsys, ctx, 3);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY2);
         } else {
             BattleSystem_ClearExperienceEarnFlags(ctx, ctx->battlerIdTarget);
             BattleSystem_SetExperienceEarnFlags(bsys, ctx, ctx->battlerIdTarget);
@@ -138,8 +138,8 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     case B_SIDE_6:
         opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, ctx->battlerIdSwitch);
         if (!(opponentData->unk195 & 1)) {
-            BattleSystem_SetExperienceEarnFlags(bsys, ctx, 1);
-            BattleSystem_SetExperienceEarnFlags(bsys, ctx, 3);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY2);
         } else {
             BattleSystem_ClearExperienceEarnFlags(ctx, ctx->battlerIdSwitch);
             BattleSystem_SetExperienceEarnFlags(bsys, ctx, ctx->battlerIdSwitch);
@@ -175,8 +175,8 @@ BOOL BtlCmd_PokemonSendOut(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 PokedexSetBattlerSeen(bsys, battlerId);
             }
         }
-        BattleSystem_SetExperienceEarnFlags(bsys, ctx, 1);
-        BattleSystem_SetExperienceEarnFlags(bsys, ctx, 3);
+        BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY);
+        BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY2);
         break;
     case 4:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
@@ -192,8 +192,8 @@ BOOL BtlCmd_PokemonSendOut(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     case 1:
         opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, ctx->battlerIdAttacker);
         if (!(opponentData->unk195 & 1)) {
-            BattleSystem_SetExperienceEarnFlags(bsys, ctx, 1);
-            BattleSystem_SetExperienceEarnFlags(bsys, ctx, 3);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY2);
         } else {
             BattleSystem_ClearExperienceEarnFlags(ctx, ctx->battlerIdAttacker);
             BattleSystem_SetExperienceEarnFlags(bsys, ctx, ctx->battlerIdAttacker);
@@ -204,8 +204,8 @@ BOOL BtlCmd_PokemonSendOut(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     case 2:
         opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, ctx->battlerIdTarget);
         if (!(opponentData->unk195 & 1)) {
-            BattleSystem_SetExperienceEarnFlags(bsys, ctx, 1);
-            BattleSystem_SetExperienceEarnFlags(bsys, ctx, 3);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY2);
         } else {
             BattleSystem_ClearExperienceEarnFlags(ctx, ctx->battlerIdTarget);
             BattleSystem_SetExperienceEarnFlags(bsys, ctx, ctx->battlerIdTarget);
@@ -216,8 +216,8 @@ BOOL BtlCmd_PokemonSendOut(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     case 6:
         opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, ctx->battlerIdSwitch);
         if (!(opponentData->unk195 & 1)) {
-            BattleSystem_SetExperienceEarnFlags(bsys, ctx, 1);
-            BattleSystem_SetExperienceEarnFlags(bsys, ctx, 3);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY2);
         } else {
             BattleSystem_ClearExperienceEarnFlags(ctx, ctx->battlerIdSwitch);
             BattleSystem_SetExperienceEarnFlags(bsys, ctx, ctx->battlerIdSwitch);

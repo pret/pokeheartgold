@@ -899,7 +899,7 @@ _02266774:
 	ldr r0, [sp, #0x18]
 	add r1, r7, #0
 	mov r3, #5
-	bl ov12_0226B8FC
+	bl BattleCursor_LoadResources
 	ldr r0, _022667F8 ; =0x00004E43
 	ldr r3, _022667FC ; =0x00004FB6
 	str r0, [sp]
@@ -914,7 +914,7 @@ _02266774:
 	ldr r0, [sp, #0x18]
 	add r1, r7, #0
 	add r3, r3, #7
-	bl ov12_0226B9A4
+	bl BattleCursor_New
 	ldr r2, _02266800 ; =0x000006D8
 	ldr r1, [sp, #0x14]
 	str r0, [r1, r2]
@@ -1007,10 +1007,10 @@ _02266864:
 	add r0, r7, #0
 	add r1, #0x12
 	add r3, #0xb
-	bl ov12_0226B97C
+	bl BattleCursor_FreeResources
 	ldr r0, _022668CC ; =0x000006D8
 	ldr r0, [r6, r0]
-	bl ov12_0226BA28
+	bl BattleCursor_Delete
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _022668B0: .word 0x000005D8
@@ -1481,7 +1481,7 @@ _02266C24:
 	bl MI_CpuFill8
 	ldr r0, _02266C60 ; =0x000006D8
 	ldr r0, [r5, r0]
-	bl ov12_0226BB68
+	bl BattleCursor_Disable
 	cmp r6, #0
 	ble _02266C46
 	mov r0, #0x6e
