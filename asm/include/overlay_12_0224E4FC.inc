@@ -75,8 +75,8 @@
 .public SetBattlerVar
 .public ov12_0224F794
 .public ov12_0224FC48
-.public ov12_02250360
-.public ov12_02250370
+.public BattleSystem_ClearExperienceEarnFlags
+.public BattleSystem_SetExperienceEarnFlags
 .public ov12_022503EC
 .public ov12_02250490
 .public ov12_022506D4
@@ -140,7 +140,7 @@
 .public ov12_0225561C
 .public CheckItemEffectOnHit
 .public GetBattlerHeldItemEffect
-.public ov12_02255844
+.public BattleSystem_GetHeldItemDamageBoost
 .public GetNaturalGiftPower
 .public GetNaturalGiftType
 .public ov12_022558F8

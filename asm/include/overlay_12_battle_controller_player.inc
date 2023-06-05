@@ -107,7 +107,7 @@
 .public ov12_0225561C
 .public CheckItemEffectOnHit
 .public GetBattlerHeldItemEffect
-.public ov12_02255844
+.public BattleSystem_GetHeldItemDamageBoost
 .public ov12_02255920
 .public ov12_022565E0
 .public ov12_02256694
