@@ -88,7 +88,7 @@
 .public String_dtor
 .public Thunk_G3X_Reset
 .public sub_02026E50
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
 .public sub_0202CA44

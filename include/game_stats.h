@@ -6,9 +6,9 @@
 
 typedef struct GAME_STATS GAME_STATS;
 
-u32 Sav2_GameStats_sizeof(void);
-void Sav2_GameStats_init(GAME_STATS *gameStats);
-GAME_STATS *Sav2_GameStats_get(SAVEDATA *saveData);
+u32 Save_GameStats_sizeof(void);
+void Save_GameStats_init(GAME_STATS *gameStats);
+GAME_STATS *Save_GameStats_get(SAVEDATA *saveData);
 void GameStats_Inc(GAME_STATS *gameStats, int which);
 u32 GameStats_GetCapped(GAME_STATS *gameStats, int which);
 u32 GameStats_Add(GAME_STATS *gameStats, int which, u32 value);

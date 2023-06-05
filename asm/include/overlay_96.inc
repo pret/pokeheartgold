@@ -283,12 +283,12 @@
 .public String_c_str
 .public Thunk_G3X_Reset
 .public sub_02026E50
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_sizeof
 .public PlayerProfile_copy
 .public PlayerProfile_init
-.public Sav2_Profile_PlayerName_set
+.public Save_Profile_PlayerName_set
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetPlayerName_NewString
 .public PlayerProfile_GetTrainerID
@@ -324,7 +324,7 @@
 .public sub_0203A914
 .public sub_0203A994
 .public sub_0203A9C8
-.public SavArray_Flags_get
+.public SaveArray_Flags_get
 .public CheckFlagInArray
 .public SetFlagInArray
 .public SpeciesToOverworldModelIndexOffset

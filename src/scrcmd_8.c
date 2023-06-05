@@ -57,7 +57,7 @@ BOOL ScrCmd_465(SCRIPTCONTEXT *ctx) {
     }
     case 6: {
         STRING *str = String_ctor(64, 32);
-        PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(ctx->fsys->savedata);
+        PLAYERPROFILE *profile = Save_PlayerData_GetProfileAddr(ctx->fsys->savedata);
         PlayerName_FlatToString(profile, str);
         sub_0202C7F8(group, 0, 1, str);
         sub_0202C824(group, 0, PlayerProfile_GetTrainerGender(profile));

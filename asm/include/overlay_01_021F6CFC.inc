@@ -16,9 +16,9 @@
 .public TextPrinterCheckActive
 .public String_ctor
 .public String_dtor
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_new
-.public Sav2_Profile_PlayerName_set
+.public Save_Profile_PlayerName_set
 .public Options_GetFrame
 .public sub_0202C23C
 .public sub_0202C254

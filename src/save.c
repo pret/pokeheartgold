@@ -10,7 +10,7 @@
 
 #define SAVE_CHUNK_MAGIC 0x20060623
 
-struct SavArrayHeader {
+struct SaveArrayHeader {
     int id;
     u32 size;
     u32 offset;
@@ -18,7 +18,7 @@ struct SavArrayHeader {
     u16 slot;
 }; // size=0x10
 
-struct SavArrayFooter {
+struct SaveArrayFooter {
     u32 magic;
     u32 saveno;
     u32 size;
@@ -62,7 +62,7 @@ struct SaveBlock2 {
     u32 statusFlags;
     u8 dynamic_region[SAVE_PAGE_MAX * SAVE_SECTOR_SIZE];
     u32 saveCounter;
-    struct SavArrayHeader arrayHeaders[SAVE_BLOCK_NUM]; // 23014
+    struct SaveArrayHeader arrayHeaders[SAVE_BLOCK_NUM]; // 23014
     struct SaveSlotSpec saveSlotSpecs[2]; // 232B4
     struct AsyncWriteManager async_write_man;
     u32 lastGoodSaveSlot;
@@ -91,7 +91,7 @@ static u32 Save_CalcNumModifiedPCBoxes(SAVEDATA *saveData);
 static void SaveFooterDebugPrn(struct SaveChunkFooter *footer);
 static void DebugPrn_MirrorValid(BOOL unk);
 static void SaveSlotCheck_InitDummy(struct SaveSlotCheck *check);
-static u16 SavArray_CalcCRC16MinusFooter(SAVEDATA *saveData, const void *data, u32 size);
+static u16 SaveArray_CalcCRC16MinusFooter(SAVEDATA *saveData, const void *data, u32 size);
 static u32 GetChunkOffsetFromCurrentSaveSlot(u32 slot, struct SaveSlotSpec *spec);
 static struct SaveChunkFooter *GetSaveSectorFooterPtr(SAVEDATA *saveData, void *data, int idx);
 static BOOL ValidateSaveSectorFooter(SAVEDATA *saveData, void *data, int idx);
@@ -103,7 +103,7 @@ static void Save_RecordWhichLatestGoodSector(SAVEDATA *saveData, struct SaveSlot
 static int Save_GetSaveFilesStatus(SAVEDATA *saveData);
 static void Save_CheckFrontierData(SAVEDATA *saveData, int *err1, int *err2);
 static BOOL FlashLoadSaveDataFromChunk(u32 slot, struct SaveSlotSpec *spec, void *dest);
-static BOOL Sav2_LoadDynamicRegion(SAVEDATA *saveData);
+static BOOL Save_LoadDynamicRegion(SAVEDATA *saveData);
 static int Save_WriteSlotAsync(SAVEDATA *saveData, int idx, u8 slot);
 static int Save_WriteChunkFooterAsync(SAVEDATA *saveData, int idx, u8 slot);
 static void Save_WriteManInit(SAVEDATA *saveData, struct AsyncWriteManager *writeMan, int a2);
@@ -113,12 +113,12 @@ static void CancelAsyncSave(SAVEDATA *saveData, struct AsyncWriteManager *writeM
 static int _NowWriteFlash(SAVEDATA *saveData);
 static int FlashClobberChunkFooter(SAVEDATA *saveData, int spec, int sector);
 static u32 GetSaveChunkSizePlusCRC(int idx);
-static void SaveBlock2_InitSubstructs(struct SavArrayHeader *arr_hdr);
-static void SaveBlock2_InitSlotSpecs(struct SaveSlotSpec *slotSpecs, struct SavArrayHeader *headers);
-static void Sav2_InitDynamicRegion_Internal(u8 *dynamic_region, struct SavArrayHeader *headers);
+static void SaveBlock2_InitSubstructs(struct SaveArrayHeader *arr_hdr);
+static void SaveBlock2_InitSlotSpecs(struct SaveSlotSpec *slotSpecs, struct SaveArrayHeader *headers);
+static void Save_InitDynamicRegion_Internal(u8 *dynamic_region, struct SaveArrayHeader *headers);
 static void CreateChunkFooter(SAVEDATA *saveData, void *data, int idx, u32 size);
 static BOOL ValidateChunk(SAVEDATA *saveData, void *data, int idx, u32 size);
-static u32 SavArray_GetFooterSaveNo(void *data, u32 size);
+static u32 SaveArray_GetFooterSaveNo(void *data, u32 size);
 static void sub_020286B4(SAVEDATA *saveData, int a1, u32 *a2, u32 *a3, u8 *a4);
 static void sub_020286D4(SAVEDATA *saveData, int a1, u32 a2, u32 a3, u8 a4);
 static BOOL SaveDetectFlash(void);
@@ -160,7 +160,7 @@ SAVEDATA *SaveBlock2_new(void) {
     switch (status) {
     case LOAD_STATUS_IS_GOOD:
     case LOAD_STATUS_SLOT_FAIL:
-        Sav2_LoadDynamicRegion(ret);
+        Save_LoadDynamicRegion(ret);
         ret->saveFileExists = TRUE;
         ret->isNewGame = FALSE;
         if (status == LOAD_STATUS_SLOT_FAIL) {
@@ -184,7 +184,7 @@ SAVEDATA *SaveBlock2_new(void) {
         ret->statusFlags |= 2;
         // fallthrough
     case LOAD_STATUS_NOT_EXIST:
-        Sav2_InitDynamicRegion(ret);
+        Save_InitDynamicRegion(ret);
         break;
     }
 
@@ -196,13 +196,13 @@ SAVEDATA *SaveBlock2_get(void) {
     return sSaveDataPtr;
 }
 
-void *SavArray_get(SAVEDATA *saveData, int id) {
+void *SaveArray_get(SAVEDATA *saveData, int id) {
     GF_ASSERT(id < SAVE_BLOCK_NUM);
     return (void *)&saveData->dynamic_region[saveData->arrayHeaders[id].offset];
 }
 
-const void *SavArray_const_get(const SAVEDATA *saveData, int id) {
-    return SavArray_get((SAVEDATA *)saveData, id);
+const void *SaveArray_const_get(const SAVEDATA *saveData, int id) {
+    return SaveArray_get((SAVEDATA *)saveData, id);
 }
 
 BOOL Save_DeleteAllData(SAVEDATA *saveData) {
@@ -221,7 +221,7 @@ BOOL Save_DeleteAllData(SAVEDATA *saveData) {
         FlashWriteChunk((i + 64) * SAVE_SECTOR_SIZE, r6, SAVE_SECTOR_SIZE);
     }
     FreeToHeap(r6);
-    Sav2_InitDynamicRegion(saveData);
+    Save_InitDynamicRegion(saveData);
     saveData->saveFileExists = FALSE;
     Sys_ClearSleepDisableFlag(1);
     return TRUE;
@@ -234,7 +234,7 @@ BOOL SaveData_TryLoadOnContinue(SAVEDATA *saveData) {
     if (!saveData->flashChipDetected) {
         return FALSE;
     }
-    if (Sav2_LoadDynamicRegion(saveData)) {
+    if (Save_LoadDynamicRegion(saveData)) {
         saveData->saveFileExists = TRUE;
         saveData->isNewGame = FALSE;
         Save_CheckFrontierData(saveData, &sp4, &sp0);
@@ -279,11 +279,11 @@ int Save_NowWriteFile_AfterMGInit(SAVEDATA *saveData, int a1) {
     return ret;
 }
 
-void Sav2_InitDynamicRegion(SAVEDATA *saveData) {
+void Save_InitDynamicRegion(SAVEDATA *saveData) {
     saveData->isNewGame = TRUE;
     saveData->sectorCleanFlag[0] = 1;
     saveData->sectorCleanFlag[1] = 1;
-    Sav2_InitDynamicRegion_Internal(saveData->dynamic_region, saveData->arrayHeaders);
+    Save_InitDynamicRegion_Internal(saveData->dynamic_region, saveData->arrayHeaders);
 }
 
 BOOL Save_FlashChipIsDetected(SAVEDATA *saveData) {
@@ -307,12 +307,12 @@ static u32 Save_IsNewGame(SAVEDATA *saveData) {
 }
 
 BOOL Save_CheckExtraChunksExist(SAVEDATA *saveData) {
-    SAVE_MISC_DATA *misc = Sav2_Misc_get(saveData);
+    SAVE_MISC_DATA *misc = Save_Misc_get(saveData);
     return SaveMisc_CheckExtraChunksExist(misc);
 }
 
 static void Save_SetExtraChunksExist(SAVEDATA *saveData) {
-    SAVE_MISC_DATA *misc = Sav2_Misc_get(saveData);
+    SAVE_MISC_DATA *misc = Save_Misc_get(saveData);
     SaveMisc_SetExtraChunksExist(misc);
 }
 
@@ -367,14 +367,14 @@ static void SaveSlotCheck_InitDummy(struct SaveSlotCheck *check) {
     check->count = 0;
 }
 
-u16 SavArray_CalcCRC16(SAVEDATA *saveData, const void *data, u32 size) {
+u16 SaveArray_CalcCRC16(SAVEDATA *saveData, const void *data, u32 size) {
 #pragma unused(saveData)
     return GF_CalcCRC16(data, size);
 }
 
-static u16 SavArray_CalcCRC16MinusFooter(SAVEDATA *saveData, const void *data, u32 size) {
+static u16 SaveArray_CalcCRC16MinusFooter(SAVEDATA *saveData, const void *data, u32 size) {
 #pragma unused(saveData)
-    return GF_CalcCRC16(data, size - sizeof(struct SavArrayFooter));
+    return GF_CalcCRC16(data, size - sizeof(struct SaveArrayFooter));
 }
 
 static u32 GetChunkOffsetFromCurrentSaveSlot(u32 slot, struct SaveSlotSpec *spec) {
@@ -415,7 +415,7 @@ static BOOL ValidateSaveSectorFooter(SAVEDATA *saveData, void *data, int idx) {
     if (footer->slot != idx) {
         return FALSE;
     }
-    return SavArray_CalcCRC16MinusFooter(saveData, (u8 *)data + offset, spec->size) == footer->crc;
+    return SaveArray_CalcCRC16MinusFooter(saveData, (u8 *)data + offset, spec->size) == footer->crc;
 }
 
 static void SaveSlotCheck_InitFromSavedat(struct SaveSlotCheck *check, SAVEDATA *saveData, void *data, int idx) {
@@ -442,7 +442,7 @@ static void SaveSlot_BuildFooter(SAVEDATA *saveData, void *data, int idx) {
     footer->size = spec->size;
     footer->magic = SAVE_CHUNK_MAGIC;
     footer->slot = idx;
-    footer->crc = SavArray_CalcCRC16MinusFooter(saveData, (u8 *)data + offset, spec->size);
+    footer->crc = SaveArray_CalcCRC16MinusFooter(saveData, (u8 *)data + offset, spec->size);
     SaveFooterDebugPrn(footer);
 }
 
@@ -605,7 +605,7 @@ static void Save_CheckFrontierData(SAVEDATA *saveData, int *err1, int *err2) {
     u8 sp04;
     int i;
 
-    misc = Sav2_Misc_get(saveData);
+    misc = Save_Misc_get(saveData);
     *err1 = 1;
     *err2 = 1;
     if (Save_CheckExtraChunksExist(saveData)) {
@@ -636,7 +636,7 @@ static BOOL FlashLoadSaveDataFromChunk(u32 slot, struct SaveSlotSpec *spec, void
     return FlashLoadChunk(GetChunkOffsetFromCurrentSaveSlot(slot, spec), (u8 *)dest + spec->offset, spec->size);
 }
 
-static BOOL Sav2_LoadDynamicRegion(SAVEDATA *saveData) {
+static BOOL Save_LoadDynamicRegion(SAVEDATA *saveData) {
     int i;
     u8 *data;
     u32 pc_offs;
@@ -654,7 +654,7 @@ static BOOL Sav2_LoadDynamicRegion(SAVEDATA *saveData) {
         }
     }
     for (i = 0; i < SAVE_BLOCK_NUM; i++) {
-        saveData->arrayHeaders[i].crc = GF_CalcCRC16(SavArray_get(saveData, i), saveData->arrayHeaders[i].size);
+        saveData->arrayHeaders[i].crc = GF_CalcCRC16(SaveArray_get(saveData, i), saveData->arrayHeaders[i].size);
     }
     pc_offs = saveData->saveSlotSpecs[1].offset;
     pc_size = PCStorage_GetSizeOfBox() * PCStorage_GetNumBoxes();
@@ -812,7 +812,7 @@ static u32 GetSaveChunkSizePlusCRC(int idx) {
     return size;
 }
 
-static void SaveBlock2_InitSubstructs(struct SavArrayHeader *arr_hdr) {
+static void SaveBlock2_InitSubstructs(struct SaveArrayHeader *arr_hdr) {
     int i;
     const struct SaveChunkHeader *hdr;
     int adrs;
@@ -838,7 +838,7 @@ static void SaveBlock2_InitSubstructs(struct SavArrayHeader *arr_hdr) {
     GF_ASSERT(adrs <= SAVE_PAGE_MAX * SAVE_SECTOR_SIZE);
 }
 
-static void SaveBlock2_InitSlotSpecs(struct SaveSlotSpec *slotSpecs, struct SavArrayHeader *headers) {
+static void SaveBlock2_InitSlotSpecs(struct SaveSlotSpec *slotSpecs, struct SaveArrayHeader *headers) {
     int i;
     int adrs;
     int npage;
@@ -867,7 +867,7 @@ static void SaveBlock2_InitSlotSpecs(struct SaveSlotSpec *slotSpecs, struct SavA
     GF_ASSERT(npage <= SAVE_PAGE_MAX);
 }
 
-static void Sav2_InitDynamicRegion_Internal(u8 *dynamic_region, struct SavArrayHeader *headers) {
+static void Save_InitDynamicRegion_Internal(u8 *dynamic_region, struct SaveArrayHeader *headers) {
     const struct SaveChunkHeader *chunkHeaders;
     int i;
     u32 adrs;
@@ -909,22 +909,22 @@ void Save_WipeExtraChunks(SAVEDATA *saveData) {
 }
 
 static void CreateChunkFooter(SAVEDATA *saveData, void *data, int idx, u32 size) {
-    struct SavArrayFooter *footer;
+    struct SaveArrayFooter *footer;
 
-    footer = (struct SavArrayFooter *)((u8 *)data + size);
+    footer = (struct SaveArrayFooter *)((u8 *)data + size);
 
     footer->magic = SAVE_CHUNK_MAGIC;
     footer->saveno = saveData->lastGoodSaveNo + 1;
     footer->size = size;
     footer->idx = idx;
-    footer->crc = GF_CalcCRC16(data, size + offsetof(struct SavArrayFooter, crc));
+    footer->crc = GF_CalcCRC16(data, size + offsetof(struct SaveArrayFooter, crc));
 }
 
 static BOOL ValidateChunk(SAVEDATA *saveData, void *data, int idx, u32 size) {
 #pragma unused(saveData)
-    struct SavArrayFooter *footer;
+    struct SaveArrayFooter *footer;
 
-    footer = (struct SavArrayFooter *)((u8 *)data + size);
+    footer = (struct SaveArrayFooter *)((u8 *)data + size);
 
     if (footer->magic != SAVE_CHUNK_MAGIC) {
         return FALSE;
@@ -935,13 +935,13 @@ static BOOL ValidateChunk(SAVEDATA *saveData, void *data, int idx, u32 size) {
     if (footer->idx != idx) {
         return FALSE;
     }
-    return footer->crc == GF_CalcCRC16(data, size + offsetof(struct SavArrayFooter, crc));
+    return footer->crc == GF_CalcCRC16(data, size + offsetof(struct SaveArrayFooter, crc));
 }
 
-static u32 SavArray_GetFooterSaveNo(void *data, u32 size) {
-    struct SavArrayFooter *footer;
+static u32 SaveArray_GetFooterSaveNo(void *data, u32 size) {
+    struct SaveArrayFooter *footer;
 
-    footer = (struct SavArrayFooter *)((u8 *)data + size);
+    footer = (struct SaveArrayFooter *)((u8 *)data + size);
 
     return footer->saveno;
 }
@@ -955,7 +955,7 @@ int WriteExtraSaveChunk(SAVEDATA *saveData, int idx, void *data) {
     GF_ASSERT(idx < gNumExtraSaveChunkHeaders);
     hdr = &gExtraSaveChunkHeaders[idx];
     GF_ASSERT(hdr->id == idx);
-    size = hdr->sizeFunc() + sizeof(struct SavArrayFooter);
+    size = hdr->sizeFunc() + sizeof(struct SaveArrayFooter);
     if (saveData->lastGoodSaveSlot == 1) {
         CreateChunkFooter(saveData, data, idx, hdr->sizeFunc());
         ret = FlashWriteChunk(hdr->sector * SAVE_SECTOR_SIZE, data, size);
@@ -994,7 +994,7 @@ int sub_02028230(SAVEDATA *saveData, int idx, void *data) {
     GF_ASSERT(idx < gNumExtraSaveChunkHeaders);
     hdr = &gExtraSaveChunkHeaders[idx];
     GF_ASSERT(hdr->id == idx);
-    size = hdr->sizeFunc() + sizeof(struct SavArrayFooter);
+    size = hdr->sizeFunc() + sizeof(struct SaveArrayFooter);
     sub_020286B4(saveData, idx, &sp14, &sp10, &sp0C);
     do {
         r6 = PRandom(sp14);
@@ -1031,14 +1031,14 @@ void *ReadExtraSaveChunk(SAVEDATA *saveData, HeapID heapId, int idx, int *ret_p)
     hdr = &gExtraSaveChunkHeaders[idx];
     GF_ASSERT(hdr->id == idx);
 
-    size = hdr->sizeFunc() + sizeof(struct SavArrayFooter);
+    size = hdr->sizeFunc() + sizeof(struct SaveArrayFooter);
     ret = AllocFromHeap(heapId, size);
     FlashLoadChunk(hdr->sector * SAVE_SECTOR_SIZE, ret, size);
     valid1 = ValidateChunk(saveData, ret, idx, hdr->sizeFunc());
-    saveno1 = SavArray_GetFooterSaveNo(ret, hdr->sizeFunc());
+    saveno1 = SaveArray_GetFooterSaveNo(ret, hdr->sizeFunc());
     FlashLoadChunk((hdr->sector + 64) * SAVE_SECTOR_SIZE, ret, size);
     valid2 = ValidateChunk(saveData, ret, idx, hdr->sizeFunc());
-    saveno2 = SavArray_GetFooterSaveNo(ret, hdr->sizeFunc());
+    saveno2 = SaveArray_GetFooterSaveNo(ret, hdr->sizeFunc());
 
     *ret_p = 1;
     if (valid1 == TRUE && valid2 == FALSE) {
@@ -1085,13 +1085,13 @@ void *sub_020284A4(SAVEDATA *saveData, HeapID heapId, int idx, int *ret_p, int *
     BOOL valid2;
     SAVE_MISC_DATA *misc;
 
-    misc = Sav2_Misc_get(saveData);
+    misc = Save_Misc_get(saveData);
 
     GF_ASSERT(idx < gNumExtraSaveChunkHeaders);
     GF_ASSERT(idx != 0);
     hdr = &gExtraSaveChunkHeaders[idx];
     GF_ASSERT(hdr->id == idx);
-    size = hdr->sizeFunc() + sizeof(struct SavArrayFooter);
+    size = hdr->sizeFunc() + sizeof(struct SaveArrayFooter);
     ret = AllocFromHeap(heapId, size);
     sub_020286B4(saveData, idx, &sp24, &sp20, &sp1C);
     FlashLoadChunk(hdr->sector * SAVE_SECTOR_SIZE, ret, size);
@@ -1147,11 +1147,11 @@ void *sub_020284A4(SAVEDATA *saveData, HeapID heapId, int idx, int *ret_p, int *
 }
 
 static void sub_020286B4(SAVEDATA *saveData, int a1, u32 *a2, u32 *a3, u8 *a4) {
-    sub_0202AC38(Sav2_Misc_get(saveData), a1, a2, a3, a4);
+    sub_0202AC38(Save_Misc_get(saveData), a1, a2, a3, a4);
 }
 
 static void sub_020286D4(SAVEDATA *saveData, int a1, u32 a2, u32 a3, u8 a4) {
-    sub_0202AC60(Sav2_Misc_get(saveData), a1, a2, a3, a4);
+    sub_0202AC60(Save_Misc_get(saveData), a1, a2, a3, a4);
 }
 
 static BOOL SaveDetectFlash(void) {
@@ -1256,7 +1256,7 @@ BOOL SaveSubstruct_AssertCRC(int idx) {
     u16 *data_u16;
     u16 crc;
 
-    data = SavArray_get(SaveBlock2_get(), idx);
+    data = SaveArray_get(SaveBlock2_get(), idx);
     data_u16 = (u16 *)data;
     size = GetSaveChunkSizePlusCRC(idx) - 4;
     crc = GF_CalcCRC16(data, size);
@@ -1274,7 +1274,7 @@ void SaveSubstruct_UpdateCRC(int idx) {
     u16 *data_u16;
     u16 crc;
 
-    data = SavArray_get(SaveBlock2_get(), idx);
+    data = SaveArray_get(SaveBlock2_get(), idx);
     data_u16 = (u16 *)data;
     size = GetSaveChunkSizePlusCRC(idx) - 4;
     crc = GF_CalcCRC16(data, size);
@@ -1292,7 +1292,7 @@ static int HandleWriteSaveAsync_PCBoxes(SAVEDATA *saveData, struct AsyncWriteMan
         saveData->numModifiedBoxes = PCModifiedFlags_CountModifiedBoxes(saveData->newBoxModifiedFlags);
         saveData->nextBoxToWrite = 0;
         r7 = PCStorage_GetSizeOfBox() * PCStorage_GetNumBoxes();
-        saveData->pcStorageCRC = GF_CalcCRC16(SavArray_get(saveData, SAVE_PCSTORAGE), r7);
+        saveData->pcStorageCRC = GF_CalcCRC16(SaveArray_get(saveData, SAVE_PCSTORAGE), r7);
         if (saveData->numModifiedBoxes == 0) {
             GF_ASSERT(saveData->pcStorageCRC == saveData->pcStorageLastCRC);
             sub_020271A0(saveData);
@@ -1417,7 +1417,7 @@ static int Save_WritePCFooter(SAVEDATA *saveData, struct SaveSlotSpec *spec, u8 
     dynamic_region_ptr = saveData->dynamic_region;
     spec_offset = spec->offset;
     footer = GetSaveSectorFooterPtr(saveData, dynamic_region_ptr, 1);
-    crc = SavArray_CalcCRC16MinusFooter(saveData, (u8 *)dynamic_region_ptr + spec_offset, spec->size);
+    crc = SaveArray_CalcCRC16MinusFooter(saveData, (u8 *)dynamic_region_ptr + spec_offset, spec->size);
     GF_ASSERT(crc == footer->crc);
     return FlashWriteChunkInternal(offset + pc_size, data + pc_size, sector_size - pc_size);
 }

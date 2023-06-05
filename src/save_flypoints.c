@@ -113,11 +113,11 @@ u16 *FlyPoints_GetPoisonStepCounter(FLYPOINTS_SAVE *flypointsSave) {
 }
 
 FLYPOINTS_SAVE *Save_FlyPoints_get(SAVEDATA *saveData) {
-    return SavArray_get(saveData, SAVE_FLYPOINTS);
+    return SaveArray_get(saveData, SAVE_FLYPOINTS);
 }
 
 struct SavedMapObjectList *Save_MapObjects_get(SAVEDATA *saveData) {
-    return SavArray_get(saveData, SAVE_MAP_OBJECTS);
+    return SaveArray_get(saveData, SAVE_MAP_OBJECTS);
 }
 
 void Fsys_SyncMapObjectsToSave(FieldSystem *fsys) {
@@ -133,7 +133,7 @@ void Fsys_RestoreMapObjectsFromSave(FieldSystem *fsys) {
     int forme;
 
     if (follower != NULL && follower->objId == obj_partner_poke) {
-        mon = GetFirstAliveMonInParty_CrashIfNone(SavArray_PlayerParty_get(fsys->savedata));
+        mon = GetFirstAliveMonInParty_CrashIfNone(SaveArray_PlayerParty_get(fsys->savedata));
         species = GetMonData(mon, MON_DATA_SPECIES, NULL);
         forme = GetMonData(mon, MON_DATA_FORME, NULL);
         if (species != SPECIES_SHAYMIN) {

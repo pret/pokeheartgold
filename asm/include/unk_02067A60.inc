@@ -17,7 +17,7 @@
 .public GetSpecialSpawnWarpData
 .public sub_0203BB50
 .public FlypointFlagAction
-.public SavArray_Flags_get
+.public SaveArray_Flags_get
 .public TaskManager_Call
 .public TaskManager_GetSys
 .public TaskManager_GetEnv
@@ -55,7 +55,7 @@
 .public sub_02069FB0
 .public FsysUnkSub108_AddMonMood
 .public GetMonData
-.public SavArray_PlayerParty_get
+.public SaveArray_PlayerParty_get
 .public MIi_CpuClearFast
 .public ov01_02205A60
 .public ov01_02205D68

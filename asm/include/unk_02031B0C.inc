@@ -11,7 +11,7 @@
 .public GF_AssertFail
 .public String_ctor
 .public CopyU16ArrayToString
-.public SavArray_get
+.public SaveArray_get
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetTrainerGender

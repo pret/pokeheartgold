@@ -11,7 +11,7 @@
 .public GF_AssertFail
 .public String_ctor
 .public String_dtor
-.public SavArray_get
+.public SaveArray_get
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetAvatar
 .public PalPad_PlayerIdIsFriendOrMutual

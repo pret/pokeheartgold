@@ -1,11 +1,11 @@
 #include "global.h"
 #include "player_data.h"
 
-u32 Sav2_PlayerData_sizeof(void) {
+u32 Save_PlayerData_sizeof(void) {
     return sizeof(PLAYERDATA);
 }
 
-void Sav2_PlayerData_init(PLAYERDATA* player) {
+void Save_PlayerData_init(PLAYERDATA* player) {
     MI_CpuClearFast(player, sizeof(PLAYERDATA));
 
     Options_init(&player->options);
@@ -14,23 +14,23 @@ void Sav2_PlayerData_init(PLAYERDATA* player) {
     InitIGT(&player->igt);
 }
 
-PLAYERPROFILE* Sav2_PlayerData_GetProfileAddr(SAVEDATA* savedata) {
-    PLAYERDATA* player = SavArray_get(savedata, SAVE_PLAYERDATA);
+PLAYERPROFILE* Save_PlayerData_GetProfileAddr(SAVEDATA* savedata) {
+    PLAYERDATA* player = SaveArray_get(savedata, SAVE_PLAYERDATA);
     return &player->profile;
 }
 
-OPTIONS* Sav2_PlayerData_GetOptionsAddr(SAVEDATA* savedata) {
-    PLAYERDATA* player = SavArray_get(savedata, SAVE_PLAYERDATA);
+OPTIONS* Save_PlayerData_GetOptionsAddr(SAVEDATA* savedata) {
+    PLAYERDATA* player = SaveArray_get(savedata, SAVE_PLAYERDATA);
     return &player->options;
 }
 
-u16* Sav2_PlayerData_GetCoinsAddr(SAVEDATA* savedata) {
-    PLAYERDATA* player = SavArray_get(savedata, SAVE_PLAYERDATA);
+u16* Save_PlayerData_GetCoinsAddr(SAVEDATA* savedata) {
+    PLAYERDATA* player = SaveArray_get(savedata, SAVE_PLAYERDATA);
     return &player->coins;
 }
 
-IGT* Sav2_PlayerData_GetIGTAddr(SAVEDATA* savedata) {
-    PLAYERDATA* player = SavArray_get(savedata, SAVE_PLAYERDATA);
+IGT* Save_PlayerData_GetIGTAddr(SAVEDATA* savedata) {
+    PLAYERDATA* player = SaveArray_get(savedata, SAVE_PLAYERDATA);
     return &player->igt;
 }
 
@@ -66,7 +66,7 @@ BOOL PlayerProfile_IsNameEmpty(PLAYERPROFILE* profile) {
     return TRUE;
 }
 
-void Sav2_Profile_PlayerName_set(PLAYERPROFILE* profile, u16* name) {
+void Save_Profile_PlayerName_set(PLAYERPROFILE* profile, u16* name) {
     GF_ASSERT(StringLength(name) < PLAYER_NAME_LENGTH + 1);
     CopyU16StringArray(profile->name, name);
 }

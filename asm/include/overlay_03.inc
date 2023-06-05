@@ -94,9 +94,9 @@
 .public String_ctor
 .public String_dtor
 .public String16_FormatInteger
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_PlayerData_GetOptionsAddr
-.public Sav2_PlayerData_GetIGTAddr
+.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetIGTAddr
 .public PlayerProfile_new
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetTrainerID_VisibleHalf
@@ -108,11 +108,11 @@
 .public sub_020291E8
 .public sub_0202921C
 .public Options_GetFrame
-.public Sav2_SealCase_get
+.public Save_SealCase_get
 .public GiveOrTakeSeal
 .public SealCase_CheckSealQuantity
 .public SealCase_CountSealOccurrenceAnywhere
-.public Sav2_GameStats_get
+.public Save_GameStats_get
 .public GameStats_Inc
 .public GameStats_Add
 .public Save_SafariZone_get
@@ -172,7 +172,7 @@
 .public GetVarPointer
 .public VarGet
 .public ScrNative_WaitApplication_DestroyTaskData
-.public SavArray_Flags_get
+.public SaveArray_Flags_get
 .public TaskManager_Jump
 .public TaskManager_Call
 .public TaskManager_GetSys
@@ -198,7 +198,7 @@
 .public GetMonData
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SaveArray_PlayerParty_get
 .public sub_02074944
 .public sub_0207495C
 .public sub_02074CD0

@@ -19,7 +19,7 @@
 .public GF_AssertFail
 .public String_dtor
 .public CopyStringToU16Array
-.public Sav2_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetTrainerGender
 .public PlayerProfile_GetVersion
 .public sub_0202CA44

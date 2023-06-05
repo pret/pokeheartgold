@@ -803,7 +803,7 @@ ov80_02237130: ; 0x02237130
 	bl ov80_0222A52C
 	ldr r0, _022371A8 ; =0x000004D4
 	ldr r0, [r5, r0]
-	bl SavArray_Party_init
+	bl SaveArray_Party_init
 	mov r0, #0xb
 	bl AllocMonZeroed
 	add r6, r0, #0

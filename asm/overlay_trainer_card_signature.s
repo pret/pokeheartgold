@@ -98,11 +98,11 @@ _021E80D6:
 	str r0, [r4, r1]
 	add r0, r6, #0
 	bl OverlayManager_GetArgs
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	str r0, [r4, #8]
 	add r0, r6, #0
 	bl OverlayManager_GetArgs
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	str r0, [r4, #0xc]
 	add r0, r4, #0
 	add r1, r7, #0

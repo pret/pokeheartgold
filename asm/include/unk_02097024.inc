@@ -2,9 +2,9 @@
 #pragma once
 .public AllocFromHeap
 .public FreeToHeap
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetOptionsAddr
 .public Options_GetFrame
-.public Sav2_GameStats_get
+.public Save_GameStats_get
 .public sub_020398D4
 .public FieldSys_LaunchApplication
 .public sub_0203E4EC

@@ -12519,17 +12519,17 @@ ov101_TownMap_OvyInit: ; 0x021ED7F8
 	str r0, [r1, #0x28]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x24]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	ldr r1, [r4, #0x10]
 	str r0, [r1, #0x2c]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x24]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	ldr r1, [r4, #0x10]
 	str r0, [r1, #0x30]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x24]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	ldr r1, [r4, #0x10]
 	str r0, [r1, #0x34]
 	add r0, r4, #0
@@ -18439,7 +18439,7 @@ ov101_021F0694: ; 0x021F0694
 	str r0, [sp, #0x2c]
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0x24]
-	bl Sav2_SysInfo_RTC_get
+	bl Save_SysInfo_RTC_get
 	str r0, [sp, #0x30]
 	add r0, sp, #0
 	bl ov101_021F1D74
@@ -24010,7 +24010,7 @@ ov101_021F30AC: ; 0x021F30AC
 	mov r0, #0
 	strh r0, [r4, #0x20]
 	ldr r0, [r5, #0x1c]
-	bl Sav2_Pokedex_get
+	bl Save_Pokedex_get
 	ldrb r1, [r4, #0x1a]
 	add r6, r0, #0
 	cmp r1, #2
@@ -24106,7 +24106,7 @@ _021F315A: ; jump table
 _021F3166:
 	bl ov101_021F2110
 	ldr r0, [r5, #0x1c]
-	bl Sav2_Pokedex_get
+	bl Save_Pokedex_get
 	add r6, r0, #0
 	bl Pokedex_GetNatDexFlag
 	add r1, r4, #0
@@ -24849,7 +24849,7 @@ _021F371A:
 	pop {r3, r4, r5, r6, r7, pc}
 _021F3720:
 	ldr r0, [r7, #0x1c]
-	bl Sav2_DayCare_get
+	bl Save_DayCare_get
 	ldr r1, [sp]
 	str r0, [sp, #4]
 	str r0, [r1, #0x50]
@@ -24862,7 +24862,7 @@ _021F3720:
 _021F3738:
 	ldr r0, [sp, #4]
 	add r1, r5, #0
-	bl Sav2_DayCare_GetMonX
+	bl Save_DayCare_GetMonX
 	add r6, r0, #0
 	bl DayCareMon_GetBoxMon
 	mov r1, #5
@@ -24890,7 +24890,7 @@ _021F376A:
 	cmp r0, #2
 	bne _021F3786
 	ldr r0, [sp, #4]
-	bl Sav2_DayCare_CalcCompatibility
+	bl Save_DayCare_CalcCompatibility
 	ldr r1, [sp]
 	add r1, #0x48
 	strh r0, [r1]
@@ -24940,7 +24940,7 @@ _021F37CA:
 	pop {r3, r4, r5, pc}
 _021F37D6:
 	ldr r0, [r4, #0x50]
-	bl Sav2_DayCare_HasEgg
+	bl Save_DayCare_HasEgg
 	cmp r0, #0
 	beq _021F37F0
 	ldr r1, [r5, #0x4c]
@@ -25047,7 +25047,7 @@ ov101_021F388C: ; 0x021F388C
 	pop {r3, r4, r5, r6, r7, pc}
 _021F38A2:
 	ldr r0, [r0, #0x1c]
-	bl Sav2_DayCare_get
+	bl Save_DayCare_get
 	add r6, r5, #0
 	str r0, [sp]
 	str r0, [r5, #0x50]
@@ -25059,7 +25059,7 @@ _021F38A2:
 _021F38B8:
 	ldr r0, [sp]
 	add r1, r4, #0
-	bl Sav2_DayCare_GetMonX
+	bl Save_DayCare_GetMonX
 	add r7, r0, #0
 	bl DayCareMon_GetBoxMon
 	mov r1, #5
@@ -25200,7 +25200,7 @@ _021F39B0:
 _021F39C4:
 	ldr r0, [r4, #0x50]
 	add r1, r6, #0
-	bl Sav2_DayCare_GetMonX
+	bl Save_DayCare_GetMonX
 	bl DayCareMon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r5, #0x50]
@@ -25234,7 +25234,7 @@ _021F3A02:
 _021F3A10:
 	ldr r0, [r4, #0x50]
 	mov r1, #1
-	bl Sav2_DayCare_GetMonX
+	bl Save_DayCare_GetMonX
 	bl DayCareMon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r5, #0x50]
@@ -26224,7 +26224,7 @@ _021F4168:
 	mov r1, #1
 	bl sub_0202F730
 	ldr r0, [r5, #0x1c]
-	bl Sav2_PlayerData_GetIGTAddr
+	bl Save_PlayerData_GetIGTAddr
 	add r1, r0, #0
 	add r0, r6, #0
 	bl sub_0202F784
@@ -30151,7 +30151,7 @@ RadioShow_PokemonMusic_setup: ; 0x021F5F40
 	add r4, r0, #0
 	bl MI_CpuFill8
 	ldr r0, [r5, #4]
-	bl Sav2_Pokedex_get
+	bl Save_Pokedex_get
 	bl Pokedex_GetNatDexFlag
 	ldrb r1, [r4, #4]
 	mov r2, #1
@@ -30951,7 +30951,7 @@ RadioShow_Commercials_init: ; 0x021F6514
 	mov r2, #0x24
 	bl MI_CpuFill8
 	ldr r0, [r5, #4]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	mov r1, #1
 	strb r1, [r4, #8]
 	add r7, r0, #0
@@ -31202,10 +31202,10 @@ RadioShow_PokemonSearchParty_init: ; 0x021F6710
 	mov r2, #0xd
 	bl MI_CpuFill8
 	ldr r0, [r6, #4]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	add r7, r0, #0
 	ldr r0, [r6, #4]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	str r0, [sp]
 	mov r0, #1
 	strb r0, [r5, #8]
@@ -31374,7 +31374,7 @@ _021F6890:
 	cmp r0, #4
 	bne _021F68B2
 	ldr r0, [r5, #4]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	ldr r1, _021F6900 ; =FLAG_DAILY_HEARD_BUENAS_PASSWORD
 	bl SetFlagInArray
 _021F68B2:
@@ -31462,7 +31462,7 @@ _021F6948:
 	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	ldr r0, [r5, #4]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl ScriptState_GetBuenasPasswordSet
 	mov r1, #0x1e
 	bl _s32_div_f
@@ -31662,7 +31662,7 @@ RadioShow_ThatTownThesePeople_init: ; 0x021F6AAC
 	mov r2, #0x14
 	bl MI_CpuFill8
 	ldr r0, [r5, #4]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	mov r1, #1
 	strb r1, [r4, #0xa]
 	add r5, r0, #0
@@ -32305,10 +32305,10 @@ ov101_021F6FCC: ; 0x021F6FCC
 	add r7, r0, #0
 	ldr r0, [r7, #4]
 	add r5, r1, #0
-	bl Sav2_Pokedex_get
+	bl Save_Pokedex_get
 	str r0, [sp, #8]
 	ldr r0, [r7, #4]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	mov r1, #2
 	mov r2, #0x19
 	bl ScriptState_FlypointFlagAction

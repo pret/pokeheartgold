@@ -1,9 +1,9 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public LCRandom
-.public Sav2_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_TestBadgeFlag
-.public Sav2_GetGymmickPtr
+.public Save_GetGymmickPtr
 .public SavGymmick_Init
 .public SavGymmick_AssertMagic_GetData
 .public SavGymmick_GetType

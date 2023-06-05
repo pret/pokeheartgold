@@ -457,8 +457,8 @@ _0202B91A:
 	.balign 4, 0
 	thumb_func_end sub_0202B908
 
-	thumb_func_start Sav2_DressupData_init
-Sav2_DressupData_init: ; 0x0202B930
+	thumb_func_start Save_DressupData_init
+Save_DressupData_init: ; 0x0202B930
 	push {r3, r4, r5, r6, r7, lr}
 	mov r4, #0
 	ldr r6, _0202B980 ; =0x00001234
@@ -502,15 +502,15 @@ _0202B95C:
 _0202B980: .word 0x00001234
 _0202B984: .word 0x000004FC
 _0202B988: .word 0x000007F4
-	thumb_func_end Sav2_DressupData_init
+	thumb_func_end Save_DressupData_init
 
-	thumb_func_start Sav2_DressupData_sizeof
-Sav2_DressupData_sizeof: ; 0x0202B98C
+	thumb_func_start Save_DressupData_sizeof
+Save_DressupData_sizeof: ; 0x0202B98C
 	ldr r0, _0202B990 ; =0x00000834
 	bx lr
 	.balign 4, 0
 _0202B990: .word 0x00000834
-	thumb_func_end Sav2_DressupData_sizeof
+	thumb_func_end Save_DressupData_sizeof
 
 	thumb_func_start sub_0202B994
 sub_0202B994: ; 0x0202B994
@@ -1481,9 +1481,9 @@ _0202C022:
 
 	thumb_func_start Save_DressupData_get
 Save_DressupData_get: ; 0x0202C028
-	ldr r3, _0202C030 ; =SavArray_get
+	ldr r3, _0202C030 ; =SaveArray_get
 	mov r1, #0xc
 	bx r3
 	nop
-_0202C030: .word SavArray_get
+_0202C030: .word SaveArray_get
 	thumb_func_end Save_DressupData_get

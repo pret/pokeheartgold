@@ -2,7 +2,7 @@
 #pragma once
 .public FreeToHeap
 .public GF_AssertFail
-.public Sav2_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfileAddr
 .public sub_02030E08
 .public sub_02030FA0
 .public sub_0203107C
@@ -18,7 +18,7 @@
 .public AddMonToParty
 .public GetPartyMonByIndex
 .public Party_SwapSlots
-.public SavArray_PlayerParty_get
+.public SaveArray_PlayerParty_get
 .public MI_CpuCopy8
 .public ov80_0222AEF8
 .public ov80_0222AF10

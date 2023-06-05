@@ -78,12 +78,12 @@ u8 sub_0207791C(BAG_VIEW *bagView) {
 }
 
 static u16 get_num_coins(SAVEDATA *saveData) {
-    return CheckCoins(Sav2_PlayerData_GetCoinsAddr(saveData));
+    return CheckCoins(Save_PlayerData_GetCoinsAddr(saveData));
 }
 
 static u32 get_num_seals(SAVEDATA *saveData) {
     u32 i, total;
-    SEALCASE *sealCase = Sav2_SealCase_get(saveData);
+    SEALCASE *sealCase = Save_SealCase_get(saveData);
     total = 0;
     for (i = SEAL_MIN; i <= SEAL_MAX; i++) {
         total += SealCase_CountSealOccurrenceAnywhere(sealCase, i);

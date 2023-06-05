@@ -9,7 +9,7 @@
     GF_ASSERT(slot < (party)->core.maxCount);        \
 })
 
-u32 SavArray_Party_sizeof(void) {
+u32 SaveArray_Party_sizeof(void) {
     return sizeof(PARTY);
 }
 
@@ -17,13 +17,13 @@ u32 PartyCore_sizeof(void) {
     return sizeof(PARTY_CORE);
 }
 
-PARTY * SavArray_Party_alloc(HeapID heapId) {
+PARTY * SaveArray_Party_alloc(HeapID heapId) {
     PARTY *ret = AllocFromHeap(heapId, sizeof(PARTY));
-    SavArray_Party_init(ret);
+    SaveArray_Party_init(ret);
     return ret;
 }
 
-void SavArray_Party_init(PARTY *party) {
+void SaveArray_Party_init(PARTY *party) {
     InitPartyWithMaxSize(party, PARTY_SIZE);
 }
 
@@ -135,6 +135,6 @@ BOOL PartyHasMon(PARTY *party, u16 species) {
     return (i != party->core.curCount);
 }
 
-PARTY *SavArray_PlayerParty_get(SAVEDATA *saveData) {
-    return (PARTY *) SavArray_get(saveData, SAVE_PARTY);
+PARTY *SaveArray_PlayerParty_get(SAVEDATA *saveData) {
+    return (PARTY *) SaveArray_get(saveData, SAVE_PARTY);
 }

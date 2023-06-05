@@ -1722,7 +1722,7 @@ _0225AD36:
 _0225AD52:
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
 	add r7, r0, #0
 	ldr r0, [r5, #0x10]
@@ -3458,7 +3458,7 @@ ov27_0225BB6C: ; 0x0225BB6C
 	add r5, r0, #0
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	ldr r0, _0225BC10 ; =0x000004AC
 	mov r1, #0
@@ -3701,7 +3701,7 @@ ov27_0225BD50: ; 0x0225BD50
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	add r5, r0, #0
 	add r0, r4, #0
 	bl sub_02067584

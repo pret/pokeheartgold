@@ -1,10 +1,10 @@
 #include "daycare.h"
 
-u32 Sav2_Daycare_sizeof(void) {
+u32 Save_Daycare_sizeof(void) {
     return sizeof(DAYCARE);
 }
 
-void Sav2_Daycare_init(DAYCARE* daycare) {
+void Save_Daycare_init(DAYCARE* daycare) {
     memset(daycare, 0, sizeof(DAYCARE));
     ZeroBoxMonData(&daycare->mons[0].mon);
     ZeroBoxMonData(&daycare->mons[1].mon);
@@ -12,7 +12,7 @@ void Sav2_Daycare_init(DAYCARE* daycare) {
     daycare->egg_cycles = 0;
 }
 
-DAYCAREMON* Sav2_DayCare_GetMonX(DAYCARE* daycare, int i) {
+DAYCAREMON* Save_DayCare_GetMonX(DAYCARE* daycare, int i) {
     return &daycare->mons[i];
 }
 
@@ -32,15 +32,15 @@ MAIL* DayCareMail_GetMailPtr(DAYCAREMAIL* dcmail) {
     return &dcmail->mail;
 }
 
-BOOL Sav2_DayCare_HasEgg(DAYCARE* daycare) {
+BOOL Save_DayCare_HasEgg(DAYCARE* daycare) {
     return daycare->egg_pid != 0;
 }
 
-u32 Sav2_DayCare_GetEggPID(DAYCARE* daycare) {
+u32 Save_DayCare_GetEggPID(DAYCARE* daycare) {
     return daycare->egg_pid;
 }
 
-u8 Sav2_DayCare_GetEggCycleCounter(DAYCARE* daycare) {
+u8 Save_DayCare_GetEggCycleCounter(DAYCARE* daycare) {
     return daycare->egg_cycles;
 }
 
@@ -52,15 +52,15 @@ void DayCareMon_AddSteps(DAYCAREMON* dcmon, u32 steps) {
     dcmon->steps += steps;
 }
 
-void Sav2_DayCare_SetEggPID(DAYCARE* daycare, u32 pid) {
+void Save_DayCare_SetEggPID(DAYCARE* daycare, u32 pid) {
     daycare->egg_pid = pid;
 }
 
-void Sav2_DayCare_SetEggCycleCounter(DAYCARE* daycare, int count) {
+void Save_DayCare_SetEggCycleCounter(DAYCARE* daycare, int count) {
     daycare->egg_cycles = count;
 }
 
-BOOL Sav2_DayCare_MasudaCheck(DAYCARE* daycare) {
+BOOL Save_DayCare_MasudaCheck(DAYCARE* daycare) {
     // Checks if the pokemon come from different countries.
     // Uses language as a proxy for country, even though it
     // only accounts for European languages and Japanese.
@@ -94,6 +94,6 @@ void DayCareMon_init(DAYCAREMON* mon) {
     DayCareMon_Extras_init(&mon->mail);
 }
 
-DAYCARE* Sav2_DayCare_get(SAVEDATA* savedata) {
-    return SavArray_get(savedata, SAVE_DAYCARE);
+DAYCARE* Save_DayCare_get(SAVEDATA* savedata) {
+    return SaveArray_get(savedata, SAVE_DAYCARE);
 }

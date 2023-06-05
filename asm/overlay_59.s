@@ -190,7 +190,7 @@ ov59_02237E94: ; 0x02237E94
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x18]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r4, r0, #0
 	bl Options_GetTextFrameDelay
 	add r1, r5, #0
@@ -5798,7 +5798,7 @@ ov59_0223A9E4: ; 0x0223A9E4
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x18]
 	str r0, [r5, #8]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r4, r0, #0
 	bl Options_GetTextFrameDelay
 	add r1, r5, #0
@@ -6356,7 +6356,7 @@ ov59_0223AE20: ; 0x0223AE20
 	sub sp, #0xc
 	add r5, r0, #0
 	ldr r0, [r5, #8]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [r5, #0x10]
 	bl GetPartyCount
 	mov r6, #0

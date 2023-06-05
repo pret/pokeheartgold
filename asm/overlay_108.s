@@ -133,7 +133,7 @@ ov108_021E59E4: ; 0x021E59E4
 	add r2, #0x1c
 	bl SafariZone_CopyAreaSet
 	ldr r0, [r4]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r6, r0, #0
 	bl Options_GetTextSpeed
 	ldr r1, _021E5A38 ; =0x000184DC
@@ -176,7 +176,7 @@ ov108_021E5A48: ; 0x021E5A48
 	bl SafariZone_SetAreaSet
 	ldr r0, [r4, #0x14]
 	ldr r0, [r0]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	ldr r1, _021E5A74 ; =0x000184E8
 	ldr r1, [r4, r1]
 	bl ChangeFlag99D
@@ -6115,7 +6115,7 @@ ov108_021E8968: ; 0x021E8968
 	add r2, #0x24
 	bl SafariZone_CopyAreaSet
 	ldr r0, [r4]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r6, r0, #0
 	bl Options_GetTextSpeed
 	strb r0, [r5, #0x18]
@@ -6141,7 +6141,7 @@ ov108_021E8968: ; 0x021E8968
 	lsl r1, r1, #4
 	strb r0, [r5, r1]
 	ldr r0, [r4]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r6, r0, #0
 	ldr r0, [r5, #0x20]
 	bl sub_0202F720
@@ -6211,7 +6211,7 @@ _021E8A50:
 	mov r1, #0xff
 	strh r1, [r0, #0x1c]
 	ldr r0, [r4]
-	bl Sav2_SysInfo_RTC_get
+	bl Save_SysInfo_RTC_get
 	ldr r0, [r0, #0x14]
 	bl GF_RTC_GetTimeOfDayByHour
 	ldr r1, _021E8A84 ; =0x0000042C

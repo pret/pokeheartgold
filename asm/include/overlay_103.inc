@@ -129,7 +129,7 @@
 .public String_ctor
 .public String_dtor
 .public CopyU16ArrayToString
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
 .public Mail_TypeIsValid
@@ -139,7 +139,7 @@
 .public sub_0202B404
 .public sub_0202B4E4
 .public Mail_GetUnk20Array
-.public Sav2_Mailbox_get
+.public Save_Mailbox_get
 .public Mailbox_DeleteSlotI
 .public Mailbox_AllocAndFetchMailI
 .public GetMonIconNaixEx
@@ -148,7 +148,7 @@
 .public sub_02074498
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SaveArray_PlayerParty_get
 .public ItemToMailId
 .public MailToItemId
 .public BagAddItem

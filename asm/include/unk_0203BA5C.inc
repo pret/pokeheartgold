@@ -8,5 +8,5 @@
 .public MapHeader_GetSpawnIdForDeathWarp
 .public sub_0203BB50
 .public FlypointFlagAction
-.public SavArray_Flags_get
+.public SaveArray_Flags_get
 .public ScriptState_FlypointFlagAction

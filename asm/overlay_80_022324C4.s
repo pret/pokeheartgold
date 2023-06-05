@@ -30,10 +30,10 @@ ov80_022324C4: ; 0x022324C4
 	mov r0, #0xb
 	str r0, [r4]
 	ldr r4, [r1]
-	bl SavArray_Party_alloc
+	bl SaveArray_Party_alloc
 	str r0, [r4, #0x28]
 	mov r0, #0xb
-	bl SavArray_Party_alloc
+	bl SaveArray_Party_alloc
 	str r0, [r4, #0x2c]
 	mov r0, #0xa2
 	ldr r1, [sp, #0x38]
@@ -60,7 +60,7 @@ _02232520:
 	cmp r2, #3
 	bne _02232546
 	ldr r0, [r0, #4]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl ScriptState_GetVar4052
 	b _02232552
 _02232546:
@@ -288,7 +288,7 @@ _0223273E:
 _02232744:
 	ldr r5, [r6]
 	ldr r0, [r5, #4]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	add r1, r5, r4
 	add r1, #0x24
 	ldrb r1, [r1]
@@ -306,7 +306,7 @@ _02232744:
 	cmp r4, #3
 	blo _02232744
 	ldr r0, [r5, #4]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [sp, #8]
 	ldr r0, _0223281C ; =ov80_0223DD48
 	mov r1, #0
@@ -1668,7 +1668,7 @@ _02233244:
 	bl sub_02031228
 _0223326A:
 	add r0, r6, #0
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	mov r1, #0x42
 	add r2, r4, #0
 	bl GameStats_Add
@@ -1972,7 +1972,7 @@ _022334AE:
 	bl sub_020310BC
 	add r6, r0, #0
 	ldr r0, [r5, #4]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	add r0, r4, #0
 	add r4, #0xa8

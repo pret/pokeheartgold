@@ -15,13 +15,13 @@
 .public Save_CheckExtraChunksExist
 .public Save_PrepareForAsyncWrite
 .public Save_WriteFileAsync
-.public SavArray_CalcCRC16
-.public Sav2_PlayerData_GetOptionsAddr
+.public SaveArray_CalcCRC16
+.public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_copy
 .public sub_020291E8
 .public sub_0202925C
 .public Pokedex_copy
-.public Sav2_Pokedex_get
+.public Save_Pokedex_get
 .public Options_copy
 .public sub_0202FBCC
 .public sub_0202FBD4

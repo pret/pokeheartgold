@@ -654,7 +654,7 @@ _0206AC36:
 	str r1, [r0, #0x20]
 	add r0, r6, #0
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
 	add r5, #0x30
 	lsl r0, r0, #0x18
@@ -1126,10 +1126,10 @@ sub_0206B014: ; 0x0206B014
 	str r3, [sp, #4]
 	bl FieldSys_GetSaveDataPtr
 	add r7, r0, #0
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r6, r0, #0
 	add r0, r7, #0
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [sp, #8]
 	add r0, r5, #0
 	bl Photo_init
@@ -1513,7 +1513,7 @@ _0206B332:
 _0206B346:
 	add r0, r5, #0
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
 	ldr r1, [r4, #0x40]
 	lsl r0, r0, #0x18

@@ -917,7 +917,7 @@ ScrCmd_555: ; 0x0204A31C
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	mov r1, #0x45
 	add r2, r6, #0
 	bl GameStats_Add
@@ -949,7 +949,7 @@ ScrCmd_556: ; 0x0204A360
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	mov r1, #0x46
 	add r2, r6, #0
 	bl GameStats_Add
@@ -1269,7 +1269,7 @@ sub_0204A5B0: ; 0x0204A5B0
 	str r0, [sp]
 	add r0, r1, #0
 	str r2, [sp, #4]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [sp, #8]
 	bl GetPartyCount
 	lsl r0, r0, #0x18
@@ -1422,7 +1422,7 @@ sub_0204A6A8: ; 0x0204A6A8
 	mov r0, #0
 	str r0, [r4, #0x10]
 	ldr r0, [r5, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl SetFlag966
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -1432,7 +1432,7 @@ sub_0204A6A8: ; 0x0204A6A8
 sub_0204A6E8: ; 0x0204A6E8
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl ClearFlag966
 	pop {r3, pc}
 	.balign 4, 0
@@ -1749,7 +1749,7 @@ _0204A8B4:
 	bl sub_0204BA50
 _0204A972:
 	add r0, r6, #0
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
 	strb r0, [r4, #0x11]
 	ldrb r0, [r4, #0xf]
@@ -1759,13 +1759,13 @@ _0204A972:
 	bl sub_0203107C
 	add r5, r0, #0
 	add r0, r6, #0
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	ldrb r1, [r4, #0xf]
 	add r7, r0, #0
 	cmp r1, #6
 	bne _0204A9A6
 	add r0, r6, #0
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl ScriptState_GetVar4052
 	b _0204A9B8
 _0204A9A6:
@@ -1903,7 +1903,7 @@ _0204AA96:
 	pop {r4, r5, r6, r7, pc}
 _0204AAA6:
 	add r0, r2, #0
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [sp, #8]
 	ldrb r0, [r5, #0xe]
 	mov r4, #0
@@ -1960,7 +1960,7 @@ sub_0204AB10: ; 0x0204AB10
 	sub sp, #0x1c
 	str r0, [sp]
 	add r0, r1, #0
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [sp, #4]
 	ldr r0, [sp]
 	mov r5, #0
@@ -2242,7 +2242,7 @@ sub_0204AD04: ; 0x0204AD04
 	add r7, r1, #0
 	add r5, r0, #0
 	add r0, r7, #0
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	str r0, [sp, #4]
 	add r0, r7, #0
 	bl sub_0203107C
@@ -2341,7 +2341,7 @@ _0204ADD0:
 	cmp r0, #6
 	beq _0204ADF8
 	add r0, r7, #0
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	mov r1, #0x10
 	mov r2, #1
 	bl GameStats_Add
@@ -2377,7 +2377,7 @@ sub_0204AE20: ; 0x0204AE20
 	cmp r0, #5
 	beq _0204AF26
 	add r0, r7, #0
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	str r0, [sp, #4]
 	add r0, r7, #0
 	bl sub_0203107C
@@ -2992,7 +2992,7 @@ sub_0204B2B8: ; 0x0204B2B8
 	mov r2, #1
 	add r1, sp, #8
 	strb r2, [r1]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [sp]
 	mov r7, #0
 	ldrb r0, [r5, #0xe]
@@ -3220,7 +3220,7 @@ sub_0204B470: ; 0x0204B470
 	str r0, [sp, #4]
 	bl MI_CpuFill8
 	add r0, r4, #0
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	ldr r5, [sp, #4]
 	add r7, r0, #0
 	mov r4, #0
@@ -3333,7 +3333,7 @@ sub_0204B538: ; 0x0204B538
 	bl String_ctor
 	str r0, [sp, #0x1c]
 	add r0, r4, #0
-	bl Sav2_Pokedex_get
+	bl Save_Pokedex_get
 	str r0, [sp, #0x18]
 	mov r0, #1
 	mov r1, #0x1b
@@ -3521,12 +3521,12 @@ sub_0204B6AC: ; 0x0204B6AC
 	add r4, r1, #0
 	add r6, r0, #0
 	add r0, r4, #0
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
 	ldr r1, _0204B700 ; =0x0000083E
 	strh r0, [r6, r1]
 	add r0, r4, #0
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	add r7, r0, #0
 	mov r4, #0
 	add r5, r6, #0

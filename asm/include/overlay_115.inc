@@ -40,7 +40,7 @@
 .public String_dtor
 .public Thunk_G3X_Reset
 .public sub_02026E50
-.public Sav2_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetTrainerGender
 .public NNS_G2dGetImagePaletteLocation
 .public G2x_SetBlendAlpha_

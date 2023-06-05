@@ -64,7 +64,7 @@ ov81_0223DD60: ; 0x0223DD60
 	add r2, #0x14
 	str r0, [r4, r2]
 	ldr r0, [r4, r3]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	mov r1, #0x6e
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -4377,7 +4377,7 @@ _02240114:
 	mov r0, #0x6f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	bl Options_GetTextFrameDelay
 	mov r3, #1
 	str r3, [sp]
@@ -5331,7 +5331,7 @@ ov81_022408C4: ; 0x022408C4
 	ldr r0, [r0, r1]
 	str r2, [sp, #0x10]
 	add r6, r3, #0
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r7, r0, #0
 	mov r0, #8
 	mov r1, #0x64
@@ -6027,7 +6027,7 @@ ov81_02240E78: ; 0x02240E78
 	strh r1, [r0, #0x18]
 	sub r0, r2, #4
 	ldr r0, [r4, r0]
-	bl SavArray_IsNatDexEnabled
+	bl SaveArray_IsNatDexEnabled
 	mov r1, #7
 	lsl r1, r1, #6
 	ldr r2, [r4, r1]
@@ -6043,7 +6043,7 @@ ov81_02240E78: ; 0x02240E78
 	mov r0, #0x6f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r1, r0, #0
 	mov r0, #7
 	lsl r0, r0, #6
@@ -6214,7 +6214,7 @@ ov81_02241008: ; 0x02241008
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r4, r1, #0
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	mov r0, #0x3e
 	lsl r0, r0, #4
 	strh r4, [r5, r0]

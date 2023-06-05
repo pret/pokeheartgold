@@ -49,7 +49,7 @@
 .public GF_AssertFail
 .public Thunk_G3X_Reset
 .public sub_02026E50
-.public Sav2_GetGymmickPtr
+.public Save_GetGymmickPtr
 .public SavGymmick_GetType
 .public MapMatrix_GetMapHeader
 .public MapHeader_GetAreaDataBank
@@ -65,7 +65,7 @@
 .public FieldSys_GetSaveDataPtr
 .public sub_0203E348
 .public TryStartMapScriptByType
-.public SavArray_Flags_get
+.public SaveArray_Flags_get
 .public Fsys_TaskIsRunning
 .public sub_02053018
 .public sub_02053038

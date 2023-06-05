@@ -1062,7 +1062,7 @@ _0222C550:
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	bl ov80_0222A7EC
 	add r1, sp, #0xc
 	strh r0, [r1]
@@ -1197,7 +1197,7 @@ _0222C632:
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	bl ov80_0222A7EC
 	strh r0, [r6]
 	mov r7, #0x1f
@@ -2482,7 +2482,7 @@ ov80_0222D008: ; 0x0222D008
 	str r1, [r5, #0x1c]
 	ldr r0, [r0, #8]
 	ldrb r4, [r2]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	ldr r0, [r5]
 	add r1, r4, #0
@@ -2665,7 +2665,7 @@ ov80_0222D168: ; 0x0222D168
 	bl ov80_0222BE10
 	add r5, r0, #0
 	ldr r0, [r4, #8]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	mov r1, #0x45
 	add r2, r5, #0
 	bl GameStats_Add
@@ -2691,7 +2691,7 @@ ov80_0222D1A0: ; 0x0222D1A0
 	bl ov80_0222BE10
 	add r5, r0, #0
 	ldr r0, [r4, #8]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	mov r1, #0x46
 	add r2, r5, #0
 	bl GameStats_Add
@@ -2809,7 +2809,7 @@ ov80_0222D284: ; 0x0222D284
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	bl HealParty
 	mov r0, #0
 	pop {r3, pc}
@@ -2922,7 +2922,7 @@ ov80_0222D334: ; 0x0222D334
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	add r1, r6, #0
 	bl GetVarAddr
 	strh r4, [r0]
@@ -2943,7 +2943,7 @@ ov80_0222D360: ; 0x0222D360
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	add r1, r6, #0
 	bl GetVarAddr
 	ldrh r0, [r0]
@@ -4202,7 +4202,7 @@ ov80_0222DD3C: ; 0x0222DD3C
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
 	bne _0222DD60
@@ -4507,7 +4507,7 @@ ov80_0222DF64: ; 0x0222DF64
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	ldr r1, [sp, #0x18]
 	bl GetPartyMonByIndex
 	str r4, [sp]
@@ -4621,7 +4621,7 @@ ov80_0222E078: ; 0x0222E078
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	add r1, r4, #0
 	bl GameStats_Inc
 	mov r0, #0
@@ -4642,7 +4642,7 @@ ov80_0222E09C: ; 0x0222E09C
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	add r1, r4, #0
 	add r2, r6, #0
 	bl GameStats_Add
@@ -4660,7 +4660,7 @@ ov80_0222E0C8: ; 0x0222E0C8
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	add r1, r4, #0
 	bl GameStats_AddSpecial
 	mov r0, #0
@@ -7239,7 +7239,7 @@ ov80_0222F458: ; 0x0222F458
 	b _0222F4BC
 _0222F498:
 	ldr r0, [r0, #8]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	bl Options_GetTextFrameDelay
 	add r1, r0, #0
 	ldrh r0, [r4, #4]

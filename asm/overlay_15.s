@@ -655,14 +655,14 @@ BagApp_GetSaveStructPtrs: ; 0x021F98F4
 	sub r0, r1, #4
 	ldr r0, [r4, r0]
 	ldr r0, [r0]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	mov r1, #0x8f
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	sub r1, #8
 	ldr r0, [r4, r1]
 	ldr r0, [r0]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	mov r1, #9
 	lsl r1, r1, #6
 	str r0, [r4, r1]

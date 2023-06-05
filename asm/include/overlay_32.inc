@@ -66,7 +66,7 @@
 .public String_ctor
 .public String_dtor
 .public PlayerProfile_new
-.public Sav2_Profile_PlayerName_set
+.public Save_Profile_PlayerName_set
 .public sub_0202C254
 .public sub_0202C6F4
 .public GXS_SetGraphicsMode

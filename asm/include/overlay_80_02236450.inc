@@ -27,7 +27,7 @@
 .public InitPartyWithMaxSize
 .public AddMonToParty
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SaveArray_PlayerParty_get
 .public MI_CpuFill8
 .public MI_CpuCopy8
 .public _s32_div_f

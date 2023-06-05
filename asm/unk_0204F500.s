@@ -192,7 +192,7 @@ _0204F602:
 	add r0, #0x80
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	mov r1, #0x45
 	add r2, r6, #0
 	bl GameStats_Add
@@ -1022,16 +1022,16 @@ sub_0204FC78: ; 0x0204FC78
 	mov r2, #0x44
 	bl MIi_CpuClearFast
 	ldr r0, [r6, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [r4]
 	ldr r0, [r6, #0xc]
 	bl SaveGetBag
 	str r0, [r4, #4]
 	ldr r0, [r6, #0xc]
-	bl Sav2_Mailbox_get
+	bl Save_Mailbox_get
 	str r0, [r4, #8]
 	ldr r0, [r6, #0xc]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r1, r4, #0
 	str r0, [r4, #0xc]
 	mov r0, #0
@@ -1173,13 +1173,13 @@ sub_0204FDA0: ; 0x0204FDA0
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [r4]
 	add r0, r5, #0
-	bl SavArray_IsNatDexEnabled
+	bl SaveArray_IsNatDexEnabled
 	str r0, [r4, #0x1c]
 	add r0, r5, #0
 	bl sub_02088288
@@ -1204,7 +1204,7 @@ sub_0204FDA0: ; 0x0204FDA0
 	add r0, r4, #0
 	bl sub_02089D40
 	add r0, r5, #0
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_0208AD34
@@ -1699,16 +1699,16 @@ sub_020501B8: ; 0x020501B8
 	mov r2, #0x44
 	bl MIi_CpuClearFast
 	ldr r0, [r6, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [r4]
 	ldr r0, [r6, #0xc]
 	bl SaveGetBag
 	str r0, [r4, #4]
 	ldr r0, [r6, #0xc]
-	bl Sav2_Mailbox_get
+	bl Save_Mailbox_get
 	str r0, [r4, #8]
 	ldr r0, [r6, #0xc]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r1, r4, #0
 	str r0, [r4, #0xc]
 	mov r0, #0
@@ -1850,13 +1850,13 @@ sub_020502E0: ; 0x020502E0
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [r4]
 	add r0, r5, #0
-	bl SavArray_IsNatDexEnabled
+	bl SaveArray_IsNatDexEnabled
 	str r0, [r4, #0x1c]
 	add r0, r5, #0
 	bl sub_02088288
@@ -1881,7 +1881,7 @@ sub_020502E0: ; 0x020502E0
 	add r0, r4, #0
 	bl sub_02089D40
 	add r0, r5, #0
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_0208AD34

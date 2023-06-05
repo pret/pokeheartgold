@@ -17,7 +17,7 @@
 .public String_ctor
 .public String_dtor
 .public CopyU16ArrayToString
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetOptionsAddr
 .public Mail_GetOTID
 .public Mail_GetAuthorNamePtr
 .public Mail_GetType
@@ -28,7 +28,7 @@
 .public sub_0202B4E4
 .public Mail_GetUnk20Array
 .public Mail_SetMessage
-.public Sav2_GameStats_get
+.public Save_GameStats_get
 .public GameStats_Inc
 .public GameStats_AddSpecial
 .public sub_02090C94

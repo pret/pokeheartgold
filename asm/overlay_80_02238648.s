@@ -11,7 +11,7 @@ ov80_02238648: ; 0x02238648
 	bl sub_02096808
 	add r4, r0, #0
 	ldr r0, [r4, #8]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r7, r0, #0
 	mov r0, #0
 	add r4, #0x20

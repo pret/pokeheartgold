@@ -194,11 +194,11 @@
 .public Save_Cancel
 .public SaveSubstruct_AssertCRC
 .public SaveSubstruct_UpdateCRC
-.public Sav2_SysInfo_get
-.public Sav2_SysInfo_GetField48
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_PlayerData_GetOptionsAddr
-.public Sav2_PlayerData_GetIGTAddr
+.public Save_SysInfo_get
+.public Save_SysInfo_GetField48
+.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetIGTAddr
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetTrainerID_VisibleHalf
@@ -207,7 +207,7 @@
 .public Pokedex_CountDexOwned
 .public Pokedex_GetNatDexFlag
 .public Pokedex_IsEnabled
-.public Sav2_Pokedex_get
+.public Save_Pokedex_get
 .public Options_GetFrame
 .public GetIGTHours
 .public GetIGTMinutes

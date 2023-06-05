@@ -6,10 +6,10 @@
 .public StopSE
 .public sub_02018410
 .public GF_AssertFail
-.public Sav2_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_TestBadgeFlag
-.public Sav2_DayCare_get
-.public Sav2_GameStats_get
+.public Save_DayCare_get
+.public Save_GameStats_get
 .public GameStats_Inc
 .public GameStats_GetCapped
 .public GameStats_AddSpecial
@@ -54,7 +54,7 @@
 .public sub_0203DE04
 .public StartMapSceneScript
 .public TryStartMapScriptByType
-.public SavArray_Flags_get
+.public SaveArray_Flags_get
 .public CheckFlagInArray
 .public sub_020511F8
 .public sub_02053E08
@@ -152,7 +152,7 @@
 .public MonApplyFriendshipMod
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SaveArray_PlayerParty_get
 .public Fsys_GetGearPhoneRingManager
 .public sub_02092E14
 .public ov01_021E5924

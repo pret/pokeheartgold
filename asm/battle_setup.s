@@ -88,7 +88,7 @@ _0205193C:
 	str r0, [r5, #0x18]
 	bl MIi_CpuClear32
 	add r0, r6, #0
-	bl SavArray_Party_alloc
+	bl SaveArray_Party_alloc
 	str r0, [r5, #4]
 	add r0, r6, #0
 	bl PlayerProfile_new
@@ -270,10 +270,10 @@ sub_02051AAC: ; 0x02051AAC
 	add r5, r1, #0
 	add r6, r0, #0
 	ldr r0, [r5, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	str r0, [sp, #0x10]
 	ldr r0, [r5, #0xc]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	mov r1, #1
 	str r0, [sp, #0x14]
 	add r0, r6, #0
@@ -308,7 +308,7 @@ sub_02051AAC: ; 0x02051AAC
 	add r0, r4, #0
 	add r0, #0xf8
 	ldr r0, [r0]
-	bl Sav2_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_set
 	add r0, r7, #0
 	bl String_dtor
 	ldr r0, [sp, #0x18]
@@ -391,7 +391,7 @@ sub_02051AAC: ; 0x02051AAC
 	add r1, #0xa4
 	str r0, [r4, r1]
 	ldr r0, [r5, #0xc]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	mov r1, #0x51
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -570,22 +570,22 @@ sub_02051D18: ; 0x02051D18
 	add r0, r4, #0
 	add r6, r1, #0
 	add r7, r3, #0
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	str r0, [sp, #0x1c]
 	add r0, r4, #0
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [sp, #0x18]
 	add r0, r4, #0
 	bl SaveGetBag
 	str r0, [sp, #0x14]
 	add r0, r4, #0
-	bl Sav2_Pokedex_get
+	bl Save_Pokedex_get
 	str r0, [sp, #0x10]
 	add r0, r4, #0
-	bl Sav2_Chatot_get
+	bl Save_Chatot_get
 	str r0, [sp, #0xc]
 	add r0, r4, #0
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	str r0, [sp, #8]
 	add r0, r4, #0
 	bl Save_FlyPoints_get
@@ -641,7 +641,7 @@ _02051DB6:
 	add r0, r1, #4
 	str r2, [r5, r0]
 	add r0, r4, #0
-	bl Sav2_SysInfo_RTC_get
+	bl Save_SysInfo_RTC_get
 	ldr r0, [r0, #0x14]
 	bl GF_RTC_GetTimeOfDayByHour
 	mov r1, #0x57
@@ -714,7 +714,7 @@ _02051E14:
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl CheckMetBill
 	mov r1, #0x5a
 	lsl r1, r1, #2
@@ -728,7 +728,7 @@ _02051E14:
 	cmp r0, r1
 	bhs _02051EA8
 	add r0, r4, #0
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl ScriptState_MomsSavingsFlagCheck
 	mov r1, #0x5b
 	lsl r1, r1, #2
@@ -758,7 +758,7 @@ _02051EB0:
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	mov r1, #0x51
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -811,11 +811,11 @@ sub_02051F2C: ; 0x02051F2C
 	ldr r0, [r0, #0xc]
 	str r1, [sp]
 	add r6, r2, #0
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r4, r0, #0
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [sp, #0x14]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
@@ -823,15 +823,15 @@ sub_02051F2C: ; 0x02051F2C
 	str r0, [sp, #0x10]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl Sav2_Pokedex_get
+	bl Save_Pokedex_get
 	str r0, [sp, #0xc]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl Sav2_Chatot_get
+	bl Save_Chatot_get
 	str r0, [sp, #8]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	str r0, [sp, #4]
 	mov r0, #0x53
 	mov r1, #6
@@ -946,7 +946,7 @@ _02052004:
 	str r0, [r5, r1]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	mov r1, #0x51
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -982,7 +982,7 @@ sub_020520B0: ; 0x020520B0
 	str r1, [sp]
 	str r2, [sp, #4]
 	add r4, r3, #0
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	str r0, [sp, #0x20]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
@@ -990,15 +990,15 @@ sub_020520B0: ; 0x020520B0
 	str r0, [sp, #0x1c]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl Sav2_Pokedex_get
+	bl Save_Pokedex_get
 	str r0, [sp, #0x18]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl Sav2_Chatot_get
+	bl Save_Chatot_get
 	str r0, [sp, #0x14]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	str r0, [sp, #0x10]
 	ldr r0, [sp]
 	mov r1, #6
@@ -1174,7 +1174,7 @@ _020521F6:
 	str r0, [r5, r1]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	mov r1, #0x51
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -1244,7 +1244,7 @@ sub_020522F0: ; 0x020522F0
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	add r6, r2, #0
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1261,7 +1261,7 @@ sub_0205230C: ; 0x0205230C
 	ldr r0, [r6, #0xc]
 	add r5, r1, #0
 	str r2, [sp]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	add r4, r0, #0
 	ldr r0, [r6, #0xc]
 	bl SaveData_GetMomsSavingsAddr
@@ -1329,16 +1329,16 @@ sub_0205239C: ; 0x0205239C
 	add r4, r1, #0
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r6, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	add r7, r0, #0
 	ldr r0, [r4, #0xc]
 	bl SaveGetBag
 	str r0, [sp]
 	ldr r0, [r4, #0xc]
-	bl Sav2_Pokedex_get
+	bl Save_Pokedex_get
 	add r2, r5, #0
 	add r2, #0xf8
 	str r0, [sp, #4]
@@ -1366,7 +1366,7 @@ sub_0205239C: ; 0x0205239C
 	bl Pokedex_copy
 	ldr r0, [r4, #0xc]
 	mov r6, #0
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	add r7, r0, #0
 	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #0
@@ -1403,13 +1403,13 @@ sub_02052444: ; 0x02052444
 	add r5, r1, #0
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	ldr r0, [r5, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	ldr r0, [r5, #0xc]
 	bl SaveGetBag
 	ldr r0, [r5, #0xc]
-	bl Sav2_Pokedex_get
+	bl Save_Pokedex_get
 	add r1, r0, #0
 	mov r0, #0x11
 	lsl r0, r0, #4

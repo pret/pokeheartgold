@@ -6,7 +6,7 @@
 .public MailMsg_init_withBank
 .public AllocFromHeap
 .public FreeToHeap
-.public Sav2_Misc_get
+.public Save_Misc_get
 .public SaveMisc_GetBattleGreeting
 .public SaveMisc_SetBattleGreeting
 .public sub_0203EA24

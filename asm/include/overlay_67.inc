@@ -90,7 +90,7 @@
 .public String_dtor
 .public StringCopy
 .public CopyU16ArrayToString
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetOptionsAddr
 .public sub_0202D488
 .public sub_0202D5DC
 .public sub_0202D8D0

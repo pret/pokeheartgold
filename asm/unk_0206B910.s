@@ -39,7 +39,7 @@ _0206B92C:
 	str r0, [r4, #4]
 	bl memset
 	add r0, r5, #0
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	ldr r1, [r4, #4]
 	str r0, [r1, #0x24]
 	ldr r0, [r4, #4]
@@ -99,7 +99,7 @@ _0206B9BC:
 	ldr r0, [sp]
 	bl sub_0205525C
 	ldr r0, [r7, #0xc]
-	bl Sav2_SealCase_get
+	bl Save_SealCase_get
 	str r0, [r6, #0x20]
 	add r0, r6, #0
 	mov r1, #0
@@ -110,7 +110,7 @@ _0206B9BC:
 	add r0, r5, r0
 	str r0, [r6, #0x2c]
 	ldr r0, [r7, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [r6, #0x1c]
 	bl GetPartyCount
 	mov r4, #0
@@ -178,7 +178,7 @@ _0206BA4E:
 	bl SaveGetBag
 	str r0, [r4, #4]
 	ldr r0, [r7, #0xc]
-	bl Sav2_Mailbox_get
+	bl Save_Mailbox_get
 	str r0, [r4, #8]
 	add r0, r4, #0
 	mov r1, #0

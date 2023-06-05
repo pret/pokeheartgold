@@ -207,7 +207,7 @@ ov113_021E5A7C: ; 0x021E5A7C
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r4, r0, #0
 	bl Options_GetTextFrameDelay
 	strb r0, [r5, #0x18]
@@ -216,11 +216,11 @@ ov113_021E5A7C: ; 0x021E5A7C
 	strb r0, [r5, #0x19]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
-	bl Sav2_Pokedex_get
+	bl Save_Pokedex_get
 	str r0, [r5, #0xc]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl ScriptState_GetUnownReportLevel
 	add r1, r5, #0
 	add r1, #0x3c
@@ -1772,7 +1772,7 @@ ov113_021E6680: ; 0x021E6680
 	str r0, [r4, #0x58]
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #4]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	ldr r1, [r4]
 	bl PlayerProfile_GetPlayerName_NewString
 	str r0, [r4, #0x5c]

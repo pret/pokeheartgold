@@ -8,7 +8,7 @@ u32 Save_PhotoAlbum_sizeof(void) {
 }
 
 PHOTO_ALBUM *Save_PhotoAlbum_get(SAVEDATA *saveData) {
-    return SavArray_get(saveData, SAVE_PHOTO_ALBUM);
+    return SaveArray_get(saveData, SAVE_PHOTO_ALBUM);
 }
 
 void Save_PhotoAlbum_init(PHOTO_ALBUM *photoAlbum) {

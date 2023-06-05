@@ -94,11 +94,11 @@
 .public sub_02025224
 .public String_ctor
 .public String_dtor
-.public Sav2_HOF_GetNumRecords
-.public Sav2_HOF_TranslateRecordIdx
-.public Sav2_HOF_RecordCountMons
-.public Sav2_HOF_GetMonStatsByIndexPair
-.public Sav2_HOF_GetClearDate
+.public Save_HOF_GetNumRecords
+.public Save_HOF_TranslateRecordIdx
+.public Save_HOF_RecordCountMons
+.public Save_HOF_GetMonStatsByIndexPair
+.public Save_HOF_GetClearDate
 .public SpeciesToOverworldModelIndexOffset
 .public OverworldModelLookupFormeCount
 .public OverworldModelLookupHasFemaleForme

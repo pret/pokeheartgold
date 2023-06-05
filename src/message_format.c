@@ -97,12 +97,12 @@ void BufferPlayersName(MessageFormat *msgFmt, u32 fieldno, PLAYERPROFILE *player
 }
 
 void BufferRivalsName(MessageFormat *msgFmt, u32 fieldno, SAVEDATA *saveData) {
-    CopyU16ArrayToString(msgFmt->buffer, Sav2_Misc_RivalName_const_get(Sav2_Misc_const_get(saveData)));
+    CopyU16ArrayToString(msgFmt->buffer, Save_Misc_RivalName_const_get(Save_Misc_const_get(saveData)));
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }
 
 void BufferFriendsName(MessageFormat *msgFmt, u32 fieldno, SAVEDATA *saveData) {
-    PLAYERPROFILE *playerProfile = Sav2_PlayerData_GetProfileAddr(saveData);
+    PLAYERPROFILE *playerProfile = Save_PlayerData_GetProfileAddr(saveData);
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0445_bin, msgFmt->heapId);
     if (PlayerProfile_GetTrainerGender(playerProfile) == PLAYER_GENDER_MALE) {
         ReadMsgDataIntoString(msgData, msg_0445_00001, msgFmt->buffer); // Lyra

@@ -62,7 +62,7 @@ _02204F2A:
 	add r2, sp, #8
 	bl ov01_022050F8
 	ldr r0, [r5, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerID
 	add r2, r0, #0
 	ldr r0, [sp, #8]

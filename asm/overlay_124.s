@@ -122,7 +122,7 @@ ov124_02260D1C: ; 0x02260D1C
 	add r4, r5, #0
 _02260D24:
 	ldr r0, [r6, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r1, r4, #0
 	bl PlayerProfile_TestBadgeFlag
 	cmp r0, #1

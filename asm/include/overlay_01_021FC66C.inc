@@ -18,8 +18,8 @@
 .public GF_AssertFail
 .public String_ctor
 .public String_dtor
-.public Sav2_PlayerData_GetOptionsAddr
-.public Sav2_GameStats_get
+.public Save_PlayerData_GetOptionsAddr
+.public Save_GameStats_get
 .public GameStats_Inc
 .public TaskManager_GetSys
 .public TaskManager_GetEnv
@@ -44,7 +44,7 @@
 .public FollowingPokemon_IsActive
 .public FsysUnkSub108_GetMonMood
 .public GetMonData
-.public SavArray_PlayerParty_get
+.public SaveArray_PlayerParty_get
 .public Fsys_GetGearPhoneRingManager
 .public sub_02092FA8
 .public memset

@@ -19,7 +19,7 @@
 .public Camera_GetAngle
 .public sub_02023F90
 .public GF_AssertFail
-.public Sav2_GetGymmickPtr
+.public Save_GetGymmickPtr
 .public SavGymmick_AssertMagic_GetData
 .public SavGymmick_GetType
 .public FieldSys_GetSaveDataPtr

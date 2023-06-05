@@ -16,7 +16,7 @@
 .public Bind3dModelSet
 .public sub_0201F988
 .public GF_AssertFail
-.public Sav2_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetTrainerGender
 .public Save_SafariZone_get
 .public sub_0202F620

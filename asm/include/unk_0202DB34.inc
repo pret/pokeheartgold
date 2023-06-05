@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public SavArray_get
+.public SaveArray_get
 .public sub_0202DB34
 .public sub_0202DB40
 .public sub_0202DB44

@@ -219,7 +219,7 @@ _0221E76A:
 	bl GetStoragePCPointer
 	add r7, r0, #0
 	ldr r0, [r5]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -518,7 +518,7 @@ _0221E9B4:
 	cmp r6, #0x12
 	bne _0221EA20
 	ldr r0, [r0]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	ldr r1, [r5, #0x14]
 	bl GetPartyMonByIndex
 	mov r1, #5
@@ -550,7 +550,7 @@ _0221E9B4:
 	strb r0, [r4, #0x1d]
 	ldr r0, [r7]
 	ldr r0, [r0]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	ldr r1, [r5, #0x14]
 	ldr r2, [sp]
 	lsl r1, r1, #0x18
@@ -838,7 +838,7 @@ _0221EC3C:
 	cmp r6, #0x12
 	ldr r0, [r5, #0x2c]
 	bne _0221ED1C
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	add r1, r4, #0
 	add r7, r0, #0
 	bl GetPartyMonByIndex

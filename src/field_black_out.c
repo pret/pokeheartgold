@@ -97,7 +97,7 @@ static void _DrawScurryMessageScreen(FieldSystem *fsys, TaskManager *taskManager
 
         AddWindow(env->bgConfig, &env->window, &_020FC51C);
     }
-    BufferPlayersName(env->msgFmt, 0, Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(fsys)));
+    BufferPlayersName(env->msgFmt, 0, Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(fsys)));
     if (fsys->location->mapId == MAP_T20R0201) {
         _PrintMessage(env, msg_0203_00004, 0, 0);
     } else {
@@ -180,7 +180,7 @@ BOOL Task_BlackOut(TaskManager *taskManager) {
         GetSpecialSpawnWarpData(deathSpawn, FlyPoints_GetSpecialSpawnWarpPtr(flypointsSave));
         sub_020537A8(taskManager, &deathWarp);
         Fsys_ClearFollowingTrainer(fsys);
-        HealParty(SavArray_PlayerParty_get(fsys->savedata));
+        HealParty(SaveArray_PlayerParty_get(fsys->savedata));
         (*state)++;
         break;
     case 1:

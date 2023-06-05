@@ -163,8 +163,8 @@
 .public String_ctor
 .public String_dtor
 .public CopyU16ArrayToString
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetTrainerGender
 .public Options_GetFrame

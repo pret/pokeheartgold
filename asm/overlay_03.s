@@ -63,7 +63,7 @@ _02253E90:
 	ldr r0, [r0]
 	ldr r0, [r0, #0x68]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r1, r0, #0
 	ldr r0, _02253ECC ; =ov03_022598A0
 	ldr r0, [r0]
@@ -73,7 +73,7 @@ _02253E90:
 	ldr r4, [r0]
 	ldr r0, [r4, #0x68]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r2, r0, #0
 	add r0, r4, #0
 	ldr r1, [r4, #0x14]
@@ -208,7 +208,7 @@ _02253F84:
 	ldr r0, [r1]
 	ldr r0, [r0, #0x68]
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	ldr r1, _02254050 ; =ov03_022598A0
 	ldr r1, [r1]
 	str r0, [r1, #0x78]
@@ -1140,7 +1140,7 @@ _0225476A:
 	ldr r0, [r0]
 	ldr r0, [r0, #0x68]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r1, r0, #0
 	ldr r0, _022547D0 ; =ov03_022598A0
 	ldr r0, [r0]
@@ -3839,7 +3839,7 @@ ov03_02255CF8: ; 0x02255CF8
 	bl sub_0205B514
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x54
@@ -3860,7 +3860,7 @@ _02255D3A:
 	bl StringExpandPlaceholders
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r2, r0, #0
 	add r0, r5, #0
 	ldr r1, [r5, #0x18]
@@ -4687,7 +4687,7 @@ ov03_022563F8: ; 0x022563F8
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	add r1, r0, #0
 	ldr r0, [r4, #0x10]
 	ldr r2, [r4, #0x6c]
@@ -5451,7 +5451,7 @@ ov03_02256A2C: ; 0x02256A2C
 	ldr r0, [r0, #0xc]
 	str r1, [sp, #0xc]
 	str r2, [sp, #0x10]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	add r6, r0, #0
 	mov r0, #0xb
 	bl sub_02074944
@@ -5668,7 +5668,7 @@ ov03_02256BA8: ; 0x02256BA8
 	pop {r3, r4, r5, r6, r7, pc}
 _02256BCA:
 	ldr r0, [r5, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	add r1, r6, #0
 	bl sub_020669B4
 	add r1, r0, #0
@@ -5889,22 +5889,22 @@ InitMartUI: ; 0x02256D34
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r5, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	mov r1, #0x92
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r5, #0xc]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	mov r1, #0x25
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	ldr r0, [r5, #0xc]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	mov r1, #0x97
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r5, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	mov r1, #0x26
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -5965,7 +5965,7 @@ _02256DEA:
 	b _02256E04
 _02256DF8:
 	ldr r0, [r5, #0xc]
-	bl Sav2_SealCase_get
+	bl Save_SealCase_get
 	mov r1, #0x93
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -9669,7 +9669,7 @@ ScrCmd_720: ; 0x02258A18
 	lsl r0, r0, #2
 	add r4, r1, r0
 	ldr r0, [r5, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
 	add r2, r0, #0
 	lsl r2, r2, #0x18
@@ -9848,12 +9848,12 @@ ScrCmd_791: ; 0x02258C00
 	bl GetVarPointer
 	str r0, [sp]
 	ldr r0, [r4, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [sp, #4]
 	bl GetPartyCount
 	add r6, r0, #0
 	ldr r0, [r4, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerID
 	str r0, [sp, #0xc]
 	ldr r0, _02258CD8 ; =0x00000165
@@ -9934,7 +9934,7 @@ ScrCmd_792: ; 0x02258CDC
 	bl Save_SafariZone_get
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl Sav2_PlayerData_GetIGTAddr
+	bl Save_PlayerData_GetIGTAddr
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_0202F784

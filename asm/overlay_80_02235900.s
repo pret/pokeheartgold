@@ -806,7 +806,7 @@ _02235F10:
 	bl sub_0204ABC8
 _02235F44:
 	ldr r0, [r7, #8]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	bl HealParty
 	add r0, r4, #0
 	bl sub_02096910

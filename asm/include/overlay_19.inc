@@ -52,7 +52,7 @@
 .public String_ctor
 .public String_dtor
 .public CopyU16ArrayToString
-.public Sav2_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfileAddr
 .public sub_02068F98
 .public sub_0206A8C0
 .public sub_0206A8DC

@@ -2,16 +2,16 @@
 
 static u8 sTempFlags[NUM_TEMP_FLAGS / 8] = {0};
 
-u32 SavArray_Flags_sizeof(void) {
+u32 SaveArray_Flags_sizeof(void) {
     return sizeof(SCRIPT_STATE);
 }
 
-void SavArray_Flags_init(SCRIPT_STATE *scriptState) {
+void SaveArray_Flags_init(SCRIPT_STATE *scriptState) {
     memset(scriptState, 0, sizeof(SCRIPT_STATE));
 }
 
-SCRIPT_STATE *SavArray_Flags_get(SAVEDATA *saveData) {
-    return SavArray_get(saveData, SAVE_FLAGS);
+SCRIPT_STATE *SaveArray_Flags_get(SAVEDATA *saveData) {
+    return SaveArray_get(saveData, SAVE_FLAGS);
 }
 
 BOOL CheckFlagInArray(SCRIPT_STATE *scriptState, u16 flagno) {

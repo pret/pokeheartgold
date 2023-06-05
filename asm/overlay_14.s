@@ -32,7 +32,7 @@ ov14_021E5900: ; 0x021E5900
 	strb r0, [r4, #0x1f]
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [r4, #8]
 	ldr r0, [r4]
 	ldr r0, [r0]
@@ -40,7 +40,7 @@ ov14_021E5900: ; 0x021E5900
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	str r0, [r4, #0x10]
 	add r0, r4, #0
 	mov r1, #0xff
@@ -6548,7 +6548,7 @@ _021E8A06:
 	str r0, [r4, #4]
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_0208AD34
@@ -6563,7 +6563,7 @@ _021E8A06:
 	strh r0, [r4, #0x18]
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl SavArray_IsNatDexEnabled
+	bl SaveArray_IsNatDexEnabled
 	str r0, [r4, #0x1c]
 	ldr r0, [r5]
 	ldr r0, [r0]
@@ -31388,7 +31388,7 @@ ov14_021F5190: ; 0x021F5190
 	bne _021F5208
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl SavArray_IsNatDexEnabled
+	bl SaveArray_IsNatDexEnabled
 	ldrh r1, [r6, #4]
 	bl Pokedex_ConvertToCurrentDexNo
 	add r6, r0, #0

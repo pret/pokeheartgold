@@ -118,12 +118,12 @@
 .public String_ctor
 .public String_dtor
 .public StringCopy
-.public Sav2_PlayerData_GetOptionsAddr
-.public Sav2_BerryPots_get
-.public Sav2_BerryPotRTC_get
+.public Save_PlayerData_GetOptionsAddr
+.public Save_BerryPots_get
+.public Save_BerryPotRTC_get
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public Sav2_GameStats_get
+.public Save_GameStats_get
 .public GameStats_Inc
 .public GameStats_AddSpecial
 .public GetItemIndexMapping

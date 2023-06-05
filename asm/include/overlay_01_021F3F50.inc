@@ -28,12 +28,12 @@
 .public GF_AssertFail
 .public String_dtor
 .public SaveGameNormal
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_PlayerData_GetIGTAddr
+.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetIGTAddr
 .public PlayerProfile_CountBadges
 .public Pokedex_CountDexOwned
 .public Pokedex_IsEnabled
-.public Sav2_Pokedex_get
+.public Save_Pokedex_get
 .public GetIGTHours
 .public GetIGTMinutes
 .public MapHeader_GetMapSec

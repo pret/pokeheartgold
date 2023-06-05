@@ -2126,8 +2126,8 @@ ov74_MainMenu_PrintMysteryGiftButton: ; 0x022280B4
 	str r0, [r5, #0x34]
 _022280D4:
 	ldr r0, [r5, #4]
-	bl Sav2_SysInfo_get
-	bl Sav2_SysInfo_GetField48
+	bl Save_SysInfo_get
+	bl Save_SysInfo_GetField48
 	cmp r0, #1
 	bne _022280E6
 	mov r0, #1
@@ -3205,13 +3205,13 @@ ov74_MainMenu_AppInit: ; 0x02228920
 	add r0, r0, #4
 	str r1, [r4, r0]
 	ldr r0, [r4, #4]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #4]
-	bl Sav2_Pokedex_get
+	bl Save_Pokedex_get
 	str r0, [r4, #8]
 	ldr r0, [r4, #4]
-	bl Sav2_PlayerData_GetIGTAddr
+	bl Save_PlayerData_GetIGTAddr
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #8]
 	bl Pokedex_IsEnabled
@@ -4245,13 +4245,13 @@ ov74_02229200: ; 0x02229200
 	bl OverlayManager_GetArgs
 	ldr r0, [r0, #8]
 	str r0, [r4, #8]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #8]
-	bl Sav2_Pokedex_get
+	bl Save_Pokedex_get
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #8]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	str r0, [r4, #0x14]
 	ldr r0, [r4]
 	bl ov74_022352A0
@@ -7897,7 +7897,7 @@ _0222AEE8:
 	bl OverlayManager_GetArgs
 	ldr r0, [r0, #8]
 	str r0, [r4, #4]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	str r0, [r4, #8]
 	mov r0, #0xff
 	mov r2, #0x57
@@ -14278,7 +14278,7 @@ _0222E254:
 	str r0, [r4, r1]
 	add r0, r1, #4
 	ldr r0, [r4, r0]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	ldr r1, _0222E5AC ; =0x00002BA8
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
@@ -16953,7 +16953,7 @@ _0222F834:
 	str r0, [r4, r1]
 	add r0, r1, #4
 	ldr r0, [r4, r0]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	ldr r1, _0222FB58 ; =0x00002BA8
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
@@ -24550,10 +24550,10 @@ ov74_02233230: ; 0x02233230
 	bl OverlayManager_GetArgs
 	ldr r0, [r0, #8]
 	str r0, [r4, #0x10]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	str r0, [r4, #0x14]
 	ldr r0, [r4, #0x10]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	str r0, [r4, #0x18]
 	bl Options_GetFrame
 	str r0, [r4, #0x1c]

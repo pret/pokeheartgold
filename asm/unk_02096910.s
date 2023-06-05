@@ -288,7 +288,7 @@ sub_02096AF4: ; 0x02096AF4
 	ldr r0, [r5]
 	add r4, r1, #0
 	add r6, r2, #0
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	add r1, r5, #0
 	add r1, #0x6a
 	strb r4, [r1]

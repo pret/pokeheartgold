@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public Sav2_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetTrainerGender

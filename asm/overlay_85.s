@@ -45,7 +45,7 @@ ov85_021E5900: ; 0x021E5900
 	add r0, #0xcc
 	ldr r0, [r0]
 	ldr r0, [r0, #0x1c]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [r6, #0x24]
 	mov r0, #0xbb
 	mov r1, #0x66

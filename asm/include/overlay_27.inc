@@ -86,7 +86,7 @@
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_dtor
-.public Sav2_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetTrainerGender
 .public sub_0203769C
 .public sub_02037958
@@ -98,7 +98,7 @@
 .public sub_0203DF8C
 .public sub_0203E13C
 .public MapSceneScriptCheck
-.public SavArray_Flags_get
+.public SaveArray_Flags_get
 .public Fsys_TaskIsRunning
 .public sub_020558BC
 .public sub_02056EE0

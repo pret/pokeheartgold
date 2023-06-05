@@ -47,7 +47,7 @@ ov64_021E5900: ; 0x021E5900
 	add r0, r5, #0
 	bl OverlayManager_GetArgs
 	str r0, [r4]
-	bl Sav2_HOF_GetNumRecords
+	bl Save_HOF_GetNumRecords
 	mov r1, #0x6e
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -1587,14 +1587,14 @@ _021E65BA:
 	lsl r1, r1, #2
 	ldr r0, [r5]
 	ldr r1, [r5, r1]
-	bl Sav2_HOF_TranslateRecordIdx
+	bl Save_HOF_TranslateRecordIdx
 	mov r1, #0x1b
 	lsl r1, r1, #4
 	str r0, [r5, r1]
 	add r1, r1, #4
 	ldr r0, [r5]
 	ldr r1, [r5, r1]
-	bl Sav2_HOF_RecordCountMons
+	bl Save_HOF_RecordCountMons
 	mov r1, #0x6b
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -1632,7 +1632,7 @@ _021E660A:
 	ldr r1, [r5, r1]
 	add r2, r4, #0
 	add r3, r5, r3
-	bl Sav2_HOF_GetMonStatsByIndexPair
+	bl Save_HOF_GetMonStatsByIndexPair
 	ldr r0, [sp, #0x14]
 	add r1, r7, #0
 	add r3, r0, r4
@@ -1684,7 +1684,7 @@ _021E6656:
 	lsl r1, r1, #2
 	ldr r0, [r5]
 	ldr r1, [r5, r1]
-	bl Sav2_HOF_TranslateRecordIdx
+	bl Save_HOF_TranslateRecordIdx
 	mov r1, #0
 	add r2, r0, #0
 	str r1, [sp]
@@ -1700,7 +1700,7 @@ _021E6656:
 	ldr r0, [r5]
 	ldr r1, [r5, r1]
 	add r2, sp, #0x18
-	bl Sav2_HOF_GetClearDate
+	bl Save_HOF_GetClearDate
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #1
@@ -1842,7 +1842,7 @@ _021E67D0:
 	ldr r0, [r5]
 	add r2, r6, #0
 	add r3, r5, r3
-	bl Sav2_HOF_GetMonStatsByIndexPair
+	bl Save_HOF_GetMonStatsByIndexPair
 	mov r1, #0x66
 	lsl r1, r1, #2
 	ldrh r0, [r5, r1]

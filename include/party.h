@@ -3,10 +3,10 @@
 
 #include "pokemon_types_def.h"
 
-u32 SavArray_Party_sizeof(void);
+u32 SaveArray_Party_sizeof(void);
 u32 PartyCore_sizeof(void);
-PARTY * SavArray_Party_alloc(HeapID heapId);
-void SavArray_Party_init(PARTY *party);
+PARTY * SaveArray_Party_alloc(HeapID heapId);
+void SaveArray_Party_init(PARTY *party);
 void InitPartyWithMaxSize(PARTY *party, int maxSize);
 BOOL AddMonToParty(PARTY *party, const Pokemon *mon);
 BOOL RemoveMonFromParty(PARTY *party, int slot);
@@ -20,6 +20,6 @@ void Party_SafeCopyMonToSlot_ResetUnkSub(PARTY *party, int slot, Pokemon *src);
 BOOL Party_SwapSlots(PARTY *party, int slotA, int slotB);
 void Party_copy(const PARTY *src, PARTY *dest);
 BOOL PartyHasMon(PARTY *party, u16 species);
-PARTY *SavArray_PlayerParty_get(SAVEDATA *saveData);
+PARTY *SaveArray_PlayerParty_get(SAVEDATA *saveData);
 
 #endif //GUARD_PARTY_H

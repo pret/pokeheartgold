@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public AllocFromHeapAtEnd
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetOptionsAddr
 .public FieldSys_LaunchApplication
 .public sub_020968B0
 .public MI_CpuFill8

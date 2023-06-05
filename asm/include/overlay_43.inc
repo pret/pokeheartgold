@@ -152,10 +152,10 @@
 .public String_atoi
 .public CopyU16ArrayToString
 .public String_c_str
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_new
-.public Sav2_Profile_PlayerName_set
+.public Save_Profile_PlayerName_set
 .public Options_GetTextFrameDelay
 .public Options_GetButtonMode
 .public Options_GetFrame
@@ -173,7 +173,7 @@
 .public sub_020310BC
 .public sub_020311AC
 .public sub_0203A128
-.public SavArray_Flags_get
+.public SaveArray_Flags_get
 .public sub_0205B46C
 .public ScriptState_FlypointFlagAction
 .public sub_02070D84

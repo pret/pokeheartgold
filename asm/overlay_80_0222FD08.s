@@ -31,11 +31,11 @@ ov80_0222FD08: ; 0x0222FD08
 	ldr r1, _0222FED8 ; =_0223DD40
 	str r0, [r5]
 	ldr r5, [r1]
-	bl SavArray_Party_alloc
+	bl SaveArray_Party_alloc
 	ldr r1, _0222FEE0 ; =0x000004D4
 	str r0, [r5, r1]
 	mov r0, #0xb
-	bl SavArray_Party_alloc
+	bl SaveArray_Party_alloc
 	ldr r1, _0222FEE4 ; =0x000004D8
 	str r0, [r5, r1]
 	add r1, #0x1c
@@ -61,7 +61,7 @@ ov80_0222FD08: ; 0x0222FD08
 	bne _0222FD8E
 	ldr r0, _0222FEE8 ; =0x000004F8
 	ldr r0, [r2, r0]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl ScriptState_GetVar4052
 	b _0222FDA2
 _0222FD8E:
@@ -1346,7 +1346,7 @@ ov80_022307F0: ; 0x022307F0
 	str r0, [sp]
 	ldr r0, _022308B0 ; =0x000004D4
 	ldr r0, [r5, r0]
-	bl SavArray_Party_init
+	bl SaveArray_Party_init
 	mov r0, #0xb
 	bl AllocMonZeroed
 	add r6, r0, #0
@@ -1615,7 +1615,7 @@ ov80_022309F8: ; 0x022309F8
 	bl ov80_02230AE4
 	ldr r0, _02230A5C ; =0x000004F8
 	ldr r0, [r4, r0]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	mov r1, #0x41
 	bl GameStats_Inc
 _02230A4C:
@@ -1639,7 +1639,7 @@ ov80_02230A60: ; 0x02230A60
 	add r6, r0, #0
 	ldr r0, _02230ADC ; =0x000004D8
 	ldr r0, [r4, r0]
-	bl SavArray_Party_init
+	bl SaveArray_Party_init
 	mov r0, #0xb
 	bl AllocMonZeroed
 	add r7, r0, #0

@@ -49,10 +49,10 @@ static BOOL CreateStarter(TaskManager *taskManager) {
 
             env->args = AllocFromHeapAtEnd(11, sizeof(struct ChooseStarterAppArgs));
             env->args->cursorPos = 0;
-            env->args->options = Sav2_PlayerData_GetOptionsAddr(fsys->savedata);
+            env->args->options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
             for (i = 0; i < (int)NELEMS(species); i++) {
                 Pokemon *mon = &env->args->starters[i];
-                PLAYERPROFILE *profile = Sav2_PlayerData_GetProfileAddr(fsys->savedata);
+                PLAYERPROFILE *profile = Save_PlayerData_GetProfileAddr(fsys->savedata);
                 ZeroMonData(mon);
                 CreateMon(mon, species[i], 5, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
                 sub_020720FC(mon, profile, BALL_POKE, mapsec, 12, 11);
@@ -73,8 +73,8 @@ static BOOL CreateStarter(TaskManager *taskManager) {
         env->state = 3;
         break;
     case 3: {
-        POKEDEX *pokedex = Sav2_Pokedex_get(fsys->savedata);
-        party = SavArray_PlayerParty_get(fsys->savedata);
+        POKEDEX *pokedex = Save_Pokedex_get(fsys->savedata);
+        party = SaveArray_PlayerParty_get(fsys->savedata);
         Pokemon *myChoice = &env->args->starters[env->args->cursorPos];
         if (AddMonToParty(party, myChoice)) {
             UpdatePokedexWithReceivedSpecies(fsys->savedata, myChoice);

@@ -2306,7 +2306,7 @@ _02238C7E:
 	add r6, r4, #0
 _02238CB2:
 	mov r0, #5
-	bl SavArray_Party_alloc
+	bl SaveArray_Party_alloc
 	str r0, [r6, #0x68]
 	ldr r0, [sp, #4]
 	add r6, r6, #4

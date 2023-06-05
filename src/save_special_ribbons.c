@@ -11,5 +11,5 @@ void Save_SpecialRibbons_init(SaveSpecialRibbons* argP) {
 }
 
 SaveSpecialRibbons* Save_SpecialRibbons_get(SAVEDATA* data) {
-    return SavArray_get(data, SAVE_SPECIAL_RIBBONS);
+    return SaveArray_get(data, SAVE_SPECIAL_RIBBONS);
 }

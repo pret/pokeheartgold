@@ -174,10 +174,10 @@ BOOL ScrCmd_NpcMsgVar(SCRIPTCONTEXT *ctx) {
 }
 
 BOOL ScrCmd_GenderMsgbox(SCRIPTCONTEXT *ctx) {
-    void *unused = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
+    void *unused = Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
     u8 messageNumMale = ScriptReadByte(ctx);
     u8 messageNumFemale = ScriptReadByte(ctx);
-    u32 gender = PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys)));
+    u32 gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys)));
     if (gender != PLAYER_GENDER_MALE) {
         ov01_021EF4DC(ctx, ctx->msgdata, messageNumFemale, TRUE, NULL);
     } else {
@@ -251,7 +251,7 @@ static void ov01_021EF5C8(SCRIPTCONTEXT *ctx, MessageFormat *messageFormat, u8 m
 }
 
 static u32 ovFieldMain_GetTextFrameDelay(SCRIPTCONTEXT *ctx) {
-    return Options_GetTextFrameDelay(Sav2_PlayerData_GetOptionsAddr(ctx->fsys->savedata));
+    return Options_GetTextFrameDelay(Save_PlayerData_GetOptionsAddr(ctx->fsys->savedata));
 }
 
 static void ovFieldMain_GetMsgBoxParameters(FieldSystem *fsys, MessageBox *messageBox) {
@@ -275,7 +275,7 @@ static void ovFieldMain_GetMsgBoxParametersEx(FieldSystem *fsys, MessageFormat *
 static void ovFieldMain_CreateMessageBox(FieldSystem *fsys, MessageBox *messageBox) {
     if (*(messageBox->unk10) == 0) {
         sub_0205B514(fsys->bgConfig, messageBox->window, 3);
-        sub_0205B564(messageBox->window, Sav2_PlayerData_GetOptionsAddr(fsys->savedata));
+        sub_0205B564(messageBox->window, Save_PlayerData_GetOptionsAddr(fsys->savedata));
         *(messageBox->unk10) = 1;
         fsys->unkD2_6 = TRUE;
     }

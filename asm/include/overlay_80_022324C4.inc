@@ -19,8 +19,8 @@
 .public GF_AssertFail
 .public String_ctor
 .public String_dtor
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_GameStats_get
+.public Save_PlayerData_GetProfileAddr
+.public Save_GameStats_get
 .public GameStats_Add
 .public sub_02030CBC
 .public sub_02030CC8
@@ -37,7 +37,7 @@
 .public sub_0203126C
 .public sub_02034818
 .public sub_0203769C
-.public SavArray_Flags_get
+.public SaveArray_Flags_get
 .public sub_0205C174
 .public sub_0205C1A0
 .public sub_0205C1C8
@@ -51,11 +51,11 @@
 .public GetMonData
 .public SetMonData
 .public GetMonExpBySpeciesAndLevel
-.public SavArray_Party_alloc
+.public SaveArray_Party_alloc
 .public AddMonToParty
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SaveArray_PlayerParty_get
 .public MI_CpuFill8
 .public _s32_div_f
 .public ov80_02229F04

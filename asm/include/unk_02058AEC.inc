@@ -37,8 +37,8 @@
 .public GF_AssertFail
 .public String_ctor
 .public String_dtor
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetOptionsAddr
 .public sub_020290FC
 .public Save_SpecialRibbons_get
 .public sub_02034434
@@ -129,13 +129,13 @@
 .public GetMonData
 .public sub_02070D90
 .public Mon_GetBoxMon
-.public SavArray_Party_alloc
+.public SaveArray_Party_alloc
 .public InitPartyWithMaxSize
 .public AddMonToParty
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
-.public SavArray_IsNatDexEnabled
+.public SaveArray_PlayerParty_get
+.public SaveArray_IsNatDexEnabled
 .public SaveGetBag
 .public sub_02088288
 .public sub_0208828C

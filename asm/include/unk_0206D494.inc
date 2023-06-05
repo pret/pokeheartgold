@@ -12,11 +12,11 @@
 .public String_ctor
 .public String_dtor
 .public StringCompare
-.public Sav2_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetTrainerGender
-.public Sav2_Misc_get
-.public Sav2_GetGymmickPtr
+.public Save_Misc_get
+.public Save_GetGymmickPtr
 .public SaveMisc_GetTogepiPersonalityGender
 .public SavGymmick_Init
 .public SavGymmick_AssertMagic_GetData
@@ -30,7 +30,7 @@
 .public ScriptReadHalfword
 .public GetVarPointer
 .public VarGet
-.public SavArray_Flags_get
+.public SaveArray_Flags_get
 .public FieldSys_CreateTask
 .public TaskManager_Call
 .public FieldSys_ApplicationIsRunning

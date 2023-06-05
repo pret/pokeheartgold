@@ -199,8 +199,8 @@
 .public sub_02026E50
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_new
 .public PlayerProfile_GetTrainerID_VisibleHalf
 .public PlayerProfile_GetTrainerGender

@@ -5,7 +5,7 @@
 .public ScheduleBgTilemapBufferTransfer
 .public LCRandom
 .public GF_AssertFail
-.public Sav2_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_copy
 .public sub_020310BC
 .public sub_02031108
@@ -25,7 +25,7 @@
 .public SetMonData
 .public CopyPokemonToPokemon
 .public sub_0207217C
-.public SavArray_Party_init
+.public SaveArray_Party_init
 .public InitPartyWithMaxSize
 .public AddMonToParty
 .public GetPartyCount

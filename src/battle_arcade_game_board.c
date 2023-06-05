@@ -112,7 +112,7 @@ BOOL BattleArcadeGameBoard_InitOverlay(OVY_MANAGER *man, int *state) {
     work->multiWinstreak = args->multiWinstreak;
     work->unk12 = args->unk7;
     work->returnWork = &args->returnWork;
-    work->options = Sav2_PlayerData_GetOptionsAddr(work->savedata);
+    work->options = Save_PlayerData_GetOptionsAddr(work->savedata);
     work->playerParty = args->playerParty;
     work->opponentParty = args->opponentParty;
     work->unkE = 0xff;
@@ -807,7 +807,7 @@ static BOOL ov84_0223ECBC(GAME_BOARD_WORK *work, u16 type, u16 a2) {
 static void ov84_0223ED00(GAME_BOARD_WORK *work, u16 type) {
     int i, offset;
 
-    Sav2_PlayerData_GetProfileAddr(work->savedata);
+    Save_PlayerData_GetProfileAddr(work->savedata);
 
     work->sendBuffer[0] = type;
 

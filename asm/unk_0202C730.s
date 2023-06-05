@@ -9,13 +9,13 @@ _021D2AF0:
 
 	.text
 
-	thumb_func_start Sav2_FriendGroup_sizeof
-Sav2_FriendGroup_sizeof: ; 0x0202C730
+	thumb_func_start Save_FriendGroup_sizeof
+Save_FriendGroup_sizeof: ; 0x0202C730
 	mov r0, #0x42
 	lsl r0, r0, #2
 	bx lr
 	.balign 4, 0
-	thumb_func_end Sav2_FriendGroup_sizeof
+	thumb_func_end Save_FriendGroup_sizeof
 
 	thumb_func_start sub_0202C738
 sub_0202C738: ; 0x0202C738
@@ -40,8 +40,8 @@ _0202C74A:
 	.balign 4, 0
 	thumb_func_end sub_0202C738
 
-	thumb_func_start Sav2_FriendGroup_init
-Sav2_FriendGroup_init: ; 0x0202C75C
+	thumb_func_start Save_FriendGroup_init
+Save_FriendGroup_init: ; 0x0202C75C
 	push {r4, lr}
 	add r4, r0, #0
 	mov r2, #0x42
@@ -65,7 +65,7 @@ _0202C772:
 	.balign 4, 0
 _0202C784: .word 0x0000FFFF
 _0202C788: .word _021D2AF0
-	thumb_func_end Sav2_FriendGroup_init
+	thumb_func_end Save_FriendGroup_init
 
 	thumb_func_start sub_0202C78C
 sub_0202C78C: ; 0x0202C78C
@@ -210,11 +210,11 @@ sub_0202C848: ; 0x0202C848
 
 	thumb_func_start Save_FriendGroup_get
 Save_FriendGroup_get: ; 0x0202C854
-	ldr r3, _0202C85C ; =SavArray_get
+	ldr r3, _0202C85C ; =SaveArray_get
 	mov r1, #0xe
 	bx r3
 	nop
-_0202C85C: .word SavArray_get
+_0202C85C: .word SaveArray_get
 	thumb_func_end Save_FriendGroup_get
 
 	thumb_func_start sub_0202C860

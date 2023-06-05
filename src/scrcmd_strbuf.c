@@ -29,7 +29,7 @@ BOOL ScrCmd_BufferPlayersName(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
-    PLAYERPROFILE* profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(fsys));
+    PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(fsys));
 
     BufferPlayersName(*msg_fmt, idx, profile);
 
@@ -62,7 +62,7 @@ BOOL ScrCmd_BufferMonSpeciesName(SCRIPTCONTEXT* ctx) {
     u8 idx = ScriptReadByte(ctx);
     u16 party_mon_idx = ScriptGetVar(ctx);
 
-    PARTY* party = SavArray_PlayerParty_get(fsys->savedata);
+    PARTY* party = SaveArray_PlayerParty_get(fsys->savedata);
     Pokemon *mon = GetPartyMonByIndex(party, party_mon_idx);
     BufferBoxMonSpeciesName(*msg_fmt, idx, &mon->box);
 
@@ -169,7 +169,7 @@ BOOL ScrCmd_BufferPartyMonNick(SCRIPTCONTEXT* ctx) {
     u8 idx = ScriptReadByte(ctx);
     u16 party_mon_idx = ScriptGetVar(ctx);
 
-    PARTY* party = SavArray_PlayerParty_get(fsys->savedata);
+    PARTY* party = SaveArray_PlayerParty_get(fsys->savedata);
     Pokemon *mon = GetPartyMonByIndex(party, party_mon_idx);
     BufferBoxMonNickname(*msg_fmt, idx, &mon->box);
 
@@ -202,7 +202,7 @@ BOOL ScrCmd_BufferTrainerClassName(SCRIPTCONTEXT* ctx) {
 BOOL ScrCmd_BufferPlayerUnionAvatarClassName(SCRIPTCONTEXT* ctx) {
     FieldSystem* fsys = ctx->fsys;
     SAVEDATA* savedata = FieldSys_GetSaveDataPtr(fsys);
-    PLAYERPROFILE* profile = Sav2_PlayerData_GetProfileAddr(savedata);
+    PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(savedata);
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u32 gender = PlayerProfile_GetTrainerGender(profile);
@@ -237,7 +237,7 @@ STRING* _get_species_name(u16 species, HeapID heap_id) {
 BOOL ScrCmd_BufferStarterSpeciesName(SCRIPTCONTEXT* ctx) {
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
-    u16 species = GetStarterFromScriptState(SavArray_Flags_get(ctx->fsys->savedata));
+    u16 species = GetStarterFromScriptState(SaveArray_Flags_get(ctx->fsys->savedata));
 
     STRING* species_name = _get_species_name(species, 4);
     BufferString(*msg_fmt, idx, species_name, 0, 1, 2);
@@ -249,7 +249,7 @@ BOOL ScrCmd_BufferStarterSpeciesName(SCRIPTCONTEXT* ctx) {
 BOOL ScrCmd_BufferDPPtRivalStarterSpeciesName(SCRIPTCONTEXT* ctx) {
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
-    u16 species = DPPtLeftover_GetRivalSpecies(SavArray_Flags_get(ctx->fsys->savedata));
+    u16 species = DPPtLeftover_GetRivalSpecies(SaveArray_Flags_get(ctx->fsys->savedata));
 
     STRING* species_name = _get_species_name(species, 4);
     BufferString(*msg_fmt, idx, species_name, 0, 1, 2);
@@ -261,7 +261,7 @@ BOOL ScrCmd_BufferDPPtRivalStarterSpeciesName(SCRIPTCONTEXT* ctx) {
 BOOL ScrCmd_BufferDPPtFriendStarterSpeciesName(SCRIPTCONTEXT* ctx) {
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
-    u16 species = DPPtLeftover_GetFriendStarterSpecies(SavArray_Flags_get(ctx->fsys->savedata));
+    u16 species = DPPtLeftover_GetFriendStarterSpecies(SaveArray_Flags_get(ctx->fsys->savedata));
 
     STRING* species_name = _get_species_name(species, 4);
     BufferString(*msg_fmt, idx, species_name, 0, 1, 2);
@@ -351,7 +351,7 @@ BOOL ScrCmd_BufferPartyMonMoveName(SCRIPTCONTEXT* ctx) {
     u16 party_slot = ScriptGetVar(ctx);
     u16 move_slot = ScriptGetVar(ctx);
 
-    PARTY* party = SavArray_PlayerParty_get(fsys->savedata);
+    PARTY* party = SaveArray_PlayerParty_get(fsys->savedata);
     Pokemon *mon = GetPartyMonByIndex(party, party_slot);
     u16 move_id = GetMonData(mon, MON_DATA_MOVE1 + move_slot, NULL);
     BufferMoveName(*msg_fmt, idx, move_id);
@@ -426,7 +426,7 @@ BOOL ScrCmd_BufferPartyMonSpeciesNameIndef(SCRIPTCONTEXT* ctx) {
     u8 idx = ScriptReadByte(ctx);
     u16 party_mon_slot = ScriptGetVar(ctx);
 
-    PARTY* party = SavArray_PlayerParty_get(fsys->savedata);
+    PARTY* party = SaveArray_PlayerParty_get(fsys->savedata);
     Pokemon *mon = GetPartyMonByIndex(party, party_mon_slot);
     BufferBoxMonSpeciesNameWithArticle(*msg_fmt, idx, &mon->box);
 
@@ -448,7 +448,7 @@ BOOL ScrCmd_BufferSpeciesNameIndef(SCRIPTCONTEXT* ctx) {
 BOOL ScrCmd_BufferDPPtFriendStarterSpeciesNameIndef(SCRIPTCONTEXT* ctx) {
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
-    u16 species = DPPtLeftover_GetFriendStarterSpecies(SavArray_Flags_get(ctx->fsys->savedata));
+    u16 species = DPPtLeftover_GetFriendStarterSpecies(SaveArray_Flags_get(ctx->fsys->savedata));
 
     BufferSpeciesNameWithArticle(*msg_fmt, idx, species);
 

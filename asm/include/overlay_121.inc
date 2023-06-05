@@ -89,7 +89,7 @@
 .public GF_AssertFail
 .public String_ctor
 .public String_dtor
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetOptionsAddr
 .public Options_GetFrame
 .public sub_0202E4B0
 .public sub_0202E4BC

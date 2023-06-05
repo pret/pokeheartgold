@@ -67,10 +67,10 @@
 .public GF_AssertFail
 .public String_ctor
 .public String_dtor
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public Sav2_GameStats_get
+.public Save_GameStats_get
 .public GameStats_AddSpecial
 .public sub_02037D78
 .public sub_02039274

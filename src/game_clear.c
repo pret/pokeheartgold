@@ -99,7 +99,7 @@ BOOL sub_0205298C(TaskManager *taskman) {
     case 0:
         sub_0206DB58(taskman, fsys);
         Fsys_ClearFollowingTrainer(fsys);
-        HealParty(SavArray_PlayerParty_get(fsys->savedata));
+        HealParty(SaveArray_PlayerParty_get(fsys->savedata));
         *state += 1;
         break;
     case 1:
@@ -137,12 +137,12 @@ static void AddHallOfFameEntry(FieldSystem *fsys, BOOL gameCleared) {
 
     HALL_OF_FAME *hof = LoadHallOfFame(fsys->savedata, 11, &val);
     if (val != 1 || !gameCleared) {
-        Sav2_HOF_init(hof);
+        Save_HOF_init(hof);
     }
-    PARTY *party = SavArray_PlayerParty_get(fsys->savedata);
+    PARTY *party = SaveArray_PlayerParty_get(fsys->savedata);
 
     GF_RTC_CopyDate(&date);
-    Sav2_HOF_RecordParty(hof, party, &date);
+    Save_HOF_RecordParty(hof, party, &date);
     SaveHallOfFame(fsys->savedata, hof);
     FreeToHeap(hof);
 }
@@ -189,7 +189,7 @@ static BOOL Task_GameClearSave(TaskManager *taskman) {
         }
         break;
     case 4:
-        HealParty(SavArray_PlayerParty_get(fsys->savedata));
+        HealParty(SaveArray_PlayerParty_get(fsys->savedata));
         int writeStatus = SaveGameNormal(fsys->savedata);
         if (!env->vsTrainerRed) {
             AddHallOfFameEntry(fsys, env->gameCleared);
@@ -266,23 +266,23 @@ void Task_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
 
     fsys = TaskManager_GetSys(taskman);
     env = AllocFromHeap(32, sizeof(GameClearWork));
-    scriptState = SavArray_Flags_get(fsys->savedata);
-    profile = Sav2_PlayerData_GetProfileAddr(fsys->savedata);
+    scriptState = SaveArray_Flags_get(fsys->savedata);
+    profile = Save_PlayerData_GetProfileAddr(fsys->savedata);
     dynamicWarp = FlyPoints_GetDynamicWarp(Save_FlyPoints_get(fsys->savedata));
     spawnWarp = FlyPoints_GetSpecialSpawnWarpPtr(Save_FlyPoints_get(fsys->savedata));
 
     env->gameCleared = CheckGameClearFlag(scriptState);
-    env->hofCongratsArgs.profile = Sav2_PlayerData_GetProfileAddr(fsys->savedata);
-    env->hofCongratsArgs.party = SavArray_PlayerParty_get(fsys->savedata);
-    env->hofCongratsArgs.igt = Sav2_PlayerData_GetIGTAddr(fsys->savedata);
-    env->creditsArgs.gender = PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(fsys->savedata));
+    env->hofCongratsArgs.profile = Save_PlayerData_GetProfileAddr(fsys->savedata);
+    env->hofCongratsArgs.party = SaveArray_PlayerParty_get(fsys->savedata);
+    env->hofCongratsArgs.igt = Save_PlayerData_GetIGTAddr(fsys->savedata);
+    env->creditsArgs.gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fsys->savedata));
     env->creditsArgs.gameCleared = CheckGameClearFlag(scriptState);
     env->vsTrainerRed = vsTrainerRed;
 
     if (!CheckGameClearFlag(scriptState)) {
         FieldSys_SetGameClearTime(fsys);
     }
-    SavArray_PlayerParty_get(fsys->savedata);
+    SaveArray_PlayerParty_get(fsys->savedata);
     LocationData_BackUp(dynamicWarp);
     LocationData_Restore(spawnWarp);
     SetFlag966(scriptState);
@@ -290,7 +290,7 @@ void Task_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
     PlayerProfile_SetGameClearFlag(profile);
 
     if (!env->vsTrainerRed) {
-        GameStats_Inc(Sav2_GameStats_get(fsys->savedata), 74);
+        GameStats_Inc(Save_GameStats_get(fsys->savedata), 74);
     }
     TaskManager_Call(taskman, Task_GameClearSave, env);
 }
@@ -311,7 +311,7 @@ static void GameClearSave_InitGraphics(FieldSystem *fsys, GameClearWork *env) {
 }
 
 static void GameClearSave_PrintSaving(FieldSystem *fsys, GameClearWork *env) {
-    OPTIONS *options = Sav2_PlayerData_GetOptionsAddr(fsys->savedata);
+    OPTIONS *options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
     env->windowText = ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, NARC_msg_msg_0040_bin, msg_0040_00015, 32);
     sub_0205B514(env->bgConfig, &env->window, 3);
     sub_0205B564(&env->window, options);
@@ -334,14 +334,14 @@ static void GameClearSave_PrintSaveStatus(FieldSystem *fsys, GameClearWork *env,
 
     if (writeStatus == 2) {
         MessageFormat *msgFmt = MessageFormat_new(4);
-        BufferPlayersName(msgFmt, 0, Sav2_PlayerData_GetProfileAddr(fsys->savedata));
+        BufferPlayersName(msgFmt, 0, Save_PlayerData_GetProfileAddr(fsys->savedata));
         env->windowText = ReadMsgData_ExpandPlaceholders(msgFmt, msgData, msg_0040_00016, 4);
         MessageFormat_delete(msgFmt);
     } else {
         env->windowText = NewString_ReadMsgData(msgData, msg_0040_00018);
     }
     DestroyMsgData(msgData);
-    OPTIONS *options = Sav2_PlayerData_GetOptionsAddr(fsys->savedata);
+    OPTIONS *options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
     env->printerId = sub_0205B5B4(&env->window, env->windowText, options, 1);
 }
 

@@ -121,7 +121,7 @@ sub_0202E530: ; 0x0202E530
 	bl SaveSubstruct_AssertCRC
 	add r0, r4, #0
 	mov r1, #0x18
-	bl SavArray_get
+	bl SaveArray_get
 	pop {r4, pc}
 	thumb_func_end sub_0202E530
 
@@ -180,7 +180,7 @@ sub_0202E594: ; 0x0202E594
 	sub sp, #0x14
 	add r5, r0, #0
 	add r6, r1, #0
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_0203107C
@@ -286,7 +286,7 @@ sub_0202E66C: ; 0x0202E66C
 	sub sp, #0xc
 	add r5, r0, #0
 	add r4, r1, #0
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	mov r1, #0x4e
 	add r6, r0, #0
 	add r0, r4, #0
@@ -774,7 +774,7 @@ sub_0202E9FC: ; 0x0202E9FC
 	str r2, [sp]
 	add r4, r0, #0
 	add r5, r1, #0
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	str r0, [sp, #4]
 	ldr r0, [sp]
 	mov r1, #0x4c

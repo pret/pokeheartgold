@@ -14,13 +14,13 @@ Unk02090C94 *sub_02090C94(u8 a0, u8 a1, SAVEDATA *saveData, u32 a3, HeapID heapI
     Unk02090C94 *ptr = AllocFromHeap(heapId, sizeof(Unk02090C94));
     ptr->unk0 = a0;
     ptr->unk1 = a1;
-    ptr->pokedex = Sav2_Pokedex_get(saveData);
+    ptr->pokedex = Save_Pokedex_get(saveData);
     ptr->easyChat = SaveData_EasyChat_get(saveData);
-    ptr->gameCleared = CheckGameClearFlag(SavArray_Flags_get(saveData));
+    ptr->gameCleared = CheckGameClearFlag(SaveArray_Flags_get(saveData));
     ptr->unk5 = 0;
     ptr->unk2 = 1;
     ptr->unk3 = 0;
-    ptr->frame = Options_GetFrame(Sav2_PlayerData_GetOptionsAddr(saveData));
+    ptr->frame = Options_GetFrame(Save_PlayerData_GetOptionsAddr(saveData));
     ptr->unk24 = a3;
 
     if (a0 == 2) {
@@ -160,7 +160,7 @@ void sub_02090E5C(Unk02090C94 *a0) {
 }
 
 Unk02090E68 *sub_02090E68(SAVEDATA *saveData, u16 a1, u8 partyIdx, u8 a3, HeapID heapId) {
-    MAILBOX *mailbox = Sav2_Mailbox_get(saveData);
+    MAILBOX *mailbox = Save_Mailbox_get(saveData);
     Unk02090E68 *ptr = AllocFromHeapAtEnd(heapId, sizeof(Unk02090E68));
     MI_CpuFill8(ptr, 0, sizeof(Unk02090E68));
 
@@ -189,7 +189,7 @@ Unk02090E68 *sub_02090EC0(SAVEDATA *saveData, int n, u16 i, HeapID heapId) {
     ptr->unkC = i;
     ptr->saveData = saveData;
 
-    MAILBOX *mailbox = Sav2_Mailbox_get(saveData);
+    MAILBOX *mailbox = Save_Mailbox_get(saveData);
     ptr->mailbox = mailbox;
     ptr->mail = Mailbox_AllocAndFetchMailI(&mailbox->msgs[0], n, i, heapId);
 

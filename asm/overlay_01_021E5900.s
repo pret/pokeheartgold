@@ -635,7 +635,7 @@ _021E5EB4: .word FS_OVERLAY_ID(OVY_3)
 ov01_021E5EB8: ; 0x021E5EB8
 	push {r3, lr}
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	bl SavGymmick_GetType
 	cmp r0, #0
 	bne _021E5ECE
@@ -1510,7 +1510,7 @@ ov01_021E6580: ; 0x021E6580
 	cmp r5, #3
 	bne _021E65D8
 	ldr r0, [r4, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl CheckFlag96A
 	cmp r0, #0
 	beq _021E65D8

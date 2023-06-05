@@ -25,7 +25,7 @@ ov80_0222AF10: ; 0x0222AF10
 	add r4, r0, #0
 	ldr r0, _0222AF34 ; =0x000006FC
 	ldr r0, [r4, r0]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	ldr r1, _0222AF38 ; =0x0000072C
 	mov r0, #0x22
 	add r1, r4, r1
@@ -232,7 +232,7 @@ ov80_0222B070: ; 0x0222B070
 	add r4, r0, #0
 	ldr r0, _0222B0B0 ; =0x000006FC
 	ldr r0, [r5, r0]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	mov r1, #0x26
 	lsl r1, r1, #4
 	ldrb r1, [r5, r1]
@@ -313,7 +313,7 @@ ov80_0222B108: ; 0x0222B108
 	add r4, r5, r0
 	sub r0, #0xc
 	ldr r0, [r5, r0]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	ldrh r0, [r5, #8]
 	add r1, r4, #0
 	mov r2, #0x3c

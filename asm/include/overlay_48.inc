@@ -132,7 +132,7 @@
 .public sub_02026E50
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
 .public sub_0202CA44

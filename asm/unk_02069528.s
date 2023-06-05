@@ -11,7 +11,7 @@ sub_02069528: ; 0x02069528
 	add r6, r0, #0
 	str r1, [sp]
 	add r7, r2, #0
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_0202CA44

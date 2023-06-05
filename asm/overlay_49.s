@@ -2632,7 +2632,7 @@ _02259B02:
 	mov r0, #0
 	bl sub_02002B8C
 	ldr r0, [r5]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	mov r1, #0xfd
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -4264,7 +4264,7 @@ _0225A636:
 	cmp r0, #4
 	blt _0225A636
 	ldr r0, [sp, #0x14]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -4798,7 +4798,7 @@ ov49_0225AAC8: ; 0x0225AAC8
 	bl String_ctor
 	str r0, [r5, #0x18]
 	add r0, r4, #0
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	bl Options_GetTextFrameDelay
 	str r0, [r5, #0x14]
 	add sp, #0x14

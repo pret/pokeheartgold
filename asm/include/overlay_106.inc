@@ -86,7 +86,7 @@
 .public MonIsShiny
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SaveArray_PlayerParty_get
 .public NNS_G2dGetImageLocation
 .public NNS_G2dGetImagePaletteLocation
 .public NNS_G3dAnmObjInit

@@ -49,7 +49,7 @@ sub_02067A88: ; 0x02067A88
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	mov r1, #0
 	bl StrengthFlagAction
 	ldr r1, [r5, #0x20]
@@ -68,7 +68,7 @@ sub_02067A88: ; 0x02067A88
 	add r0, #0x7c
 	strh r1, [r0]
 	ldr r0, [r5, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #0
 	bne _02067AE0
@@ -94,10 +94,10 @@ sub_02067AE4: ; 0x02067AE4
 	cmp r0, #1
 	beq _02067B84
 	ldr r0, [r5, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl ClearFlag972
 	ldr r0, [r5, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	mov r1, #0
 	bl StrengthFlagAction
 	ldr r1, [r5, #0x20]
@@ -126,7 +126,7 @@ sub_02067AE4: ; 0x02067AE4
 	cmp r0, #0
 	bne _02067B56
 	ldr r0, [r5, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	add r4, r0, #0
 	bl SysFlagFlashClear
 	add r0, r4, #0
@@ -163,7 +163,7 @@ sub_02067B88: ; 0x02067B88
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl ScriptState_ClearSafariSysFlag
 	ldr r0, [r4, #0xc]
 	bl Save_Roamers_get
@@ -177,7 +177,7 @@ sub_02067BA4: ; 0x02067BA4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl ScriptState_ClearSafariSysFlag
 	ldr r0, [r4, #0xc]
 	bl Save_Roamers_get
@@ -190,7 +190,7 @@ sub_02067BA4: ; 0x02067BA4
 sub_02067BC0: ; 0x02067BC0
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl ScriptState_ClearSafariSysFlag
 	pop {r3, pc}
 	.balign 4, 0
@@ -200,7 +200,7 @@ sub_02067BC0: ; 0x02067BC0
 Fsys_ClearFollowingTrainer: ; 0x02067BD0
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	add r4, r0, #0
 	bl ScriptState_ClearHaveFollowerFlag
 	add r0, r4, #0
@@ -302,7 +302,7 @@ _02067C78:
 	b _02067DE4
 _02067C8E:
 	ldr r0, [r5, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	bl GetIdxOfFirstAliveMonInParty_CrashIfNone
 	ldrh r1, [r4, #0xe]
 	cmp r1, r0

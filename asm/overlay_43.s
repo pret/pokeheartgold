@@ -474,7 +474,7 @@ ov43_0222A290: ; 0x0222A290
 	bl sub_020183F0
 	str r0, [r5]
 	ldr r0, [r5, #4]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r4, r0, #0
 	bl Options_GetTextFrameDelay
 	strb r0, [r5, #0xc]
@@ -1546,7 +1546,7 @@ ov43_0222AB20: ; 0x0222AB20
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r5, #0
-	bl Sav2_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_set
 	ldr r0, [r4, #0x50]
 	mov r1, #0
 	add r2, r5, #0
@@ -1572,7 +1572,7 @@ ov43_0222AB5C: ; 0x0222AB5C
 	bl sub_0202C298
 	add r1, r0, #0
 	add r0, r4, #0
-	bl Sav2_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_set
 	ldr r0, [r5, #0x50]
 	mov r1, #0
 	add r2, r4, #0
@@ -2125,7 +2125,7 @@ _0222AF88:
 	bl String_c_str
 	add r1, r0, #0
 	ldr r0, [sp, #0xc]
-	bl Sav2_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_set
 	ldr r0, [r6, #0x50]
 	ldr r2, [sp, #0xc]
 	mov r1, #0
@@ -2309,7 +2309,7 @@ ov43_0222B0A0: ; 0x0222B0A0
 	ldr r1, [sp, #0x14]
 	str r0, [r1, #0x3c]
 	ldr r0, [r5, #4]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	bl Options_GetTextFrameDelay
 	ldr r1, [sp, #0x14]
 	str r0, [r1, #0x38]
@@ -2322,7 +2322,7 @@ ov43_0222B0A0: ; 0x0222B0A0
 	bl String_ctor
 	str r0, [sp, #0x1c]
 	ldr r0, [r5, #4]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	ldr r0, [sp, #0x24]
 	mov r1, #0
@@ -2901,7 +2901,7 @@ ov43_0222B5A8: ; 0x0222B5A8
 	ldr r0, [r4, #4]
 	add r6, r2, #0
 	add r7, r3, #0
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	bl Options_GetTextFrameDelay
 	add r1, r5, #0
 	add r1, #0xe0
@@ -5780,7 +5780,7 @@ _0222CBE2:
 	mov r0, #0
 	str r0, [sp, #0x14]
 	ldr r0, [r5, #4]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -5949,7 +5949,7 @@ ov43_0222CD44: ; 0x0222CD44
 	add r5, r1, #0
 	ldr r0, [r5, #4]
 	add r4, r2, #0
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	str r0, [sp]
 	mov r2, #0
 	mov r1, #7
@@ -6306,7 +6306,7 @@ ov43_0222D028: ; 0x0222D028
 	add r5, r0, #0
 	ldr r0, [r1, #4]
 	add r4, r2, #0
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	ldr r0, [r4, #0x50]
 	mov r1, #0
@@ -6435,7 +6435,7 @@ ov43_0222D134: ; 0x0222D134
 	ldr r0, [r4, #4]
 	add r6, r2, #0
 	add r7, r3, #0
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	mov r1, #2
 	mov r2, #0x1b
 	bl ScriptState_FlypointFlagAction

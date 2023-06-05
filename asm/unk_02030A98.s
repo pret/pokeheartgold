@@ -969,7 +969,7 @@ _02031080: .word _021D2AFC
 sub_02031084: ; 0x02031084
 	push {r3, lr}
 	mov r1, #0x13
-	bl SavArray_get
+	bl SaveArray_get
 	add r1, r0, #0
 	ldr r0, _02031098 ; =_021D2AFC
 	ldr r2, _0203109C ; =0x00001628
@@ -984,7 +984,7 @@ _0203109C: .word 0x00001628
 sub_020310A0: ; 0x020310A0
 	push {r3, lr}
 	mov r1, #0x13
-	bl SavArray_get
+	bl SaveArray_get
 	ldr r1, _020310B4 ; =_021D2AFC
 	ldr r2, _020310B8 ; =0x00001628
 	bl MI_CpuCopy8
@@ -1588,15 +1588,15 @@ sub_020314C4: ; 0x020314C4
 	add r6, r1, #0
 	add r5, r0, #0
 	add r0, r6, #0
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_0202CA44
 	str r0, [sp]
 	add r0, r6, #0
-	bl Sav2_SysInfo_get
+	bl Save_SysInfo_get
 	add r0, r6, #0
-	bl Sav2_Misc_const_get
+	bl Save_Misc_const_get
 	add r7, r0, #0
 	add r0, sp, #0x10
 	bl OS_GetOwnerInfo
@@ -1681,7 +1681,7 @@ _02031566:
 	add r0, r6, #0
 	add r1, r5, #0
 	mov r2, #0x7c
-	bl SavArray_CalcCRC16
+	bl SaveArray_CalcCRC16
 	add r5, #0x7c
 	strh r0, [r5]
 	add sp, #0x64

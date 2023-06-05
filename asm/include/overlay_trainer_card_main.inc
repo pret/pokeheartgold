@@ -123,7 +123,7 @@
 .public String_dtor
 .public String16_FormatInteger
 .public CopyU16ArrayToString
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
 .public GetIGTHours

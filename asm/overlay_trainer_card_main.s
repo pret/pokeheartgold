@@ -79,7 +79,7 @@ TrainerCardMainApp_OvyInit: ; 0x021E5AC0
 	mov r0, #0x67
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r5, r0, #0
 	bl Options_GetTextFrameDelay
 	ldr r1, _021E5D58 ; =0x0000343E

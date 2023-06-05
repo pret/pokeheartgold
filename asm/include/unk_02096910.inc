@@ -9,7 +9,7 @@
 .public sub_0205C268
 .public GetMonData
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SaveArray_PlayerParty_get
 .public sub_02096910
 .public sub_02096998
 .public sub_02096A34

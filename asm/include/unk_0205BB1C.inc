@@ -20,7 +20,7 @@
 .public GetMonData
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SaveArray_PlayerParty_get
 .public MI_CpuFill8
 .public _fadd
 .public _ffix

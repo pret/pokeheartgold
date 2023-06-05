@@ -38,7 +38,7 @@
 .public InitPartyWithMaxSize
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SaveArray_PlayerParty_get
 .public MIi_CpuClear16
 .public MIi_CpuCopy16
 .public MI_CpuFill8

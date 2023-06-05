@@ -29,7 +29,7 @@ u8 sub_0205C278(void) {
 }
 
 u8 sub_0205C298(SAVEDATA* savedata) {
-    u8 ver = PlayerProfile_GetVersion(Sav2_PlayerData_GetProfileAddr(savedata));
+    u8 ver = PlayerProfile_GetVersion(Save_PlayerData_GetProfileAddr(savedata));
     if (ver == 0) {
         return 1;
     }

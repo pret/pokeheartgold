@@ -370,11 +370,11 @@ _021E6B12:
 	lsr r0, r0, #0x1f
 	bne _021E6B66
 	ldr r0, [r4, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	bl HasEnoughAlivePokemonForDoubleBattle
 	add r6, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl ScriptState_CheckHaveFollower
 	cmp r0, #1
 	bne _021E6B36
@@ -405,7 +405,7 @@ _021E6B66:
 	lsr r0, r0, #0x1f
 	beq _021E6B86
 	ldr r0, [r4, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl ClearFlag965
 	add r0, r4, #0
 	bl ov01_021E7628
@@ -428,7 +428,7 @@ _021E6B94:
 	bl sub_0205DD94
 	add r7, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	mov r1, #2
 	bl StrengthFlagAction
 	cmp r0, #0
@@ -437,7 +437,7 @@ _021E6B94:
 	orr r6, r0
 _021E6BB6:
 	ldr r0, [r4, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	mov r1, #MOVE_WATERFALL
 	bl GetIdxOfFirstPartyMonWithMove
 	cmp r0, #0xff
@@ -1108,7 +1108,7 @@ _021E7132:
 	add r2, sp, #0
 	bl PlayerAvatar_GetStandingTileCoords
 	ldr r0, [r4, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl ScriptState_CheckPalParkSysFlag
 	cmp r0, #1
 	bne _021E7172
@@ -1588,7 +1588,7 @@ _021E7510:
 	cmp r0, #2
 	beq _021E7570
 	ldr r0, [r5, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
 	add r1, r7, #0
@@ -1602,7 +1602,7 @@ _021E7510:
 	cmp r0, #0
 	beq _021E7550
 	ldr r0, [r5, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	mov r1, #MOVE_SURF
 	bl GetIdxOfFirstPartyMonWithMove
 	cmp r0, #0xff
@@ -1653,7 +1653,7 @@ _021E758C:
 	pop {r3, r4, r5, r6, r7, pc}
 _021E75AC:
 	ldr r0, [r5, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #0
 	beq _021E75D6
@@ -1993,17 +1993,17 @@ ov01_021E788C: ; 0x021E788C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl Sav2_DayCare_get
+	bl Save_DayCare_get
 	add r1, r5, #0
 	add r2, r4, #0
 	bl HandleDayCareStep
 	cmp r0, #1
 	bne _021E78CE
 	ldr r0, [r4, #0xc]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	add r5, r0, #0
 	mov r1, #0xc
 	bl GameStats_Inc
@@ -2038,7 +2038,7 @@ ov01_021E78E4: ; 0x021E78E4
 	push {r3, r4, r5, lr}
 	ldr r0, [r0, #0xc]
 	mov r5, #0
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	add r4, r0, #0
 	bl ScriptState_GetVar404B
 	add r0, r0, #1
@@ -2060,7 +2060,7 @@ ov01_021E790C: ; 0x021E790C
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	add r6, r0, #0
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0]
@@ -2093,7 +2093,7 @@ ov01_021E794C: ; 0x021E794C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Save_FlyPoints_get
@@ -2157,7 +2157,7 @@ ov01_021E79CC: ; 0x021E79CC
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #0
 	bne _021E79E2
@@ -2191,7 +2191,7 @@ ov01_021E7A08: ; 0x021E7A08
 	bl SaveData_GetMomsSavingsAddr
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	ldr r1, _021E7A5C ; =0x00000984
 	bl CheckFlagInArray
 	cmp r0, #0
@@ -2202,7 +2202,7 @@ ov01_021E7A08: ; 0x021E7A08
 	cmp r0, #0
 	bne _021E7A56
 	ldr r0, [r4, #0xc]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	mov r1, #1
 	bl GameStats_GetCapped
 	mov r1, #1
@@ -2230,7 +2230,7 @@ BugContestTimeoutCheck: ; 0x021E7A60
 	bl FieldSys_BugContest_get
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl CheckFlag996
 	cmp r0, #0
 	bne _021E7A7C
@@ -2258,7 +2258,7 @@ ov01_021E7A98: ; 0x021E7A98
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	mov r1, #0
 	bl GameStats_GetCapped
 	add r4, r0, #0
@@ -2636,7 +2636,7 @@ ov01_021E7D58: ; 0x021E7D58
 	ldr r0, [r5, #0xc]
 	add r7, r2, #0
 	add r4, r1, #0
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	add r6, r0, #0
 	lsl r0, r7, #3
 	add r0, r4, r0
