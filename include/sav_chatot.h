@@ -8,7 +8,7 @@ typedef struct SOUND_CHATOT {
     s8 data[1000];
 } SOUND_CHATOT;
 
-u32 Sav2_Chatot_Sizeof(void);
+u32 Sav2_Chatot_sizeof(void);
 void Sav2_Chatot_Init(SOUND_CHATOT *chatot);
 SOUND_CHATOT *Chatot_New(HeapID heapId);
 SOUND_CHATOT *Sav2_Chatot_Get(SAVEDATA *saveData);

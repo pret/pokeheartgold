@@ -38,7 +38,7 @@ typedef struct ROAMER_SAVE {
     u8 flutePlayed;
 } ROAMER_SAVE;
 
-u32 Save_Roamers_Sizeof(void);
+u32 Save_Roamers_sizeof(void);
 void Save_Roamers_Init(ROAMER_SAVE *roamer);
 void Roamers_SetRand(ROAMER_SAVE *roamer, u32 param);
 u32 Roamers_GetRand(ROAMER_SAVE *roamer, u32 which);

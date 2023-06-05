@@ -3,8 +3,8 @@
 
 #include "pokemon_types_def.h"
 
-u32 SavArray_Party_Sizeof(void);
-u32 PartyCore_Sizeof(void);
+u32 SavArray_Party_sizeof(void);
+u32 PartyCore_sizeof(void);
 PARTY * SavArray_Party_Alloc(HeapID heapId);
 void SavArray_Party_Init(PARTY *party);
 void InitPartyWithMaxSize(PARTY *party, int maxSize);

@@ -31,13 +31,13 @@ typedef struct PLAYERDATA {
     IGT igt;
 } PLAYERDATA;
 
-u32 Sav2_PlayerData_Sizeof(void);
+u32 Sav2_PlayerData_sizeof(void);
 void Sav2_PlayerData_Init(PLAYERDATA* player);
 PLAYERPROFILE* Sav2_PlayerData_GetProfileAddr(SAVEDATA* savedata);
 OPTIONS* Sav2_PlayerData_GetOptionsAddr(SAVEDATA* savedata);
 u16* Sav2_PlayerData_GetCoinsAddr(SAVEDATA* savedata);
 IGT* Sav2_PlayerData_GetIGTAddr(SAVEDATA* savedata);
-u32 PlayerProfile_Sizeof(void);
+u32 PlayerProfile_sizeof(void);
 PLAYERPROFILE* PlayerProfile_New(HeapID heap_id);
 void PlayerProfile_Copy(const PLAYERPROFILE* src, PLAYERPROFILE* dest);
 void PlayerProfile_Init(PLAYERPROFILE* profile);

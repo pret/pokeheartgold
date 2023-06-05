@@ -426,7 +426,7 @@ _02034666:
 	strb r4, [r0]
 	ldr r0, _020346CC ; =_021D4130
 	ldr r6, [r0]
-	bl PlayerProfile_Sizeof
+	bl PlayerProfile_sizeof
 	add r2, r0, #0
 	mov r0, #0xd3
 	add r1, r6, r7

@@ -22,7 +22,7 @@ typedef struct POKEWALKER {
 
 void Pokewalker_UnlockCourse(POKEWALKER *pokeWalker, int courseNo);
 POKEWALKER *Sav2_Pokewalker_Get(SAVEDATA *saveData);
-u32 Pokewalker_Sizeof(void);
+u32 Pokewalker_sizeof(void);
 void Pokewalker_Init(POKEWALKER *pokeWalker);
 void sub_02032624(POKEWALKER *pokeWalker);
 u16 sub_0203263C(const POKEWALKER *pokeWalker);

@@ -27,7 +27,7 @@ static const u8 sSafariZoneDefaultAreaSets[10][SAFARI_ZONE_MAX_AREAS_PER_SET] = 
       SAFARI_ZONE_AREA_SWAMP, SAFARI_ZONE_AREA_PEAK, SAFARI_ZONE_AREA_WASTELAND },
 };
 
-u32 Save_SafariZone_Sizeof(void) {
+u32 Save_SafariZone_sizeof(void) {
     return sizeof(SAFARIZONE);
 }
 

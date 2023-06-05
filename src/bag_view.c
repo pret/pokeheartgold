@@ -19,7 +19,7 @@ BAG_VIEW *BagView_New(u8 heap_id) {
     return ret;
 }
 
-u32 BagView_Sizeof(void) {
+u32 BagView_sizeof(void) {
     return sizeof(BAG_VIEW);
 }
 

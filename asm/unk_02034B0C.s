@@ -1079,12 +1079,12 @@ sub_020352D8: ; 0x020352D8
 	ble _020352FE
 	bl GF_AssertFail
 _020352FE:
-	bl PlayerProfile_Sizeof
+	bl PlayerProfile_sizeof
 	cmp r0, #0x20
 	beq _0203530A
 	bl GF_AssertFail
 _0203530A:
-	bl PlayerProfile_Sizeof
+	bl PlayerProfile_sizeof
 	add r1, r5, #0
 	add r2, r0, #0
 	add r0, r4, #0

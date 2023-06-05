@@ -29,7 +29,7 @@ void GetECWordIntoStringByIndex(u16 ecWord, STRING *dest);
 void EasyChatManager_Delete(ECMAN *ecMan);
 void EasyChatManager_ReadWordIntoString(ECMAN *ecMan, u16 ecWord, STRING *dest);
 BOOL GetCategoryAndMsgNoByECWordIdx(u16 ecWord, u32 *category, u32 *msgno);
-u32 Sav2_EasyChat_Sizeof(void);
+u32 Sav2_EasyChat_sizeof(void);
 void Sav2_EasyChat_Init(SAVE_EASY_CHAT_T *ec);
 BOOL SaveEasyChat_GetTrendySayingFlag(SAVE_EASY_CHAT_T *ec, int flag);
 u32 SaveEasyChat_RandomTrendySayingSet(SAVE_EASY_CHAT_T *ec);

@@ -7,8 +7,8 @@
 typedef struct FLYPOINTS_SAVE FLYPOINTS_SAVE;
 struct SavedMapObjectList;
 
-u32 Save_FlyPoints_Sizeof(void);
-u32 Save_MapObjects_Sizeof(void);
+u32 Save_FlyPoints_sizeof(void);
+u32 Save_MapObjects_sizeof(void);
 void Save_MapObjects_Init(struct SavedMapObjectList *unk);
 void Save_FlyPoints_Init(FLYPOINTS_SAVE *flypointsSave);
 Location *FlyPoints_GetPosition(FLYPOINTS_SAVE *flypointsSave);

@@ -11,7 +11,7 @@ void Pokedex_InitDeoxysFormeOrder(POKEDEX *pokedex);
 u16 *LoadSpeciesToJohtoDexNoLUT(void);
 void Pokedex_SetInternationalViewFlag(POKEDEX *pokedex);
 
-u32 Save_Pokedex_Sizeof(void) {
+u32 Save_Pokedex_sizeof(void) {
     return sizeof(POKEDEX);
 }
 

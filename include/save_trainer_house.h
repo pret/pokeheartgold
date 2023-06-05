@@ -49,7 +49,7 @@ typedef struct TrainerHouseSave {
     TrainerHouseSet sets[TRAINER_HALL_SET_MAX];
 } TrainerHouseSave; // size=0xF00
 
-u32 Save_TrainerHouse_Sizeof(void);
+u32 Save_TrainerHouse_sizeof(void);
 TrainerHouseSave *Save_TrainerHouse_Get(SAVEDATA *saveData);
 void Save_TrainerHouse_Init(TrainerHouseSave *th);
 void TrainerHouseMon_SetZero(TrainerHouseMon *mon);

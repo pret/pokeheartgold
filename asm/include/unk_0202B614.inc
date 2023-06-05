@@ -11,7 +11,7 @@
 .public CopyStringToU16Array
 .public SavArray_Get
 .public Sav2_DressupData_Init
-.public Sav2_DressupData_Sizeof
+.public Sav2_DressupData_sizeof
 .public sub_0202B994
 .public sub_0202B998
 .public sub_0202B9B8

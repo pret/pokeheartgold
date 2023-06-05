@@ -46,7 +46,7 @@ typedef struct HofDisplayMon
     u16 moves[4];
 } SHOW_HOFMON;
 
-u32 Sav2_HOF_Sizeof(void);
+u32 Sav2_HOF_sizeof(void);
 void Sav2_HOF_Init(HALL_OF_FAME *hof);
 void Sav2_HOF_RecordParty(HALL_OF_FAME *hof, PARTY *party, RTCDate *date);
 u32 Sav2_HOF_GetNumRecords(const HALL_OF_FAME *hallOfFame);

@@ -2518,7 +2518,7 @@ sub_0203CFC0: ; 0x0203CFC0
 	mov r0, #0xb
 	bl BagView_New
 	add r7, r0, #0
-	bl BagView_Sizeof
+	bl BagView_sizeof
 	mov r1, #0xe
 	lsl r1, r1, #6
 	add r2, r0, #0

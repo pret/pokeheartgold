@@ -1,7 +1,7 @@
 #include "global.h"
 #include "player_data.h"
 
-u32 Sav2_PlayerData_Sizeof(void) {
+u32 Sav2_PlayerData_sizeof(void) {
     return sizeof(PLAYERDATA);
 }
 
@@ -34,7 +34,7 @@ IGT* Sav2_PlayerData_GetIGTAddr(SAVEDATA* savedata) {
     return &player->igt;
 }
 
-u32 PlayerProfile_Sizeof(void) {
+u32 PlayerProfile_sizeof(void) {
     return sizeof(PLAYERPROFILE);
 }
 

@@ -9,13 +9,13 @@ _021D2AF0:
 
 	.text
 
-	thumb_func_start Sav2_FriendGroup_Sizeof
-Sav2_FriendGroup_Sizeof: ; 0x0202C730
+	thumb_func_start Sav2_FriendGroup_sizeof
+Sav2_FriendGroup_sizeof: ; 0x0202C730
 	mov r0, #0x42
 	lsl r0, r0, #2
 	bx lr
 	.balign 4, 0
-	thumb_func_end Sav2_FriendGroup_Sizeof
+	thumb_func_end Sav2_FriendGroup_sizeof
 
 	thumb_func_start sub_0202C738
 sub_0202C738: ; 0x0202C738

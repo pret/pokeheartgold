@@ -174,7 +174,7 @@ _02106078:
 	.word sub_02058720, sub_020342C4, 0
 	.word sub_02091570, sub_020342C4, 0
 	.word sub_02091570, sub_020342C4, 0
-	.word sub_0205A408, PlayerProfile_Sizeof, 0
+	.word sub_0205A408, PlayerProfile_sizeof, 0
 	.word sub_0205A430, sub_020342C4, 0
 	.word sub_0205A40C, sub_020342C4, 0
 	.word sub_0205A4C4, sub_020342C4, 0

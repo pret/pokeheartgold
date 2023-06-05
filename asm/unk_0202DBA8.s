@@ -9,13 +9,13 @@ sMysteryGiftData:
 
 	.text
 
-	thumb_func_start Save_MysteryGift_Sizeof
-Save_MysteryGift_Sizeof: ; 0x0202DBA8
+	thumb_func_start Save_MysteryGift_sizeof
+Save_MysteryGift_sizeof: ; 0x0202DBA8
 	mov r0, #0x5a
 	lsl r0, r0, #6
 	bx lr
 	.balign 4, 0
-	thumb_func_end Save_MysteryGift_Sizeof
+	thumb_func_end Save_MysteryGift_sizeof
 
 	thumb_func_start Save_MysteryGift_Init
 Save_MysteryGift_Init: ; 0x0202DBB0

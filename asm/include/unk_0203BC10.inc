@@ -128,7 +128,7 @@
 .public sub_02075D3C
 .public sub_02075D4C
 .public BagView_New
-.public BagView_Sizeof
+.public BagView_sizeof
 .public sub_0207789C
 .public sub_020778E0
 .public sub_02077904
