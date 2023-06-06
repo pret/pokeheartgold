@@ -41,8 +41,8 @@
 .public GF_AssertFail
 .public String_New
 .public String_dtor
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_PlayerData_GetCoinsAddr
+.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetCoinsAddr
 .public PlayerProfile_GetMoney
 .public CheckCoins
 .public FrontierData_BattlePointAction

@@ -78,10 +78,10 @@ sub_0209707C: ; 0x0209707C
 	ldr r0, [r0]
 	str r0, [r4, #0x14]
 	ldr r0, [r5, #0xc]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	str r0, [r4, #0x18]
 	ldr r0, [r5, #0xc]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	str r0, [r4, #0x1c]
 	ldr r0, [r4, #0x18]
 	bl Options_GetFrame

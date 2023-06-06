@@ -43,8 +43,8 @@
 .public Save_FileExists
 .public Save_FileDoesNotBelongToPlayer
 .public Save_NumModifiedPCBoxesIsMany
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
 .public Fsys_TaskIsRunning

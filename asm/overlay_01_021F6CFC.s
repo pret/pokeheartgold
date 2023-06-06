@@ -39,7 +39,7 @@ _021F6D24:
 	add r0, #0x88
 	str r1, [r0]
 	ldr r0, [r4, #0x34]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
@@ -452,7 +452,7 @@ _021F7016:
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r4, #0
-	bl Sav2_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_set
 	ldr r0, [r5, #0x38]
 	mov r1, #0
 	add r2, r4, #0
@@ -679,14 +679,14 @@ _021F71DC:
 	bl sub_0205B514
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0x10
 	bl sub_0205B564
 	ldr r0, [r4, #0x30]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r2, r0, #0
 	add r0, r4, #0
 	ldr r1, [r4, #0xc]

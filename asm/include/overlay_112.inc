@@ -203,8 +203,8 @@
 .public GetStoragePCPointer
 .public SaveGameNormal
 .public Save_ClearStatusFlags
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetPlayerName_NewString
 .public PlayerProfile_GetTrainerID
@@ -215,11 +215,11 @@
 .public Pokedex_SetMonSeenFlag
 .public Pokedex_SetMonCaughtFlag
 .public Pokedex_GetNatDexFlag
-.public Sav2_Pokedex_get
+.public Save_Pokedex_get
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
 .public sub_0202D660
-.public Sav2_Pokewalker_get
+.public Save_Pokewalker_get
 .public sub_02032624
 .public sub_0203263C
 .public sub_02032644
@@ -243,7 +243,7 @@
 .public TrainerHouseTrainer_Compare
 .public FlyPoints_GetPosition
 .public Save_FlyPoints_get
-.public SavArray_Flags_get
+.public SaveArray_Flags_get
 .public CheckFlagInArray
 .public SetFlagInArray
 .public ClearFlagInArray
@@ -289,7 +289,7 @@
 .public sub_02074490
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SaveArray_PlayerParty_get
 .public GetItemNameIntoString
 .public BagAddItem
 .public SaveGetBag

@@ -63,7 +63,7 @@ _0209112E:
 	add r6, r0, #0
 	ldr r5, [r4, #0xc]
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r7, r0, #0
 	ldr r0, [r6, #0x20]
 	ldr r0, [r0]
@@ -114,7 +114,7 @@ _0209119A:
 	add r7, r0, #0
 	add r0, r6, #0
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	str r0, [sp]
 	mov r0, #0
 	str r0, [sp, #4]

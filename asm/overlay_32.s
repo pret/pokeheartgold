@@ -582,7 +582,7 @@ _0225D9D4:
 	bl sub_0202C254
 	add r1, r0, #0
 	ldr r0, [sp, #0x1c]
-	bl Sav2_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_set
 	mov r0, #0x52
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]

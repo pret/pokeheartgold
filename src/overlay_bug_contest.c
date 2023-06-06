@@ -39,7 +39,7 @@ BUGCONTEST *BugContest_new(FieldSystem *fsys, u32 weekday) {
     bugContest->saveData = fsys->savedata;
     bugContest->sport_balls = 20;
     bugContest->mon = AllocMonZeroed(bugContest->heapId);
-    bugContest->national_dex = Pokedex_GetNatDexFlag(Sav2_Pokedex_get(bugContest->saveData));
+    bugContest->national_dex = Pokedex_GetNatDexFlag(Save_Pokedex_get(bugContest->saveData));
     bugContest->day_of_week = weekday;
     BugContest_BackUpParty(bugContest);
     BugContest_InitOpponents(bugContest);
@@ -128,7 +128,7 @@ void BugContest_BufferContestWinnerNames(BUGCONTEST *bugContest, MSGDATA *msgDat
 
     contestant = &bugContest->contestants[bugContest->ranking[place]];
     if (place == bugContest->placement) {
-        BufferPlayersName(msgFmt, 0, Sav2_PlayerData_GetProfileAddr(bugContest->saveData));
+        BufferPlayersName(msgFmt, 0, Save_PlayerData_GetProfileAddr(bugContest->saveData));
     } else {
         string = NewString_ReadMsgData(msgData, contestant->id + msg_0246_00078);
         BufferString(msgFmt, 0, string, 2, 1, 2);
@@ -185,8 +185,8 @@ ENC_SLOT *BugContest_GetEncounterSlot(BUGCONTEST *bugContest, HeapID heapId) {
 
 void BugContest_BackUpParty(BUGCONTEST *bugContest) {
     int i;
-    bugContest->party_bak = SavArray_Party_alloc(bugContest->heapId);
-    bugContest->party_cur = SavArray_PlayerParty_get(bugContest->saveData);
+    bugContest->party_bak = SaveArray_Party_alloc(bugContest->heapId);
+    bugContest->party_cur = SaveArray_PlayerParty_get(bugContest->saveData);
     Party_copy(bugContest->party_cur, bugContest->party_bak);
     bugContest->party_cur_num = GetPartyCount(bugContest->party_cur);
     bugContest->lead_mon_idx = Save_GetPartyLeadAlive(bugContest->saveData);

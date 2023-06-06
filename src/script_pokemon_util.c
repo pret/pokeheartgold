@@ -19,8 +19,8 @@ BOOL GiveMon(HeapID heapId, SAVEDATA *saveData, int species, int level, int form
     u32 sp1C;
     BOOL result;
 
-    profile = Sav2_PlayerData_GetProfileAddr(saveData);
-    party = SavArray_PlayerParty_get(saveData);
+    profile = Save_PlayerData_GetProfileAddr(saveData);
+    party = SaveArray_PlayerParty_get(saveData);
     {
         mon = AllocMonZeroed(heapId);
         ZeroMonData(mon);
@@ -48,8 +48,8 @@ BOOL GiveEgg(HeapID heapId, SAVEDATA *saveData, int species, u8 metLocation, Map
     Pokemon *mon;
     BOOL result;
 
-    profile = Sav2_PlayerData_GetProfileAddr(saveData);
-    party = SavArray_PlayerParty_get(saveData);
+    profile = Save_PlayerData_GetProfileAddr(saveData);
+    party = SaveArray_PlayerParty_get(saveData);
     mon = AllocMonZeroed(HEAP_ID_32);
     ZeroMonData(mon);
     SetEggStats(mon, species, metLocation, profile, 4, sub_02017FE4(sp20, sp24));

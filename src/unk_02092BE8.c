@@ -22,7 +22,7 @@ static void SysTask_RingGearPhone(SysTask *task, GearPhoneRingManager* ptr);
 
 static void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL a2) {
     Unk_PokegearSTRUCT_14 Unk_struct;
-    SCRIPT_STATE *state = SavArray_Flags_get(sys->savedata);
+    SCRIPT_STATE *state = SaveArray_Flags_get(sys->savedata);
     FLYPOINTS_SAVE *points = Save_FlyPoints_get(sys->savedata);
     Location *warpPtr = FlyPoints_GetSpecialSpawnWarpPtr(points);
     Location *PosPtr = FlyPoints_GetPosition(points);
@@ -52,7 +52,7 @@ static void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL a2) 
         MapMatrix_Free(matrix);
     }
 
-    ptr->playerGender = PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(sys)));
+    ptr->playerGender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(sys)));
     ptr->unk28 = &sys->unk_10C;
     ptr->unk01 = sub_0203DF3C(sys);
     ptr->mapMusicID = Fsys_GetSurfOverriddenMusicId(sys, ptr->mapID);
@@ -71,7 +71,7 @@ static void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL a2) 
                 sub_0202F050(SaveData_GetMomsSavingsAddr(sys->savedata), Unk_struct.unk06);
             }
             else if (ptr->unk05 == 0) {
-                sub_0202AB18(Sav2_Misc_get(sys->savedata), Unk_struct.unk04, Unk_struct.unk05, ptr->unk04);
+                sub_0202AB18(Save_Misc_get(sys->savedata), Unk_struct.unk04, Unk_struct.unk05, ptr->unk04);
             }
             gearRingingManagerReset(phoneRingMgr);
             ptr->unk00 = 1;
@@ -146,9 +146,9 @@ void sub_02092E34(GearPhoneRingManager* ptr, s32 a1, BOOL a2) {
 }
 
 static void sub_02092E54(GearPhoneRingManager* ptr) {
-    SCRIPT_STATE* state = SavArray_Flags_get(ptr->saveData);
+    SCRIPT_STATE* state = SaveArray_Flags_get(ptr->saveData);
     SAFARIZONE* zone = Save_SafariZone_get(ptr->saveData);
-    IGT* igt = Sav2_PlayerData_GetIGTAddr(ptr->saveData);
+    IGT* igt = Save_PlayerData_GetIGTAddr(ptr->saveData);
     u8 var4057 = ScriptState_GetVar4057(state);
     u8 i;
     for (i = 0; i < 5; i++) {
@@ -169,7 +169,7 @@ static void sub_02092E54(GearPhoneRingManager* ptr) {
         if (var4057 < 6) {
             return;
         }
-        if (!Pokedex_GetNatDexFlag(Sav2_Pokedex_get(ptr->saveData))) {
+        if (!Pokedex_GetNatDexFlag(Save_Pokedex_get(ptr->saveData))) {
             return;
         }
         u32 Unkvar = sub_0202F798(zone, igt, 3);
@@ -274,7 +274,7 @@ BOOL sub_02093070(FieldSystem* sys) {
     if (GSPlayerMisc_IsGearNumberRegistered(SaveData_GSPlayerMisc_get(sys->savedata), PHONE_CONTACT_BILL) == 0xff) {
         return FALSE;
     }
-    if (CheckFlagInArray(SavArray_Flags_get(sys->savedata), FLAG_UNK_985)) {
+    if (CheckFlagInArray(SaveArray_Flags_get(sys->savedata), FLAG_UNK_985)) {
         return FALSE;
     }
     if (PCStorage_CountEmptySpotsInAllBoxes(GetStoragePCPointer(sys->savedata)) != 0) {
@@ -285,8 +285,8 @@ BOOL sub_02093070(FieldSystem* sys) {
 }
 
 BOOL sub_020930C4(FieldSystem* sys) {
-    int owned = Pokedex_CountNationalDexOwned(Sav2_Pokedex_get(sys->savedata));
-    SCRIPT_STATE* state = SavArray_Flags_get(sys->savedata);
+    int owned = Pokedex_CountNationalDexOwned(Save_Pokedex_get(sys->savedata));
+    SCRIPT_STATE* state = SaveArray_Flags_get(sys->savedata);
     if (GSPlayerMisc_IsGearNumberRegistered(SaveData_GSPlayerMisc_get(sys->savedata), PHONE_CONTACT_PROF__OAK) == 0xff) {
         return FALSE;
     }
@@ -309,12 +309,12 @@ BOOL sub_02093134(FieldSystem* sys, Pokemon *mon) {
         return FALSE;
     }
     sub_02092E14(Fsys_GetGearPhoneRingManager(sys), 0, 1);
-    SetFlagInArray(SavArray_Flags_get(sys->savedata), FLAG_UNK_983);
+    SetFlagInArray(SaveArray_Flags_get(sys->savedata), FLAG_UNK_983);
     return TRUE;
 }
 
 BOOL sub_0209316C(FieldSystem* sys) {
-    SCRIPT_STATE* state = SavArray_Flags_get(sys->savedata);
+    SCRIPT_STATE* state = SaveArray_Flags_get(sys->savedata);
     if (GSPlayerMisc_IsGearNumberRegistered(SaveData_GSPlayerMisc_get(sys->savedata), PHONE_CONTACT_DAY_C_MAN) == 0xff) {
         return FALSE;
     }

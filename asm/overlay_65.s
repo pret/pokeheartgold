@@ -1195,7 +1195,7 @@ _0221C82E:
 	b _0221C99E
 _0221C83A:
 	ldr r0, [r4, #4]
-	bl Sav2_Chatot_get
+	bl Save_Chatot_get
 	bl ov65_0221DF0C
 	ldr r0, [r4, #0x58]
 	add r0, r0, #1
@@ -2269,7 +2269,7 @@ ov65_0221D0EC: ; 0x0221D0EC
 	str r0, [r5, r1]
 	ldr r0, [r4, #0x10]
 	str r0, [r5, #4]
-	bl SavArray_Party_sizeof
+	bl SaveArray_Party_sizeof
 	add r1, r0, #0
 	mov r0, #0x1a
 	bl AllocFromHeap
@@ -2278,7 +2278,7 @@ ov65_0221D0EC: ; 0x0221D0EC
 	ldr r0, [r5, r1]
 	mov r1, #6
 	bl InitPartyWithMaxSize
-	bl SavArray_Party_sizeof
+	bl SaveArray_Party_sizeof
 	add r2, r0, #0
 	ldr r0, _0221D1C4 ; =0x00002228
 	mov r1, #0xff
@@ -3611,7 +3611,7 @@ ov65_0221DC34: ; 0x0221DC34
 	cmp r0, r1
 	bne _0221DC8E
 	ldr r0, [r4, #4]
-	bl Sav2_Chatot_get
+	bl Save_Chatot_get
 	mov r1, #0
 	mov r2, #0x64
 	add r3, r1, #0
@@ -4681,7 +4681,7 @@ _0221E4C0:
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r6, #0
-	bl Sav2_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_set
 	mov r0, #0xda
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
@@ -6766,7 +6766,7 @@ ov65_0221F5A0: ; 0x0221F5A0
 	bne _0221F62C
 _0221F614:
 	ldr r0, [r5, #0x10]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	str r0, [sp, #0x10]
 	bl ScriptState_GetVar404C
 	cmp r0, #0
@@ -6830,7 +6830,7 @@ _0221F664:
 	cmp r0, #0
 	bne _0221F6BC
 	ldr r0, [r5, #0x10]
-	bl Sav2_Chatot_get
+	bl Save_Chatot_get
 	bl Chatot_invalidate
 _0221F6BC:
 	ldr r0, [r5, #0x10]

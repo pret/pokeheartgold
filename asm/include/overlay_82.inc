@@ -122,8 +122,8 @@
 .public String_dtor
 .public StringSetEmpty
 .public CopyU16ArrayToString
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
 .public Save_SpecialRibbons_get
@@ -145,7 +145,7 @@
 .public sub_020744A4
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_IsNatDexEnabled
+.public SaveArray_IsNatDexEnabled
 .public sub_02088288
 .public sub_02089D40
 .public sub_0208AD34

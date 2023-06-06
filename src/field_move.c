@@ -85,8 +85,8 @@ static const struct FieldMoveFuncDat sFieldMoveFuncTable[] = {
 };
 
 static inline BOOL MoveUseCheck_SafariOrPalPark(const struct FieldMoveCheckData *checkData) {
-    if (ScriptState_CheckSafariSysFlag(SavArray_Flags_get(checkData->fsys->savedata)) == TRUE || ScriptState_CheckPalParkSysFlag(
-        SavArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckSafariSysFlag(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE || ScriptState_CheckPalParkSysFlag(
+        SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
         return TRUE;
     } else {
         return FALSE;
@@ -95,7 +95,7 @@ static inline BOOL MoveUseCheck_SafariOrPalPark(const struct FieldMoveCheckData 
 
 static inline BOOL MoveUseCheck_PalPark(const struct FieldMoveCheckData *checkData) {
     if (ScriptState_CheckPalParkSysFlag(
-        SavArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+        SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
         return TRUE;
     } else {
         return FALSE;
@@ -186,7 +186,7 @@ static u32 FieldMoveMenuCheck_Cut(const struct FieldMoveCheckData *checkData) {
     if (checkData->fsys->unk70 == 2 || checkData->fsys->unk70 == 3) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
-    if (!PlayerProfile_TestBadgeFlag(Sav2_PlayerData_GetProfileAddr(checkData->fsys->savedata), BADGE_HIVE)) {
+    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fsys->savedata), BADGE_HIVE)) {
         return PARTY_MENU_RESPONSE_NEED_BADGE;
     }
     if (MoveUseCheck_FieldContextFlagCheck(checkData, FIELD_MOVE_CHECK_TREE_F)) {
@@ -218,7 +218,7 @@ static u32 FieldMoveMenuCheck_Fly(const struct FieldMoveCheckData *checkData) {
     if (checkData->fsys->unk70 == 2 || checkData->fsys->unk70 == 3) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
-    if (!PlayerProfile_TestBadgeFlag(Sav2_PlayerData_GetProfileAddr(checkData->fsys->savedata), BADGE_STORM)) {
+    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fsys->savedata), BADGE_STORM)) {
         return PARTY_MENU_RESPONSE_NEED_BADGE;
     }
 
@@ -226,11 +226,11 @@ static u32 FieldMoveMenuCheck_Fly(const struct FieldMoveCheckData *checkData) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (ScriptState_CheckHaveFollower(SavArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckHaveFollower(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (ScriptState_CheckRocketCostumeFlag(SavArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 
@@ -255,7 +255,7 @@ static u32 FieldMoveMenuCheck_Surf(const struct FieldMoveCheckData *checkData) {
     if (checkData->fsys->unk70 == 2 || checkData->fsys->unk70 == 3) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
-    if (!PlayerProfile_TestBadgeFlag(Sav2_PlayerData_GetProfileAddr(checkData->fsys->savedata), BADGE_FOG)) {
+    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fsys->savedata), BADGE_FOG)) {
         return PARTY_MENU_RESPONSE_NEED_BADGE;
     }
 
@@ -267,11 +267,11 @@ static u32 FieldMoveMenuCheck_Surf(const struct FieldMoveCheckData *checkData) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (ScriptState_CheckHaveFollower(SavArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckHaveFollower(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (ScriptState_CheckRocketCostumeFlag(SavArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 
@@ -300,7 +300,7 @@ static u32 FieldMoveMenuCheck_Strength(const struct FieldMoveCheckData *checkDat
     if (checkData->fsys->unk70 == 2 || checkData->fsys->unk70 == 3) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
-    if (!PlayerProfile_TestBadgeFlag(Sav2_PlayerData_GetProfileAddr(checkData->fsys->savedata), BADGE_PLAIN)) {
+    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fsys->savedata), BADGE_PLAIN)) {
         return PARTY_MENU_RESPONSE_NEED_BADGE;
     }
 
@@ -336,7 +336,7 @@ static u32 FieldMoveMenuCheck_RockSmash(const struct FieldMoveCheckData *checkDa
     if (checkData->fsys->unk70 == 2 || checkData->fsys->unk70 == 3) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
-    if (!PlayerProfile_TestBadgeFlag(Sav2_PlayerData_GetProfileAddr(checkData->fsys->savedata), BADGE_ZEPHYR)) {
+    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fsys->savedata), BADGE_ZEPHYR)) {
         return PARTY_MENU_RESPONSE_NEED_BADGE;
     }
 
@@ -371,7 +371,7 @@ static u32 FieldMoveMenuCheck_Waterfall(const struct FieldMoveCheckData *checkDa
     if (PlayerAvatar_GetState(checkData->fsys->playerAvatar) != PLAYER_STATE_SURFING) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
-    if (!PlayerProfile_TestBadgeFlag(Sav2_PlayerData_GetProfileAddr(checkData->fsys->savedata), BADGE_RISING)) {
+    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fsys->savedata), BADGE_RISING)) {
         return PARTY_MENU_RESPONSE_NEED_BADGE;
     }
 
@@ -403,7 +403,7 @@ static u32 FieldMoveMenuCheck_RockClimb(const struct FieldMoveCheckData *checkDa
     if (checkData->fsys->unk70 == 2 || checkData->fsys->unk70 == 3) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
-    if (!PlayerProfile_TestBadgeFlag(Sav2_PlayerData_GetProfileAddr(checkData->fsys->savedata), BADGE_EARTH)) {
+    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fsys->savedata), BADGE_EARTH)) {
         return PARTY_MENU_RESPONSE_NEED_BADGE;
     }
 
@@ -411,11 +411,11 @@ static u32 FieldMoveMenuCheck_RockClimb(const struct FieldMoveCheckData *checkDa
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (ScriptState_CheckHaveFollower(SavArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckHaveFollower(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (ScriptState_CheckRocketCostumeFlag(SavArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 
@@ -486,11 +486,11 @@ static u32 FieldMoveMenuCheck_Teleport(const struct FieldMoveCheckData *checkDat
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (ScriptState_CheckHaveFollower(SavArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckHaveFollower(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (ScriptState_CheckRocketCostumeFlag(SavArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 
@@ -532,11 +532,11 @@ static u32 FieldMoveMenuCheck_Dig(const struct FieldMoveCheckData *checkData) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (ScriptState_CheckHaveFollower(SavArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckHaveFollower(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (ScriptState_CheckRocketCostumeFlag(SavArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 
@@ -627,7 +627,7 @@ static u32 FieldMoveMenuCheck_Whirlpool(const struct FieldMoveCheckData *checkDa
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (!PlayerProfile_TestBadgeFlag(Sav2_PlayerData_GetProfileAddr(checkData->fsys->savedata), BADGE_GLACIER)) {
+    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fsys->savedata), BADGE_GLACIER)) {
         return PARTY_MENU_RESPONSE_NEED_BADGE;
     }
 
@@ -688,7 +688,7 @@ static BOOL Task_UseHeadbuttInField(TaskManager *taskManager) {
 
 static struct TeleportFieldEnv *sub_020689A4(HeapID heapId, u8 slotno, SAVEDATA *saveData) {
     struct TeleportFieldEnv *ret = AllocFromHeapAtEnd(heapId, sizeof(struct TeleportFieldEnv));
-    ret->mon = GetPartyMonByIndex(SavArray_PlayerParty_get(saveData), slotno);
+    ret->mon = GetPartyMonByIndex(SaveArray_PlayerParty_get(saveData), slotno);
     ret->flySub = NULL;
     return ret;
 }

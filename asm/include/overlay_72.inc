@@ -114,8 +114,8 @@
 .public String_dtor
 .public Save_PrepareForAsyncWrite
 .public Save_WriteFileAsync
-.public Sav2_SysInfo_GetField4C
-.public Sav2_SysInfo_SetField4C
+.public Save_SysInfo_GetField4C
+.public Save_SysInfo_SetField4C
 .public Options_GetFrame
 .public sub_0202D488
 .public sub_0202D568

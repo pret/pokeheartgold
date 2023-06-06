@@ -50,7 +50,7 @@ ov55_021E5924: ; 0x021E5924
 	bl ov55_021E5B08
 	str r0, [r4, #0x10]
 	ldr r0, [r5, #0x10]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	ldr r1, [r4, #0x10]
 	str r0, [r1, #4]
 	ldrh r0, [r5]
@@ -152,11 +152,11 @@ _021E5A04:
 	ldr r0, [r5, #0x14]
 	bl ov55_021E5BC4
 	ldr r0, [r5, #0x10]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	mov r1, #2
 	bl GameStats_AddSpecial
 	ldr r0, [r5, #0x10]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	mov r1, #0x2e
 	bl GameStats_Inc
 	mov r0, #1

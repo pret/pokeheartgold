@@ -198,7 +198,7 @@ ov110_021E5A74: ; 0x021E5A74
 	str r0, [r5, #4]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r4, r0, #0
 	bl Options_GetTextFrameDelay
 	add r1, r5, #0
@@ -231,7 +231,7 @@ ov110_021E5AAC: ; 0x021E5AAC
 	beq _021E5AD2
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	ldrb r1, [r4, #0x19]
 	bl ScriptState_SetAlphPuzzleFlag
 _021E5AD2:

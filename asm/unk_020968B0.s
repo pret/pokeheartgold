@@ -24,7 +24,7 @@ sub_020968B0: ; 0x020968B0
 	bl MI_CpuFill8
 	str r6, [r4]
 	ldr r0, [r5, #0xc]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	str r0, [r4, #4]
 	ldr r0, [r5, #0xc]
 	mov r1, #0xe

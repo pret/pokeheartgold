@@ -99,7 +99,7 @@
 .public sub_02025320
 .public String_New
 .public String_dtor
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetOptionsAddr
 .public Options_GetFrame
 .public sub_0202D5DC
 .public Save_FrontierData_get

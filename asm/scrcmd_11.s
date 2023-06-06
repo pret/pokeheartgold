@@ -304,7 +304,7 @@ _0204BF94: .word sScriptMysteryGiftActionTable
 MGCheck_PartySpace: ; 0x0204BF98
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	bl GetPartyCount
 	cmp r0, #6
 	bge _0204BFAC
@@ -344,7 +344,7 @@ MGMessageSuccess_ManaphyEgg: ; 0x0204BFD0
 	strh r0, [r2]
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	ldr r0, [r4, #4]
 	mov r1, #0
@@ -360,10 +360,10 @@ MGGive_Mon: ; 0x0204BFF0
 	bl FieldSys_GetDataOfNextMG
 	str r0, [sp, #0x14]
 	ldr r0, [r7, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	str r0, [sp, #0x10]
 	ldr r0, [r7, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	str r0, [sp, #0xc]
 	mov r0, #0
 	str r0, [sp, #8]
@@ -700,7 +700,7 @@ _0204C2FE:
 	add r0, r4, #0
 	bl CalcMonLevelAndStats
 	ldr r0, [r7, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	add r1, r4, #0
 	bl AddMonToParty
 	cmp r0, #0
@@ -735,7 +735,7 @@ MGMessageSuccess_GiveMon: ; 0x0204C330
 	strh r0, [r6]
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	ldr r0, [r5, #4]
 	mov r1, #0
@@ -782,7 +782,7 @@ MGMessageSuccess_Egg: ; 0x0204C380
 	strh r0, [r6]
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	ldr r0, [r5, #4]
 	mov r1, #0
@@ -834,7 +834,7 @@ MGGive_Item: ; 0x0204C3E4
 	cmp r4, r0
 	bne _0204C410
 	ldr r0, [r5, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	mov r1, #0
 	bl sub_02066B9C
 _0204C410:
@@ -864,7 +864,7 @@ MGMessageSuccess_Item: ; 0x0204C420
 	strh r0, [r6]
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	ldr r0, [r5, #4]
 	mov r1, #0
@@ -936,7 +936,7 @@ MGMessageSuccess_BattleRules: ; 0x0204C4A4
 	strh r0, [r6]
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	ldr r0, [r5, #4]
 	mov r1, #0
@@ -997,7 +997,7 @@ MGMessageSuccess_Decoration: ; 0x0204C50C
 	strh r0, [r6]
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	ldr r0, [r5, #4]
 	mov r1, #0
@@ -1036,7 +1036,7 @@ MGCheck_MonDeco: ; 0x0204C550
 	b _0204C582
 _0204C56A:
 	ldr r0, [r5, #0xc]
-	bl Sav2_SealCase_get
+	bl Save_SealCase_get
 	add r1, r4, #0
 	mov r2, #1
 	bl SealCase_CheckSealQuantity
@@ -1069,7 +1069,7 @@ MGGive_MonDeco: ; 0x0204C588
 	pop {r3, r4, r5, pc}
 _0204C5A2:
 	ldr r0, [r5, #0xc]
-	bl Sav2_SealCase_get
+	bl Save_SealCase_get
 	add r1, r4, #0
 	mov r2, #1
 	bl GiveOrTakeSeal
@@ -1129,7 +1129,7 @@ _0204C614:
 	strh r0, [r6]
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	ldr r0, [r5, #4]
 	mov r1, #0
@@ -1294,7 +1294,7 @@ MGCheck_PokewalkerCourse: ; 0x0204C6B4
 	bl FieldSys_GetDataOfNextMG
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl Sav2_Pokewalker_get
+	bl Save_Pokewalker_get
 	ldrb r2, [r4]
 	mov r1, #0
 	cmp r2, #0x1b
@@ -1317,7 +1317,7 @@ MGGive_PokewalkerCourse: ; 0x0204C6E0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl Sav2_Pokewalker_get
+	bl Save_Pokewalker_get
 	add r4, r0, #0
 	add r0, r5, #0
 	bl FieldSys_GetDataOfNextMG
@@ -1345,7 +1345,7 @@ MGMesageSuccess_PokewalkerCourse: ; 0x0204C700
 	strh r0, [r6]
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	ldr r0, [r5, #4]
 	mov r1, #0
@@ -1369,14 +1369,14 @@ MGMesageFailure_PokewalkerCourse: ; 0x0204C738
 	add r7, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl Sav2_Pokewalker_get
+	bl Save_Pokewalker_get
 	mov r0, #0xd1
 	strh r0, [r4]
 	mov r0, #0x1a
 	strh r0, [r6]
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	ldr r0, [r5, #4]
 	mov r1, #0
@@ -1444,7 +1444,7 @@ MGMessageSuccess_MemorialPhoto: ; 0x0204C7C8
 	strh r0, [r6]
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	ldr r0, [r5, #4]
 	mov r1, #0
@@ -1480,7 +1480,7 @@ _0204C822:
 	strh r0, [r4]
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	ldr r0, [r5, #4]
 	mov r1, #0

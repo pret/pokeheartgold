@@ -25,11 +25,11 @@ ov103_021EC940: ; 0x021EC940
 	bl OverlayManager_GetArgs
 	str r0, [r4, #8]
 	ldr r0, [r0]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	str r0, [r4]
 	ldr r0, [r4, #8]
 	ldr r0, [r0]
-	bl Sav2_Mailbox_get
+	bl Save_Mailbox_get
 	str r0, [r4, #4]
 	mov r0, #8
 	str r0, [r4, #0x28]
@@ -1225,7 +1225,7 @@ ov103_021ED2B8: ; 0x021ED2B8
 	push {r3, lr}
 	ldr r0, [r0, #8]
 	ldr r0, [r0]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	bl GetPartyCount
 	cmp r0, #0
 	ble _021ED2CE
@@ -2501,7 +2501,7 @@ ov103_021EDC68: ; 0x021EDC68
 	bl MI_CpuFill8
 	ldr r0, [r5, #8]
 	ldr r0, [r0]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [r4]
 	ldr r0, [r5, #8]
 	ldr r0, [r0]
@@ -2559,7 +2559,7 @@ ov103_021EDCE0: ; 0x021EDCE0
 	bhi _021EDD08
 	ldr r0, [r5, #8]
 	ldr r0, [r0]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	add r1, r4, #0
 	bl GetPartyMonByIndex
 	add r2, r0, #0
@@ -2659,7 +2659,7 @@ ov103_021EDD98: ; 0x021EDD98
 	bne _021EDDD8
 	ldr r0, [r4, #8]
 	ldr r0, [r0]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	add r1, r4, #0
 	add r1, #0x21
 	ldrb r1, [r1]

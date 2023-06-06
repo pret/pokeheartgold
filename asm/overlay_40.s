@@ -326,7 +326,7 @@ ov40_0222B934: ; 0x0222B934
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Sav2_Misc_get
+	bl Save_Misc_get
 	add r1, r5, #0
 	add r1, #0x5c
 	ldrb r1, [r1]
@@ -8514,7 +8514,7 @@ ov40_0222FB28: ; 0x0222FB28
 	mov r1, #0x83
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	add r1, r4, #0
 	bl GameStats_AddSpecial
 	pop {r4, pc}
@@ -10009,7 +10009,7 @@ ov40_022306F0: ; 0x022306F0
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Sav2_Misc_get
+	bl Save_Misc_get
 	add r1, sp, #4
 	str r1, [sp]
 	ldr r1, _02230734 ; =0x0000086C
@@ -15894,7 +15894,7 @@ ov40_02233550: ; 0x02233550
 	ldr r0, [sp]
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	add r4, r0, #0
 	bl ScriptState_GetBattleTowerPrintProgress
 	str r0, [sp, #0x30]
@@ -16077,7 +16077,7 @@ _022336A2:
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r7, r0]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	add r4, r0, #0
 	bl ScriptState_GetBattleTowerPrintProgress
 	str r0, [sp, #0x7c]
@@ -20669,7 +20669,7 @@ ov40_02235DAC: ; 0x02235DAC
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Sav2_Pokedex_get
+	bl Save_Pokedex_get
 	str r0, [sp]
 	add r7, r6, #0
 	cmp r6, r4
@@ -20753,7 +20753,7 @@ ov40_02235E34: ; 0x02235E34
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Sav2_Pokedex_get
+	bl Save_Pokedex_get
 	str r0, [sp, #4]
 	mov r0, #0x75
 	ldr r7, [sp]
@@ -27491,7 +27491,7 @@ _02239558:
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	ldr r1, [r6, r5]
 	bl GameStats_GetCapped
 	pop {r4, r5, r6, pc}
@@ -28300,21 +28300,21 @@ _02239C2A:
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl Sav2_PlayerData_GetIGTAddr
+	bl Save_PlayerData_GetIGTAddr
 	bl GetIGTHours
 	ldr r1, _02239ED8 ; =0x00000728
 	strh r0, [r5, r1]
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl Sav2_PlayerData_GetIGTAddr
+	bl Save_PlayerData_GetIGTAddr
 	bl GetIGTMinutes
 	ldr r1, _02239EDC ; =0x0000072A
 	strb r0, [r5, r1]
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl Sav2_PlayerData_GetIGTAddr
+	bl Save_PlayerData_GetIGTAddr
 	bl GetIGTSeconds
 	ldr r1, _02239EE0 ; =0x0000072B
 	strb r0, [r5, r1]
@@ -35169,8 +35169,8 @@ ov40_0223D544: ; 0x0223D544
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl Sav2_SysInfo_get
-	bl Sav2_SysInfo_GetField4C
+	bl Save_SysInfo_get
+	bl Save_SysInfo_GetField4C
 	str r0, [sp]
 	mov r0, #0x6d
 	str r0, [sp, #4]
@@ -37986,7 +37986,7 @@ ov40_0223EBB8: ; 0x0223EBB8
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Sav2_Pokedex_get
+	bl Save_Pokedex_get
 	str r0, [sp]
 	add r7, r6, #0
 	cmp r6, r4
@@ -38069,7 +38069,7 @@ ov40_0223EC40: ; 0x0223EC40
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Sav2_Pokedex_get
+	bl Save_Pokedex_get
 	str r0, [sp, #4]
 	ldr r0, _0223ED98 ; =0x000004C8
 	mov r1, #0
@@ -40924,7 +40924,7 @@ _0224043A:
 	str r0, [sp, #0x10]
 	str r0, [sp, #0x14]
 	ldr r0, [r5, r1]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r3, r0, #0
 	mov r0, #0x6d
 	mov r1, #0xc
@@ -49627,7 +49627,7 @@ _02244AD2:
 	add r0, r7, #0
 	add r1, #0x84
 	mov r2, #0x58
-	bl SavArray_CalcCRC16
+	bl SaveArray_CalcCRC16
 	ldr r1, _02244B2C ; =_021D2AF8
 	ldr r1, [r1]
 	add r1, #0xe4
@@ -49760,7 +49760,7 @@ _02244BCE:
 	add r0, r5, #0
 	add r1, #0x84
 	mov r2, #0x58
-	bl SavArray_CalcCRC16
+	bl SaveArray_CalcCRC16
 	ldr r1, _02244C34 ; =_021D2AF8
 	ldr r3, _02244C3C ; =0x0000FFFF
 	ldr r2, [r1]

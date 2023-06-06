@@ -35,12 +35,12 @@
 .public sub_0202457C
 .public CreateSprite
 .public Set2dSpriteAnimActiveFlag
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_GetTrainerGender
-.public Sav2_Pokedex_get
-.public Sav2_Mailbox_get
-.public Sav2_GameStats_get
+.public Save_Pokedex_get
+.public Save_Mailbox_get
+.public Save_GameStats_get
 .public Save_SpecialRibbons_get
 .public sub_02035650
 .public sub_02037FF0
@@ -81,7 +81,7 @@
 .public sub_0203F7B0
 .public sub_0203F7F4
 .public StartScriptFromMenu
-.public SavArray_Flags_get
+.public SaveArray_Flags_get
 .public FieldSys_CreateTask
 .public TaskManager_Jump
 .public FieldSys_ApplicationIsRunning
@@ -122,8 +122,8 @@
 .public GetMonData
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
-.public SavArray_IsNatDexEnabled
+.public SaveArray_PlayerParty_get
+.public SaveArray_IsNatDexEnabled
 .public sub_02075A7C
 .public sub_02075D3C
 .public sub_02075D4C

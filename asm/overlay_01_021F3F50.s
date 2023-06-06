@@ -24,7 +24,7 @@ ov01_021F3F50: ; 0x021F3F50
 	bl FlyPoints_GetPosition
 	add r6, r0, #0
 	add r0, r4, #0
-	bl Sav2_Pokedex_get
+	bl Save_Pokedex_get
 	add r7, r0, #0
 	ldr r0, [r6]
 	bl MapHeader_GetMapSec
@@ -41,10 +41,10 @@ _021F3F84:
 _021F3F86:
 	str r0, [r5]
 	add r0, r4, #0
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	str r0, [r5, #8]
 	add r0, r4, #0
-	bl Sav2_PlayerData_GetIGTAddr
+	bl Save_PlayerData_GetIGTAddr
 	str r0, [r5, #0xc]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

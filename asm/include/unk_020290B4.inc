@@ -7,7 +7,7 @@
 .public String_New
 .public CopyU16ArrayToString
 .public CopyU16ArrayToStringN
-.public SavArray_get
+.public SaveArray_get
 .public sub_020290B4
 .public sub_020290B8
 .public sub_020290BC

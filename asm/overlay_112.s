@@ -4203,19 +4203,19 @@ ov112_021E795C: ; 0x021E795C
 	ldr r1, _021E7994 ; =0x0001E434
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x20]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	ldr r1, _021E7998 ; =0x0001E438
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x20]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	ldr r1, _021E799C ; =0x0001E43C
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x20]
-	bl Sav2_Pokewalker_get
+	bl Save_Pokewalker_get
 	ldr r1, _021E79A0 ; =0x0001E440
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x20]
-	bl Sav2_Pokedex_get
+	bl Save_Pokedex_get
 	ldr r1, _021E79A4 ; =0x0001E444
 	str r0, [r4, r1]
 	pop {r4, pc}
@@ -4596,7 +4596,7 @@ ov112_021E7CC8: ; 0x021E7CC8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x20]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	mov r1, #0x9a
 	bl PlayerProfile_GetPlayerName_NewString
 	add r4, r0, #0
@@ -6686,7 +6686,7 @@ ov112_021E90FC: ; 0x021E90FC
 	sub sp, #0x10
 	add r5, r0, #0
 	ldr r0, [r1, #0x20]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	mov r1, #0x9a
 	bl PlayerProfile_GetPlayerName_NewString
 	add r4, r0, #0
@@ -7310,7 +7310,7 @@ ov112_021E95A0: ; 0x021E95A0
 	add r2, sp, #0
 	bl sub_02032674
 	ldr r0, [r6, #0x20]
-	bl Sav2_Pokedex_get
+	bl Save_Pokedex_get
 	bl Pokedex_GetNatDexFlag
 	cmp r0, #0
 	beq _021E95C4
@@ -7362,7 +7362,7 @@ ov112_021E9610: ; 0x021E9610
 	add r6, r0, #0
 	ldr r0, [r6, #0x20]
 	str r1, [sp]
-	bl Sav2_Pokedex_get
+	bl Save_Pokedex_get
 	bl Pokedex_GetNatDexFlag
 	cmp r0, #0
 	beq _021E9628
@@ -18674,7 +18674,7 @@ _021EEF86:
 	bl GetStoragePCPointer
 	add r4, r0, #0
 	ldr r0, [r5, #0x20]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	mov r1, #0
 	str r1, [sp]
 	add r3, r0, #0
@@ -19114,7 +19114,7 @@ ov112_021EF31C: ; 0x021EF31C
 	ldr r0, [r4, #0x20]
 	cmp r6, #0x12
 	bne _021EF38C
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	ldr r1, [r5, #0x10]
 	bl GetPartyMonByIndex
 	add r6, r0, #0
@@ -19227,7 +19227,7 @@ _021EF414:
 	cmp r5, #0x12
 	ldr r0, [r2, #0x20]
 	bne _021EF4D6
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	add r1, r4, #0
 	bl GetPartyMonByIndex
 	mov r1, #0
@@ -22751,10 +22751,10 @@ _021F0FB8:
 _021F0FC2:
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Sav2_Pokewalker_get
+	bl Save_Pokewalker_get
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r4, r0, #0
 	bl PlayerProfile_GetTrainerGender
 	str r0, [r5, #0xc]
@@ -27236,9 +27236,9 @@ ov112_021F3244: ; 0x021F3244
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r0, r5, #0
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	mov r2, #0x7d
 	add r6, r0, #0
 	mov r0, #0
@@ -27384,7 +27384,7 @@ ov112_021F336C: ; 0x021F336C
 	add r6, r1, #0
 	add r5, r0, #0
 	add r0, r6, #0
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r4, r0, #0
 	bl PlayerProfile_GetTrainerID
 	str r0, [r5]
@@ -27710,7 +27710,7 @@ _021F35F6:
 ov112_021F3608: ; 0x021F3608
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r1, #0
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	ldr r5, _021F362C ; =ov112_021FF4D4
 	add r7, r0, #0
 	mov r4, #0
@@ -27732,7 +27732,7 @@ _021F362C: .word ov112_021FF4D4
 ov112_021F3630: ; 0x021F3630
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r1, #0
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	ldr r5, _021F3660 ; =ov112_021FF4D4
 	add r6, r0, #0
 	mov r4, #0

@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public GF_AssertFail
-.public SavArray_get
+.public SaveArray_get
 .public SaveSubstruct_AssertCRC
 .public SaveSubstruct_UpdateCRC
 .public sub_0202CA24

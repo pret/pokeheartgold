@@ -456,7 +456,7 @@ ov80_02238384: ; 0x02238384
 	sub sp, #8
 	ldr r0, [r0, #4]
 	add r4, r1, #0
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	mov r3, #0
 	add r1, r0, #0
 	str r3, [sp]
@@ -490,7 +490,7 @@ ov80_022383C0: ; 0x022383C0
 	sub sp, #8
 	add r5, r0, #0
 	ldr r0, [r5, #0x74]
-	bl SavArray_Party_init
+	bl SaveArray_Party_init
 	ldrb r0, [r5, #0x10]
 	mov r1, #1
 	bl BattleArcade_GetOpponentMonCount

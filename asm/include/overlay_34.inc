@@ -65,7 +65,7 @@
 .public String_New
 .public String_dtor
 .public CopyU16ArrayToString
-.public Sav2_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetTrainerGender

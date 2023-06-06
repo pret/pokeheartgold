@@ -118,7 +118,7 @@ BOOL ov36_App_InitGameState_AfterOakSpeech_AppExec(OVY_MANAGER* man, int* state)
     struct UnkStruct_02111868_sub* unk_work = OverlayManager_GetArgs(man);
     SAVEDATA* savedata = unk_work->savedata;
     InitGameStateAfterOakSpeech_Internal(HEAPID_OV36, savedata, TRUE);
-    sub_0201838C(Sav2_PlayerData_GetIGTAddr(savedata));
+    sub_0201838C(Save_PlayerData_GetIGTAddr(savedata));
 
     return TRUE;
 }
@@ -143,20 +143,20 @@ BOOL ov36_App_MainMenu_SelectOption_Continue_AppExec(OVY_MANAGER* man, int* stat
 #pragma unused(state)
     struct UnkStruct_02111868_sub* unk_work = OverlayManager_GetArgs(man);
     SAVEDATA* savedata = unk_work->savedata;
-    SYSINFO* sys_info = Sav2_SysInfo_get(savedata);
+    SYSINFO* sys_info = Save_SysInfo_get(savedata);
 
     Continue_LoadSaveData_HandleError(HEAPID_OV36, savedata);
 
     Options_SetButtonModeOnMain(savedata, 0);
 
-    if (!Sav2_SysInfo_MacAddressIsMine(sys_info) || !Sav2_SysInfo_RTCOffsetIsMine(sys_info)) {
-        SysInfoRTC_HandleContinueOnNewConsole(Sav2_SysInfo_RTC_get(savedata));
-        Sav2_BerryPotRTC_init(Sav2_BerryPotRTC_get(savedata));
-        Sav2_SysInfo_InitFromSystem(sys_info);
-        Party_ResetAllShayminToLandForme(SavArray_PlayerParty_get(savedata));
+    if (!Save_SysInfo_MacAddressIsMine(sys_info) || !Save_SysInfo_RTCOffsetIsMine(sys_info)) {
+        SysInfoRTC_HandleContinueOnNewConsole(Save_SysInfo_RTC_get(savedata));
+        Save_BerryPotRTC_init(Save_BerryPotRTC_get(savedata));
+        Save_SysInfo_InitFromSystem(sys_info);
+        Party_ResetAllShayminToLandForme(SaveArray_PlayerParty_get(savedata));
     }
 
-    sub_0201838C(Sav2_PlayerData_GetIGTAddr(savedata));
+    sub_0201838C(Save_PlayerData_GetIGTAddr(savedata));
 
     return TRUE;
 }
@@ -175,13 +175,13 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SAVEDATA* saved
     MSGDATA* friend_names_msgdata;
     STRING* author_name;
 
-    Sav2_SysInfo_InitFromSystem(Sav2_SysInfo_get(savedata));
-    Sav2_SysInfo_RTC_init(Sav2_SysInfo_RTC_get(savedata));
-    Sav2_BerryPotRTC_init(Sav2_BerryPotRTC_get(savedata));
+    Save_SysInfo_InitFromSystem(Save_SysInfo_get(savedata));
+    Save_SysInfo_RTC_init(Save_SysInfo_RTC_get(savedata));
+    Save_BerryPotRTC_init(Save_BerryPotRTC_get(savedata));
     sub_0202C7C0(Save_FriendGroup_get(savedata), 1, MTRandom());
     sub_020674BC(savedata);
 
-    PLAYERPROFILE* profile = Sav2_PlayerData_GetProfileAddr(savedata);
+    PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(savedata);
     u32 rand = MTRandom();
 
     if (set_trainer_id) {
@@ -193,16 +193,16 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SAVEDATA* saved
 
     PlayerProfile_SetAvatar(profile, sub_0205B418(rand, PlayerProfile_GetTrainerGender(profile), 0));
 
-    sub_0202AE0C(Sav2_FieldApricornTrees_get(savedata));
+    sub_0202AE0C(Save_FieldApricornTrees_get(savedata));
 
-    u32* pokewalker_unk = sub_02032728(Sav2_Pokewalker_get(savedata));
+    u32* pokewalker_unk = sub_02032728(Save_Pokewalker_get(savedata));
     for (i = 0; i < 10; i++) {
         pokewalker_unk[i] = MTRandom();
     }
 
     // Put an email from your friend into your PC.
     friend_names_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0445_bin, HEAP_ID_3);
-    MAILBOX* mailbox = Sav2_Mailbox_get(savedata);
+    MAILBOX* mailbox = Save_Mailbox_get(savedata);
     Pokemon *mon = AllocMonZeroed(HEAP_ID_3);
 
     CreateMon(mon, SPECIES_MARILL, 1, 0, FALSE, 0, OT_ID_PLAYER_ID, 0);
@@ -242,12 +242,12 @@ static void Continue_LoadSaveData_HandleError(HeapID heap_id, SAVEDATA* savedata
 
 static void NewGame_InitSaveData(HeapID heap_id, SAVEDATA* savedata) {
 #pragma unused(heap_id)
-    Sav2_InitDynamicRegion(savedata);
+    Save_InitDynamicRegion(savedata);
     Save_CurrentLocation_BackUp(savedata);
 
-    PlayerProfile_SetMoney(Sav2_PlayerData_GetProfileAddr(savedata), 3000);
+    PlayerProfile_SetMoney(Save_PlayerData_GetProfileAddr(savedata), 3000);
 
-    ScriptState_SetFishingCompetitionLengthRecord(SavArray_Flags_get(savedata), 56150); // 3'6"
+    ScriptState_SetFishingCompetitionLengthRecord(SaveArray_Flags_get(savedata), 56150); // 3'6"
 
-    SetFlag960(SavArray_Flags_get(savedata));
+    SetFlag960(SaveArray_Flags_get(savedata));
 }

@@ -493,7 +493,7 @@ _02258C56:
 	mov r1, #2
 	bl ReadMsgDataIntoString
 	ldr r0, [r4, #4]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
@@ -629,7 +629,7 @@ _02258D7A:
 	mov r1, #3
 	bl ReadMsgDataIntoString
 	ldr r0, [r4, #4]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	bl Options_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
@@ -1281,7 +1281,7 @@ _022592FE:
 	lsl r2, r2, #0xa
 	bl MIi_CpuClear16
 	ldr r0, [r4, #4]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	bl Options_GetFrame
 	add r5, r0, #0
 	bl sub_0200E640
@@ -2644,7 +2644,7 @@ ov89_02259E50: ; 0x02259E50
 	mov r2, #0x48
 	bl MI_CpuFill8
 	add r0, r4, #0
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [sp, #4]
 	bl GetPartyCount
 	add r7, r0, #0

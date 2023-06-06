@@ -2,8 +2,8 @@
 #pragma once
 .public AllocFromHeapAtEnd
 .public FreeToHeap
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetOptionsAddr
 .public UpdatePokedexWithReceivedSpecies
 .public MapHeader_GetMapSec
 .public FieldSys_GetSaveDataPtr

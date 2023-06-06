@@ -180,9 +180,9 @@
 .public Thunk_G3X_Reset
 .public GF_3DVramMan_InitLinkedListTexVramManager
 .public GF_3DVramMan_InitLinkedListPlttVramManager
-.public Sav2_SysInfo_RTC_get
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_SysInfo_RTC_get
+.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetTrainerGender
 .public Options_GetTextSpeed
@@ -194,7 +194,7 @@
 .public SafariZone_SwapAreasInSet
 .public SafariZone_InitAreaInSet
 .public SafariZone_AddObjectToArea
-.public SavArray_Flags_get
+.public SaveArray_Flags_get
 .public ChangeFlag99D
 .public sub_0208820C
 .public sub_02097268

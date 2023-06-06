@@ -69,7 +69,7 @@ _021E5960:
 	ldr r1, _021E5A20 ; =0x0000C334
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	str r0, [r5, #8]
 	bl ov69_021E60F8
 	bl ov69_021E6118

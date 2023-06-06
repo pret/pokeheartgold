@@ -3,7 +3,7 @@
 
 BOOL ScrCmd_AddMoney(SCRIPTCONTEXT* ctx) {
     SAVEDATA* savedata = FieldSys_GetSaveDataPtr(ctx->fsys);
-    PLAYERPROFILE* profile = Sav2_PlayerData_GetProfileAddr(savedata);
+    PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(savedata);
 
     u32 amount = ScriptReadWord(ctx);
     PlayerProfile_AddMoney(profile, amount);
@@ -13,7 +13,7 @@ BOOL ScrCmd_AddMoney(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_SubMoneyImmediate(SCRIPTCONTEXT* ctx) {
     SAVEDATA* savedata = FieldSys_GetSaveDataPtr(ctx->fsys);
-    PLAYERPROFILE* profile = Sav2_PlayerData_GetProfileAddr(savedata);
+    PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(savedata);
 
     u32 amount = ScriptReadWord(ctx);
     PlayerProfile_SubMoney(profile, amount);
@@ -23,7 +23,7 @@ BOOL ScrCmd_SubMoneyImmediate(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_SubMoneyVar(SCRIPTCONTEXT* ctx) {
     SAVEDATA* savedata = FieldSys_GetSaveDataPtr(ctx->fsys);
-    PLAYERPROFILE* profile = Sav2_PlayerData_GetProfileAddr(savedata);
+    PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(savedata);
 
     u16 amount = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     PlayerProfile_SubMoney(profile, amount);
@@ -33,7 +33,7 @@ BOOL ScrCmd_SubMoneyVar(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_HasEnoughMoneyImmediate(SCRIPTCONTEXT* ctx) {
     SAVEDATA* savedata = FieldSys_GetSaveDataPtr(ctx->fsys);
-    PLAYERPROFILE* profile = Sav2_PlayerData_GetProfileAddr(savedata);
+    PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(savedata);
     u16* ret_ptr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
 
     u32 amount = ScriptReadWord(ctx);
@@ -49,7 +49,7 @@ BOOL ScrCmd_HasEnoughMoneyImmediate(SCRIPTCONTEXT* ctx) {
 
 BOOL ScrCmd_HasEnoughMoneyVar(SCRIPTCONTEXT* ctx) {
     SAVEDATA* savedata = FieldSys_GetSaveDataPtr(ctx->fsys);
-    PLAYERPROFILE* profile = Sav2_PlayerData_GetProfileAddr(savedata);
+    PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(savedata);
     u16* ret_ptr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
 
     u16 amount = VarGet(ctx->fsys, ScriptReadHalfword(ctx));

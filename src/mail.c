@@ -99,8 +99,8 @@ void Mail_SetNewMessageDetails(MAIL *mail, u8 mailType, u8 mon_no, SAVEDATA *sav
     Mail_init(mail);
     mail->mail_type = mailType;
 
-    party = SavArray_PlayerParty_get(saveData);
-    profile = Sav2_PlayerData_GetProfileAddr(saveData);
+    party = SaveArray_PlayerParty_get(saveData);
+    profile = Save_PlayerData_GetProfileAddr(saveData);
 
     CopyU16StringArray(mail->author_name, PlayerProfile_GetNamePtr(profile));
     mail->author_gender = PlayerProfile_GetTrainerGender(profile);
@@ -254,15 +254,15 @@ void Mail_SetMessage(MAIL *mail, const MAIL_MESSAGE *src, int i) {
     }
 }
 
-MAILBOX *Sav2_Mailbox_get(SAVEDATA *saveData) {
-    return (MAILBOX *)SavArray_get(saveData, SAVE_MAILBOX);
+MAILBOX *Save_Mailbox_get(SAVEDATA *saveData) {
+    return (MAILBOX *)SaveArray_get(saveData, SAVE_MAILBOX);
 }
 
-u32 Sav2_Mailbox_sizeof(void) {
+u32 Save_Mailbox_sizeof(void) {
     return sizeof(MAILBOX);
 }
 
-void Sav2_Mailbox_init(MAILBOX *mailbox) {
+void Save_Mailbox_init(MAILBOX *mailbox) {
     int i;
     for (i = 0; i < MAILBOX_MSG_COUNT; i++) {
         Mail_init(&mailbox->msgs[i]);

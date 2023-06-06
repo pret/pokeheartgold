@@ -7,7 +7,7 @@
 .public LCRandom
 .public GF_AssertFail
 .public sub_020270F8
-.public Sav2_GameStats_get
+.public Save_GameStats_get
 .public GameStats_AddSpecial
 .public sub_0202EC70
 .public sub_02051A98

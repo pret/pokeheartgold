@@ -22,7 +22,7 @@
 .public Camera_SetAngle
 .public Camera_SetDistance
 .public GF_AssertFail
-.public Sav2_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetTrainerGender
 .public Save_PhotoAlbum_get
@@ -93,7 +93,7 @@
 .public MonIsShiny
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SaveArray_PlayerParty_get
 .public MI_CpuFill8
 .public MI_CpuCopy8
 .public NNS_G3dGlb

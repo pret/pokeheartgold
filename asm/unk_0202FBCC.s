@@ -365,7 +365,7 @@ _0202FE36:
 	add r0, r7, #0
 	add r1, r5, #0
 	mov r2, #0x58
-	bl SavArray_CalcCRC16
+	bl SaveArray_CalcCRC16
 	add r5, #0x60
 	strh r0, [r5]
 	ldr r0, _0202FEA8 ; =0x0000E281
@@ -374,7 +374,7 @@ _0202FE36:
 	strh r0, [r4, r2]
 	add r0, r7, #0
 	add r2, r2, #2
-	bl SavArray_CalcCRC16
+	bl SaveArray_CalcCRC16
 	ldr r1, _0202FEB0 ; =0x00001C64
 	ldr r3, _0202FEB4 ; =0x0000FFFF
 	strh r0, [r4, r1]
@@ -831,7 +831,7 @@ _020301AC:
 _020301B0:
 	add r1, r5, #0
 	mov r2, #0x58
-	bl SavArray_CalcCRC16
+	bl SaveArray_CalcCRC16
 	add r5, #0x60
 	ldrh r1, [r5]
 	cmp r0, r1
@@ -842,7 +842,7 @@ _020301C4:
 	ldr r2, _02030244 ; =0x00001C64
 	add r0, r6, #0
 	add r1, r4, #0
-	bl SavArray_CalcCRC16
+	bl SaveArray_CalcCRC16
 	ldr r1, _02030244 ; =0x00001C64
 	ldrh r1, [r4, r1]
 	cmp r0, r1
@@ -1400,7 +1400,7 @@ sub_020304F0: ; 0x020304F0
 	add r0, #0x2c
 	str r1, [r6, r0]
 	ldr r0, [sp]
-	bl Sav2_Pokedex_get
+	bl Save_Pokedex_get
 	mov r1, #0x11
 	lsl r1, r1, #4
 	ldr r1, [r6, r1]
@@ -1483,7 +1483,7 @@ _02030614:
 	cmp r7, #4
 	blt _02030604
 	ldr r0, [sp]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	mov r1, #0x13
 	lsl r1, r1, #4
 	ldr r1, [r6, r1]

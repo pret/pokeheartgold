@@ -25,22 +25,22 @@ typedef struct SYSINFO {
     u8 unk50[0xC];
 } SYSINFO;
 
-u32 Sav2_SysInfo_sizeof(void);
-void Sav2_SysInfo_init(SYSINFO* sys_info);
-SYSINFO* Sav2_SysInfo_get(SAVEDATA* savedata);
-SYSINFO_RTC* Sav2_SysInfo_RTC_get(SAVEDATA* savedata);
-void Sav2_SysInfo_InitFromSystem(SYSINFO* sys_info);
-BOOL Sav2_SysInfo_MacAddressIsMine(SYSINFO* sys_info);
-BOOL Sav2_SysInfo_RTCOffsetIsMine(SYSINFO* sys_info);
-u8 Sav2_SysInfo_GetBirthMonth(SYSINFO* sys_info);
-u8 Sav2_SysInfo_GetBirthDay(SYSINFO* sys_info);
-u8 Sav2_SysInfo_GetField48(SYSINFO* sys_info);
-void Sav2_SysInfo_SetField48(SYSINFO* sys_info, u8);
-void* Sav2_SysInfo_GetField4C(SYSINFO* sys_info);
-void Sav2_SysInfo_SetField4C(SYSINFO* sys_info, void*);
-void Sav2_SysInfo_RTC_init(SYSINFO_RTC* rtc_info);
+u32 Save_SysInfo_sizeof(void);
+void Save_SysInfo_init(SYSINFO* sys_info);
+SYSINFO* Save_SysInfo_get(SAVEDATA* savedata);
+SYSINFO_RTC* Save_SysInfo_RTC_get(SAVEDATA* savedata);
+void Save_SysInfo_InitFromSystem(SYSINFO* sys_info);
+BOOL Save_SysInfo_MacAddressIsMine(SYSINFO* sys_info);
+BOOL Save_SysInfo_RTCOffsetIsMine(SYSINFO* sys_info);
+u8 Save_SysInfo_GetBirthMonth(SYSINFO* sys_info);
+u8 Save_SysInfo_GetBirthDay(SYSINFO* sys_info);
+u8 Save_SysInfo_GetField48(SYSINFO* sys_info);
+void Save_SysInfo_SetField48(SYSINFO* sys_info, u8);
+void* Save_SysInfo_GetField4C(SYSINFO* sys_info);
+void Save_SysInfo_SetField4C(SYSINFO* sys_info, void*);
+void Save_SysInfo_RTC_init(SYSINFO_RTC* rtc_info);
 BOOL sub_02028E1C(SYSINFO_RTC* rtc_info);
-void Sav2_SysInfo_RTC_SubField34(SYSINFO_RTC* rtc_info, u32);
+void Save_SysInfo_RTC_SubField34(SYSINFO_RTC* rtc_info, u32);
 void SysInfoRTC_HandleContinueOnNewConsole(SYSINFO_RTC* rtc_info);
 
 #endif

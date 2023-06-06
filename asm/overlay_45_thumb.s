@@ -1342,7 +1342,7 @@ ov45_0222A844: ; 0x0222A844
 	add r1, r5, #0
 	add r0, r4, #0
 	add r1, #8
-	bl Sav2_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_set
 	mov r0, #0x20
 	add r1, r7, #0
 	bl String_New
@@ -2673,7 +2673,7 @@ _0222B0F4: .word ov45_0222BD94
 ov45_0222B0F8: ; 0x0222B0F8
 	push {r3, lr}
 	ldr r0, [r0]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	mov r1, #0x2f
 	bl GameStats_Inc
 	pop {r3, pc}
@@ -2683,7 +2683,7 @@ ov45_0222B0F8: ; 0x0222B0F8
 ov45_0222B108: ; 0x0222B108
 	push {r3, lr}
 	ldr r0, [r0]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	mov r1, #0x77
 	bl GameStats_Inc
 	pop {r3, pc}
@@ -2881,7 +2881,7 @@ ov45_0222B244: ; 0x0222B244
 	bl GF_AssertFail
 _0222B254:
 	ldr r0, [r4]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	ldr r1, _0222B26C ; =0x00000528
 	ldr r1, [r4, r1]
 	bl sub_02078DD8
@@ -3687,19 +3687,19 @@ ov45_0222B8A0: ; 0x0222B8A0
 	str r1, [sp]
 	add r0, r1, #0
 	add r4, r2, #0
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	str r0, [sp, #0x18]
 	ldr r0, [sp]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [sp, #0x14]
 	ldr r0, [sp]
-	bl Sav2_Pokedex_get
+	bl Save_Pokedex_get
 	str r0, [sp, #0xc]
 	ldr r0, [sp]
 	bl sub_0202CA44
 	str r0, [sp, #0x10]
 	ldr r0, [sp]
-	bl Sav2_SysInfo_RTC_get
+	bl Save_SysInfo_RTC_get
 	str r0, [sp, #8]
 	ldr r0, [sp, #0x18]
 	add r1, r4, #0
@@ -3942,7 +3942,7 @@ ov45_0222BAC4: ; 0x0222BAC4
 	add r1, r4, #0
 	add r1, #0x20
 	mov r2, #0x94
-	bl SavArray_CalcCRC16
+	bl SaveArray_CalcCRC16
 	add r4, #0xb4
 	str r0, [r4]
 	pop {r4, pc}
@@ -3957,7 +3957,7 @@ ov45_0222BADC: ; 0x0222BADC
 	add r1, r4, #0
 	add r1, #0x20
 	mov r2, #0x94
-	bl SavArray_CalcCRC16
+	bl SaveArray_CalcCRC16
 	add r4, #0xb4
 	ldr r1, [r4]
 	cmp r0, r1
@@ -6510,7 +6510,7 @@ ov45_0222CCA4: ; 0x0222CCA4
 	ldr r0, [r4, #0x44]
 	add r1, r4, #0
 	mov r2, #0x44
-	bl SavArray_CalcCRC16
+	bl SaveArray_CalcCRC16
 	add r4, #0x48
 	strh r0, [r4]
 	pop {r4, pc}
@@ -6523,7 +6523,7 @@ ov45_0222CCB8: ; 0x0222CCB8
 	ldr r0, [r4, #0x44]
 	add r1, r4, #0
 	mov r2, #0x44
-	bl SavArray_CalcCRC16
+	bl SaveArray_CalcCRC16
 	add r1, r4, #0
 	add r1, #0x48
 	ldrh r1, [r1]

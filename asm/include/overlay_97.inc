@@ -91,7 +91,7 @@
 .public PCStorage_GetMonByIndexPair
 .public GetPartyMonByIndex
 .public Party_GetUnkSubSlot
-.public SavArray_PlayerParty_get
+.public SaveArray_PlayerParty_get
 .public sub_0208B85C
 .public sub_020932E0
 .public sub_02093354

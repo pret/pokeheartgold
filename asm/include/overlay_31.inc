@@ -60,8 +60,8 @@
 .public GF_AssertFail
 .public String_New
 .public String_dtor
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_GetMoney
 .public Options_GetTextFrameDelay
 .public Options_GetFrame

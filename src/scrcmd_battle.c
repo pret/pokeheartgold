@@ -105,8 +105,8 @@ BOOL ScrCmd_TrainerBattle(SCRIPTCONTEXT *ctx) {
     u8 var3 = ScriptReadByte(ctx);
     u16 followerTrainerNum = 0;
 
-    if (ScriptState_CheckHaveFollower(SavArray_Flags_get(ctx->fsys->savedata)) == TRUE) {
-        followerTrainerNum = ScriptState_GetFollowerTrainerNum(SavArray_Flags_get(fsys->savedata));
+    if (ScriptState_CheckHaveFollower(SaveArray_Flags_get(ctx->fsys->savedata)) == TRUE) {
+        followerTrainerNum = ScriptState_GetFollowerTrainerNum(SaveArray_Flags_get(fsys->savedata));
     }
 
     SetupAndStartTrainerBattle(ctx->taskman, var0, var1, followerTrainerNum, var2, var3, HEAP_ID_FIELD, winFlag);
@@ -232,7 +232,7 @@ BOOL ScrCmd_588(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_PartyCheckForDouble(SCRIPTCONTEXT *ctx) {
     u16 *doubleBattlePtr = ScriptGetVarPointer(ctx);
-    *doubleBattlePtr = HasEnoughAlivePokemonForDoubleBattle(SavArray_PlayerParty_get(ctx->fsys->savedata));
+    *doubleBattlePtr = HasEnoughAlivePokemonForDoubleBattle(SaveArray_PlayerParty_get(ctx->fsys->savedata));
     return FALSE;
 }
 

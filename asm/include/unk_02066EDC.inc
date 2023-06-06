@@ -4,8 +4,8 @@
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public GF_AssertFail
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_TestBadgeFlag
 .public sub_0202C7DC
 .public Save_FriendGroup_get
@@ -50,8 +50,8 @@
 .public sub_02067584
 .public sub_0206759C
 .public GetPartyCount
-.public SavArray_PlayerParty_get
-.public SavArray_IsNatDexEnabled
+.public SaveArray_PlayerParty_get
+.public SaveArray_IsNatDexEnabled
 .public SaveGetBag
 .public sub_02088288
 .public sub_0208828C

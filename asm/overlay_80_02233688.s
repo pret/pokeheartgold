@@ -644,7 +644,7 @@ _02233B96:
 _02233B9C:
 	ldr r0, [sp, #0x24]
 	ldr r0, [r0, #8]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	add r7, r0, #0
 	ldr r0, _02233E44 ; =0x00000412
 	mov r5, #0
@@ -905,7 +905,7 @@ _02233DAA:
 	bne _02233DBE
 	ldr r0, [sp, #0x24]
 	ldr r0, [r0, #8]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	b _02233DC4
 _02233DBE:
 	ldr r0, [sp, #0x1c]

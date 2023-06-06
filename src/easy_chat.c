@@ -169,11 +169,11 @@ BOOL GetCategoryAndMsgNoByECWordIdx(u16 ecWord, u32 *category, u32 *msgno) {
     return FALSE;
 }
 
-u32 Sav2_EasyChat_sizeof(void) {
+u32 Save_EasyChat_sizeof(void) {
     return sizeof(SAVE_EASY_CHAT_T);
 }
 
-void Sav2_EasyChat_init(SAVE_EASY_CHAT_T *ec) {
+void Save_EasyChat_init(SAVE_EASY_CHAT_T *ec) {
     int i;
 
     ec->greetings = 0;
@@ -189,7 +189,7 @@ void Sav2_EasyChat_init(SAVE_EASY_CHAT_T *ec) {
 
 SAVE_EASY_CHAT_T *SaveData_EasyChat_get(SAVEDATA *saveData) {
     SaveSubstruct_AssertCRC(SAVE_EASY_CHAT);
-    return SavArray_get(saveData, SAVE_EASY_CHAT);
+    return SaveArray_get(saveData, SAVE_EASY_CHAT);
 }
 
 BOOL SaveEasyChat_GetTrendySayingFlag(SAVE_EASY_CHAT_T *ec, int flag) {

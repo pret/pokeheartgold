@@ -199,7 +199,7 @@ ov17_02201D30: ; 0x02201D30
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r4, r0, #0
 	bl Options_GetTextFrameDelay
 	add r1, r5, #0
@@ -218,7 +218,7 @@ ov17_02201D30: ; 0x02201D30
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0xc]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	str r0, [r5, #0x10]
 	ldr r0, [r5]
 	bl ov16_022014A0
@@ -226,12 +226,12 @@ ov17_02201D30: ; 0x02201D30
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0xc]
-	bl Sav2_BerryPots_get
+	bl Save_BerryPots_get
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0xc]
-	bl Sav2_BerryPotRTC_get
+	bl Save_BerryPotRTC_get
 	str r0, [r5, #0x18]
 	ldr r1, [r5, #4]
 	ldrb r0, [r1, #0x14]

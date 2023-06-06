@@ -12,7 +12,7 @@
 .public sub_020247D4
 .public sub_020248AC
 .public sub_02024A04
-.public Sav2_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfileAddr
 .public sub_02030E98
 .public sub_02034818
 .public BattleSetup_Delete
@@ -23,7 +23,7 @@
 .public GetMonExpBySpeciesAndLevel
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SaveArray_PlayerParty_get
 .public sub_02096808
 .public sub_02096810
 .public sub_02096818

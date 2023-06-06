@@ -28,10 +28,10 @@ sub_02066EDC: ; 0x02066EDC
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r7, #0
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	str r0, [r4, #0xc]
 	add r0, r7, #0
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [r4]
 	add r0, r7, #0
 	bl SaveGetBag
@@ -166,13 +166,13 @@ sub_02066FEC: ; 0x02066FEC
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [r4]
 	add r0, r5, #0
-	bl SavArray_IsNatDexEnabled
+	bl SaveArray_IsNatDexEnabled
 	str r0, [r4, #0x1c]
 	add r0, r5, #0
 	bl sub_02088288
@@ -202,7 +202,7 @@ sub_02066FEC: ; 0x02066FEC
 	add r0, r4, #0
 	bl sub_02089D40
 	add r0, r5, #0
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_0208AD34
@@ -906,7 +906,7 @@ sub_0206759C: ; 0x0206759C
 	bl TrainerCard_GetBadgeShininessArr
 	add r4, r0, #0
 	add r0, r5, #0
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r7, r0, #0
 	ldr r0, [sp]
 	mov r1, #0xa

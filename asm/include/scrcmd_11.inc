@@ -16,7 +16,7 @@
 .public PRandom
 .public GF_AssertFail
 .public String_dtor
-.public Sav2_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetPlayerName_NewString
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetTrainerGender
@@ -26,7 +26,7 @@
 .public sub_0202BB08
 .public sub_0202BBD8
 .public Save_DressupData_get
-.public Sav2_SealCase_get
+.public Save_SealCase_get
 .public GiveOrTakeSeal
 .public SealCase_CheckSealQuantity
 .public Save_SpecialRibbons_get
@@ -41,14 +41,14 @@
 .public PhotoAlbum_GetIndexOfFirstEmptySlot
 .public PhotoAlbum_GetNumSaved
 .public PhotoAlbum_SetPhotoAtIndex
-.public Sav2_Pokewalker_get
+.public Save_Pokewalker_get
 .public Pokewalker_CourseIsUnlocked
 .public Pokewalker_UnlockCourse
 .public FieldSys_GetSaveDataPtr
 .public ScriptReadHalfword
 .public FieldSysGetAttrAddr
 .public GetVarPointer
-.public SavArray_Flags_get
+.public SaveArray_Flags_get
 .public GiveEgg
 .public sub_02066B9C
 .public ScriptState_GetVar404C
@@ -64,7 +64,7 @@
 .public SetMonPersonality
 .public AddMonToParty
 .public GetPartyCount
-.public SavArray_PlayerParty_get
+.public SaveArray_PlayerParty_get
 .public BagHasSpaceForItem
 .public BagAddItem
 .public BagHasItem

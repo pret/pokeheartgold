@@ -144,7 +144,7 @@
 .public CopyU16ArrayToString
 .public PlayerProfile_new
 .public PlayerProfile_copy
-.public Sav2_Profile_PlayerName_set
+.public Save_Profile_PlayerName_set
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetPlayerName_NewString
 .public PlayerProfile_GetTrainerID
@@ -157,7 +157,7 @@
 .public sub_0202C2F8
 .public sub_0202C338
 .public sub_0202C6F4
-.public Sav2_Chatot_get
+.public Save_Chatot_get
 .public Chatot_invalidate
 .public GameStats_Inc
 .public Save_SpecialRibbons_get
@@ -182,7 +182,7 @@
 .public sub_0203A1C4
 .public sub_0203A280
 .public sub_0203A880
-.public SavArray_Flags_get
+.public SaveArray_Flags_get
 .public sub_02055198
 .public ScriptState_GetVar404C
 .public ScriptState_SetVar404C
@@ -201,7 +201,7 @@
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx
 .public sub_02074490
-.public SavArray_Party_sizeof
+.public SaveArray_Party_sizeof
 .public InitPartyWithMaxSize
 .public GetPartyCount
 .public GetPartyMonByIndex

@@ -135,7 +135,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_dtor
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetOptionsAddr
 .public Options_GetFrame
 .public NNS_G2dInitOamManagerModule
 .public GX_LoadBGPltt

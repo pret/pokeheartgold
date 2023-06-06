@@ -33,7 +33,7 @@ ov75_02246960: ; 0x02246960
 	bl OverlayManager_GetArgs
 	ldr r0, [r0, #8]
 	str r0, [r4, #4]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	str r0, [r4, #8]
 	mov r0, #0x64
 	mov r1, #0x73
@@ -526,7 +526,7 @@ ov75_02246D08: ; 0x02246D08
 	str r0, [sp, #0x10]
 	str r0, [sp, #0x14]
 	ldr r0, [r4, #4]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r3, r0, #0
 	mov r0, #4
 	str r0, [sp]
@@ -614,7 +614,7 @@ ov75_02246DB4: ; 0x02246DB4
 	str r0, [sp, #0x18]
 	str r0, [sp, #0x1c]
 	ldr r0, [r4, #4]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r3, r0, #0
 	mov r0, #5
 	str r0, [sp]
@@ -682,7 +682,7 @@ ov75_02246E3C: ; 0x02246E3C
 	str r0, [sp, #0x10]
 	str r0, [sp, #0x14]
 	ldr r0, [r4, #4]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r3, r0, #0
 	mov r0, #6
 	str r0, [sp]
@@ -764,7 +764,7 @@ ov75_02246EDC: ; 0x02246EDC
 	cmp r0, #0
 	beq _02246EF4
 	ldr r0, [r4, #4]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl SetFlag970
 _02246EF4:
 	add r0, r4, #0
@@ -4060,23 +4060,23 @@ ov75_02248994: ; 0x02248994
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #4]
-	bl Sav2_SysInfo_get
+	bl Save_SysInfo_get
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_0202C08C
 	add r7, r0, #0
 	add r0, r4, #0
-	bl Sav2_SysInfo_GetField4C
+	bl Save_SysInfo_GetField4C
 	cmp r0, #0
 	bne _022489CC
 	add r0, r6, #0
 	bl sub_0203A040
 	add r1, r0, #0
 	add r0, r4, #0
-	bl Sav2_SysInfo_SetField4C
+	bl Save_SysInfo_SetField4C
 _022489CC:
 	add r0, r4, #0
-	bl Sav2_SysInfo_GetField4C
+	bl Save_SysInfo_GetField4C
 	add r4, r0, #0
 	add r0, r7, #0
 	bl DWC_CreateFriendKey
@@ -4927,7 +4927,7 @@ _0224902E:
 	bne _0224906C
 	ldr r0, [r4]
 	ldr r0, [r0, #4]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r2, r0, #0
 	ldr r0, [r4, #0x20]
 	mov r1, #0

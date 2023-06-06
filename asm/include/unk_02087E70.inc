@@ -6,7 +6,7 @@
 .public CreateHeap
 .public DestroyHeap
 .public GX_SwapDisplay
-.public Sav2_Misc_get
+.public Save_Misc_get
 .public sub_0202AC0C
 .public sub_0203E354
 .public sub_02055198

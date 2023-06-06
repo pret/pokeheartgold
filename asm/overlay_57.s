@@ -5446,7 +5446,7 @@ _0223A39A:
 	bl ov57_022394AC
 	ldr r0, [r4]
 	ldr r0, [r0, #0x28]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	mov r1, #7
 	bl GameStats_AddSpecial
 	mov r0, #0xfb

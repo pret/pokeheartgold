@@ -30,7 +30,7 @@ BOOL ScrCmd_395(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_466(SCRIPTCONTEXT *ctx) {
     u16 *retPtr = ScriptGetVarPointer(ctx);
     u16 slot = ScriptGetVar(ctx);
-    PARTY *party = SavArray_PlayerParty_get(ctx->fsys->savedata);
+    PARTY *party = SaveArray_PlayerParty_get(ctx->fsys->savedata);
     Pokemon *mon = GetPartyMonByIndex(party, slot);
     u16 *eligibleMoves = GetEligibleLevelUpMoves(mon, HEAP_ID_32);
     *retPtr = sub_0209186C(eligibleMoves);
@@ -44,8 +44,8 @@ static void CreateMoveRelearner(SCRIPTCONTEXT *ctx, int a1, Pokemon *mon, u16 *e
     *moveRelearnerPtr = moveRelearner;
 
     moveRelearner->mon = mon;
-    moveRelearner->profile = Sav2_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
-    moveRelearner->options = Sav2_PlayerData_GetOptionsAddr(ctx->fsys->savedata);
+    moveRelearner->profile = Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
+    moveRelearner->options = Save_PlayerData_GetOptionsAddr(ctx->fsys->savedata);
     moveRelearner->eligibleMoves = eligibleMoves;
     moveRelearner->unk_19 = a1;
 
@@ -56,7 +56,7 @@ static void CreateMoveRelearner(SCRIPTCONTEXT *ctx, int a1, Pokemon *mon, u16 *e
 
 BOOL ScrCmd_MoveRelearnerInit(SCRIPTCONTEXT *ctx) {
     u16 slot = ScriptGetVar(ctx);
-    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
+    Pokemon *mon = GetPartyMonByIndex(SaveArray_PlayerParty_get(ctx->fsys->savedata), slot);
     u16 *eligibleMoves = GetEligibleLevelUpMoves(mon, HEAP_ID_32);
     CreateMoveRelearner(ctx, 1, mon, eligibleMoves);
     return TRUE;
@@ -65,7 +65,7 @@ BOOL ScrCmd_MoveRelearnerInit(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_MoveTutorInit(SCRIPTCONTEXT *ctx) {
     u16 slot = ScriptGetVar(ctx);
     u16 move = ScriptGetVar(ctx);
-    Pokemon *mon = GetPartyMonByIndex(SavArray_PlayerParty_get(ctx->fsys->savedata), slot);
+    Pokemon *mon = GetPartyMonByIndex(SaveArray_PlayerParty_get(ctx->fsys->savedata), slot);
     u16 *eligibleMoves = AllocFromHeap(HEAP_ID_32, 2 * sizeof(u16));
     eligibleMoves[0] = move;
     eligibleMoves[1] = 0xffff;

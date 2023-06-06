@@ -131,9 +131,9 @@
 .public Save_PrepareForAsyncWrite
 .public Save_WriteFileAsync
 .public SaveSubstruct_UpdateCRC
-.public Sav2_SysInfo_GetField4C
-.public Sav2_SysInfo_SetField4C
-.public Sav2_PlayerData_GetProfileAddr
+.public Save_SysInfo_GetField4C
+.public Save_SysInfo_SetField4C
+.public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetNamePtr
 .public PlayerName_FlatToString
 .public PlayerProfile_GetTrainerID

@@ -45,7 +45,7 @@
 .public GetMonData
 .public GetMonGender
 .public MonIsShiny
-.public SavArray_PlayerParty_get
+.public SaveArray_PlayerParty_get
 .public _s32_div_f
 .public ov01_021F1640
 .public ov01_021F72DC

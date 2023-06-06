@@ -181,10 +181,10 @@ void sub_02053038(FieldSystem *fsys, BOOL isConnection) {
         FieldSys_StartBugContestTimer(fsys);
     }
     if (!isConnection) {
-        SavGymmick_Clear(Sav2_GetGymmickPtr(fsys->savedata));
+        SavGymmick_Clear(Save_GetGymmickPtr(fsys->savedata));
         SetLakeOfRageWaterLevel(fsys->mapMatrix, ShouldUseAlternateLakeOfRage(fsys->savedata, mapId));
     }
-    scriptState = SavArray_Flags_get(fsys->savedata);
+    scriptState = SaveArray_Flags_get(fsys->savedata);
     weather = Fsys_GetWeather_HandleDiamondDust(fsys, mapId);
     if (sub_02066C74(scriptState, 1) && mapId == MAP_T29) {
         weather = 0;
@@ -211,20 +211,20 @@ void sub_02053038(FieldSystem *fsys, BOOL isConnection) {
     fsys->unk7E = 0;
     fsys->unk7C = 0;
     fsys->unk78 = 0;
-    SavFollowPoke_SetInhibitFlagState(Sav2_FollowPoke_get(fsys->savedata), FALSE);
-    ClearFlag99A(SavArray_Flags_get(fsys->savedata));
+    SavFollowPoke_SetInhibitFlagState(Save_FollowPoke_get(fsys->savedata), FALSE);
+    ClearFlag99A(SaveArray_Flags_get(fsys->savedata));
 }
 
 static void sub_0205316C(FieldSystem *fsys) {
     u32 gender;
     struct FlypointsPlayerSub *avatar_sub;
     if (fsys->unkAC) {
-        gender = PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(fsys->savedata));
+        gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fsys->savedata));
         avatar_sub = SaveFlyPoints_GetPlayerSub(Save_FlyPoints_get(fsys->savedata));
         fsys->playerAvatar = sub_0205C390(fsys->mapObjectMan, fsys->location->x, fsys->location->y, fsys->location->direction, avatar_sub->unk4, gender, 2, avatar_sub);
     } else {
         fsys->mapObjectMan = sub_0205E0BC(fsys, 64, HEAP_ID_BATTLE);
-        gender = PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(fsys->savedata));
+        gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fsys->savedata));
         avatar_sub = SaveFlyPoints_GetPlayerSub(Save_FlyPoints_get(fsys->savedata));
         fsys->playerAvatar = sub_0205C390(fsys->mapObjectMan, fsys->location->x, fsys->location->y, fsys->location->direction, avatar_sub->unk4, gender, 2, avatar_sub);
         sub_020699F8(fsys->mapObjectMan, fsys->location->x, fsys->location->y, fsys->location->direction, fsys->location->mapId);
@@ -251,7 +251,7 @@ static void sub_0205323C(FieldSystem *fsys) {
     fsys->mapObjectMan = sub_0205E0BC(fsys, 64, HEAP_ID_BATTLE);
     Fsys_RestoreMapObjectsFromSave(fsys);
     avatar_sub = SaveFlyPoints_GetPlayerSub(Save_FlyPoints_get(fsys->savedata));
-    gender = PlayerProfile_GetTrainerGender(Sav2_PlayerData_GetProfileAddr(fsys->savedata));
+    gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fsys->savedata));
     fsys->playerAvatar = sub_0205C408(fsys->mapObjectMan, avatar_sub, gender);
     sub_02069B74(fsys->mapObjectMan, fsys->location->mapId);
     sub_0205F55C(fsys->mapObjectMan);
@@ -263,7 +263,7 @@ static void sub_02053284(FieldSystem *fsys) {
     sub_02052F30(fsys);
     GF_ASSERT(fsys->unk60 == 0);
     MapMatrix_Load(fsys->location->mapId, fsys->mapMatrix);
-    scriptState = SavArray_Flags_get(fsys->savedata);
+    scriptState = SaveArray_Flags_get(fsys->savedata);
     if (sub_02066C74(scriptState, 0)) {
         RemoveMahoganyTownAntennaTree(fsys->mapMatrix);
     }
@@ -314,7 +314,7 @@ static BOOL _IsPlayerStandingInFrontOfUnionRoomReception(FieldSystem *fsys) {
 
 static void _SetDynamicWarpToUnionRoomExit(FieldSystem *fsys) {
     Location *dynamicWarp = FlyPoints_GetDynamicWarp(Save_FlyPoints_get(fsys->savedata));
-    SCRIPT_STATE *scriptState = SavArray_Flags_get(fsys->savedata); // unused
+    SCRIPT_STATE *scriptState = SaveArray_Flags_get(fsys->savedata); // unused
     if (MapHeader_MapIsPokemonLeagueLobby(fsys->location->mapId) == TRUE) {
         InitLocation(dynamicWarp, fsys->location->mapId, -1, 4, 11, DIR_SOUTH);
     } else {
@@ -353,7 +353,7 @@ TaskManager *CallFieldTask_NewGame(FieldSystem *fsys) {
 
 static BOOL sub_0205348C(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
-    SCRIPT_STATE *scriptState = SavArray_Flags_get(fsys->savedata);
+    SCRIPT_STATE *scriptState = SaveArray_Flags_get(fsys->savedata);
     FLYPOINTS_SAVE *flypointsSave;
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
 
@@ -397,7 +397,7 @@ TaskManager *CallFieldTask_ContinueGame_Normal(FieldSystem *fsys) {
 static BOOL sub_02053550(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     struct ErrorContinueEnv *env = TaskManager_GetEnv(taskManager);
-    SCRIPT_STATE *scriptState = SavArray_Flags_get(fsys->savedata);
+    SCRIPT_STATE *scriptState = SaveArray_Flags_get(fsys->savedata);
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
 
     switch (*state_p) {
@@ -442,7 +442,7 @@ TaskManager *CallFieldTask_ContinueGame_CommError(FieldSystem *fsys) {
     struct ErrorContinueEnv *env;
     if (!MapHeader_MapIsUnionRoom(fsys->location->mapId)) {
         if (_IsPlayerStandingInFrontOfUnionRoomReception(fsys)) {
-            scriptState = SavArray_Flags_get(fsys->savedata);
+            scriptState = SaveArray_Flags_get(fsys->savedata);
             _SetDynamicWarpToUnionRoomExit(fsys);
             SetFlag966(scriptState);
         } else {

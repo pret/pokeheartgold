@@ -35,18 +35,18 @@ sub_02058AEC: ; 0x02058AEC
 	add r4, r0, #0
 	bl MI_CpuFill8
 	ldr r0, [r6, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_0208AD34
 	add r0, r5, #0
-	bl SavArray_IsNatDexEnabled
+	bl SaveArray_IsNatDexEnabled
 	str r0, [r4, #0x1c]
 	add r0, r5, #0
 	bl sub_02088288
 	str r0, [r4, #0x2c]
 	add r0, r5, #0
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	str r0, [r4, #4]
 	ldr r0, [sp]
 	str r0, [r4]
@@ -97,7 +97,7 @@ sub_02058B84: ; 0x02058B84
 	bl MI_CpuFill8
 	ldr r0, [r5, #0x24]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	str r0, [r4, #0xc]
 	ldr r0, [r5, #0x24]
 	add r0, #0xa4
@@ -105,7 +105,7 @@ sub_02058B84: ; 0x02058B84
 	str r0, [r4, #0x14]
 	ldr r0, [r5, #0x24]
 	ldr r0, [r0, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [r4]
 	ldr r0, [r5, #0x24]
 	ldr r0, [r0, #0xc]
@@ -648,7 +648,7 @@ _02058FC0:
 _02058FC6:
 	ldr r0, [r4, #0x24]
 	ldr r0, [r0, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -1232,7 +1232,7 @@ sub_02059478: ; 0x02059478
 	bl sub_0205B514
 	ldr r0, [r5, #0x24]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_0205B564
@@ -1243,7 +1243,7 @@ _020594AA:
 _020594B0:
 	ldr r0, [r5, #0x24]
 	ldr r0, [r0, #0xc]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r2, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
@@ -1400,7 +1400,7 @@ _020595F0:
 	bl AllocFromHeapAtEnd
 	str r0, [r4, #0x48]
 	mov r0, #0xb
-	bl SavArray_Party_alloc
+	bl SaveArray_Party_alloc
 	mov r1, #3
 	str r0, [r4, #0x50]
 	bl InitPartyWithMaxSize
@@ -1490,7 +1490,7 @@ sub_020596A8: ; 0x020596A8
 	ldr r0, [r7, #0x24]
 	add r5, r1, #0
 	ldr r0, [r0, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [sp]
 	ldr r4, [r7, #0x4c]
 	bl sub_02070D90
@@ -2238,13 +2238,13 @@ _02059C10:
 	mov r2, #3
 	bl sub_0205B514
 	ldr r0, [r5, #0xc]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #8
 	bl sub_0205B564
 	ldr r0, [r5, #0xc]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r2, r0, #0
 	add r0, r4, #0
 	ldr r1, [r4, #4]
@@ -2499,7 +2499,7 @@ _02059E2E:
 	str r5, [r4]
 	str r6, [r4, #4]
 	add r0, r6, #0
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	str r0, [r4, #8]
 	add r0, r4, #0
 	bl sub_0205ABBC

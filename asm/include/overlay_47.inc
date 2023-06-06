@@ -102,7 +102,7 @@
 .public String_dtor
 .public StringCopy
 .public CopyU16ArrayToString
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_new
 .public Options_GetTextFrameDelay
 .public Options_GetFrame

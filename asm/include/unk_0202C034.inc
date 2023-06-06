@@ -3,7 +3,7 @@
 .public GF_RTC_CopyDate
 .public GF_AssertFail
 .public CopyStringToU16Array
-.public SavArray_get
+.public SaveArray_get
 .public sub_0202C034
 .public sub_0202C03C
 .public sub_0202C08C

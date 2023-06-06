@@ -31,7 +31,7 @@
 #define DECL_CHUNK_EX(sizefn, initfn) extern u32 sizefn(void); extern void initfn(void *);
 
 DECL_CHUNK_EX(sub_020290B8, sub_020290C8)
-DECL_CHUNK(Sav2_DressupData)
+DECL_CHUNK(Save_DressupData)
 DECL_CHUNK(GameStats)
 DECL_CHUNK_EX(sub_02031000, sub_02031008)
 DECL_CHUNK_EX(sub_0202DB40, sub_0202DB44)
@@ -50,18 +50,18 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
     {
         SAVE_SYSINFO,
         0,
-        (SAVESIZEFN)Sav2_SysInfo_sizeof,
-        (SAVEINITFN)Sav2_SysInfo_init
+        (SAVESIZEFN)Save_SysInfo_sizeof,
+        (SAVEINITFN)Save_SysInfo_init
     }, {
         SAVE_PLAYERDATA,
         0,
-        (SAVESIZEFN)Sav2_PlayerData_sizeof,
-        (SAVEINITFN)Sav2_PlayerData_init
+        (SAVESIZEFN)Save_PlayerData_sizeof,
+        (SAVEINITFN)Save_PlayerData_init
     }, {
         SAVE_PARTY,
         0,
-        (SAVESIZEFN)SavArray_Party_sizeof,
-        (SAVEINITFN)SavArray_Party_init
+        (SAVESIZEFN)SaveArray_Party_sizeof,
+        (SAVEINITFN)SaveArray_Party_init
     }, {
         SAVE_BAG,
         0,
@@ -70,8 +70,8 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
     }, {
         SAVE_FLAGS,
         0,
-        (SAVESIZEFN)SavArray_Flags_sizeof,
-        (SAVEINITFN)SavArray_Flags_init
+        (SAVESIZEFN)SaveArray_Flags_sizeof,
+        (SAVEINITFN)SaveArray_Flags_init
     }, {
         SAVE_FLYPOINTS,
         0,
@@ -85,8 +85,8 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
     }, {
         SAVE_DAYCARE,
         0,
-        (SAVESIZEFN)Sav2_Daycare_sizeof,
-        (SAVEINITFN)Sav2_Daycare_init
+        (SAVESIZEFN)Save_Daycare_sizeof,
+        (SAVEINITFN)Save_Daycare_init
     }, {
         SAVE_PALPAD,
         0,
@@ -95,8 +95,8 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
     }, {
         SAVE_MISC,
         0,
-        (SAVESIZEFN)Sav2_Misc_sizeof,
-        (SAVEINITFN)Sav2_Misc_init
+        (SAVESIZEFN)Save_Misc_sizeof,
+        (SAVEINITFN)Save_Misc_init
     }, {
         SAVE_MAP_OBJECTS,
         0,
@@ -110,18 +110,18 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
     }, {
         SAVE_DRESSUP_DATA,
         0,
-        (SAVESIZEFN)Sav2_DressupData_sizeof,
-        (SAVEINITFN)Sav2_DressupData_init
+        (SAVESIZEFN)Save_DressupData_sizeof,
+        (SAVEINITFN)Save_DressupData_init
     }, {
         SAVE_MAILBOX,
         0,
-        (SAVESIZEFN)Sav2_Mailbox_sizeof,
-        (SAVEINITFN)Sav2_Mailbox_init
+        (SAVESIZEFN)Save_Mailbox_sizeof,
+        (SAVEINITFN)Save_Mailbox_init
     }, {
         SAVE_FRIEND_GROUP,
         0,
-        (SAVESIZEFN)Sav2_FriendGroup_sizeof,
-        (SAVEINITFN)Sav2_FriendGroup_init
+        (SAVESIZEFN)Save_FriendGroup_sizeof,
+        (SAVEINITFN)Save_FriendGroup_init
     }, {
         SAVE_TRAINER_CARD,
         0,
@@ -135,13 +135,13 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
     }, {
         SAVE_SEAL_CASE,
         0,
-        (SAVESIZEFN)Sav2_SealCase_sizeof,
-        (SAVEINITFN)Sav2_SealCase_init
+        (SAVESIZEFN)Save_SealCase_sizeof,
+        (SAVEINITFN)Save_SealCase_init
     }, {
         SAVE_CHATOT,
         0,
-        (SAVESIZEFN)Sav2_Chatot_sizeof,
-        (SAVEINITFN)Sav2_Chatot_init
+        (SAVESIZEFN)Save_Chatot_sizeof,
+        (SAVEINITFN)Save_Chatot_init
     }, {
         SAVE_UNK_19,
         0,
@@ -200,8 +200,8 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
     }, {
         SAVE_EASY_CHAT,
         0,
-        (SAVESIZEFN)Sav2_EasyChat_sizeof,
-        (SAVEINITFN)Sav2_EasyChat_init
+        (SAVESIZEFN)Save_EasyChat_sizeof,
+        (SAVEINITFN)Save_EasyChat_init
     }, {
         SAVE_UNK_31,
         0,
@@ -215,8 +215,8 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
     }, {
         SAVE_FOLLOW_POKE,
         0,
-        (SAVESIZEFN)Sav2_FollowPoke_sizeof,
-        (SAVEINITFN)Sav2_FollowPoke_init
+        (SAVESIZEFN)Save_FollowPoke_sizeof,
+        (SAVEINITFN)Save_FollowPoke_init
     }, {
         SAVE_POKEGEAR,
         0,
@@ -263,27 +263,27 @@ const int gNumSaveChunkHeaders = NELEMS(gSaveChunkHeaders);
 
 struct UnkStruct_0202E474 *sub_020270C4(SAVEDATA *saveData) {
     SaveSubstruct_AssertCRC(SAVE_UNK_23);
-    return SavArray_get(saveData, SAVE_UNK_23);
+    return SaveArray_get(saveData, SAVE_UNK_23);
 }
 
 PC_STORAGE *GetStoragePCPointer(SAVEDATA *saveData) {
-    return SavArray_get(saveData, SAVE_PCSTORAGE);
+    return SaveArray_get(saveData, SAVE_PCSTORAGE);
 }
 
 MYSTERY_GIFT_SAVE *Save_MysteryGift_get(SAVEDATA *saveData) {
     SaveSubstruct_AssertCRC(SAVE_MYSTERY_GIFT);
-    return SavArray_get(saveData, SAVE_MYSTERY_GIFT);
+    return SaveArray_get(saveData, SAVE_MYSTERY_GIFT);
 }
 
 struct UnkStruct_0202EB30 *sub_020270F8(SAVEDATA *saveData) {
-    return SavArray_get(saveData, SAVE_UNK_28);
+    return SaveArray_get(saveData, SAVE_UNK_28);
 }
 
 DECL_CHUNK_EX(sub_020312A4, sub_020312AC)
 DECL_CHUNK_EX(sub_0202FBCC, sub_0202FBD4)
 
 const struct ExtraSaveChunkHeader gExtraSaveChunkHeaders[] = {
-    { 0, SAVE_PAGE_MAX, (SAVESIZEFN)Sav2_HOF_sizeof, (SAVEINITFN)Sav2_HOF_init },
+    { 0, SAVE_PAGE_MAX, (SAVESIZEFN)Save_HOF_sizeof, (SAVEINITFN)Save_HOF_init },
     { 1, SAVE_PAGE_MAX + 3, (SAVESIZEFN)sub_020312A4, (SAVEINITFN)sub_020312AC },
     { 2, SAVE_PAGE_MAX + 4, (SAVESIZEFN)sub_0202FBCC, (SAVEINITFN)sub_0202FBD4 },
     { 3, SAVE_PAGE_MAX + 6, (SAVESIZEFN)sub_0202FBCC, (SAVEINITFN)sub_0202FBD4 },
@@ -328,21 +328,21 @@ u32 PCStorage_GetNumBoxes(void) {
 }
 
 u32 Save_GetPCBoxModifiedFlags(SAVEDATA *saveData) {
-    PC_STORAGE *pcStorage = SavArray_get(saveData, SAVE_PCSTORAGE);
+    PC_STORAGE *pcStorage = SaveArray_get(saveData, SAVE_PCSTORAGE);
     return PCStorage_GetBoxModifiedFlags(pcStorage);
 }
 
 void Save_ResetPCBoxModifiedFlags(SAVEDATA *saveData) {
-    PC_STORAGE *pcStorage = SavArray_get(saveData, SAVE_PCSTORAGE);
+    PC_STORAGE *pcStorage = SaveArray_get(saveData, SAVE_PCSTORAGE);
     PCStorage_ResetBoxModifiedFlags(pcStorage);
 }
 
 void Save_SetAllPCBoxesModified(SAVEDATA *saveData) {
-    PC_STORAGE *pcStorage = SavArray_get(saveData, SAVE_PCSTORAGE);
+    PC_STORAGE *pcStorage = SaveArray_get(saveData, SAVE_PCSTORAGE);
     PCStorage_SetAllBoxesModified(pcStorage);
 }
 
 void sub_020271A0(SAVEDATA *saveData) {
-    PC_STORAGE *pcStorage = SavArray_get(saveData, SAVE_PCSTORAGE);
+    PC_STORAGE *pcStorage = SaveArray_get(saveData, SAVE_PCSTORAGE);
     sub_02074128(pcStorage);
 }

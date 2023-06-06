@@ -218,7 +218,7 @@ Fsys_GetSurfOverriddenMusicId: ; 0x02054F60
 	cmp r0, #2
 	bne _02054F82
 	ldr r0, [r4, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl CheckFlag99A
 	cmp r0, #0
 	bne _02054F82
@@ -260,7 +260,7 @@ _02054FBE:
 _02054FC4:
 	add r6, r0, #0
 	ldr r0, [r5, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	add r1, r4, #0
 	bl GetOverriddenMapMusic
 	cmp r0, #0

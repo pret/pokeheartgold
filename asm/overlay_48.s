@@ -28,7 +28,7 @@ ov48_02258800: ; 0x02258800
 	bl sub_0202CA44
 	str r0, [r4, #0xc]
 	ldr r0, [r5, #4]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #0xc]
 	bl sub_0202CA8C
@@ -2996,7 +2996,7 @@ ov48_02259EAC: ; 0x02259EAC
 	add r5, r0, #0
 	bl memset
 	add r0, r7, #0
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	bl Options_GetTextFrameDelay
 	str r0, [r5, #8]
 	ldr r1, [sp, #0x28]

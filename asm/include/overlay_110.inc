@@ -109,10 +109,10 @@
 .public System_GetTouchNew
 .public String_New
 .public String_dtor
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public SavArray_Flags_get
+.public SaveArray_Flags_get
 .public ScriptState_SetAlphPuzzleFlag
 .public NNS_GfdDoVramTransfer
 .public MI_CpuFill8

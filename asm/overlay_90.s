@@ -150,7 +150,7 @@ _022588E0:
 	cmp r0, r1
 	bne _022588F8
 	ldr r0, [r5]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	pop {r3, r4, r5, pc}
 _022588F8:
 	add r0, r4, #0
@@ -1631,7 +1631,7 @@ ov90_0225938C: ; 0x0225938C
 	str r0, [sp, #0x30]
 	add r0, r2, #0
 	str r3, [sp, #0x18]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	bl Options_GetFrame
 	add r4, r0, #0
 	mov r0, #1
@@ -2003,7 +2003,7 @@ _022595B4:
 	bl ov00_021E69A8
 _02259688:
 	ldr r0, [r4, #8]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	ldrb r1, [r4, #0x13]
 	cmp r1, #0
 	beq _0225969A

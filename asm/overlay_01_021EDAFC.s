@@ -2210,7 +2210,7 @@ MoneyBoxSys_Update: ; 0x021EEB4C
 	bl NewString_ReadMsgData
 	str r0, [sp, #0x10]
 	ldr r0, [r7, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetMoney
 	add r2, r0, #0
 	mov r0, #1
@@ -2353,7 +2353,7 @@ _021EECBA:
 	bl NewString_ReadMsgData
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl Sav2_PlayerData_GetCoinsAddr
+	bl Save_PlayerData_GetCoinsAddr
 	bl CheckCoins
 	add r2, r0, #0
 	b _021EED04
@@ -2597,7 +2597,7 @@ ov01_021EEE44: ; 0x021EEE44
 	str r1, [sp, #8]
 	bl AddTextPrinterParameterized
 	ldr r0, [r7, #0xc]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetMoney
 	mov r1, #0
 	add r2, r0, #0

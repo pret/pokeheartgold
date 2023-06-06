@@ -12,7 +12,7 @@ ov04_02253E20: ; 0x02253E20
 	sub sp, #0x24
 	add r5, r0, #0
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	mov r1, #4
 	bl SavGymmick_AssertMagic_GetData
 	add r3, sp, #0x18
@@ -105,7 +105,7 @@ ov04_02253ED4: ; 0x02253ED4
 	add r0, r5, #0
 	str r5, [r4, #4]
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	mov r1, #4
 	bl SavGymmick_AssertMagic_GetData
 	add r6, r0, #0
@@ -434,7 +434,7 @@ ov04_02254190: ; 0x02254190
 	sub sp, #0x10
 	add r4, r0, #0
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	mov r1, #5
 	bl SavGymmick_AssertMagic_GetData
 	add r7, r0, #0
@@ -721,7 +721,7 @@ Fsys_FlipAzaleaGymSwitch: ; 0x02254404
 	add r5, r0, #0
 	add r6, r1, #0
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	mov r1, #5
 	bl SavGymmick_AssertMagic_GetData
 	add r4, r0, #0
@@ -899,7 +899,7 @@ Fsys_BeginAzaleaGymSpinarakRide: ; 0x02254568
 	add r0, r6, #0
 	str r1, [r4, #0x1c]
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	mov r1, #5
 	bl SavGymmick_AssertMagic_GetData
 	add r2, r0, #0
@@ -1453,7 +1453,7 @@ _02254992:
 	blt _022549FE
 	add r0, r5, #0
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	mov r1, #5
 	bl SavGymmick_AssertMagic_GetData
 	ldr r1, [sp, #0x1c]
@@ -1810,7 +1810,7 @@ ov04_02254CBC: ; 0x02254CBC
 	sub sp, #0x34
 	add r5, r0, #0
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	mov r1, #1
 	bl SavGymmick_AssertMagic_GetData
 	add r7, r0, #0
@@ -2051,7 +2051,7 @@ _02254E86:
 	bl ov01_021F3B2C
 	ldr r0, [r4, #0xc]
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	mov r1, #1
 	bl SavGymmick_AssertMagic_GetData
 	ldr r1, [r5, #0x10]
@@ -2177,7 +2177,7 @@ ov04_02254F8C: ; 0x02254F8C
 	str r0, [r2]
 	ldr r0, [sp, #4]
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	mov r1, #6
 	bl SavGymmick_AssertMagic_GetData
 	str r0, [sp, #0x10]
@@ -2298,7 +2298,7 @@ ov04_02255090: ; 0x02255090
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	bl SavGymmick_GetType
 	cmp r0, #6
 	beq _022550A8
@@ -3652,7 +3652,7 @@ _02255A16:
 	add r5, r0, r1
 	add r0, r6, #0
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	mov r1, #6
 	bl SavGymmick_AssertMagic_GetData
 	ldr r1, [sp, #4]
@@ -3826,7 +3826,7 @@ _02255BA6:
 	strb r1, [r0]
 	add r0, r5, #0
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	mov r1, #6
 	bl SavGymmick_AssertMagic_GetData
 	add r3, r0, #0
@@ -4329,7 +4329,7 @@ ov04_02255FC0: ; 0x02255FC0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	mov r1, #2
 	bl SavGymmick_AssertMagic_GetData
 	add r4, r0, #0
@@ -4403,7 +4403,7 @@ ov04_02256058: ; 0x02256058
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	add r4, r0, #0
 	bl SavGymmick_GetType
 	cmp r0, #2
@@ -4440,7 +4440,7 @@ ov04_0225609C: ; 0x0225609C
 	add r5, r0, #0
 	ldr r0, [r5]
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	mov r1, #2
 	bl SavGymmick_AssertMagic_GetData
 	add r4, r0, #0
@@ -4734,7 +4734,7 @@ ov04_02256304: ; 0x02256304
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	mov r1, #3
 	bl SavGymmick_AssertMagic_GetData
 	str r0, [sp]
@@ -4830,7 +4830,7 @@ ov04_022563C4: ; 0x022563C4
 	push {r4, lr}
 	add r4, r1, #0
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	mov r1, #3
 	bl SavGymmick_AssertMagic_GetData
 	ldrb r2, [r0, #2]
@@ -4874,7 +4874,7 @@ ov04_0225640C: ; 0x0225640C
 	add r7, r1, #0
 	str r2, [sp]
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	mov r1, #3
 	bl SavGymmick_AssertMagic_GetData
 	add r6, r0, #0
@@ -5158,7 +5158,7 @@ ov04_02256650: ; 0x02256650
 	push {r4, lr}
 	add r4, r0, #0
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	mov r1, #7
 	bl SavGymmick_AssertMagic_GetData
 	ldr r1, _02256698 ; =0x00001DD8
@@ -5834,7 +5834,7 @@ ov04_02256B64: ; 0x02256B64
 	push {r4, lr}
 	add r4, r0, #0
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	mov r1, #8
 	bl SavGymmick_AssertMagic_GetData
 	ldr r1, _02256B9C ; =0x00000708
@@ -6229,7 +6229,7 @@ ov04_02256E60: ; 0x02256E60
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	mov r1, #9
 	bl SavGymmick_AssertMagic_GetData
 	mov r1, #0x8e
@@ -6327,7 +6327,7 @@ _02256F14:
 _02256F24:
 	add r0, r5, #0
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	mov r1, #9
 	bl SavGymmick_AssertMagic_GetData
 	str r6, [r0]
@@ -6614,7 +6614,7 @@ ov04_02257148: ; 0x02257148
 	strb r0, [r1, #2]
 	ldr r0, [r7]
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	mov r1, #9
 	bl SavGymmick_AssertMagic_GetData
 	ldr r0, [r0]

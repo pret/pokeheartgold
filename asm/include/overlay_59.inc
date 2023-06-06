@@ -159,7 +159,7 @@
 .public Thunk_G3X_Reset
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
 .public Save_ApricornBox_get
@@ -185,7 +185,7 @@
 .public GetPartyCount
 .public GetPartyMonByIndex
 .public Party_GetUnkSubSlot
-.public SavArray_PlayerParty_get
+.public SaveArray_PlayerParty_get
 .public NNS_GfdDoVramTransfer
 .public NNS_G2dSetupSoftwareSpriteCamera
 .public NNS_G3dGlbFlushP

@@ -80,7 +80,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_dtor
-.public Sav2_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetTrainerGender
 .public Save_GetPartyLeadAlive
 .public SpeciesToOverworldModelIndexOffset
@@ -92,7 +92,7 @@
 .public sub_02070438
 .public Mon_GetBoxMon
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SaveArray_PlayerParty_get
 .public NNS_G2dGetImageLocation
 .public NNS_G3dGetTex
 .public GX_LoadOBJPltt

@@ -4,9 +4,9 @@
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public GF_AssertFail
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_PlayerData_GetOptionsAddr
-.public Sav2_Mailbox_get
+.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetOptionsAddr
+.public Save_Mailbox_get
 .public Save_SpecialRibbons_get
 .public sub_02030AA4
 .public sub_02030AE8
@@ -35,8 +35,8 @@
 .public IsPokemonLegendaryOrMythical
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
-.public SavArray_IsNatDexEnabled
+.public SaveArray_PlayerParty_get
+.public SaveArray_IsNatDexEnabled
 .public SaveGetBag
 .public sub_02088288
 .public sub_0208828C

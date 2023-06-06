@@ -17,13 +17,13 @@
 .public FreeToHeap
 .public GX_DisableEngineALayers
 .public GX_DisableEngineBLayers
-.public Sav2_PlayerData_GetOptionsAddr
-.public Sav2_Mailbox_get
+.public Save_PlayerData_GetOptionsAddr
+.public Save_Mailbox_get
 .public sub_02031DA0
 .public GetPartyMonByIndex
 .public Party_GetUnkSubSlot
 .public Party_SetUnkSubSlot
-.public SavArray_PlayerParty_get
+.public SaveArray_PlayerParty_get
 .public SaveGetBag
 .public ApplyMonMoodModifier
 .public MI_CpuFill8

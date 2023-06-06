@@ -123,12 +123,12 @@
 .public String_dtor
 .public StringSetEmpty
 .public StringCountLines
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetOptionsAddr
 .public PlayerName_StringToFlat
 .public PlayerProfile_SetTrainerGender
-.public Sav2_Misc_get
-.public Sav2_Misc_RivalName_set
+.public Save_Misc_get
+.public Save_Misc_RivalName_set
 .public Options_GetTextFrameDelay
 .public sub_020830D8
 .public sub_0208311C

@@ -36,22 +36,22 @@ typedef struct SEALCASE {
 } SEALCASE;
 
 /*
- * u32 Sav2_SealCase_sizeof(void)
+ * u32 Save_SealCase_sizeof(void)
  *
  * Gives the size of the Seal Case on the save file
  *
  * @returns: Size of SEALCASE
  */
-u32 Sav2_SealCase_sizeof(void);
+u32 Save_SealCase_sizeof(void);
 
 /*
- * void Sav2_SealCase_init(SEALCASE *sealCase)
+ * void Save_SealCase_init(SEALCASE *sealCase)
  *
  * Initializes the Seal Case
  *
  * @param sealCase:    Pointer to SEALCASE
  */
-void Sav2_SealCase_init(SEALCASE *sealCase);
+void Save_SealCase_init(SEALCASE *sealCase);
 
 /*
  * void CopyCapsule(const CAPSULE *src, CAPSULE *dest)
@@ -64,7 +64,7 @@ void Sav2_SealCase_init(SEALCASE *sealCase);
 void CopyCapsule(const CAPSULE *src, CAPSULE *dest);
 
 /*
- * SEALCASE *Sav2_SealCase_get(SAVEDATA *saveData)
+ * SEALCASE *Save_SealCase_get(SAVEDATA *saveData)
  *
  * Gets the player's seal case from the save file
  *
@@ -72,7 +72,7 @@ void CopyCapsule(const CAPSULE *src, CAPSULE *dest);
  *
  * @returns: Pointer to SEALCASE from the save file
  */
-SEALCASE *Sav2_SealCase_get(SAVEDATA *saveData);
+SEALCASE *Save_SealCase_get(SAVEDATA *saveData);
 
 /*
  * CAPSULE *SealCase_GetCapsuleI(SEALCASE *sealCase, int i)

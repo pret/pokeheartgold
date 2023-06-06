@@ -256,7 +256,7 @@ ov25_02259AAC: ; 0x02259AAC
 	ldr r5, [r4, #0xc]
 	add r6, r0, #0
 	add r0, r5, #0
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	add r0, #0x94

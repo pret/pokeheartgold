@@ -10,7 +10,7 @@ ov44_02229EE0: ; 0x02229EE0
 	mov r1, #0x16
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	mov r1, #2
 	mov r2, #0x1b
 	bl ScriptState_FlypointFlagAction
@@ -432,7 +432,7 @@ ov44_0222A168: ; 0x0222A168
 	mov r1, #0x16
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [sp]
 	bl GetPartyCount
 	mov r5, #0
@@ -2211,7 +2211,7 @@ ov44_0222AEC0: ; 0x0222AEC0
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
@@ -2935,7 +2935,7 @@ ov44_0222B528: ; 0x0222B528
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0x1f
-	bl SavArray_get
+	bl SaveArray_get
 	bl sub_02031710
 	mov r0, #0x16
 	lsl r0, r0, #4
@@ -3170,17 +3170,17 @@ ov44_0222B778: ; 0x0222B778
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	str r1, [sp]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	str r0, [sp, #0x14]
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Sav2_Pokedex_get
+	bl Save_Pokedex_get
 	str r0, [sp, #0x10]
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [sp, #0xc]
 	mov r0, #0x16
 	lsl r0, r0, #4
@@ -4389,7 +4389,7 @@ ov44_0222C120: ; 0x0222C120
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	mov r1, #0x35
 	add r6, r0, #0
 	bl PlayerProfile_GetPlayerName_NewString
@@ -10845,7 +10845,7 @@ _0222F520:
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	bl Options_GetTextFrameDelay
 _0222F52E:
 	lsl r0, r0, #0x18
@@ -11139,7 +11139,7 @@ ov44_0222F780: ; 0x0222F780
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r4, #0
-	bl Sav2_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_set
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -12704,7 +12704,7 @@ _02230322:
 	bl sub_0202C298
 	add r1, r0, #0
 	add r0, r6, #0
-	bl Sav2_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_set
 	ldr r0, _0223069C ; =0x00000B1C
 	mov r1, #0
 	ldr r0, [r5, r0]
@@ -15305,7 +15305,7 @@ ov44_02231918: ; 0x02231918
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r4, #0
-	bl Sav2_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_set
 	ldr r0, _02231954 ; =0x00000B1C
 	mov r1, #0
 	ldr r0, [r5, r0]
@@ -18935,7 +18935,7 @@ ov44_02233444: ; 0x02233444
 	add r4, r2, #0
 	bl LoadFontPal1
 	ldr r0, [r6, #8]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
@@ -19175,7 +19175,7 @@ ov44_0223362C: ; 0x0223362C
 	mov r0, #0xff
 	strb r0, [r5, #0x14]
 	ldr r0, [r4, #8]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	bl Options_GetTextFrameDelay
 	strh r0, [r5, #0x16]
 	pop {r4, r5, r6, pc}
@@ -19477,7 +19477,7 @@ _02233890:
 	add r0, r7, #0
 	bl String_dtor
 	ldr r0, [r4, #8]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
@@ -20868,7 +20868,7 @@ ov44_022342E0: ; 0x022342E0
 	lsl r0, r0, #2
 	str r1, [r5, r0]
 	ldr r0, [r4, #8]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18

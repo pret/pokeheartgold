@@ -111,11 +111,11 @@
 .public CopyStringToU16Array
 .public SaveGameNormal
 .public Save_ClearStatusFlags
-.public Sav2_SysInfo_get
-.public Sav2_SysInfo_GetField4C
-.public Sav2_SysInfo_SetField4C
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_SysInfo_get
+.public Save_SysInfo_GetField4C
+.public Save_SysInfo_SetField4C
+.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetOptionsAddr
 .public Options_GetFrame
 .public sub_0202C08C
 .public sub_0202C6F4
@@ -138,7 +138,7 @@
 .public sub_0203A880
 .public sub_0203A914
 .public sub_0203A930
-.public SavArray_Flags_get
+.public SaveArray_Flags_get
 .public SetFlag970
 .public sub_02085400
 .public sub_0208541C

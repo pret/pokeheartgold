@@ -218,7 +218,7 @@ _0203BB78:
 	lsr r5, r5, #0x1f
 	beq _0203BBA2
 	ldr r0, [r0, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	mov r2, #0x12
 	add r3, r4, #0
 	mul r3, r2

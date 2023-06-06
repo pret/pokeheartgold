@@ -9,9 +9,9 @@
 .public GF_AssertFail
 .public CopyU16ArrayToString
 .public CopyStringToU16Array
-.public SavArray_get
-.public Sav2_DressupData_init
-.public Sav2_DressupData_sizeof
+.public SaveArray_get
+.public Save_DressupData_init
+.public Save_DressupData_sizeof
 .public sub_0202B994
 .public sub_0202B998
 .public sub_0202B9B8

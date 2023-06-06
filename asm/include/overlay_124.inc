@@ -2,7 +2,7 @@
 #pragma once
 .public OverlayManager_GetArgs
 .public AllocFromHeapAtEnd
-.public Sav2_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_TestBadgeFlag
 .public MapMatrix_New
 .public Field_AllocateMapEvents

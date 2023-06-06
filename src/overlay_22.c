@@ -31,28 +31,28 @@ BOOL ScrCmd_118(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_GetCoinAmount(SCRIPTCONTEXT *ctx) {
     u16 *ptr = ScriptGetVarPointer(ctx);
-    *ptr = CheckCoins(Sav2_PlayerData_GetCoinsAddr(ctx->fsys->savedata));
+    *ptr = CheckCoins(Save_PlayerData_GetCoinsAddr(ctx->fsys->savedata));
     return FALSE;
 }
 
 BOOL ScrCmd_GiveCoins(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 amount = ScriptGetVar(ctx);
-    GiveCoins(Sav2_PlayerData_GetCoinsAddr(fsys->savedata), amount);
+    GiveCoins(Save_PlayerData_GetCoinsAddr(fsys->savedata), amount);
     return FALSE;
 }
 
 BOOL ScrCmd_TakeCoins(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 amount = ScriptGetVar(ctx);
-    TakeCoins(Sav2_PlayerData_GetCoinsAddr(fsys->savedata), amount);
+    TakeCoins(Save_PlayerData_GetCoinsAddr(fsys->savedata), amount);
     return FALSE;
 }
 
 BOOL ScrCmd_569(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 *ptr = ScriptGetVarPointer(ctx);
-    TakeCoins(Sav2_PlayerData_GetCoinsAddr(fsys->savedata), *ptr);
+    TakeCoins(Save_PlayerData_GetCoinsAddr(fsys->savedata), *ptr);
     return FALSE;
 }
 
@@ -60,7 +60,7 @@ BOOL ScrCmd_CheckCoinsImmediate(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 *ptr = ScriptGetVarPointer(ctx);
     u32 amount = ScriptReadWord(ctx);
-    u16 coins = CheckCoins(Sav2_PlayerData_GetCoinsAddr(fsys->savedata));
+    u16 coins = CheckCoins(Save_PlayerData_GetCoinsAddr(fsys->savedata));
     if (coins < amount) {
         *ptr = FALSE;
     } else {
@@ -73,7 +73,7 @@ BOOL ScrCmd_CheckCoinsVar(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 *resultPtr = ScriptGetVarPointer(ctx);
     u16 *amountPtr = ScriptGetVarPointer(ctx);
-    u16 coins = CheckCoins(Sav2_PlayerData_GetCoinsAddr(fsys->savedata));
+    u16 coins = CheckCoins(Save_PlayerData_GetCoinsAddr(fsys->savedata));
     if (coins < *amountPtr) {
         *resultPtr = FALSE;
     } else {
@@ -86,7 +86,7 @@ BOOL ScrCmd_CheckGiveCoins(SCRIPTCONTEXT *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 *ptr = ScriptGetVarPointer(ctx);
     u16 amount = ScriptGetVar(ctx);
-    *ptr = CanGiveCoins(Sav2_PlayerData_GetCoinsAddr(fsys->savedata), amount);
+    *ptr = CanGiveCoins(Save_PlayerData_GetCoinsAddr(fsys->savedata), amount);
     return FALSE;
 }
 

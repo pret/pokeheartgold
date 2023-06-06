@@ -15,7 +15,7 @@ ov39_02227060: ; 0x02227060
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #0x5c
-	bl SavArray_CalcCRC16
+	bl SaveArray_CalcCRC16
 	add r4, #0x5c
 	strh r0, [r4]
 	pop {r3, r4, r5, pc}
@@ -140,7 +140,7 @@ _02227130:
 	ldr r0, [sp, #4]
 	add r1, r7, #0
 	add r2, #0x22
-	bl SavArray_CalcCRC16
+	bl SaveArray_CalcCRC16
 	mov r1, #0x66
 	lsl r1, r1, #2
 	strh r0, [r7, r1]
@@ -159,7 +159,7 @@ ov39_02227188: ; 0x02227188
 	strb r2, [r4, r3]
 	add r3, #0x21
 	add r2, r3, #0
-	bl SavArray_CalcCRC16
+	bl SaveArray_CalcCRC16
 	mov r1, #0x66
 	lsl r1, r1, #2
 	strh r0, [r4, r1]
@@ -610,7 +610,7 @@ ov39_022274D4: ; 0x022274D4
 	pop {r3, r4, r5, r6, r7, pc}
 _022274E8:
 	ldr r0, [r5]
-	bl Sav2_PlayerData_GetIGTAddr
+	bl Save_PlayerData_GetIGTAddr
 	mov r1, #0x66
 	lsl r1, r1, #2
 	add r1, r5, r1
@@ -2244,7 +2244,7 @@ _02228048:
 	ldr r0, [r0]
 	add r1, #0x80
 	mov r2, #0x58
-	bl SavArray_CalcCRC16
+	bl SaveArray_CalcCRC16
 	ldr r1, [r4]
 	add r1, #0xe0
 	strh r0, [r1]
@@ -2330,7 +2330,7 @@ ov39_022280D4: ; 0x022280D4
 	ldr r0, [r6]
 	add r1, #0x80
 	mov r2, #0x58
-	bl SavArray_CalcCRC16
+	bl SaveArray_CalcCRC16
 	ldr r1, [r5]
 	add r1, #0xe0
 	strh r0, [r1]
@@ -2531,7 +2531,7 @@ _022282CA:
 	ldr r0, [r5]
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	bl Options_GetTextFrameDelay
 	add r1, r5, #0
 	add r1, #0x90
@@ -2910,7 +2910,7 @@ ov39_022285CC: ; 0x022285CC
 	ldr r0, [r0]
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	bl Options_GetFrame
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
@@ -4004,22 +4004,22 @@ ov39_02228E54: ; 0x02228E54
 	ldr r0, [r5]
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
-	bl Sav2_SysInfo_get
+	bl Save_SysInfo_get
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_0202C08C
 	add r0, r4, #0
-	bl Sav2_SysInfo_GetField4C
+	bl Save_SysInfo_GetField4C
 	cmp r0, #0
 	bne _02228E8E
 	add r0, r6, #0
 	bl sub_0203A040
 	add r1, r0, #0
 	add r0, r4, #0
-	bl Sav2_SysInfo_SetField4C
+	bl Save_SysInfo_SetField4C
 _02228E8E:
 	add r0, r4, #0
-	bl Sav2_SysInfo_GetField4C
+	bl Save_SysInfo_GetField4C
 	mov r0, #9
 	str r0, [r5, #8]
 	ldr r0, [r5]

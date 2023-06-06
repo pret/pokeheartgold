@@ -553,10 +553,10 @@ sub_0206D8D0: ; 0x0206D8D0
 	add r6, r1, #0
 	add r5, r0, #0
 	add r0, r6, #0
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r4, r0, #0
 	add r0, r6, #0
-	bl Sav2_Misc_get
+	bl Save_Misc_get
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #5
@@ -858,7 +858,7 @@ FieldSys_IncrementBugContestTimer: ; 0x0206DB34
 	add r4, r0, #0
 	beq _0206DB56
 	ldr r0, [r5, #0xc]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl CheckFlag996
 	cmp r0, #0
 	beq _0206DB56
@@ -1056,7 +1056,7 @@ _0206DCC0: .word 0x00004021
 Fsys_InitMystriStageGymmick: ; 0x0206DCC4
 	push {r4, lr}
 	bl FieldSys_GetSaveDataPtr
-	bl Sav2_GetGymmickPtr
+	bl Save_GetGymmickPtr
 	add r4, r0, #0
 	mov r1, #9
 	bl SavGymmick_Init

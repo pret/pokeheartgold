@@ -16,7 +16,7 @@ void Save_TrainerCard_init(struct SaveTrainerCard *data) {
 }
 
 struct SaveTrainerCard *Save_TrainerCard_get(SAVEDATA *saveData) {
-    return SavArray_get(saveData, SAVE_TRAINER_CARD);
+    return SaveArray_get(saveData, SAVE_TRAINER_CARD);
 }
 
 int *TrainerCard_GetSignature(struct SaveTrainerCard *data) {

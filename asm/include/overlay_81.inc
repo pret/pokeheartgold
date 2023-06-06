@@ -162,8 +162,8 @@
 .public Thunk_G3X_Reset
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_GetNamePtr
 .public PlayerName_FlatToString
 .public PlayerProfile_GetTrainerGender
@@ -187,7 +187,7 @@
 .public GetMonIconPaletteEx
 .public sub_02074490
 .public GetPartyMonByIndex
-.public SavArray_IsNatDexEnabled
+.public SaveArray_IsNatDexEnabled
 .public sub_02089D40
 .public sub_0208AD34
 .public sub_02096910

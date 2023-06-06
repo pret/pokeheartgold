@@ -90,7 +90,7 @@ _021FC6E2:
 	bl Fsys_GetGearPhoneRingManager
 	bl sub_02092FA8
 	ldr r0, [r4, #0xc]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	mov r1, #0xb
 	bl GameStats_Inc
 	ldr r2, [r5, #0x10]
@@ -486,7 +486,7 @@ ov01_021FC9AC: ; 0x021FC9AC
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0xc]
-	bl Sav2_GameStats_get
+	bl Save_GameStats_get
 	mov r1, #0x65
 	bl GameStats_Inc
 	mov r0, #1
@@ -735,7 +735,7 @@ ov01_021FCB6C: ; 0x021FCB6C
 	mov r2, #3
 	bl sub_0205B514
 	ldr r0, [r4, #0xc]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r5, #0x38
 	add r1, r0, #0
 	add r0, r5, #0
@@ -759,7 +759,7 @@ ov01_021FCB90: ; 0x021FCB90
 	ldr r2, [r5, #0x30]
 	bl StringExpandPlaceholders
 	ldr r0, [r4, #0xc]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	add r2, r0, #0
 	add r0, r5, #0
 	ldr r1, [r5, #0x2c]
@@ -842,7 +842,7 @@ _021FCC40:
 	beq _021FCC6E
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0xc]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	bl GetFirstAliveMonInParty_CrashIfNone
 	mov r1, #9
 	mov r2, #0

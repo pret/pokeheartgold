@@ -15,15 +15,15 @@ static inline HOFTEAM *HallOfFame_SeekBack(HALL_OF_FAME *hof, int num) {
     return &hof->parties[ret];
 }
 
-u32 Sav2_HOF_sizeof(void) {
+u32 Save_HOF_sizeof(void) {
     return sizeof(HALL_OF_FAME);
 }
 
-void Sav2_HOF_init(HALL_OF_FAME *hof) {
+void Save_HOF_init(HALL_OF_FAME *hof) {
     MI_CpuClear32(hof, sizeof(HALL_OF_FAME));
 }
 
-void Sav2_HOF_RecordParty(HALL_OF_FAME *hof, PARTY *party, RTCDate *date) {
+void Save_HOF_RecordParty(HALL_OF_FAME *hof, PARTY *party, RTCDate *date) {
     ASSERT_HALL_OF_FAME(hof);
     if (hof->num_total < 9999) {
         HOFTEAM *team = &hof->parties[hof->next_record];
@@ -73,7 +73,7 @@ void Sav2_HOF_RecordParty(HALL_OF_FAME *hof, PARTY *party, RTCDate *date) {
     }
 }
 
-u32 Sav2_HOF_GetNumRecords(const HALL_OF_FAME *hallOfFame) {
+u32 Save_HOF_GetNumRecords(const HALL_OF_FAME *hallOfFame) {
     ASSERT_HALL_OF_FAME(hallOfFame);
     u32 ret = hallOfFame->num_total;
     if (ret >= NUM_HOF_RECORDS) {
@@ -82,13 +82,13 @@ u32 Sav2_HOF_GetNumRecords(const HALL_OF_FAME *hallOfFame) {
     return ret;
 }
 
-int Sav2_HOF_TranslateRecordIdx(const HALL_OF_FAME *hallOfFame, int num) {
+int Save_HOF_TranslateRecordIdx(const HALL_OF_FAME *hallOfFame, int num) {
     ASSERT_HALL_OF_FAME(hallOfFame);
     GF_ASSERT(num < NUM_HOF_RECORDS);
     return hallOfFame->num_total - num;
 }
 
-u32 Sav2_HOF_RecordCountMons(HALL_OF_FAME *hallOfFame, int num) {
+u32 Save_HOF_RecordCountMons(HALL_OF_FAME *hallOfFame, int num) {
     u32 i;
     HOFTEAM *team;
 
@@ -103,7 +103,7 @@ u32 Sav2_HOF_RecordCountMons(HALL_OF_FAME *hallOfFame, int num) {
     return i;
 }
 
-void Sav2_HOF_GetMonStatsByIndexPair(HALL_OF_FAME *hallOfFame, int teamNum, int monNum, SHOW_HOFMON *dest) {
+void Save_HOF_GetMonStatsByIndexPair(HALL_OF_FAME *hallOfFame, int teamNum, int monNum, SHOW_HOFMON *dest) {
     int i;
     const HOFTEAM *team;
     const HOFMON *mon;
@@ -125,7 +125,7 @@ void Sav2_HOF_GetMonStatsByIndexPair(HALL_OF_FAME *hallOfFame, int teamNum, int 
     }
 }
 
-void Sav2_HOF_GetClearDate(HALL_OF_FAME * hof, int num, RTCDate * dest) {
+void Save_HOF_GetClearDate(HALL_OF_FAME * hof, int num, RTCDate * dest) {
     HOFTEAM *party;
     ASSERT_HALL_OF_FAME(hof);
     GF_ASSERT(num < NUM_HOF_RECORDS);

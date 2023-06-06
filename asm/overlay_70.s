@@ -17642,7 +17642,7 @@ ov70_02240500: ; 0x02240500
 	beq _0224053A
 	ldr r0, [r5]
 	ldr r0, [r0, #0x20]
-	bl Sav2_Pokewalker_get
+	bl Save_Pokewalker_get
 	mov r1, #0x14
 	bl Pokewalker_UnlockCourse
 _0224053A:
@@ -18346,7 +18346,7 @@ _02240A1A:
 	bne _02240A62
 	ldr r0, [r5]
 	ldr r0, [r0, #0x20]
-	bl Sav2_Chatot_get
+	bl Save_Chatot_get
 	bl Chatot_invalidate
 _02240A62:
 	cmp r6, #0
@@ -18421,7 +18421,7 @@ _02240AB0:
 _02240AF4:
 	ldr r0, [r5]
 	ldr r0, [r0, #0x20]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	add r6, r0, #0
 	bl ScriptState_GetVar404C
 	cmp r0, #0
@@ -18545,7 +18545,7 @@ _02240BC2:
 _02240BFC:
 	ldr r0, [r5]
 	ldr r0, [r0, #0x20]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	add r6, r0, #0
 	bl ScriptState_GetVar404C
 	cmp r0, #0
@@ -20098,7 +20098,7 @@ ov70_0224182C: ; 0x0224182C
 	lsl r1, r1, #2
 	add r0, r4, #0
 	add r1, r5, r1
-	bl Sav2_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_set
 	ldr r1, _02241860 ; =0x00000122
 	add r0, r4, #0
 	ldrb r1, [r5, r1]
@@ -26448,17 +26448,17 @@ ov70_02244A04: ; 0x02244A04
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #4]
-	bl Sav2_SysInfo_GetField4C
+	bl Save_SysInfo_GetField4C
 	cmp r0, #0
 	bne _02244A28
 	ldr r1, [r5]
 	ldr r0, [r1, #4]
 	ldr r1, [r1, #0x34]
-	bl Sav2_SysInfo_SetField4C
+	bl Save_SysInfo_SetField4C
 _02244A28:
 	ldr r0, [r5]
 	ldr r0, [r0, #4]
-	bl Sav2_SysInfo_GetField4C
+	bl Save_SysInfo_GetField4C
 	add r6, r0, #0
 	add r0, r4, #0
 	bl DWC_CreateFriendKey

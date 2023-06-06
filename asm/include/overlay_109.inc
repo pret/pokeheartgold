@@ -109,8 +109,8 @@
 .public String_New
 .public String_dtor
 .public CopyU16ArrayToString
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
 .public Save_PhotoAlbum_get

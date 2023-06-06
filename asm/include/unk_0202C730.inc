@@ -3,10 +3,10 @@
 .public StringNotEqualN
 .public PRandom
 .public CopyStringToU16Array
-.public SavArray_get
-.public Sav2_FriendGroup_sizeof
+.public SaveArray_get
+.public Save_FriendGroup_sizeof
 .public sub_0202C738
-.public Sav2_FriendGroup_init
+.public Save_FriendGroup_init
 .public sub_0202C78C
 .public sub_0202C7B4
 .public sub_0202C7C0

@@ -177,7 +177,7 @@
 .public sub_02026E50
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_new
 .public PlayerProfile_GetPlayerName_NewString
 .public PlayerProfile_GetTrainerGender
@@ -189,7 +189,7 @@
 .public GetNatureFromPersonality
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SaveArray_PlayerParty_get
 .public NNS_G2dGetUnpackedCharacterData
 .public NNS_G3dTexGetRequiredSize
 .public NNS_G3dTexSetTexKey

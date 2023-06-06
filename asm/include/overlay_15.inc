@@ -145,8 +145,8 @@
 .public String16_FormatInteger
 .public Thunk_G3X_Reset
 .public sub_02026E50
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_GetTrainerGender
 .public PlayerProfile_GetMoney
 .public PlayerProfile_AddMoney

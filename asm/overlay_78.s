@@ -37,7 +37,7 @@ _021E593C:
 	bl GF_AssertFail
 _021E5946:
 	ldr r0, [r5]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	add r7, r0, #0
 	mov r0, #0x52
 	str r0, [r4]
@@ -46,7 +46,7 @@ _021E5946:
 	ldr r0, [r5, #4]
 	str r0, [r4, #4]
 	ldr r0, [r4, #8]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	str r0, [r4, #0xc]
 	add r0, r7, #0
 	add r1, r6, #0

@@ -18,11 +18,11 @@
 .public String_New
 .public String_dtor
 .public CopyStringToU16Array
-.public Sav2_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetTrainerGender
 .public Pokedex_CheckMonSeenFlag
-.public Sav2_Pokedex_get
-.public Sav2_GameStats_get
+.public Save_Pokedex_get
+.public Save_GameStats_get
 .public GameStats_Add
 .public GameStats_GetCapped
 .public GameStats_AddSpecial
@@ -79,7 +79,7 @@
 .public sub_0204B610
 .public sub_0204B66C
 .public sub_0204B690
-.public SavArray_Flags_get
+.public SaveArray_Flags_get
 .public sub_0205C268
 .public sub_0205C298
 .public sub_0205C310
@@ -106,7 +106,7 @@
 .public GetLegendaryMon
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SavArray_PlayerParty_get
+.public SaveArray_PlayerParty_get
 .public sub_02096910
 .public OS_ResetSystem
 .public MI_CpuFill8

@@ -1,19 +1,19 @@
 #include "seal_case.h"
 
-u32 Sav2_SealCase_sizeof(void) {
+u32 Save_SealCase_sizeof(void) {
     return sizeof(SEALCASE);
 }
 
-void Sav2_SealCase_init(SEALCASE *sealCase) {
-    MI_CpuClear8(sealCase, Sav2_SealCase_sizeof());
+void Save_SealCase_init(SEALCASE *sealCase) {
+    MI_CpuClear8(sealCase, Save_SealCase_sizeof());
 }
 
 void CopyCapsule(const CAPSULE *src, CAPSULE *dest) {
     MI_CpuCopy8(src, dest, sizeof(CAPSULE));
 }
 
-SEALCASE *Sav2_SealCase_get(SAVEDATA *saveData) {
-    return SavArray_get(saveData, SAVE_SEAL_CASE);
+SEALCASE *Save_SealCase_get(SAVEDATA *saveData) {
+    return SaveArray_get(saveData, SAVE_SEAL_CASE);
 }
 
 CAPSULE *SealCase_GetCapsuleI(SEALCASE *sealCase, int i) {

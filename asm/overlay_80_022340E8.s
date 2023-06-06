@@ -30,10 +30,10 @@ ov80_022340E8: ; 0x022340E8
 	mov r0, #0xb
 	str r0, [r5]
 	ldr r5, [r1]
-	bl SavArray_Party_alloc
+	bl SaveArray_Party_alloc
 	str r0, [r5, #0x70]
 	mov r0, #0xb
-	bl SavArray_Party_alloc
+	bl SaveArray_Party_alloc
 	str r0, [r5, #0x74]
 	mov r0, #0x2a
 	ldr r1, [sp, #0x38]
@@ -64,7 +64,7 @@ ov80_022340E8: ; 0x022340E8
 	cmp r2, #3
 	bne _02234174
 	ldr r0, [r0, #4]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	bl ScriptState_GetVar4052
 	b _02234180
 _02234174:
@@ -206,7 +206,7 @@ _02234294:
 _0223429A:
 	ldr r4, [r6]
 	ldr r0, [r4, #4]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	add r1, r4, r5
 	add r1, #0x2c
 	ldrb r1, [r1]
@@ -224,7 +224,7 @@ _0223429A:
 	cmp r5, #3
 	blo _0223429A
 	ldr r0, [r4, #4]
-	bl SavArray_PlayerParty_get
+	bl SaveArray_PlayerParty_get
 	str r0, [sp, #0xc]
 	ldr r0, _02234374 ; =ov80_0223DD4C
 	mov r1, #0

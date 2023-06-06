@@ -174,11 +174,11 @@
 .public SetAllPCBoxesModified
 .public Save_PrepareForAsyncWrite
 .public Save_WriteFileAsync
-.public Sav2_SysInfo_GetField4C
-.public Sav2_SysInfo_SetField4C
+.public Save_SysInfo_GetField4C
+.public Save_SysInfo_SetField4C
 .public PlayerProfile_new
 .public PlayerProfile_init
-.public Sav2_Profile_PlayerName_set
+.public Save_Profile_PlayerName_set
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetTrainerID_VisibleHalf
 .public PlayerProfile_GetTrainerGender
@@ -191,7 +191,7 @@
 .public sub_0202C08C
 .public sub_0202CA8C
 .public sub_0202CA90
-.public Sav2_Chatot_get
+.public Save_Chatot_get
 .public Chatot_invalidate
 .public GameStats_Inc
 .public GameStats_AddSpecial
@@ -207,7 +207,7 @@
 .public sub_0202DBA0
 .public UpdatePokedexWithReceivedSpecies
 .public sub_0203189C
-.public Sav2_Pokewalker_get
+.public Save_Pokewalker_get
 .public Pokewalker_UnlockCourse
 .public sub_02034D8C
 .public sub_02034DB8
@@ -222,7 +222,7 @@
 .public sub_0203A914
 .public sub_0203A930
 .public ShowCommunicationError
-.public SavArray_Flags_get
+.public SaveArray_Flags_get
 .public sub_0205B464
 .public ScriptState_GetVar404C
 .public ScriptState_SetVar404C

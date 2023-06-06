@@ -4,7 +4,7 @@
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public GF_AssertFail
-.public Sav2_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetTrainerID
 .public ScriptReadHalfword
 .public FieldSysGetAttrAddr

@@ -33,7 +33,7 @@ ov53_OakSpeech_OvyInit: ; 0x021E5900
 	bl OverlayManager_GetArgs
 	ldr r0, [r0, #8]
 	str r0, [r4, #4]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	mov r1, #0
 	str r0, [r4, #8]
 	str r1, [r4, #0xc]
@@ -281,26 +281,26 @@ ov53_OakSpeech_OvyExit: ; 0x021E5B48
 	ldr r5, [r4]
 	bl FontID_Release
 	ldr r0, [r4, #4]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	mov r1, #0x12
 	lsl r1, r1, #4
 	ldr r1, [r4, r1]
 	ldr r1, [r1, #0x18]
 	bl PlayerName_StringToFlat
 	ldr r0, [r4, #4]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	mov r1, #0x12
 	lsl r1, r1, #4
 	ldr r1, [r4, r1]
 	ldr r1, [r1, #4]
 	bl PlayerProfile_SetTrainerGender
 	ldr r0, [r4, #4]
-	bl Sav2_Misc_get
+	bl Save_Misc_get
 	mov r1, #0x49
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
 	ldr r1, [r1, #0x18]
-	bl Sav2_Misc_RivalName_set
+	bl Save_Misc_RivalName_set
 	mov r0, #0x12
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]

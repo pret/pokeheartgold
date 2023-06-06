@@ -47,7 +47,7 @@ BOOL ScrCmd_MartBuy(SCRIPTCONTEXT *ctx) {
     nitems = 0;
     badge_count = 0;
     for (i = 0; i < 16; i++) {
-        if (PlayerProfile_TestBadgeFlag(Sav2_PlayerData_GetProfileAddr(ctx->fsys->savedata), i) == TRUE) {
+        if (PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(ctx->fsys->savedata), i) == TRUE) {
             badge_count++;
         }
     }
@@ -405,11 +405,11 @@ BOOL ScrCmd_771(SCRIPTCONTEXT *ctx) {
     SCRIPT_STATE *flagsys;
     RTCDate date;
 
-    flagsys = SavArray_Flags_get(ctx->fsys->savedata);
+    flagsys = SaveArray_Flags_get(ctx->fsys->savedata);
     GF_RTC_CopyDate(&date);
 
     // UB: Possibly illegal access to _0210F9CC between Tuesday and Saturday, inclusive
-    if (Pokedex_GetNatDexFlag(Sav2_Pokedex_get(ctx->fsys->savedata))) {
+    if (Pokedex_GetNatDexFlag(Save_Pokedex_get(ctx->fsys->savedata))) {
         InitMartUI(ctx->taskman, ctx->fsys, _0210F9CC[date.week], 3, 0, 0, _0210FA04[date.week + 7]);
     } else {
         InitMartUI(ctx->taskman, ctx->fsys, _0210F9CC[date.week], 3, 0, 0, _0210FA04[date.week]);
@@ -496,9 +496,9 @@ BOOL ScrCmd_834(SCRIPTCONTEXT *ctx) {
     pokeathlon = Save_Pokeathlon_get(ctx->fsys->savedata);
     r6 = 0;
     r4 = 0;
-    scriptState = SavArray_Flags_get(ctx->fsys->savedata);
+    scriptState = SaveArray_Flags_get(ctx->fsys->savedata);
     GF_RTC_CopyDate(&date);
-    if (Pokedex_GetNatDexFlag(Sav2_Pokedex_get(ctx->fsys->savedata))) {
+    if (Pokedex_GetNatDexFlag(Save_Pokedex_get(ctx->fsys->savedata))) {
         r3 = _0210FA04[date.week + 7];
     } else {
         r3 = _0210FA04[date.week];

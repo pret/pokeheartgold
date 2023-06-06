@@ -872,8 +872,8 @@ void Pokedex_Enable(POKEDEX *pokedex) {
     pokedex->dexEnabled = TRUE;
 }
 
-POKEDEX *Sav2_Pokedex_get(SAVEDATA *saveData) {
-    return SavArray_get(saveData, SAVE_POKEDEX);
+POKEDEX *Save_Pokedex_get(SAVEDATA *saveData) {
+    return SaveArray_get(saveData, SAVE_POKEDEX);
 }
 
 int Pokedex_GetSeenFormeByIdx(POKEDEX *pokedex, int species, int idx) {

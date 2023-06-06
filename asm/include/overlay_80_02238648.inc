@@ -86,7 +86,7 @@
 .public sub_02026E50
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
-.public Sav2_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfileAddr
 .public Options_GetFrame
 .public sub_0203A880
 .public sub_0203A914

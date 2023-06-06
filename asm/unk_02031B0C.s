@@ -46,11 +46,11 @@ sub_02031B10: ; 0x02031B10
 
 	thumb_func_start Save_ApricornBox_get
 Save_ApricornBox_get: ; 0x02031B14
-	ldr r3, _02031B1C ; =SavArray_get
+	ldr r3, _02031B1C ; =SaveArray_get
 	mov r1, #0x26
 	bx r3
 	nop
-_02031B1C: .word SavArray_get
+_02031B1C: .word SaveArray_get
 	thumb_func_end Save_ApricornBox_get
 
 	thumb_func_start InitApricornBox

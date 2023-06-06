@@ -203,8 +203,8 @@
 .public String_New
 .public String_dtor
 .public GetStoragePCPointer
-.public Sav2_PlayerData_GetProfileAddr
-.public Sav2_PlayerData_GetOptionsAddr
+.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetOptionsAddr
 .public Options_GetFrame
 .public Save_SpecialRibbons_get
 .public AllocMonZeroed
@@ -255,8 +255,8 @@
 .public Party_GetUnkSubSlot
 .public Party_SetUnkSubSlot
 .public Party_SafeCopyMonToSlot_ResetUnkSub
-.public SavArray_PlayerParty_get
-.public SavArray_IsNatDexEnabled
+.public SaveArray_PlayerParty_get
+.public SaveArray_IsNatDexEnabled
 .public Pokedex_ConvertToCurrentDexNo
 .public sub_02077678
 .public sub_0207769C

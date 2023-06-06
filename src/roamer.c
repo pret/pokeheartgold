@@ -34,7 +34,7 @@ u32 Roamers_GetRand(ROAMER_SAVE *roamer, u32 which) {
 }
 
 ROAMER_SAVE *Save_Roamers_get(SAVEDATA *saveData) {
-    return SavArray_get(saveData, SAVE_ROAMER);
+    return SaveArray_get(saveData, SAVE_ROAMER);
 }
 
 void RoamerSave_SetOutbreakActive(SAVEDATA *saveData) {

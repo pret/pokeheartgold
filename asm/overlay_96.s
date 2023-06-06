@@ -484,7 +484,7 @@ _021E5CAE:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	add r1, r4, #0
 	bl PlayerProfile_copy
 	pop {r3, r4, r5, r6, r7, pc}
@@ -3693,7 +3693,7 @@ _021E7416:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl Sav2_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfileAddr
 	str r0, [sp]
 	mov r0, #0x7e
 	lsl r0, r0, #2
@@ -4081,7 +4081,7 @@ ov96_021E7718: ; 0x021E7718
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	str r0, [sp]
 	mov r0, #0x1d
 	lsl r0, r0, #4
@@ -5932,7 +5932,7 @@ _021E8504:
 	bl String_c_str
 	add r1, r0, #0
 	add r0, r6, #0
-	bl Sav2_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_set
 	add r0, r4, #0
 	bl String_dtor
 	mov r0, #0
@@ -18984,7 +18984,7 @@ ov96_021EE75C: ; 0x021EE75C
 	ldr r0, _021EE7F4 ; =0x00000004
 	bne _021EE774
 	ldr r0, [sp, #0x18]
-	bl Sav2_PlayerData_GetOptionsAddr
+	bl Save_PlayerData_GetOptionsAddr
 	bl Options_GetTextFrameDelay
 _021EE774:
 	mov r1, #0
@@ -20436,7 +20436,7 @@ ov96_021EF2A0: ; 0x021EF2A0
 ov96_021EF2AC: ; 0x021EF2AC
 	push {r3, lr}
 	bl ov96_021E5D60
-	bl SavArray_Flags_get
+	bl SaveArray_Flags_get
 	mov r1, #0xef
 	bl CheckFlagInArray
 	pop {r3, pc}

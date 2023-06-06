@@ -1,23 +1,23 @@
 #include "sav_chatot.h"
 #include <nitro/mi/memory.h>
 
-u32 Sav2_Chatot_sizeof(void) {
+u32 Save_Chatot_sizeof(void) {
     return sizeof(SOUND_CHATOT);
 }
 
-void Sav2_Chatot_init(SOUND_CHATOT *chatot) {
+void Save_Chatot_init(SOUND_CHATOT *chatot) {
     MI_CpuClear32(chatot, sizeof(SOUND_CHATOT));
     chatot->exists = FALSE;
 }
 
 SOUND_CHATOT *Chatot_new(HeapID heapID) {
     SOUND_CHATOT *chatot = AllocFromHeap(heapID, sizeof(SOUND_CHATOT));
-    Sav2_Chatot_init(chatot);
+    Save_Chatot_init(chatot);
     return chatot;
 }
 
-SOUND_CHATOT *Sav2_Chatot_get(SAVEDATA *saveData) {
-    return SavArray_get(saveData, SAVE_CHATOT);
+SOUND_CHATOT *Save_Chatot_get(SAVEDATA *saveData) {
+    return SaveArray_get(saveData, SAVE_CHATOT);
 }
 
 BOOL Chatot_exists(SOUND_CHATOT *chatot) {

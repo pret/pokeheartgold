@@ -138,8 +138,8 @@ void ItemCheckUseData_Init(FieldSystem *fsys, struct ItemCheckUseData *dat) {
 
     dat->fsys = fsys;
     dat->mapId = fsys->location->mapId;
-    dat->haveFollower = ScriptState_CheckHaveFollower(SavArray_Flags_get(fsys->savedata));
-    dat->haveRocketCostume = ScriptState_CheckRocketCostumeFlag(SavArray_Flags_get(fsys->savedata));
+    dat->haveFollower = ScriptState_CheckHaveFollower(SaveArray_Flags_get(fsys->savedata));
+    dat->haveRocketCostume = ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_get(fsys->savedata));
     dat->playerState = PlayerAvatar_GetState(fsys->playerAvatar);
 
     x = GetPlayerXCoord(fsys->playerAvatar);
@@ -217,10 +217,10 @@ static void ItemMenuUseFunc_HealingItem(struct ItemMenuUseData *data, const stru
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     struct UseItemInPartyTaskEnv *usedat = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct UseItemInPartyTaskEnv));
     memset(usedat, 0, sizeof(struct UseItemInPartyTaskEnv));
-    usedat->party = SavArray_PlayerParty_get(fsys->savedata);
+    usedat->party = SaveArray_PlayerParty_get(fsys->savedata);
     usedat->bag = SaveGetBag(fsys->savedata);
-    usedat->mailbox = Sav2_Mailbox_get(fsys->savedata);
-    usedat->options = Sav2_PlayerData_GetOptionsAddr(fsys->savedata);
+    usedat->mailbox = Save_Mailbox_get(fsys->savedata);
+    usedat->options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
     usedat->unk10 = sub_020270C4(fsys->savedata);
     usedat->unk18 = &env->unk_0370;
     usedat->unk25 = 0;
@@ -340,10 +340,10 @@ static void ItemMenuUseFunc_TMHM(struct ItemMenuUseData *data, const struct Item
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     struct UseItemInPartyTaskEnv *usedat = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct UseItemInPartyTaskEnv));
     memset(usedat, 0, sizeof(struct UseItemInPartyTaskEnv));
-    usedat->party = SavArray_PlayerParty_get(fsys->savedata);
+    usedat->party = SaveArray_PlayerParty_get(fsys->savedata);
     usedat->bag = SaveGetBag(fsys->savedata);
-    usedat->mailbox = Sav2_Mailbox_get(fsys->savedata);
-    usedat->options = Sav2_PlayerData_GetOptionsAddr(fsys->savedata);
+    usedat->mailbox = Save_Mailbox_get(fsys->savedata);
+    usedat->options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
     usedat->unk18 = &env->unk_0370;
     usedat->unk25 = 0;
     usedat->unk24 = 6;
@@ -492,7 +492,7 @@ static BOOL Task_PrintRegisteredKeyItemUseMessage(TaskManager *taskManager) {
         fsys->unkD2_6 = TRUE;
         MapObjectMan_PauseAllMovement(fsys->mapObjectMan);
         sub_0205B514(fsys->bgConfig, &env->window, 3);
-        options = Sav2_PlayerData_GetOptionsAddr(fsys->savedata);
+        options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
         sub_0205B564(&env->window, options);
         env->printerId = sub_0205B5B4(&env->window, env->strbuf, options, TRUE);
         env->state++;
@@ -530,10 +530,10 @@ static void ItemMenuUseFunc_EvoStone(struct ItemMenuUseData *data, const struct 
     env = TaskManager_GetEnv(data->taskManager);
     usedat = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct UseItemInPartyTaskEnv));
     memset(usedat, 0, sizeof(struct UseItemInPartyTaskEnv));
-    usedat->party = SavArray_PlayerParty_get(fsys->savedata);
+    usedat->party = SaveArray_PlayerParty_get(fsys->savedata);
     usedat->bag = SaveGetBag(fsys->savedata);
-    usedat->mailbox = Sav2_Mailbox_get(fsys->savedata);
-    usedat->options = Sav2_PlayerData_GetOptionsAddr(fsys->savedata);
+    usedat->mailbox = Save_Mailbox_get(fsys->savedata);
+    usedat->options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
     usedat->unk10 = sub_020270C4(fsys->savedata);
     usedat->unk18 = &env->unk_0370;
     usedat->unk25 = 0;
@@ -755,10 +755,10 @@ int UseRegisteredItemButtonInField(FieldSystem *fsys, u8 slot) {
     if (sub_02067584(fsys) == TRUE) {
          return 0;
     }
-    if (ScriptState_CheckPalParkSysFlag(SavArray_Flags_get(fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckPalParkSysFlag(SaveArray_Flags_get(fsys->savedata)) == TRUE) {
         return 0;
     }
-    if (CheckFlag996(SavArray_Flags_get(fsys->savedata)) == TRUE) {
+    if (CheckFlag996(SaveArray_Flags_get(fsys->savedata)) == TRUE) {
         return 0;
     }
     if (ov01_021F6B10(fsys) != TRUE) {
@@ -806,7 +806,7 @@ static void RegisteredItem_GoToPrintErrorTask(struct ItemFieldUseData *data, enu
     struct RegisteredKeyItemUseMessagePrintTaskData *env = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct RegisteredKeyItemUseMessagePrintTaskData));
     env->state = 0;
     env->strbuf = String_New(128, HEAP_ID_FIELD);
-    GetItemUseErrorMessage(Sav2_PlayerData_GetProfileAddr(data->fsys->savedata), env->strbuf, data->itemId, error, HEAP_ID_FIELD);
+    GetItemUseErrorMessage(Save_PlayerData_GetProfileAddr(data->fsys->savedata), env->strbuf, data->itemId, error, HEAP_ID_FIELD);
     FieldSys_CreateTask(data->fsys, Task_PrintRegisteredKeyItemUseMessage, env);
 }
 
