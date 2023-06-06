@@ -188,7 +188,7 @@ void BgClearTilemapBufferAndCommit(BGCONFIG *bgConfig, u8 layer);
 void BgFillTilemapBufferAndCommit(BGCONFIG *bgConfig, u8 layer, u16 value);
 void BgFillTilemapBufferAndSchedule(BGCONFIG *bgConfig, u8 layer, u16 value);
 void *BgGetCharPtr(u8 layer);
-u8 *Convert4bppTo8bpp(u8 *src4Bpp, u32 size, u8 paletteNum, u32 heap_id);
+u8 *Convert4bppTo8bpp(u8 *src4Bpp, u32 size, u8 paletteNum, HeapID heap_id);
 void *GetBgTilemapBuffer(BGCONFIG *bgConfig, u8 layer);
 fx32 GetBgHOffset(BGCONFIG *bgConfig, u8 layer);
 u8 GetBgColorMode(BGCONFIG *bgConfig, u8 layer);

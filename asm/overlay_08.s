@@ -2414,7 +2414,7 @@ ov08_0221D0F4: ; 0x0221D0F4
 	mov r0, #2
 	ldr r1, [r1, #0xc]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	ldr r1, _0221D148 ; =0x00001FB0
 	str r0, [r4, r1]
 	pop {r4, pc}
@@ -4077,7 +4077,7 @@ ov08_0221DDCC: ; 0x0221DDCC
 	ldr r1, [r1, #0xc]
 	mov r0, #0xc
 	str r2, [sp, #0x10]
-	bl String_ctor
+	bl String_New
 	ldr r1, [sp, #0x14]
 	str r0, [sp, #0x1c]
 	ldr r0, _0221DF60 ; =0x00001FA8
@@ -4477,7 +4477,7 @@ ov08_0221E120: ; 0x0221E120
 	mov r0, #0x10
 	ldr r1, [r1, #0xc]
 	add r7, r2, #0
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r0, _0221E198 ; =0x00001FA8
 	mov r1, #8
@@ -4551,7 +4551,7 @@ _0221E1CC:
 	ldr r1, [r4]
 	mov r0, #0x12
 	ldr r1, [r1, #0xc]
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r0, _0221E234 ; =0x00001FA8
 	mov r1, #9
@@ -4613,7 +4613,7 @@ ov08_0221E244: ; 0x0221E244
 	mov r0, #0x10
 	str r3, [sp, #0x14]
 	lsl r6, r2, #4
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldr r0, _0221E2E0 ; =0x00001FA8
 	ldr r1, [sp, #0x14]
@@ -4853,7 +4853,7 @@ ov08_0221E408: ; 0x0221E408
 	str r0, [sp, #0x18]
 	ldr r1, [r1, #0xc]
 	mov r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0
 	str r0, [sp, #0x1c]
 	str r1, [sp]
@@ -4920,7 +4920,7 @@ ov08_0221E408: ; 0x0221E408
 	str r0, [sp, #0x14]
 	ldr r1, [r1, #0xc]
 	mov r0, #0xe
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x10]
 	ldrb r0, [r4, #0x16]
 	lsl r0, r0, #0x19
@@ -5057,7 +5057,7 @@ ov08_0221E5DC: ; 0x0221E5DC
 	str r0, [sp, #0x10]
 	ldr r1, [r1, #0xc]
 	mov r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0
 	mov r2, #0x50
 	add r6, r0, #0
@@ -5167,7 +5167,7 @@ ov08_0221E6D8: ; 0x0221E6D8
 	str r0, [sp, #0x10]
 	ldr r1, [r1, #0xc]
 	mov r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0
 	mov r2, #0x50
 	add r6, r0, #0
@@ -5278,7 +5278,7 @@ ov08_0221E7D4: ; 0x0221E7D4
 	str r0, [sp, #0x10]
 	ldr r1, [r1, #0xc]
 	mov r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0
 	mov r2, #0x50
 	add r6, r0, #0
@@ -5391,7 +5391,7 @@ ov08_0221E8D4: ; 0x0221E8D4
 	str r0, [sp, #0x10]
 	ldr r1, [r1, #0xc]
 	mov r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0
 	mov r2, #0x50
 	add r6, r0, #0
@@ -5504,7 +5504,7 @@ ov08_0221E9D4: ; 0x0221E9D4
 	str r0, [sp, #0x10]
 	ldr r1, [r1, #0xc]
 	mov r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0
 	mov r2, #0x50
 	add r6, r0, #0
@@ -5655,7 +5655,7 @@ ov08_0221EAD4: ; 0x0221EAD4
 	str r0, [sp, #0x18]
 	ldr r1, [r1, #0xc]
 	mov r0, #8
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x1c]
 	mov r1, #0
 	str r1, [sp]
@@ -5701,7 +5701,7 @@ ov08_0221EAD4: ; 0x0221EAD4
 	str r0, [sp, #0x20]
 	ldr r1, [r1, #0xc]
 	mov r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0
 	str r0, [sp, #0x24]
 	str r1, [sp]
@@ -5895,7 +5895,7 @@ _0221ED8A:
 	str r0, [sp, #0x14]
 	ldr r1, [r1, #0xc]
 	mov r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0
 	add r7, r0, #0
 	str r1, [sp]
@@ -6033,7 +6033,7 @@ _0221EEBA:
 	str r0, [sp, #0x14]
 	ldr r1, [r1, #0xc]
 	mov r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0
 	add r7, r0, #0
 	str r1, [sp]
@@ -6281,7 +6281,7 @@ ov08_0221F07C: ; 0x0221F07C
 	str r0, [sp, #0x20]
 	ldr r1, [r1, #0xc]
 	mov r0, #6
-	bl String_ctor
+	bl String_New
 	mov r1, #0
 	str r0, [sp, #0x24]
 	str r1, [sp]
@@ -6325,7 +6325,7 @@ ov08_0221F07C: ; 0x0221F07C
 	str r0, [sp, #0x28]
 	ldr r1, [r1, #0xc]
 	mov r0, #6
-	bl String_ctor
+	bl String_New
 	mov r1, #0
 	str r0, [sp, #0x2c]
 	str r1, [sp]
@@ -6484,7 +6484,7 @@ ov08_0221F284: ; 0x0221F284
 	ldr r4, [r5, r0]
 	mov r0, #6
 	lsl r6, r2, #4
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldr r0, _0221F3C4 ; =0x00001FA8
 	mov r1, #0x2b
@@ -6630,7 +6630,7 @@ ov08_0221F3D0: ; 0x0221F3D0
 	ldr r4, [r5, r0]
 	mov r0, #6
 	lsl r6, r2, #4
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x14]
 	ldr r0, _0221F498 ; =0x00001FA8
 	mov r1, #0x2b
@@ -6946,7 +6946,7 @@ ov08_0221F658: ; 0x0221F658
 	str r0, [sp, #0x14]
 	ldr r1, [r1, #0xc]
 	mov r0, #0xc
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x10]
 	ldr r0, _0221F7A8 ; =0x00001FA8
 	ldr r1, _0221F7AC ; =ov08_02224FF4
@@ -10762,7 +10762,7 @@ ov08_0222162C: ; 0x0222162C
 	ldr r2, [r5, r2]
 	ldr r3, [r3, #0xc]
 	add r4, r0, #0
-	bl ov12_0226B8FC
+	bl BattleCursor_LoadResources
 	ldr r3, _02221690 ; =0x0000B00C
 	mov r0, #0
 	str r3, [sp]
@@ -10777,7 +10777,7 @@ ov08_0222162C: ; 0x0222162C
 	ldr r2, [r2, #0xc]
 	add r0, r4, #0
 	add r3, #0xc
-	bl ov12_0226B9A4
+	bl BattleCursor_New
 	add r1, r0, #0
 	ldr r0, _02221694 ; =0x00002088
 	ldr r0, [r5, r0]
@@ -10799,7 +10799,7 @@ ov08_02221698: ; 0x02221698
 	ldr r0, _022216C0 ; =0x00002088
 	ldr r0, [r4, r0]
 	bl ov08_02224B84
-	bl ov12_0226BA28
+	bl BattleCursor_Delete
 	ldr r2, _022216C4 ; =0x0000B00C
 	ldr r0, _022216C8 ; =0x00001FB4
 	str r2, [sp]
@@ -10807,7 +10807,7 @@ ov08_02221698: ; 0x02221698
 	ldr r0, [r4, r0]
 	add r1, #0xc
 	add r3, r2, #0
-	bl ov12_0226B97C
+	bl BattleCursor_FreeResources
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -10963,7 +10963,7 @@ ov08_022217C8: ; 0x022217C8
 	ldr r0, _022217EC ; =0x00002088
 	ldr r0, [r4, r0]
 	bl ov08_02224B84
-	bl ov12_0226BB68
+	bl BattleCursor_Disable
 	pop {r4, pc}
 	.balign 4, 0
 _022217EC: .word 0x00002088
@@ -14236,7 +14236,7 @@ ov08_022231E8: ; 0x022231E8
 	mov r0, #2
 	ldr r1, [r1, #0xc]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x18]
 	pop {r4, pc}
 	.balign 4, 0
@@ -15275,7 +15275,7 @@ ov08_02223A3C: ; 0x02223A3C
 	ldr r1, [r1, #0xc]
 	mov r0, #0x82
 	add r4, #0x20
-	bl String_ctor
+	bl String_New
 	ldr r1, _02223A98 ; =0x0000114D
 	add r7, r0, #0
 	ldrb r2, [r5, r1]
@@ -16127,7 +16127,7 @@ ov08_022240A8: ; 0x022240A8
 	ldr r1, [r5, r1]
 	ldr r2, [r5, #8]
 	ldr r3, [r3, #0xc]
-	bl ov12_0226B8FC
+	bl BattleCursor_LoadResources
 	ldr r3, _02224104 ; =0x0000B4BE
 	mov r1, #0xc3
 	str r3, [sp]
@@ -16143,7 +16143,7 @@ ov08_022240A8: ; 0x022240A8
 	ldr r1, [r5, r1]
 	ldr r2, [r2, #0xc]
 	add r0, r4, #0
-	bl ov12_0226B9A4
+	bl BattleCursor_New
 	add r1, r0, #0
 	ldr r0, [r5, #0x34]
 	bl ov08_02224B94
@@ -16160,7 +16160,7 @@ ov08_02224108: ; 0x02224108
 	add r4, r0, #0
 	ldr r0, [r4, #0x34]
 	bl ov08_02224B84
-	bl ov12_0226BA28
+	bl BattleCursor_Delete
 	ldr r3, _02224130 ; =0x0000B4B9
 	mov r0, #0xc3
 	add r1, r3, #5
@@ -16168,7 +16168,7 @@ ov08_02224108: ; 0x02224108
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r2, r1, #0
-	bl ov12_0226B97C
+	bl BattleCursor_FreeResources
 	add sp, #4
 	pop {r3, r4, pc}
 	nop
@@ -16223,7 +16223,7 @@ ov08_0222417C: ; 0x0222417C
 	bl ov08_02224BC0
 	ldr r0, [r4, #0x34]
 	bl ov08_02224B84
-	bl ov12_0226BB68
+	bl BattleCursor_Disable
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov08_0222417C
@@ -16249,7 +16249,7 @@ ov08_0222419C: ; 0x0222419C
 	ldr r1, [r5, r1]
 	ldr r2, [r2, #0xc]
 	ldr r3, [r5, #8]
-	bl ov12_0226BBC4
+	bl BattleFinger_LoadResources
 	ldr r3, _022241F0 ; =0x0000B4BD
 	mov r1, #0xc3
 	str r3, [sp]
@@ -16264,7 +16264,7 @@ ov08_0222419C: ; 0x0222419C
 	ldr r1, [r5, r1]
 	ldr r2, [r2, #0xc]
 	add r0, r4, #0
-	bl ov12_0226BC68
+	bl BattleFinger_New
 	str r0, [r5, #0x38]
 	add sp, #0x14
 	pop {r4, r5, pc}
@@ -16278,7 +16278,7 @@ ov08_022241F4: ; 0x022241F4
 	sub sp, #4
 	add r4, r0, #0
 	ldr r0, [r4, #0x38]
-	bl ov12_0226BCE4
+	bl BattleFinger_Delete
 	ldr r3, _02224218 ; =0x0000B4B8
 	mov r0, #0xc3
 	add r1, r3, #5
@@ -16286,7 +16286,7 @@ ov08_022241F4: ; 0x022241F4
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r2, r1, #0
-	bl ov12_0226BC40
+	bl BattleFinger_FreeResources
 	add sp, #4
 	pop {r3, r4, pc}
 	nop
@@ -16314,7 +16314,7 @@ ov08_0222421C: ; 0x0222421C
 	pop {r4, pc}
 _02224242:
 	ldr r0, [r4, #0x38]
-	bl ov12_0226BD38
+	bl BattleFinger_Disable
 	pop {r4, pc}
 	nop
 _0222424C: .word ov08_02225D2C

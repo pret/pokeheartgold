@@ -91,7 +91,7 @@
 .public sub_020249A8
 .public sub_020249D4
 .public sub_02025224
-.public String_ctor
+.public String_New
 .public String_dtor
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete

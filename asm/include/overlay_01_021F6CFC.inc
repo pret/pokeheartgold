@@ -14,7 +14,7 @@
 .public WindowIsInUse
 .public RemoveWindow
 .public TextPrinterCheckActive
-.public String_ctor
+.public String_New
 .public String_dtor
 .public Sav2_PlayerData_GetOptionsAddr
 .public PlayerProfile_new

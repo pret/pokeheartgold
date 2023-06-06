@@ -731,7 +731,7 @@ _0221BF92:
 	mov r0, #5
 	ldr r1, [r1, #0x24]
 	lsl r0, r0, #6
-	bl String_ctor
+	bl String_New
 	ldr r1, _0221C014 ; =0x00000BB4
 	str r0, [r5, r1]
 	mov r0, #1
@@ -5909,7 +5909,7 @@ ov05_0221E944: ; 0x0221E944
 	str r0, [sp, #8]
 	ldr r1, [r1, #0x24]
 	mov r0, #0x20
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	mov r4, #0
 	add r5, r6, #0

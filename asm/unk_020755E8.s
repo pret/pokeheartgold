@@ -851,7 +851,7 @@ sub_02075A7C: ; 0x02075A7C
 	mov r0, #5
 	lsl r0, r0, #6
 	add r1, r5, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x10]
 	add r0, r5, #0
 	mov r1, #0x3c
@@ -2912,7 +2912,7 @@ _02076D62:
 	add r2, sp, #0
 	bl SetMonData
 	ldr r0, [r4, #0x5c]
-	bl Mail_new
+	bl Mail_New
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #0xaa

@@ -48,7 +48,7 @@
 .public sub_0205EEF4
 .public sub_0205F09C
 .public MapObjectMan_GetCount
-.public sub_0205F19C
+.public MapObjectMan_GetHeapID
 .public sub_0205F1A0
 .public sub_0205F1AC
 .public sub_0205F1C4

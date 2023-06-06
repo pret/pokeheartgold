@@ -2890,18 +2890,18 @@ ov72_02239040: ; 0x02239040
 	add r4, r0, #0
 	mov r0, #0xb4
 	mov r1, #0x43
-	bl String_ctor
+	bl String_New
 	mov r1, #0xbe
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	mov r0, #4
 	mov r1, #0x43
-	bl String_ctor
+	bl String_New
 	ldr r1, _0223908C ; =0x00000BE8
 	str r0, [r4, r1]
 	mov r0, #3
 	mov r1, #0x43
-	bl String_ctor
+	bl String_New
 	ldr r1, _02239090 ; =0x00000BEC
 	str r0, [r4, r1]
 	sub r1, #0x18
@@ -2913,7 +2913,7 @@ ov72_02239040: ; 0x02239040
 	mov r0, #1
 	lsl r0, r0, #8
 	mov r1, #0x43
-	bl String_ctor
+	bl String_New
 	mov r1, #0xbf
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -5569,7 +5569,7 @@ ov72_0223A460: ; 0x0223A460
 	add r6, r1, #0
 	lsl r0, r0, #8
 	mov r1, #0x43
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	ldr r0, _0223A4D0 ; =0x00000BDC
 	add r1, r6, #0

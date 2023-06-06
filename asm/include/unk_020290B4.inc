@@ -4,7 +4,7 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public CopyU16ArrayToString
 .public CopyU16ArrayToStringN
 .public SavArray_get

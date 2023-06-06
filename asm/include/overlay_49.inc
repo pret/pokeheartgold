@@ -188,7 +188,7 @@
 .public sub_02024B1C
 .public GF_AssertFail
 .public sub_02025ACC
-.public String_ctor
+.public String_New
 .public String_dtor
 .public StringCopy
 .public StringGetLength

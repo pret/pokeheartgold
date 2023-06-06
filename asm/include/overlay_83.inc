@@ -160,7 +160,7 @@
 .public sub_02025224
 .public System_GetTouchNew
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public CopyU16ArrayToString
 .public Sav2_PlayerData_GetProfileAddr

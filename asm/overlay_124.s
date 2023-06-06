@@ -59,7 +59,7 @@ _02260C66:
 	mov r1, #0xb
 	bl Field_AllocateMapEvents
 	mov r0, #0xb
-	bl BagCursor_new
+	bl BagCursor_New
 	add r1, r5, #0
 	add r1, #0x94
 	str r0, [r1]

@@ -106,7 +106,7 @@
 .public sub_02024A04
 .public sub_02024B68
 .public sub_02025224
-.public String_ctor
+.public String_New
 .public String_dtor
 .public CopyU16ArrayToString
 .public Sav2_PlayerData_GetProfileAddr

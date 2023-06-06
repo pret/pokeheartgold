@@ -1018,7 +1018,7 @@ _02237FD8:
 	mov r0, #5
 	lsl r0, r0, #6
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x18]
 	ldr r0, [r4, #0x28]
 	mov r1, #0
@@ -1220,7 +1220,7 @@ ov12_02238358: ; 0x02238358
 	cmp r1, #0
 	beq _02238380
 	ldr r1, [r4, #0x30]
-	bl ov12_022486B0
+	bl BattleMain
 _02238380:
 	ldr r0, [r4, #0x44]
 	mov r6, #0
@@ -1244,7 +1244,7 @@ _0223839E:
 	beq _022383BA
 	ldr r1, [r4, #0x30]
 	add r0, r4, #0
-	bl ov12_022486B0
+	bl BattleMain
 	ldr r1, _02238438 ; =0x000023FE
 	strb r0, [r4, r1]
 	add r0, r4, #0
@@ -1280,7 +1280,7 @@ _022383E0:
 	beq _02238404
 	ldr r1, [r4, #0x30]
 	add r0, r4, #0
-	bl ov12_022486B0
+	bl BattleMain
 	ldr r1, _02238438 ; =0x000023FE
 	strb r0, [r4, r1]
 	add r0, r4, #0
@@ -1579,7 +1579,7 @@ _0223861E:
 	ldr r0, [r0]
 	bl ov07_0221BFE0
 	ldr r0, [r4, #0x30]
-	bl ov12_022486FC
+	bl BattleContext_Delete
 	ldr r0, [r4, #0x44]
 	mov r6, #0
 	cmp r0, #0
@@ -2299,7 +2299,7 @@ _02238C7E:
 	cmp r0, #4
 	blt _02238C6A
 	add r0, r4, #0
-	bl ov12_02248660
+	bl BattleContext_New
 	ldr r7, _02238D58 ; =0x0000248C
 	str r0, [r4, #0x30]
 	mov r5, #0
@@ -4137,7 +4137,7 @@ _02239A46:
 	mov r0, #1
 	lsl r0, r0, #8
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r1, _02239C18 ; =0x0000039B
 	add r0, r4, #0
@@ -5763,3 +5763,6 @@ ov12_0226C1C8: ; 0x0226C1C8
 
 ov12_0226C2DC: ; 0x0226C2DC
 	.byte 0x02, 0x03, 0x04, 0x05
+
+	.section .sinit,4
+	.word ov12_022399BC

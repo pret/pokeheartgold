@@ -93,7 +93,7 @@ void sub_0203DEF0(FieldSystem *fsys) {
 
     fsys->unk6C = 0;
     fsys->unk0->unk8 = FALSE;
-    fsys->unk0->unk0 = OverlayManager_new(&ov01_02206378, fsys, 11);
+    fsys->unk0->unk0 = OverlayManager_new(&ov01_02206378, fsys, HEAP_ID_FIELD);
 }
 
 void sub_0203DF34(FieldSystem *fsys) {
@@ -128,16 +128,16 @@ void FieldSys_LaunchApplication(FieldSystem *fsys, const OVY_MGR_TEMPLATE *templ
 
     sub_0203DF34(fsys);
 
-    fsys->unk0->unk4 = OverlayManager_new(template, parentWork, 11);
+    fsys->unk0->unk4 = OverlayManager_new(template, parentWork, HEAP_ID_FIELD);
 }
 
 FieldSystem *FieldSys_New(OVY_MANAGER *man) {
     CreateHeap(3, 11, 0x1C000);
     CreateHeap(3, 32, 0x4000);
     CreateHeap(0, 89, 0x570);
-    FieldSystem *fsys = OverlayManager_CreateAndGetData(man, sizeof(FieldSystem), 11);
+    FieldSystem *fsys = OverlayManager_CreateAndGetData(man, sizeof(FieldSystem), HEAP_ID_FIELD);
     MI_CpuFill8(fsys, 0, sizeof(FieldSystem));
-    fsys->unk0 = AllocFromHeap(11, sizeof(struct FieldSystemUnkSub0));
+    fsys->unk0 = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct FieldSystemUnkSub0));
 
     fsys->unk0->unk0 = NULL;
     fsys->unk0->unk4 = NULL;
@@ -162,9 +162,9 @@ void FieldSys_Delete(OVY_MANAGER *man) {
     sub_02092DD8(fsys->unk114);
     FreeToHeap(fsys->unk0);
     OverlayManager_FreeData(man);
-    DestroyHeap(89);
-    DestroyHeap(11);
-    DestroyHeap(32);
+    DestroyHeap(HEAP_ID_89);
+    DestroyHeap(HEAP_ID_FIELD);
+    DestroyHeap(HEAP_ID_32);
 }
 
 static void ppOverlayManager_RunFrame_DeleteIfFinished(OVY_MANAGER **man) {

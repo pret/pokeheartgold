@@ -131,7 +131,7 @@
 .public sub_02024AA8
 .public sub_02024B68
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public Sav2_PlayerData_GetProfileAddr
 .public Sav2_PlayerData_GetOptionsAddr

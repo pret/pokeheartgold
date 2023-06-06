@@ -1351,11 +1351,11 @@ ov90_02259184: ; 0x02259184
 	str r0, [r5, #4]
 	mov r0, #0x80
 	add r1, r4, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #8]
 	mov r0, #0x80
 	add r1, r4, #0
-	bl String_ctor
+	bl String_New
 	mov r1, #6
 	str r0, [r5, #0xc]
 	mov r0, #0
@@ -1689,7 +1689,7 @@ _022593EC:
 	bl FillWindowPixelBuffer
 	ldr r1, [sp, #0x30]
 	mov r0, #0x80
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x24]
 	add r6, r6, #1
 	add r4, #0x10
@@ -3616,7 +3616,7 @@ ov90_0225A2B0: ; 0x0225A2B0
 	bl FillWindowPixelBuffer
 	ldr r1, [sp, #0x2c]
 	mov r0, #0x80
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x14]
 	add r0, r7, #0
 	add r1, r6, #0

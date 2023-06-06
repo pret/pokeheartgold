@@ -84,7 +84,7 @@
 .public Camera_SetDistance
 .public Camera_GetDistance
 .public System_GetTouchNew
-.public String_ctor
+.public String_New
 .public String_dtor
 .public Thunk_G3X_Reset
 .public sub_02026E50

@@ -130,7 +130,7 @@ void GetECWordIntoStringByIndex(u16 ecWord, STRING *dest) {
     if (ecWord != EC_WORD_NULL) {
         GetCategoryAndMsgNoByECWordIdx(ecWord, &category, &msgno);
         category = sNarcMsgBanks[category];
-        ReadMsgData_NewNarc_ExistingString(NARC_msgdata_msg, category, msgno, 0, dest);
+        ReadMsgData_NewNarc_ExistingString(NARC_msgdata_msg, category, msgno, HEAP_ID_0, dest);
     } else {
         StringSetEmpty(dest);
     }

@@ -60,7 +60,7 @@ BOOL ScrCmd_GetStdMsgNaix(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_NonNpcMsgExtern(SCRIPTCONTEXT *ctx) {
     u16 fileId = ScriptGetVar(ctx);
     u16 messageNum = ScriptGetVar(ctx);
-    MSGDATA *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, fileId, 32);
+    MSGDATA *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, fileId, HEAP_ID_32);
     ovFieldMain_ShowMessageInField(ctx, messageData, messageNum);
     DestroyMsgData(messageData);
     return FALSE;
@@ -69,7 +69,7 @@ BOOL ScrCmd_NonNpcMsgExtern(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_MsgboxExtern(SCRIPTCONTEXT *ctx) {
     u16 fileId = ScriptGetVar(ctx);
     u16 messageNum = ScriptGetVar(ctx);
-    MSGDATA *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, fileId, 32);
+    MSGDATA *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, fileId, HEAP_ID_32);
     ov01_021EF4DC(ctx, messageData, messageNum, TRUE, NULL);
     DestroyMsgData(messageData);
     SetupNativeScript(ctx, ov01_021EF348);
@@ -103,7 +103,7 @@ BOOL ScrCmd_443(SCRIPTCONTEXT *ctx) {
     }
     u16 *r4 = r2 + 0x90 + r1 * 0x110;
     if (r4[0] == 0xFFFF) {
-        MSGDATA *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, 723, 32);
+        MSGDATA *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, 723, HEAP_ID_32);
         ov01_021EF4DC(ctx, messageData, r4[1], TRUE, NULL);
         DestroyMsgData(messageData);
     } else {
@@ -293,7 +293,7 @@ static void ovFieldMain_GetFormattedECMessage(MessageBox *messageBox, u16 messag
     MailMsg_SetMsgBankAndNum(&mailMessage, messageBank, messageNum);
     MailMsg_SetFieldI(&mailMessage, 0, word1);
     MailMsg_SetFieldI(&mailMessage, 1, word2);
-    STRING *string = MailMsg_GetExpandedString(&mailMessage, 32);
+    STRING *string = MailMsg_GetExpandedString(&mailMessage, HEAP_ID_32);
     StringCopy(messageBox->message, string);
     String_dtor(string);
 }

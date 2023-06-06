@@ -37,7 +37,7 @@
 .public GX_EngineBToggleLayers
 .public GX_SwapDisplay
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public sub_02026CAC
 .public sub_0203A880

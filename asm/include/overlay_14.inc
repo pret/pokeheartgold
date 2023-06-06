@@ -200,7 +200,7 @@
 .public System_GetTouchNew
 .public sub_02025364
 .public sub_02025380
-.public String_ctor
+.public String_New
 .public String_dtor
 .public GetStoragePCPointer
 .public Sav2_PlayerData_GetProfileAddr

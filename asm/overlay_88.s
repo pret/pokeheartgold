@@ -1499,7 +1499,7 @@ _02259304:
 	mov r0, #1
 	ldr r1, [sp, #0x1c]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	ldr r1, [sp, #0x14]
 	ldr r2, [sp, #0x14]
 	add r1, #0x90
@@ -1724,7 +1724,7 @@ ov88_02259508: ; 0x02259508
 	add r6, r2, #0
 	lsl r0, r0, #8
 	add r1, r3, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #8]
 	add r0, r6, #7
 	strb r0, [r5, #1]
@@ -1929,7 +1929,7 @@ ov88_0225967C: ; 0x0225967C
 	str r0, [sp, #0x38]
 	ldr r1, [sp, #0x1c]
 	mov r0, #0x80
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x34]
 	mov r0, #0
 	str r0, [sp, #0x3c]
@@ -1980,7 +1980,7 @@ _022596BC:
 	bl StringGetLength
 	ldr r1, [sp, #0x1c]
 	add r0, r0, #1
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	ldr r0, [sp, #0x30]
 	mov r7, #0

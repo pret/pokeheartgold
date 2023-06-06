@@ -71,7 +71,7 @@
 .public Set2dSpriteAnimSeqNo
 .public sub_02024A04
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public CopyU16ArrayToString
 .public GetStoragePCPointer

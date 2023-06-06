@@ -102,9 +102,9 @@ BOOL Task_RunScripts(TaskManager *taskman) {
     case 0:
         env->scriptContexts[0] = CreateScriptContext(fsys, env->activeScriptNumber);
         env->activeScriptContextCount = 1;
-        env->msgfmt = MessageFormat_new_custom(8, 64, HEAP_ID_FIELDMAP);
-        env->stringBuffer0 = String_ctor(1024, HEAP_ID_FIELDMAP);
-        env->stringBuffer1 = String_ctor(1024, HEAP_ID_FIELDMAP);
+        env->msgfmt = MessageFormat_new_custom(8, 64, HEAP_ID_FIELD);
+        env->stringBuffer0 = String_New(1024, HEAP_ID_FIELD);
+        env->stringBuffer1 = String_New(1024, HEAP_ID_FIELD);
         env->state++;
         // fallthrough
     case 1:
@@ -141,7 +141,7 @@ BOOL Task_RunScripts(TaskManager *taskman) {
 }
 
 ScriptEnvironment *ScriptEnvironment_new(void) {
-    ScriptEnvironment *ret = AllocFromHeap(HEAP_ID_FIELDMAP, sizeof(ScriptEnvironment));
+    ScriptEnvironment *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(ScriptEnvironment));
     GF_ASSERT(ret != NULL);
     memset(ret, 0, sizeof(ScriptEnvironment));
     ret->check = Unk80_10_C_MAGIC;
@@ -169,7 +169,7 @@ void SetupScriptEngine(FieldSystem *fsys, ScriptEnvironment *env, u16 script, Lo
 }
 
 SCRIPTCONTEXT *CreateScriptContext(FieldSystem *fsys, u16 script) {
-    SCRIPTCONTEXT *ctx = AllocFromHeap(HEAP_ID_FIELDMAP, sizeof(SCRIPTCONTEXT));
+    SCRIPTCONTEXT *ctx = AllocFromHeap(HEAP_ID_FIELD, sizeof(SCRIPTCONTEXT));
     GF_ASSERT(ctx != NULL);
     InitScriptContext(ctx, gScriptCmdTable, sNumScriptCmds);
     SetUpScriptContextForMap(fsys, ctx, script, 0);
@@ -206,13 +206,13 @@ u16 LoadScriptsAndMessagesByMapId(FieldSystem *fsys, SCRIPTCONTEXT *ctx, u16 scr
 }
 
 void LoadScriptsAndMessagesParameterized(FieldSystem *fsys, SCRIPTCONTEXT *ctx, int scriptBank, u32 msgBank) {
-    ctx->mapScripts = AllocAndReadWholeNarcMemberByIdPair(NARC_fielddata_script_scr_seq, scriptBank, HEAP_ID_FIELDMAP);
-    ctx->msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msgBank, HEAP_ID_FIELDMAP);
+    ctx->mapScripts = AllocAndReadWholeNarcMemberByIdPair(NARC_fielddata_script_scr_seq, scriptBank, HEAP_ID_FIELD);
+    ctx->msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msgBank, HEAP_ID_FIELD);
 }
 
 void LoadScriptsAndMessagesForCurrentMap(FieldSystem *fsys, SCRIPTCONTEXT *ctx) {
     ctx->mapScripts = LoadScriptsForCurrentMap(fsys->location->mapId);
-    ctx->msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, GetCurrentMapMessageBank(fsys->location->mapId), HEAP_ID_FIELDMAP);
+    ctx->msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, GetCurrentMapMessageBank(fsys->location->mapId), HEAP_ID_FIELD);
 }
 
 void *FieldSysGetAttrAddrInternal(ScriptEnvironment *environment, enum ScriptEnvField field) {
@@ -340,7 +340,7 @@ void ScriptRunByIndex(SCRIPTCONTEXT *ctx, int idx) {
 }
 
 u8 *LoadScriptsForCurrentMap(u32 mapno) {
-    return AllocAndReadWholeNarcMemberByIdPair(NARC_fielddata_script_scr_seq, MapHeader_GetScriptsBank(mapno), HEAP_ID_FIELDMAP);
+    return AllocAndReadWholeNarcMemberByIdPair(NARC_fielddata_script_scr_seq, MapHeader_GetScriptsBank(mapno), HEAP_ID_FIELD);
 }
 
 u32 GetCurrentMapMessageBank(u32 mapno) {

@@ -572,13 +572,13 @@ _02258C7E:
 	mov r0, #1
 	lsl r0, r0, #8
 	add r1, r7, #0
-	bl String_ctor
+	bl String_New
 	ldr r1, [sp]
 	str r0, [r1, #0x28]
 	mov r0, #1
 	lsl r0, r0, #8
 	add r1, r7, #0
-	bl String_ctor
+	bl String_New
 	ldr r1, [sp]
 	str r0, [r1, #0x2c]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1309,7 +1309,7 @@ ov47_02259228: ; 0x02259228
 	mov r0, #1
 	lsl r0, r0, #8
 	add r1, r6, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x18]
 	add r0, r4, #0
 	bl Sav2_PlayerData_GetOptionsAddr
@@ -2632,7 +2632,7 @@ ov47_02259C8C: ; 0x02259C8C
 	str r1, [sp]
 	lsl r0, r0, #8
 	add r1, r7, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x10]
 	mov r6, #0
 	add r4, r5, #0
@@ -2640,7 +2640,7 @@ _02259CA4:
 	mov r0, #1
 	lsl r0, r0, #8
 	add r1, r7, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x14]
 	add r6, r6, #1
 	add r4, r4, #4

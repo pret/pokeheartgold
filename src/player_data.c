@@ -84,7 +84,7 @@ void PlayerName_FlatToString(PLAYERPROFILE* profile, STRING* str) {
 }
 
 STRING* PlayerProfile_GetPlayerName_NewString(PLAYERPROFILE* profile, HeapID heap_id) {
-    STRING* str = String_ctor(PLAYER_NAME_LENGTH + 1, heap_id);
+    STRING* str = String_New(PLAYER_NAME_LENGTH + 1, heap_id);
     PlayerName_FlatToString(profile, str);
 
     return str;

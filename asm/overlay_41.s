@@ -3943,7 +3943,7 @@ ov41_02247C7C: ; 0x02247C7C
 	mov r0, #1
 	lsl r0, r0, #8
 	mov r1, #0xd
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	ldr r0, _02247CF8 ; =0x000006E8
 	add r1, r4, #0
@@ -12950,7 +12950,7 @@ _0224BE9C:
 	bl sub_020247D4
 	mov r0, #0xc
 	mov r1, #0xd
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldr r0, [r5]
 	add r1, r7, #0
@@ -12987,7 +12987,7 @@ _0224BE9C:
 	bl BufferECWord
 	mov r0, #0xc8
 	mov r1, #0xd
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	ldr r0, [sp, #0x10]
 	mov r1, #0x2d

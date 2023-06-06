@@ -154,7 +154,7 @@
 .public System_GetTouchNew
 .public sub_020253F0
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public Thunk_G3X_Reset
 .public GF_3DVramMan_Create

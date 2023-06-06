@@ -581,7 +581,7 @@ ov14_021E5D78: ; 0x021E5D78
 	mov r0, #1
 	lsl r0, r0, #0xa
 	mov r1, #0xa
-	bl String_ctor
+	bl String_New
 	ldr r1, [r4, #0x34]
 	str r0, [r1, #0x28]
 	pop {r4, pc}
@@ -32098,7 +32098,7 @@ ov14_021F5718: ; 0x021F5718
 	bl MIi_CpuCopy32
 	mov r0, #0x14
 	mov r1, #0xa
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldrb r1, [r6, #0x1f]
 	ldr r0, [r6, #4]
@@ -32151,7 +32151,7 @@ ov14_021F57B8: ; 0x021F57B8
 	bl AddTextWindowTopLeftCorner
 	mov r0, #0x14
 	mov r1, #0xa
-	bl String_ctor
+	bl String_New
 	add r5, r0, #0
 	add r1, r4, #0
 	add r1, #0x25

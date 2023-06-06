@@ -5176,7 +5176,7 @@ _0203A2FC:
 _0203A334:
 	ldr r1, [sp, #4]
 	mov r0, #0x78
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x10]
 	add r0, r7, #0
 	bl sub_02034884

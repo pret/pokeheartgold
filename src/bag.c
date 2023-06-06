@@ -393,7 +393,7 @@ Bag *SaveGetBag(SAVEDATA *saveData) {
     return SavArray_get(saveData, SAVE_BAG);
 }
 
-BAG_CURSOR *BagCursor_new(HeapID heap_id) {
+BAG_CURSOR *BagCursor_New(HeapID heap_id) {
     BAG_CURSOR *ret = AllocFromHeap(heap_id, sizeof(BAG_CURSOR));
     MI_CpuClear16(ret, sizeof(BAG_CURSOR));
     return ret;

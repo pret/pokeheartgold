@@ -3,6 +3,6 @@
 
 #include "battle.h"
 
-void ov12_02248714(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdA, int battlerIdB, int moveMsgNo);
+void BattleSystem_CheckMoveHitEffect(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdA, int battlerIdB, int moveMsgNo);
 
 #endif
