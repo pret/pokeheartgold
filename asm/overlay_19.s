@@ -398,7 +398,7 @@ ov19_02259BC0: ; 0x02259BC0
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0xab
-	bl NARC_ctor
+	bl NARC_New
 	mov r3, #0
 	str r3, [sp]
 	ldr r1, [r5]
@@ -463,7 +463,7 @@ ov19_02259BC0: ; 0x02259BC0
 	add r0, r6, #0
 	bl FreeToHeap
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -491,7 +491,7 @@ ov19_02259C68: ; 0x02259C68
 	ldr r2, [r6]
 	mov r0, #6
 	mov r1, #0x16
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r6, #0x28]
 	ldr r1, [r6]
 	mov r0, #0x80
@@ -524,17 +524,17 @@ ov19_02259CBC: ; 0x02259CBC
 	add r5, r6, #0
 _02259CC4:
 	ldr r0, [r5, #0x34]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #2
 	blt _02259CC4
 	ldr r0, [r6, #0x30]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x2c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x28]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r6, #0x24]
 	bl DestroyMsgData
 	mov r0, #4

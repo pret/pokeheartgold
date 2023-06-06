@@ -35,7 +35,7 @@ ov65_0221BE20: ; 0x0221BE20
 	bl FontID_Alloc
 	mov r0, #0x34
 	mov r1, #0x1a
-	bl NARC_ctor
+	bl NARC_New
 	add r5, r0, #0
 	ldr r1, _0221BFA8 ; =0x000036CC
 	add r0, r6, #0
@@ -54,17 +54,17 @@ ov65_0221BE20: ; 0x0221BE20
 	mov r0, #0xc
 	mov r1, #0x16
 	mov r2, #0x1a
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	mov r1, #0x61
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #0x1a
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0x62
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #0x1a
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -156,7 +156,7 @@ ov65_0221BE20: ; 0x0221BE20
 	ldr r0, _0221BFB8 ; =0x00000427
 	bl sub_02005448
 	add r0, r5, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #1
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
@@ -251,11 +251,11 @@ ov65_0221BFEC: ; 0x0221BFEC
 	mov r3, #0
 	bl ov65_0221FB4C
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -271,7 +271,7 @@ ov65_0221C08C: ; 0x0221C08C
 	add r5, r0, #0
 	mov r0, #0x34
 	mov r1, #0x1a
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	bl ov65_0221CE98
 	mov r0, #6
@@ -378,7 +378,7 @@ ov65_0221C08C: ; 0x0221C08C
 	add r1, r5, #0
 	bl Main_SetVBlankIntrCB
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	nop
@@ -567,11 +567,11 @@ _0221C2F4:
 	b _0221C3B4
 _0221C330:
 	ldr r0, [r4, #0x4c]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _0221C3B4
 	ldr r0, [r4, #0x4c]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	add r0, r4, #0
 	bl ov65_0221C08C
 	add r0, r6, #0
@@ -708,7 +708,7 @@ _0221C430:
 	mov r3, #0
 	bl ov65_0221FB4C
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x10]
 	add r5, #0x10
 	add r4, r4, #1
@@ -1195,7 +1195,7 @@ _0221C82E:
 	b _0221C99E
 _0221C83A:
 	ldr r0, [r4, #4]
-	bl Save_Chatot_get
+	bl Save_Chatot_Get
 	bl ov65_0221DF0C
 	ldr r0, [r4, #0x58]
 	add r0, r0, #1
@@ -1826,7 +1826,7 @@ ov65_0221CD74: ; 0x0221CD74
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _0221CE14 ; =0x00002228
 	ldr r0, [r4, r0]
 	bl FreeToHeap
@@ -1851,19 +1851,19 @@ ov65_0221CD74: ; 0x0221CD74
 	mov r0, #0x63
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0x61
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0x66
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0
@@ -2852,7 +2852,7 @@ ov65_0221D5FC: ; 0x0221D5FC
 	mov r3, #0
 	bl ov65_0221FB4C
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov65_0221D5FC
@@ -3090,7 +3090,7 @@ _0221D7B0:
 	str r3, [sp, #4]
 	bl ov65_0221FB4C
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	b _0221D842
 _0221D836:
 	add r0, r5, #0
@@ -3141,7 +3141,7 @@ _0221D842:
 	str r3, [sp, #4]
 	bl ov65_0221FB4C
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3611,7 +3611,7 @@ ov65_0221DC34: ; 0x0221DC34
 	cmp r0, r1
 	bne _0221DC8E
 	ldr r0, [r4, #4]
-	bl Save_Chatot_get
+	bl Save_Chatot_Get
 	mov r1, #0
 	mov r2, #0x64
 	add r3, r1, #0
@@ -3894,7 +3894,7 @@ _0221DE8A:
 	thumb_func_start ov65_0221DE8C
 ov65_0221DE8C: ; 0x0221DE8C
 	push {r3, lr}
-	bl Save_SpecialRibbons_get
+	bl Save_SpecialRibbons_Get
 	add r1, r0, #0
 	mov r0, #0x20
 	mov r2, #0xe
@@ -4207,7 +4207,7 @@ _0221E0D6:
 	str r0, [r5, #0x10]
 	ldr r0, [r5, #8]
 	ldr r0, [r0, #0x10]
-	bl Save_SpecialRibbons_get
+	bl Save_SpecialRibbons_Get
 	str r0, [r5, #0x2c]
 	add r0, r5, #0
 	ldr r1, _0221E13C ; =_0221FD34
@@ -4217,7 +4217,7 @@ _0221E0D6:
 	ldr r0, _0221E140 ; =_02103A1C
 	add r1, #0xc
 	mov r2, #0x1a
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r5, #0x4c]
 	str r4, [r5, #0x48]
 	pop {r3, r4, r5, pc}
@@ -4673,7 +4673,7 @@ _0221E4C0:
 	ldr r0, _0221E544 ; =0x0000367C
 	str r4, [r5, r0]
 	mov r0, #0x1a
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	add r6, r0, #0
 	ldr r0, _0221E548 ; =0x000036A0
 	add r1, r4, #0
@@ -4681,7 +4681,7 @@ _0221E4C0:
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r6, #0
-	bl Save_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_Set
 	mov r0, #0xda
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
@@ -4711,7 +4711,7 @@ _0221E506:
 	bl DestroyListMenu
 	ldr r0, _0221E554 ; =0x00003688
 	ldr r0, [r5, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -4737,7 +4737,7 @@ ov65_0221E558: ; 0x0221E558
 	str r0, [sp]
 	add r0, r0, #1
 	mov r1, #0x1a
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r1, _0221E5F0 ; =0x00003688
 	str r0, [r5, r1]
 	mov r0, #0x64
@@ -4777,7 +4777,7 @@ _0221E5AA:
 	sub r3, #0xd
 	bl ListMenuItems_AppendFromMsgData
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r2, _0221E5F0 ; =0x00003688
 	mov r3, #6
 	lsl r3, r3, #6
@@ -5012,7 +5012,7 @@ _0221E77C:
 	mov r0, #0xda
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0x13
 	bl sub_02037AC0
 	mov r3, #0x61
@@ -5131,7 +5131,7 @@ ov65_0221E858: ; 0x0221E858
 	pop {r3, r4, pc}
 _0221E898:
 	mov r0, #0x1a
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0xda
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -5302,7 +5302,7 @@ ov65_0221E9A8: ; 0x0221E9A8
 	bl ov65_0221FB90
 	mov r0, #3
 	mov r1, #0x1a
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r1, _0221EA64 ; =0x00000668
 	mov r2, #0x11
 	str r0, [r4, r1]
@@ -5400,7 +5400,7 @@ _0221EA9E:
 	bl ov65_0221F4B0
 	ldr r0, _0221EB88 ; =0x00000668
 	ldr r0, [r4, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	ldr r1, _0221EB8C ; =ov65_0221E050
 	ldr r0, _0221EB90 ; =0x00002220
 	add sp, #0x10
@@ -5435,7 +5435,7 @@ _0221EAEA:
 	bl ov65_0221F4B0
 	ldr r0, _0221EB88 ; =0x00000668
 	ldr r0, [r4, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	ldr r1, _0221EB98 ; =ov65_0221EB9C
 	ldr r0, _0221EB90 ; =0x00002220
 	str r1, [r4, r0]
@@ -5468,7 +5468,7 @@ _0221EB32:
 	bl ov65_0221F4B0
 	ldr r0, _0221EB88 ; =0x00000668
 	ldr r0, [r4, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	ldr r1, _0221EB8C ; =ov65_0221E050
 	ldr r0, _0221EB90 ; =0x00002220
 	str r1, [r4, r0]
@@ -6562,7 +6562,7 @@ ov65_0221F3F4: ; 0x0221F3F4
 	bl ov65_0221FB90
 	mov r0, #2
 	mov r1, #0x1a
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r1, _0221F4A0 ; =0x00000668
 	mov r2, #0x11
 	str r0, [r4, r1]
@@ -6666,7 +6666,7 @@ _0221F4F4:
 	bl ov65_0221F4B0
 	ldr r0, _0221F59C ; =0x00000668
 	ldr r0, [r4, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	add sp, #0x10
 	mov r0, #3
 	pop {r4, pc}
@@ -6698,7 +6698,7 @@ _0221F540:
 	bl ov65_0221F4B0
 	ldr r0, _0221F59C ; =0x00000668
 	ldr r0, [r4, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	ldr r1, _0221F594 ; =ov65_0221E050
 	ldr r0, _0221F598 ; =0x00002220
 	str r1, [r4, r0]
@@ -6766,7 +6766,7 @@ ov65_0221F5A0: ; 0x0221F5A0
 	bne _0221F62C
 _0221F614:
 	ldr r0, [r5, #0x10]
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	str r0, [sp, #0x10]
 	bl ScriptState_GetVar404C
 	cmp r0, #0
@@ -6822,7 +6822,7 @@ _0221F664:
 	eor r0, r1
 	bl sub_02034818
 	ldr r1, [r5, #0x34]
-	bl PlayerProfile_copy
+	bl PlayerProfile_Copy
 	ldr r1, _0221F710 ; =0x000001B9
 	add r0, r7, #0
 	str r6, [r5, #0x28]
@@ -6830,8 +6830,8 @@ _0221F664:
 	cmp r0, #0
 	bne _0221F6BC
 	ldr r0, [r5, #0x10]
-	bl Save_Chatot_get
-	bl Chatot_invalidate
+	bl Save_Chatot_Get
+	bl Chatot_Invalidate
 _0221F6BC:
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
@@ -6918,7 +6918,7 @@ ov65_0221F760: ; 0x0221F760
 	ldr r0, _0221F774 ; =0x000005B4
 	ldr r1, _0221F778 ; =0x000003D9
 	add r0, r4, r0
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	ldr r1, _0221F77C ; =0x000036B4
 	str r0, [r4, r1]
 	pop {r4, pc}
@@ -7496,7 +7496,7 @@ _0221FBC6:
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add sp, #0x10
 	pop {r4, r5, r6, pc}

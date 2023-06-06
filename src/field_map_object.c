@@ -11,7 +11,7 @@ static void sub_0205ED18(LocalMapObject* object);
 static void sub_0205EF8C(LocalMapObject* object);
 
 MapObjectMan* sub_0205E0BC(FieldSystem* fsys, int object_count, HeapID heapId) {
-    MapObjectMan* ret = MapObjectMan_new(object_count);
+    MapObjectMan* ret = MapObjectMan_New(object_count);
     MapObjectMan_SetFieldSysPtr(ret, fsys);
     MapObjectMan_SetCount(ret, object_count);
     MapObjectMan_SetHeapID(ret, heapId);
@@ -19,7 +19,7 @@ MapObjectMan* sub_0205E0BC(FieldSystem* fsys, int object_count, HeapID heapId) {
     return ret;
 }
 
-void MapObjectMan_delete(MapObjectMan* manager) {
+void MapObjectMan_Delete(MapObjectMan* manager) {
     FreeToHeapExplicit(HEAP_ID_FIELD, MapObjectMan_GetObjects(manager));
     FreeToHeapExplicit(HEAP_ID_FIELD, manager);
 }
@@ -64,7 +64,7 @@ void sub_0205E104(MapObjectMan* manager, u32 a1, u32 a2, u32 num_object_events, 
     ov01_021F9FB0(manager, sub_0205F1A0(manager));
 }
 
-MapObjectMan* MapObjectMan_new(u32 object_count) {
+MapObjectMan* MapObjectMan_New(u32 object_count) {
     LocalMapObject* objects;
     MapObjectMan* manager;
 

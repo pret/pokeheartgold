@@ -85,8 +85,8 @@ static const struct FieldMoveFuncDat sFieldMoveFuncTable[] = {
 };
 
 static inline BOOL MoveUseCheck_SafariOrPalPark(const struct FieldMoveCheckData *checkData) {
-    if (ScriptState_CheckSafariSysFlag(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE || ScriptState_CheckPalParkSysFlag(
-        SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckSafariSysFlag(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE || ScriptState_CheckPalParkSysFlag(
+        SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
         return TRUE;
     } else {
         return FALSE;
@@ -95,7 +95,7 @@ static inline BOOL MoveUseCheck_SafariOrPalPark(const struct FieldMoveCheckData 
 
 static inline BOOL MoveUseCheck_PalPark(const struct FieldMoveCheckData *checkData) {
     if (ScriptState_CheckPalParkSysFlag(
-        SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+        SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
         return TRUE;
     } else {
         return FALSE;
@@ -161,7 +161,7 @@ void Fsys_MakeFieldMoveCheckData(FieldSystem *fsys, struct FieldMoveCheckData *c
     if (MetatileBehavior_IsWhirlpool(facingTile)) {
         checkData->flag |= (1 << FIELD_MOVE_CHECK_WHIRLPOOL_F);
     }
-    if (FlyPoints_GetWeatherType(Save_FlyPoints_get(fsys->savedata)) == 11) {
+    if (FlyPoints_GetWeatherType(Save_FlyPoints_Get(fsys->savedata)) == 11) {
         checkData->flag |= (1 << FIELD_MOVE_CHECK_FLASH_F);
     }
     if (MetatileBehavior_IsHeadbutt(facingTile) || FieldSys_FacingModelIsHeadbuttTree(fsys)) {
@@ -177,7 +177,7 @@ static struct FieldUseMoveEnv *PartyMenuEnv_create(struct FieldMoveUseData *useD
     return ret;
 }
 
-static void PartyMenuEnv_delete(struct FieldUseMoveEnv *env) {
+static void PartyMenuEnv_Delete(struct FieldUseMoveEnv *env) {
     GF_ASSERT(env->magic == 0x19740205);
     FreeToHeap(env);
 }
@@ -210,7 +210,7 @@ static BOOL Task_UseCutInField(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     StartScriptFromMenu(taskManager, std_menu_cut, env->facingObject);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_delete(env);
+    PartyMenuEnv_Delete(env);
     return FALSE;
 }
 
@@ -226,11 +226,11 @@ static u32 FieldMoveMenuCheck_Fly(const struct FieldMoveCheckData *checkData) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (ScriptState_CheckHaveFollower(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckHaveFollower(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 
@@ -247,7 +247,7 @@ static void FieldMoveMenuUse_Fly(struct FieldMoveUseData *useData, const struct 
     struct FlyTaskStruct *flyEnv = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct FlyTaskStruct));
     flyEnv->partySlot = useData->partySlot;
     env->unk_0384 = flyEnv;
-    env->atexit_TaskEnv = TownMap_new(fsys, 0);
+    env->atexit_TaskEnv = TownMap_New(fsys, 0);
     sub_0203C8F0(env, Task_UseFlyInField);
 }
 
@@ -267,11 +267,11 @@ static u32 FieldMoveMenuCheck_Surf(const struct FieldMoveCheckData *checkData) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (ScriptState_CheckHaveFollower(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckHaveFollower(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 
@@ -292,7 +292,7 @@ static BOOL Task_UseSurfInField(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     StartScriptFromMenu(taskManager, std_menu_surf, NULL);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_delete(env);
+    PartyMenuEnv_Delete(env);
     return FALSE;
 }
 
@@ -328,7 +328,7 @@ static BOOL Task_UseStrengthInField(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     StartScriptFromMenu(taskManager, std_menu_strength, env->facingObject);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_delete(env);
+    PartyMenuEnv_Delete(env);
     return FALSE;
 }
 
@@ -360,7 +360,7 @@ static BOOL Task_UseRockSmashInField(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     StartScriptFromMenu(taskManager, std_menu_rock_smash, env->facingObject);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_delete(env);
+    PartyMenuEnv_Delete(env);
     return FALSE;
 }
 
@@ -395,7 +395,7 @@ static BOOL Task_UseWaterfallInField(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     StartScriptFromMenu(taskManager, std_menu_waterfall, NULL);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_delete(env);
+    PartyMenuEnv_Delete(env);
     return FALSE;
 }
 
@@ -411,11 +411,11 @@ static u32 FieldMoveMenuCheck_RockClimb(const struct FieldMoveCheckData *checkDa
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (ScriptState_CheckHaveFollower(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckHaveFollower(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 
@@ -436,7 +436,7 @@ static BOOL Task_UseRockClimbInField(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     StartScriptFromMenu(taskManager, std_menu_rock_climb, NULL);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_delete(env);
+    PartyMenuEnv_Delete(env);
     return FALSE;
 }
 
@@ -474,7 +474,7 @@ static BOOL Task_UseFlashInField(TaskManager *taskManager) {
         StartScriptFromMenu(taskManager, std_menu_flash, NULL);
     }
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_delete(env);
+    PartyMenuEnv_Delete(env);
     return FALSE;
 }
 
@@ -486,11 +486,11 @@ static u32 FieldMoveMenuCheck_Teleport(const struct FieldMoveCheckData *checkDat
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (ScriptState_CheckHaveFollower(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckHaveFollower(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 
@@ -532,11 +532,11 @@ static u32 FieldMoveMenuCheck_Dig(const struct FieldMoveCheckData *checkData) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (ScriptState_CheckHaveFollower(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckHaveFollower(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_get(checkData->fsys->savedata)) == TRUE) {
+    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 
@@ -614,7 +614,7 @@ static BOOL Task_UseChatterInField(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     StartScriptFromMenu(taskManager, std_menu_chatter, NULL);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_delete(env);
+    PartyMenuEnv_Delete(env);
     return FALSE;
 }
 
@@ -652,7 +652,7 @@ static BOOL Task_UseWhirlpoolInField(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     StartScriptFromMenu(taskManager, std_menu_whirlpool, NULL);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_delete(env);
+    PartyMenuEnv_Delete(env);
     return FALSE;
 }
 
@@ -682,13 +682,13 @@ static BOOL Task_UseHeadbuttInField(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     StartScriptFromMenu(taskManager, std_menu_headbutt, env->facingObject);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
-    PartyMenuEnv_delete(env);
+    PartyMenuEnv_Delete(env);
     return FALSE;
 }
 
 static struct TeleportFieldEnv *sub_020689A4(HeapID heapId, u8 slotno, SAVEDATA *saveData) {
     struct TeleportFieldEnv *ret = AllocFromHeapAtEnd(heapId, sizeof(struct TeleportFieldEnv));
-    ret->mon = GetPartyMonByIndex(SaveArray_PlayerParty_get(saveData), slotno);
+    ret->mon = GetPartyMonByIndex(SaveArray_PlayerParty_Get(saveData), slotno);
     ret->flySub = NULL;
     return ret;
 }

@@ -7,8 +7,8 @@
 
 	.text
 
-	thumb_func_start ov15_BagApp_init
-ov15_BagApp_init: ; 0x021F9380
+	thumb_func_start ov15_BagApp_Init
+ov15_BagApp_Init: ; 0x021F9380
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -277,10 +277,10 @@ _021F95F8: .word 0x00000615
 _021F95FC: .word 0x00000644
 _021F9600: .word ov15_021F995C
 _021F9604: .word 0x04000304
-	thumb_func_end ov15_BagApp_init
+	thumb_func_end ov15_BagApp_Init
 
-	thumb_func_start ov15_BagApp_exec
-ov15_BagApp_exec: ; 0x021F9608
+	thumb_func_start ov15_BagApp_Exec
+ov15_BagApp_Exec: ; 0x021F9608
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -562,10 +562,10 @@ _021F9810:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov15_BagApp_exec
+	thumb_func_end ov15_BagApp_Exec
 
-	thumb_func_start ov15_BagApp_exit
-ov15_BagApp_exit: ; 0x021F982C
+	thumb_func_start ov15_BagApp_Exit
+ov15_BagApp_Exit: ; 0x021F982C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -600,7 +600,7 @@ ov15_BagApp_exit: ; 0x021F982C
 	bl ov15_021FA028
 	ldr r0, _021F98F0 ; =0x000005E4
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0xbf
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -616,15 +616,15 @@ ov15_BagApp_exit: ; 0x021F982C
 	mov r0, #0xbb
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl MessagePrinter_delete
+	bl MessagePrinter_Delete
 	mov r0, #0xbd
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0x91
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	bl sub_02004B10
@@ -638,7 +638,7 @@ ov15_BagApp_exit: ; 0x021F982C
 	nop
 _021F98EC: .word 0x0000068C
 _021F98F0: .word 0x000005E4
-	thumb_func_end ov15_BagApp_exit
+	thumb_func_end ov15_BagApp_Exit
 
 	thumb_func_start BagApp_GetSaveStructPtrs
 BagApp_GetSaveStructPtrs: ; 0x021F98F4
@@ -674,11 +674,11 @@ BagApp_GetSaveRoamers: ; 0x021F992C
 	mov r1, #0x8d
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	ldr r3, _021F9938 ; =Save_Roamers_get
+	ldr r3, _021F9938 ; =Save_Roamers_Get
 	ldr r0, [r0]
 	bx r3
 	.balign 4, 0
-_021F9938: .word Save_Roamers_get
+_021F9938: .word Save_Roamers_Get
 	thumb_func_end BagApp_GetSaveRoamers
 
 	thumb_func_start BagApp_GetRepelStepCountAddr
@@ -881,7 +881,7 @@ ov15_021F9AE4: ; 0x021F9AE4
 	add r4, r0, #0
 	mov r0, #0xf
 	mov r1, #6
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x91
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -1110,12 +1110,12 @@ ov15_021F9CBC: ; 0x021F9CBC
 	mov r1, #2
 	mov r2, #0
 	mov r3, #6
-	bl MessagePrinter_new
+	bl MessagePrinter_New
 	mov r1, #0xbb
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #6
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0xbd
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -1585,7 +1585,7 @@ ov15_021FA028: ; 0x021FA028
 	lsl r6, r6, #4
 _021FA032:
 	ldr r0, [r5, r6]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0xa5
@@ -4778,7 +4778,7 @@ _021FB8CA:
 	add r2, r5, #0
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	mov r1, #0
 	bl ov15_021FEF48
@@ -4965,7 +4965,7 @@ _021FBA7A:
 	add r2, r5, #0
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -5743,7 +5743,7 @@ _021FC082:
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	add r0, #0x34
 	mov r1, #0xf
@@ -5945,7 +5945,7 @@ ov15_021FC224: ; 0x021FC224
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	mov r1, #0
 	bl ov15_021FEF48
@@ -6530,7 +6530,7 @@ _021FC72C:
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	mov r1, #0
 	bl ov15_021FEF48
@@ -7175,7 +7175,7 @@ _021FCC32:
 	add r2, r5, #0
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	mov r1, #0
 	bl ov15_021FEF48
@@ -7239,7 +7239,7 @@ _021FCC7C:
 	add r2, r5, #0
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	mov r1, #1
 	bl ov15_021FEF48
@@ -7284,7 +7284,7 @@ _021FCD0C:
 	add r2, r5, #0
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	mov r1, #1
 	bl ov15_021FEF48
@@ -7628,7 +7628,7 @@ ov15_021FCFC8: ; 0x021FCFC8
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	mov r1, #1
 	bl ov15_021FEF48
@@ -7805,7 +7805,7 @@ _021FD172:
 	add r2, r5, #0
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	mov r1, #0
 	bl ov15_021FEF48
@@ -9278,7 +9278,7 @@ ov15_021FDD70: ; 0x021FDD70
 	add r7, r0, #0
 	mov r0, #0xf
 	mov r1, #6
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x10]
 	ldr r0, _021FDF14 ; =0x00000808
 	mov r1, #6
@@ -9456,7 +9456,7 @@ _021FDE0E:
 	ldr r1, [r4]
 	bl NNS_G3dRenderObjAddAnmObj
 	ldr r0, [sp, #0x10]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -10214,7 +10214,7 @@ _021FE50C:
 	lsl r0, r4, #2
 	add r0, r5, r0
 	ldr r0, [r0, r6]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
@@ -10347,7 +10347,7 @@ _021FE5F4:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -10383,7 +10383,7 @@ ov15_021FE620: ; 0x021FE620
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -10403,7 +10403,7 @@ ov15_021FE620: ; 0x021FE620
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -10422,7 +10422,7 @@ ov15_021FE620: ; 0x021FE620
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -10441,7 +10441,7 @@ ov15_021FE620: ; 0x021FE620
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -10461,7 +10461,7 @@ ov15_021FE620: ; 0x021FE620
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x10]
 	mov r1, #0
 	bl GetMoveMaxPP
@@ -10490,7 +10490,7 @@ ov15_021FE620: ; 0x021FE620
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #0xff
@@ -10543,7 +10543,7 @@ _021FE79C:
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -10594,7 +10594,7 @@ _021FE80C:
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #0xff
@@ -10656,10 +10656,10 @@ ov15_021FE8A4: ; 0x021FE8A4
 	add r4, r0, #0
 	ldr r0, _021FE8BC ; =0x000005E8
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _021FE8C0 ; =0x000005EC
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	pop {r4, pc}
 	nop
 _021FE8BC: .word 0x000005E8
@@ -10698,7 +10698,7 @@ ov15_021FE8C4: ; 0x021FE8C4
 	add r2, r0, #0
 	bl FontID_String_GetWidth
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -11006,7 +11006,7 @@ _021FEB6E:
 	lsl r0, r4, #2
 	add r0, r5, r0
 	ldr r0, [r0, r6]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
@@ -11133,9 +11133,9 @@ _021FEC3E:
 	str r3, [sp, #8]
 	bl AddTextPrinterParameterized
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r5, #0x24
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
@@ -11204,7 +11204,7 @@ ov15_021FECD8: ; 0x021FECD8
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add sp, #0x10
@@ -11301,9 +11301,9 @@ ov15_021FED60: ; 0x021FED60
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -11397,7 +11397,7 @@ _021FEE2C:
 	blo _021FEE2C
 _021FEE96:
 	ldr r0, [sp, #0x14]
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -11470,7 +11470,7 @@ _021FEEFE:
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	mov r1, #0
 	bl ov15_021FEF48
@@ -11691,7 +11691,7 @@ ov15_021FF068: ; 0x021FF068
 	add r0, r5, r6
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -11736,7 +11736,7 @@ ov15_021FF0FC: ; 0x021FF0FC
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	b _021FF160
 _021FF14E:
 	mov r0, #0x48
@@ -11796,9 +11796,9 @@ _021FF160:
 	add r0, r5, r6
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x10]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -11836,7 +11836,7 @@ ov15_021FF1E0: ; 0x021FF1E0
 	str r1, [sp, #8]
 	bl AddTextPrinterParameterized
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -11861,7 +11861,7 @@ ov15_021FF1E0: ; 0x021FF1E0
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r1, _021FF298 ; =0x000005E4
 	mov r0, #0
 	ldr r1, [r5, r1]
@@ -11946,7 +11946,7 @@ _021FF308:
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -12419,7 +12419,7 @@ ov15_021FF66C: ; 0x021FF66C
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -12494,7 +12494,7 @@ _021FF6E0:
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -14400,7 +14400,7 @@ ov15_022008B0: ; 0x022008B0
 
 	.public ov15_022008B8
 ov15_022008B8:
-	.word ov15_BagApp_init, ov15_BagApp_exec, ov15_BagApp_exit, 0xFFFFFFFF
+	.word ov15_BagApp_Init, ov15_BagApp_Exec, ov15_BagApp_Exit, 0xFFFFFFFF
 
 ov15_022008C8: ; 0x022008C8
 	.byte 0xA5, 0x28, 0x18, 0x65, 0x40, 0x0C, 0x1E, 0x32

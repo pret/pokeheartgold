@@ -15,13 +15,13 @@ u32 Save_Pokedex_sizeof(void) {
     return sizeof(POKEDEX);
 }
 
-POKEDEX *Pokedex_new(HeapID heapId) {
+POKEDEX *Pokedex_New(HeapID heapId) {
     POKEDEX *ret = AllocFromHeap(heapId, sizeof(POKEDEX));
-    Save_Pokedex_init(ret);
+    Save_Pokedex_Init(ret);
     return ret;
 }
 
-void Pokedex_copy(const POKEDEX *src, POKEDEX *dest) {
+void Pokedex_Copy(const POKEDEX *src, POKEDEX *dest) {
     MI_CpuCopy8(src, dest, sizeof(POKEDEX));
 }
 
@@ -507,7 +507,7 @@ static BOOL SpeciesIsNotJohtoMythical(u16 species) {
     return result;
 }
 
-void Save_Pokedex_init(POKEDEX *pokedex) {
+void Save_Pokedex_Init(POKEDEX *pokedex) {
     memset(pokedex, 0, sizeof(POKEDEX));
     pokedex->magic = POKEDEX_MAGIC;
     pokedex->nationalDex = 0;
@@ -872,8 +872,8 @@ void Pokedex_Enable(POKEDEX *pokedex) {
     pokedex->dexEnabled = TRUE;
 }
 
-POKEDEX *Save_Pokedex_get(SAVEDATA *saveData) {
-    return SaveArray_get(saveData, SAVE_POKEDEX);
+POKEDEX *Save_Pokedex_Get(SAVEDATA *saveData) {
+    return SaveArray_Get(saveData, SAVE_POKEDEX);
 }
 
 int Pokedex_GetSeenFormeByIdx(POKEDEX *pokedex, int species, int idx) {

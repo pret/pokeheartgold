@@ -4025,7 +4025,7 @@ _0223C3A0:
 	bl FillWindowPixelBuffer
 	ldr r0, [r6, #0x18]
 	add r1, r4, #0
-	bl StringCopy
+	bl String_Copy
 	mov r3, #0
 	ldr r0, [sp, #0x30]
 	str r3, [sp]
@@ -4038,7 +4038,7 @@ _0223C3A0:
 	bl AddTextPrinterParameterized
 	add r5, r0, #0
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	b _0223C480
 _0223C3D2:
 	cmp r5, #0x64
@@ -4087,7 +4087,7 @@ _0223C40A:
 	bl FillWindowPixelBuffer
 	ldr r0, [r6, #0x18]
 	add r1, r4, #0
-	bl StringCopy
+	bl String_Copy
 	mov r3, #0
 	ldr r0, [sp, #0x30]
 	str r3, [sp]
@@ -4100,7 +4100,7 @@ _0223C40A:
 	bl AddTextPrinterParameterized
 	add r5, r0, #0
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x14]
 	bl DestroyMsgData
 	b _0223C480
@@ -5441,7 +5441,7 @@ ov12_0223CEF4: ; 0x0223CEF4
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_0223CEF4
 

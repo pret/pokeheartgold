@@ -201,7 +201,7 @@ ov01_021EFC94: ; 0x021EFC94
 	str r6, [r4, #0x14]
 	mov r0, #0x6d
 	mov r1, #4
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #0x20]
 	ldr r1, [r4, #0x14]
 	cmp r1, #0
@@ -223,7 +223,7 @@ ov01_021EFCDC: ; 0x021EFCDC
 	add r5, r0, #0
 	ldr r0, [r5, #0x20]
 	add r4, r1, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r1, [r5, #0xc]
 	mov r0, #4
 	bl FreeToHeapExplicit

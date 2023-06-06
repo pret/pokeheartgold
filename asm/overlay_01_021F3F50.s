@@ -20,11 +20,11 @@ ov01_021F3F50: ; 0x021F3F50
 	ldr r4, [r1, #0xc]
 	add r5, r0, #0
 	add r0, r4, #0
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	bl FlyPoints_GetPosition
 	add r6, r0, #0
 	add r0, r4, #0
-	bl Save_Pokedex_get
+	bl Save_Pokedex_Get
 	add r7, r0, #0
 	ldr r0, [r6]
 	bl MapHeader_GetMapSec
@@ -172,7 +172,7 @@ ov01_021F4048: ; 0x021F4048
 	add r3, r1, #0
 	bl AddTextPrinterParameterized
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #1
 	str r0, [sp, #0x10]
 	ldr r0, _021F4124 ; =ov01_02206AF4
@@ -203,7 +203,7 @@ _021F40A6:
 	add r3, r1, #0
 	bl AddTextPrinterParameterized
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	sub r2, r7, #4
 	ldr r0, [r5, #0x14]
 	ldr r1, [r5, #0x18]
@@ -230,7 +230,7 @@ _021F40A6:
 	add r2, r6, #0
 	bl AddTextPrinterParameterized
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 _021F410E:
 	ldr r0, [sp, #0xc]
 	add r7, r7, #4
@@ -335,7 +335,7 @@ Field_CreateSaveStatsPrinter: ; 0x021F41C0
 	ldr r0, [r6, #8]
 	str r0, [r4, #0xc]
 	add r0, r5, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x14]
 	ldr r2, _021F4218 ; =0x000001A7
 	mov r0, #1
@@ -370,7 +370,7 @@ SaveStatsPrinter_Delete: ; 0x021F421C
 	ldr r0, [r4, #0x18]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x14]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -465,7 +465,7 @@ _021F429C:
 	ldr r0, [r5, #0x10]
 	bl AddTextPrinterParameterized2
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 _021F42E2:
 	add r7, r7, #1
 	add r4, #0x10
@@ -547,7 +547,7 @@ ov01_021F4360: ; 0x021F4360
 	ldr r0, [r6, #8]
 	str r0, [r4, #0xc]
 	add r0, r5, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x14]
 	ldr r2, _021F43CC ; =0x000001A7
 	mov r0, #1
@@ -588,7 +588,7 @@ ov01_021F43D0: ; 0x021F43D0
 	ldr r0, [r4, #0x18]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x14]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}

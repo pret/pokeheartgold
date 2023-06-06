@@ -32,7 +32,7 @@ ov80_0222A84C: ; 0x0222A84C
 	mov r0, #8
 	mov r1, #0x40
 	add r2, r5, #0
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r4, #0x44]
 	mov r0, #1
 	lsl r0, r0, #0xa
@@ -124,11 +124,11 @@ ov80_0222A920: ; 0x0222A920
 	bl GF_AssertFail
 _0222A930:
 	ldr r0, [r4, #0x44]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x48]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x4c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x40]
 	bl FreeToHeap
 	ldr r0, [r4, #0x3c]

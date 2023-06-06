@@ -48,7 +48,7 @@ static void DecompressGlyphTiles_LazyFromNarc(struct FontData *fontData, u16 gly
 static u32 GetGlyphWidth_VariableWidth(struct FontData *fontData, int glyphId);
 static u32 GetGlyphWidth_FixedWidth(struct FontData *fontData, int glyphId);
 
-struct FontData *FontData_new(NarcId narcId, int fileId, int mode, BOOL isFixedWidth, HeapID heapId) {
+struct FontData *FontData_New(NarcId narcId, int fileId, int mode, BOOL isFixedWidth, HeapID heapId) {
     struct FontData *ret;
 
     ret = AllocFromHeap(heapId, sizeof(struct FontData));
@@ -59,7 +59,7 @@ struct FontData *FontData_new(NarcId narcId, int fileId, int mode, BOOL isFixedW
     return ret;
 }
 
-void FontData_delete(struct FontData *fontData) {
+void FontData_Delete(struct FontData *fontData) {
     FreeLoadedFontResources(fontData);
     FontData_FreeWidthsAndNarc(fontData);
     FreeToHeap(fontData);
@@ -77,7 +77,7 @@ static void FontData_Init(struct FontData *fontData, NarcId narcId, int fileId, 
         {GLYPHSHAPE_8x8, GLYPHSHAPE_8x16},
         {GLYPHSHAPE_16x8, GLYPHSHAPE_16x16}
     };
-    fontData->narc = NARC_ctor(narcId, heapId);
+    fontData->narc = NARC_New(narcId, heapId);
     if (fontData->narc != NULL) {
         NARC_GetMemberImageStartOffset(fontData->narc, fileId, &fontData->gmifOffset);
         NARC_ReadFromAbsolutePos(fontData->narc, fontData->gmifOffset, sizeof(struct FontHeader), &fontData->header);
@@ -103,7 +103,7 @@ static void FontData_FreeWidthsAndNarc(struct FontData *fontData) {
         FreeToHeap(fontData->glyphWidths);
     }
     if (fontData->narc != NULL) {
-        NARC_dtor(fontData->narc);
+        NARC_Delete(fontData->narc);
     }
 }
 

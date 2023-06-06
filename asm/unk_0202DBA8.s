@@ -17,14 +17,14 @@ Save_MysteryGift_sizeof: ; 0x0202DBA8
 	.balign 4, 0
 	thumb_func_end Save_MysteryGift_sizeof
 
-	thumb_func_start Save_MysteryGift_init
-Save_MysteryGift_init: ; 0x0202DBB0
+	thumb_func_start Save_MysteryGift_Init
+Save_MysteryGift_Init: ; 0x0202DBB0
 	ldr r3, _0202DBB8 ; =SaveSubstruct_UpdateCRC
 	mov r0, #0x1b
 	bx r3
 	nop
 _0202DBB8: .word SaveSubstruct_UpdateCRC
-	thumb_func_end Save_MysteryGift_init
+	thumb_func_end Save_MysteryGift_Init
 
 	thumb_func_start MysteryGiftTagIsValid
 MysteryGiftTagIsValid: ; 0x0202DBBC
@@ -684,7 +684,7 @@ GetStaticPointerToSaveMysteryGift: ; 0x0202E034
 	ldr r1, [r1]
 	cmp r1, #0
 	bne _0202E046
-	bl Save_MysteryGift_get
+	bl Save_MysteryGift_Get
 	ldr r1, _0202E050 ; =sMysteryGiftData
 	str r0, [r1]
 _0202E046:

@@ -763,7 +763,7 @@ ov100_021E5EB4: ; 0x021E5EB4
 	add r4, r1, #0
 	ldr r1, [r5]
 	mov r0, #0x8f
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	add r0, r4, #0
 	add r0, #0x30
@@ -883,7 +883,7 @@ _021E5FA4:
 	mov r3, #0x8f
 	bl sub_0208820C
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r5, #0x74]
 	mov r1, #0
 	bl ScheduleBgTilemapBufferTransfer
@@ -1014,7 +1014,7 @@ ov100_021E60C4: ; 0x021E60C4
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0x8f
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	ldr r0, [r5]
 	bl PaletteData_Init
@@ -1053,7 +1053,7 @@ ov100_021E60C4: ; 0x021E60C4
 	add r0, r5, #0
 	bl ov100_021E5EB4
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov100_021E60C4
@@ -1418,11 +1418,11 @@ ov100_021E6408: ; 0x021E6408
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _021E6428
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _021E6428
 	ldr r0, [r4]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	mov r0, #0
 	str r0, [r4]
 	mov r0, #1
@@ -1461,11 +1461,11 @@ ov100_Phone_OvyInit: ; 0x021E642C
 	str r0, [r4, #0x24]
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0x24]
-	bl SaveData_GSPlayerMisc_get
+	bl SaveData_GSPlayerMisc_Get
 	str r0, [r4, #0x28]
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0x24]
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	str r0, [r4, #0x2c]
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0x24]
@@ -1771,7 +1771,7 @@ ov100_021E66B0: ; 0x021E66B0
 	ldr r0, _021E66C4 ; =ov100_021E762C
 	ldr r2, [r4]
 	add r1, r4, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #0x70]
 	mov r0, #7
 	pop {r4, pc}
@@ -1878,7 +1878,7 @@ _021E6750:
 	ldr r0, _021E6790 ; =ov100_021E761C
 	ldr r1, [r4, #0x6c]
 	ldr r2, [r4]
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #0x70]
 	mov r0, #9
 	add sp, #4
@@ -1929,7 +1929,7 @@ ov100_021E67D4: ; 0x021E67D4
 	ldr r0, _021E67E8 ; =ov100_021E760C
 	ldr r2, [r4]
 	add r1, r4, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #0x70]
 	mov r0, #3
 	pop {r4, pc}
@@ -1991,7 +1991,7 @@ ov100_021E6840: ; 0x021E6840
 	ldr r0, _021E6854 ; =ov100_021E75FC
 	ldr r2, [r4]
 	add r1, r4, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #0x70]
 	mov r0, #0xb
 	pop {r4, pc}
@@ -2050,7 +2050,7 @@ ov100_021E68A8: ; 0x021E68A8
 	ldr r0, _021E68BC ; =ov100_021E763C
 	ldr r2, [r4]
 	add r1, r4, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #0x70]
 	mov r0, #5
 	pop {r4, pc}

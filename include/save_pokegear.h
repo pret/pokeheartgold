@@ -72,9 +72,9 @@ typedef struct SavePokegear {
 } SavePokegear; // size=0x658
 
 u32 SaveData_GSPlayerMisc_sizeof(void);
-SavePokegear *SaveData_GSPlayerMisc_get(SAVEDATA *saveData);
+SavePokegear *SaveData_GSPlayerMisc_Get(SAVEDATA *saveData);
 MomsSavings *SaveData_GetMomsSavingsAddr(SAVEDATA *saveData);
-void SaveData_GSPlayerMisc_init(SavePokegear *pokegear);
+void SaveData_GSPlayerMisc_Init(SavePokegear *pokegear);
 UnkPokegearSub8List *sub_0202EDF4(SavePokegear *pokegear);
 u8 sub_0202EDF8(SavePokegear *pokegear);
 void sub_0202EDFC(SavePokegear *pokegear, u8 a1);

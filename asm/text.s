@@ -344,7 +344,7 @@ _02020200:
 	ldr r0, [r3]
 	str r0, [r2]
 	ldr r0, [r4]
-	bl String_c_str
+	bl String_cstr
 	str r0, [r4]
 	ldr r0, _020202E4 ; =_021D1F6C
 	str r5, [r4, #0x1c]

@@ -73,7 +73,7 @@ _0225D594:
 _0225D5A2:
 	mov r0, #0xee
 	mov r1, #8
-	bl NARC_ctor
+	bl NARC_New
 	add r5, r0, #0
 	bl ov29_0225D620
 	ldr r0, [sp]
@@ -89,7 +89,7 @@ _0225D5A2:
 	add r0, r4, #0
 	bl ov29_0225DBF0
 	add r0, r5, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [sp, #4]
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -316,7 +316,7 @@ _0225D73A:
 	add r0, r5, r4
 	bl AddTextPrinterParameterized2
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, r4
 	bl CopyWindowPixelsToVram_TextMode
 	add r0, r5, r4

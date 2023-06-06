@@ -7,16 +7,16 @@ u32 Save_PhotoAlbum_sizeof(void) {
     return sizeof(PHOTO_ALBUM);
 }
 
-PHOTO_ALBUM *Save_PhotoAlbum_get(SAVEDATA *saveData) {
-    return SaveArray_get(saveData, SAVE_PHOTO_ALBUM);
+PHOTO_ALBUM *Save_PhotoAlbum_Get(SAVEDATA *saveData) {
+    return SaveArray_Get(saveData, SAVE_PHOTO_ALBUM);
 }
 
-void Save_PhotoAlbum_init(PHOTO_ALBUM *photoAlbum) {
+void Save_PhotoAlbum_Init(PHOTO_ALBUM *photoAlbum) {
     int i;
 
     photoAlbum->unk_00 = 0;
     for (i = 0; i < PHOTO_ALBUM_MAX; i++) {
-        Photo_init(&photoAlbum->photos[i]);
+        Photo_Init(&photoAlbum->photos[i]);
     }
 }
 
@@ -46,7 +46,7 @@ u8 PhotoAlbum_GetNumSaved(const PHOTO_ALBUM *photoAlbum) {
 
 void PhotoAlbum_DeletePhotoByIndex(PHOTO_ALBUM *photoAlbum, u8 idx) {
     if (idx < PHOTO_ALBUM_MAX) {
-        Photo_init(&photoAlbum->photos[idx]);
+        Photo_Init(&photoAlbum->photos[idx]);
     }
 }
 
@@ -61,7 +61,7 @@ BOOL PhotoAlbum_SetPhotoAtIndex(PHOTO_ALBUM *photoAlbum, const PHOTO *photo, u8 
 
 BOOL PhotoAlbum_GetPhotoByIndex(const PHOTO_ALBUM *photoAlbum, PHOTO *photo, u8 idx) {
     if (idx >= PHOTO_ALBUM_MAX) {
-        Photo_init(photo);
+        Photo_Init(photo);
         return FALSE;
     } else {
         MI_CpuCopy8(&photoAlbum->photos[idx], photo, sizeof(PHOTO));
@@ -85,7 +85,7 @@ PHOTO *PhotoAlbum_LoadAllInUsePhotos(const PHOTO_ALBUM *photoAlbum, HeapID heapI
     return ret;
 }
 
-void Photo_init(PHOTO *photo) {
+void Photo_Init(PHOTO *photo) {
     MI_CpuClear8(photo, sizeof(PHOTO));
     StringFillEOS(photo->playerName, PLAYER_NAME_LENGTH + 1);
     StringFillEOS(photo->leadMonNick, POKEMON_NAME_LENGTH + 2);

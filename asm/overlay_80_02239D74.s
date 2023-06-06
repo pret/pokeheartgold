@@ -66,7 +66,7 @@ ov80_02239DD0: ; 0x02239DD0
 	mov r1, #0x65
 	str r4, [r0, #4]
 	mov r0, #0xb7
-	bl NARC_ctor
+	bl NARC_New
 	ldr r5, [sp, #8]
 	ldr r4, _02239EB0 ; =ov80_0223DB2C
 	str r0, [sp, #4]
@@ -97,10 +97,10 @@ _02239DFE:
 	cmp r6, #2
 	blt _02239DFE
 	ldr r0, [sp, #4]
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #0xb7
 	mov r1, #0x65
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x65
 	str r1, [sp]
 	mov r1, #0xe
@@ -136,7 +136,7 @@ _02239DFE:
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, _02239EBC ; =ov80_02239ED8
 	ldr r1, [sp, #8]
 	ldr r2, _02239EC0 ; =0x0001368C

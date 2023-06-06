@@ -572,12 +572,12 @@ ov16_02201820: ; 0x02201820
 
 	thumb_func_start ov16_02201840
 ov16_02201840: ; 0x02201840
-	ldr r3, _02201848 ; =NARC_ctor
+	ldr r3, _02201848 ; =NARC_New
 	add r1, r0, #0
 	mov r0, #0x42
 	bx r3
 	.balign 4, 0
-_02201848: .word NARC_ctor
+_02201848: .word NARC_New
 	thumb_func_end ov16_02201840
 
 	thumb_func_start ov16_0220184C
@@ -590,10 +590,10 @@ _02201850: .word NARC_AllocAndReadWholeMember
 
 	thumb_func_start ov16_02201854
 ov16_02201854: ; 0x02201854
-	ldr r3, _02201858 ; =NARC_dtor
+	ldr r3, _02201858 ; =NARC_Delete
 	bx r3
 	.balign 4, 0
-_02201858: .word NARC_dtor
+_02201858: .word NARC_Delete
 	thumb_func_end ov16_02201854
 
 	thumb_func_start ov16_0220185C
@@ -766,11 +766,11 @@ ov16_02201948: ; 0x02201948
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _02201968
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _02201968
 	ldr r0, [r4]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	mov r0, #0
 	str r0, [r4]
 	mov r0, #1
@@ -912,7 +912,7 @@ ov16_02201A60: ; 0x02201A60
 	ldr r0, _02201A74 ; =ov16_02201B68
 	ldr r2, [r4]
 	add r1, r4, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #8]
 	mov r0, #1
 	pop {r4, pc}
@@ -997,7 +997,7 @@ _02201B02:
 	ldr r0, _02201B20 ; =ov16_02201B78
 	ldr r1, [r4, #0x10]
 	ldr r2, [r4]
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #8]
 	mov r0, #3
 	add sp, #4
@@ -1054,7 +1054,7 @@ ov16_02201B68: ; 0x02201B68
 	.word ov17_02201C10, ov17_02201C78, ov17_02201D04, 0xFFFFFFFF
 
 ov16_02201B78: ; 0x02201B78
-	.word ov15_BagApp_init, ov15_BagApp_exec, ov15_BagApp_exit, FS_OVERLAY_ID(OVY_15)
+	.word ov15_BagApp_Init, ov15_BagApp_Exec, ov15_BagApp_Exit, FS_OVERLAY_ID(OVY_15)
 
 	.data
 

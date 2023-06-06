@@ -936,7 +936,7 @@ sub_0205AA6C: ; 0x0205AA6C
 	mov r0, #0x5e
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl MailMsg_copy
+	bl MailMsg_Copy
 	mov r0, #6
 	mov r1, #1
 	lsl r0, r0, #6

@@ -77,13 +77,13 @@ u8 sub_0207791C(BAG_VIEW *bagView) {
     return bagView->unk_75;
 }
 
-static u16 get_num_coins(SAVEDATA *saveData) {
+static u16 GetNumCoins(SAVEDATA *saveData) {
     return CheckCoins(Save_PlayerData_GetCoinsAddr(saveData));
 }
 
-static u32 get_num_seals(SAVEDATA *saveData) {
+static u32 GetNumSeals(SAVEDATA *saveData) {
     u32 i, total;
-    SEALCASE *sealCase = Save_SealCase_get(saveData);
+    SEALCASE *sealCase = Save_SealCase_Get(saveData);
     total = 0;
     for (i = SEAL_MIN; i <= SEAL_MAX; i++) {
         total += SealCase_CountSealOccurrenceAnywhere(sealCase, i);
@@ -91,16 +91,16 @@ static u32 get_num_seals(SAVEDATA *saveData) {
     return total;
 }
 
-static u32 get_num_fashion_accessories(SAVEDATA *saveData) {
-    return FashionCase_CountAccessories(SaveDressupData_GetFashionCase(Save_DressupData_get(saveData)));
+static u32 GetNumFashionAccessories(SAVEDATA *saveData) {
+    return FashionCase_CountAccessories(SaveDressupData_GetFashionCase(Save_DressupData_Get(saveData)));
 }
 
-static u32 get_num_fashion_backgrounds(SAVEDATA *saveData) {
-    return FashionCase_CountWallpapers(SaveDressupData_GetFashionCase(Save_DressupData_get(saveData)));
+static u32 GetNumFashionBackgrounds(SAVEDATA *saveData) {
+    return FashionCase_CountWallpapers(SaveDressupData_GetFashionCase(Save_DressupData_Get(saveData)));
 }
 
-static u32 get_num_battle_points(SAVEDATA *saveData) {
-    return FrontierData_BattlePointAction(Save_FrontierData_get(saveData), 0, 0);
+static u32 GetNumBattlePoints(SAVEDATA *saveData) {
+    return FrontierData_BattlePointAction(Save_FrontierData_Get(saveData), 0, 0);
 }
 
 BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 itemId, HeapID heap_id) {
@@ -109,31 +109,31 @@ BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 
     MessageFormat *msgFmt;
 
     msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0010_bin, heap_id);
-    msgFmt = MessageFormat_new(heap_id);
+    msgFmt = MessageFormat_New(heap_id);
 
     if (itemId == ITEM_NONE) {
         fmtStr = NewString_ReadMsgData(msgData, msg_0010_00102);
     } else if (itemId == ITEM_POINT_CARD) {
         fmtStr = NewString_ReadMsgData(msgData, msg_0010_00100);
-        BufferIntegerAsString(msgFmt, 0, get_num_battle_points(saveData), 4, STRCONVMODE_LEFT_ALIGN, TRUE);
+        BufferIntegerAsString(msgFmt, 0, GetNumBattlePoints(saveData), 4, STRCONVMODE_LEFT_ALIGN, TRUE);
     } else if (itemId == ITEM_SEAL_CASE) {
         fmtStr = NewString_ReadMsgData(msgData, msg_0010_00095);
-        BufferIntegerAsString(msgFmt, 0, get_num_seals(saveData), 4, STRCONVMODE_LEFT_ALIGN, TRUE);
+        BufferIntegerAsString(msgFmt, 0, GetNumSeals(saveData), 4, STRCONVMODE_LEFT_ALIGN, TRUE);
     } else if (itemId == ITEM_FASHION_CASE) {
         fmtStr = NewString_ReadMsgData(msgData, msg_0010_00096);
-        BufferIntegerAsString(msgFmt, 0, get_num_fashion_accessories(saveData), 3, STRCONVMODE_LEFT_ALIGN, TRUE);
-        BufferIntegerAsString(msgFmt, 1, get_num_fashion_backgrounds(saveData), 2, STRCONVMODE_LEFT_ALIGN, TRUE);
+        BufferIntegerAsString(msgFmt, 0, GetNumFashionAccessories(saveData), 3, STRCONVMODE_LEFT_ALIGN, TRUE);
+        BufferIntegerAsString(msgFmt, 1, GetNumFashionBackgrounds(saveData), 2, STRCONVMODE_LEFT_ALIGN, TRUE);
     } else if (itemId == ITEM_COIN_CASE) {
         fmtStr = NewString_ReadMsgData(msgData, msg_0010_00058);
-        BufferIntegerAsString(msgFmt, 0, get_num_coins(saveData), 5, STRCONVMODE_LEFT_ALIGN, TRUE);
+        BufferIntegerAsString(msgFmt, 0, GetNumCoins(saveData), 5, STRCONVMODE_LEFT_ALIGN, TRUE);
     } else {
-        MessageFormat_delete(msgFmt);
+        MessageFormat_Delete(msgFmt);
         DestroyMsgData(msgData);
         return FALSE;
     }
     StringExpandPlaceholders(msgFmt, dest, fmtStr);
-    String_dtor(fmtStr);
-    MessageFormat_delete(msgFmt);
+    String_Delete(fmtStr);
+    MessageFormat_Delete(msgFmt);
     DestroyMsgData(msgData);
     return TRUE;
 }
@@ -167,12 +167,12 @@ void GetItemUseErrorMessage(PLAYERPROFILE *playerProfile, STRING *dest, u16 item
         STRING *string;
 
         msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0040_bin, heap_id);
-        msgFmt = MessageFormat_new(heap_id);
+        msgFmt = MessageFormat_New(heap_id);
         string = NewString_ReadMsgData(msgData, msg_0040_00037);
         BufferPlayersName(msgFmt, 0, playerProfile);
         StringExpandPlaceholders(msgFmt, dest, string);
-        String_dtor(string);
-        MessageFormat_delete(msgFmt);
+        String_Delete(string);
+        MessageFormat_Delete(msgFmt);
         DestroyMsgData(msgData);
     }
         break;

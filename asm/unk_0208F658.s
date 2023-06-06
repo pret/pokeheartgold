@@ -175,7 +175,7 @@ sub_0208F74C: ; 0x0208F74C
 	add r6, r0, #0
 	ldr r0, [r3, #0xc]
 	add r5, r2, #0
-	bl Save_SpecialRibbons_get
+	bl Save_SpecialRibbons_Get
 	add r4, r0, #0
 	bl sub_0203769C
 	cmp r6, r0

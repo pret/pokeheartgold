@@ -491,7 +491,7 @@ ov12_02264BCC: ; 0x02264BCC
 	add r5, r0, #0
 	mov r0, #8
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	ldr r0, [r5, #0xc]
 	bl ov12_0223A8E4
@@ -550,7 +550,7 @@ ov12_02264BCC: ; 0x02264BCC
 	bl sub_0200DD88
 _02264C5A:
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1370,9 +1370,9 @@ ov12_0226516C: ; 0x0226516C
 	add r0, sp, #0x24
 	bl RemoveWindow
 	ldr r0, [sp, #0x18]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1858,7 +1858,7 @@ _0226561E:
 	add r0, sp, #0x18
 	bl RemoveWindow
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -1984,9 +1984,9 @@ _02265716:
 	add r0, sp, #0x24
 	bl RemoveWindow
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x18]
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

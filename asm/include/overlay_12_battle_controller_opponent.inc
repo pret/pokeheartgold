@@ -12,8 +12,8 @@
 .public PlaySE
 .public StopSE
 .public IsCryFinished
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public sub_02008550
 .public sub_020085DC
 .public sub_020085EC
@@ -52,7 +52,7 @@
 .public sub_0200E11C
 .public CreateSysTask
 .public DestroySysTask
-.public WaitingIcon_new
+.public WaitingIcon_New
 .public sub_0200F450
 .public sub_02014540
 .public sub_0201649C
@@ -87,7 +87,7 @@
 .public sub_020729FC
 .public sub_02072A20
 .public GetMoveAttr
-.public SaveArray_Party_alloc
+.public SaveArray_Party_Alloc
 .public InitPartyWithMaxSize
 .public AddMonToParty
 .public GetPartyCount

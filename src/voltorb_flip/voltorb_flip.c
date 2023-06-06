@@ -1444,7 +1444,7 @@ static void ov122_021E73FC(VoltorbFlipAppWork *work) {
     work->unk1C = sub_02018424(work->heapId, 0);
 
     for (int i = 0; i < 2; i++) {
-        work->menuItems[i] = ListMenuItems_ctor(sMenuMsgNos[i].size, work->heapId);
+        work->menuItems[i] = ListMenuItems_New(sMenuMsgNos[i].size, work->heapId);
 
         for (int j = 0; j < sMenuMsgNos[i].size; j++) {
             const u8 *msgNos = sMenuMsgNos[i].msgNos;
@@ -1455,7 +1455,7 @@ static void ov122_021E73FC(VoltorbFlipAppWork *work) {
 
 static void ov122_021E745C(VoltorbFlipAppWork *work) {
     for (int i = 0; i < 2; i++) {
-        ListMenuItems_dtor(work->menuItems[i]);
+        ListMenuItems_Delete(work->menuItems[i]);
         work->menuItems[i] = NULL;
     }
     sub_02018474(work->unk1C);
@@ -1602,7 +1602,7 @@ static void PrintMessageOnWindow(VoltorbFlipAppWork *work, FontID fontId, u8 msg
     AddTextPrinterParameterized2(window, fontId, str, x, y, 0xff, textSpeed, 0);
 
     ScheduleWindowCopyToVram(window);
-    String_dtor(str);
+    String_Delete(str);
 }
 
 static void PrintMessageToSmallWindow(VoltorbFlipAppWork *work, int msgNo) {
@@ -1617,7 +1617,7 @@ static void PrintMessageToSmallWindow(VoltorbFlipAppWork *work, int msgNo) {
 
     AddTextPrinterParameterized(window, 1, str, 0, 0, 0xff, 0);
     ScheduleWindowCopyToVram(window);
-    String_dtor(str);
+    String_Delete(str);
     BgCommitTilemapBufferToVram(work->bgConfig, 3);
 }
 
@@ -1650,7 +1650,7 @@ static void PrintTextWindow(VoltorbFlipAppWork *work, int msgNo, int a2) {
 static BOOL IsPrinterFinished(VoltorbFlipAppWork *work) {
     if (!TextPrinterCheckActive(work->printerId)) {
         if (work->string != NULL) {
-            String_dtor(work->string);
+            String_Delete(work->string);
             work->string = NULL;
         }
         return TRUE;
@@ -2022,9 +2022,9 @@ static void ov122_021E8094(OVY_MANAGER *man) {
     work->unk229 = Options_GetFrame(work->options);
     work->unk22A = Options_GetTextFrameDelay(work->options);
 
-    work->narc = NARC_ctor(NARC_a_2_6_4, work->heapId);
+    work->narc = NARC_New(NARC_a_2_6_4, work->heapId);
     work->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 0x27, work->heapId);
-    work->msgFmt = MessageFormat_new(work->heapId);
+    work->msgFmt = MessageFormat_New(work->heapId);
     work->unk13C = sub_0201660C(work->heapId);
 
     ov122_021E7928(work);
@@ -2053,7 +2053,7 @@ static void ov122_021E8094(OVY_MANAGER *man) {
     sub_02002B8C(TRUE);
 
     Main_SetVBlankIntrCB((GFIntrCB)ov122_021E8004, work);
-    GameStats_AddSpecial(Save_GameStats_get(args->savedata), 6);
+    GameStats_AddSpecial(Save_GameStats_Get(args->savedata), 6);
 }
 
 static void FreeOverlayData(OVY_MANAGER *man) {
@@ -2069,9 +2069,9 @@ static void FreeOverlayData(OVY_MANAGER *man) {
     ov122_021E765C(work);
     ov122_021E79A4(work);
 
-    MessageFormat_delete(work->msgFmt);
+    MessageFormat_Delete(work->msgFmt);
     DestroyMsgData(work->msgData);
-    NARC_dtor(work->narc);
+    NARC_Delete(work->narc);
     ov122_021E8068();
     OverlayManager_FreeData(man);
     DestroyHeap(HEAP_ID_VOLTORB_FLIP);

@@ -314,7 +314,7 @@ _02258A80:
 	add r0, #0x70
 	bl ov46_02259474
 	ldr r0, [r5]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	mov r1, #0x21
 	bl GameStats_AddSpecial
 	bl GF_RTC_DateTimeToSec
@@ -1054,7 +1054,7 @@ _02258FAE:
 	bl GX_EngineAToggleLayers
 	mov r0, #0x58
 	add r1, r6, #0
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x2c]
 	ldr r0, [sp, #0x10]
 	mov r2, #0x33
@@ -1196,7 +1196,7 @@ _022591A6:
 	str r0, [r1]
 	ldr r0, [sp, #0x2c]
 	str r1, [sp, #0x10]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1341,7 +1341,7 @@ ov46_022592EC: ; 0x022592EC
 	add r0, r4, #0
 	add r7, r1, #0
 	add r6, r2, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r5]
 	ldr r2, [sp, #0x14]
 	mov r0, #0
@@ -1519,7 +1519,7 @@ _02259464:
 	add r0, r4, #0
 	add r0, #8
 	mov r1, #1
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	str r0, [r4, #0x24]
 _02259470:
 	pop {r4, pc}
@@ -1571,13 +1571,13 @@ _022594BC:
 	add r0, #8
 	bl RemoveWindow
 	ldr r0, [r4, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x18]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #4]
 	bl DestroyMsgData
 	ldr r0, [r4]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov46_02259494

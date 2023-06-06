@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public GfGfxLoader_LoadFromOpenNarc
 .public G2dRenderer_SetSubSurfaceCoords
 .public sub_0200CF18

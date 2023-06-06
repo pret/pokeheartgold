@@ -9,8 +9,8 @@ struct SaveTrainerCard {
 }; // size=0x620
 
 u32 Save_TrainerCard_sizeof(void);
-void Save_TrainerCard_init(struct SaveTrainerCard *data);
-struct SaveTrainerCard *Save_TrainerCard_get(SAVEDATA *saveData);
+void Save_TrainerCard_Init(struct SaveTrainerCard *data);
+struct SaveTrainerCard *Save_TrainerCard_Get(SAVEDATA *saveData);
 int *TrainerCard_GetSignature(struct SaveTrainerCard *data);
 BOOL TrainerCard_SignatureExists(struct SaveTrainerCard *data);
 int *TrainerCard_GetBadgeShininessArr(struct SaveTrainerCard *data);

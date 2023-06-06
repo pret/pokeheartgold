@@ -5,32 +5,32 @@ u32 Save_PlayerData_sizeof(void) {
     return sizeof(PLAYERDATA);
 }
 
-void Save_PlayerData_init(PLAYERDATA* player) {
+void Save_PlayerData_Init(PLAYERDATA* player) {
     MI_CpuClearFast(player, sizeof(PLAYERDATA));
 
-    Options_init(&player->options);
-    PlayerProfile_init(&player->profile);
+    Options_Init(&player->options);
+    PlayerProfile_Init(&player->profile);
     InitCoins(&player->coins);
     InitIGT(&player->igt);
 }
 
 PLAYERPROFILE* Save_PlayerData_GetProfileAddr(SAVEDATA* savedata) {
-    PLAYERDATA* player = SaveArray_get(savedata, SAVE_PLAYERDATA);
+    PLAYERDATA* player = SaveArray_Get(savedata, SAVE_PLAYERDATA);
     return &player->profile;
 }
 
 OPTIONS* Save_PlayerData_GetOptionsAddr(SAVEDATA* savedata) {
-    PLAYERDATA* player = SaveArray_get(savedata, SAVE_PLAYERDATA);
+    PLAYERDATA* player = SaveArray_Get(savedata, SAVE_PLAYERDATA);
     return &player->options;
 }
 
 u16* Save_PlayerData_GetCoinsAddr(SAVEDATA* savedata) {
-    PLAYERDATA* player = SaveArray_get(savedata, SAVE_PLAYERDATA);
+    PLAYERDATA* player = SaveArray_Get(savedata, SAVE_PLAYERDATA);
     return &player->coins;
 }
 
 IGT* Save_PlayerData_GetIGTAddr(SAVEDATA* savedata) {
-    PLAYERDATA* player = SaveArray_get(savedata, SAVE_PLAYERDATA);
+    PLAYERDATA* player = SaveArray_Get(savedata, SAVE_PLAYERDATA);
     return &player->igt;
 }
 
@@ -38,18 +38,18 @@ u32 PlayerProfile_sizeof(void) {
     return sizeof(PLAYERPROFILE);
 }
 
-PLAYERPROFILE* PlayerProfile_new(HeapID heap_id) {
+PLAYERPROFILE* PlayerProfile_New(HeapID heap_id) {
     PLAYERPROFILE* profile = AllocFromHeap(heap_id, sizeof(PLAYERPROFILE));
-    PlayerProfile_init(profile);
+    PlayerProfile_Init(profile);
 
     return profile;
 }
 
-void PlayerProfile_copy(const PLAYERPROFILE* src, PLAYERPROFILE* dest) {
+void PlayerProfile_Copy(const PLAYERPROFILE* src, PLAYERPROFILE* dest) {
     MI_CpuCopy8(src, dest, sizeof(PLAYERPROFILE));
 }
 
-void PlayerProfile_init(PLAYERPROFILE* profile) {
+void PlayerProfile_Init(PLAYERPROFILE* profile) {
     memset(profile, 0, sizeof(PLAYERPROFILE));
 
     profile->language = GAME_LANGUAGE;
@@ -66,7 +66,7 @@ BOOL PlayerProfile_IsNameEmpty(PLAYERPROFILE* profile) {
     return TRUE;
 }
 
-void Save_Profile_PlayerName_set(PLAYERPROFILE* profile, u16* name) {
+void Save_Profile_PlayerName_Set(PLAYERPROFILE* profile, u16* name) {
     GF_ASSERT(StringLength(name) < PLAYER_NAME_LENGTH + 1);
     CopyU16StringArray(profile->name, name);
 }

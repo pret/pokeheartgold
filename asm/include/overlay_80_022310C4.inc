@@ -18,7 +18,7 @@
 .public sub_02031108
 .public sub_0203126C
 .public sub_020313C4
-.public SaveArray_Flags_get
+.public SaveArray_Flags_Get
 .public sub_0205C0A0
 .public sub_0205C0CC
 .public sub_0205C0F4
@@ -28,9 +28,9 @@
 .public ScriptState_GetVar4052
 .public AllocMonZeroed
 .public GetMonData
-.public SaveArray_Party_alloc
+.public SaveArray_Party_Alloc
 .public GetPartyMonByIndex
-.public SaveArray_PlayerParty_get
+.public SaveArray_PlayerParty_Get
 .public MI_CpuFill8
 .public _dadd
 .public _d2f

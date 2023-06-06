@@ -206,7 +206,7 @@ sub_020291A4: ; 0x020291A4
 _020291B2:
 	add r0, r4, #0
 	mov r1, #0xb
-	bl SaveArray_get
+	bl SaveArray_Get
 	add r4, r0, #0
 	lsl r5, r5, #5
 	add r0, r4, r5
@@ -227,7 +227,7 @@ sub_020291D4: ; 0x020291D4
 	push {r4, lr}
 	add r4, r1, #0
 	mov r1, #0xb
-	bl SaveArray_get
+	bl SaveArray_Get
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_020290BC
@@ -240,7 +240,7 @@ sub_020291E8: ; 0x020291E8
 	cmp r1, #5
 	bne _020291F6
 	mov r1, #0xb
-	bl SaveArray_get
+	bl SaveArray_Get
 	pop {r3, pc}
 _020291F6:
 	cmp r1, #0xa

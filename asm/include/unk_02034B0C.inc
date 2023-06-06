@@ -1,13 +1,13 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public MailMsg_init
+.public MailMsg_Init
 .public Sys_SetSleepDisableFlag
 .public Sys_ClearSleepDisableFlag
 .public AllocFromHeap
 .public FreeToHeap
 .public GF_AssertFail
 .public PlayerProfile_sizeof
-.public PlayerProfile_copy
+.public PlayerProfile_Copy
 .public PlayerProfile_GetTrainerID
 .public sub_020290B4
 .public sub_02032B84

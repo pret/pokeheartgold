@@ -2758,7 +2758,7 @@ sub_0205E048: ; 0x0205E048
 	bl MapObject_GetFieldSysPtr
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	mov r1, #0
 	add r4, r0, #0
 	bl GameStats_Inc

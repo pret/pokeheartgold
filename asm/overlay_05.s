@@ -723,7 +723,7 @@ _0221BF92:
 	str r0, [r5, r1]
 	ldr r0, [r5]
 	ldr r0, [r0, #0x24]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0xbb
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -2754,14 +2754,14 @@ ov05_0221D020: ; 0x0221D020
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0221D030
-	bl String_dtor
+	bl String_Delete
 _0221D030:
 	mov r0, #0xbb
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0221D03E
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 _0221D03E:
 	ldr r0, _0221D050 ; =0x00000BAC
 	ldr r0, [r4, r0]
@@ -2814,7 +2814,7 @@ ov05_0221D094: ; 0x0221D094
 	ldr r1, [r5]
 	mov r0, #0x68
 	ldr r1, [r1, #0x24]
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -2880,7 +2880,7 @@ ov05_0221D094: ; 0x0221D094
 	mov r0, #1
 	bl BG_SetMaskColor
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -3117,7 +3117,7 @@ ov05_0221D318: ; 0x0221D318
 	ldr r1, [r5]
 	mov r0, #8
 	ldr r1, [r1, #0x24]
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -3173,7 +3173,7 @@ ov05_0221D318: ; 0x0221D318
 	mov r3, #0xd1
 	bl sub_0200D71C
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -3802,7 +3802,7 @@ ov05_0221D890: ; 0x0221D890
 	ldr r1, [r5]
 	mov r0, #0x68
 	ldr r1, [r1, #0x24]
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -3843,7 +3843,7 @@ ov05_0221D890: ; 0x0221D890
 	mov r3, #7
 	bl sub_0200D71C
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0xc
 	pop {r4, r5, pc}
 	nop
@@ -4265,7 +4265,7 @@ ov05_0221DC60: ; 0x0221DC60
 	ldr r1, [r5]
 	mov r0, #0x15
 	ldr r1, [r1, #0x24]
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -4326,7 +4326,7 @@ ov05_0221DC60: ; 0x0221DC60
 	add r3, r5, r3
 	bl sub_0207CAAC
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -5087,7 +5087,7 @@ ov05_0221E2D8: ; 0x0221E2D8
 	ldr r1, [r5]
 	mov r0, #0x14
 	ldr r1, [r1, #0x24]
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	bl sub_02074490
 	add r3, r0, #0
@@ -5158,7 +5158,7 @@ _0221E350:
 	cmp r4, #6
 	blo _0221E350
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -5174,7 +5174,7 @@ ov05_0221E390: ; 0x0221E390
 	ldr r1, [r5]
 	mov r0, #0x15
 	ldr r1, [r1, #0x24]
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -5230,7 +5230,7 @@ ov05_0221E390: ; 0x0221E390
 	mov r3, #0x12
 	bl sub_0200D71C
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -5247,7 +5247,7 @@ ov05_0221E42C: ; 0x0221E42C
 	ldr r1, [r5]
 	mov r0, #0x27
 	ldr r1, [r1, #0x24]
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -5303,7 +5303,7 @@ ov05_0221E42C: ; 0x0221E42C
 	mov r3, #0x3e
 	bl sub_0200D71C
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -5320,7 +5320,7 @@ ov05_0221E4C8: ; 0x0221E4C8
 	ldr r1, [r5]
 	mov r0, #0x15
 	ldr r1, [r1, #0x24]
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -5376,7 +5376,7 @@ ov05_0221E4C8: ; 0x0221E4C8
 	add r2, r4, #0
 	bl sub_0200D71C
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -5538,7 +5538,7 @@ _0221E656:
 	add r1, r6, #0
 	bl StringExpandPlaceholders
 	ldr r0, [sp, #0x20]
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -5900,11 +5900,11 @@ ov05_0221E944: ; 0x0221E944
 	mov r0, #0xf
 	mov r1, #0xe
 	mov r2, #0
-	bl MessagePrinter_new
+	bl MessagePrinter_New
 	str r0, [sp, #0xc]
 	ldr r0, [r6]
 	ldr r0, [r0, #0x24]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	ldr r1, [r6]
 	str r0, [sp, #8]
 	ldr r1, [r1, #0x24]
@@ -5932,13 +5932,13 @@ _0221E9A0:
 	cmp r4, #6
 	blo _0221E986
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x10]
 	bl DestroyMsgData
 	ldr r0, [sp, #0xc]
-	bl MessagePrinter_delete
+	bl MessagePrinter_Delete
 	ldr r0, [sp, #8]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov05_0221E944
@@ -6002,7 +6002,7 @@ ov05_0221EA18: ; 0x0221EA18
 	sub r0, #0x3c
 	add r0, r4, r0
 	mov r1, #1
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	ldr r1, _0221EA34 ; =0x00000BC4
 	str r0, [r4, r1]
 _0221EA32:

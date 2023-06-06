@@ -17,8 +17,8 @@ typedef struct SavePalPad {
 } SavePalPad;
 
 u32 Save_PalPad_sizeof(void);
-SavePalPad *Save_PalPad_get(SAVEDATA *saveData);
-void Save_PalPad_init(SavePalPad *palPad);
+SavePalPad *Save_PalPad_Get(SAVEDATA *saveData);
+void Save_PalPad_Init(SavePalPad *palPad);
 SavePalPad *PalPad_GetNthEntry(SavePalPad *arr, int n);
 u8 PalPadEntry_GetFromUnk68Array(SavePalPad *palPad, int n);
 void SavePalPad_Merge(SavePalPad *a, SavePalPad *b, int n, HeapID heapId);

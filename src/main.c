@@ -58,9 +58,9 @@ void NitroMain(void) {
     FontID_Alloc(1, HEAP_ID_3);
     FontID_Alloc(3, HEAP_ID_3);
     _02111868.unk_10.unk_00 = -1;
-    _02111868.unk_10.savedata = SaveBlock2_new();
+    _02111868.unk_10.savedata = SaveBlock2_New();
     sub_02005D00();
-    InitSoundData(Save_Chatot_get(_02111868.unk_10.savedata), Save_PlayerData_GetOptionsAddr(_02111868.unk_10.savedata));
+    InitSoundData(Save_Chatot_Get(_02111868.unk_10.savedata), Save_PlayerData_GetOptionsAddr(_02111868.unk_10.savedata));
     Init_Timer3();
     if (sub_02039FFC(3) == 3) {
         ShowWFCUserInfoWarning(HEAP_ID_3, 0);
@@ -145,12 +145,12 @@ void Main_RunOverlayManager(void) {
             HandleLoadOverlay(_02111868.queuedMainOverlayId, OVY_LOAD_NORMAL);
         }
         _02111868.mainOverlayId = _02111868.queuedMainOverlayId;
-        _02111868.overlayManager = OverlayManager_new(_02111868.queuedMainOverlayTemplate, &_02111868.unk_10, HEAP_ID_0);
+        _02111868.overlayManager = OverlayManager_New(_02111868.queuedMainOverlayTemplate, &_02111868.unk_10, HEAP_ID_0);
         _02111868.queuedMainOverlayId = FS_OVERLAY_ID_NONE;
         _02111868.queuedMainOverlayTemplate = NULL;
     }
-    if (OverlayManager_run(_02111868.overlayManager)) {
-        OverlayManager_delete(_02111868.overlayManager);
+    if (OverlayManager_Run(_02111868.overlayManager)) {
+        OverlayManager_Delete(_02111868.overlayManager);
         _02111868.overlayManager = NULL;
         if (_02111868.mainOverlayId != FS_OVERLAY_ID_NONE) {
             UnloadOverlayByID(_02111868.mainOverlayId);
@@ -203,7 +203,7 @@ void DoSoftReset(u32 param) {
     sub_0200FBF4(0, RGB_WHITE);
     sub_0200FBF4(1, RGB_WHITE);
     if (sub_02038D90()) {
-        Save_Cancel(SaveBlock2_get());
+        Save_Cancel(SaveBlock2_Get());
     }
     while (1) {
         HandleDSLidAction();

@@ -22,7 +22,7 @@ sub_020961D8: ; 0x020961D8
 	add r4, r0, #0
 	str r5, [r4]
 	mov r0, #0x20
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #4]
 	mov r3, #0x20
 	str r3, [sp]
@@ -35,13 +35,13 @@ sub_020961D8: ; 0x020961D8
 	bl sub_02090C94
 	str r0, [r4, #0x10]
 	ldr r0, [r5, #0xc]
-	bl Save_Misc_get
+	bl Save_Misc_Get
 	str r0, [r4, #0x14]
 	add r0, r4, #0
 	str r6, [r4, #0x20]
 	add r0, #8
 	mov r1, #4
-	bl MailMsg_init_withBank
+	bl MailMsg_Init_WithBank
 	add r1, r4, #0
 	ldr r0, [r4, #0x14]
 	add r1, #8
@@ -66,7 +66,7 @@ sub_02096248: ; 0x02096248
 	ldr r0, [r4, #0x10]
 	bl sub_02090D0C
 	ldr r0, [r4, #4]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}

@@ -47,18 +47,18 @@ typedef struct SAVE_MISC_DATA {
     u8 dummy_02DD[3];
 } SAVE_MISC_DATA;
 
-void Save_BerryPots_init(BERRY_POT *berryPot);
-void Save_BerryPotRTC_init(struct GF_RTC_DateTime *dateTime);
+void Save_BerryPots_Init(BERRY_POT *berryPot);
+void Save_BerryPotRTC_Init(struct GF_RTC_DateTime *dateTime);
 u32 Save_Misc_sizeof(void);
-void Save_Misc_init(SAVE_MISC_DATA *saveMiscData);
-SAVE_MISC_DATA *Save_Misc_get(SAVEDATA *saveData);
-const SAVE_MISC_DATA *Save_Misc_const_get(const SAVEDATA *saveData);
-APRICORN_TREE *Save_FieldApricornTrees_get(SAVEDATA *saveData);
-BERRY_POT *Save_BerryPots_get(SAVEDATA *saveData);
-struct GF_RTC_DateTime *Save_BerryPotRTC_get(SAVEDATA *saveData);
+void Save_Misc_Init(SAVE_MISC_DATA *saveMiscData);
+SAVE_MISC_DATA *Save_Misc_Get(SAVEDATA *saveData);
+const SAVE_MISC_DATA *Save_Misc_Const_Get(const SAVEDATA *saveData);
+APRICORN_TREE *Save_FieldApricornTrees_Get(SAVEDATA *saveData);
+BERRY_POT *Save_BerryPots_Get(SAVEDATA *saveData);
+struct GF_RTC_DateTime *Save_BerryPotRTC_Get(SAVEDATA *saveData);
 struct Gymmick *Save_GetGymmickPtr(SAVEDATA *saveData);
-const u16 *Save_Misc_RivalName_const_get(const SAVE_MISC_DATA *saveMiscData);
-void Save_Misc_RivalName_set(SAVE_MISC_DATA *saveMiscData, const STRING *name);
+const u16 *Save_Misc_RivalName_Const_Get(const SAVE_MISC_DATA *saveMiscData);
+void Save_Misc_RivalName_Set(SAVE_MISC_DATA *saveMiscData, const STRING *name);
 void SaveMisc_SetExtraChunksExist(SAVE_MISC_DATA *saveMiscData);
 BOOL SaveMisc_CheckExtraChunksExist(SAVE_MISC_DATA *saveMiscData);
 void SaveMisc_SetFavoriteMon(SAVE_MISC_DATA *saveMiscData, int species, int forme, int isEgg);

@@ -30,10 +30,10 @@ ov80_022324C4: ; 0x022324C4
 	mov r0, #0xb
 	str r0, [r4]
 	ldr r4, [r1]
-	bl SaveArray_Party_alloc
+	bl SaveArray_Party_Alloc
 	str r0, [r4, #0x28]
 	mov r0, #0xb
-	bl SaveArray_Party_alloc
+	bl SaveArray_Party_Alloc
 	str r0, [r4, #0x2c]
 	mov r0, #0xa2
 	ldr r1, [sp, #0x38]
@@ -60,7 +60,7 @@ _02232520:
 	cmp r2, #3
 	bne _02232546
 	ldr r0, [r0, #4]
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	bl ScriptState_GetVar4052
 	b _02232552
 _02232546:
@@ -288,7 +288,7 @@ _0223273E:
 _02232744:
 	ldr r5, [r6]
 	ldr r0, [r5, #4]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	add r1, r5, r4
 	add r1, #0x24
 	ldrb r1, [r1]
@@ -306,7 +306,7 @@ _02232744:
 	cmp r4, #3
 	blo _02232744
 	ldr r0, [r5, #4]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	str r0, [sp, #8]
 	ldr r0, _0223281C ; =ov80_0223DD48
 	mov r1, #0
@@ -1668,7 +1668,7 @@ _02233244:
 	bl sub_02031228
 _0223326A:
 	add r0, r6, #0
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	mov r1, #0x42
 	add r2, r4, #0
 	bl GameStats_Add
@@ -1884,7 +1884,7 @@ _0223340C:
 	bl sub_0200E5D4
 	add r0, r4, #0
 	mov r1, #1
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	b _02233480
 _02233424:
 	add r0, r5, #0
@@ -1923,13 +1923,13 @@ _0223345E:
 	bl sub_0200E5D4
 	add r0, r4, #0
 	mov r1, #1
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	add r0, r6, #0
 	mov r1, #0
 	bl sub_0200E5D4
 	add r0, r6, #0
 	mov r1, #1
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 _02233480:
 	add r0, r5, #0
 	mov r1, #0
@@ -2123,9 +2123,9 @@ ov80_02233594: ; 0x02233594
 	str r1, [sp, #8]
 	bl AddTextPrinterParameterized
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
 	bl DestroyMsgData
 	ldr r0, [sp, #0xc]

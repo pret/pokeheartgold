@@ -47,7 +47,7 @@ static void ReadMsgData_ExistingTable_ExistingArray(MAT *table, u32 num, u16 *de
 }
 
 static void ReadMsgData_NewNarc_ExistingArray(NarcId narc_id, u32 group, u32 num, HeapID heap_id, u16 * dest) {
-    NARC * narc = NARC_ctor(narc_id, heap_id);
+    NARC * narc = NARC_New(narc_id, heap_id);
     u16 header[2];
     MAT_ENTRY alloc;
     if (narc != NULL) {
@@ -56,7 +56,7 @@ static void ReadMsgData_NewNarc_ExistingArray(NarcId narc_id, u32 group, u32 num
         Decrypt1(&alloc, num, header[1]);
         NARC_ReadFromMember(narc, group, alloc.offset, 2 * alloc.length, dest);
         Decrypt2(dest, alloc.length, num);
-        NARC_dtor(narc);
+        NARC_Delete(narc);
     }
 }
 
@@ -79,7 +79,7 @@ static void ReadMsgData_ExistingTable_ExistingString(MAT * table, u32 num, STRIN
         }
     } else {
         GF_ASSERT(FALSE);
-        StringSetEmpty(dest);
+        String_SetEmpty(dest);
     }
 }
 
@@ -109,10 +109,10 @@ static STRING * ReadMsgData_ExistingTable_NewString(MAT * table, u32 num, HeapID
 }
 
 void ReadMsgData_NewNarc_ExistingString(NarcId narc_id, s32 group, u32 num, HeapID heap_id, STRING * dest) {
-    NARC * narc = NARC_ctor(narc_id, heap_id);
+    NARC * narc = NARC_New(narc_id, heap_id);
     if (narc != NULL) {
         ReadMsgData_ExistingNarc_ExistingString(narc, group, num, heap_id, dest);
-        NARC_dtor(narc);
+        NARC_Delete(narc);
     }
 }
 
@@ -137,16 +137,16 @@ static void ReadMsgData_ExistingNarc_ExistingString(NARC * narc, u32 group, u32 
         }
     } else {
         GF_ASSERT(FALSE);
-        StringSetEmpty(dest);
+        String_SetEmpty(dest);
     }
 }
 
 STRING * ReadMsgData_NewNarc_NewString(NarcId narc_id, u32 group, u32 num, HeapID heap_id) {
-    NARC * narc = NARC_ctor(narc_id, heap_id);
+    NARC * narc = NARC_New(narc_id, heap_id);
     STRING * string;
     if (narc != NULL) {
         string = ReadMsgData_ExistingNarc_NewString(narc, group, num, heap_id);
-        NARC_dtor(narc);
+        NARC_Delete(narc);
     } else {
         string = String_New(4, heap_id);
     }
@@ -202,7 +202,7 @@ MSGDATA * NewMsgDataFromNarc(MsgDataLoadType type, NarcId narc_id, s32 file_id, 
                 return NULL;
             }
         } else {
-            msgData->lazy = NARC_ctor(narc_id, heap_id);
+            msgData->lazy = NARC_New(narc_id, heap_id);
         }
         msgData->type = (u16)type;
         msgData->narc_id = (u16)narc_id;
@@ -219,7 +219,7 @@ void DestroyMsgData(MSGDATA * msgData) {
             FreeMsgDataRawData(msgData->direct);
             break;
         case MSGDATA_LOAD_LAZY:
-            NARC_dtor(msgData->lazy);
+            NARC_Delete(msgData->lazy);
             break;
         }
         FreeToHeap(msgData);
@@ -284,10 +284,10 @@ STRING * ReadMsgData_ExpandPlaceholders(MessageFormat * messageFormat, MSGDATA *
         r5 = NewString_ReadMsgData(msgData, msgno);
         if (r5 != NULL) {
             StringExpandPlaceholders(messageFormat, r4, r5);
-            ret = StringDup(r4, heap_id);
-            String_dtor(r5);
+            ret = String_Dup(r4, heap_id);
+            String_Delete(r5);
         }
-        String_dtor(r4);
+        String_Delete(r4);
     }
     return ret;
 }

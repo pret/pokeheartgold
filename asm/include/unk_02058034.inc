@@ -69,8 +69,8 @@
 .public sub_02058AA0
 .public sub_02059538
 .public sub_02068FC8
-.public SaveArray_Party_alloc
-.public Party_copy
+.public SaveArray_Party_Alloc
+.public Party_Copy
 .public sub_02091574
 .public MI_CpuFill8
 .public ov03_02255BEC

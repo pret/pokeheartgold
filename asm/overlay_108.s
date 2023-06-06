@@ -126,7 +126,7 @@ ov108_021E59E4: ; 0x021E59E4
 	add r4, r1, #0
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl Save_SafariZone_get
+	bl Save_SafariZone_Get
 	add r2, r5, #0
 	str r0, [r5, #0x18]
 	mov r1, #0
@@ -176,7 +176,7 @@ ov108_021E5A48: ; 0x021E5A48
 	bl SafariZone_SetAreaSet
 	ldr r0, [r4, #0x14]
 	ldr r0, [r0]
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	ldr r1, _021E5A74 ; =0x000184E8
 	ldr r1, [r4, r1]
 	bl ChangeFlag99D
@@ -2598,7 +2598,7 @@ ov108_021E6D80: ; 0x021E6D80
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0xa6
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #6
 	str r0, [sp]
@@ -2771,7 +2771,7 @@ _021E6EA6:
 	ldr r1, _021E6F54 ; =0x000004CC
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r5, #0
 	bl ov108_021E7ADC
 	add r0, r5, #0
@@ -2845,7 +2845,7 @@ ov108_021E6F74: ; 0x021E6F74
 	ldr r2, [r5]
 	mov r0, #1
 	mov r1, #0x11
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	mov r1, #0xc2
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -2914,7 +2914,7 @@ ov108_021E7014: ; 0x021E7014
 	lsl r7, r7, #2
 _021E7020:
 	ldr r0, [r5, r7]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -2925,7 +2925,7 @@ _021E7020:
 	lsl r7, r7, #4
 _021E7036:
 	ldr r0, [r4, r7]
-	bl String_dtor
+	bl String_Delete
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #5
@@ -2933,19 +2933,19 @@ _021E7036:
 	mov r0, #0xce
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0xcd
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0xc3
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0xc2
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0xc1
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
@@ -3164,12 +3164,12 @@ ov108_021E7224: ; 0x021E7224
 	add r4, r0, #0
 	ldr r1, [r4]
 	mov r0, #3
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r1, _021E729C ; =0x000004B4
 	str r0, [r4, r1]
 	ldr r1, [r4]
 	mov r0, #2
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r1, _021E72A0 ; =0x000004B8
 	mov r2, #7
 	str r0, [r4, r1]
@@ -3224,10 +3224,10 @@ ov108_021E72A4: ; 0x021E72A4
 	add r4, r0, #0
 	ldr r0, _021E72C4 ; =0x000004B8
 	ldr r0, [r4, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	ldr r0, _021E72C8 ; =0x000004B4
 	ldr r0, [r4, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	ldr r0, _021E72C8 ; =0x000004B4
 	mov r1, #0
 	str r1, [r4, r0]
@@ -4349,7 +4349,7 @@ ov108_021E7BB4: ; 0x021E7BB4
 	ldr r1, [r6]
 	mov r0, #0xa6
 	add r5, r2, #0
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	cmp r4, #6
 	blo _021E7BE6
@@ -4375,7 +4375,7 @@ _021E7BE6:
 	bl ov108_021E7B74
 _021E7BF2:
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov108_021E7BB4
@@ -6108,7 +6108,7 @@ ov108_021E8968: ; 0x021E8968
 	add r4, r1, #0
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl Save_SafariZone_get
+	bl Save_SafariZone_Get
 	add r2, r5, #0
 	str r0, [r5, #0x20]
 	mov r1, #0
@@ -6211,7 +6211,7 @@ _021E8A50:
 	mov r1, #0xff
 	strh r1, [r0, #0x1c]
 	ldr r0, [r4]
-	bl Save_SysInfo_RTC_get
+	bl Save_SysInfo_RTC_Get
 	ldr r0, [r0, #0x14]
 	bl GF_RTC_GetTimeOfDayByHour
 	ldr r1, _021E8A84 ; =0x0000042C
@@ -6646,15 +6646,15 @@ ov108_021E8CD4: ; 0x021E8CD4
 	bl GF_ExpHeap_FndInitAllocator
 	mov r0, #0x28
 	add r1, r4, #0
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r5, #0x18]
 	mov r0, #0x6b
 	add r1, r4, #0
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r5, #0x1c]
 	mov r0, #0x6a
 	add r1, r4, #0
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r5, #0x20]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -6744,11 +6744,11 @@ _021E8E76:
 	ldr r0, [r0]
 	bl FreeToHeap
 	ldr r0, [r4, #0x20]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r4, #0x1c]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r4, #0x18]
-	bl NARC_dtor
+	bl NARC_Delete
 	pop {r4, pc}
 	thumb_func_end ov108_021E8E60
 
@@ -8239,7 +8239,7 @@ ov108_021E9A60: ; 0x021E9A60
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0xe1
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -8358,7 +8358,7 @@ ov108_021E9A60: ; 0x021E9A60
 	ldr r1, _021E9BCC ; =0x00000528
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldrb r0, [r5, #0x19]
 	ldr r2, _021E9BC0 ; =0x00000438
 	mov r1, #4
@@ -8472,7 +8472,7 @@ ov108_021E9C3C: ; 0x021E9C3C
 	ldr r2, [r5]
 	mov r0, #2
 	mov r1, #0x10
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	mov r1, #0x31
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -8534,7 +8534,7 @@ ov108_021E9CD0: ; 0x021E9CD0
 	lsl r7, r7, #2
 _021E9CDC:
 	ldr r0, [r5, r7]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -8542,23 +8542,23 @@ _021E9CDC:
 	mov r0, #0x33
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0xcb
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0xc6
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0xc5
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x31
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0xc3
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]

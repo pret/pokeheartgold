@@ -469,7 +469,7 @@ _02092090:
 	add r0, r4, #0
 	ldr r1, _020920DC ; =0x000001E2
 	add r0, #0x1c
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	str r0, [r4, #0x34]
 	mov r0, #5
 	str r0, [r4, #4]
@@ -552,7 +552,7 @@ _020920FC:
 	cmp r4, #0
 	bne _0209215C
 	ldr r0, [r5, #0x10]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -569,7 +569,7 @@ _02092164:
 	cmp r0, #0
 	bne _02092194
 	ldr r0, [r5, #0x10]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]

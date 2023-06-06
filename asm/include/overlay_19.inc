@@ -4,8 +4,8 @@
 .public FontID_Release
 .public FontID_String_GetWidth
 .public PlaySE
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public GfGfxLoader_GXLoadPalFromOpenNarc
@@ -13,8 +13,8 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public NewString_ReadMsgData
-.public MessageFormat_new_custom
-.public MessageFormat_delete
+.public MessageFormat_New_Custom
+.public MessageFormat_Delete
 .public BufferString
 .public BufferPlayersName
 .public BufferIntegerAsString
@@ -50,7 +50,7 @@
 .public sub_02024B68
 .public sub_02025224
 .public String_New
-.public String_dtor
+.public String_Delete
 .public CopyU16ArrayToString
 .public Save_PlayerData_GetProfileAddr
 .public sub_02068F98

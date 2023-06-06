@@ -13,8 +13,8 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public NARC_AllocAndReadWholeMember
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_LoadScrnData
@@ -42,8 +42,8 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
-.public MessageFormat_new_custom
-.public MessageFormat_delete
+.public MessageFormat_New_Custom
+.public MessageFormat_Delete
 .public BufferString
 .public BufferIntegerAsString
 .public BufferMonthNameAbbr
@@ -120,7 +120,7 @@
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public String16_FormatInteger
 .public CopyU16ArrayToString
 .public Save_PlayerData_GetOptionsAddr

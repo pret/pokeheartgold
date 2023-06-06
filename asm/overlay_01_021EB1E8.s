@@ -626,7 +626,7 @@ ov01_021EB64C: ; 0x021EB64C
 	ldr r0, _021EB688 ; =ov01_0220675C
 	str r0, [r4, #4]
 	mov r0, #0x3f ; NARC_a_0_6_3
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x42
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -681,7 +681,7 @@ _021EB69A:
 	ldr r1, [r4]
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r1, [r4]
 	mov r0, #4
 	bl FreeToHeapExplicit

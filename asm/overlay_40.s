@@ -30,7 +30,7 @@ ov40_0222B6E0: ; 0x0222B6E0
 	bl GF_CreateVramTransferManager
 	mov r0, #0xbf
 	mov r1, #0x6d
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #0x14]
 	mov r0, #0x6d
 	bl BgConfig_Alloc
@@ -326,14 +326,14 @@ ov40_0222B934: ; 0x0222B934
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Save_Misc_get
+	bl Save_Misc_Get
 	add r1, r5, #0
 	add r1, #0x5c
 	ldrb r1, [r1]
 	bl sub_0202AC1C
 _0222B9FE:
 	ldr r0, [r5, #0x14]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, _0222BA84 ; =0x0000416C
 	ldr r0, [r5, r0]
 	bl DestroySysTask
@@ -1275,7 +1275,7 @@ _0222C1AE:
 	bne _0222C200
 	add r1, #0x18
 	ldr r0, [r5, r1]
-	bl Save_DressupData_get
+	bl Save_DressupData_Get
 	add r1, r4, #0
 	bl sub_0202B9B8
 	bl sub_0202BC10
@@ -3647,11 +3647,11 @@ _0222D410:
 	add r2, r7, #0
 	bl StringExpandPlaceholders
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x14]
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	b _0222D504
 _0222D478:
 	cmp r2, #0x29
@@ -3704,11 +3704,11 @@ _0222D494:
 	add r2, r7, #0
 	bl StringExpandPlaceholders
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x18]
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	b _0222D504
 _0222D4FC:
 	add r1, r2, #0
@@ -3744,7 +3744,7 @@ _0222D504:
 	mov r3, #0x6d
 	bl sub_020139D0
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, sp, #0x1c
 	bl RemoveWindow
 	add sp, #0x2c
@@ -3921,7 +3921,7 @@ ov40_0222D66C: ; 0x0222D66C
 	mov r3, #0x6d
 	bl sub_020139D0
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, sp, #0x10
 	bl RemoveWindow
 	add sp, #0x20
@@ -4447,13 +4447,13 @@ ov40_0222DAA8: ; 0x0222DAA8
 
 	thumb_func_start ov40_0222DAB0
 ov40_0222DAB0: ; 0x0222DAB0
-	ldr r3, _0222DABC ; =MessageFormat_new_custom
+	ldr r3, _0222DABC ; =MessageFormat_New_Custom
 	add r2, r0, #0
 	mov r0, #4
 	mov r1, #0x40
 	bx r3
 	nop
-_0222DABC: .word MessageFormat_new_custom
+_0222DABC: .word MessageFormat_New_Custom
 	thumb_func_end ov40_0222DAB0
 
 	thumb_func_start ov40_0222DAC0
@@ -4890,7 +4890,7 @@ ov40_0222DD9C: ; 0x0222DD9C
 	add r0, r5, r4
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	bl OS_WaitVBlankIntr
 	mov r0, #4
 	mov r1, #1
@@ -5030,7 +5030,7 @@ ov40_0222DED0: ; 0x0222DED0
 	add r0, r5, r4
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 _0222DF54:
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
@@ -5069,7 +5069,7 @@ ov40_0222DF60: ; 0x0222DF60
 	add r0, r5, r6
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 _0222DFA4:
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
@@ -5179,7 +5179,7 @@ ov40_0222DFE8: ; 0x0222DFE8
 	add r0, r5, r4
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 _0222E08A:
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
@@ -5290,7 +5290,7 @@ _0222E0D6:
 	add r0, r0, r2
 	str r0, [sp, #0x24]
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x1c]
 	add r4, #0x10
 	add r0, r0, #4
@@ -5357,11 +5357,11 @@ _0222E0D6:
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x2c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x30]
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl MessageFormat_ResetBuffers
 	ldr r0, [sp, #0x20]
@@ -5412,11 +5412,11 @@ _0222E0D6:
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x38]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x3c]
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl MessageFormat_ResetBuffers
 	ldr r5, [sp, #0x14]
@@ -5445,7 +5445,7 @@ _0222E0D6:
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x20]
 	bl sub_02031620
 	add r6, r0, #0
@@ -5477,7 +5477,7 @@ _0222E0D6:
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	b _0222E3F6
 _0222E33C:
 	mov r0, #0xff
@@ -5510,9 +5510,9 @@ _0222E33C:
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x44]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x48]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x40]
 	cmp r0, #0
 	beq _0222E3F6
@@ -5553,9 +5553,9 @@ _0222E33C:
 	ldr r0, [sp, #0x18]
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x4c]
-	bl String_dtor
+	bl String_Delete
 _0222E3F6:
 	add r0, r4, #0
 	bl MessageFormat_ResetBuffers
@@ -5591,7 +5591,7 @@ _0222E434:
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x14]
 	add r1, sp, #0x50
 	add r0, #0x7c
@@ -5623,9 +5623,9 @@ _0222E46A:
 	ldr r0, [sp, #0x14]
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add sp, #0xd8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -6123,9 +6123,9 @@ _0222E85C:
 	bl StringExpandPlaceholders
 _0222E884:
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 _0222E890:
 	mov r0, #0x10
 	str r0, [sp]
@@ -6142,7 +6142,7 @@ _0222E890:
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x14]
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -6247,7 +6247,7 @@ _0222E95C:
 	add r3, r1, #0
 	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4]
 	ldr r0, [r0, r6]
 	cmp r0, #0x10
@@ -6386,7 +6386,7 @@ _0222EA72:
 	add r3, r1, #0
 	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x24]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x10]
 	add r6, r6, #1
 	add r7, #0x10
@@ -6477,11 +6477,11 @@ _0222EAC0:
 	mov r3, #0x16
 	bl AddTextPrinterParameterized2
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x2c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x28]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x1c]
 	ldr r1, [r4, #0x10]
 	add r0, r0, #4
@@ -6861,15 +6861,15 @@ _0222EDA8:
 	bl AddTextPrinterParameterized2
 _0222EE7A:
 	ldr r0, [sp, #0x4c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x48]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x44]
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x34]
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	bl MessageFormat_ResetBuffers
 	ldr r0, [sp, #0x20]
@@ -6887,7 +6887,7 @@ _0222EEB4:
 	ldr r0, [sp, #0x50]
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add sp, #0x1fc
 	add sp, #0xe0
 	pop {r4, r5, r6, r7, pc}
@@ -7456,15 +7456,15 @@ _0222F32A:
 	add r0, r0, #1
 	str r0, [sp, #0x44]
 	ldr r0, [sp, #0x54]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x50]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x4c]
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x48]
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	bl MessageFormat_ResetBuffers
 	ldr r0, [sp, #0x20]
@@ -7482,7 +7482,7 @@ _0222F36A:
 	ldr r0, [sp, #0x58]
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #8
 	ldrsh r0, [r4, r0]
 	str r0, [r4, #0xc]
@@ -7604,7 +7604,7 @@ _0222F42C:
 	ldr r0, [sp, #0x18]
 	bl AddTextPrinterParameterized2
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x10]
 	add r6, r6, #1
 	add r1, r0, #1
@@ -7766,11 +7766,11 @@ _0222F500:
 	mov r3, #0x16
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x24]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x18]
 	add r4, #0x18
 	add r0, r0, #4
@@ -8514,7 +8514,7 @@ ov40_0222FB28: ; 0x0222FB28
 	mov r1, #0x83
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	add r1, r4, #0
 	bl GameStats_AddSpecial
 	pop {r4, pc}
@@ -8963,20 +8963,20 @@ _0222FE88: .word 0x000186A0
 
 	thumb_func_start ov40_0222FE8C
 ov40_0222FE8C: ; 0x0222FE8C
-	ldr r3, _0222FE94 ; =NARC_ctor
+	ldr r3, _0222FE94 ; =NARC_New
 	mov r0, #0x14
 	mov r1, #0x6d
 	bx r3
 	.balign 4, 0
-_0222FE94: .word NARC_ctor
+_0222FE94: .word NARC_New
 	thumb_func_end ov40_0222FE8C
 
 	thumb_func_start ov40_0222FE98
 ov40_0222FE98: ; 0x0222FE98
-	ldr r3, _0222FE9C ; =NARC_dtor
+	ldr r3, _0222FE9C ; =NARC_Delete
 	bx r3
 	.balign 4, 0
-_0222FE9C: .word NARC_dtor
+_0222FE9C: .word NARC_Delete
 	thumb_func_end ov40_0222FE98
 
 	thumb_func_start ov40_0222FEA0
@@ -9194,7 +9194,7 @@ _0222FFAE:
 	add r0, r0, r2
 	str r0, [sp, #0x3c]
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x20]
 	add r4, #8
 	add r0, r0, #4
@@ -9261,11 +9261,11 @@ _02230062:
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x44]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x48]
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl MessageFormat_ResetBuffers
 	ldr r0, [sp, #0x14]
@@ -9297,7 +9297,7 @@ _02230062:
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl MessageFormat_ResetBuffers
 	ldr r0, [sp, #0x14]
@@ -9362,11 +9362,11 @@ _02230062:
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x50]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x54]
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl MessageFormat_ResetBuffers
 	b _02230206
@@ -9529,19 +9529,19 @@ _022302BA:
 	ldr r0, [sp, #0x14]
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x38]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x34]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x30]
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl MessageFormat_ResetBuffers
 	add r0, r4, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add sp, #0x9c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -10009,7 +10009,7 @@ ov40_022306F0: ; 0x022306F0
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Save_Misc_get
+	bl Save_Misc_Get
 	add r1, sp, #4
 	str r1, [sp]
 	ldr r1, _02230734 ; =0x0000086C
@@ -11015,7 +11015,7 @@ ov40_02230DCC: ; 0x02230DCC
 	bl ov40_02230E08
 _02230DFE:
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov40_02230DCC
@@ -11025,7 +11025,7 @@ ov40_02230E08: ; 0x02230E08
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r0, #0
-	bl StringSetEmpty
+	bl String_SetEmpty
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xd
@@ -11086,7 +11086,7 @@ ov40_02230E34: ; 0x02230E34
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, r4
 	bl ScheduleWindowCopyToVram
 	mov r0, #4
@@ -14161,7 +14161,7 @@ ov40_022326DC: ; 0x022326DC
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, r6
 	bl ScheduleWindowCopyToVram
 	add r6, #0x10
@@ -14203,7 +14203,7 @@ ov40_022326DC: ; 0x022326DC
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, r6
 	bl ScheduleWindowCopyToVram
 	add sp, #0x14
@@ -15251,7 +15251,7 @@ ov40_02232FEC: ; 0x02232FEC
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, r6
 	bl ScheduleWindowCopyToVram
 	add sp, #0x10
@@ -15894,7 +15894,7 @@ ov40_02233550: ; 0x02233550
 	ldr r0, [sp]
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	add r4, r0, #0
 	bl ScriptState_GetBattleTowerPrintProgress
 	str r0, [sp, #0x30]
@@ -16077,7 +16077,7 @@ _022336A2:
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r7, r0]
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	add r4, r0, #0
 	bl ScriptState_GetBattleTowerPrintProgress
 	str r0, [sp, #0x7c]
@@ -16873,7 +16873,7 @@ _02233D72:
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl Save_FrontierData_get
+	bl Save_FrontierData_Get
 	mov r1, #0
 	add r2, r1, #0
 	bl FrontierData_BattlePointAction
@@ -17574,7 +17574,7 @@ _0223434A:
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Save_DressupData_get
+	bl Save_DressupData_Get
 	mov r1, #0
 	bl sub_0202B9B8
 	mov r1, #0x8b
@@ -20052,7 +20052,7 @@ ov40_02235868: ; 0x02235868
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	add sp, #0x10
@@ -20460,7 +20460,7 @@ _02235B66:
 	add r1, r7, #0
 	bl StringExpandPlaceholders
 	add r0, r7, #0
-	bl StringCountLines
+	bl String_CountLines
 	mov r5, #0
 	str r0, [sp, #0x14]
 	cmp r0, #0
@@ -20470,7 +20470,7 @@ _02235C18:
 	add r0, r4, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl StringGetLineN
+	bl String_GetLineN
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
@@ -20498,13 +20498,13 @@ _02235C54:
 	ldr r0, [sp, #0x20]
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x18]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 _02235C72:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
@@ -20596,7 +20596,7 @@ _02235C96:
 	add r1, r7, #0
 	bl StringExpandPlaceholders
 	add r0, r7, #0
-	bl StringCountLines
+	bl String_CountLines
 	mov r5, #0
 	str r0, [sp, #0x14]
 	cmp r0, #0
@@ -20606,7 +20606,7 @@ _02235D48:
 	add r0, r4, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl StringGetLineN
+	bl String_GetLineN
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
@@ -20634,13 +20634,13 @@ _02235D84:
 	ldr r0, [sp, #0x20]
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x18]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 _02235DA2:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
@@ -20669,7 +20669,7 @@ ov40_02235DAC: ; 0x02235DAC
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Save_Pokedex_get
+	bl Save_Pokedex_Get
 	str r0, [sp]
 	add r7, r6, #0
 	cmp r6, r4
@@ -20753,7 +20753,7 @@ ov40_02235E34: ; 0x02235E34
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Save_Pokedex_get
+	bl Save_Pokedex_Get
 	str r0, [sp, #4]
 	mov r0, #0x75
 	ldr r7, [sp]
@@ -21069,7 +21069,7 @@ _022360DA:
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x2c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x1c]
 	add r7, r7, #1
 	add r1, r0, #0
@@ -22936,7 +22936,7 @@ _02236F50:
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x18]
-	bl String_dtor
+	bl String_Delete
 	ldrb r1, [r5, #2]
 	ldrb r0, [r5, #3]
 	add r7, r7, #1
@@ -23028,7 +23028,7 @@ ov40_02237030: ; 0x02237030
 	add r0, r5, r6
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -23109,13 +23109,13 @@ ov40_0223707C: ; 0x0223707C
 	add r0, r4, r0
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x10]
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x14]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -23159,7 +23159,7 @@ ov40_02237144: ; 0x02237144
 	add r0, r5, r6
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -23275,7 +23275,7 @@ _02237238:
 	add r0, r4, r7
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x1fc
 	add sp, #0x14
 	pop {r3, r4, r5, r6, r7, pc}
@@ -24371,7 +24371,7 @@ _02237AE6:
 	mul r0, r1
 	add r7, r7, r0
 	ldr r0, [sp, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x18]
 	add r4, #0x10
 	add r0, r0, #1
@@ -24421,7 +24421,7 @@ ov40_02237B7C: ; 0x02237B7C
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, r6
 	bl ScheduleWindowCopyToVram
 	add sp, #0x10
@@ -24483,7 +24483,7 @@ ov40_02237BD4: ; 0x02237BD4
 	add r0, r4, r6
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -24607,7 +24607,7 @@ _02237D16:
 	add r2, r6, #0
 	bl AddTextPrinterParameterized2
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 _02237D3C:
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
@@ -25301,7 +25301,7 @@ _0223831C:
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _0223832C
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _02238350 ; =0x00002E0C
 	str r7, [r5, r0]
 _0223832C:
@@ -25309,7 +25309,7 @@ _0223832C:
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _0223833E
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _02238354 ; =0x00002E10
 	mov r1, #0
 	str r1, [r5, r0]
@@ -27290,7 +27290,7 @@ _02239358:
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x18]
 	add r4, #0x10
 	add r0, r0, #1
@@ -27432,7 +27432,7 @@ _022394B4:
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x20]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x18]
 	add r4, #0x10
 	add r0, r0, #1
@@ -27491,7 +27491,7 @@ _02239558:
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	ldr r1, [r6, r5]
 	bl GameStats_GetCapped
 	pop {r4, r5, r6, pc}
@@ -27561,7 +27561,7 @@ _022395CE:
 	add r0, #0x24
 	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #0x34
 	mov r1, #0
@@ -27595,7 +27595,7 @@ _0223961A:
 	add r0, #0x34
 	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _022397B0 ; =0x0000088C
 	mov r1, #0x6d
 	ldr r0, [r5, r0]
@@ -27736,17 +27736,17 @@ _0223973A:
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x14]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x18]
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	bl MessageFormat_ResetBuffers
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add sp, #0x1fc
 	add sp, #0x30
 	pop {r4, r5, r6, r7, pc}
@@ -28816,7 +28816,7 @@ _0223A096:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0223A0B8
-	bl String_dtor
+	bl String_Delete
 _0223A0B8:
 	ldr r0, _0223A14C ; =0x0000049C
 	add r1, r5, #0
@@ -29054,7 +29054,7 @@ _0223A29A:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0223A2BE
-	bl String_dtor
+	bl String_Delete
 _0223A2BE:
 	ldr r0, _0223A31C ; =0x0000049C
 	add r1, r5, #0
@@ -29391,11 +29391,11 @@ ov40_0223A510: ; 0x0223A510
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	ldr r0, [sp, #0x18]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	b _0223A602
 _0223A58A:
 	cmp r4, #0x66
@@ -29438,11 +29438,11 @@ _0223A58A:
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	ldr r0, [sp, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	b _0223A602
 _0223A5FA:
 	ldr r0, [r5, #0x48]
@@ -29469,7 +29469,7 @@ _0223A602:
 	add r0, r5, r0
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -31014,11 +31014,11 @@ _0223B2BC:
 	add r1, r4, #0
 	bl StringExpandPlaceholders
 	ldr r0, [sp, #0x14]
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 _0223B31A:
 	add r0, sp, #0x18
 	bl InitWindow
@@ -31049,7 +31049,7 @@ _0223B31A:
 	mov r3, #0x6d
 	bl sub_020139D0
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, sp, #0x18
 	bl RemoveWindow
 	add sp, #0x28
@@ -31967,7 +31967,7 @@ ov40_0223BA70: ; 0x0223BA70
 	add r0, r6, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r6, r4, #0
 	add r6, #0x94
 	add r0, r6, #0
@@ -32013,7 +32013,7 @@ ov40_0223BA70: ; 0x0223BA70
 	add r0, r6, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _0223BB70 ; =0x0000202C
 	mov r1, #1
 	str r1, [r4, r0]
@@ -33460,11 +33460,11 @@ ov40_0223C710: ; 0x0223C710
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	ldr r0, [sp, #0x18]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	b _0223C7CE
 _0223C7C4:
 	ldr r0, [r5, #0x48]
@@ -33492,7 +33492,7 @@ _0223C7CE:
 	add r0, r5, r0
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -34084,7 +34084,7 @@ ov40_0223CCBC: ; 0x0223CCBC
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	add sp, #0x10
@@ -34176,7 +34176,7 @@ ov40_0223CD58: ; 0x0223CD58
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	bl ScheduleWindowCopyToVram
 	add r4, #0xa4
@@ -34218,7 +34218,7 @@ ov40_0223CD58: ; 0x0223CD58
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	add sp, #0x14
@@ -35169,7 +35169,7 @@ ov40_0223D544: ; 0x0223D544
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl Save_SysInfo_get
+	bl Save_SysInfo_Get
 	bl Save_SysInfo_GetField4C
 	str r0, [sp]
 	mov r0, #0x6d
@@ -36155,7 +36155,7 @@ _0223DC94:
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x18]
 	ldr r1, [sp, #0x20]
 	add r0, r0, #4
@@ -36232,7 +36232,7 @@ _0223DD38:
 	add r0, r6, r7
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -36289,7 +36289,7 @@ _0223DDB0:
 	add r0, r4, r7
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x1fc
 	add sp, #0x14
 	pop {r3, r4, r5, r6, r7, pc}
@@ -36366,9 +36366,9 @@ _0223DE50:
 	bl StringExpandPlaceholders
 _0223DE78:
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 _0223DE84:
 	mov r1, #0
 	str r1, [sp]
@@ -36386,7 +36386,7 @@ _0223DE84:
 	add r0, r7, r0
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x14]
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -36431,7 +36431,7 @@ _0223DED2:
 	add r0, r5, r6
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -36549,7 +36549,7 @@ _0223DFC6:
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r6, r6, #1
 	add r5, #0x10
 	add r7, r7, #4
@@ -36682,7 +36682,7 @@ ov40_0223E0A4: ; 0x0223E0A4
 	add r0, r4, r6
 	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r6, #0xc0
 	add r0, r4, r6
 	bl InitWindow
@@ -36727,7 +36727,7 @@ ov40_0223E0A4: ; 0x0223E0A4
 	add r0, r4, r6
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _0223E18C ; =0x00000798
 	mov r1, #1
 	str r1, [r4, r0]
@@ -37519,7 +37519,7 @@ _0223E810:
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x2c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x1c]
 	add r7, r7, #1
 	add r1, r0, #0
@@ -37986,7 +37986,7 @@ ov40_0223EBB8: ; 0x0223EBB8
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Save_Pokedex_get
+	bl Save_Pokedex_Get
 	str r0, [sp]
 	add r7, r6, #0
 	cmp r6, r4
@@ -38069,7 +38069,7 @@ ov40_0223EC40: ; 0x0223EC40
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Save_Pokedex_get
+	bl Save_Pokedex_Get
 	str r0, [sp, #4]
 	ldr r0, _0223ED98 ; =0x000004C8
 	mov r1, #0
@@ -42062,11 +42062,11 @@ _02240D70:
 	add r1, r4, #0
 	bl StringExpandPlaceholders
 	ldr r0, [sp, #0x14]
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 _02240DCE:
 	add r0, sp, #0x18
 	bl InitWindow
@@ -42097,7 +42097,7 @@ _02240DCE:
 	mov r3, #0x6d
 	bl sub_020139D0
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, sp, #0x18
 	bl RemoveWindow
 	add sp, #0x28
@@ -42178,11 +42178,11 @@ ov40_02240E28: ; 0x02240E28
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	ldr r0, [sp, #0x18]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	b _02240EE4
 _02240EDA:
 	ldr r0, [r5, #0x48]
@@ -42210,7 +42210,7 @@ _02240EE4:
 	add r0, r5, r0
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -42264,11 +42264,11 @@ ov40_02240F24: ; 0x02240F24
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	ldr r0, [sp, #0x18]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	b _02241014
 _02240F9C:
 	cmp r4, #0x66
@@ -42311,11 +42311,11 @@ _02240F9C:
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	ldr r0, [sp, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	b _02241014
 _0224100C:
 	ldr r0, [r5, #0x48]
@@ -42342,7 +42342,7 @@ _02241014:
 	add r0, r5, r0
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -43577,7 +43577,7 @@ ov40_02241A54: ; 0x02241A54
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, r6
 	bl ScheduleWindowCopyToVram
 	add sp, #0x10
@@ -43672,7 +43672,7 @@ ov40_02241AFC: ; 0x02241AFC
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, r6
 	bl ScheduleWindowCopyToVram
 	add r6, #0x10
@@ -43714,7 +43714,7 @@ ov40_02241AFC: ; 0x02241AFC
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, r6
 	bl ScheduleWindowCopyToVram
 	add sp, #0x14
@@ -46104,19 +46104,19 @@ ov40_02242E4C: ; 0x02242E4C
 	add r0, r5, r0
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x18]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x20]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x28]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x2c]
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	bl MessageFormat_ResetBuffers
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -46180,7 +46180,7 @@ _02243006:
 	bl GF_AssertFail
 _0224300E:
 	ldr r0, [r4, #0x18]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -46956,7 +46956,7 @@ _022435C2:
 	lsl r0, r0, #6
 	ldr r0, [r7, r0]
 	ldr r1, [sp, #4]
-	bl StringCat
+	bl String_Cat
 	mov r0, #0x81
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
@@ -46966,7 +46966,7 @@ _022435C2:
 	blt _02243590
 _022435FC:
 	ldr r0, [sp, #4]
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
 	mov r1, #3
 	bl ov40_0224320C
@@ -48722,11 +48722,11 @@ ov40_022442F0: ; 0x022442F0
 	add r2, r7, #0
 	bl StringExpandPlaceholders
 	ldr r0, [sp, #0x14]
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	b _02244372
 _0224436A:
 	ldr r0, [r5, #0x48]
@@ -48753,7 +48753,7 @@ _02244372:
 	add r0, r5, r0
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -48810,7 +48810,7 @@ ov40_022443B4: ; 0x022443B4
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	bl ScheduleWindowCopyToVram
 	add r4, #0x20
@@ -48852,7 +48852,7 @@ ov40_022443B4: ; 0x022443B4
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	add sp, #0x14
@@ -49465,7 +49465,7 @@ _02244982:
 	b _022449CC
 _0224499E:
 	add r0, r4, #0
-	bl StringSetEmpty
+	bl String_SetEmpty
 	ldr r1, [sp, #0xc]
 	add r0, r4, #0
 	bl CopyU16ArrayToString
@@ -49531,7 +49531,7 @@ _02244A02:
 	add r2, r5, #0
 	bl GetMonData
 	add r0, r4, #0
-	bl StringSetEmpty
+	bl String_SetEmpty
 	add r0, r4, #0
 	add r1, r5, #0
 	bl CopyU16ArrayToString
@@ -49562,9 +49562,9 @@ _02244A5C:
 	blt _022449F2
 _02244A6E:
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	bl FreeToHeap
 	add sp, #0x2c
@@ -49576,7 +49576,7 @@ ov40_02244A84: ; 0x02244A84
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r0, #0
-	bl StringSetEmpty
+	bl String_SetEmpty
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xd

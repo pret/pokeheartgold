@@ -7,8 +7,8 @@
 .public PaletteData_Init
 .public PaletteData_Free
 .public sub_02003F04
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public GfGfxLoader_GXLoadPal
 .public GfGfxLoader_GetCharDataFromOpenNarc
 .public NewMsgDataFromNarc
@@ -16,8 +16,8 @@
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
 .public ReadMsgData_ExpandPlaceholders
-.public MessageFormat_new
-.public MessageFormat_delete
+.public MessageFormat_New
+.public MessageFormat_Delete
 .public BufferPlayersName
 .public BufferIntegerAsString
 .public StringExpandPlaceholders
@@ -68,7 +68,7 @@
 .public sub_02025320
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public GetMonSpriteCharAndPlttNarcIdsEx
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx

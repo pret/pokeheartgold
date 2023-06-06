@@ -122,7 +122,7 @@ BOOL ScrCmd_444(SCRIPTCONTEXT *ctx) {
     u8 numLegendaryPokemonSeen = 0;
     MessageFormat *messageFormat = sub_0204B538(fsys->savedata, numEligiblePokemon, r2, r3, &numLegendaryPokemonSeen);
     ov01_021EF5C8(ctx, messageFormat, baseMessageNum + numLegendaryPokemonSeen, TRUE);
-    MessageFormat_delete(messageFormat);
+    MessageFormat_Delete(messageFormat);
     SetupNativeScript(ctx, ov01_021EF348);
     return TRUE;
 }
@@ -289,13 +289,13 @@ static void ovFieldMain_ReadAndExpandMsgDataViaBuffer(MessageBox *messageBox, MS
 
 static void ovFieldMain_GetFormattedECMessage(MessageBox *messageBox, u16 messageBank, u16 messageNum, u16 word1, u16 word2) {
     struct MailMessage mailMessage;
-    MailMsg_init(&mailMessage);
+    MailMsg_Init(&mailMessage);
     MailMsg_SetMsgBankAndNum(&mailMessage, messageBank, messageNum);
     MailMsg_SetFieldI(&mailMessage, 0, word1);
     MailMsg_SetFieldI(&mailMessage, 1, word2);
     STRING *string = MailMsg_GetExpandedString(&mailMessage, HEAP_ID_32);
-    StringCopy(messageBox->message, string);
-    String_dtor(string);
+    String_Copy(messageBox->message, string);
+    String_Delete(string);
 }
 
 static void ov01_021EF758(MessageBox *messageBox, FontID fontId, u32 textFrameDelay, BOOL canABSpeedUp, u32 a4) {

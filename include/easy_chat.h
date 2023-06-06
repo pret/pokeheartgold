@@ -22,15 +22,15 @@ struct WallpaperPasswordBank {
     u32 *words;
 };
 
-SAVE_EASY_CHAT_T *SaveData_EasyChat_get(SAVEDATA *saveData);
+SAVE_EASY_CHAT_T *SaveData_EasyChat_Get(SAVEDATA *saveData);
 u16 GetECWordIndexByPair(u32 msgBank, u32 word);
 u16 EasyChat_GetMsgBankForGroup(int category);
 void GetECWordIntoStringByIndex(u16 ecWord, STRING *dest);
-void EasyChatManager_delete(ECMAN *ecMan);
+void EasyChatManager_Delete(ECMAN *ecMan);
 void EasyChatManager_ReadWordIntoString(ECMAN *ecMan, u16 ecWord, STRING *dest);
 BOOL GetCategoryAndMsgNoByECWordIdx(u16 ecWord, u32 *category, u32 *msgno);
 u32 Save_EasyChat_sizeof(void);
-void Save_EasyChat_init(SAVE_EASY_CHAT_T *ec);
+void Save_EasyChat_Init(SAVE_EASY_CHAT_T *ec);
 BOOL SaveEasyChat_GetTrendySayingFlag(SAVE_EASY_CHAT_T *ec, int flag);
 u32 SaveEasyChat_RandomTrendySayingSet(SAVE_EASY_CHAT_T *ec);
 BOOL SaveEasyChat_TrendySayingsUnlockedAllCheck(SAVE_EASY_CHAT_T *ec);
@@ -43,7 +43,7 @@ ECWORD WallpaperPasswordBank_GetWordI(struct WallpaperPasswordBank *pwdBank, int
 s16 WallpaperPasswordBank_GetIndexOfWord(struct WallpaperPasswordBank *unk, int value);
 s32 GetDuplicateWordNum(ECWORD a0);
 ECWORD RemapDuplicateWord(ECWORD a0, s32 a1);
-ECMAN *EasyChatManager_new(HeapID heapId);
+ECMAN *EasyChatManager_New(HeapID heapId);
 struct WallpaperPasswordBank *WallpaperPasswordBank_Create(HeapID heapId);
 
 #endif //POKEHEARTGOLD_EASY_CHAT_H

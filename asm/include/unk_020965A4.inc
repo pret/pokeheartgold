@@ -2,13 +2,13 @@
 #pragma once
 .public UnloadOverlayByID
 .public HandleLoadOverlay
-.public OverlayManager_new
-.public OverlayManager_delete
+.public OverlayManager_New
+.public OverlayManager_Delete
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public OverlayManager_run
+.public OverlayManager_Run
 .public FreeToHeap
 .public GF_AssertFail
 .public sub_02096808

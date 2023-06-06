@@ -24,13 +24,13 @@
 .public DestroyMsgData
 .public NewString_ReadMsgData
 .public ReadMsgData_ExpandPlaceholders
-.public MessageFormat_new
-.public MessageFormat_delete
+.public MessageFormat_New
+.public MessageFormat_Delete
 .public BufferString
 .public BufferPlayersName
 .public MailMsg_GetExpandedString
 .public MailMsg_IsInit
-.public MailMsg_compare
+.public MailMsg_Compare
 .public SetKeyRepeatTimers
 .public FreeToHeap
 .public InitBgFromTemplate
@@ -63,7 +63,7 @@
 .public sub_02025364
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public CopyU16ArrayToString
 .public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetNamePtr

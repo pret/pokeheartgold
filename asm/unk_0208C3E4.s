@@ -212,7 +212,7 @@ _0208C548:
 	ldr r1, [r4, r1]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 _0208C55A:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -359,7 +359,7 @@ sub_0208C614: ; 0x0208C614
 	ldr r1, [r5, r1]
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -413,7 +413,7 @@ sub_0208C6B4: ; 0x0208C6B4
 	ldr r1, [r5, r1]
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	b _0208C70A
 _0208C6FA:
 	mov r2, #0x7a
@@ -469,7 +469,7 @@ sub_0208C73C: ; 0x0208C73C
 	lsl r2, r2, #4
 	ldr r0, [r1, r3]
 	ldr r1, [r1, r2]
-	bl StringCompare
+	bl String_Compare
 	cmp r0, #0
 	bne _0208C774
 	mov r0, #1
@@ -644,7 +644,7 @@ sub_0208C87C: ; 0x0208C87C
 	ldr r1, [r5, r1]
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -1671,7 +1671,7 @@ _0208D110:
 	add r0, #0x70
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 _0208D170:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1920,7 +1920,7 @@ sub_0208D178: ; 0x0208D178
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0x89
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]

@@ -300,7 +300,7 @@ ov48_02258A80: ; 0x02258A80
 	mov r0, #0x62
 	add r1, r2, #0
 	str r2, [sp, #0x10]
-	bl NARC_ctor
+	bl NARC_New
 	mov r2, #0
 	str r2, [r5]
 	str r2, [sp]
@@ -411,7 +411,7 @@ _02258B64:
 	blt _02258B00
 _02258B72:
 	ldr r0, [sp, #0x24]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov48_02258A80
@@ -1613,7 +1613,7 @@ ov48_02259464: ; 0x02259464
 	add r6, r1, #0
 	mov r0, #0xc0
 	add r1, r4, #0
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x51
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -1644,7 +1644,7 @@ ov48_022594A8: ; 0x022594A8
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	bl GF_DestroyVramTransferManager
 	add r0, r4, #0
 	bl ov48_02259650
@@ -3048,7 +3048,7 @@ ov48_02259F14: ; 0x02259F14
 	bl sub_020200A0
 _02259F30:
 	ldr r0, [r4, #0xc]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x20]
 	bl sub_02016624
 	add r4, #0x10
@@ -5413,7 +5413,7 @@ ov48_0225B068: ; 0x0225B068
 	mov r0, #8
 	mov r1, #0x40
 	add r2, r4, #0
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r5, #4]
 	mov r0, #0x80
 	add r1, r4, #0
@@ -5435,11 +5435,11 @@ ov48_0225B0A4: ; 0x0225B0A4
 	ldr r0, [r4]
 	bl DestroyMsgData
 	ldr r0, [r4, #4]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #8]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0xc]
-	bl String_dtor
+	bl String_Delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov48_0225B0A4

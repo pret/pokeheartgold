@@ -471,7 +471,7 @@ ov104_021E5CC8: ; 0x021E5CC8
 	str r0, [sp]
 	mov r0, #0xeb
 	mov r1, #0x95
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #8]
 	mov r1, #0x52
 	ldr r0, [sp]
@@ -656,7 +656,7 @@ _021E5DEA:
 	cmp r0, #3
 	blo _021E5D76
 	ldr r0, [sp, #8]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

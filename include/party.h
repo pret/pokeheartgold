@@ -5,8 +5,8 @@
 
 u32 SaveArray_Party_sizeof(void);
 u32 PartyCore_sizeof(void);
-PARTY * SaveArray_Party_alloc(HeapID heapId);
-void SaveArray_Party_init(PARTY *party);
+PARTY * SaveArray_Party_Alloc(HeapID heapId);
+void SaveArray_Party_Init(PARTY *party);
 void InitPartyWithMaxSize(PARTY *party, int maxSize);
 BOOL AddMonToParty(PARTY *party, const Pokemon *mon);
 BOOL RemoveMonFromParty(PARTY *party, int slot);
@@ -18,8 +18,8 @@ void Party_SetUnkSubSlot(PARTY *party, const PARTY_EXTRA_SUB *src, int slot);
 void Party_ResetUnkSubSlot(PARTY *party, int slot);
 void Party_SafeCopyMonToSlot_ResetUnkSub(PARTY *party, int slot, Pokemon *src);
 BOOL Party_SwapSlots(PARTY *party, int slotA, int slotB);
-void Party_copy(const PARTY *src, PARTY *dest);
+void Party_Copy(const PARTY *src, PARTY *dest);
 BOOL PartyHasMon(PARTY *party, u16 species);
-PARTY *SaveArray_PlayerParty_get(SAVEDATA *saveData);
+PARTY *SaveArray_PlayerParty_Get(SAVEDATA *saveData);
 
 #endif //GUARD_PARTY_H

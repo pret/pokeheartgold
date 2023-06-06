@@ -14,8 +14,8 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public GfGfxLoader_GetCharData
 .public GfGfxLoader_GetPlttData
 .public GfGfxLoader_LoadCharDataFromOpenNarc
@@ -44,9 +44,9 @@
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
 .public ReadMsgData_ExpandPlaceholders
-.public MessageFormat_new
-.public MessageFormat_new_custom
-.public MessageFormat_delete
+.public MessageFormat_New
+.public MessageFormat_New_Custom
+.public MessageFormat_Delete
 .public BufferPlayersName
 .public BufferIntegerAsString
 .public StringExpandPlaceholders
@@ -58,7 +58,7 @@
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
-.public WaitingIcon_new
+.public WaitingIcon_New
 .public sub_0200F450
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
@@ -125,7 +125,7 @@
 .public System_GetTouchHeld
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public String16_FormatInteger
 .public sub_020270C4
 .public Save_PrepareForAsyncWrite
@@ -145,8 +145,8 @@
 .public sub_0202B994
 .public sub_0202B9B8
 .public sub_0202BF80
-.public Save_DressupData_get
-.public Save_FriendGroup_get
+.public Save_DressupData_Get
+.public Save_FriendGroup_Get
 .public sub_0202C8C4
 .public sub_0202C8E4
 .public GameStats_AddSpecial

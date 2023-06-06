@@ -402,11 +402,11 @@ _02237BDE:
 	bl MIi_CpuClear16
 	mov r0, #7
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	mov r0, #8
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ov12_0223BFC0
@@ -458,9 +458,9 @@ _02237BDE:
 	add r0, r4, #0
 	bl ov12_02266644
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #1
 	bl sub_020027F0
 	add r0, r5, #0
@@ -783,7 +783,7 @@ ov12_02237F18: ; 0x02237F18
 	mov r1, #2
 	mov r2, #0xf
 	mov r3, #5
-	bl MessagePrinter_new
+	bl MessagePrinter_New
 	mov r1, #0x6a
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -844,11 +844,11 @@ _02237FD8:
 	bl GF_CreateVramTransferManager
 	mov r0, #7
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r5, r0, #0
 	mov r0, #8
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ov12_0223BFC0
@@ -868,9 +868,9 @@ _02237FD8:
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	add r0, r5, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r1, [r4, #4]
 	add r0, r4, #0
 	bl ov12_022387AC
@@ -951,11 +951,11 @@ _02237FD8:
 	bl ov12_02266390
 	mov r0, #7
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	mov r0, #8
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r5, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -973,9 +973,9 @@ _02237FD8:
 	add r0, r5, #0
 	bl ov12_02266644
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r5, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #5
 	bl sub_02007FD4
 	add r1, r4, #0
@@ -1013,7 +1013,7 @@ _02237FD8:
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0x10]
 	mov r0, #5
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x14]
 	mov r0, #5
 	lsl r0, r0, #6
@@ -1394,14 +1394,14 @@ _022384CE:
 _022384D6:
 	ldr r0, [r5, #0x68]
 	ldr r1, [r6, #4]
-	bl Party_copy
+	bl Party_Copy
 	ldr r0, [r5, #0x68]
 	bl FreeToHeap
 	add r1, r6, #0
 	add r1, #0xf8
 	ldr r0, [r5, #0x48]
 	ldr r1, [r1]
-	bl PlayerProfile_copy
+	bl PlayerProfile_Copy
 	ldr r0, [r5, #0x48]
 	bl FreeToHeap
 	ldr r0, [sp]
@@ -1426,7 +1426,7 @@ _022384D6:
 	lsl r1, r1, #4
 	ldr r0, [r4, #0x60]
 	ldr r1, [r7, r1]
-	bl Pokedex_copy
+	bl Pokedex_Copy
 	ldr r0, [r4, #0x60]
 	bl FreeToHeap
 	mov r0, #0x45
@@ -1568,7 +1568,7 @@ _0223861E:
 	ldr r0, [r4, #0x10]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x14]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0x72
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1616,7 +1616,7 @@ _022386C0:
 	bl sub_02002B8C
 	ldr r0, [r4, #8]
 	mov r1, #3
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	ldr r0, [r4, #4]
 	bl FreeToHeap
 	mov r0, #0x22
@@ -1630,7 +1630,7 @@ _022386C0:
 	mov r0, #0x6a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl MessagePrinter_delete
+	bl MessagePrinter_Delete
 	ldr r0, [r4, #0x1c]
 	bl DestroySysTask
 	ldr r0, [r4, #0x20]
@@ -2026,13 +2026,13 @@ ov12_02238A68: ; 0x02238A68
 	add r5, r1, #0
 _02238A7A:
 	mov r0, #5
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	add r1, r0, #0
 	add r0, r5, #0
 	str r1, [r6, #0x48]
 	add r0, #0xf8
 	ldr r0, [r0]
-	bl PlayerProfile_copy
+	bl PlayerProfile_Copy
 	mov r0, #0x46
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -2092,14 +2092,14 @@ _02238AB8:
 	ldr r1, [r4, #0x58]
 	bl BagCopy
 	mov r0, #5
-	bl Pokedex_new
+	bl Pokedex_New
 	str r0, [r4, #0x60]
 	mov r1, #0x11
 	ldr r0, [sp, #4]
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
 	ldr r1, [r4, #0x60]
-	bl Pokedex_copy
+	bl Pokedex_Copy
 	mov r1, #0x45
 	lsl r1, r1, #2
 	ldr r0, [sp, #4]
@@ -2306,7 +2306,7 @@ _02238C7E:
 	add r6, r4, #0
 _02238CB2:
 	mov r0, #5
-	bl SaveArray_Party_alloc
+	bl SaveArray_Party_Alloc
 	str r0, [r6, #0x68]
 	ldr r0, [sp, #4]
 	add r6, r6, #4
@@ -2408,7 +2408,7 @@ _02238D86:
 	ldr r0, [sp, #4]
 	ldr r1, [r5, #0x68]
 	ldr r0, [r0, #4]
-	bl Party_copy
+	bl Party_Copy
 	ldr r0, [sp, #4]
 	add r6, r6, #1
 	add r0, r0, #4
@@ -2516,7 +2516,7 @@ _02238E68:
 	ldr r0, [sp, #4]
 	ldr r1, [r5, #0x68]
 	ldr r0, [r0, #4]
-	bl Party_copy
+	bl Party_Copy
 	ldr r0, [sp, #4]
 	add r6, r6, #1
 	add r0, r0, #4
@@ -2619,7 +2619,7 @@ _02238F42:
 	ldr r0, [sp, #4]
 	ldr r1, [r5, #0x68]
 	ldr r0, [r0, #4]
-	bl Party_copy
+	bl Party_Copy
 	ldr r0, [sp, #4]
 	add r6, r6, #1
 	add r0, r0, #4
@@ -2749,7 +2749,7 @@ _02239050:
 	ldr r0, [sp, #4]
 	ldr r1, [r7, #0x68]
 	ldr r0, [r0, #4]
-	bl Party_copy
+	bl Party_Copy
 	ldr r0, [r7, #0x68]
 	mov r5, #0
 	bl GetPartyCount
@@ -2844,7 +2844,7 @@ _0223911A:
 	ldr r0, [sp, #4]
 	ldr r1, [r5, #0x68]
 	ldr r0, [r0, #4]
-	bl Party_copy
+	bl Party_Copy
 	ldr r0, [sp, #4]
 	add r6, r6, #1
 	add r0, r0, #4
@@ -2971,7 +2971,7 @@ _02239220:
 	ldr r0, [sp, #4]
 	ldr r1, [r5, #0x68]
 	ldr r0, [r0, #4]
-	bl Party_copy
+	bl Party_Copy
 	ldr r0, [sp, #4]
 	add r6, r6, #1
 	add r0, r0, #4
@@ -3074,7 +3074,7 @@ _022392F2:
 	ldr r0, [sp, #4]
 	ldr r1, [r5, #0x68]
 	ldr r0, [r0, #4]
-	bl Party_copy
+	bl Party_Copy
 	ldr r0, [sp, #4]
 	add r6, r6, #1
 	add r0, r0, #4
@@ -3207,7 +3207,7 @@ _02239408:
 	ldr r0, [sp, #4]
 	ldr r1, [r7, #0x68]
 	ldr r0, [r0, #4]
-	bl Party_copy
+	bl Party_Copy
 	ldr r0, [r7, #0x68]
 	mov r5, #0
 	bl GetPartyCount
@@ -4152,7 +4152,7 @@ _02239A46:
 	add r2, r6, #0
 	bl AddTextPrinterParameterized
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl DestroyMsgData
 	ldr r0, _02239C1C ; =ov12_022397E4
@@ -4169,7 +4169,7 @@ _02239A46:
 	bl sub_02003370
 	ldr r0, [r5, #8]
 	mov r1, #1
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	ldr r1, _02239C24 ; =0x00001024
 	str r0, [r5, r1]
 	bl ov12_0223A7A0
@@ -4750,7 +4750,7 @@ ov12_0223A088: ; 0x0223A088
 	bl PaletteData_Free
 	ldr r0, [r4, #8]
 	mov r1, #1
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	mov r0, #2
 	mov r1, #0
 	bl GX_EngineAToggleLayers

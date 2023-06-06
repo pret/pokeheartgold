@@ -25,11 +25,11 @@ BOOL ChatotSoundMain(void) {
     return FALSE;
 }
 
-BOOL Chatot_checkCry(SOUND_CHATOT *a0) {
+BOOL Chatot_CheckCry(SOUND_CHATOT *a0) {
     u8 *r5 = GF_SdatGetAttrPtr(31);
     u8 *r4 = GF_SdatGetAttrPtr(54);
 
-    if (!Chatot_exists(a0)) {
+    if (!Chatot_Exists(a0)) {
         return FALSE;
     }
 
@@ -48,7 +48,7 @@ BOOL sub_02006D04(SOUND_CHATOT *a0, u32 a1, s32 a2, s32 a3) {
     s8 *sp0 = sub_020059D8();
     s8 *sp4 = GF_SdatGetAttrPtr(30);
 
-    if (!Chatot_checkCry(a0)) {
+    if (!Chatot_CheckCry(a0)) {
         return FALSE;
     }
 
@@ -92,7 +92,7 @@ void sub_02006DB8() {
     *r4 = 0;
 }
 
-BOOL Chatot_startRecording(void) {
+BOOL Chatot_StartRecording(void) {
     MICAutoParam st0;
 
     st0.type = MIC_SAMPLING_TYPE_SIGNED_8BIT;
@@ -109,11 +109,11 @@ BOOL Chatot_startRecording(void) {
     return GF_MIC_StartAutoSampling(&st0);
 }
 
-void Chatot_stopRecording() {
+void Chatot_StopRecording() {
     GF_MIC_StopAutoSampling();
 }
 
-void Chatot_saveRecording(SOUND_CHATOT *a0) {
+void Chatot_SaveRecording(SOUND_CHATOT *a0) {
     Chatot_Encode(a0, sub_020059D8());
 }
 
@@ -158,7 +158,7 @@ BOOL sub_02006EA0(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3, u8 a4) {
 }
 
 u32 sub_02006EFC(SOUND_CHATOT *chatot) {
-    if (!Chatot_exists(chatot)) {
+    if (!Chatot_Exists(chatot)) {
         return 0;
     }
 

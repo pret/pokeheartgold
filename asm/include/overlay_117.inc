@@ -7,8 +7,8 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
-.public MessageFormat_new
-.public MessageFormat_delete
+.public MessageFormat_New
+.public MessageFormat_Delete
 .public BufferTrainerName
 .public StringExpandPlaceholders
 .public BeginNormalPaletteFade
@@ -40,7 +40,7 @@
 .public sub_02024A04
 .public sub_02024B78
 .public String_New
-.public String_dtor
+.public String_Delete
 .public G2x_SetBlendAlpha_
 .public memset
 .public _s32_div_f

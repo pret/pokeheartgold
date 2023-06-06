@@ -129,7 +129,7 @@ _02246A44:
 	ldr r0, _02246AF4 ; =ov75_02249904 + 8
 	ldr r0, [r0, r2]
 	mov r2, #0x73
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4]
 	add r0, r4, #0
 	add r0, #0x88
@@ -145,7 +145,7 @@ _02246A44:
 	b _02246ADE
 _02246A82:
 	ldr r0, [r4]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #1
 	bne _02246ADE
 	add r1, r4, #0
@@ -157,7 +157,7 @@ _02246A82:
 	ldr r1, [r1, r2]
 	blx r1
 	ldr r0, [r4]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
@@ -214,11 +214,11 @@ ov75_02246B00: ; 0x02246B00
 	mov r0, #0x45
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x11
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x73
@@ -569,7 +569,7 @@ _02246D5E:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	ldr r1, [r4, #0x1c]
-	bl StringCompare
+	bl String_Compare
 	cmp r0, #0
 	beq _02246D82
 	add r0, r5, #0
@@ -586,7 +586,7 @@ _02246D8C:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	ldr r1, [r4, #0x1c]
-	bl StringCopy
+	bl String_Copy
 	add r0, r5, #0
 	mov r1, #2
 	bl ov75_02246CF0
@@ -764,7 +764,7 @@ ov75_02246EDC: ; 0x02246EDC
 	cmp r0, #0
 	beq _02246EF4
 	ldr r0, [r4, #4]
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	bl SetFlag970
 _02246EF4:
 	add r0, r4, #0
@@ -845,7 +845,7 @@ ov75_02246F0C: ; 0x02246F0C
 	mov r0, #0xb
 	mov r1, #0x40
 	mov r2, #0x74
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r5, #0x20]
 	ldr r2, _02247104 ; =0x00000307
 	mov r0, #0
@@ -1084,13 +1084,13 @@ _022471A4:
 	ldr r0, [r4, #0x24]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x20]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x3c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x40]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x38]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl ov75_02247838
 	ldr r0, [r4, #4]
@@ -1370,7 +1370,7 @@ ov75_02247450: ; 0x02247450
 	mov r1, #0x74
 	str r0, [sp, #0x30]
 	mov r0, #0x58
-	bl NARC_ctor
+	bl NARC_New
 	mov r2, #0
 	str r2, [sp]
 	mov r1, #0x74
@@ -1622,10 +1622,10 @@ _02247636:
 	str r0, [r1]
 	ldr r0, [sp, #0x2c]
 	str r1, [sp, #0x10]
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #0xc7
 	mov r1, #0x74
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #8
 	mov r1, #0
@@ -1662,7 +1662,7 @@ _02247636:
 	add r3, #0xac
 	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x40
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1874,7 +1874,7 @@ ov75_0224785C: ; 0x0224785C
 	add r0, r4, #0
 	add r0, #0x48
 	mov r1, #1
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	add r4, #0x8c
 	str r0, [r4]
 _02247876:
@@ -1995,7 +1995,7 @@ _02247912:
 	bl AddWindowParameterized
 	add r0, r7, #0
 	mov r1, #0x74
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	add r1, r5, #0
 	add r1, #0xa0
 	mov r6, #0
@@ -2099,7 +2099,7 @@ _02247A1C:
 	add r0, r5, #0
 	add r0, #0xa0
 	ldr r0, [r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	add r0, r5, #0
 	add r0, #0xa4
 	mov r1, #0
@@ -2418,7 +2418,7 @@ ov75_02247C70: ; 0x02247C70
 	add r3, #0xc
 	bl AddTextPrinterParameterized
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x34]
 	mov r1, #0x2b
 	bl NewString_ReadMsgData
@@ -2437,7 +2437,7 @@ ov75_02247C70: ; 0x02247C70
 	add r3, #0xc
 	bl AddTextPrinterParameterized
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #0xb0
 	ldr r0, [r0]
@@ -2874,7 +2874,7 @@ ov75_02248034: ; 0x02248034
 	mov r1, #0x2c
 	bl NewString_ReadMsgData
 	str r0, [sp, #0xc]
-	bl StringGetLength
+	bl String_GetLength
 	mov r1, #0x74
 	bl String_New
 	add r6, r0, #0
@@ -2893,7 +2893,7 @@ _0224806E:
 	ldr r1, [sp, #0xc]
 	add r0, r6, #0
 	add r2, r4, #0
-	bl StringGetLineN
+	bl String_GetLineN
 	str r5, [sp]
 	mov r0, #0xff
 	str r0, [sp, #4]
@@ -2914,9 +2914,9 @@ _0224806E:
 	blt _0224806E
 _0224809E:
 	ldr r0, [sp, #0xc]
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r7, #0xc4
 	add r0, r7, #0
 	bl CopyWindowToVram
@@ -2949,7 +2949,7 @@ _022480D6:
 	mov r1, #0x2c
 	bl NewString_ReadMsgData
 	str r0, [sp, #0x14]
-	bl StringCountLines
+	bl String_CountLines
 	add r1, r5, #0
 	mov r2, #0
 	add r1, #0xac
@@ -3001,7 +3001,7 @@ _022480D6:
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
 	ldr r0, [sp, #0x14]
-	bl StringGetLength
+	bl String_GetLength
 	mov r1, #0x74
 	bl String_New
 	add r7, r0, #0
@@ -3015,7 +3015,7 @@ _02248168:
 	ldr r1, [sp, #0x14]
 	add r0, r7, #0
 	add r2, r6, #0
-	bl StringGetLineN
+	bl String_GetLineN
 	str r4, [sp]
 	mov r0, #0xff
 	str r0, [sp, #4]
@@ -3031,9 +3031,9 @@ _02248168:
 	cmp r6, #6
 	blt _02248168
 	ldr r0, [sp, #0x14]
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	add r0, #0xc4
 	mov r1, #1
@@ -4060,7 +4060,7 @@ ov75_02248994: ; 0x02248994
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #4]
-	bl Save_SysInfo_get
+	bl Save_SysInfo_Get
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_0202C08C
@@ -5572,7 +5572,7 @@ ov75_022494CC: ; 0x022494CC
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	add r0, #0x48
 	mov r1, #0xf
@@ -5866,7 +5866,7 @@ ov75_022496B8: ; 0x022496B8
 	mov r0, #0xff
 	str r0, [r5, #0x44]
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0

@@ -18,11 +18,11 @@
 #include "msgdata/msg/msg_0274.h"
 #include "msgdata/msg/msg_0191.h"
 
-MessageFormat *MessageFormat_new(HeapID heapId) {
-    return MessageFormat_new_custom(8, 32, heapId);
+MessageFormat *MessageFormat_New(HeapID heapId) {
+    return MessageFormat_New_Custom(8, 32, heapId);
 }
 
-MessageFormat *MessageFormat_new_custom(u32 nstr, u32 len, HeapID heapId) {
+MessageFormat *MessageFormat_New_Custom(u32 nstr, u32 len, HeapID heapId) {
     MessageFormat *ret;
     int i;
 
@@ -53,7 +53,7 @@ MessageFormat *MessageFormat_new_custom(u32 nstr, u32 len, HeapID heapId) {
     return NULL;
 }
 
-void MessageFormat_delete(MessageFormat *messageFormat) {
+void MessageFormat_Delete(MessageFormat *messageFormat) {
     s32 i;
     GF_ASSERT(messageFormat->count != 0);
     if (messageFormat->fields != NULL) {
@@ -61,12 +61,12 @@ void MessageFormat_delete(MessageFormat *messageFormat) {
             if (messageFormat->fields[i].msg == NULL) {
                 break;
             }
-            String_dtor(messageFormat->fields[i].msg);
+            String_Delete(messageFormat->fields[i].msg);
         }
         FreeToHeap(messageFormat->fields);
     }
     if (messageFormat->buffer != NULL) {
-        String_dtor(messageFormat->buffer);
+        String_Delete(messageFormat->buffer);
     }
     messageFormat->count = 0;
     FreeToHeap(messageFormat);
@@ -82,7 +82,7 @@ void SetStringAsPlaceholder(MessageFormat *msgFmt, u32 fieldno, const STRING *st
         if (attrs != NULL) {
             msgFmt->fields[fieldno].attrs = *attrs;
         }
-        StringCopy(msgFmt->fields[fieldno].msg, string);
+        String_Copy(msgFmt->fields[fieldno].msg, string);
     }
 }
 
@@ -97,7 +97,7 @@ void BufferPlayersName(MessageFormat *msgFmt, u32 fieldno, PLAYERPROFILE *player
 }
 
 void BufferRivalsName(MessageFormat *msgFmt, u32 fieldno, SAVEDATA *saveData) {
-    CopyU16ArrayToString(msgFmt->buffer, Save_Misc_RivalName_const_get(Save_Misc_const_get(saveData)));
+    CopyU16ArrayToString(msgFmt->buffer, Save_Misc_RivalName_Const_Get(Save_Misc_Const_Get(saveData)));
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }
 
@@ -340,7 +340,7 @@ void BufferGenderSymbol(MessageFormat *msgFmt, u32 fieldno, u8 gender) {
         ReadMsgDataIntoString(msgData, msg_0040_00056, msgFmt->buffer);
         break;
     default:
-        StringSetEmpty(msgFmt->buffer);
+        String_SetEmpty(msgFmt->buffer);
         break;
     }
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
@@ -459,13 +459,13 @@ void BufferContestBackgroundName(MessageFormat *msgFmt, u32 fieldno, u32 bgId) {
 }
 
 void BufferGroupName(MessageFormat *msgFmt, SAVEDATA *saveData, s32 groupId, s32 fieldno, s32 nameType) {
-    SAV_FRIEND_GRP *friendGrp = Save_FriendGroup_get(saveData);
+    SAV_FRIEND_GRP *friendGrp = Save_FriendGroup_Get(saveData);
     u8 sp10 = sub_0202C830(friendGrp, groupId);
     u8 r7 = sub_0202C83C(friendGrp, groupId);
     STRING *dest = String_New(64, HEAP_ID_4);
     CopyU16ArrayToString(dest, sub_0202C7E0(friendGrp, groupId, nameType));
     BufferString(msgFmt, fieldno, dest, sp10, 1, r7);
-    String_dtor(dest);
+    String_Delete(dest);
 }
 
 void BufferWiFiPlazaActivityName(MessageFormat *msgFmt, u32 fieldno, u32 activityId) {
@@ -630,7 +630,7 @@ void BufferMonthNameAbbr(MessageFormat *msgFmt, u32 fieldno, u32 month) {
 }
 
 void MessageFormat_UpperFirstChar(MessageFormat *msgFmt, u32 fieldno) {
-    StrUpperCharN(msgFmt->fields[fieldno].msg, 0);
+    String_UpperCharN(msgFmt->fields[fieldno].msg, 0);
 }
 
 void BufferDeptStoreFloorNo(MessageFormat *msgFmt, u32 fieldno, u32 floor) {
@@ -650,30 +650,30 @@ void BufferDeptStoreFloorNo(MessageFormat *msgFmt, u32 fieldno, u32 floor) {
 }
 
 void StringExpandPlaceholders(MessageFormat * msgFmt, STRING * dest, STRING * src) {
-    const u16 * cstr = String_c_str(src);
-    StringSetEmpty(dest);
+    const u16 * cstr = String_cstr(src);
+    String_SetEmpty(dest);
     while (*cstr != EOS) {
         if (*cstr == EXT_CTRL_CODE_BEGIN) {
             if (MsgArray_ControlCodeIsStrVar(cstr)) {
                 u32 idx = MsgArray_ControlCodeGetField(cstr, 0);
                 GF_ASSERT(idx < msgFmt->count);
-                StringCat_HandleTrainerName(dest, msgFmt->fields[idx].msg);
+                String_Cat_HandleTrainerName(dest, msgFmt->fields[idx].msg);
                 cstr = MsgArray_SkipControlCode(cstr);
             } else {
                 const u16 * before = cstr;
                 cstr = MsgArray_SkipControlCode(cstr);
                 while (before < cstr) {
-                    StrAddChar(dest, *before++);
+                    String_AddChar(dest, *before++);
                 }
             }
         } else {
-            StrAddChar(dest, *cstr++);
+            String_AddChar(dest, *cstr++);
         }
     }
 }
 
 void MessageFormat_ResetBuffers(MessageFormat * msgFmt) {
     for (int i = 0; i < msgFmt->count; i++) {
-        StringSetEmpty(msgFmt->fields[i].msg);
+        String_SetEmpty(msgFmt->fields[i].msg);
     }
 }

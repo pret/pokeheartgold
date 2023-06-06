@@ -56,7 +56,7 @@ ov39_02227088: ; 0x02227088
 	mov r2, #0x14
 	bl CopyStringToU16Array
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	mov r4, #0
 	str r7, [sp, #0xc]
 	str r7, [sp, #8]
@@ -293,7 +293,7 @@ _0222722C:
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [r4, #4]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0xfe
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -345,11 +345,11 @@ ov39_022272EC: ; 0x022272EC
 	str r1, [r4, r0]
 	add r0, #0x38
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0xfe
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0xfd
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1789,7 +1789,7 @@ _02227D6E:
 	add r2, r5, #0
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0xff
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
@@ -2430,7 +2430,7 @@ ov39_02228140: ; 0x02228140
 	mov r0, #0xb
 	mov r1, #0x40
 	mov r2, #0x7c
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r5, #0x20]
 	ldr r2, _022282F8 ; =0x00000307
 	mov r0, #0
@@ -2636,13 +2636,13 @@ _02228394:
 	ldr r0, [r4, #0x24]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x20]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x38]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x3c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x34]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl ov39_02228948
 	ldr r0, [r4, #4]
@@ -2879,7 +2879,7 @@ ov39_022285CC: ; 0x022285CC
 	ldr r4, [r0, #4]
 	mov r0, #0x58
 	mov r1, #0x7c
-	bl NARC_ctor
+	bl NARC_New
 	mov r2, #0
 	str r2, [sp]
 	mov r1, #0x7c
@@ -3125,7 +3125,7 @@ _022287A2:
 	str r0, [r1]
 	ldr r0, [sp, #0x2c]
 	str r1, [sp, #0x10]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -3419,7 +3419,7 @@ ov39_022289D0: ; 0x022289D0
 	mov r0, #0xff
 	str r0, [r5, #0x40]
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -3487,7 +3487,7 @@ ov39_02228A8C: ; 0x02228A8C
 	add r0, r4, #0
 	add r0, #0x44
 	mov r1, #1
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	add r4, #0x88
 	str r0, [r4]
 _02228AA6:
@@ -3561,7 +3561,7 @@ ov39_02228B04: ; 0x02228B04
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	add r0, #0x44
 	mov r1, #0xf
@@ -4004,7 +4004,7 @@ ov39_02228E54: ; 0x02228E54
 	ldr r0, [r5]
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
-	bl Save_SysInfo_get
+	bl Save_SysInfo_Get
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_0202C08C

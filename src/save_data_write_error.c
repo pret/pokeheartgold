@@ -116,7 +116,7 @@ void ShowSaveDataWriteError(HeapID heap_id, int code) {
 
     ReadMsgDataIntoString(error_msgdata, msg_no, error_str);
     AddTextPrinterParameterized(&window, 0, error_str, 0, 0, 0, NULL);
-    String_dtor(error_str);
+    String_Delete(error_str);
 
     GX_BothDispOn();
     SetMasterBrightnessNeutral(PM_LCD_TOP);

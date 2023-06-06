@@ -1316,7 +1316,7 @@ _02085FC0:
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	add r1, r7, #0
-	bl StringCat
+	bl String_Cat
 	mov r0, #0x2d
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
@@ -1326,7 +1326,7 @@ _02085FC0:
 	blt _02085FA8
 _02085FEC:
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	mov r1, #3
 	bl sub_02085808

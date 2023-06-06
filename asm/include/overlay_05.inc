@@ -15,8 +15,8 @@
 .public PlaySE
 .public sub_02007200
 .public sub_02007234
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public NARC_AllocAndReadWholeMember
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
@@ -25,12 +25,12 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
-.public MessageFormat_new
-.public MessageFormat_delete
+.public MessageFormat_New
+.public MessageFormat_Delete
 .public BufferBoxMonNickname
 .public StringExpandPlaceholders
-.public MessagePrinter_new
-.public MessagePrinter_delete
+.public MessagePrinter_New
+.public MessagePrinter_Delete
 .public sub_0200CDAC
 .public PrintUIntOnWindow
 .public sub_0200CE7C
@@ -60,7 +60,7 @@
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
-.public WaitingIcon_new
+.public WaitingIcon_New
 .public sub_0200F450
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
@@ -124,7 +124,7 @@
 .public sub_020249B0
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Thunk_G3X_Reset
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete

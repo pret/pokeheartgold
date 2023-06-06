@@ -547,7 +547,7 @@ ov117_0225F470: ; 0x0225F470
 	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	add r0, r5, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r4, r0, #0
 	mov r0, #0x80
 	add r1, r5, #0
@@ -572,9 +572,9 @@ ov117_0225F470: ; 0x0225F470
 	add r0, r6, #0
 	bl DestroyMsgData
 	add r0, r4, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov117_0225F470
@@ -816,7 +816,7 @@ _0225F560:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2

@@ -9,8 +9,8 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public GfGfxLoader_GXLoadPalFromOpenNarc
@@ -73,11 +73,11 @@
 .public sub_0202457C
 .public GF_AssertFail
 .public String_New
-.public String_dtor
-.public StringCopy
-.public StringGetLength
-.public StringCountLines
-.public StringGetLineN
+.public String_Delete
+.public String_Copy
+.public String_GetLength
+.public String_CountLines
+.public String_GetLineN
 .public sub_0203A880
 .public NNS_G2dInitOamManagerModule
 .public GX_LoadBGPltt

@@ -412,7 +412,7 @@ ov33_0225D84C: ; 0x0225D84C
 	add r5, r0, #0
 	mov r0, #0xef
 	mov r1, #8
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0xa0
 	str r1, [sp]
 	mov r1, #8
@@ -463,7 +463,7 @@ ov33_0225D84C: ; 0x0225D84C
 	add r0, r6, #0
 	bl FreeToHeap
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -564,7 +564,7 @@ _0225D912:
 	add r0, r4, r6
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x20]
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #1
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10

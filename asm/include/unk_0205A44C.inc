@@ -13,7 +13,7 @@
 .public MailMsg_GetFieldI
 .public MailMsg_GetMsgBank
 .public MailMsg_GetMsgNo
-.public MailMsg_copy
+.public MailMsg_Copy
 .public SaveEasyChat_SetGreetingFlag
 .public FreeToHeap
 .public LCRandom

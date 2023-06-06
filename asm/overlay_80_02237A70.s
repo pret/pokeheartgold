@@ -320,7 +320,7 @@ _02237CC0:
 	mov r1, #1
 	lsl r1, r1, #8
 	ldr r1, [r4, r1]
-	bl PlayerProfile_copy
+	bl PlayerProfile_Copy
 	ldrb r1, [r5, #0x11]
 	add r0, sp, #0x18
 	mov r2, #0xb
@@ -517,7 +517,7 @@ ov80_02237E30: ; 0x02237E30
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x2c]
-	bl SaveArray_Party_init
+	bl SaveArray_Party_Init
 	ldrb r0, [r5, #0x10]
 	mov r1, #1
 	bl ov80_02237B58

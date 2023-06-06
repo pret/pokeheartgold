@@ -22,7 +22,7 @@
 .public DrawFrameAndWindow1
 .public sub_0200E5D4
 .public DrawFrameAndWindow2
-.public ListMenuItems_ctor
+.public ListMenuItems_New
 .public ListMenuItems_AddItem
 .public sub_0201660C
 .public sub_020166FC
@@ -50,7 +50,7 @@
 .public sub_020249D4
 .public sub_02025224
 .public GF_AssertFail
-.public String_dtor
+.public String_Delete
 .public Options_GetTextFrameDelay
 .public GetMonData
 .public Mon_GetBoxMon

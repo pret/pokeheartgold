@@ -12,8 +12,8 @@
 .public sub_02007200
 .public sub_02007234
 .public AllocAndReadWholeNarcMemberByIdPair
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public GfGfxLoader_LoadFromNarc
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
@@ -86,7 +86,7 @@
 .public MonIsShiny
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SaveArray_PlayerParty_get
+.public SaveArray_PlayerParty_Get
 .public NNS_G2dGetImageLocation
 .public NNS_G2dGetImagePaletteLocation
 .public NNS_G3dAnmObjInit

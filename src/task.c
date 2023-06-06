@@ -1,7 +1,7 @@
 #include "task.h"
 #include "unk_0203DFA4.h"
 
-static TaskManager *Task_new(FieldSystem *fsys, TaskFunc taskFunc, void *env) {
+static TaskManager *Task_New(FieldSystem *fsys, TaskFunc taskFunc, void *env) {
     TaskManager *taskman;
 
     taskman = AllocFromHeapAtEnd((HeapID)32, sizeof(TaskManager));
@@ -19,7 +19,7 @@ static TaskManager *Task_new(FieldSystem *fsys, TaskFunc taskFunc, void *env) {
 TaskManager *FieldSys_CreateTask(FieldSystem *fsys, TaskFunc taskFunc, void *env) {
     TaskManager *ret;
     GF_ASSERT(fsys->taskman == NULL);
-    ret = Task_new(fsys, taskFunc, env);
+    ret = Task_New(fsys, taskFunc, env);
     fsys->taskman = ret;
     return ret;
 }
@@ -40,7 +40,7 @@ void TaskManager_Jump(TaskManager *taskman, TaskFunc taskFunc, void *env) {
 void TaskManager_Call(TaskManager *taskman, TaskFunc taskFunc, void *env) {
     TaskManager *newman;
 
-    newman = Task_new(taskman->fsys, taskFunc, env);
+    newman = Task_New(taskman->fsys, taskFunc, env);
     newman->prev = taskman;
     taskman->fsys->taskman = newman;
 }

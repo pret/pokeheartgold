@@ -41,7 +41,7 @@
 .public GX_DisableEngineBLayers
 .public GX_BothDispOn
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Save_GetStatusFlags
 .public memset
 .public _02108278

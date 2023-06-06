@@ -50,7 +50,7 @@ ov63_0221BE20: ; 0x0221BE20
 	add r1, #0x84
 	str r0, [r1]
 	mov r0, #0x3e
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r1, r5, #0
 	add r1, #0x88
 	str r0, [r1]
@@ -70,13 +70,13 @@ ov63_0221BE20: ; 0x0221BE20
 	str r0, [r1]
 	mov r0, #0x65
 	mov r1, #0x3e
-	bl NARC_ctor
+	bl NARC_New
 	add r1, r5, #0
 	add r1, #0x94
 	str r0, [r1]
 	mov r0, #0xb4
 	mov r1, #0x3e
-	bl NARC_ctor
+	bl NARC_New
 	add r1, r5, #0
 	add r1, #0x98
 	str r0, [r1]
@@ -126,23 +126,23 @@ ov63_0221BF28: ; 0x0221BF28
 	add r0, r4, #0
 	add r0, #0x98
 	ldr r0, [r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #0
 	add r0, #0x94
 	ldr r0, [r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #0x90
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r4, #0x84
 	ldr r0, [r4]
 	bl DestroyMsgData
@@ -1122,7 +1122,7 @@ ov63_0221C6FC: ; 0x0221C6FC
 	add r5, r0, #0
 	mov r0, #8
 	mov r1, #0x3e
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -1270,7 +1270,7 @@ ov63_0221C6FC: ; 0x0221C6FC
 	mov r3, #0x4b
 	bl sub_0200D5D4
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -4266,7 +4266,7 @@ ov63_0221E114: ; 0x0221E114
 	stmia r2!, {r0, r1}
 	mov r0, #0xb4
 	mov r1, #0x3e
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x18]
 	ldr r0, [r6]
 	mov r7, #0
@@ -4472,7 +4472,7 @@ _0221E2D4:
 	b _0221E150
 _0221E2EC:
 	ldr r0, [sp, #0x18]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x50
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -4573,7 +4573,7 @@ _0221E39C:
 	add r5, #0x90
 	ldr r0, [r0]
 	ldr r1, [r5]
-	bl StringCompare
+	bl String_Compare
 	cmp r0, #0
 	beq _0221E3CC
 	mov r5, #2
@@ -5639,7 +5639,7 @@ ov63_0221EC1C: ; 0x0221EC1C
 	stmia r2!, {r0, r1}
 	mov r0, #8
 	mov r1, #0x3e
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -5751,7 +5751,7 @@ _0221EC72:
 	mov r3, #0x4b
 	bl sub_0200D5D4
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #1
 	str r0, [sp]
 	ldr r0, _0221EFB8 ; =0x0000D8DB

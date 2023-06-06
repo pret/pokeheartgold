@@ -121,7 +121,7 @@ sub_0202E530: ; 0x0202E530
 	bl SaveSubstruct_AssertCRC
 	add r0, r4, #0
 	mov r1, #0x18
-	bl SaveArray_get
+	bl SaveArray_Get
 	pop {r4, pc}
 	thumb_func_end sub_0202E530
 
@@ -180,7 +180,7 @@ sub_0202E594: ; 0x0202E594
 	sub sp, #0x14
 	add r5, r0, #0
 	add r6, r1, #0
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_0203107C
@@ -298,7 +298,7 @@ sub_0202E66C: ; 0x0202E66C
 	str r0, [sp, #4]
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl Save_FriendGroup_get
+	bl Save_FriendGroup_Get
 	mov r1, #1
 	bl sub_0202C7B4
 	str r0, [sp, #8]
@@ -331,7 +331,7 @@ _0202E6B8:
 	ldr r0, [sp]
 	bl FreeToHeap
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x18
 	bl SaveSubstruct_UpdateCRC
 	ldr r0, [sp, #4]
@@ -712,7 +712,7 @@ sub_0202E97C: ; 0x0202E97C
 	bl sub_0202E530
 	str r0, [sp, #8]
 	add r0, r4, #0
-	bl Save_FriendGroup_get
+	bl Save_FriendGroup_Get
 	mov r1, #1
 	bl sub_0202C7B4
 	mov r4, #0
@@ -784,7 +784,7 @@ sub_0202E9FC: ; 0x0202E9FC
 	add r7, r0, #0
 	bl MI_CpuFill8
 	add r0, r4, #0
-	bl Save_FriendGroup_get
+	bl Save_FriendGroup_Get
 	mov r1, #1
 	bl sub_0202C7B4
 	str r0, [sp, #0xc]
@@ -902,7 +902,7 @@ _0202EB04:
 	ldr r0, [r5, #0xc]
 	cmp r0, #0
 	beq _0202EB0E
-	bl String_dtor
+	bl String_Delete
 _0202EB0E:
 	add r4, r4, #1
 	add r5, #0xc

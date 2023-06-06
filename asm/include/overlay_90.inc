@@ -10,8 +10,8 @@
 .public PlaySE
 .public PlayFanfare
 .public IsFanfarePlaying
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public GfGfxLoader_GXLoadPalFromOpenNarc
@@ -41,8 +41,8 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
-.public MessageFormat_new_custom
-.public MessageFormat_delete
+.public MessageFormat_New_Custom
+.public MessageFormat_Delete
 .public BufferPlayersName
 .public BufferIntegerAsString
 .public BufferCountryName
@@ -57,7 +57,7 @@
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
-.public WaitingIcon_new
+.public WaitingIcon_New
 .public sub_0200F478
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
@@ -132,7 +132,7 @@
 .public sub_02024B68
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetFrame
@@ -140,7 +140,7 @@
 .public sub_0202C584
 .public sub_0202C5B4
 .public sub_0202C6F4
-.public Save_GameStats_get
+.public Save_GameStats_Get
 .public GameStats_AddSpecial
 .public sub_0203410C
 .public sub_020343E4

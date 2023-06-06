@@ -21,11 +21,11 @@
 .public IsCryFinished
 .public PlayFanfare
 .public IsFanfarePlaying
-.public OverlayManager_new
-.public OverlayManager_delete
-.public OverlayManager_run
-.public NARC_ctor
-.public NARC_dtor
+.public OverlayManager_New
+.public OverlayManager_Delete
+.public OverlayManager_Run
+.public NARC_New
+.public NARC_Delete
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_LoadScrnData
 .public GfGfxLoader_LoadCharDataFromOpenNarc
@@ -48,8 +48,8 @@
 .public DestroyMsgData
 .public NewString_ReadMsgData
 .public ReadMsgData_ExpandPlaceholders
-.public MessageFormat_new
-.public MessageFormat_delete
+.public MessageFormat_New
+.public MessageFormat_Delete
 .public BufferBoxMonSpeciesName
 .public BufferBoxMonNickname
 .public BufferMoveName
@@ -103,7 +103,7 @@
 .public AllocWindows
 .public AddWindowParameterized
 .public RemoveWindow
-.public WindowArray_dtor
+.public WindowArray_Delete
 .public CopyWindowToVram
 .public FillWindowPixelBuffer
 .public BgConfig_HandleScheduledScrollAndTransferOps
@@ -120,7 +120,7 @@
 .public sub_02025224
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public sub_02026E50
 .public sub_02026E84
 .public sub_02026E8C

@@ -1072,7 +1072,7 @@ ov80_02238FA0: ; 0x02238FA0
 	add r5, r0, #0
 	mov r0, #0xb7
 	mov r1, #0x65
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -1109,7 +1109,7 @@ ov80_02238FA0: ; 0x02238FA0
 	mov r3, #0x65
 	bl PaletteData_LoadNarc
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov80_02238FA0
@@ -1231,7 +1231,7 @@ _022390DA:
 	bl ov80_0222ACA0
 	mov r1, #0x65
 	str r0, [sp, #0x10]
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #7
@@ -1380,7 +1380,7 @@ _0223925E:
 	mov r1, #3
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2157,7 +2157,7 @@ ov80_02239828: ; 0x02239828
 	add r5, r0, #0
 	mov r0, #0xb8
 	mov r1, #0x65
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #4]
 	mov r6, #0
 	add r4, r5, #0
@@ -2227,7 +2227,7 @@ _022398C4:
 	cmp r6, #8
 	blt _02239870
 	ldr r0, [sp, #4]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r7, #8]
 	bl sub_02096884
 	add sp, #0xc

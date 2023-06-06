@@ -13,7 +13,7 @@ static const u16 _020F5C24[][2] = {
     { 0x02A0, 0x0010 },
 };
 
-MessagePrinter *MessagePrinter_new(u32 color1, u32 color2, u32 color3, HeapID heapId)
+MessagePrinter *MessagePrinter_New(u32 color1, u32 color2, u32 color3, HeapID heapId)
 {
     MessagePrinter *messagePrinter = AllocFromHeap(heapId, sizeof(MessagePrinter));
     if (messagePrinter != NULL) {
@@ -56,7 +56,7 @@ MessagePrinter *MessagePrinter_new(u32 color1, u32 color2, u32 color3, HeapID he
     return messagePrinter;
 }
 
-void MessagePrinter_delete(MessagePrinter *messagePrinter)
+void MessagePrinter_Delete(MessagePrinter *messagePrinter)
 {
     if (messagePrinter != NULL) {
         if (messagePrinter->charData != NULL) {

@@ -591,7 +591,7 @@ ov90_02258BD4: ; 0x02258BD4
 	str r6, [r4, #8]
 	mov r0, #0xc8
 	add r1, r5, #0
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #0xc]
 	add r0, r4, #0
 	add r0, #0x10
@@ -644,7 +644,7 @@ _02258C54:
 	add r0, #0x10
 	bl ov90_02258E10
 	ldr r0, [r4, #0xc]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -1347,7 +1347,7 @@ ov90_02259184: ; 0x02259184
 	mov r0, #8
 	mov r1, #0x40
 	add r2, r4, #0
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r5, #4]
 	mov r0, #0x80
 	add r1, r4, #0
@@ -1376,11 +1376,11 @@ ov90_022591D4: ; 0x022591D4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #8]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #4]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4]
 	bl DestroyMsgData
 	pop {r4, pc}
@@ -1716,7 +1716,7 @@ _0225943E:
 	add r1, r4, #0
 	bl ov90_022594FC
 	ldr r0, [r5, #0x24]
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	bl RemoveWindow
 	add r4, r4, #1
@@ -1865,7 +1865,7 @@ ov90_02259554: ; 0x02259554
 	lsl r1, r1, #4
 	add r0, r0, r1
 	mov r1, #1
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	str r0, [r5, r4]
 _0225956E:
 	pop {r3, r4, r5, pc}
@@ -2003,7 +2003,7 @@ _022595B4:
 	bl ov00_021E69A8
 _02259688:
 	ldr r0, [r4, #8]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	ldrb r1, [r4, #0x13]
 	cmp r1, #0
 	beq _0225969A
@@ -2032,7 +2032,7 @@ ov90_022596C8: ; 0x022596C8
 	add r5, r0, #0
 	mov r0, #0xc8
 	add r4, r1, #0
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x12
 	lsl r1, r1, #4
 	str r1, [sp]
@@ -2107,7 +2107,7 @@ ov90_022596C8: ; 0x022596C8
 	add r2, #0x3c
 	bl ov90_0225A2B0
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -3661,7 +3661,7 @@ ov90_0225A340: ; 0x0225A340
 	add r4, r0, #0
 	bl RemoveWindow
 	ldr r0, [r4, #0x14]
-	bl String_dtor
+	bl String_Delete
 	pop {r4, pc}
 	thumb_func_end ov90_0225A340
 
@@ -4289,7 +4289,7 @@ ov90_0225A850: ; 0x0225A850
 	add r5, r0, #0
 	mov r0, #0xc8
 	add r4, r1, #0
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x12
 	lsl r1, r1, #4
 	str r1, [sp]
@@ -4401,7 +4401,7 @@ ov90_0225A850: ; 0x0225A850
 	str r4, [sp, #4]
 	bl ov90_0225B59C
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	nop

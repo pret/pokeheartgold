@@ -632,7 +632,7 @@ ov80_0223690C: ; 0x0223690C
 	bl BattleSetup_New
 	add r7, r0, #0
 	ldr r0, [r4, #8]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	str r0, [sp, #8]
 	ldr r0, [r4, #0xc]
 	mov r1, #0

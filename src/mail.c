@@ -30,7 +30,7 @@ int MailArray_GetFirstEmptySlotIdx(MAIL* msgs, int nmsg);
 MAIL* Mailbox_GetPtrToSlotI(MAIL *msgs, int n, int i);
 u32 MailArray_CountMessages(MAIL *msgs, int n);
 
-void Mail_init(MAIL *mail) {
+void Mail_Init(MAIL *mail) {
     int i;
     mail->author_otId = 0;
     mail->author_gender = PLAYER_GENDER_MALE;
@@ -43,7 +43,7 @@ void Mail_init(MAIL *mail) {
     }
     mail->forme_flags = 0;
     for (i = 0; i < 3; i++) {
-        MailMsg_init(&mail->unk_20[i]);
+        MailMsg_Init(&mail->unk_20[i]);
     }
 }
 
@@ -53,15 +53,15 @@ BOOL Mail_TypeIsValid(MAIL *mail) {
 
 MAIL *Mail_New(HeapID heapId) {
     MAIL *ret = (MAIL *)AllocFromHeapAtEnd(heapId, sizeof(MAIL));
-    Mail_init(ret);
+    Mail_Init(ret);
     return ret;
 }
 
-void Mail_copy(const MAIL *src, MAIL *dst) {
+void Mail_Copy(const MAIL *src, MAIL *dst) {
     MI_CpuCopy8(src, dst, sizeof(MAIL));
 }
 
-BOOL Mail_compare(const MAIL *a, const MAIL *b) {
+BOOL Mail_Compare(const MAIL *a, const MAIL *b) {
     int i;
     if (a->author_otId != b->author_otId
     || a->author_gender != b->author_gender
@@ -80,7 +80,7 @@ BOOL Mail_compare(const MAIL *a, const MAIL *b) {
         }
     }
     for (i = 0; i < 3; i++) {
-        if (!MailMsg_compare(&a->unk_20[i], &b->unk_20[i])) {
+        if (!MailMsg_Compare(&a->unk_20[i], &b->unk_20[i])) {
             return FALSE;
         }
     }
@@ -96,10 +96,10 @@ void Mail_SetNewMessageDetails(MAIL *mail, u8 mailType, u8 mon_no, SAVEDATA *sav
     PARTY *party;
     Pokemon *mon;
 
-    Mail_init(mail);
+    Mail_Init(mail);
     mail->mail_type = mailType;
 
-    party = SaveArray_PlayerParty_get(saveData);
+    party = SaveArray_PlayerParty_Get(saveData);
     profile = Save_PlayerData_GetProfileAddr(saveData);
 
     CopyU16StringArray(mail->author_name, PlayerProfile_GetNamePtr(profile));
@@ -142,7 +142,7 @@ MAIL *CreateKenyaMail(Pokemon *mon, u8 mailType, u8 gender, STRING *name, u8 otI
     u16 species;
     u32 isEgg, forme;
     MAIL *ret = Mail_New(HEAP_ID_3);
-    Mail_init(ret);
+    Mail_Init(ret);
     ret->mail_type = mailType;
     CopyStringToU16Array(name, ret->author_name, PLAYER_NAME_LENGTH + 1);
     ret->author_gender = gender;
@@ -250,22 +250,22 @@ MAIL_MESSAGE *Mail_GetUnk20Array(MAIL *mail, int i) {
 
 void Mail_SetMessage(MAIL *mail, const MAIL_MESSAGE *src, int i) {
     if (i < NELEMS(mail->unk_20)) {
-        MailMsg_copy(&mail->unk_20[i], src);
+        MailMsg_Copy(&mail->unk_20[i], src);
     }
 }
 
-MAILBOX *Save_Mailbox_get(SAVEDATA *saveData) {
-    return (MAILBOX *)SaveArray_get(saveData, SAVE_MAILBOX);
+MAILBOX *Save_Mailbox_Get(SAVEDATA *saveData) {
+    return (MAILBOX *)SaveArray_Get(saveData, SAVE_MAILBOX);
 }
 
 u32 Save_Mailbox_sizeof(void) {
     return sizeof(MAILBOX);
 }
 
-void Save_Mailbox_init(MAILBOX *mailbox) {
+void Save_Mailbox_Init(MAILBOX *mailbox) {
     int i;
     for (i = 0; i < MAILBOX_MSG_COUNT; i++) {
-        Mail_init(&mailbox->msgs[i]);
+        Mail_Init(&mailbox->msgs[i]);
     }
 }
 
@@ -276,14 +276,14 @@ int Mailbox_GetFirstEmptySlotIdx(MAILBOX *mailbox) {
 void Mailbox_DeleteSlotI(MAIL *msgs, int n, int i) {
     MAIL *mail = Mailbox_GetPtrToSlotI(msgs, n, i);
     if (mail != NULL) {
-        Mail_init(mail);
+        Mail_Init(mail);
     }
 }
 
 void Mailbox_CopyMailToSlotI(MAIL *msgs, int n, int i, const MAIL *src) {
     MAIL *dest = Mailbox_GetPtrToSlotI(msgs, n, i);
     if (dest != NULL) {
-        Mail_copy(src, dest);
+        Mail_Copy(src, dest);
     }
 }
 
@@ -295,7 +295,7 @@ MAIL *Mailbox_AllocAndFetchMailI(MAIL *msgs, int n, int i, HeapID heapId) {
     const MAIL *src = Mailbox_GetPtrToSlotI(msgs, n, i);
     MAIL *ret = Mail_New(heapId);
     if (src != NULL) {
-        Mail_copy(src, ret);
+        Mail_Copy(src, ret);
     }
     return ret;
 }
@@ -303,9 +303,9 @@ MAIL *Mailbox_AllocAndFetchMailI(MAIL *msgs, int n, int i, HeapID heapId) {
 void Mailbox_FetchMailToBuffer(MAIL *msgs, int n, int i, MAIL *dest) {
     const MAIL *src = Mailbox_GetPtrToSlotI(msgs, n, i);
     if (src == NULL) {
-        Mail_init(dest);
+        Mail_Init(dest);
     } else {
-        Mail_copy(src, dest);
+        Mail_Copy(src, dest);
     }
 }
 

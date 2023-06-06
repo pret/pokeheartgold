@@ -512,9 +512,9 @@ ov43_0222A2F0: ; 0x0222A2F0
 	ldr r1, [r5]
 	bl sub_02018410
 	ldr r0, [r5, #0x58]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r5, #0x5c]
-	bl String_dtor
+	bl String_Delete
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov43_0222A2F0
 
@@ -550,13 +550,13 @@ ov43_0222A338: ; 0x0222A338
 	cmp r1, #0
 	beq _0222A348
 	ldr r0, [r5, #0x58]
-	bl StringCopy
+	bl String_Copy
 _0222A348:
 	cmp r4, #0
 	beq _0222A354
 	ldr r0, [r5, #0x5c]
 	add r1, r4, #0
-	bl StringCopy
+	bl String_Copy
 _0222A354:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -736,7 +736,7 @@ ov43_0222A48C: ; 0x0222A48C
 	bl GX_SwapDisplay
 	mov r0, #0x55
 	add r1, r4, #0
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r5, #0x58]
 	bl ov43_0222A550
 	add r0, r5, #0
@@ -808,7 +808,7 @@ ov43_0222A520: ; 0x0222A520
 	add r0, r4, #0
 	bl ov43_0222A66C
 	ldr r0, [r4, #0x58]
-	bl NARC_dtor
+	bl NARC_Delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov43_0222A520
@@ -1206,7 +1206,7 @@ ov43_0222A87C: ; 0x0222A87C
 	add r4, r1, #0
 	add r5, r0, #0
 	add r0, r4, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r5, #0x50]
 	ldr r2, _0222A8A4 ; =0x0000030B
 	mov r0, #0
@@ -1231,7 +1231,7 @@ ov43_0222A8A8: ; 0x0222A8A8
 	ldr r0, [r4, #0x54]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x50]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	pop {r4, pc}
 	thumb_func_end ov43_0222A8A8
 
@@ -1317,15 +1317,15 @@ ov43_0222A960: ; 0x0222A960
 	ldr r0, [r4, #0x5c]
 	bl sub_02018474
 	ldr r0, [r4, #0x7c]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x74]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x78]
-	bl String_dtor
+	bl String_Delete
 	add r4, #0x64
 	add r0, r4, #0
 	bl RemoveWindow
@@ -1539,14 +1539,14 @@ ov43_0222AB20: ; 0x0222AB20
 	bl sub_0202C6F4
 	add r7, r0, #0
 	add r0, r5, #0
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	add r5, r0, #0
 	add r0, r7, #0
 	add r1, r6, #0
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r5, #0
-	bl Save_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_Set
 	ldr r0, [r4, #0x50]
 	mov r1, #0
 	add r2, r5, #0
@@ -1564,7 +1564,7 @@ ov43_0222AB5C: ; 0x0222AB5C
 	add r6, r1, #0
 	add r0, r3, #0
 	add r7, r2, #0
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_0202C6F4
@@ -1572,7 +1572,7 @@ ov43_0222AB5C: ; 0x0222AB5C
 	bl sub_0202C298
 	add r1, r0, #0
 	add r0, r4, #0
-	bl Save_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_Set
 	ldr r0, [r5, #0x50]
 	mov r1, #0
 	add r2, r4, #0
@@ -2119,13 +2119,13 @@ _0222AF88:
 	cmp r0, #0
 	beq _0222B08A
 	add r0, r7, #0
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x58]
-	bl String_c_str
+	bl String_cstr
 	add r1, r0, #0
 	ldr r0, [sp, #0xc]
-	bl Save_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_Set
 	ldr r0, [r6, #0x50]
 	ldr r2, [sp, #0xc]
 	mov r1, #0
@@ -2370,9 +2370,9 @@ _0222B160:
 	cmp r7, #4
 	blt _0222B160
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x18]
 	ldr r3, [sp, #0x14]
 	str r0, [sp]
@@ -2395,7 +2395,7 @@ ov43_0222B1D8: ; 0x0222B1D8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x3c]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #8
 	bl RemoveWindow
@@ -2818,7 +2818,7 @@ ov43_0222B4BC: ; 0x0222B4BC
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3427,7 +3427,7 @@ _0222B95A:
 	str r3, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0
 	str r0, [sp, #0x20]
 	ldr r0, _0222BAAC ; =ov43_0222EEE0
@@ -3436,7 +3436,7 @@ _0222B95A:
 _0222B9F4:
 	ldr r1, [sp, #0x1c]
 	mov r0, #4
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	add r1, r6, #0
 	add r1, #0xe4
 	ldr r5, [sp, #0x24]
@@ -3538,14 +3538,14 @@ ov43_0222BAB8: ; 0x0222BAB8
 	add r0, r5, #0
 	add r0, #0xd8
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	mov r6, #0
 	add r4, r5, #0
 _0222BADC:
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #2
@@ -4953,7 +4953,7 @@ ov43_0222C550: ; 0x0222C550
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -5662,7 +5662,7 @@ _0222CAD0:
 	lsl r3, r3, #3
 	bl AddTextPrinterParameterized2
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -5795,18 +5795,18 @@ _0222CBE2:
 	ldr r0, _0222CD2C ; =_02102610
 	ldr r1, [r4, #4]
 	add r2, r6, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4]
 	mov r0, #1
 	strb r0, [r5, #8]
 	b _0222CD26
 _0222CC2A:
 	ldr r0, [r4]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _0222CD26
 	ldr r0, [r4]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x14]
 	cmp r0, #0
@@ -5814,7 +5814,7 @@ _0222CC2A:
 	ldr r0, _0222CD30 ; =_02102620
 	ldr r1, [r4, #8]
 	add r2, r6, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4]
 	mov r0, #2
 	strb r0, [r5, #8]
@@ -5829,11 +5829,11 @@ _0222CC54:
 	b _0222CD26
 _0222CC64:
 	ldr r0, [r4]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _0222CD26
 	ldr r0, [r4]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	ldr r1, [r4, #4]
 	ldr r2, [r4, #8]
 	ldr r1, [r1, #0x18]
@@ -5868,18 +5868,18 @@ _0222CCAC:
 	ldr r0, _0222CD2C ; =_02102610
 	ldr r1, [r4, #4]
 	add r2, r6, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4]
 	mov r0, #5
 	strb r0, [r5, #8]
 	b _0222CD26
 _0222CCCE:
 	ldr r0, [r4]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _0222CD26
 	ldr r0, [r4]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x14]
 	cmp r0, #0
@@ -5971,7 +5971,7 @@ ov43_0222CD44: ; 0x0222CD44
 	bl CopyU16ArrayToString
 	b _0222CD84
 _0222CD80:
-	bl StringSetEmpty
+	bl String_SetEmpty
 _0222CD84:
 	mov r0, #0
 	str r0, [r5, #0x64]
@@ -6264,9 +6264,9 @@ _0222CFB4:
 	str r3, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x20]
-	bl String_dtor
+	bl String_Delete
 	str r7, [sp]
 	add r3, r5, #0
 	ldr r0, [r4, #0x58]
@@ -6435,7 +6435,7 @@ ov43_0222D134: ; 0x0222D134
 	ldr r0, [r4, #4]
 	add r6, r2, #0
 	add r7, r3, #0
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	mov r1, #2
 	mov r2, #0x1b
 	bl ScriptState_FlypointFlagAction
@@ -8218,7 +8218,7 @@ ov43_0222DED0: ; 0x0222DED0
 	ldr r1, [r6, r4]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	mov r1, #0
 	add r0, r5, r4
 	str r1, [r0, #0xc]
@@ -9047,9 +9047,9 @@ _0222E462:
 	mov r1, #3
 	bl ov43_0222DEF8
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -9266,9 +9266,9 @@ _0222E63A:
 	mov r1, #4
 	bl ov43_0222DEF8
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -9333,7 +9333,7 @@ ov43_0222E78C: ; 0x0222E78C
 	add r3, r1, #0
 	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x2c]
-	bl String_dtor
+	bl String_Delete
 	mov r2, #0xb
 	ldrsb r2, [r5, r2]
 	ldr r0, [sp, #0x28]
@@ -9439,9 +9439,9 @@ _0222E828:
 	mov r1, #5
 	bl ov43_0222DEF8
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -9587,9 +9587,9 @@ _0222E966:
 	mov r1, #6
 	bl ov43_0222DEF8
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -9772,9 +9772,9 @@ ov43_0222EA40: ; 0x0222EA40
 	mov r1, #1
 	bl ov43_0222DEF8
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

@@ -25,8 +25,8 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public GfGfxLoader_LoadFromOpenNarc
@@ -37,8 +37,8 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
-.public MessageFormat_new
-.public MessageFormat_delete
+.public MessageFormat_New
+.public MessageFormat_Delete
 .public BufferString
 .public StringExpandPlaceholders
 .public sub_0200CF18
@@ -172,13 +172,13 @@
 .public sub_02025224
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Thunk_G3X_Reset
 .public sub_02026E50
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
 .public Save_PlayerData_GetOptionsAddr
-.public PlayerProfile_new
+.public PlayerProfile_New
 .public PlayerProfile_GetPlayerName_NewString
 .public PlayerProfile_GetTrainerGender
 .public Options_GetTextFrameDelay
@@ -189,7 +189,7 @@
 .public GetNatureFromPersonality
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SaveArray_PlayerParty_get
+.public SaveArray_PlayerParty_Get
 .public NNS_G2dGetUnpackedCharacterData
 .public NNS_G3dTexGetRequiredSize
 .public NNS_G3dTexSetTexKey

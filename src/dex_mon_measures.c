@@ -34,7 +34,7 @@ void ZknData_LoadAll(struct ZknHeightWeight *zkn, int mode, HeapID heapId) {
     GF_ASSERT(zkn->height == NULL);
     GF_ASSERT(zkn->weight == NULL);
 
-    narc = NARC_ctor(GetDexZknDataNarcID(), heapId);
+    narc = NARC_New(GetDexZknDataNarcID(), heapId);
     zkn->height = ZknNarc_LoadHeight(narc, heapId);
     zkn->weight = ZknNarc_LoadWeight(narc, heapId);
 
@@ -46,7 +46,7 @@ void ZknData_LoadAll(struct ZknHeightWeight *zkn, int mode, HeapID heapId) {
         sub_020914E8(narc, &zkn->unk_10, &zkn->unk_14, heapId);
     }
 
-    NARC_dtor(narc);
+    NARC_Delete(narc);
 }
 
 void ZknData_UnloadAll(struct ZknHeightWeight *zkn) {

@@ -1773,7 +1773,7 @@ _021E677C:
 	bl AddTextPrinterParameterized3
 _021E679A:
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
 	bl DestroyMsgData
 	ldr r1, _021E67E0 ; =0x0000011B
@@ -8052,7 +8052,7 @@ ov60_021E99B8: ; 0x021E99B8
 	mov r0, #0x42
 	lsl r0, r0, #2
 	mov r1, #0x4a
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x18]
 	mov r1, #7
 	ldr r0, [sp, #0xc]
@@ -8178,7 +8178,7 @@ _021E9A6A:
 	cmp r0, #3
 	blo _021E99DE
 	ldr r0, [sp, #0x18]
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #0x4a
 	bl Camera_Create
 	ldr r1, [sp, #0xc]

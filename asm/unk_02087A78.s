@@ -236,12 +236,12 @@ sub_02087BE8: ; 0x02087BE8
 	bne _02087C06
 	ldr r0, _02087C30 ; =_021028B4
 	add r1, r4, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 	b _02087C0E
 _02087C06:
 	ldr r0, _02087C34 ; =_021028C4
 	add r1, r4, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 _02087C0E:
 	str r0, [r4, #8]
 	ldr r0, [r4]
@@ -250,11 +250,11 @@ _02087C0E:
 	b _02087C2C
 _02087C18:
 	ldr r0, [r4, #8]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _02087C2C
 	ldr r0, [r4, #8]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	mov r0, #1
 	pop {r4, pc}
 _02087C2C:
@@ -324,7 +324,7 @@ _02087C9E:
 	lsl r1, r1, #2
 	str r0, [r2, r1]
 	ldr r0, [r5, #0xc]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	mov r1, #0x51
 	ldr r2, [r5, #0x10]
 	lsl r1, r1, #2
@@ -395,7 +395,7 @@ _02087D46:
 	ldr r0, _02087E0C ; =_020FA484
 	ldr r1, [r5, #0x10]
 	add r2, r4, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r5, #8]
 	ldr r0, [r5]
 	add r0, r0, #1
@@ -403,7 +403,7 @@ _02087D46:
 	b _02087DEC
 _02087D5A:
 	ldr r0, [r5, #8]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _02087DEC
 	mov r0, #0x71
@@ -433,7 +433,7 @@ _02087D88:
 	ldr r0, [r5, #0x10]
 	bl BattleSetup_Delete
 	ldr r0, [r5, #8]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	mov r0, #0
 	bl sub_02005B68
 	mov r0, #0
@@ -495,7 +495,7 @@ sub_02087E1C: ; 0x02087E1C
 	mov r1, #0x83
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	mov r1, #2
 	mov r2, #0x1b
 	bl ScriptState_FlypointFlagAction

@@ -123,7 +123,7 @@ sub_0209730C: ; 0x0209730C
 	bl SaveData_GetMomsSavingsAddr
 	str r0, [sp, #0x2c]
 	add r0, r4, #0
-	bl Save_SafariZone_get
+	bl Save_SafariZone_Get
 	str r0, [sp, #0x28]
 	mov r1, #0
 	bl SafariZone_GetAreaSet
@@ -139,7 +139,7 @@ _0209733A:
 	b _020974BC
 _0209733C:
 	add r0, r4, #0
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #0
 	beq _02097364

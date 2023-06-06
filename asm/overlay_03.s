@@ -213,7 +213,7 @@ _02253F84:
 	ldr r1, [r1]
 	str r0, [r1, #0x78]
 	mov r0, #4
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	ldr r1, _02254050 ; =ov03_022598A0
 	ldr r2, [r1]
 	str r0, [r2, #0x7c]
@@ -229,17 +229,17 @@ _02253F84:
 	add r0, #0x40
 	bl InitWindow
 	mov r0, #4
-	bl MessageFormat_new
+	bl MessageFormat_New
 	ldr r1, _02254050 ; =ov03_022598A0
 	ldr r1, [r1]
 	str r0, [r1, #0x50]
 	mov r0, #4
-	bl MessageFormat_new
+	bl MessageFormat_New
 	ldr r1, _02254050 ; =ov03_022598A0
 	ldr r1, [r1]
 	str r0, [r1, #0x54]
 	mov r0, #4
-	bl MessageFormat_new
+	bl MessageFormat_New
 	ldr r1, _02254050 ; =ov03_022598A0
 	ldr r2, [r1]
 	str r0, [r2, #0x58]
@@ -283,7 +283,7 @@ ov03_02254054: ; 0x02254054
 _0225405C:
 	ldr r0, [r6]
 	ldr r0, [r0, r5]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #8
@@ -297,7 +297,7 @@ _0225405C:
 	ldr r0, [r0, #0x50]
 	cmp r0, #0
 	beq _0225408C
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, _022540E4 ; =ov03_022598A0
 	mov r1, #0
 	ldr r0, [r0]
@@ -308,7 +308,7 @@ _0225408C:
 	ldr r0, [r0, #0x54]
 	cmp r0, #0
 	beq _022540A2
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, _022540E4 ; =ov03_022598A0
 	mov r1, #0
 	ldr r0, [r0]
@@ -319,7 +319,7 @@ _022540A2:
 	ldr r0, [r0, #0x58]
 	cmp r0, #0
 	beq _022540B8
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, _022540E4 ; =ov03_022598A0
 	mov r1, #0
 	ldr r0, [r0]
@@ -758,7 +758,7 @@ ov03_02254420: ; 0x02254420
 	beq _022544E6
 	mov r0, #0x10
 	mov r1, #4
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r4, _022544EC ; =ov03_022598A0
 	mov r5, #0
 	ldr r1, [r4]
@@ -1896,7 +1896,7 @@ ov03_02254D78: ; 0x02254D78
 	beq _02254E52
 	mov r0, #5
 	mov r1, #4
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	ldr r4, _02254E58 ; =ov03_022598A0
 	mov r5, #0
 	ldr r1, [r4]
@@ -3087,7 +3087,7 @@ ov03_0225574C: ; 0x0225574C
 	mov r1, #0
 	bl sub_0200E5D4
 	ldr r0, [r4, #0x64]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	mov r1, #0
 	ldr r0, [r4, #0x5c]
 	add r2, r1, #0
@@ -3937,7 +3937,7 @@ _02255DD4:
 	bne _02255E66
 	add r0, r6, #2
 	mov r1, #4
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	str r0, [r5, #8]
 	mov r3, #1
 	str r3, [sp]
@@ -4061,7 +4061,7 @@ ov03_02255EBC: ; 0x02255EBC
 	add r0, #0x34
 	bl RemoveWindow
 	ldr r0, [r4, #8]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	mov r0, #0
 	str r0, [r4]
 _02255EF6:
@@ -4155,7 +4155,7 @@ ov03_02255F98: ; 0x02255F98
 	mov r0, #3
 	mov r1, #4
 	ldr r4, _0225603C ; =ov03_02259838
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	str r0, [r5, #0xc]
 	mov r0, #0xa
 	str r0, [sp]
@@ -4299,7 +4299,7 @@ _022560AE:
 	add r0, #0x44
 	bl RemoveWindow
 	ldr r0, [r5, #0xc]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	mov r0, #0
 	str r0, [r5, #4]
 _022560E4:
@@ -4642,9 +4642,9 @@ _02256348:
 	b _022561C8
 _0225639C:
 	ldr r0, [sp, #0x2c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x28]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x30]
 	bl DestroyMsgData
 	ldr r0, [sp, #0x24]
@@ -4687,7 +4687,7 @@ ov03_022563F8: ; 0x022563F8
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0xc]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	add r1, r0, #0
 	ldr r0, [r4, #0x10]
 	ldr r2, [r4, #0x6c]
@@ -4940,17 +4940,17 @@ _022565F6:
 	mov r1, #0
 	bl ov03_02255D68
 	ldr r0, [r4, #0x64]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x68]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x14]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x18]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x20]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x6c]
 	bl sub_0207495C
 	add r0, r4, #0
@@ -4984,7 +4984,7 @@ ov03_02256644: ; 0x02256644
 	add r5, #0xa4
 	str r0, [r5]
 	mov r0, #4
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x64]
 	mov r0, #0
 	mov r1, #0x1b
@@ -5059,7 +5059,7 @@ ov03_022566D0: ; 0x022566D0
 	add r3, r1, #0
 	bl BufferString
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -5133,7 +5133,7 @@ ov03_02256730: ; 0x02256730
 	bl NewMsgDataFromNarc
 	str r0, [sp, #0x30]
 	mov r0, #4
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r6, r0, #0
 	mov r0, #0xb4
 	mov r1, #4
@@ -5422,11 +5422,11 @@ _02256994:
 	b _022567F0
 _022569EC:
 	ldr r0, [sp, #0x2c]
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [sp, #0x30]
 	bl DestroyMsgData
 	ldr r0, [sp, #0x18]
@@ -5451,7 +5451,7 @@ ov03_02256A2C: ; 0x02256A2C
 	ldr r0, [r0, #0xc]
 	str r1, [sp, #0xc]
 	str r2, [sp, #0x10]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	add r6, r0, #0
 	mov r0, #0xb
 	bl sub_02074944
@@ -5668,7 +5668,7 @@ ov03_02256BA8: ; 0x02256BA8
 	pop {r3, r4, r5, r6, r7, pc}
 _02256BCA:
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	add r1, r6, #0
 	bl sub_020669B4
 	add r1, r0, #0
@@ -5899,17 +5899,17 @@ InitMartUI: ; 0x02256D34
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	ldr r0, [r5, #0xc]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	mov r1, #0x97
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	mov r1, #0x26
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	ldr r0, [r5, #0xc]
-	bl Save_ApricornBox_get
+	bl Save_ApricornBox_Get
 	mov r1, #0x96
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -5934,7 +5934,7 @@ InitMartUI: ; 0x02256D34
 	add r1, #0x40
 	str r0, [r4, r1]
 	ldr r0, [r5, #0xc]
-	bl Save_Pokeathlon_get
+	bl Save_Pokeathlon_Get
 	mov r1, #0x95
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -5965,7 +5965,7 @@ _02256DEA:
 	b _02256E04
 _02256DF8:
 	ldr r0, [r5, #0xc]
-	bl Save_SealCase_get
+	bl Save_SealCase_Get
 	mov r1, #0x93
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -6302,7 +6302,7 @@ ov03_02257074: ; 0x02257074
 	add r1, #0x88
 	str r0, [r1]
 	mov r0, #0xb
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r4, #0x8c
 	str r0, [r4]
 	pop {r4, pc}
@@ -6321,11 +6321,11 @@ ov03_0225709C: ; 0x0225709C
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0x9d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x9a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -6823,7 +6823,7 @@ _022574AA:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r1, r5, #0
 	bl ov03_022585A4
@@ -9467,7 +9467,7 @@ ov03_02258910: ; 0x02258910
 	bl ov03_02258878
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl Save_SafariZone_get
+	bl Save_SafariZone_Get
 	str r0, [r4, #4]
 	add r0, r4, #0
 	bl ov03_02258814
@@ -9637,7 +9637,7 @@ ScrCmd_720: ; 0x02258A18
 	add r0, r1, r0
 	str r0, [sp, #0x10]
 	ldr r0, [r5, #0xc]
-	bl Save_SafariZone_get
+	bl Save_SafariZone_Get
 	mov r1, #0
 	bl SafariZone_GetAreaSet
 	str r0, [sp, #0xc]
@@ -9848,7 +9848,7 @@ ScrCmd_791: ; 0x02258C00
 	bl GetVarPointer
 	str r0, [sp]
 	ldr r0, [r4, #0xc]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	str r0, [sp, #4]
 	bl GetPartyCount
 	add r6, r0, #0
@@ -9931,7 +9931,7 @@ ScrCmd_792: ; 0x02258CDC
 	add r0, #0x80
 	ldr r5, [r0]
 	ldr r0, [r5, #0xc]
-	bl Save_SafariZone_get
+	bl Save_SafariZone_Get
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Save_PlayerData_GetIGTAddr
@@ -9959,7 +9959,7 @@ ov03_02258CFC: ; 0x02258CFC
 	str r0, [r4, #0xc]
 	str r5, [r4, #8]
 	ldr r0, [r5, #0xc]
-	bl Save_Pokeathlon_get
+	bl Save_Pokeathlon_Get
 	str r0, [r4, #0x20]
 	bl sub_0203199C
 	str r0, [r4, #0x24]
@@ -10107,7 +10107,7 @@ ov03_02258DE8: ; 0x02258DE8
 	mov r0, #3
 	mov r1, #0x10
 	mov r2, #4
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r4, #0x2c]
 	mov r0, #0x80
 	mov r1, #4
@@ -10136,15 +10136,15 @@ ov03_02258E88: ; 0x02258E88
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x3c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x38]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x34]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x30]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x2c]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x28]
 	bl DestroyMsgData
 	add r0, r4, #0

@@ -3,8 +3,8 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoU16Array
-.public MailMsg_init_fromTemplate
-.public MailMsg_copy
+.public MailMsg_Init_FromTemplate
+.public MailMsg_Copy
 .public AllocFromHeap
 .public GF_AssertFail
 .public sub_0202D230
@@ -43,7 +43,7 @@
 .public sub_0202D8D0
 .public sub_0202D8E4
 .public sub_0202D908
-.public Save_FrontierData_get
+.public Save_FrontierData_Get
 .public sub_0202D928
 .public sub_0203107C
 .public MI_CpuFill8

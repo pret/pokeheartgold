@@ -16,7 +16,7 @@
 .public GetBgPriority
 .public AllocWindows
 .public AddWindowParameterized
-.public WindowArray_dtor
+.public WindowArray_Delete
 .public GF_AssertFail
 .public FieldSys_GetBgConfigPtr
 .public TaskManager_Call

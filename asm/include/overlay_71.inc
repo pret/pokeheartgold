@@ -10,8 +10,8 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public GetNarcMemberSizeByIdPair
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_LoadScrnData
 .public GfGfxLoader_GXLoadPal
@@ -41,8 +41,8 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
-.public MessageFormat_new
-.public MessageFormat_delete
+.public MessageFormat_New
+.public MessageFormat_Delete
 .public BufferPlayersName
 .public BufferBoxMonNickname
 .public StringExpandPlaceholders
@@ -126,7 +126,7 @@
 .public sub_02024B68
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public sub_02026E50
 .public GF_3DVramMan_InitFrameTexVramManager
 .public GF_3DVramMan_InitFramePlttVramManager

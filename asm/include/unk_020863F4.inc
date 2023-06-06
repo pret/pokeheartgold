@@ -53,7 +53,7 @@
 .public sub_02021AC8
 .public sub_02021B5C
 .public GF_AssertFail
-.public String_dtor
+.public String_Delete
 .public Options_GetFrame
 .public sub_020863F4
 .public sub_02086490

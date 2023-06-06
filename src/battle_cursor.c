@@ -4,12 +4,12 @@
 static void BattleCursor_Update(SysTask *task, void *data);
 
 void BattleCursor_LoadResources(void *a0, void *a1, void *a3, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation) {
-    NARC *narc = NARC_ctor(NARC_a_0_0_8, heapId);
+    NARC *narc = NARC_New(NARC_a_0_0_8, heapId);
     sub_0200D68C(a3, 3, a0, a1, narc, 80, 0, 1, 2, pal);
     sub_0200D504(a0, a1, narc, 250, 1, 2, character);
     sub_0200D6EC(a0, a1, narc, 251, 1, cell);
     sub_0200D71C(a0, a1, narc, 252, 1, animation);
-    NARC_dtor(narc);
+    NARC_Delete(narc);
 }
 
 void BattleCursor_FreeResources(void *a0, u32 character, u32 pal, u32 cell, u32 animation) {

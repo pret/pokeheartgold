@@ -3,8 +3,8 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
-.public MessageFormat_new_custom
-.public MessageFormat_delete
+.public MessageFormat_New_Custom
+.public MessageFormat_Delete
 .public BufferIntegerAsString
 .public BufferLocationName
 .public BufferMonthNameAbbr
@@ -14,7 +14,7 @@
 .public AllocFromHeap
 .public FreeToHeap
 .public String_New
-.public String_dtor
+.public String_Delete
 .public PlayerProfile_GetPlayerName_NewString
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetTrainerGender

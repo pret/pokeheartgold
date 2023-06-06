@@ -98,7 +98,7 @@ void SaveEasyChat_SetGreetingFlag(SAVE_EASY_CHAT_T *ec, u8 a1);
 
 BOOL GetCategoryAndMsgNoByECWordIdx(u16 ecWord, u32 *category, u32 *msgno);
 
-ECMAN *EasyChatManager_new(HeapID heapId) {
+ECMAN *EasyChatManager_New(HeapID heapId) {
     ECMAN *ret;
     int i;
 
@@ -110,7 +110,7 @@ ECMAN *EasyChatManager_new(HeapID heapId) {
     return ret;
 }
 
-void EasyChatManager_delete(ECMAN *ecMan) {
+void EasyChatManager_Delete(ECMAN *ecMan) {
     int i;
 
     for (i = 0; i < EC_GROUP_MAX; i++) {
@@ -132,7 +132,7 @@ void GetECWordIntoStringByIndex(u16 ecWord, STRING *dest) {
         category = sNarcMsgBanks[category];
         ReadMsgData_NewNarc_ExistingString(NARC_msgdata_msg, category, msgno, HEAP_ID_0, dest);
     } else {
-        StringSetEmpty(dest);
+        String_SetEmpty(dest);
     }
 }
 
@@ -173,7 +173,7 @@ u32 Save_EasyChat_sizeof(void) {
     return sizeof(SAVE_EASY_CHAT_T);
 }
 
-void Save_EasyChat_init(SAVE_EASY_CHAT_T *ec) {
+void Save_EasyChat_Init(SAVE_EASY_CHAT_T *ec) {
     int i;
 
     ec->greetings = 0;
@@ -187,9 +187,9 @@ void Save_EasyChat_init(SAVE_EASY_CHAT_T *ec) {
     SaveSubstruct_UpdateCRC(SAVE_EASY_CHAT);
 }
 
-SAVE_EASY_CHAT_T *SaveData_EasyChat_get(SAVEDATA *saveData) {
+SAVE_EASY_CHAT_T *SaveData_EasyChat_Get(SAVEDATA *saveData) {
     SaveSubstruct_AssertCRC(SAVE_EASY_CHAT);
-    return SaveArray_get(saveData, SAVE_EASY_CHAT);
+    return SaveArray_Get(saveData, SAVE_EASY_CHAT);
 }
 
 BOOL SaveEasyChat_GetTrendySayingFlag(SAVE_EASY_CHAT_T *ec, int flag) {

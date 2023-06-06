@@ -25,12 +25,12 @@
 .public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetTrainerGender
-.public Save_PhotoAlbum_get
+.public Save_PhotoAlbum_Get
 .public PhotoAlbum_GetIndexOfFirstEmptySlot
 .public PhotoAlbum_GetNumSaved
 .public PhotoAlbum_SetPhotoAtIndex
 .public PhotoAlbum_GetPhotoByIndex
-.public Photo_init
+.public Photo_Init
 .public sub_0203E33C
 .public FieldSys_GetSaveDataPtr
 .public sub_0203EBA4
@@ -93,7 +93,7 @@
 .public MonIsShiny
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SaveArray_PlayerParty_get
+.public SaveArray_PlayerParty_Get
 .public MI_CpuFill8
 .public MI_CpuCopy8
 .public NNS_G3dGlb

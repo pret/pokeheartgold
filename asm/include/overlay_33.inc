@@ -5,8 +5,8 @@
 .public FontID_String_GetWidth
 .public sub_02007200
 .public sub_02007234
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public GfGfxLoader_GXLoadPalFromOpenNarc
@@ -34,7 +34,7 @@
 .public AddTextPrinterParameterized2
 .public sub_02025204
 .public sub_02025224
-.public String_dtor
+.public String_Delete
 .public GXS_SetGraphicsMode
 .public GX_SetBankForSubBG
 .public GX_SetBankForSubOBJ

@@ -390,7 +390,7 @@ ItemSlot *BagGetNthPocket(Bag *bag, u8 pocket, int n) {
 }
 
 Bag *SaveGetBag(SAVEDATA *saveData) {
-    return SaveArray_get(saveData, SAVE_BAG);
+    return SaveArray_Get(saveData, SAVE_BAG);
 }
 
 BAG_CURSOR *BagCursor_New(HeapID heap_id) {

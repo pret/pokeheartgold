@@ -772,7 +772,7 @@ sub_02018998: ; 0x02018998
 	bl FreeToHeap
 	ldrb r1, [r4, #0x18]
 	ldr r0, [r4, #0x1c]
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	pop {r4, pc}
 	thumb_func_end sub_02018998
 

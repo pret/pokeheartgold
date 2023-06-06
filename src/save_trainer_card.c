@@ -4,7 +4,7 @@ u32 Save_TrainerCard_sizeof(void) {
     return sizeof(struct SaveTrainerCard);
 }
 
-void Save_TrainerCard_init(struct SaveTrainerCard *data) {
+void Save_TrainerCard_Init(struct SaveTrainerCard *data) {
     int i;
     int *badges;
 
@@ -15,8 +15,8 @@ void Save_TrainerCard_init(struct SaveTrainerCard *data) {
     }
 }
 
-struct SaveTrainerCard *Save_TrainerCard_get(SAVEDATA *saveData) {
-    return SaveArray_get(saveData, SAVE_TRAINER_CARD);
+struct SaveTrainerCard *Save_TrainerCard_Get(SAVEDATA *saveData) {
+    return SaveArray_Get(saveData, SAVE_TRAINER_CARD);
 }
 
 int *TrainerCard_GetSignature(struct SaveTrainerCard *data) {

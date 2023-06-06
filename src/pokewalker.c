@@ -2,15 +2,15 @@
 
 static BOOL pokewalkerHasBoxmon(POKEWALKER *pokeWalker);
 
-POKEWALKER *Save_Pokewalker_get(SAVEDATA *saveData) {
-    return SaveArray_get(saveData, SAVE_POKEWALKER);
+POKEWALKER *Save_Pokewalker_Get(SAVEDATA *saveData) {
+    return SaveArray_Get(saveData, SAVE_POKEWALKER);
 }
 
 u32 Pokewalker_sizeof(void) {
     return sizeof(POKEWALKER);
 }
 
-void Pokewalker_init(POKEWALKER *pokeWalker) {
+void Pokewalker_Init(POKEWALKER *pokeWalker) {
     MI_CpuClearFast(pokeWalker, sizeof(POKEWALKER));
     Pokewalker_UnlockCourse(pokeWalker, WALKER_COURSE_REFRESHING_FIELD);
     Pokewalker_UnlockCourse(pokeWalker, WALKER_COURSE_NOISY_FOREST);
@@ -18,7 +18,7 @@ void Pokewalker_init(POKEWALKER *pokeWalker) {
 
 void sub_02032624(POKEWALKER *pokeWalker) {
     u32 bak = pokeWalker->unlockedCourses;
-    Pokewalker_init(pokeWalker);
+    Pokewalker_Init(pokeWalker);
     pokeWalker->unlockedCourses = bak;
 }
 

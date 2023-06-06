@@ -305,7 +305,7 @@ _0206A536:
 	bl BgClearTilemapBufferAndCommit
 	ldr r0, [r4, #0x10]
 	mov r1, #1
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #0xc

@@ -1,13 +1,13 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public sub_02004EC4
-.public OverlayManager_new
-.public OverlayManager_delete
+.public OverlayManager_New
+.public OverlayManager_Delete
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public OverlayManager_run
+.public OverlayManager_Run
 .public GfGfxLoader_GetScrnData
 .public GfGfxLoader_GetScrnDataFromOpenNarc
 .public sub_020192D0

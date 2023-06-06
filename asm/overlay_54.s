@@ -247,7 +247,7 @@ _021E5B08:
 	mov r0, #0xc9
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #1
@@ -596,7 +596,7 @@ _021E5DE8:
 	add r0, r5, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	add r0, #0x84
 	ldrh r0, [r0]
@@ -1140,7 +1140,7 @@ ov54_021E6238: ; 0x021E6238
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl StringSetEmpty
+	bl String_SetEmpty
 	add r0, r6, #0
 	add r1, r5, #0
 	mov r2, #1
@@ -1150,7 +1150,7 @@ ov54_021E6238: ; 0x021E6238
 	add r7, #0x44
 _021E6282:
 	add r0, r5, #0
-	bl StringSetEmpty
+	bl String_SetEmpty
 	ldr r0, [r6, #0x28]
 	add r1, r4, #1
 	add r2, r5, #0
@@ -1176,7 +1176,7 @@ _021E6282:
 	cmp r4, #6
 	blo _021E6282
 	add r0, r5, #0
-	bl StringSetEmpty
+	bl String_SetEmpty
 	ldr r0, [r6, #0x28]
 	mov r1, #8
 	add r2, r5, #0
@@ -1195,7 +1195,7 @@ _021E6282:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl StringSetEmpty
+	bl String_SetEmpty
 	ldr r0, [r6, #0x28]
 	mov r1, #7
 	add r2, r5, #0
@@ -1239,7 +1239,7 @@ _021E6316:
 	add r0, r6, #0
 	bl CopyWindowToVram
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

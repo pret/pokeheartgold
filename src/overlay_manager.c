@@ -1,6 +1,6 @@
 #include "overlay_manager.h"
 
-OVY_MANAGER *OverlayManager_new(const OVY_MGR_TEMPLATE *template, void *args, HeapID heapId) {
+OVY_MANAGER *OverlayManager_New(const OVY_MGR_TEMPLATE *template, void *args, HeapID heapId) {
     OVY_MANAGER *ret;
 
     ret = AllocFromHeap(heapId, sizeof(OVY_MANAGER));
@@ -15,7 +15,7 @@ OVY_MANAGER *OverlayManager_new(const OVY_MGR_TEMPLATE *template, void *args, He
     return ret;
 }
 
-void OverlayManager_delete(OVY_MANAGER *man) {
+void OverlayManager_Delete(OVY_MANAGER *man) {
     FreeToHeap(man);
 }
 
@@ -40,7 +40,7 @@ void *OverlayManager_GetArgs(OVY_MANAGER *man) {
     return man->args;
 }
 
-BOOL OverlayManager_run(OVY_MANAGER *man) {
+BOOL OverlayManager_Run(OVY_MANAGER *man) {
     switch (man->exec_state) {
     case 0:
         if (man->template.ovy_id != FS_OVERLAY_ID_NONE) {

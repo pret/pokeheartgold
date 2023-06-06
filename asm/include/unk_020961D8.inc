@@ -1,12 +1,12 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public MessageFormat_new
-.public MessageFormat_delete
+.public MessageFormat_New
+.public MessageFormat_Delete
 .public IsPaletteFadeFinished
-.public MailMsg_init_withBank
+.public MailMsg_Init_WithBank
 .public AllocFromHeap
 .public FreeToHeap
-.public Save_Misc_get
+.public Save_Misc_Get
 .public SaveMisc_GetBattleGreeting
 .public SaveMisc_SetBattleGreeting
 .public sub_0203EA24

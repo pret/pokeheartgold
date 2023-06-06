@@ -61,11 +61,11 @@
 .public Field_GetObjectEvents
 .public FlyPoints_GetWeatherType
 .public FlyPoints_GetCameraType
-.public Save_FlyPoints_get
+.public Save_FlyPoints_Get
 .public FieldSys_GetSaveDataPtr
 .public sub_0203E348
 .public TryStartMapScriptByType
-.public SaveArray_Flags_get
+.public SaveArray_Flags_Get
 .public Fsys_TaskIsRunning
 .public sub_02053018
 .public sub_02053038

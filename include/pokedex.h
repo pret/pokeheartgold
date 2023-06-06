@@ -42,9 +42,9 @@ typedef struct POKEDEX {
 } POKEDEX; // size=0x340
 
 u32 Save_Pokedex_sizeof(void);
-POKEDEX *Pokedex_new(HeapID heapId);
-void Save_Pokedex_init(POKEDEX *pokedex);
-POKEDEX *Save_Pokedex_get(SAVEDATA *saveData);
+POKEDEX *Pokedex_New(HeapID heapId);
+void Save_Pokedex_Init(POKEDEX *pokedex);
+POKEDEX *Save_Pokedex_Get(SAVEDATA *saveData);
 BOOL Pokedex_GetNatDexFlag(const POKEDEX *pokedex);
 BOOL Pokedex_CheckMonCaughtFlag(const POKEDEX *pokedex, u16 species);
 BOOL Pokedex_CheckMonSeenFlag(const POKEDEX *pokedex, u16 species);
@@ -54,7 +54,7 @@ u16 Pokedex_CountNationalDexSeen(POKEDEX *pokedex);
 u16 Pokedex_CountJohtoDexOwned(POKEDEX *pokedex);
 u16 Pokedex_CountJohtoOwned_ExcludeMythical(POKEDEX *pokedex);
 u16 Pokedex_CountJohtoDexSeen(POKEDEX *pokedex);
-void Pokedex_copy(const POKEDEX *src, POKEDEX *dest);
+void Pokedex_Copy(const POKEDEX *src, POKEDEX *dest);
 BOOL DexSpeciesIsInvalid(u16 species);
 u16 Pokedex_CountDexOwned(POKEDEX *pokedex);
 BOOL Pokedex_NationalDexIsComplete(POKEDEX *pokedex);

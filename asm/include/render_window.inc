@@ -31,7 +31,7 @@
 .public sub_0200EB80
 .public sub_0200EC0C
 .public DrawFrameAndWindow3
-.public WaitingIcon_new
+.public WaitingIcon_New
 .public sub_0200F450
 .public sub_0200F478
 .public DrawPokemonPicFromSpecies

@@ -20,8 +20,8 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public GfGfxLoader_GetCharData
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
@@ -95,8 +95,8 @@
 .public sub_02013794
 .public sub_020137C0
 .public sub_020138E0
-.public ListMenuItems_ctor
-.public ListMenuItems_dtor
+.public ListMenuItems_New
+.public ListMenuItems_Delete
 .public ListMenuItems_AddItem
 .public sub_02014DA0
 .public sub_0201543C
@@ -165,7 +165,7 @@
 .public sub_02025364
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public String16_FormatInteger
 .public sub_02026C44
 .public sub_02026CAC
@@ -180,14 +180,14 @@
 .public SealCase_SetCapsuleI
 .public CapsuleGetSealI
 .public SealOnCapsuleGetID
-.public SealCase_inventory_get
+.public SealCase_inventory_Get
 .public SealCaseInventory_GetSealQuantity
 .public SealIsOnCapsule
 .public SealCaseInventory_SetSealQuantity
 .public GiveOrTakeSeal
 .public GiveOrTakeSeal2
 .public SealCase_CountUniqueSeals
-.public Save_GameStats_get
+.public Save_GameStats_Get
 .public GameStats_AddSpecial
 .public AllocMonZeroed
 .public GetMonData

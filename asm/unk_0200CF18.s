@@ -348,7 +348,7 @@ _0200D14C:
 	str r0, [r4, #8]
 	ldr r1, [r5]
 	mov r0, #0xaf
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x20]
 	mov r0, #0
 	str r0, [sp, #0x24]
@@ -485,7 +485,7 @@ _0200D24C:
 	add r0, r6, #0
 	bl FreeToHeap
 	ldr r0, [sp, #0x20]
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #1
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}

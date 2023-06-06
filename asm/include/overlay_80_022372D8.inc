@@ -2,7 +2,7 @@
 #pragma once
 .public FreeToHeap
 .public LCRandom
-.public PlayerProfile_copy
+.public PlayerProfile_Copy
 .public sub_02030BD0
 .public sub_02034818
 .public sub_0203769C
@@ -17,7 +17,7 @@
 .public UpdateMonAbility
 .public InitPartyWithMaxSize
 .public GetPartyMonByIndex
-.public SaveArray_PlayerParty_get
+.public SaveArray_PlayerParty_Get
 .public HealParty
 .public FX_Sqrt
 .public _fadd

@@ -18,7 +18,7 @@
 .public AddMonToParty
 .public GetPartyMonByIndex
 .public Party_SwapSlots
-.public SaveArray_PlayerParty_get
+.public SaveArray_PlayerParty_Get
 .public MI_CpuCopy8
 .public ov80_0222AEF8
 .public ov80_0222AF10

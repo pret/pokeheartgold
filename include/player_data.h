@@ -32,17 +32,17 @@ typedef struct PLAYERDATA {
 } PLAYERDATA;
 
 u32 Save_PlayerData_sizeof(void);
-void Save_PlayerData_init(PLAYERDATA* player);
+void Save_PlayerData_Init(PLAYERDATA* player);
 PLAYERPROFILE* Save_PlayerData_GetProfileAddr(SAVEDATA* savedata);
 OPTIONS* Save_PlayerData_GetOptionsAddr(SAVEDATA* savedata);
 u16* Save_PlayerData_GetCoinsAddr(SAVEDATA* savedata);
 IGT* Save_PlayerData_GetIGTAddr(SAVEDATA* savedata);
 u32 PlayerProfile_sizeof(void);
-PLAYERPROFILE* PlayerProfile_new(HeapID heap_id);
-void PlayerProfile_copy(const PLAYERPROFILE* src, PLAYERPROFILE* dest);
-void PlayerProfile_init(PLAYERPROFILE* profile);
+PLAYERPROFILE* PlayerProfile_New(HeapID heap_id);
+void PlayerProfile_Copy(const PLAYERPROFILE* src, PLAYERPROFILE* dest);
+void PlayerProfile_Init(PLAYERPROFILE* profile);
 BOOL PlayerProfile_IsNameEmpty(PLAYERPROFILE* profile);
-void Save_Profile_PlayerName_set(PLAYERPROFILE* profile, u16* name);
+void Save_Profile_PlayerName_Set(PLAYERPROFILE* profile, u16* name);
 void PlayerName_StringToFlat(PLAYERPROFILE* profile, STRING* str);
 const u16 * PlayerProfile_GetNamePtr(const PLAYERPROFILE *profile);
 void PlayerName_FlatToString(PLAYERPROFILE* profile, STRING* str);

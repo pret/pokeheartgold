@@ -50,8 +50,8 @@ typedef struct TrainerHouseSave {
 } TrainerHouseSave; // size=0xF00
 
 u32 Save_TrainerHouse_sizeof(void);
-TrainerHouseSave *Save_TrainerHouse_get(SAVEDATA *saveData);
-void Save_TrainerHouse_init(TrainerHouseSave *th);
+TrainerHouseSave *Save_TrainerHouse_Get(SAVEDATA *saveData);
+void Save_TrainerHouse_Init(TrainerHouseSave *th);
 void TrainerHouseMon_SetZero(TrainerHouseMon *mon);
 void TrainerHouseTrainer_SetZero(TrainerHouseTrainer *trainer);
 void TrainerHouseSet_SetZero(TrainerHouseSet *set);

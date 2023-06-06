@@ -54,7 +54,7 @@ sub_0202D254: ; 0x0202D254
 _0202D25C:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl MailMsg_init_fromTemplate
+	bl MailMsg_Init_FromTemplate
 	add r6, r6, #1
 	add r4, #8
 	add r5, #8
@@ -686,7 +686,7 @@ sub_0202D640: ; 0x0202D640
 	lsl r0, r5, #3
 	add r0, r1, r0
 	add r1, r4, #0
-	bl MailMsg_copy
+	bl MailMsg_Copy
 	pop {r3, r4, r5, pc}
 	nop
 _0202D65C: .word 0x00000ABC
@@ -1082,8 +1082,8 @@ sub_0202D908: ; 0x0202D908
 	.balign 4, 0
 	thumb_func_end sub_0202D908
 
-	thumb_func_start Save_FrontierData_get
-Save_FrontierData_get: ; 0x0202D918
+	thumb_func_start Save_FrontierData_Get
+Save_FrontierData_Get: ; 0x0202D918
 	push {r3, lr}
 	bl sub_0203107C
 	ldr r1, _0202D924 ; =0x00000954
@@ -1091,7 +1091,7 @@ Save_FrontierData_get: ; 0x0202D918
 	pop {r3, pc}
 	.balign 4, 0
 _0202D924: .word 0x00000954
-	thumb_func_end Save_FrontierData_get
+	thumb_func_end Save_FrontierData_Get
 
 	thumb_func_start sub_0202D928
 sub_0202D928: ; 0x0202D928

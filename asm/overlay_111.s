@@ -866,7 +866,7 @@ _021E5F8A:
 	blt _021E5F8A
 	ldr r1, [r5]
 	mov r0, #0xad
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r5, #0x1c]
 	add sp, #0xa0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -881,7 +881,7 @@ ov111_021E5FD4: ; 0x021E5FD4
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	ldr r0, [r6, #0x1c]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r5, _021E5FFC ; =_021E6B74
 	mov r4, #0
 _021E5FE2:
@@ -1131,7 +1131,7 @@ ov111_021E6180: ; 0x021E6180
 	bl sub_0200D71C
 	ldr r1, [r5]
 	mov r0, #0x14
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x10]
 	mov r4, #0
 _021E61EE:
@@ -1185,7 +1185,7 @@ _021E61EE:
 	add r1, r6, #0
 	bl sub_0200D71C
 	ldr r0, [sp, #0x10]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov111_021E6180
@@ -1200,7 +1200,7 @@ ov111_021E6268: ; 0x021E6268
 	add r1, r3, #0
 	add r6, r2, #0
 	str r3, [sp, #4]
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	add r0, r4, #0
 	bl Pokemon_GetIconNaix
@@ -1238,7 +1238,7 @@ ov111_021E6268: ; 0x021E6268
 	mov r1, #1
 	bl sub_0200DC78
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov111_021E6268
@@ -1921,7 +1921,7 @@ ov111_021E67C4: ; 0x021E67C4
 	mov r2, #0
 	add r3, r5, #0
 	str r5, [r4, #0x18]
-	bl MessagePrinter_new
+	bl MessagePrinter_New
 	str r0, [r4, #4]
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
@@ -1951,7 +1951,7 @@ ov111_021E67EC: ; 0x021E67EC
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #0x18]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #8]
 	bl ResetAllTextPrinters
 	ldr r1, [r4, #0x30]
@@ -1989,14 +1989,14 @@ ov111_021E685C: ; 0x021E685C
 	ldr r0, [r4, #0xc]
 	bl DestroyMsgData
 	ldr r0, [r4, #8]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
 	beq _021E687A
-	bl String_dtor
+	bl String_Delete
 _021E687A:
 	ldr r0, [r4, #4]
-	bl MessagePrinter_delete
+	bl MessagePrinter_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -2021,7 +2021,7 @@ ov111_021E6888: ; 0x021E6888
 	and r0, r1
 	str r0, [r4, #0x30]
 	ldr r0, [r4, #0x10]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0
 	str r0, [r4, #0x10]
 	sub r0, r0, #1
@@ -2386,7 +2386,7 @@ ov111_021E6B30: ; 0x021E6B30
 	add r0, r5, #0
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov111_021E6B30

@@ -60,7 +60,7 @@ const struct ScriptBankMapping sScriptBankMapping[30] = {
 };
 
 void StartMapSceneScript(FieldSystem *fsys, u16 script, LocalMapObject *lastInteracted) {
-    ScriptEnvironment *r4 = ScriptEnvironment_new();
+    ScriptEnvironment *r4 = ScriptEnvironment_New();
     SetupScriptEngine(fsys, r4, script, lastInteracted, NULL);
     FieldSys_CreateTask(fsys, Task_RunScripts, r4);
 }
@@ -78,14 +78,14 @@ void FieldSys_SetEngagedTrainer(FieldSystem *fsys, LocalMapObject *obj, int a2, 
 
 void QueueScript(TaskManager *taskman, u16 script, LocalMapObject *lastInteracted, void *a3) {
     FieldSystem *fsys = TaskManager_GetSys(taskman);
-    ScriptEnvironment *env = ScriptEnvironment_new();
+    ScriptEnvironment *env = ScriptEnvironment_New();
     SetupScriptEngine(fsys, env, script, lastInteracted, a3);
     TaskManager_Call(taskman, Task_RunScripts, env);
 }
 
 void StartScriptFromMenu(TaskManager *taskman, u16 script, LocalMapObject *lastInteracted) {
     FieldSystem *fsys = TaskManager_GetSys(taskman);
-    ScriptEnvironment *env = ScriptEnvironment_new();
+    ScriptEnvironment *env = ScriptEnvironment_New();
     SetupScriptEngine(fsys, env, script, lastInteracted, NULL);
     TaskManager_Jump(taskman, Task_RunScripts, env);
 }
@@ -102,7 +102,7 @@ BOOL Task_RunScripts(TaskManager *taskman) {
     case 0:
         env->scriptContexts[0] = CreateScriptContext(fsys, env->activeScriptNumber);
         env->activeScriptContextCount = 1;
-        env->msgfmt = MessageFormat_new_custom(8, 64, HEAP_ID_FIELD);
+        env->msgfmt = MessageFormat_New_Custom(8, 64, HEAP_ID_FIELD);
         env->stringBuffer0 = String_New(1024, HEAP_ID_FIELD);
         env->stringBuffer1 = String_New(1024, HEAP_ID_FIELD);
         env->state++;
@@ -123,9 +123,9 @@ BOOL Task_RunScripts(TaskManager *taskman) {
         }
         if (env->activeScriptContextCount == 0) {
             void (*callback)(FieldSystem *a0) = env->scrctx_end_cb;
-            MessageFormat_delete(env->msgfmt);
-            String_dtor(env->stringBuffer0);
-            String_dtor(env->stringBuffer1);
+            MessageFormat_Delete(env->msgfmt);
+            String_Delete(env->stringBuffer0);
+            String_Delete(env->stringBuffer1);
             env->check = 0;
             FreeToHeap(env);
             if (callback != NULL) {
@@ -140,7 +140,7 @@ BOOL Task_RunScripts(TaskManager *taskman) {
     return FALSE;
 }
 
-ScriptEnvironment *ScriptEnvironment_new(void) {
+ScriptEnvironment *ScriptEnvironment_New(void) {
     ScriptEnvironment *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(ScriptEnvironment));
     GF_ASSERT(ret != NULL);
     memset(ret, 0, sizeof(ScriptEnvironment));
@@ -348,7 +348,7 @@ u32 GetCurrentMapMessageBank(u32 mapno) {
 }
 
 u16 *GetVarPointer(FieldSystem *fsys, u16 varIdx) {
-    SCRIPT_STATE *state = SaveArray_Flags_get(fsys->savedata);
+    SCRIPT_STATE *state = SaveArray_Flags_Get(fsys->savedata);
     if (varIdx < VAR_BASE) {
         return NULL;
     } else if (varIdx < SPECIAL_VAR_BASE) {
@@ -381,22 +381,22 @@ u16 VarGetObjectEventGraphicsId(FieldSystem *fsys, u16 varobjId) {
 }
 
 BOOL FlagGet(FieldSystem *fsys, u16 flagId) {
-    return CheckFlagInArray(SaveArray_Flags_get(fsys->savedata), flagId);
+    return CheckFlagInArray(SaveArray_Flags_Get(fsys->savedata), flagId);
 }
 
 void FlagSet(FieldSystem *fsys, u16 flagId) {
-    return SetFlagInArray(SaveArray_Flags_get(fsys->savedata), flagId);
+    return SetFlagInArray(SaveArray_Flags_Get(fsys->savedata), flagId);
 }
 
 void FlagClear(FieldSystem *fsys, u16 flagId) {
-    return ClearFlagInArray(SaveArray_Flags_get(fsys->savedata), flagId);
+    return ClearFlagInArray(SaveArray_Flags_Get(fsys->savedata), flagId);
 }
 
 void ClearTempFieldEventData(FieldSystem *fsys) {
     u8 *flags;
     u16 *vars;
 
-    SCRIPT_STATE *state = SaveArray_Flags_get(fsys->savedata);
+    SCRIPT_STATE *state = SaveArray_Flags_Get(fsys->savedata);
     flags = GetFlagAddr(state, MAPTEMP_FLAG_BASE);
     memset(flags, 0, NUM_MAPTEMP_FLAGS / 8);
     vars = GetVarAddr(state, TEMP_VAR_BASE);
@@ -406,7 +406,7 @@ void ClearTempFieldEventData(FieldSystem *fsys) {
 void ClearDailyFlags(FieldSystem *fsys) {
     u8 *flags;
 
-    SCRIPT_STATE *state = SaveArray_Flags_get(fsys->savedata);
+    SCRIPT_STATE *state = SaveArray_Flags_Get(fsys->savedata);
     flags = GetFlagAddr(state, DAILY_FLAG_BASE);
     memset(flags, 0, NUM_DAILY_FLAGS / 8);
 }
@@ -435,17 +435,17 @@ BOOL TrainerNumIsDouble(u32 trainer) {
 }
 
 BOOL TrainerFlagCheck(SAVEDATA *saveData, u32 trainer) {
-    SCRIPT_STATE *scriptState = SaveArray_Flags_get(saveData);
+    SCRIPT_STATE *scriptState = SaveArray_Flags_Get(saveData);
     return CheckFlagInArray(scriptState, trainer + TRAINER_FLAG_BASE);
 }
 
 void TrainerFlagSet(SAVEDATA *saveData, u32 trainer) {
-    SCRIPT_STATE *scriptState = SaveArray_Flags_get(saveData);
+    SCRIPT_STATE *scriptState = SaveArray_Flags_Get(saveData);
     SetFlagInArray(scriptState, trainer + TRAINER_FLAG_BASE);
 }
 
 void TrainerFlagClear(SAVEDATA *saveData, u32 trainer) {
-    SCRIPT_STATE *scriptState = SaveArray_Flags_get(saveData);
+    SCRIPT_STATE *scriptState = SaveArray_Flags_Get(saveData);
     ClearFlagInArray(scriptState, trainer + TRAINER_FLAG_BASE);
 }
 

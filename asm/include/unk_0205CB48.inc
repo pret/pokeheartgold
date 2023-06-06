@@ -4,7 +4,7 @@
 .public PlaySE
 .public sub_02006088
 .public GF_AssertFail
-.public Save_GameStats_get
+.public Save_GameStats_Get
 .public GameStats_Inc
 .public GetMetatileBehaviorAt
 .public sub_020549F4

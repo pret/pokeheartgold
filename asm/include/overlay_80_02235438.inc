@@ -4,7 +4,7 @@
 .public sub_02004EC4
 .public StopBGM
 .public GF_AssertFail
-.public Save_GameStats_get
+.public Save_GameStats_Get
 .public GameStats_Add
 .public sub_0203769C
 .public sub_02037C0C

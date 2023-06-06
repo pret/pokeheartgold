@@ -29,8 +29,8 @@
 .public DestroyMsgData
 .public NewString_ReadMsgData
 .public ReadMsgData_ExpandPlaceholders
-.public MessageFormat_new_custom
-.public MessageFormat_delete
+.public MessageFormat_New_Custom
+.public MessageFormat_Delete
 .public BufferString
 .public BufferIntegerAsString
 .public StringExpandPlaceholders
@@ -88,7 +88,7 @@
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetFrame
 .public sub_0202E4B0
