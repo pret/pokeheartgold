@@ -21,7 +21,7 @@ void BattleController_EmitDrawYesNoBox(BattleSystem *bsys, BATTLECONTEXT *ctx, i
 void BattleController_EmitShowWaitMessage(BattleSystem *bsys, int battlerId);
 void BattleController_EmitPrintAttackMessage(BattleSystem *bsys, BATTLECONTEXT *ctx);
 void BattleController_EmitPrintMessage(BattleSystem *bsys, BATTLECONTEXT *ctx, BATTLEMSG *msg);
-void ov12_0226340C(BattleSystem *bsys, BATTLECONTEXT *ctx, u16 move);
+void BattleController_SetMoveEffect(BattleSystem *bsys, BATTLECONTEXT *ctx, u16 move);
 void ov12_0226343C(BattleSystem *bsys, BATTLECONTEXT *ctx, u16 move, int attacker, int target);
 void BattleController_EmitMonFlicker(BattleSystem *bsys, int side, int a2);
 void BattleController_EmitHealthbarUpdate(BattleSystem *bsys, BATTLECONTEXT *ctx, int side);

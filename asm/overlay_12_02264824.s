@@ -1248,7 +1248,7 @@ ov12_0226516C: ; 0x0226516C
 	add r4, r0, #0
 	mov r0, #0x16
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	mov r1, #0xf1
 	str r0, [sp, #0x18]
 	add r0, r7, #0
@@ -1882,7 +1882,7 @@ ov12_022656CC: ; 0x022656CC
 	add r7, r0, #0
 	mov r0, #0x1e
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	mov r1, #1
 	add r6, r0, #0
 	lsl r1, r1, #0xa

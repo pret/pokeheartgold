@@ -69,7 +69,7 @@ BOOL RoutineFieldFade(TaskManager *man) {
 }
 
 void NewFieldTransitionEnvironment(FieldSystem *fsys, int mapID, int warpID, int x, int y, int dir, u32 transNo) {
-    FieldTransitionEnvironment *fenv = AllocFromHeapAtEnd(11, sizeof(FieldTransitionEnvironment));
+    FieldTransitionEnvironment *fenv = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldTransitionEnvironment));
     fenv->state = 0;
     fenv->transitionState = 0;
     fenv->unk1 = 0;
@@ -83,7 +83,7 @@ void NewFieldTransitionEnvironment(FieldSystem *fsys, int mapID, int warpID, int
 }
 
 void sub_02055CD8(FieldSystem *fsys, int mapID, int warpID, int x, int y, int dir) {
-    FieldTransitionEnvironment *fenv = AllocFromHeapAtEnd(11, sizeof(FieldTransitionEnvironment));
+    FieldTransitionEnvironment *fenv = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldTransitionEnvironment));
     fenv->state = 0;
     fenv->transitionState = 0;
     fenv->unk1 = 0;
@@ -381,7 +381,7 @@ BOOL sub_020562B0(TaskManager *man) {
         ov01_PlayerAvatar_OrrTransitionFlags(fsys->playerAvatar, 512);
         ov01_PlayerAvatar_ApplyTransitionFlags(fsys->playerAvatar);
         sub_0205F328(obj, FALSE);
-        fenv->unk18 =  AllocFromHeapAtEnd(11, sizeof(FieldEnvSubUnk18));
+        fenv->unk18 =  AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldEnvSubUnk18));
         fenv18 = fenv->unk18;
         fenv18->state = 0;
         fenv18->direction = PlayerAvatar_GetFacingDirection(fsys->playerAvatar);
@@ -467,7 +467,7 @@ BOOL sub_02056424(TaskManager *man) {
             ov01_PlayerAvatar_OrrTransitionFlags(fsys->playerAvatar, 512);
             ov01_PlayerAvatar_ApplyTransitionFlags(fsys->playerAvatar);
             sub_0205F328(obj, 0);
-            fenv->unk18 = AllocFromHeapAtEnd(11, sizeof(FieldEnvSubUnk18));
+            fenv->unk18 = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldEnvSubUnk18));
             fenv->unk18->state = 0;
             PlayerAvatar_ToggleAutomaticHeightUpdating(fsys->playerAvatar, FALSE);
             fenv->transitionState++;

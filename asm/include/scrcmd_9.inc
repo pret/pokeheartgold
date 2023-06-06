@@ -15,7 +15,7 @@
 .public FreeToHeap
 .public LCRandom
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public CopyStringToU16Array
 .public Save_PlayerData_GetProfileAddr

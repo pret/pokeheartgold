@@ -68,7 +68,7 @@ static void sub_020506AC(TaskManager *man, BATTLE_SETUP *setup) {
 
 static ENCOUNTER *Encounter_New(BATTLE_SETUP *setup, int effect, int bgm, u32 *flag) {
     ENCOUNTER *work;
-    work = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(ENCOUNTER));
+    work = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(ENCOUNTER));
     work->winFlag = flag;
     if (flag != NULL) {
         *flag = 0;
@@ -284,7 +284,7 @@ void sub_02050AAC(TaskManager *man, BATTLE_SETUP *setup, int effect, int bgm, u3
 }
 
 static WILD_ENCOUNTER *WildEncounter_New(BATTLE_SETUP *setup, int effect, int bgm, int *winFlag) {
-    WILD_ENCOUNTER *encounter = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(WILD_ENCOUNTER));
+    WILD_ENCOUNTER *encounter = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(WILD_ENCOUNTER));
     encounter->winFlag = winFlag;
     if (winFlag != NULL) {
         *winFlag = 0;
@@ -536,7 +536,7 @@ static BOOL Task_BugContestEncounter(TaskManager *man) {
 void SetupAndStartWildBattle(TaskManager *man, u16 mon, u8 level, u32 *winFlag, BOOL canFlee, BOOL shiny) {
     BATTLE_SETUP *setup;
     FieldSystem *fsys = TaskManager_GetSys(man);
-    setup = BattleSetup_New(HEAP_ID_FIELDMAP, 0);
+    setup = BattleSetup_New(HEAP_ID_FIELD, 0);
     BattleSetup_InitFromFsys(setup, fsys);
     ov02_02247F30(fsys, mon, level, shiny, setup);
 
@@ -555,7 +555,7 @@ void sub_02051090(TaskManager *man, u16 species, u8 level, u32 *winFlag, BOOL ca
     int var;
 
     fsys = TaskManager_GetSys(man);
-    setup = BattleSetup_New(HEAP_ID_FIELDMAP, 0);
+    setup = BattleSetup_New(HEAP_ID_FIELD, 0);
     BattleSetup_InitFromFsys(setup, fsys);
 
     ov02_02247F30(fsys, species, level, 0, setup);
@@ -626,7 +626,7 @@ void sub_020511F8(FieldSystem *fsys, BATTLE_SETUP *setup) {
 
 void sub_02051228(TaskManager *man, u16 species, u8 level) {
     FieldSystem *fsys = TaskManager_GetSys(man);
-    BATTLE_SETUP *setup = BattleSetup_New(HEAP_ID_FIELDMAP, 0);
+    BATTLE_SETUP *setup = BattleSetup_New(HEAP_ID_FIELD, 0);
     BattleSetup_InitFromFsys(setup, fsys);
 
     ov02_02247F30(fsys, species, level, 0, setup);
@@ -682,7 +682,7 @@ void SetupAndStartTutorialBattle(TaskManager *man) {
     FieldSystem *fsys;
 
     fsys = TaskManager_GetSys(man);
-    setup = sub_02051AAC(HEAP_ID_FIELDMAP, fsys);
+    setup = sub_02051AAC(HEAP_ID_FIELD, fsys);
     encounter = Encounter_New(setup, sub_020517E8(setup), sub_020517FC(setup), NULL);
 
     TaskManager_Call(man, Task_TutorialBattle, encounter);
@@ -708,7 +708,7 @@ void SetupAndStartTrainerBattle(TaskManager *man, u32 opponentTrainer1, u32 oppo
         }
     }
 
-    setup = BattleSetup_New(HEAP_ID_FIELDMAP, battleFlags);
+    setup = BattleSetup_New(HEAP_ID_FIELD, battleFlags);
     BattleSetup_InitFromFsys(setup, fsys);
 
     setup->trainerId[1] = opponentTrainer1;
@@ -738,7 +738,7 @@ void sub_02051428(TaskManager *man, void *a1, int battleFlags) {
     BATTLE_SETUP *setup;
 
     fsys = TaskManager_GetSys(man);
-    setup = BattleSetup_New(HEAP_ID_FIELDMAP, battleFlags);
+    setup = BattleSetup_New(HEAP_ID_FIELD, battleFlags);
 
     sub_020522F0(setup, fsys, a1);
 
@@ -773,24 +773,24 @@ void sub_020514A4(TaskManager *man, int target, int maxLevel, int flag) {
     fsys = TaskManager_GetSys(man);
 
     if (flag == 0) {
-        setup = BattleSetup_New(HEAP_ID_FIELDMAP, 5);
+        setup = BattleSetup_New(HEAP_ID_FIELD, 5);
         mode = 0;
     } else if (flag == 1) {
-        setup = BattleSetup_New(HEAP_ID_FIELDMAP, 7);
+        setup = BattleSetup_New(HEAP_ID_FIELD, 7);
         mode = 7;
     } else {
-        setup = BattleSetup_New(HEAP_ID_FIELDMAP, 143);
+        setup = BattleSetup_New(HEAP_ID_FIELD, 143);
 
         setup->trainerId[1] = 1;
         setup->trainerId[3] = 2;
 
-        EnemyTrainerSet_Init(setup, fsys->savedata, HEAP_ID_FIELDMAP);
+        EnemyTrainerSet_Init(setup, fsys->savedata, HEAP_ID_FIELD);
         mode = 14;
     }
 
     sub_02051F2C(setup, fsys, maxLevel);
 
-    sub_0202FBF0(fsys->savedata, HEAP_ID_FIELDMAP, &result);
+    sub_0202FBF0(fsys->savedata, HEAP_ID_FIELD, &result);
 
     setup->unk1B2 = mode;
 
@@ -825,9 +825,9 @@ void sub_02051598(FieldSystem *fsys, void *a1, int battleFlags) {
     BATTLE_SETUP *setup;
     int var;
 
-    setup = BattleSetup_New(HEAP_ID_FIELDMAP, battleFlags);
+    setup = BattleSetup_New(HEAP_ID_FIELD, battleFlags);
     sub_020522F0(setup, fsys, a1);
-    sub_0202FBF0(fsys->savedata, HEAP_ID_FIELDMAP, &var);
+    sub_0202FBF0(fsys->savedata, HEAP_ID_FIELD, &var);
 
     setup->unk1B2 = sub_02051474(fsys->unkA4, battleFlags);
 
@@ -841,9 +841,9 @@ void sub_020515FC(FieldSystem *fsys, PARTY *party, int battleFlags) {
     BATTLE_SETUP *setup;
     int var;
 
-    setup = BattleSetup_New(HEAP_ID_FIELDMAP, battleFlags);
+    setup = BattleSetup_New(HEAP_ID_FIELD, battleFlags);
     sub_020520B0(setup, fsys, party, NULL);
-    sub_0202FBF0(fsys->savedata, HEAP_ID_FIELDMAP, &var);
+    sub_0202FBF0(fsys->savedata, HEAP_ID_FIELD, &var);
 
     setup->unk1B2 = sub_02051474(fsys->unkA4, battleFlags);
 

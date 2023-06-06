@@ -61,7 +61,7 @@
 .public ov12_0223BAF8
 .public BattleSys_Random
 .public ov12_0223BFEC
-.public ov12_0224E4FC
+.public BattleSystem_GetBattleMon
 .public BattleController_EmitRefreshMonData
 .public ReadBattleScriptFromNarc
 .public ov12_0224EBDC
@@ -75,8 +75,8 @@
 .public SetBattlerVar
 .public ov12_0224F794
 .public ov12_0224FC48
-.public ov12_02250360
-.public ov12_02250370
+.public BattleSystem_ClearExperienceEarnFlags
+.public BattleSystem_SetExperienceEarnFlags
 .public ov12_022503EC
 .public ov12_02250490
 .public ov12_022506D4
@@ -87,7 +87,7 @@
 .public UnlockBattlerOutOfCurrentMove
 .public ov12_02250CFC
 .public ov12_02250D4C
-.public ov12_02250F44
+.public BattleContext_Init
 .public ov12_02251038
 .public InitSwitchWork
 .public InitFaintedWork
@@ -140,7 +140,7 @@
 .public ov12_0225561C
 .public CheckItemEffectOnHit
 .public GetBattlerHeldItemEffect
-.public ov12_02255844
+.public BattleSystem_GetHeldItemDamageBoost
 .public GetNaturalGiftPower
 .public GetNaturalGiftType
 .public ov12_022558F8

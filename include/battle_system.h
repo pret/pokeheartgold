@@ -25,5 +25,8 @@ int BattleSys_GetBattlerIdPartner(BattleSystem *bsys, int battlerId);
 int BattleSys_GetTrainerIndex(BattleSystem *bsys, int battlerId);
 BOOL Link_QueueNotEmpty(BATTLECONTEXT *ctx);
 BOOL BattleSys_AreBattleAnimationsOn(BattleSystem *bsys);
+u32 *ov12_0223A900(BattleSystem *bsys);
+BOOL ov12_0223C080(BattleSystem *bsys);
+void ov12_0223BFFC(BattleSystem *bsys, u32 a1);
 
 #endif

@@ -58,7 +58,7 @@
 .public sub_02023308
 .public sub_020233D8
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public CopyU16ArrayToString
 .public SPL_DeleteAll

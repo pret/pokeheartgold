@@ -223,7 +223,7 @@ static void sub_0205316C(FieldSystem *fsys) {
         avatar_sub = SaveFlyPoints_GetPlayerSub(Save_FlyPoints_get(fsys->savedata));
         fsys->playerAvatar = sub_0205C390(fsys->mapObjectMan, fsys->location->x, fsys->location->y, fsys->location->direction, avatar_sub->unk4, gender, 2, avatar_sub);
     } else {
-        fsys->mapObjectMan = sub_0205E0BC(fsys, 64, 5);
+        fsys->mapObjectMan = sub_0205E0BC(fsys, 64, HEAP_ID_BATTLE);
         gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fsys->savedata));
         avatar_sub = SaveFlyPoints_GetPlayerSub(Save_FlyPoints_get(fsys->savedata));
         fsys->playerAvatar = sub_0205C390(fsys->mapObjectMan, fsys->location->x, fsys->location->y, fsys->location->direction, avatar_sub->unk4, gender, 2, avatar_sub);
@@ -248,7 +248,7 @@ static void sub_0205323C(FieldSystem *fsys) {
     u32 gender;
     struct FlypointsPlayerSub *avatar_sub;
 
-    fsys->mapObjectMan = sub_0205E0BC(fsys, 64, 5);
+    fsys->mapObjectMan = sub_0205E0BC(fsys, 64, HEAP_ID_BATTLE);
     Fsys_RestoreMapObjectsFromSave(fsys);
     avatar_sub = SaveFlyPoints_GetPlayerSub(Save_FlyPoints_get(fsys->savedata));
     gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fsys->savedata));
@@ -449,7 +449,7 @@ TaskManager *CallFieldTask_ContinueGame_CommError(FieldSystem *fsys) {
             return CallFieldTask_ContinueGame_Normal(fsys);
         }
     }
-    env = AllocFromHeapAtEnd(11, sizeof(struct ErrorContinueEnv));
+    env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct ErrorContinueEnv));
     env->state = 0;
     InitLocation(&env->location, MAP_UNION, -1, 8, 14, DIR_NORTH);
     fsys->unk70 = 2;
@@ -488,7 +488,7 @@ static BOOL sub_02053688(TaskManager *taskManager) {
 }
 
 static void sub_02053710(TaskManager *taskManager, Location *location) {
-    struct UnkTaskEnv_02053688 *env = AllocFromHeapAtEnd(11, sizeof(struct UnkTaskEnv_02053688));
+    struct UnkTaskEnv_02053688 *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct UnkTaskEnv_02053688));
     env->unk0 = 0;
     env->location = *location;
     TaskManager_Call(taskManager, sub_02053688, env);
@@ -521,7 +521,7 @@ static BOOL sub_02053740(TaskManager *taskManager) {
 
 void sub_020537A8(TaskManager *taskManager, Location *location) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
-    struct ErrorContinueEnv *env = AllocFromHeapAtEnd(11, sizeof(struct ErrorContinueEnv));
+    struct ErrorContinueEnv *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct ErrorContinueEnv));
     if (sub_0203DF7C(fsys)) {
         GF_ASSERT(0);
         return;
@@ -574,7 +574,7 @@ static BOOL Task_ScriptWarp(TaskManager *taskManager) {
 }
 
 void CallTask_ScriptWarp(TaskManager *taskManager, u32 mapId, int warpId, int x, int y, int direction) {
-    struct ErrorContinueEnv *env = AllocFromHeapAtEnd(11, sizeof(struct ErrorContinueEnv));
+    struct ErrorContinueEnv *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct ErrorContinueEnv));
     env->state = 0;
     InitLocation(&env->location, mapId, warpId, x, y, direction);
     TaskManager_Call(taskManager, Task_ScriptWarp, env);
@@ -588,7 +588,7 @@ TaskManager *sub_020538C0(FieldSystem *fsys, u32 mapId, int warpId, int x, int y
         y,
         direction
     };
-    struct UnkTaskEnv_02053950 *env = AllocFromHeapAtEnd(11, sizeof(struct UnkTaskEnv_02053950));
+    struct UnkTaskEnv_02053950 *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct UnkTaskEnv_02053950));
     env->unk0 = 0;
     env->unk4 = 0;
     env->location = location;
@@ -603,7 +603,7 @@ void sub_02053908(TaskManager *taskManager, u32 mapId, int warpId, int x, int y,
         y,
         direction
     };
-    struct UnkTaskEnv_02053950 *env = AllocFromHeapAtEnd(11, sizeof(struct UnkTaskEnv_02053950));
+    struct UnkTaskEnv_02053950 *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct UnkTaskEnv_02053950));
     env->unk0 = 0;
     env->unk4 = NULL;
     env->location = location;
@@ -710,7 +710,7 @@ static BOOL sub_02053AE4(TaskManager *taskManager) {
 }
 
 void sub_02053B04(TaskManager *taskManager, Location *location, int a2) {
-    struct UnkTaskEnv_02053B3C *env = AllocFromHeapAtEnd(11, sizeof(struct UnkTaskEnv_02053B3C));
+    struct UnkTaskEnv_02053B3C *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct UnkTaskEnv_02053B3C));
     env->unk0 = 0;
     env->unk4 = a2;
     env->unk8 = NULL;
@@ -885,7 +885,7 @@ TaskManager *sub_02053E08(FieldSystem *fsys, u32 mapId, int warpId) {
     Location location;
     int direction;
 
-    env = AllocFromHeapAtEnd(11, sizeof(struct UnkTaskEnv_02053CCC));
+    env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct UnkTaskEnv_02053CCC));
     MI_CpuClear8(env, sizeof(struct UnkTaskEnv_02053CCC));
     direction = PlayerAvatar_GetFacingDirection(fsys->playerAvatar);
     InitLocation(&location, mapId, warpId, 0, 0, direction);
@@ -937,7 +937,7 @@ static BOOL sub_02053E5C(TaskManager *taskManager) {
 
 void sub_02053F14(FieldSystem *fsys) {
     Location *location = FlyPoints_GetDynamicWarp(Save_FlyPoints_get(fsys->savedata));
-    struct UnkTaskEnv_02053E5C *env = AllocFromHeapAtEnd(11, sizeof(struct UnkTaskEnv_02053E5C));
+    struct UnkTaskEnv_02053E5C *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct UnkTaskEnv_02053E5C));
     MI_CpuClear8(env, sizeof(struct UnkTaskEnv_02053E5C));
     env->location = *location;
     sub_02059E04(fsys);
@@ -996,7 +996,7 @@ static BOOL sub_02053F70(TaskManager *taskManager) {
 void sub_02054030(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     Location *location = FlyPoints_GetDynamicWarp(Save_FlyPoints_get(fsys->savedata));
-    struct UnkTaskEnv_02053E5C *env = AllocFromHeapAtEnd(11, sizeof(struct UnkTaskEnv_02053E5C));
+    struct UnkTaskEnv_02053E5C *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct UnkTaskEnv_02053E5C));
     MI_CpuClear8(env, sizeof(struct UnkTaskEnv_02053E5C));
     _CopyPlayerPosToLocationWorkFacingSouth(location, fsys);
     InitLocation(&env->location, MAP_UNION, -1, 8, 14, DIR_NORTH);
@@ -1042,7 +1042,7 @@ void sub_0205412C(TaskManager *taskManager, u32 mapId, int warpId, int x, int y,
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     _CopyPlayerPosToLocationWorkFacingSouth(FlyPoints_GetDynamicWarp(Save_FlyPoints_get(fsys->savedata)), fsys);
     fsys->unk70 = 3;
-    env = AllocFromHeapAtEnd(11, sizeof(struct UnkTaskEnv_02053688));
+    env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct UnkTaskEnv_02053688));
     {
         Location location = {
             mapId,

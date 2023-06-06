@@ -1906,7 +1906,7 @@ ov101_021E85A8: ; 0x021E85A8
 	str r0, [r1]
 	ldr r1, [r4]
 	mov r0, #0x5b
-	bl String_ctor
+	bl String_New
 	add r1, r4, #0
 	add r1, #0x90
 	str r0, [r1]
@@ -1928,7 +1928,7 @@ ov101_021E85A8: ; 0x021E85A8
 	str r0, [r1]
 	ldr r1, [r4]
 	mov r0, #0x28
-	bl String_ctor
+	bl String_New
 	add r1, r4, #0
 	add r1, #0xa4
 	str r0, [r1]
@@ -13756,7 +13756,7 @@ ov101_021EE230: ; 0x021EE230
 	str r0, [r1]
 	ldr r1, [r4]
 	mov r0, #0x5b
-	bl String_ctor
+	bl String_New
 	add r1, r4, #0
 	add r1, #0x90
 	str r0, [r1]
@@ -13778,7 +13778,7 @@ ov101_021EE230: ; 0x021EE230
 	str r0, [r1]
 	ldr r1, [r4]
 	mov r0, #0x28
-	bl String_ctor
+	bl String_New
 	add r1, r4, #0
 	add r1, #0xa4
 	str r0, [r1]
@@ -18319,12 +18319,12 @@ ov101_021F05EC: ; 0x021F05EC
 	mov r0, #0xa
 	ldr r1, [r6]
 	lsl r0, r0, #6
-	bl String_ctor
+	bl String_New
 	str r0, [r6, #0x1c]
 	mov r0, #0xa
 	ldr r1, [r6]
 	lsl r0, r0, #6
-	bl String_ctor
+	bl String_New
 	str r0, [r6, #0x20]
 	mov r4, #0
 	add r5, r6, #0
@@ -21511,19 +21511,19 @@ ov101_021F1D74: ; 0x021F1D74
 	str r0, [r4, #0x50]
 	ldr r0, _021F1E7C ; =0x00000439
 	ldr r1, [r4]
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x54]
 	ldr r0, _021F1E7C ; =0x00000439
 	ldr r1, [r4]
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x64]
 	ldr r1, [r4]
 	mov r0, #0x10
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x58]
 	ldr r1, [r4]
 	mov r0, #0x2c
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x5c]
 	ldr r0, [r4, #0x44]
 	mov r1, #0x1d
@@ -29200,23 +29200,23 @@ ov101_021F57B8: ; 0x021F57B8
 	str r0, [r4, #0x44]
 	ldr r1, [r4]
 	mov r0, #0x33
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x48]
 	ldr r1, [r4]
 	mov r0, #0x33
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x4c]
 	ldr r1, [r4]
 	mov r0, #0x33
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x50]
 	ldr r0, _021F589C ; =0x00000547
 	ldr r1, [r4]
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x6c]
 	ldr r0, _021F589C ; =0x00000547
 	ldr r1, [r4]
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x70]
 	ldr r0, [sp, #4]
 	bl sub_0205C7EC

@@ -3310,12 +3310,12 @@ ov59_02239704: ; 0x02239704
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x64]
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x68]
 	ldr r0, [r5, #0x5c]
 	mov r1, #1
@@ -7458,12 +7458,12 @@ ov59_0223B68C: ; 0x0223B68C
 	mov r0, #1
 	ldr r1, [r6]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	str r0, [r6, #0x64]
 	mov r0, #1
 	ldr r1, [r6]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	str r0, [r6, #0x68]
 	ldr r0, [r6, #0x5c]
 	mov r1, #4
@@ -7943,7 +7943,7 @@ ov59_0223BA64: ; 0x0223BA64
 	strb r0, [r5, #9]
 	ldr r1, [sp, #0x10]
 	mov r0, #0xc
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0xc]
 	ldr r2, [r5, #0xc]
 	add r0, r4, #0

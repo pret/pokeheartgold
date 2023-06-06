@@ -2851,7 +2851,7 @@ ov108_021E6F74: ; 0x021E6F74
 	str r0, [r5, r1]
 	ldr r1, [r5]
 	mov r0, #0x51
-	bl String_ctor
+	bl String_New
 	mov r1, #0xc3
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -8479,14 +8479,14 @@ ov108_021E9C3C: ; 0x021E9C3C
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0xc5
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0xc6
 	lsl r1, r1, #2
 	str r0, [r5, r1]

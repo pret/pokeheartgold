@@ -170,7 +170,7 @@ void Fsys_MakeFieldMoveCheckData(FieldSystem *fsys, struct FieldMoveCheckData *c
 }
 
 static struct FieldUseMoveEnv *PartyMenuEnv_create(struct FieldMoveUseData *useData, const struct FieldMoveCheckData *checkData) {
-    struct FieldUseMoveEnv *ret = AllocFromHeap(32, sizeof(struct FieldUseMoveEnv));
+    struct FieldUseMoveEnv *ret = AllocFromHeap(HEAP_ID_32, sizeof(struct FieldUseMoveEnv));
     ret->magic = 0x19740205;
     ret->facingObject = checkData->facingObject;
     ret->useData = *useData;
@@ -244,7 +244,7 @@ static u32 FieldMoveMenuCheck_Fly(const struct FieldMoveCheckData *checkData) {
 static void FieldMoveMenuUse_Fly(struct FieldMoveUseData *useData, const struct FieldMoveCheckData *checkData) {
     FieldSystem *fsys = TaskManager_GetSys(useData->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(useData->taskManager);
-    struct FlyTaskStruct *flyEnv = AllocFromHeap(11, sizeof(struct FlyTaskStruct));
+    struct FlyTaskStruct *flyEnv = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct FlyTaskStruct));
     flyEnv->partySlot = useData->partySlot;
     env->unk_0384 = flyEnv;
     env->atexit_TaskEnv = TownMap_new(fsys, 0);
@@ -505,8 +505,8 @@ static void FieldMoveMenuUse_Teleport(struct FieldMoveUseData *useData, const st
     FieldSystem *fsys = TaskManager_GetSys(useData->taskManager);
     struct BagViewAppWork *menuEnv = TaskManager_GetEnv(useData->taskManager);
     sub_020505C0(fsys);
-    struct TeleportFieldEnv *retEnv = sub_020689A4(11, useData->partySlot, fsys->savedata);
-    struct FlyTaskStruct *retSub = AllocFromHeapAtEnd(11, sizeof(struct FlyTaskStruct));
+    struct TeleportFieldEnv *retEnv = sub_020689A4(HEAP_ID_FIELD, useData->partySlot, fsys->savedata);
+    struct FlyTaskStruct *retSub = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct FlyTaskStruct));
     retEnv->flySub = retSub;
     retSub->partySlot = useData->partySlot;
     menuEnv->atexit_TaskFunc = Task_UseTeleportInField;
@@ -517,7 +517,7 @@ static void FieldMoveMenuUse_Teleport(struct FieldMoveUseData *useData, const st
 static BOOL Task_UseTeleportInField(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     struct TeleportFieldEnv *env = TaskManager_GetEnv(taskManager);
-    struct FieldLongWarpTaskData *newEnv = CreateFieldTeleportTaskEnv(fsys, env->mon, env->flySub->partySlot, 4);
+    struct FieldLongWarpTaskData *newEnv = CreateFieldTeleportTaskEnv(fsys, env->mon, env->flySub->partySlot, HEAP_ID_4);
     FreeToHeap(env->flySub);
     FreeToHeap(env);
     TaskManager_Jump(taskManager, Task_FieldTeleport, newEnv);
@@ -547,8 +547,8 @@ static void FieldMoveMenuUse_Dig(struct FieldMoveUseData *useData, const struct 
     FieldSystem *fsys = TaskManager_GetSys(useData->taskManager);
     struct BagViewAppWork *menuEnv = TaskManager_GetEnv(useData->taskManager);
     sub_020505C0(fsys);
-    struct TeleportFieldEnv *retEnv = sub_020689A4(11, useData->partySlot, fsys->savedata);
-    struct FlyTaskStruct *retSub = AllocFromHeapAtEnd(11, sizeof(struct FlyTaskStruct));
+    struct TeleportFieldEnv *retEnv = sub_020689A4(HEAP_ID_FIELD, useData->partySlot, fsys->savedata);
+    struct FlyTaskStruct *retSub = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct FlyTaskStruct));
     retEnv->flySub = retSub;
     retSub->partySlot = useData->partySlot;
     menuEnv->atexit_TaskFunc = Task_UseDigInField;
@@ -559,7 +559,7 @@ static void FieldMoveMenuUse_Dig(struct FieldMoveUseData *useData, const struct 
 static BOOL Task_UseDigInField(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     struct TeleportFieldEnv *env = TaskManager_GetEnv(taskManager);
-    struct FieldLongWarpTaskData *newEnv = CreateFieldDigTaskEnv(fsys, env->mon, env->flySub->partySlot, 11);
+    struct FieldLongWarpTaskData *newEnv = CreateFieldDigTaskEnv(fsys, env->mon, env->flySub->partySlot, HEAP_ID_FIELD);
     FreeToHeap(env->flySub);
     FreeToHeap(env);
     TaskManager_Jump(taskManager, Task_FieldDig, newEnv);
@@ -581,8 +581,8 @@ static u32 FieldMoveMenuCheck_SweetScent(const struct FieldMoveCheckData *checkD
 static void FieldMoveMenuUse_SweetScent(struct FieldMoveUseData *useData, const struct FieldMoveCheckData *checkData) {
     FieldSystem *fsys = TaskManager_GetSys(useData->taskManager);
     struct BagViewAppWork *menuEnv = TaskManager_GetEnv(useData->taskManager);
-    struct TeleportFieldEnv *retEnv = sub_020689A4(11, useData->partySlot, fsys->savedata);
-    struct FlyTaskStruct *retSub = AllocFromHeapAtEnd(11, sizeof(struct FlyTaskStruct));
+    struct TeleportFieldEnv *retEnv = sub_020689A4(HEAP_ID_FIELD, useData->partySlot, fsys->savedata);
+    struct FlyTaskStruct *retSub = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct FlyTaskStruct));
     retEnv->flySub = retSub;
     retSub->partySlot = useData->partySlot;
     sub_020505C0(fsys);

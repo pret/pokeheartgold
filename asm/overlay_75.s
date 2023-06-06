@@ -37,13 +37,13 @@ ov75_02246960: ; 0x02246960
 	str r0, [r4, #8]
 	mov r0, #0x64
 	mov r1, #0x73
-	bl String_ctor
+	bl String_New
 	mov r1, #0x11
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	mov r0, #0x64
 	mov r1, #0x73
-	bl String_ctor
+	bl String_New
 	mov r1, #0x45
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -880,12 +880,12 @@ ov75_02246F0C: ; 0x02246F0C
 	str r0, [r5, #0x34]
 	ldr r0, _0224710C ; =0x0000010E
 	mov r1, #0x74
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x38]
 	mov r0, #1
 	lsl r0, r0, #8
 	mov r1, #0x74
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x40]
 	ldr r0, [r5, #0x24]
 	mov r1, #0x1f
@@ -2876,7 +2876,7 @@ ov75_02248034: ; 0x02248034
 	str r0, [sp, #0xc]
 	bl StringGetLength
 	mov r1, #0x74
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	add r0, r7, #0
 	add r0, #0xac
@@ -3003,7 +3003,7 @@ _022480D6:
 	ldr r0, [sp, #0x14]
 	bl StringGetLength
 	mov r1, #0x74
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r6, #0
@@ -5834,7 +5834,7 @@ ov75_022496B8: ; 0x022496B8
 	add r6, r1, #0
 	lsl r0, r0, #8
 	mov r1, #0x74
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	ldr r0, [r5, #0x30]
 	add r1, r6, #0

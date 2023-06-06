@@ -2065,11 +2065,11 @@ ov80_02233594: ; 0x02233594
 	ldr r1, [r5, #0x34]
 	mov r0, #0x14
 	str r2, [sp, #0x10]
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	ldr r1, [r5, #0x34]
 	mov r0, #0x14
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r0, #0
 	mov r1, #0x1b

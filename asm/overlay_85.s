@@ -3117,7 +3117,7 @@ ov85_021E705C: ; 0x021E705C
 	mov r0, #1
 	lsl r0, r0, #8
 	mov r1, #0x66
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x6c]
 	mov r4, #0
 	add r5, r6, #0
@@ -3125,7 +3125,7 @@ ov85_021E705C: ; 0x021E705C
 _021E7112:
 	add r0, r7, #0
 	mov r1, #0x66
-	bl String_ctor
+	bl String_New
 	add r1, r5, #0
 	add r1, #0x98
 	add r4, r4, #1
@@ -3246,7 +3246,7 @@ ov85_021E71EC: ; 0x021E71EC
 	mov r0, #1
 	lsl r0, r0, #8
 	mov r1, #0x66
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r0, [r4, #4]
 	add r1, r7, #0
@@ -3298,7 +3298,7 @@ ov85_021E7274: ; 0x021E7274
 	mov r0, #1
 	lsl r0, r0, #8
 	mov r1, #0x66
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r0, [r4, #4]
 	add r1, r7, #0
@@ -7014,7 +7014,7 @@ ov85_021E8D64: ; 0x021E8D64
 _021E8D70:
 	mov r0, #8
 	mov r1, #0x66
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x3c]
 	mov r0, #0xdd
 	mov r1, #0
@@ -7032,11 +7032,11 @@ _021E8D70:
 	blt _021E8D70
 	mov r0, #0xb4
 	mov r1, #0x66
-	bl String_ctor
+	bl String_New
 	str r0, [r7, #0x54]
 	mov r0, #0x28
 	mov r1, #0x66
-	bl String_ctor
+	bl String_New
 	str r0, [r7, #0x58]
 	mov r0, #0xd5
 	mov r1, #0
@@ -9544,7 +9544,7 @@ ov85_021EA0EC: ; 0x021EA0EC
 	mov r0, #0xb4
 	mov r1, #0x66
 	add r6, r2, #0
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	ldr r0, [r5, #0x38]
 	add r1, r7, #0

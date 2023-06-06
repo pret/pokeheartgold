@@ -57,14 +57,14 @@ ov63_0221BE20: ; 0x0221BE20
 	mov r0, #0x7d
 	lsl r0, r0, #2
 	mov r1, #0x3e
-	bl String_ctor
+	bl String_New
 	add r1, r5, #0
 	add r1, #0x8c
 	str r0, [r1]
 	mov r0, #0x7d
 	lsl r0, r0, #2
 	mov r1, #0x3e
-	bl String_ctor
+	bl String_New
 	add r1, r5, #0
 	add r1, #0x90
 	str r0, [r1]

@@ -6,8 +6,8 @@
 
 	.text
 
-	thumb_func_start ov12_02248660
-ov12_02248660: ; 0x02248660
+	thumb_func_start BattleContext_New
+BattleContext_New: ; 0x02248660
 	push {r3, r4, r5, lr}
 	ldr r1, _022486A4 ; =0x00003158
 	add r5, r0, #0
@@ -19,7 +19,7 @@ ov12_02248660: ; 0x02248660
 	add r1, r4, #0
 	bl MIi_CpuClearFast
 	add r0, r4, #0
-	bl ov12_02250F44
+	bl BattleContext_Init
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov12_02251038
@@ -39,10 +39,10 @@ ov12_02248660: ; 0x02248660
 _022486A4: .word 0x00003158
 _022486A8: .word 0x000003DE
 _022486AC: .word 0x00002120
-	thumb_func_end ov12_02248660
+	thumb_func_end BattleContext_New
 
-	thumb_func_start ov12_022486B0
-ov12_022486B0: ; 0x022486B0
+	thumb_func_start BattleMain
+BattleMain: ; 0x022486B0
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	ldr r1, _022486F4 ; =0x0000311F
@@ -50,11 +50,11 @@ ov12_022486B0: ; 0x022486B0
 	ldrb r1, [r4, r1]
 	cmp r1, #0
 	bne _022486D6
-	bl ov12_0223BD14
+	bl BattleSystem_GetWinLoseFlags
 	cmp r0, #0
 	beq _022486D6
 	add r0, r5, #0
-	bl ov12_0223BD14
+	bl BattleSystem_GetWinLoseFlags
 	mov r1, #0x40
 	tst r0, r1
 	bne _022486D6
@@ -64,7 +64,7 @@ _022486D6:
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	lsl r3, r2, #2
-	ldr r2, _022486F8 ; =ov12_0226CA90
+	ldr r2, _022486F8 ; =sPlayerBattleCommands
 	add r1, r4, #0
 	ldr r2, [r2, r3]
 	blx r2
@@ -78,11 +78,11 @@ _022486EE:
 	pop {r3, r4, r5, pc}
 	nop
 _022486F4: .word 0x0000311F
-_022486F8: .word ov12_0226CA90
-	thumb_func_end ov12_022486B0
+_022486F8: .word sPlayerBattleCommands
+	thumb_func_end BattleMain
 
-	thumb_func_start ov12_022486FC
-ov12_022486FC: ; 0x022486FC
+	thumb_func_start BattleContext_Delete
+BattleContext_Delete: ; 0x022486FC
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, _02248710 ; =0x00002120
@@ -93,10 +93,10 @@ ov12_022486FC: ; 0x022486FC
 	pop {r4, pc}
 	.balign 4, 0
 _02248710: .word 0x00002120
-	thumb_func_end ov12_022486FC
+	thumb_func_end BattleContext_Delete
 
-	thumb_func_start ov12_02248714
-ov12_02248714: ; 0x02248714
+	thumb_func_start BattleSystem_CheckMoveHitEffect
+BattleSystem_CheckMoveHitEffect: ; 0x02248714
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	ldr r6, [sp, #0x20]
@@ -105,20 +105,20 @@ ov12_02248714: ; 0x02248714
 	add r7, r2, #0
 	str r3, [sp, #4]
 	str r6, [sp]
-	bl ov12_0224BCC4
+	bl BattleSystem_CheckMoveHit
 	ldr r0, [sp, #0x20]
 	ldr r3, [sp, #4]
 	str r0, [sp]
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r7, #0
-	bl ov12_0224C018
+	bl BattleSystem_CheckMoveEffect
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov12_02248714
+	thumb_func_end BattleSystem_CheckMoveHitEffect
 
-	thumb_func_start ov12_0224873C
-ov12_0224873C: ; 0x0224873C
+	thumb_func_start BattleControllerPlayer_GetBattleMon
+BattleControllerPlayer_GetBattleMon: ; 0x0224873C
 	push {r3, r4, r5, r6, r7, lr}
 	str r0, [sp]
 	add r5, r1, #0
@@ -134,7 +134,7 @@ _0224874E:
 	ldr r0, [sp]
 	add r1, r5, #0
 	add r2, r4, #0
-	bl ov12_0224E4FC
+	bl BattleSystem_GetBattleMon
 	add r4, r4, #1
 	cmp r4, r7
 	blt _0224874E
@@ -150,7 +150,7 @@ _02248764:
 _02248774: .word 0x0000219C
 _02248778: .word 0x00002E4C
 _0224877C: .word 0x00003122
-	thumb_func_end ov12_0224873C
+	thumb_func_end BattleControllerPlayer_GetBattleMon
 
 	thumb_func_start ov12_02248780
 ov12_02248780: ; 0x02248780
@@ -4615,7 +4615,7 @@ ov12_0224A958: ; 0x0224A958
 	add r0, r0, #1
 	str r0, [r4, r1]
 	add r0, r4, #0
-	bl ov12_02250F44
+	bl BattleContext_Init
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov12_02251710
@@ -7083,8 +7083,8 @@ ov12_0224BCA4: ; 0x0224BCA4
 _0224BCC0: .word 0x00000116
 	thumb_func_end ov12_0224BCA4
 
-	thumb_func_start ov12_0224BCC4
-ov12_0224BCC4: ; 0x0224BCC4
+	thumb_func_start BattleSystem_CheckMoveHit
+BattleSystem_CheckMoveHit: ; 0x0224BCC4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x20
 	str r0, [sp, #4]
@@ -7391,7 +7391,7 @@ _0224BF20:
 	ldr r1, [sp, #8]
 	add r0, r5, #0
 	mov r2, #0
-	bl ov12_02255844
+	bl BattleSystem_GetHeldItemDamageBoost
 	cmp r7, #0x30
 	bne _0224BF46
 	mov r1, #0x64
@@ -7408,7 +7408,7 @@ _0224BF46:
 	add r0, r5, #0
 	add r1, r6, #0
 	mov r2, #0
-	bl ov12_02255844
+	bl BattleSystem_GetHeldItemDamageBoost
 	add r6, r0, #0
 	cmp r7, #0x5d
 	bne _0224BF6E
@@ -7493,10 +7493,10 @@ _0224C008: .word ov12_0226CA75
 _0224C00C: .word 0x00002DCC
 _0224C010: .word 0xF7FFFFFF
 _0224C014: .word 0x0000216C
-	thumb_func_end ov12_0224BCC4
+	thumb_func_end BattleSystem_CheckMoveHit
 
-	thumb_func_start ov12_0224C018
-ov12_0224C018: ; 0x0224C018
+	thumb_func_start BattleSystem_CheckMoveEffect
+BattleSystem_CheckMoveEffect: ; 0x0224C018
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	str r0, [sp, #4]
@@ -7746,7 +7746,7 @@ _0224C1F4: .word 0x000003E9
 _0224C1F8: .word 0x0000216C
 _0224C1FC: .word 0x000003DE
 _0224C200: .word 0x00003044
-	thumb_func_end ov12_0224C018
+	thumb_func_end BattleSystem_CheckMoveEffect
 
 	thumb_func_start ov12_0224C204
 ov12_0224C204: ; 0x0224C204
@@ -8174,7 +8174,7 @@ _0224C51C:
 	str r0, [sp]
 	ldr r2, [r4, #0x64]
 	add r0, r5, #0
-	bl ov12_0224BCC4
+	bl BattleSystem_CheckMoveHit
 	cmp r0, #1
 	beq _0224C5BC
 _0224C540:
@@ -8196,7 +8196,7 @@ _0224C546:
 	str r0, [sp]
 	ldr r2, [r4, #0x64]
 	add r0, r5, #0
-	bl ov12_0224C018
+	bl BattleSystem_CheckMoveEffect
 	cmp r0, #1
 	beq _0224C5BC
 _0224C56A:
@@ -8399,7 +8399,7 @@ _0224C6C2:
 	ldr r1, [r4, #0x6c]
 	add r0, r4, #0
 	mov r2, #0
-	bl ov12_02255844
+	bl BattleSystem_GetHeldItemDamageBoost
 	str r0, [sp]
 	ldr r0, _0224C9C4 ; =0x00002144
 	ldr r0, [r4, r0]
@@ -10132,7 +10132,7 @@ _0224D430:
 	add r0, #0xec
 	str r1, [r0]
 	add r0, r4, #0
-	bl ov12_02250F44
+	bl BattleContext_Init
 	mov r0, #8
 	str r0, [r4, #8]
 _0224D440:
@@ -10164,7 +10164,7 @@ ov12_0224D464: ; 0x0224D464
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl ov12_0223BD14
+	bl BattleSystem_GetWinLoseFlags
 	mov r1, #0x80
 	tst r0, r1
 	beq _0224D47A
@@ -10173,11 +10173,11 @@ ov12_0224D464: ; 0x0224D464
 	b _0224D4E2
 _0224D47A:
 	add r0, r5, #0
-	bl ov12_0223BD14
+	bl BattleSystem_GetWinLoseFlags
 	cmp r0, #2
 	beq _0224D48E
 	add r0, r5, #0
-	bl ov12_0223BD14
+	bl BattleSystem_GetWinLoseFlags
 	cmp r0, #3
 	bne _0224D4A2
 _0224D48E:
@@ -10192,7 +10192,7 @@ _0224D48E:
 	b _0224D4E2
 _0224D4A2:
 	add r0, r5, #0
-	bl ov12_0223BD14
+	bl BattleSystem_GetWinLoseFlags
 	cmp r0, #1
 	bne _0224D4C0
 	add r0, r4, #0
@@ -10206,7 +10206,7 @@ _0224D4A2:
 	b _0224D4E2
 _0224D4C0:
 	add r0, r5, #0
-	bl ov12_0223BD14
+	bl BattleSystem_GetWinLoseFlags
 	cmp r0, #4
 	bne _0224D4D4
 	mov r0, #0x16
@@ -10216,7 +10216,7 @@ _0224D4C0:
 	b _0224D4E2
 _0224D4D4:
 	add r0, r5, #0
-	bl ov12_0223BD14
+	bl BattleSystem_GetWinLoseFlags
 	cmp r0, #5
 	bne _0224D4E2
 	mov r0, #0x2c
@@ -11750,7 +11750,7 @@ ov12_0224E078: ; 0x0224E078
 	ldr r1, [r5, #0x64]
 	add r0, r5, #0
 	add r2, r4, #0
-	bl ov12_02255844
+	bl BattleSystem_GetHeldItemDamageBoost
 	add r6, r0, #0
 	ldr r0, [r5, #0x6c]
 	cmp r0, #0xff
@@ -11911,7 +11911,7 @@ ov12_0224E1BC: ; 0x0224E1BC
 	ldr r1, [r4, #0x64]
 	add r0, r4, #0
 	add r2, r6, #0
-	bl ov12_02255844
+	bl BattleSystem_GetHeldItemDamageBoost
 	ldr r1, [r4, #8]
 	str r0, [sp]
 	add r0, r4, #0
@@ -12330,8 +12330,8 @@ ov12_0226CA75: ; 0x0226CA75
 	.byte 0x64, 0x24, 0x64, 0x2B, 0x64, 0x32, 0x64, 0x3C, 0x64, 0x4B, 0x64
 	.byte 0x01, 0x01, 0x85, 0x64, 0xA6, 0x64, 0x02, 0x01, 0xE9, 0x64, 0x85, 0x32, 0x03, 0x01, 0x00, 0x00
 
-ov12_0226CA90: ; 0x0226CA90
-	.word ov12_0224873C
+sPlayerBattleCommands: ; 0x0226CA90
+	.word BattleControllerPlayer_GetBattleMon
 	.word ov12_02248780
 	.word ov12_02248798
 	.word ov12_022487C8

@@ -133,7 +133,7 @@
 .public System_GetTouchHeld
 .public sub_02025364
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetFrame

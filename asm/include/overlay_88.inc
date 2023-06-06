@@ -72,7 +72,7 @@
 .public sub_02024504
 .public sub_0202457C
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public StringCopy
 .public StringGetLength

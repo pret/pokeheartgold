@@ -18300,7 +18300,7 @@ ov12_02261928: ; 0x02261928
 	bl BattleSys_GetBattleType
 	add r6, r0, #0
 	ldr r0, [sp]
-	bl ov12_0223BD14
+	bl BattleSystem_GetWinLoseFlags
 	add r7, r0, #0
 	mov r0, #2
 	tst r0, r6

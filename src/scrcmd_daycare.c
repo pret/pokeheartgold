@@ -217,7 +217,7 @@ BOOL ScrCmd_DayCareSanitizeMon(SCRIPTCONTEXT* ctx) {
     u32 held_item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
     if (held_item == ITEM_GRISEOUS_ORB) {
         Bag* bag = SaveGetBag(fsys->savedata);
-        if (!BagAddItem(bag, ITEM_GRISEOUS_ORB, 1, 11)) {
+        if (!BagAddItem(bag, ITEM_GRISEOUS_ORB, 1, HEAP_ID_FIELD)) {
             *ret_ptr = 0xFF;
             return FALSE;
         }

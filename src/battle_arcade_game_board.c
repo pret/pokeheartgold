@@ -559,11 +559,11 @@ static void BattleArcadeGameBoard_InitObjects(GAME_BOARD_WORK *work) {
 
     work->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0425_bin, HEAP_ID_GAME_BOARD);
     work->msgFmt = MessageFormat_new(HEAP_ID_GAME_BOARD);
-    work->unk70 = String_ctor(600, HEAP_ID_GAME_BOARD);
-    work->unk74 = String_ctor(600, HEAP_ID_GAME_BOARD);
+    work->unk70 = String_New(600, HEAP_ID_GAME_BOARD);
+    work->unk74 = String_New(600, HEAP_ID_GAME_BOARD);
 
     for (i = 0; i < 2; i++) {
-        work->unk78[i] = String_ctor(32, HEAP_ID_GAME_BOARD);
+        work->unk78[i] = String_New(32, HEAP_ID_GAME_BOARD);
     }
 
     LoadFontPal0(GF_BG_LYR_MAIN_0, 416, HEAP_ID_GAME_BOARD);

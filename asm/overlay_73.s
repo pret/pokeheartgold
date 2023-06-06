@@ -596,7 +596,7 @@ ov73_021E5E0C: ; 0x021E5E0C
 _021E5E1C:
 	mov r0, #8
 	mov r1, #0x32
-	bl String_ctor
+	bl String_New
 	str r0, [r6, #0x2c]
 	mov r0, #0xce
 	mov r1, #0
@@ -623,12 +623,12 @@ _021E5E1C:
 	blt _021E5E1C
 	mov r0, #0xb4
 	mov r1, #0x32
-	bl String_ctor
+	bl String_New
 	ldr r1, [sp]
 	str r0, [r1, #0x44]
 	mov r0, #0x28
 	mov r1, #0x32
-	bl String_ctor
+	bl String_New
 	ldr r1, [sp]
 	mov r2, #0
 	str r0, [r1, #0x48]
@@ -3551,7 +3551,7 @@ ov73_021E756C: ; 0x021E756C
 	mov r0, #0xb4
 	mov r1, #0x32
 	add r6, r2, #0
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	ldr r0, [r5, #0x28]
 	add r1, r7, #0
@@ -6358,18 +6358,18 @@ ov73_021E8B64: ; 0x021E8B64
 	add r4, r0, #0
 	mov r0, #0xb4
 	mov r1, #0x96
-	bl String_ctor
+	bl String_New
 	mov r1, #0xbe
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	mov r0, #4
 	mov r1, #0x96
-	bl String_ctor
+	bl String_New
 	ldr r1, _021E8BB0 ; =0x00000BE8
 	str r0, [r4, r1]
 	mov r0, #3
 	mov r1, #0x96
-	bl String_ctor
+	bl String_New
 	ldr r1, _021E8BB4 ; =0x00000BEC
 	str r0, [r4, r1]
 	sub r1, #0x18
@@ -6381,7 +6381,7 @@ ov73_021E8B64: ; 0x021E8B64
 	mov r0, #1
 	lsl r0, r0, #8
 	mov r1, #0x96
-	bl String_ctor
+	bl String_New
 	mov r1, #0xbf
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -9285,7 +9285,7 @@ ov73_021EA19C: ; 0x021EA19C
 	add r6, r1, #0
 	lsl r0, r0, #8
 	mov r1, #0x96
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	ldr r0, _021EA20C ; =0x00000BDC
 	add r1, r6, #0

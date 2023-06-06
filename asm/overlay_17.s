@@ -2508,7 +2508,7 @@ ov17_02202F0C: ; 0x02202F0C
 	str r0, [r1]
 	ldr r1, [r6]
 	mov r0, #0x80
-	bl String_ctor
+	bl String_New
 	add r1, r6, #0
 	add r1, #0xa4
 	str r0, [r1]

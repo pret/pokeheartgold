@@ -123,7 +123,7 @@
 .public Camera_SetClipBounds
 .public sub_020249B0
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public Thunk_G3X_Reset
 .public GF_3DVramMan_Create

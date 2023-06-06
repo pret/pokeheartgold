@@ -142,7 +142,7 @@ SAVEDATA *SaveBlock2_new(void) {
     int sp4;
     int sp0;
 
-    ret = AllocFromHeap(1, sizeof(SAVEDATA));
+    ret = AllocFromHeap(HEAP_ID_1, sizeof(SAVEDATA));
     MI_CpuClearFast(ret, sizeof(SAVEDATA));
     sSaveDataPtr = ret;
 
@@ -209,7 +209,7 @@ BOOL Save_DeleteAllData(SAVEDATA *saveData) {
     u8 *r6;
     int i;
 
-    r6 = AllocFromHeapAtEnd(3, SAVE_SECTOR_SIZE);
+    r6 = AllocFromHeapAtEnd(HEAP_ID_3, SAVE_SECTOR_SIZE);
     Sys_SetSleepDisableFlag(1);
     FlashClobberChunkFooter(saveData, 0, saveData->lastGoodSector == 0 ? 1 : 0);
     FlashClobberChunkFooter(saveData, 1, saveData->lastGoodSector == 0 ? 1 : 0);
@@ -512,8 +512,8 @@ static int Save_GetSaveFilesStatus(SAVEDATA *saveData) {
     u32 numGood_sub;
     u32 __newer_main;
 
-    data1 = AllocFromHeapAtEnd(3, SAVE_PAGE_MAX * SAVE_SECTOR_SIZE);
-    data2 = AllocFromHeapAtEnd(3, SAVE_PAGE_MAX * SAVE_SECTOR_SIZE);
+    data1 = AllocFromHeapAtEnd(HEAP_ID_3, SAVE_PAGE_MAX * SAVE_SECTOR_SIZE);
+    data2 = AllocFromHeapAtEnd(HEAP_ID_3, SAVE_PAGE_MAX * SAVE_SECTOR_SIZE);
     if (FlashLoadChunk(0 * 0x40000, data1, SAVE_PAGE_MAX * SAVE_SECTOR_SIZE)) {
         SaveSlotCheck_InitFromSavedat(&checks_main[0], saveData, data1, 0);
         SaveSlotCheck_InitFromSavedat(&checks_sub[0], saveData, data1, 1);
@@ -611,7 +611,7 @@ static void Save_CheckFrontierData(SAVEDATA *saveData, int *err1, int *err2) {
     if (Save_CheckExtraChunksExist(saveData)) {
         sub_0202AC38(misc, 1, &sp0C, &sp08, &sp04);
         if (sp0C != -1 || sp08 != -1) {
-            FreeToHeap(sub_020284A4(saveData, 3, 1, &sp14, &sp10));
+            FreeToHeap(sub_020284A4(saveData, HEAP_ID_3, 1, &sp14, &sp10));
             if (sp14 == 2) {
                 *err1 = 3;
             } else if (sp14 == 1 && sp10 == 1) {
@@ -621,7 +621,7 @@ static void Save_CheckFrontierData(SAVEDATA *saveData, int *err1, int *err2) {
         for (i = 2; i <= 5; i++) {
             sub_0202AC38(misc, i, &sp0C, &sp08, &sp04);
             if (sp0C != -1 || sp08 != -1) {
-                FreeToHeap(sub_020284A4(saveData, 3, i, &sp14, &sp10));
+                FreeToHeap(sub_020284A4(saveData, HEAP_ID_3, i, &sp14, &sp10));
                 if (sp14 == 2) {
                     *err2 = 3;
                 } else if (sp14 == 1 && sp10 == 1 && *err2 != 3) {
@@ -896,7 +896,7 @@ void Save_WipeExtraChunks(SAVEDATA *saveData) {
 
     for (i = 0; i < gNumExtraSaveChunkHeaders; i++) {
         if (chunkHeaders[i].id != 0) {
-            data = ReadExtraSaveChunk(saveData, 3, chunkHeaders[i].id, &status);
+            data = ReadExtraSaveChunk(saveData, HEAP_ID_3, chunkHeaders[i].id, &status);
             GF_ASSERT(data != NULL);
             MI_CpuClear8(data, chunkHeaders[i].sizeFunc());
             chunkHeaders[i].initFunc(data);
@@ -1194,7 +1194,7 @@ static BOOL FlashLoadChunk(u32 offset, void *data, u32 size) {
     OS_ReleaseLockID(lock);
     if (!result) {
         FreeToHeap(sSaveDataPtr);
-        ShowSaveDataReadError(1);
+        ShowSaveDataReadError(HEAP_ID_1);
     }
     return result;
 }
@@ -1247,7 +1247,7 @@ static void SaveErrorHandling(s32 lockId, int code) {
     CARD_UnlockBackup(lockId);
     OS_ReleaseLockID(lockId);
     FreeToHeap(sSaveDataPtr);
-    ShowSaveDataWriteError(1, code);
+    ShowSaveDataWriteError(HEAP_ID_1, code);
 }
 
 BOOL SaveSubstruct_AssertCRC(int idx) {

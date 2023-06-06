@@ -37,12 +37,12 @@ ov80_0222A84C: ; 0x0222A84C
 	mov r0, #1
 	lsl r0, r0, #0xa
 	add r1, r5, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x48]
 	mov r0, #1
 	lsl r0, r0, #0xa
 	add r1, r5, #0
-	bl String_ctor
+	bl String_New
 	lsl r1, r6, #0x10
 	mov r2, #0
 	str r0, [r4, #0x4c]

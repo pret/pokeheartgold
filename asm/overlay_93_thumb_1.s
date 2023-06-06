@@ -457,7 +457,7 @@ ov93_0225C768: ; 0x0225C768
 	mov r0, #5
 	lsl r0, r0, #6
 	mov r1, #0x75
-	bl String_ctor
+	bl String_New
 	add r1, r5, #0
 	add r1, #0x88
 	str r0, [r1]

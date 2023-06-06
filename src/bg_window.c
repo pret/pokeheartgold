@@ -1259,7 +1259,7 @@ static void Convert4bppTo8bppInternal(u8 *src4bpp, u32 size, u8 *dest8bpp, u8 pa
     }
 }
 
-u8 *Convert4bppTo8bpp(u8 *src4Bpp, u32 size, u8 paletteNum, u32 heap_id) {
+u8 *Convert4bppTo8bpp(u8 *src4Bpp, u32 size, u8 paletteNum, HeapID heap_id) {
     u8 *ptr = (u8*)AllocFromHeap(heap_id, size * 2);
 
     Convert4bppTo8bppInternal(src4Bpp, size, ptr, paletteNum);

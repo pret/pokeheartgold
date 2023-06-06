@@ -26,8 +26,8 @@ BOOL ScrCmd_GiveMon(SCRIPTCONTEXT *ctx) {
     u16 *retPtr = ScriptGetVarPointer(ctx);
 
     PARTY *party = SaveArray_PlayerParty_get(fsys->savedata);
-    *retPtr = GiveMon(11, fsys->savedata, species, level, forme, ability, heldItem, map, 24);
-
+    *retPtr = GiveMon(HEAP_ID_FIELD, fsys->savedata, species, level, forme, ability, heldItem, map, 24);
+  
     return FALSE;
 }
 
@@ -86,7 +86,7 @@ BOOL ScrCmd_GiveEgg(SCRIPTCONTEXT *ctx) {
     PARTY *party = SaveArray_PlayerParty_get(fsys->savedata);
     u8 partyCount = GetPartyCount(party);
     if (partyCount < PARTY_SIZE) {
-        Pokemon *mon = AllocMonZeroed(11);
+        Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD);
         ZeroMonData(mon);
         int val = sub_02017FE4(MAPSECTYPE_GIFT, offset);
         SetEggStats(mon, species, 1, profile, 3, val);
@@ -259,7 +259,7 @@ BOOL ScrCmd_MonAddFriendship(SCRIPTCONTEXT *ctx) {
             friendshipModifier++;
         }
 
-        if (GetItemAttr(GetMonData(mon, MON_DATA_HELD_ITEM, NULL), ITEMATTR_HOLD_EFFECT, 11) == HOLD_EFFECT_FRIENDSHIP_UP) {
+        if (GetItemAttr(GetMonData(mon, MON_DATA_HELD_ITEM, NULL), ITEMATTR_HOLD_EFFECT, HEAP_ID_FIELD) == HOLD_EFFECT_FRIENDSHIP_UP) {
             friendshipModifier = friendshipModifier * 150 / 100;
         }
     }
@@ -507,7 +507,7 @@ BOOL ScrCmd_KenyaCheck(SCRIPTCONTEXT *ctx) {
 
     HandleLoadOverlay(FS_OVERLAY_ID(npc_trade), OVY_LOAD_ASYNC);
     MAIL *kenyaMail = NPCTrade_MakeKenyaMail();
-    MAIL *mail = Mail_new(11);
+    MAIL *mail = Mail_New(HEAP_ID_FIELD);
     GetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
     *kenya = Mail_compare(kenyaMail, mail);
     FreeToHeap(mail);
@@ -526,7 +526,7 @@ BOOL ScrCmd_KenyaCheckPartyOrMailbox(SCRIPTCONTEXT *ctx) {
     PARTY *party = SaveArray_PlayerParty_get(fsys->savedata);
     HandleLoadOverlay(FS_OVERLAY_ID(npc_trade), OVY_LOAD_ASYNC);
     MAIL *kenyaMail = NPCTrade_MakeKenyaMail();
-    MAIL *mail = Mail_new(11);
+    MAIL *mail = Mail_New(HEAP_ID_FIELD);
     UnloadOverlayByID(FS_OVERLAY_ID(npc_trade));
 
     for (i = 0; i < GetPartyCount(party); i++) {
@@ -573,7 +573,7 @@ BOOL ScrCmd_MonGiveMail(SCRIPTCONTEXT *ctx) {
     }
 
     item = ITEM_NONE;
-    MAIL *mail = Mail_new(11);
+    MAIL *mail = Mail_New(HEAP_ID_FIELD);
     Mail_init(mail);
     SetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
     SetMonData(mon, MON_DATA_HELD_ITEM, &item);

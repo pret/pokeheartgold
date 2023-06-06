@@ -2831,7 +2831,7 @@ ov65_0221D5FC: ; 0x0221D5FC
 	mov r0, #0x14
 	mov r1, #0x1a
 	str r3, [sp, #8]
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r7, #0
@@ -3041,7 +3041,7 @@ _0221D7B0:
 	bne _0221D836
 	mov r0, #0xa
 	mov r1, #0x1a
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0x1c
@@ -3127,7 +3127,7 @@ _0221D842:
 	bl FillWindowPixelBuffer
 	mov r0, #0x14
 	mov r1, #0x1a
-	bl String_ctor
+	bl String_New
 	add r1, r6, #0
 	mov r2, #0x1a
 	add r5, r0, #0
@@ -4742,7 +4742,7 @@ ov65_0221E558: ; 0x0221E558
 	str r0, [r5, r1]
 	mov r0, #0x64
 	mov r1, #0x1a
-	bl String_ctor
+	bl String_New
 	ldr r7, _0221E5EC ; =0x000036A0
 	add r6, r0, #0
 	mov r4, #0

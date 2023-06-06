@@ -41,7 +41,7 @@ BOOL ScrCmd_508(SCRIPTCONTEXT *ctx) {
 
 BOOL ScrCmd_509(SCRIPTCONTEXT *ctx) {
     struct UnkStruct_0202EB30 *unkStruct = sub_020270F8(ctx->fsys->savedata);
-    Pokemon *mon = AllocMonZeroed(32);
+    Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
     u16 *retPtr = ScriptGetVarPointer(ctx);
     if (sub_0202EC98(unkStruct) == PARTY_SIZE) {
         *retPtr = TRUE;
@@ -55,14 +55,14 @@ BOOL ScrCmd_509(SCRIPTCONTEXT *ctx) {
 BOOL ScrCmd_510(SCRIPTCONTEXT *ctx) {
     struct UnkStruct_0202EB30 *unkStruct = sub_020270F8(ctx->fsys->savedata);
     PC_STORAGE *storage = GetStoragePCPointer(ctx->fsys->savedata);
-    Pokemon *mon = AllocMonZeroed(32);
+    Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
     PLAYERPROFILE *profile = Save_PlayerData_GetProfileAddr(ctx->fsys->savedata);
     POKEDEX *pokedex = Save_Pokedex_get(ctx->fsys->savedata);
     int i;
 
     for (i = 0; i < PARTY_SIZE; i++) {
         sub_0202EC70(unkStruct, i, mon);
-        MonSetTrainerMemo(mon, profile, 2, 0, 32);
+        MonSetTrainerMemo(mon, profile, 2, 0, HEAP_ID_32);
         GF_ASSERT(PCStorage_PlaceMonInFirstEmptySlotInAnyBox(storage, Mon_GetBoxMon(mon)));
         UpdatePokedexWithReceivedSpecies(ctx->fsys->savedata, mon);
     }

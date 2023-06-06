@@ -1755,12 +1755,12 @@ ov113_021E6680: ; 0x021E6680
 	mov r0, #2
 	ldr r1, [r4]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x4c]
 	mov r0, #2
 	ldr r1, [r4]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x50]
 	ldr r0, [r4, #0x44]
 	mov r1, #0

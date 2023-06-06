@@ -664,7 +664,7 @@ _021F9212:
 	bl MapObjectMan_GetCount
 	str r0, [sp, #0x14]
 	add r0, r5, #0
-	bl sub_0205F19C
+	bl MapObjectMan_GetHeapID
 	sub r0, r0, #1
 	str r0, [sp, #0x10]
 	add r0, r5, #0

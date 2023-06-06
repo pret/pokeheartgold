@@ -31,7 +31,7 @@
 .public GetMapMusic
 .public sub_02055198
 .public ScriptState_FlypointFlagAction
-.public BagCursor_new
+.public BagCursor_New
 .public sub_02087A78
 .public sub_02087A84
 .public sub_02087E10

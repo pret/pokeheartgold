@@ -276,7 +276,7 @@
 .public sub_02025364
 .public sub_02025380
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public StringCopy
 .public CopyU16ArrayToString

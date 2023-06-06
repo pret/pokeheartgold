@@ -94,7 +94,7 @@ void DestroyListMenu(struct ListMenu *list, u16 * cursorPos, u16 * itemsAbove) {
         *itemsAbove = list->itemsAbove;
     }
     DestroyListMenuCursorObj(list->cursor);
-    FreeToHeapExplicit(list->heap_id, list);
+    FreeToHeapExplicit((HeapID) list->heap_id, list);
 }
 
 void RedrawListMenu(struct ListMenu *list) {

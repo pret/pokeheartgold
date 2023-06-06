@@ -771,7 +771,7 @@ _0206DA80:
 	add r5, r0, #0
 	mov r0, #0xc
 	mov r1, #0xb
-	bl String_ctor
+	bl String_New
 	str r0, [sp]
 	ldr r2, [sp]
 	add r0, r4, #0
@@ -799,7 +799,7 @@ _0206DA80:
 _0206DAD2:
 	mov r0, #8
 	mov r1, #0xb
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #0x91

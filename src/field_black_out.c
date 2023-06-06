@@ -147,8 +147,8 @@ static BOOL _Task_ShowPrintedMessage(TaskManager *taskManager) {
 }
 
 static void _PrintMessage(struct BlackoutScreenWork *work, int msgno, u8 x, u8 y) {
-    STRING *str0 = String_ctor(1024, (HeapID)11);
-    STRING *str1 = String_ctor(1024, (HeapID)11);
+    STRING *str0 = String_New(1024, (HeapID)11);
+    STRING *str1 = String_New(1024, (HeapID)11);
 
     FillWindowPixelBuffer(&work->window, 0);
     ReadMsgDataIntoString(work->msgData, msgno, str0);

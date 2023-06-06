@@ -109,7 +109,7 @@
 .public GX_EngineBToggleLayers
 .public GX_BothDispOn
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public sub_02026E50
 .public sub_02026E84
@@ -226,9 +226,9 @@
 .public ov12_0223BFC0
 .public ov12_0223BFCC
 .public ov12_0223BFEC
-.public ov12_02248660
-.public ov12_022486B0
-.public ov12_022486FC
+.public BattleContext_New
+.public BattleMain
+.public BattleContext_Delete
 .public ov12_02256F28
 .public ov12_022581D4
 .public ov12_022582B8

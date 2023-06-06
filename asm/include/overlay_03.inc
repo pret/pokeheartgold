@@ -91,7 +91,7 @@
 .public sub_02024B68
 .public System_GetTouchNew
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public String16_FormatInteger
 .public Save_PlayerData_GetProfileAddr

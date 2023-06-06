@@ -1277,7 +1277,7 @@ sub_02085F80: ; 0x02085F80
 	add r6, r0, #0
 	mov r0, #0x64
 	mov r1, #0x6c
-	bl String_ctor
+	bl String_New
 	mov r1, #0xa1
 	add r7, r0, #0
 	mov r0, #1

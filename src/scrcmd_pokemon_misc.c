@@ -116,7 +116,7 @@ BOOL ScrCmd_648(SCRIPTCONTEXT *ctx) {
 
     ctx->data[0] = unkC;
 
-    msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 237, 32);
+    msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 237, HEAP_ID_32);
 
     input = GetVarPointer(fsys, unkC);
 
@@ -130,7 +130,7 @@ BOOL ScrCmd_648(SCRIPTCONTEXT *ctx) {
     unkG = sub_020312C4(fsys->savedata, 0xb, &out_1);
 
     if (out_1 == 1) {
-        data = ov01_02200C94(0x20, ov01_02209AE0[fileIndex], &out_2);
+        data = ov01_02200C94(HEAP_ID_32, ov01_02209AE0[fileIndex], &out_2);
 
         for (i = 0; i < out_2; i++) {
             unkPtr_2 = sub_020312E0(fsys->savedata, unkG, sub_0205C144(unkA), data[i]);
@@ -144,7 +144,7 @@ BOOL ScrCmd_648(SCRIPTCONTEXT *ctx) {
         FreeToHeap(unkG);
     }
 
-    msgdata2 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, 0xbf, 0x20);
+    msgdata2 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, 0xbf, HEAP_ID_32);
 
     ov01_02200CB4(unkPtr, msgdata2);
     ov01_02200DF8(unkPtr, 0xd, 0xff, 0xfffe);
@@ -202,14 +202,14 @@ static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y,
     }
 
     for (i = 0; i < 0x78; i++) {
-        unkPtr->stringArr_1C[i] = String_ctor(0x50, 4);
+        unkPtr->stringArr_1C[i] = String_New(0x50, HEAP_ID_4);
     }
 
     *unkPtr->input = 0xEEEE;
 }
 
 static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fsys, u8 x, u8 y, u8 a3, u8 a4, s16* input, MessageFormat *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove) {
-    SCR_648_STRUCT *unkPtr = AllocFromHeap(4, sizeof(SCR_648_STRUCT));
+    SCR_648_STRUCT *unkPtr = AllocFromHeap(HEAP_ID_4, sizeof(SCR_648_STRUCT));
     if (!unkPtr) {
         return NULL;
     }
@@ -229,15 +229,15 @@ static void ov01_02200E00(SCR_648_STRUCT *unkPtr) {
     } else {
         AddWindowParameterized(unkPtr->fsys->bgConfig, &unkPtr->window_8, 3, unkPtr->x, unkPtr->y, 11, 2*unk, 13, 1);
     }
-    LoadUserFrameGfx1(unkPtr->fsys->bgConfig, GF_BG_LYR_MAIN_3, 0x3D9, 11, 0, 4);
+    LoadUserFrameGfx1(unkPtr->fsys->bgConfig, GF_BG_LYR_MAIN_3, 0x3D9, 11, 0, HEAP_ID_4);
     DrawFrameAndWindow1(&unkPtr->window_8, TRUE, 0x3D9, 11);
     ov01_02200F54(unkPtr);
-    unkPtr->listMenu_23C = ListMenuInit(&unkPtr->listMenuTemplate, *unkPtr->cursorPos, *unkPtr->itemsAbove, 4);
+    unkPtr->listMenu_23C = ListMenuInit(&unkPtr->listMenuTemplate, *unkPtr->cursorPos, *unkPtr->itemsAbove, HEAP_ID_4);
     unkPtr->sysTask = CreateSysTask(ov01_022010CC, unkPtr, 0);
 }
 
 static void ov01_02200EC8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3) {
-    STRING *str = String_ctor(0x50, 4);
+    STRING *str = String_New(0x50, HEAP_ID_4);
     ReadMsgDataIntoString(unkPtr->msgdata, strNo, str);
     StringExpandPlaceholders(unkPtr->msgfmt, unkPtr->stringArr_1C[unkPtr->totalItems], str);
     unkPtr->items[unkPtr->totalItems].text = unkPtr->stringArr_1C[unkPtr->totalItems];
@@ -413,7 +413,7 @@ BOOL ScrCmd_CommSanitizeParty(SCRIPTCONTEXT *ctx) {
         }
     }
     if (count > 0) {
-        if (BagAddItem(SaveGetBag(fsys->savedata), ITEM_GRISEOUS_ORB, count, 4) == FALSE) {
+        if (BagAddItem(SaveGetBag(fsys->savedata), ITEM_GRISEOUS_ORB, count, HEAP_ID_4) == FALSE) {
             *success = 255;
             return FALSE;
         }
@@ -1022,7 +1022,7 @@ BOOL ScrCmd_GiveTogepiEgg(SCRIPTCONTEXT *ctx) {
         return FALSE;
     }
 
-    mon = AllocMonZeroed(0xb);
+    mon = AllocMonZeroed(HEAP_ID_FIELD);
     ZeroMonData(mon);
 
     SetEggStats(mon, SPECIES_TOGEPI, 1, profile, 3, sub_02017FE4(MAPSECTYPE_GIFT, 0xd));
@@ -1083,7 +1083,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(SCRIPTCONTEXT *ctx) {
     if (GetPartyCount(party) >= 6) {
         return FALSE;
     }
-    mon = AllocMonZeroed(0xb);
+    mon = AllocMonZeroed(HEAP_ID_FIELD);
     ZeroMonData(mon);
 
     u32 trId = PlayerProfile_GetTrainerID(profile);
@@ -1104,7 +1104,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(SCRIPTCONTEXT *ctx) {
 
     u32 unkB = sub_02017FE4(MAPSECTYPE_NORMAL, MapHeader_GetMapSec(ctx->fsys->location->mapId));
 
-    sub_020720FC(mon, profile, 4, unkB, 0x18, 0xb);
+    sub_020720FC(mon, profile, 4, unkB, 0x18, HEAP_ID_FIELD);
 
     AddMonToParty(party, mon);
 
@@ -1162,7 +1162,7 @@ static u32 SlotLuckiness(SAVEDATA *savedata, u8 machineId, u8 city) {
     rngSeed = GetLCRNGSeed();
     SetLCRNGSeed(sub_0202C7DC(friendGroup));
 
-    luckValues = AllocFromHeapAtEnd(0x20, numMachines);
+    luckValues = AllocFromHeapAtEnd(HEAP_ID_32, numMachines);
     MI_CpuFill8(luckValues, 0, numMachines);
 
     i = 0;
@@ -1323,7 +1323,7 @@ BOOL ScrCmd_GiveRandomSeal(SCRIPTCONTEXT *ctx) {
 
     sealcase = Save_SealCase_get(ctx->fsys->savedata);
 
-    sealThresholds = AllocFromHeapAtEnd(0x20, sizeof(u16)*SEAL_MYSTERY);
+    sealThresholds = AllocFromHeapAtEnd(HEAP_ID_32, sizeof(u16)*SEAL_MYSTERY);
 
     MI_CpuFill8(sealThresholds, 0, sizeof(u16)*SEAL_MYSTERY);
     MI_CpuFill8(uniqueSeals, 0, sizeof(u8)*3);

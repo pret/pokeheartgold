@@ -751,25 +751,25 @@ sub_02088894: ; 0x02088894
 	str r0, [r4, r1]
 	mov r0, #0xc
 	mov r1, #0x13
-	bl String_ctor
+	bl String_New
 	mov r1, #0x23
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	mov r0, #0xc
 	mov r1, #0x13
-	bl String_ctor
+	bl String_New
 	mov r1, #0x8d
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #8
 	mov r1, #0x13
-	bl String_ctor
+	bl String_New
 	mov r1, #0x8e
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #0x80
 	mov r1, #0x13
-	bl String_ctor
+	bl String_New
 	ldr r1, _02088950 ; =0x000007AC
 	ldr r2, _02088954 ; =0x000002EE
 	str r0, [r4, r1]
@@ -781,7 +781,7 @@ sub_02088894: ; 0x02088894
 	str r0, [r4, r1]
 	mov r0, #8
 	mov r1, #0x13
-	bl String_ctor
+	bl String_New
 	mov r2, #0x7b
 	lsl r2, r2, #4
 	str r0, [r4, r2]

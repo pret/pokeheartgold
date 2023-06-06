@@ -172,7 +172,7 @@ Unk02090E68 *sub_02090E68(SAVEDATA *saveData, u16 a1, u8 partyIdx, u8 a3, HeapID
     ptr->unkC = 0;
     ptr->saveData = saveData;
 
-    MAIL *mail = Mail_new(heapId);
+    MAIL *mail = Mail_New(heapId);
     ptr->mail = mail;
     Mail_init(mail);
     Mail_SetNewMessageDetails(ptr->mail, MAIL_NONE, partyIdx, saveData);
@@ -203,7 +203,7 @@ Unk02090E68 *sub_02090F00(SAVEDATA *saveData, Pokemon *mon, HeapID heapId) {
     ptr->unk0[0] = 0;
     ptr->saveData = saveData;
 
-    MAIL *mail = Mail_new(heapId);
+    MAIL *mail = Mail_New(heapId);
     ptr->mail = mail;
     GetMonData(mon, MON_DATA_MAIL_STRUCT, ptr->mail);
 
@@ -217,7 +217,7 @@ Unk02090E68 *sub_02090F38(SAVEDATA *saveData, u8 mailType, HeapID heapId) {
     ptr->unk0[0] = 0;
     ptr->saveData = saveData;
 
-    MAIL *mail = Mail_new(heapId);
+    MAIL *mail = Mail_New(heapId);
     ptr->mail = mail;
     Mail_SetType(mail, mailType);
 
@@ -248,7 +248,7 @@ int sub_02090FA8(MAILBOX *mailbox, Pokemon *mon, HeapID heapId) {
     int idx = Mailbox_GetFirstEmptySlotIdx(mailbox);
 
     if (idx != -1) {
-        MAIL *mail = Mail_new(heapId);
+        MAIL *mail = Mail_New(heapId);
 
         GetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
         Mailbox_CopyMailToSlotI(&mailbox->msgs[0], 0, idx, mail);

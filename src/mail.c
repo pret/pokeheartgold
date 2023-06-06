@@ -51,7 +51,7 @@ BOOL Mail_TypeIsValid(MAIL *mail) {
     return mail->mail_type <= NUM_MAIL - 1;
 }
 
-MAIL *Mail_new(HeapID heapId) {
+MAIL *Mail_New(HeapID heapId) {
     MAIL *ret = (MAIL *)AllocFromHeapAtEnd(heapId, sizeof(MAIL));
     Mail_init(ret);
     return ret;
@@ -141,7 +141,7 @@ MAIL *CreateKenyaMail(Pokemon *mon, u8 mailType, u8 gender, STRING *name, u8 otI
     u32 r5;
     u16 species;
     u32 isEgg, forme;
-    MAIL *ret = Mail_new(3);
+    MAIL *ret = Mail_New(HEAP_ID_3);
     Mail_init(ret);
     ret->mail_type = mailType;
     CopyStringToU16Array(name, ret->author_name, PLAYER_NAME_LENGTH + 1);
@@ -293,7 +293,7 @@ u32 Mailbox_CountMessages(MAILBOX *mailbox, int unused) {
 
 MAIL *Mailbox_AllocAndFetchMailI(MAIL *msgs, int n, int i, HeapID heapId) {
     const MAIL *src = Mailbox_GetPtrToSlotI(msgs, n, i);
-    MAIL *ret = Mail_new(heapId);
+    MAIL *ret = Mail_New(heapId);
     if (src != NULL) {
         Mail_copy(src, ret);
     }

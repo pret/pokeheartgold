@@ -184,11 +184,11 @@ ov115_0225F158: ; 0x0225F158
 	add r4, r0, #0
 	mov r0, #0x80
 	add r1, r5, #0
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	mov r0, #0x80
 	add r1, r5, #0
-	bl String_ctor
+	bl String_New
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #0
@@ -228,11 +228,11 @@ ov115_0225F1BC: ; 0x0225F1BC
 	add r4, r0, #0
 	mov r0, #0x80
 	add r1, r5, #0
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	mov r0, #0x80
 	add r1, r5, #0
-	bl String_ctor
+	bl String_New
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #0

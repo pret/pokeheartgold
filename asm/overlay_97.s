@@ -1233,7 +1233,7 @@ ov97_0221EEA4: ; 0x0221EEA4
 	str r0, [r5, #0x70]
 	ldr r1, [r5]
 	mov r0, #0xb
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x74]
 	add r0, r5, #0
 	add r0, #0x68

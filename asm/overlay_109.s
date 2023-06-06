@@ -2571,7 +2571,7 @@ ov109_021E6C9C: ; 0x021E6C9C
 	str r0, [r5, #0x28]
 	ldr r1, [r5]
 	mov r0, #0x80
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x2c]
 	ldr r0, [r5, #0x24]
 	mov r1, #0

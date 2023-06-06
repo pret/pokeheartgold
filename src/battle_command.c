@@ -97,15 +97,15 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 PokedexSetBattlerSeen(bsys, battlerId);
             }
         }
-        ov12_02250370(bsys, ctx, 1);
-        ov12_02250370(bsys, ctx, 3);
+        BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY);
+        BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY2);
         break;
     case B_SIDE_OPPONENT:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (opponentData->unk195 & 1) {
-                ov12_02250360(ctx, battlerId);
-                ov12_02250370(bsys, ctx, battlerId);
+                BattleSystem_ClearExperienceEarnFlags(ctx, battlerId);
+                BattleSystem_SetExperienceEarnFlags(bsys, ctx, battlerId);
                 BattleController_EmitPokemonSlideIn(bsys, battlerId);
                 PokedexSetBattlerSeen(bsys, battlerId);
             }
@@ -114,11 +114,11 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     case B_SIDE_1:
         opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, ctx->battlerIdAttacker);
         if (!(opponentData->unk195 & 1)) {
-            ov12_02250370(bsys, ctx, 1);
-            ov12_02250370(bsys, ctx, 3);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY2);
         } else {
-            ov12_02250360(ctx, ctx->battlerIdAttacker);
-            ov12_02250370(bsys, ctx, ctx->battlerIdAttacker);
+            BattleSystem_ClearExperienceEarnFlags(ctx, ctx->battlerIdAttacker);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, ctx->battlerIdAttacker);
         }
         PokedexSetBattlerSeen(bsys, ctx->battlerIdAttacker);
         BattleController_EmitPokemonSlideIn(bsys, ctx->battlerIdAttacker);
@@ -126,11 +126,11 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     case B_SIDE_2:
         opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, ctx->battlerIdTarget);
         if (!(opponentData->unk195 & 1)) {
-            ov12_02250370(bsys, ctx, 1);
-            ov12_02250370(bsys, ctx, 3);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY2);
         } else {
-            ov12_02250360(ctx, ctx->battlerIdTarget);
-            ov12_02250370(bsys, ctx, ctx->battlerIdTarget);
+            BattleSystem_ClearExperienceEarnFlags(ctx, ctx->battlerIdTarget);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, ctx->battlerIdTarget);
         }
         PokedexSetBattlerSeen(bsys, ctx->battlerIdTarget);
         BattleController_EmitPokemonSlideIn(bsys, ctx->battlerIdTarget);
@@ -138,11 +138,11 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     case B_SIDE_6:
         opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, ctx->battlerIdSwitch);
         if (!(opponentData->unk195 & 1)) {
-            ov12_02250370(bsys, ctx, 1);
-            ov12_02250370(bsys, ctx, 3);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY2);
         } else {
-            ov12_02250360(ctx, ctx->battlerIdSwitch);
-            ov12_02250370(bsys, ctx, ctx->battlerIdSwitch);
+            BattleSystem_ClearExperienceEarnFlags(ctx, ctx->battlerIdSwitch);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, ctx->battlerIdSwitch);
         }
         PokedexSetBattlerSeen(bsys, ctx->battlerIdSwitch);
         BattleController_EmitPokemonSlideIn(bsys, ctx->battlerIdSwitch);
@@ -175,15 +175,15 @@ BOOL BtlCmd_PokemonSendOut(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 PokedexSetBattlerSeen(bsys, battlerId);
             }
         }
-        ov12_02250370(bsys, ctx, 1);
-        ov12_02250370(bsys, ctx, 3);
+        BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY);
+        BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY2);
         break;
     case 4:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
             if (opponentData->unk195 & 1) {
-                ov12_02250360(ctx, battlerId);
-                ov12_02250370(bsys, ctx, battlerId);
+                BattleSystem_ClearExperienceEarnFlags(ctx, battlerId);
+                BattleSystem_SetExperienceEarnFlags(bsys, ctx, battlerId);
                 BattleController_EmitPokemonSendOut(bsys, battlerId, 0, 0);
                 PokedexSetBattlerSeen(bsys, battlerId);
             }
@@ -192,11 +192,11 @@ BOOL BtlCmd_PokemonSendOut(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     case 1:
         opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, ctx->battlerIdAttacker);
         if (!(opponentData->unk195 & 1)) {
-            ov12_02250370(bsys, ctx, 1);
-            ov12_02250370(bsys, ctx, 3);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY2);
         } else {
-            ov12_02250360(ctx, ctx->battlerIdAttacker);
-            ov12_02250370(bsys, ctx, ctx->battlerIdAttacker);
+            BattleSystem_ClearExperienceEarnFlags(ctx, ctx->battlerIdAttacker);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, ctx->battlerIdAttacker);
         }
         PokedexSetBattlerSeen(bsys, ctx->battlerIdAttacker);
         BattleController_EmitPokemonSendOut(bsys, ctx->battlerIdAttacker, 0, 0);
@@ -204,11 +204,11 @@ BOOL BtlCmd_PokemonSendOut(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     case 2:
         opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, ctx->battlerIdTarget);
         if (!(opponentData->unk195 & 1)) {
-            ov12_02250370(bsys, ctx, 1);
-            ov12_02250370(bsys, ctx, 3);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY2);
         } else {
-            ov12_02250360(ctx, ctx->battlerIdTarget);
-            ov12_02250370(bsys, ctx, ctx->battlerIdTarget);
+            BattleSystem_ClearExperienceEarnFlags(ctx, ctx->battlerIdTarget);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, ctx->battlerIdTarget);
         }
         PokedexSetBattlerSeen(bsys, ctx->battlerIdTarget);
         BattleController_EmitPokemonSendOut(bsys, ctx->battlerIdTarget, 0, 0);
@@ -216,11 +216,11 @@ BOOL BtlCmd_PokemonSendOut(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     case 6:
         opponentData = BattleSys_GetOpponentDataByBattlerId(bsys, ctx->battlerIdSwitch);
         if (!(opponentData->unk195 & 1)) {
-            ov12_02250370(bsys, ctx, 1);
-            ov12_02250370(bsys, ctx, 3);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY2);
         } else {
-            ov12_02250360(ctx, ctx->battlerIdSwitch);
-            ov12_02250370(bsys, ctx, ctx->battlerIdSwitch);
+            BattleSystem_ClearExperienceEarnFlags(ctx, ctx->battlerIdSwitch);
+            BattleSystem_SetExperienceEarnFlags(bsys, ctx, ctx->battlerIdSwitch);
         }
         PokedexSetBattlerSeen(bsys, ctx->battlerIdSwitch);
         BattleController_EmitPokemonSendOut(bsys, ctx->battlerIdSwitch, 0, 0);
@@ -718,7 +718,7 @@ static void DamageCalcDefault(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     ctx->damage *= ctx->criticalMultiplier;
 
     if (GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker) == HOLD_EFFECT_HP_DRAIN_ON_ATK) {
-        ctx->damage = ctx->damage * (100 + ov12_02255844(ctx, ctx->battlerIdAttacker, 0))/100;
+        ctx->damage = ctx->damage * (100 + BattleSystem_GetHeldItemDamageBoost(ctx, ctx->battlerIdAttacker, 0))/100;
     }
 
     if (GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker) == HOLD_EFFECT_BOOST_REPEATED) {
@@ -848,7 +848,7 @@ BOOL BtlCmd_PlayMoveAnimation(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     if ((!(ctx->linkStatus & (1 << 14)) && BattleSys_AreBattleAnimationsOn(bsys) == TRUE) || move == MOVE_TRANSFORM) {
         ctx->linkStatus |= (1 << 14);
-        ov12_0226340C(bsys, ctx, move);
+        BattleController_SetMoveEffect(bsys, ctx, move);
     }
 
     if (!BattleSys_AreBattleAnimationsOn(bsys)) {
@@ -1234,7 +1234,7 @@ void Task_GetExp(SysTask *task, void *data);
 BOOL BtlCmd_InitGetExp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    ctx->getterWork = AllocFromHeap(5, sizeof(GetterWork));
+    ctx->getterWork = AllocFromHeap(HEAP_ID_BATTLE, sizeof(GetterWork));
 
     ctx->getterWork->bsys = bsys;
     ctx->getterWork->ctx = ctx;
@@ -1365,7 +1365,7 @@ BOOL BtlCmd_SwitchInDataUpdate(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     ctx->selectedMonIndex[battlerId] = ctx->unk_21A0[battlerId];
     ctx->unk_21A0[battlerId] = 6;
 
-    ov12_0224E4FC(bsys, ctx, battlerId, ctx->selectedMonIndex[battlerId]);
+    BattleSystem_GetBattleMon(bsys, ctx, battlerId, ctx->selectedMonIndex[battlerId]);
     ov12_02256F78(bsys, ctx, battlerId, ctx->selectedMonIndex[battlerId]);
 
     ctx->hpTemp = ctx->battleMons[1].hp;
@@ -1401,7 +1401,7 @@ BOOL BtlCmd_InitGetPokemon(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int unkA = BattleScriptReadWord(ctx);
 
-    ctx->getterWork = (GetterWork*) AllocFromHeap(5, sizeof(GetterWork));
+    ctx->getterWork = (GetterWork*) AllocFromHeap(HEAP_ID_BATTLE, sizeof(GetterWork));
     ctx->getterWork->bsys = bsys;
     ctx->getterWork->ctx = ctx;
     ctx->getterWork->unk28 = 0;
@@ -2103,7 +2103,7 @@ u32 CalcPrizeMoney(BattleSystem *bsys, BATTLECONTEXT *ctx, int trainerIndex) {
     u8 trainerClass;
     TRAINER trainer;
 
-    trPoke = AllocFromHeap(5, sizeof(TRPOKE)*6);
+    trPoke = AllocFromHeap(HEAP_ID_BATTLE, sizeof(TRPOKE)*6);
 
     TrainerData_ReadTrData(bsys->trainerId[trainerIndex], &trainer);
     TrainerData_ReadTrPoke(bsys->trainerId[trainerIndex], trPoke);
@@ -2484,7 +2484,7 @@ BOOL BtlCmd_TryLightScreen(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ctx->fieldSideConditionData[unkA].lightScreenTurns = 5;
         ctx->fieldSideConditionData[unkA].lightScreenBattler = ctx->battlerIdAttacker;
         if (GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker) == HOLD_EFFECT_EXTEND_SCREENS) {
-            ctx->fieldSideConditionData[unkA].lightScreenTurns += ov12_02255844(ctx, ctx->battlerIdAttacker, 0);
+            ctx->fieldSideConditionData[unkA].lightScreenTurns += BattleSystem_GetHeldItemDamageBoost(ctx, ctx->battlerIdAttacker, 0);
         }
         ctx->buffMsg.tag = 20;
         ctx->buffMsg.param[0] = ctx->moveNoCur;
@@ -2513,7 +2513,7 @@ BOOL BtlCmd_TryReflect(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ctx->fieldSideConditionData[unkA].reflectTurns = 5;
         ctx->fieldSideConditionData[unkA].reflectBattler = ctx->battlerIdAttacker;
         if (GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker) == HOLD_EFFECT_EXTEND_SCREENS) {
-            ctx->fieldSideConditionData[unkA].reflectTurns += ov12_02255844(ctx, ctx->battlerIdAttacker, 0);
+            ctx->fieldSideConditionData[unkA].reflectTurns += BattleSystem_GetHeldItemDamageBoost(ctx, ctx->battlerIdAttacker, 0);
         }
         ctx->buffMsg.tag = 20;
         ctx->buffMsg.param[0] = ctx->moveNoCur;
@@ -3697,7 +3697,7 @@ BOOL BtlCmd_CheckHitRate(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int battlerIdTarget = GetBattlerIDBySide(bsys, ctx, sideTarget);
     int moveMsgNo = GetMoveMessageNo(ctx, move);
 
-    ov12_02248714(bsys, ctx, battlerIdAttacker, battlerIdTarget, moveMsgNo);
+    BattleSystem_CheckMoveHitEffect(bsys, ctx, battlerIdAttacker, battlerIdTarget, moveMsgNo);
 
     if (ctx->moveStatusFlag & 0x1fd849) {
         BattleScriptIncrementPointer(ctx, adrs);
@@ -4356,7 +4356,7 @@ BOOL BtlCmd_TryPursuit(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         BattleScriptIncrementPointer(ctx, adrs);
     } else {
         int itemEffect = GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker);
-        ov12_02255844(ctx, ctx->battlerIdAttacker, 0);
+        BattleSystem_GetHeldItemDamageBoost(ctx, ctx->battlerIdAttacker, 0);
 
         if (itemEffect == HOLD_EFFECT_CHOICE_ATK || itemEffect == HOLD_EFFECT_CHOICE_SPEED || itemEffect == HOLD_EFFECT_CHOICE_SPATK) {
             ctx->battleMons[ctx->battlerIdAttacker].unk88.moveNoChoice = moveNo;
@@ -5632,7 +5632,7 @@ BOOL BtlCmd_CheckHoldOnWith1HP(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int battlerId = GetBattlerIDBySide(bsys, ctx, side);
     int itemEffect = GetBattlerHeldItemEffect(ctx, battlerId);
-    int activationChance = ov12_02255844(ctx, battlerId, 0);
+    int activationChance = BattleSystem_GetHeldItemDamageBoost(ctx, battlerId, 0);
 
     if (itemEffect == HOLD_EFFECT_MAYBE_ENDURE && (BattleSys_Random(bsys)%100) < activationChance) {
         flag = TRUE;
@@ -5840,7 +5840,7 @@ BOOL BtlCmd_222(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int battlerId = GetBattlerIDBySide(bsys, ctx, side);
 
-    if (TrainerMessageWithIdPairExists(BattleSys_GetTrainerIndex(bsys, battlerId), msgIndex, 5)) {
+    if (TrainerMessageWithIdPairExists(BattleSys_GetTrainerIndex(bsys, battlerId), msgIndex, HEAP_ID_BATTLE)) {
         ctx->msgWork = msgIndex;
     } else {
         ctx->msgWork = 0;

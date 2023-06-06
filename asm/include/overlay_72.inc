@@ -110,7 +110,7 @@
 .public sub_02024B68
 .public sub_02025224
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public Save_PrepareForAsyncWrite
 .public Save_WriteFileAsync

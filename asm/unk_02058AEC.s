@@ -1340,11 +1340,11 @@ _02059546:
 	str r0, [r4, #0x2c]
 	mov r0, #0xc8
 	mov r1, #0xb
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0xc]
 	mov r0, #0xc8
 	mov r1, #0xb
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x10]
 	add r0, r4, #0
 	add r0, #0x14
@@ -2174,11 +2174,11 @@ _02059BA6:
 	str r0, [r4, #0x1c]
 	mov r0, #0xc8
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	str r0, [r4]
 	mov r0, #0xc8
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #4]
 	ldrb r0, [r6]
 	cmp r0, #0xc

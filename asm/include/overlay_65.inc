@@ -138,7 +138,7 @@
 .public sub_02024B78
 .public sub_02025224
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public String16_FormatInteger
 .public CopyU16ArrayToString

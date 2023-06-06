@@ -866,7 +866,7 @@ _0202EAA4:
 	str r0, [r1, #8]
 	mov r0, #8
 	add r1, r7, #0
-	bl String_ctor
+	bl String_New
 	ldr r2, [r4]
 	mov r1, #0xc
 	mul r1, r2

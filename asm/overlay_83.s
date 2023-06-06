@@ -2418,12 +2418,12 @@ ov83_0223F200: ; 0x0223F200
 	mov r0, #0x96
 	lsl r0, r0, #2
 	mov r1, #0x6b
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x28]
 	mov r0, #0x96
 	lsl r0, r0, #2
 	mov r1, #0x6b
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x2c]
 	mov r6, #0
 	add r4, r5, #0
@@ -2431,7 +2431,7 @@ ov83_0223F200: ; 0x0223F200
 _0223F268:
 	add r0, r7, #0
 	mov r1, #0x6b
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x30]
 	add r6, r6, #1
 	add r4, r4, #4
@@ -4750,7 +4750,7 @@ _0224058C:
 	add r6, r0, #0
 	mov r0, #8
 	mov r1, #0x6b
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	add r0, r6, #0
 	bl PlayerProfile_GetNamePtr
@@ -5589,7 +5589,7 @@ ov83_02240C8C: ; 0x02240C8C
 	add r7, r0, #0
 	mov r0, #8
 	mov r1, #0x6b
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	add r0, r7, #0
 	bl PlayerProfile_GetNamePtr
@@ -11881,12 +11881,12 @@ ov83_02243FD4: ; 0x02243FD4
 	mov r0, #0x96
 	lsl r0, r0, #2
 	mov r1, #0x6b
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x28]
 	mov r0, #0x96
 	lsl r0, r0, #2
 	mov r1, #0x6b
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x2c]
 	mov r6, #0
 	add r4, r5, #0
@@ -11894,7 +11894,7 @@ ov83_02243FD4: ; 0x02243FD4
 _02244030:
 	add r0, r7, #0
 	mov r1, #0x6b
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x30]
 	add r6, r6, #1
 	add r4, r4, #4
@@ -13218,7 +13218,7 @@ ov83_02244AD8: ; 0x02244AD8
 	add r6, r0, #0
 	mov r0, #8
 	mov r1, #0x6b
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	add r0, r6, #0
 	bl PlayerProfile_GetNamePtr

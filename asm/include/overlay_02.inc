@@ -147,7 +147,7 @@
 .public Set2dSpriteAnimSeqNo
 .public sub_02024ADC
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public Save_SysInfo_RTC_get
 .public Save_PlayerData_GetProfileAddr

@@ -98,7 +98,7 @@
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public StringCopy
 .public CopyU16ArrayToString

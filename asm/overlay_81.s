@@ -5335,7 +5335,7 @@ ov81_022408C4: ; 0x022408C4
 	add r7, r0, #0
 	mov r0, #8
 	mov r1, #0x64
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0
@@ -5391,7 +5391,7 @@ ov81_0224093C: ; 0x0224093C
 	add r7, r0, #0
 	mov r0, #8
 	mov r1, #0x64
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0
@@ -5449,7 +5449,7 @@ ov81_022409B0: ; 0x022409B0
 	add r7, r0, #0
 	mov r0, #0xb
 	mov r1, #0x64
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x1c]
 	mov r1, #0x1c
@@ -5896,12 +5896,12 @@ ov81_02240D64: ; 0x02240D64
 	mov r0, #0x32
 	lsl r0, r0, #4
 	mov r1, #0x64
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x24]
 	mov r0, #0x32
 	lsl r0, r0, #4
 	mov r1, #0x64
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x28]
 	mov r6, #0
 	add r4, r5, #0
@@ -5909,7 +5909,7 @@ ov81_02240D64: ; 0x02240D64
 _02240DBE:
 	add r0, r7, #0
 	mov r1, #0x64
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x2c]
 	add r6, r6, #1
 	add r4, r4, #4

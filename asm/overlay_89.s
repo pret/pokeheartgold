@@ -168,7 +168,7 @@ ov89_02258800: ; 0x02258800
 	mov r0, #1
 	lsl r0, r0, #8
 	mov r1, #0x7d
-	bl String_ctor
+	bl String_New
 	add r1, r5, #0
 	add r1, #0xc4
 	str r0, [r1]
@@ -8165,7 +8165,7 @@ _0225C768:
 	str r0, [sp, #0x20]
 	mov r0, #0x40
 	mov r1, #0x7d
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldr r0, [sp, #0x14]
 	ldr r2, [sp, #0x20]

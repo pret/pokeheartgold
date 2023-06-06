@@ -501,7 +501,7 @@ _02266408:
 	add r0, r6, #0
 	add r1, r4, #0
 	mov r2, #5
-	bl ov12_0226BBC4
+	bl BattleFinger_LoadResources
 	ldr r0, _02266484 ; =0x00004E44
 	ldr r3, _02266488 ; =0x00004FB7
 	str r0, [sp]
@@ -517,7 +517,7 @@ _02266408:
 	add r1, r4, #0
 	mov r2, #5
 	add r3, r3, #7
-	bl ov12_0226BC68
+	bl BattleFinger_New
 	ldr r1, _0226648C ; =0x000006E4
 	str r0, [r7, r1]
 _02266470:
@@ -566,7 +566,7 @@ _022664A6:
 	beq _022664EE
 	ldr r0, _022664FC ; =0x000006E4
 	ldr r0, [r7, r0]
-	bl ov12_0226BCE4
+	bl BattleFinger_Delete
 	ldr r3, _02266500 ; =0x00004FAC
 	ldr r2, _02266504 ; =0x00004E44
 	add r1, r3, #0
@@ -574,7 +574,7 @@ _022664A6:
 	add r0, r5, #0
 	add r1, #0x12
 	add r3, #0xb
-	bl ov12_0226BC40
+	bl BattleFinger_FreeResources
 _022664EE:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -899,7 +899,7 @@ _02266774:
 	ldr r0, [sp, #0x18]
 	add r1, r7, #0
 	mov r3, #5
-	bl ov12_0226B8FC
+	bl BattleCursor_LoadResources
 	ldr r0, _022667F8 ; =0x00004E43
 	ldr r3, _022667FC ; =0x00004FB6
 	str r0, [sp]
@@ -914,7 +914,7 @@ _02266774:
 	ldr r0, [sp, #0x18]
 	add r1, r7, #0
 	add r3, r3, #7
-	bl ov12_0226B9A4
+	bl BattleCursor_New
 	ldr r2, _02266800 ; =0x000006D8
 	ldr r1, [sp, #0x14]
 	str r0, [r1, r2]
@@ -1007,10 +1007,10 @@ _02266864:
 	add r0, r7, #0
 	add r1, #0x12
 	add r3, #0xb
-	bl ov12_0226B97C
+	bl BattleCursor_FreeResources
 	ldr r0, _022668CC ; =0x000006D8
 	ldr r0, [r6, r0]
-	bl ov12_0226BA28
+	bl BattleCursor_Delete
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _022668B0: .word 0x000005D8
@@ -1481,7 +1481,7 @@ _02266C24:
 	bl MI_CpuFill8
 	ldr r0, _02266C60 ; =0x000006D8
 	ldr r0, [r5, r0]
-	bl ov12_0226BB68
+	bl BattleCursor_Disable
 	cmp r6, #0
 	ble _02266C46
 	mov r0, #0x6e
@@ -2190,7 +2190,7 @@ _022671C4:
 	str r0, [sp, #0x1c]
 	mov r0, #0x20
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldr r0, [r5]
 	bl ov12_0223C134
@@ -2988,11 +2988,11 @@ ov12_0226789C: ; 0x0226789C
 	str r0, [sp, #0x20]
 	mov r0, #0x64
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r0, #0x64
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldrh r2, [r5, #0x1c]
 	add r0, r4, #0
@@ -3179,11 +3179,11 @@ ov12_02267A58: ; 0x02267A58
 	str r0, [sp, #0x20]
 	mov r0, #0x64
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r0, #0x64
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldrh r2, [r5, #0x1c]
 	add r0, r4, #0
@@ -3279,11 +3279,11 @@ ov12_02267B40: ; 0x02267B40
 	str r0, [sp, #0x20]
 	mov r0, #0x64
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r0, #0x64
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldrh r2, [r5, #0x1c]
 	add r0, r4, #0
@@ -3396,7 +3396,7 @@ ov12_02267C24: ; 0x02267C24
 	bl ov12_0223C1A0
 	mov r0, #0x18
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x28]
 	mov r0, #0x4d
 	lsl r0, r0, #4
@@ -4956,7 +4956,7 @@ ov12_0226885C: ; 0x0226885C
 	str r0, [sp, #0x24]
 	mov r0, #0x10
 	mov r1, #5
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x30]
 	ldr r1, _02268A5C ; =0x000003A9
 	add r0, r4, #0

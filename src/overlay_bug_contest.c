@@ -33,9 +33,9 @@ u16 BugContest_JudgePlayerMon(BUGCONTEST *bugContest, Pokemon *mon);
 BUGCONTEST *BugContest_new(FieldSystem *fsys, u32 weekday) {
     BUGCONTEST *bugContest;
 
-    bugContest = (BUGCONTEST *)AllocFromHeap(3, sizeof(BUGCONTEST));
+    bugContest = (BUGCONTEST *)AllocFromHeap(HEAP_ID_3, sizeof(BUGCONTEST));
     MI_CpuClear8(bugContest, sizeof(BUGCONTEST));
-    bugContest->heapId = 3;
+    bugContest->heapId = HEAP_ID_3;
     bugContest->saveData = fsys->savedata;
     bugContest->sport_balls = 20;
     bugContest->mon = AllocMonZeroed(bugContest->heapId);
@@ -156,7 +156,7 @@ BOOL BugContest_BufferCaughtMonNick(BUGCONTEST *bugContest, MessageFormat *msgFm
         return FALSE;
     }
 
-    string = String_ctor(POKEMON_NAME_LENGTH+1+1, bugContest->heapId);
+    string = String_New(POKEMON_NAME_LENGTH+1+1, bugContest->heapId);
     GetMonData(bugContest->mon, MON_DATA_NICKNAME_3, string);
     BufferString(msgFmt, slot, string, 2, 1, 2);
     String_dtor(string);

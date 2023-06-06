@@ -2540,8 +2540,8 @@ BattleController_EmitPrintMessage: ; 0x022633F0
 	pop {r3, r4, pc}
 	thumb_func_end BattleController_EmitPrintMessage
 
-	thumb_func_start ov12_0226340C
-ov12_0226340C: ; 0x0226340C
+	thumb_func_start BattleController_SetMoveEffect
+BattleController_SetMoveEffect: ; 0x0226340C
 	push {r4, r5, r6, lr}
 	sub sp, #0x68
 	mov r3, #0
@@ -2564,7 +2564,7 @@ ov12_0226340C: ; 0x0226340C
 	bl ov12_02262240
 	add sp, #0x68
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov12_0226340C
+	thumb_func_end BattleController_SetMoveEffect
 
 	thumb_func_start ov12_0226343C
 ov12_0226343C: ; 0x0226343C
@@ -4496,7 +4496,7 @@ BattleController_EmitSetBattleResults: ; 0x02264288
 	add r0, sp, #4
 	strb r1, [r0]
 	add r0, r5, #0
-	bl ov12_0223BD14
+	bl BattleSystem_GetWinLoseFlags
 	str r0, [sp, #8]
 	mov r1, #0
 	add r0, sp, #4

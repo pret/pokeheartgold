@@ -971,7 +971,7 @@ ov67_021E60B4: ; 0x021E60B4
 	mov r0, #2
 	ldr r1, [r4]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x30]
 	ldr r0, [r4, #0x28]
 	mov r1, #0x21
@@ -1389,7 +1389,7 @@ _021E6406:
 	bl MI_CpuCopy8
 	ldr r1, [r7]
 	mov r0, #8
-	bl String_ctor
+	bl String_New
 	str r0, [r4]
 	ldrb r0, [r4, #7]
 	cmp r0, #0

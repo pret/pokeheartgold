@@ -27,8 +27,6 @@
 #include "choose_starter_app.h"
 #include "global.h"
 
-#define HEAPID_STARTERCHOOSE       46
-
 enum ChooseStarterInput {
     CHOOSE_STARTER_INPUT_NONE                    = 0,
     CHOOSE_STARTER_INPUT_CYCLE_CLOCKWISE         = 1,
@@ -251,11 +249,11 @@ BOOL ChooseStarterApplication_OvyInit(OVY_MANAGER *ovy, int *state_p) {
     struct ChooseStarterAppArgs *args;
     int i;
 
-    CreateHeap(3, HEAPID_STARTERCHOOSE, 0x40000);
-    work = OverlayManager_CreateAndGetData(ovy, sizeof(struct ChooseStarterAppWork), HEAPID_STARTERCHOOSE);
+    CreateHeap(3, HEAP_ID_CHOOSE_STARTER, 0x40000);
+    work = OverlayManager_CreateAndGetData(ovy, sizeof(struct ChooseStarterAppWork), HEAP_ID_CHOOSE_STARTER);
     MI_CpuClear8(work, sizeof(struct ChooseStarterAppWork));
-    work->heapId = HEAPID_STARTERCHOOSE;
-    GF_ExpHeap_FndInitAllocator(&work->allocator, HEAPID_STARTERCHOOSE, 0x20);
+    work->heapId = HEAP_ID_CHOOSE_STARTER;
+    GF_ExpHeap_FndInitAllocator(&work->allocator, HEAP_ID_CHOOSE_STARTER, 0x20);
     args = OverlayManager_GetArgs(ovy);
     work->frame = Options_GetFrame(args->options);
     for (i = 0; i < 3; i++) {
@@ -566,7 +564,7 @@ BOOL ChooseStarterApplication_OvyExit(OVY_MANAGER *ovy, int *state) {
     FreeToHeap(work->bgConfig);
     GF_3DVramMan_Delete(work->_3dMan);
     OverlayManager_FreeData(ovy);
-    DestroyHeap(HEAPID_STARTERCHOOSE);
+    DestroyHeap(HEAP_ID_CHOOSE_STARTER);
     return TRUE;
 }
 
@@ -614,7 +612,7 @@ static void createOamManager(HeapID heapId) {
             3,
             0,
             0x2800,
-            0
+            HEAP_ID_0
         };
         baseTrans.heapId = heapId;
         sub_020215C0(&baseTrans, 0x200010, 0x10);

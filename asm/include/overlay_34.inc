@@ -62,7 +62,7 @@
 .public sub_02025204
 .public sub_02025364
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public CopyU16ArrayToString
 .public Save_PlayerData_GetProfileAddr

@@ -2722,7 +2722,7 @@ CreateNamingScreen: ; 0x0203F6E0
 	str r0, [r4, #0xc]
 	mov r0, #0xc
 	mov r1, #0xb
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x10]
 	cmp r7, #1
 	beq _0203F73C

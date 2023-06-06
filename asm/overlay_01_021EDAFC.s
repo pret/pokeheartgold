@@ -155,7 +155,7 @@ _021EDBEC:
 _021EDC06:
 	add r0, r7, #0
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x1c]
 	add r5, r5, #1
 	add r4, r4, #4
@@ -343,7 +343,7 @@ ov01_021EDD68: ; 0x021EDD68
 	mov r0, #0x50
 	mov r1, #4
 	add r6, r2, #0
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x8c
@@ -995,7 +995,7 @@ MoveTutorMenu_SetListItem_Internal: ; 0x021EE244
 	mov r1, #4
 	add r7, r2, #0
 	add r4, r3, #0
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0x8c
@@ -1461,11 +1461,11 @@ ov01_021EE5D0: ; 0x021EE5D0
 	mov r0, #0x5a
 	mov r1, #4
 	add r7, r2, #0
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	mov r0, #0x5a
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r0, [r5, #0x18]
 	mov r1, #0xf
@@ -1649,11 +1649,11 @@ ov01_021EE754: ; 0x021EE754
 	mov r1, #4
 	str r2, [sp, #0x10]
 	add r7, r3, #0
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	mov r0, #0x5a
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0x8c
@@ -2203,7 +2203,7 @@ MoneyBoxSys_Update: ; 0x021EEB4C
 	add r6, r0, #0
 	mov r0, #0x10
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	ldr r0, [sp, #0xc]
 	mov r1, #0x1f
@@ -2339,7 +2339,7 @@ ov01_021EEC7C: ; 0x021EEC7C
 	str r0, [sp, #0x10]
 	mov r0, #0x10
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	cmp r4, #0
 	beq _021EECBA
@@ -2557,7 +2557,7 @@ ov01_021EEE44: ; 0x021EEE44
 	add r6, r0, #0
 	mov r0, #0x10
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	mov r1, #0x53
 	ldr r0, [sp, #0xc]
@@ -2701,11 +2701,11 @@ ov01_021EEF9C: ; 0x021EEF9C
 	beq _021EF006
 	mov r0, #0x5a
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	mov r0, #0x5a
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0xc]
 	ldr r0, [r5, #0x18]
 	mov r1, #0xf

@@ -126,7 +126,7 @@ static inline void InitUnkStructScrCmd408(struct UnkStruct_ScrCmd408 *data, u16 
 }
 
 static inline PCBoxAppData *PCBoxAppData_new(SCRIPTCONTEXT *ctx) {
-    PCBoxAppData *ret = AllocFromHeap(11, sizeof(PCBoxAppData));
+    PCBoxAppData *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(PCBoxAppData));
     ret->saveData = ctx->fsys->savedata;
     ret->unk8 = ScriptReadByte(ctx);
     ret->fsysUnk10C = &ctx->fsys->unk_10C;

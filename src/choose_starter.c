@@ -18,7 +18,7 @@ struct ChooseStarterTaskData {
 static BOOL CreateStarter(TaskManager *taskManager);
 
 void LaunchStarterChoiceScene(FieldSystem *fsys) {
-    struct ChooseStarterTaskData *env = AllocFromHeapAtEnd(11, sizeof(struct ChooseStarterTaskData));
+    struct ChooseStarterTaskData *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct ChooseStarterTaskData));
     env->state = 0;
     TaskManager_Call(fsys->taskman, CreateStarter, env);
 }
@@ -32,7 +32,7 @@ static BOOL CreateStarter(TaskManager *taskManager) {
 
     switch (env->state) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, 4);
+        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_4);
         env->state = 1;
         break;
     case 1:
@@ -47,7 +47,7 @@ static BOOL CreateStarter(TaskManager *taskManager) {
             };
             mapsec = MapHeader_GetMapSec(fsys->location->mapId); //sp14
 
-            env->args = AllocFromHeapAtEnd(11, sizeof(struct ChooseStarterAppArgs));
+            env->args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct ChooseStarterAppArgs));
             env->args->cursorPos = 0;
             env->args->options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
             for (i = 0; i < (int)NELEMS(species); i++) {
@@ -55,7 +55,7 @@ static BOOL CreateStarter(TaskManager *taskManager) {
                 PLAYERPROFILE *profile = Save_PlayerData_GetProfileAddr(fsys->savedata);
                 ZeroMonData(mon);
                 CreateMon(mon, species[i], 5, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
-                sub_020720FC(mon, profile, BALL_POKE, mapsec, 12, 11);
+                sub_020720FC(mon, profile, BALL_POKE, mapsec, 12, HEAP_ID_FIELD);
                 {
                     int item = ITEM_NONE;
                     SetMonData(mon, MON_DATA_HELD_ITEM, &item);
@@ -88,7 +88,7 @@ static BOOL CreateStarter(TaskManager *taskManager) {
         if (!sub_020505C8(fsys)) {
             break;
         }
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, 4);
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, HEAP_ID_4);
         env->state = 5;
         break;
     case 5:

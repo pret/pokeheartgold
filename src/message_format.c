@@ -32,13 +32,13 @@ MessageFormat *MessageFormat_new_custom(u32 nstr, u32 len, HeapID heapId) {
     if (ret != NULL) {
         ret->count = nstr;
         ret->heapId = heapId;
-        ret->buffer = String_ctor(len, heapId);
+        ret->buffer = String_New(len, heapId);
         if (ret->buffer != NULL) {
             ret->fields = AllocFromHeapAtEnd(heapId, nstr * sizeof(MessageFormatFields));
             if (ret->fields != NULL) {
                 for (i = 0; i < nstr; i++) {
                     MessageFormat_InitFields(&ret->fields[i]);
-                    ret->fields[i].msg = String_ctor(len, heapId);
+                    ret->fields[i].msg = String_New(len, heapId);
                     if (ret->fields[i].msg == NULL) {
                         break;
                     }
@@ -462,7 +462,7 @@ void BufferGroupName(MessageFormat *msgFmt, SAVEDATA *saveData, s32 groupId, s32
     SAV_FRIEND_GRP *friendGrp = Save_FriendGroup_get(saveData);
     u8 sp10 = sub_0202C830(friendGrp, groupId);
     u8 r7 = sub_0202C83C(friendGrp, groupId);
-    STRING *dest = String_ctor(64, 4);
+    STRING *dest = String_New(64, HEAP_ID_4);
     CopyU16ArrayToString(dest, sub_0202C7E0(friendGrp, groupId, nameType));
     BufferString(msgFmt, fieldno, dest, sp10, 1, r7);
     String_dtor(dest);

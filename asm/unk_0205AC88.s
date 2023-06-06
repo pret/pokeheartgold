@@ -890,7 +890,7 @@ sub_0205B338: ; 0x0205B338
 	add r4, r0, #0
 	mov r0, #8
 	mov r1, #0x57
-	bl String_ctor
+	bl String_New
 	str r0, [r4]
 	mov r1, #0
 	add r0, r4, #0

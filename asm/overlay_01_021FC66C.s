@@ -693,12 +693,12 @@ ov01_021FCB14: ; 0x021FCB14
 	mov r0, #1
 	lsl r0, r0, #0xa
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x2c]
 	mov r0, #1
 	lsl r0, r0, #0xa
 	mov r1, #4
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x30]
 	mov r0, #8
 	mov r1, #0x40

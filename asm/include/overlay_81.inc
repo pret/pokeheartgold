@@ -155,7 +155,7 @@
 .public sub_02024B68
 .public sub_02024B78
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public StringSetEmpty
 .public CopyU16ArrayToString

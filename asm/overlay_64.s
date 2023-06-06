@@ -925,28 +925,28 @@ ov64_021E607C: ; 0x021E607C
 	sub r1, #0x24
 	add r0, r1, #0
 	mov r1, #0x3b
-	bl String_ctor
+	bl String_New
 	mov r1, #0x4a
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	sub r1, #0x28
 	add r0, r1, #0
 	mov r1, #0x3b
-	bl String_ctor
+	bl String_New
 	mov r1, #0x4b
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	sub r1, #0x2c
 	add r0, r1, #0
 	mov r1, #0x3b
-	bl String_ctor
+	bl String_New
 	mov r1, #0x69
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	sub r1, #0xa4
 	add r0, r1, #0
 	mov r1, #0x3b
-	bl String_ctor
+	bl String_New
 	mov r1, #0x6a
 	lsl r1, r1, #2
 	str r0, [r4, r1]

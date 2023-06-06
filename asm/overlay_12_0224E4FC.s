@@ -6,8 +6,8 @@
 
 	.text
 
-    thumb_func_start ov12_0224E4FC
-ov12_0224E4FC: ; 0x0224E4FC
+    thumb_func_start BattleSystem_GetBattleMon
+BattleSystem_GetBattleMon: ; 0x0224E4FC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x28
 	add r7, r1, #0
@@ -582,7 +582,7 @@ _0224EA04: .word 0x00002DBC
 _0224EA08: .word 0x0000219C
 _0224EA0C: .word 0x00002DCC
 _0224EA10: .word 0xFFBFFFFF
-	thumb_func_end ov12_0224E4FC
+	thumb_func_end BattleSystem_GetBattleMon
 
 	thumb_func_start BattleController_EmitRefreshMonData
 BattleController_EmitRefreshMonData: ; 0x0224EA14
@@ -3198,7 +3198,7 @@ _0224FCBA:
 	ldr r1, [sp, #8]
 	add r0, r5, #0
 	mov r2, #0
-	bl ov12_02255844
+	bl BattleSystem_GetHeldItemDamageBoost
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x54]
@@ -3211,7 +3211,7 @@ _0224FCBA:
 	ldr r1, [sp, #0xc]
 	add r0, r5, #0
 	mov r2, #0
-	bl ov12_02255844
+	bl BattleSystem_GetHeldItemDamageBoost
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x4c]
@@ -4042,8 +4042,8 @@ _0225035A:
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov12_0224FC48
 
-	thumb_func_start ov12_02250360
-ov12_02250360: ; 0x02250360
+	thumb_func_start BattleSystem_ClearExperienceEarnFlags
+BattleSystem_ClearExperienceEarnFlags: ; 0x02250360
 	asr r1, r1, #1
 	lsl r1, r1, #0x1f
 	lsr r1, r1, #0x1d
@@ -4052,10 +4052,10 @@ ov12_02250360: ; 0x02250360
 	add r0, #0xa4
 	str r2, [r0]
 	bx lr
-	thumb_func_end ov12_02250360
+	thumb_func_end BattleSystem_ClearExperienceEarnFlags
 
-	thumb_func_start ov12_02250370
-ov12_02250370: ; 0x02250370
+	thumb_func_start BattleSystem_SetExperienceEarnFlags
+BattleSystem_SetExperienceEarnFlags: ; 0x02250370
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	str r2, [sp]
@@ -4114,7 +4114,7 @@ _022503DA:
 _022503E0: .word 0x00003108
 _022503E4: .word 0x00002D8C
 _022503E8: .word 0x0000219C
-	thumb_func_end ov12_02250370
+	thumb_func_end BattleSystem_SetExperienceEarnFlags
 
 	thumb_func_start ov12_022503EC
 ov12_022503EC: ; 0x022503EC
@@ -5599,8 +5599,8 @@ _02250F3C: .word 0x00002E7D
 _02250F40: .word 0x00002E4C
 	thumb_func_end ov12_02250D4C
 
-	thumb_func_start ov12_02250F44
-ov12_02250F44: ; 0x02250F44
+	thumb_func_start BattleContext_Init
+BattleContext_Init: ; 0x02250F44
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r1, _02251024 ; =0x00002144
 	add r5, r0, #0
@@ -5718,7 +5718,7 @@ _02251028: .word 0xFF800000
 _0225102C: .word 0xFFFFFEA1
 _02251030: .word 0x00003120
 _02251034: .word 0x000021A4
-	thumb_func_end ov12_02250F44
+	thumb_func_end BattleContext_Init
 
 	thumb_func_start ov12_02251038
 ov12_02251038: ; 0x02251038
@@ -7386,7 +7386,7 @@ _02251D4A:
 	add r0, r5, #0
 	add r1, r7, #0
 	mov r2, #0
-	bl ov12_02255844
+	bl BattleSystem_GetHeldItemDamageBoost
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x1c]
@@ -7399,7 +7399,7 @@ _02251D4A:
 	add r0, r5, #0
 	add r1, r6, #0
 	mov r2, #0
-	bl ov12_02255844
+	bl BattleSystem_GetHeldItemDamageBoost
 	add r0, r5, #0
 	add r1, r7, #0
 	bl GetBattlerAbility
@@ -12997,7 +12997,7 @@ ov12_0225471C: ; 0x0225471C
 	ldr r1, [sp, #4]
 	add r0, r4, #0
 	mov r2, #0
-	bl ov12_02255844
+	bl BattleSystem_GetHeldItemDamageBoost
 	add r6, r0, #0
 	ldr r0, [sp, #4]
 	mov r3, #0xc0
@@ -13836,7 +13836,7 @@ ov12_02254D80: ; 0x02254D80
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r7, #0
-	bl ov12_02255844
+	bl BattleSystem_GetHeldItemDamageBoost
 	mov r0, #0xc0
 	add r4, r6, #0
 	mul r4, r0
@@ -13963,7 +13963,7 @@ ov12_02254E7C: ; 0x02254E7C
 	ldr r1, [sp, #4]
 	add r0, r4, #0
 	mov r2, #0
-	bl ov12_02255844
+	bl BattleSystem_GetHeldItemDamageBoost
 	add r7, r0, #0
 	ldr r0, [sp, #4]
 	mov r3, #0xc0
@@ -14833,7 +14833,7 @@ ov12_0225551C: ; 0x0225551C
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
-	bl ov12_02255844
+	bl BattleSystem_GetHeldItemDamageBoost
 	str r0, [sp, #8]
 	mov r0, #0xc0
 	mul r0, r4
@@ -14999,7 +14999,7 @@ _0225565C:
 	ldr r1, [r5, #0x6c]
 	add r0, r5, #0
 	add r2, r7, #0
-	bl ov12_02255844
+	bl BattleSystem_GetHeldItemDamageBoost
 	str r0, [sp, #4]
 	ldr r0, [sp]
 	ldr r1, [r5, #0x64]
@@ -15234,8 +15234,8 @@ GetBattlerHeldItemEffect: ; 0x02255830
 	pop {r4, pc}
 	thumb_func_end GetBattlerHeldItemEffect
 
-	thumb_func_start ov12_02255844
-ov12_02255844: ; 0x02255844
+	thumb_func_start BattleSystem_GetHeldItemDamageBoost
+BattleSystem_GetHeldItemDamageBoost: ; 0x02255844
 	push {r4, lr}
 	add r4, r0, #0
 	cmp r2, #0
@@ -15274,7 +15274,7 @@ _0225587C:
 	nop
 _02255888: .word 0x00002DCC
 _0225588C: .word 0x00002DB8
-	thumb_func_end ov12_02255844
+	thumb_func_end BattleSystem_GetHeldItemDamageBoost
 
 	thumb_func_start GetNaturalGiftPower
 GetNaturalGiftPower: ; 0x02255890
@@ -15512,7 +15512,7 @@ CanEatOpponentBerry: ; 0x02255A2C
 	ldr r1, [sp, #4]
 	add r0, r4, #0
 	mov r2, #1
-	bl ov12_02255844
+	bl BattleSystem_GetHeldItemDamageBoost
 	str r0, [sp, #0x10]
 	ldr r1, [r4, #0x6c]
 	add r0, r4, #0
@@ -16228,7 +16228,7 @@ CanFling: ; 0x02255F7C
 	ldr r1, [sp, #4]
 	add r0, r4, #0
 	mov r2, #2
-	bl ov12_02255844
+	bl BattleSystem_GetHeldItemDamageBoost
 	str r0, [sp, #0x10]
 	ldr r1, [sp, #4]
 	add r0, r4, #0
@@ -20414,7 +20414,7 @@ CheckItemEffectOnUTurn: ; 0x02257FA0
 	ldr r1, [r5, #0x64]
 	add r0, r5, #0
 	add r2, r6, #0
-	bl ov12_02255844
+	bl BattleSystem_GetHeldItemDamageBoost
 	str r0, [sp, #0x10]
 	ldr r1, [r5, #0x6c]
 	add r0, r5, #0
@@ -20423,7 +20423,7 @@ CheckItemEffectOnUTurn: ; 0x02257FA0
 	ldr r1, [r5, #0x6c]
 	add r0, r5, #0
 	add r2, r6, #0
-	bl ov12_02255844
+	bl BattleSystem_GetHeldItemDamageBoost
 	str r0, [sp, #8]
 	ldr r0, [sp]
 	ldr r1, [r5, #0x64]

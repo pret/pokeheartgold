@@ -14,7 +14,7 @@
 .public DestroyHeap
 .public AllocFromHeap
 .public FreeToHeap
-.public String_ctor
+.public String_New
 .public String_dtor
 .public CopyU16ArrayToString
 .public Save_PlayerData_GetOptionsAddr

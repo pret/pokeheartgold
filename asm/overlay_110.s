@@ -1657,7 +1657,7 @@ ov110_021E6580: ; 0x021E6580
 	str r0, [r6, #0x2c]
 	ldr r1, [r6]
 	mov r0, #0x80
-	bl String_ctor
+	bl String_New
 	str r0, [r6, #0x30]
 	ldr r0, [r6, #0x28]
 	mov r1, #0

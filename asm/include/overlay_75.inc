@@ -100,7 +100,7 @@
 .public GX_EngineBToggleLayers
 .public GX_SwapDisplay
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public StringCopy
 .public String_atoi

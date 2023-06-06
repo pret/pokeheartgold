@@ -577,7 +577,7 @@ _02202F10:
 	str r0, [sp, #0x1c]
 	mov r0, #0x10
 	mov r1, #0x20
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldr r1, [sp, #0x2c]
 	ldr r0, [sp, #0x34]

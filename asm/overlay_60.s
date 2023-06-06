@@ -1709,7 +1709,7 @@ _021E667C:
 	add r7, r0, #0
 	mov r0, #0x40
 	add r1, r5, #0
-	bl String_ctor
+	bl String_New
 	mov r1, #6
 	lsl r1, r1, #6
 	add r5, r0, #0

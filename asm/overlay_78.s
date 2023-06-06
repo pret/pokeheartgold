@@ -894,7 +894,7 @@ ov78_021E6068: ; 0x021E6068
 	mov r0, #2
 	ldr r1, [r5]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r0, [r5, #4]
 	cmp r0, #2
@@ -915,7 +915,7 @@ _021E6096:
 	mov r0, #2
 	ldr r1, [r5]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x10]
 	ldr r0, [r5, #4]
 	cmp r0, #2

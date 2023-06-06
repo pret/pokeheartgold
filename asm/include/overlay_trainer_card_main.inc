@@ -119,7 +119,7 @@
 .public sub_02025320
 .public System_GetTouchNew
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public String16_FormatInteger
 .public CopyU16ArrayToString

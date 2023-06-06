@@ -145,7 +145,7 @@
 .public System_GetTouchNew
 .public GF_AssertFail
 .public sub_02025C88
-.public String_ctor
+.public String_New
 .public String_dtor
 .public StringSetEmpty
 .public StringCopy

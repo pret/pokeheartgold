@@ -2028,26 +2028,26 @@ ov44_0222ADF8: ; 0x0222ADF8
 	mov r0, #0x5f
 	lsl r0, r0, #2
 	mov r1, #0x35
-	bl String_ctor
+	bl String_New
 	mov r1, #0x5d
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	add r1, #8
 	add r0, r1, #0
 	mov r1, #0x35
-	bl String_ctor
+	bl String_New
 	mov r1, #0x5f
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	add r0, r1, #0
 	mov r1, #0x35
-	bl String_ctor
+	bl String_New
 	mov r1, #0x17
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	mov r0, #0xb4
 	mov r1, #0x35
-	bl String_ctor
+	bl String_New
 	mov r1, #0x5e
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -14863,7 +14863,7 @@ _0223153E:
 	bl AddTextWindowTopLeftCorner
 	ldr r1, [sp, #0x2c]
 	mov r0, #0x40
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	mov r0, #0x5a
 	lsl r0, r0, #2
@@ -19165,12 +19165,12 @@ ov44_0223362C: ; 0x0223362C
 	mov r0, #1
 	lsl r0, r0, #8
 	add r1, r6, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0xc]
 	mov r0, #1
 	lsl r0, r0, #8
 	add r1, r6, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x10]
 	mov r0, #0xff
 	strb r0, [r5, #0x14]
@@ -19446,7 +19446,7 @@ _02233890:
 	mov r0, #1
 	ldr r1, [sp, #0x28]
 	lsl r0, r0, #8
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldr r0, [r5, #8]
 	ldr r1, [sp, #0x10]
@@ -19575,12 +19575,12 @@ ov44_0223398C: ; 0x0223398C
 	lsl r0, r0, #8
 	add r1, r4, #0
 	str r2, [sp, #0x14]
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	mov r0, #1
 	lsl r0, r0, #8
 	add r1, r4, #0
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0x14]
@@ -19723,12 +19723,12 @@ ov44_02233AB8: ; 0x02233AB8
 	add r1, r7, #0
 	str r2, [sp, #0x20]
 	add r4, r3, #0
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x28]
 	mov r0, #1
 	lsl r0, r0, #8
 	add r1, r7, #0
-	bl String_ctor
+	bl String_New
 	str r0, [sp, #0x24]
 	ldr r1, [sp, #0x20]
 	str r7, [sp]

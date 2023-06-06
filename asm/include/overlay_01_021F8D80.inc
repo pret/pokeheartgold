@@ -16,7 +16,7 @@
 .public MapObjectMan_SetFlagsBits
 .public MapObjectMan_ClearFlagsBits
 .public MapObjectMan_GetFlagsBitsMask
-.public sub_0205F19C
+.public MapObjectMan_GetHeapID
 .public sub_0205F1A0
 .public FldObjSys_SetMModelNarc
 .public FldObjSys_GetMModelNarc

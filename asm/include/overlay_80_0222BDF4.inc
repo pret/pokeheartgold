@@ -106,7 +106,7 @@
 .public sub_02024B34
 .public System_GetTouchNew
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public StringCopy
 .public sub_020270C4

@@ -1580,12 +1580,12 @@ ov82_0223E9E8: ; 0x0223E9E8
 	mov r0, #0x96
 	lsl r0, r0, #2
 	mov r1, #0x69
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x28]
 	mov r0, #0x96
 	lsl r0, r0, #2
 	mov r1, #0x69
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0x2c]
 	mov r6, #0
 	add r4, r5, #0
@@ -1593,7 +1593,7 @@ ov82_0223E9E8: ; 0x0223E9E8
 _0223EA3C:
 	add r0, r7, #0
 	mov r1, #0x69
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x30]
 	add r6, r6, #1
 	add r4, r4, #4
@@ -2297,7 +2297,7 @@ ov82_0223EFCC: ; 0x0223EFCC
 	bl FillWindowPixelBuffer
 	mov r0, #0xb
 	mov r1, #0x69
-	bl String_ctor
+	bl String_New
 	add r1, sp, #0x10
 	add r6, r0, #0
 	bl CopyU16ArrayToString
@@ -2349,7 +2349,7 @@ ov82_0223F040: ; 0x0223F040
 	str r0, [sp, #0x24]
 	mov r0, #0xb
 	mov r1, #0x69
-	bl String_ctor
+	bl String_New
 	add r5, r0, #0
 	mov r0, #0
 	lsl r2, r4, #0x18

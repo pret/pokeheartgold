@@ -3218,7 +3218,7 @@ sub_02094C88: ; 0x02094C88
 _02094CB2:
 	ldr r1, [r5, #4]
 	mov r0, #0x40
-	bl String_ctor
+	bl String_New
 	ldr r3, _02094D10 ; =0x0000463C
 	add r2, r6, #0
 	ldr r1, [r5, r3]

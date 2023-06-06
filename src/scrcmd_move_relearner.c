@@ -7,7 +7,7 @@ BOOL ScrNative_WaitApplication(SCRIPTCONTEXT *ctx);
 BOOL ScrCmd_394(SCRIPTCONTEXT *ctx) {
     u16 var0 = ScriptGetVar(ctx);
     void **runningAppData = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA); //*could* be MoveRelearner, not sure
-    *runningAppData = sub_0203E7F4(32, ctx->fsys, var0, 0);
+    *runningAppData = sub_0203E7F4(HEAP_ID_32, ctx->fsys, var0, 0);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
@@ -32,7 +32,7 @@ BOOL ScrCmd_466(SCRIPTCONTEXT *ctx) {
     u16 slot = ScriptGetVar(ctx);
     PARTY *party = SaveArray_PlayerParty_get(ctx->fsys->savedata);
     Pokemon *mon = GetPartyMonByIndex(party, slot);
-    u16 *eligibleMoves = GetEligibleLevelUpMoves(mon, 32);
+    u16 *eligibleMoves = GetEligibleLevelUpMoves(mon, HEAP_ID_32);
     *retPtr = sub_0209186C(eligibleMoves);
     FreeToHeap(eligibleMoves);
     return FALSE;
@@ -40,7 +40,7 @@ BOOL ScrCmd_466(SCRIPTCONTEXT *ctx) {
 
 static void CreateMoveRelearner(SCRIPTCONTEXT *ctx, int a1, Pokemon *mon, u16 *eligibleMoves) {
     MoveRelearner **moveRelearnerPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
-    MoveRelearner *moveRelearner = MoveRelearner_new(32);
+    MoveRelearner *moveRelearner = MoveRelearner_new(HEAP_ID_32);
     *moveRelearnerPtr = moveRelearner;
 
     moveRelearner->mon = mon;
@@ -57,7 +57,7 @@ static void CreateMoveRelearner(SCRIPTCONTEXT *ctx, int a1, Pokemon *mon, u16 *e
 BOOL ScrCmd_MoveRelearnerInit(SCRIPTCONTEXT *ctx) {
     u16 slot = ScriptGetVar(ctx);
     Pokemon *mon = GetPartyMonByIndex(SaveArray_PlayerParty_get(ctx->fsys->savedata), slot);
-    u16 *eligibleMoves = GetEligibleLevelUpMoves(mon, 32);
+    u16 *eligibleMoves = GetEligibleLevelUpMoves(mon, HEAP_ID_32);
     CreateMoveRelearner(ctx, 1, mon, eligibleMoves);
     return TRUE;
 }
@@ -66,7 +66,7 @@ BOOL ScrCmd_MoveTutorInit(SCRIPTCONTEXT *ctx) {
     u16 slot = ScriptGetVar(ctx);
     u16 move = ScriptGetVar(ctx);
     Pokemon *mon = GetPartyMonByIndex(SaveArray_PlayerParty_get(ctx->fsys->savedata), slot);
-    u16 *eligibleMoves = AllocFromHeap(32, 2 * sizeof(u16));
+    u16 *eligibleMoves = AllocFromHeap(HEAP_ID_32, 2 * sizeof(u16));
     eligibleMoves[0] = move;
     eligibleMoves[1] = 0xffff;
     CreateMoveRelearner(ctx, 0, mon, eligibleMoves);

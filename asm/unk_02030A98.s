@@ -1695,7 +1695,7 @@ sub_020315B8: ; 0x020315B8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r0, #0xf
-	bl String_ctor
+	bl String_New
 	add r1, r5, #0
 	mov r2, #0xf
 	add r4, r0, #0
@@ -1867,7 +1867,7 @@ _020316C8:
 _020316CE:
 	mov r0, #0x28
 	add r1, r2, #0
-	bl String_ctor
+	bl String_New
 	add r5, #0x20
 	add r1, r5, #0
 	mov r2, #0x28

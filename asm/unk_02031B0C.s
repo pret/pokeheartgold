@@ -1165,7 +1165,7 @@ sub_020322AC: ; 0x020322AC
 	add r5, r1, #0
 	mov r0, #9
 	add r1, r7, #0
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	cmp r5, #5
 	bge _020322E2

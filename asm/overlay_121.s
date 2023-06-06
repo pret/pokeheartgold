@@ -2161,7 +2161,7 @@ ov121_021E69F0: ; 0x021E69F0
 	str r0, [r6, #0x68]
 	mov r0, #0x4c
 	mov r1, #0x9e
-	bl String_ctor
+	bl String_New
 	str r0, [r6, #0x6c]
 	ldr r0, [r6, #0x64]
 	mov r1, #0x2b

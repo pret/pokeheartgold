@@ -3001,7 +3001,7 @@ ov48_02259EAC: ; 0x02259EAC
 	str r0, [r5, #8]
 	ldr r1, [sp, #0x28]
 	mov r0, #0x80
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0xc]
 	mov r2, #1
 	add r1, r5, #0
@@ -5417,11 +5417,11 @@ ov48_0225B068: ; 0x0225B068
 	str r0, [r5, #4]
 	mov r0, #0x80
 	add r1, r4, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #8]
 	mov r0, #0x80
 	add r1, r4, #0
-	bl String_ctor
+	bl String_New
 	str r0, [r5, #0xc]
 	pop {r3, r4, r5, pc}
 	nop

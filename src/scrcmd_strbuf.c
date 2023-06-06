@@ -220,7 +220,7 @@ BOOL ScrCmd_BufferSpeciesName(SCRIPTCONTEXT* ctx) {
     u16 unk2 = ScriptReadHalfword(ctx);
     u8 unk3 = ScriptReadByte(ctx);
 
-    STRING* species_name = _get_species_name(species, 4);
+    STRING* species_name = _get_species_name(species, HEAP_ID_4);
     BufferString(*msg_fmt, idx, species_name, unk2, unk3, 2);
     String_dtor(species_name);
 
@@ -239,7 +239,7 @@ BOOL ScrCmd_BufferStarterSpeciesName(SCRIPTCONTEXT* ctx) {
     u8 idx = ScriptReadByte(ctx);
     u16 species = GetStarterFromScriptState(SaveArray_Flags_get(ctx->fsys->savedata));
 
-    STRING* species_name = _get_species_name(species, 4);
+    STRING* species_name = _get_species_name(species, HEAP_ID_4);
     BufferString(*msg_fmt, idx, species_name, 0, 1, 2);
     String_dtor(species_name);
 
@@ -251,7 +251,7 @@ BOOL ScrCmd_BufferDPPtRivalStarterSpeciesName(SCRIPTCONTEXT* ctx) {
     u8 idx = ScriptReadByte(ctx);
     u16 species = DPPtLeftover_GetRivalSpecies(SaveArray_Flags_get(ctx->fsys->savedata));
 
-    STRING* species_name = _get_species_name(species, 4);
+    STRING* species_name = _get_species_name(species, HEAP_ID_4);
     BufferString(*msg_fmt, idx, species_name, 0, 1, 2);
     String_dtor(species_name);
 
@@ -263,7 +263,7 @@ BOOL ScrCmd_BufferDPPtFriendStarterSpeciesName(SCRIPTCONTEXT* ctx) {
     u8 idx = ScriptReadByte(ctx);
     u16 species = DPPtLeftover_GetFriendStarterSpecies(SaveArray_Flags_get(ctx->fsys->savedata));
 
-    STRING* species_name = _get_species_name(species, 4);
+    STRING* species_name = _get_species_name(species, HEAP_ID_4);
     BufferString(*msg_fmt, idx, species_name, 0, 1, 2);
     String_dtor(species_name);
 
@@ -299,12 +299,12 @@ BOOL ScrCmd_209(SCRIPTCONTEXT* ctx) {
 }
 
 BOOL ScrCmd_BufferMapSecName(SCRIPTCONTEXT* ctx) {
-    STRING* str = String_ctor(22, 4);
+    STRING* str = String_New(22, HEAP_ID_4);
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 mapno = ScriptGetVar(ctx);
 
-    sub_02068F98(mapno, 4, str);
+    sub_02068F98(mapno, HEAP_ID_4, str);
     BufferString(*msg_fmt, idx, str, 0, 1, 2);
     String_dtor(str);
 
@@ -317,7 +317,7 @@ BOOL ScrCmd_BufferBerryName(SCRIPTCONTEXT* ctx) {
     u16 berry_id = ScriptGetVar(ctx);
     u16 unk = ScriptGetVar(ctx);
 
-    STRING* str = GetNutName((u16)(berry_id - FIRST_BERRY_IDX), 32);
+    STRING* str = GetNutName((u16)(berry_id - FIRST_BERRY_IDX), HEAP_ID_32);
     BufferString(*msg_fmt, idx, str, 0, unk < 2, 2);
     String_dtor(str);
 

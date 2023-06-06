@@ -3068,14 +3068,14 @@ _0223BD12:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov12_0223BCF0
 
-	thumb_func_start ov12_0223BD14
-ov12_0223BD14: ; 0x0223BD14
+	thumb_func_start BattleSystem_GetWinLoseFlags
+BattleSystem_GetWinLoseFlags: ; 0x0223BD14
 	ldr r1, _0223BD1C ; =0x00002420
 	ldrb r0, [r0, r1]
 	bx lr
 	nop
 _0223BD1C: .word 0x00002420
-	thumb_func_end ov12_0223BD14
+	thumb_func_end BattleSystem_GetWinLoseFlags
 
 	thumb_func_start ov12_0223BD20
 ov12_0223BD20: ; 0x0223BD20

@@ -13,7 +13,6 @@
 #include "unk_02023694.h"
 
 #define ARCADE_ENEMY_POKEMON_MAX    4
-#define HEAP_ID_GAME_BOARD        110
 
 
 typedef struct GAME_BOARD_ARGS {

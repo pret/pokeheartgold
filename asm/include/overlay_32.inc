@@ -63,7 +63,7 @@
 .public Set2dSpriteAnimSeqNo
 .public sub_020249B0
 .public sub_02025224
-.public String_ctor
+.public String_New
 .public String_dtor
 .public PlayerProfile_new
 .public Save_Profile_PlayerName_set

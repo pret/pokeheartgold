@@ -205,7 +205,7 @@ static void AllocFail() {
 
 void *AllocFromHeap(HeapID heap_id, u32 size) {
     void *ptr = NULL;
-    if (heap_id < sHeapInfo.totalNumHeaps) {
+    if (((u32)heap_id) < sHeapInfo.totalNumHeaps) {
         u8 index = sHeapInfo.heapIdxs[heap_id];
         ptr = AllocFromHeapInternal(sHeapInfo.heapHandles[index], size, 4, heap_id);
     }
@@ -220,7 +220,7 @@ void *AllocFromHeap(HeapID heap_id, u32 size) {
 
 void *AllocFromHeapAtEnd(HeapID heap_id, u32 size) {
     void *ptr = NULL;
-    if (heap_id < sHeapInfo.totalNumHeaps) {
+    if (((u32)heap_id) < sHeapInfo.totalNumHeaps) {
         u8 index = sHeapInfo.heapIdxs[heap_id];
         ptr = AllocFromHeapInternal(sHeapInfo.heapHandles[index], size, -4, heap_id);
     }
@@ -236,9 +236,9 @@ void *AllocFromHeapAtEnd(HeapID heap_id, u32 size) {
 
 void FreeToHeap(void *ptr) {
     ptr -= sizeof(MemoryBlock);
-    HeapID heap_id = ((MemoryBlock *)ptr)->heapId;
+    HeapID heap_id = (HeapID)((MemoryBlock *)ptr)->heapId;
 
-    if (heap_id < sHeapInfo.totalNumHeaps) {
+    if (((u32)heap_id) < sHeapInfo.totalNumHeaps) {
         u8 index = sHeapInfo.heapIdxs[heap_id];
         NNSFndHeapHandle heap = sHeapInfo.heapHandles[index];
         GF_ASSERT(heap != NULL);
@@ -261,7 +261,7 @@ void FreeToHeap(void *ptr) {
 void FreeToHeapExplicit(HeapID heap_id, void *ptr) {
     GF_ASSERT(OS_GetProcMode() != OS_PROCMODE_IRQ);
 
-    if (heap_id < sHeapInfo.totalNumHeaps) {
+    if (((u32)heap_id) < sHeapInfo.totalNumHeaps) {
         u8 index = sHeapInfo.heapIdxs[heap_id];
         NNSFndHeapHandle heap = sHeapInfo.heapHandles[index];
         GF_ASSERT( heap != NULL );
@@ -280,7 +280,7 @@ void FreeToHeapExplicit(HeapID heap_id, void *ptr) {
 }
 
 u32 GF_ExpHeap_FndGetTotalFreeSize(HeapID heap_id) {
-    if (heap_id < sHeapInfo.totalNumHeaps) {
+    if (((u32)heap_id) < sHeapInfo.totalNumHeaps) {
         u8 index = sHeapInfo.heapIdxs[heap_id];
         return NNS_FndGetTotalFreeSizeForExpHeap(sHeapInfo.heapHandles[index]);
     }
@@ -290,7 +290,7 @@ u32 GF_ExpHeap_FndGetTotalFreeSize(HeapID heap_id) {
 }
 
 void GF_ExpHeap_FndInitAllocator(NNSFndAllocator * pAllocator, HeapID heap_id, int alignment) {
-    if (heap_id < sHeapInfo.totalNumHeaps) {
+    if (((u32)heap_id) < sHeapInfo.totalNumHeaps) {
 
         u8 index = sHeapInfo.heapIdxs[heap_id];
         NNS_FndInitAllocatorForExpHeap(pAllocator, sHeapInfo.heapHandles[index], alignment);
@@ -306,7 +306,7 @@ void ReallocFromHeap(void *ptr, u32 newSize) {
     newSize += sizeof(MemoryBlock);
     ptr -= sizeof(MemoryBlock);
     if (NNS_FndGetSizeForMBlockExpHeap(ptr) >= newSize) {
-        HeapID heap_id = ((MemoryBlock *)ptr)->heapId;
+        u32 heap_id = ((MemoryBlock *)ptr)->heapId;
 
         u8 index = sHeapInfo.heapIdxs[heap_id];
 

@@ -208,7 +208,7 @@
 .public ov12_0223BC38
 .public ov12_0223BC98
 .public ov12_0223BCC8
-.public ov12_0223BD14
+.public BattleSystem_GetWinLoseFlags
 .public ov12_0223BD20
 .public ov12_0223BD3C
 .public BattleSys_Random

@@ -7544,7 +7544,7 @@ ov99_021E93DC: ; 0x021E93DC
 	bl ov99_021E92EC
 	ldr r1, [r5, #0xc]
 	mov r0, #8
-	bl String_ctor
+	bl String_New
 	mov r1, #0x6f
 	lsl r1, r1, #2
 	str r0, [r4, r1]

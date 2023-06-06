@@ -37,7 +37,7 @@
 .public sub_020249D4
 .public sub_02024B1C
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public Mon_GetBoxMon
 .public sub_02088080

@@ -1641,7 +1641,7 @@ ov69_021E64CC: ; 0x021E64CC
 	bl BG_SetMaskColor
 	ldr r1, [r4]
 	mov r0, #0x10
-	bl String_ctor
+	bl String_New
 	add r5, r0, #0
 	ldr r1, [r4]
 	mov r0, #4
@@ -1834,7 +1834,7 @@ _021E682C:
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #0xa
-	bl String_ctor
+	bl String_New
 	ldr r2, _021E68C8 ; =0x0000C07C
 	add r1, r6, #0
 	str r0, [r5, r2]
@@ -2115,12 +2115,12 @@ ov69_021E6A8C: ; 0x021E6A8C
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #0xa
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #0xa
-	bl String_ctor
+	bl String_New
 	ldr r1, _021E6B40 ; =0x0000C010
 	add r6, r0, #0
 	ldr r0, [r5, r1]
@@ -2205,11 +2205,11 @@ ov69_021E6B5C: ; 0x021E6B5C
 	ldr r1, [r5]
 	mov r0, #0x40
 	add r4, r2, #0
-	bl String_ctor
+	bl String_New
 	add r7, r0, #0
 	ldr r1, [r5]
 	mov r0, #0x40
-	bl String_ctor
+	bl String_New
 	ldr r1, _021E6C04 ; =0x0000C010
 	add r6, r0, #0
 	ldr r0, [r5, r1]
@@ -2467,7 +2467,7 @@ ov69_021E6D5C: ; 0x021E6D5C
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #0xa
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	mov r0, #0xd8
 	str r0, [sp]
@@ -2504,11 +2504,11 @@ _021E6DB6:
 	beq _021E6E6E
 	ldr r1, [r5]
 	mov r0, #0x40
-	bl String_ctor
+	bl String_New
 	add r6, r0, #0
 	ldr r1, [r5]
 	mov r0, #0x40
-	bl String_ctor
+	bl String_New
 	add r4, r0, #0
 	mov r0, #0xd8
 	str r0, [sp]

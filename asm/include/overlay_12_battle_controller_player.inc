@@ -42,7 +42,7 @@
 .public ov12_0223B6C0
 .public ov12_0223B740
 .public ov12_0223BB64
-.public ov12_0223BD14
+.public BattleSystem_GetWinLoseFlags
 .public ov12_0223BD20
 .public ov12_0223BD3C
 .public BattleSys_Random
@@ -51,11 +51,11 @@
 .public ov12_0223BFFC
 .public ov12_0223C0C4
 .public RunBattleScript
-.public ov12_02248660
-.public ov12_022486B0
-.public ov12_022486FC
-.public ov12_02248714
-.public ov12_0224E4FC
+.public BattleContext_New
+.public BattleMain
+.public BattleContext_Delete
+.public BattleSystem_CheckMoveHitEffect
+.public BattleSystem_GetBattleMon
 .public ReadBattleScriptFromNarc
 .public ov12_0224EDC0
 .public ov12_0224FC48
@@ -67,7 +67,7 @@
 .public CopyBattleMonToPartyMon
 .public UnlockBattlerOutOfCurrentMove
 .public ov12_02250D4C
-.public ov12_02250F44
+.public BattleContext_Init
 .public ov12_02251038
 .public ov12_02251710
 .public StruggleCheck
@@ -107,7 +107,7 @@
 .public ov12_0225561C
 .public CheckItemEffectOnHit
 .public GetBattlerHeldItemEffect
-.public ov12_02255844
+.public BattleSystem_GetHeldItemDamageBoost
 .public ov12_02255920
 .public ov12_022565E0
 .public ov12_02256694

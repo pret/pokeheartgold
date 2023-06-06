@@ -119,7 +119,7 @@
 .public GX_SwapDisplay
 .public sub_02025224
 .public GF_AssertFail
-.public String_ctor
+.public String_New
 .public String_dtor
 .public sub_02026E50
 .public sub_02026E84
@@ -130,7 +130,7 @@
 .public Pokedex_SetMonCaughtFlag
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public Mail_new
+.public Mail_New
 .public GameStats_Inc
 .public GameStats_AddSpecial
 .public sub_0203A880

@@ -8,7 +8,7 @@
 
 #define ASSERT_STRING(str) do { GF_ASSERT(str != NULL); GF_ASSERT((str)->magic == STRING_MAGIC); } while (0)
 
-STRING *String_ctor(u32 maxsize, HeapID heapId) {
+STRING *String_New(u32 maxsize, HeapID heapId) {
     STRING *ret = (STRING*)AllocFromHeap(heapId, 2 * maxsize + sizeof(STRING) + sizeof(u16));
     if (ret != NULL) {
         ret->magic = STRING_MAGIC;
@@ -45,7 +45,7 @@ void StringCopy(STRING *dest, const STRING *src) {
 STRING *StringDup(const STRING *src, HeapID heapId) {
     STRING *ret;
     ASSERT_STRING(src);
-    ret = String_ctor(src->size + 1, heapId);
+    ret = String_New(src->size + 1, heapId);
     if (ret != NULL) {
         StringCopy(ret, src);
     }

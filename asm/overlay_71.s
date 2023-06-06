@@ -48,7 +48,7 @@ _022469A6:
 	mov r0, #0x19
 	lsl r0, r0, #4
 	mov r1, #0x38
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x14]
 	mov r0, #0
 	mov r1, #0x1b
@@ -2106,12 +2106,12 @@ ov71_022478C8: ; 0x022478C8
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	mov r1, #0x39
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x68]
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	mov r1, #0x39
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x6c]
 	mov r0, #0
 	str r0, [r4, #0x78]
@@ -9194,12 +9194,12 @@ ov71_0224B138: ; 0x0224B138
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	mov r1, #0x39
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x6c]
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	mov r1, #0x39
-	bl String_ctor
+	bl String_New
 	str r0, [r4, #0x70]
 	mov r1, #0
 	add r0, r4, #0
