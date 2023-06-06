@@ -9,9 +9,9 @@
 typedef struct BattleFinger {
     void *unk0;
     SysTask *task;
-    s32 x;
-    s32 y;
-    s32 angle;
+    int x;
+    int y;
+    int angle;
     fx32 unk14;
     s16 delay;
     u8 touchRequest;
@@ -25,10 +25,10 @@ void BattleFinger_LoadResources(void *a0, void *a1, HeapID heapId, void *a3, u32
 void BattleFinger_FreeResources(void *a0, u32 character, u32 pal, u32 cell, u32 animation);
 BattleFinger *BattleFinger_New(void *a0, void *a1, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation, u32 a7, u32 a8);
 void BattleFinger_Delete(BattleFinger *finger);
-void ov12_0226BCFC(BattleFinger *finger, s32 x, s32 y, fx32 a3);
-void ov12_0226BD2C(BattleFinger *finger, s32 x, s32 y);
+void ov12_0226BCFC(BattleFinger *finger, int x, int y, fx32 a3);
+void ov12_0226BD2C(BattleFinger *finger, int x, int y);
 void BattleFinger_Disable(BattleFinger *finger);
-void ov12_0226BD4C(BattleFinger *finger, s32 delay);
+void ov12_0226BD4C(BattleFinger *finger, int delay);
 BOOL ov12_0226BD50(BattleFinger *finger);
 
 #endif

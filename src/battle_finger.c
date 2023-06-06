@@ -65,7 +65,7 @@ void BattleFinger_Delete(BattleFinger *finger) {
     FreeToHeap(finger);
 }
 
-void ov12_0226BCFC(BattleFinger *finger, s32 x, s32 y, fx32 a3) {
+void ov12_0226BCFC(BattleFinger *finger, int x, int y, fx32 a3) {
     ov12_0226BEB8(finger);
     finger->x = x;
     finger->y = y;
@@ -74,7 +74,7 @@ void ov12_0226BCFC(BattleFinger *finger, s32 x, s32 y, fx32 a3) {
     sub_0200DCE8(finger->unk0, TRUE);
 }
 
-void ov12_0226BD2C(BattleFinger *finger, s32 x, s32 y) {
+void ov12_0226BD2C(BattleFinger *finger, int x, int y) {
     ov12_0226BCFC(finger, x, y, (fx32) 0xC0000);
 }
 
@@ -83,7 +83,7 @@ void BattleFinger_Disable(BattleFinger *finger) {
     ov12_0226BEB8(finger);
 }
 
-void ov12_0226BD4C(BattleFinger *finger, s32 delay) {
+void ov12_0226BD4C(BattleFinger *finger, int delay) {
     finger->delay = delay;
 }
 
@@ -110,7 +110,7 @@ static void BattleFinger_Update(SysTask *task, void *data) {
     }
     
     if (!finger->touchAnimationFlag) {
-        s32 yOffset;
+        int yOffset;
         finger->angle += 1000;
         if (finger->angle >= 18000) {
             finger->angle -= 18000;
