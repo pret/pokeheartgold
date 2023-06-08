@@ -118,14 +118,14 @@ void *sub_0203E460(FieldSystem *fsys, u8 a1);
 u16 sub_0203E4CC(void *a0);
 void sub_0203F9C4(FieldSystem *fsys, struct MoveRelearner *moveRelearner);
 
-static inline void InitUnkStructScrCmd408(struct UnkStruct_ScrCmd408 *data, u16 a1, u16 a2, SCRIPTCONTEXT *ctx) {
+static inline void InitUnkStructScrCmd408(struct UnkStruct_ScrCmd408 *data, u16 a1, u16 a2, ScriptContext *ctx) {
     MI_CpuClear8(data, sizeof(struct UnkStruct_ScrCmd408));
     data->unk_4 = a1;
     data->unk_6 = a2;
     data->saveData = ctx->fsys->savedata;
 }
 
-static inline PCBoxAppData *PCBoxAppData_New(SCRIPTCONTEXT *ctx) {
+static inline PCBoxAppData *PCBoxAppData_New(ScriptContext *ctx) {
     PCBoxAppData *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(PCBoxAppData));
     ret->saveData = ctx->fsys->savedata;
     ret->unk8 = ScriptReadByte(ctx);

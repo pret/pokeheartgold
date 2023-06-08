@@ -22,7 +22,7 @@ static const u16 sDPPlGameCornerPrizeMap[][2] = {
     { ITEM_TM68, 20000 },
 };
 
-BOOL ScrCmd_GetDPPlPrizeItemIdAndCost(SCRIPTCONTEXT* ctx) {
+BOOL ScrCmd_GetDPPlPrizeItemIdAndCost(ScriptContext* ctx) {
     u16 prize_id = ScriptGetVar(ctx);
     u16* prize_item_id = ScriptGetVarPointer(ctx);
     u16* prize_cost = ScriptGetVarPointer(ctx);

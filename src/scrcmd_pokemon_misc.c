@@ -71,7 +71,7 @@ typedef struct UnkStructScr_648 {
     u16 unk_6F4;
 } SCR_648_STRUCT;
 
-static BOOL ov01_02200C6C(SCRIPTCONTEXT *ctx);
+static BOOL ov01_02200C6C(ScriptContext *ctx);
 static void *ov01_02200C94(HeapID heapId, s32 fileId, u32 *unkPtr);
 static void ov01_02200CB4(SCR_648_STRUCT *unkPtr, MSGDATA *msgdata);
 static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, s16 *input, MessageFormat *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove);
@@ -89,7 +89,7 @@ static LocalMapObject *ov01_02201F98(MapObjectMan *mapObjectMan, u8 unkA, u16 sp
 
 extern u16 ov01_02209AE0[10];
 
-BOOL ScrCmd_648(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_648(ScriptContext *ctx) {
     int i;
     u32 out_1;
     int out_2;
@@ -160,7 +160,7 @@ BOOL ScrCmd_648(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-static BOOL ov01_02200C6C(SCRIPTCONTEXT *ctx) {
+static BOOL ov01_02200C6C(ScriptContext *ctx) {
     return (*GetVarPointer(ctx->fsys, ctx->data[0]) != 0xEEEE);
 }
 
@@ -346,7 +346,7 @@ static void ov01_0220116C(SCR_648_STRUCT *unkPtr) {
 
 extern u16 sStatJudgeBestStatMsgIdxs[6];
 
-BOOL ScrCmd_StatJudge(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_StatJudge(ScriptContext *ctx) {
     u32 ivList[6];
     u32 i;
     u8 offset;
@@ -392,7 +392,7 @@ BOOL ScrCmd_StatJudge(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_CommSanitizeParty(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_CommSanitizeParty(ScriptContext *ctx) {
     int partyCount, i, forme;
     u32 species, data;
     u32 heldItems[6];
@@ -448,7 +448,7 @@ BOOL ScrCmd_CommSanitizeParty(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_SetMonForme(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_SetMonForme(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 index = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 forme = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
@@ -457,7 +457,7 @@ BOOL ScrCmd_SetMonForme(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_CountTranformedRotomsInParty(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_CountTranformedRotomsInParty(ScriptContext *ctx) {
     int i, partyCount, count;
     u32 species, forme, isEgg;
     Pokemon *mon;
@@ -487,7 +487,7 @@ BOOL ScrCmd_CountTranformedRotomsInParty(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_UpdateRotomForme(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_UpdateRotomForme(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     int rotomIndex = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     int defaultSlot = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
@@ -499,7 +499,7 @@ BOOL ScrCmd_UpdateRotomForme(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GetHiddenPowerType(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_GetHiddenPowerType(ScriptContext *ctx) {
     int power, type;
     FieldSystem *fsys = ctx->fsys;
     int partyIndex = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
@@ -568,7 +568,7 @@ static void GetHiddenPowerPowerType(Pokemon *mon, s32 *power, s32 *type) {
     }
 }
 
-BOOL ScrCmd_SetFavoriteMon(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_SetFavoriteMon(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     Pokemon *mon = GetPartyMonByIndex(SaveArray_PlayerParty_Get(ctx->fsys->savedata), 0);
     SAVE_MISC_DATA *data = Save_Misc_Get(fsys->savedata);
@@ -579,7 +579,7 @@ BOOL ScrCmd_SetFavoriteMon(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GetFavoriteMon(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_GetFavoriteMon(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u32 sp, form, egg;
     u16 *species = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
@@ -593,7 +593,7 @@ BOOL ScrCmd_GetFavoriteMon(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GetPartyMonForme(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_GetPartyMonForme(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u32 index = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 *forme = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
@@ -602,7 +602,7 @@ BOOL ScrCmd_GetPartyMonForme(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_699(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_699(ScriptContext *ctx) {
     u32 unkVar;
     FieldSystem *fsys;
     MapObjectMan *mapObjectMan;
@@ -640,7 +640,7 @@ BOOL ScrCmd_699(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_700(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_700(ScriptContext *ctx) {
     u32 index = 0;
     FieldSystem *fsys;
     MapObjectMan *mapObjectMan;
@@ -660,18 +660,18 @@ BOOL ScrCmd_700(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_BattleTowerSetUpMultiBattle(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_BattleTowerSetUpMultiBattle(ScriptContext *ctx) {
     sub_0202CA44(ctx->fsys->savedata);
     sub_02039F68();
     return TRUE;
 }
 
-BOOL ScrCmd_SetPlayerVolume(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_SetPlayerVolume(ScriptContext *ctx) {
     GF_SndHandleSetPlayerVolume(1, VarGet(ctx->fsys, ScriptReadHalfword(ctx)));
     return FALSE;
 }
 
-BOOL ScrCmd_CheckMonSeen(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_CheckMonSeen(ScriptContext *ctx) {
     u16 monNumber = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 *seenFlag = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
 
@@ -681,25 +681,25 @@ BOOL ScrCmd_CheckMonSeen(SCRIPTCONTEXT *ctx) {
 }
 
 //Related to the trapped floor in the rocket hideout
-BOOL ScrCmd_708(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_708(ScriptContext *ctx) {
     u32 unkVar = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     ov02_022460AC(ctx->fsys->taskman, unkVar);
     return TRUE;
 }
 
-BOOL ScrCmd_ShowLegendaryWing(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_ShowLegendaryWing(ScriptContext *ctx) {
     u32 unkVar = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     ShowLegendaryWing(ctx->fsys->taskman, unkVar);
     return TRUE;
 }
 
 //Related to Persian statues in the rocket hideout
-BOOL ScrCmd_709(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_709(ScriptContext *ctx) {
     ov02_022462E8(ctx->fsys->taskman);
     return TRUE;
 }
 
-BOOL ScrCmd_ScreenShake(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_ScreenShake(ScriptContext *ctx) {
     u32 a1 = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u32 a2 = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u32 a3 = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
@@ -709,7 +709,7 @@ BOOL ScrCmd_ScreenShake(SCRIPTCONTEXT *ctx) {
 }
 
 //Related to Lance flying off on his dragonite in the Lake of Rage
-BOOL ScrCmd_775(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_775(ScriptContext *ctx) {
     u32 objIdA = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u32 objIdB = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
 
@@ -721,7 +721,7 @@ BOOL ScrCmd_775(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_OpenAlphHiddenRoom(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_OpenAlphHiddenRoom(ScriptContext *ctx) {
     OpenAlphHiddenRoom(ctx->fsys->taskman, *(ctx->script_ptr++));
     return TRUE;
 }
@@ -735,7 +735,7 @@ static u32 ov01_02201B2C(u32 unkA) {
 }
 
 //Related to Pokeathlon "Ball Sign"- whatever that is
-BOOL ScrCmd_724(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_724(ScriptContext *ctx) {
     u8 unkVar = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 *unkPtrA = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
 
@@ -780,7 +780,7 @@ BOOL ScrCmd_724(SCRIPTCONTEXT *ctx) {
 }
 
 //This does something with pokeathlon records like "number times jumped"
-BOOL ScrCmd_725(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_725(ScriptContext *ctx) {
     s32 val;
 
     u8 unkA = *(ctx->script_ptr++);
@@ -807,32 +807,32 @@ BOOL ScrCmd_725(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_726(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_726(ScriptContext *ctx) {
     ov01_021E7F00(ctx->fsys, TRUE);
     return FALSE;
 }
 
 //Related to Kurt
-BOOL ScrCmd_735(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_735(ScriptContext *ctx) {
     u16 *apricornQuantity = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
     *apricornQuantity = ApricornBox_GetKurtQuantity(Save_ApricornBox_Get(ctx->fsys->savedata));
     return FALSE;
 }
 
-BOOL ScrCmd_ClearKurtApricorn(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_ClearKurtApricorn(ScriptContext *ctx) {
     ApricornBox_SetKurtApricorn(Save_ApricornBox_Get(ctx->fsys->savedata), 0, 0);
     return FALSE;
 }
 
 //Related to Kurt
-BOOL ScrCmd_737(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_737(ScriptContext *ctx) {
     u16 *unkPtr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
     *unkPtr = ApricornBox_GetKurtBall(Save_ApricornBox_Get(ctx->fsys->savedata));
     return FALSE;
 }
 
 //Related to Kurt
-BOOL ScrCmd_GetTotalApricornCount(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_GetTotalApricornCount(ScriptContext *ctx) {
     s32 i;
     u32 cnt;
     u16 *unkPtr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
@@ -846,7 +846,7 @@ BOOL ScrCmd_GetTotalApricornCount(SCRIPTCONTEXT *ctx) {
 }
 
 //Related to Kurt- canceling
-BOOL ScrCmd_739(SCRIPTCONTEXT *ctx) { //todo: rename structs and find out stuff
+BOOL ScrCmd_739(ScriptContext *ctx) { //todo: rename structs and find out stuff
     struct ApricornBoxWork **unkPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     *unkPtr = CreateApricornBoxWork(ctx->fsys, 2);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
@@ -854,7 +854,7 @@ BOOL ScrCmd_739(SCRIPTCONTEXT *ctx) { //todo: rename structs and find out stuff
 }
 
 //Related to aprijuice stand- canceling
-BOOL ScrCmd_740(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_740(ScriptContext *ctx) {
     u32 **unkPtrA = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     u32 unkVar = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 *unkPtrB = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
@@ -864,7 +864,7 @@ BOOL ScrCmd_740(SCRIPTCONTEXT *ctx) {
 }
 
 //Related to aprijuice stand- viewing label
-BOOL ScrCmd_741(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_741(ScriptContext *ctx) {
     UnkStruct_02031CEC unkOut;
     RTCDate date;
     s32 unkVar;
@@ -913,14 +913,14 @@ BOOL ScrCmd_741(SCRIPTCONTEXT *ctx) {
 }
 
 //Gets called after selecting which type of pokeathlon data to load- might just outright start the loading process
-BOOL ScrCmd_743(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_743(ScriptContext *ctx) {
     ov03_02258CFC(ctx->taskman, (enum PokeathlonData)VarGet(ctx->fsys, ScriptReadHalfword(ctx)));
     return TRUE;
 }
 
 extern u8 sFriendshipRoomStatuesPositions[3][2];
 
-BOOL ScrCmd_CreatePokeathlonFriendshipRoomStatues(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_CreatePokeathlonFriendshipRoomStatues(ScriptContext *ctx) {
     s32 i;
     u16 species;
     FieldSystem *fsys = ctx->fsys;
@@ -972,7 +972,7 @@ static LocalMapObject *ov01_02201F98(MapObjectMan *mapObjectMan, u8 unkA, u16 sp
     return mapObj;
 }
 
-BOOL ScrCmd_CheckSeenAllLetterUnown(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_CheckSeenAllLetterUnown(ScriptContext *ctx) {
     u32 forme;
     s32 i;
     u32 counter;
@@ -1006,7 +1006,7 @@ BOOL ScrCmd_CheckSeenAllLetterUnown(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_GiveTogepiEgg(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_GiveTogepiEgg(ScriptContext *ctx) {
     s32 i;
     u8 pp;
     u16 moveData;
@@ -1053,7 +1053,7 @@ BOOL ScrCmd_GiveTogepiEgg(SCRIPTCONTEXT *ctx) {
 }
 
 //unused
-BOOL ScrCmd_777(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_777(ScriptContext *ctx) {
     u32 partyIndex = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 *unkPtr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
 
@@ -1066,7 +1066,7 @@ BOOL ScrCmd_777(SCRIPTCONTEXT *ctx) {
 
 extern u16 sSpikyEarPichuMoveset[4];
 
-BOOL ScrCmd_GiveSpikyEarPichu(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx) {
     s32 i;
     u8 forme;
     u8 maxPP;
@@ -1115,7 +1115,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_PhotoAlbumIsFull(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_PhotoAlbumIsFull(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 *albumIsFull = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
 
@@ -1124,7 +1124,7 @@ BOOL ScrCmd_PhotoAlbumIsFull(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_RadioMusicIsPlaying(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_RadioMusicIsPlaying(ScriptContext *ctx) {
     u32 musicSeq = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 *isPlaying = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
 
@@ -1185,7 +1185,7 @@ static u32 SlotLuckiness(SAVEDATA *savedata, u8 machineId, u8 city) {
     return luckiness;
 }
 
-BOOL ScrCmd_CasinoGame(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_CasinoGame(ScriptContext *ctx) {
     u8 machineId = *(ctx->script_ptr++);
     u8 city = *(ctx->script_ptr++); //1 = celadon; 0 = goldenrod
     u32 **unkPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA); //VoltorbFlipAppData
@@ -1196,7 +1196,7 @@ BOOL ScrCmd_CasinoGame(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_BufferPokeathlonCourseName(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_BufferPokeathlonCourseName(ScriptContext *ctx) {
     u8 fieldNo = *(ctx->script_ptr++);
     u32 courseId = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     BufferPokeathlonCourseName(*(MessageFormat**)FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT), fieldNo, (u8) courseId);
@@ -1204,7 +1204,7 @@ BOOL ScrCmd_BufferPokeathlonCourseName(SCRIPTCONTEXT *ctx) {
 }
 
 //Gets called when getting a package from your mom
-BOOL ScrCmd_811(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_811(ScriptContext *ctx) {
     u16 *unkPtr1 = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
     u16 *unkPtr2 = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
 
@@ -1214,12 +1214,12 @@ BOOL ScrCmd_811(SCRIPTCONTEXT *ctx) {
 }
 
 //Gets called when getting a package from your mom
-BOOL ScrCmd_812(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_812(ScriptContext *ctx) {
     sub_0202F1F4(SaveData_GetMomsSavingsAddr(ctx->fsys->savedata));
     return FALSE;
 }
 
-BOOL ScrCmd_GetBuenasPassword(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_GetBuenasPassword(ScriptContext *ctx) {
     u16 *msgPtr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
     u16 *unkPtr2 = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
 
@@ -1245,14 +1245,14 @@ static u32 MonGetShinyLeafCount(Pokemon *mon) {
     return shinyLeafCount;
 }
 
-BOOL ScrCmd_GetShinyLeafCount(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_GetShinyLeafCount(ScriptContext *ctx) {
     u32 monIndex = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 *shinyLeafCount = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
     *shinyLeafCount = MonGetShinyLeafCount(GetPartyMonByIndex(SaveArray_PlayerParty_Get(ctx->fsys->savedata), monIndex));
     return FALSE;
 }
 
-BOOL ScrCmd_TryGiveShinyLeafCrown(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_TryGiveShinyLeafCrown(ScriptContext *ctx) {
     u32 monIndex = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
 
     Pokemon *mon = GetPartyMonByIndex(SaveArray_PlayerParty_Get(ctx->fsys->savedata), monIndex);
@@ -1264,7 +1264,7 @@ BOOL ScrCmd_TryGiveShinyLeafCrown(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GetUniqueSealsQuantity(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_GetUniqueSealsQuantity(ScriptContext *ctx) {
     u16 *uniqueSeals = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
 
     *uniqueSeals = SealCase_CountUniqueSeals(Save_SealCase_Get(ctx->fsys->savedata));
@@ -1272,7 +1272,7 @@ BOOL ScrCmd_GetUniqueSealsQuantity(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GetSealQuantity(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_GetSealQuantity(ScriptContext *ctx) {
     u32 sealId = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 *sealQuantity = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
 
@@ -1281,7 +1281,7 @@ BOOL ScrCmd_GetSealQuantity(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GiveOrTakeSeal(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_GiveOrTakeSeal(ScriptContext *ctx) {
     u32 sealId = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u32 quantity = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
 
@@ -1302,7 +1302,7 @@ static BOOL IsSealNonUnique(u16 sealId, u16 *uniqueSealIds, s32 size) {
     return FALSE;
 }
 
-BOOL ScrCmd_GiveRandomSeal(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_GiveRandomSeal(ScriptContext *ctx) {
     int i, j;
     u16 randVal;
     s32 avaliableSeals;
@@ -1368,7 +1368,7 @@ BOOL ScrCmd_GiveRandomSeal(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_CheckKyogreGroudonInParty(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_CheckKyogreGroudonInParty(ScriptContext *ctx) {
     int c;
     u32 unkVar;
     int partyCount;
@@ -1414,7 +1414,7 @@ BOOL ScrCmd_CheckKyogreGroudonInParty(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_SysSetSleepFlag(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_SysSetSleepFlag(ScriptContext *ctx) {
     if (VarGet(ctx->fsys, ScriptReadHalfword(ctx)) != 0) {
         Sys_SetSleepDisableFlag(1 << 3);
     } else {
@@ -1423,7 +1423,7 @@ BOOL ScrCmd_SysSetSleepFlag(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_BugContestAction(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_BugContestAction(ScriptContext *ctx) {
     u8 unkVar1 = *(ctx->script_ptr++);
     u32 weekday = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
 
@@ -1439,7 +1439,7 @@ BOOL ScrCmd_BugContestAction(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_BufferBugContestWinner(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_BufferBugContestWinner(ScriptContext *ctx) {
     MessageFormat **msgfmt;
     BUGCONTEST *bugContest;
 
@@ -1451,7 +1451,7 @@ BOOL ScrCmd_BufferBugContestWinner(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_JudgeBugContest(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_JudgeBugContest(ScriptContext *ctx) {
     BUGCONTEST *bugContest;
     u16 *prize;
     u16 *placement;
@@ -1476,7 +1476,7 @@ BOOL ScrCmd_JudgeBugContest(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_BufferBugContestMonNick(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_BufferBugContestMonNick(ScriptContext *ctx) {
     MessageFormat **msgfmt;
     BUGCONTEST *bugContest;
     u32 script_index;
@@ -1491,7 +1491,7 @@ BOOL ScrCmd_BufferBugContestMonNick(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_BugContestGetTimeLeft(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_BugContestGetTimeLeft(ScriptContext *ctx) {
     MessageFormat **msgfmt;
     BUGCONTEST *bugContest;
     u32 script_index;
@@ -1513,7 +1513,7 @@ BOOL ScrCmd_BugContestGetTimeLeft(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_IsBugContestantRegistered(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_IsBugContestantRegistered(ScriptContext *ctx) {
     BUGCONTEST *bugContest = FieldSys_BugContest_Get(ctx->fsys);
     u32 id = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 *ptr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));

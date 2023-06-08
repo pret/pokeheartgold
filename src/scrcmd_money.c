@@ -1,7 +1,7 @@
 #include "scrcmd.h"
 #include "player_data.h"
 
-BOOL ScrCmd_AddMoney(SCRIPTCONTEXT* ctx) {
+BOOL ScrCmd_AddMoney(ScriptContext* ctx) {
     SAVEDATA* savedata = FieldSys_GetSaveDataPtr(ctx->fsys);
     PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(savedata);
 
@@ -11,7 +11,7 @@ BOOL ScrCmd_AddMoney(SCRIPTCONTEXT* ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_SubMoneyImmediate(SCRIPTCONTEXT* ctx) {
+BOOL ScrCmd_SubMoneyImmediate(ScriptContext* ctx) {
     SAVEDATA* savedata = FieldSys_GetSaveDataPtr(ctx->fsys);
     PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(savedata);
 
@@ -21,7 +21,7 @@ BOOL ScrCmd_SubMoneyImmediate(SCRIPTCONTEXT* ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_SubMoneyVar(SCRIPTCONTEXT* ctx) {
+BOOL ScrCmd_SubMoneyVar(ScriptContext* ctx) {
     SAVEDATA* savedata = FieldSys_GetSaveDataPtr(ctx->fsys);
     PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(savedata);
 
@@ -31,7 +31,7 @@ BOOL ScrCmd_SubMoneyVar(SCRIPTCONTEXT* ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_HasEnoughMoneyImmediate(SCRIPTCONTEXT* ctx) {
+BOOL ScrCmd_HasEnoughMoneyImmediate(ScriptContext* ctx) {
     SAVEDATA* savedata = FieldSys_GetSaveDataPtr(ctx->fsys);
     PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(savedata);
     u16* ret_ptr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
@@ -47,7 +47,7 @@ BOOL ScrCmd_HasEnoughMoneyImmediate(SCRIPTCONTEXT* ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_HasEnoughMoneyVar(SCRIPTCONTEXT* ctx) {
+BOOL ScrCmd_HasEnoughMoneyVar(ScriptContext* ctx) {
     SAVEDATA* savedata = FieldSys_GetSaveDataPtr(ctx->fsys);
     PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(savedata);
     u16* ret_ptr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));

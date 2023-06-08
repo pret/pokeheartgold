@@ -1,6 +1,6 @@
 #include "script.h"
 
-void InitScriptContext(SCRIPTCONTEXT* ctx, const ScrCmdFunc* cmd_table, u32 cmd_count) {
+void InitScriptContext(ScriptContext* ctx, const ScrCmdFunc* cmd_table, u32 cmd_count) {
     s32 i = 0;
 
     ctx->mode = SCRIPT_MODE_STOPPED;
@@ -22,27 +22,27 @@ void InitScriptContext(SCRIPTCONTEXT* ctx, const ScrCmdFunc* cmd_table, u32 cmd_
     ctx->taskman = NULL;
 }
 
-BOOL SetupBytecodeScript(SCRIPTCONTEXT* ctx, const u8* ptr) {
+BOOL SetupBytecodeScript(ScriptContext* ctx, const u8* ptr) {
     ctx->script_ptr = ptr;
     ctx->mode = SCRIPT_MODE_BYTECODE;
     return TRUE;
 }
 
-void SetupNativeScript(SCRIPTCONTEXT* ctx, ScrCmdFunc ptr) {
+void SetupNativeScript(ScriptContext* ctx, ScrCmdFunc ptr) {
     ctx->mode = SCRIPT_MODE_NATIVE;
     ctx->native_ptr = ptr;
 }
 
-void StopScript(SCRIPTCONTEXT* ctx) {
+void StopScript(ScriptContext* ctx) {
     ctx->mode = SCRIPT_MODE_STOPPED;
     ctx->script_ptr = NULL;
 }
 
-void sub_0203FD68(SCRIPTCONTEXT* ctx, TaskManager *unk) {
+void sub_0203FD68(ScriptContext* ctx, TaskManager *unk) {
     ctx->taskman = unk;
 }
 
-BOOL RunScriptCommand(SCRIPTCONTEXT* ctx) {
+BOOL RunScriptCommand(ScriptContext* ctx) {
     if (ctx->mode == SCRIPT_MODE_STOPPED) {
         return FALSE;
     }
@@ -89,7 +89,7 @@ BOOL RunScriptCommand(SCRIPTCONTEXT* ctx) {
     return TRUE;
 }
 
-BOOL ScriptPush(SCRIPTCONTEXT* ctx, const u8* ptr) {
+BOOL ScriptPush(ScriptContext* ctx, const u8* ptr) {
     if (ctx->stackDepth + 1 >= (s32)NELEMS(ctx->stack)) {
         return TRUE;
     }
@@ -100,7 +100,7 @@ BOOL ScriptPush(SCRIPTCONTEXT* ctx, const u8* ptr) {
     return FALSE;
 }
 
-const u8* ScriptPop(SCRIPTCONTEXT* ctx) {
+const u8* ScriptPop(ScriptContext* ctx) {
     if (ctx->stackDepth == 0) {
         return NULL;
     }
@@ -108,27 +108,27 @@ const u8* ScriptPop(SCRIPTCONTEXT* ctx) {
     return ctx->stack[--ctx->stackDepth];
 }
 
-void ScriptJump(SCRIPTCONTEXT* ctx, const u8* ptr) {
+void ScriptJump(ScriptContext* ctx, const u8* ptr) {
     ctx->script_ptr = ptr;
 }
 
-void ScriptCall(SCRIPTCONTEXT* ctx, const u8* ptr) {
+void ScriptCall(ScriptContext* ctx, const u8* ptr) {
     ScriptPush(ctx, ctx->script_ptr);
     ctx->script_ptr = ptr;
 }
 
-void ScriptReturn(SCRIPTCONTEXT* ctx) {
+void ScriptReturn(ScriptContext* ctx) {
     ctx->script_ptr = ScriptPop(ctx);
 }
 
-u16 ScriptReadHalfword(SCRIPTCONTEXT* ctx) {
+u16 ScriptReadHalfword(ScriptContext* ctx) {
     u16 value = ScriptReadByte(ctx);
     value += ScriptReadByte(ctx) << 8;
 
     return value;
 }
 
-u32 ScriptReadWord(SCRIPTCONTEXT* ctx) {
+u32 ScriptReadWord(ScriptContext* ctx) {
     u32 value0 = ScriptReadByte(ctx);
     u32 value1 = ScriptReadByte(ctx);
     u32 value2 = ScriptReadByte(ctx);

@@ -77,7 +77,7 @@ static void FormatSizeRecord(FieldSystem *fsys, u8 idx0, u8 idx1, u16 species, u
     BufferIntegerAsString(*msgFmt, idx1, r4 % 10, 1, STRCONVMODE_LEFT_ALIGN, TRUE);
 }
 
-BOOL ScrCmd_SizeRecordCompare(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_SizeRecordCompare(ScriptContext *ctx) {
     Pokemon *mon;
     vu16 rand, record;
     u16 slot;
@@ -113,7 +113,7 @@ BOOL ScrCmd_SizeRecordCompare(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_SizeRecordUpdate(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_SizeRecordUpdate(ScriptContext *ctx) {
     Pokemon *mon;
     u16 slot;
     FieldSystem *fsys;
@@ -125,7 +125,7 @@ BOOL ScrCmd_SizeRecordUpdate(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_BufferRecordSize(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_BufferRecordSize(ScriptContext *ctx) {
     FieldSystem *fsys;
     u16 idx0;
     u16 idx1;
@@ -141,7 +141,7 @@ BOOL ScrCmd_BufferRecordSize(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_BufferMonSize(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_BufferMonSize(ScriptContext *ctx) {
     Pokemon *mon;
     FieldSystem *fsys;
     u16 idx0;
