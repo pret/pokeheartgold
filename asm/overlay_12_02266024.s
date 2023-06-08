@@ -3,27 +3,7 @@
 	.include "global.inc"
 
 	.text
-
-	thumb_func_start ov12_02266024
-ov12_02266024: ; 0x02266024
-	push {r4, lr}
-	ldr r1, _02266044 ; =0x000006F8
-	mov r0, #5
-	bl AllocFromHeap
-	ldr r2, _02266044 ; =0x000006F8
-	mov r1, #0
-	add r4, r0, #0
-	bl MI_CpuFill8
-	mov r1, #0
-	ldr r0, _02266048 ; =0x0000068B
-	mvn r1, r1
-	strb r1, [r4, r0]
-	add r0, r4, #0
-	pop {r4, pc}
-	.balign 4, 0
-_02266044: .word 0x000006F8
-_02266048: .word 0x0000068B
-	thumb_func_end ov12_02266024
+    .public BattleInput_New
 
 	thumb_func_start ov12_0226604C
 ov12_0226604C: ; 0x0226604C
@@ -99,7 +79,7 @@ ov12_022660D0: ; 0x022660D0
 	sub sp, #0x24
 	str r2, [sp, #0xc]
 	add r4, r3, #0
-	bl ov12_02266024
+	bl BattleInput_New
 	add r6, r0, #0
 	ldr r0, [sp, #0xc]
 	ldr r1, [sp, #0x38]

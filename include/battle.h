@@ -604,4 +604,16 @@ typedef struct {
     u16 unk10;
 } UnkBtlCmdStruct_CPM;
 
+//This is information used for selecting a target on the bottom screen in a double battle
+typedef struct TargetPokemon {
+    u8 selectedMon;
+    u8 gender    : 2,
+       hide      : 1,
+       unused1_3 : 5;
+    u8 status;
+    u8 unused3;
+    s16 hp;
+    u16 hpMax;
+} TargetPokemon;
+
 #endif
