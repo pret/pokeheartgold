@@ -164,7 +164,7 @@ void sub_02053018(FieldSystem *fsys) {
 void sub_02053038(FieldSystem *fsys, BOOL isConnection) {
     u32 mapId = fsys->location->mapId;
     FLYPOINTS_SAVE *flyPoints = Save_FlyPoints_Get(fsys->savedata);
-    SCRIPT_STATE *scriptState;
+    ScriptState *scriptState;
     u16 weather;
     u16 spawnId;
 
@@ -258,7 +258,7 @@ static void sub_0205323C(FieldSystem *fsys) {
 }
 
 static void sub_02053284(FieldSystem *fsys) {
-    SCRIPT_STATE *scriptState;
+    ScriptState *scriptState;
 
     sub_02052F30(fsys);
     GF_ASSERT(fsys->unk60 == 0);
@@ -314,7 +314,7 @@ static BOOL _IsPlayerStandingInFrontOfUnionRoomReception(FieldSystem *fsys) {
 
 static void _SetDynamicWarpToUnionRoomExit(FieldSystem *fsys) {
     Location *dynamicWarp = FlyPoints_GetDynamicWarp(Save_FlyPoints_Get(fsys->savedata));
-    SCRIPT_STATE *scriptState = SaveArray_Flags_Get(fsys->savedata); // unused
+    ScriptState *scriptState = SaveArray_Flags_Get(fsys->savedata); // unused
     if (MapHeader_MapIsPokemonLeagueLobby(fsys->location->mapId) == TRUE) {
         InitLocation(dynamicWarp, fsys->location->mapId, -1, 4, 11, DIR_SOUTH);
     } else {
@@ -353,7 +353,7 @@ TaskManager *CallFieldTask_NewGame(FieldSystem *fsys) {
 
 static BOOL sub_0205348C(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
-    SCRIPT_STATE *scriptState = SaveArray_Flags_Get(fsys->savedata);
+    ScriptState *scriptState = SaveArray_Flags_Get(fsys->savedata);
     FLYPOINTS_SAVE *flypointsSave;
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
 
@@ -397,7 +397,7 @@ TaskManager *CallFieldTask_ContinueGame_Normal(FieldSystem *fsys) {
 static BOOL sub_02053550(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     struct ErrorContinueEnv *env = TaskManager_GetEnv(taskManager);
-    SCRIPT_STATE *scriptState = SaveArray_Flags_Get(fsys->savedata);
+    ScriptState *scriptState = SaveArray_Flags_Get(fsys->savedata);
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
 
     switch (*state_p) {
@@ -438,7 +438,7 @@ static BOOL sub_02053550(TaskManager *taskManager) {
 }
 
 TaskManager *CallFieldTask_ContinueGame_CommError(FieldSystem *fsys) {
-    SCRIPT_STATE *scriptState;
+    ScriptState *scriptState;
     struct ErrorContinueEnv *env;
     if (!MapHeader_MapIsUnionRoom(fsys->location->mapId)) {
         if (_IsPlayerStandingInFrontOfUnionRoomReception(fsys)) {

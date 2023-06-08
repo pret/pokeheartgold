@@ -306,7 +306,7 @@ static BOOL Task_BugContestEncounter(TaskManager *man);
 static BOOL Task_WildEncounter(TaskManager *man);
 
 void sub_02050B08(FieldSystem *fsys, BATTLE_SETUP *setup) {
-    SCRIPT_STATE *flags = SaveArray_Flags_Get(fsys->savedata);
+    ScriptState *flags = SaveArray_Flags_Get(fsys->savedata);
     int a0 = sub_020517E8(setup);
     int a1 = sub_020517FC(setup);
 
@@ -323,7 +323,7 @@ void sub_02050B08(FieldSystem *fsys, BATTLE_SETUP *setup) {
 }
 
 void sub_02050B90(FieldSystem *fsys, TaskManager *man, BATTLE_SETUP *setup) {
-    SCRIPT_STATE *flags = SaveArray_Flags_Get(fsys->savedata);
+    ScriptState *flags = SaveArray_Flags_Get(fsys->savedata);
     int a0 = sub_020517E8(setup);
     int a1 = sub_020517FC(setup);
 

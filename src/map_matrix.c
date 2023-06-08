@@ -159,7 +159,7 @@ static inline BOOL MapAndDayCheck(u32 map_no, RTCDate* date) {
 
 BOOL ShouldUseAlternateLakeOfRage(SAVEDATA* savedata, u32 map_no) {
     RTCDate date;
-    SCRIPT_STATE *state = SaveArray_Flags_Get(savedata);
+    ScriptState *state = SaveArray_Flags_Get(savedata);
 
     GF_RTC_CopyDate(&date);
 

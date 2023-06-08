@@ -259,7 +259,7 @@ static BOOL Task_GameClearSave(TaskManager *taskman) {
 void Task_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
     FieldSystem *fsys;
     GameClearWork *env;
-    SCRIPT_STATE *scriptState;
+    ScriptState *scriptState;
     Location *dynamicWarp;
     Location *spawnWarp;
     PLAYERPROFILE *profile;

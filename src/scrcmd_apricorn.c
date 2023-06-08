@@ -3,7 +3,7 @@
 #include "unk_02055418.h"
 #include "unk_02031B0C.h"
 
-BOOL ScrCmd_AnimApricornTree(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_AnimApricornTree(ScriptContext *ctx) {
     u16 varId = ScriptReadHalfword(ctx);
     LocalMapObject **lastInteracted = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_INTERACTED);
     u16 *retPtr = GetVarPointer(ctx->fsys, varId);
@@ -11,7 +11,7 @@ BOOL ScrCmd_AnimApricornTree(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_ApricornTreeGetApricorn(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_ApricornTreeGetApricorn(ScriptContext *ctx) {
     u16 varId = ScriptReadHalfword(ctx);
     LocalMapObject **lastInteracted = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_INTERACTED);
     u16 *retPtr = GetVarPointer(ctx->fsys, varId);
@@ -19,7 +19,7 @@ BOOL ScrCmd_ApricornTreeGetApricorn(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GiveApricornFromTree(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_GiveApricornFromTree(ScriptContext *ctx) {
     u16 var0 = ScriptGetVar(ctx);
     u8 var1 = ScriptGetVar(ctx);
     u16 *retPtr = ScriptGetVarPointer(ctx);

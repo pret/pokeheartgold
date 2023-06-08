@@ -5,7 +5,7 @@
 
 u8 LotoId_CountDigitsMatched(u16 lotoId, u16 otid);
 
-BOOL ScrCmd_BufferDeptStoreFloorNo(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_BufferDeptStoreFloorNo(ScriptContext *ctx) {
     MessageFormat **msg = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 fieldno = ScriptReadByte(ctx);
     u8 floor = ScriptReadByte(ctx);
@@ -13,15 +13,15 @@ BOOL ScrCmd_BufferDeptStoreFloorNo(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_LotoIdGet(SCRIPTCONTEXT *ctx) {
-    SCRIPT_STATE *state = SaveArray_Flags_Get(ctx->fsys->savedata);
+BOOL ScrCmd_LotoIdGet(ScriptContext *ctx) {
+    ScriptState *state = SaveArray_Flags_Get(ctx->fsys->savedata);
     u16 *retPtr = ScriptGetVarPointer(ctx);
     u32 lotoId = ScriptState_GetLotoId(state);
     *retPtr = lotoId;
     return FALSE;
 }
 
-BOOL ScrCmd_LotoIdSearch(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_LotoIdSearch(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     PC_STORAGE *storage = GetStoragePCPointer(fsys->savedata);
     u16 *retPtr0 = ScriptGetVarPointer(ctx);
@@ -85,8 +85,8 @@ BOOL ScrCmd_LotoIdSearch(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_LotoIdSet(SCRIPTCONTEXT *ctx) {
-    SCRIPT_STATE *state = SaveArray_Flags_Get(ctx->fsys->savedata);
+BOOL ScrCmd_LotoIdSet(ScriptContext *ctx) {
+    ScriptState *state = SaveArray_Flags_Get(ctx->fsys->savedata);
     ScriptState_RollLotoId(state);
     return FALSE;
 }

@@ -22,7 +22,7 @@ static void SysTask_RingGearPhone(SysTask *task, GearPhoneRingManager* ptr);
 
 static void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL a2) {
     Unk_PokegearSTRUCT_14 Unk_struct;
-    SCRIPT_STATE *state = SaveArray_Flags_Get(sys->savedata);
+    ScriptState *state = SaveArray_Flags_Get(sys->savedata);
     FLYPOINTS_SAVE *points = Save_FlyPoints_Get(sys->savedata);
     Location *warpPtr = FlyPoints_GetSpecialSpawnWarpPtr(points);
     Location *PosPtr = FlyPoints_GetPosition(points);
@@ -146,7 +146,7 @@ void sub_02092E34(GearPhoneRingManager* ptr, s32 a1, BOOL a2) {
 }
 
 static void sub_02092E54(GearPhoneRingManager* ptr) {
-    SCRIPT_STATE* state = SaveArray_Flags_Get(ptr->saveData);
+    ScriptState* state = SaveArray_Flags_Get(ptr->saveData);
     SAFARIZONE* zone = Save_SafariZone_Get(ptr->saveData);
     IGT* igt = Save_PlayerData_GetIGTAddr(ptr->saveData);
     u8 var4057 = ScriptState_GetVar4057(state);
@@ -286,7 +286,7 @@ BOOL sub_02093070(FieldSystem* sys) {
 
 BOOL sub_020930C4(FieldSystem* sys) {
     int owned = Pokedex_CountNationalDexOwned(Save_Pokedex_Get(sys->savedata));
-    SCRIPT_STATE* state = SaveArray_Flags_Get(sys->savedata);
+    ScriptState* state = SaveArray_Flags_Get(sys->savedata);
     if (GSPlayerMisc_IsGearNumberRegistered(SaveData_GSPlayerMisc_Get(sys->savedata), PHONE_CONTACT_PROF__OAK) == 0xff) {
         return FALSE;
     }
@@ -314,7 +314,7 @@ BOOL sub_02093134(FieldSystem* sys, Pokemon *mon) {
 }
 
 BOOL sub_0209316C(FieldSystem* sys) {
-    SCRIPT_STATE* state = SaveArray_Flags_Get(sys->savedata);
+    ScriptState* state = SaveArray_Flags_Get(sys->savedata);
     if (GSPlayerMisc_IsGearNumberRegistered(SaveData_GSPlayerMisc_Get(sys->savedata), PHONE_CONTACT_DAY_C_MAN) == 0xff) {
         return FALSE;
     }

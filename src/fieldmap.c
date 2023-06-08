@@ -109,7 +109,7 @@ BOOL Task_RunScripts(TaskManager *taskman) {
         // fallthrough
     case 1:
         for (i = 0; i < 3; i++) {
-            struct SCRIPTCONTEXT *ctx = env->scriptContexts[i];
+            struct ScriptContext *ctx = env->scriptContexts[i];
             if (ctx == NULL) {
                 continue;
             }
@@ -148,7 +148,7 @@ ScriptEnvironment *ScriptEnvironment_New(void) {
     return ret;
 }
 
-void DestroyScriptContext(SCRIPTCONTEXT *ctx) {
+void DestroyScriptContext(ScriptContext *ctx) {
     DestroyMsgData(ctx->msgdata);
     FreeToHeap(ctx->mapScripts);
     FreeToHeap(ctx);
@@ -168,15 +168,15 @@ void SetupScriptEngine(FieldSystem *fsys, ScriptEnvironment *env, u16 script, Lo
     }
 }
 
-SCRIPTCONTEXT *CreateScriptContext(FieldSystem *fsys, u16 script) {
-    SCRIPTCONTEXT *ctx = AllocFromHeap(HEAP_ID_FIELD, sizeof(SCRIPTCONTEXT));
+ScriptContext *CreateScriptContext(FieldSystem *fsys, u16 script) {
+    ScriptContext *ctx = AllocFromHeap(HEAP_ID_FIELD, sizeof(ScriptContext));
     GF_ASSERT(ctx != NULL);
     InitScriptContext(ctx, gScriptCmdTable, sNumScriptCmds);
     SetUpScriptContextForMap(fsys, ctx, script, 0);
     return ctx;
 }
 
-void SetUpScriptContextForMap(FieldSystem *fsys, SCRIPTCONTEXT *ctx, u16 scriptId, u32 unused_r3) {
+void SetUpScriptContextForMap(FieldSystem *fsys, ScriptContext *ctx, u16 scriptId, u32 unused_r3) {
 #pragma unused(unused_r3)
     u16 r6;
 
@@ -187,7 +187,7 @@ void SetUpScriptContextForMap(FieldSystem *fsys, SCRIPTCONTEXT *ctx, u16 scriptI
     sub_0203FD68(ctx, fsys->taskman);
 }
 
-u16 LoadScriptsAndMessagesByMapId(FieldSystem *fsys, SCRIPTCONTEXT *ctx, u16 scriptId) {
+u16 LoadScriptsAndMessagesByMapId(FieldSystem *fsys, ScriptContext *ctx, u16 scriptId) {
     const struct ScriptBankMapping *mapping_p = sScriptBankMapping;
     int i;
     for (i = 0; i < NELEMS(sScriptBankMapping); i++) {
@@ -205,12 +205,12 @@ u16 LoadScriptsAndMessagesByMapId(FieldSystem *fsys, SCRIPTCONTEXT *ctx, u16 scr
     }
 }
 
-void LoadScriptsAndMessagesParameterized(FieldSystem *fsys, SCRIPTCONTEXT *ctx, int scriptBank, u32 msgBank) {
+void LoadScriptsAndMessagesParameterized(FieldSystem *fsys, ScriptContext *ctx, int scriptBank, u32 msgBank) {
     ctx->mapScripts = AllocAndReadWholeNarcMemberByIdPair(NARC_fielddata_script_scr_seq, scriptBank, HEAP_ID_FIELD);
     ctx->msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msgBank, HEAP_ID_FIELD);
 }
 
-void LoadScriptsAndMessagesForCurrentMap(FieldSystem *fsys, SCRIPTCONTEXT *ctx) {
+void LoadScriptsAndMessagesForCurrentMap(FieldSystem *fsys, ScriptContext *ctx) {
     ctx->mapScripts = LoadScriptsForCurrentMap(fsys->location->mapId);
     ctx->msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, GetCurrentMapMessageBank(fsys->location->mapId), HEAP_ID_FIELD);
 }
@@ -334,7 +334,7 @@ void sub_0204031C(FieldSystem *fsys) {
     }
 }
 
-void ScriptRunByIndex(SCRIPTCONTEXT *ctx, int idx) {
+void ScriptRunByIndex(ScriptContext *ctx, int idx) {
     ctx->script_ptr += 4 * idx;
     ctx->script_ptr += ScriptReadWord(ctx);
 }
@@ -348,7 +348,7 @@ u32 GetCurrentMapMessageBank(u32 mapno) {
 }
 
 u16 *GetVarPointer(FieldSystem *fsys, u16 varIdx) {
-    SCRIPT_STATE *state = SaveArray_Flags_Get(fsys->savedata);
+    ScriptState *state = SaveArray_Flags_Get(fsys->savedata);
     if (varIdx < VAR_BASE) {
         return NULL;
     } else if (varIdx < SPECIAL_VAR_BASE) {
@@ -396,7 +396,7 @@ void ClearTempFieldEventData(FieldSystem *fsys) {
     u8 *flags;
     u16 *vars;
 
-    SCRIPT_STATE *state = SaveArray_Flags_Get(fsys->savedata);
+    ScriptState *state = SaveArray_Flags_Get(fsys->savedata);
     flags = GetFlagAddr(state, MAPTEMP_FLAG_BASE);
     memset(flags, 0, NUM_MAPTEMP_FLAGS / 8);
     vars = GetVarAddr(state, TEMP_VAR_BASE);
@@ -406,7 +406,7 @@ void ClearTempFieldEventData(FieldSystem *fsys) {
 void ClearDailyFlags(FieldSystem *fsys) {
     u8 *flags;
 
-    SCRIPT_STATE *state = SaveArray_Flags_Get(fsys->savedata);
+    ScriptState *state = SaveArray_Flags_Get(fsys->savedata);
     flags = GetFlagAddr(state, DAILY_FLAG_BASE);
     memset(flags, 0, NUM_DAILY_FLAGS / 8);
 }
@@ -435,17 +435,17 @@ BOOL TrainerNumIsDouble(u32 trainer) {
 }
 
 BOOL TrainerFlagCheck(SAVEDATA *saveData, u32 trainer) {
-    SCRIPT_STATE *scriptState = SaveArray_Flags_Get(saveData);
+    ScriptState *scriptState = SaveArray_Flags_Get(saveData);
     return CheckFlagInArray(scriptState, trainer + TRAINER_FLAG_BASE);
 }
 
 void TrainerFlagSet(SAVEDATA *saveData, u32 trainer) {
-    SCRIPT_STATE *scriptState = SaveArray_Flags_Get(saveData);
+    ScriptState *scriptState = SaveArray_Flags_Get(saveData);
     SetFlagInArray(scriptState, trainer + TRAINER_FLAG_BASE);
 }
 
 void TrainerFlagClear(SAVEDATA *saveData, u32 trainer) {
-    SCRIPT_STATE *scriptState = SaveArray_Flags_Get(saveData);
+    ScriptState *scriptState = SaveArray_Flags_Get(saveData);
     ClearFlagInArray(scriptState, trainer + TRAINER_FLAG_BASE);
 }
 
@@ -575,7 +575,7 @@ void RunInitScript(FieldSystem *fsys) {
 }
 
 void StartMapLoadScript(FieldSystem *fsys, u16 script) {
-    SCRIPTCONTEXT *ctx = CreateScriptContext(fsys, script);
+    ScriptContext *ctx = CreateScriptContext(fsys, script);
     while (RunScriptCommand(ctx) == TRUE) {}
     DestroyScriptContext(ctx);
 }

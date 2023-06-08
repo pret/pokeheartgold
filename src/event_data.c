@@ -3,18 +3,18 @@
 static u8 sTempFlags[NUM_TEMP_FLAGS / 8] = {0};
 
 u32 SaveArray_Flags_sizeof(void) {
-    return sizeof(SCRIPT_STATE);
+    return sizeof(ScriptState);
 }
 
-void SaveArray_Flags_Init(SCRIPT_STATE *scriptState) {
-    memset(scriptState, 0, sizeof(SCRIPT_STATE));
+void SaveArray_Flags_Init(ScriptState *scriptState) {
+    memset(scriptState, 0, sizeof(ScriptState));
 }
 
-SCRIPT_STATE *SaveArray_Flags_Get(SAVEDATA *saveData) {
+ScriptState *SaveArray_Flags_Get(SAVEDATA *saveData) {
     return SaveArray_Get(saveData, SAVE_FLAGS);
 }
 
-BOOL CheckFlagInArray(SCRIPT_STATE *scriptState, u16 flagno) {
+BOOL CheckFlagInArray(ScriptState *scriptState, u16 flagno) {
     u8 *flagAddr = GetFlagAddr(scriptState, flagno);
     if (flagAddr != NULL) {
         if (*flagAddr & (1 << (flagno % 8))) {
@@ -24,7 +24,7 @@ BOOL CheckFlagInArray(SCRIPT_STATE *scriptState, u16 flagno) {
     return FALSE;
 }
 
-void SetFlagInArray(SCRIPT_STATE *scriptState, u16 flagno) {
+void SetFlagInArray(ScriptState *scriptState, u16 flagno) {
     u8 *flagAddr = GetFlagAddr(scriptState, flagno);
     if (flagAddr == NULL) {
         return;
@@ -32,7 +32,7 @@ void SetFlagInArray(SCRIPT_STATE *scriptState, u16 flagno) {
     *flagAddr |= 1 << (flagno % 8);
 }
 
-void ClearFlagInArray(SCRIPT_STATE *scriptState, u16 flagno) {
+void ClearFlagInArray(ScriptState *scriptState, u16 flagno) {
     u8 *flagAddr = GetFlagAddr(scriptState, flagno);
     if (flagAddr == NULL) {
         return;
@@ -40,7 +40,7 @@ void ClearFlagInArray(SCRIPT_STATE *scriptState, u16 flagno) {
     *flagAddr &= 0xFF ^ (1 << (flagno % 8));
 }
 
-u8 *GetFlagAddr(SCRIPT_STATE *scriptState, u16 flagno) {
+u8 *GetFlagAddr(ScriptState *scriptState, u16 flagno) {
     if (flagno == 0) {
         return NULL;
     } else if (flagno < TEMP_FLAG_BASE) {
@@ -52,7 +52,7 @@ u8 *GetFlagAddr(SCRIPT_STATE *scriptState, u16 flagno) {
     }
 }
 
-u16 *GetVarAddr(SCRIPT_STATE *scriptState, u16 varno) {
+u16 *GetVarAddr(ScriptState *scriptState, u16 varno) {
     GF_ASSERT((varno - VAR_BASE) < NUM_VARS);
     return &scriptState->vars[varno - VAR_BASE];
 }
