@@ -1921,15 +1921,15 @@ _021E6816:
 	ldr r0, [r6, #0x38]
 	bl DestroyMsgData
 	ldr r0, [r6, #0x3c]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r6, #0x40]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x44]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
-	bl MessagePrinter_delete
+	bl MessagePrinter_Delete
 	mov r0, #0xe1
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
@@ -1946,7 +1946,7 @@ _021E6816:
 	mov r0, #0xe
 	lsl r0, r0, #6
 	ldr r0, [r6, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov87_021E6780
 
@@ -1984,7 +1984,7 @@ ov87_021E68DC: ; 0x021E68DC
 	add r5, r0, #0
 	mov r0, #0xcf
 	mov r1, #0x7a
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0xe
 	lsl r1, r1, #6
 	str r0, [r5, r1]
@@ -1999,7 +1999,7 @@ ov87_021E68DC: ; 0x021E68DC
 	bl NewMsgDataFromNarc
 	str r0, [r5, #0x38]
 	mov r0, #0x7a
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r5, #0x3c]
 	mov r0, #0x96
 	lsl r0, r0, #2
@@ -2038,7 +2038,7 @@ ov87_021E68DC: ; 0x021E68DC
 	mov r1, #0xe
 	mov r2, #0
 	mov r3, #0x7a
-	bl MessagePrinter_new
+	bl MessagePrinter_New
 	mov r1, #0x16
 	lsl r1, r1, #4
 	str r0, [r5, r1]

@@ -1839,7 +1839,7 @@ ov106_021E66FC: ; 0x021E66FC
 	ldr r0, [r0]
 	str r1, [sp, #0x18]
 	ldr r0, [r0]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	add r4, r0, #0
 	bl GetPartyCount
 	cmp r0, #0
@@ -1994,7 +1994,7 @@ ov106_021E6814: ; 0x021E6814
 	ldr r0, _021E68A0 ; =ov106_021E70E0
 	str r0, [r4, #0x14]
 	mov r0, #0xf7
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #4]
 	bl ov106_021E6408
 	add r0, r4, #0
@@ -2031,7 +2031,7 @@ ov106_021E68A8: ; 0x021E68A8
 	add r0, r5, #0
 	bl ov106_021E64FC
 	ldr r0, [r5, #4]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, _021E68D8 ; =0x00000418
 	ldr r0, [r4, r0]
 	bl FreeToHeap

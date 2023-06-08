@@ -57,7 +57,7 @@ _022469A6:
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0x10]
 	mov r0, #0x38
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0xc]
 	ldr r2, [r4]
 	ldr r0, [r2, #0x10]
@@ -249,11 +249,11 @@ ov71_02246B58: ; 0x02246B58
 	bl DestroySysTask
 	bl sub_0203A914
 	ldr r0, [r4, #0xc]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x10]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x14]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #8]
 	bl FreeToHeap
 	ldr r0, [r4, #0x18]
@@ -2118,7 +2118,7 @@ ov71_022478C8: ; 0x022478C8
 	str r0, [r4, #0x7c]
 	mov r0, #0xb4
 	mov r1, #0x39
-	bl NARC_ctor
+	bl NARC_New
 	add r1, r4, #0
 	add r1, #0x80
 	str r0, [r1]
@@ -2139,9 +2139,9 @@ ov71_02247924: ; 0x02247924
 	add r0, r4, #0
 	bl ov71_0224809C
 	ldr r0, [r4, #0x68]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x6c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x70]
 	bl ov71_02247498
 	ldr r0, [r4, #0x54]
@@ -2159,7 +2159,7 @@ ov71_02247924: ; 0x02247924
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
 	beq _02247980
@@ -9209,7 +9209,7 @@ ov71_0224B138: ; 0x0224B138
 	str r1, [r4, #0x74]
 	mov r0, #0xb4
 	mov r1, #0x39
-	bl NARC_ctor
+	bl NARC_New
 	add r1, r4, #0
 	add r1, #0x84
 	str r0, [r1]
@@ -9231,9 +9231,9 @@ ov71_0224B198: ; 0x0224B198
 	ldr r0, [r0]
 	bl ov71_0224BA48
 	ldr r0, [r4, #0x6c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x70]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x74]
 	cmp r0, #0
 	beq _0224B1C8
@@ -9253,7 +9253,7 @@ _0224B1E2:
 	add r0, r4, #0
 	add r0, #0x84
 	ldr r0, [r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r4, #0x10]
 	bl sub_02008524
 	add r0, r4, #0

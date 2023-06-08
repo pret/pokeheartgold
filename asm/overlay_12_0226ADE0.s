@@ -13,7 +13,7 @@ ov12_0226ADE0: ; 0x0226ADE0
 	mov r0, #8
 	mov r1, #5
 	add r7, r2, #0
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	str r6, [sp]
 	mov r0, #0x6e
@@ -60,7 +60,7 @@ ov12_0226ADE0: ; 0x0226ADE0
 	add r2, r6, #0
 	bl sub_0200D71C
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

@@ -10,8 +10,8 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_GXLoadPal
 .public GfGfxLoader_LoadCharDataFromOpenNarc
@@ -31,8 +31,8 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
-.public MessageFormat_new_custom
-.public MessageFormat_delete
+.public MessageFormat_New_Custom
+.public MessageFormat_Delete
 .public BufferPocketName
 .public StringExpandPlaceholders
 .public sub_0200DD88
@@ -136,11 +136,11 @@
 .public sub_020253F0
 .public GF_AssertFail
 .public String_New
-.public String_dtor
-.public StringCountLines
-.public StringGetLineN
+.public String_Delete
+.public String_CountLines
+.public String_GetLineN
 .public CopyU16ArrayToStringN
-.public String_c_str
+.public String_cstr
 .public sub_02026C44
 .public sub_02026CAC
 .public sub_02026CC4

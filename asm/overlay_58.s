@@ -11,11 +11,11 @@ ov58_022378C0: ; 0x022378C0
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _022378E0
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _022378E0
 	ldr r0, [r4]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	mov r0, #0
 	str r0, [r4]
 	mov r0, #1
@@ -387,7 +387,7 @@ ov58_02237B98: ; 0x02237B98
 	ldr r0, _02237BAC ; =_02237D1C
 	ldr r2, [r4]
 	add r1, r4, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #8]
 	mov r0, #2
 	pop {r4, pc}
@@ -431,7 +431,7 @@ ov58_02237BD4: ; 0x02237BD4
 	bl MI_CpuFill8
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	str r0, [r4]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
@@ -451,7 +451,7 @@ ov58_02237BD4: ; 0x02237BD4
 	str r0, [r4, #0xc]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
-	bl Save_Mailbox_get
+	bl Save_Mailbox_Get
 	str r0, [r4, #8]
 	mov r0, #0
 	str r0, [r4, #0x1c]
@@ -465,7 +465,7 @@ ov58_02237BD4: ; 0x02237BD4
 	ldr r0, _02237C48 ; =_0210159C
 	ldr r2, [r5]
 	add r1, r4, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r5, #8]
 	str r4, [r5, #0x10]
 	mov r0, #4
@@ -516,7 +516,7 @@ ov58_02237C88: ; 0x02237C88
 	ldr r0, _02237C9C ; =ov58_02237D2C
 	ldr r2, [r4]
 	add r1, r4, #0
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #8]
 	mov r0, #6
 	pop {r4, pc}

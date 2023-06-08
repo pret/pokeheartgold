@@ -16,7 +16,7 @@
 .public LoadUserFrameGfx1
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
-.public WaitingIcon_new
+.public WaitingIcon_New
 .public sub_0200F450
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
@@ -47,7 +47,7 @@
 .public GX_DisableEngineBLayers
 .public GX_BothDispOn
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Save_DeleteAllData
 .public OS_ResetSystem
 .public memset

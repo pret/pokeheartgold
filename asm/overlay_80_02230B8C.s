@@ -114,9 +114,9 @@ ov80_02230C10: ; 0x02230C10
 	add r0, r4, r0
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Party_init
+	bl SaveArray_Party_Init
 	ldr r0, [r7, #8]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	mov r1, #0x26
 	lsl r1, r1, #4
 	ldrb r1, [r4, r1]
@@ -381,7 +381,7 @@ _02230E76:
 _02230E7E:
 	ldr r0, [sp, #4]
 	ldr r0, [r0, #8]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	str r0, [sp]
 	ldrb r0, [r4, #4]
 	bl ov80_0223787C
@@ -498,7 +498,7 @@ _02230F64:
 _02230F6C:
 	ldr r0, [sp, #4]
 	ldr r0, [r0, #8]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	mov r1, #0x26
 	lsl r1, r1, #4
 	ldrb r1, [r4, r1]

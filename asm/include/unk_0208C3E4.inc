@@ -18,7 +18,7 @@
 .public AllocWindows
 .public AddWindow
 .public RemoveWindow
-.public WindowArray_dtor
+.public WindowArray_Delete
 .public ScheduleWindowCopyToVram
 .public ClearWindowTilemapAndCopyToVram
 .public ClearWindowTilemapAndScheduleTransfer
@@ -26,8 +26,8 @@
 .public GetWindowWidth
 .public ScheduleBgTilemapBufferTransfer
 .public AddTextPrinterParameterized2
-.public String_dtor
-.public StringCompare
+.public String_Delete
+.public String_Compare
 .public AllocMonZeroed
 .public CopyBoxPokemonToPokemon
 .public GetMoveAttr

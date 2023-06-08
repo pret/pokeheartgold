@@ -83,7 +83,7 @@ static void _DrawScurryMessageScreen(FieldSystem *fsys, TaskManager *taskManager
     sub_0200FBDC(1);
     _InitDisplays(env->bgConfig);
     env->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0203_bin, (HeapID)11);
-    env->msgFmt = MessageFormat_new((HeapID)11);
+    env->msgFmt = MessageFormat_New((HeapID)11);
     {
         static const WINDOWTEMPLATE _020FC51C = {
             3,
@@ -135,7 +135,7 @@ static BOOL _Task_ShowPrintedMessage(TaskManager *taskManager) {
     case 4:
         ClearFrameAndWindow2(&work->window, 0);
         RemoveWindow(&work->window);
-        MessageFormat_delete(work->msgFmt);
+        MessageFormat_Delete(work->msgFmt);
         DestroyMsgData(work->msgData);
         FreeBgTilemapBuffer(work->bgConfig, 3);
         FreeToHeap(work->bgConfig);
@@ -161,8 +161,8 @@ static void _PrintMessage(struct BlackoutScreenWork *work, int msgno, u8 x, u8 y
         AddTextPrinterParameterized2(&work->window, 0, str1, x, y, TEXT_SPEED_NOTRANSFER, MakeTextColor(1, 2, 0), NULL);
     }
 
-    String_dtor(str0);
-    String_dtor(str1);
+    String_Delete(str0);
+    String_Delete(str1);
 }
 
 BOOL Task_BlackOut(TaskManager *taskManager) {
@@ -174,13 +174,13 @@ BOOL Task_BlackOut(TaskManager *taskManager) {
 
     switch (*state) {
     case 0:
-        flypointsSave = Save_FlyPoints_get(fsys->savedata);
+        flypointsSave = Save_FlyPoints_Get(fsys->savedata);
         deathSpawn = FlyPoints_GetDeathSpawn(flypointsSave);
         GetDeathWarpData(deathSpawn, &deathWarp);
         GetSpecialSpawnWarpData(deathSpawn, FlyPoints_GetSpecialSpawnWarpPtr(flypointsSave));
         sub_020537A8(taskManager, &deathWarp);
         Fsys_ClearFollowingTrainer(fsys);
-        HealParty(SaveArray_PlayerParty_get(fsys->savedata));
+        HealParty(SaveArray_PlayerParty_Get(fsys->savedata));
         (*state)++;
         break;
     case 1:
@@ -205,7 +205,7 @@ BOOL Task_BlackOut(TaskManager *taskManager) {
         break;
     case 5:
         SetBlendBrightness(0, 0x3F, 3);
-        if (GetMomSpawnId() == FlyPoints_GetDeathSpawn(Save_FlyPoints_get(fsys->savedata))) {
+        if (GetMomSpawnId() == FlyPoints_GetDeathSpawn(Save_FlyPoints_Get(fsys->savedata))) {
             QueueScript(taskManager, std_whited_out_to_mom, NULL, NULL);
         } else {
             QueueScript(taskManager, std_whited_out_to_pokecenter, NULL, NULL);

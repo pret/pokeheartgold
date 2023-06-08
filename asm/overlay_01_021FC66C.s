@@ -90,7 +90,7 @@ _021FC6E2:
 	bl Fsys_GetGearPhoneRingManager
 	bl sub_02092FA8
 	ldr r0, [r4, #0xc]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	mov r1, #0xb
 	bl GameStats_Inc
 	ldr r2, [r5, #0x10]
@@ -486,7 +486,7 @@ ov01_021FC9AC: ; 0x021FC9AC
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0xc]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	mov r1, #0x65
 	bl GameStats_Inc
 	mov r0, #1
@@ -703,7 +703,7 @@ ov01_021FCB14: ; 0x021FCB14
 	mov r0, #8
 	mov r1, #0x40
 	mov r2, #4
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r4, #0x34]
 	pop {r4, pc}
 	thumb_func_end ov01_021FCB14
@@ -713,11 +713,11 @@ ov01_021FCB4C: ; 0x021FCB4C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x34]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x2c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x30]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x48]
 	bl DestroyMsgData
 	pop {r4, pc}
@@ -842,7 +842,7 @@ _021FCC40:
 	beq _021FCC6E
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #0xc]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	bl GetFirstAliveMonInParty_CrashIfNone
 	mov r1, #9
 	mov r2, #0

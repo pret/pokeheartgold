@@ -30,10 +30,10 @@ ov80_022340E8: ; 0x022340E8
 	mov r0, #0xb
 	str r0, [r5]
 	ldr r5, [r1]
-	bl SaveArray_Party_alloc
+	bl SaveArray_Party_Alloc
 	str r0, [r5, #0x70]
 	mov r0, #0xb
-	bl SaveArray_Party_alloc
+	bl SaveArray_Party_Alloc
 	str r0, [r5, #0x74]
 	mov r0, #0x2a
 	ldr r1, [sp, #0x38]
@@ -64,7 +64,7 @@ ov80_022340E8: ; 0x022340E8
 	cmp r2, #3
 	bne _02234174
 	ldr r0, [r0, #4]
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	bl ScriptState_GetVar4052
 	b _02234180
 _02234174:
@@ -206,7 +206,7 @@ _02234294:
 _0223429A:
 	ldr r4, [r6]
 	ldr r0, [r4, #4]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	add r1, r4, r5
 	add r1, #0x2c
 	ldrb r1, [r1]
@@ -224,7 +224,7 @@ _0223429A:
 	cmp r5, #3
 	blo _0223429A
 	ldr r0, [r4, #4]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	str r0, [sp, #0xc]
 	ldr r0, _02234374 ; =ov80_0223DD4C
 	mov r1, #0
@@ -1093,7 +1093,7 @@ ov80_02234968: ; 0x02234968
 	beq _02234A1E
 	mov r0, #0xb7
 	mov r1, #0x65
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -1160,7 +1160,7 @@ ov80_02234968: ; 0x02234968
 	mov r1, #2
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 _02234A1E:
@@ -1182,7 +1182,7 @@ ov80_02234A38: ; 0x02234A38
 	add r5, r1, #0
 	mov r0, #0xb7
 	mov r1, #0x65
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -1199,7 +1199,7 @@ ov80_02234A38: ; 0x02234A38
 	mov r1, #3
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1666,7 +1666,7 @@ _02234DDC:
 	bl memset
 	mov r0, #0xb7
 	mov r1, #0x65
-	bl NARC_ctor
+	bl NARC_New
 	add r1, r6, #0
 	add r2, sp, #8
 	mov r3, #0x65
@@ -1694,7 +1694,7 @@ _02234DDC:
 	bl GX_LoadBGExtPltt
 	bl GX_EndLoadBGExtPltt
 	ldr r0, [sp, #4]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r6, #0

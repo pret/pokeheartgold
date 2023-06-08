@@ -2567,7 +2567,7 @@ _02246DB0:
 	ldr r0, _0224706C ; =_02102610
 	add r1, r5, #0
 	mov r2, #5
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #0x50]
 	mov r0, #0x15
 	str r0, [r4, #0x28]
@@ -2605,7 +2605,7 @@ _02246E18:
 	pop {r3, r4, r5, r6, r7, pc}
 _02246E2A:
 	ldr r0, [r4, #0x50]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _02246E82
 	ldr r2, [r4, #4]
@@ -2629,7 +2629,7 @@ _02246E5C:
 	add r0, r5, #0
 	bl sub_0208311C
 	ldr r0, [r4, #0x50]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	ldr r0, [r4]
 	mov r1, #2
 	bl ov12_0223BBF0
@@ -5363,7 +5363,7 @@ _022483C6:
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, sp, #0x68
 	bl InitWindow
 	mov r0, #0

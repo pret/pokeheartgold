@@ -4,7 +4,7 @@
 
 extern BOOL ItemIsTMOrHM(u16 item_id);
 
-BOOL ScrCmd_GiveItem(SCRIPTCONTEXT* ctx) {
+BOOL ScrCmd_GiveItem(ScriptContext* ctx) {
     FieldSystem* sav_ptr = ctx->fsys;
     u16 item_id = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 quantity = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
@@ -16,7 +16,7 @@ BOOL ScrCmd_GiveItem(SCRIPTCONTEXT* ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_TakeItem(SCRIPTCONTEXT* ctx) {
+BOOL ScrCmd_TakeItem(ScriptContext* ctx) {
     FieldSystem* sav_ptr = ctx->fsys;
     u16 item_id = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 quantity = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
@@ -28,7 +28,7 @@ BOOL ScrCmd_TakeItem(SCRIPTCONTEXT* ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_HasSpaceForItem(SCRIPTCONTEXT* ctx) {
+BOOL ScrCmd_HasSpaceForItem(ScriptContext* ctx) {
     FieldSystem* sav_ptr = ctx->fsys;
     u16 item_id = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 quantity = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
@@ -40,7 +40,7 @@ BOOL ScrCmd_HasSpaceForItem(SCRIPTCONTEXT* ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_HasItem(SCRIPTCONTEXT* ctx) {
+BOOL ScrCmd_HasItem(ScriptContext* ctx) {
     FieldSystem* sav_ptr = ctx->fsys;
     u16 item_id = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16 quantity = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
@@ -52,7 +52,7 @@ BOOL ScrCmd_HasItem(SCRIPTCONTEXT* ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GetItemQuantity(SCRIPTCONTEXT* ctx) {
+BOOL ScrCmd_GetItemQuantity(ScriptContext* ctx) {
     FieldSystem* sav_ptr = ctx->fsys;
     u16 item_id = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16* ret_ptr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
@@ -63,7 +63,7 @@ BOOL ScrCmd_GetItemQuantity(SCRIPTCONTEXT* ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_ItemIsTMOrHM(SCRIPTCONTEXT* ctx) {
+BOOL ScrCmd_ItemIsTMOrHM(ScriptContext* ctx) {
     u16 item_id = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16* ret_ptr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
 
@@ -72,7 +72,7 @@ BOOL ScrCmd_ItemIsTMOrHM(SCRIPTCONTEXT* ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GetItemPocket(SCRIPTCONTEXT* ctx) {
+BOOL ScrCmd_GetItemPocket(ScriptContext* ctx) {
     u16 item_id = VarGet(ctx->fsys, ScriptReadHalfword(ctx));
     u16* ret_ptr = GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
 

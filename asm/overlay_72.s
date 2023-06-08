@@ -794,7 +794,7 @@ _02237E36:
 	mov r0, #0xb
 	mov r1, #0x20
 	mov r2, #0x43
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	mov r1, #0xbd
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -1026,7 +1026,7 @@ _02238086:
 	mov r0, #0xbd
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r4, #0
 	bl ov72_02238160
 	bl sub_02034DE0
@@ -1140,11 +1140,11 @@ ov72_02238194: ; 0x02238194
 	add r5, r0, #0
 	mov r0, #0xef
 	mov r1, #0x43
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x14]
 	mov r0, #0xee
 	mov r1, #0x43
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	bl NNS_G2dInitOamManagerModule
 	mov r0, #0
@@ -1371,9 +1371,9 @@ _022381EC:
 	ldr r0, [r5, r0]
 	bl sub_0200AF94
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [sp, #0x14]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -2274,7 +2274,7 @@ ov72_02238B18: ; 0x02238B18
 	bne _02238B86
 	mov r0, #0x58
 	mov r1, #0x43
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #1
 	lsl r1, r1, #8
 	str r1, [sp]
@@ -2313,13 +2313,13 @@ ov72_02238B18: ; 0x02238B18
 	mov r1, #0
 	str r1, [r5, r0]
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 _02238B86:
 	mov r0, #0xee
 	mov r1, #0x43
-	bl NARC_ctor
+	bl NARC_New
 	ldr r1, _02238BE8 ; =0x00001304
 	mov r2, #1
 	str r2, [r5, r1]
@@ -2357,7 +2357,7 @@ _02238B86:
 	mov r3, #5
 	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -2372,7 +2372,7 @@ ov72_02238BEC: ; 0x02238BEC
 	ldr r4, [r0, #4]
 	mov r0, #0x58
 	mov r1, #0x43
-	bl NARC_ctor
+	bl NARC_New
 	mov r2, #0
 	str r2, [sp]
 	mov r1, #0x43
@@ -2628,7 +2628,7 @@ _02238DDE:
 	ldr r1, [sp, #0x10]
 	str r0, [r1, r2]
 	ldr r0, [sp, #0x2c]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2931,20 +2931,20 @@ ov72_02239098: ; 0x02239098
 	mov r0, #0xbf
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _022390CC ; =0x00000BE4
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _022390D0 ; =0x00000BEC
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _022390D4 ; =0x00000BE8
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0xbe
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	pop {r4, pc}
 	nop
 _022390CC: .word 0x00000BE4
@@ -5340,7 +5340,7 @@ ov72_0223A280: ; 0x0223A280
 	ldr r1, _0223A2E4 ; =0x00000BF4
 	str r0, [r5, r1]
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -5532,7 +5532,7 @@ ov72_0223A420: ; 0x0223A420
 	ldr r0, _0223A440 ; =0x00000E18
 	mov r1, #1
 	add r0, r4, r0
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	ldr r1, _0223A43C ; =0x00000F4C
 	str r0, [r4, r1]
 _0223A43A:
@@ -5607,7 +5607,7 @@ ov72_0223A460: ; 0x0223A460
 	ldr r1, _0223A4D8 ; =0x00000BF4
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	nop
@@ -6740,7 +6740,7 @@ ov72_0223AD20: ; 0x0223AD20
 	add r0, r5, #0
 	bl CopyWindowToVram
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -7193,7 +7193,7 @@ ov72_0223B0C4: ; 0x0223B0C4
 	add r4, r0, #0
 	ldr r1, [r4, #0x28]
 	mov r0, #0xef
-	bl NARC_ctor
+	bl NARC_New
 	add r1, r4, #0
 	add r1, #0x2f
 	ldrb r1, [r1]
@@ -7294,7 +7294,7 @@ _0223B178:
 	ldr r0, [sp, #0x10]
 	bl FreeToHeap
 	ldr r0, [sp, #0x14]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #0
 	add r0, #0x2f
 	ldrb r0, [r0]
@@ -7412,9 +7412,9 @@ ov72_0223B1C8: ; 0x0223B1C8
 	add r0, r5, #0
 	bl CopyWindowToVram
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl DestroyMsgData
 	add sp, #0x14

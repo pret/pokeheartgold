@@ -9,8 +9,8 @@ struct SavedMapObjectList;
 
 u32 Save_FlyPoints_sizeof(void);
 u32 Save_MapObjects_sizeof(void);
-void Save_MapObjects_init(struct SavedMapObjectList *unk);
-void Save_FlyPoints_init(FLYPOINTS_SAVE *flypointsSave);
+void Save_MapObjects_Init(struct SavedMapObjectList *unk);
+void Save_FlyPoints_Init(FLYPOINTS_SAVE *flypointsSave);
 Location *FlyPoints_GetPosition(FLYPOINTS_SAVE *flypointsSave);
 Location *sub_0203B95C(FLYPOINTS_SAVE *flypointsSave);
 Location *sub_0203B960(FLYPOINTS_SAVE *flypointsSave);
@@ -28,8 +28,8 @@ struct FlypointsPlayerSub *SaveFlyPoints_GetPlayerSub(FLYPOINTS_SAVE *flypointsS
 u16 *FlyPoints_GetSafariBallsCounter(FLYPOINTS_SAVE *flypointsSave);
 u16 *FlyPoints_GetSafariStepsCounter(FLYPOINTS_SAVE *flypointsSave);
 u16 *FlyPoints_GetPoisonStepCounter(FLYPOINTS_SAVE *flypointsSave);
-FLYPOINTS_SAVE *Save_FlyPoints_get(SAVEDATA *saveData);
-struct SavedMapObjectList *Save_MapObjects_get(SAVEDATA *saveData);
+FLYPOINTS_SAVE *Save_FlyPoints_Get(SAVEDATA *saveData);
+struct SavedMapObjectList *Save_MapObjects_Get(SAVEDATA *saveData);
 void Fsys_SyncMapObjectsToSave(FieldSystem *fsys);
 void Fsys_RestoreMapObjectsFromSave(FieldSystem *fsys);
 

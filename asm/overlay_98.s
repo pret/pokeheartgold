@@ -46,7 +46,7 @@ ov98_0221E5E0: ; 0x0221E5E0
 	str r0, [r4, #8]
 	ldr r1, [r4]
 	mov r0, #0x14
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #0x10]
 	mov r0, #0
 	mvn r0, r0
@@ -109,7 +109,7 @@ ov98_0221E684: ; 0x0221E684
 	ldr r0, [r7, #0x10]
 	add r5, r1, #0
 	add r6, r2, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r7, #0xc]
 	bl PaletteData_Free
 	mov r4, #0
@@ -733,7 +733,7 @@ _0221EB44:
 	bl NewMsgDataFromNarc
 	str r0, [r4, #8]
 	ldr r0, [sp]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x10]
 	mov r0, #1
 	ldr r1, [sp]
@@ -758,9 +758,9 @@ ov98_0221EB84: ; 0x0221EB84
 	add r7, r1, #0
 	bl FontID_Release
 	ldr r0, [r5, #0x14]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r5, #0x10]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r5, #0xc]
 	bl DestroyMsgData
 	ldr r0, [r5, #8]
@@ -916,7 +916,7 @@ _0221EC8A:
 	add r0, r0, r6
 	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -966,7 +966,7 @@ ov98_0221ECD0: ; 0x0221ECD0
 	add r0, r0, r4
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -1019,7 +1019,7 @@ ov98_0221ED48: ; 0x0221ED48
 	add r0, r0, r5
 	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1084,7 +1084,7 @@ ov98_0221EDC4: ; 0x0221EDC4
 	add r0, r0, r4
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop

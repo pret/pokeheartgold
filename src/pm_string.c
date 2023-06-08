@@ -19,19 +19,19 @@ STRING *String_New(u32 maxsize, HeapID heapId) {
     return ret;
 }
 
-void String_dtor(STRING *string) {
+void String_Delete(STRING *string) {
     ASSERT_STRING(string);
     string->magic = STRING_INVAL;
     FreeToHeap(string);
 }
 
-void StringSetEmpty(STRING *string) {
+void String_SetEmpty(STRING *string) {
     ASSERT_STRING(string);
     string->size = 0;
     string->data[0] = EOS;
 }
 
-void StringCopy(STRING *dest, const STRING *src) {
+void String_Copy(STRING *dest, const STRING *src) {
     ASSERT_STRING(dest);
     ASSERT_STRING(src);
     if (dest->maxsize > src->size) {
@@ -42,12 +42,12 @@ void StringCopy(STRING *dest, const STRING *src) {
     GF_ASSERT(0);
 }
 
-STRING *StringDup(const STRING *src, HeapID heapId) {
+STRING *String_Dup(const STRING *src, HeapID heapId) {
     STRING *ret;
     ASSERT_STRING(src);
     ret = String_New(src->size + 1, heapId);
     if (ret != NULL) {
-        StringCopy(ret, src);
+        String_Copy(ret, src);
     }
     return ret;
 }
@@ -99,7 +99,7 @@ void String16_FormatInteger(STRING * str, int num, u32 ndigits, STRCONVMODE strC
 
     if (str->maxsize > ndigits + isNegative) {
         charbase = (whichCharset == 0) ? sCharset_JP : sCharset_EN;
-        StringSetEmpty(str);
+        String_SetEmpty(str);
         if (isNegative) {
             num *= -1;
             u16 hyphen = (u16)((whichCharset == 0) ? CHAR_JP_HYPHEN : CHAR_HYPHEN);
@@ -187,7 +187,7 @@ void String16_FormatUnsignedLongLong(STRING * str, u64 num, u32 ndigits, STRCONV
 
     if (str->maxsize > ndigits + isNegative) {
         charbase = (whichCharset == 0) ? sCharset_JP : sCharset_EN;
-        StringSetEmpty(str);
+        String_SetEmpty(str);
         if (isNegative) {
             num *= -1;
             u16 hyphen = (u16)((whichCharset == 0) ? CHAR_JP_HYPHEN : CHAR_HYPHEN);
@@ -243,7 +243,7 @@ s64 String_atoi(STRING * str, BOOL * flag) {
     return ret;
 }
 
-BOOL StringCompare(STRING * str1, STRING * str2) {
+BOOL String_Compare(STRING * str1, STRING * str2) {
     ASSERT_STRING(str1);
     ASSERT_STRING(str2);
 
@@ -255,12 +255,12 @@ BOOL StringCompare(STRING * str1, STRING * str2) {
     return TRUE;
 }
 
-u16 StringGetLength(STRING * str) {
+u16 String_GetLength(STRING * str) {
     ASSERT_STRING(str);
     return str->size;
 }
 
-int StringCountLines(volatile STRING * str) {
+int String_CountLines(volatile STRING * str) {
     ASSERT_STRING(str);
 
     int i, nline;
@@ -271,7 +271,7 @@ int StringCountLines(volatile STRING * str) {
     return nline;
 }
 
-void StringGetLineN(STRING * dest, volatile STRING * src, u32 n) {
+void String_GetLineN(STRING * dest, volatile STRING * src, u32 n) {
     ASSERT_STRING(src);
     ASSERT_STRING(dest);
 
@@ -284,13 +284,13 @@ void StringGetLineN(STRING * dest, volatile STRING * src, u32 n) {
             }
         }
     }
-    StringSetEmpty(dest);
+    String_SetEmpty(dest);
     for (; i < src->size; i++) {
         u16 c = src->data[i];
         if (c == CHAR_LF) {
             break;
         }
-        StrAddChar(dest, c);
+        String_AddChar(dest, c);
     }
 }
 
@@ -303,7 +303,7 @@ void String_RadioAddStatic(STRING *string, u8 level) {
     int i;
 
     ASSERT_STRING(string);
-    str_len = StringGetLength(string); // the result is never used
+    str_len = String_GetLength(string); // the result is never used
     for (i = 0; i < string->size - 1; i++) {
         if (string->data[i] != CHAR_SPACE && ((MTRandom() / 256u) % 101) < level) {
             cur_width = FontID_GetGlyphWidth(0, string->data[i]);
@@ -360,13 +360,13 @@ void CopyStringToU16Array(const STRING * str, u16 * buf, u32 length) {
     GF_ASSERT(0);
 }
 
-u16 * String_c_str(STRING * str) {
+u16 * String_cstr(STRING * str) {
     ASSERT_STRING(str);
 
     return str->data;
 }
 
-void StringCat(STRING * dest, STRING * src) {
+void String_Cat(STRING * dest, STRING * src) {
     ASSERT_STRING(dest);
     ASSERT_STRING(src);
 
@@ -378,7 +378,7 @@ void StringCat(STRING * dest, STRING * src) {
     GF_ASSERT(0);
 }
 
-void StrAddChar(STRING * str, u16 val) {
+void String_AddChar(STRING * str, u16 val) {
     ASSERT_STRING(str);
 
     if (str->size + 1 < str->maxsize) {
@@ -393,7 +393,7 @@ BOOL String_IsTrainerName(STRING * string) {
     return string->size != 0 && string->data[0] == TRNAMECODE;
 }
 
-void StringCat_HandleTrainerName(STRING * dest, STRING * src) {
+void String_Cat_HandleTrainerName(STRING * dest, STRING * src) {
     if (String_IsTrainerName(src)) {
         u16 * dest_p = &dest->data[dest->size];
         u16 * src_p = &src->data[1];
@@ -421,11 +421,11 @@ void StringCat_HandleTrainerName(STRING * dest, STRING * src) {
         dest->size += outsize;
     }
     else {
-        StringCat(dest, src);
+        String_Cat(dest, src);
     }
 }
 
-void StrUpperCharN(STRING * str, int n) {
+void String_UpperCharN(STRING * str, int n) {
     ASSERT_STRING(str);
 
     if (str->size > n) {

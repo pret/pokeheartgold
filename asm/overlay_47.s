@@ -274,7 +274,7 @@ ov47_02258A1C: ; 0x02258A1C
 	add r6, r0, #0
 	mov r0, #0xd1
 	add r1, r4, #0
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #5
 	lsl r1, r1, #6
 	str r0, [r5, r1]
@@ -302,7 +302,7 @@ ov47_02258A60: ; 0x02258A60
 	mov r0, #5
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	bl GF_DestroyVramTransferManager
 	add r0, r4, #0
 	bl ov47_02258B8C
@@ -566,7 +566,7 @@ _02258C7E:
 	cmp r6, #9
 	blt _02258C7E
 	add r0, r7, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	ldr r1, [sp]
 	str r0, [r1, #0x24]
 	mov r0, #1
@@ -600,11 +600,11 @@ _02258CC8:
 	cmp r4, #9
 	blt _02258CC8
 	ldr r0, [r6, #0x24]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r6, #0x28]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x2c]
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov47_02258CC0
@@ -696,7 +696,7 @@ ov47_02258D78: ; 0x02258D78
 	add r5, r0, #0
 	add r0, r7, #0
 	add r4, r1, #0
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	add r6, r0, #0
 	ldr r0, [r5, #0x30]
 	bl ov45_0222A5C0
@@ -1338,7 +1338,7 @@ _02259296:
 	add r0, r5, #0
 	bl ov47_022593A0
 	ldr r0, [r5, #0x18]
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	add r0, #8
 	bl RemoveWindow
@@ -1371,7 +1371,7 @@ _022592D4:
 	bl FillWindowPixelBuffer
 	ldr r0, [r5, #0x18]
 	add r1, r4, #0
-	bl StringCopy
+	bl String_Copy
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5, #4]
@@ -1420,7 +1420,7 @@ _02259338:
 	bl FillWindowPixelBuffer
 	ldr r0, [r5, #0x18]
 	add r1, r4, #0
-	bl StringCopy
+	bl String_Copy
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff
@@ -1460,7 +1460,7 @@ _02259392:
 	add r0, r4, #0
 	add r0, #8
 	mov r1, #1
-	bl WaitingIcon_new
+	bl WaitingIcon_New
 	str r0, [r4, #0x1c]
 	pop {r4, pc}
 	thumb_func_end ov47_02259384
@@ -2703,11 +2703,11 @@ ov47_02259D24: ; 0x02259D24
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x10]
-	bl String_dtor
+	bl String_Delete
 	mov r4, #0
 _02259D30:
 	ldr r0, [r5, #0x14]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #3

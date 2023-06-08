@@ -34,13 +34,13 @@ u32 Save_MapObjects_sizeof(void) {
     return sizeof(struct SavedMapObjectList);
 }
 
-void Save_MapObjects_init(struct SavedMapObjectList *unk) {
+void Save_MapObjects_Init(struct SavedMapObjectList *unk) {
     MI_CpuClear32(unk, sizeof(struct SavedMapObjectList));
 }
 
-void Save_FlyPoints_init(FLYPOINTS_SAVE *flypointsSave) {
+void Save_FlyPoints_Init(FLYPOINTS_SAVE *flypointsSave) {
     memset(flypointsSave, 0, sizeof(FLYPOINTS_SAVE));
-    FlypointsPlayerSub_init(&flypointsSave->player);
+    FlypointsPlayerSub_Init(&flypointsSave->player);
     flypointsSave->lastSpawn = GetMomSpawnId();
 }
 
@@ -112,28 +112,28 @@ u16 *FlyPoints_GetPoisonStepCounter(FLYPOINTS_SAVE *flypointsSave) {
     return &flypointsSave->poisonStepCounter;
 }
 
-FLYPOINTS_SAVE *Save_FlyPoints_get(SAVEDATA *saveData) {
-    return SaveArray_get(saveData, SAVE_FLYPOINTS);
+FLYPOINTS_SAVE *Save_FlyPoints_Get(SAVEDATA *saveData) {
+    return SaveArray_Get(saveData, SAVE_FLYPOINTS);
 }
 
-struct SavedMapObjectList *Save_MapObjects_get(SAVEDATA *saveData) {
-    return SaveArray_get(saveData, SAVE_MAP_OBJECTS);
+struct SavedMapObjectList *Save_MapObjects_Get(SAVEDATA *saveData) {
+    return SaveArray_Get(saveData, SAVE_MAP_OBJECTS);
 }
 
 void Fsys_SyncMapObjectsToSave(FieldSystem *fsys) {
-    struct SavedMapObjectList *unk = Save_MapObjects_get(fsys->savedata);
+    struct SavedMapObjectList *unk = Save_MapObjects_Get(fsys->savedata);
     Fsys_SyncMapObjectsToSaveEx(fsys, fsys->mapObjectMan, unk->subs, 64);
 }
 
 void Fsys_RestoreMapObjectsFromSave(FieldSystem *fsys) {
-    struct SavedMapObjectList *unk = Save_MapObjects_get(fsys->savedata);
+    struct SavedMapObjectList *unk = Save_MapObjects_Get(fsys->savedata);
     struct SavedMapObject *follower = SaveMapObjects_SearchSpriteId(unk->subs, 64, SPRITE_TSURE_POKE_SHAYMIN_SKY);
     Pokemon *mon;
     int species;
     int forme;
 
     if (follower != NULL && follower->objId == obj_partner_poke) {
-        mon = GetFirstAliveMonInParty_CrashIfNone(SaveArray_PlayerParty_get(fsys->savedata));
+        mon = GetFirstAliveMonInParty_CrashIfNone(SaveArray_PlayerParty_Get(fsys->savedata));
         species = GetMonData(mon, MON_DATA_SPECIES, NULL);
         forme = GetMonData(mon, MON_DATA_FORME, NULL);
         if (species != SPECIES_SHAYMIN) {

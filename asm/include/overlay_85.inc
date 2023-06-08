@@ -25,8 +25,8 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public NARC_ReadWholeMember
 .public NARC_GetMemberSize
 .public GfGfxLoader_LoadCharData
@@ -59,8 +59,8 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public ReadMsgData_ExpandPlaceholders
-.public MessageFormat_new
-.public MessageFormat_delete
+.public MessageFormat_New
+.public MessageFormat_Delete
 .public BufferPlayersName
 .public BufferIntegerAsString
 .public BufferItemName
@@ -92,7 +92,7 @@
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
-.public WaitingIcon_new
+.public WaitingIcon_New
 .public sub_0200F450
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
@@ -164,7 +164,7 @@
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Thunk_G3X_Reset
 .public sub_02026E50
 .public GF_3DVramMan_InitFrameTexVramManager
@@ -212,7 +212,7 @@
 .public CopyPokemonToPokemon
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SaveArray_PlayerParty_get
+.public SaveArray_PlayerParty_Get
 .public BagAddItem
 .public SaveGetBag
 .public MonSetTrainerMemo

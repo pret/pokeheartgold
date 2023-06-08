@@ -93,7 +93,7 @@ void * AllocAtEndAndReadFromNarcMemberByIdPair(NarcId narc_id, s32 file_id, Heap
 u32 GetNarcMemberSizeByIdPair(NarcId narc_id, s32 file_idx);
 
 /*
- * NARC * NARC_ctor(NarcId narc_id, HeapID heap_id)
+ * NARC * NARC_New(NarcId narc_id, HeapID heap_id)
  *
  * Constructs a new NARC which contains an open FSFile to the corresponding archive.
  * Useful to reduce overhead when reading from the same NARC multiple times.
@@ -103,16 +103,16 @@ u32 GetNarcMemberSizeByIdPair(NarcId narc_id, s32 file_idx);
  *
  * @returns: Pointer to the newly-allocated NARC
  */
-NARC * NARC_ctor(NarcId narc_id, HeapID heap_id);
+NARC * NARC_New(NarcId narc_id, HeapID heap_id);
 
 /*
- * void NARC_dtor(NARC * narc)
+ * void NARC_Delete(NARC * narc)
  *
  * Closes the wrapped FSFile and returns the NARC allocation to the heap from whence it came.
  *
  * @param narc:        Pointer to the NARC
  */
-void NARC_dtor(NARC * narc);
+void NARC_Delete(NARC * narc);
 
 /*
  * void * NARC_AllocAndReadWholeMember(NARC * narc, u32 file_id, HeapID heap_id)

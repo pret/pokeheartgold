@@ -17,13 +17,13 @@ u32 PartyCore_sizeof(void) {
     return sizeof(PARTY_CORE);
 }
 
-PARTY * SaveArray_Party_alloc(HeapID heapId) {
+PARTY * SaveArray_Party_Alloc(HeapID heapId) {
     PARTY *ret = AllocFromHeap(heapId, sizeof(PARTY));
-    SaveArray_Party_init(ret);
+    SaveArray_Party_Init(ret);
     return ret;
 }
 
-void SaveArray_Party_init(PARTY *party) {
+void SaveArray_Party_Init(PARTY *party) {
     InitPartyWithMaxSize(party, PARTY_SIZE);
 }
 
@@ -119,7 +119,7 @@ BOOL Party_SwapSlots(PARTY *party, int slotA, int slotB) {
     return FALSE;
 }
 
-void Party_copy(const PARTY *src, PARTY *dest) {
+void Party_Copy(const PARTY *src, PARTY *dest) {
     *dest = *src;
 }
 
@@ -135,6 +135,6 @@ BOOL PartyHasMon(PARTY *party, u16 species) {
     return (i != party->core.curCount);
 }
 
-PARTY *SaveArray_PlayerParty_get(SAVEDATA *saveData) {
-    return (PARTY *) SaveArray_get(saveData, SAVE_PARTY);
+PARTY *SaveArray_PlayerParty_Get(SAVEDATA *saveData) {
+    return (PARTY *) SaveArray_Get(saveData, SAVE_PARTY);
 }

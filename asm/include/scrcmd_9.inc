@@ -7,7 +7,7 @@
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
 .public GetSpeciesNameIntoArray
-.public MessageFormat_new_custom
+.public MessageFormat_New_Custom
 .public BufferString
 .public BufferIntegerAsString
 .public AllocFromHeap
@@ -16,13 +16,13 @@
 .public LCRandom
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public CopyStringToU16Array
 .public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetTrainerGender
 .public Pokedex_CheckMonSeenFlag
-.public Save_Pokedex_get
-.public Save_GameStats_get
+.public Save_Pokedex_Get
+.public Save_GameStats_Get
 .public GameStats_Add
 .public GameStats_GetCapped
 .public GameStats_AddSpecial
@@ -44,7 +44,7 @@
 .public sub_0202D7B8
 .public sub_0202D8D0
 .public sub_0202D908
-.public Save_FrontierData_get
+.public Save_FrontierData_Get
 .public sub_0202D928
 .public sub_0203107C
 .public sub_020310BC
@@ -54,7 +54,7 @@
 .public sub_0203769C
 .public sub_02037C0C
 .public FlyPoints_GetDynamicWarp
-.public Save_FlyPoints_get
+.public Save_FlyPoints_Get
 .public FieldSys_GetSaveDataPtr
 .public SetupNativeScript
 .public ScriptReadHalfword
@@ -79,7 +79,7 @@
 .public sub_0204B610
 .public sub_0204B66C
 .public sub_0204B690
-.public SaveArray_Flags_get
+.public SaveArray_Flags_Get
 .public sub_0205C268
 .public sub_0205C298
 .public sub_0205C310
@@ -106,7 +106,7 @@
 .public GetLegendaryMon
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SaveArray_PlayerParty_get
+.public SaveArray_PlayerParty_Get
 .public sub_02096910
 .public OS_ResetSystem
 .public MI_CpuFill8

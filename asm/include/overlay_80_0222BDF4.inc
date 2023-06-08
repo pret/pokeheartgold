@@ -23,8 +23,8 @@
 .public sub_02003E5C
 .public sub_02004EC4
 .public PlaySE
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public sub_0200B484
 .public sub_0200B5C0
 .public NewMsgDataFromNarc
@@ -66,7 +66,7 @@
 .public sub_0200E5D4
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
-.public WaitingIcon_new
+.public WaitingIcon_New
 .public sub_0200F450
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
@@ -74,7 +74,7 @@
 .public sub_0200FBF4
 .public sub_02014494
 .public sub_02015494
-.public MailMsg_init
+.public MailMsg_Init
 .public MailMsg_GetExpandedString
 .public MailMsg_SetMsgBankAndNum
 .public MailMsg_SetFieldI
@@ -92,7 +92,7 @@
 .public AllocWindows
 .public AddWindowParameterized
 .public RemoveWindow
-.public WindowArray_dtor
+.public WindowArray_Delete
 .public ScheduleWindowCopyToVram
 .public ClearWindowTilemapAndCopyToVram
 .public FillWindowPixelBuffer
@@ -107,8 +107,8 @@
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New
-.public String_dtor
-.public StringCopy
+.public String_Delete
+.public String_Copy
 .public sub_020270C4
 .public SaveGameNormal
 .public Save_CheckExtraChunksExist
@@ -122,12 +122,12 @@
 .public Options_GetTextFrameDelay
 .public sub_0202C4B0
 .public sub_0202C6F4
-.public Save_GameStats_get
+.public Save_GameStats_Get
 .public GameStats_Inc
 .public GameStats_Add
 .public GameStats_AddSpecial
 .public FrontierData_BattlePointAction
-.public Save_FrontierData_get
+.public Save_FrontierData_Get
 .public sub_0202FBF0
 .public sub_0202FC24
 .public sub_0202FC90
@@ -144,7 +144,7 @@
 .public sub_02037B38
 .public sub_02037BEC
 .public sub_02037D78
-.public SaveArray_Flags_get
+.public SaveArray_Flags_Get
 .public GetVarAddr
 .public sub_02058284
 .public sub_0205C298
@@ -156,7 +156,7 @@
 .public sub_02074498
 .public sub_020744A4
 .public GetPartyMonByIndex
-.public SaveArray_PlayerParty_get
+.public SaveArray_PlayerParty_Get
 .public sub_0207CA9C
 .public sub_0207CAA0
 .public sub_0207CAA4

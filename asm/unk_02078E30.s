@@ -53,7 +53,7 @@ sub_02078E30: ; 0x02078E30
 	bl CreateHeap
 	mov r0, #0x15
 	mov r1, #0xc
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_02079BD8
@@ -226,7 +226,7 @@ _02078FE4:
 	mov r1, #0xc
 	bl FontID_Alloc
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, pc}
@@ -1022,24 +1022,24 @@ sub_020795E0: ; 0x020795E0
 	add r5, r6, #0
 _02079618:
 	ldr r0, [r5, r7]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, #0x30
 	cmp r4, #6
 	blo _02079618
 	ldr r0, _020796A0 ; =0x000007C8
 	ldr r0, [r6, r0]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _020796A4 ; =0x000007CC
 	ldr r0, [r6, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r7, #0x7d
 	mov r5, #0
 	add r4, r6, #0
 	lsl r7, r7, #4
 _0207963E:
 	ldr r0, [r4, r7]
-	bl String_dtor
+	bl String_Delete
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #0x14
@@ -1050,10 +1050,10 @@ _0207963E:
 	bl DestroyMsgData
 	ldr r0, _020796A8 ; =0x000007BC
 	ldr r0, [r6, r0]
-	bl MessagePrinter_delete
+	bl MessagePrinter_Delete
 	ldr r0, _020796AC ; =0x000007C4
 	ldr r0, [r6, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, _020796B0 ; =0x00000C74
 	ldr r0, [r6, r0]
 	cmp r0, #0
@@ -1743,11 +1743,11 @@ _02079C26:
 	mov r1, #0xe
 	mov r2, #0
 	mov r3, #0xc
-	bl MessagePrinter_new
+	bl MessagePrinter_New
 	ldr r1, _02079CD0 ; =0x000007BC
 	str r0, [r4, r1]
 	mov r0, #0xc
-	bl MessageFormat_new
+	bl MessageFormat_New
 	ldr r1, _02079CD4 ; =0x000007C4
 	mov r6, #0
 	add r7, r1, #0
@@ -2555,7 +2555,7 @@ sub_0207A2AC: ; 0x0207A2AC
 	add r6, r1, #0
 	mov r0, #0x14
 	mov r1, #0xc
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #8]
 	mov r4, #0
 _0207A2C0:
@@ -2673,7 +2673,7 @@ _0207A3A8:
 	cmp r4, #6
 	blo _0207A2C0
 	ldr r0, [sp, #8]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2690,7 +2690,7 @@ sub_0207A3C8: ; 0x0207A3C8
 	str r1, [sp, #4]
 	mov r0, #0x14
 	mov r1, #0xc
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #8]
 	mov r4, #0
 _0207A3DC:
@@ -2784,7 +2784,7 @@ _0207A496:
 	cmp r4, #6
 	blo _0207A3DC
 	ldr r0, [sp, #8]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -2800,7 +2800,7 @@ sub_0207A4B4: ; 0x0207A4B4
 	str r1, [sp, #4]
 	mov r0, #0x14
 	mov r1, #0xc
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #8]
 	mov r4, #0
 _0207A4C8:
@@ -2894,7 +2894,7 @@ _0207A582:
 	cmp r4, #6
 	blo _0207A4C8
 	ldr r0, [sp, #8]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -2910,7 +2910,7 @@ sub_0207A5A0: ; 0x0207A5A0
 	str r1, [sp, #4]
 	mov r0, #0x14
 	mov r1, #0xc
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #8]
 	mov r4, #0
 _0207A5B4:
@@ -3004,7 +3004,7 @@ _0207A66E:
 	cmp r4, #6
 	blo _0207A5B4
 	ldr r0, [sp, #8]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -3020,7 +3020,7 @@ sub_0207A68C: ; 0x0207A68C
 	str r1, [sp, #4]
 	mov r0, #0x14
 	mov r1, #0xc
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #8]
 	mov r4, #0
 _0207A6A0:
@@ -3117,7 +3117,7 @@ _0207A762:
 	cmp r4, #6
 	blo _0207A6A0
 	ldr r0, [sp, #8]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -5408,7 +5408,7 @@ _0207B8BE:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0
 	add r0, r4, #0
 	mvn r1, r1
@@ -6234,7 +6234,7 @@ _0207BF02:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0
 	add r0, r4, #0
 	mvn r1, r1
@@ -7688,7 +7688,7 @@ sub_0207CB20: ; 0x0207CB20
 	mov r0, #0x82
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	pop {r4, pc}
 	.balign 4, 0
 _0207CB38: .word 0x00000824

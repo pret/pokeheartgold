@@ -525,7 +525,7 @@ _021E5CBE:
 	bl G2x_SetBlendAlpha_
 	ldr r1, [r5, #0xc]
 	mov r0, #0xb1
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r5, #8]
 	add sp, #0xf4
 	pop {r4, r5, r6, r7, pc}
@@ -542,7 +542,7 @@ ov99_021E5D2C: ; 0x021E5D2C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #8]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r6, _021E5D54 ; =_021E954C
 	mov r4, #0
 _021E5D3A:
@@ -2092,7 +2092,7 @@ _021E6992:
 	blt _021E6992
 	ldr r1, [r5, #0xc]
 	mov r0, #0xb1
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r5, #8]
 	add sp, #0x80
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2181,7 +2181,7 @@ ov99_021E6A70: ; 0x021E6A70
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #8]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r6, _021E6A98 ; =ov99_021E9D88
 	mov r4, #0
 _021E6A7E:
@@ -4022,11 +4022,11 @@ _021E783C:
 	bl ov98_0221F090
 	ldr r1, [r4, #0xc]
 	mov r0, #0xb1
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #4]
 	ldr r1, [r4, #0xc]
 	mov r0, #0x4a
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #8]
 	add r0, r4, #0
 	bl ov99_021E72C0
@@ -4831,9 +4831,9 @@ ov99_021E7EBC: ; 0x021E7EBC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #8]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r5, #4]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r6, _021E7EEC ; =ov99_021EA348
 	mov r4, #0
 _021E7ED0:
@@ -5717,7 +5717,7 @@ _021E85C6:
 	blt _021E85C6
 	ldr r1, [r5, #0xc]
 	mov r0, #0xb1
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r5, #8]
 	add sp, #0xb8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -5902,7 +5902,7 @@ ov99_021E875C: ; 0x021E875C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #8]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r6, _021E8784 ; =ov99_021EA59C
 	mov r4, #0
 _021E876A:
@@ -7560,7 +7560,7 @@ ov99_021E9418: ; 0x021E9418
 	mov r0, #0x6f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}

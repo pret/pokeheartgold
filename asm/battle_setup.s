@@ -88,15 +88,15 @@ _0205193C:
 	str r0, [r5, #0x18]
 	bl MIi_CpuClear32
 	add r0, r6, #0
-	bl SaveArray_Party_alloc
+	bl SaveArray_Party_Alloc
 	str r0, [r5, #4]
 	add r0, r6, #0
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	add r1, r5, #0
 	add r1, #0xf8
 	str r0, [r1]
 	add r0, r6, #0
-	bl Chatot_new
+	bl Chatot_New
 	mov r1, #0x46
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -118,12 +118,12 @@ _0205193C:
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	add r0, r6, #0
-	bl Pokedex_new
+	bl Pokedex_New
 	mov r1, #0x11
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	add r0, r6, #0
-	bl Options_new
+	bl Options_New
 	mov r1, #0x13
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -303,14 +303,14 @@ sub_02051AAC: ; 0x02051AAC
 	add r2, r7, #0
 	bl ReadMsgDataIntoString
 	add r0, r7, #0
-	bl String_c_str
+	bl String_cstr
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xf8
 	ldr r0, [r0]
-	bl Save_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_Set
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x18]
 	bl DestroyMsgData
 	ldr r0, [sp, #0x10]
@@ -329,7 +329,7 @@ sub_02051AAC: ; 0x02051AAC
 	lsl r1, r1, #4
 	ldr r0, [sp, #0x14]
 	ldr r1, [r4, r1]
-	bl Options_copy
+	bl Options_Copy
 	add r0, r5, #0
 	bl Field_GetTimeOfDay
 	mov r1, #0x57
@@ -391,7 +391,7 @@ sub_02051AAC: ; 0x02051AAC
 	add r1, #0xa4
 	str r0, [r4, r1]
 	ldr r0, [r5, #0xc]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	mov r1, #0x51
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -524,7 +524,7 @@ _02051CD4:
 	add r1, r5, r1
 	ldr r1, [r1, #4]
 	add r0, r6, #0
-	bl Party_copy
+	bl Party_Copy
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end sub_02051CC4
@@ -544,7 +544,7 @@ _02051CF4:
 	add r1, #0xf8
 	ldr r1, [r1]
 	add r0, r6, #0
-	bl PlayerProfile_copy
+	bl PlayerProfile_Copy
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_02051CE4
 
@@ -554,11 +554,11 @@ sub_02051D04: ; 0x02051D04
 	add r2, r0, r2
 	mov r0, #0x46
 	lsl r0, r0, #2
-	ldr r3, _02051D14 ; =Chatot_copy
+	ldr r3, _02051D14 ; =Chatot_Copy
 	ldr r0, [r2, r0]
 	bx r3
 	nop
-_02051D14: .word Chatot_copy
+_02051D14: .word Chatot_Copy
 	thumb_func_end sub_02051D04
 
 	thumb_func_start sub_02051D18
@@ -573,22 +573,22 @@ sub_02051D18: ; 0x02051D18
 	bl Save_PlayerData_GetProfileAddr
 	str r0, [sp, #0x1c]
 	add r0, r4, #0
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	str r0, [sp, #0x18]
 	add r0, r4, #0
 	bl SaveGetBag
 	str r0, [sp, #0x14]
 	add r0, r4, #0
-	bl Save_Pokedex_get
+	bl Save_Pokedex_Get
 	str r0, [sp, #0x10]
 	add r0, r4, #0
-	bl Save_Chatot_get
+	bl Save_Chatot_Get
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	bl Save_PlayerData_GetOptionsAddr
 	str r0, [sp, #8]
 	add r0, r4, #0
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	str r0, [sp, #4]
 	cmp r6, #0
 	beq _02051DB6
@@ -641,7 +641,7 @@ _02051DB6:
 	add r0, r1, #4
 	str r2, [r5, r0]
 	add r0, r4, #0
-	bl Save_SysInfo_RTC_get
+	bl Save_SysInfo_RTC_Get
 	ldr r0, [r0, #0x14]
 	bl GF_RTC_GetTimeOfDayByHour
 	mov r1, #0x57
@@ -683,12 +683,12 @@ _02051E14:
 	lsl r1, r1, #4
 	ldr r0, [sp, #0x10]
 	ldr r1, [r5, r1]
-	bl Pokedex_copy
+	bl Pokedex_Copy
 	mov r1, #0x13
 	lsl r1, r1, #4
 	ldr r0, [sp, #8]
 	ldr r1, [r5, r1]
-	bl Options_copy
+	bl Options_Copy
 	ldr r1, [sp, #0xc]
 	add r0, r5, #0
 	mov r2, #0
@@ -714,7 +714,7 @@ _02051E14:
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	bl CheckMetBill
 	mov r1, #0x5a
 	lsl r1, r1, #2
@@ -728,7 +728,7 @@ _02051E14:
 	cmp r0, r1
 	bhs _02051EA8
 	add r0, r4, #0
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	bl ScriptState_MomsSavingsFlagCheck
 	mov r1, #0x5b
 	lsl r1, r1, #2
@@ -758,12 +758,12 @@ _02051EB0:
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	mov r1, #0x51
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl Save_PalPad_get
+	bl Save_PalPad_Get
 	mov r1, #0x52
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -815,7 +815,7 @@ sub_02051F2C: ; 0x02051F2C
 	add r4, r0, #0
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	str r0, [sp, #0x14]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
@@ -823,11 +823,11 @@ sub_02051F2C: ; 0x02051F2C
 	str r0, [sp, #0x10]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl Save_Pokedex_get
+	bl Save_Pokedex_Get
 	str r0, [sp, #0xc]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl Save_Chatot_get
+	bl Save_Chatot_Get
 	str r0, [sp, #8]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
@@ -906,12 +906,12 @@ _02052004:
 	lsl r1, r1, #4
 	ldr r0, [sp, #0xc]
 	ldr r1, [r5, r1]
-	bl Pokedex_copy
+	bl Pokedex_Copy
 	mov r1, #0x13
 	lsl r1, r1, #4
 	ldr r0, [sp, #4]
 	ldr r1, [r5, r1]
-	bl Options_copy
+	bl Options_Copy
 	ldr r1, [sp, #8]
 	add r0, r5, #0
 	mov r2, #0
@@ -946,13 +946,13 @@ _02052004:
 	str r0, [r5, r1]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	mov r1, #0x51
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl Save_PalPad_get
+	bl Save_PalPad_Get
 	mov r1, #0x52
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -990,11 +990,11 @@ sub_020520B0: ; 0x020520B0
 	str r0, [sp, #0x1c]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl Save_Pokedex_get
+	bl Save_Pokedex_Get
 	str r0, [sp, #0x18]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl Save_Chatot_get
+	bl Save_Chatot_Get
 	str r0, [sp, #0x14]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
@@ -1134,12 +1134,12 @@ _020521F6:
 	lsl r1, r1, #4
 	ldr r0, [sp, #0x18]
 	ldr r1, [r5, r1]
-	bl Pokedex_copy
+	bl Pokedex_Copy
 	mov r1, #0x13
 	lsl r1, r1, #4
 	ldr r0, [sp, #0x10]
 	ldr r1, [r5, r1]
-	bl Options_copy
+	bl Options_Copy
 	ldr r1, [sp, #0x14]
 	add r0, r5, #0
 	mov r2, #0
@@ -1174,7 +1174,7 @@ _020521F6:
 	str r0, [r5, r1]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	mov r1, #0x51
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -1185,7 +1185,7 @@ _020521F6:
 	str r0, [r5, r1]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl Save_PalPad_get
+	bl Save_PalPad_Get
 	mov r1, #0x52
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -1244,7 +1244,7 @@ sub_020522F0: ; 0x020522F0
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	add r6, r2, #0
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1261,7 +1261,7 @@ sub_0205230C: ; 0x0205230C
 	ldr r0, [r6, #0xc]
 	add r5, r1, #0
 	str r2, [sp]
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	add r4, r0, #0
 	ldr r0, [r6, #0xc]
 	bl SaveData_GetMomsSavingsAddr
@@ -1332,13 +1332,13 @@ sub_0205239C: ; 0x0205239C
 	bl Save_PlayerData_GetProfileAddr
 	add r6, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	add r7, r0, #0
 	ldr r0, [r4, #0xc]
 	bl SaveGetBag
 	str r0, [sp]
 	ldr r0, [r4, #0xc]
-	bl Save_Pokedex_get
+	bl Save_Pokedex_Get
 	add r2, r5, #0
 	add r2, #0xf8
 	str r0, [sp, #4]
@@ -1350,10 +1350,10 @@ sub_0205239C: ; 0x0205239C
 	add r0, #0xf8
 	ldr r0, [r0]
 	add r1, r6, #0
-	bl PlayerProfile_copy
+	bl PlayerProfile_Copy
 	ldr r0, [r5, #4]
 	add r1, r7, #0
-	bl Party_copy
+	bl Party_Copy
 	mov r0, #0x42
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -1363,16 +1363,16 @@ sub_0205239C: ; 0x0205239C
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	ldr r1, [sp, #4]
-	bl Pokedex_copy
+	bl Pokedex_Copy
 	ldr r0, [r4, #0xc]
 	mov r6, #0
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	add r7, r0, #0
 	bl ScriptState_CheckSafariSysFlag
 	cmp r0, #0
 	beq _0205241E
 	ldr r0, [r4, #0xc]
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	bl FlyPoints_GetSafariBallsCounter
 	add r6, r0, #0
 	b _02052434
@@ -1382,7 +1382,7 @@ _0205241E:
 	cmp r0, #0
 	beq _02052434
 	add r0, r4, #0
-	bl FieldSys_BugContest_get
+	bl FieldSys_BugContest_Get
 	bl BugContest_GetSportBallsAddr
 	add r6, r0, #0
 _02052434:
@@ -1405,16 +1405,16 @@ sub_02052444: ; 0x02052444
 	ldr r0, [r5, #0xc]
 	bl Save_PlayerData_GetProfileAddr
 	ldr r0, [r5, #0xc]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	ldr r0, [r5, #0xc]
 	bl SaveGetBag
 	ldr r0, [r5, #0xc]
-	bl Save_Pokedex_get
+	bl Save_Pokedex_Get
 	add r1, r0, #0
 	mov r0, #0x11
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl Pokedex_copy
+	bl Pokedex_Copy
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02052444
 
@@ -1500,7 +1500,7 @@ sub_02052504: ; 0x02052504
 	add r4, r1, #0
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	bl SaveFlyPoints_GetPlayerSub
 	add r6, r0, #0
 	ldr r0, [r4, #0x20]

@@ -3,8 +3,8 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
-.public MessageFormat_new
-.public MessageFormat_delete
+.public MessageFormat_New
+.public MessageFormat_Delete
 .public BufferPlayersName
 .public StringExpandPlaceholders
 .public LoadUserFrameGfx1
@@ -15,10 +15,10 @@
 .public RemoveWindow
 .public TextPrinterCheckActive
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Save_PlayerData_GetOptionsAddr
-.public PlayerProfile_new
-.public Save_Profile_PlayerName_set
+.public PlayerProfile_New
+.public Save_Profile_PlayerName_Set
 .public Options_GetFrame
 .public sub_0202C23C
 .public sub_0202C254

@@ -7,9 +7,9 @@
 .public PlayBGM
 .public sub_0200602C
 .public PlaySE
-.public OverlayManager_new
-.public OverlayManager_delete
-.public OverlayManager_run
+.public OverlayManager_New
+.public OverlayManager_Delete
+.public OverlayManager_Run
 .public GfGfxLoader_LoadFromNarc
 .public sub_020085EC
 .public sub_0200878C
@@ -66,7 +66,7 @@
 .public sub_02024AA8
 .public System_GetTouchNew
 .public GF_AssertFail
-.public String_dtor
+.public String_Delete
 .public CalcMonStats
 .public GetMonData
 .public SetMonData

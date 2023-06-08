@@ -27,7 +27,7 @@
 
 #define ScriptReadByte(ctx) *(ctx->script_ptr++)
 
-typedef struct SCRIPTCONTEXT SCRIPTCONTEXT;
+typedef struct ScriptContext ScriptContext;
 
 #define Unk80_10_C_MAGIC         (222271)
 
@@ -60,7 +60,7 @@ typedef struct ScriptEnvironment {
     LocalMapObject *lastInteracted;
     u32 cameraTarget;
     LocalMapObject *unk_34;
-    SCRIPTCONTEXT *scriptContexts[3];
+    ScriptContext *scriptContexts[3];
     MessageFormat *msgfmt;
     STRING *stringBuffer0;
     STRING *stringBuffer1;
@@ -154,9 +154,9 @@ struct UnkStruct_020FC5CC {
 struct UnkStruct_02059E1C;
 struct UnkStruct_0205AC88;
 
-typedef BOOL (*ScrCmdFunc)(SCRIPTCONTEXT *ctx);
+typedef BOOL (*ScrCmdFunc)(ScriptContext *ctx);
 
-struct SCRIPTCONTEXT {
+struct ScriptContext {
     u8 stackDepth;
     u8 mode;
     u8 comparisonResult;
@@ -173,19 +173,19 @@ struct SCRIPTCONTEXT {
     FieldSystem *fsys;
 };
 
-void InitScriptContext(SCRIPTCONTEXT *ctx, const ScrCmdFunc *cmd_table, u32 cmd_count);
-BOOL SetupBytecodeScript(SCRIPTCONTEXT *ctx, const u8 *ptr);
-void SetupNativeScript(SCRIPTCONTEXT *ctx, ScrCmdFunc ptr);
-BOOL ScrNative_WaitApplication_DestroyTaskData(SCRIPTCONTEXT *ctx);
-void StopScript(SCRIPTCONTEXT *ctx);
-void sub_0203FD68(SCRIPTCONTEXT *ctx, TaskManager *unk);
-BOOL RunScriptCommand(SCRIPTCONTEXT *ctx);
-BOOL ScriptPush(SCRIPTCONTEXT *ctx, const u8 *ptr);
-const u8 *ScriptPop(SCRIPTCONTEXT *ctx);
-void ScriptJump(SCRIPTCONTEXT *ctx, const u8 *ptr);
-void ScriptCall(SCRIPTCONTEXT *ctx, const u8 *ptr);
-void ScriptReturn(SCRIPTCONTEXT *ctx);
-u16 ScriptReadHalfword(SCRIPTCONTEXT *ctx);
-u32 ScriptReadWord(SCRIPTCONTEXT *ctx);
+void InitScriptContext(ScriptContext *ctx, const ScrCmdFunc *cmd_table, u32 cmd_count);
+BOOL SetupBytecodeScript(ScriptContext *ctx, const u8 *ptr);
+void SetupNativeScript(ScriptContext *ctx, ScrCmdFunc ptr);
+BOOL ScrNative_WaitApplication_DestroyTaskData(ScriptContext *ctx);
+void StopScript(ScriptContext *ctx);
+void sub_0203FD68(ScriptContext *ctx, TaskManager *unk);
+BOOL RunScriptCommand(ScriptContext *ctx);
+BOOL ScriptPush(ScriptContext *ctx, const u8 *ptr);
+const u8 *ScriptPop(ScriptContext *ctx);
+void ScriptJump(ScriptContext *ctx, const u8 *ptr);
+void ScriptCall(ScriptContext *ctx, const u8 *ptr);
+void ScriptReturn(ScriptContext *ctx);
+u16 ScriptReadHalfword(ScriptContext *ctx);
+u32 ScriptReadWord(ScriptContext *ctx);
 
 #endif

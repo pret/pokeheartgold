@@ -9,7 +9,7 @@
 #include "update_dex_received.h"
 #include "unk_02092BE8.h"
 
-BOOL ScrCmd_MomGiftCheck(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_MomGiftCheck(ScriptContext *ctx) {
     u16 sp;
     u16 *retPtr = ScriptGetVarPointer(ctx);
     MomsSavings *momsSavings = SaveData_GetMomsSavingsAddr(ctx->fsys->savedata);
@@ -21,8 +21,8 @@ BOOL ScrCmd_MomGiftCheck(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_508(SCRIPTCONTEXT *ctx) {
-    SCRIPT_STATE *script = SaveArray_Flags_get(ctx->fsys->savedata);
+BOOL ScrCmd_508(ScriptContext *ctx) {
+    ScriptState *script = SaveArray_Flags_Get(ctx->fsys->savedata);
     u16 var0 = ScriptGetVar(ctx);
     if (var0 == 2) {
         ScriptState_SetPalParkSysFlag(script);
@@ -39,7 +39,7 @@ BOOL ScrCmd_508(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_509(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_509(ScriptContext *ctx) {
     struct UnkStruct_0202EB30 *unkStruct = sub_020270F8(ctx->fsys->savedata);
     Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
     u16 *retPtr = ScriptGetVarPointer(ctx);
@@ -52,12 +52,12 @@ BOOL ScrCmd_509(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_510(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_510(ScriptContext *ctx) {
     struct UnkStruct_0202EB30 *unkStruct = sub_020270F8(ctx->fsys->savedata);
     PC_STORAGE *storage = GetStoragePCPointer(ctx->fsys->savedata);
     Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
     PLAYERPROFILE *profile = Save_PlayerData_GetProfileAddr(ctx->fsys->savedata);
-    POKEDEX *pokedex = Save_Pokedex_get(ctx->fsys->savedata);
+    POKEDEX *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
     int i;
 
     for (i = 0; i < PARTY_SIZE; i++) {
@@ -73,7 +73,7 @@ BOOL ScrCmd_510(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_511(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_511(ScriptContext *ctx) {
     u16 var0 = ScriptGetVar(ctx);
     u16 *retPtr = ScriptGetVarPointer(ctx);
 

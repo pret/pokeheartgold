@@ -478,7 +478,7 @@ ov95_021E5CAC: ; 0x021E5CAC
 	bl NewMsgDataFromNarc
 	add r7, r0, #0
 	mov r0, #0x46
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r5, r0, #0
 	add r0, r7, #0
 	add r1, r4, #0
@@ -510,11 +510,11 @@ ov95_021E5CAC: ; 0x021E5CAC
 	add r0, r7, #0
 	bl DestroyMsgData
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x14]
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r6, #0
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2626,7 +2626,7 @@ ov95_021E6D70: ; 0x021E6D70
 	str r0, [r4, #0x3c]
 	mov r0, #0xb4
 	mov r1, #0x46
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #0x40]
 	mov r0, #0x46
 	bl BgConfig_Alloc
@@ -2823,7 +2823,7 @@ ov95_021E6F0C: ; 0x021E6F0C
 	ldr r0, [r4, #0x58]
 	bl sub_02016F2C
 	ldr r0, [r4, #0x40]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #4
 	bl ov95_021E6228
 	add r0, r5, #0
@@ -2916,7 +2916,7 @@ _021E7042:
 	str r5, [r4, #0xc]
 	str r6, [r4, #4]
 	str r7, [r4, #8]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x14]
 	ldr r1, [r4]
 	mov r0, #4
@@ -2942,7 +2942,7 @@ _021E7082:
 	mov r0, #4
 	bl FontID_Release
 	ldr r0, [r4, #0x14]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0xc]
 	mov r1, #4
 	bl FreeBgTilemapBuffer
@@ -2981,7 +2981,7 @@ _021E70DA:
 _021E70E2:
 	ldr r1, [r5]
 	mov r0, #0xef
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -3107,7 +3107,7 @@ _021E70E2:
 	mov r1, #1
 	bl GX_EngineAToggleLayers
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov95_021E70BC
@@ -3297,7 +3297,7 @@ ov95_021E7328: ; 0x021E7328
 	add r0, r7, #0
 	bl DestroyMsgData
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

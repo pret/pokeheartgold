@@ -333,7 +333,7 @@ _0223829A:
 	mov r1, #1
 	lsl r1, r1, #8
 	ldr r1, [r4, r1]
-	bl PlayerProfile_copy
+	bl PlayerProfile_Copy
 	ldrb r1, [r7, #0x11]
 	add r0, sp, #0x20
 	mov r2, #0xb
@@ -490,7 +490,7 @@ ov80_022383C0: ; 0x022383C0
 	sub sp, #8
 	add r5, r0, #0
 	ldr r0, [r5, #0x74]
-	bl SaveArray_Party_init
+	bl SaveArray_Party_Init
 	ldrb r0, [r5, #0x10]
 	mov r1, #1
 	bl BattleArcade_GetOpponentMonCount

@@ -15,8 +15,8 @@
 .public HandleLoadOverlay
 .public ReadWholeNarcMemberByIdPair
 .public AllocAtEndAndReadWholeNarcMemberByIdPair
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public NARC_AllocAndReadWholeMember
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_GXLoadPal
@@ -45,8 +45,8 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public NewString_ReadMsgData
-.public MessageFormat_new
-.public MessageFormat_delete
+.public MessageFormat_New
+.public MessageFormat_Delete
 .public BufferPlayersName
 .public BufferBoxMonSpeciesName
 .public BufferBoxMonNickname
@@ -148,8 +148,8 @@
 .public sub_02024ADC
 .public GF_AssertFail
 .public String_New
-.public String_dtor
-.public Save_SysInfo_RTC_get
+.public String_Delete
+.public Save_SysInfo_RTC_Get
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_GetTrainerID
@@ -157,8 +157,8 @@
 .public PlayerProfile_GetTrainerGender
 .public Pokedex_GetSeenFormeByIdx_Unown
 .public Pokedex_GetSeenFormeNum_Unown
-.public Save_Pokedex_get
-.public Save_Misc_get
+.public Save_Pokedex_Get
+.public Save_Misc_Get
 .public sub_0202AA44
 .public sub_0202AA9C
 .public sub_0202AAD4
@@ -166,13 +166,13 @@
 .public sub_0202BA2C
 .public sub_0202BA5C
 .public sub_0202BB08
-.public Save_DressupData_get
+.public Save_DressupData_Get
 .public Roamers_GetRand
-.public Save_Roamers_get
+.public Save_Roamers_Get
 .public RoamerSave_OutbreakActive
 .public Roamer_GetLocation
 .public GetRoamerIsActiveByIndex
-.public RoamerMon_init
+.public RoamerMon_Init
 .public Roamers_GetRoamMonStats
 .public GetRoamerData
 .public SetRoamerData
@@ -183,7 +183,7 @@
 .public GSPlayerMisc_IsGearNumberRegistered
 .public GSPlayerMisc_AllocAndCopyPhonebook
 .public sub_0202F08C
-.public Save_SafariZone_get
+.public Save_SafariZone_Get
 .public sub_0202F620
 .public SafariZone_GetAreaSet
 .public sub_0202F720
@@ -198,7 +198,7 @@
 .public FlyPoints_GetWeatherType
 .public FlyPoints_GetDeathSpawn
 .public FlyPoints_GetSafariBallsCounter
-.public Save_FlyPoints_get
+.public Save_FlyPoints_Get
 .public GetFlyWarpData
 .public GetSpecialSpawnWarpData
 .public FieldSys_GetSaveDataPtr
@@ -206,7 +206,7 @@
 .public QueueScript
 .public FlagGet
 .public HiddenItemScriptNoToFlagId
-.public SaveArray_Flags_get
+.public SaveArray_Flags_Get
 .public CheckFlagInArray
 .public TaskManager_Call
 .public TaskManager_GetSys
@@ -312,7 +312,7 @@
 .public FsysUnkSub108_AddMonMood
 .public FsysUnkSub108_SetMonMood
 .public FsysUnkSub108_GetMonMood
-.public FieldSys_BugContest_get
+.public FieldSys_BugContest_Get
 .public BugContest_GetSportBallsAddr
 .public ZeroMonData
 .public AllocMonZeroed
@@ -335,7 +335,7 @@
 .public AddMonToParty
 .public GetPartyMonByIndex
 .public Party_GetUnkSubSlot
-.public SaveArray_PlayerParty_get
+.public SaveArray_PlayerParty_Get
 .public GetItemAttr
 .public sub_02092DF4
 .public GearPhone_ToggleRinging

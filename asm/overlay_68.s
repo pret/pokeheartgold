@@ -209,7 +209,7 @@ ov68_021E5A58: ; 0x021E5A58
 	str r0, [r4, #4]
 	mov r0, #0x6e
 	mov r1, #0x42
-	bl NARC_ctor
+	bl NARC_New
 	add r5, r0, #0
 	bl ov68_021E5BA0
 	ldr r0, [r4, #4]
@@ -241,7 +241,7 @@ ov68_021E5A58: ; 0x021E5A58
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
 	add r0, r5, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	pop {r3, r4, r5, pc}
 	nop
 _021E5B08: .word 0xFFFFE0FF
@@ -702,7 +702,7 @@ ov68_021E5EBC: ; 0x021E5EBC
 	add r1, #0xf8
 	str r0, [r1]
 	mov r0, #0x42
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r1, r4, #0
 	add r1, #0xfc
 	str r0, [r1]
@@ -744,19 +744,19 @@ ov68_021E5F18: ; 0x021E5F18
 	add r0, r4, #0
 	add r0, #0xfc
 	ldr r0, [r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #1
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x41
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x42
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov68_021E5F18
@@ -1262,7 +1262,7 @@ ov68_021E62D4: ; 0x021E62D4
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1641,7 +1641,7 @@ _021E65AE:
 	ldr r0, [sp, #0x1c]
 	bl DestroyMsgData
 	ldr r0, [sp, #0x20]
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1875,7 +1875,7 @@ ov68_021E6820: ; 0x021E6820
 	strb r0, [r5, r1]
 	ldrb r0, [r5, r1]
 	mov r1, #0x42
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	mov r1, #0x11
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -1949,11 +1949,11 @@ _021E68C0: .word 0x000001BB
 ov68_021E68C4: ; 0x021E68C4
 	mov r1, #0x11
 	lsl r1, r1, #4
-	ldr r3, _021E68D0 ; =ListMenuItems_dtor
+	ldr r3, _021E68D0 ; =ListMenuItems_Delete
 	ldr r0, [r0, r1]
 	bx r3
 	nop
-_021E68D0: .word ListMenuItems_dtor
+_021E68D0: .word ListMenuItems_Delete
 	thumb_func_end ov68_021E68C4
 
 	thumb_func_start ov68_021E68D4
@@ -2311,7 +2311,7 @@ _021E6BB0:
 	add r2, r5, #0
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E6BE8: .word ov68_021E7DA4
@@ -3537,7 +3537,7 @@ ov68_021E74D8: ; 0x021E74D8
 	ldr r0, _021E7564 ; =_02103A1C
 	add r1, r4, r1
 	mov r2, #0x42
-	bl OverlayManager_new
+	bl OverlayManager_New
 	mov r1, #0x6b
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -3556,13 +3556,13 @@ ov68_021E7568: ; 0x021E7568
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	beq _021E75B6
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	add r0, r4, #0
 	bl ov68_021E5A58
 	ldr r1, [r4]

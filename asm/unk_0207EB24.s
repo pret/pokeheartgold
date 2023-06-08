@@ -238,7 +238,7 @@ sub_0207ECE0: ; 0x0207ECE0
 	str r0, [sp, #8]
 	mov r0, #0x14
 	mov r1, #0xc
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x10]
 	mov r0, #0x30
 	add r4, r6, #0
@@ -313,7 +313,7 @@ _0207ED8E:
 	add r1, r2, #1
 	bl sub_0200DD08
 	ldr r0, [sp, #0x10]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

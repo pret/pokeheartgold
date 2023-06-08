@@ -34,15 +34,15 @@ NPC_TRADE_WORK *NPCTrade_AllocWork(HeapID heapId, u32 tradeno) {
     ret->heapId = heapId;
     ret->tradeno = tradeno;
     ret->mon = AllocMonZeroed(heapId);
-    ret->profile = PlayerProfile_new(heapId);
-    PlayerProfile_init(ret->profile);
+    ret->profile = PlayerProfile_New(heapId);
+    PlayerProfile_Init(ret->profile);
     {
         STRING *name;
         name = _GetNpcTradeName(heapId, tradeno + TRADE_MAX);
         CopyStringToU16Array(name, strbuf, 128);
-        String_dtor(name);
+        String_Delete(name);
     }
-    Save_Profile_PlayerName_set(ret->profile, strbuf);
+    Save_Profile_PlayerName_Set(ret->profile, strbuf);
     PlayerProfile_SetTrainerGender(ret->profile, ret->trade_dat->gender);
     return ret;
 }
@@ -67,7 +67,7 @@ void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fsys, u8 tradeno, u8 level, u16 ma
     trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeno, FALSE, HEAP_ID_FIELD, TRUE);
     _CreateTradeMon(mon, trade_dat, level, tradeno, mapno, 7, HEAP_ID_FIELD);
     UpdatePokedexWithReceivedSpecies(fsys->savedata, mon);
-    party = SaveArray_PlayerParty_get(fsys->savedata);
+    party = SaveArray_PlayerParty_Get(fsys->savedata);
     AddMonToParty(party, mon);
     if (tradeno == 7) {
         kenya = GetPartyMonByIndex(party, GetPartyCount(party) - 1);
@@ -75,7 +75,7 @@ void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fsys, u8 tradeno, u8 level, u16 ma
         mailno = ItemToMailId(trade_dat->heldItem);
         mail = CreateKenyaMail(mon, mailno, trade_dat->gender, name, trade_dat->otId);
         SetMonData(kenya, MON_DATA_MAIL_STRUCT, mail);
-        String_dtor(name);
+        String_Delete(name);
         FreeToHeap(mail);
     }
     FreeToHeap(trade_dat);
@@ -95,7 +95,7 @@ MAIL *NPCTrade_MakeKenyaMail(void) {
     name = _GetNpcTradeName(HEAP_ID_FIELD, 7 + TRADE_MAX);
     mailno = ItemToMailId(trade_dat->heldItem);
     mail = CreateKenyaMail(mon, mailno, trade_dat->gender, name, trade_dat->otId);
-    String_dtor(name);
+    String_Delete(name);
     FreeToHeap(trade_dat);
     FreeToHeap(mon);
     return mail;
@@ -108,7 +108,7 @@ int NPCTrade_CanGiveUpLoanMon(FieldSystem *fsys, u8 tradeno, u8 idx) {
     u16 heldItem;
     int i, n, party_count;
 
-    party = SaveArray_PlayerParty_get(fsys->savedata);
+    party = SaveArray_PlayerParty_Get(fsys->savedata);
     mon = GetPartyMonByIndex(party, idx);
     if (!MonIsInGameTradePoke(mon, tradeno)) {
         return 1;
@@ -152,7 +152,7 @@ int NPCTradeWork_GetUnusedFlag(NPC_TRADE_WORK *work) {
 }
 
 void NPCTrade_ReceiveMonToSlot(FieldSystem *fsys, NPC_TRADE_WORK *work, int slot) {
-    Party_SafeCopyMonToSlot_ResetUnkSub(SaveArray_PlayerParty_get(fsys->savedata), slot, work->mon);
+    Party_SafeCopyMonToSlot_ResetUnkSub(SaveArray_PlayerParty_Get(fsys->savedata), slot, work->mon);
     UpdatePokedexWithReceivedSpecies(fsys->savedata, work->mon);
 }
 
@@ -160,7 +160,7 @@ void NPCTrade_CreateTradeAnim(FieldSystem *fsys, NPC_TRADE_WORK *work, int slot,
     Pokemon *my_poke;
     u32 time_of_day;
 
-    my_poke = GetPartyMonByIndex(SaveArray_PlayerParty_get(fsys->savedata), slot);
+    my_poke = GetPartyMonByIndex(SaveArray_PlayerParty_Get(fsys->savedata), slot);
     _CreateTradeMon(work->mon, work->trade_dat, GetMonData(my_poke, MON_DATA_LEVEL, NULL), work->tradeno, fsys->location->mapId, 1, work->heapId);
     CopyPokemonToPokemon(my_poke, my_mon_buf);
     CopyPokemonToPokemon(work->mon, trade_mon_buf);
@@ -200,7 +200,7 @@ static void _CreateTradeMon(Pokemon *mon, NPC_TRADE *trade_dat, u32 level, u32 t
     heapId_2 = (int)heapId;
     name = _GetNpcTradeName((HeapID)heapId_2, tradeno);
     SetMonData(mon, MON_DATA_NICKNAME_3, name);
-    String_dtor(name);
+    String_Delete(name);
 
     nickname_flag = TRUE;
     SetMonData(mon, MON_DATA_HAS_NICKNAME, &nickname_flag);
@@ -222,7 +222,7 @@ static void _CreateTradeMon(Pokemon *mon, NPC_TRADE *trade_dat, u32 level, u32 t
 
     name = _GetNpcTradeName((HeapID)heapId_2, TRADE_MAX + tradeno);
     SetMonData(mon, MON_DATA_OT_NAME_2, name);
-    String_dtor(name);
+    String_Delete(name);
 
     SetMonData(mon, MON_DATA_MET_GENDER, &trade_dat->gender);
     SetMonData(mon, MON_DATA_GAME_LANGUAGE, &trade_dat->language);

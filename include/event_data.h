@@ -5,18 +5,19 @@
 #include "constants/flags.h"
 #include "constants/vars.h"
 
+//TODO: Investigate this struct a bit more and see if we can provide a more descriptive name
 typedef struct ScriptState {
     u16 vars[NUM_VARS];
     u8 flags[NUM_FLAGS / 8];
-} SCRIPT_STATE;
+} ScriptState;
 
 u32 SaveArray_Flags_sizeof(void);
-void SaveArray_Flags_init(SCRIPT_STATE *scriptState);
-SCRIPT_STATE *SaveArray_Flags_get(SAVEDATA *saveData);
-BOOL CheckFlagInArray(SCRIPT_STATE *scriptState, u16 flagno);
-void SetFlagInArray(SCRIPT_STATE *scriptState, u16 flagno);
-void ClearFlagInArray(SCRIPT_STATE *scriptState, u16 flagno);
-u8 *GetFlagAddr(SCRIPT_STATE *scriptState, u16 flagno);
-u16 *GetVarAddr(SCRIPT_STATE *scriptState, u16 varno);
+void SaveArray_Flags_Init(ScriptState *scriptState);
+ScriptState *SaveArray_Flags_Get(SAVEDATA *saveData);
+BOOL CheckFlagInArray(ScriptState *scriptState, u16 flagno);
+void SetFlagInArray(ScriptState *scriptState, u16 flagno);
+void ClearFlagInArray(ScriptState *scriptState, u16 flagno);
+u8 *GetFlagAddr(ScriptState *scriptState, u16 flagno);
+u16 *GetVarAddr(ScriptState *scriptState, u16 varno);
 
 #endif //POKEHEARTGOLD_EVENT_DATA_H_

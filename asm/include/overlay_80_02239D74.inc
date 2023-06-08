@@ -2,8 +2,8 @@
 #pragma once
 .public PaletteData_LoadPalette
 .public PaletteData_GetUnfadedBuf
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public GfGfxLoader_GetCharDataFromOpenNarc
 .public GfGfxLoader_GetScrnDataFromOpenNarc
 .public CreateSysTask

@@ -3780,7 +3780,7 @@ _021E927E:
 	add r1, #0xb
 	bl ReadMsgDataIntoString
 	ldr r0, [sp, #0x24]
-	bl StringCountLines
+	bl String_CountLines
 	str r0, [sp, #0x1c]
 	mov r0, #0x81
 	lsl r0, r0, #2
@@ -3800,7 +3800,7 @@ _021E92CA:
 	ldr r1, [sp, #0x24]
 	add r0, r4, #0
 	add r2, r6, #0
-	bl StringGetLineN
+	bl String_GetLineN
 	mov r0, #4
 	add r1, r4, #0
 	mov r2, #0
@@ -3867,9 +3867,9 @@ _021E9308:
 	cmp r0, #2
 	blt _021E927E
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x24]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x20]
 	bl DestroyMsgData
 	add sp, #0x60
@@ -4102,7 +4102,7 @@ ov102_021E94CC: ; 0x021E94CC
 	str r1, [r0]
 	mov r0, #0x4c
 	mov r1, #0x23
-	bl NARC_ctor
+	bl NARC_New
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ov102_021E978C
@@ -4178,7 +4178,7 @@ ov102_021E94CC: ; 0x021E94CC
 	bl GX_EngineBToggleLayers
 	bl GX_DispOn
 	add r0, r5, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #0
 	bl ov102_021E94A4
 	pop {r3, r4, r5, pc}
@@ -5978,7 +5978,7 @@ _021EA3D6:
 	ldr r0, [r4, #0x7c]
 	cmp r0, #0
 	beq _021EA3E0
-	bl String_dtor
+	bl String_Delete
 _021EA3E0:
 	add r0, r4, #0
 	add r0, #0xc
@@ -6989,7 +6989,7 @@ _021EABFC:
 	str r0, [sp, #0x10]
 	bl ov102_021EAC70
 	ldr r0, [sp, #0x20]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x1c]
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
@@ -7027,7 +7027,7 @@ ov102_021EAC44: ; 0x021EAC44
 	mov r1, #0x23
 	bl ov102_021E8FA8
 	str r0, [r4]
-	bl String_c_str
+	bl String_cstr
 	str r0, [r4, #4]
 	ldrh r1, [r0]
 	ldr r0, _021EAC6C ; =0x0000FFFE
@@ -7046,11 +7046,11 @@ _021EAC6C: .word 0x0000FFFE
 
 	thumb_func_start ov102_021EAC70
 ov102_021EAC70: ; 0x021EAC70
-	ldr r3, _021EAC78 ; =String_dtor
+	ldr r3, _021EAC78 ; =String_Delete
 	ldr r0, [r0]
 	bx r3
 	nop
-_021EAC78: .word String_dtor
+_021EAC78: .word String_Delete
 	thumb_func_end ov102_021EAC70
 
 	thumb_func_start ov102_021EAC7C
@@ -7336,7 +7336,7 @@ _021EAE68:
 	mov r0, #2
 	mov r1, #0x3c
 	mov r2, #0
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	add r5, r0, #0
 	mov r0, #0x4b
 	lsl r0, r0, #2
@@ -7369,9 +7369,9 @@ _021EAE68:
 	add r2, r6, #0
 	bl AddTextPrinterParameterized2
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	b _021EAF34
 _021EAECA:
 	ldr r0, [r4, #0x78]
@@ -7896,7 +7896,7 @@ _021EB2BA:
 	add r0, r4, #0
 	bl RemoveWindow
 	ldr r0, [r5, #0x18]
-	bl String_dtor
+	bl String_Delete
 	add r6, r6, #1
 	add r4, #0x10
 	add r5, r5, #4
@@ -8617,7 +8617,7 @@ _021EB7EC:
 	add r0, sp, #0x28
 	bl CopyWindowPixelsToVram_TextMode
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, sp, #0x28
 	bl RemoveWindow
 	add r4, r4, #1
@@ -8718,7 +8718,7 @@ _021EB91E:
 	add r0, sp, #0x20
 	bl PutWindowTilemap
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, sp, #0x20
 	bl RemoveWindow
 	ldr r0, [sp, #0x14]
@@ -9242,7 +9242,7 @@ _021EBCDE:
 	ldr r0, [r4, #0x3c]
 	cmp r0, #0
 	beq _021EBCE8
-	bl String_dtor
+	bl String_Delete
 _021EBCE8:
 	add r0, r4, #0
 	add r0, #0x20

@@ -59,7 +59,7 @@ FieldSys_TakePhoto: ; 0x0206A798
 _0206A7FE:
 	add r0, r5, #0
 	bl FieldSys_GetSaveDataPtr
-	bl Save_PhotoAlbum_get
+	bl Save_PhotoAlbum_Get
 	bl PhotoAlbum_GetIndexOfFirstEmptySlot
 	cmp r0, #0xff
 	beq _0206A858
@@ -135,7 +135,7 @@ sub_0206A860: ; 0x0206A860
 	add r0, #0x9a
 	strh r1, [r0]
 	ldr r0, [r5, #0xc]
-	bl Save_PhotoAlbum_get
+	bl Save_PhotoAlbum_Get
 	add r1, r4, #0
 	add r1, #0xb8
 	str r0, [r1]
@@ -1129,10 +1129,10 @@ sub_0206B014: ; 0x0206B014
 	bl Save_PlayerData_GetProfileAddr
 	add r6, r0, #0
 	add r0, r7, #0
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl Photo_init
+	bl Photo_Init
 	add r0, sp, #0x2c
 	bl GF_RTC_CopyDate
 	ldr r0, [sp, #0x34]
@@ -1899,7 +1899,7 @@ _0206B652:
 	beq _0206B6EA
 	add r0, r5, #0
 	bl FieldSys_GetSaveDataPtr
-	bl Save_PhotoAlbum_get
+	bl Save_PhotoAlbum_Get
 	add r5, r0, #0
 	bl PhotoAlbum_GetIndexOfFirstEmptySlot
 	add r6, r0, #0

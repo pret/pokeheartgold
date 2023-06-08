@@ -10,8 +10,8 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public sub_0200D034
 .public sub_0200D108
 .public sub_0200D998
@@ -38,7 +38,7 @@
 .public GX_SwapDisplay
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public sub_02026CAC
 .public sub_0203A880
 .public sub_0203A914

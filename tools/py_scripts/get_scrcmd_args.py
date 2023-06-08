@@ -88,7 +88,7 @@ def parse_args_asm(scrcmds, filename, syms):
 
 
 def parse_args_c(scrcmds, filename, syms):
-    pat = re.compile(rf'^BOOL (?P<symbol>{"|".join(syms)})\(SCRIPTCONTEXT\s*\*\s*ctx\) {{')
+    pat = re.compile(rf'^BOOL (?P<symbol>{"|".join(syms)})\(ScriptContext\s*\*\s*ctx\) {{')
     with open(filename) as fp:
         for line in fp:
             if (m := pat.match(line)) is not None:

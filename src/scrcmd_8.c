@@ -5,16 +5,16 @@
 #include "unk_0203E348.h"
 #include "math_util.h"
 
-BOOL ScrCmd_GetStaticEncounterOutcomeFlag(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_GetStaticEncounterOutcomeFlag(ScriptContext *ctx) {
     u32 *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_BATTLE_WIN_FLAG);
     u16 *variable = ScriptGetVarPointer(ctx);
     *variable = *winFlag;
     return TRUE;
 }
 
-BOOL ScrCmd_465(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_465(ScriptContext *ctx) {
     MessageFormat **msg = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
-    SAV_FRIEND_GRP *group = Save_FriendGroup_get(ctx->fsys->savedata);
+    SAV_FRIEND_GRP *group = Save_FriendGroup_Get(ctx->fsys->savedata);
     SAVEDATA *save = ctx->fsys->savedata;
 
     u16 var = ScriptReadHalfword(ctx);
@@ -63,7 +63,7 @@ BOOL ScrCmd_465(SCRIPTCONTEXT *ctx) {
         sub_0202C824(group, 0, PlayerProfile_GetTrainerGender(profile));
         sub_0202C848(group, 0, 2);
         sub_0202C7C0(group, 0, MTRandom());
-        String_dtor(str);
+        String_Delete(str);
         sub_0202C738(group, 0, 1);
         break;
     }

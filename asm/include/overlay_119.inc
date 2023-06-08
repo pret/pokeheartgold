@@ -11,7 +11,7 @@
 .public AllocWindows
 .public AddWindowParameterized
 .public RemoveWindow
-.public WindowArray_dtor
+.public WindowArray_Delete
 .public ScheduleWindowCopyToVram
 .public ClearWindowTilemapAndCopyToVram
 .public FillWindowPixelBuffer

@@ -1,8 +1,8 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public AllocAtEndAndReadFromNarcMemberByIdPair
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public NARC_ReadFromMember
 .public NARC_ReadFile
 .public CreateSysTask
@@ -18,7 +18,7 @@
 .public GF_AssertFail
 .public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetTrainerGender
-.public Save_SafariZone_get
+.public Save_SafariZone_Get
 .public sub_0202F620
 .public SafariZone_GetAreaSet
 .public SafariZone_GetLinkLeaderGender

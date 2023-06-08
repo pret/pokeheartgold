@@ -20,7 +20,7 @@ sub_02068FC8: ; 0x02068FC8
 	bl Save_PlayerData_GetProfileAddr
 	add r7, r0, #0
 	ldr r0, [sp, #0x20]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	add r4, r0, #0
 	ldr r2, _020691A0 ; =0x0000066C
 	add r0, r5, #0
@@ -53,11 +53,11 @@ sub_02068FC8: ; 0x02068FC8
 	bl PlayerProfile_GetMoney
 	str r0, [sp, #0x34]
 	ldr r0, [r6, #0xc]
-	bl Save_Pokedex_get
+	bl Save_Pokedex_Get
 	bl Pokedex_CountDexOwned
 	str r0, [sp, #0x38]
 	ldr r0, [r6, #0xc]
-	bl Save_Pokedex_get
+	bl Save_Pokedex_Get
 	bl Pokedex_IsEnabled
 	str r0, [sp, #0x3c]
 	add r0, r4, #0
@@ -87,7 +87,7 @@ sub_02068FC8: ; 0x02068FC8
 	add r2, sp, #0x78
 	bl FieldSys_GetGameClearTime
 	ldr r0, [r6, #0xc]
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	bl CheckGameClearFlag
 	add r1, sp, #0x78
 	str r1, [sp]
@@ -101,7 +101,7 @@ sub_02068FC8: ; 0x02068FC8
 	add r3, sp, #0x84
 	bl sub_02069308
 	ldr r0, [r6, #0xc]
-	bl Save_TrainerCard_get
+	bl Save_TrainerCard_Get
 	str r0, [sp, #0x44]
 	add r0, r4, #0
 	mov r1, #0x21
@@ -250,9 +250,9 @@ sub_020691E8: ; 0x020691E8
 	push {r3, r4, r5, r6, r7, lr}
 	bl FieldSys_GetSaveDataPtr
 	add r7, r0, #0
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	add r0, r7, #0
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	add r6, r0, #0
 	add r0, r7, #0
 	bl sub_0203107C
@@ -267,7 +267,7 @@ sub_020691E8: ; 0x020691E8
 	lsr r4, r0, #0x18
 _02069216:
 	add r0, r7, #0
-	bl Save_Pokedex_get
+	bl Save_Pokedex_Get
 	bl Pokedex_NationalDexIsComplete
 	cmp r0, #0
 	beq _0206922A
@@ -537,7 +537,7 @@ sub_0206940C: ; 0x0206940C
 	add r7, r0, #0
 	ldr r0, [r1, #0xc]
 	add r6, r2, #0
-	bl Save_TrainerCard_get
+	bl Save_TrainerCard_Get
 	bl TrainerCard_GetBadgeShininessArr
 	add r1, r6, #0
 	mov r2, #0

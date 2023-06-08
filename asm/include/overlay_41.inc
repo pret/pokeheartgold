@@ -15,8 +15,8 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_LoadScrnData
 .public GfGfxLoader_GXLoadPal
@@ -64,8 +64,8 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public NewString_ReadMsgData
-.public MessageFormat_new
-.public MessageFormat_delete
+.public MessageFormat_New
+.public MessageFormat_Delete
 .public BufferECWord
 .public StringExpandPlaceholders
 .public sub_0200E374
@@ -128,7 +128,7 @@
 .public AddWindowParameterized
 .public AddTextWindowTopLeftCorner
 .public RemoveWindow
-.public WindowArray_dtor
+.public WindowArray_Delete
 .public CopyWindowToVram
 .public ClearWindowTilemapAndCopyToVram
 .public FillWindowPixelBuffer
@@ -182,7 +182,7 @@
 .public sub_020255A0
 .public sub_020255C4
 .public String_New
-.public String_dtor
+.public String_Delete
 .public sub_02026C44
 .public sub_02026CAC
 .public sub_02026CC4

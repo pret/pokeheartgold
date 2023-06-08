@@ -344,7 +344,7 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         if (TextPrinterCheckActive(work->subPrinterId)) {
             break;
         }
-        String_dtor(work->strbuf);
+        String_Delete(work->strbuf);
         work->strbuf = NULL;
         *state = CHOOSE_STARTER_STATE_HANDLE_INPUT;
         break;
@@ -368,7 +368,7 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
                 STRING *baseTrans = NULL;
                 printMsgOnWinEx(work->winTop, work->heapId, FALSE, NARC_msg_msg_0190_bin, msg_0190_00004 + work->curSelection,
                               MakeTextColor(1, 2, 15), 0, &baseTrans);
-                String_dtor(baseTrans);
+                String_Delete(baseTrans);
             }
             PlayCry(sSpecies[work->curSelection], FALSE);
             printMsgOnBottom(work, msg_0190_00007);
@@ -422,7 +422,7 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         {
             STRING *sp10 = NULL;
             printMsgOnWinEx(work->winTop, work->heapId, FALSE, NARC_msg_msg_0190_bin, msg_0190_00004 + work->curSelection, MakeTextColor(1, 2, 15), 0, &sp10);
-            String_dtor(sp10);
+            String_Delete(sp10);
         }
         PlayCry(sSpecies[work->curSelection], 0);
         if (work->state != SELECT_STATE_INSPECT) {
@@ -1067,7 +1067,7 @@ static u8 printMsgOnWinEx(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msg
 static void printMsgOnBottom(struct ChooseStarterAppWork *work, int msgId) {
     STRING *string = NULL;
     printMsgOnWinEx(work->winBottom, work->heapId, FALSE, NARC_msg_msg_0190_bin, msgId, MakeTextColor(1, 2, 0), 0, &string);
-    String_dtor(string);
+    String_Delete(string);
 }
 
 static void freeWindow(WINDOW *window) {
@@ -1171,7 +1171,7 @@ static int getTappedBallId(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 radi
 }
 
 static void createMonSprites(struct ChooseStarterAppWork *work) {
-    NARC *narc = NARC_ctor(NARC_application_choose_starter_choose_starter_sub_res, work->heapId);
+    NARC *narc = NARC_New(NARC_application_choose_starter_choose_starter_sub_res, work->heapId);
     int i;
     struct StarterChooseMonSpriteData *spriteData = &work->monSpriteData;
 
@@ -1195,7 +1195,7 @@ static void createMonSprites(struct ChooseStarterAppWork *work) {
         createOneMonRender(spriteData, i, work->heapId);
     }
 
-    NARC_dtor(narc);
+    NARC_Delete(narc);
 }
 
 static void loadOneMonObj(struct _2DGfxResMan *charResMan, struct _2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx) {

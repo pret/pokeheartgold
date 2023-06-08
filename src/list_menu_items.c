@@ -3,7 +3,7 @@
 void ListMenuItems_DestroyMenuStrings(LISTMENUITEM *items);
 LISTMENUITEM *ListMenuItems_SeekEnd(LISTMENUITEM *items, HeapID *heapId_p);
 
-LISTMENUITEM *ListMenuItems_ctor(u32 n, HeapID heapId) {
+LISTMENUITEM *ListMenuItems_New(u32 n, HeapID heapId) {
     int i;
     LISTMENUITEM *ret = AllocFromHeap(heapId, (n + 1) * sizeof(LISTMENUITEM));
     if (ret != NULL) {
@@ -17,7 +17,7 @@ LISTMENUITEM *ListMenuItems_ctor(u32 n, HeapID heapId) {
     return ret;
 }
 
-void ListMenuItems_dtor(LISTMENUITEM *items) {
+void ListMenuItems_Delete(LISTMENUITEM *items) {
     ListMenuItems_DestroyMenuStrings(items);
     FreeToHeap(items);
 }
@@ -37,7 +37,7 @@ void ListMenuItems_AddItem(LISTMENUITEM *items, STRING *string, int value) {
 
     items = ListMenuItems_SeekEnd(items, &heapId);
     if (items != NULL) {
-        items->text = StringDup(string, heapId);
+        items->text = String_Dup(string, heapId);
         items->value = value;
     }
 }
@@ -63,7 +63,7 @@ void ListMenuItems_DestroyMenuStrings(LISTMENUITEM *items) {
         if (items[i].text == NULL) {
             break;
         }
-        String_dtor(items[i].text);
+        String_Delete(items[i].text);
         items[i].text = NULL;
     }
 }

@@ -6,8 +6,8 @@
 .public PlaySE
 .public sub_02007200
 .public sub_02007234
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public GfGfxLoader_GXLoadPalFromOpenNarc
@@ -28,8 +28,8 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public NewString_ReadMsgData
-.public MessageFormat_new
-.public MessageFormat_delete
+.public MessageFormat_New
+.public MessageFormat_Delete
 .public BufferPlayersName
 .public BufferIntegerAsString
 .public StringExpandPlaceholders
@@ -64,9 +64,9 @@
 .public sub_020249B0
 .public sub_02025224
 .public String_New
-.public String_dtor
-.public PlayerProfile_new
-.public Save_Profile_PlayerName_set
+.public String_Delete
+.public PlayerProfile_New
+.public Save_Profile_PlayerName_Set
 .public sub_0202C254
 .public sub_0202C6F4
 .public GXS_SetGraphicsMode

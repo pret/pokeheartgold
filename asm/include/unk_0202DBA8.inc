@@ -1,10 +1,10 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public GF_AssertFail
-.public Save_MysteryGift_get
+.public Save_MysteryGift_Get
 .public SaveSubstruct_UpdateCRC
 .public Save_MysteryGift_sizeof
-.public Save_MysteryGift_init
+.public Save_MysteryGift_Init
 .public SaveMysteryGift_CardGetByIdx
 .public sub_0202DC2C
 .public sub_0202DCAC

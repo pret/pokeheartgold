@@ -146,7 +146,7 @@ _021E881E:
 	blt _021E881E
 	mov r0, #0x6a
 	mov r1, #4
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x13
 	lsl r1, r1, #4
 	str r0, [r7, r1]
@@ -545,7 +545,7 @@ ov01_021E8AEC: ; 0x021E8AEC
 	mov r0, #0x13
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 _021E8B02:

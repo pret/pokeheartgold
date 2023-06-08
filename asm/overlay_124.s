@@ -4,8 +4,8 @@
 
 	.text
 
-	thumb_func_start FieldSystem_init
-FieldSystem_init: ; 0x02260C20
+	thumb_func_start FieldSystem_Init
+FieldSystem_Init: ; 0x02260C20
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r7, _02260CF8 ; =FS_OVERLAY_ID(OVY_123)
 	add r6, r0, #0
@@ -45,7 +45,7 @@ _02260C66:
 	mul r0, r1
 	add r4, r4, r0
 	ldr r0, [r5, #0xc]
-	bl Save_FlyPoints_get
+	bl Save_FlyPoints_Get
 	bl FlyPoints_GetPosition
 	str r0, [r5, #0x20]
 	bl MapMatrix_New
@@ -86,7 +86,7 @@ _02260CB8:
 	str r0, [r5, r1]
 	mov r0, #0xb
 	add r1, r5, #0
-	bl GearPhoneRingManager_new
+	bl GearPhoneRingManager_New
 	mov r1, #0x45
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -112,7 +112,7 @@ _02260D0C: .word ov124_02260D58
 _02260D10: .word 0x000003A1
 _02260D14: .word 0x00000989
 _02260D18: .word 0x00000FE9
-	thumb_func_end FieldSystem_init
+	thumb_func_end FieldSystem_Init
 
 	thumb_func_start ov124_02260D1C
 ov124_02260D1C: ; 0x02260D1C

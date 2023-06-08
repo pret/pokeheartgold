@@ -6,11 +6,11 @@
 
 	thumb_func_start sub_0202DB34
 sub_0202DB34: ; 0x0202DB34
-	ldr r3, _0202DB3C ; =SaveArray_get
+	ldr r3, _0202DB3C ; =SaveArray_Get
 	mov r1, #0x16
 	bx r3
 	nop
-_0202DB3C: .word SaveArray_get
+_0202DB3C: .word SaveArray_Get
 	thumb_func_end sub_0202DB34
 
 	thumb_func_start sub_0202DB40

@@ -1764,7 +1764,7 @@ _0225FE64:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	mov r0, #3
 	mov r1, #0x20
 	mov r2, #0
@@ -2695,7 +2695,7 @@ _0226061E:
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	mov r0, #3
 	mov r1, #0x20
 	mov r2, #0

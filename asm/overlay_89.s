@@ -128,7 +128,7 @@ ov89_02258800: ; 0x02258800
 	mov r1, #0x7d
 	bl FontID_Alloc
 	mov r0, #0x7d
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r5, #0x2c]
 	ldr r2, _02258AE0 ; =0x000002F2
 	mov r0, #0
@@ -142,13 +142,13 @@ ov89_02258800: ; 0x02258800
 	str r0, [r5, #0x10]
 	mov r0, #0xd2
 	mov r1, #0x7d
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x16
 	lsl r1, r1, #4
 	str r0, [r5, r1]
 	mov r0, #0x45
 	mov r1, #0x7d
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x59
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -814,7 +814,7 @@ ov89_02258F00: ; 0x02258F00
 	add r0, r4, #0
 	add r0, #0xc4
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #2
 	bl FontID_Release
 	ldr r0, [r4, #0x10]
@@ -822,7 +822,7 @@ ov89_02258F00: ; 0x02258F00
 	ldr r0, [r4, #0x30]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x2c]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r4, #0
 	bl ov89_02259D50
 	ldr r0, [r4, #8]
@@ -857,11 +857,11 @@ ov89_02258F00: ; 0x02258F00
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -1677,7 +1677,7 @@ _0225963E:
 	mov r1, #1
 	bl sub_020137C0
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x4c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -2644,7 +2644,7 @@ ov89_02259E50: ; 0x02259E50
 	mov r2, #0x48
 	bl MI_CpuFill8
 	add r0, r4, #0
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	str r0, [sp, #4]
 	bl GetPartyCount
 	add r7, r0, #0
@@ -8138,7 +8138,7 @@ ov89_0225C724: ; 0x0225C724
 	pop {r3, r4, r5, r6, r7, pc}
 _0225C768:
 	mov r0, #0x7d
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	add r6, r0, #0
 	add r0, r7, #0
 	add r1, r6, #0
@@ -8197,11 +8197,11 @@ _0225C7D8:
 	add r0, r4, r5
 	bl CopyWindowToVram
 	ldr r0, [sp, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x20]
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
 	bl FreeToHeap
 _0225C80A:

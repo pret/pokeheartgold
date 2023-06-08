@@ -612,7 +612,7 @@ _021F4B70:
 	mov r0, #0x41
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl Save_SafariZone_get
+	bl Save_SafariZone_Get
 	str r0, [sp, #0x14]
 	bl sub_0202F620
 	str r0, [sp, #0x18]
@@ -3473,7 +3473,7 @@ _021F6078:
 	str r1, [r0]
 	mov r0, #0x41
 	mov r1, #4
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #1
 	lsl r1, r1, #8
 	str r0, [r4, r1]
@@ -3708,7 +3708,7 @@ ov01_021F62B0: ; 0x021F62B0
 	mov r0, #1
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r4]
 	bl ov01_021FACB4
 	add r0, r4, #0

@@ -9,8 +9,8 @@
 
 	.text
 
-	arm_func_start WM_sp_init
-WM_sp_init: ; 0x06000000
+	arm_func_start WMSP_Init
+WMSP_Init: ; 0x06000000
 	stmdb sp!, {r3, r4, r5, lr}
 	sub sp, sp, #8
 	mov r4, r1
@@ -129,7 +129,7 @@ _060001BC: .word wmspRequestThread
 _060001C0: .word WMSP_RequestThread
 _060001C4: .word wmspW + 0x1128
 _060001C8: .word WmspPxiCallback
-	arm_func_end WM_sp_init
+	arm_func_end WMSP_Init
 
 	arm_func_start __VENEER_OS_InitMessageQueue
 __VENEER_OS_InitMessageQueue: ; 0x060001CC
@@ -11969,7 +11969,7 @@ WSetDefaultParameters: ; 0x06009F54
 	ldrh r0, [r1]
 	ldrh r1, [r1]
 	add r0, r2, r0, lsl #8
-	bl RND_init
+	bl RND_Init
 	ldr r0, _0600A0A0 ; =0x0380FFF4
 	mov r1, #1
 	ldr r0, [r0]
@@ -13048,7 +13048,7 @@ WStart: ; 0x0600AE14
 	ldrh r0, [r1]
 	ldrh r1, [r1]
 	add r0, r2, r0, lsl #8
-	bl RND_init
+	bl RND_Init
 	mov r0, #1
 	strh r0, [r6, #0x7c]
 	ldrh r0, [r4, #0x1e]
@@ -13968,8 +13968,8 @@ WL_ReadByte: ; 0x0600BA10
 	bx lr
 	arm_func_end WL_ReadByte
 
-	arm_func_start RND_init
-RND_init: ; 0x0600BA2C
+	arm_func_start RND_Init
+RND_Init: ; 0x0600BA2C
 	ldr r3, _0600BA58 ; =0x0380FFF4
 	ldr r2, _0600BA5C ; =0x0000FFF8
 	ldr r3, [r3]
@@ -13984,7 +13984,7 @@ RND_init: ; 0x0600BA2C
 	.align 2, 0
 _0600BA58: .word 0x0380FFF4
 _0600BA5C: .word 0x0000FFF8
-	arm_func_end RND_init
+	arm_func_end RND_Init
 
 	arm_func_start RND_seed
 RND_seed: ; 0x0600BA60

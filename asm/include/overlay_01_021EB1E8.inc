@@ -2,8 +2,8 @@
 #pragma once
 .public PlaySE
 .public StopSE
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public NARC_AllocAndReadWholeMember
 .public GfGfxLoader_LoadFromNarc
 .public CreateSpriteResourcesHeader

@@ -2,17 +2,17 @@
 #include "options.h"
 #include "player_data.h"
 
-OPTIONS* Options_new(HeapID heap_id) {
+OPTIONS* Options_New(HeapID heap_id) {
     OPTIONS* ret = AllocFromHeap(heap_id, sizeof(OPTIONS));
-    Options_init(ret);
+    Options_Init(ret);
     return ret;
 }
 
-void Options_copy(OPTIONS* src, OPTIONS* dest) {
+void Options_Copy(OPTIONS* src, OPTIONS* dest) {
     MI_CpuCopy8(src, dest, sizeof(OPTIONS));
 }
 
-void Options_init(OPTIONS* options) {
+void Options_Init(OPTIONS* options) {
     MI_CpuClear8(options, sizeof(OPTIONS));
 
     options->textSpeed = 1;   // mid speed

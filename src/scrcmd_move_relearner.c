@@ -2,9 +2,9 @@
 #include "unk_0203E348.h"
 #include "field_blackthorn_tutors.h"
 
-BOOL ScrNative_WaitApplication(SCRIPTCONTEXT *ctx);
+BOOL ScrNative_WaitApplication(ScriptContext *ctx);
 
-BOOL ScrCmd_394(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_394(ScriptContext *ctx) {
     u16 var0 = ScriptGetVar(ctx);
     void **runningAppData = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA); //*could* be MoveRelearner, not sure
     *runningAppData = sub_0203E7F4(HEAP_ID_32, ctx->fsys, var0, 0);
@@ -12,7 +12,7 @@ BOOL ScrCmd_394(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_395(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_395(ScriptContext *ctx) {
     u16 *retPtr = ScriptGetVarPointer(ctx);
     void **runningAppData = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA); //*could* be MoveRelearner, not sure
     GF_ASSERT(*runningAppData != NULL);
@@ -27,10 +27,10 @@ BOOL ScrCmd_395(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_466(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_466(ScriptContext *ctx) {
     u16 *retPtr = ScriptGetVarPointer(ctx);
     u16 slot = ScriptGetVar(ctx);
-    PARTY *party = SaveArray_PlayerParty_get(ctx->fsys->savedata);
+    PARTY *party = SaveArray_PlayerParty_Get(ctx->fsys->savedata);
     Pokemon *mon = GetPartyMonByIndex(party, slot);
     u16 *eligibleMoves = GetEligibleLevelUpMoves(mon, HEAP_ID_32);
     *retPtr = sub_0209186C(eligibleMoves);
@@ -38,9 +38,9 @@ BOOL ScrCmd_466(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-static void CreateMoveRelearner(SCRIPTCONTEXT *ctx, int a1, Pokemon *mon, u16 *eligibleMoves) {
+static void CreateMoveRelearner(ScriptContext *ctx, int a1, Pokemon *mon, u16 *eligibleMoves) {
     MoveRelearner **moveRelearnerPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
-    MoveRelearner *moveRelearner = MoveRelearner_new(HEAP_ID_32);
+    MoveRelearner *moveRelearner = MoveRelearner_New(HEAP_ID_32);
     *moveRelearnerPtr = moveRelearner;
 
     moveRelearner->mon = mon;
@@ -54,18 +54,18 @@ static void CreateMoveRelearner(SCRIPTCONTEXT *ctx, int a1, Pokemon *mon, u16 *e
     FreeToHeap(eligibleMoves);
 }
 
-BOOL ScrCmd_MoveRelearnerInit(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_MoveRelearnerInit(ScriptContext *ctx) {
     u16 slot = ScriptGetVar(ctx);
-    Pokemon *mon = GetPartyMonByIndex(SaveArray_PlayerParty_get(ctx->fsys->savedata), slot);
+    Pokemon *mon = GetPartyMonByIndex(SaveArray_PlayerParty_Get(ctx->fsys->savedata), slot);
     u16 *eligibleMoves = GetEligibleLevelUpMoves(mon, HEAP_ID_32);
     CreateMoveRelearner(ctx, 1, mon, eligibleMoves);
     return TRUE;
 }
 
-BOOL ScrCmd_MoveTutorInit(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_MoveTutorInit(ScriptContext *ctx) {
     u16 slot = ScriptGetVar(ctx);
     u16 move = ScriptGetVar(ctx);
-    Pokemon *mon = GetPartyMonByIndex(SaveArray_PlayerParty_get(ctx->fsys->savedata), slot);
+    Pokemon *mon = GetPartyMonByIndex(SaveArray_PlayerParty_Get(ctx->fsys->savedata), slot);
     u16 *eligibleMoves = AllocFromHeap(HEAP_ID_32, 2 * sizeof(u16));
     eligibleMoves[0] = move;
     eligibleMoves[1] = 0xffff;
@@ -73,7 +73,7 @@ BOOL ScrCmd_MoveTutorInit(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_MoveRelearnerGetResult(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_MoveRelearnerGetResult(ScriptContext *ctx) {
     u16 *retPtr = ScriptGetVarPointer(ctx);
     MoveRelearner **moveRelearnerPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     MoveRelearner *moveRelearner = *moveRelearnerPtr;
@@ -85,6 +85,6 @@ BOOL ScrCmd_MoveRelearnerGetResult(SCRIPTCONTEXT *ctx) {
         *retPtr = 255;
     }
 
-    MoveRelearner_delete(moveRelearner);
+    MoveRelearner_Delete(moveRelearner);
     return FALSE;
 }

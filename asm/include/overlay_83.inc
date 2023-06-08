@@ -18,8 +18,8 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public GfGfxLoader_GXLoadPal
 .public GfGfxLoader_GetCharData
 .public GfGfxLoader_GetPlttData
@@ -55,8 +55,8 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
-.public MessageFormat_new
-.public MessageFormat_delete
+.public MessageFormat_New
+.public MessageFormat_Delete
 .public BufferPlayersName
 .public BufferBoxMonSpeciesName
 .public BufferBoxMonNickname
@@ -67,8 +67,8 @@
 .public BufferItemName
 .public BufferItemNameWithIndefArticle
 .public StringExpandPlaceholders
-.public MessagePrinter_new
-.public MessagePrinter_delete
+.public MessagePrinter_New
+.public MessagePrinter_Delete
 .public sub_0200CDAC
 .public PrintUIntOnWindow
 .public sub_0200CE7C
@@ -78,8 +78,8 @@
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_02014510
-.public ListMenuItems_ctor
-.public ListMenuItems_dtor
+.public ListMenuItems_New
+.public ListMenuItems_Delete
 .public ListMenuItems_AppendFromMsgData
 .public sub_0201660C
 .public sub_02016624
@@ -161,7 +161,7 @@
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public CopyU16ArrayToString
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr

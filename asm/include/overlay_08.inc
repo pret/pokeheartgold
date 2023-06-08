@@ -13,8 +13,8 @@
 .public sub_02007200
 .public sub_02007234
 .public AllocAndReadWholeNarcMemberByIdPair
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public NARC_AllocAndReadWholeMember
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_LoadCharDataFromOpenNarc
@@ -23,8 +23,8 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
-.public MessageFormat_new
-.public MessageFormat_delete
+.public MessageFormat_New
+.public MessageFormat_Delete
 .public BufferPlayersName
 .public BufferBoxMonNickname
 .public BufferIntegerAsString
@@ -33,8 +33,8 @@
 .public BufferItemName
 .public BufferTrainerNameFromDataStruct
 .public StringExpandPlaceholders
-.public MessagePrinter_new
-.public MessagePrinter_delete
+.public MessagePrinter_New
+.public MessagePrinter_Delete
 .public sub_0200CDAC
 .public PrintUIntOnWindow
 .public sub_0200CE7C
@@ -81,7 +81,7 @@
 .public AllocWindows
 .public AddWindow
 .public RemoveWindow
-.public WindowArray_dtor
+.public WindowArray_Delete
 .public ScheduleWindowCopyToVram
 .public ClearWindowTilemapAndScheduleTransfer
 .public FillWindowPixelBuffer
@@ -101,7 +101,7 @@
 .public sub_02025224
 .public System_GetTouchNew
 .public String_New
-.public String_dtor
+.public String_Delete
 .public GetMonData
 .public GetMonExpBySpeciesAndLevel
 .public GetMonGender

@@ -89,7 +89,7 @@ _022354D8:
 	bl sub_0204B068
 	strh r0, [r4]
 	ldr r0, [r5, #8]
-	bl Save_GameStats_get
+	bl Save_GameStats_Get
 	ldrh r2, [r4]
 	mov r1, #0x45
 	bl GameStats_Add

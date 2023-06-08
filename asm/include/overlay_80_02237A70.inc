@@ -6,7 +6,7 @@
 .public LCRandom
 .public GF_AssertFail
 .public Save_PlayerData_GetProfileAddr
-.public PlayerProfile_copy
+.public PlayerProfile_Copy
 .public sub_020310BC
 .public sub_02031108
 .public sub_02031228
@@ -25,7 +25,7 @@
 .public SetMonData
 .public CopyPokemonToPokemon
 .public sub_0207217C
-.public SaveArray_Party_init
+.public SaveArray_Party_Init
 .public InitPartyWithMaxSize
 .public AddMonToParty
 .public GetPartyCount

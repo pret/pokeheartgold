@@ -14,7 +14,7 @@ ov93_0225FBF0: ; 0x0225FBF0
 	mov r1, #0x75
 	add r5, r2, #0
 	add r4, r3, #0
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -41,7 +41,7 @@ ov93_0225FBF0: ; 0x0225FBF0
 	mov r3, #7
 	bl GfGfxLoader_LoadScrnDataFromOpenNarc
 	ldr r0, [sp, #0x14]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x30
@@ -5056,7 +5056,7 @@ _0226227A:
 	ldr r2, [r2]
 	bl ov93_02261EB8
 	ldr r0, [sp, #0x34]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x30]
 	sub r6, #0x14
 	sub r4, #0x28

@@ -213,7 +213,7 @@ ov59_02237E94: ; 0x02237E94
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x18]
-	bl Save_ApricornBox_get
+	bl Save_ApricornBox_Get
 	str r0, [r5, #0x10]
 	add r0, r5, #0
 	bl ov59_02238768
@@ -3173,7 +3173,7 @@ ov59_02239604: ; 0x02239604
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0xdc
-	bl NARC_ctor
+	bl NARC_New
 	mov r2, #0
 	str r2, [sp]
 	ldr r1, [r5]
@@ -3277,7 +3277,7 @@ ov59_022396E4: ; 0x022396E4
 	mov r1, #0x29
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r1, #0
 	ldr r0, _02239700 ; =0x04000050
 	add r2, r1, #0
@@ -3305,7 +3305,7 @@ ov59_02239704: ; 0x02239704
 	ldr r2, [r5]
 	mov r0, #0x10
 	mov r1, #0x20
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r5, #0x60]
 	mov r0, #1
 	ldr r1, [r5]
@@ -3364,7 +3364,7 @@ _02239794:
 	add r0, r5, #0
 	add r0, #0xd0
 	ldr r0, [r0]
-	bl String_dtor
+	bl String_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #7
@@ -3373,21 +3373,21 @@ _02239794:
 	add r4, r6, #0
 _022397AA:
 	ldr r0, [r4, #0x78]
-	bl String_dtor
+	bl String_Delete
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #0x16
 	blt _022397AA
 	ldr r0, [r6, #0x74]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x6c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x68]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x64]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r6, #0x60]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r6, #0x5c]
 	bl DestroyMsgData
 	mov r0, #4
@@ -3527,7 +3527,7 @@ ov59_022398CC: ; 0x022398CC
 	ldr r1, [r6]
 	add r5, r0, r7
 	ldrh r0, [r0, r7]
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	mov r1, #0xa5
 	lsl r1, r1, #2
 	str r0, [r6, r1]
@@ -3565,7 +3565,7 @@ ov59_02239918: ; 0x02239918
 	mov r0, #0xa5
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl ListMenuItems_dtor
+	bl ListMenuItems_Delete
 	mov r0, #0xa5
 	mov r1, #0
 	lsl r0, r0, #2
@@ -5810,7 +5810,7 @@ ov59_0223A9E4: ; 0x0223A9E4
 	add r1, #0x4c
 	strb r0, [r1]
 	ldr r0, [r5, #8]
-	bl Save_ApricornBox_get
+	bl Save_ApricornBox_Get
 	str r0, [r5, #0x14]
 	ldr r1, [r5, #4]
 	add r2, r5, #0
@@ -6356,7 +6356,7 @@ ov59_0223AE20: ; 0x0223AE20
 	sub sp, #0xc
 	add r5, r0, #0
 	ldr r0, [r5, #8]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	str r0, [r5, #0x10]
 	bl GetPartyCount
 	mov r6, #0
@@ -7318,7 +7318,7 @@ ov59_0223B590: ; 0x0223B590
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0xf4
-	bl NARC_ctor
+	bl NARC_New
 	mov r2, #0
 	str r2, [sp]
 	ldr r1, [r5]
@@ -7421,7 +7421,7 @@ ov59_0223B66C: ; 0x0223B66C
 	mov r1, #0xba
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r1, #0
 	ldr r0, _0223B688 ; =0x04000050
 	add r2, r1, #0
@@ -7453,7 +7453,7 @@ ov59_0223B68C: ; 0x0223B68C
 	mov r0, #0x10
 	ldr r2, [r6]
 	add r1, r0, #0
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r6, #0x60]
 	mov r0, #1
 	ldr r1, [r6]
@@ -7490,17 +7490,17 @@ ov59_0223B6FC: ; 0x0223B6FC
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x74]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x70]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x6c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x68]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x64]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x60]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x5c]
 	bl DestroyMsgData
 	mov r0, #0
@@ -7964,11 +7964,11 @@ ov59_0223BA64: ; 0x0223BA64
 
 	thumb_func_start ov59_0223BADC
 ov59_0223BADC: ; 0x0223BADC
-	ldr r3, _0223BAE4 ; =String_dtor
+	ldr r3, _0223BAE4 ; =String_Delete
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_0223BAE4: .word String_dtor
+_0223BAE4: .word String_Delete
 	thumb_func_end ov59_0223BADC
 
 	thumb_func_start ov59_0223BAE8

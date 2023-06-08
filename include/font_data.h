@@ -7,8 +7,8 @@
 #define FONTARC_MODE_DIRECT   0
 #define FONTARC_MODE_LAZY     1
 
-struct FontData *FontData_new(NarcId narcId, int fileId, int mode, BOOL isFixedWidth, HeapID heapId);
-void FontData_delete(struct FontData *fontData);
+struct FontData *FontData_New(NarcId narcId, int fileId, int mode, BOOL isFixedWidth, HeapID heapId);
+void FontData_Delete(struct FontData *fontData);
 void FontData_ModeSwitch(struct FontData *fontData, int mode, HeapID heapId);
 void TryLoadGlyph(struct FontData *fontData, u16 glyphId, struct GlyphInfo *dest);
 u32 GetStringWidth(struct FontData *fontData, const u16 *string, u32 letterSpacing);

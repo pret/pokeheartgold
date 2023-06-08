@@ -25,7 +25,7 @@ typedef struct DAYCARE {
 } DAYCARE;
 
 u32 Save_Daycare_sizeof(void);
-void Save_Daycare_init(DAYCARE* daycare);
+void Save_Daycare_Init(DAYCARE* daycare);
 DAYCAREMON* Save_DayCare_GetMonX(DAYCARE* daycare, int i);
 BoxPokemon *DayCareMon_GetBoxMon(DAYCAREMON* dcmon);
 DAYCAREMAIL* DayCareMon_GetExtras(DAYCAREMON* dcmon);
@@ -39,9 +39,9 @@ void Save_DayCare_SetEggPID(DAYCARE* daycare, u32 pid);
 void Save_DayCare_SetEggCycleCounter(DAYCARE* daycare, int count);
 BOOL Save_DayCare_MasudaCheck(DAYCARE* daycare);
 void DayCareMon_Copy(DAYCAREMON* dest, const DAYCAREMON* src);
-void DayCareMon_Extras_init(DAYCAREMAIL* mail);
-void DayCareMon_init(DAYCAREMON* mon);
-DAYCARE* Save_DayCare_get(SAVEDATA* savedata);
+void DayCareMon_Extras_Init(DAYCAREMAIL* mail);
+void DayCareMon_Init(DAYCAREMON* mon);
+DAYCARE* Save_DayCare_Get(SAVEDATA* savedata);
 BOOL Save_DayCare_HasEgg(DAYCARE* daycare);
 
 #endif

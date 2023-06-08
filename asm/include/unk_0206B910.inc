@@ -9,8 +9,8 @@
 .public GF_AssertFail
 .public sub_020270C4
 .public Save_PlayerData_GetOptionsAddr
-.public Save_Mailbox_get
-.public Save_SealCase_get
+.public Save_Mailbox_Get
+.public Save_SealCase_Get
 .public SealCase_GetCapsuleI
 .public CapsuleGetSealI
 .public SealOnCapsuleGetID
@@ -32,7 +32,7 @@
 .public SetMonData
 .public GetPartyCount
 .public GetPartyMonByIndex
-.public SaveArray_PlayerParty_get
+.public SaveArray_PlayerParty_Get
 .public SaveGetBag
 .public sub_0209106C
 .public MI_CpuFill8

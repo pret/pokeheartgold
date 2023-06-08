@@ -37,7 +37,7 @@ _021E593C:
 	bl GF_AssertFail
 _021E5946:
 	ldr r0, [r5]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	add r7, r0, #0
 	mov r0, #0x52
 	str r0, [r4]
@@ -559,7 +559,7 @@ ov78_021E5D94: ; 0x021E5D94
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0x38]
 	ldr r0, [r4]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x3c]
 	mov r1, #0
 	add r0, sp, #8
@@ -615,7 +615,7 @@ ov78_021E5E24: ; 0x021E5E24
 	add r0, #0x18
 	bl RemoveWindow
 	ldr r0, [r4, #0x3c]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x38]
 	bl DestroyMsgData
 	pop {r4, pc}
@@ -974,7 +974,7 @@ _021E60DA:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x10]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r5, #4]
 	cmp r0, #0
 	bne _021E612E
@@ -1046,7 +1046,7 @@ _021E6138:
 	bl AddTextPrinterParameterized2
 _021E61B4:
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -1275,7 +1275,7 @@ ov78_021E636C: ; 0x021E636C
 	ldr r7, [r5, #0x44]
 	ldr r4, [r5, #0x48]
 	mov r0, #0xa2
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	mov r1, #0
 	str r1, [sp]
@@ -1316,10 +1316,10 @@ ov78_021E636C: ; 0x021E636C
 	mov r3, #0x44
 	bl sub_0200D71C
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r1, [r5]
 	mov r0, #0x7e
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x10]
 	mov r0, #0
 	str r0, [sp]
@@ -1414,7 +1414,7 @@ ov78_021E636C: ; 0x021E636C
 	add r3, #0x15
 	bl sub_0200D71C
 	ldr r0, [sp, #0x10]
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #7
 	str r0, [sp]
 	mov r2, #0
@@ -1554,7 +1554,7 @@ ov78_021E65BC: ; 0x021E65BC
 	bl sub_0200DCE0
 	mov r0, #0x51
 	add r1, r4, #0
-	bl NARC_ctor
+	bl NARC_New
 	add r1, r5, #0
 	add r2, r4, #0
 	str r0, [sp, #0x10]
@@ -1606,7 +1606,7 @@ ov78_021E65BC: ; 0x021E65BC
 	ldr r0, [sp, #0x14]
 	bl FreeToHeap
 	ldr r0, [sp, #0x10]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r6, #0
 	mov r1, #1
 	bl sub_0200DCE0
@@ -1715,7 +1715,7 @@ _021E6714:
 _021E671A:
 	ldr r1, [sp, #0xc]
 	mov r0, #0x51
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0x20]
 	lsl r1, r6, #0x18
@@ -1787,7 +1787,7 @@ _021E679E:
 	ldr r0, [sp, #0x10]
 	bl FreeToHeap
 	ldr r0, [sp, #0x14]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r7, #0
 	mov r1, #1
 	bl sub_0200DCE0

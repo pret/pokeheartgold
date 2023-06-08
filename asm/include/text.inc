@@ -22,5 +22,5 @@
 .public DecompressGlyphTile
 .public sub_020204FC
 .public GF_AssertFail
-.public String_c_str
+.public String_cstr
 .public MIi_CpuCopy32

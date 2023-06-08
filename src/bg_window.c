@@ -1619,7 +1619,7 @@ void RemoveWindow(WINDOW* window) {
     window->pixelBuffer = NULL;
 }
 
-void WindowArray_dtor(WINDOW *window, int num) {
+void WindowArray_Delete(WINDOW *window, int num) {
     u16 i;
     for (i = 0; i < num; i++) {
         if (window[i].pixelBuffer != NULL) {

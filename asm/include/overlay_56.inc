@@ -18,8 +18,8 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public NARC_ReadWholeMember
 .public NARC_GetMemberSize
 .public sub_0200B2E0
@@ -98,8 +98,8 @@
 .public System_GetTouchHeld
 .public System_GetTouchNew
 .public String_New
-.public String_dtor
-.public StringSetEmpty
+.public String_Delete
+.public String_SetEmpty
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
 .public sub_0203A964

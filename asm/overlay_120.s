@@ -1130,7 +1130,7 @@ _0225F852:
 	bl RemoveWindow
 	ldr r0, [r4]
 	mov r1, #1
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	mov r0, #6
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
@@ -1547,7 +1547,7 @@ _0225FB84:
 	bl RemoveWindow
 	ldr r0, [r5]
 	mov r1, #1
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	add r0, r4, #0
 	add r1, r6, #0
 	bl ov01_021EFCDC
@@ -1720,7 +1720,7 @@ _0225FCD4:
 	bl RemoveWindow
 	ldr r0, [r5]
 	mov r1, #1
-	bl WindowArray_dtor
+	bl WindowArray_Delete
 	add r0, r4, #0
 	add r1, r6, #0
 	bl ov01_021EFCDC

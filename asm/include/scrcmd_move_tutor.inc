@@ -9,7 +9,7 @@
 .public FreeToHeap
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public SetupNativeScript
 .public ScriptReadHalfword
 .public FieldSysGetAttrAddr
@@ -19,7 +19,7 @@
 .public GetMonData
 .public Species_LoadLearnsetTable
 .public GetPartyMonByIndex
-.public SaveArray_PlayerParty_get
+.public SaveArray_PlayerParty_Get
 .public FS_InitFile
 .public FS_OpenFile
 .public FS_CloseFile

@@ -123,11 +123,11 @@ _02096670:
 	b _02096734
 _02096686:
 	ldr r0, [r4, #4]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #1
 	bne _02096734
 	ldr r0, [r4, #4]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	bl sub_020967BC
 	ldr r1, [r4, #0xc]
 	cmp r1, #0
@@ -358,7 +358,7 @@ _02096834:
 	add r0, r7, #0
 	add r1, r4, #0
 	mov r2, #0xb
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r5, #4]
 	str r4, [r5, #8]
 	ldr r0, [sp, #0x18]

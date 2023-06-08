@@ -50,7 +50,7 @@ ov32_0225D520: ; 0x0225D520
 	bl FontID_Alloc
 	ldr r0, _0225D5C8 ; =0x00000105
 	mov r1, #8
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	bl ov32_0225D60C
 	add r0, r6, #0
@@ -68,7 +68,7 @@ ov32_0225D520: ; 0x0225D520
 	add r0, r5, #0
 	bl ov32_0225DD74
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r7, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -278,7 +278,7 @@ ov32_0225D748: ; 0x0225D748
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #8
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0x52
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -292,7 +292,7 @@ ov32_0225D76C: ; 0x0225D76C
 	mov r0, #0x52
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -361,7 +361,7 @@ _0225D796:
 	mov r1, #4
 	bl AddTextPrinterParameterized2
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	add r0, #0x24
 	bl CopyWindowPixelsToVram_TextMode
@@ -437,7 +437,7 @@ ov32_0225D84C: ; 0x0225D84C
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #4
 	mov r1, #8
 	bl String_New
@@ -476,7 +476,7 @@ ov32_0225D84C: ; 0x0225D84C
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x10]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -519,9 +519,9 @@ ov32_0225D84C: ; 0x0225D84C
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	add r0, #0x34
 	bl CopyWindowPixelsToVram_TextMode
@@ -562,7 +562,7 @@ _0225D9A0:
 	bl String_New
 	str r0, [sp, #0x14]
 	mov r0, #8
-	bl PlayerProfile_new
+	bl PlayerProfile_New
 	str r0, [sp, #0x1c]
 	add r0, r5, #0
 	bl GetWindowWidth
@@ -582,7 +582,7 @@ _0225D9D4:
 	bl sub_0202C254
 	add r1, r0, #0
 	ldr r0, [sp, #0x1c]
-	bl Save_Profile_PlayerName_set
+	bl Save_Profile_PlayerName_Set
 	mov r0, #0x52
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
@@ -635,9 +635,9 @@ _0225D9D4:
 	ldr r0, [sp, #0x1c]
 	bl FreeToHeap
 	ldr r0, [sp, #0x14]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x18]
-	bl String_dtor
+	bl String_Delete
 	ldr r1, _0225DA7C ; =0x000002AB
 	mov r0, #1
 	ldrb r2, [r7, r1]

@@ -37,7 +37,7 @@ ov80_0223A00C: ; 0x0223A00C
 	mov r1, #0x65
 	strh r0, [r4, #0x2a]
 	mov r0, #0x6d
-	bl NARC_ctor
+	bl NARC_New
 	str r0, [r4, #0x24]
 	ldr r1, [r4, #0x20]
 	cmp r1, #0
@@ -99,7 +99,7 @@ ov80_0223A0C0: ; 0x0223A0C0
 	ldr r0, [r5, #0x34]
 	bl DestroySysTask
 	ldr r0, [r5, #0x24]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r1, [r5, #0xc]
 	mov r0, #0x65
 	bl FreeToHeapExplicit
@@ -291,7 +291,7 @@ _0223A1BA:
 	mov r1, #0
 	bl sub_020137C0
 	ldr r0, [sp, #0x24]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x20]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x24]

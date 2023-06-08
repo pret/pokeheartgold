@@ -180,7 +180,7 @@ ov115_0225F158: ; 0x0225F158
 	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	add r0, r5, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r4, r0, #0
 	mov r0, #0x80
 	add r1, r5, #0
@@ -205,9 +205,9 @@ ov115_0225F158: ; 0x0225F158
 	add r0, r6, #0
 	bl DestroyMsgData
 	add r0, r4, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov115_0225F158
@@ -224,7 +224,7 @@ ov115_0225F1BC: ; 0x0225F1BC
 	bl NewMsgDataFromNarc
 	add r6, r0, #0
 	add r0, r5, #0
-	bl MessageFormat_new
+	bl MessageFormat_New
 	add r4, r0, #0
 	mov r0, #0x80
 	add r1, r5, #0
@@ -249,9 +249,9 @@ ov115_0225F1BC: ; 0x0225F1BC
 	add r0, r6, #0
 	bl DestroyMsgData
 	add r0, r4, #0
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov115_0225F1BC
@@ -363,7 +363,7 @@ _0225F2DE:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x14]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #0x44
 	mov r1, #8
@@ -1661,7 +1661,7 @@ _0225FC0E:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #3
 	str r0, [r6, #4]
 	ldr r0, [r6]

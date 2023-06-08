@@ -2024,13 +2024,13 @@ _02267074:
 	mov r3, #4
 	bl ov12_02268550
 	ldr r0, [sp, #0x34]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x30]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x2c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x28]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r5]
 	bl BattleSys_GetBattleType
 	mov r1, #0x22
@@ -2162,7 +2162,7 @@ _02267220:
 	str r3, [sp, #0x18]
 	bl ov12_02268550
 	ldr r0, [sp, #0x20]
-	bl String_dtor
+	bl String_Delete
 _02267252:
 	ldr r0, [sp, #0x24]
 	mov r1, #0xa1
@@ -2203,7 +2203,7 @@ _02267252:
 	str r3, [sp, #0x18]
 	bl ov12_02268550
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r1, [sp, #0x24]
 	add r0, r5, #0
 	bl ov12_02268440
@@ -2274,11 +2274,11 @@ _02267358:
 	str r3, [sp, #0x18]
 	bl ov12_02268550
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	bl ov12_0226AC70
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 _02267384:
 	add sp, #0x44
 	pop {r4, r5, r6, r7, pc}
@@ -2621,7 +2621,7 @@ _0226760E:
 	mov r3, #4
 	bl ov12_02268550
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	mov r4, #0
 	mov r7, #3
 	b _0226767A
@@ -2796,9 +2796,9 @@ ov12_02267760: ; 0x02267760
 	mov r3, #4
 	bl ov12_02268550
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x1c
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -2866,9 +2866,9 @@ ov12_022677FC: ; 0x022677FC
 	mov r3, #4
 	bl ov12_02268550
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x1c
 	pop {r3, r4, r5, r6, pc}
 	nop
@@ -2961,13 +2961,13 @@ ov12_0226789C: ; 0x0226789C
 	mov r3, #4
 	bl ov12_02268550
 	ldr r0, [sp, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x20]
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -3061,7 +3061,7 @@ ov12_02267984: ; 0x02267984
 	mov r3, #4
 	bl ov12_02268550
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x20
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -3152,13 +3152,13 @@ ov12_02267A58: ; 0x02267A58
 	mov r3, #4
 	bl ov12_02268550
 	ldr r0, [sp, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x20]
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -3252,13 +3252,13 @@ ov12_02267B40: ; 0x02267B40
 	mov r3, #4
 	bl ov12_02268550
 	ldr r0, [sp, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x20]
-	bl String_dtor
+	bl String_Delete
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3405,7 +3405,7 @@ _02267D0C:
 	add r0, r5, #0
 	bl ov12_02268550
 	ldr r0, [sp, #0x24]
-	bl String_dtor
+	bl String_Delete
 	cmp r4, #1
 	beq _02267D52
 	cmp r4, #3
@@ -3455,7 +3455,7 @@ _02267D9C:
 	b _02267C90
 _02267DA2:
 	ldr r0, [sp, #0x28]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x2c]
 	ldr r1, _02267E08 ; =0x000003A2
 	bl NewString_ReadMsgData
@@ -3483,7 +3483,7 @@ _02267DA2:
 	add r1, r5, r1
 	bl ov12_02268550
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x44
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -4946,7 +4946,7 @@ _02268922:
 	mov r2, #4
 	bl ov12_02268A64
 	ldr r0, [sp, #0x48]
-	bl String_dtor
+	bl String_Delete
 _02268942:
 	add r0, r6, #0
 	add r0, #0x84
@@ -5066,11 +5066,11 @@ _02268A02:
 	b _022688CA
 _02268A2C:
 	ldr r0, [sp, #0x28]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x2c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x30]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0xc
 _02268A40:
 	ldr r1, [sp, #8]
@@ -9567,7 +9567,7 @@ _0226AC04:
 	mov r3, #0
 	bl ov12_02268550
 	ldr r0, [sp, #0x24]
-	bl String_dtor
+	bl String_Delete
 	add r7, r7, #1
 	add r6, #0x14
 	add r4, r4, #2
@@ -9613,7 +9613,7 @@ _0226AC84:
 	add r6, r0, #0
 	mov r0, #8
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r7, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -9646,7 +9646,7 @@ _0226AC84:
 	add r2, r7, #0
 	bl sub_0200D71C
 	add r0, r7, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r2, _0226AD54 ; =ov12_0226E54C
 	add r0, r4, #0
 	add r1, r6, #0

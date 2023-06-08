@@ -54,14 +54,14 @@ typedef struct PHOTO_ALBUM {
 } PHOTO_ALBUM;
 
 u32 Save_PhotoAlbum_sizeof(void);
-PHOTO_ALBUM *Save_PhotoAlbum_get(SAVEDATA *saveData);
-void Save_PhotoAlbum_init(PHOTO_ALBUM *photoAlbum);
+PHOTO_ALBUM *Save_PhotoAlbum_Get(SAVEDATA *saveData);
+void Save_PhotoAlbum_Init(PHOTO_ALBUM *photoAlbum);
 u8 PhotoAlbum_GetIndexOfFirstEmptySlot(const PHOTO_ALBUM *photoAlbum);
 u8 PhotoAlbum_GetNumSaved(const PHOTO_ALBUM *photoAlbum);
 void PhotoAlbum_DeletePhotoByIndex(PHOTO_ALBUM *photoAlbum, u8 idx);
 BOOL PhotoAlbum_SetPhotoAtIndex(PHOTO_ALBUM *photoAlbum, const PHOTO *photo, u8 idx);
 BOOL PhotoAlbum_GetPhotoByIndex(const PHOTO_ALBUM *photoAlbum, PHOTO *photo, u8 idx);
 PHOTO *PhotoAlbum_LoadAllInUsePhotos(const PHOTO_ALBUM *photoAlbum, HeapID heapId);
-void Photo_init(PHOTO *photo);
+void Photo_Init(PHOTO *photo);
 
 #endif //POKEHEARTGOLD_PHOTO_ALBUM_H

@@ -32,7 +32,7 @@ ov14_021E5900: ; 0x021E5900
 	strb r0, [r4, #0x1f]
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	str r0, [r4, #8]
 	ldr r0, [r4]
 	ldr r0, [r0]
@@ -571,11 +571,11 @@ ov14_021E5D78: ; 0x021E5D78
 	mov r0, #1
 	mov r1, #2
 	mov r3, #0xa
-	bl MessagePrinter_new
+	bl MessagePrinter_New
 	ldr r1, [r4, #0x34]
 	str r0, [r1, #0x1c]
 	mov r0, #0xa
-	bl MessageFormat_new
+	bl MessageFormat_New
 	ldr r1, [r4, #0x34]
 	str r0, [r1, #0x24]
 	mov r0, #1
@@ -594,13 +594,13 @@ ov14_021E5DB8: ; 0x021E5DB8
 	add r4, r0, #0
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x28]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x24]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x1c]
-	bl MessagePrinter_delete
+	bl MessagePrinter_Delete
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x20]
 	bl DestroyMsgData
@@ -6567,7 +6567,7 @@ _021E8A06:
 	str r0, [r4, #0x1c]
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Save_SpecialRibbons_get
+	bl Save_SpecialRibbons_Get
 	str r0, [r4, #0x20]
 	mov r0, #0
 	str r0, [r4, #0x24]
@@ -6586,7 +6586,7 @@ _021E8A06:
 	mov r2, #9
 	str r0, [r4, #0x30]
 	ldr r0, _021E8A78 ; =_02103A1C
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r5, #0x14]
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -6666,7 +6666,7 @@ ov14_021E8ACC: ; 0x021E8ACC
 	ldr r0, _021E8B18 ; =ov15_022008B8
 	ldr r1, [r4, #0x18]
 	mov r2, #9
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #0x14]
 	mov r0, #0
 	add sp, #4
@@ -6720,7 +6720,7 @@ ov14_021E8B3C: ; 0x021E8B3C
 	ldr r0, _021E8B7C ; =_02102610
 	ldr r1, [r4, #0x18]
 	mov r2, #9
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #0x14]
 	mov r0, #0
 	add sp, #8
@@ -11425,14 +11425,14 @@ ov14_021EAFAC: ; 0x021EAFAC
 	bl MI_CpuFill8
 	mov r0, #2
 	mov r1, #0xa
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x45
 	ldr r2, [r4, #0x34]
 	lsl r1, r1, #4
 	str r0, [r2, r1]
 	mov r0, #0x14
 	mov r1, #0xa
-	bl NARC_ctor
+	bl NARC_New
 	ldr r2, [r4, #0x34]
 	ldr r1, _021EB0DC ; =0x00000454
 	str r0, [r2, r1]
@@ -11534,12 +11534,12 @@ ov14_021EB0E4: ; 0x021EB0E4
 	ldr r1, [r4, #0x34]
 	ldr r0, _021EB164 ; =0x00000454
 	ldr r0, [r1, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #0x45
 	ldr r1, [r4, #0x34]
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	bl sub_02021238
 	ldr r1, _021EB168 ; =0x04000050
 	mov r0, #0
@@ -11748,14 +11748,14 @@ ov14_021EB2A8: ; 0x021EB2A8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x14]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #0
 	bne _021EB2BA
 	mov r0, #0xa
 	pop {r4, pc}
 _021EB2BA:
 	ldr r0, [r4, #0x14]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	ldrb r2, [r4, #0x1e]
 	mov r1, #0xc
 	add r0, r4, #0
@@ -31129,7 +31129,7 @@ ov14_021F4F84: ; 0x021F4F84
 	add r1, r6, #0
 	bl ov14_021F4F24
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov14_021F4F84
@@ -31163,7 +31163,7 @@ ov14_021F4FBC: ; 0x021F4FBC
 	ldr r3, [sp, #0x24]
 	bl ov14_021F4F24
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov14_021F4FBC
@@ -32120,7 +32120,7 @@ ov14_021F5718: ; 0x021F5718
 	sub r3, #8
 	bl ov14_021F4F24
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl CopyWindowPixelsToVram_TextMode
 	add r0, r4, #0
@@ -32170,7 +32170,7 @@ ov14_021F57B8: ; 0x021F57B8
 	mov r2, #0x30
 	bl ov14_021F4F24
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x34]
 	add r1, sp, #0xc
 	mov r2, #0
@@ -32233,7 +32233,7 @@ ov14_021F57B8: ; 0x021F57B8
 	mov r2, #0x14
 	bl ov14_021F4F24
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x34]
 	add r1, sp, #0xc
 	mov r2, #1
@@ -32304,7 +32304,7 @@ _021F5918:
 	mov r2, #0x30
 	bl ov14_021F4F24
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r5, #0x34]
 	add r1, sp, #0xc
 	mov r2, #0
@@ -32621,7 +32621,7 @@ _021F5B8E:
 	add r3, r7, #0
 	bl ov14_021F4F24
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, r4
 	bl CopyWindowPixelsToVram_TextMode
 	add sp, #0x70
@@ -32702,7 +32702,7 @@ _021F5C5A:
 	bl ov14_021F4F24
 _021F5C6E:
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, r4
 	bl CopyWindowPixelsToVram_TextMode
 	add sp, #0x14
@@ -32958,7 +32958,7 @@ _021F5E4A:
 	add r3, r7, #0
 	bl ov14_021F4F24
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, r4
 	bl CopyWindowPixelsToVram_TextMode
 	add sp, #0x3c
@@ -33969,7 +33969,7 @@ _021F65D8:
 	asr r2, r2, #1
 	bl ov14_021F4F24
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x2e
 	lsl r0, r0, #4
 	add r0, r4, r0
@@ -34510,7 +34510,7 @@ _021F6996:
 	ldr r1, [r1, #0x28]
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r5, #0x34]
 	lsl r4, r6, #4
 	add r0, #0x30

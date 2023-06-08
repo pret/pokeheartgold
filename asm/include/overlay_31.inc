@@ -15,8 +15,8 @@
 .public DestroyMsgData
 .public NewString_ReadMsgData
 .public ReadMsgData_ExpandPlaceholders
-.public MessageFormat_new_custom
-.public MessageFormat_delete
+.public MessageFormat_New_Custom
+.public MessageFormat_Delete
 .public BufferIntegerAsString
 .public BufferItemName
 .public BufferItemNameWithIndefArticle
@@ -59,13 +59,13 @@
 .public sub_02025224
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_GetMoney
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public Save_Pokeathlon_get
+.public Save_Pokeathlon_Get
 .public SavePokeathlon_GetAthletePoints
 .public sub_02031A78
 .public sub_02031AB8

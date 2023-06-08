@@ -515,7 +515,7 @@ _02231FDE:
 	b _0223228E
 _02231FF4:
 	ldr r0, [r7, #8]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	add r7, r0, #0
 	ldr r0, _02232298 ; =0x0000036A
 	mov r5, #0

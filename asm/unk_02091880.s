@@ -19,7 +19,7 @@ sub_02091880: ; 0x02091880
 	add r4, r0, #0
 	add r0, r6, #0
 	str r5, [r4]
-	bl EasyChatManager_new
+	bl EasyChatManager_New
 	str r0, [r4, #4]
 	mov r3, #0
 	ldr r0, _020918BC ; =0x0000189E
@@ -47,7 +47,7 @@ sub_020918C0: ; 0x020918C0
 	add r4, r0, #0
 	beq _020918D2
 	ldr r0, [r4, #4]
-	bl EasyChatManager_delete
+	bl EasyChatManager_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 _020918D2:

@@ -18,8 +18,8 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public GfGfxLoader_GetScrnDataFromOpenNarc
@@ -28,8 +28,8 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public NewString_ReadMsgData
-.public MessageFormat_new_custom
-.public MessageFormat_delete
+.public MessageFormat_New_Custom
+.public MessageFormat_Delete
 .public sub_0200CF18
 .public sub_0200CF38
 .public sub_0200CF70
@@ -108,11 +108,11 @@
 .public System_GetTouchHeld
 .public System_GetTouchNew
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public SaveArray_Flags_get
+.public SaveArray_Flags_Get
 .public ScriptState_SetAlphPuzzleFlag
 .public NNS_GfdDoVramTransfer
 .public MI_CpuFill8

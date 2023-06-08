@@ -11,13 +11,13 @@
 .public sub_0200DD08
 .public sub_0200E5D4
 .public ClearFrameAndWindow2
-.public ListMenuItems_ctor
+.public ListMenuItems_New
 .public ListMenuItems_AddItem
 .public FreeToHeap
 .public FillWindowPixelBuffer
 .public TextPrinterCheckActive
 .public System_GetTouchNew
-.public String_dtor
+.public String_Delete
 .public MapHeader_GetMapSec
 .public MapHeader_GetMapEvolutionMethod
 .public GetMonData

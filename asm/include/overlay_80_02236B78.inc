@@ -3,7 +3,7 @@
 .public FreeToHeap
 .public LCRandom
 .public GF_AssertFail
-.public PlayerProfile_copy
+.public PlayerProfile_Copy
 .public sub_02034818
 .public sub_0203769C
 .public BattleSetup_New
@@ -12,7 +12,7 @@
 .public sub_02052580
 .public AllocMonZeroed
 .public CopyPokemonToPokemon
-.public SaveArray_Party_init
+.public SaveArray_Party_Init
 .public InitPartyWithMaxSize
 .public RemoveMonFromParty
 .public GetPartyCount

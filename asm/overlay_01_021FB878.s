@@ -54,24 +54,24 @@ ov01_021FB888: ; 0x021FB888
 	beq _021FB8D8
 	mov r0, #0x6b
 	mov r1, #4
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x23
 	lsl r1, r1, #6
 	str r0, [r4, r1]
 	mov r0, #0x28
 	mov r1, #4
-	bl NARC_ctor
+	bl NARC_New
 	b _021FB8EE
 _021FB8D8:
 	mov r0, #0x6c
 	mov r1, #4
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x23
 	lsl r1, r1, #6
 	str r0, [r4, r1]
 	mov r0, #0x94
 	mov r1, #4
-	bl NARC_ctor
+	bl NARC_New
 _021FB8EE:
 	ldr r1, _021FB8FC ; =0x000008B8
 	ldr r1, [r4, r1]
@@ -137,7 +137,7 @@ ov01_021FB944: ; 0x021FB944
 	ldr r1, [r5]
 	lsl r0, r0, #6
 	ldr r0, [r1, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r1, [r5]
 	ldr r0, _021FB9BC ; =0x000008AC
 	ldr r0, [r1, r0]
@@ -513,7 +513,7 @@ _021FBC1C:
 	bl GF_AssertFail
 _021FBC2C:
 	ldr r0, [r6, #8]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r2, _021FBCBC ; =0x04000060
 	ldr r0, _021FBCC0 ; =0xFFFFCFFF
 	ldrh r1, [r2]

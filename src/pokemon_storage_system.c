@@ -7,7 +7,7 @@ void PCStorage_InitializeBoxes(PC_STORAGE *storage);
 BOOL PCStorage_PlaceMonInBoxFirstEmptySlot(PC_STORAGE *storage, u32 boxno, BoxPokemon *boxMon);
 void PCStorage_SetBoxModified(PC_STORAGE *storage, u8 boxno);
 
-void PCStorage_init(PC_STORAGE *storage) {
+void PCStorage_Init(PC_STORAGE *storage) {
     PCStorage_InitializeBoxes(storage);
 }
 

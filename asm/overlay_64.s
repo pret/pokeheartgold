@@ -53,7 +53,7 @@ ov64_021E5900: ; 0x021E5900
 	str r0, [r4, r1]
 	mov r0, #0xb4
 	mov r1, #0x3b
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x61
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -106,7 +106,7 @@ ov64_021E59C8: ; 0x021E59C8
 	mov r0, #0x61
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	bl sub_02021238
 	add r0, r5, #0
 	bl OverlayManager_FreeData
@@ -347,7 +347,7 @@ ov64_021E5B10: ; 0x021E5B10
 	bl InitBgFromTemplate
 	mov r0, #0x61
 	mov r1, #0x3b
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -412,7 +412,7 @@ ov64_021E5B10: ; 0x021E5B10
 	mov r3, #0
 	bl GfGfxLoader_GXLoadPalFromOpenNarc
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r1, #0x1e
 	mov r0, #0
 	lsl r1, r1, #4
@@ -523,7 +523,7 @@ ov64_021E5CD0: ; 0x021E5CD0
 	bl G2dRenderer_SetSubSurfaceCoords
 	mov r0, #8
 	mov r1, #0x3b
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -604,10 +604,10 @@ ov64_021E5CD0: ; 0x021E5CD0
 	mov r3, #0x4e
 	bl sub_0200D71C
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #0x61
 	mov r1, #0x3b
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -724,7 +724,7 @@ _021E5EF0:
 	cmp r4, r0
 	bls _021E5EF0
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r1, #0x13
 	lsl r1, r1, #4
 	ldr r0, [r5, r1]
@@ -918,7 +918,7 @@ ov64_021E607C: ; 0x021E607C
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	mov r0, #0x3b
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0x49
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -970,23 +970,23 @@ ov64_021E6118: ; 0x021E6118
 	mov r0, #0x6a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x69
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x4a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x49
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0x12
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -2377,7 +2377,7 @@ ov64_021E6C1C: ; 0x021E6C1C
 	bl ReadWholeNarcMemberByIdPair
 	mov r0, #0x61
 	mov r1, #0x3b
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	add r0, sp, #0x30
 	ldrb r0, [r0, #1]
@@ -2406,7 +2406,7 @@ _021E6C60:
 	add r2, r4, #0
 	bl sub_0200D504
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r4, _021E6E20 ; =ov64_021E6FD4
 	add r3, sp, #0x34
 	mov r2, #6

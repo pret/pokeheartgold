@@ -6,8 +6,8 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public ReadWholeNarcMemberByIdPair
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public NARC_AllocAndReadWholeMember
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_LoadScrnData
@@ -16,8 +16,8 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
-.public MessageFormat_new
-.public MessageFormat_delete
+.public MessageFormat_New
+.public MessageFormat_Delete
 .public BufferPlayersName
 .public BufferBoxMonNickname
 .public StringExpandPlaceholders
@@ -79,7 +79,7 @@
 .public sub_02024B60
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetTrainerGender
 .public Save_GetPartyLeadAlive
@@ -92,7 +92,7 @@
 .public sub_02070438
 .public Mon_GetBoxMon
 .public GetPartyMonByIndex
-.public SaveArray_PlayerParty_get
+.public SaveArray_PlayerParty_Get
 .public NNS_G2dGetImageLocation
 .public NNS_G3dGetTex
 .public GX_LoadOBJPltt

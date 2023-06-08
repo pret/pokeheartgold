@@ -240,11 +240,11 @@ _021E5AD4:
 	b _021E5B22
 _021E5B06:
 	ldr r0, [r4, #0x14]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #1
 	bne _021E5B22
 	ldr r0, [r4, #0x14]
-	bl OverlayManager_delete
+	bl OverlayManager_Delete
 	add r0, r6, #0
 	str r0, [r4, #0x14]
 	mov r0, #5
@@ -295,12 +295,12 @@ ov53_OakSpeech_OvyExit: ; 0x021E5B48
 	ldr r1, [r1, #4]
 	bl PlayerProfile_SetTrainerGender
 	ldr r0, [r4, #4]
-	bl Save_Misc_get
+	bl Save_Misc_Get
 	mov r1, #0x49
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
 	ldr r1, [r1, #0x18]
-	bl Save_Misc_RivalName_set
+	bl Save_Misc_RivalName_Set
 	mov r0, #0x12
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -637,7 +637,7 @@ ov53_021E5E6C: ; 0x021E5E6C
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r4]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	mov r1, #0x46
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -660,7 +660,7 @@ ov53_021E5EB8: ; 0x021E5EB8
 	mov r0, #0x46
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	mov r0, #0x45
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1083,7 +1083,7 @@ _021E613C:
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r5, #8]
 	bl Options_GetTextFrameDelay
 	add r3, r4, #0
@@ -1115,7 +1115,7 @@ _021E621C:
 	mov r0, #0x11
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x41
 	mov r1, #2
 	lsl r0, r0, #2
@@ -1213,7 +1213,7 @@ _021E62C2:
 	mov r0, #0x11
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl StringCountLines
+	bl String_CountLines
 	lsl r1, r0, #1
 	mov r0, #0x18
 	sub r1, r0, r1
@@ -1227,7 +1227,7 @@ _021E6304:
 	mov r0, #0x11
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl StringCountLines
+	bl String_CountLines
 	lsl r6, r0, #1
 _021E6316:
 	cmp r5, #3
@@ -1334,7 +1334,7 @@ _021E63E2:
 	mov r0, #0x11
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x42
 	mov r1, #1
 	lsl r0, r0, #2
@@ -1537,7 +1537,7 @@ _021E650C:
 	add r0, r4, #0
 	bl CopyWindowToVram
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x24]
 	add r4, #0x10
 	add r0, r0, #4
@@ -4120,7 +4120,7 @@ _021E7A76:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	ldr r0, [r0, #0x18]
-	bl StringSetEmpty
+	bl String_SetEmpty
 	mov r1, #0x4d
 	lsl r1, r1, #2
 	add r0, r1, #0
@@ -4132,7 +4132,7 @@ _021E7A76:
 	ldr r0, _021E7C84 ; =_02102610
 	ldr r1, [r4, r1]
 	ldr r2, [r4]
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #0x14]
 	mov r0, #0x60
 	str r0, [r4, #0xc]
@@ -4520,7 +4520,7 @@ ov53_021E7D70: ; 0x021E7D70
 	add r0, r4, #0
 	bl RemoveWindow
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -4955,7 +4955,7 @@ _021E8108:
 	ldr r0, [sp, #0x20]
 	strb r0, [r4, #0x18]
 	ldr r0, [sp, #4]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x14]
 	add r0, r6, #0
 	mov r1, #1
@@ -4978,7 +4978,7 @@ _021E8156:
 	add r0, r4, #0
 	bl ov53_021E8310
 	ldr r0, [r4, #0x14]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -4995,7 +4995,7 @@ ov53_021E816C: ; 0x021E816C
 	add r7, r1, #0
 	mov r0, #0xef
 	add r1, r4, #0
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x20
 	str r1, [sp]
 	mov r1, #0
@@ -5043,7 +5043,7 @@ ov53_021E816C: ; 0x021E816C
 	mov r1, #0
 	bl ToggleBgLayer
 	ldr r0, [sp, #0x10]
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -5250,7 +5250,7 @@ ov53_021E8330: ; 0x021E8330
 	add r0, r7, #0
 	bl DestroyMsgData
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

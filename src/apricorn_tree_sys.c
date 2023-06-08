@@ -38,7 +38,7 @@ static const u8 sTreeApricorns[NUM_APRICORN_TREE] = {
 
 void sub_0202AE30(APRICORN_TREE *tree);
 
-void ApricornTrees_init(APRICORN_TREE *trees) {
+void ApricornTrees_Init(APRICORN_TREE *trees) {
     int i;
     MI_CpuClear8(trees, sizeof(APRICORN_TREE) * MAX_APRICORN_TREE);
     for (i = 0; i < MAX_APRICORN_TREE; i++) {

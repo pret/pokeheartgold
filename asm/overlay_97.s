@@ -219,7 +219,7 @@ _0221E76A:
 	bl GetStoragePCPointer
 	add r7, r0, #0
 	ldr r0, [r5]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -518,7 +518,7 @@ _0221E9B4:
 	cmp r6, #0x12
 	bne _0221EA20
 	ldr r0, [r0]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	ldr r1, [r5, #0x14]
 	bl GetPartyMonByIndex
 	mov r1, #5
@@ -550,7 +550,7 @@ _0221E9B4:
 	strb r0, [r4, #0x1d]
 	ldr r0, [r7]
 	ldr r0, [r0]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	ldr r1, [r5, #0x14]
 	ldr r2, [sp]
 	lsl r1, r1, #0x18
@@ -838,7 +838,7 @@ _0221EC3C:
 	cmp r6, #0x12
 	ldr r0, [r5, #0x2c]
 	bne _0221ED1C
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	add r1, r4, #0
 	add r7, r0, #0
 	bl GetPartyMonByIndex
@@ -903,7 +903,7 @@ _0221EC3C:
 	add r7, sp, #0x5c
 _0221ECE2:
 	ldr r0, [r5, #0x2c]
-	bl Save_Pokeathlon_get
+	bl Save_Pokeathlon_Get
 	lsl r1, r4, #2
 	ldrh r2, [r6, #4]
 	ldr r1, [r7, r1]
@@ -984,7 +984,7 @@ _0221ED1C:
 	add r7, sp, #0x5c
 _0221ED94:
 	ldr r0, [r5, #0x2c]
-	bl Save_Pokeathlon_get
+	bl Save_Pokeathlon_Get
 	lsl r1, r4, #2
 	ldrh r2, [r6, #4]
 	ldr r1, [r7, r1]
@@ -1229,7 +1229,7 @@ ov97_0221EEA4: ; 0x0221EEA4
 	bl NewMsgDataFromNarc
 	str r0, [r5, #0x6c]
 	ldr r0, [r5]
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r5, #0x70]
 	ldr r1, [r5]
 	mov r0, #0xb
@@ -1308,9 +1308,9 @@ ov97_0221F020: ; 0x0221F020
 	ldr r0, [r7, #0x6c]
 	bl DestroyMsgData
 	ldr r0, [r7, #0x70]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r7, #0x74]
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
 	add r0, #8
 	bl RemoveWindow
@@ -1631,7 +1631,7 @@ ov97_0221F294: ; 0x0221F294
 	add r0, #8
 	bl CopyWindowToVram
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #0x18
 	mov r1, #0
@@ -1658,7 +1658,7 @@ ov97_0221F294: ; 0x0221F294
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 _0221F32A:
 	add r0, r4, #0
 	add r0, #0x18
@@ -1684,7 +1684,7 @@ _0221F32A:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x6c]
 	mov r1, #4
 	bl NewString_ReadMsgData
@@ -1703,7 +1703,7 @@ _0221F32A:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x6c]
 	mov r1, #6
 	bl NewString_ReadMsgData
@@ -1722,7 +1722,7 @@ _0221F32A:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x6c]
 	mov r1, #5
 	bl NewString_ReadMsgData
@@ -1741,7 +1741,7 @@ _0221F32A:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x6c]
 	mov r1, #7
 	bl NewString_ReadMsgData
@@ -1760,7 +1760,7 @@ _0221F32A:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r4, #0x48
 	add r0, r4, #0
 	bl CopyWindowToVram
@@ -1825,7 +1825,7 @@ ov97_0221F428: ; 0x0221F428
 	add r0, #0x38
 	bl CopyWindowToVram
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	b _0221F4FE
 _0221F4A8:
 	cmp r0, #1
@@ -1855,7 +1855,7 @@ _0221F4A8:
 	add r0, #0x38
 	bl CopyWindowToVram
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	b _0221F4FE
 _0221F4EC:
 	add r0, r5, #0
@@ -1879,7 +1879,7 @@ _0221F4FE:
 	add r2, r4, #0
 	bl BufferString
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r5, #0x70]
 	ldr r1, [r5, #0x6c]
 	ldr r3, [r5]
@@ -1906,7 +1906,7 @@ _0221F4FE:
 	add r0, r5, #0
 	bl CopyWindowToVram
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

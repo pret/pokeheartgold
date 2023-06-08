@@ -361,7 +361,7 @@ ov01_021EFA1C: ; 0x021EFA1C
 	add r0, #0x20
 	bl RemoveWindow
 	ldr r0, [r4, #0x40]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}

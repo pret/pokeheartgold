@@ -31,11 +31,11 @@ u32 Save_SafariZone_sizeof(void) {
     return sizeof(SAFARIZONE);
 }
 
-SAFARIZONE* Save_SafariZone_get(SAVEDATA* savedata) {
-    return SaveArray_get(savedata, SAVE_SAFARI_ZONE);
+SAFARIZONE* Save_SafariZone_Get(SAVEDATA* savedata) {
+    return SaveArray_Get(savedata, SAVE_SAFARI_ZONE);
 }
 
-void Save_SafariZone_init(SAFARIZONE* safari_zone) {
+void Save_SafariZone_Init(SAFARIZONE* safari_zone) {
     for (s32 i = 0; i < SAFARI_ZONE_MAX_AREA_SETS; i++) {
         MI_CpuClear8(&safari_zone->area_sets[i], sizeof(SAFARIZONE_AREASET));
     }
@@ -179,7 +179,7 @@ void SafariZone_SetLinkLeaderFromProfile(SAFARIZONE* safari_zone, PLAYERPROFILE*
     STRING* name = String_New((PLAYER_NAME_LENGTH + 1) * sizeof(u16), heap_id);
     PlayerName_FlatToString(profile, name);
     CopyStringToU16Array(name, link_leader->name, (PLAYER_NAME_LENGTH + 1) * sizeof(u16));
-    String_dtor(name);
+    String_Delete(name);
 
     link_leader->linked = TRUE;
 
@@ -193,7 +193,7 @@ void SafariZone_GetLinkLeaderToProfile(SAFARIZONE* safari_zone, PLAYERPROFILE* p
     PlayerProfile_SetTrainerGender(profile, link_leader->gender);
     PlayerProfile_SetLanguage(profile, link_leader->language);
     PlayerProfile_SetVersion(profile, link_leader->version);
-    Save_Profile_PlayerName_set(profile, link_leader->name);
+    Save_Profile_PlayerName_Set(profile, link_leader->name);
 }
 
 u8 SafariZone_GetLinkLeaderGender(SAFARIZONE* safari_zone) {

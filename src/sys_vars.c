@@ -15,7 +15,7 @@ static const u16 _020FE4A8[] = {
     0x1228,
 };
 
-BOOL SetScriptVar(SCRIPT_STATE* state, u16 var_id, u16 value) {
+BOOL SetScriptVar(ScriptState* state, u16 var_id, u16 value) {
     u16* var_ptr = GetVarAddr(state, var_id);
     if (var_id < VAR_BASE || var_id > SPECIAL_VAR_BASE) {
         GF_ASSERT(FALSE);
@@ -30,7 +30,7 @@ BOOL SetScriptVar(SCRIPT_STATE* state, u16 var_id, u16 value) {
     return TRUE;
 }
 
-u16 GetScriptVar(SCRIPT_STATE* state, u16 var_id) {
+u16 GetScriptVar(ScriptState* state, u16 var_id) {
     u16* var_ptr = GetVarAddr(state, var_id);
     if (var_ptr == NULL) {
         return 0;
@@ -39,24 +39,24 @@ u16 GetScriptVar(SCRIPT_STATE* state, u16 var_id) {
     return *var_ptr;
 }
 
-void ScriptState_SetFollowerTrainerNum(SCRIPT_STATE* state, u16 trainer_num) {
+void ScriptState_SetFollowerTrainerNum(ScriptState* state, u16 trainer_num) {
     SetScriptVar(state, VAR_FOLLOWER_TRAINER_NUM, trainer_num);
 }
 
-u16 ScriptState_GetFollowerTrainerNum(SCRIPT_STATE* state) {
+u16 ScriptState_GetFollowerTrainerNum(ScriptState* state) {
     return GetScriptVar(state, VAR_FOLLOWER_TRAINER_NUM);
 }
 
-void SetStarterToScriptState(SCRIPT_STATE* state, u16 starter) {
+void SetStarterToScriptState(ScriptState* state, u16 starter) {
     SetScriptVar(state, VAR_PLAYER_STARTER, starter);
 }
 
-u16 GetStarterFromScriptState(SCRIPT_STATE* state) {
+u16 GetStarterFromScriptState(ScriptState* state) {
     return GetScriptVar(state, VAR_PLAYER_STARTER);
 }
 
 // This will always return Turtwig.
-u16 DPPtLeftover_GetRivalSpecies(SCRIPT_STATE* state) {
+u16 DPPtLeftover_GetRivalSpecies(ScriptState* state) {
     u16 rival_starter_species;
 
     u16 player_starter_species = GetScriptVar(state, VAR_PLAYER_STARTER);
@@ -73,7 +73,7 @@ u16 DPPtLeftover_GetRivalSpecies(SCRIPT_STATE* state) {
 }
 
 // This will always return Chimchar.
-u16 DPPtLeftover_GetFriendStarterSpecies(SCRIPT_STATE* state) {
+u16 DPPtLeftover_GetFriendStarterSpecies(ScriptState* state) {
     u16 friend_starter_species;
 
     u16 player_starter_species = GetScriptVar(state, VAR_PLAYER_STARTER);
@@ -89,15 +89,15 @@ u16 DPPtLeftover_GetFriendStarterSpecies(SCRIPT_STATE* state) {
     return friend_starter_species;
 }
 
-u16 ScriptState_GetFishingCompetitionLengthRecord(SCRIPT_STATE* state) {
+u16 ScriptState_GetFishingCompetitionLengthRecord(ScriptState* state) {
     return GetScriptVar(state, VAR_MAGIKARP_SIZE_RECORD);
 }
 
-void ScriptState_SetFishingCompetitionLengthRecord(SCRIPT_STATE* state, u16 record) {
+void ScriptState_SetFishingCompetitionLengthRecord(ScriptState* state, u16 record) {
     SetScriptVar(state, VAR_MAGIKARP_SIZE_RECORD, record);
 }
 
-u16 ScriptState_GetUnownReportLevel(SCRIPT_STATE* state) {
+u16 ScriptState_GetUnownReportLevel(ScriptState* state) {
     return GetScriptVar(state, VAR_UNOWN_REPORT_LEVEL);
 }
 
@@ -106,17 +106,17 @@ u16 sub_02066B80(s32 a0) {
     return _020FE4A4[a0];
 }
 
-void sub_02066B9C(SCRIPT_STATE* state, u32 a1) {
+void sub_02066B9C(ScriptState* state, u32 a1) {
     SetScriptVar(state, VAR_UNK_4043 + a1, sub_02066B80(a1));
 }
 
-BOOL sub_02066BC0(SCRIPT_STATE* state, u32 a1) {
+BOOL sub_02066BC0(ScriptState* state, u32 a1) {
     u16 var1 = GetScriptVar(state, VAR_UNK_4043 + a1);
     u16 var2 = sub_02066B80(a1);
     return var1 == var2;
 }
 
-void sub_02066BE8(SCRIPT_STATE* state, u32 a1, u16 value) {
+void sub_02066BE8(ScriptState* state, u32 a1, u16 value) {
     if (a1 < NELEMS(_020FE4A8)) {
         SetScriptVar(state, VAR_ROAMER_RAIKOU_STATUS + a1, value);
     }
@@ -127,24 +127,24 @@ u32 sub_02066C00(s32 a0) {
     return _020FE4A8[a0];
 }
 
-void sub_02066C1C(SCRIPT_STATE* state, s32 a1) {
+void sub_02066C1C(ScriptState* state, s32 a1) {
     GF_ASSERT(a1 >= 0 && a1 < (s32)NELEMS(_020FE4A8));
     SetScriptVar(state, VAR_UNK_4036 + a1, sub_02066C00(a1));
 }
 
-void sub_02066C4C(SCRIPT_STATE* state, s32 a1) {
+void sub_02066C4C(ScriptState* state, s32 a1) {
     GF_ASSERT(a1 >= 0 && a1 < (s32)NELEMS(_020FE4A8));
     SetScriptVar(state, VAR_UNK_4036 + a1, 0);
 }
 
-BOOL sub_02066C74(SCRIPT_STATE* state, s32 a1) {
+BOOL sub_02066C74(ScriptState* state, s32 a1) {
     GF_ASSERT(a1 >= 0 && a1 < (s32)NELEMS(_020FE4A8));
     u16 var1 = GetScriptVar(state, VAR_UNK_4036 + a1);
     u32 var2 = sub_02066C00(a1);
     return var1 == var2;
 }
 
-void ScriptState_SetLotoId(SCRIPT_STATE* state, u32 id) {
+void ScriptState_SetLotoId(ScriptState* state, u32 id) {
     SetScriptVar(state, VAR_LOTO_NUMBER_LO, id & 0xFFFF);
 #ifdef BUGFIX_LOTO_NUMBER_HI
     SetScriptVar(state, VAR_LOTO_NUMBER_HI, id >> 16);
@@ -153,14 +153,14 @@ void ScriptState_SetLotoId(SCRIPT_STATE* state, u32 id) {
 #endif
 }
 
-u32 ScriptState_GetLotoId(SCRIPT_STATE* state) {
+u32 ScriptState_GetLotoId(ScriptState* state) {
     u16 lo = GetScriptVar(state, VAR_LOTO_NUMBER_LO);
     u16 hi = GetScriptVar(state, VAR_LOTO_NUMBER_HI);
 
     return hi << 16 | lo;
 }
 
-void ScriptState_RollLotoId(SCRIPT_STATE* state) {
+void ScriptState_RollLotoId(ScriptState* state) {
     u16 lo = LCRandom();
     u16 hi = LCRandom();
 
@@ -169,29 +169,29 @@ void ScriptState_RollLotoId(SCRIPT_STATE* state) {
 
 void Save_LCRNGAdvanceLotoID(SAVEDATA* savedata, u16 var) {
 #pragma unused(var)
-    SCRIPT_STATE* state = SaveArray_Flags_get(savedata);
-    SAV_FRIEND_GRP* friend_groups = Save_FriendGroup_get(savedata);
+    ScriptState* state = SaveArray_Flags_Get(savedata);
+    SAV_FRIEND_GRP* friend_groups = Save_FriendGroup_Get(savedata);
     u32 rand_id = sub_0202C7DC(friend_groups) * 1103515245 + 12345;
 
     ScriptState_SetLotoId(state, rand_id);
 }
 
-u16 ScriptState_GetVar4041(SCRIPT_STATE* state) {
+u16 ScriptState_GetVar4041(ScriptState* state) {
     return GetScriptVar(state, VAR_UNK_4041);
 }
 
-void ScriptState_SetVar4041(SCRIPT_STATE* state, u16 value) {
+void ScriptState_SetVar4041(ScriptState* state, u16 value) {
     SetScriptVar(state, VAR_UNK_4041, value);
 }
 
 void sub_02066D60(SAVEDATA* savedata) {
-    SCRIPT_STATE* state = SaveArray_Flags_get(savedata);
+    ScriptState* state = SaveArray_Flags_Get(savedata);
     u32 rand = LCRandom() % 98;
 
     ScriptState_SetVar4041(state, rand + 2);
 }
 
-void sub_02066D80(SCRIPT_STATE* state) {
+void sub_02066D80(ScriptState* state) {
     u16 var = GetScriptVar(state, VAR_UNK_4042);
     u16 unk_value = 10000;
     if (var < 10000) {
@@ -201,51 +201,51 @@ void sub_02066D80(SCRIPT_STATE* state) {
     SetScriptVar(state, VAR_UNK_4042, unk_value);
 }
 
-u16 ScriptState_GetVar4042(SCRIPT_STATE* state) {
+u16 ScriptState_GetVar4042(ScriptState* state) {
     return GetScriptVar(state, VAR_UNK_4042);
 }
 
-u16 ScriptState_GetVar404B(SCRIPT_STATE* state) {
+u16 ScriptState_GetVar404B(ScriptState* state) {
     return GetScriptVar(state, VAR_UNK_404B);
 }
 
-void ScriptState_SetVar404B(SCRIPT_STATE* state, u16 value) {
+void ScriptState_SetVar404B(ScriptState* state, u16 value) {
     SetScriptVar(state, VAR_UNK_404B, value);
 }
 
-u16 ScriptState_GetBattleFactoryPrintProgress(SCRIPT_STATE* state) {
+u16 ScriptState_GetBattleFactoryPrintProgress(ScriptState* state) {
     return GetScriptVar(state, VAR_BATTLE_FACTORY_PRINT_PROGRESS);
 }
 
-u16 ScriptState_GetBattleHallPrintProgress(SCRIPT_STATE* state) {
+u16 ScriptState_GetBattleHallPrintProgress(ScriptState* state) {
     return GetScriptVar(state, VAR_BATTLE_HALL_PRINT_PROGRESS);
 }
 
-u16 ScriptState_GetBattleCastlePrintProgress(SCRIPT_STATE* state) {
+u16 ScriptState_GetBattleCastlePrintProgress(ScriptState* state) {
     return GetScriptVar(state, VAR_BATTLE_CASTLE_PRINT_PROGRESS);
 }
 
-u16 ScriptState_GetBattleArcadePrintProgress(SCRIPT_STATE* state) {
+u16 ScriptState_GetBattleArcadePrintProgress(ScriptState* state) {
     return GetScriptVar(state, VAR_BATTLE_ARCADE_PRINT_PROGRESS);
 }
 
-u16 ScriptState_GetBattleTowerPrintProgress(SCRIPT_STATE* state) {
+u16 ScriptState_GetBattleTowerPrintProgress(ScriptState* state) {
     return GetScriptVar(state, VAR_BATTLE_TOWER_PRINT_PROGRESS);
 }
 
-u16 ScriptState_GetVar404C(SCRIPT_STATE* state) {
+u16 ScriptState_GetVar404C(ScriptState* state) {
     return GetScriptVar(state, VAR_UNK_404C);
 }
 
-void ScriptState_SetVar404C(SCRIPT_STATE* state, u16 value) {
+void ScriptState_SetVar404C(ScriptState* state, u16 value) {
     SetScriptVar(state, VAR_UNK_404C, value);
 }
 
-u16 ScriptState_GetVar4052(SCRIPT_STATE* state) {
+u16 ScriptState_GetVar4052(ScriptState* state) {
     return GetScriptVar(state, VAR_UNK_4052);
 }
 
-BOOL ScriptState_IsInRocketTakeover(SCRIPT_STATE* state) {
+BOOL ScriptState_IsInRocketTakeover(ScriptState* state) {
     u16 var = GetScriptVar(state, VAR_SCENE_ROCKET_TAKEOVER);
     if (var < 2 || var > 4) {
         return FALSE;
@@ -254,15 +254,15 @@ BOOL ScriptState_IsInRocketTakeover(SCRIPT_STATE* state) {
     return TRUE;
 }
 
-u16 ScriptState_GetVar4057(SCRIPT_STATE* state) {
+u16 ScriptState_GetVar4057(ScriptState* state) {
     return GetScriptVar(state, VAR_UNK_4057);
 }
 
-void ScriptState_SetVar4057(SCRIPT_STATE* state, u16 value) {
+void ScriptState_SetVar4057(ScriptState* state, u16 value) {
     SetScriptVar(state, VAR_UNK_4057, value);
 }
 
-void ScriptState_UpdateBuenasPasswordSet(SCRIPT_STATE* state) {
+void ScriptState_UpdateBuenasPasswordSet(ScriptState* state) {
     u16 set = GetScriptVar(state, VAR_BUENAS_PASSWORD_SET);
     u16 new_set = LCRandom() % 30;
 
@@ -273,6 +273,6 @@ void ScriptState_UpdateBuenasPasswordSet(SCRIPT_STATE* state) {
     SetScriptVar(state, VAR_BUENAS_PASSWORD_SET, new_set);
 }
 
-u16 ScriptState_GetBuenasPasswordSet(SCRIPT_STATE* state) {
+u16 ScriptState_GetBuenasPasswordSet(ScriptState* state) {
     return GetScriptVar(state, VAR_BUENAS_PASSWORD_SET);
 }

@@ -14,9 +14,9 @@ Unk02090C94 *sub_02090C94(u8 a0, u8 a1, SAVEDATA *saveData, u32 a3, HeapID heapI
     Unk02090C94 *ptr = AllocFromHeap(heapId, sizeof(Unk02090C94));
     ptr->unk0 = a0;
     ptr->unk1 = a1;
-    ptr->pokedex = Save_Pokedex_get(saveData);
-    ptr->easyChat = SaveData_EasyChat_get(saveData);
-    ptr->gameCleared = CheckGameClearFlag(SaveArray_Flags_get(saveData));
+    ptr->pokedex = Save_Pokedex_Get(saveData);
+    ptr->easyChat = SaveData_EasyChat_Get(saveData);
+    ptr->gameCleared = CheckGameClearFlag(SaveArray_Flags_Get(saveData));
     ptr->unk5 = 0;
     ptr->unk2 = 1;
     ptr->unk3 = 0;
@@ -24,7 +24,7 @@ Unk02090C94 *sub_02090C94(u8 a0, u8 a1, SAVEDATA *saveData, u32 a3, HeapID heapI
     ptr->unk24 = a3;
 
     if (a0 == 2) {
-        MailMsg_init_withBank(&ptr->mailMessage, 3);
+        MailMsg_Init_WithBank(&ptr->mailMessage, 3);
     } else {
         for (int i = 0; i < 2; i++) {
             ptr->unk1C[i] = -1;
@@ -77,7 +77,7 @@ void sub_02090D54(Unk02090C94 *a0, MAIL_MESSAGE *mailMessage) {
 }
 
 void sub_02090D60(Unk02090C94 *a0, MAIL_MESSAGE *mailMessage) {
-    MailMsg_copy(mailMessage, &a0->mailMessage);
+    MailMsg_Copy(mailMessage, &a0->mailMessage);
 }
 
 u8 sub_02090D70(Unk02090C94 *a0) {
@@ -131,7 +131,7 @@ BOOL sub_02090DC0(Unk02090C94 *a0, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2) {
         return msg1->msg_bank == a0->unk1C[0] && msg1->msg_no == a0->unk1C[1];
     case 2:
     default:
-        return MailMsg_compare(&a0->mailMessage, msg2);
+        return MailMsg_Compare(&a0->mailMessage, msg2);
     }
 }
 
@@ -160,7 +160,7 @@ void sub_02090E5C(Unk02090C94 *a0) {
 }
 
 Unk02090E68 *sub_02090E68(SAVEDATA *saveData, u16 a1, u8 partyIdx, u8 a3, HeapID heapId) {
-    MAILBOX *mailbox = Save_Mailbox_get(saveData);
+    MAILBOX *mailbox = Save_Mailbox_Get(saveData);
     Unk02090E68 *ptr = AllocFromHeapAtEnd(heapId, sizeof(Unk02090E68));
     MI_CpuFill8(ptr, 0, sizeof(Unk02090E68));
 
@@ -174,7 +174,7 @@ Unk02090E68 *sub_02090E68(SAVEDATA *saveData, u16 a1, u8 partyIdx, u8 a3, HeapID
 
     MAIL *mail = Mail_New(heapId);
     ptr->mail = mail;
-    Mail_init(mail);
+    Mail_Init(mail);
     Mail_SetNewMessageDetails(ptr->mail, MAIL_NONE, partyIdx, saveData);
 
     return ptr;
@@ -189,7 +189,7 @@ Unk02090E68 *sub_02090EC0(SAVEDATA *saveData, int n, u16 i, HeapID heapId) {
     ptr->unkC = i;
     ptr->saveData = saveData;
 
-    MAILBOX *mailbox = Save_Mailbox_get(saveData);
+    MAILBOX *mailbox = Save_Mailbox_Get(saveData);
     ptr->mailbox = mailbox;
     ptr->mail = Mailbox_AllocAndFetchMailI(&mailbox->msgs[0], n, i, heapId);
 
@@ -252,7 +252,7 @@ int sub_02090FA8(MAILBOX *mailbox, Pokemon *mon, HeapID heapId) {
 
         GetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
         Mailbox_CopyMailToSlotI(&mailbox->msgs[0], 0, idx, mail);
-        Mail_init(mail);
+        Mail_Init(mail);
         SetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
         SetMonData(mon, MON_DATA_HELD_ITEM, &item);
         FreeToHeap(mail);

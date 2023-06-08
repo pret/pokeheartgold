@@ -7,7 +7,7 @@
 
 extern WINDOW *ov01_021EEC00(struct FieldSystem *fsys, u8 type, u8 x, u8 y);
 
-BOOL ScrCmd_116(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_116(ScriptContext *ctx) {
     u8 type = ScriptReadByte(ctx);
     u16 x = ScriptGetVar(ctx);
     u16 y = ScriptGetVar(ctx);
@@ -16,47 +16,47 @@ BOOL ScrCmd_116(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_117(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_117(ScriptContext *ctx) {
     WINDOW **window = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_POINTS_BOX);
     ov01_021EEC68(*window);
     return FALSE;
 }
 
-BOOL ScrCmd_118(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_118(ScriptContext *ctx) {
     u8 type = ScriptReadByte(ctx);
     WINDOW **window = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_POINTS_BOX);
     ov01_021EEC7C(ctx->fsys, *window, type);
     return FALSE;
 }
 
-BOOL ScrCmd_GetCoinAmount(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_GetCoinAmount(ScriptContext *ctx) {
     u16 *ptr = ScriptGetVarPointer(ctx);
     *ptr = CheckCoins(Save_PlayerData_GetCoinsAddr(ctx->fsys->savedata));
     return FALSE;
 }
 
-BOOL ScrCmd_GiveCoins(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_GiveCoins(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 amount = ScriptGetVar(ctx);
     GiveCoins(Save_PlayerData_GetCoinsAddr(fsys->savedata), amount);
     return FALSE;
 }
 
-BOOL ScrCmd_TakeCoins(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_TakeCoins(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 amount = ScriptGetVar(ctx);
     TakeCoins(Save_PlayerData_GetCoinsAddr(fsys->savedata), amount);
     return FALSE;
 }
 
-BOOL ScrCmd_569(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_569(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 *ptr = ScriptGetVarPointer(ctx);
     TakeCoins(Save_PlayerData_GetCoinsAddr(fsys->savedata), *ptr);
     return FALSE;
 }
 
-BOOL ScrCmd_CheckCoinsImmediate(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_CheckCoinsImmediate(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 *ptr = ScriptGetVarPointer(ctx);
     u32 amount = ScriptReadWord(ctx);
@@ -69,7 +69,7 @@ BOOL ScrCmd_CheckCoinsImmediate(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_CheckCoinsVar(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_CheckCoinsVar(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 *resultPtr = ScriptGetVarPointer(ctx);
     u16 *amountPtr = ScriptGetVarPointer(ctx);
@@ -82,7 +82,7 @@ BOOL ScrCmd_CheckCoinsVar(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_CheckGiveCoins(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_CheckGiveCoins(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 *ptr = ScriptGetVarPointer(ctx);
     u16 amount = ScriptGetVar(ctx);
@@ -90,25 +90,25 @@ BOOL ScrCmd_CheckGiveCoins(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GiveAthletePoints(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_GiveAthletePoints(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 amount = ScriptGetVar(ctx);
-    SavePokeathlon_AddAthletePoints(Save_Pokeathlon_get(fsys->savedata), amount);
+    SavePokeathlon_AddAthletePoints(Save_Pokeathlon_Get(fsys->savedata), amount);
     return FALSE;
 }
 
-BOOL ScrCmd_TakeAthletePoints(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_TakeAthletePoints(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 amount = ScriptGetVar(ctx);
-    SavePokeathlon_SubAthletePoints(Save_Pokeathlon_get(fsys->savedata), amount);
+    SavePokeathlon_SubAthletePoints(Save_Pokeathlon_Get(fsys->savedata), amount);
     return FALSE;
 }
 
-BOOL ScrCmd_CheckAthletePoints(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_CheckAthletePoints(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 *ptr = ScriptGetVarPointer(ctx);
     u16 amount = ScriptGetVar(ctx);
-    u32 points = SavePokeathlon_GetAthletePoints(Save_Pokeathlon_get(fsys->savedata));
+    u32 points = SavePokeathlon_GetAthletePoints(Save_Pokeathlon_Get(fsys->savedata));
     if (points < amount) {
         *ptr = FALSE;
     } else {

@@ -24,7 +24,7 @@
 .public FillBgTilemapRect
 .public AllocWindows
 .public AddWindowParameterized
-.public WindowArray_dtor
+.public WindowArray_Delete
 .public ScheduleWindowCopyToVram
 .public ClearWindowTilemapAndScheduleTransfer
 .public FillWindowPixelBuffer

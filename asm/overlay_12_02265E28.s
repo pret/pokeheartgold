@@ -11,7 +11,7 @@ ov12_02265E28: ; 0x02265E28
 	add r5, r0, #0
 	mov r0, #8
 	mov r1, #5
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	ldr r0, [r5, #4]
 	bl ov12_0223A8E4
@@ -115,7 +115,7 @@ _02265E82:
 	str r6, [sp, #4]
 	bl sub_0200D71C
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

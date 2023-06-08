@@ -18,8 +18,8 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public GfGfxLoader_GetCharData
 .public GfGfxLoader_GetPlttData
 .public GfGfxLoader_LoadCharDataFromOpenNarc
@@ -45,13 +45,13 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
-.public MessageFormat_new
-.public MessageFormat_delete
+.public MessageFormat_New
+.public MessageFormat_Delete
 .public BufferIntegerAsString
 .public BufferItemName
 .public StringExpandPlaceholders
-.public MessagePrinter_new
-.public MessagePrinter_delete
+.public MessagePrinter_New
+.public MessagePrinter_Delete
 .public sub_0200E398
 .public DrawFrameAndWindow1
 .public sub_0200E5D4
@@ -134,7 +134,7 @@
 .public sub_02025364
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetFrame
 .public NNS_G2dInitOamManagerModule

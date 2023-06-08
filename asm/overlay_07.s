@@ -152,37 +152,37 @@ _0221BEF8:
 	str r0, [r1]
 	mov r0, #7
 	add r1, r5, #0
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x1b
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	mov r0, #8
 	add r1, r5, #0
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x6d
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #0x16
 	add r1, r5, #0
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x6e
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #0x17
 	add r1, r5, #0
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0x6f
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #0x18
 	add r1, r5, #0
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #7
 	lsl r1, r1, #6
 	str r0, [r4, r1]
 	mov r0, #0x19
 	add r1, r5, #0
-	bl NARC_ctor
+	bl NARC_New
 	mov r2, #0x71
 	lsl r2, r2, #2
 	str r0, [r4, r2]
@@ -272,7 +272,7 @@ _0221BFF0:
 	lsl r6, r6, #4
 _0221BFF8:
 	ldr r0, [r5, r6]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #6
@@ -8537,7 +8537,7 @@ _0221FBD6:
 	bl ov12_0223C1F4
 	ldr r1, [sp, #0x18]
 	mov r0, #8
-	bl NARC_ctor
+	bl NARC_New
 	add r6, r0, #0
 	mov r7, #0
 	str r4, [sp, #0x1c]
@@ -8605,7 +8605,7 @@ _0221FC82:
 	cmp r7, #4
 	blt _0221FC0E
 	add r0, r6, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #0
 	str r0, [sp, #0x2c]
 	add r7, r4, #0
@@ -46441,7 +46441,7 @@ _02232750: ; jump table
 _02232758:
 	ldr r1, [r4]
 	mov r0, #0x5f
-	bl NARC_ctor
+	bl NARC_New
 	add r1, r4, #0
 	add r1, #0x8c
 	str r0, [r1]
@@ -46726,7 +46726,7 @@ _02232990:
 	add r4, #0x8c
 	str r1, [r0]
 	ldr r0, [r4]
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [sp]
 	bl DestroySysTask
 _022329AC:
@@ -50264,7 +50264,7 @@ _0223431A:
 	str r0, [sp, #0x1c]
 	ldr r1, [r1]
 	mov r0, #8
-	bl NARC_ctor
+	bl NARC_New
 	add r4, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -50335,7 +50335,7 @@ _0223431A:
 	add r2, r4, #0
 	bl sub_0200D71C
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -50999,7 +50999,7 @@ _022347D4:
 	bne _02234948
 	ldr r1, [sp, #0x10]
 	mov r0, #0xb4
-	bl NARC_ctor
+	bl NARC_New
 	add r1, sp, #0x24
 	lsl r2, r6, #0x10
 	add r1, #2
@@ -51018,7 +51018,7 @@ _022347D4:
 	lsr r2, r2, #0x10
 	bl sub_02072A20
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldr r0, [r5]
 	add r2, sp, #0x24
 	lsl r0, r0, #2

@@ -34,7 +34,7 @@ const struct BadgeMartItems _020FBF22[] = {
     { ITEM_MAX_REPEL,    4 },
 };
 
-BOOL ScrCmd_MartBuy(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_MartBuy(ScriptContext *ctx) {
     u16 unused;
     u8 badge_count;
     u8 i;
@@ -88,7 +88,7 @@ BOOL ScrCmd_MartBuy(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_MartSell(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_MartSell(ScriptContext *ctx) {
     u16 dummy[1];
 
     dummy[0] = 0xFFFF;
@@ -160,7 +160,7 @@ const u16 *_0210FA3C[] = {
     _020FBBD8,
 };
 
-BOOL ScrCmd_SpecialMartBuy(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_SpecialMartBuy(ScriptContext *ctx) {
     u16 which;
 
     which = ScriptGetVar(ctx);
@@ -181,7 +181,7 @@ const u16 *_0210F9CC[] = {
     _020FBAEC,
 };
 
-BOOL ScrCmd_DecorationMart(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_DecorationMart(ScriptContext *ctx) {
     u16 which;
 
     which = ScriptGetVar(ctx);
@@ -207,7 +207,7 @@ const u16 *_0210F9E8[] = {
     _020FBB74,
 };
 
-BOOL ScrCmd_SealMart(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_SealMart(ScriptContext *ctx) {
     u16 which;
 
     which = ScriptGetVar(ctx);
@@ -401,15 +401,15 @@ const struct MartItem *_0210FA04[] = {
     _020FBEEE,
 };
 
-BOOL ScrCmd_771(SCRIPTCONTEXT *ctx) {
-    SCRIPT_STATE *flagsys;
+BOOL ScrCmd_771(ScriptContext *ctx) {
+    ScriptState *flagsys;
     RTCDate date;
 
-    flagsys = SaveArray_Flags_get(ctx->fsys->savedata);
+    flagsys = SaveArray_Flags_Get(ctx->fsys->savedata);
     GF_RTC_CopyDate(&date);
 
     // UB: Possibly illegal access to _0210F9CC between Tuesday and Saturday, inclusive
-    if (Pokedex_GetNatDexFlag(Save_Pokedex_get(ctx->fsys->savedata))) {
+    if (Pokedex_GetNatDexFlag(Save_Pokedex_Get(ctx->fsys->savedata))) {
         InitMartUI(ctx->taskman, ctx->fsys, _0210F9CC[date.week], 3, 0, 0, _0210FA04[date.week + 7]);
     } else {
         InitMartUI(ctx->taskman, ctx->fsys, _0210F9CC[date.week], 3, 0, 0, _0210FA04[date.week]);
@@ -468,11 +468,11 @@ const struct MartItem *_0210F9D4[] = {
     _020FBBA4,
 };
 
-BOOL ScrCmd_772(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_772(ScriptContext *ctx) {
     POKEATHLON_SAV *pokeathlon;
     int i;
 
-    pokeathlon = Save_Pokeathlon_get(ctx->fsys->savedata);
+    pokeathlon = Save_Pokeathlon_Get(ctx->fsys->savedata);
     for (i = 0; i < 27; i++) {
         if (!sub_02031A78(pokeathlon, i)) {
             break;
@@ -482,10 +482,10 @@ BOOL ScrCmd_772(SCRIPTCONTEXT *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_834(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_834(ScriptContext *ctx) {
     u16 *sp0;
     POKEATHLON_SAV *pokeathlon;
-    SCRIPT_STATE *scriptState;
+    ScriptState *scriptState;
     int r6;
     int r4;
     RTCDate date;
@@ -493,12 +493,12 @@ BOOL ScrCmd_834(SCRIPTCONTEXT *ctx) {
     int i;
 
     sp0 = ScriptGetVarPointer(ctx);
-    pokeathlon = Save_Pokeathlon_get(ctx->fsys->savedata);
+    pokeathlon = Save_Pokeathlon_Get(ctx->fsys->savedata);
     r6 = 0;
     r4 = 0;
-    scriptState = SaveArray_Flags_get(ctx->fsys->savedata);
+    scriptState = SaveArray_Flags_Get(ctx->fsys->savedata);
     GF_RTC_CopyDate(&date);
-    if (Pokedex_GetNatDexFlag(Save_Pokedex_get(ctx->fsys->savedata))) {
+    if (Pokedex_GetNatDexFlag(Save_Pokedex_Get(ctx->fsys->savedata))) {
         r3 = _0210FA04[date.week + 7];
     } else {
         r3 = _0210FA04[date.week];
@@ -522,13 +522,13 @@ BOOL ScrCmd_834(SCRIPTCONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_835(SCRIPTCONTEXT *ctx) {
+BOOL ScrCmd_835(ScriptContext *ctx) {
     u16 *ret_ptr;
     int i;
     POKEATHLON_SAV *pokeathlon;
 
     ret_ptr = ScriptGetVarPointer(ctx);
-    pokeathlon = Save_Pokeathlon_get(ctx->fsys->savedata);
+    pokeathlon = Save_Pokeathlon_Get(ctx->fsys->savedata);
     for (i = 0; i < 27; i++) {
         if (!sub_02031A78(pokeathlon, i)) {
             break;

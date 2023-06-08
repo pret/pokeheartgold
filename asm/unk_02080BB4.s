@@ -436,7 +436,7 @@ _02080F12:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 _02080F36:
 	mov r0, #0x1f
@@ -452,7 +452,7 @@ _02080F36:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 _02080F5A:
 	mov r0, #0x1f
@@ -468,7 +468,7 @@ _02080F5A:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 _02080F7E:
 	mov r0, #0x1f
@@ -484,7 +484,7 @@ _02080F7E:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 _02080FA2:
 	mov r0, #0x1f
@@ -500,7 +500,7 @@ _02080FA2:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 _02080FC6:
 	mov r0, #0x1f
@@ -516,7 +516,7 @@ _02080FC6:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 _02080FEA:
 	mov r0, #0x1f
@@ -532,7 +532,7 @@ _02080FEA:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 _0208100E:
 	mov r0, #0x1f
@@ -548,7 +548,7 @@ _0208100E:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 _02081032:
 	mov r0, #0x1f
@@ -569,7 +569,7 @@ _02081032:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 _02081062:
 	mov r0, #0x1f
@@ -590,7 +590,7 @@ _02081062:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 _02081092:
 	mov r0, #0x1f
@@ -611,7 +611,7 @@ _02081092:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 _020810C2:
 	mov r0, #0x1f
@@ -632,7 +632,7 @@ _020810C2:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 _020810F2:
 	mov r0, #0x1f
@@ -653,7 +653,7 @@ _020810F2:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 _02081122:
 	mov r0, #0x1f
@@ -674,7 +674,7 @@ _02081122:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 _02081152:
 	mov r0, #0x1f
@@ -696,7 +696,7 @@ _02081152:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 _02081184:
 	mov r0, #0x1f
@@ -718,7 +718,7 @@ _02081184:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 _020811B6:
 	mov r0, #0x1f
@@ -740,7 +740,7 @@ _020811B6:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 _020811E8:
 	mov r0, #0x1f
@@ -762,7 +762,7 @@ _020811E8:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 _0208121A:
 	mov r0, #0x1f
@@ -790,7 +790,7 @@ _02081248:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 _0208125C:
 	mov r0, #0x1f
@@ -812,7 +812,7 @@ _0208125C:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 _0208128E:
 	mov r0, #0x1f
@@ -833,7 +833,7 @@ _0208128E:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 _020812BE:
 	mov r2, #0x1f
@@ -1303,7 +1303,7 @@ _0208165E:
 	ldr r1, [r5, r1]
 	bl StringExpandPlaceholders
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #8]
 	bl sub_0208AD64
 	add r4, r0, #0
@@ -1591,7 +1591,7 @@ _02081894:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r7, _02081A50 ; =0x00000C65
 	ldr r3, _02081A64 ; =0x00000836
 	ldrb r5, [r4, r7]
@@ -1888,7 +1888,7 @@ sub_02081A74: ; 0x02081A74
 	ldr r1, [r5, r1]
 	bl StringExpandPlaceholders
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	bl sub_0208AD64
 	add r4, r0, #0
@@ -2096,7 +2096,7 @@ _02081D1E:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0
 	add r0, r4, #0
 	mvn r1, r1
@@ -2141,7 +2141,7 @@ _02081D84:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0
 	add r0, r4, #0
 	mvn r1, r1
@@ -2195,7 +2195,7 @@ _02081DF0:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0
 	add r0, r4, #0
 	mvn r1, r1
@@ -2324,7 +2324,7 @@ _02081F24:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0
 	add r0, r4, #0
 	mvn r1, r1
@@ -2362,7 +2362,7 @@ sub_02081F8C: ; 0x02081F8C
 	ldr r1, [r5, r1]
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0
 	add r0, r5, #0
 	mvn r1, r1
@@ -2401,7 +2401,7 @@ sub_02081FE0: ; 0x02081FE0
 	ldr r1, [r5, r1]
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0
 	add r0, r5, #0
 	mvn r1, r1
@@ -2442,7 +2442,7 @@ sub_02082038: ; 0x02082038
 	ldr r1, [r5, r1]
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0
 	add r0, r5, #0
 	mvn r1, r1
@@ -2478,7 +2478,7 @@ sub_02082084: ; 0x02082084
 	ldr r1, [r5, r1]
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0
 	add r0, r5, #0
 	mvn r1, r1
@@ -2625,7 +2625,7 @@ _020821A0:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0
 	add r0, r4, #0
 	mvn r1, r1
@@ -2654,7 +2654,7 @@ _020821EA:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0
 	add r0, r4, #0
 	mvn r1, r1
@@ -2683,7 +2683,7 @@ _0208222A:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0
 	add r0, r4, #0
 	mvn r1, r1
@@ -2713,7 +2713,7 @@ _0208226C:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0
 	add r0, r4, #0
 	mvn r1, r1
@@ -2795,7 +2795,7 @@ _02082312:
 	ldr r1, [r4, r1]
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0
 	add r0, r4, #0
 	mvn r1, r1
@@ -2850,7 +2850,7 @@ sub_02082370: ; 0x02082370
 	ldr r1, [r5, r1]
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0
 	add r0, r5, #0
 	mvn r1, r1
@@ -2890,7 +2890,7 @@ sub_020823F4: ; 0x020823F4
 	ldr r1, [r5, r1]
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0
 	add r0, r5, #0
 	mvn r1, r1
@@ -2929,7 +2929,7 @@ sub_02082448: ; 0x02082448
 	ldr r1, [r5, r1]
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0
 	add r0, r5, #0
 	mvn r1, r1
@@ -2970,7 +2970,7 @@ sub_020824A0: ; 0x020824A0
 	ldr r1, [r5, r1]
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0
 	add r0, r5, #0
 	mvn r1, r1
@@ -3009,7 +3009,7 @@ sub_020824F4: ; 0x020824F4
 	ldr r1, [r5, r1]
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	mov r1, #0
 	add r0, r5, #0
 	mvn r1, r1
@@ -3136,7 +3136,7 @@ sub_020825D8: ; 0x020825D8
 	ldr r1, [r5, r1]
 	bl StringExpandPlaceholders
 	add r0, r7, #0
-	bl String_dtor
+	bl String_Delete
 	cmp r4, #0
 	bne _02082632
 	mov r0, #0
@@ -3183,7 +3183,7 @@ _02082678:
 _02082682:
 	mov r0, #5
 	mov r1, #0xc
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	mov r1, #0x82
 	lsl r1, r1, #4
 	str r0, [r5, r1]

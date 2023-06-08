@@ -1,9 +1,9 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public SaveArray_get
+.public SaveArray_Get
 .public Save_FollowPoke_sizeof
-.public Save_FollowPoke_init
-.public Save_FollowPoke_get
+.public Save_FollowPoke_Init
+.public Save_FollowPoke_Get
 .public SavFollowPoke_SetMapId
 .public SavFollowPoke_GetMapId
 .public SavFollowPoke_SetUnused2bitField

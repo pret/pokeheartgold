@@ -80,8 +80,8 @@
 .public sub_02024B68
 .public sub_02025224
 .public String_New
-.public String_dtor
-.public StringSetEmpty
+.public String_Delete
+.public String_SetEmpty
 .public Options_SetButtonModeOnMain
 .public Options_GetTextSpeed
 .public Options_SetTextSpeed

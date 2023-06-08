@@ -216,11 +216,11 @@ ov113_021E5A7C: ; 0x021E5A7C
 	strb r0, [r5, #0x19]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
-	bl Save_Pokedex_get
+	bl Save_Pokedex_Get
 	str r0, [r5, #0xc]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #4]
-	bl SaveArray_Flags_get
+	bl SaveArray_Flags_Get
 	bl ScriptState_GetUnownReportLevel
 	add r1, r5, #0
 	add r1, #0x3c
@@ -1570,7 +1570,7 @@ ov113_021E650C: ; 0x021E650C
 	add r5, r0, #0
 	ldr r1, [r5]
 	mov r0, #0xf1
-	bl NARC_ctor
+	bl NARC_New
 	mov r2, #0
 	str r2, [sp]
 	ldr r1, [r5]
@@ -1678,7 +1678,7 @@ ov113_021E650C: ; 0x021E650C
 	mov r2, #0xf
 	bl ov113_021E64DC
 	add r0, r4, #0
-	bl NARC_dtor
+	bl NARC_Delete
 	ldrb r0, [r5, #0x19]
 	mov r1, #1
 	add r2, r1, #0
@@ -1750,7 +1750,7 @@ ov113_021E6680: ; 0x021E6680
 	mov r0, #0x10
 	ldr r2, [r4]
 	add r1, r0, #0
-	bl MessageFormat_new_custom
+	bl MessageFormat_New_Custom
 	str r0, [r4, #0x48]
 	mov r0, #2
 	ldr r1, [r4]
@@ -1784,17 +1784,17 @@ ov113_021E66E4: ; 0x021E66E4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x5c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x58]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x54]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x50]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x4c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x48]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0x44]
 	bl DestroyMsgData
 	mov r0, #4
@@ -1938,7 +1938,7 @@ ov113_021E677C: ; 0x021E677C
 	bl sub_0200E2B4
 	ldr r1, [r5]
 	mov r0, #0x14
-	bl NARC_ctor
+	bl NARC_New
 	add r1, r5, #0
 	add r1, #0xfc
 	str r0, [r1]
@@ -2079,7 +2079,7 @@ ov113_021E6930: ; 0x021E6930
 	add r0, r4, #0
 	add r0, #0xfc
 	ldr r0, [r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	add r0, r4, #0
 	add r0, #0xac
 	ldr r0, [r0]

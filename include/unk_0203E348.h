@@ -118,14 +118,14 @@ void *sub_0203E460(FieldSystem *fsys, u8 a1);
 u16 sub_0203E4CC(void *a0);
 void sub_0203F9C4(FieldSystem *fsys, struct MoveRelearner *moveRelearner);
 
-static inline void InitUnkStructScrCmd408(struct UnkStruct_ScrCmd408 *data, u16 a1, u16 a2, SCRIPTCONTEXT *ctx) {
+static inline void InitUnkStructScrCmd408(struct UnkStruct_ScrCmd408 *data, u16 a1, u16 a2, ScriptContext *ctx) {
     MI_CpuClear8(data, sizeof(struct UnkStruct_ScrCmd408));
     data->unk_4 = a1;
     data->unk_6 = a2;
     data->saveData = ctx->fsys->savedata;
 }
 
-static inline PCBoxAppData *PCBoxAppData_new(SCRIPTCONTEXT *ctx) {
+static inline PCBoxAppData *PCBoxAppData_New(ScriptContext *ctx) {
     PCBoxAppData *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(PCBoxAppData));
     ret->saveData = ctx->fsys->savedata;
     ret->unk8 = ScriptReadByte(ctx);
@@ -149,7 +149,7 @@ void *sub_0203E5D0(HeapID heapId, FieldSystem *fsys, u16 a2);
 void *sub_0203FAB4(FieldSystem *fsys, u8 a1, u8 a2, u16 a3, HeapID heapId);
 ScratchCardAppData *ScratchOffCards_Create(FieldSystem *fsys, HeapID heapId);
 void sub_0203FC14(FieldSystem *fsys, u16 a1, u16 a2);
-void *PhoneUI_new(FieldSystem *fsys);
+void *PhoneUI_New(FieldSystem *fsys);
 void *sub_0203EEE4(FieldSystem *fsys);
 void *sub_0203EF40(FieldSystem *fsys);
 void *sub_0203EFA0(FieldSystem *fsys);

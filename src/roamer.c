@@ -6,7 +6,7 @@ u32 Save_Roamers_sizeof(void) {
     return sizeof(ROAMER_SAVE);
 }
 
-void Save_Roamers_init(ROAMER_SAVE *roamer) {
+void Save_Roamers_Init(ROAMER_SAVE *roamer) {
     memset(roamer, 0, sizeof(ROAMER_SAVE));
     roamer->rand[0] = MTRandom();
     roamer->rand[1] = MTRandom();
@@ -33,12 +33,12 @@ u32 Roamers_GetRand(ROAMER_SAVE *roamer, u32 which) {
     }
 }
 
-ROAMER_SAVE *Save_Roamers_get(SAVEDATA *saveData) {
-    return SaveArray_get(saveData, SAVE_ROAMER);
+ROAMER_SAVE *Save_Roamers_Get(SAVEDATA *saveData) {
+    return SaveArray_Get(saveData, SAVE_ROAMER);
 }
 
 void RoamerSave_SetOutbreakActive(SAVEDATA *saveData) {
-    ROAMER_SAVE *roamer = Save_Roamers_get(saveData);
+    ROAMER_SAVE *roamer = Save_Roamers_Get(saveData);
     roamer->unk_64 = 1;
 }
 
@@ -72,7 +72,7 @@ u8 GetRoamerIsActiveByIndex(ROAMER_SAVE *roamerSave, int a1) {
     return roamerSave->data[a1].active;
 }
 
-void RoamerMon_init(ROAMER ** roamer_p) {
+void RoamerMon_Init(ROAMER ** roamer_p) {
     memset(*roamer_p, 0, sizeof(ROAMER));
 }
 

@@ -64,6 +64,6 @@ typedef struct {
 } MYSTERY_GIFT_SAVE; // size = 0x1680
 
 u32 Save_MysteryGift_sizeof(void);
-void Save_MysteryGift_init(MYSTERY_GIFT_SAVE *mg);
+void Save_MysteryGift_Init(MYSTERY_GIFT_SAVE *mg);
 
 #endif //POKEHEARTGOLD_MYSTERY_GIFT_H

@@ -91,7 +91,7 @@ u32 sub_0205C7A0(PlayerAvatar *avatar);
 u32 sub_0205C7A4(PlayerAvatar *avatar);
 void sub_0205C7A8(PlayerAvatar *avatar);
 void sub_0205C7B4(PlayerAvatar *avatar);
-void FlypointsPlayerSub_init(struct FlypointsPlayerSub *fpsub);
+void FlypointsPlayerSub_Init(struct FlypointsPlayerSub *fpsub);
 BOOL FlypointsPlayerSub_CheckRunningShoes(struct FlypointsPlayerSub *fpsub);
 void FlypointsPlayerSub_SetRunningShoesFlag(struct FlypointsPlayerSub *fpsub, BOOL unkB);
 int sub_0205C7EC(PlayerAvatar_SUB *avatar);

@@ -1836,7 +1836,7 @@ ov81_0223EC88: ; 0x0223EC88
 	cmp r0, #0
 	bne _0223ECDA
 	ldr r0, [r4, #4]
-	bl OverlayManager_run
+	bl OverlayManager_Run
 	cmp r0, #1
 	bne _0223ECDA
 	mov r1, #7
@@ -2086,7 +2086,7 @@ _0223EE8C:
 	ldr r0, _0223EF58 ; =_02103A1C
 	ldr r1, [r4, r1]
 	mov r2, #0x64
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #4]
 	ldrb r1, [r4, #0x13]
 	mov r0, #2
@@ -2956,7 +2956,7 @@ _0223F5C0:
 	ldr r0, _0223F680 ; =_02103A1C
 	ldr r1, [r4, r1]
 	mov r2, #0x64
-	bl OverlayManager_new
+	bl OverlayManager_New
 	str r0, [r4, #4]
 	ldrb r1, [r4, #0x13]
 	mov r0, #2
@@ -5368,7 +5368,7 @@ _0224090C:
 	add r2, r4, #0
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add sp, #0x14
@@ -5422,7 +5422,7 @@ _02240980:
 	add r2, r4, #0
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add sp, #0x14
@@ -5490,9 +5490,9 @@ ov81_022409B0: ; 0x022409B0
 	add r1, r6, #0
 	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [sp, #0x18]
-	bl String_dtor
+	bl String_Delete
 	add r0, r7, #0
 	mov r1, #0xb0
 	mov r2, #0
@@ -5530,7 +5530,7 @@ ov81_022409B0: ; 0x022409B0
 	add r0, r4, #0
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	b _02240AC8
 _02240A96:
 	cmp r7, #1
@@ -5554,7 +5554,7 @@ _02240A96:
 	add r2, r5, #0
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 _02240AC8:
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
@@ -5639,7 +5639,7 @@ _02240B68:
 	lsl r7, r7, #0xa
 _02240B6C:
 	add r0, r4, #0
-	bl StringSetEmpty
+	bl String_SetEmpty
 	add r0, sp, #0x4c
 	ldrb r0, [r0]
 	cmp r0, #2
@@ -5663,7 +5663,7 @@ _02240B6C:
 	bl AddTextPrinterParameterized2
 _02240BA0:
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -5766,16 +5766,16 @@ _02240C6C:
 	ldr r0, [r5, #0x1c]
 	bl DestroyMsgData
 	ldr r0, [r5, #0x20]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r5, #0x24]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r5, #0x28]
-	bl String_dtor
+	bl String_Delete
 	mov r6, #0
 	add r4, r5, #0
 _02240C9A:
 	ldr r0, [r4, #0x2c]
-	bl String_dtor
+	bl String_Delete
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #4
@@ -5790,7 +5790,7 @@ _02240C9A:
 	mov r0, #0xf7
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl NARC_dtor
+	bl NARC_Delete
 	mov r0, #0x69
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -5873,7 +5873,7 @@ ov81_02240D64: ; 0x02240D64
 	add r5, r0, #0
 	mov r0, #0xb7
 	mov r1, #0x64
-	bl NARC_ctor
+	bl NARC_New
 	mov r1, #0xf7
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -5891,7 +5891,7 @@ ov81_02240D64: ; 0x02240D64
 	bl NewMsgDataFromNarc
 	str r0, [r5, #0x1c]
 	mov r0, #0x64
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r5, #0x20]
 	mov r0, #0x32
 	lsl r0, r0, #4
@@ -10550,7 +10550,7 @@ ov81_022430B4: ; 0x022430B4
 	add r0, r5, #0
 	bl ov81_02243068
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov81_022430B4

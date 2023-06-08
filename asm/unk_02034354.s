@@ -73,7 +73,7 @@ _0203438A:
 	ldr r2, [r2]
 	ldr r0, [sp, #8]
 	ldr r1, [r2, r1]
-	bl PlayerProfile_copy
+	bl PlayerProfile_Copy
 _020343DA:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -139,7 +139,7 @@ sub_02034434: ; 0x02034434
 	ldr r0, _0203451C ; =_021D4130
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
-	bl Save_FriendGroup_get
+	bl Save_FriendGroup_Get
 	str r0, [sp]
 	ldr r0, _0203451C ; =_021D4130
 	ldr r0, [r0]
@@ -166,7 +166,7 @@ _02034470:
 	mov r1, #0xd3
 	lsl r1, r1, #2
 	ldr r1, [r2, r1]
-	bl PlayerProfile_copy
+	bl PlayerProfile_Copy
 	mov r0, #0x68
 	add r5, r4, #0
 	mul r5, r0
@@ -490,7 +490,7 @@ sub_020346E8: ; 0x020346E8
 	mov r0, #0xd3
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl PlayerProfile_init
+	bl PlayerProfile_Init
 	ldr r0, _02034710 ; =_021D4130
 	mov r2, #0
 	ldr r0, [r0]

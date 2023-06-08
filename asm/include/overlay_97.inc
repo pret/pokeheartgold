@@ -32,8 +32,8 @@
 .public NewString_ReadMsgData
 .public ReadMsgData_ExpandPlaceholders
 .public GetSpeciesName
-.public MessageFormat_new
-.public MessageFormat_delete
+.public MessageFormat_New
+.public MessageFormat_Delete
 .public BufferString
 .public BufferPokeathlonCourseName
 .public BeginNormalPaletteFade
@@ -72,10 +72,10 @@
 .public sub_02024A04
 .public GF_AssertFail
 .public String_New
-.public String_dtor
+.public String_Delete
 .public CopyU16ArrayToString
 .public GetStoragePCPointer
-.public Save_Pokeathlon_get
+.public Save_Pokeathlon_Get
 .public sub_020319A8
 .public sub_0203A994
 .public GetMonData
@@ -91,7 +91,7 @@
 .public PCStorage_GetMonByIndexPair
 .public GetPartyMonByIndex
 .public Party_GetUnkSubSlot
-.public SaveArray_PlayerParty_get
+.public SaveArray_PlayerParty_Get
 .public sub_0208B85C
 .public sub_020932E0
 .public sub_02093354

@@ -16,8 +16,8 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public NARC_ctor
-.public NARC_dtor
+.public NARC_New
+.public NARC_Delete
 .public NARC_AllocAndReadWholeMember
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
@@ -26,8 +26,8 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
-.public MessageFormat_new_custom
-.public MessageFormat_delete
+.public MessageFormat_New_Custom
+.public MessageFormat_Delete
 .public BufferCountryName
 .public BufferCityName
 .public StringExpandPlaceholders
@@ -38,8 +38,8 @@
 .public DrawFrameAndWindow2
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public ListMenuItems_ctor
-.public ListMenuItems_dtor
+.public ListMenuItems_New
+.public ListMenuItems_Delete
 .public ListMenuItems_AppendFromMsgData
 .public Main_SetVBlankIntrCB
 .public Main_SetHBlankIntrCB
@@ -85,7 +85,7 @@
 .public Camera_GetDistance
 .public System_GetTouchNew
 .public String_New
-.public String_dtor
+.public String_Delete
 .public Thunk_G3X_Reset
 .public sub_02026E50
 .public Save_PlayerData_GetOptionsAddr

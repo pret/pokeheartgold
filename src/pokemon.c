@@ -447,7 +447,7 @@ static u32 GetMonDataInternal(Pokemon *mon, int attr, void * dest) {
     case MON_DATA_SPDEF:
         return mon->party.spdef;
     case MON_DATA_MAIL_STRUCT:
-        Mail_copy(&mon->party.mail, dest);
+        Mail_Copy(&mon->party.mail, dest);
         return 1;
     case MON_DATA_SEAL_COORDS:
         CopyCapsule(&mon->party.sealCoords, dest);
@@ -746,8 +746,8 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void * dest) {
     case MON_DATA_NICKNAME_3:
         if (boxMon->checksum_fail) {
             STRING * buffer = GetSpeciesName(SPECIES_MANAPHY_EGG, HEAP_ID_0);
-            StringCopy(dest, buffer);
-            String_dtor(buffer);
+            String_Copy(dest, buffer);
+            String_Delete(buffer);
         } else {
             CopyU16ArrayToString(dest, blockC->nickname);
         }
@@ -942,7 +942,7 @@ static void SetMonDataInternal(Pokemon *mon, int attr, const void * value) {
         mon->party.spdef = VALUE(u16);
         break;
     case MON_DATA_MAIL_STRUCT:
-        Mail_copy((const MAIL *)value, &mon->party.mail);
+        Mail_Copy((const MAIL *)value, &mon->party.mail);
         break;
     case MON_DATA_SEAL_COORDS:
         CopyCapsule((const CAPSULE *)value, &mon->party.sealCoords);
@@ -1329,7 +1329,7 @@ static void SetBoxMonDataInternal(BoxPokemon *boxMon, int attr, const void * val
     case MON_DATA_SPECIES_NAME:
         speciesName = GetSpeciesName(blockA->species, HEAP_ID_0);
         CopyStringToU16Array(speciesName, blockC->nickname, POKEMON_NAME_LENGTH + 1);
-        String_dtor(speciesName);
+        String_Delete(speciesName);
         break;
     case MON_DATA_SHINY_LEAF_A:
     case MON_DATA_SHINY_LEAF_B:
@@ -2701,12 +2701,12 @@ struct UnkStruct_0200CF18 *sub_02070C24(Unk122_021E7C9C *r6, void *sp18, void *s
     if (trainerClass == TRAINERCLASS_CASTLE_VALET) {
         r7 = 2;
     }
-    narc_r4 = NARC_ctor(sp24.narcId, heapId);
+    narc_r4 = NARC_New(sp24.narcId, heapId);
     sub_0200D504(r6, sp18, narc_r4, sp24.ncgr_id, 0, 1, r5 + 0x4E2F);
     sub_0200D68C(sp1C, 2, r6, sp18, narc_r4, sp24.nclr_id, 0, r7, 1, r5 + 0x4E2A);
     sub_0200D6EC(r6, sp18, narc_r4, sp24.ncer_id, 0, r5 + 0x4E27);
     sub_0200D71C(r6, sp18, narc_r4, sp24.nanr_id, 0, r5 + 0x4E27);
-    NARC_dtor(narc_r4);
+    NARC_Delete(narc_r4);
     sp3C = _020FF588;
     sp3C.unk_14[0] = r5 + 0x4E2F;
     sp3C.unk_14[1] = r5 + 0x4E2A;
@@ -4122,11 +4122,11 @@ BOOL BoxmonBelongsToPlayer(BoxPokemon *boxMon, PLAYERPROFILE * profile, HeapID h
     STRING * r6 = String_New(PLAYER_NAME_LENGTH + 1, heap_id);
     BOOL ret = FALSE;
     GetBoxMonData(boxMon, MON_DATA_OT_NAME_2, r6);
-    if (myId == otId && myGender == otGender && StringCompare(r7, r6) == 0) {
+    if (myId == otId && myGender == otGender && String_Compare(r7, r6) == 0) {
         ret = TRUE;
     }
-    String_dtor(r6);
-    String_dtor(r7);
+    String_Delete(r6);
+    String_Delete(r7);
     return ret;
 }
 
@@ -4236,12 +4236,12 @@ BOOL SetTrMonCapsule(int a0, Pokemon *mon, HeapID heap_id) {
     if (a0 == 0) {
         return FALSE;
     }
-    narc = NARC_ctor(NARC_application_custom_ball_edit_gs_cb_data, heap_id);
+    narc = NARC_New(NARC_application_custom_ball_edit_gs_cb_data, heap_id);
     data = 1;
     NARC_ReadFromMember(narc, 0, (a0 - 1) * sizeof(CAPSULE), sizeof(CAPSULE), &capsule);
     SetMonData(mon, MON_DATA_CAPSULE, &data);
     SetMonData(mon, MON_DATA_SEAL_COORDS, &capsule);
-    NARC_dtor(narc);
+    NARC_Delete(narc);
     return TRUE;
 }
 

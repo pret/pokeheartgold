@@ -681,7 +681,7 @@ sub_0207D0A0: ; 0x0207D0A0
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0207D0E0: .word 0x000007C4
@@ -696,7 +696,7 @@ sub_0207D0E4: ; 0x0207D0E4
 	add r0, r2, #0
 	mov r1, #0xc
 	str r2, [sp, #4]
-	bl ListMenuItems_ctor
+	bl ListMenuItems_New
 	mov r1, #0x82
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -868,7 +868,7 @@ _0207D214:
 	ldr r1, [r5, r1]
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r4, r5, r6, pc}
 	nop
 _0207D258: .word 0x00000654
@@ -933,7 +933,7 @@ sub_0207D294: ; 0x0207D294
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_dtor
+	bl String_Delete
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0207D2DC: .word _021015BC
@@ -2155,7 +2155,7 @@ _0207DC62:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x10]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, r6
 	bl ScheduleWindowCopyToVram
 	add sp, #0x14
@@ -2221,7 +2221,7 @@ _0207DCE6:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	ldr r0, [sp, #0x10]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, r7
 	bl ScheduleWindowCopyToVram
 	add sp, #0x14
@@ -2272,7 +2272,7 @@ _0207DD4C:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, r6
 	bl ScheduleWindowCopyToVram
 	add sp, #0x10
@@ -2335,7 +2335,7 @@ _0207DDCE:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterized2
 	add r0, r5, #0
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, r7
 	bl ScheduleWindowCopyToVram
 	add sp, #0x10
@@ -2449,7 +2449,7 @@ _0207DEB6:
 	add r3, r1, #0
 	bl AddTextPrinterParameterized
 	ldr r0, [sp, #0x1c]
-	bl String_dtor
+	bl String_Delete
 	str r4, [sp]
 	mov r0, #0xff
 	str r0, [sp, #4]
@@ -2488,7 +2488,7 @@ _0207DEB6:
 	ldr r2, [sp, #0x20]
 	bl StringExpandPlaceholders
 	ldr r0, [sp, #0x20]
-	bl String_dtor
+	bl String_Delete
 	str r4, [sp]
 	mov r0, #0xff
 	str r0, [sp, #4]
@@ -2514,7 +2514,7 @@ _0207DEB6:
 	cmp r0, #6
 	blo _0207DEB6
 	ldr r0, [sp, #0x18]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0xa1
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -2601,7 +2601,7 @@ _0207DFCC:
 	cmp r0, #6
 	blo _0207DFCC
 	ldr r0, [sp, #0xc]
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0xa1
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -2686,7 +2686,7 @@ sub_0207E068: ; 0x0207E068
 	add r3, r1, #0
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	ldr r0, _0207E168 ; =0x00000654
 	ldr r1, _0207E16C ; =0x00000C65
 	ldr r0, [r5, r0]
@@ -2731,7 +2731,7 @@ sub_0207E068: ; 0x0207E068
 	mov r3, #2
 	bl AddTextPrinterParameterized2
 	add r0, r4, #0
-	bl String_dtor
+	bl String_Delete
 	mov r0, #0x95
 	lsl r0, r0, #2
 	add r0, r5, r0

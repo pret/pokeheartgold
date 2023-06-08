@@ -62,7 +62,7 @@ sub_02058AEC: ; 0x02058AEC
 	ldr r0, [sp, #0x20]
 	strb r0, [r4, #0x12]
 	add r0, r5, #0
-	bl Save_SpecialRibbons_get
+	bl Save_SpecialRibbons_Get
 	str r0, [r4, #0x20]
 	mov r0, #0
 	str r0, [r4, #0x30]
@@ -105,7 +105,7 @@ sub_02058B84: ; 0x02058B84
 	str r0, [r4, #0x14]
 	ldr r0, [r5, #0x24]
 	ldr r0, [r0, #0xc]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	str r0, [r4]
 	ldr r0, [r5, #0x24]
 	ldr r0, [r0, #0xc]
@@ -648,7 +648,7 @@ _02058FC0:
 _02058FC6:
 	ldr r0, [r4, #0x24]
 	ldr r0, [r0, #0xc]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -1330,7 +1330,7 @@ _02059546:
 	str r5, [r4, #0x24]
 	str r6, [r4, #8]
 	mov r0, #0xb
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x28]
 	mov r0, #0
 	mov r1, #0x1b
@@ -1400,7 +1400,7 @@ _020595F0:
 	bl AllocFromHeapAtEnd
 	str r0, [r4, #0x48]
 	mov r0, #0xb
-	bl SaveArray_Party_alloc
+	bl SaveArray_Party_Alloc
 	mov r1, #3
 	str r0, [r4, #0x50]
 	bl InitPartyWithMaxSize
@@ -1460,11 +1460,11 @@ _02059672:
 	ldr r0, [r4, #0x2c]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x28]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4, #0xc]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x10]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #0x78]
 	bl DestroyListMenuCursorObj
 	add r0, r4, #0
@@ -1490,7 +1490,7 @@ sub_020596A8: ; 0x020596A8
 	ldr r0, [r7, #0x24]
 	add r5, r1, #0
 	ldr r0, [r0, #0xc]
-	bl SaveArray_PlayerParty_get
+	bl SaveArray_PlayerParty_Get
 	str r0, [sp]
 	ldr r4, [r7, #0x4c]
 	bl sub_02070D90
@@ -2164,7 +2164,7 @@ _02059B96: ; jump table
 	.short _02059D24 - _02059B96 - 2 ; case 7
 _02059BA6:
 	mov r0, #4
-	bl MessageFormat_new
+	bl MessageFormat_New
 	str r0, [r4, #0x18]
 	mov r0, #0
 	mov r1, #0x1b
@@ -2271,11 +2271,11 @@ _02059C6C:
 	ldr r0, [r4, #0x1c]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x18]
-	bl MessageFormat_delete
+	bl MessageFormat_Delete
 	ldr r0, [r4]
-	bl String_dtor
+	bl String_Delete
 	ldr r0, [r4, #4]
-	bl String_dtor
+	bl String_Delete
 	add r0, r4, #0
 	add r0, #8
 	mov r1, #0
@@ -2522,7 +2522,7 @@ sub_02059E88: ; 0x02059E88
 	cmp r0, #0
 	beq _02059EB4
 	add r0, sp, #0
-	bl MailMsg_init_default
+	bl MailMsg_Init_Default
 	add r0, sp, #0
 	bl sub_0205AB88
 	add r0, r4, #0

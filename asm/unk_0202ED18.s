@@ -10,8 +10,8 @@ Save_FollowPoke_sizeof: ; 0x0202ED18
 	bx lr
 	thumb_func_end Save_FollowPoke_sizeof
 
-	thumb_func_start Save_FollowPoke_init
-Save_FollowPoke_init: ; 0x0202ED1C
+	thumb_func_start Save_FollowPoke_Init
+Save_FollowPoke_Init: ; 0x0202ED1C
 	mov r1, #0
 	strb r1, [r0]
 	strb r1, [r0, #1]
@@ -24,16 +24,16 @@ Save_FollowPoke_init: ; 0x0202ED1C
 	str r1, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end Save_FollowPoke_init
+	thumb_func_end Save_FollowPoke_Init
 
-	thumb_func_start Save_FollowPoke_get
-Save_FollowPoke_get: ; 0x0202ED34
-	ldr r3, _0202ED3C ; =SaveArray_get
+	thumb_func_start Save_FollowPoke_Get
+Save_FollowPoke_Get: ; 0x0202ED34
+	ldr r3, _0202ED3C ; =SaveArray_Get
 	mov r1, #0x21
 	bx r3
 	nop
-_0202ED3C: .word SaveArray_get
-	thumb_func_end Save_FollowPoke_get
+_0202ED3C: .word SaveArray_Get
+	thumb_func_end Save_FollowPoke_Get
 
 	thumb_func_start SavFollowPoke_SetMapId
 SavFollowPoke_SetMapId: ; 0x0202ED40

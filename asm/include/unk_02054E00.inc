@@ -18,8 +18,8 @@
 .public MapHeader_GetDayMusicId
 .public MapHeader_GetNightMusicId
 .public FlyPoints_GetMusicIdAddr
-.public Save_FlyPoints_get
-.public SaveArray_Flags_get
+.public Save_FlyPoints_Get
+.public SaveArray_Flags_Get
 .public MapModel_IsHeadbuttTree
 .public MapCoordToMatrixIndex
 .public sub_02054EB0

@@ -39,10 +39,10 @@ typedef struct ROAMER_SAVE {
 } ROAMER_SAVE;
 
 u32 Save_Roamers_sizeof(void);
-void Save_Roamers_init(ROAMER_SAVE *roamer);
+void Save_Roamers_Init(ROAMER_SAVE *roamer);
 void Roamers_SetRand(ROAMER_SAVE *roamer, u32 param);
 u32 Roamers_GetRand(ROAMER_SAVE *roamer, u32 which);
-ROAMER_SAVE *Save_Roamers_get(SAVEDATA *saveData);
+ROAMER_SAVE *Save_Roamers_Get(SAVEDATA *saveData);
 void RoamerSave_SetOutbreakActive(SAVEDATA *saveData);
 u8 RoamerSave_OutbreakActive(ROAMER_SAVE *roamerSave);
 void PlayerLocationHistoryPush(ROAMER_SAVE *roamerSave, u32 mapsec);
@@ -50,7 +50,7 @@ u32 PlayerLocationHistoryGetBack(ROAMER_SAVE *roamerSave);
 u8 Roamer_GetLocation(ROAMER_SAVE *roamerSave, int a1);
 void Roamer_SetLocation(ROAMER_SAVE *roamerSave, int a1, u8 a2);
 u8 GetRoamerIsActiveByIndex(ROAMER_SAVE *roamerSave, int a1);
-void RoamerMon_init(ROAMER ** roamer_p);
+void RoamerMon_Init(ROAMER ** roamer_p);
 ROAMER *Roamers_GetRoamMonStats(ROAMER_SAVE *roamerSave, int a1);
 int GetRoamerData(ROAMER *roamer, int a1);
 void SetRoamerData(ROAMER *roamer, int a1, int val);
