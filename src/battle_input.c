@@ -9,3 +9,14 @@ BattleInput *BattleInput_New() {
 
     return input;
 }
+
+extern BGTEMPLATE ov12_0226E5DC[4];
+
+void ov12_0226604C(BGCONFIG *config) {
+    for (int i = 0; i < NELEMS(ov12_0226E5DC); i++) {
+        InitBgFromTemplate(config, i + 4, &ov12_0226E5DC[i], 0);
+        BgFillTilemapBufferAndCommit(config, i + 4, 767);
+        BgSetPosTextAndCommit(config, i + GF_BG_LYR_SUB_0, BG_POS_OP_SET_X, 0);
+        BgSetPosTextAndCommit(config, i + GF_BG_LYR_SUB_0, BG_POS_OP_SET_Y, 0);
+    }
+}

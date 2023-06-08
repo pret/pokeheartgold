@@ -255,8 +255,8 @@ void InitBgFromTemplateEx(BGCONFIG *bgConfig, u8 bgId, const BGTEMPLATE *templat
         bgConfig->bgs[bgId].tileSize = 0x40;
     }
 
-    BgSetPosTextAndCommit(bgConfig, (enum GFBgLayer)bgId, BG_POS_OP_SET_X, template->x);
-    BgSetPosTextAndCommit(bgConfig, (enum GFBgLayer)bgId, BG_POS_OP_SET_Y, template->y);
+    BgSetPosTextAndCommit(bgConfig, bgId, BG_POS_OP_SET_X, template->x);
+    BgSetPosTextAndCommit(bgConfig, bgId, BG_POS_OP_SET_Y, template->y);
 }
 
 void InitBgFromTemplate(BGCONFIG *bgConfig, u8 bgId, const BGTEMPLATE *template, u8 bgMode) {
@@ -637,7 +637,7 @@ void ToggleBgLayer(u8 layer, u8 toggle) {
     }
 }
 
-void BgSetPosTextAndCommit(BGCONFIG *bgConfig, enum GFBgLayer bgId, enum BgPosAdjustOp op, fx32 val) {
+void BgSetPosTextAndCommit(BGCONFIG *bgConfig, u8 bgId, enum BgPosAdjustOp op, fx32 val) {
     Bg_SetPosText(&bgConfig->bgs[bgId], op, val);
 
     u32 x = (u32)bgConfig->bgs[bgId].hOffset;

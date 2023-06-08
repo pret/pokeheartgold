@@ -5,51 +5,6 @@
 	.text
     .public BattleInput_New
 
-	thumb_func_start ov12_0226604C
-ov12_0226604C: ; 0x0226604C
-	push {r3, r4, r5, r6, r7, lr}
-	mov r4, #0
-	ldr r6, _022660A0 ; =ov12_0226E5DC
-	add r5, r0, #0
-	add r7, r4, #0
-_02266056:
-	add r1, r4, #4
-	lsl r1, r1, #0x18
-	add r0, r5, #0
-	lsr r1, r1, #0x18
-	add r2, r6, #0
-	add r3, r7, #0
-	bl InitBgFromTemplate
-	add r1, r4, #4
-	lsl r1, r1, #0x18
-	ldr r2, _022660A4 ; =0x000002FF
-	add r0, r5, #0
-	lsr r1, r1, #0x18
-	bl BgFillTilemapBufferAndCommit
-	add r1, r4, #4
-	lsl r1, r1, #0x18
-	mov r2, #0
-	add r0, r5, #0
-	lsr r1, r1, #0x18
-	add r3, r2, #0
-	bl BgSetPosTextAndCommit
-	add r1, r4, #4
-	lsl r1, r1, #0x18
-	add r0, r5, #0
-	lsr r1, r1, #0x18
-	mov r2, #3
-	mov r3, #0
-	bl BgSetPosTextAndCommit
-	add r4, r4, #1
-	add r6, #0x1c
-	cmp r4, #4
-	blo _02266056
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_022660A0: .word ov12_0226E5DC
-_022660A4: .word 0x000002FF
-	thumb_func_end ov12_0226604C
-
 	thumb_func_start ov12_022660A8
 ov12_022660A8: ; 0x022660A8
 	push {r4, r5, r6, lr}
@@ -10047,6 +10002,7 @@ ov12_0226E580: ; 0x0226E580
 	.byte 0x07, 0x01, 0x1F, 0x01, 0x20, 0x01, 0x21, 0x01, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 
+.public ov12_0226E5DC
 ov12_0226E5DC: ; 0x0226E5DC
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x0C, 0x00

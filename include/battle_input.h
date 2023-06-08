@@ -201,7 +201,7 @@ typedef struct BattleInput {
 } BattleInput;
 
 
-
+void ov12_0226604C(BGCONFIG *config);
 
 //static functions
 BattleInput *BattleInput_New();
