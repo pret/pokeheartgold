@@ -1,8 +1,10 @@
 #include "battle.h"
 #include "battle_system.h"
 #include "dex_mon_measures.h"
+#include "filesystem.h"
 #include "pokemon.h"
 #include "overlay_12_0224E4FC.h"
+#include "constants/battle.h"
 
 void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 selectedMon) {
     Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, selectedMon);
@@ -111,4 +113,36 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
     }
 }
 
+void BattleSystem_ReloadMonData(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int monIndex) {
+    Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, monIndex);
+    int i;
+    
+    ctx->battleMons[battlerId].atk = GetMonData(mon, MON_DATA_ATK, NULL);
+    ctx->battleMons[battlerId].def = GetMonData(mon, MON_DATA_DEF, NULL);
+    ctx->battleMons[battlerId].speed = GetMonData(mon, MON_DATA_SPEED, NULL);
+    ctx->battleMons[battlerId].spAtk = GetMonData(mon, MON_DATA_SPATK, NULL);
+    ctx->battleMons[battlerId].spDef = GetMonData(mon, MON_DATA_SPDEF, NULL);
+    ctx->battleMons[battlerId].level = GetMonData(mon, MON_DATA_LEVEL, NULL);
+    ctx->battleMons[battlerId].friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
+    ctx->battleMons[battlerId].hp = GetMonData(mon, MON_DATA_HP, NULL);
+    ctx->battleMons[battlerId].maxHp = GetMonData(mon, MON_DATA_MAXHP, NULL);
+    
+    if (!(ctx->battleMons[battlerId].status2 & STATUS2_TRANSFORMED)) { 
+        for (i = 0; i < 4; i++) {
+            if (!(ctx->battleMons[battlerId].unk88.mimicedMoveIndex & MaskOfFlagNo(i))) {
+                ctx->battleMons[battlerId].moves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
+                ctx->battleMons[battlerId].movePPCur[i] = GetMonData(mon, MON_DATA_MOVE1PP + i, NULL);
+                ctx->battleMons[battlerId].movePP[i] = GetMonData(mon, MON_DATA_MOVE1PPUP + i, NULL);
+           }
+        }
+        ctx->battleMons[battlerId].exp = GetMonData(mon, MON_DATA_EXPERIENCE, NULL);
+    }
+}
 
+void ReadBattleScriptFromNarc(BATTLECONTEXT *ctx, NarcId narcId, int fileId) {
+    GF_ASSERT(GetNarcMemberSizeByIdPair(narcId, fileId) < 1600);
+    ctx->scriptNarcId = narcId;
+    ctx->scriptFileId = fileId;
+    ctx->scriptSeqNo = 0;
+    ReadWholeNarcMemberByIdPair(&ctx->battleScriptWork, narcId, fileId);
+}

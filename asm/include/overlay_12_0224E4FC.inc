@@ -62,7 +62,7 @@
 .public BattleSys_Random
 .public ov12_0223BFEC
 .public BattleSystem_GetBattleMon
-.public BattleController_EmitRefreshMonData
+.public BattleSystem_ReloadMonData
 .public ReadBattleScriptFromNarc
 .public ov12_0224EBDC
 .public ov12_0224EC74

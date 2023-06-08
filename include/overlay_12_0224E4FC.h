@@ -4,6 +4,10 @@
 #include "battle.h"
 
 void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 monIndex);
+void BattleSystem_ReloadMonData(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int monIndex);
+void ReadBattleScriptFromNarc(BATTLECONTEXT *ctx, NarcId narcId, int fileId);
+
+//The following functions haven't been decompiled as of now
 void ov12_02256F78(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 monIndex);
 void Link_CheckTimeout(BATTLECONTEXT *ctx);
 int GetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 varId, int a3);
@@ -54,7 +58,6 @@ BOOL CheckNaturalCureOnSwitch(BATTLECONTEXT *ctx, int ability, int status);
 int ov12_02253DA0(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL CheckItemEffectOnUTurn(BattleSystem *bsys, BATTLECONTEXT *ctx, int *work);
 BOOL ov12_0224EC74(BATTLECONTEXT *ctx);
-void ReadBattleScriptFromNarc(BATTLECONTEXT *ctx, int a1, int adrs);
 void ov12_0224EBDC(BATTLECONTEXT *ctx, int a1, int adrs);
 void ov12_02250A18(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u16 a3);
 u32 BattleSys_GetBattleType(BattleSystem *bsys);

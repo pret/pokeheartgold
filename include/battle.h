@@ -4,6 +4,7 @@
 #include "move.h"
 #include "pokemon_storage_system.h"
 #include "trainer_data.h"
+#include "filesystem.h"
 
 typedef struct BATTLEMSG {
     u8 unk0;
@@ -277,8 +278,8 @@ typedef struct BATTLECONTEXT {
     int gainedExp;
     int partyGainedExp;
     u32 unk_A4[2];
-    int unk_AC;
-    int unk_B0;
+    NarcId scriptNarcId;
+    int scriptFileId;
     int scriptSeqNo;
     int unk_B8;
     int unk_BC[4];

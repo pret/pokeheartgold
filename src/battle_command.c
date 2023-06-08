@@ -19,7 +19,7 @@
 
 int BattleScriptReadWord(BATTLECONTEXT *ctx);
 static void BattleScriptIncrementPointer(BATTLECONTEXT *ctx, int adrs);
-static void BattleScriptJump(BATTLECONTEXT *ctx, int a1, int adrs);
+static void BattleScriptJump(BATTLECONTEXT *ctx, NarcId narcId, int adrs);
 static void BattleScriptGotoSubscript(BATTLECONTEXT *ctx, int a1, int adrs);
 static void *BattleScriptGetVarPointer(BattleSystem *bsys, BATTLECONTEXT *ctx, int var);
 
@@ -1126,7 +1126,7 @@ BOOL BtlCmd_FadeOutBattle(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 BOOL BtlCmd_JumpToSubSeq(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    BattleScriptJump(ctx, 1, BattleScriptReadWord(ctx));
+    BattleScriptJump(ctx, NARC_a_0_0_1, BattleScriptReadWord(ctx));
 
     return FALSE;
 }
@@ -1134,7 +1134,7 @@ BOOL BtlCmd_JumpToSubSeq(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 BOOL BtlCmd_JumpToCurMoveEffectScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    BattleScriptJump(ctx, 30, ctx->unk_334.moveData[ctx->moveNoCur].effect);
+    BattleScriptJump(ctx, NARC_a_0_3_0, ctx->unk_334.moveData[ctx->moveNoCur].effect);
 
     return FALSE;
 }
@@ -1157,9 +1157,9 @@ BOOL BtlCmd_JumpToEffectScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     if (ctx->battlerIdTarget == 255) {
         ctx->unk_C = 39;
-        BattleScriptJump(ctx, 1, 281);
+        BattleScriptJump(ctx, NARC_a_0_0_1, 281);
     } else {
-        BattleScriptJump(ctx, 0, ctx->moveNoCur);
+        BattleScriptJump(ctx, NARC_a_0_0_0, ctx->moveNoCur);
     }
 
     return FALSE;
@@ -2026,10 +2026,10 @@ BOOL BtlCmd_SetMoveToMirrorMove(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ctx->battlerIdTarget = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, move, 1, 0);
         if (ctx->battlerIdTarget == 255) {
             ctx->unk_C = 39;
-            BattleScriptJump(ctx, 1, 281);
+            BattleScriptJump(ctx, NARC_a_0_0_1, 281);
         } else {
             ctx->unk_21A8[ctx->battlerIdAttacker][1] = ctx->battlerIdTarget;
-            BattleScriptJump(ctx, 0, move);
+            BattleScriptJump(ctx, NARC_a_0_0_0, move);
         }
     } else {
         ctx->selfTurnData[ctx->battlerIdAttacker].ignorePressure = 1;
@@ -2746,7 +2746,7 @@ BOOL BtlCmd_Counter(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             ctx->battlerIdTarget = ov12_02253DA0(bsys, ctx, ctx->battlerIdAttacker);
             if (ctx->battleMons[ctx->battlerIdTarget].hp == 0) {
                 ctx->unk_C = 39;
-                BattleScriptJump(ctx, 1, 281);
+                BattleScriptJump(ctx, NARC_a_0_0_1, 281);
             }
         }
         CheckIgnorePressure(ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget);
@@ -2777,7 +2777,7 @@ BOOL BtlCmd_MirrorCoat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             ctx->battlerIdTarget = ov12_02253DA0(bsys, ctx, ctx->battlerIdAttacker);
             if (ctx->battleMons[ctx->battlerIdTarget].hp == 0) {
                 ctx->unk_C = 39;
-                BattleScriptJump(ctx, 1, 281);
+                BattleScriptJump(ctx, NARC_a_0_0_1, 281);
             }
         }
         CheckIgnorePressure(ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget);
@@ -4500,7 +4500,7 @@ BOOL BtlCmd_MetalBurstDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             ctx->battlerIdTarget = ov12_02253DA0(bsys, ctx, ctx->battlerIdAttacker);
             if (ctx->battleMons[ctx->battlerIdTarget].hp == 0) {
                 ctx->unk_C = 39;
-                BattleScriptJump(ctx, 1, 281);
+                BattleScriptJump(ctx, NARC_a_0_0_1, 281);
             }
         }
         CheckIgnorePressure(ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget);
@@ -5827,7 +5827,7 @@ BOOL BtlCmd_RefreshMonData(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int side = BattleScriptReadWord(ctx);
     int battlerId = GetBattlerIDBySide(bsys, ctx, side);
 
-    BattleController_EmitRefreshMonData(bsys, ctx, battlerId, ctx->selectedMonIndex[battlerId]);
+    BattleSystem_ReloadMonData(bsys, ctx, battlerId, ctx->selectedMonIndex[battlerId]);
 
     return FALSE;
 }
@@ -5877,8 +5877,8 @@ static void BattleScriptIncrementPointer(BATTLECONTEXT *ctx, int adrs) {
     ctx->scriptSeqNo += adrs;
 }
 
-static void BattleScriptJump(BATTLECONTEXT *ctx, int a1, int adrs) {
-    ReadBattleScriptFromNarc(ctx, a1, adrs);
+static void BattleScriptJump(BATTLECONTEXT *ctx, NarcId narcId, int adrs) {
+    ReadBattleScriptFromNarc(ctx, narcId, adrs);
 }
 
 static void BattleScriptGotoSubscript(BATTLECONTEXT *ctx, int a1, int adrs) {

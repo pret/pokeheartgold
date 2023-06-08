@@ -390,7 +390,7 @@
 .public GetMoveMessageNo
 .public UpdateFrienshipFainted
 .public BattlerSetAbility
-.public BattleController_EmitRefreshMonData
+.public BattleSystem_ReloadMonData
 .public Link_QueueNotEmpty
 .public GetBattlerVar
 .public ov12_022567D4
