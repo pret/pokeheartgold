@@ -8,7 +8,7 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
     Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, selectedMon);
     int i;
     int side;
-    struct ZknHeightWeight *dexData;
+    struct PokedexData *dexData;
     
     ctx->battleMons[battlerId].species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     ctx->battleMons[battlerId].atk = GetMonData(mon, MON_DATA_ATK, NULL);
@@ -84,16 +84,16 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
     ctx->battleMons[battlerId].otid = GetMonData(mon, MON_DATA_OTID, NULL);
     ctx->battleMons[battlerId].metGender = GetMonData(mon, MON_DATA_MET_GENDER, NULL);
     
-    ctx->battleMons[battlerId].ball = ov12_0223AA88(bsys, mon);
+    ctx->battleMons[battlerId].ball = BattleSystem_GetMonBall(bsys, mon);
     
     SetDexBanksByGiratinaForme(ctx->battleMons[battlerId].forme);
-    dexData = ZknData_Create(HEAP_ID_BATTLE);
-    ZknData_LoadAll(dexData, 0, HEAP_ID_BATTLE);
+    dexData = PokedexData_Create(HEAP_ID_BATTLE);
+    PokedexData_LoadAll(dexData, 0, HEAP_ID_BATTLE);
     
-    ctx->battleMons[battlerId].weight = ZknData_GetWeight(dexData, ctx->battleMons[battlerId].species);
+    ctx->battleMons[battlerId].weight = PokedexData_GetWeight(dexData, ctx->battleMons[battlerId].species);
     
-    ZknData_UnloadAll(dexData);
-    ZknData_Delete(dexData);
+    PokedexData_UnloadAll(dexData);
+    PokedexData_Delete(dexData);
     
     GetMonData(mon, MON_DATA_NICKNAME, ctx->battleMons[battlerId].nickname);
     GetMonData(mon, MON_DATA_OT_NAME, &ctx->battleMons[battlerId].unk);

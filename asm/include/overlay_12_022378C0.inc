@@ -205,7 +205,7 @@
 .public BattleSystem_GetPartyMon
 .public BattleSys_GetPlayerProfile
 .public ov12_0223AA84
-.public ov12_0223AA88
+.public BattleSystem_GetMonBall
 .public ov12_0223AAC8
 .public BattleSys_GetFieldSide
 .public BattleSys_GetTerrainId

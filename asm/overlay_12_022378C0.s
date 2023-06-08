@@ -1967,7 +1967,7 @@ _022389F4:
 	bl BattleSystem_GetPartyMon
 	add r1, r0, #0
 	add r0, r5, #0
-	bl ov12_0223AA88
+	bl BattleSystem_GetMonBall
 	add r2, r0, #0
 	ldr r1, [r6, #0x34]
 	add r0, r5, #0

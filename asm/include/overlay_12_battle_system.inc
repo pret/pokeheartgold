@@ -104,7 +104,7 @@
 .public BattleSys_GetPlayerProfile
 .public ov12_0223AA80
 .public ov12_0223AA84
-.public ov12_0223AA88
+.public BattleSystem_GetMonBall
 .public ov12_0223AAB8
 .public ov12_0223AAC8
 .public ov12_0223AAD8

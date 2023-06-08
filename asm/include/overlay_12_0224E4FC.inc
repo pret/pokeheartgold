@@ -33,11 +33,11 @@
 .public ItemIdIsBerry
 .public GetItemDataPtrFromArray
 .public sub_020880B0
-.public ZknData_Create
-.public ZknData_Delete
-.public ZknData_LoadAll
-.public ZknData_UnloadAll
-.public ZknData_GetWeight
+.public PokedexData_Create
+.public PokedexData_Delete
+.public PokedexData_LoadAll
+.public PokedexData_UnloadAll
+.public PokedexData_GetWeight
 .public SetDexBanksByGiratinaForme
 .public MIi_CpuClearFast
 .public _s32_div_f
@@ -50,7 +50,7 @@
 .public BattleSystem_GetPartyMon
 .public BattleSys_GetTrainerIndex
 .public BattleSys_GetPlayerProfile
-.public ov12_0223AA88
+.public BattleSystem_GetMonBall
 .public ov12_0223AB0C
 .public BattleSys_GetFieldSide
 .public BattleSys_GetTerrainId

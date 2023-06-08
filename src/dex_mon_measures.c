@@ -14,27 +14,27 @@ static NarcId sDataNarcId = NARC_application_zukanlist_zukan_data_zukan_data;
 static int sWeightMsgBank = NARC_msg_msg_0812_bin;
 static int sHeightMsgBank = NARC_msg_msg_0814_bin;
 
-struct ZknHeightWeight *ZknData_Create(HeapID heapId) {
-    struct ZknHeightWeight *ret;
+struct PokedexData *PokedexData_Create(HeapID heapId) {
+    struct PokedexData *ret;
 
-    ret = AllocFromHeap(heapId, sizeof(struct ZknHeightWeight));
-    memset(ret, 0, sizeof(struct ZknHeightWeight));
+    ret = AllocFromHeap(heapId, sizeof(struct PokedexData));
+    memset(ret, 0, sizeof(struct PokedexData));
     return ret;
 }
 
-void ZknData_Delete(struct ZknHeightWeight *zkn) {
+void PokedexData_Delete(struct PokedexData *zkn) {
     GF_ASSERT(zkn != NULL);
     FreeToHeap(zkn);
 }
 
-void ZknData_LoadAll(struct ZknHeightWeight *zkn, int mode, HeapID heapId) {
+void PokedexData_LoadAll(struct PokedexData *zkn, int mode, HeapID heapId) {
     NARC *narc;
 
     GF_ASSERT(zkn != NULL);
     GF_ASSERT(zkn->height == NULL);
     GF_ASSERT(zkn->weight == NULL);
 
-    narc = NARC_New(GetDexZknDataNarcID(), heapId);
+    narc = NARC_New(GetDexPokedexDataNarcID(), heapId);
     zkn->height = ZknNarc_LoadHeight(narc, heapId);
     zkn->weight = ZknNarc_LoadWeight(narc, heapId);
 
@@ -49,7 +49,7 @@ void ZknData_LoadAll(struct ZknHeightWeight *zkn, int mode, HeapID heapId) {
     NARC_Delete(narc);
 }
 
-void ZknData_UnloadAll(struct ZknHeightWeight *zkn) {
+void PokedexData_UnloadAll(struct PokedexData *zkn) {
     GF_ASSERT(zkn->height != NULL);
     GF_ASSERT(zkn->weight != NULL);
     FreeToHeap(zkn->height);
@@ -66,13 +66,13 @@ void ZknData_UnloadAll(struct ZknHeightWeight *zkn) {
     zkn->unk_14 = NULL;
 }
 
-u32 ZknData_GetHeight(struct ZknHeightWeight *zkn, int species) {
+u32 PokedexData_GetHeight(struct PokedexData *zkn, int species) {
     GF_ASSERT(zkn != NULL);
     GF_ASSERT(zkn->height != NULL);
     return zkn->height[species];
 }
 
-u32 ZknData_GetWeight(struct ZknHeightWeight *zkn, int species) {
+u32 PokedexData_GetWeight(struct PokedexData *zkn, int species) {
     GF_ASSERT(zkn != NULL);
     GF_ASSERT(zkn->weight != NULL);
     return zkn->weight[species];
@@ -118,7 +118,7 @@ void SetDexBanksByGiratinaForme(int forme) {
     }
 }
 
-NarcId GetDexZknDataNarcID(void) {
+NarcId GetDexPokedexDataNarcID(void) {
     return sDataNarcId;
 }
 

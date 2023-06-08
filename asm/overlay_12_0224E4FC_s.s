@@ -16770,7 +16770,7 @@ ov12_022567D4: ; 0x022567D4
 	beq _02256814
 	add r0, r5, #0
 	add r1, r6, #0
-	bl ov12_0223AA88
+	bl BattleSystem_GetMonBall
 	bl BallToItemId
 	add r2, r0, #0
 	b _02256818

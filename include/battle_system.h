@@ -31,6 +31,6 @@ BOOL ov12_0223C080(BattleSystem *bsys);
 void ov12_0223BFFC(BattleSystem *bsys, u32 a1);
 void *ov12_0223A938(BattleSystem *bsys);
 int ov12_0223AB54(BattleSystem *bsys);
-u8 ov12_0223AA88(BattleSystem *bsys, Pokemon *mon);
+u8 BattleSystem_GetMonBall(BattleSystem *bsys, Pokemon *mon);
 
 #endif

@@ -507,8 +507,8 @@ ov12_0223AA84: ; 0x0223AA84
 	bx lr
 	thumb_func_end ov12_0223AA84
 
-	thumb_func_start ov12_0223AA88
-ov12_0223AA88: ; 0x0223AA88
+	thumb_func_start BattleSystem_GetMonBall
+BattleSystem_GetMonBall: ; 0x0223AA88
 	push {r3, lr}
 	ldr r2, _0223AAB4 ; =0x00002478
 	ldr r0, [r0, r2]
@@ -532,7 +532,7 @@ _0223AAA4:
 	pop {r3, pc}
 	.balign 4, 0
 _0223AAB4: .word 0x00002478
-	thumb_func_end ov12_0223AA88
+	thumb_func_end BattleSystem_GetMonBall
 
 	thumb_func_start ov12_0223AAB8
 ov12_0223AAB8: ; 0x0223AAB8
@@ -1777,7 +1777,7 @@ _0223B474:
 	ble gApp_MainMenu_SelectOption_MigrateFromAgb
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0x18]
-	bl ov12_0223AA88
+	bl BattleSystem_GetMonBall
 	bl BallToItemId
 	cmp r0, #0xb
 	bne _0223B492

@@ -251,7 +251,7 @@
 .public sub_020912AC
 .public sub_020912D0
 .public SetDexBanksByGiratinaForme
-.public GetDexZknDataNarcID
+.public GetDexPokedexDataNarcID
 .public GetDexWeightMsgBank
 .public GetDexHeightMsgBank
 .public sub_02092BD8

@@ -13,10 +13,10 @@
 .public sub_0207496C
 .public sub_02074A6C
 .public sub_02074CD0
-.public ZknData_Create
-.public ZknData_Delete
-.public ZknData_LoadAll
-.public ZknData_UnloadAll
-.public ZknData_GetHeight
-.public ZknData_GetWeight
+.public PokedexData_Create
+.public PokedexData_Delete
+.public PokedexData_LoadAll
+.public PokedexData_UnloadAll
+.public PokedexData_GetHeight
+.public PokedexData_GetWeight
 .public MI_CpuFill8
