@@ -5,6 +5,7 @@
 #include "constants/flags.h"
 #include "constants/vars.h"
 
+//TODO: Investigate this struct a bit more and see if we can provide a more descriptive name
 typedef struct ScriptState {
     u16 vars[NUM_VARS];
     u8 flags[NUM_FLAGS / 8];
