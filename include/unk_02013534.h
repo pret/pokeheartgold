@@ -1,0 +1,8 @@
+#ifndef POKEHEARTGOLD_UNK_02013534_H
+#define POKEHEARTGOLD_UNK_02013534_H
+
+#include "heap.h"
+
+void *sub_02013534(int, HeapID);
+
+#endif //POKEHEARTGOLD_UNK_02013534_H

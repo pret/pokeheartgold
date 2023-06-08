@@ -151,10 +151,11 @@ typedef struct BattleInputTutorial {
 //At somepoint here my counting was off so some of the listed offsets may be wrong. Due to it being a big and poorly put together struct, it's difficult to find out where that is
 typedef struct BattleInput {
     BattleSystem *bsys;
-    void *unk4;
+    u8 *unk4;
     SysTask *ballTask;
     SysTask *unkC;
     SysTask *unk10;
+    BattleInput_UnkSub14 unk14;
     BattleInputScreen screen;
     u16 *screenBuffer[7];
     u16 *paletteBuffer;
@@ -173,7 +174,7 @@ typedef struct BattleInput {
     SysTask *unk6D0[4];
     BattleInput_UnkSub6E0 unk6E0;
     SysTask *unk6E8;
-    u8 unkFillerA[0x38];
+    u8 unkFillerA[0x30];
     u8 unk6EC;
     u8 unk6ED;
     u8 unk6EE;
@@ -199,12 +200,12 @@ typedef struct BattleInput {
     BattleInputTutorial tutorial;
     u8 unkFiller[0xc];
 } BattleInput;
-
-
 void ov12_0226604C(BGCONFIG *config);
+void ov12_022660A8(BGCONFIG *config);
 
 //static functions
 BattleInput *BattleInput_New();
-
+void ov12_022698C4(SysTask *task, void *data);
+void ov12_02269954(SysTask *task, void *data);
 
 #endif

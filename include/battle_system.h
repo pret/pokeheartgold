@@ -28,5 +28,7 @@ BOOL BattleSys_AreBattleAnimationsOn(BattleSystem *bsys);
 u32 *ov12_0223A900(BattleSystem *bsys);
 BOOL ov12_0223C080(BattleSystem *bsys);
 void ov12_0223BFFC(BattleSystem *bsys, u32 a1);
+void *ov12_0223A938(BattleSystem *bsys);
+int ov12_0223AB54(BattleSystem *bsys);
 
 #endif
