@@ -145,7 +145,7 @@ typedef struct UnkBattlemonSub {
         unk4_D:3,
         unk4_10:3,
         unk4_13:3,
-        unk4_16:1,
+        itemNotKnockedOff:1,
         unk4_17:4,
         unk4_2B:1,
         unk4_2C:1,
@@ -170,26 +170,26 @@ typedef struct UnkBattlemonSub {
 
 typedef struct BATTLEMON {
     u16 species;
-    u16 unk2;
-    u16 unk4;
-    u16 unk6;
-    u16 unk8;
-    u16 unkA;
+    u16 atk;
+    u16 def;
+    u16 speed;
+    u16 spAtk;
+    u16 spDef;
     u16 moves[4];
     u32 hpIV:5,
         atkIV:5,
         defIV:5,
-        spdIV:5,
-        spatkIV:5,
-        spdefIV:5,
+        speedIV:5,
+        spAtkIV:5,
+        spDefIV:5,
         isEgg:1,
-        isNicknamed:1;
+        hasNickname:1;
     s8 statChanges[8];
     int weight;
     u8 type1;
     u8 type2;
     u8 forme:5,
-       unk26_5:1,
+       shiny:1,
        unk26_6:2;
     u8 ability;
     u32 unk28_0:1,
@@ -207,26 +207,28 @@ typedef struct BATTLEMON {
     u8 movePPCur[4];
     u8 movePP[4];
     u8 level;
-    u8 unk31;
+    u8 friendship;
+    u16 nickname[9];    
     u8 unk32;
     u8 unk33;
     u8 unk34;
     u8 unk35;
-    u16 unk36[9];
     int hp;
     u32 maxHp;
     u32 unk;
-    u16 unk54[8];
+    u16 unk54[6];
+    u32 exp;
     u32 personality;
     u32 status;
     u32 status2;
-    u32 unk70;
+    u32 otid;
     u16 item;
     u16 unk76;
-    u16 unk78;
+    u8 unk78;
+    u8 unk79;
     u8 gender:4,
-       unk7A_4:4;
-    u8 unk7B;
+       metGender:4;
+    u8 ball;
     u32 moveEffectFlags;
     u32 unk80;
     UnkBattlemonSub unk88;

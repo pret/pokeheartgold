@@ -3628,15 +3628,15 @@ BOOL BtlCmd_HiddenPowerDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     ctx->movePower = ((ctx->battleMons[ctx->battlerIdAttacker].hpIV & 2) >> 1) |
                      (ctx->battleMons[ctx->battlerIdAttacker].atkIV & 2) |
                      ((ctx->battleMons[ctx->battlerIdAttacker].defIV & 2) << 1) |
-                     ((ctx->battleMons[ctx->battlerIdAttacker].spdIV & 2) << 2) |
-                     ((ctx->battleMons[ctx->battlerIdAttacker].spatkIV & 2) << 3) |
-                     ((ctx->battleMons[ctx->battlerIdAttacker].spdefIV & 2) << 4);
+                     ((ctx->battleMons[ctx->battlerIdAttacker].speedIV & 2) << 2) |
+                     ((ctx->battleMons[ctx->battlerIdAttacker].spAtkIV & 2) << 3) |
+                     ((ctx->battleMons[ctx->battlerIdAttacker].spDefIV & 2) << 4);
     ctx->moveType =  (ctx->battleMons[ctx->battlerIdAttacker].hpIV & 1) |
                      ((ctx->battleMons[ctx->battlerIdAttacker].atkIV & 1) << 1)|
                      ((ctx->battleMons[ctx->battlerIdAttacker].defIV & 1) << 2) |
-                     ((ctx->battleMons[ctx->battlerIdAttacker].spdIV & 1) << 3) |
-                     ((ctx->battleMons[ctx->battlerIdAttacker].spatkIV & 1) << 4) |
-                     ((ctx->battleMons[ctx->battlerIdAttacker].spdefIV & 1) << 5);
+                     ((ctx->battleMons[ctx->battlerIdAttacker].speedIV & 1) << 3) |
+                     ((ctx->battleMons[ctx->battlerIdAttacker].spAtkIV & 1) << 4) |
+                     ((ctx->battleMons[ctx->battlerIdAttacker].spDefIV & 1) << 5);
 
     ctx->movePower = ctx->movePower * 40/63 + 30;
     ctx->moveType = ctx->moveType * 15/63 + 1;
