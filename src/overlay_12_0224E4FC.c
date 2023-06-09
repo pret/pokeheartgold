@@ -5,7 +5,12 @@
 #include "pokemon.h"
 #include "unk_02037C94.h"
 #include "overlay_12_0224E4FC.h"
+#include "constants/abilities.h"
 #include "constants/battle.h"
+#include "constants/items.h"
+#include "constants/moves.h"
+#include "constants/species.h"
+
 
 void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 selectedMon) {
     Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, selectedMon);
@@ -108,9 +113,9 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
     
     if (ctx->fieldSideConditionData[side].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[battlerId])) {
         ctx->battleMons[battlerId].item = 0;
-        ctx->battleMons[battlerId].unk88.itemNotKnockedOff = FALSE;
+        ctx->battleMons[battlerId].unk88.knockOffFlag = FALSE;
     } else if (ctx->battleMons[battlerId].item) {
-        ctx->battleMons[battlerId].unk88.itemNotKnockedOff = TRUE;
+        ctx->battleMons[battlerId].unk88.knockOffFlag = TRUE;
     }
 }
 
@@ -419,15 +424,15 @@ int GetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
     case BMON_DATA_81:
         return mon->unk88.unk4_13;
     case BMON_DATA_ITEM_KNOCKED_OFF:
-        return mon->unk88.itemNotKnockedOff;
+        return mon->unk88.knockOffFlag;
     case BMON_DATA_METRONOME: //refers to the actual item, not the move
         return mon->unk88.metronomeTurns;
     case BMON_DATA_84:
         return mon->unk88.unk4_2B;
-    case BMON_DATA_85:
-        return mon->unk88.unk4_2C;
-    case BMON_DATA_86:
-        return mon->unk88.unk4_2D;
+    case BMON_DATA_CUSTAP_FLAG:
+        return mon->unk88.custapBerryFlag;
+    case BMON_DATA_QUICK_CLAW_FLAG:
+        return mon->unk88.quickClawFlag;
     case BMON_DATA_RECHARGE:
         return mon->unk88.rechargeCount;
     case BMON_DATA_FAKE_OUT:
@@ -695,7 +700,7 @@ void SetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
         mon->unk88.unk4_13 = *data8;
         break;
     case BMON_DATA_ITEM_KNOCKED_OFF:
-        mon->unk88.itemNotKnockedOff = *data8;
+        mon->unk88.knockOffFlag = *data8;
         break;
     case BMON_DATA_METRONOME: //refers to the actual item, not the move
         mon->unk88.metronomeTurns = *data8;
@@ -703,11 +708,11 @@ void SetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
     case BMON_DATA_84:
         mon->unk88.unk4_2B = *data8;
         break;
-    case BMON_DATA_85:
-        mon->unk88.unk4_2C = *data8;
+    case BMON_DATA_CUSTAP_FLAG:
+        mon->unk88.custapBerryFlag = *data8;
         break;
-    case BMON_DATA_86:
-        mon->unk88.unk4_2D = *data8;
+    case BMON_DATA_QUICK_CLAW_FLAG:
+        mon->unk88.quickClawFlag = *data8;
         break;
     case BMON_DATA_RECHARGE:
         mon->unk88.rechargeCount = *data32;
@@ -757,7 +762,6 @@ void ov12_0224F794(BATTLECONTEXT *ctx, int battlerId, u32 varId, int data) {
     AddBattlerVar(&ctx->battleMons[battlerId], varId, data);
 }
 
-//AddBattlerVar
 void AddBattlerVar(BATTLEMON *mon, u32 varId, int data) {
     switch (varId) {
     case BMON_DATA_ATK:
@@ -941,4 +945,280 @@ void AddBattlerVar(BATTLEMON *mon, u32 varId, int data) {
     default:
         GF_ASSERT(FALSE);
     }
+}
+
+extern u8 sStatChangeTable[13][2];
+extern u8 sSpeedHalvingItemEffects[8];
+
+u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int battlerId2, int flag) {
+    u8 ret = 0; //0 - don't sort, 1 - sort, 2 - sort (speed tie + won random check)
+    u32 speed1, speed2;
+    u16 moveNo1 = 0;
+    u16 moveNo2 = 0;
+    u8 heldItem1;
+    u8 extra1;
+    u8 heldItem2;
+    u8 extra2;
+    s8 movePriority1 = 0;
+    s8 movePriority2 = 0;
+    u8 boostedPriority1 = 0; 
+    u8 boostedPriority2 = 0;
+    u8 loweredPriority1 = 0;
+    u8 loweredPriority2 = 0;
+    int action1;
+    int action2;
+    int movePos1;
+    int movePos2;
+    int ability1;
+    int ability2;
+    int speedStatChange1;
+    int speedStatChange2;
+    int i;
+    
+    if (ctx->battleMons[battlerId1].hp == 0 && ctx->battleMons[battlerId2].hp) {
+        return 1;
+    }
+    if (ctx->battleMons[battlerId1].hp && ctx->battleMons[battlerId2].hp == 0) {
+        return 0;
+    }
+    
+    ability1 = GetBattlerAbility(ctx, battlerId1);
+    ability2 = GetBattlerAbility(ctx, battlerId2);
+    
+    heldItem1 = GetBattlerHeldItemEffect(ctx, battlerId1);
+    extra1 = BattleSystem_GetHeldItemDamageBoost(ctx, battlerId1, 0);
+    heldItem2 = GetBattlerHeldItemEffect(ctx, battlerId2);
+    extra2 = BattleSystem_GetHeldItemDamageBoost(ctx, battlerId2, 0);
+    
+    speedStatChange1 = ctx->battleMons[battlerId1].statChanges[3];
+    speedStatChange2 = ctx->battleMons[battlerId2].statChanges[3];
+    
+    if (GetBattlerAbility(ctx, battlerId1) == ABILITY_SIMPLE) {
+        speedStatChange1 = 6 + (speedStatChange1-6)*2;
+        if (speedStatChange1 > 12) {
+            speedStatChange1 = 12;
+        } 
+        if (speedStatChange1 < 0) {
+            speedStatChange1 = 0;
+        }
+    }
+    if (GetBattlerAbility(ctx, battlerId2) == ABILITY_SIMPLE) {
+        speedStatChange2 = 6 + (speedStatChange2-6)*2;
+        if (speedStatChange2 > 12) {
+            speedStatChange2 = 12;
+        } 
+        if (speedStatChange2 < 0) {
+            speedStatChange2 = 0;
+        }
+    }
+    
+    speed1 = ctx->battleMons[battlerId1].speed * sStatChangeTable[speedStatChange1][0]/sStatChangeTable[speedStatChange1][1];
+    speed2 = ctx->battleMons[battlerId2].speed * sStatChangeTable[speedStatChange2][0]/sStatChangeTable[speedStatChange2][1];
+    
+    if (!CheckAbilityActive(bsys, ctx, 8, 0, ABILITY_CLOUD_NINE) && !CheckAbilityActive(bsys, ctx, 8, 0, ABILITY_AIR_LOCK)) {
+        if ((ability1 == ABILITY_SWIFT_SWIM && ctx->fieldCondition & FIELD_CONDITION_RAIN_ALL) ||
+            (ability1 == ABILITY_CHLOROPHYLL && ctx->fieldCondition & FIELD_CONDITION_SUN_ALL)) {
+                speed1 *= 2;
+            }        
+        if ((ability2 == ABILITY_SWIFT_SWIM && ctx->fieldCondition & FIELD_CONDITION_RAIN_ALL) ||
+            (ability2 == ABILITY_CHLOROPHYLL && ctx->fieldCondition & FIELD_CONDITION_SUN_ALL)) {
+                speed2 *= 2;
+            }
+    }
+    
+    for (i = 0; i < NELEMS(sSpeedHalvingItemEffects); i++) {
+        if (GetItemHoldEffect(ctx, ctx->battleMons[battlerId1].item, 1) == sSpeedHalvingItemEffects[i]) {
+            speed1 /= 2;
+            break;
+        }
+    }
+    
+    if (heldItem1 == HOLD_EFFECT_CHOICE_SPEED) {
+        speed1 = speed1 * 15/10;
+    }
+    
+    if (heldItem1 == HOLD_EFFECT_DITTO_SPEED_UP && ctx->battleMons[battlerId1].species == SPECIES_DITTO) {
+        speed1 *= 2;
+    }
+    
+    if (ability1 == ABILITY_QUICK_FEET && ctx->battleMons[battlerId1].status & 0xFF) {
+        speed1 = speed1 * 15/10;
+    } else if (ctx->battleMons[battlerId1].status & STATUS_PARALYSIS) {
+        speed1 /= 4;
+    }
+    
+    if (ability1 == ABILITY_SLOW_START && ctx->totalTurns - ctx->battleMons[battlerId1].unk88.slowStartTurns < 5) {
+        speed1 /= 2;
+    }
+    
+    if (ability1 == ABILITY_UNBURDEN && ctx->battleMons[battlerId1].unk88.knockOffFlag && ctx->battleMons[battlerId1].item == FALSE) {
+        speed1 *= 2;
+    }
+
+    if (ctx->fieldSideConditionFlags[BattleSys_GetFieldSide(bsys, battlerId1)] & SIDE_CONDITION_TAILWIND) {
+        speed1 *= 2;
+    }
+    
+    if (heldItem1 == HOLD_EFFECT_SOMETIMES_PRIORITY) {
+        if ((ctx->unk_310C[battlerId1])%(100/extra1) == 0) {
+            boostedPriority1 = 1;
+            
+            if (!flag) {
+                ctx->battleMons[battlerId1].unk88.quickClawFlag = TRUE;
+            }
+        }
+    }
+    
+    if (heldItem1 == HOLD_EFFECT_PINCH_PRIORITY) {
+        if (GetBattlerAbility(ctx, battlerId1) == ABILITY_GLUTTONY) {
+            extra1 /= 2;
+        }
+        if (ctx->battleMons[battlerId1].hp <= ctx->battleMons[battlerId1].maxHp/extra1) {
+            boostedPriority1 = 1;
+            if (!flag) {
+                ctx->battleMons[battlerId1].unk88.custapBerryFlag = TRUE;
+            }
+        }
+    }
+    
+    if (heldItem1 == HOLD_EFFECT_SPEED_DOWN) {
+        loweredPriority1 = 1;
+    }
+    
+    for (i = 0; i < NELEMS(sSpeedHalvingItemEffects); i++) {
+        if (GetItemHoldEffect(ctx, ctx->battleMons[battlerId2].item, 1) == sSpeedHalvingItemEffects[i]) {
+            speed2 /= 2;
+            break;
+        }
+    }
+    
+    if (heldItem2 == HOLD_EFFECT_CHOICE_SPEED) {
+        speed2 = speed2 * 15/10;
+    }
+    
+    if (heldItem2 == HOLD_EFFECT_DITTO_SPEED_UP && ctx->battleMons[battlerId2].species == SPECIES_DITTO) {
+        speed2 *= 2;
+    }
+    
+    if (ability2 == ABILITY_QUICK_FEET && ctx->battleMons[battlerId2].status & 0xFF) {
+        speed2 = speed2 * 15/10;
+    } else if (ctx->battleMons[battlerId2].status & STATUS_PARALYSIS) {
+        speed2 /= 4;
+    }
+    
+    if (ability2 == ABILITY_SLOW_START && ctx->totalTurns - ctx->battleMons[battlerId2].unk88.slowStartTurns < 5) {
+        speed2 /= 2;
+    }
+    
+    if (ability2 == ABILITY_UNBURDEN && ctx->battleMons[battlerId2].unk88.knockOffFlag && ctx->battleMons[battlerId2].item == FALSE) {
+        speed2 *= 2;
+    }
+
+    if (ctx->fieldSideConditionFlags[BattleSys_GetFieldSide(bsys, battlerId2)] & SIDE_CONDITION_TAILWIND) {
+        speed2 *= 2;
+    }
+    
+    if (heldItem2 == HOLD_EFFECT_SOMETIMES_PRIORITY) {
+        if ((ctx->unk_310C[battlerId2])%(100/extra2) == 0) {
+            boostedPriority2 = 1;
+            
+            if (!flag) {
+                ctx->battleMons[battlerId2].unk88.quickClawFlag = TRUE;
+            }
+        }
+    }
+    
+    if (heldItem2 == HOLD_EFFECT_PINCH_PRIORITY) {
+        if (GetBattlerAbility(ctx, battlerId2) == ABILITY_GLUTTONY) {
+            extra2 /= 2;
+        }
+        if (ctx->battleMons[battlerId2].hp <= ctx->battleMons[battlerId2].maxHp/extra2) {
+            boostedPriority2 = 1;
+            if (!flag) {
+                ctx->battleMons[battlerId2].unk88.custapBerryFlag = TRUE;
+            }
+        }
+    }
+    
+    if (heldItem2 == HOLD_EFFECT_SPEED_DOWN) {
+        loweredPriority2 = 1;
+    }
+    
+    ctx->unk_21F0[battlerId1] = speed1;
+    ctx->unk_21F0[battlerId2] = speed2;
+    
+    if (!flag) {
+        action1 = ctx->unk_21A8[battlerId1][3];
+        action2 = ctx->unk_21A8[battlerId2][3];
+        movePos1 = ctx->movePos[battlerId1];
+        movePos2 = ctx->movePos[battlerId2];
+        if (action1 == 1) { //fight button
+            if (ctx->turnData[battlerId1].struggleFlag) {
+                moveNo1 = MOVE_STRUGGLE;
+            } else {
+                moveNo1 = GetBattlerVar(ctx, battlerId1, BMON_DATA_MOVE1 + movePos1, NULL);
+            }
+        }
+        if (action2 == 1) { //fight button
+            if (ctx->turnData[battlerId2].struggleFlag) {
+                moveNo2 = MOVE_STRUGGLE;
+            } else {
+                moveNo2 = GetBattlerVar(ctx, battlerId2, BMON_DATA_MOVE1 + movePos2, NULL);
+            }
+        }
+        movePriority1 = ctx->unk_334.moveData[moveNo1].priority;
+        movePriority2 = ctx->unk_334.moveData[moveNo2].priority;
+    }
+    
+    if (movePriority1 == movePriority2) {
+        if (boostedPriority1 && boostedPriority2) {
+            if (speed1 < speed2) {
+                ret = 1;
+            } else if (speed1 == speed2 && BattleSys_Random(bsys)&1) {
+                ret = 2;
+            }
+        } else if (!boostedPriority1 && boostedPriority2) {
+            ret = 1;
+        } else if (boostedPriority1 && !boostedPriority2) {
+            ret = 0;
+        } else if (loweredPriority1 && loweredPriority2) {
+            if (speed1 > speed2) {
+                ret = 1;
+            } else if (speed1 == speed2 && BattleSys_Random(bsys)&1) {
+                ret = 2;
+            }
+        } else if (loweredPriority1 && !loweredPriority2) {
+            ret = 1;
+        } else if (!loweredPriority1 && loweredPriority2) {
+            ret = 0;
+        } else if (ability1 == ABILITY_STALL && ability2 == ABILITY_STALL) {
+            if (speed1 > speed2) {
+                ret = 1;
+            } else if (speed1 == speed2 && BattleSys_Random(bsys)&1) {
+                ret = 2;
+            }
+        } else if (ability1 == ABILITY_STALL && ability2 != ABILITY_STALL) {
+            ret = 1;
+        } else if (ability1 != ABILITY_STALL && ability2 == ABILITY_STALL) {
+            ret = 0;
+        } else if (ctx->fieldCondition & FIELD_CONDITION_TRICK_ROOM) {
+            if (speed1 > speed2) {
+                ret = 1;
+            }
+            if (speed1 == speed2 && BattleSys_Random(bsys)&1) {
+                ret = 2;
+            }
+        } else {
+            if (speed1 < speed2) {
+                ret = 1;
+            }
+            if (speed1 == speed2 && BattleSys_Random(bsys)&1) {
+                ret = 2;
+            }
+        }
+    } else if (movePriority1 < movePriority2) {
+        ret = 1;
+    }
+    
+    return ret;
 }

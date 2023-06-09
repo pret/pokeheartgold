@@ -16,7 +16,7 @@ int GetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 varId, void *data);
 void SetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 varId, void *data);
 void ov12_0224F794(BATTLECONTEXT *ctx, int battlerId, u32 varId, int data);
 void AddBattlerVar(BATTLEMON *mon, u32 varId, int data);
-
+u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int battlerId2, int flag);
 
 //The following functions haven't been decompiled as of now
 void ov12_02256F78(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 monIndex);

@@ -70,6 +70,23 @@ enum Terrain {
 #define MOVE_EFFECT_14                      (1 << 14)
 #define MOVE_EFFECT_IMPRISON                (1 << 30)
 
+//Field Conditions
+#define FIELD_CONDITION_RAIN                (1 << 0)
+#define FIELD_CONDITION_RAIN_PERMANENT      (1 << 1)
+#define FIELD_CONDITION_RAIN_ALL            (FIELD_CONDITION_RAIN | FIELD_CONDITION_RAIN_PERMANENT)
+#define FIELD_CONDITION_SANDSTORM           (1 << 2)
+#define FIELD_CONDITION_SANDSTORM_PERMANENT (1 << 3)
+#define FIELD_CONDITION_SANDSTORM_ALL       (FIELD_CONDITION_SANDSTORM | FIELD_CONDITION_SANDSTORM_PERMANENT)
+#define FIELD_CONDITION_SUN                 (1 << 4)
+#define FIELD_CONDITION_SUN_PERMANENT       (1 << 5)
+#define FIELD_CONDITION_SUN_ALL             (FIELD_CONDITION_SUN | FIELD_CONDITION_SUN_PERMANENT)
+#define FIELD_CONDITION_HAIL                (1 << 6)
+#define FIELD_CONDITION_HAIL_PERMANENT      (1 << 7)
+#define FIELD_CONDITION_HAIL_ALL            (FIELD_CONDITION_HAIL | FIELD_CONDITION_HAIL_PERMANENT)
+#define FIELD_CONDITION_FOG                 (1 << 15)
+#define FIELD_CONDITION_WEATHER             (FIELD_CONDITION_RAIN_ALL | FIELD_CONDITION_SANDSTORM_ALL | FIELD_CONDITION_SUN_ALL | FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_FOG)
+#define FIELD_CONDITION_TRICK_ROOM          (7 << 16)
+    
 //Field Side Conditions
 #define SIDE_CONDITION_REFLECT              (1 << 0)
 #define SIDE_CONDITION_LIGHT_SCREEN         (1 << 1)
@@ -79,9 +96,11 @@ enum Terrain {
 #define SIDE_CONDITION_5                    (1 << 5)
 #define SIDE_CONDITION_MIST                 (1 << 6)
 #define SIDE_CONDITION_STEALTH_ROCKS        (1 << 7)
-#define SIDE_CONDITION_8                    (1 << 8)
-#define SIDE_CONDITION_9                    (1 << 9)
+#define SIDE_CONDITION_TAILWIND             (3 << 8)
 #define SIDE_CONDITION_TOXIC_SPIKES         (1 << 10)
+
+//Status
+#define STATUS_PARALYSIS                    (1 << 6)
 
 //Status 2
 #define STATUS2_12                          (1 << 12)
@@ -187,8 +206,8 @@ enum Terrain {
 #define BMON_DATA_ITEM_KNOCKED_OFF          82
 #define BMON_DATA_METRONOME                 83
 #define BMON_DATA_84                        84
-#define BMON_DATA_85                        85
-#define BMON_DATA_86                        86
+#define BMON_DATA_CUSTAP_FLAG               85
+#define BMON_DATA_QUICK_CLAW_FLAG           86
 #define BMON_DATA_RECHARGE                  87
 #define BMON_DATA_FAKE_OUT                  88
 #define BMON_DATA_SLOW_START_COUNT          89

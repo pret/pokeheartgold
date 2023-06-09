@@ -3046,7 +3046,7 @@ BOOL BtlCmd_TryThief(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         BattleScriptIncrementPointer(ctx, adrs1);
     } else if (ctx->battleMons[ctx->battlerIdTarget].item == ITEM_GRISEOUS_ORB) {
         BattleScriptIncrementPointer(ctx, adrs1);
-    } else if (ctx->battleMons[ctx->battlerIdTarget].unk88.unk4_2C || ctx->battleMons[ctx->battlerIdTarget].unk88.unk4_2D) {
+    } else if (ctx->battleMons[ctx->battlerIdTarget].unk88.custapBerryFlag || ctx->battleMons[ctx->battlerIdTarget].unk88.quickClawFlag) {
         BattleScriptIncrementPointer(ctx, adrs1);
     } else {
         if (ctx->battleMons[ctx->battlerIdTarget].item && CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget, ABILITY_STICKY_HOLD) == TRUE) {
@@ -3336,7 +3336,7 @@ BOOL BtlCmd_WeatherDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     u32 type2 = GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL);
 
     if (CheckAbilityActive(bsys, ctx, 8, 0, ABILITY_CLOUD_NINE) == 0 && CheckAbilityActive(bsys, ctx, 8, 0, ABILITY_AIR_LOCK) == 0) {
-        if (ctx->fieldCondition & 12) {
+        if (ctx->fieldCondition & FIELD_CONDITION_SANDSTORM_ALL) {
             if (type1 != TYPE_ROCK && type2 != TYPE_ROCK &&
                 type1 != TYPE_STEEL && type2 != TYPE_STEEL &&
                 type1 != TYPE_GROUND && type2 != TYPE_GROUND &&
@@ -3346,7 +3346,7 @@ BOOL BtlCmd_WeatherDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                     ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp * -1, 16);
             }
         }
-        if (ctx->fieldCondition & 48) {
+        if (ctx->fieldCondition & FIELD_CONDITION_SUN_ALL) {
             if (ctx->battleMons[battlerId].hp && !(ctx->battleMons[battlerId].moveEffectFlags & 0x40080)) {
                 if (GetBattlerAbility(ctx, battlerId) == ABILITY_DRY_SKIN || GetBattlerAbility(ctx, battlerId) == ABILITY_SOLAR_POWER) {
                     ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp * -1, 8);
@@ -3356,7 +3356,7 @@ BOOL BtlCmd_WeatherDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 }
             }
         }
-        if (ctx->fieldCondition & 192) {
+        if (ctx->fieldCondition & FIELD_CONDITION_HAIL_ALL) {
             if (ctx->battleMons[battlerId].hp && !(ctx->battleMons[battlerId].moveEffectFlags & 0x40080)) {
                 if (GetBattlerAbility(ctx, battlerId) == ABILITY_ICE_BODY) {
                     if (ctx->battleMons[battlerId].hp < ctx->battleMons[battlerId].maxHp) {
@@ -3370,7 +3370,7 @@ BOOL BtlCmd_WeatherDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 }
             }
         }
-        if (ctx->fieldCondition & 3) {
+        if (ctx->fieldCondition & FIELD_CONDITION_RAIN_ALL) {
             if (ctx->battleMons[battlerId].hp && ctx->battleMons[battlerId].hp < ctx->battleMons[battlerId].maxHp &&
                 GetBattlerAbility(ctx, battlerId) == ABILITY_RAIN_DISH) {
                 ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp, 16);
@@ -3611,9 +3611,9 @@ BOOL BtlCmd_RapidSpin(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 BOOL BtlCmd_ChangeWeatherBasedHPRecovery(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    if (!(ctx->fieldCondition & 0x80FF) || CheckAbilityActive(bsys, ctx, 8, 0, ABILITY_CLOUD_NINE) || CheckAbilityActive(bsys, ctx, 8, 0, ABILITY_AIR_LOCK)) {
+    if (!(ctx->fieldCondition & FIELD_CONDITION_WEATHER) || CheckAbilityActive(bsys, ctx, 8, 0, ABILITY_CLOUD_NINE) || CheckAbilityActive(bsys, ctx, 8, 0, ABILITY_AIR_LOCK)) {
         ctx->hpCalcWork = ctx->battleMons[ctx->battlerIdAttacker].maxHp / 2;
-    } else if (ctx->fieldCondition & 48) {
+    } else if (ctx->fieldCondition & FIELD_CONDITION_SUN_ALL) {
         ctx->hpCalcWork = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp*20, 30);
     } else {
         ctx->hpCalcWork = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp, 4);
@@ -4293,18 +4293,18 @@ BOOL BtlCmd_WeatherBallDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     if (!CheckAbilityActive(bsys, ctx, 8, 0, ABILITY_CLOUD_NINE) && !CheckAbilityActive(bsys, ctx, 8, 0, ABILITY_AIR_LOCK)) {
-        if (ctx->fieldCondition & 0x80ff) {
+        if (ctx->fieldCondition & FIELD_CONDITION_WEATHER) {
             ctx->movePower = ctx->unk_334.moveData[ctx->moveNoCur].power * 2;
-            if (ctx->fieldCondition & 3) {
+            if (ctx->fieldCondition & FIELD_CONDITION_RAIN_ALL) {
                 ctx->moveType = TYPE_WATER;
             }
-            if (ctx->fieldCondition & 12) {
+            if (ctx->fieldCondition & FIELD_CONDITION_SANDSTORM_ALL) {
                 ctx->moveType = TYPE_ROCK;
             }
-            if (ctx->fieldCondition & 48) {
+            if (ctx->fieldCondition & FIELD_CONDITION_SUN_ALL) {
                 ctx->moveType = TYPE_FIRE;
             }
-            if (ctx->fieldCondition & 192) {
+            if (ctx->fieldCondition & FIELD_CONDITION_HAIL_ALL) {
                 ctx->moveType = TYPE_ICE;
             }
         } else {
@@ -5052,7 +5052,7 @@ BOOL BtlCmd_TryPluck(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     if (ctx->battleMons[ctx->battlerIdTarget].item && CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget, ABILITY_STICKY_HOLD) == TRUE) {
         BattleScriptIncrementPointer(ctx, adrs1);
-    } else if ((ctx->battleMons[ctx->battlerIdTarget].item && ctx->battleMons[ctx->battlerIdTarget].unk88.unk4_2C) || CanEatOpponentBerry(bsys, ctx, ctx->battlerIdTarget) != TRUE) {
+    } else if ((ctx->battleMons[ctx->battlerIdTarget].item && ctx->battleMons[ctx->battlerIdTarget].unk88.custapBerryFlag) || CanEatOpponentBerry(bsys, ctx, ctx->battlerIdTarget) != TRUE) {
         BattleScriptIncrementPointer(ctx, adrs2);
     }
 

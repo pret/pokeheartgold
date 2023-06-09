@@ -1,933 +1,12 @@
 #include "constants/pokemon.h"
 #include "constants/sndseq.h"
+#include "constants/items.h"
 	.include "asm/macros.inc"
 	.include "overlay_12_0224E4FC.inc"
 	.include "global.inc"
 
 	.text
     .public AddBattlerVar
-    
-	thumb_func_start ov12_0224FC48
-ov12_0224FC48: ; 0x0224FC48
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0x6c
-	str r0, [sp, #4]
-	ldr r0, [sp, #0x80]
-	str r3, [sp, #0xc]
-	str r0, [sp, #0x80]
-	mov r0, #0
-	str r0, [sp, #0x64]
-	str r0, [sp, #0x60]
-	ldr r0, [sp, #0x64]
-	str r2, [sp, #8]
-	str r0, [sp, #0x5c]
-	ldr r0, [sp, #0x64]
-	ldr r3, _0224FF44 ; =0x00002D8C
-	str r0, [sp, #0x48]
-	ldr r0, [sp, #0x64]
-	add r5, r1, #0
-	str r0, [sp, #0x44]
-	ldr r0, [sp, #0x64]
-	str r0, [sp, #0x40]
-	ldr r0, [sp, #0x64]
-	str r0, [sp, #0x3c]
-	ldr r0, [sp, #0x64]
-	str r0, [sp, #0x38]
-	ldr r0, [sp, #0x64]
-	str r0, [sp, #0x34]
-	mov r0, #0xc0
-	mul r2, r0
-	str r2, [sp, #0x18]
-	add r2, r5, r3
-	ldr r1, [sp, #0x18]
-	str r2, [sp, #0x68]
-	ldr r1, [r2, r1]
-	cmp r1, #0
-	bne _0224FCA0
-	ldr r2, [sp, #0xc]
-	mul r0, r2
-	add r0, r5, r0
-	ldr r0, [r0, r3]
-	cmp r0, #0
-	beq _0224FCA0
-	add sp, #0x6c
-	mov r0, #1
-	pop {r4, r5, r6, r7, pc}
-_0224FCA0:
-	cmp r1, #0
-	beq _0224FCBA
-	ldr r0, [sp, #0xc]
-	mov r1, #0xc0
-	mul r1, r0
-	ldr r0, _0224FF44 ; =0x00002D8C
-	add r1, r5, r1
-	ldr r0, [r1, r0]
-	cmp r0, #0
-	bne _0224FCBA
-	add sp, #0x6c
-	mov r0, #0
-	pop {r4, r5, r6, r7, pc}
-_0224FCBA:
-	ldr r1, [sp, #8]
-	add r0, r5, #0
-	bl GetBattlerAbility
-	str r0, [sp, #0x2c]
-	ldr r1, [sp, #0xc]
-	add r0, r5, #0
-	bl GetBattlerAbility
-	str r0, [sp, #0x28]
-	ldr r1, [sp, #8]
-	add r0, r5, #0
-	bl GetBattlerHeldItemEffect
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	str r0, [sp, #0x58]
-	ldr r1, [sp, #8]
-	add r0, r5, #0
-	mov r2, #0
-	bl BattleSystem_GetHeldItemDamageBoost
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	str r0, [sp, #0x54]
-	ldr r1, [sp, #0xc]
-	add r0, r5, #0
-	bl GetBattlerHeldItemEffect
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	str r0, [sp, #0x50]
-	ldr r1, [sp, #0xc]
-	add r0, r5, #0
-	mov r2, #0
-	bl BattleSystem_GetHeldItemDamageBoost
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	str r0, [sp, #0x4c]
-	ldr r0, [sp, #0x18]
-	ldr r2, _0224FF48 ; =0x00002D5B
-	add r0, r5, r0
-	ldrsb r4, [r0, r2]
-	ldr r0, [sp, #0xc]
-	mov r1, #0xc0
-	mul r1, r0
-	add r0, r5, r1
-	str r1, [sp, #0x14]
-	ldrsb r7, [r0, r2]
-	ldr r1, [sp, #8]
-	add r0, r5, #0
-	bl GetBattlerAbility
-	cmp r0, #0x56
-	bne _0224FD3C
-	sub r0, r4, #6
-	lsl r0, r0, #1
-	add r4, r0, #6
-	cmp r4, #0xc
-	ble _0224FD36
-	mov r4, #0xc
-_0224FD36:
-	cmp r4, #0
-	bge _0224FD3C
-	mov r4, #0
-_0224FD3C:
-	ldr r1, [sp, #0xc]
-	add r0, r5, #0
-	bl GetBattlerAbility
-	cmp r0, #0x56
-	bne _0224FD5A
-	sub r0, r7, #6
-	lsl r0, r0, #1
-	add r7, r0, #6
-	cmp r7, #0xc
-	ble _0224FD54
-	mov r7, #0xc
-_0224FD54:
-	cmp r7, #0
-	bge _0224FD5A
-	mov r7, #0
-_0224FD5A:
-	ldr r0, [sp, #0x18]
-	lsl r1, r4, #1
-	add r2, r5, r0
-	ldr r0, _0224FF4C ; =0x00002D46
-	ldrh r2, [r2, r0]
-	ldr r0, _0224FF50 ; =ov12_0226CB88
-	ldrb r0, [r0, r1]
-	mul r0, r2
-	ldr r2, _0224FF54 ; =ov12_0226CB89
-	ldrb r1, [r2, r1]
-	bl _s32_div_f
-	add r6, r0, #0
-	ldr r0, [sp, #0x14]
-	lsl r1, r7, #1
-	add r2, r5, r0
-	ldr r0, _0224FF4C ; =0x00002D46
-	ldrh r2, [r2, r0]
-	ldr r0, _0224FF50 ; =ov12_0226CB88
-	ldrb r0, [r0, r1]
-	mul r0, r2
-	ldr r2, _0224FF54 ; =ov12_0226CB89
-	ldrb r1, [r2, r1]
-	bl _s32_div_f
-	add r4, r0, #0
-	mov r0, #0xd
-	str r0, [sp]
-	ldr r0, [sp, #4]
-	add r1, r5, #0
-	mov r2, #8
-	mov r3, #0
-	bl CheckAbilityActive
-	cmp r0, #0
-	bne _0224FE02
-	mov r0, #0x4c
-	str r0, [sp]
-	ldr r0, [sp, #4]
-	add r1, r5, #0
-	mov r2, #8
-	mov r3, #0
-	bl CheckAbilityActive
-	cmp r0, #0
-	bne _0224FE02
-	ldr r0, [sp, #0x2c]
-	cmp r0, #0x21
-	bne _0224FDC8
-	mov r0, #6
-	lsl r0, r0, #6
-	ldr r1, [r5, r0]
-	mov r0, #3
-	tst r0, r1
-	bne _0224FDDA
-_0224FDC8:
-	ldr r0, [sp, #0x2c]
-	cmp r0, #0x22
-	bne _0224FDDC
-	mov r0, #6
-	lsl r0, r0, #6
-	ldr r1, [r5, r0]
-	mov r0, #0x30
-	tst r0, r1
-	beq _0224FDDC
-_0224FDDA:
-	lsl r6, r6, #1
-_0224FDDC:
-	ldr r0, [sp, #0x28]
-	cmp r0, #0x21
-	bne _0224FDEE
-	mov r0, #6
-	lsl r0, r0, #6
-	ldr r1, [r5, r0]
-	mov r0, #3
-	tst r0, r1
-	bne _0224FE00
-_0224FDEE:
-	ldr r0, [sp, #0x28]
-	cmp r0, #0x22
-	bne _0224FE02
-	mov r0, #6
-	lsl r0, r0, #6
-	ldr r1, [r5, r0]
-	mov r0, #0x30
-	tst r0, r1
-	beq _0224FE02
-_0224FE00:
-	lsl r4, r4, #1
-_0224FE02:
-	mov r0, #0
-	str r0, [sp, #0x24]
-	ldr r0, [sp, #0x18]
-	ldr r7, _0224FF58 ; =ov12_0226CB50
-	add r0, r5, r0
-	str r0, [sp, #0x1c]
-_0224FE0E:
-	ldr r2, [sp, #0x1c]
-	ldr r1, _0224FF5C ; =0x00002DB8
-	add r0, r5, #0
-	ldrh r1, [r2, r1]
-	mov r2, #1
-	bl GetItemHoldEffect
-	ldrb r1, [r7]
-	cmp r1, r0
-	bne _0224FE26
-	lsr r6, r6, #1
-	b _0224FE32
-_0224FE26:
-	ldr r0, [sp, #0x24]
-	add r7, r7, #1
-	add r0, r0, #1
-	str r0, [sp, #0x24]
-	cmp r0, #8
-	blo _0224FE0E
-_0224FE32:
-	ldr r0, [sp, #0x58]
-	cmp r0, #0x73
-	bne _0224FE44
-	mov r0, #0xf
-	mul r0, r6
-	mov r1, #0xa
-	bl _u32_div_f
-	add r6, r0, #0
-_0224FE44:
-	ldr r0, [sp, #0x58]
-	cmp r0, #0x66
-	bne _0224FE5A
-	ldr r0, [sp, #0x18]
-	add r1, r5, r0
-	mov r0, #0xb5
-	lsl r0, r0, #6
-	ldrh r0, [r1, r0]
-	cmp r0, #0x84
-	bne _0224FE5A
-	lsl r6, r6, #1
-_0224FE5A:
-	ldr r0, [sp, #0x2c]
-	cmp r0, #0x5f
-	bne _0224FE7C
-	ldr r0, [sp, #0x18]
-	add r1, r5, r0
-	ldr r0, _0224FF60 ; =0x00002DAC
-	ldr r0, [r1, r0]
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	beq _0224FE7C
-	mov r0, #0xf
-	mul r0, r6
-	mov r1, #0xa
-	bl _u32_div_f
-	add r6, r0, #0
-	b _0224FE8C
-_0224FE7C:
-	ldr r0, [sp, #0x18]
-	add r1, r5, r0
-	ldr r0, _0224FF60 ; =0x00002DAC
-	ldr r1, [r1, r0]
-	mov r0, #0x40
-	tst r0, r1
-	beq _0224FE8C
-	lsr r6, r6, #2
-_0224FE8C:
-	ldr r0, [sp, #0x2c]
-	cmp r0, #0x70
-	bne _0224FEA8
-	ldr r1, [sp, #0x18]
-	mov r0, #0x15
-	add r2, r5, r1
-	ldr r1, _0224FF64 ; =0x00002DD8
-	lsl r0, r0, #4
-	ldr r0, [r5, r0]
-	ldr r1, [r2, r1]
-	sub r0, r0, r1
-	cmp r0, #5
-	bge _0224FEA8
-	lsr r6, r6, #1
-_0224FEA8:
-	ldr r0, [sp, #0x2c]
-	cmp r0, #0x54
-	bne _0224FEC6
-	ldr r0, [sp, #0x18]
-	add r2, r5, r0
-	ldr r0, _0224FF68 ; =0x00002DCC
-	ldr r1, [r2, r0]
-	lsl r1, r1, #9
-	lsr r1, r1, #0x1f
-	beq _0224FEC6
-	sub r0, #0x14
-	ldrh r0, [r2, r0]
-	cmp r0, #0
-	bne _0224FEC6
-	lsl r6, r6, #1
-_0224FEC6:
-	ldr r0, [sp, #4]
-	ldr r1, [sp, #8]
-	bl BattleSys_GetFieldSide
-	lsl r0, r0, #2
-	add r1, r5, r0
-	mov r0, #0x6f
-	lsl r0, r0, #2
-	ldr r1, [r1, r0]
-	mov r0, #3
-	lsl r0, r0, #8
-	tst r0, r1
-	beq _0224FEE2
-	lsl r6, r6, #1
-_0224FEE2:
-	ldr r0, [sp, #0x58]
-	cmp r0, #0x34
-	bne _0224FF20
-	ldr r1, [sp, #0x54]
-	mov r0, #0x64
-	bl _s32_div_f
-	add r1, r0, #0
-	ldr r0, [sp, #8]
-	lsl r0, r0, #1
-	add r2, r5, r0
-	ldr r0, _0224FF6C ; =0x0000310C
-	ldrh r0, [r2, r0]
-	bl _s32_div_f
-	cmp r1, #0
-	bne _0224FF20
-	mov r0, #1
-	str r0, [sp, #0x40]
-	ldr r0, [sp, #0x80]
-	cmp r0, #0
-	bne _0224FF20
-	ldr r0, _0224FF68 ; =0x00002DCC
-	ldr r1, [sp, #0x18]
-	add r0, r5, r0
-	ldr r2, [r0, r1]
-	mov r1, #2
-	lsl r1, r1, #0x1c
-	orr r2, r1
-	ldr r1, [sp, #0x18]
-	str r2, [r0, r1]
-_0224FF20:
-	ldr r0, [sp, #0x58]
-	cmp r0, #0x2d
-	bne _0224FFA4
-	ldr r1, [sp, #8]
-	add r0, r5, #0
-	bl GetBattlerAbility
-	cmp r0, #0x52
-	bne _0224FF3A
-	ldr r0, [sp, #0x54]
-	lsl r0, r0, #0x17
-	lsr r0, r0, #0x18
-	str r0, [sp, #0x54]
-_0224FF3A:
-	ldr r0, [sp, #8]
-	mov r1, #0xc0
-	mul r1, r0
-	ldr r0, _0224FF70 ; =0x00002D90
-	b _0224FF74
-	.balign 4, 0
-_0224FF44: .word 0x00002D8C
-_0224FF48: .word 0x00002D5B
-_0224FF4C: .word 0x00002D46
-_0224FF50: .word ov12_0226CB88
-_0224FF54: .word ov12_0226CB89
-_0224FF58: .word ov12_0226CB50
-_0224FF5C: .word 0x00002DB8
-_0224FF60: .word 0x00002DAC
-_0224FF64: .word 0x00002DD8
-_0224FF68: .word 0x00002DCC
-_0224FF6C: .word 0x0000310C
-_0224FF70: .word 0x00002D90
-_0224FF74:
-	add r1, r5, r1
-	ldr r0, [r1, r0]
-	ldr r1, [sp, #0x54]
-	bl _u32_div_f
-	ldr r2, [sp, #0x68]
-	ldr r1, [sp, #0x18]
-	ldr r1, [r2, r1]
-	cmp r1, r0
-	bhi _0224FFA4
-	mov r0, #1
-	str r0, [sp, #0x40]
-	ldr r0, [sp, #0x80]
-	cmp r0, #0
-	bne _0224FFA4
-	ldr r0, _0225026C ; =0x00002DCC
-	ldr r1, [sp, #0x18]
-	add r0, r5, r0
-	ldr r2, [r0, r1]
-	mov r1, #1
-	lsl r1, r1, #0x1c
-	orr r2, r1
-	ldr r1, [sp, #0x18]
-	str r2, [r0, r1]
-_0224FFA4:
-	ldr r0, [sp, #0x58]
-	cmp r0, #0x6b
-	bne _0224FFAE
-	mov r0, #1
-	str r0, [sp, #0x38]
-_0224FFAE:
-	mov r0, #0
-	str r0, [sp, #0x10]
-	ldr r0, [sp, #0x14]
-	ldr r7, _02250270 ; =ov12_0226CB50
-	add r0, r5, r0
-	str r0, [sp, #0x20]
-_0224FFBA:
-	ldr r2, [sp, #0x20]
-	ldr r1, _02250274 ; =0x00002DB8
-	add r0, r5, #0
-	ldrh r1, [r2, r1]
-	mov r2, #1
-	bl GetItemHoldEffect
-	ldrb r1, [r7]
-	cmp r1, r0
-	bne _0224FFD2
-	lsr r4, r4, #1
-	b _0224FFDE
-_0224FFD2:
-	ldr r0, [sp, #0x10]
-	add r7, r7, #1
-	add r0, r0, #1
-	str r0, [sp, #0x10]
-	cmp r0, #8
-	blo _0224FFBA
-_0224FFDE:
-	ldr r0, [sp, #0x50]
-	cmp r0, #0x73
-	bne _0224FFF0
-	mov r0, #0xf
-	mul r0, r4
-	mov r1, #0xa
-	bl _u32_div_f
-	add r4, r0, #0
-_0224FFF0:
-	ldr r0, [sp, #0x50]
-	cmp r0, #0x66
-	bne _02250006
-	ldr r0, [sp, #0x14]
-	add r1, r5, r0
-	mov r0, #0xb5
-	lsl r0, r0, #6
-	ldrh r0, [r1, r0]
-	cmp r0, #0x84
-	bne _02250006
-	lsl r4, r4, #1
-_02250006:
-	ldr r0, [sp, #0x28]
-	cmp r0, #0x5f
-	bne _02250028
-	ldr r0, [sp, #0x14]
-	add r1, r5, r0
-	ldr r0, _02250278 ; =0x00002DAC
-	ldr r0, [r1, r0]
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	beq _02250028
-	mov r0, #0xf
-	mul r0, r4
-	mov r1, #0xa
-	bl _u32_div_f
-	add r4, r0, #0
-	b _02250038
-_02250028:
-	ldr r0, [sp, #0x14]
-	add r1, r5, r0
-	ldr r0, _02250278 ; =0x00002DAC
-	ldr r1, [r1, r0]
-	mov r0, #0x40
-	tst r0, r1
-	beq _02250038
-	lsr r4, r4, #2
-_02250038:
-	ldr r0, [sp, #0x28]
-	cmp r0, #0x70
-	bne _02250054
-	ldr r1, [sp, #0x14]
-	mov r0, #0x15
-	add r2, r5, r1
-	ldr r1, _0225027C ; =0x00002DD8
-	lsl r0, r0, #4
-	ldr r0, [r5, r0]
-	ldr r1, [r2, r1]
-	sub r0, r0, r1
-	cmp r0, #5
-	bge _02250054
-	lsr r4, r4, #1
-_02250054:
-	ldr r0, [sp, #0x28]
-	cmp r0, #0x54
-	bne _02250072
-	ldr r0, [sp, #0x14]
-	add r2, r5, r0
-	ldr r0, _0225026C ; =0x00002DCC
-	ldr r1, [r2, r0]
-	lsl r1, r1, #9
-	lsr r1, r1, #0x1f
-	beq _02250072
-	sub r0, #0x14
-	ldrh r0, [r2, r0]
-	cmp r0, #0
-	bne _02250072
-	lsl r4, r4, #1
-_02250072:
-	ldr r0, [sp, #4]
-	ldr r1, [sp, #0xc]
-	bl BattleSys_GetFieldSide
-	lsl r0, r0, #2
-	add r1, r5, r0
-	mov r0, #0x6f
-	lsl r0, r0, #2
-	ldr r1, [r1, r0]
-	mov r0, #3
-	lsl r0, r0, #8
-	tst r0, r1
-	beq _0225008E
-	lsl r4, r4, #1
-_0225008E:
-	ldr r0, [sp, #0x50]
-	cmp r0, #0x34
-	bne _022500CC
-	ldr r1, [sp, #0x4c]
-	mov r0, #0x64
-	bl _s32_div_f
-	add r1, r0, #0
-	ldr r0, [sp, #0xc]
-	lsl r0, r0, #1
-	add r2, r5, r0
-	ldr r0, _02250280 ; =0x0000310C
-	ldrh r0, [r2, r0]
-	bl _s32_div_f
-	cmp r1, #0
-	bne _022500CC
-	mov r0, #1
-	str r0, [sp, #0x3c]
-	ldr r0, [sp, #0x80]
-	cmp r0, #0
-	bne _022500CC
-	ldr r0, _0225026C ; =0x00002DCC
-	ldr r1, [sp, #0x14]
-	add r0, r5, r0
-	ldr r2, [r0, r1]
-	mov r1, #2
-	lsl r1, r1, #0x1c
-	orr r2, r1
-	ldr r1, [sp, #0x14]
-	str r2, [r0, r1]
-_022500CC:
-	ldr r0, [sp, #0x50]
-	cmp r0, #0x2d
-	bne _02250120
-	ldr r1, [sp, #0xc]
-	add r0, r5, #0
-	bl GetBattlerAbility
-	cmp r0, #0x52
-	bne _022500E6
-	ldr r0, [sp, #0x4c]
-	lsl r0, r0, #0x17
-	lsr r0, r0, #0x18
-	str r0, [sp, #0x4c]
-_022500E6:
-	ldr r0, [sp, #0xc]
-	mov r1, #0xc0
-	add r7, r0, #0
-	mul r7, r1
-	ldr r0, _02250284 ; =0x00002D90
-	add r1, r5, r7
-	ldr r0, [r1, r0]
-	ldr r1, [sp, #0x4c]
-	bl _u32_div_f
-	ldr r1, _02250288 ; =0x00002D8C
-	add r2, r5, r7
-	ldr r2, [r2, r1]
-	cmp r2, r0
-	bhi _02250120
-	mov r0, #1
-	str r0, [sp, #0x3c]
-	ldr r0, [sp, #0x80]
-	cmp r0, #0
-	bne _02250120
-	add r1, #0x40
-	add r0, r5, r1
-	ldr r1, [sp, #0x14]
-	ldr r2, [r0, r1]
-	mov r1, #1
-	lsl r1, r1, #0x1c
-	orr r2, r1
-	ldr r1, [sp, #0x14]
-	str r2, [r0, r1]
-_02250120:
-	ldr r0, [sp, #0x50]
-	cmp r0, #0x6b
-	bne _0225012A
-	mov r0, #1
-	str r0, [sp, #0x34]
-_0225012A:
-	ldr r0, [sp, #8]
-	lsl r0, r0, #2
-	add r1, r5, r0
-	ldr r0, _0225028C ; =0x000021F0
-	str r6, [r1, r0]
-	ldr r1, [sp, #0xc]
-	lsl r1, r1, #2
-	add r1, r5, r1
-	str r4, [r1, r0]
-	ldr r1, [sp, #0x80]
-	cmp r1, #0
-	bne _022501E2
-	ldr r1, [sp, #0xc]
-	ldr r3, _02250290 ; =0x000030BC
-	lsl r1, r1, #4
-	add r2, r5, r1
-	add r1, r0, #0
-	sub r1, #0x3c
-	ldr r1, [r2, r1]
-	sub r0, #0x3c
-	str r1, [sp, #0x30]
-	ldr r1, [sp, #8]
-	lsl r1, r1, #1
-	add r1, r5, r1
-	ldrh r2, [r1, r3]
-	ldr r1, [sp, #0xc]
-	lsl r1, r1, #1
-	add r1, r5, r1
-	ldrh r7, [r1, r3]
-	ldr r1, [sp, #8]
-	lsl r1, r1, #4
-	add r1, r5, r1
-	ldr r0, [r1, r0]
-	cmp r0, #1
-	bne _0225019A
-	ldr r0, [sp, #8]
-	lsl r0, r0, #6
-	add r1, r5, r0
-	mov r0, #0x75
-	lsl r0, r0, #2
-	ldr r0, [r1, r0]
-	lsl r0, r0, #0x1f
-	lsr r0, r0, #0x1f
-	beq _02250188
-	mov r0, #0xa5
-	str r0, [sp, #0x60]
-	b _0225019A
-_02250188:
-	ldr r1, [sp, #8]
-	add r0, r5, #0
-	add r2, r2, #6
-	mov r3, #0
-	bl GetBattlerVar
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
-	str r0, [sp, #0x60]
-_0225019A:
-	ldr r0, [sp, #0x30]
-	cmp r0, #1
-	bne _022501CA
-	ldr r0, [sp, #0xc]
-	lsl r0, r0, #6
-	add r1, r5, r0
-	mov r0, #0x75
-	lsl r0, r0, #2
-	ldr r0, [r1, r0]
-	lsl r0, r0, #0x1f
-	lsr r0, r0, #0x1f
-	beq _022501B8
-	mov r0, #0xa5
-	str r0, [sp, #0x5c]
-	b _022501CA
-_022501B8:
-	ldr r1, [sp, #0xc]
-	add r0, r5, #0
-	add r2, r7, #6
-	mov r3, #0
-	bl GetBattlerVar
-	lsl r0, r0, #0x10
-	lsr r0, r0, #0x10
-	str r0, [sp, #0x5c]
-_022501CA:
-	ldr r0, [sp, #0x60]
-	mov r1, #0xfa
-	lsl r0, r0, #4
-	add r0, r5, r0
-	lsl r1, r1, #2
-	ldrsb r0, [r0, r1]
-	str r0, [sp, #0x48]
-	ldr r0, [sp, #0x5c]
-	lsl r0, r0, #4
-	add r0, r5, r0
-	ldrsb r0, [r0, r1]
-	str r0, [sp, #0x44]
-_022501E2:
-	ldr r1, [sp, #0x48]
-	ldr r0, [sp, #0x44]
-	cmp r1, r0
-	beq _022501EC
-	b _02250352
-_022501EC:
-	ldr r0, [sp, #0x40]
-	cmp r0, #0
-	beq _02250218
-	ldr r0, [sp, #0x3c]
-	cmp r0, #0
-	beq _02250218
-	cmp r6, r4
-	bhs _02250202
-	mov r0, #1
-	str r0, [sp, #0x64]
-	b _0225035A
-_02250202:
-	cmp r6, r4
-	bne _02250256
-	ldr r0, [sp, #4]
-	bl BattleSys_Random
-	mov r1, #1
-	tst r0, r1
-	beq _02250256
-	mov r0, #2
-	str r0, [sp, #0x64]
-	b _0225035A
-_02250218:
-	ldr r0, [sp, #0x40]
-	cmp r0, #0
-	bne _0225022A
-	ldr r0, [sp, #0x3c]
-	cmp r0, #0
-	beq _0225022A
-	mov r0, #1
-	str r0, [sp, #0x64]
-	b _0225035A
-_0225022A:
-	ldr r0, [sp, #0x40]
-	cmp r0, #0
-	beq _0225023C
-	ldr r0, [sp, #0x3c]
-	cmp r0, #0
-	bne _0225023C
-	mov r0, #0
-	str r0, [sp, #0x64]
-	b _0225035A
-_0225023C:
-	ldr r0, [sp, #0x38]
-	cmp r0, #0
-	beq _02250294
-	ldr r0, [sp, #0x34]
-	cmp r0, #0
-	beq _02250294
-	cmp r6, r4
-	bls _02250252
-	mov r0, #1
-	str r0, [sp, #0x64]
-	b _0225035A
-_02250252:
-	cmp r6, r4
-	beq _02250258
-_02250256:
-	b _0225035A
-_02250258:
-	ldr r0, [sp, #4]
-	bl BattleSys_Random
-	mov r1, #1
-	tst r0, r1
-	beq _0225035A
-	mov r0, #2
-	str r0, [sp, #0x64]
-	b _0225035A
-	nop
-_0225026C: .word 0x00002DCC
-_02250270: .word ov12_0226CB50
-_02250274: .word 0x00002DB8
-_02250278: .word 0x00002DAC
-_0225027C: .word 0x00002DD8
-_02250280: .word 0x0000310C
-_02250284: .word 0x00002D90
-_02250288: .word 0x00002D8C
-_0225028C: .word 0x000021F0
-_02250290: .word 0x000030BC
-_02250294:
-	ldr r0, [sp, #0x38]
-	cmp r0, #0
-	beq _022502A6
-	ldr r0, [sp, #0x34]
-	cmp r0, #0
-	bne _022502A6
-	mov r0, #1
-	str r0, [sp, #0x64]
-	b _0225035A
-_022502A6:
-	ldr r0, [sp, #0x38]
-	cmp r0, #0
-	bne _022502B8
-	ldr r0, [sp, #0x34]
-	cmp r0, #0
-	beq _022502B8
-	mov r0, #0
-	str r0, [sp, #0x64]
-	b _0225035A
-_022502B8:
-	ldr r0, [sp, #0x2c]
-	cmp r0, #0x64
-	bne _022502E4
-	ldr r0, [sp, #0x28]
-	cmp r0, #0x64
-	bne _022502E4
-	cmp r6, r4
-	bls _022502CE
-	mov r0, #1
-	str r0, [sp, #0x64]
-	b _0225035A
-_022502CE:
-	cmp r6, r4
-	bne _0225035A
-	ldr r0, [sp, #4]
-	bl BattleSys_Random
-	mov r1, #1
-	tst r0, r1
-	beq _0225035A
-	mov r0, #2
-	str r0, [sp, #0x64]
-	b _0225035A
-_022502E4:
-	ldr r0, [sp, #0x2c]
-	cmp r0, #0x64
-	bne _022502F6
-	ldr r0, [sp, #0x28]
-	cmp r0, #0x64
-	beq _022502F6
-	mov r0, #1
-	str r0, [sp, #0x64]
-	b _0225035A
-_022502F6:
-	ldr r0, [sp, #0x2c]
-	cmp r0, #0x64
-	beq _02250308
-	ldr r0, [sp, #0x28]
-	cmp r0, #0x64
-	bne _02250308
-	mov r0, #0
-	str r0, [sp, #0x64]
-	b _0225035A
-_02250308:
-	mov r0, #6
-	lsl r0, r0, #6
-	ldr r1, [r5, r0]
-	mov r0, #7
-	lsl r0, r0, #0x10
-	tst r0, r1
-	beq _02250334
-	cmp r6, r4
-	bls _0225031E
-	mov r0, #1
-	str r0, [sp, #0x64]
-_0225031E:
-	cmp r6, r4
-	bne _0225035A
-	ldr r0, [sp, #4]
-	bl BattleSys_Random
-	mov r1, #1
-	tst r0, r1
-	beq _0225035A
-	mov r0, #2
-	str r0, [sp, #0x64]
-	b _0225035A
-_02250334:
-	cmp r6, r4
-	bhs _0225033C
-	mov r0, #1
-	str r0, [sp, #0x64]
-_0225033C:
-	cmp r6, r4
-	bne _0225035A
-	ldr r0, [sp, #4]
-	bl BattleSys_Random
-	mov r1, #1
-	tst r0, r1
-	beq _0225035A
-	mov r0, #2
-	str r0, [sp, #0x64]
-	b _0225035A
-_02250352:
-	cmp r1, r0
-	bge _0225035A
-	mov r0, #1
-	str r0, [sp, #0x64]
-_0225035A:
-	ldr r0, [sp, #0x64]
-	add sp, #0x6c
-	pop {r4, r5, r6, r7, pc}
-	thumb_func_end ov12_0224FC48
 
 	thumb_func_start BattleSystem_ClearExperienceEarnFlags
 BattleSystem_ClearExperienceEarnFlags: ; 0x02250360
@@ -7531,12 +6610,12 @@ _02253546:
 	ldr r0, _02253810 ; =0x00002D5A
 	ldrsb r0, [r4, r0]
 	lsl r2, r0, #1
-	ldr r0, _02253814 ; =ov12_0226CB88
+	ldr r0, _02253814 ; =sStatChangeTable
 	add r1, r0, r2
 	ldr r0, _02253818 ; =0x00002D44
 	ldrb r1, [r1, #1]
 	ldrh r3, [r4, r0]
-	ldr r0, _02253814 ; =ov12_0226CB88
+	ldr r0, _02253814 ; =sStatChangeTable
 	ldrb r0, [r0, r2]
 	mul r0, r3
 	bl _s32_div_f
@@ -7546,12 +6625,12 @@ _02253546:
 	ldr r0, _0225381C ; =0x00002D5D
 	ldrsb r0, [r4, r0]
 	lsl r2, r0, #1
-	ldr r0, _02253814 ; =ov12_0226CB88
+	ldr r0, _02253814 ; =sStatChangeTable
 	add r1, r0, r2
 	ldr r0, _02253820 ; =0x00002D4A
 	ldrb r1, [r1, #1]
 	ldrh r3, [r4, r0]
-	ldr r0, _02253814 ; =ov12_0226CB88
+	ldr r0, _02253814 ; =sStatChangeTable
 	ldrb r0, [r0, r2]
 	mul r0, r3
 	bl _s32_div_f
@@ -7882,7 +6961,7 @@ _02253804: .word 0x000021EC
 _02253808: .word 0x00002D8C
 _0225380C: .word 0x00002DB0
 _02253810: .word 0x00002D5A
-_02253814: .word ov12_0226CB88
+_02253814: .word sStatChangeTable
 _02253818: .word 0x00002D44
 _0225381C: .word 0x00002D5D
 _02253820: .word 0x00002D4A
@@ -16397,7 +15476,7 @@ _02257904:
 	cmp r0, #6
 	ble _0225792C
 	lsl r1, r0, #1
-	ldr r0, _02257AEC ; =ov12_0226CB88
+	ldr r0, _02257AEC ; =sStatChangeTable
 	ldr r2, [sp, #0x7c]
 	ldrb r0, [r0, r1]
 	mul r0, r2
@@ -16414,7 +15493,7 @@ _02257932:
 	ldr r0, [sp, #0x70]
 	ldr r2, [sp, #0x7c]
 	lsl r1, r0, #1
-	ldr r0, _02257AEC ; =ov12_0226CB88
+	ldr r0, _02257AEC ; =sStatChangeTable
 	ldrb r0, [r0, r1]
 	mul r0, r2
 	ldr r2, _02257AF0 ; =ov12_0226CB89
@@ -16441,7 +15520,7 @@ _02257948:
 	cmp r0, #6
 	bge _0225799A
 	lsl r1, r0, #1
-	ldr r0, _02257AEC ; =ov12_0226CB88
+	ldr r0, _02257AEC ; =sStatChangeTable
 	ldr r2, [sp, #0x78]
 	ldrb r0, [r0, r1]
 	mul r0, r2
@@ -16454,7 +15533,7 @@ _02257984:
 	ldr r0, [sp, #0x6c]
 	ldr r2, [sp, #0x78]
 	lsl r1, r0, #1
-	ldr r0, _02257AEC ; =ov12_0226CB88
+	ldr r0, _02257AEC ; =sStatChangeTable
 	ldrb r0, [r0, r1]
 	mul r0, r2
 	ldr r2, _02257AF0 ; =ov12_0226CB89
@@ -16526,7 +15605,7 @@ _02257A06:
 	cmp r0, #6
 	ble _02257A2C
 	lsl r1, r0, #1
-	ldr r0, _02257AEC ; =ov12_0226CB88
+	ldr r0, _02257AEC ; =sStatChangeTable
 	ldr r2, [sp, #0x74]
 	ldrb r0, [r0, r1]
 	mul r0, r2
@@ -16543,7 +15622,7 @@ _02257A32:
 	ldr r0, [sp, #0x68]
 	ldr r2, [sp, #0x74]
 	lsl r1, r0, #1
-	ldr r0, _02257AEC ; =ov12_0226CB88
+	ldr r0, _02257AEC ; =sStatChangeTable
 	ldrb r0, [r0, r1]
 	mul r0, r2
 	ldr r2, _02257AF0 ; =ov12_0226CB89
@@ -16570,7 +15649,7 @@ _02257A48:
 	cmp r0, #6
 	bge _02257A9A
 	lsl r1, r0, #1
-	ldr r0, _02257AEC ; =ov12_0226CB88
+	ldr r0, _02257AEC ; =sStatChangeTable
 	ldr r2, [sp, #0x10]
 	ldrb r0, [r0, r1]
 	mul r0, r2
@@ -16583,7 +15662,7 @@ _02257A84:
 	ldr r0, [sp, #0x64]
 	ldr r2, [sp, #0x10]
 	lsl r1, r0, #1
-	ldr r0, _02257AEC ; =ov12_0226CB88
+	ldr r0, _02257AEC ; =sStatChangeTable
 	ldrb r0, [r0, r1]
 	mul r0, r2
 	ldr r2, _02257AF0 ; =ov12_0226CB89
@@ -16626,7 +15705,7 @@ _02257A9A:
 	nop
 _02257AE4: .word ov12_0226CBBE
 _02257AE8: .word 0x000003DE
-_02257AEC: .word ov12_0226CB88
+_02257AEC: .word sStatChangeTable
 _02257AF0: .word ov12_0226CB89
 _02257AF4:
 	ldr r0, [sp, #0x84]
@@ -18476,8 +17555,9 @@ _022587FC: .word 0x000080FF
 ov12_0226CB48: ; 0x0226CB48
 	.byte 0x10, 0x08, 0x04, 0x03, 0x02, 0x00, 0x00, 0x00
 
-ov12_0226CB50: ; 0x0226CB50
-	.byte 0x32, 0x6A, 0x7A, 0x75, 0x76, 0x79, 0x77, 0x78
+.public sSpeedHalvingItemEffects
+sSpeedHalvingItemEffects: ; 0x0226CB50
+	.byte HOLD_EFFECT_EXP_UP_SPEED_DOWN, HOLD_EFFECT_SPEED_DOWN_GROUNDED, HOLD_EFFECT_LVLUP_HP_EV_UP, HOLD_EFFECT_LVLUP_ATK_EV_UP, HOLD_EFFECT_LVLUP_DEF_EV_UP, HOLD_EFFECT_LVLUP_SPEED_EV_UP, HOLD_EFFECT_LVLUP_SPATK_EV_UP, HOLD_EFFECT_LVLUP_SPDEF_EV_UP
 
 ov12_0226CB58: ; 0x0226CB58
 	.byte 0x90, 0x00, 0x66, 0x00, 0xA6, 0x00, 0x77, 0x00
@@ -18493,7 +17573,8 @@ ov12_0226CB7C: ; 0x0226CB7C
 	.byte 0x13, 0x00, 0x54, 0x01
 	.byte 0x1A, 0x00, 0x88, 0x00, 0x96, 0x00, 0x89, 0x01
 
-ov12_0226CB88: ; 0x0226CB88
+.public sStatChangeTable
+sStatChangeTable: ; 0x0226CB88
 	.byte 0x0A
 
 ov12_0226CB89: ; 0x0226CB89

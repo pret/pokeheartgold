@@ -146,11 +146,11 @@ typedef struct UnkBattlemonSub {
         magnetRiseTurns:3,
         healBlockTurns:3,
         unk4_13:3,
-        itemNotKnockedOff:1, //unclear whether true mean knocked off or not knocked off based on current information on its usage
+        knockOffFlag:1, //unclear whether true mean knocked off or not knocked off based on current information on its usage
         metronomeTurns:4, //refers to the item, not the move
         unk4_2B:1, //might be related to choice band/specs
-        unk4_2C:1, //might be related to choice scarf
-        unk4_2D:1, 
+        custapBerryFlag:1,
+        quickClawFlag:1, 
         meFirstFlag:1,
         unk4_2F:1; //unused
     int rechargeCount;
