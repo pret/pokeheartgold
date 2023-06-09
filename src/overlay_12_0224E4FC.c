@@ -460,3 +460,485 @@ int GetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
     
     return 0;
 }
+
+void SetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
+    u32 *data32 = (u32 *)data;
+    u16 *data16 = (u16 *)data;
+    s16 *datas16 = (s16 *)data;
+    u8 *data8 = (u8 *)data;
+    s8 *datas8 = (s8 *)data;
+    BATTLEMON *mon = &ctx->battleMons[battlerId];
+    
+    switch (id) {
+    case BMON_DATA_SPECIES:
+        mon->species = *data16;
+        break;
+    case BMON_DATA_ATK:
+        mon->atk = *data16;
+        break;
+    case BMON_DATA_DEF:
+        mon->def = *data16;
+        break;
+    case BMON_DATA_SPEED:
+        mon->speed = *data16;
+        break;
+    case BMON_DATA_SPATK:
+        mon->spAtk = *data16;
+        break;
+    case BMON_DATA_SPDEF:
+        mon->spDef = *data16;
+        break;
+    case BMON_DATA_MOVE1:
+    case BMON_DATA_MOVE2:
+    case BMON_DATA_MOVE3:
+    case BMON_DATA_MOVE4:
+        {
+            int index = id - BMON_DATA_MOVE1;
+            mon->moves[index] = *data16;
+        }
+        break;
+    case BMON_DATA_HP_IV:
+        mon->hpIV = *data8;
+        break;
+    case BMON_DATA_ATK_IV:
+        mon->atkIV = *data8;
+        break;
+    case BMON_DATA_DEF_IV:
+        mon->defIV = *data8;
+        break;
+    case BMON_DATA_SPEED_IV:
+        mon->speedIV = *data8;
+        break;
+    case BMON_DATA_SPATK_IV:
+        mon->spAtkIV = *data8;
+        break;
+    case BMON_DATA_SPDEF_IV:
+        mon->spDefIV = *data8;
+        break;
+    case BMON_DATA_IS_EGG:
+        mon->isEgg = *data8;
+        break;
+    case BMON_DATA_HAS_NICKNAME:
+        mon->hasNickname = *data8;
+        break;
+    case BMON_DATA_STAT_CHANGE_HP:
+    case BMON_DATA_STAT_CHANGE_ATK:
+    case BMON_DATA_STAT_CHANGE_DEF:
+    case BMON_DATA_STAT_CHANGE_SPEED:
+    case BMON_DATA_STAT_CHANGE_SPATK:
+    case BMON_DATA_STAT_CHANGE_SPDEF:
+    case BMON_DATA_STAT_CHANGE_ACC:
+    case BMON_DATA_STAT_CHANGE_EVASION:
+        {
+            int index = id - BMON_DATA_STAT_CHANGE_HP;
+            mon->statChanges[index] = *datas8;
+        }
+        break;
+    case BMON_DATA_ABILITY:
+        mon->ability = *data8;
+        break;
+    case BMON_DATA_TYPE_1:
+        mon->type1 = *data8;
+        break;
+    case BMON_DATA_TYPE_2:
+        mon->type2 = *data8;
+        break;
+    case BMON_DATA_GENDER:
+        mon->gender = *data8;
+        break;
+    case BMON_DATA_IS_SHINY:
+        mon->shiny = *data8;
+        break;
+    case BMON_DATA_MOVE1PP:
+    case BMON_DATA_MOVE2PP:
+    case BMON_DATA_MOVE3PP:
+    case BMON_DATA_MOVE4PP:
+        {
+            int index = id - BMON_DATA_MOVE1PP; 
+            mon->movePPCur[index] = *data8;
+        }
+        break;
+    case BMON_DATA_MOVE1PPCUR:
+    case BMON_DATA_MOVE2PPCUR:
+    case BMON_DATA_MOVE3PPCUR:
+    case BMON_DATA_MOVE4PPCUR:
+        {    
+            int index = id - BMON_DATA_MOVE1PPCUR;
+            mon->movePP[index] = *data8;
+        }
+        break;
+    case BMON_DATA_MOVE1MAXPP:
+    case BMON_DATA_MOVE2MAXPP:
+    case BMON_DATA_MOVE3MAXPP:
+    case BMON_DATA_MOVE4MAXPP:
+        GF_ASSERT(FALSE);
+        break;
+    case BMON_DATA_LEVEL:
+        mon->level = *data8;
+        break;
+    case BMON_DATA_FRIENDSHIP:
+        mon->friendship = *data8;
+        break;
+    case BMON_DATA_NICKNAME:
+        for (int i = 0; i < 11; i++) {
+            mon->nickname[i] = data16[i];
+        }
+        break;
+    case BMON_DATA_HP:
+        mon->hp = *datas16;
+        break;
+    case BMON_DATA_MAXHP:
+        mon->maxHp = *data16;
+        break;
+    case BMON_DATA_OT_NAME:
+        for (int i = 0; i < 11; i++) {
+            //BUG: this array doesn't have 11 elements, the reason for the bug is a typo in the original code
+            //     where it used the length of a Pokemon's nickname rather than a trainer's nickname
+            mon->unk54[i] = data16[i]; 
+            //Side note but since this will overwrite the space in memory where the pokemon's exp is stored, there could be some funny things to come of this
+        }
+        break;
+    case BMON_DATA_EXP:
+        mon->exp = *data32;
+        break;
+    case BMON_DATA_PERSONALITY:
+        mon->personality = *data32;
+        break;
+    case BMON_DATA_STATUS:
+        mon->status = *data32;
+        break;
+    case BMON_DATA_STATUS2:
+        mon->status2 = *data32;
+        break;
+    case BMON_DATA_OT_ID:
+        mon->otid = *data32;
+        break;
+    case BMON_DATA_HELD_ITEM:
+        mon->item = *data16;
+        break;
+    case BMON_DATA_56:
+        mon->unk78 = *data8;
+        break;
+    case BMON_DATA_MSG_FLAG:
+        mon->msgFlag = *data8;
+        break;
+    case BMON_DATA_OT_GENDER:
+        mon->metGender = *data8;
+        break;
+    case BMON_DATA_MOVE_EFFECT:
+        mon->moveEffectFlags = *data32;
+        break;
+    case BMON_DATA_MOVE_EFFECT_TEMP:
+        mon->unk80 = *data32;
+        break;
+    case BMON_DATA_DISABLED_TURNS:
+        mon->unk88.disabledTurns = *data8;
+        break;
+    case BMON_DATA_ENCORED_TURNS:
+        mon->unk88.encoredTurns = *data8;
+        break;
+    case BMON_DATA_IS_CHARGED:
+        mon->unk88.isCharged = *data8;
+        break;
+    case BMON_DATA_TAUNT_TURNS:
+        mon->unk88.tauntTurns = *data8;
+        break;
+    case BMON_DATA_PROTECT_SUCCESS_COUNT:
+        mon->unk88.protectSuccessTurns = *data8;
+        break;
+    case BMON_DATA_PERISH_SONG_TURNS:
+        mon->unk88.perishSongTurns = *data8;
+        break;
+    case BMON_DATA_ROLLOUT_TURNS:
+        mon->unk88.rolloutCount = *data8;
+        break;
+    case BMON_DATA_FURY_CUTTER_TURNS:
+        mon->unk88.furyCutterCount = *data8;
+        break;
+    case BMON_DATA_STOCKPILE_COUNT:
+        mon->unk88.stockpileCount = *data8;
+        break;
+    case BMON_DATA_STOCKPILE_DEF_BOOSTS:
+        mon->unk88.stockpileDefCount = *data8;
+        break;
+    case BMON_DATA_STOCKPILE_SPDEF_BOOSTS:
+        mon->unk88.stockpileSpDefCount = *data8;
+        break;
+    case BMON_DATA_TRUANT_FLAG:
+        mon->unk88.trauntFlag = *data8;
+        break;
+    case BMON_DATA_FLASH_FIRE_ACTIVE:
+        mon->unk88.flashFire = *data8;
+        break;
+    case BMON_DATA_LOCKED_ON_BATTLER:
+        mon->unk88.battlerIdLockOn = *data8;
+        break;
+    case BMON_DATA_MIMICED_MOVE:
+        mon->unk88.mimicedMoveIndex = *data8;
+        break;
+    case BMON_DATA_BINDED_BATTLER:
+        mon->unk88.battlerIdBinding = *data8;
+        break;
+    case BMON_DATA_MEAN_LOOK_BATTLER:
+        mon->unk88.unk4_8 = *data8;
+        break;
+    case BMON_DATA_LAST_RESORT_COUNT:
+        mon->unk88.lastResortCount = *data8;
+        break;
+    case BMON_DATA_MAGNET_RISE:
+        mon->unk88.magnetRiseTurns = *data8;
+        break;
+    case BMON_DATA_HEAL_BLOCK:
+        mon->unk88.healBlockTurns = *data8;
+        break;
+    case BMON_DATA_81:
+        mon->unk88.unk4_13 = *data8;
+        break;
+    case BMON_DATA_ITEM_KNOCKED_OFF:
+        mon->unk88.itemNotKnockedOff = *data8;
+        break;
+    case BMON_DATA_METRONOME: //refers to the actual item, not the move
+        mon->unk88.metronomeTurns = *data8;
+        break;
+    case BMON_DATA_84:
+        mon->unk88.unk4_2B = *data8;
+        break;
+    case BMON_DATA_85:
+        mon->unk88.unk4_2C = *data8;
+        break;
+    case BMON_DATA_86:
+        mon->unk88.unk4_2D = *data8;
+        break;
+    case BMON_DATA_RECHARGE:
+        mon->unk88.rechargeCount = *data32;
+        break;
+    case BMON_DATA_FAKE_OUT:
+        mon->unk88.fakeOutCount = *data32;
+        break;
+    case BMON_DATA_SLOW_START_COUNT:
+        mon->unk88.slowStartTurns = *data32;
+        break;
+    case BMON_DATA_SUBSTITUTE_HP:
+        mon->unk88.substituteHp = *data32;
+        break;
+    case BMON_DATA_TRANSFORM_PERSONALITY:
+        mon->unk88.transformPersonality = *data32;
+        break;
+    case BMON_DATA_DISABLED_MOVE_NO:
+        mon->unk88.disabledMove = *data16;
+        break;
+    case BMON_DATA_ENCORED_MOVE_NO:
+        mon->unk88.encoredMove = *data16;
+        break;
+    case BMON_DATA_BINDING_MOVE_NO:
+        mon->unk88.bindingMove = *data16;
+        break;
+    case BMON_DATA_HELD_ITEM_RESTORE_HP:
+        mon->unk88.unk30 = *data32;
+        break;
+    case BMON_DATA_SLOW_START_FLAG:
+        mon->slowStartFlag = *data8;
+        break;
+    case BMON_DATA_SLOW_START_END:
+        mon->slowStartEnded = *data8;
+        break;
+    case BMON_DATA_FORME:
+        mon->forme = *data8;
+        break;
+    case BMON_DATA_100:
+        SetBattlerVar(ctx, battlerId, ctx->tempWork, data);
+        break;
+    default:
+        GF_ASSERT(FALSE);
+    }
+}
+
+void ov12_0224F794(BATTLECONTEXT *ctx, int battlerId, u32 varId, int data) {
+    AddBattlerVar(&ctx->battleMons[battlerId], varId, data);
+}
+
+//AddBattlerVar
+void AddBattlerVar(BATTLEMON *mon, u32 varId, int data) {
+    switch (varId) {
+    case BMON_DATA_ATK:
+        mon->atk += data;
+        break;
+    case BMON_DATA_DEF:
+        mon->def += data;
+        break;
+    case BMON_DATA_SPEED:
+        mon->speed += data;
+        break;
+    case BMON_DATA_SPATK:
+        mon->spAtk += data;
+        break;
+    case BMON_DATA_SPDEF:
+        mon->spDef += data;
+        break;
+    case BMON_DATA_HP_IV:
+        mon->hpIV += data;
+        break;
+    case BMON_DATA_ATK_IV:
+        mon->atkIV += data;
+        break;
+    case BMON_DATA_DEF_IV:
+        mon->defIV += data;
+        break;
+    case BMON_DATA_SPEED_IV:
+        mon->speedIV += data;
+        break;
+    case BMON_DATA_SPATK_IV:
+        mon->spAtkIV += data;
+        break;
+    case BMON_DATA_SPDEF_IV:
+        mon->spDefIV += data;
+        break;
+    case BMON_DATA_STAT_CHANGE_HP:
+    case BMON_DATA_STAT_CHANGE_ATK:
+    case BMON_DATA_STAT_CHANGE_DEF:
+    case BMON_DATA_STAT_CHANGE_SPEED:
+    case BMON_DATA_STAT_CHANGE_SPATK:
+    case BMON_DATA_STAT_CHANGE_SPDEF:
+    case BMON_DATA_STAT_CHANGE_ACC:
+    case BMON_DATA_STAT_CHANGE_EVASION:
+        {
+            int index = varId - BMON_DATA_STAT_CHANGE_HP;
+            if (mon->statChanges[index] + data < 0) {
+                mon->statChanges[index] = 0;
+            } else if (mon->statChanges[index] + data > 12) {
+                mon->statChanges[index] = 12;
+            } else {
+                mon->statChanges[index] += data;
+            }
+        }
+        break;
+    case BMON_DATA_MOVE1PP:
+    case BMON_DATA_MOVE2PP:
+    case BMON_DATA_MOVE3PP:
+    case BMON_DATA_MOVE4PP:
+        {
+            int index = varId - BMON_DATA_MOVE1PP; 
+            
+            int maxPP = GetMoveMaxPP(mon->moves[index], mon->movePP[index]);
+            if (mon->movePPCur[index] + data > maxPP) {
+                mon->movePPCur[index] = maxPP;
+            } else {
+                mon->movePPCur[index] += data;
+            }
+        }
+        break;
+    case BMON_DATA_MOVE1PPCUR:
+    case BMON_DATA_MOVE2PPCUR:
+    case BMON_DATA_MOVE3PPCUR:
+    case BMON_DATA_MOVE4PPCUR:
+        {    
+            int index = varId - BMON_DATA_MOVE1PPCUR;
+            mon->movePP[index] += data;
+        }
+        break;
+    case BMON_DATA_LEVEL:
+        mon->level += data;
+        break;
+    case BMON_DATA_FRIENDSHIP:
+        {
+            int temp = mon->friendship;
+            
+            if (temp + data > 255) {
+                temp = 255;
+            } else if (temp + data < 0) {
+                temp = 0;
+            } else {
+                temp += data;
+            }
+            
+            mon->friendship = temp;
+        }
+        break;
+    case BMON_DATA_HP:
+        {
+            if (mon->hp + data > mon->maxHp) {
+                mon->hp = mon->maxHp;
+            } else {
+                mon->hp += data;
+            }
+        }
+        break;
+    case BMON_DATA_MAXHP:
+        mon->maxHp += data;
+        break;
+    case BMON_DATA_EXP:
+        mon->exp += data;
+        break;
+    case BMON_DATA_PERSONALITY:
+        mon->personality += data;
+        break;
+    case BMON_DATA_DISABLED_TURNS:
+        mon->unk88.disabledTurns += data;
+        break;
+    case BMON_DATA_ENCORED_TURNS:
+        mon->unk88.encoredTurns += data;
+        break;
+    case BMON_DATA_IS_CHARGED:
+        mon->unk88.isCharged += data;
+        break;
+    case BMON_DATA_TAUNT_TURNS:
+        mon->unk88.tauntTurns += data;
+        break;
+    case BMON_DATA_PROTECT_SUCCESS_COUNT:
+        mon->unk88.protectSuccessTurns += data;
+        break;
+    case BMON_DATA_PERISH_SONG_TURNS:
+        mon->unk88.perishSongTurns += data;
+        break;
+    case BMON_DATA_ROLLOUT_TURNS:
+        mon->unk88.rolloutCount += data;
+        break;
+    case BMON_DATA_FURY_CUTTER_TURNS:
+        mon->unk88.furyCutterCount += data;
+        break;
+    case BMON_DATA_STOCKPILE_COUNT:
+        mon->unk88.stockpileCount += data;
+        break;
+    case BMON_DATA_STOCKPILE_DEF_BOOSTS:
+        mon->unk88.stockpileDefCount += data;
+        break;
+    case BMON_DATA_STOCKPILE_SPDEF_BOOSTS:
+        mon->unk88.stockpileSpDefCount += data;
+        break;
+    case BMON_DATA_LAST_RESORT_COUNT:
+        mon->unk88.lastResortCount += data;
+        break;
+    case BMON_DATA_MAGNET_RISE:
+        mon->unk88.magnetRiseTurns += data;
+        break;
+    case BMON_DATA_HEAL_BLOCK:
+        mon->unk88.healBlockTurns += data;
+        break;
+    case BMON_DATA_RECHARGE:
+        mon->unk88.rechargeCount += data;
+        break;
+    case BMON_DATA_FAKE_OUT:
+        mon->unk88.fakeOutCount += data;
+        break;
+    case BMON_DATA_SLOW_START_COUNT:
+        mon->unk88.slowStartTurns += data;
+        break;
+    case BMON_DATA_SUBSTITUTE_HP:
+        mon->unk88.substituteHp += data;
+        break;
+    case BMON_DATA_HELD_ITEM_RESTORE_HP:
+        mon->unk88.unk30 += data;
+        break;
+    case BMON_DATA_SLOW_START_FLAG:
+        mon->slowStartFlag += data;
+        break;
+    case BMON_DATA_SLOW_START_END:
+        mon->slowStartEnded += data;
+        break;
+    case BMON_DATA_FORME:
+        mon->forme += data;
+        break;
+    default:
+        GF_ASSERT(FALSE);
+    }
+}

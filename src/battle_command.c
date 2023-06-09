@@ -1751,7 +1751,7 @@ BOOL BtlCmd_ChangeMonDataVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         break;
     }
 
-    if (unkB == 26) {
+    if (unkB == BMON_DATA_ABILITY) {
         BattlerSetAbility(ctx, battlerId, var);
     }
 

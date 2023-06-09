@@ -13,11 +13,14 @@ void ov12_0224ED00(BATTLECONTEXT *ctx, int id, int battlerId, int index);
 BOOL Link_QueueNotEmpty(BATTLECONTEXT *ctx);
 void ov12_0224EDC0(BATTLECONTEXT *ctx, int battlerId);
 int GetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 varId, void *data);
+void SetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 varId, void *data);
+void ov12_0224F794(BATTLECONTEXT *ctx, int battlerId, u32 varId, int data);
+void AddBattlerVar(BATTLEMON *mon, u32 varId, int data);
+
 
 //The following functions haven't been decompiled as of now
 void ov12_02256F78(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 monIndex);
 void Link_CheckTimeout(BATTLECONTEXT *ctx);
-void SetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 varId, int *data);
 void BattleSystem_ClearExperienceEarnFlags(BATTLECONTEXT *ctx, int battlerId);
 void BattleSystem_SetExperienceEarnFlags(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u16 move, int a4, int a5);
