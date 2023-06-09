@@ -20,7 +20,7 @@
 int BattleScriptReadWord(BATTLECONTEXT *ctx);
 static void BattleScriptIncrementPointer(BATTLECONTEXT *ctx, int adrs);
 static void BattleScriptJump(BATTLECONTEXT *ctx, NarcId narcId, int adrs);
-static void BattleScriptGotoSubscript(BATTLECONTEXT *ctx, int a1, int adrs);
+static void BattleScriptGotoSubscript(BATTLECONTEXT *ctx, NarcId narcId, int adrs);
 static void *BattleScriptGetVarPointer(BattleSystem *bsys, BATTLECONTEXT *ctx, int var);
 
 u8 GetBattlerIDBySide(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 a2);
@@ -722,7 +722,7 @@ static void DamageCalcDefault(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     }
 
     if (GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker) == HOLD_EFFECT_BOOST_REPEATED) {
-        ctx->damage = ctx->damage * (10 + ctx->battleMons[ctx->battlerIdAttacker].unk88.unk4_17)/10;
+        ctx->damage = ctx->damage * (10 + ctx->battleMons[ctx->battlerIdAttacker].unk88.metronomeTurns)/10;
     }
 
     if (ctx->battleMons[ctx->battlerIdAttacker].unk88.meFirstFlag) {
@@ -852,7 +852,7 @@ BOOL BtlCmd_PlayMoveAnimation(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     }
 
     if (!BattleSys_AreBattleAnimationsOn(bsys)) {
-        BattleScriptGotoSubscript(ctx, 1, 0x123);
+        BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, 0x123);
     }
 
     return FALSE;
@@ -881,7 +881,7 @@ BOOL BtlCmd_PlayMoveAnimation2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     }
 
     if (!BattleSys_AreBattleAnimationsOn(bsys)) {
-        BattleScriptGotoSubscript(ctx, 1, 0x123);
+        BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, 0x123);
     }
 
     return FALSE;
@@ -1068,7 +1068,7 @@ BOOL BtlCmd_IfMonStat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int cmp = BattleScriptReadWord(ctx);
     u32 adrs = BattleScriptReadWord(ctx);
 
-    int var = GetBattlerVar(ctx, GetBattlerIDBySide(bsys, ctx, side), varId, 0);
+    int var = GetBattlerVar(ctx, GetBattlerIDBySide(bsys, ctx, side), varId, NULL);
 
     switch (operator) {
     case 0:
@@ -1697,7 +1697,7 @@ BOOL BtlCmd_ChangeMonDataVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int unkB = BattleScriptReadWord(ctx);
     int val = BattleScriptReadWord(ctx);
     int battlerId = GetBattlerIDBySide(bsys, ctx, side);
-    int var = GetBattlerVar(ctx, battlerId, unkB, 0);
+    int var = GetBattlerVar(ctx, battlerId, unkB, NULL);
 
     switch (operator) {
     case 7:
@@ -1915,7 +1915,7 @@ BOOL BtlCmd_ChangeMonDataByVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int battlerId = GetBattlerIDBySide(bsys, ctx, side);
 
-    int var = GetBattlerVar(ctx, battlerId, unkB, 0);
+    int var = GetBattlerVar(ctx, battlerId, unkB, NULL);
     int *val = BattleScriptGetVarPointer(bsys, ctx, unkC);
 
     switch (operator) {
@@ -1971,7 +1971,7 @@ BOOL BtlCmd_ChangeMonDataByVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     }
 
     if (operator != 17) {
-        if (unkB == 26) {
+        if (unkB == BMON_DATA_ABILITY) {
             BattlerSetAbility(ctx, battlerId, var);
         }
         SetBattlerVar(ctx, battlerId, unkB, &var);
@@ -1989,14 +1989,14 @@ BOOL BtlCmd_Goto(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 BOOL BtlCmd_GotoSubscript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
-    BattleScriptGotoSubscript(ctx, 1, BattleScriptReadWord(ctx));
+    BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, BattleScriptReadWord(ctx));
     return FALSE;
 }
 
 BOOL BtlCmd_GotoSubscriptVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
     int *var = BattleScriptGetVarPointer(bsys, ctx, BattleScriptReadWord(ctx));
-    BattleScriptGotoSubscript(ctx, 1, *var);
+    BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, *var);
     return FALSE;
 }
 
@@ -2306,13 +2306,13 @@ BOOL BtlCmd_TryConversion(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         if (ctx->battleMons[ctx->battlerIdAttacker].moves[i] != MOVE_CONVERSION) {
             moveType = ctx->unk_334.moveData[ctx->battleMons[ctx->battlerIdAttacker].moves[i]].type;
             if (moveType == TYPE_MYSTERY) {
-                if (GetBattlerVar(ctx, ctx->battlerIdAttacker, 27, 0) == TYPE_GHOST || GetBattlerVar(ctx, ctx->battlerIdAttacker, 28, 0) == TYPE_GHOST) {
+                if (GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) == TYPE_GHOST || GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) == TYPE_GHOST) {
                     moveType = TYPE_GHOST;
                 } else {
                     moveType = TYPE_NORMAL;
                 }
             }
-            if (GetBattlerVar(ctx, ctx->battlerIdAttacker, 27, 0) != moveType && GetBattlerVar(ctx, ctx->battlerIdAttacker, 28, 0) != moveType) {
+            if (GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != moveType && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != moveType) {
                 break;
             }
         }
@@ -2327,13 +2327,13 @@ BOOL BtlCmd_TryConversion(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             } while(ctx->battleMons[ctx->battlerIdAttacker].moves[i] == MOVE_CONVERSION);
             moveType = ctx->unk_334.moveData[ctx->battleMons[ctx->battlerIdAttacker].moves[i]].type;
             if (moveType == TYPE_MYSTERY) {
-                if (GetBattlerVar(ctx, ctx->battlerIdAttacker, 27, 0) == TYPE_GHOST || GetBattlerVar(ctx, ctx->battlerIdAttacker, 28, 0) == TYPE_GHOST) {
+                if (GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) == TYPE_GHOST || GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) == TYPE_GHOST) {
                     moveType = TYPE_GHOST;
                 } else {
                     moveType = TYPE_NORMAL;
                 }
             }
-        } while(GetBattlerVar(ctx, ctx->battlerIdAttacker, 27, 0) == moveType || GetBattlerVar(ctx, ctx->battlerIdAttacker, 28, 0) == moveType);
+        } while(GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) == moveType || GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) == moveType);
         ctx->battleMons[ctx->battlerIdAttacker].type1 = moveType;
         ctx->battleMons[ctx->battlerIdAttacker].type2 = moveType;
         ctx->msgWork = moveType;
@@ -2407,7 +2407,7 @@ BOOL BtlCmd_IfMonStatVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int cmpNo = BattleScriptReadWord(ctx);
     int adrs = BattleScriptReadWord(ctx);
 
-    u32 var = GetBattlerVar(ctx, GetBattlerIDBySide(bsys, ctx, side), varNo, 0);
+    u32 var = GetBattlerVar(ctx, GetBattlerIDBySide(bsys, ctx, side), varNo, NULL);
     u32 *cmp = BattleScriptGetVarPointer(bsys, ctx, cmpNo);
 
     switch (operator) {
@@ -2836,7 +2836,7 @@ BOOL BtlCmd_TryConversion2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
             for (i = 0; i < 1000; i++) {
                 ov12_0225260C(bsys, 0xffff, &typeA, &typeB, &val);
-                if (typeA == moveType && val <= 5 && GetBattlerVar(ctx, ctx->battlerIdAttacker, 27, 0) != typeB && GetBattlerVar(ctx, ctx->battlerIdAttacker, 28, 0) != typeB) {
+                if (typeA == moveType && val <= 5 && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != typeB && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != typeB) {
                     ctx->battleMons[ctx->battlerIdAttacker].type1 = typeB;
                     ctx->battleMons[ctx->battlerIdAttacker].type2 = typeB;
                     ctx->msgWork = typeB;
@@ -2846,7 +2846,7 @@ BOOL BtlCmd_TryConversion2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
             i = 0;
             while (ov12_0225260C(bsys, i, &typeA, &typeB, &val) == TRUE) {
-                if (typeA == moveType && val <= 5 && GetBattlerVar(ctx, ctx->battlerIdAttacker, 27, 0) != typeB && GetBattlerVar(ctx, ctx->battlerIdAttacker, 28, 0) != typeB) {
+                if (typeA == moveType && val <= 5 && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != typeB && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != typeB) {
                     ctx->battleMons[ctx->battlerIdAttacker].type1 = typeB;
                     ctx->battleMons[ctx->battlerIdAttacker].type2 = typeB;
                     ctx->msgWork = typeB;
@@ -3332,8 +3332,8 @@ BOOL BtlCmd_WeatherDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     ctx->tempWork = 0;
     ctx->hpCalcWork = 0;
 
-    u32 type1 = GetBattlerVar(ctx, battlerId, 27, 0);
-    u32 type2 = GetBattlerVar(ctx, battlerId, 28, 0);
+    u32 type1 = GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL);
+    u32 type2 = GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL);
 
     if (CheckAbilityActive(bsys, ctx, 8, 0, ABILITY_CLOUD_NINE) == 0 && CheckAbilityActive(bsys, ctx, 8, 0, ABILITY_AIR_LOCK) == 0) {
         if (ctx->fieldCondition & 12) {
@@ -3564,7 +3564,7 @@ BOOL BtlCmd_RapidSpin(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ctx->battleMons[ctx->battlerIdAttacker].status2 &= ~STATUS2_BINDING_ALL;
         ctx->battlerIdWork = ctx->battleMons[ctx->battlerIdAttacker].unk88.battlerIdBinding;
         ctx->moveWork = ctx->battleMons[ctx->battlerIdAttacker].unk88.bindingMove;
-        BattleScriptGotoSubscript(ctx, 1, 116);
+        BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, 116);
         return FALSE;
     }
 
@@ -3573,7 +3573,7 @@ BOOL BtlCmd_RapidSpin(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ctx->battleMons[ctx->battlerIdAttacker].moveEffectFlags &= ~MOVE_EFFECT_LEECH_SEED;
         ctx->battleMons[ctx->battlerIdAttacker].moveEffectFlags &= ~3;
         ctx->moveWork = 73;
-        BattleScriptGotoSubscript(ctx, 1, 117);
+        BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, 117);
         return FALSE;
     }
 
@@ -3582,7 +3582,7 @@ BOOL BtlCmd_RapidSpin(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ctx->fieldSideConditionFlags[side] &= ~SIDE_CONDITION_SPIKES;
         ctx->fieldSideConditionData[side].spikesLayers = 0;
         ctx->moveWork = MOVE_SPIKES;
-        BattleScriptGotoSubscript(ctx, 1, 117);
+        BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, 117);
         return FALSE;
     }
 
@@ -3591,7 +3591,7 @@ BOOL BtlCmd_RapidSpin(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ctx->fieldSideConditionFlags[side] &= ~SIDE_CONDITION_TOXIC_SPIKES;
         ctx->fieldSideConditionData[side].toxicSpikesLayers = 0;
         ctx->moveWork = MOVE_TOXIC_SPIKES;
-        BattleScriptGotoSubscript(ctx, 1, 117);
+        BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, 117);
         return FALSE;
     }
 
@@ -3599,7 +3599,7 @@ BOOL BtlCmd_RapidSpin(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (ctx->fieldSideConditionFlags[side] & SIDE_CONDITION_STEALTH_ROCKS) {
         ctx->fieldSideConditionFlags[side] &= ~SIDE_CONDITION_STEALTH_ROCKS;
         ctx->moveWork = MOVE_STEALTH_ROCK;
-        BattleScriptGotoSubscript(ctx, 1, 117);
+        BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, 117);
         return FALSE;
     }
 
@@ -4775,7 +4775,7 @@ BOOL BtlCmd_CheckToxicSpikes(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ctx->calcWork = ctx->fieldSideConditionData[fieldSide].toxicSpikesLayers;
         ctx->unk_88 = 6;
         ctx->battlerIdStatChange = battlerId;
-        if (GetBattlerVar(ctx, ctx->battlerIdSwitch, 27, 0) == TYPE_POISON || GetBattlerVar(ctx, ctx->battlerIdSwitch, 28, 0) == TYPE_POISON) {
+        if (GetBattlerVar(ctx, ctx->battlerIdSwitch, BMON_DATA_TYPE_1, NULL) == TYPE_POISON || GetBattlerVar(ctx, ctx->battlerIdSwitch, BMON_DATA_TYPE_2, NULL) == TYPE_POISON) {
             ctx->fieldSideConditionFlags[fieldSide] &= ~(1 << 10);
             ctx->fieldSideConditionData[fieldSide].toxicSpikesLayers = 0;
             ctx->calcWork = 0;
@@ -4989,7 +4989,7 @@ BOOL BtlCmd_TryCamouflage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     }
     int type = sCamouflageTypeTable[terrain];
 
-    if (GetBattlerVar(ctx, ctx->battlerIdAttacker, 27, 0) != type && GetBattlerVar(ctx, ctx->battlerIdAttacker, 28, 0) != type) {
+    if (GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != type && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != type) {
         ctx->battleMons[ctx->battlerIdAttacker].type1 = type;
         ctx->battleMons[ctx->battlerIdAttacker].type2 = type;
         ctx->msgWork = type;
@@ -5148,8 +5148,8 @@ BOOL BtlCmd_CheckStealthRock(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int battlerId = GetBattlerIDBySide(bsys, ctx, side);
     int fieldSide = BattleSys_GetFieldSide(bsys, battlerId);
-    int type1 = GetBattlerVar(ctx, battlerId, 27, 0);
-    int type2 = GetBattlerVar(ctx, battlerId, 28, 0);
+    int type1 = GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL);
+    int type2 = GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL);
 
     if (ctx->fieldSideConditionFlags[fieldSide] & 128 && ctx->battleMons[battlerId].hp) {
         switch (CalculateTypeEffectiveness(TYPE_ROCK, type1, type2)) {
@@ -5881,8 +5881,8 @@ static void BattleScriptJump(BATTLECONTEXT *ctx, NarcId narcId, int adrs) {
     ReadBattleScriptFromNarc(ctx, narcId, adrs);
 }
 
-static void BattleScriptGotoSubscript(BATTLECONTEXT *ctx, int a1, int adrs) {
-    ov12_0224EBDC(ctx, a1, adrs);
+static void BattleScriptGotoSubscript(BATTLECONTEXT *ctx, NarcId narcId, int adrs) {
+    ov12_0224EBDC(ctx, narcId, adrs);
 }
 
 static void *BattleScriptGetVarPointer(BattleSystem *bsys, BATTLECONTEXT *ctx, int var) {

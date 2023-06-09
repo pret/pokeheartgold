@@ -6,11 +6,17 @@
 void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 monIndex);
 void BattleSystem_ReloadMonData(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int monIndex);
 void ReadBattleScriptFromNarc(BATTLECONTEXT *ctx, NarcId narcId, int fileId);
+void ov12_0224EBDC(BATTLECONTEXT *ctx, NarcId narcId, int fileId);
+BOOL ov12_0224EC74(BATTLECONTEXT *ctx);
+void ov12_0224ECC4(BATTLECONTEXT *ctx, int id, int battlerId, int index);
+void ov12_0224ED00(BATTLECONTEXT *ctx, int id, int battlerId, int index);
+BOOL Link_QueueNotEmpty(BATTLECONTEXT *ctx);
+void ov12_0224EDC0(BATTLECONTEXT *ctx, int battlerId);
+int GetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 varId, void *data);
 
 //The following functions haven't been decompiled as of now
 void ov12_02256F78(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 monIndex);
 void Link_CheckTimeout(BATTLECONTEXT *ctx);
-int GetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 varId, int a3);
 void SetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 varId, int *data);
 void BattleSystem_ClearExperienceEarnFlags(BATTLECONTEXT *ctx, int battlerId);
 void BattleSystem_SetExperienceEarnFlags(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
@@ -57,8 +63,6 @@ int BattleSystem_GetHeldItemDamageBoost(BATTLECONTEXT *ctx, int battlerId, int a
 BOOL CheckNaturalCureOnSwitch(BATTLECONTEXT *ctx, int ability, int status);
 int ov12_02253DA0(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL CheckItemEffectOnUTurn(BattleSystem *bsys, BATTLECONTEXT *ctx, int *work);
-BOOL ov12_0224EC74(BATTLECONTEXT *ctx);
-void ov12_0224EBDC(BATTLECONTEXT *ctx, int a1, int adrs);
 void ov12_02250A18(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u16 a3);
 u32 BattleSys_GetBattleType(BattleSystem *bsys);
 u32 BattleSys_GetBattleFlags(BattleSystem *bsys);
@@ -75,5 +79,6 @@ int ov12_0223AB0C(BattleSystem *bsys, int battlerId);
 int ov12_02251D28(BattleSystem *bsys, BATTLECONTEXT *ctx, int moveNo, int moveType, int battlerIdAttacker, int battlerIdTarget, int dmg, u32 *statusFlag);
 BOOL ov12_02252C40(BATTLECONTEXT *ctx, int battlerId);
 void ov12_02252D14(BattleSystem *bsys, BATTLECONTEXT *ctx);
+int ov12_022584AC(BATTLECONTEXT *ctx, int battlerId, int id);
 
 #endif

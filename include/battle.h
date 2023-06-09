@@ -127,34 +127,34 @@ typedef struct UnkBtlCtxSub_76 {
 typedef struct UnkBattlemonSub {
     u32 disabledTurns:3,
         encoredTurns:3,
-        unk0_6:2,
-        unk0_8:3,
+        isCharged:2,
+        tauntTurns:3,
         protectSuccessTurns:2,
         perishSongTurns:2,
         rolloutCount:3,
         furyCutterCount:3,
-        unk0_15:3,
-        unk0_18:3,
-        unk0_1A:3,
+        stockpileCount:3,
+        stockpileDefCount:3,
+        stockpileSpDefCount:3,
         trauntFlag:1,
-        unk0_1E:1;
+        flashFire:1;
     u32 battlerIdLockOn:2,
         mimicedMoveIndex:4,
         battlerIdBinding:2,
         unk4_8:2,
         lastResortCount:3,
-        unk4_D:3,
-        unk4_10:3,
+        magnetRiseTurns:3,
+        healBlockTurns:3,
         unk4_13:3,
-        itemNotKnockedOff:1,
-        unk4_17:4,
-        unk4_2B:1,
-        unk4_2C:1,
-        unk4_2D:1,
+        itemNotKnockedOff:1, //unclear whether true mean knocked off or not knocked off based on current information on its usage
+        metronomeTurns:4, //refers to the item, not the move
+        unk4_2B:1, //might be related to choice band/specs
+        unk4_2C:1, //might be related to choice scarf
+        unk4_2D:1, 
         meFirstFlag:1,
-        unk4_2F:1;
-    int unk;
-    int unk8;
+        unk4_2F:1; //unused
+    int rechargeCount;
+    int fakeOutCount;
     int slowStartTurns;
     int meFirstCount;
     int substituteHp;
@@ -209,15 +209,10 @@ typedef struct BATTLEMON {
     u8 movePP[4];
     u8 level;
     u8 friendship;
-    u16 nickname[9];    
-    u8 unk32;
-    u8 unk33;
-    u8 unk34;
-    u8 unk35;
+    u16 nickname[11];
     int hp;
     u32 maxHp;
-    u32 unk;
-    u16 unk54[6];
+    u16 unk54[8];
     u32 exp;
     u32 personality;
     u32 status;
@@ -226,7 +221,7 @@ typedef struct BATTLEMON {
     u16 item;
     u16 unk76;
     u8 unk78;
-    u8 unk79;
+    u8 msgFlag;
     u8 gender:4,
        metGender:4;
     u8 ball;
@@ -282,7 +277,7 @@ typedef struct BATTLECONTEXT {
     int scriptFileId;
     int scriptSeqNo;
     int unk_B8;
-    int unk_BC[4];
+    NarcId unk_BC[4];
     int unk_CC[4];
     int unk_DC[4];
     int unk_EC;
@@ -387,7 +382,7 @@ typedef struct BATTLECONTEXT {
     u16 recycleItem[4];
     u8 unk_312C[4][6];
     int unk_3144;
-    int unk_3148;
+    int queueTimeout;
     u8 unk_314C[4];
     int battlersOnField;
     u32 battleContinueFlag:1;
