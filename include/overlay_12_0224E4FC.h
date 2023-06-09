@@ -17,12 +17,12 @@ void SetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 varId, void *data);
 void ov12_0224F794(BATTLECONTEXT *ctx, int battlerId, u32 varId, int data);
 void AddBattlerVar(BATTLEMON *mon, u32 varId, int data);
 u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int battlerId2, int flag);
+void BattleSystem_ClearExperienceEarnFlags(BATTLECONTEXT *ctx, int battlerId);
+void BattleSystem_SetExperienceEarnFlags(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 
 //The following functions haven't been decompiled as of now
 void ov12_02256F78(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 monIndex);
 void Link_CheckTimeout(BATTLECONTEXT *ctx);
-void BattleSystem_ClearExperienceEarnFlags(BATTLECONTEXT *ctx, int battlerId);
-void BattleSystem_SetExperienceEarnFlags(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u16 move, int a4, int a5);
 void CopyBattleMonToPartyMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 void LockBattlerIntoCurrentMove(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);

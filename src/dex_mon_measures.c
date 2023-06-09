@@ -34,7 +34,7 @@ void PokedexData_LoadAll(struct PokedexData *zkn, int mode, HeapID heapId) {
     GF_ASSERT(zkn->height == NULL);
     GF_ASSERT(zkn->weight == NULL);
 
-    narc = NARC_New(GetDexPokedexDataNarcID(), heapId);
+    narc = NARC_New(GetDexDataNarcID(), heapId);
     zkn->height = ZknNarc_LoadHeight(narc, heapId);
     zkn->weight = ZknNarc_LoadWeight(narc, heapId);
 
@@ -118,7 +118,7 @@ void SetDexBanksByGiratinaForme(int forme) {
     }
 }
 
-NarcId GetDexPokedexDataNarcID(void) {
+NarcId GetDexDataNarcID(void) {
     return sDataNarcId;
 }
 

@@ -3294,7 +3294,7 @@ ov86_021E73EC: ; 0x021E73EC
 	sub sp, #0xc
 	add r5, r0, #0
 	add r4, r1, #0
-	bl GetDexPokedexDataNarcID
+	bl GetDexDataNarcID
 	mov r1, #1
 	str r1, [sp]
 	add r1, sp, #8

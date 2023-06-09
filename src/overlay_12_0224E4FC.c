@@ -11,7 +11,6 @@
 #include "constants/moves.h"
 #include "constants/species.h"
 
-
 void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 selectedMon) {
     Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, selectedMon);
     int i;
@@ -1034,7 +1033,7 @@ u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int bat
     }
     
     if (heldItem1 == HOLD_EFFECT_CHOICE_SPEED) {
-        speed1 = speed1 * 15/10;
+        speed1 = speed1 * 15 / 10;
     }
     
     if (heldItem1 == HOLD_EFFECT_DITTO_SPEED_UP && ctx->battleMons[battlerId1].species == SPECIES_DITTO) {
@@ -1042,7 +1041,7 @@ u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int bat
     }
     
     if (ability1 == ABILITY_QUICK_FEET && ctx->battleMons[battlerId1].status & 0xFF) {
-        speed1 = speed1 * 15/10;
+        speed1 = speed1 * 15 / 10;
     } else if (ctx->battleMons[battlerId1].status & STATUS_PARALYSIS) {
         speed1 /= 4;
     }
@@ -1060,7 +1059,7 @@ u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int bat
     }
     
     if (heldItem1 == HOLD_EFFECT_SOMETIMES_PRIORITY) {
-        if ((ctx->unk_310C[battlerId1])%(100/extra1) == 0) {
+        if (ctx->unk_310C[battlerId1] % (100 / extra1) == 0) {
             boostedPriority1 = 1;
             
             if (!flag) {
@@ -1093,7 +1092,7 @@ u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int bat
     }
     
     if (heldItem2 == HOLD_EFFECT_CHOICE_SPEED) {
-        speed2 = speed2 * 15/10;
+        speed2 = speed2 * 15 / 10;
     }
     
     if (heldItem2 == HOLD_EFFECT_DITTO_SPEED_UP && ctx->battleMons[battlerId2].species == SPECIES_DITTO) {
@@ -1101,7 +1100,7 @@ u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int bat
     }
     
     if (ability2 == ABILITY_QUICK_FEET && ctx->battleMons[battlerId2].status & 0xFF) {
-        speed2 = speed2 * 15/10;
+        speed2 = speed2 * 15 / 10;
     } else if (ctx->battleMons[battlerId2].status & STATUS_PARALYSIS) {
         speed2 /= 4;
     }
@@ -1119,7 +1118,7 @@ u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int bat
     }
     
     if (heldItem2 == HOLD_EFFECT_SOMETIMES_PRIORITY) {
-        if ((ctx->unk_310C[battlerId2])%(100/extra2) == 0) {
+        if (ctx->unk_310C[battlerId2] % (100 / extra2) == 0) {
             boostedPriority2 = 1;
             
             if (!flag) {
@@ -1174,7 +1173,7 @@ u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int bat
         if (boostedPriority1 && boostedPriority2) {
             if (speed1 < speed2) {
                 ret = 1;
-            } else if (speed1 == speed2 && BattleSys_Random(bsys)&1) {
+            } else if (speed1 == speed2 && BattleSys_Random(bsys) & 1) {
                 ret = 2;
             }
         } else if (!boostedPriority1 && boostedPriority2) {
@@ -1221,4 +1220,26 @@ u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int bat
     }
     
     return ret;
+}
+
+//Function may be mislabeled
+void BattleSystem_ClearExperienceEarnFlags(BATTLECONTEXT *ctx, int battlerId) {
+    ctx->unk_A4[(battlerId >> 1) & 1] = 0; 
+}
+
+void BattleSystem_SetExperienceEarnFlags(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
+    int i = 0;
+    u32 battleType = BattleSys_GetBattleType(bsys);
+    
+    while (i <= 2) {
+        if (!(ctx->unk_3108 & MaskOfFlagNo(i)) &&
+            !(ctx->unk_3108 & MaskOfFlagNo(battlerId)) &&
+            ctx->battleMons[battlerId].hp) {
+                ctx->unk_A4[(battlerId >> 1) & 1] |= MaskOfFlagNo(ctx->selectedMonIndex[i]);
+            }
+        i += 2;
+        if (battleType == 0x4a || battleType == 0x4b) {
+            break;
+        }
+    }
 }

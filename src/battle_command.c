@@ -1694,10 +1694,10 @@ BOOL BtlCmd_ChangeMonDataVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int operator = BattleScriptReadWord(ctx);
     int side = BattleScriptReadWord(ctx);
-    int unkB = BattleScriptReadWord(ctx);
+    int varId = BattleScriptReadWord(ctx);
     int val = BattleScriptReadWord(ctx);
     int battlerId = GetBattlerIDBySide(bsys, ctx, side);
-    int var = GetBattlerVar(ctx, battlerId, unkB, NULL);
+    int var = GetBattlerVar(ctx, battlerId, varId, NULL);
 
     switch (operator) {
     case 7:
@@ -1751,11 +1751,11 @@ BOOL BtlCmd_ChangeMonDataVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         break;
     }
 
-    if (unkB == BMON_DATA_ABILITY) {
+    if (varId == BMON_DATA_ABILITY) {
         BattlerSetAbility(ctx, battlerId, var);
     }
 
-    SetBattlerVar(ctx, battlerId, unkB, &var);
+    SetBattlerVar(ctx, battlerId, varId, &var);
     CopyBattleMonToPartyMon(bsys, ctx, battlerId);
 
     return FALSE;
