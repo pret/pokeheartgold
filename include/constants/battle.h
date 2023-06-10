@@ -70,6 +70,23 @@ enum Terrain {
 #define MOVE_EFFECT_14                      (1 << 14)
 #define MOVE_EFFECT_IMPRISON                (1 << 30)
 
+//Field Conditions
+#define FIELD_CONDITION_RAIN                (1 << 0)
+#define FIELD_CONDITION_RAIN_PERMANENT      (1 << 1)
+#define FIELD_CONDITION_RAIN_ALL            (FIELD_CONDITION_RAIN | FIELD_CONDITION_RAIN_PERMANENT)
+#define FIELD_CONDITION_SANDSTORM           (1 << 2)
+#define FIELD_CONDITION_SANDSTORM_PERMANENT (1 << 3)
+#define FIELD_CONDITION_SANDSTORM_ALL       (FIELD_CONDITION_SANDSTORM | FIELD_CONDITION_SANDSTORM_PERMANENT)
+#define FIELD_CONDITION_SUN                 (1 << 4)
+#define FIELD_CONDITION_SUN_PERMANENT       (1 << 5)
+#define FIELD_CONDITION_SUN_ALL             (FIELD_CONDITION_SUN | FIELD_CONDITION_SUN_PERMANENT)
+#define FIELD_CONDITION_HAIL                (1 << 6)
+#define FIELD_CONDITION_HAIL_PERMANENT      (1 << 7)
+#define FIELD_CONDITION_HAIL_ALL            (FIELD_CONDITION_HAIL | FIELD_CONDITION_HAIL_PERMANENT)
+#define FIELD_CONDITION_FOG                 (1 << 15)
+#define FIELD_CONDITION_WEATHER             (FIELD_CONDITION_RAIN_ALL | FIELD_CONDITION_SANDSTORM_ALL | FIELD_CONDITION_SUN_ALL | FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_FOG)
+#define FIELD_CONDITION_TRICK_ROOM          (7 << 16)
+    
 //Field Side Conditions
 #define SIDE_CONDITION_REFLECT              (1 << 0)
 #define SIDE_CONDITION_LIGHT_SCREEN         (1 << 1)
@@ -79,12 +96,31 @@ enum Terrain {
 #define SIDE_CONDITION_5                    (1 << 5)
 #define SIDE_CONDITION_MIST                 (1 << 6)
 #define SIDE_CONDITION_STEALTH_ROCKS        (1 << 7)
-#define SIDE_CONDITION_8                    (1 << 8)
-#define SIDE_CONDITION_9                    (1 << 9)
+#define SIDE_CONDITION_TAILWIND             (3 << 8)
 #define SIDE_CONDITION_TOXIC_SPIKES         (1 << 10)
 
+//Status
+#define STATUS_NONE                         0
+#define STATUS_SLEEP                        (7)
+#define STATUS_POISON                       (1 << 3)
+#define STATUS_BURN                         (1 << 4)
+#define STATUS_FREEZE                       (1 << 5)    
+#define STATUS_PARALYSIS                    (1 << 6)
+#define STATUS_BAD_POISON                   (1 << 7)
+#define STATUS_POISON_COUNT                 (15 << 8)
+
+#define STATUS_POISON_ALL                   (STATUS_POISON | STATUS_BAD_POISON | STATUS_POISON_COUNT)
+
+//Status Conditions
+#define CONDITION_NONE                      0
+#define CONDITION_SLEEP                     1
+#define CONDITION_POISON                    2
+#define CONDITION_BURN                      3
+#define CONDITION_FREEZE                    4
+#define CONDITION_PARALYSIS                 5
+
 //Status 2
-#define STATUS2_12                          (1 << 12)
+#define STATUS2_LOCKED_INTO_MOVE            (1 << 12)
 #define STATUS2_13                          (1 << 13)
 #define STATUS2_14                          (1 << 14)
 #define STATUS2_15                          (1 << 15)
@@ -100,5 +136,108 @@ enum Terrain {
 
 #define STATUS2_BINDING_ALL                 (STATUS2_13 | STATUS2_14 | STATUS2_15)
 #define STATUS2_ATTRACT_ALL                 (STATUS2_ATTRACT_BATTLER1 | STATUS2_ATTRACT_BATTLER2 | STATUS2_ATTRACT_BATTLER3 | STATUS2_ATTRACT_BATTLER4)
+
+//Battle Mon Data
+#define BMON_DATA_SPECIES                    0
+#define BMON_DATA_ATK                        1
+#define BMON_DATA_DEF                        2
+#define BMON_DATA_SPEED                      3
+#define BMON_DATA_SPATK                      4    
+#define BMON_DATA_SPDEF                      5
+#define BMON_DATA_MOVE1                      6
+#define BMON_DATA_MOVE2                      7
+#define BMON_DATA_MOVE3                      8
+#define BMON_DATA_MOVE4                      9
+#define BMON_DATA_HP_IV                     10
+#define BMON_DATA_ATK_IV                    11
+#define BMON_DATA_DEF_IV                    12
+#define BMON_DATA_SPEED_IV                  13
+#define BMON_DATA_SPATK_IV                  14
+#define BMON_DATA_SPDEF_IV                  15
+#define BMON_DATA_IS_EGG                    16
+#define BMON_DATA_HAS_NICKNAME              17
+#define BMON_DATA_STAT_CHANGE_HP            18
+#define BMON_DATA_STAT_CHANGE_ATK           19
+#define BMON_DATA_STAT_CHANGE_DEF           20
+#define BMON_DATA_STAT_CHANGE_SPEED         21
+#define BMON_DATA_STAT_CHANGE_SPATK         22
+#define BMON_DATA_STAT_CHANGE_SPDEF         23
+#define BMON_DATA_STAT_CHANGE_ACC           24
+#define BMON_DATA_STAT_CHANGE_EVASION       25
+#define BMON_DATA_ABILITY                   26
+#define BMON_DATA_TYPE_1                    27
+#define BMON_DATA_TYPE_2                    28
+#define BMON_DATA_GENDER                    29
+#define BMON_DATA_IS_SHINY                  30
+#define BMON_DATA_MOVE1PP                   31
+#define BMON_DATA_MOVE2PP                   32
+#define BMON_DATA_MOVE3PP                   33
+#define BMON_DATA_MOVE4PP                   34
+#define BMON_DATA_MOVE1PPCUR                35
+#define BMON_DATA_MOVE2PPCUR                36
+#define BMON_DATA_MOVE3PPCUR                37
+#define BMON_DATA_MOVE4PPCUR                38
+#define BMON_DATA_MOVE1MAXPP                39
+#define BMON_DATA_MOVE2MAXPP                40
+#define BMON_DATA_MOVE3MAXPP                41
+#define BMON_DATA_MOVE4MAXPP                42
+#define BMON_DATA_LEVEL                     43
+#define BMON_DATA_FRIENDSHIP                44
+#define BMON_DATA_NICKNAME                  45
+#define BMON_DATA_NICKNAME2                 46 //this gets the nickname in a slightly different way
+#define BMON_DATA_HP                        47
+#define BMON_DATA_MAXHP                     48
+#define BMON_DATA_OT_NAME                   49
+#define BMON_DATA_EXP                       50
+#define BMON_DATA_PERSONALITY               51
+#define BMON_DATA_STATUS                    52
+#define BMON_DATA_STATUS2                   53
+#define BMON_DATA_OT_ID                     54 
+#define BMON_DATA_HELD_ITEM                 55
+#define BMON_DATA_56                        56
+#define BMON_DATA_MSG_FLAG                  57
+#define BMON_DATA_OT_GENDER                 58
+#define BMON_DATA_MOVE_EFFECT               59
+#define BMON_DATA_MOVE_EFFECT_TEMP          60
+#define BMON_DATA_DISABLED_TURNS            61
+#define BMON_DATA_ENCORED_TURNS             62
+#define BMON_DATA_IS_CHARGED                63
+#define BMON_DATA_TAUNT_TURNS               64
+#define BMON_DATA_PROTECT_SUCCESS_COUNT     65
+#define BMON_DATA_PERISH_SONG_TURNS         66
+#define BMON_DATA_ROLLOUT_TURNS             67
+#define BMON_DATA_FURY_CUTTER_TURNS         68
+#define BMON_DATA_STOCKPILE_COUNT           69
+#define BMON_DATA_STOCKPILE_DEF_BOOSTS      70
+#define BMON_DATA_STOCKPILE_SPDEF_BOOSTS    71
+#define BMON_DATA_TRUANT_FLAG               72
+#define BMON_DATA_FLASH_FIRE_ACTIVE         73
+#define BMON_DATA_LOCKED_ON_BATTLER         74
+#define BMON_DATA_MIMICED_MOVE              75
+#define BMON_DATA_BINDED_BATTLER            76 
+#define BMON_DATA_MEAN_LOOK_BATTLER         77 //might be wrong
+#define BMON_DATA_LAST_RESORT_COUNT         78
+#define BMON_DATA_MAGNET_RISE               79
+#define BMON_DATA_HEAL_BLOCK                80
+#define BMON_DATA_81                        81
+#define BMON_DATA_ITEM_KNOCKED_OFF          82
+#define BMON_DATA_METRONOME                 83
+#define BMON_DATA_84                        84
+#define BMON_DATA_CUSTAP_FLAG               85
+#define BMON_DATA_QUICK_CLAW_FLAG           86
+#define BMON_DATA_RECHARGE                  87
+#define BMON_DATA_FAKE_OUT                  88
+#define BMON_DATA_SLOW_START_COUNT          89
+#define BMON_DATA_SUBSTITUTE_HP             90
+#define BMON_DATA_TRANSFORM_PERSONALITY     91
+#define BMON_DATA_DISABLED_MOVE_NO          92
+#define BMON_DATA_ENCORED_MOVE_NO           93
+#define BMON_DATA_BINDING_MOVE_NO           94
+#define BMON_DATA_HELD_ITEM_RESTORE_HP      95
+#define BMON_DATA_SLOW_START_FLAG           96
+#define BMON_DATA_SLOW_START_END            97
+#define BMON_DATA_FORME                     98
+#define BMON_DATA_99                        99 //unused
+#define BMON_DATA_100                      100
 
 #endif

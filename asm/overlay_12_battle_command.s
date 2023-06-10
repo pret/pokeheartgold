@@ -535,7 +535,7 @@ _02245C88:
 	bne _02245CDE
 	ldr r0, [r4]
 	add r2, r7, #0
-	bl BattleController_EmitRefreshMonData
+	bl BattleSystem_ReloadMonData
 _02245CDE:
 	add r0, r5, #0
 	bl MaskOfFlagNo
@@ -947,7 +947,7 @@ _02246040:
 	bne _02246050
 	ldr r0, [r4]
 	add r2, r7, #0
-	bl BattleController_EmitRefreshMonData
+	bl BattleSystem_ReloadMonData
 _02246050:
 	mov r1, #4
 	add r0, sp, #0xb4
@@ -1324,7 +1324,7 @@ _022462FE:
 	bne _0224635C
 	ldr r0, [r4]
 	add r2, r7, #0
-	bl BattleController_EmitRefreshMonData
+	bl BattleSystem_ReloadMonData
 _0224635C:
 	mov r0, #0x24
 	add sp, #0xd8

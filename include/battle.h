@@ -4,6 +4,7 @@
 #include "move.h"
 #include "pokemon_storage_system.h"
 #include "trainer_data.h"
+#include "filesystem.h"
 
 typedef struct BATTLEMSG {
     u8 unk0;
@@ -76,8 +77,8 @@ typedef struct TurnData {
 
 typedef struct SelfTurnData {
     u32 ignorePressure:1;
-    u32 unk0_1:1;
-    u32 unk0_2:1;
+    u32 lightningRodFlag:1;
+    u32 stormDrainFlag:1;
     u32 unk0_3:1;
     u32 trickRoomFlag:1;
     u32 unk0_5:1;
@@ -124,36 +125,36 @@ typedef struct UnkBtlCtxSub_76 {
 } UnkBtlCtxSub_76;
 
 typedef struct UnkBattlemonSub {
-    u32 disabledTurns:3,
-        encoredTurns:3,
-        unk0_6:2,
-        unk0_8:3,
-        protectSuccessTurns:2,
-        perishSongTurns:2,
-        rolloutCount:3,
-        furyCutterCount:3,
-        unk0_15:3,
-        unk0_18:3,
-        unk0_1A:3,
-        trauntFlag:1,
-        unk0_1E:1;
-    u32 battlerIdLockOn:2,
-        mimicedMoveIndex:4,
-        battlerIdBinding:2,
-        unk4_8:2,
-        lastResortCount:3,
-        unk4_D:3,
-        unk4_10:3,
-        unk4_13:3,
-        unk4_16:1,
-        unk4_17:4,
-        unk4_2B:1,
-        unk4_2C:1,
-        unk4_2D:1,
-        meFirstFlag:1,
-        unk4_2F:1;
-    int unk;
-    int unk8;
+    u32 disabledTurns:3;
+    u32 encoredTurns:3;
+    u32 isCharged:2;
+    u32 tauntTurns:3;
+    u32 protectSuccessTurns:2;
+    u32 perishSongTurns:2;
+    u32 rolloutCount:3;
+    u32 furyCutterCount:3;
+    u32 stockpileCount:3;
+    u32 stockpileDefCount:3;
+    u32 stockpileSpDefCount:3;
+    u32 trauntFlag:1;
+    u32 flashFire:1;
+    u32 battlerIdLockOn:2;
+    u32 mimicedMoveIndex:4;
+    u32 battlerIdBinding:2;
+    u32 unk4_8:2;
+    u32 lastResortCount:3;
+    u32 magnetRiseTurns:3;
+    u32 healBlockTurns:3;
+    u32 unk4_13:3;
+    u32 knockOffFlag:1; //unclear whether true mean knocked off or not knocked off based on current information on its usage
+    u32 metronomeTurns:4; //refers to the item, not the move
+    u32 unk4_2B:1; //might be related to choice band/specs
+    u32 custapBerryFlag:1;
+    u32 quickClawFlag:1; 
+    u32 meFirstFlag:1;
+    u32 unk4_2F:1; //unused
+    int rechargeCount;
+    int fakeOutCount;
     int slowStartTurns;
     int meFirstCount;
     int substituteHp;
@@ -170,63 +171,60 @@ typedef struct UnkBattlemonSub {
 
 typedef struct BATTLEMON {
     u16 species;
-    u16 unk2;
-    u16 unk4;
-    u16 unk6;
-    u16 unk8;
-    u16 unkA;
+    u16 atk;
+    u16 def;
+    u16 speed;
+    u16 spAtk;
+    u16 spDef;
     u16 moves[4];
-    u32 hpIV:5,
-        atkIV:5,
-        defIV:5,
-        spdIV:5,
-        spatkIV:5,
-        spdefIV:5,
-        isEgg:1,
-        isNicknamed:1;
+    u32 hpIV:5;
+    u32 atkIV:5;
+    u32 defIV:5;
+    u32 speedIV:5;
+    u32 spAtkIV:5;
+    u32 spDefIV:5;
+    u32 isEgg:1;
+    u32 hasNickname:1;
     s8 statChanges[8];
     int weight;
     u8 type1;
     u8 type2;
-    u8 forme:5,
-       unk26_5:1,
-       unk26_6:2;
+    u8 forme:5;
+    u8 shiny:1;
+    u8 unk26_6:2;
     u8 ability;
-    u32 unk28_0:1,
-        intimidateFlag:1,
-        traceFlag:1,
-        downloadFlag:1,
-        anticipationFlag:1,
-        forewarnFlag:1,
-        slowStartFlag:1,
-        slowStartEnded:1,
-        friskFlag:1,
-        moldBreakerFlag:1,
-        pressureFlag:1,
-        unk28_B:21;
+    u32 unk28_0:1;
+    u32 intimidateFlag:1;
+    u32 traceFlag:1;
+    u32 downloadFlag:1;
+    u32 anticipationFlag:1;
+    u32 forewarnFlag:1;
+    u32 slowStartFlag:1;
+    u32 slowStartEnded:1;
+    u32 friskFlag:1;
+    u32 moldBreakerFlag:1;
+    u32 pressureFlag:1;
+    u32 unk28_B:21;
     u8 movePPCur[4];
     u8 movePP[4];
     u8 level;
-    u8 unk31;
-    u8 unk32;
-    u8 unk33;
-    u8 unk34;
-    u8 unk35;
-    u16 unk36[9];
+    u8 friendship;
+    u16 nickname[11];
     int hp;
     u32 maxHp;
-    u32 unk;
     u16 unk54[8];
+    u32 exp;
     u32 personality;
     u32 status;
     u32 status2;
-    u32 unk70;
+    u32 otid;
     u16 item;
     u16 unk76;
-    u16 unk78;
-    u8 gender:4,
-       unk7A_4:4;
-    u8 unk7B;
+    u8 unk78;
+    u8 msgFlag;
+    u8 gender:4;
+    u8 metGender:4;
+    u8 ball;
     u32 moveEffectFlags;
     u32 unk80;
     UnkBattlemonSub unk88;
@@ -275,11 +273,11 @@ typedef struct BATTLECONTEXT {
     int gainedExp;
     int partyGainedExp;
     u32 unk_A4[2];
-    int unk_AC;
-    int unk_B0;
+    NarcId scriptNarcId;
+    int scriptFileId;
     int scriptSeqNo;
     int unk_B8;
-    int unk_BC[4];
+    NarcId unk_BC[4];
     int unk_CC[4];
     int unk_DC[4];
     int unk_EC;
@@ -350,7 +348,7 @@ typedef struct BATTLECONTEXT {
     u32 moveNoTemp;
     u32 moveNoCur;
     u32 moveNoPrev;
-    u32 moveNoKeep[4];
+    u32 moveNoLockedInto[4];
     u16 moveNoProtect[4];
     u16 moveNoHit[4];
     u16 moveNoHitBattler[4];
@@ -384,7 +382,7 @@ typedef struct BATTLECONTEXT {
     u16 recycleItem[4];
     u8 unk_312C[4][6];
     int unk_3144;
-    int unk_3148;
+    int queueTimeout;
     u8 unk_314C[4];
     int battlersOnField;
     u32 battleContinueFlag:1;
@@ -603,5 +601,17 @@ typedef struct {
     u16 unk8[4];
     u16 unk10;
 } UnkBtlCmdStruct_CPM;
+
+//This is information used for selecting a target on the bottom screen in a double battle
+typedef struct TargetPokemon {
+    u8 selectedMon;
+    u8 gender    : 2;
+    u8 hide      : 1;
+    u8 unused1_3 : 5;
+    u8 status;
+    u8 unused3;
+    s16 hp;
+    u16 hpMax;
+} TargetPokemon;
 
 #endif

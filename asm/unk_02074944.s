@@ -10,11 +10,11 @@
 sub_02074944: ; 0x02074944
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl ZknData_Create
+	bl PokedexData_Create
 	mov r1, #0
 	add r2, r5, #0
 	add r4, r0, #0
-	bl ZknData_LoadAll
+	bl PokedexData_LoadAll
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -24,9 +24,9 @@ sub_02074944: ; 0x02074944
 sub_0207495C: ; 0x0207495C
 	push {r4, lr}
 	add r4, r0, #0
-	bl ZknData_UnloadAll
+	bl PokedexData_UnloadAll
 	add r0, r4, #0
-	bl ZknData_Delete
+	bl PokedexData_Delete
 	pop {r4, pc}
 	thumb_func_end sub_0207495C
 
@@ -88,7 +88,7 @@ _020749D2:
 	beq _020749FC
 	ldr r0, [sp]
 	add r1, r6, #0
-	bl ZknData_GetHeight
+	bl PokedexData_GetHeight
 	cmp r5, #0
 	ble _020749F2
 	cmp r0, r5
@@ -111,7 +111,7 @@ _020749FC:
 	beq _02074A2A
 	ldr r0, [sp]
 	add r1, r6, #0
-	bl ZknData_GetWeight
+	bl PokedexData_GetWeight
 	cmp r5, #0
 	ble _02074A20
 	cmp r0, r5

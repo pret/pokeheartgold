@@ -165,7 +165,7 @@ void SetBgControlParam(BGCONFIG *config, u8 bgId, enum GFBgCntSet attr, u8 value
 void FreeBgTilemapBuffer(BGCONFIG *bgConfig, u8 layer);
 void SetBgPriority(u8 layer, int priority);
 void ToggleBgLayer(u8 layer, u8 toggle);
-void BgSetPosTextAndCommit(BGCONFIG *bgConfig, enum GFBgLayer bgId, enum BgPosAdjustOp op, fx32 val);
+void BgSetPosTextAndCommit(BGCONFIG *bgConfig, u8 bgId, enum BgPosAdjustOp op, fx32 val);
 fx32 Bg_GetXpos(const BGCONFIG *bgConfig, u8 layer);
 fx32 Bg_GetYpos(const BGCONFIG *bgConfig, u8 layer);
 void Bg_SetTextDimAndAffineParams(BGCONFIG *bgConfig, u8 layer, enum BgPosAdjustOp op, fx32 value, MtxFx22 *mtx, fx32 centerX, fx32 centerY);

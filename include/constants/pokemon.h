@@ -43,11 +43,6 @@
 #define TYPE_FORESIGHT  0xFE
 #define TYPE_ENDTABLE   0xFF
 
-// Status flags
-#define STATUS_POISON                  (1<<3)
-#define STATUS_TOX_POISON              (1<<7)
-#define STATUS_POISON_ANY              (STATUS_POISON|STATUS_TOX_POISON)
-
 // Contest types
 #define COOL           0
 #define BEAUTY         1
