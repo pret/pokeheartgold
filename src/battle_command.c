@@ -2827,7 +2827,7 @@ BOOL BtlCmd_TryConversion2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     }
 
     if (ctx->conversion2Move[ctx->battlerIdAttacker] && (ctx->conversion2BattlerId[ctx->battlerIdAttacker] != 255)) {
-        if (BattleCtx_IsIdenticalToCurrentMove(ctx, ctx->conversion2Move[ctx->battlerIdAttacker]) && (ctx->battleMons[ctx->conversion2BattlerId[ctx->battlerIdAttacker]].status2 & STATUS2_12)) {
+        if (BattleCtx_IsIdenticalToCurrentMove(ctx, ctx->conversion2Move[ctx->battlerIdAttacker]) && (ctx->battleMons[ctx->conversion2BattlerId[ctx->battlerIdAttacker]].status2 & STATUS2_LOCKED_INTO_MOVE)) {
             BattleScriptIncrementPointer(ctx, adrs);
             return FALSE;
         } else {
@@ -2990,7 +2990,7 @@ BOOL BtlCmd_HealBell(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (ctx->moveNoCur == MOVE_HEAL_BELL) {
         ctx->moveWork = ctx->moveNoCur;
         if (GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_SOUNDPROOF) {
-            ctx->battleMons[ctx->battlerIdAttacker].status = 0;
+            ctx->battleMons[ctx->battlerIdAttacker].status = STATUS_NONE;
             ctx->battleMons[ctx->battlerIdAttacker].status2 &= ~STATUS2_27;
         } else {
             ctx->calcWork |= 5;
@@ -3000,7 +3000,7 @@ BOOL BtlCmd_HealBell(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             battlerId = GetBattlerIDBySide(bsys, ctx, B_SIDE_16);
             if (!(ctx->unk_3108 & MaskOfFlagNo(battlerId))) {
                 if (!CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, battlerId, ABILITY_SOUNDPROOF)) {
-                    ctx->battleMons[battlerId].status = 0;
+                    ctx->battleMons[battlerId].status = STATUS_NONE;
                     ctx->battleMons[battlerId].status2 &= ~STATUS2_27;
                 } else {
                     ctx->battlerIdWork = battlerId;
@@ -3011,12 +3011,12 @@ BOOL BtlCmd_HealBell(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             ctx->calcWork |= 8;
         }
     } else { //aromatherapy
-        ctx->battleMons[ctx->battlerIdAttacker].status = 0;
+        ctx->battleMons[ctx->battlerIdAttacker].status = STATUS_NONE;
         ctx->battleMons[ctx->battlerIdAttacker].status2 &= ~STATUS2_27;
         if (battleType & BATTLE_TYPE_DOUBLES) {
             battlerId = GetBattlerIDBySide(bsys, ctx, B_SIDE_16);
             if (!(ctx->unk_3108 & MaskOfFlagNo(battlerId))) {
-                ctx->battleMons[battlerId].status = 0;
+                ctx->battleMons[battlerId].status = STATUS_NONE;
                 ctx->battleMons[battlerId].status2 &= ~STATUS2_27;
             }
         } else {
@@ -3381,13 +3381,13 @@ BOOL BtlCmd_WeatherDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             }
             if (ctx->battleMons[battlerId].hp && (u8)ctx->battleMons[battlerId].status &&
                 GetBattlerAbility(ctx, battlerId) == ABILITY_HYDRATION) {
-                if (ctx->battleMons[battlerId].status & 7) { //sleep
+                if (ctx->battleMons[battlerId].status & STATUS_SLEEP) {
                     ctx->msgWork = 0;
-                } else if (ctx->battleMons[battlerId].status & 0xf88) { //poison and toxic
+                } else if (ctx->battleMons[battlerId].status & STATUS_POISON_ALL) {
                     ctx->msgWork = 1;
-                } else if (ctx->battleMons[battlerId].status & 16) { //burn
+                } else if (ctx->battleMons[battlerId].status & STATUS_BURN) {
                     ctx->msgWork = 2;
-                } else if (ctx->battleMons[battlerId].status & (1 << 6)) { //para
+                } else if (ctx->battleMons[battlerId].status & STATUS_PARALYSIS) {
                     ctx->msgWork = 3;
                 } else {
                     ctx->msgWork = 4;
@@ -3406,7 +3406,7 @@ BOOL BtlCmd_RolloutDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     ctx->selfTurnData[ctx->battlerIdAttacker].rolloutCount = ctx->battleMons[ctx->battlerIdAttacker].unk88.rolloutCount;
 
-    if (!(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_12)) {
+    if (!(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_LOCKED_INTO_MOVE)) {
         LockBattlerIntoCurrentMove(bsys, ctx, ctx->battlerIdAttacker);
         ctx->battleMons[ctx->battlerIdAttacker].unk88.rolloutCount = 5;
     }
@@ -4723,7 +4723,7 @@ BOOL BtlCmd_TryPyschoShift(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int adrs = BattleScriptReadWord(ctx);
 
-    if (ctx->battleMons[ctx->battlerIdTarget].status || ctx->battleMons[ctx->battlerIdTarget].status2 & (1 << 24) || !ctx->battleMons[ctx->battlerIdAttacker].status) {
+    if (ctx->battleMons[ctx->battlerIdTarget].status || ctx->battleMons[ctx->battlerIdTarget].status2 & STATUS2_24 || !ctx->battleMons[ctx->battlerIdAttacker].status) {
         BattleScriptIncrementPointer(ctx, adrs);
     }
 
@@ -5658,8 +5658,8 @@ BOOL BtlCmd_TryNaturalCure(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int battlerId = GetBattlerIDBySide(bsys, ctx, side);
     if (ctx->battleMons[battlerId].hp && ctx->selectedMonIndex[battlerId] != 6) {
         Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, ctx->selectedMonIndex[battlerId]);
-        int ability = GetMonData(mon, MON_DATA_ABILITY, 0);
-        int status = GetMonData(mon, MON_DATA_STATUS, 0);
+        int ability = GetMonData(mon, MON_DATA_ABILITY, NULL);
+        int status = GetMonData(mon, MON_DATA_STATUS, NULL);
         if (ctx->battleMons[battlerId].ability != ABILITY_NATURAL_CURE && !CheckNaturalCureOnSwitch(ctx, ability, status)) {
             BattleScriptIncrementPointer(ctx, adrs);
         }
@@ -5994,7 +5994,7 @@ static void *BattleScriptGetVarPointer(BattleSystem *bsys, BATTLECONTEXT *ctx, i
     case 52:
         return &bsys->unk240C;
     case 53:
-        return &ctx->moveNoKeep[ctx->battlerIdAttacker];
+        return &ctx->moveNoLockedInto[ctx->battlerIdAttacker];
     case 54:
         return &ctx->hitDamage;
     case 55:

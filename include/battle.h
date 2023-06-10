@@ -348,7 +348,7 @@ typedef struct BATTLECONTEXT {
     u32 moveNoTemp;
     u32 moveNoCur;
     u32 moveNoPrev;
-    u32 moveNoKeep[4];
+    u32 moveNoLockedInto[4];
     u16 moveNoProtect[4];
     u16 moveNoHit[4];
     u16 moveNoHitBattler[4];

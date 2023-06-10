@@ -100,10 +100,27 @@ enum Terrain {
 #define SIDE_CONDITION_TOXIC_SPIKES         (1 << 10)
 
 //Status
+#define STATUS_NONE                         0
+#define STATUS_SLEEP                        (7)
+#define STATUS_POISON                       (1 << 3)
+#define STATUS_BURN                         (1 << 4)
+#define STATUS_FREEZE                       (1 << 5)    
 #define STATUS_PARALYSIS                    (1 << 6)
+#define STATUS_BAD_POISON                   (1 << 7)
+#define STATUS_POISON_COUNT                 (15 << 8)
+
+#define STATUS_POISON_ALL                   (STATUS_POISON | STATUS_BAD_POISON | STATUS_POISON_COUNT)
+
+//Status Conditions
+#define CONDITION_NONE                      0
+#define CONDITION_SLEEP                     1
+#define CONDITION_POISON                    2
+#define CONDITION_BURN                      3
+#define CONDITION_FREEZE                    4
+#define CONDITION_PARALYSIS                 5
 
 //Status 2
-#define STATUS2_12                          (1 << 12)
+#define STATUS2_LOCKED_INTO_MOVE            (1 << 12)
 #define STATUS2_13                          (1 << 13)
 #define STATUS2_14                          (1 << 14)
 #define STATUS2_15                          (1 << 15)

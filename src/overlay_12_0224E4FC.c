@@ -1,4 +1,5 @@
 #include "battle.h"
+#include "battle_controller.h"
 #include "battle_controller_opponent.h"
 #include "battle_system.h"
 #include "dex_mon_measures.h"
@@ -1527,5 +1528,65 @@ void ov12_02250A18(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker
             ctx->selfTurnData[battlerIdTarget].stormDrainFlag = TRUE;
             ctx->battlerIdTarget = battlerIdTarget;
         } 
+    }
+}
+
+BOOL ov12_02250BBC(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BOOL ret = FALSE;
+    
+    if (!(ctx->moveStatusFlag & 0x801FDA49) && ctx->selfTurnData[ctx->battlerIdTarget].lightningRodFlag) {
+        ctx->selfTurnData[ctx->battlerIdTarget].lightningRodFlag = FALSE;
+        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 180);
+        ctx->unk_C = ctx->unk_8;
+        ctx->unk_8 = 22;
+        ret = TRUE;
+    }
+    
+    if (!(ctx->moveStatusFlag & 0x801FDA49) && ctx->selfTurnData[ctx->battlerIdTarget].stormDrainFlag) {
+        ctx->selfTurnData[ctx->battlerIdTarget].stormDrainFlag = FALSE;
+        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 180);
+        ctx->unk_C = ctx->unk_8;
+        ctx->unk_8 = 22;
+        ret = TRUE;
+    }
+    
+    return ret;
+}
+
+void CopyBattleMonToPartyMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {  
+    
+    if (!ctx->battleMons[battlerId].item) {
+        ov12_022585A8(ctx, battlerId);
+    }
+    
+    BattleController_EmitBattleMonToPartyMonCopy(bsys, ctx, battlerId);
+}
+
+void LockBattlerIntoCurrentMove(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
+    ctx->battleMons[battlerId].status2 |= STATUS2_LOCKED_INTO_MOVE;
+    ctx->moveNoLockedInto[battlerId] = ctx->moveNoCur;
+}
+
+void UnlockBattlerOutOfCurrentMove(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
+    ctx->battleMons[battlerId].status2 &= ~STATUS2_LOCKED_INTO_MOVE;
+    ctx->battleMons[battlerId].status2 &= ~(3 << 8); //??
+    ctx->battleMons[battlerId].moveEffectFlags &= 0xDFFBFF3F;
+    ctx->battleMons[battlerId].unk88.rolloutCount = 0;
+    ctx->battleMons[battlerId].unk88.furyCutterCount = 0;
+}
+
+int ov12_02250CFC(BATTLECONTEXT *ctx, int battlerId) {
+    if (ctx->battleMons[battlerId].status & STATUS_SLEEP) {
+        return CONDITION_SLEEP;
+    } else if (ctx->battleMons[battlerId].status & STATUS_POISON) {
+        return CONDITION_POISON;
+    } else if (ctx->battleMons[battlerId].status & STATUS_BURN) {
+        return CONDITION_BURN;
+    } else if (ctx->battleMons[battlerId].status & STATUS_FREEZE) {
+        return CONDITION_FREEZE;
+    } else if (ctx->battleMons[battlerId].status & STATUS_PARALYSIS) {
+        return CONDITION_PARALYSIS;
+    } else if (ctx->battleMons[battlerId].status & STATUS_BAD_POISON) {
+        return CONDITION_POISON;
     }
 }

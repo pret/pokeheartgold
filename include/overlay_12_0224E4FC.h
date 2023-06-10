@@ -23,13 +23,15 @@ BOOL ov12_022503EC(BattleSystem *bsys, BATTLECONTEXT *ctx, int *out);
 BOOL ov12_02250490(BattleSystem *bsys, BATTLECONTEXT *ctx, int *out);
 int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u16 move, int a4, int a5);
 void ov12_02250A18(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u16 a3);
+BOOL ov12_02250BBC(BattleSystem *bsys, BATTLECONTEXT *ctx);
+void CopyBattleMonToPartyMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+void LockBattlerIntoCurrentMove(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+void UnlockBattlerOutOfCurrentMove(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+int ov12_02250CFC(BATTLECONTEXT *ctx, int battlerId);
 
 //The following functions haven't been decompiled as of now
 void ov12_02256F78(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 monIndex);
 void Link_CheckTimeout(BATTLECONTEXT *ctx);
-void CopyBattleMonToPartyMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
-void LockBattlerIntoCurrentMove(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
-void UnlockBattlerOutOfCurrentMove(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 void InitSwitchWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 void InitFaintedWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL CheckBattlerAbilityIfNotIgnored(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, u32 ability);
@@ -88,5 +90,6 @@ int ov12_022584AC(BATTLECONTEXT *ctx, int battlerId, int id);
 int ov12_02258348(BATTLECONTEXT *ctx, int a1, int a2);
 int ov12_02256838(BATTLECONTEXT *ctx, int battlerId);
 int BattleSystem_GetMoveType(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
+void ov12_022585A8(BATTLECONTEXT *ctx, u8 battlerId);
 
 #endif
