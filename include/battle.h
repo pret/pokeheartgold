@@ -77,8 +77,8 @@ typedef struct TurnData {
 
 typedef struct SelfTurnData {
     u32 ignorePressure:1;
-    u32 unk0_1:1;
-    u32 unk0_2:1;
+    u32 lightningRodFlag:1;
+    u32 stormDrainFlag:1;
     u32 unk0_3:1;
     u32 trickRoomFlag:1;
     u32 unk0_5:1;

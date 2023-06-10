@@ -3931,7 +3931,7 @@ BOOL BtlCmd_MagicCoat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ctx->battlerIdTarget = battlerId;
     } else {
         side = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, (u16) ctx->moveNoCur, 1, 0);
-        if (ctx->selfTurnData[side].unk0_1 || ctx->selfTurnData[side].unk0_2) {
+        if (ctx->selfTurnData[side].lightningRodFlag || ctx->selfTurnData[side].stormDrainFlag) {
             ctx->battlerIdTarget = side;
         } else {
             ctx->battlerIdTarget = battlerId;

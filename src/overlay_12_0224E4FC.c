@@ -1,4 +1,5 @@
 #include "battle.h"
+#include "battle_controller_opponent.h"
 #include "battle_system.h"
 #include "dex_mon_measures.h"
 #include "filesystem.h"
@@ -1241,5 +1242,290 @@ void BattleSystem_SetExperienceEarnFlags(BattleSystem *bsys, BATTLECONTEXT *ctx,
         if (battleType == 0x4a || battleType == 0x4b) {
             break;
         }
+    }
+}
+
+BOOL ov12_022503EC(BattleSystem *bsys, BATTLECONTEXT *ctx, int *out) {
+    BOOL ret = FALSE;
+    
+    if (ctx->unk_2170 & (1 << 29)) {
+        *out = ov12_02258348(ctx, 1, ctx->unk_2170);
+        ctx->unk_2170 = 0;
+        if (!(ctx->moveStatusFlag & 0x801FDA49)) {
+            ret = TRUE;
+        }
+    } else if (ctx->unk_2170) {
+        *out = ov12_02258348(ctx, 1, ctx->unk_2170);
+        if (ctx->battleMons[ctx->battlerIdStatChange].hp && 
+            (!(ctx->moveStatusFlag & 0x801FDA49) || 
+            ((ctx->unk_2170 & (1 << 23)) && (ctx->moveStatusFlag & 0x40008)) ||
+            ((ctx->unk_2170 & (1 << 28)) && (ctx->moveStatusFlag & 0x10001)))) {
+                ret = TRUE;
+            }
+        ctx->unk_2170 = 0;
+    }
+    
+    return ret;
+}
+
+BOOL ov12_02250490(BattleSystem *bsys, BATTLECONTEXT *ctx, int *out) {
+    BOOL ret = FALSE;
+    u16 effectChance;
+    
+    if (ctx->unk_2174 & (1 << 29)) {
+        *out = ov12_02258348(ctx, 2, ctx->unk_2174);
+        ctx->unk_2174 = 0;
+        if (!(ctx->moveStatusFlag & 0x801FDA49)) {
+            ret = TRUE;
+        }
+    } else if (ctx->unk_2174 & (1 << 24)) {
+        *out = ov12_02258348(ctx, 2, ctx->unk_2174);
+        ctx->unk_2174 = 0;
+        if (!ov12_02256838(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & 0x801FDA49)) {
+            ret = TRUE;
+        }
+    } else if (ctx->unk_2174 & (1 << 25)) {
+        *out = ov12_02258348(ctx, 2, ctx->unk_2174);
+        ctx->unk_2174 = 0;
+        if (ctx->battleMons[ctx->battlerIdStatChange].hp && !ov12_02256838(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & 0x801FDA49)) {
+            ret = TRUE;
+        }
+    } else if (ctx->unk_2174 & (1 << 28)) {
+        *out = ov12_02258348(ctx, 2, ctx->unk_2174);
+        ctx->unk_2174 = 0; 
+        if (ctx->battleMons[ctx->battlerIdStatChange].hp) {
+            ret = TRUE;
+        }
+    } else if (ctx->unk_2174 & (1 << 26)) {
+        //the inclusion of serene grace here makes me think this function has to do with secondary move effects
+        if (GetBattlerAbility(ctx, ctx->battlerIdAttacker) == ABILITY_SERENE_GRACE) {
+            effectChance = ctx->unk_334.moveData[ctx->moveNoCur].effectChance * 2;
+        } else {
+            effectChance = ctx->unk_334.moveData[ctx->moveNoCur].effectChance;
+        }
+        
+        GF_ASSERT(effectChance);
+        
+        if ((BattleSys_Random(bsys) % 100) < effectChance) {
+            ctx->linkStatus |= (1 << 22);
+        }
+        
+        *out = ov12_02258348(ctx, 2, ctx->unk_2174);
+        ctx->unk_2174 = 0; 
+        if (!ctx->battleMons[ctx->battlerIdStatChange].hp) {
+            ctx->linkStatus &= 0xFFBFFFFF;
+        }
+        
+        ret = TRUE;
+    } else if (ctx->unk_2174) {
+        //the inclusion of serene grace here makes me think this function has to do with secondary move effects
+        if (GetBattlerAbility(ctx, ctx->battlerIdAttacker) == ABILITY_SERENE_GRACE) {
+            effectChance = ctx->unk_334.moveData[ctx->moveNoCur].effectChance * 2;
+        } else {
+            effectChance = ctx->unk_334.moveData[ctx->moveNoCur].effectChance;
+        }
+        
+        GF_ASSERT(effectChance);
+        
+        if ((BattleSys_Random(bsys) % 100) < effectChance) {
+            *out = ov12_02258348(ctx, 2, ctx->unk_2174);
+            ctx->unk_2174 = 0; 
+            if (ctx->battleMons[ctx->battlerIdStatChange].hp && !ov12_02256838(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & 0x801FDA49)) {
+                ret = TRUE;
+            }
+        }
+    } else if (ctx->unk_2178) {
+        *out = ov12_02258348(ctx, 3, ctx->unk_2178);
+        ctx->unk_2178 = 0; 
+        if (ctx->battleMons[ctx->battlerIdStatChange].hp) {
+            ret = TRUE;
+        }
+    }
+
+    return ret;
+}
+
+int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker, u16 moveNo, int a4, int a5) {
+    int battlerIdTarget = 0xFF;
+    int unkA;
+    
+    if (moveNo) {
+        unkA = ctx->unk_334.moveData[moveNo].unk8;
+    } else {
+        unkA = a5;
+    }
+    
+    if (unkA == 4) {
+        int battlerId;
+        int maxBattlers = BattleSys_GetMaxBattlers(bsys);
+        OpponentData *opponent = BattleSys_GetOpponentDataByBattlerId(bsys, battlerIdAttacker);
+        u8 flag = ov12_02261258(opponent);
+        
+        for (ctx->unk_217E = 0; ctx->unk_217E < maxBattlers; ctx->unk_217E++) {
+            battlerId = ctx->unk_21EC[ctx->unk_217E];
+            if (ctx->battleMons[battlerId].hp) {
+                opponent = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
+                if (((flag & 1) && !(ov12_02261258(opponent) & 1)) ||
+                    (!(flag & 1) && (ov12_02261258(opponent) & 1))) {
+                    battlerIdTarget = battlerId;
+                    break;
+                }
+            }
+        }
+        
+        if (ctx->unk_217E != maxBattlers) {
+            ctx->unk_217E++;
+        }
+    } else if (unkA == 8) {
+        int battlerId;
+        int maxBattlers = BattleSys_GetMaxBattlers(bsys);
+        
+        for (ctx->unk_217E = 0; ctx->unk_217E < maxBattlers; ctx->unk_217E++) {
+            battlerId = ctx->unk_21EC[ctx->unk_217E];
+            if (ctx->battleMons[battlerId].hp) {
+                if (battlerId != battlerIdAttacker) {
+                    battlerIdTarget = battlerId;
+                    break;
+                }
+            }
+        }
+        
+        if (ctx->unk_217E != maxBattlers) {
+            ctx->unk_217E++;
+        }
+    } else if (unkA == (1 << 9) && (a4 == 1)) {
+        int battleType = BattleSys_GetBattleType(bsys);
+        
+        if ((battleType & 2) && (BattleSys_Random(bsys) % 2) == 0) {
+            battlerIdTarget = BattleSys_GetBattlerIdPartner(bsys, battlerIdAttacker);
+            if (!ctx->battleMons[battlerIdTarget].hp) {
+                battlerIdTarget = battlerIdAttacker;
+            }
+        } else {
+            battlerIdTarget = battlerIdAttacker;
+        }
+    } else if (unkA == (1 << 10) && (a4 == 1)) {
+        battlerIdTarget = ov12_02253DA0(bsys, ctx, battlerIdAttacker);
+    } else if (unkA == (1 << 7)) {
+        battlerIdTarget = ov12_02253DA0(bsys, ctx, battlerIdAttacker);
+    } else if (unkA == (1 << 4) || unkA == (1 << 5) || unkA == 1 || unkA == (1 << 6)) {
+        battlerIdTarget = battlerIdAttacker;
+    } else if (unkA == (1 << 8)) {
+        int battleType = BattleSys_GetBattleType(bsys);
+        
+        if (battleType & 2) {
+            battlerIdTarget = BattleSys_GetBattlerIdPartner(bsys, battlerIdAttacker);
+        } else {
+            battlerIdTarget = battlerIdAttacker;
+        }
+    } else if (unkA == (1 << 9)) {
+        int battleType = BattleSys_GetBattleType(bsys);
+        
+        if (battleType & 2) {
+            battlerIdTarget = ctx->unk_21A8[battlerIdAttacker][1];
+            if (!ctx->battleMons[battlerIdTarget].hp) {
+                battlerIdTarget = battlerIdAttacker;
+            }
+        } else {
+            battlerIdTarget = battlerIdAttacker;
+        }
+    } else if (unkA == 2 || a4 == 1) {
+        int battleType = BattleSys_GetBattleType(bsys);
+        int side = BattleSys_GetFieldSide(bsys, battlerIdAttacker)^1;
+        int battlerIdOpponents[2];
+        battlerIdOpponents[0] = ov12_0223ABB8(bsys, battlerIdAttacker, 0);
+        battlerIdOpponents[1] = ov12_0223ABB8(bsys, battlerIdAttacker, 2);
+        
+        if (battleType & 2) {
+            if (ctx->fieldSideConditionData[side].followMeFlag && ctx->battleMons[ctx->fieldSideConditionData[side].battlerIdFollowMe].hp) {
+                battlerIdTarget = ctx->fieldSideConditionData[side].battlerIdFollowMe;
+            } else if (ctx->battleMons[battlerIdOpponents[0]].hp && ctx->battleMons[battlerIdOpponents[1]].hp) {
+                //This looks like targeting for Outrage in double battles
+                side = BattleSys_Random(bsys) & 1;
+                battlerIdTarget = battlerIdOpponents[side];
+            } else if (ctx->battleMons[battlerIdOpponents[0]].hp) {
+                battlerIdTarget = battlerIdOpponents[0];
+            } else if (ctx->battleMons[battlerIdOpponents[1]].hp) {
+                battlerIdTarget = battlerIdOpponents[1];
+            }
+        } else if (ctx->battleMons[battlerIdAttacker^1].hp) {
+            battlerIdTarget = battlerIdAttacker^1;
+        }
+    } else {
+        int side = BattleSys_GetFieldSide(bsys, battlerIdAttacker)^1;
+        int battlerIdTargetTemp = ctx->unk_21A8[battlerIdAttacker][1];
+        BattleSys_GetMaxBattlers(bsys);
+        
+        if (ctx->fieldSideConditionData[side].followMeFlag && ctx->battleMons[ctx->fieldSideConditionData[side].battlerIdFollowMe].hp) {
+            battlerIdTarget = ctx->fieldSideConditionData[side].battlerIdFollowMe;
+        } else if (ctx->battleMons[battlerIdTargetTemp].hp) {
+            battlerIdTarget = battlerIdTargetTemp;
+        } else {
+            battlerIdTargetTemp = ov12_02253DA0(bsys, ctx, battlerIdAttacker);
+            if (ctx->battleMons[battlerIdTargetTemp].hp) {
+                battlerIdTarget = battlerIdTargetTemp;
+            }
+        }
+    }
+    
+    return battlerIdTarget;
+}
+
+void ov12_02250A18(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker, u16 moveNo) {
+    int side;
+    int battlerId;
+    int battlerIdTarget;
+    int moveType;
+    int maxBattlers;
+    
+    if (ctx->battlerIdTarget == 0xFF) {
+        return;
+    }
+    
+    if (GetBattlerAbility(ctx, battlerIdAttacker) == ABILITY_NORMALIZE || GetBattlerAbility(ctx, battlerIdAttacker) == ABILITY_MOLD_BREAKER) {
+        return;
+    }
+    
+    side = BattleSys_GetFieldSide(bsys, battlerIdAttacker)^1;
+    
+    if (ctx->fieldSideConditionData[side].followMeFlag && ctx->battleMons[ctx->fieldSideConditionData[side].battlerIdFollowMe].hp) {
+        return;
+    }
+    
+    moveType = BattleSystem_GetMoveType(bsys, ctx, battlerIdAttacker, moveNo);
+    if (!moveType) {
+        moveType = ctx->unk_334.moveData[moveNo].type;
+    }
+    
+    maxBattlers = BattleSys_GetMaxBattlers(bsys);
+    
+    if (moveType == TYPE_ELECTRIC &&
+        (ctx->unk_334.moveData[moveNo].unk8 == 0 || ctx->unk_334.moveData[moveNo].unk8 == 2) &&
+        !(ctx->linkStatus & 0x20) &&
+        CheckAbilityActive(bsys, ctx, 9, battlerIdAttacker, ABILITY_LIGHTNINGROD)) {
+        for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
+            battlerIdTarget = ctx->unk_21EC[battlerId];
+            if (GetBattlerAbility(ctx, battlerIdTarget) == ABILITY_LIGHTNINGROD && ctx->battleMons[battlerIdTarget].hp && battlerIdAttacker != battlerIdTarget) {
+                break;
+            }
+        }
+        if (battlerIdTarget != ctx->battlerIdTarget) {
+            ctx->selfTurnData[battlerIdTarget].lightningRodFlag = TRUE;
+            ctx->battlerIdTarget = battlerIdTarget;
+        }
+    } else if (moveType == TYPE_WATER &&
+        (ctx->unk_334.moveData[moveNo].unk8 == 0 || ctx->unk_334.moveData[moveNo].unk8 == 2) &&
+        !(ctx->linkStatus & 0x20) &&
+        CheckAbilityActive(bsys, ctx, 9, battlerIdAttacker, ABILITY_STORM_DRAIN)) {
+        for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
+            battlerIdTarget = ctx->unk_21EC[battlerId];
+            if (GetBattlerAbility(ctx, battlerIdTarget) == ABILITY_STORM_DRAIN && ctx->battleMons[battlerIdTarget].hp && battlerIdAttacker != battlerIdTarget) {
+                break;
+            }
+        }
+        if (battlerIdTarget != ctx->battlerIdTarget) {
+            ctx->selfTurnData[battlerIdTarget].stormDrainFlag = TRUE;
+            ctx->battlerIdTarget = battlerIdTarget;
+        } 
     }
 }
