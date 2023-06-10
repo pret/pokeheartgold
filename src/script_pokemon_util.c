@@ -4,6 +4,7 @@
 #include "pokemon_mood.h"
 #include "script_pokemon_util.h"
 #include "constants/items.h"
+#include "constants/battle.h"
 
 static BOOL MonNotFaintedOrEgg(Pokemon *mon) {
     if (GetMonData(mon, MON_DATA_HP, NULL) == 0) {
@@ -167,7 +168,7 @@ BOOL ApplyPoisonStep(PARTY *party, u16 location) {
         if (!MonNotFaintedOrEgg(mon)) {
             continue;
         }
-        if (!(GetMonData(mon, MON_DATA_STATUS, NULL) & (STATUS_POISON_ANY))) {
+        if (!(GetMonData(mon, MON_DATA_STATUS, NULL) & ((STATUS_POISON | STATUS_BAD_POISON)))) {
             continue;
         }
         hp = GetMonData(mon, MON_DATA_HP, NULL);
@@ -193,7 +194,7 @@ BOOL ApplyPoisonStep(PARTY *party, u16 location) {
 
 BOOL SurvivePoisoning(Pokemon *mon) {
     u32 status;
-    if ((GetMonData(mon, MON_DATA_STATUS, NULL) & STATUS_POISON_ANY) && GetMonData(mon, MON_DATA_HP, NULL) == 1) {
+    if ((GetMonData(mon, MON_DATA_STATUS, NULL) & (STATUS_POISON | STATUS_BAD_POISON)) && GetMonData(mon, MON_DATA_HP, NULL) == 1) {
         status = 0;
         SetMonData(mon, MON_DATA_STATUS, &status);
         return TRUE;

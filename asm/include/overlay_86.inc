@@ -129,7 +129,7 @@
 .public sub_0205C2E8
 .public sub_0205C310
 .public sub_0205C350
-.public GetDexDataNarcID
+.public GetPokedexDataNarcID
 .public MIi_CpuCopy16
 .public memset
 .public _s32_div_f

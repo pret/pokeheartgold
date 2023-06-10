@@ -1589,4 +1589,6 @@ int ov12_02250CFC(BATTLECONTEXT *ctx, int battlerId) {
     } else if (ctx->battleMons[battlerId].status & STATUS_BAD_POISON) {
         return CONDITION_POISON;
     }
+    
+    return CONDITION_NONE;
 }

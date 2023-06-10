@@ -5311,7 +5311,7 @@ ov18_021E8410: ; 0x021E8410
 	add r6, r0, #0
 	ldr r0, _021E84E0 ; =0x000018CC
 	add r5, r6, r0
-	bl GetDexDataNarcID
+	bl GetPokedexDataNarcID
 	mov r1, #0x25
 	bl NARC_New
 	add r4, r0, #0
@@ -36853,8 +36853,8 @@ ov18_021F8168: ; 0x021F8168
 	blo _021F8178
 	bl GF_AssertFail
 _021F8178:
-	; ret = GfGfxLoader_LoadFromNarc_GetSizeOut(GetDexDataNarcID(), a0 + 11, FALSE, 37, FALSE, &size);
-	bl GetDexDataNarcID
+	; ret = GfGfxLoader_LoadFromNarc_GetSizeOut(GetPokedexDataNarcID(), a0 + 11, FALSE, 37, FALSE, &size);
+	bl GetPokedexDataNarcID
 	mov r2, #0
 	str r2, [sp]
 	add r1, sp, #8

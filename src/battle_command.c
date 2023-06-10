@@ -1451,10 +1451,10 @@ BOOL BtlCmd_ChangeVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int operator = BattleScriptReadWord(ctx);
-    int unkB = BattleScriptReadWord(ctx);
+    int varId = BattleScriptReadWord(ctx);
     int val = BattleScriptReadWord(ctx);
 
-    int *var = BattleScriptGetVarPointer(bsys, ctx, unkB);
+    int *var = BattleScriptGetVarPointer(bsys, ctx, varId);
 
     switch (operator) {
     case 7:
@@ -1844,11 +1844,11 @@ BOOL BtlCmd_ChangeVar2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int operator = BattleScriptReadWord(ctx);
-    int unkB = BattleScriptReadWord(ctx);
-    int unkC = BattleScriptReadWord(ctx);
+    int varId = BattleScriptReadWord(ctx);
+    int valId = BattleScriptReadWord(ctx);
 
-    int *var = BattleScriptGetVarPointer(bsys, ctx, unkB);
-    int *val = BattleScriptGetVarPointer(bsys, ctx, unkC);
+    int *var = BattleScriptGetVarPointer(bsys, ctx, varId);
+    int *val = BattleScriptGetVarPointer(bsys, ctx, valId);
 
     switch (operator) {
     case 7:
@@ -1910,13 +1910,13 @@ BOOL BtlCmd_ChangeMonDataByVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int operator = BattleScriptReadWord(ctx);
     int side = BattleScriptReadWord(ctx);
-    int unkB = BattleScriptReadWord(ctx);
-    int unkC = BattleScriptReadWord(ctx);
+    int varId = BattleScriptReadWord(ctx);
+    int valId = BattleScriptReadWord(ctx);
 
     int battlerId = GetBattlerIDBySide(bsys, ctx, side);
 
-    int var = GetBattlerVar(ctx, battlerId, unkB, NULL);
-    int *val = BattleScriptGetVarPointer(bsys, ctx, unkC);
+    int var = GetBattlerVar(ctx, battlerId, varId, NULL);
+    int *val = BattleScriptGetVarPointer(bsys, ctx, valId);
 
     switch (operator) {
     case 7:
@@ -1971,10 +1971,10 @@ BOOL BtlCmd_ChangeMonDataByVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     }
 
     if (operator != 17) {
-        if (unkB == BMON_DATA_ABILITY) {
+        if (varId == BMON_DATA_ABILITY) {
             BattlerSetAbility(ctx, battlerId, var);
         }
-        SetBattlerVar(ctx, battlerId, unkB, &var);
+        SetBattlerVar(ctx, battlerId, varId, &var);
         CopyBattleMonToPartyMon(bsys, ctx, battlerId);
     }
 
