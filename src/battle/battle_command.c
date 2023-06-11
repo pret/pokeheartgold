@@ -1168,7 +1168,7 @@ BOOL BtlCmd_JumpToEffectScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 BOOL BtlCmd_CritCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    if ((BattleSys_GetBattleType(bsys) & BATTLE_TYPE_DEMO) || (BattleSys_GetBattleFlags(bsys) & 1)) {
+    if ((BattleSys_GetBattleType(bsys) & BATTLE_TYPE_TUTORIAL) || (BattleSys_GetBattleFlags(bsys) & 1)) {
         ctx->criticalMultiplier = 1;
     } else {
         ctx->criticalMultiplier = ov12_02257C5C(bsys, ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget, ctx->criticalCnt, ov12_022581D4(bsys, ctx, 0, ctx->battlerIdTarget));

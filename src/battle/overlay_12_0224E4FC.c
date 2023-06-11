@@ -66,7 +66,7 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
     ctx->battleMons[battlerId].gender = GetMonGender(mon);
     ctx->battleMons[battlerId].shiny = MonIsShiny(mon);
     
-    if (BattleSys_GetBattleType(bsys) & 0x220) { //No abilities battle
+    if (BattleSys_GetBattleType(bsys) & (BATTLE_TYPE_5|BATTLE_TYPE_9)) { //No abilities battle
         ctx->battleMons[battlerId].ability = 0;
         ctx->battleMons[battlerId].status = 0;
         ctx->battleMons[battlerId].item = 0;
@@ -76,7 +76,7 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
         ctx->battleMons[battlerId].item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
     }
     
-    if ((BattleSys_GetBattleType(bsys) & 0x220) && !BattleSys_GetFieldSide(bsys, battlerId)) {
+    if ((BattleSys_GetBattleType(bsys) & (BATTLE_TYPE_5|BATTLE_TYPE_9)) && !BattleSys_GetFieldSide(bsys, battlerId)) {
         ctx->battleMons[battlerId].forme = 0;
     } else {
         ctx->battleMons[battlerId].forme = GetMonData(mon, MON_DATA_FORME, NULL);
@@ -1397,7 +1397,7 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
     } else if (unkA == (1 << 9) && (a4 == 1)) {
         int battleType = BattleSys_GetBattleType(bsys);
         
-        if ((battleType & 2) && (BattleSys_Random(bsys) % 2) == 0) {
+        if ((battleType & BATTLE_TYPE_DOUBLES) && (BattleSys_Random(bsys) % 2) == 0) {
             battlerIdTarget = BattleSys_GetBattlerIdPartner(bsys, battlerIdAttacker);
             if (!ctx->battleMons[battlerIdTarget].hp) {
                 battlerIdTarget = battlerIdAttacker;
@@ -1414,7 +1414,7 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
     } else if (unkA == (1 << 8)) {
         int battleType = BattleSys_GetBattleType(bsys);
         
-        if (battleType & 2) {
+        if (battleType & BATTLE_TYPE_DOUBLES) {
             battlerIdTarget = BattleSys_GetBattlerIdPartner(bsys, battlerIdAttacker);
         } else {
             battlerIdTarget = battlerIdAttacker;
@@ -1422,7 +1422,7 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
     } else if (unkA == (1 << 9)) {
         int battleType = BattleSys_GetBattleType(bsys);
         
-        if (battleType & 2) {
+        if (battleType & BATTLE_TYPE_DOUBLES) {
             battlerIdTarget = ctx->unk_21A8[battlerIdAttacker][1];
             if (!ctx->battleMons[battlerIdTarget].hp) {
                 battlerIdTarget = battlerIdAttacker;
@@ -1437,7 +1437,7 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
         battlerIdOpponents[0] = ov12_0223ABB8(bsys, battlerIdAttacker, 0);
         battlerIdOpponents[1] = ov12_0223ABB8(bsys, battlerIdAttacker, 2);
         
-        if (battleType & 2) {
+        if (battleType & BATTLE_TYPE_DOUBLES) {
             if (ctx->fieldSideConditionData[side].followMeFlag && ctx->battleMons[ctx->fieldSideConditionData[side].battlerIdFollowMe].hp) {
                 battlerIdTarget = ctx->fieldSideConditionData[side].battlerIdFollowMe;
             } else if (ctx->battleMons[battlerIdOpponents[0]].hp && ctx->battleMons[battlerIdOpponents[1]].hp) {
@@ -1575,7 +1575,7 @@ void UnlockBattlerOutOfCurrentMove(BattleSystem *bsys, BATTLECONTEXT *ctx, int b
     ctx->battleMons[battlerId].unk88.furyCutterCount = 0;
 }
 
-int ov12_02250CFC(BATTLECONTEXT *ctx, int battlerId) {
+int GetBattlerStatusCondition(BATTLECONTEXT *ctx, int battlerId) {
     if (ctx->battleMons[battlerId].status & STATUS_SLEEP) {
         return CONDITION_SLEEP;
     } else if (ctx->battleMons[battlerId].status & STATUS_POISON) {
@@ -1592,3 +1592,45 @@ int ov12_02250CFC(BATTLECONTEXT *ctx, int battlerId) {
     
     return CONDITION_NONE;
 }
+
+/*
+This is a WIP I just really needed a break from this file ~adrienn
+BOOL ov12_02250D4C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int battleType = BattleSys_GetBattleType(bsys);
+    int trainerIndex;
+    int state;
+    
+    if (battleType & 0x84) {
+        return FALSE;
+    }
+    
+    if (!(battleType & BATTLE_TYPE_TRAINER)) {
+        return FALSE;
+    }
+    
+    if (battleType & BATTLE_TYPE_DOUBLES) {
+        return FALSE;
+    }
+    
+    trainerIndex = BattleSys_GetTrainerIndex(bsys, 2);
+    state = 0;
+    
+    do {
+        switch (state) {
+        case 0:
+            if (ctx->battleMons[2].unk78 == 1 && !(ctx->linkStatus2 & 0x20) && TrainerMessageWithIdPairExists(trainerIndex, 13, HEAP_ID_BATTLE)) {
+                ctx->linkStatus2 |= 0x20;
+                ctx->msgWork = 13;
+                return TRUE;
+            }
+            state++;
+            break;
+        case 1:
+            if (ctx->battleMons[2])
+            break;
+        }
+    } while (state != 4);
+    
+    return FALSE;
+}
+*/

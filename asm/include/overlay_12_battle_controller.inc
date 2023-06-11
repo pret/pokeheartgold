@@ -48,7 +48,7 @@
 .public ov12_0224ED00
 .public ov12_0224EDC0
 .public GetBattlerVar
-.public ov12_02250CFC
+.public GetBattlerStatusCondition
 .public StruggleCheck
 .public CheckAbilityActive
 .public ov12_02256748

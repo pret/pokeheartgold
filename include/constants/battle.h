@@ -56,7 +56,7 @@ enum Terrain {
 #define BATTLE_TYPE_6                       (1 << 6)
 #define BATTLE_TYPE_7                       (1 << 7)
 #define BATTLE_TYPE_9                       (1 << 9)
-#define BATTLE_TYPE_DEMO                    (1 << 10)
+#define BATTLE_TYPE_TUTORIAL                (1 << 10)
 
 //Move Effects
 #define MOVE_EFFECT_0                       (1 << 0)
