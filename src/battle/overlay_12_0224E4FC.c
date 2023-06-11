@@ -4,6 +4,7 @@
 #include "battle_system.h"
 #include "dex_mon_measures.h"
 #include "filesystem.h"
+#include "party.h"
 #include "pokemon.h"
 #include "unk_02037C94.h"
 #include "overlay_12_0224E4FC.h"
@@ -1593,32 +1594,29 @@ int GetBattlerStatusCondition(BATTLECONTEXT *ctx, int battlerId) {
     return CONDITION_NONE;
 }
 
-/*
-This is a WIP I just really needed a break from this file ~adrienn
 BOOL ov12_02250D4C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    int battleType = BattleSys_GetBattleType(bsys);
+    int state = BattleSys_GetBattleType(bsys);  //note: this should be battleType for the following three if statements, but it won't match if an additional variable is used
     int trainerIndex;
-    int state;
     
-    if (battleType & 0x84) {
+    if (state & 0x84) {
         return FALSE;
     }
     
-    if (!(battleType & BATTLE_TYPE_TRAINER)) {
+    if (!(state & BATTLE_TYPE_TRAINER)) {
         return FALSE;
     }
     
-    if (battleType & BATTLE_TYPE_DOUBLES) {
+    if (state & BATTLE_TYPE_DOUBLES) {
         return FALSE;
     }
     
-    trainerIndex = BattleSys_GetTrainerIndex(bsys, 2);
+    trainerIndex = BattleSys_GetTrainerIndex(bsys, 1);
     state = 0;
     
     do {
         switch (state) {
         case 0:
-            if (ctx->battleMons[2].unk78 == 1 && !(ctx->linkStatus2 & 0x20) && TrainerMessageWithIdPairExists(trainerIndex, 13, HEAP_ID_BATTLE)) {
+            if (ctx->battleMons[1].unk78 == 1 && !(ctx->linkStatus2 & 0x20) && TrainerMessageWithIdPairExists(trainerIndex, 13, HEAP_ID_BATTLE)) {
                 ctx->linkStatus2 |= 0x20;
                 ctx->msgWork = 13;
                 return TRUE;
@@ -1626,11 +1624,65 @@ BOOL ov12_02250D4C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             state++;
             break;
         case 1:
-            if (ctx->battleMons[2])
+            if (!(ctx->battleMons[1].msgFlag & 2) && ctx->battleMons[1].hp <= ctx->battleMons[1].maxHp / 2 && TrainerMessageWithIdPairExists(trainerIndex, 14, HEAP_ID_BATTLE)) {
+                ctx->battleMons[1].msgFlag |= 2;
+                ctx->msgWork = 14;
+                return TRUE;
+            }
+            state++;
+            break;
+        case 2:
+            if (!(ctx->battleMons[1].msgFlag & 3)) {
+                int i;
+                int aliveMons;
+                PARTY *party;
+                Pokemon *mon;
+                
+                party = BattleSys_GetParty(bsys, 1);
+                aliveMons = 0;
+                
+                for (i = 0; i < GetPartyCount(party); i++) {
+                    mon = GetPartyMonByIndex(party, i);
+                    if (GetMonData(mon, MON_DATA_HP, NULL)) {
+                        aliveMons++;
+                    }
+                }
+                if (aliveMons == 1 && TrainerMessageWithIdPairExists(trainerIndex, 15, HEAP_ID_BATTLE)) {
+                    ctx->battleMons[1].msgFlag |= 3;
+                    ctx->msgWork = 15;
+                    return TRUE;
+                }
+            }
+            state++;
+            break;
+        case 3:
+            if (!(ctx->battleMons[1].msgFlag & 4)) {
+                int i;
+                int aliveMons;
+                PARTY *party;
+                Pokemon *mon;
+                
+                party = BattleSys_GetParty(bsys, 1);
+                aliveMons = 0;
+                
+                for (i = 0; i < GetPartyCount(party); i++) {
+                    mon = GetPartyMonByIndex(party, i);
+                    if (GetMonData(mon, MON_DATA_HP, NULL)) {
+                        aliveMons++;
+                    }
+                }
+                if (aliveMons == 1 && (ctx->battleMons[1].hp <= ctx->battleMons[1].maxHp / 2) && TrainerMessageWithIdPairExists(trainerIndex, 16, HEAP_ID_BATTLE)) {
+                    ctx->battleMons[1].msgFlag |= 4;
+                    ctx->msgWork = 16;
+                    return TRUE;
+                }
+            }
+            state++;
+            break;
+        case 4:
             break;
         }
     } while (state != 4);
     
     return FALSE;
 }
-*/

@@ -1804,7 +1804,7 @@ _021E66C2:
 	b _021E66EE
 _021E66C6:
 	bl SpeciesToOverworldModelIndexOffset
-	ldr r1, _021E66F8 ; =MMODEL_TSURE_POKE_BULBASAUR
+	ldr r1, _021E66F8 ; =MMODEL_FOLLOWER_MON_BULBASAUR
 	add r4, r0, r1
 	add r0, r5, #0
 	bl OverworldModelLookupHasFemaleForme
@@ -1827,7 +1827,7 @@ _021E66EE:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E66F4: .word NATIONAL_DEX_COUNT
-_021E66F8: .word MMODEL_TSURE_POKE_BULBASAUR
+_021E66F8: .word MMODEL_FOLLOWER_MON_BULBASAUR
 	thumb_func_end ov106_021E66B0
 
 	thumb_func_start ov106_021E66FC

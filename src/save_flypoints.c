@@ -127,7 +127,7 @@ void Fsys_SyncMapObjectsToSave(FieldSystem *fsys) {
 
 void Fsys_RestoreMapObjectsFromSave(FieldSystem *fsys) {
     struct SavedMapObjectList *unk = Save_MapObjects_Get(fsys->savedata);
-    struct SavedMapObject *follower = SaveMapObjects_SearchSpriteId(unk->subs, 64, SPRITE_TSURE_POKE_SHAYMIN_SKY);
+    struct SavedMapObject *follower = SaveMapObjects_SearchSpriteId(unk->subs, 64, SPRITE_FOLLOWER_MON_SHAYMIN_SKY);
     Pokemon *mon;
     int species;
     int forme;
@@ -139,7 +139,7 @@ void Fsys_RestoreMapObjectsFromSave(FieldSystem *fsys) {
         if (species != SPECIES_SHAYMIN) {
             GF_ASSERT(0);
         } else if (forme == SHAYMIN_LAND) {
-            follower->gfxId = SPRITE_TSURE_POKE_SHAYMIN;
+            follower->gfxId = SPRITE_FOLLOWER_MON_SHAYMIN;
         }
     }
     MapObjectMan_RestoreFromSave(fsys->mapObjectMan, unk->subs, 64);
