@@ -86,6 +86,13 @@ jobs:
           path: failure.tar.gz
           retention-days: 1
       
+      - name: Checkout xMAP
+        if: ${{ github.event_name == 'push' }}
+        uses: actions/checkout@master
+        with:
+          path: 'xmap'
+          ref: 'xmap'
+      
       - name: Move xMAP
         if: ${{ github.event_name == 'push' }}
         run: |
