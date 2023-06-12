@@ -100,3 +100,4 @@ jobs:
           cwd: "./xmap"
           add: "*.XMAP"
           message: ${{ env.XMAP_COMMIT_MSG }}
+          
