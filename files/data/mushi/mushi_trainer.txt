@@ -1,5 +1,0 @@
-national:u8
-day:u8
-species:u16:constants/species.h
-score:u16
-randmod:u16

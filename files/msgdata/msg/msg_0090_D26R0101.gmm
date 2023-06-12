@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<body language="English">
-	<row id="msg_0090_D26R0101_00000" index="0">
-		<attribute name="window_context_name">used</attribute>
-		<language name="English">Kurt: Hey there, {STRVAR_1 3, 0, 0}!\rThe guard up top took off when\nI shouted at him.\rBut then I took a tumble down the well.\rI slammed down hard on my back,\nso I can’t move.\rRats! If I were fit, my Pokémon\nwould’ve punished them...\rAh, it can’t be helped.\r{STRVAR_1 3, 0, 0}, show them how gutsy\nyou are in my place!</language>
-	</row>
-</body>

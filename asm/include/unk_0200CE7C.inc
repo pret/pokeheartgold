@@ -1,9 +1,0 @@
-#include <nitro/fs/overlay.h>
-#pragma once
-.public ConvertUIntToDecimalString
-.public sub_0200CDAC
-.public PrintUIntOnWindow
-.public sub_0200CE7C
-.public sub_0200CEB0
-.public MIi_CpuCopy32
-.public MI_CpuFill8

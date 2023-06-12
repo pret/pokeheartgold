@@ -1,6 +1,0 @@
-index:skip:constants/follow_poke_idx.h
-unk0:u8
-too_tall:u8:bool
-unk2_0:u8.4:bool
-hover:u8.4:bool
-unk3:u8

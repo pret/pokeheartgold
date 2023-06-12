@@ -1,9 +1,0 @@
-#include <nitro/fs/overlay.h>
-#pragma once
-.public AllocFromHeap
-.public FreeToHeap
-.public sub_02092BB8
-.public sub_02092BD0
-.public sub_02092BD8
-.public sub_02092BE0
-.public sub_02092BE4
