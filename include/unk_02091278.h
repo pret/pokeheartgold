@@ -1,6 +1,0 @@
-#ifndef POKEHEARTGOLD_UNK_02091278_H
-#define POKEHEARTGOLD_UNK_02091278_H
-
-int LanguageToDexFlag(u32 language);
-
-#endif //POKEHEARTGOLD_UNK_02091278_H

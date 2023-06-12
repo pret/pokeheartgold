@@ -1,8 +1,0 @@
-#ifndef POKEHEARTGOLD_POKEGEAR_CARD_H
-#define POKEHEARTGOLD_POKEGEAR_CARD_H
-
-#define GEARCARD_PHONE              0
-#define GEARCARD_MAP                1
-#define GEARCARD_RADIO              2
-
-#endif //POKEHEARTGOLD_POKEGEAR_CARD_H
