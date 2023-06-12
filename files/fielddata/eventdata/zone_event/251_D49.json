@@ -78,7 +78,7 @@
     },
     {
       "id": "obj_D49_tsure_poke_static_poliwrath",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_POLIWRATH",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_POLIWRATH",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_225",
@@ -129,7 +129,7 @@
     },
     {
       "id": "obj_D49_tsure_poke_static_meowth",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_MEOWTH",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_MEOWTH",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -163,7 +163,7 @@
     },
     {
       "id": "obj_D49_tsure_poke_static_psyduck",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_PSYDUCK",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_PSYDUCK",
       "mvt": 20,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -180,7 +180,7 @@
     },
     {
       "id": "obj_D49_tsure_poke_static_slowpoke",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_SLOWPOKE",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_SLOWPOKE",
       "mvt": 20,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -197,7 +197,7 @@
     },
     {
       "id": "obj_D49_tsure_poke_static_oddish",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_ODDISH",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_ODDISH",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -231,7 +231,7 @@
     },
     {
       "id": "obj_D49_tsure_poke_static_pidgey",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_PIDGEY",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_PIDGEY",
       "mvt": 20,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -265,7 +265,7 @@
     },
     {
       "id": "obj_D49_tsure_poke_static_slowbro",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_SLOWBRO",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_SLOWBRO",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -299,7 +299,7 @@
     },
     {
       "id": "obj_D49_tsure_poke_static_machop",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_MACHOP",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_MACHOP",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -316,7 +316,7 @@
     },
     {
       "id": "obj_D49_tsure_poke_static_farfetchd",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_FARFETCHD",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_FARFETCHD",
       "mvt": 20,
       "type": 0,
       "flag": "FLAG_NOTHING",

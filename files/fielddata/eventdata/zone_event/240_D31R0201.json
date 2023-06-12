@@ -165,7 +165,7 @@
     },
     {
       "id": "obj_D31R0201_tsure_poke_static_pikachu",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_PIKACHU",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_PIKACHU",
       "mvt": 13,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -182,7 +182,7 @@
     },
     {
       "id": "obj_D31R0201_tsure_poke_static_pikachu_2",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_PIKACHU",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_PIKACHU",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",

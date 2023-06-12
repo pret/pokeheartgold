@@ -145,7 +145,7 @@
     },
     {
       "id": "obj_T06_tsure_poke_static_machop",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_MACHOP",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_MACHOP",
       "mvt": 38,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -332,7 +332,7 @@
     },
     {
       "id": "obj_T06_tsure_poke_static_suicune",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_SUICUNE",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_SUICUNE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_VERMILION_SUICUNE",

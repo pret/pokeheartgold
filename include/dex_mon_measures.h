@@ -3,14 +3,14 @@
 
 #include "heap.h"
 
-struct PokedexData {
+typedef struct PokedexData {
     u32 *height;
     u32 *weight;
     u32 *unk_08;
     u32 *unk_0C;
     u32 *unk_10;
     u32 *unk_14;
-}; // size=0x18
+} PokedexData; // size=0x18
 
 struct PokedexData *PokedexData_Create(HeapID heapId);
 void PokedexData_Delete(struct PokedexData *zkn);

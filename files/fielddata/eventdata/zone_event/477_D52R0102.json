@@ -3,7 +3,7 @@
   "objects": [
     {
       "id": "obj_D52R0102_tsure_poke_static_kyogre",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_KYOGRE",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_KYOGRE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_EMBEDDED_TOWER_KYOGRE",

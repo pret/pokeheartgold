@@ -27,7 +27,10 @@ BOOL ov12_02250BBC(BattleSystem *bsys, BATTLECONTEXT *ctx);
 void CopyBattleMonToPartyMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 void LockBattlerIntoCurrentMove(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 void UnlockBattlerOutOfCurrentMove(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
-int ov12_02250CFC(BATTLECONTEXT *ctx, int battlerId);
+int GetBattlerStatusCondition(BATTLECONTEXT *ctx, int battlerId);
+BOOL ov12_02250D4C(BattleSystem *bsys, BATTLECONTEXT *ctx);
+void BattleContext_Init(BATTLECONTEXT *ctx);
+void ov12_02251038(BattleSystem *bsys, BATTLECONTEXT *ctx);
 
 //The following functions haven't been decompiled as of now
 void ov12_02256F78(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 monIndex);

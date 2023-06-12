@@ -86,7 +86,7 @@
     },
     {
       "id": "obj_D35R0103_tsure_poke_static_dragonite",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_DRAGONITE",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_DRAGONITE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_UNK_1E5",
@@ -222,7 +222,7 @@
     },
     {
       "id": "obj_D35R0103_tsure_poke_static_electrode",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_ELECTRODE",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_ELECTRODE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ROCKET_HIDEOUT_B3F_ELECTRODE_1_AND_4",
@@ -239,7 +239,7 @@
     },
     {
       "id": "obj_D35R0103_tsure_poke_static_electrode_2",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_ELECTRODE",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_ELECTRODE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ROCKET_HIDEOUT_B3F_ELECTRODE_2_AND_5",
@@ -256,7 +256,7 @@
     },
     {
       "id": "obj_D35R0103_tsure_poke_static_electrode_3",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_ELECTRODE",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_ELECTRODE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ROCKET_HIDEOUT_B3F_ELECTRODE_3_AND_6",
@@ -273,7 +273,7 @@
     },
     {
       "id": "obj_D35R0103_tsure_poke_static_electrode_4",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_ELECTRODE",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_ELECTRODE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ROCKET_HIDEOUT_B3F_ELECTRODE_1_AND_4",
@@ -290,7 +290,7 @@
     },
     {
       "id": "obj_D35R0103_tsure_poke_static_electrode_5",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_ELECTRODE",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_ELECTRODE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ROCKET_HIDEOUT_B3F_ELECTRODE_2_AND_5",
@@ -307,7 +307,7 @@
     },
     {
       "id": "obj_D35R0103_tsure_poke_static_electrode_6",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_ELECTRODE",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_ELECTRODE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ROCKET_HIDEOUT_B3F_ELECTRODE_3_AND_6",
@@ -341,7 +341,7 @@
     },
     {
       "id": "obj_D35R0103_tsure_poke_static_murkrow",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_MURKROW",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_MURKROW",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_1",
@@ -358,7 +358,7 @@
     },
     {
       "id": "obj_D35R0103_tsure_poke_static_murkrow_2",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_MURKROW",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_MURKROW",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_2",
@@ -375,7 +375,7 @@
     },
     {
       "id": "obj_D35R0103_tsure_poke_static_murkrow_3",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_MURKROW",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_MURKROW",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_3",

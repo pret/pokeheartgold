@@ -3,7 +3,7 @@
   "objects": [
     {
       "id": "obj_D52R0101_tsure_poke_static_groudon",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_GROUDON",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_GROUDON",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_EMBEDDED_TOWER_GROUDON",

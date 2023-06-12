@@ -37,7 +37,7 @@
     },
     {
       "id": "obj_T22R0401_tsure_poke_static_pidgey",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_PIDGEY",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_PIDGEY",
       "mvt": 5,
       "type": 0,
       "flag": "FLAG_NOTHING",

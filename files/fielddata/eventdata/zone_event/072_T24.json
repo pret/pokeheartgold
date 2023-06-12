@@ -154,7 +154,7 @@
     },
     {
       "id": "obj_T24_tsure_poke_static_suicune",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_SUICUNE",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_SUICUNE",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_HIDE_CIANWOOD_SUICUNE",

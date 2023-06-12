@@ -85,3 +85,19 @@ jobs:
           name: pokeheartgold-failure-${{ github.run_id }}
           path: failure.tar.gz
           retention-days: 1
+      
+      - name: Move xMAP
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          cp *.xMAP xmap/
+          echo "XMAP_COMMIT_MSG=$( git log --format=%s ${GITHUB_SHA} )" >> $GITHUB_ENV
+
+      - name: Update xMAP
+        if: ${{ github.event_name == 'push' }}
+        uses: EndBug/add-and-commit@v7
+        with:
+          branch: xmap
+          cwd: "./xmap"
+          add: "*.XMAP"
+          message: ${{ env.XMAP_COMMIT_MSG }}
+          

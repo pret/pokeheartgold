@@ -4,6 +4,7 @@
 #include "battle_system.h"
 #include "dex_mon_measures.h"
 #include "filesystem.h"
+#include "party.h"
 #include "pokemon.h"
 #include "unk_02037C94.h"
 #include "overlay_12_0224E4FC.h"
@@ -66,7 +67,7 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
     ctx->battleMons[battlerId].gender = GetMonGender(mon);
     ctx->battleMons[battlerId].shiny = MonIsShiny(mon);
     
-    if (BattleSys_GetBattleType(bsys) & 0x220) { //No abilities battle
+    if (BattleSys_GetBattleType(bsys) & (BATTLE_TYPE_5|BATTLE_TYPE_9)) { //No abilities battle
         ctx->battleMons[battlerId].ability = 0;
         ctx->battleMons[battlerId].status = 0;
         ctx->battleMons[battlerId].item = 0;
@@ -76,7 +77,7 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
         ctx->battleMons[battlerId].item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
     }
     
-    if ((BattleSys_GetBattleType(bsys) & 0x220) && !BattleSys_GetFieldSide(bsys, battlerId)) {
+    if ((BattleSys_GetBattleType(bsys) & (BATTLE_TYPE_5|BATTLE_TYPE_9)) && !BattleSys_GetFieldSide(bsys, battlerId)) {
         ctx->battleMons[battlerId].forme = 0;
     } else {
         ctx->battleMons[battlerId].forme = GetMonData(mon, MON_DATA_FORME, NULL);
@@ -415,7 +416,7 @@ int GetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
     case BMON_DATA_BINDED_BATTLER:
         return mon->unk88.battlerIdBinding;
     case BMON_DATA_MEAN_LOOK_BATTLER:
-        return mon->unk88.unk4_8;
+        return mon->unk88.battlerIdMeanLook;
     case BMON_DATA_LAST_RESORT_COUNT:
         return mon->unk88.lastResortCount;
     case BMON_DATA_MAGNET_RISE:
@@ -686,7 +687,7 @@ void SetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
         mon->unk88.battlerIdBinding = *data8;
         break;
     case BMON_DATA_MEAN_LOOK_BATTLER:
-        mon->unk88.unk4_8 = *data8;
+        mon->unk88.battlerIdMeanLook = *data8;
         break;
     case BMON_DATA_LAST_RESORT_COUNT:
         mon->unk88.lastResortCount = *data8;
@@ -1397,7 +1398,7 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
     } else if (unkA == (1 << 9) && (a4 == 1)) {
         int battleType = BattleSys_GetBattleType(bsys);
         
-        if ((battleType & 2) && (BattleSys_Random(bsys) % 2) == 0) {
+        if ((battleType & BATTLE_TYPE_DOUBLES) && (BattleSys_Random(bsys) % 2) == 0) {
             battlerIdTarget = BattleSys_GetBattlerIdPartner(bsys, battlerIdAttacker);
             if (!ctx->battleMons[battlerIdTarget].hp) {
                 battlerIdTarget = battlerIdAttacker;
@@ -1414,7 +1415,7 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
     } else if (unkA == (1 << 8)) {
         int battleType = BattleSys_GetBattleType(bsys);
         
-        if (battleType & 2) {
+        if (battleType & BATTLE_TYPE_DOUBLES) {
             battlerIdTarget = BattleSys_GetBattlerIdPartner(bsys, battlerIdAttacker);
         } else {
             battlerIdTarget = battlerIdAttacker;
@@ -1422,7 +1423,7 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
     } else if (unkA == (1 << 9)) {
         int battleType = BattleSys_GetBattleType(bsys);
         
-        if (battleType & 2) {
+        if (battleType & BATTLE_TYPE_DOUBLES) {
             battlerIdTarget = ctx->unk_21A8[battlerIdAttacker][1];
             if (!ctx->battleMons[battlerIdTarget].hp) {
                 battlerIdTarget = battlerIdAttacker;
@@ -1437,7 +1438,7 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
         battlerIdOpponents[0] = ov12_0223ABB8(bsys, battlerIdAttacker, 0);
         battlerIdOpponents[1] = ov12_0223ABB8(bsys, battlerIdAttacker, 2);
         
-        if (battleType & 2) {
+        if (battleType & BATTLE_TYPE_DOUBLES) {
             if (ctx->fieldSideConditionData[side].followMeFlag && ctx->battleMons[ctx->fieldSideConditionData[side].battlerIdFollowMe].hp) {
                 battlerIdTarget = ctx->fieldSideConditionData[side].battlerIdFollowMe;
             } else if (ctx->battleMons[battlerIdOpponents[0]].hp && ctx->battleMons[battlerIdOpponents[1]].hp) {
@@ -1575,7 +1576,7 @@ void UnlockBattlerOutOfCurrentMove(BattleSystem *bsys, BATTLECONTEXT *ctx, int b
     ctx->battleMons[battlerId].unk88.furyCutterCount = 0;
 }
 
-int ov12_02250CFC(BATTLECONTEXT *ctx, int battlerId) {
+int GetBattlerStatusCondition(BATTLECONTEXT *ctx, int battlerId) {
     if (ctx->battleMons[battlerId].status & STATUS_SLEEP) {
         return CONDITION_SLEEP;
     } else if (ctx->battleMons[battlerId].status & STATUS_POISON) {
@@ -1591,4 +1592,181 @@ int ov12_02250CFC(BATTLECONTEXT *ctx, int battlerId) {
     }
     
     return CONDITION_NONE;
+}
+
+BOOL ov12_02250D4C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int state = BattleSys_GetBattleType(bsys);  //note: this should be battleType for the following three if statements, but it won't match if an additional variable is used
+    int trainerIndex;
+    
+    if (state & 0x84) {
+        return FALSE;
+    }
+    
+    if (!(state & BATTLE_TYPE_TRAINER)) {
+        return FALSE;
+    }
+    
+    if (state & BATTLE_TYPE_DOUBLES) {
+        return FALSE;
+    }
+    
+    trainerIndex = BattleSys_GetTrainerIndex(bsys, 1);
+    state = 0;
+    
+    do {
+        switch (state) {
+        case 0:
+            if (ctx->battleMons[1].unk78 == 1 && !(ctx->linkStatus2 & 0x20) && TrainerMessageWithIdPairExists(trainerIndex, 13, HEAP_ID_BATTLE)) {
+                ctx->linkStatus2 |= 0x20;
+                ctx->msgWork = 13;
+                return TRUE;
+            }
+            state++;
+            break;
+        case 1:
+            if (!(ctx->battleMons[1].msgFlag & 2) && ctx->battleMons[1].hp <= ctx->battleMons[1].maxHp / 2 && TrainerMessageWithIdPairExists(trainerIndex, 14, HEAP_ID_BATTLE)) {
+                ctx->battleMons[1].msgFlag |= 2;
+                ctx->msgWork = 14;
+                return TRUE;
+            }
+            state++;
+            break;
+        case 2:
+            if (!(ctx->battleMons[1].msgFlag & 3)) {
+                int i;
+                int aliveMons;
+                PARTY *party;
+                Pokemon *mon;
+                
+                party = BattleSys_GetParty(bsys, 1);
+                aliveMons = 0;
+                
+                for (i = 0; i < GetPartyCount(party); i++) {
+                    mon = GetPartyMonByIndex(party, i);
+                    if (GetMonData(mon, MON_DATA_HP, NULL)) {
+                        aliveMons++;
+                    }
+                }
+                if (aliveMons == 1 && TrainerMessageWithIdPairExists(trainerIndex, 15, HEAP_ID_BATTLE)) {
+                    ctx->battleMons[1].msgFlag |= 3;
+                    ctx->msgWork = 15;
+                    return TRUE;
+                }
+            }
+            state++;
+            break;
+        case 3:
+            if (!(ctx->battleMons[1].msgFlag & 4)) {
+                int i;
+                int aliveMons;
+                PARTY *party;
+                Pokemon *mon;
+                
+                party = BattleSys_GetParty(bsys, 1);
+                aliveMons = 0;
+                
+                for (i = 0; i < GetPartyCount(party); i++) {
+                    mon = GetPartyMonByIndex(party, i);
+                    if (GetMonData(mon, MON_DATA_HP, NULL)) {
+                        aliveMons++;
+                    }
+                }
+                if (aliveMons == 1 && (ctx->battleMons[1].hp <= ctx->battleMons[1].maxHp / 2) && TrainerMessageWithIdPairExists(trainerIndex, 16, HEAP_ID_BATTLE)) {
+                    ctx->battleMons[1].msgFlag |= 4;
+                    ctx->msgWork = 16;
+                    return TRUE;
+                }
+            }
+            state++;
+            break;
+        case 4:
+            break;
+        }
+    } while (state != 4);
+    
+    return FALSE;
+}
+
+//This is technically a correct function name but it doesn't account for the other battle context initilzation functions 
+//which init different parts of the struct, so this can be more descriptive once the variables are ID'd
+void BattleContext_Init(BATTLECONTEXT *ctx) {
+    int battlerId;
+    
+    //related to damage calculation
+    ctx->damage = 0;
+    ctx->criticalMultiplier = 1;
+    ctx->criticalCnt = 0;
+    ctx->movePower = 0;
+    ctx->unk_2158 = 10;
+    ctx->moveType = 0;
+    ctx->unk_2164 = 0;
+    ctx->moveStatusFlag = 0;
+    
+    ctx->battlerIdFainted = 0xFF;
+    
+    //related to statusing a mon..?
+    ctx->unk_2170 = 0;
+    ctx->unk_2174 = 0;
+    ctx->unk_2178 = 0;
+    
+    //related to stat (maybe status?) changes
+    ctx->unk_88 = 0;
+    ctx->statChangeParam = 0;
+    ctx->battlerIdStatChange = 0xFF;
+    
+    //related to multi hit moves
+    ctx->multiHitCount = 0;
+    ctx->multiHitCountTemp = 0;
+    ctx->unk_217E = 0;
+    ctx->unk_2180 = 0;
+    ctx->unk_38 = 0;
+    ctx->unk_2184 = 0;
+    ctx->checkMultiHit = 0;
+    
+    //unidentified states for different state machines
+    ctx->unk_10 = 0;
+    ctx->unk_18 = 0;
+    ctx->unk_20 = 0;
+    ctx->unk_28 = 0;
+    ctx->unk_30 = 0;
+    ctx->unk_3C = 0;
+    ctx->unk_40 = 0;
+    ctx->unk_48 = 0;
+    ctx->unk_4C = 0;
+    ctx->unk_50 = 0;
+    ctx->unk_54 = 0;
+    
+    ctx->linkStatus &= 0xFF800000;
+    ctx->linkStatus2 &= 0xFFFFFEA1;
+    
+    ctx->magnitude = 0;
+    
+    for (battlerId = 0; battlerId < 4; battlerId++) {
+        MIi_CpuClearFast(0, (u32 *) &ctx->selfTurnData[battlerId], sizeof(SelfTurnData));
+        ctx->unk_21A4[battlerId] = 6;
+    }
+}
+
+void ov12_02251038(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int battleType;
+    
+    for (int battlerId = 0; battlerId < 4; battlerId++) {
+        ctx->moveNoHitBattler[battlerId] = 0xFF;
+        ctx->unk_21A0[battlerId] = 6;
+        ctx->unk_310C[battlerId] = BattleSys_Random(bsys);
+    }
+    
+    ctx->prizeMoneyValue = 1;
+    
+    ctx->meFirstTotal = 1;
+    
+    battleType = BattleSys_GetBattleType(bsys);
+    
+    if (!(battleType & BATTLE_TYPE_DOUBLES)) {
+        ctx->unk_3108 |= MaskOfFlagNo(2);
+        ctx->unk_3108 |= MaskOfFlagNo(3);
+    }
+    
+    ctx->unk_311C = 6;
+    ctx->unk_311D = 6;   
 }

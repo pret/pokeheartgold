@@ -21,7 +21,7 @@
   "objects": [
     {
       "id": "obj_D18R0102_tsure_poke_static_suicune",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_SUICUNE",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_SUICUNE",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_HIDE_BURNED_TOWER_B1F_SUICUNE",
@@ -38,7 +38,7 @@
     },
     {
       "id": "obj_D18R0102_tsure_poke_static_entei",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_ENTEI",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_ENTEI",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_HIDE_BURNED_TOWER_B1F_ENTEI",
@@ -55,7 +55,7 @@
     },
     {
       "id": "obj_D18R0102_tsure_poke_static_raikou",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_RAIKOU",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_RAIKOU",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_HIDE_BURNED_TOWER_B1F_RAIKOU",
@@ -225,7 +225,7 @@
     },
     {
       "id": "obj_D18R0102_tsure_poke_static_suicune_2",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_SUICUNE",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_SUICUNE",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_HIDE_BURNED_TOWER_STATIC_SUICUNE",

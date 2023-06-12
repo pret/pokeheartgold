@@ -149,7 +149,7 @@
     },
     {
       "id": "obj_D35R0101_tsure_poke_static_dragonite",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_DRAGONITE",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_DRAGONITE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_MAHOGANY_SHOP_LANCE",

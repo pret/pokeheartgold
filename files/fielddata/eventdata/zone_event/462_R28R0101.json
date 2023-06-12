@@ -20,7 +20,7 @@
     },
     {
       "id": "obj_R28R0101_tsure_poke_static_fearow",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_FEAROW",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_FEAROW",
       "mvt": 9,
       "type": 0,
       "flag": "FLAG_NOTHING",

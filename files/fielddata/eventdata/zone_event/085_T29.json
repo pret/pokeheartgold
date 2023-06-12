@@ -215,7 +215,7 @@
     },
     {
       "id": "obj_T29_tsure_poke_static_dragonite",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_DRAGONITE",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_DRAGONITE",
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_HIDE_LAKE_OF_RAGE_LANCE",

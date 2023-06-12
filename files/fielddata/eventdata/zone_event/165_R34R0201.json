@@ -37,7 +37,7 @@
     },
     {
       "id": "obj_R34R0201_tsure_poke_static_butterfree",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_BUTTERFREE",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_BUTTERFREE",
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",

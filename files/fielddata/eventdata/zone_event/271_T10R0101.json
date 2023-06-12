@@ -72,7 +72,7 @@
     },
     {
       "id": "obj_T10R0101_tsure_poke_static_abra",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_ABRA",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_ABRA",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",

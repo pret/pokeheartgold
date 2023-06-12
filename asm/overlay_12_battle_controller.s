@@ -1301,7 +1301,7 @@ BattleController_EmitHealthbarSlideIn: ; 0x02262A2C
 	ldrb r0, [r7, r4]
 	strb r0, [r3, #6]
 	add r0, r5, #0
-	bl ov12_02250CFC
+	bl GetBattlerStatusCondition
 	add r1, sp, #0x14
 	ldrb r2, [r1, #7]
 	mov r3, #0x1f
@@ -3398,7 +3398,7 @@ ov12_02263A1C: ; 0x02263A1C
 	ldrb r0, [r7, r4]
 	strb r0, [r3, #6]
 	add r0, r5, #0
-	bl ov12_02250CFC
+	bl GetBattlerStatusCondition
 	add r1, sp, #0x10
 	ldrb r2, [r1, #7]
 	mov r3, #0x1f

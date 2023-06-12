@@ -3,7 +3,7 @@
   "objects": [
     {
       "id": "obj_D52R0103_tsure_poke_static_rayquaza",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_RAYQUAZA",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_RAYQUAZA",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_EMBEDDED_TOWER_RAYQUAZA",

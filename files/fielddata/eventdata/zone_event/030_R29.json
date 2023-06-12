@@ -148,7 +148,7 @@
     },
     {
       "id": "obj_R29_tsure_poke_static_marill",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_MARILL",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_MARILL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ROUTE_29_MARILL",

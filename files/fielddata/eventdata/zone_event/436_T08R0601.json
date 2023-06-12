@@ -20,7 +20,7 @@
     },
     {
       "id": "obj_T08R0601_tsure_poke_static_aipom",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_AIPOM",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_AIPOM",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -37,7 +37,7 @@
     },
     {
       "id": "obj_T08R0601_tsure_poke_static_aipom_2",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_AIPOM",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_AIPOM",
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -54,7 +54,7 @@
     },
     {
       "id": "obj_T08R0601_tsure_poke_static_aipom_3",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_AIPOM",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_AIPOM",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",

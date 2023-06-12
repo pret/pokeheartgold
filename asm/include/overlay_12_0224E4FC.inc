@@ -85,7 +85,7 @@
 .public CopyBattleMonToPartyMon
 .public LockBattlerIntoCurrentMove
 .public UnlockBattlerOutOfCurrentMove
-.public ov12_02250CFC
+.public GetBattlerStatusCondition
 .public ov12_02250D4C
 .public BattleContext_Init
 .public ov12_02251038

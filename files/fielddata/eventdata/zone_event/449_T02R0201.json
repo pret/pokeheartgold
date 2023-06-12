@@ -37,7 +37,7 @@
     },
     {
       "id": "obj_T02R0201_tsure_poke_static_rattata",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_RATTATA",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_RATTATA",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -54,7 +54,7 @@
     },
     {
       "id": "obj_T02R0201_tsure_poke_static_spearow",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_SPEAROW",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_SPEAROW",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",

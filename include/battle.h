@@ -141,7 +141,7 @@ typedef struct UnkBattlemonSub {
     u32 battlerIdLockOn:2;
     u32 mimicedMoveIndex:4;
     u32 battlerIdBinding:2;
-    u32 unk4_8:2;
+    u32 battlerIdMeanLook:2;
     u32 lastResortCount:3;
     u32 magnetRiseTurns:3;
     u32 healBlockTurns:3;

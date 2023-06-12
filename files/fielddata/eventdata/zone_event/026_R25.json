@@ -225,7 +225,7 @@
     },
     {
       "id": "obj_R25_tsure_poke_static_suicune",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_SUICUNE",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_SUICUNE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ROUTE_25_SUICUNE",

@@ -81,7 +81,7 @@
     },
     {
       "id": "obj_R48_tsure_poke_static_slowpoke",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_SLOWPOKE",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_SLOWPOKE",
       "mvt": 16,
       "type": 0,
       "flag": "FLAG_UNK_0AE",

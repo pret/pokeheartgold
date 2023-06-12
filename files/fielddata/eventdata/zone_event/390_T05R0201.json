@@ -37,7 +37,7 @@
     },
     {
       "id": "obj_T05R0201_tsure_poke_static_pidgey",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_PIDGEY",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_PIDGEY",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -54,7 +54,7 @@
     },
     {
       "id": "obj_T05R0201_tsure_poke_static_psyduck",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_PSYDUCK",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_PSYDUCK",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -71,7 +71,7 @@
     },
     {
       "id": "obj_T05R0201_tsure_poke_static_nidorino",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_NIDORINO",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_NIDORINO",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
