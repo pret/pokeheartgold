@@ -37,7 +37,7 @@
     },
     {
       "id": "obj_T04R0301_tsure_poke_static_zubat",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_ZUBAT",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_ZUBAT",
       "mvt": 3,
       "type": 0,
       "flag": "FLAG_NOTHING",
@@ -54,7 +54,7 @@
     },
     {
       "id": "obj_T04R0301_tsure_poke_static_kangaskhan",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_KANGASKHAN",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_KANGASKHAN",
       "mvt": 5,
       "type": 0,
       "flag": "FLAG_NOTHING",

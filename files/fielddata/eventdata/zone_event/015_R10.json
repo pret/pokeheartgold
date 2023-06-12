@@ -46,7 +46,7 @@
     },
     {
       "id": "obj_R10_tsure_poke_static_zapdos",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_ZAPDOS",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_ZAPDOS",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_HIDE_ROUTE_10_ZAPDOS",

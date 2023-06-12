@@ -98,7 +98,7 @@
     },
     {
       "id": "obj_T03PC0101_tsure_poke_static_jigglypuff",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_JIGGLYPUFF",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_JIGGLYPUFF",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",

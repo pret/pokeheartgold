@@ -93,7 +93,7 @@
   "objects": [
     {
       "id": "obj_D36R0101_tsure_poke_static_farfetchd",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_FARFETCHD",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_FARFETCHD",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_HIDE_FARFETCHD_1_LOST",
@@ -127,7 +127,7 @@
     },
     {
       "id": "obj_D36R0101_tsure_poke_static_farfetchd_2",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_FARFETCHD",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_FARFETCHD",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_HIDE_FARFETCHD_2_LOST",
@@ -263,7 +263,7 @@
     },
     {
       "id": "obj_D36R0101_tsure_poke_static_farfetchd_3",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_FARFETCHD",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_FARFETCHD",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_HIDE_FARFETCHD_1_FOUND",
@@ -280,7 +280,7 @@
     },
     {
       "id": "obj_D36R0101_tsure_poke_static_farfetchd_4",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_FARFETCHD",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_FARFETCHD",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_HIDE_FARFETCHD_2_FOUND",
@@ -331,7 +331,7 @@
     },
     {
       "id": "obj_D36R0101_tsure_poke_static_pichu_spiky",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_PICHU_SPIKY",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_PICHU_SPIKY",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ILEX_FOREST_SPIKY_EAR_PICHU",
@@ -382,7 +382,7 @@
     },
     {
       "id": "obj_D36R0101_tsure_poke_static_marill",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_MARILL",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_MARILL",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ILEX_FOREST_FRIEND",

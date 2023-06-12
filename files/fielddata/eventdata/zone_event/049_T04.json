@@ -87,7 +87,7 @@
     },
     {
       "id": "obj_T04_tsure_poke_static_slowbro",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_SLOWBRO",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_SLOWBRO",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",

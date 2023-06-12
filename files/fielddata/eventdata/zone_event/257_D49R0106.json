@@ -104,7 +104,7 @@
     },
     {
       "id": "obj_D49R0106_tsure_poke_static_dodrio",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_DODRIO",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_DODRIO",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",

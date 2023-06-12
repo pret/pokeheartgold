@@ -20,7 +20,7 @@
     },
     {
       "id": "obj_T03R0201_tsure_poke_static_nidoran_m",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_NIDORAN_M",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_NIDORAN_M",
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_NOTHING",

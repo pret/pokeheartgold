@@ -72,7 +72,7 @@
     },
     {
       "id": "obj_T27R0501_tsure_poke_static_psyduck",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_PSYDUCK",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_PSYDUCK",
       "mvt": 14,
       "type": 0,
       "flag": "FLAG_UNK_241",

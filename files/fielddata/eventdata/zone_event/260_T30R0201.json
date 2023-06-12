@@ -20,7 +20,7 @@
     },
     {
       "id": "obj_T30R0201_tsure_poke_static_dratini",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_DRATINI",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_DRATINI",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",

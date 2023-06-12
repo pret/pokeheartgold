@@ -37,7 +37,7 @@
     },
     {
       "id": "obj_D27R0107_tsure_poke_static_ampharos",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_AMPHAROS",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_AMPHAROS",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",

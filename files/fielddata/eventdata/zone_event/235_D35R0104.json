@@ -105,7 +105,7 @@
     },
     {
       "id": "obj_D35R0104_tsure_poke_static_dragonite",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_DRAGONITE",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_DRAGONITE",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ROCKET_HIDEOUT_B3F_LANCE",
@@ -156,7 +156,7 @@
     },
     {
       "id": "obj_D35R0104_tsure_poke_static_murkrow",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_MURKROW",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_MURKROW",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_1",
@@ -275,7 +275,7 @@
     },
     {
       "id": "obj_D35R0104_tsure_poke_static_murkrow_2",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_MURKROW",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_MURKROW",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_2",

@@ -97,7 +97,7 @@
     },
     {
       "id": "obj_T06R0301_tsure_poke_static_bayleef",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_BAYLEEF",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_BAYLEEF",
       "mvt": 42,
       "type": 0,
       "flag": "FLAG_NOTHING",

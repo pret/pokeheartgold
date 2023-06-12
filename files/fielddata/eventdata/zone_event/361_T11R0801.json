@@ -37,7 +37,7 @@
     },
     {
       "id": "obj_T11R0801_tsure_poke_static_blissey",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_BLISSEY",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_BLISSEY",
       "mvt": 2,
       "type": 0,
       "flag": "FLAG_NOTHING",

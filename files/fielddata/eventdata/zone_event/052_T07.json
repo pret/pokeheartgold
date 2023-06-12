@@ -78,7 +78,7 @@
     },
     {
       "id": "obj_T07_tsure_poke_static_poliwrath",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_POLIWRATH",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_POLIWRATH",
       "mvt": 0,
       "type": 0,
       "flag": "FLAG_NOTHING",

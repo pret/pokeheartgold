@@ -21,7 +21,7 @@
   "objects": [
     {
       "id": "obj_D41R0105_tsure_poke_static_moltres",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_MOLTRES",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_MOLTRES",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_HIDE_MT_SILVER_CAVE_MOLTRES",

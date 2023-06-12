@@ -37,7 +37,7 @@
     },
     {
       "id": "obj_T04R0201_tsure_poke_static_diglett",
-      "ovid": "SPRITE_TSURE_POKE_STATIC_DIGLETT",
+      "ovid": "SPRITE_FOLLOWER_MON_STATIC_DIGLETT",
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_NOTHING",
