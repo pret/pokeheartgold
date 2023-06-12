@@ -416,7 +416,7 @@ int GetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
     case BMON_DATA_BINDED_BATTLER:
         return mon->unk88.battlerIdBinding;
     case BMON_DATA_MEAN_LOOK_BATTLER:
-        return mon->unk88.unk4_8;
+        return mon->unk88.battlerIdMeanLook;
     case BMON_DATA_LAST_RESORT_COUNT:
         return mon->unk88.lastResortCount;
     case BMON_DATA_MAGNET_RISE:
@@ -687,7 +687,7 @@ void SetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
         mon->unk88.battlerIdBinding = *data8;
         break;
     case BMON_DATA_MEAN_LOOK_BATTLER:
-        mon->unk88.unk4_8 = *data8;
+        mon->unk88.battlerIdMeanLook = *data8;
         break;
     case BMON_DATA_LAST_RESORT_COUNT:
         mon->unk88.lastResortCount = *data8;
@@ -1685,4 +1685,88 @@ BOOL ov12_02250D4C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     } while (state != 4);
     
     return FALSE;
+}
+
+//This is technically a correct function name but it doesn't account for the other battle context initilzation functions 
+//which init different parts of the struct, so this can be more descriptive once the variables are ID'd
+void BattleContext_Init(BATTLECONTEXT *ctx) {
+    int battlerId;
+    
+    //related to damage calculation
+    ctx->damage = 0;
+    ctx->criticalMultiplier = 1;
+    ctx->criticalCnt = 0;
+    ctx->movePower = 0;
+    ctx->unk_2158 = 10;
+    ctx->moveType = 0;
+    ctx->unk_2164 = 0;
+    ctx->moveStatusFlag = 0;
+    
+    ctx->battlerIdFainted = 0xFF;
+    
+    //related to statusing a mon..?
+    ctx->unk_2170 = 0;
+    ctx->unk_2174 = 0;
+    ctx->unk_2178 = 0;
+    
+    //related to stat (maybe status?) changes
+    ctx->unk_88 = 0;
+    ctx->statChangeParam = 0;
+    ctx->battlerIdStatChange = 0xFF;
+    
+    //related to multi hit moves
+    ctx->multiHitCount = 0;
+    ctx->multiHitCountTemp = 0;
+    ctx->unk_217E = 0;
+    ctx->unk_2180 = 0;
+    ctx->unk_38 = 0;
+    ctx->unk_2184 = 0;
+    ctx->checkMultiHit = 0;
+    
+    //unidentified states for different state machines
+    ctx->unk_10 = 0;
+    ctx->unk_18 = 0;
+    ctx->unk_20 = 0;
+    ctx->unk_28 = 0;
+    ctx->unk_30 = 0;
+    ctx->unk_3C = 0;
+    ctx->unk_40 = 0;
+    ctx->unk_48 = 0;
+    ctx->unk_4C = 0;
+    ctx->unk_50 = 0;
+    ctx->unk_54 = 0;
+    
+    ctx->linkStatus &= 0xFF800000;
+    ctx->linkStatus2 &= 0xFFFFFEA1;
+    
+    ctx->magnitude = 0;
+    
+    for (battlerId = 0; battlerId < 4; battlerId++) {
+        MIi_CpuClearFast(0, (u32 *) &ctx->selfTurnData[battlerId], sizeof(SelfTurnData));
+        ctx->unk_21A4[battlerId] = 6;
+    }
+}
+
+void ov12_02251038(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int battleType;
+    
+    for (int battlerId = 0; battlerId < 4; battlerId++) {
+        ctx->moveNoHitBattler[battlerId] = 0xFF;
+        ctx->unk_21A0[battlerId] = 6;
+        ctx->unk_310C[battlerId] = BattleSys_Random(bsys);
+    }
+    
+    ctx->prizeMoneyValue = 1;
+    
+    ctx->meFirstTotal = 1;
+    
+    battleType = BattleSys_GetBattleType(bsys);
+    
+    if (!(battleType & BATTLE_TYPE_DOUBLES)) {
+        ctx->unk_3108 |= MaskOfFlagNo(2);
+        ctx->unk_3108 |= MaskOfFlagNo(3);
+    }
+    
+    ctx->unk_311C = 6;
+    ctx->unk_311D = 6;   
 }

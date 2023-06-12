@@ -62,8 +62,7 @@ enum Terrain {
 #define MOVE_EFFECT_0                       (1 << 0)
 #define MOVE_EFFECT_1                       (1 << 1)
 #define MOVE_EFFECT_LEECH_SEED              (1 << 2)
-#define MOVE_EFFECT_3                       (1 << 3)
-#define MOVE_EFFECT_4                       (1 << 4)
+#define MOVE_EFFECT_LOCK_ON                 (3 << 3)
 #define MOVE_EFFECT_PERISH_SONG             (1 << 5)
 #define MOVE_EFFECT_YAWN                    (1 << 12)
 #define MOVE_EFFECT_IMPRISON_USER           (1 << 13)
@@ -131,6 +130,7 @@ enum Terrain {
 #define STATUS2_FOCUS_ENERGY                (1 << 20)
 #define STATUS2_TRANSFORMED                 (1 << 21)
 #define STATUS2_24                          (1 << 24)
+#define STATUS2_MEAN_LOOK                   (1 << 26)
 #define STATUS2_27                          (1 << 27)
 #define STATUS2_DEFENCE_CURL                (1 << 30)
 
