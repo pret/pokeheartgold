@@ -2052,7 +2052,7 @@ BOOL ScrCmd_ChooseStarter(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_333(ScriptContext *ctx) { //todo: bag screen
+BOOL ScrCmd_333(ScriptContext *ctx) { //todo: bag select screen
     void **p_work;
     u8 r4 = ScriptReadByte(ctx) != 0 ? 1 : 0;
     p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
@@ -2062,7 +2062,7 @@ BOOL ScrCmd_333(ScriptContext *ctx) { //todo: bag screen
     return TRUE;
 }
 
-BOOL ScrCmd_334(ScriptContext *ctx) { //todo: bag select screen
+BOOL ScrCmd_334(ScriptContext *ctx) { //todo: bag select screen result
     u16 *r5 = ScriptGetVarPointer(ctx);
     void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     GF_ASSERT(*p_work != NULL);
