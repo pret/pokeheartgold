@@ -89,7 +89,9 @@ jobs:
       - name: Move xMAP
         if: ${{ github.event_name == 'push' }}
         run: |
-          cp *.xMAP xmap/
+          mkdir -p xmap
+          cp build/heartgold.us/*.xMAP xmap/heartgoldus.xMAP
+          cp build/soulsilver.us/*.xMAP xmap/soulsilverus.xMAP
           echo "XMAP_COMMIT_MSG=$( git log --format=%s ${GITHUB_SHA} )" >> $GITHUB_ENV
 
       - name: Update xMAP
@@ -98,6 +100,6 @@ jobs:
         with:
           branch: xmap
           cwd: "./xmap"
-          add: "*.XMAP"
+          add: "*.xMAP"
           message: ${{ env.XMAP_COMMIT_MSG }}
           
