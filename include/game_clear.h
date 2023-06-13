@@ -4,6 +4,6 @@
 #include "task.h"
 
 BOOL sub_0205298C(TaskManager *taskman);
-void Task_GameClear(TaskManager *taskman, u16 vsTrainerRed);
+void CallTask_GameClear(TaskManager *taskman, u16 vsTrainerRed);
 
 #endif //POKEHEARTGOLD_GAME_CLEAR_H

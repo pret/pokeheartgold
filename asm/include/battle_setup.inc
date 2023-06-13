@@ -48,10 +48,10 @@
 .public MapHeader_GetMapSec
 .public MapHeader_GetBattleBg
 .public MapHeader_GetMapEvolutionMethod
-.public FlyPoints_GetWeatherType
-.public SaveFlyPoints_GetPlayerSub
-.public FlyPoints_GetSafariBallsCounter
-.public Save_FlyPoints_Get
+.public LocalFieldData_GetWeatherType
+.public LocalFieldData_GetPlayer
+.public LocalFieldData_GetSafariBallsCounter
+.public Save_LocalFieldData_Get
 .public SaveArray_Flags_Get
 .public BattleSetup_New
 .public sub_02051A60

@@ -7,7 +7,7 @@
 #include "overlay_63.h"
 #include "player_data.h"
 #include "save_arrays.h"
-#include "save_flypoints.h"
+#include "save_local_field_data.h"
 #include "sound.h"
 #include "sys_flags.h"
 #include "task.h"
@@ -81,7 +81,7 @@ static const BGTEMPLATE sGameClearSaveBgTemplate = {
     .mosaic     = FALSE,
 };
 
-BOOL Task_GameClearSave(TaskManager *taskman);
+BOOL Task_GameClear(TaskManager *taskman);
 static void GameClearSave_InitGraphics(FieldSystem *fsys, GameClearWork *env);
 static void GameClearSave_PrintSaving(FieldSystem *fsys, GameClearWork *env);
 static BOOL GameClearSave_IsPrintFinished(GameClearWork *env);
@@ -149,7 +149,7 @@ static void AddHallOfFameEntry(FieldSystem *fsys, BOOL gameCleared) {
 
 // Launches the Hall of Fame Congratulations app if the player beat Lance. Saves
 // the game and launches the credits.
-static BOOL Task_GameClearSave(TaskManager *taskman) {
+static BOOL Task_GameClear(TaskManager *taskman) {
     FieldSystem *fsys = TaskManager_GetSys(taskman);
     GameClearWork *env = TaskManager_GetEnv(taskman);
     int *state = TaskManager_GetStatePtr(taskman);
@@ -256,7 +256,7 @@ static BOOL Task_GameClearSave(TaskManager *taskman) {
 
 // Marks the game as cleared and launches Hall of Fame Congratulations and
 // Credits.
-void Task_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
+void CallTask_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
     FieldSystem *fsys;
     GameClearWork *env;
     ScriptState *scriptState;
@@ -268,8 +268,8 @@ void Task_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
     env = AllocFromHeap(HEAP_ID_32, sizeof(GameClearWork));
     scriptState = SaveArray_Flags_Get(fsys->savedata);
     profile = Save_PlayerData_GetProfileAddr(fsys->savedata);
-    dynamicWarp = FlyPoints_GetDynamicWarp(Save_FlyPoints_Get(fsys->savedata));
-    spawnWarp = FlyPoints_GetSpecialSpawnWarpPtr(Save_FlyPoints_Get(fsys->savedata));
+    dynamicWarp = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fsys->savedata));
+    spawnWarp = LocalFieldData_GetSpecialSpawnWarpPtr(Save_LocalFieldData_Get(fsys->savedata));
 
     env->gameCleared = CheckGameClearFlag(scriptState);
     env->hofCongratsArgs.profile = Save_PlayerData_GetProfileAddr(fsys->savedata);
@@ -292,7 +292,7 @@ void Task_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
     if (!env->vsTrainerRed) {
         GameStats_Inc(Save_GameStats_Get(fsys->savedata), 74);
     }
-    TaskManager_Call(taskman, Task_GameClearSave, env);
+    TaskManager_Call(taskman, Task_GameClear, env);
 }
 
 static void GameClearSave_InitGraphics(FieldSystem *fsys, GameClearWork *env) {

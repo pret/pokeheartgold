@@ -123,9 +123,9 @@ u8 sub_0205C350(u32 unkA) {
     return ret;
 }
 
-PlayerAvatar* sub_0205C390(MapObjectMan *man, int x, int y, int direction, int state, int gender, int a6, struct FlypointsPlayerSub *a7) {
+PlayerAvatar* sub_0205C390(MapObjectMan *man, int x, int y, int direction, int state, int gender, int a6, struct PlayerSaveData *playerSaveData) {
     PlayerAvatar* avatar = sub_0205C4E0();
-    sub_0205C500(avatar, state, gender, a7);
+    sub_0205C500(avatar, state, gender, playerSaveData);
     int sprite;
     if (a6 == 2) {
         sprite = PlayerAvatar_GetSpriteByStateAndGender(state, gender);
@@ -154,10 +154,10 @@ PlayerAvatar* sub_0205C390(MapObjectMan *man, int x, int y, int direction, int s
     return avatar;
 }
 
-PlayerAvatar* sub_0205C408(MapObjectMan* man, PlayerAvatar_SUB* avatar_sub, int gender) {
+PlayerAvatar* sub_0205C408(MapObjectMan* man, PlayerSaveData* playerSaveData, int gender) {
     PlayerAvatar* avatar = sub_0205C4E0();
-    int state = sub_0205C7EC(avatar_sub);
-    sub_0205C500(avatar, state, gender, avatar_sub);
+    int state = sub_0205C7EC(playerSaveData);
+    sub_0205C500(avatar, state, gender, playerSaveData);
     LocalMapObject* mapObj = sub_0205C640(man);
     MapObject_SetGfxID(mapObj, PlayerAvatar_GetSpriteByStateAndGender(state, gender));
     MapObject_SetFlagsBits(mapObj, MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_UNK10);
@@ -200,8 +200,8 @@ PlayerAvatar* sub_0205C4E0() {
     return avatar;
 }
 
-void sub_0205C500(PlayerAvatar* avatar, int state, u32 gender, PlayerAvatar_SUB* avatar_sub) {
-    sub_0205C794(avatar, avatar_sub);
+void sub_0205C500(PlayerAvatar* avatar, int state, u32 gender, PlayerSaveData* playerSaveData) {
+    PlayerAvatar_SetPlayerSaveData(avatar, playerSaveData);
     sub_0205C6C8(avatar, 0);
     sub_0205C6D0(avatar, 0);
     PlayerAvatar_SetState(avatar, state);
@@ -415,12 +415,12 @@ u32 sub_0205C790(PlayerAvatar* avatar) {
     return avatar->unk34;
 }
 
-void sub_0205C794(PlayerAvatar* avatar, PlayerAvatar_SUB* unkA) {
-    avatar->unk38 = unkA;
+void PlayerAvatar_SetPlayerSaveData(PlayerAvatar* avatar, PlayerSaveData* playerSaveData) {
+    avatar->playerSaveData = playerSaveData;
 }
 
-PlayerAvatar_SUB* sub_0205C798(PlayerAvatar* avatar) {
-    return avatar->unk38;
+PlayerSaveData* PlayerAvatar_GetPlayerSaveData(PlayerAvatar* avatar) {
+    return avatar->playerSaveData;
 }
 
 void sub_0205C79C(PlayerAvatar* avatar, u32 unkA) {
@@ -443,46 +443,46 @@ void sub_0205C7B4(PlayerAvatar* avatar) {
     avatar->unkc = 0;
 }
 
-void FlypointsPlayerSub_Init(struct FlypointsPlayerSub* fpsub) {
-    fpsub->hasRunningShoes = 0;
-    fpsub->unk2 = 0;
-    fpsub->unk4 = 0;
+void PlayerSaveData_Init(struct PlayerSaveData* playerSaveData) {
+    playerSaveData->hasRunningShoes = 0;
+    playerSaveData->unk2 = 0;
+    playerSaveData->unk4 = 0;
 }
 
-BOOL FlypointsPlayerSub_CheckRunningShoes(struct FlypointsPlayerSub* fpsub) {
-    if (fpsub) {
-        if (fpsub->hasRunningShoes == TRUE) {
+BOOL PlayerSaveData_CheckRunningShoes(struct PlayerSaveData* playerSaveData) {
+    if (playerSaveData != NULL) {
+        if (playerSaveData->hasRunningShoes == TRUE) {
             return TRUE;
         }
     }
     return FALSE;
 }
 
-void FlypointsPlayerSub_SetRunningShoesFlag(struct FlypointsPlayerSub* fpsub, BOOL unkB) {
-    if (unkB == TRUE) {
-        fpsub->hasRunningShoes = TRUE;
+void PlayerSaveData_SetRunningShoesFlag(struct PlayerSaveData* playerSaveData, BOOL flag) {
+    if (flag == TRUE) {
+        playerSaveData->hasRunningShoes = TRUE;
     }
     else {
-        fpsub->hasRunningShoes = FALSE;
+        playerSaveData->hasRunningShoes = FALSE;
     }
 }
 
-int sub_0205C7EC(PlayerAvatar_SUB* avatar) {
-    if (!avatar) {
+int sub_0205C7EC(PlayerSaveData* playerSaveData) {
+    if (!playerSaveData) {
         return 0;
     }
-    return avatar->unk4;
+    return playerSaveData->unk4;
 }
 
-void sub_0205C7F8(PlayerAvatar_SUB* unkPtr, int state) {
-    if (!unkPtr) {
+void sub_0205C7F8(PlayerSaveData* playerSaveData, int state) {
+    if (!playerSaveData) {
         return;
     }
-    unkPtr->unk4 = state;
+    playerSaveData->unk4 = state;
 }
 
 void sub_0205C800(PlayerAvatar* avatar, int state) {
-    sub_0205C7F8(sub_0205C798(avatar), state);
+    sub_0205C7F8(PlayerAvatar_GetPlayerSaveData(avatar), state);
 }
 
 void sub_0205C810(PlayerAvatar* avatar, VecFx32 *pos, u32 dir) {
@@ -736,9 +736,9 @@ u32 sub_0205CB2C(PlayerAvatar* avatar) {
 }
 
 u16 sub_0205CB38(PlayerAvatar* avatar) {
-    return avatar->unk38->unk2;
+    return avatar->playerSaveData->unk2;
 }
 
 void sub_0205CB40(PlayerAvatar* avatar, u16 unkA) {
-    avatar->unk38->unk2 = unkA;
+    avatar->playerSaveData->unk2 = unkA;
 }

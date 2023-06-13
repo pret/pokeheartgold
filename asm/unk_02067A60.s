@@ -133,8 +133,8 @@ sub_02067AE4: ; 0x02067AE4
 	bl SysFlagDefogClear
 _02067B56:
 	ldr r0, [r5, #0xc]
-	bl Save_FlyPoints_Get
-	bl SaveFlyPoints_GetPlayerSub
+	bl Save_LocalFieldData_Get
+	bl LocalFieldData_GetPlayer
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	cmp r0, #1
@@ -427,7 +427,7 @@ _02067D8C:
 	ldr r0, [r4, #0x14]
 	bl ov02_02249548
 	ldr r0, [r5, #0xc]
-	bl Save_FlyPoints_Get
+	bl Save_LocalFieldData_Get
 	add r7, r0, #0
 	ldrh r0, [r4, #8]
 	bl sub_0203BB50
@@ -440,7 +440,7 @@ _02067DB4:
 	add r1, sp, #8
 	bl GetFlyWarpData
 	add r0, r7, #0
-	bl FlyPoints_GetSpecialSpawnWarpPtr
+	bl LocalFieldData_GetSpecialSpawnWarpPtr
 	add r1, r0, #0
 	add r0, r5, #0
 	bl GetSpecialSpawnWarpData

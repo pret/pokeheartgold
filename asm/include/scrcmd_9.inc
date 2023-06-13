@@ -53,8 +53,8 @@
 .public sub_02037030
 .public sub_0203769C
 .public sub_02037C0C
-.public FlyPoints_GetDynamicWarp
-.public Save_FlyPoints_Get
+.public LocalFieldData_GetDynamicWarp
+.public Save_LocalFieldData_Get
 .public FieldSys_GetSaveDataPtr
 .public SetupNativeScript
 .public ScriptReadHalfword

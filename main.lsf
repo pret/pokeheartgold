@@ -153,7 +153,7 @@ Static main
 	Object src/map_matrix.o
 	Object src/map_header.o
 	Object src/map_events.o
-	Object src/save_flypoints.o
+	Object src/save_local_field_data.o
 	Object asm/unk_0203BA5C.o
 	Object src/diamond_dust.o
 	Object asm/unk_0203BC10.o

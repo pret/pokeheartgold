@@ -2096,8 +2096,8 @@ ov01_021E794C: ; 0x021E794C
 	bl SaveArray_PlayerParty_Get
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl Save_FlyPoints_Get
-	bl FlyPoints_GetPoisonStepCounter
+	bl Save_LocalFieldData_Get
+	bl LocalFieldData_GetPoisonStepCounter
 	ldrh r1, [r0]
 	add r1, r1, #1
 	strh r1, [r0]
@@ -2165,8 +2165,8 @@ ov01_021E79CC: ; 0x021E79CC
 	pop {r4, pc}
 _021E79E2:
 	ldr r0, [r4, #0xc]
-	bl Save_FlyPoints_Get
-	bl FlyPoints_GetSafariBallsCounter
+	bl Save_LocalFieldData_Get
+	bl LocalFieldData_GetSafariBallsCounter
 	ldrh r0, [r0]
 	cmp r0, #0
 	bne _021E7A00
@@ -2432,8 +2432,8 @@ _021E7BBC:
 	bl GF_AssertFail
 _021E7BD2:
 	ldr r0, [r4, #0xc]
-	bl Save_FlyPoints_Get
-	bl FlyPoints_GetDynamicWarp
+	bl Save_LocalFieldData_Get
+	bl LocalFieldData_GetDynamicWarp
 	add r2, r0, #0
 	ldmia r2!, {r0, r1}
 	stmia r5!, {r0, r1}
@@ -2454,8 +2454,8 @@ _021E7BEC:
 	str r0, [r5, #0x10]
 _021E7BFE:
 	ldr r0, [r4, #0xc]
-	bl Save_FlyPoints_Get
-	bl sub_0203B95C
+	bl Save_LocalFieldData_Get
+	bl LocalFieldData_GetEntrancePosition
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
 	bl PlayerAvatar_GetFacingDirection
@@ -2481,8 +2481,8 @@ ov01_021E7C28: ; 0x021E7C28
 	add r7, r1, #0
 	str r2, [sp]
 	add r4, r3, #0
-	bl Save_FlyPoints_Get
-	bl FlyPoints_GetSpecialSpawnWarpPtr
+	bl Save_LocalFieldData_Get
+	bl LocalFieldData_GetSpecialSpawnWarpPtr
 	add r6, r0, #0
 	ldr r3, [r5, #0x20]
 	add r2, r6, #0
@@ -2645,8 +2645,8 @@ ov01_021E7D58: ; 0x021E7D58
 	ldr r0, _021E7DE4 ; =ov01_022063BC
 	ldrh r4, [r0, r1]
 	ldr r0, [r5, #0xc]
-	bl Save_FlyPoints_Get
-	bl FlyPoints_GetPosition
+	bl Save_LocalFieldData_Get
+	bl LocalFieldData_GetCurrentPosition
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0x8b

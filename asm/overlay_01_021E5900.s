@@ -239,8 +239,8 @@ _021E5AB6:
 	add r0, r4, #0
 	bl ov01_021E6580
 	ldr r0, [r4, #0xc]
-	bl Save_FlyPoints_Get
-	bl FlyPoints_GetWeatherType
+	bl Save_LocalFieldData_Get
+	bl LocalFieldData_GetWeatherType
 	add r1, r0, #0
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0xc]
@@ -705,7 +705,7 @@ ov01_021E5F04: ; 0x021E5F04
 	pop {r3, r4, r5, r6, r7, pc}
 _021E5F3E:
 	ldr r0, [r5, #0xc]
-	bl Save_FlyPoints_Get
+	bl Save_LocalFieldData_Get
 	add r7, r0, #0
 	ldr r0, [r5, #0x20]
 	add r1, r4, #0
@@ -737,7 +737,7 @@ _021E5F3E:
 	add r0, r5, #0
 	bl Field_InitMapObjectsFromZoneEventData
 	add r0, r7, #0
-	bl FlyPoints_GetWeatherType
+	bl LocalFieldData_GetWeatherType
 	add r1, r0, #0
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0xc]
@@ -1495,8 +1495,8 @@ ov01_021E6580: ; 0x021E6580
 	bl ov01_021EA824
 	str r0, [r4, #0x4c]
 	ldr r0, [r4, #0xc]
-	bl Save_FlyPoints_Get
-	bl FlyPoints_GetCameraType
+	bl Save_LocalFieldData_Get
+	bl LocalFieldData_GetCameraType
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
 	bl PlayerAvatar_GetPositionVecConst

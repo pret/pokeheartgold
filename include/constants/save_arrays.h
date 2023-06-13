@@ -8,7 +8,7 @@
 #define SAVE_PARTY                2
 #define SAVE_BAG                  3
 #define SAVE_FLAGS                4
-#define SAVE_FLYPOINTS            5
+#define SAVE_LOCAL_FIELD_DATA     5
 #define SAVE_POKEDEX              6
 #define SAVE_DAYCARE              7
 #define SAVE_PALPAD               8

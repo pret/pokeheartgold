@@ -128,8 +128,8 @@ _02067A16:
 	pop {r4, r5, r6, pc}
 	thumb_func_end Task_FieldTradeAnim
 
-	thumb_func_start Field_CreateTask_TradeAnim
-Field_CreateTask_TradeAnim: ; 0x02067A1C
+	thumb_func_start CallFieldTask_TradeAnim
+CallFieldTask_TradeAnim: ; 0x02067A1C
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	add r5, r1, #0
@@ -159,7 +159,7 @@ Field_CreateTask_TradeAnim: ; 0x02067A1C
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02067A5C: .word Task_FieldTradeAnim
-	thumb_func_end Field_CreateTask_TradeAnim
+	thumb_func_end CallFieldTask_TradeAnim
 
 	.rodata
 

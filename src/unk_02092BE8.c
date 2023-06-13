@@ -23,9 +23,9 @@ static void SysTask_RingGearPhone(SysTask *task, GearPhoneRingManager* ptr);
 static void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL a2) {
     Unk_PokegearSTRUCT_14 Unk_struct;
     ScriptState *state = SaveArray_Flags_Get(sys->savedata);
-    FLYPOINTS_SAVE *points = Save_FlyPoints_Get(sys->savedata);
-    Location *warpPtr = FlyPoints_GetSpecialSpawnWarpPtr(points);
-    Location *PosPtr = FlyPoints_GetPosition(points);
+    LocalFieldData *points = Save_LocalFieldData_Get(sys->savedata);
+    Location *warpPtr = LocalFieldData_GetSpecialSpawnWarpPtr(points);
+    Location *PosPtr = LocalFieldData_GetCurrentPosition(points);
     GearPhoneRingManager* phoneRingMgr = Fsys_GetGearPhoneRingManager(sys);
     ptr->saveData = sys->savedata;
     ptr->mapID = PosPtr->mapId;

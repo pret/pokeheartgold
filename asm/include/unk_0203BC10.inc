@@ -50,10 +50,10 @@
 .public MapHeader_MapIsOnMainMatrix
 .public MapHeader_MapIsAmitySquare
 .public MapHeader_GetMapEvolutionMethod
-.public FlyPoints_GetPosition
-.public FlyPoints_GetSpecialSpawnWarpPtr
-.public SaveFlyPoints_GetPlayerSub
-.public Save_FlyPoints_Get
+.public LocalFieldData_GetCurrentPosition
+.public LocalFieldData_GetSpecialSpawnWarpPtr
+.public LocalFieldData_GetPlayer
+.public Save_LocalFieldData_Get
 .public sub_0203BC10
 .public sub_0203BC28
 .public sub_0203BCDC
@@ -97,7 +97,7 @@
 .public PlayerAvatar_GetFacingDirection
 .public GetPlayerXCoord
 .public GetPlayerYCoord
-.public FlypointsPlayerSub_CheckRunningShoes
+.public PlayerSaveData_CheckRunningShoes
 .public sub_0205CF60
 .public sub_0205CFBC
 .public MapObjectMan_PauseAllMovement

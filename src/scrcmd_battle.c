@@ -197,7 +197,7 @@ BOOL ScrCmd_EncounterMusic(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_WhiteOut(ScriptContext *ctx) {
-    FieldTask_CallBlackOut(ctx->taskman);
+    CallFieldTask_BlackOut(ctx->taskman);
     return TRUE;
 }
 

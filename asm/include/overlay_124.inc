@@ -6,8 +6,8 @@
 .public PlayerProfile_TestBadgeFlag
 .public MapMatrix_New
 .public Field_AllocateMapEvents
-.public FlyPoints_GetPosition
-.public Save_FlyPoints_Get
+.public LocalFieldData_GetCurrentPosition
+.public Save_LocalFieldData_Get
 .public FsysUnkSub108_Alloc
 .public BagCursor_New
 .public sub_02092BB8

@@ -23,7 +23,7 @@
 #include "save_follow_poke.h"
 #include "save_trainer_card.h"
 #include "save_pokegear.h"
-#include "save_flypoints.h"
+#include "save_local_field_data.h"
 #include "save_trainer_house.h"
 #include "save_special_ribbons.h"
 
@@ -73,10 +73,10 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
         (SAVESIZEFN)SaveArray_Flags_sizeof,
         (SAVEINITFN)SaveArray_Flags_Init
     }, {
-        SAVE_FLYPOINTS,
+        SAVE_LOCAL_FIELD_DATA,
         0,
-        (SAVESIZEFN)Save_FlyPoints_sizeof,
-        (SAVEINITFN)Save_FlyPoints_Init
+        (SAVESIZEFN)Save_LocalFieldData_sizeof,
+        (SAVEINITFN)Save_LocalFieldData_Init
     }, {
         SAVE_POKEDEX,
         0,

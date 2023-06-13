@@ -100,12 +100,12 @@
 .public ov01_PlayerAvatar_OrrTransitionFlags
 .public ov01_PlayerAvatar_ApplyTransitionFlags
 .public ov01_021F1D94
-.public ScriptCallTask_Surf
+.public CallFieldTask_Surf
 .public Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors
-.public ScriptCallTask_RockClimb
+.public CallFieldTask_RockClimb
 .public MetatileBehavior_IsRockClimbInDirection
-.public ScriptCallTask_Waterfall
-.public ScriptCallTask_Whirlpool
+.public CallFieldTask_Waterfall
+.public CallFieldTask_Whirlpool
 .public ov01_021F2EDC
 .public ov01_021F2F24
 .public Field_PlayerMovementSavingSet
