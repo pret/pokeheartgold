@@ -1093,9 +1093,9 @@ _0203C43C:
 	pop {r3, pc}
 _0203C44A:
 	ldr r0, [r0, #0xc]
-	bl Save_FlyPoints_Get
-	bl SaveFlyPoints_GetPlayerSub
-	bl FlypointsPlayerSub_CheckRunningShoes
+	bl Save_LocalFieldData_Get
+	bl LocalFieldData_GetPlayer
+	bl LocalFieldPlayer_CheckRunningShoes
 	pop {r3, pc}
 _0203C45A:
 	mov r0, #1
@@ -1729,12 +1729,12 @@ sub_0203C920: ; 0x0203C920
 	bl TaskManager_GetEnv
 	str r0, [sp]
 	ldr r0, [r4, #0xc]
-	bl Save_FlyPoints_Get
+	bl Save_LocalFieldData_Get
 	add r5, r0, #0
-	bl FlyPoints_GetPosition
+	bl LocalFieldData_GetCurrentPosition
 	str r0, [sp, #4]
 	add r0, r5, #0
-	bl FlyPoints_GetSpecialSpawnWarpPtr
+	bl LocalFieldData_GetSpecialSpawnWarpPtr
 	str r0, [sp, #8]
 	mov r0, #0xb
 	mov r1, #0x1c

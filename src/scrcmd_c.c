@@ -34,7 +34,7 @@
 #include "unk_02055244.h"
 #include "field_system.h"
 #include "fashion_case.h"
-#include "save_flypoints.h"
+#include "save_local_field_data.h"
 #include "unk_0206B910.h"
 #include "pokegear.h"
 #include "unk_02068FC8.h"
@@ -1733,7 +1733,7 @@ BOOL ScrCmd_GetPhoneBookRematch(ScriptContext *ctx) {
 
 BOOL ScrCmd_684(ScriptContext *ctx) {
     u16 *p_dest = ScriptGetVarPointer(ctx);
-    *p_dest = FlyPoints_GetWeatherType(Save_FlyPoints_Get(ctx->fsys->savedata));
+    *p_dest = LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(ctx->fsys->savedata));
     return FALSE;
 }
 
@@ -2215,7 +2215,7 @@ BOOL ScrCmd_449(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_445(ScriptContext *ctx) {
-    Location *location = sub_0203B960(Save_FlyPoints_Get(ctx->fsys->savedata));
+    Location *location = LocalFieldData_GetPreviousPosition(Save_LocalFieldData_Get(ctx->fsys->savedata));
     u16 *ret_p = ScriptGetVarPointer(ctx);
     *ret_p = location->mapId;
     return FALSE;
@@ -2271,9 +2271,9 @@ BOOL ScrCmd_180(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_FlashEffect(ScriptContext *ctx) {
-    FLYPOINTS_SAVE *flypointsSave = Save_FlyPoints_Get(ctx->fsys->savedata);
-    FlyPoints_SetWeatherType(flypointsSave, 12);
-    FieldWeatherUpdate_UsedFlash(ctx->fsys->unk4->unk_0C, FlyPoints_GetWeatherType(flypointsSave));
+    LocalFieldData *localFieldData = Save_LocalFieldData_Get(ctx->fsys->savedata);
+    LocalFieldData_SetWeatherType(localFieldData, 12);
+    FieldWeatherUpdate_UsedFlash(ctx->fsys->unk4->unk_0C, LocalFieldData_GetWeatherType(localFieldData)); //CallFieldTask_Flash?
     return TRUE;
 }
 
@@ -2482,13 +2482,13 @@ BOOL ScrCmd_SetDynamicWarp(ScriptContext *ctx) {
     warp.x = ScriptGetVar(ctx);
     warp.y = ScriptGetVar(ctx);
     warp.direction = ScriptGetVar(ctx);
-    FlyPoints_SetDynamicWarp(Save_FlyPoints_Get(ctx->fsys->savedata), &warp);
+    LocalFieldData_SetDynamicWarp(Save_LocalFieldData_Get(ctx->fsys->savedata), &warp);
     return FALSE;
 }
 
 BOOL ScrCmd_GetDynamicWarpFloorNo(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    Location *warp = FlyPoints_GetDynamicWarp(Save_FlyPoints_Get(ctx->fsys->savedata));
+    Location *warp = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(ctx->fsys->savedata));
     *p_ret = MapNumToFloorNo(warp->mapId);
     return FALSE;
 }
@@ -2904,8 +2904,8 @@ BOOL ScrCmd_OverworldWhiteOut(ScriptContext *ctx) {
 
 BOOL ScrCmd_SetSpawn(ScriptContext *ctx) {
     u16 spawnPoint = ScriptGetVar(ctx);
-    FLYPOINTS_SAVE *flyPoints = Save_FlyPoints_Get(ctx->fsys->savedata);
-    FlyPoints_SetDeathSpawn(flyPoints, spawnPoint);
+    LocalFieldData *localFieldData = Save_LocalFieldData_Get(ctx->fsys->savedata);
+    LocalFieldData_SetDeathSpawn(localFieldData, spawnPoint);
     return FALSE;
 }
 
@@ -3379,13 +3379,13 @@ BOOL ScrCmd_705(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_SafariZoneAction(ScriptContext *ctx) {
-    FLYPOINTS_SAVE *flypointsSave = Save_FlyPoints_Get(ctx->fsys->savedata);
+    LocalFieldData *localFieldData = Save_LocalFieldData_Get(ctx->fsys->savedata);
     ScriptState *scriptState = SaveArray_Flags_Get(ctx->fsys->savedata);
     SAFARIZONE *safariZone = Save_SafariZone_Get(ctx->fsys->savedata);
     u8 action = ScriptReadByte(ctx);
     u8 areaSet = ScriptReadByte(ctx);
-    u16 *p_nSafariBall = FlyPoints_GetSafariBallsCounter(flypointsSave);
-    u16 *p_nSafariSteps = FlyPoints_GetSafariStepsCounter(flypointsSave);
+    u16 *p_nSafariBall = LocalFieldData_GetSafariBallsCounter(localFieldData);
+    u16 *p_nSafariSteps = LocalFieldData_GetSafariStepsCounter(localFieldData);
     int r1;
 
     switch (action) {
@@ -4086,7 +4086,7 @@ BOOL ScrCmd_582(ScriptContext *ctx) {
     u16 mapId = ScriptGetVar(ctx);
     u16 x = ScriptGetVar(ctx);
     u16 y = ScriptGetVar(ctx);
-    Location *specialSpawn = FlyPoints_GetSpecialSpawnWarpPtr(Save_FlyPoints_Get(ctx->fsys->savedata));
+    Location *specialSpawn = LocalFieldData_GetSpecialSpawnWarpPtr(Save_LocalFieldData_Get(ctx->fsys->savedata));
     specialSpawn->mapId = mapId;
     specialSpawn->x = x;
     specialSpawn->y = y;

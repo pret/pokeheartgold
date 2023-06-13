@@ -1403,8 +1403,8 @@ sub_0204A6A8: ; 0x0204A6A8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl Save_FlyPoints_Get
-	bl FlyPoints_GetDynamicWarp
+	bl Save_LocalFieldData_Get
+	bl LocalFieldData_GetDynamicWarp
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
 	bl GetPlayerYCoord

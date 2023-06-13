@@ -7,7 +7,7 @@
 #include "overlay_63.h"
 #include "player_data.h"
 #include "save_arrays.h"
-#include "save_flypoints.h"
+#include "save_local_field_data.h"
 #include "sound.h"
 #include "sys_flags.h"
 #include "task.h"
@@ -268,8 +268,8 @@ void CallTask_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
     env = AllocFromHeap(HEAP_ID_32, sizeof(GameClearWork));
     scriptState = SaveArray_Flags_Get(fsys->savedata);
     profile = Save_PlayerData_GetProfileAddr(fsys->savedata);
-    dynamicWarp = FlyPoints_GetDynamicWarp(Save_FlyPoints_Get(fsys->savedata));
-    spawnWarp = FlyPoints_GetSpecialSpawnWarpPtr(Save_FlyPoints_Get(fsys->savedata));
+    dynamicWarp = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fsys->savedata));
+    spawnWarp = LocalFieldData_GetSpecialSpawnWarpPtr(Save_LocalFieldData_Get(fsys->savedata));
 
     env->gameCleared = CheckGameClearFlag(scriptState);
     env->hofCongratsArgs.profile = Save_PlayerData_GetProfileAddr(fsys->savedata);

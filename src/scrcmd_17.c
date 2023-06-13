@@ -1,6 +1,6 @@
 #include "scrcmd.h"
 #include "pokedex.h"
-#include "save_flypoints.h"
+#include "save_local_field_data.h"
 #include "sys_flags.h"
 
 BOOL ScrCmd_CheckPokedex(ScriptContext *ctx) {
@@ -18,16 +18,16 @@ BOOL ScrCmd_GivePokedex(ScriptContext *ctx) {
 
 BOOL ScrCmd_CheckRunningShoes(ScriptContext *ctx) {
     u16 *retPtr = ScriptGetVarPointer(ctx);
-    FLYPOINTS_SAVE *flypointsSave = Save_FlyPoints_Get(ctx->fsys->savedata);
-    struct FlypointsPlayerSub *sub = SaveFlyPoints_GetPlayerSub(flypointsSave);
-    *retPtr = FlypointsPlayerSub_CheckRunningShoes(sub);
+    LocalFieldData *localFieldData = Save_LocalFieldData_Get(ctx->fsys->savedata);
+    struct LocalFieldPlayer *sub = LocalFieldData_GetPlayer(localFieldData);
+    *retPtr = LocalFieldPlayer_CheckRunningShoes(sub);
     return FALSE;
 }
 
 BOOL ScrCmd_GiveRunningShoes(ScriptContext *ctx) {
-    FLYPOINTS_SAVE *flypointsSave = Save_FlyPoints_Get(ctx->fsys->savedata);
-    struct FlypointsPlayerSub *sub = SaveFlyPoints_GetPlayerSub(flypointsSave);
-    FlypointsPlayerSub_SetRunningShoesFlag(sub, TRUE);
+    LocalFieldData *localFieldData = Save_LocalFieldData_Get(ctx->fsys->savedata);
+    struct LocalFieldPlayer *sub = LocalFieldData_GetPlayer(localFieldData);
+    LocalFieldPlayer_SetRunningShoesFlag(sub, TRUE);
     return FALSE;
 }
 

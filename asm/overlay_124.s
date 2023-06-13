@@ -45,8 +45,8 @@ _02260C66:
 	mul r0, r1
 	add r4, r4, r0
 	ldr r0, [r5, #0xc]
-	bl Save_FlyPoints_Get
-	bl FlyPoints_GetPosition
+	bl Save_LocalFieldData_Get
+	bl LocalFieldData_GetCurrentPosition
 	str r0, [r5, #0x20]
 	bl MapMatrix_New
 	str r0, [r5, #0x30]

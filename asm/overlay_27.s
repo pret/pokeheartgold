@@ -3770,9 +3770,9 @@ ov27_0225BDC8: ; 0x0225BDC8
 	push {r3, lr}
 	ldr r0, [r0, #0x10]
 	ldr r0, [r0, #0xc]
-	bl Save_FlyPoints_Get
-	bl SaveFlyPoints_GetPlayerSub
-	bl FlypointsPlayerSub_CheckRunningShoes
+	bl Save_LocalFieldData_Get
+	bl LocalFieldData_GetPlayer
+	bl LocalFieldPlayer_CheckRunningShoes
 	pop {r3, pc}
 	thumb_func_end ov27_0225BDC8
 
@@ -4092,8 +4092,8 @@ ov27_0225C044: ; 0x0225C044
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0xc]
-	bl Save_FlyPoints_Get
-	bl FlyPoints_GetSafariBallsCounter
+	bl Save_LocalFieldData_Get
+	bl LocalFieldData_GetSafariBallsCounter
 	add r3, r0, #0
 	ldrh r3, [r3]
 	add r0, r4, #0

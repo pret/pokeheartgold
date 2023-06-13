@@ -244,9 +244,9 @@
 .public MapHeader_GetField14_1E
 .public MapHeader_GetField14_1F
 .public WildEncounters_ReadFromNarc
-.public FlyPoints_GetMusicIdAddr
-.public SaveFlyPoints_GetPlayerSub
-.public Save_FlyPoints_Get
+.public LocalFieldData_GetMusicIdAddr
+.public LocalFieldData_GetPlayer
+.public Save_LocalFieldData_Get
 .public sub_0203E354
 .public SaveArray_Flags_Get
 .public CheckFlagInArray

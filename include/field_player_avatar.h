@@ -5,11 +5,11 @@
 #include "global.h"
 #include "field_system.h"
 
-typedef struct FlypointsPlayerSub {
+typedef struct LocalFieldPlayer {
     u16 hasRunningShoes;
     u16 unk2;
     u32 unk4;
-} PlayerAvatar_SUB;
+} LocalFieldPlayer;
 
 struct PlayerAvatar {
     u32 unk0;
@@ -26,7 +26,7 @@ struct PlayerAvatar {
     int unk2c;
     LocalMapObject *mapObject;
     u32 unk34;
-    PlayerAvatar_SUB *unk38;
+    LocalFieldPlayer *localFieldPlayer;
     u32 unk3c;
 }; //size: 0x40
 
@@ -37,13 +37,13 @@ u8 sub_0205C2C0(u32 unkA);
 u8 sub_0205C2E8(u32 unkA);
 u8 sub_0205C310(u32 unkA);
 u8 sub_0205C350(u32 unkA);
-PlayerAvatar *sub_0205C390(MapObjectMan *man, int x, int y, int direction, int a4, int gender, int a6, struct FlypointsPlayerSub *a7);
-PlayerAvatar *sub_0205C408(MapObjectMan *man, PlayerAvatar_SUB *avatar_sub, int gender);
+PlayerAvatar *sub_0205C390(MapObjectMan *man, int x, int y, int direction, int a4, int gender, int a6, struct LocalFieldPlayer *localFieldPlayer);
+PlayerAvatar *sub_0205C408(MapObjectMan *man, LocalFieldPlayer *localFieldPlayer, int gender);
 void sub_0205C46C(PlayerAvatar* avatar);
 void PlayerAvatar_FreeToHeap(PlayerAvatar *avatar);
 void PlayerAvatar_DeleteFromMap(PlayerAvatar *avatar);
 PlayerAvatar *sub_0205C4E0();
-void sub_0205C500(PlayerAvatar *avatar, int state, u32 gender, PlayerAvatar_SUB *unkD);
+void sub_0205C500(PlayerAvatar *avatar, int state, u32 gender, LocalFieldPlayer *localFieldPlayer);
 void CreatePlayerAvatarMapObject(PlayerAvatar *avatar, MapObjectMan *man, u32 sprite, u32 direction, u32 x, u32 y);
 LocalMapObject *sub_0205C600(MapObjectMan *man);
 LocalMapObject *sub_0205C640(MapObjectMan *man);
@@ -84,18 +84,18 @@ int sub_0205C774(PlayerAvatar *avatar);
 void sub_0205C778(PlayerAvatar *avatar, int unkB, int unkC);
 void sub_0205C78C(PlayerAvatar *avatar, u32 unkA);
 u32 sub_0205C790(PlayerAvatar *avatar);
-void sub_0205C794(PlayerAvatar *avatar, PlayerAvatar_SUB *unkA);
-PlayerAvatar_SUB *sub_0205C798(PlayerAvatar *avatar);
+void PlayerAvatar_SetLocalFieldPlayer(PlayerAvatar *avatar, LocalFieldPlayer *unkA);
+LocalFieldPlayer *PlayerAvatar_GetLocalFieldPlayer(PlayerAvatar *avatar);
 void sub_0205C79C(PlayerAvatar *avatar, u32 unkA);
 u32 sub_0205C7A0(PlayerAvatar *avatar);
 u32 sub_0205C7A4(PlayerAvatar *avatar);
 void sub_0205C7A8(PlayerAvatar *avatar);
 void sub_0205C7B4(PlayerAvatar *avatar);
-void FlypointsPlayerSub_Init(struct FlypointsPlayerSub *fpsub);
-BOOL FlypointsPlayerSub_CheckRunningShoes(struct FlypointsPlayerSub *fpsub);
-void FlypointsPlayerSub_SetRunningShoesFlag(struct FlypointsPlayerSub *fpsub, BOOL unkB);
-int sub_0205C7EC(PlayerAvatar_SUB *avatar);
-void sub_0205C7F8(PlayerAvatar_SUB *unkPtr, int state);
+void LocalFieldPlayer_Init(struct LocalFieldPlayer *localFieldPlayer);
+BOOL LocalFieldPlayer_CheckRunningShoes(struct LocalFieldPlayer *localFieldPlayer);
+void LocalFieldPlayer_SetRunningShoesFlag(struct LocalFieldPlayer *localFieldPlayer, BOOL flag);
+int sub_0205C7EC(LocalFieldPlayer *localFieldPlayer);
+void sub_0205C7F8(LocalFieldPlayer *localFieldPlayer, int state);
 void sub_0205C800(PlayerAvatar *avatar, int state);
 void sub_0205C810(PlayerAvatar *avatar, VecFx32 *pos, u32 dir);
 void sub_0205C838(PlayerAvatar *avatar, int unkA);

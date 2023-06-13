@@ -58,8 +58,8 @@
 .public sub_02031990
 .public sub_02039998
 .public sub_0203A040
-.public FlyPoints_GetPosition
-.public Save_FlyPoints_Get
+.public LocalFieldData_GetCurrentPosition
+.public Save_LocalFieldData_Get
 .public FieldSys_LaunchApplication
 .public FieldSys_GetSaveDataPtr
 .public LocationData_BackUp

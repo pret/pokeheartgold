@@ -10,9 +10,9 @@
 .public RoamerSave_SetFlute
 .public MapHeader_IsBikeAllowed
 .public MapHeader_IsCave
-.public FlyPoints_GetSpecialSpawnWarpPtr
-.public SaveFlyPoints_GetPlayerSub
-.public Save_FlyPoints_Get
+.public LocalFieldData_GetSpecialSpawnWarpPtr
+.public LocalFieldData_GetPlayer
+.public Save_LocalFieldData_Get
 .public GetFlyWarpData
 .public GetSpecialSpawnWarpData
 .public sub_0203BB50

@@ -179,8 +179,8 @@ Fsys_SetSavedMusicId: ; 0x02054F28
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	add r4, r1, #0
-	bl Save_FlyPoints_Get
-	bl FlyPoints_GetMusicIdAddr
+	bl Save_LocalFieldData_Get
+	bl LocalFieldData_GetMusicIdAddr
 	strh r4, [r0]
 	pop {r4, pc}
 	.balign 4, 0
@@ -190,8 +190,8 @@ Fsys_SetSavedMusicId: ; 0x02054F28
 Fsys_GetSavedMusicId: ; 0x02054F3C
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl Save_FlyPoints_Get
-	bl FlyPoints_GetMusicIdAddr
+	bl Save_LocalFieldData_Get
+	bl LocalFieldData_GetMusicIdAddr
 	ldrh r0, [r0]
 	pop {r3, pc}
 	thumb_func_end Fsys_GetSavedMusicId
@@ -200,8 +200,8 @@ Fsys_GetSavedMusicId: ; 0x02054F3C
 Fsys_ClearSavedMusicId: ; 0x02054F4C
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl Save_FlyPoints_Get
-	bl FlyPoints_GetMusicIdAddr
+	bl Save_LocalFieldData_Get
+	bl LocalFieldData_GetMusicIdAddr
 	mov r1, #0
 	strh r1, [r0]
 	pop {r3, pc}

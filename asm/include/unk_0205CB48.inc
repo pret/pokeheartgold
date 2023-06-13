@@ -41,13 +41,13 @@
 .public sub_0205C76C
 .public sub_0205C774
 .public sub_0205C778
-.public sub_0205C798
+.public PlayerAvatar_GetLocalFieldPlayer
 .public sub_0205C79C
 .public sub_0205C7A0
 .public sub_0205C7A4
 .public sub_0205C7A8
 .public sub_0205C7B4
-.public FlypointsPlayerSub_CheckRunningShoes
+.public LocalFieldPlayer_CheckRunningShoes
 .public sub_0205CA20
 .public sub_0205CA38
 .public sub_0205CA4C

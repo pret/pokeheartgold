@@ -22,9 +22,9 @@
 .public SavGymmick_AssertMagic_GetData
 .public Save_TrainerHouse_Get
 .public TrainerHouseSet_CheckHasData
-.public FlyPoints_GetDynamicWarp
-.public FlyPoints_SetDynamicWarp
-.public Save_FlyPoints_Get
+.public LocalFieldData_GetDynamicWarp
+.public LocalFieldData_SetDynamicWarp
+.public Save_LocalFieldData_Get
 .public FieldSys_GetSaveDataPtr
 .public sub_0203EDDC
 .public ScriptReadHalfword

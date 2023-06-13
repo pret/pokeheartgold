@@ -166,8 +166,8 @@ _0203E394: .word _020FA190
 	thumb_func_start Save_CurrentLocation_BackUp
 Save_CurrentLocation_BackUp: ; 0x0203E398
 	push {r3, lr}
-	bl Save_FlyPoints_Get
-	bl FlyPoints_GetPosition
+	bl Save_LocalFieldData_Get
+	bl LocalFieldData_GetCurrentPosition
 	bl LocationData_BackUp
 	pop {r3, pc}
 	thumb_func_end Save_CurrentLocation_BackUp

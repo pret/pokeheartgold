@@ -59,9 +59,9 @@
 .public Field_InitMapObjectsFromZoneEventData
 .public Field_GetNumObjectEvents
 .public Field_GetObjectEvents
-.public FlyPoints_GetWeatherType
-.public FlyPoints_GetCameraType
-.public Save_FlyPoints_Get
+.public LocalFieldData_GetWeatherType
+.public LocalFieldData_GetCameraType
+.public Save_LocalFieldData_Get
 .public FieldSys_GetSaveDataPtr
 .public sub_0203E348
 .public TryStartMapScriptByType

@@ -12,7 +12,7 @@
 #include "pokedex_util.h"
 #include "use_item_on_mon.h"
 #include "save_arrays.h"
-#include "save_flypoints.h"
+#include "save_local_field_data.h"
 #include "sound_02004A44.h"
 #include "sys_flags.h"
 #include "unk_020517A4.h"
@@ -396,7 +396,7 @@ static BOOL Task_SafariEncounter(TaskManager *man) {
     FieldSystem *fsys = TaskManager_GetSys(man);
     ENCOUNTER *encounter = TaskManager_GetEnv(man);
     int *state = TaskManager_GetStatePtr(man);
-    u16 *safariBall = FlyPoints_GetSafariBallsCounter(Save_FlyPoints_Get(fsys->savedata));
+    u16 *safariBall = LocalFieldData_GetSafariBallsCounter(Save_LocalFieldData_Get(fsys->savedata));
 
     switch (*state) {
     case 0:
@@ -425,7 +425,7 @@ static BOOL Task_SafariEncounter(TaskManager *man) {
         sub_02051660(fsys, encounter->setup);
 
         if (*safariBall == 0 && encounter->setup->winFlag != 4) {
-            Location *loc = FlyPoints_GetDynamicWarp(Save_FlyPoints_Get(fsys->savedata));
+            Location *loc = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fsys->savedata));
             sub_020537A8(man, loc);
         } else {
             *state = 5;

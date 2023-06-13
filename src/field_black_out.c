@@ -6,7 +6,7 @@
 #include "render_window.h"
 #include "font.h"
 #include "text.h"
-#include "save_flypoints.h"
+#include "save_local_field_data.h"
 #include "unk_0203BA5C.h"
 #include "field_warp_tasks.h"
 #include "unk_0200B380.h"
@@ -168,16 +168,16 @@ static void _PrintMessage(struct BlackoutScreenWork *work, int msgno, u8 x, u8 y
 BOOL FieldTask_BlackOut(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     u32 *state = TaskManager_GetStatePtr(taskManager);
-    FLYPOINTS_SAVE *flypointsSave;
+    LocalFieldData *localFieldData;
     Location deathWarp;
     u16 deathSpawn;
 
     switch (*state) {
     case 0:
-        flypointsSave = Save_FlyPoints_Get(fsys->savedata);
-        deathSpawn = FlyPoints_GetDeathSpawn(flypointsSave);
+        localFieldData = Save_LocalFieldData_Get(fsys->savedata);
+        deathSpawn = LocalFieldData_GetDeathSpawn(localFieldData);
         GetDeathWarpData(deathSpawn, &deathWarp);
-        GetSpecialSpawnWarpData(deathSpawn, FlyPoints_GetSpecialSpawnWarpPtr(flypointsSave));
+        GetSpecialSpawnWarpData(deathSpawn, LocalFieldData_GetSpecialSpawnWarpPtr(localFieldData));
         sub_020537A8(taskManager, &deathWarp);
         Fsys_ClearFollowingTrainer(fsys);
         HealParty(SaveArray_PlayerParty_Get(fsys->savedata));
@@ -205,7 +205,7 @@ BOOL FieldTask_BlackOut(TaskManager *taskManager) {
         break;
     case 5:
         SetBlendBrightness(0, 0x3F, 3);
-        if (GetMomSpawnId() == FlyPoints_GetDeathSpawn(Save_FlyPoints_Get(fsys->savedata))) {
+        if (GetMomSpawnId() == LocalFieldData_GetDeathSpawn(Save_LocalFieldData_Get(fsys->savedata))) {
             QueueScript(taskManager, std_whited_out_to_mom, NULL, NULL);
         } else {
             QueueScript(taskManager, std_whited_out_to_pokecenter, NULL, NULL);

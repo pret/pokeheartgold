@@ -875,7 +875,7 @@ sub_0206DB58: ; 0x0206DB58
 	sub sp, #0x14
 	add r5, r0, #0
 	ldr r0, [r1, #0xc]
-	bl Save_FlyPoints_Get
+	bl Save_LocalFieldData_Get
 	mov r1, #0x60
 	str r1, [sp]
 	sub r1, #0x61
@@ -888,9 +888,9 @@ sub_0206DB58: ; 0x0206DB58
 	str r1, [sp, #0x10]
 	add r4, r0, #0
 	add r1, sp, #0
-	bl FlyPoints_SetDynamicWarp
+	bl LocalFieldData_SetDynamicWarp
 	add r0, r4, #0
-	bl FlyPoints_GetDynamicWarp
+	bl LocalFieldData_GetDynamicWarp
 	add r1, r0, #0
 	add r0, r5, #0
 	bl sub_020537A8

@@ -1,9 +1,9 @@
 #include "constants/maps.h"
 #include "field_alph_checks.h"
-#include "save_flypoints.h"
+#include "save_local_field_data.h"
 
 BOOL CheckUseEscapeRopeInAlphChamber(FieldSystem* fsys) {
-    Location* position = FlyPoints_GetPosition(Save_FlyPoints_Get(fsys->savedata));
+    Location* position = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(fsys->savedata));
 
     if (position->mapId != MAP_D24R0202) {
         return FALSE;
@@ -17,7 +17,7 @@ BOOL CheckUseEscapeRopeInAlphChamber(FieldSystem* fsys) {
 }
 
 BOOL CheckUseFlashInAlphChamber(FieldSystem* fsys) {
-    Location* position = FlyPoints_GetPosition(Save_FlyPoints_Get(fsys->savedata));
+    Location* position = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(fsys->savedata));
 
     if (position->mapId != MAP_D24R0204) {
         return FALSE;
@@ -31,7 +31,7 @@ BOOL CheckUseFlashInAlphChamber(FieldSystem* fsys) {
 }
 
 BOOL CheckUseWaterStoneInAlphChamber(FieldSystem* fsys) {
-    Location* position = FlyPoints_GetPosition(Save_FlyPoints_Get(fsys->savedata));
+    Location* position = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(fsys->savedata));
 
     if (position->mapId != MAP_D24R0206) {
         return FALSE;
