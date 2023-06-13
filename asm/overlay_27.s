@@ -3772,7 +3772,7 @@ ov27_0225BDC8: ; 0x0225BDC8
 	ldr r0, [r0, #0xc]
 	bl Save_LocalFieldData_Get
 	bl LocalFieldData_GetPlayer
-	bl LocalFieldPlayer_CheckRunningShoes
+	bl PlayerSaveData_CheckRunningShoes
 	pop {r3, pc}
 	thumb_func_end ov27_0225BDC8
 

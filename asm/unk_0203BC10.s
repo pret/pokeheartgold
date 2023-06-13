@@ -1095,7 +1095,7 @@ _0203C44A:
 	ldr r0, [r0, #0xc]
 	bl Save_LocalFieldData_Get
 	bl LocalFieldData_GetPlayer
-	bl LocalFieldPlayer_CheckRunningShoes
+	bl PlayerSaveData_CheckRunningShoes
 	pop {r3, pc}
 _0203C45A:
 	mov r0, #1

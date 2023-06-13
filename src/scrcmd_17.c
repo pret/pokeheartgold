@@ -19,15 +19,15 @@ BOOL ScrCmd_GivePokedex(ScriptContext *ctx) {
 BOOL ScrCmd_CheckRunningShoes(ScriptContext *ctx) {
     u16 *retPtr = ScriptGetVarPointer(ctx);
     LocalFieldData *localFieldData = Save_LocalFieldData_Get(ctx->fsys->savedata);
-    struct LocalFieldPlayer *sub = LocalFieldData_GetPlayer(localFieldData);
-    *retPtr = LocalFieldPlayer_CheckRunningShoes(sub);
+    struct PlayerSaveData *sub = LocalFieldData_GetPlayer(localFieldData);
+    *retPtr = PlayerSaveData_CheckRunningShoes(sub);
     return FALSE;
 }
 
 BOOL ScrCmd_GiveRunningShoes(ScriptContext *ctx) {
     LocalFieldData *localFieldData = Save_LocalFieldData_Get(ctx->fsys->savedata);
-    struct LocalFieldPlayer *sub = LocalFieldData_GetPlayer(localFieldData);
-    LocalFieldPlayer_SetRunningShoesFlag(sub, TRUE);
+    struct PlayerSaveData *sub = LocalFieldData_GetPlayer(localFieldData);
+    PlayerSaveData_SetRunningShoesFlag(sub, TRUE);
     return FALSE;
 }
 

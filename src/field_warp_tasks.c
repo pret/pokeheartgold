@@ -217,16 +217,16 @@ void sub_02053038(FieldSystem *fsys, BOOL isConnection) {
 
 static void sub_0205316C(FieldSystem *fsys) {
     u32 gender;
-    struct LocalFieldPlayer *localFieldPlayer;
+    struct PlayerSaveData *playerSaveData;
     if (fsys->unkAC) {
         gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fsys->savedata));
-        localFieldPlayer = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fsys->savedata));
-        fsys->playerAvatar = sub_0205C390(fsys->mapObjectMan, fsys->location->x, fsys->location->y, fsys->location->direction, localFieldPlayer->unk4, gender, 2, localFieldPlayer);
+        playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fsys->savedata));
+        fsys->playerAvatar = sub_0205C390(fsys->mapObjectMan, fsys->location->x, fsys->location->y, fsys->location->direction, playerSaveData->unk4, gender, 2, playerSaveData);
     } else {
         fsys->mapObjectMan = sub_0205E0BC(fsys, 64, HEAP_ID_BATTLE);
         gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fsys->savedata));
-        localFieldPlayer = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fsys->savedata));
-        fsys->playerAvatar = sub_0205C390(fsys->mapObjectMan, fsys->location->x, fsys->location->y, fsys->location->direction, localFieldPlayer->unk4, gender, 2, localFieldPlayer);
+        playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fsys->savedata));
+        fsys->playerAvatar = sub_0205C390(fsys->mapObjectMan, fsys->location->x, fsys->location->y, fsys->location->direction, playerSaveData->unk4, gender, 2, playerSaveData);
         sub_020699F8(fsys->mapObjectMan, fsys->location->x, fsys->location->y, fsys->location->direction, fsys->location->mapId);
         Field_InitMapObjectsFromZoneEventData(fsys);
         sub_0205F55C(fsys->mapObjectMan);
@@ -246,13 +246,13 @@ static void sub_02053210(FieldSystem *fsys) {
 
 static void sub_0205323C(FieldSystem *fsys) {
     u32 gender;
-    struct LocalFieldPlayer *localFieldPlayer;
+    struct PlayerSaveData *playerSaveData;
 
     fsys->mapObjectMan = sub_0205E0BC(fsys, 64, HEAP_ID_BATTLE);
     Fsys_RestoreMapObjectsFromSave(fsys);
-    localFieldPlayer = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fsys->savedata));
+    playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fsys->savedata));
     gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fsys->savedata));
-    fsys->playerAvatar = sub_0205C408(fsys->mapObjectMan, localFieldPlayer, gender);
+    fsys->playerAvatar = sub_0205C408(fsys->mapObjectMan, playerSaveData, gender);
     sub_02069B74(fsys->mapObjectMan, fsys->location->mapId);
     sub_0205F55C(fsys->mapObjectMan);
 }

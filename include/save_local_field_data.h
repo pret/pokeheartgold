@@ -24,7 +24,7 @@ u16 LocalFieldData_GetDeathSpawn(LocalFieldData *localFieldData);
 void LocalFieldData_SetDeathSpawn(LocalFieldData *localFieldData, const u16 spawn);
 u32 LocalFieldData_GetCameraType(LocalFieldData *localFieldData);
 void LocalFieldData_SetCameraType(LocalFieldData *localFieldData, const u32 cameraType);
-struct LocalFieldPlayer *LocalFieldData_GetPlayer(LocalFieldData *localFieldData);
+struct PlayerSaveData *LocalFieldData_GetPlayer(LocalFieldData *localFieldData);
 u16 *LocalFieldData_GetSafariBallsCounter(LocalFieldData *localFieldData);
 u16 *LocalFieldData_GetSafariStepsCounter(LocalFieldData *localFieldData);
 u16 *LocalFieldData_GetPoisonStepCounter(LocalFieldData *localFieldData);

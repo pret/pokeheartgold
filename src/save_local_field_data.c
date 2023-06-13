@@ -15,7 +15,7 @@ struct LocalFieldData {
     u16 weather;
     u16 lastSpawn;
     u8 cameraType;
-    struct LocalFieldPlayer player;
+    struct PlayerSaveData player;
     u16 poisonStepCounter;
     u16 safariStepCounter;
     u16 safariBallCounter;
@@ -40,7 +40,7 @@ void Save_MapObjects_Init(struct SavedMapObjectList *unk) {
 
 void Save_LocalFieldData_Init(LocalFieldData *localFieldData) {
     memset(localFieldData, 0, sizeof(LocalFieldData));
-    LocalFieldPlayer_Init(&localFieldData->player);
+    PlayerSaveData_Init(&localFieldData->player);
     localFieldData->lastSpawn = GetMomSpawnId();
 }
 
@@ -96,7 +96,7 @@ void LocalFieldData_SetCameraType(LocalFieldData *localFieldData, const u32 came
     localFieldData->cameraType = cameraType;
 }
 
-struct LocalFieldPlayer *LocalFieldData_GetPlayer(LocalFieldData *localFieldData) {
+struct PlayerSaveData *LocalFieldData_GetPlayer(LocalFieldData *localFieldData) {
     return &localFieldData->player;
 }
 

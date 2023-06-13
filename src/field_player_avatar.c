@@ -123,9 +123,9 @@ u8 sub_0205C350(u32 unkA) {
     return ret;
 }
 
-PlayerAvatar* sub_0205C390(MapObjectMan *man, int x, int y, int direction, int state, int gender, int a6, struct LocalFieldPlayer *localFieldPlayer) {
+PlayerAvatar* sub_0205C390(MapObjectMan *man, int x, int y, int direction, int state, int gender, int a6, struct PlayerSaveData *playerSaveData) {
     PlayerAvatar* avatar = sub_0205C4E0();
-    sub_0205C500(avatar, state, gender, localFieldPlayer);
+    sub_0205C500(avatar, state, gender, playerSaveData);
     int sprite;
     if (a6 == 2) {
         sprite = PlayerAvatar_GetSpriteByStateAndGender(state, gender);
@@ -154,10 +154,10 @@ PlayerAvatar* sub_0205C390(MapObjectMan *man, int x, int y, int direction, int s
     return avatar;
 }
 
-PlayerAvatar* sub_0205C408(MapObjectMan* man, LocalFieldPlayer* localFieldPlayer, int gender) {
+PlayerAvatar* sub_0205C408(MapObjectMan* man, PlayerSaveData* playerSaveData, int gender) {
     PlayerAvatar* avatar = sub_0205C4E0();
-    int state = sub_0205C7EC(localFieldPlayer);
-    sub_0205C500(avatar, state, gender, localFieldPlayer);
+    int state = sub_0205C7EC(playerSaveData);
+    sub_0205C500(avatar, state, gender, playerSaveData);
     LocalMapObject* mapObj = sub_0205C640(man);
     MapObject_SetGfxID(mapObj, PlayerAvatar_GetSpriteByStateAndGender(state, gender));
     MapObject_SetFlagsBits(mapObj, MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_UNK10);
@@ -200,8 +200,8 @@ PlayerAvatar* sub_0205C4E0() {
     return avatar;
 }
 
-void sub_0205C500(PlayerAvatar* avatar, int state, u32 gender, LocalFieldPlayer* localFieldPlayer) {
-    PlayerAvatar_SetLocalFieldPlayer(avatar, localFieldPlayer);
+void sub_0205C500(PlayerAvatar* avatar, int state, u32 gender, PlayerSaveData* playerSaveData) {
+    PlayerAvatar_SetPlayerSaveData(avatar, playerSaveData);
     sub_0205C6C8(avatar, 0);
     sub_0205C6D0(avatar, 0);
     PlayerAvatar_SetState(avatar, state);
@@ -415,12 +415,12 @@ u32 sub_0205C790(PlayerAvatar* avatar) {
     return avatar->unk34;
 }
 
-void PlayerAvatar_SetLocalFieldPlayer(PlayerAvatar* avatar, LocalFieldPlayer* localFieldPlayer) {
-    avatar->localFieldPlayer = localFieldPlayer;
+void PlayerAvatar_SetPlayerSaveData(PlayerAvatar* avatar, PlayerSaveData* playerSaveData) {
+    avatar->playerSaveData = playerSaveData;
 }
 
-LocalFieldPlayer* PlayerAvatar_GetLocalFieldPlayer(PlayerAvatar* avatar) {
-    return avatar->localFieldPlayer;
+PlayerSaveData* PlayerAvatar_GetPlayerSaveData(PlayerAvatar* avatar) {
+    return avatar->playerSaveData;
 }
 
 void sub_0205C79C(PlayerAvatar* avatar, u32 unkA) {
@@ -443,46 +443,46 @@ void sub_0205C7B4(PlayerAvatar* avatar) {
     avatar->unkc = 0;
 }
 
-void LocalFieldPlayer_Init(struct LocalFieldPlayer* localFieldPlayer) {
-    localFieldPlayer->hasRunningShoes = 0;
-    localFieldPlayer->unk2 = 0;
-    localFieldPlayer->unk4 = 0;
+void PlayerSaveData_Init(struct PlayerSaveData* playerSaveData) {
+    playerSaveData->hasRunningShoes = 0;
+    playerSaveData->unk2 = 0;
+    playerSaveData->unk4 = 0;
 }
 
-BOOL LocalFieldPlayer_CheckRunningShoes(struct LocalFieldPlayer* localFieldPlayer) {
-    if (localFieldPlayer != NULL) {
-        if (localFieldPlayer->hasRunningShoes == TRUE) {
+BOOL PlayerSaveData_CheckRunningShoes(struct PlayerSaveData* playerSaveData) {
+    if (playerSaveData != NULL) {
+        if (playerSaveData->hasRunningShoes == TRUE) {
             return TRUE;
         }
     }
     return FALSE;
 }
 
-void LocalFieldPlayer_SetRunningShoesFlag(struct LocalFieldPlayer* localFieldPlayer, BOOL flag) {
+void PlayerSaveData_SetRunningShoesFlag(struct PlayerSaveData* playerSaveData, BOOL flag) {
     if (flag == TRUE) {
-        localFieldPlayer->hasRunningShoes = TRUE;
+        playerSaveData->hasRunningShoes = TRUE;
     }
     else {
-        localFieldPlayer->hasRunningShoes = FALSE;
+        playerSaveData->hasRunningShoes = FALSE;
     }
 }
 
-int sub_0205C7EC(LocalFieldPlayer* localFieldPlayer) {
-    if (!localFieldPlayer) {
+int sub_0205C7EC(PlayerSaveData* playerSaveData) {
+    if (!playerSaveData) {
         return 0;
     }
-    return localFieldPlayer->unk4;
+    return playerSaveData->unk4;
 }
 
-void sub_0205C7F8(LocalFieldPlayer* localFieldPlayer, int state) {
-    if (!localFieldPlayer) {
+void sub_0205C7F8(PlayerSaveData* playerSaveData, int state) {
+    if (!playerSaveData) {
         return;
     }
-    localFieldPlayer->unk4 = state;
+    playerSaveData->unk4 = state;
 }
 
 void sub_0205C800(PlayerAvatar* avatar, int state) {
-    sub_0205C7F8(PlayerAvatar_GetLocalFieldPlayer(avatar), state);
+    sub_0205C7F8(PlayerAvatar_GetPlayerSaveData(avatar), state);
 }
 
 void sub_0205C810(PlayerAvatar* avatar, VecFx32 *pos, u32 dir) {
@@ -736,9 +736,9 @@ u32 sub_0205CB2C(PlayerAvatar* avatar) {
 }
 
 u16 sub_0205CB38(PlayerAvatar* avatar) {
-    return avatar->localFieldPlayer->unk2;
+    return avatar->playerSaveData->unk2;
 }
 
 void sub_0205CB40(PlayerAvatar* avatar, u16 unkA) {
-    avatar->localFieldPlayer->unk2 = unkA;
+    avatar->playerSaveData->unk2 = unkA;
 }

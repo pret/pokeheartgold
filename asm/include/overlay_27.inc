@@ -110,7 +110,7 @@
 .public sub_0205C6D4
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_GetState
-.public LocalFieldPlayer_CheckRunningShoes
+.public PlayerSaveData_CheckRunningShoes
 .public FieldSys_GetPlayerAvatar
 .public sub_0205CB38
 .public sub_0205CB40

@@ -97,7 +97,7 @@
 .public PlayerAvatar_GetFacingDirection
 .public GetPlayerXCoord
 .public GetPlayerYCoord
-.public LocalFieldPlayer_CheckRunningShoes
+.public PlayerSaveData_CheckRunningShoes
 .public sub_0205CF60
 .public sub_0205CFBC
 .public MapObjectMan_PauseAllMovement
