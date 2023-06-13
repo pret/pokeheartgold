@@ -80,11 +80,11 @@ void LocalFieldData_SetWeatherType(LocalFieldData *localFieldData, const u16 wea
     localFieldData->weather = weather;
 }
 
-u16 LocalFieldData_GetDeathSpawn(LocalFieldData *localFieldData) {
+u16 LocalFieldData_GetBlackoutSpawn(LocalFieldData *localFieldData) {
     return localFieldData->lastSpawn;
 }
 
-void LocalFieldData_SetDeathSpawn(LocalFieldData *localFieldData, const u16 spawn) {
+void LocalFieldData_SetBlackoutSpawn(LocalFieldData *localFieldData, const u16 spawn) {
     localFieldData->lastSpawn = spawn;
 }
 

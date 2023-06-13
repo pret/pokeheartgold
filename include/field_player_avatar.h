@@ -84,7 +84,7 @@ int sub_0205C774(PlayerAvatar *avatar);
 void sub_0205C778(PlayerAvatar *avatar, int unkB, int unkC);
 void sub_0205C78C(PlayerAvatar *avatar, u32 unkA);
 u32 sub_0205C790(PlayerAvatar *avatar);
-void PlayerAvatar_SetPlayerSaveData(PlayerAvatar *avatar, PlayerSaveData *unkA);
+void PlayerAvatar_SetPlayerSaveData(PlayerAvatar *avatar, PlayerSaveData *playerSaveData);
 PlayerSaveData *PlayerAvatar_GetPlayerSaveData(PlayerAvatar *avatar);
 void sub_0205C79C(PlayerAvatar *avatar, u32 unkA);
 u32 sub_0205C7A0(PlayerAvatar *avatar);

@@ -14384,7 +14384,7 @@ ov02_0224C840: ; 0x0224C840
 	add r4, r2, #0
 	bl Save_LocalFieldData_Get
 	add r6, r0, #0
-	bl LocalFieldData_GetDeathSpawn
+	bl LocalFieldData_GetBlackoutSpawn
 	add r1, sp, #0
 	add r7, r0, #0
 	bl GetFlyWarpData

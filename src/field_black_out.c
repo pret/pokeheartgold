@@ -175,7 +175,7 @@ BOOL FieldTask_BlackOut(TaskManager *taskManager) {
     switch (*state) {
     case 0:
         localFieldData = Save_LocalFieldData_Get(fsys->savedata);
-        deathSpawn = LocalFieldData_GetDeathSpawn(localFieldData);
+        deathSpawn = LocalFieldData_GetBlackoutSpawn(localFieldData);
         GetDeathWarpData(deathSpawn, &deathWarp);
         GetSpecialSpawnWarpData(deathSpawn, LocalFieldData_GetSpecialSpawnWarpPtr(localFieldData));
         sub_020537A8(taskManager, &deathWarp);
@@ -205,7 +205,7 @@ BOOL FieldTask_BlackOut(TaskManager *taskManager) {
         break;
     case 5:
         SetBlendBrightness(0, 0x3F, 3);
-        if (GetMomSpawnId() == LocalFieldData_GetDeathSpawn(Save_LocalFieldData_Get(fsys->savedata))) {
+        if (GetMomSpawnId() == LocalFieldData_GetBlackoutSpawn(Save_LocalFieldData_Get(fsys->savedata))) {
             QueueScript(taskManager, std_whited_out_to_mom, NULL, NULL);
         } else {
             QueueScript(taskManager, std_whited_out_to_pokecenter, NULL, NULL);

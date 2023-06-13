@@ -196,7 +196,7 @@
 .public LocalFieldData_GetCurrentPosition
 .public LocalFieldData_GetSpecialSpawnWarpPtr
 .public LocalFieldData_GetWeatherType
-.public LocalFieldData_GetDeathSpawn
+.public LocalFieldData_GetBlackoutSpawn
 .public LocalFieldData_GetSafariBallsCounter
 .public Save_LocalFieldData_Get
 .public GetFlyWarpData

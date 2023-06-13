@@ -2905,7 +2905,7 @@ BOOL ScrCmd_OverworldWhiteOut(ScriptContext *ctx) {
 BOOL ScrCmd_SetSpawn(ScriptContext *ctx) {
     u16 spawnPoint = ScriptGetVar(ctx);
     LocalFieldData *localFieldData = Save_LocalFieldData_Get(ctx->fsys->savedata);
-    LocalFieldData_SetDeathSpawn(localFieldData, spawnPoint);
+    LocalFieldData_SetBlackoutSpawn(localFieldData, spawnPoint);
     return FALSE;
 }
 

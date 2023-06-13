@@ -20,8 +20,8 @@ void LocalFieldData_SetDynamicWarp(LocalFieldData *localFieldData, const Locatio
 u16 *LocalFieldData_GetMusicIdAddr(LocalFieldData *localFieldData);
 u16 LocalFieldData_GetWeatherType(LocalFieldData *localFieldData);
 void LocalFieldData_SetWeatherType(LocalFieldData *localFieldData, const u16 weather);
-u16 LocalFieldData_GetDeathSpawn(LocalFieldData *localFieldData);
-void LocalFieldData_SetDeathSpawn(LocalFieldData *localFieldData, const u16 spawn);
+u16 LocalFieldData_GetBlackoutSpawn(LocalFieldData *localFieldData);
+void LocalFieldData_SetBlackoutSpawn(LocalFieldData *localFieldData, const u16 spawn);
 u32 LocalFieldData_GetCameraType(LocalFieldData *localFieldData);
 void LocalFieldData_SetCameraType(LocalFieldData *localFieldData, const u32 cameraType);
 struct PlayerSaveData *LocalFieldData_GetPlayer(LocalFieldData *localFieldData);

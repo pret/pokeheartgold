@@ -204,7 +204,7 @@ void sub_02053038(FieldSystem *fsys, BOOL isConnection) {
     if (!isConnection) {
         spawnId = MapHeader_GetSpawnIdForDeathWarp(mapId);
         if (spawnId != 0) {
-            LocalFieldData_SetDeathSpawn(localFieldData, spawnId);
+            LocalFieldData_SetBlackoutSpawn(localFieldData, spawnId);
         }
     }
     TryStartMapScriptByType(fsys, 2);
