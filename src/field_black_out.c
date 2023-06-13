@@ -28,8 +28,8 @@ struct BlackoutScreenWork {
 };
 
 void _InitDisplays(BGCONFIG *bgConfig);
-void _DrawScurryMessageScreen(FieldSystem *fsys, TaskManager *taskManager);
-BOOL _Task_ShowPrintedMessage(TaskManager *taskManager);
+void DrawBlackoutMessage(FieldSystem *fsys, TaskManager *taskManager);
+BOOL FieldTask_ShowPrintedMessage(TaskManager *taskManager);
 void _PrintMessage(struct BlackoutScreenWork *work, int msgno, u8 x, u8 y);
 
 static void _InitDisplays(BGCONFIG *bgConfig) {
@@ -68,7 +68,7 @@ static void _InitDisplays(BGCONFIG *bgConfig) {
     BG_SetMaskColor(3, RGB_WHITE);
 }
 
-static void _DrawScurryMessageScreen(FieldSystem *fsys, TaskManager *taskManager) {
+static void DrawBlackoutMessage(FieldSystem *fsys, TaskManager *taskManager) {
     struct BlackoutScreenWork *env;
 
     env = AllocFromHeap((HeapID)11, sizeof(struct BlackoutScreenWork));
@@ -104,10 +104,10 @@ static void _DrawScurryMessageScreen(FieldSystem *fsys, TaskManager *taskManager
         _PrintMessage(env, msg_0203_00003, 0, 0);
     }
     CopyWindowToVram(&env->window);
-    TaskManager_Call(taskManager, _Task_ShowPrintedMessage, env);
+    TaskManager_Call(taskManager, FieldTask_ShowPrintedMessage, env);
 }
 
-static BOOL _Task_ShowPrintedMessage(TaskManager *taskManager) {
+static BOOL FieldTask_ShowPrintedMessage(TaskManager *taskManager) {
     struct BlackoutScreenWork *work = TaskManager_GetEnv(taskManager);
     switch (work->state) {
     case 0:
@@ -165,7 +165,7 @@ static void _PrintMessage(struct BlackoutScreenWork *work, int msgno, u8 x, u8 y
     String_Delete(str1);
 }
 
-BOOL Task_BlackOut(TaskManager *taskManager) {
+BOOL FieldTask_BlackOut(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     u32 *state = TaskManager_GetStatePtr(taskManager);
     FLYPOINTS_SAVE *flypointsSave;
@@ -196,7 +196,7 @@ BOOL Task_BlackOut(TaskManager *taskManager) {
     case 3:
         SetBlendBrightness(-16, 0x37, 1);
         SetBlendBrightness(-16, 0x3F, 2);
-        _DrawScurryMessageScreen(fsys, taskManager);
+        DrawBlackoutMessage(fsys, taskManager);
         (*state)++;
         break;
     case 4:
@@ -219,6 +219,6 @@ BOOL Task_BlackOut(TaskManager *taskManager) {
     return FALSE;
 }
 
-void FieldTask_CallBlackOut(TaskManager *taskManager) {
-    TaskManager_Call(taskManager, Task_BlackOut, NULL);
+void CallFieldTask_BlackOut(TaskManager *taskManager) {
+    TaskManager_Call(taskManager, FieldTask_BlackOut, NULL);
 }

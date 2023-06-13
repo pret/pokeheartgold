@@ -10,7 +10,7 @@
 .public sub_020552A4
 .public PalleteFadeUntilFinished
 .public sub_0205532C
-.public Field_CreateTask_TradeAnim
+.public CallFieldTask_TradeAnim
 .public AllocMonZeroed
 .public memset
 .public NPCTrade_ReceiveMonToSlot

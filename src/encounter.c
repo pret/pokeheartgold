@@ -365,7 +365,7 @@ static BOOL Task_WildEncounter(TaskManager *man) {
 
         if (IsBattleResultWin(encounter->setup->winFlag) == FALSE) {
             WildEncounter_Delete(encounter);
-            TaskManager_Jump(man, Task_BlackOut, NULL);
+            TaskManager_Jump(man, FieldTask_BlackOut, NULL);
             return FALSE;
         }
 

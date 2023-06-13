@@ -75,9 +75,9 @@ static void sub_02053324(FieldSystem *fsys);
 static void _CopyPlayerPosToLocationWorkFacingSouth(Location *location, FieldSystem *fsys);
 static BOOL _IsPlayerStandingInFrontOfUnionRoomReception(FieldSystem *fsys);
 static void _SetDynamicWarpToUnionRoomExit(FieldSystem *fsys);
-static BOOL sub_02053414(TaskManager *taskManager);
-static BOOL sub_0205348C(TaskManager *taskManager);
-static BOOL sub_02053550(TaskManager *taskManager);
+static BOOL FieldTask_NewGame(TaskManager *taskManager);
+static BOOL FieldTask_ContinueGame_Normal(TaskManager *taskManager);
+static BOOL FieldTask_ContinueGame_CommError(TaskManager *taskManager);
 static BOOL sub_02053688(TaskManager *taskManager);
 static void sub_02053710(TaskManager *taskManager, Location *location);
 static BOOL sub_02053740(TaskManager *taskManager);
@@ -322,7 +322,7 @@ static void _SetDynamicWarpToUnionRoomExit(FieldSystem *fsys) {
     }
 }
 
-static BOOL sub_02053414(TaskManager *taskManager) {
+static BOOL FieldTask_NewGame(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
 
@@ -348,10 +348,10 @@ static BOOL sub_02053414(TaskManager *taskManager) {
 TaskManager *CallFieldTask_NewGame(FieldSystem *fsys) {
     fsys->unk70 = 0;
     RunInitScript(fsys);
-    return FieldSys_CreateTask(fsys, sub_02053414, NULL);
+    return FieldSys_CreateTask(fsys, FieldTask_NewGame, NULL);
 }
 
-static BOOL sub_0205348C(TaskManager *taskManager) {
+static BOOL FieldTask_ContinueGame_Normal(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     ScriptState *scriptState = SaveArray_Flags_Get(fsys->savedata);
     FLYPOINTS_SAVE *flypointsSave;
@@ -391,10 +391,10 @@ static BOOL sub_0205348C(TaskManager *taskManager) {
 
 TaskManager *CallFieldTask_ContinueGame_Normal(FieldSystem *fsys) {
     fsys->unk70 = 0;
-    return FieldSys_CreateTask(fsys, sub_0205348C, NULL);
+    return FieldSys_CreateTask(fsys, FieldTask_ContinueGame_Normal, NULL);
 }
 
-static BOOL sub_02053550(TaskManager *taskManager) {
+static BOOL FieldTask_ContinueGame_CommError(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     struct ErrorContinueEnv *env = TaskManager_GetEnv(taskManager);
     ScriptState *scriptState = SaveArray_Flags_Get(fsys->savedata);
@@ -453,7 +453,7 @@ TaskManager *CallFieldTask_ContinueGame_CommError(FieldSystem *fsys) {
     env->state = 0;
     InitLocation(&env->location, MAP_UNION, -1, 8, 14, DIR_NORTH);
     fsys->unk70 = 2;
-    return FieldSys_CreateTask(fsys, sub_02053550, env);
+    return FieldSys_CreateTask(fsys, FieldTask_ContinueGame_CommError, env);
 }
 
 static BOOL sub_02053688(TaskManager *taskManager) {

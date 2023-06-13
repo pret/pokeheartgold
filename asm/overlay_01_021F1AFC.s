@@ -717,8 +717,8 @@ ov01_021F202C: ; 0x021F202C
 _021F2064: .word ov01_021F2118
 	thumb_func_end ov01_021F202C
 
-	thumb_func_start ScriptCallTask_Surf
-ScriptCallTask_Surf: ; 0x021F2068
+	thumb_func_start CallFieldTask_Surf
+CallFieldTask_Surf: ; 0x021F2068
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	add r6, r2, #0
@@ -758,7 +758,7 @@ _021F20B0:
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScriptCallTask_Surf
+	thumb_func_end CallFieldTask_Surf
 
 	thumb_func_start Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors
 Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors: ; 0x021F20C0
@@ -1351,8 +1351,8 @@ _021F257E:
 _021F258C: .word ov01_021F2628
 	thumb_func_end ov01_021F2548
 
-	thumb_func_start ScriptCallTask_RockClimb
-ScriptCallTask_RockClimb: ; 0x021F2590
+	thumb_func_start CallFieldTask_RockClimb
+CallFieldTask_RockClimb: ; 0x021F2590
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	add r6, r2, #0
@@ -1392,7 +1392,7 @@ _021F25D8:
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ScriptCallTask_RockClimb
+	thumb_func_end CallFieldTask_RockClimb
 
 	thumb_func_start MetatileBehavior_IsRockClimbInDirection
 MetatileBehavior_IsRockClimbInDirection: ; 0x021F25E8
@@ -1818,8 +1818,8 @@ ov01_021F28EC: ; 0x021F28EC
 _021F2904: .word ov01_021F2944
 	thumb_func_end ov01_021F28EC
 
-	thumb_func_start ScriptCallTask_Waterfall
-ScriptCallTask_Waterfall: ; 0x021F2908
+	thumb_func_start CallFieldTask_Waterfall
+CallFieldTask_Waterfall: ; 0x021F2908
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r2, #0
@@ -1845,7 +1845,7 @@ ScriptCallTask_Waterfall: ; 0x021F2908
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021F2940: .word ov01_021F2944
-	thumb_func_end ScriptCallTask_Waterfall
+	thumb_func_end CallFieldTask_Waterfall
 
 	thumb_func_start ov01_021F2944
 ov01_021F2944: ; 0x021F2944
@@ -2424,8 +2424,8 @@ ov01_021F2D68: ; 0x021F2D68
 _021F2DA0: .word ov01_021F2DD0
 	thumb_func_end ov01_021F2D68
 
-	thumb_func_start ScriptCallTask_Whirlpool
-ScriptCallTask_Whirlpool: ; 0x021F2DA4
+	thumb_func_start CallFieldTask_Whirlpool
+CallFieldTask_Whirlpool: ; 0x021F2DA4
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	add r5, r2, #0
@@ -2444,7 +2444,7 @@ ScriptCallTask_Whirlpool: ; 0x021F2DA4
 	bl ov01_021F2D68
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
-	thumb_func_end ScriptCallTask_Whirlpool
+	thumb_func_end CallFieldTask_Whirlpool
 
 	thumb_func_start ov01_021F2DD0
 ov01_021F2DD0: ; 0x021F2DD0

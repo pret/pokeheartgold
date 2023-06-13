@@ -2005,7 +2005,7 @@ BOOL ScrCmd_162(ScriptContext *ctx) {
 
 BOOL ScrCmd_HOF_Credits(ScriptContext *ctx) {
     u16 vsTrainerRed = ScriptReadHalfword(ctx);
-    Task_GameClear(ctx->fsys->taskman, vsTrainerRed);
+    CallTask_GameClear(ctx->fsys->taskman, vsTrainerRed);
     return TRUE;
 }
 
@@ -2244,21 +2244,21 @@ BOOL ScrCmd_840(ScriptContext *ctx) {
 BOOL ScrCmd_RockClimb(ScriptContext *ctx) {
     u16 partySlot = ScriptGetVar(ctx);
     int playerDirection = PlayerAvatar_GetFacingDirection(ctx->fsys->playerAvatar);
-    ScriptCallTask_RockClimb(ctx->taskman, playerDirection, partySlot);
+    CallFieldTask_RockClimb(ctx->taskman, playerDirection, partySlot);
     return TRUE;
 }
 
 BOOL ScrCmd_Surf(ScriptContext *ctx) {
     u16 partySlot = ScriptGetVar(ctx);
     int playerDirection = PlayerAvatar_GetFacingDirection(ctx->fsys->playerAvatar);
-    ScriptCallTask_Surf(ctx->taskman, playerDirection, partySlot);
+    CallFieldTask_Surf(ctx->taskman, playerDirection, partySlot);
     return TRUE;
 }
 
 BOOL ScrCmd_Waterfall(ScriptContext *ctx) {
     u16 partySlot = ScriptGetVar(ctx);
     int playerDirection = PlayerAvatar_GetFacingDirection(ctx->fsys->playerAvatar);
-    ScriptCallTask_Waterfall(ctx->taskman, playerDirection, partySlot);
+    CallFieldTask_Waterfall(ctx->taskman, playerDirection, partySlot);
     return TRUE;
 }
 
@@ -2280,7 +2280,7 @@ BOOL ScrCmd_FlashEffect(ScriptContext *ctx) {
 BOOL ScrCmd_Whirlpool(ScriptContext *ctx) {
     u16 partySlot = ScriptGetVar(ctx);
     int playerDirection = PlayerAvatar_GetFacingDirection(ctx->fsys->playerAvatar);
-    ScriptCallTask_Whirlpool(ctx->taskman, playerDirection, partySlot);
+    CallFieldTask_Whirlpool(ctx->taskman, playerDirection, partySlot);
     return TRUE;
 }
 
@@ -2898,7 +2898,7 @@ BOOL ScrCmd_289(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_OverworldWhiteOut(ScriptContext *ctx) {
-    FieldTask_CallBlackOut(ctx->taskman);
+    CallFieldTask_BlackOut(ctx->taskman);
     return TRUE;
 }
 
@@ -3465,7 +3465,7 @@ BOOL ScrCmd_GetNpcTradeUnusedFlag(ScriptContext *ctx) {
 BOOL ScrCmd_NPCTradeExec(ScriptContext *ctx) {
     NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
     u16 arg = ScriptGetVar(ctx);
-    Field_CreateTask_TradeAnim(ctx->taskman, *p_tradeWork, arg, HEAP_ID_FIELD);
+    CallFieldTask_TradeAnim(ctx->taskman, *p_tradeWork, arg, HEAP_ID_FIELD);
     return TRUE;
 }
 
