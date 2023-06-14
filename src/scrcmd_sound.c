@@ -38,7 +38,7 @@ BOOL ScrCmd_ResetBGM(ScriptContext *ctx) {
 
 BOOL ScrCmd_083(ScriptContext *ctx) {
     u16 seqno = ScriptReadHalfword(ctx);
-    Fsys_SetSavedMusicId(ctx->fsys, seqno);
+    FieldSystem_SetSavedMusicId(ctx->fsys, seqno);
     return FALSE;
 }
 

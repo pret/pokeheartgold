@@ -14,16 +14,16 @@
 
 	.text
 
-	thumb_func_start ov01_PlayerAvatar_OrrTransitionFlags
-ov01_PlayerAvatar_OrrTransitionFlags: ; 0x021F1AFC
+	thumb_func_start Field_PlayerAvatar_OrrTransitionFlags
+Field_PlayerAvatar_OrrTransitionFlags: ; 0x021F1AFC
 	ldr r3, _021F1B00 ; =PlayerAvatar_OrrTransitionFlags
 	bx r3
 	.balign 4, 0
 _021F1B00: .word PlayerAvatar_OrrTransitionFlags
-	thumb_func_end ov01_PlayerAvatar_OrrTransitionFlags
+	thumb_func_end Field_PlayerAvatar_OrrTransitionFlags
 
-	thumb_func_start ov01_PlayerAvatar_ApplyTransitionFlags
-ov01_PlayerAvatar_ApplyTransitionFlags: ; 0x021F1B04
+	thumb_func_start Field_PlayerAvatar_ApplyTransitionFlags
+Field_PlayerAvatar_ApplyTransitionFlags: ; 0x021F1B04
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	mov r6, #0
@@ -49,7 +49,7 @@ _021F1B1E:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021F1B34: .word sPlayerAvatarBitUpdateFuncs
-	thumb_func_end ov01_PlayerAvatar_ApplyTransitionFlags
+	thumb_func_end Field_PlayerAvatar_ApplyTransitionFlags
 
 	thumb_func_start ov01_021F1B38
 ov01_021F1B38: ; 0x021F1B38
@@ -844,11 +844,11 @@ _021F2148:
 	bne _021F2172
 	ldr r0, [r4, #0x1c]
 	mov r1, #0
-	bl Fsys_SetSavedMusicId
+	bl FieldSystem_SetSavedMusicId
 	ldr r0, [r4, #0x1c]
 	ldr r1, _021F2328 ; =0x000003F6
 	mov r2, #1
-	bl Fsys_PlayOrFadeToNewMusicId
+	bl FieldSystem_PlayOrFadeToNewMusicId
 _021F2172:
 	ldr r0, [r4]
 	add r0, r0, #1
@@ -1219,7 +1219,7 @@ _021F2476:
 	add r1, r0, #0
 	ldr r0, [r4, #8]
 	mov r2, #4
-	bl Fsys_PlayOrFadeToNewMusicId
+	bl FieldSystem_PlayOrFadeToNewMusicId
 _021F249A:
 	bl SndRadio_GetSeqNo
 	cmp r0, #0
@@ -2615,12 +2615,12 @@ ov01_021F2EDC: ; 0x021F2EDC
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #0x40
-	bl ov01_PlayerAvatar_OrrTransitionFlags
+	bl Field_PlayerAvatar_OrrTransitionFlags
 	add r0, r4, #0
-	bl ov01_PlayerAvatar_ApplyTransitionFlags
+	bl Field_PlayerAvatar_ApplyTransitionFlags
 	add r0, r4, #0
 	add r1, r5, #0
-	bl ov01_PlayerAvatar_OrrTransitionFlags
+	bl Field_PlayerAvatar_OrrTransitionFlags
 _021F2F22:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021F2EDC
@@ -2650,12 +2650,12 @@ _021F2F4E:
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov01_PlayerAvatar_OrrTransitionFlags
+	bl Field_PlayerAvatar_OrrTransitionFlags
 	add r0, r4, #0
-	bl ov01_PlayerAvatar_ApplyTransitionFlags
+	bl Field_PlayerAvatar_ApplyTransitionFlags
 	add r0, r4, #0
 	add r1, r5, #0
-	bl ov01_PlayerAvatar_OrrTransitionFlags
+	bl Field_PlayerAvatar_OrrTransitionFlags
 _021F2F6C:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2705,9 +2705,9 @@ _021F2FBC:
 	bl MapObject_UnpauseMovement
 	add r0, r6, #0
 	add r1, r4, #0
-	bl ov01_PlayerAvatar_OrrTransitionFlags
+	bl Field_PlayerAvatar_OrrTransitionFlags
 	add r0, r6, #0
-	bl ov01_PlayerAvatar_ApplyTransitionFlags
+	bl Field_PlayerAvatar_ApplyTransitionFlags
 	ldr r0, _021F2FE8 ; =ov01_021F3030
 	ldr r2, _021F2FEC ; =0x0000FFFF
 	add r1, r5, #0

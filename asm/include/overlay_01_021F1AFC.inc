@@ -20,9 +20,9 @@
 .public TaskManager_GetSys
 .public TaskManager_GetEnv
 .public sub_02054790
-.public Fsys_SetSavedMusicId
+.public FieldSystem_SetSavedMusicId
 .public GetMapMusic
-.public Fsys_PlayOrFadeToNewMusicId
+.public FieldSystem_PlayOrFadeToNewMusicId
 .public sub_0205B778
 .public sub_0205B78C
 .public sub_0205B834
@@ -97,8 +97,8 @@
 .public memset
 .public ov01_021E7F00
 .public ov01_021F1640
-.public ov01_PlayerAvatar_OrrTransitionFlags
-.public ov01_PlayerAvatar_ApplyTransitionFlags
+.public Field_PlayerAvatar_OrrTransitionFlags
+.public Field_PlayerAvatar_ApplyTransitionFlags
 .public ov01_021F1D94
 .public CallFieldTask_Surf
 .public Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors

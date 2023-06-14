@@ -116,7 +116,7 @@
 .public Fsys_IsSavGymmickTypeEqualTo
 .public FollowingPokemon_IsActive
 .public sub_0206D494
-.public ov01_PlayerAvatar_ApplyTransitionFlags
+.public Field_PlayerAvatar_ApplyTransitionFlags
 .public ov01_021F2EDC
 .public ov01_021F2F24
 .public ov01_02205990

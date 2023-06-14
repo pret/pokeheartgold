@@ -43,7 +43,7 @@ _0205CB66:
 	add r2, r6, #0
 	bl sub_0205CC4C
 	add r0, r5, #0
-	bl ov01_PlayerAvatar_ApplyTransitionFlags
+	bl Field_PlayerAvatar_ApplyTransitionFlags
 	add r0, r5, #0
 	add r1, r4, #0
 	bl sub_0205D004

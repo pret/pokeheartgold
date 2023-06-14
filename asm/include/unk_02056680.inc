@@ -55,8 +55,8 @@
 .public ov01_021E90DC
 .public ov01_021E971C
 .public ov01_021E9C40
-.public ov01_PlayerAvatar_OrrTransitionFlags
-.public ov01_PlayerAvatar_ApplyTransitionFlags
+.public Field_PlayerAvatar_OrrTransitionFlags
+.public Field_PlayerAvatar_ApplyTransitionFlags
 .public ov01_02205790
 .public ov45_02229EE0
 .public ov45_02229F70

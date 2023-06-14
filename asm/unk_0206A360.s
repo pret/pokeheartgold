@@ -488,9 +488,9 @@ _0206A6D8:
 _0206A714:
 	ldr r0, [r5, #0x40]
 	mov r1, #1
-	bl ov01_PlayerAvatar_OrrTransitionFlags
+	bl Field_PlayerAvatar_OrrTransitionFlags
 	ldr r0, [r5, #0x40]
-	bl ov01_PlayerAvatar_ApplyTransitionFlags
+	bl Field_PlayerAvatar_ApplyTransitionFlags
 	ldrh r0, [r4]
 	add r0, r0, #1
 	strh r0, [r4]

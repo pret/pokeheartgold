@@ -50,8 +50,8 @@
 .public memset
 .public _s32_div_f
 .public gSystem
-.public ov01_PlayerAvatar_OrrTransitionFlags
-.public ov01_PlayerAvatar_ApplyTransitionFlags
+.public Field_PlayerAvatar_OrrTransitionFlags
+.public Field_PlayerAvatar_ApplyTransitionFlags
 .public CreateFishingRodTaskEnv
 .public Task_OverworldFish
 .public ov01_02200400

@@ -69,8 +69,8 @@
 .public Fsys_TaskIsRunning
 .public sub_02053018
 .public sub_02053038
-.public Fsys_GetSurfOverriddenMusicId
-.public Fsys_PlayOrFadeToNewMusicId
+.public FieldSystem_GetSurfOverriddenMusicId
+.public FieldSystem_PlayOrFadeToNewMusicId
 .public sub_02055164
 .public FieldSys_StartBugContestTimer
 .public sub_02055680

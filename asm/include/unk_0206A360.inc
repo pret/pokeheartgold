@@ -37,6 +37,6 @@
 .public G2x_SetBlendAlpha_
 .public gSystem
 .public NNS_G3dGlb
-.public ov01_PlayerAvatar_OrrTransitionFlags
-.public ov01_PlayerAvatar_ApplyTransitionFlags
+.public Field_PlayerAvatar_OrrTransitionFlags
+.public Field_PlayerAvatar_ApplyTransitionFlags
 .public ov01_02205790

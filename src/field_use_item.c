@@ -278,11 +278,11 @@ static BOOL Task_MountOrDismountBicycle(TaskManager *taskManager) {
     case 1:
         if (PlayerAvatar_GetState(fsys->playerAvatar) == PLAYER_STATE_CYCLING) {
             MapObject_UnpauseMovement(PlayerAvatar_GetMapObject(fsys->playerAvatar));
-            ov01_PlayerAvatar_OrrTransitionFlags(fsys->playerAvatar, 1);
-            ov01_PlayerAvatar_ApplyTransitionFlags(fsys->playerAvatar);
-            Fsys_SetSavedMusicId(fsys, 0);
+            Field_PlayerAvatar_OrrTransitionFlags(fsys->playerAvatar, 1);
+            Field_PlayerAvatar_ApplyTransitionFlags(fsys->playerAvatar);
+            FieldSystem_SetSavedMusicId(fsys, 0);
             if (SndRadio_GetSeqNo() == 0) {
-                Fsys_PlayOrFadeToNewMusicId(fsys, Fsys_GetSurfOverriddenMusicId(fsys, fsys->location->mapId), 1);
+                FieldSystem_PlayOrFadeToNewMusicId(fsys, FieldSystem_GetSurfOverriddenMusicId(fsys, fsys->location->mapId), 1);
             }
             ov01_02205790(fsys, PlayerAvatar_GetFacingDirection(fsys->playerAvatar));
             if (FollowingPokemon_IsActive(fsys)) {
@@ -291,12 +291,12 @@ static BOOL Task_MountOrDismountBicycle(TaskManager *taskManager) {
             }
         } else {
             if (SndRadio_GetSeqNo() == 0) {
-                Fsys_SetSavedMusicId(fsys, SEQ_GS_BICYCLE);
-                Fsys_PlayOrFadeToNewMusicId(fsys, SEQ_GS_BICYCLE, 1);
+                FieldSystem_SetSavedMusicId(fsys, SEQ_GS_BICYCLE);
+                FieldSystem_PlayOrFadeToNewMusicId(fsys, SEQ_GS_BICYCLE, 1);
             }
             MapObject_UnpauseMovement(PlayerAvatar_GetMapObject(fsys->playerAvatar));
-            ov01_PlayerAvatar_OrrTransitionFlags(fsys->playerAvatar, 2);
-            ov01_PlayerAvatar_ApplyTransitionFlags(fsys->playerAvatar);
+            Field_PlayerAvatar_OrrTransitionFlags(fsys->playerAvatar, 2);
+            Field_PlayerAvatar_ApplyTransitionFlags(fsys->playerAvatar);
             ov01_02205D68(fsys);
             if (FollowingPokemon_IsActive(fsys)) {
                 sub_02069E84(FollowingPokemon_GetMapObject(fsys), FALSE);
