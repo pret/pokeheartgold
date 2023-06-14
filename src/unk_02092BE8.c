@@ -55,7 +55,7 @@ static void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL a2) 
     ptr->playerGender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(sys)));
     ptr->unk28 = &sys->unk_10C;
     ptr->unk01 = sub_0203DF3C(sys);
-    ptr->mapMusicID = Fsys_GetSurfOverriddenMusicId(sys, ptr->mapID);
+    ptr->mapMusicID = FieldSystem_GetSurfOverriddenMusicId(sys, ptr->mapID);
 
     if (a2) {
         return;

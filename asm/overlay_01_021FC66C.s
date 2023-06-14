@@ -221,9 +221,9 @@ ov01_021FC7DC: ; 0x021FC7DC
 	bl MapObject_ClearHeldMovementIfActive
 	add r0, r4, #0
 	mov r1, #0x20
-	bl ov01_PlayerAvatar_OrrTransitionFlags
+	bl Field_PlayerAvatar_OrrTransitionFlags
 	add r0, r4, #0
-	bl ov01_PlayerAvatar_ApplyTransitionFlags
+	bl Field_PlayerAvatar_ApplyTransitionFlags
 	add r0, r6, #0
 	mov r1, #1
 	bl sub_0205F328
@@ -585,9 +585,9 @@ _021FCA68:
 	bl PlayerAvatar_GetTransitionBits
 	add r1, r0, #0
 	add r0, r5, #0
-	bl ov01_PlayerAvatar_OrrTransitionFlags
+	bl Field_PlayerAvatar_OrrTransitionFlags
 	add r0, r5, #0
-	bl ov01_PlayerAvatar_ApplyTransitionFlags
+	bl Field_PlayerAvatar_ApplyTransitionFlags
 	mov r0, #0
 	str r0, [r4, #0x10]
 	mov r0, #0x10

@@ -24,11 +24,11 @@
 .public MapCoordToMatrixIndex
 .public sub_02054EB0
 .public sub_02054F14
-.public Fsys_SetSavedMusicId
+.public FieldSystem_SetSavedMusicId
 .public Fsys_ClearSavedMusicId
-.public Fsys_GetSurfOverriddenMusicId
+.public FieldSystem_GetSurfOverriddenMusicId
 .public GetMapMusic
-.public Fsys_PlayOrFadeToNewMusicId
+.public FieldSystem_PlayOrFadeToNewMusicId
 .public Trainer_GetEncounterMusic
 .public Fsys_BeginFadeOutMusic
 .public sub_02055110

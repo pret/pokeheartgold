@@ -27,7 +27,7 @@
 .public SaveArray_Flags_Get
 .public BattleSetup_New
 .public BattleSetup_Delete
-.public Fsys_GetSurfOverriddenMusicId
+.public FieldSystem_GetSurfOverriddenMusicId
 .public GetMapMusic
 .public sub_02055198
 .public ScriptState_FlypointFlagAction

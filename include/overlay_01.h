@@ -25,8 +25,8 @@ struct UnkStruct_ov01_021EDC28;
 
 void ov01_021E636C(int a0);
 void ov01_021EFAF8(FieldSystem *fsys);
-void ov01_PlayerAvatar_OrrTransitionFlags(PlayerAvatar *avatar, int a1);
-void ov01_PlayerAvatar_ApplyTransitionFlags(PlayerAvatar *avatar);
+void Field_PlayerAvatar_OrrTransitionFlags(PlayerAvatar *avatar, int a1);
+void Field_PlayerAvatar_ApplyTransitionFlags(PlayerAvatar *avatar);
 void ov01_021F35C4(FieldSystem *fsys, int a1, int *a2);
 u32 GetHoneySweetScentWorkSize(void);
 BOOL Task_HoneyOrSweetScent(TaskManager *taskManager);

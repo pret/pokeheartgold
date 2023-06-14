@@ -224,8 +224,8 @@ static BOOL Task_AnimPlayerShakeTree(TaskManager *taskman) {
     case 1:
         if (MapObject_AreBitsSetForMovementScriptInit(playerObj) == TRUE) {
             MapObject_ClearHeldMovementIfActive(playerObj);
-            ov01_PlayerAvatar_OrrTransitionFlags(fsys->playerAvatar, 0x2000);
-            ov01_PlayerAvatar_ApplyTransitionFlags(fsys->playerAvatar);
+            Field_PlayerAvatar_OrrTransitionFlags(fsys->playerAvatar, 0x2000);
+            Field_PlayerAvatar_ApplyTransitionFlags(fsys->playerAvatar);
             sub_0205F328(playerObj, 0);
             env->timer = 0;
             *state_p += 1;
@@ -236,8 +236,8 @@ static BOOL Task_AnimPlayerShakeTree(TaskManager *taskman) {
             if (MapObject_AreBitsSetForMovementScriptInit(playerObj) == TRUE) {
                 MapObject_ClearHeldMovementIfActive(playerObj);
                 int flags = PlayerAvatar_GetTransitionBits(PlayerAvatar_GetState(fsys->playerAvatar));
-                ov01_PlayerAvatar_OrrTransitionFlags(fsys->playerAvatar, flags);
-                ov01_PlayerAvatar_ApplyTransitionFlags(fsys->playerAvatar);
+                Field_PlayerAvatar_OrrTransitionFlags(fsys->playerAvatar, flags);
+                Field_PlayerAvatar_ApplyTransitionFlags(fsys->playerAvatar);
                 *state_p += 1;
             }
         }

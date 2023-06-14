@@ -281,9 +281,9 @@ _0205686A:
 _020568A8:
 	ldr r0, [r5, #0x40]
 	mov r1, #1
-	bl ov01_PlayerAvatar_OrrTransitionFlags
+	bl Field_PlayerAvatar_OrrTransitionFlags
 	ldr r0, [r5, #0x40]
-	bl ov01_PlayerAvatar_ApplyTransitionFlags
+	bl Field_PlayerAvatar_ApplyTransitionFlags
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]
@@ -413,9 +413,9 @@ _02056986:
 _020569C4:
 	ldr r0, [r5, #0x40]
 	mov r1, #1
-	bl ov01_PlayerAvatar_OrrTransitionFlags
+	bl Field_PlayerAvatar_OrrTransitionFlags
 	ldr r0, [r5, #0x40]
-	bl ov01_PlayerAvatar_ApplyTransitionFlags
+	bl Field_PlayerAvatar_ApplyTransitionFlags
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]
@@ -698,9 +698,9 @@ sub_02056BC8: ; 0x02056BC8
 	mov r1, #2
 	ldr r0, [r4, #0x40]
 	lsl r1, r1, #8
-	bl ov01_PlayerAvatar_OrrTransitionFlags
+	bl Field_PlayerAvatar_OrrTransitionFlags
 	ldr r0, [r4, #0x40]
-	bl ov01_PlayerAvatar_ApplyTransitionFlags
+	bl Field_PlayerAvatar_ApplyTransitionFlags
 	add r0, r5, #0
 	mov r1, #0
 	bl sub_0205F328
@@ -764,9 +764,9 @@ sub_02056C64: ; 0x02056C64
 	mov r1, #2
 	ldr r0, [r4, #0x40]
 	lsl r1, r1, #8
-	bl ov01_PlayerAvatar_OrrTransitionFlags
+	bl Field_PlayerAvatar_OrrTransitionFlags
 	ldr r0, [r4, #0x40]
-	bl ov01_PlayerAvatar_ApplyTransitionFlags
+	bl Field_PlayerAvatar_ApplyTransitionFlags
 	add r0, r5, #0
 	mov r1, #0
 	bl sub_0205F328

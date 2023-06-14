@@ -2319,21 +2319,21 @@ BOOL ScrCmd_PlayerOnBikeCheck(ScriptContext *ctx) {
 BOOL ScrCmd_PlayerOnBikeSet(ScriptContext *ctx) {
     u8 flag = ScriptReadByte(ctx);
     if (flag == TRUE) {
-        Fsys_SetSavedMusicId(ctx->fsys, SEQ_GS_BICYCLE);
-        Fsys_PlayOrFadeToNewMusicId(ctx->fsys, SEQ_GS_BICYCLE, 1);
-        ov01_PlayerAvatar_OrrTransitionFlags(ctx->fsys->playerAvatar, PLAYER_TRANSITION_CYCLING);
-        ov01_PlayerAvatar_ApplyTransitionFlags(ctx->fsys->playerAvatar);
+        FieldSystem_SetSavedMusicId(ctx->fsys, SEQ_GS_BICYCLE);
+        FieldSystem_PlayOrFadeToNewMusicId(ctx->fsys, SEQ_GS_BICYCLE, 1);
+        Field_PlayerAvatar_OrrTransitionFlags(ctx->fsys->playerAvatar, PLAYER_TRANSITION_CYCLING);
+        Field_PlayerAvatar_ApplyTransitionFlags(ctx->fsys->playerAvatar);
     } else {
-        ov01_PlayerAvatar_OrrTransitionFlags(ctx->fsys->playerAvatar, PLAYER_TRANSITION_WALKING);
-        ov01_PlayerAvatar_ApplyTransitionFlags(ctx->fsys->playerAvatar);
-        Fsys_SetSavedMusicId(ctx->fsys, 0);
-        Fsys_PlayOrFadeToNewMusicId(ctx->fsys, Fsys_GetSurfOverriddenMusicId(ctx->fsys, ctx->fsys->location->mapId), 1);
+        Field_PlayerAvatar_OrrTransitionFlags(ctx->fsys->playerAvatar, PLAYER_TRANSITION_WALKING);
+        Field_PlayerAvatar_ApplyTransitionFlags(ctx->fsys->playerAvatar);
+        FieldSystem_SetSavedMusicId(ctx->fsys, 0);
+        FieldSystem_PlayOrFadeToNewMusicId(ctx->fsys, FieldSystem_GetSurfOverriddenMusicId(ctx->fsys, ctx->fsys->location->mapId), 1);
     }
     return FALSE;
 }
 
 BOOL ScrCmd_591(ScriptContext *ctx) {
-    Fsys_SetSavedMusicId(ctx->fsys, SEQ_PL_BICYCLE);
+    FieldSystem_SetSavedMusicId(ctx->fsys, SEQ_PL_BICYCLE);
     return FALSE;
 }
 
@@ -2356,7 +2356,7 @@ BOOL ScrCmd_SetAvatarBits(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_UpdateAvatarState(ScriptContext *ctx) {
-    ov01_PlayerAvatar_ApplyTransitionFlags(ctx->fsys->playerAvatar);
+    Field_PlayerAvatar_ApplyTransitionFlags(ctx->fsys->playerAvatar);
     return FALSE;
 }
 
