@@ -147,7 +147,7 @@
 .public TaskManager_GetSys
 .public TaskManager_GetEnv
 .public TaskManager_GetStatePtr
-.public FieldSystem_GetSurfOverriddenMusicId
+.public FieldSystem_GetOverriddenMusicId
 .public sub_0205525C
 .public sub_020552A4
 .public Field_GetTimeOfDay

@@ -282,7 +282,7 @@ static BOOL Task_MountOrDismountBicycle(TaskManager *taskManager) {
             Field_PlayerAvatar_ApplyTransitionFlags(fsys->playerAvatar);
             FieldSystem_SetSavedMusicId(fsys, 0);
             if (SndRadio_GetSeqNo() == 0) {
-                FieldSystem_PlayOrFadeToNewMusicId(fsys, FieldSystem_GetSurfOverriddenMusicId(fsys, fsys->location->mapId), 1);
+                FieldSystem_PlayOrFadeToNewMusicId(fsys, FieldSystem_GetOverriddenMusicId(fsys, fsys->location->mapId), 1);
             }
             ov01_02205790(fsys, PlayerAvatar_GetFacingDirection(fsys->playerAvatar));
             if (FollowingPokemon_IsActive(fsys)) {
