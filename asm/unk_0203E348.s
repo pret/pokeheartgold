@@ -166,8 +166,8 @@ _0203E394: .word _020FA190
 	thumb_func_start Save_CurrentLocation_BackUp
 Save_CurrentLocation_BackUp: ; 0x0203E398
 	push {r3, lr}
-	bl Save_FlyPoints_Get
-	bl FlyPoints_GetPosition
+	bl Save_LocalFieldData_Get
+	bl LocalFieldData_GetCurrentPosition
 	bl LocationData_BackUp
 	pop {r3, pc}
 	thumb_func_end Save_CurrentLocation_BackUp
@@ -3097,7 +3097,7 @@ _0203FA0C:
 	ldr r1, [r4, #0x20]
 	add r0, r4, #0
 	ldr r1, [r1]
-	bl Fsys_GetSurfOverriddenMusicId
+	bl FieldSystem_GetOverriddenMusicId
 	add r1, sp, #0
 	strh r0, [r1, #0xc]
 	ldr r0, [r4, #0x10]

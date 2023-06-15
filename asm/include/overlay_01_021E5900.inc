@@ -59,9 +59,9 @@
 .public Field_InitMapObjectsFromZoneEventData
 .public Field_GetNumObjectEvents
 .public Field_GetObjectEvents
-.public FlyPoints_GetWeatherType
-.public FlyPoints_GetCameraType
-.public Save_FlyPoints_Get
+.public LocalFieldData_GetWeatherType
+.public LocalFieldData_GetCameraType
+.public Save_LocalFieldData_Get
 .public FieldSys_GetSaveDataPtr
 .public sub_0203E348
 .public TryStartMapScriptByType
@@ -69,8 +69,8 @@
 .public Fsys_TaskIsRunning
 .public sub_02053018
 .public sub_02053038
-.public Fsys_GetSurfOverriddenMusicId
-.public Fsys_PlayOrFadeToNewMusicId
+.public FieldSystem_GetOverriddenMusicId
+.public FieldSystem_PlayOrFadeToNewMusicId
 .public sub_02055164
 .public FieldSys_StartBugContestTimer
 .public sub_02055680

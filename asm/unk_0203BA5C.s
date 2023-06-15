@@ -4,8 +4,8 @@
 	.include "global.inc"
 
 	.rodata
-	.macro spawn flagIdx, isDeathSpawn, isFlyPoint, deathSpawnMapNo, deathSpawnX, deathSpawnY, flyPointMapNo, flyPointX, flyPointY, specialWarpMapNo, specialWarpX, specialWarpY
-	.short (\flagIdx & 0xFF) | ((\isDeathSpawn & 1) << 8) | ((\isFlyPoint & 1) << 9), \deathSpawnMapNo
+	.macro spawn flagIdx, isBlackoutSpawn, isFlyPoint, deathSpawnMapNo, deathSpawnX, deathSpawnY, flyPointMapNo, flyPointX, flyPointY, specialWarpMapNo, specialWarpX, specialWarpY
+	.short (\flagIdx & 0xFF) | ((\isBlackoutSpawn & 1) << 8) | ((\isFlyPoint & 1) << 9), \deathSpawnMapNo
 	.short \deathSpawnX | (\deathSpawnY << 8)
 	.short \flyPointMapNo, \flyPointX, \flyPointY, \specialWarpMapNo, \specialWarpX, \specialWarpY
 	.endm

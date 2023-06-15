@@ -241,8 +241,8 @@
 .public TrainerHouseSet_SetZero
 .public TrainerHouseSet_CheckHasData
 .public TrainerHouseTrainer_Compare
-.public FlyPoints_GetPosition
-.public Save_FlyPoints_Get
+.public LocalFieldData_GetCurrentPosition
+.public Save_LocalFieldData_Get
 .public SaveArray_Flags_Get
 .public CheckFlagInArray
 .public SetFlagInArray

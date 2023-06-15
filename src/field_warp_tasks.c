@@ -1,5 +1,5 @@
 #include "script.h"
-#include "save_flypoints.h"
+#include "save_local_field_data.h"
 #include "map_events.h"
 #include "system.h"
 #include "event_data.h"
@@ -75,9 +75,9 @@ static void sub_02053324(FieldSystem *fsys);
 static void _CopyPlayerPosToLocationWorkFacingSouth(Location *location, FieldSystem *fsys);
 static BOOL _IsPlayerStandingInFrontOfUnionRoomReception(FieldSystem *fsys);
 static void _SetDynamicWarpToUnionRoomExit(FieldSystem *fsys);
-static BOOL sub_02053414(TaskManager *taskManager);
-static BOOL sub_0205348C(TaskManager *taskManager);
-static BOOL sub_02053550(TaskManager *taskManager);
+static BOOL FieldTask_NewGame(TaskManager *taskManager);
+static BOOL FieldTask_ContinueGame_Normal(TaskManager *taskManager);
+static BOOL FieldTask_ContinueGame_CommError(TaskManager *taskManager);
 static BOOL sub_02053688(TaskManager *taskManager);
 static void sub_02053710(TaskManager *taskManager, Location *location);
 static BOOL sub_02053740(TaskManager *taskManager);
@@ -138,8 +138,8 @@ static void sub_02052F30(FieldSystem *fsys) {
 }
 
 static void sub_02052F94(FieldSystem *fsys, Location *location) {
-    FLYPOINTS_SAVE *flypointsSave = Save_FlyPoints_Get(fsys->savedata);
-    Location *r2 = sub_0203B960(flypointsSave);
+    LocalFieldData *localFieldData = Save_LocalFieldData_Get(fsys->savedata);
+    Location *r2 = LocalFieldData_GetPreviousPosition(localFieldData);
     const WARP_EVENT *warp;
     if (location != NULL) {
         *r2 = *fsys->location;
@@ -151,7 +151,7 @@ static void sub_02052F94(FieldSystem *fsys, Location *location) {
         fsys->location->x = warp->x;
         fsys->location->y = warp->y;
         if (warp->anchor == 0x100) {
-            *FlyPoints_GetDynamicWarp(flypointsSave) = *sub_0203B95C(flypointsSave);
+            *LocalFieldData_GetDynamicWarp(localFieldData) = *LocalFieldData_GetEntrancePosition(localFieldData);
         }
     }
 }
@@ -163,7 +163,7 @@ void sub_02053018(FieldSystem *fsys) {
 
 void sub_02053038(FieldSystem *fsys, BOOL isConnection) {
     u32 mapId = fsys->location->mapId;
-    FLYPOINTS_SAVE *flyPoints = Save_FlyPoints_Get(fsys->savedata);
+    LocalFieldData *localFieldData = Save_LocalFieldData_Get(fsys->savedata);
     ScriptState *scriptState;
     u16 weather;
     u16 spawnId;
@@ -195,16 +195,16 @@ void sub_02053038(FieldSystem *fsys, BOOL isConnection) {
     if (weather == 11 && SysFlagFlashCheck(scriptState) == TRUE) {
         weather = 12;
     }
-    FlyPoints_SetWeatherType(flyPoints, weather);
+    LocalFieldData_SetWeatherType(localFieldData, weather);
     if (isConnection) {
-        GF_ASSERT(FlyPoints_GetCameraType(flyPoints) == MapHeader_GetCameraType(mapId));
+        GF_ASSERT(LocalFieldData_GetCameraType(localFieldData) == MapHeader_GetCameraType(mapId));
     } else {
-        FlyPoints_SetCameraType(flyPoints, MapHeader_GetCameraType(mapId));
+        LocalFieldData_SetCameraType(localFieldData, MapHeader_GetCameraType(mapId));
     }
     if (!isConnection) {
         spawnId = MapHeader_GetSpawnIdForDeathWarp(mapId);
         if (spawnId != 0) {
-            FlyPoints_SetDeathSpawn(flyPoints, spawnId);
+            LocalFieldData_SetBlackoutSpawn(localFieldData, spawnId);
         }
     }
     TryStartMapScriptByType(fsys, 2);
@@ -217,16 +217,16 @@ void sub_02053038(FieldSystem *fsys, BOOL isConnection) {
 
 static void sub_0205316C(FieldSystem *fsys) {
     u32 gender;
-    struct FlypointsPlayerSub *avatar_sub;
+    struct PlayerSaveData *playerSaveData;
     if (fsys->unkAC) {
         gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fsys->savedata));
-        avatar_sub = SaveFlyPoints_GetPlayerSub(Save_FlyPoints_Get(fsys->savedata));
-        fsys->playerAvatar = sub_0205C390(fsys->mapObjectMan, fsys->location->x, fsys->location->y, fsys->location->direction, avatar_sub->unk4, gender, 2, avatar_sub);
+        playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fsys->savedata));
+        fsys->playerAvatar = sub_0205C390(fsys->mapObjectMan, fsys->location->x, fsys->location->y, fsys->location->direction, playerSaveData->unk4, gender, 2, playerSaveData);
     } else {
         fsys->mapObjectMan = sub_0205E0BC(fsys, 64, HEAP_ID_BATTLE);
         gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fsys->savedata));
-        avatar_sub = SaveFlyPoints_GetPlayerSub(Save_FlyPoints_Get(fsys->savedata));
-        fsys->playerAvatar = sub_0205C390(fsys->mapObjectMan, fsys->location->x, fsys->location->y, fsys->location->direction, avatar_sub->unk4, gender, 2, avatar_sub);
+        playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fsys->savedata));
+        fsys->playerAvatar = sub_0205C390(fsys->mapObjectMan, fsys->location->x, fsys->location->y, fsys->location->direction, playerSaveData->unk4, gender, 2, playerSaveData);
         sub_020699F8(fsys->mapObjectMan, fsys->location->x, fsys->location->y, fsys->location->direction, fsys->location->mapId);
         Field_InitMapObjectsFromZoneEventData(fsys);
         sub_0205F55C(fsys->mapObjectMan);
@@ -246,13 +246,13 @@ static void sub_02053210(FieldSystem *fsys) {
 
 static void sub_0205323C(FieldSystem *fsys) {
     u32 gender;
-    struct FlypointsPlayerSub *avatar_sub;
+    struct PlayerSaveData *playerSaveData;
 
     fsys->mapObjectMan = sub_0205E0BC(fsys, 64, HEAP_ID_BATTLE);
     Fsys_RestoreMapObjectsFromSave(fsys);
-    avatar_sub = SaveFlyPoints_GetPlayerSub(Save_FlyPoints_Get(fsys->savedata));
+    playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fsys->savedata));
     gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fsys->savedata));
-    fsys->playerAvatar = sub_0205C408(fsys->mapObjectMan, avatar_sub, gender);
+    fsys->playerAvatar = sub_0205C408(fsys->mapObjectMan, playerSaveData, gender);
     sub_02069B74(fsys->mapObjectMan, fsys->location->mapId);
     sub_0205F55C(fsys->mapObjectMan);
 }
@@ -313,7 +313,7 @@ static BOOL _IsPlayerStandingInFrontOfUnionRoomReception(FieldSystem *fsys) {
 }
 
 static void _SetDynamicWarpToUnionRoomExit(FieldSystem *fsys) {
-    Location *dynamicWarp = FlyPoints_GetDynamicWarp(Save_FlyPoints_Get(fsys->savedata));
+    Location *dynamicWarp = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fsys->savedata));
     ScriptState *scriptState = SaveArray_Flags_Get(fsys->savedata); // unused
     if (MapHeader_MapIsPokemonLeagueLobby(fsys->location->mapId) == TRUE) {
         InitLocation(dynamicWarp, fsys->location->mapId, -1, 4, 11, DIR_SOUTH);
@@ -322,7 +322,7 @@ static void _SetDynamicWarpToUnionRoomExit(FieldSystem *fsys) {
     }
 }
 
-static BOOL sub_02053414(TaskManager *taskManager) {
+static BOOL FieldTask_NewGame(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
 
@@ -348,24 +348,24 @@ static BOOL sub_02053414(TaskManager *taskManager) {
 TaskManager *CallFieldTask_NewGame(FieldSystem *fsys) {
     fsys->unk70 = 0;
     RunInitScript(fsys);
-    return FieldSys_CreateTask(fsys, sub_02053414, NULL);
+    return FieldSys_CreateTask(fsys, FieldTask_NewGame, NULL);
 }
 
-static BOOL sub_0205348C(TaskManager *taskManager) {
+static BOOL FieldTask_ContinueGame_Normal(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     ScriptState *scriptState = SaveArray_Flags_Get(fsys->savedata);
-    FLYPOINTS_SAVE *flypointsSave;
+    LocalFieldData *localFieldData;
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
 
     switch (*state_p) {
     case 0:
         if (CheckFlag966(scriptState)) {
-            flypointsSave = Save_FlyPoints_Get(fsys->savedata);
+            localFieldData = Save_LocalFieldData_Get(fsys->savedata);
             if (_IsPlayerStandingInFrontOfUnionRoomReception(fsys)) {
                 _SetDynamicWarpToUnionRoomExit(fsys);
             }
             ClearFlag966(scriptState);
-            sub_02052F94(fsys, FlyPoints_GetDynamicWarp(flypointsSave));
+            sub_02052F94(fsys, LocalFieldData_GetDynamicWarp(localFieldData));
             sub_02053284(fsys);
             sub_02053038(fsys, FALSE);
             sub_0205316C(fsys);
@@ -391,10 +391,10 @@ static BOOL sub_0205348C(TaskManager *taskManager) {
 
 TaskManager *CallFieldTask_ContinueGame_Normal(FieldSystem *fsys) {
     fsys->unk70 = 0;
-    return FieldSys_CreateTask(fsys, sub_0205348C, NULL);
+    return FieldSys_CreateTask(fsys, FieldTask_ContinueGame_Normal, NULL);
 }
 
-static BOOL sub_02053550(TaskManager *taskManager) {
+static BOOL FieldTask_ContinueGame_CommError(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
     struct ErrorContinueEnv *env = TaskManager_GetEnv(taskManager);
     ScriptState *scriptState = SaveArray_Flags_Get(fsys->savedata);
@@ -453,7 +453,7 @@ TaskManager *CallFieldTask_ContinueGame_CommError(FieldSystem *fsys) {
     env->state = 0;
     InitLocation(&env->location, MAP_UNION, -1, 8, 14, DIR_NORTH);
     fsys->unk70 = 2;
-    return FieldSys_CreateTask(fsys, sub_02053550, env);
+    return FieldSys_CreateTask(fsys, FieldTask_ContinueGame_CommError, env);
 }
 
 static BOOL sub_02053688(TaskManager *taskManager) {
@@ -936,7 +936,7 @@ static BOOL sub_02053E5C(TaskManager *taskManager) {
 }
 
 void sub_02053F14(FieldSystem *fsys) {
-    Location *location = FlyPoints_GetDynamicWarp(Save_FlyPoints_Get(fsys->savedata));
+    Location *location = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fsys->savedata));
     struct UnkTaskEnv_02053E5C *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct UnkTaskEnv_02053E5C));
     MI_CpuClear8(env, sizeof(struct UnkTaskEnv_02053E5C));
     env->location = *location;
@@ -995,7 +995,7 @@ static BOOL sub_02053F70(TaskManager *taskManager) {
 
 void sub_02054030(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
-    Location *location = FlyPoints_GetDynamicWarp(Save_FlyPoints_Get(fsys->savedata));
+    Location *location = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fsys->savedata));
     struct UnkTaskEnv_02053E5C *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct UnkTaskEnv_02053E5C));
     MI_CpuClear8(env, sizeof(struct UnkTaskEnv_02053E5C));
     _CopyPlayerPosToLocationWorkFacingSouth(location, fsys);
@@ -1040,7 +1040,7 @@ static BOOL sub_020540A4(TaskManager *taskManager) {
 void sub_0205412C(TaskManager *taskManager, u32 mapId, int warpId, int x, int y, int direction) {
     struct UnkTaskEnv_02053688 *env;
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
-    _CopyPlayerPosToLocationWorkFacingSouth(FlyPoints_GetDynamicWarp(Save_FlyPoints_Get(fsys->savedata)), fsys);
+    _CopyPlayerPosToLocationWorkFacingSouth(LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fsys->savedata)), fsys);
     fsys->unk70 = 3;
     env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct UnkTaskEnv_02053688));
     {
@@ -1059,7 +1059,7 @@ void sub_0205412C(TaskManager *taskManager, u32 mapId, int warpId, int x, int y,
 
 void sub_02054190(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetSys(taskManager);
-    Location *location = FlyPoints_GetDynamicWarp(Save_FlyPoints_Get(fsys->savedata));
+    Location *location = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fsys->savedata));
     fsys->unk70 = 0;
     sub_02053710(fsys->taskman, location);
 }

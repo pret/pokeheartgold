@@ -43,7 +43,7 @@ _0205CB66:
 	add r2, r6, #0
 	bl sub_0205CC4C
 	add r0, r5, #0
-	bl ov01_PlayerAvatar_ApplyTransitionFlags
+	bl Field_PlayerAvatar_ApplyTransitionFlags
 	add r0, r5, #0
 	add r1, r4, #0
 	bl sub_0205D004
@@ -1286,8 +1286,8 @@ _0205D536:
 _0205D544:
 	add r0, r6, #0
 	mov r4, #0xc
-	bl sub_0205C798
-	bl FlypointsPlayerSub_CheckRunningShoes
+	bl PlayerAvatar_GetPlayerSaveData
+	bl PlayerSaveData_CheckRunningShoes
 	cmp r0, #1
 	bne _0205D564
 	add r1, sp, #0x18

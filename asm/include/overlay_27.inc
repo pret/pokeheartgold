@@ -90,9 +90,9 @@
 .public PlayerProfile_GetTrainerGender
 .public sub_0203769C
 .public sub_02037958
-.public SaveFlyPoints_GetPlayerSub
-.public FlyPoints_GetSafariBallsCounter
-.public Save_FlyPoints_Get
+.public LocalFieldData_GetPlayer
+.public LocalFieldData_GetSafariBallsCounter
+.public Save_LocalFieldData_Get
 .public sub_0203C3CC
 .public Fsys_GetFacingObject
 .public sub_0203DF8C
@@ -110,7 +110,7 @@
 .public sub_0205C6D4
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_GetState
-.public FlypointsPlayerSub_CheckRunningShoes
+.public PlayerSaveData_CheckRunningShoes
 .public FieldSys_GetPlayerAvatar
 .public sub_0205CB38
 .public sub_0205CB40

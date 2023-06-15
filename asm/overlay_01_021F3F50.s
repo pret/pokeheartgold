@@ -20,8 +20,8 @@ ov01_021F3F50: ; 0x021F3F50
 	ldr r4, [r1, #0xc]
 	add r5, r0, #0
 	add r0, r4, #0
-	bl Save_FlyPoints_Get
-	bl FlyPoints_GetPosition
+	bl Save_LocalFieldData_Get
+	bl LocalFieldData_GetCurrentPosition
 	add r6, r0, #0
 	add r0, r4, #0
 	bl Save_Pokedex_Get

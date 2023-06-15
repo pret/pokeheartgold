@@ -41,13 +41,13 @@
 .public sub_0205C76C
 .public sub_0205C774
 .public sub_0205C778
-.public sub_0205C798
+.public PlayerAvatar_GetPlayerSaveData
 .public sub_0205C79C
 .public sub_0205C7A0
 .public sub_0205C7A4
 .public sub_0205C7A8
 .public sub_0205C7B4
-.public FlypointsPlayerSub_CheckRunningShoes
+.public PlayerSaveData_CheckRunningShoes
 .public sub_0205CA20
 .public sub_0205CA38
 .public sub_0205CA4C
@@ -116,7 +116,7 @@
 .public Fsys_IsSavGymmickTypeEqualTo
 .public FollowingPokemon_IsActive
 .public sub_0206D494
-.public ov01_PlayerAvatar_ApplyTransitionFlags
+.public Field_PlayerAvatar_ApplyTransitionFlags
 .public ov01_021F2EDC
 .public ov01_021F2F24
 .public ov01_02205990

@@ -29133,12 +29133,12 @@ ov101_021F57B8: ; 0x021F57B8
 	add r6, r1, #0
 	add r7, r2, #0
 	str r3, [sp]
-	bl Save_FlyPoints_Get
+	bl Save_LocalFieldData_Get
 	add r4, r0, #0
-	bl SaveFlyPoints_GetPlayerSub
+	bl LocalFieldData_GetPlayer
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl FlyPoints_GetMusicIdAddr
+	bl LocalFieldData_GetMusicIdAddr
 	str r0, [sp, #8]
 	ldr r0, [sp, #0x30]
 	mov r1, #0x74

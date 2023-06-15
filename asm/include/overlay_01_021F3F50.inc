@@ -37,8 +37,8 @@
 .public GetIGTHours
 .public GetIGTMinutes
 .public MapHeader_GetMapSec
-.public FlyPoints_GetPosition
-.public Save_FlyPoints_Get
+.public LocalFieldData_GetCurrentPosition
+.public Save_LocalFieldData_Get
 .public Fsys_SyncMapObjectsToSave
 .public PlayerAvatar_GetFacingDirection
 .public GetPlayerXCoord

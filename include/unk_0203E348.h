@@ -133,6 +133,7 @@ static inline PCBoxAppData *PCBoxAppData_New(ScriptContext *ctx) {
     return ret;
 }
 
+//todo convert these to an enum
 #define NAMINGSCREEN_PLAYER             0
 #define NAMINGSCREEN_POKEMON            1
 #define NAMINGSCREEN_BOX                2

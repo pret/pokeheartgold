@@ -58,8 +58,8 @@
 .public sub_02031990
 .public sub_02039998
 .public sub_0203A040
-.public FlyPoints_GetPosition
-.public Save_FlyPoints_Get
+.public LocalFieldData_GetCurrentPosition
+.public Save_LocalFieldData_Get
 .public FieldSys_LaunchApplication
 .public FieldSys_GetSaveDataPtr
 .public LocationData_BackUp
@@ -147,7 +147,7 @@
 .public TaskManager_GetSys
 .public TaskManager_GetEnv
 .public TaskManager_GetStatePtr
-.public Fsys_GetSurfOverriddenMusicId
+.public FieldSystem_GetOverriddenMusicId
 .public sub_0205525C
 .public sub_020552A4
 .public Field_GetTimeOfDay

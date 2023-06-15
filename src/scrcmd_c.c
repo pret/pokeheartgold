@@ -34,7 +34,7 @@
 #include "unk_02055244.h"
 #include "field_system.h"
 #include "fashion_case.h"
-#include "save_flypoints.h"
+#include "save_local_field_data.h"
 #include "unk_0206B910.h"
 #include "pokegear.h"
 #include "unk_02068FC8.h"
@@ -1733,7 +1733,7 @@ BOOL ScrCmd_GetPhoneBookRematch(ScriptContext *ctx) {
 
 BOOL ScrCmd_684(ScriptContext *ctx) {
     u16 *p_dest = ScriptGetVarPointer(ctx);
-    *p_dest = FlyPoints_GetWeatherType(Save_FlyPoints_Get(ctx->fsys->savedata));
+    *p_dest = LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(ctx->fsys->savedata));
     return FALSE;
 }
 
@@ -2005,7 +2005,7 @@ BOOL ScrCmd_162(ScriptContext *ctx) {
 
 BOOL ScrCmd_HOF_Credits(ScriptContext *ctx) {
     u16 vsTrainerRed = ScriptReadHalfword(ctx);
-    Task_GameClear(ctx->fsys->taskman, vsTrainerRed);
+    CallTask_GameClear(ctx->fsys->taskman, vsTrainerRed);
     return TRUE;
 }
 
@@ -2052,7 +2052,7 @@ BOOL ScrCmd_ChooseStarter(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_333(ScriptContext *ctx) { //todo: bag screen
+BOOL ScrCmd_333(ScriptContext *ctx) { //todo: bag select screen
     void **p_work;
     u8 r4 = ScriptReadByte(ctx) != 0 ? 1 : 0;
     p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
@@ -2062,7 +2062,7 @@ BOOL ScrCmd_333(ScriptContext *ctx) { //todo: bag screen
     return TRUE;
 }
 
-BOOL ScrCmd_334(ScriptContext *ctx) { //todo: bag select screen
+BOOL ScrCmd_334(ScriptContext *ctx) { //todo: bag select screen result
     u16 *r5 = ScriptGetVarPointer(ctx);
     void **p_work = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     GF_ASSERT(*p_work != NULL);
@@ -2215,7 +2215,7 @@ BOOL ScrCmd_449(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_445(ScriptContext *ctx) {
-    Location *location = sub_0203B960(Save_FlyPoints_Get(ctx->fsys->savedata));
+    Location *location = LocalFieldData_GetPreviousPosition(Save_LocalFieldData_Get(ctx->fsys->savedata));
     u16 *ret_p = ScriptGetVarPointer(ctx);
     *ret_p = location->mapId;
     return FALSE;
@@ -2244,21 +2244,21 @@ BOOL ScrCmd_840(ScriptContext *ctx) {
 BOOL ScrCmd_RockClimb(ScriptContext *ctx) {
     u16 partySlot = ScriptGetVar(ctx);
     int playerDirection = PlayerAvatar_GetFacingDirection(ctx->fsys->playerAvatar);
-    ScriptCallTask_RockClimb(ctx->taskman, playerDirection, partySlot);
+    CallFieldTask_RockClimb(ctx->taskman, playerDirection, partySlot);
     return TRUE;
 }
 
 BOOL ScrCmd_Surf(ScriptContext *ctx) {
     u16 partySlot = ScriptGetVar(ctx);
     int playerDirection = PlayerAvatar_GetFacingDirection(ctx->fsys->playerAvatar);
-    ScriptCallTask_Surf(ctx->taskman, playerDirection, partySlot);
+    CallFieldTask_Surf(ctx->taskman, playerDirection, partySlot);
     return TRUE;
 }
 
 BOOL ScrCmd_Waterfall(ScriptContext *ctx) {
     u16 partySlot = ScriptGetVar(ctx);
     int playerDirection = PlayerAvatar_GetFacingDirection(ctx->fsys->playerAvatar);
-    ScriptCallTask_Waterfall(ctx->taskman, playerDirection, partySlot);
+    CallFieldTask_Waterfall(ctx->taskman, playerDirection, partySlot);
     return TRUE;
 }
 
@@ -2271,16 +2271,16 @@ BOOL ScrCmd_180(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_FlashEffect(ScriptContext *ctx) {
-    FLYPOINTS_SAVE *flypointsSave = Save_FlyPoints_Get(ctx->fsys->savedata);
-    FlyPoints_SetWeatherType(flypointsSave, 12);
-    FieldWeatherUpdate_UsedFlash(ctx->fsys->unk4->unk_0C, FlyPoints_GetWeatherType(flypointsSave));
+    LocalFieldData *localFieldData = Save_LocalFieldData_Get(ctx->fsys->savedata);
+    LocalFieldData_SetWeatherType(localFieldData, 12);
+    FieldWeatherUpdate_UsedFlash(ctx->fsys->unk4->unk_0C, LocalFieldData_GetWeatherType(localFieldData)); //CallFieldTask_Flash?
     return TRUE;
 }
 
 BOOL ScrCmd_Whirlpool(ScriptContext *ctx) {
     u16 partySlot = ScriptGetVar(ctx);
     int playerDirection = PlayerAvatar_GetFacingDirection(ctx->fsys->playerAvatar);
-    ScriptCallTask_Whirlpool(ctx->taskman, playerDirection, partySlot);
+    CallFieldTask_Whirlpool(ctx->taskman, playerDirection, partySlot);
     return TRUE;
 }
 
@@ -2319,21 +2319,21 @@ BOOL ScrCmd_PlayerOnBikeCheck(ScriptContext *ctx) {
 BOOL ScrCmd_PlayerOnBikeSet(ScriptContext *ctx) {
     u8 flag = ScriptReadByte(ctx);
     if (flag == TRUE) {
-        Fsys_SetSavedMusicId(ctx->fsys, SEQ_GS_BICYCLE);
-        Fsys_PlayOrFadeToNewMusicId(ctx->fsys, SEQ_GS_BICYCLE, 1);
-        ov01_PlayerAvatar_OrrTransitionFlags(ctx->fsys->playerAvatar, PLAYER_TRANSITION_CYCLING);
-        ov01_PlayerAvatar_ApplyTransitionFlags(ctx->fsys->playerAvatar);
+        FieldSystem_SetSavedMusicId(ctx->fsys, SEQ_GS_BICYCLE);
+        FieldSystem_PlayOrFadeToNewMusicId(ctx->fsys, SEQ_GS_BICYCLE, 1);
+        Field_PlayerAvatar_OrrTransitionFlags(ctx->fsys->playerAvatar, PLAYER_TRANSITION_CYCLING);
+        Field_PlayerAvatar_ApplyTransitionFlags(ctx->fsys->playerAvatar);
     } else {
-        ov01_PlayerAvatar_OrrTransitionFlags(ctx->fsys->playerAvatar, PLAYER_TRANSITION_WALKING);
-        ov01_PlayerAvatar_ApplyTransitionFlags(ctx->fsys->playerAvatar);
-        Fsys_SetSavedMusicId(ctx->fsys, 0);
-        Fsys_PlayOrFadeToNewMusicId(ctx->fsys, Fsys_GetSurfOverriddenMusicId(ctx->fsys, ctx->fsys->location->mapId), 1);
+        Field_PlayerAvatar_OrrTransitionFlags(ctx->fsys->playerAvatar, PLAYER_TRANSITION_WALKING);
+        Field_PlayerAvatar_ApplyTransitionFlags(ctx->fsys->playerAvatar);
+        FieldSystem_SetSavedMusicId(ctx->fsys, 0);
+        FieldSystem_PlayOrFadeToNewMusicId(ctx->fsys, FieldSystem_GetOverriddenMusicId(ctx->fsys, ctx->fsys->location->mapId), 1);
     }
     return FALSE;
 }
 
 BOOL ScrCmd_591(ScriptContext *ctx) {
-    Fsys_SetSavedMusicId(ctx->fsys, SEQ_PL_BICYCLE);
+    FieldSystem_SetSavedMusicId(ctx->fsys, SEQ_PL_BICYCLE);
     return FALSE;
 }
 
@@ -2356,7 +2356,7 @@ BOOL ScrCmd_SetAvatarBits(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_UpdateAvatarState(ScriptContext *ctx) {
-    ov01_PlayerAvatar_ApplyTransitionFlags(ctx->fsys->playerAvatar);
+    Field_PlayerAvatar_ApplyTransitionFlags(ctx->fsys->playerAvatar);
     return FALSE;
 }
 
@@ -2482,13 +2482,13 @@ BOOL ScrCmd_SetDynamicWarp(ScriptContext *ctx) {
     warp.x = ScriptGetVar(ctx);
     warp.y = ScriptGetVar(ctx);
     warp.direction = ScriptGetVar(ctx);
-    FlyPoints_SetDynamicWarp(Save_FlyPoints_Get(ctx->fsys->savedata), &warp);
+    LocalFieldData_SetDynamicWarp(Save_LocalFieldData_Get(ctx->fsys->savedata), &warp);
     return FALSE;
 }
 
 BOOL ScrCmd_GetDynamicWarpFloorNo(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    Location *warp = FlyPoints_GetDynamicWarp(Save_FlyPoints_Get(ctx->fsys->savedata));
+    Location *warp = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(ctx->fsys->savedata));
     *p_ret = MapNumToFloorNo(warp->mapId);
     return FALSE;
 }
@@ -2898,14 +2898,14 @@ BOOL ScrCmd_289(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_OverworldWhiteOut(ScriptContext *ctx) {
-    FieldTask_CallBlackOut(ctx->taskman);
+    CallFieldTask_BlackOut(ctx->taskman);
     return TRUE;
 }
 
 BOOL ScrCmd_SetSpawn(ScriptContext *ctx) {
     u16 spawnPoint = ScriptGetVar(ctx);
-    FLYPOINTS_SAVE *flyPoints = Save_FlyPoints_Get(ctx->fsys->savedata);
-    FlyPoints_SetDeathSpawn(flyPoints, spawnPoint);
+    LocalFieldData *localFieldData = Save_LocalFieldData_Get(ctx->fsys->savedata);
+    LocalFieldData_SetBlackoutSpawn(localFieldData, spawnPoint);
     return FALSE;
 }
 
@@ -3379,13 +3379,13 @@ BOOL ScrCmd_705(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_SafariZoneAction(ScriptContext *ctx) {
-    FLYPOINTS_SAVE *flypointsSave = Save_FlyPoints_Get(ctx->fsys->savedata);
+    LocalFieldData *localFieldData = Save_LocalFieldData_Get(ctx->fsys->savedata);
     ScriptState *scriptState = SaveArray_Flags_Get(ctx->fsys->savedata);
     SAFARIZONE *safariZone = Save_SafariZone_Get(ctx->fsys->savedata);
     u8 action = ScriptReadByte(ctx);
     u8 areaSet = ScriptReadByte(ctx);
-    u16 *p_nSafariBall = FlyPoints_GetSafariBallsCounter(flypointsSave);
-    u16 *p_nSafariSteps = FlyPoints_GetSafariStepsCounter(flypointsSave);
+    u16 *p_nSafariBall = LocalFieldData_GetSafariBallsCounter(localFieldData);
+    u16 *p_nSafariSteps = LocalFieldData_GetSafariStepsCounter(localFieldData);
     int r1;
 
     switch (action) {
@@ -3465,7 +3465,7 @@ BOOL ScrCmd_GetNpcTradeUnusedFlag(ScriptContext *ctx) {
 BOOL ScrCmd_NPCTradeExec(ScriptContext *ctx) {
     NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
     u16 arg = ScriptGetVar(ctx);
-    Field_CreateTask_TradeAnim(ctx->taskman, *p_tradeWork, arg, HEAP_ID_FIELD);
+    CallFieldTask_TradeAnim(ctx->taskman, *p_tradeWork, arg, HEAP_ID_FIELD);
     return TRUE;
 }
 
@@ -4086,7 +4086,7 @@ BOOL ScrCmd_582(ScriptContext *ctx) {
     u16 mapId = ScriptGetVar(ctx);
     u16 x = ScriptGetVar(ctx);
     u16 y = ScriptGetVar(ctx);
-    Location *specialSpawn = FlyPoints_GetSpecialSpawnWarpPtr(Save_FlyPoints_Get(ctx->fsys->savedata));
+    Location *specialSpawn = LocalFieldData_GetSpecialSpawnWarpPtr(Save_LocalFieldData_Get(ctx->fsys->savedata));
     specialSpawn->mapId = mapId;
     specialSpawn->x = x;
     specialSpawn->y = y;

@@ -2,7 +2,7 @@
 #define POKEHEARTGOLD_UNK_02092BE8_H
 
 #include "save.h"
-#include "save_flypoints.h"
+#include "save_local_field_data.h"
 #include "event_data.h"
 #include "script.h"
 #include "gear_phone.h"

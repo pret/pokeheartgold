@@ -6,7 +6,7 @@
 #include "unk_0203DB6C.h"
 #include "unk_02054648.h"
 #include "unk_0205CB48.h"
-#include "save_flypoints.h"
+#include "save_local_field_data.h"
 #include "overlay_01.h"
 #include "overlay_02.h"
 #include "metatile_behavior.h"
@@ -161,7 +161,7 @@ void Fsys_MakeFieldMoveCheckData(FieldSystem *fsys, struct FieldMoveCheckData *c
     if (MetatileBehavior_IsWhirlpool(facingTile)) {
         checkData->flag |= (1 << FIELD_MOVE_CHECK_WHIRLPOOL_F);
     }
-    if (FlyPoints_GetWeatherType(Save_FlyPoints_Get(fsys->savedata)) == 11) {
+    if (LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(fsys->savedata)) == 11) {
         checkData->flag |= (1 << FIELD_MOVE_CHECK_FLASH_F);
     }
     if (MetatileBehavior_IsHeadbutt(facingTile) || FieldSys_FacingModelIsHeadbuttTree(fsys)) {

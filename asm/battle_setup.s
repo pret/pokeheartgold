@@ -588,7 +588,7 @@ sub_02051D18: ; 0x02051D18
 	bl Save_PlayerData_GetOptionsAddr
 	str r0, [sp, #8]
 	add r0, r4, #0
-	bl Save_FlyPoints_Get
+	bl Save_LocalFieldData_Get
 	str r0, [sp, #4]
 	cmp r6, #0
 	beq _02051DB6
@@ -741,7 +741,7 @@ _02051EA8:
 	str r1, [r5, r0]
 _02051EB0:
 	ldr r0, [sp, #4]
-	bl FlyPoints_GetWeatherType
+	bl LocalFieldData_GetWeatherType
 	mov r1, #0x5d
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -1372,8 +1372,8 @@ sub_0205239C: ; 0x0205239C
 	cmp r0, #0
 	beq _0205241E
 	ldr r0, [r4, #0xc]
-	bl Save_FlyPoints_Get
-	bl FlyPoints_GetSafariBallsCounter
+	bl Save_LocalFieldData_Get
+	bl LocalFieldData_GetSafariBallsCounter
 	add r6, r0, #0
 	b _02052434
 _0205241E:
@@ -1500,8 +1500,8 @@ sub_02052504: ; 0x02052504
 	add r4, r1, #0
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl Save_FlyPoints_Get
-	bl SaveFlyPoints_GetPlayerSub
+	bl Save_LocalFieldData_Get
+	bl LocalFieldData_GetPlayer
 	add r6, r0, #0
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0]
