@@ -66,7 +66,22 @@ enum Terrain {
 #define MOVE_EFFECT_PERISH_SONG             (1 << 5)
 #define MOVE_EFFECT_YAWN                    (1 << 12)
 #define MOVE_EFFECT_IMPRISON_USER           (1 << 13)
-#define MOVE_EFFECT_14                      (1 << 14)
+#define MOVE_EFFECT_GRUDGE                  (1 << 14)
+#define MOVE_EFFECT_LUCKY_CHANT             (1 << 15) 
+#define MOVE_EFFECT_MUD_SPORT               (1 << 16)
+#define MOVE_EFFECT_WATER_SPORT             (1 << 17)
+#define MOVE_EFFECT_DIVE                    (1 << 18)
+#define MOVE_EFFECT_INTIMIDATE              (1 << 19) //unclear why this is a move effect
+#define MOVE_EFFECT_ROLE_PLAY               (1 << 20)
+#define MOVE_EFFECT_GASTRO_ACID             (1 << 21)
+#define MOVE_EFFECT_MIRACLE_EYE             (1 << 22)
+#define MOVE_EFFECT_POWER_TRICK             (1 << 23)
+#define MOVE_EFFECT_AQUA_RING               (1 << 24)
+#define MOVE_EFFECT_HEAL_BLOCK              (1 << 25)
+#define MOVE_EFECT_26                       (1 << 26)
+#define MOVE_EFFECT_MAGNET_RISE             (1 << 27)
+#define MOVE_EFFECT_CAMOFLAUGE              (1 << 28)    
+#define MOVE_EFFECT_PHANTOM_FORCE           (1 << 29)
 #define MOVE_EFFECT_IMPRISON                (1 << 30)
 
 //Field Conditions
@@ -136,6 +151,8 @@ enum Terrain {
 
 #define STATUS2_BINDING_ALL                 (STATUS2_13 | STATUS2_14 | STATUS2_15)
 #define STATUS2_ATTRACT_ALL                 (STATUS2_ATTRACT_BATTLER1 | STATUS2_ATTRACT_BATTLER2 | STATUS2_ATTRACT_BATTLER3 | STATUS2_ATTRACT_BATTLER4)
+
+#define STATUS2_ATTRACT_SHIFT               16    
 
 //Battle Mon Data
 #define BMON_DATA_SPECIES                    0

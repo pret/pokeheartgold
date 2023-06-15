@@ -4227,7 +4227,7 @@ BOOL BtlCmd_TryGrudge(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     BattleSys_GetFieldSide(bsys, ctx->battlerIdTarget);
 
-    if (ctx->battleMons[ctx->battlerIdFainted].moveEffectFlags & MOVE_EFFECT_14 &&
+    if (ctx->battleMons[ctx->battlerIdFainted].moveEffectFlags & MOVE_EFFECT_GRUDGE &&
         BattleSys_GetFieldSide(bsys, ctx->battlerIdAttacker) != BattleSys_GetFieldSide(bsys, ctx->battlerIdFainted) &&
         ctx->battleMons[ctx->battlerIdAttacker].hp && ctx->moveNoTemp != 165) {
         pos = ctx->movePos[ctx->battlerIdAttacker];

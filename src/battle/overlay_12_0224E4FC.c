@@ -1770,3 +1770,100 @@ void ov12_02251038(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     ctx->unk_311C = 6;
     ctx->unk_311D = 6;   
 }
+
+void InitSwitchWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
+    int i;
+    int maxBattlers;
+    u8 *data;
+    UnkBattlemonSub unkStruct = ctx->battleMons[battlerId].unk88;
+    
+    maxBattlers = BattleSys_GetMaxBattlers(bsys);
+    BattleSys_GetBattleType(bsys);
+    ctx->unk_21A8[battlerId][0] = 40;
+    
+    if (!(ctx->linkStatus & (1 << 8))) { //not baton pass
+        for (i = 0; i < maxBattlers; i++) {
+            if ((ctx->battleMons[i].status2 & STATUS2_MEAN_LOOK) && (ctx->battleMons[i].unk88.battlerIdMeanLook == battlerId)) {
+                ctx->battleMons[i].status2 &= ~STATUS2_MEAN_LOOK;
+            }
+            if ((ctx->battleMons[i].moveEffectFlags & MOVE_EFFECT_LOCK_ON) && ctx->battleMons[i].unk88.battlerIdLockOn == battlerId) {
+                ctx->battleMons[i].moveEffectFlags &= ~MOVE_EFFECT_LOCK_ON;
+                ctx->battleMons[i].unk88.battlerIdLockOn = 0;
+            }
+        }
+        ctx->battleMons[battlerId].status2 = 0;
+        ctx->battleMons[battlerId].moveEffectFlags = 0;
+    } else { //baton pass
+        ctx->battleMons[battlerId].status2 &= 0x15100007; //this is probably a collection of all the baton passable conditions
+        ctx->battleMons[battlerId].moveEffectFlags &= 0x0FA3843F; //same thing but with baton passable move effects, probably like leech seed, substitute, etc
+        for (i = 0; i < maxBattlers; i++) {
+            if ((ctx->battleMons[i].moveEffectFlags & MOVE_EFFECT_LOCK_ON) && ctx->battleMons[i].unk88.battlerIdLockOn == battlerId) {
+                ctx->battleMons[i].moveEffectFlags &= ~MOVE_EFFECT_LOCK_ON;
+                ctx->battleMons[i].moveEffectFlags |= 16;
+            }
+        }
+    }
+    
+    for (i = 0; i < maxBattlers; i++) {
+        if (ctx->battleMons[i].status2 & (MaskOfFlagNo(battlerId) << STATUS2_ATTRACT_SHIFT)) {
+            ctx->battleMons[i].status2 &= (MaskOfFlagNo(battlerId) << STATUS2_ATTRACT_SHIFT) ^ 0xFFFFFFFF;
+        }
+        if ((ctx->battleMons[i].status2 & STATUS2_BINDING_ALL) && ctx->battleMons[i].unk88.battlerIdBinding == battlerId) {
+            ctx->battleMons[i].status2 &= ~STATUS2_BINDING_ALL;
+        }
+    }
+    
+    data = (u8 *)&ctx->battleMons[battlerId].unk88;
+    for (i = 0; i < sizeof(UnkBattlemonSub); i++) {
+        data[i] = 0;
+    }
+    
+    if (ctx->linkStatus & (1 << 8)) {
+        ctx->battleMons[battlerId].unk88.substituteHp = unkStruct.substituteHp;
+        ctx->battleMons[battlerId].unk88.battlerIdLockOn = unkStruct.battlerIdLockOn;
+        ctx->battleMons[battlerId].unk88.perishSongTurns = unkStruct.perishSongTurns;
+        ctx->battleMons[battlerId].unk88.battlerIdMeanLook = unkStruct.battlerIdMeanLook;
+        ctx->battleMons[battlerId].unk88.magnetRiseTurns = unkStruct.magnetRiseTurns;
+        ctx->battleMons[battlerId].unk88.unk4_13 = unkStruct.unk4_13;
+        ctx->battleMons[battlerId].unk88.healBlockTurns = unkStruct.healBlockTurns;
+    }
+    
+    ctx->battleMons[battlerId].unk88.fakeOutCount = ctx->totalTurns + 1;
+    ctx->battleMons[battlerId].unk88.slowStartTurns = ctx->totalTurns + 1;
+    ctx->battleMons[battlerId].unk88.trauntFlag = (ctx->totalTurns + 1) & 1;
+   
+    ctx->moveNoProtect[battlerId] = 0;
+    ctx->moveNoHit[battlerId] = 0;
+    ctx->moveNoHitBattler[battlerId] = 0xFF;
+    ctx->moveNoHitType[battlerId] = 0;
+    ctx->moveNoBattlerPrev[battlerId] = 0;
+    ctx->moveNoCopied[battlerId] = 0;
+    ctx->moveNoCopiedHit[battlerId][0] = 0;
+    ctx->moveNoCopiedHit[battlerId][1] = 0;
+    ctx->moveNoCopiedHit[battlerId][2] = 0;
+    ctx->moveNoCopiedHit[battlerId][3] = 0;
+    ctx->moveNoSketch[battlerId] = 0;
+    ctx->conversion2Move[battlerId] = 0;
+    ctx->conversion2BattlerId[battlerId] = 0;
+    ctx->conversion2Type[battlerId] = 0;
+    ctx->moveNoMetronome[battlerId] = 0;
+    
+    ctx->fieldCondition &= (MaskOfFlagNo(battlerId) << 8) ^ 0xFFFFFFFF; //??
+    
+    if (ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_POWER_TRICK) {
+        i = ctx->battleMons[battlerId].atk;
+        ctx->battleMons[battlerId].atk = ctx->battleMons[battlerId].def;
+        ctx->battleMons[battlerId].def = i;
+    }
+    
+    for (i = 0; i < maxBattlers; i++) {
+        if (i != battlerId && BattleSys_GetFieldSide(bsys, i) != BattleSys_GetFieldSide(bsys, battlerId)) {
+            ctx->moveNoCopied[i] = 0;
+        }
+        ctx->moveNoCopiedHit[i][battlerId] = 0;
+    }
+    
+    ov12_02258584(ctx, battlerId);
+    ov12_0225859C(ctx, battlerId);
+    ov12_022585A8(ctx, battlerId);
+}

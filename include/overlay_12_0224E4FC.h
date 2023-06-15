@@ -94,5 +94,6 @@ int ov12_02258348(BATTLECONTEXT *ctx, int a1, int a2);
 int ov12_02256838(BATTLECONTEXT *ctx, int battlerId);
 int BattleSystem_GetMoveType(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
 void ov12_022585A8(BATTLECONTEXT *ctx, u8 battlerId);
-
+void ov12_02258584(BATTLECONTEXT *ctx, u8 battlerId);
+void ov12_0225859C(BATTLECONTEXT *ctx, u8 battlerId);
 #endif
