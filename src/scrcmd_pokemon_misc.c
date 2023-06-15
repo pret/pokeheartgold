@@ -722,7 +722,7 @@ BOOL ScrCmd_775(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_OpenAlphHiddenRoom(ScriptContext *ctx) {
-    OpenAlphHiddenRoom(ctx->fsys->taskman, *(ctx->script_ptr++));
+    OpenAlphHiddenRoom(ctx->fsys->taskman, ScriptReadByte(ctx));
     return TRUE;
 }
 
@@ -783,7 +783,7 @@ BOOL ScrCmd_724(ScriptContext *ctx) {
 BOOL ScrCmd_725(ScriptContext *ctx) {
     s32 val;
 
-    u8 unkA = *(ctx->script_ptr++);
+    u8 unkA = ScriptReadByte(ctx);
     u32 unkB = ScriptGetVar(ctx);
 
     Pokeathlon_UnkSubStruct_B00 *unkPtr = sub_020319F0(Save_Pokeathlon_Get(ctx->fsys->savedata));
@@ -1186,8 +1186,8 @@ static u32 SlotLuckiness(SAVEDATA *savedata, u8 machineId, u8 city) {
 }
 
 BOOL ScrCmd_CasinoGame(ScriptContext *ctx) {
-    u8 machineId = *(ctx->script_ptr++);
-    u8 city = *(ctx->script_ptr++); //1 = celadon; 0 = goldenrod
+    u8 machineId = ScriptReadByte(ctx);
+    u8 city = ScriptReadByte(ctx); //1 = celadon; 0 = goldenrod
     u32 **unkPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA); //VoltorbFlipAppData
 
     *unkPtr = LaunchVoltorbFlipApp(ctx->fsys, SlotLuckiness(ctx->fsys->savedata, machineId, city)); //this is messy, very very messy
@@ -1197,7 +1197,7 @@ BOOL ScrCmd_CasinoGame(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_BufferPokeathlonCourseName(ScriptContext *ctx) {
-    u8 fieldNo = *(ctx->script_ptr++);
+    u8 fieldNo = ScriptReadByte(ctx);
     u32 courseId = ScriptGetVar(ctx);
     BufferPokeathlonCourseName(*(MessageFormat**)FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT), fieldNo, (u8) courseId);
     return FALSE;
@@ -1424,7 +1424,7 @@ BOOL ScrCmd_SysSetSleepFlag(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_BugContestAction(ScriptContext *ctx) {
-    u8 unkVar1 = *(ctx->script_ptr++);
+    u8 unkVar1 = ScriptReadByte(ctx);
     u32 weekday = ScriptGetVar(ctx);
 
     FieldSystem *fsys = ctx->fsys;
@@ -1484,7 +1484,7 @@ BOOL ScrCmd_BufferBugContestMonNick(ScriptContext *ctx) {
     msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     bugContest = FieldSys_BugContest_Get(ctx->fsys);
 
-    script_index = *(ctx->script_ptr++);
+    script_index = ScriptReadByte(ctx);
 
     u16 *monNick = ScriptGetVarPointer(ctx);
     *monNick = BugContest_BufferCaughtMonNick(bugContest, *msgfmt, script_index);
@@ -1499,7 +1499,7 @@ BOOL ScrCmd_BugContestGetTimeLeft(ScriptContext *ctx) {
 
     msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
 
-    script_index = *(ctx->script_ptr++);
+    script_index = ScriptReadByte(ctx);
     timeLeft = 1;
 
     bugContest = FieldSys_BugContest_Get(ctx->fsys);
