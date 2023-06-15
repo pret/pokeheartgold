@@ -6,7 +6,7 @@ Using a terminal or git client, clone this repository to your local device. All 
 
 ### 1. Install MWCC compiler
 
-The build system requires the use of the Metrowerks C Compiler versions 2.0/sp2p2 to compile matching files. We cannot distribute the correct compiler here so join the PRET discord and download the pinned mwccarm.zip zip in #pokeheartgold and extract it to tools/. At the end of this operation, you should have i.e. the file `tools/mwccarm/2.0/sp2p2/mwccarm.exe`. Run each of the executables so they ask for a license.dat and provide the one in the rar (it may also ask for it when compiling). This only needs to be done once.
+The build system requires the use of the Metrowerks C Compiler versions 2.0/sp2p2 to compile matching files. We cannot distribute the correct compiler here so join the PRET discord and download the pinned mwccarm.zip zip in #pokediamond and extract it to tools/. At the end of this operation, you should have i.e. the file `tools/mwccarm/2.0/sp2p2/mwccarm.exe`. Run each of the executables so they ask for a license.dat and provide the one in the rar (it may also ask for it when compiling). This only needs to be done once.
 
 In the future, a GCC option will be available so MWCC is not required to build, however it is required for a matching ROM.
 

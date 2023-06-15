@@ -3222,7 +3222,7 @@ BOOL BtlCmd_Transform(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     ctx->battleMons[ctx->battlerIdAttacker].friskFlag = 0;
     ctx->battleMons[ctx->battlerIdAttacker].moldBreakerFlag = 0;
     ctx->battleMons[ctx->battlerIdAttacker].pressureFlag = 0;
-    ctx->battleMons[ctx->battlerIdAttacker].unk88.trauntFlag = ctx->totalTurns & 1;
+    ctx->battleMons[ctx->battlerIdAttacker].unk88.truantFlag = ctx->totalTurns & 1;
     ctx->battleMons[ctx->battlerIdAttacker].unk88.slowStartTurns = ctx->totalTurns + 1;
     ctx->battleMons[ctx->battlerIdAttacker].slowStartFlag = 0;
     ctx->battleMons[ctx->battlerIdAttacker].slowStartEnded = 0;
@@ -4227,9 +4227,9 @@ BOOL BtlCmd_TryGrudge(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     BattleSys_GetFieldSide(bsys, ctx->battlerIdTarget);
 
-    if (ctx->battleMons[ctx->battlerIdFainted].moveEffectFlags & MOVE_EFFECT_14 &&
+    if (ctx->battleMons[ctx->battlerIdFainted].moveEffectFlags & MOVE_EFFECT_GRUDGE &&
         BattleSys_GetFieldSide(bsys, ctx->battlerIdAttacker) != BattleSys_GetFieldSide(bsys, ctx->battlerIdFainted) &&
-        ctx->battleMons[ctx->battlerIdAttacker].hp && ctx->moveNoTemp != 165) {
+        ctx->battleMons[ctx->battlerIdAttacker].hp && ctx->moveNoTemp != MOVE_STRUGGLE) {
         pos = ctx->movePos[ctx->battlerIdAttacker];
         ctx->battleMons[ctx->battlerIdAttacker].movePPCur[pos] = 0;
         ctx->moveWork = ctx->battleMons[ctx->battlerIdAttacker].moves[pos];
