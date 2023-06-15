@@ -406,7 +406,7 @@ int GetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
     case BMON_DATA_STOCKPILE_SPDEF_BOOSTS:
         return mon->unk88.stockpileSpDefCount;
     case BMON_DATA_TRUANT_FLAG:
-        return mon->unk88.trauntFlag;
+        return mon->unk88.truantFlag;
     case BMON_DATA_FLASH_FIRE_ACTIVE:
         return mon->unk88.flashFire;
     case BMON_DATA_LOCKED_ON_BATTLER:
@@ -672,7 +672,7 @@ void SetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
         mon->unk88.stockpileSpDefCount = *data8;
         break;
     case BMON_DATA_TRUANT_FLAG:
-        mon->unk88.trauntFlag = *data8;
+        mon->unk88.truantFlag = *data8;
         break;
     case BMON_DATA_FLASH_FIRE_ACTIVE:
         mon->unk88.flashFire = *data8;
@@ -1830,7 +1830,7 @@ void InitSwitchWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     
     ctx->battleMons[battlerId].unk88.fakeOutCount = ctx->totalTurns + 1;
     ctx->battleMons[battlerId].unk88.slowStartTurns = ctx->totalTurns + 1;
-    ctx->battleMons[battlerId].unk88.trauntFlag = (ctx->totalTurns + 1) & 1;
+    ctx->battleMons[battlerId].unk88.truantFlag = (ctx->totalTurns + 1) & 1;
    
     ctx->moveNoProtect[battlerId] = 0;
     ctx->moveNoHit[battlerId] = 0;
@@ -1862,6 +1862,78 @@ void InitSwitchWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
         }
         ctx->moveNoCopiedHit[i][battlerId] = 0;
     }
+    
+    ov12_02258584(ctx, battlerId);
+    ov12_0225859C(ctx, battlerId);
+    ov12_022585A8(ctx, battlerId);
+}
+
+void InitFaintedWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
+    int i;
+    int maxBattlers;
+    u8 *data;
+    
+    maxBattlers = BattleSys_GetMaxBattlers(bsys);
+
+    for (int stat = 0; stat < 8; stat++) {
+        ctx->battleMons[battlerId].statChanges[stat] = 6;
+    }
+    
+    ctx->battleMons[battlerId].status2 = 0;
+    ctx->battleMons[battlerId].moveEffectFlags = 0;
+    
+    for (i = 0; i < maxBattlers; i++) {
+        if ((ctx->battleMons[i].status2 & STATUS2_MEAN_LOOK) && ctx->battleMons[i].unk88.battlerIdMeanLook == battlerId) {
+            ctx->battleMons[i].status2 &= ~STATUS2_MEAN_LOOK;
+        }
+        if (ctx->battleMons[i].status2 & (MaskOfFlagNo(battlerId) << STATUS2_ATTRACT_SHIFT)) {
+            ctx->battleMons[i].status2 &= (MaskOfFlagNo(battlerId) << STATUS2_ATTRACT_SHIFT) ^ 0xFFFFFFFF;
+        }
+        if ((ctx->battleMons[i].status2 & STATUS2_BINDING_ALL) && ctx->battleMons[i].unk88.battlerIdBinding == battlerId) {
+            ctx->battleMons[i].status2 &= STATUS2_BINDING_ALL ^ 0xFFFFFFFF;
+        }
+    }
+    
+    data = (u8 *)&ctx->battleMons[battlerId].unk88;
+    for (i = 0; i < sizeof(UnkBattlemonSub); i++) {
+        data[i] = 0;
+    }
+    
+    data = (u8 *)&ctx->turnData[battlerId];
+    for (i = 0; i < sizeof(TurnData); i++) {
+        data[i] = 0;
+    }
+    
+    ctx->battleMons[battlerId].unk88.fakeOutCount = ctx->totalTurns + 1;
+    ctx->battleMons[battlerId].unk88.slowStartTurns = ctx->totalTurns + 1;
+    ctx->battleMons[battlerId].unk88.truantFlag = (ctx->totalTurns + 1) & 1;
+    
+    ctx->moveNoProtect[battlerId] = 0;
+    ctx->moveNoHit[battlerId] = 0;
+    ctx->moveNoHitBattler[battlerId] = 0xFF;
+    ctx->moveNoHitType[battlerId] = 0;
+    ctx->moveNoBattlerPrev[battlerId] = 0;
+    ctx->moveNoCopied[battlerId] = 0;
+    ctx->moveNoCopiedHit[battlerId][0] = 0;
+    ctx->moveNoCopiedHit[battlerId][1] = 0;
+    ctx->moveNoCopiedHit[battlerId][2] = 0;
+    ctx->moveNoCopiedHit[battlerId][3] = 0;
+    ctx->moveNoSketch[battlerId] = 0;
+    ctx->conversion2Move[battlerId] = 0;
+    ctx->conversion2BattlerId[battlerId] = 0;
+    ctx->conversion2Type[battlerId] = 0;
+    ctx->moveNoMetronome[battlerId] = 0;
+    
+    ctx->fieldCondition &= (MaskOfFlagNo(battlerId) << 8) ^ 0xFFFFFFFF; //??
+    
+    for (i = 0; i < maxBattlers; i++) {
+        if (i != battlerId && BattleSys_GetFieldSide(bsys, i) != BattleSys_GetFieldSide(bsys, battlerId)) {
+            ctx->moveNoCopied[i] = 0;
+        }
+        ctx->moveNoCopiedHit[i][battlerId] = 0;
+    }
+
+    ctx->unk_13C[battlerId] &= ~1;
     
     ov12_02258584(ctx, battlerId);
     ov12_0225859C(ctx, battlerId);

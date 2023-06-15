@@ -136,7 +136,7 @@ typedef struct UnkBattlemonSub {
     u32 stockpileCount:3;
     u32 stockpileDefCount:3;
     u32 stockpileSpDefCount:3;
-    u32 trauntFlag:1;
+    u32 truantFlag:1;
     u32 flashFire:1;
     u32 battlerIdLockOn:2;
     u32 mimicedMoveIndex:4;
