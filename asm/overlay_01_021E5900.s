@@ -729,7 +729,7 @@ _021E5F3E:
 	ldr r1, [r5, #0x20]
 	add r0, r5, #0
 	ldr r1, [r1]
-	bl FieldSystem_GetSurfOverriddenMusicId
+	bl FieldSystem_GetOverriddenMusicId
 	add r1, r0, #0
 	add r0, r5, #0
 	mov r2, #1
