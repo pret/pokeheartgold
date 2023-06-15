@@ -4044,7 +4044,7 @@ int LowestFlagNo(u32 mask) {
     return i;
 }
 
-static const u16 sLegendaryMonsList[18] = {
+static const u16 sBattleFrontierBanlist[18] = {
     SPECIES_MEWTWO,
     SPECIES_MEW,
     SPECIES_LUGIA,
@@ -4065,10 +4065,10 @@ static const u16 sLegendaryMonsList[18] = {
     SPECIES_ARCEUS,
 };
 
-BOOL IsPokemonLegendaryOrMythical(u16 species, u16 forme) {
+BOOL IsPokemonBannedFromBattleFrontier(u16 species, u16 forme) {
     int i;
-    for (i = 0; i < NELEMS(sLegendaryMonsList); i++) {
-        if (species == sLegendaryMonsList[i]) {
+    for (i = 0; i < NELEMS(sBattleFrontierBanlist); i++) {
+        if (species == sBattleFrontierBanlist[i]) {
             return TRUE;
         }
     }
@@ -4078,11 +4078,11 @@ BOOL IsPokemonLegendaryOrMythical(u16 species, u16 forme) {
     return FALSE;
 }
 
-u16 GetLegendaryMon(u32 idx) {
-    if (idx >= NELEMS(sLegendaryMonsList)) {
+u16 GetBannedBattleFrontierPokemon(u32 idx) {
+    if (idx >= NELEMS(sBattleFrontierBanlist)) {
         idx = 0;
     }
-    return sLegendaryMonsList[idx];
+    return sBattleFrontierBanlist[idx];
 }
 
 static const u16 sMythicalMonsList[9] = {
@@ -4110,7 +4110,7 @@ BOOL SpeciesIsMythical(u16 species) {
 BOOL MonCheckFrontierIneligibility(Pokemon *mon) {
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     u16 forme = GetMonData(mon, MON_DATA_FORME, NULL);
-    return IsPokemonLegendaryOrMythical(species, forme);
+    return IsPokemonBannedFromBattleFrontier(species, forme);
 }
 
 BOOL BoxmonBelongsToPlayer(BoxPokemon *boxMon, PLAYERPROFILE * profile, HeapID heap_id) {

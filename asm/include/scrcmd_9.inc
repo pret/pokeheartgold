@@ -102,8 +102,8 @@
 .public GetNatureFromPersonality
 .public CalcShininessByOtIdAndPersonality
 .public MaskOfFlagNo
-.public IsPokemonLegendaryOrMythical
-.public GetLegendaryMon
+.public IsPokemonBannedFromBattleFrontier
+.public GetBannedBattleFrontierPokemon
 .public GetPartyCount
 .public GetPartyMonByIndex
 .public SaveArray_PlayerParty_Get

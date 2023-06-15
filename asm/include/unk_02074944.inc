@@ -3,7 +3,7 @@
 .public sub_020290FC
 .public GetMonData
 .public GetEggSpecies
-.public IsPokemonLegendaryOrMythical
+.public IsPokemonBannedFromBattleFrontier
 .public SpeciesIsMythical
 .public MonCheckFrontierIneligibility
 .public GetPartyCount
