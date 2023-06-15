@@ -134,6 +134,8 @@ enum Terrain {
 #define CONDITION_PARALYSIS                 5
 
 //Status 2
+#define STATUS2_FLINCH                      (1 << 3)
+#define STATUS2_RAGE                        (3 << 10)
 #define STATUS2_LOCKED_INTO_MOVE            (1 << 12)
 #define STATUS2_13                          (1 << 13)
 #define STATUS2_14                          (1 << 14)
@@ -144,6 +146,7 @@ enum Terrain {
 #define STATUS2_ATTRACT_BATTLER4            (1 << 19)
 #define STATUS2_FOCUS_ENERGY                (1 << 20)
 #define STATUS2_TRANSFORMED                 (1 << 21)
+#define STATUS2_RECHARGE                    (1 << 22)
 #define STATUS2_24                          (1 << 24)
 #define STATUS2_MEAN_LOOK                   (1 << 26)
 #define STATUS2_27                          (1 << 27)

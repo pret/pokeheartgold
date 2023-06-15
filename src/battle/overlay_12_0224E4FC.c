@@ -1939,3 +1939,26 @@ void InitFaintedWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     ov12_0225859C(ctx, battlerId);
     ov12_022585A8(ctx, battlerId);
 }
+
+//BattleContext_InitTurnData..?
+void ov12_02251710(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int battlerId;
+    
+    for (battlerId = 0; battlerId < 4; battlerId++) {
+        MIi_CpuClearFast(0, (u32 *)&ctx->turnData[battlerId], sizeof(TurnData));
+        MIi_CpuClearFast(0, (u32 *)&ctx->moveFail[battlerId], sizeof(MoveFailFlags));
+        ctx->battleMons[battlerId].status2 &= ~STATUS2_FLINCH;
+        if (ctx->battleMons[battlerId].unk88.rechargeCount + 1 < ctx->totalTurns) {
+            ctx->battleMons[battlerId].status2 &= ~STATUS2_RECHARGE;
+        }
+        if ((ctx->battleMons[battlerId].status & STATUS_SLEEP) && (ctx->battleMons[battlerId].status2 & STATUS2_LOCKED_INTO_MOVE)) {
+            UnlockBattlerOutOfCurrentMove(bsys, ctx, battlerId);
+        }
+        if ((ctx->battleMons[battlerId].status & STATUS_SLEEP) && (ctx->battleMons[battlerId].status2 & STATUS2_RAGE)) {
+            ctx->battleMons[battlerId].status2 &= ~STATUS2_RAGE;
+        }
+    }
+    
+    ctx->fieldSideConditionData[0].followMeFlag = 0;
+    ctx->fieldSideConditionData[1].followMeFlag = 0;
+}

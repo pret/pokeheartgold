@@ -33,6 +33,7 @@ void BattleContext_Init(BATTLECONTEXT *ctx);
 void ov12_02251038(BattleSystem *bsys, BATTLECONTEXT *ctx);
 void InitSwitchWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 void InitFaintedWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+void ov12_02251710(BattleSystem *bsys, BATTLECONTEXT *ctx);
 
 //The following functions haven't been decompiled as of now
 void ov12_02256F78(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 monIndex);

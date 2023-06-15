@@ -124,6 +124,20 @@ typedef struct UnkBtlCtxSub_76 {
     u16 unk288[4];
 } UnkBtlCtxSub_76;
 
+typedef struct MoveFailFlags {
+    u32 paralysis:1;
+    u32 unk0_1:1;
+    u32 imprison:1;
+    u32 infatuation:1;
+    u32 asleep:1;
+    u32 unk0_5:1;
+    u32 flinch:1;
+    u32 confusion:1;
+    u32 unk0_8:1;
+    u32 healBlock:1;
+    u32 unused:21;
+} MoveFailFlags;
+
 typedef struct UnkBattlemonSub {
     u32 disabledTurns:3;
     u32 encoredTurns:3;
@@ -306,7 +320,7 @@ typedef struct BATTLECONTEXT {
     SideConditionData fieldSideConditionData[2];
     TurnData turnData[4];
     SelfTurnData selfTurnData[4];
-    u32 unk_324[4]; //note: this is an unidentified bitfield array
+    MoveFailFlags moveFail[4]; 
     UnkBtlCtxSub_76 unk_334;
     u32 * unk_2134;
     u32 unk_2138;
