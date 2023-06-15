@@ -64,6 +64,12 @@ enum Terrain {
 #define MOVE_EFFECT_LEECH_SEED              (1 << 2)
 #define MOVE_EFFECT_LOCK_ON                 (3 << 3)
 #define MOVE_EFFECT_PERISH_SONG             (1 << 5)
+#define MOVE_EFFECT_6                       (1 << 6)
+#define MOVE_EFFECT_7                       (1 << 7)
+#define MOVE_EFFECT_8                       (1 << 8)
+#define MOVE_EFFECT_9                       (1 << 9)
+#define MOVE_EFFECT_10                      (1 << 10)
+#define MOVE_EFFECT_11                      (1 << 11)
 #define MOVE_EFFECT_YAWN                    (1 << 12)
 #define MOVE_EFFECT_IMPRISON_USER           (1 << 13)
 #define MOVE_EFFECT_GRUDGE                  (1 << 14)
@@ -83,6 +89,8 @@ enum Terrain {
 #define MOVE_EFFECT_CAMOFLAUGE              (1 << 28)    
 #define MOVE_EFFECT_PHANTOM_FORCE           (1 << 29)
 #define MOVE_EFFECT_IMPRISON                (1 << 30)
+
+#define MOVE_EFFECT_BATON_PASSABLE          (MOVE_EFFECT_0 | MOVE_EFFECT_1 | MOVE_EFFECT_LEECH_SEED | MOVE_EFFECT_LOCK_ON | MOVE_EFFECT_PERISH_SONG | MOVE_EFFECT_10 | MOVE_EFFECT_LUCKY_CHANT | MOVE_EFFECT_MUD_SPORT | MOVE_EFFECT_WATER_SPORT | MOVE_EFFECT_GASTRO_ACID | MOVE_EFFECT_POWER_TRICK | MOVE_EFFECT_AQUA_RING | MOVE_EFFECT_HEAL_BLOCK | MOVE_EFECT_26 | MOVE_EFFECT_MAGNET_RISE)    
 
 //Field Conditions
 #define FIELD_CONDITION_RAIN                (1 << 0)
@@ -134,7 +142,11 @@ enum Terrain {
 #define CONDITION_PARALYSIS                 5
 
 //Status 2
+#define STATUS2_0                           (1 << 0)
+#define STATUS2_1                           (1 << 1)
+#define STATUS2_2                           (1 << 2)
 #define STATUS2_FLINCH                      (1 << 3)
+#define STATUS2_4                           (1 << 4)
 #define STATUS2_RAGE                        (3 << 10)
 #define STATUS2_LOCKED_INTO_MOVE            (1 << 12)
 #define STATUS2_13                          (1 << 13)
@@ -150,12 +162,15 @@ enum Terrain {
 #define STATUS2_24                          (1 << 24)
 #define STATUS2_MEAN_LOOK                   (1 << 26)
 #define STATUS2_27                          (1 << 27)
+#define STATUS2_28                          (1 << 28)
 #define STATUS2_DEFENCE_CURL                (1 << 30)
 
 #define STATUS2_BINDING_ALL                 (STATUS2_13 | STATUS2_14 | STATUS2_15)
 #define STATUS2_ATTRACT_ALL                 (STATUS2_ATTRACT_BATTLER1 | STATUS2_ATTRACT_BATTLER2 | STATUS2_ATTRACT_BATTLER3 | STATUS2_ATTRACT_BATTLER4)
 
 #define STATUS2_ATTRACT_SHIFT               16    
+
+#define STATUS2_BATON_PASSABLE              (STATUS2_0 | STATUS2_1 | STATUS2_2 | STATUS2_FOCUS_ENERGY | STATUS2_24 | STATUS2_MEAN_LOOK | STATUS2_28)
 
 //Battle Mon Data
 #define BMON_DATA_SPECIES                    0

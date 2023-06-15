@@ -1794,12 +1794,12 @@ void InitSwitchWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
         ctx->battleMons[battlerId].status2 = 0;
         ctx->battleMons[battlerId].moveEffectFlags = 0;
     } else { //baton pass
-        ctx->battleMons[battlerId].status2 &= 0x15100007; //this is probably a collection of all the baton passable conditions
-        ctx->battleMons[battlerId].moveEffectFlags &= 0x0FA3843F; //same thing but with baton passable move effects, probably like leech seed, substitute, etc
+        ctx->battleMons[battlerId].status2 &= STATUS2_BATON_PASSABLE; 
+        ctx->battleMons[battlerId].moveEffectFlags &= MOVE_EFFECT_BATON_PASSABLE;
         for (i = 0; i < maxBattlers; i++) {
             if ((ctx->battleMons[i].moveEffectFlags & MOVE_EFFECT_LOCK_ON) && ctx->battleMons[i].unk88.battlerIdLockOn == battlerId) {
                 ctx->battleMons[i].moveEffectFlags &= ~MOVE_EFFECT_LOCK_ON;
-                ctx->battleMons[i].moveEffectFlags |= 16;
+                ctx->battleMons[i].moveEffectFlags |= STATUS2_4;
             }
         }
     }
@@ -1940,7 +1940,7 @@ void InitFaintedWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     ov12_022585A8(ctx, battlerId);
 }
 
-//BattleContext_InitTurnData..?
+//BattleContext_InitTurnData..? BattleContext_InitStartTurn..?
 void ov12_02251710(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int battlerId;
     
