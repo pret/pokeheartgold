@@ -26,7 +26,7 @@
 .public sub_02054F14
 .public FieldSystem_SetSavedMusicId
 .public Fsys_ClearSavedMusicId
-.public FieldSystem_GetSurfOverriddenMusicId
+.public FieldSystem_GetOverriddenMusicId
 .public GetMapMusic
 .public FieldSystem_PlayOrFadeToNewMusicId
 .public Trainer_GetEncounterMusic

@@ -2327,7 +2327,7 @@ BOOL ScrCmd_PlayerOnBikeSet(ScriptContext *ctx) {
         Field_PlayerAvatar_OrrTransitionFlags(ctx->fsys->playerAvatar, PLAYER_TRANSITION_WALKING);
         Field_PlayerAvatar_ApplyTransitionFlags(ctx->fsys->playerAvatar);
         FieldSystem_SetSavedMusicId(ctx->fsys, 0);
-        FieldSystem_PlayOrFadeToNewMusicId(ctx->fsys, FieldSystem_GetSurfOverriddenMusicId(ctx->fsys, ctx->fsys->location->mapId), 1);
+        FieldSystem_PlayOrFadeToNewMusicId(ctx->fsys, FieldSystem_GetOverriddenMusicId(ctx->fsys, ctx->fsys->location->mapId), 1);
     }
     return FALSE;
 }

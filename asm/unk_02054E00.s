@@ -208,8 +208,8 @@ Fsys_ClearSavedMusicId: ; 0x02054F4C
 	.balign 4, 0
 	thumb_func_end Fsys_ClearSavedMusicId
 
-	thumb_func_start FieldSystem_GetSurfOverriddenMusicId
-FieldSystem_GetSurfOverriddenMusicId: ; 0x02054F60
+	thumb_func_start FieldSystem_GetOverriddenMusicId
+FieldSystem_GetOverriddenMusicId: ; 0x02054F60
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x40]
@@ -241,7 +241,7 @@ _02054F9E:
 	pop {r3, r4, r5, pc}
 	nop
 _02054FA4: .word SEQ_GS_NAMINORI
-	thumb_func_end FieldSystem_GetSurfOverriddenMusicId
+	thumb_func_end FieldSystem_GetOverriddenMusicId
 
 	thumb_func_start GetMapMusic
 GetMapMusic: ; 0x02054FA8
@@ -487,7 +487,7 @@ sub_02055164: ; 0x02055164
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl FieldSystem_GetSurfOverriddenMusicId
+	bl FieldSystem_GetOverriddenMusicId
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
