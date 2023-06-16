@@ -9,6 +9,6 @@ BOOL sub_0203769C(void);
 void sub_020380F4(void);
 void sub_02038104(void);
 int sub_02037454(void);
-BOOL sub_02037030(int, u16*, int);
+BOOL sub_02037030(int, void*, int);
 
 #endif //POKEHEARTGOLD_UNK_02035900_H

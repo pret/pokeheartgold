@@ -3,6 +3,7 @@
 
 #include "constants/scrcmd.h"
 #include "fieldmap.h"
+#include "save_special_ribbons.h"
 #include "script.h"
 
 static inline u16 ScriptGetVar(ScriptContext* ctx) {

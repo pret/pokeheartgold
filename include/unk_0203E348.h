@@ -28,11 +28,15 @@ typedef struct PartyMenuAppData {
     void *fsys_unk_10C;
     u8 unk_24;
     u8 unk_25;
-    u8 filler_26[0xA];
-    u8 unk_30;
-    u8 unk_31;
+    u8 unk_26;
+    u8 filler_27[9];
+    u8 unk_30[2];
     u8 unk_32;
-    u8 filler_33[0x11];
+    u8 filler_33[3];
+    u8 unk_36_0:4;
+    u8 unk_36_4:4;
+    u8 unk_37;
+    u8 filler_38[0xC];
 } PartyMenuAppData;
 
 struct ChooseStarterAppArgs {

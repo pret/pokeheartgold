@@ -4713,7 +4713,7 @@ _0207B392:
 	ldrh r0, [r2, r1]
 	add r1, #0xd
 	ldrb r1, [r2, r1]
-	bl IsPokemonLegendaryOrMythical
+	bl IsPokemonBannedFromBattleFrontier
 	cmp r0, #1
 	bne _0207B3B8
 	mov r0, #0
@@ -4788,7 +4788,7 @@ sub_0207B418: ; 0x0207B418
 	ldrh r0, [r2, r1]
 	add r1, #0xd
 	ldrb r1, [r2, r1]
-	bl IsPokemonLegendaryOrMythical
+	bl IsPokemonBannedFromBattleFrontier
 	cmp r0, #1
 	bne _0207B444
 	mov r0, #0
@@ -4862,7 +4862,7 @@ sub_0207B4A0: ; 0x0207B4A0
 	ldrh r0, [r2, r1]
 	add r1, #0xd
 	ldrb r1, [r2, r1]
-	bl IsPokemonLegendaryOrMythical
+	bl IsPokemonBannedFromBattleFrontier
 	cmp r0, #1
 	bne _0207B4CC
 	mov r0, #0

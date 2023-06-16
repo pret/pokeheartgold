@@ -108,7 +108,7 @@
 .public Pokemon_UpdateArceusForme
 .public Mon_UpdateGiratinaForme
 .public Mon_CanUseGracidea
-.public IsPokemonLegendaryOrMythical
+.public IsPokemonBannedFromBattleFrontier
 .public GetPartyCount
 .public GetPartyMonByIndex
 .public sub_02074944
