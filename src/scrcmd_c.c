@@ -2361,7 +2361,7 @@ BOOL ScrCmd_UpdateAvatarState(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_211(ScriptContext *ctx) {
-    ROAMER_SAVE *roamerSave = Save_Roamers_Get(ctx->fsys->savedata);
+    RoamerSaveData *roamerSave = Save_Roamers_Get(ctx->fsys->savedata);
     u16 *r6 = ScriptGetVarPointer(ctx);
     u16 *r4 = ScriptGetVarPointer(ctx);
     sub_02097F9C(Roamers_GetRand(roamerSave, 2), r6, r4);

@@ -5187,7 +5187,7 @@ _02248350:
 	bx r3
 	thumb_func_end ov02_022482BC
 
-; BOOL ov02_GetRandomActiveRoamerInCurrMap(FieldSystem *fsys, ROAMER **out);
+; BOOL ov02_GetRandomActiveRoamerInCurrMap(FieldSystem *fsys, Roamer **out);
 	thumb_func_start ov02_GetRandomActiveRoamerInCurrMap
 ov02_GetRandomActiveRoamerInCurrMap: ; 0x02248360
 	push {r3, r4, r5, r6, r7, lr}
