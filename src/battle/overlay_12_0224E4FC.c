@@ -406,7 +406,7 @@ int GetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
     case BMON_DATA_STOCKPILE_SPDEF_BOOSTS:
         return mon->unk88.stockpileSpDefCount;
     case BMON_DATA_TRUANT_FLAG:
-        return mon->unk88.trauntFlag;
+        return mon->unk88.truantFlag;
     case BMON_DATA_FLASH_FIRE_ACTIVE:
         return mon->unk88.flashFire;
     case BMON_DATA_LOCKED_ON_BATTLER:
@@ -672,7 +672,7 @@ void SetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
         mon->unk88.stockpileSpDefCount = *data8;
         break;
     case BMON_DATA_TRUANT_FLAG:
-        mon->unk88.trauntFlag = *data8;
+        mon->unk88.truantFlag = *data8;
         break;
     case BMON_DATA_FLASH_FIRE_ACTIVE:
         mon->unk88.flashFire = *data8;
@@ -1769,4 +1769,196 @@ void ov12_02251038(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     
     ctx->unk_311C = 6;
     ctx->unk_311D = 6;   
+}
+
+void InitSwitchWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
+    int i;
+    int maxBattlers;
+    u8 *data;
+    UnkBattlemonSub unkStruct = ctx->battleMons[battlerId].unk88;
+    
+    maxBattlers = BattleSys_GetMaxBattlers(bsys);
+    BattleSys_GetBattleType(bsys);
+    ctx->unk_21A8[battlerId][0] = 40;
+    
+    if (!(ctx->linkStatus & (1 << 8))) { //not baton pass
+        for (i = 0; i < maxBattlers; i++) {
+            if ((ctx->battleMons[i].status2 & STATUS2_MEAN_LOOK) && (ctx->battleMons[i].unk88.battlerIdMeanLook == battlerId)) {
+                ctx->battleMons[i].status2 &= ~STATUS2_MEAN_LOOK;
+            }
+            if ((ctx->battleMons[i].moveEffectFlags & MOVE_EFFECT_LOCK_ON) && ctx->battleMons[i].unk88.battlerIdLockOn == battlerId) {
+                ctx->battleMons[i].moveEffectFlags &= ~MOVE_EFFECT_LOCK_ON;
+                ctx->battleMons[i].unk88.battlerIdLockOn = 0;
+            }
+        }
+        ctx->battleMons[battlerId].status2 = 0;
+        ctx->battleMons[battlerId].moveEffectFlags = 0;
+    } else { //baton pass
+        ctx->battleMons[battlerId].status2 &= STATUS2_BATON_PASSABLE; 
+        ctx->battleMons[battlerId].moveEffectFlags &= MOVE_EFFECT_BATON_PASSABLE;
+        for (i = 0; i < maxBattlers; i++) {
+            if ((ctx->battleMons[i].moveEffectFlags & MOVE_EFFECT_LOCK_ON) && ctx->battleMons[i].unk88.battlerIdLockOn == battlerId) {
+                ctx->battleMons[i].moveEffectFlags &= ~MOVE_EFFECT_LOCK_ON;
+                ctx->battleMons[i].moveEffectFlags |= STATUS2_4;
+            }
+        }
+    }
+    
+    for (i = 0; i < maxBattlers; i++) {
+        if (ctx->battleMons[i].status2 & (MaskOfFlagNo(battlerId) << STATUS2_ATTRACT_SHIFT)) {
+            ctx->battleMons[i].status2 &= (MaskOfFlagNo(battlerId) << STATUS2_ATTRACT_SHIFT) ^ 0xFFFFFFFF;
+        }
+        if ((ctx->battleMons[i].status2 & STATUS2_BINDING_ALL) && ctx->battleMons[i].unk88.battlerIdBinding == battlerId) {
+            ctx->battleMons[i].status2 &= ~STATUS2_BINDING_ALL;
+        }
+    }
+    
+    data = (u8 *)&ctx->battleMons[battlerId].unk88;
+    for (i = 0; i < sizeof(UnkBattlemonSub); i++) {
+        data[i] = 0;
+    }
+    
+    if (ctx->linkStatus & (1 << 8)) {
+        ctx->battleMons[battlerId].unk88.substituteHp = unkStruct.substituteHp;
+        ctx->battleMons[battlerId].unk88.battlerIdLockOn = unkStruct.battlerIdLockOn;
+        ctx->battleMons[battlerId].unk88.perishSongTurns = unkStruct.perishSongTurns;
+        ctx->battleMons[battlerId].unk88.battlerIdMeanLook = unkStruct.battlerIdMeanLook;
+        ctx->battleMons[battlerId].unk88.magnetRiseTurns = unkStruct.magnetRiseTurns;
+        ctx->battleMons[battlerId].unk88.unk4_13 = unkStruct.unk4_13;
+        ctx->battleMons[battlerId].unk88.healBlockTurns = unkStruct.healBlockTurns;
+    }
+    
+    ctx->battleMons[battlerId].unk88.fakeOutCount = ctx->totalTurns + 1;
+    ctx->battleMons[battlerId].unk88.slowStartTurns = ctx->totalTurns + 1;
+    ctx->battleMons[battlerId].unk88.truantFlag = (ctx->totalTurns + 1) & 1;
+   
+    ctx->moveNoProtect[battlerId] = 0;
+    ctx->moveNoHit[battlerId] = 0;
+    ctx->moveNoHitBattler[battlerId] = 0xFF;
+    ctx->moveNoHitType[battlerId] = 0;
+    ctx->moveNoBattlerPrev[battlerId] = 0;
+    ctx->moveNoCopied[battlerId] = 0;
+    ctx->moveNoCopiedHit[battlerId][0] = 0;
+    ctx->moveNoCopiedHit[battlerId][1] = 0;
+    ctx->moveNoCopiedHit[battlerId][2] = 0;
+    ctx->moveNoCopiedHit[battlerId][3] = 0;
+    ctx->moveNoSketch[battlerId] = 0;
+    ctx->conversion2Move[battlerId] = 0;
+    ctx->conversion2BattlerId[battlerId] = 0;
+    ctx->conversion2Type[battlerId] = 0;
+    ctx->moveNoMetronome[battlerId] = 0;
+    
+    ctx->fieldCondition &= (MaskOfFlagNo(battlerId) << 8) ^ 0xFFFFFFFF; //??
+    
+    if (ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_POWER_TRICK) {
+        i = ctx->battleMons[battlerId].atk;
+        ctx->battleMons[battlerId].atk = ctx->battleMons[battlerId].def;
+        ctx->battleMons[battlerId].def = i;
+    }
+    
+    for (i = 0; i < maxBattlers; i++) {
+        if (i != battlerId && BattleSys_GetFieldSide(bsys, i) != BattleSys_GetFieldSide(bsys, battlerId)) {
+            ctx->moveNoCopied[i] = 0;
+        }
+        ctx->moveNoCopiedHit[i][battlerId] = 0;
+    }
+    
+    ov12_02258584(ctx, battlerId);
+    ov12_0225859C(ctx, battlerId);
+    ov12_022585A8(ctx, battlerId);
+}
+
+void InitFaintedWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
+    int i;
+    int maxBattlers;
+    u8 *data;
+    
+    maxBattlers = BattleSys_GetMaxBattlers(bsys);
+
+    for (int stat = 0; stat < 8; stat++) {
+        ctx->battleMons[battlerId].statChanges[stat] = 6;
+    }
+    
+    ctx->battleMons[battlerId].status2 = 0;
+    ctx->battleMons[battlerId].moveEffectFlags = 0;
+    
+    for (i = 0; i < maxBattlers; i++) {
+        if ((ctx->battleMons[i].status2 & STATUS2_MEAN_LOOK) && ctx->battleMons[i].unk88.battlerIdMeanLook == battlerId) {
+            ctx->battleMons[i].status2 &= ~STATUS2_MEAN_LOOK;
+        }
+        if (ctx->battleMons[i].status2 & (MaskOfFlagNo(battlerId) << STATUS2_ATTRACT_SHIFT)) {
+            ctx->battleMons[i].status2 &= (MaskOfFlagNo(battlerId) << STATUS2_ATTRACT_SHIFT) ^ 0xFFFFFFFF;
+        }
+        if ((ctx->battleMons[i].status2 & STATUS2_BINDING_ALL) && ctx->battleMons[i].unk88.battlerIdBinding == battlerId) {
+            ctx->battleMons[i].status2 &= STATUS2_BINDING_ALL ^ 0xFFFFFFFF;
+        }
+    }
+    
+    data = (u8 *)&ctx->battleMons[battlerId].unk88;
+    for (i = 0; i < sizeof(UnkBattlemonSub); i++) {
+        data[i] = 0;
+    }
+    
+    data = (u8 *)&ctx->turnData[battlerId];
+    for (i = 0; i < sizeof(TurnData); i++) {
+        data[i] = 0;
+    }
+    
+    ctx->battleMons[battlerId].unk88.fakeOutCount = ctx->totalTurns + 1;
+    ctx->battleMons[battlerId].unk88.slowStartTurns = ctx->totalTurns + 1;
+    ctx->battleMons[battlerId].unk88.truantFlag = (ctx->totalTurns + 1) & 1;
+    
+    ctx->moveNoProtect[battlerId] = 0;
+    ctx->moveNoHit[battlerId] = 0;
+    ctx->moveNoHitBattler[battlerId] = 0xFF;
+    ctx->moveNoHitType[battlerId] = 0;
+    ctx->moveNoBattlerPrev[battlerId] = 0;
+    ctx->moveNoCopied[battlerId] = 0;
+    ctx->moveNoCopiedHit[battlerId][0] = 0;
+    ctx->moveNoCopiedHit[battlerId][1] = 0;
+    ctx->moveNoCopiedHit[battlerId][2] = 0;
+    ctx->moveNoCopiedHit[battlerId][3] = 0;
+    ctx->moveNoSketch[battlerId] = 0;
+    ctx->conversion2Move[battlerId] = 0;
+    ctx->conversion2BattlerId[battlerId] = 0;
+    ctx->conversion2Type[battlerId] = 0;
+    ctx->moveNoMetronome[battlerId] = 0;
+    
+    ctx->fieldCondition &= (MaskOfFlagNo(battlerId) << 8) ^ 0xFFFFFFFF; //??
+    
+    for (i = 0; i < maxBattlers; i++) {
+        if (i != battlerId && BattleSys_GetFieldSide(bsys, i) != BattleSys_GetFieldSide(bsys, battlerId)) {
+            ctx->moveNoCopied[i] = 0;
+        }
+        ctx->moveNoCopiedHit[i][battlerId] = 0;
+    }
+
+    ctx->unk_13C[battlerId] &= ~1;
+    
+    ov12_02258584(ctx, battlerId);
+    ov12_0225859C(ctx, battlerId);
+    ov12_022585A8(ctx, battlerId);
+}
+
+//BattleContext_InitTurnData..? BattleContext_InitStartTurn..?
+void ov12_02251710(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int battlerId;
+    
+    for (battlerId = 0; battlerId < 4; battlerId++) {
+        MIi_CpuClearFast(0, (u32 *)&ctx->turnData[battlerId], sizeof(TurnData));
+        MIi_CpuClearFast(0, (u32 *)&ctx->moveFail[battlerId], sizeof(MoveFailFlags));
+        ctx->battleMons[battlerId].status2 &= ~STATUS2_FLINCH;
+        if (ctx->battleMons[battlerId].unk88.rechargeCount + 1 < ctx->totalTurns) {
+            ctx->battleMons[battlerId].status2 &= ~STATUS2_RECHARGE;
+        }
+        if ((ctx->battleMons[battlerId].status & STATUS_SLEEP) && (ctx->battleMons[battlerId].status2 & STATUS2_LOCKED_INTO_MOVE)) {
+            UnlockBattlerOutOfCurrentMove(bsys, ctx, battlerId);
+        }
+        if ((ctx->battleMons[battlerId].status & STATUS_SLEEP) && (ctx->battleMons[battlerId].status2 & STATUS2_RAGE)) {
+            ctx->battleMons[battlerId].status2 &= ~STATUS2_RAGE;
+        }
+    }
+    
+    ctx->fieldSideConditionData[0].followMeFlag = 0;
+    ctx->fieldSideConditionData[1].followMeFlag = 0;
 }

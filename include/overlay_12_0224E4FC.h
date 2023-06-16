@@ -31,12 +31,13 @@ int GetBattlerStatusCondition(BATTLECONTEXT *ctx, int battlerId);
 BOOL ov12_02250D4C(BattleSystem *bsys, BATTLECONTEXT *ctx);
 void BattleContext_Init(BATTLECONTEXT *ctx);
 void ov12_02251038(BattleSystem *bsys, BATTLECONTEXT *ctx);
+void InitSwitchWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+void InitFaintedWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+void ov12_02251710(BattleSystem *bsys, BATTLECONTEXT *ctx);
 
 //The following functions haven't been decompiled as of now
 void ov12_02256F78(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 monIndex);
 void Link_CheckTimeout(BATTLECONTEXT *ctx);
-void InitSwitchWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
-void InitFaintedWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL CheckBattlerAbilityIfNotIgnored(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, u32 ability);
 int BattleMon_GetMoveIndex(BATTLEMON *mon, int move);
 int GetMonsHitCount(BattleSystem *bsys, BATTLECONTEXT *ctx, int a2, int battlerId);
@@ -94,5 +95,6 @@ int ov12_02258348(BATTLECONTEXT *ctx, int a1, int a2);
 int ov12_02256838(BATTLECONTEXT *ctx, int battlerId);
 int BattleSystem_GetMoveType(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
 void ov12_022585A8(BATTLECONTEXT *ctx, u8 battlerId);
-
+void ov12_02258584(BATTLECONTEXT *ctx, u8 battlerId);
+void ov12_0225859C(BATTLECONTEXT *ctx, u8 battlerId);
 #endif
