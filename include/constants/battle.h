@@ -164,6 +164,7 @@ enum Terrain {
 #define STATUS2_27                          (1 << 27)
 #define STATUS2_28                          (1 << 28)
 #define STATUS2_DEFENCE_CURL                (1 << 30)
+#define STATUS2_TORMENT                     (1 << 31)
 
 #define STATUS2_BINDING_ALL                 (STATUS2_13 | STATUS2_14 | STATUS2_15)
 #define STATUS2_ATTRACT_ALL                 (STATUS2_ATTRACT_BATTLER1 | STATUS2_ATTRACT_BATTLER2 | STATUS2_ATTRACT_BATTLER3 | STATUS2_ATTRACT_BATTLER4)
@@ -172,6 +173,18 @@ enum Terrain {
 
 #define STATUS2_BATON_PASSABLE              (STATUS2_0 | STATUS2_1 | STATUS2_2 | STATUS2_FOCUS_ENERGY | STATUS2_24 | STATUS2_MEAN_LOOK | STATUS2_28)
 
+//Struggle Checks
+#define STRUGGLE_CHECK_NO_MOVES             (1 << 0)
+#define STRUGGLE_CHECK_NO_PP                (1 << 1)
+#define STRUGGLE_CHECK_DISABLED             (1 << 2)
+#define STRUGGLE_CHECK_TORMENT              (1 << 3)
+#define STRUGGLE_CHECK_TAUNT                (1 << 4)
+#define STRUGGLE_CHECK_IMPRISON             (1 << 5)
+#define STRUGGLE_CHECK_GRAVITY              (1 << 6)
+#define STRUGGLE_CHECK_HEAL_BLOCK           (1 << 7)
+#define STRUGGLE_CHECK_ENCORE               (1 << 8) //unused because they straight up forgot
+#define STRUGGLE_CHECK_CHOICED              (1 << 9)
+    
 //Battle Mon Data
 #define BMON_DATA_SPECIES                    0
 #define BMON_DATA_ATK                        1

@@ -8,286 +8,6 @@
 	.text
     .public AddBattlerVar
 
-	thumb_func_start StruggleCheck
-StruggleCheck: ; 0x022517EC
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0x5c
-	str r0, [sp]
-	ldr r0, [sp, #0x70]
-	add r7, r1, #0
-	str r0, [sp, #0x70]
-	str r2, [sp, #4]
-	add r0, r7, #0
-	add r1, r2, #0
-	add r5, r3, #0
-	bl GetBattlerHeldItemEffect
-	str r0, [sp, #0x34]
-	ldr r0, [sp, #4]
-	mov r1, #0xc0
-	mul r1, r0
-	add r4, r7, r1
-	str r1, [sp, #0x38]
-	ldr r0, [sp, #0x70]
-	mov r1, #1
-	and r0, r1
-	str r0, [sp, #0x2c]
-	ldr r0, [sp, #0x70]
-	mov r1, #2
-	and r0, r1
-	str r0, [sp, #0x28]
-	ldr r0, [sp, #0x70]
-	mov r1, #4
-	and r0, r1
-	str r0, [sp, #0x24]
-	ldr r0, [sp, #4]
-	mov r1, #8
-	lsl r0, r0, #1
-	add r0, r7, r0
-	str r0, [sp, #0x20]
-	ldr r0, [sp, #0x70]
-	mov r2, #0x10
-	and r0, r1
-	ldr r1, _02251A04 ; =0x00002DC8
-	str r0, [sp, #0x1c]
-	add r0, r7, r1
-	str r0, [sp, #0x3c]
-	ldr r0, [sp, #0x70]
-	sub r1, #0x88
-	and r0, r2
-	str r0, [sp, #0x18]
-	ldr r0, [sp, #0x70]
-	mov r2, #0x20
-	and r0, r2
-	str r0, [sp, #0x14]
-	ldr r0, [sp, #0x70]
-	mov r2, #0x40
-	and r0, r2
-	str r0, [sp, #0x10]
-	ldr r2, [sp, #0x70]
-	mov r0, #0x80
-	and r2, r0
-	str r2, [sp, #0xc]
-	lsl r2, r0, #2
-	ldr r0, [sp, #0x70]
-	mov r6, #0
-	and r0, r2
-	str r0, [sp, #8]
-	add r0, r7, r1
-	str r0, [sp, #0x40]
-	ldr r0, _02251A08 ; =0x00002DE8
-	str r4, [sp, #0x30]
-	add r0, r4, r0
-	str r0, [sp, #0x44]
-	ldr r0, _02251A0C ; =0x00002DB0
-	add r0, r4, r0
-	str r0, [sp, #0x48]
-	ldr r0, _02251A10 ; =0x00002DEC
-	add r0, r4, r0
-	str r0, [sp, #0x4c]
-	ldr r0, _02251A14 ; =0x00002DF8
-	add r0, r4, r0
-	str r0, [sp, #0x50]
-	ldr r0, _02251A14 ; =0x00002DF8
-	add r0, r4, r0
-	str r0, [sp, #0x58]
-	ldr r0, _02251A14 ; =0x00002DF8
-	add r0, r4, r0
-	str r0, [sp, #0x54]
-_02251894:
-	ldr r0, _02251A18 ; =0x00002D4C
-	ldrh r0, [r4, r0]
-	cmp r0, #0
-	bne _022518AA
-	ldr r0, [sp, #0x2c]
-	cmp r0, #0
-	beq _022518AA
-	add r0, r6, #0
-	bl MaskOfFlagNo
-	orr r5, r0
-_022518AA:
-	ldr r1, [sp, #0x30]
-	ldr r0, _02251A1C ; =0x00002D6C
-	ldrb r0, [r1, r0]
-	cmp r0, #0
-	bne _022518C2
-	ldr r0, [sp, #0x28]
-	cmp r0, #0
-	beq _022518C2
-	add r0, r6, #0
-	bl MaskOfFlagNo
-	orr r5, r0
-_022518C2:
-	ldr r0, [sp, #0x44]
-	ldrh r1, [r0]
-	ldr r0, _02251A18 ; =0x00002D4C
-	ldrh r0, [r4, r0]
-	cmp r1, r0
-	bne _022518DC
-	ldr r0, [sp, #0x24]
-	cmp r0, #0
-	beq _022518DC
-	add r0, r6, #0
-	bl MaskOfFlagNo
-	orr r5, r0
-_022518DC:
-	ldr r1, [sp, #0x20]
-	ldr r0, _02251A20 ; =0x0000307C
-	ldrh r1, [r1, r0]
-	ldr r0, _02251A18 ; =0x00002D4C
-	ldrh r0, [r4, r0]
-	cmp r1, r0
-	bne _02251904
-	ldr r0, [sp, #0x1c]
-	cmp r0, #0
-	beq _02251904
-	ldr r0, [sp, #0x48]
-	ldr r1, [r0]
-	mov r0, #2
-	lsl r0, r0, #0x1e
-	tst r0, r1
-	beq _02251904
-	add r0, r6, #0
-	bl MaskOfFlagNo
-	orr r5, r0
-_02251904:
-	ldr r1, [sp, #0x3c]
-	ldr r0, [sp, #0x38]
-	ldr r0, [r1, r0]
-	lsl r0, r0, #0x15
-	lsr r0, r0, #0x1d
-	beq _0225192E
-	ldr r0, [sp, #0x18]
-	cmp r0, #0
-	beq _0225192E
-	ldr r0, _02251A18 ; =0x00002D4C
-	ldrh r0, [r4, r0]
-	lsl r0, r0, #4
-	add r1, r7, r0
-	ldr r0, _02251A24 ; =0x000003E1
-	ldrb r0, [r1, r0]
-	cmp r0, #0
-	bne _0225192E
-	add r0, r6, #0
-	bl MaskOfFlagNo
-	orr r5, r0
-_0225192E:
-	ldr r3, _02251A18 ; =0x00002D4C
-	ldr r0, [sp]
-	ldrh r3, [r4, r3]
-	ldr r2, [sp, #4]
-	add r1, r7, #0
-	bl ov12_02252C74
-	cmp r0, #0
-	beq _0225194E
-	ldr r0, [sp, #0x14]
-	cmp r0, #0
-	beq _0225194E
-	add r0, r6, #0
-	bl MaskOfFlagNo
-	orr r5, r0
-_0225194E:
-	ldr r3, _02251A18 ; =0x00002D4C
-	ldr r0, [sp]
-	ldrh r3, [r4, r3]
-	ldr r2, [sp, #4]
-	add r1, r7, #0
-	bl ov12_02252DC4
-	cmp r0, #0
-	beq _0225196E
-	ldr r0, [sp, #0x10]
-	cmp r0, #0
-	beq _0225196E
-	add r0, r6, #0
-	bl MaskOfFlagNo
-	orr r5, r0
-_0225196E:
-	ldr r3, _02251A18 ; =0x00002D4C
-	ldr r0, [sp]
-	ldrh r3, [r4, r3]
-	ldr r2, [sp, #4]
-	add r1, r7, #0
-	bl ov12_02252DF8
-	cmp r0, #0
-	beq _0225198E
-	ldr r0, [sp, #0xc]
-	cmp r0, #0
-	beq _0225198E
-	add r0, r6, #0
-	bl MaskOfFlagNo
-	orr r5, r0
-_0225198E:
-	ldr r0, [sp, #0x4c]
-	ldrh r1, [r0]
-	cmp r1, #0
-	beq _022519A6
-	ldr r0, _02251A18 ; =0x00002D4C
-	ldrh r0, [r4, r0]
-	cmp r1, r0
-	beq _022519A6
-	add r0, r6, #0
-	bl MaskOfFlagNo
-	orr r5, r0
-_022519A6:
-	ldr r0, [sp, #0x34]
-	cmp r0, #0x37
-	beq _022519B4
-	cmp r0, #0x73
-	beq _022519B4
-	cmp r0, #0x7d
-	bne _022519EC
-_022519B4:
-	ldr r0, [sp, #8]
-	cmp r0, #0
-	beq _022519EC
-	ldr r1, [sp, #0x40]
-	ldr r0, [sp, #0x38]
-	add r0, r1, r0
-	ldr r1, [sp, #0x50]
-	ldrh r1, [r1]
-	bl BattleMon_GetMoveIndex
-	cmp r0, #4
-	bne _022519D4
-	ldr r0, [sp, #0x54]
-	mov r1, #0
-	strh r1, [r0]
-	b _022519EC
-_022519D4:
-	ldr r0, [sp, #0x58]
-	ldrh r1, [r0]
-	cmp r1, #0
-	beq _022519EC
-	ldr r0, _02251A18 ; =0x00002D4C
-	ldrh r0, [r4, r0]
-	cmp r1, r0
-	beq _022519EC
-	add r0, r6, #0
-	bl MaskOfFlagNo
-	orr r5, r0
-_022519EC:
-	ldr r0, [sp, #0x30]
-	add r6, r6, #1
-	add r0, r0, #1
-	add r4, r4, #2
-	str r0, [sp, #0x30]
-	cmp r6, #4
-	bge _022519FC
-	b _02251894
-_022519FC:
-	add r0, r5, #0
-	add sp, #0x5c
-	pop {r4, r5, r6, r7, pc}
-	nop
-_02251A04: .word 0x00002DC8
-_02251A08: .word 0x00002DE8
-_02251A0C: .word 0x00002DB0
-_02251A10: .word 0x00002DEC
-_02251A14: .word 0x00002DF8
-_02251A18: .word 0x00002D4C
-_02251A1C: .word 0x00002D6C
-_02251A20: .word 0x0000307C
-_02251A24: .word 0x000003E1
-	thumb_func_end StruggleCheck
-
 	thumb_func_start ov12_02251A28
 ov12_02251A28: ; 0x02251A28
 	push {r3, r4, r5, r6, r7, lr}
@@ -2733,8 +2453,8 @@ _02252C6C:
 _02252C70: .word 0x00002DC8
 	thumb_func_end ov12_02252C40
 
-	thumb_func_start ov12_02252C74
-ov12_02252C74: ; 0x02252C74
+	thumb_func_start BattleContext_CheckMoveImprisoned
+BattleContext_CheckMoveImprisoned: ; 0x02252C74
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r6, r1, #0
@@ -2795,7 +2515,7 @@ _02252CDE:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02252CE4: .word 0x00002D4C
-	thumb_func_end ov12_02252C74
+	thumb_func_end BattleContext_CheckMoveImprisoned
 
 	thumb_func_start ov12_02252CE8
 ov12_02252CE8: ; 0x02252CE8
@@ -2924,8 +2644,8 @@ _02252DBC:
 _02252DC0: .word 0x000021EC
 	thumb_func_end ov12_02252D3C
 
-	thumb_func_start ov12_02252DC4
-ov12_02252DC4: ; 0x02252DC4
+	thumb_func_start BattleContext_CheckMoveUnuseableInGravity
+BattleContext_CheckMoveUnuseableInGravity: ; 0x02252DC4
 	push {r3, r4}
 	mov r2, #6
 	lsl r2, r2, #6
@@ -2954,10 +2674,10 @@ _02252DEE:
 	bx lr
 	nop
 _02252DF4: .word ov12_0226CB7C
-	thumb_func_end ov12_02252DC4
+	thumb_func_end BattleContext_CheckMoveUnuseableInGravity
 
-	thumb_func_start ov12_02252DF8
-ov12_02252DF8: ; 0x02252DF8
+	thumb_func_start BattleContext_CheckMoveHealBlocked
+BattleContext_CheckMoveHealBlocked: ; 0x02252DF8
 	push {r3, r4}
 	mov r4, #0xc0
 	mul r4, r2
@@ -2988,7 +2708,7 @@ _02252E24:
 	.balign 4, 0
 _02252E28: .word 0x00002DCC
 _02252E2C: .word ov12_0226CBA2
-	thumb_func_end ov12_02252DF8
+	thumb_func_end BattleContext_CheckMoveHealBlocked
 
 	thumb_func_start ov12_02252E30
 ov12_02252E30: ; 0x02252E30
@@ -13426,14 +13146,14 @@ CheckLegalMetronomeMove: ; 0x02257DA4
 	str r2, [sp]
 	add r5, r3, #0
 	mov r4, #0
-	bl ov12_02252DC4
+	bl BattleContext_CheckMoveUnuseableInGravity
 	cmp r0, #1
 	beq _02257DC8
 	ldr r2, [sp]
 	add r0, r6, #0
 	add r1, r7, #0
 	add r3, r5, #0
-	bl ov12_02252DF8
+	bl BattleContext_CheckMoveHealBlocked
 	cmp r0, #1
 	bne _02257DCC
 _02257DC8:

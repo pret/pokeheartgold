@@ -1962,3 +1962,47 @@ void ov12_02251710(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     ctx->fieldSideConditionData[0].followMeFlag = 0;
     ctx->fieldSideConditionData[1].followMeFlag = 0;
 }
+
+u32 StruggleCheck(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u32 nonSelectableMoves, u32 struggleCheckFlags) {
+    int movePos;
+    int item = GetBattlerHeldItemEffect(ctx, battlerId);
+    
+    for (movePos = 0; movePos < 4; movePos++) {
+        if (!(ctx->battleMons[battlerId].moves[movePos]) && (struggleCheckFlags & STRUGGLE_CHECK_NO_MOVES)) {
+            nonSelectableMoves |= MaskOfFlagNo(movePos);
+        }
+        if (!(ctx->battleMons[battlerId].movePPCur[movePos]) && (struggleCheckFlags & STRUGGLE_CHECK_NO_PP)) {
+            nonSelectableMoves |= MaskOfFlagNo(movePos);
+        }
+        if ((ctx->battleMons[battlerId].moves[movePos] == ctx->battleMons[battlerId].unk88.disabledMove) && (struggleCheckFlags & STRUGGLE_CHECK_DISABLED)) {
+            nonSelectableMoves |= MaskOfFlagNo(movePos);
+        }
+        if ((ctx->battleMons[battlerId].moves[movePos] == ctx->moveNoBattlerPrev[battlerId]) && (struggleCheckFlags & STRUGGLE_CHECK_TORMENT) && (ctx->battleMons[battlerId].status2 & STATUS2_TORMENT)) {
+            nonSelectableMoves |= MaskOfFlagNo(movePos);
+        }
+        if (ctx->battleMons[battlerId].unk88.tauntTurns && (struggleCheckFlags & STRUGGLE_CHECK_TAUNT) && !(ctx->unk_334.moveData[ctx->battleMons[battlerId].moves[movePos]].power)) {
+            nonSelectableMoves |= MaskOfFlagNo(movePos);
+        }
+        if (BattleContext_CheckMoveImprisoned(bsys, ctx, battlerId, ctx->battleMons[battlerId].moves[movePos]) && (struggleCheckFlags & STRUGGLE_CHECK_IMPRISON)) {
+            nonSelectableMoves |= MaskOfFlagNo(movePos);
+        }        
+        if (BattleContext_CheckMoveUnuseableInGravity(bsys, ctx, battlerId, ctx->battleMons[battlerId].moves[movePos]) && (struggleCheckFlags & STRUGGLE_CHECK_GRAVITY)) {
+            nonSelectableMoves |= MaskOfFlagNo(movePos);
+        }
+        if (BattleContext_CheckMoveHealBlocked(bsys, ctx, battlerId, ctx->battleMons[battlerId].moves[movePos]) && (struggleCheckFlags & STRUGGLE_CHECK_HEAL_BLOCK)) {
+            nonSelectableMoves |= MaskOfFlagNo(movePos);
+        }
+        if ((ctx->battleMons[battlerId].unk88.encoredMove) && (ctx->battleMons[battlerId].unk88.encoredMove != ctx->battleMons[battlerId].moves[movePos])) {
+            //BUG: The flag check for encore is missing in this if statement, though it's unclear if this effects anything functionally
+            nonSelectableMoves |= MaskOfFlagNo(movePos);
+        }
+        if ((item == HOLD_EFFECT_CHOICE_ATK || item == HOLD_EFFECT_CHOICE_SPEED || item == HOLD_EFFECT_CHOICE_SPATK) && (struggleCheckFlags & STRUGGLE_CHECK_CHOICED)) {
+            if (BattleMon_GetMoveIndex(&ctx->battleMons[battlerId], ctx->battleMons[battlerId].unk88.moveNoChoice) == 4) {
+                ctx->battleMons[battlerId].unk88.moveNoChoice = 0;
+            } else if (ctx->battleMons[battlerId].unk88.moveNoChoice && ctx->battleMons[battlerId].unk88.moveNoChoice != ctx->battleMons[battlerId].moves[movePos]) {
+                nonSelectableMoves |= MaskOfFlagNo(movePos);
+            }
+        }
+    }
+    return nonSelectableMoves;
+}

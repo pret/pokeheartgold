@@ -34,6 +34,7 @@ void ov12_02251038(BattleSystem *bsys, BATTLECONTEXT *ctx);
 void InitSwitchWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 void InitFaintedWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 void ov12_02251710(BattleSystem *bsys, BATTLECONTEXT *ctx);
+u32 StruggleCheck(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u32 nonSelectableMoves, u32 a4);
 
 //The following functions haven't been decompiled as of now
 void ov12_02256F78(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 monIndex);
@@ -82,7 +83,6 @@ u32 ov12_022581D4(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 a2, int battlerId)
 u32 GetItemHoldEffect(BATTLECONTEXT *ctx, int item, u32 a3);
 u32 ov12_0223C24C(PARTY *party, u32 *a1);
 BOOL CheckStatusEffectsSubstitute(BATTLECONTEXT *ctx, int battlerId, u32 status);
-u32 StruggleCheck(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u32 nonSelectableMoves, u32 a4);
 BOOL ov12_02252700(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL WhirlwindCheck(BattleSystem *bsys, BATTLECONTEXT *ctx);
 BOOL ov12_0225275C(BATTLECONTEXT *ctx, int battlerId);
@@ -97,4 +97,8 @@ int BattleSystem_GetMoveType(BattleSystem *bsys, BATTLECONTEXT *ctx, int battler
 void ov12_022585A8(BATTLECONTEXT *ctx, u8 battlerId);
 void ov12_02258584(BATTLECONTEXT *ctx, u8 battlerId);
 void ov12_0225859C(BATTLECONTEXT *ctx, u8 battlerId);
+BOOL BattleContext_CheckMoveImprisoned(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
+BOOL BattleContext_CheckMoveUnuseableInGravity(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
+BOOL BattleContext_CheckMoveHealBlocked(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
+
 #endif
