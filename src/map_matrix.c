@@ -157,7 +157,7 @@ static inline BOOL MapAndDayCheck(u32 map_no, RTCDate* date) {
     return (map_no == MAP_T29 || map_no == MAP_R43) && date->week == RTC_WEEK_WEDNESDAY;
 }
 
-BOOL ShouldUseAlternateLakeOfRage(SAVEDATA* savedata, u32 map_no) {
+BOOL ShouldUseAlternateLakeOfRage(SaveData* savedata, u32 map_no) {
     RTCDate date;
     ScriptState *state = SaveArray_Flags_Get(savedata);
 
@@ -203,7 +203,7 @@ void SetLakeOfRageWaterLevel(MAPMATRIX* map_matrix, BOOL lower_water_level) {
     }
 }
 
-void PlaceSafariZoneAreas(MAPMATRIX* map_matrix, SAVEDATA* save) {
+void PlaceSafariZoneAreas(MAPMATRIX* map_matrix, SaveData* save) {
     u16* models = map_matrix->data.maps.models;
     s32 width = map_matrix->width;
 

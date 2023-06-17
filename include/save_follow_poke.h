@@ -11,7 +11,7 @@ struct SaveFollowPoke {
 
 u32 Save_FollowPoke_sizeof(void);
 void Save_FollowPoke_Init(struct SaveFollowPoke *followPoke);
-struct SaveFollowPoke *Save_FollowPoke_Get(SAVEDATA *saveData);
+struct SaveFollowPoke *Save_FollowPoke_Get(SaveData *saveData);
 int SavFollowPoke_GetMapId(struct SaveFollowPoke *followPoke);
 void SavFollowPoke_SetMapId(int mapno, struct SaveFollowPoke *followPoke);
 u8 SavFollowPoke_GetUnused2bitField(struct SaveFollowPoke *followPoke); // deadstripped

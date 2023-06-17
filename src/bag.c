@@ -389,7 +389,7 @@ ItemSlot *BagGetNthPocket(Bag *bag, u8 pocket, int n) {
     return &slots[n];
 }
 
-Bag *SaveGetBag(SAVEDATA *saveData) {
+Bag *SaveGetBag(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_BAG);
 }
 

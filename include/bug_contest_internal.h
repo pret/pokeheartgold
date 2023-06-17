@@ -36,7 +36,7 @@ typedef struct BUGCONTESTANT {
 
 typedef struct BUGCONTEST {
     HeapID heapId;           // Always set to 3
-    SAVEDATA *saveData;      // Pointer to save data
+    SaveData *saveData;      // Pointer to save data
     PARTY *party_bak;        // Player's party is held for the contest
     PARTY *party_cur;        // Only the lead Pokemon
     Pokemon *mon;            // The Pokemon you caught in the contest

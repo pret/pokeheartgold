@@ -167,7 +167,7 @@ void ScriptState_RollLotoId(ScriptState* state) {
     ScriptState_SetLotoId(state, hi << 16 | lo);
 }
 
-void Save_LCRNGAdvanceLotoID(SAVEDATA* savedata, u16 var) {
+void Save_LCRNGAdvanceLotoID(SaveData* savedata, u16 var) {
 #pragma unused(var)
     ScriptState* state = SaveArray_Flags_Get(savedata);
     SAV_FRIEND_GRP* friend_groups = Save_FriendGroup_Get(savedata);
@@ -184,7 +184,7 @@ void ScriptState_SetVar4041(ScriptState* state, u16 value) {
     SetScriptVar(state, VAR_UNK_4041, value);
 }
 
-void sub_02066D60(SAVEDATA* savedata) {
+void sub_02066D60(SaveData* savedata) {
     ScriptState* state = SaveArray_Flags_Get(savedata);
     u32 rand = LCRandom() % 98;
 

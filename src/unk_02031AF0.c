@@ -9,6 +9,6 @@ void sub_02031AF4(SavePokeathlonFriendshipRecords* unk) {
     MI_CpuClear8(unk, sizeof(SavePokeathlonFriendshipRecords));
 }
 
-SavePokeathlonFriendshipRecords* sub_02031B00(SAVEDATA* savedata) {
+SavePokeathlonFriendshipRecords* sub_02031B00(SaveData* savedata) {
     return SaveArray_Get(savedata, SAVE_POKEATHLON_FRIENDSHIP_RECORDS);
 }

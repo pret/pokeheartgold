@@ -10,7 +10,7 @@ void SaveArray_Flags_Init(ScriptState *scriptState) {
     memset(scriptState, 0, sizeof(ScriptState));
 }
 
-ScriptState *SaveArray_Flags_Get(SAVEDATA *saveData) {
+ScriptState *SaveArray_Flags_Get(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_FLAGS);
 }
 

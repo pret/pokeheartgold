@@ -47,7 +47,7 @@ typedef struct UnkStruct_0204F284 {
     void **unk08;
 } UnkStruct_0204F284;
 
-static BOOL BattleHall_DoesPartyContainEligibleMons(s32, SAVEDATA*);
+static BOOL BattleHall_DoesPartyContainEligibleMons(s32, SaveData*);
 static void sub_0204F1E4(TaskManager*, u16, u16*);
 static BOOL sub_0204F228(TaskManager*);
 static void sub_0204F284(TaskManager*, void*, BattleHallChallengeType);
@@ -134,7 +134,7 @@ BOOL ScrCmd_633(ScriptContext *ctx) {
     return FALSE;
 }
 
-static BOOL BattleHall_DoesPartyContainEligibleMons(s32 numRequiredMons, SAVEDATA *savedata) {
+static BOOL BattleHall_DoesPartyContainEligibleMons(s32 numRequiredMons, SaveData *savedata) {
     u8 i;
     u8 numEligibleMons;
     u16 species;
@@ -303,7 +303,7 @@ static u32 sub_0204F3F8(UnkStruct_0204F284 *a0, FieldSystem *fsys) {
 }
 
 static u32 sub_0204F448(UnkStruct_0204F284 *a0, FieldSystem *fsys, HeapID heapId) {
-    SAVEDATA *savedata = fsys->savedata;
+    SaveData *savedata = fsys->savedata;
     UnkStruct_0204F448 *r4 = AllocFromHeapAtEnd(heapId, sizeof(UnkStruct_0204F448));
     MI_CpuFill8(r4, 0, sizeof(UnkStruct_0204F448));
     r4->options = Save_PlayerData_GetOptionsAddr(savedata);

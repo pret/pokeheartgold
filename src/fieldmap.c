@@ -434,17 +434,17 @@ BOOL TrainerNumIsDouble(u32 trainer) {
     return TrainerData_GetAttr(trainer, TRATTR_DOUBLEBTL) != 0;
 }
 
-BOOL TrainerFlagCheck(SAVEDATA *saveData, u32 trainer) {
+BOOL TrainerFlagCheck(SaveData *saveData, u32 trainer) {
     ScriptState *scriptState = SaveArray_Flags_Get(saveData);
     return CheckFlagInArray(scriptState, trainer + TRAINER_FLAG_BASE);
 }
 
-void TrainerFlagSet(SAVEDATA *saveData, u32 trainer) {
+void TrainerFlagSet(SaveData *saveData, u32 trainer) {
     ScriptState *scriptState = SaveArray_Flags_Get(saveData);
     SetFlagInArray(scriptState, trainer + TRAINER_FLAG_BASE);
 }
 
-void TrainerFlagClear(SAVEDATA *saveData, u32 trainer) {
+void TrainerFlagClear(SaveData *saveData, u32 trainer) {
     ScriptState *scriptState = SaveArray_Flags_Get(saveData);
     ClearFlagInArray(scriptState, trainer + TRAINER_FLAG_BASE);
 }

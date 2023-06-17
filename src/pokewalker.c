@@ -2,7 +2,7 @@
 
 static BOOL pokewalkerHasBoxmon(POKEWALKER *pokeWalker);
 
-POKEWALKER *Save_Pokewalker_Get(SAVEDATA *saveData) {
+POKEWALKER *Save_Pokewalker_Get(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_POKEWALKER);
 }
 

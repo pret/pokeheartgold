@@ -88,7 +88,7 @@ BOOL Mail_Compare(const MAIL *a, const MAIL *b) {
     return TRUE;
 }
 
-void Mail_SetNewMessageDetails(MAIL *mail, u8 mailType, u8 mon_no, SAVEDATA *saveData) {
+void Mail_SetNewMessageDetails(MAIL *mail, u8 mailType, u8 mon_no, SaveData *saveData) {
     u8 i, j, pal, k;
     u16 species;
     u32 icon, isEgg, forme;
@@ -254,7 +254,7 @@ void Mail_SetMessage(MAIL *mail, const MAIL_MESSAGE *src, int i) {
     }
 }
 
-MAILBOX *Save_Mailbox_Get(SAVEDATA *saveData) {
+MAILBOX *Save_Mailbox_Get(SaveData *saveData) {
     return (MAILBOX *)SaveArray_Get(saveData, SAVE_MAILBOX);
 }
 

@@ -32,7 +32,7 @@ struct PlayerAvatar {
 
 int sub_0205C268(u32 unkA);
 u8 sub_0205C278(void);
-u8 sub_0205C298(SAVEDATA *savedata);
+u8 sub_0205C298(SaveData *savedata);
 u8 sub_0205C2C0(u32 unkA);
 u8 sub_0205C2E8(u32 unkA);
 u8 sub_0205C310(u32 unkA);

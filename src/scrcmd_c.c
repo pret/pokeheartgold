@@ -2364,7 +2364,7 @@ BOOL ScrCmd_211(ScriptContext *ctx) {
     RoamerSaveData *roamerSave = Save_Roamers_Get(ctx->fsys->savedata);
     u16 *r6 = ScriptGetVarPointer(ctx);
     u16 *r4 = ScriptGetVarPointer(ctx);
-    sub_02097F9C(Roamers_GetRand(roamerSave, 2), r6, r4);
+    GetSwarmInfoFromRand(Roamers_GetRand(roamerSave, 2), r6, r4);
     return FALSE;
 }
 
@@ -2596,7 +2596,7 @@ BOOL ScrCmd_252(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_GetSaveFileState(ScriptContext *ctx) {
-    SAVEDATA *saveData = ctx->fsys->savedata;
+    SaveData *saveData = ctx->fsys->savedata;
     u16 *p_ret = ScriptGetVarPointer(ctx);
 
     if (Save_FileDoesNotBelongToPlayer(saveData)) {
@@ -4228,7 +4228,7 @@ BOOL ScrCmd_667(ScriptContext *ctx) {
     return FALSE;
 }
 
-u32 sub_020467A8(SAVEDATA *saveData);
+u32 sub_020467A8(SaveData *saveData);
 
 BOOL ScrCmd_GetOwnedRotomFormes(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
@@ -4264,7 +4264,7 @@ BOOL ScrCmd_GetOwnedRotomFormes(ScriptContext *ctx) {
     return TRUE;
 }
 
-u32 sub_020467A8(SAVEDATA *saveData) {
+u32 sub_020467A8(SaveData *saveData) {
     u32 ret = 0;
     PARTY *party = SaveArray_PlayerParty_Get(saveData);
     int partyCount = GetPartyCount(party);
@@ -5091,7 +5091,7 @@ BOOL sub_020479D4(ScriptContext *ctx) {
     } else if (work->sub->selected == 0) {
         *p_ret = 1;
     } else {
-        SAVEDATA *saveData = ctx->fsys->savedata;
+        SaveData *saveData = ctx->fsys->savedata;
         switch (work->mode) {
         case 0:
             PlayerProfile_SubMoney(Save_PlayerData_GetProfileAddr(saveData), work->sub->selected);

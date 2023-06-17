@@ -11,7 +11,7 @@
 
 void CreateNPCTrainerParty(BATTLE_SETUP *battleSetup, int trainer_idx, HeapID heap_id);
 
-void EnemyTrainerSet_Init(BATTLE_SETUP *battleSetup, SAVEDATA *saveData, HeapID heap_id) {
+void EnemyTrainerSet_Init(BATTLE_SETUP *battleSetup, SaveData *saveData, HeapID heap_id) {
     TRAINER trainer;
     MSGDATA *msgData;
     const u16 *rivalName;

@@ -1136,7 +1136,7 @@ BOOL ScrCmd_RadioMusicIsPlaying(ScriptContext *ctx) {
 extern s32 sSlotLuckDistribution[2][2];
 
 // Return value is unused outside of Japanese copies.
-static u32 SlotLuckiness(SAVEDATA *savedata, u8 machineId, u8 city) {
+static u32 SlotLuckiness(SaveData *savedata, u8 machineId, u8 city) {
     SAV_FRIEND_GRP *friendGroup;
     u8 *luckValues;
     s32 *dist;

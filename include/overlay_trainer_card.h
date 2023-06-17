@@ -12,7 +12,7 @@ typedef struct {
     u8 unk5[0x63];
     u8 signature[0x600];
     u8 unk668[6];
-    SAVEDATA *saveData;
+    SaveData *saveData;
     u32 reqUpdateSignature;
 } Ov50_021E5A3C;
 

@@ -5,7 +5,7 @@
 #include "script.h"
 
 BoxPokemon *Daycare_GetBoxMonI(DAYCARE *daycare, int idx);
-void Save_DayCare_PutMonIn(PARTY *party, u8 partyIdx, DAYCARE *dayCare, SAVEDATA *saveData);
+void Save_DayCare_PutMonIn(PARTY *party, u8 partyIdx, DAYCARE *dayCare, SaveData *saveData);
 u16 Save_DayCare_RetrieveMon(PARTY *party, MessageFormat *msgFmt, DAYCARE *daycare, u8 whomst);
 int DayCareMon_CalcLevelGrowth(DAYCAREMON *daycareMon);
 u16 Save_DayCare_BufferMonNickAndRetrievalPrice(DAYCARE *dayCare, u8 slot, MessageFormat *msgFmt);

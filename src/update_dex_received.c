@@ -5,7 +5,7 @@
 #include "constants/pokewalker_courses.h"
 #include "constants/species.h"
 
-void UpdatePokedexWithReceivedSpecies(SAVEDATA *saveData, Pokemon *mon) {
+void UpdatePokedexWithReceivedSpecies(SaveData *saveData, Pokemon *mon) {
     BOOL isEgg;
     u16 species;
     isEgg = GetMonData(mon, MON_DATA_IS_EGG, NULL);

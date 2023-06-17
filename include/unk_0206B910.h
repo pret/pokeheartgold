@@ -3,6 +3,6 @@
 
 #include "task.h"
 
-void sub_0206B910(TaskManager *taskManager, SAVEDATA *saveData);
+void sub_0206B910(TaskManager *taskManager, SaveData *saveData);
 
 #endif //POKEHEARTGOLD_UNK_0206B910_H

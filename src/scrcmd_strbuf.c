@@ -201,7 +201,7 @@ BOOL ScrCmd_BufferTrainerClassName(ScriptContext* ctx) {
 
 BOOL ScrCmd_BufferPlayerUnionAvatarClassName(ScriptContext* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    SAVEDATA* savedata = FieldSys_GetSaveDataPtr(fsys);
+    SaveData* savedata = FieldSys_GetSaveDataPtr(fsys);
     PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(savedata);
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);

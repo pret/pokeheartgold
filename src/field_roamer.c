@@ -167,7 +167,7 @@ void UpdatePlayerLocationHistoryIfAnyRoamersActive(RoamerSaveData *roamers, u32 
     }
 }
 
-void Save_CreateRoamerByID(SAVEDATA *saveData, u8 idx) {
+void Save_CreateRoamerByID(SaveData *saveData, u8 idx) {
     PLAYERPROFILE *profile;
     RoamerSaveData *roamerSave = Save_Roamers_Get(saveData);
     Roamer *roamerStats = Roamers_GetRoamMonStats(roamerSave, idx);

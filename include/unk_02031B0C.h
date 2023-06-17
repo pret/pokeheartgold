@@ -12,7 +12,7 @@ typedef struct UnkStruct_02031CEC {
 
 typedef struct SaveApricornBox SaveApricornBox;
 
-SaveApricornBox *Save_ApricornBox_Get(SAVEDATA *saveData);
+SaveApricornBox *Save_ApricornBox_Get(SaveData *saveData);
 void sub_02031CCC(SaveApricornBox *, int);
 BOOL sub_02031CEC(SaveApricornBox *apricornBox, u16 a1, UnkStruct_02031CEC *a2);
 int sub_02031D80(UnkStruct_02031CEC *a0);
