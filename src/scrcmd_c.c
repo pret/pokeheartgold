@@ -2370,13 +2370,13 @@ BOOL ScrCmd_211(ScriptContext *ctx) {
 
 BOOL ScrCmd_GetStarterChoice(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = GetStarterFromScriptState(SaveArray_Flags_Get(ctx->fsys->savedata));
+    *p_ret = ScriptState_GetStarter(SaveArray_Flags_Get(ctx->fsys->savedata));
     return FALSE;
 }
 
 BOOL ScrCmd_SetStarterChoice(ScriptContext *ctx) {
     u16 choice = ScriptGetVar(ctx);
-    SetStarterToScriptState(SaveArray_Flags_Get(ctx->fsys->savedata), choice);
+    ScriptState_SetStarter(SaveArray_Flags_Get(ctx->fsys->savedata), choice);
     return FALSE;
 }
 

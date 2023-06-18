@@ -47,11 +47,11 @@ u16 ScriptState_GetFollowerTrainerNum(ScriptState* state) {
     return GetScriptVar(state, VAR_FOLLOWER_TRAINER_NUM);
 }
 
-void SetStarterToScriptState(ScriptState* state, u16 starter) {
+void ScriptState_SetStarter(ScriptState* state, u16 starter) {
     SetScriptVar(state, VAR_PLAYER_STARTER, starter);
 }
 
-u16 GetStarterFromScriptState(ScriptState* state) {
+u16 ScriptState_GetStarter(ScriptState* state) {
     return GetScriptVar(state, VAR_PLAYER_STARTER);
 }
 

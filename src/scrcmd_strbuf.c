@@ -237,7 +237,7 @@ STRING* _get_species_name(u16 species, HeapID heap_id) {
 BOOL ScrCmd_BufferStarterSpeciesName(ScriptContext* ctx) {
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
-    u16 species = GetStarterFromScriptState(SaveArray_Flags_Get(ctx->fsys->savedata));
+    u16 species = ScriptState_GetStarter(SaveArray_Flags_Get(ctx->fsys->savedata));
 
     STRING* species_name = _get_species_name(species, HEAP_ID_4);
     BufferString(*msg_fmt, idx, species_name, 0, 1, 2);
