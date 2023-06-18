@@ -872,7 +872,7 @@ void Pokedex_Enable(POKEDEX *pokedex) {
     pokedex->dexEnabled = TRUE;
 }
 
-POKEDEX *Save_Pokedex_Get(SAVEDATA *saveData) {
+POKEDEX *Save_Pokedex_Get(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_POKEDEX);
 }
 

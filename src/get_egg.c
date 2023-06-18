@@ -19,7 +19,7 @@
 
 static u8 Save_DayCare_CountMonsInDayCare(DAYCARE *daycare);
 static int Save_DayCare_GetAvailableSlot(DAYCARE *daycare);
-static void DayCareMon_CopyFromPartySlot(PARTY *party, int partyIdx, DAYCAREMON *daycareMon, SAVEDATA *saveData);
+static void DayCareMon_CopyFromPartySlot(PARTY *party, int partyIdx, DAYCAREMON *daycareMon, SaveData *saveData);
 static void Save_DayCare_Compaction(DAYCARE *daycare);
 static void Daycare_LearnLevelUpMoves(Pokemon *mon);
 static int Save_DayCare_MoveMonToParty(PARTY *party, DAYCAREMON *daycareMon, MessageFormat *msgFmt);
@@ -79,7 +79,7 @@ static int Save_DayCare_GetAvailableSlot(DAYCARE *daycare) {
     return -1;
 }
 
-static void DayCareMon_CopyFromPartySlot(PARTY *party, int partyIdx, DAYCAREMON *daycareMon, SAVEDATA *saveData) {
+static void DayCareMon_CopyFromPartySlot(PARTY *party, int partyIdx, DAYCAREMON *daycareMon, SaveData *saveData) {
     u16 nickname[POKEMON_NAME_LENGTH + 1];
     u8 mood;
     DAYCAREMAIL *daycareMail;
@@ -106,7 +106,7 @@ static void DayCareMon_CopyFromPartySlot(PARTY *party, int partyIdx, DAYCAREMON 
     }
 }
 
-void Save_DayCare_PutMonIn(PARTY *party, u8 partyIdx, DAYCARE *dayCare, SAVEDATA *saveData) {
+void Save_DayCare_PutMonIn(PARTY *party, u8 partyIdx, DAYCARE *dayCare, SaveData *saveData) {
     GameStats_Inc(Save_GameStats_Get(saveData), 41);
     DayCareMon_CopyFromPartySlot(party, partyIdx, Save_DayCare_GetMonX(dayCare, Save_DayCare_GetAvailableSlot(dayCare)), saveData);
 }

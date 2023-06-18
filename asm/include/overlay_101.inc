@@ -281,7 +281,7 @@
 .public FreePhoneBook
 .public GetPhoneMessageGmm
 .public sub_02095FF8
-.public sub_02097F9C
+.public GetSwarmInfoFromRand
 .public FX_Div
 .public FX_Inv
 .public GX_SetGraphicsMode

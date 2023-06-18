@@ -43,7 +43,7 @@ BOOL sub_02097F6C(u32 rand, u16 mapno, u16 swarmValue) {
     return FALSE;
 }
 
-void sub_02097F9C(u32 rand, u16 *mapno, u16 *species) {
+void GetSwarmInfoFromRand(u32 rand, u16 *mapno, u16 *species) {
     ENC_DATA encData;
     const u16 (*swarmMap)[2];
 

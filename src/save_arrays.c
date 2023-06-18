@@ -261,21 +261,21 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
 };
 const int gNumSaveChunkHeaders = NELEMS(gSaveChunkHeaders);
 
-struct UnkStruct_0202E474 *sub_020270C4(SAVEDATA *saveData) {
+struct UnkStruct_0202E474 *sub_020270C4(SaveData *saveData) {
     SaveSubstruct_AssertCRC(SAVE_UNK_23);
     return SaveArray_Get(saveData, SAVE_UNK_23);
 }
 
-PC_STORAGE *GetStoragePCPointer(SAVEDATA *saveData) {
+PC_STORAGE *GetStoragePCPointer(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_PCSTORAGE);
 }
 
-MYSTERY_GIFT_SAVE *Save_MysteryGift_Get(SAVEDATA *saveData) {
+MYSTERY_GIFT_SAVE *Save_MysteryGift_Get(SaveData *saveData) {
     SaveSubstruct_AssertCRC(SAVE_MYSTERY_GIFT);
     return SaveArray_Get(saveData, SAVE_MYSTERY_GIFT);
 }
 
-struct UnkStruct_0202EB30 *sub_020270F8(SAVEDATA *saveData) {
+struct UnkStruct_0202EB30 *sub_020270F8(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_UNK_28);
 }
 
@@ -293,29 +293,29 @@ const struct ExtraSaveChunkHeader gExtraSaveChunkHeaders[] = {
 
 const int gNumExtraSaveChunkHeaders = NELEMS(gExtraSaveChunkHeaders);
 
-HALL_OF_FAME *LoadHallOfFame(SAVEDATA *saveData, HeapID heapId, int *ret_p) {
+HALL_OF_FAME *LoadHallOfFame(SaveData *saveData, HeapID heapId, int *ret_p) {
     return ReadExtraSaveChunk(saveData, heapId, 0, ret_p);
 }
 
-int SaveHallOfFame(SAVEDATA *saveData, HALL_OF_FAME *hallOfFame) {
+int SaveHallOfFame(SaveData *saveData, HALL_OF_FAME *hallOfFame) {
     return WriteExtraSaveChunk(saveData, 0, hallOfFame);
 }
 
-struct UnkStruct_0202FBCC *sub_0202711C(SAVEDATA *saveData, HeapID heapId, int *ret_p, int idx) {
+struct UnkStruct_0202FBCC *sub_0202711C(SaveData *saveData, HeapID heapId, int *ret_p, int idx) {
     int sp4;
     return sub_020284A4(saveData, heapId, idx + 2, ret_p, &sp4);
 }
 
-int sub_02027134(SAVEDATA *saveData, struct UnkStruct_0202FBCC *data, int idx) {
+int sub_02027134(SaveData *saveData, struct UnkStruct_0202FBCC *data, int idx) {
     return sub_02028230(saveData, idx + 2, data);
 }
 
-struct UnkStruct_02030A98 *sub_02027144(SAVEDATA *saveData, HeapID heapId, int *ret_p) {
+struct UnkStruct_02030A98 *sub_02027144(SaveData *saveData, HeapID heapId, int *ret_p) {
     int sp4;
     return sub_020284A4(saveData, heapId, 1, ret_p, &sp4);
 }
 
-int sub_02027158(SAVEDATA *saveData, struct UnkStruct_02030A98 *data) {
+int sub_02027158(SaveData *saveData, struct UnkStruct_02030A98 *data) {
     return sub_02028230(saveData, 1, data);
 }
 
@@ -327,22 +327,22 @@ u32 PCStorage_GetNumBoxes(void) {
     return NUM_BOXES;
 }
 
-u32 Save_GetPCBoxModifiedFlags(SAVEDATA *saveData) {
+u32 Save_GetPCBoxModifiedFlags(SaveData *saveData) {
     PC_STORAGE *pcStorage = SaveArray_Get(saveData, SAVE_PCSTORAGE);
     return PCStorage_GetBoxModifiedFlags(pcStorage);
 }
 
-void Save_ResetPCBoxModifiedFlags(SAVEDATA *saveData) {
+void Save_ResetPCBoxModifiedFlags(SaveData *saveData) {
     PC_STORAGE *pcStorage = SaveArray_Get(saveData, SAVE_PCSTORAGE);
     PCStorage_ResetBoxModifiedFlags(pcStorage);
 }
 
-void Save_SetAllPCBoxesModified(SAVEDATA *saveData) {
+void Save_SetAllPCBoxesModified(SaveData *saveData) {
     PC_STORAGE *pcStorage = SaveArray_Get(saveData, SAVE_PCSTORAGE);
     PCStorage_SetAllBoxesModified(pcStorage);
 }
 
-void sub_020271A0(SAVEDATA *saveData) {
+void sub_020271A0(SaveData *saveData) {
     PC_STORAGE *pcStorage = SaveArray_Get(saveData, SAVE_PCSTORAGE);
     sub_02074128(pcStorage);
 }

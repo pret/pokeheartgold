@@ -28,8 +28,8 @@ struct PlayerSaveData *LocalFieldData_GetPlayer(LocalFieldData *localFieldData);
 u16 *LocalFieldData_GetSafariBallsCounter(LocalFieldData *localFieldData);
 u16 *LocalFieldData_GetSafariStepsCounter(LocalFieldData *localFieldData);
 u16 *LocalFieldData_GetPoisonStepCounter(LocalFieldData *localFieldData);
-LocalFieldData *Save_LocalFieldData_Get(SAVEDATA *saveData);
-struct SavedMapObjectList *Save_MapObjects_Get(SAVEDATA *saveData);
+LocalFieldData *Save_LocalFieldData_Get(SaveData *saveData);
+struct SavedMapObjectList *Save_MapObjects_Get(SaveData *saveData);
 void Fsys_SyncMapObjectsToSave(FieldSystem *fsys);
 void Fsys_RestoreMapObjectsFromSave(FieldSystem *fsys);
 

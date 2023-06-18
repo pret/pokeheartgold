@@ -65,7 +65,7 @@ static BOOL Task_UseWhirlpoolInField(TaskManager *taskManager);
 static u32 FieldMoveMenuCheck_Headbutt(const struct FieldMoveCheckData *checkData);
 static void FieldMoveMenuUse_Headbutt(struct FieldMoveUseData *useData, const struct FieldMoveCheckData *checkData);
 static BOOL Task_UseHeadbuttInField(TaskManager *taskManager);
-static struct TeleportFieldEnv *sub_020689A4(HeapID heapId, u8 slotno, SAVEDATA *saveData);
+static struct TeleportFieldEnv *sub_020689A4(HeapID heapId, u8 slotno, SaveData *saveData);
 
 static const struct FieldMoveFuncDat sFieldMoveFuncTable[] = {
     { FieldMoveMenuUse_Cut,        FieldMoveMenuCheck_Cut        },
@@ -686,7 +686,7 @@ static BOOL Task_UseHeadbuttInField(TaskManager *taskManager) {
     return FALSE;
 }
 
-static struct TeleportFieldEnv *sub_020689A4(HeapID heapId, u8 slotno, SAVEDATA *saveData) {
+static struct TeleportFieldEnv *sub_020689A4(HeapID heapId, u8 slotno, SaveData *saveData) {
     struct TeleportFieldEnv *ret = AllocFromHeapAtEnd(heapId, sizeof(struct TeleportFieldEnv));
     ret->mon = GetPartyMonByIndex(SaveArray_PlayerParty_Get(saveData), slotno);
     ret->flySub = NULL;

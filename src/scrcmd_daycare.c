@@ -13,7 +13,7 @@ extern u32 FollowingPokemon_GetSpriteID(int species, u16 forme, u32 gender);
 static LocalMapObject* CreateDayCareMonSpriteInternal(MapObjectMan* object_man, u8 dc_mon_idx, u16 species, u8 forme, u32 gender, u32 direction, u32 x, u32 y, u32 map_no, BOOL shiny);
 
 BOOL ScrCmd_BufferDayCareMonNicks(ScriptContext* ctx) {
-    SAVEDATA* savedata = ctx->fsys->savedata;
+    SaveData* savedata = ctx->fsys->savedata;
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     DAYCARE* daycare = Save_DayCare_Get(savedata);
 
@@ -23,7 +23,7 @@ BOOL ScrCmd_BufferDayCareMonNicks(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_GetDayCareState(ScriptContext* ctx) {
-    SAVEDATA* savedata = ctx->fsys->savedata;
+    SaveData* savedata = ctx->fsys->savedata;
     u16* ret_ptr = ScriptGetVarPointer(ctx);
     DAYCARE* daycare = SaveArray_Get(savedata, SAVE_DAYCARE);
 
@@ -44,7 +44,7 @@ BOOL ScrCmd_GiveDayCareEgg(ScriptContext* ctx) {
     FieldSystem* fsys = ctx->fsys;
     DAYCARE* daycare = SaveArray_Get(fsys->savedata, SAVE_DAYCARE);
     PARTY* party = SaveArray_PlayerParty_Get(fsys->savedata);
-    SAVEDATA* savedata = FieldSys_GetSaveDataPtr(ctx->fsys);
+    SaveData* savedata = FieldSys_GetSaveDataPtr(ctx->fsys);
     PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(savedata);
 
     GiveEggToPlayer(daycare, party, profile);
@@ -55,7 +55,7 @@ BOOL ScrCmd_GiveDayCareEgg(ScriptContext* ctx) {
 BOOL ScrCmd_RetrieveDayCareMon(ScriptContext* ctx) {
     FieldSystem* fsys = ctx->fsys;
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
-    SAVEDATA* savedata = fsys->savedata;
+    SaveData* savedata = fsys->savedata;
     u16* ret_ptr = ScriptGetVarPointer(ctx);
     u16 daycare_mon_idx = ScriptGetVar(ctx);
     DAYCARE* daycare = SaveArray_Get(savedata, SAVE_DAYCARE);
@@ -69,7 +69,7 @@ BOOL ScrCmd_RetrieveDayCareMon(ScriptContext* ctx) {
 BOOL ScrCmd_BufferDayCareWithdrawCost(ScriptContext* ctx) {
     FieldSystem* fsys = ctx->fsys;
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
-    SAVEDATA* savedata = fsys->savedata;
+    SaveData* savedata = fsys->savedata;
     u16* ret_ptr = ScriptGetVarPointer(ctx);
     u16 daycare_mon_idx = ScriptGetVar(ctx);
     DAYCARE* daycare = SaveArray_Get(savedata, SAVE_DAYCARE);
@@ -80,7 +80,7 @@ BOOL ScrCmd_BufferDayCareWithdrawCost(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferDayCareMonGrowth(ScriptContext* ctx) {
-    SAVEDATA* savedata = ctx->fsys->savedata;
+    SaveData* savedata = ctx->fsys->savedata;
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
     u16 daycare_mon_idx = ScriptGetVar(ctx);
@@ -104,7 +104,7 @@ BOOL ScrCmd_GetTailDayCareMonSpeciesAndNick(ScriptContext* ctx) {
 
 BOOL ScrCmd_PutMonInDayCare(ScriptContext* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    SAVEDATA* savedata = fsys->savedata;
+    SaveData* savedata = fsys->savedata;
     u16 slot = ScriptGetVar(ctx);
     PARTY* party = SaveArray_PlayerParty_Get(fsys->savedata);
     DAYCARE* daycare = SaveArray_Get(savedata, SAVE_DAYCARE);
@@ -115,7 +115,7 @@ BOOL ScrCmd_PutMonInDayCare(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferDayCareMonStats(ScriptContext* ctx) {
-    SAVEDATA* savedata = ctx->fsys->savedata;
+    SaveData* savedata = ctx->fsys->savedata;
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u16 nickname_idx = ScriptGetVar(ctx);
     u16 level_idx = ScriptGetVar(ctx);
@@ -129,7 +129,7 @@ BOOL ScrCmd_BufferDayCareMonStats(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_GetDayCareCompatibility(ScriptContext* ctx) {
-    SAVEDATA* savedata = ctx->fsys->savedata;
+    SaveData* savedata = ctx->fsys->savedata;
     u16* ret_ptr = ScriptGetVarPointer(ctx);
     DAYCARE* daycare = SaveArray_Get(savedata, SAVE_DAYCARE);
 
@@ -139,7 +139,7 @@ BOOL ScrCmd_GetDayCareCompatibility(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_CheckDayCareEgg(ScriptContext* ctx) {
-    SAVEDATA* savedata = ctx->fsys->savedata;
+    SaveData* savedata = ctx->fsys->savedata;
     u16* ret_ptr = ScriptGetVarPointer(ctx);
     DAYCARE* daycare = SaveArray_Get(savedata, SAVE_DAYCARE);
 

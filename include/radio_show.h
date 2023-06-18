@@ -91,7 +91,7 @@ union RadioShow {
 
 struct RadioSys {
     u8 filler_00[0x4];
-    SAVEDATA *saveData;
+    SaveData *saveData;
     u8 filler_08[0x14];
     union RadioShow *show;
     u8 filler_20[0x4];

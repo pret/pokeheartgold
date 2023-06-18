@@ -41,33 +41,33 @@ void Save_Misc_Init(SAVE_MISC_DATA *saveMiscData) {
     }
 }
 
-SAVE_MISC_DATA *Save_Misc_Get(SAVEDATA *saveData) {
+SAVE_MISC_DATA *Save_Misc_Get(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_MISC);
 }
 
-const SAVE_MISC_DATA *Save_Misc_Const_Get(const SAVEDATA *saveData) {
+const SAVE_MISC_DATA *Save_Misc_Const_Get(const SaveData *saveData) {
     return SaveArray_Const_Get(saveData, SAVE_MISC);
 }
 
-APRICORN_TREE *Save_FieldApricornTrees_Get(SAVEDATA *saveData) {
+APRICORN_TREE *Save_FieldApricornTrees_Get(SaveData *saveData) {
     SAVE_MISC_DATA *misc;
     misc = SaveArray_Get(saveData, SAVE_MISC);
     return misc->apricorn_trees;
 }
 
-BERRY_POT *Save_BerryPots_Get(SAVEDATA *saveData) {
+BERRY_POT *Save_BerryPots_Get(SaveData *saveData) {
     SAVE_MISC_DATA *misc;
     misc = SaveArray_Get(saveData, SAVE_MISC);
     return misc->berry_pots;
 }
 
-struct GF_RTC_DateTime *Save_BerryPotRTC_Get(SAVEDATA *saveData) {
+struct GF_RTC_DateTime *Save_BerryPotRTC_Get(SaveData *saveData) {
     SAVE_MISC_DATA *misc;
     misc = SaveArray_Get(saveData, SAVE_MISC);
     return &misc->berry_datetime;
 }
 
-struct Gymmick *Save_GetGymmickPtr(SAVEDATA *saveData) {
+struct Gymmick *Save_GetGymmickPtr(SaveData *saveData) {
     SAVE_MISC_DATA *misc;
     misc = SaveArray_Get(saveData, SAVE_MISC);
     return &misc->gymmick;

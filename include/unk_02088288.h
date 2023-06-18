@@ -22,8 +22,8 @@ typedef struct UnkStruct_0204F448 {
     u8 filler38[4];
 } UnkStruct_0204F448;
 
-u32 sub_02088288(SAVEDATA*);
-BOOL sub_0208828C(SAVEDATA*);
+u32 sub_02088288(SaveData*);
+BOOL sub_0208828C(SaveData*);
 void sub_02089D40(UnkStruct_0204F448*, const u8*);
 void sub_0208AD34(UnkStruct_0204F448*, PLAYERPROFILE*);
 

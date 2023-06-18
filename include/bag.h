@@ -223,14 +223,14 @@ BAG_VIEW *BagViewCreate(Bag *bag, const u8 *pockets, HeapID heap_id);
 ItemSlot *BagGetNthPocket(Bag *bag, u8 pocket, int n);
 
 /*
- * Bag *SaveGetBag(SAVEDATA *saveData)
+ * Bag *SaveGetBag(SaveData *saveData)
  *
  * Gets the pointer to Bag loaded from the save file.
  *
- * @param saveData:    Pointer to SAVEDATA
+ * @param saveData:    Pointer to SaveData
  *
  * @returns: Pointer to Bag
  */
-Bag *SaveGetBag(SAVEDATA *saveData);
+Bag *SaveGetBag(SaveData *saveData);
 
 #endif //POKEHEARTGOLD_BAG_H

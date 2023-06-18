@@ -37,8 +37,8 @@ void BufferSpeciesNameWithArticle(MessageFormat *messageFormat, u32 idx, u32 spe
 void BufferTrainerClassName(MessageFormat *messageFormat, u32 fieldno, u32 trainerClassId);
 void MessageFormat_InitFields(MessageFormatFields *fields);
 void SetStringAsPlaceholder(MessageFormat *messageFormat, u32 fieldno, const STRING *string, const MessageFormatAttrs *attrs);
-void BufferRivalsName(MessageFormat *messageFormat, u32 fieldno, SAVEDATA *saveData);
-void BufferFriendsName(MessageFormat *messageFormat, u32 fieldno, SAVEDATA *saveData);
+void BufferRivalsName(MessageFormat *messageFormat, u32 fieldno, SaveData *saveData);
+void BufferFriendsName(MessageFormat *messageFormat, u32 fieldno, SaveData *saveData);
 void BufferBoxMonSpeciesName(MessageFormat *messageFormat, u32 fieldno, BoxPokemon *boxmon);
 void BufferBoxMonSpeciesNameWithArticle(MessageFormat *messageFormat, u32 fieldno, BoxPokemon *boxmon);
 void BufferBoxMonNickname(MessageFormat *messageFormat, u32 fieldno, BoxPokemon *boxmon);
@@ -72,7 +72,7 @@ void BufferLocationName(MessageFormat *messageFormat, u32 fieldno, u32 mapsecId)
 void BufferFashionName(MessageFormat *messageFormat, u32 fieldno, u32 fashionId);
 void BufferFashionNameWithArticle(MessageFormat *messageFormat, u32 fieldno, u32 fashionId);
 void BufferContestBackgroundName(MessageFormat *messageFormat, u32 fieldno, u32 bgId);
-void BufferGroupName(MessageFormat *messageFormat, SAVEDATA *saveData, s32 groupId, s32 fieldno, s32 nameType);
+void BufferGroupName(MessageFormat *messageFormat, SaveData *saveData, s32 groupId, s32 fieldno, s32 nameType);
 void BufferWiFiPlazaActivityName(MessageFormat *messageFormat, u32 fieldno, u32 activityId);
 void BufferWiFiPlazaEventName(MessageFormat *messageFormat, u32 fieldno, u32 eventId);
 void BufferWiFiPlazaInstrumentName(MessageFormat *messageFormat, u32 fieldno, u32 instrumentId);

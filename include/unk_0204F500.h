@@ -1,6 +1,6 @@
 #ifndef POKEHEARTGOLD_UNK_0204F500_H
 #define POKEHEARTGOLD_UNK_0204F500_H
 
-void sub_0204F878(SAVEDATA*, int, u8);
+void sub_0204F878(SaveData*, int, u8);
 
 #endif //POKEHEARTGOLD_UNK_0204F500_H

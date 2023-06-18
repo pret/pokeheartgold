@@ -16,7 +16,7 @@ SOUND_CHATOT *Chatot_New(HeapID heapID) {
     return chatot;
 }
 
-SOUND_CHATOT *Save_Chatot_Get(SAVEDATA *saveData) {
+SOUND_CHATOT *Save_Chatot_Get(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_CHATOT);
 }
 

@@ -10,7 +10,7 @@
 #include "constants/mail.h"
 #include "constants/pokemon.h"
 
-Unk02090C94 *sub_02090C94(u8 a0, u8 a1, SAVEDATA *saveData, u32 a3, HeapID heapId) {
+Unk02090C94 *sub_02090C94(u8 a0, u8 a1, SaveData *saveData, u32 a3, HeapID heapId) {
     Unk02090C94 *ptr = AllocFromHeap(heapId, sizeof(Unk02090C94));
     ptr->unk0 = a0;
     ptr->unk1 = a1;
@@ -159,7 +159,7 @@ void sub_02090E5C(Unk02090C94 *a0) {
     sub_02018410(a0->unk24);
 }
 
-Unk02090E68 *sub_02090E68(SAVEDATA *saveData, u16 a1, u8 partyIdx, u8 a3, HeapID heapId) {
+Unk02090E68 *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 a3, HeapID heapId) {
     MAILBOX *mailbox = Save_Mailbox_Get(saveData);
     Unk02090E68 *ptr = AllocFromHeapAtEnd(heapId, sizeof(Unk02090E68));
     MI_CpuFill8(ptr, 0, sizeof(Unk02090E68));
@@ -180,7 +180,7 @@ Unk02090E68 *sub_02090E68(SAVEDATA *saveData, u16 a1, u8 partyIdx, u8 a3, HeapID
     return ptr;
 }
 
-Unk02090E68 *sub_02090EC0(SAVEDATA *saveData, int n, u16 i, HeapID heapId) {
+Unk02090E68 *sub_02090EC0(SaveData *saveData, int n, u16 i, HeapID heapId) {
     Unk02090E68 *ptr = AllocFromHeapAtEnd(heapId, sizeof(Unk02090E68));
     MI_CpuFill8(ptr, 0, sizeof(Unk02090E68));
 
@@ -196,7 +196,7 @@ Unk02090E68 *sub_02090EC0(SAVEDATA *saveData, int n, u16 i, HeapID heapId) {
     return ptr;
 }
 
-Unk02090E68 *sub_02090F00(SAVEDATA *saveData, Pokemon *mon, HeapID heapId) {
+Unk02090E68 *sub_02090F00(SaveData *saveData, Pokemon *mon, HeapID heapId) {
     Unk02090E68 *ptr = AllocFromHeapAtEnd(heapId, sizeof(Unk02090E68));
     MI_CpuFill8(ptr, 0, sizeof(Unk02090E68));
 
@@ -210,7 +210,7 @@ Unk02090E68 *sub_02090F00(SAVEDATA *saveData, Pokemon *mon, HeapID heapId) {
     return ptr;
 }
 
-Unk02090E68 *sub_02090F38(SAVEDATA *saveData, u8 mailType, HeapID heapId) {
+Unk02090E68 *sub_02090F38(SaveData *saveData, u8 mailType, HeapID heapId) {
     Unk02090E68 *ptr = AllocFromHeapAtEnd(heapId, sizeof(Unk02090E68));
     MI_CpuFill8(ptr, 0, sizeof(Unk02090E68));
 

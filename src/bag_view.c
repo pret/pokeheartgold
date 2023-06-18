@@ -27,7 +27,7 @@ void sub_02077894(BAG_VIEW *a0, u8 a1) {
     a0->unk_65 = a1;
 }
 
-void sub_0207789C(BAG_VIEW *a0, SAVEDATA *a1, u8 a2, BAG_CURSOR *a3, u32 a4) {
+void sub_0207789C(BAG_VIEW *a0, SaveData *a1, u8 a2, BAG_CURSOR *a3, u32 a4) {
     sub_02077894(a0, a2);
     a0->saveData = a1;
     a0->unk_78 = a4;
@@ -77,11 +77,11 @@ u8 sub_0207791C(BAG_VIEW *bagView) {
     return bagView->unk_75;
 }
 
-static u16 GetNumCoins(SAVEDATA *saveData) {
+static u16 GetNumCoins(SaveData *saveData) {
     return CheckCoins(Save_PlayerData_GetCoinsAddr(saveData));
 }
 
-static u32 GetNumSeals(SAVEDATA *saveData) {
+static u32 GetNumSeals(SaveData *saveData) {
     u32 i, total;
     SEALCASE *sealCase = Save_SealCase_Get(saveData);
     total = 0;
@@ -91,19 +91,19 @@ static u32 GetNumSeals(SAVEDATA *saveData) {
     return total;
 }
 
-static u32 GetNumFashionAccessories(SAVEDATA *saveData) {
+static u32 GetNumFashionAccessories(SaveData *saveData) {
     return FashionCase_CountAccessories(SaveDressupData_GetFashionCase(Save_DressupData_Get(saveData)));
 }
 
-static u32 GetNumFashionBackgrounds(SAVEDATA *saveData) {
+static u32 GetNumFashionBackgrounds(SaveData *saveData) {
     return FashionCase_CountWallpapers(SaveDressupData_GetFashionCase(Save_DressupData_Get(saveData)));
 }
 
-static u32 GetNumBattlePoints(SAVEDATA *saveData) {
+static u32 GetNumBattlePoints(SaveData *saveData) {
     return FrontierData_BattlePointAction(Save_FrontierData_Get(saveData), 0, 0);
 }
 
-BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 itemId, HeapID heap_id) {
+BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, STRING *dest, u16 itemId, HeapID heap_id) {
     MSGDATA *msgData;
     STRING *fmtStr;
     MessageFormat *msgFmt;

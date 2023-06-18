@@ -54,7 +54,7 @@ typedef struct PHOTO_ALBUM {
 } PHOTO_ALBUM;
 
 u32 Save_PhotoAlbum_sizeof(void);
-PHOTO_ALBUM *Save_PhotoAlbum_Get(SAVEDATA *saveData);
+PHOTO_ALBUM *Save_PhotoAlbum_Get(SaveData *saveData);
 void Save_PhotoAlbum_Init(PHOTO_ALBUM *photoAlbum);
 u8 PhotoAlbum_GetIndexOfFirstEmptySlot(const PHOTO_ALBUM *photoAlbum);
 u8 PhotoAlbum_GetNumSaved(const PHOTO_ALBUM *photoAlbum);

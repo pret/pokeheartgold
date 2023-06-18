@@ -32243,7 +32243,7 @@ RadioShow_PokemonTalk_Init: ; 0x021F6F14
 	add r1, r5, #0
 	add r1, #8
 	add r2, r5, #6
-	bl sub_02097F9C
+	bl GetSwarmInfoFromRand
 _021F6F5C:
 	add r0, r4, #0
 	add r1, r5, #0

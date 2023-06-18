@@ -3,6 +3,6 @@
 
 #include "pokemon_types_def.h"
 
-void UpdatePokedexWithReceivedSpecies(SAVEDATA *saveData, Pokemon *mon);
+void UpdatePokedexWithReceivedSpecies(SaveData *saveData, Pokemon *mon);
 
 #endif //POKEHEARTGOLD_UPDATE_DEX_RECEIVED_H

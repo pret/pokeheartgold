@@ -20,6 +20,6 @@ void Party_SafeCopyMonToSlot_ResetUnkSub(PARTY *party, int slot, Pokemon *src);
 BOOL Party_SwapSlots(PARTY *party, int slotA, int slotB);
 void Party_Copy(const PARTY *src, PARTY *dest);
 BOOL PartyHasMon(PARTY *party, u16 species);
-PARTY *SaveArray_PlayerParty_Get(SAVEDATA *saveData);
+PARTY *SaveArray_PlayerParty_Get(SaveData *saveData);
 
 #endif //GUARD_PARTY_H

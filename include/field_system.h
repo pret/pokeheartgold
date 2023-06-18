@@ -54,7 +54,7 @@ typedef struct GearPhoneRingManager {
     PhoneBookEntry entry; //0x1c
     SavePokegear *pokegearData; //0x30
     MomsSavings *savingsData;//0x34
-    SAVEDATA *saveData; //0x38
+    SaveData *saveData; //0x38
     FieldSystem *sys; //0x3c
     struct PokegearRingingTask {
         SysTask *task;
@@ -112,7 +112,7 @@ struct FieldSystem {
     struct FieldSystemUnkSub0 *unk0;
     FsysUnkSub4 *unk4;
     BGCONFIG *bgConfig;
-    SAVEDATA *savedata;
+    SaveData *savedata;
     TaskManager *taskman;
     MAP_EVENTS *mapEvents;
     u32 unk18;
@@ -198,7 +198,7 @@ void sub_0203E30C();
 int sub_0203E324();
 void sub_0203E33C(FieldSystem *fsys, int a1);
 BGCONFIG *FieldSys_GetBgConfigPtr(FieldSystem *fsys);
-SAVEDATA *FieldSys_GetSaveDataPtr(FieldSystem *fsys);
+SaveData *FieldSys_GetSaveDataPtr(FieldSystem *fsys);
 void sub_0203E348();
 void sub_0203E354();
 
