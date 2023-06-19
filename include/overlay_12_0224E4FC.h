@@ -38,6 +38,7 @@ u32 StruggleCheck(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u32 non
 BOOL ov12_02251A28(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int movePos, BATTLEMSG *msg);
 int BattleMon_GetMoveIndex(BATTLEMON *mon, u16 move);
 int ov12_02251D28(BattleSystem *bsys, BATTLECONTEXT *ctx, int moveNo, int moveTypeDefault, int battlerIdAttacker, int battlerIdTarget, int damage, u32 *moveStatusFlag);
+void ov12_02252054(BATTLECONTEXT *ctx, int moveNo, int moveTypeDefault, int abilityAttacker, int abilityTarget, int item, int type1, int type2, u32 *moveStatusFlag);
 
 //The following functions are static, but the rest of the file is still being worked on
 BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int index);
@@ -107,4 +108,6 @@ BOOL BattleContext_CheckMoveUnuseableInGravity(BattleSystem *bsys, BATTLECONTEXT
 BOOL BattleContext_CheckMoveHealBlocked(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
 int ov12_02258440(BATTLECONTEXT *ctx, int moveNo);
 u32 ov12_022583B4(BATTLECONTEXT *ctx, int battlerIdA, u8 effectiveness, int damage, u32 movePower, u32 *moveStatusFlag);
+BOOL ov12_02252178(BATTLECONTEXT *ctx, int item, int index);
+void ov12_022521C8(u8 effectiveness, u32 *moveStatusFlag);
 #endif

@@ -2594,8 +2594,7 @@ _02252036:
 }
 #endif
 
-/*
-void ov12_02252218(BattleSystem *bsys, int moveNo, int moveTypeDefault, int abilityAttacker, int abilityTarget, int item, int type1, int type2, u32 *moveStatusFlag) {
+void ov12_02252054(BATTLECONTEXT *ctx, int moveNo, int moveTypeDefault, int abilityAttacker, int abilityTarget, int item, int type1, int type2, u32 *moveStatusFlag) {
     int i;
     u8 moveType;
     
@@ -2612,8 +2611,33 @@ void ov12_02252218(BattleSystem *bsys, int moveNo, int moveTypeDefault, int abil
     }
     
     if (abilityAttacker != ABILITY_MOLD_BREAKER && abilityTarget == ABILITY_LEVITATE && moveType == TYPE_GROUND && !(ctx->fieldCondition & FIELD_CONDITION_GRAVITY) && item != HOLD_EFFECT_SPEED_DOWN_GROUNDED) {
-        *moveStatusFlag |= MOVE_EFFECT_NO_EFFECT
+        *moveStatusFlag |= MOVE_STATUS_NO_EFFECT;
+    } else {
+        i = 0;
+        do {
+            if (sTypeEffectiveness[i][0] == TYPE_FORESIGHT) {
+                if (abilityAttacker == ABILITY_SCRAPPY) {
+                    break;
+                } else {
+                    i++;
+                    continue;
+                }
+            }
+            if (sTypeEffectiveness[i][0] == moveType) {
+                u8 monType = sTypeEffectiveness[i][1]; 
+                if (type1 == monType && ov12_02252178(ctx, item, i) == TRUE) {
+                    ov12_022521C8(sTypeEffectiveness[i][2], moveStatusFlag);
+                }
+                if ((type2 == monType) && (type1 != type2) && ov12_02252178(ctx, item, i) == TRUE) {
+                    ov12_022521C8(sTypeEffectiveness[i][2], moveStatusFlag);
+                }
+            }
+            i++;
+        } while (sTypeEffectiveness[i][0] != TYPE_ENDTABLE);
     }
     
+    if (abilityAttacker != ABILITY_MOLD_BREAKER && abilityTarget == ABILITY_WONDER_GUARD && ov12_02258440(ctx, moveNo) &&
+        (!(*moveStatusFlag & MOVE_STATUS_SUPER_EFFECTIVE) || (*moveStatusFlag & MOVE_STATUS_ANY_EFFECTIVE) == MOVE_STATUS_ANY_EFFECTIVE)) {
+        *moveStatusFlag |= MOVE_STATUS_NO_EFFECT;
+    }
 }
-*/

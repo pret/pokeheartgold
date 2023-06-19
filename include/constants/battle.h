@@ -95,7 +95,8 @@ enum Terrain {
 //Move status
 #define MOVE_STATUS_MISS                    (1 << 0)
 #define MOVE_STATUS_SUPER_EFFECTIVE         (1 << 1) 
-#define MOVE_STATUS_NOT_VERY_EFFECTIVE      (1 << 2) 
+#define MOVE_STATUS_NOT_VERY_EFFECTIVE      (1 << 2)
+#define MOVE_STATUS_NO_EFFECT               (1 << 3) 
 #define MOVE_STATUS_LEVITATE_IMMUNE         (1 << 11)
 #define MOVE_STATUS_WONDER_GUARD_IMMUNE     (1 << 18) 
 #define MOVE_STATUS_MAGNET_RISE_IMMUNE      (1 << 20)
