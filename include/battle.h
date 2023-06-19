@@ -60,7 +60,7 @@ typedef struct TurnData {
     u32 helpingHandFlag:1;
     u32 magicCoatFlag:1;
     u32 snatchFlag:1;
-    u32 unk0_6:1;
+    u32 roostFlag:1;
     u32 unk0_7:2;
     u32 unk0_9:1;
     u32 unk0_A:22;

@@ -4075,7 +4075,7 @@ BOOL BtlCmd_TryImprison(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 #else
 asm BOOL BtlCmd_TryImprison(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    	push {r3, r4, r5, r6, r7, lr}
+    push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	add r7, r1, #0
 	str r0, [sp]
@@ -4332,7 +4332,7 @@ BOOL BtlCmd_TryPursuit(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 moveNo = GetBattlerSelectedMove(ctx, battlerId);
             }
             if (moveNo) {
-                moveIndex = BattleMon_GetMoveIndex(&ctx->battleMons[battlerId], (u16)moveNo);
+                moveIndex = BattleMon_GetMoveIndex(&ctx->battleMons[battlerId], moveNo);
                 if (ctx->unk_334.moveData[moveNo].effect == 128 && ctx->battleMons[battlerId].movePPCur[moveIndex]) {
                     ctx->battleMons[battlerId].movePPCur[moveIndex]--;
                     if (GetBattlerAbility(ctx, ctx->battlerIdSwitch) == ABILITY_PRESSURE && ctx->battleMons[battlerId].movePPCur[moveIndex]) {
@@ -4419,7 +4419,7 @@ BOOL BtlCmd_PokemonEncounter44(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         }
         break;
     case 6:
-        if (ctx->turnData[battlerId].unk0_6 == val) {
+        if (ctx->turnData[battlerId].roostFlag == val) {
             ret = TRUE;
         }
         break;
@@ -4462,7 +4462,7 @@ BOOL BtlCmd_PokemonEncounter45(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ctx->turnData[battlerId].snatchFlag = val;
         break;
     case 6:
-        ctx->turnData[battlerId].unk0_6 = val;
+        ctx->turnData[battlerId].roostFlag = val;
         break;
     }
 
