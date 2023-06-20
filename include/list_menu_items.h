@@ -14,14 +14,14 @@
 #define LIST_MULTIPLE_SCROLL_L_R   2
 
 typedef struct LISTMENUITEM {
-    STRING *text;
+    String *text;
     s32 value;
 } LISTMENUITEM;
 
 LISTMENUITEM *ListMenuItems_New(u32 n, HeapID heapId);
 void ListMenuItems_Delete(LISTMENUITEM *items);
 void ListMenuItems_AppendFromMsgData(LISTMENUITEM *items, MSGDATA *msgData, int msgId, int value);
-void ListMenuItems_AddItem(LISTMENUITEM *items, STRING *string, int value);
+void ListMenuItems_AddItem(LISTMENUITEM *items, String *string, int value);
 void ListMenuItems_DestroyMenuStrings(LISTMENUITEM *items);
 
 #endif //POKEHEARTGOLD_LIST_MENU_ITEMS_H

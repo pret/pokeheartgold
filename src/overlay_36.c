@@ -173,7 +173,7 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SaveData* saved
 #pragma unused(heap_id)
     s32 i;
     MSGDATA* friend_names_msgdata;
-    STRING* author_name;
+    String* author_name;
 
     Save_SysInfo_InitFromSystem(Save_SysInfo_Get(savedata));
     Save_SysInfo_RTC_Init(Save_SysInfo_RTC_Get(savedata));

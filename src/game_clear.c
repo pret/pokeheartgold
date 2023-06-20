@@ -37,7 +37,7 @@ typedef struct {
     CreditsAppArgs creditsArgs;
     BGCONFIG *bgConfig;
     WINDOW window;
-    STRING *windowText;
+    String *windowText;
     WaitingIcon *waitingIcon;
     int printerId;
     int timer;

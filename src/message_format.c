@@ -76,7 +76,7 @@ void MessageFormat_InitFields(MessageFormatFields *field) {
 #pragma unused(field)
 }
 
-void SetStringAsPlaceholder(MessageFormat *msgFmt, u32 fieldno, const STRING *string, const MessageFormatAttrs *attrs) {
+void SetStringAsPlaceholder(MessageFormat *msgFmt, u32 fieldno, const String *string, const MessageFormatAttrs *attrs) {
     GF_ASSERT(fieldno < msgFmt->count);
     if (fieldno < msgFmt->count) {
         if (attrs != NULL) {
@@ -86,7 +86,7 @@ void SetStringAsPlaceholder(MessageFormat *msgFmt, u32 fieldno, const STRING *st
     }
 }
 
-void BufferString(MessageFormat *msgFmt, u32 fieldno, const STRING *string, s32 a3, s32 a4, s32 a5) {
+void BufferString(MessageFormat *msgFmt, u32 fieldno, const String *string, s32 a3, s32 a4, s32 a5) {
 #pragma unused(a3, a4, a5)
     SetStringAsPlaceholder(msgFmt, fieldno, string, NULL);
 }
@@ -462,7 +462,7 @@ void BufferGroupName(MessageFormat *msgFmt, SaveData *saveData, s32 groupId, s32
     SAV_FRIEND_GRP *friendGrp = Save_FriendGroup_Get(saveData);
     u8 sp10 = sub_0202C830(friendGrp, groupId);
     u8 r7 = sub_0202C83C(friendGrp, groupId);
-    STRING *dest = String_New(64, HEAP_ID_4);
+    String *dest = String_New(64, HEAP_ID_4);
     CopyU16ArrayToString(dest, sub_0202C7E0(friendGrp, groupId, nameType));
     BufferString(msgFmt, fieldno, dest, sp10, 1, r7);
     String_Delete(dest);
@@ -649,7 +649,7 @@ void BufferDeptStoreFloorNo(MessageFormat *msgFmt, u32 fieldno, u32 floor) {
     }
 }
 
-void StringExpandPlaceholders(MessageFormat * msgFmt, STRING * dest, STRING * src) {
+void StringExpandPlaceholders(MessageFormat * msgFmt, String * dest, String * src) {
     const u16 * cstr = String_cstr(src);
     String_SetEmpty(dest);
     while (*cstr != EOS) {

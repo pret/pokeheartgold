@@ -25,7 +25,7 @@ struct FontInfo {
 };
 
 union StrbufForPrint {
-    STRING *wrapped;
+    String *wrapped;
     const u16 *raw;
 };
 

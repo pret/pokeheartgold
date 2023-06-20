@@ -62,8 +62,8 @@ typedef struct ScriptEnvironment {
     LocalMapObject *unk_34;
     ScriptContext *scriptContexts[3];
     MessageFormat *msgfmt;
-    STRING *stringBuffer0;
-    STRING *stringBuffer1;
+    String *stringBuffer0;
+    String *stringBuffer1;
     WaitingIcon *waitingIcon;
     EngagedTrainer engagedTrainers[2];
     u16 specialVars[NUM_SPECIAL_VARS];

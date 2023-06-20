@@ -767,8 +767,8 @@ BOOL ScrCmd_DirectionSignpost(ScriptContext* ctx) {
     u8 unk2;
 
     FieldSystem* fsys = ctx->fsys;
-    STRING** tmp_str = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
-    STRING** unk1 = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
+    String** tmp_str = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
+    String** unk1 = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 msg_no = ScriptReadByte(ctx);
     unk2 = ScriptReadByte(ctx);
@@ -828,8 +828,8 @@ static BOOL sub_02041520(ScriptContext* ctx);
 BOOL ScrCmd_TrainerTips(ScriptContext* ctx) {
     FieldSystem* fsys = ctx->fsys;
     u8* printer_id_ptr = FieldSysGetAttrAddr(fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
-    STRING** tmp_str = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
-    STRING** unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
+    String** tmp_str = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
+    String** unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 msg_no = ScriptReadByte(ctx);
     u16 result_var_id = ScriptReadHalfword(ctx);
@@ -2384,7 +2384,7 @@ BOOL ScrCmd_TrainerMessage(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
 
     u16 *p_scripno = FieldSysGetAttrAddr(fsys, SCRIPTENV_ACTIVE_SCRIPT_NUMBER);
-    STRING **p_strbuf1 = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
+    String **p_strbuf1 = FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
     u8 *p_printerno = FieldSysGetAttrAddr(fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
     u16 trainerno = ScriptGetVar(ctx);
     u16 msgno = ScriptGetVar(ctx);
@@ -4036,8 +4036,8 @@ BOOL ScrCmd_571(ScriptContext *ctx) {
     u16 sp8 = ScriptGetVar(ctx);
     u16 spC = ScriptGetVar(ctx);
     u16 r7 = ScriptGetVar(ctx);
-    STRING *r7_str;
-    STRING *sp0_str;
+    String *r7_str;
+    String *sp0_str;
     MessageFormat *msgFmt = MessageFormat_New(HEAP_ID_32);
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0202_bin, HEAP_ID_32);
     BufferECWord(msgFmt, 0, sp4);

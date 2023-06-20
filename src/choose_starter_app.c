@@ -187,7 +187,7 @@ struct ChooseStarterAppWork {
     u8 ballTransStep;
     int state;
     int ballWobbleState;
-    STRING *strbuf;
+    String *strbuf;
     struct StarterChooseMonSpriteData monSpriteData;
     GFCameraTranslationWrapper *cameraTranslation;
     Pokemon *choices[3]; // 578
@@ -230,7 +230,7 @@ static BOOL updateBaseRotation(struct ChooseStarterAppWork *work, fx16 speed);
 static void reinitBallModelPosInDirection(struct ChooseStarterAppWork *work, int direction);
 static void makeAndDrawWindows(struct ChooseStarterAppWork *work);
 static void loadBgGraphics(BGCONFIG *bgConfig, HeapID heapId);
-static u8 printMsgOnWinEx(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, STRING **out);
+static u8 printMsgOnWinEx(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, String **out);
 static void printMsgOnBottom(struct ChooseStarterAppWork *work, int msgId);
 static void freeWindow(WINDOW *window);
 static int getInput(struct ChooseStarterAppWork *work);
@@ -365,7 +365,7 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         case CHOOSE_STARTER_INPUT_SELECT_BALL_INIT:
             work->modelAnimState = MODEL_ANM_STATE_BALL_ROCK;
             {
-                STRING *baseTrans = NULL;
+                String *baseTrans = NULL;
                 printMsgOnWinEx(work->winTop, work->heapId, FALSE, NARC_msg_msg_0190_bin, msg_0190_00004 + work->curSelection,
                               MakeTextColor(1, 2, 15), 0, &baseTrans);
                 String_Delete(baseTrans);
@@ -420,7 +420,7 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         }
         work->modelAnimState = MODEL_ANM_STATE_BALL_ROCK;
         {
-            STRING *sp10 = NULL;
+            String *sp10 = NULL;
             printMsgOnWinEx(work->winTop, work->heapId, FALSE, NARC_msg_msg_0190_bin, msg_0190_00004 + work->curSelection, MakeTextColor(1, 2, 15), 0, &sp10);
             String_Delete(sp10);
         }
@@ -1046,7 +1046,7 @@ static void loadBgGraphics(BGCONFIG *bgConfig, HeapID heapId) {
     G2S_SetBlendAlpha(4, 34, 5, 11);
 }
 
-static u8 printMsgOnWinEx(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, STRING **out) {
+static u8 printMsgOnWinEx(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, String **out) {
     MSGDATA *msgData;
     u8 ret;
     GF_ASSERT(*out == NULL);
@@ -1065,7 +1065,7 @@ static u8 printMsgOnWinEx(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msg
 }
 
 static void printMsgOnBottom(struct ChooseStarterAppWork *work, int msgId) {
-    STRING *string = NULL;
+    String *string = NULL;
     printMsgOnWinEx(work->winBottom, work->heapId, FALSE, NARC_msg_msg_0190_bin, msgId, MakeTextColor(1, 2, 0), 0, &string);
     String_Delete(string);
 }

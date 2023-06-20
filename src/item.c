@@ -766,13 +766,13 @@ void *LoadItemDataOrGfx(u16 itemId, int attrno, HeapID heap_id) {
     return NULL;
 }
 
-void GetItemNameIntoString(STRING *dest, u16 itemId, HeapID heap_id) {
+void GetItemNameIntoString(String *dest, u16 itemId, HeapID heap_id) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0222_bin, heap_id);
     ReadMsgDataIntoString(msgData, itemId, dest);
     DestroyMsgData(msgData);
 }
 
-void GetItemDescIntoString(STRING *dest, u16 itemId, HeapID heap_id) {
+void GetItemDescIntoString(String *dest, u16 itemId, HeapID heap_id) {
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0221_bin, heap_id);
     ReadMsgDataIntoString(msgData, itemId, dest);
     DestroyMsgData(msgData);
@@ -1015,8 +1015,8 @@ u16 BerryToItemId(u8 berryId) {
     return (u16)(berryId + FIRST_BERRY_IDX);
 }
 
-STRING *GetNutName(u16 berryId, HeapID heap_id) {
-    STRING *ret;
+String *GetNutName(u16 berryId, HeapID heap_id) {
+    String *ret;
     MSGDATA *msgData;
 
     if (berryId != 0) {

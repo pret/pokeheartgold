@@ -39,7 +39,7 @@ typedef struct VoltorbFlipAppWork {
     WINDOW windows[17];
     LISTMENUITEM *menuItems[2];
     void *unk13C;
-    STRING *string;
+    String *string;
     Unk122_021E7C9C *unk144;
     void *unk148;
     UnkStruct_0200CF18 *unk14C[0xd];

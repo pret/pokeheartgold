@@ -231,7 +231,7 @@ void PCStorage_SetBoxWallpaper(PC_STORAGE* storage, u32 boxno, u8 wallpaperno) {
     GF_ASSERT(0);
 }
 
-void PCStorage_GetBoxName(PC_STORAGE* storage, u32 boxno, STRING* dest) {
+void PCStorage_GetBoxName(PC_STORAGE* storage, u32 boxno, String* dest) {
     if (boxno == -1u) {
         boxno = storage->curBox;
     }
@@ -242,7 +242,7 @@ void PCStorage_GetBoxName(PC_STORAGE* storage, u32 boxno, STRING* dest) {
     GF_ASSERT(0);
 }
 
-void PCStorage_SetBoxName(PC_STORAGE* storage, u32 boxno, const STRING* src) {
+void PCStorage_SetBoxName(PC_STORAGE* storage, u32 boxno, const String* src) {
     if (boxno == -1u) {
         boxno = storage->curBox;
     }

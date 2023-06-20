@@ -71,7 +71,7 @@ void Save_Profile_PlayerName_Set(PlayerProfile* profile, u16* name) {
     CopyU16StringArray(profile->name, name);
 }
 
-void PlayerName_StringToFlat(PlayerProfile* profile, STRING* str) {
+void PlayerName_StringToFlat(PlayerProfile* profile, String* str) {
     CopyStringToU16Array(str, profile->name, PLAYER_NAME_LENGTH + 1);
 }
 
@@ -79,12 +79,12 @@ const u16 * PlayerProfile_GetNamePtr(const PlayerProfile *profile) {
     return profile->name;
 }
 
-void PlayerName_FlatToString(PlayerProfile* profile, STRING* str) {
+void PlayerName_FlatToString(PlayerProfile* profile, String* str) {
     CopyU16ArrayToString(str, profile->name);
 }
 
-STRING* PlayerProfile_GetPlayerName_NewString(PlayerProfile* profile, HeapID heap_id) {
-    STRING* str = String_New(PLAYER_NAME_LENGTH + 1, heap_id);
+String* PlayerProfile_GetPlayerName_NewString(PlayerProfile* profile, HeapID heap_id) {
+    String* str = String_New(PLAYER_NAME_LENGTH + 1, heap_id);
     PlayerName_FlatToString(profile, str);
 
     return str;

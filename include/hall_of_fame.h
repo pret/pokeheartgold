@@ -36,8 +36,8 @@ typedef struct HallOfFame
 
 typedef struct HofDisplayMon
 {
-    STRING * nickname;
-    STRING * otname;
+    String * nickname;
+    String * otname;
     u32 personality;
     u32 otid;
     u16 species;

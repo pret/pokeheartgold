@@ -92,7 +92,7 @@ u8 sub_02077914(BAG_VIEW *bagView);
 u8 sub_0207791C(BAG_VIEW *bagView);
 
 /*
- * BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, STRING *dest, u16 itemId, u32 heap_id)
+ * BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, String *dest, u16 itemId, u32 heap_id)
  *
  * Some key items, when used, only print a non_npc_msg.
  * If the selected item is one of these, formats the
@@ -100,16 +100,16 @@ u8 sub_0207791C(BAG_VIEW *bagView);
  * returns FALSE and leaves dest untouched.
  *
  * @param saveData:    Persistent game state
- * @param dest:        Output STRING
+ * @param dest:        Output String
  * @param itemId:      ID of item to check
  * @param heap_id:     Heap in which to allocate temp buffers
  *
  * @returns: TRUE if non_npc_msg formatted, else FALSE
  */
-BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, STRING *dest, u16 itemId, HeapID heap_id);
+BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, String *dest, u16 itemId, HeapID heap_id);
 
 /*
- * void GetItemUseErrorMessage(PLAYERDATA *playerData, STRING *dest, u32 unused, enum ItemUseError code, u32 heap_id)
+ * void GetItemUseErrorMessage(PLAYERDATA *playerData, String *dest, u32 unused, enum ItemUseError code, u32 heap_id)
  *
  * If you can't use the item for whatever reason, this
  * routine is called to format the non_npc_msg.
@@ -119,11 +119,11 @@ BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, STRING *dest, u16 
  *
  * @param playerProfile:  Pointer to PlayerProfile, used to get your
  *                        name in Oak's admonishment
- * @param dest:           Pointer to output STRING
+ * @param dest:           Pointer to output String
  * @param itemId:         Unused
  * @param code:           Which non_npc_msg to output
  * @param heap_id:        Heap to allocate temp buffers from
  */
-void GetItemUseErrorMessage(PlayerProfile *playerProfile, STRING *dest, u16 itemId, enum ItemUseError code, HeapID heap_id);
+void GetItemUseErrorMessage(PlayerProfile *playerProfile, String *dest, u16 itemId, enum ItemUseError code, HeapID heap_id);
 
 #endif //POKEHEARTGOLD_BAG_VIEW_H

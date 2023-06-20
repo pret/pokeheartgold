@@ -344,7 +344,7 @@ int GetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
         }
         break;
     case BMON_DATA_NICKNAME2:
-        CopyU16ArrayToString((STRING *)data, mon->nickname);
+        CopyU16ArrayToString((String *)data, mon->nickname);
         break;
     case BMON_DATA_HP:
         return mon->hp;

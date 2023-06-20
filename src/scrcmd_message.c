@@ -14,8 +14,8 @@
 #include "window.h"
 
 typedef struct MessageBox {
-    STRING *message;
-    STRING *buffer;
+    String *message;
+    String *buffer;
     MessageFormat *messageFormat;
     WINDOW *window;
     u8 *unk10;
@@ -255,8 +255,8 @@ static u32 ovFieldMain_GetTextFrameDelay(ScriptContext *ctx) {
 }
 
 static void ovFieldMain_GetMsgBoxParameters(FieldSystem *fsys, MessageBox *messageBox) {
-    messageBox->message = *(STRING **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
-    messageBox->buffer = *(STRING **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
+    messageBox->message = *(String **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
+    messageBox->buffer = *(String **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
     messageBox->messageFormat = *(MessageFormat **)FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
     messageBox->window = (WINDOW *)FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW);
     messageBox->unk10 = (u8 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_08);
@@ -264,8 +264,8 @@ static void ovFieldMain_GetMsgBoxParameters(FieldSystem *fsys, MessageBox *messa
 }
 
 static void ovFieldMain_GetMsgBoxParametersEx(FieldSystem *fsys, MessageFormat *messageFormat, MessageBox *messageBox) {
-    messageBox->message = *(STRING **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
-    messageBox->buffer = *(STRING **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
+    messageBox->message = *(String **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
+    messageBox->buffer = *(String **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
     messageBox->messageFormat = messageFormat;
     messageBox->window = (WINDOW *)FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW);
     messageBox->unk10 = (u8 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_08);
@@ -293,7 +293,7 @@ static void ovFieldMain_GetFormattedECMessage(MessageBox *messageBox, u16 messag
     MailMsg_SetMsgBankAndNum(&mailMessage, messageBank, messageNum);
     MailMsg_SetFieldI(&mailMessage, 0, word1);
     MailMsg_SetFieldI(&mailMessage, 1, word2);
-    STRING *string = MailMsg_GetExpandedString(&mailMessage, HEAP_ID_32);
+    String *string = MailMsg_GetExpandedString(&mailMessage, HEAP_ID_32);
     String_Copy(messageBox->message, string);
     String_Delete(string);
 }

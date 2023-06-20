@@ -176,7 +176,7 @@ void SafariZone_SetLinkLeaderFromProfile(SAFARIZONE* safari_zone, PlayerProfile*
     link_leader->language = PlayerProfile_GetLanguage(profile);
     link_leader->version = PlayerProfile_GetVersion(profile);
 
-    STRING* name = String_New((PLAYER_NAME_LENGTH + 1) * sizeof(u16), heap_id);
+    String* name = String_New((PLAYER_NAME_LENGTH + 1) * sizeof(u16), heap_id);
     PlayerName_FlatToString(profile, name);
     CopyStringToU16Array(name, link_leader->name, (PLAYER_NAME_LENGTH + 1) * sizeof(u16));
     String_Delete(name);

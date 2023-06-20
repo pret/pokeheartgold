@@ -51,10 +51,10 @@ void MailMsg_Init_FromTemplate(MAIL_MESSAGE *mailMessage, const MAIL_MSG_TEMPLAT
     }
 }
 
-STRING *MailMsg_GetExpandedString(const MAIL_MESSAGE *mailMessage, HeapID heapId) {
+String *MailMsg_GetExpandedString(const MAIL_MESSAGE *mailMessage, HeapID heapId) {
     MessageFormat *msgFmt;
     MSGDATA *msgData;
-    STRING *string;
+    String *string;
     int i;
 
     msgFmt = MessageFormat_New(heapId);
@@ -72,7 +72,7 @@ STRING *MailMsg_GetExpandedString(const MAIL_MESSAGE *mailMessage, HeapID heapId
     return string;
 }
 
-STRING *MailMsg_GetRawString(MAIL_MESSAGE *mailMessage, HeapID heapId) {
+String *MailMsg_GetRawString(MAIL_MESSAGE *mailMessage, HeapID heapId) {
     return ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, sMessageBanks[mailMessage->msg_bank], mailMessage->msg_no, heapId);
 }
 
@@ -94,7 +94,7 @@ BOOL MailMsg_AllFieldsAreInit(MAIL_MESSAGE *mailMessage) {
 }
 
 u32 MailMsg_NumFields(u16 msg_bank, u16 msg_no) {
-    STRING *msg;
+    String *msg;
     const u16 *msg_cstr;
     u32 ret;
 

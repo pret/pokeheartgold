@@ -20,7 +20,7 @@ struct _NPC_TRADE_WORK {
     HeapID heapId;
 };
 
-static STRING *_GetNpcTradeName(HeapID heapId, s32 msgno);
+static String *_GetNpcTradeName(HeapID heapId, s32 msgno);
 static void _CreateTradeMon(Pokemon *mon, NPC_TRADE *trade_dat, u32 level, u32 tradeno, u32 mapno, u32 met_level_strat, HeapID heapId);
 
 NPC_TRADE_WORK *NPCTrade_AllocWork(HeapID heapId, u32 tradeno) {
@@ -37,7 +37,7 @@ NPC_TRADE_WORK *NPCTrade_AllocWork(HeapID heapId, u32 tradeno) {
     ret->profile = PlayerProfile_New(heapId);
     PlayerProfile_Init(ret->profile);
     {
-        STRING *name;
+        String *name;
         name = _GetNpcTradeName(heapId, tradeno + TRADE_MAX);
         CopyStringToU16Array(name, strbuf, 128);
         String_Delete(name);
@@ -59,7 +59,7 @@ void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fsys, u8 tradeno, u8 level, u16 ma
     Pokemon *mon;
     NPC_TRADE *trade_dat;
     Pokemon *kenya;
-    STRING *name;
+    String *name;
     MAIL *mail;
     u8 mailno;
 
@@ -85,7 +85,7 @@ void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fsys, u8 tradeno, u8 level, u16 ma
 MAIL *NPCTrade_MakeKenyaMail(void) {
     Pokemon *mon;
     NPC_TRADE *trade_dat;
-    STRING *name;
+    String *name;
     MAIL *mail;
     u8 mailno;
 
@@ -179,8 +179,8 @@ void NPCTrade_CreateTradeAnim(FieldSystem *fsys, NPC_TRADE_WORK *work, int slot,
     }
 }
 
-static STRING *_GetNpcTradeName(HeapID heapId, s32 msgno) {
-    STRING *ret;
+static String *_GetNpcTradeName(HeapID heapId, s32 msgno) {
+    String *ret;
     MSGDATA *msgData;
 
     msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0200_bin, heapId);
@@ -190,7 +190,7 @@ static STRING *_GetNpcTradeName(HeapID heapId, s32 msgno) {
 }
 
 static void _CreateTradeMon(Pokemon *mon, NPC_TRADE *trade_dat, u32 level, u32 tradeno, u32 mapno, u32 met_level_strat, HeapID heapId) {
-    STRING *name;
+    String *name;
     u8 nickname_flag;
     u32 mapsec;
     int heapId_2;

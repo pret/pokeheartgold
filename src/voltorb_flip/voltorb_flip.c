@@ -1598,7 +1598,7 @@ static void PaintMessageOnWindow(VoltorbFlipAppWork *work, FontID fontId, u8 msg
 static void PrintMessageOnWindow(VoltorbFlipAppWork *work, FontID fontId, u8 msgNo, WINDOW *window, u8 x, u8 y, u32 textSpeed) {
     FillWindowPixelBuffer(window, 0);
 
-    STRING *str = ReadMsgData_ExpandPlaceholders(work->msgFmt, work->msgData, msgNo, work->heapId);
+    String *str = ReadMsgData_ExpandPlaceholders(work->msgFmt, work->msgData, msgNo, work->heapId);
     AddTextPrinterParameterized2(window, fontId, str, x, y, 0xff, textSpeed, 0);
 
     ScheduleWindowCopyToVram(window);
@@ -1610,7 +1610,7 @@ static void PrintMessageToSmallWindow(VoltorbFlipAppWork *work, int msgNo) {
 
     FillWindowPixelBuffer(window, 15);
 
-    STRING *str = ReadMsgData_ExpandPlaceholders(work->msgFmt, work->msgData, msgNo, work->heapId);
+    String *str = ReadMsgData_ExpandPlaceholders(work->msgFmt, work->msgData, msgNo, work->heapId);
 
     FillBgTilemapRect(work->bgConfig, 3, 0, 0, 20, 32, 4, 0);
     DrawFrameAndWindow2(window, 1, 1, 13);
@@ -1623,7 +1623,7 @@ static void PrintMessageToSmallWindow(VoltorbFlipAppWork *work, int msgNo) {
 
 // Prints a message in the main text window.
 static void PrintTextWindow(VoltorbFlipAppWork *work, int msgNo, int a2) {
-    STRING *str;
+    String *str;
     WINDOW *window = &work->wMain;
 
     GF_ASSERT(work->string == NULL);

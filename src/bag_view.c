@@ -103,9 +103,9 @@ static u32 GetNumBattlePoints(SaveData *saveData) {
     return FrontierData_BattlePointAction(Save_FrontierData_Get(saveData), 0, 0);
 }
 
-BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, STRING *dest, u16 itemId, HeapID heap_id) {
+BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, String *dest, u16 itemId, HeapID heap_id) {
     MSGDATA *msgData;
-    STRING *fmtStr;
+    String *fmtStr;
     MessageFormat *msgFmt;
 
     msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0010_bin, heap_id);
@@ -138,7 +138,7 @@ BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, STRING *dest, u16 
     return TRUE;
 }
 
-void GetItemUseErrorMessage(PlayerProfile *playerProfile, STRING *dest, u16 itemId, enum ItemUseError code, HeapID heap_id) {
+void GetItemUseErrorMessage(PlayerProfile *playerProfile, String *dest, u16 itemId, enum ItemUseError code, HeapID heap_id) {
 #pragma unused(itemId)
     MSGDATA *msgData;
     switch (code) {
@@ -164,7 +164,7 @@ void GetItemUseErrorMessage(PlayerProfile *playerProfile, STRING *dest, u16 item
     {
         // {PLAYER}! This isn't the time to use that!
         MessageFormat *msgFmt;
-        STRING *string;
+        String *string;
 
         msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0040_bin, heap_id);
         msgFmt = MessageFormat_New(heap_id);

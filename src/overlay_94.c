@@ -106,7 +106,7 @@ BOOL PartyMenu_AnimateIconFormeChange(PartyMenuStruct* unkPtr) {
         }
         break;
     case 9:
-        STRING* str = NewString_ReadMsgData(unkPtr->msgData, msg_0300_00188); //" changed Forme!"
+        String* str = NewString_ReadMsgData(unkPtr->msgData, msg_0300_00188); //" changed Forme!"
         BufferBoxMonNickname(unkPtr->unk7c4, 0, Mon_GetBoxMon(mon));
         StringExpandPlaceholders(unkPtr->unk7c4, unkPtr->unk7c8, str);
         String_Delete(str);

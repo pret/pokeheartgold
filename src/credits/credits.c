@@ -120,7 +120,7 @@ typedef struct {
 typedef struct {
     MSGDATA *msgData;
     WINDOW window;
-    STRING *string;
+    String *string;
     PageDisplayWork pageDisplayWork;
     PageState pageState;
     ScreenFlipWork scrFlipWork;

@@ -45,7 +45,7 @@ typedef struct UnkStructScr_648 {
     SysTask *sysTask;
     WINDOW window_8;
     WINDOW *window_18;
-    STRING *stringArr_1C[120];
+    String *stringArr_1C[120];
     MSGDATA *msgdata;
     MessageFormat *msgfmt;
     u8 unk_204;
@@ -237,7 +237,7 @@ static void ov01_02200E00(SCR_648_STRUCT *unkPtr) {
 }
 
 static void ov01_02200EC8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3) {
-    STRING *str = String_New(0x50, HEAP_ID_4);
+    String *str = String_New(0x50, HEAP_ID_4);
     ReadMsgDataIntoString(unkPtr->msgdata, strNo, str);
     StringExpandPlaceholders(unkPtr->msgfmt, unkPtr->stringArr_1C[unkPtr->totalItems], str);
     unkPtr->items[unkPtr->totalItems].text = unkPtr->stringArr_1C[unkPtr->totalItems];
@@ -873,7 +873,7 @@ BOOL ScrCmd_741(ScriptContext *ctx) {
     u16 *price;
     u16 *unkPtrA;
     u16 *unkPtrC;
-    STRING *str;
+    String *str;
 
     apricornBox = Save_ApricornBox_Get(ctx->fsys->savedata);
     msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);

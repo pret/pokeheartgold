@@ -745,7 +745,7 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void * dest) {
         // fallthrough
     case MON_DATA_NICKNAME_3:
         if (boxMon->checksum_fail) {
-            STRING * buffer = GetSpeciesName(SPECIES_MANAPHY_EGG, HEAP_ID_0);
+            String * buffer = GetSpeciesName(SPECIES_MANAPHY_EGG, HEAP_ID_0);
             String_Copy(dest, buffer);
             String_Delete(buffer);
         } else {
@@ -981,7 +981,7 @@ static void SetBoxMonDataInternal(BoxPokemon *boxMon, int attr, const void * val
     u16 namebuf[POKEMON_NAME_LENGTH + 1];
     u16 namebuf2[POKEMON_NAME_LENGTH + 1];
     u16 namebuf3[POKEMON_NAME_LENGTH + 1];
-    STRING * speciesName;
+    String * speciesName;
 
     PokemonDataBlockA *blockA = &GetSubstruct(boxMon, boxMon->pid, 0)->blockA;
     PokemonDataBlockB *blockB = &GetSubstruct(boxMon, boxMon->pid, 1)->blockB;
@@ -4118,8 +4118,8 @@ BOOL BoxmonBelongsToPlayer(BoxPokemon *boxMon, PlayerProfile * profile, HeapID h
     u32 otId = GetBoxMonData(boxMon, MON_DATA_OTID, NULL);
     u32 myGender = PlayerProfile_GetTrainerGender(profile);
     u32 otGender = GetBoxMonData(boxMon, MON_DATA_MET_GENDER, NULL);
-    STRING * r7 = PlayerProfile_GetPlayerName_NewString(profile, heap_id);
-    STRING * r6 = String_New(PLAYER_NAME_LENGTH + 1, heap_id);
+    String * r7 = PlayerProfile_GetPlayerName_NewString(profile, heap_id);
+    String * r6 = String_New(PLAYER_NAME_LENGTH + 1, heap_id);
     BOOL ret = FALSE;
     GetBoxMonData(boxMon, MON_DATA_OT_NAME_2, r6);
     if (myId == otId && myGender == otGender && String_Compare(r7, r6) == 0) {
