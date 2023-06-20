@@ -30,7 +30,7 @@ void MessageFormat_Delete(MessageFormat *messageFormat);
 void StringExpandPlaceholders(MessageFormat *messageFormat, STRING *dest, STRING *src);
 void BufferString(MessageFormat *messageFormat, u32 fieldno, const STRING *string, s32 a3, s32 a4, s32 a5);
 void BufferIntegerAsString(MessageFormat *messageFormat, u32 idx, s32 num, u32 numDigits, STRCONVMODE strconvmode, BOOL whichCharset);
-void BufferPlayersName(MessageFormat *messageFormat, u32 idx, PLAYERPROFILE *playerProfile);
+void BufferPlayersName(MessageFormat *messageFormat, u32 idx, PlayerProfile *playerProfile);
 void BufferECWord(MessageFormat *messageFormat, u32 idx, u16 wordno);
 void BufferSpeciesName(MessageFormat *messageFormat, u32 idx, u16 species);
 void BufferSpeciesNameWithArticle(MessageFormat *messageFormat, u32 idx, u32 species);

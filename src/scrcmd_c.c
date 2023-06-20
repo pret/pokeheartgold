@@ -2539,7 +2539,7 @@ BOOL ScrCmd_247(ScriptContext *ctx) {
 
 BOOL ScrCmd_GetDexEvalResult(ScriptContext *ctx) {
     POKEDEX *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
-    PLAYERPROFILE *profile = Save_PlayerData_GetProfileAddr(ctx->fsys->savedata);
+    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(ctx->fsys->savedata);
     u8 kind = ScriptReadByte(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     u16 *p_ret2 = ScriptGetVarPointer(ctx);
@@ -2686,7 +2686,7 @@ BOOL ScrCmd_264(ScriptContext *ctx) {
     LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_INTERACTED);
     MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u16 r4 = ScriptReadHalfword(ctx);
-    PLAYERPROFILE *profile = Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
+    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
     SAVE_EASY_CHAT_T *easyChat = SaveData_EasyChat_Get(FieldSys_GetSaveDataPtr(ctx->fsys));
     u16 objId;
 
@@ -2851,7 +2851,7 @@ BOOL ScrCmd_286(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_287(ScriptContext *ctx) {
-    PLAYERPROFILE *profile = Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
+    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
     MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     sub_0205B3DC(
         PlayerProfile_GetTrainerID(profile),
@@ -2862,7 +2862,7 @@ BOOL ScrCmd_287(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_288(ScriptContext *ctx) {
-    PLAYERPROFILE *profile = Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
+    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
     u16 choice = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = sub_0205B418(
@@ -2879,7 +2879,7 @@ BOOL ScrCmd_288(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_558(ScriptContext *ctx) {
-    PLAYERPROFILE *profile = Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
+    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
     u16 choice = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = sub_0205B418(
@@ -2891,7 +2891,7 @@ BOOL ScrCmd_558(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_289(ScriptContext *ctx) {
-    PLAYERPROFILE *profile = Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
+    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
     u16 choice = ScriptGetVar(ctx);
     PlayerProfile_SetAvatar(profile, choice);
     return FALSE;
@@ -2910,7 +2910,7 @@ BOOL ScrCmd_SetSpawn(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_GetPlayerGender(ScriptContext *ctx) {
-    PLAYERPROFILE *profile = Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
+    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = PlayerProfile_GetTrainerGender(profile);
     return FALSE;
@@ -3571,7 +3571,7 @@ BOOL ScrCmd_GetGameVersion(ScriptContext *ctx) {
 
 BOOL ScrCmd_PrimoPasswordCheck1(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    PLAYERPROFILE *profile = Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(fsys));
+    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(fsys));
     u16 *p_ret = ScriptGetVarPointer(ctx);
     PC_STORAGE *pcStorage = GetStoragePCPointer(fsys->savedata);
     u16 a = ScriptGetVar(ctx);
@@ -3593,7 +3593,7 @@ BOOL ScrCmd_PrimoPasswordCheck1(ScriptContext *ctx) {
 
 BOOL ScrCmd_PrimoPasswordCheck2(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    PLAYERPROFILE *profile = Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(fsys));
+    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(fsys));
     u16 *p_ret = ScriptGetVarPointer(ctx);
     PC_STORAGE *pcStorage = GetStoragePCPointer(fsys->savedata);
     u16 a = ScriptGetVar(ctx);
@@ -5359,7 +5359,7 @@ BOOL ScrCmd_822(ScriptContext *ctx) {
 BOOL ScrCmd_823(ScriptContext *ctx) {
     u16 *p_var = ScriptGetVarPointer(ctx);
     MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
-    PLAYERPROFILE *profile = PlayerProfile_New(HEAP_ID_4);
+    PlayerProfile *profile = PlayerProfile_New(HEAP_ID_4);
     SafariZone_GetLinkLeaderToProfile(Save_SafariZone_Get(ctx->fsys->savedata), profile);
     BufferPlayersName(*p_msgFmt, *p_var, profile);
     FreeToHeap(profile);

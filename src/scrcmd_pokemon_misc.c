@@ -1011,7 +1011,7 @@ BOOL ScrCmd_GiveTogepiEgg(ScriptContext *ctx) {
     u8 pp;
     u16 moveData;
     Pokemon *mon;
-    PLAYERPROFILE *profile;
+    PlayerProfile *profile;
     PARTY *party;
     FieldSystem *fsys = ctx->fsys;
 
@@ -1074,7 +1074,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx) {
     Pokemon *mon;
     PARTY *party;
     FieldSystem *fsys;
-    PLAYERPROFILE *profile;
+    PlayerProfile *profile;
 
     fsys = ctx->fsys;
 

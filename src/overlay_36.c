@@ -181,7 +181,7 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SaveData* saved
     sub_0202C7C0(Save_FriendGroup_Get(savedata), 1, MTRandom());
     sub_020674BC(savedata);
 
-    PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(savedata);
+    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(savedata);
     u32 rand = MTRandom();
 
     if (set_trainer_id) {

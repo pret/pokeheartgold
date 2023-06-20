@@ -7,7 +7,7 @@
 typedef struct TRADE_ANIM_WORK {
     BoxPokemon *my_boxmon;
     BoxPokemon *trade_boxmon;
-    PLAYERPROFILE *trade_profile;
+    PlayerProfile *trade_profile;
     int time_of_day;
     int is_ingame;
     OPTIONS *options;

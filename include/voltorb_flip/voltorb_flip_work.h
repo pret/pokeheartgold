@@ -31,7 +31,7 @@ typedef struct VoltorbFlipAppWork {
     OPTIONS *options;
     u16 *coins;
     int unkC;
-    PLAYERPROFILE *profile;
+    PlayerProfile *profile;
     NARC *narc;
     BGCONFIG *bgConfig;
     void *unk1C;

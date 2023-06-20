@@ -12,7 +12,7 @@ struct BATTLE_SETUP { //declared in trainer_data.h
     u32 winFlag;
     int trainerId[4];
     TRAINER trainer[4];
-    PLAYERPROFILE *profile[4];
+    PlayerProfile *profile[4];
     void *unk48;
     void *unk4C;
     void *unk50;

@@ -262,7 +262,7 @@ void CallTask_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
     ScriptState *scriptState;
     Location *dynamicWarp;
     Location *spawnWarp;
-    PLAYERPROFILE *profile;
+    PlayerProfile *profile;
 
     fsys = TaskManager_GetSys(taskman);
     env = AllocFromHeap(HEAP_ID_32, sizeof(GameClearWork));

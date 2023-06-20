@@ -10,7 +10,7 @@ u32 BattleSys_GetBattleType(BattleSystem *bsys);
 u32 BattleSys_GetFieldSide(BattleSystem *bsys, int battlerId);
 int BattleSys_GetMaxBattlers(BattleSystem *bsys);
 int BattleSys_Random(BattleSystem *bsys);
-PLAYERPROFILE *BattleSys_GetPlayerProfile(BattleSystem *bsys, int a1);
+PlayerProfile *BattleSys_GetPlayerProfile(BattleSystem *bsys, int a1);
 PARTY *BattleSys_GetParty(BattleSystem *bsys, int battlerId);
 int BattleSys_GetPartySize(BattleSystem *bsys, int battlerId);
 Pokemon *BattleSystem_GetPartyMon(BattleSystem *bsys, int battlerId, int index);

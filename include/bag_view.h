@@ -117,13 +117,13 @@ BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, STRING *dest, u16 
  * There are special messages for Cycling Road and when
  * you have an NPC companion.
  *
- * @param playerProfile:  Pointer to PLAYERPROFILE, used to get your
+ * @param playerProfile:  Pointer to PlayerProfile, used to get your
  *                        name in Oak's admonishment
  * @param dest:           Pointer to output STRING
  * @param itemId:         Unused
  * @param code:           Which non_npc_msg to output
  * @param heap_id:        Heap to allocate temp buffers from
  */
-void GetItemUseErrorMessage(PLAYERPROFILE *playerProfile, STRING *dest, u16 itemId, enum ItemUseError code, HeapID heap_id);
+void GetItemUseErrorMessage(PlayerProfile *playerProfile, STRING *dest, u16 itemId, enum ItemUseError code, HeapID heap_id);
 
 #endif //POKEHEARTGOLD_BAG_VIEW_H

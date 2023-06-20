@@ -45,7 +45,7 @@ BOOL ScrCmd_GiveDayCareEgg(ScriptContext* ctx) {
     DAYCARE* daycare = SaveArray_Get(fsys->savedata, SAVE_DAYCARE);
     PARTY* party = SaveArray_PlayerParty_Get(fsys->savedata);
     SaveData* savedata = FieldSys_GetSaveDataPtr(ctx->fsys);
-    PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(savedata);
+    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(savedata);
 
     GiveEggToPlayer(daycare, party, profile);
 

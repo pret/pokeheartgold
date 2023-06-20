@@ -21,7 +21,7 @@ int sub_0205C268(u32 unkA) {
 }
 
 u8 sub_0205C278(void) {
-    PLAYERPROFILE* profile = sub_02034818(sub_0203769C() ^ 1);
+    PlayerProfile* profile = sub_02034818(sub_0203769C() ^ 1);
     if (!profile) {
         GF_ASSERT(FALSE);
     }

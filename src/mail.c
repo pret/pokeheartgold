@@ -92,7 +92,7 @@ void Mail_SetNewMessageDetails(MAIL *mail, u8 mailType, u8 mon_no, SaveData *sav
     u8 i, j, pal, k;
     u16 species;
     u32 icon, isEgg, forme;
-    PLAYERPROFILE *profile;
+    PlayerProfile *profile;
     PARTY *party;
     Pokemon *mon;
 

@@ -3,7 +3,7 @@
 
 BOOL ScrCmd_AddMoney(ScriptContext* ctx) {
     SaveData* savedata = FieldSys_GetSaveDataPtr(ctx->fsys);
-    PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(savedata);
+    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(savedata);
 
     u32 amount = ScriptReadWord(ctx);
     PlayerProfile_AddMoney(profile, amount);
@@ -13,7 +13,7 @@ BOOL ScrCmd_AddMoney(ScriptContext* ctx) {
 
 BOOL ScrCmd_SubMoneyImmediate(ScriptContext* ctx) {
     SaveData* savedata = FieldSys_GetSaveDataPtr(ctx->fsys);
-    PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(savedata);
+    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(savedata);
 
     u32 amount = ScriptReadWord(ctx);
     PlayerProfile_SubMoney(profile, amount);
@@ -23,7 +23,7 @@ BOOL ScrCmd_SubMoneyImmediate(ScriptContext* ctx) {
 
 BOOL ScrCmd_SubMoneyVar(ScriptContext* ctx) {
     SaveData* savedata = FieldSys_GetSaveDataPtr(ctx->fsys);
-    PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(savedata);
+    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(savedata);
 
     u16 amount = ScriptGetVar(ctx);
     PlayerProfile_SubMoney(profile, amount);
@@ -33,7 +33,7 @@ BOOL ScrCmd_SubMoneyVar(ScriptContext* ctx) {
 
 BOOL ScrCmd_HasEnoughMoneyImmediate(ScriptContext* ctx) {
     SaveData* savedata = FieldSys_GetSaveDataPtr(ctx->fsys);
-    PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(savedata);
+    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(savedata);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
 
     u32 amount = ScriptReadWord(ctx);
@@ -49,7 +49,7 @@ BOOL ScrCmd_HasEnoughMoneyImmediate(ScriptContext* ctx) {
 
 BOOL ScrCmd_HasEnoughMoneyVar(ScriptContext* ctx) {
     SaveData* savedata = FieldSys_GetSaveDataPtr(ctx->fsys);
-    PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(savedata);
+    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(savedata);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
 
     u16 amount = ScriptGetVar(ctx);

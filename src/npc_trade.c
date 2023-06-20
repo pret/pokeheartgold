@@ -15,7 +15,7 @@
 struct _NPC_TRADE_WORK {
     NPC_TRADE *trade_dat;
     Pokemon *mon;
-    PLAYERPROFILE *profile;
+    PlayerProfile *profile;
     u32 tradeno;
     HeapID heapId;
 };

@@ -621,7 +621,7 @@ static u16 Daycare_GetEggSpecies(DAYCARE *dayCare, u8 *gender_idx) {
     return pms;
 }
 
-void SetEggStats(Pokemon *mon, int species, u8 metLocation, PLAYERPROFILE *profile, int a4, int a5) {
+void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profile, int a4, int a5) {
     u32 otId;
     u32 gender;
     u16 pokeball;
@@ -694,7 +694,7 @@ static void SetBreedEggStats(Pokemon *mon, u16 species, DAYCARE *dayCare, u32 ot
     String_Delete(name);
 }
 
-void GiveEggToPlayer(DAYCARE *dayCare, PARTY *party, PLAYERPROFILE* profile) {
+void GiveEggToPlayer(DAYCARE *dayCare, PARTY *party, PlayerProfile* profile) {
     Pokemon *mon;
     u16 species;
     u8 gender_idx[2];

@@ -75,7 +75,7 @@ u32 sub_020317BC(SaveData *saveData, u32 a1) {
 static void sub_020317F4(SaveData *saveData, Unk020317F4 *a1) {
     void *ptr;
     Unk0203170C *ptr2;
-    PLAYERPROFILE* profile;
+    PlayerProfile* profile;
 
     ptr = sub_0202CA44(saveData);
     profile = Save_PlayerData_GetProfileAddr(saveData);

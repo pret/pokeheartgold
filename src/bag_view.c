@@ -138,7 +138,7 @@ BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, STRING *dest, u16 
     return TRUE;
 }
 
-void GetItemUseErrorMessage(PLAYERPROFILE *playerProfile, STRING *dest, u16 itemId, enum ItemUseError code, HeapID heap_id) {
+void GetItemUseErrorMessage(PlayerProfile *playerProfile, STRING *dest, u16 itemId, enum ItemUseError code, HeapID heap_id) {
 #pragma unused(itemId)
     MSGDATA *msgData;
     switch (code) {
