@@ -10,7 +10,7 @@ extern void ov01_021F9048(LocalMapObject* map_object);
 extern void FollowPokeMapObjectSetParams(LocalMapObject *mapObject, u16 species, u8 forme, BOOL shiny);
 extern u32 FollowingPokemon_GetSpriteID(int species, u16 forme, u32 gender);
 
-static LocalMapObject* CreateDayCareMonSpriteInternal(MapObjectMan* object_man, u8 dc_mon_idx, u16 species, u8 forme, u32 gender, u32 direction, u32 x, u32 y, u32 map_no, BOOL shiny);
+static LocalMapObject* CreateDayCareMonSpriteInternal(MapObjectManager* object_man, u8 dc_mon_idx, u16 species, u8 forme, u32 gender, u32 direction, u32 x, u32 y, u32 map_no, BOOL shiny);
 
 BOOL ScrCmd_BufferDayCareMonNicks(ScriptContext* ctx) {
     SaveData* savedata = ctx->fsys->savedata;
@@ -44,7 +44,7 @@ BOOL ScrCmd_GiveDayCareEgg(ScriptContext* ctx) {
     FieldSystem* fsys = ctx->fsys;
     DAYCARE* daycare = SaveArray_Get(fsys->savedata, SAVE_DAYCARE);
     PARTY* party = SaveArray_PlayerParty_Get(fsys->savedata);
-    SaveData* savedata = FieldSys_GetSaveDataPtr(ctx->fsys);
+    SaveData* savedata = FieldSystem_GetSaveDataPtr(ctx->fsys);
     PlayerProfile* profile = Save_PlayerData_GetProfileAddr(savedata);
 
     GiveEggToPlayer(daycare, party, profile);
@@ -178,7 +178,7 @@ BOOL ScrCmd_UpdateDayCareMonObjects(ScriptContext* ctx) {
     return FALSE;
 }
 
-static LocalMapObject* CreateDayCareMonSpriteInternal(MapObjectMan* object_man, u8 dc_mon_idx, u16 species, u8 forme, u32 gender, u32 direction, u32 x, u32 y, u32 map_no, BOOL shiny) {
+static LocalMapObject* CreateDayCareMonSpriteInternal(MapObjectManager* object_man, u8 dc_mon_idx, u16 species, u8 forme, u32 gender, u32 direction, u32 x, u32 y, u32 map_no, BOOL shiny) {
     u32 sprite_id = FollowingPokemon_GetSpriteID(species, forme, gender);
     LocalMapObject* lmo = CreateSpecialFieldObject(object_man, x, y, direction, sprite_id, 11, map_no);
     GF_ASSERT(lmo != NULL);

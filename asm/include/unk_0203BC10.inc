@@ -87,7 +87,7 @@
 .public FieldSys_ApplicationIsRunning
 .public sub_020505C0
 .public sub_020505C8
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public sub_02055164
 .public sub_0205A904
@@ -100,8 +100,8 @@
 .public PlayerSaveData_CheckRunningShoes
 .public sub_0205CF60
 .public sub_0205CFBC
-.public MapObjectMan_PauseAllMovement
-.public MapObjectMan_UnpauseAllMovement
+.public MapObjectManager_PauseAllMovement
+.public MapObjectManager_UnpauseAllMovement
 .public GetItemFieldUseFunc
 .public ItemCheckUseData_Init
 .public ScriptState_CheckSafariSysFlag

@@ -47,7 +47,7 @@ sub_0206A388: ; 0x0206A388
 	add r6, r1, #0
 	add r5, r2, #0
 	add r7, r3, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	str r0, [sp, #4]
 	mov r0, #4
 	mov r1, #0x38
@@ -118,7 +118,7 @@ sub_0206A410: ; 0x0206A410
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetEnv

@@ -19,7 +19,7 @@
 .public FlypointFlagAction
 .public SaveArray_Flags_Get
 .public TaskManager_Call
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public sub_02053908
 .public GetIdxOfFirstAliveMonInParty_CrashIfNone

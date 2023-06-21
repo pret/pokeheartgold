@@ -12,11 +12,11 @@
 .public sub_02023F30
 .public sub_02023F40
 .public GF_AssertFail
-.public MapObjectMan_GetCount
-.public MapObjectMan_SetFlagsBits
-.public MapObjectMan_ClearFlagsBits
-.public MapObjectMan_GetFlagsBitsMask
-.public MapObjectMan_GetHeapID
+.public MapObjectManager_GetCount
+.public MapObjectManager_SetFlagsBits
+.public MapObjectManager_ClearFlagsBits
+.public MapObjectManager_GetFlagsBitsMask
+.public MapObjectManager_GetHeapID
 .public sub_0205F1A0
 .public FldObjSys_SetMModelNarc
 .public FldObjSys_GetMModelNarc

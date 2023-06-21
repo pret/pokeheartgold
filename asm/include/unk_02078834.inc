@@ -15,7 +15,7 @@
 .public TaskManager_Call
 .public FieldSys_ApplicationIsRunning
 .public CallApplicationAsTask
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public sub_020514A4
 .public SetFlag970

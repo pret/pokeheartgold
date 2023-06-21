@@ -179,7 +179,7 @@ static struct AlphItemUseData *CreateAlphItemUseWork(int scriptNo, u16 var_8000,
 
 static void ExitMenuAndJumpToAlphChamberReaction(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2, int scriptNo) {
 #pragma unused(dat2)
-    FieldSystem *fsys = TaskManager_GetSys(data->taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     sub_020505C0(fsys);
     env->atexit_TaskFunc = Task_UseItemInAlphChamber;
@@ -188,7 +188,7 @@ static void ExitMenuAndJumpToAlphChamberReaction(struct ItemMenuUseData *data, c
 }
 
 static BOOL Task_UseItemInAlphChamber(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     struct AlphItemUseData *env = TaskManager_GetEnv(taskManager);
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
     LocalMapObject *sp0;
@@ -213,7 +213,7 @@ static BOOL Task_UseItemInAlphChamber(TaskManager *taskManager) {
 
 static void ItemMenuUseFunc_HealingItem(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
 #pragma unused(dat2)
-    FieldSystem *fsys = TaskManager_GetSys(data->taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     struct UseItemInPartyTaskEnv *usedat = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct UseItemInPartyTaskEnv));
     memset(usedat, 0, sizeof(struct UseItemInPartyTaskEnv));
@@ -240,7 +240,7 @@ static enum ItemUseError ItemCheckUseFunc_Dummy(const struct ItemCheckUseData *d
 
 static void ItemMenuUseFunc_Bicycle(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
 #pragma unused(dat2)
-    FieldSystem *fsys = TaskManager_GetSys(data->taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     sub_020505C0(fsys);
     env->atexit_TaskFunc = Task_MountOrDismountBicycle;
@@ -255,7 +255,7 @@ static BOOL ItemFieldUseFunc_Bicycle(struct ItemFieldUseData *data) {
 }
 
 static BOOL Task_MountOrDismountBicycle(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
     int r6;
 
@@ -305,7 +305,7 @@ static BOOL Task_MountOrDismountBicycle(TaskManager *taskManager) {
         (*state_p)++;
         break;
     case 2:
-        MapObjectMan_UnpauseAllMovement(fsys->mapObjectMan);
+        MapObjectManager_UnpauseAllMovement(fsys->mapObjectMan);
         return TRUE;
     }
 
@@ -336,7 +336,7 @@ static enum ItemUseError ItemCheckUseFunc_Bicycle(const struct ItemCheckUseData 
 
 static void ItemMenuUseFunc_TMHM(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
 #pragma unused(dat2)
-    FieldSystem *fsys = TaskManager_GetSys(data->taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     struct UseItemInPartyTaskEnv *usedat = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct UseItemInPartyTaskEnv));
     memset(usedat, 0, sizeof(struct UseItemInPartyTaskEnv));
@@ -359,7 +359,7 @@ static void ItemMenuUseFunc_TMHM(struct ItemMenuUseData *data, const struct Item
 
 static void ItemMenuUseFunc_Mail(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
 #pragma unused(dat2)
-    FieldSystem *fsys = TaskManager_GetSys(data->taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     struct UseMailWork *mailWork = CreateUseMailWork(fsys, 3, ItemToMailId(data->itemId), HEAP_ID_FIELD);
     env->unk_0384 = sub_0203D818(data->itemId, 3, 0);
@@ -372,7 +372,7 @@ static enum ItemUseError ItemCheckUseFunc_Berry(const struct ItemCheckUseData *d
 }
 
 static void ItemMenuUseFunc_Berry(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
-    FieldSystem *fsys = TaskManager_GetSys(data->taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     ItemMenuUseFunc_HealingItem(data, dat2);
 }
@@ -383,7 +383,7 @@ BOOL Leftover_CanPlantBerry(const struct ItemCheckUseData *data) {
 }
 
 static void ItemMenuUseFunc_PalPad(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
-    FieldSystem *fsys = TaskManager_GetSys(data->taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     env->atexit_TaskEnv = CreatePalPadWork(fsys, fsys->savedata, HEAP_ID_FIELD);
     sub_0203C8F0(env, sub_0203D718);
@@ -401,7 +401,7 @@ static struct PalPadWork *_CreatePalPadWork(FieldSystem *fsys) {
 static void ItemMenuUseFunc_Honey(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
     size_t size;
     void *honey_work;
-    FieldSystem *fsys = TaskManager_GetSys(data->taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     sub_020505C0(fsys);
     size = GetHoneySweetScentWorkSize();
@@ -414,7 +414,7 @@ static void ItemMenuUseFunc_Honey(struct ItemMenuUseData *data, const struct Ite
 }
 
 static void ItemMenuUseFunc_OldRod(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
-    FieldSystem *fsys = TaskManager_GetSys(data->taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     sub_020505C0(fsys);
     env->atexit_TaskFunc = Task_OverworldFish;
@@ -428,7 +428,7 @@ static BOOL ItemFieldUseFunc_OldRod(struct ItemFieldUseData *data) {
 }
 
 static void ItemMenuUseFunc_GoodRod(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
-    FieldSystem *fsys = TaskManager_GetSys(data->taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     sub_020505C0(fsys);
     env->atexit_TaskFunc = Task_OverworldFish;
@@ -442,7 +442,7 @@ static BOOL ItemFieldUseFunc_GoodRod(struct ItemFieldUseData *data) {
 }
 
 static void ItemMenuUseFunc_SuperRod(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
-    FieldSystem *fsys = TaskManager_GetSys(data->taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     sub_020505C0(fsys);
     env->atexit_TaskFunc = Task_OverworldFish;
@@ -483,14 +483,14 @@ static BOOL ItemFieldUseFunc_Generic(struct ItemFieldUseData *data) {
 }
 
 static BOOL Task_PrintRegisteredKeyItemUseMessage(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     struct RegisteredKeyItemUseMessagePrintTaskData *env = TaskManager_GetEnv(taskManager);
     OPTIONS *options;
 
     switch (env->state) {
     case 0:
         fsys->unkD2_6 = TRUE;
-        MapObjectMan_PauseAllMovement(fsys->mapObjectMan);
+        MapObjectManager_PauseAllMovement(fsys->mapObjectMan);
         sub_0205B514(fsys->bgConfig, &env->window, 3);
         options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
         sub_0205B564(&env->window, options);
@@ -507,7 +507,7 @@ static BOOL Task_PrintRegisteredKeyItemUseMessage(TaskManager *taskManager) {
         }
         break;
     case 2:
-        MapObjectMan_UnpauseAllMovement(fsys->mapObjectMan);
+        MapObjectManager_UnpauseAllMovement(fsys->mapObjectMan);
         RemoveWindow(&env->window);
         String_Delete(env->strbuf);
         FreeToHeap(env);
@@ -522,7 +522,7 @@ static void ItemMenuUseFunc_EvoStone(struct ItemMenuUseData *data, const struct 
     struct BagViewAppWork *env;
     struct UseItemInPartyTaskEnv *usedat;
 
-    fsys = TaskManager_GetSys(data->taskManager);
+    fsys = TaskManager_GetFieldSystem(data->taskManager);
     if (data->itemId == ITEM_WATER_STONE && CheckUseWaterStoneInAlphChamber(fsys)) {
         ExitMenuAndJumpToAlphChamberReaction(data, dat2, _EV_scr_seq_D24R0206_002 + 1);
         return;
@@ -556,7 +556,7 @@ static void ItemMenuUseFunc_EscapeRope(struct ItemMenuUseData *data, const struc
         return;
     }
 
-    fsys = TaskManager_GetSys(data->taskManager);
+    fsys = TaskManager_GetFieldSystem(data->taskManager);
     env = TaskManager_GetEnv(data->taskManager);
     sub_020505C0(fsys);
     env->atexit_TaskFunc = Task_JumpToFieldEscapeRope;
@@ -582,12 +582,12 @@ static enum ItemUseError ItemCheckUseFunc_EscapeRope(const struct ItemCheckUseDa
 }
 
 static BOOL Task_JumpToFieldEscapeRope(TaskManager *taskManager) {
-    TaskManager_Jump(taskManager, Task_FieldEscapeRope, CreateFieldEscapeRopeTaskEnv(TaskManager_GetSys(taskManager), HEAP_ID_FIELD));
+    TaskManager_Jump(taskManager, Task_FieldEscapeRope, CreateFieldEscapeRopeTaskEnv(TaskManager_GetFieldSystem(taskManager), HEAP_ID_FIELD));
     return FALSE;
 }
 
 static void ItemMenuUseFunc_ApricornBox(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
-    FieldSystem *fsys = TaskManager_GetSys(data->taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     env->atexit_TaskEnv = CreateApricornBoxWork(fsys, 1);
     sub_0203C8F0(env, sub_0203D718);
@@ -603,7 +603,7 @@ static struct ApricornBoxWork *_CreateApricornBoxWork(FieldSystem *fsys) {
 }
 
 static void ItemMenuUseFunc_BerryPots(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
-    FieldSystem *fsys = TaskManager_GetSys(data->taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     env->atexit_TaskEnv = CreateBerryPotsWork(fsys);
     sub_0203C8F0(env, sub_0203D718);
@@ -619,7 +619,7 @@ static struct BerryPotsWork *_CreateBerryPotsWork(FieldSystem *fsys) {
 }
 
 static void ItemMenuUseFunc_UnownReport(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
-    FieldSystem *fsys = TaskManager_GetSys(data->taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     env->atexit_TaskEnv = CreateUnownReportWork(fsys);
     sub_0203C8F0(env, sub_0203D718);
@@ -635,7 +635,7 @@ static struct UnownReportWork *_CreateUnownReportWork(FieldSystem *fsys) {
 }
 
 static void ItemMenuUseFunc_DowsingMchn(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
-    FieldSystem *fsys = TaskManager_GetSys(data->taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     sub_020505C0(fsys);
     env->atexit_TaskFunc = Task_ActivateDowsingMchnUI;
@@ -649,7 +649,7 @@ static BOOL ItemFieldUseFunc_DowsingMchn(struct ItemFieldUseData *data) {
 }
 
 static BOOL Task_ActivateDowsingMchnUI(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
 
     switch (*state_p) {
@@ -660,7 +660,7 @@ static BOOL Task_ActivateDowsingMchnUI(TaskManager *taskManager) {
         break;
     case 1:
         if (ov01_021F6B10(fsys) == TRUE) {
-            MapObjectMan_UnpauseAllMovement(fsys->mapObjectMan);
+            MapObjectManager_UnpauseAllMovement(fsys->mapObjectMan);
             return TRUE;
         }
         break;
@@ -685,7 +685,7 @@ static BOOL ItemFieldUseFunc_GbSounds(struct ItemFieldUseData *data) {
 }
 
 static void ItemMenuUseFunc_Gracidea(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
-    FieldSystem *fsys = TaskManager_GetSys(data->taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     env->atexit_TaskEnv = sub_0203FAE8(fsys, HEAP_ID_FIELD, ITEM_GRACIDEA);
     sub_0203C8F0(env, sub_0203CA9C);
@@ -701,7 +701,7 @@ static struct GracideaWork *_CreateGracideaWork(FieldSystem *fsys) {
 }
 
 static void ItemMenuUseFunc_VSRecorder(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
-    FieldSystem *fsys = TaskManager_GetSys(data->taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     sub_0203F570(fsys, fsys->savedata);
     env->atexit_TaskEnv = NULL;
@@ -811,12 +811,12 @@ static void RegisteredItem_GoToPrintErrorTask(struct ItemFieldUseData *data, enu
 }
 
 static BOOL Task_RegisteredItem_GoToApp(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     struct ItemFieldUseData *env = TaskManager_GetEnv(taskManager);
 
     switch (env->state) {
     case 0:
-        MapObjectMan_PauseAllMovement(fsys->mapObjectMan);
+        MapObjectManager_PauseAllMovement(fsys->mapObjectMan);
         ov01_021E636C(0);
         env->state = 1;
         break;
@@ -844,14 +844,14 @@ static BOOL Task_RegisteredItem_GoToApp(TaskManager *taskManager) {
         break;
     case 4:
         if (sub_020505C8(fsys)) {
-            MapObjectMan_PauseAllMovement(fsys->mapObjectMan);
+            MapObjectManager_PauseAllMovement(fsys->mapObjectMan);
             ov01_021E636C(1);
             env->state = 5;
         }
         break;
     case 5:
         if (IsPaletteFadeFinished()) {
-            MapObjectMan_UnpauseAllMovement(fsys->mapObjectMan);
+            MapObjectManager_UnpauseAllMovement(fsys->mapObjectMan);
             FreeToHeap(env);
             return TRUE;
         }

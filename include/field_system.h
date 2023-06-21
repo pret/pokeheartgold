@@ -17,7 +17,7 @@ typedef struct FsysUnkSub2C FsysUnkSub2C;
 typedef struct LocalMapObject LocalMapObject;
 typedef struct FieldMapObject FieldMapObject;
 typedef struct PlayerAvatar PlayerAvatar;
-typedef struct MapObjectMan MapObjectMan;
+typedef struct MapObjectManager MapObjectManager;
 
 typedef struct FollowMon {
     LocalMapObject *mapObject;
@@ -114,7 +114,7 @@ struct FieldSystem {
     BGCONFIG *bgConfig;
     SaveData *savedata;
     TaskManager *taskman;
-    MAP_EVENTS *mapEvents;
+    MapEvents *mapEvents;
     u32 unk18;
     int unk1C;
     Location *location;
@@ -123,7 +123,7 @@ struct FieldSystem {
     FsysUnkSub2C *unk2C;
     MAPMATRIX *mapMatrix;
     u8 filler34[0x8];
-    MapObjectMan *mapObjectMan;
+    MapObjectManager *mapObjectMan;
     PlayerAvatar *playerAvatar;
     void *unk_44;
     u8 filler48[0xC];
@@ -198,7 +198,7 @@ void sub_0203E30C();
 int sub_0203E324();
 void sub_0203E33C(FieldSystem *fsys, int a1);
 BGCONFIG *FieldSys_GetBgConfigPtr(FieldSystem *fsys);
-SaveData *FieldSys_GetSaveDataPtr(FieldSystem *fsys);
+SaveData *FieldSystem_GetSaveDataPtr(FieldSystem *fsys);
 void sub_0203E348();
 void sub_0203E354();
 

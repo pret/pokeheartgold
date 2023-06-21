@@ -14,7 +14,7 @@ sub_020961D8: ; 0x020961D8
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	add r6, r1, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	mov r0, #0x20
 	mov r1, #0x24

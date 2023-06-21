@@ -25,7 +25,7 @@
 .public LocalFieldData_GetDynamicWarp
 .public LocalFieldData_SetDynamicWarp
 .public Save_LocalFieldData_Get
-.public FieldSys_GetSaveDataPtr
+.public FieldSystem_GetSaveDataPtr
 .public sub_0203EDDC
 .public ScriptReadHalfword
 .public GetVarPointer
@@ -34,7 +34,7 @@
 .public FieldSys_CreateTask
 .public TaskManager_Call
 .public FieldSys_ApplicationIsRunning
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public TaskManager_GetStatePtr
 .public sub_020537A8
@@ -49,8 +49,8 @@
 .public sub_0205CAD0
 .public sub_0205CB14
 .public sub_0205CB2C
-.public MapObjectMan_GetCount
-.public MapObjectMan_GetObjects
+.public MapObjectManager_GetCount
+.public MapObjectManager_GetObjects
 .public sub_0205F1D0
 .public MapObject_ClearFlagsBits
 .public MapObject_GetFlagsMask

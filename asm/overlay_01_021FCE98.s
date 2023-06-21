@@ -18,7 +18,7 @@
 Task_UseSweetScentInField: ; 0x021FCE98
 	push {r3, r4, r5, r6, r7, lr}
 	str r0, [sp]
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	ldr r0, [sp]
 	bl TaskManager_GetEnv

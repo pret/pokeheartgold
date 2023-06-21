@@ -163,7 +163,7 @@
 .public sub_02037EC0
 .public sub_020398D4
 .public MapHeader_GetMapSec
-.public FieldSys_GetSaveDataPtr
+.public FieldSystem_GetSaveDataPtr
 .public sub_0203E3D4
 .public sub_0203EB08
 .public SetupNativeScript
@@ -175,7 +175,7 @@
 .public SaveArray_Flags_Get
 .public TaskManager_Jump
 .public TaskManager_Call
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public sub_020580E4
 .public sub_02058124

@@ -123,7 +123,7 @@ u8 sub_0205C350(u32 unkA) {
     return ret;
 }
 
-PlayerAvatar* sub_0205C390(MapObjectMan *man, int x, int y, int direction, int state, int gender, int a6, struct PlayerSaveData *playerSaveData) {
+PlayerAvatar* sub_0205C390(MapObjectManager *man, int x, int y, int direction, int state, int gender, int a6, struct PlayerSaveData *playerSaveData) {
     PlayerAvatar* avatar = sub_0205C4E0();
     sub_0205C500(avatar, state, gender, playerSaveData);
     int sprite;
@@ -154,7 +154,7 @@ PlayerAvatar* sub_0205C390(MapObjectMan *man, int x, int y, int direction, int s
     return avatar;
 }
 
-PlayerAvatar* sub_0205C408(MapObjectMan* man, PlayerSaveData* playerSaveData, int gender) {
+PlayerAvatar* sub_0205C408(MapObjectManager* man, PlayerSaveData* playerSaveData, int gender) {
     PlayerAvatar* avatar = sub_0205C4E0();
     int state = sub_0205C7EC(playerSaveData);
     sub_0205C500(avatar, state, gender, playerSaveData);
@@ -214,7 +214,7 @@ void sub_0205C500(PlayerAvatar* avatar, int state, u32 gender, PlayerSaveData* p
     sub_0205CA4C(avatar, TRUE);
 }
 
-void CreatePlayerAvatarMapObject(PlayerAvatar* avatar, MapObjectMan* man, u32 sprite, u32 direction, u32 x, u32 y) {
+void CreatePlayerAvatarMapObject(PlayerAvatar* avatar, MapObjectManager* man, u32 sprite, u32 direction, u32 x, u32 y) {
     LocalMapObject* mapObj = CreateSpecialFieldObject(man, x, y, direction, sprite, 1, 1);
     if (!mapObj) {
         GF_ASSERT(FALSE);
@@ -234,7 +234,7 @@ void CreatePlayerAvatarMapObject(PlayerAvatar* avatar, MapObjectMan* man, u32 sp
     sub_0205C6D8(avatar, mapObj);
 }
 
-LocalMapObject* sub_0205C600(MapObjectMan* man) {
+LocalMapObject* sub_0205C600(MapObjectManager* man) {
     int y = 0;
     LocalMapObject* mapObj = 0;
     while (sub_0205EEF4(man, &mapObj, &y, MAPOBJECTFLAG_ACTIVE)) {
@@ -245,7 +245,7 @@ LocalMapObject* sub_0205C600(MapObjectMan* man) {
     return mapObj;
 }
 
-LocalMapObject* sub_0205C640(MapObjectMan* man) {
+LocalMapObject* sub_0205C640(MapObjectManager* man) {
     LocalMapObject* mapObj = sub_0205C600(man);
     if (!mapObj) {
         GF_ASSERT(FALSE);

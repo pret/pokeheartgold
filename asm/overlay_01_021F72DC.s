@@ -329,7 +329,7 @@ _021F7522:
 _021F7524:
 	add r0, r5, #0
 	bl MapObject_GetManager
-	bl MapObjectMan_GetFieldSysPtr
+	bl MapObjectManager_GetFieldSysPtr
 	str r0, [sp, #0x10]
 	ldr r0, [r0, #0xc]
 	bl SaveArray_PlayerParty_Get

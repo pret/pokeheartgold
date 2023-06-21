@@ -12,7 +12,7 @@ typedef struct BG_EVENT {
     u16 dir;
 } BG_EVENT;
 
-typedef struct OBJECT_EVENT {
+typedef struct ObjectEvent {
     u16 id;
     u16 ovid;
     u16 mvt;
@@ -28,7 +28,7 @@ typedef struct OBJECT_EVENT {
     u16 x;
     u16 y;
     s32 z;
-} OBJECT_EVENT;
+} ObjectEvent;
 
 typedef struct WARP_EVENT {
     u16 x;
@@ -49,18 +49,18 @@ typedef struct COORD_EVENT {
     u16 var;
 } COORD_EVENT;
 
-typedef struct MAP_EVENTS {
+typedef struct MapEvents {
     u32 num_bg_events;
     u32 num_object_events;
     u32 num_warp_events;
     u32 num_coord_events;
     BG_EVENT *bg_events;
-    OBJECT_EVENT *object_events;
+    ObjectEvent *object_events;
     WARP_EVENT *warp_events;
     COORD_EVENT *coord_events;
     u8 event_data[0x800];
     u8 script_header[0x100];
     ENC_DATA wildEncounters;
-} MAP_EVENTS;
+} MapEvents;
 
 #endif //POKEHEARTGOLD_MAP_EVENTS_INTERNAL_H

@@ -62,7 +62,7 @@
 .public LocalFieldData_GetWeatherType
 .public LocalFieldData_GetCameraType
 .public Save_LocalFieldData_Get
-.public FieldSys_GetSaveDataPtr
+.public FieldSystem_GetSaveDataPtr
 .public sub_0203E348
 .public TryStartMapScriptByType
 .public SaveArray_Flags_Get
@@ -86,7 +86,7 @@
 .public sub_0205E4C8
 .public sub_0205E520
 .public sub_0205E580
-.public MapObjectMan_ClearFlagsBits
+.public MapObjectManager_ClearFlagsBits
 .public sub_0205F1A0
 .public sub_0205F55C
 .public sub_0205F568

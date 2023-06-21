@@ -10,7 +10,7 @@
 .public FieldSysGetAttrAddr
 .public VarGet
 .public TaskManager_Call
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public sub_02050B90
 .public PlayerAvatar_GetCoordsInFront

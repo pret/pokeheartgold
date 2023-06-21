@@ -43,7 +43,7 @@ _021FC680:
 Task_OverworldFish: ; 0x021FC698
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r0, r6, #0
 	bl TaskManager_GetEnv
@@ -56,7 +56,7 @@ Task_OverworldFish: ; 0x021FC698
 	b _021FC742
 _021FC6B6:
 	ldr r0, [r4, #0x3c]
-	bl MapObjectMan_PauseAllMovement
+	bl MapObjectManager_PauseAllMovement
 	mov r0, #0
 	str r0, [r5, #0x10]
 	add r2, r5, #0
@@ -108,7 +108,7 @@ _021FC728:
 	bl BattleSetup_Delete
 _021FC732:
 	ldr r0, [r4, #0x3c]
-	bl MapObjectMan_UnpauseAllMovement
+	bl MapObjectManager_UnpauseAllMovement
 	add r0, r5, #0
 	bl FreeToHeap
 	mov r0, #1

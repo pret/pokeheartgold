@@ -27,13 +27,13 @@
 .public GameStats_GetStat2
 .public sub_0203107C
 .public sub_020310BC
-.public FieldSys_GetSaveDataPtr
+.public FieldSystem_GetSaveDataPtr
 .public sub_0203F7B0
 .public SaveArray_Flags_Get
 .public CheckFlagInArray
 .public TaskManager_Call
 .public FieldSys_ApplicationIsRunning
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public sub_02055624
 .public FieldSys_GetGameClearTime

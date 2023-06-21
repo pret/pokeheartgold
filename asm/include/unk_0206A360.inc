@@ -20,7 +20,7 @@
 .public GF_AssertFail
 .public FieldSys_GetBgConfigPtr
 .public TaskManager_Call
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply

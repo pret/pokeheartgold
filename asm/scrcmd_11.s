@@ -1414,7 +1414,7 @@ MGGive_MemorialPhoto: ; 0x0204C798
 	bl FieldSys_GetDataOfNextMG
 	add r5, r0, #0
 	add r0, r4, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	bl Save_PhotoAlbum_Get
 	add r4, r0, #0
 	bl PhotoAlbum_GetIndexOfFirstEmptySlot

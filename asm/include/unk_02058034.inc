@@ -40,7 +40,7 @@
 .public sub_0203993C
 .public sub_02039980
 .public sub_020399FC
-.public FieldSys_GetSaveDataPtr
+.public FieldSystem_GetSaveDataPtr
 .public StartMapSceneScript
 .public sub_02051598
 .public sub_020515FC

@@ -49,7 +49,7 @@ void NewFieldFadeEnvironment(TaskManager *man, int pattern, int typeTop, int typ
 }
 
 BOOL RoutineFieldFade(TaskManager *man) {
-    FieldSystem *fsys = TaskManager_GetSys(man);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(man);
     FieldFadeEnvironment *fenv = TaskManager_GetEnv(man);
     switch (fenv->state) {
     case 0:
@@ -134,7 +134,7 @@ void sub_02055CD8(FieldSystem *fsys, int mapID, int warpID, int x, int y, int di
 
 //this function handles transition routines between maps
 BOOL sub_02055DBC(TaskManager *man) {
-    FieldSystem *fsys = TaskManager_GetSys(man);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *env = TaskManager_GetEnv(man);
     switch (env->state) {
     case 0:
@@ -231,7 +231,7 @@ BOOL sub_02055DBC(TaskManager *man) {
 }
 
 BOOL sub_02056004(TaskManager *man) {
-    FieldSystem *fsys = TaskManager_GetSys(man);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnv(man);
     switch (fenv->transitionState) {
     case 0:
@@ -246,7 +246,7 @@ BOOL sub_02056004(TaskManager *man) {
 }
 
 BOOL sub_02056040(TaskManager *man) {
-    FieldSystem *fsys = TaskManager_GetSys(man);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnv(man);
     switch (fenv->transitionState) {
     case 0:
@@ -271,7 +271,7 @@ BOOL sub_02056040(TaskManager *man) {
 }
 
 BOOL sub_020560C4(TaskManager *man) {
-    FieldSystem *fsys = TaskManager_GetSys(man);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnv(man);
     switch (fenv->transitionState) {
     case 0:
@@ -293,7 +293,7 @@ BOOL sub_020560C4(TaskManager *man) {
 }
 
 BOOL sub_0205613C(TaskManager *man) {
-    FieldSystem *fsys = TaskManager_GetSys(man);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnv(man);
     LocalMapObject *obj;
     switch (fenv->transitionState) {
@@ -340,7 +340,7 @@ BOOL sub_0205613C(TaskManager *man) {
 }
 
 BOOL sub_02056220(TaskManager *man) {
-    FieldSystem *fsys = TaskManager_GetSys(man);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnv(man);
     PlayerAvatar_GetMapObject(fsys->playerAvatar);
     switch (fenv->transitionState) {
@@ -355,7 +355,7 @@ BOOL sub_02056220(TaskManager *man) {
 }
 
 BOOL sub_02056268(TaskManager *man) {
-    FieldSystem *fsys = TaskManager_GetSys(man);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnv(man);
     PlayerAvatar_GetMapObject(fsys->playerAvatar);
     switch (fenv->transitionState) {
@@ -370,7 +370,7 @@ BOOL sub_02056268(TaskManager *man) {
 }
 
 BOOL sub_020562B0(TaskManager *man) {
-    FieldSystem *fsys = TaskManager_GetSys(man);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnv(man);
     LocalMapObject *obj;
     FieldEnvSubUnk18 *fenv18;
@@ -448,7 +448,7 @@ BOOL sub_020562B0(TaskManager *man) {
 }
 
 BOOL sub_02056424(TaskManager *man) {
-    FieldSystem *fsys = TaskManager_GetSys(man);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnv(man);
     LocalMapObject *obj;
     FieldEnvSubUnk18 *fenv18;
@@ -501,7 +501,7 @@ BOOL sub_02056424(TaskManager *man) {
 }
 
 BOOL sub_02056530(TaskManager *man) {
-    FieldSystem *fsys = TaskManager_GetSys(man);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnv(man);
     LocalMapObject *obj;
     switch (fenv->transitionState) {
@@ -535,7 +535,7 @@ BOOL sub_02056530(TaskManager *man) {
 }
 
 BOOL sub_020565FC(TaskManager *man) {
-    FieldSystem *fsys = TaskManager_GetSys(man);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnv(man);
     switch (fenv->transitionState) {
     case 0:

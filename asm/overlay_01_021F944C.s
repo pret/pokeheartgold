@@ -493,7 +493,7 @@ ov01_021F97BC: ; 0x021F97BC
 	add r7, r0, #0
 	add r5, r1, #0
 	add r6, r2, #0
-	bl MapObjectMan_GetCount
+	bl MapObjectManager_GetCount
 	add r4, r0, #0
 	add r0, r7, #0
 	bl sub_0205F1AC
@@ -2934,7 +2934,7 @@ _021FA882:
 	str r4, [r5, r0]
 	add r0, r0, #4
 	ldr r0, [r5, r0]
-	bl MapObjectMan_GetHeapID
+	bl MapObjectManager_GetHeapID
 	add r6, r0, #0
 	ldr r0, _021FA8E8 ; =ov01_021FA564
 	add r1, r5, #0
@@ -3245,7 +3245,7 @@ _021FAB4A:
 	mov r0, #0x41
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	bl MapObjectMan_GetHeapID
+	bl MapObjectManager_GetHeapID
 	ldr r0, _021FAB98 ; =ov01_021FAB9C
 	add r1, r5, #0
 	mov r2, #0xff

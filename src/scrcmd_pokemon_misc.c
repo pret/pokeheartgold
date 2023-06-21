@@ -85,7 +85,7 @@ static void ov01_02201088(struct ListMenu *listMenu, s32 unused1, u8 unused2);
 static void ov01_022010CC(SysTask *sysTask, void *work);
 static void ov01_0220116C(SCR_648_STRUCT *unkPtr);
 static void GetHiddenPowerPowerType(Pokemon *mon, s32 *power, s32 *type);
-static LocalMapObject *ov01_02201F98(MapObjectMan *mapObjectMan, u8 unkA, u16 species, u16 forme, u32 gender, u32 x, u32 y, u32 mapId);
+static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectMan, u8 unkA, u16 species, u16 forme, u32 gender, u32 x, u32 y, u32 mapId);
 
 extern u16 ov01_02209AE0[10];
 
@@ -605,7 +605,7 @@ BOOL ScrCmd_GetPartyMonForme(ScriptContext *ctx) {
 BOOL ScrCmd_699(ScriptContext *ctx) {
     u32 unkVar;
     FieldSystem *fsys;
-    MapObjectMan *mapObjectMan;
+    MapObjectManager *mapObjectMan;
     LocalMapObject *playerObj;
     LocalMapObject *curObj;
     Sprite *sprite;
@@ -643,7 +643,7 @@ BOOL ScrCmd_699(ScriptContext *ctx) {
 BOOL ScrCmd_700(ScriptContext *ctx) {
     u32 index = 0;
     FieldSystem *fsys;
-    MapObjectMan *mapObjectMan;
+    MapObjectManager *mapObjectMan;
     LocalMapObject *playerObj;
     LocalMapObject *curObj;
 
@@ -943,7 +943,7 @@ BOOL ScrCmd_CreatePokeathlonFriendshipRoomStatues(ScriptContext *ctx) {
     return TRUE;
 }
 
-static LocalMapObject *ov01_02201F98(MapObjectMan *mapObjectMan, u8 unkA, u16 species, u16 forme, u32 gender, u32 x, u32 y, u32 mapId) {
+static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectMan, u8 unkA, u16 species, u16 forme, u32 gender, u32 x, u32 y, u32 mapId) {
     LocalMapObject *mapObj;
     u32 spriteId;
     u32  size;

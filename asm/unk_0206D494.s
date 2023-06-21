@@ -51,7 +51,7 @@ _0206D4E0: .word 0x00000905
 sub_0206D4E4: ; 0x0206D4E4
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetEnv
@@ -202,10 +202,10 @@ sub_0206D614: ; 0x0206D614
 	add r6, r1, #0
 	add r7, r2, #0
 	str r3, [sp]
-	bl MapObjectMan_GetObjects
+	bl MapObjectManager_GetObjects
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl MapObjectMan_GetCount
+	bl MapObjectManager_GetCount
 	add r5, r0, #0
 _0206D62E:
 	ldr r0, [sp, #4]
@@ -925,7 +925,7 @@ _0206DBBC: .word sub_0206DBC0
 sub_0206DBC0: ; 0x0206DBC0
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r7, r0, #0
 	add r0, r6, #0
 	bl TaskManager_GetEnv
@@ -1055,7 +1055,7 @@ _0206DCC0: .word 0x00004021
 	thumb_func_start Fsys_InitMystriStageGymmick
 Fsys_InitMystriStageGymmick: ; 0x0206DCC4
 	push {r4, lr}
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	bl Save_GetGymmickPtr
 	add r4, r0, #0
 	mov r1, #9

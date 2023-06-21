@@ -29,7 +29,7 @@
 .public sub_0205BA6C
 .public sub_0205BA70
 .public sub_0205BA94
-.public MapObjectMan_GetCount
+.public MapObjectManager_GetCount
 .public sub_0205F1AC
 .public sub_0205F1C4
 .public MapObject_GetFlagsWord

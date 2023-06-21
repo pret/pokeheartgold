@@ -3,13 +3,13 @@
 #include "encounter_tables_narc.h"
 #include "field_map_object.h"
 
-static void MapEvents_ReadFromNarc(MAP_EVENTS *events, u32 mapno);
-static void MapEvents_ComputeRamHeader(MAP_EVENTS *events);
-static void MapScriptHeader_ReadFromNarc(MAP_EVENTS *events, u32 mapno);
+static void MapEvents_ReadFromNarc(MapEvents *events, u32 mapno);
+static void MapEvents_ComputeRamHeader(MapEvents *events);
+static void MapScriptHeader_ReadFromNarc(MapEvents *events, u32 mapno);
 
 void Field_AllocateMapEvents(FieldSystem *work, HeapID heapId) {
     GF_ASSERT(work->mapEvents == NULL);
-    work->mapEvents = AllocFromHeap(heapId, sizeof(MAP_EVENTS));
+    work->mapEvents = AllocFromHeap(heapId, sizeof(MapEvents));
 }
 
 void Field_FreeMapEvents(FieldSystem *work) {
@@ -25,7 +25,7 @@ void Field_InitMapEvents(FieldSystem *work, u32 mapno) {
     MapScriptHeader_ReadFromNarc(work->mapEvents, mapno);
 }
 
-static void MapEvents_ReadFromNarc(MAP_EVENTS *events, u32 mapno) {
+static void MapEvents_ReadFromNarc(MapEvents *events, u32 mapno) {
     int bank = MapHeader_GetEventsBank(mapno);
     GF_ASSERT(GetNarcMemberSizeByIdPair(NARC_fielddata_eventdata_zone_event, bank) < sizeof(events->event_data));
     ReadWholeNarcMemberByIdPair(events->event_data, NARC_fielddata_eventdata_zone_event, bank);
@@ -48,7 +48,7 @@ u32 Field_GetNumBgEvents(const FieldSystem *fsys) {
 }
 
 const WARP_EVENT *Field_GetWarpEventI(const FieldSystem *fsys, u32 warpno) {
-    MAP_EVENTS *events = fsys->mapEvents;
+    MapEvents *events = fsys->mapEvents;
     if (warpno >= fsys->mapEvents->num_warp_events) {
         return NULL;
     } else {
@@ -80,13 +80,13 @@ u32 Field_GetNumObjectEvents(const FieldSystem *fsys) {
     return fsys->mapEvents->num_object_events;
 }
 
-const OBJECT_EVENT *Field_GetObjectEvents(const FieldSystem *fsys) {
+const ObjectEvent *Field_GetObjectEvents(const FieldSystem *fsys) {
     return fsys->mapEvents->object_events;
 }
 
 BOOL Field_SetObjectEventXYPos(FieldSystem *fsys, int id, u16 x, u16 y) {
     int i;
-    OBJECT_EVENT *objs = fsys->mapEvents->object_events;
+    ObjectEvent *objs = fsys->mapEvents->object_events;
     u32 num_objs = fsys->mapEvents->num_object_events;
 
     for (i = 0; i < num_objs; i++) {
@@ -103,7 +103,7 @@ BOOL Field_SetObjectEventXYPos(FieldSystem *fsys, int id, u16 x, u16 y) {
 
 BOOL Field_SetObjectEventFacing(FieldSystem *fsys, int id, u16 dirn) {
     int i;
-    OBJECT_EVENT *objs = fsys->mapEvents->object_events;
+    ObjectEvent *objs = fsys->mapEvents->object_events;
     u32 num_objs = fsys->mapEvents->num_object_events;
 
     for (i = 0; i < num_objs; i++) {
@@ -119,7 +119,7 @@ BOOL Field_SetObjectEventFacing(FieldSystem *fsys, int id, u16 dirn) {
 
 BOOL Field_SetObjectEventMovement(FieldSystem *fsys, int id, u16 mvt) {
     int i;
-    OBJECT_EVENT *objs = fsys->mapEvents->object_events;
+    ObjectEvent *objs = fsys->mapEvents->object_events;
     u32 num_objs = fsys->mapEvents->num_object_events;
 
     for (i = 0; i < num_objs; i++) {
@@ -147,7 +147,7 @@ BOOL Field_SetBgEventXYPos(FieldSystem *fsys, int bgno, u32 x, u32 y) {
     return TRUE;
 }
 
-static void MapEvents_ComputeRamHeader(MAP_EVENTS *events) {
+static void MapEvents_ComputeRamHeader(MapEvents *events) {
     u8 *ptr = events->event_data;
 
     events->num_bg_events = *(u32 *)ptr;
@@ -162,11 +162,11 @@ static void MapEvents_ComputeRamHeader(MAP_EVENTS *events) {
     events->num_object_events = *(u32 *)ptr;
     ptr += sizeof(u32);
     if (events->num_object_events != 0) {
-        events->object_events = (OBJECT_EVENT *)ptr;
+        events->object_events = (ObjectEvent *)ptr;
     } else {
         events->object_events = NULL;
     }
-    ptr += events->num_object_events * sizeof(OBJECT_EVENT);
+    ptr += events->num_object_events * sizeof(ObjectEvent);
 
     events->num_warp_events = *(u32 *)ptr;
     ptr += sizeof(u32);
@@ -198,7 +198,7 @@ ENC_DATA *MapEvents_GetLoadedEncTable(FieldSystem *fsys) {
     return &fsys->mapEvents->wildEncounters;
 }
 
-static void MapScriptHeader_ReadFromNarc(MAP_EVENTS *events, u32 mapno) {
+static void MapScriptHeader_ReadFromNarc(MapEvents *events, u32 mapno) {
     int bank = MapHeader_GetScriptHeaderBank(mapno);
     MI_CpuClearFast(events->script_header, sizeof(events->script_header));
     GF_ASSERT(GetNarcMemberSizeByIdPair(NARC_fielddata_script_scr_seq, bank) < sizeof(events->script_header));

@@ -77,14 +77,14 @@ void FieldSys_SetEngagedTrainer(FieldSystem *fsys, LocalMapObject *obj, int a2, 
 }
 
 void QueueScript(TaskManager *taskman, u16 script, LocalMapObject *lastInteracted, void *a3) {
-    FieldSystem *fsys = TaskManager_GetSys(taskman);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskman);
     ScriptEnvironment *env = ScriptEnvironment_New();
     SetupScriptEngine(fsys, env, script, lastInteracted, a3);
     TaskManager_Call(taskman, Task_RunScripts, env);
 }
 
 void StartScriptFromMenu(TaskManager *taskman, u16 script, LocalMapObject *lastInteracted) {
-    FieldSystem *fsys = TaskManager_GetSys(taskman);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskman);
     ScriptEnvironment *env = ScriptEnvironment_New();
     SetupScriptEngine(fsys, env, script, lastInteracted, NULL);
     TaskManager_Jump(taskman, Task_RunScripts, env);
@@ -96,7 +96,7 @@ BOOL Task_RunScripts(TaskManager *taskman) {
     ScriptEnvironment *env;
 
     env = TaskManager_GetEnv(taskman);
-    fsys = TaskManager_GetSys(taskman);
+    fsys = TaskManager_GetFieldSystem(taskman);
 
     switch (env->state) {
     case 0:

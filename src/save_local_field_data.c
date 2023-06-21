@@ -142,5 +142,5 @@ void Fsys_RestoreMapObjectsFromSave(FieldSystem *fsys) {
             follower->gfxId = SPRITE_FOLLOWER_MON_SHAYMIN;
         }
     }
-    MapObjectMan_RestoreFromSave(fsys->mapObjectMan, unk->subs, 64);
+    MapObjectManager_RestoreFromSave(fsys->mapObjectMan, unk->subs, 64);
 }

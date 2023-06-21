@@ -56,7 +56,7 @@ BOOL ScrCmd_GetPartyMonSpecies(ScriptContext *ctx) {
 
 BOOL ScrCmd_PartymonIsMine(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    SaveData *save = FieldSys_GetSaveDataPtr(fsys);
+    SaveData *save = FieldSystem_GetSaveDataPtr(fsys);
     PlayerProfile *profile = Save_PlayerData_GetProfileAddr(save);
 
     u16 *slot = ScriptGetVarPointer(ctx);

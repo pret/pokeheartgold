@@ -5,12 +5,12 @@
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public sub_0203E30C
-.public FieldSys_GetSaveDataPtr
+.public FieldSystem_GetSaveDataPtr
 .public sub_0203FD08
 .public TaskManager_Call
 .public FieldSys_ApplicationIsRunning
 .public sub_020505C0
 .public sub_020505C8
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public sub_02097D3C

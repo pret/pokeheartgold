@@ -1279,7 +1279,7 @@ _021E9AB8: .word SEQ_SE_DP_ESUKA
 ov01_021E9ABC: ; 0x021E9ABC
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetEnv
@@ -1483,7 +1483,7 @@ ov01_021E9C40: ; 0x021E9C40
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x5c
 	add r5, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetEnv
@@ -1797,7 +1797,7 @@ ov01_021E9EEC: ; 0x021E9EEC
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetEnv
@@ -1865,7 +1865,7 @@ ov01_021E9F78: ; 0x021E9F78
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	add r5, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetEnv
@@ -1929,7 +1929,7 @@ ov01_021E9FF8: ; 0x021E9FF8
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	str r0, [sp, #0x10]
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	ldr r0, [sp, #0x10]
 	bl TaskManager_GetEnv
@@ -2081,7 +2081,7 @@ ov01_021EA128: ; 0x021EA128
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r7, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r7, #0
 	bl TaskManager_GetEnv

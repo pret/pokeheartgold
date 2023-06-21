@@ -17,7 +17,7 @@
 .public SaveArray_Flags_Get
 .public FieldSys_CreateTask
 .public TaskManager_Call
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public sub_02054790
 .public FieldSystem_SetSavedMusicId

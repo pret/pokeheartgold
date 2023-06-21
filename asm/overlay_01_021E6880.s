@@ -388,7 +388,7 @@ _021E6B36:
 	ldr r0, [r4, #0x40]
 	bl sub_0205CF44
 	ldr r0, [r4, #0x3c]
-	bl MapObjectMan_PauseAllMovement
+	bl MapObjectManager_PauseAllMovement
 	add r0, r4, #0
 	bl FollowingPokemon_IsActive
 	cmp r0, #0

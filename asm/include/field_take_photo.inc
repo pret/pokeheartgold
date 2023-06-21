@@ -32,11 +32,11 @@
 .public PhotoAlbum_GetPhotoByIndex
 .public Photo_Init
 .public sub_0203E33C
-.public FieldSys_GetSaveDataPtr
+.public FieldSystem_GetSaveDataPtr
 .public sub_0203EBA4
 .public TaskManager_Call
 .public FieldSys_ApplicationIsRunning
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public sub_020537A8
 .public GetFirstAliveMonInParty_CrashIfNone
