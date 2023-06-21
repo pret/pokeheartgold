@@ -61,7 +61,7 @@
 .public LocalFieldData_GetCurrentPosition
 .public Save_LocalFieldData_Get
 .public FieldSys_LaunchApplication
-.public FieldSys_GetSaveDataPtr
+.public FieldSystem_GetSaveDataPtr
 .public LocationData_BackUp
 .public LocationData_Restore
 .public Save_CurrentLocation_BackUp
@@ -144,7 +144,7 @@
 .public TaskManager_Call
 .public FieldSys_ApplicationIsRunning
 .public CallApplicationAsTask
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public TaskManager_GetStatePtr
 .public FieldSystem_GetOverriddenMusicId

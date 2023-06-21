@@ -25,7 +25,7 @@
 .public ScriptReadHalfword
 .public VarGet
 .public TaskManager_Call
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public TaskManager_GetStatePtr
 .public GetIdxOfFirstAliveMonInParty_CrashIfNone

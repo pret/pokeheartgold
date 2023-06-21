@@ -307,7 +307,7 @@ BGCONFIG *FieldSys_GetBgConfigPtr(FieldSystem *fsys) {
     return fsys->bgConfig;
 }
 
-SaveData *FieldSys_GetSaveDataPtr(FieldSystem *fsys) {
+SaveData *FieldSystem_GetSaveDataPtr(FieldSystem *fsys) {
     return fsys->savedata;
 }
 

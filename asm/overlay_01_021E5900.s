@@ -634,7 +634,7 @@ _021E5EB4: .word FS_OVERLAY_ID(OVY_3)
 	thumb_func_start ov01_021E5EB8
 ov01_021E5EB8: ; 0x021E5EB8
 	push {r3, lr}
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	bl Save_GetGymmickPtr
 	bl SavGymmick_GetType
 	cmp r0, #0
@@ -1466,7 +1466,7 @@ _021E654E:
 	ldr r0, [r5, #0x3c]
 	beq _021E6566
 	mov r1, #2
-	bl MapObjectMan_ClearFlagsBits
+	bl MapObjectManager_ClearFlagsBits
 	b _021E656A
 _021E6566:
 	bl sub_0205F568

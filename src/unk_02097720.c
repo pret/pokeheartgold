@@ -5,7 +5,7 @@
 static BOOL sub_02097754(TaskManager *taskManager);
 
 void sub_02097720(TaskManager *taskManager, u16* unknownPtr) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     UnkStruct_02097720 *data = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(UnkStruct_02097720));
     MI_CpuClear8(data, sizeof(UnkStruct_02097720));
     data->unknown_0 = 0;
@@ -14,7 +14,7 @@ void sub_02097720(TaskManager *taskManager, u16* unknownPtr) {
 }
 
 BOOL sub_02097754(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     UnkStruct_02097720* env = TaskManager_GetEnv(taskManager);
 
     switch (env->unknown_0) {

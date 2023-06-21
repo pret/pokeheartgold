@@ -169,14 +169,14 @@ u32 sub_0202F798(SAFARIZONE* safari_zone, IGT* igt, s32 a2) {
     return 0;
 }
 
-void SafariZone_SetLinkLeaderFromProfile(SAFARIZONE* safari_zone, PLAYERPROFILE* profile, HeapID heap_id) {
+void SafariZone_SetLinkLeaderFromProfile(SAFARIZONE* safari_zone, PlayerProfile* profile, HeapID heap_id) {
     SAFARIZONE_LINKLEADER *link_leader = &safari_zone->link_leader;
     link_leader->id = PlayerProfile_GetTrainerID(profile);
     link_leader->gender = PlayerProfile_GetTrainerGender(profile);
     link_leader->language = PlayerProfile_GetLanguage(profile);
     link_leader->version = PlayerProfile_GetVersion(profile);
 
-    STRING* name = String_New((PLAYER_NAME_LENGTH + 1) * sizeof(u16), heap_id);
+    String* name = String_New((PLAYER_NAME_LENGTH + 1) * sizeof(u16), heap_id);
     PlayerName_FlatToString(profile, name);
     CopyStringToU16Array(name, link_leader->name, (PLAYER_NAME_LENGTH + 1) * sizeof(u16));
     String_Delete(name);
@@ -187,7 +187,7 @@ void SafariZone_SetLinkLeaderFromProfile(SAFARIZONE* safari_zone, PLAYERPROFILE*
     link_leader->rtc_offset = OS_GetOwnerRtcOffset();
 }
 
-void SafariZone_GetLinkLeaderToProfile(SAFARIZONE* safari_zone, PLAYERPROFILE* profile) {
+void SafariZone_GetLinkLeaderToProfile(SAFARIZONE* safari_zone, PlayerProfile* profile) {
     SAFARIZONE_LINKLEADER *link_leader = &safari_zone->link_leader;
     PlayerProfile_SetTrainerID(profile, link_leader->id);
     PlayerProfile_SetTrainerGender(profile, link_leader->gender);

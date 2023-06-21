@@ -124,7 +124,7 @@ void BugContest_Judge(BUGCONTEST *bugContest) {
 
 void BugContest_BufferContestWinnerNames(BUGCONTEST *bugContest, MSGDATA *msgData, MessageFormat *msgFmt, u8 place) {
     BUGCONTESTANT *contestant;
-    STRING *string;
+    String *string;
 
     contestant = &bugContest->contestants[bugContest->ranking[place]];
     if (place == bugContest->placement) {
@@ -150,7 +150,7 @@ BOOL BugContest_ContestantIsRegistered(BUGCONTEST *bugContest, u8 id) {
 }
 
 BOOL BugContest_BufferCaughtMonNick(BUGCONTEST *bugContest, MessageFormat *msgFmt, u8 slot) {
-    STRING *string;
+    String *string;
 
     if (!bugContest->caught_poke) {
         return FALSE;

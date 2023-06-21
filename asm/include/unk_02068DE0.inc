@@ -7,7 +7,7 @@
 .public SavGymmick_Init
 .public SavGymmick_AssertMagic_GetData
 .public SavGymmick_GetType
-.public FieldSys_GetSaveDataPtr
+.public FieldSystem_GetSaveDataPtr
 .public Fsys_InitEcruteakGymSaveData
 .public Fsys_InitCianwoodGym
 .public Fsys_InitVermilionGym

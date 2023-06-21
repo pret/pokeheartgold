@@ -36,8 +36,8 @@ typedef struct {
     HOFCongratsAppArgs hofCongratsArgs;
     CreditsAppArgs creditsArgs;
     BGCONFIG *bgConfig;
-    WINDOW window;
-    STRING *windowText;
+    Window window;
+    String *windowText;
     WaitingIcon *waitingIcon;
     int printerId;
     int timer;
@@ -92,7 +92,7 @@ static void GameClearSave_Free(FieldSystem *fsys, GameClearWork *env);
 // Might be called as Lance escorts player out of Champion room and into
 // Hall of Fame?
 BOOL sub_0205298C(TaskManager *taskman) {
-    FieldSystem *fsys = TaskManager_GetSys(taskman);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskman);
     int *state = TaskManager_GetStatePtr(taskman);
 
     switch (*state) {
@@ -150,7 +150,7 @@ static void AddHallOfFameEntry(FieldSystem *fsys, BOOL gameCleared) {
 // Launches the Hall of Fame Congratulations app if the player beat Lance. Saves
 // the game and launches the credits.
 static BOOL Task_GameClear(TaskManager *taskman) {
-    FieldSystem *fsys = TaskManager_GetSys(taskman);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskman);
     GameClearWork *env = TaskManager_GetEnv(taskman);
     int *state = TaskManager_GetStatePtr(taskman);
 
@@ -262,9 +262,9 @@ void CallTask_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
     ScriptState *scriptState;
     Location *dynamicWarp;
     Location *spawnWarp;
-    PLAYERPROFILE *profile;
+    PlayerProfile *profile;
 
-    fsys = TaskManager_GetSys(taskman);
+    fsys = TaskManager_GetFieldSystem(taskman);
     env = AllocFromHeap(HEAP_ID_32, sizeof(GameClearWork));
     scriptState = SaveArray_Flags_Get(fsys->savedata);
     profile = Save_PlayerData_GetProfileAddr(fsys->savedata);

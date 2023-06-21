@@ -206,7 +206,7 @@ static void Get2dMenuSelectionCoords(struct ListMenu2D *listMenu, u8 *x, u8 *y, 
     *y = listMenu->y + (selectedIdx % listMenu->template.itemsHigh) * (listMenu->maxGlyphHeight + listMenu->template.yTop);
 }
 
-struct ListMenu2D *CreateYesNoMenu(BGCONFIG *bgConfig, const WINDOWTEMPLATE *windowTemplate, u16 tileNum, u8 paletteNum, u8 initialSelection, HeapID heapId) {
+struct ListMenu2D *CreateYesNoMenu(BGCONFIG *bgConfig, const WindowTemplate *windowTemplate, u16 tileNum, u8 paletteNum, u8 initialSelection, HeapID heapId) {
     struct ListMenu2DTemplate menuTemplate;
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0191_bin, heapId);
     LISTMENUITEM *items = ListMenuItems_New(2, heapId);
@@ -226,7 +226,7 @@ struct ListMenu2D *CreateYesNoMenu(BGCONFIG *bgConfig, const WINDOWTEMPLATE *win
     return Create2dMenuInternal(&menuTemplate, 8, 0, initialSelection, heapId, PAD_BUTTON_B);
 }
 
-struct ListMenu2D *Std_CreateYesNoMenu(BGCONFIG *bgConfig, const WINDOWTEMPLATE *windowTemplate, u16 tileNum, u8 paletteNum, HeapID heapId) {
+struct ListMenu2D *Std_CreateYesNoMenu(BGCONFIG *bgConfig, const WindowTemplate *windowTemplate, u16 tileNum, u8 paletteNum, HeapID heapId) {
     return CreateYesNoMenu(bgConfig, windowTemplate, tileNum, paletteNum, 0, heapId);
 }
 

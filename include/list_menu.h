@@ -37,7 +37,7 @@ struct ListMenuTemplate {
     /*0x00*/ LISTMENUITEM *items;
     /*0x04*/ LM_MoveCursorFunc_t moveCursorFunc;
     /*0x08*/ LM_ItemPrintFunc_t itemPrintFunc;
-    /*0x0C*/ WINDOW *window;
+    /*0x0C*/ Window *window;
     /*0x10*/ u16 totalItems;
     /*0x12*/ u16 maxShowed;
     /*0x14*/ u8 header_X;

@@ -207,7 +207,7 @@ static void FieldMoveMenuUse_Cut(struct FieldMoveUseData *useData, const struct 
 
 static BOOL Task_UseCutInField(TaskManager *taskManager) {
     struct FieldUseMoveEnv *env = TaskManager_GetEnv(taskManager);
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_cut, env->facingObject);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
     PartyMenuEnv_Delete(env);
@@ -242,7 +242,7 @@ static u32 FieldMoveMenuCheck_Fly(const struct FieldMoveCheckData *checkData) {
 }
 
 static void FieldMoveMenuUse_Fly(struct FieldMoveUseData *useData, const struct FieldMoveCheckData *checkData) {
-    FieldSystem *fsys = TaskManager_GetSys(useData->taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(useData->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(useData->taskManager);
     struct FlyTaskStruct *flyEnv = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct FlyTaskStruct));
     flyEnv->partySlot = useData->partySlot;
@@ -289,7 +289,7 @@ static void FieldMoveMenuUse_Surf(struct FieldMoveUseData *useData, const struct
 
 static BOOL Task_UseSurfInField(TaskManager *taskManager) {
     struct FieldUseMoveEnv *env = TaskManager_GetEnv(taskManager);
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_surf, NULL);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
     PartyMenuEnv_Delete(env);
@@ -325,7 +325,7 @@ static void FieldMoveMenuUse_Strength(struct FieldMoveUseData *useData, const st
 
 static BOOL Task_UseStrengthInField(TaskManager *taskManager) {
     struct FieldUseMoveEnv *env = TaskManager_GetEnv(taskManager);
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_strength, env->facingObject);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
     PartyMenuEnv_Delete(env);
@@ -357,7 +357,7 @@ static void FieldMoveMenuUse_RockSmash(struct FieldMoveUseData *useData, const s
 
 static BOOL Task_UseRockSmashInField(TaskManager *taskManager) {
     struct FieldUseMoveEnv *env = TaskManager_GetEnv(taskManager);
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_rock_smash, env->facingObject);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
     PartyMenuEnv_Delete(env);
@@ -392,7 +392,7 @@ static void FieldMoveMenuUse_Waterfall(struct FieldMoveUseData *useData, const s
 
 static BOOL Task_UseWaterfallInField(TaskManager *taskManager) {
     struct FieldUseMoveEnv *env = TaskManager_GetEnv(taskManager);
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_waterfall, NULL);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
     PartyMenuEnv_Delete(env);
@@ -433,7 +433,7 @@ static void FieldMoveMenuUse_RockClimb(struct FieldMoveUseData *useData, const s
 
 static BOOL Task_UseRockClimbInField(TaskManager *taskManager) {
     struct FieldUseMoveEnv *env = TaskManager_GetEnv(taskManager);
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_rock_climb, NULL);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
     PartyMenuEnv_Delete(env);
@@ -467,7 +467,7 @@ static void FieldMoveMenuUse_Flash(struct FieldMoveUseData *useData, const struc
 
 static BOOL Task_UseFlashInField(TaskManager *taskManager) {
     struct FieldUseMoveEnv *env = TaskManager_GetEnv(taskManager);
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     if (CheckUseFlashInAlphChamber(fsys)) {
         StartScriptFromMenu(taskManager, _EV_scr_seq_D24R0204_002 + 1, NULL);
     } else {
@@ -502,7 +502,7 @@ static u32 FieldMoveMenuCheck_Teleport(const struct FieldMoveCheckData *checkDat
 }
 
 static void FieldMoveMenuUse_Teleport(struct FieldMoveUseData *useData, const struct FieldMoveCheckData *checkData) {
-    FieldSystem *fsys = TaskManager_GetSys(useData->taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(useData->taskManager);
     struct BagViewAppWork *menuEnv = TaskManager_GetEnv(useData->taskManager);
     sub_020505C0(fsys);
     struct TeleportFieldEnv *retEnv = sub_020689A4(HEAP_ID_FIELD, useData->partySlot, fsys->savedata);
@@ -515,7 +515,7 @@ static void FieldMoveMenuUse_Teleport(struct FieldMoveUseData *useData, const st
 }
 
 static BOOL Task_UseTeleportInField(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     struct TeleportFieldEnv *env = TaskManager_GetEnv(taskManager);
     struct FieldLongWarpTaskData *newEnv = CreateFieldTeleportTaskEnv(fsys, env->mon, env->flySub->partySlot, HEAP_ID_4);
     FreeToHeap(env->flySub);
@@ -544,7 +544,7 @@ static u32 FieldMoveMenuCheck_Dig(const struct FieldMoveCheckData *checkData) {
 }
 
 static void FieldMoveMenuUse_Dig(struct FieldMoveUseData *useData, const struct FieldMoveCheckData *checkData) {
-    FieldSystem *fsys = TaskManager_GetSys(useData->taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(useData->taskManager);
     struct BagViewAppWork *menuEnv = TaskManager_GetEnv(useData->taskManager);
     sub_020505C0(fsys);
     struct TeleportFieldEnv *retEnv = sub_020689A4(HEAP_ID_FIELD, useData->partySlot, fsys->savedata);
@@ -557,7 +557,7 @@ static void FieldMoveMenuUse_Dig(struct FieldMoveUseData *useData, const struct 
 }
 
 static BOOL Task_UseDigInField(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     struct TeleportFieldEnv *env = TaskManager_GetEnv(taskManager);
     struct FieldLongWarpTaskData *newEnv = CreateFieldDigTaskEnv(fsys, env->mon, env->flySub->partySlot, HEAP_ID_FIELD);
     FreeToHeap(env->flySub);
@@ -579,7 +579,7 @@ static u32 FieldMoveMenuCheck_SweetScent(const struct FieldMoveCheckData *checkD
 }
 
 static void FieldMoveMenuUse_SweetScent(struct FieldMoveUseData *useData, const struct FieldMoveCheckData *checkData) {
-    FieldSystem *fsys = TaskManager_GetSys(useData->taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(useData->taskManager);
     struct BagViewAppWork *menuEnv = TaskManager_GetEnv(useData->taskManager);
     struct TeleportFieldEnv *retEnv = sub_020689A4(HEAP_ID_FIELD, useData->partySlot, fsys->savedata);
     struct FlyTaskStruct *retSub = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct FlyTaskStruct));
@@ -600,7 +600,7 @@ static u32 FieldMoveMenuCheck_Chatter(const struct FieldMoveCheckData *checkData
 }
 
 static void FieldMoveMenuUse_Chatter(struct FieldMoveUseData *useData, const struct FieldMoveCheckData *checkData) {
-    FieldSystem *fsys = TaskManager_GetSys(useData->taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(useData->taskManager);
     struct BagViewAppWork *menuEnv = TaskManager_GetEnv(useData->taskManager);
     struct FieldUseMoveEnv *partyEnv = PartyMenuEnv_create(useData, checkData);
     sub_020505C0(fsys);
@@ -611,7 +611,7 @@ static void FieldMoveMenuUse_Chatter(struct FieldMoveUseData *useData, const str
 
 static BOOL Task_UseChatterInField(TaskManager *taskManager) {
     struct FieldUseMoveEnv *env = TaskManager_GetEnv(taskManager);
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_chatter, NULL);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
     PartyMenuEnv_Delete(env);
@@ -649,7 +649,7 @@ static void FieldMoveMenuUse_Whirlpool(struct FieldMoveUseData *useData, const s
 
 static BOOL Task_UseWhirlpoolInField(TaskManager *taskManager) {
     struct FieldUseMoveEnv *env = TaskManager_GetEnv(taskManager);
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_whirlpool, NULL);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
     PartyMenuEnv_Delete(env);
@@ -679,7 +679,7 @@ static void FieldMoveMenuUse_Headbutt(struct FieldMoveUseData *useData, const st
 
 static BOOL Task_UseHeadbuttInField(TaskManager *taskManager) {
     struct FieldUseMoveEnv *env = TaskManager_GetEnv(taskManager);
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_headbutt, env->facingObject);
     FieldMoveArgsSet(fsys, env->useData.partySlot, 0, 0, 0);
     PartyMenuEnv_Delete(env);

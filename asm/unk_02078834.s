@@ -17,7 +17,7 @@
 sub_02078834: ; 0x02078834
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r6, #0
 	bl TaskManager_GetEnv

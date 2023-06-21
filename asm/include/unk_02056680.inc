@@ -11,7 +11,7 @@
 .public GF_AssertFail
 .public TaskManager_Call
 .public CallApplicationAsTask
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public GetMetatileBehaviorAt
 .public sub_02054940

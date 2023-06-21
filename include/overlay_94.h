@@ -34,7 +34,7 @@ typedef struct PartyMenuStruct {
     u8 unk658[0x167];
     MSGDATA* msgData; //0x7c0
     MessageFormat* unk7c4;
-    STRING* unk7c8;
+    String* unk7c8;
     u8 unk7cc[0x498];
     u8 unkc64;
     u8 partyMonIndex; //selected index..?

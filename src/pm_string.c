@@ -8,8 +8,8 @@
 
 #define ASSERT_STRING(str) do { GF_ASSERT(str != NULL); GF_ASSERT((str)->magic == STRING_MAGIC); } while (0)
 
-STRING *String_New(u32 maxsize, HeapID heapId) {
-    STRING *ret = (STRING*)AllocFromHeap(heapId, 2 * maxsize + sizeof(STRING) + sizeof(u16));
+String *String_New(u32 maxsize, HeapID heapId) {
+    String *ret = (String*)AllocFromHeap(heapId, 2 * maxsize + sizeof(String) + sizeof(u16));
     if (ret != NULL) {
         ret->magic = STRING_MAGIC;
         ret->maxsize = maxsize;
@@ -19,19 +19,19 @@ STRING *String_New(u32 maxsize, HeapID heapId) {
     return ret;
 }
 
-void String_Delete(STRING *string) {
+void String_Delete(String *string) {
     ASSERT_STRING(string);
     string->magic = STRING_INVAL;
     FreeToHeap(string);
 }
 
-void String_SetEmpty(STRING *string) {
+void String_SetEmpty(String *string) {
     ASSERT_STRING(string);
     string->size = 0;
     string->data[0] = EOS;
 }
 
-void String_Copy(STRING *dest, const STRING *src) {
+void String_Copy(String *dest, const String *src) {
     ASSERT_STRING(dest);
     ASSERT_STRING(src);
     if (dest->maxsize > src->size) {
@@ -42,8 +42,8 @@ void String_Copy(STRING *dest, const STRING *src) {
     GF_ASSERT(0);
 }
 
-STRING *String_Dup(const STRING *src, HeapID heapId) {
-    STRING *ret;
+String *String_Dup(const String *src, HeapID heapId) {
+    String *ret;
     ASSERT_STRING(src);
     ret = String_New(src->size + 1, heapId);
     if (ret != NULL) {
@@ -52,7 +52,7 @@ STRING *String_Dup(const STRING *src, HeapID heapId) {
     return ret;
 }
 
-void String16_FormatInteger(STRING * str, int num, u32 ndigits, STRCONVMODE strConvMode, BOOL whichCharset) {
+void String16_FormatInteger(String * str, int num, u32 ndigits, STRCONVMODE strConvMode, BOOL whichCharset) {
     static const u32 sPowersOfTen[10] = {
         1ul,
         10ul,
@@ -130,7 +130,7 @@ void String16_FormatInteger(STRING * str, int num, u32 ndigits, STRCONVMODE strC
     GF_ASSERT(0);
 }
 
-void String16_FormatUnsignedLongLong(STRING * str, u64 num, u32 ndigits, STRCONVMODE strConvMode, BOOL whichCharset) {
+void String16_FormatUnsignedLongLong(String * str, u64 num, u32 ndigits, STRCONVMODE strConvMode, BOOL whichCharset) {
     static const u64 sPowersOfTen[20] = {
         1ull,
         10ull,
@@ -218,7 +218,7 @@ void String16_FormatUnsignedLongLong(STRING * str, u64 num, u32 ndigits, STRCONV
     GF_ASSERT(0);
 }
 
-s64 String_atoi(STRING * str, BOOL * flag) {
+s64 String_atoi(String * str, BOOL * flag) {
     s64 ret = 0ll;
     s64 pow10 = 1ll;
     if (str->size > 18) {
@@ -243,7 +243,7 @@ s64 String_atoi(STRING * str, BOOL * flag) {
     return ret;
 }
 
-BOOL String_Compare(STRING * str1, STRING * str2) {
+BOOL String_Compare(String * str1, String * str2) {
     ASSERT_STRING(str1);
     ASSERT_STRING(str2);
 
@@ -255,12 +255,12 @@ BOOL String_Compare(STRING * str1, STRING * str2) {
     return TRUE;
 }
 
-u16 String_GetLength(STRING * str) {
+u16 String_GetLength(String * str) {
     ASSERT_STRING(str);
     return str->size;
 }
 
-int String_CountLines(volatile STRING * str) {
+int String_CountLines(volatile String * str) {
     ASSERT_STRING(str);
 
     int i, nline;
@@ -271,7 +271,7 @@ int String_CountLines(volatile STRING * str) {
     return nline;
 }
 
-void String_GetLineN(STRING * dest, volatile STRING * src, u32 n) {
+void String_GetLineN(String * dest, volatile String * src, u32 n) {
     ASSERT_STRING(src);
     ASSERT_STRING(dest);
 
@@ -294,7 +294,7 @@ void String_GetLineN(STRING * dest, volatile STRING * src, u32 n) {
     }
 }
 
-void String_RadioAddStatic(STRING *string, u8 level) {
+void String_RadioAddStatic(String *string, u8 level) {
     u32 width_3dots = FontID_GetGlyphWidth(0, CHAR_ELLIPSIS);
     u32 width_1dot = FontID_GetGlyphWidth(0, CHAR_ONE_DOT);
     u32 width_2dots = FontID_GetGlyphWidth(0, CHAR_TWO_DOTS);
@@ -318,7 +318,7 @@ void String_RadioAddStatic(STRING *string, u8 level) {
     }
 }
 
-void CopyU16ArrayToString(STRING * str, const u16 * buf) {
+void CopyU16ArrayToString(String * str, const u16 * buf) {
     ASSERT_STRING(str);
 
     for (str->size = 0; *buf != EOS;) {
@@ -331,7 +331,7 @@ void CopyU16ArrayToString(STRING * str, const u16 * buf) {
     str->data[str->size] = EOS;
 }
 
-void CopyU16ArrayToStringN(STRING * str, const u16 * buf, u32 length) {
+void CopyU16ArrayToStringN(String * str, const u16 * buf, u32 length) {
     ASSERT_STRING(str);
 
     if (length <= str->maxsize) {
@@ -350,7 +350,7 @@ void CopyU16ArrayToStringN(STRING * str, const u16 * buf, u32 length) {
     GF_ASSERT(0);
 }
 
-void CopyStringToU16Array(const STRING * str, u16 * buf, u32 length) {
+void CopyStringToU16Array(const String * str, u16 * buf, u32 length) {
     ASSERT_STRING(str);
 
     if (str->size + 1 <= length) {
@@ -360,13 +360,13 @@ void CopyStringToU16Array(const STRING * str, u16 * buf, u32 length) {
     GF_ASSERT(0);
 }
 
-u16 * String_cstr(STRING * str) {
+u16 * String_cstr(String * str) {
     ASSERT_STRING(str);
 
     return str->data;
 }
 
-void String_Cat(STRING * dest, STRING * src) {
+void String_Cat(String * dest, String * src) {
     ASSERT_STRING(dest);
     ASSERT_STRING(src);
 
@@ -378,7 +378,7 @@ void String_Cat(STRING * dest, STRING * src) {
     GF_ASSERT(0);
 }
 
-void String_AddChar(STRING * str, u16 val) {
+void String_AddChar(String * str, u16 val) {
     ASSERT_STRING(str);
 
     if (str->size + 1 < str->maxsize) {
@@ -389,11 +389,11 @@ void String_AddChar(STRING * str, u16 val) {
     GF_ASSERT(0);
 }
 
-BOOL String_IsTrainerName(STRING * string) {
+BOOL String_IsTrainerName(String * string) {
     return string->size != 0 && string->data[0] == TRNAMECODE;
 }
 
-void String_Cat_HandleTrainerName(STRING * dest, STRING * src) {
+void String_Cat_HandleTrainerName(String * dest, String * src) {
     if (String_IsTrainerName(src)) {
         u16 * dest_p = &dest->data[dest->size];
         u16 * src_p = &src->data[1];
@@ -425,7 +425,7 @@ void String_Cat_HandleTrainerName(STRING * dest, STRING * src) {
     }
 }
 
-void String_UpperCharN(STRING * str, int n) {
+void String_UpperCharN(String * str, int n) {
     ASSERT_STRING(str);
 
     if (str->size > n) {

@@ -76,7 +76,7 @@ void MessageFormat_InitFields(MessageFormatFields *field) {
 #pragma unused(field)
 }
 
-void SetStringAsPlaceholder(MessageFormat *msgFmt, u32 fieldno, const STRING *string, const MessageFormatAttrs *attrs) {
+void SetStringAsPlaceholder(MessageFormat *msgFmt, u32 fieldno, const String *string, const MessageFormatAttrs *attrs) {
     GF_ASSERT(fieldno < msgFmt->count);
     if (fieldno < msgFmt->count) {
         if (attrs != NULL) {
@@ -86,12 +86,12 @@ void SetStringAsPlaceholder(MessageFormat *msgFmt, u32 fieldno, const STRING *st
     }
 }
 
-void BufferString(MessageFormat *msgFmt, u32 fieldno, const STRING *string, s32 a3, s32 a4, s32 a5) {
+void BufferString(MessageFormat *msgFmt, u32 fieldno, const String *string, s32 a3, s32 a4, s32 a5) {
 #pragma unused(a3, a4, a5)
     SetStringAsPlaceholder(msgFmt, fieldno, string, NULL);
 }
 
-void BufferPlayersName(MessageFormat *msgFmt, u32 fieldno, PLAYERPROFILE *playerProfile) {
+void BufferPlayersName(MessageFormat *msgFmt, u32 fieldno, PlayerProfile *playerProfile) {
     CopyU16ArrayToString(msgFmt->buffer, PlayerProfile_GetNamePtr(playerProfile));
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }
@@ -102,7 +102,7 @@ void BufferRivalsName(MessageFormat *msgFmt, u32 fieldno, SaveData *saveData) {
 }
 
 void BufferFriendsName(MessageFormat *msgFmt, u32 fieldno, SaveData *saveData) {
-    PLAYERPROFILE *playerProfile = Save_PlayerData_GetProfileAddr(saveData);
+    PlayerProfile *playerProfile = Save_PlayerData_GetProfileAddr(saveData);
     MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0445_bin, msgFmt->heapId);
     if (PlayerProfile_GetTrainerGender(playerProfile) == PLAYER_GENDER_MALE) {
         ReadMsgDataIntoString(msgData, msg_0445_00001, msgFmt->buffer); // Lyra
@@ -462,7 +462,7 @@ void BufferGroupName(MessageFormat *msgFmt, SaveData *saveData, s32 groupId, s32
     SAV_FRIEND_GRP *friendGrp = Save_FriendGroup_Get(saveData);
     u8 sp10 = sub_0202C830(friendGrp, groupId);
     u8 r7 = sub_0202C83C(friendGrp, groupId);
-    STRING *dest = String_New(64, HEAP_ID_4);
+    String *dest = String_New(64, HEAP_ID_4);
     CopyU16ArrayToString(dest, sub_0202C7E0(friendGrp, groupId, nameType));
     BufferString(msgFmt, fieldno, dest, sp10, 1, r7);
     String_Delete(dest);
@@ -649,7 +649,7 @@ void BufferDeptStoreFloorNo(MessageFormat *msgFmt, u32 fieldno, u32 floor) {
     }
 }
 
-void StringExpandPlaceholders(MessageFormat * msgFmt, STRING * dest, STRING * src) {
+void StringExpandPlaceholders(MessageFormat * msgFmt, String * dest, String * src) {
     const u16 * cstr = String_cstr(src);
     String_SetEmpty(dest);
     while (*cstr != EOS) {

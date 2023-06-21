@@ -6,7 +6,7 @@
 .public sub_0203FCB8
 .public TaskManager_Call
 .public FieldSys_ApplicationIsRunning
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public sub_0205525C
 .public sub_020552A4

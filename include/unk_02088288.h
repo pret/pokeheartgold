@@ -25,7 +25,7 @@ typedef struct UnkStruct_0204F448 {
 u32 sub_02088288(SaveData*);
 BOOL sub_0208828C(SaveData*);
 void sub_02089D40(UnkStruct_0204F448*, const u8*);
-void sub_0208AD34(UnkStruct_0204F448*, PLAYERPROFILE*);
+void sub_0208AD34(UnkStruct_0204F448*, PlayerProfile*);
 
 #endif //POKEHEARTGOLD_UNK_02088288_H
 

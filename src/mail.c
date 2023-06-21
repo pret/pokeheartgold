@@ -92,7 +92,7 @@ void Mail_SetNewMessageDetails(MAIL *mail, u8 mailType, u8 mon_no, SaveData *sav
     u8 i, j, pal, k;
     u16 species;
     u32 icon, isEgg, forme;
-    PLAYERPROFILE *profile;
+    PlayerProfile *profile;
     PARTY *party;
     Pokemon *mon;
 
@@ -136,7 +136,7 @@ void Mail_SetNewMessageDetails(MAIL *mail, u8 mailType, u8 mon_no, SaveData *sav
     }
 }
 
-MAIL *CreateKenyaMail(Pokemon *mon, u8 mailType, u8 gender, STRING *name, u8 otId) {
+MAIL *CreateKenyaMail(Pokemon *mon, u8 mailType, u8 gender, String *name, u8 otId) {
     u8 r0;
     u32 r5;
     u16 species;

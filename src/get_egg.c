@@ -621,14 +621,14 @@ static u16 Daycare_GetEggSpecies(DAYCARE *dayCare, u8 *gender_idx) {
     return pms;
 }
 
-void SetEggStats(Pokemon *mon, int species, u8 metLocation, PLAYERPROFILE *profile, int a4, int a5) {
+void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profile, int a4, int a5) {
     u32 otId;
     u32 gender;
     u16 pokeball;
     u8 metLevel;
     u8 isEgg;
     u8 friendship;
-    STRING *name;
+    String *name;
 
     friendship = GetMonBaseStat(species, BASE_EGG_CYCLES);
     CreateMon(mon, species, 1, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
@@ -664,7 +664,7 @@ static void SetBreedEggStats(Pokemon *mon, u16 species, DAYCARE *dayCare, u32 ot
     u16 pokeball;
     u8 metLevel;
     u8 friendship;
-    STRING *name;
+    String *name;
     u32 pid;
     int i;
 
@@ -694,7 +694,7 @@ static void SetBreedEggStats(Pokemon *mon, u16 species, DAYCARE *dayCare, u32 ot
     String_Delete(name);
 }
 
-void GiveEggToPlayer(DAYCARE *dayCare, PARTY *party, PLAYERPROFILE* profile) {
+void GiveEggToPlayer(DAYCARE *dayCare, PARTY *party, PlayerProfile* profile) {
     Pokemon *mon;
     u16 species;
     u8 gender_idx[2];
@@ -1021,7 +1021,7 @@ static void sub_0206D038(Pokemon *mon, HeapID heapId) {
     u8 metMonth;
     u8 metDay;
     u32 species;
-    STRING *string;
+    String *string;
     u8 i;
     u32 pid;
     Pokemon *tmpMon;

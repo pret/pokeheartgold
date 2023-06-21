@@ -1,12 +1,12 @@
 #include "unk_02068F84.h"
 #include "font.h"
 
-u32 sub_02068F84(MSGDATA *msgData, u32 map_sec, STRING *dest) {
+u32 sub_02068F84(MSGDATA *msgData, u32 map_sec, String *dest) {
     ReadMsgDataIntoString(msgData, map_sec, dest);
     return FontID_String_GetWidth(0, dest, 0);
 }
 
-void sub_02068F98(u32 mapno, HeapID heapId, STRING *dest) {
+void sub_02068F98(u32 mapno, HeapID heapId, String *dest) {
     MSGDATA *msgData;
     u32 map_sec;
 

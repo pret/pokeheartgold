@@ -58,7 +58,7 @@ FieldSys_TakePhoto: ; 0x0206A798
 	strb r0, [r1]
 _0206A7FE:
 	add r0, r5, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	bl Save_PhotoAlbum_Get
 	bl PhotoAlbum_GetIndexOfFirstEmptySlot
 	cmp r0, #0xff
@@ -177,7 +177,7 @@ sub_0206A8DC: ; 0x0206A8DC
 sub_0206A8E4: ; 0x0206A8E4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetEnv
@@ -578,7 +578,7 @@ sub_0206ABB0: ; 0x0206ABB0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x54
 	add r7, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r7, #0
 	bl TaskManager_GetEnv
@@ -653,7 +653,7 @@ _0206AC36:
 	ldr r0, _0206AEAC ; =NNS_G3dGlb + 0x80
 	str r1, [r0, #0x20]
 	add r0, r6, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	bl Save_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
 	add r5, #0x30
@@ -1124,7 +1124,7 @@ sub_0206B014: ; 0x0206B014
 	add r0, r4, #0
 	str r2, [sp]
 	str r3, [sp, #4]
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	add r7, r0, #0
 	bl Save_PlayerData_GetProfileAddr
 	add r6, r0, #0
@@ -1410,7 +1410,7 @@ sub_0206B270: ; 0x0206B270
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x60
 	add r6, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r6, #0
 	bl TaskManager_GetEnv
@@ -1512,7 +1512,7 @@ _0206B332:
 	b _0206B824
 _0206B346:
 	add r0, r5, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	bl Save_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
 	ldr r1, [r4, #0x40]
@@ -1898,7 +1898,7 @@ _0206B652:
 	cmp r0, #0
 	beq _0206B6EA
 	add r0, r5, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	bl Save_PhotoAlbum_Get
 	add r5, r0, #0
 	bl PhotoAlbum_GetIndexOfFirstEmptySlot

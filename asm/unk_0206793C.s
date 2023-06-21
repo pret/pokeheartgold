@@ -18,7 +18,7 @@
 sub_0206793C: ; 0x0206793C
 	push {r4, lr}
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r0, r4, #0
 	bl TaskManager_GetEnv
 	add r2, r0, #0
@@ -36,7 +36,7 @@ Task_FieldTradeAnim: ; 0x0206795C
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r5, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetEnv

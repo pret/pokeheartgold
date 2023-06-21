@@ -14,7 +14,7 @@
 ov02_02245B80: ; 0x02245B80
 	push {r4, lr}
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	bl ov02_02245B9C
 	add r2, r0, #0
 	ldr r1, _02245B98 ; =ov02_02245BC8
@@ -676,7 +676,7 @@ ov02_022460AC: ; 0x022460AC
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r1, r4, #0
 	bl ov02_022460CC
 	add r2, r0, #0
@@ -789,7 +789,7 @@ ShowLegendaryWing: ; 0x0224618C
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r1, r4, #0
 	bl ov02_022461AC
 	add r2, r0, #0
@@ -959,7 +959,7 @@ _022462E4: .word ov02_02246048
 ov02_022462E8: ; 0x022462E8
 	push {r4, lr}
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	bl ov02_02246304
 	add r2, r0, #0
 	ldr r1, _02246300 ; =ov02_02246330
@@ -1494,7 +1494,7 @@ ov02_02246714: ; 0x02246714
 	add r4, r1, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r1, sp, #8
 	ldrh r1, [r1, #0x10]
 	add r2, r6, #0
@@ -1580,7 +1580,7 @@ OpenAlphHiddenRoom: ; 0x022467C4
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	lsl r1, r5, #0x18
 	lsr r1, r1, #0x18
 	bl ov02_022467E8
@@ -1818,7 +1818,7 @@ ov02_022469B4: ; 0x022469B4
 	add r4, r1, #0
 	add r6, r2, #0
 	add r5, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r1, r4, #0
 	add r2, r6, #0
 	bl ov02_022469D8
@@ -12738,7 +12738,7 @@ PokecenterAnimRun: ; 0x0224BB90
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x34
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetEnv
@@ -13062,7 +13062,7 @@ ov02_0224BE24: ; 0x0224BE24
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1c
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetEnv
@@ -13324,7 +13324,7 @@ _0224C01A:
 Task_FieldEscapeRope: ; 0x0224C020
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r7, r0, #0
 	add r0, r6, #0
 	bl TaskManager_GetEnv
@@ -13560,7 +13560,7 @@ ov02_0224C1D8: ; 0x0224C1D8
 ov02_0224C1F8: ; 0x0224C1F8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetEnv
@@ -13784,7 +13784,7 @@ _0224C3A8:
 Task_FieldDig: ; 0x0224C3AC
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r7, #0
 	bl TaskManager_GetEnv
@@ -14007,7 +14007,7 @@ _0224C552:
 Task_FieldTeleport: ; 0x0224C558
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r7, #0
 	bl TaskManager_GetEnv
@@ -15153,7 +15153,7 @@ ov02_0224CE28: ; 0x0224CE28
 	push {r4, r5, r6, lr}
 	sub sp, #0x30
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetEnv
@@ -17737,7 +17737,7 @@ ov02_0224E0D4: ; 0x0224E0D4
 ov02_0224E0EC: ; 0x0224E0EC
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetEnv
@@ -18288,7 +18288,7 @@ ov02_0224E4EC: ; 0x0224E4EC
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	str r0, [r4]
 	mov r0, #0x43
 	lsl r0, r0, #2
@@ -20327,10 +20327,10 @@ ov02_0224F4BC: ; 0x0224F4BC
 	bl GetPlayerYCoord
 	str r0, [sp]
 	ldr r0, [r4, #0x3c]
-	bl MapObjectMan_GetCount
+	bl MapObjectManager_GetCount
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x3c]
-	bl MapObjectMan_GetObjects
+	bl MapObjectManager_GetObjects
 	str r0, [sp, #0x10]
 	mov r0, #0
 	str r0, [sp, #0xc]
@@ -21986,7 +21986,7 @@ _0225010C: .word 0x0000087C
 Task_FollowPokeInteract: ; 0x02250110
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetStatePtr
@@ -22891,7 +22891,7 @@ _022507E4: .word ov02_022507E8
 ov02_022507E8: ; 0x022507E8
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetEnv
@@ -23013,7 +23013,7 @@ ov02_022508D8: ; 0x022508D8
 	push {r4, r5, r6, lr}
 	sub sp, #0x18
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetStatePtr
@@ -23320,7 +23320,7 @@ ov02_02250B44: ; 0x02250B44
 	thumb_func_start ov02_02250B58
 ov02_02250B58: ; 0x02250B58
 	push {r4, lr}
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x24]
@@ -24286,7 +24286,7 @@ ov02_02251320: ; 0x02251320
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetStatePtr
@@ -24575,7 +24575,7 @@ _02251564: .word ov02_02251568
 ov02_02251568: ; 0x02251568
 	push {r3, r4, lr}
 	sub sp, #0x14
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x24]
@@ -24628,7 +24628,7 @@ ov02_022515D0: ; 0x022515D0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x38
 	add r5, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	str r0, [sp, #8]
 	add r0, r5, #0
 	bl TaskManager_GetEnv
@@ -26391,7 +26391,7 @@ ov02_022523D0: ; 0x022523D0
 	bl TaskManager_GetStatePtr
 	add r5, r0, #0
 	add r0, r6, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r0, r6, #0
 	bl TaskManager_GetEnv
@@ -26582,7 +26582,7 @@ ov02_0225255C: ; 0x0225255C
 	bl TaskManager_GetStatePtr
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r0, r4, #0
 	bl TaskManager_GetEnv
 	ldr r1, [r5]
@@ -27214,7 +27214,7 @@ ov02_02252A28: ; 0x02252A28
 	bl TaskManager_GetStatePtr
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r0, r4, #0
 	bl TaskManager_GetEnv
 	add r4, r0, #0
@@ -27846,7 +27846,7 @@ ov02_02252F14: ; 0x02252F14
 	bl TaskManager_GetStatePtr
 	add r4, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r0, r5, #0
 	bl TaskManager_GetEnv
 	ldr r1, [r4]

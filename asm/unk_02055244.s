@@ -7,7 +7,7 @@
 	thumb_func_start sub_02055244
 sub_02055244: ; 0x02055244
 	push {r3, lr}
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	bl sub_0203DF7C
 	cmp r0, #0
 	bne _02055256
@@ -23,7 +23,7 @@ _02055256:
 sub_0205525C: ; 0x0205525C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	bl sub_0203DF7C
 	cmp r0, #0
@@ -45,7 +45,7 @@ _02055288: .word sub_02055244
 	thumb_func_start sub_0205528C
 sub_0205528C: ; 0x0205528C
 	push {r3, lr}
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	bl sub_020505C8
 	cmp r0, #0
 	beq _0205529E
@@ -61,7 +61,7 @@ _0205529E:
 sub_020552A4: ; 0x020552A4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	bl sub_0203DF7C
 	cmp r0, #0
@@ -99,7 +99,7 @@ PalleteFadeUntilFinished: ; 0x020552E8
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	bl sub_0203DF7C
 	cmp r0, #0
 	bne _02055302
@@ -133,7 +133,7 @@ sub_0205532C: ; 0x0205532C
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	bl sub_0203DF7C
 	cmp r0, #0
 	bne _02055346
@@ -216,7 +216,7 @@ sub_020553C0: ; 0x020553C0
 	bl TaskManager_GetStatePtr
 	add r4, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	ldr r1, [r4]
 	cmp r1, #0
 	beq _020553E0

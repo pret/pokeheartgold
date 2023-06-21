@@ -119,13 +119,13 @@ void EasyChatManager_Delete(ECMAN *ecMan) {
     FreeToHeap(ecMan);
 }
 
-void EasyChatManager_ReadWordIntoString(ECMAN *ecMan, u16 ecWord, STRING *dest) {
+void EasyChatManager_ReadWordIntoString(ECMAN *ecMan, u16 ecWord, String *dest) {
     u32 category, msgno;
     GetCategoryAndMsgNoByECWordIdx(ecWord, &category, &msgno);
     ReadMsgDataIntoString(ecMan->msgData[category], msgno, dest);
 }
 
-void GetECWordIntoStringByIndex(u16 ecWord, STRING *dest) {
+void GetECWordIntoStringByIndex(u16 ecWord, String *dest) {
     u32 category, msgno;
     if (ecWord != EC_WORD_NULL) {
         GetCategoryAndMsgNoByECWordIdx(ecWord, &category, &msgno);

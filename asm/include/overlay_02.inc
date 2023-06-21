@@ -201,7 +201,7 @@
 .public Save_LocalFieldData_Get
 .public GetFlyWarpData
 .public GetSpecialSpawnWarpData
-.public FieldSys_GetSaveDataPtr
+.public FieldSystem_GetSaveDataPtr
 .public StartMapSceneScript
 .public QueueScript
 .public FlagGet
@@ -209,7 +209,7 @@
 .public SaveArray_Flags_Get
 .public CheckFlagInArray
 .public TaskManager_Call
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public TaskManager_GetStatePtr
 .public sub_02050B08
@@ -253,8 +253,8 @@
 .public sub_0205E38C
 .public sub_0205E420
 .public GetMapObjectByID
-.public MapObjectMan_GetCount
-.public MapObjectMan_GetObjects
+.public MapObjectManager_GetCount
+.public MapObjectManager_GetObjects
 .public sub_0205F1D0
 .public MapObject_GetID
 .public MapObject_GetGfxID

@@ -239,8 +239,8 @@ static void sub_02053210(FieldSystem *fsys) {
     } else {
         sub_02056E38();
         PlayerAvatar_FreeToHeap(fsys->playerAvatar);
-        MapObjectMan_RemoveAllActiveObjects(fsys->mapObjectMan);
-        MapObjectMan_Delete(fsys->mapObjectMan);
+        MapObjectManager_RemoveAllActiveObjects(fsys->mapObjectMan);
+        MapObjectManager_Delete(fsys->mapObjectMan);
     }
 }
 
@@ -323,7 +323,7 @@ static void _SetDynamicWarpToUnionRoomExit(FieldSystem *fsys) {
 }
 
 static BOOL FieldTask_NewGame(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
 
     switch (*state_p) {
@@ -352,7 +352,7 @@ TaskManager *CallFieldTask_NewGame(FieldSystem *fsys) {
 }
 
 static BOOL FieldTask_ContinueGame_Normal(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     ScriptState *scriptState = SaveArray_Flags_Get(fsys->savedata);
     LocalFieldData *localFieldData;
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
@@ -395,7 +395,7 @@ TaskManager *CallFieldTask_ContinueGame_Normal(FieldSystem *fsys) {
 }
 
 static BOOL FieldTask_ContinueGame_CommError(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     struct ErrorContinueEnv *env = TaskManager_GetEnv(taskManager);
     ScriptState *scriptState = SaveArray_Flags_Get(fsys->savedata);
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
@@ -457,7 +457,7 @@ TaskManager *CallFieldTask_ContinueGame_CommError(FieldSystem *fsys) {
 }
 
 static BOOL sub_02053688(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     struct UnkTaskEnv_02053688 *env = TaskManager_GetEnv(taskManager);
 
     switch (env->unk0) {
@@ -495,7 +495,7 @@ static void sub_02053710(TaskManager *taskManager, Location *location) {
 }
 
 static BOOL sub_02053740(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     struct ErrorContinueEnv *env = TaskManager_GetEnv(taskManager);
 
     switch (env->state) {
@@ -520,7 +520,7 @@ static BOOL sub_02053740(TaskManager *taskManager) {
 }
 
 void sub_020537A8(TaskManager *taskManager, Location *location) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     struct ErrorContinueEnv *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct ErrorContinueEnv));
     if (sub_0203DF7C(fsys)) {
         GF_ASSERT(0);
@@ -544,7 +544,7 @@ void sub_020537F0(TaskManager *taskManager, u32 mapId, int warpId, int x, int y,
 }
 
 static BOOL Task_ScriptWarp(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     struct ErrorContinueEnv *env = TaskManager_GetEnv(taskManager);
 
     switch (env->state) {
@@ -611,7 +611,7 @@ void sub_02053908(TaskManager *taskManager, u32 mapId, int warpId, int x, int y,
 }
 
 static BOOL sub_02053950(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     struct UnkTaskEnv_02053950 *env = TaskManager_GetEnv(taskManager);
     Location *location = &env->location;
     switch (env->unk0) {
@@ -666,7 +666,7 @@ static void sub_02053A14(TaskManager *taskManager) {
 
 static BOOL sub_02053A2C(TaskManager *taskManager) {
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     switch (*state_p) {
     case 0:
         sub_020552A4(taskManager);
@@ -689,7 +689,7 @@ static BOOL sub_02053A2C(TaskManager *taskManager) {
 }
 
 static void sub_02053AA0(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     struct UnkTaskEnv_02053950 *env = TaskManager_GetEnv(taskManager);
     if (!sub_0203DF7C(fsys)) {
         GF_ASSERT(0);
@@ -719,7 +719,7 @@ void sub_02053B04(TaskManager *taskManager, Location *location, int a2) {
 }
 
 static BOOL sub_02053B3C(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     struct UnkTaskEnv_02053B3C *env = TaskManager_GetEnv(taskManager);
     Location *location = &env->location;
 
@@ -783,7 +783,7 @@ static void sub_02053C24(TaskManager *taskManager) {
 
 static BOOL sub_02053C3C(TaskManager *taskManager) {
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     struct UnkTaskEnv_02053B3C *env = TaskManager_GetEnv(taskManager); // unused
 
     switch (*state_p) {
@@ -804,7 +804,7 @@ static BOOL sub_02053C3C(TaskManager *taskManager) {
 }
 
 static void sub_02053C90(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     struct UnkTaskEnv_02053B3C *env = TaskManager_GetEnv(taskManager);
 
     if (!sub_0203DF7C(fsys)) {
@@ -815,7 +815,7 @@ static void sub_02053C90(TaskManager *taskManager) {
 }
 
 static BOOL sub_02053CCC(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     struct UnkTaskEnv_02053CCC *env = TaskManager_GetEnv(taskManager);
     Location *location = &env->location;
     struct LocalMapObject *follow_poke_obj;
@@ -894,7 +894,7 @@ TaskManager *sub_02053E08(FieldSystem *fsys, u32 mapId, int warpId) {
 }
 
 static BOOL sub_02053E5C(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     struct UnkTaskEnv_02053E5C *env = TaskManager_GetEnv(taskManager);
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
     Location *location = &env->location;
@@ -948,7 +948,7 @@ void sub_02053F14(FieldSystem *fsys) {
 }
 
 static BOOL sub_02053F70(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     struct UnkTaskEnv_02053E5C *env = TaskManager_GetEnv(taskManager);
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
     Location *location = &env->location;
@@ -994,7 +994,7 @@ static BOOL sub_02053F70(TaskManager *taskManager) {
 }
 
 void sub_02054030(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     Location *location = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fsys->savedata));
     struct UnkTaskEnv_02053E5C *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct UnkTaskEnv_02053E5C));
     MI_CpuClear8(env, sizeof(struct UnkTaskEnv_02053E5C));
@@ -1007,7 +1007,7 @@ void sub_02054030(TaskManager *taskManager) {
 }
 
 static BOOL sub_020540A4(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     struct UnkTaskEnv_02053688 *env = TaskManager_GetEnv(taskManager);
 
     switch (env->unk0) {
@@ -1039,7 +1039,7 @@ static BOOL sub_020540A4(TaskManager *taskManager) {
 
 void sub_0205412C(TaskManager *taskManager, u32 mapId, int warpId, int x, int y, int direction) {
     struct UnkTaskEnv_02053688 *env;
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     _CopyPlayerPosToLocationWorkFacingSouth(LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fsys->savedata)), fsys);
     fsys->unk70 = 3;
     env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct UnkTaskEnv_02053688));
@@ -1058,7 +1058,7 @@ void sub_0205412C(TaskManager *taskManager, u32 mapId, int warpId, int x, int y,
 }
 
 void sub_02054190(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     Location *location = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fsys->savedata));
     fsys->unk70 = 0;
     sub_02053710(fsys->taskman, location);

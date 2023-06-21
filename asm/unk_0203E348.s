@@ -513,7 +513,7 @@ sub_0203E600: ; 0x0203E600
 sub_0203E604: ; 0x0203E604
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetEnv
@@ -619,7 +619,7 @@ sub_0203E6D4: ; 0x0203E6D4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r7, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #0xc
@@ -829,7 +829,7 @@ sub_0203E878: ; 0x0203E878
 	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r6, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	ldr r1, [r5]
 	add r6, r0, #0
 	cmp r1, #0
@@ -943,7 +943,7 @@ sub_0203E960: ; 0x0203E960
 	add r6, r1, #0
 	str r2, [sp, #8]
 	add r7, r3, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	mov r0, #0x20
 	mov r1, #0x14
@@ -1165,7 +1165,7 @@ sub_0203EB08: ; 0x0203EB08
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	str r0, [r4]
 	mov r0, #0x43
 	lsl r0, r0, #2
@@ -1250,7 +1250,7 @@ sub_0203EBA4: ; 0x0203EBA4
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	str r0, [r4, #0xc]
 	mov r0, #0x43
 	lsl r0, r0, #2
@@ -1300,7 +1300,7 @@ Fsys_CreateApplication_AlphPuzzle: ; 0x0203EC04
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	str r0, [r4, #0xc]
 	mov r0, #0x43
 	lsl r0, r0, #2
@@ -1349,7 +1349,7 @@ CreateUnownReportWork: ; 0x0203EC64
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	str r0, [r4, #4]
 	mov r0, #0x43
 	lsl r0, r0, #2
@@ -1397,7 +1397,7 @@ CreateBerryPotsWork: ; 0x0203ECC0
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	str r0, [r4, #0xc]
 	mov r0, #0x43
 	lsl r0, r0, #2
@@ -1450,7 +1450,7 @@ CreateApricornBoxWork: ; 0x0203ED24
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	str r0, [r4, #0x18]
 	mov r0, #0x43
 	lsl r0, r0, #2
@@ -1495,7 +1495,7 @@ sub_0203ED80: ; 0x0203ED80
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	str r0, [r4, #0x18]
 	mov r0, #0x43
 	lsl r0, r0, #2
@@ -1576,7 +1576,7 @@ sub_0203EE24: ; 0x0203EE24
 	bl AllocFromHeapAtEnd
 	add r4, r0, #0
 	add r0, r5, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	bl Save_PlayerData_GetOptionsAddr
 	str r0, [r4, #4]
 	mov r0, #0x43
@@ -1640,7 +1640,7 @@ sub_0203EEA0: ; 0x0203EEA0
 	bl AllocFromHeapAtEnd
 	add r4, r0, #0
 	add r0, r5, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	add r6, r0, #0
 	bl Save_Pokeathlon_Get
 	bl sub_02031974
@@ -1675,7 +1675,7 @@ sub_0203EEE4: ; 0x0203EEE4
 	bl AllocFromHeapAtEnd
 	add r4, r0, #0
 	add r0, r5, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	add r6, r0, #0
 	bl Save_Pokeathlon_Get
 	add r7, r0, #0
@@ -1720,7 +1720,7 @@ sub_0203EF40: ; 0x0203EF40
 	bl AllocFromHeapAtEnd
 	add r4, r0, #0
 	add r0, r5, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	add r6, r0, #0
 	bl Save_Pokeathlon_Get
 	add r7, r0, #0
@@ -1766,7 +1766,7 @@ sub_0203EFA0: ; 0x0203EFA0
 	bl AllocFromHeapAtEnd
 	add r4, r0, #0
 	add r0, r5, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	add r7, r0, #0
 	bl Save_PlayerData_GetProfileAddr
 	add r6, r0, #0
@@ -1804,7 +1804,7 @@ sub_0203EFEC: ; 0x0203EFEC
 	add r4, r1, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	mov r1, #0xb
 	str r1, [sp]
 	add r1, r4, #0
@@ -1829,13 +1829,13 @@ CreateUseMailWork: ; 0x0203F018
 	add r6, r3, #0
 	cmp r5, #3
 	bne _0203F034
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	add r1, r4, #0
 	add r2, r6, #0
 	bl sub_02090F38
 	b _0203F042
 _0203F034:
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	add r1, r5, #0
 	add r2, r4, #0
 	add r3, r6, #0
@@ -1855,7 +1855,7 @@ sub_0203F050: ; 0x0203F050
 	add r4, r1, #0
 	add r6, r2, #0
 	add r5, r0, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	add r1, r4, #0
 	add r2, r6, #0
 	bl sub_02090F00
@@ -1877,7 +1877,7 @@ sub_0203F074: ; 0x0203F074
 	bl AllocFromHeap
 	add r4, r0, #0
 	add r0, r5, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	str r0, [r4]
 	mov r0, #0x43
 	lsl r0, r0, #2
@@ -1964,7 +1964,7 @@ sub_0203F0D0: ; 0x0203F0D0
 sub_0203F134: ; 0x0203F134
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetEnv
@@ -2169,7 +2169,7 @@ sub_0203F2C8: ; 0x0203F2C8
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x2c
 	add r6, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r6, #0
 	bl TaskManager_GetEnv
@@ -2513,7 +2513,7 @@ _0203F57C: .word _02102830
 sub_0203F580: ; 0x0203F580
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetEnv
@@ -2618,7 +2618,7 @@ _0203F64C: .word _02102610
 NamingScreen_SetName: ; 0x0203F650
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetEnv
@@ -2695,7 +2695,7 @@ CreateNamingScreen: ; 0x0203F6E0
 	str r2, [sp, #0xc]
 	str r3, [sp, #0x10]
 	ldr r5, [sp, #0x2c]
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	mov r0, #0xb
 	mov r1, #0x14
@@ -3119,7 +3119,7 @@ LaunchVoltorbFlipApp: ; 0x0203FA38
 	add r4, r0, #0
 	bl MI_CpuFill8
 	add r0, r5, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	add r6, r0, #0
 	bl Save_PlayerData_GetCoinsAddr
 	str r0, [r4, #4]
@@ -3437,7 +3437,7 @@ sub_0203FCB8: ; 0x0203FCB8
 	add r4, r0, #0
 	bl memset
 	add r0, r6, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	str r0, [r4]
 	add r3, r4, #4
 	mov r2, #9

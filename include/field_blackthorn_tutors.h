@@ -5,7 +5,7 @@
 #include "pokemon_types_def.h"
 typedef struct MoveRelearner { //todo: move to unk_0203E348? rename to MoveRelearnerAppData?
     Pokemon *mon;
-    PLAYERPROFILE *profile;
+    PlayerProfile *profile;
     OPTIONS *options;
     u8 filler_0C[4];
     u16 *eligibleMoves;

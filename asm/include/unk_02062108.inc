@@ -7,7 +7,7 @@
 .public FreeToHeapExplicit
 .public sub_0201F988
 .public GF_AssertFail
-.public MapObjectMan_GetHeapID
+.public MapObjectManager_GetHeapID
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
 .public MapObject_TestFlagsBits

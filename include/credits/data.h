@@ -44,7 +44,7 @@ typedef struct {
     CutsceneSpriteParam spriteParam[SPRITES_PER_CUTSCENE];
 } Cutscene;
 
-static const WINDOWTEMPLATE ov76_021E6E98 = {
+static const WindowTemplate ov76_021E6E98 = {
     .bgId      = 0x05,
     .left      = 0x03,
     .top       = 0x00,

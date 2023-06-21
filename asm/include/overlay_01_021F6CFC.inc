@@ -34,7 +34,7 @@
 .public sub_0203E30C
 .public FieldSys_CreateTask
 .public TaskManager_Call
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public sub_0205B514
 .public sub_0205B564

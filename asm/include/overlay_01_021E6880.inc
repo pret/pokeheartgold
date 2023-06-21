@@ -126,7 +126,7 @@
 .public MapObject_GetType
 .public MapObject_GetScript
 .public sub_0205F504
-.public MapObjectMan_PauseAllMovement
+.public MapObjectManager_PauseAllMovement
 .public MapObject_UnpauseMovement
 .public TryGetSeenByNpcTrainers
 .public UseRegisteredItemButtonInField

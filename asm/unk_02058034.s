@@ -113,7 +113,7 @@ sub_020580E4: ; 0x020580E4
 	cmp r0, #0
 	bne _0205811C
 	add r0, r5, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	mov r1, #0
 	add r3, r5, #0
 	str r1, [sp]
@@ -145,7 +145,7 @@ sub_02058124: ; 0x02058124
 	cmp r0, #0
 	bne _0205815C
 	add r0, r5, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	mov r1, #0
 	add r3, r5, #0
 	str r1, [sp]

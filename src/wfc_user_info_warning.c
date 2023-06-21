@@ -49,7 +49,7 @@ static const BGTEMPLATE sWFCWarningBgTemplate = {
     .mosaic = FALSE,
 };
 
-static const WINDOWTEMPLATE sWFCWarningWindowTemplate = {
+static const WindowTemplate sWFCWarningWindowTemplate = {
     .bgId = 0,
     .left = 3,
     .top = 3,
@@ -61,7 +61,7 @@ static const WINDOWTEMPLATE sWFCWarningWindowTemplate = {
 
 void ShowWFCUserInfoWarning(HeapID heap_id, int a1) {
 #pragma unused(a1)
-    WINDOW window;
+    Window window;
 
     sub_0200FBF4(0, 0);
     sub_0200FBF4(1, 0);
@@ -96,7 +96,7 @@ void ShowWFCUserInfoWarning(HeapID heap_id, int a1) {
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB(1, 1, 27));
 
     MSGDATA* warnings_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0800_bin, heap_id);
-    STRING* warning_string = String_New(384, heap_id);
+    String* warning_string = String_New(384, heap_id);
 
     ResetAllTextPrinters();
 

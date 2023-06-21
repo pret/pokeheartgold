@@ -6,10 +6,10 @@
 .public Save_PlayerData_GetOptionsAddr
 .public UpdatePokedexWithReceivedSpecies
 .public MapHeader_GetMapSec
-.public FieldSys_GetSaveDataPtr
+.public FieldSystem_GetSaveDataPtr
 .public TaskManager_Call
 .public CallApplicationAsTask
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public sub_0205525C
 .public sub_020552A4

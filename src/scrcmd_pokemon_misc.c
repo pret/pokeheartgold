@@ -43,9 +43,9 @@
 typedef struct UnkStructScr_648 {
     FieldSystem *fsys;
     SysTask *sysTask;
-    WINDOW window_8;
-    WINDOW *window_18;
-    STRING *stringArr_1C[120];
+    Window window_8;
+    Window *window_18;
+    String *stringArr_1C[120];
     MSGDATA *msgdata;
     MessageFormat *msgfmt;
     u8 unk_204;
@@ -74,8 +74,8 @@ typedef struct UnkStructScr_648 {
 static BOOL ov01_02200C6C(ScriptContext *ctx);
 static void *ov01_02200C94(HeapID heapId, s32 fileId, u32 *unkPtr);
 static void ov01_02200CB4(SCR_648_STRUCT *unkPtr, MSGDATA *msgdata);
-static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, s16 *input, MessageFormat *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove);
-static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fsys, u8 x, u8 y, u8 a3, u8 a4, s16* input, MessageFormat *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove);
+static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, s16 *input, MessageFormat *msgfmt, Window *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove);
+static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fsys, u8 x, u8 y, u8 a3, u8 a4, s16* input, MessageFormat *msgfmt, Window *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove);
 static void ov01_02200DF8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3);
 static void ov01_02200E00(SCR_648_STRUCT *unkPtr);
 static void ov01_02200EC8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3);
@@ -85,7 +85,7 @@ static void ov01_02201088(struct ListMenu *listMenu, s32 unused1, u8 unused2);
 static void ov01_022010CC(SysTask *sysTask, void *work);
 static void ov01_0220116C(SCR_648_STRUCT *unkPtr);
 static void GetHiddenPowerPowerType(Pokemon *mon, s32 *power, s32 *type);
-static LocalMapObject *ov01_02201F98(MapObjectMan *mapObjectMan, u8 unkA, u16 species, u16 forme, u32 gender, u32 x, u32 y, u32 mapId);
+static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectMan, u8 unkA, u16 species, u16 forme, u32 gender, u32 x, u32 y, u32 mapId);
 
 extern u16 ov01_02209AE0[10];
 
@@ -102,7 +102,7 @@ BOOL ScrCmd_648(ScriptContext *ctx) {
     u16 *data;
     u16 *cursorPos;
     u16 *itemsAbove;
-    WINDOW *window;
+    Window *window;
     MessageFormat **msgfmt;
     MSGDATA *msgdata;
     FieldSystem *fsys = ctx->fsys;
@@ -175,7 +175,7 @@ static void ov01_02200CB4(SCR_648_STRUCT *unkPtr, MSGDATA *msgdata) {
     unkPtr->msgdata = msgdata;
 }
 
-static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, s16 *input, MessageFormat *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove) {
+static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, s16 *input, MessageFormat *msgfmt, Window *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove) {
     int i;
     unkPtr->msgdata = msgdata;
     unkPtr->unk_207 = unkPtr->unk_207 & ~0x2;
@@ -208,7 +208,7 @@ static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y,
     *unkPtr->input = 0xEEEE;
 }
 
-static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fsys, u8 x, u8 y, u8 a3, u8 a4, s16* input, MessageFormat *msgfmt, WINDOW *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove) {
+static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fsys, u8 x, u8 y, u8 a3, u8 a4, s16* input, MessageFormat *msgfmt, Window *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove) {
     SCR_648_STRUCT *unkPtr = AllocFromHeap(HEAP_ID_4, sizeof(SCR_648_STRUCT));
     if (!unkPtr) {
         return NULL;
@@ -237,7 +237,7 @@ static void ov01_02200E00(SCR_648_STRUCT *unkPtr) {
 }
 
 static void ov01_02200EC8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3) {
-    STRING *str = String_New(0x50, HEAP_ID_4);
+    String *str = String_New(0x50, HEAP_ID_4);
     ReadMsgDataIntoString(unkPtr->msgdata, strNo, str);
     StringExpandPlaceholders(unkPtr->msgfmt, unkPtr->stringArr_1C[unkPtr->totalItems], str);
     unkPtr->items[unkPtr->totalItems].text = unkPtr->stringArr_1C[unkPtr->totalItems];
@@ -605,7 +605,7 @@ BOOL ScrCmd_GetPartyMonForme(ScriptContext *ctx) {
 BOOL ScrCmd_699(ScriptContext *ctx) {
     u32 unkVar;
     FieldSystem *fsys;
-    MapObjectMan *mapObjectMan;
+    MapObjectManager *mapObjectMan;
     LocalMapObject *playerObj;
     LocalMapObject *curObj;
     Sprite *sprite;
@@ -643,7 +643,7 @@ BOOL ScrCmd_699(ScriptContext *ctx) {
 BOOL ScrCmd_700(ScriptContext *ctx) {
     u32 index = 0;
     FieldSystem *fsys;
-    MapObjectMan *mapObjectMan;
+    MapObjectManager *mapObjectMan;
     LocalMapObject *playerObj;
     LocalMapObject *curObj;
 
@@ -873,7 +873,7 @@ BOOL ScrCmd_741(ScriptContext *ctx) {
     u16 *price;
     u16 *unkPtrA;
     u16 *unkPtrC;
-    STRING *str;
+    String *str;
 
     apricornBox = Save_ApricornBox_Get(ctx->fsys->savedata);
     msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
@@ -943,7 +943,7 @@ BOOL ScrCmd_CreatePokeathlonFriendshipRoomStatues(ScriptContext *ctx) {
     return TRUE;
 }
 
-static LocalMapObject *ov01_02201F98(MapObjectMan *mapObjectMan, u8 unkA, u16 species, u16 forme, u32 gender, u32 x, u32 y, u32 mapId) {
+static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectMan, u8 unkA, u16 species, u16 forme, u32 gender, u32 x, u32 y, u32 mapId) {
     LocalMapObject *mapObj;
     u32 spriteId;
     u32  size;
@@ -1011,7 +1011,7 @@ BOOL ScrCmd_GiveTogepiEgg(ScriptContext *ctx) {
     u8 pp;
     u16 moveData;
     Pokemon *mon;
-    PLAYERPROFILE *profile;
+    PlayerProfile *profile;
     PARTY *party;
     FieldSystem *fsys = ctx->fsys;
 
@@ -1074,7 +1074,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx) {
     Pokemon *mon;
     PARTY *party;
     FieldSystem *fsys;
-    PLAYERPROFILE *profile;
+    PlayerProfile *profile;
 
     fsys = ctx->fsys;
 

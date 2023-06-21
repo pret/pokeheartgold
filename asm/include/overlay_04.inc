@@ -22,11 +22,11 @@
 .public Save_GetGymmickPtr
 .public SavGymmick_AssertMagic_GetData
 .public SavGymmick_GetType
-.public FieldSys_GetSaveDataPtr
+.public FieldSystem_GetSaveDataPtr
 .public FieldSysGetAttrAddr
 .public FieldSys_CreateTask
 .public TaskManager_Call
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public TaskManager_GetStatePtr
 .public sub_020548C0
@@ -42,8 +42,8 @@
 .public PlayerAvatar_ToggleAutomaticHeightUpdating
 .public PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
 .public GetMapObjectByID
-.public MapObjectMan_GetCount
-.public MapObjectMan_GetObjects
+.public MapObjectManager_GetCount
+.public MapObjectManager_GetObjects
 .public sub_0205F1D0
 .public MapObject_GetID
 .public MapObject_IsInUse

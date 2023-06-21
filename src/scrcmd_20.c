@@ -225,7 +225,7 @@ static BOOL sub_0204F228(TaskManager *taskManager) {
 }
 
 static void sub_0204F284(TaskManager *taskManager, void *a1, BattleHallChallengeType challengeType) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     UnkStruct_0204F284 *r4 = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0204F284));
     MI_CpuFill8(r4, 0, sizeof(UnkStruct_0204F284));
     r4->challengeType = challengeType;
@@ -234,7 +234,7 @@ static void sub_0204F284(TaskManager *taskManager, void *a1, BattleHallChallenge
 }
 
 static BOOL sub_0204F2B8(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     UnkStruct_0204F284 *r4 = TaskManager_GetEnv(taskManager);
     switch (r4->state) {
         case 0:

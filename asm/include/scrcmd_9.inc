@@ -55,7 +55,7 @@
 .public sub_02037C0C
 .public LocalFieldData_GetDynamicWarp
 .public Save_LocalFieldData_Get
-.public FieldSys_GetSaveDataPtr
+.public FieldSystem_GetSaveDataPtr
 .public SetupNativeScript
 .public ScriptReadHalfword
 .public FieldSysGetAttrAddr

@@ -101,7 +101,7 @@ void FieldSys_RockSmashItemCheck(FieldSystem *fsys, int followMonKnowsHm, u16 *i
 
 static BOOL Task_RockSmashItemCheck(TaskManager *taskman) {
     BATTLE_SETUP *setup;
-    FieldSystem *fsys = TaskManager_GetSys(taskman);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskman);
     RockSmashItemCheckWork *env = TaskManager_GetEnv(taskman);
 
     if (ov02_022470A0(fsys, &setup)) {
@@ -175,7 +175,7 @@ static BOOL Task_GetRockSmashItem(TaskManager *taskman) {
 
     int *state_p = TaskManager_GetStatePtr(taskman);
     RockSmashItemCheckWork *env = TaskManager_GetEnv(taskman);
-    FieldSystem *fsys = TaskManager_GetSys(taskman);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskman);
 
     switch (*state_p) {
     case 0:
