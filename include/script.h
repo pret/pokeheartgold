@@ -54,7 +54,7 @@ typedef struct ScriptEnvironment {
     u16 activeScriptNumber;
     u32 battleWinFlag;
     u32 unk_10;
-    WINDOW unk_14;
+    Window unk_14;
     struct ListMenu2D *listMenu2D;
     int facingDirection;
     LocalMapObject *lastInteracted;
@@ -72,9 +72,9 @@ typedef struct ScriptEnvironment {
     void *miscDataPtr;
     void *unk_B4;
     void *unk_B8; //PlayerMovementState
-    WINDOW *pointsBox;
+    Window *pointsBox;
     u8 padding[0xC]; //FIXME: ugly hack
-    WINDOW *moneyBox;
+    Window *moneyBox;
     u8 padding2[0xC]; //FIXME: ugly hack 2
     struct SaveStatsPrinter *saveStatsPrinter;
 } ScriptEnvironment;

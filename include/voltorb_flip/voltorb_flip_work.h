@@ -36,7 +36,7 @@ typedef struct VoltorbFlipAppWork {
     BGCONFIG *bgConfig;
     void *unk1C;
     void *unk20;
-    WINDOW windows[17];
+    Window windows[17];
     LISTMENUITEM *menuItems[2];
     void *unk13C;
     String *string;

@@ -179,8 +179,8 @@ struct ChooseStarterAppWork {
     u32 curSelection;
     fx16 rotationAngle;
     fx16 rotationSpeed;
-    WINDOW *winTop;
-    WINDOW *winBottom;
+    Window *winTop;
+    Window *winBottom;
     u8 frame; // 3A4
     u8 textSpeed;
     u8 subPrinterId;
@@ -230,9 +230,9 @@ static BOOL updateBaseRotation(struct ChooseStarterAppWork *work, fx16 speed);
 static void reinitBallModelPosInDirection(struct ChooseStarterAppWork *work, int direction);
 static void makeAndDrawWindows(struct ChooseStarterAppWork *work);
 static void loadBgGraphics(BGCONFIG *bgConfig, HeapID heapId);
-static u8 printMsgOnWinEx(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, String **out);
+static u8 printMsgOnWinEx(Window *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, String **out);
 static void printMsgOnBottom(struct ChooseStarterAppWork *work, int msgId);
-static void freeWindow(WINDOW *window);
+static void freeWindow(Window *window);
 static int getInput(struct ChooseStarterAppWork *work);
 static int getRotateDirection(int a0, u8 a1, int a2);
 static int getTappedBallId(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 radius);
@@ -1046,7 +1046,7 @@ static void loadBgGraphics(BGCONFIG *bgConfig, HeapID heapId) {
     G2S_SetBlendAlpha(4, 34, 5, 11);
 }
 
-static u8 printMsgOnWinEx(WINDOW *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, String **out) {
+static u8 printMsgOnWinEx(Window *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, String **out) {
     MSGDATA *msgData;
     u8 ret;
     GF_ASSERT(*out == NULL);
@@ -1070,7 +1070,7 @@ static void printMsgOnBottom(struct ChooseStarterAppWork *work, int msgId) {
     String_Delete(string);
 }
 
-static void freeWindow(WINDOW *window) {
+static void freeWindow(Window *window) {
     RemoveWindow(window);
     FreeToHeap(window);
 }

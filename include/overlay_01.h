@@ -51,11 +51,11 @@ void ov01_021EF4C4(struct UnkStruct_Ov01_021EF4C4*, ScriptContext* ctx);
 void ov01_021EF4DC(ScriptContext* ctx, MSGDATA* msg_data, u16 msg_no, u8 can_ab_speed_up, struct UnkStruct_Ov01_021EF4C4*);
 void ov01_021F3D68(struct FieldSystemUnkSub68*, u8, u16);
 void ov01_021F3D70(struct FieldSystemUnkSub68*, u8);
-WINDOW* ov01_021F3D80(struct FieldSystemUnkSub68*);
+Window* ov01_021F3D80(struct FieldSystemUnkSub68*);
 u8 ov01_021F3D84(struct FieldSystemUnkSub68*);
 BOOL ov01_021F3D88(struct FieldSystemUnkSub68*);
 void ov01_021F3D98(FieldSystem* fsys);
-struct UnkStruct_ov01_021EDC28 *ov01_021EDF78(FieldSystem *fsys, u8 x, u8 y, u8 initCursorPos, u8 cancellable, u16 *ret_p, MessageFormat *msgFmt, WINDOW *window, MSGDATA *msgData);
+struct UnkStruct_ov01_021EDC28 *ov01_021EDF78(FieldSystem *fsys, u8 x, u8 y, u8 initCursorPos, u8 cancellable, u16 *ret_p, MessageFormat *msgFmt, Window *window, MSGDATA *msgData);
 struct UnkStruct_ov01_021EDC28 **ov01_021F6B20(FieldSystem *fsys);
 void ov01_021EDC7C(struct UnkStruct_ov01_021EDC28 *menu, u32 msgId, u32 value);
 void ov01_021EDC84(struct UnkStruct_ov01_021EDC28 *menu);
@@ -130,8 +130,8 @@ struct BankTransactionWork {
 };
 
 void ov01_02204ED8(FieldSystem *fsys, u16 *a1);
-WINDOW *ov01_021EEF68(FieldSystem *fsys, u16 a1);
-void ov01_021EEF88(WINDOW *window);
+Window *ov01_021EEF68(FieldSystem *fsys, u16 a1);
+void ov01_021EEF88(Window *window);
 BOOL ov01_02206268(FieldSystem *fsys);
 
 #endif //POKEHEARTGOLD_OVERLAY_01_H

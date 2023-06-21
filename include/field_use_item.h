@@ -72,7 +72,7 @@ struct UseItemInPartyTaskEnv {
 };
 
 struct RegisteredKeyItemUseMessagePrintTaskData {
-    WINDOW window;
+    Window window;
     String *strbuf;
     u16 printerId;
     u16 state;

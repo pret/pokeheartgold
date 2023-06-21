@@ -31,7 +31,7 @@ union StrbufForPrint {
 
 struct TextPrinterTemplate {
     union StrbufForPrint currentChar;
-    WINDOW *window;
+    Window *window;
     u8 padding[1];
     FontID fontId;
     u8 x, y;

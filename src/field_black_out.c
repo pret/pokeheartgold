@@ -22,7 +22,7 @@ struct BlackoutScreenWork {
     int state;
     FieldSystem *fsys;
     BGCONFIG *bgConfig;
-    WINDOW window;
+    Window window;
     MSGDATA *msgData;
     MessageFormat *msgFmt;
 };
@@ -85,7 +85,7 @@ static void DrawBlackoutMessage(FieldSystem *fsys, TaskManager *taskManager) {
     env->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0203_bin, (HeapID)11);
     env->msgFmt = MessageFormat_New((HeapID)11);
     {
-        static const WINDOWTEMPLATE _020FC51C = {
+        static const WindowTemplate _020FC51C = {
             3,
             4,
             5,

@@ -54,7 +54,7 @@ static const BGTEMPLATE sErrorMessageBgTemplate = {
     .mosaic = FALSE,
 };
 
-static const WINDOWTEMPLATE sErrorMessageWindowTemplate = {
+static const WindowTemplate sErrorMessageWindowTemplate = {
     .bgId = GF_BG_LYR_MAIN_0,
     .left = 3,
     .top = 3,
@@ -77,7 +77,7 @@ static void VBlankIntr() {
 }
 
 void PrintErrorMessageAndReset(void) {
-    WINDOW window;
+    Window window;
 
     if (sErrorMessagePrinterLock == TRUE) {
         return;

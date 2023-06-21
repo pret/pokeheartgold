@@ -49,7 +49,7 @@ static const BGTEMPLATE sWFCWarningBgTemplate = {
     .mosaic = FALSE,
 };
 
-static const WINDOWTEMPLATE sWFCWarningWindowTemplate = {
+static const WindowTemplate sWFCWarningWindowTemplate = {
     .bgId = 0,
     .left = 3,
     .top = 3,
@@ -61,7 +61,7 @@ static const WINDOWTEMPLATE sWFCWarningWindowTemplate = {
 
 void ShowWFCUserInfoWarning(HeapID heap_id, int a1) {
 #pragma unused(a1)
-    WINDOW window;
+    Window window;
 
     sub_0200FBF4(0, 0);
     sub_0200FBF4(1, 0);

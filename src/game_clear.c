@@ -36,7 +36,7 @@ typedef struct {
     HOFCongratsAppArgs hofCongratsArgs;
     CreditsAppArgs creditsArgs;
     BGCONFIG *bgConfig;
-    WINDOW window;
+    Window window;
     String *windowText;
     WaitingIcon *waitingIcon;
     int printerId;

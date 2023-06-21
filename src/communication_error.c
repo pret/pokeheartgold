@@ -51,7 +51,7 @@ static const BGTEMPLATE sCommunicationErrorBgTemplate = {
     .mosaic = FALSE,
 };
 
-static const WINDOWTEMPLATE sCommunicationErrorWindowTemplate = {
+static const WindowTemplate sCommunicationErrorWindowTemplate = {
     .bgId = GF_BG_LYR_MAIN_0,
     .left = 3,
     .top = 3,
@@ -85,7 +85,7 @@ static BOOL sub_0203A9FC(u32* error_code_ptr) {
 }
 
 void ShowCommunicationError(HeapID heap_id, u32 error, u32 error_code) {
-    WINDOW window;
+    Window window;
 
     s32 msg_no;
     switch (error) {

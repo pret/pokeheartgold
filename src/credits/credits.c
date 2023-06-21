@@ -119,7 +119,7 @@ typedef struct {
 
 typedef struct {
     MSGDATA *msgData;
-    WINDOW window;
+    Window window;
     String *string;
     PageDisplayWork pageDisplayWork;
     PageState pageState;

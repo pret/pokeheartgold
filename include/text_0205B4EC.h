@@ -5,11 +5,11 @@
 #include "pm_string.h"
 #include "window.h"
 
-void sub_0205B514(BGCONFIG *bgConfig, WINDOW *window, int a2);
-void sub_0205B564(WINDOW *window, OPTIONS *options);
-u8 sub_0205B5B4(WINDOW *window, String *string, OPTIONS *options, BOOL speedupFlag);
+void sub_0205B514(BGCONFIG *bgConfig, Window *window, int a2);
+void sub_0205B564(Window *window, OPTIONS *options);
+u8 sub_0205B5B4(Window *window, String *string, OPTIONS *options, BOOL speedupFlag);
 BOOL IsPrintFinished(u8 printerId);
-void sub_0205B5A8(WINDOW *window);
-u32 sub_0205B5EC(WINDOW *window, String *message, FontID fontId, u32 textFrame, u8 speedUpEnabled, u32 a4);
+void sub_0205B5A8(Window *window);
+u32 sub_0205B5EC(Window *window, String *message, FontID fontId, u32 textFrame, u8 speedUpEnabled, u32 a4);
 
 #endif //POKEHEARTGOLD_TEXT_0205B4EC_H

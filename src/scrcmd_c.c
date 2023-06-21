@@ -110,7 +110,7 @@ void Script_SetMonSeenFlagBySpecies(FieldSystem *fsys, u16 species);
 
 #include "data/fieldmap.h"
 
-static const WINDOWTEMPLATE _020FAC94 = {
+static const WindowTemplate _020FAC94 = {
     .bgId = 3,
     .left = 25,
     .top = 13,
@@ -676,7 +676,7 @@ BOOL ScrCmd_OpenMsg(ScriptContext* ctx) {
 
 BOOL ScrCmd_CloseMsg(ScriptContext* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    WINDOW* window = FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW);
+    Window* window = FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW);
     u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_08);
 
     ClearFrameAndWindow2(window, 0);
@@ -690,7 +690,7 @@ BOOL ScrCmd_CloseMsg(ScriptContext* ctx) {
 
 BOOL ScrCmd_HoldMsg(ScriptContext* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    WINDOW* window = FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW);
+    Window* window = FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW);
     u8* unk = FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_08);
 
     RemoveWindow(window);
@@ -783,7 +783,7 @@ BOOL ScrCmd_DirectionSignpost(ScriptContext* ctx) {
 
     ReadMsgDataIntoString(ctx->msgdata, msg_no, *tmp_str);
     StringExpandPlaceholders(*msg_fmt, *unk1, *tmp_str);
-    WINDOW* window = ov01_021F3D80(fsys->unk68);
+    Window* window = ov01_021F3D80(fsys->unk68);
     AddTextPrinterParameterized2(window, 1, *unk1, 0, 0, 0, MakeTextColor(2, 10, 15), NULL);
 
     return TRUE;
@@ -841,7 +841,7 @@ BOOL ScrCmd_TrainerTips(ScriptContext* ctx) {
     sub_02002B50(FALSE);
     sub_02002B8C(FALSE);
 
-    WINDOW* window = ov01_021F3D80(fsys->unk68);
+    Window* window = ov01_021F3D80(fsys->unk68);
     u8 text_speed = Options_GetTextFrameDelay(Save_PlayerData_GetOptionsAddr(fsys->savedata));
     *printer_id_ptr = AddTextPrinterParameterized2(window, 1, *unk, 0, 0, text_speed, MakeTextColor(2, 10, 15), NULL);
 
@@ -959,7 +959,7 @@ BOOL sub_020416E4(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_AddWaitingIcon(ScriptContext *ctx) {
-    WINDOW *window = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WINDOW);
+    Window *window = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WINDOW);
     WaitingIcon **waitingIcon = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_WAITING_ICON);
     *waitingIcon = WaitingIcon_New(window, 0x3E2);
     return FALSE;
@@ -5286,14 +5286,14 @@ BOOL ScrCmd_800(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_801(ScriptContext *ctx) {
-    WINDOW **p_moneyBox = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MONEY_BOX);
+    Window **p_moneyBox = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MONEY_BOX);
     u16 *p_var = ScriptGetVarPointer(ctx);
     *p_moneyBox = ov01_021EEF68(ctx->fsys, *p_var);
     return FALSE;
 }
 
 BOOL ScrCmd_802(ScriptContext *ctx) {
-    WINDOW **p_moneyBox = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MONEY_BOX);
+    Window **p_moneyBox = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MONEY_BOX);
     ov01_021EEF88(*p_moneyBox);
     return FALSE;
 }

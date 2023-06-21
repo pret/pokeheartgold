@@ -6,7 +6,7 @@
 
 struct ListMenu2DTemplate {
     LISTMENUITEM *items;
-    WINDOW *window;
+    Window *window;
     u8 fontId;
     u8 itemsWide;
     u8 itemsHigh;
@@ -35,8 +35,8 @@ struct ListMenu2D *Create2dMenu(const struct ListMenu2DTemplate *template, u8 in
 void Delete2dMenu(struct ListMenu2D *menu, u8 *ret_p);
 int Handle2dMenuInput(struct ListMenu2D *menu);
 u8 Get2dMenuSelection(struct ListMenu2D *menu);
-struct ListMenu2D *CreateYesNoMenu(BGCONFIG *bgConfig, const WINDOWTEMPLATE *windowTemplate, u16 tileNum, u8 paletteNum, u8 initialSelection, HeapID heapId);
-struct ListMenu2D *Std_CreateYesNoMenu(BGCONFIG *bgConfig, const WINDOWTEMPLATE *windowTemplate, u16 tileNum, u8 paletteNum, HeapID heapId);
+struct ListMenu2D *CreateYesNoMenu(BGCONFIG *bgConfig, const WindowTemplate *windowTemplate, u16 tileNum, u8 paletteNum, u8 initialSelection, HeapID heapId);
+struct ListMenu2D *Std_CreateYesNoMenu(BGCONFIG *bgConfig, const WindowTemplate *windowTemplate, u16 tileNum, u8 paletteNum, HeapID heapId);
 int Handle2dMenuInput_DeleteOnFinish(struct ListMenu2D *menu, HeapID heapId);
 void Clear2dMenuWindowAndDelete(struct ListMenu2D *menu, HeapID heapId);
 

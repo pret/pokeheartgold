@@ -17,7 +17,7 @@ typedef struct MessageBox {
     String *message;
     String *buffer;
     MessageFormat *messageFormat;
-    WINDOW *window;
+    Window *window;
     u8 *unk10;
     u8 *textPrinterNumPtr;
 } MessageBox;
@@ -258,7 +258,7 @@ static void ovFieldMain_GetMsgBoxParameters(FieldSystem *fsys, MessageBox *messa
     messageBox->message = *(String **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
     messageBox->buffer = *(String **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
     messageBox->messageFormat = *(MessageFormat **)FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
-    messageBox->window = (WINDOW *)FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW);
+    messageBox->window = (Window *)FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW);
     messageBox->unk10 = (u8 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_08);
     messageBox->textPrinterNumPtr = (u8 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
 }
@@ -267,7 +267,7 @@ static void ovFieldMain_GetMsgBoxParametersEx(FieldSystem *fsys, MessageFormat *
     messageBox->message = *(String **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
     messageBox->buffer = *(String **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
     messageBox->messageFormat = messageFormat;
-    messageBox->window = (WINDOW *)FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW);
+    messageBox->window = (Window *)FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW);
     messageBox->unk10 = (u8 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_08);
     messageBox->textPrinterNumPtr = (u8 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
 }

@@ -90,7 +90,7 @@ typedef struct FieldEnvSubUnk18 {
 } FieldEnvSubUnk18;
 
 struct FieldSystemUnkSub68 {
-    WINDOW unk0;
+    Window unk0;
     u16 unk10;
     u8 unk12;
     u8 unk13_0:7;

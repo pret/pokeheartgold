@@ -102,8 +102,8 @@ static int ov122_021E7514(VoltorbFlipAppWork *);
 static void RenderTopScreen(VoltorbFlipAppWork *);
 static void AddWindows(VoltorbFlipAppWork *);
 static void ov122_021E765C(VoltorbFlipAppWork *);
-static void PaintMessageOnWindow(VoltorbFlipAppWork *, u8, u8, WINDOW *, u8, u8);
-static void PrintMessageOnWindow(VoltorbFlipAppWork *, FontID, u8, WINDOW *, u8, u8, u32);
+static void PaintMessageOnWindow(VoltorbFlipAppWork *, u8, u8, Window *, u8, u8);
+static void PrintMessageOnWindow(VoltorbFlipAppWork *, FontID, u8, Window *, u8, u8, u32);
 static void PrintMessageToSmallWindow(VoltorbFlipAppWork *, int);
 static void PrintTextWindow(VoltorbFlipAppWork *, int, int);
 static BOOL IsPrinterFinished(VoltorbFlipAppWork *);
@@ -144,7 +144,7 @@ extern const Unk122_021E92FC ov122_021E92FC;
 extern const Ov122_021E6C2C ov122_021E9344[4];
 extern const Unk122_021E9374 ov122_021E9374;
 extern const Unk122_021E9374 ov122_021E93A8;
-extern const WINDOWTEMPLATE sVoltorbFlipWindowTemplates[];
+extern const WindowTemplate sVoltorbFlipWindowTemplates[];
 extern const BgTemplates sVoltorbFlipBgTemplates;
 extern VoltorbFlipWorkflows sVoltorbFlipWorkflows;
 
@@ -1591,11 +1591,11 @@ static void ov122_021E765C(VoltorbFlipAppWork *work) {
 }
 
 // Like PrintMessageOnWindow but it gets printed all at once.
-static void PaintMessageOnWindow(VoltorbFlipAppWork *work, FontID fontId, u8 msgNo, WINDOW *window, u8 x, u8 y) {
+static void PaintMessageOnWindow(VoltorbFlipAppWork *work, FontID fontId, u8 msgNo, Window *window, u8 x, u8 y) {
     PrintMessageOnWindow(work, fontId, msgNo, window, x, y, 0x00010200);
 }
 
-static void PrintMessageOnWindow(VoltorbFlipAppWork *work, FontID fontId, u8 msgNo, WINDOW *window, u8 x, u8 y, u32 textSpeed) {
+static void PrintMessageOnWindow(VoltorbFlipAppWork *work, FontID fontId, u8 msgNo, Window *window, u8 x, u8 y, u32 textSpeed) {
     FillWindowPixelBuffer(window, 0);
 
     String *str = ReadMsgData_ExpandPlaceholders(work->msgFmt, work->msgData, msgNo, work->heapId);
@@ -1606,7 +1606,7 @@ static void PrintMessageOnWindow(VoltorbFlipAppWork *work, FontID fontId, u8 msg
 }
 
 static void PrintMessageToSmallWindow(VoltorbFlipAppWork *work, int msgNo) {
-    WINDOW *window = &work->wSmall;
+    Window *window = &work->wSmall;
 
     FillWindowPixelBuffer(window, 15);
 
@@ -1624,7 +1624,7 @@ static void PrintMessageToSmallWindow(VoltorbFlipAppWork *work, int msgNo) {
 // Prints a message in the main text window.
 static void PrintTextWindow(VoltorbFlipAppWork *work, int msgNo, int a2) {
     String *str;
-    WINDOW *window = &work->wMain;
+    Window *window = &work->wMain;
 
     GF_ASSERT(work->string == NULL);
 
