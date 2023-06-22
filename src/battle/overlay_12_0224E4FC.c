@@ -13,6 +13,7 @@
 #include "constants/items.h"
 #include "constants/moves.h"
 #include "constants/species.h"
+#include "msgdata/msg/msg_0197.h"
 
 static BOOL CheckFlyingImmunity(BATTLECONTEXT *ctx, int item, int index);
 static void ApplyEffectivenessFlags(int effectiveness, u32 *moveStatusFlag);
@@ -2016,49 +2017,49 @@ BOOL ov12_02251A28(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int mo
     
     if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_DISABLED) & MaskOfFlagNo(movePos)) {
         msg->tag = 10;
-        msg->id = 609;
+        msg->id = msg_0197_00609;
         msg->param[0] = CreateNicknameTag(ctx, battlerId);
         msg->param[1] = ctx->battleMons[battlerId].moves[movePos];
         ret = FALSE;
     } else if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_TORMENT) & MaskOfFlagNo(movePos)) {
         msg->tag = 2;
-        msg->id = 612;
+        msg->id = msg_0197_00612;
         msg->param[0] = CreateNicknameTag(ctx, battlerId);
         ret = FALSE;
     } else if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_TAUNT) & MaskOfFlagNo(movePos)) {
         msg->tag = 10;
-        msg->id = 613;
+        msg->id = msg_0197_00613;
         msg->param[0] = CreateNicknameTag(ctx, battlerId);
         msg->param[1] = ctx->battleMons[battlerId].moves[movePos];
         ret = FALSE;
     } else if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_IMPRISON) & MaskOfFlagNo(movePos)) {
         msg->tag = 10;
-        msg->id = 616;
+        msg->id = msg_0197_00616;
         msg->param[0] = CreateNicknameTag(ctx, battlerId);
         msg->param[1] = ctx->battleMons[battlerId].moves[movePos];
         ret = FALSE;
     } else if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_GRAVITY) & MaskOfFlagNo(movePos)) {
         msg->tag = 10;
-        msg->id = 1001;
+        msg->id = msg_0197_01001;
         msg->param[0] = CreateNicknameTag(ctx, battlerId);
         msg->param[1] = ctx->battleMons[battlerId].moves[movePos];
         ret = FALSE;
     } else if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_HEAL_BLOCK) & MaskOfFlagNo(movePos)) {
         msg->tag = 34;
-        msg->id = 1057;
+        msg->id = msg_0197_01057;
         msg->param[0] = CreateNicknameTag(ctx, battlerId);
         msg->param[1] = MOVE_HEAL_BLOCK;
         msg->param[2] = ctx->battleMons[battlerId].moves[movePos];
         ret = FALSE;
     } else if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_CHOICED) & MaskOfFlagNo(movePos)) {
         msg->tag = 24;
-        msg->id = 911;
+        msg->id = msg_0197_00911;
         msg->param[0] = ctx->battleMons[battlerId].item;
         msg->param[1] = ctx->battleMons[battlerId].unk88.moveNoChoice;
         ret = FALSE;
     } else if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_NO_PP) & MaskOfFlagNo(movePos)) {
         msg->tag = 0;
-        msg->id = 823;
+        msg->id = msg_0197_00823;
         ret = FALSE;
     } 
     
