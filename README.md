@@ -24,6 +24,7 @@ Other disassembly and/or decompilation projects:
 
 Gen 4 decompilation projects:
 * [**Pokémon Diamond and Pearl (pret)**](https://github.com/pret/pokediamond)
+* [**Pokémon Platinum (pret)**] (https://github.com/pret/pokeplatinum) 
 * [**Pokémon Platinum (JimB16)**](https://github.com/JimB16/PokePlat)
 * [**Pokémon Platinum (Ganix)**](https://github.com/KernelEquinox/PokePlatinum)
 
@@ -32,4 +33,4 @@ Gen 4 decompilation projects:
 You can find us on:
 
 * [Discord (VoidMatrix, #decomp)](https://discord.gg/prUAgd5).
-* [Discord (PRET, #pokediamond)](https://discord.gg/d5dubZ3)
+* [Discord (PRET, #pokeheartgold)](https://discord.gg/d5dubZ3)

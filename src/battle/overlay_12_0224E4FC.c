@@ -14,6 +14,9 @@
 #include "constants/moves.h"
 #include "constants/species.h"
 
+static BOOL CheckFlyingImmunity(BATTLECONTEXT *ctx, int item, int index);
+static void ApplyEffectivenessFlags(int effectiveness, u32 *moveStatusFlag);
+
 void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 selectedMon) {
     Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, selectedMon);
     int i;
@@ -2625,11 +2628,11 @@ void ov12_02252054(BATTLECONTEXT *ctx, int moveNo, int moveTypeDefault, int abil
             }
             if (sTypeEffectiveness[i][0] == moveType) {
                 u8 monType = sTypeEffectiveness[i][1]; 
-                if (type1 == monType && ov12_02252178(ctx, item, i) == TRUE) {
-                    ov12_022521C8(sTypeEffectiveness[i][2], moveStatusFlag);
+                if (type1 == monType && CheckFlyingImmunity(ctx, item, i) == TRUE) {
+                    ApplyEffectivenessFlags(sTypeEffectiveness[i][2], moveStatusFlag);
                 }
-                if ((type2 == monType) && (type1 != type2) && ov12_02252178(ctx, item, i) == TRUE) {
-                    ov12_022521C8(sTypeEffectiveness[i][2], moveStatusFlag);
+                if ((type2 == monType) && (type1 != type2) && CheckFlyingImmunity(ctx, item, i) == TRUE) {
+                    ApplyEffectivenessFlags(sTypeEffectiveness[i][2], moveStatusFlag);
                 }
             }
             i++;
@@ -2639,5 +2642,43 @@ void ov12_02252054(BATTLECONTEXT *ctx, int moveNo, int moveTypeDefault, int abil
     if (abilityAttacker != ABILITY_MOLD_BREAKER && abilityTarget == ABILITY_WONDER_GUARD && ov12_02258440(ctx, moveNo) &&
         (!(*moveStatusFlag & MOVE_STATUS_SUPER_EFFECTIVE) || (*moveStatusFlag & MOVE_STATUS_ANY_EFFECTIVE) == MOVE_STATUS_ANY_EFFECTIVE)) {
         *moveStatusFlag |= MOVE_STATUS_NO_EFFECT;
+    }
+}
+
+static BOOL CheckFlyingImmunity(BATTLECONTEXT *ctx, int item, int index) {
+    BOOL ret = TRUE;
+    
+    if (item == HOLD_EFFECT_SPEED_DOWN_GROUNDED && sTypeEffectiveness[index][1] == TYPE_FLYING && sTypeEffectiveness[index][2] == TYPE_MUL_NO_EFFECT) {
+        ret = FALSE;
+    }
+    
+    if (ctx->fieldCondition & FIELD_CONDITION_GRAVITY && sTypeEffectiveness[index][1] == TYPE_FLYING && sTypeEffectiveness[index][2] == TYPE_MUL_NO_EFFECT) {
+        ret = FALSE;
+    }
+    
+    return ret;
+}
+
+static void ApplyEffectivenessFlags(int effectiveness, u32 *moveStatusFlag) {
+    switch (effectiveness) {
+    case TYPE_MUL_NO_EFFECT:
+        *moveStatusFlag |= MOVE_STATUS_NO_EFFECT;
+        *moveStatusFlag &= ~MOVE_STATUS_NOT_VERY_EFFECTIVE;
+        *moveStatusFlag &= ~MOVE_STATUS_SUPER_EFFECTIVE;
+        break;
+    case TYPE_MUL_NOT_EFFECTIVE:
+        if (*moveStatusFlag & MOVE_STATUS_SUPER_EFFECTIVE) {
+            *moveStatusFlag &= ~MOVE_STATUS_SUPER_EFFECTIVE;
+        } else {
+            *moveStatusFlag |= MOVE_STATUS_NOT_VERY_EFFECTIVE;
+        }
+        break;
+    case TYPE_MUL_SUPER_EFFECTIVE:
+        if (*moveStatusFlag & MOVE_STATUS_NOT_VERY_EFFECTIVE) {
+            *moveStatusFlag &= ~MOVE_STATUS_NOT_VERY_EFFECTIVE;
+        } else {
+            *moveStatusFlag |= MOVE_STATUS_SUPER_EFFECTIVE;
+        }
+        break;
     }
 }

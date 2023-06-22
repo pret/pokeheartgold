@@ -108,6 +108,4 @@ BOOL BattleContext_CheckMoveUnuseableInGravity(BattleSystem *bsys, BATTLECONTEXT
 BOOL BattleContext_CheckMoveHealBlocked(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
 int ov12_02258440(BATTLECONTEXT *ctx, int moveNo);
 u32 ov12_022583B4(BATTLECONTEXT *ctx, int battlerIdA, u8 effectiveness, int damage, u32 movePower, u32 *moveStatusFlag);
-BOOL ov12_02252178(BATTLECONTEXT *ctx, int item, int index);
-void ov12_022521C8(u8 effectiveness, u32 *moveStatusFlag);
 #endif
