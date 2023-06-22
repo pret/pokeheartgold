@@ -2831,25 +2831,25 @@ BOOL BtlCmd_TryConversion2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             BattleScriptIncrementPointer(ctx, adrs);
             return FALSE;
         } else {
-            u8 typeA, typeB, val;
+            u8 typeMove, typeMon, val;
             moveType = ctx->conversion2Type[ctx->battlerIdAttacker];
 
             for (i = 0; i < 1000; i++) {
-                ov12_0225260C(bsys, 0xffff, &typeA, &typeB, &val);
-                if (typeA == moveType && val <= 5 && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != typeB && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != typeB) {
-                    ctx->battleMons[ctx->battlerIdAttacker].type1 = typeB;
-                    ctx->battleMons[ctx->battlerIdAttacker].type2 = typeB;
-                    ctx->msgWork = typeB;
+                GetTypeEffectivnessData(bsys, 0xffff, &typeMove, &typeMon, &val);
+                if (typeMove == moveType && val <= 5 && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != typeMon && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != typeMon) {
+                    ctx->battleMons[ctx->battlerIdAttacker].type1 = typeMon;
+                    ctx->battleMons[ctx->battlerIdAttacker].type2 = typeMon;
+                    ctx->msgWork = typeMon;
                     return FALSE;
                 }
             }
 
             i = 0;
-            while (ov12_0225260C(bsys, i, &typeA, &typeB, &val) == TRUE) {
-                if (typeA == moveType && val <= 5 && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != typeB && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != typeB) {
-                    ctx->battleMons[ctx->battlerIdAttacker].type1 = typeB;
-                    ctx->battleMons[ctx->battlerIdAttacker].type2 = typeB;
-                    ctx->msgWork = typeB;
+            while (GetTypeEffectivnessData(bsys, i, &typeMove, &typeMon, &val) == TRUE) {
+                if (typeMove == moveType && val <= 5 && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != typeMon && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != typeMon) {
+                    ctx->battleMons[ctx->battlerIdAttacker].type1 = typeMon;
+                    ctx->battleMons[ctx->battlerIdAttacker].type2 = typeMon;
+                    ctx->msgWork = typeMon;
                     return FALSE;
                 }
                 i++;
@@ -2907,7 +2907,7 @@ BOOL BtlCmd_TrySleepTalk(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     nonSelectableMoves = 0;
 
     for (moveIndex = 0; moveIndex < LEARNED_MOVES_MAX; moveIndex++) {
-        if (ov12_02252698(ctx->battleMons[ctx->battlerIdAttacker].moves[moveIndex]) ||
+        if (CheckMoveCallsOtherMove(ctx->battleMons[ctx->battlerIdAttacker].moves[moveIndex]) ||
             ctx->battleMons[ctx->battlerIdAttacker].moves[moveIndex] == MOVE_FOCUS_PUNCH ||
             ctx->battleMons[ctx->battlerIdAttacker].moves[moveIndex] == MOVE_UPROAR ||
             ctx->battleMons[ctx->battlerIdAttacker].moves[moveIndex] == MOVE_CHATTER ||
@@ -3882,7 +3882,7 @@ BOOL BtlCmd_TryAssist(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             if (GetMonData(mon, MON_DATA_SPECIES2, 0) && GetMonData(mon, MON_DATA_SPECIES2, 0) != SPECIES_EGG) {
                 for (j = 0; j < MAX_MON_MOVES; j++) {
                     move = GetMonData(mon, MON_DATA_MOVE1 + j, 0);
-                    if (ov12_02252698(move) == FALSE && CheckLegalMetronomeMove(bsys, ctx, ctx->battlerIdAttacker, move) == TRUE) {
+                    if (CheckMoveCallsOtherMove(move) == FALSE && CheckLegalMetronomeMove(bsys, ctx, ctx->battlerIdAttacker, move) == TRUE) {
                         avaliableMoves[moveCnt] = move;
                         moveCnt++;
                     }
@@ -4578,7 +4578,7 @@ BOOL BtlCmd_TryCopycat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int adrs = BattleScriptReadWord(ctx);
 
-    if (ov12_02252698(ctx->moveNoPrev) == FALSE && ctx->moveNoPrev && CheckLegalMetronomeMove(bsys, ctx, ctx->battlerIdAttacker, ctx->moveNoPrev) == TRUE) {
+    if (CheckMoveCallsOtherMove(ctx->moveNoPrev) == FALSE && ctx->moveNoPrev && CheckLegalMetronomeMove(bsys, ctx, ctx->battlerIdAttacker, ctx->moveNoPrev) == TRUE) {
         ctx->moveWork = ctx->moveNoPrev;
     } else {
         BattleScriptIncrementPointer(ctx, adrs);

@@ -2077,7 +2077,7 @@ int BattleMon_GetMoveIndex(BATTLEMON *mon, u16 moveNo) {
     return movePos;
 }
 
-extern u8 sTypeEffectiveness[][3];
+extern u8 sTypeEffectiveness[112][3];
 
 //static
 BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int index) {
@@ -2681,4 +2681,204 @@ static void ApplyEffectivenessFlags(int effectiveness, u32 *moveStatusFlag) {
         }
         break;
     }
+}
+
+BOOL ov12_02252218(BATTLECONTEXT *ctx, int battlerId) {
+    if (ctx->moveFail[battlerId].paralysis ||
+        ctx->moveFail[battlerId].noEffect ||
+        ctx->moveFail[battlerId].imprison ||
+        ctx->moveFail[battlerId].infatuation ||
+        ctx->moveFail[battlerId].asleep ||
+        ctx->moveFail[battlerId].unk0_5 ||
+        ctx->moveFail[battlerId].flinch ||
+        ctx->moveFail[battlerId].unk0_8 ||
+        ctx->moveFail[battlerId].confusion) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+u8 GetMonsHitCount(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 flag, int battlerId) {
+    int i;
+    u8 cnt = 0;
+    int maxBattlers = BattleSys_GetMaxBattlers(bsys);
+    
+    switch (flag) {
+    case 0:
+        for (i = 0; i < maxBattlers; i++) {
+            if (i != battlerId && ctx->battleMons[i].hp) {
+                cnt++;
+            }
+        }
+        break;
+    case 1:
+        for (i = 0; i < maxBattlers; i++) {
+            if (BattleSys_GetFieldSide(bsys, i) == BattleSys_GetFieldSide(bsys, battlerId) && ctx->battleMons[i].hp) {
+                cnt++;
+            }
+        }
+        break;
+    }
+    return cnt;
+}
+
+int CreateNicknameTag(BATTLECONTEXT *ctx, int battlerId) {
+    return (battlerId | (ctx->selectedMonIndex[battlerId] << 8));
+}
+
+u16 GetBattlerSelectedMove(BATTLECONTEXT *ctx, int battlerId) {
+    u16 moveNo = 0;
+    
+    if (ctx->unk_21A8[battlerId][3] == 1 && ctx->unk_21A8[battlerId][2]) {
+        moveNo = ctx->battleMons[battlerId].moves[ctx->unk_21A8[battlerId][2] - 1];
+    }
+    
+    return moveNo;
+}
+
+int CheckAbilityActive(BattleSystem *bsys, BATTLECONTEXT *ctx, int flag, int battlerId, int ability) {
+    int cnt = 0;
+    int i;
+    int maxBattlers = BattleSys_GetMaxBattlers(bsys);
+    
+    switch (flag) {
+    case 0: //check ability on the same side
+        for (i = 0; i < maxBattlers; i++) {
+            if (BattleSys_GetFieldSide(bsys, i) == BattleSys_GetFieldSide(bsys, battlerId) && GetBattlerAbility(ctx, i) == ability) {
+                cnt++;
+            }
+        }
+        break;
+    case 1: //check ability of mons with hp on the same side, not sure why the above is even used
+        for (i = 0; i < maxBattlers; i++) {
+            if (BattleSys_GetFieldSide(bsys, i) == BattleSys_GetFieldSide(bsys, battlerId) && ctx->battleMons[i].hp && GetBattlerAbility(ctx, i) == ability) {
+                cnt++;
+            }
+        }
+        break;
+    case 2: //check ability on opposing side
+        for (i = 0; i < maxBattlers; i++) {
+            if (BattleSys_GetFieldSide(bsys, i) != BattleSys_GetFieldSide(bsys, battlerId) && GetBattlerAbility(ctx, i) == ability) {
+                cnt++;
+            }
+        }
+        break;
+    case 3: //check ability of mons with hp on the opposite side, not sure why the above is even used
+        for (i = 0; i < maxBattlers; i++) {
+            if (BattleSys_GetFieldSide(bsys, i) != BattleSys_GetFieldSide(bsys, battlerId) && ctx->battleMons[i].hp && GetBattlerAbility(ctx, i) == ability) {
+                cnt++;
+            }
+        }
+        break;
+    case 4: //check ability of mons with hp on the opposite side, puts the flag of the battler(s) found in the return value
+        for (i = 0; i < maxBattlers; i++) {
+            if (BattleSys_GetFieldSide(bsys, i) != BattleSys_GetFieldSide(bsys, battlerId) && ctx->battleMons[i].hp && GetBattlerAbility(ctx, i) == ability) {
+                cnt |= MaskOfFlagNo(i);
+            }
+        }
+        break;
+    case 5: //checks ability of all mons
+        for (i = 0; i < maxBattlers; i++) {
+            if (GetBattlerAbility(ctx, i) == ability) {
+                cnt++;
+            }
+        }
+        break;
+    case 6: //checks ability of all mons except the user
+        for (i = 0; i < maxBattlers; i++) {
+            if (i != battlerId && GetBattlerAbility(ctx, i) == ability) {
+                cnt++;
+            }
+        }
+        break;
+    case 7: //checks ability of all mons except the user and puts the flag of the battler(s) found in the return value
+        for (i = 0; i < maxBattlers; i++) {
+            if (i != battlerId && GetBattlerAbility(ctx, i) == ability) {
+                cnt = i + 1;
+                break;
+            }
+        }
+        break;
+    case 8: //checks ability of all mons with HP
+        for (i = 0; i < maxBattlers; i++) {
+            if (GetBattlerAbility(ctx, i) == ability && ctx->battleMons[i].hp) {
+                cnt++;
+            }
+        }
+        break;
+    case 9: //checks ability of all mons with HP except the user
+        for (i = 0; i < maxBattlers; i++) {
+            if (i != battlerId && GetBattlerAbility(ctx, i) == ability && ctx->battleMons[i].hp) {
+                cnt++;
+            }
+        }
+        break;
+    }
+    
+    return cnt;
+}
+
+//FIXME: Function name is wrong
+BOOL BattleCtx_IsIdenticalToCurrentMove(BATTLECONTEXT *ctx, int moveNo) {
+    switch (ctx->unk_334.moveData[moveNo].effect) {
+    case 26:
+    case 39:
+    case 75:
+    case 145:
+    case 151:
+    case 155:
+    case 255:
+    case 256:
+    case 263:
+    case 272:
+        return TRUE;
+    }
+    return FALSE;
+}
+
+BOOL GetTypeEffectivnessData(BattleSystem *bsys, int index, u8 *typeMove, u8 *typeMon, u8 *eff) {
+    BOOL ret = TRUE;
+    
+    if (index >= NELEMS(sTypeEffectiveness)) {
+        index = BattleSys_Random(bsys) % NELEMS(sTypeEffectiveness);
+        ret = FALSE;
+    }
+    
+    *typeMove = sTypeEffectiveness[index][0];
+    *typeMon = sTypeEffectiveness[index][1];
+    *eff = sTypeEffectiveness[index][2];
+    
+    return ret;
+}
+
+int CalculateTypeEffectiveness(u8 typeMove, u8 typeMon1, u8 typeMon2) {
+    int i = 0;
+    int damage = 40;
+    
+    do {
+        if (sTypeEffectiveness[i][0] == typeMove) {
+            if (sTypeEffectiveness[i][1] == typeMon1) {
+                damage = damage * sTypeEffectiveness[i][2] / 10;
+            }
+            if (sTypeEffectiveness[i][1] == typeMon2 && typeMon1 != typeMon2) {
+                damage = damage * sTypeEffectiveness[i][2] / 10;
+            }
+        }
+        i++;
+    } while (sTypeEffectiveness[i][0] != TYPE_ENDTABLE);
+    
+    return damage;
+}
+
+BOOL CheckMoveCallsOtherMove(u16 moveNo) {
+    if (moveNo == MOVE_NONE ||
+        moveNo == MOVE_SLEEP_TALK ||
+        moveNo == MOVE_COPYCAT ||
+        moveNo == MOVE_ASSIST ||
+        moveNo == MOVE_ME_FIRST ||
+        moveNo == MOVE_MIRROR_MOVE ||
+        moveNo == MOVE_METRONOME) {
+        return TRUE;
+    }
+    return FALSE;
 }

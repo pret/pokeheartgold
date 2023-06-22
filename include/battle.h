@@ -126,7 +126,7 @@ typedef struct UnkBtlCtxSub_76 {
 
 typedef struct MoveFailFlags {
     u32 paralysis:1;
-    u32 unk0_1:1;
+    u32 noEffect:1;
     u32 imprison:1;
     u32 infatuation:1;
     u32 asleep:1;

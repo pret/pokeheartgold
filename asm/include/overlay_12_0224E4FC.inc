@@ -103,9 +103,9 @@
 .public GetBattlerSelectedMove
 .public CheckAbilityActive
 .public BattleCtx_IsIdenticalToCurrentMove
-.public ov12_0225260C
+.public GetTypeEffectivnessData
 .public CalculateTypeEffectiveness
-.public ov12_02252698
+.public CheckMoveCallsOtherMove
 .public ov12_022526D0
 .public ov12_02252700
 .public ov12_0225275C
