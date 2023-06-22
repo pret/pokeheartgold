@@ -6535,7 +6535,7 @@ _0224B87C:
 	ldr r2, [r4, #0x64]
 	ldr r3, [r4, r3]
 	add r1, r4, #0
-	bl ov12_02252C74
+	bl BattleContext_CheckMoveImprisoned
 	cmp r0, #0
 	beq _0224B8AC
 	ldr r0, [r4, #0x64]
@@ -6564,7 +6564,7 @@ _0224B8B4:
 	ldr r2, [r4, #0x64]
 	ldr r3, [r4, r3]
 	add r1, r4, #0
-	bl ov12_02252DC4
+	bl BattleContext_CheckMoveUnuseableInGravity
 	cmp r0, #0
 	beq _0224B8E8
 	ldr r0, [r4, #0x64]
@@ -6594,7 +6594,7 @@ _0224B8F0:
 	ldr r2, [r4, #0x64]
 	ldr r3, [r4, r3]
 	add r1, r4, #0
-	bl ov12_02252DF8
+	bl BattleContext_CheckMoveHealBlocked
 	cmp r0, #0
 	beq _0224B924
 	ldr r0, [r4, #0x64]

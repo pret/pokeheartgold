@@ -68,7 +68,7 @@ enum Terrain {
 #define MOVE_EFFECT_7                       (1 << 7)
 #define MOVE_EFFECT_8                       (1 << 8)
 #define MOVE_EFFECT_9                       (1 << 9)
-#define MOVE_EFFECT_10                      (1 << 10)
+#define MOVE_EFFECT_INGRAIN                 (1 << 10)
 #define MOVE_EFFECT_11                      (1 << 11)
 #define MOVE_EFFECT_YAWN                    (1 << 12)
 #define MOVE_EFFECT_IMPRISON_USER           (1 << 13)
@@ -90,7 +90,18 @@ enum Terrain {
 #define MOVE_EFFECT_PHANTOM_FORCE           (1 << 29)
 #define MOVE_EFFECT_IMPRISON                (1 << 30)
 
-#define MOVE_EFFECT_BATON_PASSABLE          (MOVE_EFFECT_0 | MOVE_EFFECT_1 | MOVE_EFFECT_LEECH_SEED | MOVE_EFFECT_LOCK_ON | MOVE_EFFECT_PERISH_SONG | MOVE_EFFECT_10 | MOVE_EFFECT_LUCKY_CHANT | MOVE_EFFECT_MUD_SPORT | MOVE_EFFECT_WATER_SPORT | MOVE_EFFECT_GASTRO_ACID | MOVE_EFFECT_POWER_TRICK | MOVE_EFFECT_AQUA_RING | MOVE_EFFECT_HEAL_BLOCK | MOVE_EFECT_26 | MOVE_EFFECT_MAGNET_RISE)    
+#define MOVE_EFFECT_BATON_PASSABLE          (MOVE_EFFECT_0 | MOVE_EFFECT_1 | MOVE_EFFECT_LEECH_SEED | MOVE_EFFECT_LOCK_ON | MOVE_EFFECT_PERISH_SONG | MOVE_EFFECT_INGRAIN | MOVE_EFFECT_LUCKY_CHANT | MOVE_EFFECT_MUD_SPORT | MOVE_EFFECT_WATER_SPORT | MOVE_EFFECT_GASTRO_ACID | MOVE_EFFECT_POWER_TRICK | MOVE_EFFECT_AQUA_RING | MOVE_EFFECT_HEAL_BLOCK | MOVE_EFECT_26 | MOVE_EFFECT_MAGNET_RISE)    
+
+//Move status
+#define MOVE_STATUS_MISS                    (1 << 0)
+#define MOVE_STATUS_SUPER_EFFECTIVE         (1 << 1) 
+#define MOVE_STATUS_NOT_VERY_EFFECTIVE      (1 << 2)
+#define MOVE_STATUS_NO_EFFECT               (1 << 3) 
+#define MOVE_STATUS_LEVITATE_IMMUNE         (1 << 11)
+#define MOVE_STATUS_WONDER_GUARD_IMMUNE     (1 << 18) 
+#define MOVE_STATUS_MAGNET_RISE_IMMUNE      (1 << 20)
+
+#define MOVE_STATUS_ANY_EFFECTIVE           (MOVE_STATUS_SUPER_EFFECTIVE | MOVE_STATUS_NOT_VERY_EFFECTIVE)
 
 //Field Conditions
 #define FIELD_CONDITION_RAIN                (1 << 0)
@@ -105,9 +116,11 @@ enum Terrain {
 #define FIELD_CONDITION_HAIL                (1 << 6)
 #define FIELD_CONDITION_HAIL_PERMANENT      (1 << 7)
 #define FIELD_CONDITION_HAIL_ALL            (FIELD_CONDITION_HAIL | FIELD_CONDITION_HAIL_PERMANENT)
+#define FIELD_CONDITION_GRAVITY             (7 << 12)
 #define FIELD_CONDITION_FOG                 (1 << 15)
-#define FIELD_CONDITION_WEATHER             (FIELD_CONDITION_RAIN_ALL | FIELD_CONDITION_SANDSTORM_ALL | FIELD_CONDITION_SUN_ALL | FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_FOG)
 #define FIELD_CONDITION_TRICK_ROOM          (7 << 16)
+
+#define FIELD_CONDITION_WEATHER             (FIELD_CONDITION_RAIN_ALL | FIELD_CONDITION_SANDSTORM_ALL | FIELD_CONDITION_SUN_ALL | FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_FOG)
     
 //Field Side Conditions
 #define SIDE_CONDITION_REFLECT              (1 << 0)
@@ -163,7 +176,9 @@ enum Terrain {
 #define STATUS2_MEAN_LOOK                   (1 << 26)
 #define STATUS2_27                          (1 << 27)
 #define STATUS2_28                          (1 << 28)
+#define STATUS2_FORESIGHT                   (1 << 29)
 #define STATUS2_DEFENCE_CURL                (1 << 30)
+#define STATUS2_TORMENT                     (1 << 31)
 
 #define STATUS2_BINDING_ALL                 (STATUS2_13 | STATUS2_14 | STATUS2_15)
 #define STATUS2_ATTRACT_ALL                 (STATUS2_ATTRACT_BATTLER1 | STATUS2_ATTRACT_BATTLER2 | STATUS2_ATTRACT_BATTLER3 | STATUS2_ATTRACT_BATTLER4)
@@ -172,6 +187,18 @@ enum Terrain {
 
 #define STATUS2_BATON_PASSABLE              (STATUS2_0 | STATUS2_1 | STATUS2_2 | STATUS2_FOCUS_ENERGY | STATUS2_24 | STATUS2_MEAN_LOOK | STATUS2_28)
 
+//Struggle Checks
+#define STRUGGLE_CHECK_NO_MOVES             (1 << 0)
+#define STRUGGLE_CHECK_NO_PP                (1 << 1)
+#define STRUGGLE_CHECK_DISABLED             (1 << 2)
+#define STRUGGLE_CHECK_TORMENT              (1 << 3)
+#define STRUGGLE_CHECK_TAUNT                (1 << 4)
+#define STRUGGLE_CHECK_IMPRISON             (1 << 5)
+#define STRUGGLE_CHECK_GRAVITY              (1 << 6)
+#define STRUGGLE_CHECK_HEAL_BLOCK           (1 << 7)
+#define STRUGGLE_CHECK_ENCORE               (1 << 8) //unused because they straight up forgot
+#define STRUGGLE_CHECK_CHOICED              (1 << 9)
+    
 //Battle Mon Data
 #define BMON_DATA_SPECIES                    0
 #define BMON_DATA_ATK                        1

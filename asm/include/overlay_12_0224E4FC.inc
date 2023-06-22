@@ -103,9 +103,9 @@
 .public GetBattlerSelectedMove
 .public CheckAbilityActive
 .public BattleCtx_IsIdenticalToCurrentMove
-.public ov12_0225260C
+.public GetTypeEffectivnessData
 .public CalculateTypeEffectiveness
-.public ov12_02252698
+.public CheckMoveCallsOtherMove
 .public ov12_022526D0
 .public ov12_02252700
 .public ov12_0225275C
@@ -116,11 +116,11 @@
 .public CanEscape
 .public BattleTryRun
 .public ov12_02252C40
-.public ov12_02252C74
+.public BattleContext_CheckMoveImprisoned
 .public ov12_02252D14
 .public ov12_02252D3C
-.public ov12_02252DC4
-.public ov12_02252DF8
+.public BattleContext_CheckMoveUnuseableInGravity
+.public BattleContext_CheckMoveHealBlocked
 .public ov12_02252E30
 .public GetBattlerLearnedMoveCount
 .public ov12_02252EC8

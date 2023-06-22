@@ -34,19 +34,28 @@ void ov12_02251038(BattleSystem *bsys, BATTLECONTEXT *ctx);
 void InitSwitchWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 void InitFaintedWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 void ov12_02251710(BattleSystem *bsys, BATTLECONTEXT *ctx);
+u32 StruggleCheck(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u32 nonSelectableMoves, u32 a4);
+BOOL ov12_02251A28(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int movePos, BATTLEMSG *msg);
+int BattleMon_GetMoveIndex(BATTLEMON *mon, u16 move);
+int ov12_02251D28(BattleSystem *bsys, BATTLECONTEXT *ctx, int moveNo, int moveTypeDefault, int battlerIdAttacker, int battlerIdTarget, int damage, u32 *moveStatusFlag);
+void ov12_02252054(BATTLECONTEXT *ctx, int moveNo, int moveTypeDefault, int abilityAttacker, int abilityTarget, int item, int type1, int type2, u32 *moveStatusFlag);
+BOOL ov12_02252218(BATTLECONTEXT *ctx, int battlerId);
+u8 GetMonsHitCount(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 flag, int battlerId);
+int CreateNicknameTag(BATTLECONTEXT *ctx, int battlerId);
+u16 GetBattlerSelectedMove(BATTLECONTEXT *ctx, int battlerId);
+int CheckAbilityActive(BattleSystem *bsys, BATTLECONTEXT *ctx, int a2, int a3, int ability);
+BOOL BattleCtx_IsIdenticalToCurrentMove(BATTLECONTEXT *ctx, int moveNo);
+BOOL GetTypeEffectivnessData(BattleSystem *bsys, int index, u8 *typeMove, u8 *typeMon, u8 *eff);
+int CalculateTypeEffectiveness(u8 typeMove, u8 typeMon1, u8 typeMon2);
+BOOL CheckMoveCallsOtherMove(u16 moveNo);
+
+//The following functions are static, but the rest of the file is still being worked on
+BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int index);
 
 //The following functions haven't been decompiled as of now
 void ov12_02256F78(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 monIndex);
 void Link_CheckTimeout(BATTLECONTEXT *ctx);
 BOOL CheckBattlerAbilityIfNotIgnored(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, u32 ability);
-int BattleMon_GetMoveIndex(BATTLEMON *mon, int move);
-int GetMonsHitCount(BattleSystem *bsys, BATTLECONTEXT *ctx, int a2, int battlerId);
-int CreateNicknameTag(BATTLECONTEXT *ctx, int battlerId);
-BOOL CheckAbilityActive(BattleSystem *bsys, BATTLECONTEXT *ctx, int a2, int a3, int ability);
-u16 GetBattlerSelectedMove(BATTLECONTEXT *ctx, int battlerId);
-int BattleCtx_IsIdenticalToCurrentMove(BATTLECONTEXT *ctx, int moveNo);
-BOOL ov12_0225260C(BattleSystem *bsys, int a1, u8 *type1, u8 *typeB, u8 *val);
-BOOL ov12_02252698(u16 moveNo);
 BOOL CanSwitchMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL CanEscape(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int a3);
 int DamageDivide(int numerator, int denominator);
@@ -67,7 +76,6 @@ BOOL CheckLegalMimicMove(u16 move);
 BOOL IsMoveEncored(BATTLECONTEXT *ctx, u16 move);
 void CheckIgnorePressure(BATTLECONTEXT *ctx, int battlerIdA, int battlerIdB);
 u8 ov12_0225682C(BATTLECONTEXT *ctx, int a1);
-int CalculateTypeEffectiveness(int typeAttack, u8 typeDef1, u8 typeDef2);
 BOOL BattleTryRun(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *work);
 BOOL CheckItemEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *itemWork);
@@ -82,7 +90,6 @@ u32 ov12_022581D4(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 a2, int battlerId)
 u32 GetItemHoldEffect(BATTLECONTEXT *ctx, int item, u32 a3);
 u32 ov12_0223C24C(PARTY *party, u32 *a1);
 BOOL CheckStatusEffectsSubstitute(BATTLECONTEXT *ctx, int battlerId, u32 status);
-u32 StruggleCheck(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u32 nonSelectableMoves, u32 a4);
 BOOL ov12_02252700(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL WhirlwindCheck(BattleSystem *bsys, BATTLECONTEXT *ctx);
 BOOL ov12_0225275C(BATTLECONTEXT *ctx, int battlerId);
@@ -97,4 +104,9 @@ int BattleSystem_GetMoveType(BattleSystem *bsys, BATTLECONTEXT *ctx, int battler
 void ov12_022585A8(BATTLECONTEXT *ctx, u8 battlerId);
 void ov12_02258584(BATTLECONTEXT *ctx, u8 battlerId);
 void ov12_0225859C(BATTLECONTEXT *ctx, u8 battlerId);
+BOOL BattleContext_CheckMoveImprisoned(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
+BOOL BattleContext_CheckMoveUnuseableInGravity(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
+BOOL BattleContext_CheckMoveHealBlocked(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
+int ov12_02258440(BATTLECONTEXT *ctx, int moveNo);
+u32 ov12_022583B4(BATTLECONTEXT *ctx, int battlerIdA, u8 effectiveness, int damage, u32 movePower, u32 *moveStatusFlag);
 #endif

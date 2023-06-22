@@ -447,7 +447,7 @@ Overlay field
     Object asm/overlay_01_021EAFD4.o
     Object asm/overlay_01_021EB1E8.o
     Object asm/overlay_01_021EDAFC.o
-    Object src/scrcmd_message.o
+    Object src/field/scrcmd_message.o
     Object asm/overlay_01_021EF7A0.o
     Object asm/overlay_01_021EFB38.o
     Object asm/overlay_01_021F1348.o
@@ -493,21 +493,21 @@ Overlay field
     Object asm/overlay_01_021FF6B0.o
     Object asm/overlay_01_021FF854.o
     Object asm/overlay_01_021FFC0C.o
-    Object src/overlay_01_021FFECC.o
+    Object src/field/overlay_01_021FFECC.o
     Object asm/overlay_01_02200040.o
     Object asm/overlay_01_022001E4.o
     Object asm/overlay_01_022006A8.o
     Object asm/overlay_01_02200858.o
     Object asm/scrcmd_pokemon_misc_data.o
-    Object src/scrcmd_pokemon_misc.o
+    Object src/field/scrcmd_pokemon_misc.o
     Object asm/scrcmd_move_tutor.o
-    Object src/scrcmd_moneybox.o
+    Object src/field/scrcmd_moneybox.o
     Object asm/overlay_01_022031C0.o
     Object asm/overlay_01_02203A18.o
     Object asm/overlay_01_02203E40.o
     Object asm/overlay_01_02204004.o
-    Object src/overlay_01_apricorn_tree_anim.o
-    Object src/overlay_01_rock_smash_item.o
+    Object src/field/overlay_01_apricorn_tree_anim.o
+    Object src/field/overlay_01_rock_smash_item.o
     Object asm/overlay_01_02204ED8.o
     Object asm/overlay_01_022051EC.o
     Object asm/overlay_01_022053EC.o

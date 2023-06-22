@@ -13,6 +13,10 @@
 #include "constants/items.h"
 #include "constants/moves.h"
 #include "constants/species.h"
+#include "msgdata/msg/msg_0197.h"
+
+static BOOL CheckFlyingImmunity(BATTLECONTEXT *ctx, int item, int index);
+static void ApplyEffectivenessFlags(int effectiveness, u32 *moveStatusFlag);
 
 void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 selectedMon) {
     Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, selectedMon);
@@ -1961,4 +1965,921 @@ void ov12_02251710(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     
     ctx->fieldSideConditionData[0].followMeFlag = 0;
     ctx->fieldSideConditionData[1].followMeFlag = 0;
+}
+
+u32 StruggleCheck(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u32 nonSelectableMoves, u32 struggleCheckFlags) {
+    int movePos;
+    int item = GetBattlerHeldItemEffect(ctx, battlerId);
+    
+    for (movePos = 0; movePos < 4; movePos++) {
+        if (!(ctx->battleMons[battlerId].moves[movePos]) && (struggleCheckFlags & STRUGGLE_CHECK_NO_MOVES)) {
+            nonSelectableMoves |= MaskOfFlagNo(movePos);
+        }
+        if (!(ctx->battleMons[battlerId].movePPCur[movePos]) && (struggleCheckFlags & STRUGGLE_CHECK_NO_PP)) {
+            nonSelectableMoves |= MaskOfFlagNo(movePos);
+        }
+        if ((ctx->battleMons[battlerId].moves[movePos] == ctx->battleMons[battlerId].unk88.disabledMove) && (struggleCheckFlags & STRUGGLE_CHECK_DISABLED)) {
+            nonSelectableMoves |= MaskOfFlagNo(movePos);
+        }
+        if ((ctx->battleMons[battlerId].moves[movePos] == ctx->moveNoBattlerPrev[battlerId]) && (struggleCheckFlags & STRUGGLE_CHECK_TORMENT) && (ctx->battleMons[battlerId].status2 & STATUS2_TORMENT)) {
+            nonSelectableMoves |= MaskOfFlagNo(movePos);
+        }
+        if (ctx->battleMons[battlerId].unk88.tauntTurns && (struggleCheckFlags & STRUGGLE_CHECK_TAUNT) && !(ctx->unk_334.moveData[ctx->battleMons[battlerId].moves[movePos]].power)) {
+            nonSelectableMoves |= MaskOfFlagNo(movePos);
+        }
+        if (BattleContext_CheckMoveImprisoned(bsys, ctx, battlerId, ctx->battleMons[battlerId].moves[movePos]) && (struggleCheckFlags & STRUGGLE_CHECK_IMPRISON)) {
+            nonSelectableMoves |= MaskOfFlagNo(movePos);
+        }        
+        if (BattleContext_CheckMoveUnuseableInGravity(bsys, ctx, battlerId, ctx->battleMons[battlerId].moves[movePos]) && (struggleCheckFlags & STRUGGLE_CHECK_GRAVITY)) {
+            nonSelectableMoves |= MaskOfFlagNo(movePos);
+        }
+        if (BattleContext_CheckMoveHealBlocked(bsys, ctx, battlerId, ctx->battleMons[battlerId].moves[movePos]) && (struggleCheckFlags & STRUGGLE_CHECK_HEAL_BLOCK)) {
+            nonSelectableMoves |= MaskOfFlagNo(movePos);
+        }
+        if ((ctx->battleMons[battlerId].unk88.encoredMove) && (ctx->battleMons[battlerId].unk88.encoredMove != ctx->battleMons[battlerId].moves[movePos])) {
+            //BUG: The flag check for encore is missing in this if statement, though it's unclear if this effects anything functionally
+            nonSelectableMoves |= MaskOfFlagNo(movePos);
+        }
+        if ((item == HOLD_EFFECT_CHOICE_ATK || item == HOLD_EFFECT_CHOICE_SPEED || item == HOLD_EFFECT_CHOICE_SPATK) && (struggleCheckFlags & STRUGGLE_CHECK_CHOICED)) {
+            if (BattleMon_GetMoveIndex(&ctx->battleMons[battlerId], ctx->battleMons[battlerId].unk88.moveNoChoice) == 4) {
+                ctx->battleMons[battlerId].unk88.moveNoChoice = 0;
+            } else if (ctx->battleMons[battlerId].unk88.moveNoChoice && ctx->battleMons[battlerId].unk88.moveNoChoice != ctx->battleMons[battlerId].moves[movePos]) {
+                nonSelectableMoves |= MaskOfFlagNo(movePos);
+            }
+        }
+    }
+    return nonSelectableMoves;
+}
+
+//Buffer messages related to being unable to select moves?
+BOOL ov12_02251A28(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int movePos, BATTLEMSG *msg) {
+    BOOL ret = TRUE;
+    
+    if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_DISABLED) & MaskOfFlagNo(movePos)) {
+        msg->tag = 10;
+        msg->id = msg_0197_00609;
+        msg->param[0] = CreateNicknameTag(ctx, battlerId);
+        msg->param[1] = ctx->battleMons[battlerId].moves[movePos];
+        ret = FALSE;
+    } else if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_TORMENT) & MaskOfFlagNo(movePos)) {
+        msg->tag = 2;
+        msg->id = msg_0197_00612;
+        msg->param[0] = CreateNicknameTag(ctx, battlerId);
+        ret = FALSE;
+    } else if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_TAUNT) & MaskOfFlagNo(movePos)) {
+        msg->tag = 10;
+        msg->id = msg_0197_00613;
+        msg->param[0] = CreateNicknameTag(ctx, battlerId);
+        msg->param[1] = ctx->battleMons[battlerId].moves[movePos];
+        ret = FALSE;
+    } else if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_IMPRISON) & MaskOfFlagNo(movePos)) {
+        msg->tag = 10;
+        msg->id = msg_0197_00616;
+        msg->param[0] = CreateNicknameTag(ctx, battlerId);
+        msg->param[1] = ctx->battleMons[battlerId].moves[movePos];
+        ret = FALSE;
+    } else if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_GRAVITY) & MaskOfFlagNo(movePos)) {
+        msg->tag = 10;
+        msg->id = msg_0197_01001;
+        msg->param[0] = CreateNicknameTag(ctx, battlerId);
+        msg->param[1] = ctx->battleMons[battlerId].moves[movePos];
+        ret = FALSE;
+    } else if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_HEAL_BLOCK) & MaskOfFlagNo(movePos)) {
+        msg->tag = 34;
+        msg->id = msg_0197_01057;
+        msg->param[0] = CreateNicknameTag(ctx, battlerId);
+        msg->param[1] = MOVE_HEAL_BLOCK;
+        msg->param[2] = ctx->battleMons[battlerId].moves[movePos];
+        ret = FALSE;
+    } else if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_CHOICED) & MaskOfFlagNo(movePos)) {
+        msg->tag = 24;
+        msg->id = msg_0197_00911;
+        msg->param[0] = ctx->battleMons[battlerId].item;
+        msg->param[1] = ctx->battleMons[battlerId].unk88.moveNoChoice;
+        ret = FALSE;
+    } else if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_NO_PP) & MaskOfFlagNo(movePos)) {
+        msg->tag = 0;
+        msg->id = msg_0197_00823;
+        ret = FALSE;
+    } 
+    
+    return ret;
+}
+
+int BattleMon_GetMoveIndex(BATTLEMON *mon, u16 moveNo) {
+    int movePos;
+    
+    for (movePos = 0; movePos < 4; movePos++) {
+        if (mon->moves[movePos] == moveNo) {
+            break;
+        }
+    }
+    
+    return movePos;
+}
+
+extern u8 sTypeEffectiveness[112][3];
+
+//static
+BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int index) {
+    int item = GetBattlerHeldItemEffect(ctx, battlerIdTarget);
+    BOOL ret = TRUE;
+    
+    if (item == HOLD_EFFECT_SPEED_DOWN_GROUNDED || (ctx->battleMons[battlerIdTarget].moveEffectFlags & MOVE_EFFECT_INGRAIN)) {
+        if (sTypeEffectiveness[index][1] == TYPE_FLYING && sTypeEffectiveness[index][2] == TYPE_MUL_NO_EFFECT) {
+            ret = FALSE;
+        }
+    }
+    
+    if (ctx->turnData[battlerIdTarget].roostFlag && sTypeEffectiveness[index][1] == TYPE_FLYING) {
+        ret = FALSE;
+    }
+    
+    if (ctx->fieldCondition & FIELD_CONDITION_GRAVITY) {
+        if (sTypeEffectiveness[index][1] == TYPE_FLYING && sTypeEffectiveness[index][2] == TYPE_MUL_NO_EFFECT) {
+            ret = FALSE;
+        }
+    }
+    
+    if (ctx->battleMons[battlerIdTarget].moveEffectFlags & MOVE_EFFECT_MIRACLE_EYE) {
+        if (sTypeEffectiveness[index][1] == TYPE_DARK && sTypeEffectiveness[index][2] == TYPE_MUL_NO_EFFECT) {
+            ret = FALSE;
+        }
+    }
+    
+    return ret;
+}
+
+#ifdef NONMATCHING
+//FIXME: Matches up to regswaps: https://decomp.me/scratch/h06Ji -adrienn
+int ov12_02251D28(BattleSystem *bsys, BATTLECONTEXT *ctx, int moveNo, int moveTypeDefault, int battlerIdAttacker, int battlerIdTarget, int damage, u32 *moveStatusFlags) {
+    int i;
+    u8 moveType;
+    u8 itemAttacker;
+    u8 itemTarget;
+    u8 extraAttacker; 
+    u8 extraTarget;
+    u32 movePower;
+
+    if (moveNo == MOVE_STRUGGLE) {
+        return damage;
+    }
+    
+    itemAttacker = GetBattlerHeldItemEffect(ctx, battlerIdAttacker);
+    extraAttacker = BattleSystem_GetHeldItemDamageBoost(ctx, battlerIdAttacker, 0);
+    itemTarget = GetBattlerHeldItemEffect(ctx,  battlerIdTarget);
+    extraTarget = BattleSystem_GetHeldItemDamageBoost(ctx, battlerIdTarget, 0);
+    
+    if (GetBattlerAbility(ctx, battlerIdAttacker) == ABILITY_NORMALIZE) {
+        moveType = TYPE_NORMAL;
+    } else if (moveTypeDefault) {
+        moveType = moveTypeDefault;
+    } else {
+        moveType = ctx->unk_334.moveData[moveNo].type;
+    }
+    
+    movePower = ctx->unk_334.moveData[moveNo].power;
+
+    //STAB
+    if (!(ctx->linkStatus & (1 << 11)) && (GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_TYPE_1, NULL) == moveType || GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_TYPE_2, NULL) == moveType)) {
+        if (GetBattlerAbility(ctx, battlerIdAttacker) == ABILITY_ADAPTABILITY) {
+            damage *= 2;
+        } else {
+            damage = damage * 15 / 10;
+        }
+    }
+    
+    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_LEVITATE) == TRUE && moveType == TYPE_GROUND && itemTarget != HOLD_EFFECT_SPEED_DOWN_GROUNDED) {
+        *moveStatusFlags |= MOVE_STATUS_LEVITATE_IMMUNE;
+    } else if (ctx->battleMons[battlerIdTarget].unk88.magnetRiseTurns && !(ctx->battleMons[battlerIdTarget].moveEffectFlags & MOVE_EFFECT_INGRAIN) && moveType == TYPE_GROUND && itemTarget != HOLD_EFFECT_SPEED_DOWN_GROUNDED) {
+        *moveStatusFlags |= MOVE_STATUS_MAGNET_RISE_IMMUNE;
+    } else {
+        i = 0;
+        do {
+            if (sTypeEffectiveness[i][0] == TYPE_FORESIGHT) {
+                if ((ctx->battleMons[battlerIdTarget].status2 & STATUS2_FORESIGHT) || GetBattlerAbility(ctx, battlerIdAttacker) == ABILITY_SCRAPPY) {
+                    break;
+                } else {
+                    i++;
+                    continue;
+                }
+            }
+            if (sTypeEffectiveness[i][0] == moveType) {
+                u8 monType = sTypeEffectiveness[i][1];
+                if (monType == GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_TYPE_1, NULL) && ov12_02251C74(ctx, battlerIdAttacker, battlerIdTarget, i) == TRUE) {
+                    damage = ov12_022583B4(ctx, battlerIdAttacker, sTypeEffectiveness[i][2], damage, movePower, moveStatusFlags);
+                }
+                if (monType == GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_TYPE_2, NULL) && GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_TYPE_1, NULL) != GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_TYPE_2, NULL) && ov12_02251C74(ctx, battlerIdAttacker, battlerIdTarget, i) == TRUE) {
+                    damage = ov12_022583B4(ctx, battlerIdAttacker, sTypeEffectiveness[i][2], damage, movePower, moveStatusFlags);
+                }
+            }
+            i++;
+        } while (sTypeEffectiveness[i][0] != TYPE_ENDTABLE);
+    }
+    
+    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_WONDER_GUARD) == TRUE && ov12_02258440(ctx, moveNo) &&
+        (!(*moveStatusFlags & MOVE_STATUS_SUPER_EFFECTIVE) || ((*moveStatusFlags & MOVE_STATUS_ANY_EFFECTIVE) == MOVE_STATUS_ANY_EFFECTIVE)) && movePower) {
+        *moveStatusFlags |= MOVE_STATUS_WONDER_GUARD_IMMUNE;
+    } else if (!(ctx->linkStatus & (1 << 11)) && !(ctx->linkStatus & (1 << 15))) {
+        if ((*moveStatusFlags & MOVE_STATUS_SUPER_EFFECTIVE) && movePower) {
+            if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_FILTER) == TRUE || CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_SOLID_ROCK) == TRUE) {
+                damage = DamageDivide(damage * 3, 4);
+            }
+            if (itemAttacker == HOLD_EFFECT_POWER_UP_SE) {
+                damage = damage * (100 + extraAttacker) / 100;
+            }
+        }
+        if ((*moveStatusFlags & MOVE_STATUS_NOT_VERY_EFFECTIVE) && movePower) {
+            if (GetBattlerAbility(ctx, battlerIdAttacker) == ABILITY_TINTED_LENS) {
+                damage *= 2;
+            }
+        }
+    } else {
+        *moveStatusFlags &= ~MOVE_STATUS_SUPER_EFFECTIVE;
+        *moveStatusFlags &= ~MOVE_STATUS_NOT_VERY_EFFECTIVE;
+    }
+    
+    return damage;
+}
+#else
+extern s32 _s32_div_f(s32 a1, s32 a2);
+
+asm int ov12_02251D28(BattleSystem *bsys, BATTLECONTEXT *ctx, int moveNo, int moveTypeDefault, int battlerIdAttacker, int battlerIdTarget, int damage, u32 *moveStatusFlag) {
+	push {r3, r4, r5, r6, r7, lr}
+	sub sp, #0x30
+	ldr r0, [sp, #0x50]
+	add r5, r1, #0
+	str r0, [sp, #0x50]
+	ldr r0, [sp, #0x54]
+	str r2, [sp, #8]
+	str r0, [sp, #0x54]
+	add r0, r2, #0
+	add r4, r3, #0
+	ldr r7, [sp, #0x48]
+	ldr r6, [sp, #0x4c]
+	cmp r0, #0xa5
+	bne _02251D4A
+	ldr r0, [sp, #0x50]
+	add sp, #0x30
+	pop {r3, r4, r5, r6, r7, pc}
+_02251D4A:
+	add r0, r5, #0
+	add r1, r7, #0
+	bl GetBattlerHeldItemEffect
+	lsl r0, r0, #0x18
+	lsr r0, r0, #0x18
+	str r0, [sp, #0x24]
+	add r0, r5, #0
+	add r1, r7, #0
+	mov r2, #0
+	bl BattleSystem_GetHeldItemDamageBoost
+	lsl r0, r0, #0x18
+	lsr r0, r0, #0x18
+	str r0, [sp, #0x1c]
+	add r0, r5, #0
+	add r1, r6, #0
+	bl GetBattlerHeldItemEffect
+	lsl r0, r0, #0x18
+	lsr r0, r0, #0x18
+	str r0, [sp, #0x20]
+	add r0, r5, #0
+	add r1, r6, #0
+	mov r2, #0
+	bl BattleSystem_GetHeldItemDamageBoost
+	add r0, r5, #0
+	add r1, r7, #0
+	bl GetBattlerAbility
+	cmp r0, #0x60
+	bne _02251D92
+	mov r0, #0
+	str r0, [sp, #0x28]
+	b _02251DAA
+_02251D92:
+	cmp r4, #0
+	beq _02251D9E
+	lsl r0, r4, #0x18
+	lsr r0, r0, #0x18
+	str r0, [sp, #0x28]
+	b _02251DAA
+_02251D9E:
+	ldr r0, [sp, #8]
+	lsl r0, r0, #4
+	add r1, r5, r0
+	ldr r0, =0x000003E2
+	ldrb r0, [r1, r0]
+	str r0, [sp, #0x28]
+_02251DAA:
+	ldr r0, [sp, #8]
+	lsl r0, r0, #4
+	add r1, r5, r0
+	ldr r0, =0x000003E1
+	ldrb r0, [r1, r0]
+	str r0, [sp, #0x14]
+	ldr r0, =0x0000213C
+	ldr r1, [r5, r0]
+	mov r0, #2
+	lsl r0, r0, #0xa
+	tst r0, r1
+	bne _02251E08
+	add r0, r5, #0
+	add r1, r7, #0
+	mov r2, #0x1b
+	mov r3, #0
+	bl GetBattlerVar
+	ldr r1, [sp, #0x28]
+	cmp r1, r0
+	beq _02251DE6
+	add r0, r5, #0
+	add r1, r7, #0
+	mov r2, #0x1c
+	mov r3, #0
+	bl GetBattlerVar
+	ldr r1, [sp, #0x28]
+	cmp r1, r0
+	bne _02251E08
+_02251DE6:
+	add r0, r5, #0
+	add r1, r7, #0
+	bl GetBattlerAbility
+	cmp r0, #0x5b
+	bne _02251DFA
+	ldr r0, [sp, #0x50]
+	lsl r0, r0, #1
+	str r0, [sp, #0x50]
+	b _02251E08
+_02251DFA:
+	ldr r1, [sp, #0x50]
+	mov r0, #0xf
+	mul r0, r1
+	mov r1, #0xa
+	bl _s32_div_f
+	str r0, [sp, #0x50]
+_02251E08:
+	add r0, r5, #0
+	add r1, r7, #0
+	add r2, r6, #0
+	mov r3, #0x1a
+	bl CheckBattlerAbilityIfNotIgnored
+	cmp r0, #1
+	bne _02251E34
+	ldr r0, [sp, #0x28]
+	cmp r0, #4
+	bne _02251E34
+	ldr r0, [sp, #0x20]
+	cmp r0, #0x6a
+	beq _02251E34
+	ldr r0, [sp, #0x54]
+	ldr r1, [r0, #0]
+	mov r0, #2
+	lsl r0, r0, #0xa
+	orr r1, r0
+	ldr r0, [sp, #0x54]
+	str r1, [r0]
+	b _02251F50
+_02251E34:
+	mov r0, #0xc0
+	add r1, r6, #0
+	mul r1, r0
+	ldr r0, =0x00002DCC
+	add r3, r5, r1
+	ldr r2, [r3, r0]
+	lsl r2, r2, #0x10
+	lsr r2, r2, #0x1d
+	beq _02251E6C
+	sub r0, #0xc
+	ldr r2, [r3, r0]
+	mov r0, #1
+	lsl r0, r0, #0xa
+	tst r2, r0
+	bne _02251E6C
+	ldr r2, [sp, #0x28]
+	cmp r2, #4
+	bne _02251E6C
+	ldr r2, [sp, #0x20]
+	cmp r2, #0x6a
+	beq _02251E6C
+	ldr r1, [sp, #0x54]
+	lsl r0, r0, #0xa
+	ldr r1, [r1, #0]
+	orr r1, r0
+	ldr r0, [sp, #0x54]
+	str r1, [r0]
+	b _02251F50
+_02251E6C:
+	add r0, r5, r1
+	mov r4, #0
+	str r0, [sp, #0x18]
+_02251E72:
+	lsl r0, r4, #1
+	ldr r1, =sTypeEffectiveness
+	add r0, r4, r0
+	add r1, r1, r0
+	str r1, [sp, #0xc]
+	ldr r1,  =sTypeEffectiveness
+	ldrb r1, [r1, r0]
+	cmp r1, #0xfe
+	bne _02251EA2
+	ldr r1, [sp, #0x18]
+	ldr r0, =0x00002DB0
+	ldr r1, [r1, r0]
+	mov r0, #2
+	lsl r0, r0, #0x1c
+	tst r0, r1
+	bne _02251F50
+	add r0, r5, #0
+	add r1, r7, #0
+	bl GetBattlerAbility
+	cmp r0, #0x71
+	beq _02251F50
+	add r4, r4, #1
+	b _02251F44
+_02251EA2:
+	ldr r0, [sp, #0x28]
+	cmp r0, r1
+	bne _02251F42
+	ldr r0, [sp, #0xc]
+	add r1, r6, #0
+	ldrb r0, [r0, #1]
+	mov r2, #0x1b
+	mov r3, #0
+	str r0, [sp, #0x10]
+	add r0, r5, #0
+	bl GetBattlerVar
+	ldr r1, [sp, #0x10]
+	cmp r1, r0
+	bne _02251EE8
+	add r0, r5, #0
+	add r1, r7, #0
+	add r2, r6, #0
+	add r3, r4, #0
+	bl ov12_02251C74
+	cmp r0, #1
+	bne _02251EE8
+	ldr r0, [sp, #0x14]
+	ldr r2, [sp, #0xc]
+	str r0, [sp]
+	ldr r0, [sp, #0x54]
+	ldr r3, [sp, #0x50]
+	str r0, [sp, #4]
+	ldrb r2, [r2, #2]
+	add r0, r5, #0
+	add r1, r7, #0
+	bl ov12_022583B4
+	str r0, [sp, #0x50]
+_02251EE8:
+	add r0, r5, #0
+	add r1, r6, #0
+	mov r2, #0x1c
+	mov r3, #0
+	bl GetBattlerVar
+	ldr r1, [sp, #0x10]
+	cmp r1, r0
+	bne _02251F42
+	add r0, r5, #0
+	add r1, r6, #0
+	mov r2, #0x1b
+	mov r3, #0
+	bl GetBattlerVar
+	str r0, [sp, #0x2c]
+	add r0, r5, #0
+	add r1, r6, #0
+	mov r2, #0x1c
+	mov r3, #0
+	bl GetBattlerVar
+	ldr r1, [sp, #0x2c]
+	cmp r1, r0
+	beq _02251F42
+	add r0, r5, #0
+	add r1, r7, #0
+	add r2, r6, #0
+	add r3, r4, #0
+	bl ov12_02251C74
+	cmp r0, #1
+	bne _02251F42
+	ldr r0, [sp, #0x14]
+	ldr r2, [sp, #0xc]
+	str r0, [sp]
+	ldr r0, [sp, #0x54]
+	ldr r3, [sp, #0x50]
+	str r0, [sp, #4]
+	ldrb r2, [r2, #2]
+	add r0, r5, #0
+	add r1, r7, #0
+	bl ov12_022583B4
+	str r0, [sp, #0x50]
+_02251F42:
+	add r4, r4, #1
+_02251F44:
+	lsl r0, r4, #1
+	add r1, r4, r0
+	ldr r0, =sTypeEffectiveness
+	ldrb r0, [r0, r1]
+	cmp r0, #0xff
+	bne _02251E72
+_02251F50:
+	add r0, r5, #0
+	add r1, r7, #0
+	add r2, r6, #0
+	mov r3, #0x19
+	bl CheckBattlerAbilityIfNotIgnored
+	cmp r0, #1
+	bne _02251F94
+	ldr r1, [sp, #8]
+	add r0, r5, #0
+	bl ov12_02258440
+	cmp r0, #0
+	beq _02251F94
+	ldr r0, [sp, #0x54]
+	ldr r1, [r0, #0]
+	mov r0, #2
+	tst r0, r1
+	beq _02251F7E
+	mov r0, #6
+	and r0, r1
+	cmp r0, #6
+	bne _02251F94
+_02251F7E:
+	ldr r0, [sp, #0x14]
+	cmp r0, #0
+	beq _02251F94
+	ldr r0, [sp, #0x54]
+	ldr r1, [r0, #0]
+	mov r0, #1
+	lsl r0, r0, #0x12
+	orr r1, r0
+	ldr r0, [sp, #0x54]
+	str r1, [r0]
+	b _02252036
+_02251F94:
+	ldr r0, =0x0000213C
+	ldr r2, [r5, r0]
+	mov r0, #2
+	lsl r0, r0, #0xa
+	add r1, r2, #0
+	tst r1, r0
+	bne _02252022
+	lsl r0, r0, #4
+	tst r0, r2
+	bne _02252022
+	ldr r0, [sp, #0x54]
+	ldr r1, [r0, #0]
+	mov r0, #2
+	tst r0, r1
+	beq _02251FFE
+	ldr r0, [sp, #0x14]
+	cmp r0, #0
+	beq _02251FFE
+	add r0, r5, #0
+	add r1, r7, #0
+	add r2, r6, #0
+	mov r3, #0x6f
+	bl CheckBattlerAbilityIfNotIgnored
+	cmp r0, #1
+	beq _02251FD8
+	add r0, r5, #0
+	add r1, r7, #0
+	add r2, r6, #0
+	mov r3, #0x74
+	bl CheckBattlerAbilityIfNotIgnored
+	cmp r0, #1
+	bne _02251FE6
+_02251FD8:
+	ldr r0, [sp, #0x50]
+	lsl r1, r0, #1
+	add r0, r0, r1
+	mov r1, #4
+	bl DamageDivide
+	str r0, [sp, #0x50]
+_02251FE6:
+	ldr r0, [sp, #0x24]
+	cmp r0, #0x60
+	bne _02251FFE
+	ldr r0, [sp, #0x1c]
+	ldr r1, [sp, #0x50]
+	add r0, #0x64
+	str r0, [sp, #0x1c]
+	mul r0, r1
+	mov r1, #0x64
+	bl _s32_div_f
+	str r0, [sp, #0x50]
+_02251FFE:
+	ldr r0, [sp, #0x54]
+	ldr r1, [r0, #0]
+	mov r0, #4
+	tst r0, r1
+	beq _02252036
+	ldr r0, [sp, #0x14]
+	cmp r0, #0
+	beq _02252036
+	add r0, r5, #0
+	add r1, r7, #0
+	bl GetBattlerAbility
+	cmp r0, #0x6e
+	bne _02252036
+	ldr r0, [sp, #0x50]
+	lsl r0, r0, #1
+	str r0, [sp, #0x50]
+	b _02252036
+_02252022:
+	ldr r0, [sp, #0x54]
+	ldr r1, [r0, #0]
+	mov r0, #2
+	bic r1, r0
+	ldr r0, [sp, #0x54]
+	str r1, [r0]
+	mov r0, #4
+	bic r1, r0
+	ldr r0, [sp, #0x54]
+	str r1, [r0]
+_02252036:
+	ldr r0, [sp, #0x50]
+	add sp, #0x30
+	pop {r3, r4, r5, r6, r7, pc}
+}
+#endif
+
+void ov12_02252054(BATTLECONTEXT *ctx, int moveNo, int moveTypeDefault, int abilityAttacker, int abilityTarget, int item, int type1, int type2, u32 *moveStatusFlag) {
+    int i;
+    u8 moveType;
+    
+    if (moveNo == MOVE_STRUGGLE) {
+        return;
+    }
+    
+    if (abilityAttacker == ABILITY_NORMALIZE) {
+        moveType = TYPE_NORMAL;
+    } else if (moveTypeDefault) {
+        moveType = moveTypeDefault;
+    } else {
+        moveType = ctx->unk_334.moveData[moveNo].type;
+    }
+    
+    if (abilityAttacker != ABILITY_MOLD_BREAKER && abilityTarget == ABILITY_LEVITATE && moveType == TYPE_GROUND && !(ctx->fieldCondition & FIELD_CONDITION_GRAVITY) && item != HOLD_EFFECT_SPEED_DOWN_GROUNDED) {
+        *moveStatusFlag |= MOVE_STATUS_NO_EFFECT;
+    } else {
+        i = 0;
+        do {
+            if (sTypeEffectiveness[i][0] == TYPE_FORESIGHT) {
+                if (abilityAttacker == ABILITY_SCRAPPY) {
+                    break;
+                } else {
+                    i++;
+                    continue;
+                }
+            }
+            if (sTypeEffectiveness[i][0] == moveType) {
+                u8 monType = sTypeEffectiveness[i][1]; 
+                if (type1 == monType && CheckFlyingImmunity(ctx, item, i) == TRUE) {
+                    ApplyEffectivenessFlags(sTypeEffectiveness[i][2], moveStatusFlag);
+                }
+                if ((type2 == monType) && (type1 != type2) && CheckFlyingImmunity(ctx, item, i) == TRUE) {
+                    ApplyEffectivenessFlags(sTypeEffectiveness[i][2], moveStatusFlag);
+                }
+            }
+            i++;
+        } while (sTypeEffectiveness[i][0] != TYPE_ENDTABLE);
+    }
+    
+    if (abilityAttacker != ABILITY_MOLD_BREAKER && abilityTarget == ABILITY_WONDER_GUARD && ov12_02258440(ctx, moveNo) &&
+        (!(*moveStatusFlag & MOVE_STATUS_SUPER_EFFECTIVE) || (*moveStatusFlag & MOVE_STATUS_ANY_EFFECTIVE) == MOVE_STATUS_ANY_EFFECTIVE)) {
+        *moveStatusFlag |= MOVE_STATUS_NO_EFFECT;
+    }
+}
+
+static BOOL CheckFlyingImmunity(BATTLECONTEXT *ctx, int item, int index) {
+    BOOL ret = TRUE;
+    
+    if (item == HOLD_EFFECT_SPEED_DOWN_GROUNDED && sTypeEffectiveness[index][1] == TYPE_FLYING && sTypeEffectiveness[index][2] == TYPE_MUL_NO_EFFECT) {
+        ret = FALSE;
+    }
+    
+    if (ctx->fieldCondition & FIELD_CONDITION_GRAVITY && sTypeEffectiveness[index][1] == TYPE_FLYING && sTypeEffectiveness[index][2] == TYPE_MUL_NO_EFFECT) {
+        ret = FALSE;
+    }
+    
+    return ret;
+}
+
+static void ApplyEffectivenessFlags(int effectiveness, u32 *moveStatusFlag) {
+    switch (effectiveness) {
+    case TYPE_MUL_NO_EFFECT:
+        *moveStatusFlag |= MOVE_STATUS_NO_EFFECT;
+        *moveStatusFlag &= ~MOVE_STATUS_NOT_VERY_EFFECTIVE;
+        *moveStatusFlag &= ~MOVE_STATUS_SUPER_EFFECTIVE;
+        break;
+    case TYPE_MUL_NOT_EFFECTIVE:
+        if (*moveStatusFlag & MOVE_STATUS_SUPER_EFFECTIVE) {
+            *moveStatusFlag &= ~MOVE_STATUS_SUPER_EFFECTIVE;
+        } else {
+            *moveStatusFlag |= MOVE_STATUS_NOT_VERY_EFFECTIVE;
+        }
+        break;
+    case TYPE_MUL_SUPER_EFFECTIVE:
+        if (*moveStatusFlag & MOVE_STATUS_NOT_VERY_EFFECTIVE) {
+            *moveStatusFlag &= ~MOVE_STATUS_NOT_VERY_EFFECTIVE;
+        } else {
+            *moveStatusFlag |= MOVE_STATUS_SUPER_EFFECTIVE;
+        }
+        break;
+    }
+}
+
+BOOL ov12_02252218(BATTLECONTEXT *ctx, int battlerId) {
+    if (ctx->moveFail[battlerId].paralysis ||
+        ctx->moveFail[battlerId].noEffect ||
+        ctx->moveFail[battlerId].imprison ||
+        ctx->moveFail[battlerId].infatuation ||
+        ctx->moveFail[battlerId].asleep ||
+        ctx->moveFail[battlerId].unk0_5 ||
+        ctx->moveFail[battlerId].flinch ||
+        ctx->moveFail[battlerId].unk0_8 ||
+        ctx->moveFail[battlerId].confusion) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+u8 GetMonsHitCount(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 flag, int battlerId) {
+    int i;
+    u8 cnt = 0;
+    int maxBattlers = BattleSys_GetMaxBattlers(bsys);
+    
+    switch (flag) {
+    case 0:
+        for (i = 0; i < maxBattlers; i++) {
+            if (i != battlerId && ctx->battleMons[i].hp) {
+                cnt++;
+            }
+        }
+        break;
+    case 1:
+        for (i = 0; i < maxBattlers; i++) {
+            if (BattleSys_GetFieldSide(bsys, i) == BattleSys_GetFieldSide(bsys, battlerId) && ctx->battleMons[i].hp) {
+                cnt++;
+            }
+        }
+        break;
+    }
+    return cnt;
+}
+
+int CreateNicknameTag(BATTLECONTEXT *ctx, int battlerId) {
+    return (battlerId | (ctx->selectedMonIndex[battlerId] << 8));
+}
+
+u16 GetBattlerSelectedMove(BATTLECONTEXT *ctx, int battlerId) {
+    u16 moveNo = 0;
+    
+    if (ctx->unk_21A8[battlerId][3] == 1 && ctx->unk_21A8[battlerId][2]) {
+        moveNo = ctx->battleMons[battlerId].moves[ctx->unk_21A8[battlerId][2] - 1];
+    }
+    
+    return moveNo;
+}
+
+int CheckAbilityActive(BattleSystem *bsys, BATTLECONTEXT *ctx, int flag, int battlerId, int ability) {
+    int cnt = 0;
+    int i;
+    int maxBattlers = BattleSys_GetMaxBattlers(bsys);
+    
+    switch (flag) {
+    case 0: //check ability on the same side
+        for (i = 0; i < maxBattlers; i++) {
+            if (BattleSys_GetFieldSide(bsys, i) == BattleSys_GetFieldSide(bsys, battlerId) && GetBattlerAbility(ctx, i) == ability) {
+                cnt++;
+            }
+        }
+        break;
+    case 1: //check ability of mons with hp on the same side, not sure why the above is even used
+        for (i = 0; i < maxBattlers; i++) {
+            if (BattleSys_GetFieldSide(bsys, i) == BattleSys_GetFieldSide(bsys, battlerId) && ctx->battleMons[i].hp && GetBattlerAbility(ctx, i) == ability) {
+                cnt++;
+            }
+        }
+        break;
+    case 2: //check ability on opposing side
+        for (i = 0; i < maxBattlers; i++) {
+            if (BattleSys_GetFieldSide(bsys, i) != BattleSys_GetFieldSide(bsys, battlerId) && GetBattlerAbility(ctx, i) == ability) {
+                cnt++;
+            }
+        }
+        break;
+    case 3: //check ability of mons with hp on the opposite side, not sure why the above is even used
+        for (i = 0; i < maxBattlers; i++) {
+            if (BattleSys_GetFieldSide(bsys, i) != BattleSys_GetFieldSide(bsys, battlerId) && ctx->battleMons[i].hp && GetBattlerAbility(ctx, i) == ability) {
+                cnt++;
+            }
+        }
+        break;
+    case 4: //check ability of mons with hp on the opposite side, puts the flag of the battler(s) found in the return value
+        for (i = 0; i < maxBattlers; i++) {
+            if (BattleSys_GetFieldSide(bsys, i) != BattleSys_GetFieldSide(bsys, battlerId) && ctx->battleMons[i].hp && GetBattlerAbility(ctx, i) == ability) {
+                cnt |= MaskOfFlagNo(i);
+            }
+        }
+        break;
+    case 5: //checks ability of all mons
+        for (i = 0; i < maxBattlers; i++) {
+            if (GetBattlerAbility(ctx, i) == ability) {
+                cnt++;
+            }
+        }
+        break;
+    case 6: //checks ability of all mons except the user
+        for (i = 0; i < maxBattlers; i++) {
+            if (i != battlerId && GetBattlerAbility(ctx, i) == ability) {
+                cnt++;
+            }
+        }
+        break;
+    case 7: //checks ability of all mons except the user and puts the flag of the battler(s) found in the return value
+        for (i = 0; i < maxBattlers; i++) {
+            if (i != battlerId && GetBattlerAbility(ctx, i) == ability) {
+                cnt = i + 1;
+                break;
+            }
+        }
+        break;
+    case 8: //checks ability of all mons with HP
+        for (i = 0; i < maxBattlers; i++) {
+            if (GetBattlerAbility(ctx, i) == ability && ctx->battleMons[i].hp) {
+                cnt++;
+            }
+        }
+        break;
+    case 9: //checks ability of all mons with HP except the user
+        for (i = 0; i < maxBattlers; i++) {
+            if (i != battlerId && GetBattlerAbility(ctx, i) == ability && ctx->battleMons[i].hp) {
+                cnt++;
+            }
+        }
+        break;
+    }
+    
+    return cnt;
+}
+
+//FIXME: Function name is wrong
+BOOL BattleCtx_IsIdenticalToCurrentMove(BATTLECONTEXT *ctx, int moveNo) {
+    switch (ctx->unk_334.moveData[moveNo].effect) {
+    case 26:
+    case 39:
+    case 75:
+    case 145:
+    case 151:
+    case 155:
+    case 255:
+    case 256:
+    case 263:
+    case 272:
+        return TRUE;
+    }
+    return FALSE;
+}
+
+BOOL GetTypeEffectivnessData(BattleSystem *bsys, int index, u8 *typeMove, u8 *typeMon, u8 *eff) {
+    BOOL ret = TRUE;
+    
+    if (index >= NELEMS(sTypeEffectiveness)) {
+        index = BattleSys_Random(bsys) % NELEMS(sTypeEffectiveness);
+        ret = FALSE;
+    }
+    
+    *typeMove = sTypeEffectiveness[index][0];
+    *typeMon = sTypeEffectiveness[index][1];
+    *eff = sTypeEffectiveness[index][2];
+    
+    return ret;
+}
+
+int CalculateTypeEffectiveness(u8 typeMove, u8 typeMon1, u8 typeMon2) {
+    int i = 0;
+    int damage = 40;
+    
+    do {
+        if (sTypeEffectiveness[i][0] == typeMove) {
+            if (sTypeEffectiveness[i][1] == typeMon1) {
+                damage = damage * sTypeEffectiveness[i][2] / 10;
+            }
+            if (sTypeEffectiveness[i][1] == typeMon2 && typeMon1 != typeMon2) {
+                damage = damage * sTypeEffectiveness[i][2] / 10;
+            }
+        }
+        i++;
+    } while (sTypeEffectiveness[i][0] != TYPE_ENDTABLE);
+    
+    return damage;
+}
+
+BOOL CheckMoveCallsOtherMove(u16 moveNo) {
+    if (moveNo == MOVE_NONE ||
+        moveNo == MOVE_SLEEP_TALK ||
+        moveNo == MOVE_COPYCAT ||
+        moveNo == MOVE_ASSIST ||
+        moveNo == MOVE_ME_FIRST ||
+        moveNo == MOVE_MIRROR_MOVE ||
+        moveNo == MOVE_METRONOME) {
+        return TRUE;
+    }
+    return FALSE;
 }

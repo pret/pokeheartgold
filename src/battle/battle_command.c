@@ -2831,25 +2831,25 @@ BOOL BtlCmd_TryConversion2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             BattleScriptIncrementPointer(ctx, adrs);
             return FALSE;
         } else {
-            u8 typeA, typeB, val;
+            u8 typeMove, typeMon, val;
             moveType = ctx->conversion2Type[ctx->battlerIdAttacker];
 
             for (i = 0; i < 1000; i++) {
-                ov12_0225260C(bsys, 0xffff, &typeA, &typeB, &val);
-                if (typeA == moveType && val <= 5 && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != typeB && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != typeB) {
-                    ctx->battleMons[ctx->battlerIdAttacker].type1 = typeB;
-                    ctx->battleMons[ctx->battlerIdAttacker].type2 = typeB;
-                    ctx->msgWork = typeB;
+                GetTypeEffectivnessData(bsys, 0xffff, &typeMove, &typeMon, &val);
+                if (typeMove == moveType && val <= 5 && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != typeMon && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != typeMon) {
+                    ctx->battleMons[ctx->battlerIdAttacker].type1 = typeMon;
+                    ctx->battleMons[ctx->battlerIdAttacker].type2 = typeMon;
+                    ctx->msgWork = typeMon;
                     return FALSE;
                 }
             }
 
             i = 0;
-            while (ov12_0225260C(bsys, i, &typeA, &typeB, &val) == TRUE) {
-                if (typeA == moveType && val <= 5 && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != typeB && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != typeB) {
-                    ctx->battleMons[ctx->battlerIdAttacker].type1 = typeB;
-                    ctx->battleMons[ctx->battlerIdAttacker].type2 = typeB;
-                    ctx->msgWork = typeB;
+            while (GetTypeEffectivnessData(bsys, i, &typeMove, &typeMon, &val) == TRUE) {
+                if (typeMove == moveType && val <= 5 && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != typeMon && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != typeMon) {
+                    ctx->battleMons[ctx->battlerIdAttacker].type1 = typeMon;
+                    ctx->battleMons[ctx->battlerIdAttacker].type2 = typeMon;
+                    ctx->msgWork = typeMon;
                     return FALSE;
                 }
                 i++;
@@ -2907,7 +2907,7 @@ BOOL BtlCmd_TrySleepTalk(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     nonSelectableMoves = 0;
 
     for (moveIndex = 0; moveIndex < LEARNED_MOVES_MAX; moveIndex++) {
-        if (ov12_02252698(ctx->battleMons[ctx->battlerIdAttacker].moves[moveIndex]) ||
+        if (CheckMoveCallsOtherMove(ctx->battleMons[ctx->battlerIdAttacker].moves[moveIndex]) ||
             ctx->battleMons[ctx->battlerIdAttacker].moves[moveIndex] == MOVE_FOCUS_PUNCH ||
             ctx->battleMons[ctx->battlerIdAttacker].moves[moveIndex] == MOVE_UPROAR ||
             ctx->battleMons[ctx->battlerIdAttacker].moves[moveIndex] == MOVE_CHATTER ||
@@ -3882,7 +3882,7 @@ BOOL BtlCmd_TryAssist(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             if (GetMonData(mon, MON_DATA_SPECIES2, 0) && GetMonData(mon, MON_DATA_SPECIES2, 0) != SPECIES_EGG) {
                 for (j = 0; j < MAX_MON_MOVES; j++) {
                     move = GetMonData(mon, MON_DATA_MOVE1 + j, 0);
-                    if (ov12_02252698(move) == FALSE && CheckLegalMetronomeMove(bsys, ctx, ctx->battlerIdAttacker, move) == TRUE) {
+                    if (CheckMoveCallsOtherMove(move) == FALSE && CheckLegalMetronomeMove(bsys, ctx, ctx->battlerIdAttacker, move) == TRUE) {
                         avaliableMoves[moveCnt] = move;
                         moveCnt++;
                     }
@@ -4075,146 +4075,146 @@ BOOL BtlCmd_TryImprison(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 #else
 asm BOOL BtlCmd_TryImprison(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x18
-	add r7, r1, #0
-	str r0, [sp]
-	add r0, r7, #0
-	mov r1, #1
-	bl BattleScriptIncrementPointer
-	add r0, r7, #0
-	bl BattleScriptReadWord
-	str r0, [sp, #0x14]
-	ldr r0, [sp]
-	ldr r1, [r7, #0x64]
-	mov r2, #0
-	bl ov12_0223ABB8
-	add r4, r0, #0
-	ldr r0, [sp]
-	ldr r1, [r7, #0x64]
-	mov r2, #2
-	bl ov12_0223ABB8
-	mov r6, #0xb7
-	add r3, r0, #0
-	lsl r6, r6, #6
-	add r1, r4, #0
-	mov r0, #0xc0
-	mov r4, #1
-	add r2, r7, r6
-	mul r1, r0
-	ldr r5, [r2, r1]
-	lsl r4, r4, #0x1e
-	orr r5, r4
-	str r5, [r2, r1]
-	add r1, r3, #0
-	mul r1, r0
-	ldr r3, [r2, r1]
-	orr r3, r4
-	str r3, [r2, r1]
-	ldr r1, [r7, #0x64]
-	mul r0, r1
-	add r0, r7, r0
-	ldr r2, [r0, r6]
-	lsr r0, r4, #0x11
-	tst r0, r2
-	beq _02243098
-	ldr r1, [sp, #0x14]
-	add r0, r7, #0
-	bl BattleScriptIncrementPointer
-	b _0224313C
+    push {r3, r4, r5, r6, r7, lr}
+    sub sp, #0x18
+    add r7, r1, #0
+    str r0, [sp]
+    add r0, r7, #0
+    mov r1, #1
+    bl BattleScriptIncrementPointer
+    add r0, r7, #0
+    bl BattleScriptReadWord
+    str r0, [sp, #0x14]
+    ldr r0, [sp]
+    ldr r1, [r7, #0x64]
+    mov r2, #0
+    bl ov12_0223ABB8
+    add r4, r0, #0
+    ldr r0, [sp]
+    ldr r1, [r7, #0x64]
+    mov r2, #2
+    bl ov12_0223ABB8
+    mov r6, #0xb7
+    add r3, r0, #0
+    lsl r6, r6, #6
+    add r1, r4, #0
+    mov r0, #0xc0
+    mov r4, #1
+    add r2, r7, r6
+    mul r1, r0
+    ldr r5, [r2, r1]
+    lsl r4, r4, #0x1e
+    orr r5, r4
+    str r5, [r2, r1]
+    add r1, r3, #0
+    mul r1, r0
+    ldr r3, [r2, r1]
+    orr r3, r4
+    str r3, [r2, r1]
+    ldr r1, [r7, #0x64]
+    mul r0, r1
+    add r0, r7, r0
+    ldr r2, [r0, r6]
+    lsr r0, r4, #0x11
+    tst r0, r2
+    beq _02243098
+    ldr r1, [sp, #0x14]
+    add r0, r7, #0
+    bl BattleScriptIncrementPointer
+    b _0224313C
 _02243098:
-	ldr r0, [sp]
-	bl BattleSys_GetFieldSide
-	str r0, [sp, #0x10]
-	ldr r0, [sp]
-	bl BattleSys_GetMaxBattlers
-	str r0, [sp, #8]
-	mov r0, #0
-	str r0, [sp, #0xc]
-	ldr r0, [sp, #8]
-	cmp r0, #0
-	ble _02243112
-	str r7, [sp, #4]
+    ldr r0, [sp]
+    bl BattleSys_GetFieldSide
+    str r0, [sp, #0x10]
+    ldr r0, [sp]
+    bl BattleSys_GetMaxBattlers
+    str r0, [sp, #8]
+    mov r0, #0
+    str r0, [sp, #0xc]
+    ldr r0, [sp, #8]
+    cmp r0, #0
+    ble _02243112
+    str r7, [sp, #4]
 _022430B4:
-	ldr r0, [sp]
-	ldr r1, [sp, #0xc]
-	bl BattleSys_GetFieldSide
-	ldr r1, [sp, #0x10]
-	cmp r1, r0
-	beq _02243100
-	mov r2, #0
-	ldr r0, =0x2D4C
-	add r4, r2, #0
+    ldr r0, [sp]
+    ldr r1, [sp, #0xc]
+    bl BattleSys_GetFieldSide
+    ldr r1, [sp, #0x10]
+    cmp r1, r0
+    beq _02243100
+    mov r2, #0
+    ldr r0, =0x2D4C
+    add r4, r2, #0
 _022430C8:
-	ldr r1, [r7, #0x64]
-	mov r6, #0xc0
-	mul r6, r1
-	add r1, r7, r6
-	add r6, r1, r4
-	ldr r1, =0x2D4C
-	ldr r5, [sp, #4]
-	ldrh r6, [r6, r1]
-	mov r3, #0
+    ldr r1, [r7, #0x64]
+    mov r6, #0xc0
+    mul r6, r1
+    add r1, r7, r6
+    add r6, r1, r4
+    ldr r1, =0x2D4C
+    ldr r5, [sp, #4]
+    ldrh r6, [r6, r1]
+    mov r3, #0
 _022430DA:
-	ldrh r1, [r5, r0]
-	cmp r6, r1
-	bne _022430E8
-	cmp r6, #0
-	beq _022430E8
-	cmp r1, #0
-	bne _022430F0
+    ldrh r1, [r5, r0]
+    cmp r6, r1
+    bne _022430E8
+    cmp r6, #0
+    beq _022430E8
+    cmp r1, #0
+    bne _022430F0
 _022430E8:
-	add r3, r3, #1
-	add r5, r5, #2
-	cmp r3, #4
-	blt _022430DA
+    add r3, r3, #1
+    add r5, r5, #2
+    cmp r3, #4
+    blt _022430DA
 _022430F0:
-	cmp r3, #4
-	bne _022430FC
-	add r2, r2, #1
-	add r4, r4, #2
-	cmp r2, #4
-	blt _022430C8
+    cmp r3, #4
+    bne _022430FC
+    add r2, r2, #1
+    add r4, r4, #2
+    cmp r2, #4
+    blt _022430C8
 _022430FC:
-	cmp r3, #4
-	bne _02243112
+    cmp r3, #4
+    bne _02243112
 _02243100:
-	ldr r0, [sp, #4]
-	add r0, #0xc0
-	str r0, [sp, #4]
-	ldr r0, [sp, #0xc]
-	add r1, r0, #1
-	ldr r0, [sp, #8]
-	str r1, [sp, #0xc]
-	cmp r1, r0
-	blt _022430B4
+    ldr r0, [sp, #4]
+    add r0, #0xc0
+    str r0, [sp, #4]
+    ldr r0, [sp, #0xc]
+    add r1, r0, #1
+    ldr r0, [sp, #8]
+    str r1, [sp, #0xc]
+    cmp r1, r0
+    blt _022430B4
 _02243112:
-	ldr r1, [sp, #0xc]
-	ldr r0, [sp, #8]
-	cmp r1, r0
-	bne _02243124
-	ldr r1, [sp, #0x14]
-	add r0, r7, #0
-	bl BattleScriptIncrementPointer
-	b _0224313C
+    ldr r1, [sp, #0xc]
+    ldr r0, [sp, #8]
+    cmp r1, r0
+    bne _02243124
+    ldr r1, [sp, #0x14]
+    add r0, r7, #0
+    bl BattleScriptIncrementPointer
+    b _0224313C
 _02243124:
-	mov r0, #0xb7
-	ldr r1, [r7, #0x64]
-	lsl r0, r0, #6
-	add r3, r7, r0
-	mov r0, #0xc0
-	add r2, r1, #0
-	mul r2, r0
-	mov r0, #2
-	ldr r1, [r3, r2]
-	lsl r0, r0, #0xc
-	orr r0, r1
-	str r0, [r3, r2]
+    mov r0, #0xb7
+    ldr r1, [r7, #0x64]
+    lsl r0, r0, #6
+    add r3, r7, r0
+    mov r0, #0xc0
+    add r2, r1, #0
+    mul r2, r0
+    mov r0, #2
+    ldr r1, [r3, r2]
+    lsl r0, r0, #0xc
+    orr r0, r1
+    str r0, [r3, r2]
 _0224313C:
-	mov r0, #0
-	add sp, #0x18
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
+    mov r0, #0
+    add sp, #0x18
+    pop {r3, r4, r5, r6, r7, pc}
+    nop
 }
 #endif
 
@@ -4332,7 +4332,7 @@ BOOL BtlCmd_TryPursuit(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 moveNo = GetBattlerSelectedMove(ctx, battlerId);
             }
             if (moveNo) {
-                moveIndex = BattleMon_GetMoveIndex(&ctx->battleMons[battlerId], (u16)moveNo);
+                moveIndex = BattleMon_GetMoveIndex(&ctx->battleMons[battlerId], moveNo);
                 if (ctx->unk_334.moveData[moveNo].effect == 128 && ctx->battleMons[battlerId].movePPCur[moveIndex]) {
                     ctx->battleMons[battlerId].movePPCur[moveIndex]--;
                     if (GetBattlerAbility(ctx, ctx->battlerIdSwitch) == ABILITY_PRESSURE && ctx->battleMons[battlerId].movePPCur[moveIndex]) {
@@ -4419,7 +4419,7 @@ BOOL BtlCmd_PokemonEncounter44(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         }
         break;
     case 6:
-        if (ctx->turnData[battlerId].unk0_6 == val) {
+        if (ctx->turnData[battlerId].roostFlag == val) {
             ret = TRUE;
         }
         break;
@@ -4462,7 +4462,7 @@ BOOL BtlCmd_PokemonEncounter45(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ctx->turnData[battlerId].snatchFlag = val;
         break;
     case 6:
-        ctx->turnData[battlerId].unk0_6 = val;
+        ctx->turnData[battlerId].roostFlag = val;
         break;
     }
 
@@ -4578,7 +4578,7 @@ BOOL BtlCmd_TryCopycat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int adrs = BattleScriptReadWord(ctx);
 
-    if (ov12_02252698(ctx->moveNoPrev) == FALSE && ctx->moveNoPrev && CheckLegalMetronomeMove(bsys, ctx, ctx->battlerIdAttacker, ctx->moveNoPrev) == TRUE) {
+    if (CheckMoveCallsOtherMove(ctx->moveNoPrev) == FALSE && ctx->moveNoPrev && CheckLegalMetronomeMove(bsys, ctx, ctx->battlerIdAttacker, ctx->moveNoPrev) == TRUE) {
         ctx->moveWork = ctx->moveNoPrev;
     } else {
         BattleScriptIncrementPointer(ctx, adrs);
