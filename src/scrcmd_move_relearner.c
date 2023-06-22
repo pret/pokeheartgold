@@ -44,7 +44,7 @@ static void CreateMoveRelearner(ScriptContext *ctx, int a1, Pokemon *mon, u16 *e
     *moveRelearnerPtr = moveRelearner;
 
     moveRelearner->mon = mon;
-    moveRelearner->profile = Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
+    moveRelearner->profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(ctx->fsys));
     moveRelearner->options = Save_PlayerData_GetOptionsAddr(ctx->fsys->savedata);
     moveRelearner->eligibleMoves = eligibleMoves;
     moveRelearner->unk_19 = a1;

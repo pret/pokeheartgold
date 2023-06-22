@@ -45,7 +45,7 @@ _02095E2C: .word sub_02095E30
 sub_02095E30: ; 0x02095E30
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetEnv
@@ -80,7 +80,7 @@ _02095E72:
 	ldr r0, [r4, #4]
 	str r1, [r0, #4]
 	add r0, r5, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	ldr r1, [r4, #4]
 	str r0, [r1]
 	ldrh r1, [r4, #0xc]

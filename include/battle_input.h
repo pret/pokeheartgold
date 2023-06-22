@@ -56,7 +56,7 @@ typedef struct BattleInputMove {
 } BattleInputMove;
 
 typedef struct BattleInput_UnkSub54_Unk28 {
-    WINDOW window;
+    Window window;
     u16 unkC;
     u16 unkE;
 } BattleInput_UnkSub54_Unk28;

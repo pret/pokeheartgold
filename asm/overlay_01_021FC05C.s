@@ -404,7 +404,7 @@ GetHoneySweetScentWorkSize: ; 0x021FC30C
 Task_HoneyOrSweetScent: ; 0x021FC310
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r6, #0
 	bl TaskManager_GetEnv

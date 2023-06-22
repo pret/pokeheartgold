@@ -17,7 +17,7 @@ typedef struct FsysUnkSub2C FsysUnkSub2C;
 typedef struct LocalMapObject LocalMapObject;
 typedef struct FieldMapObject FieldMapObject;
 typedef struct PlayerAvatar PlayerAvatar;
-typedef struct MapObjectMan MapObjectMan;
+typedef struct MapObjectManager MapObjectManager;
 
 typedef struct FollowMon {
     LocalMapObject *mapObject;
@@ -54,7 +54,7 @@ typedef struct GearPhoneRingManager {
     PhoneBookEntry entry; //0x1c
     SavePokegear *pokegearData; //0x30
     MomsSavings *savingsData;//0x34
-    SAVEDATA *saveData; //0x38
+    SaveData *saveData; //0x38
     FieldSystem *sys; //0x3c
     struct PokegearRingingTask {
         SysTask *task;
@@ -90,7 +90,7 @@ typedef struct FieldEnvSubUnk18 {
 } FieldEnvSubUnk18;
 
 struct FieldSystemUnkSub68 {
-    WINDOW unk0;
+    Window unk0;
     u16 unk10;
     u8 unk12;
     u8 unk13_0:7;
@@ -112,9 +112,9 @@ struct FieldSystem {
     struct FieldSystemUnkSub0 *unk0;
     FsysUnkSub4 *unk4;
     BGCONFIG *bgConfig;
-    SAVEDATA *savedata;
+    SaveData *savedata;
     TaskManager *taskman;
-    MAP_EVENTS *mapEvents;
+    MapEvents *mapEvents;
     u32 unk18;
     int unk1C;
     Location *location;
@@ -123,7 +123,7 @@ struct FieldSystem {
     FsysUnkSub2C *unk2C;
     MAPMATRIX *mapMatrix;
     u8 filler34[0x8];
-    MapObjectMan *mapObjectMan;
+    MapObjectManager *mapObjectMan;
     PlayerAvatar *playerAvatar;
     void *unk_44;
     u8 filler48[0xC];
@@ -198,7 +198,7 @@ void sub_0203E30C();
 int sub_0203E324();
 void sub_0203E33C(FieldSystem *fsys, int a1);
 BGCONFIG *FieldSys_GetBgConfigPtr(FieldSystem *fsys);
-SAVEDATA *FieldSys_GetSaveDataPtr(FieldSystem *fsys);
+SaveData *FieldSystem_GetSaveDataPtr(FieldSystem *fsys);
 void sub_0203E348();
 void sub_0203E354();
 

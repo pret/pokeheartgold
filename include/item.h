@@ -177,26 +177,26 @@ int GetItemIconAnim(void);
 void *LoadItemDataOrGfx(u16 itemId, int attrno, HeapID heap_id);
 
 /*
- * void GetItemNameIntoString(STRING *dest, u16 itemId, HeapID heap_id)
+ * void GetItemNameIntoString(String *dest, u16 itemId, HeapID heap_id)
  *
  * Reads the name of the indicated item into the preallocated string.
  *
- * @param dest:        Pointer to STRING containing the result
+ * @param dest:        Pointer to String containing the result
  * @param itemId:      The item whose name you want to get
  * @param heap_id:     Heap in which to allocate the temporary MSGDATA
  */
-void GetItemNameIntoString(STRING *dest, u16 itemId, HeapID heap_id);
+void GetItemNameIntoString(String *dest, u16 itemId, HeapID heap_id);
 
 /*
- * void GetItemDescIntoString(STRING *dest, u16 itemId, HeapID heap_id)
+ * void GetItemDescIntoString(String *dest, u16 itemId, HeapID heap_id)
  *
  * Reads the description of the indicated item into the preallocated string.
  *
- * @param dest:        Pointer to STRING containing the result
+ * @param dest:        Pointer to String containing the result
  * @param itemId:      The item whose description you want to get
  * @param heap_id:     Heap in which to allocate the temporary MSGDATA
  */
-void GetItemDescIntoString(STRING *dest, u16 itemId, HeapID heap_id);
+void GetItemDescIntoString(String *dest, u16 itemId, HeapID heap_id);
 
 /*
  * s32 GetItemAttr(u16 itemId, u16 attrno, HeapID heap_id)
@@ -334,16 +334,16 @@ BOOL ItemIdIsBerry(u16 itemId);
 u16 BerryToItemId(u8 berryId);
 
 /*
- * STRING *GetNutName(u16 berryId, HeapID heap_id)
+ * String *GetNutName(u16 berryId, HeapID heap_id)
  *
- * Creates a new STRING containing the name of the berry
+ * Creates a new String containing the name of the berry
  *
  * @param berryId:     Berry to get the name of
- * @param heap_id:     Heap to allocate the STRING from
+ * @param heap_id:     Heap to allocate the String from
  *
  * @returns: New string containing the name of the berry
  */
-STRING *GetNutName(u16 berryId, HeapID heap_id);
+String *GetNutName(u16 berryId, HeapID heap_id);
 
 /*
  * ITEMDATA *LoadAllItemData(HeapID heap_id)

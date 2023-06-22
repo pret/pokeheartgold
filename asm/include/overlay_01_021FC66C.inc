@@ -21,7 +21,7 @@
 .public Save_PlayerData_GetOptionsAddr
 .public Save_GameStats_Get
 .public GameStats_Inc
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public sub_02050B90
 .public BattleSetup_Delete
@@ -34,8 +34,8 @@
 .public PlayerAvatar_GetState
 .public PlayerAvatar_GetTransitionBits
 .public sub_0205F328
-.public MapObjectMan_PauseAllMovement
-.public MapObjectMan_UnpauseAllMovement
+.public MapObjectManager_PauseAllMovement
+.public MapObjectManager_UnpauseAllMovement
 .public MapObject_UnpauseMovement
 .public MapObject_AreBitsSetForMovementScriptInit
 .public MapObject_ClearHeldMovementIfActive

@@ -8,7 +8,7 @@
 .public TaskManager_Call
 .public sub_020505C0
 .public sub_020505C8
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetStatePtr
 .public sub_0205525C
 .public sub_020552A4

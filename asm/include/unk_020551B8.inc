@@ -4,7 +4,7 @@
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public TaskManager_Call
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public sub_02055218
 .public ov01_021EFB64

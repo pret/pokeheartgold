@@ -16,7 +16,7 @@
 
 
 typedef struct GAME_BOARD_ARGS {
-    SAVEDATA *savedata;
+    SaveData *savedata;
     u8 type;
     u8 level;
     u8 unk6;
@@ -102,18 +102,18 @@ typedef struct GAME_BOARD_WORK {
     u8 unk64;
     MSGDATA *msgData;
     MessageFormat *msgFmt;
-    STRING *unk70;
-    STRING *unk74;
-    STRING *unk78[2];
+    String *unk70;
+    String *unk74;
+    String *unk78[2];
     u16 unk80[8];
     BGCONFIG *bgConfig;
-    WINDOW window[2];
+    Window window[2];
     GAME_BOARD_SUB_3B4 unk3B4;
     void *unk3C0;
     GAME_BOARD_SUB_3C4 unk3C4[2];
     void *unk3D4;
     OPTIONS *options;
-    SAVEDATA *savedata;
+    SaveData *savedata;
     void *arcadeSavedata;
     void *arcadeScoreSavedata;
     GAME_BOARD_SUB_3E8 unk3E8;

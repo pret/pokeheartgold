@@ -51,7 +51,7 @@ static const BGTEMPLATE sDataWriteErrorBgTemplate = {
     .mosaic = FALSE,
 };
 
-static const WINDOWTEMPLATE sDataWriteErrorWindowTemplate = {
+static const WindowTemplate sDataWriteErrorWindowTemplate = {
     .bgId = GF_BG_LYR_MAIN_0,
     .left = 3,
     .top = 3,
@@ -62,7 +62,7 @@ static const WINDOWTEMPLATE sDataWriteErrorWindowTemplate = {
 };
 
 void ShowSaveDataWriteError(HeapID heap_id, int code) {
-    WINDOW window;
+    Window window;
 
     u32 msg_no;
     if (code == 0) {
@@ -106,7 +106,7 @@ void ShowSaveDataWriteError(HeapID heap_id, int code) {
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB(1, 1, 27));
 
     MSGDATA* error_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0009_bin, heap_id);
-    STRING* error_str = String_New(384, heap_id);
+    String* error_str = String_New(384, heap_id);
 
     ResetAllTextPrinters();
 

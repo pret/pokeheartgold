@@ -119,13 +119,13 @@ void EasyChatManager_Delete(ECMAN *ecMan) {
     FreeToHeap(ecMan);
 }
 
-void EasyChatManager_ReadWordIntoString(ECMAN *ecMan, u16 ecWord, STRING *dest) {
+void EasyChatManager_ReadWordIntoString(ECMAN *ecMan, u16 ecWord, String *dest) {
     u32 category, msgno;
     GetCategoryAndMsgNoByECWordIdx(ecWord, &category, &msgno);
     ReadMsgDataIntoString(ecMan->msgData[category], msgno, dest);
 }
 
-void GetECWordIntoStringByIndex(u16 ecWord, STRING *dest) {
+void GetECWordIntoStringByIndex(u16 ecWord, String *dest) {
     u32 category, msgno;
     if (ecWord != EC_WORD_NULL) {
         GetCategoryAndMsgNoByECWordIdx(ecWord, &category, &msgno);
@@ -187,7 +187,7 @@ void Save_EasyChat_Init(SAVE_EASY_CHAT_T *ec) {
     SaveSubstruct_UpdateCRC(SAVE_EASY_CHAT);
 }
 
-SAVE_EASY_CHAT_T *SaveData_EasyChat_Get(SAVEDATA *saveData) {
+SAVE_EASY_CHAT_T *SaveData_EasyChat_Get(SaveData *saveData) {
     SaveSubstruct_AssertCRC(SAVE_EASY_CHAT);
     return SaveArray_Get(saveData, SAVE_EASY_CHAT);
 }

@@ -11,12 +11,12 @@
 
 void CreateNPCTrainerParty(BATTLE_SETUP *battleSetup, int trainer_idx, HeapID heap_id);
 
-void EnemyTrainerSet_Init(BATTLE_SETUP *battleSetup, SAVEDATA *saveData, HeapID heap_id) {
+void EnemyTrainerSet_Init(BATTLE_SETUP *battleSetup, SaveData *saveData, HeapID heap_id) {
     TRAINER trainer;
     MSGDATA *msgData;
     const u16 *rivalName;
     int i;
-    STRING *string;
+    String *string;
 
     msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0729_bin, heap_id);
     rivalName = Save_Misc_RivalName_Const_Get(Save_Misc_Const_Get(saveData));
@@ -94,7 +94,7 @@ BOOL TrainerMessageWithIdPairExists(u32 trainer_idx, u32 msg_id, HeapID heap_id)
     return ret;
 }
 
-void GetTrainerMessageByIdPair(u32 trainer_idx, u32 msg_id, STRING * str, HeapID heap_id) {
+void GetTrainerMessageByIdPair(u32 trainer_idx, u32 msg_id, String * str, HeapID heap_id) {
     u16 rdbuf[3];
     u32 trTblSize;
     NARC * trTblNarc;

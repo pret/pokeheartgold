@@ -26,7 +26,7 @@ sub_02097D3C: ; 0x02097D3C
 	bl AllocFromHeapAtEnd
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	ldr r1, [r4, #4]
 	add r2, r4, #0
 	str r0, [r1, #4]
@@ -47,7 +47,7 @@ sub_02097D80: ; 0x02097D80
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetEnv

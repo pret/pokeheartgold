@@ -24,7 +24,7 @@
 .public GF_AssertFail
 .public sub_0203B58C
 .public TaskManager_Call
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public sub_02054A60
 .public sub_02054AE4

@@ -112,11 +112,11 @@ u16 *LocalFieldData_GetPoisonStepCounter(LocalFieldData *localFieldData) {
     return &localFieldData->poisonStepCounter;
 }
 
-LocalFieldData *Save_LocalFieldData_Get(SAVEDATA *saveData) {
+LocalFieldData *Save_LocalFieldData_Get(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_LOCAL_FIELD_DATA);
 }
 
-struct SavedMapObjectList *Save_MapObjects_Get(SAVEDATA *saveData) {
+struct SavedMapObjectList *Save_MapObjects_Get(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_MAP_OBJECTS);
 }
 
@@ -142,5 +142,5 @@ void Fsys_RestoreMapObjectsFromSave(FieldSystem *fsys) {
             follower->gfxId = SPRITE_FOLLOWER_MON_SHAYMIN;
         }
     }
-    MapObjectMan_RestoreFromSave(fsys->mapObjectMan, unk->subs, 64);
+    MapObjectManager_RestoreFromSave(fsys->mapObjectMan, unk->subs, 64);
 }

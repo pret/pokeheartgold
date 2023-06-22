@@ -5,7 +5,7 @@
 .public GF_RTC_GetTimeOfDay
 .public sub_0205F09C
 .public sub_0205F0F8
-.public MapObjectMan_GetHeapID
+.public MapObjectManager_GetHeapID
 .public MapObject_TestFlagsBits
 .public MapObject_GetID
 .public sub_0205F254

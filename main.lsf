@@ -180,7 +180,7 @@ Static main
 	Object src/scrcmd_17.o
 	Object src/scrcmd_items.o
 	Object src/scrcmd_move_relearner.o
-	Object asm/scrcmd_20.o
+	Object src/scrcmd_20.o
 	Object asm/unk_0204F500.o
 	Object src/event_data.o
 	Object src/task.o

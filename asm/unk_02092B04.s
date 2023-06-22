@@ -13,7 +13,7 @@
 sub_02092B04: ; 0x02092B04
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetEnv
@@ -78,7 +78,7 @@ _02092B6A:
 sub_02092B7C: ; 0x02092B7C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetEnv

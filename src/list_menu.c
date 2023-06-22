@@ -175,7 +175,7 @@ s32 ListMenuGetTemplateField(struct ListMenu *list, enum ListMenuAttr attr) {
     return -1;
 }
 
-static void ListMenuPrint(struct ListMenu *list, STRING *str, u8 x, u8 y) {
+static void ListMenuPrint(struct ListMenu *list, String *str, u8 x, u8 y) {
     if (str != NULL) {
         if (list->overrideEnabled) {
             AddTextPrinterParameterized3(list->template.window, list->fontId, str, x, y, 0xFF, MakeTextColor(list->cursorPal, list->cursorShadowPal, list->fillValue), list->lettersSpacing, 0, NULL);

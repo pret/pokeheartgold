@@ -4,8 +4,8 @@
 #include "message_format.h"
 
 static void CopyEncryptedMessage16(u16 *dest, const u16 *src, MAT_ENTRY *alloc);
-static void ReadMsgData_ExistingNarc_ExistingString(NARC * narc, u32 group, u32 num, HeapID heap_id, STRING * dest);
-static STRING * ReadMsgData_ExistingNarc_NewString(NARC * narc, u32 group, u32 num, HeapID heap_id);
+static void ReadMsgData_ExistingNarc_ExistingString(NARC * narc, u32 group, u32 num, HeapID heap_id, String * dest);
+static String * ReadMsgData_ExistingNarc_NewString(NARC * narc, u32 group, u32 num, HeapID heap_id);
 
 static void *LoadSingleElementFromNarc(NarcId narcId, s32 fileId, HeapID heapId) {
     return AllocAndReadWholeNarcMemberByIdPair(narcId, fileId, heapId);
@@ -64,7 +64,7 @@ static void CopyEncryptedMessage16(u16 *dest, const u16 *src, MAT_ENTRY *alloc) 
     MI_CpuCopy16(src, dest, alloc->length * 2);
 }
 
-static void ReadMsgData_ExistingTable_ExistingString(MAT * table, u32 num, STRING * dest) {
+static void ReadMsgData_ExistingTable_ExistingString(MAT * table, u32 num, String * dest) {
     MAT_ENTRY alloc;
     u16 * buf;
     if (num < table->count) {
@@ -83,10 +83,10 @@ static void ReadMsgData_ExistingTable_ExistingString(MAT * table, u32 num, STRIN
     }
 }
 
-static STRING * ReadMsgData_ExistingTable_NewString(MAT * table, u32 num, HeapID heap_id) {
+static String * ReadMsgData_ExistingTable_NewString(MAT * table, u32 num, HeapID heap_id) {
     MAT_ENTRY alloc;
     u16 * buf;
-    STRING * dest;
+    String * dest;
     if (num < table->count) {
         alloc = table->alloc[num];
         Decrypt1(&alloc, num, table->key);
@@ -108,7 +108,7 @@ static STRING * ReadMsgData_ExistingTable_NewString(MAT * table, u32 num, HeapID
     }
 }
 
-void ReadMsgData_NewNarc_ExistingString(NarcId narc_id, s32 group, u32 num, HeapID heap_id, STRING * dest) {
+void ReadMsgData_NewNarc_ExistingString(NarcId narc_id, s32 group, u32 num, HeapID heap_id, String * dest) {
     NARC * narc = NARC_New(narc_id, heap_id);
     if (narc != NULL) {
         ReadMsgData_ExistingNarc_ExistingString(narc, group, num, heap_id, dest);
@@ -116,7 +116,7 @@ void ReadMsgData_NewNarc_ExistingString(NarcId narc_id, s32 group, u32 num, Heap
     }
 }
 
-static void ReadMsgData_ExistingNarc_ExistingString(NARC * narc, u32 group, u32 num, HeapID heap_id, STRING * dest) {
+static void ReadMsgData_ExistingNarc_ExistingString(NARC * narc, u32 group, u32 num, HeapID heap_id, String * dest) {
     u16 * buf;
     u32 size;
     u16 sp10[2];
@@ -141,9 +141,9 @@ static void ReadMsgData_ExistingNarc_ExistingString(NARC * narc, u32 group, u32 
     }
 }
 
-STRING * ReadMsgData_NewNarc_NewString(NarcId narc_id, u32 group, u32 num, HeapID heap_id) {
+String * ReadMsgData_NewNarc_NewString(NarcId narc_id, u32 group, u32 num, HeapID heap_id) {
     NARC * narc = NARC_New(narc_id, heap_id);
-    STRING * string;
+    String * string;
     if (narc != NULL) {
         string = ReadMsgData_ExistingNarc_NewString(narc, group, num, heap_id);
         NARC_Delete(narc);
@@ -153,8 +153,8 @@ STRING * ReadMsgData_NewNarc_NewString(NarcId narc_id, u32 group, u32 num, HeapI
     return string;
 }
 
-static STRING * ReadMsgData_ExistingNarc_NewString(NARC * narc, u32 group, u32 num, HeapID heap_id) {
-    STRING * dest;
+static String * ReadMsgData_ExistingNarc_NewString(NARC * narc, u32 group, u32 num, HeapID heap_id) {
+    String * dest;
     u16 * buf;
     u32 size;
     u16 sp10[2];
@@ -226,7 +226,7 @@ void DestroyMsgData(MSGDATA * msgData) {
     }
 }
 
-void ReadMsgDataIntoString(MSGDATA * msgData, s32 msg_no, STRING * dest) {
+void ReadMsgDataIntoString(MSGDATA * msgData, s32 msg_no, String * dest) {
     switch (msgData->type) {
     case MSGDATA_LOAD_DIRECT:
         ReadMsgData_ExistingTable_ExistingString(msgData->direct, msg_no, dest);
@@ -237,7 +237,7 @@ void ReadMsgDataIntoString(MSGDATA * msgData, s32 msg_no, STRING * dest) {
     }
 }
 
-STRING *NewString_ReadMsgData(MSGDATA *msgData, s32 msg_no) {
+String *NewString_ReadMsgData(MSGDATA *msgData, s32 msg_no) {
     switch (msgData->type) {
     case MSGDATA_LOAD_DIRECT:
         return ReadMsgData_ExistingTable_NewString(msgData->direct, msg_no, (HeapID) msgData->heap_id);
@@ -276,10 +276,10 @@ void GetSpeciesNameIntoArray(u16 species, HeapID heap_id, u16 * dest) {
     DestroyMsgData(msgData);
 }
 
-STRING * ReadMsgData_ExpandPlaceholders(MessageFormat * messageFormat, MSGDATA * msgData, u32 msgno, HeapID heap_id) {
-    STRING * ret = NULL;
-    STRING * r4 = String_New(1024, HEAP_ID_0);
-    STRING * r5;
+String * ReadMsgData_ExpandPlaceholders(MessageFormat * messageFormat, MSGDATA * msgData, u32 msgno, HeapID heap_id) {
+    String * ret = NULL;
+    String * r4 = String_New(1024, HEAP_ID_0);
+    String * r5;
     if (r4 != NULL) {
         r5 = NewString_ReadMsgData(msgData, msgno);
         if (r5 != NULL) {
@@ -292,9 +292,9 @@ STRING * ReadMsgData_ExpandPlaceholders(MessageFormat * messageFormat, MSGDATA *
     return ret;
 }
 
-STRING * GetMoveName(u32 move, HeapID heapno) {
+String * GetMoveName(u32 move, HeapID heapno) {
     MSGDATA * msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0750_bin, heapno);
-    STRING * ret;
+    String * ret;
     if (msgData != NULL) {
         ret = String_New(16, heapno);
         if (ret != NULL) {
@@ -306,8 +306,8 @@ STRING * GetMoveName(u32 move, HeapID heapno) {
     return NULL;
 }
 
-STRING * GetSpeciesName(u16 species, HeapID heap_id) {
-    STRING * ret;
+String * GetSpeciesName(u16 species, HeapID heap_id) {
+    String * ret;
     MSGDATA * msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0237_bin, heap_id);
     if (msgData != NULL) {
         ret = NewString_ReadMsgData(msgData, species);

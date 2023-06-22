@@ -898,7 +898,7 @@ _02205A5C:
 ov01_02205A60: ; 0x02205A60
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetStatePtr
@@ -990,7 +990,7 @@ ov01_02205B14: ; 0x02205B14
 	push {r4, r5, r6, lr}
 	sub sp, #0x30
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetEnv
@@ -1314,7 +1314,7 @@ ov01_02205DB4: ; 0x02205DB4
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetEnv
@@ -1465,7 +1465,7 @@ _02205EFC: .word ov01_02205F00
 ov01_02205F00: ; 0x02205F00
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetEnv
@@ -1725,7 +1725,7 @@ _02206108: .word ov01_0220610C
 ov01_0220610C: ; 0x0220610C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetEnv

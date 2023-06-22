@@ -77,14 +77,14 @@ void FieldSys_SetEngagedTrainer(FieldSystem *fsys, LocalMapObject *obj, int a2, 
 }
 
 void QueueScript(TaskManager *taskman, u16 script, LocalMapObject *lastInteracted, void *a3) {
-    FieldSystem *fsys = TaskManager_GetSys(taskman);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskman);
     ScriptEnvironment *env = ScriptEnvironment_New();
     SetupScriptEngine(fsys, env, script, lastInteracted, a3);
     TaskManager_Call(taskman, Task_RunScripts, env);
 }
 
 void StartScriptFromMenu(TaskManager *taskman, u16 script, LocalMapObject *lastInteracted) {
-    FieldSystem *fsys = TaskManager_GetSys(taskman);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskman);
     ScriptEnvironment *env = ScriptEnvironment_New();
     SetupScriptEngine(fsys, env, script, lastInteracted, NULL);
     TaskManager_Jump(taskman, Task_RunScripts, env);
@@ -96,7 +96,7 @@ BOOL Task_RunScripts(TaskManager *taskman) {
     ScriptEnvironment *env;
 
     env = TaskManager_GetEnv(taskman);
-    fsys = TaskManager_GetSys(taskman);
+    fsys = TaskManager_GetFieldSystem(taskman);
 
     switch (env->state) {
     case 0:
@@ -434,17 +434,17 @@ BOOL TrainerNumIsDouble(u32 trainer) {
     return TrainerData_GetAttr(trainer, TRATTR_DOUBLEBTL) != 0;
 }
 
-BOOL TrainerFlagCheck(SAVEDATA *saveData, u32 trainer) {
+BOOL TrainerFlagCheck(SaveData *saveData, u32 trainer) {
     ScriptState *scriptState = SaveArray_Flags_Get(saveData);
     return CheckFlagInArray(scriptState, trainer + TRAINER_FLAG_BASE);
 }
 
-void TrainerFlagSet(SAVEDATA *saveData, u32 trainer) {
+void TrainerFlagSet(SaveData *saveData, u32 trainer) {
     ScriptState *scriptState = SaveArray_Flags_Get(saveData);
     SetFlagInArray(scriptState, trainer + TRAINER_FLAG_BASE);
 }
 
-void TrainerFlagClear(SAVEDATA *saveData, u32 trainer) {
+void TrainerFlagClear(SaveData *saveData, u32 trainer) {
     ScriptState *scriptState = SaveArray_Flags_Get(saveData);
     ClearFlagInArray(scriptState, trainer + TRAINER_FLAG_BASE);
 }

@@ -86,7 +86,7 @@ static BOOL Task_RunApplicationUntilComplete(TaskManager *taskManager) {
     FieldSystem *fsys;
     struct UnkTaskEnv *env;
 
-    fsys = TaskManager_GetSys(taskManager);
+    fsys = TaskManager_GetFieldSystem(taskManager);
     env = TaskManager_GetEnv(taskManager);
 
     switch (env->state) {
@@ -114,7 +114,7 @@ void CallApplicationAsTask(TaskManager *taskManager, const OVY_MGR_TEMPLATE *tem
     TaskManager_Call(taskManager, Task_RunApplicationUntilComplete, env);
 }
 
-FieldSystem *TaskManager_GetSys(TaskManager *taskManager) {
+FieldSystem *TaskManager_GetFieldSystem(TaskManager *taskManager) {
     return taskManager->fsys;
 }
 

@@ -4,7 +4,7 @@
 .public FreeToHeap
 .public GF_ExpHeap_FndInitAllocator
 .public TaskManager_Call
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public TaskManager_GetStatePtr
 .public PlayerAvatar_GetState

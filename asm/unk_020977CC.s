@@ -101,7 +101,7 @@ _02097874: .word sub_02097878
 sub_02097878: ; 0x02097878
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetEnv
@@ -148,7 +148,7 @@ sub_020978D0: ; 0x020978D0
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r5, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetEnv

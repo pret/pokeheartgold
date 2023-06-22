@@ -12,7 +12,7 @@ void CopyCapsule(const CAPSULE *src, CAPSULE *dest) {
     MI_CpuCopy8(src, dest, sizeof(CAPSULE));
 }
 
-SEALCASE *Save_SealCase_Get(SAVEDATA *saveData) {
+SEALCASE *Save_SealCase_Get(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_SEAL_CASE);
 }
 

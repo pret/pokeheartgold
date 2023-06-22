@@ -84,8 +84,8 @@ static void BattleArcadeObj_SetPos(BATTLE_ARCADE_OBJECT *obj, u16 x, u16 y);
 static void BattleArcadeObj_SetAnimation(BATTLE_ARCADE_OBJECT *obj, u32 val);
 static void ov84_0223F894(BATTLE_ARCADE_OBJECT *obj, Pokemon *mon);
 static void ov84_0223F8A8(BATTLE_ARCADE_OBJECT *obj, int flag);
-static void ov84_0223F8B4(BGCONFIG *config, WINDOW *window);
-static void ov84_0223F8E4(WINDOW *window);
+static void ov84_0223F8B4(BGCONFIG *config, Window *window);
+static void ov84_0223F8E4(Window *window);
 static BOOL BattleArcadeGameBoard_EndMulti(GAME_BOARD_WORK *work);
 static BOOL BattleArcadeGameBoard_End(GAME_BOARD_WORK *work);
 
@@ -1426,11 +1426,11 @@ static void ov84_0223F8A8(BATTLE_ARCADE_OBJECT *obj, int flag) {
     Set2dSpriteAnimActiveFlag(obj->sprite, flag);
 }
 
-extern WINDOWTEMPLATE ov84_0223F9F8[2];
+extern WindowTemplate ov84_0223F9F8[2];
 
-static void ov84_0223F8B4(BGCONFIG *config, WINDOW *window) {
+static void ov84_0223F8B4(BGCONFIG *config, Window *window) {
     u8 i;
-    WINDOWTEMPLATE *dat = ov84_0223F9F8;
+    WindowTemplate *dat = ov84_0223F9F8;
 
     for (i = 0; i < 2; i++) {
         AddWindow(config, &window[i], &dat[i]);
@@ -1438,7 +1438,7 @@ static void ov84_0223F8B4(BGCONFIG *config, WINDOW *window) {
     }
 }
 
-static void ov84_0223F8E4(WINDOW *window) {
+static void ov84_0223F8E4(Window *window) {
     u16 i;
 
     for (i = 0; i < 2; i++) {

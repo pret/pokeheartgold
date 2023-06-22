@@ -23,7 +23,7 @@ typedef struct UnkPokegearstruct_2c{
     u8 filler_14[0xe];
     u8 matrixXCoord; //0x22
     u8 matrixYCoord; //0x23
-    SAVEDATA* saveData; //0x24
+    SaveData* saveData; //0x24
     void *unk28; //Pointer to a Field System variable at offset 0x10C (currently unk_10C[0];)
 } Unk_PokegearSTRUCT_2C;
 

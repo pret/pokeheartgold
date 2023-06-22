@@ -45,7 +45,7 @@ static const s8 sApricornJumpDy[APRICORN_JUMP_FRAMES] = {
 
 static BOOL Task_AnimApricornTree(TaskManager *taskman);
 static BOOL Task_AnimPlayerShakeTree(TaskManager *taskman);
-static LocalMapObject *CreateJumpingApricornObj(MapObjectMan *taskman, u32 sprite, u32 x, u32 z);
+static LocalMapObject *CreateJumpingApricornObj(MapObjectManager *taskman, u32 sprite, u32 x, u32 z);
 BOOL DoApricornJump(AnimApricornTreeWork *env);
 
 void FieldSys_AnimApricornTree(FieldSystem *fsys, LocalMapObject *tree, u16 *a2) {
@@ -65,7 +65,7 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
     VecFx32 pos;
     int apricornType;
 
-    FieldSystem *fsys = TaskManager_GetSys(taskman);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskman);
     AnimApricornTreeWork *env = TaskManager_GetEnv(taskman);
 
     switch (env->state) {
@@ -179,7 +179,7 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
     return FALSE;
 }
 
-static LocalMapObject *CreateJumpingApricornObj(MapObjectMan *taskman, u32 sprite, u32 x, u32 z) {
+static LocalMapObject *CreateJumpingApricornObj(MapObjectManager *taskman, u32 sprite, u32 x, u32 z) {
     LocalMapObject *obj = CreateSpecialFieldObject(taskman, x, z, 0, sprite, 0, 1);
     GF_ASSERT(obj != NULL);
 
@@ -211,7 +211,7 @@ static BOOL DoApricornJump(AnimApricornTreeWork *env) {
 }
 
 static BOOL Task_AnimPlayerShakeTree(TaskManager *taskman) {
-    FieldSystem *fsys = TaskManager_GetSys(taskman);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskman);
     LocalMapObject *playerObj = PlayerAvatar_GetMapObject(fsys->playerAvatar);
     int *state_p = TaskManager_GetStatePtr(taskman);
     AnimPlayerShakeTreeWork *env = TaskManager_GetEnv(taskman);

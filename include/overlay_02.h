@@ -9,7 +9,7 @@
 struct FieldLongWarpTaskData;
 
 typedef struct UnkStruct_Ov02_0224E4EC {
-    SAVEDATA *saveData;
+    SaveData *saveData;
     void *unk04; // points to fsys->unk_10C
     u8 unk08;
     u8 deltaX;
@@ -59,8 +59,8 @@ void ShowLegendaryWing(TaskManager *taskMan, u8 a1);
 void ov02_022462E8(TaskManager *taskMan);
 void PokecenterAnimCreate(FieldSystem *fsys, u8 kind);
 void ov02_0224BDE8(FieldSystem *fsys, u8 direction, u8 length);
-int ov02_0224CD38(PLAYERPROFILE *profile, u16 a, u16 b, u16 c, u16 d, HeapID heapId);
-int ov02_0224CD74(PLAYERPROFILE *profile, u16 a, u16 b, u16 c, u16 d, HeapID heapId);
+int ov02_0224CD38(PlayerProfile *profile, u16 a, u16 b, u16 c, u16 d, HeapID heapId);
+int ov02_0224CD74(PlayerProfile *profile, u16 a, u16 b, u16 c, u16 d, HeapID heapId);
 void ov02_0224BF58(FieldSystem *fsys, u8 a1);
 void ov02_0224BFC0(FieldSystem *fsys, u8 a1);
 void ov02_0224BFCC(FieldSystem *fsys, u8 a1);
@@ -91,10 +91,10 @@ void ov02_022523B4(TaskManager *taskManager);
 void ov02_02252534(FieldSystem *fsys);
 void ov02_022529FC(FieldSystem *fsys);
 void ov02_02252EE4(FieldSystem *fsys, u8 a1);
-BOOL ov02_02253134(SAVEDATA *saveData);
+BOOL ov02_02253134(SaveData *saveData);
 int ov02_0225316C(void);
-BOOL ov02_02253188(SAVEDATA *saveData);
-int ov02_022531B4(SAVEDATA *saveData);
+BOOL ov02_02253188(SaveData *saveData);
+int ov02_022531B4(SaveData *saveData);
 BOOL ov02_022470A0(FieldSystem *fsys, BATTLE_SETUP **a1);
 void ov02_BattleExit_HandleRoamerAction(FieldSystem *fsys, BATTLE_SETUP *setup);
 void ov02_02247F30(FieldSystem *fsys, u16 mon, u8 level, BOOL shiny, BATTLE_SETUP *setup);

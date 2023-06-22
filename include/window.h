@@ -53,7 +53,7 @@ typedef struct BITMAP {
     u16 height;
 } BITMAP;
 
-typedef struct WINDOWTEMPLATE {
+typedef struct WindowTemplate {
     u8 bgId;
     u8 left;
     u8 top;
@@ -61,9 +61,9 @@ typedef struct WINDOWTEMPLATE {
     u8 height;
     u8 palette;
     u16 baseBlock;
-} WINDOWTEMPLATE;
+} WindowTemplate;
 
-typedef struct WINDOW {
+typedef struct Window {
     BGCONFIG *bgConfig;
     u8 bgId;
     u8 tilemapLeft;
@@ -74,7 +74,7 @@ typedef struct WINDOW {
     u16 baseTile : 15;
     u16 colorMode : 1;
     void *pixelBuffer;
-} WINDOW;
+} Window;
 
 enum GFScreen {
     SCREEN_MAIN = 0,
@@ -194,38 +194,38 @@ fx32 GetBgHOffset(BGCONFIG *bgConfig, u8 layer);
 u8 GetBgColorMode(BGCONFIG *bgConfig, u8 layer);
 u16 GetBgPriority(BGCONFIG *bgConfig, u8 layer);
 void BlitBitmapRect4Bit(const BITMAP *src, const BITMAP *dst, u16 srcX, u16 srcY, u16 dstX, u16 dstY, u16 width, u16 height, u16 colorKey);
-WINDOW *AllocWindows(HeapID heapId, int num);
-void InitWindow(WINDOW *window);
-BOOL WindowIsInUse(const WINDOW *window);
-void AddWindowParameterized(BGCONFIG *bgConfig, WINDOW *window, u8 layer, u8 x, u8 y, u8 width, u8 height, u8 paletteNum, u16 baseTile);
-void AddTextWindowTopLeftCorner(BGCONFIG *bgConfig, WINDOW *window, u8 width, u8 height, u16 baseTile, u8 paletteNum);
-void AddWindow(BGCONFIG *bgConfig, WINDOW *window, const WINDOWTEMPLATE *template);
-void RemoveWindow(WINDOW* window);
-void WindowArray_Delete(WINDOW *window, int num);
-void CopyWindowToVram(WINDOW *window);
-void ScheduleWindowCopyToVram(WINDOW *window);
-void PutWindowTilemap(WINDOW *window);
-void ClearWindowTilemap(WINDOW *window);
-void CopyWindowPixelsToVram_TextMode(WINDOW *window);
-void ClearWindowTilemapAndCopyToVram(WINDOW *window);
-void ClearWindowTilemapAndScheduleTransfer(WINDOW *window);
-void FillWindowPixelBuffer(WINDOW *window, u8 fillValue);
-void FillWindowPixelBufferText_AssumeTileSize32(WINDOW *window, u8 fillValue);
-void BlitBitmapRectToWindow(WINDOW *window, void *src, u16 srcX, u16 srcY, u16 srcWidth, u16 srcHeight, u16 destX, u16 destY, u16 destWidth, u16 destHeight);
-void BlitBitmapRect(WINDOW *window, void *src, u16 srcX, u16 srcY, u16 srcWidth, u16 srcHeight, u16 destX, u16 destY, u16 destWidth, u16 destHeight, u16 colorKey);
-void FillWindowPixelRect(WINDOW *window, u8 fillValue, u16 x, u16 y, u16 width, u16 height);
-void CopyGlyphToWindow(WINDOW *window, u8 *glyphPixels, u16 srcWidth, u16 srcHeight, u16 dstX, u16 dstY, u16 table);
-void ScrollWindow(WINDOW *window, u8 direction, u8 y, u8 fillValue);
-BGCONFIG *GetWindowBgConfig(WINDOW *window);
-u8 GetWindowBgId(WINDOW *window);
-u8 GetWindowWidth(WINDOW *window);
-u8 GetWindowHeight(WINDOW *window);
-u8 GetWindowX(WINDOW *window);
-u8 GetWindowY(WINDOW *window);
-u16 GetWindowBaseTile(WINDOW *window);
-void SetWindowX(WINDOW *window, u8 x);
-void SetWindowY(WINDOW *window, u8 y);
-void SetWindowPaletteNum(WINDOW *window, u8 paletteNum);
+Window *AllocWindows(HeapID heapId, int num);
+void InitWindow(Window *window);
+BOOL WindowIsInUse(const Window *window);
+void AddWindowParameterized(BGCONFIG *bgConfig, Window *window, u8 layer, u8 x, u8 y, u8 width, u8 height, u8 paletteNum, u16 baseTile);
+void AddTextWindowTopLeftCorner(BGCONFIG *bgConfig, Window *window, u8 width, u8 height, u16 baseTile, u8 paletteNum);
+void AddWindow(BGCONFIG *bgConfig, Window *window, const WindowTemplate *template);
+void RemoveWindow(Window* window);
+void WindowArray_Delete(Window *window, int num);
+void CopyWindowToVram(Window *window);
+void ScheduleWindowCopyToVram(Window *window);
+void PutWindowTilemap(Window *window);
+void ClearWindowTilemap(Window *window);
+void CopyWindowPixelsToVram_TextMode(Window *window);
+void ClearWindowTilemapAndCopyToVram(Window *window);
+void ClearWindowTilemapAndScheduleTransfer(Window *window);
+void FillWindowPixelBuffer(Window *window, u8 fillValue);
+void FillWindowPixelBufferText_AssumeTileSize32(Window *window, u8 fillValue);
+void BlitBitmapRectToWindow(Window *window, void *src, u16 srcX, u16 srcY, u16 srcWidth, u16 srcHeight, u16 destX, u16 destY, u16 destWidth, u16 destHeight);
+void BlitBitmapRect(Window *window, void *src, u16 srcX, u16 srcY, u16 srcWidth, u16 srcHeight, u16 destX, u16 destY, u16 destWidth, u16 destHeight, u16 colorKey);
+void FillWindowPixelRect(Window *window, u8 fillValue, u16 x, u16 y, u16 width, u16 height);
+void CopyGlyphToWindow(Window *window, u8 *glyphPixels, u16 srcWidth, u16 srcHeight, u16 dstX, u16 dstY, u16 table);
+void ScrollWindow(Window *window, u8 direction, u8 y, u8 fillValue);
+BGCONFIG *GetWindowBgConfig(Window *window);
+u8 GetWindowBgId(Window *window);
+u8 GetWindowWidth(Window *window);
+u8 GetWindowHeight(Window *window);
+u8 GetWindowX(Window *window);
+u8 GetWindowY(Window *window);
+u16 GetWindowBaseTile(Window *window);
+void SetWindowX(Window *window, u8 x);
+void SetWindowY(Window *window, u8 y);
+void SetWindowPaletteNum(Window *window, u8 paletteNum);
 void BgConfig_HandleScheduledScrollAndTransferOps(BGCONFIG *bgConfig);
 void ScheduleBgTilemapBufferTransfer(BGCONFIG *bgConfig, u8 layer);
 void ScheduleSetBgPosText(BGCONFIG *bgConfig, u8 layer, enum BgPosAdjustOp op, fx32 value);

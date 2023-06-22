@@ -64,7 +64,7 @@ BOOL PartyMenu_AnimateIconFormeChange(PartyMenuStruct* unkPtr) {
             GF_ASSERT(FALSE);
             break;
         }
-        Pokedex_SetMonCaughtFlag(Save_Pokedex_Get(FieldSys_GetSaveDataPtr(unkPtr->unk654->fsys)), mon);
+        Pokedex_SetMonCaughtFlag(Save_Pokedex_Get(FieldSystem_GetSaveDataPtr(unkPtr->unk654->fsys)), mon);
         work->state++;
         break;
     case 1:
@@ -106,7 +106,7 @@ BOOL PartyMenu_AnimateIconFormeChange(PartyMenuStruct* unkPtr) {
         }
         break;
     case 9:
-        STRING* str = NewString_ReadMsgData(unkPtr->msgData, msg_0300_00188); //" changed Forme!"
+        String* str = NewString_ReadMsgData(unkPtr->msgData, msg_0300_00188); //" changed Forme!"
         BufferBoxMonNickname(unkPtr->unk7c4, 0, Mon_GetBoxMon(mon));
         StringExpandPlaceholders(unkPtr->unk7c4, unkPtr->unk7c8, str);
         String_Delete(str);

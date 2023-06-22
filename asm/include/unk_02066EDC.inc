@@ -35,7 +35,7 @@
 .public sub_0204B690
 .public TaskManager_Call
 .public FieldSys_ApplicationIsRunning
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public sub_02067118
 .public sub_02067200

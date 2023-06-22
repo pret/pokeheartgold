@@ -256,7 +256,7 @@ sub_02067C30: ; 0x02067C30
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1c
 	add r6, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r6, #0
 	bl TaskManager_GetEnv

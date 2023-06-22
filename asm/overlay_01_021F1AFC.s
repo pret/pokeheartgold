@@ -723,7 +723,7 @@ CallFieldTask_Surf: ; 0x021F2068
 	sub sp, #0x10
 	add r6, r2, #0
 	add r5, r1, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r1, r6, #0
 	bl ov01_021F3100
@@ -1357,7 +1357,7 @@ CallFieldTask_RockClimb: ; 0x021F2590
 	sub sp, #0x10
 	add r6, r2, #0
 	add r5, r1, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r1, r6, #0
 	bl ov01_021F3100
@@ -1825,7 +1825,7 @@ CallFieldTask_Waterfall: ; 0x021F2908
 	add r5, r2, #0
 	add r6, r0, #0
 	add r7, r1, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r1, r5, #0
 	bl ov01_021F3100
@@ -2430,7 +2430,7 @@ CallFieldTask_Whirlpool: ; 0x021F2DA4
 	sub sp, #0x10
 	add r5, r2, #0
 	add r6, r1, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r1, r5, #0
 	bl ov01_021F3100

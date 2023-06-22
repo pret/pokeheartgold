@@ -14,10 +14,10 @@
 #include "window.h"
 
 typedef struct MessageBox {
-    STRING *message;
-    STRING *buffer;
+    String *message;
+    String *buffer;
     MessageFormat *messageFormat;
-    WINDOW *window;
+    Window *window;
     u8 *unk10;
     u8 *textPrinterNumPtr;
 } MessageBox;
@@ -174,10 +174,10 @@ BOOL ScrCmd_NpcMsgVar(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_GenderMsgbox(ScriptContext *ctx) {
-    void *unused = Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys));
+    void *unused = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(ctx->fsys));
     u8 messageNumMale = ScriptReadByte(ctx);
     u8 messageNumFemale = ScriptReadByte(ctx);
-    u32 gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(ctx->fsys)));
+    u32 gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(ctx->fsys)));
     if (gender != PLAYER_GENDER_MALE) {
         ov01_021EF4DC(ctx, ctx->msgdata, messageNumFemale, TRUE, NULL);
     } else {
@@ -255,19 +255,19 @@ static u32 ovFieldMain_GetTextFrameDelay(ScriptContext *ctx) {
 }
 
 static void ovFieldMain_GetMsgBoxParameters(FieldSystem *fsys, MessageBox *messageBox) {
-    messageBox->message = *(STRING **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
-    messageBox->buffer = *(STRING **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
+    messageBox->message = *(String **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
+    messageBox->buffer = *(String **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
     messageBox->messageFormat = *(MessageFormat **)FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
-    messageBox->window = (WINDOW *)FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW);
+    messageBox->window = (Window *)FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW);
     messageBox->unk10 = (u8 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_08);
     messageBox->textPrinterNumPtr = (u8 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
 }
 
 static void ovFieldMain_GetMsgBoxParametersEx(FieldSystem *fsys, MessageFormat *messageFormat, MessageBox *messageBox) {
-    messageBox->message = *(STRING **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
-    messageBox->buffer = *(STRING **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
+    messageBox->message = *(String **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
+    messageBox->buffer = *(String **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
     messageBox->messageFormat = messageFormat;
-    messageBox->window = (WINDOW *)FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW);
+    messageBox->window = (Window *)FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW);
     messageBox->unk10 = (u8 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_08);
     messageBox->textPrinterNumPtr = (u8 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
 }
@@ -293,7 +293,7 @@ static void ovFieldMain_GetFormattedECMessage(MessageBox *messageBox, u16 messag
     MailMsg_SetMsgBankAndNum(&mailMessage, messageBank, messageNum);
     MailMsg_SetFieldI(&mailMessage, 0, word1);
     MailMsg_SetFieldI(&mailMessage, 1, word2);
-    STRING *string = MailMsg_GetExpandedString(&mailMessage, HEAP_ID_32);
+    String *string = MailMsg_GetExpandedString(&mailMessage, HEAP_ID_32);
     String_Copy(messageBox->message, string);
     String_Delete(string);
 }

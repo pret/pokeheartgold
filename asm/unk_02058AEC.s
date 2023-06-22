@@ -335,7 +335,7 @@ sub_02058D4C: ; 0x02058D4C
 	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	ldr r1, [r4, #0x34]
 	cmp r1, #0x2c
 	bls _02058D66
@@ -2132,7 +2132,7 @@ _02059B60:
 sub_02059B64: ; 0x02059B64
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetEnv
@@ -2475,7 +2475,7 @@ sub_02059E1C: ; 0x02059E1C
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 _02059E2E:
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	add r6, r0, #0
 	bl sub_02037F18
 	mov r1, #0x19

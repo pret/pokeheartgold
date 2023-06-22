@@ -16,7 +16,7 @@ sub_0206B910: ; 0x0206B910
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	add r5, r1, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	mov r0, #0xb
 	mov r1, #0x14
@@ -74,7 +74,7 @@ sub_0206B984: ; 0x0206B984
 	add r7, r0, #0
 	ldr r0, [sp]
 	ldr r6, [r7, #4]
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	ldr r0, [r7, #0x10]
 	cmp r0, #6

@@ -557,7 +557,7 @@ ov01_021F7100: ; 0x021F7100
 	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	ldr r0, [r4, #0x44]
 	cmp r0, #0xc
 	bhi _021F71C0

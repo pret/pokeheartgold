@@ -25,7 +25,7 @@ struct PokemonStorageSystem {
 
 #define BOX_ALL_MODIFIED_FLAG      ((u32)((1<<NUM_BOXES)-1))
 
-void PCStorage_GetBoxName(PC_STORAGE *pcStorage, u32 boxno, STRING *dest);
+void PCStorage_GetBoxName(PC_STORAGE *pcStorage, u32 boxno, String *dest);
 BOOL PCStorage_PlaceMonInFirstEmptySlotInAnyBox(PC_STORAGE *storage, BoxPokemon *boxMon);
 void PCStorage_Init(PC_STORAGE *storage);
 u32 PCStorage_sizeof(void);
@@ -43,7 +43,7 @@ void PCStorage_SetActiveBox(PC_STORAGE* storage, u32 boxno);
 u8 PCStorage_GetBoxWallpaper(PC_STORAGE* storage, u32 boxno);
 BOOL PCStorage_IsValidWallpaperId(u8 wallpaperno);
 void PCStorage_SetBoxWallpaper(PC_STORAGE* storage, u32 boxno, u8 wallpaperno);
-void PCStorage_SetBoxName(PC_STORAGE* storage, u32 boxno, const STRING* src);
+void PCStorage_SetBoxName(PC_STORAGE* storage, u32 boxno, const String* src);
 int PCStorage_CountMonsAndEggsInBox(PC_STORAGE* storage, u32 boxno);
 int PCStorage_CountMonsInBox(PC_STORAGE* storage, u32 boxno);
 int PCStorage_CountMonsInAllBoxes(PC_STORAGE* storage);

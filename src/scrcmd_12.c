@@ -56,7 +56,7 @@ BOOL ScrCmd_510(ScriptContext *ctx) {
     struct UnkStruct_0202EB30 *unkStruct = sub_020270F8(ctx->fsys->savedata);
     PC_STORAGE *storage = GetStoragePCPointer(ctx->fsys->savedata);
     Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
-    PLAYERPROFILE *profile = Save_PlayerData_GetProfileAddr(ctx->fsys->savedata);
+    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(ctx->fsys->savedata);
     POKEDEX *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
     int i;
 

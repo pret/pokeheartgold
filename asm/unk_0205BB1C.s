@@ -459,7 +459,7 @@ sub_0205BE28: ; 0x0205BE28
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r0, r4, #0
 	bl TaskManager_GetEnv
 	add r4, r0, #0
@@ -545,7 +545,7 @@ sub_0205BED8: ; 0x0205BED8
 	add r5, r1, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	str r0, [sp]
 	mov r0, #0xb
 	mov r1, #0x14
@@ -611,7 +611,7 @@ _0205BF68: .word sub_0205BE28
 sub_0205BF6C: ; 0x0205BF6C
 	push {r4, lr}
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r0, r4, #0
 	bl TaskManager_GetEnv
 	add r4, r0, #0
@@ -650,7 +650,7 @@ sub_0205BFB4: ; 0x0205BFB4
 	add r5, r1, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	str r0, [sp]
 	mov r0, #0xb
 	mov r1, #0xc

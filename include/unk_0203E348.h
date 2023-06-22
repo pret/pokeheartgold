@@ -28,11 +28,15 @@ typedef struct PartyMenuAppData {
     void *fsys_unk_10C;
     u8 unk_24;
     u8 unk_25;
-    u8 filler_26[0xA];
-    u8 unk_30;
-    u8 unk_31;
+    u8 unk_26;
+    u8 filler_27[9];
+    u8 unk_30[2];
     u8 unk_32;
-    u8 filler_33[0x11];
+    u8 filler_33[3];
+    u8 unk_36_0:4;
+    u8 unk_36_4:4;
+    u8 unk_37;
+    u8 filler_38[0xC];
 } PartyMenuAppData;
 
 struct ChooseStarterAppArgs {
@@ -48,7 +52,7 @@ typedef struct DressupPokemonAppData {
 } DressupPokemonAppData;
 
 struct UnkStruct_ScrCmd408 {
-    SAVEDATA *saveData;
+    SaveData *saveData;
     u16 unk_4;
     u16 unk_6;
 };
@@ -61,7 +65,7 @@ struct UnkStruct_ScrCmd230 {
 struct UnkStruct_ScrCmd627 {
     void *unk_0;
     OPTIONS *options;
-    SAVEDATA *saveData;
+    SaveData *saveData;
     void *unk_0C;
     u8 filler_10[0x8];
     u32 mapId;
@@ -71,13 +75,13 @@ struct UnkStruct_ScrCmd627 {
 };
 
 typedef struct PCBoxAppData {
-    SAVEDATA *saveData;
+    SaveData *saveData;
     void *fsysUnk10C;
     int unk8;
 } PCBoxAppData;
 
 typedef struct ScratchCardAppData {
-    SAVEDATA *saveData;
+    SaveData *saveData;
     u8 filler_04[4];
     u16 unk_08[3];
     u16 unk_0E[3];
@@ -86,7 +90,7 @@ typedef struct ScratchCardAppData {
 
 struct UseMailWork *CreateUseMailWork(FieldSystem *fsys, int kind, int mailId, HeapID heapId);
 struct ApricornBoxWork *CreateApricornBoxWork(FieldSystem *fsys, int a1);
-struct PalPadWork *CreatePalPadWork(FieldSystem *fsys, SAVEDATA *saveData, HeapID heapId);
+struct PalPadWork *CreatePalPadWork(FieldSystem *fsys, SaveData *saveData, HeapID heapId);
 struct BerryPotsWork *CreateBerryPotsWork(FieldSystem *fsys);
 struct UnownReportWork *CreateUnownReportWork(FieldSystem *fsys);
 struct GracideaWork *sub_0203FAE8(FieldSystem *fsys, HeapID heapId, u16 itemId);
@@ -95,17 +99,17 @@ PartyMenuAppData *sub_0203E5A4(HeapID heapId, FieldSystem *fsys); //todo: party 
 PartyMenuAppData *sub_0203E6D4(TaskManager *taskManager, HeapID heapId); //todo: union party select screen
 int sub_0203E5C8(struct PartyMenuAppData *partyWork);
 int sub_0203E5F8(struct PartyMenuAppData *partyWork);
-void sub_0203F570(FieldSystem *fsys, SAVEDATA *saveData);
+void sub_0203F570(FieldSystem *fsys, SaveData *saveData);
 UnkStruct_Ov02_0224E4EC* sub_0203EB64(FieldSystem *fsys);
 void sub_0203F964(FieldSystem *fsys);
 void LaunchChooseStarterApp(FieldSystem *fsys, struct ChooseStarterAppArgs *args);
-void Save_CurrentLocation_BackUp(SAVEDATA *saveData);
+void Save_CurrentLocation_BackUp(SaveData *saveData);
 u16 sub_0203E864(void *a0);
 u16 sub_0203E600(void *a0);
 void *sub_0203E7F4(HeapID heapId, FieldSystem *fsys, u8 a2, u16 a3);
 u32 *sub_0203ED80(FieldSystem *fsys, u32 a1, u16 *a2);
 void *sub_0203FB94(HeapID heapId, FieldSystem *fsys, u16 a2, u16 a3);
-void sub_0203F198(TaskManager *taskManager, u16 *ret_p, SAVEDATA *saveData, u16 a3, u16 a4);
+void sub_0203F198(TaskManager *taskManager, u16 *ret_p, SaveData *saveData, u16 a3, u16 a4);
 void sub_0203F204(FieldSystem *fsys, DressupPokemonAppData *dressupData);
 void sub_0203F0A8(FieldSystem *fsys, struct UnkStruct_ScrCmd408 *unk);
 void sub_0203E868(FieldSystem *fsys, PCBoxAppData *pcBoxData);

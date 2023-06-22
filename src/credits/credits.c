@@ -119,8 +119,8 @@ typedef struct {
 
 typedef struct {
     MSGDATA *msgData;
-    WINDOW window;
-    STRING *string;
+    Window window;
+    String *string;
     PageDisplayWork pageDisplayWork;
     PageState pageState;
     ScreenFlipWork scrFlipWork;

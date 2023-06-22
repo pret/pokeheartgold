@@ -22,7 +22,7 @@ struct BlackoutScreenWork {
     int state;
     FieldSystem *fsys;
     BGCONFIG *bgConfig;
-    WINDOW window;
+    Window window;
     MSGDATA *msgData;
     MessageFormat *msgFmt;
 };
@@ -85,7 +85,7 @@ static void DrawBlackoutMessage(FieldSystem *fsys, TaskManager *taskManager) {
     env->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0203_bin, (HeapID)11);
     env->msgFmt = MessageFormat_New((HeapID)11);
     {
-        static const WINDOWTEMPLATE _020FC51C = {
+        static const WindowTemplate _020FC51C = {
             3,
             4,
             5,
@@ -97,7 +97,7 @@ static void DrawBlackoutMessage(FieldSystem *fsys, TaskManager *taskManager) {
 
         AddWindow(env->bgConfig, &env->window, &_020FC51C);
     }
-    BufferPlayersName(env->msgFmt, 0, Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(fsys)));
+    BufferPlayersName(env->msgFmt, 0, Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(fsys)));
     if (fsys->location->mapId == MAP_T20R0201) {
         _PrintMessage(env, msg_0203_00004, 0, 0);
     } else {
@@ -147,8 +147,8 @@ static BOOL FieldTask_ShowPrintedMessage(TaskManager *taskManager) {
 }
 
 static void _PrintMessage(struct BlackoutScreenWork *work, int msgno, u8 x, u8 y) {
-    STRING *str0 = String_New(1024, (HeapID)11);
-    STRING *str1 = String_New(1024, (HeapID)11);
+    String *str0 = String_New(1024, (HeapID)11);
+    String *str1 = String_New(1024, (HeapID)11);
 
     FillWindowPixelBuffer(&work->window, 0);
     ReadMsgDataIntoString(work->msgData, msgno, str0);
@@ -166,7 +166,7 @@ static void _PrintMessage(struct BlackoutScreenWork *work, int msgno, u8 x, u8 y
 }
 
 BOOL FieldTask_BlackOut(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetSys(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     u32 *state = TaskManager_GetStatePtr(taskManager);
     LocalFieldData *localFieldData;
     Location deathWarp;

@@ -52,7 +52,7 @@ static void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL a2) 
         MapMatrix_Free(matrix);
     }
 
-    ptr->playerGender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(sys)));
+    ptr->playerGender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(sys)));
     ptr->unk28 = &sys->unk_10C;
     ptr->unk01 = sub_0203DF3C(sys);
     ptr->mapMusicID = FieldSystem_GetOverriddenMusicId(sys, ptr->mapID);

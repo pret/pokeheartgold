@@ -43,9 +43,9 @@ void FieldMoveArgsSet(FieldSystem *fsys, u16 v8000, u16 v8001, u16 v8002, u16 v8
 u16 ScriptNumToTrainerNum(u16 script);
 BOOL ScriptNoToDoublePartnerNo(u16 a0);
 BOOL TrainerNumIsDouble(u32 trainer);
-BOOL TrainerFlagCheck(SAVEDATA *a0, u32 trno);
-void TrainerFlagSet(SAVEDATA *a0, u32 trno);
-void TrainerFlagClear(SAVEDATA *a0, u32 trno);
+BOOL TrainerFlagCheck(SaveData *a0, u32 trno);
+void TrainerFlagSet(SaveData *a0, u32 trno);
+void TrainerFlagClear(SaveData *a0, u32 trno);
 u16 HiddenItemScriptNoToFlagId(u16 script);
 u16 HiddenItemScriptNoToHiddenItemIdx(u16 script);
 u8 sub_02040578(u16 script);

@@ -81,7 +81,7 @@ const Unk122_021E9374 ov122_021E9374 = {
     },
 };
 
-const WINDOWTEMPLATE sVoltorbFlipWindowTemplates[17] = {
+const WindowTemplate sVoltorbFlipWindowTemplates[17] = {
     {
         .bgId      = 0x03,
         .left      = 0x02,

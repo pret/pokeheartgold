@@ -56,8 +56,8 @@ BOOL ScrCmd_GetPartyMonSpecies(ScriptContext *ctx) {
 
 BOOL ScrCmd_PartymonIsMine(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    SAVEDATA *save = FieldSys_GetSaveDataPtr(fsys);
-    PLAYERPROFILE *profile = Save_PlayerData_GetProfileAddr(save);
+    SaveData *save = FieldSystem_GetSaveDataPtr(fsys);
+    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(save);
 
     u16 *slot = ScriptGetVarPointer(ctx);
     u16 *mine = ScriptGetVarPointer(ctx);
@@ -78,7 +78,7 @@ BOOL ScrCmd_PartymonIsMine(ScriptContext *ctx) {
 
 BOOL ScrCmd_GiveEgg(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
-    PLAYERPROFILE *profile = Save_PlayerData_GetProfileAddr(fsys->savedata);
+    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(fsys->savedata);
 
     u16 species = ScriptGetVar(ctx);
     u16 offset = ScriptGetVar(ctx);

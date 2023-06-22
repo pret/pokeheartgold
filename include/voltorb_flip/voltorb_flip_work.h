@@ -31,15 +31,15 @@ typedef struct VoltorbFlipAppWork {
     OPTIONS *options;
     u16 *coins;
     int unkC;
-    PLAYERPROFILE *profile;
+    PlayerProfile *profile;
     NARC *narc;
     BGCONFIG *bgConfig;
     void *unk1C;
     void *unk20;
-    WINDOW windows[17];
+    Window windows[17];
     LISTMENUITEM *menuItems[2];
     void *unk13C;
-    STRING *string;
+    String *string;
     Unk122_021E7C9C *unk144;
     void *unk148;
     UnkStruct_0200CF18 *unk14C[0xd];

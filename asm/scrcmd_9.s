@@ -71,7 +71,7 @@ ScrCmd_410: ; 0x02049CA8
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	add r1, r4, #0
 	add r2, r6, #0
 	bl sub_0204A824
@@ -1323,7 +1323,7 @@ _0204A61C:
 	bne _0204A65C
 	ldr r1, [sp, #0xc]
 	add r0, r5, #0
-	bl IsPokemonLegendaryOrMythical
+	bl IsPokemonBannedFromBattleFrontier 
 	cmp r0, #1
 	beq _0204A65C
 	ldr r0, [sp, #4]
@@ -3355,7 +3355,7 @@ sub_0204B538: ; 0x0204B538
 	mov r4, #0
 _0204B58C:
 	add r0, r4, #0
-	bl GetLegendaryMon
+	bl GetBannedBattleFrontierPokemon 
 	add r7, r0, #0
 	ldr r0, [sp, #0x18]
 	add r1, r7, #0

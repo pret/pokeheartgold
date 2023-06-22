@@ -5,26 +5,26 @@
 #include "scrcmd.h"
 #include "overlay_01_021EDAFC.h"
 
-extern WINDOW *ov01_021EEC00(struct FieldSystem *fsys, u8 type, u8 x, u8 y);
+extern Window *ov01_021EEC00(struct FieldSystem *fsys, u8 type, u8 x, u8 y);
 
 BOOL ScrCmd_116(ScriptContext *ctx) {
     u8 type = ScriptReadByte(ctx);
     u16 x = ScriptGetVar(ctx);
     u16 y = ScriptGetVar(ctx);
-    WINDOW **window = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_POINTS_BOX);
+    Window **window = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_POINTS_BOX);
     *window = ov01_021EEC00(ctx->fsys, type, x, y);
     return FALSE;
 }
 
 BOOL ScrCmd_117(ScriptContext *ctx) {
-    WINDOW **window = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_POINTS_BOX);
+    Window **window = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_POINTS_BOX);
     ov01_021EEC68(*window);
     return FALSE;
 }
 
 BOOL ScrCmd_118(ScriptContext *ctx) {
     u8 type = ScriptReadByte(ctx);
-    WINDOW **window = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_POINTS_BOX);
+    Window **window = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_POINTS_BOX);
     ov01_021EEC7C(ctx->fsys, *window, type);
     return FALSE;
 }

@@ -51,7 +51,7 @@ static const BGTEMPLATE sDataReadErrorBgTemplate = {
     .mosaic = FALSE,
 };
 
-static const WINDOWTEMPLATE sDataReadErrorWindowTemplate = {
+static const WindowTemplate sDataReadErrorWindowTemplate = {
     .bgId = GF_BG_LYR_MAIN_0,
     .left = 3,
     .top = 3,
@@ -62,7 +62,7 @@ static const WINDOWTEMPLATE sDataReadErrorWindowTemplate = {
 };
 
 void ShowSaveDataReadError(HeapID heap_id) {
-    WINDOW window;
+    Window window;
 
     sub_0200FBF4(PM_LCD_TOP, 0);
     sub_0200FBF4(PM_LCD_BOTTOM, 0);
@@ -97,7 +97,7 @@ void ShowSaveDataReadError(HeapID heap_id) {
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB(1, 1, 27));
 
     MSGDATA* error_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0008_bin, heap_id);
-    STRING* error_str = String_New(384, heap_id);
+    String* error_str = String_New(384, heap_id);
 
     ResetAllTextPrinters();
 
@@ -121,7 +121,7 @@ void ShowSaveDataReadError(HeapID heap_id) {
 }
 
 void ShowGBACartRemovedError(HeapID heap_id) {
-    WINDOW window;
+    Window window;
 
     sub_0200FBF4(PM_LCD_TOP, 0);
     sub_0200FBF4(PM_LCD_BOTTOM, 0);
@@ -156,7 +156,7 @@ void ShowGBACartRemovedError(HeapID heap_id) {
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB(1, 1, 27));
 
     MSGDATA* error_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0008_bin, heap_id);
-    STRING* error_str = String_New(384, heap_id);
+    String* error_str = String_New(384, heap_id);
 
     ResetAllTextPrinters();
 

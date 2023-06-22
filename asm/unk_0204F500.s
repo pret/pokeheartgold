@@ -932,7 +932,7 @@ sub_0204FBDC: ; 0x0204FBDC
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r2, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r7, r0, #0
 	mov r0, #0xb
 	mov r1, #0x10
@@ -956,7 +956,7 @@ _0204FC0C: .word sub_0204FC10
 sub_0204FC10: ; 0x0204FC10
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetEnv
@@ -1609,7 +1609,7 @@ sub_0205011C: ; 0x0205011C
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r2, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r7, r0, #0
 	mov r0, #0xb
 	mov r1, #0x10
@@ -1633,7 +1633,7 @@ _0205014C: .word sub_02050150
 sub_02050150: ; 0x02050150
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetEnv

@@ -30,7 +30,7 @@ typedef struct BAG_VIEW_POCKET {
  * Data relevant to drawing the bag on screen
  */
 typedef struct BAG_VIEW {
-    SAVEDATA *saveData;                // Persistent game state
+    SaveData *saveData;                // Persistent game state
     BAG_VIEW_POCKET pockets[8];        // Pocket information
     u8 unk_64;
     u8 unk_65;
@@ -66,7 +66,7 @@ BAG_VIEW *BagView_New(u8 heap_id);
  */
 u32 BagView_sizeof(void);
 void sub_02077894(BAG_VIEW *a0, u8 a1);
-void sub_0207789C(BAG_VIEW *a0, SAVEDATA *a1, u8 a2, BAG_CURSOR *a3, u32 a4);
+void sub_0207789C(BAG_VIEW *a0, SaveData *a1, u8 a2, BAG_CURSOR *a3, u32 a4);
 
 /*
  * void BagView_SetItem(BAG_VIEW *bagView, ItemSlot *slots, u8 pocketId, u8 position)
@@ -92,7 +92,7 @@ u8 sub_02077914(BAG_VIEW *bagView);
 u8 sub_0207791C(BAG_VIEW *bagView);
 
 /*
- * BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 itemId, u32 heap_id)
+ * BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, String *dest, u16 itemId, u32 heap_id)
  *
  * Some key items, when used, only print a non_npc_msg.
  * If the selected item is one of these, formats the
@@ -100,16 +100,16 @@ u8 sub_0207791C(BAG_VIEW *bagView);
  * returns FALSE and leaves dest untouched.
  *
  * @param saveData:    Persistent game state
- * @param dest:        Output STRING
+ * @param dest:        Output String
  * @param itemId:      ID of item to check
  * @param heap_id:     Heap in which to allocate temp buffers
  *
  * @returns: TRUE if non_npc_msg formatted, else FALSE
  */
-BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 itemId, HeapID heap_id);
+BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, String *dest, u16 itemId, HeapID heap_id);
 
 /*
- * void GetItemUseErrorMessage(PLAYERDATA *playerData, STRING *dest, u32 unused, enum ItemUseError code, u32 heap_id)
+ * void GetItemUseErrorMessage(PLAYERDATA *playerData, String *dest, u32 unused, enum ItemUseError code, u32 heap_id)
  *
  * If you can't use the item for whatever reason, this
  * routine is called to format the non_npc_msg.
@@ -117,13 +117,13 @@ BOOL TryFormatRegisteredKeyItemUseMessage(SAVEDATA *saveData, STRING *dest, u16 
  * There are special messages for Cycling Road and when
  * you have an NPC companion.
  *
- * @param playerProfile:  Pointer to PLAYERPROFILE, used to get your
+ * @param playerProfile:  Pointer to PlayerProfile, used to get your
  *                        name in Oak's admonishment
- * @param dest:           Pointer to output STRING
+ * @param dest:           Pointer to output String
  * @param itemId:         Unused
  * @param code:           Which non_npc_msg to output
  * @param heap_id:        Heap to allocate temp buffers from
  */
-void GetItemUseErrorMessage(PLAYERPROFILE *playerProfile, STRING *dest, u16 itemId, enum ItemUseError code, HeapID heap_id);
+void GetItemUseErrorMessage(PlayerProfile *playerProfile, String *dest, u16 itemId, enum ItemUseError code, HeapID heap_id);
 
 #endif //POKEHEARTGOLD_BAG_VIEW_H

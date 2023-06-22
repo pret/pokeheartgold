@@ -13,7 +13,7 @@
 #include "sys_vars.h"
 #include "unk_0205BB1C.h"
 
-static STRING* _get_species_name(u16 species, HeapID heap_id);
+static String* _get_species_name(u16 species, HeapID heap_id);
 
 BOOL ScrCmd_BufferStatName(ScriptContext* ctx) {
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
@@ -29,7 +29,7 @@ BOOL ScrCmd_BufferPlayersName(ScriptContext* ctx) {
     FieldSystem* fsys = ctx->fsys;
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
-    PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(FieldSys_GetSaveDataPtr(fsys));
+    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(fsys));
 
     BufferPlayersName(*msg_fmt, idx, profile);
 
@@ -201,8 +201,8 @@ BOOL ScrCmd_BufferTrainerClassName(ScriptContext* ctx) {
 
 BOOL ScrCmd_BufferPlayerUnionAvatarClassName(ScriptContext* ctx) {
     FieldSystem* fsys = ctx->fsys;
-    SAVEDATA* savedata = FieldSys_GetSaveDataPtr(fsys);
-    PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(savedata);
+    SaveData* savedata = FieldSystem_GetSaveDataPtr(fsys);
+    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(savedata);
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u32 gender = PlayerProfile_GetTrainerGender(profile);
@@ -220,16 +220,16 @@ BOOL ScrCmd_BufferSpeciesName(ScriptContext* ctx) {
     u16 unk2 = ScriptReadHalfword(ctx);
     u8 unk3 = ScriptReadByte(ctx);
 
-    STRING* species_name = _get_species_name(species, HEAP_ID_4);
+    String* species_name = _get_species_name(species, HEAP_ID_4);
     BufferString(*msg_fmt, idx, species_name, unk2, unk3, 2);
     String_Delete(species_name);
 
     return FALSE;
 }
 
-STRING* _get_species_name(u16 species, HeapID heap_id) {
+String* _get_species_name(u16 species, HeapID heap_id) {
     MSGDATA* msg_data = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0237_bin, heap_id);
-    STRING* name = NewString_ReadMsgData(msg_data, species);
+    String* name = NewString_ReadMsgData(msg_data, species);
     DestroyMsgData(msg_data);
     return name;
 }
@@ -237,9 +237,9 @@ STRING* _get_species_name(u16 species, HeapID heap_id) {
 BOOL ScrCmd_BufferStarterSpeciesName(ScriptContext* ctx) {
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
-    u16 species = GetStarterFromScriptState(SaveArray_Flags_Get(ctx->fsys->savedata));
+    u16 species = ScriptState_GetStarter(SaveArray_Flags_Get(ctx->fsys->savedata));
 
-    STRING* species_name = _get_species_name(species, HEAP_ID_4);
+    String* species_name = _get_species_name(species, HEAP_ID_4);
     BufferString(*msg_fmt, idx, species_name, 0, 1, 2);
     String_Delete(species_name);
 
@@ -251,7 +251,7 @@ BOOL ScrCmd_BufferDPPtRivalStarterSpeciesName(ScriptContext* ctx) {
     u8 idx = ScriptReadByte(ctx);
     u16 species = DPPtLeftover_GetRivalSpecies(SaveArray_Flags_Get(ctx->fsys->savedata));
 
-    STRING* species_name = _get_species_name(species, HEAP_ID_4);
+    String* species_name = _get_species_name(species, HEAP_ID_4);
     BufferString(*msg_fmt, idx, species_name, 0, 1, 2);
     String_Delete(species_name);
 
@@ -263,7 +263,7 @@ BOOL ScrCmd_BufferDPPtFriendStarterSpeciesName(ScriptContext* ctx) {
     u8 idx = ScriptReadByte(ctx);
     u16 species = DPPtLeftover_GetFriendStarterSpecies(SaveArray_Flags_Get(ctx->fsys->savedata));
 
-    STRING* species_name = _get_species_name(species, HEAP_ID_4);
+    String* species_name = _get_species_name(species, HEAP_ID_4);
     BufferString(*msg_fmt, idx, species_name, 0, 1, 2);
     String_Delete(species_name);
 
@@ -299,7 +299,7 @@ BOOL ScrCmd_209(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferMapSecName(ScriptContext* ctx) {
-    STRING* str = String_New(22, HEAP_ID_4);
+    String* str = String_New(22, HEAP_ID_4);
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 mapno = ScriptGetVar(ctx);
@@ -317,7 +317,7 @@ BOOL ScrCmd_BufferBerryName(ScriptContext* ctx) {
     u16 berry_id = ScriptGetVar(ctx);
     u16 unk = ScriptGetVar(ctx);
 
-    STRING* str = GetNutName((u16)(berry_id - FIRST_BERRY_IDX), HEAP_ID_32);
+    String* str = GetNutName((u16)(berry_id - FIRST_BERRY_IDX), HEAP_ID_32);
     BufferString(*msg_fmt, idx, str, 0, unk < 2, 2);
     String_Delete(str);
 

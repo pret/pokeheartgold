@@ -13,7 +13,7 @@
 .public GF_AssertFail
 .public MapHeader_HasWildEncounters
 .public QueueScript
-.public TaskManager_GetSys
+.public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public GetMetatileBehaviorAt
 .public GetPlayerXCoord

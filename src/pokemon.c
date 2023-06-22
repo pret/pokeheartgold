@@ -49,8 +49,8 @@ void sub_02070D3C(s32 trainer_class, s32 a1, s32 a2, struct UnkStruct_02070D3C *
 int TrainerClassToBackpicID(int trainer_class, int a1);
 void LoadMonEvolutionTable(u16 species, struct Evolution *evoTable);
 BOOL MonHasMove(Pokemon *mon, u16 move_id);
-void sub_0207213C(BoxPokemon *boxMon, PLAYERPROFILE *playerProfile, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id);
-void sub_02072190(BoxPokemon *boxMon, PLAYERPROFILE *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id);
+void sub_0207213C(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id);
+void sub_02072190(BoxPokemon *boxMon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id);
 
 #define ENCRY_ARGS_PTY(mon) (u16 *)&(mon)->party, sizeof((mon)->party), (mon)->box.pid
 #define ENCRY_ARGS_BOX(boxMon) (u16 *)&(boxMon)->substructs, sizeof((boxMon)->substructs), (boxMon)->checksum
@@ -745,7 +745,7 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void * dest) {
         // fallthrough
     case MON_DATA_NICKNAME_3:
         if (boxMon->checksum_fail) {
-            STRING * buffer = GetSpeciesName(SPECIES_MANAPHY_EGG, HEAP_ID_0);
+            String * buffer = GetSpeciesName(SPECIES_MANAPHY_EGG, HEAP_ID_0);
             String_Copy(dest, buffer);
             String_Delete(buffer);
         } else {
@@ -981,7 +981,7 @@ static void SetBoxMonDataInternal(BoxPokemon *boxMon, int attr, const void * val
     u16 namebuf[POKEMON_NAME_LENGTH + 1];
     u16 namebuf2[POKEMON_NAME_LENGTH + 1];
     u16 namebuf3[POKEMON_NAME_LENGTH + 1];
-    STRING * speciesName;
+    String * speciesName;
 
     PokemonDataBlockA *blockA = &GetSubstruct(boxMon, boxMon->pid, 0)->blockA;
     PokemonDataBlockB *blockB = &GetSubstruct(boxMon, boxMon->pid, 1)->blockB;
@@ -3707,7 +3707,7 @@ void sub_020720D4(Pokemon *mon) {
     PlayCry(GetMonData(mon, MON_DATA_SPECIES, NULL), GetMonData(mon, MON_DATA_FORME, NULL));
 }
 
-void sub_020720FC(Pokemon *mon, PLAYERPROFILE *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
+void sub_020720FC(Pokemon *mon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
     u32 hp;
     sub_0207213C(&mon->box, a1, pokeball, a3, encounterType, heap_id);
     if (pokeball == ITEM_HEAL_BALL) {
@@ -3718,18 +3718,18 @@ void sub_020720FC(Pokemon *mon, PLAYERPROFILE *a1, u32 pokeball, u32 a3, u32 enc
     }
 }
 
-void sub_0207213C(BoxPokemon *boxMon, PLAYERPROFILE *playerProfile, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
+void sub_0207213C(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
     sub_0208F270(boxMon, playerProfile, 0, a3, heap_id);
     SetBoxMonData(boxMon, MON_DATA_GAME_VERSION, (void *)&gGameVersion);
     SetBoxMonData(boxMon, MON_DATA_POKEBALL, &pokeball);
     SetBoxMonData(boxMon, MON_DATA_ENCOUNTER_TYPE, &encounterType);
 }
 
-void sub_0207217C(Pokemon *mon, PLAYERPROFILE *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
+void sub_0207217C(Pokemon *mon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
     sub_02072190(&mon->box, a1, pokeball, a3, encounterType, heap_id);
 }
 
-void sub_02072190(BoxPokemon *boxMon, PLAYERPROFILE *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
+void sub_02072190(BoxPokemon *boxMon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, HeapID heap_id) {
     sub_0207213C(boxMon, a1, pokeball, a3, encounterType, heap_id);
 }
 
@@ -4044,7 +4044,7 @@ int LowestFlagNo(u32 mask) {
     return i;
 }
 
-static const u16 sLegendaryMonsList[18] = {
+static const u16 sBattleFrontierBanlist[18] = {
     SPECIES_MEWTWO,
     SPECIES_MEW,
     SPECIES_LUGIA,
@@ -4065,10 +4065,10 @@ static const u16 sLegendaryMonsList[18] = {
     SPECIES_ARCEUS,
 };
 
-BOOL IsPokemonLegendaryOrMythical(u16 species, u16 forme) {
+BOOL IsPokemonBannedFromBattleFrontier(u16 species, u16 forme) {
     int i;
-    for (i = 0; i < NELEMS(sLegendaryMonsList); i++) {
-        if (species == sLegendaryMonsList[i]) {
+    for (i = 0; i < NELEMS(sBattleFrontierBanlist); i++) {
+        if (species == sBattleFrontierBanlist[i]) {
             return TRUE;
         }
     }
@@ -4078,11 +4078,11 @@ BOOL IsPokemonLegendaryOrMythical(u16 species, u16 forme) {
     return FALSE;
 }
 
-u16 GetLegendaryMon(u32 idx) {
-    if (idx >= NELEMS(sLegendaryMonsList)) {
+u16 GetBannedBattleFrontierPokemon(u32 idx) {
+    if (idx >= NELEMS(sBattleFrontierBanlist)) {
         idx = 0;
     }
-    return sLegendaryMonsList[idx];
+    return sBattleFrontierBanlist[idx];
 }
 
 static const u16 sMythicalMonsList[9] = {
@@ -4110,16 +4110,16 @@ BOOL SpeciesIsMythical(u16 species) {
 BOOL MonCheckFrontierIneligibility(Pokemon *mon) {
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     u16 forme = GetMonData(mon, MON_DATA_FORME, NULL);
-    return IsPokemonLegendaryOrMythical(species, forme);
+    return IsPokemonBannedFromBattleFrontier(species, forme);
 }
 
-BOOL BoxmonBelongsToPlayer(BoxPokemon *boxMon, PLAYERPROFILE * profile, HeapID heap_id) {
+BOOL BoxmonBelongsToPlayer(BoxPokemon *boxMon, PlayerProfile * profile, HeapID heap_id) {
     u32 myId = PlayerProfile_GetTrainerID(profile);
     u32 otId = GetBoxMonData(boxMon, MON_DATA_OTID, NULL);
     u32 myGender = PlayerProfile_GetTrainerGender(profile);
     u32 otGender = GetBoxMonData(boxMon, MON_DATA_MET_GENDER, NULL);
-    STRING * r7 = PlayerProfile_GetPlayerName_NewString(profile, heap_id);
-    STRING * r6 = String_New(PLAYER_NAME_LENGTH + 1, heap_id);
+    String * r7 = PlayerProfile_GetPlayerName_NewString(profile, heap_id);
+    String * r6 = String_New(PLAYER_NAME_LENGTH + 1, heap_id);
     BOOL ret = FALSE;
     GetBoxMonData(boxMon, MON_DATA_OT_NAME_2, r6);
     if (myId == otId && myGender == otGender && String_Compare(r7, r6) == 0) {

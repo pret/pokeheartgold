@@ -64,15 +64,15 @@ void Save_SealCase_Init(SEALCASE *sealCase);
 void CopyCapsule(const CAPSULE *src, CAPSULE *dest);
 
 /*
- * SEALCASE *Save_SealCase_Get(SAVEDATA *saveData)
+ * SEALCASE *Save_SealCase_Get(SaveData *saveData)
  *
  * Gets the player's seal case from the save file
  *
- * @param saveData:    Pointer to SAVEDATA
+ * @param saveData:    Pointer to SaveData
  *
  * @returns: Pointer to SEALCASE from the save file
  */
-SEALCASE *Save_SealCase_Get(SAVEDATA *saveData);
+SEALCASE *Save_SealCase_Get(SaveData *saveData);
 
 /*
  * CAPSULE *SealCase_GetCapsuleI(SEALCASE *sealCase, int i)

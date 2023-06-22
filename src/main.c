@@ -58,7 +58,7 @@ void NitroMain(void) {
     FontID_Alloc(1, HEAP_ID_3);
     FontID_Alloc(3, HEAP_ID_3);
     _02111868.unk_10.unk_00 = -1;
-    _02111868.unk_10.savedata = SaveBlock2_New();
+    _02111868.unk_10.savedata = SaveData_New();
     sub_02005D00();
     InitSoundData(Save_Chatot_Get(_02111868.unk_10.savedata), Save_PlayerData_GetOptionsAddr(_02111868.unk_10.savedata));
     Init_Timer3();
@@ -203,7 +203,7 @@ void DoSoftReset(u32 param) {
     sub_0200FBF4(0, RGB_WHITE);
     sub_0200FBF4(1, RGB_WHITE);
     if (sub_02038D90()) {
-        Save_Cancel(SaveBlock2_Get());
+        Save_Cancel(SaveData_Get());
     }
     while (1) {
         HandleDSLidAction();

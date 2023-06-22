@@ -207,7 +207,7 @@ _02253F84:
 	str r0, [r2, #0x74]
 	ldr r0, [r1]
 	ldr r0, [r0, #0x68]
-	bl FieldSys_GetSaveDataPtr
+	bl FieldSystem_GetSaveDataPtr
 	bl Save_PlayerData_GetProfileAddr
 	ldr r1, _02254050 ; =ov03_022598A0
 	ldr r1, [r1]
@@ -4767,7 +4767,7 @@ _022564A4: .word 0x000005F3
 ov03_022564A8: ; 0x022564A8
 	push {r4, lr}
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r0, r4, #0
 	bl TaskManager_GetEnv
 	add r4, r0, #0
@@ -5021,7 +5021,7 @@ ov03_022566B0: ; 0x022566B0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	bl ov03_02256644
 	add r2, r0, #0
 	ldr r1, _022566CC ; =ov03_022564A8
@@ -5992,7 +5992,7 @@ _02256E28: .word ov03_02256E2C
 ov03_02256E2C: ; 0x02256E2C
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r6, #0
 	bl TaskManager_GetEnv
@@ -9229,7 +9229,7 @@ ov03_02258764: ; 0x02258764
 	cmp r0, #0
 	beq _022587C2
 	add r0, r6, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r6, #0
 	bl TaskManager_GetEnv
@@ -9946,7 +9946,7 @@ ScrCmd_792: ; 0x02258CDC
 ov03_02258CFC: ; 0x02258CFC
 	push {r4, r5, r6, lr}
 	add r6, r1, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	mov r0, #0xb
 	mov r1, #0x40
@@ -9976,7 +9976,7 @@ _02258D38: .word ov03_02258D3C
 ov03_02258D3C: ; 0x02258D3C
 	push {r4, lr}
 	add r4, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r0, r4, #0
 	bl TaskManager_GetEnv
 	add r4, r0, #0

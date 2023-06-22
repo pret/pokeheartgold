@@ -7,7 +7,7 @@
 struct UnkStruct_02111868_sub {
     int unk_00;
     u32 unk_04;
-    SAVEDATA *savedata;
+    SaveData *savedata;
 };
 
 void NitroMain(void);

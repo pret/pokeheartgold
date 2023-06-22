@@ -39,9 +39,9 @@ static BOOL ov36_App_InitGameState_AfterOakSpeech_AppExit(OVY_MANAGER* man, int*
 static BOOL ov36_TitleScreen_NewGame_AppInit(OVY_MANAGER* man, int* state);
 static BOOL ov36_TitleScreen_NewGame_AppExec(OVY_MANAGER* man, int* state);
 static BOOL ov36_TitleScreen_NewGame_AppExit(OVY_MANAGER* man, int* state);
-static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SAVEDATA* savedata, BOOL set_trainer_id);
-static void Continue_LoadSaveData_HandleError(HeapID heap_id, SAVEDATA* savedata);
-static void NewGame_InitSaveData(HeapID heap_id, SAVEDATA* savedata);
+static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SaveData* savedata, BOOL set_trainer_id);
+static void Continue_LoadSaveData_HandleError(HeapID heap_id, SaveData* savedata);
+static void NewGame_InitSaveData(HeapID heap_id, SaveData* savedata);
 
 const OVY_MGR_TEMPLATE ov36_App_MainMenu_SelectOption_NewGame = {
     .init = ov36_TitleScreen_NewGame_AppInit,
@@ -91,7 +91,7 @@ BOOL ov36_TitleScreen_NewGame_AppInit(OVY_MANAGER* man, int* state) {
 
 BOOL ov36_TitleScreen_NewGame_AppExec(OVY_MANAGER* man, int* state) {
 #pragma unused(state)
-    SAVEDATA* savedata = ((struct UnkStruct_02111868_sub*)OverlayManager_GetArgs(man))->savedata;
+    SaveData* savedata = ((struct UnkStruct_02111868_sub*)OverlayManager_GetArgs(man))->savedata;
     NewGame_InitSaveData(HEAPID_OV36, savedata);
 
     return TRUE;
@@ -116,7 +116,7 @@ BOOL ov36_App_InitGameState_AfterOakSpeech_AppInit(OVY_MANAGER* man, int* state)
 BOOL ov36_App_InitGameState_AfterOakSpeech_AppExec(OVY_MANAGER* man, int* state) {
 #pragma unused(state)
     struct UnkStruct_02111868_sub* unk_work = OverlayManager_GetArgs(man);
-    SAVEDATA* savedata = unk_work->savedata;
+    SaveData* savedata = unk_work->savedata;
     InitGameStateAfterOakSpeech_Internal(HEAPID_OV36, savedata, TRUE);
     sub_0201838C(Save_PlayerData_GetIGTAddr(savedata));
 
@@ -142,7 +142,7 @@ BOOL ov36_App_MainMenu_SelectOption_Continue_AppInit(OVY_MANAGER* man, int* stat
 BOOL ov36_App_MainMenu_SelectOption_Continue_AppExec(OVY_MANAGER* man, int* state) {
 #pragma unused(state)
     struct UnkStruct_02111868_sub* unk_work = OverlayManager_GetArgs(man);
-    SAVEDATA* savedata = unk_work->savedata;
+    SaveData* savedata = unk_work->savedata;
     SYSINFO* sys_info = Save_SysInfo_Get(savedata);
 
     Continue_LoadSaveData_HandleError(HEAPID_OV36, savedata);
@@ -169,11 +169,11 @@ BOOL ov36_App_MainMenu_SelectOption_Continue_AppExit(OVY_MANAGER* man, int* stat
     return TRUE;
 }
 
-static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SAVEDATA* savedata, BOOL set_trainer_id) {
+static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SaveData* savedata, BOOL set_trainer_id) {
 #pragma unused(heap_id)
     s32 i;
     MSGDATA* friend_names_msgdata;
-    STRING* author_name;
+    String* author_name;
 
     Save_SysInfo_InitFromSystem(Save_SysInfo_Get(savedata));
     Save_SysInfo_RTC_Init(Save_SysInfo_RTC_Get(savedata));
@@ -181,7 +181,7 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SAVEDATA* saved
     sub_0202C7C0(Save_FriendGroup_Get(savedata), 1, MTRandom());
     sub_020674BC(savedata);
 
-    PLAYERPROFILE* profile = Save_PlayerData_GetProfileAddr(savedata);
+    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(savedata);
     u32 rand = MTRandom();
 
     if (set_trainer_id) {
@@ -233,14 +233,14 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SAVEDATA* saved
     DestroyMsgData(friend_names_msgdata);
 }
 
-static void Continue_LoadSaveData_HandleError(HeapID heap_id, SAVEDATA* savedata) {
+static void Continue_LoadSaveData_HandleError(HeapID heap_id, SaveData* savedata) {
 #pragma unused(heap_id)
     if (!SaveData_TryLoadOnContinue(savedata)) {
         OS_ResetSystem(0);
     }
 }
 
-static void NewGame_InitSaveData(HeapID heap_id, SAVEDATA* savedata) {
+static void NewGame_InitSaveData(HeapID heap_id, SaveData* savedata) {
 #pragma unused(heap_id)
     Save_InitDynamicRegion(savedata);
     Save_CurrentLocation_BackUp(savedata);

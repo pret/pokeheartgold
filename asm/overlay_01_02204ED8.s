@@ -39,7 +39,7 @@ ov01_02204EFC: ; 0x02204EFC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r7, r0, #0
-	bl TaskManager_GetSys
+	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r7, #0
 	bl TaskManager_GetEnv

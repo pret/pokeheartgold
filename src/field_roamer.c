@@ -167,8 +167,8 @@ void UpdatePlayerLocationHistoryIfAnyRoamersActive(RoamerSaveData *roamers, u32 
     }
 }
 
-void Save_CreateRoamerByID(SAVEDATA *saveData, u8 idx) {
-    PLAYERPROFILE *profile;
+void Save_CreateRoamerByID(SaveData *saveData, u8 idx) {
+    PlayerProfile *profile;
     RoamerSaveData *roamerSave = Save_Roamers_Get(saveData);
     Roamer *roamerStats = Roamers_GetRoamMonStats(roamerSave, idx);
     Pokemon *mon;
