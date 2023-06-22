@@ -2966,7 +2966,7 @@ BOOL ScrCmd_MovePerson(ScriptContext *ctx) {
     u16 objectId = ScriptGetVar(ctx);
     u16 x = ScriptGetVar(ctx);
     u16 y = ScriptGetVar(ctx);
-    Field_SetObjectEventXYPos(ctx->fsys, objectId, x, y);
+    Field_SetEventDefaultXYPos(ctx->fsys, objectId, x, y);
     return FALSE;
 }
 
@@ -2985,14 +2985,14 @@ BOOL ScrCmd_MovePersonFacing(ScriptContext *ctx) {
 BOOL ScrCmd_SetObjectMovementType(ScriptContext *ctx) {
     u16 objectId = ScriptGetVar(ctx);
     u16 movementType = ScriptGetVar(ctx);
-    Field_SetObjectEventMovement(ctx->fsys, objectId, movementType);
+    Field_SetEventDefaultMovement(ctx->fsys, objectId, movementType);
     return FALSE;
 }
 
 BOOL ScrCmd_SetObjectFacing(ScriptContext *ctx) {
     u16 objectId = ScriptGetVar(ctx);
     u16 facing = ScriptGetVar(ctx);
-    Field_SetObjectEventFacing(ctx->fsys, objectId, facing);
+    Field_SetObjectEventDirection(ctx->fsys, objectId, facing);
     return FALSE;
 }
 

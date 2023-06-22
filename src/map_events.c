@@ -84,7 +84,7 @@ const ObjectEvent *Field_GetObjectEvents(const FieldSystem *fsys) {
     return fsys->mapEvents->object_events;
 }
 
-BOOL Field_SetObjectEventXYPos(FieldSystem *fsys, int id, u16 x, u16 y) {
+BOOL Field_SetEventDefaultXYPos(FieldSystem *fsys, int id, u16 x, u16 y) {
     int i;
     ObjectEvent *objs = fsys->mapEvents->object_events;
     u32 num_objs = fsys->mapEvents->num_object_events;
@@ -101,7 +101,7 @@ BOOL Field_SetObjectEventXYPos(FieldSystem *fsys, int id, u16 x, u16 y) {
     return FALSE;
 }
 
-BOOL Field_SetObjectEventFacing(FieldSystem *fsys, int id, u16 dirn) {
+BOOL Field_SetObjectEventDirection(FieldSystem *fsys, int id, u16 dirn) {
     int i;
     ObjectEvent *objs = fsys->mapEvents->object_events;
     u32 num_objs = fsys->mapEvents->num_object_events;
@@ -117,7 +117,7 @@ BOOL Field_SetObjectEventFacing(FieldSystem *fsys, int id, u16 dirn) {
     return FALSE;
 }
 
-BOOL Field_SetObjectEventMovement(FieldSystem *fsys, int id, u16 mvt) {
+BOOL Field_SetEventDefaultMovement(FieldSystem *fsys, int id, u16 mvt) {
     int i;
     ObjectEvent *objs = fsys->mapEvents->object_events;
     u32 num_objs = fsys->mapEvents->num_object_events;
