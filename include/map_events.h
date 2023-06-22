@@ -19,7 +19,7 @@ const COORD_EVENT *Field_GetCoordEvents(const FieldSystem *fsys);
 u32 Field_GetNumObjectEvents(const FieldSystem *fsys);
 const ObjectEvent *Field_GetObjectEvents(const FieldSystem *fsys);
 BOOL Field_SetEventDefaultXYPos(FieldSystem *fsys, int id, u16 x, u16 y);
-BOOL Field_SetObjectEventDirection(FieldSystem *fsys, int id, u16 dirn);
+BOOL Field_SetEventDefaultDirection(FieldSystem *fsys, int id, u16 dirn);
 BOOL Field_SetEventDefaultMovement(FieldSystem *fsys, int id, u16 mvt);
 BOOL Field_SetWarpXYPos(FieldSystem *fsys, int warpno, u16 x, u16 y);
 BOOL Field_SetBgEventXYPos(FieldSystem *fsys, int bgno, u32 x, u32 y);

@@ -101,7 +101,7 @@ BOOL Field_SetEventDefaultXYPos(FieldSystem *fsys, int id, u16 x, u16 y) {
     return FALSE;
 }
 
-BOOL Field_SetObjectEventDirection(FieldSystem *fsys, int id, u16 dirn) {
+BOOL Field_SetEventDefaultDirection(FieldSystem *fsys, int id, u16 dirn) {
     int i;
     ObjectEvent *objs = fsys->mapEvents->object_events;
     u32 num_objs = fsys->mapEvents->num_object_events;

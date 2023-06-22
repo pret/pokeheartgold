@@ -2992,7 +2992,7 @@ BOOL ScrCmd_SetObjectMovementType(ScriptContext *ctx) {
 BOOL ScrCmd_SetObjectFacing(ScriptContext *ctx) {
     u16 objectId = ScriptGetVar(ctx);
     u16 facing = ScriptGetVar(ctx);
-    Field_SetObjectEventDirection(ctx->fsys, objectId, facing);
+    Field_SetEventDefaultDirection(ctx->fsys, objectId, facing);
     return FALSE;
 }
 
