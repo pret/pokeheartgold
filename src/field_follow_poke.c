@@ -1787,7 +1787,7 @@ BOOL FollowingPokemon_IsActive(FieldSystem *fsys) {
 
 BOOL sub_02069FB0(FieldSystem *fsys) {
     if (FollowingPokemon_IsActive(fsys)) {
-        if (!MapObject_CheckFlag9(fsys->followMon.mapObject)) {
+        if (!MapObject_CheckVisible(fsys->followMon.mapObject)) {
             return TRUE;
         } else {
             return FALSE;
@@ -1830,7 +1830,7 @@ BOOL GetFollowPokePermissionBySpeciesAndMap(int species, u32 mapno) {
 }
 
 void sub_0206A040(LocalMapObject *mapObject, BOOL enable_bit) {
-    MapObject_SetFlag9(mapObject, enable_bit);
+    MapObject_SetVisible(mapObject, enable_bit);
     MapObject_SetFlag19(mapObject, enable_bit);
 }
 

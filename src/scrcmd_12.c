@@ -57,7 +57,7 @@ BOOL ScrCmd_510(ScriptContext *ctx) {
     PC_STORAGE *storage = GetStoragePCPointer(ctx->fsys->savedata);
     Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
     PlayerProfile *profile = Save_PlayerData_GetProfileAddr(ctx->fsys->savedata);
-    POKEDEX *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
     int i;
 
     for (i = 0; i < PARTY_SIZE; i++) {

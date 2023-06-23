@@ -1151,7 +1151,7 @@ sub_0206064C: ; 0x0206064C
 	cmp r0, #1
 	beq _02060694
 	add r0, r5, #0
-	bl MapObject_CheckFlag9
+	bl MapObject_CheckVisible
 	cmp r0, #0
 	bne _02060694
 	add r0, r5, #0
@@ -2017,7 +2017,7 @@ _02060D3A:
 	cmp r0, #0
 	beq _02060D84
 	ldr r0, [sp, #4]
-	bl MapObject_CheckFlag9
+	bl MapObject_CheckVisible
 	cmp r0, #0
 	bne _02060D84
 	ldr r0, [sp, #4]

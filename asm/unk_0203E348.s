@@ -1934,13 +1934,13 @@ sub_0203F0D0: ; 0x0203F0D0
 	bl GetPartyMonByIndex
 	str r0, [r5]
 	add r0, r6, #0
-	bl Save_DressupData_Get
+	bl Save_FashionData_Get
 	str r0, [sp]
 	mov r1, #0
 	bl sub_0202B9B8
 	add r4, r0, #0
 	ldr r0, [sp]
-	bl SaveDressupData_GetFashionCase
+	bl Save_FashionData_GetFashionCase
 	str r4, [r5, #4]
 	str r0, [r5, #8]
 	add r0, r6, #0

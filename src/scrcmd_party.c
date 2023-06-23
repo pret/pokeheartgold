@@ -16,7 +16,7 @@ FS_EXTERN_OVERLAY(npc_trade);
 BOOL ScrCmd_GiveMon(ScriptContext *ctx) {
     u16 map = MapHeader_GetMapSec(ctx->fsys->location->mapId);
     FieldSystem *fsys = ctx->fsys;
-    POKEDEX *pokedex = Save_Pokedex_Get(fsys->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(fsys->savedata);
 
     u16 species = ScriptGetVar(ctx);
     u8 level = ScriptGetVar(ctx);

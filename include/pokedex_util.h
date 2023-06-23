@@ -4,7 +4,7 @@
 #include "pokedex.h"
 #include "save.h"
 
-BOOL Pokedex_IsNatDexEnabled(const POKEDEX* pokedex);
+BOOL Pokedex_IsNatDexEnabled(const Pokedex* pokedex);
 BOOL SaveArray_IsNatDexEnabled(SaveData* savedata);
 u32 Pokedex_ConvertToCurrentDexNo(BOOL natDexFlag, u32 species);
 

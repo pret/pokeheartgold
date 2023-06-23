@@ -23,7 +23,7 @@
 .public MapObject_SetMovementStep
 .public MapObject_IncMovementStep
 .public MapObject_GetMovementStep
-.public MapObject_CheckFlag9
+.public MapObject_CheckVisible
 .public MapObject_SetFacingVec
 .public sub_02060F24
 .public sub_02060F78

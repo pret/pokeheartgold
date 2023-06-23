@@ -200,7 +200,7 @@
 .public sub_0202BC10
 .public sub_0202BE60
 .public sub_0202BE98
-.public Save_DressupData_Get
+.public Save_FashionData_Get
 .public GetIGTHours
 .public GetIGTMinutes
 .public GetIGTSeconds

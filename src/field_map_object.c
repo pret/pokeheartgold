@@ -545,7 +545,7 @@ static void sub_0205E934(LocalMapObject* object) {
                                      MAPOBJECTFLAG_UNK17 |
                                      MAPOBJECTFLAG_UNK16 |
                                      MAPOBJECTFLAG_UNK14 |
-                                     MAPOBJECTFLAG_UNK9 |
+                                     MAPOBJECTFLAG_VISIBLE |
                                      MAPOBJECTFLAG_MOVEMENT_PAUSED |
                                      MAPOBJECTFLAG_UNK3);
     sub_0205EF5C(object);
@@ -1516,15 +1516,15 @@ BOOL MapObject_CheckFlag14(LocalMapObject* object) {
     return MapObject_TestFlagsBits(object, MAPOBJECTFLAG_UNK14);
 }
 
-BOOL MapObject_CheckFlag9(LocalMapObject* object) {
-    return MapObject_TestFlagsBits(object, MAPOBJECTFLAG_UNK9);
+BOOL MapObject_CheckVisible(LocalMapObject* object) {
+    return MapObject_TestFlagsBits(object, MAPOBJECTFLAG_VISIBLE);
 }
 
-void MapObject_SetFlag9(LocalMapObject* object, BOOL set) {
+void MapObject_SetVisible(LocalMapObject* object, BOOL set) {
     if (set == TRUE) {
-        MapObject_SetFlagsBits(object, MAPOBJECTFLAG_UNK9);
+        MapObject_SetFlagsBits(object, MAPOBJECTFLAG_VISIBLE);
     } else {
-        MapObject_ClearFlagsBits(object, MAPOBJECTFLAG_UNK9);
+        MapObject_ClearFlagsBits(object, MAPOBJECTFLAG_VISIBLE);
     }
 }
 

@@ -457,8 +457,8 @@ _0202B91A:
 	.balign 4, 0
 	thumb_func_end sub_0202B908
 
-	thumb_func_start Save_DressupData_Init
-Save_DressupData_Init: ; 0x0202B930
+	thumb_func_start Save_FashionData_Init
+Save_FashionData_Init: ; 0x0202B930
 	push {r3, r4, r5, r6, r7, lr}
 	mov r4, #0
 	ldr r6, _0202B980 ; =0x00001234
@@ -502,15 +502,15 @@ _0202B95C:
 _0202B980: .word 0x00001234
 _0202B984: .word 0x000004FC
 _0202B988: .word 0x000007F4
-	thumb_func_end Save_DressupData_Init
+	thumb_func_end Save_FashionData_Init
 
-	thumb_func_start Save_DressupData_sizeof
-Save_DressupData_sizeof: ; 0x0202B98C
+	thumb_func_start Save_FashionData_sizeof
+Save_FashionData_sizeof: ; 0x0202B98C
 	ldr r0, _0202B990 ; =0x00000834
 	bx lr
 	.balign 4, 0
 _0202B990: .word 0x00000834
-	thumb_func_end Save_DressupData_sizeof
+	thumb_func_end Save_FashionData_sizeof
 
 	thumb_func_start sub_0202B994
 sub_0202B994: ; 0x0202B994
@@ -558,14 +558,14 @@ _0202B9DA:
 	.balign 4, 0
 	thumb_func_end sub_0202B9B8
 
-	thumb_func_start SaveDressupData_GetFashionCase
-SaveDressupData_GetFashionCase: ; 0x0202B9E0
+	thumb_func_start Save_FashionData_GetFashionCase
+Save_FashionData_GetFashionCase: ; 0x0202B9E0
 	ldr r1, _0202B9E8 ; =0x000007F4
 	add r0, r0, r1
 	bx lr
 	nop
 _0202B9E8: .word 0x000007F4
-	thumb_func_end SaveDressupData_GetFashionCase
+	thumb_func_end Save_FashionData_GetFashionCase
 
 	thumb_func_start sub_0202B9EC
 sub_0202B9EC: ; 0x0202B9EC
@@ -1479,11 +1479,11 @@ _0202C022:
 	.balign 4, 0
 	thumb_func_end sub_0202BF80
 
-	thumb_func_start Save_DressupData_Get
-Save_DressupData_Get: ; 0x0202C028
+	thumb_func_start Save_FashionData_Get
+Save_FashionData_Get: ; 0x0202C028
 	ldr r3, _0202C030 ; =SaveArray_Get
 	mov r1, #0xc
 	bx r3
 	nop
 _0202C030: .word SaveArray_Get
-	thumb_func_end Save_DressupData_Get
+	thumb_func_end Save_FashionData_Get

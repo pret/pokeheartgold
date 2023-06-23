@@ -977,7 +977,7 @@ BOOL ScrCmd_CheckSeenAllLetterUnown(ScriptContext *ctx) {
     s32 i;
     u32 counter;
     s32 unownFormes;
-    POKEDEX *pokedex;
+    Pokedex *pokedex;
     u16 *allUnownSeen;
 
     allUnownSeen = ScriptGetVarPointer(ctx);

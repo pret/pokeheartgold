@@ -755,7 +755,7 @@ _022037A2:
 	bl ov01_021FC004
 	ldr r0, [sp]
 	mov r1, #1
-	bl MapObject_SetFlag9
+	bl MapObject_SetVisible
 	mov r0, #0
 	add sp, #0x28
 	str r0, [r5, #0x10]

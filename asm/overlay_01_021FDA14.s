@@ -283,7 +283,7 @@ _021FDC06:
 	mov r4, #1
 _021FDC1C:
 	add r0, r6, #0
-	bl MapObject_CheckFlag9
+	bl MapObject_CheckVisible
 	cmp r0, #1
 	bne _021FDC28
 	mov r4, #1
@@ -925,7 +925,7 @@ _021FE124:
 	cmp r0, #0
 	beq _021FE18A
 	add r0, r4, #0
-	bl MapObject_CheckFlag9
+	bl MapObject_CheckVisible
 	cmp r0, #1
 	ldr r0, [r5, #0x24]
 	bne _021FE13E

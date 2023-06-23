@@ -33,7 +33,7 @@
 .public MapObject_ForceSetFacingDirection
 .public MapObject_SetXRange
 .public MapObject_SetYRange
-.public MapObject_SetFlag9
+.public MapObject_SetVisible
 .public MapObject_ClearFlag18
 .public MapObject_SetFlag19
 .public MapObject_GetInitialX
