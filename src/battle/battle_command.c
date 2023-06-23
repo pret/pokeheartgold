@@ -3051,7 +3051,7 @@ BOOL BtlCmd_TryThief(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     } else {
         if (ctx->battleMons[ctx->battlerIdTarget].item && CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget, ABILITY_STICKY_HOLD) == TRUE) {
             BattleScriptIncrementPointer(ctx, adrs2);
-        } else if (ctx->battleMons[ctx->battlerIdAttacker].item || ov12_02252700(bsys, ctx, ctx->battlerIdTarget) == FALSE) {
+        } else if (ctx->battleMons[ctx->battlerIdAttacker].item || CanStealHeldItem(bsys, ctx, ctx->battlerIdTarget) == FALSE) {
             BattleScriptIncrementPointer(ctx, adrs1);
         }
     }
@@ -3335,7 +3335,7 @@ BOOL BtlCmd_WeatherDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     u32 type1 = GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL);
     u32 type2 = GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL);
 
-    if (CheckAbilityActive(bsys, ctx, 8, 0, ABILITY_CLOUD_NINE) == 0 && CheckAbilityActive(bsys, ctx, 8, 0, ABILITY_AIR_LOCK) == 0) {
+    if (CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) == 0 && CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK) == 0) {
         if (ctx->fieldCondition & FIELD_CONDITION_SANDSTORM_ALL) {
             if (type1 != TYPE_ROCK && type2 != TYPE_ROCK &&
                 type1 != TYPE_STEEL && type2 != TYPE_STEEL &&
@@ -3611,7 +3611,7 @@ BOOL BtlCmd_RapidSpin(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 BOOL BtlCmd_ChangeWeatherBasedHPRecovery(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    if (!(ctx->fieldCondition & FIELD_CONDITION_WEATHER) || CheckAbilityActive(bsys, ctx, 8, 0, ABILITY_CLOUD_NINE) || CheckAbilityActive(bsys, ctx, 8, 0, ABILITY_AIR_LOCK)) {
+    if (!(ctx->fieldCondition & FIELD_CONDITION_WEATHER) || CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) || CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)) {
         ctx->hpCalcWork = ctx->battleMons[ctx->battlerIdAttacker].maxHp / 2;
     } else if (ctx->fieldCondition & FIELD_CONDITION_SUN_ALL) {
         ctx->hpCalcWork = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp*20, 30);
@@ -3711,7 +3711,7 @@ BOOL BtlCmd_TryTeleport(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     u32 adrs = BattleScriptReadWord(ctx);
 
-    if (CanEscape(bsys, ctx, ctx->battlerIdAttacker, 0)) {
+    if (CanEscape(bsys, ctx, ctx->battlerIdAttacker, NULL)) {
         BattleScriptIncrementPointer(ctx, adrs);
     }
 
@@ -3838,7 +3838,7 @@ BOOL BtlCmd_TryTrick(BattleSystem *bsys, BATTLECONTEXT *ctx) {
               (ctx->fieldSideConditionData[sideTarget].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[ctx->battlerIdTarget]))) {
         BattleScriptIncrementPointer(ctx, adrsA);
     } else if ((ctx->battleMons[ctx->battlerIdAttacker].item == 0 && ctx->battleMons[ctx->battlerIdTarget].item == 0) ||
-                !ov12_0225275C(ctx, ctx->battlerIdAttacker) || !ov12_0225275C(ctx, ctx->battlerIdTarget)) {
+                !CanTrickHeldItem(ctx, ctx->battlerIdAttacker) || !CanTrickHeldItem(ctx, ctx->battlerIdTarget)) {
         BattleScriptIncrementPointer(ctx, adrsA);
     } else if (CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget, ABILITY_STICKY_HOLD) == TRUE) {
         BattleScriptIncrementPointer(ctx, adrsB);
@@ -4292,7 +4292,7 @@ BOOL BtlCmd_LowKickDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 BOOL BtlCmd_WeatherBallDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    if (!CheckAbilityActive(bsys, ctx, 8, 0, ABILITY_CLOUD_NINE) && !CheckAbilityActive(bsys, ctx, 8, 0, ABILITY_AIR_LOCK)) {
+    if (!CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) && !CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)) {
         if (ctx->fieldCondition & FIELD_CONDITION_WEATHER) {
             ctx->movePower = ctx->unk_334.moveData[ctx->moveNoCur].power * 2;
             if (ctx->fieldCondition & FIELD_CONDITION_RAIN_ALL) {
@@ -5690,7 +5690,7 @@ BOOL BtlCmd_CheckCloudNine(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int adrs = BattleScriptReadWord(ctx);
 
-    if (!CheckAbilityActive(bsys, ctx, 8, 0, ABILITY_CLOUD_NINE) && !CheckAbilityActive(bsys, ctx, 8, 0, ABILITY_AIR_LOCK)) {
+    if (!CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) && !CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)) {
 
     } else {
         BattleScriptIncrementPointer(ctx, adrs);

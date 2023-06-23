@@ -79,7 +79,7 @@
 .public GetBattlerSelectedMove
 .public CheckAbilityActive
 .public BattleCtx_IsIdenticalToCurrentMove
-.public ov12_022526D0
+.public CurseUserIsGhost
 .public GetBattlerAbility
 .public CheckBattlerAbilityIfNotIgnored
 .public CanSwitchMon

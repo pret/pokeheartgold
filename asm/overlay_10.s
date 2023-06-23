@@ -571,7 +571,7 @@ _0221C23E:
 	add r0, r5, #0
 	ldrb r2, [r5, r2]
 	add r1, r6, #0
-	bl ov12_022526D0
+	bl CurseUserIsGhost
 	cmp r0, #0
 	bne _0221C25C
 	ldr r0, _0221C264 ; =0x000003CF

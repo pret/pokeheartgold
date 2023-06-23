@@ -48,6 +48,14 @@ BOOL BattleCtx_IsIdenticalToCurrentMove(BATTLECONTEXT *ctx, int moveNo);
 BOOL GetTypeEffectivnessData(BattleSystem *bsys, int index, u8 *typeMove, u8 *typeMon, u8 *eff);
 int CalculateTypeEffectiveness(u8 typeMove, u8 typeMon1, u8 typeMon2);
 BOOL CheckMoveCallsOtherMove(u16 moveNo);
+BOOL CurseUserIsGhost(BATTLECONTEXT *ctx, u16 moveNo, int battlerId);
+BOOL CanStealHeldItem(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+BOOL CanTrickHeldItem(BATTLECONTEXT *ctx, int battlerId);
+BOOL WhirlwindCheck(BattleSystem *bsys, BATTLECONTEXT *ctx);
+u8 GetBattlerAbility(BATTLECONTEXT *ctx, int battlerId);
+BOOL CheckBattlerAbilityIfNotIgnored(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int ability);
+BOOL CanSwitchMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+BOOL CanEscape(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, BATTLEMSG *msg);
 
 //The following functions are static, but the rest of the file is still being worked on
 BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int index);
@@ -55,11 +63,7 @@ BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarge
 //The following functions haven't been decompiled as of now
 void ov12_02256F78(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 monIndex);
 void Link_CheckTimeout(BATTLECONTEXT *ctx);
-BOOL CheckBattlerAbilityIfNotIgnored(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, u32 ability);
-BOOL CanSwitchMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
-BOOL CanEscape(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int a3);
 int DamageDivide(int numerator, int denominator);
-u32 GetBattlerAbility(BATTLECONTEXT *ctx, int battlerId);
 u32 GetBattlerHeldItemEffect(BATTLECONTEXT *ctx, int battlerId);
 int GetBattlerLearnedMoveCount(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 int CalcMoveDamage(BattleSystem *bsys, BATTLECONTEXT *ctx, u32, u32, u32, u16, u8, u8, u8, u8);
@@ -90,9 +94,6 @@ u32 ov12_022581D4(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 a2, int battlerId)
 u32 GetItemHoldEffect(BATTLECONTEXT *ctx, int item, u32 a3);
 u32 ov12_0223C24C(PARTY *party, u32 *a1);
 BOOL CheckStatusEffectsSubstitute(BATTLECONTEXT *ctx, int battlerId, u32 status);
-BOOL ov12_02252700(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
-BOOL WhirlwindCheck(BattleSystem *bsys, BATTLECONTEXT *ctx);
-BOOL ov12_0225275C(BATTLECONTEXT *ctx, int battlerId);
 int ov12_0223AB0C(BattleSystem *bsys, int battlerId);
 int ov12_02251D28(BattleSystem *bsys, BATTLECONTEXT *ctx, int moveNo, int moveType, int battlerIdAttacker, int battlerIdTarget, int dmg, u32 *statusFlag);
 BOOL ov12_02252C40(BATTLECONTEXT *ctx, int battlerId);

@@ -28,7 +28,7 @@
 .public ov12_02251D28
 .public ov12_02252054
 .public CheckAbilityActive
-.public ov12_022526D0
+.public CurseUserIsGhost
 .public GetBattlerAbility
 .public GetBattlerLearnedMoveCount
 .public DamageDivide

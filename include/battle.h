@@ -79,7 +79,7 @@ typedef struct SelfTurnData {
     u32 ignorePressure:1;
     u32 lightningRodFlag:1;
     u32 stormDrainFlag:1;
-    u32 unk0_3:1;
+    u32 moldBreakerFlag:1;
     u32 trickRoomFlag:1;
     u32 unk0_5:1;
     u32 rolloutCount:3;

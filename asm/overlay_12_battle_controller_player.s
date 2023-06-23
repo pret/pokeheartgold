@@ -7533,7 +7533,7 @@ _0224C036:
 	lsl r1, r6, #0x10
 	add r0, r5, #0
 	lsr r1, r1, #0x10
-	bl ov12_022526D0
+	bl CurseUserIsGhost
 	cmp r0, #1
 	bne _0224C09A
 _0224C066:
@@ -11077,7 +11077,7 @@ ov12_0224DB64: ; 0x0224DB64
 	cmp r1, #0xae
 	bne _0224DB9E
 	add r0, r5, #0
-	bl ov12_022526D0
+	bl CurseUserIsGhost
 	cmp r0, #0
 	bne _0224DB9E
 	mov r0, #0x10

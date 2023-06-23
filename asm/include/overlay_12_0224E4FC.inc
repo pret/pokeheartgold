@@ -106,9 +106,9 @@
 .public GetTypeEffectivnessData
 .public CalculateTypeEffectiveness
 .public CheckMoveCallsOtherMove
-.public ov12_022526D0
-.public ov12_02252700
-.public ov12_0225275C
+.public CurseUserIsGhost
+.public CanStealHeldItem
+.public CanTrickHeldItem
 .public WhirlwindCheck
 .public GetBattlerAbility
 .public CheckBattlerAbilityIfNotIgnored
