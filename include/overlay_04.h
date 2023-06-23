@@ -29,8 +29,8 @@ int ov04_02256058(FieldSystem *fsys);
 void ov04_0225640C(FieldSystem *fsys, u8 lockno, u8 relock);
 BOOL ov04_022563C4(FieldSystem *fsys, u8 canId);
 void ov04_02253ED4(FieldSystem *fsys);
-void Fsys_BeginAzaleaGymSpinarakRide(FieldSystem *fsys, u8 spinarakNo);
-void Fsys_FlipAzaleaGymSwitch(FieldSystem *fsys, u8 switchNo);
+void BeginAzaleaGymSpinarakRide(FieldSystem *fsys, u8 spinarakNo);
+void FlipAzaleaGymSwitch(FieldSystem *fsys, u8 switchNo);
 
 BOOL ov04_022550D4(FieldSystem* fsys, u32 a1, u32 a2, u32 a3, u32 a4);
 void ov04_02256ED8(FieldSystem *fsys);
