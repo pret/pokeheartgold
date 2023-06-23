@@ -2505,28 +2505,28 @@ BOOL ScrCmd_ElevatorCurFloorBox(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_CountJohtoDexSeen(ScriptContext *ctx) {
-    POKEDEX *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = Pokedex_CountJohtoDexSeen(pokedex);
     return FALSE;
 }
 
 BOOL ScrCmd_CountJohtoDexOwned(ScriptContext *ctx) {
-    POKEDEX *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = Pokedex_CountJohtoDexOwned(pokedex);
     return FALSE;
 }
 
 BOOL ScrCmd_CountNationalDexSeen(ScriptContext *ctx) {
-    POKEDEX *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = Pokedex_CountNationalDexSeen(pokedex);
     return FALSE;
 }
 
 BOOL ScrCmd_CountNationalDexOwned(ScriptContext *ctx) {
-    POKEDEX *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = Pokedex_CountNationalDexOwned(pokedex);
     return FALSE;
@@ -2538,7 +2538,7 @@ BOOL ScrCmd_247(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_GetDexEvalResult(ScriptContext *ctx) {
-    POKEDEX *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
     PlayerProfile *profile = Save_PlayerData_GetProfileAddr(ctx->fsys->savedata);
     u8 kind = ScriptReadByte(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
@@ -3292,7 +3292,7 @@ BOOL ScrCmd_407(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_CheckJohtoDexComplete(ScriptContext *ctx) {
-    POKEDEX *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = FALSE;
     if (Pokedex_JohtoDexIsComplete(pokedex) == TRUE) {
@@ -3302,7 +3302,7 @@ BOOL ScrCmd_CheckJohtoDexComplete(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_CheckNationalDexComplete(ScriptContext *ctx) {
-    POKEDEX *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = FALSE;
     if (Pokedex_NationalDexIsComplete(pokedex) == TRUE) {
@@ -3632,7 +3632,7 @@ BOOL ScrCmd_502(ScriptContext *ctx) {
 }
 
 void Script_SetMonSeenFlagBySpecies(FieldSystem *fsys, u16 species) {
-    POKEDEX *pokedex = Save_Pokedex_Get(fsys->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(fsys->savedata);
     Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
     ZeroMonData(mon);
     CreateMon(mon, species, 50, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
@@ -3688,7 +3688,7 @@ BOOL ScrCmd_518(ScriptContext *ctx) {
     u16 forme = ScriptGetVar(ctx);
     PARTY *party = SaveArray_PlayerParty_Get(ctx->fsys->savedata);
     int partyCount = GetPartyCount(party);
-    POKEDEX *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
     int i;
 
     for (i = 0; i < partyCount; i++) {
@@ -3901,7 +3901,7 @@ BOOL ScrCmd_543(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_545(ScriptContext *ctx) {
-    POKEDEX *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = Pokedex_GetSeenFormeNum_Unown(pokedex, TRUE);
     return FALSE;
