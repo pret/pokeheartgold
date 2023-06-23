@@ -3192,7 +3192,7 @@ BOOL ScrCmd_GetPlayerXYZ(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_EggHatchAnim(ScriptContext *ctx) {
-    sub_0203F9F4(ctx->fsys);
+    HatchEggInParty(ctx->fsys);
     return TRUE;
 }
 

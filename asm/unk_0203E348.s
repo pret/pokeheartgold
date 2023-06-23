@@ -3075,8 +3075,8 @@ sub_0203F9C4: ; 0x0203F9C4
 _0203F9F0: .word _020FA1E4
 	thumb_func_end sub_0203F9C4
 
-	thumb_func_start sub_0203F9F4
-sub_0203F9F4: ; 0x0203F9F4
+	thumb_func_start HatchEggInParty
+HatchEggInParty: ; 0x0203F9F4
 	push {r3, r4, r5, lr}
 	sub sp, #0x10
 	add r4, r0, #0
@@ -3105,7 +3105,7 @@ _0203FA0C:
 	bl sub_02091240
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0203F9F4
+	thumb_func_end HatchEggInParty
 
 	thumb_func_start LaunchVoltorbFlipApp
 LaunchVoltorbFlipApp: ; 0x0203FA38
