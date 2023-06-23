@@ -121,8 +121,8 @@
 .public ov04_02253E20
 .public ov04_02253ED4
 .public ov04_02254190
-.public Fsys_FlipAzaleaGymSwitch
-.public Fsys_BeginAzaleaGymSpinarakRide
+.public FlipAzaleaGymSwitch
+.public BeginAzaleaGymSpinarakRide
 .public ov04_02254710
 .public ov04_02254CBC
 .public ov04_02254D84

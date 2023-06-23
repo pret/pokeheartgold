@@ -2966,7 +2966,7 @@ BOOL ScrCmd_MovePerson(ScriptContext *ctx) {
     u16 objectId = ScriptGetVar(ctx);
     u16 x = ScriptGetVar(ctx);
     u16 y = ScriptGetVar(ctx);
-    Field_SetObjectEventXYPos(ctx->fsys, objectId, x, y);
+    Field_SetEventDefaultXYPos(ctx->fsys, objectId, x, y);
     return FALSE;
 }
 
@@ -2985,14 +2985,14 @@ BOOL ScrCmd_MovePersonFacing(ScriptContext *ctx) {
 BOOL ScrCmd_SetObjectMovementType(ScriptContext *ctx) {
     u16 objectId = ScriptGetVar(ctx);
     u16 movementType = ScriptGetVar(ctx);
-    Field_SetObjectEventMovement(ctx->fsys, objectId, movementType);
+    Field_SetEventDefaultMovement(ctx->fsys, objectId, movementType);
     return FALSE;
 }
 
 BOOL ScrCmd_SetObjectFacing(ScriptContext *ctx) {
     u16 objectId = ScriptGetVar(ctx);
     u16 facing = ScriptGetVar(ctx);
-    Field_SetObjectEventFacing(ctx->fsys, objectId, facing);
+    Field_SetEventDefaultDirection(ctx->fsys, objectId, facing);
     return FALSE;
 }
 
@@ -3065,7 +3065,7 @@ BOOL ScrCmd_311(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_EcruteakGymInit(ScriptContext *ctx) {
-    Fsys_InitEcruteakGymSaveData(ctx->fsys);
+    InitEcruteakGym(ctx->fsys);
     return FALSE;
 }
 
@@ -3098,7 +3098,7 @@ BOOL ScrCmd_317(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_CianwoodGymInit(ScriptContext *ctx) {
-    Fsys_InitCianwoodGym(ctx->fsys);
+    InitCianwoodGym(ctx->fsys);
     return FALSE;
 }
 
@@ -3110,7 +3110,7 @@ BOOL ScrCmd_CianwoodGymTurnWinch(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_VermilionGymInit(ScriptContext *ctx) {
-    Fsys_InitVermilionGym(ctx->fsys);
+    InitVermilionGym(ctx->fsys);
     return FALSE;
 }
 
@@ -3136,7 +3136,7 @@ BOOL ScrCmd_ResampleVermilionGymCans(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_VioletGymInit(ScriptContext *ctx) {
-    Fsys_InitVioletGym(ctx->fsys);
+    InitVioletGym(ctx->fsys);
     return FALSE;
 }
 
@@ -3146,36 +3146,36 @@ BOOL ScrCmd_VioletGymElevator(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_AzaleaGymInit(ScriptContext *ctx) {
-    Fsys_InitAzaleaGym(ctx->fsys);
+    InitAzaleaGym(ctx->fsys);
     return FALSE;
 }
 
 BOOL ScrCmd_AzaleaGymSpinarak(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u8 spinarakNo = ScriptReadByte(ctx);
-    Fsys_BeginAzaleaGymSpinarakRide(fsys, spinarakNo);
+    BeginAzaleaGymSpinarakRide(fsys, spinarakNo);
     return TRUE;
 }
 
 BOOL ScrCmd_AzaleaGymSwitch(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u8 switchNo = ScriptReadByte(ctx);
-    Fsys_FlipAzaleaGymSwitch(fsys, switchNo);
+    FlipAzaleaGymSwitch(fsys, switchNo);
     return TRUE;
 }
 
 BOOL ScrCmd_BlackthornGymInit(ScriptContext *ctx) {
-    Fsys_InitBlackthornGym(ctx->fsys);
+    InitBlackthornGym(ctx->fsys);
     return FALSE;
 }
 
 BOOL ScrCmd_FuchsiaGymInit(ScriptContext *ctx) {
-    Fsys_InitFuchsiaGym(ctx->fsys);
+    InitFuchsiaGym(ctx->fsys);
     return FALSE;
 }
 
 BOOL ScrCmd_ViridianGymInit(ScriptContext *ctx) {
-    Fsys_InitViridianGym(ctx->fsys);
+    InitViridianGym(ctx->fsys);
     return FALSE;
 }
 
@@ -3192,7 +3192,7 @@ BOOL ScrCmd_GetPlayerXYZ(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_EggHatchAnim(ScriptContext *ctx) {
-    sub_0203F9F4(ctx->fsys);
+    HatchEggInParty(ctx->fsys);
     return TRUE;
 }
 

@@ -147,7 +147,7 @@ static inline PCBoxAppData *PCBoxAppData_New(ScriptContext *ctx) {
 void CreateNamingScreen(TaskManager *taskManager, int kind, int param, int maxLen, int initPos, const u16 *defaultStr, u16 *retVar);
 void sub_0203E960(TaskManager *taskManager, int a1, u16 *a2, u16 *a3, u16 *a4);
 void sub_0203F818(FieldSystem *fsys);
-void sub_0203F9F4(FieldSystem *fsys);
+void HatchEggInParty(FieldSystem *fsys);
 void *sub_0203F074(FieldSystem *fsys, HeapID heapId);
 void *sub_0203FA8C(FieldSystem *fsys, HeapID heapId, u16 a2);
 void *sub_0203E5D0(HeapID heapId, FieldSystem *fsys, u16 a2);
