@@ -22,10 +22,10 @@
 .public PlayerProfile_GetTrainerGender
 .public sub_020290E4
 .public sub_020291D4
-.public SaveDressupData_GetFashionCase
+.public Save_FashionData_GetFashionCase
 .public sub_0202BB08
 .public sub_0202BBD8
-.public Save_DressupData_Get
+.public Save_FashionData_Get
 .public Save_SealCase_Get
 .public GiveOrTakeSeal
 .public SealCase_CheckSealQuantity

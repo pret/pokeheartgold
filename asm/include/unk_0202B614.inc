@@ -10,12 +10,12 @@
 .public CopyU16ArrayToString
 .public CopyStringToU16Array
 .public SaveArray_Get
-.public Save_DressupData_Init
-.public Save_DressupData_sizeof
+.public Save_FashionData_Init
+.public Save_FashionData_sizeof
 .public sub_0202B994
 .public sub_0202B998
 .public sub_0202B9B8
-.public SaveDressupData_GetFashionCase
+.public Save_FashionData_GetFashionCase
 .public sub_0202B9EC
 .public sub_0202BA08
 .public sub_0202BA2C
@@ -50,7 +50,7 @@
 .public sub_0202BF04
 .public sub_0202BF08
 .public sub_0202BF80
-.public Save_DressupData_Get
+.public Save_FashionData_Get
 .public CreateMon
 .public GetMonData
 .public SetMonData

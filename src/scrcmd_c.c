@@ -1789,31 +1789,31 @@ BOOL ScrCmd_436(ScriptContext *ctx) {
 }
 
 static BOOL sub_02042A30(FieldSystem *fsys, int a1, int a2) {
-    SaveDressupData *dressupData = Save_DressupData_Get(fsys->savedata);
+    SaveFashionData *fashionData = Save_FashionData_Get(fsys->savedata);
     if (a1 == 0) {
-        if (!sub_0202B9EC(dressupData, a2)) {
+        if (!sub_0202B9EC(fashionData, a2)) {
             return FALSE;
         }
     } else {
-        if (!sub_0202BA08(dressupData, a2)) {
+        if (!sub_0202BA08(fashionData, a2)) {
             return FALSE;
         }
     }
     return TRUE;
 }
 
-static DressupPokemonAppData *sub_02042A60(HeapID heapId, FieldSystem *fsys, int a2, int a3) {
-    SaveDressupData *saveDressupData = Save_DressupData_Get(fsys->savedata);
-    DressupPokemonAppData *dressupAppData;
+static FashionAppData *sub_02042A60(HeapID heapId, FieldSystem *fsys, int a2, int a3) {
+    SaveFashionData *saveFashionData = Save_FashionData_Get(fsys->savedata);
+    FashionAppData *fashionAppData;
     if (!sub_02042A30(fsys, a2, a3)) {
         return NULL;
     }
-    dressupAppData = AllocFromHeap(heapId, sizeof(DressupPokemonAppData));
-    memset(dressupAppData, 0, sizeof(DressupPokemonAppData));
-    dressupAppData->saveDressupData = saveDressupData;
-    dressupAppData->unk_8 = a2;
-    dressupAppData->unk_4 = a3;
-    return dressupAppData;
+    fashionAppData = AllocFromHeap(heapId, sizeof(FashionAppData));
+    memset(fashionAppData, 0, sizeof(FashionAppData));
+    fashionAppData->saveFashionData = saveFashionData;
+    fashionAppData->unk_8 = a2;
+    fashionAppData->unk_4 = a3;
+    return fashionAppData;
 }
 
 BOOL ScrCmd_151(ScriptContext *ctx) {
@@ -1827,7 +1827,7 @@ BOOL ScrCmd_152(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_153(ScriptContext *ctx) {
-    struct DressupPokemonAppData **p_data = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
+    struct FashionAppData **p_data = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     u16 *p_dest = ScriptGetVarPointer(ctx);
     *p_dest = (*p_data)->unk_4;
     FreeToHeap(*p_data);
@@ -1908,16 +1908,16 @@ BOOL ScrCmd_154(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_155(ScriptContext *ctx) {
-    struct DressupPokemonAppData **dressupAppData = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
+    struct FashionAppData **fashionAppData = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     u16 r7 = ScriptReadHalfword(ctx);
     u16 *r6 = ScriptGetVarPointer(ctx);
-    *dressupAppData = sub_02042A60(HEAP_ID_FIELD, ctx->fsys, 0, r7);
-    if (*dressupAppData == NULL) {
+    *fashionAppData = sub_02042A60(HEAP_ID_FIELD, ctx->fsys, 0, r7);
+    if (*fashionAppData == NULL) {
         *r6 = 1;
         return TRUE;
     } else {
         *r6 = 0;
-        sub_0203F204(ctx->fsys, *dressupAppData);
+        sub_0203F204(ctx->fsys, *fashionAppData);
         SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
         return TRUE;
     }
@@ -1937,7 +1937,7 @@ BOOL ScrCmd_255(ScriptContext *ctx) {
 
 BOOL ScrCmd_256(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
-    sub_0202BD7C(sub_0202B9B8(Save_DressupData_Get(ctx->fsys->savedata), 0), r4);
+    sub_0202BD7C(sub_0202B9B8(Save_FashionData_Get(ctx->fsys->savedata), 0), r4);
     return TRUE;
 }
 
@@ -3258,7 +3258,7 @@ BOOL ScrCmd_381(ScriptContext *ctx) {
 BOOL ScrCmd_403(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
     u16 r6 = ScriptGetVar(ctx);
-    sub_0202BB08(SaveDressupData_GetFashionCase(Save_DressupData_Get(ctx->fsys->savedata)), r4, r6);
+    sub_0202BB08(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fsys->savedata)), r4, r6);
     return FALSE;
 }
 
@@ -3266,7 +3266,7 @@ BOOL ScrCmd_404(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
     u16 r6 = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = sub_0202BA2C(SaveDressupData_GetFashionCase(Save_DressupData_Get(ctx->fsys->savedata)), r4, r6);
+    *p_ret = sub_0202BA2C(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fsys->savedata)), r4, r6);
     return FALSE;
 }
 
@@ -3274,20 +3274,20 @@ BOOL ScrCmd_405(ScriptContext *ctx) {
     u16 r7 = ScriptGetVar(ctx);
     u16 r6 = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = r6 <= sub_0202BA70(SaveDressupData_GetFashionCase(Save_DressupData_Get(ctx->fsys->savedata)), r7);
+    *p_ret = r6 <= sub_0202BA70(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fsys->savedata)), r7);
     return FALSE;
 }
 
 BOOL ScrCmd_406(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
-    sub_0202BBD8(SaveDressupData_GetFashionCase(Save_DressupData_Get(ctx->fsys->savedata)), r4);
+    sub_0202BBD8(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fsys->savedata)), r4);
     return FALSE;
 }
 
 BOOL ScrCmd_407(ScriptContext *ctx) {
     u16 r6 = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = sub_0202BA5C(SaveDressupData_GetFashionCase(Save_DressupData_Get(ctx->fsys->savedata)), r6);
+    *p_ret = sub_0202BA5C(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fsys->savedata)), r6);
     return FALSE;
 }
 
@@ -3786,7 +3786,7 @@ BOOL ScrCmd_525(ScriptContext *ctx) {
 
 BOOL ScrCmd_526(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    FashionCase *fashionCase = SaveDressupData_GetFashionCase(Save_DressupData_Get(ctx->fsys->savedata));
+    FashionCase *fashionCase = Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fsys->savedata));
     int i, k, n = 0;
     u16 sp4[16];
 
@@ -3852,7 +3852,7 @@ BOOL ScrCmd_534(ScriptContext *ctx) {
 BOOL ScrCmd_536(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
     u16 r6 = ScriptGetVar(ctx);
-    sub_0202BB7C(SaveDressupData_GetFashionCase(Save_DressupData_Get(ctx->fsys->savedata)), r4, r6);
+    sub_0202BB7C(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fsys->savedata)), r4, r6);
     return FALSE;
 }
 

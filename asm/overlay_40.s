@@ -1275,7 +1275,7 @@ _0222C1AE:
 	bne _0222C200
 	add r1, #0x18
 	ldr r0, [r5, r1]
-	bl Save_DressupData_Get
+	bl Save_FashionData_Get
 	add r1, r4, #0
 	bl sub_0202B9B8
 	bl sub_0202BC10
@@ -17574,7 +17574,7 @@ _0223434A:
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl Save_DressupData_Get
+	bl Save_FashionData_Get
 	mov r1, #0
 	bl sub_0202B9B8
 	mov r1, #0x8b

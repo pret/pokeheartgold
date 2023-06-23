@@ -22237,8 +22237,8 @@ _0225030A:
 	b _0225047E
 _02250314:
 	ldr r0, [r4, #0xc]
-	bl Save_DressupData_Get
-	bl SaveDressupData_GetFashionCase
+	bl Save_FashionData_Get
+	bl Save_FashionData_GetFashionCase
 	add r7, r0, #0
 	mov r0, #0x12
 	lsl r0, r0, #4
@@ -28111,8 +28111,8 @@ _02253114:
 	thumb_func_start ov02_02253134
 ov02_02253134: ; 0x02253134
 	push {r3, r4, r5, r6, r7, lr}
-	bl Save_DressupData_Get
-	bl SaveDressupData_GetFashionCase
+	bl Save_FashionData_Get
+	bl Save_FashionData_GetFashionCase
 	ldr r6, _02253168 ; =ov02_02253D54
 	add r5, r0, #0
 	mov r4, #0
@@ -28156,8 +28156,8 @@ _02253184: .word ov02_02253D54
 	thumb_func_start ov02_02253188
 ov02_02253188: ; 0x02253188
 	push {r3, r4, r5, lr}
-	bl Save_DressupData_Get
-	bl SaveDressupData_GetFashionCase
+	bl Save_FashionData_Get
+	bl Save_FashionData_GetFashionCase
 	add r4, r0, #0
 	mov r5, #0
 _02253196:
@@ -28193,8 +28193,8 @@ _022531C0:
 	lsr r1, r1, #0x18
 	cmp r1, #0xe
 	blo _022531C0
-	bl Save_DressupData_Get
-	bl SaveDressupData_GetFashionCase
+	bl Save_FashionData_Get
+	bl Save_FashionData_GetFashionCase
 	add r6, r0, #0
 	mov r5, #0
 	add r7, sp, #0

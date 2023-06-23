@@ -162,11 +162,11 @@
 .public sub_0202AA44
 .public sub_0202AA9C
 .public sub_0202AAD4
-.public SaveDressupData_GetFashionCase
+.public Save_FashionData_GetFashionCase
 .public sub_0202BA2C
 .public sub_0202BA5C
 .public sub_0202BB08
-.public Save_DressupData_Get
+.public Save_FashionData_Get
 .public Roamers_GetRand
 .public Save_Roamers_Get
 .public RoamerSave_OutbreakActive

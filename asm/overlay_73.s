@@ -9412,7 +9412,7 @@ ov73_021EA290: ; 0x021EA290
 	thumb_func_start ov73_021EA2A8
 ov73_021EA2A8: ; 0x021EA2A8
 	push {r3, lr}
-	bl Save_DressupData_Get
+	bl Save_FashionData_Get
 	bl sub_0202B994
 	pop {r3, pc}
 	thumb_func_end ov73_021EA2A8
@@ -9422,7 +9422,7 @@ ov73_021EA2B4: ; 0x021EA2B4
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r5, r2, #0
-	bl Save_DressupData_Get
+	bl Save_FashionData_Get
 	add r6, r0, #0
 	add r0, r4, #0
 	add r1, r5, #0
@@ -9444,7 +9444,7 @@ ov73_021EA2E0: ; 0x021EA2E0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
-	bl Save_DressupData_Get
+	bl Save_FashionData_Get
 	add r2, r0, #0
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
