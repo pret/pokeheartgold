@@ -5,6 +5,6 @@
 .public DestroySysTask
 .public GF_SinDegNoWrap
 .public _ll_mul
-.public BattleSys_GetBattleType
+.public BattleSystem_GetBattleType
 .public ov12_02261FD4
 .public ov12_02262014

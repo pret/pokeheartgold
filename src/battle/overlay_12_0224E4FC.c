@@ -72,7 +72,7 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
     ctx->battleMons[battlerId].gender = GetMonGender(mon);
     ctx->battleMons[battlerId].shiny = MonIsShiny(mon);
     
-    if (BattleSys_GetBattleType(bsys) & (BATTLE_TYPE_5|BATTLE_TYPE_9)) { //No abilities battle
+    if (BattleSystem_GetBattleType(bsys) & (BATTLE_TYPE_5|BATTLE_TYPE_9)) { //No abilities battle
         ctx->battleMons[battlerId].ability = 0;
         ctx->battleMons[battlerId].status = 0;
         ctx->battleMons[battlerId].item = 0;
@@ -82,7 +82,7 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
         ctx->battleMons[battlerId].item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
     }
     
-    if ((BattleSys_GetBattleType(bsys) & (BATTLE_TYPE_5|BATTLE_TYPE_9)) && !BattleSys_GetFieldSide(bsys, battlerId)) {
+    if ((BattleSystem_GetBattleType(bsys) & (BATTLE_TYPE_5|BATTLE_TYPE_9)) && !BattleSystem_GetFieldSide(bsys, battlerId)) {
         ctx->battleMons[battlerId].forme = 0;
     } else {
         ctx->battleMons[battlerId].forme = GetMonData(mon, MON_DATA_FORME, NULL);
@@ -116,7 +116,7 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
     ctx->battleMons[battlerId].unk78 = 0;
     ctx->battleMons[battlerId].msgFlag = 0;
     
-    side = BattleSys_GetFieldSide(bsys, battlerId);
+    side = BattleSystem_GetFieldSide(bsys, battlerId);
     
     if (ctx->fieldSideConditionData[side].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[battlerId])) {
         ctx->battleMons[battlerId].item = 0;
@@ -1062,7 +1062,7 @@ u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int bat
         speed1 *= 2;
     }
 
-    if (ctx->fieldSideConditionFlags[BattleSys_GetFieldSide(bsys, battlerId1)] & SIDE_CONDITION_TAILWIND) {
+    if (ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(bsys, battlerId1)] & SIDE_CONDITION_TAILWIND) {
         speed1 *= 2;
     }
     
@@ -1121,7 +1121,7 @@ u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int bat
         speed2 *= 2;
     }
 
-    if (ctx->fieldSideConditionFlags[BattleSys_GetFieldSide(bsys, battlerId2)] & SIDE_CONDITION_TAILWIND) {
+    if (ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(bsys, battlerId2)] & SIDE_CONDITION_TAILWIND) {
         speed2 *= 2;
     }
     
@@ -1181,7 +1181,7 @@ u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int bat
         if (boostedPriority1 && boostedPriority2) {
             if (speed1 < speed2) {
                 ret = 1;
-            } else if (speed1 == speed2 && BattleSys_Random(bsys) & 1) {
+            } else if (speed1 == speed2 && BattleSystem_Random(bsys) & 1) {
                 ret = 2;
             }
         } else if (!boostedPriority1 && boostedPriority2) {
@@ -1191,7 +1191,7 @@ u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int bat
         } else if (loweredPriority1 && loweredPriority2) {
             if (speed1 > speed2) {
                 ret = 1;
-            } else if (speed1 == speed2 && BattleSys_Random(bsys)&1) {
+            } else if (speed1 == speed2 && BattleSystem_Random(bsys)&1) {
                 ret = 2;
             }
         } else if (loweredPriority1 && !loweredPriority2) {
@@ -1201,7 +1201,7 @@ u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int bat
         } else if (ability1 == ABILITY_STALL && ability2 == ABILITY_STALL) {
             if (speed1 > speed2) {
                 ret = 1;
-            } else if (speed1 == speed2 && BattleSys_Random(bsys)&1) {
+            } else if (speed1 == speed2 && BattleSystem_Random(bsys)&1) {
                 ret = 2;
             }
         } else if (ability1 == ABILITY_STALL && ability2 != ABILITY_STALL) {
@@ -1212,14 +1212,14 @@ u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int bat
             if (speed1 > speed2) {
                 ret = 1;
             }
-            if (speed1 == speed2 && BattleSys_Random(bsys)&1) {
+            if (speed1 == speed2 && BattleSystem_Random(bsys)&1) {
                 ret = 2;
             }
         } else {
             if (speed1 < speed2) {
                 ret = 1;
             }
-            if (speed1 == speed2 && BattleSys_Random(bsys)&1) {
+            if (speed1 == speed2 && BattleSystem_Random(bsys)&1) {
                 ret = 2;
             }
         }
@@ -1237,7 +1237,7 @@ void BattleSystem_ClearExperienceEarnFlags(BATTLECONTEXT *ctx, int battlerId) {
 
 void BattleSystem_SetExperienceEarnFlags(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     int i = 0;
-    u32 battleType = BattleSys_GetBattleType(bsys);
+    u32 battleType = BattleSystem_GetBattleType(bsys);
     
     while (i <= 2) {
         if (!(ctx->unk_3108 & MaskOfFlagNo(i)) &&
@@ -1313,7 +1313,7 @@ BOOL ov12_02250490(BattleSystem *bsys, BATTLECONTEXT *ctx, int *out) {
         
         GF_ASSERT(effectChance);
         
-        if ((BattleSys_Random(bsys) % 100) < effectChance) {
+        if ((BattleSystem_Random(bsys) % 100) < effectChance) {
             ctx->linkStatus |= (1 << 22);
         }
         
@@ -1334,7 +1334,7 @@ BOOL ov12_02250490(BattleSystem *bsys, BATTLECONTEXT *ctx, int *out) {
         
         GF_ASSERT(effectChance);
         
-        if ((BattleSys_Random(bsys) % 100) < effectChance) {
+        if ((BattleSystem_Random(bsys) % 100) < effectChance) {
             *out = ov12_02258348(ctx, 2, ctx->unk_2174);
             ctx->unk_2174 = 0; 
             if (ctx->battleMons[ctx->battlerIdStatChange].hp && !ov12_02256838(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & 0x801FDA49)) {
@@ -1364,14 +1364,14 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
     
     if (unkA == 4) {
         int battlerId;
-        int maxBattlers = BattleSys_GetMaxBattlers(bsys);
-        OpponentData *opponent = BattleSys_GetOpponentDataByBattlerId(bsys, battlerIdAttacker);
+        int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+        OpponentData *opponent = BattleSystem_GetOpponentDataByBattlerId(bsys, battlerIdAttacker);
         u8 flag = ov12_02261258(opponent);
         
         for (ctx->unk_217E = 0; ctx->unk_217E < maxBattlers; ctx->unk_217E++) {
             battlerId = ctx->unk_21EC[ctx->unk_217E];
             if (ctx->battleMons[battlerId].hp) {
-                opponent = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
+                opponent = BattleSystem_GetOpponentDataByBattlerId(bsys, battlerId);
                 if (((flag & 1) && !(ov12_02261258(opponent) & 1)) ||
                     (!(flag & 1) && (ov12_02261258(opponent) & 1))) {
                     battlerIdTarget = battlerId;
@@ -1385,7 +1385,7 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
         }
     } else if (unkA == 8) {
         int battlerId;
-        int maxBattlers = BattleSys_GetMaxBattlers(bsys);
+        int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
         
         for (ctx->unk_217E = 0; ctx->unk_217E < maxBattlers; ctx->unk_217E++) {
             battlerId = ctx->unk_21EC[ctx->unk_217E];
@@ -1401,10 +1401,10 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
             ctx->unk_217E++;
         }
     } else if (unkA == (1 << 9) && (a4 == 1)) {
-        int battleType = BattleSys_GetBattleType(bsys);
+        int battleType = BattleSystem_GetBattleType(bsys);
         
-        if ((battleType & BATTLE_TYPE_DOUBLES) && (BattleSys_Random(bsys) % 2) == 0) {
-            battlerIdTarget = BattleSys_GetBattlerIdPartner(bsys, battlerIdAttacker);
+        if ((battleType & BATTLE_TYPE_DOUBLES) && (BattleSystem_Random(bsys) % 2) == 0) {
+            battlerIdTarget = BattleSystem_GetBattlerIdPartner(bsys, battlerIdAttacker);
             if (!ctx->battleMons[battlerIdTarget].hp) {
                 battlerIdTarget = battlerIdAttacker;
             }
@@ -1418,15 +1418,15 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
     } else if (unkA == (1 << 4) || unkA == (1 << 5) || unkA == 1 || unkA == (1 << 6)) {
         battlerIdTarget = battlerIdAttacker;
     } else if (unkA == (1 << 8)) {
-        int battleType = BattleSys_GetBattleType(bsys);
+        int battleType = BattleSystem_GetBattleType(bsys);
         
         if (battleType & BATTLE_TYPE_DOUBLES) {
-            battlerIdTarget = BattleSys_GetBattlerIdPartner(bsys, battlerIdAttacker);
+            battlerIdTarget = BattleSystem_GetBattlerIdPartner(bsys, battlerIdAttacker);
         } else {
             battlerIdTarget = battlerIdAttacker;
         }
     } else if (unkA == (1 << 9)) {
-        int battleType = BattleSys_GetBattleType(bsys);
+        int battleType = BattleSystem_GetBattleType(bsys);
         
         if (battleType & BATTLE_TYPE_DOUBLES) {
             battlerIdTarget = ctx->unk_21A8[battlerIdAttacker][1];
@@ -1437,8 +1437,8 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
             battlerIdTarget = battlerIdAttacker;
         }
     } else if (unkA == 2 || a4 == 1) {
-        int battleType = BattleSys_GetBattleType(bsys);
-        int side = BattleSys_GetFieldSide(bsys, battlerIdAttacker)^1;
+        int battleType = BattleSystem_GetBattleType(bsys);
+        int side = BattleSystem_GetFieldSide(bsys, battlerIdAttacker)^1;
         int battlerIdOpponents[2];
         battlerIdOpponents[0] = ov12_0223ABB8(bsys, battlerIdAttacker, 0);
         battlerIdOpponents[1] = ov12_0223ABB8(bsys, battlerIdAttacker, 2);
@@ -1448,7 +1448,7 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
                 battlerIdTarget = ctx->fieldSideConditionData[side].battlerIdFollowMe;
             } else if (ctx->battleMons[battlerIdOpponents[0]].hp && ctx->battleMons[battlerIdOpponents[1]].hp) {
                 //This looks like targeting for Outrage in double battles
-                side = BattleSys_Random(bsys) & 1;
+                side = BattleSystem_Random(bsys) & 1;
                 battlerIdTarget = battlerIdOpponents[side];
             } else if (ctx->battleMons[battlerIdOpponents[0]].hp) {
                 battlerIdTarget = battlerIdOpponents[0];
@@ -1459,9 +1459,9 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
             battlerIdTarget = battlerIdAttacker^1;
         }
     } else {
-        int side = BattleSys_GetFieldSide(bsys, battlerIdAttacker)^1;
+        int side = BattleSystem_GetFieldSide(bsys, battlerIdAttacker)^1;
         int battlerIdTargetTemp = ctx->unk_21A8[battlerIdAttacker][1];
-        BattleSys_GetMaxBattlers(bsys);
+        BattleSystem_GetMaxBattlers(bsys);
         
         if (ctx->fieldSideConditionData[side].followMeFlag && ctx->battleMons[ctx->fieldSideConditionData[side].battlerIdFollowMe].hp) {
             battlerIdTarget = ctx->fieldSideConditionData[side].battlerIdFollowMe;
@@ -1493,7 +1493,7 @@ void ov12_02250A18(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker
         return;
     }
     
-    side = BattleSys_GetFieldSide(bsys, battlerIdAttacker)^1;
+    side = BattleSystem_GetFieldSide(bsys, battlerIdAttacker)^1;
     
     if (ctx->fieldSideConditionData[side].followMeFlag && ctx->battleMons[ctx->fieldSideConditionData[side].battlerIdFollowMe].hp) {
         return;
@@ -1504,7 +1504,7 @@ void ov12_02250A18(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker
         moveType = ctx->unk_334.moveData[moveNo].type;
     }
     
-    maxBattlers = BattleSys_GetMaxBattlers(bsys);
+    maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     
     if (moveType == TYPE_ELECTRIC &&
         (ctx->unk_334.moveData[moveNo].unk8 == 0 || ctx->unk_334.moveData[moveNo].unk8 == 2) &&
@@ -1600,7 +1600,7 @@ int GetBattlerStatusCondition(BATTLECONTEXT *ctx, int battlerId) {
 }
 
 BOOL ov12_02250D4C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    int state = BattleSys_GetBattleType(bsys);  //note: this should be battleType for the following three if statements, but it won't match if an additional variable is used
+    int state = BattleSystem_GetBattleType(bsys);  //note: this should be battleType for the following three if statements, but it won't match if an additional variable is used
     int trainerIndex;
     
     if (state & 0x84) {
@@ -1615,7 +1615,7 @@ BOOL ov12_02250D4C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         return FALSE;
     }
     
-    trainerIndex = BattleSys_GetTrainerIndex(bsys, 1);
+    trainerIndex = BattleSystem_GetTrainerIndex(bsys, 1);
     state = 0;
     
     do {
@@ -1643,7 +1643,7 @@ BOOL ov12_02250D4C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 PARTY *party;
                 Pokemon *mon;
                 
-                party = BattleSys_GetParty(bsys, 1);
+                party = BattleSystem_GetParty(bsys, 1);
                 aliveMons = 0;
                 
                 for (i = 0; i < GetPartyCount(party); i++) {
@@ -1667,7 +1667,7 @@ BOOL ov12_02250D4C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 PARTY *party;
                 Pokemon *mon;
                 
-                party = BattleSys_GetParty(bsys, 1);
+                party = BattleSystem_GetParty(bsys, 1);
                 aliveMons = 0;
                 
                 for (i = 0; i < GetPartyCount(party); i++) {
@@ -1758,14 +1758,14 @@ void ov12_02251038(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     for (int battlerId = 0; battlerId < 4; battlerId++) {
         ctx->moveNoHitBattler[battlerId] = 0xFF;
         ctx->unk_21A0[battlerId] = 6;
-        ctx->unk_310C[battlerId] = BattleSys_Random(bsys);
+        ctx->unk_310C[battlerId] = BattleSystem_Random(bsys);
     }
     
     ctx->prizeMoneyValue = 1;
     
     ctx->meFirstTotal = 1;
     
-    battleType = BattleSys_GetBattleType(bsys);
+    battleType = BattleSystem_GetBattleType(bsys);
     
     if (!(battleType & BATTLE_TYPE_DOUBLES)) {
         ctx->unk_3108 |= MaskOfFlagNo(2);
@@ -1782,8 +1782,8 @@ void InitSwitchWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     u8 *data;
     UnkBattlemonSub unkStruct = ctx->battleMons[battlerId].unk88;
     
-    maxBattlers = BattleSys_GetMaxBattlers(bsys);
-    BattleSys_GetBattleType(bsys);
+    maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+    BattleSystem_GetBattleType(bsys);
     ctx->unk_21A8[battlerId][0] = 40;
     
     if (!(ctx->linkStatus & (1 << 8))) { //not baton pass
@@ -1862,7 +1862,7 @@ void InitSwitchWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     }
     
     for (i = 0; i < maxBattlers; i++) {
-        if (i != battlerId && BattleSys_GetFieldSide(bsys, i) != BattleSys_GetFieldSide(bsys, battlerId)) {
+        if (i != battlerId && BattleSystem_GetFieldSide(bsys, i) != BattleSystem_GetFieldSide(bsys, battlerId)) {
             ctx->moveNoCopied[i] = 0;
         }
         ctx->moveNoCopiedHit[i][battlerId] = 0;
@@ -1878,7 +1878,7 @@ void InitFaintedWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     int maxBattlers;
     u8 *data;
     
-    maxBattlers = BattleSys_GetMaxBattlers(bsys);
+    maxBattlers = BattleSystem_GetMaxBattlers(bsys);
 
     for (int stat = 0; stat < 8; stat++) {
         ctx->battleMons[battlerId].statChanges[stat] = 6;
@@ -1932,7 +1932,7 @@ void InitFaintedWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     ctx->fieldCondition &= (MaskOfFlagNo(battlerId) << 8) ^ 0xFFFFFFFF; //??
     
     for (i = 0; i < maxBattlers; i++) {
-        if (i != battlerId && BattleSys_GetFieldSide(bsys, i) != BattleSys_GetFieldSide(bsys, battlerId)) {
+        if (i != battlerId && BattleSystem_GetFieldSide(bsys, i) != BattleSystem_GetFieldSide(bsys, battlerId)) {
             ctx->moveNoCopied[i] = 0;
         }
         ctx->moveNoCopiedHit[i][battlerId] = 0;
@@ -2703,7 +2703,7 @@ BOOL ov12_02252218(BATTLECONTEXT *ctx, int battlerId) {
 u8 GetMonsHitCount(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 flag, int battlerId) {
     int i;
     u8 cnt = 0;
-    int maxBattlers = BattleSys_GetMaxBattlers(bsys);
+    int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     
     switch (flag) {
     case 0:
@@ -2715,7 +2715,7 @@ u8 GetMonsHitCount(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 flag, int battler
         break;
     case 1:
         for (i = 0; i < maxBattlers; i++) {
-            if (BattleSys_GetFieldSide(bsys, i) == BattleSys_GetFieldSide(bsys, battlerId) && ctx->battleMons[i].hp) {
+            if (BattleSystem_GetFieldSide(bsys, i) == BattleSystem_GetFieldSide(bsys, battlerId) && ctx->battleMons[i].hp) {
                 cnt++;
             }
         }
@@ -2741,40 +2741,40 @@ u16 GetBattlerSelectedMove(BATTLECONTEXT *ctx, int battlerId) {
 int CheckAbilityActive(BattleSystem *bsys, BATTLECONTEXT *ctx, int flag, int battlerId, int ability) {
     int cnt = 0;
     int i;
-    int maxBattlers = BattleSys_GetMaxBattlers(bsys);
+    int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     
     switch (flag) {
     case CHECK_ABILITY_SAME_SIDE: 
         for (i = 0; i < maxBattlers; i++) {
-            if (BattleSys_GetFieldSide(bsys, i) == BattleSys_GetFieldSide(bsys, battlerId) && GetBattlerAbility(ctx, i) == ability) {
+            if (BattleSystem_GetFieldSide(bsys, i) == BattleSystem_GetFieldSide(bsys, battlerId) && GetBattlerAbility(ctx, i) == ability) {
                 cnt++;
             }
         }
         break;
     case CHECK_ABILITY_SAME_SIDE_HP:
         for (i = 0; i < maxBattlers; i++) {
-            if (BattleSys_GetFieldSide(bsys, i) == BattleSys_GetFieldSide(bsys, battlerId) && ctx->battleMons[i].hp && GetBattlerAbility(ctx, i) == ability) {
+            if (BattleSystem_GetFieldSide(bsys, i) == BattleSystem_GetFieldSide(bsys, battlerId) && ctx->battleMons[i].hp && GetBattlerAbility(ctx, i) == ability) {
                 cnt++;
             }
         }
         break;
     case CHECK_ABILITY_OPPOSING_SIDE: 
         for (i = 0; i < maxBattlers; i++) {
-            if (BattleSys_GetFieldSide(bsys, i) != BattleSys_GetFieldSide(bsys, battlerId) && GetBattlerAbility(ctx, i) == ability) {
+            if (BattleSystem_GetFieldSide(bsys, i) != BattleSystem_GetFieldSide(bsys, battlerId) && GetBattlerAbility(ctx, i) == ability) {
                 cnt++;
             }
         }
         break;
     case CHECK_ABILITY_OPPOSING_SIDE_HP:
         for (i = 0; i < maxBattlers; i++) {
-            if (BattleSys_GetFieldSide(bsys, i) != BattleSys_GetFieldSide(bsys, battlerId) && ctx->battleMons[i].hp && GetBattlerAbility(ctx, i) == ability) {
+            if (BattleSystem_GetFieldSide(bsys, i) != BattleSystem_GetFieldSide(bsys, battlerId) && ctx->battleMons[i].hp && GetBattlerAbility(ctx, i) == ability) {
                 cnt++;
             }
         }
         break;
     case CHECK_ABILITY_OPPOSING_SIDE_HP_RET:
         for (i = 0; i < maxBattlers; i++) {
-            if (BattleSys_GetFieldSide(bsys, i) != BattleSys_GetFieldSide(bsys, battlerId) && ctx->battleMons[i].hp && GetBattlerAbility(ctx, i) == ability) {
+            if (BattleSystem_GetFieldSide(bsys, i) != BattleSystem_GetFieldSide(bsys, battlerId) && ctx->battleMons[i].hp && GetBattlerAbility(ctx, i) == ability) {
                 cnt |= MaskOfFlagNo(i);
             }
         }
@@ -2842,7 +2842,7 @@ BOOL GetTypeEffectivnessData(BattleSystem *bsys, int index, u8 *typeMove, u8 *ty
     BOOL ret = TRUE;
     
     if (index >= NELEMS(sTypeEffectiveness)) {
-        index = BattleSys_Random(bsys) % NELEMS(sTypeEffectiveness);
+        index = BattleSystem_Random(bsys) % NELEMS(sTypeEffectiveness);
         ret = FALSE;
     }
     
@@ -2891,7 +2891,7 @@ BOOL CurseUserIsGhost(BATTLECONTEXT *ctx, u16 moveNo, int battlerId) {
 
 BOOL CanStealHeldItem(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     BOOL ret = FALSE;
-    int side = BattleSys_GetFieldSide(bsys, battlerId);
+    int side = BattleSystem_GetFieldSide(bsys, battlerId);
     
     if (ctx->battleMons[battlerId].item && !(ctx->fieldSideConditionData[side].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[battlerId])) && !ItemIdIsMail(ctx->battleMons[battlerId].item)) {
         ret = TRUE;
@@ -2910,7 +2910,7 @@ BOOL WhirlwindCheck(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (ctx->battleMons[ctx->battlerIdAttacker].level >= ctx->battleMons[ctx->battlerIdTarget].level) {
         ret = TRUE;
     } else {
-        int level = ((BattleSys_Random(bsys) & 0xFF) * (ctx->battleMons[ctx->battlerIdAttacker].level + ctx->battleMons[ctx->battlerIdTarget].level) >> 8) + 1;
+        int level = ((BattleSystem_Random(bsys) & 0xFF) * (ctx->battleMons[ctx->battlerIdAttacker].level + ctx->battleMons[ctx->battlerIdTarget].level) >> 8) + 1;
         
         if (level > ctx->battleMons[ctx->battlerIdTarget].level / 4) {
             ret = TRUE;
@@ -2962,9 +2962,9 @@ BOOL CanSwitchMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
 
     cnt = 0;
     ret = FALSE;
-    battleType = BattleSys_GetBattleType(bsys);
-    party = BattleSys_GetParty(bsys, battlerId);
-    partySize = BattleSys_GetPartySize(bsys, battlerId);
+    battleType = BattleSystem_GetBattleType(bsys);
+    party = BattleSystem_GetParty(bsys, battlerId);
+    partySize = BattleSystem_GetPartySize(bsys, battlerId);
     
     if ((battleType & BATTLE_TYPE_MULTI) || ((battleType & BATTLE_TYPE_INGAME_PARTNER) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
         start = 0;
@@ -2975,7 +2975,7 @@ BOOL CanSwitchMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
         start = 0;
         cntMax = 1;
         monIndex1 = ctx->selectedMonIndex[battlerId];
-        monIndex2 = ctx->selectedMonIndex[BattleSys_GetBattlerIdPartner(bsys, battlerId)];
+        monIndex2 = ctx->selectedMonIndex[BattleSystem_GetBattlerIdPartner(bsys, battlerId)];
     } else {
         start = 0;
         cntMax = 1;
@@ -3004,15 +3004,15 @@ BOOL CanEscape(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, BATTLEMSG 
     int item;
     u32 battleType;
     
-    battleType = BattleSys_GetBattleType(bsys);
+    battleType = BattleSystem_GetBattleType(bsys);
     item = GetBattlerHeldItemEffect(ctx, battlerId);
     
     if (item == HOLD_EFFECT_FLEE || (battleType & BATTLE_TYPE_CAN_ALWAYS_FLEE) || GetBattlerAbility(ctx, battlerId) == ABILITY_RUN_AWAY) {
         return FALSE;
     }
     
-    side = BattleSys_GetFieldSide(bsys, battlerId);
-    maxBattlers = BattleSys_GetMaxBattlers(bsys);
+    side = BattleSystem_GetFieldSide(bsys, battlerId);
+    maxBattlers = BattleSystem_GetMaxBattlers(bsys);
 
     battlerIdAbility = CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP_NOT_USER, battlerId, ABILITY_SHADOW_TAG);
     if (battlerIdAbility && GetBattlerAbility(ctx, battlerId) != ABILITY_SHADOW_TAG) {
@@ -3082,7 +3082,7 @@ BOOL BattleTryRun(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     int item;
     u32 battleType;
     
-    battleType = BattleSys_GetBattleType(bsys);
+    battleType = BattleSystem_GetBattleType(bsys);
     item = GetBattlerHeldItemEffect(ctx, battlerId);
     ret = FALSE;
     
@@ -3097,7 +3097,7 @@ BOOL BattleTryRun(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     } else {
         if (ctx->battleMons[battlerId].speed < ctx->battleMons[battlerId ^ 1].speed) {
             run = ctx->battleMons[battlerId].speed * 128 / ctx->battleMons[battlerId ^ 1].speed + ctx->runAttempts * 30;
-            if (run > (BattleSys_Random(bsys) % 256)) {
+            if (run > (BattleSystem_Random(bsys) % 256)) {
                 ret = TRUE;
             }
         } else {
@@ -3111,7 +3111,7 @@ BOOL BattleTryRun(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     return ret;
 }
 
-BOOL ov12_02252C40(BATTLECONTEXT *ctx, int battlerId) {
+BOOL CheckTruant(BATTLECONTEXT *ctx, int battlerId) {
     BOOL ret = FALSE;
     
     if (GetBattlerAbility(ctx, battlerId) == ABILITY_TRUANT) {

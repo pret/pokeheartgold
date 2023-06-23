@@ -57,7 +57,7 @@ BOOL CheckBattlerAbilityIfNotIgnored(BATTLECONTEXT *ctx, int battlerIdAttacker, 
 BOOL CanSwitchMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL CanEscape(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, BATTLEMSG *msg);
 BOOL BattleTryRun(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
-BOOL ov12_02252C40(BATTLECONTEXT *ctx, int battlerId);
+BOOL CheckTruant(BATTLECONTEXT *ctx, int battlerId);
 
 //The following functions are static, but the rest of the file is still being worked on
 BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int index);
@@ -88,8 +88,8 @@ int BattleSystem_GetHeldItemDamageBoost(BATTLECONTEXT *ctx, int battlerId, int a
 BOOL CheckNaturalCureOnSwitch(BATTLECONTEXT *ctx, int ability, int status);
 int ov12_02253DA0(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL CheckItemEffectOnUTurn(BattleSystem *bsys, BATTLECONTEXT *ctx, int *work);
-u32 BattleSys_GetBattleType(BattleSystem *bsys);
-u32 BattleSys_GetBattleFlags(BattleSystem *bsys);
+u32 BattleSystem_GetBattleType(BattleSystem *bsys);
+u32 BattleSystem_GetBattleFlags(BattleSystem *bsys);
 u32 ov12_02257C5C(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int critCnt, u32 a5);
 u32 ov12_022581D4(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 a2, int battlerId);
 u32 GetItemHoldEffect(BATTLECONTEXT *ctx, int item, u32 a3);

@@ -20,11 +20,11 @@ BattleContext_CheckMoveImprisoned: ; 0x02252C74
 	add r4, r2, #0
 	add r5, r3, #0
 	str r1, [sp, #4]
-	bl BattleSys_GetMaxBattlers
+	bl BattleSystem_GetMaxBattlers
 	str r0, [sp, #0xc]
 	ldr r0, [sp]
 	add r1, r4, #0
-	bl BattleSys_GetFieldSide
+	bl BattleSystem_GetFieldSide
 	str r0, [sp, #8]
 	ldr r0, [sp, #0xc]
 	mov r7, #0
@@ -34,7 +34,7 @@ BattleContext_CheckMoveImprisoned: ; 0x02252C74
 _02252C9E:
 	ldr r0, [sp]
 	add r1, r7, #0
-	bl BattleSys_GetFieldSide
+	bl BattleSystem_GetFieldSide
 	ldr r1, [sp, #8]
 	cmp r1, r0
 	beq _02252CD4
@@ -80,7 +80,7 @@ ov12_02252CE8: ; 0x02252CE8
 	add r5, r1, #0
 	add r4, r2, #0
 	mov r6, #0
-	bl BattleSys_GetMaxBattlers
+	bl BattleSystem_GetMaxBattlers
 	add r3, r6, #0
 	cmp r0, #0
 	ble _02252D10
@@ -130,7 +130,7 @@ ov12_02252D3C: ; 0x02252D3C
 	sub sp, #0x1c
 	str r0, [sp, #4]
 	str r1, [sp, #8]
-	bl BattleSys_GetMaxBattlers
+	bl BattleSystem_GetMaxBattlers
 	mov r2, #0
 	str r0, [sp, #0x14]
 	cmp r0, #0
@@ -625,7 +625,7 @@ _022530CC:
 	cmp r0, #0
 	beq _0225314E
 	ldr r0, [sp]
-	bl BattleSys_Random
+	bl BattleSystem_Random
 	mov r1, #0xa
 	bl _s32_div_f
 	cmp r1, #3
@@ -724,7 +724,7 @@ ov12_02253194: ; 0x02253194
 	sub sp, #0xd0
 	add r6, r0, #0
 	add r5, r1, #0
-	bl BattleSys_GetMaxBattlers
+	bl BattleSystem_GetMaxBattlers
 	str r0, [sp, #0x80]
 	mov r0, #0
 	str r0, [sp, #0x84]
@@ -1211,11 +1211,11 @@ _02253504:
 _02253546:
 	ldr r1, [sp, #0x18]
 	add r0, r6, #0
-	bl BattleSys_GetFieldSide
+	bl BattleSystem_GetFieldSide
 	add r7, r0, #0
 	ldr r1, [sp, #0x7c]
 	add r0, r6, #0
-	bl BattleSys_GetFieldSide
+	bl BattleSystem_GetFieldSide
 	cmp r7, r0
 	beq _022535B0
 	ldr r0, _0225380C ; =0x00002DB0
@@ -1371,11 +1371,11 @@ _02253634:
 _0225367A:
 	ldr r1, [sp, #0x1c]
 	add r0, r6, #0
-	bl BattleSys_GetFieldSide
+	bl BattleSystem_GetFieldSide
 	add r4, r0, #0
 	ldr r1, [sp, #0x70]
 	add r0, r6, #0
-	bl BattleSys_GetFieldSide
+	bl BattleSystem_GetFieldSide
 	cmp r4, r0
 	beq _0225371E
 	ldr r1, [sp, #0x50]
@@ -1543,11 +1543,11 @@ _022537BA:
 _022537BC:
 	ldr r1, [sp, #0x20]
 	add r0, r6, #0
-	bl BattleSys_GetFieldSide
+	bl BattleSystem_GetFieldSide
 	add r7, r0, #0
 	ldr r1, [sp, #0x68]
 	add r0, r6, #0
-	bl BattleSys_GetFieldSide
+	bl BattleSystem_GetFieldSide
 	cmp r7, r0
 	bne _022537D4
 	b _022538DA
@@ -1614,7 +1614,7 @@ _02253858:
 	blo _0225386A
 	bne _022538CA
 	add r0, r6, #0
-	bl BattleSys_Random
+	bl BattleSystem_Random
 	mov r1, #1
 	tst r0, r1
 	beq _022538CA
@@ -1629,7 +1629,7 @@ _02253874:
 	blo _02253886
 	bne _022538CA
 	add r0, r6, #0
-	bl BattleSys_Random
+	bl BattleSystem_Random
 	mov r1, #1
 	tst r0, r1
 	beq _022538CA
@@ -1644,7 +1644,7 @@ _02253890:
 	blo _022538A2
 	bne _022538CA
 	add r0, r6, #0
-	bl BattleSys_Random
+	bl BattleSystem_Random
 	mov r1, #1
 	tst r0, r1
 	beq _022538CA
@@ -1661,7 +1661,7 @@ _022538AC:
 	cmp r4, r0
 	bne _022538CA
 	add r0, r6, #0
-	bl BattleSys_Random
+	bl BattleSystem_Random
 	mov r1, #1
 	tst r0, r1
 	beq _022538CA
@@ -1717,7 +1717,7 @@ _02253904:
 	bl GetBattlerLearnedMoveCount
 	add r4, r0, #0
 	add r0, r6, #0
-	bl BattleSys_Random
+	bl BattleSystem_Random
 	add r1, r4, #0
 	bl _s32_div_f
 	mov r0, #0xc0
@@ -1800,7 +1800,7 @@ _02253986:
 	ldr r0, [sp, #0xa0]
 	str r1, [r0, r7]
 	add r0, r6, #0
-	bl BattleSys_GetBattleType
+	bl BattleSystem_GetBattleType
 	mov r1, #2
 	tst r0, r1
 	beq _02253A74
@@ -1838,7 +1838,7 @@ _02253986:
 	cmp r0, #0
 	beq _02253A38
 	add r0, r6, #0
-	bl BattleSys_Random
+	bl BattleSystem_Random
 	lsl r0, r0, #0x1f
 	lsr r1, r0, #0x1d
 	add r0, sp, #0xc0
@@ -2321,7 +2321,7 @@ ov12_02253DA0: ; 0x02253DA0
 	add r5, r0, #0
 	add r6, r1, #0
 	add r4, r2, #0
-	bl BattleSys_GetBattleType
+	bl BattleSystem_GetBattleType
 	mov r1, #2
 	tst r0, r1
 	beq _02253DF8
@@ -2336,7 +2336,7 @@ ov12_02253DA0: ; 0x02253DA0
 	bl ov12_0223ABB8
 	str r0, [sp, #4]
 	add r0, r5, #0
-	bl BattleSys_Random
+	bl BattleSystem_Random
 	mov r3, #1
 	add r2, r0, #0
 	and r2, r3
@@ -2484,7 +2484,7 @@ _02253EC2:
 	tst r0, r1
 	beq _02253F50
 	add r0, r7, #0
-	bl BattleSys_Random
+	bl BattleSystem_Random
 	mov r1, #0xa
 	bl _s32_div_f
 	cmp r1, #3
@@ -2725,13 +2725,13 @@ _02254098:
 	tst r0, r1
 	beq _02254164
 	add r0, r7, #0
-	bl BattleSys_Random
+	bl BattleSystem_Random
 	mov r1, #0xa
 	bl _s32_div_f
 	cmp r1, #3
 	bge _02254164
 	add r0, r7, #0
-	bl BattleSys_Random
+	bl BattleSystem_Random
 	mov r1, #3
 	bl _s32_div_f
 	cmp r1, #0
@@ -2836,7 +2836,7 @@ _02254180:
 	tst r0, r1
 	beq _02254276
 	add r0, r7, #0
-	bl BattleSys_Random
+	bl BattleSystem_Random
 	mov r1, #0xa
 	bl _s32_div_f
 	cmp r1, #3
@@ -2911,7 +2911,7 @@ _02254216:
 	tst r0, r1
 	beq _02254276
 	add r0, r7, #0
-	bl BattleSys_Random
+	bl BattleSystem_Random
 	mov r1, #0xa
 	bl _s32_div_f
 	cmp r1, #3
@@ -2998,7 +2998,7 @@ _022542B2:
 	cmp r0, #0
 	beq _02254382
 	add r0, r7, #0
-	bl BattleSys_Random
+	bl BattleSystem_Random
 	mov r1, #0xa
 	bl _s32_div_f
 	cmp r1, #3
@@ -4291,7 +4291,7 @@ _02254C7A:
 	mov r7, #5
 _02254C84:
 	ldr r0, [sp]
-	bl BattleSys_Random
+	bl BattleSystem_Random
 	add r1, r7, #0
 	bl _s32_div_f
 	add r0, r5, r1
@@ -5375,7 +5375,7 @@ _022554DC:
 	add r5, r4, r5
 _022554DE:
 	ldr r0, [sp]
-	bl BattleSys_Random
+	bl BattleSystem_Random
 	mov r1, #5
 	bl _s32_div_f
 	add r0, r5, r1
@@ -5590,7 +5590,7 @@ _0225565C:
 	str r0, [sp, #4]
 	ldr r0, [sp]
 	ldr r1, [r5, #0x64]
-	bl BattleSys_GetFieldSide
+	bl BattleSystem_GetFieldSide
 	str r0, [sp, #8]
 	cmp r4, #0x2f
 	bgt _02255692
@@ -6687,7 +6687,7 @@ _02255E8E:
 	mov r6, #0xc0
 _02255E98:
 	ldr r0, [sp]
-	bl BattleSys_Random
+	bl BattleSystem_Random
 	add r1, r7, #0
 	bl _s32_div_f
 	ldr r0, [r4, #0x64]
@@ -7539,7 +7539,7 @@ _022564F6:
 	mov r6, #0xc0
 _02256500:
 	ldr r0, [sp]
-	bl BattleSys_Random
+	bl BattleSystem_Random
 	add r1, r7, #0
 	bl _s32_div_f
 	ldr r0, [r4, #0x6c]
@@ -7919,16 +7919,16 @@ ov12_022567D4: ; 0x022567D4
 	add r5, r0, #0
 	mov r1, #0
 	add r6, r2, #0
-	bl BattleSys_GetPlayerProfile
+	bl BattleSystem_GetPlayerProfile
 	str r0, [sp, #0xc]
 	add r0, r5, #0
 	bl ov12_0223AB60
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl BattleSys_GetTerrainId
+	bl BattleSystem_GetTerrainId
 	add r7, r0, #0
 	add r0, r5, #0
-	bl BattleSys_GetBattleType
+	bl BattleSystem_GetBattleType
 	mov r1, #2
 	lsl r1, r1, #8
 	tst r0, r1
@@ -7988,7 +7988,7 @@ ov12_02256854: ; 0x02256854
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	mov r1, #0
-	bl BattleSys_GetPlayerProfile
+	bl BattleSystem_GetPlayerProfile
 	add r4, r0, #0
 	bl PlayerProfile_GetTrainerID
 	add r6, r0, #0
@@ -8035,7 +8035,7 @@ ov12_022568B0: ; 0x022568B0
 	sub sp, #0x10
 	add r5, r1, #0
 	mov r1, #0
-	bl BattleSys_GetPlayerProfile
+	bl BattleSystem_GetPlayerProfile
 	add r4, r0, #0
 	bl PlayerProfile_GetTrainerID
 	add r6, r0, #0
@@ -8085,7 +8085,7 @@ ov12_02256914: ; 0x02256914
 	add r5, r1, #0
 	str r2, [sp, #4]
 	str r4, [sp, #8]
-	bl BattleSys_GetMaxBattlers
+	bl BattleSystem_GetMaxBattlers
 	cmp r0, #0
 	bgt _0225692C
 	b _02256EE4
@@ -8627,7 +8627,7 @@ _02256D1C:
 	tst r0, r1
 	bne _02256D7A
 	add r0, r7, #0
-	bl BattleSys_GetBattleFlags
+	bl BattleSystem_GetBattleFlags
 	mov r1, #0x80
 	tst r0, r1
 	bne _02256D78
@@ -8658,7 +8658,7 @@ _02256D8A:
 	bl AllocMonZeroed
 	add r4, r0, #0
 	add r0, r7, #0
-	bl BattleSys_GetBattleType
+	bl BattleSystem_GetBattleType
 	mov r1, #2
 	tst r0, r1
 	beq _02256DAE
@@ -8811,7 +8811,7 @@ _02256EC8:
 _02256ED6:
 	add r0, r7, #0
 	add r4, r4, #1
-	bl BattleSys_GetMaxBattlers
+	bl BattleSystem_GetMaxBattlers
 	cmp r4, r0
 	bge _02256EE4
 	b _02256930
@@ -8844,7 +8844,7 @@ ov12_02256F28: ; 0x02256F28
 	str r0, [sp, #4]
 	str r1, [sp]
 	mov r7, #0
-	bl BattleSys_GetMaxBattlers
+	bl BattleSystem_GetMaxBattlers
 	cmp r0, #0
 	ble _02256F6A
 	ldr r5, [sp]
@@ -8868,7 +8868,7 @@ _02256F40:
 	ldr r0, [sp, #4]
 	add r5, r5, #6
 	add r7, r7, #1
-	bl BattleSys_GetMaxBattlers
+	bl BattleSystem_GetMaxBattlers
 	cmp r7, r0
 	blt _02256F3E
 _02256F6A:
@@ -8886,7 +8886,7 @@ ov12_02256F78: ; 0x02256F78
 	add r6, r1, #0
 	add r5, r2, #0
 	add r4, r3, #0
-	bl BattleSys_GetBattleType
+	bl BattleSystem_GetBattleType
 	mov r1, #2
 	tst r1, r0
 	beq _02256F92
@@ -9185,7 +9185,7 @@ _0225701C:
 	mov r2, #2
 	bl GetItemHoldEffect
 	ldr r0, [sp, #4]
-	bl BattleSys_GetBattleType
+	bl BattleSystem_GetBattleType
 	str r0, [sp, #0x5c]
 	add r0, sp, #0x90
 	ldrh r4, [r0, #0x14]
@@ -10495,7 +10495,7 @@ ov12_02257C30: ; 0x02257C30
 	push {r4, lr}
 	add r4, r2, #0
 	beq _02257C56
-	bl BattleSys_Random
+	bl BattleSystem_Random
 	lsr r2, r0, #0x1f
 	lsl r1, r0, #0x1c
 	sub r1, r1, r2
@@ -10610,7 +10610,7 @@ _02257CE6:
 	mov r5, #4
 _02257D02:
 	ldr r0, [sp]
-	bl BattleSys_Random
+	bl BattleSystem_Random
 	ldr r1, _02257D68 ; =ov12_0226CB48
 	ldrb r1, [r1, r5]
 	bl _s32_div_f
@@ -10841,7 +10841,7 @@ ov12_02257E98: ; 0x02257E98
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	add r5, r2, #0
-	bl BattleSys_GetMaxBattlers
+	bl BattleSystem_GetMaxBattlers
 	add r6, r0, #0
 	mov r4, #0
 	cmp r6, #0
@@ -10849,7 +10849,7 @@ ov12_02257E98: ; 0x02257E98
 _02257EAA:
 	add r0, r7, #0
 	add r1, r4, #0
-	bl BattleSys_GetFieldSide
+	bl BattleSystem_GetFieldSide
 	cmp r5, r0
 	beq _02257EBC
 	add r4, r4, #1
@@ -10866,7 +10866,7 @@ ov12_02257EC0: ; 0x02257EC0
 	sub sp, #0x1c
 	str r0, [sp, #4]
 	add r5, r1, #0
-	bl BattleSys_GetMaxBattlers
+	bl BattleSystem_GetMaxBattlers
 	str r0, [sp, #0x10]
 	mov r0, #0
 	str r0, [sp, #0x14]
@@ -11014,7 +11014,7 @@ CheckItemEffectOnUTurn: ; 0x02257FA0
 	str r0, [sp, #8]
 	ldr r0, [sp]
 	ldr r1, [r5, #0x64]
-	bl BattleSys_GetFieldSide
+	bl BattleSystem_GetFieldSide
 	str r0, [sp, #4]
 	ldr r0, [sp, #0xc]
 	cmp r0, #0x58
@@ -11296,7 +11296,7 @@ _022581E8: ; jump table
 	.short _02258290 - _022581E8 - 2 ; case 14
 _02258206:
 	add r1, r3, #0
-	bl BattleSys_GetFieldSide
+	bl BattleSystem_GetFieldSide
 	lsl r0, r0, #2
 	add r1, r4, r0
 	mov r0, #0x6f
@@ -11305,7 +11305,7 @@ _02258206:
 	pop {r4, pc}
 _02258218:
 	add r1, r3, #0
-	bl BattleSys_GetFieldSide
+	bl BattleSystem_GetFieldSide
 	lsl r0, r0, #3
 	add r1, r4, r0
 	mov r0, #0x71
@@ -11420,7 +11420,7 @@ _022582CE: ; jump table
 	.short _0225832E - _022582CE - 2 ; case 11
 _022582E6:
 	add r1, r3, #0
-	bl BattleSys_GetFieldSide
+	bl BattleSystem_GetFieldSide
 	lsl r0, r0, #2
 	add r1, r5, r0
 	mov r0, #0x6f
@@ -11429,7 +11429,7 @@ _022582E6:
 	pop {r3, r4, r5, pc}
 _022582F8:
 	add r1, r3, #0
-	bl BattleSys_GetFieldSide
+	bl BattleSystem_GetFieldSide
 	mov r1, #0x71
 	lsl r1, r1, #2
 	add r1, r5, r1
@@ -11882,7 +11882,7 @@ ov12_022585B8: ; 0x022585B8
 	beq _02258614
 	cmp r2, #0x79
 	beq _02258614
-	bl BattleSys_Random
+	bl BattleSystem_Random
 	mov r1, #1
 	tst r0, r1
 	beq _02258610

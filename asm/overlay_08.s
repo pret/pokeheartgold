@@ -524,7 +524,7 @@ _0221C236:
 	add r2, r4, r2
 	add r2, #0x2c
 	ldrb r2, [r2]
-	bl BattleSys_RecoverStatus
+	bl BattleSystem_RecoverStatus
 	cmp r0, #1
 	bne _0221C2E6
 	ldrh r0, [r4, #0x22]
@@ -1316,7 +1316,7 @@ _0221C862:
 	add r2, r6, r2
 	add r2, #0x2c
 	ldrb r2, [r2]
-	bl BattleSys_RecoverStatus
+	bl BattleSystem_RecoverStatus
 	cmp r0, #1
 	bne _0221C8BA
 	ldr r0, _0221C90C ; =0x0000207C
@@ -3457,7 +3457,7 @@ ov08_0221D91C: ; 0x0221D91C
 	add r4, r0, #0
 	ldr r0, [r1, #8]
 	ldr r1, [r1, #0x28]
-	bl BattleSys_GetBattlerIdPartner
+	bl BattleSystem_GetBattlerIdPartner
 	add r1, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
@@ -3655,7 +3655,7 @@ ov08_0221DAE4: ; 0x0221DAE4
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
-	bl BattleSys_GetBattleType
+	bl BattleSystem_GetBattleType
 	cmp r0, #0x4a
 	beq _0221DB00
 	cmp r0, #0x4b
@@ -3675,7 +3675,7 @@ ov08_0221DB04: ; 0x0221DB04
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
-	bl BattleSys_GetBattleType
+	bl BattleSystem_GetBattleType
 	cmp r0, #0x4a
 	beq _0221DB20
 	cmp r0, #0x4b
@@ -12767,7 +12767,7 @@ _02222614:
 	bl ov08_02223B78
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl BattleSys_GetBattleType
+	bl BattleSystem_GetBattleType
 	mov r1, #1
 	lsl r1, r1, #0xa
 	tst r0, r1
@@ -13487,7 +13487,7 @@ _02222C0E:
 	str r0, [sp]
 	ldr r0, [r4]
 	ldr r1, [r4, #0x10]
-	bl BattleSys_RecoverStatus
+	bl BattleSystem_RecoverStatus
 	cmp r0, #1
 	bne _02222C34
 	ldr r2, _02222D6C ; =0x0000114D
@@ -13502,7 +13502,7 @@ _02222C34:
 	cmp r6, #3
 	bne _02222C9C
 	ldr r0, [r4]
-	bl BattleSys_GetBattleType
+	bl BattleSystem_GetBattleType
 	mov r1, #1
 	tst r0, r1
 	bne _02222C56
@@ -13611,7 +13611,7 @@ _02222D02:
 _02222D26:
 	ldr r0, [r4]
 	ldr r1, [r4, #0x10]
-	bl BattleSys_GetParty
+	bl BattleSystem_GetParty
 	add r6, r0, #0
 	ldr r0, [r4]
 	bl ov12_0223AB3C
