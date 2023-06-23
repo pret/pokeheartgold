@@ -126,7 +126,7 @@ typedef enum MapObjectFlagBits {
     MAPOBJECTFLAG_MOVEMENT_PAUSED = (1 << 6),
     MAPOBJECTFLAG_UNK7 = (1 << 7),
     MAPOBJECTFLAG_UNK8 = (1 << 8),
-    MAPOBJECTFLAG_UNK9 = (1 << 9),
+    MAPOBJECTFLAG_VISIBLE = (1 << 9),
     MAPOBJECTFLAG_UNK10 = (1 << 10),
     MAPOBJECTFLAG_UNK11 = (1 << 11),
     MAPOBJECTFLAG_UNK12 = (1 << 12),
@@ -269,9 +269,9 @@ void sub_0205F328(LocalMapObject* obj, u32 a1);
 void sub_0205FC94(LocalMapObject *mapObject, u32 movement);
 void MapObject_ClearFlag18(LocalMapObject *mapObject, BOOL clear);
 void MapObject_SetFlag29(LocalMapObject *mapObject, BOOL enable_bit);
-BOOL MapObject_CheckFlag9(LocalMapObject *mapObject);
+BOOL MapObject_CheckVisible(LocalMapObject *mapObject);
 BOOL MapObject_CheckFlag28(LocalMapObject *mapObject);
-void MapObject_SetFlag9(LocalMapObject *mapObject, BOOL enable_bit);
+void MapObject_SetVisible(LocalMapObject *mapObject, BOOL enable_bit);
 void MapObject_SetFlag19(LocalMapObject *mapObject, BOOL enable_bit);
 SavedMapObject* SaveMapObjects_SearchSpriteId(SavedMapObject* list, u32 num_objects, u16 sprite_id);
 void sub_0205F55C(MapObjectManager *man);

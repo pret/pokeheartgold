@@ -946,7 +946,7 @@ ov01_021F9424: ; 0x021F9424
 	push {r4, lr}
 	mov r1, #1
 	add r4, r0, #0
-	bl MapObject_SetFlag9
+	bl MapObject_SetVisible
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0x14

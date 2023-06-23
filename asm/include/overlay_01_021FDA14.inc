@@ -21,7 +21,7 @@
 .public MapObject_GetFacingDirection
 .public MapObject_GetManager
 .public MapObject_GetFieldSysPtr
-.public MapObject_CheckFlag9
+.public MapObject_CheckVisible
 .public MapObject_CheckFlag24
 .public MapObject_GetPositionVec
 .public MapObject_GetFacingVec

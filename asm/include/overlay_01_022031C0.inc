@@ -12,7 +12,7 @@
 .public MapObject_GetGfxID
 .public MapObject_GetFacingDirection
 .public sub_0205F484
-.public MapObject_SetFlag9
+.public MapObject_SetVisible
 .public MapObject_GetPositionVec
 .public MapObject_SetPositionVec
 .public sub_0206121C

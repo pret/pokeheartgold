@@ -17,7 +17,7 @@
 // benefits this split would have provided.
 #define NUM_DEX_FLAG_WORDS        (CEILDIV(NATIONAL_DEX_COUNT+8,32))
 
-typedef struct POKEDEX {
+typedef struct Pokedex {
     u32 magic;
     u32 caughtSpecies[NUM_DEX_FLAG_WORDS];
     u32 seenSpecies[NUM_DEX_FLAG_WORDS];
@@ -39,42 +39,42 @@ typedef struct POKEDEX {
     u8 giratinaFormeOrder;
     u8 pichuFormeOrder;
     u8 dummy;
-} POKEDEX; // size=0x340
+} Pokedex; // size=0x340
 
 u32 Save_Pokedex_sizeof(void);
-POKEDEX *Pokedex_New(HeapID heapId);
-void Save_Pokedex_Init(POKEDEX *pokedex);
-POKEDEX *Save_Pokedex_Get(SaveData *saveData);
-BOOL Pokedex_GetNatDexFlag(const POKEDEX *pokedex);
-BOOL Pokedex_CheckMonCaughtFlag(const POKEDEX *pokedex, u16 species);
-BOOL Pokedex_CheckMonSeenFlag(const POKEDEX *pokedex, u16 species);
-u16 Pokedex_CountNationalDexOwned(POKEDEX *pokedex);
-u16 Pokedex_CountNationalOwned_ExcludeMythical(POKEDEX *pokedex);
-u16 Pokedex_CountNationalDexSeen(POKEDEX *pokedex);
-u16 Pokedex_CountJohtoDexOwned(POKEDEX *pokedex);
-u16 Pokedex_CountJohtoOwned_ExcludeMythical(POKEDEX *pokedex);
-u16 Pokedex_CountJohtoDexSeen(POKEDEX *pokedex);
-void Pokedex_Copy(const POKEDEX *src, POKEDEX *dest);
+Pokedex *Pokedex_New(HeapID heapId);
+void Save_Pokedex_Init(Pokedex *pokedex);
+Pokedex *Save_Pokedex_Get(SaveData *saveData);
+BOOL Pokedex_GetNatDexFlag(const Pokedex *pokedex);
+BOOL Pokedex_CheckMonCaughtFlag(const Pokedex *pokedex, u16 species);
+BOOL Pokedex_CheckMonSeenFlag(const Pokedex *pokedex, u16 species);
+u16 Pokedex_CountNationalDexOwned(Pokedex *pokedex);
+u16 Pokedex_CountNationalOwned_ExcludeMythical(Pokedex *pokedex);
+u16 Pokedex_CountNationalDexSeen(Pokedex *pokedex);
+u16 Pokedex_CountJohtoDexOwned(Pokedex *pokedex);
+u16 Pokedex_CountJohtoOwned_ExcludeMythical(Pokedex *pokedex);
+u16 Pokedex_CountJohtoDexSeen(Pokedex *pokedex);
+void Pokedex_Copy(const Pokedex *src, Pokedex *dest);
 BOOL DexSpeciesIsInvalid(u16 species);
-u16 Pokedex_CountDexOwned(POKEDEX *pokedex);
-BOOL Pokedex_NationalDexIsComplete(POKEDEX *pokedex);
-BOOL Pokedex_JohtoDexIsComplete(POKEDEX *pokedex);
-u32 Pokedex_GetSeenSpindaPersonality(POKEDEX *pokedex, u32 arg);
-int Pokedex_SpeciesGetLastSeenGender(POKEDEX *pokedex, u16 species, u32 a2);
-int Pokedex_GetSeenFormeByIdx_Unown(POKEDEX *pokedex, int idx, u32 caught);
-u32 Pokedex_GetSeenFormeNum_Unown(POKEDEX *pokedex, BOOL caught);
-int Pokedex_GetSeenFormeByIdx_Shellos(POKEDEX *pokedex, int a1);
-void Pokedex_SetMonSeenFlag(POKEDEX *pokedex, Pokemon *mon);
-void Pokedex_SetMonCaughtFlag(POKEDEX *pokedex, Pokemon *mon);
-void Pokedex_SetNatDexFlag(POKEDEX *pokedex);
-void sub_0202A57C(POKEDEX *pokedex);
-BOOL Pokedex_HasCaughtMonWithLanguage(POKEDEX *pokedex, u32 species, u32 language);
-void Pokedex_SetInternationalViewFlag(POKEDEX *pokedex);
-BOOL Pokedex_GetInternationalViewFlag(const POKEDEX *pokedex);
-BOOL Pokedex_IsEnabled(const POKEDEX *pokedex);
-void Pokedex_Enable(POKEDEX *pokedex);
-int Pokedex_GetSeenFormeByIdx(POKEDEX *pokedex, int species, int idx);
-int Pokedex_GetSeenFormeNum(POKEDEX *pokedex, int species);
+u16 Pokedex_CountDexOwned(Pokedex *pokedex);
+BOOL Pokedex_NationalDexIsComplete(Pokedex *pokedex);
+BOOL Pokedex_JohtoDexIsComplete(Pokedex *pokedex);
+u32 Pokedex_GetSeenSpindaPersonality(Pokedex *pokedex, u32 arg);
+int Pokedex_SpeciesGetLastSeenGender(Pokedex *pokedex, u16 species, u32 a2);
+int Pokedex_GetSeenFormeByIdx_Unown(Pokedex *pokedex, int idx, u32 caught);
+u32 Pokedex_GetSeenFormeNum_Unown(Pokedex *pokedex, BOOL caught);
+int Pokedex_GetSeenFormeByIdx_Shellos(Pokedex *pokedex, int a1);
+void Pokedex_SetMonSeenFlag(Pokedex *pokedex, Pokemon *mon);
+void Pokedex_SetMonCaughtFlag(Pokedex *pokedex, Pokemon *mon);
+void Pokedex_SetNatDexFlag(Pokedex *pokedex);
+void sub_0202A57C(Pokedex *pokedex);
+BOOL Pokedex_HasCaughtMonWithLanguage(Pokedex *pokedex, u32 species, u32 language);
+void Pokedex_SetInternationalViewFlag(Pokedex *pokedex);
+BOOL Pokedex_GetInternationalViewFlag(const Pokedex *pokedex);
+BOOL Pokedex_IsEnabled(const Pokedex *pokedex);
+void Pokedex_Enable(Pokedex *pokedex);
+int Pokedex_GetSeenFormeByIdx(Pokedex *pokedex, int species, int idx);
+int Pokedex_GetSeenFormeNum(Pokedex *pokedex, int species);
 void UpdatePokedexWithReceivedSpecies(SaveData *saveData, Pokemon *pokemon);
 
 #endif //POKEHEARTGOLD_POKEDEX_H

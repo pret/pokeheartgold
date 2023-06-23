@@ -15,7 +15,7 @@
 .public Save_PlayerHasRegiInParty
 .public sub_0205BED8
 .public sub_0205BFB4
-.public MapObject_SetFlag9
+.public MapObject_SetVisible
 .public sub_0205F9A0
 .public GetMonData
 .public GetPartyCount

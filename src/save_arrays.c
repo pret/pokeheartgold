@@ -31,7 +31,7 @@
 #define DECL_CHUNK_EX(sizefn, initfn) extern u32 sizefn(void); extern void initfn(void *);
 
 DECL_CHUNK_EX(sub_020290B8, sub_020290C8)
-DECL_CHUNK(Save_DressupData)
+DECL_CHUNK(Save_FashionData)
 DECL_CHUNK(GameStats)
 DECL_CHUNK_EX(sub_02031000, sub_02031008)
 DECL_CHUNK_EX(sub_0202DB40, sub_0202DB44)
@@ -110,8 +110,8 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
     }, {
         SAVE_DRESSUP_DATA,
         0,
-        (SAVESIZEFN)Save_DressupData_sizeof,
-        (SAVEINITFN)Save_DressupData_Init
+        (SAVESIZEFN)Save_FashionData_sizeof,
+        (SAVEINITFN)Save_FashionData_Init
     }, {
         SAVE_MAILBOX,
         0,

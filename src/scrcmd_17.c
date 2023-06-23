@@ -4,14 +4,14 @@
 #include "sys_flags.h"
 
 BOOL ScrCmd_CheckPokedex(ScriptContext *ctx) {
-    POKEDEX *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
     u16 *retPtr = ScriptGetVarPointer(ctx);
     *retPtr = Pokedex_IsEnabled(pokedex);
     return FALSE;
 }
 
 BOOL ScrCmd_GivePokedex(ScriptContext *ctx) {
-    POKEDEX *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
     Pokedex_Enable(pokedex);
     return FALSE;
 }
