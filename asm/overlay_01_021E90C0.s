@@ -300,7 +300,7 @@ _021E92F6:
 	ldr r0, [r6, #0x40]
 	bl PlayerAvatar_GetMapObject
 	mov r1, #1
-	bl MapObject_SetFlag9
+	bl MapObject_SetVisible
 	add sp, #0x58
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -553,7 +553,7 @@ _021E94FA:
 	ldr r0, [r4, #0x40]
 	bl PlayerAvatar_GetMapObject
 	mov r1, #0
-	bl MapObject_SetFlag9
+	bl MapObject_SetVisible
 	ldr r0, [r6]
 	add r0, r0, #1
 	str r0, [r6]
@@ -1640,14 +1640,14 @@ _021E9D88:
 	bne _021E9DA0
 	ldr r0, [sp, #0x28]
 	mov r1, #1
-	bl MapObject_SetFlag9
+	bl MapObject_SetVisible
 	mov r0, #1
 	str r0, [r6]
 	b _021E9ECC
 _021E9DA0:
 	ldr r0, [sp, #0x28]
 	mov r1, #0
-	bl MapObject_SetFlag9
+	bl MapObject_SetVisible
 	mov r0, #3
 	str r0, [r6]
 	b _021E9ECC
@@ -1656,7 +1656,7 @@ _021E9DAE:
 	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
 	mov r1, #0
-	bl MapObject_SetFlag9
+	bl MapObject_SetVisible
 	add r0, r5, #0
 	mov r1, #0xd
 	bl MapObject_SetHeldMovement
@@ -1714,7 +1714,7 @@ _021E9E28:
 	ldr r0, [r4, #0x40]
 	bl PlayerAvatar_GetMapObject
 	mov r1, #0
-	bl MapObject_SetFlag9
+	bl MapObject_SetVisible
 	mov r0, #6
 	str r0, [r6]
 	b _021E9ECC
@@ -1812,7 +1812,7 @@ _021E9F0C:
 	ldr r0, [r4, #0x40]
 	bl PlayerAvatar_GetMapObject
 	mov r1, #1
-	bl MapObject_SetFlag9
+	bl MapObject_SetVisible
 	mov r0, #0
 	str r0, [r5, #4]
 	strb r0, [r5, #1]
@@ -1960,13 +1960,13 @@ _021EA026:
 	bne _021EA048
 	ldr r0, [sp, #0x14]
 	mov r1, #1
-	bl MapObject_SetFlag9
+	bl MapObject_SetVisible
 	mov r0, #1
 	b _021EA052
 _021EA048:
 	ldr r0, [sp, #0x14]
 	mov r1, #0
-	bl MapObject_SetFlag9
+	bl MapObject_SetVisible
 	mov r0, #3
 _021EA052:
 	strb r0, [r4]
@@ -2026,7 +2026,7 @@ _021EA0B4:
 	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
 	mov r1, #0
-	bl MapObject_SetFlag9
+	bl MapObject_SetVisible
 	add r0, r6, #0
 	mov r1, #0xd
 	bl MapObject_SetHeldMovement
@@ -2112,13 +2112,13 @@ _021EA156:
 	bne _021EA178
 	add r0, r6, #0
 	mov r1, #1
-	bl MapObject_SetFlag9
+	bl MapObject_SetVisible
 	mov r0, #1
 	b _021EA182
 _021EA178:
 	add r0, r6, #0
 	mov r1, #0
-	bl MapObject_SetFlag9
+	bl MapObject_SetVisible
 	mov r0, #3
 _021EA182:
 	strb r0, [r4]
@@ -2139,7 +2139,7 @@ _021EA19E:
 	bl PlayerAvatar_GetMapObject
 	add r5, r0, #0
 	mov r1, #0
-	bl MapObject_SetFlag9
+	bl MapObject_SetVisible
 	add r0, r5, #0
 	mov r1, #0xd
 	bl MapObject_SetHeldMovement

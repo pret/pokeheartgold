@@ -57,7 +57,7 @@
 .public sub_0205F610
 .public MapObject_IsSingleMovementActive
 .public MapObject_SetFlag2
-.public MapObject_CheckFlag9
+.public MapObject_CheckVisible
 .public sub_0205F714
 .public sub_0205F73C
 .public MapObject_CheckFlag23

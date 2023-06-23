@@ -265,7 +265,7 @@
 .public sub_0205F484
 .public MapObject_GetFieldSysPtr
 .public MapObject_IsInUse
-.public MapObject_SetFlag9
+.public MapObject_SetVisible
 .public MapObject_PauseMovement
 .public MapObject_UnpauseMovement
 .public MapObject_GetCurrentX

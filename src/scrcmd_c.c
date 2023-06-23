@@ -1423,7 +1423,7 @@ BOOL ScrCmd_102(ScriptContext *ctx) {
     VecFx32 *pos;
     *p_cameraObj = CreateSpecialFieldObject(ctx->fsys->mapObjectMan, x, y, 0, SPRITE_CAMERA_FOCUS, 0, ctx->fsys->location->mapId);
     sub_02061070(*p_cameraObj);
-    MapObject_SetFlag9(*p_cameraObj, TRUE);
+    MapObject_SetVisible(*p_cameraObj, TRUE);
     MapObject_ClearFlag18(*p_cameraObj, FALSE);
     pos = MapObject_GetPositionVecPtr(*p_cameraObj);
     ov01_021F62E8(pos, ctx->fsys->unk2C);
@@ -1447,7 +1447,7 @@ BOOL ScrCmd_678(ScriptContext *ctx) {
     LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_CAMERA_TARGET);
     *p_cameraObj = CreateSpecialFieldObject(ctx->fsys->mapObjectMan, x, y, 0, SPRITE_CAMERA_FOCUS, 0, ctx->fsys->location->mapId);
     sub_02061070(*p_cameraObj);
-    MapObject_SetFlag9(*p_cameraObj, TRUE);
+    MapObject_SetVisible(*p_cameraObj, TRUE);
     MapObject_ClearFlag18(*p_cameraObj, FALSE);
     return FALSE;
 }
@@ -3201,7 +3201,7 @@ BOOL ScrCmd_374(ScriptContext *ctx) {
     u16 objId = ScriptGetVar(ctx);
     LocalMapObject *object = GetMapObjectByID(fsys->mapObjectMan, objId);
     GF_ASSERT(object != NULL);
-    MapObject_SetFlag9(object, FALSE);
+    MapObject_SetVisible(object, FALSE);
     return FALSE;
 }
 
@@ -3210,7 +3210,7 @@ BOOL ScrCmd_375(ScriptContext *ctx) {
     u16 objId = ScriptGetVar(ctx);
     LocalMapObject *object = GetMapObjectByID(fsys->mapObjectMan, objId);
     GF_ASSERT(object != NULL);
-    MapObject_SetFlag9(object, TRUE);
+    MapObject_SetVisible(object, TRUE);
     return FALSE;
 }
 
