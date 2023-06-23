@@ -38,8 +38,8 @@ sTrashCanData:
 
 	.text
 
-	thumb_func_start Fsys_InitEcruteakGymSaveData
-Fsys_InitEcruteakGymSaveData: ; 0x02068DE0
+	thumb_func_start InitEcruteakGym
+InitEcruteakGym: ; 0x02068DE0
 	push {r4, lr}
 	bl FieldSystem_GetSaveDataPtr
 	bl Save_GetGymmickPtr
@@ -57,10 +57,10 @@ _02068DFE:
 	cmp r2, #4
 	blt _02068DFE
 	pop {r4, pc}
-	thumb_func_end Fsys_InitEcruteakGymSaveData
+	thumb_func_end InitEcruteakGym
 
-	thumb_func_start Fsys_InitCianwoodGym
-Fsys_InitCianwoodGym: ; 0x02068E08
+	thumb_func_start InitCianwoodGym
+InitCianwoodGym: ; 0x02068E08
 	push {r4, lr}
 	bl FieldSystem_GetSaveDataPtr
 	bl Save_GetGymmickPtr
@@ -71,10 +71,10 @@ Fsys_InitCianwoodGym: ; 0x02068E08
 	mov r1, #2
 	bl SavGymmick_AssertMagic_GetData
 	pop {r4, pc}
-	thumb_func_end Fsys_InitCianwoodGym
+	thumb_func_end InitCianwoodGym
 
-	thumb_func_start Fsys_InitVermilionGym
-Fsys_InitVermilionGym: ; 0x02068E24
+	thumb_func_start InitVermilionGym
+InitVermilionGym: ; 0x02068E24
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl FieldSystem_GetSaveDataPtr
@@ -107,7 +107,7 @@ _02068E60:
 	strb r0, [r4, #3]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end Fsys_InitVermilionGym
+	thumb_func_end InitVermilionGym
 
 	thumb_func_start PlaceVermilionGymSwitches
 PlaceVermilionGymSwitches: ; 0x02068E70
@@ -138,8 +138,8 @@ PlaceVermilionGymSwitches: ; 0x02068E70
 _02068EAC: .word sTrashCanData
 	thumb_func_end PlaceVermilionGymSwitches
 
-	thumb_func_start Fsys_InitVioletGym
-Fsys_InitVioletGym: ; 0x02068EB0
+	thumb_func_start InitVioletGym
+InitVioletGym: ; 0x02068EB0
 	push {r4, lr}
 	bl FieldSystem_GetSaveDataPtr
 	bl Save_GetGymmickPtr
@@ -152,10 +152,10 @@ Fsys_InitVioletGym: ; 0x02068EB0
 	mov r1, #0
 	str r1, [r0]
 	pop {r4, pc}
-	thumb_func_end Fsys_InitVioletGym
+	thumb_func_end InitVioletGym
 
-	thumb_func_start Fsys_InitAzaleaGym
-Fsys_InitAzaleaGym: ; 0x02068ED0
+	thumb_func_start InitAzaleaGym
+InitAzaleaGym: ; 0x02068ED0
 	push {r4, lr}
 	bl FieldSystem_GetSaveDataPtr
 	bl Save_GetGymmickPtr
@@ -176,10 +176,10 @@ Fsys_InitAzaleaGym: ; 0x02068ED0
 	str r2, [r0, #4]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end Fsys_InitAzaleaGym
+	thumb_func_end InitAzaleaGym
 
-	thumb_func_start Fsys_InitBlackthornGym
-Fsys_InitBlackthornGym: ; 0x02068F00
+	thumb_func_start InitBlackthornGym
+InitBlackthornGym: ; 0x02068F00
 	push {r4, lr}
 	bl FieldSystem_GetSaveDataPtr
 	bl Save_GetGymmickPtr
@@ -208,10 +208,10 @@ Fsys_InitBlackthornGym: ; 0x02068F00
 	strb r2, [r0, #0xe]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end Fsys_InitBlackthornGym
+	thumb_func_end InitBlackthornGym
 
-	thumb_func_start Fsys_InitFuchsiaGym
-Fsys_InitFuchsiaGym: ; 0x02068F40
+	thumb_func_start InitFuchsiaGym
+InitFuchsiaGym: ; 0x02068F40
 	push {r3, lr}
 	bl FieldSystem_GetSaveDataPtr
 	bl Save_GetGymmickPtr
@@ -219,10 +219,10 @@ Fsys_InitFuchsiaGym: ; 0x02068F40
 	bl SavGymmick_Init
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end Fsys_InitFuchsiaGym
+	thumb_func_end InitFuchsiaGym
 
-	thumb_func_start Fsys_InitViridianGym
-Fsys_InitViridianGym: ; 0x02068F54
+	thumb_func_start InitViridianGym
+InitViridianGym: ; 0x02068F54
 	push {r3, lr}
 	bl FieldSystem_GetSaveDataPtr
 	bl Save_GetGymmickPtr
@@ -230,7 +230,7 @@ Fsys_InitViridianGym: ; 0x02068F54
 	bl SavGymmick_Init
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end Fsys_InitViridianGym
+	thumb_func_end InitViridianGym
 
 	thumb_func_start Fsys_IsSavGymmickTypeEqualTo
 Fsys_IsSavGymmickTypeEqualTo: ; 0x02068F68

@@ -92,11 +92,11 @@ static u32 GetNumSeals(SaveData *saveData) {
 }
 
 static u32 GetNumFashionAccessories(SaveData *saveData) {
-    return FashionCase_CountAccessories(SaveDressupData_GetFashionCase(Save_DressupData_Get(saveData)));
+    return FashionCase_CountAccessories(Save_FashionData_GetFashionCase(Save_FashionData_Get(saveData)));
 }
 
 static u32 GetNumFashionBackgrounds(SaveData *saveData) {
-    return FashionCase_CountWallpapers(SaveDressupData_GetFashionCase(Save_DressupData_Get(saveData)));
+    return FashionCase_CountWallpapers(Save_FashionData_GetFashionCase(Save_FashionData_Get(saveData)));
 }
 
 static u32 GetNumBattlePoints(SaveData *saveData) {

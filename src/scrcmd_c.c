@@ -1423,7 +1423,7 @@ BOOL ScrCmd_102(ScriptContext *ctx) {
     VecFx32 *pos;
     *p_cameraObj = CreateSpecialFieldObject(ctx->fsys->mapObjectMan, x, y, 0, SPRITE_CAMERA_FOCUS, 0, ctx->fsys->location->mapId);
     sub_02061070(*p_cameraObj);
-    MapObject_SetFlag9(*p_cameraObj, TRUE);
+    MapObject_SetVisible(*p_cameraObj, TRUE);
     MapObject_ClearFlag18(*p_cameraObj, FALSE);
     pos = MapObject_GetPositionVecPtr(*p_cameraObj);
     ov01_021F62E8(pos, ctx->fsys->unk2C);
@@ -1447,7 +1447,7 @@ BOOL ScrCmd_678(ScriptContext *ctx) {
     LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_CAMERA_TARGET);
     *p_cameraObj = CreateSpecialFieldObject(ctx->fsys->mapObjectMan, x, y, 0, SPRITE_CAMERA_FOCUS, 0, ctx->fsys->location->mapId);
     sub_02061070(*p_cameraObj);
-    MapObject_SetFlag9(*p_cameraObj, TRUE);
+    MapObject_SetVisible(*p_cameraObj, TRUE);
     MapObject_ClearFlag18(*p_cameraObj, FALSE);
     return FALSE;
 }
@@ -1789,31 +1789,31 @@ BOOL ScrCmd_436(ScriptContext *ctx) {
 }
 
 static BOOL sub_02042A30(FieldSystem *fsys, int a1, int a2) {
-    SaveDressupData *dressupData = Save_DressupData_Get(fsys->savedata);
+    SaveFashionData *fashionData = Save_FashionData_Get(fsys->savedata);
     if (a1 == 0) {
-        if (!sub_0202B9EC(dressupData, a2)) {
+        if (!sub_0202B9EC(fashionData, a2)) {
             return FALSE;
         }
     } else {
-        if (!sub_0202BA08(dressupData, a2)) {
+        if (!sub_0202BA08(fashionData, a2)) {
             return FALSE;
         }
     }
     return TRUE;
 }
 
-static DressupPokemonAppData *sub_02042A60(HeapID heapId, FieldSystem *fsys, int a2, int a3) {
-    SaveDressupData *saveDressupData = Save_DressupData_Get(fsys->savedata);
-    DressupPokemonAppData *dressupAppData;
+static FashionAppData *sub_02042A60(HeapID heapId, FieldSystem *fsys, int a2, int a3) {
+    SaveFashionData *saveFashionData = Save_FashionData_Get(fsys->savedata);
+    FashionAppData *fashionAppData;
     if (!sub_02042A30(fsys, a2, a3)) {
         return NULL;
     }
-    dressupAppData = AllocFromHeap(heapId, sizeof(DressupPokemonAppData));
-    memset(dressupAppData, 0, sizeof(DressupPokemonAppData));
-    dressupAppData->saveDressupData = saveDressupData;
-    dressupAppData->unk_8 = a2;
-    dressupAppData->unk_4 = a3;
-    return dressupAppData;
+    fashionAppData = AllocFromHeap(heapId, sizeof(FashionAppData));
+    memset(fashionAppData, 0, sizeof(FashionAppData));
+    fashionAppData->saveFashionData = saveFashionData;
+    fashionAppData->unk_8 = a2;
+    fashionAppData->unk_4 = a3;
+    return fashionAppData;
 }
 
 BOOL ScrCmd_151(ScriptContext *ctx) {
@@ -1827,7 +1827,7 @@ BOOL ScrCmd_152(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_153(ScriptContext *ctx) {
-    struct DressupPokemonAppData **p_data = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
+    struct FashionAppData **p_data = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     u16 *p_dest = ScriptGetVarPointer(ctx);
     *p_dest = (*p_data)->unk_4;
     FreeToHeap(*p_data);
@@ -1908,16 +1908,16 @@ BOOL ScrCmd_154(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_155(ScriptContext *ctx) {
-    struct DressupPokemonAppData **dressupAppData = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
+    struct FashionAppData **fashionAppData = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
     u16 r7 = ScriptReadHalfword(ctx);
     u16 *r6 = ScriptGetVarPointer(ctx);
-    *dressupAppData = sub_02042A60(HEAP_ID_FIELD, ctx->fsys, 0, r7);
-    if (*dressupAppData == NULL) {
+    *fashionAppData = sub_02042A60(HEAP_ID_FIELD, ctx->fsys, 0, r7);
+    if (*fashionAppData == NULL) {
         *r6 = 1;
         return TRUE;
     } else {
         *r6 = 0;
-        sub_0203F204(ctx->fsys, *dressupAppData);
+        sub_0203F204(ctx->fsys, *fashionAppData);
         SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
         return TRUE;
     }
@@ -1937,7 +1937,7 @@ BOOL ScrCmd_255(ScriptContext *ctx) {
 
 BOOL ScrCmd_256(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
-    sub_0202BD7C(sub_0202B9B8(Save_DressupData_Get(ctx->fsys->savedata), 0), r4);
+    sub_0202BD7C(sub_0202B9B8(Save_FashionData_Get(ctx->fsys->savedata), 0), r4);
     return TRUE;
 }
 
@@ -2505,28 +2505,28 @@ BOOL ScrCmd_ElevatorCurFloorBox(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_CountJohtoDexSeen(ScriptContext *ctx) {
-    POKEDEX *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = Pokedex_CountJohtoDexSeen(pokedex);
     return FALSE;
 }
 
 BOOL ScrCmd_CountJohtoDexOwned(ScriptContext *ctx) {
-    POKEDEX *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = Pokedex_CountJohtoDexOwned(pokedex);
     return FALSE;
 }
 
 BOOL ScrCmd_CountNationalDexSeen(ScriptContext *ctx) {
-    POKEDEX *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = Pokedex_CountNationalDexSeen(pokedex);
     return FALSE;
 }
 
 BOOL ScrCmd_CountNationalDexOwned(ScriptContext *ctx) {
-    POKEDEX *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = Pokedex_CountNationalDexOwned(pokedex);
     return FALSE;
@@ -2538,7 +2538,7 @@ BOOL ScrCmd_247(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_GetDexEvalResult(ScriptContext *ctx) {
-    POKEDEX *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
     PlayerProfile *profile = Save_PlayerData_GetProfileAddr(ctx->fsys->savedata);
     u8 kind = ScriptReadByte(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
@@ -2966,7 +2966,7 @@ BOOL ScrCmd_MovePerson(ScriptContext *ctx) {
     u16 objectId = ScriptGetVar(ctx);
     u16 x = ScriptGetVar(ctx);
     u16 y = ScriptGetVar(ctx);
-    Field_SetObjectEventXYPos(ctx->fsys, objectId, x, y);
+    Field_SetEventDefaultXYPos(ctx->fsys, objectId, x, y);
     return FALSE;
 }
 
@@ -2985,14 +2985,14 @@ BOOL ScrCmd_MovePersonFacing(ScriptContext *ctx) {
 BOOL ScrCmd_SetObjectMovementType(ScriptContext *ctx) {
     u16 objectId = ScriptGetVar(ctx);
     u16 movementType = ScriptGetVar(ctx);
-    Field_SetObjectEventMovement(ctx->fsys, objectId, movementType);
+    Field_SetEventDefaultMovement(ctx->fsys, objectId, movementType);
     return FALSE;
 }
 
 BOOL ScrCmd_SetObjectFacing(ScriptContext *ctx) {
     u16 objectId = ScriptGetVar(ctx);
     u16 facing = ScriptGetVar(ctx);
-    Field_SetObjectEventFacing(ctx->fsys, objectId, facing);
+    Field_SetEventDefaultDirection(ctx->fsys, objectId, facing);
     return FALSE;
 }
 
@@ -3065,7 +3065,7 @@ BOOL ScrCmd_311(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_EcruteakGymInit(ScriptContext *ctx) {
-    Fsys_InitEcruteakGymSaveData(ctx->fsys);
+    InitEcruteakGym(ctx->fsys);
     return FALSE;
 }
 
@@ -3098,7 +3098,7 @@ BOOL ScrCmd_317(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_CianwoodGymInit(ScriptContext *ctx) {
-    Fsys_InitCianwoodGym(ctx->fsys);
+    InitCianwoodGym(ctx->fsys);
     return FALSE;
 }
 
@@ -3110,7 +3110,7 @@ BOOL ScrCmd_CianwoodGymTurnWinch(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_VermilionGymInit(ScriptContext *ctx) {
-    Fsys_InitVermilionGym(ctx->fsys);
+    InitVermilionGym(ctx->fsys);
     return FALSE;
 }
 
@@ -3136,7 +3136,7 @@ BOOL ScrCmd_ResampleVermilionGymCans(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_VioletGymInit(ScriptContext *ctx) {
-    Fsys_InitVioletGym(ctx->fsys);
+    InitVioletGym(ctx->fsys);
     return FALSE;
 }
 
@@ -3146,36 +3146,36 @@ BOOL ScrCmd_VioletGymElevator(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_AzaleaGymInit(ScriptContext *ctx) {
-    Fsys_InitAzaleaGym(ctx->fsys);
+    InitAzaleaGym(ctx->fsys);
     return FALSE;
 }
 
 BOOL ScrCmd_AzaleaGymSpinarak(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u8 spinarakNo = ScriptReadByte(ctx);
-    Fsys_BeginAzaleaGymSpinarakRide(fsys, spinarakNo);
+    BeginAzaleaGymSpinarakRide(fsys, spinarakNo);
     return TRUE;
 }
 
 BOOL ScrCmd_AzaleaGymSwitch(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u8 switchNo = ScriptReadByte(ctx);
-    Fsys_FlipAzaleaGymSwitch(fsys, switchNo);
+    FlipAzaleaGymSwitch(fsys, switchNo);
     return TRUE;
 }
 
 BOOL ScrCmd_BlackthornGymInit(ScriptContext *ctx) {
-    Fsys_InitBlackthornGym(ctx->fsys);
+    InitBlackthornGym(ctx->fsys);
     return FALSE;
 }
 
 BOOL ScrCmd_FuchsiaGymInit(ScriptContext *ctx) {
-    Fsys_InitFuchsiaGym(ctx->fsys);
+    InitFuchsiaGym(ctx->fsys);
     return FALSE;
 }
 
 BOOL ScrCmd_ViridianGymInit(ScriptContext *ctx) {
-    Fsys_InitViridianGym(ctx->fsys);
+    InitViridianGym(ctx->fsys);
     return FALSE;
 }
 
@@ -3192,7 +3192,7 @@ BOOL ScrCmd_GetPlayerXYZ(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_EggHatchAnim(ScriptContext *ctx) {
-    sub_0203F9F4(ctx->fsys);
+    HatchEggInParty(ctx->fsys);
     return TRUE;
 }
 
@@ -3201,7 +3201,7 @@ BOOL ScrCmd_374(ScriptContext *ctx) {
     u16 objId = ScriptGetVar(ctx);
     LocalMapObject *object = GetMapObjectByID(fsys->mapObjectMan, objId);
     GF_ASSERT(object != NULL);
-    MapObject_SetFlag9(object, FALSE);
+    MapObject_SetVisible(object, FALSE);
     return FALSE;
 }
 
@@ -3210,7 +3210,7 @@ BOOL ScrCmd_375(ScriptContext *ctx) {
     u16 objId = ScriptGetVar(ctx);
     LocalMapObject *object = GetMapObjectByID(fsys->mapObjectMan, objId);
     GF_ASSERT(object != NULL);
-    MapObject_SetFlag9(object, TRUE);
+    MapObject_SetVisible(object, TRUE);
     return FALSE;
 }
 
@@ -3258,7 +3258,7 @@ BOOL ScrCmd_381(ScriptContext *ctx) {
 BOOL ScrCmd_403(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
     u16 r6 = ScriptGetVar(ctx);
-    sub_0202BB08(SaveDressupData_GetFashionCase(Save_DressupData_Get(ctx->fsys->savedata)), r4, r6);
+    sub_0202BB08(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fsys->savedata)), r4, r6);
     return FALSE;
 }
 
@@ -3266,7 +3266,7 @@ BOOL ScrCmd_404(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
     u16 r6 = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = sub_0202BA2C(SaveDressupData_GetFashionCase(Save_DressupData_Get(ctx->fsys->savedata)), r4, r6);
+    *p_ret = sub_0202BA2C(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fsys->savedata)), r4, r6);
     return FALSE;
 }
 
@@ -3274,25 +3274,25 @@ BOOL ScrCmd_405(ScriptContext *ctx) {
     u16 r7 = ScriptGetVar(ctx);
     u16 r6 = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = r6 <= sub_0202BA70(SaveDressupData_GetFashionCase(Save_DressupData_Get(ctx->fsys->savedata)), r7);
+    *p_ret = r6 <= sub_0202BA70(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fsys->savedata)), r7);
     return FALSE;
 }
 
 BOOL ScrCmd_406(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
-    sub_0202BBD8(SaveDressupData_GetFashionCase(Save_DressupData_Get(ctx->fsys->savedata)), r4);
+    sub_0202BBD8(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fsys->savedata)), r4);
     return FALSE;
 }
 
 BOOL ScrCmd_407(ScriptContext *ctx) {
     u16 r6 = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = sub_0202BA5C(SaveDressupData_GetFashionCase(Save_DressupData_Get(ctx->fsys->savedata)), r6);
+    *p_ret = sub_0202BA5C(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fsys->savedata)), r6);
     return FALSE;
 }
 
 BOOL ScrCmd_CheckJohtoDexComplete(ScriptContext *ctx) {
-    POKEDEX *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = FALSE;
     if (Pokedex_JohtoDexIsComplete(pokedex) == TRUE) {
@@ -3302,7 +3302,7 @@ BOOL ScrCmd_CheckJohtoDexComplete(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_CheckNationalDexComplete(ScriptContext *ctx) {
-    POKEDEX *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = FALSE;
     if (Pokedex_NationalDexIsComplete(pokedex) == TRUE) {
@@ -3632,7 +3632,7 @@ BOOL ScrCmd_502(ScriptContext *ctx) {
 }
 
 void Script_SetMonSeenFlagBySpecies(FieldSystem *fsys, u16 species) {
-    POKEDEX *pokedex = Save_Pokedex_Get(fsys->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(fsys->savedata);
     Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
     ZeroMonData(mon);
     CreateMon(mon, species, 50, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
@@ -3688,7 +3688,7 @@ BOOL ScrCmd_518(ScriptContext *ctx) {
     u16 forme = ScriptGetVar(ctx);
     PARTY *party = SaveArray_PlayerParty_Get(ctx->fsys->savedata);
     int partyCount = GetPartyCount(party);
-    POKEDEX *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
     int i;
 
     for (i = 0; i < partyCount; i++) {
@@ -3786,7 +3786,7 @@ BOOL ScrCmd_525(ScriptContext *ctx) {
 
 BOOL ScrCmd_526(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    FashionCase *fashionCase = SaveDressupData_GetFashionCase(Save_DressupData_Get(ctx->fsys->savedata));
+    FashionCase *fashionCase = Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fsys->savedata));
     int i, k, n = 0;
     u16 sp4[16];
 
@@ -3852,7 +3852,7 @@ BOOL ScrCmd_534(ScriptContext *ctx) {
 BOOL ScrCmd_536(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
     u16 r6 = ScriptGetVar(ctx);
-    sub_0202BB7C(SaveDressupData_GetFashionCase(Save_DressupData_Get(ctx->fsys->savedata)), r4, r6);
+    sub_0202BB7C(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fsys->savedata)), r4, r6);
     return FALSE;
 }
 
@@ -3901,7 +3901,7 @@ BOOL ScrCmd_543(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_545(ScriptContext *ctx) {
-    POKEDEX *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = Pokedex_GetSeenFormeNum_Unown(pokedex, TRUE);
     return FALSE;

@@ -31,8 +31,8 @@
 .public Save_Misc_RivalName_Set
 .public Save_Mailbox_Get
 .public sub_0202B9B8
-.public SaveDressupData_GetFashionCase
-.public Save_DressupData_Get
+.public Save_FashionData_GetFashionCase
+.public Save_FashionData_Get
 .public sub_0202C08C
 .public sub_0202C6F4
 .public sub_0202C7F8
@@ -126,7 +126,7 @@
 .public sub_0203F984
 .public LaunchCreditsApp
 .public sub_0203F9C4
-.public sub_0203F9F4
+.public HatchEggInParty
 .public LaunchVoltorbFlipApp
 .public sub_0203FA8C
 .public sub_0203FAB4

@@ -163,7 +163,7 @@ _020633B2:
 	ldr r0, [sp]
 	bl MapObject_IncMovementStep
 	ldr r0, [sp]
-	bl MapObject_CheckFlag9
+	bl MapObject_CheckVisible
 	cmp r0, #0
 	bne _02063416
 	ldr r0, _02063420 ; =SEQ_SE_DP_DANSA
@@ -433,7 +433,7 @@ _02063624:
 	add r0, r5, #0
 	bl MapObject_IncMovementStep
 	add r0, r5, #0
-	bl MapObject_CheckFlag9
+	bl MapObject_CheckVisible
 	cmp r0, #0
 	bne _0206366E
 	ldr r0, _02063680 ; =SEQ_SE_DP_SUTYA2

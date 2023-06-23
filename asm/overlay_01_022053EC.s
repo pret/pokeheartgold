@@ -568,7 +568,7 @@ _022057BE:
 ov01_022057C4: ; 0x022057C4
 	push {r3, lr}
 	bl FollowingPokemon_GetMapObject
-	bl MapObject_CheckFlag9
+	bl MapObject_CheckVisible
 	pop {r3, pc}
 	thumb_func_end ov01_022057C4
 

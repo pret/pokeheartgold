@@ -5,7 +5,7 @@ BOOL SaveArray_IsNatDexEnabled(SaveData* savedata) {
     return Pokedex_IsNatDexEnabled(Save_Pokedex_Get(savedata));
 }
 
-BOOL Pokedex_IsNatDexEnabled(const POKEDEX* pokedex) {
+BOOL Pokedex_IsNatDexEnabled(const Pokedex* pokedex) {
     return (Pokedex_GetNatDexFlag(pokedex) == TRUE);
 }
 

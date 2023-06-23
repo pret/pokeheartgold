@@ -33,7 +33,7 @@
 .public NewFieldFadeEnvironment
 .public PlayerAvatar_GetFacingDirection
 .public PlayerAvatar_GetMapObject
-.public MapObject_SetFlag9
+.public MapObject_SetVisible
 .public MapObject_GetPrevX
 .public MapObject_GetPrevY
 .public MapObject_AreBitsSetForMovementScriptInit

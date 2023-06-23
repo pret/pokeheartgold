@@ -1934,13 +1934,13 @@ sub_0203F0D0: ; 0x0203F0D0
 	bl GetPartyMonByIndex
 	str r0, [r5]
 	add r0, r6, #0
-	bl Save_DressupData_Get
+	bl Save_FashionData_Get
 	str r0, [sp]
 	mov r1, #0
 	bl sub_0202B9B8
 	add r4, r0, #0
 	ldr r0, [sp]
-	bl SaveDressupData_GetFashionCase
+	bl Save_FashionData_GetFashionCase
 	str r4, [r5, #4]
 	str r0, [r5, #8]
 	add r0, r6, #0
@@ -3075,8 +3075,8 @@ sub_0203F9C4: ; 0x0203F9C4
 _0203F9F0: .word _020FA1E4
 	thumb_func_end sub_0203F9C4
 
-	thumb_func_start sub_0203F9F4
-sub_0203F9F4: ; 0x0203F9F4
+	thumb_func_start HatchEggInParty
+HatchEggInParty: ; 0x0203F9F4
 	push {r3, r4, r5, lr}
 	sub sp, #0x10
 	add r4, r0, #0
@@ -3105,7 +3105,7 @@ _0203FA0C:
 	bl sub_02091240
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0203F9F4
+	thumb_func_end HatchEggInParty
 
 	thumb_func_start LaunchVoltorbFlipApp
 LaunchVoltorbFlipApp: ; 0x0203FA38

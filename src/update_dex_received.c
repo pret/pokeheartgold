@@ -11,7 +11,7 @@ void UpdatePokedexWithReceivedSpecies(SaveData *saveData, Pokemon *mon) {
     isEgg = GetMonData(mon, MON_DATA_IS_EGG, NULL);
     if (!isEgg) {
         species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        POKEDEX *pokedex = Save_Pokedex_Get(saveData);
+        Pokedex *pokedex = Save_Pokedex_Get(saveData);
         GAME_STATS *gameStats = Save_GameStats_Get(saveData);
         GameStats_IncSpeciesCaught(gameStats, pokedex, species);
         Pokedex_SetMonCaughtFlag(pokedex, mon);

@@ -45,11 +45,11 @@ struct ChooseStarterAppArgs {
     Pokemon starters[3];
 };
 
-typedef struct DressupPokemonAppData {
-    SaveDressupData *saveDressupData;
+typedef struct FashionAppData {
+    SaveFashionData *saveFashionData;
     int unk_4;
     int unk_8;
-} DressupPokemonAppData;
+} FashionAppData;
 
 struct UnkStruct_ScrCmd408 {
     SaveData *saveData;
@@ -110,7 +110,7 @@ void *sub_0203E7F4(HeapID heapId, FieldSystem *fsys, u8 a2, u16 a3);
 u32 *sub_0203ED80(FieldSystem *fsys, u32 a1, u16 *a2);
 void *sub_0203FB94(HeapID heapId, FieldSystem *fsys, u16 a2, u16 a3);
 void sub_0203F198(TaskManager *taskManager, u16 *ret_p, SaveData *saveData, u16 a3, u16 a4);
-void sub_0203F204(FieldSystem *fsys, DressupPokemonAppData *dressupData);
+void sub_0203F204(FieldSystem *fsys, FashionAppData *fashionData);
 void sub_0203F0A8(FieldSystem *fsys, struct UnkStruct_ScrCmd408 *unk);
 void sub_0203E868(FieldSystem *fsys, PCBoxAppData *pcBoxData);
 void sub_0203F4A8(TaskManager *taskManager);
@@ -147,7 +147,7 @@ static inline PCBoxAppData *PCBoxAppData_New(ScriptContext *ctx) {
 void CreateNamingScreen(TaskManager *taskManager, int kind, int param, int maxLen, int initPos, const u16 *defaultStr, u16 *retVar);
 void sub_0203E960(TaskManager *taskManager, int a1, u16 *a2, u16 *a3, u16 *a4);
 void sub_0203F818(FieldSystem *fsys);
-void sub_0203F9F4(FieldSystem *fsys);
+void HatchEggInParty(FieldSystem *fsys);
 void *sub_0203F074(FieldSystem *fsys, HeapID heapId);
 void *sub_0203FA8C(FieldSystem *fsys, HeapID heapId, u16 a2);
 void *sub_0203E5D0(HeapID heapId, FieldSystem *fsys, u16 a2);

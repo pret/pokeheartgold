@@ -92,7 +92,7 @@ u32 sub_02090D78(Unk02090C94 *a0) {
     return a0->frame;
 }
 
-POKEDEX *sub_02090D7C(Unk02090C94 *a0) {
+Pokedex *sub_02090D7C(Unk02090C94 *a0) {
     return a0->pokedex;
 }
 

@@ -48,7 +48,7 @@
 .public MapObject_IncMovementStep
 .public MapObject_GetFieldSysPtr
 .public MapObject_IsSingleMovementActive
-.public MapObject_CheckFlag9
+.public MapObject_CheckVisible
 .public MapObject_UnpauseMovement
 .public MapObject_CheckFlag29
 .public MapObject_GetPrevX
