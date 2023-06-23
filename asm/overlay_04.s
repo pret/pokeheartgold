@@ -714,8 +714,8 @@ _022543F6:
 _02254400: .word ov04_022575D4
 	thumb_func_end ov04_02254190
 
-	thumb_func_start Fsys_FlipAzaleaGymSwitch
-Fsys_FlipAzaleaGymSwitch: ; 0x02254404
+	thumb_func_start FlipAzaleaGymSwitch
+FlipAzaleaGymSwitch: ; 0x02254404
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -875,10 +875,10 @@ _02254550:
 	nop
 _02254560: .word SEQ_SE_DP_KI_GASYAN
 _02254564: .word ov04_02254CA4
-	thumb_func_end Fsys_FlipAzaleaGymSwitch
+	thumb_func_end FlipAzaleaGymSwitch
 
-	thumb_func_start Fsys_BeginAzaleaGymSpinarakRide
-Fsys_BeginAzaleaGymSpinarakRide: ; 0x02254568
+	thumb_func_start BeginAzaleaGymSpinarakRide
+BeginAzaleaGymSpinarakRide: ; 0x02254568
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	ldr r0, [r6, #4]
@@ -986,7 +986,7 @@ _02254608:
 	.balign 4, 0
 _02254634: .word ov04_022575A4
 _02254638: .word ov04_0225463C
-	thumb_func_end Fsys_BeginAzaleaGymSpinarakRide
+	thumb_func_end BeginAzaleaGymSpinarakRide
 
 	thumb_func_start ov04_0225463C
 ov04_0225463C: ; 0x0225463C

@@ -126,7 +126,7 @@
 .public sub_0203F984
 .public LaunchCreditsApp
 .public sub_0203F9C4
-.public sub_0203F9F4
+.public HatchEggInParty
 .public LaunchVoltorbFlipApp
 .public sub_0203FA8C
 .public sub_0203FAB4
