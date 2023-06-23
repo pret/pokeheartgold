@@ -3075,3 +3075,50 @@ BOOL CanEscape(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, BATTLEMSG 
     
     return FALSE;
 }
+
+BOOL BattleTryRun(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
+    BOOL ret;
+    u8 run;
+    int item;
+    u32 battleType;
+    
+    battleType = BattleSys_GetBattleType(bsys);
+    item = GetBattlerHeldItemEffect(ctx, battlerId);
+    ret = FALSE;
+    
+    if (item == HOLD_EFFECT_FLEE) {
+        ctx->turnData[battlerId].runFlag = 1;
+        ret = TRUE;
+    } else if (battleType & BATTLE_TYPE_CAN_ALWAYS_FLEE) {
+        ret = TRUE;
+    } else if (GetBattlerAbility(ctx, battlerId) == ABILITY_RUN_AWAY) {
+        ctx->turnData[battlerId].runFlag = 2;
+        ret = TRUE;
+    } else {
+        if (ctx->battleMons[battlerId].speed < ctx->battleMons[battlerId ^ 1].speed) {
+            run = ctx->battleMons[battlerId].speed * 128 / ctx->battleMons[battlerId ^ 1].speed + ctx->runAttempts * 30;
+            if (run > (BattleSys_Random(bsys) % 256)) {
+                ret = TRUE;
+            }
+        } else {
+            ret = TRUE;
+        }
+        if (!ret) {
+            BattleController_EmitIncrementGameStat(bsys, battlerId, 0, 99);
+        }
+        ctx->runAttempts++;
+    }
+    return ret;
+}
+
+BOOL ov12_02252C40(BATTLECONTEXT *ctx, int battlerId) {
+    BOOL ret = FALSE;
+    
+    if (GetBattlerAbility(ctx, battlerId) == ABILITY_TRUANT) {
+        if (ctx->battleMons[battlerId].unk88.truantFlag != (ctx->totalTurns & 1)) {
+            ret = TRUE;
+        }
+    }
+    
+    return ret;
+}

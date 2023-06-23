@@ -56,6 +56,8 @@ u8 GetBattlerAbility(BATTLECONTEXT *ctx, int battlerId);
 BOOL CheckBattlerAbilityIfNotIgnored(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int ability);
 BOOL CanSwitchMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL CanEscape(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, BATTLEMSG *msg);
+BOOL BattleTryRun(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+BOOL ov12_02252C40(BATTLECONTEXT *ctx, int battlerId);
 
 //The following functions are static, but the rest of the file is still being worked on
 BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int index);
@@ -80,7 +82,6 @@ BOOL CheckLegalMimicMove(u16 move);
 BOOL IsMoveEncored(BATTLECONTEXT *ctx, u16 move);
 void CheckIgnorePressure(BATTLECONTEXT *ctx, int battlerIdA, int battlerIdB);
 u8 ov12_0225682C(BATTLECONTEXT *ctx, int a1);
-BOOL BattleTryRun(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *work);
 BOOL CheckItemEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *itemWork);
 int BattleSystem_GetHeldItemDamageBoost(BATTLECONTEXT *ctx, int battlerId, int a2);
@@ -96,7 +97,6 @@ u32 ov12_0223C24C(PARTY *party, u32 *a1);
 BOOL CheckStatusEffectsSubstitute(BATTLECONTEXT *ctx, int battlerId, u32 status);
 int ov12_0223AB0C(BattleSystem *bsys, int battlerId);
 int ov12_02251D28(BattleSystem *bsys, BATTLECONTEXT *ctx, int moveNo, int moveType, int battlerIdAttacker, int battlerIdTarget, int dmg, u32 *statusFlag);
-BOOL ov12_02252C40(BATTLECONTEXT *ctx, int battlerId);
 void ov12_02252D14(BattleSystem *bsys, BATTLECONTEXT *ctx);
 int ov12_022584AC(BATTLECONTEXT *ctx, int battlerId, int id);
 int ov12_02258348(BATTLECONTEXT *ctx, int a1, int a2);

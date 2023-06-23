@@ -61,7 +61,7 @@ typedef struct TurnData {
     u32 magicCoatFlag:1;
     u32 snatchFlag:1;
     u32 roostFlag:1;
-    u32 unk0_7:2;
+    u32 runFlag:2; //1 - Fled using item, 2 - Fled using ability
     u32 unk0_9:1;
     u32 unk0_A:22;
     int physicalDamage[4];
@@ -388,7 +388,7 @@ typedef struct BATTLECONTEXT {
     int unk_3118;
     u8 unk_311C;
     u8 unk_311D;
-    u8 unk_311E;
+    u8 runAttempts;
     u8 unk_311F;
     u8 magnitude;
     u8 unk_3121;
