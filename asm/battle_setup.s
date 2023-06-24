@@ -714,7 +714,7 @@ _02051E14:
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r4, #0
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	bl CheckMetBill
 	mov r1, #0x5a
 	lsl r1, r1, #2
@@ -728,8 +728,8 @@ _02051E14:
 	cmp r0, r1
 	bhs _02051EA8
 	add r0, r4, #0
-	bl SaveArray_Flags_Get
-	bl ScriptState_MomsSavingsFlagCheck
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_MomsSavingsFlagCheck
 	mov r1, #0x5b
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -1261,13 +1261,13 @@ sub_0205230C: ; 0x0205230C
 	ldr r0, [r6, #0xc]
 	add r5, r1, #0
 	str r2, [sp]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	add r4, r0, #0
 	ldr r0, [r6, #0xc]
 	bl SaveData_GetMomsSavingsAddr
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl ScriptState_MomsSavingsFlagCheck
+	bl Save_VarsFlags_MomsSavingsFlagCheck
 	cmp r0, #0
 	beq _02052394
 	ldr r0, [sp]
@@ -1366,9 +1366,9 @@ sub_0205239C: ; 0x0205239C
 	bl Pokedex_Copy
 	ldr r0, [r4, #0xc]
 	mov r6, #0
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	add r7, r0, #0
-	bl ScriptState_CheckSafariSysFlag
+	bl Save_VarsFlags_CheckSafariSysFlag
 	cmp r0, #0
 	beq _0205241E
 	ldr r0, [r4, #0xc]

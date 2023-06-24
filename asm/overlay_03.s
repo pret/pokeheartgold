@@ -5668,7 +5668,7 @@ ov03_02256BA8: ; 0x02256BA8
 	pop {r3, r4, r5, r6, r7, pc}
 _02256BCA:
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	add r1, r6, #0
 	bl sub_020669B4
 	add r1, r0, #0
@@ -5904,7 +5904,7 @@ InitMartUI: ; 0x02256D34
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	mov r1, #0x26
 	lsl r1, r1, #4
 	str r0, [r4, r1]

@@ -79,7 +79,7 @@
 .public sub_0204B610
 .public sub_0204B66C
 .public sub_0204B690
-.public SaveArray_Flags_Get
+.public Save_VarsFlags_Get
 .public sub_0205C268
 .public sub_0205C298
 .public sub_0205C310
@@ -87,7 +87,7 @@
 .public GetPlayerYCoord
 .public SetFlag966
 .public ClearFlag966
-.public ScriptState_GetVar4052
+.public Save_VarsFlags_GetVar4052
 .public sub_02067118
 .public sub_02067200
 .public sub_020672A4

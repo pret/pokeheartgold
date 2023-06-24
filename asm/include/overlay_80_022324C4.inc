@@ -37,7 +37,7 @@
 .public sub_0203126C
 .public sub_02034818
 .public sub_0203769C
-.public SaveArray_Flags_Get
+.public Save_VarsFlags_Get
 .public sub_0205C174
 .public sub_0205C1A0
 .public sub_0205C1C8
@@ -45,7 +45,7 @@
 .public sub_0205C218
 .public sub_0205C240
 .public sub_0205C268
-.public ScriptState_GetVar4052
+.public Save_VarsFlags_GetVar4052
 .public AllocMonZeroed
 .public CalcMonLevelAndStats
 .public GetMonData

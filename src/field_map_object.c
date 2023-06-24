@@ -478,7 +478,7 @@ void sub_0205E680(FieldSystem* fsys, LocalMapObject* local_object, SavedMapObjec
     if (!sub_02061248(fsys, &coords, MapObject_CheckFlag29(local_object))) {
         saved_object->unk2C = MapObject_GetPosVecYCoord(local_object);
     } else {
-        if (MapObject_CheckFlag23(local_object) == TRUE) {
+        if (MapObject_CheckIgnoreHeights(local_object) == TRUE) {
             coords.y = MapObject_GetPosVecYCoord(local_object);
         }
         saved_object->unk2C = coords.y;
@@ -537,7 +537,7 @@ void sub_0205E8EC(MapObjectManager* manager, LocalMapObject* object) {
 
 static void sub_0205E934(LocalMapObject* object) {
     MapObject_SetFlagsBits(object, MAPOBJECTFLAG_UNK2 | MAPOBJECTFLAG_ACTIVE);
-    MapObject_ClearFlagsBits(object, MAPOBJECTFLAG_UNK23 |
+    MapObject_ClearFlagsBits(object, MAPOBJECTFLAG_IGNORE_HEIGHTS |
                                      MAPOBJECTFLAG_UNK22 |
                                      MAPOBJECTFLAG_UNK21 |
                                      MAPOBJECTFLAG_UNK19 |
@@ -1580,16 +1580,16 @@ BOOL sub_0205F73C(LocalMapObject* object) {
     return FALSE;
 }
 
-void MapObject_SetFlag23(LocalMapObject* object, BOOL set) {
+void MapObject_SetIgnoreHeights(LocalMapObject* object, BOOL set) {
     if (set == TRUE) {
-        MapObject_SetFlagsBits(object, MAPOBJECTFLAG_UNK23);
+        MapObject_SetFlagsBits(object, MAPOBJECTFLAG_IGNORE_HEIGHTS);
     } else {
-        MapObject_ClearFlagsBits(object, MAPOBJECTFLAG_UNK23);
+        MapObject_ClearFlagsBits(object, MAPOBJECTFLAG_IGNORE_HEIGHTS);
     }
 }
 
-BOOL MapObject_CheckFlag23(LocalMapObject* object) {
-    return MapObject_GetFlagsMask(object, MAPOBJECTFLAG_UNK23) != 0;
+BOOL MapObject_CheckIgnoreHeights(LocalMapObject* object) {
+    return MapObject_GetFlagsMask(object, MAPOBJECTFLAG_IGNORE_HEIGHTS) != 0;
 }
 
 void MapObject_SetFlag10(LocalMapObject* object, BOOL set) {

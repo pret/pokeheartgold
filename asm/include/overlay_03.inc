@@ -172,7 +172,7 @@
 .public GetVarPointer
 .public VarGet
 .public ScrNative_WaitApplication_DestroyTaskData
-.public SaveArray_Flags_Get
+.public Save_VarsFlags_Get
 .public TaskManager_Jump
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem

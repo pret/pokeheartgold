@@ -374,8 +374,8 @@ _021E6B12:
 	bl HasEnoughAlivePokemonForDoubleBattle
 	add r6, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SaveArray_Flags_Get
-	bl ScriptState_CheckHaveFollower
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_CheckHaveFollower
 	cmp r0, #1
 	bne _021E6B36
 	mov r6, #1
@@ -405,7 +405,7 @@ _021E6B66:
 	lsr r0, r0, #0x1f
 	beq _021E6B86
 	ldr r0, [r4, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	bl ClearFlag965
 	add r0, r4, #0
 	bl ov01_021E7628
@@ -428,7 +428,7 @@ _021E6B94:
 	bl sub_0205DD94
 	add r7, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	mov r1, #2
 	bl StrengthFlagAction
 	cmp r0, #0
@@ -1108,8 +1108,8 @@ _021E7132:
 	add r2, sp, #0
 	bl PlayerAvatar_GetStandingTileCoords
 	ldr r0, [r4, #0xc]
-	bl SaveArray_Flags_Get
-	bl ScriptState_CheckPalParkSysFlag
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_CheckPalParkSysFlag
 	cmp r0, #1
 	bne _021E7172
 	ldr r1, [sp, #4]
@@ -1653,8 +1653,8 @@ _021E758C:
 	pop {r3, r4, r5, r6, r7, pc}
 _021E75AC:
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
-	bl ScriptState_CheckSafariSysFlag
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_CheckSafariSysFlag
 	cmp r0, #0
 	beq _021E75D6
 	ldr r0, [r5, #0xc]
@@ -2038,9 +2038,9 @@ ov01_021E78E4: ; 0x021E78E4
 	push {r3, r4, r5, lr}
 	ldr r0, [r0, #0xc]
 	mov r5, #0
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	add r4, r0, #0
-	bl ScriptState_GetVar404B
+	bl Save_VarsFlags_GetVar404B
 	add r0, r0, #1
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
@@ -2050,7 +2050,7 @@ ov01_021E78E4: ; 0x021E78E4
 	mov r5, #1
 _021E7902:
 	add r0, r4, #0
-	bl ScriptState_SetVar404B
+	bl Save_VarsFlags_SetVar404B
 	add r0, r5, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021E78E4
@@ -2157,8 +2157,8 @@ ov01_021E79CC: ; 0x021E79CC
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SaveArray_Flags_Get
-	bl ScriptState_CheckSafariSysFlag
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_CheckSafariSysFlag
 	cmp r0, #0
 	bne _021E79E2
 	mov r0, #0
@@ -2191,7 +2191,7 @@ ov01_021E7A08: ; 0x021E7A08
 	bl SaveData_GetMomsSavingsAddr
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	ldr r1, _021E7A5C ; =0x00000984
 	bl CheckFlagInArray
 	cmp r0, #0
@@ -2230,7 +2230,7 @@ BugContestTimeoutCheck: ; 0x021E7A60
 	bl FieldSys_BugContest_Get
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	bl CheckFlag996
 	cmp r0, #0
 	bne _021E7A7C
@@ -2636,7 +2636,7 @@ ov01_021E7D58: ; 0x021E7D58
 	ldr r0, [r5, #0xc]
 	add r7, r2, #0
 	add r4, r1, #0
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	add r6, r0, #0
 	lsl r0, r7, #3
 	add r0, r4, r0

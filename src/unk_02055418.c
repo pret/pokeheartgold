@@ -85,7 +85,7 @@ void sub_02055508(FieldSystem* fsys, int unkA) {
         sub_0209730C(fsys->savedata, unkA);
     }
     sub_02031AE4(Save_Pokeathlon_Get(fsys->savedata));
-    ScriptState_UpdateBuenasPasswordSet(SaveArray_Flags_Get(fsys->savedata));
+    Save_VarsFlags_UpdateBuenasPasswordSet(Save_VarsFlags_Get(fsys->savedata));
 }
 
 void sub_020555B4(FieldSystem* fsys, u32 unkA, RTCTime* time) {

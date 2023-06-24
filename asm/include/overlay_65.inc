@@ -182,10 +182,10 @@
 .public sub_0203A1C4
 .public sub_0203A280
 .public sub_0203A880
-.public SaveArray_Flags_Get
+.public Save_VarsFlags_Get
 .public sub_02055198
-.public ScriptState_GetVar404C
-.public ScriptState_SetVar404C
+.public Save_VarsFlags_GetVar404C
+.public Save_VarsFlags_SetVar404C
 .public AllocMonZeroed
 .public AcquireMonLock
 .public ReleaseMonLock

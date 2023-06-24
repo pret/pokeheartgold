@@ -41,8 +41,6 @@ typedef struct EngagedTrainer {
     int unk18;
 } EngagedTrainer;
 
-typedef struct _NPC_TRADE_WORK NPC_TRADE_WORK;
-
 typedef struct ScriptEnvironment {
     u32 check;
     u8 state;

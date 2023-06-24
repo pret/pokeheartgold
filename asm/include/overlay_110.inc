@@ -112,8 +112,8 @@
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public SaveArray_Flags_Get
-.public ScriptState_SetAlphPuzzleFlag
+.public Save_VarsFlags_Get
+.public Save_VarsFlags_SetAlphPuzzleFlag
 .public NNS_GfdDoVramTransfer
 .public MI_CpuFill8
 .public gSystem

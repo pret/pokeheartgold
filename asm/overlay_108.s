@@ -176,7 +176,7 @@ ov108_021E5A48: ; 0x021E5A48
 	bl SafariZone_SetAreaSet
 	ldr r0, [r4, #0x14]
 	ldr r0, [r0]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	ldr r1, _021E5A74 ; =0x000184E8
 	ldr r1, [r4, r1]
 	bl ChangeFlag99D

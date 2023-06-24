@@ -231,10 +231,10 @@ sub_020517FC: ; 0x020517FC
 	mov r0, #7
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	mov r1, #2
 	mov r2, #5
-	bl ScriptState_FlypointFlagAction
+	bl Save_VarsFlags_FlypointFlagAction
 	cmp r0, #1
 	bne _0205185C
 	mov r0, #0x56

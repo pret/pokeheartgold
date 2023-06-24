@@ -1422,7 +1422,7 @@ sub_0204A6A8: ; 0x0204A6A8
 	mov r0, #0
 	str r0, [r4, #0x10]
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	bl SetFlag966
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -1432,7 +1432,7 @@ sub_0204A6A8: ; 0x0204A6A8
 sub_0204A6E8: ; 0x0204A6E8
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	bl ClearFlag966
 	pop {r3, pc}
 	.balign 4, 0
@@ -1765,8 +1765,8 @@ _0204A972:
 	cmp r1, #6
 	bne _0204A9A6
 	add r0, r6, #0
-	bl SaveArray_Flags_Get
-	bl ScriptState_GetVar4052
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_GetVar4052
 	b _0204A9B8
 _0204A9A6:
 	add r1, #8

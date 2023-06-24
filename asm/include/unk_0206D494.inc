@@ -30,7 +30,7 @@
 .public ScriptReadHalfword
 .public GetVarPointer
 .public VarGet
-.public SaveArray_Flags_Get
+.public Save_VarsFlags_Get
 .public FieldSys_CreateTask
 .public TaskManager_Call
 .public FieldSys_ApplicationIsRunning

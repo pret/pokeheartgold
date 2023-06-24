@@ -61,8 +61,8 @@ ov80_0222FD08: ; 0x0222FD08
 	bne _0222FD8E
 	ldr r0, _0222FEE8 ; =0x000004F8
 	ldr r0, [r2, r0]
-	bl SaveArray_Flags_Get
-	bl ScriptState_GetVar4052
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_GetVar4052
 	b _0222FDA2
 _0222FD8E:
 	ldrb r2, [r2, #5]

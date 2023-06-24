@@ -139,8 +139,8 @@ _0209733A:
 	b _020974BC
 _0209733C:
 	add r0, r4, #0
-	bl SaveArray_Flags_Get
-	bl ScriptState_CheckSafariSysFlag
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_CheckSafariSysFlag
 	cmp r0, #0
 	beq _02097364
 	ldr r0, [sp, #0x28]

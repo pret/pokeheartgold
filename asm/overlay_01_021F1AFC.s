@@ -835,7 +835,7 @@ _021F2134: ; jump table
 _021F2148:
 	ldr r0, [r4, #0x1c]
 	ldr r0, [r0, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	bl CheckFlag99A
 	cmp r0, #0
 	bne _021F2172
@@ -1208,7 +1208,7 @@ _021F2412:
 _021F2476:
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	bl CheckFlag99A
 	cmp r0, #0
 	bne _021F249A

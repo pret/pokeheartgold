@@ -14,9 +14,9 @@ BOOL ScrCmd_BufferDeptStoreFloorNo(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_LotoIdGet(ScriptContext *ctx) {
-    ScriptState *state = SaveArray_Flags_Get(ctx->fsys->savedata);
+    SaveVarsFlags *state = Save_VarsFlags_Get(ctx->fsys->savedata);
     u16 *retPtr = ScriptGetVarPointer(ctx);
-    u32 lotoId = ScriptState_GetLotoId(state);
+    u32 lotoId = Save_VarsFlags_GetLotoId(state);
     *retPtr = lotoId;
     return FALSE;
 }
@@ -86,8 +86,8 @@ BOOL ScrCmd_LotoIdSearch(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_LotoIdSet(ScriptContext *ctx) {
-    ScriptState *state = SaveArray_Flags_Get(ctx->fsys->savedata);
-    ScriptState_RollLotoId(state);
+    SaveVarsFlags *state = Save_VarsFlags_Get(ctx->fsys->savedata);
+    Save_VarsFlags_RollLotoId(state);
     return FALSE;
 }
 

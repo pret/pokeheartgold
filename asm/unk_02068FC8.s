@@ -87,7 +87,7 @@ sub_02068FC8: ; 0x02068FC8
 	add r2, sp, #0x78
 	bl FieldSys_GetGameClearTime
 	ldr r0, [r6, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	bl CheckGameClearFlag
 	add r1, sp, #0x78
 	str r1, [sp]
@@ -252,7 +252,7 @@ sub_020691E8: ; 0x020691E8
 	add r7, r0, #0
 	bl Save_GameStats_Get
 	add r0, r7, #0
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	add r6, r0, #0
 	add r0, r7, #0
 	bl sub_0203107C

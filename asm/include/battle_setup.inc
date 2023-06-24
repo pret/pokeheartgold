@@ -52,7 +52,7 @@
 .public LocalFieldData_GetPlayer
 .public LocalFieldData_GetSafariBallsCounter
 .public Save_LocalFieldData_Get
-.public SaveArray_Flags_Get
+.public Save_VarsFlags_Get
 .public BattleSetup_New
 .public sub_02051A60
 .public sub_02051A74
@@ -84,9 +84,9 @@
 .public sub_0205B8B8
 .public sub_0205B8D0
 .public Save_GetPartyLeadAlive
-.public ScriptState_MomsSavingsFlagCheck
+.public Save_VarsFlags_MomsSavingsFlagCheck
 .public CheckMetBill
-.public ScriptState_CheckSafariSysFlag
+.public Save_VarsFlags_CheckSafariSysFlag
 .public CheckFlag996
 .public sub_02067A60
 .public sub_02067A78

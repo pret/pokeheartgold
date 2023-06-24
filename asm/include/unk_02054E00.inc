@@ -19,7 +19,7 @@
 .public MapHeader_GetNightMusicId
 .public LocalFieldData_GetMusicIdAddr
 .public Save_LocalFieldData_Get
-.public SaveArray_Flags_Get
+.public Save_VarsFlags_Get
 .public MapModel_IsHeadbuttTree
 .public MapCoordToMatrixIndex
 .public sub_02054EB0

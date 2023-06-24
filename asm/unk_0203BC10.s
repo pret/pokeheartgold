@@ -58,8 +58,8 @@ sub_0203BC28: ; 0x0203BC28
 	bl sub_0203BE34
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
-	bl ScriptState_CheckSafariSysFlag
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_CheckSafariSysFlag
 	cmp r0, #1
 	bne _0203BC4E
 	add r0, r5, #0
@@ -70,7 +70,7 @@ sub_0203BC28: ; 0x0203BC28
 	b _0203BCAA
 _0203BC4E:
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	bl CheckFlag996
 	cmp r0, #1
 	bne _0203BC6A
@@ -82,8 +82,8 @@ _0203BC4E:
 	b _0203BCAA
 _0203BC6A:
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
-	bl ScriptState_CheckPalParkSysFlag
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_CheckPalParkSysFlag
 	cmp r0, #1
 	bne _0203BC86
 	add r0, r5, #0
@@ -212,8 +212,8 @@ sub_0203BD64: ; 0x0203BD64
 	lsl r0, r0, #4
 	str r1, [r4, r0]
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
-	bl ScriptState_CheckSafariSysFlag
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_CheckSafariSysFlag
 	cmp r0, #1
 	bne _0203BD98
 	add r0, r5, #0
@@ -224,7 +224,7 @@ sub_0203BD64: ; 0x0203BD64
 	b _0203BE20
 _0203BD98:
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	bl CheckFlag996
 	cmp r0, #1
 	bne _0203BDB4
@@ -236,8 +236,8 @@ _0203BD98:
 	b _0203BE20
 _0203BDB4:
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
-	bl ScriptState_CheckPalParkSysFlag
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_CheckPalParkSysFlag
 	cmp r0, #1
 	bne _0203BDD0
 	add r0, r5, #0
@@ -326,7 +326,7 @@ sub_0203BE60: ; 0x0203BE60
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	mov r4, #0
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	bl CheckGotPokedex
 	cmp r0, #0
 	bne _0203BE78
@@ -334,7 +334,7 @@ sub_0203BE60: ; 0x0203BE60
 	orr r4, r0
 _0203BE78:
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	bl CheckGotStarter
 	cmp r0, #0
 	bne _0203BE8A
@@ -342,7 +342,7 @@ _0203BE78:
 	orr r4, r0
 _0203BE8A:
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	mov r1, #0
 	bl CheckGotMenuIconI
 	cmp r0, #0
@@ -351,7 +351,7 @@ _0203BE8A:
 	orr r4, r0
 _0203BE9E:
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	bl CheckGotPokegear
 	cmp r0, #0
 	bne _0203BEB2
@@ -1054,40 +1054,40 @@ _0203C3DE: ; jump table
 	.short _0203C44A - _0203C3DE - 2 ; case 7
 _0203C3EE:
 	ldr r0, [r0, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	bl CheckGotPokedex
 	pop {r3, pc}
 _0203C3FA:
 	ldr r0, [r0, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	bl CheckGotStarter
 	pop {r3, pc}
 _0203C406:
 	ldr r0, [r0, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	mov r1, #0
 	bl CheckGotMenuIconI
 	pop {r3, pc}
 _0203C414:
 	ldr r0, [r0, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	bl CheckGotPokegear
 	pop {r3, pc}
 _0203C420:
 	ldr r0, [r0, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	mov r1, #1
 	bl CheckGotMenuIconI
 	pop {r3, pc}
 _0203C42E:
 	ldr r0, [r0, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	mov r1, #2
 	bl CheckGotMenuIconI
 	pop {r3, pc}
 _0203C43C:
 	ldr r0, [r0, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	mov r1, #3
 	bl CheckGotMenuIconI
 	pop {r3, pc}
@@ -3121,8 +3121,8 @@ sub_0203D488: ; 0x0203D488
 	add r0, #0xd2
 	strb r1, [r0]
 	ldr r0, [r4, #0xc]
-	bl SaveArray_Flags_Get
-	bl ScriptState_CheckSafariSysFlag
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_CheckSafariSysFlag
 	cmp r0, #1
 	bne _0203D4CA
 	ldr r1, _0203D4F8 ; =0x00002266
@@ -3132,7 +3132,7 @@ sub_0203D488: ; 0x0203D488
 	b _0203D4EE
 _0203D4CA:
 	ldr r0, [r4, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	bl CheckFlag996
 	cmp r0, #1
 	bne _0203D4E4

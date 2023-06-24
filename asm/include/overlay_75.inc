@@ -138,7 +138,7 @@
 .public sub_0203A880
 .public sub_0203A914
 .public sub_0203A930
-.public SaveArray_Flags_Get
+.public Save_VarsFlags_Get
 .public SetFlag970
 .public sub_02085400
 .public sub_0208541C

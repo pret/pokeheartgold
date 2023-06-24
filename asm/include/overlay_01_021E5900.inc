@@ -65,7 +65,7 @@
 .public FieldSystem_GetSaveDataPtr
 .public sub_0203E348
 .public TryStartMapScriptByType
-.public SaveArray_Flags_Get
+.public Save_VarsFlags_Get
 .public Fsys_TaskIsRunning
 .public sub_02053018
 .public sub_02053038

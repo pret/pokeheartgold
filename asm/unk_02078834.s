@@ -97,7 +97,7 @@ _020788CA:
 	cmp r0, #0
 	beq _020788DE
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	bl SetFlag970
 _020788DE:
 	ldr r0, [r4]

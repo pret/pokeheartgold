@@ -243,7 +243,7 @@
 .public TrainerHouseTrainer_Compare
 .public LocalFieldData_GetCurrentPosition
 .public Save_LocalFieldData_Get
-.public SaveArray_Flags_Get
+.public Save_VarsFlags_Get
 .public CheckFlagInArray
 .public SetFlagInArray
 .public ClearFlagInArray
