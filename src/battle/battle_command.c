@@ -3711,7 +3711,7 @@ BOOL BtlCmd_TryTeleport(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     u32 adrs = BattleScriptReadWord(ctx);
 
-    if (CanEscape(bsys, ctx, ctx->battlerIdAttacker, NULL)) {
+    if (CantEscape(bsys, ctx, ctx->battlerIdAttacker, NULL)) {
         BattleScriptIncrementPointer(ctx, adrs);
     }
 

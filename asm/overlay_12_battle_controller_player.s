@@ -1205,7 +1205,7 @@ _02248F8E:
 	add r0, r7, #0
 	add r2, r4, #0
 	add r3, sp, #0x7c
-	bl CanEscape
+	bl CantEscape
 	cmp r0, #0
 	beq _02248FF4
 	add r0, r7, #0

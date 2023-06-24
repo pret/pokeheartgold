@@ -83,7 +83,7 @@
 .public GetBattlerAbility
 .public CheckBattlerAbilityIfNotIgnored
 .public CanSwitchMon
-.public CanEscape
+.public CantEscape
 .public BattleTryRun
 .public CheckTruant
 .public BattleContext_CheckMoveImprisoned

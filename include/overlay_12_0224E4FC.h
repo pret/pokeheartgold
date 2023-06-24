@@ -55,7 +55,7 @@ BOOL WhirlwindCheck(BattleSystem *bsys, BATTLECONTEXT *ctx);
 u8 GetBattlerAbility(BATTLECONTEXT *ctx, int battlerId);
 BOOL CheckBattlerAbilityIfNotIgnored(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int ability);
 BOOL CanSwitchMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
-BOOL CanEscape(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, BATTLEMSG *msg);
+BOOL CantEscape(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, BATTLEMSG *msg);
 BOOL BattleTryRun(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL CheckTruant(BATTLECONTEXT *ctx, int battlerId);
 BOOL BattleContext_CheckMoveImprisoned(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);

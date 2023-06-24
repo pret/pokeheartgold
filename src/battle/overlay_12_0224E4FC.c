@@ -2922,11 +2922,11 @@ BOOL WhirlwindCheck(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 u8 GetBattlerAbility(BATTLECONTEXT *ctx, int battlerId) {
     if ((ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_GASTRO_ACID) && ctx->battleMons[battlerId].ability != ABILITY_MULTITYPE) {
-        return 0;
+        return ABILITY_NONE;
     } else if ((ctx->fieldCondition & FIELD_CONDITION_GRAVITY) && ctx->battleMons[battlerId].ability == ABILITY_LEVITATE) {
-        return 0;
+        return ABILITY_NONE;
     } else if ((ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_INGRAIN) && ctx->battleMons[battlerId].ability == ABILITY_LEVITATE) {
-        return 0;
+        return ABILITY_NONE;
     } else {
         return ctx->battleMons[battlerId].ability;
     }
@@ -2997,7 +2997,7 @@ BOOL CanSwitchMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
 
 //Weird because it returns FALSE if you *can* escape, TRUE if you *can't*
 //FIXME: Function needs a more descriptive name
-BOOL CanEscape(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, BATTLEMSG *msg) {
+BOOL CantEscape(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, BATTLEMSG *msg) {
     int battlerIdAbility;
     int maxBattlers;
     u8 side;
