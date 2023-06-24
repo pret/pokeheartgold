@@ -3259,3 +3259,39 @@ void SortMonsBySpeed(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         }
     }
 }
+
+extern u16 sGravityUnusableMoves[6];
+
+BOOL BattleContext_CheckMoveUnuseableInGravity(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo) {
+    int i;
+    BOOL ret = FALSE;
+    
+    if (ctx->fieldCondition & FIELD_CONDITION_GRAVITY) {
+        for (i = 0; i < NELEMS(sGravityUnusableMoves); i++) {
+            if (sGravityUnusableMoves[i] == moveNo) {
+                ret = TRUE;
+                break;
+            }
+        }
+    }
+    
+    return ret;
+}
+
+extern u16 sHealBlockUnusableMoves[14];
+
+BOOL BattleContext_CheckMoveHealBlocked(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo) {
+    int i;
+    BOOL ret = FALSE;
+    
+    if (ctx->battleMons[battlerId].unk88.healBlockTurns) {
+        for (i = 0; i < NELEMS(sHealBlockUnusableMoves); i++) {
+            if (sHealBlockUnusableMoves[i] == moveNo) {
+                ret = TRUE;
+                break;
+            }
+        }
+    }
+    
+    return ret;
+}

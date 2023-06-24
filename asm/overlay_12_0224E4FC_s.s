@@ -1,6 +1,7 @@
 #include "constants/pokemon.h"
 #include "constants/sndseq.h"
 #include "constants/items.h"
+#include "constants/moves.h"
 	.include "asm/macros.inc"
 	.include "overlay_12_0224E4FC.inc"
 	.include "global.inc"
@@ -11,72 +12,6 @@
     .public ov12_02251C74
     .public CheckMoveEffectOnField
    
-	thumb_func_start BattleContext_CheckMoveUnuseableInGravity
-BattleContext_CheckMoveUnuseableInGravity: ; 0x02252DC4
-	push {r3, r4}
-	mov r2, #6
-	lsl r2, r2, #6
-	ldr r2, [r1, r2]
-	mov r1, #7
-	lsl r1, r1, #0xc
-	mov r0, #0
-	tst r1, r2
-	beq _02252DEE
-	ldr r4, _02252DF4 ; =ov12_0226CB7C
-	add r2, r0, #0
-_02252DDA:
-	ldrh r1, [r4]
-	cmp r3, r1
-	bne _02252DE6
-	mov r0, #1
-	pop {r3, r4}
-	bx lr
-_02252DE6:
-	add r2, r2, #1
-	add r4, r4, #2
-	cmp r2, #6
-	blo _02252DDA
-_02252DEE:
-	pop {r3, r4}
-	bx lr
-	nop
-_02252DF4: .word ov12_0226CB7C
-	thumb_func_end BattleContext_CheckMoveUnuseableInGravity
-
-	thumb_func_start BattleContext_CheckMoveHealBlocked
-BattleContext_CheckMoveHealBlocked: ; 0x02252DF8
-	push {r3, r4}
-	mov r4, #0xc0
-	mul r4, r2
-	add r2, r1, r4
-	ldr r1, _02252E28 ; =0x00002DCC
-	mov r0, #0
-	ldr r1, [r2, r1]
-	lsl r1, r1, #0xd
-	lsr r1, r1, #0x1d
-	beq _02252E24
-	ldr r4, _02252E2C ; =ov12_0226CBA2
-	add r2, r0, #0
-_02252E10:
-	ldrh r1, [r4]
-	cmp r3, r1
-	bne _02252E1C
-	mov r0, #1
-	pop {r3, r4}
-	bx lr
-_02252E1C:
-	add r2, r2, #1
-	add r4, r4, #2
-	cmp r2, #0xe
-	blo _02252E10
-_02252E24:
-	pop {r3, r4}
-	bx lr
-	.balign 4, 0
-_02252E28: .word 0x00002DCC
-_02252E2C: .word ov12_0226CBA2
-	thumb_func_end BattleContext_CheckMoveHealBlocked
-
 	thumb_func_start ov12_02252E30
 ov12_02252E30: ; 0x02252E30
 	push {r4, r5, r6, r7}
@@ -12000,9 +11935,10 @@ ov12_0226CB64: ; 0x0226CB64
 ov12_0226CB70: ; 0x0226CB70
 	.byte 0x44, 0x00, 0xF3, 0x00, 0xA8, 0x00, 0x57, 0x01, 0x08, 0x01, 0xC0, 0x01
 
-ov12_0226CB7C: ; 0x0226CB7C
-	.byte 0x13, 0x00, 0x54, 0x01
-	.byte 0x1A, 0x00, 0x88, 0x00, 0x96, 0x00, 0x89, 0x01
+.public sGravityUnusableMoves
+sGravityUnusableMoves: ; 0x0226CB7C
+	.short MOVE_FLY, MOVE_BOUNCE
+	.short MOVE_JUMP_KICK, MOVE_HIGH_JUMP_KICK, MOVE_SPLASH, MOVE_MAGNET_RISE
 
 .public sStatChangeTable
 sStatChangeTable: ; 0x0226CB88
@@ -12013,9 +11949,10 @@ ov12_0226CB89: ; 0x0226CB89
 	.byte 0x0A, 0x14, 0x0A, 0x0F, 0x0A, 0x0A, 0x0F, 0x0A, 0x14, 0x0A, 0x19, 0x0A, 0x1E, 0x0A, 0x23, 0x0A
 	.byte 0x28, 0x0A
 
-ov12_0226CBA2: ; 0x0226CBA2
-	.byte 0x69, 0x00, 0x87, 0x00, 0x9C, 0x00, 0xD0, 0x00, 0xEA, 0x00, 0xEB, 0x00, 0xEC, 0x00
-	.byte 0x00, 0x01, 0xC8, 0x01, 0x2F, 0x01, 0x63, 0x01, 0xCD, 0x01, 0x69, 0x01, 0x11, 0x01
+.public sHealBlockUnusableMoves
+sHealBlockUnusableMoves: ; 0x0226CBA2
+	.short MOVE_RECOVER, MOVE_SOFT_BOILED, MOVE_REST, MOVE_MILK_DRINK, MOVE_MORNING_SUN, MOVE_SYNTHESIS, MOVE_MOONLIGHT
+	.short MOVE_SWALLOW, MOVE_HEAL_ORDER, MOVE_SLACK_OFF, MOVE_ROOST, MOVE_LUNAR_DANCE, MOVE_HEALING_WISH, MOVE_WISH
 
 ov12_0226CBBE: ; 0x0226CBBE
 	.byte 0x08, 0x00
