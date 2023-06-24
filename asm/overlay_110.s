@@ -231,9 +231,9 @@ ov110_021E5AAC: ; 0x021E5AAC
 	beq _021E5AD2
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	ldrb r1, [r4, #0x19]
-	bl ScriptState_SetAlphPuzzleFlag
+	bl Save_VarsFlags_SetAlphPuzzleFlag
 _021E5AD2:
 	pop {r4, pc}
 	thumb_func_end ov110_021E5AAC

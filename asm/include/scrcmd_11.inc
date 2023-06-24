@@ -48,11 +48,11 @@
 .public ScriptReadHalfword
 .public FieldSysGetAttrAddr
 .public GetVarPointer
-.public SaveArray_Flags_Get
+.public Save_VarsFlags_Get
 .public GiveEgg
 .public sub_02066B9C
-.public ScriptState_GetVar404C
-.public ScriptState_SetVar404C
+.public Save_VarsFlags_GetVar404C
+.public Save_VarsFlags_SetVar404C
 .public AllocMonZeroed
 .public CalcMonLevelAndStats
 .public GetMonData

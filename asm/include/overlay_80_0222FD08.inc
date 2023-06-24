@@ -18,13 +18,13 @@
 .public sub_020310BC
 .public sub_02031108
 .public sub_0203126C
-.public SaveArray_Flags_Get
+.public Save_VarsFlags_Get
 .public sub_0205BFF0
 .public sub_0205C01C
 .public sub_0205C048
 .public sub_0205C074
 .public sub_0205C268
-.public ScriptState_GetVar4052
+.public Save_VarsFlags_GetVar4052
 .public AllocMonZeroed
 .public GetMonData
 .public SaveArray_Party_Alloc

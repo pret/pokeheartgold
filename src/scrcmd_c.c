@@ -2370,13 +2370,13 @@ BOOL ScrCmd_211(ScriptContext *ctx) {
 
 BOOL ScrCmd_GetStarterChoice(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = ScriptState_GetStarter(SaveArray_Flags_Get(ctx->fsys->savedata));
+    *p_ret = Save_VarsFlags_GetStarter(Save_VarsFlags_Get(ctx->fsys->savedata));
     return FALSE;
 }
 
 BOOL ScrCmd_SetStarterChoice(ScriptContext *ctx) {
     u16 choice = ScriptGetVar(ctx);
-    ScriptState_SetStarter(SaveArray_Flags_Get(ctx->fsys->savedata), choice);
+    Save_VarsFlags_SetStarter(Save_VarsFlags_Get(ctx->fsys->savedata), choice);
     return FALSE;
 }
 
@@ -3380,8 +3380,8 @@ BOOL ScrCmd_705(ScriptContext *ctx) {
 
 BOOL ScrCmd_SafariZoneAction(ScriptContext *ctx) {
     LocalFieldData *localFieldData = Save_LocalFieldData_Get(ctx->fsys->savedata);
-    ScriptState *scriptState = SaveArray_Flags_Get(ctx->fsys->savedata);
-    SAFARIZONE *safariZone = Save_SafariZone_Get(ctx->fsys->savedata);
+    SaveVarsFlags *varsFlags = Save_VarsFlags_Get(ctx->fsys->savedata);
+    SafariZone *safariZone = Save_SafariZone_Get(ctx->fsys->savedata);
     u8 action = ScriptReadByte(ctx);
     u8 areaSet = ScriptReadByte(ctx);
     u16 *p_nSafariBall = LocalFieldData_GetSafariBallsCounter(localFieldData);
@@ -3390,13 +3390,13 @@ BOOL ScrCmd_SafariZoneAction(ScriptContext *ctx) {
 
     switch (action) {
     case 0:
-        ScriptState_SetSafariSysFlag(scriptState);
+        Save_VarsFlags_SetSafariSysFlag(varsFlags);
         sub_0202F5F8(safariZone, areaSet);
         *p_nSafariBall = 30;
         *p_nSafariSteps = 0;
         break;
     case 1:
-        ScriptState_ClearSafariSysFlag(scriptState);
+        Save_VarsFlags_ClearSafariSysFlag(varsFlags);
         sub_0202F5F8(safariZone, 1);
         r1 = sub_0202F6AC(safariZone);
         if (r1 != 0) {
@@ -3741,12 +3741,12 @@ BOOL ScrCmd_519(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_520(ScriptContext *ctx) {
-    SetFlag975(SaveArray_Flags_Get(ctx->fsys->savedata));
+    SetFlag975(Save_VarsFlags_Get(ctx->fsys->savedata));
     return FALSE;
 }
 
 BOOL ScrCmd_521(ScriptContext *ctx) {
-    ClearFlag975(SaveArray_Flags_Get(ctx->fsys->savedata));
+    ClearFlag975(Save_VarsFlags_Get(ctx->fsys->savedata));
     return FALSE;
 }
 
@@ -3826,11 +3826,11 @@ BOOL ScrCmd_528(ScriptContext *ctx) {
 BOOL ScrCmd_530(ScriptContext *ctx) {
     u16 r6 = ScriptGetVar(ctx);
     u8 action = ScriptReadByte(ctx);
-    ScriptState *scriptState = SaveArray_Flags_Get(ctx->fsys->savedata);
+    SaveVarsFlags *varsFlags = Save_VarsFlags_Get(ctx->fsys->savedata);
     if (action) {
-        sub_02066C1C(scriptState, r6);
+        sub_02066C1C(varsFlags, r6);
     } else {
-        sub_02066C4C(scriptState, r6);
+        sub_02066C4C(varsFlags, r6);
     }
     return FALSE;
 }
@@ -3845,7 +3845,7 @@ BOOL ScrCmd_BufferBackgroundName(ScriptContext *ctx) {
 
 BOOL ScrCmd_534(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = ScriptState_GetVar4041(SaveArray_Flags_Get(ctx->fsys->savedata));
+    *p_ret = Save_VarsFlags_GetVar4041(Save_VarsFlags_Get(ctx->fsys->savedata));
     return FALSE;
 }
 
@@ -3882,9 +3882,9 @@ BOOL ScrCmd_540(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_539(ScriptContext *ctx) {
-    ScriptState *scriptState = SaveArray_Flags_Get(ctx->fsys->savedata);
+    SaveVarsFlags *varsFlags = Save_VarsFlags_Get(ctx->fsys->savedata);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = ScriptState_GetVar4042(scriptState) >= 5;
+    *p_ret = Save_VarsFlags_GetVar4042(varsFlags) >= 5;
     return FALSE;
 }
 
@@ -3910,9 +3910,9 @@ BOOL ScrCmd_545(ScriptContext *ctx) {
 BOOL ScrCmd_546(ScriptContext *ctx) {
     u8 mode = ScriptReadByte(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    ScriptState *scriptState = SaveArray_Flags_Get(ctx->fsys->savedata);
+    SaveVarsFlags *varsFlags = Save_VarsFlags_Get(ctx->fsys->savedata);
     GF_ASSERT(mode <= 1);
-    *p_ret = sub_02066BC0(scriptState, mode);
+    *p_ret = sub_02066BC0(varsFlags, mode);
     return FALSE;
 }
 
@@ -5322,7 +5322,7 @@ BOOL ScrCmd_810(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_814(ScriptContext *ctx) {
-    SetFlag99A(SaveArray_Flags_Get(ctx->fsys->savedata));
+    SetFlag99A(Save_VarsFlags_Get(ctx->fsys->savedata));
     return FALSE;
 }
 
@@ -5367,7 +5367,7 @@ BOOL ScrCmd_823(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_824(ScriptContext *ctx) {
-    SAFARIZONE *safariZone = Save_SafariZone_Get(ctx->fsys->savedata);
+    SafariZone *safariZone = Save_SafariZone_Get(ctx->fsys->savedata);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     SafariZone_DeactivateLinkIfExpired(safariZone);
     if (SafariZone_IsCurrentlyLinked(safariZone)) {

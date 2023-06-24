@@ -2305,8 +2305,8 @@ _02246D6C:
 	pop {r3, r4, r5, r6, r7, pc}
 _02246D76:
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
-	bl ScriptState_CheckHaveFollower
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_CheckHaveFollower
 	cmp r0, #0
 	beq _02246D88
 	mov r6, #1
@@ -2353,9 +2353,9 @@ _02246DDA:
 	pop {r3, r4, r5, r6, r7, pc}
 _02246DE0:
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	str r0, [sp, #0x14]
-	bl ScriptState_CheckSafariSysFlag
+	bl Save_VarsFlags_CheckSafariSysFlag
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x14]
 	bl CheckFlag996
@@ -2444,8 +2444,8 @@ _02246E8C:
 	b _02246F26
 _02246EA0:
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
-	bl ScriptState_GetFollowerTrainerNum
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_GetFollowerTrainerNum
 	ldr r1, [sp, #0x20]
 	mov r2, #0xb
 	str r0, [r1, #0x20]
@@ -2594,8 +2594,8 @@ _02246F88:
 _02246FDA:
 	ldr r0, [sp, #0x20]
 	ldr r0, [r0, #0xc]
-	bl SaveArray_Flags_Get
-	bl ScriptState_CheckSafariSysFlag
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_CheckSafariSysFlag
 	str r0, [sp, #0x18]
 	cmp r0, #0
 	beq _02246FF8
@@ -2796,7 +2796,7 @@ ov02_02247170: ; 0x02247170
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	str r1, [sp, #8]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	add r7, r0, #0
 	ldr r0, [r5, #0x40]
 	bl GetPlayerXCoord
@@ -2835,7 +2835,7 @@ _022471AC:
 	mov r0, #1
 	str r0, [sp, #0x28]
 	add r0, r7, #0
-	bl ScriptState_CheckHaveFollower
+	bl Save_VarsFlags_CheckHaveFollower
 	str r0, [sp, #0xc]
 	cmp r0, #0
 	bne _0224721A
@@ -2864,7 +2864,7 @@ _022471AC:
 	pop {r4, r5, r6, r7, pc}
 _0224721A:
 	add r0, r7, #0
-	bl ScriptState_CheckSafariSysFlag
+	bl Save_VarsFlags_CheckSafariSysFlag
 	add r6, r0, #0
 	add r0, r7, #0
 	bl CheckFlag996
@@ -2950,8 +2950,8 @@ _022472BA:
 	b _0224734C
 _022472CE:
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
-	bl ScriptState_GetFollowerTrainerNum
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_GetFollowerTrainerNum
 	ldr r1, [sp, #0x1c]
 	mov r2, #0xb
 	str r0, [r1, #0x20]
@@ -4685,13 +4685,13 @@ _02247FCA:
 	bhi _02248008
 _02247FE0:
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	add r4, r0, #0
 	mov r5, #0
 _02247FEA:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl ScriptState_CheckAlphPuzzleFlag
+	bl Save_VarsFlags_CheckAlphPuzzleFlag
 	cmp r0, #0
 	beq _02247FFA
 	mov r0, #1
@@ -5583,7 +5583,7 @@ _02248642:
 	strb r0, [r5, #0xf]
 	strb r0, [r5, #0x10]
 	ldr r0, [r7, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	add r6, r0, #0
 	ldr r0, [r7, #0x20]
 	ldr r1, [r0]
@@ -5600,7 +5600,7 @@ _02248668:
 _0224866C:
 	add r0, r6, #0
 	add r1, r4, #0
-	bl ScriptState_CheckAlphPuzzleFlag
+	bl Save_VarsFlags_CheckAlphPuzzleFlag
 	add r1, r5, r4
 	add r4, r4, #1
 	strb r0, [r1, #0x12]
@@ -12536,7 +12536,7 @@ ov02_BattleExit_HandleRoamerAction: ; 0x0224B998
 	add r0, sp, #8
 	bl RoamerMon_Init
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	ldr r1, [sp, #4]
 	mov r2, #2
 	bl sub_02066BE8
@@ -12547,7 +12547,7 @@ _0224BA14:
 	add r0, sp, #8
 	bl RoamerMon_Init
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	ldr r1, [sp, #4]
 	mov r2, #1
 	bl sub_02066BE8
@@ -18080,7 +18080,7 @@ ov02_0224E35C: ; 0x0224E35C
 	sub sp, #0x1c
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	add r6, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Save_LocalFieldData_Get
@@ -18098,7 +18098,7 @@ ov02_0224E35C: ; 0x0224E35C
 	pop {r4, r5, r6, r7, pc}
 _0224E38E:
 	add r0, r6, #0
-	bl ScriptState_CheckSafariSysFlag
+	bl Save_VarsFlags_CheckSafariSysFlag
 	cmp r0, #0
 	bne _0224E39E
 	add sp, #0x1c
@@ -19824,7 +19824,7 @@ _0224F124:
 	cmp r7, #0
 	beq _0224F13E
 	ldr r0, [r6, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	add r1, r7, #0
 	bl CheckFlagInArray
 	cmp r0, #0
@@ -22334,7 +22334,7 @@ _022503BA:
 	lsr r0, r0, #0x18
 	bne _02250404
 	ldr r0, [r4, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	bl SetFlag99C
 	mov r1, #1
 	add r0, sp, #0
@@ -25875,7 +25875,7 @@ ov02_02251FDC: ; 0x02251FDC
 	ldr r0, [r0, #0x38]
 	add r6, r1, #0
 	str r2, [sp, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0x38]
@@ -26029,7 +26029,7 @@ _022520FC:
 	cmp r0, #0
 	bne _0225215A
 	ldr r0, [sp, #0x1c]
-	bl ScriptState_IsInRocketTakeover
+	bl Save_VarsFlags_IsInRocketTakeover
 	cmp r0, #0
 	bne _0225215A
 _02252134:

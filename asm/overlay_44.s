@@ -10,10 +10,10 @@ ov44_02229EE0: ; 0x02229EE0
 	mov r1, #0x16
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	mov r1, #2
 	mov r2, #0x1b
-	bl ScriptState_FlypointFlagAction
+	bl Save_VarsFlags_FlypointFlagAction
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov44_02229EE0

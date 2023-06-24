@@ -16,7 +16,7 @@ Unk02090C94 *sub_02090C94(u8 a0, u8 a1, SaveData *saveData, u32 a3, HeapID heapI
     ptr->unk1 = a1;
     ptr->pokedex = Save_Pokedex_Get(saveData);
     ptr->easyChat = SaveData_EasyChat_Get(saveData);
-    ptr->gameCleared = CheckGameClearFlag(SaveArray_Flags_Get(saveData));
+    ptr->gameCleared = CheckGameClearFlag(Save_VarsFlags_Get(saveData));
     ptr->unk5 = 0;
     ptr->unk2 = 1;
     ptr->unk3 = 0;

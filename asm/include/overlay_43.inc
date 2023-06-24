@@ -173,9 +173,9 @@
 .public sub_020310BC
 .public sub_020311AC
 .public sub_0203A128
-.public SaveArray_Flags_Get
+.public Save_VarsFlags_Get
 .public sub_0205B46C
-.public ScriptState_FlypointFlagAction
+.public Save_VarsFlags_FlypointFlagAction
 .public sub_02070D84
 .public sub_020830D8
 .public sub_0208311C

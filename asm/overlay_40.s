@@ -15894,21 +15894,21 @@ ov40_02233550: ; 0x02233550
 	ldr r0, [sp]
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	add r4, r0, #0
-	bl ScriptState_GetBattleTowerPrintProgress
+	bl Save_VarsFlags_GetBattleTowerPrintProgress
 	str r0, [sp, #0x30]
 	add r0, r4, #0
-	bl ScriptState_GetBattleFactoryPrintProgress
+	bl Save_VarsFlags_GetBattleFactoryPrintProgress
 	str r0, [sp, #0x34]
 	add r0, r4, #0
-	bl ScriptState_GetBattleArcadePrintProgress
+	bl Save_VarsFlags_GetBattleArcadePrintProgress
 	str r0, [sp, #0x38]
 	add r0, r4, #0
-	bl ScriptState_GetBattleCastlePrintProgress
+	bl Save_VarsFlags_GetBattleCastlePrintProgress
 	str r0, [sp, #0x3c]
 	add r0, r4, #0
-	bl ScriptState_GetBattleHallPrintProgress
+	bl Save_VarsFlags_GetBattleHallPrintProgress
 	ldr r3, _022335F0 ; =ov40_02245174
 	str r0, [sp, #0x40]
 	ldmia r3!, {r0, r1}
@@ -16077,21 +16077,21 @@ _022336A2:
 	mov r0, #0x83
 	lsl r0, r0, #4
 	ldr r0, [r7, r0]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	add r4, r0, #0
-	bl ScriptState_GetBattleTowerPrintProgress
+	bl Save_VarsFlags_GetBattleTowerPrintProgress
 	str r0, [sp, #0x7c]
 	add r0, r4, #0
-	bl ScriptState_GetBattleFactoryPrintProgress
+	bl Save_VarsFlags_GetBattleFactoryPrintProgress
 	str r0, [sp, #0x80]
 	add r0, r4, #0
-	bl ScriptState_GetBattleArcadePrintProgress
+	bl Save_VarsFlags_GetBattleArcadePrintProgress
 	str r0, [sp, #0x84]
 	add r0, r4, #0
-	bl ScriptState_GetBattleCastlePrintProgress
+	bl Save_VarsFlags_GetBattleCastlePrintProgress
 	str r0, [sp, #0x88]
 	add r0, r4, #0
-	bl ScriptState_GetBattleHallPrintProgress
+	bl Save_VarsFlags_GetBattleHallPrintProgress
 	str r0, [sp, #0x8c]
 	mov r0, #0
 	str r0, [sp, #4]

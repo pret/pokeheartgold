@@ -60,8 +60,8 @@ _02232520:
 	cmp r2, #3
 	bne _02232546
 	ldr r0, [r0, #4]
-	bl SaveArray_Flags_Get
-	bl ScriptState_GetVar4052
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_GetVar4052
 	b _02232552
 _02232546:
 	mov r3, #0

@@ -51,7 +51,7 @@ BOOL ScrCmd_GiveBadge(ScriptContext *ctx) {
 BOOL ScrCmd_297(ScriptContext *ctx) {
     u16 *ret = ScriptGetVarPointer(ctx);
 
-    *ret = CheckFlag960(SaveArray_Flags_Get(ctx->fsys->savedata));
+    *ret = CheckFlag960(Save_VarsFlags_Get(ctx->fsys->savedata));
     return FALSE;
 }
 
@@ -63,31 +63,31 @@ BOOL ScrCmd_CountBadges(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_298(ScriptContext *ctx) {
-    SetFlag960(SaveArray_Flags_Get(ctx->fsys->savedata));
+    SetFlag960(Save_VarsFlags_Get(ctx->fsys->savedata));
     return FALSE;
 }
 
 BOOL ScrCmd_CheckEscortMode(ScriptContext *ctx) {
     u16 *ret = ScriptGetVarPointer(ctx);
 
-    *ret = ScriptState_CheckHaveFollower(SaveArray_Flags_Get(ctx->fsys->savedata));
+    *ret = Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(ctx->fsys->savedata));
     return FALSE;
 }
 
 BOOL ScrCmd_SetEscortMode(ScriptContext *ctx) {
-    ScriptState_SetHaveFollowerFlag(SaveArray_Flags_Get(ctx->fsys->savedata));
+    Save_VarsFlags_SetHaveFollowerFlag(Save_VarsFlags_Get(ctx->fsys->savedata));
     return FALSE;
 }
 
 BOOL ScrCmd_ClearEscortMode(ScriptContext *ctx) {
-    ScriptState_ClearHaveFollowerFlag(SaveArray_Flags_Get(ctx->fsys->savedata));
+    Save_VarsFlags_ClearHaveFollowerFlag(Save_VarsFlags_Get(ctx->fsys->savedata));
     return FALSE;
 }
 
 BOOL ScrCmd_RocketCostumeFlagCheck(ScriptContext *ctx) {
     u16 *ret = ScriptGetVarPointer(ctx);
 
-    *ret = ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_Get(ctx->fsys->savedata));
+    *ret = Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(ctx->fsys->savedata));
     return FALSE;
 }
 
@@ -95,9 +95,9 @@ BOOL ScrCmd_RocketCostumeFlagAction(ScriptContext *ctx) {
     u8 mode = ScriptReadByte(ctx);
 
     if (mode) {
-        ScriptState_SetRocketCostumeFlag(SaveArray_Flags_Get(ctx->fsys->savedata));
+        Save_VarsFlags_SetRocketCostumeFlag(Save_VarsFlags_Get(ctx->fsys->savedata));
     } else {
-        ScriptState_ClearRocketCostumeFlag(SaveArray_Flags_Get(ctx->fsys->savedata));
+        Save_VarsFlags_ClearRocketCostumeFlag(Save_VarsFlags_Get(ctx->fsys->savedata));
     }
     return FALSE;
 }
@@ -105,34 +105,34 @@ BOOL ScrCmd_RocketCostumeFlagAction(ScriptContext *ctx) {
 BOOL ScrCmd_302(ScriptContext *ctx) {
     u16 *ret = ScriptGetVarPointer(ctx);
 
-    *ret = CheckFlag965(SaveArray_Flags_Get(ctx->fsys->savedata));
+    *ret = CheckFlag965(Save_VarsFlags_Get(ctx->fsys->savedata));
     return FALSE;
 }
 
 BOOL ScrCmd_303(ScriptContext *ctx) {
-    SetFlag965(SaveArray_Flags_Get(ctx->fsys->savedata));
+    SetFlag965(Save_VarsFlags_Get(ctx->fsys->savedata));
     return FALSE;
 }
 
 BOOL ScrCmd_304(ScriptContext *ctx) {
-    ClearFlag965(SaveArray_Flags_Get(ctx->fsys->savedata));
+    ClearFlag965(Save_VarsFlags_Get(ctx->fsys->savedata));
     return FALSE;
 }
 
 BOOL ScrCmd_305(ScriptContext *ctx) {
     u16 *ret = ScriptGetVarPointer(ctx);
 
-    *ret = CheckGameClearFlag(SaveArray_Flags_Get(ctx->fsys->savedata));
+    *ret = CheckGameClearFlag(Save_VarsFlags_Get(ctx->fsys->savedata));
     return FALSE;
 }
 
 BOOL ScrCmd_306(ScriptContext *ctx) {
-    SetGameClearFlag(SaveArray_Flags_Get(ctx->fsys->savedata));
+    SetGameClearFlag(Save_VarsFlags_Get(ctx->fsys->savedata));
     return FALSE;
 }
 
 BOOL ScrCmd_StrengthFlagAction(ScriptContext *ctx) {
-    ScriptState *state = SaveArray_Flags_Get(ctx->fsys->savedata);
+    SaveVarsFlags *state = Save_VarsFlags_Get(ctx->fsys->savedata);
     u8 mode = ScriptReadByte(ctx);
     switch (mode) {
     case FLAG_ACTION_SET:
@@ -153,7 +153,7 @@ BOOL ScrCmd_StrengthFlagAction(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_FlashAction(ScriptContext *ctx) {
-    ScriptState *state = SaveArray_Flags_Get(ctx->fsys->savedata);
+    SaveVarsFlags *state = Save_VarsFlags_Get(ctx->fsys->savedata);
     u8 mode = ScriptReadByte(ctx);
     switch (mode) {
     case FLAG_ACTION_SET:
@@ -175,7 +175,7 @@ BOOL ScrCmd_FlashAction(ScriptContext *ctx) {
 
 // Leftover from DPPt
 BOOL ScrCmd_DefogAction(ScriptContext *ctx) {
-    ScriptState *state = SaveArray_Flags_Get(ctx->fsys->savedata);
+    SaveVarsFlags *state = Save_VarsFlags_Get(ctx->fsys->savedata);
     u8 mode = ScriptReadByte(ctx);
     switch (mode) {
     case FLAG_ACTION_SET:

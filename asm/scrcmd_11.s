@@ -363,7 +363,7 @@ MGGive_Mon: ; 0x0204BFF0
 	bl Save_PlayerData_GetProfileAddr
 	str r0, [sp, #0x10]
 	ldr r0, [r7, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	str r0, [sp, #0xc]
 	mov r0, #0
 	str r0, [sp, #8]
@@ -690,12 +690,12 @@ _0204C2B6:
 	cmp r0, #1
 	bne _0204C2FE
 	ldr r0, [sp, #0xc]
-	bl ScriptState_GetVar404C
+	bl Save_VarsFlags_GetVar404C
 	cmp r0, #0
 	bne _0204C2FE
 	ldr r0, [sp, #0xc]
 	mov r1, #1
-	bl ScriptState_SetVar404C
+	bl Save_VarsFlags_SetVar404C
 _0204C2FE:
 	add r0, r4, #0
 	bl CalcMonLevelAndStats
@@ -834,7 +834,7 @@ MGGive_Item: ; 0x0204C3E4
 	cmp r4, r0
 	bne _0204C410
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	mov r1, #0
 	bl sub_02066B9C
 _0204C410:

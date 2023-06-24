@@ -3701,7 +3701,7 @@ ov27_0225BD50: ; 0x0225BD50
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	add r5, r0, #0
 	add r0, r4, #0
 	bl sub_02067584
@@ -3711,7 +3711,7 @@ ov27_0225BD50: ; 0x0225BD50
 	pop {r3, r4, r5, pc}
 _0225BD6A:
 	add r0, r5, #0
-	bl ScriptState_CheckSafariSysFlag
+	bl Save_VarsFlags_CheckSafariSysFlag
 	cmp r0, #0
 	beq _0225BD78
 	mov r0, #1
@@ -3725,7 +3725,7 @@ _0225BD78:
 	pop {r3, r4, r5, pc}
 _0225BD86:
 	add r0, r5, #0
-	bl ScriptState_CheckPalParkSysFlag
+	bl Save_VarsFlags_CheckPalParkSysFlag
 	cmp r0, #0
 	beq _0225BD94
 	mov r0, #3

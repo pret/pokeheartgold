@@ -459,7 +459,7 @@ _021E799A:
 	ldr r0, [r5, #0x10]
 	mov r2, #0xf
 	ldr r0, [r0, #0x2c]
-	bl ScriptState_FlypointFlagAction
+	bl Save_VarsFlags_FlypointFlagAction
 	ldr r3, _021E7B4C ; =0x0000013D
 	mov r2, #1
 	ldrb r1, [r5, r3]
@@ -5887,7 +5887,7 @@ _021EA540:
 	ldrb r2, [r6, #4]
 	ldr r0, [r0, #0x2c]
 	mov r1, #2
-	bl ScriptState_FlypointFlagAction
+	bl Save_VarsFlags_FlypointFlagAction
 	cmp r0, #0
 	beq _021EA582
 	add r0, r5, #0
@@ -6310,7 +6310,7 @@ _021EA828:
 	ldr r0, [r0, #0x10]
 	mov r1, #2
 	ldr r0, [r0, #0x2c]
-	bl ScriptState_FlypointFlagAction
+	bl Save_VarsFlags_FlypointFlagAction
 	cmp r0, #0
 	beq _021EA860
 	add r0, r7, #0
@@ -7311,7 +7311,7 @@ _021EB024:
 	ldrb r2, [r4, #4]
 	ldr r0, [r0, #0x2c]
 	mov r1, #2
-	bl ScriptState_FlypointFlagAction
+	bl Save_VarsFlags_FlypointFlagAction
 	cmp r0, #0
 	bne _021EB08E
 	ldrb r1, [r4, #0xb]
@@ -12519,7 +12519,7 @@ ov101_TownMap_OvyInit: ; 0x021ED7F8
 	str r0, [r1, #0x28]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x24]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	ldr r1, [r4, #0x10]
 	str r0, [r1, #0x2c]
 	ldr r0, [r4, #0x10]
@@ -12810,7 +12810,7 @@ ov101_021ED980: ; 0x021ED980
 	ldr r0, [r4, #0x10]
 	mov r2, #0xf
 	ldr r0, [r0, #0x2c]
-	bl ScriptState_FlypointFlagAction
+	bl Save_VarsFlags_FlypointFlagAction
 	ldr r3, _021EDAF4 ; =0x0000013D
 	mov r2, #1
 	ldrb r1, [r4, r3]
@@ -22905,7 +22905,7 @@ _021F2870:
 	mov r3, #6
 	bl BufferIntegerAsString
 	ldr r0, [r5, #0x28]
-	bl ScriptState_MomsSavingsFlagCheck
+	bl Save_VarsFlags_MomsSavingsFlagCheck
 	add r1, r4, #0
 	add r1, #0x4d
 	ldrb r1, [r1]
@@ -23046,7 +23046,7 @@ _021F29AC:
 	ldr r0, [r5, #0x28]
 	lsl r1, r1, #0x1e
 	lsr r1, r1, #0x1f
-	bl ScriptState_MomsSavingsFlagAction
+	bl Save_VarsFlags_MomsSavingsFlagAction
 	b _021F29DA
 _021F29BE:
 	add r0, r5, #0
@@ -23223,7 +23223,7 @@ _021F2AF2:
 	pop {r3, r4, r5, r6, r7, pc}
 _021F2AF6:
 	ldr r0, [r5, #0x28]
-	bl ScriptState_IsInRocketTakeover
+	bl Save_VarsFlags_IsInRocketTakeover
 	cmp r0, #0
 	beq _021F2B04
 	mov r0, #0x10
@@ -23640,7 +23640,7 @@ ov101_021F2DE8: ; 0x021F2DE8
 	push {r4, lr}
 	ldr r0, [r0, #0x28]
 	add r4, r1, #0
-	bl ScriptState_IsInRocketTakeover
+	bl Save_VarsFlags_IsInRocketTakeover
 	cmp r0, #0
 	beq _021F2DFE
 	ldrb r0, [r4, #1]
@@ -25334,7 +25334,7 @@ ov101_021F3AA4: ; 0x021F3AA4
 	add r1, #0x4a
 	strb r0, [r1]
 	ldr r0, [r5, #0x28]
-	bl ScriptState_IsInRocketTakeover
+	bl Save_VarsFlags_IsInRocketTakeover
 	cmp r0, #0
 	beq _021F3AEC
 	mov r0, #0x63
@@ -25673,7 +25673,7 @@ ov101_021F3D34: ; 0x021F3D34
 	ldr r0, [r5, #0x28]
 	mov r1, #2
 	mov r2, #0x19
-	bl ScriptState_FlypointFlagAction
+	bl Save_VarsFlags_FlypointFlagAction
 	cmp r0, #0
 	beq _021F3D62
 	mov r1, #1
@@ -26217,7 +26217,7 @@ _021F4154:
 _021F415C:
 	ldr r0, [r5, #0x28]
 	mov r1, #4
-	bl ScriptState_SetVar4057
+	bl Save_VarsFlags_SetVar4057
 	ldrh r0, [r4, #0x1c]
 	pop {r4, r5, r6, pc}
 _021F4168:
@@ -26241,7 +26241,7 @@ _021F4186:
 _021F418E:
 	ldr r0, [r5, #0x28]
 	mov r1, #7
-	bl ScriptState_SetVar4057
+	bl Save_VarsFlags_SetVar4057
 	ldrh r0, [r4, #0x1c]
 	pop {r4, r5, r6, pc}
 _021F419A:
@@ -26254,7 +26254,7 @@ _021F419A:
 	pop {r4, r5, r6, pc}
 _021F41A8:
 	ldr r0, [r5, #0x28]
-	bl ScriptState_GetVar4057
+	bl Save_VarsFlags_GetVar4057
 	add r0, #0x93
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
@@ -26370,7 +26370,7 @@ ov101_021F4274: ; 0x021F4274
 	cmp r0, #0
 	bne _021F42A4
 	ldr r0, [r5, #0x28]
-	bl ScriptState_IsInRocketTakeover
+	bl Save_VarsFlags_IsInRocketTakeover
 	cmp r0, #0
 	beq _021F4292
 	mov r0, #0x9c
@@ -26508,7 +26508,7 @@ _021F4394:
 _021F4398:
 	mov r1, #2
 	mov r2, #5
-	bl ScriptState_FlypointFlagAction
+	bl Save_VarsFlags_FlypointFlagAction
 	cmp r0, #0
 	beq _021F43A8
 	mov r0, #0xa4
@@ -26908,7 +26908,7 @@ _021F4690:
 _021F46AE:
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0x2c]
-	bl ScriptState_IsInRocketTakeover
+	bl Save_VarsFlags_IsInRocketTakeover
 	cmp r0, #0
 	beq _021F46BE
 	mov r0, #5
@@ -30951,7 +30951,7 @@ RadioShow_Commercials_Init: ; 0x021F6514
 	mov r2, #0x24
 	bl MI_CpuFill8
 	ldr r0, [r5, #4]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	mov r1, #1
 	strb r1, [r4, #8]
 	add r7, r0, #0
@@ -30961,22 +30961,22 @@ RadioShow_Commercials_Init: ; 0x021F6514
 	add r0, r7, #0
 	mov r1, #2
 	mov r2, #0x10
-	bl ScriptState_FlypointFlagAction
+	bl Save_VarsFlags_FlypointFlagAction
 	strb r0, [r4, #0xa]
 	add r0, r7, #0
 	mov r1, #2
 	mov r2, #0x12
-	bl ScriptState_FlypointFlagAction
+	bl Save_VarsFlags_FlypointFlagAction
 	strb r0, [r4, #0xb]
 	add r0, r7, #0
 	mov r1, #2
 	mov r2, #0x11
-	bl ScriptState_FlypointFlagAction
+	bl Save_VarsFlags_FlypointFlagAction
 	strb r0, [r4, #0xc]
 	add r0, r7, #0
 	mov r1, #2
 	mov r2, #5
-	bl ScriptState_FlypointFlagAction
+	bl Save_VarsFlags_FlypointFlagAction
 	strb r0, [r4, #0xe]
 	ldr r1, _021F660C ; =0x00000964
 	add r0, r7, #0
@@ -31202,7 +31202,7 @@ RadioShow_PokemonSearchParty_Init: ; 0x021F6710
 	mov r2, #0xd
 	bl MI_CpuFill8
 	ldr r0, [r6, #4]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	add r7, r0, #0
 	ldr r0, [r6, #4]
 	bl Save_PlayerData_GetProfileAddr
@@ -31243,7 +31243,7 @@ _021F67A4:
 	add r0, r7, #0
 	mov r1, #2
 	mov r2, #5
-	bl ScriptState_FlypointFlagAction
+	bl Save_VarsFlags_FlypointFlagAction
 	strb r0, [r5, #0xe]
 	ldr r0, _021F67FC ; =ov101_021F8B3C
 	mov r1, #0
@@ -31374,7 +31374,7 @@ _021F6890:
 	cmp r0, #4
 	bne _021F68B2
 	ldr r0, [r5, #4]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	ldr r1, _021F6900 ; =FLAG_DAILY_HEARD_BUENAS_PASSWORD
 	bl SetFlagInArray
 _021F68B2:
@@ -31462,8 +31462,8 @@ _021F6948:
 	bl NewMsgDataFromNarc
 	add r4, r0, #0
 	ldr r0, [r5, #4]
-	bl SaveArray_Flags_Get
-	bl ScriptState_GetBuenasPasswordSet
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_GetBuenasPasswordSet
 	mov r1, #0x1e
 	bl _s32_div_f
 	lsl r0, r1, #0x10
@@ -31662,28 +31662,28 @@ RadioShow_ThatTownThesePeople_Init: ; 0x021F6AAC
 	mov r2, #0x14
 	bl MI_CpuFill8
 	ldr r0, [r5, #4]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	mov r1, #1
 	strb r1, [r4, #0xa]
 	add r5, r0, #0
 	mov r1, #2
 	mov r2, #0xf
-	bl ScriptState_FlypointFlagAction
+	bl Save_VarsFlags_FlypointFlagAction
 	strb r0, [r4, #0xb]
 	add r0, r5, #0
 	mov r1, #2
 	mov r2, #0x13
-	bl ScriptState_FlypointFlagAction
+	bl Save_VarsFlags_FlypointFlagAction
 	strb r0, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
 	mov r2, #0x15
-	bl ScriptState_FlypointFlagAction
+	bl Save_VarsFlags_FlypointFlagAction
 	strb r0, [r4, #0xd]
 	add r0, r5, #0
 	mov r1, #2
 	mov r2, #5
-	bl ScriptState_FlypointFlagAction
+	bl Save_VarsFlags_FlypointFlagAction
 	mov r6, #0
 	strb r0, [r4, #0xe]
 	ldr r1, _021F6B78 ; =ov101_021F8B4C
@@ -32308,10 +32308,10 @@ ov101_021F6FCC: ; 0x021F6FCC
 	bl Save_Pokedex_Get
 	str r0, [sp, #8]
 	ldr r0, [r7, #4]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	mov r1, #2
 	mov r2, #0x19
-	bl ScriptState_FlypointFlagAction
+	bl Save_VarsFlags_FlypointFlagAction
 	str r0, [sp, #0xc]
 	add r0, r5, #0
 	mov r2, #0x4b

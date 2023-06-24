@@ -106,8 +106,8 @@
 .public Save_Pokedex_Get
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public SaveArray_Flags_Get
-.public ScriptState_GetUnownReportLevel
+.public Save_VarsFlags_Get
+.public Save_VarsFlags_GetUnownReportLevel
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx
 .public sub_02074490

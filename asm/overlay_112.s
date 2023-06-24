@@ -27710,7 +27710,7 @@ _021F35F6:
 ov112_021F3608: ; 0x021F3608
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r1, #0
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	ldr r5, _021F362C ; =ov112_021FF4D4
 	add r7, r0, #0
 	mov r4, #0
@@ -27732,7 +27732,7 @@ _021F362C: .word ov112_021FF4D4
 ov112_021F3630: ; 0x021F3630
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r1, #0
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	ldr r5, _021F3660 ; =ov112_021FF4D4
 	add r6, r0, #0
 	mov r4, #0

@@ -324,7 +324,7 @@
 .public sub_0203A914
 .public sub_0203A994
 .public sub_0203A9C8
-.public SaveArray_Flags_Get
+.public Save_VarsFlags_Get
 .public CheckFlagInArray
 .public SetFlagInArray
 .public SpeciesToOverworldModelIndexOffset

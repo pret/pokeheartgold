@@ -139,7 +139,7 @@
 .public sub_0203FC90
 .public sub_0203FCB8
 .public sub_0203FD08
-.public SaveArray_Flags_Get
+.public Save_VarsFlags_Get
 .public CheckFlagInArray
 .public TaskManager_Call
 .public FieldSys_ApplicationIsRunning

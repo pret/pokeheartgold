@@ -113,7 +113,7 @@
 .public sub_0202EE7C
 .public MapHeader_GetField14_1D
 .public sub_0203E354
-.public SaveArray_Flags_Get
+.public Save_VarsFlags_Get
 .public sub_0208820C
 .public sub_02090C94
 .public sub_02090D0C

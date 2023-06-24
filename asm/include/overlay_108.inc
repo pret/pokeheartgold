@@ -194,7 +194,7 @@
 .public SafariZone_SwapAreasInSet
 .public SafariZone_InitAreaInSet
 .public SafariZone_AddObjectToArea
-.public SaveArray_Flags_Get
+.public Save_VarsFlags_Get
 .public ChangeFlag99D
 .public sub_0208820C
 .public sub_02097268

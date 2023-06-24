@@ -70,8 +70,8 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
     }, {
         SAVE_FLAGS,
         0,
-        (SAVESIZEFN)SaveArray_Flags_sizeof,
-        (SAVEINITFN)SaveArray_Flags_Init
+        (SAVESIZEFN)Save_VarsFlags_sizeof,
+        (SAVEINITFN)Save_VarsFlags_Init
     }, {
         SAVE_LOCAL_FIELD_DATA,
         0,
