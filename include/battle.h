@@ -61,7 +61,7 @@ typedef struct TurnData {
     u32 magicCoatFlag:1;
     u32 snatchFlag:1;
     u32 roostFlag:1;
-    u32 unk0_7:2;
+    u32 runFlag:2; //1 - Fled using item, 2 - Fled using ability
     u32 unk0_9:1;
     u32 unk0_A:22;
     int physicalDamage[4];
@@ -79,7 +79,7 @@ typedef struct SelfTurnData {
     u32 ignorePressure:1;
     u32 lightningRodFlag:1;
     u32 stormDrainFlag:1;
-    u32 unk0_3:1;
+    u32 moldBreakerFlag:1;
     u32 trickRoomFlag:1;
     u32 unk0_5:1;
     u32 rolloutCount:3;
@@ -353,7 +353,7 @@ typedef struct BATTLECONTEXT {
     u8 unk_21A4[4];
     u32 unk_21A8[4][4];
     u8 unk_21E8[4];
-    u8 unk_21EC[4];
+    u8 turnOrder[4];
     u32 unk_21F0[4];
     u8 unk_2200[4][4][16];
     u8 unk_2300[4][256];
@@ -388,7 +388,7 @@ typedef struct BATTLECONTEXT {
     int unk_3118;
     u8 unk_311C;
     u8 unk_311D;
-    u8 unk_311E;
+    u8 runAttempts;
     u8 unk_311F;
     u8 magnitude;
     u8 unk_3121;

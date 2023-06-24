@@ -14,7 +14,7 @@ ov12_02261FD4: ; 0x02261FD4
 	cmp r0, #0
 	bne _02262008
 	add r0, r1, #0
-	bl BattleSys_GetBattleType
+	bl BattleSystem_GetBattleType
 	mov r1, #0x22
 	lsl r1, r1, #4
 	tst r0, r1

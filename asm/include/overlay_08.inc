@@ -165,9 +165,9 @@
 .public gSystem
 .public ov08_022225D4
 .public ov12_0223A7D4
-.public BattleSys_GetBattleType
+.public BattleSystem_GetBattleType
 .public ov12_0223A7E4
-.public BattleSys_GetParty
+.public BattleSystem_GetParty
 .public BattleSystem_GetPartyMon
 .public ov12_0223A8E4
 .public ov12_0223A938
@@ -176,8 +176,8 @@
 .public ov12_0223AA84
 .public ov12_0223AB0C
 .public ov12_0223AB3C
-.public BattleSys_GetBattlerIdPartner
-.public BattleSys_RecoverStatus
+.public BattleSystem_GetBattlerIdPartner
+.public BattleSystem_RecoverStatus
 .public ov12_0223B708
 .public ov12_0223B718
 .public ov12_022581D4

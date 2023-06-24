@@ -50,7 +50,7 @@ _020FFE30:
 sub_02074E5C: ; 0x02074E5C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl BattleSys_GetBattleFlags
+	bl BattleSystem_GetBattleFlags
 	mov r1, #0x10
 	tst r0, r1
 	bne _02074EB6
@@ -276,7 +276,7 @@ sub_02074F9C: ; 0x02074F9C
 	bl AllocFromHeap
 	add r6, r0, #0
 	ldr r0, [sp]
-	bl BattleSys_GetSendBufferPtr
+	bl BattleSystem_GetSendBufferPtr
 	add r5, r0, #0
 	ldr r0, [sp]
 	bl ov12_0223A960
@@ -343,7 +343,7 @@ sub_02075028: ; 0x02075028
 	add r0, r3, #0
 	add r5, r1, #0
 	add r6, r2, #0
-	bl BattleSys_GetRecvBufferPtr
+	bl BattleSystem_GetRecvBufferPtr
 	add r7, r0, #0
 	ldr r0, [sp]
 	bl ov12_0223A984
@@ -930,7 +930,7 @@ sub_02075434: ; 0x02075434
 	add r5, r1, #0
 	str r0, [sp]
 	ldr r0, [r5]
-	bl BattleSys_GetSendBufferPtr
+	bl BattleSystem_GetSendBufferPtr
 	add r6, r0, #0
 	ldr r0, [r5]
 	bl ov12_0223A954
@@ -999,7 +999,7 @@ sub_020754C0: ; 0x020754C0
 	add r5, r1, #0
 	str r0, [sp]
 	ldr r0, [r5]
-	bl BattleSys_GetRecvBufferPtr
+	bl BattleSystem_GetRecvBufferPtr
 	add r6, r0, #0
 	ldr r0, [r5]
 	bl ov12_0223A978

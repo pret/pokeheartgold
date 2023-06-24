@@ -4,6 +4,7 @@
 #include "battle_system.h"
 #include "dex_mon_measures.h"
 #include "filesystem.h"
+#include "item.h"
 #include "party.h"
 #include "pokemon.h"
 #include "unk_02037C94.h"
@@ -71,7 +72,7 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
     ctx->battleMons[battlerId].gender = GetMonGender(mon);
     ctx->battleMons[battlerId].shiny = MonIsShiny(mon);
     
-    if (BattleSys_GetBattleType(bsys) & (BATTLE_TYPE_5|BATTLE_TYPE_9)) { //No abilities battle
+    if (BattleSystem_GetBattleType(bsys) & (BATTLE_TYPE_5|BATTLE_TYPE_9)) { //No abilities battle
         ctx->battleMons[battlerId].ability = 0;
         ctx->battleMons[battlerId].status = 0;
         ctx->battleMons[battlerId].item = 0;
@@ -81,7 +82,7 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
         ctx->battleMons[battlerId].item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
     }
     
-    if ((BattleSys_GetBattleType(bsys) & (BATTLE_TYPE_5|BATTLE_TYPE_9)) && !BattleSys_GetFieldSide(bsys, battlerId)) {
+    if ((BattleSystem_GetBattleType(bsys) & (BATTLE_TYPE_5|BATTLE_TYPE_9)) && !BattleSystem_GetFieldSide(bsys, battlerId)) {
         ctx->battleMons[battlerId].forme = 0;
     } else {
         ctx->battleMons[battlerId].forme = GetMonData(mon, MON_DATA_FORME, NULL);
@@ -115,7 +116,7 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
     ctx->battleMons[battlerId].unk78 = 0;
     ctx->battleMons[battlerId].msgFlag = 0;
     
-    side = BattleSys_GetFieldSide(bsys, battlerId);
+    side = BattleSystem_GetFieldSide(bsys, battlerId);
     
     if (ctx->fieldSideConditionData[side].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[battlerId])) {
         ctx->battleMons[battlerId].item = 0;
@@ -956,7 +957,7 @@ void AddBattlerVar(BATTLEMON *mon, u32 varId, int data) {
 extern u8 sStatChangeTable[13][2];
 extern u8 sSpeedHalvingItemEffects[8];
 
-u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int battlerId2, int flag) {
+u8 CheckSortSpeed(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int battlerId2, int flag) {
     u8 ret = 0; //0 - don't sort, 1 - sort, 2 - sort (speed tie + won random check)
     u32 speed1, speed2;
     u16 moveNo1 = 0;
@@ -1021,7 +1022,7 @@ u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int bat
     speed1 = ctx->battleMons[battlerId1].speed * sStatChangeTable[speedStatChange1][0]/sStatChangeTable[speedStatChange1][1];
     speed2 = ctx->battleMons[battlerId2].speed * sStatChangeTable[speedStatChange2][0]/sStatChangeTable[speedStatChange2][1];
     
-    if (!CheckAbilityActive(bsys, ctx, 8, 0, ABILITY_CLOUD_NINE) && !CheckAbilityActive(bsys, ctx, 8, 0, ABILITY_AIR_LOCK)) {
+    if (!CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) && !CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)) {
         if ((ability1 == ABILITY_SWIFT_SWIM && ctx->fieldCondition & FIELD_CONDITION_RAIN_ALL) ||
             (ability1 == ABILITY_CHLOROPHYLL && ctx->fieldCondition & FIELD_CONDITION_SUN_ALL)) {
                 speed1 *= 2;
@@ -1061,7 +1062,7 @@ u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int bat
         speed1 *= 2;
     }
 
-    if (ctx->fieldSideConditionFlags[BattleSys_GetFieldSide(bsys, battlerId1)] & SIDE_CONDITION_TAILWIND) {
+    if (ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(bsys, battlerId1)] & SIDE_CONDITION_TAILWIND) {
         speed1 *= 2;
     }
     
@@ -1120,7 +1121,7 @@ u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int bat
         speed2 *= 2;
     }
 
-    if (ctx->fieldSideConditionFlags[BattleSys_GetFieldSide(bsys, battlerId2)] & SIDE_CONDITION_TAILWIND) {
+    if (ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(bsys, battlerId2)] & SIDE_CONDITION_TAILWIND) {
         speed2 *= 2;
     }
     
@@ -1180,7 +1181,7 @@ u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int bat
         if (boostedPriority1 && boostedPriority2) {
             if (speed1 < speed2) {
                 ret = 1;
-            } else if (speed1 == speed2 && BattleSys_Random(bsys) & 1) {
+            } else if (speed1 == speed2 && BattleSystem_Random(bsys) & 1) {
                 ret = 2;
             }
         } else if (!boostedPriority1 && boostedPriority2) {
@@ -1190,7 +1191,7 @@ u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int bat
         } else if (loweredPriority1 && loweredPriority2) {
             if (speed1 > speed2) {
                 ret = 1;
-            } else if (speed1 == speed2 && BattleSys_Random(bsys)&1) {
+            } else if (speed1 == speed2 && BattleSystem_Random(bsys)&1) {
                 ret = 2;
             }
         } else if (loweredPriority1 && !loweredPriority2) {
@@ -1200,7 +1201,7 @@ u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int bat
         } else if (ability1 == ABILITY_STALL && ability2 == ABILITY_STALL) {
             if (speed1 > speed2) {
                 ret = 1;
-            } else if (speed1 == speed2 && BattleSys_Random(bsys)&1) {
+            } else if (speed1 == speed2 && BattleSystem_Random(bsys)&1) {
                 ret = 2;
             }
         } else if (ability1 == ABILITY_STALL && ability2 != ABILITY_STALL) {
@@ -1211,14 +1212,14 @@ u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int bat
             if (speed1 > speed2) {
                 ret = 1;
             }
-            if (speed1 == speed2 && BattleSys_Random(bsys)&1) {
+            if (speed1 == speed2 && BattleSystem_Random(bsys)&1) {
                 ret = 2;
             }
         } else {
             if (speed1 < speed2) {
                 ret = 1;
             }
-            if (speed1 == speed2 && BattleSys_Random(bsys)&1) {
+            if (speed1 == speed2 && BattleSystem_Random(bsys)&1) {
                 ret = 2;
             }
         }
@@ -1236,7 +1237,7 @@ void BattleSystem_ClearExperienceEarnFlags(BATTLECONTEXT *ctx, int battlerId) {
 
 void BattleSystem_SetExperienceEarnFlags(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     int i = 0;
-    u32 battleType = BattleSys_GetBattleType(bsys);
+    u32 battleType = BattleSystem_GetBattleType(bsys);
     
     while (i <= 2) {
         if (!(ctx->unk_3108 & MaskOfFlagNo(i)) &&
@@ -1312,7 +1313,7 @@ BOOL ov12_02250490(BattleSystem *bsys, BATTLECONTEXT *ctx, int *out) {
         
         GF_ASSERT(effectChance);
         
-        if ((BattleSys_Random(bsys) % 100) < effectChance) {
+        if ((BattleSystem_Random(bsys) % 100) < effectChance) {
             ctx->linkStatus |= (1 << 22);
         }
         
@@ -1333,7 +1334,7 @@ BOOL ov12_02250490(BattleSystem *bsys, BATTLECONTEXT *ctx, int *out) {
         
         GF_ASSERT(effectChance);
         
-        if ((BattleSys_Random(bsys) % 100) < effectChance) {
+        if ((BattleSystem_Random(bsys) % 100) < effectChance) {
             *out = ov12_02258348(ctx, 2, ctx->unk_2174);
             ctx->unk_2174 = 0; 
             if (ctx->battleMons[ctx->battlerIdStatChange].hp && !ov12_02256838(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & 0x801FDA49)) {
@@ -1363,14 +1364,14 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
     
     if (unkA == 4) {
         int battlerId;
-        int maxBattlers = BattleSys_GetMaxBattlers(bsys);
-        OpponentData *opponent = BattleSys_GetOpponentDataByBattlerId(bsys, battlerIdAttacker);
+        int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+        OpponentData *opponent = BattleSystem_GetOpponentDataByBattlerId(bsys, battlerIdAttacker);
         u8 flag = ov12_02261258(opponent);
         
         for (ctx->unk_217E = 0; ctx->unk_217E < maxBattlers; ctx->unk_217E++) {
-            battlerId = ctx->unk_21EC[ctx->unk_217E];
+            battlerId = ctx->turnOrder[ctx->unk_217E];
             if (ctx->battleMons[battlerId].hp) {
-                opponent = BattleSys_GetOpponentDataByBattlerId(bsys, battlerId);
+                opponent = BattleSystem_GetOpponentDataByBattlerId(bsys, battlerId);
                 if (((flag & 1) && !(ov12_02261258(opponent) & 1)) ||
                     (!(flag & 1) && (ov12_02261258(opponent) & 1))) {
                     battlerIdTarget = battlerId;
@@ -1384,10 +1385,10 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
         }
     } else if (unkA == 8) {
         int battlerId;
-        int maxBattlers = BattleSys_GetMaxBattlers(bsys);
+        int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
         
         for (ctx->unk_217E = 0; ctx->unk_217E < maxBattlers; ctx->unk_217E++) {
-            battlerId = ctx->unk_21EC[ctx->unk_217E];
+            battlerId = ctx->turnOrder[ctx->unk_217E];
             if (ctx->battleMons[battlerId].hp) {
                 if (battlerId != battlerIdAttacker) {
                     battlerIdTarget = battlerId;
@@ -1400,10 +1401,10 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
             ctx->unk_217E++;
         }
     } else if (unkA == (1 << 9) && (a4 == 1)) {
-        int battleType = BattleSys_GetBattleType(bsys);
+        int battleType = BattleSystem_GetBattleType(bsys);
         
-        if ((battleType & BATTLE_TYPE_DOUBLES) && (BattleSys_Random(bsys) % 2) == 0) {
-            battlerIdTarget = BattleSys_GetBattlerIdPartner(bsys, battlerIdAttacker);
+        if ((battleType & BATTLE_TYPE_DOUBLES) && (BattleSystem_Random(bsys) % 2) == 0) {
+            battlerIdTarget = BattleSystem_GetBattlerIdPartner(bsys, battlerIdAttacker);
             if (!ctx->battleMons[battlerIdTarget].hp) {
                 battlerIdTarget = battlerIdAttacker;
             }
@@ -1417,15 +1418,15 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
     } else if (unkA == (1 << 4) || unkA == (1 << 5) || unkA == 1 || unkA == (1 << 6)) {
         battlerIdTarget = battlerIdAttacker;
     } else if (unkA == (1 << 8)) {
-        int battleType = BattleSys_GetBattleType(bsys);
+        int battleType = BattleSystem_GetBattleType(bsys);
         
         if (battleType & BATTLE_TYPE_DOUBLES) {
-            battlerIdTarget = BattleSys_GetBattlerIdPartner(bsys, battlerIdAttacker);
+            battlerIdTarget = BattleSystem_GetBattlerIdPartner(bsys, battlerIdAttacker);
         } else {
             battlerIdTarget = battlerIdAttacker;
         }
     } else if (unkA == (1 << 9)) {
-        int battleType = BattleSys_GetBattleType(bsys);
+        int battleType = BattleSystem_GetBattleType(bsys);
         
         if (battleType & BATTLE_TYPE_DOUBLES) {
             battlerIdTarget = ctx->unk_21A8[battlerIdAttacker][1];
@@ -1436,8 +1437,8 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
             battlerIdTarget = battlerIdAttacker;
         }
     } else if (unkA == 2 || a4 == 1) {
-        int battleType = BattleSys_GetBattleType(bsys);
-        int side = BattleSys_GetFieldSide(bsys, battlerIdAttacker)^1;
+        int battleType = BattleSystem_GetBattleType(bsys);
+        int side = BattleSystem_GetFieldSide(bsys, battlerIdAttacker)^1;
         int battlerIdOpponents[2];
         battlerIdOpponents[0] = ov12_0223ABB8(bsys, battlerIdAttacker, 0);
         battlerIdOpponents[1] = ov12_0223ABB8(bsys, battlerIdAttacker, 2);
@@ -1447,7 +1448,7 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
                 battlerIdTarget = ctx->fieldSideConditionData[side].battlerIdFollowMe;
             } else if (ctx->battleMons[battlerIdOpponents[0]].hp && ctx->battleMons[battlerIdOpponents[1]].hp) {
                 //This looks like targeting for Outrage in double battles
-                side = BattleSys_Random(bsys) & 1;
+                side = BattleSystem_Random(bsys) & 1;
                 battlerIdTarget = battlerIdOpponents[side];
             } else if (ctx->battleMons[battlerIdOpponents[0]].hp) {
                 battlerIdTarget = battlerIdOpponents[0];
@@ -1458,9 +1459,9 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
             battlerIdTarget = battlerIdAttacker^1;
         }
     } else {
-        int side = BattleSys_GetFieldSide(bsys, battlerIdAttacker)^1;
+        int side = BattleSystem_GetFieldSide(bsys, battlerIdAttacker)^1;
         int battlerIdTargetTemp = ctx->unk_21A8[battlerIdAttacker][1];
-        BattleSys_GetMaxBattlers(bsys);
+        BattleSystem_GetMaxBattlers(bsys);
         
         if (ctx->fieldSideConditionData[side].followMeFlag && ctx->battleMons[ctx->fieldSideConditionData[side].battlerIdFollowMe].hp) {
             battlerIdTarget = ctx->fieldSideConditionData[side].battlerIdFollowMe;
@@ -1492,7 +1493,7 @@ void ov12_02250A18(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker
         return;
     }
     
-    side = BattleSys_GetFieldSide(bsys, battlerIdAttacker)^1;
+    side = BattleSystem_GetFieldSide(bsys, battlerIdAttacker)^1;
     
     if (ctx->fieldSideConditionData[side].followMeFlag && ctx->battleMons[ctx->fieldSideConditionData[side].battlerIdFollowMe].hp) {
         return;
@@ -1503,14 +1504,14 @@ void ov12_02250A18(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker
         moveType = ctx->unk_334.moveData[moveNo].type;
     }
     
-    maxBattlers = BattleSys_GetMaxBattlers(bsys);
+    maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     
     if (moveType == TYPE_ELECTRIC &&
         (ctx->unk_334.moveData[moveNo].unk8 == 0 || ctx->unk_334.moveData[moveNo].unk8 == 2) &&
         !(ctx->linkStatus & 0x20) &&
-        CheckAbilityActive(bsys, ctx, 9, battlerIdAttacker, ABILITY_LIGHTNINGROD)) {
+        CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP_NOT_USER, battlerIdAttacker, ABILITY_LIGHTNINGROD)) {
         for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
-            battlerIdTarget = ctx->unk_21EC[battlerId];
+            battlerIdTarget = ctx->turnOrder[battlerId];
             if (GetBattlerAbility(ctx, battlerIdTarget) == ABILITY_LIGHTNINGROD && ctx->battleMons[battlerIdTarget].hp && battlerIdAttacker != battlerIdTarget) {
                 break;
             }
@@ -1522,9 +1523,9 @@ void ov12_02250A18(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker
     } else if (moveType == TYPE_WATER &&
         (ctx->unk_334.moveData[moveNo].unk8 == 0 || ctx->unk_334.moveData[moveNo].unk8 == 2) &&
         !(ctx->linkStatus & 0x20) &&
-        CheckAbilityActive(bsys, ctx, 9, battlerIdAttacker, ABILITY_STORM_DRAIN)) {
+        CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP_NOT_USER, battlerIdAttacker, ABILITY_STORM_DRAIN)) {
         for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
-            battlerIdTarget = ctx->unk_21EC[battlerId];
+            battlerIdTarget = ctx->turnOrder[battlerId];
             if (GetBattlerAbility(ctx, battlerIdTarget) == ABILITY_STORM_DRAIN && ctx->battleMons[battlerIdTarget].hp && battlerIdAttacker != battlerIdTarget) {
                 break;
             }
@@ -1599,7 +1600,7 @@ int GetBattlerStatusCondition(BATTLECONTEXT *ctx, int battlerId) {
 }
 
 BOOL ov12_02250D4C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    int state = BattleSys_GetBattleType(bsys);  //note: this should be battleType for the following three if statements, but it won't match if an additional variable is used
+    int state = BattleSystem_GetBattleType(bsys);  //note: this should be battleType for the following three if statements, but it won't match if an additional variable is used
     int trainerIndex;
     
     if (state & 0x84) {
@@ -1614,7 +1615,7 @@ BOOL ov12_02250D4C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         return FALSE;
     }
     
-    trainerIndex = BattleSys_GetTrainerIndex(bsys, 1);
+    trainerIndex = BattleSystem_GetTrainerIndex(bsys, 1);
     state = 0;
     
     do {
@@ -1642,7 +1643,7 @@ BOOL ov12_02250D4C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 PARTY *party;
                 Pokemon *mon;
                 
-                party = BattleSys_GetParty(bsys, 1);
+                party = BattleSystem_GetParty(bsys, 1);
                 aliveMons = 0;
                 
                 for (i = 0; i < GetPartyCount(party); i++) {
@@ -1666,7 +1667,7 @@ BOOL ov12_02250D4C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 PARTY *party;
                 Pokemon *mon;
                 
-                party = BattleSys_GetParty(bsys, 1);
+                party = BattleSystem_GetParty(bsys, 1);
                 aliveMons = 0;
                 
                 for (i = 0; i < GetPartyCount(party); i++) {
@@ -1757,14 +1758,14 @@ void ov12_02251038(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     for (int battlerId = 0; battlerId < 4; battlerId++) {
         ctx->moveNoHitBattler[battlerId] = 0xFF;
         ctx->unk_21A0[battlerId] = 6;
-        ctx->unk_310C[battlerId] = BattleSys_Random(bsys);
+        ctx->unk_310C[battlerId] = BattleSystem_Random(bsys);
     }
     
     ctx->prizeMoneyValue = 1;
     
     ctx->meFirstTotal = 1;
     
-    battleType = BattleSys_GetBattleType(bsys);
+    battleType = BattleSystem_GetBattleType(bsys);
     
     if (!(battleType & BATTLE_TYPE_DOUBLES)) {
         ctx->unk_3108 |= MaskOfFlagNo(2);
@@ -1781,8 +1782,8 @@ void InitSwitchWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     u8 *data;
     UnkBattlemonSub unkStruct = ctx->battleMons[battlerId].unk88;
     
-    maxBattlers = BattleSys_GetMaxBattlers(bsys);
-    BattleSys_GetBattleType(bsys);
+    maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+    BattleSystem_GetBattleType(bsys);
     ctx->unk_21A8[battlerId][0] = 40;
     
     if (!(ctx->linkStatus & (1 << 8))) { //not baton pass
@@ -1861,7 +1862,7 @@ void InitSwitchWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     }
     
     for (i = 0; i < maxBattlers; i++) {
-        if (i != battlerId && BattleSys_GetFieldSide(bsys, i) != BattleSys_GetFieldSide(bsys, battlerId)) {
+        if (i != battlerId && BattleSystem_GetFieldSide(bsys, i) != BattleSystem_GetFieldSide(bsys, battlerId)) {
             ctx->moveNoCopied[i] = 0;
         }
         ctx->moveNoCopiedHit[i][battlerId] = 0;
@@ -1877,7 +1878,7 @@ void InitFaintedWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     int maxBattlers;
     u8 *data;
     
-    maxBattlers = BattleSys_GetMaxBattlers(bsys);
+    maxBattlers = BattleSystem_GetMaxBattlers(bsys);
 
     for (int stat = 0; stat < 8; stat++) {
         ctx->battleMons[battlerId].statChanges[stat] = 6;
@@ -1931,7 +1932,7 @@ void InitFaintedWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     ctx->fieldCondition &= (MaskOfFlagNo(battlerId) << 8) ^ 0xFFFFFFFF; //??
     
     for (i = 0; i < maxBattlers; i++) {
-        if (i != battlerId && BattleSys_GetFieldSide(bsys, i) != BattleSys_GetFieldSide(bsys, battlerId)) {
+        if (i != battlerId && BattleSystem_GetFieldSide(bsys, i) != BattleSystem_GetFieldSide(bsys, battlerId)) {
             ctx->moveNoCopied[i] = 0;
         }
         ctx->moveNoCopiedHit[i][battlerId] = 0;
@@ -2205,396 +2206,396 @@ int ov12_02251D28(BattleSystem *bsys, BATTLECONTEXT *ctx, int moveNo, int moveTy
 extern s32 _s32_div_f(s32 a1, s32 a2);
 
 asm int ov12_02251D28(BattleSystem *bsys, BATTLECONTEXT *ctx, int moveNo, int moveTypeDefault, int battlerIdAttacker, int battlerIdTarget, int damage, u32 *moveStatusFlag) {
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x30
-	ldr r0, [sp, #0x50]
-	add r5, r1, #0
-	str r0, [sp, #0x50]
-	ldr r0, [sp, #0x54]
-	str r2, [sp, #8]
-	str r0, [sp, #0x54]
-	add r0, r2, #0
-	add r4, r3, #0
-	ldr r7, [sp, #0x48]
-	ldr r6, [sp, #0x4c]
-	cmp r0, #0xa5
-	bne _02251D4A
-	ldr r0, [sp, #0x50]
-	add sp, #0x30
-	pop {r3, r4, r5, r6, r7, pc}
+    push {r3, r4, r5, r6, r7, lr}
+    sub sp, #0x30
+    ldr r0, [sp, #0x50]
+    add r5, r1, #0
+    str r0, [sp, #0x50]
+    ldr r0, [sp, #0x54]
+    str r2, [sp, #8]
+    str r0, [sp, #0x54]
+    add r0, r2, #0
+    add r4, r3, #0
+    ldr r7, [sp, #0x48]
+    ldr r6, [sp, #0x4c]
+    cmp r0, #0xa5
+    bne _02251D4A
+    ldr r0, [sp, #0x50]
+    add sp, #0x30
+    pop {r3, r4, r5, r6, r7, pc}
 _02251D4A:
-	add r0, r5, #0
-	add r1, r7, #0
-	bl GetBattlerHeldItemEffect
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	str r0, [sp, #0x24]
-	add r0, r5, #0
-	add r1, r7, #0
-	mov r2, #0
-	bl BattleSystem_GetHeldItemDamageBoost
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	str r0, [sp, #0x1c]
-	add r0, r5, #0
-	add r1, r6, #0
-	bl GetBattlerHeldItemEffect
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	str r0, [sp, #0x20]
-	add r0, r5, #0
-	add r1, r6, #0
-	mov r2, #0
-	bl BattleSystem_GetHeldItemDamageBoost
-	add r0, r5, #0
-	add r1, r7, #0
-	bl GetBattlerAbility
-	cmp r0, #0x60
-	bne _02251D92
-	mov r0, #0
-	str r0, [sp, #0x28]
-	b _02251DAA
+    add r0, r5, #0
+    add r1, r7, #0
+    bl GetBattlerHeldItemEffect
+    lsl r0, r0, #0x18
+    lsr r0, r0, #0x18
+    str r0, [sp, #0x24]
+    add r0, r5, #0
+    add r1, r7, #0
+    mov r2, #0
+    bl BattleSystem_GetHeldItemDamageBoost
+    lsl r0, r0, #0x18
+    lsr r0, r0, #0x18
+    str r0, [sp, #0x1c]
+    add r0, r5, #0
+    add r1, r6, #0
+    bl GetBattlerHeldItemEffect
+    lsl r0, r0, #0x18
+    lsr r0, r0, #0x18
+    str r0, [sp, #0x20]
+    add r0, r5, #0
+    add r1, r6, #0
+    mov r2, #0
+    bl BattleSystem_GetHeldItemDamageBoost
+    add r0, r5, #0
+    add r1, r7, #0
+    bl GetBattlerAbility
+    cmp r0, #0x60
+    bne _02251D92
+    mov r0, #0
+    str r0, [sp, #0x28]
+    b _02251DAA
 _02251D92:
-	cmp r4, #0
-	beq _02251D9E
-	lsl r0, r4, #0x18
-	lsr r0, r0, #0x18
-	str r0, [sp, #0x28]
-	b _02251DAA
+    cmp r4, #0
+    beq _02251D9E
+    lsl r0, r4, #0x18
+    lsr r0, r0, #0x18
+    str r0, [sp, #0x28]
+    b _02251DAA
 _02251D9E:
-	ldr r0, [sp, #8]
-	lsl r0, r0, #4
-	add r1, r5, r0
-	ldr r0, =0x000003E2
-	ldrb r0, [r1, r0]
-	str r0, [sp, #0x28]
+    ldr r0, [sp, #8]
+    lsl r0, r0, #4
+    add r1, r5, r0
+    ldr r0, =0x000003E2
+    ldrb r0, [r1, r0]
+    str r0, [sp, #0x28]
 _02251DAA:
-	ldr r0, [sp, #8]
-	lsl r0, r0, #4
-	add r1, r5, r0
-	ldr r0, =0x000003E1
-	ldrb r0, [r1, r0]
-	str r0, [sp, #0x14]
-	ldr r0, =0x0000213C
-	ldr r1, [r5, r0]
-	mov r0, #2
-	lsl r0, r0, #0xa
-	tst r0, r1
-	bne _02251E08
-	add r0, r5, #0
-	add r1, r7, #0
-	mov r2, #0x1b
-	mov r3, #0
-	bl GetBattlerVar
-	ldr r1, [sp, #0x28]
-	cmp r1, r0
-	beq _02251DE6
-	add r0, r5, #0
-	add r1, r7, #0
-	mov r2, #0x1c
-	mov r3, #0
-	bl GetBattlerVar
-	ldr r1, [sp, #0x28]
-	cmp r1, r0
-	bne _02251E08
+    ldr r0, [sp, #8]
+    lsl r0, r0, #4
+    add r1, r5, r0
+    ldr r0, =0x000003E1
+    ldrb r0, [r1, r0]
+    str r0, [sp, #0x14]
+    ldr r0, =0x0000213C
+    ldr r1, [r5, r0]
+    mov r0, #2
+    lsl r0, r0, #0xa
+    tst r0, r1
+    bne _02251E08
+    add r0, r5, #0
+    add r1, r7, #0
+    mov r2, #0x1b
+    mov r3, #0
+    bl GetBattlerVar
+    ldr r1, [sp, #0x28]
+    cmp r1, r0
+    beq _02251DE6
+    add r0, r5, #0
+    add r1, r7, #0
+    mov r2, #0x1c
+    mov r3, #0
+    bl GetBattlerVar
+    ldr r1, [sp, #0x28]
+    cmp r1, r0
+    bne _02251E08
 _02251DE6:
-	add r0, r5, #0
-	add r1, r7, #0
-	bl GetBattlerAbility
-	cmp r0, #0x5b
-	bne _02251DFA
-	ldr r0, [sp, #0x50]
-	lsl r0, r0, #1
-	str r0, [sp, #0x50]
-	b _02251E08
+    add r0, r5, #0
+    add r1, r7, #0
+    bl GetBattlerAbility
+    cmp r0, #0x5b
+    bne _02251DFA
+    ldr r0, [sp, #0x50]
+    lsl r0, r0, #1
+    str r0, [sp, #0x50]
+    b _02251E08
 _02251DFA:
-	ldr r1, [sp, #0x50]
-	mov r0, #0xf
-	mul r0, r1
-	mov r1, #0xa
-	bl _s32_div_f
-	str r0, [sp, #0x50]
+    ldr r1, [sp, #0x50]
+    mov r0, #0xf
+    mul r0, r1
+    mov r1, #0xa
+    bl _s32_div_f
+    str r0, [sp, #0x50]
 _02251E08:
-	add r0, r5, #0
-	add r1, r7, #0
-	add r2, r6, #0
-	mov r3, #0x1a
-	bl CheckBattlerAbilityIfNotIgnored
-	cmp r0, #1
-	bne _02251E34
-	ldr r0, [sp, #0x28]
-	cmp r0, #4
-	bne _02251E34
-	ldr r0, [sp, #0x20]
-	cmp r0, #0x6a
-	beq _02251E34
-	ldr r0, [sp, #0x54]
-	ldr r1, [r0, #0]
-	mov r0, #2
-	lsl r0, r0, #0xa
-	orr r1, r0
-	ldr r0, [sp, #0x54]
-	str r1, [r0]
-	b _02251F50
+    add r0, r5, #0
+    add r1, r7, #0
+    add r2, r6, #0
+    mov r3, #0x1a
+    bl CheckBattlerAbilityIfNotIgnored
+    cmp r0, #1
+    bne _02251E34
+    ldr r0, [sp, #0x28]
+    cmp r0, #4
+    bne _02251E34
+    ldr r0, [sp, #0x20]
+    cmp r0, #0x6a
+    beq _02251E34
+    ldr r0, [sp, #0x54]
+    ldr r1, [r0, #0]
+    mov r0, #2
+    lsl r0, r0, #0xa
+    orr r1, r0
+    ldr r0, [sp, #0x54]
+    str r1, [r0]
+    b _02251F50
 _02251E34:
-	mov r0, #0xc0
-	add r1, r6, #0
-	mul r1, r0
-	ldr r0, =0x00002DCC
-	add r3, r5, r1
-	ldr r2, [r3, r0]
-	lsl r2, r2, #0x10
-	lsr r2, r2, #0x1d
-	beq _02251E6C
-	sub r0, #0xc
-	ldr r2, [r3, r0]
-	mov r0, #1
-	lsl r0, r0, #0xa
-	tst r2, r0
-	bne _02251E6C
-	ldr r2, [sp, #0x28]
-	cmp r2, #4
-	bne _02251E6C
-	ldr r2, [sp, #0x20]
-	cmp r2, #0x6a
-	beq _02251E6C
-	ldr r1, [sp, #0x54]
-	lsl r0, r0, #0xa
-	ldr r1, [r1, #0]
-	orr r1, r0
-	ldr r0, [sp, #0x54]
-	str r1, [r0]
-	b _02251F50
+    mov r0, #0xc0
+    add r1, r6, #0
+    mul r1, r0
+    ldr r0, =0x00002DCC
+    add r3, r5, r1
+    ldr r2, [r3, r0]
+    lsl r2, r2, #0x10
+    lsr r2, r2, #0x1d
+    beq _02251E6C
+    sub r0, #0xc
+    ldr r2, [r3, r0]
+    mov r0, #1
+    lsl r0, r0, #0xa
+    tst r2, r0
+    bne _02251E6C
+    ldr r2, [sp, #0x28]
+    cmp r2, #4
+    bne _02251E6C
+    ldr r2, [sp, #0x20]
+    cmp r2, #0x6a
+    beq _02251E6C
+    ldr r1, [sp, #0x54]
+    lsl r0, r0, #0xa
+    ldr r1, [r1, #0]
+    orr r1, r0
+    ldr r0, [sp, #0x54]
+    str r1, [r0]
+    b _02251F50
 _02251E6C:
-	add r0, r5, r1
-	mov r4, #0
-	str r0, [sp, #0x18]
+    add r0, r5, r1
+    mov r4, #0
+    str r0, [sp, #0x18]
 _02251E72:
-	lsl r0, r4, #1
-	ldr r1, =sTypeEffectiveness
-	add r0, r4, r0
-	add r1, r1, r0
-	str r1, [sp, #0xc]
-	ldr r1,  =sTypeEffectiveness
-	ldrb r1, [r1, r0]
-	cmp r1, #0xfe
-	bne _02251EA2
-	ldr r1, [sp, #0x18]
-	ldr r0, =0x00002DB0
-	ldr r1, [r1, r0]
-	mov r0, #2
-	lsl r0, r0, #0x1c
-	tst r0, r1
-	bne _02251F50
-	add r0, r5, #0
-	add r1, r7, #0
-	bl GetBattlerAbility
-	cmp r0, #0x71
-	beq _02251F50
-	add r4, r4, #1
-	b _02251F44
+    lsl r0, r4, #1
+    ldr r1, =sTypeEffectiveness
+    add r0, r4, r0
+    add r1, r1, r0
+    str r1, [sp, #0xc]
+    ldr r1,  =sTypeEffectiveness
+    ldrb r1, [r1, r0]
+    cmp r1, #0xfe
+    bne _02251EA2
+    ldr r1, [sp, #0x18]
+    ldr r0, =0x00002DB0
+    ldr r1, [r1, r0]
+    mov r0, #2
+    lsl r0, r0, #0x1c
+    tst r0, r1
+    bne _02251F50
+    add r0, r5, #0
+    add r1, r7, #0
+    bl GetBattlerAbility
+    cmp r0, #0x71
+    beq _02251F50
+    add r4, r4, #1
+    b _02251F44
 _02251EA2:
-	ldr r0, [sp, #0x28]
-	cmp r0, r1
-	bne _02251F42
-	ldr r0, [sp, #0xc]
-	add r1, r6, #0
-	ldrb r0, [r0, #1]
-	mov r2, #0x1b
-	mov r3, #0
-	str r0, [sp, #0x10]
-	add r0, r5, #0
-	bl GetBattlerVar
-	ldr r1, [sp, #0x10]
-	cmp r1, r0
-	bne _02251EE8
-	add r0, r5, #0
-	add r1, r7, #0
-	add r2, r6, #0
-	add r3, r4, #0
-	bl ov12_02251C74
-	cmp r0, #1
-	bne _02251EE8
-	ldr r0, [sp, #0x14]
-	ldr r2, [sp, #0xc]
-	str r0, [sp]
-	ldr r0, [sp, #0x54]
-	ldr r3, [sp, #0x50]
-	str r0, [sp, #4]
-	ldrb r2, [r2, #2]
-	add r0, r5, #0
-	add r1, r7, #0
-	bl ov12_022583B4
-	str r0, [sp, #0x50]
+    ldr r0, [sp, #0x28]
+    cmp r0, r1
+    bne _02251F42
+    ldr r0, [sp, #0xc]
+    add r1, r6, #0
+    ldrb r0, [r0, #1]
+    mov r2, #0x1b
+    mov r3, #0
+    str r0, [sp, #0x10]
+    add r0, r5, #0
+    bl GetBattlerVar
+    ldr r1, [sp, #0x10]
+    cmp r1, r0
+    bne _02251EE8
+    add r0, r5, #0
+    add r1, r7, #0
+    add r2, r6, #0
+    add r3, r4, #0
+    bl ov12_02251C74
+    cmp r0, #1
+    bne _02251EE8
+    ldr r0, [sp, #0x14]
+    ldr r2, [sp, #0xc]
+    str r0, [sp]
+    ldr r0, [sp, #0x54]
+    ldr r3, [sp, #0x50]
+    str r0, [sp, #4]
+    ldrb r2, [r2, #2]
+    add r0, r5, #0
+    add r1, r7, #0
+    bl ov12_022583B4
+    str r0, [sp, #0x50]
 _02251EE8:
-	add r0, r5, #0
-	add r1, r6, #0
-	mov r2, #0x1c
-	mov r3, #0
-	bl GetBattlerVar
-	ldr r1, [sp, #0x10]
-	cmp r1, r0
-	bne _02251F42
-	add r0, r5, #0
-	add r1, r6, #0
-	mov r2, #0x1b
-	mov r3, #0
-	bl GetBattlerVar
-	str r0, [sp, #0x2c]
-	add r0, r5, #0
-	add r1, r6, #0
-	mov r2, #0x1c
-	mov r3, #0
-	bl GetBattlerVar
-	ldr r1, [sp, #0x2c]
-	cmp r1, r0
-	beq _02251F42
-	add r0, r5, #0
-	add r1, r7, #0
-	add r2, r6, #0
-	add r3, r4, #0
-	bl ov12_02251C74
-	cmp r0, #1
-	bne _02251F42
-	ldr r0, [sp, #0x14]
-	ldr r2, [sp, #0xc]
-	str r0, [sp]
-	ldr r0, [sp, #0x54]
-	ldr r3, [sp, #0x50]
-	str r0, [sp, #4]
-	ldrb r2, [r2, #2]
-	add r0, r5, #0
-	add r1, r7, #0
-	bl ov12_022583B4
-	str r0, [sp, #0x50]
+    add r0, r5, #0
+    add r1, r6, #0
+    mov r2, #0x1c
+    mov r3, #0
+    bl GetBattlerVar
+    ldr r1, [sp, #0x10]
+    cmp r1, r0
+    bne _02251F42
+    add r0, r5, #0
+    add r1, r6, #0
+    mov r2, #0x1b
+    mov r3, #0
+    bl GetBattlerVar
+    str r0, [sp, #0x2c]
+    add r0, r5, #0
+    add r1, r6, #0
+    mov r2, #0x1c
+    mov r3, #0
+    bl GetBattlerVar
+    ldr r1, [sp, #0x2c]
+    cmp r1, r0
+    beq _02251F42
+    add r0, r5, #0
+    add r1, r7, #0
+    add r2, r6, #0
+    add r3, r4, #0
+    bl ov12_02251C74
+    cmp r0, #1
+    bne _02251F42
+    ldr r0, [sp, #0x14]
+    ldr r2, [sp, #0xc]
+    str r0, [sp]
+    ldr r0, [sp, #0x54]
+    ldr r3, [sp, #0x50]
+    str r0, [sp, #4]
+    ldrb r2, [r2, #2]
+    add r0, r5, #0
+    add r1, r7, #0
+    bl ov12_022583B4
+    str r0, [sp, #0x50]
 _02251F42:
-	add r4, r4, #1
+    add r4, r4, #1
 _02251F44:
-	lsl r0, r4, #1
-	add r1, r4, r0
-	ldr r0, =sTypeEffectiveness
-	ldrb r0, [r0, r1]
-	cmp r0, #0xff
-	bne _02251E72
+    lsl r0, r4, #1
+    add r1, r4, r0
+    ldr r0, =sTypeEffectiveness
+    ldrb r0, [r0, r1]
+    cmp r0, #0xff
+    bne _02251E72
 _02251F50:
-	add r0, r5, #0
-	add r1, r7, #0
-	add r2, r6, #0
-	mov r3, #0x19
-	bl CheckBattlerAbilityIfNotIgnored
-	cmp r0, #1
-	bne _02251F94
-	ldr r1, [sp, #8]
-	add r0, r5, #0
-	bl ov12_02258440
-	cmp r0, #0
-	beq _02251F94
-	ldr r0, [sp, #0x54]
-	ldr r1, [r0, #0]
-	mov r0, #2
-	tst r0, r1
-	beq _02251F7E
-	mov r0, #6
-	and r0, r1
-	cmp r0, #6
-	bne _02251F94
+    add r0, r5, #0
+    add r1, r7, #0
+    add r2, r6, #0
+    mov r3, #0x19
+    bl CheckBattlerAbilityIfNotIgnored
+    cmp r0, #1
+    bne _02251F94
+    ldr r1, [sp, #8]
+    add r0, r5, #0
+    bl ov12_02258440
+    cmp r0, #0
+    beq _02251F94
+    ldr r0, [sp, #0x54]
+    ldr r1, [r0, #0]
+    mov r0, #2
+    tst r0, r1
+    beq _02251F7E
+    mov r0, #6
+    and r0, r1
+    cmp r0, #6
+    bne _02251F94
 _02251F7E:
-	ldr r0, [sp, #0x14]
-	cmp r0, #0
-	beq _02251F94
-	ldr r0, [sp, #0x54]
-	ldr r1, [r0, #0]
-	mov r0, #1
-	lsl r0, r0, #0x12
-	orr r1, r0
-	ldr r0, [sp, #0x54]
-	str r1, [r0]
-	b _02252036
+    ldr r0, [sp, #0x14]
+    cmp r0, #0
+    beq _02251F94
+    ldr r0, [sp, #0x54]
+    ldr r1, [r0, #0]
+    mov r0, #1
+    lsl r0, r0, #0x12
+    orr r1, r0
+    ldr r0, [sp, #0x54]
+    str r1, [r0]
+    b _02252036
 _02251F94:
-	ldr r0, =0x0000213C
-	ldr r2, [r5, r0]
-	mov r0, #2
-	lsl r0, r0, #0xa
-	add r1, r2, #0
-	tst r1, r0
-	bne _02252022
-	lsl r0, r0, #4
-	tst r0, r2
-	bne _02252022
-	ldr r0, [sp, #0x54]
-	ldr r1, [r0, #0]
-	mov r0, #2
-	tst r0, r1
-	beq _02251FFE
-	ldr r0, [sp, #0x14]
-	cmp r0, #0
-	beq _02251FFE
-	add r0, r5, #0
-	add r1, r7, #0
-	add r2, r6, #0
-	mov r3, #0x6f
-	bl CheckBattlerAbilityIfNotIgnored
-	cmp r0, #1
-	beq _02251FD8
-	add r0, r5, #0
-	add r1, r7, #0
-	add r2, r6, #0
-	mov r3, #0x74
-	bl CheckBattlerAbilityIfNotIgnored
-	cmp r0, #1
-	bne _02251FE6
+    ldr r0, =0x0000213C
+    ldr r2, [r5, r0]
+    mov r0, #2
+    lsl r0, r0, #0xa
+    add r1, r2, #0
+    tst r1, r0
+    bne _02252022
+    lsl r0, r0, #4
+    tst r0, r2
+    bne _02252022
+    ldr r0, [sp, #0x54]
+    ldr r1, [r0, #0]
+    mov r0, #2
+    tst r0, r1
+    beq _02251FFE
+    ldr r0, [sp, #0x14]
+    cmp r0, #0
+    beq _02251FFE
+    add r0, r5, #0
+    add r1, r7, #0
+    add r2, r6, #0
+    mov r3, #0x6f
+    bl CheckBattlerAbilityIfNotIgnored
+    cmp r0, #1
+    beq _02251FD8
+    add r0, r5, #0
+    add r1, r7, #0
+    add r2, r6, #0
+    mov r3, #0x74
+    bl CheckBattlerAbilityIfNotIgnored
+    cmp r0, #1
+    bne _02251FE6
 _02251FD8:
-	ldr r0, [sp, #0x50]
-	lsl r1, r0, #1
-	add r0, r0, r1
-	mov r1, #4
-	bl DamageDivide
-	str r0, [sp, #0x50]
+    ldr r0, [sp, #0x50]
+    lsl r1, r0, #1
+    add r0, r0, r1
+    mov r1, #4
+    bl DamageDivide
+    str r0, [sp, #0x50]
 _02251FE6:
-	ldr r0, [sp, #0x24]
-	cmp r0, #0x60
-	bne _02251FFE
-	ldr r0, [sp, #0x1c]
-	ldr r1, [sp, #0x50]
-	add r0, #0x64
-	str r0, [sp, #0x1c]
-	mul r0, r1
-	mov r1, #0x64
-	bl _s32_div_f
-	str r0, [sp, #0x50]
+    ldr r0, [sp, #0x24]
+    cmp r0, #0x60
+    bne _02251FFE
+    ldr r0, [sp, #0x1c]
+    ldr r1, [sp, #0x50]
+    add r0, #0x64
+    str r0, [sp, #0x1c]
+    mul r0, r1
+    mov r1, #0x64
+    bl _s32_div_f
+    str r0, [sp, #0x50]
 _02251FFE:
-	ldr r0, [sp, #0x54]
-	ldr r1, [r0, #0]
-	mov r0, #4
-	tst r0, r1
-	beq _02252036
-	ldr r0, [sp, #0x14]
-	cmp r0, #0
-	beq _02252036
-	add r0, r5, #0
-	add r1, r7, #0
-	bl GetBattlerAbility
-	cmp r0, #0x6e
-	bne _02252036
-	ldr r0, [sp, #0x50]
-	lsl r0, r0, #1
-	str r0, [sp, #0x50]
-	b _02252036
+    ldr r0, [sp, #0x54]
+    ldr r1, [r0, #0]
+    mov r0, #4
+    tst r0, r1
+    beq _02252036
+    ldr r0, [sp, #0x14]
+    cmp r0, #0
+    beq _02252036
+    add r0, r5, #0
+    add r1, r7, #0
+    bl GetBattlerAbility
+    cmp r0, #0x6e
+    bne _02252036
+    ldr r0, [sp, #0x50]
+    lsl r0, r0, #1
+    str r0, [sp, #0x50]
+    b _02252036
 _02252022:
-	ldr r0, [sp, #0x54]
-	ldr r1, [r0, #0]
-	mov r0, #2
-	bic r1, r0
-	ldr r0, [sp, #0x54]
-	str r1, [r0]
-	mov r0, #4
-	bic r1, r0
-	ldr r0, [sp, #0x54]
-	str r1, [r0]
+    ldr r0, [sp, #0x54]
+    ldr r1, [r0, #0]
+    mov r0, #2
+    bic r1, r0
+    ldr r0, [sp, #0x54]
+    str r1, [r0]
+    mov r0, #4
+    bic r1, r0
+    ldr r0, [sp, #0x54]
+    str r1, [r0]
 _02252036:
-	ldr r0, [sp, #0x50]
-	add sp, #0x30
-	pop {r3, r4, r5, r6, r7, pc}
+    ldr r0, [sp, #0x50]
+    add sp, #0x30
+    pop {r3, r4, r5, r6, r7, pc}
 }
 #endif
 
@@ -2702,7 +2703,7 @@ BOOL ov12_02252218(BATTLECONTEXT *ctx, int battlerId) {
 u8 GetMonsHitCount(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 flag, int battlerId) {
     int i;
     u8 cnt = 0;
-    int maxBattlers = BattleSys_GetMaxBattlers(bsys);
+    int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     
     switch (flag) {
     case 0:
@@ -2714,7 +2715,7 @@ u8 GetMonsHitCount(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 flag, int battler
         break;
     case 1:
         for (i = 0; i < maxBattlers; i++) {
-            if (BattleSys_GetFieldSide(bsys, i) == BattleSys_GetFieldSide(bsys, battlerId) && ctx->battleMons[i].hp) {
+            if (BattleSystem_GetFieldSide(bsys, i) == BattleSystem_GetFieldSide(bsys, battlerId) && ctx->battleMons[i].hp) {
                 cnt++;
             }
         }
@@ -2740,59 +2741,59 @@ u16 GetBattlerSelectedMove(BATTLECONTEXT *ctx, int battlerId) {
 int CheckAbilityActive(BattleSystem *bsys, BATTLECONTEXT *ctx, int flag, int battlerId, int ability) {
     int cnt = 0;
     int i;
-    int maxBattlers = BattleSys_GetMaxBattlers(bsys);
+    int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     
     switch (flag) {
-    case 0: //check ability on the same side
+    case CHECK_ABILITY_SAME_SIDE: 
         for (i = 0; i < maxBattlers; i++) {
-            if (BattleSys_GetFieldSide(bsys, i) == BattleSys_GetFieldSide(bsys, battlerId) && GetBattlerAbility(ctx, i) == ability) {
+            if (BattleSystem_GetFieldSide(bsys, i) == BattleSystem_GetFieldSide(bsys, battlerId) && GetBattlerAbility(ctx, i) == ability) {
                 cnt++;
             }
         }
         break;
-    case 1: //check ability of mons with hp on the same side, not sure why the above is even used
+    case CHECK_ABILITY_SAME_SIDE_HP:
         for (i = 0; i < maxBattlers; i++) {
-            if (BattleSys_GetFieldSide(bsys, i) == BattleSys_GetFieldSide(bsys, battlerId) && ctx->battleMons[i].hp && GetBattlerAbility(ctx, i) == ability) {
+            if (BattleSystem_GetFieldSide(bsys, i) == BattleSystem_GetFieldSide(bsys, battlerId) && ctx->battleMons[i].hp && GetBattlerAbility(ctx, i) == ability) {
                 cnt++;
             }
         }
         break;
-    case 2: //check ability on opposing side
+    case CHECK_ABILITY_OPPOSING_SIDE: 
         for (i = 0; i < maxBattlers; i++) {
-            if (BattleSys_GetFieldSide(bsys, i) != BattleSys_GetFieldSide(bsys, battlerId) && GetBattlerAbility(ctx, i) == ability) {
+            if (BattleSystem_GetFieldSide(bsys, i) != BattleSystem_GetFieldSide(bsys, battlerId) && GetBattlerAbility(ctx, i) == ability) {
                 cnt++;
             }
         }
         break;
-    case 3: //check ability of mons with hp on the opposite side, not sure why the above is even used
+    case CHECK_ABILITY_OPPOSING_SIDE_HP:
         for (i = 0; i < maxBattlers; i++) {
-            if (BattleSys_GetFieldSide(bsys, i) != BattleSys_GetFieldSide(bsys, battlerId) && ctx->battleMons[i].hp && GetBattlerAbility(ctx, i) == ability) {
+            if (BattleSystem_GetFieldSide(bsys, i) != BattleSystem_GetFieldSide(bsys, battlerId) && ctx->battleMons[i].hp && GetBattlerAbility(ctx, i) == ability) {
                 cnt++;
             }
         }
         break;
-    case 4: //check ability of mons with hp on the opposite side, puts the flag of the battler(s) found in the return value
+    case CHECK_ABILITY_OPPOSING_SIDE_HP_RET:
         for (i = 0; i < maxBattlers; i++) {
-            if (BattleSys_GetFieldSide(bsys, i) != BattleSys_GetFieldSide(bsys, battlerId) && ctx->battleMons[i].hp && GetBattlerAbility(ctx, i) == ability) {
+            if (BattleSystem_GetFieldSide(bsys, i) != BattleSystem_GetFieldSide(bsys, battlerId) && ctx->battleMons[i].hp && GetBattlerAbility(ctx, i) == ability) {
                 cnt |= MaskOfFlagNo(i);
             }
         }
         break;
-    case 5: //checks ability of all mons
+    case CHECK_ABILITY_ALL:
         for (i = 0; i < maxBattlers; i++) {
             if (GetBattlerAbility(ctx, i) == ability) {
                 cnt++;
             }
         }
         break;
-    case 6: //checks ability of all mons except the user
+    case CHECK_ABILITY_ALL_NOT_USER: 
         for (i = 0; i < maxBattlers; i++) {
             if (i != battlerId && GetBattlerAbility(ctx, i) == ability) {
                 cnt++;
             }
         }
         break;
-    case 7: //checks ability of all mons except the user and puts the flag of the battler(s) found in the return value
+    case CHECK_ABILITY_ALL_NOT_USER_RET:
         for (i = 0; i < maxBattlers; i++) {
             if (i != battlerId && GetBattlerAbility(ctx, i) == ability) {
                 cnt = i + 1;
@@ -2800,14 +2801,14 @@ int CheckAbilityActive(BattleSystem *bsys, BATTLECONTEXT *ctx, int flag, int bat
             }
         }
         break;
-    case 8: //checks ability of all mons with HP
+    case CHECK_ABILITY_ALL_HP:
         for (i = 0; i < maxBattlers; i++) {
             if (GetBattlerAbility(ctx, i) == ability && ctx->battleMons[i].hp) {
                 cnt++;
             }
         }
         break;
-    case 9: //checks ability of all mons with HP except the user
+    case CHECK_ABILITY_ALL_HP_NOT_USER:
         for (i = 0; i < maxBattlers; i++) {
             if (i != battlerId && GetBattlerAbility(ctx, i) == ability && ctx->battleMons[i].hp) {
                 cnt++;
@@ -2841,7 +2842,7 @@ BOOL GetTypeEffectivnessData(BattleSystem *bsys, int index, u8 *typeMove, u8 *ty
     BOOL ret = TRUE;
     
     if (index >= NELEMS(sTypeEffectiveness)) {
-        index = BattleSys_Random(bsys) % NELEMS(sTypeEffectiveness);
+        index = BattleSystem_Random(bsys) % NELEMS(sTypeEffectiveness);
         ret = FALSE;
     }
     
@@ -2882,4 +2883,413 @@ BOOL CheckMoveCallsOtherMove(u16 moveNo) {
         return TRUE;
     }
     return FALSE;
+}
+
+BOOL CurseUserIsGhost(BATTLECONTEXT *ctx, u16 moveNo, int battlerId) {
+    return (moveNo == MOVE_CURSE && (GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL) == TYPE_GHOST || GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL) == TYPE_GHOST));
+}
+
+BOOL CanStealHeldItem(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
+    BOOL ret = FALSE;
+    int side = BattleSystem_GetFieldSide(bsys, battlerId);
+    
+    if (ctx->battleMons[battlerId].item && !(ctx->fieldSideConditionData[side].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[battlerId])) && !ItemIdIsMail(ctx->battleMons[battlerId].item)) {
+        ret = TRUE;
+    }
+    
+    return ret;
+}
+
+BOOL CanTrickHeldItem(BATTLECONTEXT *ctx, int battlerId) {
+    return !ItemIdIsMail(ctx->battleMons[battlerId].item);
+}
+
+BOOL WhirlwindCheck(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BOOL ret = FALSE;
+    
+    if (ctx->battleMons[ctx->battlerIdAttacker].level >= ctx->battleMons[ctx->battlerIdTarget].level) {
+        ret = TRUE;
+    } else {
+        int level = ((BattleSystem_Random(bsys) & 0xFF) * (ctx->battleMons[ctx->battlerIdAttacker].level + ctx->battleMons[ctx->battlerIdTarget].level) >> 8) + 1;
+        
+        if (level > ctx->battleMons[ctx->battlerIdTarget].level / 4) {
+            ret = TRUE;
+        }
+    }
+    
+    return ret;
+}
+
+u8 GetBattlerAbility(BATTLECONTEXT *ctx, int battlerId) {
+    if ((ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_GASTRO_ACID) && ctx->battleMons[battlerId].ability != ABILITY_MULTITYPE) {
+        return ABILITY_NONE;
+    } else if ((ctx->fieldCondition & FIELD_CONDITION_GRAVITY) && ctx->battleMons[battlerId].ability == ABILITY_LEVITATE) {
+        return ABILITY_NONE;
+    } else if ((ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_INGRAIN) && ctx->battleMons[battlerId].ability == ABILITY_LEVITATE) {
+        return ABILITY_NONE;
+    } else {
+        return ctx->battleMons[battlerId].ability;
+    }
+}
+
+BOOL CheckBattlerAbilityIfNotIgnored(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int ability) {
+    BOOL ret = FALSE;
+    
+    if (GetBattlerAbility(ctx, battlerIdAttacker) != ABILITY_MOLD_BREAKER) {
+        if (GetBattlerAbility(ctx, battlerIdTarget) == ability) {
+            ret = TRUE;
+        }
+    } else if (GetBattlerAbility(ctx, battlerIdTarget) == ability && !ctx->selfTurnData[battlerIdAttacker].moldBreakerFlag) {
+        ctx->selfTurnData[battlerIdAttacker].moldBreakerFlag = TRUE;
+        ctx->linkStatus |= (1 << 23);
+    }
+    
+    return ret;
+}
+
+BOOL CanSwitchMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
+    BOOL ret;
+    PARTY *party;
+    Pokemon *mon;
+    int partySize;
+    int cnt;
+    int cntMax;
+    int i;
+    int start;
+    int monIndex1;
+    int monIndex2;
+    u32 battleType;
+
+    cnt = 0;
+    ret = FALSE;
+    battleType = BattleSystem_GetBattleType(bsys);
+    party = BattleSystem_GetParty(bsys, battlerId);
+    partySize = BattleSystem_GetPartySize(bsys, battlerId);
+    
+    if ((battleType & BATTLE_TYPE_MULTI) || ((battleType & BATTLE_TYPE_INGAME_PARTNER) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
+        start = 0;
+        cntMax = 1;
+        monIndex1 = ctx->selectedMonIndex[battlerId];
+        monIndex2 = ctx->selectedMonIndex[battlerId];
+    } else if (battleType & BATTLE_TYPE_DOUBLES) {
+        start = 0;
+        cntMax = 1;
+        monIndex1 = ctx->selectedMonIndex[battlerId];
+        monIndex2 = ctx->selectedMonIndex[BattleSystem_GetBattlerIdPartner(bsys, battlerId)];
+    } else {
+        start = 0;
+        cntMax = 1;
+        monIndex1 = ctx->selectedMonIndex[battlerId];
+        monIndex2 = ctx->selectedMonIndex[battlerId];
+    }
+    
+    for (i = start; i < partySize; i++) {
+        mon = GetPartyMonByIndex(party, i);
+        if (GetMonData(mon, MON_DATA_SPECIES, NULL) && !GetMonData(mon, MON_DATA_IS_EGG, NULL) && GetMonData(mon, MON_DATA_HP, NULL) && monIndex1 != i && monIndex2 != i) {
+            cnt++;
+        }
+    }
+    if (cnt >= cntMax) {
+        ret = TRUE;
+    }
+    return ret;
+}
+
+BOOL CantEscape(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, BATTLEMSG *msg) {
+    int battlerIdAbility;
+    int maxBattlers;
+    u8 side;
+    int item;
+    u32 battleType;
+    
+    battleType = BattleSystem_GetBattleType(bsys);
+    item = GetBattlerHeldItemEffect(ctx, battlerId);
+    
+    if (item == HOLD_EFFECT_FLEE || (battleType & BATTLE_TYPE_CAN_ALWAYS_FLEE) || GetBattlerAbility(ctx, battlerId) == ABILITY_RUN_AWAY) {
+        return FALSE;
+    }
+    
+    side = BattleSystem_GetFieldSide(bsys, battlerId);
+    maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+
+    battlerIdAbility = CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP_NOT_USER, battlerId, ABILITY_SHADOW_TAG);
+    if (battlerIdAbility && GetBattlerAbility(ctx, battlerId) != ABILITY_SHADOW_TAG) {
+        if (msg == NULL) {
+            return TRUE;
+        }
+        msg->tag = 11;
+        msg->id = msg_0197_00039;
+        msg->param[0] = CreateNicknameTag(ctx, battlerIdAbility);
+        msg->param[1] = ABILITY_SHADOW_TAG;
+        return TRUE;
+    }
+
+    battlerIdAbility = CheckAbilityActive(bsys, ctx, CHECK_ABILITY_OPPOSING_SIDE_HP, battlerId, ABILITY_ARENA_TRAP);
+    if (battlerIdAbility) {
+        if (!(ctx->fieldCondition & FIELD_CONDITION_GRAVITY) && item != HOLD_EFFECT_SPEED_DOWN_GROUNDED) {
+            if (GetBattlerAbility(ctx, battlerId) != ABILITY_LEVITATE && !ctx->battleMons[battlerId].unk88.magnetRiseTurns &&
+                GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL) != TYPE_FLYING && GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL) != TYPE_FLYING) {
+               if (msg == NULL) {
+                    return TRUE;
+                }
+                msg->tag = 11;
+                msg->id = msg_0197_00039;
+                msg->param[0] = CreateNicknameTag(ctx, battlerIdAbility);
+                msg->param[1] = ABILITY_ARENA_TRAP;
+                return TRUE;     
+            }
+        } else {
+            if (msg == NULL) {
+                return TRUE;
+            }
+            msg->tag = 11;
+            msg->id = msg_0197_00039;
+            msg->param[0] = CreateNicknameTag(ctx, battlerIdAbility);
+            msg->param[1] = ABILITY_ARENA_TRAP;
+            return TRUE;
+        }
+    }
+    
+    battlerIdAbility = CheckAbilityActive(bsys, ctx, CHECK_ABILITY_OPPOSING_SIDE_HP, battlerId, ABILITY_MAGNET_PULL);
+    if (battlerIdAbility && (GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL) == TYPE_STEEL || GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL) == TYPE_STEEL)) {
+        if (msg == NULL) {
+            return TRUE;
+        }
+        msg->tag = 11;
+        msg->id = msg_0197_00039;
+        msg->param[0] = CreateNicknameTag(ctx, battlerIdAbility);
+        msg->param[1] = ABILITY_MAGNET_PULL;
+        return TRUE;
+    }
+    
+    if ((ctx->battleMons[battlerId].status2 & (STATUS2_BINDING_ALL | STATUS2_MEAN_LOOK)) || (ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_INGRAIN)){
+        if (msg == NULL) {
+            return TRUE;
+        }
+        msg->tag = 0;
+        msg->id = msg_0197_00794;
+        return TRUE;
+    }
+    
+    return FALSE;
+}
+
+BOOL BattleTryRun(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
+    BOOL ret;
+    u8 run;
+    int item;
+    u32 battleType;
+    
+    battleType = BattleSystem_GetBattleType(bsys);
+    item = GetBattlerHeldItemEffect(ctx, battlerId);
+    ret = FALSE;
+    
+    if (item == HOLD_EFFECT_FLEE) {
+        ctx->turnData[battlerId].runFlag = 1;
+        ret = TRUE;
+    } else if (battleType & BATTLE_TYPE_CAN_ALWAYS_FLEE) {
+        ret = TRUE;
+    } else if (GetBattlerAbility(ctx, battlerId) == ABILITY_RUN_AWAY) {
+        ctx->turnData[battlerId].runFlag = 2;
+        ret = TRUE;
+    } else {
+        if (ctx->battleMons[battlerId].speed < ctx->battleMons[battlerId ^ 1].speed) {
+            run = ctx->battleMons[battlerId].speed * 128 / ctx->battleMons[battlerId ^ 1].speed + ctx->runAttempts * 30;
+            if (run > (BattleSystem_Random(bsys) % 256)) {
+                ret = TRUE;
+            }
+        } else {
+            ret = TRUE;
+        }
+        if (!ret) {
+            BattleController_EmitIncrementGameStat(bsys, battlerId, 0, 99);
+        }
+        ctx->runAttempts++;
+    }
+    return ret;
+}
+
+BOOL CheckTruant(BATTLECONTEXT *ctx, int battlerId) {
+    BOOL ret = FALSE;
+    
+    if (GetBattlerAbility(ctx, battlerId) == ABILITY_TRUANT) {
+        if (ctx->battleMons[battlerId].unk88.truantFlag != (ctx->totalTurns & 1)) {
+            ret = TRUE;
+        }
+    }
+    
+    return ret;
+}
+
+//FIXME: Matches up to regswap, ret <-> side, https://decomp.me/scratch/FiPFk -adrienn
+#ifdef NONMATCHING
+BOOL BattleContext_CheckMoveImprisoned(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo) {
+    int maxBattlers;
+    BOOL ret;
+    int battlerIdCur;
+    int side;
+    int i;
+    
+    ret = FALSE;
+    maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+    side = BattleSystem_GetFieldSide(bsys, battlerId);
+    
+    for (battlerIdCur = 0; battlerIdCur < maxBattlers; battlerIdCur++) {
+        if ((side != BattleSystem_GetFieldSide(bsys, battlerIdCur)) && (ctx->battleMons[battlerIdCur].moveEffectFlags & MOVE_EFFECT_IMPRISON_USER)) {
+            for (i = 0; i < LEARNED_MOVES_MAX; i++) {
+                if (moveNo == ctx->battleMons[battlerIdCur].moves[i]) {
+                    break;
+                }
+            }
+            if (i != LEARNED_MOVES_MAX) {
+                ret = TRUE;
+            }
+        }
+    }
+    
+    return ret;
+}
+#else
+asm BOOL BattleContext_CheckMoveImprisoned(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo) {
+      push {r3, r4, r5, r6, r7, lr}
+    sub sp, #0x10
+    add r6, r1, #0
+    mov r1, #0
+    str r0, [sp, #0]
+    add r4, r2, #0
+    add r5, r3, #0
+    str r1, [sp, #4]
+    bl BattleSystem_GetMaxBattlers
+    str r0, [sp, #0xc]
+    ldr r0, [sp, #0]
+    add r1, r4, #0
+    bl BattleSystem_GetFieldSide
+    str r0, [sp, #8]
+    ldr r0, [sp, #0xc]
+    mov r7, #0
+    cmp r0, #0
+    ble _02252CDE
+    ldr r4, =0x00002D4C
+_02252C9E:
+    ldr r0, [sp, #0]
+    add r1, r7, #0
+    bl BattleSystem_GetFieldSide
+    ldr r1, [sp, #8]
+    cmp r1, r0
+    beq _02252CD4
+    mov r0, #0xb7
+    lsl r0, r0, #6
+    ldr r1, [r6, r0]
+    mov r0, #2
+    lsl r0, r0, #0xc
+    tst r0, r1
+    beq _02252CD4
+    mov r1, #0
+    add r2, r6, #0
+_02252CBE:
+    ldrh r0, [r2, r4]
+    cmp r5, r0
+    beq _02252CCC
+    add r1, r1, #1
+    add r2, r2, #2
+    cmp r1, #4
+    blt _02252CBE
+_02252CCC:
+    cmp r1, #4
+    beq _02252CD4
+    mov r0, #1
+    str r0, [sp, #4]
+_02252CD4:
+    ldr r0, [sp, #0xc]
+    add r7, r7, #1
+    add r6, #0xc0
+    cmp r7, r0
+    blt _02252C9E
+_02252CDE:
+    ldr r0, [sp, #4]
+    add sp, #0x10
+    pop {r3, r4, r5, r6, r7, pc}
+}  
+#endif
+
+BOOL CheckMoveEffectOnField(BattleSystem *bsys, BATTLECONTEXT *ctx, int moveEffect) {
+    int battlerId;
+    int maxBattlers;
+    BOOL ret = FALSE;
+    
+    maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+    
+    for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
+        if (ctx->battleMons[battlerId].moveEffectFlags & moveEffect) {
+            ret = TRUE;
+            break;
+        }
+    }
+    
+    return ret;
+}
+
+void ov12_02252D14(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    ctx->moveStatusFlag = 0;
+    ctx->criticalMultiplier = 1;
+    ctx->linkStatus &= (0x100000 ^ 0xFFFFFFFF);
+}
+
+void SortMonsBySpeed(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int battlerId;
+    int maxBattlers;
+    int i, j;
+    int temp1, temp2;
+    
+    maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+    
+    for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
+        ctx->turnOrder[battlerId] = battlerId;
+    }
+    for (i = 0; i < maxBattlers - 1; i++) {
+        for (j = i + 1; j < maxBattlers; j++) {
+            temp1 = ctx->turnOrder[i];
+            temp2 = ctx->turnOrder[j];
+            if (CheckSortSpeed(bsys, ctx, temp1, temp2, 1)) {
+                ctx->turnOrder[i] = temp2;
+                ctx->turnOrder[j] = temp1;
+            }
+        }
+    }
+}
+
+extern u16 sGravityUnusableMoves[6];
+
+BOOL BattleContext_CheckMoveUnuseableInGravity(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo) {
+    int i;
+    BOOL ret = FALSE;
+    
+    if (ctx->fieldCondition & FIELD_CONDITION_GRAVITY) {
+        for (i = 0; i < NELEMS(sGravityUnusableMoves); i++) {
+            if (sGravityUnusableMoves[i] == moveNo) {
+                ret = TRUE;
+                break;
+            }
+        }
+    }
+    
+    return ret;
+}
+
+extern u16 sHealBlockUnusableMoves[14];
+
+BOOL BattleContext_CheckMoveHealBlocked(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo) {
+    int i;
+    BOOL ret = FALSE;
+    
+    if (ctx->battleMons[battlerId].unk88.healBlockTurns) {
+        for (i = 0; i < NELEMS(sHealBlockUnusableMoves); i++) {
+            if (sHealBlockUnusableMoves[i] == moveNo) {
+                ret = TRUE;
+                break;
+            }
+        }
+    }
+    
+    return ret;
 }
