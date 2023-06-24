@@ -130,8 +130,8 @@
 .public gSystem
 .public ov06_0221BA1C
 .public ov12_0223A7D4
-.public BattleSys_GetBattleType
-.public BattleSys_GetOpponentDataByBattlerId
+.public BattleSystem_GetBattleType
+.public BattleSystem_GetOpponentDataByBattlerId
 .public BattleSystem_GetPartyMon
 .public ov12_0223A8E4
 .public ov12_0223A8EC

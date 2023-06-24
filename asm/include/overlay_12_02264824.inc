@@ -48,7 +48,7 @@
 .public _s32_div_f
 .public _u32_div_f
 .public ov12_0223A7D4
-.public BattleSys_GetBattleType
+.public BattleSystem_GetBattleType
 .public BattleSystem_GetPartyMon
 .public ov12_0223A8E4
 .public ov12_0223A8EC

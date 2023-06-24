@@ -55,8 +55,11 @@ enum Terrain {
 #define BATTLE_TYPE_5                       (1 << 5)
 #define BATTLE_TYPE_6                       (1 << 6)
 #define BATTLE_TYPE_7                       (1 << 7)
+#define BATTLE_TYPE_8                       (1 << 8)
 #define BATTLE_TYPE_9                       (1 << 9)
 #define BATTLE_TYPE_TUTORIAL                (1 << 10)
+
+#define BATTLE_TYPE_CAN_ALWAYS_FLEE         (BATTLE_TYPE_2 | BATTLE_TYPE_5 | BATTLE_TYPE_7 | BATTLE_TYPE_9)
 
 //Move Effects
 #define MOVE_EFFECT_0                       (1 << 0)
@@ -199,6 +202,18 @@ enum Terrain {
 #define STRUGGLE_CHECK_ENCORE               (1 << 8) //unused because they straight up forgot
 #define STRUGGLE_CHECK_CHOICED              (1 << 9)
     
+//Ability Checks
+#define CHECK_ABILITY_SAME_SIDE             0
+#define CHECK_ABILITY_SAME_SIDE_HP          1
+#define CHECK_ABILITY_OPPOSING_SIDE         2
+#define CHECK_ABILITY_OPPOSING_SIDE_HP      3
+#define CHECK_ABILITY_OPPOSING_SIDE_HP_RET  4
+#define CHECK_ABILITY_ALL                   5
+#define CHECK_ABILITY_ALL_NOT_USER          6
+#define CHECK_ABILITY_ALL_NOT_USER_RET      7
+#define CHECK_ABILITY_ALL_HP                8
+#define CHECK_ABILITY_ALL_HP_NOT_USER       9
+
 //Battle Mon Data
 #define BMON_DATA_SPECIES                    0
 #define BMON_DATA_ATK                        1
