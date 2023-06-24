@@ -502,21 +502,21 @@ void sub_0205C838(PlayerAvatar* avatar, int unkA) {
 void PlayerAvatar_ToggleAutomaticHeightUpdating(PlayerAvatar* avatar, u8 state) {
     LocalMapObject* mapObj = PlayerAvatar_GetMapObject(avatar);
     if (state == TRUE) {
-        MapObject_SetFlag23(mapObj, FALSE);
+        MapObject_SetIgnoreHeights(mapObj, FALSE);
     }
     else {
-        MapObject_SetFlag23(mapObj, TRUE);
+        MapObject_SetIgnoreHeights(mapObj, TRUE);
     }
 }
 
 void PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(PlayerAvatar* avatar, BOOL state) {
     LocalMapObject* mapObj = PlayerAvatar_GetMapObject(avatar);
     if (state == TRUE) {
-        MapObject_SetFlag23(mapObj, FALSE);
+        MapObject_SetIgnoreHeights(mapObj, FALSE);
         sub_02061070(mapObj);
     }
     else {
-        MapObject_SetFlag23(mapObj, TRUE);
+        MapObject_SetIgnoreHeights(mapObj, TRUE);
     }
 }
 

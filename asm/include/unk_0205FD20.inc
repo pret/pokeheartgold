@@ -60,7 +60,7 @@
 .public MapObject_CheckVisible
 .public sub_0205F714
 .public sub_0205F73C
-.public MapObject_CheckFlag23
+.public MapObject_CheckIgnoreHeights
 .public MapObject_SetFlag26
 .public MapObject_CheckFlag26
 .public MapObject_SetFlag28
