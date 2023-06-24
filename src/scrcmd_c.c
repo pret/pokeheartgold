@@ -3433,45 +3433,45 @@ BOOL ScrCmd_CreateRoamer(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_LoadNPCTrade(ScriptContext *ctx) {
-    NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
+    NPCTradeAppData **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
     u8 tradeNo = ScriptReadByte(ctx);
 
     HandleLoadOverlay(FS_OVERLAY_ID(npc_trade), OVY_LOAD_ASYNC);
-    *p_tradeWork = NPCTrade_AllocWork(HEAP_ID_FIELD, tradeNo);
+    *p_tradeWork = NPCTradeApp_Init(HEAP_ID_FIELD, tradeNo);
     return FALSE;
 }
 
 BOOL ScrCmd_GetOfferedSpecies(ScriptContext *ctx) {
-    NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
+    NPCTradeAppData **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = NPCTradeWork_GetOfferedSpecies(*p_tradeWork);
+    *p_ret = NPCTradeApp_GetOfferedSpecies(*p_tradeWork);
     return FALSE;
 }
 
 BOOL ScrCmd_NPCTradeGetReqSpecies(ScriptContext *ctx) {
-    NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
+    NPCTradeAppData **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = NPCTradeWork_GetRequestedSpecies(*p_tradeWork);
+    *p_ret = NPCTradeApp_GetRequestedSpecies(*p_tradeWork);
     return FALSE;
 }
 
 BOOL ScrCmd_GetNpcTradeUnusedFlag(ScriptContext *ctx) {
-    NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
+    NPCTradeAppData **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = NPCTradeWork_GetUnusedFlag(*p_tradeWork);
+    *p_ret = NPCTradeApp_GetUnusedFlag(*p_tradeWork);
     return FALSE;
 }
 
 BOOL ScrCmd_NPCTradeExec(ScriptContext *ctx) {
-    NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
+    NPCTradeAppData **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
     u16 arg = ScriptGetVar(ctx);
     CallFieldTask_TradeAnim(ctx->taskman, *p_tradeWork, arg, HEAP_ID_FIELD);
     return TRUE;
 }
 
 BOOL ScrCmd_NPCTradeEnd(ScriptContext *ctx) {
-    NPC_TRADE_WORK **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
-    NPCTrade_DeleteWork(*p_tradeWork);
+    NPCTradeAppData **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
+    NPCTradeApp_Delete(*p_tradeWork);
     UnloadOverlayByID(FS_OVERLAY_ID(npc_trade));
     return FALSE;
 }

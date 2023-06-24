@@ -7,7 +7,7 @@
 
 #define TRADE_MAX          13
 
-typedef struct NPC_TRADE {
+typedef struct NPCTrade {
     int give_species;
     int hpIv;
     int atkIv;
@@ -29,17 +29,25 @@ typedef struct NPC_TRADE {
     int language;
     int ask_species;
     int unk_50;
-} NPC_TRADE; // size=0x54
+} NPCTrade; // size=0x54
 
-NPC_TRADE_WORK *NPCTrade_AllocWork(HeapID heapId, u32 tradeno);
-void NPCTrade_DeleteWork(NPC_TRADE_WORK *work);
+typedef struct NPCTradeAppData {
+    NPCTrade *trade_dat;
+    Pokemon *mon;
+    PlayerProfile *profile;
+    u32 tradeno;
+    HeapID heapId;
+} NPCTradeAppData;
+
+NPCTradeAppData *NPCTradeApp_Init(HeapID heapId, u32 tradeno);
+void NPCTradeApp_Delete(NPCTradeAppData *work);
 void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fsys, u8 tradeno, u8 level, u16 mapno);
 MAIL *NPCTrade_MakeKenyaMail(void);
 int NPCTrade_CanGiveUpLoanMon(FieldSystem *fsys, u8 tradeno, u8 idx);
-int NPCTradeWork_GetOfferedSpecies(NPC_TRADE_WORK *work);
-int NPCTradeWork_GetRequestedSpecies(NPC_TRADE_WORK *work);
-int NPCTradeWork_GetUnusedFlag(NPC_TRADE_WORK *work);
-void NPCTrade_ReceiveMonToSlot(FieldSystem *fsys, NPC_TRADE_WORK *work, int slot);
-void NPCTrade_CreateTradeAnim(FieldSystem *fsys, NPC_TRADE_WORK *work, int slot, TRADE_ANIM_WORK *anim_work, Pokemon *my_mon_buf, Pokemon *trade_mon_buf);
+int NPCTradeApp_GetOfferedSpecies(NPCTradeAppData *work);
+int NPCTradeApp_GetRequestedSpecies(NPCTradeAppData *work);
+int NPCTradeApp_GetUnusedFlag(NPCTradeAppData *work);
+void NPCTrade_ReceiveMonToSlot(FieldSystem *fsys, NPCTradeAppData *work, int slot);
+void NPCTrade_CreateTradeAnim(FieldSystem *fsys, NPCTradeAppData *work, int slot, TRADE_ANIM_WORK *anim_work, Pokemon *my_mon_buf, Pokemon *trade_mon_buf);
 
 #endif //POKEHEARTGOLD_NPC_TRADE_H
