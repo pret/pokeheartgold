@@ -16,7 +16,7 @@ int GetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 varId, void *data);
 void SetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 varId, void *data);
 void ov12_0224F794(BATTLECONTEXT *ctx, int battlerId, u32 varId, int data);
 void AddBattlerVar(BATTLEMON *mon, u32 varId, int data);
-u8 ov12_0224FC48(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int battlerId2, int flag);
+u8 CheckSortSpeed(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int battlerId2, int flag);
 void BattleSystem_ClearExperienceEarnFlags(BATTLECONTEXT *ctx, int battlerId);
 void BattleSystem_SetExperienceEarnFlags(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL ov12_022503EC(BattleSystem *bsys, BATTLECONTEXT *ctx, int *out);
@@ -58,6 +58,10 @@ BOOL CanSwitchMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL CanEscape(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, BATTLEMSG *msg);
 BOOL BattleTryRun(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL CheckTruant(BATTLECONTEXT *ctx, int battlerId);
+BOOL BattleContext_CheckMoveImprisoned(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
+BOOL CheckMoveEffectOnField(BattleSystem *bsys, BATTLECONTEXT *ctx, int moveEffect);
+void ov12_02252D14(BattleSystem *bsys, BATTLECONTEXT *ctx);
+void SortMonsBySpeed(BattleSystem *bsys, BATTLECONTEXT *ctx);
 
 //The following functions are static, but the rest of the file is still being worked on
 BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int index);
@@ -105,7 +109,6 @@ int BattleSystem_GetMoveType(BattleSystem *bsys, BATTLECONTEXT *ctx, int battler
 void ov12_022585A8(BATTLECONTEXT *ctx, u8 battlerId);
 void ov12_02258584(BATTLECONTEXT *ctx, u8 battlerId);
 void ov12_0225859C(BATTLECONTEXT *ctx, u8 battlerId);
-BOOL BattleContext_CheckMoveImprisoned(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
 BOOL BattleContext_CheckMoveUnuseableInGravity(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
 BOOL BattleContext_CheckMoveHealBlocked(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
 int ov12_02258440(BATTLECONTEXT *ctx, int moveNo);

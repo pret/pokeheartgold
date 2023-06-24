@@ -3305,7 +3305,7 @@ BOOL BtlCmd_SetTurnOrderBySpeed(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     u32 *unkPtr = BattleScriptGetVarPointer(bsys, ctx, BattleScriptReadWord(ctx));
 
-    *unkPtr = ctx->unk_21EC[ctx->unk_3104];
+    *unkPtr = ctx->turnOrder[ctx->unk_3104];
 
     return FALSE;
 }
@@ -4801,7 +4801,7 @@ BOOL BtlCmd_CheckMoldBreaker(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
 
         for (index = 0; index < maxBattlers; index++) {
-            battlerId = ctx->unk_21EC[index];
+            battlerId = ctx->turnOrder[index];
             if (flag == 0) {
                 if (CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, battlerId, ability) == TRUE && ctx->battleMons[battlerId].hp) {
                     BattleScriptIncrementPointer(ctx, adrs);

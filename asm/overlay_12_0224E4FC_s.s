@@ -9,198 +9,8 @@
     .public AddBattlerVar
     .public sTypeEffectiveness
     .public ov12_02251C74
-    
-	thumb_func_start BattleContext_CheckMoveImprisoned
-BattleContext_CheckMoveImprisoned: ; 0x02252C74
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x10
-	add r6, r1, #0
-	mov r1, #0
-	str r0, [sp]
-	add r4, r2, #0
-	add r5, r3, #0
-	str r1, [sp, #4]
-	bl BattleSystem_GetMaxBattlers
-	str r0, [sp, #0xc]
-	ldr r0, [sp]
-	add r1, r4, #0
-	bl BattleSystem_GetFieldSide
-	str r0, [sp, #8]
-	ldr r0, [sp, #0xc]
-	mov r7, #0
-	cmp r0, #0
-	ble _02252CDE
-	ldr r4, _02252CE4 ; =0x00002D4C
-_02252C9E:
-	ldr r0, [sp]
-	add r1, r7, #0
-	bl BattleSystem_GetFieldSide
-	ldr r1, [sp, #8]
-	cmp r1, r0
-	beq _02252CD4
-	mov r0, #0xb7
-	lsl r0, r0, #6
-	ldr r1, [r6, r0]
-	mov r0, #2
-	lsl r0, r0, #0xc
-	tst r0, r1
-	beq _02252CD4
-	mov r1, #0
-	add r2, r6, #0
-_02252CBE:
-	ldrh r0, [r2, r4]
-	cmp r5, r0
-	beq _02252CCC
-	add r1, r1, #1
-	add r2, r2, #2
-	cmp r1, #4
-	blt _02252CBE
-_02252CCC:
-	cmp r1, #4
-	beq _02252CD4
-	mov r0, #1
-	str r0, [sp, #4]
-_02252CD4:
-	ldr r0, [sp, #0xc]
-	add r7, r7, #1
-	add r6, #0xc0
-	cmp r7, r0
-	blt _02252C9E
-_02252CDE:
-	ldr r0, [sp, #4]
-	add sp, #0x10
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02252CE4: .word 0x00002D4C
-	thumb_func_end BattleContext_CheckMoveImprisoned
-
-	thumb_func_start ov12_02252CE8
-ov12_02252CE8: ; 0x02252CE8
-	push {r4, r5, r6, lr}
-	add r5, r1, #0
-	add r4, r2, #0
-	mov r6, #0
-	bl BattleSystem_GetMaxBattlers
-	add r3, r6, #0
-	cmp r0, #0
-	ble _02252D10
-	mov r1, #0xb7
-	lsl r1, r1, #6
-_02252CFE:
-	ldr r2, [r5, r1]
-	tst r2, r4
-	beq _02252D08
-	mov r6, #1
-	b _02252D10
-_02252D08:
-	add r3, r3, #1
-	add r5, #0xc0
-	cmp r3, r0
-	blt _02252CFE
-_02252D10:
-	add r0, r6, #0
-	pop {r4, r5, r6, pc}
-	thumb_func_end ov12_02252CE8
-
-	thumb_func_start ov12_02252D14
-ov12_02252D14: ; 0x02252D14
-	ldr r2, _02252D34 ; =0x0000216C
-	mov r0, #0
-	str r0, [r1, r2]
-	add r0, r2, #0
-	mov r3, #1
-	sub r0, #0x1c
-	str r3, [r1, r0]
-	add r0, r2, #0
-	sub r0, #0x30
-	ldr r3, [r1, r0]
-	ldr r0, _02252D38 ; =0xFFEFFFFF
-	sub r2, #0x30
-	and r0, r3
-	str r0, [r1, r2]
-	bx lr
-	nop
-_02252D34: .word 0x0000216C
-_02252D38: .word 0xFFEFFFFF
-	thumb_func_end ov12_02252D14
-
-	thumb_func_start ov12_02252D3C
-ov12_02252D3C: ; 0x02252D3C
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0x1c
-	str r0, [sp, #4]
-	str r1, [sp, #8]
-	bl BattleSystem_GetMaxBattlers
-	mov r2, #0
-	str r0, [sp, #0x14]
-	cmp r0, #0
-	ble _02252D60
-	ldr r1, _02252DC0 ; =0x000021EC
-_02252D52:
-	ldr r0, [sp, #8]
-	add r0, r0, r2
-	strb r2, [r0, r1]
-	ldr r0, [sp, #0x14]
-	add r2, r2, #1
-	cmp r2, r0
-	blt _02252D52
-_02252D60:
-	mov r0, #0
-	str r0, [sp, #0x10]
-	ldr r0, [sp, #0x14]
-	sub r0, r0, #1
-	str r0, [sp, #0x18]
-	cmp r0, #0
-	ble _02252DBC
-_02252D6E:
-	ldr r0, [sp, #0x10]
-	add r4, r0, #1
-	ldr r0, [sp, #0x14]
-	cmp r4, r0
-	bge _02252DB0
-	ldr r1, [sp, #8]
-	ldr r0, [sp, #0x10]
-	add r6, r1, r0
-_02252D7E:
-	ldr r0, _02252DC0 ; =0x000021EC
-	ldr r1, [sp, #8]
-	ldrb r0, [r6, r0]
-	str r0, [sp, #0xc]
-	ldr r0, [sp, #8]
-	ldr r2, [sp, #0xc]
-	add r7, r0, r4
-	ldr r0, _02252DC0 ; =0x000021EC
-	ldrb r5, [r7, r0]
-	mov r0, #1
-	str r0, [sp]
-	ldr r0, [sp, #4]
-	add r3, r5, #0
-	bl ov12_0224FC48
-	cmp r0, #0
-	beq _02252DA8
-	ldr r0, _02252DC0 ; =0x000021EC
-	ldr r1, [sp, #0xc]
-	strb r5, [r6, r0]
-	strb r1, [r7, r0]
-_02252DA8:
-	ldr r0, [sp, #0x14]
-	add r4, r4, #1
-	cmp r4, r0
-	blt _02252D7E
-_02252DB0:
-	ldr r0, [sp, #0x10]
-	add r1, r0, #1
-	ldr r0, [sp, #0x18]
-	str r1, [sp, #0x10]
-	cmp r1, r0
-	blt _02252D6E
-_02252DBC:
-	add sp, #0x1c
-	pop {r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02252DC0: .word 0x000021EC
-	thumb_func_end ov12_02252D3C
-
+    .public CheckMoveEffectOnField
+   
 	thumb_func_start BattleContext_CheckMoveUnuseableInGravity
 BattleContext_CheckMoveUnuseableInGravity: ; 0x02252DC4
 	push {r3, r4}
@@ -9686,7 +9496,7 @@ _022575DA:
 	ldr r0, [sp, #4]
 	add r1, r5, #0
 	lsl r2, r2, #0x10
-	bl ov12_02252CE8
+	bl CheckMoveEffectOnField
 	cmp r0, #0
 	beq _022575F2
 	lsl r0, r4, #0xf
@@ -9698,7 +9508,7 @@ _022575F2:
 	ldr r0, [sp, #4]
 	add r1, r5, #0
 	lsl r2, r2, #0x10
-	bl ov12_02252CE8
+	bl CheckMoveEffectOnField
 	cmp r0, #0
 	beq _0225760A
 	lsl r0, r4, #0xf
@@ -10913,7 +10723,7 @@ _02257F16:
 	add r1, r5, #0
 	add r2, r6, #0
 	add r3, r4, #0
-	bl ov12_0224FC48
+	bl CheckSortSpeed
 	cmp r0, #0
 	beq _02257F32
 	ldr r1, [sp, #0xc]

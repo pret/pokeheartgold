@@ -58,7 +58,7 @@
 .public BattleSystem_GetBattleMon
 .public ReadBattleScriptFromNarc
 .public ov12_0224EDC0
-.public ov12_0224FC48
+.public CheckSortSpeed
 .public ov12_022503EC
 .public ov12_02250490
 .public ov12_022506D4
@@ -88,7 +88,7 @@
 .public CheckTruant
 .public BattleContext_CheckMoveImprisoned
 .public ov12_02252D14
-.public ov12_02252D3C
+.public SortMonsBySpeed
 .public BattleContext_CheckMoveUnuseableInGravity
 .public BattleContext_CheckMoveHealBlocked
 .public ov12_02252E30

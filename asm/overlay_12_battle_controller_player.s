@@ -190,7 +190,7 @@ _022487BA:
 _022487BE:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_02252D3C
+	bl SortMonsBySpeed
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_02248798
 
@@ -213,7 +213,7 @@ ov12_022487C8: ; 0x022487C8
 _022487E8:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_02252D3C
+	bl SortMonsBySpeed
 	add r0, r5, #0
 	bl ov12_0223C0C4
 	mov r0, #4
@@ -1635,7 +1635,7 @@ _022492C8:
 	add r1, r5, #0
 	add r2, r6, #0
 	add r3, r4, #0
-	bl ov12_0224FC48
+	bl CheckSortSpeed
 	cmp r0, #0
 	beq _022492E4
 	ldr r1, [sp, #0x10]
@@ -1881,7 +1881,7 @@ _02249494:
 _0224949C:
 	add r0, r7, #0
 	add r1, r4, #0
-	bl ov12_02252D3C
+	bl SortMonsBySpeed
 	add r0, r4, #0
 	add r0, #0xec
 	ldr r0, [r0]
@@ -10119,7 +10119,7 @@ _0224D3EA:
 	bl ov12_02257EC0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_02252D3C
+	bl SortMonsBySpeed
 	mov r1, #0
 	b _0224D430
 _0224D428:

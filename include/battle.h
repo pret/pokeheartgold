@@ -353,7 +353,7 @@ typedef struct BATTLECONTEXT {
     u8 unk_21A4[4];
     u32 unk_21A8[4][4];
     u8 unk_21E8[4];
-    u8 unk_21EC[4];
+    u8 turnOrder[4];
     u32 unk_21F0[4];
     u8 unk_2200[4][4][16];
     u8 unk_2300[4][256];

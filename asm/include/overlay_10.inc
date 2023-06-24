@@ -23,7 +23,7 @@
 .public BattleSystem_GetBattlerIdPartner
 .public BattleSystem_Random
 .public GetBattlerVar
-.public ov12_0224FC48
+.public CheckSortSpeed
 .public StruggleCheck
 .public ov12_02251D28
 .public ov12_02252054

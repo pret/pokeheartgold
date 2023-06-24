@@ -74,7 +74,7 @@
 .public GetBattlerVar
 .public SetBattlerVar
 .public ov12_0224F794
-.public ov12_0224FC48
+.public CheckSortSpeed
 .public BattleSystem_ClearExperienceEarnFlags
 .public BattleSystem_SetExperienceEarnFlags
 .public ov12_022503EC
@@ -118,7 +118,7 @@
 .public CheckTruant
 .public BattleContext_CheckMoveImprisoned
 .public ov12_02252D14
-.public ov12_02252D3C
+.public SortMonsBySpeed
 .public BattleContext_CheckMoveUnuseableInGravity
 .public BattleContext_CheckMoveHealBlocked
 .public ov12_02252E30

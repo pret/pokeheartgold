@@ -2226,7 +2226,7 @@ ov10_0221CF04: ; 0x0221CF04
 	add r3, r3, #1
 	ldrb r3, [r5, r3]
 	add r1, r5, #0
-	bl ov12_0224FC48
+	bl CheckSortSpeed
 	cmp r4, r0
 	bne _0221CF42
 	add r0, r5, #0
@@ -2260,7 +2260,7 @@ ov10_0221CF48: ; 0x0221CF48
 	add r3, r3, #1
 	ldrb r3, [r5, r3]
 	add r1, r5, #0
-	bl ov12_0224FC48
+	bl CheckSortSpeed
 	cmp r4, r0
 	beq _0221CF86
 	add r0, r5, #0
@@ -4698,7 +4698,7 @@ _0221E22C:
 	ldr r1, [sp, #8]
 	ldr r2, [sp, #0x18]
 	add r3, r4, #0
-	bl ov12_0224FC48
+	bl CheckSortSpeed
 	cmp r0, #0
 	beq _0221E24C
 	ldr r0, [sp, #0x18]
