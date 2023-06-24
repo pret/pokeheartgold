@@ -2995,8 +2995,6 @@ BOOL CanSwitchMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     return ret;
 }
 
-//Weird because it returns FALSE if you *can* escape, TRUE if you *can't*
-//FIXME: Function needs a more descriptive name
 BOOL CantEscape(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, BATTLEMSG *msg) {
     int battlerIdAbility;
     int maxBattlers;
