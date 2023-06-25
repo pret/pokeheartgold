@@ -136,7 +136,7 @@ static BOOL sub_02050738(TaskManager *man) {
                 }
             }
 
-            if (ScriptState_CheckHaveFollower(SaveArray_Flags_Get(fsys->savedata))) {
+            if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(fsys->savedata))) {
                 HealParty(SaveArray_PlayerParty_Get(fsys->savedata));
             }
 
@@ -306,11 +306,11 @@ static BOOL Task_BugContestEncounter(TaskManager *man);
 static BOOL Task_WildEncounter(TaskManager *man);
 
 void sub_02050B08(FieldSystem *fsys, BATTLE_SETUP *setup) {
-    ScriptState *flags = SaveArray_Flags_Get(fsys->savedata);
+    SaveVarsFlags *flags = Save_VarsFlags_Get(fsys->savedata);
     int a0 = sub_020517E8(setup);
     int a1 = sub_020517FC(setup);
 
-    if (ScriptState_CheckSafariSysFlag(flags)) {
+    if (Save_VarsFlags_CheckSafariSysFlag(flags)) {
         ENCOUNTER *encounter = Encounter_New(setup, a0, a1, NULL);
         FieldSys_CreateTask(fsys, Task_SafariEncounter, encounter);
     } else if (CheckFlag996(flags)) {
@@ -323,11 +323,11 @@ void sub_02050B08(FieldSystem *fsys, BATTLE_SETUP *setup) {
 }
 
 void sub_02050B90(FieldSystem *fsys, TaskManager *man, BATTLE_SETUP *setup) {
-    ScriptState *flags = SaveArray_Flags_Get(fsys->savedata);
+    SaveVarsFlags *flags = Save_VarsFlags_Get(fsys->savedata);
     int a0 = sub_020517E8(setup);
     int a1 = sub_020517FC(setup);
 
-    if (ScriptState_CheckSafariSysFlag(flags)) {
+    if (Save_VarsFlags_CheckSafariSysFlag(flags)) {
         ENCOUNTER *encounter = Encounter_New(setup, a0, a1, NULL);
         TaskManager_Jump(man, Task_SafariEncounter, encounter);
     } else if (CheckFlag996(flags)) {
@@ -369,7 +369,7 @@ static BOOL Task_WildEncounter(TaskManager *man) {
             return FALSE;
         }
 
-        if (ScriptState_CheckHaveFollower(SaveArray_Flags_Get(fsys->savedata))) {
+        if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(fsys->savedata))) {
             HealParty(SaveArray_PlayerParty_Get(fsys->savedata));
         }
 

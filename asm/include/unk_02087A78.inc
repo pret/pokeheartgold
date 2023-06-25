@@ -24,13 +24,13 @@
 .public sub_0202FC5C
 .public sub_0202FC90
 .public sub_020304F0
-.public SaveArray_Flags_Get
+.public Save_VarsFlags_Get
 .public BattleSetup_New
 .public BattleSetup_Delete
 .public FieldSystem_GetOverriddenMusicId
 .public GetMapMusic
 .public sub_02055198
-.public ScriptState_FlypointFlagAction
+.public Save_VarsFlags_FlypointFlagAction
 .public BagCursor_New
 .public sub_02087A78
 .public sub_02087A84

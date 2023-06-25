@@ -94,7 +94,7 @@ BOOL ScrCmd_SizeRecordCompare(ScriptContext *ctx) {
     species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     rand = GetMonSizeHash(mon);
     cm1 = GetMonSize(species, rand);
-    record = ScriptState_GetFishingCompetitionLengthRecord(SaveArray_Flags_Get(fsys->savedata));
+    record = Save_VarsFlags_GetFishingCompetitionLengthRecord(Save_VarsFlags_Get(fsys->savedata));
     cm2 = GetMonSize(species, record);
     {
         u32 in1 = LengthConvertToImperial(cm1);
@@ -121,7 +121,7 @@ BOOL ScrCmd_SizeRecordUpdate(ScriptContext *ctx) {
     fsys = ctx->fsys;
     slot = ScriptGetVar(ctx);
     mon = GetPartyMonByIndex(SaveArray_PlayerParty_Get(fsys->savedata), slot);
-    ScriptState_SetFishingCompetitionLengthRecord(SaveArray_Flags_Get(fsys->savedata), GetMonSizeHash(mon));
+    Save_VarsFlags_SetFishingCompetitionLengthRecord(Save_VarsFlags_Get(fsys->savedata), GetMonSizeHash(mon));
     return FALSE;
 }
 
@@ -136,7 +136,7 @@ BOOL ScrCmd_BufferRecordSize(ScriptContext *ctx) {
     idx0 = ScriptGetVar(ctx);
     idx1 = ScriptGetVar(ctx);
     species = ScriptGetVar(ctx);
-    rand = ScriptState_GetFishingCompetitionLengthRecord(SaveArray_Flags_Get(fsys->savedata));
+    rand = Save_VarsFlags_GetFishingCompetitionLengthRecord(Save_VarsFlags_Get(fsys->savedata));
     FormatSizeRecord(fsys, idx0, idx1, species, rand);
     return FALSE;
 }

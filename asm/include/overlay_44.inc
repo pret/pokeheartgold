@@ -276,8 +276,8 @@
 .public sub_02039FD8
 .public sub_0203A1C4
 .public sub_0203A880
-.public SaveArray_Flags_Get
-.public ScriptState_FlypointFlagAction
+.public Save_VarsFlags_Get
+.public Save_VarsFlags_FlypointFlagAction
 .public GetMonData
 .public GetPartyCount
 .public GetPartyMonByIndex

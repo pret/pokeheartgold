@@ -17,7 +17,7 @@
 .public GetSpecialSpawnWarpData
 .public sub_0203BB50
 .public FlypointFlagAction
-.public SaveArray_Flags_Get
+.public Save_VarsFlags_Get
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
@@ -29,14 +29,14 @@
 .public EventObjectMovementMan_Create
 .public EventObjectMovementMan_IsFinish
 .public EventObjectMovementMan_Delete
-.public ScriptState_ClearHaveFollowerFlag
-.public ScriptState_ClearSafariSysFlag
-.public ScriptState_CheckSafariSysFlag
+.public Save_VarsFlags_ClearHaveFollowerFlag
+.public Save_VarsFlags_ClearSafariSysFlag
+.public Save_VarsFlags_CheckSafariSysFlag
 .public ClearFlag972
 .public StrengthFlagAction
 .public SysFlagFlashClear
 .public SysFlagDefogClear
-.public ScriptState_SetFollowerTrainerNum
+.public Save_VarsFlags_SetFollowerTrainerNum
 .public Save_RandomizeRoamersLocation
 .public Save_UpdateRoamersLocation
 .public UpdatePlayerLocationHistoryIfAnyRoamersActive

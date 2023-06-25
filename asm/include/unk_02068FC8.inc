@@ -29,7 +29,7 @@
 .public sub_020310BC
 .public FieldSystem_GetSaveDataPtr
 .public sub_0203F7B0
-.public SaveArray_Flags_Get
+.public Save_VarsFlags_Get
 .public CheckFlagInArray
 .public TaskManager_Call
 .public FieldSys_ApplicationIsRunning

@@ -22,15 +22,15 @@ BOOL ScrCmd_MomGiftCheck(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_508(ScriptContext *ctx) {
-    ScriptState *script = SaveArray_Flags_Get(ctx->fsys->savedata);
+    SaveVarsFlags *script = Save_VarsFlags_Get(ctx->fsys->savedata);
     u16 var0 = ScriptGetVar(ctx);
     if (var0 == 2) {
-        ScriptState_SetPalParkSysFlag(script);
+        Save_VarsFlags_SetPalParkSysFlag(script);
         sub_020557E0(ctx->fsys);
     } else if (var0 == 0) {
         sub_020557F8(ctx->fsys);
     } else if (var0 == 1) {
-        ScriptState_ClearPalParkSysFlag(script);
+        Save_VarsFlags_ClearPalParkSysFlag(script);
         sub_02055828(ctx->fsys);
     } else {
         GF_ASSERT(0);

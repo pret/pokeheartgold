@@ -64,8 +64,8 @@ ov80_022340E8: ; 0x022340E8
 	cmp r2, #3
 	bne _02234174
 	ldr r0, [r0, #4]
-	bl SaveArray_Flags_Get
-	bl ScriptState_GetVar4052
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_GetVar4052
 	b _02234180
 _02234174:
 	mov r3, #0

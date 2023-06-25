@@ -81,7 +81,7 @@
 .public sub_0203F7B0
 .public sub_0203F7F4
 .public StartScriptFromMenu
-.public SaveArray_Flags_Get
+.public Save_VarsFlags_Get
 .public FieldSys_CreateTask
 .public TaskManager_Jump
 .public FieldSys_ApplicationIsRunning
@@ -104,9 +104,9 @@
 .public MapObjectManager_UnpauseAllMovement
 .public GetItemFieldUseFunc
 .public ItemCheckUseData_Init
-.public ScriptState_CheckSafariSysFlag
+.public Save_VarsFlags_CheckSafariSysFlag
 .public CheckFlag996
-.public ScriptState_CheckPalParkSysFlag
+.public Save_VarsFlags_CheckPalParkSysFlag
 .public CheckGotStarter
 .public CheckGotPokegear
 .public CheckGotPokedex

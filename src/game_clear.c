@@ -259,34 +259,34 @@ static BOOL Task_GameClear(TaskManager *taskman) {
 void CallTask_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
     FieldSystem *fsys;
     GameClearWork *env;
-    ScriptState *scriptState;
+    SaveVarsFlags *varsFlags;
     Location *dynamicWarp;
     Location *spawnWarp;
     PlayerProfile *profile;
 
     fsys = TaskManager_GetFieldSystem(taskman);
     env = AllocFromHeap(HEAP_ID_32, sizeof(GameClearWork));
-    scriptState = SaveArray_Flags_Get(fsys->savedata);
+    varsFlags = Save_VarsFlags_Get(fsys->savedata);
     profile = Save_PlayerData_GetProfileAddr(fsys->savedata);
     dynamicWarp = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fsys->savedata));
     spawnWarp = LocalFieldData_GetSpecialSpawnWarpPtr(Save_LocalFieldData_Get(fsys->savedata));
 
-    env->gameCleared = CheckGameClearFlag(scriptState);
+    env->gameCleared = CheckGameClearFlag(varsFlags);
     env->hofCongratsArgs.profile = Save_PlayerData_GetProfileAddr(fsys->savedata);
     env->hofCongratsArgs.party = SaveArray_PlayerParty_Get(fsys->savedata);
     env->hofCongratsArgs.igt = Save_PlayerData_GetIGTAddr(fsys->savedata);
     env->creditsArgs.gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fsys->savedata));
-    env->creditsArgs.gameCleared = CheckGameClearFlag(scriptState);
+    env->creditsArgs.gameCleared = CheckGameClearFlag(varsFlags);
     env->vsTrainerRed = vsTrainerRed;
 
-    if (!CheckGameClearFlag(scriptState)) {
+    if (!CheckGameClearFlag(varsFlags)) {
         FieldSys_SetGameClearTime(fsys);
     }
     SaveArray_PlayerParty_Get(fsys->savedata);
     LocationData_BackUp(dynamicWarp);
     LocationData_Restore(spawnWarp);
-    SetFlag966(scriptState);
-    SetGameClearFlag(scriptState);
+    SetFlag966(varsFlags);
+    SetGameClearFlag(varsFlags);
     PlayerProfile_SetGameClearFlag(profile);
 
     if (!env->vsTrainerRed) {

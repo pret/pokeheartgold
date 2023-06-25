@@ -1223,7 +1223,7 @@ BOOL ScrCmd_GetBuenasPassword(ScriptContext *ctx) {
     u16 *msgPtr = ScriptGetVarPointer(ctx);
     u16 *unkPtr2 = ScriptGetVarPointer(ctx);
 
-    u8 unkVar = ScriptState_GetBuenasPasswordSet(SaveArray_Flags_Get(ctx->fsys->savedata)) % 30;
+    u8 unkVar = Save_VarsFlags_GetBuenasPasswordSet(Save_VarsFlags_Get(ctx->fsys->savedata)) % 30;
 
     *msgPtr = 2*(unkVar / 3) + unkVar / 3 + msg_0066_D23R0102_00040;
 

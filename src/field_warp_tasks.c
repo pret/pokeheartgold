@@ -164,7 +164,7 @@ void sub_02053018(FieldSystem *fsys) {
 void sub_02053038(FieldSystem *fsys, BOOL isConnection) {
     u32 mapId = fsys->location->mapId;
     LocalFieldData *localFieldData = Save_LocalFieldData_Get(fsys->savedata);
-    ScriptState *scriptState;
+    SaveVarsFlags *varsFlags;
     u16 weather;
     u16 spawnId;
 
@@ -184,15 +184,15 @@ void sub_02053038(FieldSystem *fsys, BOOL isConnection) {
         SavGymmick_Clear(Save_GetGymmickPtr(fsys->savedata));
         SetLakeOfRageWaterLevel(fsys->mapMatrix, ShouldUseAlternateLakeOfRage(fsys->savedata, mapId));
     }
-    scriptState = SaveArray_Flags_Get(fsys->savedata);
+    varsFlags = Save_VarsFlags_Get(fsys->savedata);
     weather = Fsys_GetWeather_HandleDiamondDust(fsys, mapId);
-    if (sub_02066C74(scriptState, 1) && mapId == MAP_T29) {
+    if (sub_02066C74(varsFlags, 1) && mapId == MAP_T29) {
         weather = 0;
     }
-    if (weather == 9 && SysFlagDefogCheck(scriptState) == TRUE) {
+    if (weather == 9 && SysFlagDefogCheck(varsFlags) == TRUE) {
         weather = 0;
     }
-    if (weather == 11 && SysFlagFlashCheck(scriptState) == TRUE) {
+    if (weather == 11 && SysFlagFlashCheck(varsFlags) == TRUE) {
         weather = 12;
     }
     LocalFieldData_SetWeatherType(localFieldData, weather);
@@ -212,7 +212,7 @@ void sub_02053038(FieldSystem *fsys, BOOL isConnection) {
     fsys->unk7C = 0;
     fsys->unk78 = 0;
     SavFollowPoke_SetInhibitFlagState(Save_FollowPoke_Get(fsys->savedata), FALSE);
-    ClearFlag99A(SaveArray_Flags_Get(fsys->savedata));
+    ClearFlag99A(Save_VarsFlags_Get(fsys->savedata));
 }
 
 static void sub_0205316C(FieldSystem *fsys) {
@@ -258,16 +258,16 @@ static void sub_0205323C(FieldSystem *fsys) {
 }
 
 static void sub_02053284(FieldSystem *fsys) {
-    ScriptState *scriptState;
+    SaveVarsFlags *varsFlags;
 
     sub_02052F30(fsys);
     GF_ASSERT(fsys->unk60 == 0);
     MapMatrix_Load(fsys->location->mapId, fsys->mapMatrix);
-    scriptState = SaveArray_Flags_Get(fsys->savedata);
-    if (sub_02066C74(scriptState, 0)) {
+    varsFlags = Save_VarsFlags_Get(fsys->savedata);
+    if (sub_02066C74(varsFlags, 0)) {
         RemoveMahoganyTownAntennaTree(fsys->mapMatrix);
     }
-    SetLakeOfRageWaterLevel(fsys->mapMatrix, sub_02066C74(scriptState, 1));
+    SetLakeOfRageWaterLevel(fsys->mapMatrix, sub_02066C74(varsFlags, 1));
     PlaceSafariZoneAreas(fsys->mapMatrix, fsys->savedata);
     GF_ASSERT(fsys->unk70 < 6);
     fsys->unk74 = &_020FC5CC[fsys->unk70];
@@ -314,7 +314,7 @@ static BOOL _IsPlayerStandingInFrontOfUnionRoomReception(FieldSystem *fsys) {
 
 static void _SetDynamicWarpToUnionRoomExit(FieldSystem *fsys) {
     Location *dynamicWarp = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fsys->savedata));
-    ScriptState *scriptState = SaveArray_Flags_Get(fsys->savedata); // unused
+    SaveVarsFlags *varsFlags = Save_VarsFlags_Get(fsys->savedata); // unused
     if (MapHeader_MapIsPokemonLeagueLobby(fsys->location->mapId) == TRUE) {
         InitLocation(dynamicWarp, fsys->location->mapId, -1, 4, 11, DIR_SOUTH);
     } else {
@@ -353,18 +353,18 @@ TaskManager *CallFieldTask_NewGame(FieldSystem *fsys) {
 
 static BOOL FieldTask_ContinueGame_Normal(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
-    ScriptState *scriptState = SaveArray_Flags_Get(fsys->savedata);
+    SaveVarsFlags *varsFlags = Save_VarsFlags_Get(fsys->savedata);
     LocalFieldData *localFieldData;
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
 
     switch (*state_p) {
     case 0:
-        if (CheckFlag966(scriptState)) {
+        if (CheckFlag966(varsFlags)) {
             localFieldData = Save_LocalFieldData_Get(fsys->savedata);
             if (_IsPlayerStandingInFrontOfUnionRoomReception(fsys)) {
                 _SetDynamicWarpToUnionRoomExit(fsys);
             }
-            ClearFlag966(scriptState);
+            ClearFlag966(varsFlags);
             sub_02052F94(fsys, LocalFieldData_GetDynamicWarp(localFieldData));
             sub_02053284(fsys);
             sub_02053038(fsys, FALSE);
@@ -397,7 +397,7 @@ TaskManager *CallFieldTask_ContinueGame_Normal(FieldSystem *fsys) {
 static BOOL FieldTask_ContinueGame_CommError(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     struct ErrorContinueEnv *env = TaskManager_GetEnv(taskManager);
-    ScriptState *scriptState = SaveArray_Flags_Get(fsys->savedata);
+    SaveVarsFlags *varsFlags = Save_VarsFlags_Get(fsys->savedata);
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
 
     switch (*state_p) {
@@ -438,13 +438,13 @@ static BOOL FieldTask_ContinueGame_CommError(TaskManager *taskManager) {
 }
 
 TaskManager *CallFieldTask_ContinueGame_CommError(FieldSystem *fsys) {
-    ScriptState *scriptState;
+    SaveVarsFlags *varsFlags;
     struct ErrorContinueEnv *env;
     if (!MapHeader_MapIsUnionRoom(fsys->location->mapId)) {
         if (_IsPlayerStandingInFrontOfUnionRoomReception(fsys)) {
-            scriptState = SaveArray_Flags_Get(fsys->savedata);
+            varsFlags = Save_VarsFlags_Get(fsys->savedata);
             _SetDynamicWarpToUnionRoomExit(fsys);
-            SetFlag966(scriptState);
+            SetFlag966(varsFlags);
         } else {
             return CallFieldTask_ContinueGame_Normal(fsys);
         }

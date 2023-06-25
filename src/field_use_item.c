@@ -138,8 +138,8 @@ void ItemCheckUseData_Init(FieldSystem *fsys, struct ItemCheckUseData *dat) {
 
     dat->fsys = fsys;
     dat->mapId = fsys->location->mapId;
-    dat->haveFollower = ScriptState_CheckHaveFollower(SaveArray_Flags_Get(fsys->savedata));
-    dat->haveRocketCostume = ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_Get(fsys->savedata));
+    dat->haveFollower = Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(fsys->savedata));
+    dat->haveRocketCostume = Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(fsys->savedata));
     dat->playerState = PlayerAvatar_GetState(fsys->playerAvatar);
 
     x = GetPlayerXCoord(fsys->playerAvatar);
@@ -755,10 +755,10 @@ int UseRegisteredItemButtonInField(FieldSystem *fsys, u8 slot) {
     if (sub_02067584(fsys) == TRUE) {
          return 0;
     }
-    if (ScriptState_CheckPalParkSysFlag(SaveArray_Flags_Get(fsys->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckPalParkSysFlag(Save_VarsFlags_Get(fsys->savedata)) == TRUE) {
         return 0;
     }
-    if (CheckFlag996(SaveArray_Flags_Get(fsys->savedata)) == TRUE) {
+    if (CheckFlag996(Save_VarsFlags_Get(fsys->savedata)) == TRUE) {
         return 0;
     }
     if (ov01_021F6B10(fsys) != TRUE) {

@@ -218,7 +218,7 @@ _0203BB78:
 	lsr r5, r5, #0x1f
 	beq _0203BBA2
 	ldr r0, [r0, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	mov r2, #0x12
 	add r3, r4, #0
 	mul r3, r2
@@ -227,7 +227,7 @@ _0203BB78:
 	ldrh r2, [r2, r3]
 	lsl r2, r2, #0x18
 	lsr r2, r2, #0x18
-	bl ScriptState_FlypointFlagAction
+	bl Save_VarsFlags_FlypointFlagAction
 	pop {r3, r4, r5, pc}
 _0203BBA2:
 	add r4, r4, #1

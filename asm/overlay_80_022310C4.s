@@ -67,8 +67,8 @@ ov80_022310C4: ; 0x022310C4
 	bne _02231158
 	ldr r0, _022313B0 ; =0x000006FC
 	ldr r0, [r1, r0]
-	bl SaveArray_Flags_Get
-	bl ScriptState_GetVar4052
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_GetVar4052
 	b _02231164
 _02231158:
 	ldr r0, [sp, #0xc]

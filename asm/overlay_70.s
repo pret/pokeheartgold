@@ -18421,14 +18421,14 @@ _02240AB0:
 _02240AF4:
 	ldr r0, [r5]
 	ldr r0, [r0, #0x20]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	add r6, r0, #0
-	bl ScriptState_GetVar404C
+	bl Save_VarsFlags_GetVar404C
 	cmp r0, #0
 	bne _02240B0E
 	add r0, r6, #0
 	mov r1, #1
-	bl ScriptState_SetVar404C
+	bl Save_VarsFlags_SetVar404C
 _02240B0E:
 	add r0, r4, #0
 	mov r1, #9
@@ -18545,14 +18545,14 @@ _02240BC2:
 _02240BFC:
 	ldr r0, [r5]
 	ldr r0, [r0, #0x20]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	add r6, r0, #0
-	bl ScriptState_GetVar404C
+	bl Save_VarsFlags_GetVar404C
 	cmp r0, #0
 	bne _02240C16
 	add r0, r6, #0
 	mov r1, #1
-	bl ScriptState_SetVar404C
+	bl Save_VarsFlags_SetVar404C
 _02240C16:
 	mov r1, #0x46
 	add r0, sp, #0

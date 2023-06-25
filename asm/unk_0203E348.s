@@ -1464,7 +1464,7 @@ CreateApricornBoxWork: ; 0x0203ED24
 	cmp r6, #1
 	bne _0203ED72
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	bl CheckFlag997
 	cmp r0, #0
 	bne _0203ED72
@@ -1595,19 +1595,19 @@ sub_0203EE24: ; 0x0203EE24
 sub_0203EE54: ; 0x0203EE54
 	push {r4, lr}
 	add r4, r0, #0
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	mov r1, #0xef
 	bl CheckFlagInArray
 	cmp r0, #0
 	beq _0203EE8A
 	add r0, r4, #0
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	mov r1, #0xf0
 	bl CheckFlagInArray
 	cmp r0, #0
 	beq _0203EE8A
 	add r0, r4, #0
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	mov r1, #0xf1
 	bl CheckFlagInArray
 	cmp r0, #0
@@ -2799,7 +2799,7 @@ sub_0203F7B0: ; 0x0203F7B0
 	add r0, r0, #4
 	str r1, [r4, r0]
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	bl CheckGameClearFlag
 	ldr r1, _0203F7EC ; =0x00000678
 	mov r2, #0

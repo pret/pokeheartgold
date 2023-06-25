@@ -85,8 +85,8 @@ static const struct FieldMoveFuncDat sFieldMoveFuncTable[] = {
 };
 
 static inline BOOL MoveUseCheck_SafariOrPalPark(const struct FieldMoveCheckData *checkData) {
-    if (ScriptState_CheckSafariSysFlag(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE || ScriptState_CheckPalParkSysFlag(
-        SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckSafariSysFlag(Save_VarsFlags_Get(checkData->fsys->savedata)) == TRUE || Save_VarsFlags_CheckPalParkSysFlag(
+        Save_VarsFlags_Get(checkData->fsys->savedata)) == TRUE) {
         return TRUE;
     } else {
         return FALSE;
@@ -94,8 +94,8 @@ static inline BOOL MoveUseCheck_SafariOrPalPark(const struct FieldMoveCheckData 
 }
 
 static inline BOOL MoveUseCheck_PalPark(const struct FieldMoveCheckData *checkData) {
-    if (ScriptState_CheckPalParkSysFlag(
-        SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckPalParkSysFlag(
+        Save_VarsFlags_Get(checkData->fsys->savedata)) == TRUE) {
         return TRUE;
     } else {
         return FALSE;
@@ -226,11 +226,11 @@ static u32 FieldMoveMenuCheck_Fly(const struct FieldMoveCheckData *checkData) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (ScriptState_CheckHaveFollower(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 
@@ -267,11 +267,11 @@ static u32 FieldMoveMenuCheck_Surf(const struct FieldMoveCheckData *checkData) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (ScriptState_CheckHaveFollower(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 
@@ -411,11 +411,11 @@ static u32 FieldMoveMenuCheck_RockClimb(const struct FieldMoveCheckData *checkDa
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (ScriptState_CheckHaveFollower(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 
@@ -486,11 +486,11 @@ static u32 FieldMoveMenuCheck_Teleport(const struct FieldMoveCheckData *checkDat
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (ScriptState_CheckHaveFollower(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 
@@ -532,11 +532,11 @@ static u32 FieldMoveMenuCheck_Dig(const struct FieldMoveCheckData *checkData) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (ScriptState_CheckHaveFollower(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (ScriptState_CheckRocketCostumeFlag(SaveArray_Flags_Get(checkData->fsys->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(checkData->fsys->savedata)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 

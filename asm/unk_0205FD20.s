@@ -2455,7 +2455,7 @@ sub_02061070: ; 0x02061070
 	ldr r0, [r3]
 	str r0, [r2]
 	add r0, r5, #0
-	bl MapObject_CheckFlag23
+	bl MapObject_CheckIgnoreHeights
 	cmp r0, #1
 	bne _020610A2
 	mov r1, #1

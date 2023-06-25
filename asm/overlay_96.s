@@ -4081,7 +4081,7 @@ ov96_021E7718: ; 0x021E7718
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	str r0, [sp]
 	mov r0, #0x1d
 	lsl r0, r0, #4
@@ -20436,7 +20436,7 @@ ov96_021EF2A0: ; 0x021EF2A0
 ov96_021EF2AC: ; 0x021EF2AC
 	push {r3, lr}
 	bl ov96_021E5D60
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	mov r1, #0xef
 	bl CheckFlagInArray
 	pop {r3, pc}

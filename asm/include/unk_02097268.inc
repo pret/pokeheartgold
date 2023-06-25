@@ -14,8 +14,8 @@
 .public sub_0202F6AC
 .public sub_0202F6B8
 .public sub_0202F720
-.public SaveArray_Flags_Get
-.public ScriptState_CheckSafariSysFlag
+.public Save_VarsFlags_Get
+.public Save_VarsFlags_CheckSafariSysFlag
 .public sub_02097268
 .public sub_0209730C
 .public sub_020974C4

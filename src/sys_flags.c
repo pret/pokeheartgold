@@ -1,3 +1,4 @@
+#include "global.h"
 #include "constants/sndseq.h"
 #include "constants/maps.h"
 #include "constants/flags.h"
@@ -25,19 +26,19 @@ static const struct MusicOverride sMusicOverrideMap[] = {
     { MAP_D23R0107, FLAG_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO },
 };
 
-void SetScriptFlag(ScriptState* state, u16 flag_id) {
+void SetScriptFlag(SaveVarsFlags* state, u16 flag_id) {
     SetFlagInArray(state, flag_id);
 }
 
-void ClearScriptFlag(ScriptState* state, u16 flag_id) {
+void ClearScriptFlag(SaveVarsFlags* state, u16 flag_id) {
     ClearFlagInArray(state, flag_id);
 }
 
-BOOL CheckScriptFlag(ScriptState* state, u16 flag_id) {
+BOOL CheckScriptFlag(SaveVarsFlags* state, u16 flag_id) {
     return CheckFlagInArray(state, flag_id);
 }
 
-BOOL FlagAction(ScriptState* state, u32 action, u32 flag_id) {
+BOOL FlagAction(SaveVarsFlags* state, u32 action, u32 flag_id) {
     switch (action) {
     case FLAG_ACTION_SET:
         SetScriptFlag(state, flag_id);
@@ -54,67 +55,67 @@ BOOL FlagAction(ScriptState* state, u32 action, u32 flag_id) {
     return FALSE;
 }
 
-void SetFlag960(ScriptState* state) {
+void SetFlag960(SaveVarsFlags* state) {
     SetScriptFlag(state, FLAG_UNK_960);
 }
 
-BOOL CheckFlag960(ScriptState* state) {
+BOOL CheckFlag960(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_UNK_960);
 }
 
-void SetGameClearFlag(ScriptState* state) {
+void SetGameClearFlag(SaveVarsFlags* state) {
     SetScriptFlag(state, FLAG_GAME_CLEAR);
 }
 
-BOOL CheckGameClearFlag(ScriptState* state) {
+BOOL CheckGameClearFlag(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_GAME_CLEAR);
 }
 
-void ScriptState_SetHaveFollowerFlag(ScriptState* state) {
+void Save_VarsFlags_SetHaveFollowerFlag(SaveVarsFlags* state) {
     SetScriptFlag(state, FLAG_HAVE_FOLLOWER);
 }
 
-void ScriptState_ClearHaveFollowerFlag(ScriptState* state) {
+void Save_VarsFlags_ClearHaveFollowerFlag(SaveVarsFlags* state) {
     ClearScriptFlag(state, FLAG_HAVE_FOLLOWER);
 }
 
-BOOL ScriptState_CheckHaveFollower(ScriptState* state) {
+BOOL Save_VarsFlags_CheckHaveFollower(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_HAVE_FOLLOWER);
 }
 
-void SetFlag99C(ScriptState* state) {
+void SetFlag99C(SaveVarsFlags* state) {
     SetScriptFlag(state, FLAG_UNK_99C);
 }
 
-void SetFlag965(ScriptState* state) {
+void SetFlag965(SaveVarsFlags* state) {
     SetScriptFlag(state, FLAG_UNK_965);
 }
 
-void ClearFlag965(ScriptState* state) {
+void ClearFlag965(SaveVarsFlags* state) {
     ClearScriptFlag(state, FLAG_UNK_965);
 }
 
-BOOL CheckFlag965(ScriptState* state) {
+BOOL CheckFlag965(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_UNK_965);
 }
 
-void ScriptState_SetRocketCostumeFlag(ScriptState* state) {
+void Save_VarsFlags_SetRocketCostumeFlag(SaveVarsFlags* state) {
     SetScriptFlag(state, FLAG_SYS_ROCKET_COSTUME);
 }
 
-void ScriptState_ClearRocketCostumeFlag(ScriptState* state) {
+void Save_VarsFlags_ClearRocketCostumeFlag(SaveVarsFlags* state) {
     ClearScriptFlag(state, FLAG_SYS_ROCKET_COSTUME);
 }
 
-BOOL ScriptState_CheckRocketCostumeFlag(ScriptState* state) {
+BOOL Save_VarsFlags_CheckRocketCostumeFlag(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_SYS_ROCKET_COSTUME);
 }
 
-BOOL EventFlagCheck_RematchGroup(ScriptState* state, u16 flag_id) {
+BOOL EventFlagCheck_RematchGroup(SaveVarsFlags* state, u16 flag_id) {
     return CheckScriptFlag(state, FLAG_UNK_97B + flag_id);
 }
 
-void ScriptState_SetAlphPuzzleFlag(ScriptState* state, u8 flag) {
+void Save_VarsFlags_SetAlphPuzzleFlag(SaveVarsFlags* state, u8 flag) {
     switch (flag) {
     case 0:
         SetScriptFlag(state, FLAG_SYS_ALPH_PUZZLE_KABUTO);
@@ -131,7 +132,7 @@ void ScriptState_SetAlphPuzzleFlag(ScriptState* state, u8 flag) {
     }
 }
 
-BOOL ScriptState_CheckAlphPuzzleFlag(ScriptState* state, u8 flag) {
+BOOL Save_VarsFlags_CheckAlphPuzzleFlag(SaveVarsFlags* state, u8 flag) {
     BOOL ret = FALSE;
 
     switch (flag) {
@@ -152,7 +153,7 @@ BOOL ScriptState_CheckAlphPuzzleFlag(ScriptState* state, u8 flag) {
     return ret;
 }
 
-void ScriptState_MomsSavingsFlagAction(ScriptState* state, BOOL set) {
+void Save_VarsFlags_MomsSavingsFlagAction(SaveVarsFlags* state, BOOL set) {
     if (set) {
         SetScriptFlag(state, FLAG_SYS_MOMS_SAVINGS);
     } else {
@@ -160,11 +161,11 @@ void ScriptState_MomsSavingsFlagAction(ScriptState* state, BOOL set) {
     }
 }
 
-BOOL ScriptState_MomsSavingsFlagCheck(ScriptState* state) {
+BOOL Save_VarsFlags_MomsSavingsFlagCheck(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_SYS_MOMS_SAVINGS);
 }
 
-u16 GetOverriddenMapMusic(ScriptState* state, u32 map_no) {
+u16 GetOverriddenMapMusic(SaveVarsFlags* state, u32 map_no) {
     for (u32 i = 0; i < NELEMS(sMusicOverrideMap); i++) {
         if (map_no == sMusicOverrideMap[i].map && CheckScriptFlag(state, sMusicOverrideMap[i].flag)) {
             return sMusicOverrideMap[i].seq;
@@ -174,121 +175,121 @@ u16 GetOverriddenMapMusic(ScriptState* state, u32 map_no) {
     return 0;
 }
 
-void SetFlag966(ScriptState* state) {
+void SetFlag966(SaveVarsFlags* state) {
     SetScriptFlag(state, FLAG_UNK_966);
 }
 
-void ClearFlag966(ScriptState* state) {
+void ClearFlag966(SaveVarsFlags* state) {
     ClearScriptFlag(state, FLAG_UNK_966);
 }
 
-BOOL CheckFlag966(ScriptState* state) {
+BOOL CheckFlag966(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_UNK_966);
 }
 
-BOOL CheckMetBill(ScriptState* state) {
+BOOL CheckMetBill(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_SYS_MET_BILL);
 }
 
-void SetFlag975(ScriptState* state) {
+void SetFlag975(SaveVarsFlags* state) {
     SetScriptFlag(state, FLAG_UNK_975);
 }
 
-void ClearFlag975(ScriptState* state) {
+void ClearFlag975(SaveVarsFlags* state) {
     ClearScriptFlag(state, FLAG_UNK_975);
 }
 
-void ScriptState_SetSafariSysFlag(ScriptState* state) {
+void Save_VarsFlags_SetSafariSysFlag(SaveVarsFlags* state) {
     SetScriptFlag(state, FLAG_SYS_SAFARI);
 }
 
-void ScriptState_ClearSafariSysFlag(ScriptState* state) {
+void Save_VarsFlags_ClearSafariSysFlag(SaveVarsFlags* state) {
     ClearScriptFlag(state, FLAG_SYS_SAFARI);
 }
 
-BOOL ScriptState_CheckSafariSysFlag(ScriptState* state) {
+BOOL Save_VarsFlags_CheckSafariSysFlag(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_SYS_SAFARI);
 }
 
-BOOL CheckFlag996(ScriptState* state) {
+BOOL CheckFlag996(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_UNK_996);
 }
 
-void ScriptState_SetPalParkSysFlag(ScriptState* state) {
+void Save_VarsFlags_SetPalParkSysFlag(SaveVarsFlags* state) {
     SetScriptFlag(state, FLAG_SYS_PAL_PARK);
 }
 
-void ScriptState_ClearPalParkSysFlag(ScriptState* state) {
+void Save_VarsFlags_ClearPalParkSysFlag(SaveVarsFlags* state) {
     ClearScriptFlag(state, FLAG_SYS_PAL_PARK);
 }
 
-BOOL ScriptState_CheckPalParkSysFlag(ScriptState* state) {
+BOOL Save_VarsFlags_CheckPalParkSysFlag(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_SYS_PAL_PARK);
 }
 
-void ClearFlag972(ScriptState* state) {
+void ClearFlag972(SaveVarsFlags* state) {
     ClearScriptFlag(state, FLAG_UNK_972);
 }
 
-BOOL StrengthFlagAction(ScriptState* state, u32 action) {
+BOOL StrengthFlagAction(SaveVarsFlags* state, u32 action) {
     return FlagAction(state, action, FLAG_STRENGTH_ACTIVE);
 }
 
-void SysFlagFlashSet(ScriptState* state) {
+void SysFlagFlashSet(SaveVarsFlags* state) {
     SetScriptFlag(state, FLAG_SYS_FLASH);
 }
 
-void SysFlagFlashClear(ScriptState* state) {
+void SysFlagFlashClear(SaveVarsFlags* state) {
     ClearScriptFlag(state, FLAG_SYS_FLASH);
 }
 
-BOOL SysFlagFlashCheck(ScriptState* state) {
+BOOL SysFlagFlashCheck(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_SYS_FLASH);
 }
 
-void SysFlagDefogSet(ScriptState* state) {
+void SysFlagDefogSet(SaveVarsFlags* state) {
     SetScriptFlag(state, FLAG_SYS_DEFOG);
 }
 
-void SysFlagDefogClear(ScriptState* state) {
+void SysFlagDefogClear(SaveVarsFlags* state) {
     ClearScriptFlag(state, FLAG_SYS_DEFOG);
 }
 
-BOOL SysFlagDefogCheck(ScriptState* state) {
+BOOL SysFlagDefogCheck(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_SYS_DEFOG);
 }
 
-BOOL ScriptState_FlypointFlagAction(ScriptState* state, u32 action, u32 flypoint_flag_no) {
+BOOL Save_VarsFlags_FlypointFlagAction(SaveVarsFlags* state, u32 action, u32 flypoint_flag_no) {
     GF_ASSERT(flypoint_flag_no < 38);
     return FlagAction(state, action, FLAG_SYS_FLYPOINT_PALLET + flypoint_flag_no);
 }
 
-void SetFlag970(ScriptState* state) {
+void SetFlag970(SaveVarsFlags* state) {
     SetScriptFlag(state, FLAG_UNK_970);
 }
 
-BOOL CheckGotStarter(ScriptState* state) {
+BOOL CheckGotStarter(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_GOT_STARTER);
 }
 
-BOOL CheckGotPokegear(ScriptState* state) {
+BOOL CheckGotPokegear(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_GOT_POKEGEAR);
 }
 
-BOOL CheckGotPokedex(ScriptState* state) {
+BOOL CheckGotPokedex(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_GOT_POKEDEX);
 }
 
-BOOL CheckGotMenuIconI(ScriptState* state, s32 icon_idx) {
+BOOL CheckGotMenuIconI(SaveVarsFlags* state, s32 icon_idx) {
     GF_ASSERT(icon_idx < 4);
     return CheckScriptFlag(state, FLAG_GOT_BAG + icon_idx);
 }
 
-BOOL CheckFlag96A(ScriptState* state) {
+BOOL CheckFlag96A(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_UNK_96A);
 }
 
-BOOL sub_020669B4(ScriptState* state, u32 a1) {
+BOOL sub_020669B4(SaveVarsFlags* state, u32 a1) {
     if (a1 > 2) {
         return FALSE;
     }
@@ -296,47 +297,47 @@ BOOL sub_020669B4(ScriptState* state, u32 a1) {
     return CheckScriptFlag(state, FLAG_UNK_96B + a1);
 }
 
-BOOL CheckDisabledCianwoodWaterfall(ScriptState* state) {
+BOOL CheckDisabledCianwoodWaterfall(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_SYS_CIANWOOD_WATERFALL_DISABLE);
 }
 
-BOOL CheckSolvedLtSurgeGym(ScriptState* state) {
+BOOL CheckSolvedLtSurgeGym(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_SYS_SOLVED_LT_SURGE_GYM);
 }
 
-BOOL CheckFlag982(ScriptState* state) {
+BOOL CheckFlag982(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_UNK_982);
 }
 
-BOOL CheckFlag09A(ScriptState* state) {
+BOOL CheckFlag09A(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_UNK_09A);
 }
 
-BOOL CheckFlag997(ScriptState* state) {
+BOOL CheckFlag997(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_UNK_997);
 }
 
-void SetFlag99A(ScriptState* state) {
+void SetFlag99A(SaveVarsFlags* state) {
     SetScriptFlag(state, FLAG_UNK_99A);
 }
 
-void ClearFlag99A(ScriptState* state) {
+void ClearFlag99A(SaveVarsFlags* state) {
     ClearScriptFlag(state, FLAG_UNK_99A);
 }
 
-BOOL CheckFlag99A(ScriptState* state) {
+BOOL CheckFlag99A(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_UNK_99A);
 }
 
-BOOL CheckBattledSnorlax(ScriptState* state) {
+BOOL CheckBattledSnorlax(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_SNORLAX_MEET);
 }
 
-BOOL CheckBattledRedGyarados(ScriptState* state) {
+BOOL CheckBattledRedGyarados(SaveVarsFlags* state) {
     return CheckScriptFlag(state, FLAG_RED_GYARADOS_MEET);
 }
 
-void ChangeFlag99D(ScriptState* state, BOOL set) {
+void ChangeFlag99D(SaveVarsFlags* state, BOOL set) {
     if (set) {
         SetScriptFlag(state, FLAG_UNK_99D);
     } else {

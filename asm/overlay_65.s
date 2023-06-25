@@ -6766,14 +6766,14 @@ ov65_0221F5A0: ; 0x0221F5A0
 	bne _0221F62C
 _0221F614:
 	ldr r0, [r5, #0x10]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	str r0, [sp, #0x10]
-	bl ScriptState_GetVar404C
+	bl Save_VarsFlags_GetVar404C
 	cmp r0, #0
 	bne _0221F62C
 	ldr r0, [sp, #0x10]
 	mov r1, #1
-	bl ScriptState_SetVar404C
+	bl Save_VarsFlags_SetVar404C
 _0221F62C:
 	add r0, r4, #0
 	mov r1, #0x6f

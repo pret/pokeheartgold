@@ -1510,7 +1510,7 @@ ov01_021E6580: ; 0x021E6580
 	cmp r5, #3
 	bne _021E65D8
 	ldr r0, [r4, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	bl CheckFlag96A
 	cmp r0, #0
 	beq _021E65D8

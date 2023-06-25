@@ -98,7 +98,7 @@
 .public sub_0203DF8C
 .public sub_0203E13C
 .public MapSceneScriptCheck
-.public SaveArray_Flags_Get
+.public Save_VarsFlags_Get
 .public Fsys_TaskIsRunning
 .public sub_020558BC
 .public sub_02056EE0
@@ -117,9 +117,9 @@
 .public MapObject_GetGfxID
 .public MapObject_GetScript
 .public sub_0205F330
-.public ScriptState_CheckSafariSysFlag
+.public Save_VarsFlags_CheckSafariSysFlag
 .public CheckFlag996
-.public ScriptState_CheckPalParkSysFlag
+.public Save_VarsFlags_CheckPalParkSysFlag
 .public sub_02067584
 .public FieldSys_BugContest_Get
 .public BugContest_GetSportBallsAddr

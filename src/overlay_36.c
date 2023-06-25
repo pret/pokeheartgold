@@ -188,7 +188,7 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SaveData* saved
         PlayerProfile_SetTrainerID(profile, rand);
     }
 
-    SAFARIZONE* safari_zone = Save_SafariZone_Get(savedata);
+    SafariZone* safari_zone = Save_SafariZone_Get(savedata);
     SafariZone_ResetAreaSetToDefaultSet(safari_zone->area_sets, rand);
 
     PlayerProfile_SetAvatar(profile, sub_0205B418(rand, PlayerProfile_GetTrainerGender(profile), 0));
@@ -247,7 +247,7 @@ static void NewGame_InitSaveData(HeapID heap_id, SaveData* savedata) {
 
     PlayerProfile_SetMoney(Save_PlayerData_GetProfileAddr(savedata), 3000);
 
-    ScriptState_SetFishingCompetitionLengthRecord(SaveArray_Flags_Get(savedata), 56150); // 3'6"
+    Save_VarsFlags_SetFishingCompetitionLengthRecord(Save_VarsFlags_Get(savedata), 56150); // 3'6"
 
-    SetFlag960(SaveArray_Flags_Get(savedata));
+    SetFlag960(Save_VarsFlags_Get(savedata));
 }

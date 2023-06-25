@@ -113,7 +113,7 @@ static u16 GetIndexOfFirstUnbeatenRematch(SaveData* savedata, u16 rematch_set_no
 }
 
 static u32 CheckUnlockedRematchGroup(SaveData* savedata, u16 rematch_set_no, u16 rematch_no) {
-    ScriptState* state = SaveArray_Flags_Get(savedata);
+    SaveVarsFlags* state = Save_VarsFlags_Get(savedata);
 
     if (rematch_no == 0) {
         return rematch_no;

@@ -140,7 +140,7 @@ typedef enum MapObjectFlagBits {
     MAPOBJECTFLAG_UNK20 = (1 << 20),
     MAPOBJECTFLAG_UNK21 = (1 << 21),
     MAPOBJECTFLAG_UNK22 = (1 << 22),
-    MAPOBJECTFLAG_UNK23 = (1 << 23),
+    MAPOBJECTFLAG_IGNORE_HEIGHTS = (1 << 23),
     MAPOBJECTFLAG_UNK24 = (1 << 24),
     MAPOBJECTFLAG_UNK25 = (1 << 25),
     MAPOBJECTFLAG_UNK26 = (1 << 26),
@@ -309,7 +309,7 @@ void ObjectEventTemplate_SetYCoord(ObjectEvent*, u32);
 void ObjectEventTemplate_SetHeight(ObjectEvent*, u32);
 u8* sub_0205F3BC(LocalMapObject* object);
 u8* sub_0205F394(LocalMapObject* object);
-BOOL MapObject_CheckFlag23(LocalMapObject* object);
+BOOL MapObject_CheckIgnoreHeights(LocalMapObject* object);
 BOOL MapObject_CheckFlag29(LocalMapObject* object);
 fx32 MapObject_GetPosVecYCoord(LocalMapObject* object);
 u32 MapObject_GetInitialY(LocalMapObject* object);
@@ -413,7 +413,7 @@ void MapObject_SetFlag2(LocalMapObject* object);
 void MapObject_ClearFlag3(LocalMapObject* object);
 BOOL MapObject_CheckFlag19Is0(LocalMapObject* object);
 BOOL sub_0205F714(LocalMapObject* object);
-void MapObject_SetFlag23(LocalMapObject* object, BOOL set);
+void MapObject_SetIgnoreHeights(LocalMapObject* object, BOOL set);
 void MapObject_SetFlag26(LocalMapObject* object, BOOL set);
 BOOL MapObject_CheckFlag26(LocalMapObject* object);
 void MapObject_SetFlag28(LocalMapObject* object, BOOL set);

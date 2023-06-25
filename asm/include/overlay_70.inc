@@ -222,10 +222,10 @@
 .public sub_0203A914
 .public sub_0203A930
 .public ShowCommunicationError
-.public SaveArray_Flags_Get
+.public Save_VarsFlags_Get
 .public sub_0205B464
-.public ScriptState_GetVar404C
-.public ScriptState_SetVar404C
+.public Save_VarsFlags_GetVar404C
+.public Save_VarsFlags_SetVar404C
 .public SizeOfStructPokemon
 .public AllocMonZeroed
 .public AcquireBoxMonLock

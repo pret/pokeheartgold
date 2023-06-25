@@ -402,10 +402,10 @@ const struct MartItem *_0210FA04[] = {
 };
 
 BOOL ScrCmd_771(ScriptContext *ctx) {
-    ScriptState *flagsys;
+    SaveVarsFlags *flagsys;
     RTCDate date;
 
-    flagsys = SaveArray_Flags_Get(ctx->fsys->savedata);
+    flagsys = Save_VarsFlags_Get(ctx->fsys->savedata);
     GF_RTC_CopyDate(&date);
 
     // UB: Possibly illegal access to _0210F9CC between Tuesday and Saturday, inclusive
@@ -485,7 +485,7 @@ BOOL ScrCmd_772(ScriptContext *ctx) {
 BOOL ScrCmd_834(ScriptContext *ctx) {
     u16 *sp0;
     POKEATHLON_SAV *pokeathlon;
-    ScriptState *scriptState;
+    SaveVarsFlags *varsFlags;
     int r6;
     int r4;
     RTCDate date;
@@ -496,7 +496,7 @@ BOOL ScrCmd_834(ScriptContext *ctx) {
     pokeathlon = Save_Pokeathlon_Get(ctx->fsys->savedata);
     r6 = 0;
     r4 = 0;
-    scriptState = SaveArray_Flags_Get(ctx->fsys->savedata);
+    varsFlags = Save_VarsFlags_Get(ctx->fsys->savedata);
     GF_RTC_CopyDate(&date);
     if (Pokedex_GetNatDexFlag(Save_Pokedex_Get(ctx->fsys->savedata))) {
         r3 = _0210FA04[date.week + 7];

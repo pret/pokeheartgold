@@ -49,7 +49,7 @@ sub_02067A88: ; 0x02067A88
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	mov r1, #0
 	bl StrengthFlagAction
 	ldr r1, [r5, #0x20]
@@ -68,8 +68,8 @@ sub_02067A88: ; 0x02067A88
 	add r0, #0x7c
 	strh r1, [r0]
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
-	bl ScriptState_CheckSafariSysFlag
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_CheckSafariSysFlag
 	cmp r0, #0
 	bne _02067AE0
 	ldr r0, [r5, #0xc]
@@ -94,10 +94,10 @@ sub_02067AE4: ; 0x02067AE4
 	cmp r0, #1
 	beq _02067B84
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	bl ClearFlag972
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	mov r1, #0
 	bl StrengthFlagAction
 	ldr r1, [r5, #0x20]
@@ -126,7 +126,7 @@ sub_02067AE4: ; 0x02067AE4
 	cmp r0, #0
 	bne _02067B56
 	ldr r0, [r5, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	add r4, r0, #0
 	bl SysFlagFlashClear
 	add r0, r4, #0
@@ -163,8 +163,8 @@ sub_02067B88: ; 0x02067B88
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SaveArray_Flags_Get
-	bl ScriptState_ClearSafariSysFlag
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_ClearSafariSysFlag
 	ldr r0, [r4, #0xc]
 	bl Save_Roamers_Get
 	bl Save_RandomizeRoamersLocation
@@ -177,8 +177,8 @@ sub_02067BA4: ; 0x02067BA4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SaveArray_Flags_Get
-	bl ScriptState_ClearSafariSysFlag
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_ClearSafariSysFlag
 	ldr r0, [r4, #0xc]
 	bl Save_Roamers_Get
 	bl Save_RandomizeRoamersLocation
@@ -190,8 +190,8 @@ sub_02067BA4: ; 0x02067BA4
 sub_02067BC0: ; 0x02067BC0
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl SaveArray_Flags_Get
-	bl ScriptState_ClearSafariSysFlag
+	bl Save_VarsFlags_Get
+	bl Save_VarsFlags_ClearSafariSysFlag
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end sub_02067BC0
@@ -200,12 +200,12 @@ sub_02067BC0: ; 0x02067BC0
 Fsys_ClearFollowingTrainer: ; 0x02067BD0
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
-	bl SaveArray_Flags_Get
+	bl Save_VarsFlags_Get
 	add r4, r0, #0
-	bl ScriptState_ClearHaveFollowerFlag
+	bl Save_VarsFlags_ClearHaveFollowerFlag
 	add r0, r4, #0
 	mov r1, #0
-	bl ScriptState_SetFollowerTrainerNum
+	bl Save_VarsFlags_SetFollowerTrainerNum
 	pop {r4, pc}
 	thumb_func_end Fsys_ClearFollowingTrainer
 

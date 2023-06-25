@@ -1,3 +1,4 @@
+#include "global.h"
 #include "gf_rtc.h"
 #include "safari_zone.h"
 #include "string_util.h"
@@ -28,14 +29,14 @@ static const u8 sSafariZoneDefaultAreaSets[10][SAFARI_ZONE_MAX_AREAS_PER_SET] = 
 };
 
 u32 Save_SafariZone_sizeof(void) {
-    return sizeof(SAFARIZONE);
+    return sizeof(SafariZone);
 }
 
-SAFARIZONE* Save_SafariZone_Get(SaveData* savedata) {
+SafariZone* Save_SafariZone_Get(SaveData* savedata) {
     return SaveArray_Get(savedata, SAVE_SAFARI_ZONE);
 }
 
-void Save_SafariZone_Init(SAFARIZONE* safari_zone) {
+void Save_SafariZone_Init(SafariZone* safari_zone) {
     for (s32 i = 0; i < SAFARI_ZONE_MAX_AREA_SETS; i++) {
         MI_CpuClear8(&safari_zone->area_sets[i], sizeof(SAFARIZONE_AREASET));
     }
@@ -52,7 +53,7 @@ void SafariZone_ResetAreaSetToDefaultSet(SAFARIZONE_AREASET* area_set, u32 defau
     MI_CpuClear8(area_set->unk2DC, sizeof(area_set->unk2DC));
 }
 
-void sub_0202F5F8(SAFARIZONE* safari_zone, s32 areaSetNo) {
+void sub_0202F5F8(SafariZone* safari_zone, s32 areaSetNo) {
     if (areaSetNo >= SAFARI_ZONE_MAX_AREA_SETS) {
         GF_ASSERT(FALSE);
         areaSetNo = 0;
@@ -61,11 +62,11 @@ void sub_0202F5F8(SAFARIZONE* safari_zone, s32 areaSetNo) {
     safari_zone->unk5F9_6 = areaSetNo;
 }
 
-u8 sub_0202F620(SAFARIZONE* safari_zone) {
+u8 sub_0202F620(SafariZone* safari_zone) {
     return safari_zone->unk5F9_6;
 }
 
-SAFARIZONE_AREASET* SafariZone_GetAreaSet(SAFARIZONE* safari_zone, s32 area_set_no) {
+SAFARIZONE_AREASET* SafariZone_GetAreaSet(SafariZone* safari_zone, s32 area_set_no) {
     if (area_set_no == 3) {
         area_set_no = safari_zone->unk5F9_6;
     }
@@ -78,7 +79,7 @@ SAFARIZONE_AREASET* SafariZone_GetAreaSet(SAFARIZONE* safari_zone, s32 area_set_
     return &safari_zone->area_sets[area_set_no];
 }
 
-void SafariZone_CopyAreaSet(SAFARIZONE* safari_zone, s32 area_set_no, SAFARIZONE_AREASET* area_set_dest) {
+void SafariZone_CopyAreaSet(SafariZone* safari_zone, s32 area_set_no, SAFARIZONE_AREASET* area_set_dest) {
     if (area_set_no >= SAFARI_ZONE_MAX_AREA_SETS) {
         GF_ASSERT(FALSE);
         SafariZone_InitAreaSet(area_set_dest);
@@ -88,7 +89,7 @@ void SafariZone_CopyAreaSet(SAFARIZONE* safari_zone, s32 area_set_no, SAFARIZONE
     MI_CpuCopy8(&safari_zone->area_sets[area_set_no], area_set_dest, sizeof(SAFARIZONE_AREASET));
 }
 
-void SafariZone_SetAreaSet(SAFARIZONE* safari_zone, s32 area_set_no, SAFARIZONE_AREASET* area_set_src) {
+void SafariZone_SetAreaSet(SafariZone* safari_zone, s32 area_set_no, SAFARIZONE_AREASET* area_set_src) {
     if (area_set_no >= SAFARI_ZONE_MAX_AREA_SETS) {
         GF_ASSERT(FALSE);
         return;
@@ -97,11 +98,11 @@ void SafariZone_SetAreaSet(SAFARIZONE* safari_zone, s32 area_set_no, SAFARIZONE_
     MI_CpuCopy8(area_set_src, &safari_zone->area_sets[area_set_no], sizeof(SAFARIZONE_AREASET));
 }
 
-void sub_0202F6A0(SAFARIZONE* safari_zone, u8 a1) {
+void sub_0202F6A0(SafariZone* safari_zone, u8 a1) {
     safari_zone->unk5F8 = a1;
 }
 
-u8 sub_0202F6AC(SAFARIZONE* safari_zone) {
+u8 sub_0202F6AC(SafariZone* safari_zone) {
     return safari_zone->unk5F8;
 }
 
@@ -133,16 +134,16 @@ void sub_0202F6B8(SAFARIZONE_AREASET* area_set, s32 a1) {
     }
 }
 
-u8 sub_0202F720(SAFARIZONE* safari_zone) {
+u8 sub_0202F720(SafariZone* safari_zone) {
     return safari_zone->unk5F9_0;
 }
 
-u8 sub_0202F730(SAFARIZONE* safari_zone, s32 a1) {
+u8 sub_0202F730(SafariZone* safari_zone, s32 a1) {
     sub_0202F754(safari_zone, (u8)(safari_zone->unk5F9_0 + a1));
     return safari_zone->unk5F9_0;
 }
 
-void sub_0202F754(SAFARIZONE* safari_zone, u8 a1) {
+void sub_0202F754(SafariZone* safari_zone, u8 a1) {
     if (a1 > 4) {
         safari_zone->unk5F9_0 = 4;
     } else {
@@ -150,11 +151,11 @@ void sub_0202F754(SAFARIZONE* safari_zone, u8 a1) {
     }
 }
 
-void sub_0202F784(SAFARIZONE* safari_zone, IGT* igt) {
+void sub_0202F784(SafariZone* safari_zone, IGT* igt) {
     safari_zone->unk5FA = (igt->hours * 60) + igt->minutes;
 }
 
-u32 sub_0202F798(SAFARIZONE* safari_zone, IGT* igt, s32 a2) {
+u32 sub_0202F798(SafariZone* safari_zone, IGT* igt, s32 a2) {
     u16 minutes = (igt->hours * 60) + igt->minutes;
     s32 delta = minutes - safari_zone->unk5FA;
 
@@ -169,7 +170,7 @@ u32 sub_0202F798(SAFARIZONE* safari_zone, IGT* igt, s32 a2) {
     return 0;
 }
 
-void SafariZone_SetLinkLeaderFromProfile(SAFARIZONE* safari_zone, PlayerProfile* profile, HeapID heap_id) {
+void SafariZone_SetLinkLeaderFromProfile(SafariZone* safari_zone, PlayerProfile* profile, HeapID heap_id) {
     SAFARIZONE_LINKLEADER *link_leader = &safari_zone->link_leader;
     link_leader->id = PlayerProfile_GetTrainerID(profile);
     link_leader->gender = PlayerProfile_GetTrainerGender(profile);
@@ -187,7 +188,7 @@ void SafariZone_SetLinkLeaderFromProfile(SAFARIZONE* safari_zone, PlayerProfile*
     link_leader->rtc_offset = OS_GetOwnerRtcOffset();
 }
 
-void SafariZone_GetLinkLeaderToProfile(SAFARIZONE* safari_zone, PlayerProfile* profile) {
+void SafariZone_GetLinkLeaderToProfile(SafariZone* safari_zone, PlayerProfile* profile) {
     SAFARIZONE_LINKLEADER *link_leader = &safari_zone->link_leader;
     PlayerProfile_SetTrainerID(profile, link_leader->id);
     PlayerProfile_SetTrainerGender(profile, link_leader->gender);
@@ -196,15 +197,15 @@ void SafariZone_GetLinkLeaderToProfile(SAFARIZONE* safari_zone, PlayerProfile* p
     Save_Profile_PlayerName_Set(profile, link_leader->name);
 }
 
-u8 SafariZone_GetLinkLeaderGender(SAFARIZONE* safari_zone) {
+u8 SafariZone_GetLinkLeaderGender(SafariZone* safari_zone) {
     return safari_zone->link_leader.gender;
 }
 
-u8 SafariZone_IsCurrentlyLinked(SAFARIZONE* safari_zone) {
+u8 SafariZone_IsCurrentlyLinked(SafariZone* safari_zone) {
     return safari_zone->link_leader.linked;
 }
 
-void SafariZone_DeactivateLinkIfExpired(SAFARIZONE* safari_zone) {
+void SafariZone_DeactivateLinkIfExpired(SafariZone* safari_zone) {
     SAFARIZONE_LINKLEADER *link_leader = &safari_zone->link_leader;
     if (!link_leader->linked) {
         return;

@@ -105,8 +105,8 @@ BOOL ScrCmd_TrainerBattle(ScriptContext *ctx) {
     u8 var3 = ScriptReadByte(ctx);
     u16 followerTrainerNum = 0;
 
-    if (ScriptState_CheckHaveFollower(SaveArray_Flags_Get(ctx->fsys->savedata)) == TRUE) {
-        followerTrainerNum = ScriptState_GetFollowerTrainerNum(SaveArray_Flags_Get(fsys->savedata));
+    if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(ctx->fsys->savedata)) == TRUE) {
+        followerTrainerNum = Save_VarsFlags_GetFollowerTrainerNum(Save_VarsFlags_Get(fsys->savedata));
     }
 
     SetupAndStartTrainerBattle(ctx->taskman, var0, var1, followerTrainerNum, var2, var3, HEAP_ID_FIELD, winFlag);
