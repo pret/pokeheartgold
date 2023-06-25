@@ -32,5 +32,6 @@ void ov12_0223BFFC(BattleSystem *bsys, u32 a1);
 void *ov12_0223A938(BattleSystem *bsys);
 int ov12_0223AB54(BattleSystem *bsys);
 u8 BattleSystem_GetMonBall(BattleSystem *bsys, Pokemon *mon);
+u32 BattleSystem_GetWinLoseFlags(BattleSystem *bsys);
 
 #endif

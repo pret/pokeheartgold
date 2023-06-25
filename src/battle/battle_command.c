@@ -1156,7 +1156,7 @@ BOOL BtlCmd_JumpToEffectScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     }
 
     if (ctx->battlerIdTarget == 255) {
-        ctx->unk_C = 39;
+        ctx->commandNext = CONTROLLER_COMMAND_39;
         BattleScriptJump(ctx, NARC_a_0_0_1, 281);
     } else {
         BattleScriptJump(ctx, NARC_a_0_0_0, ctx->moveNoCur);
@@ -2025,7 +2025,7 @@ BOOL BtlCmd_SetMoveToMirrorMove(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ctx->moveNoCur = move;
         ctx->battlerIdTarget = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, move, 1, 0);
         if (ctx->battlerIdTarget == 255) {
-            ctx->unk_C = 39;
+            ctx->commandNext = CONTROLLER_COMMAND_39;
             BattleScriptJump(ctx, NARC_a_0_0_1, 281);
         } else {
             ctx->unk_21A8[ctx->battlerIdAttacker][1] = ctx->battlerIdTarget;
@@ -2745,7 +2745,7 @@ BOOL BtlCmd_Counter(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         if (ctx->battleMons[ctx->battlerIdTarget].hp == 0) {
             ctx->battlerIdTarget = ov12_02253DA0(bsys, ctx, ctx->battlerIdAttacker);
             if (ctx->battleMons[ctx->battlerIdTarget].hp == 0) {
-                ctx->unk_C = 39;
+                ctx->commandNext = CONTROLLER_COMMAND_39;
                 BattleScriptJump(ctx, NARC_a_0_0_1, 281);
             }
         }
@@ -2776,7 +2776,7 @@ BOOL BtlCmd_MirrorCoat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         if (ctx->battleMons[ctx->battlerIdTarget].hp == 0) {
             ctx->battlerIdTarget = ov12_02253DA0(bsys, ctx, ctx->battlerIdAttacker);
             if (ctx->battleMons[ctx->battlerIdTarget].hp == 0) {
-                ctx->unk_C = 39;
+                ctx->commandNext = CONTROLLER_COMMAND_39;
                 BattleScriptJump(ctx, NARC_a_0_0_1, 281);
             }
         }
@@ -4499,7 +4499,7 @@ BOOL BtlCmd_MetalBurstDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         if (ctx->battleMons[ctx->battlerIdTarget].hp == 0) {
             ctx->battlerIdTarget = ov12_02253DA0(bsys, ctx, ctx->battlerIdAttacker);
             if (ctx->battleMons[ctx->battlerIdTarget].hp == 0) {
-                ctx->unk_C = 39;
+                ctx->commandNext = CONTROLLER_COMMAND_39;
                 BattleScriptJump(ctx, NARC_a_0_0_1, 281);
             }
         }

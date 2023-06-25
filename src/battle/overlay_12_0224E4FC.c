@@ -1543,16 +1543,16 @@ BOOL ov12_02250BBC(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (!(ctx->moveStatusFlag & 0x801FDA49) && ctx->selfTurnData[ctx->battlerIdTarget].lightningRodFlag) {
         ctx->selfTurnData[ctx->battlerIdTarget].lightningRodFlag = FALSE;
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 180);
-        ctx->unk_C = ctx->unk_8;
-        ctx->unk_8 = 22;
+        ctx->commandNext = ctx->command;
+        ctx->command = CONTROLLER_COMMAND_22;
         ret = TRUE;
     }
     
     if (!(ctx->moveStatusFlag & 0x801FDA49) && ctx->selfTurnData[ctx->battlerIdTarget].stormDrainFlag) {
         ctx->selfTurnData[ctx->battlerIdTarget].stormDrainFlag = FALSE;
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 180);
-        ctx->unk_C = ctx->unk_8;
-        ctx->unk_8 = 22;
+        ctx->commandNext = ctx->command;
+        ctx->command = CONTROLLER_COMMAND_22;
         ret = TRUE;
     }
     
@@ -3410,8 +3410,8 @@ BOOL ov12_02253068(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
 
     if (ret == TRUE) {
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, state);
-        ctx->unk_C = ctx->unk_8;
-        ctx->unk_8 = 22;
+        ctx->commandNext = ctx->command;
+        ctx->command = CONTROLLER_COMMAND_22;
     }
     
     return ret;

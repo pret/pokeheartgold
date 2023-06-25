@@ -6,46 +6,6 @@
 
 	.text
 
-	thumb_func_start BattleMain
-BattleMain: ; 0x022486B0
-	push {r3, r4, r5, lr}
-	add r4, r1, #0
-	ldr r1, _022486F4 ; =0x0000311F
-	add r5, r0, #0
-	ldrb r1, [r4, r1]
-	cmp r1, #0
-	bne _022486D6
-	bl BattleSystem_GetWinLoseFlags
-	cmp r0, #0
-	beq _022486D6
-	add r0, r5, #0
-	bl BattleSystem_GetWinLoseFlags
-	mov r1, #0x40
-	tst r0, r1
-	bne _022486D6
-	mov r0, #0x2a
-	str r0, [r4, #8]
-_022486D6:
-	ldr r2, [r4, #8]
-	add r0, r5, #0
-	lsl r3, r2, #2
-	ldr r2, _022486F8 ; =sPlayerBattleCommands
-	add r1, r4, #0
-	ldr r2, [r2, r3]
-	blx r2
-	ldr r0, [r4, #8]
-	cmp r0, #0x2d
-	bne _022486EE
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-_022486EE:
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-	nop
-_022486F4: .word 0x0000311F
-_022486F8: .word sPlayerBattleCommands
-	thumb_func_end BattleMain
-
 	thumb_func_start BattleContext_Delete
 BattleContext_Delete: ; 0x022486FC
 	push {r4, lr}
@@ -12295,6 +12255,7 @@ ov12_0226CA75: ; 0x0226CA75
 	.byte 0x64, 0x24, 0x64, 0x2B, 0x64, 0x32, 0x64, 0x3C, 0x64, 0x4B, 0x64
 	.byte 0x01, 0x01, 0x85, 0x64, 0xA6, 0x64, 0x02, 0x01, 0xE9, 0x64, 0x85, 0x32, 0x03, 0x01, 0x00, 0x00
 
+.public sPlayerBattleCommands
 sPlayerBattleCommands: ; 0x0226CA90
 	.word BattleControllerPlayer_GetBattleMon
 	.word ov12_02248780

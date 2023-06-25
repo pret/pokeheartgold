@@ -1,6 +1,10 @@
 #include "battle_controller_player.h"
+#include "battle_controller.h"
+#include "battle_system.h"
 #include "overlay_12_0224E4FC.h"
 #include "heap.h"
+
+extern ControllerFunction sPlayerBattleCommands[];
 
 BATTLECONTEXT *BattleContext_New(BattleSystem *bsys) {
     BATTLECONTEXT *ctx = (BATTLECONTEXT *) AllocFromHeap(HEAP_ID_BATTLE, sizeof(BATTLECONTEXT));
@@ -13,4 +17,18 @@ BATTLECONTEXT *BattleContext_New(BattleSystem *bsys) {
     ctx->unk_334.itemData = LoadAllItemData(HEAP_ID_BATTLE);
     
     return ctx;
+}
+
+BOOL BattleMain(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    if (!ctx->battleEndFlag) {
+        if (BattleSystem_GetWinLoseFlags(bsys) && !(BattleSystem_GetWinLoseFlags(bsys) & 0x40)) {
+            ctx->command = CONTROLLER_COMMAND_42;
+        }
+    }
+    
+    sPlayerBattleCommands[ctx->command](bsys, ctx);
+    if (ctx->command == CONTROLLER_COMMAND_45) {
+        return TRUE;
+    }
+    return FALSE;
 }

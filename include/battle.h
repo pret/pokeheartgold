@@ -6,6 +6,7 @@
 #include "pokemon_storage_system.h"
 #include "trainer_data.h"
 #include "filesystem.h"
+#include "constants/battle.h"
 
 typedef struct BATTLEMSG {
     u8 unk0;
@@ -248,8 +249,8 @@ typedef struct BATTLEMON {
 typedef struct BATTLECONTEXT {
     u8 unk_0[4];
     u8 unk_4[4];
-    int unk_8;
-    int unk_C;
+    ControllerCommand command;
+    ControllerCommand commandNext;
     int unk_10;
     int unk_14;
     int unk_18;
@@ -390,7 +391,7 @@ typedef struct BATTLECONTEXT {
     u8 unk_311C;
     u8 unk_311D;
     u8 runAttempts;
-    u8 unk_311F;
+    u8 battleEndFlag;
     u8 magnitude;
     u8 unk_3121;
     s16 hpTemp;
