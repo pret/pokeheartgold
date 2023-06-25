@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_BATTLE_H
 #define POKEHEARTGOLD_BATTLE_H
 
+#include "item.h"
 #include "move.h"
 #include "pokemon_storage_system.h"
 #include "trainer_data.h"
@@ -119,7 +120,7 @@ typedef struct UnkBtlCtxSub_76 {
     u16 unkA0[2];
     u8 unkA4[4];
     MOVE moveData[468];
-    u32 unk27C;
+    ITEMDATA *itemData;
     u16 unk280[4];
     u16 unk288[4];
 } UnkBtlCtxSub_76;

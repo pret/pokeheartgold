@@ -6,41 +6,6 @@
 
 	.text
 
-	thumb_func_start BattleContext_New
-BattleContext_New: ; 0x02248660
-	push {r3, r4, r5, lr}
-	ldr r1, _022486A4 ; =0x00003158
-	add r5, r0, #0
-	mov r0, #5
-	bl AllocFromHeap
-	add r4, r0, #0
-	ldr r2, _022486A4 ; =0x00003158
-	mov r0, #0
-	add r1, r4, #0
-	bl MIi_CpuClearFast
-	add r0, r4, #0
-	bl BattleContext_Init
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov12_02251038
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov12_0224E384
-	ldr r0, _022486A8 ; =0x000003DE
-	add r0, r4, r0
-	bl LoadMoveTbl
-	mov r0, #5
-	bl LoadAllItemData
-	ldr r1, _022486AC ; =0x00002120
-	str r0, [r4, r1]
-	add r0, r4, #0
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-_022486A4: .word 0x00003158
-_022486A8: .word 0x000003DE
-_022486AC: .word 0x00002120
-	thumb_func_end BattleContext_New
-
 	thumb_func_start BattleMain
 BattleMain: ; 0x022486B0
 	push {r3, r4, r5, lr}

@@ -3,6 +3,10 @@
 
 #include "battle.h"
 
+BATTLECONTEXT *BattleContext_New(BattleSystem *bsys);
+
+//The following functions haven't been decompiled yet
 void BattleSystem_CheckMoveHitEffect(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdA, int battlerIdB, int moveMsgNo);
+void ov12_0224E384(BattleSystem *bsys, BATTLECONTEXT *ctx);
 
 #endif
