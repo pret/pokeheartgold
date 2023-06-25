@@ -5,119 +5,9 @@
 	.include "global.inc"
 
 	.text
-
-	thumb_func_start BattleContext_Delete
-BattleContext_Delete: ; 0x022486FC
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, _02248710 ; =0x00002120
-	ldr r0, [r4, r0]
-	bl FreeToHeap
-	add r0, r4, #0
-	bl FreeToHeap
-	pop {r4, pc}
-	.balign 4, 0
-_02248710: .word 0x00002120
-	thumb_func_end BattleContext_Delete
-
-	thumb_func_start BattleSystem_CheckMoveHitEffect
-BattleSystem_CheckMoveHitEffect: ; 0x02248714
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #8
-	ldr r6, [sp, #0x20]
-	add r5, r0, #0
-	add r4, r1, #0
-	add r7, r2, #0
-	str r3, [sp, #4]
-	str r6, [sp]
-	bl BattleSystem_CheckMoveHit
-	ldr r0, [sp, #0x20]
-	ldr r3, [sp, #4]
-	str r0, [sp]
-	add r0, r5, #0
-	add r1, r4, #0
-	add r2, r7, #0
-	bl BattleSystem_CheckMoveEffect
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end BattleSystem_CheckMoveHitEffect
-
-	thumb_func_start BattleControllerPlayer_GetBattleMon
-BattleControllerPlayer_GetBattleMon: ; 0x0224873C
-	push {r3, r4, r5, r6, r7, lr}
-	str r0, [sp]
-	add r5, r1, #0
-	bl BattleSystem_GetMaxBattlers
-	add r7, r0, #0
-	mov r4, #0
-	cmp r7, #0
-	ble _02248764
-_0224874E:
-	ldr r3, _02248774 ; =0x0000219C
-	add r6, r5, r4
-	ldrb r3, [r6, r3]
-	ldr r0, [sp]
-	add r1, r5, #0
-	add r2, r4, #0
-	bl BattleSystem_GetBattleMon
-	add r4, r4, #1
-	cmp r4, r7
-	blt _0224874E
-_02248764:
-	ldr r0, _02248778 ; =0x00002E4C
-	ldr r1, [r5, r0]
-	ldr r0, _0224877C ; =0x00003122
-	strh r1, [r5, r0]
-	mov r0, #1
-	str r0, [r5, #8]
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_02248774: .word 0x0000219C
-_02248778: .word 0x00002E4C
-_0224877C: .word 0x00003122
-	thumb_func_end BattleControllerPlayer_GetBattleMon
-
-	thumb_func_start ov12_02248780
-ov12_02248780: ; 0x02248780
-	push {r4, lr}
-	add r4, r1, #0
-	add r0, r4, #0
-	mov r1, #1
-	mov r2, #0
-	bl ReadBattleScriptFromNarc
-	mov r0, #0x16
-	str r0, [r4, #8]
-	mov r0, #2
-	str r0, [r4, #0xc]
-	pop {r4, pc}
-	thumb_func_end ov12_02248780
-
-	thumb_func_start ov12_02248798
-ov12_02248798: ; 0x02248798
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	bl ov12_02250D4C
-	cmp r0, #0
-	beq _022487BA
-	add r0, r4, #0
-	mov r1, #1
-	mov r2, #0x29
-	bl ReadBattleScriptFromNarc
-	mov r0, #0x16
-	str r0, [r4, #8]
-	mov r0, #3
-	str r0, [r4, #0xc]
-	b _022487BE
-_022487BA:
-	mov r0, #3
-	str r0, [r4, #8]
-_022487BE:
-	add r0, r5, #0
-	add r1, r4, #0
-	bl SortMonsBySpeed
-	pop {r3, r4, r5, pc}
-	thumb_func_end ov12_02248798
+    .public BattleControllerPlayer_GetBattleMon
+    .public BattleControllerPlayer_StartEncounter
+    .public BattleControllerPlayer_TrainerMessage
 
 	thumb_func_start ov12_022487C8
 ov12_022487C8: ; 0x022487C8
@@ -12258,8 +12148,8 @@ ov12_0226CA75: ; 0x0226CA75
 .public sPlayerBattleCommands
 sPlayerBattleCommands: ; 0x0226CA90
 	.word BattleControllerPlayer_GetBattleMon
-	.word ov12_02248780
-	.word ov12_02248798
+	.word BattleControllerPlayer_StartEncounter
+	.word BattleControllerPlayer_TrainerMessage
 	.word ov12_022487C8
 	.word ov12_022487FC
 	.word ov12_02248848

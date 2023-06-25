@@ -86,7 +86,7 @@
 .public LockBattlerIntoCurrentMove
 .public UnlockBattlerOutOfCurrentMove
 .public GetBattlerStatusCondition
-.public ov12_02250D4C
+.public CheckTrainerMessage
 .public BattleContext_Init
 .public ov12_02251038
 .public InitSwitchWork

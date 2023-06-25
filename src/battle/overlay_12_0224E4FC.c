@@ -1599,7 +1599,7 @@ int GetBattlerStatusCondition(BATTLECONTEXT *ctx, int battlerId) {
     return CONDITION_NONE;
 }
 
-BOOL ov12_02250D4C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL CheckTrainerMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int state = BattleSystem_GetBattleType(bsys);  //note: this should be battleType for the following three if statements, but it won't match if an additional variable is used
     int trainerIndex;
     

@@ -28,7 +28,7 @@ void CopyBattleMonToPartyMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battler
 void LockBattlerIntoCurrentMove(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 void UnlockBattlerOutOfCurrentMove(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 int GetBattlerStatusCondition(BATTLECONTEXT *ctx, int battlerId);
-BOOL ov12_02250D4C(BattleSystem *bsys, BATTLECONTEXT *ctx);
+BOOL CheckTrainerMessage(BattleSystem *bsys, BATTLECONTEXT *ctx);
 void BattleContext_Init(BATTLECONTEXT *ctx);
 void ov12_02251038(BattleSystem *bsys, BATTLECONTEXT *ctx);
 void InitSwitchWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);

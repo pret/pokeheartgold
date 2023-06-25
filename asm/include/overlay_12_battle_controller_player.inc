@@ -66,7 +66,7 @@
 .public ov12_02250BBC
 .public CopyBattleMonToPartyMon
 .public UnlockBattlerOutOfCurrentMove
-.public ov12_02250D4C
+.public CheckTrainerMessage
 .public BattleContext_Init
 .public ov12_02251038
 .public ov12_02251710

@@ -32,3 +32,46 @@ BOOL BattleMain(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     }
     return FALSE;
 }
+
+void BattleContext_Delete(BATTLECONTEXT *ctx) {
+    FreeToHeap(ctx->unk_334.itemData);
+    FreeToHeap(ctx);
+}
+
+void BattleSystem_CheckMoveHitEffect(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int moveNo) {
+    BattleSystem_CheckMoveHit(bsys, ctx, battlerIdAttacker, battlerIdTarget, moveNo);
+    BattleSystem_CheckMoveEffect(bsys, ctx, battlerIdAttacker, battlerIdTarget, moveNo);
+}
+
+//static
+void BattleControllerPlayer_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int battlerId;
+    int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+    
+    for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
+        BattleSystem_GetBattleMon(bsys, ctx, battlerId, ctx->selectedMonIndex[battlerId]);
+    }
+    
+    ctx->hpTemp = ctx->battleMons[1].hp;
+    ctx->command = CONTROLLER_COMMAND_START_ENCOUNTER;
+}
+
+//static
+void BattleControllerPlayer_StartEncounter(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 0);
+    ctx->command = CONTROLLER_COMMAND_22;
+    ctx->commandNext = CONTROLLER_COMMAND_TRAINER_MESSAGE;
+}
+
+//static
+void BattleControllerPlayer_TrainerMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    if (CheckTrainerMessage(bsys, ctx)) {
+        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 41);
+        ctx->command = CONTROLLER_COMMAND_22;
+        ctx->commandNext = CONTROLLER_COMMAND_MON_APPEAR;
+    } else {
+        ctx->command = CONTROLLER_COMMAND_MON_APPEAR;
+    }
+    
+    SortMonsBySpeed(bsys, ctx);
+}
