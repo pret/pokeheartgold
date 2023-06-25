@@ -177,7 +177,7 @@ typedef struct UnkBattlemonSub {
     u16 bindingMove;
     u16 encoredMove;
     u16 encoredMoveIndex;
-    u16 unk24[4];
+    u16 lastResortMoves[4];
     u16 moveNoChoice;
     u16 transformGender;
     int unk30;
@@ -279,9 +279,9 @@ typedef struct BATTLECONTEXT {
     int battlerIdSwitchTemp;
     int battlerIdAbility;
     int battlerIdMagicCoat;
-    int unk_88;
+    int statChangeType;
     int statChangeParam;
-    int unk_90;
+    int statChangeFlag;
     int battlerIdStatChange;
     int unk_98;
     int gainedExp;

@@ -148,6 +148,7 @@ enum Terrain {
 #define STATUS_POISON_COUNT                 (15 << 8)
 
 #define STATUS_POISON_ALL                   (STATUS_POISON | STATUS_BAD_POISON | STATUS_POISON_COUNT)
+#define STATUS_ALL                          (0xFF)
 
 //Status Conditions
 #define CONDITION_NONE                      0

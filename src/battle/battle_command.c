@@ -1546,7 +1546,7 @@ BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (change > 0) { //Stat Increase
         if (mon->statChanges[stat + 1] == 12) {
             ctx->linkStatus |= (1 << 17);
-            if (ctx->unk_88 == 3 || ctx->unk_88 == 2) {
+            if (ctx->statChangeType == 3 || ctx->statChangeType == 2) {
                 BattleScriptIncrementPointer(ctx, unkB);
             } else {
                 ctx->buffMsg.id = 142;
@@ -1556,13 +1556,13 @@ BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 BattleScriptIncrementPointer(ctx, unkA);
             }
         } else {
-            if (ctx->unk_88 == 3) {
+            if (ctx->statChangeType == 3) {
                 ctx->buffMsg.id = 0x26E;
                 ctx->buffMsg.tag = 39;
                 ctx->buffMsg.param[0] = CreateNicknameTag(ctx, ctx->battlerIdStatChange);
                 ctx->buffMsg.param[1] = ctx->battleMons[ctx->battlerIdStatChange].ability;
                 ctx->buffMsg.param[2] = stat + 1;
-            } else if (ctx->unk_88 == 5) {
+            } else if (ctx->statChangeType == 5) {
                 ctx->buffMsg.id = 0x2F4;
                 ctx->buffMsg.tag = 45;
                 ctx->buffMsg.param[0] = CreateNicknameTag(ctx, ctx->battlerIdStatChange);
@@ -1580,7 +1580,7 @@ BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             }
         }
     } else { //Stat Decrease
-        if (!(ctx->unk_90 & (1 << 27))) {
+        if (!(ctx->statChangeFlag & (1 << 27))) {
             if (ctx->battlerIdAttacker != ctx->battlerIdStatChange) {
                 //Mist
                 if(ctx->fieldSideConditionData[BattleSystem_GetFieldSide(bsys, ctx->battlerIdStatChange)].mistTurns) {
@@ -1589,7 +1589,7 @@ BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                     ctx->buffMsg.param[0] = CreateNicknameTag(ctx, ctx->battlerIdStatChange);
                     unkD = 1;
                 } else if (CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, ctx->battlerIdStatChange, ABILITY_CLEAR_BODY) == TRUE || CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, ctx->battlerIdStatChange, ABILITY_WHITE_SMOKE) == TRUE) {
-                if (ctx->unk_88 == 3) {
+                if (ctx->statChangeType == 3) {
                     ctx->buffMsg.id = 0x2D7;
                     ctx->buffMsg.tag = 53;
                     ctx->buffMsg.param[0] = CreateNicknameTag(ctx, ctx->battlerIdStatChange);
@@ -1605,7 +1605,7 @@ BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 unkD = TRUE;
             } else if ((CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, ctx->battlerIdStatChange, ABILITY_KEEN_EYE) == TRUE && (1 + stat) == 6) ||
                        (CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, ctx->battlerIdStatChange, ABILITY_HYPER_CUTTER) == TRUE && (1 + stat) == 1)) {
-                if (ctx->unk_88 == 3) {
+                if (ctx->statChangeType == 3) {
                     ctx->buffMsg.id = 0x2D7;
                     ctx->buffMsg.tag = 53;
                     ctx->buffMsg.param[0] = CreateNicknameTag(ctx, ctx->battlerIdStatChange);
@@ -1623,7 +1623,7 @@ BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 }
                 else if (mon->statChanges[1 + stat] == 0) {
                     ctx->linkStatus |= (1 << 17);
-                    if (ctx->unk_88 == 2 || ctx->unk_88 == 3) {
+                    if (ctx->statChangeType == 2 || ctx->statChangeType == 3) {
                         BattleScriptIncrementPointer(ctx, unkB);
                         return FALSE;
                     } else {
@@ -1634,14 +1634,14 @@ BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                         BattleScriptIncrementPointer(ctx, unkA);
                         return FALSE;
                     }
-                } else if (CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, ctx->battlerIdStatChange, ABILITY_SHIELD_DUST) == TRUE && ctx->unk_88 == 2) {
+                } else if (CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, ctx->battlerIdStatChange, ABILITY_SHIELD_DUST) == TRUE && ctx->statChangeType == 2) {
                     unkD = 1;
                 } else if (ctx->battleMons[ctx->battlerIdStatChange].status2 &  STATUS2_24){
                     unkD = 2;
                 }
             } else if (mon->statChanges[1 + stat] == 0) {
                 ctx->linkStatus |= (1 << 17);
-                if (ctx->unk_88 == 2 || ctx->unk_88 == 3) {
+                if (ctx->statChangeType == 2 || ctx->statChangeType == 3) {
                     BattleScriptIncrementPointer(ctx, unkB);
                     return FALSE;
                 } else {
@@ -1653,10 +1653,10 @@ BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                     return FALSE;
                 }
             }
-            if (unkD == 2 && ctx->unk_88 == 1) {
+            if (unkD == 2 && ctx->statChangeType == 1) {
                 BattleScriptIncrementPointer(ctx, unkC);
                 return FALSE;
-            } else if (unkD && ctx->unk_88 == 2) {
+            } else if (unkD && ctx->statChangeType == 2) {
                 BattleScriptIncrementPointer(ctx, unkB);
                 return FALSE;
             } else if (unkD) {
@@ -1664,7 +1664,7 @@ BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 return FALSE;
             }
         }
-        if (ctx->unk_88 == 3) {
+        if (ctx->statChangeType == 3) {
             ctx->buffMsg.id = 0x296;
             ctx->buffMsg.tag = 54;
             ctx->buffMsg.param[0] = CreateNicknameTag(ctx, ctx->battlerIdAttacker);
@@ -4773,7 +4773,7 @@ BOOL BtlCmd_CheckToxicSpikes(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     if (ctx->fieldSideConditionData[fieldSide].toxicSpikesLayers) {
         ctx->calcWork = ctx->fieldSideConditionData[fieldSide].toxicSpikesLayers;
-        ctx->unk_88 = 6;
+        ctx->statChangeType = 6;
         ctx->battlerIdStatChange = battlerId;
         if (GetBattlerVar(ctx, ctx->battlerIdSwitch, BMON_DATA_TYPE_1, NULL) == TYPE_POISON || GetBattlerVar(ctx, ctx->battlerIdSwitch, BMON_DATA_TYPE_2, NULL) == TYPE_POISON) {
             ctx->fieldSideConditionFlags[fieldSide] &= ~(1 << 10);
@@ -5898,7 +5898,7 @@ static void *BattleScriptGetVarPointer(BattleSystem *bsys, BATTLECONTEXT *ctx, i
     case 4:
         return &ctx->unk_2178;
     case 5:
-        return &ctx->unk_88;
+        return &ctx->statChangeType;
     case 6:
         return &ctx->linkStatus;
     case 7:
