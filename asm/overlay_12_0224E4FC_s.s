@@ -12,26 +12,6 @@
     .public ov12_02251C74
     .public CheckMoveEffectOnField
 
-	thumb_func_start DamageDivide
-DamageDivide: ; 0x02253178
-	push {r4, lr}
-	cmp r0, #0
-	beq _02253192
-	bge _02253186
-	mov r4, #0
-	mvn r4, r4
-	b _02253188
-_02253186:
-	mov r4, #1
-_02253188:
-	bl _s32_div_f
-	cmp r0, #0
-	bne _02253192
-	add r0, r4, #0
-_02253192:
-	pop {r4, pc}
-	thumb_func_end DamageDivide
-
 	thumb_func_start ov12_02253194
 ov12_02253194: ; 0x02253194
 	push {r3, r4, r5, r6, r7, lr}

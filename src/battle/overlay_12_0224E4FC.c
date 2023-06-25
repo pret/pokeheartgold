@@ -3416,3 +3416,25 @@ BOOL ov12_02253068(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     
     return ret;
 }
+
+int DamageDivide(int num, int denom) {
+    int sign;
+    
+    if (num == 0) {
+        return num;
+    }
+    
+    if (num < 0) {
+        sign = -1;
+    } else {
+        sign = 1;
+    }
+    
+    num /= denom;
+    
+    if (num == 0) {
+        num = sign;
+    }
+    
+    return num;
+}

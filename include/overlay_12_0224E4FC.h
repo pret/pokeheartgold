@@ -68,6 +68,7 @@ void ov12_02252E30(BattleSystem *bsys, BATTLECONTEXT *ctx);
 int GetBattlerLearnedMoveCount(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 int ov12_02252EC8(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget);
 BOOL ov12_02253068(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+int DamageDivide(int num, int denom);
 
 //The following functions are static, but the rest of the file is still being worked on
 BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int index);
@@ -75,7 +76,6 @@ BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarge
 //The following functions haven't been decompiled as of now
 void ov12_02256F78(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 monIndex);
 void Link_CheckTimeout(BATTLECONTEXT *ctx);
-int DamageDivide(int numerator, int denominator);
 u32 GetBattlerHeldItemEffect(BATTLECONTEXT *ctx, int battlerId);
 int CalcMoveDamage(BattleSystem *bsys, BATTLECONTEXT *ctx, u32, u32, u32, u16, u8, u8, u8, u8);
 u16 GetBattlerHeldItem(BATTLECONTEXT *ctx, int battlerId);
