@@ -1543,16 +1543,16 @@ BOOL ov12_02250BBC(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (!(ctx->moveStatusFlag & 0x801FDA49) && ctx->selfTurnData[ctx->battlerIdTarget].lightningRodFlag) {
         ctx->selfTurnData[ctx->battlerIdTarget].lightningRodFlag = FALSE;
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 180);
-        ctx->unk_C = ctx->unk_8;
-        ctx->unk_8 = 22;
+        ctx->commandNext = ctx->command;
+        ctx->command = CONTROLLER_COMMAND_22;
         ret = TRUE;
     }
     
     if (!(ctx->moveStatusFlag & 0x801FDA49) && ctx->selfTurnData[ctx->battlerIdTarget].stormDrainFlag) {
         ctx->selfTurnData[ctx->battlerIdTarget].stormDrainFlag = FALSE;
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 180);
-        ctx->unk_C = ctx->unk_8;
-        ctx->unk_8 = 22;
+        ctx->commandNext = ctx->command;
+        ctx->command = CONTROLLER_COMMAND_22;
         ret = TRUE;
     }
     
@@ -1599,7 +1599,7 @@ int GetBattlerStatusCondition(BATTLECONTEXT *ctx, int battlerId) {
     return CONDITION_NONE;
 }
 
-BOOL ov12_02250D4C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL CheckTrainerMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int state = BattleSystem_GetBattleType(bsys);  //note: this should be battleType for the following three if statements, but it won't match if an additional variable is used
     int trainerIndex;
     
@@ -1714,8 +1714,8 @@ void BattleContext_Init(BATTLECONTEXT *ctx) {
     ctx->unk_2174 = 0;
     ctx->unk_2178 = 0;
     
-    //related to stat (maybe status?) changes
-    ctx->unk_88 = 0;
+    //related to stat changes
+    ctx->statChangeType = 0;
     ctx->statChangeParam = 0;
     ctx->battlerIdStatChange = 0xFF;
     
@@ -3292,4 +3292,149 @@ BOOL BattleContext_CheckMoveHealBlocked(BattleSystem *bsys, BATTLECONTEXT *ctx, 
     }
     
     return ret;
+}
+
+void ov12_02252E30(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int i;
+    
+    if (ctx->moveNoTemp == MOVE_LAST_RESORT || ctx->battleMons[ctx->battlerIdAttacker].unk88.lastResortCount == LEARNED_MOVES_MAX) {
+        return;
+    }
+    
+    for (i = 0; i < ctx->battleMons[ctx->battlerIdAttacker].unk88.lastResortCount; i++) {
+        if (ctx->battleMons[ctx->battlerIdAttacker].unk88.lastResortMoves[i] == ctx->moveNoTemp) {
+            return;
+        }
+    }
+    
+    ctx->battleMons[ctx->battlerIdAttacker].unk88.lastResortMoves[i] = ctx->moveNoTemp;
+    ctx->battleMons[ctx->battlerIdAttacker].unk88.lastResortCount++;
+}
+
+int GetBattlerLearnedMoveCount(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
+    int cnt;
+    
+    for (cnt = 0; cnt < LEARNED_MOVES_MAX; cnt++) {
+        if (ctx->battleMons[battlerId].moves[cnt] == MOVE_NONE) {
+            break;
+        }
+    }
+    
+    return cnt;
+}
+
+extern u16 sSoundMoves[12];
+
+int ov12_02252EC8(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget) {
+    int state;
+    int moveType;
+
+    state = 0;
+    
+    if (GetBattlerAbility(ctx, battlerIdAttacker) == ABILITY_NORMALIZE) {
+        moveType = TYPE_NORMAL;
+    } else if (ctx->moveType) {
+        moveType = ctx->moveType;
+    } else {
+        moveType = ctx->unk_334.moveData[ctx->moveNoCur].type;
+    }
+    
+    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_VOLT_ABSORB) == TRUE && moveType == TYPE_ELECTRIC && battlerIdAttacker != battlerIdTarget) {
+        ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerIdTarget].maxHp, 4);
+        state = 178;
+    }    
+    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_WATER_ABSORB) == TRUE && moveType == TYPE_WATER && !(ctx->linkStatus & (1 << 5)) && ctx->unk_334.moveData[ctx->moveNoCur].power) {
+        ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerIdTarget].maxHp, 4);
+        state = 178;
+    }
+    int moveNoCur = ctx->moveNoCur;
+    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_FLASH_FIRE) == TRUE && moveType == TYPE_FIRE && !(ctx->battleMons[battlerIdTarget].status & STATUS_FREEZE) && !(ctx->linkStatus & (1 << 5))) {
+        if (ctx->unk_334.moveData[ctx->moveNoCur].power || ctx->moveNoCur == MOVE_WILL_O_WISP) {
+            state = 179;
+        }
+    }
+    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_SOUNDPROOF) == TRUE) {
+        for (int i = 0; i < NELEMS(sSoundMoves); i++) {
+            if (sSoundMoves[i] == ctx->moveNoCur) {
+                state = 181;
+                break;
+            }
+        }
+    }
+    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_MOTOR_DRIVE) == TRUE && moveType == TYPE_ELECTRIC && battlerIdAttacker != battlerIdTarget) {
+        state = 182;
+    }
+    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_DRY_SKIN) == TRUE && moveType == TYPE_WATER && !(ctx->linkStatus & (1 << 5)) && ctx->unk_334.moveData[ctx->moveNoCur].power) {
+        ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerIdTarget].maxHp, 4);
+        state = 178;
+    }
+    
+    return state;
+}
+
+BOOL ov12_02253068(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
+    BOOL ret = FALSE;
+    int state;
+    
+    switch (GetBattlerAbility(ctx, battlerId)) {
+    case ABILITY_SPEED_BOOST:
+        if (ctx->battleMons[battlerId].hp && ctx->battleMons[battlerId].statChanges[3] < 12 && ctx->battleMons[battlerId].unk88.fakeOutCount != ctx->totalTurns + 1) {
+            ctx->statChangeParam = 17;
+            ctx->statChangeType = 3;
+            ctx->battlerIdStatChange = battlerId;
+            state = 12;
+            ret = TRUE;
+        } 
+        break;
+    case ABILITY_SHED_SKIN:
+        if ((ctx->battleMons[battlerId].status & STATUS_ALL) && ctx->battleMons[battlerId].hp && ((BattleSystem_Random(bsys) % 10) < 3)) {
+            if (ctx->battleMons[battlerId].status & STATUS_SLEEP) {
+                ctx->msgWork = 0;
+            } else if (ctx->battleMons[battlerId].status & STATUS_POISON_ALL) {
+                ctx->msgWork = 1;
+            } else if (ctx->battleMons[battlerId].status & STATUS_BURN) {
+                ctx->msgWork = 2;
+            } else if (ctx->battleMons[battlerId].status & STATUS_PARALYSIS) {
+                ctx->msgWork = 3;
+            } else {
+                ctx->msgWork = 4;
+            }
+            ctx->battlerIdWork = battlerId;
+            state = 190;
+            ret = TRUE;
+        }
+        break;
+    default:
+        break;
+    }
+
+    if (ret == TRUE) {
+        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, state);
+        ctx->commandNext = ctx->command;
+        ctx->command = CONTROLLER_COMMAND_22;
+    }
+    
+    return ret;
+}
+
+int DamageDivide(int num, int denom) {
+    int sign;
+    
+    if (num == 0) {
+        return num;
+    }
+    
+    if (num < 0) {
+        sign = -1;
+    } else {
+        sign = 1;
+    }
+    
+    num /= denom;
+    
+    if (num == 0) {
+        num = sign;
+    }
+    
+    return num;
 }

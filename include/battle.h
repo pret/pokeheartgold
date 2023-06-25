@@ -1,10 +1,12 @@
 #ifndef POKEHEARTGOLD_BATTLE_H
 #define POKEHEARTGOLD_BATTLE_H
 
+#include "item.h"
 #include "move.h"
 #include "pokemon_storage_system.h"
 #include "trainer_data.h"
 #include "filesystem.h"
+#include "constants/battle.h"
 
 typedef struct BATTLEMSG {
     u8 unk0;
@@ -119,7 +121,7 @@ typedef struct UnkBtlCtxSub_76 {
     u16 unkA0[2];
     u8 unkA4[4];
     MOVE moveData[468];
-    u32 unk27C;
+    ITEMDATA *itemData;
     u16 unk280[4];
     u16 unk288[4];
 } UnkBtlCtxSub_76;
@@ -177,7 +179,7 @@ typedef struct UnkBattlemonSub {
     u16 bindingMove;
     u16 encoredMove;
     u16 encoredMoveIndex;
-    u16 unk24[4];
+    u16 lastResortMoves[4];
     u16 moveNoChoice;
     u16 transformGender;
     int unk30;
@@ -247,8 +249,8 @@ typedef struct BATTLEMON {
 typedef struct BATTLECONTEXT {
     u8 unk_0[4];
     u8 unk_4[4];
-    int unk_8;
-    int unk_C;
+    ControllerCommand command;
+    ControllerCommand commandNext;
     int unk_10;
     int unk_14;
     int unk_18;
@@ -279,9 +281,9 @@ typedef struct BATTLECONTEXT {
     int battlerIdSwitchTemp;
     int battlerIdAbility;
     int battlerIdMagicCoat;
-    int unk_88;
+    int statChangeType;
     int statChangeParam;
-    int unk_90;
+    int statChangeFlag;
     int battlerIdStatChange;
     int unk_98;
     int gainedExp;
@@ -389,7 +391,7 @@ typedef struct BATTLECONTEXT {
     u8 unk_311C;
     u8 unk_311D;
     u8 runAttempts;
-    u8 unk_311F;
+    u8 battleEndFlag;
     u8 magnitude;
     u8 unk_3121;
     s16 hpTemp;

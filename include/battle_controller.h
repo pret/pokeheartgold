@@ -3,6 +3,8 @@
 
 #include "battle.h"
 
+typedef void (*ControllerFunction)(BattleSystem *, BATTLECONTEXT *ctx);
+
 void BattleController_EmitPlayEncounterAnimation(BattleSystem *bsys, BOOL a1);
 void BattleController_EmitPokemonEncounter(BattleSystem *bsys, int battlerId);
 void BattleController_EmitPokemonSlideIn(BattleSystem *bsys, int battlerId);
