@@ -78,7 +78,7 @@ typedef struct {
     /* 0x10 */ u32 hpIV:5, atkIV:5, defIV:5, spdIV:5, spatkIV:5, spdefIV:5, isEgg:1, isNicknamed:1;
     // TODO: Finish HoennRibbonSet
     /* 0x14 */ u32 ribbonFlags; // cool, ...
-    /* 0x18 */ u8 fatefulEncounter:1, gender:2, alternateForm:5;
+    /* 0x18 */ u8 fatefulEncounter:1, gender:2, alternateForme:5;
     /* 0x19 */ u8 HGSS_shinyLeaves:6;
     /* 0x19 */ u8 unk_19_6:2;
     /* 0x1A */ u16 Unused;
@@ -207,7 +207,7 @@ struct UnkPokemonStruct_02072A98 {
                u32 isNicknamed:1;
     /* 0x30 */ u8 fatefulEncounter:1;
                u8 gender:2;
-               u8 alternateForm:5;
+               u8 alternateForme:5;
     /* 0x32 */ u16 nickname[POKEMON_NAME_LENGTH + 1];
     /* 0x48 */ u16 otTrainerName[PLAYER_NAME_LENGTH + 1];
     /* 0x58 */ u8 pokeball;

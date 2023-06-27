@@ -557,7 +557,7 @@ typedef enum {
     EGG_STANDARD = 0,
     EGG_MANAPHY = 1,
     EGG_FORME_MAX = 2,
-} AlternateForms;
+} AlternateFormes;
 
 typedef enum EvoMethod
 {

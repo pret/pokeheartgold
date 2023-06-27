@@ -721,7 +721,7 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void * dest) {
         boxMon->checksum =  CHECKSUM(boxMon);
         break;
     case MON_DATA_FORME:
-        ret = blockB->alternateForm;
+        ret = blockB->alternateForme;
         break;
     case MON_DATA_RESERVED_113:
         ret = blockB->unk_19_6;
@@ -866,7 +866,7 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void * dest) {
         if (blockA->species == SPECIES_ARCEUS && blockA->ability == ABILITY_MULTITYPE) {
             ret = (u32)GetArceusTypeByHeldItemEffect((u16) GetItemAttr(blockA->heldItem, ITEMATTR_HOLD_EFFECT, HEAP_ID_0));
         } else {
-            ret = (u32)GetMonBaseStat_HandleAlternateForme(blockA->species, blockB->alternateForm, (enum BaseStat)(attr - MON_DATA_TYPE_1 + BASE_TYPE1));
+            ret = (u32)GetMonBaseStat_HandleAlternateForme(blockA->species, blockB->alternateForme, (enum BaseStat)(attr - MON_DATA_TYPE_1 + BASE_TYPE1));
         }
         break;
     case MON_DATA_SPECIES_NAME:
@@ -1190,7 +1190,7 @@ static void SetBoxMonDataInternal(BoxPokemon *boxMon, int attr, const void * val
         blockB->gender = GetGenderBySpeciesAndPersonality(blockA->species, boxMon->pid);
         break;
     case MON_DATA_FORME:
-        blockB->alternateForm = VALUE(u8);
+        blockB->alternateForme = VALUE(u8);
         break;
     case MON_DATA_RESERVED_113:
         blockB->unk_19_6 = VALUE(u8);
@@ -4297,7 +4297,7 @@ void sub_02072A98(Pokemon *mon, struct UnkPokemonStruct_02072A98 *dest) {
     dest->isNicknamed = dbB->isNicknamed;
     dest->fatefulEncounter = dbB->fatefulEncounter;
     dest->gender = dbB->gender;
-    dest->alternateForm = dbB->alternateForm;
+    dest->alternateForme = dbB->alternateForme;
 
     for (i = 0; i < POKEMON_NAME_LENGTH + 1; i++) {
         dest->nickname[i] = dbC->nickname[i];
@@ -4374,7 +4374,7 @@ void sub_02072D64(const struct UnkPokemonStruct_02072A98 *src, Pokemon *mon) {
     dbB->isNicknamed = src->isNicknamed;
     dbB->fatefulEncounter = src->fatefulEncounter;
     dbB->gender = src->gender;
-    dbB->alternateForm = src->alternateForm;
+    dbB->alternateForme = src->alternateForme;
 
     for (i = 0; i < POKEMON_NAME_LENGTH + 1; i++) {
         dbC->nickname[i] = src->nickname[i];
