@@ -3465,7 +3465,7 @@ BOOL ScrCmd_GetNpcTradeUnusedFlag(ScriptContext *ctx) {
 BOOL ScrCmd_NPCTradeExec(ScriptContext *ctx) {
     NPCTradeAppData **p_tradeWork = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MISC_DATA_PTR);
     u16 arg = ScriptGetVar(ctx);
-    CallFieldTask_TradeAnim(ctx->taskman, *p_tradeWork, arg, HEAP_ID_FIELD);
+    CallTask_NPCTrade(ctx->taskman, *p_tradeWork, arg, HEAP_ID_FIELD);
     return TRUE;
 }
 
