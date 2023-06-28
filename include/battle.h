@@ -209,7 +209,7 @@ typedef struct BATTLEMON {
     u8 shiny:1;
     u8 unk26_6:2;
     u8 ability;
-    u32 unk28_0:1;
+    u32 sendOutFlag:1;
     u32 intimidateFlag:1;
     u32 traceFlag:1;
     u32 downloadFlag:1;
@@ -269,7 +269,7 @@ typedef struct BATTLECONTEXT {
     int unk_4C;
     int unk_50;
     int unk_54;
-    int unk_58;
+    int sendOutState;
     int unk_5C;
     int unk_60;
     int battlerIdAttacker;
@@ -393,7 +393,7 @@ typedef struct BATTLECONTEXT {
     u8 runAttempts;
     u8 battleEndFlag;
     u8 magnitude;
-    u8 unk_3121;
+    u8 weatherCheckFlag;
     s16 hpTemp;
     u16 recycleItem[4];
     u8 unk_312C[4][6];

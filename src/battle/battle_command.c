@@ -1636,7 +1636,7 @@ BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                     }
                 } else if (CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, ctx->battlerIdStatChange, ABILITY_SHIELD_DUST) == TRUE && ctx->statChangeType == 2) {
                     unkD = 1;
-                } else if (ctx->battleMons[ctx->battlerIdStatChange].status2 &  STATUS2_24){
+                } else if (ctx->battleMons[ctx->battlerIdStatChange].status2 &  STATUS2_SUBSTITUTE){
                     unkD = 2;
                 }
             } else if (mon->statChanges[1 + stat] == 0) {
@@ -2640,7 +2640,7 @@ BOOL BtlCmd_TryMimic(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     if ((CheckLegalMimicMove(ctx->moveNoBattlerPrev[ctx->battlerIdTarget]) == FALSE) ||
         (ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_TRANSFORMED) ||
-        (ctx->battleMons[ctx->battlerIdTarget].status2 & STATUS2_24) ||
+        (ctx->battleMons[ctx->battlerIdTarget].status2 & STATUS2_SUBSTITUTE) ||
         ctx->moveNoBattlerPrev[ctx->battlerIdTarget] == 0) {
         BattleScriptIncrementPointer(ctx, adrs);
     } else {
@@ -3213,7 +3213,7 @@ BOOL BtlCmd_Transform(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         src[i] = dest[i];
     }
 
-    ctx->battleMons[ctx->battlerIdAttacker].unk28_0 = 0;
+    ctx->battleMons[ctx->battlerIdAttacker].sendOutFlag = 0;
     ctx->battleMons[ctx->battlerIdAttacker].intimidateFlag = 0;
     ctx->battleMons[ctx->battlerIdAttacker].traceFlag = 0;
     ctx->battleMons[ctx->battlerIdAttacker].downloadFlag = 0;
@@ -4723,7 +4723,7 @@ BOOL BtlCmd_TryPyschoShift(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int adrs = BattleScriptReadWord(ctx);
 
-    if (ctx->battleMons[ctx->battlerIdTarget].status || ctx->battleMons[ctx->battlerIdTarget].status2 & STATUS2_24 || !ctx->battleMons[ctx->battlerIdAttacker].status) {
+    if (ctx->battleMons[ctx->battlerIdTarget].status || ctx->battleMons[ctx->battlerIdTarget].status2 & STATUS2_SUBSTITUTE || !ctx->battleMons[ctx->battlerIdAttacker].status) {
         BattleScriptIncrementPointer(ctx, adrs);
     }
 

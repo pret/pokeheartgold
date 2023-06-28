@@ -176,7 +176,7 @@ enum Terrain {
 #define STATUS2_FOCUS_ENERGY                (1 << 20)
 #define STATUS2_TRANSFORMED                 (1 << 21)
 #define STATUS2_RECHARGE                    (1 << 22)
-#define STATUS2_24                          (1 << 24)
+#define STATUS2_SUBSTITUTE                  (1 << 24)
 #define STATUS2_MEAN_LOOK                   (1 << 26)
 #define STATUS2_27                          (1 << 27)
 #define STATUS2_28                          (1 << 28)
@@ -189,7 +189,7 @@ enum Terrain {
 
 #define STATUS2_ATTRACT_SHIFT               16    
 
-#define STATUS2_BATON_PASSABLE              (STATUS2_0 | STATUS2_1 | STATUS2_2 | STATUS2_FOCUS_ENERGY | STATUS2_24 | STATUS2_MEAN_LOOK | STATUS2_28)
+#define STATUS2_BATON_PASSABLE              (STATUS2_0 | STATUS2_1 | STATUS2_2 | STATUS2_FOCUS_ENERGY | STATUS2_SUBSTITUTE | STATUS2_MEAN_LOOK | STATUS2_28)
 
 //Struggle Checks
 #define STRUGGLE_CHECK_NO_MOVES             (1 << 0)
@@ -323,8 +323,8 @@ typedef enum ControllerCommand {
     CONTROLLER_COMMAND_GET_BATTLE_MON,
     CONTROLLER_COMMAND_START_ENCOUNTER,
     CONTROLLER_COMMAND_TRAINER_MESSAGE,
-    CONTROLLER_COMMAND_MON_APPEAR,
-    CONTROLLER_COMMAND_4,
+    CONTROLLER_COMMAND_SEND_OUT,
+    CONTROLLER_COMMAND_SELECTION_SCREEN_INIT,
     CONTROLLER_COMMAND_5,
     CONTROLLER_COMMAND_6,
     CONTROLLER_COMMAND_7,

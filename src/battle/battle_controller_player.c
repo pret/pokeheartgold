@@ -68,10 +68,25 @@ void BattleControllerPlayer_TrainerMessage(BattleSystem *bsys, BATTLECONTEXT *ct
     if (CheckTrainerMessage(bsys, ctx)) {
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 41);
         ctx->command = CONTROLLER_COMMAND_22;
-        ctx->commandNext = CONTROLLER_COMMAND_MON_APPEAR;
+        ctx->commandNext = CONTROLLER_COMMAND_SEND_OUT;
     } else {
-        ctx->command = CONTROLLER_COMMAND_MON_APPEAR;
+        ctx->command = CONTROLLER_COMMAND_SEND_OUT;
     }
     
     SortMonsBySpeed(bsys, ctx);
+}
+
+//static
+void ov12_022487C8(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int script = ov12_02253194(bsys, ctx);
+    
+    if (script) {
+        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
+        ctx->commandNext = ctx->command;
+        ctx->command = CONTROLLER_COMMAND_22;
+    } else {
+        SortMonsBySpeed(bsys, ctx);
+        ov12_0223C0C4(bsys);
+        ctx->command = CONTROLLER_COMMAND_SELECTION_SCREEN_INIT;
+    }
 }
