@@ -54,7 +54,7 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
         }
     }
     
-    ctx->battleMons[battlerId].unk28_0 = 0;
+    ctx->battleMons[battlerId].sendOutFlag = 0;
     ctx->battleMons[battlerId].intimidateFlag = 0;
     ctx->battleMons[battlerId].traceFlag = 0;
     ctx->battleMons[battlerId].downloadFlag = 0;
@@ -3437,4 +3437,430 @@ int DamageDivide(int num, int denom) {
     }
     
     return num;
+}
+
+int ov12_02253194(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int i;
+    int j;
+    int script;
+    BOOL flag;
+    int battlerId;
+    int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+    
+    script = 0;
+    flag = FALSE;
+    
+    do {
+        switch (ctx->sendOutState) {
+        case 0: //field weather 
+            if (!ctx->weatherCheckFlag) {
+                switch (ov12_0223BAF8(bsys)) {
+                case 1:
+                case 2:
+                case 3:
+                    script = 271;
+                    flag = TRUE;
+                    break;
+                case 4:
+                case 5:
+                case 6:
+                    script = 272;
+                    flag = TRUE;
+                    break;
+                case 7:
+                    script = 273;
+                    flag = TRUE;
+                    break;
+                case 9:
+                case 10:
+                    script = 274;
+                    flag = TRUE;
+                    break;
+                case 1001:
+                    script = 294;
+                    flag = TRUE;
+                    break;
+                case 1002:
+                    script = 295;
+                    flag = TRUE;
+                    break;
+                default:
+                    break;
+                }
+                if (flag == TRUE) {
+                    ctx->weatherCheckFlag = TRUE;
+                }
+            }
+            ctx->sendOutState++;
+            break;
+        case 1: //Trace
+            {
+                int battlerIdTargetR;
+                int battlerIdTargetL;
+                
+                for (i = 0; i < maxBattlers; i++) {
+                    battlerId = ctx->turnOrder[i];
+                    battlerIdTargetR = ov12_0223ABB8(bsys, battlerId, 0);
+                    battlerIdTargetL = ov12_0223ABB8(bsys, battlerId, 2);
+                    ctx->unk_120 = ov12_022585B8(bsys, ctx, battlerIdTargetR, battlerIdTargetL);
+                    if (!ctx->battleMons[battlerId].traceFlag && ctx->unk_120 != 0xFF && 
+                        ctx->battleMons[battlerId].hp && ctx->battleMons[battlerId].item != ITEM_GRISEOUS_ORB &&
+                        ctx->battleMons[ctx->unk_120].hp && GetBattlerAbility(ctx, battlerId) == ABILITY_TRACE) {
+                        ctx->battleMons[battlerId].traceFlag = TRUE;
+                        ctx->battlerIdWork = battlerId;
+                        script = 187;
+                        flag = TRUE;
+                        break;
+                    }
+                }
+            }
+            if (i == maxBattlers) {
+                ctx->sendOutState++;
+            }
+            break;
+        case 2: //Weather from abilities
+            for (i = 0; i < maxBattlers; i++) {
+                battlerId = ctx->turnOrder[i];
+                if (!ctx->battleMons[battlerId].sendOutFlag && ctx->battleMons[battlerId].hp) {
+                    switch (GetBattlerAbility(ctx, battlerId)) {
+                    case ABILITY_DRIZZLE:
+                        ctx->battleMons[battlerId].sendOutFlag = TRUE;
+                        if (!(ctx->fieldCondition & FIELD_CONDITION_RAIN_PERMANENT)) {
+                            script = 183;
+                            flag = TRUE;
+                        }
+                        break;
+                    case ABILITY_SAND_STREAM:
+                        ctx->battleMons[battlerId].sendOutFlag = TRUE;
+                        if (!(ctx->fieldCondition & FIELD_CONDITION_SANDSTORM_PERMANENT)) {
+                            script = 184;
+                            flag = TRUE;
+                        }
+                        break;
+                    case ABILITY_DROUGHT:
+                        ctx->battleMons[battlerId].sendOutFlag = TRUE;
+                        if (!(ctx->fieldCondition & FIELD_CONDITION_SUN_PERMANENT)) {
+                            script = 185;
+                            flag = TRUE;
+                        }
+                        break;
+                    case ABILITY_SNOW_WARNING:
+                        ctx->battleMons[battlerId].sendOutFlag = TRUE;
+                        if (!(ctx->fieldCondition & FIELD_CONDITION_HAIL_PERMANENT)) {
+                            script = 252;
+                            flag = TRUE;
+                        }
+                        break;
+                    }
+                }
+                if (flag == TRUE) {
+                    ctx->battlerIdWork = battlerId;
+                    break;
+                }
+            }
+            if (i == maxBattlers) {
+                ctx->sendOutState++;
+            }
+            break;
+        case 3: //Intimidate
+            for (i = 0; i < maxBattlers; i++) {
+                battlerId = ctx->turnOrder[i];
+                if (!ctx->battleMons[battlerId].intimidateFlag && ctx->battleMons[battlerId].hp && GetBattlerAbility(ctx, battlerId) == ABILITY_INTIMIDATE) {
+                    ctx->battleMons[battlerId].intimidateFlag = TRUE;
+                    ctx->battlerIdWork = battlerId;
+                    script = 186;
+                    flag = TRUE;
+                    break;
+                }
+            }
+            if (i == maxBattlers) {
+                ctx->sendOutState++;
+            }
+            break;
+        case 4: //Download
+            for (i = 0; i < maxBattlers; i++) {
+                battlerId = ctx->turnOrder[i];
+                if (!ctx->battleMons[battlerId].downloadFlag && ctx->battleMons[battlerId].hp && GetBattlerAbility(ctx, battlerId) == ABILITY_DOWNLOAD) {
+                    int battlerIdCheck;
+                    int def = 0;
+                    int spdef = 0;
+                    
+                    for (battlerIdCheck = 0; battlerIdCheck < maxBattlers; battlerIdCheck++) {
+                        if (BattleSystem_GetFieldSide(bsys, battlerId) != BattleSystem_GetFieldSide(bsys, battlerIdCheck) && !(ctx->battleMons[battlerIdCheck].status2 & STATUS2_SUBSTITUTE) && ctx->battleMons[battlerIdCheck].hp) {
+                            def += ctx->battleMons[battlerIdCheck].def * sStatChangeTable[ctx->battleMons[battlerIdCheck].statChanges[2]][0] / sStatChangeTable[ctx->battleMons[battlerIdCheck].statChanges[2]][1];
+                            spdef += ctx->battleMons[battlerIdCheck].spDef * sStatChangeTable[ctx->battleMons[battlerIdCheck].statChanges[5]][0] / sStatChangeTable[ctx->battleMons[battlerIdCheck].statChanges[5]][1];
+                        }
+                    }
+                    ctx->battleMons[battlerId].downloadFlag = TRUE;
+                    if (def + spdef != 0) {
+                        if (def >= spdef) {
+                            ctx->statChangeParam = 0x12;
+                        } else {
+                            ctx->statChangeParam = 0xF;
+                        }
+                        ctx->statChangeType = 3;
+                        ctx->battlerIdStatChange = battlerId;
+                        script = 12;
+                        flag = TRUE;
+                        break;
+                    }
+                }
+            }
+            if (i == maxBattlers) {
+                ctx->sendOutState++;
+            }
+            break;
+        case 5: //Anticipation
+            for (i = 0; i < maxBattlers; i++) {
+                battlerId = ctx->turnOrder[i];
+                if (!ctx->battleMons[battlerId].anticipationFlag && ctx->battleMons[battlerId].hp && GetBattlerAbility(ctx, battlerId) == ABILITY_ANTICIPATION) {
+                    ctx->battleMons[battlerId].anticipationFlag = TRUE;
+                    int battlerIdCheck;
+                    int index;
+                    u16 moveNo;
+                    u32 moveStatus;
+                    for (battlerIdCheck = 0; battlerIdCheck < maxBattlers; battlerIdCheck++) {
+                        if (BattleSystem_GetFieldSide(bsys, battlerId) != BattleSystem_GetFieldSide(bsys, battlerIdCheck) && ctx->battleMons[battlerIdCheck].hp) {
+                            for (index = 0; index < LEARNED_MOVES_MAX; index++) {
+                                moveNo = ctx->battleMons[battlerIdCheck].moves[index];
+                                if (moveNo) {
+                                    moveStatus = 0;
+                                    ctx->damage = ov12_02251D28(bsys, ctx, moveNo, 0, battlerIdCheck, battlerId, ctx->damage, &moveStatus);
+                                    if (!(moveStatus & MOVE_STATUS_NO_EFFECT) && !ov12_0225865C(ctx, moveNo) && ((moveStatus & MOVE_STATUS_SUPER_EFFECTIVE) || (ctx->unk_334.moveData[moveNo].effect == 38 && ctx->battleMons[battlerId].level <= ctx->battleMons[battlerIdCheck].level))) {
+                                        flag = TRUE;
+                                        break;
+                                    }
+                                }
+                            }
+                            if (flag == TRUE) {
+                                break;
+                            }
+                        }
+                    }
+                    if (flag == TRUE) {
+                        ctx->battlerIdWork = battlerId;
+                        script = 194;
+                    }
+                    break;
+                }
+            }
+            if (i == maxBattlers) {
+                ctx->sendOutState++;
+            }
+            break;
+        case 6: //forewarn
+            for (i = 0; i < maxBattlers; i++) {
+                battlerId = ctx->turnOrder[i];
+                if (!ctx->battleMons[battlerId].forewarnFlag && ctx->battleMons[battlerId].hp && (GetBattlerAbility(ctx, battlerId) == ABILITY_FOREWARN)) {
+                    ctx->battleMons[battlerId].forewarnFlag = TRUE;
+                    int battlerIdCheck;
+                    int index;
+                    u16 moveNo;
+                    u32 power;
+                    int hp;
+                    u32 powerTemp;
+                    
+                    
+                    powerTemp = 0;
+                    hp = 0;
+                    
+                    for (battlerIdCheck = 0; battlerIdCheck < maxBattlers; battlerIdCheck++) {
+                        if (BattleSystem_GetFieldSide(bsys, battlerId) != BattleSystem_GetFieldSide(bsys, battlerIdCheck) && ctx->battleMons[battlerIdCheck].hp) {
+                            hp += ctx->battleMons[battlerIdCheck].hp;
+                            for (index = 0; index < LEARNED_MOVES_MAX; index++) {
+                                moveNo = ctx->battleMons[battlerIdCheck].moves[index];
+                                power = ctx->unk_334.moveData[moveNo].power;
+                                switch (power) {
+                                case 1:
+                                    switch (ctx->unk_334.moveData[moveNo].effect) {
+                                    case 38: //OHKO?
+                                        if (powerTemp < 150 || (powerTemp == 150 && (BattleSystem_Random(bsys) & 1))) {
+                                            powerTemp = 150;
+                                            ctx->moveWork = moveNo;
+                                        }
+                                        break;
+                                    //Counter, Mirror Coat, Metal Burst
+                                    case 89:
+                                    case 144:
+                                    case 227:
+                                        if (powerTemp < 120 || ((powerTemp == 120) && (BattleSystem_Random(bsys) & 1))) {
+                                            powerTemp = 120;
+                                            ctx->moveWork = moveNo;
+                                        }
+                                        break;
+                                    default:
+                                        if (powerTemp < 80 || ((powerTemp == 80) && (BattleSystem_Random(bsys) & 1))) {
+                                            powerTemp = 80;
+                                            ctx->moveWork = moveNo;
+                                        }
+                                        break;
+                                    }
+                                    break;
+                                default:
+                                    if (powerTemp < power || ((powerTemp == power) && (BattleSystem_Random(bsys) & 1))) {
+                                        powerTemp = power;
+                                        ctx->moveWork = moveNo;
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    if (powerTemp) {
+                        ctx->battlerIdWork = battlerId;
+                        script = 195;
+                        flag = TRUE;
+                    } else if (hp) {
+                        j = ov12_02253DA0(bsys, ctx, battlerId);
+                        index = GetBattlerLearnedMoveCount(bsys, ctx, j);
+                        ctx->moveWork = ctx->battleMons[j].moves[BattleSystem_Random(bsys) % index];
+                        ctx->battlerIdWork = battlerId;
+                        script = 195;
+                        flag = TRUE;
+                    }
+                    break;
+                }
+            }
+            if (i == maxBattlers) {
+                ctx->sendOutState++;
+            }
+            break;
+        case 7: //Frisk
+            for (i = 0; i < maxBattlers; i++) {
+                battlerId = ctx->turnOrder[i];
+                if (!ctx->battleMons[battlerId].friskFlag && ctx->battleMons[battlerId].hp && GetBattlerAbility(ctx, battlerId) == ABILITY_FRISK) {
+                    ctx->battleMons[battlerId].friskFlag = TRUE;
+                    if (BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_DOUBLES) {
+                        int battlerIdTargets[2];
+                        
+                        battlerIdTargets[0] = ov12_0223ABB8(bsys, battlerId, 0);
+                        battlerIdTargets[1] = ov12_0223ABB8(bsys, battlerId, 2);
+                        
+                        if (ctx->battleMons[battlerIdTargets[0]].hp && ctx->battleMons[battlerIdTargets[0]].item && ctx->battleMons[battlerIdTargets[1]].hp && ctx->battleMons[battlerIdTargets[1]].item) {
+                            ctx->itemWork = ctx->battleMons[battlerIdTargets[BattleSystem_Random(bsys) & 1]].item;
+                            flag = TRUE;
+                        } else if (ctx->battleMons[battlerIdTargets[0]].hp && ctx->battleMons[battlerIdTargets[0]].item) {
+                            ctx->itemWork = ctx->battleMons[battlerIdTargets[0]].item;
+                            flag = TRUE;
+                        } else if (ctx->battleMons[battlerIdTargets[1]].hp && ctx->battleMons[battlerIdTargets[1]].item) {
+                            ctx->itemWork = ctx->battleMons[battlerIdTargets[1]].item;
+                            flag = TRUE;
+                        }
+                    } else if (ctx->battleMons[battlerId ^ 1].hp && ctx->battleMons[battlerId ^ 1].item) {
+                        ctx->itemWork = ctx->battleMons[battlerId ^ 1].item;
+                        flag = TRUE;
+                    }
+                } 
+                if (flag == TRUE) {
+                    ctx->battlerIdWork = battlerId;
+                    script = 253;
+                    break;
+                }
+            }
+            if (i == maxBattlers) {
+                ctx->sendOutState++;
+            }
+            break;
+        case 8: //Slow Start
+            for (i = 0; i < maxBattlers; i++) {
+                battlerId = ctx->turnOrder[i];
+                if (!ctx->battleMons[battlerId].slowStartFlag && ctx->battleMons[battlerId].hp && GetBattlerAbility(ctx, battlerId) == ABILITY_SLOW_START && ctx->totalTurns <= ctx->battleMons[battlerId].unk88.slowStartTurns) {
+                    ctx->battleMons[battlerId].slowStartFlag = TRUE;
+                    ctx->battlerIdWork = battlerId;
+                    script = 196;
+                    flag = TRUE;
+                    break;
+                }
+                if (!ctx->battleMons[battlerId].slowStartEnded && ctx->battleMons[battlerId].hp && GetBattlerAbility(ctx, battlerId) == ABILITY_SLOW_START && (ctx->totalTurns - ctx->battleMons[battlerId].unk88.slowStartTurns) == 5) {
+                    ctx->battleMons[battlerId].slowStartEnded = TRUE;
+                    ctx->battlerIdWork = battlerId;
+                    script = 197;
+                    flag = TRUE;
+                    break;
+                }
+            }
+            if (i == maxBattlers) {
+                ctx->sendOutState++;
+            }
+            break;
+        case 9: //Mold Breaker
+            for (i = 0; i < maxBattlers; i++) {
+                battlerId = ctx->turnOrder[i];
+                if (!ctx->battleMons[battlerId].moldBreakerFlag && ctx->battleMons[battlerId].hp && GetBattlerAbility(ctx, battlerId) == ABILITY_MOLD_BREAKER) {
+                    ctx->battleMons[battlerId].moldBreakerFlag = TRUE;
+                    ctx->battlerIdWork = battlerId;
+                    script = 177;
+                    flag = TRUE;
+                    break;
+                }
+            }
+            if (i == maxBattlers) {
+                ctx->sendOutState++;
+            }
+            break;
+        case 10: //Pressure
+            for (i = 0; i < maxBattlers; i++) {
+                battlerId = ctx->turnOrder[i];
+                if (!ctx->battleMons[battlerId].pressureFlag && ctx->battleMons[battlerId].hp && GetBattlerAbility(ctx, battlerId) == ABILITY_PRESSURE) {
+                    ctx->battleMons[battlerId].pressureFlag = TRUE;
+                    ctx->battlerIdWork = battlerId;
+                    script = 285;
+                    flag = TRUE;
+                    break;
+                }
+            }
+            if (i == maxBattlers) {
+                ctx->sendOutState++;
+            }
+            break;
+        case 11: //Air Lock and Cloud Nine
+            if (ov12_02256914(bsys, ctx, &script) == TRUE) {
+                flag = TRUE;
+            } else {
+                ctx->sendOutState++;
+            }
+            break;
+        case 12: //Amulet coin
+            for (i = 0; i < maxBattlers; i++) {
+                battlerId = ctx->turnOrder[i];
+                if (GetItemHoldEffect(ctx, ctx->battleMons[battlerId].item, 1) == HOLD_EFFECT_MONEY_UP) {
+                    ctx->prizeMoneyValue = 2;
+                }
+            }
+            ctx->sendOutState++;
+            break;
+        case 13: //???
+            for (i = 0; i < maxBattlers; i++) {
+                battlerId = ctx->turnOrder[i];
+                if (ov12_022543A0(bsys, ctx, battlerId, 1) == TRUE) {
+                    script = 221;
+                    flag = TRUE;
+                    break;
+                }
+            }
+            if (i == maxBattlers) {
+                ctx->sendOutState++;
+            }
+            break;
+        case 14: //???
+            for (i = 0; i < maxBattlers; i++) {
+                battlerId = ctx->turnOrder[i];
+                if (ov12_02254E7C(bsys, ctx, battlerId, &script) == TRUE) {
+                    ctx->battlerIdWork = battlerId;
+                    flag = TRUE;
+                    break;
+                }
+            }
+            if (i == maxBattlers) {
+                ctx->sendOutState++;
+            }
+            break;
+        case 15: //end
+            ctx->sendOutState = 0;
+            flag = 2;
+            break;
+        }
+    } while (!flag);
+    
+    return script;
 }

@@ -8,33 +8,7 @@
     .public BattleControllerPlayer_GetBattleMon
     .public BattleControllerPlayer_StartEncounter
     .public BattleControllerPlayer_TrainerMessage
-
-	thumb_func_start ov12_022487C8
-ov12_022487C8: ; 0x022487C8
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	bl ov12_02253194
-	add r2, r0, #0
-	beq _022487E8
-	add r0, r4, #0
-	mov r1, #1
-	bl ReadBattleScriptFromNarc
-	ldr r0, [r4, #8]
-	str r0, [r4, #0xc]
-	mov r0, #0x16
-	str r0, [r4, #8]
-	pop {r3, r4, r5, pc}
-_022487E8:
-	add r0, r5, #0
-	add r1, r4, #0
-	bl SortMonsBySpeed
-	add r0, r5, #0
-	bl ov12_0223C0C4
-	mov r0, #4
-	str r0, [r4, #8]
-	pop {r3, r4, r5, pc}
-	thumb_func_end ov12_022487C8
+    .public ov12_022487C8
 
 	thumb_func_start ov12_022487FC
 ov12_022487FC: ; 0x022487FC

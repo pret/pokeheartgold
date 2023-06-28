@@ -12,6 +12,7 @@ void BattleSystem_CheckMoveHitEffect(BattleSystem *bsys, BATTLECONTEXT *ctx, int
 void BattleControllerPlayer_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx);
 void BattleControllerPlayer_StartEncounter(BattleSystem *bsys, BATTLECONTEXT *ctx);
 void BattleControllerPlayer_TrainerMessage(BattleSystem *bsys, BATTLECONTEXT *ctx);
+void ov12_022487C8(BattleSystem *bsys, BATTLECONTEXT *ctx);
 
 //The following functions haven't been decompiled yet
 void ov12_0224E384(BattleSystem *bsys, BATTLECONTEXT *ctx);

@@ -69,6 +69,7 @@ int GetBattlerLearnedMoveCount(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
 int ov12_02252EC8(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget);
 BOOL ov12_02253068(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 int DamageDivide(int num, int denom);
+int ov12_02253194(BattleSystem *bsys, BATTLECONTEXT *ctx);
 
 //The following functions are static, but the rest of the file is still being worked on
 BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int index);
@@ -116,4 +117,9 @@ void ov12_02258584(BATTLECONTEXT *ctx, u8 battlerId);
 void ov12_0225859C(BATTLECONTEXT *ctx, u8 battlerId);
 int ov12_02258440(BATTLECONTEXT *ctx, int moveNo);
 u32 ov12_022583B4(BATTLECONTEXT *ctx, int battlerIdA, u8 effectiveness, int damage, u32 movePower, u32 *moveStatusFlag);
+int ov12_022585B8(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int battlerId2);
+BOOL ov12_0225865C(BATTLECONTEXT *ctx, int moveNo);
+BOOL ov12_02256914(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 *scriptOut);
+BOOL ov12_022543A0(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int a3);
+BOOL ov12_02254E7C(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u32 *scriptOut);
 #endif
