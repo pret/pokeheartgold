@@ -1258,13 +1258,13 @@ BOOL ov12_022503EC(BattleSystem *bsys, BATTLECONTEXT *ctx, int *out) {
     if (ctx->unk_2170 & (1 << 29)) {
         *out = ov12_02258348(ctx, 1, ctx->unk_2170);
         ctx->unk_2170 = 0;
-        if (!(ctx->moveStatusFlag & 0x801FDA49)) {
+        if (!(ctx->moveStatusFlag & MOVE_STATUS_FAIL)) {
             ret = TRUE;
         }
     } else if (ctx->unk_2170) {
         *out = ov12_02258348(ctx, 1, ctx->unk_2170);
         if (ctx->battleMons[ctx->battlerIdStatChange].hp && 
-            (!(ctx->moveStatusFlag & 0x801FDA49) || 
+            (!(ctx->moveStatusFlag & MOVE_STATUS_FAIL) || 
             ((ctx->unk_2170 & (1 << 23)) && (ctx->moveStatusFlag & 0x40008)) ||
             ((ctx->unk_2170 & (1 << 28)) && (ctx->moveStatusFlag & 0x10001)))) {
                 ret = TRUE;
@@ -1282,19 +1282,19 @@ BOOL ov12_02250490(BattleSystem *bsys, BATTLECONTEXT *ctx, int *out) {
     if (ctx->unk_2174 & (1 << 29)) {
         *out = ov12_02258348(ctx, 2, ctx->unk_2174);
         ctx->unk_2174 = 0;
-        if (!(ctx->moveStatusFlag & 0x801FDA49)) {
+        if (!(ctx->moveStatusFlag & MOVE_STATUS_FAIL)) {
             ret = TRUE;
         }
     } else if (ctx->unk_2174 & (1 << 24)) {
         *out = ov12_02258348(ctx, 2, ctx->unk_2174);
         ctx->unk_2174 = 0;
-        if (!ov12_02256838(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & 0x801FDA49)) {
+        if (!BattlerCheckSubstitute(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL)) {
             ret = TRUE;
         }
     } else if (ctx->unk_2174 & (1 << 25)) {
         *out = ov12_02258348(ctx, 2, ctx->unk_2174);
         ctx->unk_2174 = 0;
-        if (ctx->battleMons[ctx->battlerIdStatChange].hp && !ov12_02256838(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & 0x801FDA49)) {
+        if (ctx->battleMons[ctx->battlerIdStatChange].hp && !BattlerCheckSubstitute(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL)) {
             ret = TRUE;
         }
     } else if (ctx->unk_2174 & (1 << 28)) {
@@ -1337,7 +1337,7 @@ BOOL ov12_02250490(BattleSystem *bsys, BATTLECONTEXT *ctx, int *out) {
         if ((BattleSystem_Random(bsys) % 100) < effectChance) {
             *out = ov12_02258348(ctx, 2, ctx->unk_2174);
             ctx->unk_2174 = 0; 
-            if (ctx->battleMons[ctx->battlerIdStatChange].hp && !ov12_02256838(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & 0x801FDA49)) {
+            if (ctx->battleMons[ctx->battlerIdStatChange].hp && !BattlerCheckSubstitute(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL)) {
                 ret = TRUE;
             }
         }
@@ -1540,7 +1540,7 @@ void ov12_02250A18(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker
 BOOL ov12_02250BBC(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BOOL ret = FALSE;
     
-    if (!(ctx->moveStatusFlag & 0x801FDA49) && ctx->selfTurnData[ctx->battlerIdTarget].lightningRodFlag) {
+    if (!(ctx->moveStatusFlag & MOVE_STATUS_FAIL) && ctx->selfTurnData[ctx->battlerIdTarget].lightningRodFlag) {
         ctx->selfTurnData[ctx->battlerIdTarget].lightningRodFlag = FALSE;
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 180);
         ctx->commandNext = ctx->command;
@@ -1548,7 +1548,7 @@ BOOL ov12_02250BBC(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ret = TRUE;
     }
     
-    if (!(ctx->moveStatusFlag & 0x801FDA49) && ctx->selfTurnData[ctx->battlerIdTarget].stormDrainFlag) {
+    if (!(ctx->moveStatusFlag & MOVE_STATUS_FAIL) && ctx->selfTurnData[ctx->battlerIdTarget].stormDrainFlag) {
         ctx->selfTurnData[ctx->battlerIdTarget].stormDrainFlag = FALSE;
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 180);
         ctx->commandNext = ctx->command;
@@ -3439,7 +3439,7 @@ int DamageDivide(int num, int denom) {
     return num;
 }
 
-int ov12_02253194(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+int TryAbilityOnEntry(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
     int j;
     int script;
@@ -3454,7 +3454,7 @@ int ov12_02253194(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         switch (ctx->sendOutState) {
         case 0: //field weather 
             if (!ctx->weatherCheckFlag) {
-                switch (ov12_0223BAF8(bsys)) {
+                switch (BattleSystem_GetWeather(bsys)) {
                 case 1:
                 case 2:
                 case 3:
@@ -3832,7 +3832,7 @@ int ov12_02253194(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         case 13: //???
             for (i = 0; i < maxBattlers; i++) {
                 battlerId = ctx->turnOrder[i];
-                if (ov12_022543A0(bsys, ctx, battlerId, 1) == TRUE) {
+                if (CheckStatusHealAbility(bsys, ctx, battlerId, 1) == TRUE) {
                     script = 221;
                     flag = TRUE;
                     break;
@@ -3863,4 +3863,690 @@ int ov12_02253194(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     } while (!flag);
     
     return script;
+}
+
+int ov12_02253DA0(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
+    u32 battleType;
+    int battlerIdTarget;
+    int battlerIdTargets[2];
+    int i;
+    
+    battleType = BattleSystem_GetBattleType(bsys);
+    
+    if (battleType & BATTLE_TYPE_DOUBLES) {
+        battlerIdTargets[0] = ov12_0223ABB8(bsys, battlerId, 0);
+        battlerIdTargets[1] = ov12_0223ABB8(bsys, battlerId, 2);
+        i = BattleSystem_Random(bsys) & 1;
+        battlerIdTarget = battlerIdTargets[i];
+        if (!ctx->battleMons[battlerIdTarget].hp) {
+            battlerIdTarget = battlerIdTargets[i ^ 1];
+        }
+    } else {
+        battlerIdTarget = battlerId ^ 1;
+    }
+    
+    return battlerIdTarget;
+}
+
+BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script) {
+    BOOL ret = FALSE;
+    
+    if (ctx->battlerIdTarget == BATTLER_NONE) {
+        return ret;
+    }
+    
+    if (BattlerCheckSubstitute(ctx, ctx->battlerIdTarget) == TRUE) {
+        return ret;
+    }
+    
+    switch (GetBattlerAbility(ctx, ctx->battlerIdTarget)) {
+    case ABILITY_STATIC:
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp &&
+            !ctx->battleMons[ctx->battlerIdAttacker].status &&
+            !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
+            !(ctx->linkStatus & 0x20) &&
+            !(ctx->linkStatus2 & 0x10) &&
+            (ctx->selfTurnData[ctx->battlerIdTarget].unk4 || ctx->selfTurnData[ctx->battlerIdTarget].unkC) &&
+            (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1) &&
+            (BattleSystem_Random(bsys) % 10 < 3)) {
+            ctx->statChangeType = 3;
+            ctx->battlerIdStatChange = ctx->battlerIdAttacker;
+            ctx->battlerIdWork = ctx->battlerIdTarget;
+            *script = 31;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_COLOR_CHANGE:
+        u8 moveType;
+        
+        if (GetBattlerAbility(ctx, ctx->battlerIdAttacker) == ABILITY_NORMALIZE) {
+            moveType = TYPE_NORMAL;
+        } else if (ctx->moveType) {
+            moveType = ctx->moveType;
+        } else {
+            moveType = ctx->unk_334.moveData[ctx->moveNoCur].type;
+        }
+        
+        if (ctx->battleMons[ctx->battlerIdTarget].hp &&
+            !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
+            ctx->moveNoCur != MOVE_STRUGGLE &&
+            (ctx->selfTurnData[ctx->battlerIdTarget].unk4 || ctx->selfTurnData[ctx->battlerIdTarget].unkC) &&
+            !(ctx->linkStatus2 & 0x10) &&
+            ctx->unk_334.moveData[ctx->moveNoCur].power &&
+            GetBattlerVar(ctx, ctx->battlerIdTarget, BMON_DATA_TYPE_1, NULL) != moveType &&
+            GetBattlerVar(ctx, ctx->battlerIdTarget, BMON_DATA_TYPE_2, NULL) != moveType) {
+            *script = 188;
+            ctx->msgWork = moveType;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_ROUGH_SKIN:
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp &&
+            GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_MAGIC_GUARD &&
+            !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
+            !(ctx->linkStatus & 0x20) &&
+            !(ctx->linkStatus2 & 0x10) &&
+            (ctx->selfTurnData[ctx->battlerIdTarget].unk4 || ctx->selfTurnData[ctx->battlerIdTarget].unkC) &&
+            (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1)) {
+            ctx->hpCalcWork = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp * -1, 8);
+            ctx->battlerIdWork = ctx->battlerIdAttacker;
+            *script = 189;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_EFFECT_SPORE:
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp &&
+            !ctx->battleMons[ctx->battlerIdAttacker].status &&
+            !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
+            !(ctx->linkStatus & 0x20) &&
+            !(ctx->linkStatus2 & 0x10) &&
+            (ctx->selfTurnData[ctx->battlerIdTarget].unk4 || ctx->selfTurnData[ctx->battlerIdTarget].unkC) &&
+            (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1) &&
+            (BattleSystem_Random(bsys) % 10 < 3)) {
+            switch (BattleSystem_Random(bsys) % 3) {
+            case 0:
+            default:
+                *script = 22;
+                break;
+            case 1:
+                *script = 31;
+                break;
+            case 2:
+                *script = 18;
+                break;
+            }
+            ctx->statChangeType = 3;
+            ctx->battlerIdStatChange = ctx->battlerIdAttacker;
+            ctx->battlerIdWork = ctx->battlerIdTarget;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_POISON_POINT:
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp &&
+            !ctx->battleMons[ctx->battlerIdAttacker].status &&
+            !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
+            !(ctx->linkStatus & 0x20) &&
+            !(ctx->linkStatus2 & 0x10) &&
+            (ctx->selfTurnData[ctx->battlerIdTarget].unk4 || ctx->selfTurnData[ctx->battlerIdTarget].unkC) &&
+            (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1) &&
+            (BattleSystem_Random(bsys) % 10 < 3)) {
+            ctx->statChangeType = 3;
+            ctx->battlerIdStatChange = ctx->battlerIdAttacker;
+            ctx->battlerIdWork = ctx->battlerIdTarget;
+            *script = 22;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_FLAME_BODY:
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp &&
+            !ctx->battleMons[ctx->battlerIdAttacker].status &&
+            !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
+            !(ctx->linkStatus & 0x20) &&
+            !(ctx->linkStatus2 & 0x10) &&
+            (ctx->selfTurnData[ctx->battlerIdTarget].unk4 || ctx->selfTurnData[ctx->battlerIdTarget].unkC) &&
+            (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1) &&
+            (BattleSystem_Random(bsys) % 10 < 3)) {
+            ctx->statChangeType = 3;
+            ctx->battlerIdStatChange = ctx->battlerIdAttacker;
+            ctx->battlerIdWork = ctx->battlerIdTarget;
+            *script = 25;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_CUTE_CHARM:
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp &&
+            !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_ATTRACT_ALL) &&
+            !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
+            !(ctx->linkStatus & 0x20) &&
+            !(ctx->linkStatus2 & 0x10) &&
+            (ctx->selfTurnData[ctx->battlerIdTarget].unk4 || ctx->selfTurnData[ctx->battlerIdTarget].unkC) &&
+            (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1) &&
+            ctx->battleMons[ctx->battlerIdTarget].hp &&
+            ((BattleSystem_Random(bsys) % 10) < 3)) {
+            ctx->statChangeType = 3;
+            ctx->battlerIdStatChange = ctx->battlerIdAttacker;
+            ctx->battlerIdWork = ctx->battlerIdTarget;
+            *script = 106;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_AFTERMATH:
+        if (ctx->battlerIdTarget == ctx->battlerIdFainted &&
+            GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_MAGIC_GUARD &&
+            !CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_DAMP) && 
+            !(ctx->linkStatus2 & 0x10) &&
+            ctx->battleMons[ctx->battlerIdAttacker].hp &&
+            !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
+            (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1)) {
+            ctx->hpCalcWork = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp * -1, 4);
+            ctx->battlerIdWork = ctx->battlerIdAttacker;
+            *script = 193;
+            ret = TRUE;
+        }
+        break;
+    default:
+        break;
+    }
+    return ret;
+}
+
+BOOL CheckStatusHealAbility(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int flag) {
+    BOOL ret = FALSE;
+    
+    switch (GetBattlerAbility(ctx, battlerId)) {
+    case ABILITY_IMMUNITY:
+        if (ctx->battleMons[battlerId].status & STATUS_POISON_ALL) {
+            ctx->msgWork = 1;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_OWN_TEMPO:
+        if (ctx->battleMons[battlerId].status2 & STATUS2_CONFUSION) {
+            ctx->msgWork = 5;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_LIMBER:
+        if (ctx->battleMons[battlerId].status & STATUS_PARALYSIS) {
+            ctx->msgWork = 3;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_INSOMNIA:
+    case ABILITY_VITAL_SPIRIT:
+        if (ctx->battleMons[battlerId].status & STATUS_SLEEP) {
+            ctx->msgWork = 0;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_WATER_VEIL:
+        if (ctx->battleMons[battlerId].status & STATUS_BURN) {
+            ctx->msgWork = 2;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_MAGMA_ARMOR:
+        if (ctx->battleMons[battlerId].status & STATUS_FREEZE) {
+            ctx->msgWork = 4;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_OBLIVIOUS:
+        if (ctx->battleMons[battlerId].status2 & STATUS2_ATTRACT_ALL) {
+            ctx->msgWork = 6;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_UNBURDEN:
+        //resets the item flag in the case where the Pokemon acquires an item via Thief or Trick
+        if (ctx->battleMons[battlerId].item) {
+            ctx->battleMons[battlerId].unk88.knockOffFlag = TRUE;
+        }
+        break;
+    }
+    if (ret == TRUE) {
+        ctx->battlerIdWork = battlerId;
+        ctx->abilityWork = GetBattlerAbility(ctx, battlerId);
+        if (!flag) {
+            ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 221);
+            ctx->commandNext = ctx->command;
+            ctx->command = CONTROLLER_COMMAND_22;
+        }
+    }
+
+    return ret;
+}
+
+BOOL CheckStatusHealSwitch(BATTLECONTEXT *ctx, int ability, int status) {
+    BOOL ret = FALSE;
+    
+    switch (ability) {
+    case ABILITY_IMMUNITY:
+        if (status & STATUS_POISON_ALL) {
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_LIMBER:
+        if (status & STATUS_PARALYSIS) {
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_INSOMNIA:
+    case ABILITY_VITAL_SPIRIT:
+        if (status & STATUS_SLEEP) {
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_WATER_VEIL:
+        if (status & STATUS_BURN) {
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_MAGMA_ARMOR:
+        if (status & STATUS_FREEZE) {
+            ret = TRUE;
+        }
+        break;
+    }
+    
+    return ret;
+}
+
+BOOL TrySyncronizeStatus(BattleSystem *bsys, BATTLECONTEXT *ctx, ControllerCommand command) {
+    BOOL ret = FALSE;
+    int script = 0;
+    
+    if (ctx->battlerIdTarget != BATTLER_NONE &&
+        GetBattlerAbility(ctx, ctx->battlerIdTarget) == ABILITY_SYNCHRONIZE &&
+        ctx->battlerIdTarget == ctx->battlerIdStatChange &&
+        (ctx->linkStatus & 0x80)) {
+        ctx->battlerIdWork = ctx->battlerIdTarget;
+        ctx->battlerIdStatChange = ctx->battlerIdAttacker;
+        ret = TRUE;
+    } else if (GetBattlerAbility(ctx, ctx->battlerIdAttacker) == ABILITY_SYNCHRONIZE &&
+        ctx->battlerIdAttacker == ctx->battlerIdStatChange &&
+        (ctx->linkStatus & 0x80)) {
+        ctx->battlerIdWork = ctx->battlerIdAttacker;
+        ctx->battlerIdStatChange = ctx->battlerIdTarget;
+        ret = TRUE;
+    }
+    
+    if (ret == TRUE) {
+        if (ctx->battleMons[ctx->battlerIdWork].status & STATUS_POISON_ALL) {
+            script = 22;
+        } else if (ctx->battleMons[ctx->battlerIdWork].status & STATUS_BURN) {
+            script = 25;
+        } else if (ctx->battleMons[ctx->battlerIdWork].status & STATUS_PARALYSIS) {
+            script = 31;
+        }
+        if (script) {
+            ctx->statChangeType = 3;
+            ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
+            ctx->commandNext = command;
+            ctx->command = CONTROLLER_COMMAND_22;
+            return ret;
+        }
+    }
+    
+    ret = ov12_02256914(bsys, ctx, &script);
+    if (ret == TRUE) {
+        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
+        ctx->commandNext = command;
+        ctx->command = CONTROLLER_COMMAND_22;
+        return ret;
+    }
+    
+    if (ctx->battlerIdTarget != BATTLER_NONE &&
+        GetBattlerHeldItemEffect(ctx, ctx->battlerIdTarget) == HOLD_EFFECT_RECIPROCATE_INFAT &&
+        ctx->battlerIdTarget == ctx->battlerIdStatChange &&
+        (ctx->selfTurnData[ctx->battlerIdTarget].unk14 & 4)) {
+        ctx->battlerIdWork = ctx->battlerIdTarget;
+        ctx->battlerIdStatChange = ctx->battlerIdAttacker;
+        ret = TRUE;
+    } else if (GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker) == HOLD_EFFECT_RECIPROCATE_INFAT &&
+        ctx->battlerIdAttacker == ctx->battlerIdStatChange &&
+        (ctx->selfTurnData[ctx->battlerIdAttacker].unk14 & 4)) {
+        ctx->battlerIdWork = ctx->battlerIdAttacker;
+        ctx->battlerIdStatChange = ctx->battlerIdTarget;
+        ret = TRUE;
+    }
+    
+    if (ret == TRUE) {
+        script = 106;
+        ctx->statChangeType = 5;
+        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
+        ctx->commandNext = command;
+        ctx->command = CONTROLLER_COMMAND_22;
+        return ret;
+    }
+    
+    return FALSE;
+}
+
+BOOL TryUseHeldItem(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
+    BOOL ret = FALSE;
+    int script;
+    int item;
+    int boost;
+    
+    item = GetBattlerHeldItemEffect(ctx, battlerId);
+    boost = BattleSystem_GetHeldItemDamageBoost(ctx, battlerId, 0);
+    
+    if (ctx->battleMons[battlerId].hp) {
+        switch (item) {
+        case HOLD_EFFECT_HP_RESTORE: //oran berry, berry juice
+            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / 2) {
+                ctx->hpCalcWork = boost;
+                script = 198;
+                ret = TRUE;
+            }
+            break;
+        case HOLD_EFFECT_HP_PCT_RESTORE: //sitrus berry
+            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / 2) {
+                ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp * boost, 100);
+                script = 198;
+                ret = TRUE;
+            }
+            break;
+        case HOLD_EFFECT_PRZ_RESTORE: //cheri berry
+            if (ctx->battleMons[battlerId].status & STATUS_PARALYSIS) {
+                script = 199;
+                ret = TRUE;
+            }
+            break;
+        case HOLD_EFFECT_SLP_RESTORE: //chesto berry
+            if (ctx->battleMons[battlerId].status & STATUS_SLEEP) {
+                script = 200;
+                ret = TRUE;
+            }
+            break;
+        case HOLD_EFFECT_PSN_RESTORE: //pecha berry
+            if (ctx->battleMons[battlerId].status & STATUS_POISON_ALL) {
+                script = 201;
+                ret = TRUE;
+            }
+            break;
+        case HOLD_EFFECT_BRN_RESTORE: //rawst berry
+            if (ctx->battleMons[battlerId].status & STATUS_BURN) {
+                script = 202;
+                ret = TRUE;
+            }
+            break;
+        case HOLD_EFFECT_FRZ_RESTORE: //aspear berry
+            if (ctx->battleMons[battlerId].status & STATUS_FREEZE) {
+                script = 203;
+                ret = TRUE;
+            }
+            break;
+        case HOLD_EFFECT_PP_RESTORE: //leppa berry
+            int index;
+            for (index = 0; index < LEARNED_MOVES_MAX; index++) {
+                if (ctx->battleMons[battlerId].moves[index] && !ctx->battleMons[battlerId].movePPCur[index]) {
+                    break;
+                }
+            }
+            if (index != LEARNED_MOVES_MAX) {
+                AddBattlerVar(&ctx->battleMons[battlerId], BMON_DATA_MOVE1PP + index, boost);
+                CopyBattleMonToPartyMon(bsys, ctx, battlerId);
+                ctx->moveWork = ctx->battleMons[battlerId].moves[index];
+                script = 204;
+                ret = TRUE;
+            }
+            break;
+        case HOLD_EFFECT_CONFUSE_RESTORE: //persim berry
+            if (ctx->battleMons[battlerId].status2 & STATUS2_CONFUSION) {
+                script = 205;
+                ret = TRUE;
+            }
+            break;
+        case HOLD_EFFECT_STATUS_RESTORE: //lum berry
+            if ((ctx->battleMons[battlerId].status & STATUS_ALL) || (ctx->battleMons[battlerId].status2 & STATUS2_CONFUSION)) {
+                if (ctx->battleMons[battlerId].status & STATUS_PARALYSIS) {
+                    script = 199;
+                }
+                if (ctx->battleMons[battlerId].status & STATUS_SLEEP) {
+                    script = 200;
+                }
+                if (ctx->battleMons[battlerId].status & STATUS_POISON_ALL) {
+                    script = 201;
+                }
+                if (ctx->battleMons[battlerId].status & STATUS_BURN) {
+                    script = 202;
+                }
+                if (ctx->battleMons[battlerId].status & STATUS_FREEZE) {
+                    script = 203;
+                }
+                if (ctx->battleMons[battlerId].status2 & STATUS2_CONFUSION) {
+                    script = 205;
+                }
+                if ((ctx->battleMons[battlerId].status & STATUS_ALL) && (ctx->battleMons[battlerId].status2 & STATUS2_CONFUSION)) {
+                    script = 206;
+                }
+                ret = TRUE;
+            }
+            break;
+        case HOLD_EFFECT_HP_RESTORE_SPICY: //figy berry
+            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / 2) {
+                ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp, boost);
+                ctx->msgWork = 0;
+                if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, FLAVOR_SPICY) == -1) {
+                    script = 207;
+                } else {
+                    script = 198;
+                }
+                ret = TRUE;
+            }
+            break;
+        case HOLD_EFFECT_HP_RESTORE_DRY: //wiki berry
+            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / 2) {
+                ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp, boost);
+                ctx->msgWork = 1;
+                if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, FLAVOR_DRY) == -1) {
+                    script = 207;
+                } else {
+                    script = 198;
+                }
+                ret = TRUE;
+            }
+            break;
+        case HOLD_EFFECT_HP_RESTORE_SWEET: //mago berry
+            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / 2) {
+                ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp, boost);
+                ctx->msgWork = 2;
+                if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, FLAVOR_SWEET) == -1) {
+                    script = 207;
+                } else {
+                    script = 198;
+                }
+                ret = TRUE;
+            }
+            break;
+        case HOLD_EFFECT_HP_RESTORE_BITTER: //aguav berry
+            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / 2) {
+                ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp, boost);
+                ctx->msgWork = 3;
+                if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, FLAVOR_BITTER) == -1) {
+                    script = 207;
+                } else {
+                    script = 198;
+                }
+                ret = TRUE;
+            }
+            break;
+        case HOLD_EFFECT_HP_RESTORE_SOUR: //iappapa berry
+            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / 2) {
+                ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp, boost);
+                ctx->msgWork = 4;
+                if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, FLAVOR_SOUR) == -1) {
+                    script = 207;
+                } else {
+                    script = 198;
+                }
+                ret = TRUE;
+            }
+            break;
+        case HOLD_EFFECT_PINCH_ATK_UP: //liechi berry
+            if (GetBattlerAbility(ctx, battlerId) == ABILITY_GLUTTONY) {
+                boost /= 2;
+            }
+            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[1] < 12) {
+                ctx->msgWork = 1;
+                script = 208;
+                ret = TRUE;
+            }
+            break;
+        case HOLD_EFFECT_PINCH_DEF_UP: //ganlon berry
+            if (GetBattlerAbility(ctx, battlerId) == ABILITY_GLUTTONY) {
+                boost /= 2;
+            }
+            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[2] < 12) {
+                ctx->msgWork = 2;
+                script = 208;
+                ret = TRUE;
+            }
+            break;
+        case HOLD_EFFECT_PINCH_SPEED_UP: //salac berry
+            if (GetBattlerAbility(ctx, battlerId) == ABILITY_GLUTTONY) {
+                boost /= 2;
+            }
+            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[3] < 12) {
+                ctx->msgWork = 3;
+                script = 208;
+                ret = TRUE;
+            }
+            break;
+        case HOLD_EFFECT_PINCH_SPATK_UP: //petaya berry
+            if (GetBattlerAbility(ctx, battlerId) == ABILITY_GLUTTONY) {
+                boost /= 2;
+            }
+            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[4] < 12) {
+                ctx->msgWork = 4;
+                script = 208;
+                ret = TRUE;
+            }
+            break;
+        case HOLD_EFFECT_PINCH_SPDEF_UP: //apicot berry
+            if (GetBattlerAbility(ctx, battlerId) == ABILITY_GLUTTONY) {
+                boost /= 2;
+            }
+            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[5] < 12) {
+                ctx->msgWork = 5;
+                script = 208;
+                ret = TRUE;
+            }
+            break;
+        case HOLD_EFFECT_PINCH_CRITRATE_UP: //apicot berry
+            if (GetBattlerAbility(ctx, battlerId) == ABILITY_GLUTTONY) {
+                boost /= 2;
+            }
+            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && !(ctx->battleMons[battlerId].status2 & STATUS2_FOCUS_ENERGY)) {
+                script = 209;
+                ret = TRUE;
+            }
+            break;
+        case HOLD_EFFECT_PINCH_RANDOM_UP: //starf berry
+            if (GetBattlerAbility(ctx, battlerId) == ABILITY_GLUTTONY) {
+                boost /= 2;
+            }
+            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost) {
+                int stat;
+                for (stat = 0; stat < 5; stat++) {
+                    if (ctx->battleMons[battlerId].statChanges[1 + stat] < 12) {
+                        break;
+                    }
+                }
+                if (stat != 5) {
+                    do {
+                        stat = BattleSystem_Random(bsys) % 5;
+                    } while (ctx->battleMons[battlerId].statChanges[1 + stat] == 12);
+                    ctx->msgWork = stat + 1;
+                    script = 210;
+                    ret = TRUE;
+                }
+            }
+            break;
+        case HOLD_EFFECT_STATDOWN_RESTORE: //white herb
+            int stat;
+            for (stat = 0; stat < 8; stat++) {
+                if (ctx->battleMons[battlerId].statChanges[stat] < 6) {
+                    ctx->battleMons[battlerId].statChanges[stat] = 6;
+                    ret = TRUE;
+                }
+            }
+            if (ret == TRUE) {
+                script = 211;
+            }
+            break;
+        case HOLD_EFFECT_HEAL_INFATUATION: //mental herb
+            if (ctx->battleMons[battlerId].status2 & STATUS2_ATTRACT_ALL) {
+                ctx->msgWork = 6;
+                script = 212;
+                ret = TRUE;
+            }
+            break;
+        case HOLD_EFFECT_PINCH_ACC_UP: //micle berry
+            if (GetBattlerAbility(ctx, battlerId) == ABILITY_GLUTTONY) {
+                boost /= 2;
+            }
+            if (ctx->battleMons[battlerId].hp <= (ctx->battleMons[battlerId].maxHp / boost)) {
+                script = 265;
+                ret = TRUE;
+            }
+            break;
+        default:
+            break;
+        }
+        if (ret == TRUE) {
+            ctx->battlerIdWork = battlerId;
+            ctx->itemWork = GetBattlerHeldItem(ctx, battlerId);
+            ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
+            ctx->commandNext = ctx->command;
+            ctx->command = CONTROLLER_COMMAND_22;
+        }
+    }
+    return ret;
+}
+
+BOOL CheckItemGradualHPRestore(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
+    BOOL ret = FALSE;
+    int script;
+    int item;
+    
+    item = GetBattlerHeldItemEffect(ctx, battlerId);
+    BattleSystem_GetHeldItemDamageBoost(ctx, battlerId, 0);
+    
+    if (ctx->battleMons[battlerId].hp) {
+        switch (item) {
+        case HOLD_EFFECT_HP_RESTORE_GRADUAL: //leftovers
+            if (ctx->battleMons[battlerId].hp < ctx->battleMons[battlerId].maxHp) {
+                ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp, 16);
+                script = 213;
+                ret = TRUE;
+            }
+            break;
+        case HOLD_EFFECT_HP_RESTORE_PSN_TYPE: //black sludge
+            if ((GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL) == TYPE_POISON || GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL) == TYPE_POISON)) {
+                if (ctx->battleMons[battlerId].hp < ctx->battleMons[battlerId].maxHp) {
+                    ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp, 16);
+                    script = 213;
+                    ret = TRUE;
+                }
+            } else if (GetBattlerAbility(ctx, battlerId) != ABILITY_MAGIC_GUARD) {
+                ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp * -1, 8);
+                script = 215;
+                ret = TRUE;
+            }
+            break;
+        default:
+            break;
+        }
+        if (ret == TRUE) {
+            ctx->battlerIdWork = battlerId;
+            ctx->itemWork = GetBattlerHeldItem(ctx, battlerId);
+            ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
+            ctx->commandNext = ctx->command;
+            ctx->command = CONTROLLER_COMMAND_22;
+        }
+    }
+    return ret;
 }

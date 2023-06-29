@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_OVERLAY_12_0224E4FC_H
 
 #include "battle.h"
+#include "constants/battle.h"
 
 void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 monIndex);
 void BattleSystem_ReloadMonData(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int monIndex);
@@ -69,7 +70,14 @@ int GetBattlerLearnedMoveCount(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
 int ov12_02252EC8(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget);
 BOOL ov12_02253068(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 int DamageDivide(int num, int denom);
-int ov12_02253194(BattleSystem *bsys, BATTLECONTEXT *ctx);
+int TryAbilityOnEntry(BattleSystem *bsys, BATTLECONTEXT *ctx);
+int ov12_02253DA0(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script);
+BOOL CheckStatusHealAbility(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int flag);
+BOOL CheckStatusHealSwitch(BATTLECONTEXT *ctx, int ability, int status);
+BOOL TrySyncronizeStatus(BattleSystem *bsys, BATTLECONTEXT *ctx, ControllerCommand command);
+BOOL TryUseHeldItem(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+BOOL CheckItemGradualHPRestore(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 
 //The following functions are static, but the rest of the file is still being worked on
 BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int index);
@@ -92,10 +100,8 @@ BOOL CheckLegalMimicMove(u16 move);
 BOOL IsMoveEncored(BATTLECONTEXT *ctx, u16 move);
 void CheckIgnorePressure(BATTLECONTEXT *ctx, int battlerIdA, int battlerIdB);
 u8 ov12_0225682C(BATTLECONTEXT *ctx, int a1);
-BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *work);
 BOOL CheckItemEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *itemWork);
 int BattleSystem_GetHeldItemDamageBoost(BATTLECONTEXT *ctx, int battlerId, int a2);
-BOOL CheckNaturalCureOnSwitch(BATTLECONTEXT *ctx, int ability, int status);
 int ov12_02253DA0(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL CheckItemEffectOnUTurn(BattleSystem *bsys, BATTLECONTEXT *ctx, int *work);
 u32 BattleSystem_GetBattleType(BattleSystem *bsys);
@@ -110,7 +116,7 @@ int ov12_02251D28(BattleSystem *bsys, BATTLECONTEXT *ctx, int moveNo, int moveTy
 void ov12_02252D14(BattleSystem *bsys, BATTLECONTEXT *ctx);
 int ov12_022584AC(BATTLECONTEXT *ctx, int battlerId, int id);
 int ov12_02258348(BATTLECONTEXT *ctx, int a1, int a2);
-int ov12_02256838(BATTLECONTEXT *ctx, int battlerId);
+int BattlerCheckSubstitute(BATTLECONTEXT *ctx, int battlerId);
 int BattleSystem_GetMoveType(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
 void ov12_022585A8(BATTLECONTEXT *ctx, u8 battlerId);
 void ov12_02258584(BATTLECONTEXT *ctx, u8 battlerId);
@@ -120,6 +126,5 @@ u32 ov12_022583B4(BATTLECONTEXT *ctx, int battlerIdA, u8 effectiveness, int dama
 int ov12_022585B8(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int battlerId2);
 BOOL ov12_0225865C(BATTLECONTEXT *ctx, int moveNo);
 BOOL ov12_02256914(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 *scriptOut);
-BOOL ov12_022543A0(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int a3);
 BOOL ov12_02254E7C(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u32 *scriptOut);
 #endif

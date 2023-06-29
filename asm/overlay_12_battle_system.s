@@ -2708,14 +2708,14 @@ ov12_0223BAEC: ; 0x0223BAEC
 _0223BAF4: .word 0x00002308
 	thumb_func_end ov12_0223BAEC
 
-	thumb_func_start ov12_0223BAF8
-ov12_0223BAF8: ; 0x0223BAF8
+	thumb_func_start BattleSystem_GetWeather
+BattleSystem_GetWeather: ; 0x0223BAF8
 	ldr r1, _0223BB00 ; =0x0000242C
 	ldr r0, [r0, r1]
 	bx lr
 	nop
 _0223BB00: .word 0x0000242C
-	thumb_func_end ov12_0223BAF8
+	thumb_func_end BattleSystem_GetWeather
 
 	thumb_func_start ov12_0223BB04
 ov12_0223BB04: ; 0x0223BB04
