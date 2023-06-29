@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_CONSTANTS_BATTLE_H
 
 //Battler IDs
+#define BATTLER_NONE    0xFF
 #define BATTLER_PLAYER  0
 #define BATTLER_ENEMY   1
 #define BATTLER_PLAYER2 2
@@ -100,11 +101,28 @@ enum Terrain {
 #define MOVE_STATUS_SUPER_EFFECTIVE         (1 << 1) 
 #define MOVE_STATUS_NOT_VERY_EFFECTIVE      (1 << 2)
 #define MOVE_STATUS_NO_EFFECT               (1 << 3) 
+#define MOVE_STATUS_4                       (1 << 4)
+#define MOVE_STATUS_5                       (1 << 5)
+#define MOVE_STATUS_6                       (1 << 6)
+#define MOVE_STATUS_7                       (1 << 7)
+#define MOVE_STATUS_8                       (1 << 8)
+#define MOVE_STATUS_9                       (1 << 9)
+#define MOVE_STATUS_10                      (1 << 10)
 #define MOVE_STATUS_LEVITATE_IMMUNE         (1 << 11)
+#define MOVE_STATUS_12                      (1 << 12)
+#define MOVE_STATUS_13                      (1 << 13)
+#define MOVE_STATUS_14                      (1 << 14)
+#define MOVE_STATUS_15                      (1 << 15)
+#define MOVE_STATUS_16                      (1 << 16)
+#define MOVE_STATUS_17                      (1 << 17)
 #define MOVE_STATUS_WONDER_GUARD_IMMUNE     (1 << 18) 
+#define MOVE_STATUS_19                      (1 << 19)
 #define MOVE_STATUS_MAGNET_RISE_IMMUNE      (1 << 20)
+#define MOVE_STATUS_31                      (1 << 31)
 
 #define MOVE_STATUS_ANY_EFFECTIVE           (MOVE_STATUS_SUPER_EFFECTIVE | MOVE_STATUS_NOT_VERY_EFFECTIVE)
+
+#define MOVE_STATUS_FAIL                    (MOVE_STATUS_MISS | MOVE_STATUS_NO_EFFECT | MOVE_STATUS_6 | MOVE_STATUS_9 | MOVE_STATUS_LEVITATE_IMMUNE | MOVE_STATUS_12 | MOVE_STATUS_14 | MOVE_STATUS_15 | MOVE_STATUS_16 | MOVE_STATUS_17 | MOVE_STATUS_WONDER_GUARD_IMMUNE | MOVE_STATUS_19 | MOVE_STATUS_MAGNET_RISE_IMMUNE | MOVE_STATUS_31)
 
 //Field Conditions
 #define FIELD_CONDITION_RAIN                (1 << 0)

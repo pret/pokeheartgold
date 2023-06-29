@@ -1258,13 +1258,13 @@ BOOL ov12_022503EC(BattleSystem *bsys, BATTLECONTEXT *ctx, int *out) {
     if (ctx->unk_2170 & (1 << 29)) {
         *out = ov12_02258348(ctx, 1, ctx->unk_2170);
         ctx->unk_2170 = 0;
-        if (!(ctx->moveStatusFlag & 0x801FDA49)) {
+        if (!(ctx->moveStatusFlag & MOVE_STATUS_FAIL)) {
             ret = TRUE;
         }
     } else if (ctx->unk_2170) {
         *out = ov12_02258348(ctx, 1, ctx->unk_2170);
         if (ctx->battleMons[ctx->battlerIdStatChange].hp && 
-            (!(ctx->moveStatusFlag & 0x801FDA49) || 
+            (!(ctx->moveStatusFlag & MOVE_STATUS_FAIL) || 
             ((ctx->unk_2170 & (1 << 23)) && (ctx->moveStatusFlag & 0x40008)) ||
             ((ctx->unk_2170 & (1 << 28)) && (ctx->moveStatusFlag & 0x10001)))) {
                 ret = TRUE;
@@ -1282,19 +1282,19 @@ BOOL ov12_02250490(BattleSystem *bsys, BATTLECONTEXT *ctx, int *out) {
     if (ctx->unk_2174 & (1 << 29)) {
         *out = ov12_02258348(ctx, 2, ctx->unk_2174);
         ctx->unk_2174 = 0;
-        if (!(ctx->moveStatusFlag & 0x801FDA49)) {
+        if (!(ctx->moveStatusFlag & MOVE_STATUS_FAIL)) {
             ret = TRUE;
         }
     } else if (ctx->unk_2174 & (1 << 24)) {
         *out = ov12_02258348(ctx, 2, ctx->unk_2174);
         ctx->unk_2174 = 0;
-        if (!ov12_02256838(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & 0x801FDA49)) {
+        if (!ov12_02256838(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL)) {
             ret = TRUE;
         }
     } else if (ctx->unk_2174 & (1 << 25)) {
         *out = ov12_02258348(ctx, 2, ctx->unk_2174);
         ctx->unk_2174 = 0;
-        if (ctx->battleMons[ctx->battlerIdStatChange].hp && !ov12_02256838(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & 0x801FDA49)) {
+        if (ctx->battleMons[ctx->battlerIdStatChange].hp && !ov12_02256838(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL)) {
             ret = TRUE;
         }
     } else if (ctx->unk_2174 & (1 << 28)) {
@@ -1337,7 +1337,7 @@ BOOL ov12_02250490(BattleSystem *bsys, BATTLECONTEXT *ctx, int *out) {
         if ((BattleSystem_Random(bsys) % 100) < effectChance) {
             *out = ov12_02258348(ctx, 2, ctx->unk_2174);
             ctx->unk_2174 = 0; 
-            if (ctx->battleMons[ctx->battlerIdStatChange].hp && !ov12_02256838(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & 0x801FDA49)) {
+            if (ctx->battleMons[ctx->battlerIdStatChange].hp && !ov12_02256838(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL)) {
                 ret = TRUE;
             }
         }
@@ -1540,7 +1540,7 @@ void ov12_02250A18(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker
 BOOL ov12_02250BBC(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BOOL ret = FALSE;
     
-    if (!(ctx->moveStatusFlag & 0x801FDA49) && ctx->selfTurnData[ctx->battlerIdTarget].lightningRodFlag) {
+    if (!(ctx->moveStatusFlag & MOVE_STATUS_FAIL) && ctx->selfTurnData[ctx->battlerIdTarget].lightningRodFlag) {
         ctx->selfTurnData[ctx->battlerIdTarget].lightningRodFlag = FALSE;
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 180);
         ctx->commandNext = ctx->command;
@@ -1548,7 +1548,7 @@ BOOL ov12_02250BBC(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ret = TRUE;
     }
     
-    if (!(ctx->moveStatusFlag & 0x801FDA49) && ctx->selfTurnData[ctx->battlerIdTarget].stormDrainFlag) {
+    if (!(ctx->moveStatusFlag & MOVE_STATUS_FAIL) && ctx->selfTurnData[ctx->battlerIdTarget].stormDrainFlag) {
         ctx->selfTurnData[ctx->battlerIdTarget].stormDrainFlag = FALSE;
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 180);
         ctx->commandNext = ctx->command;
@@ -3863,4 +3863,189 @@ int ov12_02253194(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     } while (!flag);
     
     return script;
+}
+
+int ov12_02253DA0(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
+    u32 battleType;
+    int battlerIdTarget;
+    int battlerIdTargets[2];
+    int i;
+    
+    battleType = BattleSystem_GetBattleType(bsys);
+    
+    if (battleType & BATTLE_TYPE_DOUBLES) {
+        battlerIdTargets[0] = ov12_0223ABB8(bsys, battlerId, 0);
+        battlerIdTargets[1] = ov12_0223ABB8(bsys, battlerId, 2);
+        i = BattleSystem_Random(bsys) & 1;
+        battlerIdTarget = battlerIdTargets[i];
+        if (!ctx->battleMons[battlerIdTarget].hp) {
+            battlerIdTarget = battlerIdTargets[i ^ 1];
+        }
+    } else {
+        battlerIdTarget = battlerId ^ 1;
+    }
+    
+    return battlerIdTarget;
+}
+
+BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script) {
+    BOOL ret = FALSE;
+    
+    if (ctx->battlerIdTarget == BATTLER_NONE) {
+        return ret;
+    }
+    
+    if (ov12_02256838(ctx, ctx->battlerIdTarget) == TRUE) {
+        return ret;
+    }
+    
+    switch (GetBattlerAbility(ctx, ctx->battlerIdTarget)) {
+    case ABILITY_STATIC:
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp &&
+            !ctx->battleMons[ctx->battlerIdAttacker].status &&
+            !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
+            !(ctx->linkStatus & 0x20) &&
+            !(ctx->linkStatus2 & 0x10) &&
+            (ctx->selfTurnData[ctx->battlerIdTarget].unk4 || ctx->selfTurnData[ctx->battlerIdTarget].unkC) &&
+            (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1) &&
+            (BattleSystem_Random(bsys) % 10 < 3)) {
+            ctx->statChangeType = 3;
+            ctx->battlerIdStatChange = ctx->battlerIdAttacker;
+            ctx->battlerIdWork = ctx->battlerIdTarget;
+            *script = 31;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_COLOR_CHANGE:
+        u8 moveType;
+        
+        if (GetBattlerAbility(ctx, ctx->battlerIdAttacker) == ABILITY_NORMALIZE) {
+            moveType = TYPE_NORMAL;
+        } else if (ctx->moveType) {
+            moveType = ctx->moveType;
+        } else {
+            moveType = ctx->unk_334.moveData[ctx->moveNoCur].type;
+        }
+        
+        if (ctx->battleMons[ctx->battlerIdTarget].hp &&
+            !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
+            ctx->moveNoCur != MOVE_STRUGGLE &&
+            (ctx->selfTurnData[ctx->battlerIdTarget].unk4 || ctx->selfTurnData[ctx->battlerIdTarget].unkC) &&
+            !(ctx->linkStatus2 & 0x10) &&
+            ctx->unk_334.moveData[ctx->moveNoCur].power &&
+            GetBattlerVar(ctx, ctx->battlerIdTarget, BMON_DATA_TYPE_1, NULL) != moveType &&
+            GetBattlerVar(ctx, ctx->battlerIdTarget, BMON_DATA_TYPE_2, NULL) != moveType) {
+            *script = 188;
+            ctx->msgWork = moveType;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_ROUGH_SKIN:
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp &&
+            GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_MAGIC_GUARD &&
+            !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
+            !(ctx->linkStatus & 0x20) &&
+            !(ctx->linkStatus2 & 0x10) &&
+            (ctx->selfTurnData[ctx->battlerIdTarget].unk4 || ctx->selfTurnData[ctx->battlerIdTarget].unkC) &&
+            (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1)) {
+            ctx->hpCalcWork = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp * -1, 8);
+            ctx->battlerIdWork = ctx->battlerIdAttacker;
+            *script = 189;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_EFFECT_SPORE:
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp &&
+            !ctx->battleMons[ctx->battlerIdAttacker].status &&
+            !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
+            !(ctx->linkStatus & 0x20) &&
+            !(ctx->linkStatus2 & 0x10) &&
+            (ctx->selfTurnData[ctx->battlerIdTarget].unk4 || ctx->selfTurnData[ctx->battlerIdTarget].unkC) &&
+            (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1) &&
+            (BattleSystem_Random(bsys) % 10 < 3)) {
+            switch (BattleSystem_Random(bsys) % 3) {
+            case 0:
+            default:
+                *script = 22;
+                break;
+            case 1:
+                *script = 31;
+                break;
+            case 2:
+                *script = 18;
+                break;
+            }
+            ctx->statChangeType = 3;
+            ctx->battlerIdStatChange = ctx->battlerIdAttacker;
+            ctx->battlerIdWork = ctx->battlerIdTarget;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_POISON_POINT:
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp &&
+            !ctx->battleMons[ctx->battlerIdAttacker].status &&
+            !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
+            !(ctx->linkStatus & 0x20) &&
+            !(ctx->linkStatus2 & 0x10) &&
+            (ctx->selfTurnData[ctx->battlerIdTarget].unk4 || ctx->selfTurnData[ctx->battlerIdTarget].unkC) &&
+            (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1) &&
+            (BattleSystem_Random(bsys) % 10 < 3)) {
+            ctx->statChangeType = 3;
+            ctx->battlerIdStatChange = ctx->battlerIdAttacker;
+            ctx->battlerIdWork = ctx->battlerIdTarget;
+            *script = 22;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_FLAME_BODY:
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp &&
+            !ctx->battleMons[ctx->battlerIdAttacker].status &&
+            !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
+            !(ctx->linkStatus & 0x20) &&
+            !(ctx->linkStatus2 & 0x10) &&
+            (ctx->selfTurnData[ctx->battlerIdTarget].unk4 || ctx->selfTurnData[ctx->battlerIdTarget].unkC) &&
+            (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1) &&
+            (BattleSystem_Random(bsys) % 10 < 3)) {
+            ctx->statChangeType = 3;
+            ctx->battlerIdStatChange = ctx->battlerIdAttacker;
+            ctx->battlerIdWork = ctx->battlerIdTarget;
+            *script = 25;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_CUTE_CHARM:
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp &&
+            !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_ATTRACT_ALL) &&
+            !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
+            !(ctx->linkStatus & 0x20) &&
+            !(ctx->linkStatus2 & 0x10) &&
+            (ctx->selfTurnData[ctx->battlerIdTarget].unk4 || ctx->selfTurnData[ctx->battlerIdTarget].unkC) &&
+            (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1) &&
+            ctx->battleMons[ctx->battlerIdTarget].hp &&
+            (BattleSystem_Random(bsys) % 10 < 3)) {
+            ctx->statChangeType = 3;
+            ctx->battlerIdStatChange = ctx->battlerIdAttacker;
+            ctx->battlerIdWork = ctx->battlerIdTarget;
+            *script = 106;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_AFTERMATH:
+        if (ctx->battlerIdTarget == ctx->battlerIdFainted &&
+            GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_MAGIC_GUARD &&
+            !CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_DAMP) && 
+            !(ctx->linkStatus2 & 0x10) &&
+            ctx->battleMons[ctx->battlerIdAttacker].hp &&
+            !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
+            (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1)) {
+            ctx->hpCalcWork = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp * -1, 4);
+            ctx->battlerIdWork = ctx->battlerIdAttacker;
+            *script = 193;
+            ret = TRUE;
+        }
+        break;
+    default:
+        break;
+    }
+    return ret;
 }

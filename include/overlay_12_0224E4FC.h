@@ -70,6 +70,8 @@ int ov12_02252EC8(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget
 BOOL ov12_02253068(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 int DamageDivide(int num, int denom);
 int ov12_02253194(BattleSystem *bsys, BATTLECONTEXT *ctx);
+int ov12_02253DA0(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script);
 
 //The following functions are static, but the rest of the file is still being worked on
 BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int index);
@@ -92,7 +94,6 @@ BOOL CheckLegalMimicMove(u16 move);
 BOOL IsMoveEncored(BATTLECONTEXT *ctx, u16 move);
 void CheckIgnorePressure(BATTLECONTEXT *ctx, int battlerIdA, int battlerIdB);
 u8 ov12_0225682C(BATTLECONTEXT *ctx, int a1);
-BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *work);
 BOOL CheckItemEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *itemWork);
 int BattleSystem_GetHeldItemDamageBoost(BATTLECONTEXT *ctx, int battlerId, int a2);
 BOOL CheckNaturalCureOnSwitch(BATTLECONTEXT *ctx, int ability, int status);
