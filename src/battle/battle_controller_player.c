@@ -78,7 +78,7 @@ void BattleControllerPlayer_TrainerMessage(BattleSystem *bsys, BATTLECONTEXT *ct
 
 //static
 void BattleControllerPlayer_PokemonAppear(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    int script = ov12_02253194(bsys, ctx);
+    int script = TryAbilityOnEntry(bsys, ctx);
     
     if (script) {
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);

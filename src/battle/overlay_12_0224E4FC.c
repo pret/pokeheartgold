@@ -3439,7 +3439,7 @@ int DamageDivide(int num, int denom) {
     return num;
 }
 
-int ov12_02253194(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+int TryAbilityOnEntry(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
     int j;
     int script;
@@ -4114,5 +4114,40 @@ BOOL CheckStatusHealAbility(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerI
         }
     }
 
+    return ret;
+}
+
+BOOL CheckStatusHealSwitch(BATTLECONTEXT *ctx, int ability, int status) {
+    BOOL ret = FALSE;
+    
+    switch (ability) {
+    case ABILITY_IMMUNITY:
+        if (status & STATUS_POISON_ALL) {
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_LIMBER:
+        if (status & STATUS_PARALYSIS) {
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_INSOMNIA:
+    case ABILITY_VITAL_SPIRIT:
+        if (status & STATUS_SLEEP) {
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_WATER_VEIL:
+        if (status & STATUS_BURN) {
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_MAGMA_ARMOR:
+        if (status & STATUS_FREEZE) {
+            ret = TRUE;
+        }
+        break;
+    }
+    
     return ret;
 }

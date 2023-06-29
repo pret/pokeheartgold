@@ -9026,7 +9026,7 @@ _0224CD2E:
 _0224CD42:
 	add r0, r6, #0
 	add r1, r4, #0
-	bl ov12_02253194
+	bl TryAbilityOnEntry
 	add r2, r0, #0
 	beq _0224CD62
 	add r0, r4, #0
@@ -9861,7 +9861,7 @@ _0224D39E:
 	beq _0224D440
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_02253194
+	bl TryAbilityOnEntry
 	add r2, r0, #0
 	beq _0224D3D6
 	add r0, r4, #0

@@ -95,7 +95,7 @@
 .public ov12_02252EC8
 .public ov12_02253068
 .public DamageDivide
-.public ov12_02253194
+.public TryAbilityOnEntry
 .public ov12_02253DA0
 .public CheckAbilityEffectOnHit
 .public CheckStatusHealAbility

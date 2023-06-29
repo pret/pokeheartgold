@@ -12,69 +12,6 @@
     .public ov12_02251C74
     .public CheckMoveEffectOnField
 
-	thumb_func_start CheckNaturalCureOnSwitch
-CheckNaturalCureOnSwitch: ; 0x0225451C
-	mov r0, #0
-	cmp r1, #0x28
-	bgt _0225453C
-	bge _02254572
-	cmp r1, #7
-	bgt _0225452C
-	beq _02254554
-	bx lr
-_0225452C:
-	cmp r1, #0x11
-	bgt _0225457A
-	cmp r1, #0xf
-	blt _0225457A
-	beq _0225455E
-	cmp r1, #0x11
-	beq _0225454A
-	bx lr
-_0225453C:
-	cmp r1, #0x29
-	bgt _02254544
-	beq _02254568
-	bx lr
-_02254544:
-	cmp r1, #0x48
-	beq _0225455E
-	bx lr
-_0225454A:
-	ldr r1, _0225457C ; =0x00000F88
-	tst r1, r2
-	beq _0225457A
-	mov r0, #1
-	bx lr
-_02254554:
-	mov r1, #0x40
-	tst r1, r2
-	beq _0225457A
-	mov r0, #1
-	bx lr
-_0225455E:
-	mov r1, #7
-	tst r1, r2
-	beq _0225457A
-	mov r0, #1
-	bx lr
-_02254568:
-	mov r1, #0x10
-	tst r1, r2
-	beq _0225457A
-	mov r0, #1
-	bx lr
-_02254572:
-	mov r1, #0x20
-	tst r1, r2
-	beq _0225457A
-	mov r0, #1
-_0225457A:
-	bx lr
-	.balign 4, 0
-_0225457C: .word 0x00000F88
-	thumb_func_end CheckNaturalCureOnSwitch
-
 	thumb_func_start ov12_02254580
 ov12_02254580: ; 0x02254580
 	push {r3, r4, r5, r6, r7, lr}

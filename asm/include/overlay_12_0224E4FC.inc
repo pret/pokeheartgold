@@ -126,11 +126,11 @@
 .public ov12_02252EC8
 .public ov12_02253068
 .public DamageDivide
-.public ov12_02253194
+.public TryAbilityOnEntry
 .public ov12_02253DA0
 .public CheckAbilityEffectOnHit
 .public CheckStatusHealAbility
-.public CheckNaturalCureOnSwitch
+.public CheckStatusHealSwitch
 .public ov12_02254580
 .public ov12_0225471C
 .public ov12_02254D80

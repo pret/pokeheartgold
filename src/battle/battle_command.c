@@ -5660,7 +5660,7 @@ BOOL BtlCmd_TryNaturalCure(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, ctx->selectedMonIndex[battlerId]);
         int ability = GetMonData(mon, MON_DATA_ABILITY, NULL);
         int status = GetMonData(mon, MON_DATA_STATUS, NULL);
-        if (ctx->battleMons[battlerId].ability != ABILITY_NATURAL_CURE && !CheckNaturalCureOnSwitch(ctx, ability, status)) {
+        if (ctx->battleMons[battlerId].ability != ABILITY_NATURAL_CURE && !CheckStatusHealSwitch(ctx, ability, status)) {
             BattleScriptIncrementPointer(ctx, adrs);
         }
     } else {
