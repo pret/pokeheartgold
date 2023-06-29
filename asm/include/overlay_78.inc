@@ -84,8 +84,8 @@
 .public PlayerProfile_GetTrainerGender
 .public Save_GetPartyLeadAlive
 .public SpeciesToOverworldModelIndexOffset
-.public OverworldModelLookupFormeCount
-.public OverworldModelLookupHasFemaleForme
+.public OverworldModelLookupFormCount
+.public OverworldModelLookupHasFemaleForm
 .public GetMonData
 .public GetMonGender
 .public MonIsShiny

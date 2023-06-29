@@ -240,8 +240,8 @@
 .public GetMonEvolution
 .public CopyBoxPokemonToPokemon
 .public CopyPokemonToPokemon
-.public Mon_UpdateShayminForme
-.public BoxMon_UpdateShayminForme
+.public Mon_UpdateShayminForm
+.public BoxMon_UpdateShayminForm
 .public Pokemon_RemoveCapsule
 .public PCStorage_PlaceMonInBoxFirstEmptySlot
 .public PCStorage_DeleteBoxMonByIndexPair

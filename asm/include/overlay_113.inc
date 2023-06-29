@@ -101,8 +101,8 @@
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_GetPlayerName_NewString
-.public Pokedex_GetSeenFormeByIdx_Unown
-.public Pokedex_GetSeenFormeNum_Unown
+.public Pokedex_GetSeenFormByIdx_Unown
+.public Pokedex_GetSeenFormNum_Unown
 .public Save_Pokedex_Get
 .public Options_GetTextFrameDelay
 .public Options_GetFrame

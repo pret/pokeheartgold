@@ -100,8 +100,8 @@
 .public Save_HOF_GetMonStatsByIndexPair
 .public Save_HOF_GetClearDate
 .public SpeciesToOverworldModelIndexOffset
-.public OverworldModelLookupFormeCount
-.public OverworldModelLookupHasFemaleForme
+.public OverworldModelLookupFormCount
+.public OverworldModelLookupHasFemaleForm
 .public GetGenderBySpeciesAndPersonality
 .public CalcShininessByOtIdAndPersonality
 .public GetMonSpriteCharAndPlttNarcIdsEx

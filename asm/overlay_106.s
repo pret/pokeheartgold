@@ -1807,7 +1807,7 @@ _021E66C6:
 	ldr r1, _021E66F8 ; =MMODEL_FOLLOWER_MON_BULBASAUR
 	add r4, r0, r1
 	add r0, r5, #0
-	bl OverworldModelLookupHasFemaleForme
+	bl OverworldModelLookupHasFemaleForm
 	cmp r0, #0
 	beq _021E66E0
 	cmp r7, #1
@@ -1816,7 +1816,7 @@ _021E66C6:
 	b _021E66EE
 _021E66E0:
 	add r0, r5, #0
-	bl OverworldModelLookupFormeCount
+	bl OverworldModelLookupFormCount
 	cmp r6, r0
 	ble _021E66EC
 	mov r6, #0

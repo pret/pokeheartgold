@@ -105,8 +105,8 @@
 .public GetMonGender
 .public Mon_GetBoxMon
 .public GetMonEvolution
-.public Pokemon_UpdateArceusForme
-.public Mon_UpdateGiratinaForme
+.public Pokemon_UpdateArceusForm
+.public Mon_UpdateGiratinaForm
 .public Mon_CanUseGracidea
 .public IsPokemonBannedFromBattleFrontier
 .public GetPartyCount
@@ -220,5 +220,5 @@
 .public _0210159C
 .public gSystem
 .public OS_IRQTable
-.public PartyMenu_InitIconFormeChangeWork
-.public PartyMenu_AnimateIconFormeChange
+.public PartyMenu_InitIconFormChangeWork
+.public PartyMenu_AnimateIconFormChange

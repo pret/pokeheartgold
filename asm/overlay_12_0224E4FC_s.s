@@ -6391,11 +6391,11 @@ _02256DB8:
 	mov r0, #0
 	str r0, [sp, #0xc]
 	add r0, r4, #0
-	mov r1, #MON_DATA_FORME
+	mov r1, #MON_DATA_FORM
 	add r2, sp, #0xc
 	bl SetMonData
 	add r0, r4, #0
-	bl Mon_UpdateGiratinaForme
+	bl Mon_UpdateGiratinaForm
 	add r0, r4, #0
 	mov r1, #0xa5
 	mov r2, #0

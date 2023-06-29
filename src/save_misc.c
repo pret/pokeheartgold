@@ -89,15 +89,15 @@ BOOL SaveMisc_CheckExtraChunksExist(SAVE_MISC_DATA *saveMiscData) {
     return saveMiscData->extraChunksExist;
 }
 
-void SaveMisc_SetFavoriteMon(SAVE_MISC_DATA *saveMiscData, int species, int forme, int isEgg) {
+void SaveMisc_SetFavoriteMon(SAVE_MISC_DATA *saveMiscData, int species, int form, int isEgg) {
     saveMiscData->favoriteMonSpecies = species;
-    saveMiscData->favoriteMonForme = forme;
+    saveMiscData->favoriteMonForm = form;
     saveMiscData->favoriteMonIsEgg = isEgg;
 }
 
-void SaveMisc_GetFavoriteMon(SAVE_MISC_DATA *saveMiscData, int *species, int *forme, int *isEgg) {
+void SaveMisc_GetFavoriteMon(SAVE_MISC_DATA *saveMiscData, int *species, int *form, int *isEgg) {
     *species = saveMiscData->favoriteMonSpecies;
-    *forme = saveMiscData->favoriteMonForme;
+    *form = saveMiscData->favoriteMonForm;
     *isEgg = saveMiscData->favoriteMonIsEgg;
 }
 

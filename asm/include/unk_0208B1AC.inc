@@ -28,7 +28,7 @@
 .public sub_020249D4
 .public sub_02024ADC
 .public sub_02024B1C
-.public GetMonBaseStat_HandleAlternateForme
+.public GetMonBaseStat_HandleAlternateForm
 .public CalcBoxMonPokeathlonPerformance
 .public CalcBoxmonPokeathlonStars
 .public GetMoveAttr

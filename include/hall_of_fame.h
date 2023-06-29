@@ -10,7 +10,7 @@ typedef struct HOFMon
 {
     /* 0x00 */ u16 species;
     /* 0x02 */ u8 level;
-    /* 0x03 */ u8 forme;
+    /* 0x03 */ u8 form;
     /* 0x04 */ u32 personality;
     /* 0x08 */ u32 otid;
     /* 0x0C */ u16 nickname[POKEMON_NAME_LENGTH + 1];
@@ -42,7 +42,7 @@ typedef struct HofDisplayMon
     u32 otid;
     u16 species;
     u8 level;
-    u8 forme;
+    u8 form;
     u16 moves[4];
 } SHOW_HOFMON;
 

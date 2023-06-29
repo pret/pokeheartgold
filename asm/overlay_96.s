@@ -7683,7 +7683,7 @@ _021E91CE:
 	ldr r1, _021E9200 ; =0x00000129
 	add r4, r0, r1
 	add r0, r5, #0
-	bl OverworldModelLookupHasFemaleForme
+	bl OverworldModelLookupHasFemaleForm
 	cmp r0, #0
 	beq _021E91E8
 	cmp r7, #1
@@ -7692,7 +7692,7 @@ _021E91CE:
 	b _021E91F6
 _021E91E8:
 	add r0, r5, #0
-	bl OverworldModelLookupFormeCount
+	bl OverworldModelLookupFormCount
 	cmp r6, r0
 	ble _021E91F4
 	mov r6, #0

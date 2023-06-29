@@ -76,7 +76,7 @@
 .public PlayerProfile_GetTrainerGender
 .public Pokedex_GetSeenSpindaPersonality
 .public Pokedex_SpeciesGetLastSeenGender
-.public Pokedex_GetSeenFormeByIdx
+.public Pokedex_GetSeenFormByIdx
 .public sub_02031974
 .public sub_02031978
 .public sub_0203197C

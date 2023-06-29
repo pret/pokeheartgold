@@ -176,7 +176,7 @@ _021E5A52:
 	add r0, r7, #0
 	add r1, r4, #0
 	mov r2, #1
-	bl Pokedex_GetSeenFormeByIdx_Unown
+	bl Pokedex_GetSeenFormByIdx_Unown
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r0, #0
@@ -230,7 +230,7 @@ ov113_021E5A7C: ; 0x021E5A7C
 	strb r0, [r5, #0x1d]
 	ldr r0, [r5, #0xc]
 	mov r1, #1
-	bl Pokedex_GetSeenFormeNum_Unown
+	bl Pokedex_GetSeenFormNum_Unown
 	strb r0, [r5, #0x1f]
 	add r0, r5, #0
 	add r0, #0x3c
@@ -274,7 +274,7 @@ _021E5B1A:
 	ldr r0, [r5, #0xc]
 	add r1, r4, #0
 	add r2, r6, #0
-	bl Pokedex_GetSeenFormeByIdx_Unown
+	bl Pokedex_GetSeenFormByIdx_Unown
 	add r1, r5, r4
 	add r1, #0x20
 	strb r0, [r1]

@@ -3783,8 +3783,8 @@ BattleController_EmitPlayMosaicAnimation: ; 0x02263D48
 	.balign 4, 0
 	thumb_func_end BattleController_EmitPlayMosaicAnimation
 
-	thumb_func_start BattleController_EmitChangeForme
-BattleController_EmitChangeForme: ; 0x02263D6C
+	thumb_func_start BattleController_EmitChangeForm
+BattleController_EmitChangeForm: ; 0x02263D6C
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r7, r1, #0
@@ -3858,7 +3858,7 @@ _02263DD6:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02263DF8: .word 0x00002D66
-	thumb_func_end BattleController_EmitChangeForme
+	thumb_func_end BattleController_EmitChangeForm
 
 	thumb_func_start BattleController_EmitSetBattleBackground
 BattleController_EmitSetBattleBackground: ; 0x02263DFC

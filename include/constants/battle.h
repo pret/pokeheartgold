@@ -314,7 +314,7 @@ enum Terrain {
 #define BMON_DATA_HELD_ITEM_RESTORE_HP      95
 #define BMON_DATA_SLOW_START_FLAG           96
 #define BMON_DATA_SLOW_START_END            97
-#define BMON_DATA_FORME                     98
+#define BMON_DATA_FORM                     98
 #define BMON_DATA_99                        99 //unused
 #define BMON_DATA_100                      100
 

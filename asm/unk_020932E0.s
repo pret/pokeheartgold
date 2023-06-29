@@ -3521,7 +3521,7 @@ sub_02094F14: ; 0x02094F14
 	bl GetMonData
 	strh r0, [r4, #8]
 	add r0, r5, #0
-	mov r1, #MON_DATA_FORME
+	mov r1, #MON_DATA_FORM
 	mov r2, #0
 	bl GetMonData
 	strh r0, [r4, #0xa]

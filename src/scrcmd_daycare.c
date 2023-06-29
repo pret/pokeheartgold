@@ -7,10 +7,10 @@
 #include "pokemon.h"
 
 extern void ov01_021F9048(LocalMapObject* map_object);
-extern void FollowPokeMapObjectSetParams(LocalMapObject *mapObject, u16 species, u8 forme, BOOL shiny);
-extern u32 FollowingPokemon_GetSpriteID(int species, u16 forme, u32 gender);
+extern void FollowPokeMapObjectSetParams(LocalMapObject *mapObject, u16 species, u8 form, BOOL shiny);
+extern u32 FollowingPokemon_GetSpriteID(int species, u16 form, u32 gender);
 
-static LocalMapObject* CreateDayCareMonSpriteInternal(MapObjectManager* object_man, u8 dc_mon_idx, u16 species, u8 forme, u32 gender, u32 direction, u32 x, u32 y, u32 map_no, BOOL shiny);
+static LocalMapObject* CreateDayCareMonSpriteInternal(MapObjectManager* object_man, u8 dc_mon_idx, u16 species, u8 form, u32 gender, u32 direction, u32 x, u32 y, u32 map_no, BOOL shiny);
 
 BOOL ScrCmd_BufferDayCareMonNicks(ScriptContext* ctx) {
     SaveData* savedata = ctx->fsys->savedata;
@@ -150,7 +150,7 @@ BOOL ScrCmd_CheckDayCareEgg(ScriptContext* ctx) {
 
 BOOL ScrCmd_UpdateDayCareMonObjects(ScriptContext* ctx) {
     DAYCARE* daycare;
-    u8 forme;
+    u8 form;
     u16 species;
 
     FieldSystem* fsys = ctx->fsys;
@@ -167,19 +167,19 @@ BOOL ScrCmd_UpdateDayCareMonObjects(ScriptContext* ctx) {
             continue;
         }
 
-        forme = GetBoxMonData(boxMon, MON_DATA_FORME, NULL);
+        form = GetBoxMonData(boxMon, MON_DATA_FORM, NULL);
         species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
         u32 gender = GetBoxMonData(boxMon, MON_DATA_GENDER, NULL);
         BOOL shiny = BoxMonIsShiny(boxMon);
 
-        CreateDayCareMonSpriteInternal(fsys->mapObjectMan, (u8)dc_mon_idx, species, forme, gender, 1, x, y, fsys->location->mapId, shiny);
+        CreateDayCareMonSpriteInternal(fsys->mapObjectMan, (u8)dc_mon_idx, species, form, gender, 1, x, y, fsys->location->mapId, shiny);
     }
 
     return FALSE;
 }
 
-static LocalMapObject* CreateDayCareMonSpriteInternal(MapObjectManager* object_man, u8 dc_mon_idx, u16 species, u8 forme, u32 gender, u32 direction, u32 x, u32 y, u32 map_no, BOOL shiny) {
-    u32 sprite_id = FollowingPokemon_GetSpriteID(species, forme, gender);
+static LocalMapObject* CreateDayCareMonSpriteInternal(MapObjectManager* object_man, u8 dc_mon_idx, u16 species, u8 form, u32 gender, u32 direction, u32 x, u32 y, u32 map_no, BOOL shiny) {
+    u32 sprite_id = FollowingPokemon_GetSpriteID(species, form, gender);
     LocalMapObject* lmo = CreateSpecialFieldObject(object_man, x, y, direction, sprite_id, 11, map_no);
     GF_ASSERT(lmo != NULL);
 
@@ -188,7 +188,7 @@ static LocalMapObject* CreateDayCareMonSpriteInternal(MapObjectManager* object_m
     MapObject_SetFlagID(lmo, 0);
     MapObject_SetScript(lmo, 0);
     MapObject_SetParam(lmo, 0, 2);
-    FollowPokeMapObjectSetParams(lmo, species, (u32)forme, shiny);
+    FollowPokeMapObjectSetParams(lmo, species, (u32)form, shiny);
     MapObject_SetXRange(lmo, -1);
     MapObject_SetYRange(lmo, -1);
     MapObject_SetFlagsBits(lmo, MAPOBJECTFLAG_UNK2);
@@ -226,18 +226,18 @@ BOOL ScrCmd_DayCareSanitizeMon(ScriptContext* ctx) {
         SetMonData(mon, MON_DATA_HELD_ITEM, &no_item);
     }
 
-    s32 forme = GetMonData(mon, MON_DATA_FORME, NULL);
-    if (forme > 0) {
+    s32 form = GetMonData(mon, MON_DATA_FORM, NULL);
+    if (form > 0) {
         u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
         switch (species) {
         case SPECIES_GIRATINA:
-            Mon_UpdateGiratinaForme(mon);
+            Mon_UpdateGiratinaForm(mon);
             break;
         case SPECIES_ROTOM:
-            Mon_UpdateRotomForme(mon, 0, 0);
+            Mon_UpdateRotomForm(mon, 0, 0);
             break;
         case SPECIES_SHAYMIN:
-            Mon_UpdateShayminForme(mon, 0);
+            Mon_UpdateShayminForm(mon, 0);
             break;
         }
     }

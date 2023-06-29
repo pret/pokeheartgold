@@ -4,7 +4,7 @@
 #include "pokemon.h"
 #include "map_section.h"
 
-BOOL GiveMon(HeapID heapId, SaveData *saveData, int species, int level, int forme, u8 ability, u16 heldItem, int ball, int encounterType);
+BOOL GiveMon(HeapID heapId, SaveData *saveData, int species, int level, int form, u8 ability, u16 heldItem, int ball, int encounterType);
 BOOL GiveEgg(HeapID heapId, SaveData *saveData, int species, u8 metLocation, MapsecType sp20, int sp24);
 void PartyMonSetMoveInSlot(PARTY *party, int mon_slot, int move_slot, u16 moveId);
 int GetIdxOfFirstPartyMonWithMove(PARTY *party, u16 move);

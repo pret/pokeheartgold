@@ -310,12 +310,12 @@ _021E5B12:
 	ldr r1, _021E5B5C ; =0x000001E7
 	ldr r0, [r0]
 	mov r2, #0
-	bl Pokedex_GetSeenFormeByIdx
-	bl SetDexBanksByGiratinaForme
+	bl Pokedex_GetSeenFormByIdx
+	bl SetDexBanksByGiratinaForm
 	b _021E5B38
 _021E5B32:
 	mov r0, #0
-	bl SetDexBanksByGiratinaForme
+	bl SetDexBanksByGiratinaForm
 _021E5B38:
 	mov r0, #1
 	mov r1, #0x2a
@@ -5159,7 +5159,7 @@ _021E82F4:
 _021E82FA:
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Pokedex_GetSeenFormeNum
+	bl Pokedex_GetSeenFormNum
 	ldr r1, _021E83C8 ; =0x000018C4
 	mov r4, #0
 	strb r0, [r5, r1]
@@ -5175,7 +5175,7 @@ _021E8314:
 	ldrh r1, [r5, r1]
 	ldr r0, [r0]
 	add r2, r4, #0
-	bl Pokedex_GetSeenFormeByIdx
+	bl Pokedex_GetSeenFormByIdx
 	mov r1, #0x80
 	orr r1, r0
 	add r0, r5, r4
@@ -16362,7 +16362,7 @@ _021EDE14:
 	add r1, r4, #0
 	ldr r0, [r0]
 	mov r2, #0
-	bl Pokedex_GetSeenFormeByIdx
+	bl Pokedex_GetSeenFormByIdx
 	add r5, r0, #0
 	cmp r4, #0xac
 	bne _021EDE30
@@ -23310,7 +23310,7 @@ ov18_021F1598: ; 0x021F1598
 	ldr r0, [r5]
 	mov r2, #0
 	ldr r0, [r0]
-	bl Pokedex_GetSeenFormeByIdx
+	bl Pokedex_GetSeenFormByIdx
 	add r2, r0, #0
 	ldr r0, [sp, #4]
 	ldrh r1, [r0, r4]
@@ -24128,7 +24128,7 @@ _021F1C3C:
 	add r1, r6, #0
 	ldr r0, [r0]
 	mov r2, #0
-	bl Pokedex_GetSeenFormeByIdx
+	bl Pokedex_GetSeenFormByIdx
 	add r2, r0, #0
 	cmp r6, #0xac
 	bne _021F1C88
@@ -24329,7 +24329,7 @@ ov18_021F1DE4: ; 0x021F1DE4
 	ldr r0, [r5]
 	mov r2, #0
 	ldr r0, [r0]
-	bl Pokedex_GetSeenFormeByIdx
+	bl Pokedex_GetSeenFormByIdx
 	cmp r0, #1
 	bne _021F1E2E
 _021F1E1A:
@@ -24718,7 +24718,7 @@ _021F213A:
 	add r1, r6, #0
 	ldr r0, [r0]
 	mov r2, #0
-	bl Pokedex_GetSeenFormeByIdx
+	bl Pokedex_GetSeenFormByIdx
 	add r7, r0, #0
 	cmp r6, #0xac
 	bne _021F2174
@@ -24732,7 +24732,7 @@ _021F2174:
 	add r0, r6, #0
 	add r1, r7, #0
 	mov r2, #6
-	bl GetMonBaseStat_HandleAlternateForme
+	bl GetMonBaseStat_HandleAlternateForm
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp, #4]
@@ -24751,7 +24751,7 @@ _021F2174:
 	add r0, r6, #0
 	add r1, r7, #0
 	mov r2, #7
-	bl GetMonBaseStat_HandleAlternateForme
+	bl GetMonBaseStat_HandleAlternateForm
 	lsl r0, r0, #0x10
 	lsr r2, r0, #0x10
 	beq _021F21B6

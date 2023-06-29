@@ -139,7 +139,7 @@ static BOOL BattleHall_DoesPartyContainEligibleMons(s32 numRequiredMons, SaveDat
     u8 numEligibleMons;
     u16 species;
     u16 level;
-    u16 forme;
+    u16 form;
     PARTY *party = SaveArray_PlayerParty_Get(savedata);
     u8 partyCount = GetPartyCount(party);
     if (partyCount < numRequiredMons) {
@@ -153,10 +153,10 @@ static BOOL BattleHall_DoesPartyContainEligibleMons(s32 numRequiredMons, SaveDat
         Pokemon *mon = GetPartyMonByIndex(party, i);
         species = GetMonData(mon, MON_DATA_SPECIES, NULL);
         level = GetMonData(mon, MON_DATA_LEVEL, NULL);
-        forme = GetMonData(mon, MON_DATA_FORME, NULL);
+        form = GetMonData(mon, MON_DATA_FORM, NULL);
         if (GetMonData(mon, MON_DATA_IS_EGG, NULL) == FALSE
                 && level >= 30
-                && IsPokemonBannedFromBattleFrontier(species, forme) != TRUE) {
+                && IsPokemonBannedFromBattleFrontier(species, form) != TRUE) {
             numEligibleMons++;
             arr[i] = species;
         }

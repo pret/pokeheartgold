@@ -36,7 +36,7 @@ static void InheritMoves(Pokemon *egg, BoxPokemon *father, BoxPokemon *mother);
 static u16 Daycare_BreedingIncenseCheck(u16 species, DAYCARE *dayCare);
 static void Daycare_LightBallCheck(Pokemon *egg, DAYCARE *dayCare);
 static u16 Daycare_GetEggSpecies(DAYCARE *dayCare, u8 *gender_idx);
-static void SetBreedEggStats(Pokemon *mon, u16 species, DAYCARE *dayCare, u32 otId, u8 forme);
+static void SetBreedEggStats(Pokemon *mon, u16 species, DAYCARE *dayCare, u32 otId, u8 form);
 static u8 GetEggCyclesToSubtract(PARTY *party);
 static BOOL sub_0206CB88(const u16 *a0, const u16 *a1);
 static u8 ComputeCompatibilityBetweenBoxMons(BoxPokemon **parents);
@@ -98,7 +98,7 @@ static void DayCareMon_CopyFromPartySlot(PARTY *party, int partyIdx, DAYCAREMON 
     mood = 0;
     SetMonData(partyMon, MON_DATA_MOOD, &mood);
     CopyPokemonToBoxPokemon(partyMon, boxMon);
-    BoxMon_UpdateShayminForme(boxMon, SHAYMIN_LAND);
+    BoxMon_UpdateShayminForm(boxMon, SHAYMIN_LAND);
     DayCareMon_SetSteps(daycareMon, 0);
     RemoveMonFromParty(party, partyIdx);
     if (!PartyHasMon(party, SPECIES_CHATOT)) {
@@ -448,7 +448,7 @@ static void InheritMoves(Pokemon *egg, BoxPokemon *father, BoxPokemon *mother) {
     u16 sp1C;
     u16 egg_species;
     u16 learnset_size;
-    u16 egg_forme;
+    u16 egg_form;
     u16 i, j;
     u16 r5;
     struct EggMoveSearch *search;
@@ -458,8 +458,8 @@ static void InheritMoves(Pokemon *egg, BoxPokemon *father, BoxPokemon *mother) {
     MI_CpuClearFast(search, sizeof(struct EggMoveSearch));
 
     egg_species = GetMonData(egg, MON_DATA_SPECIES, NULL);
-    egg_forme = GetMonData(egg, MON_DATA_FORME, NULL);
-    learnset_size = Species_LoadLearnsetTable(egg_species, egg_forme, search->baby_learnset);
+    egg_form = GetMonData(egg, MON_DATA_FORM, NULL);
+    learnset_size = Species_LoadLearnsetTable(egg_species, egg_form, search->baby_learnset);
     for (i = 0; i < MAX_MON_MOVES; i++) {
         search->dad_moves[i] = GetBoxMonData(father, MON_DATA_MOVE1 + i, NULL);
         search->mom_moves[i] = GetBoxMonData(mother, MON_DATA_MOVE1 + i, NULL);
@@ -483,7 +483,7 @@ static void InheritMoves(Pokemon *egg, BoxPokemon *father, BoxPokemon *mother) {
         if (search->dad_moves[i] != MOVE_NONE) {
             for (j = 0; j < 100; j++) {
                 if (search->dad_moves[i] == TMHMGetMove(j + ITEM_TM01)) {
-                    if (GetTMHMCompatBySpeciesAndForme(egg_species, egg_forme, j)) {
+                    if (GetTMHMCompatBySpeciesAndForm(egg_species, egg_form, j)) {
                         if (TryAppendMonMove(egg, search->dad_moves[i]) == MOVE_APPEND_FULL) {
                             DeleteMonFirstMoveAndAppend(egg, search->dad_moves[i]);
                         }
@@ -660,7 +660,7 @@ void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profi
     MonSetTrainerMemo(mon, profile, a4, a5, HEAP_ID_0);
 }
 
-static void SetBreedEggStats(Pokemon *mon, u16 species, DAYCARE *dayCare, u32 otId, u8 forme) {
+static void SetBreedEggStats(Pokemon *mon, u16 species, DAYCARE *dayCare, u32 otId, u8 form) {
     u16 pokeball;
     u8 metLevel;
     u8 friendship;
@@ -688,7 +688,7 @@ static void SetBreedEggStats(Pokemon *mon, u16 species, DAYCARE *dayCare, u32 ot
     SetMonData(mon, MON_DATA_POKEBALL, &pokeball);
     SetMonData(mon, MON_DATA_FRIENDSHIP, &friendship);
     SetMonData(mon, MON_DATA_MET_LEVEL, &metLevel);
-    SetMonData(mon, MON_DATA_FORME, &forme);
+    SetMonData(mon, MON_DATA_FORM, &form);
     name = GetSpeciesName(SPECIES_EGG, HEAP_ID_4);
     SetMonData(mon, MON_DATA_NICKNAME_3, name);
     String_Delete(name);
@@ -700,14 +700,14 @@ void GiveEggToPlayer(DAYCARE *dayCare, PARTY *party, PlayerProfile* profile) {
     u8 gender_idx[2];
     u8 isEgg;
     u32 otId;
-    u8 mom_forme;
+    u8 mom_form;
 
     mon = AllocMonZeroed(HEAP_ID_4);
     species = Daycare_GetEggSpecies(dayCare, gender_idx);
     species = Daycare_BreedingIncenseCheck(species, dayCare);
     otId = PlayerProfile_GetTrainerID(profile);
-    mom_forme = GetBoxMonData(Daycare_GetBoxMonI(dayCare, gender_idx[0]), MON_DATA_FORME, NULL);
-    SetBreedEggStats(mon, species, dayCare, otId, mom_forme);
+    mom_form = GetBoxMonData(Daycare_GetBoxMonI(dayCare, gender_idx[0]), MON_DATA_FORM, NULL);
+    SetBreedEggStats(mon, species, dayCare, otId, mom_form);
     InheritIVs(mon, dayCare);
     InheritMoves(mon, Daycare_GetBoxMonI(dayCare, gender_idx[1]), Daycare_GetBoxMonI(dayCare, gender_idx[0]));
     MonSetTrainerMemo(mon, profile, 3, sub_02017FE4(MAPSECTYPE_GIFT, 0), HEAP_ID_4);
@@ -1015,7 +1015,7 @@ static void sub_0206D038(Pokemon *mon, HeapID heapId) {
     u8 markings;
     u8 eggCycles;
     u8 fateful;
-    u8 forme;
+    u8 form;
     u8 otGender;
     u8 metYear;
     u8 metMonth;
@@ -1045,7 +1045,7 @@ static void sub_0206D038(Pokemon *mon, HeapID heapId) {
     GetMonData(mon, MON_DATA_OT_NAME_2, string);
     otGender = GetMonData(mon, MON_DATA_MET_GENDER, NULL);
     otId = GetMonData(mon, MON_DATA_OTID, NULL);
-    forme = GetMonData(mon, MON_DATA_FORME, NULL);
+    form = GetMonData(mon, MON_DATA_FORM, NULL);
     if (species == SPECIES_MANAPHY && GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_EXTERNAL, 1)) {
         if (CalcShininessByOtIdAndPersonality(otId, pid)) {
             do {
@@ -1071,7 +1071,7 @@ static void sub_0206D038(Pokemon *mon, HeapID heapId) {
     SetMonData(tmpMon, MON_DATA_OT_NAME_2, string);
     SetMonData(tmpMon, MON_DATA_MET_GENDER, &otGender);
     SetMonData(tmpMon, MON_DATA_OTID, &otId);
-    SetMonData(tmpMon, MON_DATA_FORME, &forme);
+    SetMonData(tmpMon, MON_DATA_FORM, &form);
     metLoc = GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL);
     metYear = GetMonData(mon, MON_DATA_EGG_MET_YEAR, NULL);
     metMonth = GetMonData(mon, MON_DATA_EGG_MET_MONTH, NULL);

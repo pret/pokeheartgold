@@ -196,9 +196,9 @@ _02202C74:
 	.balign 4, 0
 	thumb_func_end ScrCmd_656
 
-	thumb_func_start SpeciesAndFormeToWazaOshieIndex
-SpeciesAndFormeToWazaOshieIndex: ; 0x02202C7C
-	; Convert species and forme into
+	thumb_func_start SpeciesAndFormToMoveTutorIndex
+SpeciesAndFormToMoveTutorIndex: ; 0x02202C7C
+	; Convert species and formeinto
 	; naix for tutor compat
 	ldr r2, _02202D3C ; =SPECIES_ROTOM
 	cmp r0, r2
@@ -313,7 +313,7 @@ _02202D32:
 	bx lr
 	nop
 _02202D3C: .word SPECIES_ROTOM
-	thumb_func_end SpeciesAndFormeToWazaOshieIndex
+	thumb_func_end SpeciesAndFormToMoveTutorIndex
 
 	thumb_func_start MonGetTutorCompat
 MonGetTutorCompat: ; 0x02202D40
@@ -336,7 +336,7 @@ _02202D4E:
 	add r5, r5, #2
 	cmp r4, #4
 	blt _02202D4E
-	; Get species and forme, then
+	; Get species and form, then
 	; get tutor compat flags
 	add r0, r6, #0
 	mov r1, #5
@@ -352,10 +352,10 @@ _02202D4E:
 	lsl r1, r1, #0x18
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x18
-	bl SpeciesAndFormeToWazaOshieIndex
+	bl SpeciesAndFormToMoveTutorIndex
 	add r1, r0, #0
 	mov r0, #0xb
-	bl WazaOshieGet
+	bl MoveTutorGet
 	mov r6, #0
 	mov ip, r0
 	ldr r1, _02202DFC ; =sTutorMoves
@@ -419,8 +419,8 @@ _02202DE6:
 _02202DFC: .word sTutorMoves
 	thumb_func_end MonGetTutorCompat
 
-	thumb_func_start WazaOshieGet
-WazaOshieGet: ; 0x02202E00
+	thumb_func_start MoveTutorGet
+MoveTutorGet: ; 0x02202E00
 	push {r3, r4, r5, lr}
 	sub sp, #0x48
 	add r5, r0, #0
@@ -465,7 +465,7 @@ _02202E34:
 	nop
 _02202E60: .word ov01_02209AF4
 _02202E64: .word 505 * 8
-	thumb_func_end WazaOshieGet
+	thumb_func_end MoveTutorGet
 
 	thumb_func_start ScrCmd_MoveTutorChooseMove
 ScrCmd_MoveTutorChooseMove: ; 0x02202E68

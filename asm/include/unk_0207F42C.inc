@@ -27,8 +27,8 @@
 .public GetMonData
 .public SetMonData
 .public Mon_GetBoxMon
-.public Pokemon_UpdateArceusForme
-.public Mon_UpdateGiratinaForme
+.public Pokemon_UpdateArceusForm
+.public Mon_UpdateGiratinaForm
 .public Pokemon_RemoveCapsule
 .public GetPartyMonByIndex
 .public Party_SwapSlots
@@ -72,4 +72,4 @@
 .public _s32_div_f
 .public _020FA484
 .public gNatureStatMods
-.public PartyMenu_AnimateIconFormeChange
+.public PartyMenu_AnimateIconFormChange

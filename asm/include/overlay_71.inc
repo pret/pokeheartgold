@@ -137,7 +137,7 @@
 .public AcquireBoxMonLock
 .public ReleaseBoxMonLock
 .public GetBoxMonData
-.public GetMonBaseStat_HandleAlternateForme
+.public GetMonBaseStat_HandleAlternateForm
 .public GetBoxmonSpriteCharAndPlttNarcIds
 .public sub_02070854
 .public sub_02072914

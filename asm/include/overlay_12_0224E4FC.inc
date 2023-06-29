@@ -18,7 +18,7 @@
 .public CopyPokemonToPokemon
 .public GetFlavorPreferenceFromPID
 .public GetArceusTypeByHeldItemEffect
-.public Mon_UpdateGiratinaForme
+.public Mon_UpdateGiratinaForm
 .public sub_020720FC
 .public MaskOfFlagNo
 .public GetMoveMaxPP
@@ -38,7 +38,7 @@
 .public PokedexData_LoadAll
 .public PokedexData_UnloadAll
 .public PokedexData_GetWeight
-.public SetDexBanksByGiratinaForme
+.public SetDexBanksByGiratinaForm
 .public MIi_CpuClearFast
 .public _s32_div_f
 .public _u32_div_f

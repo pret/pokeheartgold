@@ -96,7 +96,7 @@ sub_0202B684: ; 0x0202B684
 	bl GetMonData
 	str r0, [r5, #4]
 	add r0, r4, #0
-	mov r1, #MON_DATA_FORME
+	mov r1, #MON_DATA_FORM
 	mov r2, #0
 	bl GetMonData
 	add r1, r5, #0

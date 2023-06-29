@@ -268,7 +268,7 @@
 #define MON_DATA_HOENN_WORLD_RIBBON             109
 #define MON_DATA_FATEFUL_ENCOUNTER              110
 #define MON_DATA_GENDER                         111
-#define MON_DATA_FORME                          112
+#define MON_DATA_FORM                          112
 #define MON_DATA_RESERVED_113                   113 // HGSS
 #define MON_DATA_RESERVED_114                   114 // Plat
 #define MON_DATA_HGSS_EGG_MET_LOCATION          115
@@ -468,27 +468,27 @@ typedef enum {
     ARCEUS_ICICLE = 15,
     ARCEUS_DRACO = 16,
     ARCEUS_DREAD = 17,
-    ARCEUS_FORME_MAX = 18,
+    ARCEUS_FORM_MAX = 18,
 
     BURMY_PLANT = 0,
     BURMY_SANDY = 1,
     BURMY_TRASH = 2,
-    BURMY_FORME_MAX = 3,
+    BURMY_FORM_MAX = 3,
 
     WORMADAM_PLANT = 0,
     WORMADAM_SANDY = 1,
     WORMADAM_TRASH = 2,
-    WORMADAM_FORME_MAX = 3,
+    WORMADAM_FORM_MAX = 3,
 
     DEOXYS_NORMAL = 0,
     DEOXYS_ATTACK = 1,
     DEOXYS_DEFENSE = 2,
     DEOXYS_SPEED = 3,
-    DEOXYS_FORME_MAX = 4,
+    DEOXYS_FORM_MAX = 4,
 
     GIRATINA_ALTERED = 0,
     GIRATINA_ORIGIN = 1,
-    GIRATINA_FORME_MAX = 2,
+    GIRATINA_FORM_MAX = 2,
 
     ROTOM_NORMAL = 0,
     ROTOM_HEAT = 1,
@@ -496,29 +496,29 @@ typedef enum {
     ROTOM_FROST = 3,
     ROTOM_FAN = 4,
     ROTOM_MOW = 5,
-    ROTOM_FORME_MAX = 6,
+    ROTOM_FORM_MAX = 6,
 
     SHAYMIN_LAND = 0,
     SHAYMIN_SKY = 1,
-    SHAYMIN_FORME_MAX = 2,
+    SHAYMIN_FORM_MAX = 2,
 
     SHELLOS_WEST = 0,
     SHELLOS_EAST = 1,
-    SHELLOS_FORME_MAX = 2,
+    SHELLOS_FORM_MAX = 2,
 
     GASTRODON_WEST = 0,
     GASTRODON_EAST = 1,
-    GASTRODON_FORME_MAX = 2,
+    GASTRODON_FORM_MAX = 2,
 
     CASTFORM_NORMAL = 0,
     CASTFORM_SUNNY = 1,
     CASTFORM_RAINY = 2,
     CASTFORM_SNOWY = 3,
-    CASTFORM_FORME_MAX = 4,
+    CASTFORM_FORM_MAX = 4,
 
     CHERRIM_CLOUDY = 0,
     CHERRIM_SUNNY = 1,
-    CHERRIM_FORME_MAX = 2,
+    CHERRIM_FORM_MAX = 2,
 
     UNOWN_A = 0,
     UNOWN_B = 1,
@@ -548,15 +548,15 @@ typedef enum {
     UNOWN_Z = 25,
     UNOWN_EXCLAMATION_MARK = 26,
     UNOWN_QUESTION_MARK = 27,
-    UNOWN_FORME_MAX = 28,
+    UNOWN_FORM_MAX = 28,
 
     PICHU_NORMAL = 0,
     PICHU_SPIKY_EAR = 1,
-    PICHU_FORME_MAX = 2,
+    PICHU_FORM_MAX = 2,
 
     EGG_STANDARD = 0,
     EGG_MANAPHY = 1,
-    EGG_FORME_MAX = 2,
+    EGG_FORM_MAX = 2,
 } AlternateForms;
 
 typedef enum EvoMethod

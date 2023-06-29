@@ -4163,7 +4163,7 @@
       ]
     },
     {
-      "name": "set_mon_forme",
+      "name": "set_mon_form",
       "args": [
         2,
         2
@@ -4255,7 +4255,7 @@
       ]
     },
     {
-      "name": "get_owned_rotom_formes",
+      "name": "get_owned_rotom_forms",
       "args": [
         "var",
         "var",
@@ -4272,7 +4272,7 @@
       ]
     },
     {
-      "name": "update_rotom_forme",
+      "name": "update_rotom_form",
       "args": [
         "var",
         "var",
@@ -4281,7 +4281,7 @@
       ]
     },
     {
-      "name": "get_party_mon_forme",
+      "name": "get_party_mon_form",
       "args": [
         "var",
         "var"
@@ -5164,7 +5164,7 @@
       ]
     },
     {
-      "name": "get_partymon_forme",
+      "name": "get_partymon_form",
       "args": [
         "var",
         "var"

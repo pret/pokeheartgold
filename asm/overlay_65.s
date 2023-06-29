@@ -970,7 +970,7 @@ _0221C64A:
 	beq _0221C678
 	add r0, r6, #0
 	mov r1, #0
-	bl Mon_UpdateShayminForme
+	bl Mon_UpdateShayminForm
 _0221C678:
 	ldr r0, [r4, #8]
 	add r5, r5, #1
@@ -1423,7 +1423,7 @@ ov65_0221C9D8: ; 0x0221C9D8
 	beq _0221CA50
 	ldrb r1, [r4, #6]
 	mov r2, #0x1c
-	bl GetMonBaseStat_HandleAlternateForme
+	bl GetMonBaseStat_HandleAlternateForm
 	strh r0, [r4, #0xa]
 _0221CA50:
 	cmp r6, #0

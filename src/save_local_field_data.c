@@ -130,15 +130,15 @@ void Fsys_RestoreMapObjectsFromSave(FieldSystem *fsys) {
     struct SavedMapObject *follower = SaveMapObjects_SearchSpriteId(unk->subs, 64, SPRITE_FOLLOWER_MON_SHAYMIN_SKY);
     Pokemon *mon;
     int species;
-    int forme;
+    int form;
 
     if (follower != NULL && follower->objId == obj_partner_poke) {
         mon = GetFirstAliveMonInParty_CrashIfNone(SaveArray_PlayerParty_Get(fsys->savedata));
         species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        forme = GetMonData(mon, MON_DATA_FORME, NULL);
+        form = GetMonData(mon, MON_DATA_FORM, NULL);
         if (species != SPECIES_SHAYMIN) {
             GF_ASSERT(FALSE);
-        } else if (forme == SHAYMIN_LAND) {
+        } else if (form == SHAYMIN_LAND) {
             follower->gfxId = SPRITE_FOLLOWER_MON_SHAYMIN;
         }
     }

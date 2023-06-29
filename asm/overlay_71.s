@@ -223,7 +223,7 @@ ov71_02246B28: ; 0x02246B28
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0x1c
-	bl GetMonBaseStat_HandleAlternateForme
+	bl GetMonBaseStat_HandleAlternateForm
 	cmp r0, #0
 	bne _02246B52
 	mov r0, #1

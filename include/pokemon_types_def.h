@@ -153,7 +153,7 @@ typedef struct Mail
     u8 mail_type;
     u16 author_name[PLAYER_NAME_LENGTH + 1];
     union MailPatternData mon_icons[3];
-    u16 forme_flags; // bitfield of three 5-bit values
+    u16 form_flags; // bitfield of three 5-bit values
     MAIL_MESSAGE unk_20[3];
 } MAIL;
 

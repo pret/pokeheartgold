@@ -21,7 +21,7 @@ scr_seq_T11R0702_006:
 	setflag FLAG_HIDE_SILPH_ROTOM_FROST
 	setflag FLAG_HIDE_SILPH_ROTOM_FAN
 	setflag FLAG_HIDE_SILPH_ROTOM_MOW
-	get_owned_rotom_formes VAR_TEMP_x4000, VAR_TEMP_x4001, VAR_TEMP_x4002, VAR_TEMP_x4003, VAR_TEMP_x4004
+	get_owned_rotom_forms VAR_TEMP_x4000, VAR_TEMP_x4001, VAR_TEMP_x4002, VAR_TEMP_x4003, VAR_TEMP_x4004
 	compare VAR_TEMP_x4000, 0
 	call_if_eq _0085
 	compare VAR_TEMP_x4001, 0
@@ -146,11 +146,11 @@ _0231:
 _0252:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	npc_msg msg_0538_T11R0702_00011
-	update_rotom_forme VAR_SPECIAL_x8000, 0, 0, 0
+	update_rotom_form VAR_SPECIAL_x8000, 0, 0, 0
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	closemsg
-	get_party_mon_forme VAR_SPECIAL_x8000, VAR_SPECIAL_x8004
+	get_party_mon_form VAR_SPECIAL_x8000, VAR_SPECIAL_x8004
 	compare VAR_SPECIAL_x8004, 1
 	call_if_eq _0300
 	compare VAR_SPECIAL_x8004, 3
@@ -218,7 +218,7 @@ _0332:
 	goto_if_eq _041A
 	compare VAR_SPECIAL_RESULT, 479
 	goto_if_ne _0427
-	get_party_mon_forme VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
+	get_party_mon_form VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _039F
 	goto _0252
@@ -389,7 +389,7 @@ _0649:
 	.byte 0x02
 	.byte 0x00
 _0671:
-	update_rotom_forme VAR_SPECIAL_x8000, VAR_SPECIAL_x8002, VAR_SPECIAL_x8001, VAR_SPECIAL_x8004
+	update_rotom_form VAR_SPECIAL_x8000, VAR_SPECIAL_x8002, VAR_SPECIAL_x8001, VAR_SPECIAL_x8004
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	closemsg

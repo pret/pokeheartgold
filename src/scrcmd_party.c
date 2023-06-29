@@ -21,12 +21,12 @@ BOOL ScrCmd_GiveMon(ScriptContext *ctx) {
     u16 species = ScriptGetVar(ctx);
     u8 level = ScriptGetVar(ctx);
     u16 heldItem = ScriptGetVar(ctx);
-    u8 forme = ScriptGetVar(ctx);
+    u8 form = ScriptGetVar(ctx);
     u16 ability = ScriptGetVar(ctx);
     u16 *retPtr = ScriptGetVarPointer(ctx);
 
     PARTY *party = SaveArray_PlayerParty_Get(fsys->savedata);
-    *retPtr = GiveMon(HEAP_ID_FIELD, fsys->savedata, species, level, forme, ability, heldItem, map, 24);
+    *retPtr = GiveMon(HEAP_ID_FIELD, fsys->savedata, species, level, form, ability, heldItem, map, 24);
   
     return FALSE;
 }
@@ -771,12 +771,12 @@ BOOL ScrCmd_MonHasItem(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GetPartymonForme(ScriptContext *ctx) {
+BOOL ScrCmd_GetPartymonForm(ScriptContext *ctx) {
     u16 slot = ScriptGetVar(ctx);
-    u16 *forme = ScriptGetVarPointer(ctx);
+    u16 *form = ScriptGetVarPointer(ctx);
 
     Pokemon *mon = GetPartyMonByIndex(SaveArray_PlayerParty_Get(ctx->fsys->savedata), slot);
-    *forme = GetMonData(mon, MON_DATA_FORME, NULL);
+    *form = GetMonData(mon, MON_DATA_FORM, NULL);
 
     return FALSE;
 }
