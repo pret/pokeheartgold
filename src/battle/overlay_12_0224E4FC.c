@@ -4506,3 +4506,47 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     }
     return ret;
 }
+
+BOOL CheckItemGradualHPRestore(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
+    BOOL ret = FALSE;
+    int script;
+    int item;
+    
+    item = GetBattlerHeldItemEffect(ctx, battlerId);
+    BattleSystem_GetHeldItemDamageBoost(ctx, battlerId, 0);
+    
+    if (ctx->battleMons[battlerId].hp) {
+        switch (item) {
+        case HOLD_EFFECT_HP_RESTORE_GRADUAL: //leftovers
+            if (ctx->battleMons[battlerId].hp < ctx->battleMons[battlerId].maxHp) {
+                ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp, 16);
+                script = 213;
+                ret = TRUE;
+            }
+            break;
+        case HOLD_EFFECT_HP_RESTORE_PSN_TYPE: //black sludge
+            if ((GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL) == TYPE_POISON || GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL) == TYPE_POISON)) {
+                if (ctx->battleMons[battlerId].hp < ctx->battleMons[battlerId].maxHp) {
+                    ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp, 16);
+                    script = 213;
+                    ret = TRUE;
+                }
+            } else if (GetBattlerAbility(ctx, battlerId) != ABILITY_MAGIC_GUARD) {
+                ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp * -1, 8);
+                script = 215;
+                ret = TRUE;
+            }
+            break;
+        default:
+            break;
+        }
+        if (ret == TRUE) {
+            ctx->battlerIdWork = battlerId;
+            ctx->itemWork = GetBattlerHeldItem(ctx, battlerId);
+            ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
+            ctx->commandNext = ctx->command;
+            ctx->command = CONTROLLER_COMMAND_22;
+        }
+    }
+    return ret;
+}

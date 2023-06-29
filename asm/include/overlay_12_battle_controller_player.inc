@@ -101,7 +101,7 @@
 .public CheckStatusHealAbility
 .public TrySyncronizeStatus
 .public TryUseHeldItem
-.public ov12_02254D80
+.public CheckItemGradualHPRestore
 .public ov12_02254E7C
 .public ov12_0225551C
 .public ov12_0225561C

@@ -2982,7 +2982,7 @@ _02249E9C:
 	ldr r0, [sp, #4]
 	add r1, r4, #0
 	add r2, r5, #0
-	bl ov12_02254D80
+	bl CheckItemGradualHPRestore
 	cmp r0, #1
 	bne _02249EAE
 	mov r0, #1
