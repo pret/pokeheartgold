@@ -8,7 +8,7 @@
     .public BattleControllerPlayer_GetBattleMon
     .public BattleControllerPlayer_StartEncounter
     .public BattleControllerPlayer_TrainerMessage
-    .public ov12_022487C8
+    .public BattleControllerPlayer_PokemonAppear
 
 	thumb_func_start ov12_022487FC
 ov12_022487FC: ; 0x022487FC
@@ -9835,7 +9835,7 @@ ov12_0224D368: ; 0x0224D368
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl ov12_022543A0
+	bl CheckStatusHealAbility
 	cmp r0, #1
 	beq _0224D440
 	ldr r2, [r4, #0x6c]
@@ -9844,7 +9844,7 @@ ov12_0224D368: ; 0x0224D368
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl ov12_022543A0
+	bl CheckStatusHealAbility
 	cmp r0, #1
 	beq _0224D440
 _0224D39E:
@@ -12124,7 +12124,7 @@ sPlayerBattleCommands: ; 0x0226CA90
 	.word BattleControllerPlayer_GetBattleMon
 	.word BattleControllerPlayer_StartEncounter
 	.word BattleControllerPlayer_TrainerMessage
-	.word ov12_022487C8
+	.word BattleControllerPlayer_PokemonAppear
 	.word ov12_022487FC
 	.word ov12_02248848
 	.word ov12_02249190

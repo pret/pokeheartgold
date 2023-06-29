@@ -177,9 +177,7 @@ enum Terrain {
 #define CONDITION_PARALYSIS                 5
 
 //Status 2
-#define STATUS2_0                           (1 << 0)
-#define STATUS2_1                           (1 << 1)
-#define STATUS2_2                           (1 << 2)
+#define STATUS2_CONFUSION                   (7 << 0)
 #define STATUS2_FLINCH                      (1 << 3)
 #define STATUS2_4                           (1 << 4)
 #define STATUS2_RAGE                        (3 << 10)
@@ -207,7 +205,7 @@ enum Terrain {
 
 #define STATUS2_ATTRACT_SHIFT               16    
 
-#define STATUS2_BATON_PASSABLE              (STATUS2_0 | STATUS2_1 | STATUS2_2 | STATUS2_FOCUS_ENERGY | STATUS2_SUBSTITUTE | STATUS2_MEAN_LOOK | STATUS2_28)
+#define STATUS2_BATON_PASSABLE              (STATUS2_CONFUSION | STATUS2_FOCUS_ENERGY | STATUS2_SUBSTITUTE | STATUS2_MEAN_LOOK | STATUS2_28)
 
 //Struggle Checks
 #define STRUGGLE_CHECK_NO_MOVES             (1 << 0)

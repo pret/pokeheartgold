@@ -77,7 +77,7 @@ void BattleControllerPlayer_TrainerMessage(BattleSystem *bsys, BATTLECONTEXT *ct
 }
 
 //static
-void ov12_022487C8(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+void BattleControllerPlayer_PokemonAppear(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int script = ov12_02253194(bsys, ctx);
     
     if (script) {

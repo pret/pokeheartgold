@@ -58,7 +58,7 @@
 .public BattleSystem_GetBattlerIdPartner
 .public ov12_0223ABB8
 .public BattleSystem_GetBattleFlags
-.public ov12_0223BAF8
+.public BattleSystem_GetWeather
 .public BattleSystem_Random
 .public ov12_0223BFEC
 .public BattleSystem_GetBattleMon
@@ -129,7 +129,7 @@
 .public ov12_02253194
 .public ov12_02253DA0
 .public CheckAbilityEffectOnHit
-.public ov12_022543A0
+.public CheckStatusHealAbility
 .public CheckNaturalCureOnSwitch
 .public ov12_02254580
 .public ov12_0225471C

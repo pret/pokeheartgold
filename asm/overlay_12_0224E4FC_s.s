@@ -12,208 +12,6 @@
     .public ov12_02251C74
     .public CheckMoveEffectOnField
 
-	thumb_func_start ov12_022543A0
-ov12_022543A0: ; 0x022543A0
-	push {r3, r4, r5, r6, r7, lr}
-	add r4, r1, #0
-	add r5, r2, #0
-	add r0, r4, #0
-	add r1, r5, #0
-	add r7, r3, #0
-	mov r6, #0
-	bl GetBattlerAbility
-	cmp r0, #0x28
-	bgt _022543E6
-	bge _02254480
-	cmp r0, #7
-	bgt _022543C0
-	beq _0225442E
-	b _022544D8
-_022543C0:
-	add r1, r0, #0
-	sub r1, #0xc
-	cmp r1, #8
-	bhi _022543F0
-	add r1, r1, r1
-	add r1, pc
-	ldrh r1, [r1, #6]
-	lsl r1, r1, #0x10
-	asr r1, r1, #0x10
-	add pc, r1
-_022543D4: ; jump table
-	.short _0225449C - _022543D4 - 2 ; case 0
-	.short _022544D8 - _022543D4 - 2 ; case 1
-	.short _022544D8 - _022543D4 - 2 ; case 2
-	.short _02254448 - _022543D4 - 2 ; case 3
-	.short _022544D8 - _022543D4 - 2 ; case 4
-	.short _022543F8 - _022543D4 - 2 ; case 5
-	.short _022544D8 - _022543D4 - 2 ; case 6
-	.short _022544D8 - _022543D4 - 2 ; case 7
-	.short _02254412 - _022543D4 - 2 ; case 8
-_022543E6:
-	cmp r0, #0x48
-	bgt _022543F2
-	bge _02254448
-	cmp r0, #0x29
-	beq _02254464
-_022543F0:
-	b _022544D8
-_022543F2:
-	cmp r0, #0x54
-	beq _022544BA
-	b _022544D8
-_022543F8:
-	mov r0, #0xc0
-	add r1, r5, #0
-	mul r1, r0
-	add r2, r4, r1
-	ldr r1, _0225450C ; =0x00002DAC
-	ldr r2, [r2, r1]
-	ldr r1, _02254510 ; =0x00000F88
-	tst r1, r2
-	beq _022544D8
-	mov r6, #1
-	add r0, #0x70
-	str r6, [r4, r0]
-	b _022544D8
-_02254412:
-	mov r0, #0xc0
-	add r1, r5, #0
-	mul r1, r0
-	add r2, r4, r1
-	ldr r1, _02254514 ; =0x00002DB0
-	ldr r2, [r2, r1]
-	mov r1, #7
-	tst r1, r2
-	beq _022544D8
-	mov r1, #5
-	add r0, #0x70
-	str r1, [r4, r0]
-	mov r6, #1
-	b _022544D8
-_0225442E:
-	mov r0, #0xc0
-	mul r0, r5
-	add r1, r4, r0
-	ldr r0, _0225450C ; =0x00002DAC
-	ldr r1, [r1, r0]
-	mov r0, #0x40
-	tst r1, r0
-	beq _022544D8
-	mov r1, #3
-	add r0, #0xf0
-	str r1, [r4, r0]
-	mov r6, #1
-	b _022544D8
-_02254448:
-	mov r0, #0xc0
-	add r1, r5, #0
-	mul r1, r0
-	add r2, r4, r1
-	ldr r1, _0225450C ; =0x00002DAC
-	ldr r2, [r2, r1]
-	mov r1, #7
-	tst r1, r2
-	beq _022544D8
-	mov r1, #0
-	add r0, #0x70
-	str r1, [r4, r0]
-	mov r6, #1
-	b _022544D8
-_02254464:
-	mov r0, #0xc0
-	add r1, r5, #0
-	mul r1, r0
-	add r2, r4, r1
-	ldr r1, _0225450C ; =0x00002DAC
-	ldr r2, [r2, r1]
-	mov r1, #0x10
-	tst r1, r2
-	beq _022544D8
-	mov r1, #2
-	add r0, #0x70
-	str r1, [r4, r0]
-	mov r6, #1
-	b _022544D8
-_02254480:
-	mov r0, #0xc0
-	add r1, r5, #0
-	mul r1, r0
-	add r2, r4, r1
-	ldr r1, _0225450C ; =0x00002DAC
-	ldr r2, [r2, r1]
-	mov r1, #0x20
-	tst r1, r2
-	beq _022544D8
-	mov r1, #4
-	add r0, #0x70
-	str r1, [r4, r0]
-	mov r6, #1
-	b _022544D8
-_0225449C:
-	mov r0, #0xc0
-	add r1, r5, #0
-	mul r1, r0
-	add r2, r4, r1
-	ldr r1, _02254514 ; =0x00002DB0
-	ldr r2, [r2, r1]
-	mov r1, #0xf
-	lsl r1, r1, #0x10
-	tst r1, r2
-	beq _022544D8
-	mov r1, #6
-	add r0, #0x70
-	str r1, [r4, r0]
-	mov r6, #1
-	b _022544D8
-_022544BA:
-	mov r0, #0xc0
-	add r3, r5, #0
-	mul r3, r0
-	ldr r0, _02254518 ; =0x00002DB8
-	add r1, r4, r3
-	ldrh r1, [r1, r0]
-	cmp r1, #0
-	beq _022544D8
-	add r0, #0x14
-	add r2, r4, r0
-	mov r0, #1
-	ldr r1, [r2, r3]
-	lsl r0, r0, #0x16
-	orr r0, r1
-	str r0, [r2, r3]
-_022544D8:
-	cmp r6, #1
-	bne _02254506
-	mov r0, #0x46
-	lsl r0, r0, #2
-	str r5, [r4, r0]
-	add r0, r4, #0
-	add r1, r5, #0
-	bl GetBattlerAbility
-	mov r1, #0x4b
-	lsl r1, r1, #2
-	str r0, [r4, r1]
-	cmp r7, #0
-	bne _02254506
-	add r0, r4, #0
-	mov r1, #1
-	mov r2, #0xdd
-	bl ReadBattleScriptFromNarc
-	ldr r0, [r4, #8]
-	str r0, [r4, #0xc]
-	mov r0, #0x16
-	str r0, [r4, #8]
-_02254506:
-	add r0, r6, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_0225450C: .word 0x00002DAC
-_02254510: .word 0x00000F88
-_02254514: .word 0x00002DB0
-_02254518: .word 0x00002DB8
-	thumb_func_end ov12_022543A0
-
 	thumb_func_start CheckNaturalCureOnSwitch
 CheckNaturalCureOnSwitch: ; 0x0225451C
 	mov r0, #0
@@ -2491,7 +2289,7 @@ CheckItemEffectOnHit: ; 0x02255634
 	pop {r4, r5, r6, r7, pc}
 _0225564C:
 	add r0, r5, #0
-	bl ov12_02256838
+	bl BattlerCheckSubstitute
 	cmp r0, #1
 	bne _0225565C
 	add sp, #0xc
@@ -3022,7 +2820,7 @@ CanEatOpponentBerry: ; 0x02255A2C
 	str r0, [sp, #0x10]
 	ldr r1, [r4, #0x6c]
 	add r0, r4, #0
-	bl ov12_02256838
+	bl BattlerCheckSubstitute
 	cmp r0, #1
 	bne _02255A62
 	add sp, #0x14
@@ -4883,8 +4681,8 @@ ov12_0225682C: ; 0x0225682C
 	bx lr
 	thumb_func_end ov12_0225682C
 
-	thumb_func_start ov12_02256838
-ov12_02256838: ; 0x02256838
+	thumb_func_start BattlerCheckSubstitute
+BattlerCheckSubstitute: ; 0x02256838
 	mov r3, #0x1c
 	mul r3, r1
 	add r1, r0, r3
@@ -4900,7 +4698,7 @@ _0225684E:
 	add r0, r2, #0
 	bx lr
 	.balign 4, 0
-	thumb_func_end ov12_02256838
+	thumb_func_end BattlerCheckSubstitute
 
 	thumb_func_start ov12_02256854
 ov12_02256854: ; 0x02256854

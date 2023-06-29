@@ -1288,13 +1288,13 @@ BOOL ov12_02250490(BattleSystem *bsys, BATTLECONTEXT *ctx, int *out) {
     } else if (ctx->unk_2174 & (1 << 24)) {
         *out = ov12_02258348(ctx, 2, ctx->unk_2174);
         ctx->unk_2174 = 0;
-        if (!ov12_02256838(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL)) {
+        if (!BattlerCheckSubstitute(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL)) {
             ret = TRUE;
         }
     } else if (ctx->unk_2174 & (1 << 25)) {
         *out = ov12_02258348(ctx, 2, ctx->unk_2174);
         ctx->unk_2174 = 0;
-        if (ctx->battleMons[ctx->battlerIdStatChange].hp && !ov12_02256838(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL)) {
+        if (ctx->battleMons[ctx->battlerIdStatChange].hp && !BattlerCheckSubstitute(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL)) {
             ret = TRUE;
         }
     } else if (ctx->unk_2174 & (1 << 28)) {
@@ -1337,7 +1337,7 @@ BOOL ov12_02250490(BattleSystem *bsys, BATTLECONTEXT *ctx, int *out) {
         if ((BattleSystem_Random(bsys) % 100) < effectChance) {
             *out = ov12_02258348(ctx, 2, ctx->unk_2174);
             ctx->unk_2174 = 0; 
-            if (ctx->battleMons[ctx->battlerIdStatChange].hp && !ov12_02256838(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL)) {
+            if (ctx->battleMons[ctx->battlerIdStatChange].hp && !BattlerCheckSubstitute(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL)) {
                 ret = TRUE;
             }
         }
@@ -3454,7 +3454,7 @@ int ov12_02253194(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         switch (ctx->sendOutState) {
         case 0: //field weather 
             if (!ctx->weatherCheckFlag) {
-                switch (ov12_0223BAF8(bsys)) {
+                switch (BattleSystem_GetWeather(bsys)) {
                 case 1:
                 case 2:
                 case 3:
@@ -3832,7 +3832,7 @@ int ov12_02253194(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         case 13: //???
             for (i = 0; i < maxBattlers; i++) {
                 battlerId = ctx->turnOrder[i];
-                if (ov12_022543A0(bsys, ctx, battlerId, 1) == TRUE) {
+                if (CheckStatusHealAbility(bsys, ctx, battlerId, 1) == TRUE) {
                     script = 221;
                     flag = TRUE;
                     break;
@@ -3895,7 +3895,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script
         return ret;
     }
     
-    if (ov12_02256838(ctx, ctx->battlerIdTarget) == TRUE) {
+    if (BattlerCheckSubstitute(ctx, ctx->battlerIdTarget) == TRUE) {
         return ret;
     }
     
@@ -4047,5 +4047,72 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script
     default:
         break;
     }
+    return ret;
+}
+
+BOOL CheckStatusHealAbility(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int flag) {
+    BOOL ret = FALSE;
+    
+    switch (GetBattlerAbility(ctx, battlerId)) {
+    case ABILITY_IMMUNITY:
+        if (ctx->battleMons[battlerId].status & STATUS_POISON_ALL) {
+            ctx->msgWork = 1;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_OWN_TEMPO:
+        if (ctx->battleMons[battlerId].status2 & STATUS2_CONFUSION) {
+            ctx->msgWork = 5;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_LIMBER:
+        if (ctx->battleMons[battlerId].status & STATUS_PARALYSIS) {
+            ctx->msgWork = 3;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_INSOMNIA:
+    case ABILITY_VITAL_SPIRIT:
+        if (ctx->battleMons[battlerId].status & STATUS_SLEEP) {
+            ctx->msgWork = 0;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_WATER_VEIL:
+        if (ctx->battleMons[battlerId].status & STATUS_BURN) {
+            ctx->msgWork = 2;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_MAGMA_ARMOR:
+        if (ctx->battleMons[battlerId].status & STATUS_FREEZE) {
+            ctx->msgWork = 4;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_OBLIVIOUS:
+        if (ctx->battleMons[battlerId].status2 & STATUS2_ATTRACT_ALL) {
+            ctx->msgWork = 6;
+            ret = TRUE;
+        }
+        break;
+    case ABILITY_UNBURDEN:
+        //resets the item flag in the case where the Pokemon acquires an item via Thief or Trick
+        if (ctx->battleMons[battlerId].item) {
+            ctx->battleMons[battlerId].unk88.knockOffFlag = TRUE;
+        }
+        break;
+    }
+    if (ret == TRUE) {
+        ctx->battlerIdWork = battlerId;
+        ctx->abilityWork = GetBattlerAbility(ctx, battlerId);
+        if (!flag) {
+            ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 221);
+            ctx->commandNext = ctx->command;
+            ctx->command = CONTROLLER_COMMAND_22;
+        }
+    }
+
     return ret;
 }

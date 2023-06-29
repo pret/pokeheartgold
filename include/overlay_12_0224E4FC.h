@@ -72,6 +72,7 @@ int DamageDivide(int num, int denom);
 int ov12_02253194(BattleSystem *bsys, BATTLECONTEXT *ctx);
 int ov12_02253DA0(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script);
+BOOL CheckStatusHealAbility(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int flag);
 
 //The following functions are static, but the rest of the file is still being worked on
 BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int index);
@@ -111,7 +112,7 @@ int ov12_02251D28(BattleSystem *bsys, BATTLECONTEXT *ctx, int moveNo, int moveTy
 void ov12_02252D14(BattleSystem *bsys, BATTLECONTEXT *ctx);
 int ov12_022584AC(BATTLECONTEXT *ctx, int battlerId, int id);
 int ov12_02258348(BATTLECONTEXT *ctx, int a1, int a2);
-int ov12_02256838(BATTLECONTEXT *ctx, int battlerId);
+int BattlerCheckSubstitute(BATTLECONTEXT *ctx, int battlerId);
 int BattleSystem_GetMoveType(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
 void ov12_022585A8(BATTLECONTEXT *ctx, u8 battlerId);
 void ov12_02258584(BATTLECONTEXT *ctx, u8 battlerId);
@@ -121,6 +122,5 @@ u32 ov12_022583B4(BATTLECONTEXT *ctx, int battlerIdA, u8 effectiveness, int dama
 int ov12_022585B8(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int battlerId2);
 BOOL ov12_0225865C(BATTLECONTEXT *ctx, int moveNo);
 BOOL ov12_02256914(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 *scriptOut);
-BOOL ov12_022543A0(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int a3);
 BOOL ov12_02254E7C(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u32 *scriptOut);
 #endif
