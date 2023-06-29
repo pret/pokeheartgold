@@ -4022,7 +4022,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script
             (ctx->selfTurnData[ctx->battlerIdTarget].unk4 || ctx->selfTurnData[ctx->battlerIdTarget].unkC) &&
             (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1) &&
             ctx->battleMons[ctx->battlerIdTarget].hp &&
-            (BattleSystem_Random(bsys) % 10 < 3)) {
+            ((BattleSystem_Random(bsys) % 10) < 3)) {
             ctx->statChangeType = 3;
             ctx->battlerIdStatChange = ctx->battlerIdAttacker;
             ctx->battlerIdWork = ctx->battlerIdTarget;
@@ -4329,7 +4329,7 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
             if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / 2) {
                 ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp, boost);
                 ctx->msgWork = 0;
-                if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, 0) == -1) {
+                if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, FLAVOR_SPICY) == -1) {
                     script = 207;
                 } else {
                     script = 198;
@@ -4341,7 +4341,7 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
             if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / 2) {
                 ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp, boost);
                 ctx->msgWork = 1;
-                if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, 1) == -1) {
+                if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, FLAVOR_DRY) == -1) {
                     script = 207;
                 } else {
                     script = 198;
@@ -4353,7 +4353,7 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
             if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / 2) {
                 ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp, boost);
                 ctx->msgWork = 2;
-                if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, 2) == -1) {
+                if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, FLAVOR_SWEET) == -1) {
                     script = 207;
                 } else {
                     script = 198;
@@ -4365,7 +4365,7 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
             if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / 2) {
                 ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp, boost);
                 ctx->msgWork = 3;
-                if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, 3) == -1) {
+                if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, FLAVOR_BITTER) == -1) {
                     script = 207;
                 } else {
                     script = 198;
@@ -4377,7 +4377,7 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
             if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / 2) {
                 ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp, boost);
                 ctx->msgWork = 4;
-                if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, 4) == -1) {
+                if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, FLAVOR_SOUR) == -1) {
                     script = 207;
                 } else {
                     script = 198;
