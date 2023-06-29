@@ -142,7 +142,7 @@
 .public ov12_0223BAD8
 .public ov12_0223BAE0
 .public ov12_0223BAEC
-.public ov12_0223BAF8
+.public BattleSystem_GetWeather
 .public ov12_0223BB04
 .public ov12_0223BB10
 .public ov12_0223BB1C

@@ -8,7 +8,7 @@
     .public BattleControllerPlayer_GetBattleMon
     .public BattleControllerPlayer_StartEncounter
     .public BattleControllerPlayer_TrainerMessage
-    .public ov12_022487C8
+    .public BattleControllerPlayer_PokemonAppear
 
 	thumb_func_start ov12_022487FC
 ov12_022487FC: ; 0x022487FC
@@ -2968,7 +2968,7 @@ _02249E80:
 	ldr r0, [sp, #4]
 	add r1, r4, #0
 	add r2, r5, #0
-	bl ov12_0225471C
+	bl TryUseHeldItem
 	cmp r0, #1
 	bne _02249E92
 	mov r0, #1
@@ -2982,7 +2982,7 @@ _02249E9C:
 	ldr r0, [sp, #4]
 	add r1, r4, #0
 	add r2, r5, #0
-	bl ov12_02254D80
+	bl CheckItemGradualHPRestore
 	cmp r0, #1
 	bne _02249EAE
 	mov r0, #1
@@ -9020,13 +9020,13 @@ _0224CD2E:
 	str r0, [r4, #0x40]
 	ldr r2, [r4, #8]
 	add r0, r6, #0
-	bl ov12_02254580
+	bl TrySyncronizeStatus
 	cmp r0, #1
 	beq _0224CD94
 _0224CD42:
 	add r0, r6, #0
 	add r1, r4, #0
-	bl ov12_02253194
+	bl TryAbilityOnEntry
 	add r2, r0, #0
 	beq _0224CD62
 	add r0, r4, #0
@@ -9049,7 +9049,7 @@ _0224CD68:
 	str r0, [r4, #0x40]
 	ldr r2, [r4, #0x64]
 	add r0, r6, #0
-	bl ov12_0225471C
+	bl TryUseHeldItem
 	cmp r0, #1
 	beq _0224CD94
 _0224CD7C:
@@ -9061,7 +9061,7 @@ _0224CD7C:
 	beq _0224CD96
 	add r0, r6, #0
 	add r1, r4, #0
-	bl ov12_0225471C
+	bl TryUseHeldItem
 	cmp r0, #1
 	bne _0224CD96
 _0224CD94:
@@ -9835,7 +9835,7 @@ ov12_0224D368: ; 0x0224D368
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl ov12_022543A0
+	bl CheckStatusHealAbility
 	cmp r0, #1
 	beq _0224D440
 	ldr r2, [r4, #0x6c]
@@ -9844,7 +9844,7 @@ ov12_0224D368: ; 0x0224D368
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r3, #0
-	bl ov12_022543A0
+	bl CheckStatusHealAbility
 	cmp r0, #1
 	beq _0224D440
 _0224D39E:
@@ -9861,7 +9861,7 @@ _0224D39E:
 	beq _0224D440
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov12_02253194
+	bl TryAbilityOnEntry
 	add r2, r0, #0
 	beq _0224D3D6
 	add r0, r4, #0
@@ -12124,7 +12124,7 @@ sPlayerBattleCommands: ; 0x0226CA90
 	.word BattleControllerPlayer_GetBattleMon
 	.word BattleControllerPlayer_StartEncounter
 	.word BattleControllerPlayer_TrainerMessage
-	.word ov12_022487C8
+	.word BattleControllerPlayer_PokemonAppear
 	.word ov12_022487FC
 	.word ov12_02248848
 	.word ov12_02249190
