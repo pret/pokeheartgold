@@ -2968,7 +2968,7 @@ _02249E80:
 	ldr r0, [sp, #4]
 	add r1, r4, #0
 	add r2, r5, #0
-	bl ov12_0225471C
+	bl TryUseHeldItem
 	cmp r0, #1
 	bne _02249E92
 	mov r0, #1
@@ -9020,7 +9020,7 @@ _0224CD2E:
 	str r0, [r4, #0x40]
 	ldr r2, [r4, #8]
 	add r0, r6, #0
-	bl ov12_02254580
+	bl TrySyncronizeStatus
 	cmp r0, #1
 	beq _0224CD94
 _0224CD42:
@@ -9049,7 +9049,7 @@ _0224CD68:
 	str r0, [r4, #0x40]
 	ldr r2, [r4, #0x64]
 	add r0, r6, #0
-	bl ov12_0225471C
+	bl TryUseHeldItem
 	cmp r0, #1
 	beq _0224CD94
 _0224CD7C:
@@ -9061,7 +9061,7 @@ _0224CD7C:
 	beq _0224CD96
 	add r0, r6, #0
 	add r1, r4, #0
-	bl ov12_0225471C
+	bl TryUseHeldItem
 	cmp r0, #1
 	bne _0224CD96
 _0224CD94:

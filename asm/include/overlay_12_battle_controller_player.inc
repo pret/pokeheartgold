@@ -99,8 +99,8 @@
 .public ov12_02253DA0
 .public CheckAbilityEffectOnHit
 .public CheckStatusHealAbility
-.public ov12_02254580
-.public ov12_0225471C
+.public TrySyncronizeStatus
+.public TryUseHeldItem
 .public ov12_02254D80
 .public ov12_02254E7C
 .public ov12_0225551C
