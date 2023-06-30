@@ -4005,7 +4005,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script
             !(ctx->linkStatus2 & 0x10) &&
             (ctx->selfTurnData[ctx->battlerIdTarget].unk4 || ctx->selfTurnData[ctx->battlerIdTarget].unkC) &&
             (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1) &&
-            (BattleSystem_Random(bsys) % 10 < 3)) {
+            ((BattleSystem_Random(bsys) % 10) < 3)) {
             ctx->statChangeType = 3;
             ctx->battlerIdStatChange = ctx->battlerIdAttacker;
             ctx->battlerIdWork = ctx->battlerIdTarget;
@@ -4880,4 +4880,121 @@ u16 GetBattlerHeldItem(BATTLECONTEXT *ctx, int battlerId) {
         return ITEM_NONE;
     }
     return ctx->battleMons[battlerId].item;
+}
+
+BOOL ov12_0225561C(BATTLECONTEXT *ctx, int battlerId) {
+    return (ctx->unk_21A8[battlerId][0] == 40);
+}
+
+BOOL CheckItemEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script) {
+    BOOL ret = FALSE;
+    int item;
+    int boost;
+    int side;
+    
+    if (ctx->battlerIdTarget == BATTLER_NONE) {
+        return ret;
+    }
+    
+    if (BattlerCheckSubstitute(ctx, ctx->battlerIdTarget) == TRUE) {
+        return ret;
+    }
+    
+    item = GetBattlerHeldItemEffect(ctx, ctx->battlerIdTarget);
+    boost = BattleSystem_GetHeldItemDamageBoost(ctx, ctx->battlerIdTarget, 0);
+    side = BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker);
+    
+    switch (item) {
+    case HOLD_EFFECT_DMG_USER_CONTACT_XFR: //sticky barb
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp &&
+            !(ctx->battleMons[ctx->battlerIdAttacker].item) &&
+            !(ctx->fieldSideConditionData[side].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[ctx->battlerIdAttacker])) &&
+            ctx->moveNoCur != MOVE_KNOCK_OFF &&
+            (ctx->selfTurnData[ctx->battlerIdTarget].unk4 || ctx->selfTurnData[ctx->battlerIdTarget].unkC) &&
+            !(ctx->linkStatus2 & 0x10) &&
+            (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1)) {
+            *script = 216;
+            ret = TRUE;
+        }
+        break;
+    case HOLD_EFFECT_RECOIL_PHYSICAL: //jacoba berry
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp &&
+            GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_MAGIC_GUARD &&
+            !(ctx->linkStatus2 & 0x10) &&
+            ctx->selfTurnData[ctx->battlerIdTarget].unk4) {
+            ctx->hpCalcWork = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp * -1, boost);
+            *script = 266;
+            ret = TRUE;
+        }
+        break;
+    case HOLD_EFFECT_RECOIL_SPECIAL: //rowap berry
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp &&
+            GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_MAGIC_GUARD &&
+            ctx->selfTurnData[ctx->battlerIdTarget].unkC) {
+            ctx->hpCalcWork = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp * -1, boost);
+            *script = 266;
+            ret = TRUE;
+        }
+        break;
+    case HOLD_EFFECT_HP_RESTORE_SE: //enigma berry
+        if (ctx->battleMons[ctx->battlerIdTarget].hp && (ctx->moveStatusFlag & MOVE_STATUS_SUPER_EFFECTIVE)) {
+            ctx->hpCalcWork = DamageDivide(ctx->battleMons[ctx->battlerIdTarget].maxHp, boost);
+            *script = 198;
+            ctx->battlerIdWork = ctx->battlerIdTarget;
+            ctx->itemWork = ctx->battleMons[ctx->battlerIdTarget].item;
+            ret = TRUE;
+        }
+        break;
+    default:
+        break;
+    }
+    
+    return ret;
+}
+
+int GetBattlerHeldItemEffect(BATTLECONTEXT *ctx, int battlerId) {
+    u16 itemNo = GetBattlerHeldItem(ctx, battlerId);
+    return GetItemHoldEffect(ctx, itemNo, 1);
+}
+
+int BattleSystem_GetHeldItemDamageBoost(BATTLECONTEXT *ctx, int battlerId, int flag) {
+    u16 itemNo;
+    
+    switch (flag) {
+    case 0:
+        itemNo = GetBattlerHeldItem(ctx, battlerId);
+        break;
+    case 2:
+        if (ctx->battleMons[battlerId].unk88.embargoFlag) {
+            return 0;
+        }
+    case 1:
+        itemNo = ctx->battleMons[battlerId].item;
+        break;
+    }
+    
+    return GetItemHoldEffect(ctx, itemNo, 2);
+}
+
+int GetNaturalGiftPower(BATTLECONTEXT *ctx, int battlerId) {
+    u16 itemNo = GetBattlerHeldItem(ctx, battlerId);
+    return GetItemHoldEffect(ctx, itemNo, 11);
+}
+
+int GetNaturalGiftType(BATTLECONTEXT *ctx, int battlerId) {
+    u16 itemNo = GetBattlerHeldItem(ctx, battlerId);
+    return GetItemHoldEffect(ctx, itemNo, 12);
+}
+
+int ov12_022558B8(BATTLECONTEXT *ctx, int battlerId) {
+    u16 itemNo = ctx->battleMons[battlerId].item;
+    return GetItemHoldEffect(ctx, itemNo, 8);
+}
+
+int ov12_022558D0(BATTLECONTEXT *ctx, int battlerId) {
+    if (ctx->battleMons[battlerId].unk88.embargoFlag) {
+        return 0;
+    }
+    
+    return GetItemHoldEffect(ctx, ctx->battleMons[battlerId].item, 9);
 }
