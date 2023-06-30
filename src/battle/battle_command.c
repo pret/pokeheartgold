@@ -1406,7 +1406,7 @@ BOOL BtlCmd_InitGetPokemon(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     ctx->getterWork->ctx = ctx;
     ctx->getterWork->unk28 = 0;
     ctx->getterWork->unk24 = unkA;
-    ctx->getterWork->unk2C = ItemToBallId(ctx->itemWork);
+    ctx->getterWork->unk2C = ItemToBallId(ctx->itemTemp);
 
     CreateSysTask(Task_GetPokemon, ctx->getterWork, 0);
 
@@ -1566,7 +1566,7 @@ BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 ctx->buffMsg.id = 0x2F4;
                 ctx->buffMsg.tag = 45;
                 ctx->buffMsg.param[0] = CreateNicknameTag(ctx, ctx->battlerIdStatChange);
-                ctx->buffMsg.param[1] = ctx->itemWork;
+                ctx->buffMsg.param[1] = ctx->itemTemp;
                 ctx->buffMsg.param[2] = stat + 1;
             } else {
                 ctx->buffMsg.id = (change == 1) ? 0x2EE:0x2F1;
@@ -3003,7 +3003,7 @@ BOOL BtlCmd_HealBell(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                     ctx->battleMons[battlerId].status = STATUS_NONE;
                     ctx->battleMons[battlerId].status2 &= ~STATUS2_27;
                 } else {
-                    ctx->battlerIdWork = battlerId;
+                    ctx->battlerIdTemp = battlerId;
                     ctx->calcWork |= 10;
                 }
             }
@@ -3453,12 +3453,12 @@ BOOL BtlCmd_TryAttract(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int adrs = BattleScriptReadWord(ctx);
 
-    if (ctx->battleMons[ctx->battlerIdWork].gender == ctx->battleMons[ctx->battlerIdStatChange].gender ||
+    if (ctx->battleMons[ctx->battlerIdTemp].gender == ctx->battleMons[ctx->battlerIdStatChange].gender ||
         ctx->battleMons[ctx->battlerIdStatChange].status2 & STATUS2_ATTRACT_ALL ||
-        ctx->battleMons[ctx->battlerIdWork].gender == 2 || ctx->battleMons[ctx->battlerIdStatChange].gender == 2) {
+        ctx->battleMons[ctx->battlerIdTemp].gender == 2 || ctx->battleMons[ctx->battlerIdStatChange].gender == 2) {
         BattleScriptIncrementPointer(ctx, adrs);
     } else {
-        ctx->battleMons[ctx->battlerIdStatChange].status2 |= MaskOfFlagNo(ctx->battlerIdWork) << 16;
+        ctx->battleMons[ctx->battlerIdStatChange].status2 |= MaskOfFlagNo(ctx->battlerIdTemp) << 16;
     }
 
     return FALSE;
@@ -3562,7 +3562,7 @@ BOOL BtlCmd_RapidSpin(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     //Binding Moves
     if (ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_BINDING_ALL) {
         ctx->battleMons[ctx->battlerIdAttacker].status2 &= ~STATUS2_BINDING_ALL;
-        ctx->battlerIdWork = ctx->battleMons[ctx->battlerIdAttacker].unk88.battlerIdBinding;
+        ctx->battlerIdTemp = ctx->battleMons[ctx->battlerIdAttacker].unk88.battlerIdBinding;
         ctx->moveWork = ctx->battleMons[ctx->battlerIdAttacker].unk88.bindingMove;
         BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, 116);
         return FALSE;
@@ -3810,7 +3810,7 @@ BOOL BtlCmd_TryHelpingHand(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         battlerId = GetBattlerIDBySide(bsys, ctx, 16);
         if ((ctx->unk_3108 & MaskOfFlagNo(battlerId)) == 0 && ctx->unk_21A8[battlerId][0] != 40 &&
             ctx->battleMons[battlerId].hp && !ctx->turnData[ctx->battlerIdAttacker].helpingHandFlag && !ctx->turnData[battlerId].helpingHandFlag) {
-            ctx->battlerIdWork = battlerId;
+            ctx->battlerIdTemp = battlerId;
             ctx->turnData[battlerId].helpingHandFlag = TRUE;
         } else {
             BattleScriptIncrementPointer(ctx, adrs);
@@ -5289,7 +5289,7 @@ BOOL BtlCmd_RecoverStatus(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int side = BattleScriptReadWord(ctx);
     int battlerId = GetBattlerIDBySide(bsys, ctx, side);
 
-    BattleSystem_RecoverStatus(bsys, battlerId, ctx->selectedMonIndex[battlerId], 0, ctx->itemWork);
+    BattleSystem_RecoverStatus(bsys, battlerId, ctx->selectedMonIndex[battlerId], 0, ctx->itemTemp);
 
     return FALSE;
 }
@@ -5579,7 +5579,7 @@ BOOL BtlCmd_TryRecycle(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int adrs = BattleScriptReadWord(ctx);
 
     if (ctx->recycleItem[ctx->battlerIdAttacker]) {
-        ctx->itemWork = ctx->recycleItem[ctx->battlerIdAttacker];
+        ctx->itemTemp = ctx->recycleItem[ctx->battlerIdAttacker];
         ctx->recycleItem[ctx->battlerIdAttacker] = 0;
     } else {
         BattleScriptIncrementPointer(ctx, adrs);
@@ -5928,7 +5928,7 @@ static void *BattleScriptGetVarPointer(BattleSystem *bsys, BATTLECONTEXT *ctx, i
     case 19:
         return &ctx->battlerIdSwitch;
     case 20:
-        return &ctx->battlerIdWork;
+        return &ctx->battlerIdTemp;
     case 21:
         return &ctx->unk_30E4[ctx->battlerIdAttacker];
     case 22:
@@ -5960,7 +5960,7 @@ static void *BattleScriptGetVarPointer(BattleSystem *bsys, BATTLECONTEXT *ctx, i
     case 35:
         return &ctx->moveWork;
     case 36:
-        return &ctx->itemWork;
+        return &ctx->itemTemp;
     case 37:
         return &ctx->abilityWork;
     case 38:
@@ -6020,7 +6020,7 @@ static void *BattleScriptGetVarPointer(BattleSystem *bsys, BATTLECONTEXT *ctx, i
     case 65:
         return &ctx->selfTurnData[ctx->battlerIdTarget].unk4;
     case 66:
-        return &ctx->turnData[ctx->battlerIdWork].unk3C;
+        return &ctx->turnData[ctx->battlerIdTemp].unk3C;
     case 67:
         return &ctx->turnData[ctx->battlerIdTarget].unk3C;
     case 68:

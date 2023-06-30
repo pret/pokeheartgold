@@ -3399,7 +3399,7 @@ BOOL ov12_02253068(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
             } else {
                 ctx->msgWork = 4;
             }
-            ctx->battlerIdWork = battlerId;
+            ctx->battlerIdTemp = battlerId;
             state = 190;
             ret = TRUE;
         }
@@ -3507,7 +3507,7 @@ int TryAbilityOnEntry(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                         ctx->battleMons[battlerId].hp && ctx->battleMons[battlerId].item != ITEM_GRISEOUS_ORB &&
                         ctx->battleMons[ctx->unk_120].hp && GetBattlerAbility(ctx, battlerId) == ABILITY_TRACE) {
                         ctx->battleMons[battlerId].traceFlag = TRUE;
-                        ctx->battlerIdWork = battlerId;
+                        ctx->battlerIdTemp = battlerId;
                         script = 187;
                         flag = TRUE;
                         break;
@@ -3554,7 +3554,7 @@ int TryAbilityOnEntry(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                     }
                 }
                 if (flag == TRUE) {
-                    ctx->battlerIdWork = battlerId;
+                    ctx->battlerIdTemp = battlerId;
                     break;
                 }
             }
@@ -3567,7 +3567,7 @@ int TryAbilityOnEntry(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 battlerId = ctx->turnOrder[i];
                 if (!ctx->battleMons[battlerId].intimidateFlag && ctx->battleMons[battlerId].hp && GetBattlerAbility(ctx, battlerId) == ABILITY_INTIMIDATE) {
                     ctx->battleMons[battlerId].intimidateFlag = TRUE;
-                    ctx->battlerIdWork = battlerId;
+                    ctx->battlerIdTemp = battlerId;
                     script = 186;
                     flag = TRUE;
                     break;
@@ -3638,7 +3638,7 @@ int TryAbilityOnEntry(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                         }
                     }
                     if (flag == TRUE) {
-                        ctx->battlerIdWork = battlerId;
+                        ctx->battlerIdTemp = battlerId;
                         script = 194;
                     }
                     break;
@@ -3707,14 +3707,14 @@ int TryAbilityOnEntry(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                         }
                     }
                     if (powerTemp) {
-                        ctx->battlerIdWork = battlerId;
+                        ctx->battlerIdTemp = battlerId;
                         script = 195;
                         flag = TRUE;
                     } else if (hp) {
                         j = ov12_02253DA0(bsys, ctx, battlerId);
                         index = GetBattlerLearnedMoveCount(bsys, ctx, j);
                         ctx->moveWork = ctx->battleMons[j].moves[BattleSystem_Random(bsys) % index];
-                        ctx->battlerIdWork = battlerId;
+                        ctx->battlerIdTemp = battlerId;
                         script = 195;
                         flag = TRUE;
                     }
@@ -3737,22 +3737,22 @@ int TryAbilityOnEntry(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                         battlerIdTargets[1] = ov12_0223ABB8(bsys, battlerId, 2);
                         
                         if (ctx->battleMons[battlerIdTargets[0]].hp && ctx->battleMons[battlerIdTargets[0]].item && ctx->battleMons[battlerIdTargets[1]].hp && ctx->battleMons[battlerIdTargets[1]].item) {
-                            ctx->itemWork = ctx->battleMons[battlerIdTargets[BattleSystem_Random(bsys) & 1]].item;
+                            ctx->itemTemp = ctx->battleMons[battlerIdTargets[BattleSystem_Random(bsys) & 1]].item;
                             flag = TRUE;
                         } else if (ctx->battleMons[battlerIdTargets[0]].hp && ctx->battleMons[battlerIdTargets[0]].item) {
-                            ctx->itemWork = ctx->battleMons[battlerIdTargets[0]].item;
+                            ctx->itemTemp = ctx->battleMons[battlerIdTargets[0]].item;
                             flag = TRUE;
                         } else if (ctx->battleMons[battlerIdTargets[1]].hp && ctx->battleMons[battlerIdTargets[1]].item) {
-                            ctx->itemWork = ctx->battleMons[battlerIdTargets[1]].item;
+                            ctx->itemTemp = ctx->battleMons[battlerIdTargets[1]].item;
                             flag = TRUE;
                         }
                     } else if (ctx->battleMons[battlerId ^ 1].hp && ctx->battleMons[battlerId ^ 1].item) {
-                        ctx->itemWork = ctx->battleMons[battlerId ^ 1].item;
+                        ctx->itemTemp = ctx->battleMons[battlerId ^ 1].item;
                         flag = TRUE;
                     }
                 } 
                 if (flag == TRUE) {
-                    ctx->battlerIdWork = battlerId;
+                    ctx->battlerIdTemp = battlerId;
                     script = 253;
                     break;
                 }
@@ -3766,14 +3766,14 @@ int TryAbilityOnEntry(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 battlerId = ctx->turnOrder[i];
                 if (!ctx->battleMons[battlerId].slowStartFlag && ctx->battleMons[battlerId].hp && GetBattlerAbility(ctx, battlerId) == ABILITY_SLOW_START && ctx->totalTurns <= ctx->battleMons[battlerId].unk88.slowStartTurns) {
                     ctx->battleMons[battlerId].slowStartFlag = TRUE;
-                    ctx->battlerIdWork = battlerId;
+                    ctx->battlerIdTemp = battlerId;
                     script = 196;
                     flag = TRUE;
                     break;
                 }
                 if (!ctx->battleMons[battlerId].slowStartEnded && ctx->battleMons[battlerId].hp && GetBattlerAbility(ctx, battlerId) == ABILITY_SLOW_START && (ctx->totalTurns - ctx->battleMons[battlerId].unk88.slowStartTurns) == 5) {
                     ctx->battleMons[battlerId].slowStartEnded = TRUE;
-                    ctx->battlerIdWork = battlerId;
+                    ctx->battlerIdTemp = battlerId;
                     script = 197;
                     flag = TRUE;
                     break;
@@ -3788,7 +3788,7 @@ int TryAbilityOnEntry(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 battlerId = ctx->turnOrder[i];
                 if (!ctx->battleMons[battlerId].moldBreakerFlag && ctx->battleMons[battlerId].hp && GetBattlerAbility(ctx, battlerId) == ABILITY_MOLD_BREAKER) {
                     ctx->battleMons[battlerId].moldBreakerFlag = TRUE;
-                    ctx->battlerIdWork = battlerId;
+                    ctx->battlerIdTemp = battlerId;
                     script = 177;
                     flag = TRUE;
                     break;
@@ -3803,7 +3803,7 @@ int TryAbilityOnEntry(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 battlerId = ctx->turnOrder[i];
                 if (!ctx->battleMons[battlerId].pressureFlag && ctx->battleMons[battlerId].hp && GetBattlerAbility(ctx, battlerId) == ABILITY_PRESSURE) {
                     ctx->battleMons[battlerId].pressureFlag = TRUE;
-                    ctx->battlerIdWork = battlerId;
+                    ctx->battlerIdTemp = battlerId;
                     script = 285;
                     flag = TRUE;
                     break;
@@ -3846,7 +3846,7 @@ int TryAbilityOnEntry(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             for (i = 0; i < maxBattlers; i++) {
                 battlerId = ctx->turnOrder[i];
                 if (CheckUseHeldItem(bsys, ctx, battlerId, &script) == TRUE) {
-                    ctx->battlerIdWork = battlerId;
+                    ctx->battlerIdTemp = battlerId;
                     flag = TRUE;
                     break;
                 }
@@ -3911,7 +3911,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script
             (BattleSystem_Random(bsys) % 10 < 3)) {
             ctx->statChangeType = 3;
             ctx->battlerIdStatChange = ctx->battlerIdAttacker;
-            ctx->battlerIdWork = ctx->battlerIdTarget;
+            ctx->battlerIdTemp = ctx->battlerIdTarget;
             *script = 31;
             ret = TRUE;
         }
@@ -3949,7 +3949,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script
             (ctx->selfTurnData[ctx->battlerIdTarget].unk4 || ctx->selfTurnData[ctx->battlerIdTarget].unkC) &&
             (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1)) {
             ctx->hpCalcWork = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp * -1, 8);
-            ctx->battlerIdWork = ctx->battlerIdAttacker;
+            ctx->battlerIdTemp = ctx->battlerIdAttacker;
             *script = 189;
             ret = TRUE;
         }
@@ -3977,7 +3977,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script
             }
             ctx->statChangeType = 3;
             ctx->battlerIdStatChange = ctx->battlerIdAttacker;
-            ctx->battlerIdWork = ctx->battlerIdTarget;
+            ctx->battlerIdTemp = ctx->battlerIdTarget;
             ret = TRUE;
         }
         break;
@@ -3992,7 +3992,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script
             (BattleSystem_Random(bsys) % 10 < 3)) {
             ctx->statChangeType = 3;
             ctx->battlerIdStatChange = ctx->battlerIdAttacker;
-            ctx->battlerIdWork = ctx->battlerIdTarget;
+            ctx->battlerIdTemp = ctx->battlerIdTarget;
             *script = 22;
             ret = TRUE;
         }
@@ -4008,7 +4008,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script
             ((BattleSystem_Random(bsys) % 10) < 3)) {
             ctx->statChangeType = 3;
             ctx->battlerIdStatChange = ctx->battlerIdAttacker;
-            ctx->battlerIdWork = ctx->battlerIdTarget;
+            ctx->battlerIdTemp = ctx->battlerIdTarget;
             *script = 25;
             ret = TRUE;
         }
@@ -4025,7 +4025,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script
             ((BattleSystem_Random(bsys) % 10) < 3)) {
             ctx->statChangeType = 3;
             ctx->battlerIdStatChange = ctx->battlerIdAttacker;
-            ctx->battlerIdWork = ctx->battlerIdTarget;
+            ctx->battlerIdTemp = ctx->battlerIdTarget;
             *script = 106;
             ret = TRUE;
         }
@@ -4039,7 +4039,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script
             !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
             (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1)) {
             ctx->hpCalcWork = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp * -1, 4);
-            ctx->battlerIdWork = ctx->battlerIdAttacker;
+            ctx->battlerIdTemp = ctx->battlerIdAttacker;
             *script = 193;
             ret = TRUE;
         }
@@ -4105,7 +4105,7 @@ BOOL CheckStatusHealAbility(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerI
         break;
     }
     if (ret == TRUE) {
-        ctx->battlerIdWork = battlerId;
+        ctx->battlerIdTemp = battlerId;
         ctx->abilityWork = GetBattlerAbility(ctx, battlerId);
         if (!flag) {
             ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 221);
@@ -4160,23 +4160,23 @@ BOOL TrySyncronizeStatus(BattleSystem *bsys, BATTLECONTEXT *ctx, ControllerComma
         GetBattlerAbility(ctx, ctx->battlerIdTarget) == ABILITY_SYNCHRONIZE &&
         ctx->battlerIdTarget == ctx->battlerIdStatChange &&
         (ctx->linkStatus & 0x80)) {
-        ctx->battlerIdWork = ctx->battlerIdTarget;
+        ctx->battlerIdTemp = ctx->battlerIdTarget;
         ctx->battlerIdStatChange = ctx->battlerIdAttacker;
         ret = TRUE;
     } else if (GetBattlerAbility(ctx, ctx->battlerIdAttacker) == ABILITY_SYNCHRONIZE &&
         ctx->battlerIdAttacker == ctx->battlerIdStatChange &&
         (ctx->linkStatus & 0x80)) {
-        ctx->battlerIdWork = ctx->battlerIdAttacker;
+        ctx->battlerIdTemp = ctx->battlerIdAttacker;
         ctx->battlerIdStatChange = ctx->battlerIdTarget;
         ret = TRUE;
     }
     
     if (ret == TRUE) {
-        if (ctx->battleMons[ctx->battlerIdWork].status & STATUS_POISON_ALL) {
+        if (ctx->battleMons[ctx->battlerIdTemp].status & STATUS_POISON_ALL) {
             script = 22;
-        } else if (ctx->battleMons[ctx->battlerIdWork].status & STATUS_BURN) {
+        } else if (ctx->battleMons[ctx->battlerIdTemp].status & STATUS_BURN) {
             script = 25;
-        } else if (ctx->battleMons[ctx->battlerIdWork].status & STATUS_PARALYSIS) {
+        } else if (ctx->battleMons[ctx->battlerIdTemp].status & STATUS_PARALYSIS) {
             script = 31;
         }
         if (script) {
@@ -4200,13 +4200,13 @@ BOOL TrySyncronizeStatus(BattleSystem *bsys, BATTLECONTEXT *ctx, ControllerComma
         GetBattlerHeldItemEffect(ctx, ctx->battlerIdTarget) == HOLD_EFFECT_RECIPROCATE_INFAT &&
         ctx->battlerIdTarget == ctx->battlerIdStatChange &&
         (ctx->selfTurnData[ctx->battlerIdTarget].unk14 & 4)) {
-        ctx->battlerIdWork = ctx->battlerIdTarget;
+        ctx->battlerIdTemp = ctx->battlerIdTarget;
         ctx->battlerIdStatChange = ctx->battlerIdAttacker;
         ret = TRUE;
     } else if (GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker) == HOLD_EFFECT_RECIPROCATE_INFAT &&
         ctx->battlerIdAttacker == ctx->battlerIdStatChange &&
         (ctx->selfTurnData[ctx->battlerIdAttacker].unk14 & 4)) {
-        ctx->battlerIdWork = ctx->battlerIdAttacker;
+        ctx->battlerIdTemp = ctx->battlerIdAttacker;
         ctx->battlerIdStatChange = ctx->battlerIdTarget;
         ret = TRUE;
     }
@@ -4497,8 +4497,8 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
             break;
         }
         if (ret == TRUE) {
-            ctx->battlerIdWork = battlerId;
-            ctx->itemWork = GetBattlerHeldItem(ctx, battlerId);
+            ctx->battlerIdTemp = battlerId;
+            ctx->itemTemp = GetBattlerHeldItem(ctx, battlerId);
             ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
             ctx->commandNext = ctx->command;
             ctx->command = CONTROLLER_COMMAND_22;
@@ -4541,8 +4541,8 @@ BOOL CheckItemGradualHPRestore(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
             break;
         }
         if (ret == TRUE) {
-            ctx->battlerIdWork = battlerId;
-            ctx->itemWork = GetBattlerHeldItem(ctx, battlerId);
+            ctx->battlerIdTemp = battlerId;
+            ctx->itemTemp = GetBattlerHeldItem(ctx, battlerId);
             ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
             ctx->commandNext = ctx->command;
             ctx->command = CONTROLLER_COMMAND_22;
@@ -4824,7 +4824,7 @@ BOOL CheckUseHeldItem(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u32
             break;
         }
         if (ret == TRUE) {
-            ctx->itemWork = GetBattlerHeldItem(ctx, battlerId);
+            ctx->itemTemp = GetBattlerHeldItem(ctx, battlerId);
         }
     }
     
@@ -4862,8 +4862,8 @@ BOOL TryHeldItemNegativeEffect(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
             break;
         }
         if (ret == TRUE) {
-            ctx->battlerIdWork = battlerId;
-            ctx->itemWork = GetBattlerHeldItem(ctx, battlerId);
+            ctx->battlerIdTemp = battlerId;
+            ctx->itemTemp = GetBattlerHeldItem(ctx, battlerId);
             ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
             ctx->commandNext = ctx->command;
             ctx->command = CONTROLLER_COMMAND_22;
@@ -4940,8 +4940,8 @@ BOOL CheckItemEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script) {
         if (ctx->battleMons[ctx->battlerIdTarget].hp && (ctx->moveStatusFlag & MOVE_STATUS_SUPER_EFFECTIVE)) {
             ctx->hpCalcWork = DamageDivide(ctx->battleMons[ctx->battlerIdTarget].maxHp, boost);
             *script = 198;
-            ctx->battlerIdWork = ctx->battlerIdTarget;
-            ctx->itemWork = ctx->battleMons[ctx->battlerIdTarget].item;
+            ctx->battlerIdTemp = ctx->battlerIdTarget;
+            ctx->itemTemp = ctx->battleMons[ctx->battlerIdTarget].item;
             ret = TRUE;
         }
         break;

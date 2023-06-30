@@ -299,11 +299,11 @@ typedef struct BATTLECONTEXT {
     int unk_EC;
     int unk_F0;
     BATTLEMSG buffMsg;
-    int battlerIdWork;
+    int battlerIdTemp;
     int unk_11C;
     int unk_120;
     int moveWork;
-    int itemWork;
+    int itemTemp;
     int abilityWork;
     int msgWork;
     int calcWork;
