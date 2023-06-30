@@ -5943,8 +5943,8 @@ sBattleScriptCommandTable: ; 0x0226C6C8
 	.word BtlCmd_TrickRoom
 	.word BtlCmd_CheckMoveFinished
 	.word BtlCmd_CheckItemEffect
-	.word BtlCmd_GetItemEffect
 	.word BtlCmd_GetItemHoldEffect
+	.word BtlCmd_GetItemModifier
 	.word BtlCmd_TryCamouflage
 	.word BtlCmd_NaturePower
 	.word BtlCmd_SecretPower

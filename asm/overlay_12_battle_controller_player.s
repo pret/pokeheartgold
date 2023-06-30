@@ -3990,7 +3990,7 @@ _0224A662:
 	add r1, r4, #0
 	add r2, r5, #0
 	add r3, sp, #0x14
-	bl ov12_02254E7C
+	bl CheckUseHeldItem
 	cmp r0, #1
 	bne _0224A68E
 	mov r0, #0x46
@@ -4015,7 +4015,7 @@ _0224A696:
 	ldr r0, [sp, #4]
 	add r1, r4, #0
 	add r2, r5, #0
-	bl ov12_0225551C
+	bl TryHeldItemNegativeEffect
 	cmp r0, #1
 	bne _0224A6A8
 	mov r0, #1
@@ -7180,7 +7180,7 @@ _0224BF20:
 	ldr r1, [sp, #8]
 	add r0, r5, #0
 	mov r2, #0
-	bl BattleSystem_GetHeldItemDamageBoost
+	bl GetHeldItemModifier
 	cmp r7, #0x30
 	bne _0224BF46
 	mov r1, #0x64
@@ -7197,7 +7197,7 @@ _0224BF46:
 	add r0, r5, #0
 	add r1, r6, #0
 	mov r2, #0
-	bl BattleSystem_GetHeldItemDamageBoost
+	bl GetHeldItemModifier
 	add r6, r0, #0
 	cmp r7, #0x5d
 	bne _0224BF6E
@@ -8188,7 +8188,7 @@ _0224C6C2:
 	ldr r1, [r4, #0x6c]
 	add r0, r4, #0
 	mov r2, #0
-	bl BattleSystem_GetHeldItemDamageBoost
+	bl GetHeldItemModifier
 	str r0, [sp]
 	ldr r0, _0224C9C4 ; =0x00002144
 	ldr r0, [r4, r0]
@@ -9193,7 +9193,7 @@ _0224CE84:
 	add r1, r4, #0
 	add r2, r7, #0
 	add r3, sp, #8
-	bl ov12_02254E7C
+	bl CheckUseHeldItem
 	cmp r0, #1
 	bne _0224CEB6
 	mov r0, #0x46
@@ -11539,7 +11539,7 @@ ov12_0224E078: ; 0x0224E078
 	ldr r1, [r5, #0x64]
 	add r0, r5, #0
 	add r2, r4, #0
-	bl BattleSystem_GetHeldItemDamageBoost
+	bl GetHeldItemModifier
 	add r6, r0, #0
 	ldr r0, [r5, #0x6c]
 	cmp r0, #0xff
@@ -11700,7 +11700,7 @@ ov12_0224E1BC: ; 0x0224E1BC
 	ldr r1, [r4, #0x64]
 	add r0, r4, #0
 	add r2, r6, #0
-	bl BattleSystem_GetHeldItemDamageBoost
+	bl GetHeldItemModifier
 	ldr r1, [r4, #8]
 	str r0, [sp]
 	add r0, r4, #0
