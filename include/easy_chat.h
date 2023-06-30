@@ -22,7 +22,7 @@ struct WallpaperPasswordBank {
     u32 *words;
 };
 
-SAVE_EASY_CHAT_T *SaveData_EasyChat_Get(SaveData *saveData);
+SAVE_EASY_CHAT_T *Save_EasyChat_Get(SaveData *saveData);
 u16 GetECWordIndexByPair(u32 msgBank, u32 word);
 u16 EasyChat_GetMsgBankForGroup(int category);
 void GetECWordIntoStringByIndex(u16 ecWord, String *dest);

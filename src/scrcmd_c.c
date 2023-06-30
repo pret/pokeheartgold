@@ -2687,7 +2687,7 @@ BOOL ScrCmd_264(ScriptContext *ctx) {
     MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u16 r4 = ScriptReadHalfword(ctx);
     PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(ctx->fsys));
-    SAVE_EASY_CHAT_T *easyChat = SaveData_EasyChat_Get(FieldSystem_GetSaveDataPtr(ctx->fsys));
+    SAVE_EASY_CHAT_T *easyChat = Save_EasyChat_Get(FieldSystem_GetSaveDataPtr(ctx->fsys));
     u16 objId;
 
     if (r4 == 0) {
@@ -3865,7 +3865,7 @@ BOOL ScrCmd_538(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     u16 wordIdx = ScriptGetVar(ctx);
     MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
-    int trendy = Save_EasyChat_RandomTrendySayingSet(SaveData_EasyChat_Get(ctx->fsys->savedata));
+    int trendy = Save_EasyChat_RandomTrendySayingSet(Save_EasyChat_Get(ctx->fsys->savedata));
     if (trendy == 32) {
         *p_ret = 0xFFFF;
         return FALSE;
@@ -3877,7 +3877,7 @@ BOOL ScrCmd_538(ScriptContext *ctx) {
 
 BOOL ScrCmd_540(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = Save_EasyChat_TrendySayingsUnlockedAllCheck(SaveData_EasyChat_Get(ctx->fsys->savedata)) == TRUE;
+    *p_ret = Save_EasyChat_TrendySayingsUnlockedAllCheck(Save_EasyChat_Get(ctx->fsys->savedata)) == TRUE;
     return FALSE;
 }
 

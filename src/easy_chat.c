@@ -187,7 +187,7 @@ void Save_EasyChat_Init(SAVE_EASY_CHAT_T *ec) {
     SaveSubstruct_UpdateCRC(SAVE_EASY_CHAT);
 }
 
-SAVE_EASY_CHAT_T *SaveData_EasyChat_Get(SaveData *saveData) {
+SAVE_EASY_CHAT_T *Save_EasyChat_Get(SaveData *saveData) {
     SaveSubstruct_AssertCRC(SAVE_EASY_CHAT);
     return SaveArray_Get(saveData, SAVE_EASY_CHAT);
 }
