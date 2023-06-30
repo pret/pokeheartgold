@@ -1,47 +1,44 @@
+#include "global.h"
 #include "ascii_util.h"
 
-int Ascii_StrLen(const char *s) {
-    int i=0;
-    while(s[i] != 0){
+s32 Ascii_StrLen(const s8 *str) {
+    s32 i = 0;
+    while (str[i] != 0) {
         i++;
     }
     return i;
 }
 
-const char *Ascii_GetDelim(const char *s, char *d, int c) {
-    int i;
-
-    for (i = 0; i < 256; i++) {
-        d[i] = s[i];
-        if (s[i] == c || s[i] == 0) {
-            d[i] = 0;
-            if (c == '\r' && s[i + 1] == '\n') {
-                return &s[i + 2];
-            } else {
-                return &s[i + 1];
+const s8 *Ascii_GetDelim(const s8 *src, s8 *dst, s32 c) {
+    for (int i = 0; i < 256; i++) {
+        dst[i] = src[i];
+        if (src[i] == c || src[i] == 0) {
+            dst[i] = 0;
+            if (c == '\r' && src[i + 1] == '\n') {
+                return &src[i + 2];
             }
+            return &src[i + 1];
         }
     }
 
     return NULL;
 }
 
-int Ascii_StrToL(const char *s) {
-    int length, i, pow10, num;
-    length = Ascii_StrLen(s);
-
-    pow10 = 1;
-    num = 0;
+s32 Ascii_StrToL(const s8 *str) {
+    s32 length = Ascii_StrLen(str);
+    s32 i;
+    s32 pow10 = 1;
+    s32 num = 0;
 
     // Traverse from right to left
     for (i = length - 1; i >= 0; i--) {
-        if (s[i] >= '0' && s[i] <= '9') {
+        if (str[i] >= '0' && str[i] <= '9') {
             // Numeric digit
-            num += pow10 * (s[i] - '0');
+            num += pow10 * (str[i] - '0');
         } else {
             // If first character is a minus sign, it's negative
             if (i == 0) {
-                if (s[i] == '-') {
+                if (str[i] == '-') {
                     num *= -1;
                 }
             } else {
@@ -57,17 +54,15 @@ int Ascii_StrToL(const char *s) {
     return num;
 }
 
-void sub_02020B3C(NNSG3dResName *resName, const char *input) {
+void sub_02020B3C(NNSG3dResName *resName, const s8 *input) {
     // memset(resName, 0, NNS_G3D_RESNAME_SIZE);
     // strncpy(resName->name, input, NNS_G3D_RESNAME_SIZE);
 
-    u8 length, i;
-
-    for (i = 0; i < NNS_G3D_RESNAME_VALSIZE; i++) {
+    for (u8 i = 0; i < NNS_G3D_RESNAME_VALSIZE; i++) {
         resName->val[i] = 0;
     }
-    length = Ascii_StrLen(input);
-    for (i = 0; i < length; i++) {
+    u8 length = Ascii_StrLen(input);
+    for (u8 i = 0; i < length; i++) {
         resName->name[i] = input[i];
     }
 }
