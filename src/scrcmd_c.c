@@ -3780,7 +3780,7 @@ BOOL ScrCmd_524(ScriptContext *ctx) {
 
 BOOL ScrCmd_525(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = Save_PlayerHasRegiInParty(ctx->fsys->savedata);
+    *p_ret = Save_PlayerHasAllRegisInParty(ctx->fsys->savedata);
     return FALSE;
 }
 
