@@ -950,4 +950,13 @@
 #define ITEM_MIN                1
 #define ITEM_MAX  ITEMS_COUNT - 1
 
+//Item Variables
+#define ITEM_VAR_HOLD_EFFECT            1
+#define ITEM_VAR_MODIFIER               2 //general variable for HP thresholds, damage increase percentages, etc
+#define ITEM_VAR_8                      8
+#define ITEM_VAR_9                      9
+#define ITEM_VAR_10                    10
+#define ITEM_NATURAL_GIFT_POWER        11
+#define ITEM_NATURAL_GIFT_TYPE         12
+
 #endif //POKEHEARTGOLD_CONSTANTS_ITEMS_H

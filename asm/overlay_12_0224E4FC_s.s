@@ -13,30 +13,8 @@
     .public CheckMoveEffectOnField
     .public ov12_022558B8
     .public ov12_022558D0
+    .public ov12_022558F8
     
-	thumb_func_start ov12_022558F8
-ov12_022558F8: ; 0x022558F8
-	push {r3, lr}
-	mov r2, #0xc0
-	mul r2, r1
-	ldr r1, _0225591C ; =0x00002DCC
-	add r3, r0, r2
-	ldr r2, [r3, r1]
-	lsl r2, r2, #0xa
-	lsr r2, r2, #0x1d
-	beq _0225590E
-	mov r0, #0
-	pop {r3, pc}
-_0225590E:
-	sub r1, #0x14
-	ldrh r1, [r3, r1]
-	mov r2, #0xa
-	bl GetItemHoldEffect
-	pop {r3, pc}
-	nop
-_0225591C: .word 0x00002DCC
-	thumb_func_end ov12_022558F8
-
 	thumb_func_start ov12_02255920
 ov12_02255920: ; 0x02255920
 	push {r3, r4, r5, r6, r7, lr}
@@ -188,7 +166,7 @@ CanEatOpponentBerry: ; 0x02255A2C
 	ldr r1, [sp, #4]
 	add r0, r4, #0
 	mov r2, #1
-	bl BattleSystem_GetHeldItemDamageBoost
+	bl GetHeldItemModifier
 	str r0, [sp, #0x10]
 	ldr r1, [r4, #0x6c]
 	add r0, r4, #0
@@ -904,7 +882,7 @@ CanFling: ; 0x02255F7C
 	ldr r1, [sp, #4]
 	add r0, r4, #0
 	mov r2, #2
-	bl BattleSystem_GetHeldItemDamageBoost
+	bl GetHeldItemModifier
 	str r0, [sp, #0x10]
 	ldr r1, [sp, #4]
 	add r0, r4, #0
@@ -3253,12 +3231,12 @@ _0225701C:
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #1
-	bl GetItemHoldEffect
+	bl GetItemVar
 	str r0, [sp, #0x30]
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #2
-	bl GetItemHoldEffect
+	bl GetItemVar
 	str r0, [sp, #0x2c]
 	ldr r1, [sp, #0x20]
 	add r0, r5, #0
@@ -3267,12 +3245,12 @@ _0225701C:
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #1
-	bl GetItemHoldEffect
+	bl GetItemVar
 	str r0, [sp, #0x28]
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #2
-	bl GetItemHoldEffect
+	bl GetItemVar
 	ldr r0, [sp, #4]
 	bl BattleSystem_GetBattleType
 	str r0, [sp, #0x5c]
@@ -4620,7 +4598,7 @@ ov12_02257C5C: ; 0x02257C5C
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #1
-	bl GetItemHoldEffect
+	bl GetItemVar
 	mov r3, #0xb5
 	lsl r3, r3, #6
 	add r2, r3, #0
@@ -4906,8 +4884,8 @@ _02257E6C: .word 0x000003DE
 _02257E70: .word ov12_0226CB70
 	thumb_func_end CheckLegalMeFirstMove
 
-	thumb_func_start GetItemHoldEffect
-GetItemHoldEffect: ; 0x02257E74
+	thumb_func_start GetItemVar
+GetItemVar: ; 0x02257E74
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, r1, #0
@@ -4923,7 +4901,7 @@ GetItemHoldEffect: ; 0x02257E74
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02257E94: .word 0x00002120
-	thumb_func_end GetItemHoldEffect
+	thumb_func_end GetItemVar
 
 	thumb_func_start ov12_02257E98
 ov12_02257E98: ; 0x02257E98
@@ -5090,7 +5068,7 @@ CheckItemEffectOnUTurn: ; 0x02257FA0
 	ldr r1, [r5, #0x64]
 	add r0, r5, #0
 	add r2, r6, #0
-	bl BattleSystem_GetHeldItemDamageBoost
+	bl GetHeldItemModifier
 	str r0, [sp, #0x10]
 	ldr r1, [r5, #0x6c]
 	add r0, r5, #0
@@ -5099,7 +5077,7 @@ CheckItemEffectOnUTurn: ; 0x02257FA0
 	ldr r1, [r5, #0x6c]
 	add r0, r5, #0
 	add r2, r6, #0
-	bl BattleSystem_GetHeldItemDamageBoost
+	bl GetHeldItemModifier
 	str r0, [sp, #8]
 	ldr r0, [sp]
 	ldr r1, [r5, #0x64]
@@ -5807,7 +5785,7 @@ _022584D6:
 	ldrh r1, [r1, r2]
 	add r0, r5, #0
 	mov r2, #1
-	bl GetItemHoldEffect
+	bl GetItemVar
 	sub r0, #0x7e
 	cmp r0, #0xf
 	bhi _02258570

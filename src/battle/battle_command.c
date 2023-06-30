@@ -718,7 +718,7 @@ static void DamageCalcDefault(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     ctx->damage *= ctx->criticalMultiplier;
 
     if (GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker) == HOLD_EFFECT_HP_DRAIN_ON_ATK) {
-        ctx->damage = ctx->damage * (100 + BattleSystem_GetHeldItemDamageBoost(ctx, ctx->battlerIdAttacker, 0))/100;
+        ctx->damage = ctx->damage * (100 + GetHeldItemModifier(ctx, ctx->battlerIdAttacker, 0))/100;
     }
 
     if (GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker) == HOLD_EFFECT_BOOST_REPEATED) {
@@ -1199,7 +1199,7 @@ BOOL BtlCmd_ShouldGetExp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                     expMonsCnt++;
                 }
                 itemNo = GetMonData(mon, MON_DATA_HELD_ITEM, 0);
-                if (GetItemHoldEffect(ctx, itemNo, 1) == HOLD_EFFECT_EXP_SHARE) {
+                if (GetItemVar(ctx, itemNo, ITEM_VAR_HOLD_EFFECT) == HOLD_EFFECT_EXP_SHARE) {
                     expShareMonsCnt++;
                 }
             }
@@ -2484,7 +2484,7 @@ BOOL BtlCmd_TryLightScreen(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ctx->fieldSideConditionData[unkA].lightScreenTurns = 5;
         ctx->fieldSideConditionData[unkA].lightScreenBattler = ctx->battlerIdAttacker;
         if (GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker) == HOLD_EFFECT_EXTEND_SCREENS) {
-            ctx->fieldSideConditionData[unkA].lightScreenTurns += BattleSystem_GetHeldItemDamageBoost(ctx, ctx->battlerIdAttacker, 0);
+            ctx->fieldSideConditionData[unkA].lightScreenTurns += GetHeldItemModifier(ctx, ctx->battlerIdAttacker, 0);
         }
         ctx->buffMsg.tag = 20;
         ctx->buffMsg.param[0] = ctx->moveNoCur;
@@ -2513,7 +2513,7 @@ BOOL BtlCmd_TryReflect(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ctx->fieldSideConditionData[unkA].reflectTurns = 5;
         ctx->fieldSideConditionData[unkA].reflectBattler = ctx->battlerIdAttacker;
         if (GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker) == HOLD_EFFECT_EXTEND_SCREENS) {
-            ctx->fieldSideConditionData[unkA].reflectTurns += BattleSystem_GetHeldItemDamageBoost(ctx, ctx->battlerIdAttacker, 0);
+            ctx->fieldSideConditionData[unkA].reflectTurns += GetHeldItemModifier(ctx, ctx->battlerIdAttacker, 0);
         }
         ctx->buffMsg.tag = 20;
         ctx->buffMsg.param[0] = ctx->moveNoCur;
@@ -4356,7 +4356,7 @@ BOOL BtlCmd_TryPursuit(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         BattleScriptIncrementPointer(ctx, adrs);
     } else {
         int itemEffect = GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker);
-        BattleSystem_GetHeldItemDamageBoost(ctx, ctx->battlerIdAttacker, 0);
+        GetHeldItemModifier(ctx, ctx->battlerIdAttacker, 0);
 
         if (itemEffect == HOLD_EFFECT_CHOICE_ATK || itemEffect == HOLD_EFFECT_CHOICE_SPEED || itemEffect == HOLD_EFFECT_CHOICE_SPATK) {
             ctx->battleMons[ctx->battlerIdAttacker].unk88.moveNoChoice = moveNo;
@@ -4945,28 +4945,28 @@ BOOL BtlCmd_CheckItemEffect(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_GetItemEffect(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_GetItemHoldEffect(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
     int varId = BattleScriptReadWord(ctx);
-    int *var = BattleScriptGetVarPointer(bsys, ctx, varId);
+    int *holdEffect = BattleScriptGetVarPointer(bsys, ctx, varId);
     int battlerId = GetBattlerIDBySide(bsys, ctx, side);
 
     u16 item = GetBattlerHeldItem(ctx, battlerId);
-    *var = GetItemHoldEffect(ctx, item, 1);
+    *holdEffect = GetItemVar(ctx, item, ITEM_VAR_HOLD_EFFECT);
 
     return FALSE;
 }
 
-BOOL BtlCmd_GetItemHoldEffect(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_GetItemModifier(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
     int varId = BattleScriptReadWord(ctx);
     int *var = BattleScriptGetVarPointer(bsys, ctx, varId);
     u16 item = GetBattlerHeldItem(ctx, GetBattlerIDBySide(bsys, ctx, side));
-    *var = GetItemHoldEffect(ctx, item, 2);
+    *var = GetItemVar(ctx, item, ITEM_VAR_MODIFIER);
 
     return FALSE;
 }
@@ -5632,7 +5632,7 @@ BOOL BtlCmd_CheckHoldOnWith1HP(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int battlerId = GetBattlerIDBySide(bsys, ctx, side);
     int itemEffect = GetBattlerHeldItemEffect(ctx, battlerId);
-    int activationChance = BattleSystem_GetHeldItemDamageBoost(ctx, battlerId, 0);
+    int activationChance = GetHeldItemModifier(ctx, battlerId, 0);
 
     if (itemEffect == HOLD_EFFECT_MAYBE_ENDURE && (BattleSystem_Random(bsys)%100) < activationChance) {
         flag = TRUE;

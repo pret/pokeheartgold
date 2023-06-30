@@ -323,8 +323,8 @@
 .public BtlCmd_TrickRoom
 .public BtlCmd_CheckMoveFinished
 .public BtlCmd_CheckItemEffect
-.public BtlCmd_GetItemEffect
 .public BtlCmd_GetItemHoldEffect
+.public BtlCmd_GetItemModifier
 .public BtlCmd_TryCamouflage
 .public BtlCmd_NaturePower
 .public BtlCmd_SecretPower

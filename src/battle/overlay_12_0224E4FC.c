@@ -993,9 +993,9 @@ u8 CheckSortSpeed(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int ba
     ability2 = GetBattlerAbility(ctx, battlerId2);
     
     heldItem1 = GetBattlerHeldItemEffect(ctx, battlerId1);
-    extra1 = BattleSystem_GetHeldItemDamageBoost(ctx, battlerId1, 0);
+    extra1 = GetHeldItemModifier(ctx, battlerId1, 0);
     heldItem2 = GetBattlerHeldItemEffect(ctx, battlerId2);
-    extra2 = BattleSystem_GetHeldItemDamageBoost(ctx, battlerId2, 0);
+    extra2 = GetHeldItemModifier(ctx, battlerId2, 0);
     
     speedStatChange1 = ctx->battleMons[battlerId1].statChanges[3];
     speedStatChange2 = ctx->battleMons[battlerId2].statChanges[3];
@@ -1034,7 +1034,7 @@ u8 CheckSortSpeed(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int ba
     }
     
     for (i = 0; i < NELEMS(sSpeedHalvingItemEffects); i++) {
-        if (GetItemHoldEffect(ctx, ctx->battleMons[battlerId1].item, 1) == sSpeedHalvingItemEffects[i]) {
+        if (GetItemVar(ctx, ctx->battleMons[battlerId1].item, ITEM_VAR_HOLD_EFFECT) == sSpeedHalvingItemEffects[i]) {
             speed1 /= 2;
             break;
         }
@@ -1093,7 +1093,7 @@ u8 CheckSortSpeed(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int ba
     }
     
     for (i = 0; i < NELEMS(sSpeedHalvingItemEffects); i++) {
-        if (GetItemHoldEffect(ctx, ctx->battleMons[battlerId2].item, 1) == sSpeedHalvingItemEffects[i]) {
+        if (GetItemVar(ctx, ctx->battleMons[battlerId2].item, ITEM_VAR_HOLD_EFFECT) == sSpeedHalvingItemEffects[i]) {
             speed2 /= 2;
             break;
         }
@@ -2127,9 +2127,9 @@ int ov12_02251D28(BattleSystem *bsys, BATTLECONTEXT *ctx, int moveNo, int moveTy
     }
     
     itemAttacker = GetBattlerHeldItemEffect(ctx, battlerIdAttacker);
-    extraAttacker = BattleSystem_GetHeldItemDamageBoost(ctx, battlerIdAttacker, 0);
+    extraAttacker = GetHeldItemModifier(ctx, battlerIdAttacker, 0);
     itemTarget = GetBattlerHeldItemEffect(ctx,  battlerIdTarget);
-    extraTarget = BattleSystem_GetHeldItemDamageBoost(ctx, battlerIdTarget, 0);
+    extraTarget = GetHeldItemModifier(ctx, battlerIdTarget, 0);
     
     if (GetBattlerAbility(ctx, battlerIdAttacker) == ABILITY_NORMALIZE) {
         moveType = TYPE_NORMAL;
@@ -2233,7 +2233,7 @@ _02251D4A:
     add r0, r5, #0
     add r1, r7, #0
     mov r2, #0
-    bl BattleSystem_GetHeldItemDamageBoost
+    bl GetHeldItemModifier
     lsl r0, r0, #0x18
     lsr r0, r0, #0x18
     str r0, [sp, #0x1c]
@@ -2246,7 +2246,7 @@ _02251D4A:
     add r0, r5, #0
     add r1, r6, #0
     mov r2, #0
-    bl BattleSystem_GetHeldItemDamageBoost
+    bl GetHeldItemModifier
     add r0, r5, #0
     add r1, r7, #0
     bl GetBattlerAbility
@@ -3823,7 +3823,7 @@ int TryAbilityOnEntry(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         case 12: //Amulet coin
             for (i = 0; i < maxBattlers; i++) {
                 battlerId = ctx->turnOrder[i];
-                if (GetItemHoldEffect(ctx, ctx->battleMons[battlerId].item, 1) == HOLD_EFFECT_MONEY_UP) {
+                if (GetItemVar(ctx, ctx->battleMons[battlerId].item, ITEM_VAR_HOLD_EFFECT) == HOLD_EFFECT_MONEY_UP) {
                     ctx->prizeMoneyValue = 2;
                 }
             }
@@ -4230,7 +4230,7 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     int boost;
     
     item = GetBattlerHeldItemEffect(ctx, battlerId);
-    boost = BattleSystem_GetHeldItemDamageBoost(ctx, battlerId, 0);
+    boost = GetHeldItemModifier(ctx, battlerId, 0);
     
     if (ctx->battleMons[battlerId].hp) {
         switch (item) {
@@ -4513,7 +4513,7 @@ BOOL CheckItemGradualHPRestore(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
     int item;
     
     item = GetBattlerHeldItemEffect(ctx, battlerId);
-    BattleSystem_GetHeldItemDamageBoost(ctx, battlerId, 0);
+    GetHeldItemModifier(ctx, battlerId, 0);
     
     if (ctx->battleMons[battlerId].hp) {
         switch (item) {
@@ -4557,7 +4557,7 @@ BOOL CheckUseHeldItem(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u32
     int boost;
     
     item = GetBattlerHeldItemEffect(ctx, battlerId);
-    boost = BattleSystem_GetHeldItemDamageBoost(ctx, battlerId, 0);
+    boost = GetHeldItemModifier(ctx, battlerId, 0);
     
     if (ctx->battleMons[battlerId].hp) {
         switch (item) {
@@ -4835,7 +4835,7 @@ BOOL TryHeldItemNegativeEffect(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
     BOOL ret = FALSE;
     int script;
     int item = GetBattlerHeldItemEffect(ctx, battlerId);
-    int boost = BattleSystem_GetHeldItemDamageBoost(ctx, battlerId, 0);
+    int boost = GetHeldItemModifier(ctx, battlerId, 0);
     
     if (ctx->battleMons[battlerId].hp) {
         switch (item) {
@@ -4901,7 +4901,7 @@ BOOL CheckItemEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script) {
     }
     
     item = GetBattlerHeldItemEffect(ctx, ctx->battlerIdTarget);
-    boost = BattleSystem_GetHeldItemDamageBoost(ctx, ctx->battlerIdTarget, 0);
+    boost = GetHeldItemModifier(ctx, ctx->battlerIdTarget, 0);
     side = BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker);
     
     switch (item) {
@@ -4954,10 +4954,10 @@ BOOL CheckItemEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script) {
 
 int GetBattlerHeldItemEffect(BATTLECONTEXT *ctx, int battlerId) {
     u16 itemNo = GetBattlerHeldItem(ctx, battlerId);
-    return GetItemHoldEffect(ctx, itemNo, 1);
+    return GetItemVar(ctx, itemNo, ITEM_VAR_HOLD_EFFECT);
 }
 
-int BattleSystem_GetHeldItemDamageBoost(BATTLECONTEXT *ctx, int battlerId, int flag) {
+int GetHeldItemModifier(BATTLECONTEXT *ctx, int battlerId, int flag) {
     u16 itemNo;
     
     switch (flag) {
@@ -4973,22 +4973,22 @@ int BattleSystem_GetHeldItemDamageBoost(BATTLECONTEXT *ctx, int battlerId, int f
         break;
     }
     
-    return GetItemHoldEffect(ctx, itemNo, 2);
+    return GetItemVar(ctx, itemNo, ITEM_VAR_MODIFIER);
 }
 
 int GetNaturalGiftPower(BATTLECONTEXT *ctx, int battlerId) {
     u16 itemNo = GetBattlerHeldItem(ctx, battlerId);
-    return GetItemHoldEffect(ctx, itemNo, 11);
+    return GetItemVar(ctx, itemNo, ITEM_NATURAL_GIFT_POWER);
 }
 
 int GetNaturalGiftType(BATTLECONTEXT *ctx, int battlerId) {
     u16 itemNo = GetBattlerHeldItem(ctx, battlerId);
-    return GetItemHoldEffect(ctx, itemNo, 12);
+    return GetItemVar(ctx, itemNo, ITEM_NATURAL_GIFT_TYPE);
 }
 
 int ov12_022558B8(BATTLECONTEXT *ctx, int battlerId) {
     u16 itemNo = ctx->battleMons[battlerId].item;
-    return GetItemHoldEffect(ctx, itemNo, 8);
+    return GetItemVar(ctx, itemNo, ITEM_VAR_8);
 }
 
 int ov12_022558D0(BATTLECONTEXT *ctx, int battlerId) {
@@ -4996,5 +4996,13 @@ int ov12_022558D0(BATTLECONTEXT *ctx, int battlerId) {
         return 0;
     }
     
-    return GetItemHoldEffect(ctx, ctx->battleMons[battlerId].item, 9);
+    return GetItemVar(ctx, ctx->battleMons[battlerId].item, ITEM_VAR_9);
+}
+
+int ov12_022558F8(BATTLECONTEXT *ctx, int battlerId) {
+    if (ctx->battleMons[battlerId].unk88.embargoFlag) {
+        return 0;
+    }
+    
+    return GetItemVar(ctx, ctx->battleMons[battlerId].item, ITEM_VAR_10);
 }

@@ -37,6 +37,6 @@
 .public GetNaturalGiftType
 .public ov12_022558F8
 .public CalcMoveDamage
-.public GetItemHoldEffect
+.public GetItemVar
 .public ov12_02258800
 .public ov12_02258BB4

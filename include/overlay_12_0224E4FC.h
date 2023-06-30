@@ -84,11 +84,12 @@ u16 GetBattlerHeldItem(BATTLECONTEXT *ctx, int battlerId);
 BOOL ov12_0225561C(BATTLECONTEXT *ctx, int battlerId);
 BOOL CheckItemEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script);
 int GetBattlerHeldItemEffect(BATTLECONTEXT *ctx, int battlerId);
-int BattleSystem_GetHeldItemDamageBoost(BATTLECONTEXT *ctx, int battlerId, int flag);
+int GetHeldItemModifier(BATTLECONTEXT *ctx, int battlerId, int flag);
 int GetNaturalGiftPower(BATTLECONTEXT *ctx, int battlerId);
 int GetNaturalGiftType(BATTLECONTEXT *ctx, int battlerId);
 int ov12_022558B8(BATTLECONTEXT *ctx, int battlerId);
 int ov12_022558D0(BATTLECONTEXT *ctx, int battlerId);
+int ov12_022558F8(BATTLECONTEXT *ctx, int battlerId);
 
 //The following functions are static, but the rest of the file is still being worked on
 BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int index);
@@ -112,7 +113,7 @@ u32 BattleSystem_GetBattleType(BattleSystem *bsys);
 u32 BattleSystem_GetBattleFlags(BattleSystem *bsys);
 u32 ov12_02257C5C(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int critCnt, u32 a5);
 u32 ov12_022581D4(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 a2, int battlerId);
-u32 GetItemHoldEffect(BATTLECONTEXT *ctx, int item, u32 a3);
+u32 GetItemVar(BATTLECONTEXT *ctx, int item, u32 a3);
 u32 ov12_0223C24C(PARTY *party, u32 *a1);
 BOOL CheckStatusEffectsSubstitute(BATTLECONTEXT *ctx, int battlerId, u32 status);
 int ov12_0223AB0C(BattleSystem *bsys, int battlerId);

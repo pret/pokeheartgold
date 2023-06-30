@@ -4195,7 +4195,7 @@ ov10_0221DE24: ; 0x0221DE24
 	ldrh r1, [r2, r1]
 	add r0, r4, #0
 	mov r2, #1
-	bl GetItemHoldEffect
+	bl GetItemVar
 	mov r1, #0xd7
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -4208,7 +4208,7 @@ _0221DE64:
 	add r0, r4, #0
 	ldrh r1, [r2, r1]
 	mov r2, #1
-	bl GetItemHoldEffect
+	bl GetItemVar
 	mov r1, #0xd7
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -6696,13 +6696,13 @@ _0221F132:
 	ldr r1, [sp, #0x1c]
 	add r0, r6, #0
 	mov r2, #0xb
-	bl GetItemHoldEffect
+	bl GetItemVar
 	add r4, r0, #0
 	beq _0221F166
 	ldr r1, [sp, #0x1c]
 	add r0, r6, #0
 	mov r2, #0xc
-	bl GetItemHoldEffect
+	bl GetItemVar
 	add r7, r0, #0
 	b _0221F3B4
 _0221F15A:
@@ -6718,7 +6718,7 @@ _0221F168:
 	ldr r1, [sp, #0x1c]
 	add r0, r6, #0
 	mov r2, #1
-	bl GetItemHoldEffect
+	bl GetItemVar
 	sub r0, #0x7e
 	cmp r0, #0xf
 	bhi _0221F1E4
@@ -8771,7 +8771,7 @@ _02220104:
 	add r0, r5, #0
 	lsr r1, r1, #0x10
 	mov r2, #1
-	bl GetItemHoldEffect
+	bl GetItemVar
 	str r0, [sp, #0x44]
 	add r0, r6, #0
 	mov r1, #0xb1
@@ -9595,13 +9595,13 @@ _022207BC:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x26
-	bl GetItemHoldEffect
+	bl GetItemVar
 	cmp r0, #0
 	beq _022207FE
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x36
-	bl GetItemHoldEffect
+	bl GetItemVar
 	lsl r0, r0, #0x18
 	lsr r2, r0, #0x18
 	beq _02220816
@@ -9628,7 +9628,7 @@ _022207FE:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0xf
-	bl GetItemHoldEffect
+	bl GetItemVar
 	cmp r0, #0
 	beq _02220834
 	ldr r0, _022209DC ; =0x00002DAC
@@ -9656,7 +9656,7 @@ _02220834:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x10
-	bl GetItemHoldEffect
+	bl GetItemVar
 	cmp r0, #0
 	beq _0222086E
 	ldr r0, _022209DC ; =0x00002DAC
@@ -9685,7 +9685,7 @@ _0222086E:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x11
-	bl GetItemHoldEffect
+	bl GetItemVar
 	cmp r0, #0
 	beq _022208A2
 	ldr r0, _022209DC ; =0x00002DAC
@@ -9710,7 +9710,7 @@ _022208A2:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x12
-	bl GetItemHoldEffect
+	bl GetItemVar
 	cmp r0, #0
 	beq _022208D6
 	ldr r0, _022209DC ; =0x00002DAC
@@ -9735,7 +9735,7 @@ _022208D6:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x13
-	bl GetItemHoldEffect
+	bl GetItemVar
 	cmp r0, #0
 	beq _0222090A
 	ldr r0, _022209DC ; =0x00002DAC
@@ -9760,7 +9760,7 @@ _0222090A:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x14
-	bl GetItemHoldEffect
+	bl GetItemVar
 	cmp r0, #0
 	beq _02220940
 	ldr r0, _022209E0 ; =0x00002DB0
@@ -9797,7 +9797,7 @@ _02220950:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x1b
-	bl GetItemHoldEffect
+	bl GetItemVar
 	cmp r0, #0
 	beq _02220970
 	ldr r0, _022209C4 ; =0x000003D3
@@ -9813,7 +9813,7 @@ _02220970:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x1c
-	bl GetItemHoldEffect
+	bl GetItemVar
 	cmp r0, #0
 	beq _02220990
 	ldr r0, _022209C4 ; =0x000003D3
@@ -9829,7 +9829,7 @@ _02220990:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x1d
-	bl GetItemHoldEffect
+	bl GetItemVar
 	cmp r0, #0
 	beq _022209B0
 	ldr r0, _022209C4 ; =0x000003D3
@@ -9845,7 +9845,7 @@ _022209B0:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x1e
-	bl GetItemHoldEffect
+	bl GetItemVar
 	cmp r0, #0
 	beq _022209F8
 	ldr r0, _022209C4 ; =0x000003D3
@@ -9873,7 +9873,7 @@ _022209F8:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x1f
-	bl GetItemHoldEffect
+	bl GetItemVar
 	cmp r0, #0
 	beq _02220A16
 	ldr r0, _02220AA0 ; =0x000003D3
@@ -9888,7 +9888,7 @@ _02220A16:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x20
-	bl GetItemHoldEffect
+	bl GetItemVar
 	cmp r0, #0
 	beq _02220A36
 	ldr r0, _02220AA0 ; =0x000003D3
@@ -9904,7 +9904,7 @@ _02220A36:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x16
-	bl GetItemHoldEffect
+	bl GetItemVar
 	cmp r0, #0
 	beq _02220A62
 	mov r0, #7
