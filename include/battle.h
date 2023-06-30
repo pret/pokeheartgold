@@ -161,7 +161,7 @@ typedef struct UnkBattlemonSub {
     u32 lastResortCount:3;
     u32 magnetRiseTurns:3;
     u32 healBlockTurns:3;
-    u32 unk4_13:3;
+    u32 embargoFlag:3;
     u32 knockOffFlag:1; //unclear whether true mean knocked off or not knocked off based on current information on its usage
     u32 metronomeTurns:4; //refers to the item, not the move
     u32 unk4_2B:1; //might be related to choice band/specs
@@ -299,15 +299,15 @@ typedef struct BATTLECONTEXT {
     int unk_EC;
     int unk_F0;
     BATTLEMSG buffMsg;
-    int battlerIdWork;
+    int battlerIdTemp;
     int unk_11C;
     int unk_120;
-    int moveWork;
-    int itemWork;
-    int abilityWork;
-    int msgWork;
-    int calcWork;
-    int tempWork;
+    int moveTemp;
+    int itemTemp;
+    int abilityTemp;
+    int msgTemp;
+    int calcTemp;
+    int tempData;
     u32 unk_13C[4];
     u32 unk_14C;
     int totalTurns;
@@ -334,7 +334,7 @@ typedef struct BATTLECONTEXT {
     int criticalMultiplier;
     int movePower;
     int unk_2158;
-    int hpCalcWork;
+    int hpCalc;
     int moveType;
     int unk_2164;
     int prizeMoneyValue;
@@ -359,7 +359,7 @@ typedef struct BATTLECONTEXT {
     u32 unk_21F0[4];
     u8 unk_2200[4][4][16];
     u8 unk_2300[4][256];
-    int battleScriptWork[400];
+    int battleScriptBuffer[400];
     BATTLEMON battleMons[4];
     u32 moveNoTemp;
     u32 moveNoCur;

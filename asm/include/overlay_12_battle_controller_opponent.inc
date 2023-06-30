@@ -234,7 +234,7 @@
 .public ov12_02253DA0
 .public GetBattlerHeldItemEffect
 .public CalcMoveDamage
-.public GetItemHoldEffect
+.public GetItemVar
 .public ov12_022581BC
 .public ov12_022581D4
 .public ov12_022582B8

@@ -510,7 +510,7 @@ _02258BE6:
 	add r0, r6, #0
 	lsr r1, r1, #0x10
 	mov r2, #0xc
-	bl GetItemHoldEffect
+	bl GetItemVar
 	add r5, r0, #0
 	b _02258D66
 _02258C02:
@@ -523,7 +523,7 @@ _02258C02:
 	add r0, r6, #0
 	lsr r1, r1, #0x10
 	mov r2, #1
-	bl GetItemHoldEffect
+	bl GetItemVar
 	sub r0, #0x7e
 	cmp r0, #0xf
 	bhi _02258C8C
