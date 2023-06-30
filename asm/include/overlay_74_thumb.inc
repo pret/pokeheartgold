@@ -195,7 +195,7 @@
 .public SaveSubstruct_AssertCRC
 .public SaveSubstruct_UpdateCRC
 .public Save_SysInfo_Get
-.public Save_SysInfo_GetField48
+.public Save_SysInfo_GetMysteryGiftActive
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr
 .public Save_PlayerData_GetIGTAddr

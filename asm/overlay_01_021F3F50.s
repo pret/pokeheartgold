@@ -248,8 +248,8 @@ _021F4124: .word ov01_02206AF4
 _021F4128: .word ov01_02206AE4
 	thumb_func_end ov01_021F4048
 
-	thumb_func_start SaveStatsPrinter_Print
-SaveStatsPrinter_Print: ; 0x021F412C
+	thumb_func_start Field_SaveStatsPrinter_Print
+Field_SaveStatsPrinter_Print: ; 0x021F412C
 	push {r3, r4, lr}
 	sub sp, #0x14
 	add r4, r0, #0
@@ -302,10 +302,10 @@ SaveStatsPrinter_Print: ; 0x021F412C
 	.balign 4, 0
 _021F419C: .word 0x00000189
 _021F41A0: .word 0x000003D9
-	thumb_func_end SaveStatsPrinter_Print
+	thumb_func_end Field_SaveStatsPrinter_Print
 
-	thumb_func_start SaveStatsPrinter_RemoveFromScreen
-SaveStatsPrinter_RemoveFromScreen: ; 0x021F41A4
+	thumb_func_start Field_SaveStatsPrinter_RemoveFromScreen
+Field_SaveStatsPrinter_RemoveFromScreen: ; 0x021F41A4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
@@ -317,10 +317,10 @@ SaveStatsPrinter_RemoveFromScreen: ; 0x021F41A4
 	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end SaveStatsPrinter_RemoveFromScreen
+	thumb_func_end Field_SaveStatsPrinter_RemoveFromScreen
 
-	thumb_func_start Field_CreateSaveStatsPrinter
-Field_CreateSaveStatsPrinter: ; 0x021F41C0
+	thumb_func_start Field_SaveStatsPrinter_New
+Field_SaveStatsPrinter_New: ; 0x021F41C0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r6, r0, #0
@@ -361,10 +361,10 @@ Field_CreateSaveStatsPrinter: ; 0x021F41C0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021F4218: .word 0x000001A7
-	thumb_func_end Field_CreateSaveStatsPrinter
+	thumb_func_end Field_SaveStatsPrinter_New
 
-	thumb_func_start SaveStatsPrinter_Delete
-SaveStatsPrinter_Delete: ; 0x021F421C
+	thumb_func_start Field_SaveStatsPrinter_Delete
+Field_SaveStatsPrinter_Delete: ; 0x021F421C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
@@ -374,7 +374,7 @@ SaveStatsPrinter_Delete: ; 0x021F421C
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
-	thumb_func_end SaveStatsPrinter_Delete
+	thumb_func_end Field_SaveStatsPrinter_Delete
 
 	thumb_func_start ov01_021F4234
 ov01_021F4234: ; 0x021F4234

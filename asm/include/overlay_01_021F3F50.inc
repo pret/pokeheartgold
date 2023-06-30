@@ -43,10 +43,10 @@
 .public PlayerAvatar_GetFacingDirection
 .public GetPlayerXCoord
 .public GetPlayerYCoord
-.public SaveStatsPrinter_Print
-.public SaveStatsPrinter_RemoveFromScreen
-.public Field_CreateSaveStatsPrinter
-.public SaveStatsPrinter_Delete
+.public Field_SaveStatsPrinter_Print
+.public Field_SaveStatsPrinter_RemoveFromScreen
+.public Field_SaveStatsPrinter_New
+.public Field_SaveStatsPrinter_Delete
 .public ov01_021F42F8
 .public ov01_021F434C
 .public ov01_021F4360

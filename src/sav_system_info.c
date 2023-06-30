@@ -57,12 +57,12 @@ u8 Save_SysInfo_GetBirthDay(SYSINFO* sys_info) {
     return sys_info->birth_day;
 }
 
-u8 Save_SysInfo_GetField48(SYSINFO* sys_info) {
-    return sys_info->unk48;
+u8 Save_SysInfo_GetMysteryGiftActive(SYSINFO* sys_info) {
+    return sys_info->mysteryGiftActive;
 }
 
-void Save_SysInfo_SetField48(SYSINFO* sys_info, u8 a1) {
-    sys_info->unk48 = a1;
+void Save_SysInfo_SetMysteryGiftActive(SYSINFO* sys_info, u8 a1) {
+    sys_info->mysteryGiftActive = a1;
 }
 
 void* Save_SysInfo_GetField4C(SYSINFO* sys_info) {
