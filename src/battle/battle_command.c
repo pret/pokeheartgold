@@ -31,7 +31,7 @@ BOOL RunBattleScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BOOL ret;
 
     do {
-        ret = sBattleScriptCommandTable[ctx->battleScriptWork[ctx->scriptSeqNo]](bsys, ctx);
+        ret = sBattleScriptCommandTable[ctx->battleScriptBuffer[ctx->scriptSeqNo]](bsys, ctx);
     } while(ctx->battleContinueFlag == 0 && (BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_2) == 0);
 
     ctx->battleContinueFlag = 0;
@@ -1528,19 +1528,19 @@ BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (ctx->statChangeParam >= 46) {
         stat = ctx->statChangeParam - 46;
         change = -2;
-        ctx->tempWork = 13;
+        ctx->tempData = 13;
     } else if (ctx->statChangeParam >= 39) {
         stat = ctx->statChangeParam - 39;
         change = 2;
-        ctx->tempWork = 12;
+        ctx->tempData = 12;
     } else if (ctx->statChangeParam >= 22) {
         stat = ctx->statChangeParam - 22;
         change = -1;
-        ctx->tempWork = 13;
+        ctx->tempData = 13;
     } else {
         stat = ctx->statChangeParam - 15;
         change = 1;
-        ctx->tempWork = 12;
+        ctx->tempData = 12;
     }
 
     if (change > 0) { //Stat Increase
@@ -2183,7 +2183,7 @@ BOOL BtlCmd_CalcPrizeMoney(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ctx->msgWork = 0;
     }
 
-    ctx->tempWork = bsys->unk2474_1;
+    ctx->tempData = bsys->unk2474_1;
 
     return FALSE;
 }
@@ -3329,7 +3329,7 @@ BOOL BtlCmd_WeatherDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     u32 battlerId = GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx));
 
-    ctx->tempWork = 0;
+    ctx->tempData = 0;
     ctx->hpCalcWork = 0;
 
     u32 type1 = GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL);
@@ -3352,7 +3352,7 @@ BOOL BtlCmd_WeatherDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                     ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp * -1, 8);
                 }
                 if (GetBattlerAbility(ctx, battlerId) == ABILITY_SOLAR_POWER) {
-                    ctx->tempWork = 2;
+                    ctx->tempData = 2;
                 }
             }
         }
@@ -3392,7 +3392,7 @@ BOOL BtlCmd_WeatherDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 } else {
                     ctx->msgWork = 4;
                 }
-                ctx->tempWork = 1;
+                ctx->tempData = 1;
             }
         }
     }
@@ -5396,7 +5396,7 @@ BOOL BtlCmd_CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
-    if (CheckAbilityEffectOnHit(bsys, ctx, &ctx->tempWork) == FALSE) {
+    if (CheckAbilityEffectOnHit(bsys, ctx, &ctx->tempData) == FALSE) {
         BattleScriptIncrementPointer(ctx, adrs);
     }
 
@@ -5592,7 +5592,7 @@ BOOL BtlCmd_CheckItemEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
-    if (CheckItemEffectOnHit(bsys, ctx, &ctx->tempWork) == FALSE) {
+    if (CheckItemEffectOnHit(bsys, ctx, &ctx->tempData) == FALSE) {
         BattleScriptIncrementPointer(ctx, adrs);
     }
 
@@ -5715,7 +5715,7 @@ BOOL BtlCmd_CheckItemEffectOnUTurn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int adrs = BattleScriptReadWord(ctx);
 
-    if (!CheckItemEffectOnUTurn(bsys, ctx, &ctx->tempWork)) {
+    if (!CheckItemEffectOnUTurn(bsys, ctx, &ctx->tempData)) {
         BattleScriptIncrementPointer(ctx, adrs);
     }
 
@@ -5866,7 +5866,7 @@ BOOL BtlCmd_EndScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 int BattleScriptReadWord(BATTLECONTEXT *ctx) {
-    int data = ctx->battleScriptWork[ctx->scriptSeqNo];
+    int data = ctx->battleScriptBuffer[ctx->scriptSeqNo];
 
     ctx->scriptSeqNo++;
 
@@ -5974,7 +5974,7 @@ static void *BattleScriptGetVarPointer(BattleSystem *bsys, BATTLECONTEXT *ctx, i
     case 42:
         return &ctx->turnData[ctx->battlerIdAttacker].battlerBitSpecialDamage;
     case 43:
-        return &ctx->tempWork;
+        return &ctx->tempData;
     case 44:
         return &ctx->criticalMultiplier;
     case 45:

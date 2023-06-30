@@ -307,7 +307,7 @@ typedef struct BATTLECONTEXT {
     int abilityWork;
     int msgWork;
     int calcWork;
-    int tempWork;
+    int tempData;
     u32 unk_13C[4];
     u32 unk_14C;
     int totalTurns;
@@ -359,7 +359,7 @@ typedef struct BATTLECONTEXT {
     u32 unk_21F0[4];
     u8 unk_2200[4][4][16];
     u8 unk_2300[4][256];
-    int battleScriptWork[400];
+    int battleScriptBuffer[400];
     BATTLEMON battleMons[4];
     u32 moveNoTemp;
     u32 moveNoCur;

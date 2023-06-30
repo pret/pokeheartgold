@@ -157,7 +157,7 @@ void ReadBattleScriptFromNarc(BATTLECONTEXT *ctx, NarcId narcId, int fileId) {
     ctx->scriptNarcId = narcId;
     ctx->scriptFileId = fileId;
     ctx->scriptSeqNo = 0;
-    ReadWholeNarcMemberByIdPair(&ctx->battleScriptWork, narcId, fileId);
+    ReadWholeNarcMemberByIdPair(&ctx->battleScriptBuffer, narcId, fileId);
 }
 
 //PushBattleScriptFromNarc..?
@@ -171,7 +171,7 @@ void ov12_0224EBDC(BATTLECONTEXT *ctx, NarcId narcId, int fileId) {
     ctx->scriptNarcId = narcId;
     ctx->scriptFileId = fileId;
     ctx->scriptSeqNo = 0;
-    ReadWholeNarcMemberByIdPair(&ctx->battleScriptWork, narcId, fileId);
+    ReadWholeNarcMemberByIdPair(&ctx->battleScriptBuffer, narcId, fileId);
 }
 
 //BattleScript_Pop..?
@@ -465,7 +465,7 @@ int GetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
     case BMON_DATA_FORME:
         return mon->forme;
     case BMON_DATA_100:
-        return GetBattlerVar(ctx, battlerId, ctx->tempWork, data);
+        return GetBattlerVar(ctx, battlerId, ctx->tempData, data);
     default:
         GF_ASSERT(FALSE);
     }
@@ -758,7 +758,7 @@ void SetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
         mon->forme = *data8;
         break;
     case BMON_DATA_100:
-        SetBattlerVar(ctx, battlerId, ctx->tempWork, data);
+        SetBattlerVar(ctx, battlerId, ctx->tempData, data);
         break;
     default:
         GF_ASSERT(FALSE);
