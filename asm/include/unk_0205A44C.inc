@@ -14,7 +14,7 @@
 .public MailMsg_GetMsgBank
 .public MailMsg_GetMsgNo
 .public MailMsg_Copy
-.public SaveEasyChat_SetGreetingFlag
+.public Save_EasyChat_SetGreetingFlag
 .public FreeToHeap
 .public LCRandom
 .public GF_AssertFail
