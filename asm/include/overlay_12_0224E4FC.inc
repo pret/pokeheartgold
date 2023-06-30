@@ -134,8 +134,8 @@
 .public TrySyncronizeStatus
 .public TryUseHeldItem
 .public CheckItemGradualHPRestore
-.public ov12_02254E7C
-.public ov12_0225551C
+.public CheckUseHeldItem
+.public TryHeldItemNegativeEffect
 .public GetBattlerHeldItem
 .public ov12_0225561C
 .public CheckItemEffectOnHit

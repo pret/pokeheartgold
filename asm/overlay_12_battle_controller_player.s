@@ -3990,7 +3990,7 @@ _0224A662:
 	add r1, r4, #0
 	add r2, r5, #0
 	add r3, sp, #0x14
-	bl ov12_02254E7C
+	bl CheckUseHeldItem
 	cmp r0, #1
 	bne _0224A68E
 	mov r0, #0x46
@@ -4015,7 +4015,7 @@ _0224A696:
 	ldr r0, [sp, #4]
 	add r1, r4, #0
 	add r2, r5, #0
-	bl ov12_0225551C
+	bl TryHeldItemNegativeEffect
 	cmp r0, #1
 	bne _0224A6A8
 	mov r0, #1
@@ -9193,7 +9193,7 @@ _0224CE84:
 	add r1, r4, #0
 	add r2, r7, #0
 	add r3, sp, #8
-	bl ov12_02254E7C
+	bl CheckUseHeldItem
 	cmp r0, #1
 	bne _0224CEB6
 	mov r0, #0x46

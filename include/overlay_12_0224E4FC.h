@@ -78,6 +78,9 @@ BOOL CheckStatusHealSwitch(BATTLECONTEXT *ctx, int ability, int status);
 BOOL TrySyncronizeStatus(BattleSystem *bsys, BATTLECONTEXT *ctx, ControllerCommand command);
 BOOL TryUseHeldItem(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL CheckItemGradualHPRestore(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+BOOL CheckUseHeldItem(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u32 *scriptOut);
+BOOL TryHeldItemNegativeEffect(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+u16 GetBattlerHeldItem(BATTLECONTEXT *ctx, int battlerId);
 
 //The following functions are static, but the rest of the file is still being worked on
 BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int index);
@@ -87,7 +90,6 @@ void ov12_02256F78(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 mon
 void Link_CheckTimeout(BATTLECONTEXT *ctx);
 u32 GetBattlerHeldItemEffect(BATTLECONTEXT *ctx, int battlerId);
 int CalcMoveDamage(BattleSystem *bsys, BATTLECONTEXT *ctx, u32, u32, u32, u16, u8, u8, u8, u8);
-u16 GetBattlerHeldItem(BATTLECONTEXT *ctx, int battlerId);
 BOOL ov12_0225561C(BATTLECONTEXT *ctx, int battlerId);
 int ov12_02257C30(BattleSystem *bsys, BATTLECONTEXT *ctx, int a2);
 int GetNaturalGiftPower(BATTLECONTEXT *ctx, int battlerId);
@@ -126,5 +128,4 @@ u32 ov12_022583B4(BATTLECONTEXT *ctx, int battlerIdA, u8 effectiveness, int dama
 int ov12_022585B8(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int battlerId2);
 BOOL ov12_0225865C(BATTLECONTEXT *ctx, int moveNo);
 BOOL ov12_02256914(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 *scriptOut);
-BOOL ov12_02254E7C(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u32 *scriptOut);
 #endif
