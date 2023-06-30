@@ -220,5 +220,5 @@
 .public _0210159C
 .public gSystem
 .public OS_IRQTable
-.public PartyMenu_InitIconFormChangeWork
+.public PartyMenu_InitIconFormChangeData
 .public PartyMenu_AnimateIconFormChange

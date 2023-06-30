@@ -7717,7 +7717,7 @@ sub_0207CB54: ; 0x0207CB54
 	mov r1, #2
 	bl HandleLoadOverlay
 	add r0, r4, #0
-	bl PartyMenu_InitIconFormChangeWork
+	bl PartyMenu_InitIconFormChangeData
 	pop {r4, pc}
 	.balign 4, 0
 _0207CB68: .word FS_OVERLAY_ID(OVY_94)

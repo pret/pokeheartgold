@@ -198,7 +198,7 @@ _02202C74:
 
 	thumb_func_start SpeciesAndFormToMoveTutorIndex
 SpeciesAndFormToMoveTutorIndex: ; 0x02202C7C
-	; Convert species and formeinto
+	; Convert species and form into
 	; naix for tutor compat
 	ldr r2, _02202D3C ; =SPECIES_ROTOM
 	cmp r0, r2

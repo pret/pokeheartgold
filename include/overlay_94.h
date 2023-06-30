@@ -17,7 +17,7 @@ typedef struct UnkStruct_Overlay_94_B {
     u8 unk27;
 } UnkStruct_Overlay_94_B;
 
-typedef struct IconFormChangeWork  {
+typedef struct IconFormChangeData  {
     int state;
     int effectTimer;
     int duration;
@@ -25,7 +25,7 @@ typedef struct IconFormChangeWork  {
     int fileId;
     int partyMonIndex; //same information as B's unkc65
     ParticleSystem* particleSystem;
-} IconFormChangeWork;
+} IconFormChangeData;
 
 typedef struct PartyMenuStruct {
     BOOL unk0;
@@ -39,10 +39,10 @@ typedef struct PartyMenuStruct {
     u8 unkc64;
     u8 partyMonIndex; //selected index..?
     u8 unkc66[0x1a];
-    IconFormChangeWork* iconFormChange;
+    IconFormChangeData* iconFormChange;
 } PartyMenuStruct;
 
-void PartyMenu_InitIconFormChangeWork(PartyMenuStruct* unkPtr);
+void PartyMenu_InitIconFormChangeData(PartyMenuStruct* unkPtr);
 BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct* unkPtr);
 
 #endif //POKEHEARTGOLD_OVY_94_H

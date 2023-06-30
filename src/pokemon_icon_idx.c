@@ -2,7 +2,7 @@
 #include "pokemon_icon_idx.h"
 #include "constants/species.h"
 
-static u16 _BoxMonGetForm(BoxPokemon *boxMon);
+static u16 BoxMonGetForm(BoxPokemon *boxMon);
 
 u32 Boxmon_GetIconNaix(BoxPokemon *boxMon) {
     BOOL encry;
@@ -14,7 +14,7 @@ u32 Boxmon_GetIconNaix(BoxPokemon *boxMon) {
     encry = AcquireBoxMonLock(boxMon);
     species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
     isEgg = GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL);
-    form = _BoxMonGetForm(boxMon);
+    form = BoxMonGetForm(boxMon);
     ret = GetMonIconNaixEx(species, isEgg, form);
     ReleaseBoxMonLock(boxMon, encry);
     return ret;
@@ -78,7 +78,7 @@ u32 GetBattleMonIconNaixEx(u32 species, BOOL isEgg, u32 form) {
     return GetMonIconNaixEx(species, isEgg, form);
 }
 
-static u16 _BoxMonGetForm(BoxPokemon *boxMon) {
+static u16 BoxMonGetForm(BoxPokemon *boxMon) {
     switch (GetBoxMonData(boxMon, MON_DATA_SPECIES2, NULL)) {
     case SPECIES_UNOWN:
         return GetBoxMonUnownLetter(boxMon);
@@ -188,7 +188,7 @@ const u8 Boxmon_GetIconPalette(BoxPokemon *boxMon) {
     BOOL isEgg;
 
     encry = AcquireBoxMonLock(boxMon);
-    form = _BoxMonGetForm(boxMon);
+    form = BoxMonGetForm(boxMon);
     species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
     isEgg = GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL);
     ReleaseBoxMonLock(boxMon, encry);
