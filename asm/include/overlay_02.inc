@@ -155,8 +155,8 @@
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetTrainerID_VisibleHalf
 .public PlayerProfile_GetTrainerGender
-.public Pokedex_GetSeenFormeByIdx_Unown
-.public Pokedex_GetSeenFormeNum_Unown
+.public Pokedex_GetSeenFormByIdx_Unown
+.public Pokedex_GetSeenFormNum_Unown
 .public Save_Pokedex_Get
 .public Save_Misc_Get
 .public sub_0202AA44

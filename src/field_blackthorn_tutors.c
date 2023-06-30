@@ -16,14 +16,14 @@ void MoveRelearner_Delete(struct MoveRelearner *moveRelearner) {
 u16 *GetEligibleLevelUpMoves(Pokemon *mon, HeapID heapId) {
     u16 cur_moveset[MAX_MON_MOVES]; // sp+10
     u16 species; // sp+0C
-    u8 forme;    // sp+08
+    u8 form;    // sp+08
     u8 level;    // sp+04
     u16 *ret;
     u16 *wotbl;
     u8 i, j, ct;
 
     species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    forme = GetMonData(mon, MON_DATA_FORME, NULL);
+    form = GetMonData(mon, MON_DATA_FORM, NULL);
     level = GetMonData(mon, MON_DATA_LEVEL, NULL);
     for (i = 0; i < MAX_MON_MOVES; i++) {
         cur_moveset[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
@@ -32,7 +32,7 @@ u16 *GetEligibleLevelUpMoves(Pokemon *mon, HeapID heapId) {
     wotbl = AllocFromHeap(heapId, WOTBL_MAX * 2);
     ret = AllocFromHeap(heapId, WOTBL_MAX * 2);
 
-    LoadWotbl_HandleAlternateForme(species, forme, wotbl);
+    LoadWotbl_HandleAlternateForm(species, form, wotbl);
 
     ct = 0;
     for (i = 0; i < WOTBL_MAX; i++) {

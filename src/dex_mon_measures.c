@@ -106,8 +106,8 @@ static void sub_020914E8(NARC *narc, u32 **a1, u32 **a2, HeapID heapId) {
     *a2 = GfGfxLoader_LoadFromOpenNarc(narc, 4, FALSE, heapId, FALSE);
 }
 
-void SetDexBanksByGiratinaForme(int forme) {
-    if (forme == 0) {
+void SetDexBanksByGiratinaForm(int form) {
+    if (form == 0) {
         sDataNarcId = NARC_application_zukanlist_zukan_data_zukan_data_gira;
         sWeightMsgBank = NARC_msg_msg_0813_bin;
         sHeightMsgBank = NARC_msg_msg_0815_bin;

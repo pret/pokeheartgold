@@ -44,7 +44,7 @@ typedef struct TrainerMonSpecies {
     u16 level;
 
     // Bits 0-9: species
-    // Bits 10-15: forme
+    // Bits 10-15: form
     u16 species;
     u16 capsule;
 } TRPOKE_NOITEM_DFLTMOVES;
@@ -108,7 +108,7 @@ BOOL TrainerMessageWithIdPairExists(u32 trainer_idx, u32 msg_id, HeapID heap_id)
 void GetTrainerMessageByIdPair(u32 trainer_idx, u32 msg_id, String * str, HeapID heap_id);
 void TrainerData_ReadTrPoke(u32 idx, TRPOKE * dest);
 void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id);
-void TrMon_OverridePidGender(int species, int forme, int overrideParam, u32 *pid);
+void TrMon_OverridePidGender(int species, int form, int overrideParam, u32 *pid);
 void TrMon_FrustrationCheckAndSetFriendship(Pokemon *mon);
 #endif //PM_ASM
 

@@ -4628,7 +4628,7 @@ _0221E41A:
 	ldr r1, _0221E44C ; =0x00000129
 	add r4, r0, r1
 	add r0, r5, #0
-	bl OverworldModelLookupHasFemaleForme
+	bl OverworldModelLookupHasFemaleForm
 	cmp r0, #0
 	beq _0221E434
 	cmp r7, #1
@@ -4637,7 +4637,7 @@ _0221E41A:
 	b _0221E442
 _0221E434:
 	add r0, r5, #0
-	bl OverworldModelLookupFormeCount
+	bl OverworldModelLookupFormCount
 	cmp r6, r0
 	ble _0221E440
 	mov r6, #0

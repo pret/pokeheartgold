@@ -12,11 +12,11 @@ struct UnkStruct_020F67A4 {
     u16 base_icon;
     u16 formed_icon;
     u16 species;
-    u8 forme;
+    u8 form;
     u8 dummy;
 };
 
-static const struct UnkStruct_020F67A4 sFormeOverrides[] = {
+static const struct UnkStruct_020F67A4 sFormOverrides[] = {
     { 0x1EE, 0x21C, SPECIES_GIRATINA, GIRATINA_ORIGIN },
     { 0x1F3, 0x21D, SPECIES_SHAYMIN, SHAYMIN_SKY },
     { 0x1E6, 0x21E, SPECIES_ROTOM, ROTOM_HEAT },
@@ -41,7 +41,7 @@ void Mail_Init(MAIL *mail) {
     for (i = 0; i < 3; i++) {
         mail->mon_icons[i].raw = 0xFFFF;
     }
-    mail->forme_flags = 0;
+    mail->form_flags = 0;
     for (i = 0; i < 3; i++) {
         MailMsg_Init(&mail->unk_20[i]);
     }
@@ -68,7 +68,7 @@ BOOL Mail_Compare(const MAIL *a, const MAIL *b) {
     || a->author_language != b->author_language
     || a->author_version != b->author_version
     || a->mail_type != b->mail_type
-    || a->forme_flags != b->forme_flags) {
+    || a->form_flags != b->form_flags) {
         return FALSE;
     }
     if (StringNotEqual(a->author_name, b->author_name)) {
@@ -91,7 +91,7 @@ BOOL Mail_Compare(const MAIL *a, const MAIL *b) {
 void Mail_SetNewMessageDetails(MAIL *mail, u8 mailType, u8 mon_no, SaveData *saveData) {
     u8 i, j, pal, k;
     u16 species;
-    u32 icon, isEgg, forme;
+    u32 icon, isEgg, form;
     PlayerProfile *profile;
     PARTY *party;
     Pokemon *mon;
@@ -107,24 +107,24 @@ void Mail_SetNewMessageDetails(MAIL *mail, u8 mailType, u8 mon_no, SaveData *sav
     mail->author_otId = PlayerProfile_GetTrainerID(profile);
 
     // Get the Pokemon icon data
-    mail->forme_flags = 0;
+    mail->form_flags = 0;
     for (i = mon_no, j = 0; i < GetPartyCount(party); i++) {
         mon = GetPartyMonByIndex(party, i);
         species = GetMonData(mon, MON_DATA_SPECIES, NULL);
         isEgg = GetMonData(mon, MON_DATA_IS_EGG, NULL);
-        forme = GetMonData(mon, MON_DATA_FORME, NULL);
+        form = GetMonData(mon, MON_DATA_FORM, NULL);
         icon = Pokemon_GetIconNaix(mon);
-        pal = GetMonIconPaletteEx(species, forme, isEgg);
+        pal = GetMonIconPaletteEx(species, form, isEgg);
 
         mail->mon_icons[j].icon = icon;
         mail->mon_icons[j].pal = pal;
-        // Normal forme conversion for icons added in Platinum or later.
-        // Forme numbers are saved to this buffer.
-        for (k = 0; k < NELEMS(sFormeOverrides); k++) {
-            if (sFormeOverrides[k].formed_icon == mail->mon_icons[j].icon && sFormeOverrides[k].forme == forme) {
-                mail->mon_icons[j].icon = sFormeOverrides[k].base_icon;
+        // Normal form conversion for icons added in Platinum or later.
+        // Form numbers are saved to this buffer.
+        for (k = 0; k < NELEMS(sFormOverrides); k++) {
+            if (sFormOverrides[k].formed_icon == mail->mon_icons[j].icon && sFormOverrides[k].form == form) {
+                mail->mon_icons[j].icon = sFormOverrides[k].base_icon;
                 mail->mon_icons[j].pal = GetMonIconPaletteEx(species, 0, isEgg);
-                mail->forme_flags |= sFormeOverrides[k].forme << (j * 5);
+                mail->form_flags |= sFormOverrides[k].form << (j * 5);
                 break;
             }
         }
@@ -140,7 +140,7 @@ MAIL *CreateKenyaMail(Pokemon *mon, u8 mailType, u8 gender, String *name, u8 otI
     u8 r0;
     u32 r5;
     u16 species;
-    u32 isEgg, forme;
+    u32 isEgg, form;
     MAIL *ret = Mail_New(HEAP_ID_3);
     Mail_Init(ret);
     ret->mail_type = mailType;
@@ -163,13 +163,13 @@ MAIL *CreateKenyaMail(Pokemon *mon, u8 mailType, u8 gender, String *name, u8 otI
     MailMsg_SetFieldI(&ret->unk_20[2], 0, EC_WORD_POKEMON(SPECIES_ZUBAT));
     MailMsg_SetFieldI(&ret->unk_20[2], 1, EC_WORD_NULL);
 
-    ret->forme_flags = 0;
+    ret->form_flags = 0;
 
     species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     isEgg = GetMonData(mon, MON_DATA_IS_EGG, NULL);
-    forme = GetMonData(mon, MON_DATA_FORME, NULL);
+    form = GetMonData(mon, MON_DATA_FORM, NULL);
     r5 = Pokemon_GetIconNaix(mon);
-    r0 = GetMonIconPaletteEx(species, forme, isEgg);
+    r0 = GetMonIconPaletteEx(species, form, isEgg);
     ret->mon_icons[0].icon = r5;
     ret->mon_icons[0].pal = r0;
 
@@ -211,10 +211,10 @@ u16 sub_0202B404(MAIL *mail, u8 r1, u8 r4, u16 r3) {
     union MailPatternData sp0;
     if (r1 < NELEMS(mail->mon_icons)) {
         sp0 = mail->mon_icons[r1];
-        for (i = 0; i < NELEMS(sFormeOverrides); i++) {
-            if (sFormeOverrides[i].base_icon == sp0.icon && sFormeOverrides[i].forme == ((r3 >> (5 * r1)) & 31)) {
-                sp0.icon = sFormeOverrides[i].formed_icon;
-                sp0.pal = GetMonIconPaletteEx(sFormeOverrides[i].species, sFormeOverrides[i].forme, FALSE);
+        for (i = 0; i < NELEMS(sFormOverrides); i++) {
+            if (sFormOverrides[i].base_icon == sp0.icon && sFormOverrides[i].form == ((r3 >> (5 * r1)) & 31)) {
+                sp0.icon = sFormOverrides[i].formed_icon;
+                sp0.pal = GetMonIconPaletteEx(sFormOverrides[i].species, sFormOverrides[i].form, FALSE);
                 break;
             }
         }
@@ -237,7 +237,7 @@ u16 sub_0202B404(MAIL *mail, u8 r1, u8 r4, u16 r3) {
 }
 
 u16 sub_0202B4E4(const MAIL *mail) {
-    return mail->forme_flags;
+    return mail->form_flags;
 }
 
 MAIL_MESSAGE *Mail_GetUnk20Array(MAIL *mail, int i) {

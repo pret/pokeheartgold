@@ -1397,7 +1397,7 @@ ov12_022463E8: ; 0x022463E8
 	add r1, r3, #0
 	mov r2, #5
 	mov r4, #0
-	bl AllocAndLoadMonPersonal_HandleAlternateForme
+	bl AllocAndLoadMonPersonal_HandleAlternateForm
 	add r7, r0, #0
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
@@ -2768,7 +2768,7 @@ _02246F7E:
 	cmp r5, #4
 	blt _02246F7E
 	add r0, r6, #0
-	bl Mon_UpdateGiratinaForme
+	bl Mon_UpdateGiratinaForm
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -5961,7 +5961,7 @@ sBattleScriptCommandTable: ; 0x0226C6C8
 	.word BtlCmd_CheckChatterActivation
 	.word BtlCmd_GetMoveParam
 	.word BtlCmd_Mosaic
-	.word BtlCmd_ChangeForme
+	.word BtlCmd_ChangeForm
 	.word BtlCmd_SetBattleBackground
 	.word BtlCmd_RecoverStatus
 	.word BtlCmd_TryRun

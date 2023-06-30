@@ -6060,7 +6060,7 @@ _021E8B94:
 	ldr r0, [sp, #0x14]
 	ldrb r1, [r4, #6]
 	ldrh r0, [r6, r0]
-	bl AllocAndLoadMonPersonal_HandleAlternateForme
+	bl AllocAndLoadMonPersonal_HandleAlternateForm
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x14]
 	mov r1, #0
@@ -22525,7 +22525,7 @@ _021F0E2A:
 	ldr r1, _021F0E5C ; =0x00000129
 	add r4, r0, r1
 	add r0, r5, #0
-	bl OverworldModelLookupHasFemaleForme
+	bl OverworldModelLookupHasFemaleForm
 	cmp r0, #0
 	beq _021F0E44
 	cmp r7, #1
@@ -22534,7 +22534,7 @@ _021F0E2A:
 	b _021F0E52
 _021F0E44:
 	add r0, r5, #0
-	bl OverworldModelLookupFormeCount
+	bl OverworldModelLookupFormCount
 	cmp r6, r0
 	ble _021F0E50
 	mov r6, #0
@@ -27502,7 +27502,7 @@ _021F3420:
 	bne _021F3482
 	add r0, r5, #0
 	mov r1, #0
-	bl Mon_UpdateShayminForme
+	bl Mon_UpdateShayminForm
 	ldrh r1, [r6]
 	ldr r0, _021F35A0 ; =0xFFFF07FF
 	and r0, r1
@@ -27623,7 +27623,7 @@ _021F353E:
 	beq _021F357E
 	add r0, r5, #0
 	mov r1, #1
-	bl Mon_UpdateShayminForme
+	bl Mon_UpdateShayminForm
 _021F357E:
 	ldr r0, [sp, #0x14]
 	add r6, #0x38

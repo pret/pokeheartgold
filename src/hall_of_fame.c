@@ -39,7 +39,7 @@ void Save_HOF_RecordParty(HALL_OF_FAME *hof, PARTY *party, RTCDate *date) {
             if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
                 team->party[j].species = GetMonData(mon, MON_DATA_SPECIES, NULL);
                 team->party[j].level = GetMonData(mon, MON_DATA_LEVEL, NULL);
-                team->party[j].forme = GetMonData(mon, MON_DATA_FORME, NULL);
+                team->party[j].form = GetMonData(mon, MON_DATA_FORM, NULL);
                 team->party[j].personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
                 team->party[j].otid = GetMonData(mon, MON_DATA_OTID, NULL);
                 team->party[j].moves[0] = GetMonData(mon, MON_DATA_MOVE1, NULL);
@@ -117,7 +117,7 @@ void Save_HOF_GetMonStatsByIndexPair(HALL_OF_FAME *hallOfFame, int teamNum, int 
     dest->level = mon->level;
     dest->personality = mon->personality;
     dest->otid = mon->otid;
-    dest->forme = mon->forme;
+    dest->form = mon->form;
     CopyU16ArrayToString(dest->nickname, mon->nickname);
     CopyU16ArrayToString(dest->otname, mon->otname);
     for (i = 0; i < 4; i++) {

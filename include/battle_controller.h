@@ -43,7 +43,7 @@ void BattleController_EmitBattleMonToPartyMonCopy(BattleSystem *bsys, BATTLECONT
 void BattleControl_EmitPartyStatusHeal(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
 void BattleController_EmitSetBattleResults(BattleSystem *bsys);
 void BattleController_EmitPlayMosaicAnimation(BattleSystem *bsys, int battlerId, int a2, int delay);
-void BattleController_EmitChangeForme(BattleSystem *bsys, int battlerId);
+void BattleController_EmitChangeForm(BattleSystem *bsys, int battlerId);
 void BattleController_EmitSetBattleBackground(BattleSystem *bsys, int a1);
 void BattleController_EmitInitStartBallGauge(BattleSystem *bsys, int battlerId);
 void BattleController_EmitDeleteStartBallGauge(BattleSystem *bsys, int battlerId);

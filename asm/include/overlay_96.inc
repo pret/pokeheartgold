@@ -328,8 +328,8 @@
 .public CheckFlagInArray
 .public SetFlagInArray
 .public SpeciesToOverworldModelIndexOffset
-.public OverworldModelLookupFormeCount
-.public OverworldModelLookupHasFemaleForme
+.public OverworldModelLookupFormCount
+.public OverworldModelLookupHasFemaleForm
 .public GetMonBaseStat
 .public GetMonSpriteCharAndPlttNarcIdsEx
 .public sub_020708D8

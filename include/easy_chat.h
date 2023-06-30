@@ -22,7 +22,7 @@ struct WallpaperPasswordBank {
     u32 *words;
 };
 
-SAVE_EASY_CHAT_T *SaveData_EasyChat_Get(SaveData *saveData);
+SAVE_EASY_CHAT_T *Save_EasyChat_Get(SaveData *saveData);
 u16 GetECWordIndexByPair(u32 msgBank, u32 word);
 u16 EasyChat_GetMsgBankForGroup(int category);
 void GetECWordIntoStringByIndex(u16 ecWord, String *dest);
@@ -31,12 +31,12 @@ void EasyChatManager_ReadWordIntoString(ECMAN *ecMan, u16 ecWord, String *dest);
 BOOL GetCategoryAndMsgNoByECWordIdx(u16 ecWord, u32 *category, u32 *msgno);
 u32 Save_EasyChat_sizeof(void);
 void Save_EasyChat_Init(SAVE_EASY_CHAT_T *ec);
-BOOL SaveEasyChat_GetTrendySayingFlag(SAVE_EASY_CHAT_T *ec, int flag);
-u32 SaveEasyChat_RandomTrendySayingSet(SAVE_EASY_CHAT_T *ec);
-BOOL SaveEasyChat_TrendySayingsUnlockedAllCheck(SAVE_EASY_CHAT_T *ec);
+BOOL Save_EasyChat_GetTrendySayingFlag(SAVE_EASY_CHAT_T *ec, int flag);
+u32 Save_EasyChat_RandomTrendySayingSet(SAVE_EASY_CHAT_T *ec);
+BOOL Save_EasyChat_TrendySayingsUnlockedAllCheck(SAVE_EASY_CHAT_T *ec);
 ECWORD TrendyWordIdxToECWord(int a0);
-BOOL SaveEasyChat_GetGreetingsFlag(SAVE_EASY_CHAT_T *ec, u8 idx);
-void SaveEasyChat_SetGreetingFlag(SAVE_EASY_CHAT_T *ec, u8 idx);
+BOOL Save_EasyChat_GetGreetingsFlag(SAVE_EASY_CHAT_T *ec, u8 idx);
+void Save_EasyChat_SetGreetingFlag(SAVE_EASY_CHAT_T *ec, u8 idx);
 void WallpaperPasswordBank_Delete(struct WallpaperPasswordBank *pwdBank);
 u32 WallpaperPasswordBank_GetNum(struct WallpaperPasswordBank *pwdBank);
 ECWORD WallpaperPasswordBank_GetWordI(struct WallpaperPasswordBank *pwdBank, int idx);

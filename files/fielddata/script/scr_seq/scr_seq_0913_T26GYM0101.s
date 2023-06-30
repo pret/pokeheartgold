@@ -194,7 +194,7 @@ _0264:
 	goto_if_eq _034B
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	get_partymon_species VAR_SPECIAL_x8004, VAR_TEMP_x4003
-	get_partymon_forme VAR_SPECIAL_x8004, VAR_TEMP_x4004
+	get_partymon_form VAR_SPECIAL_x8004, VAR_TEMP_x4004
 	compare VAR_TEMP_x4003, 0
 	goto_if_eq _0356
 	compare VAR_TEMP_x4004, 0

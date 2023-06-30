@@ -18,7 +18,7 @@ void PokedexData_LoadAll(struct PokedexData *zkn, int mode, HeapID heapId);
 void PokedexData_UnloadAll(struct PokedexData *zkn);
 u32 PokedexData_GetHeight(struct PokedexData *zkn, int species);
 u32 PokedexData_GetWeight(struct PokedexData *zkn, int species);
-void SetDexBanksByGiratinaForme(int forme);
+void SetDexBanksByGiratinaForm(int form);
 NarcId GetPokedexDataNarcID(void);
 int GetDexWeightMsgBank(void);
 int GetDexHeightMsgBank(void);

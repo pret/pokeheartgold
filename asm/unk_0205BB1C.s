@@ -391,8 +391,8 @@ _0205BDAE:
 _0205BDB4: .word 0x00000000
 	thumb_func_end Save_GetPartyLeadAlive
 
-	thumb_func_start Save_PlayerHasRegiInParty
-Save_PlayerHasRegiInParty: ; 0x0205BDB8
+	thumb_func_start Save_PlayerHasAllRegisInParty
+Save_PlayerHasAllRegisInParty: ; 0x0205BDB8
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	mov r7, #0
@@ -452,7 +452,7 @@ _0205BE1E:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0205BE24: .word sRegiSpecies
-	thumb_func_end Save_PlayerHasRegiInParty
+	thumb_func_end Save_PlayerHasAllRegisInParty
 
 	thumb_func_start sub_0205BE28
 sub_0205BE28: ; 0x0205BE28

@@ -6,7 +6,7 @@
 typedef struct {
     u16 species;
     u8 gender;
-    u8 forme;
+    u8 form;
 } PokeathlonFriendshipRoomStatueData;
 
 typedef struct {

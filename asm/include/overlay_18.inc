@@ -229,13 +229,13 @@
 .public Pokedex_GetNatDexFlag
 .public Pokedex_HasCaughtMonWithLanguage
 .public Pokedex_GetInternationalViewFlag
-.public Pokedex_GetSeenFormeByIdx
-.public Pokedex_GetSeenFormeNum
+.public Pokedex_GetSeenFormByIdx
+.public Pokedex_GetSeenFormNum
 .public MapHeader_GetMapSec
 .public AcquireMonLock
 .public ReleaseMonLock
 .public GetMonData
-.public GetMonBaseStat_HandleAlternateForme
+.public GetMonBaseStat_HandleAlternateForm
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public GetMonSpriteCharAndPlttNarcIdsEx
 .public sub_020708D8
@@ -250,7 +250,7 @@
 .public sub_02091294
 .public sub_020912AC
 .public sub_020912D0
-.public SetDexBanksByGiratinaForme
+.public SetDexBanksByGiratinaForm
 .public GetPokedexDataNarcID
 .public GetDexWeightMsgBank
 .public GetDexHeightMsgBank

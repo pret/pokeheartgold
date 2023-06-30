@@ -205,7 +205,7 @@ typedef struct BATTLEMON {
     int weight;
     u8 type1;
     u8 type2;
-    u8 forme:5;
+    u8 form:5;
     u8 shiny:1;
     u8 unk26_6:2;
     u8 ability;

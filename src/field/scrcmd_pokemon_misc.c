@@ -85,7 +85,7 @@ static void ov01_02201088(struct ListMenu *listMenu, s32 unused1, u8 unused2);
 static void ov01_022010CC(SysTask *sysTask, void *work);
 static void ov01_0220116C(SCR_648_STRUCT *unkPtr);
 static void GetHiddenPowerPowerType(Pokemon *mon, s32 *power, s32 *type);
-static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectMan, u8 unkA, u16 species, u16 forme, u32 gender, u32 x, u32 y, u32 mapId);
+static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectMan, u8 unkA, u16 species, u16 form, u32 gender, u32 x, u32 y, u32 mapId);
 
 extern u16 ov01_02209AE0[10];
 
@@ -393,7 +393,7 @@ BOOL ScrCmd_StatJudge(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_CommSanitizeParty(ScriptContext *ctx) {
-    int partyCount, i, forme;
+    int partyCount, i, form;
     u32 species, data;
     u32 heldItems[6];
     Pokemon *mon;
@@ -429,18 +429,18 @@ BOOL ScrCmd_CommSanitizeParty(ScriptContext *ctx) {
 
     for (i = 0; i < partyCount; i++) {
         mon = GetPartyMonByIndex(party, i);
-        forme = GetMonData(mon, MON_DATA_FORME, 0);
-        if (forme > 0) {
+        form = GetMonData(mon, MON_DATA_FORM, 0);
+        if (form > 0) {
             species = GetMonData(mon, MON_DATA_SPECIES, 0);
             switch (species) {
             case SPECIES_GIRATINA:
-                Mon_UpdateGiratinaForme(mon);
+                Mon_UpdateGiratinaForm(mon);
                 break;
             case SPECIES_ROTOM:
-                Mon_UpdateRotomForme(mon, 0, 0);
+                Mon_UpdateRotomForm(mon, 0, 0);
                 break;
             case SPECIES_SHAYMIN:
-                Mon_UpdateShayminForme(mon, 0);
+                Mon_UpdateShayminForm(mon, 0);
                 break;
             }
         }
@@ -448,18 +448,18 @@ BOOL ScrCmd_CommSanitizeParty(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_SetMonForme(ScriptContext *ctx) {
+BOOL ScrCmd_SetMonForm(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 index = ScriptGetVar(ctx);
-    u16 forme = ScriptGetVar(ctx);
+    u16 form = ScriptGetVar(ctx);
     Pokemon *mon = GetPartyMonByIndex(SaveArray_PlayerParty_Get(fsys->savedata), index);
-    SetMonData(mon, MON_DATA_FORME, &forme);
+    SetMonData(mon, MON_DATA_FORM, &form);
     return FALSE;
 }
 
 BOOL ScrCmd_CountTranformedRotomsInParty(ScriptContext *ctx) {
     int i, partyCount, count;
-    u32 species, forme, isEgg;
+    u32 species, form, isEgg;
     Pokemon *mon;
     PARTY *party;
     FieldSystem *fsys = ctx->fsys;
@@ -474,9 +474,9 @@ BOOL ScrCmd_CountTranformedRotomsInParty(ScriptContext *ctx) {
     for (i = 0; i < partyCount; i++) {
         mon = GetPartyMonByIndex(party, i);
         species = GetMonData(mon, MON_DATA_SPECIES, 0);
-        forme = GetMonData(mon, MON_DATA_FORME, 0);
+        form = GetMonData(mon, MON_DATA_FORM, 0);
         isEgg = GetMonData(mon, MON_DATA_IS_EGG, 0);
-        if (species == SPECIES_ROTOM && forme && !isEgg) {
+        if (species == SPECIES_ROTOM && form && !isEgg) {
             if (*firstIndex == 255) {
                 *firstIndex = i;
             }
@@ -487,14 +487,14 @@ BOOL ScrCmd_CountTranformedRotomsInParty(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_UpdateRotomForme(ScriptContext *ctx) {
+BOOL ScrCmd_UpdateRotomForm(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     int rotomIndex = ScriptGetVar(ctx);
     int defaultSlot = ScriptGetVar(ctx);
     ScriptGetVar(ctx); //unsused variable
-    u32 forme = ScriptGetVar(ctx);
+    u32 form = ScriptGetVar(ctx);
     Pokemon *mon = GetPartyMonByIndex(SaveArray_PlayerParty_Get(fsys->savedata), rotomIndex);
-    Mon_UpdateRotomForme(mon, forme, defaultSlot);
+    Mon_UpdateRotomForm(mon, form, defaultSlot);
     Pokedex_SetMonCaughtFlag(Save_Pokedex_Get(fsys->savedata), mon);
     return FALSE;
 }
@@ -573,9 +573,9 @@ BOOL ScrCmd_SetFavoriteMon(ScriptContext *ctx) {
     Pokemon *mon = GetPartyMonByIndex(SaveArray_PlayerParty_Get(ctx->fsys->savedata), 0);
     SAVE_MISC_DATA *data = Save_Misc_Get(fsys->savedata);
     u32 species = GetMonData(mon, MON_DATA_SPECIES, 0);
-    u32 forme = GetMonData(mon, MON_DATA_FORME, 0);
+    u32 form = GetMonData(mon, MON_DATA_FORM, 0);
     u32 isEgg = GetMonData(mon, MON_DATA_IS_EGG, 0);
-    SaveMisc_SetFavoriteMon(data, species, forme, isEgg);
+    SaveMisc_SetFavoriteMon(data, species, form, isEgg);
     return FALSE;
 }
 
@@ -583,22 +583,22 @@ BOOL ScrCmd_GetFavoriteMon(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u32 sp, form, egg;
     u16 *species = ScriptGetVarPointer(ctx);
-    u16 *forme = ScriptGetVarPointer(ctx);
+    u16 *formPtr = ScriptGetVarPointer(ctx);
     u16 *isEgg = ScriptGetVarPointer(ctx);
     SAVE_MISC_DATA *data = Save_Misc_Get(fsys->savedata);
     SaveMisc_GetFavoriteMon(data, &sp, &form, &egg);
     *species = sp;
-    *forme = form;
+    *formPtr = form;
     *isEgg = egg;
     return FALSE;
 }
 
-BOOL ScrCmd_GetPartyMonForme(ScriptContext *ctx) {
+BOOL ScrCmd_GetPartyMonForm(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u32 index = ScriptGetVar(ctx);
-    u16 *forme = ScriptGetVarPointer(ctx);
+    u16 *form = ScriptGetVarPointer(ctx);
     Pokemon *mon = GetPartyMonByIndex(SaveArray_PlayerParty_Get(fsys->savedata), index);
-    *forme = GetMonData(mon, MON_DATA_FORME, 0);
+    *form = GetMonData(mon, MON_DATA_FORM, 0);
     return FALSE;
 }
 
@@ -937,18 +937,18 @@ BOOL ScrCmd_CreatePokeathlonFriendshipRoomStatues(ScriptContext *ctx) {
         species = unkPtr->friendshipRoomStatues[i].species;
 
         if (species != 0 && species <= SPECIES_ARCEUS) {
-            ov01_02201F98(fsys->mapObjectMan, (u8) i, species, unkPtr->friendshipRoomStatues[i].forme, unkPtr->friendshipRoomStatues[i].gender, sFriendshipRoomStatuesPositions[i][0], sFriendshipRoomStatuesPositions[i][1], fsys->location->mapId);
+            ov01_02201F98(fsys->mapObjectMan, (u8) i, species, unkPtr->friendshipRoomStatues[i].form, unkPtr->friendshipRoomStatues[i].gender, sFriendshipRoomStatuesPositions[i][0], sFriendshipRoomStatuesPositions[i][1], fsys->location->mapId);
         }
     }
     return TRUE;
 }
 
-static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectMan, u8 unkA, u16 species, u16 forme, u32 gender, u32 x, u32 y, u32 mapId) {
+static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectMan, u8 unkA, u16 species, u16 form, u32 gender, u32 x, u32 y, u32 mapId) {
     LocalMapObject *mapObj;
     u32 spriteId;
     u32  size;
 
-    spriteId = FollowingPokemon_GetSpriteID(species, forme, gender) << 1;
+    spriteId = FollowingPokemon_GetSpriteID(species, form, gender) << 1;
     size = GetFollowPokeSizeParamBySpecies(species)*3 + unkA;
 
     mapObj = CreateSpecialFieldObjectEx(mapObjectMan, x, y, DIR_SOUTH, size + 0x19f, 0, mapId, 0, 0, spriteId);
@@ -962,7 +962,7 @@ static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectMan, u8 unkA, u1
     MapObject_SetFlagID(mapObj, 0);
     MapObject_SetScript(mapObj, 0);
     MapObject_SetParam(mapObj, 0, 2);
-    sub_02069F0C(mapObj, species, (u8) forme, FALSE, spriteId);
+    sub_02069F0C(mapObj, species, (u8) form, FALSE, spriteId);
     MapObject_SetXRange(mapObj, -1);
     MapObject_SetYRange(mapObj, -1);
     MapObject_SetFlagsBits(mapObj, MAPOBJECTFLAG_UNK30);
@@ -973,26 +973,26 @@ static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectMan, u8 unkA, u1
 }
 
 BOOL ScrCmd_CheckSeenAllLetterUnown(ScriptContext *ctx) {
-    u32 forme;
+    u32 form;
     s32 i;
     u32 counter;
-    s32 unownFormes;
+    s32 unownForms;
     Pokedex *pokedex;
     u16 *allUnownSeen;
 
     allUnownSeen = ScriptGetVarPointer(ctx);
     pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
 
-    unownFormes = Pokedex_GetSeenFormeNum_Unown(pokedex, 1);
-    if (unownFormes < 26) {
+    unownForms = Pokedex_GetSeenFormNum_Unown(pokedex, 1);
+    if (unownForms < 26) {
         *allUnownSeen = FALSE;
         return TRUE;
     }
 
     counter = 0;
-    for (i = 0; i < unownFormes; i++) {
-        forme = Pokedex_GetSeenFormeByIdx_Unown(pokedex, i, TRUE);
-        if (forme != 26 && forme != 27) {
+    for (i = 0; i < unownForms; i++) {
+        form = Pokedex_GetSeenFormByIdx_Unown(pokedex, i, TRUE);
+        if (form != 26 && form != 27) {
             counter++;
         }
     }
@@ -1068,7 +1068,7 @@ extern u16 sSpikyEarPichuMoveset[4];
 
 BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx) {
     s32 i;
-    u8 forme;
+    u8 form;
     u8 maxPP;
     u16 heldItem;
     Pokemon *mon;
@@ -1090,8 +1090,8 @@ BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx) {
     u32 unkA = ChangePersonalityToNatureGenderAndAbility(trId, 0xac, NATURE_NAUGHTY, MON_FEMALE, 0, 0);
     CreateMon(mon, SPECIES_PICHU, 30, 0x20, 1, unkA, 1, trId);
 
-    forme = 1;
-    SetMonData(mon, MON_DATA_FORME, &forme);
+    form = 1;
+    SetMonData(mon, MON_DATA_FORM, &form);
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
         SetMonData(mon, MON_DATA_MOVE1 + i, &sSpikyEarPichuMoveset[i]);
