@@ -60,6 +60,6 @@ void GetSwarmInfoFromRand(u32 rand, u16 *mapno, u16 *species) {
         *species = encData.swarmSpecies[0];
         break;
     }
-    GF_ASSERT(*species != 0);
+    GF_ASSERT(*species != SPECIES_NONE);
     *mapno = (*swarmMap)[0];
 }

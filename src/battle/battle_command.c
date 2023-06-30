@@ -3165,7 +3165,9 @@ BOOL BtlCmd_TryWhirlwind(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
         for (monIndex = index0; monIndex < indexEnd; monIndex++) {
             mon = GetPartyMonByIndex(party, monIndex);
-            if (GetMonData(mon, MON_DATA_SPECIES, 0) && !GetMonData(mon, MON_DATA_IS_EGG, 0) && GetMonData(mon, MON_DATA_HP, 0)) {
+            if (GetMonData(mon, MON_DATA_SPECIES, 0) != SPECIES_NONE
+             && !GetMonData(mon, MON_DATA_IS_EGG, 0)
+             && GetMonData(mon, MON_DATA_HP, 0) != 0) {
                 cnt++;
             }
         }
@@ -3179,7 +3181,9 @@ BOOL BtlCmd_TryWhirlwind(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                     monIndex += index0;
                 } while (monIndex == monIndexA || monIndex == monIndexB);
                 mon = GetPartyMonByIndex(party, monIndex);
-            } while (!GetMonData(mon, MON_DATA_SPECIES, 0) || GetMonData(mon, MON_DATA_IS_EGG, 0) == 1 || !GetMonData(mon, MON_DATA_HP, 0));
+            } while (GetMonData(mon, MON_DATA_SPECIES, 0) == SPECIES_NONE
+                  || GetMonData(mon, MON_DATA_IS_EGG, 0) == TRUE
+                  || GetMonData(mon, MON_DATA_HP, 0) == 0);
             ctx->unk_21A0[ctx->battlerIdTarget] = monIndex;
         } else {
             BattleScriptIncrementPointer(ctx, adrs);
@@ -3735,8 +3739,11 @@ BOOL BtlCmd_BeatUpDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
         while (TRUE) {
             mon = BattleSystem_GetPartyMon(bsys, ctx->battlerIdAttacker, ctx->beatUpCount);
-            if (ctx->beatUpCount == ctx->selectedMonIndex[ctx->battlerIdAttacker] ||
-                (GetMonData(mon, MON_DATA_HP, 0) && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != 0x1ee && GetMonData(mon, MON_DATA_STATUS, 0) == 0)) {
+            if (ctx->beatUpCount == ctx->selectedMonIndex[ctx->battlerIdAttacker]
+                || (GetMonData(mon, MON_DATA_HP, 0) != 0
+                 && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_NONE
+                 && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG
+                 && GetMonData(mon, MON_DATA_STATUS, 0) == STATUS_NONE)) {
                 break;
             }
             ctx->beatUpCount++;
@@ -3771,8 +3778,11 @@ BOOL BtlCmd_BeatUpDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (ctx->beatUpCount < monCnt) {
         while (TRUE) {
             mon = BattleSystem_GetPartyMon(bsys, ctx->battlerIdAttacker, ctx->beatUpCount);
-            if (ctx->beatUpCount == ctx->selectedMonIndex[ctx->battlerIdAttacker] ||
-                (GetMonData(mon, MON_DATA_HP, 0) && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != 0x1ee && GetMonData(mon, MON_DATA_STATUS, 0) == 0)) {
+            if (ctx->beatUpCount == ctx->selectedMonIndex[ctx->battlerIdAttacker]
+             || (GetMonData(mon, MON_DATA_HP, 0) != 0
+                 && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_NONE
+                 && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG
+                 && GetMonData(mon, MON_DATA_STATUS, 0) == STATUS_NONE)) {
                 break;
             }
             ctx->beatUpCount++;
@@ -3879,7 +3889,8 @@ BOOL BtlCmd_TryAssist(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     for (i = 0; i < monCnt; i++) {
         if (i != ctx->selectedMonIndex[ctx->battlerIdAttacker]) {
             mon = BattleSystem_GetPartyMon(bsys, ctx->battlerIdAttacker, i);
-            if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG) {
+            if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_NONE
+             && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG) {
                 for (j = 0; j < MAX_MON_MOVES; j++) {
                     move = GetMonData(mon, MON_DATA_MOVE1 + j, 0);
                     if (CheckMoveCallsOtherMove(move) == FALSE && CheckLegalMetronomeMove(bsys, ctx, ctx->battlerIdAttacker, move) == TRUE) {
@@ -4865,7 +4876,11 @@ BOOL BtlCmd_Pickup(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0);
         item = GetMonData(mon, MON_DATA_HELD_ITEM, 0);
         ability = GetMonData(mon, MON_DATA_ABILITY, 0);
-        if (ability == ABILITY_PICKUP && species && species != SPECIES_EGG && !item && !(BattleSystem_Random(bsys)%10)) {
+        if (ability == ABILITY_PICKUP
+         && species != SPECIES_NONE
+         && species != SPECIES_EGG
+         && item == ITEM_NONE
+         && !(BattleSystem_Random(bsys) % 10)) {
             rnd = BattleSystem_Random(bsys) % 100;
             lvl = (GetMonData(mon, MON_DATA_LEVEL, 0) - 1) / 10;
             if (lvl >= 10) {
@@ -4881,7 +4896,10 @@ BOOL BtlCmd_Pickup(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 }
             }
         }
-        if (ability == ABILITY_HONEY_GATHER && species && species != SPECIES_EGG && !item) {
+        if (ability == ABILITY_HONEY_GATHER
+         && species != SPECIES_NONE
+         && species != SPECIES_EGG
+         && item == ITEM_NONE) {
             j = 0;
             k = 10;
             lvl = GetMonData(mon, MON_DATA_LEVEL, 0);
@@ -5497,7 +5515,8 @@ BOOL BtlCmd_CheckWhiteout(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
         for (i = 0; i < GetPartyCount(party1); i++) {
             mon = GetPartyMonByIndex(party1, i);
-            if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != 0 && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG) {
+            if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_NONE
+             && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG) {
                 partyHp += GetMonData(mon, MON_DATA_HP, 0);
             }
         }
@@ -5506,7 +5525,8 @@ BOOL BtlCmd_CheckWhiteout(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
         } else for (i = 0; i < GetPartyCount(party2); i++) {
             mon = GetPartyMonByIndex(party2, i);
-            if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != 0 && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG) {
+            if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_NONE
+             && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG) {
                 partyHp += GetMonData(mon, MON_DATA_HP, 0);
             }
         }
@@ -5521,7 +5541,8 @@ BOOL BtlCmd_CheckWhiteout(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
         for (i = 0; i < GetPartyCount(party); i++) {
             mon = GetPartyMonByIndex(party, i);
-            if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != 0 && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG) {
+            if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_NONE
+             && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG) {
                 partyHp += GetMonData(mon, MON_DATA_HP, 0);
             }
         }

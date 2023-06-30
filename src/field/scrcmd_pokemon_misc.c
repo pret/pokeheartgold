@@ -936,7 +936,7 @@ BOOL ScrCmd_CreatePokeathlonFriendshipRoomStatues(ScriptContext *ctx) {
 
         species = unkPtr->friendshipRoomStatues[i].species;
 
-        if (species != 0 && species <= SPECIES_ARCEUS) {
+        if (species != SPECIES_NONE && species <= SPECIES_ARCEUS) {
             ov01_02201F98(fsys->mapObjectMan, (u8) i, species, unkPtr->friendshipRoomStatues[i].form, unkPtr->friendshipRoomStatues[i].gender, sFriendshipRoomStatuesPositions[i][0], sFriendshipRoomStatuesPositions[i][1], fsys->location->mapId);
         }
     }
@@ -1028,7 +1028,7 @@ BOOL ScrCmd_GiveTogepiEgg(ScriptContext *ctx) {
     SetEggStats(mon, SPECIES_TOGEPI, 1, profile, 3, sub_02017FE4(MAPSECTYPE_GIFT, 0xd));
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
-        if (!GetMonData(mon, MON_DATA_MOVE1 + i, 0)) {
+        if (GetMonData(mon, MON_DATA_MOVE1 + i, 0) == MOVE_NONE) {
             break;
         }
     }

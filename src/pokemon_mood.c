@@ -98,7 +98,7 @@ void ApplyMonMoodModifier(Pokemon *mon, int modifierId) {
 
     species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL);
 
-    if (species != 0 && species != SPECIES_EGG) {
+    if (species != SPECIES_NONE && species != SPECIES_EGG) {
         mood = GetMonData(mon, MON_DATA_MOOD, NULL);
 
         adjustedMood = mood + sMoodModifiers[modifierId];
