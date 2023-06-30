@@ -3720,7 +3720,7 @@ BOOL BtlCmd_TryTeleport(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 BOOL BtlCmd_BeatUpDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int species;
-    int forme;
+    int form;
     int level;
     Pokemon *mon;
 
@@ -3745,13 +3745,13 @@ BOOL BtlCmd_BeatUpDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     mon = BattleSystem_GetPartyMon(bsys, ctx->battlerIdAttacker, ctx->beatUpCount);
     species = GetMonData(mon, MON_DATA_SPECIES, 0);
-    forme = GetMonData(mon, MON_DATA_FORME, 0);
+    form = GetMonData(mon, MON_DATA_FORM, 0);
     level = GetMonData(mon, MON_DATA_LEVEL, 0);
 
-    ctx->damage = GetMonBaseStat_HandleAlternateForme(species, forme, BASE_ATK);
+    ctx->damage = GetMonBaseStat_HandleAlternateForm(species, form, BASE_ATK);
     ctx->damage *= ctx->unk_334.moveData[ctx->moveNoCur].power;
     ctx->damage *= (level * 2 / 5 + 2);
-    ctx->damage /= (u32) GetMonBaseStat_HandleAlternateForme(ctx->battleMons[ctx->battlerIdTarget].species, ctx->battleMons[ctx->battlerIdTarget].forme, BASE_DEF);
+    ctx->damage /= (u32) GetMonBaseStat_HandleAlternateForm(ctx->battleMons[ctx->battlerIdTarget].species, ctx->battleMons[ctx->battlerIdTarget].form, BASE_DEF);
     ctx->damage /= 50;
     ctx->damage += 2;
     ctx->damage *= ctx->criticalMultiplier;
@@ -5267,12 +5267,12 @@ BOOL BtlCmd_Mosaic(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_ChangeForme(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_ChangeForm(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
     int battlerId = GetBattlerIDBySide(bsys, ctx, side);
-    BattleController_EmitChangeForme(bsys, battlerId);
+    BattleController_EmitChangeForm(bsys, battlerId);
 
     return FALSE;
 }
@@ -5811,12 +5811,12 @@ BOOL BtlCmd_GetMonDataFromNarc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int species = BattleScriptReadWord(ctx);
-    int forme = BattleScriptReadWord(ctx);
+    int form = BattleScriptReadWord(ctx);
     BaseStat stat = (BaseStat) BattleScriptReadWord(ctx);
 
-    int *formePtr = BattleScriptGetVarPointer(bsys, ctx, forme);
+    int *formPtr = BattleScriptGetVarPointer(bsys, ctx, form);
 
-    ctx->calcTemp = GetMonBaseStat_HandleAlternateForme(species, *formePtr, stat);
+    ctx->calcTemp = GetMonBaseStat_HandleAlternateForm(species, *formPtr, stat);
 
     return FALSE;
 }

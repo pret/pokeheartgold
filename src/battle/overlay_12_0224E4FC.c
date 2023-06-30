@@ -83,9 +83,9 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
     }
     
     if ((BattleSystem_GetBattleType(bsys) & (BATTLE_TYPE_5|BATTLE_TYPE_9)) && !BattleSystem_GetFieldSide(bsys, battlerId)) {
-        ctx->battleMons[battlerId].forme = 0;
+        ctx->battleMons[battlerId].form= 0;
     } else {
-        ctx->battleMons[battlerId].forme = GetMonData(mon, MON_DATA_FORME, NULL);
+        ctx->battleMons[battlerId].form = GetMonData(mon, MON_DATA_FORM, NULL);
     }
     
     ctx->battleMons[battlerId].level = GetMonData(mon, MON_DATA_LEVEL, NULL);
@@ -101,7 +101,7 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
     
     ctx->battleMons[battlerId].ball = BattleSystem_GetMonBall(bsys, mon);
     
-    SetDexBanksByGiratinaForme(ctx->battleMons[battlerId].forme);
+    SetDexBanksByGiratinaForm(ctx->battleMons[battlerId].form);
     dexData = PokedexData_Create(HEAP_ID_BATTLE);
     PokedexData_LoadAll(dexData, 0, HEAP_ID_BATTLE);
     
@@ -462,8 +462,8 @@ int GetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
         return mon->slowStartFlag;
     case BMON_DATA_SLOW_START_END:
         return mon->slowStartEnded;
-    case BMON_DATA_FORME:
-        return mon->forme;
+    case BMON_DATA_FORM:
+        return mon->form;
     case BMON_DATA_100:
         return GetBattlerVar(ctx, battlerId, ctx->tempData, data);
     default:
@@ -754,8 +754,8 @@ void SetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
     case BMON_DATA_SLOW_START_END:
         mon->slowStartEnded = *data8;
         break;
-    case BMON_DATA_FORME:
-        mon->forme = *data8;
+    case BMON_DATA_FORM:
+        mon->form = *data8;
         break;
     case BMON_DATA_100:
         SetBattlerVar(ctx, battlerId, ctx->tempData, data);
@@ -946,8 +946,8 @@ void AddBattlerVar(BATTLEMON *mon, u32 varId, int data) {
     case BMON_DATA_SLOW_START_END:
         mon->slowStartEnded += data;
         break;
-    case BMON_DATA_FORME:
-        mon->forme += data;
+    case BMON_DATA_FORM:
+        mon->form += data;
         break;
     default:
         GF_ASSERT(FALSE);

@@ -191,12 +191,12 @@
 .public ReleaseMonLock
 .public GetMonData
 .public SetMonData
-.public GetMonBaseStat_HandleAlternateForme
+.public GetMonBaseStat_HandleAlternateForm
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public sub_0207083C
 .public Mon_GetBoxMon
 .public CopyPokemonToPokemon
-.public Mon_UpdateShayminForme
+.public Mon_UpdateShayminForm
 .public Pokemon_RemoveCapsule
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx

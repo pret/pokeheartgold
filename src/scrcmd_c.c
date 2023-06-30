@@ -2687,7 +2687,7 @@ BOOL ScrCmd_264(ScriptContext *ctx) {
     MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
     u16 r4 = ScriptReadHalfword(ctx);
     PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(ctx->fsys));
-    SAVE_EASY_CHAT_T *easyChat = SaveData_EasyChat_Get(FieldSystem_GetSaveDataPtr(ctx->fsys));
+    SAVE_EASY_CHAT_T *easyChat = Save_EasyChat_Get(FieldSystem_GetSaveDataPtr(ctx->fsys));
     u16 objId;
 
     if (r4 == 0) {
@@ -3685,7 +3685,7 @@ BOOL ScrCmd_517(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_518(ScriptContext *ctx) {
-    u16 forme = ScriptGetVar(ctx);
+    u16 form = ScriptGetVar(ctx);
     PARTY *party = SaveArray_PlayerParty_Get(ctx->fsys->savedata);
     int partyCount = GetPartyCount(party);
     Pokedex *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
@@ -3694,7 +3694,7 @@ BOOL ScrCmd_518(ScriptContext *ctx) {
     for (i = 0; i < partyCount; i++) {
         Pokemon *mon = GetPartyMonByIndex(party, i);
         if (GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_DEOXYS) {
-            SetMonData(mon, MON_DATA_FORME, &forme);
+            SetMonData(mon, MON_DATA_FORM, &form);
             CalcMonLevelAndStats(mon);
             Pokedex_SetMonCaughtFlag(pokedex, mon);
         }
@@ -3723,11 +3723,11 @@ BOOL ScrCmd_519(ScriptContext *ctx) {
         BOOL hasMultiple;
         Pokemon *mon = GetPartyMonByIndex(party, i);
         u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        u32 forme = GetMonData(mon, MON_DATA_FORME, NULL);
+        u32 form = GetMonData(mon, MON_DATA_FORM, NULL);
         if (species == SPECIES_BURMY) {
             hasMultiple = FALSE;
-            for (j = 0, sp18[i] = forme; j < i; j++) {
-                if (sp18[j] == forme) {
+            for (j = 0, sp18[i] = form; j < i; j++) {
+                if (sp18[j] == form) {
                     hasMultiple = TRUE;
                 }
             }
@@ -3780,7 +3780,7 @@ BOOL ScrCmd_524(ScriptContext *ctx) {
 
 BOOL ScrCmd_525(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = Save_PlayerHasRegiInParty(ctx->fsys->savedata);
+    *p_ret = Save_PlayerHasAllRegisInParty(ctx->fsys->savedata);
     return FALSE;
 }
 
@@ -3865,7 +3865,7 @@ BOOL ScrCmd_538(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     u16 wordIdx = ScriptGetVar(ctx);
     MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
-    int trendy = SaveEasyChat_RandomTrendySayingSet(SaveData_EasyChat_Get(ctx->fsys->savedata));
+    int trendy = Save_EasyChat_RandomTrendySayingSet(Save_EasyChat_Get(ctx->fsys->savedata));
     if (trendy == 32) {
         *p_ret = 0xFFFF;
         return FALSE;
@@ -3877,7 +3877,7 @@ BOOL ScrCmd_538(ScriptContext *ctx) {
 
 BOOL ScrCmd_540(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = SaveEasyChat_TrendySayingsUnlockedAllCheck(SaveData_EasyChat_Get(ctx->fsys->savedata)) == TRUE;
+    *p_ret = Save_EasyChat_TrendySayingsUnlockedAllCheck(Save_EasyChat_Get(ctx->fsys->savedata)) == TRUE;
     return FALSE;
 }
 
@@ -3903,7 +3903,7 @@ BOOL ScrCmd_543(ScriptContext *ctx) {
 BOOL ScrCmd_545(ScriptContext *ctx) {
     Pokedex *pokedex = Save_Pokedex_Get(ctx->fsys->savedata);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = Pokedex_GetSeenFormeNum_Unown(pokedex, TRUE);
+    *p_ret = Pokedex_GetSeenFormNum_Unown(pokedex, TRUE);
     return FALSE;
 }
 
@@ -4230,7 +4230,7 @@ BOOL ScrCmd_667(ScriptContext *ctx) {
 
 u32 sub_020467A8(SaveData *saveData);
 
-BOOL ScrCmd_GetOwnedRotomFormes(ScriptContext *ctx) {
+BOOL ScrCmd_GetOwnedRotomForms(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     u16 *hasHeat = ScriptGetVarPointer(ctx);
     u16 *hasWash = ScriptGetVarPointer(ctx);
@@ -4273,7 +4273,7 @@ u32 sub_020467A8(SaveData *saveData) {
     for (i = 0; i < partyCount; i++) {
         Pokemon *mon = GetPartyMonByIndex(party, i);
         if (GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
-            ret |= 1 << GetMonData(mon, MON_DATA_FORME, NULL);
+            ret |= 1 << GetMonData(mon, MON_DATA_FORM, NULL);
         }
     }
 
@@ -4281,7 +4281,7 @@ u32 sub_020467A8(SaveData *saveData) {
     for (i = 0; i < 2; i++) {
         BoxPokemon *boxMon = DayCareMon_GetBoxMon(Save_DayCare_GetMonX(dayCare, i));
         if (GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL)) {
-            ret |= 1 << GetBoxMonData(boxMon, MON_DATA_FORME, NULL);
+            ret |= 1 << GetBoxMonData(boxMon, MON_DATA_FORM, NULL);
         }
     }
 
@@ -4290,7 +4290,7 @@ u32 sub_020467A8(SaveData *saveData) {
         for (j = 0; j < MONS_PER_BOX; j++) {
             BoxPokemon *boxMon = PCStorage_GetMonByIndexPair(pcStorage, i, j);
             if (GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL)) {
-                ret |= 1 << GetBoxMonData(boxMon, MON_DATA_FORME, NULL);
+                ret |= 1 << GetBoxMonData(boxMon, MON_DATA_FORM, NULL);
             }
         }
     }
@@ -4300,7 +4300,7 @@ u32 sub_020467A8(SaveData *saveData) {
     POKEWALKER *pokeWalker = Save_Pokewalker_Get(saveData);
     if (Pokewalker_TryGetBoxMon(pokeWalker, walkerBoxMon)) {
         if (GetBoxMonData(walkerBoxMon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetBoxMonData(walkerBoxMon, MON_DATA_IS_EGG, NULL)) {
-            ret |= 1 << GetBoxMonData(walkerBoxMon, MON_DATA_FORME, NULL);
+            ret |= 1 << GetBoxMonData(walkerBoxMon, MON_DATA_FORM, NULL);
         }
     }
     FreeToHeap(walkerMon);

@@ -107,7 +107,7 @@
 .public BattleControl_EmitPartyStatusHeal
 .public ov12_02263D14
 .public BattleController_EmitPlayMosaicAnimation
-.public BattleController_EmitChangeForme
+.public BattleController_EmitChangeForm
 .public BattleController_EmitSetBattleBackground
 .public ov12_02263E18
 .public BattleController_EmitInitStartBallGauge

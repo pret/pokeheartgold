@@ -248,8 +248,8 @@
 .public SetFlagInArray
 .public ClearFlagInArray
 .public SpeciesToOverworldModelIndexOffset
-.public OverworldModelLookupFormeCount
-.public OverworldModelLookupHasFemaleForme
+.public OverworldModelLookupFormCount
+.public OverworldModelLookupHasFemaleForm
 .public ZeroMonData
 .public AllocMonZeroed
 .public AcquireBoxMonLock
@@ -260,7 +260,7 @@
 .public GetBoxMonData
 .public SetMonData
 .public SetBoxMonData
-.public AllocAndLoadMonPersonal_HandleAlternateForme
+.public AllocAndLoadMonPersonal_HandleAlternateForm
 .public AllocAndLoadMonPersonal
 .public GetPersonalAttr
 .public FreeMonPersonal
@@ -274,7 +274,7 @@
 .public sub_02070438
 .public Mon_GetBoxMon
 .public CopyBoxPokemonToPokemon
-.public Mon_UpdateShayminForme
+.public Mon_UpdateShayminForm
 .public ChangePersonalityToNatureGenderAndAbility
 .public PCStorage_PlaceMonInBoxByIndexPair
 .public PCStorage_DeleteBoxMonByIndexPair

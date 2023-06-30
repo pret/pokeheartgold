@@ -748,7 +748,7 @@ _0C4F:
 	get_partymon_species VAR_TEMP_x400A, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 172
 	goto_if_ne _0C7B
-	get_partymon_forme VAR_TEMP_x400A, VAR_SPECIAL_RESULT
+	get_partymon_form VAR_TEMP_x400A, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0C7B
 	goto _0E45

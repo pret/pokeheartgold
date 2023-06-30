@@ -210,9 +210,9 @@ _0207F590:
 	add r2, sp, #0
 	bl SetMonData
 	add r0, r6, #0
-	bl Pokemon_UpdateArceusForme
+	bl Pokemon_UpdateArceusForm
 	add r0, r6, #0
-	bl Mon_UpdateGiratinaForme
+	bl Mon_UpdateGiratinaForm
 	ldr r1, _0207F684 ; =0x00000C65
 	ldrb r2, [r5, r1]
 	mov r1, #0x30
@@ -377,7 +377,7 @@ _0207F71C: .word 0x00000C64
 sub_0207F720: ; 0x0207F720
 	push {r4, lr}
 	add r4, r0, #0
-	bl PartyMenu_AnimateIconFormeChange
+	bl PartyMenu_AnimateIconFormChange
 	cmp r0, #1
 	bne _0207F736
 	add r0, r4, #0
@@ -656,9 +656,9 @@ sub_0207F924: ; 0x0207F924
 	add r2, sp, #0
 	bl SetMonData
 	add r0, r5, #0
-	bl Pokemon_UpdateArceusForme
+	bl Pokemon_UpdateArceusForm
 	add r0, r5, #0
-	bl Mon_UpdateGiratinaForme
+	bl Mon_UpdateGiratinaForm
 	ldr r1, _0207F9BC ; =0x00000C65
 	mov r2, #0x30
 	ldrb r3, [r4, r1]

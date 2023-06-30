@@ -11,8 +11,8 @@
 static void FsysFollowMonClear(FollowMon *followMon);
 static void FollowingPoke_SetObjectShinyFlag(LocalMapObject *mapObject, BOOL enable);
 static BOOL FollowPokePermissionDiglettCheck(int mapno);
-static void FollowingPoke_SetObjectFormeParam(LocalMapObject *mapObject, int species, u8 forme);
-static LocalMapObject *CreateFollowingSpriteFieldObject(MapObjectManager *mapObjectMan, int species, u16 forme, int gender, int direction, int x, int y, int shiny);
+static void FollowingPoke_SetObjectFormParam(LocalMapObject *mapObject, int species, u8 form);
+static LocalMapObject *CreateFollowingSpriteFieldObject(MapObjectManager *mapObjectMan, int species, u16 form, int gender, int direction, int x, int y, int shiny);
 
 static const u16 sModelIndexLUT[] = {
     FOLLOWER_MON_NONE,
@@ -511,7 +511,7 @@ static const u16 sModelIndexLUT[] = {
     FOLLOWER_MON_ARCEUS_NORMAL,
 };
 
-static const u16 sFormeMaxLUT[] = {
+static const u16 sFormMaxLUT[] = {
     0,          // SPECIES_BULBASAUR
     0,          // SPECIES_IVYSAUR
     0,          // SPECIES_VENUSAUR
@@ -1509,7 +1509,7 @@ LocalMapObject *sub_020699F8(MapObjectManager *mapObjectMan, int x, int y, int d
     int partyCount;
     Pokemon *mon;
     int species;
-    int forme;
+    int form;
     int gender;
     int shiny;
     int player_unk;
@@ -1528,12 +1528,12 @@ LocalMapObject *sub_020699F8(MapObjectManager *mapObjectMan, int x, int y, int d
         species = GetMonData(mon, MON_DATA_SPECIES, NULL);
         fsys->followMon.mapObject = NULL;
         if (GetFollowPokePermissionBySpeciesAndMap(species, mapno)) {
-            forme = GetMonData(mon, MON_DATA_FORME, NULL);
+            form = GetMonData(mon, MON_DATA_FORM, NULL);
             gender = GetMonData(mon, MON_DATA_GENDER, NULL);
             shiny = MonIsShiny(mon);
-            fsys->followMon.mapObject = CreateFollowingSpriteFieldObject(mapObjectMan, species, forme, gender, direction, x, y, shiny);
+            fsys->followMon.mapObject = CreateFollowingSpriteFieldObject(mapObjectMan, species, form, gender, direction, x, y, shiny);
             fsys->followMon.active = TRUE;
-            FollowPokeFsysParamSet(fsys, species, forme, shiny, gender);
+            FollowPokeFsysParamSet(fsys, species, form, shiny, gender);
             FsysUnkSub108_Set(fsys->unk108, mon, species, GetMonData(mon, MON_DATA_PERSONALITY, NULL));
             player_unk = PlayerAvatar_GetState(fsys->playerAvatar);
             if (player_unk == 0 || player_unk == 3) {
@@ -1564,7 +1564,7 @@ void sub_02069B74(MapObjectManager *mapObjectMan, u32 mapno) {
     int partyCount;
     Pokemon *mon;
     int species;
-    int forme;
+    int form;
     u8 gender;
     int shiny;
     int player_unk;
@@ -1583,14 +1583,14 @@ void sub_02069B74(MapObjectManager *mapObjectMan, u32 mapno) {
             if (followPokeObj == NULL) {
                 fsys->followMon.unk15 = 1;
             } else {
-                forme = GetMonData(mon, MON_DATA_FORME, NULL);
+                form = GetMonData(mon, MON_DATA_FORM, NULL);
                 gender = GetMonGender(mon);
                 shiny = MonIsShiny(mon);
                 fsys->followMon.mapObject = followPokeObj;
                 fsys->followMon.active = TRUE;
-                FollowPokeFsysParamSet(fsys, species, forme, shiny, gender);
-                FollowPokeMapObjectSetParams(followPokeObj, species, forme, shiny);
-                MapObject_SetGfxID(fsys->followMon.mapObject, FollowingPokemon_GetSpriteID(species, forme, gender));
+                FollowPokeFsysParamSet(fsys, species, form, shiny, gender);
+                FollowPokeMapObjectSetParams(followPokeObj, species, form, shiny);
+                MapObject_SetGfxID(fsys->followMon.mapObject, FollowingPokemon_GetSpriteID(species, form, gender));
                 player_unk = PlayerAvatar_GetState(fsys->playerAvatar);
                 if (player_unk == 0 || player_unk == 3) {
                     SavFollowPoke_SetUnused2bitField(1, Save_FollowPoke_Get(fsys->savedata));
@@ -1614,12 +1614,12 @@ void sub_02069B74(MapObjectManager *mapObjectMan, u32 mapno) {
         } else {
             followPokeObj = GetMapObjectByID(fsys->mapObjectMan, obj_partner_poke);
             if (followPokeObj != NULL) {
-                forme = GetMonData(mon, MON_DATA_FORME, NULL);
+                form = GetMonData(mon, MON_DATA_FORM, NULL);
                 gender = GetMonGender(mon);
                 shiny = MonIsShiny(mon);
-                FollowPokeFsysParamSet(fsys, species, forme, shiny, gender);
-                FollowPokeMapObjectSetParams(followPokeObj, species, forme, shiny);
-                MapObject_SetGfxID(followPokeObj, FollowingPokemon_GetSpriteID(species, forme, gender));
+                FollowPokeFsysParamSet(fsys, species, form, shiny, gender);
+                FollowPokeMapObjectSetParams(followPokeObj, species, form, shiny);
+                MapObject_SetGfxID(followPokeObj, FollowingPokemon_GetSpriteID(species, form, gender));
                 fsys->followMon.mapObject = followPokeObj;
                 fsys->followMon.active = TRUE;
                 fsys->followMon.unk15 = 1;
@@ -1632,22 +1632,22 @@ LocalMapObject *FollowingPokemon_GetMapObject(FieldSystem *fsys) {
     return fsys->followMon.mapObject;
 }
 
-u32 FollowingPokemon_GetSpriteID(int species, u16 forme, u32 gender) {
+u32 FollowingPokemon_GetSpriteID(int species, u16 form, u32 gender) {
     int ret;
 
     if (species <= 0 || species > NATIONAL_DEX_COUNT) {
         ret = SPRITE_FOLLOWER_MON_BULBASAUR;
     } else {
         ret = SPRITE_FOLLOWER_MON_BULBASAUR + SpeciesToOverworldModelIndexOffset(species);
-        if (OverworldModelLookupHasFemaleForme(species)) {
+        if (OverworldModelLookupHasFemaleForm(species)) {
             if (gender == MON_FEMALE) {
                 ret++;
             }
         } else {
-            if (forme > OverworldModelLookupFormeCount(species)) {
-                forme = 0;
+            if (form > OverworldModelLookupFormCount(species)) {
+                form = 0;
             }
-            ret += forme;
+            ret += form;
         }
         if (ret > SPRITE_FOLLOWER_MON_ARCEUS_DARK) {
             ret = SPRITE_FOLLOWER_MON_BULBASAUR;
@@ -1742,23 +1742,23 @@ u8 sub_02069ED4(LocalMapObject *mapObject) {
     return (MapObject_GetParam(mapObject, 2) >> 10) & 0x3F;
 }
 
-void FollowPokeMapObjectSetParams(LocalMapObject *mapObject, int species, u8 forme, BOOL shiny) {
+void FollowPokeMapObjectSetParams(LocalMapObject *mapObject, int species, u8 form, BOOL shiny) {
     FollowingPoke_SetObjectShinyFlag(mapObject, shiny);
-    FollowingPoke_SetObjectFormeParam(mapObject, species, forme);
+    FollowingPoke_SetObjectFormParam(mapObject, species, form);
     MapObject_SetParam(mapObject, species, 0);
 }
 
-void sub_02069F0C(LocalMapObject *mapObject, int species, u8 forme, BOOL shiny, int a4) {
+void sub_02069F0C(LocalMapObject *mapObject, int species, u8 form, BOOL shiny, int a4) {
     MapObject_SetParam(mapObject, a4, 2);
     FollowingPoke_SetObjectShinyFlag(mapObject, shiny);
-    FollowingPoke_SetObjectFormeParam(mapObject, species, forme);
+    FollowingPoke_SetObjectFormParam(mapObject, species, form);
     MapObject_SetParam(mapObject, species, 0);
 }
 
-void FollowPokeFsysParamSet(FieldSystem *fsys, int species, u8 forme, BOOL shiny, u8 gender) {
+void FollowPokeFsysParamSet(FieldSystem *fsys, int species, u8 form, BOOL shiny, u8 gender) {
     fsys->followMon.species = species;
     fsys->followMon.shiny = shiny;
-    fsys->followMon.forme = forme;
+    fsys->followMon.form = form;
     fsys->followMon.gender = gender;
 }
 
@@ -1884,17 +1884,17 @@ static BOOL FollowPokePermissionDiglettCheck(int mapno) {
     }
 }
 
-static void FollowingPoke_SetObjectFormeParam(LocalMapObject *mapObject, int species, u8 forme) {
+static void FollowingPoke_SetObjectFormParam(LocalMapObject *mapObject, int species, u8 form) {
     u8 data[4];
     int offset;
-    int formect;
+    int formct;
     u16 param;
 
     offset = SpeciesToOverworldModelIndexOffset(species);
-    formect = OverworldModelLookupFormeCount(species);
-    if (formect > 0) {
-        if (forme <= formect) {
-            offset += forme;
+    formct = OverworldModelLookupFormCount(species);
+    if (formct > 0) {
+        if (form <= formct) {
+            offset += form;
         } else {
             GF_ASSERT(0);
         }
@@ -1904,7 +1904,7 @@ static void FollowingPoke_SetObjectFormeParam(LocalMapObject *mapObject, int spe
     MapObject_SetParam(mapObject, param, 1);
 }
 
-static LocalMapObject *CreateFollowingSpriteFieldObject(MapObjectManager *mapObjectMan, int species, u16 forme, int gender, int direction, int x, int y, int shiny) {
+static LocalMapObject *CreateFollowingSpriteFieldObject(MapObjectManager *mapObjectMan, int species, u16 form, int gender, int direction, int x, int y, int shiny) {
     LocalMapObject *ret;
 
     ret = CreateSpecialFieldObject(
@@ -1912,7 +1912,7 @@ static LocalMapObject *CreateFollowingSpriteFieldObject(MapObjectManager *mapObj
         x,
         y,
         direction,
-        FollowingPokemon_GetSpriteID(species, forme, gender),
+        FollowingPokemon_GetSpriteID(species, form, gender),
         0x30,
         MAP_NOTHING
     );
@@ -1922,7 +1922,7 @@ static LocalMapObject *CreateFollowingSpriteFieldObject(MapObjectManager *mapObj
     MapObject_SetFlagID(ret, 0);
     MapObject_SetScript(ret, std_following_mon);
     MapObject_SetParam(ret, 0, 2);
-    FollowPokeMapObjectSetParams(ret, species, forme, shiny);
+    FollowPokeMapObjectSetParams(ret, species, form, shiny);
     MapObject_SetXRange(ret, -1);
     MapObject_SetYRange(ret, -1);
     MapObject_SetFlagsBits(ret, MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_UNK10);
@@ -2012,17 +2012,17 @@ int SpeciesToOverworldModelIndexOffset(int species) {
     return sModelIndexLUT[species];
 }
 
-int OverworldModelLookupFormeCount(int species) {
+int OverworldModelLookupFormCount(int species) {
     if (!(species > 0 && species <= NATIONAL_DEX_COUNT)) {
         GF_ASSERT(0);
         species = 0;
     } else {
         species--;
     }
-    return sFormeMaxLUT[species];
+    return sFormMaxLUT[species];
 }
 
-BOOL OverworldModelLookupHasFemaleForme(int species) {
+BOOL OverworldModelLookupHasFemaleForm(int species) {
     if (!(species > 0 && species <= NATIONAL_DEX_COUNT)) {
         GF_ASSERT(0);
         species = 0;

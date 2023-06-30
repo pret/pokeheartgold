@@ -12,7 +12,7 @@
 .public sub_0205BC78
 .public Save_GetPartyLead
 .public Save_GetPartyLeadAlive
-.public Save_PlayerHasRegiInParty
+.public Save_PlayerHasAllRegisInParty
 .public sub_0205BED8
 .public sub_0205BFB4
 .public MapObject_SetVisible

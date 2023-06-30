@@ -3728,7 +3728,7 @@
 	.short \arg1
 	.endm
 
-	.macro set_mon_forme arg0, arg1
+	.macro set_mon_form arg0, arg1
 	.short 659
 	.short \arg0
 	.short \arg1
@@ -3808,7 +3808,7 @@
 	.short \arg2
 	.endm
 
-	.macro get_owned_rotom_formes arg0, arg1, arg2, arg3, arg4
+	.macro get_owned_rotom_forms arg0, arg1, arg2, arg3, arg4
 	.short 673
 	.short \arg0
 	.short \arg1
@@ -3823,7 +3823,7 @@
 	.short \arg1
 	.endm
 
-	.macro update_rotom_forme arg0, arg1, arg2, arg3
+	.macro update_rotom_form arg0, arg1, arg2, arg3
 	.short 675
 	.short \arg0
 	.short \arg1
@@ -3831,7 +3831,7 @@
 	.short \arg3
 	.endm
 
-	.macro get_party_mon_forme arg0, arg1
+	.macro get_party_mon_form arg0, arg1
 	.short 676
 	.short \arg0
 	.short \arg1
@@ -3903,7 +3903,7 @@
 	.endm
 
 	; Attempt to remove all Griseous Orbs and reset Pokemon
-	; to formes present in Diamond and Pearl, to avoid
+	; to forms present in Diamond and Pearl, to avoid
 	; problems communicating with those games.
 	.macro comm_sanitize_party var_result
 	.short 689
@@ -4613,7 +4613,7 @@
 	.short \arg0
 	.endm
 
-	.macro get_partymon_forme arg0, arg1
+	.macro get_partymon_form arg0, arg1
 	.short 827
 	.short \arg0
 	.short \arg1

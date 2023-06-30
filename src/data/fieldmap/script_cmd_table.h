@@ -658,7 +658,7 @@ BOOL ScrCmd_TutorMoveGetPrice(ScriptContext *ctx);
 BOOL ScrCmd_656(ScriptContext *ctx);
 BOOL ScrCmd_StatJudge(ScriptContext *ctx);
 BOOL ScrCmd_BufferStatName(ScriptContext *ctx);
-BOOL ScrCmd_SetMonForme(ScriptContext *ctx);
+BOOL ScrCmd_SetMonForm(ScriptContext *ctx);
 BOOL ScrCmd_BufferTrainerName(ScriptContext *ctx);
 BOOL ScrCmd_661(ScriptContext *ctx);
 BOOL ScrCmd_662(ScriptContext *ctx);
@@ -672,10 +672,10 @@ BOOL ScrCmd_GetItemQuantity(ScriptContext *ctx);
 BOOL ScrCmd_GetHiddenPowerType(ScriptContext *ctx);
 BOOL ScrCmd_SetFavoriteMon(ScriptContext *ctx);
 BOOL ScrCmd_GetFavoriteMon(ScriptContext *ctx);
-BOOL ScrCmd_GetOwnedRotomFormes(ScriptContext *ctx);
+BOOL ScrCmd_GetOwnedRotomForms(ScriptContext *ctx);
 BOOL ScrCmd_CountTranformedRotomsInParty(ScriptContext *ctx);
-BOOL ScrCmd_UpdateRotomForme(ScriptContext *ctx);
-BOOL ScrCmd_GetPartyMonForme(ScriptContext *ctx);
+BOOL ScrCmd_UpdateRotomForm(ScriptContext *ctx);
+BOOL ScrCmd_GetPartyMonForm(ScriptContext *ctx);
 BOOL ScrCmd_677(ScriptContext *ctx);
 BOOL ScrCmd_678(ScriptContext *ctx);
 BOOL ScrCmd_679(ScriptContext *ctx);
@@ -826,7 +826,7 @@ BOOL ScrCmd_823(ScriptContext *ctx);
 BOOL ScrCmd_824(ScriptContext *ctx);
 BOOL ScrCmd_GetShinyLeafCount(ScriptContext *ctx);
 BOOL ScrCmd_TryGiveShinyLeafCrown(ScriptContext *ctx);
-BOOL ScrCmd_GetPartymonForme(ScriptContext *ctx);
+BOOL ScrCmd_GetPartymonForm(ScriptContext *ctx);
 BOOL ScrCmd_MonAddContestValue(ScriptContext *ctx);
 BOOL ScrCmd_829(ScriptContext *ctx);
 BOOL ScrCmd_830(ScriptContext *ctx);
@@ -1513,7 +1513,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_656,
     ScrCmd_StatJudge,
     ScrCmd_BufferStatName,
-    ScrCmd_SetMonForme,
+    ScrCmd_SetMonForm,
     ScrCmd_BufferTrainerName,
     ScrCmd_661,
     ScrCmd_662,
@@ -1527,10 +1527,10 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_GetHiddenPowerType,
     ScrCmd_SetFavoriteMon,
     ScrCmd_GetFavoriteMon,
-    ScrCmd_GetOwnedRotomFormes,
+    ScrCmd_GetOwnedRotomForms,
     ScrCmd_CountTranformedRotomsInParty,
-    ScrCmd_UpdateRotomForme,
-    ScrCmd_GetPartyMonForme,
+    ScrCmd_UpdateRotomForm,
+    ScrCmd_GetPartyMonForm,
     ScrCmd_677,
     ScrCmd_678,
     ScrCmd_679,
@@ -1681,7 +1681,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_824,
     ScrCmd_GetShinyLeafCount,
     ScrCmd_TryGiveShinyLeafCrown,
-    ScrCmd_GetPartymonForme,
+    ScrCmd_GetPartymonForm,
     ScrCmd_MonAddContestValue,
     ScrCmd_829,
     ScrCmd_830,

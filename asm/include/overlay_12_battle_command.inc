@@ -70,7 +70,7 @@
 .public CalcMonStats
 .public GetMonData
 .public SetMonData
-.public AllocAndLoadMonPersonal_HandleAlternateForme
+.public AllocAndLoadMonPersonal_HandleAlternateForm
 .public GetPersonalAttr
 .public FreeMonPersonal
 .public GetMonBaseStat
@@ -83,7 +83,7 @@
 .public MonTryLearnMoveOnLevelUp
 .public CopyPokemonToPokemon
 .public Party_MaskMonsWithPokerus
-.public Mon_UpdateGiratinaForme
+.public Mon_UpdateGiratinaForm
 .public MaskOfFlagNo
 .public PCStorage_PlaceMonInBoxFirstEmptySlot
 .public PCStorage_GetActiveBox
@@ -341,7 +341,7 @@
 .public BtlCmd_CheckChatterActivation
 .public BtlCmd_GetMoveParam
 .public BtlCmd_Mosaic
-.public BtlCmd_ChangeForme
+.public BtlCmd_ChangeForm
 .public BtlCmd_SetBattleBackground
 .public BtlCmd_RecoverStatus
 .public BtlCmd_TryRun

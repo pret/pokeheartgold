@@ -29,7 +29,7 @@ typedef struct FollowMon {
     u8 unk15;
     u8 active;
     u8 shiny;
-    u16 forme;
+    u16 form;
     u16 dummy;
     u32 unk1C;
 } FollowMon;

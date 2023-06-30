@@ -179,7 +179,7 @@
 .public sub_0203A880
 .public sub_0203A914
 .public GetMonData
-.public GetMonBaseStat_HandleAlternateForme
+.public GetMonBaseStat_HandleAlternateForm
 .public GetMonGender
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public Mon_GetBoxMon

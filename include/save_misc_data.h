@@ -33,7 +33,7 @@ typedef struct SAVE_MISC_DATA {
     u8 unk_0280[8]; // 3 chunks of size (4, 2, 2)
     u8 filler_0288[0x10];
     u16 favoriteMonSpecies;
-    u8 favoriteMonForme:7;
+    u8 favoriteMonForm:7;
     u8 favoriteMonIsEgg:1;
     u8 extraChunksExist:1;
     u8 unk_029B_1:4;
@@ -61,8 +61,8 @@ const u16 *Save_Misc_RivalName_Const_Get(const SAVE_MISC_DATA *saveMiscData);
 void Save_Misc_RivalName_Set(SAVE_MISC_DATA *saveMiscData, const String *name);
 void SaveMisc_SetExtraChunksExist(SAVE_MISC_DATA *saveMiscData);
 BOOL SaveMisc_CheckExtraChunksExist(SAVE_MISC_DATA *saveMiscData);
-void SaveMisc_SetFavoriteMon(SAVE_MISC_DATA *saveMiscData, int species, int forme, int isEgg);
-void SaveMisc_GetFavoriteMon(SAVE_MISC_DATA *saveMiscData, int *species, int *forme, int *isEgg);
+void SaveMisc_SetFavoriteMon(SAVE_MISC_DATA *saveMiscData, int species, int form, int isEgg);
+void SaveMisc_GetFavoriteMon(SAVE_MISC_DATA *saveMiscData, int *species, int *form, int *isEgg);
 BOOL sub_0202AA44(SAVE_MISC_DATA *saveMiscData, int a1, int a2);
 void sub_0202AA9C(SAVE_MISC_DATA *saveMiscData, int a1);
 u8 sub_0202AAD4(SAVE_MISC_DATA *saveMiscData, int a1);

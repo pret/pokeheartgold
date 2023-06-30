@@ -13,7 +13,7 @@ static BOOL MonNotFaintedOrEgg(Pokemon *mon) {
     return !GetMonData(mon, MON_DATA_IS_EGG, NULL);
 }
 
-BOOL GiveMon(HeapID heapId, SaveData *saveData, int species, int level, int forme, u8 ability, u16 heldItem, int ball, int encounterType) {
+BOOL GiveMon(HeapID heapId, SaveData *saveData, int species, int level, int form, u8 ability, u16 heldItem, int ball, int encounterType) {
     PARTY *party;
     Pokemon *mon;
     PlayerProfile *profile;
@@ -29,7 +29,7 @@ BOOL GiveMon(HeapID heapId, SaveData *saveData, int species, int level, int form
         sub_020720FC(mon, profile, ITEM_POKE_BALL, ball, encounterType, heapId);
         sp1C = heldItem;
         SetMonData(mon, MON_DATA_HELD_ITEM, &sp1C);
-        SetMonData(mon, MON_DATA_FORME, &forme);
+        SetMonData(mon, MON_DATA_FORM, &form);
         if (ability != 0) {
             SetMonData(mon, MON_DATA_ABILITY, &ability);
         }

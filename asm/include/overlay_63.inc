@@ -126,8 +126,8 @@
 .public GetIGTHours
 .public GetIGTMinutes
 .public SpeciesToOverworldModelIndexOffset
-.public OverworldModelLookupFormeCount
-.public OverworldModelLookupHasFemaleForme
+.public OverworldModelLookupFormCount
+.public OverworldModelLookupHasFemaleForm
 .public MonIsInGameTradePoke
 .public AcquireMonLock
 .public ReleaseMonLock

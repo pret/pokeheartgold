@@ -132,7 +132,7 @@ _0209119A:
 	mov r2, #0
 	str r0, [r1, #0x10]
 	ldr r0, [r4, #0xc]
-	mov r1, #MON_DATA_FORME
+	mov r1, #MON_DATA_FORM
 	bl GetMonData
 	ldr r1, [r4, #8]
 	str r0, [r1, #8]

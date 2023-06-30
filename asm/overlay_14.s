@@ -1309,7 +1309,7 @@ ov14_021E6318: ; 0x021E6318
 	bne _021E6350
 	ldr r0, [r4]
 	mov r1, #0
-	bl Mon_UpdateShayminForme
+	bl Mon_UpdateShayminForm
 _021E6350:
 	ldr r0, [r4]
 	bl Mon_GetBoxMon
@@ -1523,7 +1523,7 @@ ov14_021E64D0: ; 0x021E64D0
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	add r0, r4, #0
-	bl BoxMon_UpdateArceusForme
+	bl BoxMon_UpdateArceusForm
 	add r0, r4, #0
 	mov r1, #0x70
 	mov r2, #0
@@ -1545,7 +1545,7 @@ _021E6510:
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	add r0, r4, #0
-	bl BoxMon_UpdateGiratinaForme
+	bl BoxMon_UpdateGiratinaForm
 	add r0, r4, #0
 	mov r1, #0x70
 	mov r2, #0
@@ -1603,7 +1603,7 @@ _021E6564:
 	add r2, r4, #0
 	bl ov14_021E60C0
 	mov r1, #0
-	bl BoxMon_UpdateShayminForme
+	bl BoxMon_UpdateShayminForm
 	ldr r3, [r5, #0x34]
 	ldrb r1, [r5, #0x1f]
 	add r6, r3, r4
@@ -30534,7 +30534,7 @@ _021F4A8A:
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	add r1, r4, #0
-	bl GetMonBaseStatEx_HandleAlternateForme
+	bl GetMonBaseStatEx_HandleAlternateForm
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
 	b _021F4AFC

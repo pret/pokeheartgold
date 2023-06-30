@@ -40,9 +40,9 @@
 
     .rodata
 
-    .global gWazaOshieMoves
-    .type gWazaOshieMoves,@object
-gWazaOshieMoves:
+    .global gMoveTutorMoves
+    .type gMoveTutorMoves,@object
+gMoveTutorMoves:
 ## for set in tutor
     oshie_begin
 ## for move in set.moves
@@ -50,4 +50,4 @@ gWazaOshieMoves:
 ## endfor
     oshie_end
 ## endfor
-    .size gWazaOshieMoves,.-gWazaOshieMoves
+    .size gMoveTutorMoves,.-gMoveTutorMoves

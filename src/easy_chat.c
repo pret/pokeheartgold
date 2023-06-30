@@ -94,7 +94,7 @@ static const struct {
     {_you, NELEMS(_you)},
 };
 
-void SaveEasyChat_SetGreetingFlag(SAVE_EASY_CHAT_T *ec, u8 a1);
+void Save_EasyChat_SetGreetingFlag(SAVE_EASY_CHAT_T *ec, u8 a1);
 
 BOOL GetCategoryAndMsgNoByECWordIdx(u16 ecWord, u32 *category, u32 *msgno);
 
@@ -180,23 +180,23 @@ void Save_EasyChat_Init(SAVE_EASY_CHAT_T *ec) {
     ec->trendy = 0;
     for (i = 0; i < NELEMS(sLanguageToGreetingMap); i++) {
         if (sLanguageToGreetingMap[i][0] == GAME_LANGUAGE) {
-            SaveEasyChat_SetGreetingFlag(ec, sLanguageToGreetingMap[i][1]);
+            Save_EasyChat_SetGreetingFlag(ec, sLanguageToGreetingMap[i][1]);
             break;
         }
     }
     SaveSubstruct_UpdateCRC(SAVE_EASY_CHAT);
 }
 
-SAVE_EASY_CHAT_T *SaveData_EasyChat_Get(SaveData *saveData) {
+SAVE_EASY_CHAT_T *Save_EasyChat_Get(SaveData *saveData) {
     SaveSubstruct_AssertCRC(SAVE_EASY_CHAT);
     return SaveArray_Get(saveData, SAVE_EASY_CHAT);
 }
 
-BOOL SaveEasyChat_GetTrendySayingFlag(SAVE_EASY_CHAT_T *ec, int flag) {
+BOOL Save_EasyChat_GetTrendySayingFlag(SAVE_EASY_CHAT_T *ec, int flag) {
     return (ec->trendy >> flag) & 1;
 }
 
-u32 SaveEasyChat_RandomTrendySayingSet(SAVE_EASY_CHAT_T *ec) {
+u32 Save_EasyChat_RandomTrendySayingSet(SAVE_EASY_CHAT_T *ec) {
     u32 i;
     u32 n;
     u32 k;
@@ -224,7 +224,7 @@ u32 SaveEasyChat_RandomTrendySayingSet(SAVE_EASY_CHAT_T *ec) {
     return 32;
 }
 
-BOOL SaveEasyChat_TrendySayingsUnlockedAllCheck(SAVE_EASY_CHAT_T *ec) {
+BOOL Save_EasyChat_TrendySayingsUnlockedAllCheck(SAVE_EASY_CHAT_T *ec) {
     u32 i;
 
     for (i = 0; i < 32; i++) {
@@ -244,11 +244,11 @@ ECWORD TrendyWordIdxToECWord(int a0) {
     return n + a0;
 }
 
-BOOL SaveEasyChat_GetGreetingsFlag(SAVE_EASY_CHAT_T *ec, u8 idx) {
+BOOL Save_EasyChat_GetGreetingsFlag(SAVE_EASY_CHAT_T *ec, u8 idx) {
     return (ec->greetings >> idx) & 1;
 }
 
-void SaveEasyChat_SetGreetingFlag(SAVE_EASY_CHAT_T *ec, u8 idx) {
+void Save_EasyChat_SetGreetingFlag(SAVE_EASY_CHAT_T *ec, u8 idx) {
     ec->greetings |= 1 << idx;
     SaveSubstruct_UpdateCRC(SAVE_EASY_CHAT);
 }

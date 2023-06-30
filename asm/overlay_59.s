@@ -7937,7 +7937,7 @@ ov59_0223BA64: ; 0x0223BA64
 	add r1, r0, #0
 	ldrh r0, [r5, #4]
 	mov r2, #0x1c
-	bl GetMonBaseStat_HandleAlternateForme
+	bl GetMonBaseStat_HandleAlternateForm
 	mov r1, #1
 	eor r0, r1
 	strb r0, [r5, #9]

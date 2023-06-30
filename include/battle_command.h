@@ -193,7 +193,7 @@ BOOL BtlCmd_CheckEffectActivation(BattleSystem *bsys, BATTLECONTEXT *ctx);
 BOOL BtlCmd_CheckChatterActivation(BattleSystem *bsys, BATTLECONTEXT *ctx);
 BOOL BtlCmd_GetMoveParam(BattleSystem *bsys, BATTLECONTEXT *ctx);
 BOOL BtlCmd_Mosaic(BattleSystem *bsys, BATTLECONTEXT *ctx);
-BOOL BtlCmd_ChangeForme(BattleSystem *bsys, BATTLECONTEXT *ctx);
+BOOL BtlCmd_ChangeForm(BattleSystem *bsys, BATTLECONTEXT *ctx);
 BOOL BtlCmd_SetBattleBackground(BattleSystem *bsys, BATTLECONTEXT *ctx);
 BOOL BtlCmd_RecoverStatus(BattleSystem *bsys, BATTLECONTEXT *ctx);
 BOOL BtlCmd_TryRun(BattleSystem *bsys, BATTLECONTEXT *ctx);

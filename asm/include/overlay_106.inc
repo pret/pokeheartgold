@@ -80,8 +80,8 @@
 .public Thunk_G3X_Reset
 .public sub_02026E50
 .public SpeciesToOverworldModelIndexOffset
-.public OverworldModelLookupFormeCount
-.public OverworldModelLookupHasFemaleForme
+.public OverworldModelLookupFormCount
+.public OverworldModelLookupHasFemaleForm
 .public GetMonData
 .public MonIsShiny
 .public GetPartyCount
