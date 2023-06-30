@@ -127,7 +127,7 @@ BOOL PartyHasMon(PARTY *party, u16 species) {
     int i;
 
     for (i = 0; i < party->core.curCount; i++) {
-        if (species == GetMonData(&party->core.mons[i], MON_DATA_SPECIES2, NULL)) {
+        if (species == GetMonData(&party->core.mons[i], MON_DATA_SPECIES_OR_EGG, NULL)) {
             break;
         }
     }

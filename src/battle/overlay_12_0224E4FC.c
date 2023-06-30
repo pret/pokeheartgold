@@ -2985,7 +2985,11 @@ BOOL CanSwitchMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     
     for (i = start; i < partySize; i++) {
         mon = GetPartyMonByIndex(party, i);
-        if (GetMonData(mon, MON_DATA_SPECIES, NULL) && !GetMonData(mon, MON_DATA_IS_EGG, NULL) && GetMonData(mon, MON_DATA_HP, NULL) && monIndex1 != i && monIndex2 != i) {
+        if (GetMonData(mon, MON_DATA_SPECIES, NULL) != SPECIES_NONE
+        && !GetMonData(mon, MON_DATA_IS_EGG, NULL)
+        && GetMonData(mon, MON_DATA_HP, NULL) != 0
+        && monIndex1 != i
+        && monIndex2 != i) {
             cnt++;
         }
     }
