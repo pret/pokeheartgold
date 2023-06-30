@@ -841,7 +841,7 @@ BOOL BtlCmd_PlayMoveAnimation(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     u32 battler = BattleScriptReadWord(ctx);
 
     if (battler == 255) {
-        move = ctx->moveWork;
+        move = ctx->moveTemp;
     } else {
         move = ctx->moveNoCur;
     }
@@ -867,7 +867,7 @@ BOOL BtlCmd_PlayMoveAnimation2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     u32 defenderSide = BattleScriptReadWord(ctx);
 
     if (battler == 255) {
-        move = ctx->moveWork;
+        move = ctx->moveTemp;
     } else {
         move = ctx->moveNoCur;
     }
@@ -902,17 +902,17 @@ BOOL BtlCmd_HealthbarDataUpdate(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     u8 battlerId = GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx));
 
-    if ((ctx->battleMons[battlerId].hp + ctx->hpCalcWork) <= 0) {
+    if ((ctx->battleMons[battlerId].hp + ctx->hpCalc) <= 0) {
         ctx->hitDamage = ctx->battleMons[battlerId].hp * -1;
     } else {
-        ctx->hitDamage = ctx->hpCalcWork;
+        ctx->hitDamage = ctx->hpCalc;
     }
 
     if (ctx->hitDamage < 0) {
         ctx->totalDamage[battlerId] += (-1*ctx->hitDamage);
     }
 
-    ctx->battleMons[battlerId].hp += ctx->hpCalcWork;
+    ctx->battleMons[battlerId].hp += ctx->hpCalc;
 
     if (ctx->battleMons[battlerId].hp < 0) {
         ctx->battleMons[battlerId].hp = 0;
@@ -1147,11 +1147,11 @@ BOOL BtlCmd_JumpToEffectScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     ctx->linkStatus &= ~1;
     ctx->linkStatus &= 0xffffbfff;
 
-    ctx->moveNoCur = ctx->moveWork;
+    ctx->moveNoCur = ctx->moveTemp;
 
     if (unkA == 0) {
-        ctx->battlerIdTarget = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, (u16)ctx->moveWork, 1, 0);
-        ov12_02250A18(bsys, ctx, ctx->battlerIdAttacker, ctx->moveWork);
+        ctx->battlerIdTarget = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, (u16)ctx->moveTemp, 1, 0);
+        ov12_02250A18(bsys, ctx, ctx->battlerIdAttacker, ctx->moveTemp);
         ctx->unk_21A8[ctx->battlerIdAttacker][1] = ctx->battlerIdTarget;
     }
 
@@ -1835,7 +1835,7 @@ BOOL BtlCmd_Random(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int x0 = BattleScriptReadWord(ctx);
 
-    ctx->calcWork = BattleSystem_Random(bsys) % modulo + x0;
+    ctx->calcTemp = BattleSystem_Random(bsys) % modulo + x0;
 
     return FALSE;
 }
@@ -2178,9 +2178,9 @@ BOOL BtlCmd_CalcPrizeMoney(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     }
 
     if (prizeMoney) {
-        ctx->msgWork = prizeMoney;
+        ctx->msgTemp = prizeMoney;
     } else {
-        ctx->msgWork = 0;
+        ctx->msgTemp = 0;
     }
 
     ctx->tempData = bsys->unk2474_1;
@@ -2279,7 +2279,7 @@ BOOL BtlCmd_FirstSendOutMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 BOOL BtlCmd_TrainerMessageVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    BattleController_EmitPrintTrainerMessage(bsys, GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx)), ctx->msgWork);
+    BattleController_EmitPrintTrainerMessage(bsys, GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx)), ctx->msgTemp);
 
     return FALSE;
 }
@@ -2336,7 +2336,7 @@ BOOL BtlCmd_TryConversion(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         } while(GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) == moveType || GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) == moveType);
         ctx->battleMons[ctx->battlerIdAttacker].type1 = moveType;
         ctx->battleMons[ctx->battlerIdAttacker].type2 = moveType;
-        ctx->msgWork = moveType;
+        ctx->msgTemp = moveType;
     }
 
     return FALSE;
@@ -2458,13 +2458,13 @@ BOOL BtlCmd_IfMonStatVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 BOOL BtlCmd_PayDay(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    ctx->msgWork = ctx->unk_14C * ctx->prizeMoneyValue;
+    ctx->msgTemp = ctx->unk_14C * ctx->prizeMoneyValue;
 
-    if (ctx->msgWork > 0xFFFF) {
-        ctx->msgWork = 0xFFFF;
+    if (ctx->msgTemp > 0xFFFF) {
+        ctx->msgTemp = 0xFFFF;
     }
 
-    PlayerProfile_AddMoney(BattleSystem_GetPlayerProfile(bsys, 0), ctx->msgWork);
+    PlayerProfile_AddMoney(BattleSystem_GetPlayerProfile(bsys, 0), ctx->msgTemp);
 
     return FALSE;
 }
@@ -2657,16 +2657,16 @@ BOOL BtlCmd_TryMimic(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         }
 
         if (moveIndex == LEARNED_MOVES_MAX) {
-            ctx->moveWork = ctx->moveNoBattlerPrev[ctx->battlerIdTarget];
-            ctx->battleMons[ctx->battlerIdAttacker].moves[mimicIndex] = ctx->moveWork;
-            if (ctx->unk_334.moveData[ctx->moveWork].pp < 5) {
-                ctx->battleMons[ctx->battlerIdAttacker].movePPCur[mimicIndex] = ctx->unk_334.moveData[ctx->moveWork].pp;
+            ctx->moveTemp = ctx->moveNoBattlerPrev[ctx->battlerIdTarget];
+            ctx->battleMons[ctx->battlerIdAttacker].moves[mimicIndex] = ctx->moveTemp;
+            if (ctx->unk_334.moveData[ctx->moveTemp].pp < 5) {
+                ctx->battleMons[ctx->battlerIdAttacker].movePPCur[mimicIndex] = ctx->unk_334.moveData[ctx->moveTemp].pp;
             } else {
                 ctx->battleMons[ctx->battlerIdAttacker].movePPCur[mimicIndex] = 5;
             }
             ctx->battleMons[ctx->battlerIdAttacker].unk88.mimicedMoveIndex |= MaskOfFlagNo(mimicIndex);
 
-            if (ctx->moveWork == MOVE_LAST_RESORT) {
+            if (ctx->moveTemp == MOVE_LAST_RESORT) {
                 ctx->battleMons[ctx->battlerIdAttacker].unk88.lastResortCount = 0;
             }
         } else {
@@ -2700,7 +2700,7 @@ BOOL BtlCmd_Metronome(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             continue;
         }
 
-        ctx->moveWork = moveNo;
+        ctx->moveTemp = moveNo;
 
         break;
     }
@@ -2717,8 +2717,8 @@ BOOL BtlCmd_TryDisable(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     if ((ctx->battleMons[ctx->battlerIdTarget].unk88.disabledMove == 0) && disabledMoveIndex != 4 &&
         ctx->battleMons[ctx->battlerIdTarget].movePPCur[disabledMoveIndex] && ctx->moveNoBattlerPrev[ctx->battlerIdTarget]) {
-        ctx->moveWork = ctx->moveNoBattlerPrev[ctx->battlerIdTarget];
-        ctx->battleMons[ctx->battlerIdTarget].unk88.disabledMove = ctx->moveWork;
+        ctx->moveTemp = ctx->moveNoBattlerPrev[ctx->battlerIdTarget];
+        ctx->battleMons[ctx->battlerIdTarget].unk88.disabledMove = ctx->moveTemp;
         ctx->battleMons[ctx->battlerIdTarget].unk88.disabledTurns = BattleSystem_Random(bsys) % 4 + 3;
     } else {
         BattleScriptIncrementPointer(ctx, adrs);
@@ -2802,8 +2802,8 @@ BOOL BtlCmd_TryEncore(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     if (ctx->battleMons[ctx->battlerIdTarget].unk88.encoredMove == 0 && encoredMoveIndex != LEARNED_MOVES_MAX &&
         ctx->battleMons[ctx->battlerIdTarget].movePPCur[encoredMoveIndex] && ctx->moveNoBattlerPrev[ctx->battlerIdTarget]) {
-        ctx->moveWork = ctx->moveNoBattlerPrev[ctx->battlerIdTarget];
-        ctx->battleMons[ctx->battlerIdTarget].unk88.encoredMove = ctx->moveWork;
+        ctx->moveTemp = ctx->moveNoBattlerPrev[ctx->battlerIdTarget];
+        ctx->battleMons[ctx->battlerIdTarget].unk88.encoredMove = ctx->moveTemp;
         ctx->battleMons[ctx->battlerIdTarget].unk88.encoredMoveIndex = encoredMoveIndex;
         ctx->battleMons[ctx->battlerIdTarget].unk88.encoredTurns = BattleSystem_Random(bsys) % 5 + 3;
     } else {
@@ -2839,7 +2839,7 @@ BOOL BtlCmd_TryConversion2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 if (typeMove == moveType && val <= 5 && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != typeMon && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != typeMon) {
                     ctx->battleMons[ctx->battlerIdAttacker].type1 = typeMon;
                     ctx->battleMons[ctx->battlerIdAttacker].type2 = typeMon;
-                    ctx->msgWork = typeMon;
+                    ctx->msgTemp = typeMon;
                     return FALSE;
                 }
             }
@@ -2849,7 +2849,7 @@ BOOL BtlCmd_TryConversion2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 if (typeMove == moveType && val <= 5 && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != typeMon && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != typeMon) {
                     ctx->battleMons[ctx->battlerIdAttacker].type1 = typeMon;
                     ctx->battleMons[ctx->battlerIdAttacker].type2 = typeMon;
-                    ctx->msgWork = typeMon;
+                    ctx->msgTemp = typeMon;
                     return FALSE;
                 }
                 i++;
@@ -2885,8 +2885,8 @@ BOOL BtlCmd_TrySketch(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             ctx->battleMons[ctx->battlerIdAttacker].moves[sketchIndex] = ctx->moveNoSketch[ctx->battlerIdTarget];
             ctx->battleMons[ctx->battlerIdAttacker].movePPCur[sketchIndex] = ctx->unk_334.moveData[ctx->moveNoSketch[ctx->battlerIdTarget]].pp;
             BattleController_EmitBattleMonToPartyMonCopy(bsys, ctx, ctx->battlerIdAttacker);
-            ctx->moveWork = ctx->moveNoSketch[ctx->battlerIdTarget];
-            if (ctx->moveWork == MOVE_LAST_RESORT) {
+            ctx->moveTemp = ctx->moveNoSketch[ctx->battlerIdTarget];
+            if (ctx->moveTemp == MOVE_LAST_RESORT) {
                 ctx->battleMons[ctx->battlerIdAttacker].unk88.lastResortCount = 0;
             }
         } else {
@@ -2924,7 +2924,7 @@ BOOL BtlCmd_TrySleepTalk(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         do {
             moveIndex = BattleSystem_Random(bsys) % 4;
         } while (MaskOfFlagNo(moveIndex) & nonSelectableMoves);
-        ctx->moveWork = ctx->battleMons[ctx->battlerIdAttacker].moves[moveIndex];
+        ctx->moveTemp = ctx->battleMons[ctx->battlerIdAttacker].moves[moveIndex];
     }
 
 
@@ -2967,8 +2967,8 @@ BOOL BtlCmd_TrySpite(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             if (ctx->battleMons[ctx->battlerIdTarget].movePPCur[moveIndex] < ppLoss) {
                 ppLoss = ctx->battleMons[ctx->battlerIdTarget].movePPCur[moveIndex];
             }
-            ctx->moveWork = ctx->moveNoBattlerPrev[ctx->battlerIdTarget];
-            ctx->msgWork = ppLoss;
+            ctx->moveTemp = ctx->moveNoBattlerPrev[ctx->battlerIdTarget];
+            ctx->msgTemp = ppLoss;
             ctx->battleMons[ctx->battlerIdTarget].movePPCur[moveIndex] -= ppLoss;
             CopyBattleMonToPartyMon(bsys, ctx, ctx->battlerIdTarget);
         }
@@ -2985,15 +2985,15 @@ BOOL BtlCmd_HealBell(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     BattleScriptIncrementPointer(ctx, 1);
 
-    ctx->calcWork = 0;
+    ctx->calcTemp = 0;
 
     if (ctx->moveNoCur == MOVE_HEAL_BELL) {
-        ctx->moveWork = ctx->moveNoCur;
+        ctx->moveTemp = ctx->moveNoCur;
         if (GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_SOUNDPROOF) {
             ctx->battleMons[ctx->battlerIdAttacker].status = STATUS_NONE;
             ctx->battleMons[ctx->battlerIdAttacker].status2 &= ~STATUS2_27;
         } else {
-            ctx->calcWork |= 5;
+            ctx->calcTemp |= 5;
         }
 
         if (battleType & BATTLE_TYPE_DOUBLES) {
@@ -3004,11 +3004,11 @@ BOOL BtlCmd_HealBell(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                     ctx->battleMons[battlerId].status2 &= ~STATUS2_27;
                 } else {
                     ctx->battlerIdTemp = battlerId;
-                    ctx->calcWork |= 10;
+                    ctx->calcTemp |= 10;
                 }
             }
         } else {
-            ctx->calcWork |= 8;
+            ctx->calcTemp |= 8;
         }
     } else { //aromatherapy
         ctx->battleMons[ctx->battlerIdAttacker].status = STATUS_NONE;
@@ -3020,7 +3020,7 @@ BOOL BtlCmd_HealBell(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 ctx->battleMons[battlerId].status2 &= ~STATUS2_27;
             }
         } else {
-            ctx->calcWork |= 8;
+            ctx->calcTemp |= 8;
         }
     }
 
@@ -3113,7 +3113,7 @@ BOOL BtlCmd_TrySubstitute(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (ctx->battleMons[ctx->battlerIdAttacker].hp <= subHp) {
         BattleScriptIncrementPointer(ctx, adrs);
     } else {
-        ctx->hpCalcWork = -subHp;
+        ctx->hpCalc = -subHp;
         ctx->battleMons[ctx->battlerIdAttacker].unk88.substituteHp = subHp;
         ctx->battleMons[ctx->battlerIdAttacker].status2 &= ~STATUS2_BINDING_ALL;
     }
@@ -3265,8 +3265,8 @@ BOOL BtlCmd_CheckSpikes(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int fieldSide = BattleSystem_GetFieldSide(bsys, battlerId);
 
     if (ctx->fieldSideConditionData[fieldSide].spikesLayers && ctx->battleMons[battlerId].hp) {
-        ctx->hpCalcWork = (5 - ctx->fieldSideConditionData[fieldSide].spikesLayers) * 2;
-        ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp * -1, ctx->hpCalcWork);
+        ctx->hpCalc = (5 - ctx->fieldSideConditionData[fieldSide].spikesLayers) * 2;
+        ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp * -1, ctx->hpCalc);
     } else {
         BattleScriptIncrementPointer(ctx, adrs);
     }
@@ -3281,7 +3281,7 @@ BOOL BtlCmd_TryPerishSong(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int adrs = BattleScriptReadWord(ctx);
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
 
-    ctx->calcWork = maxBattlers;
+    ctx->calcTemp = maxBattlers;
 
     int cnt = 0;
 
@@ -3330,7 +3330,7 @@ BOOL BtlCmd_WeatherDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     u32 battlerId = GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx));
 
     ctx->tempData = 0;
-    ctx->hpCalcWork = 0;
+    ctx->hpCalc = 0;
 
     u32 type1 = GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL);
     u32 type2 = GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL);
@@ -3342,14 +3342,14 @@ BOOL BtlCmd_WeatherDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 type1 != TYPE_GROUND && type2 != TYPE_GROUND &&
                 ctx->battleMons[battlerId].hp && GetBattlerAbility(ctx, battlerId) != ABILITY_SAND_VEIL &&
                 !(ctx->battleMons[battlerId].moveEffectFlags & 0x40080)) {
-                    ctx->moveWork = MOVE_SANDSTORM;
-                    ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp * -1, 16);
+                    ctx->moveTemp = MOVE_SANDSTORM;
+                    ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp * -1, 16);
             }
         }
         if (ctx->fieldCondition & FIELD_CONDITION_SUN_ALL) {
             if (ctx->battleMons[battlerId].hp && !(ctx->battleMons[battlerId].moveEffectFlags & 0x40080)) {
                 if (GetBattlerAbility(ctx, battlerId) == ABILITY_DRY_SKIN || GetBattlerAbility(ctx, battlerId) == ABILITY_SOLAR_POWER) {
-                    ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp * -1, 8);
+                    ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp * -1, 8);
                 }
                 if (GetBattlerAbility(ctx, battlerId) == ABILITY_SOLAR_POWER) {
                     ctx->tempData = 2;
@@ -3360,12 +3360,12 @@ BOOL BtlCmd_WeatherDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             if (ctx->battleMons[battlerId].hp && !(ctx->battleMons[battlerId].moveEffectFlags & 0x40080)) {
                 if (GetBattlerAbility(ctx, battlerId) == ABILITY_ICE_BODY) {
                     if (ctx->battleMons[battlerId].hp < ctx->battleMons[battlerId].maxHp) {
-                        ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp, 16);
+                        ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp, 16);
                     }
                 } else if (type1 != TYPE_ICE && type2 != TYPE_ICE &&
                            GetBattlerAbility(ctx, battlerId) != ABILITY_SNOW_CLOAK) {
-                    ctx->moveWork = MOVE_HAIL;
-                    ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp * -1, 16);
+                    ctx->moveTemp = MOVE_HAIL;
+                    ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp * -1, 16);
 
                 }
             }
@@ -3373,24 +3373,24 @@ BOOL BtlCmd_WeatherDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         if (ctx->fieldCondition & FIELD_CONDITION_RAIN_ALL) {
             if (ctx->battleMons[battlerId].hp && ctx->battleMons[battlerId].hp < ctx->battleMons[battlerId].maxHp &&
                 GetBattlerAbility(ctx, battlerId) == ABILITY_RAIN_DISH) {
-                ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp, 16);
+                ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp, 16);
             }
             if (ctx->battleMons[battlerId].hp && ctx->battleMons[battlerId].hp < ctx->battleMons[battlerId].maxHp &&
                 GetBattlerAbility(ctx, battlerId) == ABILITY_DRY_SKIN) {
-                ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp, 8);
+                ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp, 8);
             }
             if (ctx->battleMons[battlerId].hp && (u8)ctx->battleMons[battlerId].status &&
                 GetBattlerAbility(ctx, battlerId) == ABILITY_HYDRATION) {
                 if (ctx->battleMons[battlerId].status & STATUS_SLEEP) {
-                    ctx->msgWork = 0;
+                    ctx->msgTemp = 0;
                 } else if (ctx->battleMons[battlerId].status & STATUS_POISON_ALL) {
-                    ctx->msgWork = 1;
+                    ctx->msgTemp = 1;
                 } else if (ctx->battleMons[battlerId].status & STATUS_BURN) {
-                    ctx->msgWork = 2;
+                    ctx->msgTemp = 2;
                 } else if (ctx->battleMons[battlerId].status & STATUS_PARALYSIS) {
-                    ctx->msgWork = 3;
+                    ctx->msgTemp = 3;
                 } else {
-                    ctx->msgWork = 4;
+                    ctx->msgTemp = 4;
                 }
                 ctx->tempData = 1;
             }
@@ -3497,7 +3497,7 @@ BOOL BtlCmd_Present(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     } else if (rand < 204) {
         ctx->movePower = 120;
     } else {
-        ctx->hpCalcWork = DamageDivide(ctx->battleMons[ctx->battlerIdTarget].maxHp, 4);
+        ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdTarget].maxHp, 4);
         BattleScriptIncrementPointer(ctx, adrs);
     }
 
@@ -3533,7 +3533,7 @@ BOOL BtlCmd_MagnitudeDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         }
     }
 
-    ctx->msgWork = ctx->magnitude;
+    ctx->msgTemp = ctx->magnitude;
 
     return FALSE;
 }
@@ -3563,7 +3563,7 @@ BOOL BtlCmd_RapidSpin(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_BINDING_ALL) {
         ctx->battleMons[ctx->battlerIdAttacker].status2 &= ~STATUS2_BINDING_ALL;
         ctx->battlerIdTemp = ctx->battleMons[ctx->battlerIdAttacker].unk88.battlerIdBinding;
-        ctx->moveWork = ctx->battleMons[ctx->battlerIdAttacker].unk88.bindingMove;
+        ctx->moveTemp = ctx->battleMons[ctx->battlerIdAttacker].unk88.bindingMove;
         BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, 116);
         return FALSE;
     }
@@ -3572,7 +3572,7 @@ BOOL BtlCmd_RapidSpin(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (ctx->battleMons[ctx->battlerIdAttacker].moveEffectFlags & MOVE_EFFECT_LEECH_SEED) {
         ctx->battleMons[ctx->battlerIdAttacker].moveEffectFlags &= ~MOVE_EFFECT_LEECH_SEED;
         ctx->battleMons[ctx->battlerIdAttacker].moveEffectFlags &= ~3;
-        ctx->moveWork = 73;
+        ctx->moveTemp = 73;
         BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, 117);
         return FALSE;
     }
@@ -3581,7 +3581,7 @@ BOOL BtlCmd_RapidSpin(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if(ctx->fieldSideConditionData[side].spikesLayers) {
         ctx->fieldSideConditionFlags[side] &= ~SIDE_CONDITION_SPIKES;
         ctx->fieldSideConditionData[side].spikesLayers = 0;
-        ctx->moveWork = MOVE_SPIKES;
+        ctx->moveTemp = MOVE_SPIKES;
         BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, 117);
         return FALSE;
     }
@@ -3590,7 +3590,7 @@ BOOL BtlCmd_RapidSpin(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if(ctx->fieldSideConditionData[side].toxicSpikesLayers) {
         ctx->fieldSideConditionFlags[side] &= ~SIDE_CONDITION_TOXIC_SPIKES;
         ctx->fieldSideConditionData[side].toxicSpikesLayers = 0;
-        ctx->moveWork = MOVE_TOXIC_SPIKES;
+        ctx->moveTemp = MOVE_TOXIC_SPIKES;
         BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, 117);
         return FALSE;
     }
@@ -3598,7 +3598,7 @@ BOOL BtlCmd_RapidSpin(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     //Stealth Rocks
     if (ctx->fieldSideConditionFlags[side] & SIDE_CONDITION_STEALTH_ROCKS) {
         ctx->fieldSideConditionFlags[side] &= ~SIDE_CONDITION_STEALTH_ROCKS;
-        ctx->moveWork = MOVE_STEALTH_ROCK;
+        ctx->moveTemp = MOVE_STEALTH_ROCK;
         BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, 117);
         return FALSE;
     }
@@ -3612,11 +3612,11 @@ BOOL BtlCmd_ChangeWeatherBasedHPRecovery(BattleSystem *bsys, BATTLECONTEXT *ctx)
     BattleScriptIncrementPointer(ctx, 1);
 
     if (!(ctx->fieldCondition & FIELD_CONDITION_WEATHER) || CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) || CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)) {
-        ctx->hpCalcWork = ctx->battleMons[ctx->battlerIdAttacker].maxHp / 2;
+        ctx->hpCalc = ctx->battleMons[ctx->battlerIdAttacker].maxHp / 2;
     } else if (ctx->fieldCondition & FIELD_CONDITION_SUN_ALL) {
-        ctx->hpCalcWork = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp*20, 30);
+        ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp*20, 30);
     } else {
-        ctx->hpCalcWork = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp, 4);
+        ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp, 4);
     }
 
     return FALSE;
@@ -3892,7 +3892,7 @@ BOOL BtlCmd_TryAssist(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     }
 
     if (moveCnt) {
-        ctx->moveWork = avaliableMoves[BattleSystem_Random(bsys)%moveCnt];
+        ctx->moveTemp = avaliableMoves[BattleSystem_Random(bsys)%moveCnt];
     } else {
         BattleScriptIncrementPointer(ctx, unkA);
     }
@@ -4232,7 +4232,7 @@ BOOL BtlCmd_TryGrudge(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ctx->battleMons[ctx->battlerIdAttacker].hp && ctx->moveNoTemp != MOVE_STRUGGLE) {
         pos = ctx->movePos[ctx->battlerIdAttacker];
         ctx->battleMons[ctx->battlerIdAttacker].movePPCur[pos] = 0;
-        ctx->moveWork = ctx->battleMons[ctx->battlerIdAttacker].moves[pos];
+        ctx->moveTemp = ctx->battleMons[ctx->battlerIdAttacker].moves[pos];
         CopyBattleMonToPartyMon(bsys, ctx, ctx->battlerIdAttacker);
     } else {
         BattleScriptIncrementPointer(ctx, adrs);
@@ -4565,7 +4565,7 @@ BOOL BtlCmd_TryMeFirst(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         CheckLegalMeFirstMove(ctx, move) == TRUE && ctx->unk_334.moveData[move].power) {
         ctx->battleMons[ctx->battlerIdAttacker].unk88.meFirstFlag = TRUE;
         ctx->battleMons[ctx->battlerIdAttacker].unk88.meFirstCount = ctx->meFirstTotal;
-        ctx->moveWork = move;
+        ctx->moveTemp = move;
     } else {
         BattleScriptIncrementPointer(ctx, adrs);
     }
@@ -4579,7 +4579,7 @@ BOOL BtlCmd_TryCopycat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int adrs = BattleScriptReadWord(ctx);
 
     if (CheckMoveCallsOtherMove(ctx->moveNoPrev) == FALSE && ctx->moveNoPrev && CheckLegalMetronomeMove(bsys, ctx, ctx->battlerIdAttacker, ctx->moveNoPrev) == TRUE) {
-        ctx->moveWork = ctx->moveNoPrev;
+        ctx->moveTemp = ctx->moveNoPrev;
     } else {
         BattleScriptIncrementPointer(ctx, adrs);
     }
@@ -4772,13 +4772,13 @@ BOOL BtlCmd_CheckToxicSpikes(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int fieldSide = BattleSystem_GetFieldSide(bsys, battlerId);
 
     if (ctx->fieldSideConditionData[fieldSide].toxicSpikesLayers) {
-        ctx->calcWork = ctx->fieldSideConditionData[fieldSide].toxicSpikesLayers;
+        ctx->calcTemp = ctx->fieldSideConditionData[fieldSide].toxicSpikesLayers;
         ctx->statChangeType = 6;
         ctx->battlerIdStatChange = battlerId;
         if (GetBattlerVar(ctx, ctx->battlerIdSwitch, BMON_DATA_TYPE_1, NULL) == TYPE_POISON || GetBattlerVar(ctx, ctx->battlerIdSwitch, BMON_DATA_TYPE_2, NULL) == TYPE_POISON) {
             ctx->fieldSideConditionFlags[fieldSide] &= ~(1 << 10);
             ctx->fieldSideConditionData[fieldSide].toxicSpikesLayers = 0;
-            ctx->calcWork = 0;
+            ctx->calcTemp = 0;
         }
     } else {
         BattleScriptIncrementPointer(ctx, adrs);
@@ -4992,7 +4992,7 @@ BOOL BtlCmd_TryCamouflage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_1, NULL) != type && GetBattlerVar(ctx, ctx->battlerIdAttacker, BMON_DATA_TYPE_2, NULL) != type) {
         ctx->battleMons[ctx->battlerIdAttacker].type1 = type;
         ctx->battleMons[ctx->battlerIdAttacker].type2 = type;
-        ctx->msgWork = type;
+        ctx->msgTemp = type;
     } else {
         BattleScriptIncrementPointer(ctx, adrs);
     }
@@ -5009,7 +5009,7 @@ BOOL BtlCmd_NaturePower(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (terrain > 12) {
         terrain = 12;
     }
-    ctx->moveWork = sNaturePowerMoveTable[terrain];
+    ctx->moveTemp = sNaturePowerMoveTable[terrain];
 
     return FALSE;
 }
@@ -5154,19 +5154,19 @@ BOOL BtlCmd_CheckStealthRock(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (ctx->fieldSideConditionFlags[fieldSide] & 128 && ctx->battleMons[battlerId].hp) {
         switch (CalculateTypeEffectiveness(TYPE_ROCK, type1, type2)) {
         case 160:
-            ctx->hpCalcWork = 2;
+            ctx->hpCalc = 2;
             break;
         case 80:
-            ctx->hpCalcWork = 4;
+            ctx->hpCalc = 4;
             break;
         case 40:
-            ctx->hpCalcWork = 8;
+            ctx->hpCalc = 8;
             break;
         case 20:
-            ctx->hpCalcWork = 16;
+            ctx->hpCalc = 16;
             break;
         case 10:
-            ctx->hpCalcWork = 32;
+            ctx->hpCalc = 32;
             break;
         case 0:
             BattleScriptIncrementPointer(ctx, adrs);
@@ -5175,7 +5175,7 @@ BOOL BtlCmd_CheckStealthRock(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             GF_ASSERT(FALSE);
             break;
         }
-        ctx->hpCalcWork = DamageDivide(ctx->battleMons[battlerId].maxHp * -1, ctx->hpCalcWork);
+        ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp * -1, ctx->hpCalc);
     } else {
         BattleScriptIncrementPointer(ctx, adrs);
     }
@@ -5248,7 +5248,7 @@ BOOL BtlCmd_CheckChatterActivation(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 BOOL BtlCmd_GetMoveParam(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    ctx->calcWork = GetMoveTblAttr(&ctx->unk_334.moveData[ctx->moveNoCur], (MoveAttr) BattleScriptReadWord(ctx));
+    ctx->calcTemp = GetMoveTblAttr(&ctx->unk_334.moveData[ctx->moveNoCur], (MoveAttr) BattleScriptReadWord(ctx));
 
     return FALSE;
 }
@@ -5641,8 +5641,8 @@ BOOL BtlCmd_CheckHoldOnWith1HP(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         flag = TRUE;
     }
 
-    if (flag && (ctx->battleMons[battlerId].hp + ctx->hpCalcWork) <= 0) {
-        ctx->hpCalcWork = (ctx->battleMons[battlerId].hp - 1)*-1;
+    if (flag && (ctx->battleMons[battlerId].hp + ctx->hpCalc) <= 0) {
+        ctx->hpCalc = (ctx->battleMons[battlerId].hp - 1)*-1;
         ctx->moveStatusFlag |= 256;
     }
 
@@ -5816,7 +5816,7 @@ BOOL BtlCmd_GetMonDataFromNarc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int *formePtr = BattleScriptGetVarPointer(bsys, ctx, forme);
 
-    ctx->calcWork = GetMonBaseStat_HandleAlternateForme(species, *formePtr, stat);
+    ctx->calcTemp = GetMonBaseStat_HandleAlternateForme(species, *formePtr, stat);
 
     return FALSE;
 }
@@ -5841,9 +5841,9 @@ BOOL BtlCmd_222(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int battlerId = GetBattlerIDBySide(bsys, ctx, side);
 
     if (TrainerMessageWithIdPairExists(BattleSystem_GetTrainerIndex(bsys, battlerId), msgIndex, HEAP_ID_BATTLE)) {
-        ctx->msgWork = msgIndex;
+        ctx->msgTemp = msgIndex;
     } else {
-        ctx->msgWork = 0;
+        ctx->msgTemp = 0;
     }
 
     return FALSE;
@@ -5906,7 +5906,7 @@ static void *BattleScriptGetVarPointer(BattleSystem *bsys, BATTLECONTEXT *ctx, i
     case 8:
         return &ctx->unk_2158;
     case 9:
-        return &ctx->calcWork;
+        return &ctx->calcTemp;
     case 10:
         return &ctx->moveStatusFlag;
     case 11:
@@ -5932,7 +5932,7 @@ static void *BattleScriptGetVarPointer(BattleSystem *bsys, BATTLECONTEXT *ctx, i
     case 21:
         return &ctx->unk_30E4[ctx->battlerIdAttacker];
     case 22:
-        return &ctx->msgWork;
+        return &ctx->msgTemp;
     case 23:
         return &ctx->unk_14C;
     case 24:
@@ -5952,17 +5952,17 @@ static void *BattleScriptGetVarPointer(BattleSystem *bsys, BATTLECONTEXT *ctx, i
     case 31:
         return &ctx->unk_38;
     case 32:
-        return &ctx->hpCalcWork;
+        return &ctx->hpCalc;
     case 33:
         return &bsys->battleOutcomeFlag;
     case 34:
         return &ctx->statChangeParam;
     case 35:
-        return &ctx->moveWork;
+        return &ctx->moveTemp;
     case 36:
         return &ctx->itemTemp;
     case 37:
-        return &ctx->abilityWork;
+        return &ctx->abilityTemp;
     case 38:
         return &ctx->fieldConditionData.weatherTurns;
     case 39:

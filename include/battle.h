@@ -302,11 +302,11 @@ typedef struct BATTLECONTEXT {
     int battlerIdTemp;
     int unk_11C;
     int unk_120;
-    int moveWork;
+    int moveTemp;
     int itemTemp;
-    int abilityWork;
-    int msgWork;
-    int calcWork;
+    int abilityTemp;
+    int msgTemp;
+    int calcTemp;
     int tempData;
     u32 unk_13C[4];
     u32 unk_14C;
@@ -334,7 +334,7 @@ typedef struct BATTLECONTEXT {
     int criticalMultiplier;
     int movePower;
     int unk_2158;
-    int hpCalcWork;
+    int hpCalc;
     int moveType;
     int unk_2164;
     int prizeMoneyValue;
