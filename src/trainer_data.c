@@ -13,7 +13,7 @@ void CreateNPCTrainerParty(BATTLE_SETUP *battleSetup, int trainer_idx, HeapID he
 
 void EnemyTrainerSet_Init(BATTLE_SETUP *battleSetup, SaveData *saveData, HeapID heap_id) {
     TRAINER trainer;
-    MSGDATA *msgData;
+    MsgData *msgData;
     const u16 *rivalName;
     int i;
     String *string;

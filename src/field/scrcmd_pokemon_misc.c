@@ -46,7 +46,7 @@ typedef struct UnkStructScr_648 {
     Window window_8;
     Window *window_18;
     String *stringArr_1C[120];
-    MSGDATA *msgdata;
+    MsgData *msgdata;
     MessageFormat *msgfmt;
     u8 unk_204;
     u8 unk_205;
@@ -73,9 +73,9 @@ typedef struct UnkStructScr_648 {
 
 static BOOL ov01_02200C6C(ScriptContext *ctx);
 static void *ov01_02200C94(HeapID heapId, s32 fileId, u32 *unkPtr);
-static void ov01_02200CB4(SCR_648_STRUCT *unkPtr, MSGDATA *msgdata);
-static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, s16 *input, MessageFormat *msgfmt, Window *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove);
-static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fsys, u8 x, u8 y, u8 a3, u8 a4, s16* input, MessageFormat *msgfmt, Window *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove);
+static void ov01_02200CB4(SCR_648_STRUCT *unkPtr, MsgData *msgdata);
+static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, s16 *input, MessageFormat *msgfmt, Window *window, MsgData *msgdata, u16 *cursorPos, u16 *itemsAbove);
+static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fsys, u8 x, u8 y, u8 a3, u8 a4, s16* input, MessageFormat *msgfmt, Window *window, MsgData *msgdata, u16 *cursorPos, u16 *itemsAbove);
 static void ov01_02200DF8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3);
 static void ov01_02200E00(SCR_648_STRUCT *unkPtr);
 static void ov01_02200EC8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3);
@@ -96,7 +96,7 @@ BOOL ScrCmd_648(ScriptContext *ctx) {
     s16 *input;
     u32 *unkPtr_2;
 
-    MSGDATA *msgdata2;
+    MsgData *msgdata2;
     SCR_648_STRUCT *unkPtr;
     u32 *unkG;
     u16 *data;
@@ -104,7 +104,7 @@ BOOL ScrCmd_648(ScriptContext *ctx) {
     u16 *itemsAbove;
     Window *window;
     MessageFormat **msgfmt;
-    MSGDATA *msgdata;
+    MsgData *msgdata;
     FieldSystem *fsys = ctx->fsys;
 
     msgfmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
@@ -171,11 +171,11 @@ static void *ov01_02200C94(HeapID heapId, s32 fileId, u32 *unkPtr) {
     return data;
 }
 
-static void ov01_02200CB4(SCR_648_STRUCT *unkPtr, MSGDATA *msgdata) {
+static void ov01_02200CB4(SCR_648_STRUCT *unkPtr, MsgData *msgdata) {
     unkPtr->msgdata = msgdata;
 }
 
-static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, s16 *input, MessageFormat *msgfmt, Window *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove) {
+static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, s16 *input, MessageFormat *msgfmt, Window *window, MsgData *msgdata, u16 *cursorPos, u16 *itemsAbove) {
     int i;
     unkPtr->msgdata = msgdata;
     unkPtr->unk_207 = unkPtr->unk_207 & ~0x2;
@@ -208,7 +208,7 @@ static void ov01_02200CBC(FieldSystem *fsys, SCR_648_STRUCT *unkPtr, u8 x, u8 y,
     *unkPtr->input = 0xEEEE;
 }
 
-static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fsys, u8 x, u8 y, u8 a3, u8 a4, s16* input, MessageFormat *msgfmt, Window *window, MSGDATA *msgdata, u16 *cursorPos, u16 *itemsAbove) {
+static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fsys, u8 x, u8 y, u8 a3, u8 a4, s16* input, MessageFormat *msgfmt, Window *window, MsgData *msgdata, u16 *cursorPos, u16 *itemsAbove) {
     SCR_648_STRUCT *unkPtr = AllocFromHeap(HEAP_ID_4, sizeof(SCR_648_STRUCT));
     if (!unkPtr) {
         return NULL;
@@ -903,9 +903,9 @@ BOOL ScrCmd_741(ScriptContext *ctx) {
         *price = 5000;
     }
 
-    BufferIntegerAsString(*msgfmt, 2, *price, 4, STRCONVMODE_LEFT_ALIGN, 1);
-    BufferIntegerAsString(*msgfmt, 3, unkVar, 3, STRCONVMODE_LEFT_ALIGN, 1); //richness..?
-    BufferIntegerAsString(*msgfmt, 4, unkOut.unk2, 3, STRCONVMODE_LEFT_ALIGN, 1); //smoothness..?
+    BufferIntegerAsString(*msgfmt, 2, *price, 4, PRINTING_MODE_LEFT_ALIGN, 1);
+    BufferIntegerAsString(*msgfmt, 3, unkVar, 3, PRINTING_MODE_LEFT_ALIGN, 1); //richness..?
+    BufferIntegerAsString(*msgfmt, 4, unkOut.unk2, 3, PRINTING_MODE_LEFT_ALIGN, 1); //smoothness..?
 
     *unkPtrC = unkOut.unk0;
 
@@ -1309,7 +1309,7 @@ BOOL ScrCmd_GiveRandomSeal(ScriptContext *ctx) {
     u8 uniqueSeals[3];
     u16 givenSealIds[3];
     u16 *sealThresholds;
-    SEALCASE *sealcase;
+    SealCase *sealcase;
     u16 *seal1;
     u16 *seal2;
     u16 *seal3;
@@ -1508,7 +1508,7 @@ BOOL ScrCmd_BugContestGetTimeLeft(ScriptContext *ctx) {
         timeLeft = 20 - bugContest->elapsed_time;
     }
 
-    BufferIntegerAsString(*msgfmt, script_index, timeLeft, 2, STRCONVMODE_LEFT_ALIGN, 1);
+    BufferIntegerAsString(*msgfmt, script_index, timeLeft, 2, PRINTING_MODE_LEFT_ALIGN, 1);
 
     return FALSE;
 }

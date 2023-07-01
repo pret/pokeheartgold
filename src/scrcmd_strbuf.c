@@ -124,7 +124,7 @@ BOOL ScrCmd_BufferInt(ScriptContext* ctx) {
     u8 idx = ScriptReadByte(ctx);
     u16 number = ScriptGetVar(ctx);
 
-    BufferIntegerAsString(*msg_fmt, idx, number, sub_0205BB1C(number), STRCONVMODE_RIGHT_ALIGN, TRUE);
+    BufferIntegerAsString(*msg_fmt, idx, number, sub_0205BB1C(number), PRINTING_MODE_RIGHT_ALIGN, TRUE);
 
     return FALSE;
 }
@@ -137,11 +137,11 @@ BOOL ScrCmd_BufferIntEx(ScriptContext* ctx) {
     u8 unk2 = ScriptReadByte(ctx);
 
     u8 digits = unk2;
-    if (str_conv_mode == STRCONVMODE_LEFT_ALIGN) {
+    if (str_conv_mode == PRINTING_MODE_LEFT_ALIGN) {
         digits = sub_0205BB1C(number);
     }
 
-    BufferIntegerAsString(*msg_fmt, idx, number, digits, (STRCONVMODE)str_conv_mode, TRUE);
+    BufferIntegerAsString(*msg_fmt, idx, number, digits, (PrintingMode)str_conv_mode, TRUE);
 
     return FALSE;
 }
@@ -154,11 +154,11 @@ BOOL ScrCmd_661(ScriptContext* ctx) {
     u8 unk2 = ScriptReadByte(ctx);
 
     u8 digits = unk2;
-    if (str_conv_mode == STRCONVMODE_LEFT_ALIGN) {
+    if (str_conv_mode == PRINTING_MODE_LEFT_ALIGN) {
         digits = sub_0205BB1C(number);
     }
 
-    BufferIntegerAsString(*msg_fmt, idx, number, digits, (STRCONVMODE)str_conv_mode, TRUE);
+    BufferIntegerAsString(*msg_fmt, idx, number, digits, (PrintingMode)str_conv_mode, TRUE);
 
     return FALSE;
 }
@@ -228,7 +228,7 @@ BOOL ScrCmd_BufferSpeciesName(ScriptContext* ctx) {
 }
 
 String* _get_species_name(u16 species, HeapID heap_id) {
-    MSGDATA* msg_data = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0237_bin, heap_id);
+    MsgData* msg_data = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0237_bin, heap_id);
     String* name = NewString_ReadMsgData(msg_data, species);
     DestroyMsgData(msg_data);
     return name;

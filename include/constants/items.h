@@ -28,7 +28,7 @@
 #define BPOCKET_BALLS_F      0
 #define BPOCKET_
 
-#define POCKET_BAG_VIEW_END 0xFF
+#define POCKET_BagView_END 0xFF
 
 #define NUM_BAG_ITEMS        165
 #define NUM_BAG_MEDICINE      40

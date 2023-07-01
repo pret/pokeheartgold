@@ -330,7 +330,7 @@ static void sub_02052E70(GameClearWork *env) {
 }
 
 static void GameClearSave_PrintSaveStatus(FieldSystem *fsys, GameClearWork *env, int writeStatus) {
-    MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0040_bin, HEAP_ID_4);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0040_bin, HEAP_ID_4);
 
     if (writeStatus == 2) {
         MessageFormat *msgFmt = MessageFormat_New(HEAP_ID_4);

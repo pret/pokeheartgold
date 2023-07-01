@@ -9,7 +9,7 @@ typedef u16 ECWORD;
 
 typedef struct EasyChatManager {
     HeapID heapId;
-    MSGDATA *msgData[EC_GROUP_MAX];
+    MsgData *msgData[EC_GROUP_MAX];
 } ECMAN;
 
 typedef struct SaveEasyChat {

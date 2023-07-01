@@ -43,7 +43,7 @@ typedef struct VoltorbFlipAppWork {
     Unk122_021E7C9C *unk144;
     void *unk148;
     UnkStruct_0200CF18 *unk14C[0xd];
-    MSGDATA *msgData;
+    MsgData *msgData;
     MessageFormat *msgFmt;
     u16 unk188[10][8];
     u8 unk228;

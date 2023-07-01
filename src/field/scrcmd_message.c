@@ -22,13 +22,13 @@ typedef struct MessageBox {
     u8 *textPrinterNumPtr;
 } MessageBox;
 
-static void ovFieldMain_ShowMessageInField(ScriptContext *ctx, MSGDATA *messageData, u32 messageNum);
+static void ovFieldMain_ShowMessageInField(ScriptContext *ctx, MsgData *messageData, u32 messageNum);
 static void ov01_021EF5C8(ScriptContext *ctx, MessageFormat *messageFormat, u8 messageNum, u32 canABSpeedUp);
 static u32 ovFieldMain_GetTextFrameDelay(ScriptContext *ctx);
 static void ovFieldMain_GetMsgBoxParameters(FieldSystem *fsys, MessageBox *messageBox);
 static void ovFieldMain_GetMsgBoxParametersEx(FieldSystem *fsys, MessageFormat *messageFormat, MessageBox *messageBox);
 static void ovFieldMain_CreateMessageBox(FieldSystem *fsys, MessageBox *messageBox);
-static void ovFieldMain_ReadAndExpandMsgDataViaBuffer(MessageBox *messageBox, MSGDATA *messageData, u32 messageNum);
+static void ovFieldMain_ReadAndExpandMsgDataViaBuffer(MessageBox *messageBox, MsgData *messageData, u32 messageNum);
 static void ovFieldMain_GetFormattedECMessage(MessageBox *messageBox, u16 messageBank, u16 messageNum, u16 word1, u16 word2);
 static void ov01_021EF758(MessageBox *messageBox, FontID fontId, u32 textFrameDelay, BOOL canABSpeedUp, u32 a4);
 static void ovFieldMain_AddTextPrinterParameterized(MessageBox *messageBox, FontID fontId);
@@ -60,7 +60,7 @@ BOOL ScrCmd_GetStdMsgNaix(ScriptContext *ctx) {
 BOOL ScrCmd_NonNpcMsgExtern(ScriptContext *ctx) {
     u16 fileId = ScriptGetVar(ctx);
     u16 messageNum = ScriptGetVar(ctx);
-    MSGDATA *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, fileId, HEAP_ID_32);
+    MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, fileId, HEAP_ID_32);
     ovFieldMain_ShowMessageInField(ctx, messageData, messageNum);
     DestroyMsgData(messageData);
     return FALSE;
@@ -69,7 +69,7 @@ BOOL ScrCmd_NonNpcMsgExtern(ScriptContext *ctx) {
 BOOL ScrCmd_MsgboxExtern(ScriptContext *ctx) {
     u16 fileId = ScriptGetVar(ctx);
     u16 messageNum = ScriptGetVar(ctx);
-    MSGDATA *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, fileId, HEAP_ID_32);
+    MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, fileId, HEAP_ID_32);
     ov01_021EF4DC(ctx, messageData, messageNum, TRUE, NULL);
     DestroyMsgData(messageData);
     SetupNativeScript(ctx, ov01_021EF348);
@@ -103,7 +103,7 @@ BOOL ScrCmd_443(ScriptContext *ctx) {
     }
     u16 *r4 = r2 + 0x90 + r1 * 0x110;
     if (r4[0] == 0xFFFF) {
-        MSGDATA *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, 723, HEAP_ID_32);
+        MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, 723, HEAP_ID_32);
         ov01_021EF4DC(ctx, messageData, r4[1], TRUE, NULL);
         DestroyMsgData(messageData);
     } else {
@@ -201,7 +201,7 @@ void ov01_021EF4C4(struct UnkStruct_Ov01_021EF4C4 *unkStruct, ScriptContext *ctx
     unkStruct->fontId = 1;
 }
 
-void ov01_021EF4DC(ScriptContext *ctx, MSGDATA *messageData, u16 messageNum, u8 canABSpeedUp, struct UnkStruct_Ov01_021EF4C4 *unkStruct) {
+void ov01_021EF4DC(ScriptContext *ctx, MsgData *messageData, u16 messageNum, u8 canABSpeedUp, struct UnkStruct_Ov01_021EF4C4 *unkStruct) {
     MessageBox messageBox;
     ovFieldMain_GetMsgBoxParameters(ctx->fsys, &messageBox);
     ovFieldMain_CreateMessageBox(ctx->fsys, &messageBox);
@@ -221,7 +221,7 @@ void ov01_021EF4DC(ScriptContext *ctx, MSGDATA *messageData, u16 messageNum, u8 
     ov01_021EF758(&messageBox, fontId, textFrameDelay, canABSpeedUp, unk1);
 }
 
-static void ovFieldMain_ShowMessageInField(ScriptContext *ctx, MSGDATA *messageData, u32 messageNum) {
+static void ovFieldMain_ShowMessageInField(ScriptContext *ctx, MsgData *messageData, u32 messageNum) {
     MessageBox messageBox;
     ovFieldMain_GetMsgBoxParameters(ctx->fsys, &messageBox);
     ovFieldMain_CreateMessageBox(ctx->fsys, &messageBox);
@@ -282,7 +282,7 @@ static void ovFieldMain_CreateMessageBox(FieldSystem *fsys, MessageBox *messageB
     FillWindowPixelBuffer(messageBox->window, 15);
 }
 
-static void ovFieldMain_ReadAndExpandMsgDataViaBuffer(MessageBox *messageBox, MSGDATA *messageData, u32 messageNum) {
+static void ovFieldMain_ReadAndExpandMsgDataViaBuffer(MessageBox *messageBox, MsgData *messageData, u32 messageNum) {
     ReadMsgDataIntoString(messageData, messageNum, messageBox->buffer);
     StringExpandPlaceholders(messageBox->messageFormat, messageBox->message, messageBox->buffer);
 }

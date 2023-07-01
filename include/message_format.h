@@ -29,7 +29,7 @@ MessageFormat *MessageFormat_New_Custom(u32 nstr, u32 _strlen, HeapID heapId);
 void MessageFormat_Delete(MessageFormat *messageFormat);
 void StringExpandPlaceholders(MessageFormat *messageFormat, String *dest, String *src);
 void BufferString(MessageFormat *messageFormat, u32 fieldno, const String *string, s32 a3, s32 a4, s32 a5);
-void BufferIntegerAsString(MessageFormat *messageFormat, u32 idx, s32 num, u32 numDigits, STRCONVMODE strconvmode, BOOL whichCharset);
+void BufferIntegerAsString(MessageFormat *messageFormat, u32 idx, s32 num, u32 numDigits, PrintingMode strconvmode, BOOL whichCharset);
 void BufferPlayersName(MessageFormat *messageFormat, u32 idx, PlayerProfile *playerProfile);
 void BufferECWord(MessageFormat *messageFormat, u32 idx, u16 wordno);
 void BufferSpeciesName(MessageFormat *messageFormat, u32 idx, u16 species);

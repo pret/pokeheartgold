@@ -172,7 +172,7 @@ BOOL ov36_App_MainMenu_SelectOption_Continue_AppExit(OVY_MANAGER* man, int* stat
 static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SaveData* savedata, BOOL set_trainer_id) {
 #pragma unused(heap_id)
     s32 i;
-    MSGDATA* friend_names_msgdata;
+    MsgData* friend_names_msgdata;
     String* author_name;
 
     Save_SysInfo_InitFromSystem(Save_SysInfo_Get(savedata));

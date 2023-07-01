@@ -95,7 +95,7 @@ struct RadioSys {
     u8 filler_08[0x14];
     union RadioShow *show;
     u8 filler_20[0x4];
-    MSGDATA *msgData;
+    MsgData *msgData;
     u8 filler_28[0x24];
     String *line1;
     String *line2;

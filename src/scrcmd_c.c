@@ -971,7 +971,7 @@ BOOL ScrCmd_RemoveWaitingIcon(ScriptContext *ctx) {
     return FALSE;
 }
 
-static void sub_02041770(ScriptContext *ctx, struct UnkStruct_ov01_021EDC28 **a1, MSGDATA *msgData) {
+static void sub_02041770(ScriptContext *ctx, struct UnkStruct_ov01_021EDC28 **a1, MsgData *msgData) {
     FieldSystem *fsys = ctx->fsys;
     MessageFormat **msgFmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
     u8 x = ScriptReadByte(ctx);
@@ -4039,7 +4039,7 @@ BOOL ScrCmd_571(ScriptContext *ctx) {
     String *r7_str;
     String *sp0_str;
     MessageFormat *msgFmt = MessageFormat_New(HEAP_ID_32);
-    MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0202_bin, HEAP_ID_32);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0202_bin, HEAP_ID_32);
     BufferECWord(msgFmt, 0, sp4);
     BufferECWord(msgFmt, 1, sp8);
     BufferECWord(msgFmt, 2, spC);

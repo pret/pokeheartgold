@@ -208,7 +208,7 @@ static void Get2dMenuSelectionCoords(struct ListMenu2D *listMenu, u8 *x, u8 *y, 
 
 struct ListMenu2D *CreateYesNoMenu(BGCONFIG *bgConfig, const WindowTemplate *windowTemplate, u16 tileNum, u8 paletteNum, u8 initialSelection, HeapID heapId) {
     struct ListMenu2DTemplate menuTemplate;
-    MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0191_bin, heapId);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0191_bin, heapId);
     LISTMENUITEM *items = ListMenuItems_New(2, heapId);
     ListMenuItems_AppendFromMsgData(items, msgData, msg_0191_00042, 0);
     ListMenuItems_AppendFromMsgData(items, msgData, msg_0191_00043, LIST_CANCEL);

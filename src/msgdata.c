@@ -192,8 +192,8 @@ static u16 GetMsgCount_TableFromNarc(NarcId narc_id, s32 file_id) {
     return n[0];
 }
 
-MSGDATA * NewMsgDataFromNarc(MsgDataLoadType type, NarcId narc_id, s32 file_id, HeapID heap_id) {
-    MSGDATA * msgData = AllocFromHeapAtEnd(heap_id, sizeof(MSGDATA));
+MsgData * NewMsgDataFromNarc(MsgDataLoadType type, NarcId narc_id, s32 file_id, HeapID heap_id) {
+    MsgData * msgData = AllocFromHeapAtEnd(heap_id, sizeof(MsgData));
     if (msgData != NULL) {
         if (type == MSGDATA_LOAD_DIRECT) {
             msgData->direct = LoadSingleElementFromNarc(narc_id, file_id, heap_id);
@@ -212,7 +212,7 @@ MSGDATA * NewMsgDataFromNarc(MsgDataLoadType type, NarcId narc_id, s32 file_id, 
     return msgData;
 }
 
-void DestroyMsgData(MSGDATA * msgData) {
+void DestroyMsgData(MsgData * msgData) {
     if (msgData != NULL) {
         switch (msgData->type) {
         case MSGDATA_LOAD_DIRECT:
@@ -226,7 +226,7 @@ void DestroyMsgData(MSGDATA * msgData) {
     }
 }
 
-void ReadMsgDataIntoString(MSGDATA * msgData, s32 msg_no, String * dest) {
+void ReadMsgDataIntoString(MsgData * msgData, s32 msg_no, String * dest) {
     switch (msgData->type) {
     case MSGDATA_LOAD_DIRECT:
         ReadMsgData_ExistingTable_ExistingString(msgData->direct, msg_no, dest);
@@ -237,7 +237,7 @@ void ReadMsgDataIntoString(MSGDATA * msgData, s32 msg_no, String * dest) {
     }
 }
 
-String *NewString_ReadMsgData(MSGDATA *msgData, s32 msg_no) {
+String *NewString_ReadMsgData(MsgData *msgData, s32 msg_no) {
     switch (msgData->type) {
     case MSGDATA_LOAD_DIRECT:
         return ReadMsgData_ExistingTable_NewString(msgData->direct, msg_no, (HeapID) msgData->heap_id);
@@ -248,7 +248,7 @@ String *NewString_ReadMsgData(MSGDATA *msgData, s32 msg_no) {
     }
 }
 
-u32 MsgDataGetCount(MSGDATA * msgData) {
+u32 MsgDataGetCount(MsgData * msgData) {
     switch (msgData->type) {
     case MSGDATA_LOAD_DIRECT:
         return GetMsgCount_ExistingTable(msgData->direct);
@@ -259,7 +259,7 @@ u32 MsgDataGetCount(MSGDATA * msgData) {
     }
 }
 
-void ReadMsgDataIntoU16Array(MSGDATA * msgData, u32 msg_no, u16 * dest) {
+void ReadMsgDataIntoU16Array(MsgData * msgData, u32 msg_no, u16 * dest) {
     switch (msgData->type) {
     case MSGDATA_LOAD_DIRECT:
         ReadMsgData_ExistingTable_ExistingArray(msgData->direct, msg_no, dest);
@@ -271,12 +271,12 @@ void ReadMsgDataIntoU16Array(MSGDATA * msgData, u32 msg_no, u16 * dest) {
 }
 
 void GetSpeciesNameIntoArray(u16 species, HeapID heap_id, u16 * dest) {
-    MSGDATA * msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0237_bin, heap_id);
+    MsgData * msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0237_bin, heap_id);
     ReadMsgDataIntoU16Array(msgData, species, dest);
     DestroyMsgData(msgData);
 }
 
-String * ReadMsgData_ExpandPlaceholders(MessageFormat * messageFormat, MSGDATA * msgData, u32 msgno, HeapID heap_id) {
+String * ReadMsgData_ExpandPlaceholders(MessageFormat * messageFormat, MsgData * msgData, u32 msgno, HeapID heap_id) {
     String * ret = NULL;
     String * r4 = String_New(1024, HEAP_ID_0);
     String * r5;
@@ -293,7 +293,7 @@ String * ReadMsgData_ExpandPlaceholders(MessageFormat * messageFormat, MSGDATA *
 }
 
 String * GetMoveName(u32 move, HeapID heapno) {
-    MSGDATA * msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0750_bin, heapno);
+    MsgData * msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0750_bin, heapno);
     String * ret;
     if (msgData != NULL) {
         ret = String_New(16, heapno);
@@ -308,7 +308,7 @@ String * GetMoveName(u32 move, HeapID heapno) {
 
 String * GetSpeciesName(u16 species, HeapID heap_id) {
     String * ret;
-    MSGDATA * msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0237_bin, heap_id);
+    MsgData * msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0237_bin, heap_id);
     if (msgData != NULL) {
         ret = NewString_ReadMsgData(msgData, species);
         DestroyMsgData(msgData);

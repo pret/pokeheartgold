@@ -52,7 +52,7 @@ String *String_Dup(const String *src, HeapID heapId) {
     return ret;
 }
 
-void String16_FormatInteger(String * str, int num, u32 ndigits, STRCONVMODE strConvMode, BOOL whichCharset) {
+void String16_FormatInteger(String * str, int num, u32 ndigits, PrintingMode strConvMode, BOOL whichCharset) {
     static const u32 sPowersOfTen[10] = {
         1ul,
         10ul,
@@ -109,16 +109,16 @@ void String16_FormatInteger(String * str, int num, u32 ndigits, STRCONVMODE strC
         while (dividend != 0) {
             u16 digit = (u16)(num / dividend);
             num -= dividend * digit;
-            if (strConvMode == STRCONVMODE_LEADING_ZEROS) {
+            if (strConvMode == PRINTING_MODE_LEADING_ZEROS) {
                 u16 value = (u16)((digit < 10) ? charbase[digit] : CHAR_JP_QUESTION_MARK);
                 str->data[str->size++] = value;
             }
             else if (digit != 0 || dividend == 1) {
-                strConvMode = STRCONVMODE_LEADING_ZEROS;
+                strConvMode = PRINTING_MODE_LEADING_ZEROS;
                 u16 value = (u16)((digit < 10) ? charbase[digit] : CHAR_JP_QUESTION_MARK);
                 str->data[str->size++] = value;
             }
-            else if (strConvMode == STRCONVMODE_RIGHT_ALIGN) {
+            else if (strConvMode == PRINTING_MODE_RIGHT_ALIGN) {
                 u16 value = (u16)((whichCharset == 0) ? CHAR_JP_SPACE : CHAR_NARROW_SPACE);
                 str->data[str->size++] = value;
             }
@@ -130,7 +130,7 @@ void String16_FormatInteger(String * str, int num, u32 ndigits, STRCONVMODE strC
     GF_ASSERT(0);
 }
 
-void String16_FormatUnsignedLongLong(String * str, u64 num, u32 ndigits, STRCONVMODE strConvMode, BOOL whichCharset) {
+void String16_FormatUnsignedLongLong(String * str, u64 num, u32 ndigits, PrintingMode strConvMode, BOOL whichCharset) {
     static const u64 sPowersOfTen[20] = {
         1ull,
         10ull,
@@ -197,16 +197,16 @@ void String16_FormatUnsignedLongLong(String * str, u64 num, u32 ndigits, STRCONV
         while (dividend != 0ull) {
             u64 digit = num / dividend;
             num -= dividend * digit;
-            if (strConvMode == STRCONVMODE_LEADING_ZEROS) {
+            if (strConvMode == PRINTING_MODE_LEADING_ZEROS) {
                 u16 value = (u16)((digit < 10ull) ? charbase[digit] : CHAR_JP_QUESTION_MARK);
                 str->data[str->size++] = value;
             }
             else if (digit != 0 || dividend == 1) {
-                strConvMode = STRCONVMODE_LEADING_ZEROS;
+                strConvMode = PRINTING_MODE_LEADING_ZEROS;
                 u16 value = (u16)((digit < 10ull) ? charbase[digit] : CHAR_JP_QUESTION_MARK);
                 str->data[str->size++] = value;
             }
-            else if (strConvMode == STRCONVMODE_RIGHT_ALIGN) {
+            else if (strConvMode == PRINTING_MODE_RIGHT_ALIGN) {
                 u16 value = (u16)((whichCharset == 0) ? CHAR_JP_SPACE : CHAR_SPACE);
                 str->data[str->size++] = value;
             }

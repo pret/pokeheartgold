@@ -122,7 +122,7 @@ void BugContest_Judge(BUGCONTEST *bugContest) {
     }
 }
 
-void BugContest_BufferContestWinnerNames(BUGCONTEST *bugContest, MSGDATA *msgData, MessageFormat *msgFmt, u8 place) {
+void BugContest_BufferContestWinnerNames(BUGCONTEST *bugContest, MsgData *msgData, MessageFormat *msgFmt, u8 place) {
     BUGCONTESTANT *contestant;
     String *string;
 
@@ -136,7 +136,7 @@ void BugContest_BufferContestWinnerNames(BUGCONTEST *bugContest, MSGDATA *msgDat
         BufferTrainerClassName(msgFmt, 2, sBugContestOpponentClasses[contestant->id]);
     }
     BufferSpeciesName(msgFmt, 1, contestant->data.species);
-    BufferIntegerAsString(msgFmt, 3, contestant->score, 3, STRCONVMODE_LEFT_ALIGN, 1);
+    BufferIntegerAsString(msgFmt, 3, contestant->score, 3, PRINTING_MODE_LEFT_ALIGN, 1);
 }
 
 BOOL BugContest_ContestantIsRegistered(BUGCONTEST *bugContest, u8 id) {

@@ -8,7 +8,7 @@ void FieldSys_StartBugContestTimer(FieldSystem *fsys);
 BUGCONTEST *BugContest_New(FieldSystem *fsys, u32 weekday);
 void BugContest_Delete(BUGCONTEST *bugContest);
 void BugContest_Judge(BUGCONTEST *bugContest);
-void BugContest_BufferContestWinnerNames(BUGCONTEST *bugContest, MSGDATA *msgData, MessageFormat *msgFmt, u8 place);
+void BugContest_BufferContestWinnerNames(BUGCONTEST *bugContest, MsgData *msgData, MessageFormat *msgFmt, u8 place);
 BOOL BugContest_ContestantIsRegistered(BUGCONTEST *bugContest, u8 id);
 BOOL BugContest_BufferCaughtMonNick(BUGCONTEST *bugContest, MessageFormat *msgFmt, u8 slot);
 void BugContest_BackUpParty(BUGCONTEST *bugContest);

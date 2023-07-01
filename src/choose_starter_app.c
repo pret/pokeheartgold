@@ -1047,7 +1047,7 @@ static void loadBgGraphics(BGCONFIG *bgConfig, HeapID heapId) {
 }
 
 static u8 printMsgOnWinEx(Window *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, String **out) {
-    MSGDATA *msgData;
+    MsgData *msgData;
     u8 ret;
     GF_ASSERT(*out == NULL);
     msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msgBank, heapId);
