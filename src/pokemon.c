@@ -514,7 +514,7 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void * dest) {
             ret = blockB->isEgg;
         }
         break;
-    case MON_DATA_SPECIES2:
+    case MON_DATA_SPECIES_OR_EGG:
         ret = blockA->species;
         if (ret != SPECIES_NONE && (blockB->isEgg || boxMon->checksum_fail)) {
             ret = SPECIES_EGG;
@@ -1698,7 +1698,7 @@ static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value) {
     case MON_DATA_SEAL_COORDS:
     case MON_DATA_SPECIES_EXISTS:
     case MON_DATA_SANITY_IS_EGG:
-    case MON_DATA_SPECIES2:
+    case MON_DATA_SPECIES_OR_EGG:
     case MON_DATA_IVS_WORD:
     case MON_DATA_UNK_176:
     case MON_DATA_TYPE_1:
@@ -2041,7 +2041,7 @@ void MonApplyFriendshipMod(Pokemon *mon, u8 kind, u16 location) {
     if (kind == FRIENDSHIP_EVENT_WALKING && (LCRandom() & 1))
         return;
 
-    species = (u16)GetMonData(mon, MON_DATA_SPECIES2, NULL);
+    species = (u16)GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL);
     if (species == SPECIES_NONE || species == SPECIES_EGG)
         return;
 
@@ -2157,7 +2157,7 @@ void sub_02070130(struct SomeDrawPokemonStruct *a0, BoxPokemon *boxMon, u8 which
 
 void GetBoxmonSpriteCharAndPlttNarcIds(struct SomeDrawPokemonStruct *spC, BoxPokemon *boxMon, u8 whichFacing, BOOL sp14) {
     BOOL decry = AcquireBoxMonLock(boxMon);
-    u16 species = GetBoxMonData(boxMon, MON_DATA_SPECIES2, NULL);
+    u16 species = GetBoxMonData(boxMon, MON_DATA_SPECIES_OR_EGG, NULL);
     u8 gender = GetBoxMonGender(boxMon);
     u8 shiny = BoxMonIsShiny(boxMon);
     u32 pid = GetBoxMonData(boxMon, MON_DATA_PERSONALITY, NULL);
@@ -2474,7 +2474,7 @@ u8 sub_02070848(BoxPokemon *boxMon, u8 whichFacing) {
 }
 
 u8 sub_02070854(BoxPokemon *boxMon, u8 whichFacing, BOOL a2) {
-    u16 species = GetBoxMonData(boxMon, MON_DATA_SPECIES2, NULL);
+    u16 species = GetBoxMonData(boxMon, MON_DATA_SPECIES_OR_EGG, NULL);
     u8 gender = GetBoxMonGender(boxMon);
     u32 pid = GetBoxMonData(boxMon, MON_DATA_PERSONALITY, NULL);
     u8 form;
@@ -3772,7 +3772,7 @@ BOOL GetBoxMonTMHMCompat(BoxPokemon *boxMon, u8 tmhm) {
     u16 species;
     u32 form;
 
-    species = GetBoxMonData(boxMon, MON_DATA_SPECIES2, NULL);
+    species = GetBoxMonData(boxMon, MON_DATA_SPECIES_OR_EGG, NULL);
     form = GetBoxMonData(boxMon, MON_DATA_FORM, NULL);
     return GetTMHMCompatBySpeciesAndForm(species, form, tmhm);
 }

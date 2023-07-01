@@ -268,7 +268,7 @@
 #define MON_DATA_HOENN_WORLD_RIBBON             109
 #define MON_DATA_FATEFUL_ENCOUNTER              110
 #define MON_DATA_GENDER                         111
-#define MON_DATA_FORM                          112
+#define MON_DATA_FORM                           112
 #define MON_DATA_RESERVED_113                   113 // HGSS
 #define MON_DATA_RESERVED_114                   114 // Plat
 #define MON_DATA_HGSS_EGG_MET_LOCATION          115
@@ -330,7 +330,7 @@
 #define MON_DATA_SEAL_COORDS                    171
 #define MON_DATA_SPECIES_EXISTS                 172
 #define MON_DATA_SANITY_IS_EGG                  173
-#define MON_DATA_SPECIES2                       174
+#define MON_DATA_SPECIES_OR_EGG                 174 // If the Pokémon is in an Egg, return SPECIES_EGG.
 #define MON_DATA_IVS_WORD                       175
 #define MON_DATA_UNK_176                        176
 #define MON_DATA_TYPE_1                         177
