@@ -4055,7 +4055,7 @@ BOOL ScrCmd_571(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_573(ScriptContext *ctx) {
-    Save_SysInfo_SetField48(Save_SysInfo_Get(ctx->fsys->savedata), 1);
+    Save_SysInfo_SetMysteryGiftActive(Save_SysInfo_Get(ctx->fsys->savedata), 1);
     return FALSE;
 }
 
@@ -4115,8 +4115,8 @@ BOOL ScrCmd_ShowSaveStats(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     struct SaveStatsPrinter **saveStatsPrinter = FieldSysGetAttrAddr(fsys, SCRIPTENV_SAVE_STATS_PRINTER);
     if (!Save_FileDoesNotBelongToPlayer(fsys->savedata)) {
-        *saveStatsPrinter = Field_CreateSaveStatsPrinter(fsys, HEAP_ID_4, 3);
-        SaveStatsPrinter_Print(*saveStatsPrinter);
+        *saveStatsPrinter = Field_SaveStatsPrinter_New(fsys, HEAP_ID_4, 3);
+        Field_SaveStatsPrinter_Print(*saveStatsPrinter);
     }
     return FALSE;
 }
@@ -4125,8 +4125,8 @@ BOOL ScrCmd_HideSaveStats(ScriptContext *ctx) {
     FieldSystem *fsys = ctx->fsys;
     struct SaveStatsPrinter **saveStatsPrinter = FieldSysGetAttrAddr(fsys, SCRIPTENV_SAVE_STATS_PRINTER);
     if (!Save_FileDoesNotBelongToPlayer(fsys->savedata)) {
-        SaveStatsPrinter_RemoveFromScreen(*saveStatsPrinter);
-        SaveStatsPrinter_Delete(*saveStatsPrinter);
+        Field_SaveStatsPrinter_RemoveFromScreen(*saveStatsPrinter);
+        Field_SaveStatsPrinter_Delete(*saveStatsPrinter);
     }
     return FALSE;
 }
