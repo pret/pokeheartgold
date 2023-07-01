@@ -201,7 +201,7 @@ u16 BagPocketGetQuantity(ItemSlot *slots, u32 count, u16 itemId);
  *
  * @param bag:         Pointer to Bag
  * @param pockets:     Char array of POCKET_XXX IDs, terminated
- *                     with POCKET_BagView_END
+ *                     with POCKET_BAG_VIEW_END
  * @param heap_id:     Heap to allocate from
  *
  * @returns: Pointer to newly-allocated BagView

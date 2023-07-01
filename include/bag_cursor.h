@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_BagCursor_H
-#define POKEHEARTGOLD_BagCursor_H
+#ifndef POKEHEARTGOLD_BAG_CURSOR_H
+#define POKEHEARTGOLD_BAG_CURSOR_H
 
 /*
  * Remembers the cursor position in the field bag view
@@ -174,4 +174,4 @@ void BagCursor_Battle_SetLastUsedItem(BagCursor *cursor, u16 itemId, u16 pocket)
  */
 void BagCursor_Battle_SetPocket(BagCursor *cursor, u16 pocket);
 
-#endif //POKEHEARTGOLD_BagCursor_H
+#endif //POKEHEARTGOLD_BAG_CURSOR_H

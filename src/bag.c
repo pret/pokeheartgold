@@ -313,7 +313,7 @@ static void SortPocket(ItemSlot *slots, u32 count) {
 BagView *BagViewCreate(Bag *bag, const u8 *pockets, HeapID heap_id) {
     int i;
     BagView *ret = BagView_New(heap_id);
-    for (i = 0; pockets[i] != POCKET_BagView_END; i++) {
+    for (i = 0; pockets[i] != POCKET_BAG_VIEW_END; i++) {
         switch (pockets[i]) {
         case POCKET_KEY_ITEMS:
             BagView_SetItem(ret, bag->keyItems, POCKET_KEY_ITEMS, i);
