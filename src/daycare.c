@@ -12,19 +12,19 @@ void Save_Daycare_Init(DAYCARE* daycare) {
     daycare->egg_cycles = 0;
 }
 
-DAYCAREMON* Save_DayCare_GetMonX(DAYCARE* daycare, int i) {
+DaycareMon* Save_DayCare_GetMonX(DAYCARE* daycare, int i) {
     return &daycare->mons[i];
 }
 
-BoxPokemon *DayCareMon_GetBoxMon(DAYCAREMON* dcmon) {
+BoxPokemon *DayCareMon_GetBoxMon(DaycareMon* dcmon) {
     return &dcmon->mon;
 }
 
-DAYCAREMAIL* DayCareMon_GetExtras(DAYCAREMON* dcmon) {
+DAYCAREMAIL* DayCareMon_GetExtras(DaycareMon* dcmon) {
     return &dcmon->mail;
 }
 
-int DayCareMon_GetSteps(DAYCAREMON* dcmon) {
+int DayCareMon_GetSteps(DaycareMon* dcmon) {
     return dcmon->steps;
 }
 
@@ -44,11 +44,11 @@ u8 Save_DayCare_GetEggCycleCounter(DAYCARE* daycare) {
     return daycare->egg_cycles;
 }
 
-void DayCareMon_SetSteps(DAYCAREMON* dcmon, u32 steps) {
+void DayCareMon_SetSteps(DaycareMon* dcmon, u32 steps) {
     dcmon->steps = steps;
 }
 
-void DayCareMon_AddSteps(DAYCAREMON* dcmon, u32 steps) {
+void DayCareMon_AddSteps(DaycareMon* dcmon, u32 steps) {
     dcmon->steps += steps;
 }
 
@@ -69,7 +69,7 @@ BOOL Save_DayCare_MasudaCheck(DAYCARE* daycare) {
            GetBoxMonData(&daycare->mons[1].mon, MON_DATA_GAME_LANGUAGE, NULL);
 }
 
-void DayCareMon_Copy(DAYCAREMON* dest, const DAYCAREMON* src) {
+void DayCareMon_Copy(DaycareMon* dest, const DaycareMon* src) {
     *dest = *src;
 }
 
@@ -88,7 +88,7 @@ void DayCareMon_Extras_Init(DAYCAREMAIL* mail) {
     mail->nickname[0] = EOS;
 }
 
-void DayCareMon_Init(DAYCAREMON* mon) {
+void DayCareMon_Init(DaycareMon* mon) {
     ZeroBoxMonData(&mon->mon);
     mon->steps = 0;
     DayCareMon_Extras_Init(&mon->mail);

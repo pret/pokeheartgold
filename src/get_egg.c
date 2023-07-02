@@ -19,13 +19,13 @@
 
 static u8 Save_DayCare_CountMonsInDayCare(DAYCARE *daycare);
 static int Save_DayCare_GetAvailableSlot(DAYCARE *daycare);
-static void DayCareMon_CopyFromPartySlot(PARTY *party, int partyIdx, DAYCAREMON *daycareMon, SaveData *saveData);
+static void DayCareMon_CopyFromPartySlot(PARTY *party, int partyIdx, DaycareMon *daycareMon, SaveData *saveData);
 static void Save_DayCare_Compaction(DAYCARE *daycare);
 static void Daycare_LearnLevelUpMoves(Pokemon *mon);
-static int Save_DayCare_MoveMonToParty(PARTY *party, DAYCAREMON *daycareMon, MessageFormat *msgFmt);
+static int Save_DayCare_MoveMonToParty(PARTY *party, DaycareMon *daycareMon, MessageFormat *msgFmt);
 static int GetDayCareUpdatedLevel(BoxPokemon *boxMon, u32 steps);
-static u8 DayCareMon_BufferLevelGrowthAndNick(DAYCAREMON *daycareMon, MessageFormat *msgFmt);
-static u16 DayCareMon_BufferNickAndRetrievalPrice(DAYCAREMON *daycareMon, MessageFormat *msgFmt);
+static u8 DayCareMon_BufferLevelGrowthAndNick(DaycareMon *daycareMon, MessageFormat *msgFmt);
+static u16 DayCareMon_BufferNickAndRetrievalPrice(DaycareMon *daycareMon, MessageFormat *msgFmt);
 static void Daycare_GetBothBoxMonsPtr(DAYCARE *dayCare, BoxPokemon **boxmons);
 static int Daycare_EverstoneCheck(DAYCARE *dayCare);
 static void GenerateEggPID(DAYCARE *dayCare);
@@ -79,7 +79,7 @@ static int Save_DayCare_GetAvailableSlot(DAYCARE *daycare) {
     return -1;
 }
 
-static void DayCareMon_CopyFromPartySlot(PARTY *party, int partyIdx, DAYCAREMON *daycareMon, SaveData *saveData) {
+static void DayCareMon_CopyFromPartySlot(PARTY *party, int partyIdx, DaycareMon *daycareMon, SaveData *saveData) {
     u16 nickname[POKEMON_NAME_LENGTH + 1];
     u8 mood;
     DAYCAREMAIL *daycareMail;
@@ -112,8 +112,8 @@ void Save_DayCare_PutMonIn(PARTY *party, u8 partyIdx, DAYCARE *dayCare, SaveData
 }
 
 static void Save_DayCare_Compaction(DAYCARE *daycare) {
-    DAYCAREMON *mon1;
-    DAYCAREMON *mon2;
+    DaycareMon *mon1;
+    DaycareMon *mon2;
     BoxPokemon *boxmon1;
     BoxPokemon *boxmon2;
 
@@ -152,7 +152,7 @@ static void Daycare_LearnLevelUpMoves(Pokemon *mon) {
     CalcMonLevelAndStats(mon);
 }
 
-static int Save_DayCare_MoveMonToParty(PARTY *party, DAYCAREMON *daycareMon, MessageFormat *msgFmt) {
+static int Save_DayCare_MoveMonToParty(PARTY *party, DaycareMon *daycareMon, MessageFormat *msgFmt) {
     u32 exp;
     Pokemon *mon;
     BoxPokemon *boxMon;
@@ -208,7 +208,7 @@ static int GetDayCareUpdatedLevel(BoxPokemon *boxMon, u32 steps) {
     return level;
 }
 
-int DayCareMon_CalcLevelGrowth(DAYCAREMON *daycareMon) {
+int DayCareMon_CalcLevelGrowth(DaycareMon *daycareMon) {
     BoxPokemon *boxMon;
     u8 cur_level;
     u8 new_level;
@@ -219,7 +219,7 @@ int DayCareMon_CalcLevelGrowth(DAYCAREMON *daycareMon) {
     return new_level - cur_level;
 }
 
-static u8 DayCareMon_BufferLevelGrowthAndNick(DAYCAREMON *daycareMon, MessageFormat *msgFmt) {
+static u8 DayCareMon_BufferLevelGrowthAndNick(DaycareMon *daycareMon, MessageFormat *msgFmt) {
     BoxPokemon *boxMon;
     int levelGrowth;
 
@@ -230,7 +230,7 @@ static u8 DayCareMon_BufferLevelGrowthAndNick(DAYCAREMON *daycareMon, MessageFor
     return levelGrowth;
 }
 
-static u16 DayCareMon_BufferNickAndRetrievalPrice(DAYCAREMON *daycareMon, MessageFormat *msgFmt) {
+static u16 DayCareMon_BufferNickAndRetrievalPrice(DaycareMon *daycareMon, MessageFormat *msgFmt) {
     BoxPokemon *boxMon;
     u16 levelGrowth;
     u16 price;
@@ -247,7 +247,7 @@ u16 Save_DayCare_BufferMonNickAndRetrievalPrice(DAYCARE *dayCare, u8 slot, Messa
 }
 
 u8 Save_DayCare_BufferGrowthAndNick(DAYCARE *dayCare, u32 slot, MessageFormat *msgFmt) {
-    DAYCAREMON *daycareMon;
+    DaycareMon *daycareMon;
 
     daycareMon = Save_DayCare_GetMonX(dayCare, slot);
     if (GetBoxMonData(DayCareMon_GetBoxMon(daycareMon), MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
@@ -930,7 +930,7 @@ void Save_DayCare_BufferStoredMonNicks(DAYCARE *dayCare, MessageFormat *msgFmt) 
 }
 
 void Save_DayCare_BufferMonStats(DAYCARE *dayCare, u32 nickname_idx, u32 level_idx, u32 gender_idx, u8 slot, MessageFormat *msgFmt) {
-    DAYCAREMON *daycareMon;
+    DaycareMon *daycareMon;
     BoxPokemon *boxMon;
     u8 level;
     u8 gender;
