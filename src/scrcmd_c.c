@@ -4277,7 +4277,7 @@ u32 sub_020467A8(SaveData *saveData) {
         }
     }
 
-    DAYCARE *dayCare = Save_DayCare_Get(saveData);
+    Daycare *dayCare = Save_DayCare_Get(saveData);
     for (i = 0; i < 2; i++) {
         BoxPokemon *boxMon = DayCareMon_GetBoxMon(Save_DayCare_GetMonX(dayCare, i));
         if (GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL)) {
