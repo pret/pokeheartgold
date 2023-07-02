@@ -13,14 +13,14 @@
 #include "msgdata.h"
 
 static const u16 sPocketCounts[POCKETS_COUNT] = {
-    NUM_BAG_ITEMS,
-    NUM_BAG_MEDICINE,
-    NUM_BAG_BALLS,
-    NUM_BAG_TMS_HMS,
-    NUM_BAG_BERRIES,
-    NUM_BAG_MAIL,
-    NUM_BAG_BATTLE_ITEMS,
-    NUM_BAG_KEY_ITEMS,
+    [POCKET_ITEMS]        = NUM_BAG_ITEMS,
+    [POCKET_MEDICINE]     = NUM_BAG_MEDICINE,
+    [POCKET_BALLS]        = NUM_BAG_BALLS,
+    [POCKET_TMHMS]        = NUM_BAG_TMS_HMS,
+    [POCKET_BERRIES]      = NUM_BAG_BERRIES,
+    [POCKET_MAIL]         = NUM_BAG_MAIL,
+    [POCKET_BATTLE_ITEMS] = NUM_BAG_BATTLE_ITEMS,
+    [POCKET_KEY_ITEMS]    = NUM_BAG_KEY_ITEMS,
 };
 
 static const u16 sTMHMMoves[] = {
