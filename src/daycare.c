@@ -28,7 +28,7 @@ int DayCareMon_GetSteps(DaycareMon* dcmon) {
     return dcmon->steps;
 }
 
-MAIL* DayCareMail_GetMailPtr(DaycareMail* dcmail) {
+Mail* DayCareMail_GetMailPtr(DaycareMail* dcmail) {
     return &dcmail->mail;
 }
 

@@ -42,7 +42,7 @@ typedef struct NPCTradeAppData {
 NPCTradeAppData *NPCTradeApp_Init(HeapID heapId, u32 tradeno);
 void NPCTradeApp_Delete(NPCTradeAppData *work);
 void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fsys, u8 tradeno, u8 level, u16 mapno);
-MAIL *NPCTrade_MakeKenyaMail(void);
+Mail *NPCTrade_MakeKenyaMail(void);
 int NPCTrade_CanGiveUpLoanMon(FieldSystem *fsys, u8 tradeno, u8 idx);
 int NPCTradeApp_GetOfferedSpecies(NPCTradeAppData *work);
 int NPCTradeApp_GetRequestedSpecies(NPCTradeAppData *work);

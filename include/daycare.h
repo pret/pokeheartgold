@@ -5,7 +5,7 @@
 #include "pokemon.h"
 
 typedef struct DaycareMail {
-    MAIL mail;
+    Mail mail;
     u16 ot_name[PLAYER_NAME_LENGTH + 1];
     u16 nickname[POKEMON_NAME_LENGTH + 1];
     u8 padding_5E[2];
@@ -30,7 +30,7 @@ DaycareMon* Save_DayCare_GetMonX(Daycare* daycare, int i);
 BoxPokemon *DayCareMon_GetBoxMon(DaycareMon* dcmon);
 DaycareMail* DayCareMon_GetExtras(DaycareMon* dcmon);
 int DayCareMon_GetSteps(DaycareMon* dcmon);
-MAIL* DayCareMail_GetMailPtr(DaycareMail* dcmail);
+Mail* DayCareMail_GetMailPtr(DaycareMail* dcmail);
 u32 Save_DayCare_GetEggPID(Daycare* daycare);
 u8 Save_DayCare_GetEggCycleCounter(Daycare* daycare);
 void DayCareMon_SetSteps(DaycareMon* dcmon, u32 steps);

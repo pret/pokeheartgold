@@ -10,37 +10,37 @@
 #define MAILBOX_MSG_COUNT       (20)
 
 typedef struct Mailbox {
-    MAIL msgs[MAILBOX_MSG_COUNT];
+    Mail msgs[MAILBOX_MSG_COUNT];
 } MAILBOX;
 
-MAIL *Mail_New(HeapID heap_id);
-void Mail_Copy(const MAIL *src, MAIL *dest);
-void Mail_Init(MAIL *mail);
-BOOL Mail_TypeIsValid(MAIL *mail);
-BOOL Mail_Compare(const MAIL *a, const MAIL *b);
-void Mail_SetNewMessageDetails(MAIL *mail, u8 mailType, u8 mon_no, SaveData *saveData);
-u32 Mail_GetOTID(const MAIL *mail);
-u16 *Mail_GetAuthorNamePtr(MAIL *mail);
-u8 Mail_GetAuthorGender(const MAIL *mail);
-u8 Mail_GetType(const MAIL *mail);
-void Mail_SetType(MAIL *mail, u8 mailType);
-u8 Mail_GetLanguage(const MAIL *mail);
-u8 Mail_GetVersion(const MAIL *mail);
-u16 sub_0202B404(MAIL *mail, u8 r1, u8 r4, u16 r3);
-u16 sub_0202B4E4(const MAIL *mail);
-MAIL_MESSAGE *Mail_GetUnk20Array(MAIL *mail, int i);
-void Mail_SetMessage(MAIL *mail, const MAIL_MESSAGE *src, int i);
+Mail *Mail_New(HeapID heap_id);
+void Mail_Copy(const Mail *src, Mail *dest);
+void Mail_Init(Mail *mail);
+BOOL Mail_TypeIsValid(Mail *mail);
+BOOL Mail_Compare(const Mail *a, const Mail *b);
+void Mail_SetNewMessageDetails(Mail *mail, u8 mailType, u8 mon_no, SaveData *saveData);
+u32 Mail_GetOTID(const Mail *mail);
+u16 *Mail_GetAuthorNamePtr(Mail *mail);
+u8 Mail_GetAuthorGender(const Mail *mail);
+u8 Mail_GetType(const Mail *mail);
+void Mail_SetType(Mail *mail, u8 mailType);
+u8 Mail_GetLanguage(const Mail *mail);
+u8 Mail_GetVersion(const Mail *mail);
+u16 sub_0202B404(Mail *mail, u8 r1, u8 r4, u16 r3);
+u16 sub_0202B4E4(const Mail *mail);
+MAIL_MESSAGE *Mail_GetUnk20Array(Mail *mail, int i);
+void Mail_SetMessage(Mail *mail, const MAIL_MESSAGE *src, int i);
 MAILBOX *Save_Mailbox_Get(SaveData *saveData);
 u32 Save_Mailbox_sizeof(void);
 void Save_Mailbox_Init(MAILBOX *mailbox);
-MAIL *Mailbox_AllocAndFetchMailI(MAIL *msgs, int n, int i, HeapID heapId);
+Mail *Mailbox_AllocAndFetchMailI(Mail *msgs, int n, int i, HeapID heapId);
 int Mailbox_GetFirstEmptySlotIdx(MAILBOX *mailbox);
-void Mailbox_DeleteSlotI(MAIL *msgs, int n, int i);
-void Mailbox_CopyMailToSlotI(MAIL *msgs, int n, int i, const MAIL *src);
+void Mailbox_DeleteSlotI(Mail *msgs, int n, int i);
+void Mailbox_CopyMailToSlotI(Mail *msgs, int n, int i, const Mail *src);
 u32 Mailbox_CountMessages(MAILBOX *mailbox, int unused);
-void Mailbox_FetchMailToBuffer(MAIL *msgs, int n, int i, MAIL *dest);
-int MailArray_GetFirstEmptySlotIdx(MAIL *msgs, int n);
-u32 MailArray_CountMessages(MAIL *msgs, int n);
-MAIL *CreateKenyaMail(Pokemon *mon, u8 mailType, u8 gender, String *name, u8 otId);
+void Mailbox_FetchMailToBuffer(Mail *msgs, int n, int i, Mail *dest);
+int MailArray_GetFirstEmptySlotIdx(Mail *msgs, int n);
+u32 MailArray_CountMessages(Mail *msgs, int n);
+Mail *CreateKenyaMail(Pokemon *mon, u8 mailType, u8 gender, String *name, u8 otId);
 
 #endif //POKEHEARTGOLD_MAIL_H
