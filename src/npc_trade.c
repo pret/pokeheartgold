@@ -52,7 +52,7 @@ void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fsys, u8 tradeno, u8 level, u16 ma
     NPCTrade *trade_dat;
     Pokemon *kenya;
     String *name;
-    MAIL *mail;
+    Mail *mail;
     u8 mailno;
 
     mon = AllocMonZeroed(HEAP_ID_FIELD);
@@ -74,11 +74,11 @@ void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fsys, u8 tradeno, u8 level, u16 ma
     FreeToHeap(mon);
 }
 
-MAIL *NPCTrade_MakeKenyaMail(void) {
+Mail *NPCTrade_MakeKenyaMail(void) {
     Pokemon *mon;
     NPCTrade *trade_dat;
     String *name;
-    MAIL *mail;
+    Mail *mail;
     u8 mailno;
 
     mon = AllocMonZeroed(HEAP_ID_FIELD);

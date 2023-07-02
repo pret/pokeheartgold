@@ -155,7 +155,7 @@ typedef struct Mail
     union MailPatternData mon_icons[3];
     u16 form_flags; // bitfield of three 5-bit values
     MAIL_MESSAGE unk_20[3];
-} MAIL;
+} Mail;
 
 typedef struct PartyPokemon {
     /* 0x088 */ u32 status; // slp:3, psn:1, brn:1, frz:1, prz:1, tox:1, ...
@@ -168,7 +168,7 @@ typedef struct PartyPokemon {
     /* 0x096 */ u16 speed;
     /* 0x098 */ u16 spatk;
     /* 0x09A */ u16 spdef;
-    /* 0x09C */ MAIL mail;
+    /* 0x09C */ Mail mail;
     /* 0x0D4 */ CAPSULE sealCoords; // seal coords
 } PARTYMON;
 

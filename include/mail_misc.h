@@ -32,7 +32,7 @@ typedef struct {
     u8 partyIdx;
     u8 unkF;
     SaveData *saveData;
-    MAIL *mail;
+    Mail *mail;
     MAILBOX *mailbox;
     u8 unk1C[0x4];
 } Unk02090E68;
@@ -69,6 +69,6 @@ u32 sub_02090F6C(Unk02090E68 *a0);
 BOOL sub_02090F70(Unk02090E68 *a0, Pokemon *mon);
 void sub_02090F90(Unk02090E68 *a0);
 int sub_02090FA8(MAILBOX *mailbox, Pokemon *mon, HeapID heapId);
-int sub_02091004(MAIL *msgs, int i, Pokemon *mon, HeapID heapId);
+int sub_02091004(Mail *msgs, int i, Pokemon *mon, HeapID heapId);
 
 #endif //POKEHEARTGOLD_MAIL_MISC_H

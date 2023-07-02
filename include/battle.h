@@ -121,7 +121,7 @@ typedef struct UnkBtlCtxSub_76 {
     u16 unkA0[2];
     u8 unkA4[4];
     MOVE moveData[468];
-    ITEMDATA *itemData;
+    ItemData *itemData;
     u16 unk280[4];
     u16 unk288[4];
 } UnkBtlCtxSub_76;
@@ -185,14 +185,14 @@ typedef struct UnkBattlemonSub {
     int unk30;
 } UnkBattlemonSub;
 
-typedef struct BATTLEMON {
+typedef struct BattleMon {
     u16 species;
     u16 atk;
     u16 def;
     u16 speed;
     u16 spAtk;
     u16 spDef;
-    u16 moves[4];
+    u16 moves[MAX_MON_MOVES];
     u32 hpIV:5;
     u32 atkIV:5;
     u32 defIV:5;
@@ -201,7 +201,7 @@ typedef struct BATTLEMON {
     u32 spDefIV:5;
     u32 isEgg:1;
     u32 hasNickname:1;
-    s8 statChanges[8];
+    s8 statChanges[NUM_BATTLE_STATS];
     int weight;
     u8 type1;
     u8 type2;
@@ -221,11 +221,11 @@ typedef struct BATTLEMON {
     u32 moldBreakerFlag:1;
     u32 pressureFlag:1;
     u32 unk28_B:21;
-    u8 movePPCur[4];
-    u8 movePP[4];
+    u8 movePPCur[MAX_MON_MOVES];
+    u8 movePP[MAX_MON_MOVES];
     u8 level;
     u8 friendship;
-    u16 nickname[11];
+    u16 nickname[POKEMON_NAME_LENGTH + 1];
     int hp;
     u32 maxHp;
     u16 unk54[8];
@@ -244,7 +244,7 @@ typedef struct BATTLEMON {
     u32 moveEffectFlags;
     u32 unk80;
     UnkBattlemonSub unk88;
-} BATTLEMON;
+} BattleMon;
 
 typedef struct BATTLECONTEXT {
     u8 unk_0[4];
@@ -360,7 +360,7 @@ typedef struct BATTLECONTEXT {
     u8 unk_2200[4][4][16];
     u8 unk_2300[4][256];
     int battleScriptBuffer[400];
-    BATTLEMON battleMons[4];
+    BattleMon battleMons[4];
     u32 moveNoTemp;
     u32 moveNoCur;
     u32 moveNoPrev;
