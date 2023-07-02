@@ -19,7 +19,7 @@ typedef struct ItemSlot {
  * Bit array describing the effects of using the item on a
  * party member.
  */
-typedef struct ItemPartyUseParam
+typedef struct ItemPartyParam
 {
     u8 slp_heal:1;
     u8 psn_heal:1;
@@ -66,7 +66,7 @@ typedef struct ItemPartyUseParam
     s8 friendship_mod_med_param;
     s8 friendship_mod_hi_param;
     u8 paddding[2];
-} ITEMPARTYPARAM;
+} ItemPartyParam;
 
 /*
  * Item parameter data, loaded from itemtool/itemdata/item_data.narc
@@ -91,7 +91,7 @@ typedef struct ItemData
     u8 padding_0D;
     union {
         u8 dummy;
-        ITEMPARTYPARAM partyUseParam;
+        ItemPartyParam partyUseParam;
     };
     u8 padding_22[2];
 } ItemData;

@@ -778,7 +778,7 @@ void GetItemDescIntoString(String *dest, u16 itemId, HeapID heap_id) {
     DestroyMsgData(msgData);
 }
 
-static s32 GetItemAttrSub(ITEMPARTYPARAM *param, u16 attrno);
+static s32 GetItemAttrSub(ItemPartyParam *param, u16 attrno);
 
 s32 GetItemAttr(u16 itemId, u16 attrno, HeapID heap_id) {
     ItemData *itemData = (ItemData *)LoadItemDataOrGfx(itemId, ITEMNARC_PARAM, heap_id);
@@ -831,7 +831,7 @@ s32 GetItemAttr_PreloadedItemData(ItemData *itemData, u16 attrno) {
     return 0;
 }
 
-static s32 GetItemAttrSub(ITEMPARTYPARAM * partyParam, u16 attr)
+static s32 GetItemAttrSub(ItemPartyParam * partyParam, u16 attr)
 {
     switch (attr)
     {
