@@ -82,7 +82,7 @@ static int Save_DayCare_GetAvailableSlot(DAYCARE *daycare) {
 static void DayCareMon_CopyFromPartySlot(PARTY *party, int partyIdx, DaycareMon *daycareMon, SaveData *saveData) {
     u16 nickname[POKEMON_NAME_LENGTH + 1];
     u8 mood;
-    DAYCAREMAIL *daycareMail;
+    DaycareMail *daycareMail;
     BoxPokemon *boxMon;
     Pokemon *partyMon;
     const u16 *playerNamePtr;
@@ -156,7 +156,7 @@ static int Save_DayCare_MoveMonToParty(PARTY *party, DaycareMon *daycareMon, Mes
     u32 exp;
     Pokemon *mon;
     BoxPokemon *boxMon;
-    DAYCAREMAIL *daycareMail;
+    DaycareMail *daycareMail;
     u16 species;
 
     mon = AllocMonZeroed(HEAP_ID_4);

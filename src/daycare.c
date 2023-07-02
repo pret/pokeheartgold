@@ -20,7 +20,7 @@ BoxPokemon *DayCareMon_GetBoxMon(DaycareMon* dcmon) {
     return &dcmon->mon;
 }
 
-DAYCAREMAIL* DayCareMon_GetExtras(DaycareMon* dcmon) {
+DaycareMail* DayCareMon_GetExtras(DaycareMon* dcmon) {
     return &dcmon->mail;
 }
 
@@ -28,7 +28,7 @@ int DayCareMon_GetSteps(DaycareMon* dcmon) {
     return dcmon->steps;
 }
 
-MAIL* DayCareMail_GetMailPtr(DAYCAREMAIL* dcmail) {
+MAIL* DayCareMail_GetMailPtr(DaycareMail* dcmail) {
     return &dcmail->mail;
 }
 
@@ -73,7 +73,7 @@ void DayCareMon_Copy(DaycareMon* dest, const DaycareMon* src) {
     *dest = *src;
 }
 
-void DayCareMon_Extras_Init(DAYCAREMAIL* mail) {
+void DayCareMon_Extras_Init(DaycareMail* mail) {
     int i;
 
     for (i = 0; i < PLAYER_NAME_LENGTH + 1; i++) {
