@@ -121,7 +121,7 @@ typedef struct UnkBtlCtxSub_76 {
     u16 unkA0[2];
     u8 unkA4[4];
     MOVE moveData[468];
-    ITEMDATA *itemData;
+    ItemData *itemData;
     u16 unk280[4];
     u16 unk288[4];
 } UnkBtlCtxSub_76;

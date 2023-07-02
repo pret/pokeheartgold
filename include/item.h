@@ -94,7 +94,7 @@ typedef struct ItemData
         ITEMPARTYPARAM partyUseParam;
     };
     u8 padding_22[2];
-} ITEMDATA;
+} ItemData;
 
 /*
  * void MoveItemSlotInList(ItemSlot *slots, int from, int to, int pocket, HeapID heap_id)
@@ -168,7 +168,7 @@ int GetItemIconAnim(void);
  * @param heap_id:     ID of heap to allocate the result from
  *
  * @returns: Pointer to loaded data. If attrNo is ... then ...
- *     ITEMNARC_PARAM:   ITEMDATA* from itemtool/itemdata/item_data.narc
+ *     ITEMNARC_PARAM:   ItemData* from itemtool/itemdata/item_data.narc
  *     ITEMNARC_NCGR:    NCGR from itemtool/itemdata/item_icon.narc
  *     ITEMNARC_NCLR:    NCLR from itemtool/itemdata/item_icon.narc
  *
@@ -205,7 +205,7 @@ void GetItemDescIntoString(String *dest, u16 itemId, HeapID heap_id);
  *
  * @param itemId:      The item you want to query
  * @param attrno:      The attribute you want to read
- * @param heap_id:     Heap in which to allocate the temporary ITEMDATA
+ * @param heap_id:     Heap in which to allocate the temporary ItemData
  *
  * @returns: Integer attribute value
  */
@@ -221,7 +221,7 @@ s32 GetItemAttr(u16 itemId, u16 attrno, HeapID heap_id);
  *
  * @returns: Integer attribute value
  */
-s32 GetItemAttr_PreloadedItemData(ITEMDATA *itemData, u16 attrno);
+s32 GetItemAttr_PreloadedItemData(ItemData *itemData, u16 attrno);
 
 /*
  * u16 TMHMGetMove(u16 itemId)
@@ -346,7 +346,7 @@ u16 BerryToItemId(u8 berryId);
 String *GetNutName(u16 berryId, HeapID heap_id);
 
 /*
- * ITEMDATA *LoadAllItemData(HeapID heap_id)
+ * ItemData *LoadAllItemData(HeapID heap_id)
  *
  * Reads the entire FIMG of itemtool/itemdata/item_data.narc into a new buffer
  *
@@ -354,10 +354,10 @@ String *GetNutName(u16 berryId, HeapID heap_id);
  *
  * @returns: Pointer to new array.
  */
-ITEMDATA *LoadAllItemData(HeapID heap_id);
+ItemData *LoadAllItemData(HeapID heap_id);
 
 /*
- * ITEMDATA *GetItemDataPtrFromArray(ITEMDATA *itemData, u32 itemDataIdx)
+ * ItemData *GetItemDataPtrFromArray(ItemData *itemData, u32 itemDataIdx)
  *
  * Gets the pointer to the selected member of the array returned by LoadAllItemData above. This function exists because scrub dev is scrub.
  *
@@ -366,7 +366,7 @@ ITEMDATA *LoadAllItemData(HeapID heap_id);
  *
  * @returns: Pointer to &itemData[itemDataIdx]
  */
-ITEMDATA *GetItemDataPtrFromArray(ITEMDATA *itemData, u32 itemDataIdx);
+ItemData *GetItemDataPtrFromArray(ItemData *itemData, u32 itemDataIdx);
 
 /*
  * BOOL ItemIdIsNotJohtoBall(u16 itemId)

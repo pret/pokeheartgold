@@ -781,13 +781,13 @@ void GetItemDescIntoString(String *dest, u16 itemId, HeapID heap_id) {
 static s32 GetItemAttrSub(ITEMPARTYPARAM *param, u16 attrno);
 
 s32 GetItemAttr(u16 itemId, u16 attrno, HeapID heap_id) {
-    ITEMDATA *itemData = (ITEMDATA *)LoadItemDataOrGfx(itemId, ITEMNARC_PARAM, heap_id);
+    ItemData *itemData = (ItemData *)LoadItemDataOrGfx(itemId, ITEMNARC_PARAM, heap_id);
     s32 ret = GetItemAttr_PreloadedItemData(itemData, attrno);
     FreeToHeapExplicit(heap_id, itemData);
     return ret;
 }
 
-s32 GetItemAttr_PreloadedItemData(ITEMDATA *itemData, u16 attrno) {
+s32 GetItemAttr_PreloadedItemData(ItemData *itemData, u16 attrno) {
     switch (attrno) {
     case ITEMATTR_PRICE:
         return itemData->price;
@@ -1028,11 +1028,11 @@ String *GetNutName(u16 berryId, HeapID heap_id) {
     return ret;
 }
 
-ITEMDATA *LoadAllItemData(HeapID heap_id) {
-    return AllocAndReadFromNarcMemberByIdPair(NARC_itemtool_itemdata_item_data, 0, heap_id, 0, GetItemIndexMapping(ITEM_MAX, ITEMNARC_PARAM) * sizeof(ITEMDATA));
+ItemData *LoadAllItemData(HeapID heap_id) {
+    return AllocAndReadFromNarcMemberByIdPair(NARC_itemtool_itemdata_item_data, 0, heap_id, 0, GetItemIndexMapping(ITEM_MAX, ITEMNARC_PARAM) * sizeof(ItemData));
 }
 
-ITEMDATA *GetItemDataPtrFromArray(ITEMDATA *itemData, u32 itemDataIdx) {
+ItemData *GetItemDataPtrFromArray(ItemData *itemData, u32 itemDataIdx) {
     return &itemData[itemDataIdx];
 }
 

@@ -15,7 +15,7 @@ BOOL CanUseItemOnPokemon(Pokemon *mon, u16 itemID, s32 moveIdx, HeapID heapID) {
     int spDefEv;
     int hpEv;
 
-    ITEMDATA *itemData = LoadItemDataOrGfx(itemID, ITEMNARC_PARAM, heapID);
+    ItemData *itemData = LoadItemDataOrGfx(itemID, ITEMNARC_PARAM, heapID);
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PARTY_USE) != 1) {
         FreeToHeap(itemData);
         return FALSE;
@@ -230,7 +230,7 @@ BOOL UseItemOnPokemon(Pokemon *mon, u16 itemID, u16 moveIdx, u16 location, HeapI
     BOOL hadEffect;
     BOOL effectFound;
 
-    ITEMDATA *itemData = LoadItemDataOrGfx(itemID, ITEMNARC_PARAM, heapID);
+    ItemData *itemData = LoadItemDataOrGfx(itemID, ITEMNARC_PARAM, heapID);
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PARTY_USE) != 1) {
         FreeToHeap(itemData);
         return FALSE;
@@ -588,7 +588,7 @@ s32 TryModEV(s32 ev, s32 evSum, s32 by) {
     return ev;
 }
 
-BOOL CanItemModFriendship(Pokemon *mon, ITEMDATA *itemData) {
+BOOL CanItemModFriendship(Pokemon *mon, ItemData *itemData) {
     s32 friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
     if (friendship >= 255) {
         return FALSE;
