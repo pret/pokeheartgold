@@ -20,7 +20,7 @@ BOOL ScrCmd_CountFossils(ScriptContext* ctx) {
     u8 i;
     u16 total;
     for (i = 0, total = 0; i < NELEMS(sFossilPokemonMap); i++) {
-        total += BagGetQuantity(SaveGetBag(sav_ptr->savedata), sFossilPokemonMap[i][0], HEAP_ID_4);
+        total += Bag_GetQuantity(Save_Bag_Get(sav_ptr->savedata), sFossilPokemonMap[i][0], HEAP_ID_4);
     }
 
     *ret_ptr = total;
@@ -54,7 +54,7 @@ BOOL ScrCmd_GetFossilMinimumAmount(ScriptContext* ctx) {
     u8 i;
     u16 total;
     for (i = 0, total = 0; i < NELEMS(sFossilPokemonMap); i++) {
-        total += BagGetQuantity(SaveGetBag(sav_ptr->savedata), sFossilPokemonMap[i][0], HEAP_ID_4);
+        total += Bag_GetQuantity(Save_Bag_Get(sav_ptr->savedata), sFossilPokemonMap[i][0], HEAP_ID_4);
         if (total >= needed_amount) {
             *ret_ptr1 = sFossilPokemonMap[i][0];
             *ret_ptr2 = i;

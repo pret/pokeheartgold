@@ -2793,7 +2793,7 @@ _02076CC4:
 	ldr r0, [r4, #0x4c]
 	ldr r2, [r4, #0x5c]
 	mov r1, #4
-	bl BagGetQuantity
+	bl Bag_GetQuantity
 	cmp r0, #0
 	beq _02076CE4
 	ldr r0, [r4, #0x24]
@@ -2954,7 +2954,7 @@ _02076D62:
 	ldr r3, [r4, #0x5c]
 	mov r1, #4
 	mov r2, #1
-	bl BagTakeItem
+	bl Bag_TakeItem
 	add sp, #0x20
 	pop {r4, r5, r6, pc}
 _02076E50:

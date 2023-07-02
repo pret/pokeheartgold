@@ -176,8 +176,8 @@
 .public sub_020778E8
 .public sub_02077904
 .public sub_0207790C
-.public BagViewCreate
-.public SaveGetBag
+.public Bag_CreateView
+.public Save_Bag_Get
 .public sub_020830D8
 .public sub_0208311C
 .public sub_02088288

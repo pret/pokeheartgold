@@ -9,7 +9,7 @@
 #include "bag_cursor.h"
 
 /*
- * Return value of BagTryRegisterItem
+ * Return value of Bag_TryRegisterItem
  */
 typedef enum RegisterItemResult {
     REG_ITEM_FAIL,
@@ -35,48 +35,48 @@ typedef struct Bag {
 } Bag;
 
 /*
- * u32 BagSizeof(void)
+ * u32 Save_Bag_sizeof(void)
  *
  * Returns the size of the player's inventory in save memory
  *
  * @returns: The size of Bag
  */
-u32 BagSizeof(void);
+u32 Save_Bag_sizeof(void);
 
 /*
- * Bag *BagNew(HeapID heap_id)
+ * Bag *Save_Bag_New(HeapID heapId)
  *
  * Allocates a new Bag
  *
- * @param heap_id:     ID of the heap to alloc from
+ * @param heapId:     ID of the heap to alloc from
  *
  * @returns: Pointer to the Bag instance
  */
-Bag *BagNew(HeapID heap_id);
+Bag *Save_Bag_New(HeapID heapId);
 
 /*
- * void BagInit(Bag *bagData)
+ * void Save_Bag_Init(Bag *bagData)
  *
  * Initializes an existing Bag instance. This is also
- * called by BagNew.
+ * called by Save_Bag_New.
  *
  * @param bagData:     The Bag instance
  */
-void BagInit(Bag *bagData);
+void Save_Bag_Init(Bag *bagData);
 
 /*
- * void BagCopy(const Bag *src, Bag *dst)
+ * void Save_Bag_Copy(const Bag *src, Bag *dst)
  *
  * Copies Bag from src to dst
  *
  * @param src:         Origin Bag
  * @param dst:         Destination Bag
  */
-void BagCopy(const Bag *src, Bag *dst);
+void Save_Bag_Copy(const Bag *src, Bag *dst);
 
 /*
- * u16 BagGetRegisteredItem1(Bag *bag)
- * u16 BagGetRegisteredItem2(Bag *bag)
+ * u16 Bag_GetRegisteredItem1(Bag *bag)
+ * u16 Bag_GetRegisteredItem2(Bag *bag)
  *
  * Returns the item ID registered to touch screen button 1 or 2
  *
@@ -84,11 +84,11 @@ void BagCopy(const Bag *src, Bag *dst);
  *
  * @returns: Registered item ID in that slot
  */
-u16 BagGetRegisteredItem1(Bag *bag);
-u16 BagGetRegisteredItem2(Bag *bag);
+u16 Bag_GetRegisteredItem1(Bag *bag);
+u16 Bag_GetRegisteredItem2(Bag *bag);
 
 /*
- * RegisterItemResult BagTryRegisterItem(Bag *bag, u16 itemId)
+ * RegisterItemResult Bag_TryRegisterItem(Bag *bag, u16 itemId)
  *
  * Registers the item to the first available quick-access slot.
  * If none available, returns REG_ITEM_FAIL. Otherwise, returns
@@ -99,10 +99,10 @@ u16 BagGetRegisteredItem2(Bag *bag);
  *
  * @returns: Which slot the item was registered to, or 0 if failed
  */
-RegisterItemResult BagTryRegisterItem(Bag *bag, u16 itemId);
+RegisterItemResult Bag_TryRegisterItem(Bag *bag, u16 itemId);
 
 /*
- * void BagUnregisterItem(Bag *bag, u16 itemId)
+ * void Bag_UnregisterItem(Bag *bag, u16 itemId)
  *
  * Removes the specified item from the registered items slots.
  * If the item was in slot 1, and slot 2 is not empty, moves
@@ -111,13 +111,13 @@ RegisterItemResult BagTryRegisterItem(Bag *bag, u16 itemId);
  * @param bag:         Pointer to Bag
  * @param itemId:      Item to attempt unregistry
  */
-void BagUnregisterItem(Bag *bag, u16 itemId);
+void Bag_UnregisterItem(Bag *bag, u16 itemId);
 
 /*
- * BOOL BagHasSpaceForItem(Bag *bag, u16 itemId, u16 quantity, HeapID heap_id)
- * BOOL BagAddItem(Bag *bag, u16 itemId, u16 quantity, HeapID heap_id)
- * BOOL BagTakeItem(Bag *bag, u16 itemId, u16 quantity, HeapID heap_id)
- * BOOL BagHasItem(Bag *bag, u16 itemId, u16 quantity, HeapID heap_id)
+ * BOOL Bag_HasSpaceForItem(Bag *bag, u16 itemId, u16 quantity, HeapID heapId)
+ * BOOL Bag_AddItem(Bag *bag, u16 itemId, u16 quantity, HeapID heapId)
+ * BOOL Bag_TakeItem(Bag *bag, u16 itemId, u16 quantity, HeapID heapId)
+ * BOOL Bag_HasItem(Bag *bag, u16 itemId, u16 quantity, HeapID heapId)
  *
  * Inventory checkers and modifiers.
  * HasSpaceForItem checks whether there is an empty slot
@@ -138,18 +138,18 @@ void BagUnregisterItem(Bag *bag, u16 itemId);
  * @param bag:         Pointer to Bag
  * @param itemId:      ID of item to act upon
  * @param quantity:    Amount to add, remove, or check
- * @param heap_id:     Heap to allocate temp buffers from
+ * @param heapId:     Heap to allocate temp buffers from
  *
  * @returns: TRUE if the action succeeded or would succeed,
  *   otherwise FALSE.
  */
-BOOL BagHasSpaceForItem(Bag *bag, u16 itemId, u16 quantity, HeapID heap_id);
-BOOL BagAddItem(Bag *bag, u16 itemId, u16 quantity, HeapID heap_id);
-BOOL BagTakeItem(Bag *bag, u16 itemId, u16 quantity, HeapID heap_id);
-BOOL BagHasItem(Bag *bag, u16 itemId, u16 quantity, HeapID heap_id);
+BOOL Bag_HasSpaceForItem(Bag *bag, u16 itemId, u16 quantity, HeapID heapId);
+BOOL Bag_AddItem(Bag *bag, u16 itemId, u16 quantity, HeapID heapId);
+BOOL Bag_TakeItem(Bag *bag, u16 itemId, u16 quantity, HeapID heapId);
+BOOL Bag_HasItem(Bag *bag, u16 itemId, u16 quantity, HeapID heapId);
 
 /*
- * BOOL BagPocketTakeItem(ItemSlot *slots, u32 count, u16 itemId, u16 quantity)
+ * BOOL Pocket_TakeItem(ItemSlot *slots, u32 count, u16 itemId, u16 quantity)
  *
  * Like BAG_TakeItem, but acts directly on an array of item slots.
  *
@@ -160,10 +160,10 @@ BOOL BagHasItem(Bag *bag, u16 itemId, u16 quantity, HeapID heap_id);
  *
  * @returns: TRUE if the action succeeded, otherwise FALSE.
  */
-BOOL BagPocketTakeItem(ItemSlot *slots, u32 count, u16 itemId, u16 quantity);
+BOOL Pocket_TakeItem(ItemSlot *slots, u32 count, u16 itemId, u16 quantity);
 
 /*
- * BOOL BagPocketNotEmpty(Bag *bag, int pocket)
+ * BOOL Bag_PocketNotEmpty(Bag *bag, u32 pocket)
  *
  * Checks whether the indicated pocket has any items in it.
  *
@@ -173,11 +173,11 @@ BOOL BagPocketTakeItem(ItemSlot *slots, u32 count, u16 itemId, u16 quantity);
  * @returns: TRUE if there is at least one item in the pocket,
  *   otherwise FALSE.
  */
-BOOL BagPocketNotEmpty(Bag *bag, int pocket);
+BOOL Bag_PocketNotEmpty(Bag *bag, u32 pocket);
 
 /*
- * u16 BagGetQuantity(Bag *bag, u16 itemId, HeapID heap_id)
- * u16 BagPocketGetQuantity(ItemSlot *slots, u32 count, u16 itemId)
+ * u16 Bag_GetQuantity(Bag *bag, u16 itemId, HeapID heapId)
+ * u16 Pocket_GetQuantity(ItemSlot *slots, u32 count, u16 itemId)
  *
  * Looks up the item in its pocket or the specified ItemSlot
  *   array. If found, returns its quantity. Otherwise,
@@ -187,43 +187,43 @@ BOOL BagPocketNotEmpty(Bag *bag, int pocket);
  * @param slots:       (Pocket_*) Pointer to ItemSlot array
  * @param count:       (Pocket_*) Number of ItemSlot in slots
  * @param itemId:      Item to look up
- * @param heap_id:     (Bag_*) Heap to allocate temp buffers from
+ * @param heapId:     (Bag_*) Heap to allocate temp buffers from
  *
  * @returns: Quantity of that item in the bag or array.
  */
-u16 BagGetQuantity(Bag *bag, u16 itemId, HeapID heap_id);
-u16 BagPocketGetQuantity(ItemSlot *slots, u32 count, u16 itemId);
+u16 Bag_GetQuantity(Bag *bag, u16 itemId, HeapID heapId);
+u16 Pocket_GetQuantity(ItemSlot *slots, u32 count, u16 itemId);
 
 /*
- * BagView *BagViewCreate(Bag *bag, const u8 *pockets, HeapID heap_id)
+ * BagView *Bag_CreateView(Bag *bag, const u8 *pockets, HeapID heapId)
  *
  * Creates a BagView with a specified subset of pockets.
  *
  * @param bag:         Pointer to Bag
  * @param pockets:     Char array of POCKET_XXX IDs, terminated
  *                     with POCKET_BAG_VIEW_END
- * @param heap_id:     Heap to allocate from
+ * @param heapId:     Heap to allocate from
  *
  * @returns: Pointer to newly-allocated BagView
  */
-BagView *BagViewCreate(Bag *bag, const u8 *pockets, HeapID heap_id);
+BagView *Bag_CreateView(Bag *bag, const u8 *pockets, HeapID heapId);
 
 /*
- * ItemSlot *BagGetNthPocket(Bag *bag, u8 pocket, int n)
+ * ItemSlot *Bag_GetPocketSlotN(Bag *bag, u8 pocket, u32 slot)
  *
  * Gets a pointer to the nth ItemSlot in the given pocket.
  *
  * @param bag:         Pointer to Bag
  * @param pocket:      POCKET_XXX index of the pocket to search
- * @param n:           Index of slot within pocket
+ * @param slot:           Index of slot within pocket
  *
  * @returns: Pointer to the requested ItemSlot, or NULL if
  *   out-of-bounds
  */
-ItemSlot *BagGetNthPocket(Bag *bag, u8 pocket, int n);
+ItemSlot *Bag_GetPocketSlotN(Bag *bag, u8 pocket, u32 slot);
 
 /*
- * Bag *SaveGetBag(SaveData *saveData)
+ * Bag *Save_Bag_Get(SaveData *saveData)
  *
  * Gets the pointer to Bag loaded from the save file.
  *
@@ -231,6 +231,6 @@ ItemSlot *BagGetNthPocket(Bag *bag, u8 pocket, int n);
  *
  * @returns: Pointer to Bag
  */
-Bag *SaveGetBag(SaveData *saveData);
+Bag *Save_Bag_Get(SaveData *saveData);
 
 #endif //POKEHEARTGOLD_BAG_H

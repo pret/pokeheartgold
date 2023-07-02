@@ -34,7 +34,7 @@
 .public GetItemAttr_PreloadedItemData
 .public MoveIsHM
 .public ItemToTMHMId
-.public BagTakeItem
+.public Bag_TakeItem
 .public sub_02079E38
 .public sub_0207A7F4
 .public sub_0207CB20

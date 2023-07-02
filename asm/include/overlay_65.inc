@@ -209,8 +209,8 @@
 .public PartyHasMon
 .public GetItemNameIntoString
 .public ItemIdIsMail
-.public BagHasItem
-.public SaveGetBag
+.public Bag_HasItem
+.public Save_Bag_Get
 .public sub_02088288
 .public sub_02089D40
 .public sub_0208AD34

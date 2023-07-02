@@ -131,10 +131,10 @@
 .public GetItemIconAnim
 .public ItemIdIsBerry
 .public GetNutName
-.public BagHasSpaceForItem
-.public BagAddItem
-.public BagTakeItem
-.public SaveGetBag
+.public Bag_HasSpaceForItem
+.public Bag_AddItem
+.public Bag_TakeItem
+.public Save_Bag_Get
 .public NNS_GfdDoVramTransfer
 .public MI_CpuFill8
 .public MI_CpuCopy8

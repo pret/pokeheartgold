@@ -151,9 +151,9 @@
 .public SaveArray_PlayerParty_Get
 .public ItemToMailId
 .public MailToItemId
-.public BagAddItem
-.public BagTakeItem
-.public SaveGetBag
+.public Bag_AddItem
+.public Bag_TakeItem
+.public Save_Bag_Get
 .public sub_02090E68
 .public sub_02090F6C
 .public sub_02090F70

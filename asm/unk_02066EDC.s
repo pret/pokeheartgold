@@ -34,7 +34,7 @@ sub_02066EDC: ; 0x02066EDC
 	bl SaveArray_PlayerParty_Get
 	str r0, [r4]
 	add r0, r7, #0
-	bl SaveGetBag
+	bl Save_Bag_Get
 	str r0, [r4, #4]
 	add r0, r4, #0
 	mov r2, #0
