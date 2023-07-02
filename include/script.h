@@ -166,7 +166,7 @@ struct ScriptContext {
     u32 cmd_count;
     u32 data[4];
     TaskManager *taskman;
-    MSGDATA *msgdata;
+    MsgData *msgdata;
     u8 *mapScripts;
     FieldSystem *fsys;
 };

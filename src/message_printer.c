@@ -71,7 +71,7 @@ void sub_0200CDAC(MessagePrinter *messagePrinter, u8 a1, Window *window, u32 x, 
     BlitBitmapRectToWindow(window, messagePrinter->ppCharData->pRawData + _020F5C24[a1][0], 0, 0, _020F5C24[a1][1], 8, x, y, _020F5C24[a1][1], 8);
 }
 
-void PrintUIntOnWindow(MessagePrinter *messagePrinter, u32 num, u32 ndigits, STRCONVMODE mode, Window *window, u32 x, u32 y)
+void PrintUIntOnWindow(MessagePrinter *messagePrinter, u32 num, u32 ndigits, PrintingMode mode, Window *window, u32 x, u32 y)
 {
     ConvertUIntToDecimalString(messagePrinter->string, num, mode, ndigits);
     u32 i;

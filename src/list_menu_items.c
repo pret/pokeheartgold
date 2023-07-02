@@ -22,7 +22,7 @@ void ListMenuItems_Delete(LISTMENUITEM *items) {
     FreeToHeap(items);
 }
 
-void ListMenuItems_AppendFromMsgData(LISTMENUITEM *items, MSGDATA *msgData, int msgId, int value) {
+void ListMenuItems_AppendFromMsgData(LISTMENUITEM *items, MsgData *msgData, int msgId, int value) {
     HeapID dummy;
 
     items = ListMenuItems_SeekEnd(items, &dummy);

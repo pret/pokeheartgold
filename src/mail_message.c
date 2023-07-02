@@ -53,7 +53,7 @@ void MailMsg_Init_FromTemplate(MAIL_MESSAGE *mailMessage, const MAIL_MSG_TEMPLAT
 
 String *MailMsg_GetExpandedString(const MAIL_MESSAGE *mailMessage, HeapID heapId) {
     MessageFormat *msgFmt;
-    MSGDATA *msgData;
+    MsgData *msgData;
     String *string;
     int i;
 

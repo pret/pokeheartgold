@@ -614,8 +614,8 @@ BOOL AwaitCardFlipAndResult(WorkflowEngine *workflow, VoltorbFlipAppWork *work) 
 
             int var9 = GamePayout(work->game);
 
-            BufferIntegerAsString(work->msgFmt, 0, type, 1, STRCONVMODE_LEFT_ALIGN, 1);
-            BufferIntegerAsString(work->msgFmt, 1, var9, 5, STRCONVMODE_LEFT_ALIGN, 1);
+            BufferIntegerAsString(work->msgFmt, 0, type, 1, PRINTING_MODE_LEFT_ALIGN, 1);
+            BufferIntegerAsString(work->msgFmt, 1, var9, 5, PRINTING_MODE_LEFT_ALIGN, 1);
             sub_0200DDB8(work->unk14C[1], var5, var7);
             sub_0200DC4C(work->unk14C[1], 0);
 
@@ -700,7 +700,7 @@ BOOL AwardCoins(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     switch (state) {
     case 0:
         int var2 = GamePayout(work->game);
-        BufferIntegerAsString(work->msgFmt, 0, var2, 5, STRCONVMODE_LEFT_ALIGN, 1);
+        BufferIntegerAsString(work->msgFmt, 0, var2, 5, PRINTING_MODE_LEFT_ALIGN, 1);
         BufferPlayersName(work->msgFmt, 1, work->profile);
         // "{} received {} Coin(s)!"
         PrintTextWindow(work, msg_0039_00040, 1);
@@ -925,7 +925,7 @@ BOOL PrintAreYouSureYouWantToQuit(WorkflowEngine *workflow, VoltorbFlipAppWork *
         } else {
             // "If you quit now, you will receive {} Coin(s)..."
             msgNo = msg_0039_00034;
-            BufferIntegerAsString(work->msgFmt, 0, payout, 5, STRCONVMODE_LEFT_ALIGN, 1);
+            BufferIntegerAsString(work->msgFmt, 0, payout, 5, PRINTING_MODE_LEFT_ALIGN, 1);
         }
         ov122_021E7888(&work->unk25C);
         PrintTextWindow(work, msgNo, 1);
@@ -1562,7 +1562,7 @@ static void RenderTopScreen(VoltorbFlipAppWork *work) {
     PaintMessageOnWindow(work, 4, msg_0039_00008, &work->wQuit, 0, 0);
     BgCommitTilemapBufferToVram(work->bgConfig, 1);
 
-    BufferIntegerAsString(work->msgFmt, 0, 1, 1, STRCONVMODE_LEFT_ALIGN, 1);
+    BufferIntegerAsString(work->msgFmt, 0, 1, 1, PRINTING_MODE_LEFT_ALIGN, 1);
 
     PrintMessageOnWindow(work, 0, msg_0039_00000, &work->wCurrentLevel, 0, 0, 0x000f0100);
     PrintMessageOnWindow(work, 0, msg_0039_00001, &work->wFlipCardsAndCollectCoins, 0, 0, 0x000f0100);
@@ -1661,7 +1661,7 @@ static BOOL IsPrinterFinished(VoltorbFlipAppWork *work) {
 static void FormatGameLevel(VoltorbFlipAppWork *work, int idx) {
     u8 displayLevel = 8 - GameLevel(work->game);
 
-    BufferIntegerAsString(work->msgFmt, idx, displayLevel, 1, STRCONVMODE_LEFT_ALIGN, 1);
+    BufferIntegerAsString(work->msgFmt, idx, displayLevel, 1, PRINTING_MODE_LEFT_ALIGN, 1);
 }
 
 static void ov122_021E7888(Ov122_021E7888 *a0) {

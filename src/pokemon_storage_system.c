@@ -17,7 +17,7 @@ u32 PCStorage_sizeof(void) {
 
 void PCStorage_InitializeBoxes(PC_STORAGE *storage) {
     u32 i, j;
-    MSGDATA *msgData;
+    MsgData *msgData;
 
     for (i = 0; i < NUM_BOXES; i++) {
         for (j = 0; j < MONS_PER_BOX; j++) {

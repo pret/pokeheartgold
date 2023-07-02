@@ -173,7 +173,7 @@ void NPCTrade_CreateTradeAnim(FieldSystem *fsys, NPCTradeAppData *work, int slot
 
 static String *_GetNpcTradeName(HeapID heapId, s32 msgno) {
     String *ret;
-    MSGDATA *msgData;
+    MsgData *msgData;
 
     msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0200_bin, heapId);
     ret = NewString_ReadMsgData(msgData, msgno);

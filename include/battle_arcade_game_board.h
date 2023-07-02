@@ -100,7 +100,7 @@ typedef struct GAME_BOARD_WORK {
     u8 unk34[16];
     u8 unk44[32];
     u8 unk64;
-    MSGDATA *msgData;
+    MsgData *msgData;
     MessageFormat *msgFmt;
     String *unk70;
     String *unk74;

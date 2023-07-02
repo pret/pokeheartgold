@@ -672,7 +672,7 @@ static BOOL Task_ActivateDowsingMchnUI(TaskManager *taskManager) {
 static BOOL ItemFieldUseFunc_GbSounds(struct ItemFieldUseData *data) {
     struct RegisteredKeyItemUseMessagePrintTaskData *env = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct RegisteredKeyItemUseMessagePrintTaskData));
     env->state = 0;
-    MSGDATA *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0010_bin, HEAP_ID_FIELD);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0010_bin, HEAP_ID_FIELD);
     if (SoundSys_GetGBSoundsState() == TRUE) {
         env->strbuf = NewString_ReadMsgData(msgData, msg_0010_00105);
     } else {

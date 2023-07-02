@@ -156,7 +156,7 @@ void ShowCommunicationError(HeapID heap_id, u32 error, u32 error_code) {
     BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB(1, 1, 27));
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB(1, 1, 27));
 
-    MSGDATA* errors_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0041_bin, heap_id);
+    MsgData* errors_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0041_bin, heap_id);
     String* error_str = String_New(384, heap_id);
     String* tmp_str = String_New(384, heap_id);
 
@@ -168,7 +168,7 @@ void ShowCommunicationError(HeapID heap_id, u32 error, u32 error_code) {
     FillWindowPixelRect(&window, 0xF, 0, 0, 208, 144);
     DrawFrameAndWindow1(&window, FALSE, 0x1F7, 2);
 
-    BufferIntegerAsString(messageFormat, 0, error_code, 5, STRCONVMODE_LEADING_ZEROS, TRUE);
+    BufferIntegerAsString(messageFormat, 0, error_code, 5, PRINTING_MODE_LEADING_ZEROS, TRUE);
     ReadMsgDataIntoString(errors_msgdata, msg_no, tmp_str);
     StringExpandPlaceholders(messageFormat, error_str, tmp_str);
     AddTextPrinterParameterized(&window, 0, error_str, 0, 0, 0, NULL);

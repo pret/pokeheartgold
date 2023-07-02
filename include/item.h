@@ -183,7 +183,7 @@ void *LoadItemDataOrGfx(u16 itemId, int attrno, HeapID heap_id);
  *
  * @param dest:        Pointer to String containing the result
  * @param itemId:      The item whose name you want to get
- * @param heap_id:     Heap in which to allocate the temporary MSGDATA
+ * @param heap_id:     Heap in which to allocate the temporary MsgData
  */
 void GetItemNameIntoString(String *dest, u16 itemId, HeapID heap_id);
 
@@ -194,7 +194,7 @@ void GetItemNameIntoString(String *dest, u16 itemId, HeapID heap_id);
  *
  * @param dest:        Pointer to String containing the result
  * @param itemId:      The item whose description you want to get
- * @param heap_id:     Heap in which to allocate the temporary MSGDATA
+ * @param heap_id:     Heap in which to allocate the temporary MsgData
  */
 void GetItemDescIntoString(String *dest, u16 itemId, HeapID heap_id);
 

@@ -23,7 +23,7 @@ struct BlackoutScreenWork {
     FieldSystem *fsys;
     BGCONFIG *bgConfig;
     Window window;
-    MSGDATA *msgData;
+    MsgData *msgData;
     MessageFormat *msgFmt;
 };
 

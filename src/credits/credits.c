@@ -118,7 +118,7 @@ typedef struct {
 } ScreenFlipWork;
 
 typedef struct {
-    MSGDATA *msgData;
+    MsgData *msgData;
     Window window;
     String *string;
     PageDisplayWork pageDisplayWork;

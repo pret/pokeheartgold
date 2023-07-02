@@ -195,18 +195,18 @@ u16 BagGetQuantity(Bag *bag, u16 itemId, HeapID heap_id);
 u16 BagPocketGetQuantity(ItemSlot *slots, u32 count, u16 itemId);
 
 /*
- * BAG_VIEW *BagViewCreate(Bag *bag, const u8 *pockets, HeapID heap_id)
+ * BagView *BagViewCreate(Bag *bag, const u8 *pockets, HeapID heap_id)
  *
- * Creates a BAG_VIEW with a specified subset of pockets.
+ * Creates a BagView with a specified subset of pockets.
  *
  * @param bag:         Pointer to Bag
  * @param pockets:     Char array of POCKET_XXX IDs, terminated
  *                     with POCKET_BAG_VIEW_END
  * @param heap_id:     Heap to allocate from
  *
- * @returns: Pointer to newly-allocated BAG_VIEW
+ * @returns: Pointer to newly-allocated BagView
  */
-BAG_VIEW *BagViewCreate(Bag *bag, const u8 *pockets, HeapID heap_id);
+BagView *BagViewCreate(Bag *bag, const u8 *pockets, HeapID heap_id);
 
 /*
  * ItemSlot *BagGetNthPocket(Bag *bag, u8 pocket, int n)

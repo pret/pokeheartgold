@@ -95,7 +95,7 @@ void ShowWFCUserInfoWarning(HeapID heap_id, int a1) {
     BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB(1, 1, 27));
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB(1, 1, 27));
 
-    MSGDATA* warnings_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0800_bin, heap_id);
+    MsgData* warnings_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0800_bin, heap_id);
     String* warning_string = String_New(384, heap_id);
 
     ResetAllTextPrinters();
