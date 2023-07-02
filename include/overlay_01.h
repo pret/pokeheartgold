@@ -97,10 +97,10 @@ void Field_PlayerMovementSavingClear(int state);
 
 struct SaveStatsPrinter;
 
-struct SaveStatsPrinter *Field_CreateSaveStatsPrinter(FieldSystem *fsys, HeapID x, int y);
-void SaveStatsPrinter_Print(struct SaveStatsPrinter *printer);
-void SaveStatsPrinter_RemoveFromScreen(struct SaveStatsPrinter *printer);
-void SaveStatsPrinter_Delete(struct SaveStatsPrinter *printer);
+struct SaveStatsPrinter *Field_SaveStatsPrinter_New(FieldSystem *fsys, HeapID x, int y);
+void Field_SaveStatsPrinter_Print(struct SaveStatsPrinter *printer);
+void Field_SaveStatsPrinter_RemoveFromScreen(struct SaveStatsPrinter *printer);
+void Field_SaveStatsPrinter_Delete(struct SaveStatsPrinter *printer);
 void ov01_02203AB4(FieldSystem *fsys, LocalMapObject *partnerPokeObj, int a2);
 void ov01_02205AEC(FieldSystem *fsys);
 void ov01_02205720(LocalMapObject *playerObj, LocalMapObject *tsurePokeObj, int a2, int a3);

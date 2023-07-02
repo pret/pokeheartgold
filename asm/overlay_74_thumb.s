@@ -2127,7 +2127,7 @@ ov74_MainMenu_PrintMysteryGiftButton: ; 0x022280B4
 _022280D4:
 	ldr r0, [r5, #4]
 	bl Save_SysInfo_Get
-	bl Save_SysInfo_GetField48
+	bl Save_SysInfo_GetMysteryGiftActive
 	cmp r0, #1
 	bne _022280E6
 	mov r0, #1
