@@ -185,7 +185,7 @@ typedef struct UnkBattlemonSub {
     int unk30;
 } UnkBattlemonSub;
 
-typedef struct BATTLEMON {
+typedef struct BattleMon {
     u16 species;
     u16 atk;
     u16 def;
@@ -244,7 +244,7 @@ typedef struct BATTLEMON {
     u32 moveEffectFlags;
     u32 unk80;
     UnkBattlemonSub unk88;
-} BATTLEMON;
+} BattleMon;
 
 typedef struct BATTLECONTEXT {
     u8 unk_0[4];
@@ -360,7 +360,7 @@ typedef struct BATTLECONTEXT {
     u8 unk_2200[4][4][16];
     u8 unk_2300[4][256];
     int battleScriptBuffer[400];
-    BATTLEMON battleMons[4];
+    BattleMon battleMons[4];
     u32 moveNoTemp;
     u32 moveNoCur;
     u32 moveNoPrev;

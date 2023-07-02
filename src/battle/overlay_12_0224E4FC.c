@@ -250,7 +250,7 @@ void ov12_0224EDC0(BATTLECONTEXT *ctx, int battlerId) {
 }
 
 int GetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
-    BATTLEMON *mon = &ctx->battleMons[battlerId];
+    BattleMon *mon = &ctx->battleMons[battlerId];
     
     switch (id) {
     case BMON_DATA_SPECIES:
@@ -479,7 +479,7 @@ void SetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
     s16 *datas16 = (s16 *)data;
     u8 *data8 = (u8 *)data;
     s8 *datas8 = (s8 *)data;
-    BATTLEMON *mon = &ctx->battleMons[battlerId];
+    BattleMon *mon = &ctx->battleMons[battlerId];
     
     switch (id) {
     case BMON_DATA_SPECIES:
@@ -769,7 +769,7 @@ void ov12_0224F794(BATTLECONTEXT *ctx, int battlerId, u32 varId, int data) {
     AddBattlerVar(&ctx->battleMons[battlerId], varId, data);
 }
 
-void AddBattlerVar(BATTLEMON *mon, u32 varId, int data) {
+void AddBattlerVar(BattleMon *mon, u32 varId, int data) {
     switch (varId) {
     case BMON_DATA_ATK:
         mon->atk += data;
@@ -2067,7 +2067,7 @@ BOOL ov12_02251A28(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int mo
     return ret;
 }
 
-int BattleMon_GetMoveIndex(BATTLEMON *mon, u16 moveNo) {
+int BattleMon_GetMoveIndex(BattleMon *mon, u16 moveNo) {
     int movePos;
     
     for (movePos = 0; movePos < 4; movePos++) {
