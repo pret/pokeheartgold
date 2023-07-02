@@ -1513,7 +1513,7 @@ BOOL BtlCmd_ChangeVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int change, stat;
-    BATTLEMON *mon = &ctx->battleMons[ctx->battlerIdStatChange];
+    BattleMon *mon = &ctx->battleMons[ctx->battlerIdStatChange];
 
     BattleScriptIncrementPointer(ctx, 1);
 

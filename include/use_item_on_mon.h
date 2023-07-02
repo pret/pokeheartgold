@@ -13,7 +13,7 @@ BOOL MonMoveRestorePP(Pokemon *mon, int moveIdx, int ppRestore);
 BOOL BoostMonMovePpUpBy(Pokemon *mon, int moveIdx, int nPpUp);
 void RestoreMonHPBy(Pokemon *mon, u32 hp, u32 maxHp, u32 restoration);
 s32 TryModEV(s32 ev, s32 evSum, s32 by);
-BOOL CanItemModFriendship(Pokemon *mon, ITEMDATA *itemData);
+BOOL CanItemModFriendship(Pokemon *mon, ItemData *itemData);
 BOOL DoItemFriendshipMod(Pokemon *mon, s32 friendship, s32 mod, u16 location, HeapID heapID);
 void HealParty(PARTY *party);
 

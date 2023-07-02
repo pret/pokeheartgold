@@ -163,7 +163,7 @@ BOOL ReleaseBoxMonLock(BoxPokemon *boxMon, BOOL locked) {
     return prev;
 }
 void CreateMon(Pokemon *mon, int species, int level, int fixedIV, int hasFixedPersonality, int fixedPersonality, int otIdType, int fixedOtId) {
-    MAIL * mail;
+    Mail * mail;
     u32 capsule;
     CAPSULE seal_coords;
     ZeroMonData(mon);
@@ -942,7 +942,7 @@ static void SetMonDataInternal(Pokemon *mon, int attr, const void * value) {
         mon->party.spdef = VALUE(u16);
         break;
     case MON_DATA_MAIL_STRUCT:
-        Mail_Copy((const MAIL *)value, &mon->party.mail);
+        Mail_Copy((const Mail *)value, &mon->party.mail);
         break;
     case MON_DATA_SEAL_COORDS:
         CopyCapsule((const CAPSULE *)value, &mon->party.sealCoords);

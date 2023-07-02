@@ -506,8 +506,8 @@ BOOL ScrCmd_KenyaCheck(ScriptContext *ctx) {
     }
 
     HandleLoadOverlay(FS_OVERLAY_ID(npc_trade), OVY_LOAD_ASYNC);
-    MAIL *kenyaMail = NPCTrade_MakeKenyaMail();
-    MAIL *mail = Mail_New(HEAP_ID_FIELD);
+    Mail *kenyaMail = NPCTrade_MakeKenyaMail();
+    Mail *mail = Mail_New(HEAP_ID_FIELD);
     GetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
     *kenya = Mail_Compare(kenyaMail, mail);
     FreeToHeap(mail);
@@ -525,8 +525,8 @@ BOOL ScrCmd_KenyaCheckPartyOrMailbox(ScriptContext *ctx) {
 
     PARTY *party = SaveArray_PlayerParty_Get(fsys->savedata);
     HandleLoadOverlay(FS_OVERLAY_ID(npc_trade), OVY_LOAD_ASYNC);
-    MAIL *kenyaMail = NPCTrade_MakeKenyaMail();
-    MAIL *mail = Mail_New(HEAP_ID_FIELD);
+    Mail *kenyaMail = NPCTrade_MakeKenyaMail();
+    Mail *mail = Mail_New(HEAP_ID_FIELD);
     UnloadOverlayByID(FS_OVERLAY_ID(npc_trade));
 
     for (i = 0; i < GetPartyCount(party); i++) {
@@ -573,7 +573,7 @@ BOOL ScrCmd_MonGiveMail(ScriptContext *ctx) {
     }
 
     item = ITEM_NONE;
-    MAIL *mail = Mail_New(HEAP_ID_FIELD);
+    Mail *mail = Mail_New(HEAP_ID_FIELD);
     Mail_Init(mail);
     SetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
     SetMonData(mon, MON_DATA_HELD_ITEM, &item);
