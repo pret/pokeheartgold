@@ -167,7 +167,7 @@ struct ChooseStarter3dRes {
 struct ChooseStarterAppWork {
     u8 filler_000[0x4];
     HeapID heapId;
-    BGCONFIG *bgConfig;
+    BgConfig *bgConfig;
     struct GF3DVramMan *_3dMan;
     Camera *camera;
     VecFx32 cameraTarget;
@@ -203,7 +203,7 @@ static void init3dEngine(struct ChooseStarterAppWork *work);
 static void update3dObjectsMain(struct ChooseStarterAppWork *work);
 static inline void id_roty_mtx33(MtxFx33 *mtx, u16 index);
 static void updateBaseAndBallsRotation(struct ChooseStarterAppWork *work);
-static void initBgLayers(BGCONFIG *bgConfig, HeapID heapId);
+static void initBgLayers(BgConfig *bgConfig, HeapID heapId);
 static void initCameraPosition(struct ChooseStarterAppWork *work);
 static void createObjResMans(struct ChooseStarterAppWork *work);
 static void initObjRenderers(struct ChooseStarterAppWork *work);
@@ -229,7 +229,7 @@ static void calculateModelPositionAndRotation(struct ChooseStarterRnd *render, M
 static BOOL updateBaseRotation(struct ChooseStarterAppWork *work, fx16 speed);
 static void reinitBallModelPosInDirection(struct ChooseStarterAppWork *work, int direction);
 static void makeAndDrawWindows(struct ChooseStarterAppWork *work);
-static void loadBgGraphics(BGCONFIG *bgConfig, HeapID heapId);
+static void loadBgGraphics(BgConfig *bgConfig, HeapID heapId);
 static u8 printMsgOnWinEx(Window *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, String **out);
 static void printMsgOnBottom(struct ChooseStarterAppWork *work, int msgId);
 static void freeWindow(Window *window);
@@ -694,7 +694,7 @@ static void updateBaseAndBallsRotation(struct ChooseStarterAppWork *work) {
     }
 }
 
-static void initBgLayers(BGCONFIG *bgConfig, HeapID heapId) {
+static void initBgLayers(BgConfig *bgConfig, HeapID heapId) {
     G2_SetBG0Priority(2);
     {
         const BGTEMPLATE sp70 = {
@@ -1027,7 +1027,7 @@ static void makeAndDrawWindows(struct ChooseStarterAppWork *work) {
     DrawFrameAndWindow2(work->winTop, FALSE, 0x200, 0);
 }
 
-static void loadBgGraphics(BGCONFIG *bgConfig, HeapID heapId) {
+static void loadBgGraphics(BgConfig *bgConfig, HeapID heapId) {
     GfGfxLoader_LoadCharData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_13_bgl2_NCGR, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, FALSE, heapId);
     GfGfxLoader_LoadCharData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_10_bgl5_NCGR, bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, heapId);
     GfGfxLoader_LoadCharData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_16_bgl6_NCGR, bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, heapId);

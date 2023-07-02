@@ -146,7 +146,7 @@ void ShowCommunicationError(HeapID heap_id, u32 error, u32 error_code) {
     GXS_SetVisibleWnd(0);
     GX_SetBanks(&sCommunicationErrorBanksConfig);
 
-    BGCONFIG* bg_config = BgConfig_Alloc(heap_id);
+    BgConfig* bg_config = BgConfig_Alloc(heap_id);
     SetBothScreensModesAndDisable(&sCommunicationErrorBgModeSet);
     InitBgFromTemplate(bg_config, 0, &sCommunicationErrorBgTemplate, GX_BGMODE_0);
     BgClearTilemapBufferAndCommit(bg_config, GF_BG_LYR_MAIN_0);

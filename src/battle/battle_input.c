@@ -15,7 +15,7 @@ BattleInput *BattleInput_New() {
 
 extern BGTEMPLATE ov12_0226E5DC[4];
 
-void ov12_0226604C(BGCONFIG *config) {
+void ov12_0226604C(BgConfig *config) {
     for (int i = 0; i < NELEMS(ov12_0226E5DC); i++) {
         InitBgFromTemplate(config, i + GF_BG_LYR_SUB_0, &ov12_0226E5DC[i], 0);
         BgFillTilemapBufferAndCommit(config, i + GF_BG_LYR_SUB_0, 767);
@@ -24,7 +24,7 @@ void ov12_0226604C(BGCONFIG *config) {
     }
 }
 
-void ov12_022660A8(BGCONFIG *config) {
+void ov12_022660A8(BgConfig *config) {
     for (int i = 0; i < NELEMS(ov12_0226E5DC); i++) {
         ToggleBgLayer(i + GF_BG_LYR_SUB_0, GX_LAYER_TOGGLE_OFF);
         FreeBgTilemapBuffer(config, i + GF_BG_LYR_SUB_0);

@@ -115,7 +115,7 @@ void PrintErrorMessageAndReset(void) {
     GXS_SetVisibleWnd(0);
     GX_SetBanks(&sErrorMessageBanksConfig);
 
-    BGCONFIG* bg_config = BgConfig_Alloc(HEAP_ID_0);
+    BgConfig* bg_config = BgConfig_Alloc(HEAP_ID_0);
     SetBothScreensModesAndDisable(&sErrorMessageBgModeSet);
     InitBgFromTemplate(bg_config, 0, &sErrorMessageBgTemplate, GX_BGMODE_0);
     BgClearTilemapBufferAndCommit(bg_config, GF_BG_LYR_MAIN_0);

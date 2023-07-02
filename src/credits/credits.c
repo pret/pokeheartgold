@@ -101,7 +101,7 @@ typedef struct {
     BOOL rendering;
     BOOL hidden;
     SysTask *sysTask;
-    BGCONFIG *bgConfig;
+    BgConfig *bgConfig;
 } PageDisplayWork;
 
 typedef struct {
@@ -151,7 +151,7 @@ typedef struct {
 
 typedef struct {
     OVY_MANAGER *man;
-    BGCONFIG *bgConfig;
+    BgConfig *bgConfig;
     u32 timer;
     int musicBoxWaitTimer;
     CreditsAppArgs *args;
@@ -196,7 +196,7 @@ static void ActivateSprite(Sprite *a0);
 static void ov76_021E68C8(CreditsAppWork *work);
 static void FlipScreensCB(int a0, ScreenFlipWork *a1, int a2);
 static void DisplayWindow(CreditsAppWork *work);
-static void ov76_021E6944(PageDisplayWork *a0, BGCONFIG *a1, BOOL a2);
+static void ov76_021E6944(PageDisplayWork *a0, BgConfig *a1, BOOL a2);
 static BOOL PageWindowRendering(PageDisplayWork *a0);
 static void TogglePageDisplayCB(int a0, PageDisplayWork *a1, int a2);
 static void ov76_021E6A34(int a0, int a1, int a2, int a3);
@@ -438,7 +438,7 @@ static void FreeBG(CreditsAppWork *work) {
 static void LoadBgGraphics(CreditsAppWork *work) {
     ScrnFileIds temp1 = ov76_021E6EE8;
     ScrnFileIds temp2 = ov76_021E6F00;
-    BGCONFIG *bgConfig = work->bgConfig;
+    BgConfig *bgConfig = work->bgConfig;
 
     GfGfxLoader_LoadCharData(NARC_a_2_6_3, 5, bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_CREDITS);
     GfGfxLoader_LoadCharData(NARC_a_2_6_3, 5, bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_CREDITS);
@@ -843,7 +843,7 @@ static void DisplayWindow(CreditsAppWork *work) {
     GX_EngineBToggleLayers(GF_BG_LYR_MAIN_2, GX_LAYER_TOGGLE_ON);
 }
 
-static void ov76_021E6944(PageDisplayWork *a0, BGCONFIG *bgConfig, BOOL hidden) {
+static void ov76_021E6944(PageDisplayWork *a0, BgConfig *bgConfig, BOOL hidden) {
     u32 val;
 
     GF_ASSERT(a0->rendering == FALSE);

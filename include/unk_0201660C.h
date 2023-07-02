@@ -5,7 +5,7 @@
 #include "window.h"
 
 typedef struct Unk122_021E6900 {
-    BGCONFIG *unk0;
+    BgConfig *unk0;
     int unk4;
     int unk8;
     int unkC;
