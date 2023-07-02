@@ -192,7 +192,7 @@ typedef struct BattleMon {
     u16 speed;
     u16 spAtk;
     u16 spDef;
-    u16 moves[4];
+    u16 moves[MAX_MON_MOVES];
     u32 hpIV:5;
     u32 atkIV:5;
     u32 defIV:5;
@@ -201,7 +201,7 @@ typedef struct BattleMon {
     u32 spDefIV:5;
     u32 isEgg:1;
     u32 hasNickname:1;
-    s8 statChanges[8];
+    s8 statChanges[NUM_BATTLE_STATS];
     int weight;
     u8 type1;
     u8 type2;
@@ -221,11 +221,11 @@ typedef struct BattleMon {
     u32 moldBreakerFlag:1;
     u32 pressureFlag:1;
     u32 unk28_B:21;
-    u8 movePPCur[4];
-    u8 movePP[4];
+    u8 movePPCur[MAX_MON_MOVES];
+    u8 movePP[MAX_MON_MOVES];
     u8 level;
     u8 friendship;
-    u16 nickname[11];
+    u16 nickname[POKEMON_NAME_LENGTH + 1];
     int hp;
     u32 maxHp;
     u16 unk54[8];
