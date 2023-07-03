@@ -6,6 +6,7 @@
 #include "options.h"
 
 struct JsonToCellOptions *ParseNCERJson(char *path);
+char *GetNCERJson(struct JsonToCellOptions *options);
 struct JsonToScreenOptions *ParseNSCRJson(char *path);
 struct JsonToAnimationOptions *ParseNANRJson(char *path);
 void FreeNCERCell(struct JsonToCellOptions *options);

@@ -774,6 +774,135 @@ void WriteNtrPalette(char *path, struct Palette *palette, bool ncpr, bool ir, in
     fclose(fp);
 }
 
+void ReadNtrCell(char *path, struct JsonToCellOptions *options)
+{
+    int fileSize;
+    unsigned char *data = ReadWholeFile(path, &fileSize);
+
+    if (memcmp(data, "RECN", 4) != 0) //NCER
+    {
+        FATAL_ERROR("Not a valid NCER cell file.\n");
+    }
+
+    options->labelEnabled = data[0xE] != 1;
+
+    if (memcmp(data + 0x10, "KBEC", 4) != 0 ) //KBEC
+    {
+        FATAL_ERROR("Not a valid KBEC cell file.\n");
+    }
+
+    options->cellCount = data[0x18] | (data[0x19] << 8);
+    options->extended = data[0x1A] == 1;
+    if (!options->extended)
+    {
+        FATAL_ERROR("Don't know how to deal with not extended yet, bug red031000.\n");
+    }
+
+    options->mappingType = data[0x20];
+
+    options->cells = malloc(sizeof(struct Cell *) * options->cellCount);
+
+    for (int i = 0; i < options->cellCount; i++)
+    {
+        int offset = 0x30 + (i * 0x10);
+        options->cells[i] = malloc(sizeof(struct Cell));
+        short cellAttrs = data[offset + 2] | (data[offset + 3] << 8);
+        options->cells[i]->attributes.hFlip = (cellAttrs >> 8) & 1;
+        options->cells[i]->attributes.vFlip = (cellAttrs >> 9) & 1;
+        options->cells[i]->attributes.hvFlip = (cellAttrs >> 10) & 1;
+        options->cells[i]->attributes.boundingRect = (cellAttrs >> 11) & 1;
+        options->cells[i]->attributes.boundingSphereRadius = cellAttrs & 0x3F;
+
+        options->cells[i]->maxX = data[offset + 8] | (data[offset + 9] << 8);
+        options->cells[i]->maxY = data[offset + 10] | (data[offset + 11] << 8);
+        options->cells[i]->minX = data[offset + 12] | (data[offset + 13] << 8);
+        options->cells[i]->minY = data[offset + 14] | (data[offset + 15] << 8);
+    }
+
+    for (int i = 0; i < options->cellCount; i++)
+    {
+        int offset = 0x30 + (options->cellCount * 0x10) + (i * 0x6);
+
+        //Attr0
+
+        //bits 0-7 Y coordinate
+        options->cells[i]->oam.attr0.YCoordinate = data[offset];
+
+        //bit 8 rotation
+        options->cells[i]->oam.attr0.Rotation = data[offset + 1] & 1;
+
+        //bit 9 Obj Size (if rotation) or Obj Disable (if not rotation)
+        options->cells[i]->oam.attr0.SizeDisable = (data[offset + 1] >> 1) & 1;
+
+        //bits 10-11 Obj Mode
+        options->cells[i]->oam.attr0.Mode = (data[offset + 1] >> 2) & 3;
+
+        //bit 12 Obj Mosaic
+        options->cells[i]->oam.attr0.Mosaic = (data[offset + 1] >> 4) & 1;
+
+        //bit 13 Colours
+        options->cells[i]->oam.attr0.Colours = ((data[offset + 1] >> 5) & 1) == 0 ? 16 : 256;
+
+        //bits 14-15 Obj Shape
+        options->cells[i]->oam.attr0.Shape = (data[offset + 1] >> 6) & 3;
+
+        //Attr1
+
+        //bits 0-8 X coordinate
+        options->cells[i]->oam.attr1.XCoordinate = data[offset + 2] | ((data[offset + 3] & 1) << 8);
+
+        //bits 9-13 Rotation and scaling (if rotation) bit 12 Horizontal flip, bit 13 Vertical flip (if not rotation)
+        options->cells[i]->oam.attr1.RotationScaling = (data[offset + 3] >> 1) & 0x1F;
+
+        //bits 14-15 Obj Size
+        options->cells[i]->oam.attr1.Size = (data[offset + 3] >> 6) & 3;
+
+        //Attr2
+
+        //bits 0-9 Character Name?
+        options->cells[i]->oam.attr2.CharName = data[offset + 4] | ((data[offset + 5] & 3) << 8);
+
+        //bits 10-11 Priority
+        options->cells[i]->oam.attr2.Priority = (data[offset + 5] >> 2) & 3;
+
+        //bits 12-15 Palette Number
+        options->cells[i]->oam.attr2.Palette = (data[offset + 5] >> 4) & 0xF;
+    }
+
+    if (options->labelEnabled)
+    {
+        int count = 0;
+        int offset = 0x30 + (options->cellCount * 0x16) + 0x8;
+        bool flag = false;
+        //this entire thing is a huge assumption, it will not work with labels that are less than 2 characters long
+        while (!flag)
+        {
+            if (strlen((char *) data + offset) < 2)
+            {
+                //probably a pointer, maybe?
+                count++;
+                offset += 4;
+            }
+            else
+            {
+                //huzzah a string
+                flag = true;
+            }
+        }
+        options->labelCount = count;
+        options->labels = malloc(sizeof(char *) * count);
+        for (int i = 0; i < count; i++)
+        {
+            options->labels[i] = malloc(strlen((char *) data + offset) + 1);
+            strcpy(options->labels[i], (char *) data + offset);
+            offset += strlen(options->labels[i]) + 1;
+        }
+        //after this should be txeu, if everything was done right
+    }
+
+    free(data);
+}
+
 void WriteNtrCell(char *path, struct JsonToCellOptions *options)
 {
     FILE *fp = fopen(path, "wb");

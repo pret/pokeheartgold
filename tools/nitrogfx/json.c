@@ -48,15 +48,11 @@ struct JsonToCellOptions *ParseNCERJson(char *path)
 
     cJSON *labelBool = cJSON_GetObjectItemCaseSensitive(json, "labelEnabled");
     cJSON *extended = cJSON_GetObjectItemCaseSensitive(json, "extended");
-    cJSON *imageHeight = cJSON_GetObjectItemCaseSensitive(json, "imageHeight");
-    cJSON *imageWidth = cJSON_GetObjectItemCaseSensitive(json, "imageWidth");
     cJSON *cellCount = cJSON_GetObjectItemCaseSensitive(json, "cellCount");
     cJSON *mappingType = cJSON_GetObjectItemCaseSensitive(json, "mappingType");
 
     options->labelEnabled = GetBool(labelBool);
     options->extended = GetBool(extended);
-    options->imageHeight = GetInt(imageHeight);
-    options->imageWidth = GetInt(imageWidth);
     options->cellCount = GetInt(cellCount);
     options->mappingType = GetInt(mappingType);
 
@@ -175,6 +171,76 @@ struct JsonToCellOptions *ParseNCERJson(char *path)
     cJSON_Delete(json);
     free(jsonString);
     return options;
+}
+
+char *GetNCERJson(struct JsonToCellOptions *options)
+{
+    cJSON *ncer = cJSON_CreateObject();
+
+    cJSON_AddBoolToObject(ncer, "labelEnabled", options->labelEnabled);
+    cJSON_AddBoolToObject(ncer, "extended", options->extended);
+    cJSON_AddNumberToObject(ncer, "cellCount", options->cellCount);
+    cJSON_AddNumberToObject(ncer, "mappingType", options->mappingType);
+    
+    cJSON *cells = cJSON_AddArrayToObject(ncer, "cells");
+
+    for (int i = 0; i < options->cellCount; i++)
+    {
+        cJSON *cell = cJSON_CreateObject();
+
+        cJSON *cellAttrs = cJSON_AddObjectToObject(cell, "cellAttrs");
+
+        cJSON_AddBoolToObject(cellAttrs, "hFlip", options->cells[i]->attributes.hFlip);
+        cJSON_AddBoolToObject(cellAttrs, "vFlip", options->cells[i]->attributes.vFlip);
+        cJSON_AddBoolToObject(cellAttrs, "hvFlip", options->cells[i]->attributes.hvFlip);
+        cJSON_AddBoolToObject(cellAttrs, "boundingRect", options->cells[i]->attributes.boundingRect);
+        cJSON_AddNumberToObject(cellAttrs, "boundingSphereRadius", options->cells[i]->attributes.boundingSphereRadius);
+
+        if (options->extended)
+        {
+            cJSON_AddNumberToObject(cell, "maxX", options->cells[i]->maxX);
+            cJSON_AddNumberToObject(cell, "maxY", options->cells[i]->maxY);
+            cJSON_AddNumberToObject(cell, "minX", options->cells[i]->minX);
+            cJSON_AddNumberToObject(cell, "minY", options->cells[i]->minY);
+        }
+
+        cJSON *OAM = cJSON_AddObjectToObject(cell, "OAM");
+
+        cJSON *Attr0 = cJSON_AddObjectToObject(OAM, "Attr0");
+
+        cJSON_AddNumberToObject(Attr0, "YCoordinate", options->cells[i]->oam.attr0.YCoordinate);
+        cJSON_AddBoolToObject(Attr0, "Rotation", options->cells[i]->oam.attr0.Rotation);
+        cJSON_AddBoolToObject(Attr0, "SizeDisable", options->cells[i]->oam.attr0.SizeDisable);
+        cJSON_AddNumberToObject(Attr0, "Mode", options->cells[i]->oam.attr0.Mode);
+        cJSON_AddBoolToObject(Attr0, "Mosaic", options->cells[i]->oam.attr0.Mosaic);
+        cJSON_AddNumberToObject(Attr0, "Colours", options->cells[i]->oam.attr0.Colours);
+        cJSON_AddNumberToObject(Attr0, "Shape", options->cells[i]->oam.attr0.Shape);
+
+        cJSON *Attr1 = cJSON_AddObjectToObject(OAM, "Attr1");
+
+        cJSON_AddNumberToObject(Attr1, "XCoordinate", options->cells[i]->oam.attr1.XCoordinate);
+        cJSON_AddNumberToObject(Attr1, "RotationScaling", options->cells[i]->oam.attr1.RotationScaling);
+        cJSON_AddNumberToObject(Attr1, "Size", options->cells[i]->oam.attr1.Size);
+
+        cJSON *Attr2 = cJSON_AddObjectToObject(OAM, "Attr2");
+
+        cJSON_AddNumberToObject(Attr2, "CharName", options->cells[i]->oam.attr2.CharName);
+        cJSON_AddNumberToObject(Attr2, "Priority", options->cells[i]->oam.attr2.Priority);
+        cJSON_AddNumberToObject(Attr2, "Palette", options->cells[i]->oam.attr2.Palette);
+
+        cJSON_AddItemToArray(cells, cell);
+    }
+
+    if (options->labelEnabled)
+    {
+        cJSON *labels = cJSON_CreateStringArray((const char * const*)options->labels, options->labelCount);
+        cJSON_AddItemToObject(ncer, "labels", labels);
+        cJSON_AddNumberToObject(ncer, "labelCount", options->labelCount);
+    }
+
+    char *jsonString = cJSON_Print(ncer);
+    cJSON_Delete(ncer);
+    return jsonString;
 }
 
 struct JsonToScreenOptions *ParseNSCRJson(char *path)
