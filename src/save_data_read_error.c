@@ -86,7 +86,7 @@ void ShowSaveDataReadError(HeapID heap_id) {
     GXS_SetVisibleWnd(0);
     GX_SetBanks(&sDataReadErrorBanksConfig);
 
-    BGCONFIG* bg_config = BgConfig_Alloc(heap_id);
+    BgConfig* bg_config = BgConfig_Alloc(heap_id);
     SetBothScreensModesAndDisable(&sDataReadErrorBgModeSet);
     InitBgFromTemplate(bg_config, 0, &sDataReadErrorBgTemplate, GX_BGMODE_0);
     BgClearTilemapBufferAndCommit(bg_config, GF_BG_LYR_MAIN_0);
@@ -145,7 +145,7 @@ void ShowGBACartRemovedError(HeapID heap_id) {
     GXS_SetVisibleWnd(0);
     GX_SetBanks(&sDataReadErrorBanksConfig);
 
-    BGCONFIG* bg_config = BgConfig_Alloc(heap_id);
+    BgConfig* bg_config = BgConfig_Alloc(heap_id);
     SetBothScreensModesAndDisable(&sDataReadErrorBgModeSet);
     InitBgFromTemplate(bg_config, 0, &sDataReadErrorBgTemplate, GX_BGMODE_0);
     BgClearTilemapBufferAndCommit(bg_config, GF_BG_LYR_MAIN_0);

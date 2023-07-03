@@ -1732,7 +1732,7 @@ _02081A22:
 	mov r3, #0xc
 	ldr r0, [r1, #4]
 	ldrh r1, [r1, #0x28]
-	bl BagTakeItem
+	bl Bag_TakeItem
 	ldr r0, _02081A5C ; =0x00000654
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -3082,7 +3082,7 @@ sub_0208254C: ; 0x0208254C
 	mov r3, #0xc
 	ldr r0, [r1, #4]
 	ldrh r1, [r1, #0x28]
-	bl BagTakeItem
+	bl Bag_TakeItem
 _020825B8:
 	add r0, r5, #0
 	bl sub_020828EC
@@ -3359,7 +3359,7 @@ _02082794:
 	mov r3, #0xc
 	ldr r0, [r1, #4]
 	ldrh r1, [r1, #0x28]
-	bl BagTakeItem
+	bl Bag_TakeItem
 	ldr r0, _02082860 ; =0x000005EC
 	bl PlaySE
 	b _02082828

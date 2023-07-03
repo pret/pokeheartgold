@@ -435,7 +435,7 @@ ov58_02237BD4: ; 0x02237BD4
 	str r0, [r4]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
-	bl SaveGetBag
+	bl Save_Bag_Get
 	str r0, [r4, #4]
 	add r0, r4, #0
 	mov r1, #0

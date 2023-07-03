@@ -111,7 +111,7 @@ typedef struct FsysUnkSub4 {
 struct FieldSystem {
     struct FieldSystemUnkSub0 *unk0;
     FsysUnkSub4 *unk4;
-    BGCONFIG *bgConfig;
+    BgConfig *bgConfig;
     SaveData *savedata;
     TaskManager *taskman;
     MapEvents *mapEvents;
@@ -197,7 +197,7 @@ void sub_0203E2F4();
 void sub_0203E30C();
 int sub_0203E324();
 void sub_0203E33C(FieldSystem *fsys, int a1);
-BGCONFIG *FieldSys_GetBgConfigPtr(FieldSystem *fsys);
+BgConfig *FieldSys_GetBgConfigPtr(FieldSystem *fsys);
 SaveData *FieldSystem_GetSaveDataPtr(FieldSystem *fsys);
 void sub_0203E348();
 void sub_0203E354();

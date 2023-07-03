@@ -10,8 +10,8 @@ BOOL ScrCmd_GiveItem(ScriptContext* ctx) {
     u16 quantity = ScriptGetVar(ctx);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
 
-    Bag* bag = SaveGetBag(sav_ptr->savedata);
-    *ret_ptr = BagAddItem(bag, item_id, quantity, HEAP_ID_4);
+    Bag* bag = Save_Bag_Get(sav_ptr->savedata);
+    *ret_ptr = Bag_AddItem(bag, item_id, quantity, HEAP_ID_4);
 
     return FALSE;
 }
@@ -22,8 +22,8 @@ BOOL ScrCmd_TakeItem(ScriptContext* ctx) {
     u16 quantity = ScriptGetVar(ctx);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
 
-    Bag* bag = SaveGetBag(sav_ptr->savedata);
-    *ret_ptr = BagTakeItem(bag, item_id, quantity, HEAP_ID_4);
+    Bag* bag = Save_Bag_Get(sav_ptr->savedata);
+    *ret_ptr = Bag_TakeItem(bag, item_id, quantity, HEAP_ID_4);
 
     return FALSE;
 }
@@ -34,8 +34,8 @@ BOOL ScrCmd_HasSpaceForItem(ScriptContext* ctx) {
     u16 quantity = ScriptGetVar(ctx);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
 
-    Bag* bag = SaveGetBag(sav_ptr->savedata);
-    *ret_ptr = BagHasSpaceForItem(bag, item_id, quantity, HEAP_ID_4);
+    Bag* bag = Save_Bag_Get(sav_ptr->savedata);
+    *ret_ptr = Bag_HasSpaceForItem(bag, item_id, quantity, HEAP_ID_4);
 
     return FALSE;
 }
@@ -46,8 +46,8 @@ BOOL ScrCmd_HasItem(ScriptContext* ctx) {
     u16 quantity = ScriptGetVar(ctx);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
 
-    Bag* bag = SaveGetBag(sav_ptr->savedata);
-    *ret_ptr = BagHasItem(bag, item_id, quantity, HEAP_ID_FIELD);
+    Bag* bag = Save_Bag_Get(sav_ptr->savedata);
+    *ret_ptr = Bag_HasItem(bag, item_id, quantity, HEAP_ID_FIELD);
 
     return FALSE;
 }
@@ -57,8 +57,8 @@ BOOL ScrCmd_GetItemQuantity(ScriptContext* ctx) {
     u16 item_id = ScriptGetVar(ctx);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
 
-    Bag* bag = SaveGetBag(sav_ptr->savedata);
-    *ret_ptr = BagGetQuantity(bag, item_id, HEAP_ID_FIELD);
+    Bag* bag = Save_Bag_Get(sav_ptr->savedata);
+    *ret_ptr = Bag_GetQuantity(bag, item_id, HEAP_ID_FIELD);
 
     return FALSE;
 }

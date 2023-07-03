@@ -200,8 +200,8 @@ typedef struct BattleInput {
     BattleInputTutorial tutorial;
     u8 unkFiller[0xc];
 } BattleInput;
-void ov12_0226604C(BGCONFIG *config);
-void ov12_022660A8(BGCONFIG *config);
+void ov12_0226604C(BgConfig *config);
+void ov12_022660A8(BgConfig *config);
 
 //static functions
 BattleInput *BattleInput_New();

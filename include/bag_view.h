@@ -72,7 +72,7 @@ void sub_0207789C(BagView *bagView, SaveData *save, u8 a2, BagCursor *cursor, u3
  * void BagView_SetItem(BagView *bagView, ItemSlot *slots, u8 pocketId, u8 position)
  *
  * Sets pocket view #pocketId to slots.
- * Called by BagViewCreate in bag.c
+ * Called by Bag_CreateView in bag.c
  * BUG: Meant to set pocket view #position.
  * See note in bag_view.c
  *

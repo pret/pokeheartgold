@@ -35,7 +35,7 @@ typedef struct {
     BOOL gameCleared;
     HOFCongratsAppArgs hofCongratsArgs;
     CreditsAppArgs creditsArgs;
-    BGCONFIG *bgConfig;
+    BgConfig *bgConfig;
     Window window;
     String *windowText;
     WaitingIcon *waitingIcon;

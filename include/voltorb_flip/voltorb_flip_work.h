@@ -11,7 +11,7 @@
 #include "voltorb_flip/voltorb_flip_input.h"
 
 typedef struct Ov122_021E70B8 {
-    BGCONFIG *bgConfig;
+    BgConfig *bgConfig;
     GameState *game;
     Ov122_021E8CFC *unk8;
     int unkC;
@@ -33,7 +33,7 @@ typedef struct VoltorbFlipAppWork {
     int unkC;
     PlayerProfile *profile;
     NARC *narc;
-    BGCONFIG *bgConfig;
+    BgConfig *bgConfig;
     void *unk1C;
     void *unk20;
     Window windows[17];

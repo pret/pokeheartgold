@@ -39,8 +39,8 @@
 .public sub_0205B514
 .public sub_0205B564
 .public sub_0205B5B4
-.public BagHasItem
-.public SaveGetBag
+.public Bag_HasItem
+.public Save_Bag_Get
 .public MI_CpuFill8
 .public ov01_021F6A9C
 .public ov01_021F6C28

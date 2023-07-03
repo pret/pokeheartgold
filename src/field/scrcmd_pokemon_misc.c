@@ -413,7 +413,7 @@ BOOL ScrCmd_CommSanitizeParty(ScriptContext *ctx) {
         }
     }
     if (count > 0) {
-        if (BagAddItem(SaveGetBag(fsys->savedata), ITEM_GRISEOUS_ORB, count, HEAP_ID_4) == FALSE) {
+        if (Bag_AddItem(Save_Bag_Get(fsys->savedata), ITEM_GRISEOUS_ORB, count, HEAP_ID_4) == FALSE) {
             *success = 255;
             return FALSE;
         }

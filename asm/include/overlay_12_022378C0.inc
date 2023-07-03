@@ -170,8 +170,8 @@
 .public sub_02075A7C
 .public sub_02075D3C
 .public sub_02075D4C
-.public BagNew
-.public BagCopy
+.public Save_Bag_New
+.public Save_Bag_Copy
 .public BagCursor_Battle_Init
 .public sub_020880B0
 .public ApplyMonMoodModifier

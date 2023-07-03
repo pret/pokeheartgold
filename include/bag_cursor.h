@@ -31,27 +31,27 @@ typedef struct BagCursor {
 } BagCursor;
 
 /*
- * BagCursor *BagCursor_New(HeapID heap_id)
+ * BagCursor *BagCursor_New(HeapID heapId)
  *
  * Allocates a new BagCursor
  *
- * @param heap_id:     Heap to allocate from
+ * @param heapId:     Heap to allocate from
  *
  * @returns: Pointer to newly-allocated BagCursor
  */
-BagCursor *BagCursor_New(HeapID heap_id);
+BagCursor *BagCursor_New(HeapID heapId);
 
 /*
- * void BagCursor_Field_PocketGetPosition(BagCursor *cursor, int pocket, u8 *position_p, u8 *scroll_p)
+ * void BagCursor_Field_PocketGetPosition(BagCursor *cursor, u32 pocket, u8 *position, u8 *scroll)
  *
  * Gets the cursor position for the indicated pocket in the field.
  *
  * @param cursor:      Pointer to BagCursor
  * @param pocket:      Which pocket to inspect
- * @param position_p:  Where the cursor position is returned
- * @param scroll_p:    Where the screen scroll is returned
+ * @param position:  Where the cursor position is returned
+ * @param scroll:    Where the screen scroll is returned
  */
-void BagCursor_Field_PocketGetPosition(BagCursor *cursor, int pocket, u8 *position_p, u8 *scroll_p);
+void BagCursor_Field_PocketGetPosition(BagCursor *cursor, u32 pocket, u8 *position, u8 *scroll);
 
 /*
  * u16 BagCursor_Field_GetPocket(BagCursor *cursor)
@@ -65,7 +65,7 @@ void BagCursor_Field_PocketGetPosition(BagCursor *cursor, int pocket, u8 *positi
 u16 BagCursor_Field_GetPocket(BagCursor *cursor);
 
 /*
- * void BagCursor_Field_PocketSetPosition(BagCursor *cursor, int pocket, u8 position, u8 scroll)
+ * void BagCursor_Field_PocketSetPosition(BagCursor *cursor, u32 pocket, u8 position, u8 scroll)
  *
  * Sets the cursor position for the indicated pocket in the field.
  *
@@ -74,7 +74,7 @@ u16 BagCursor_Field_GetPocket(BagCursor *cursor);
  * @param position:    The cursor position to set
  * @param scroll:      The screen scroll to set
  */
-void BagCursor_Field_PocketSetPosition(BagCursor *cursor, int pocket, u8 position, u8 scroll);
+void BagCursor_Field_PocketSetPosition(BagCursor *cursor, u32 pocket, u8 position, u8 scroll);
 
 /*
  * void BagCursor_Field_SetPocket(BagCursor *cursor, u16 pocket)
@@ -87,16 +87,16 @@ void BagCursor_Field_PocketSetPosition(BagCursor *cursor, int pocket, u8 positio
 void BagCursor_Field_SetPocket(BagCursor *cursor, u16 pocket);
 
 /*
- * void BagCursor_Battle_PocketGetPosition(BagCursor *cursor, int pocket, u8 *position_p, u8 *scroll_p)
+ * void BagCursor_Battle_PocketGetPosition(BagCursor *cursor, u32 pocket, u8 *position, u8 *scroll)
  *
  * Gets the cursor position for the indicated pocket in battle.
  *
  * @param cursor:      Pointer to BagCursor
  * @param pocket:      Which pocket to inspect
- * @param position_p:  Where the cursor position is returned
- * @param scroll_p:    Where the screen scroll is returned
+ * @param position:  Where the cursor position is returned
+ * @param scroll:    Where the screen scroll is returned
  */
-void BagCursor_Battle_PocketGetPosition(BagCursor *cursor, int pocket, u8 *position_p, u8 *scroll_p);
+void BagCursor_Battle_PocketGetPosition(BagCursor *cursor, u32 pocket, u8 *position, u8 *scroll);
 
 /*
  * u16 BagCursor_Battle_GetLastUsedItem(BagCursor *cursor)
@@ -133,7 +133,7 @@ u16 BagCursor_Battle_GetLastUsedPocket(BagCursor *cursor);
 u16 BagCursor_Battle_GetPocket(BagCursor *cursor);
 
 /*
- * void BagCursor_Battle_PocketSetPosition(BagCursor *cursor, int pocket, u8 position, u8 scroll)
+ * void BagCursor_Battle_PocketSetPosition(BagCursor *cursor, u32 pocket, u8 position, u8 scroll)
  *
  * Sets the cursor position for the indicated pocket in battle.
  *
@@ -142,7 +142,7 @@ u16 BagCursor_Battle_GetPocket(BagCursor *cursor);
  * @param position:    The cursor position to set
  * @param scroll:      The screen scroll to set
  */
-void BagCursor_Battle_PocketSetPosition(BagCursor *cursor, int pocket, u8 position, u8 scroll);
+void BagCursor_Battle_PocketSetPosition(BagCursor *cursor, u32 pocket, u8 position, u8 scroll);
 
 /*
  * void BagCursor_Battle_Init(BagCursor *cursor)

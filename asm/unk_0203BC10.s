@@ -2232,14 +2232,14 @@ _0203CD68:
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r5, #0xc]
-	bl SaveGetBag
+	bl Save_Bag_Get
 	add r7, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Save_PlayerData_GetProfileAddr
 	ldr r1, _0203CEEC ; =_020FA0B8
 	add r0, r7, #0
 	mov r2, #0xb
-	bl BagViewCreate
+	bl Bag_CreateView
 	mov r1, #0xe
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -2481,7 +2481,7 @@ sub_0203CF74: ; 0x0203CF74
 	bl SaveArray_PlayerParty_Get
 	str r0, [r5]
 	ldr r0, [r4, #0xc]
-	bl SaveGetBag
+	bl Save_Bag_Get
 	str r0, [r5, #4]
 	ldr r0, [r4, #0xc]
 	bl Save_Mailbox_Get
@@ -3342,7 +3342,7 @@ sub_0203D664: ; 0x0203D664
 	str r0, [sp]
 	ldr r0, [sp, #4]
 	ldr r0, [r0, #0xc]
-	bl SaveGetBag
+	bl Save_Bag_Get
 	add r4, r0, #0
 	mov r5, #0
 	mov r6, #1
@@ -3354,7 +3354,7 @@ _0203D688:
 	add r0, r4, #0
 	add r2, r6, #0
 	add r3, r7, #0
-	bl BagHasItem
+	bl Bag_HasItem
 	add r0, r5, #1
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
@@ -3795,7 +3795,7 @@ sub_0203D9E8: ; 0x0203D9E8
 	bl Save_Pokedex_Get
 	str r0, [sp, #0x28]
 	ldr r0, [r4, #0xc]
-	bl SaveGetBag
+	bl Save_Bag_Get
 	str r0, [sp, #0x2c]
 	ldr r0, [r4, #0xc]
 	bl Save_GameStats_Get
@@ -3827,7 +3827,7 @@ _0203DA72:
 	bl Save_Pokedex_Get
 	str r0, [sp, #0x34]
 	ldr r0, [r4, #0xc]
-	bl SaveGetBag
+	bl Save_Bag_Get
 	str r0, [sp, #0x38]
 	ldr r0, [r4, #0xc]
 	bl Save_GameStats_Get
