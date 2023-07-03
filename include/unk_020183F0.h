@@ -3,7 +3,7 @@
 
 #include "heap.h"
 #include "list_menu_items.h"
-#include "window.h"
+#include "bg_window.h"
 
 typedef struct Ov122_021E9282 {
     u16 unk0;

@@ -1,5 +1,5 @@
 #include "gx_layers.h"
-#include "window.h"
+#include "bg_window.h"
 #include "voltorb_flip/voltorb_flip.h"
 #include "voltorb_flip/voltorb_flip_data.h"
 

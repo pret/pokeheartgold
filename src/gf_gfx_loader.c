@@ -1,5 +1,5 @@
 #include "gf_gfx_loader.h"
-#include "window.h"
+#include "bg_window.h"
 #include "nnsys.h"
 
 static u32 GfGfxLoader_LoadCharDataInternal(void *data, BgConfig *bgConfig, enum GFBgLayer layer, u32 tileStart, u32 szByte);

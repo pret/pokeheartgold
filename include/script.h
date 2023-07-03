@@ -3,7 +3,7 @@
 
 #include "map_events_internal.h"
 #include "msgdata.h"
-#include "window.h"
+#include "bg_window.h"
 #include "field_player_avatar.h"
 #include "gear_phone.h"
 #include "save_pokegear.h"

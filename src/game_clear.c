@@ -22,7 +22,7 @@
 #include "unk_0206793C.h"
 #include "unk_0206D494.h"
 #include "use_item_on_mon.h"
-#include "window.h"
+#include "bg_window.h"
 #include "constants/sndseq.h"
 #include "credits/credits.h"
 #include "msgdata/msg/msg_0040.h"

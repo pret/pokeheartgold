@@ -3,7 +3,7 @@
 
 #include "unk_0200CF18.h"
 #include "unk_020183F0.h"
-#include "window.h"
+#include "bg_window.h"
 
 typedef struct Ov122_021E9278 {
     u8 unk0[5][2];

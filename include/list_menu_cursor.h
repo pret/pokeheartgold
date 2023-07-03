@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_LIST_MENU_CURSOR_H
 #define POKEHEARTGOLD_LIST_MENU_CURSOR_H
 
-#include "window.h"
+#include "bg_window.h"
 
 struct ListMenuCursor;
 

@@ -4,7 +4,7 @@
 #include "battle_system.h"
 #include "battle_cursor.h"
 #include "battle_finger.h"
-#include "window.h"
+#include "bg_window.h"
 #include "unk_0200E320.h"
 
 typedef struct BattleInputMainScreen {

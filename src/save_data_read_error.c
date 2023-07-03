@@ -9,7 +9,7 @@
 #include "save_data_read_error.h"
 #include "system.h"
 #include "unk_0200FA24.h"
-#include "window.h"
+#include "bg_window.h"
 #include "text.h"
 #include "font.h"
 #include "render_window.h"

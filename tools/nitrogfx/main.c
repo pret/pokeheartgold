@@ -1,9 +1,8 @@
-// Copyright (c) 2015 YamaArashi
+// Copyright (c) 2015 YamaArashi, 2021-2023 red031000
 
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
-#include <ctype.h>
 #include "global.h"
 #include "util.h"
 #include "options.h"
@@ -14,6 +13,7 @@
 #include "rl.h"
 #include "font.h"
 #include "huff.h"
+#include "json.h"
 
 struct CommandHandler
 {
@@ -85,13 +85,14 @@ void ConvertNtrToPng(char *inputPath, char *outputPath, struct NtrToPngOptions *
 
     if (key)
     {
-        char string[strlen(outputPath) + 5];
+        char* string = malloc(strlen(outputPath) + 5);
         sprintf(string, "%s.key", outputPath);
         FILE *fp = fopen(string, "wb");
         if (fp == NULL)
             FATAL_ERROR("Failed to open key file for writing.\n");
         fwrite(&key, 4, 1, fp);
         fclose(fp);
+        free(string);
     }
 
     image.hasTransparency = options->hasTransparency;
@@ -137,7 +138,6 @@ void ConvertPngToNtr(char *inputPath, char *outputPath, struct PngToNtrOptions *
     }
 
     fclose(fp);
-
     struct Image image;
 
     image.bitDepth = options->bitDepth;
@@ -147,7 +147,7 @@ void ConvertPngToNtr(char *inputPath, char *outputPath, struct PngToNtrOptions *
     uint32_t key = 0;
     if (options->scanMode)
     {
-        char string[strlen(inputPath) + 5];
+        char* string = malloc(strlen(inputPath) + 5);
         sprintf(string, "%s.key", inputPath);
         FILE *fp2 = fopen(string, "rb");
         if (fp2 == NULL)
@@ -156,9 +156,12 @@ void ConvertPngToNtr(char *inputPath, char *outputPath, struct PngToNtrOptions *
         if (count != 1)
             FATAL_ERROR("Not a valid key file.\n");
         fclose(fp2);
+        free(string);
     }
 
-    WriteNtrImage(outputPath, options->numTiles, image.bitDepth, options->metatileWidth, options->metatileHeight, &image, !image.hasPalette, options->clobberSize, options->byteOrder, options->version101, options->sopc, options->scanMode, key);
+    WriteNtrImage(outputPath, options->numTiles, image.bitDepth, options->metatileWidth, options->metatileHeight,
+                  &image, !image.hasPalette, options->clobberSize, options->byteOrder, options->version101,
+                  options->sopc, options->scanMode, key, options->wrongSize);
 
     FreeImage(&image);
 }
@@ -419,6 +422,7 @@ void HandlePngToNtrCommand(char *inputPath, char *outputPath, int argc, char **a
     options.bitDepth = 4;
     options.metatileWidth = 1;
     options.metatileHeight = 1;
+    options.wrongSize = false;
     options.clobberSize = false;
     options.byteOrder = true;
     options.version101 = false;
@@ -509,6 +513,9 @@ void HandlePngToNtrCommand(char *inputPath, char *outputPath, int argc, char **a
             if (options.scanMode != 0)
                 FATAL_ERROR("Scan mode specified more than once.\n-scanned goes back to front as in DP, -scanfronttoback goes front to back as in PtHGSS\n");
             options.scanMode = 2;
+        }
+        else if (strcmp(option, "-wrongsize") == 0) {
+            options.wrongSize = true;
         }
         else if (strcmp(option, "-handleempty") == 0)
         {
@@ -747,6 +754,81 @@ void HandleJascToNtrPaletteCommand(char *inputPath, char *outputPath, int argc, 
         palette.numColors = numColors;
 
     WriteNtrPalette(outputPath, &palette, ncpr, ir, bitdepth, !nopad, compNum);
+}
+
+void HandleJsonToNtrCellCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
+{
+    struct JsonToCellOptions *options;
+
+    options = ParseNCERJson(inputPath);
+
+    WriteNtrCell(outputPath, options);
+
+    FreeNCERCell(options);
+}
+
+void HandleJsonToNtrScreenCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
+{
+    struct JsonToScreenOptions *options;
+
+    options = ParseNSCRJson(inputPath);
+
+    int bitdepth = 4;
+
+    for (int i = 3; i < argc; i++)
+    {
+        char *option = argv[i];
+
+        if (strcmp(option, "-bitdepth") == 0)
+        {
+            if (i + 1 >= argc)
+                FATAL_ERROR("No bitdepth following \"-bitdepth\".\n");
+
+            i++;
+
+            if (!ParseNumber(argv[i], NULL, 10, &bitdepth))
+                FATAL_ERROR("Failed to parse bitdepth.\n");
+
+            if (bitdepth != 4 && bitdepth != 8)
+                FATAL_ERROR("Bitdepth must be 4 or 8.\n");
+        }
+        else
+        {
+            FATAL_ERROR("Unrecognized option \"%s\".\n", option);
+        }
+    }
+
+    options->bitdepth = bitdepth;
+
+    WriteNtrScreen(outputPath, options);
+
+    FreeNSCRScreen(options);
+}
+
+void HandleJsonToNtrAnimationCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
+{
+    struct JsonToAnimationOptions *options;
+
+    options = ParseNANRJson(inputPath);
+
+    options->multiCell = false;
+
+    WriteNtrAnimation(outputPath, options);
+
+    FreeNANRAnimation(options);
+}
+
+void HandleJsonToNtrMulticellAnimationCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
+{
+    struct JsonToAnimationOptions *options;
+
+    options = ParseNANRJson(inputPath);
+
+    options->multiCell = true;
+
+    WriteNtrAnimation(outputPath, options);
+
+    FreeNANRAnimation(options);
 }
 
 void HandleLatinFontToPngCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
@@ -989,15 +1071,12 @@ int main(int argc, char **argv)
         { "1bpp", "png", HandleGbaToPngCommand },
         { "4bpp", "png", HandleGbaToPngCommand },
         { "8bpp", "png", HandleGbaToPngCommand },
-        { "nbfc", "png", HandleGbaToPngCommand },
         { "NCGR", "png", HandleNtrToPngCommand },
         { "png", "1bpp", HandlePngToGbaCommand },
         { "png", "4bpp", HandlePngToGbaCommand },
-        { "png", "nbfc", HandlePngToGbaCommand },
         { "png", "8bpp", HandlePngToGbaCommand },
         { "png", "NCGR", HandlePngToNtrCommand },
         { "png", "gbapal", HandlePngToGbaPaletteCommand },
-        { "png", "nbfp", HandlePngToGbaPaletteCommand },
         { "png", "NCLR", HandlePngToNtrPaletteCommand },
         { "gbapal", "pal", HandleGbaToJascPaletteCommand },
         { "NCLR", "pal", HandleNtrToJascPaletteCommand },
@@ -1010,6 +1089,10 @@ int main(int argc, char **argv)
         { "png", "hwjpnfont", HandlePngToHalfwidthJapaneseFontCommand },
         { "fwjpnfont", "png", HandleFullwidthJapaneseFontToPngCommand },
         { "png", "fwjpnfont", HandlePngToFullwidthJapaneseFontCommand },
+        { "json", "NCER", HandleJsonToNtrCellCommand },
+        { "json", "NSCR", HandleJsonToNtrScreenCommand },
+        { "json", "NANR", HandleJsonToNtrAnimationCommand },
+        { "json", "NMAR", HandleJsonToNtrMulticellAnimationCommand },
         { NULL, "huff", HandleHuffCompressCommand },
         { NULL, "lz", HandleLZCompressCommand },
         { "huff", NULL, HandleHuffDecompressCommand },
