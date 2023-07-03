@@ -35,7 +35,7 @@
 .public ov12_02253DA0
 .public GetBattlerHeldItemEffect
 .public GetNaturalGiftType
-.public ov12_022558F8
+.public GetHeldItemFlingPower
 .public CalcMoveDamage
 .public GetItemVar
 .public ov12_02258800

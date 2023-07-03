@@ -108,7 +108,7 @@
 .public CheckItemEffectOnHit
 .public GetBattlerHeldItemEffect
 .public GetHeldItemModifier
-.public ov12_02255920
+.public BattlerCanSwitch
 .public ov12_022565E0
 .public ov12_02256694
 .public ov12_022567A0

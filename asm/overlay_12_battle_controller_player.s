@@ -828,7 +828,7 @@ _02248E30:
 	add r0, r7, #0
 	add r2, r4, #0
 	mov r6, #6
-	bl ov12_02255920
+	bl BattlerCanSwitch
 	str r0, [sp, #0x5c]
 	add r0, r7, #0
 	add r1, r4, #0
