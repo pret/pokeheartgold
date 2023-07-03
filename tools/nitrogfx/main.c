@@ -1,5 +1,6 @@
 // Copyright (c) 2015 YamaArashi, 2021-2023 red031000
 
+#include <ctype.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
