@@ -828,8 +828,11 @@ void WriteNtrCell(char *path, struct JsonToCellOptions *options)
     for (i = 0; i < options->cellCount * 0x10; i += 0x10)
     {
         KBECContents[i] = 0x01; //number of images
-        KBECContents[i + 2] = options->cells[i / 0x10]->readOnly & 0xff; //unknown
-        KBECContents[i + 3] = options->cells[i / 0x10]->readOnly >> 8;
+        short cellAttrs = (options->cells[i / 0x10]->attributes.hFlip << 8) | (options->cells[i / 0x10]->attributes.vFlip << 9)
+                        | (options->cells[i / 0x10]->attributes.hvFlip << 10) | (options->cells[i / 0x10]->attributes.boundingRect << 11)
+                        | (options->cells[i / 0x10]->attributes.boundingSphereRadius & 0x3F);
+        KBECContents[i + 2] = cellAttrs & 0xff; //cell attributes
+        KBECContents[i + 3] = cellAttrs >> 8;
         KBECContents[i + 4] = (i / 0x10 * 6) & 0xff; //pointer to OAM data
         KBECContents[i + 5] = (i / 0x10 * 6) >> 8; //unlikely to be more than 16 bits, but there are 32 allocated, change if necessary
         KBECContents[i + 8] = options->cells[i / 0x10]->maxX & 0xff; //maxX

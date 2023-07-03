@@ -95,9 +95,24 @@ struct JsonToCellOptions *ParseNCERJson(char *path)
         if (i > options->cellCount - 1)
             FATAL_ERROR("Cell count is incorrect.\n");
 
-        cJSON *readOnly = cJSON_GetObjectItemCaseSensitive(cell, "readOnly");
+        cJSON *cellAttrs = cJSON_GetObjectItemCaseSensitive(cell, "cellAttrs");
 
-        options->cells[i]->readOnly = (short)GetInt(readOnly);
+        cJSON *hFlip = cJSON_GetObjectItemCaseSensitive(cellAttrs, "hFlip");
+        cJSON *vFlip = cJSON_GetObjectItemCaseSensitive(cellAttrs, "vFlip");
+        cJSON *hvFlip = cJSON_GetObjectItemCaseSensitive(cellAttrs, "hvFlip");
+
+        options->cells[i]->attributes.hFlip = GetBool(hFlip);
+        options->cells[i]->attributes.vFlip = GetBool(vFlip);
+        options->cells[i]->attributes.hvFlip = GetBool(hvFlip);
+
+        cJSON *boundingRect = cJSON_GetObjectItemCaseSensitive(cellAttrs, "boundingRect");
+
+        options->cells[i]->attributes.boundingRect = GetBool(boundingRect);
+
+        cJSON *boundingSphereRadius = cJSON_GetObjectItemCaseSensitive(cellAttrs, "boundingSphereRadius");
+
+        options->cells[i]->attributes.boundingSphereRadius = GetInt(boundingSphereRadius);
+
         if (options->extended)
         {
             cJSON *maxX = cJSON_GetObjectItemCaseSensitive(cell, "maxX");
