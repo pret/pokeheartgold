@@ -118,8 +118,8 @@
 .public LoadItemDataOrGfx
 .public GetItemAttr_PreloadedItemData
 .public ItemIdIsMail
-.public BagAddItem
-.public BagTakeItem
+.public Bag_AddItem
+.public Bag_TakeItem
 .public sub_02079224
 .public sub_0207991C
 .public sub_02079E38

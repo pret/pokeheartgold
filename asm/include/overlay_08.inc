@@ -136,9 +136,9 @@
 .public GetItemAttr_PreloadedItemData
 .public MoveIsHM
 .public ItemIdIsMail
-.public BagTakeItem
-.public BagHasItem
-.public BagGetNthPocket
+.public Bag_TakeItem
+.public Bag_HasItem
+.public Bag_GetPocketSlotN
 .public BagCursor_Battle_PocketGetPosition
 .public BagCursor_Battle_GetLastUsedItem
 .public BagCursor_Battle_GetLastUsedPocket

@@ -95,7 +95,7 @@ void ShowSaveDataWriteError(HeapID heap_id, int code) {
     GXS_SetVisibleWnd(0);
     GX_SetBanks(&sDataWriteErrorBanksConfig);
 
-    BGCONFIG* bg_config = BgConfig_Alloc(heap_id);
+    BgConfig* bg_config = BgConfig_Alloc(heap_id);
     SetBothScreensModesAndDisable(&sDataWriteErrorBgModeSet);
     InitBgFromTemplate(bg_config, 0, &sDataWriteErrorBgTemplate, GX_BGMODE_0);
     BgClearTilemapBufferAndCommit(bg_config, GF_BG_LYR_MAIN_0);

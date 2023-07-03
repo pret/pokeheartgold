@@ -36,7 +36,7 @@ ov14_021E5900: ; 0x021E5900
 	str r0, [r4, #8]
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl SaveGetBag
+	bl Save_Bag_Get
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
 	ldr r0, [r0]
@@ -6647,10 +6647,10 @@ ov14_021E8ACC: ; 0x021E8ACC
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl SaveGetBag
+	bl Save_Bag_Get
 	ldr r1, _021E8B10 ; =ov14_021F7D14
 	mov r2, #9
-	bl BagViewCreate
+	bl Bag_CreateView
 	str r0, [r4, #0x18]
 	ldr r1, [r4]
 	mov r2, #1
@@ -12907,7 +12907,7 @@ _021EBC66:
 	ldr r0, [r5, #0xc]
 	mov r2, #1
 	mov r3, #0xa
-	bl BagTakeItem
+	bl Bag_TakeItem
 _021EBC72:
 	add r0, r5, #0
 	add r0, #0x21
@@ -25020,7 +25020,7 @@ ov14_021F2020: ; 0x021F2020
 	lsr r1, r1, #0x10
 	mov r2, #1
 	mov r3, #0xa
-	bl BagAddItem
+	bl Bag_AddItem
 	cmp r0, #1
 	bne _021F20A4
 	add r2, r5, #0
@@ -25108,13 +25108,13 @@ ov14_021F20F4: ; 0x021F20F4
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl SaveGetBag
+	bl Save_Bag_Get
 	ldr r2, [r4, #0x34]
 	ldr r1, _021F21A8 ; =0x000088C8
 	mov r3, #0xa
 	ldrh r1, [r2, r1]
 	mov r2, #1
-	bl BagAddItem
+	bl Bag_AddItem
 	cmp r0, #0
 	bne _021F212A
 	ldr r0, _021F21AC ; =0x000005F3

@@ -6,8 +6,8 @@
 
 // These functions load (perhap-compressed) graphics resources to VRAM.
 // A temporary file handle is used to read the data from the card.
-u32 GfGfxLoader_LoadCharData(NarcId narcId, s32 memberNo, BGCONFIG *bgConfig, enum GFBgLayer layer, u32 tileStart, u32 szByte, BOOL isCompressed, HeapID heapId);
-void GfGfxLoader_LoadScrnData(NarcId narcId, s32 memberNo, BGCONFIG *bgConfig, enum GFBgLayer layer, u32 tileStart, u32 szByte, BOOL isCompressed, HeapID heapId);
+u32 GfGfxLoader_LoadCharData(NarcId narcId, s32 memberNo, BgConfig *bgConfig, enum GFBgLayer layer, u32 tileStart, u32 szByte, BOOL isCompressed, HeapID heapId);
+void GfGfxLoader_LoadScrnData(NarcId narcId, s32 memberNo, BgConfig *bgConfig, enum GFBgLayer layer, u32 tileStart, u32 szByte, BOOL isCompressed, HeapID heapId);
 void GfGfxLoader_GXLoadPal(NarcId narcId, s32 memberNo, enum GFBgLayer layer, u32 baseAddr, u32 szByte, HeapID heapId);
 void GfGfxLoader_GXLoadPalWithSrcOffset(NarcId narcId, s32 memberNo, enum GFBgLayer layer, u32 srcOffset, u32 baseAddr, u32 szByte, HeapID heapId);
 void GfGfxLoader_PartiallyLoadPalette(NarcId narcId, s32 memberNo, NNS_G2D_VRAM_TYPE type, u32 baseAddr, HeapID heapId, NNSG2dImagePaletteProxy *pPltProxy);
@@ -29,8 +29,8 @@ void *GfGfxLoader_LoadFromNarc(NarcId narcId, s32 fileId, BOOL isCompressed, Hea
 void *GfGfxLoader_LoadFromNarc_GetSizeOut(NarcId narcId, s32 fileId, BOOL isCompressed, HeapID heapId, BOOL atEnd, u32 *sizeOut);
 
 // These functions are the same as above, but they use an existing file handle.
-u32 GfGfxLoader_LoadCharDataFromOpenNarc(NARC *narc, s32 memberNo, BGCONFIG *bgConfig, enum GFBgLayer layer, u32 tileStart, u32 szByte, BOOL isCompressed, HeapID heapId);
-void GfGfxLoader_LoadScrnDataFromOpenNarc(NARC *narc, s32 memberNo, BGCONFIG *bgConfig, enum GFBgLayer layer, u32 tileStart, u32 szByte, BOOL isCompressed, HeapID heapId);
+u32 GfGfxLoader_LoadCharDataFromOpenNarc(NARC *narc, s32 memberNo, BgConfig *bgConfig, enum GFBgLayer layer, u32 tileStart, u32 szByte, BOOL isCompressed, HeapID heapId);
+void GfGfxLoader_LoadScrnDataFromOpenNarc(NARC *narc, s32 memberNo, BgConfig *bgConfig, enum GFBgLayer layer, u32 tileStart, u32 szByte, BOOL isCompressed, HeapID heapId);
 void GfGfxLoader_GXLoadPalFromOpenNarc(NARC *narc, s32 memberNo, enum GFBgLayer layer, u32 baseAddr, u32 szByte, HeapID heapId);
 void GfGfxLoader_GXLoadPalWithSrcOffsetFromOpenNarc(NARC *narc, s32 memberNo, enum GFBgLayer layer, u32 srcOffset, u32 baseAddr, u32 szByte, HeapID heapId);
 void GfGfxLoader_PartiallyLoadPaletteFromOpenNarc(NARC *narc, s32 memberNo, NNS_G2D_VRAM_TYPE type, u32 baseAddr, HeapID heapId, struct NNSG2dImagePaletteProxy *pPltProxy);

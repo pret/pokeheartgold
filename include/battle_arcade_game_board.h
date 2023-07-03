@@ -106,7 +106,7 @@ typedef struct GAME_BOARD_WORK {
     String *unk74;
     String *unk78[2];
     u16 unk80[8];
-    BGCONFIG *bgConfig;
+    BgConfig *bgConfig;
     Window window[2];
     GAME_BOARD_SUB_3B4 unk3B4;
     void *unk3C0;

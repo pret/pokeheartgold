@@ -4715,7 +4715,7 @@ _0224ABC8:
 	ldrh r1, [r6]
 	mov r2, #1
 	mov r3, #5
-	bl BagTakeItem
+	bl Bag_TakeItem
 	add r0, r7, #0
 	bl ov12_0223AA84
 	ldrh r1, [r6]

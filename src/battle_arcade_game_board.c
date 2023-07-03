@@ -42,10 +42,10 @@ static void BattleArcadeGameBoard_InitSub();
 static void BattleArcadeGameBoard_InitObjects(GAME_BOARD_WORK *work);
 static void ov84_0223E8DC(GAME_BOARD_WORK *work);
 static void ov84_0223E934(GAME_BOARD_WORK *work);
-static void ov84_0223E958(BGCONFIG *config);
+static void ov84_0223E958(BgConfig *config);
 static void BattleArcade_VBlank(void *work);
 static void BattleArcade_SetVramBanks(void);
-static void ov84_0223E9E4(BGCONFIG *config) ;
+static void ov84_0223E9E4(BgConfig *config) ;
 static void ov84_0223EAAC(GAME_BOARD_WORK *work, enum GFBgLayer layer);
 static void ov84_0223EB08(GAME_BOARD_WORK *work, enum GFBgLayer layer);
 static void ov84_0223EB44(void);
@@ -84,7 +84,7 @@ static void BattleArcadeObj_SetPos(BATTLE_ARCADE_OBJECT *obj, u16 x, u16 y);
 static void BattleArcadeObj_SetAnimation(BATTLE_ARCADE_OBJECT *obj, u32 val);
 static void ov84_0223F894(BATTLE_ARCADE_OBJECT *obj, Pokemon *mon);
 static void ov84_0223F8A8(BATTLE_ARCADE_OBJECT *obj, int flag);
-static void ov84_0223F8B4(BGCONFIG *config, Window *window);
+static void ov84_0223F8B4(BgConfig *config, Window *window);
 static void ov84_0223F8E4(Window *window);
 static BOOL BattleArcadeGameBoard_EndMulti(GAME_BOARD_WORK *work);
 static BOOL BattleArcadeGameBoard_End(GAME_BOARD_WORK *work);
@@ -629,7 +629,7 @@ static void ov84_0223E934(GAME_BOARD_WORK *work) {
     ov84_0223F2B4(&work->unk3E8, work->playerParty, work->opponentParty, BattleArcade_MultiplayerCheck(work->type));
 }
 
-static void ov84_0223E958(BGCONFIG *config) {
+static void ov84_0223E958(BgConfig *config) {
     GX_EngineAToggleLayers(31, GX_LAYER_TOGGLE_OFF);
     GX_EngineBToggleLayers(31, GX_LAYER_TOGGLE_OFF);
     FreeBgTilemapBuffer(config, 3);
@@ -663,7 +663,7 @@ extern BGTEMPLATE ov84_0223F964;
 extern BGTEMPLATE ov84_0223F980;
 extern BGTEMPLATE ov84_0223F948;
 
-static void ov84_0223E9E4(BGCONFIG *config) {
+static void ov84_0223E9E4(BgConfig *config) {
     GFBgModeSet bgModeSet = ov84_0223F924;
     SetBothScreensModesAndDisable(&bgModeSet);
 
@@ -1428,7 +1428,7 @@ static void ov84_0223F8A8(BATTLE_ARCADE_OBJECT *obj, int flag) {
 
 extern WindowTemplate ov84_0223F9F8[2];
 
-static void ov84_0223F8B4(BGCONFIG *config, Window *window) {
+static void ov84_0223F8B4(BgConfig *config, Window *window) {
     u8 i;
     WindowTemplate *dat = ov84_0223F9F8;
 

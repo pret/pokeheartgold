@@ -128,9 +128,9 @@
 .public Pokemon_GetIconPalette
 .public sub_02074490
 .public GetItemIndexMapping
-.public BagGetRegisteredItem1
-.public BagGetRegisteredItem2
-.public SaveGetBag
+.public Bag_GetRegisteredItem1
+.public Bag_GetRegisteredItem2
+.public Save_Bag_Get
 .public Fsys_GetGearPhoneRingManager
 .public sub_02092E08
 .public GXS_SetGraphicsMode

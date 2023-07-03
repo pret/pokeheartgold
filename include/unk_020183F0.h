@@ -17,7 +17,7 @@ typedef struct Ov122_021E9282 {
 typedef struct Ov122_021E7488 {
     Ov122_021E9282 unk0;
     LISTMENUITEM *unkC;
-    BGCONFIG *unk10;
+    BgConfig *unk10;
     u8 unk14;
     u8 unk15[0x3];
 } Ov122_021E7488;

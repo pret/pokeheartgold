@@ -32,7 +32,7 @@
 .public Pokemon_RemoveCapsule
 .public GetPartyMonByIndex
 .public Party_SwapSlots
-.public BagAddItem
+.public Bag_AddItem
 .public sub_02079224
 .public sub_0207A16C
 .public sub_0207A7F4

@@ -52,7 +52,7 @@
 .public GetPartyCount
 .public SaveArray_PlayerParty_Get
 .public SaveArray_IsNatDexEnabled
-.public SaveGetBag
+.public Save_Bag_Get
 .public sub_02088288
 .public sub_0208828C
 .public sub_02089D40

@@ -6706,7 +6706,7 @@ _0207C326:
 	mov r3, #0xc
 	ldr r0, [r1, #4]
 	ldrh r1, [r1, #0x28]
-	bl BagTakeItem
+	bl Bag_TakeItem
 	add r0, r4, #0
 	mov r1, #0x1a
 	bl GetItemAttr_PreloadedItemData
@@ -7025,7 +7025,7 @@ sub_0207C5D4: ; 0x0207C5D4
 	ldr r1, [r5, r0]
 	ldr r0, [r1, #4]
 	ldrh r1, [r1, #0x28]
-	bl BagTakeItem
+	bl Bag_TakeItem
 	add r0, r6, #0
 	mov r1, #MON_DATA_HELD_ITEM
 	add r2, sp, #0
@@ -7086,7 +7086,7 @@ sub_0207C658: ; 0x0207C658
 	lsr r1, r1, #0x10
 	mov r2, #1
 	mov r3, #0xc
-	bl BagAddItem
+	bl Bag_AddItem
 	add r0, r5, #0
 	mov r1, #MON_DATA_HELD_ITEM
 	add r2, sp, #0x1c
@@ -7249,7 +7249,7 @@ _0207C766:
 	mov r2, #1
 	ldr r0, [r0, #4]
 	mov r3, #0xc
-	bl BagAddItem
+	bl Bag_AddItem
 	cmp r0, #0
 	bne _0207C7D6
 	ldr r1, [sp]
@@ -7280,7 +7280,7 @@ _0207C7D6:
 	ldr r0, [r0, #4]
 	mov r2, #1
 	mov r3, #0xc
-	bl BagTakeItem
+	bl Bag_TakeItem
 	ldr r1, [sp]
 	add r0, r5, #0
 	add r2, r6, #0
@@ -7486,7 +7486,7 @@ _0207C998:
 	ldr r0, [r0, #4]
 	mov r2, #1
 	mov r3, #0xc
-	bl BagAddItem
+	bl Bag_AddItem
 	mov r2, #0x1f
 	lsl r2, r2, #6
 	ldr r0, [r5, r2]

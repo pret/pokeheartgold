@@ -303,7 +303,7 @@ void sub_0203E33C(FieldSystem *fsys, int a1) {
     fsys->unk1C = a1;
 }
 
-BGCONFIG *FieldSys_GetBgConfigPtr(FieldSystem *fsys) {
+BgConfig *FieldSys_GetBgConfigPtr(FieldSystem *fsys) {
     return fsys->bgConfig;
 }
 

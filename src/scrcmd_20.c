@@ -260,7 +260,7 @@ static u32 sub_0204F320(UnkStruct_0204F284 *a0, FieldSystem *fsys, HeapID unused
     PartyMenuAppData *partyMenu = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuAppData));
     MIi_CpuClearFast(0, (u32*)partyMenu, sizeof(PartyMenuAppData));
     partyMenu->party = SaveArray_PlayerParty_Get(fsys->savedata);
-    partyMenu->bag = SaveGetBag(fsys->savedata);
+    partyMenu->bag = Save_Bag_Get(fsys->savedata);
     partyMenu->mailbox = Save_Mailbox_Get(fsys->savedata);
     partyMenu->options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
     partyMenu->unk_25 = 0;

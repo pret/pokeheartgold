@@ -80,8 +80,8 @@ static void PrintBoardVoltorbs(VoltorbFlipAppWork *);
 static void PrintBoardPoints(VoltorbFlipAppWork *);
 static int ov122_021E6E10(u8, u8);
 static void ov122_021E6E34(u16 *, int);
-static void ov122_021E6E60(BGCONFIG *, GameState *, int, int);
-static void ov122_021E6F04(BGCONFIG *, GameState *, int, int);
+static void ov122_021E6E60(BgConfig *, GameState *, int, int);
+static void ov122_021E6F04(BgConfig *, GameState *, int, int);
 static void ov122_021E6F9C(Ov122_021E70B8 *);
 static BOOL ov122_021E6FB0(Ov122_021E70B8 *);
 static void ov122_021E6FE4(Ov122_021E70B8 *);
@@ -1174,7 +1174,7 @@ static void ov122_021E6E34(u16 *a0, int a1) {
     }
 }
 
-static void ov122_021E6E60(BGCONFIG *a0, GameState *game, int cardId, int a3) {
+static void ov122_021E6E60(BgConfig *a0, GameState *game, int cardId, int a3) {
     u16 temp1[9];
 
     int var1 = (cardId % 5) * 4 + 1;
@@ -1201,7 +1201,7 @@ static void ov122_021E6E60(BGCONFIG *a0, GameState *game, int cardId, int a3) {
     LoadRectToBgTilemapRect(a0, 0, temp1, var1, var2, 3, 3);
 }
 
-static void ov122_021E6F04(BGCONFIG *a0, GameState *game, int cardId, int a3) {
+static void ov122_021E6F04(BgConfig *a0, GameState *game, int cardId, int a3) {
     u16 temp1[9];
 
     int var1 = (cardId % 5) * 4 + 1;

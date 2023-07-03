@@ -21,18 +21,18 @@
 struct BlackoutScreenWork {
     int state;
     FieldSystem *fsys;
-    BGCONFIG *bgConfig;
+    BgConfig *bgConfig;
     Window window;
     MsgData *msgData;
     MessageFormat *msgFmt;
 };
 
-void _InitDisplays(BGCONFIG *bgConfig);
+void _InitDisplays(BgConfig *bgConfig);
 void DrawBlackoutMessage(FieldSystem *fsys, TaskManager *taskManager);
 BOOL FieldTask_ShowPrintedMessage(TaskManager *taskManager);
 void _PrintMessage(struct BlackoutScreenWork *work, int msgno, u8 x, u8 y);
 
-static void _InitDisplays(BGCONFIG *bgConfig) {
+static void _InitDisplays(BgConfig *bgConfig) {
     {
         static const struct GXBanksConfig _020FC550 = {
             GX_VRAM_BG_128_B,

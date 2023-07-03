@@ -85,7 +85,7 @@ void ShowWFCUserInfoWarning(HeapID heap_id, int a1) {
     GXS_SetVisibleWnd(0);
     GX_SetBanks(&sWFCWarningMsgBanksConfig);
 
-    BGCONFIG* bg_config = BgConfig_Alloc(heap_id);
+    BgConfig* bg_config = BgConfig_Alloc(heap_id);
     SetBothScreensModesAndDisable(&sWFCWarningMsgBgModeSet);
     InitBgFromTemplate(bg_config, 0, &sWFCWarningBgTemplate, GX_BGMODE_0);
     BgClearTilemapBufferAndCommit(bg_config, GF_BG_LYR_MAIN_0);

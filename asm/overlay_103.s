@@ -2434,7 +2434,7 @@ ov103_021EDC00: ; 0x021EDC00
 	add r5, r0, #0
 	ldr r0, [r5, #8]
 	ldr r0, [r0]
-	bl SaveGetBag
+	bl Save_Bag_Get
 	add r4, r0, #0
 	ldrb r0, [r5, #0x1f]
 	ldr r1, [r5, #0xc]
@@ -2450,7 +2450,7 @@ ov103_021EDC00: ; 0x021EDC00
 	add r0, r4, #0
 	mov r2, #1
 	mov r3, #0x9d
-	bl BagAddItem
+	bl Bag_AddItem
 	cmp r0, #1
 	bne _021EDC46
 	add r0, r5, #0
@@ -2505,7 +2505,7 @@ ov103_021EDC68: ; 0x021EDC68
 	str r0, [r4]
 	ldr r0, [r5, #8]
 	ldr r0, [r0]
-	bl SaveGetBag
+	bl Save_Bag_Get
 	str r0, [r4, #4]
 	ldr r0, [r5]
 	mov r1, #0
@@ -2671,11 +2671,11 @@ ov103_021EDD98: ; 0x021EDD98
 	bl sub_02090F70
 	ldr r0, [r4, #8]
 	ldr r0, [r0]
-	bl SaveGetBag
+	bl Save_Bag_Get
 	ldrh r1, [r4, #0x22]
 	mov r2, #1
 	mov r3, #0x9c
-	bl BagTakeItem
+	bl Bag_TakeItem
 _021EDDD8:
 	ldr r0, [r4, #0x14]
 	bl sub_02090F90

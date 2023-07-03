@@ -5,7 +5,7 @@
 #include "pm_string.h"
 #include "window.h"
 
-void sub_0205B514(BGCONFIG *bgConfig, Window *window, int a2);
+void sub_0205B514(BgConfig *bgConfig, Window *window, int a2);
 void sub_0205B564(Window *window, OPTIONS *options);
 u8 sub_0205B5B4(Window *window, String *string, OPTIONS *options, BOOL speedupFlag);
 BOOL IsPrintFinished(u8 printerId);

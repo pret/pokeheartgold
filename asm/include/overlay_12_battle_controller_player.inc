@@ -17,7 +17,7 @@
 .public GetPartyCount
 .public GetPartyMonByIndex
 .public LoadAllItemData
-.public BagTakeItem
+.public Bag_TakeItem
 .public BagCursor_Battle_SetLastUsedItem
 .public MIi_CpuClear32
 .public MIi_CpuClearFast
