@@ -2,7 +2,7 @@
 #define POKEHEARTGOLD_CREDITS_DATA_H
 
 #include "gx_layers.h"
-#include "window.h"
+#include "bg_window.h"
 #include "credits/credits.h"
 
 typedef struct {

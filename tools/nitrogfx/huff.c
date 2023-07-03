@@ -34,17 +34,17 @@ int msort_r(void * data, size_t count, size_t size, cmpfun cmp, void * buffer) {
 
     case 2:
         // Swap the two entries if the right one compares higher.
-        if (cmp(data, data + size) > 0) {
+        if (cmp(data, PTR_ADD(data, size)) > 0) {
             memcpy(buffer, data, size);
-            memcpy(data, data + size, size);
-            memcpy(data + size, buffer, size);
+            memcpy(data, PTR_ADD(data, size), size);
+            memcpy(PTR_ADD(data, size), buffer, size);
         }
         break;
     default:
         // Merge sort out-of-place.
         leftPtr = data;
-        leftEnd = rightPtr = data + count / 2 * size;
-        rightEnd = data + count * size;
+        leftEnd = rightPtr = PTR_ADD(data, count / 2 * size);
+        rightEnd = PTR_ADD(data, count * size);
 
         // Sort the left half
         if (!msort_r(leftPtr, count / 2, size, cmp, buffer))
@@ -58,11 +58,11 @@ int msort_r(void * data, size_t count, size_t size, cmpfun cmp, void * buffer) {
         i = 0;
         do {
             if (cmp(leftPtr, rightPtr) <= 0) {
-                memcpy(buffer + i * size, leftPtr, size);
-                leftPtr += size;
+                memcpy(PTR_ADD(buffer, i * size), leftPtr, size);
+                PTR_IADD(leftPtr, size);
             } else {
-                memcpy(buffer + i * size, rightPtr, size);
-                rightPtr += size;
+                memcpy(PTR_ADD(buffer, i * size), rightPtr, size);
+                PTR_IADD(rightPtr, size);
             }
 
         } while (++i < count && leftPtr < leftEnd && rightPtr < rightEnd);
@@ -70,10 +70,10 @@ int msort_r(void * data, size_t count, size_t size, cmpfun cmp, void * buffer) {
         // Copy the remainder
         if (i < count) {
             if (leftPtr < leftEnd) {
-                memcpy(buffer + i * size, leftPtr, leftEnd - leftPtr);
+                memcpy(PTR_ADD(buffer, i * size), leftPtr, PTR_DIFF(leftEnd,  leftPtr));
             }
             else {
-                memcpy(buffer + i * size, rightPtr, rightEnd - rightPtr);
+                memcpy(PTR_ADD(buffer, i * size), rightPtr, PTR_DIFF(rightEnd, rightPtr));
             }
         }
 
@@ -163,7 +163,7 @@ static void write_tree(unsigned char * dest, HuffNode_t * tree, int nitems, stru
         if (currNode->header.isLeaf) {
             dest[5 + i] = traversal[i].leaf.key;
         } else {
-            dest[5 + i] = (((currNode->branch.right - traversal - i) / 2) - 1);
+            dest[5 + i] = (unsigned char)(((currNode->branch.right - traversal - i) / 2) - 1);
             if (currNode->branch.left->header.isLeaf)
                 dest[5 + i] |= 0x80;
             if (currNode->branch.right->header.isLeaf)
@@ -194,8 +194,8 @@ static inline void read_32_le(unsigned char * src, int * srcPos, uint32_t * buff
 }
 
 static void write_bits(unsigned char * dest, int * destPos, struct BitEncoding * encoding, int value, uint32_t * buff, int * buffBits) {
-    int nbits = encoding[value].nbits;
-    uint32_t bitstring = encoding[value].bitstring;
+    int nbits = (int)encoding[value].nbits;
+    uint32_t bitstring = (uint32_t)encoding[value].bitstring;
 
     if (*buffBits + nbits >= 32) {
         int diff = *buffBits + nbits - 32;

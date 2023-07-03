@@ -1,41 +1,28 @@
 CC = gcc
-LD = gcc
 
-CFLAGS = -Wall -Wextra -Werror -Wno-sign-compare -std=c11 -O2 -DPNG_SKIP_SETJMP_CHECK $(shell pkg-config --cflags libpng)
+HAVE_LIBPNG := $(shell pkg-config libpng; echo $?)
 
-LIBS = $(shell pkg-config --libs libpng)
+ifeq ($(HAVE_LIBPNG),1)
+$(error No package 'libpng' found)
+endif
 
-SRCS = main.c convert_png.c gfx.c jasc_pal.c lz.c rl.c util.c font.c huff.c
+CFLAGS = -Wall -Wextra -Werror -Wno-sign-compare -std=c11 -O2 -DPNG_SKIP_SETJMP_CHECK $(shell pkg-config --cflags libpng zlib)
+
+LIBS = $(shell pkg-config --libs libpng zlib)
+
+SRCS = main.c convert_png.c gfx.c jasc_pal.c lz.c rl.c util.c font.c huff.c json.c cJSON.c
 OBJS = $(SRCS:%.c=%.o)
 
 .PHONY: all clean
 
-DEPDIR := .deps
-DEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
-
-ifneq ($(DEBUG),)
-CFLAGS += -DDEBUG
-endif
-
 all: nitrogfx
 	@:
 
-nitrogfx-debug: DEBUG = 1
-nitrogfx-debug: nitrogfx
+nitrogfx-debug: $(SRCS) convert_png.h gfx.h global.h jasc_pal.h lz.h rl.h util.h font.h json.h cJSON.h
+	$(CC) $(CFLAGS) -g -DDEBUG $(SRCS) -o $@ $(LDFLAGS) $(LIBS)
 
-nitrogfx: $(OBJS)
-	$(LD) $(LDFLAGS) -o $@ $^ $(LIBS)
-
-%.o: %.c
-%.o: %.c $(DEPDIR)/%.d | $(DEPDIR)
-	$(CC) $(CFLAGS) $(DEPFLAGS) -c -o $@ $<
+nitrogfx: $(SRCS) convert_png.h gfx.h global.h jasc_pal.h lz.h rl.h util.h font.h json.h cJSON.h
+	$(CC) $(CFLAGS) $(SRCS) -o $@ $(LDFLAGS) $(LIBS)
 
 clean:
-	$(RM) -r nitrogfx nitrogfx.exe $(OBJS) $(DEPDIR)
-
-$(DEPDIR): ; @mkdir -p $@
-
-DEPFILES := $(SRCS:%.c=$(DEPDIR)/%.d)
-$(DEPFILES):
-
-include $(wildcard $(DEPFILES))
+	$(RM) -r nitrogfx nitrogfx.exe $(OBJS)

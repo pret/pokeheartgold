@@ -16,7 +16,7 @@
 #include "unk_0200B380.h"
 #include "text.h"
 #include "font.h"
-#include "window.h"
+#include "bg_window.h"
 
 static const GF_GXBanksConfig sErrorMessageBanksConfig = {
     .bg = GX_VRAM_BG_256_AB,

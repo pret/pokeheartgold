@@ -2,7 +2,7 @@
 #define POKEHEARTGOLD_FONT_TYPES_DEF_H
 
 #include "pm_string.h"
-#include "window.h"
+#include "bg_window.h"
 
 typedef u8 FontID;
 struct FontData;

@@ -1,4 +1,4 @@
-#include "window.h"
+#include "bg_window.h"
 #include "global.h"
 #include "math_util.h"
 
@@ -43,12 +43,12 @@ static void Bg_SetAffineScale(BG *bg, enum BgPosAdjustOp op, fx32 value);
 static void ApplyFlipFlagsToTile(BgConfig *bgConfig, u8 flags, u8 *tile);
 
 static const u8 sTilemapWidthByBufferSize[] = {
-    16, // GF_BG_SCR_SIZE_128x128
-    32, // GF_BG_SCR_SIZE_256x256
-    32, // GF_BG_SCR_SIZE_256x512
-    32, // GF_BG_SCR_SIZE_512x256
-    32, // GF_BG_SCR_SIZE_512x512
-    32, // GF_BG_SCR_SIZE_1024x1024
+    [GF_BG_SCR_SIZE_128x128]   = 0x10,
+    [GF_BG_SCR_SIZE_256x256]   = 0x20,
+    [GF_BG_SCR_SIZE_256x512]   = 0x20,
+    [GF_BG_SCR_SIZE_512x256]   = 0x20,
+    [GF_BG_SCR_SIZE_512x512]   = 0x20,
+    [GF_BG_SCR_SIZE_1024x1024] = 0x20,
 };
 
 static void (*const sScheduleWindowCopyToVramFuncs[GF_BG_TYPE_MAX])(Window *window) = {
