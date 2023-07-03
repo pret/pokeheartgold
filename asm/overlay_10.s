@@ -4514,7 +4514,7 @@ ov10_0221E0BC: ; 0x0221E0BC
 	bl ov10_0221EF34
 	add r1, r0, #0
 	add r0, r4, #0
-	bl ov12_022558F8
+	bl GetHeldItemFlingPower
 	mov r1, #0xd7
 	lsl r1, r1, #2
 	str r0, [r4, r1]

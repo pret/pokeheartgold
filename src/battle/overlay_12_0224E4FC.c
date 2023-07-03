@@ -4990,12 +4990,12 @@ int GetNaturalGiftType(BATTLECONTEXT *ctx, int battlerId) {
     return GetItemVar(ctx, itemNo, ITEM_NATURAL_GIFT_TYPE);
 }
 
-int ov12_022558B8(BATTLECONTEXT *ctx, int battlerId) {
+int GetHeldItemStealBerryEffect(BATTLECONTEXT *ctx, int battlerId) {
     u16 itemNo = ctx->battleMons[battlerId].item;
     return GetItemVar(ctx, itemNo, ITEM_VAR_8);
 }
 
-int ov12_022558D0(BATTLECONTEXT *ctx, int battlerId) {
+int GetHeldItemFlingEffect(BATTLECONTEXT *ctx, int battlerId) {
     if (ctx->battleMons[battlerId].unk88.embargoFlag) {
         return 0;
     }
@@ -5003,10 +5003,541 @@ int ov12_022558D0(BATTLECONTEXT *ctx, int battlerId) {
     return GetItemVar(ctx, ctx->battleMons[battlerId].item, ITEM_VAR_9);
 }
 
-int ov12_022558F8(BATTLECONTEXT *ctx, int battlerId) {
+int GetHeldItemFlingPower(BATTLECONTEXT *ctx, int battlerId) {
     if (ctx->battleMons[battlerId].unk88.embargoFlag) {
         return 0;
     }
     
     return GetItemVar(ctx, ctx->battleMons[battlerId].item, ITEM_VAR_10);
+}
+
+BOOL BattlerCanSwitch(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
+    BOOL ret = FALSE;
+    
+    if (GetBattlerHeldItemEffect(ctx, battlerId) == HOLD_EFFECT_SWITCH) {
+        return FALSE;
+    }
+    
+    if ((ctx->battleMons[battlerId].status2 & (STATUS2_BINDING_ALL | STATUS2_MEAN_LOOK)) || (ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_INGRAIN)) {
+        ret = TRUE;
+    }
+    
+    if ((GetBattlerAbility(ctx, battlerId) != ABILITY_SHADOW_TAG && CheckAbilityActive(bsys, ctx, CHECK_ABILITY_OPPOSING_SIDE_HP, battlerId, ABILITY_SHADOW_TAG)) || 
+        ((GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL) == TYPE_STEEL || GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL) == TYPE_STEEL) && CheckAbilityActive(bsys, ctx, CHECK_ABILITY_OPPOSING_SIDE_HP, battlerId, ABILITY_MAGNET_PULL))) {
+        ret = TRUE;
+    }
+    
+    if (((GetBattlerAbility(ctx, battlerId) != ABILITY_LEVITATE &&
+        ctx->battleMons[battlerId].unk88.magnetRiseTurns == 0 &&
+        GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL) != TYPE_FLYING && GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL) != TYPE_FLYING) ||
+        GetBattlerHeldItemEffect(ctx, battlerId) == HOLD_EFFECT_SPEED_DOWN_GROUNDED ||
+        (ctx->fieldCondition & FIELD_CONDITION_GRAVITY)) &&
+        CheckAbilityActive(bsys, ctx, CHECK_ABILITY_OPPOSING_SIDE_HP, battlerId, ABILITY_ARENA_TRAP)) {
+        ret = TRUE;
+    }
+    
+    return ret;
+}
+
+BOOL TryEatOpponentBerry(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
+    BOOL ret = FALSE;
+    int script = 0;
+    int item = GetHeldItemStealBerryEffect(ctx, battlerId);
+    int mod = GetHeldItemModifier(ctx, battlerId, 1);
+    
+    if (BattlerCheckSubstitute(ctx, ctx->battlerIdTarget) == TRUE) {
+        return FALSE;
+    }
+    
+    switch (item) {
+    case STEAL_EFFECT_RESTORE_HP: //oran berry
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp != ctx->battleMons[ctx->battlerIdAttacker].maxHp) {
+            ctx->hpCalc = mod;
+            script = 198;
+        }
+        ret = TRUE;
+        break;
+    case STEAL_EFFECT_RESTORE_HP_PRCT: //sitrus berry
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp != ctx->battleMons[ctx->battlerIdAttacker].maxHp) {
+            ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp * mod, 100);
+            script = 198;
+        }
+        ret = TRUE;
+        break;
+    case STEAL_EFFECT_CURE_PARALYSIS: //cheri berry
+        if (ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_PARALYSIS) {
+            script = 199;
+        }
+        ret = TRUE;
+        break;
+    case STEAL_EFFECT_CURE_SLEEP: //chesto berry
+        if (ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_SLEEP) {
+            script = 200;
+        }
+        ret = TRUE;
+        break;
+    case STEAL_EFFECT_CURE_POISON: //pecha berry
+        if (ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_POISON_ALL) {
+            script = 201;
+        }
+        ret = TRUE;
+        break;
+    case STEAL_EFFECT_CURE_BURN: //rawst berry
+        if (ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_BURN) {
+            script = 202;
+        }
+        ret = TRUE;
+        break;
+    case STEAL_EFFECT_CURE_FREEZE: //aspear berry
+        if (ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_FREEZE) {
+            script = 203;
+        }
+        ret = TRUE;
+        break;
+    case STEAL_EFFECT_RESTORE_PP: //leppa berry
+        int ppCalc;
+        int index;
+        int max = 0;
+        int maxIndex;
+        for (index = 0; index < LEARNED_MOVES_MAX; index++) {
+            if (ctx->battleMons[ctx->battlerIdAttacker].moves[index]) {
+                ppCalc = GetMoveMaxPP(ctx->battleMons[ctx->battlerIdAttacker].moves[index], ctx->battleMons[ctx->battlerIdAttacker].movePP[index]) - ctx->battleMons[ctx->battlerIdAttacker].movePPCur[index];
+                if (ppCalc > max) {
+                    max = ppCalc;
+                    maxIndex = index;
+                }
+            }
+        }
+
+        AddBattlerVar(&ctx->battleMons[ctx->battlerIdAttacker], BMON_DATA_MOVE1PP + maxIndex, mod);
+        CopyBattleMonToPartyMon(bsys, ctx, ctx->battlerIdAttacker);
+        ctx->moveTemp = ctx->battleMons[ctx->battlerIdAttacker].moves[maxIndex];
+        script = 204;
+        
+        ret = TRUE;
+        break;
+    case STEAL_EFFECT_CURE_CONFUSION: //persim berry
+        if (ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_CONFUSION) {
+            script = 205;
+        }
+        ret = TRUE;
+        break;
+    case STEAL_EFFECT_CURE_ALL: //lum berry
+        if ((ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_ALL) || (ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_CONFUSION)) {
+            if (ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_PARALYSIS) {
+                script = 199;
+            }
+            if (ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_SLEEP) {
+                script = 200;
+            }
+            if (ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_POISON_ALL) {
+                script = 201;
+            }
+            if (ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_BURN) {
+                script = 202;
+            }
+            if (ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_FREEZE) {
+                script = 203;
+            }
+            if (ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_CONFUSION) {
+                script = 205;
+            }
+            if ((ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_ALL) && (ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_CONFUSION)) {
+                script = 206;
+            }
+        }
+        ret = TRUE;
+        break;
+    case STEAL_EFFECT_RESTORE_SPICY: //figy berry
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp != ctx->battleMons[ctx->battlerIdAttacker].maxHp) {
+            ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp, mod);
+            ctx->msgTemp = 0;
+            if (GetFlavorPreferenceFromPID(ctx->battleMons[ctx->battlerIdAttacker].personality, FLAVOR_SPICY) == -1) {
+                script = 207;
+            } else {
+                script = 198;
+            }
+        }
+        ret = TRUE;
+        break;
+    case STEAL_EFFECT_RESTORE_DRY: //wiki berry
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp != ctx->battleMons[ctx->battlerIdAttacker].maxHp) {
+            ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp, mod);
+            ctx->msgTemp = 1;
+            if (GetFlavorPreferenceFromPID(ctx->battleMons[ctx->battlerIdAttacker].personality, FLAVOR_DRY) == -1) {
+                script = 207;
+            } else {
+                script = 198;
+            }    
+        }
+        ret = TRUE;
+        break;
+    case STEAL_EFFECT_RESTORE_SWEET: //mago berry
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp != ctx->battleMons[ctx->battlerIdAttacker].maxHp) {
+            ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp, mod);
+            ctx->msgTemp = 2;
+            if (GetFlavorPreferenceFromPID(ctx->battleMons[ctx->battlerIdAttacker].personality, FLAVOR_SWEET) == -1) {
+                script = 207;
+            } else {
+                script = 198;
+            }
+        }
+        ret = TRUE;
+        break;
+    case STEAL_EFFECT_RESTORE_BITTER: //aguav berry
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp != ctx->battleMons[ctx->battlerIdAttacker].maxHp) {
+            ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp, mod);
+            ctx->msgTemp = 3;
+            if (GetFlavorPreferenceFromPID(ctx->battleMons[ctx->battlerIdAttacker].personality, FLAVOR_BITTER) == -1) {
+                script = 207;
+            } else {
+                script = 198;
+            }
+        }
+        ret = TRUE;
+        break;
+    case STEAL_EFFECT_RESTORE_SOUR: //iappapa berry
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp != ctx->battleMons[ctx->battlerIdAttacker].maxHp) {
+            ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp, mod);
+            ctx->msgTemp = 4;
+            if (GetFlavorPreferenceFromPID(ctx->battleMons[ctx->battlerIdAttacker].personality, FLAVOR_SOUR) == -1) {
+                script = 207;
+            } else {
+                script = 198;
+            }
+        }
+        ret = TRUE;
+        break;
+    case STEAL_EFFECT_ATK_UP: //liechi berry
+        if (ctx->battleMons[ctx->battlerIdAttacker].statChanges[1] < 12) {
+            ctx->msgTemp = 1;
+            script = 208;
+        }
+        ret = TRUE;
+        break;
+    case STEAL_EFFECT_DEF_UP: //ganlon berry
+        if (ctx->battleMons[ctx->battlerIdAttacker].statChanges[2] < 12) {
+            ctx->msgTemp = 2;
+            script = 208;
+        }
+        ret = TRUE;
+        break;
+    case STEAL_EFFECT_SPEED_UP: //salac berry
+        if (ctx->battleMons[ctx->battlerIdAttacker].statChanges[3] < 12) {
+            ctx->msgTemp = 3;
+            script = 208;
+        }
+        ret = TRUE;
+        break;
+    case STEAL_EFFECT_SPATK_UP: //petaya berry
+        if (ctx->battleMons[ctx->battlerIdAttacker].statChanges[4] < 12) {
+            ctx->msgTemp = 4;
+            script = 208;
+        }
+        ret = TRUE;
+        break;
+    case STEAL_EFFECT_SPDEF_UP: //apicot berry
+        if (ctx->battleMons[ctx->battlerIdAttacker].statChanges[5] < 12) {
+            ctx->msgTemp = 5;
+            script = 208;
+        }
+        ret = TRUE;
+        break;
+    case STEAL_EFFECT_RANDOM_UP: //starf berry
+        int stat;
+        for (stat = 0; stat < 5; stat++) {
+            if (ctx->battleMons[ctx->battlerIdAttacker].statChanges[1 + stat] < 12) {
+                break;
+            }
+        }
+        if (stat != 5) {
+            do {
+                stat = BattleSystem_Random(bsys) % 5;
+            } while (ctx->battleMons[ctx->battlerIdAttacker].statChanges[1 + stat] == 12);
+            ctx->msgTemp = stat + 1;
+            script = 210;
+        }
+        ret = TRUE;
+        break;
+    case STEAL_EFFECT_CRITRATE_UP: //apicot berry
+        if (!(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_FOCUS_ENERGY)) {
+            script = 209;
+        }
+        ret = TRUE;
+        break;
+    case STEAL_EFFECT_ACC_UP: //micle berry
+        script = 265;
+        ret = TRUE;
+        break;
+    default:
+        if (ItemIdIsBerry(ctx->battleMons[battlerId].item) == TRUE) {
+            ret = TRUE;
+        }
+        break;
+    }
+    if (ret == TRUE) {
+        if (GetBattlerAbility(ctx, ctx->battlerIdAttacker) == ABILITY_KLUTZ || (ctx->battleMons[ctx->battlerIdAttacker].moveEffectFlags & MOVE_EFFECT_EMBARGO)) {
+            ctx->tempData = 0;
+        } else {
+            ctx->tempData = script;
+        }
+        ctx->itemTemp = ctx->battleMons[battlerId].item;
+        ctx->selfTurnData[ctx->battlerIdAttacker].unk14 |= (1 << 1);
+    }
+    
+    return ret;
+}
+
+BOOL TryFling(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
+    int item = GetHeldItemFlingEffect(ctx, battlerId);
+    int mod = GetHeldItemModifier(ctx, battlerId, 2);
+    
+    ctx->movePower = GetHeldItemFlingPower(ctx, battlerId);
+    ctx->flingScript = 0;
+    ctx->statChangeType = 0;
+    
+    if (!ctx->movePower) {
+        return FALSE;
+    }
+    
+    switch (item) {
+    case STEAL_EFFECT_RESTORE_HP: //oran berry
+        ctx->flingData = mod;
+        ctx->flingScript = 198;
+        break;
+    case STEAL_EFFECT_RESTORE_HP_PRCT: //sitrus berry
+        ctx->flingData = DamageDivide(ctx->battleMons[ctx->battlerIdTarget].maxHp * mod, 100);
+        ctx->flingScript = 198;
+        break;
+    case STEAL_EFFECT_CURE_PARALYSIS: //cheri berry
+        if (ctx->battleMons[ctx->battlerIdTarget].status & STATUS_PARALYSIS) {
+            ctx->flingScript = 199;
+        }
+        break;
+    case STEAL_EFFECT_CURE_SLEEP: //chesto berry
+        if (ctx->battleMons[ctx->battlerIdTarget].status & STATUS_SLEEP) {
+            ctx->flingScript = 200;
+        }
+        break;
+    case STEAL_EFFECT_CURE_POISON: //pecha berry
+        if (ctx->battleMons[ctx->battlerIdTarget].status & STATUS_POISON_ALL) {
+            ctx->flingScript = 201;
+        }
+        break;
+    case STEAL_EFFECT_CURE_BURN: //rawst berry
+        if (ctx->battleMons[ctx->battlerIdTarget].status & STATUS_BURN) {
+            ctx->flingScript = 202;
+        }
+        break;
+    case STEAL_EFFECT_CURE_FREEZE: //aspear berry
+        if (ctx->battleMons[ctx->battlerIdTarget].status & STATUS_FREEZE) {
+            ctx->flingScript = 203;
+        }
+        break;
+    case STEAL_EFFECT_RESTORE_PP: //leppa berry
+        int ppCalc;
+        int index;
+        int max = 0;
+        int maxIndex;
+        for (index = 0; index < LEARNED_MOVES_MAX; index++) {
+            if (ctx->battleMons[ctx->battlerIdTarget].moves[index]) {
+                ppCalc = GetMoveMaxPP(ctx->battleMons[ctx->battlerIdTarget].moves[index], ctx->battleMons[ctx->battlerIdTarget].movePP[index]) - ctx->battleMons[ctx->battlerIdTarget].movePPCur[index];
+                if (ppCalc > max) {
+                    max = ppCalc;
+                    maxIndex = index;
+                }
+            }
+        }
+        if (max) {
+            AddBattlerVar(&ctx->battleMons[ctx->battlerIdTarget], BMON_DATA_MOVE1PP + maxIndex, mod);
+            CopyBattleMonToPartyMon(bsys, ctx, ctx->battlerIdTarget);
+            ctx->moveTemp = ctx->battleMons[ctx->battlerIdTarget].moves[maxIndex];
+            ctx->flingScript = 204;
+        }
+        break;
+    case STEAL_EFFECT_CURE_CONFUSION: //persim berry
+        if (ctx->battleMons[ctx->battlerIdTarget].status2 & STATUS2_CONFUSION) {
+            ctx->flingScript = 205;
+        }
+        break;
+    case STEAL_EFFECT_CURE_ALL: //lum berry
+        if ((ctx->battleMons[ctx->battlerIdTarget].status & STATUS_ALL) || (ctx->battleMons[ctx->battlerIdTarget].status2 & STATUS2_CONFUSION)) {
+            if (ctx->battleMons[ctx->battlerIdTarget].status & STATUS_PARALYSIS) {
+                ctx->flingScript = 199;
+            }
+            if (ctx->battleMons[ctx->battlerIdTarget].status & STATUS_SLEEP) {
+                ctx->flingScript = 200;
+            }
+            if (ctx->battleMons[ctx->battlerIdTarget].status & STATUS_POISON_ALL) {
+                ctx->flingScript = 201;
+            }
+            if (ctx->battleMons[ctx->battlerIdTarget].status & STATUS_BURN) {
+                ctx->flingScript = 202;
+            }
+            if (ctx->battleMons[ctx->battlerIdTarget].status & STATUS_FREEZE) {
+                ctx->flingScript = 203;
+            }
+            if (ctx->battleMons[ctx->battlerIdTarget].status2 & STATUS2_CONFUSION) {
+                ctx->flingScript = 205;
+            }
+            if ((ctx->battleMons[ctx->battlerIdTarget].status & STATUS_ALL) && (ctx->battleMons[ctx->battlerIdTarget].status2 & STATUS2_CONFUSION)) {
+                ctx->flingScript = 206;
+            }
+        }
+        break;
+    case STEAL_EFFECT_RESTORE_SPICY: //figy berry
+        ctx->flingData = DamageDivide(ctx->battleMons[ctx->battlerIdTarget].maxHp, mod);
+        ctx->msgTemp = 0;
+        if (GetFlavorPreferenceFromPID(ctx->battleMons[ctx->battlerIdTarget].personality, FLAVOR_SPICY) == -1) {
+            ctx->flingScript = 207;
+        } else {
+            ctx->flingScript = 198;
+        }
+        break;
+    case STEAL_EFFECT_RESTORE_DRY: //wiki berry
+        ctx->flingData = DamageDivide(ctx->battleMons[ctx->battlerIdTarget].maxHp, mod);
+        ctx->msgTemp = 1;
+        if (GetFlavorPreferenceFromPID(ctx->battleMons[ctx->battlerIdTarget].personality, FLAVOR_DRY) == -1) {
+            ctx->flingScript = 207;
+        } else {
+            ctx->flingScript = 198;
+        }
+        break;
+    case STEAL_EFFECT_RESTORE_SWEET: //mago berry
+        ctx->flingData = DamageDivide(ctx->battleMons[ctx->battlerIdTarget].maxHp, mod);
+        ctx->msgTemp = 2;
+        if (GetFlavorPreferenceFromPID(ctx->battleMons[ctx->battlerIdTarget].personality, FLAVOR_SWEET) == -1) {
+            ctx->flingScript = 207;
+        } else {
+            ctx->flingScript = 198;
+        }
+        break;
+    case STEAL_EFFECT_RESTORE_BITTER: //aguav berry
+        ctx->flingData = DamageDivide(ctx->battleMons[ctx->battlerIdTarget].maxHp, mod);
+        ctx->msgTemp = 3;
+        if (GetFlavorPreferenceFromPID(ctx->battleMons[ctx->battlerIdTarget].personality, FLAVOR_BITTER) == -1) {
+            ctx->flingScript = 207;
+        } else {
+            ctx->flingScript = 198;
+        }
+        break;
+    case STEAL_EFFECT_RESTORE_SOUR: //iappapa berry
+        ctx->flingData = DamageDivide(ctx->battleMons[ctx->battlerIdTarget].maxHp, mod);
+        ctx->msgTemp = 4;
+        if (GetFlavorPreferenceFromPID(ctx->battleMons[ctx->battlerIdTarget].personality, FLAVOR_SOUR) == -1) {
+            ctx->flingScript = 207;
+        } else {
+            ctx->flingScript = 198;
+        }
+        break;
+    case STEAL_EFFECT_RESET_STATS: //white herb
+        {
+            int stat;
+            for (stat = 0; stat < 8; stat++) {
+                if (ctx->battleMons[ctx->battlerIdTarget].statChanges[stat] < 6) {
+                    ctx->battleMons[ctx->battlerIdTarget].statChanges[stat] = 6;
+                    ctx->flingScript = 211;
+                }
+            }
+        }
+        break;
+    case STEAL_EFFECT_CURE_INFATUATION: //mental herb
+        if (ctx->battleMons[ctx->battlerIdTarget].status2 & STATUS2_ATTRACT_ALL) {
+            ctx->msgTemp = 6;
+            ctx->flingScript = 212;
+        }
+        break;
+    case STEAL_EFFECT_FLINCH: //kings rock, razor fang
+        ctx->battlerIdStatChange = battlerId;
+        ctx->statChangeType = 2;
+        ctx->flingScript = 14;
+        break;
+    case STEAL_EFFECT_PARALYZE: //light ball
+        ctx->battlerIdStatChange = battlerId;
+        ctx->statChangeType = 2;
+        ctx->flingScript = 31;
+        break;
+    case STEAL_EFFECT_POISON: //poison barb
+        ctx->battlerIdStatChange = battlerId;
+        ctx->statChangeType = 2;
+        ctx->flingScript = 22;
+        break;
+    case STEAL_EFFECT_BAD_POISON: //toxic orb
+        ctx->battlerIdStatChange = battlerId;
+        ctx->statChangeType = 2;
+        ctx->flingScript = 47;
+        break;    
+    case STEAL_EFFECT_BURN: //flame orb
+        ctx->battlerIdStatChange = battlerId;
+        ctx->statChangeType = 2;
+        ctx->flingScript = 25;
+        break;
+    case STEAL_EFFECT_ATK_UP: //liechi berry
+        if (ctx->battleMons[ctx->battlerIdTarget].statChanges[1] < 12) {
+            ctx->msgTemp = 1;
+            ctx->flingScript = 208;
+        }
+        break;
+    case STEAL_EFFECT_DEF_UP: //ganlon berry
+        if (ctx->battleMons[ctx->battlerIdTarget].statChanges[2] < 12) {
+            ctx->msgTemp = 2;
+            ctx->flingScript = 208;
+        }
+        break;
+    case STEAL_EFFECT_SPEED_UP: //salac berry
+        if (ctx->battleMons[ctx->battlerIdTarget].statChanges[3] < 12) {
+            ctx->msgTemp = 3;
+            ctx->flingScript = 208;
+        }
+        break;
+    case STEAL_EFFECT_SPATK_UP: //petaya berry
+        if (ctx->battleMons[ctx->battlerIdTarget].statChanges[4] < 12) {
+            ctx->msgTemp = 4;
+            ctx->flingScript = 208;
+        }
+        break;
+    case STEAL_EFFECT_SPDEF_UP: //apicot berry
+        if (ctx->battleMons[ctx->battlerIdTarget].statChanges[5] < 12) {
+            ctx->msgTemp = 5;
+            ctx->flingScript = 208;
+        }
+        break;
+    case STEAL_EFFECT_RANDOM_UP: //starf berry
+        int stat;
+        for (stat = 0; stat < 5; stat++) {
+            if (ctx->battleMons[ctx->battlerIdTarget].statChanges[1 + stat] < 12) {
+                break;
+            }
+        }
+        if (stat != 5) {
+            do {
+                stat = BattleSystem_Random(bsys) % 5;
+            } while (ctx->battleMons[ctx->battlerIdTarget].statChanges[1 + stat] == 12);
+            ctx->msgTemp = stat + 1;
+            ctx->flingScript = 210;
+        }
+        break;
+    case STEAL_EFFECT_CRITRATE_UP: //apicot berry
+        if (!(ctx->battleMons[ctx->battlerIdTarget].status2 & STATUS2_FOCUS_ENERGY)) {
+            ctx->flingScript = 209;
+        }
+        break;
+    case STEAL_EFFECT_ACC_UP: //micle berry
+        ctx->flingScript = 265;
+        break;
+    default:
+        break;
+    }
+    
+    if (ctx->battleMons[ctx->battlerIdTarget].moveEffectFlags & MOVE_EFFECT_EMBARGO) {
+        ctx->flingScript = 0;
+    } else {
+        ctx->itemTemp = ctx->battleMons[battlerId].item;
+        if (!ctx->statChangeType && ctx->flingScript) {
+            ctx->selfTurnData[ctx->battlerIdAttacker].unk14 |= (1 << 1);                
+        }
+        ctx->battlerIdTemp = ctx->battlerIdTarget;
+    }
+    
+    return TRUE;
 }

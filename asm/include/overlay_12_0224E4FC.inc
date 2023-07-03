@@ -143,10 +143,10 @@
 .public GetHeldItemModifier
 .public GetNaturalGiftPower
 .public GetNaturalGiftType
-.public ov12_022558F8
-.public ov12_02255920
-.public CanEatOpponentBerry
-.public CanFling
+.public GetHeldItemFlingPower
+.public BattlerCanSwitch
+.public TryEatOpponentBerry
+.public TryFling
 .public ov12_022565E0
 .public ov12_02256694
 .public ov12_02256748
