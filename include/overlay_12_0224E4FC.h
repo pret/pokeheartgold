@@ -87,9 +87,12 @@ int GetBattlerHeldItemEffect(BATTLECONTEXT *ctx, int battlerId);
 int GetHeldItemModifier(BATTLECONTEXT *ctx, int battlerId, int flag);
 int GetNaturalGiftPower(BATTLECONTEXT *ctx, int battlerId);
 int GetNaturalGiftType(BATTLECONTEXT *ctx, int battlerId);
-int ov12_022558B8(BATTLECONTEXT *ctx, int battlerId);
-int ov12_022558D0(BATTLECONTEXT *ctx, int battlerId);
-int ov12_022558F8(BATTLECONTEXT *ctx, int battlerId);
+int GetHeldItemStealBerryEffect(BATTLECONTEXT *ctx, int battlerId);
+int GetHeldItemFlingEffect(BATTLECONTEXT *ctx, int battlerId);
+int GetHeldItemFlingPower(BATTLECONTEXT *ctx, int battlerId);
+BOOL BattlerCanSwitch(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+BOOL TryEatOpponentBerry(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+BOOL TryFling(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 
 //The following functions are static, but the rest of the file is still being worked on
 BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int index);
@@ -99,8 +102,6 @@ void ov12_02256F78(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 mon
 void Link_CheckTimeout(BATTLECONTEXT *ctx);
 int CalcMoveDamage(BattleSystem *bsys, BATTLECONTEXT *ctx, u32, u32, u32, u16, u8, u8, u8, u8);
 int ov12_02257C30(BattleSystem *bsys, BATTLECONTEXT *ctx, int a2);
-BOOL CanEatOpponentBerry(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
-BOOL CanFling(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL CheckLegalMetronomeMove(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u16 moveNo);
 BOOL CheckLegalMeFirstMove(BATTLECONTEXT *ctx, u16 move);
 BOOL CheckLegalMimicMove(u16 move);

@@ -5070,7 +5070,7 @@ BOOL BtlCmd_TryPluck(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     if (ctx->battleMons[ctx->battlerIdTarget].item && CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget, ABILITY_STICKY_HOLD) == TRUE) {
         BattleScriptIncrementPointer(ctx, adrs1);
-    } else if ((ctx->battleMons[ctx->battlerIdTarget].item && ctx->battleMons[ctx->battlerIdTarget].unk88.custapBerryFlag) || CanEatOpponentBerry(bsys, ctx, ctx->battlerIdTarget) != TRUE) {
+    } else if ((ctx->battleMons[ctx->battlerIdTarget].item && ctx->battleMons[ctx->battlerIdTarget].unk88.custapBerryFlag) || TryEatOpponentBerry(bsys, ctx, ctx->battlerIdTarget) != TRUE) {
         BattleScriptIncrementPointer(ctx, adrs2);
     }
 
@@ -5082,7 +5082,7 @@ BOOL BtlCmd_TryFling(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int adrs = BattleScriptReadWord(ctx);
 
-    if (CanFling(bsys, ctx, ctx->battlerIdAttacker) != TRUE) {
+    if (TryFling(bsys, ctx, ctx->battlerIdAttacker) != TRUE) {
         BattleScriptIncrementPointer(ctx, adrs);
     }
 
@@ -6009,9 +6009,9 @@ static void *BattleScriptGetVarPointer(BattleSystem *bsys, BATTLECONTEXT *ctx, i
     case 49:
         return &ctx->selfTurnData[ctx->battlerIdStatChange].unk14;
     case 50:
-        return &ctx->unk_3114;
+        return &ctx->flingData;
     case 51:
-        return &ctx->unk_3118;
+        return &ctx->flingScript;
     case 52:
         return &bsys->unk240C;
     case 53:

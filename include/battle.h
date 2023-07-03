@@ -386,8 +386,8 @@ typedef struct BATTLECONTEXT {
     u8 unk_3109;
     u16 unk_310A;
     u16 unk_310C[4];
-    int unk_3114;
-    int unk_3118;
+    int flingData;
+    int flingScript;
     u8 unk_311C;
     u8 unk_311D;
     u8 runAttempts;
