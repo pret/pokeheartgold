@@ -5826,3 +5826,44 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BATTLECONTEXT *ctx, int 
     
     return ret;
 }
+
+void ov12_02256F28(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int battlerId;
+    int index;
+    
+    for (battlerId = 0; battlerId < BattleSystem_GetMaxBattlers(bsys); battlerId++) {
+        for (index = 0; index < 6; index++) {
+            ctx->unk_312C[battlerId][index] = index;
+        }
+        ov12_02256F78(bsys, ctx, battlerId, ctx->selectedMonIndex[battlerId]);
+    }
+}
+
+void ov12_02256F78(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 selectedMonIndex) {
+    int index;
+    int dat;
+    int flag;
+    u32 battleType = BattleSystem_GetBattleType(bsys);
+    
+    if (((battleType & BATTLE_TYPE_DOUBLES) && !(battleType & (BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER))) ||
+        ((battleType & BATTLE_TYPE_INGAME_PARTNER) && !(ov12_0223AB0C(bsys, battlerId) & 1))) {
+        if (ov12_0223AB0C(bsys, battlerId) == 4 || ov12_0223AB0C(bsys, battlerId) == 5) {
+            flag = 1;
+        } else {
+            flag = 0;
+        }
+        battlerId &= 1;
+    } else {
+        flag = 0;
+    }
+    
+    for (index = 0; index < 6; index++) {
+        if (ctx->unk_312C[battlerId][index] == selectedMonIndex) {
+            break;
+        }
+    }
+    
+    dat = ctx->unk_312C[battlerId][flag];
+    ctx->unk_312C[battlerId][flag] = ctx->unk_312C[battlerId][index];
+    ctx->unk_312C[battlerId][index] = dat;
+}
