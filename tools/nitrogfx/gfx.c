@@ -1114,6 +1114,184 @@ void WriteNtrScreen(char *path, struct JsonToScreenOptions *options)
     fclose(fp);
 }
 
+void ReadNtrAnimation(char *path, struct JsonToAnimationOptions *options)
+{
+    int fileSize;
+    unsigned char *data = ReadWholeFile(path, &fileSize);
+
+    if (memcmp(data, "RNAN", 4) != 0 && memcmp(data, "RAMN", 4) != 0) //NANR/NMAR
+    {
+        FATAL_ERROR("Not a valid NANR/NMAR animation file.\n");
+    }
+
+    options->labelEnabled = data[0xE] != 1;
+
+    if (memcmp(data + 0x10, "KNBA", 4) != 0 ) //ABNK
+    {
+        FATAL_ERROR("Not a valid ABNK animation file.\n");
+    }
+
+    options->sequenceCount = data[0x18] | (data[0x19] << 8);
+    options->frameCount = data[0x1A] | (data[0x1B] << 8);
+
+    options->sequenceData = malloc(sizeof(struct SequenceData *) * options->sequenceCount);
+
+    for (int i = 0; i < options->sequenceCount; i++)
+    {
+        options->sequenceData[i] = malloc(sizeof(struct SequenceData));
+    }
+
+    int offset = 0x30;
+
+    unsigned int *frameOffsets = malloc(sizeof(unsigned int) * options->sequenceCount);
+
+    for (int i = 0; i < options->sequenceCount; i++, offset += 0x10)
+    {
+        options->sequenceData[i]->frameCount = data[offset] | (data[offset + 1] << 8);
+        options->sequenceData[i]->loopStartFrame = data[offset + 2] | (data[offset + 3] << 8);
+        options->sequenceData[i]->animationElement = data[offset + 4] | (data[offset + 5] << 8);
+        options->sequenceData[i]->animationType = data[offset + 6] | (data[offset + 7] << 8);
+        options->sequenceData[i]->playbackMode = data[offset + 8] | (data[offset + 9] << 8) | (data[offset + 10] << 16) | (data[offset + 11] << 24);
+        frameOffsets[i] = data[offset + 12] | (data[offset + 13] << 8) | (data[offset + 14] << 16) | (data[offset + 15] << 24);
+
+        options->sequenceData[i]->frameData = malloc(sizeof(struct FrameData *) * options->sequenceData[i]->frameCount);
+        for (int j = 0; j < options->sequenceData[i]->frameCount; j++)
+        {
+            options->sequenceData[i]->frameData[j] = malloc(sizeof(struct FrameData));
+        }
+    }
+
+    int *resultOffsets = malloc(sizeof(int) * options->frameCount);
+    memset(resultOffsets, -1, sizeof(int) * options->frameCount);
+
+    for (int i = 0; i < options->sequenceCount; i++)
+    {
+        for (int j = 0; j < options->sequenceData[i]->frameCount; j++)
+        {
+            int frameOffset = offset + frameOffsets[i] + j * 0x8;
+            options->sequenceData[i]->frameData[j]->resultOffset = data[frameOffset] | (data[frameOffset + 1] << 8) | (data[frameOffset + 2] << 16) | (data[frameOffset + 3] << 24);
+            options->sequenceData[i]->frameData[j]->frameDelay = data[frameOffset + 4] | (data[frameOffset + 5] << 8);
+            //0xBEEF
+
+            //the following is messy
+            bool present = false;
+            //check for offset in array
+            for (int k = 0; k < options->frameCount; k++)
+            {
+                if (resultOffsets[k] == options->sequenceData[i]->frameData[j]->resultOffset)
+                {
+                    present = true;
+                    break;
+                }
+            }
+
+            //add data if not present
+            if (!present)
+            {
+                for (int k = 0; i < options->frameCount; k++)
+                {
+                    if (resultOffsets[k] == -1)
+                    {
+                        resultOffsets[k] = options->sequenceData[i]->frameData[j]->resultOffset;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    free(frameOffsets);
+
+    offset = 0x18 + (data[0x24] | (data[0x25] << 8) | (data[0x26] << 16) | (data[0x27] << 24)); //start of animation results
+
+    int k;
+
+    for (k = 0; k < options->frameCount; k++)
+    {
+        if (resultOffsets[k] == -1)
+            break;
+    }
+    options->resultCount = k;
+
+    free(resultOffsets);
+
+    options->animationResults = malloc(sizeof(struct AnimationResults *) * options->resultCount);
+
+    for (int i = 0; i < options->resultCount; i++)
+    {
+        options->animationResults[i] = malloc(sizeof(struct AnimationResults));
+    }
+    
+    int resultOffset = 0;
+    for (int i = 0; i < options->resultCount; i++)
+    {
+        if (data[offset + 2] == 0xCC && data[offset + 3] == 0xCC)
+        {
+            options->animationResults[i]->resultType = 0;
+        }
+        else if (data[offset + 2] == 0xEF && data[offset + 3] == 0xBE)
+        {
+            options->animationResults[i]->resultType = 2;
+        }
+        else
+        {
+            options->animationResults[i]->resultType = 1;
+        }
+        for (int j = 0; j < options->sequenceCount; j++)
+        {
+            for (int k = 0; k < options->sequenceData[j]->frameCount; k++)
+            {
+                if (options->sequenceData[j]->frameData[k]->resultOffset == resultOffset)
+                {
+                    options->sequenceData[j]->frameData[k]->resultId = i;
+                }
+            }
+        }
+        switch (options->animationResults[i]->resultType)
+        {
+            case 0: //index
+                options->animationResults[i]->index = data[offset] | (data[offset + 1] << 8);
+                resultOffset += 0x4;
+                offset += 0x4;
+                break;
+
+            case 1: //SRT
+                options->animationResults[i]->dataSrt.index = data[offset] | (data[offset + 1] << 8);
+                options->animationResults[i]->dataSrt.rotation = data[offset + 2] | (data[offset + 3] << 8);
+                options->animationResults[i]->dataSrt.scaleX = data[offset + 4] | (data[offset + 5] << 8) | (data[offset + 6] << 16) | (data[offset + 7] << 24);
+                options->animationResults[i]->dataSrt.scaleY = data[offset + 8] | (data[offset + 9] << 8) | (data[offset + 10] << 16) | (data[offset + 11] << 24);
+                options->animationResults[i]->dataSrt.positionX = data[offset + 12] | (data[offset + 13] << 8);
+                options->animationResults[i]->dataSrt.positionY = data[offset + 14] | (data[offset + 15] << 8);
+                resultOffset += 0x10;
+                offset += 0x10;
+                break;
+
+            case 2: //T
+                options->animationResults[i]->dataT.index = data[offset] | (data[offset + 1] << 8);
+                options->animationResults[i]->dataT.positionX = data[offset + 4] | (data[offset + 5] << 8);
+                options->animationResults[i]->dataT.positionY = data[offset + 6] | (data[offset + 7] << 8);
+                resultOffset += 0x8;
+                offset += 0x8;
+                break;
+        }
+    }
+
+    if (options->labelEnabled)
+    {
+        options->labelCount = options->sequenceCount; //*should* be the same
+        options->labels = malloc(sizeof(char *) * options->labelCount);
+        offset += 0x8 + options->labelCount * 0x4; //skip to label data
+        for (int i = 0; i < options->labelCount; i++)
+        {
+            options->labels[i] = malloc(strlen((char *)data + offset) + 1);
+            strcpy(options->labels[i], (char *)data + offset);
+            offset += strlen((char *)data + offset) + 1;
+        }
+    }
+
+    free(data);
+}
+
 void WriteNtrAnimation(char *path, struct JsonToAnimationOptions *options)
 {
     FILE *fp = fopen(path, "wb");
@@ -1269,8 +1447,6 @@ void WriteNtrAnimation(char *path, struct JsonToAnimationOptions *options)
             case 2:
                 KBNAContents[resPtrCounter] = options->animationResults[k]->dataT.index & 0xff;
                 KBNAContents[resPtrCounter + 1] = options->animationResults[k]->dataT.index >> 8;
-                //KBNAContents[resPtrCounter + 2] = options->animationResults[k]->dataT.rotation & 0xff;
-                //KBNAContents[resPtrCounter + 3] = options->animationResults[k]->dataT.rotation >> 8;
                 KBNAContents[resPtrCounter + 2] = 0xEF;
                 KBNAContents[resPtrCounter + 3] = 0xBE;
                 KBNAContents[resPtrCounter + 4] = options->animationResults[k]->dataT.positionX & 0xff;

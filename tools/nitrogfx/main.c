@@ -832,6 +832,19 @@ void HandleJsonToNtrAnimationCommand(char *inputPath, char *outputPath, int argc
     FreeNANRAnimation(options);
 }
 
+void HandleNtrAnimationToJsonCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
+{
+    struct JsonToAnimationOptions *options = malloc(sizeof(struct JsonToAnimationOptions));
+
+    ReadNtrAnimation(inputPath, options);
+
+    char *json = GetNANRJson(options);
+
+    WriteWholeStringToFile(outputPath, json);
+
+    FreeNANRAnimation(options);
+}
+
 void HandleJsonToNtrMulticellAnimationCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
 {
     struct JsonToAnimationOptions *options;
@@ -1110,7 +1123,9 @@ int main(int argc, char **argv)
         { "NCER", "json", HandleNtrCellToJsonCommand },
         { "json", "NSCR", HandleJsonToNtrScreenCommand },
         { "json", "NANR", HandleJsonToNtrAnimationCommand },
+        { "NANR", "json", HandleNtrAnimationToJsonCommand },
         { "json", "NMAR", HandleJsonToNtrMulticellAnimationCommand },
+        { "NMAR", "json", HandleNtrAnimationToJsonCommand },
         { NULL, "huff", HandleHuffCompressCommand },
         { NULL, "lz", HandleLZCompressCommand },
         { "huff", NULL, HandleHuffDecompressCommand },

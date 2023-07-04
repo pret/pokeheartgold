@@ -114,6 +114,7 @@ struct JsonToScreenOptions {
 struct FrameData {
     int resultId;
     short frameDelay;
+    int resultOffset;
 };
 
 struct SequenceData {
