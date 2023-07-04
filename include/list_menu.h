@@ -3,7 +3,7 @@
 
 #include "list_menu_cursor.h"
 #include "list_menu_items.h"
-#include "window.h"
+#include "bg_window.h"
 
 struct ListMenu;
 

@@ -8,7 +8,7 @@
 #include "player_data.h"
 #include "save.h"
 #include "save_frontier.h"
-#include "window.h"
+#include "bg_window.h"
 #include "unk_02009D48.h"
 #include "unk_02023694.h"
 

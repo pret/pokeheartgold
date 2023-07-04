@@ -2,7 +2,7 @@
 #define POKEHEARTGOLD_GF_GFX_LOADER_H
 
 #include "filesystem.h"
-#include "window.h"
+#include "bg_window.h"
 
 // These functions load (perhap-compressed) graphics resources to VRAM.
 // A temporary file handle is used to read the data from the card.

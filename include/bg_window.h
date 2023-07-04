@@ -1,6 +1,7 @@
-#ifndef POKEHEARTGOLD_WINDOW_H
-#define POKEHEARTGOLD_WINDOW_H
+#ifndef POKEHEARTGOLD_BG_WINDOW_H
+#define POKEHEARTGOLD_BG_WINDOW_H
 
+#include "global.h"
 #include "heap.h"
 #include "gx_layers.h"
 
@@ -232,4 +233,4 @@ void ScheduleSetBgPosText(BgConfig *bgConfig, u8 layer, enum BgPosAdjustOp op, f
 void ScheduleSetBgAffineScale(BgConfig *bgConfig, u8 layer, enum BgPosAdjustOp op, fx32 value);
 BOOL DoesPixelAtScreenXYMatchPtrVal(BgConfig *bgConfig, u8 layer, u8 x, u8 y, u16 *src);
 
-#endif //POKEHEARTGOLD_WINDOW_H
+#endif //POKEHEARTGOLD_BG_WINDOW_H

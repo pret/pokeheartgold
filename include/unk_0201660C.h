@@ -2,7 +2,7 @@
 #define POKEHEARTGOLD_UNK_0201660C_H
 
 #include "heap.h"
-#include "window.h"
+#include "bg_window.h"
 
 typedef struct Unk122_021E6900 {
     BgConfig *unk0;

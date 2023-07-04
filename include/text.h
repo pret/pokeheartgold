@@ -2,7 +2,7 @@
 #define POKEHEARTGOLD_TEXT_H
 
 #include "font_types_def.h"
-#include "window.h"
+#include "bg_window.h"
 #include "options.h"
 #include "text_0205B4EC.h"
 

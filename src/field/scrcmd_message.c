@@ -11,7 +11,7 @@
 #include "script.h"
 #include "text.h"
 #include "text_0205B4EC.h"
-#include "window.h"
+#include "bg_window.h"
 
 typedef struct MessageBox {
     String *message;

@@ -1,7 +1,7 @@
 #define _IN_SCRCMD_C
 
 #include "scrcmd.h"
-#include "window.h"
+#include "bg_window.h"
 #include "overlay_01.h"
 #include "overlay_26.h"
 #include "overlay_03.h"

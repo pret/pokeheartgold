@@ -28,4 +28,10 @@ do {                                        \
 
 #endif // _MSC_VER
 
+#define PTR_ADD(ptr, value) ((void*)((uintptr_t)(ptr) + (value)))
+#define PTR_SUB(ptr, value) ((void*)((uintptr_t)(ptr) - (value)))
+#define PTR_IADD(ptr, value) do { (ptr) = PTR_ADD(ptr, value); } while (0)
+#define PTR_ISUB(ptr, value) do { (ptr) = PTR_SUB(ptr, value); } while (0)
+#define PTR_DIFF(right, left) ((uintptr_t)(right) - (uintptr_t)(left))
+
 #endif // GLOBAL_H

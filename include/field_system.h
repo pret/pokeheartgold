@@ -9,7 +9,7 @@
 #include "save_pokegear.h"
 #include "unk_0200E320.h"
 #include "unk_02022D74.h"
-#include "window.h"
+#include "bg_window.h"
 
 typedef struct FieldSystem FieldSystem;
 typedef struct TaskManager TaskManager;

@@ -23,7 +23,7 @@
 #include "unk_020183F0.h"
 #include "unk_02023694.h"
 #include "unk_02025154.h"
-#include "window.h"
+#include "bg_window.h"
 #include "constants/sndseq.h"
 #include "msgdata/msg/msg_0039.h"
 #include "voltorb_flip/voltorb_flip.h"

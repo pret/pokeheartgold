@@ -6,7 +6,7 @@
 #include "options.h"
 #include "player_data.h"
 #include "unk_0200CF18.h"
-#include "window.h"
+#include "bg_window.h"
 #include "voltorb_flip/voltorb_flip_game.h"
 #include "voltorb_flip/voltorb_flip_input.h"
 
