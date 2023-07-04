@@ -774,6 +774,135 @@ void WriteNtrPalette(char *path, struct Palette *palette, bool ncpr, bool ir, in
     fclose(fp);
 }
 
+void ReadNtrCell(char *path, struct JsonToCellOptions *options)
+{
+    int fileSize;
+    unsigned char *data = ReadWholeFile(path, &fileSize);
+
+    if (memcmp(data, "RECN", 4) != 0) //NCER
+    {
+        FATAL_ERROR("Not a valid NCER cell file.\n");
+    }
+
+    options->labelEnabled = data[0xE] != 1;
+
+    if (memcmp(data + 0x10, "KBEC", 4) != 0 ) //KBEC
+    {
+        FATAL_ERROR("Not a valid KBEC cell file.\n");
+    }
+
+    options->cellCount = data[0x18] | (data[0x19] << 8);
+    options->extended = data[0x1A] == 1;
+    if (!options->extended)
+    {
+        FATAL_ERROR("Don't know how to deal with not extended yet, bug red031000.\n");
+    }
+
+    options->mappingType = data[0x20];
+
+    options->cells = malloc(sizeof(struct Cell *) * options->cellCount);
+
+    for (int i = 0; i < options->cellCount; i++)
+    {
+        int offset = 0x30 + (i * 0x10);
+        options->cells[i] = malloc(sizeof(struct Cell));
+        short cellAttrs = data[offset + 2] | (data[offset + 3] << 8);
+        options->cells[i]->attributes.hFlip = (cellAttrs >> 8) & 1;
+        options->cells[i]->attributes.vFlip = (cellAttrs >> 9) & 1;
+        options->cells[i]->attributes.hvFlip = (cellAttrs >> 10) & 1;
+        options->cells[i]->attributes.boundingRect = (cellAttrs >> 11) & 1;
+        options->cells[i]->attributes.boundingSphereRadius = cellAttrs & 0x3F;
+
+        options->cells[i]->maxX = data[offset + 8] | (data[offset + 9] << 8);
+        options->cells[i]->maxY = data[offset + 10] | (data[offset + 11] << 8);
+        options->cells[i]->minX = data[offset + 12] | (data[offset + 13] << 8);
+        options->cells[i]->minY = data[offset + 14] | (data[offset + 15] << 8);
+    }
+
+    for (int i = 0; i < options->cellCount; i++)
+    {
+        int offset = 0x30 + (options->cellCount * 0x10) + (i * 0x6);
+
+        //Attr0
+
+        //bits 0-7 Y coordinate
+        options->cells[i]->oam.attr0.YCoordinate = data[offset];
+
+        //bit 8 rotation
+        options->cells[i]->oam.attr0.Rotation = data[offset + 1] & 1;
+
+        //bit 9 Obj Size (if rotation) or Obj Disable (if not rotation)
+        options->cells[i]->oam.attr0.SizeDisable = (data[offset + 1] >> 1) & 1;
+
+        //bits 10-11 Obj Mode
+        options->cells[i]->oam.attr0.Mode = (data[offset + 1] >> 2) & 3;
+
+        //bit 12 Obj Mosaic
+        options->cells[i]->oam.attr0.Mosaic = (data[offset + 1] >> 4) & 1;
+
+        //bit 13 Colours
+        options->cells[i]->oam.attr0.Colours = ((data[offset + 1] >> 5) & 1) == 0 ? 16 : 256;
+
+        //bits 14-15 Obj Shape
+        options->cells[i]->oam.attr0.Shape = (data[offset + 1] >> 6) & 3;
+
+        //Attr1
+
+        //bits 0-8 X coordinate
+        options->cells[i]->oam.attr1.XCoordinate = data[offset + 2] | ((data[offset + 3] & 1) << 8);
+
+        //bits 9-13 Rotation and scaling (if rotation) bit 12 Horizontal flip, bit 13 Vertical flip (if not rotation)
+        options->cells[i]->oam.attr1.RotationScaling = (data[offset + 3] >> 1) & 0x1F;
+
+        //bits 14-15 Obj Size
+        options->cells[i]->oam.attr1.Size = (data[offset + 3] >> 6) & 3;
+
+        //Attr2
+
+        //bits 0-9 Character Name?
+        options->cells[i]->oam.attr2.CharName = data[offset + 4] | ((data[offset + 5] & 3) << 8);
+
+        //bits 10-11 Priority
+        options->cells[i]->oam.attr2.Priority = (data[offset + 5] >> 2) & 3;
+
+        //bits 12-15 Palette Number
+        options->cells[i]->oam.attr2.Palette = (data[offset + 5] >> 4) & 0xF;
+    }
+
+    if (options->labelEnabled)
+    {
+        int count = 0;
+        int offset = 0x30 + (options->cellCount * 0x16) + 0x8;
+        bool flag = false;
+        //this entire thing is a huge assumption, it will not work with labels that are less than 2 characters long
+        while (!flag)
+        {
+            if (strlen((char *) data + offset) < 2)
+            {
+                //probably a pointer, maybe?
+                count++;
+                offset += 4;
+            }
+            else
+            {
+                //huzzah a string
+                flag = true;
+            }
+        }
+        options->labelCount = count;
+        options->labels = malloc(sizeof(char *) * count);
+        for (int i = 0; i < count; i++)
+        {
+            options->labels[i] = malloc(strlen((char *) data + offset) + 1);
+            strcpy(options->labels[i], (char *) data + offset);
+            offset += strlen(options->labels[i]) + 1;
+        }
+        //after this should be txeu, if everything was done right
+    }
+
+    free(data);
+}
+
 void WriteNtrCell(char *path, struct JsonToCellOptions *options)
 {
     FILE *fp = fopen(path, "wb");
@@ -985,6 +1114,184 @@ void WriteNtrScreen(char *path, struct JsonToScreenOptions *options)
     fclose(fp);
 }
 
+void ReadNtrAnimation(char *path, struct JsonToAnimationOptions *options)
+{
+    int fileSize;
+    unsigned char *data = ReadWholeFile(path, &fileSize);
+
+    if (memcmp(data, "RNAN", 4) != 0 && memcmp(data, "RAMN", 4) != 0) //NANR/NMAR
+    {
+        FATAL_ERROR("Not a valid NANR/NMAR animation file.\n");
+    }
+
+    options->labelEnabled = data[0xE] != 1;
+
+    if (memcmp(data + 0x10, "KNBA", 4) != 0 ) //ABNK
+    {
+        FATAL_ERROR("Not a valid ABNK animation file.\n");
+    }
+
+    options->sequenceCount = data[0x18] | (data[0x19] << 8);
+    options->frameCount = data[0x1A] | (data[0x1B] << 8);
+
+    options->sequenceData = malloc(sizeof(struct SequenceData *) * options->sequenceCount);
+
+    for (int i = 0; i < options->sequenceCount; i++)
+    {
+        options->sequenceData[i] = malloc(sizeof(struct SequenceData));
+    }
+
+    int offset = 0x30;
+
+    unsigned int *frameOffsets = malloc(sizeof(unsigned int) * options->sequenceCount);
+
+    for (int i = 0; i < options->sequenceCount; i++, offset += 0x10)
+    {
+        options->sequenceData[i]->frameCount = data[offset] | (data[offset + 1] << 8);
+        options->sequenceData[i]->loopStartFrame = data[offset + 2] | (data[offset + 3] << 8);
+        options->sequenceData[i]->animationElement = data[offset + 4] | (data[offset + 5] << 8);
+        options->sequenceData[i]->animationType = data[offset + 6] | (data[offset + 7] << 8);
+        options->sequenceData[i]->playbackMode = data[offset + 8] | (data[offset + 9] << 8) | (data[offset + 10] << 16) | (data[offset + 11] << 24);
+        frameOffsets[i] = data[offset + 12] | (data[offset + 13] << 8) | (data[offset + 14] << 16) | (data[offset + 15] << 24);
+
+        options->sequenceData[i]->frameData = malloc(sizeof(struct FrameData *) * options->sequenceData[i]->frameCount);
+        for (int j = 0; j < options->sequenceData[i]->frameCount; j++)
+        {
+            options->sequenceData[i]->frameData[j] = malloc(sizeof(struct FrameData));
+        }
+    }
+
+    int *resultOffsets = malloc(sizeof(int) * options->frameCount);
+    memset(resultOffsets, -1, sizeof(int) * options->frameCount);
+
+    for (int i = 0; i < options->sequenceCount; i++)
+    {
+        for (int j = 0; j < options->sequenceData[i]->frameCount; j++)
+        {
+            int frameOffset = offset + frameOffsets[i] + j * 0x8;
+            options->sequenceData[i]->frameData[j]->resultOffset = data[frameOffset] | (data[frameOffset + 1] << 8) | (data[frameOffset + 2] << 16) | (data[frameOffset + 3] << 24);
+            options->sequenceData[i]->frameData[j]->frameDelay = data[frameOffset + 4] | (data[frameOffset + 5] << 8);
+            //0xBEEF
+
+            //the following is messy
+            bool present = false;
+            //check for offset in array
+            for (int k = 0; k < options->frameCount; k++)
+            {
+                if (resultOffsets[k] == options->sequenceData[i]->frameData[j]->resultOffset)
+                {
+                    present = true;
+                    break;
+                }
+            }
+
+            //add data if not present
+            if (!present)
+            {
+                for (int k = 0; i < options->frameCount; k++)
+                {
+                    if (resultOffsets[k] == -1)
+                    {
+                        resultOffsets[k] = options->sequenceData[i]->frameData[j]->resultOffset;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    free(frameOffsets);
+
+    offset = 0x18 + (data[0x24] | (data[0x25] << 8) | (data[0x26] << 16) | (data[0x27] << 24)); //start of animation results
+
+    int k;
+
+    for (k = 0; k < options->frameCount; k++)
+    {
+        if (resultOffsets[k] == -1)
+            break;
+    }
+    options->resultCount = k;
+
+    free(resultOffsets);
+
+    options->animationResults = malloc(sizeof(struct AnimationResults *) * options->resultCount);
+
+    for (int i = 0; i < options->resultCount; i++)
+    {
+        options->animationResults[i] = malloc(sizeof(struct AnimationResults));
+    }
+    
+    int resultOffset = 0;
+    for (int i = 0; i < options->resultCount; i++)
+    {
+        if (data[offset + 2] == 0xCC && data[offset + 3] == 0xCC)
+        {
+            options->animationResults[i]->resultType = 0;
+        }
+        else if (data[offset + 2] == 0xEF && data[offset + 3] == 0xBE)
+        {
+            options->animationResults[i]->resultType = 2;
+        }
+        else
+        {
+            options->animationResults[i]->resultType = 1;
+        }
+        for (int j = 0; j < options->sequenceCount; j++)
+        {
+            for (int k = 0; k < options->sequenceData[j]->frameCount; k++)
+            {
+                if (options->sequenceData[j]->frameData[k]->resultOffset == resultOffset)
+                {
+                    options->sequenceData[j]->frameData[k]->resultId = i;
+                }
+            }
+        }
+        switch (options->animationResults[i]->resultType)
+        {
+            case 0: //index
+                options->animationResults[i]->index = data[offset] | (data[offset + 1] << 8);
+                resultOffset += 0x4;
+                offset += 0x4;
+                break;
+
+            case 1: //SRT
+                options->animationResults[i]->dataSrt.index = data[offset] | (data[offset + 1] << 8);
+                options->animationResults[i]->dataSrt.rotation = data[offset + 2] | (data[offset + 3] << 8);
+                options->animationResults[i]->dataSrt.scaleX = data[offset + 4] | (data[offset + 5] << 8) | (data[offset + 6] << 16) | (data[offset + 7] << 24);
+                options->animationResults[i]->dataSrt.scaleY = data[offset + 8] | (data[offset + 9] << 8) | (data[offset + 10] << 16) | (data[offset + 11] << 24);
+                options->animationResults[i]->dataSrt.positionX = data[offset + 12] | (data[offset + 13] << 8);
+                options->animationResults[i]->dataSrt.positionY = data[offset + 14] | (data[offset + 15] << 8);
+                resultOffset += 0x10;
+                offset += 0x10;
+                break;
+
+            case 2: //T
+                options->animationResults[i]->dataT.index = data[offset] | (data[offset + 1] << 8);
+                options->animationResults[i]->dataT.positionX = data[offset + 4] | (data[offset + 5] << 8);
+                options->animationResults[i]->dataT.positionY = data[offset + 6] | (data[offset + 7] << 8);
+                resultOffset += 0x8;
+                offset += 0x8;
+                break;
+        }
+    }
+
+    if (options->labelEnabled)
+    {
+        options->labelCount = options->sequenceCount; //*should* be the same
+        options->labels = malloc(sizeof(char *) * options->labelCount);
+        offset += 0x8 + options->labelCount * 0x4; //skip to label data
+        for (int i = 0; i < options->labelCount; i++)
+        {
+            options->labels[i] = malloc(strlen((char *)data + offset) + 1);
+            strcpy(options->labels[i], (char *)data + offset);
+            offset += strlen((char *)data + offset) + 1;
+        }
+    }
+
+    free(data);
+}
+
 void WriteNtrAnimation(char *path, struct JsonToAnimationOptions *options)
 {
     FILE *fp = fopen(path, "wb");
@@ -1140,8 +1447,6 @@ void WriteNtrAnimation(char *path, struct JsonToAnimationOptions *options)
             case 2:
                 KBNAContents[resPtrCounter] = options->animationResults[k]->dataT.index & 0xff;
                 KBNAContents[resPtrCounter + 1] = options->animationResults[k]->dataT.index >> 8;
-                //KBNAContents[resPtrCounter + 2] = options->animationResults[k]->dataT.rotation & 0xff;
-                //KBNAContents[resPtrCounter + 3] = options->animationResults[k]->dataT.rotation >> 8;
                 KBNAContents[resPtrCounter + 2] = 0xEF;
                 KBNAContents[resPtrCounter + 3] = 0xBE;
                 KBNAContents[resPtrCounter + 4] = options->animationResults[k]->dataT.positionX & 0xff;

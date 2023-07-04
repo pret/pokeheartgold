@@ -98,8 +98,6 @@ struct JsonToCellOptions {
     bool labelEnabled;
     bool extended;
     int mappingType;
-    int imageHeight;
-    int imageWidth;
     int cellCount;
     struct Cell **cells;
     char **labels;
@@ -116,6 +114,7 @@ struct JsonToScreenOptions {
 struct FrameData {
     int resultId;
     short frameDelay;
+    int resultOffset;
 };
 
 struct SequenceData {
