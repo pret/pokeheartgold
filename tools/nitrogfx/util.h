@@ -10,6 +10,7 @@ bool ParseNumber(char *s, char **end, int radix, int *intValue);
 char *GetFileExtension(char *path);
 unsigned char *ReadWholeFile(char *path, int *size);
 unsigned char *ReadWholeFileZeroPadded(char *path, int *size, int padAmount);
+void WriteWholeStringToFile(char *path, char *string);
 void WriteWholeFile(char *path, void *buffer, int bufferSize);
 void WriteGenericNtrHeader(FILE* fp, const char* magicNumber, uint32_t size, bool byteorder, bool version101, uint16_t sectionCount);
 
