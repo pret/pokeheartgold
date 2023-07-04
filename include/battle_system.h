@@ -35,5 +35,6 @@ u8 BattleSystem_GetMonBall(BattleSystem *bsys, Pokemon *mon);
 u32 BattleSystem_GetWinLoseFlags(BattleSystem *bsys);
 void ov12_0223C0C4(BattleSystem *bsys);
 int BattleSystem_GetWeather(BattleSystem *bsys);
+int ov12_0223AB60(BattleSystem *bsys);
 
 #endif

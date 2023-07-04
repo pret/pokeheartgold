@@ -1447,7 +1447,7 @@ ov12_02262B80: ; 0x02262B80
 _02262BB0:
 	ldr r0, [sp, #8]
 	add r1, r4, #0
-	bl ov12_022567A0
+	bl Battler_CanSelectAction
 	cmp r0, #0
 	bne _02262BC4
 	add r0, r4, #0

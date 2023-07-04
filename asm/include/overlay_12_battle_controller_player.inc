@@ -111,7 +111,7 @@
 .public BattlerCanSwitch
 .public ov12_022565E0
 .public ov12_02256694
-.public ov12_022567A0
+.public Battler_CanSelectAction
 .public ov12_0225682C
 .public ov12_02256854
 .public ov12_02256F78

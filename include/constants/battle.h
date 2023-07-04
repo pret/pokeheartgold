@@ -67,6 +67,7 @@ enum Terrain {
 #define MOVE_EFFECT_1                       (1 << 1)
 #define MOVE_EFFECT_LEECH_SEED              (1 << 2)
 #define MOVE_EFFECT_LOCK_ON                 (3 << 3)
+#define MOVE_EFFECT_LOCK_ON_SET             (1 << 4)
 #define MOVE_EFFECT_PERISH_SONG             (1 << 5)
 #define MOVE_EFFECT_6                       (1 << 6)
 #define MOVE_EFFECT_7                       (1 << 7)
@@ -141,6 +142,7 @@ enum Terrain {
 #define FIELD_CONDITION_FOG                 (1 << 15)
 #define FIELD_CONDITION_TRICK_ROOM          (7 << 16)
 
+#define FIELD_CONDITION_WEATHER_CASTFORM    (FIELD_CONDITION_RAIN_ALL | FIELD_CONDITION_SUN_ALL | FIELD_CONDITION_HAIL_ALL)
 #define FIELD_CONDITION_WEATHER             (FIELD_CONDITION_RAIN_ALL | FIELD_CONDITION_SANDSTORM_ALL | FIELD_CONDITION_SUN_ALL | FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_FOG)
     
 //Field Side Conditions
@@ -179,7 +181,7 @@ enum Terrain {
 //Status 2
 #define STATUS2_CONFUSION                   (7 << 0)
 #define STATUS2_FLINCH                      (1 << 3)
-#define STATUS2_4                           (1 << 4)
+#define STATUS2_UPROAR                      (7 << 4)
 #define STATUS2_RAGE                        (3 << 10)
 #define STATUS2_LOCKED_INTO_MOVE            (1 << 12)
 #define STATUS2_13                          (1 << 13)

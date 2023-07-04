@@ -93,6 +93,16 @@ int GetHeldItemFlingPower(BATTLECONTEXT *ctx, int battlerId);
 BOOL BattlerCanSwitch(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL TryEatOpponentBerry(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL TryFling(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+void ov12_022565E0(BattleSystem *bsys, BATTLECONTEXT *ctx);
+void ov12_02256694(BattleSystem *bsys, BATTLECONTEXT *ctx);
+int ov12_02256748(BATTLECONTEXT *ctx, int battlerId, int battlerType, BOOL encounter);
+BOOL Battler_CanSelectAction(BATTLECONTEXT *ctx, int battlerId);
+void ov12_022567D4(BattleSystem *bsys, BATTLECONTEXT *ctx, Pokemon *mon);
+u8 ov12_0225682C(BATTLECONTEXT *ctx, int battlerId);
+BOOL BattlerCheckSubstitute(BATTLECONTEXT *ctx, int battlerId);
+BOOL ov12_02256854(BattleSystem *bsys, BATTLECONTEXT *ctx);
+BOOL ov12_022568B0(BattleSystem *bsys, Pokemon *mon);
+BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script);
 
 //The following functions are static, but the rest of the file is still being worked on
 BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int index);
@@ -107,7 +117,6 @@ BOOL CheckLegalMeFirstMove(BATTLECONTEXT *ctx, u16 move);
 BOOL CheckLegalMimicMove(u16 move);
 BOOL IsMoveEncored(BATTLECONTEXT *ctx, u16 move);
 void CheckIgnorePressure(BATTLECONTEXT *ctx, int battlerIdA, int battlerIdB);
-u8 ov12_0225682C(BATTLECONTEXT *ctx, int a1);
 int ov12_02253DA0(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL CheckItemEffectOnUTurn(BattleSystem *bsys, BATTLECONTEXT *ctx, int *work);
 u32 BattleSystem_GetBattleType(BattleSystem *bsys);
@@ -122,7 +131,6 @@ int ov12_02251D28(BattleSystem *bsys, BATTLECONTEXT *ctx, int moveNo, int moveTy
 void ov12_02252D14(BattleSystem *bsys, BATTLECONTEXT *ctx);
 int ov12_022584AC(BATTLECONTEXT *ctx, int battlerId, int id);
 int ov12_02258348(BATTLECONTEXT *ctx, int a1, int a2);
-int BattlerCheckSubstitute(BATTLECONTEXT *ctx, int battlerId);
 int BattleSystem_GetMoveType(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
 void ov12_022585A8(BATTLECONTEXT *ctx, u8 battlerId);
 void ov12_02258584(BATTLECONTEXT *ctx, u8 battlerId);
@@ -131,5 +139,5 @@ int ov12_02258440(BATTLECONTEXT *ctx, int moveNo);
 u32 ov12_022583B4(BATTLECONTEXT *ctx, int battlerIdA, u8 effectiveness, int damage, u32 movePower, u32 *moveStatusFlag);
 int ov12_022585B8(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int battlerId2);
 BOOL ov12_0225865C(BATTLECONTEXT *ctx, int moveNo);
-BOOL ov12_02256914(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 *scriptOut);
+
 #endif

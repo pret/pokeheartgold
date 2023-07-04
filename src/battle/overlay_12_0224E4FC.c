@@ -8,6 +8,7 @@
 #include "party.h"
 #include "pokemon.h"
 #include "unk_02037C94.h"
+#include "unk_0208805C.h"
 #include "overlay_12_0224E4FC.h"
 #include "constants/abilities.h"
 #include "constants/battle.h"
@@ -111,7 +112,7 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
     PokedexData_Delete(dexData);
     
     GetMonData(mon, MON_DATA_NICKNAME, ctx->battleMons[battlerId].nickname);
-    GetMonData(mon, MON_DATA_OT_NAME, ctx->battleMons[battlerId].unk54);
+    GetMonData(mon, MON_DATA_OT_NAME, ctx->battleMons[battlerId].otName);
 
     ctx->battleMons[battlerId].unk78 = 0;
     ctx->battleMons[battlerId].msgFlag = 0;
@@ -362,7 +363,7 @@ int GetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
             for (i = 0; i < 11; i++) {
                 //BUG: this array doesn't have 11 elements, the reason for the bug is a typo in the original code
                 //     where it used the length of a Pokemon's nickname rather than a trainer's nickname
-                buffer[i] = mon->unk54[i]; 
+                buffer[i] = mon->otName[i]; 
             }
         }
         break;
@@ -606,7 +607,7 @@ void SetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
         for (int i = 0; i < 11; i++) {
             //BUG: this array doesn't have 11 elements, the reason for the bug is a typo in the original code
             //     where it used the length of a Pokemon's nickname rather than a trainer's nickname
-            mon->unk54[i] = data16[i]; 
+            mon->otName[i] = data16[i]; 
             //Side note but since this will overwrite the space in memory where the pokemon's exp is stored, there could be some funny things to come of this
         }
         break;
@@ -1804,7 +1805,7 @@ void InitSwitchWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
         for (i = 0; i < maxBattlers; i++) {
             if ((ctx->battleMons[i].moveEffectFlags & MOVE_EFFECT_LOCK_ON) && ctx->battleMons[i].unk88.battlerIdLockOn == battlerId) {
                 ctx->battleMons[i].moveEffectFlags &= ~MOVE_EFFECT_LOCK_ON;
-                ctx->battleMons[i].moveEffectFlags |= STATUS2_4;
+                ctx->battleMons[i].moveEffectFlags |= MOVE_EFFECT_LOCK_ON_SET;
             }
         }
     }
@@ -3818,7 +3819,7 @@ int TryAbilityOnEntry(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             }
             break;
         case 11: //Air Lock and Cloud Nine
-            if (ov12_02256914(bsys, ctx, &script) == TRUE) {
+            if (Battler_CheckWeatherFormChange(bsys, ctx, &script) == TRUE) {
                 flag = TRUE;
             } else {
                 ctx->sendOutState++;
@@ -4192,7 +4193,7 @@ BOOL TrySyncronizeStatus(BattleSystem *bsys, BATTLECONTEXT *ctx, ControllerComma
         }
     }
     
-    ret = ov12_02256914(bsys, ctx, &script);
+    ret = Battler_CheckWeatherFormChange(bsys, ctx, &script);
     if (ret == TRUE) {
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
         ctx->commandNext = command;
@@ -5540,4 +5541,288 @@ BOOL TryFling(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     }
     
     return TRUE;
+}
+
+void ov12_022565E0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    if (GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker) == HOLD_EFFECT_BOOST_REPEATED) {
+        if (!(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_RAGE) &&
+            !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_UPROAR) &&
+            !(ctx->linkStatus & (1 << 9)) &&
+            !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_LOCKED_INTO_MOVE)) {
+            if (ctx->moveNoMetronome[ctx->battlerIdAttacker] == ctx->moveNoTemp) {
+                if (ctx->battleMons[ctx->battlerIdAttacker].unk88.metronomeTurns < 10) {
+                    ctx->battleMons[ctx->battlerIdAttacker].unk88.metronomeTurns++;
+                }
+            } else {
+                ctx->battleMons[ctx->battlerIdAttacker].unk88.metronomeTurns = 0;
+                ctx->moveNoMetronome[ctx->battlerIdAttacker] = ctx->moveNoTemp;
+            }
+        }
+    } else {
+        ctx->battleMons[ctx->battlerIdAttacker].unk88.metronomeTurns = 0;
+    }
+}
+
+void ov12_02256694(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    if (GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker) == HOLD_EFFECT_BOOST_REPEATED) {
+        if ((ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
+            ctx->moveNoMetronome[ctx->battlerIdAttacker] == ctx->moveNoTemp &&
+            ctx->battleMons[ctx->battlerIdAttacker].unk88.metronomeTurns &&
+            !(ctx->selfTurnData[ctx->battlerIdAttacker].rolloutCount) &&
+            !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_RAGE) &&
+            !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_UPROAR) &&
+            !(ctx->linkStatus & (1 << 9)) &&
+            !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_LOCKED_INTO_MOVE)) {
+            ctx->battleMons[ctx->battlerIdAttacker].unk88.metronomeTurns--;
+        }
+    } else {
+        ctx->battleMons[ctx->battlerIdAttacker].unk88.metronomeTurns = 0;
+    }
+}
+
+//Related to send out Pokemon crys..?
+int ov12_02256748(BATTLECONTEXT *ctx, int battlerId, int battlerType, BOOL encounter) {
+    int ret;
+    int color;
+    BOOL half;
+    
+    if (encounter == TRUE && (battlerType == 2 || battlerType == 3)) {
+        half = TRUE;
+    } else {
+        half = FALSE;
+    }
+
+    ret = 0;
+    
+    if (half == TRUE) {
+        ret = 0;
+    }
+    
+    color = sub_020880B0(ctx->battleMons[battlerId].hp, ctx->battleMons[battlerId].maxHp, 48);
+    
+    if ((ctx->battleMons[battlerId].status & STATUS_ALL) || (color != 4 && color != 3)) {
+        ret = 11;
+    }
+
+    return ret;
+}
+
+BOOL Battler_CanSelectAction(BATTLECONTEXT *ctx, int battlerId) {
+    BOOL ret = TRUE;
+    
+    if ((ctx->battleMons[battlerId].status2 & STATUS2_RECHARGE) ||
+        (ctx->battleMons[battlerId].status2 & STATUS2_RAGE) ||
+        (ctx->battleMons[battlerId].status2 & STATUS2_UPROAR) ||
+        (ctx->battleMons[battlerId].status2 & STATUS2_LOCKED_INTO_MOVE)) {
+        ret = FALSE;
+    }
+    
+    return ret;
+}
+
+void ov12_022567D4(BattleSystem *bsys, BATTLECONTEXT *ctx, Pokemon *mon) {
+    PlayerProfile *profile = BattleSystem_GetPlayerProfile(bsys, BATTLER_PLAYER);
+    int a3 = ov12_0223AB60(bsys);
+    int terrain = BattleSystem_GetTerrainId(bsys);
+    int ballId;
+    
+    if (BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_9) {
+        ballId = BallToItemId(BattleSystem_GetMonBall(bsys, mon));
+    } else {
+        ballId = ctx->itemTemp;
+    }
+    
+    sub_020720FC(mon, profile, ballId, a3, terrain, HEAP_ID_BATTLE);
+}
+
+u8 ov12_0225682C(BATTLECONTEXT *ctx, int battlerId) {
+    return ctx->unk_2300[battlerId][0];
+}
+
+BOOL BattlerCheckSubstitute(BATTLECONTEXT *ctx, int battlerId) {
+    BOOL ret = FALSE;
+    
+    if (ctx->selfTurnData[battlerId].unk14 & (1 << 3)) {
+        ret = TRUE;
+    }
+    
+    return ret;
+}
+
+BOOL ov12_02256854(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    PlayerProfile *profile = BattleSystem_GetPlayerProfile(bsys, BATTLER_PLAYER);
+    u32 trainerId = PlayerProfile_GetTrainerID(profile);
+    u32 gender = PlayerProfile_GetTrainerGender(profile);
+    const u16 *name = PlayerProfile_GetNamePtr(profile);
+    
+    if (trainerId == ctx->battleMons[ctx->battlerIdAttacker].otid &&
+        gender == ctx->battleMons[ctx->battlerIdAttacker].metGender &&
+        !StringNotEqualN(name, &ctx->battleMons[ctx->battlerIdAttacker].otName[0], 7)) {
+        return TRUE;
+    }
+    
+    return FALSE;
+}
+
+BOOL ov12_022568B0(BattleSystem *bsys, Pokemon *mon) {
+    PlayerProfile *profile = BattleSystem_GetPlayerProfile(bsys, BATTLER_PLAYER);
+    u32 trainerId = PlayerProfile_GetTrainerID(profile);
+    u32 gender = PlayerProfile_GetTrainerGender(profile);
+    const u16 *name = PlayerProfile_GetNamePtr(profile);
+    const u16 otName[8];
+    
+    GetMonData(mon, MON_DATA_OT_NAME, &otName[0]);
+    
+    if (trainerId == GetMonData(mon, MON_DATA_OTID, NULL) &&
+        gender == GetMonData(mon, MON_DATA_MET_GENDER, NULL) &&
+        !StringNotEqualN(name, &otName[0], 7)) {
+        return TRUE;
+    }
+    
+    return FALSE;
+}
+
+BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script) {
+    int i;
+    int form;
+    BOOL ret = FALSE;
+    
+    for (i = 0; i < BattleSystem_GetMaxBattlers(bsys); i++) {
+        ctx->battlerIdTemp = ctx->turnOrder[i];
+        if (ctx->battleMons[ctx->battlerIdTemp].species == SPECIES_CASTFORM && ctx->battleMons[ctx->battlerIdTemp].hp && GetBattlerAbility(ctx, ctx->battlerIdTemp) == ABILITY_FORECAST) {
+            if (!CheckAbilityActive(bsys, ctx,CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) && !CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)) {
+                if (!(ctx->fieldCondition & FIELD_CONDITION_WEATHER_CASTFORM) && 
+                    ctx->battleMons[ctx->battlerIdTemp].type1 != TYPE_NORMAL &&
+                    ctx->battleMons[ctx->battlerIdTemp].type2 != TYPE_NORMAL) {
+                    ctx->battleMons[ctx->battlerIdTemp].type1 = TYPE_NORMAL;
+                    ctx->battleMons[ctx->battlerIdTemp].type2 = TYPE_NORMAL;
+                    ctx->battleMons[ctx->battlerIdTemp].form = (u8) CASTFORM_NORMAL;
+                    *script = 262;
+                    ret = TRUE;
+                    break;
+                } else if ((ctx->fieldCondition & FIELD_CONDITION_SUN_ALL) &&
+                            ctx->battleMons[ctx->battlerIdTemp].type1 != TYPE_FIRE &&
+                            ctx->battleMons[ctx->battlerIdTemp].type2 != TYPE_FIRE) {
+                    ctx->battleMons[ctx->battlerIdTemp].type1 = TYPE_FIRE;
+                    ctx->battleMons[ctx->battlerIdTemp].type2 = TYPE_FIRE;
+                    ctx->battleMons[ctx->battlerIdTemp].form = (u8) CASTFORM_SUNNY;
+                    *script = 262;
+                    ret = TRUE;
+                    break;
+                } else if ((ctx->fieldCondition & FIELD_CONDITION_RAIN_ALL) &&
+                                ctx->battleMons[ctx->battlerIdTemp].type1 != TYPE_WATER &&
+                                ctx->battleMons[ctx->battlerIdTemp].type2 != TYPE_WATER) {
+                        ctx->battleMons[ctx->battlerIdTemp].type1 = TYPE_WATER;
+                        ctx->battleMons[ctx->battlerIdTemp].type2 = TYPE_WATER;
+                        ctx->battleMons[ctx->battlerIdTemp].form = (u8) CASTFORM_RAINY;
+                        *script = 262;
+                        ret = TRUE;
+                        break;
+                } else if ((ctx->fieldCondition & FIELD_CONDITION_HAIL_ALL) &&
+                                ctx->battleMons[ctx->battlerIdTemp].type1 != TYPE_ICE &&
+                                ctx->battleMons[ctx->battlerIdTemp].type2 != TYPE_ICE) {
+                        ctx->battleMons[ctx->battlerIdTemp].type1 = TYPE_ICE;
+                        ctx->battleMons[ctx->battlerIdTemp].type2 = TYPE_ICE;
+                        ctx->battleMons[ctx->battlerIdTemp].form = (u8) CASTFORM_SNOWY;
+                        *script = 262;
+                        ret = TRUE;
+                        break;
+                }
+            } else if (ctx->battleMons[ctx->battlerIdTemp].type1 != TYPE_NORMAL &&
+                       ctx->battleMons[ctx->battlerIdTemp].type2 != TYPE_NORMAL) {
+                       ctx->battleMons[ctx->battlerIdTemp].type1 = TYPE_NORMAL;
+                       ctx->battleMons[ctx->battlerIdTemp].type2 = TYPE_NORMAL;
+                       ctx->battleMons[ctx->battlerIdTemp].form = (u8) CASTFORM_NORMAL;
+                        *script = 262;
+                        ret = TRUE;
+                        break;
+            }
+        }
+        if (ctx->battleMons[ctx->battlerIdTemp].species == SPECIES_CHERRIM && ctx->battleMons[ctx->battlerIdTemp].hp) {
+            if (!CheckAbilityActive(bsys, ctx,CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) && !CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)) {
+                if (!(ctx->fieldCondition & FIELD_CONDITION_WEATHER_CASTFORM) && ctx->battleMons[ctx->battlerIdTemp].form == (u8) CHERRIM_SUNNY) {
+                    ctx->battleMons[ctx->battlerIdTemp].form = (u8) CHERRIM_CLOUDY;
+                    *script = 262;
+                    ret = TRUE;
+                    break;
+                } else if ((ctx->fieldCondition & FIELD_CONDITION_SUN_ALL) && ctx->battleMons[ctx->battlerIdTemp].form == (u8) CHERRIM_CLOUDY) {
+                    ctx->battleMons[ctx->battlerIdTemp].form = (u8) CHERRIM_SUNNY;
+                    *script = 262;
+                    ret = TRUE;
+                    break;
+                } else if ((ctx->fieldCondition & FIELD_CONDITION_RAIN_ALL) && ctx->battleMons[ctx->battlerIdTemp].form == (u8) CHERRIM_SUNNY) {
+                    ctx->battleMons[ctx->battlerIdTemp].form = (u8) CHERRIM_CLOUDY;
+                    *script = 262;
+                    ret = TRUE;
+                    break;
+                } else if ((ctx->fieldCondition & FIELD_CONDITION_HAIL_ALL) && ctx->battleMons[ctx->battlerIdTemp].form == (u8) CHERRIM_SUNNY) {
+                    ctx->battleMons[ctx->battlerIdTemp].form = (u8) CHERRIM_CLOUDY;
+                    *script = 262;
+                    ret = TRUE;
+                    break;
+                }
+            } else if (ctx->battleMons[ctx->battlerIdTemp].form == (u8) CHERRIM_SUNNY) {
+                ctx->battleMons[ctx->battlerIdTemp].form = (u8) CHERRIM_CLOUDY;
+                *script = 262;
+                ret = TRUE;
+                break;
+            }
+        }
+        if (ctx->battleMons[ctx->battlerIdTemp].species == SPECIES_ARCEUS &&
+            ctx->battleMons[ctx->battlerIdTemp].hp &&
+            GetBattlerAbility(ctx, ctx->battlerIdTemp) == ABILITY_MULTITYPE) {
+            form = GetArceusTypeByHeldItemEffect(GetItemAttr(ctx->battleMons[ctx->battlerIdTemp].item, 1, HEAP_ID_BATTLE));
+            if (ctx->battleMons[ctx->battlerIdTemp].form != form) {
+                ctx->battleMons[ctx->battlerIdTemp].form = form;
+                *script = 262;
+                ret = TRUE;
+                break;
+            }
+        }
+        if (ctx->battleMons[ctx->battlerIdTemp].species == SPECIES_GIRATINA &&
+            ctx->battleMons[ctx->battlerIdTemp].hp &&
+            ctx->battleMons[ctx->battlerIdTemp].form == GIRATINA_ORIGIN) {
+            if ((ctx->battleMons[ctx->battlerIdTemp].status2 & STATUS2_TRANSFORMED) ||
+                (!(BattleSystem_GetBattleFlags(bsys) & 0x80) && ctx->battleMons[ctx->battlerIdTemp].item != ITEM_GRISEOUS_ORB)) {
+                if (ctx->battleMons[ctx->battlerIdTemp].status2 & STATUS2_TRANSFORMED) {
+                    Pokemon *mon2;
+                    int battlerIdTarget;
+                    int dat;
+                    
+                    mon2 = AllocMonZeroed(HEAP_ID_BATTLE);
+                    
+                    if (BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_DOUBLES) {
+                        battlerIdTarget = ctx->unk_21A8[ctx->battlerIdTemp][1];
+                    } else {
+                        battlerIdTarget = ctx->battlerIdTemp ^ 1;
+                    }
+                    CopyPokemonToPokemon(BattleSystem_GetPartyMon(bsys, battlerIdTarget, ctx->selectedMonIndex[battlerIdTarget]), mon2);
+                    dat = 0;
+                    SetMonData(mon2, MON_DATA_HELD_ITEM, &dat);
+                    dat = (u8) GIRATINA_ALTERED;
+                    SetMonData(mon2, MON_DATA_FORM, &dat);
+                    Mon_UpdateGiratinaForm(mon2);
+                    ctx->battleMons[ctx->battlerIdTemp].atk = GetMonData(mon2, MON_DATA_ATK, NULL);
+                    ctx->battleMons[ctx->battlerIdTemp].def = GetMonData(mon2, MON_DATA_DEF, NULL);
+                    ctx->battleMons[ctx->battlerIdTemp].speed = GetMonData(mon2, MON_DATA_SPEED, NULL);
+                    ctx->battleMons[ctx->battlerIdTemp].spAtk = GetMonData(mon2, MON_DATA_SPATK, NULL);
+                    ctx->battleMons[ctx->battlerIdTemp].spDef = GetMonData(mon2, MON_DATA_SPDEF, NULL);
+                    ctx->battleMons[ctx->battlerIdTemp].ability = GetMonData(mon2, MON_DATA_ABILITY, NULL);
+                    ctx->battleMons[ctx->battlerIdTemp].form = GIRATINA_ALTERED;
+                    ctx->linkStatus2 |= (1 << 26);
+                    BattleController_EmitBattleMonToPartyMonCopy(bsys, ctx, ctx->battlerIdTemp);
+                    FreeToHeap(mon2);
+                    *script = 262;
+                    ret = TRUE;
+                    break;
+                } else {
+                    *script = 296;
+                    ret = TRUE;
+                    break;
+                }
+            }
+        }
+    }
+    
+    return ret;
 }
