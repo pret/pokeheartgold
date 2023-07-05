@@ -6296,3 +6296,56 @@ int CalcMoveDamage(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 moveNo, u32 sideC
     
     return dmg + 2;
 }
+
+int ApplyDamageRange(BattleSystem *bsys, BATTLECONTEXT *ctx, int damage) {
+    if (damage) {
+        damage *= (100 - (BattleSystem_Random(bsys) % 16));
+        damage /= 100;
+        if (!damage) {
+            damage = 1;
+        }
+    }
+    return damage;
+}
+
+extern u8 sCritChance[5];
+
+u32 TryCriticalHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int critCnt, u32 sideCondition) {
+    u16 critUp;
+    int item;
+    u16 species;
+    u32 status2;
+    u32 moveEffect;
+    int ret = 1;
+    int ability;
+    
+    item = GetItemVar(ctx, GetBattlerHeldItem(ctx, battlerIdAttacker), ITEM_VAR_HOLD_EFFECT);
+    species = ctx->battleMons[battlerIdAttacker].species;
+    status2 = ctx->battleMons[battlerIdAttacker].status2;
+    moveEffect = ctx->battleMons[battlerIdTarget].moveEffectFlags;
+    ability = ctx->battleMons[battlerIdAttacker].ability;
+    
+    critUp = (((status2 & STATUS2_FOCUS_ENERGY) != 0)*2) + 
+             (item == HOLD_EFFECT_CRITRATE_UP) +
+             critCnt +
+            (ability == ABILITY_SUPER_LUCK) +
+             2*((item == HOLD_EFFECT_CHANSEY_CRITRATE_UP) && (species == SPECIES_CHANSEY)) +
+             2*((item == HOLD_EFFECT_FARFETCHD_CRITRATE_UP) && (species == SPECIES_FARFETCHD));
+             
+    if (critUp > 4) {
+        critUp = 4;
+    }
+    
+    if ((BattleSystem_Random(bsys) % sCritChance[critUp]) == 0) {
+        if (!CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_BATTLE_ARMOR) && !CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_SHELL_ARMOR) &&
+            !(sideCondition & SIDE_CONDITION_12) && !(moveEffect & MOVE_EFFECT_LUCKY_CHANT)) {
+            ret = 2;
+        }
+    }
+    
+    if ((ret == 2) && GetBattlerAbility(ctx, battlerIdAttacker) == ABILITY_SNIPER) {
+        ret = 3;
+    }
+    
+    return ret;
+}

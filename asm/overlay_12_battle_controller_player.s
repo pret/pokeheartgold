@@ -5437,7 +5437,7 @@ _0224B160:
 	str r0, [r4, r2]
 	ldr r2, [r4, r2]
 	add r0, r5, #0
-	bl ov12_02257C30
+	bl ApplyDamageRange
 	ldr r1, _0224B1F4 ; =0x0000215C
 	add sp, #0x30
 	str r0, [r4, r1]
@@ -6486,7 +6486,7 @@ _0224B982:
 	ldr r0, [sp, #0x18]
 	ldr r2, [r4, r2]
 	add r1, r4, #0
-	bl ov12_02257C30
+	bl ApplyDamageRange
 	ldr r1, _0224BBE4 ; =0x0000215C
 	str r0, [r4, r1]
 	add r0, r1, #0

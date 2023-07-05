@@ -741,7 +741,7 @@ BOOL BtlCmd_DamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     DamageCalcDefault(bsys, ctx);
-    ctx->damage = ov12_02257C30(bsys, ctx, ctx->damage);
+    ctx->damage = ApplyDamageRange(bsys, ctx, ctx->damage);
     ctx->damage *= -1;
 
     return FALSE;
@@ -1171,7 +1171,7 @@ BOOL BtlCmd_CritCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if ((BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_TUTORIAL) || (BattleSystem_GetBattleFlags(bsys) & 1)) {
         ctx->criticalMultiplier = 1;
     } else {
-        ctx->criticalMultiplier = ov12_02257C5C(bsys, ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget, ctx->criticalCnt, ov12_022581D4(bsys, ctx, 0, ctx->battlerIdTarget));
+        ctx->criticalMultiplier = TryCriticalHit(bsys, ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget, ctx->criticalCnt, ov12_022581D4(bsys, ctx, 0, ctx->battlerIdTarget));
     }
 
     return FALSE;
@@ -3678,7 +3678,7 @@ BOOL BtlCmd_TryFutureSight(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ctx->fieldConditionData.futureSightMoveNo[ctx->battlerIdTarget] = ctx->moveNoCur;
         ctx->fieldConditionData.battlerIdFutureSight[ctx->battlerIdTarget] = ctx->battlerIdAttacker;
         int damage = CalcMoveDamage(bsys, ctx, ctx->moveNoCur, ctx->fieldSideConditionFlags[side], ctx->fieldCondition, 0, 0, ctx->battlerIdAttacker, ctx->battlerIdTarget, 1) * -1;
-        ctx->fieldConditionData.futureSightDamage[ctx->battlerIdTarget] = ov12_02257C30(bsys, ctx, damage);
+        ctx->fieldConditionData.futureSightDamage[ctx->battlerIdTarget] = ApplyDamageRange(bsys, ctx, damage);
         if (ctx->turnData[ctx->battlerIdAttacker].helpingHandFlag) {
             ctx->fieldConditionData.futureSightDamage[ctx->battlerIdTarget] = ctx->fieldConditionData.futureSightDamage[ctx->battlerIdTarget]*15/10;
         }
@@ -3765,7 +3765,7 @@ BOOL BtlCmd_BeatUpDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (ctx->turnData[ctx->battlerIdAttacker].helpingHandFlag) {
         ctx->damage = ctx->damage * 15/10;
     }
-    ctx->damage = ov12_02257C30(bsys, ctx, ctx->damage);
+    ctx->damage = ApplyDamageRange(bsys, ctx, ctx->damage);
     ctx->damage *= -1;
 
     ctx->buffMsg.id = 0x1e1;

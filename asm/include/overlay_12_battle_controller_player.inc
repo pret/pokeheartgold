@@ -116,7 +116,7 @@
 .public ov12_02256854
 .public ov12_02256F78
 .public CalcMoveDamage
-.public ov12_02257C30
+.public ApplyDamageRange
 .public ov12_02257E98
 .public ov12_02257EC0
 .public CheckIgnorePressure

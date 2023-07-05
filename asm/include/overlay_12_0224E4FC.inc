@@ -158,8 +158,8 @@
 .public ov12_02256F28
 .public ov12_02256F78
 .public CalcMoveDamage
-.public ov12_02257C30
-.public ov12_02257C5C
+.public ApplyDamageRange
+.public TryCriticalHit
 .public CheckLegalMimicMove
 .public CheckLegalMetronomeMove
 .public IsMoveEncored

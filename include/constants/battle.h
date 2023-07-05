@@ -157,6 +157,7 @@ enum Terrain {
 #define SIDE_CONDITION_STEALTH_ROCKS        (1 << 7)
 #define SIDE_CONDITION_TAILWIND             (3 << 8)
 #define SIDE_CONDITION_TOXIC_SPIKES         (1 << 10)
+#define SIDE_CONDITION_12                   (7 << 12)
 
 //Status
 #define STATUS_NONE                         0
