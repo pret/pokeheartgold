@@ -7,7 +7,7 @@ const u16 ov122_021E92A0[] = {
     0x00A0, 0x00A1, 0x00C0, 0x00C1, 0x00E0, 0x00E1, 0x0100, 0x0101,
 };
 
-const struct GFBgModeSet sVoltorbFlipBgModeSet = {
+const struct GraphicsModes sVoltorbFlipBgModeSet = {
     GX_DISPMODE_GRAPHICS,
     GX_BGMODE_0,
     GX_BGMODE_0,

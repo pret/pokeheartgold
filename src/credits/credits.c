@@ -395,13 +395,13 @@ static void SetGXBanks(void) {
 }
 
 static void InitBgLayers(CreditsAppWork *work) {
-    GFBgModeSet modeSet;
-    BGTEMPLATE tmpl2;
-    BGTEMPLATE tmpl3;
-    BGTEMPLATE tmpl1;
-    BGTEMPLATE tmpl5;
-    BGTEMPLATE tmpl6;
-    BGTEMPLATE tmpl7;
+    GraphicsModes modeSet;
+    BgTemplate tmpl2;
+    BgTemplate tmpl3;
+    BgTemplate tmpl1;
+    BgTemplate tmpl5;
+    BgTemplate tmpl6;
+    BgTemplate tmpl7;
 
     work->bgConfig = BgConfig_Alloc(HEAP_ID_CREDITS);
     G2_BlendNone();
@@ -838,7 +838,7 @@ static void FlipScreensCB(int a0, ScreenFlipWork *a1, int a2) {
 
 static void DisplayWindow(CreditsAppWork *work) {
     AddWindow(work->bgConfig, &work->pageWork.window, &ov76_021E6E98);
-    BG_FillCharDataRange(work->bgConfig, 5, 0, 1, 0);
+    BG_FillCharDataRange(work->bgConfig, GF_BG_LYR_SUB_1, 0, 1, 0);
     LoadFontPal0(GF_BG_LYR_SUB_0, 0x1e0, HEAP_ID_CREDITS);
     GX_EngineBToggleLayers(GF_BG_LYR_MAIN_2, GX_LAYER_TOGGLE_ON);
 }

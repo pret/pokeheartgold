@@ -28,14 +28,14 @@ static const GF_GXBanksConfig sDataReadErrorBanksConfig = {
     .texpltt = GX_VRAM_TEXPLTT_NONE,
 };
 
-static const struct GFBgModeSet sDataReadErrorBgModeSet = {
+static const struct GraphicsModes sDataReadErrorBgModeSet = {
     .dispMode = GX_DISPMODE_GRAPHICS,
-    .bgModeMain = GX_BGMODE_0,
-    .bgModeSub = GX_BGMODE_0,
-    ._2d3dSwitch = GX_BG0_AS_2D,
+    .bgMode = GX_BGMODE_0,
+    .subMode = GX_BGMODE_0,
+    ._2d3dMode = GX_BG0_AS_2D,
 };
 
-static const BGTEMPLATE sDataReadErrorBgTemplate = {
+static const BgTemplate sDataReadErrorBgTemplate = {
     .x = 0,
     .y = 0,
     .bufferSize = 0x800,

@@ -56,11 +56,11 @@ static const WindowTemplate ov76_021E6E98 = {
 
 static const UnkStruct_020215A0 ov76_021E6EA0 = { 0x28, 0, 0, HEAP_ID_CREDITS };
 
-static const GFBgModeSet ov76_021E6EB0 = {
+static const GraphicsModes ov76_021E6EB0 = {
     .dispMode    = GX_DISPMODE_GRAPHICS,
-    .bgModeMain  = GX_BGMODE_0,
-    .bgModeSub   = GX_BGMODE_0,
-    ._2d3dSwitch = GX_BG0_AS_2D,
+    .bgMode      = GX_BGMODE_0,
+    .subMode     = GX_BGMODE_0,
+    ._2d3dMode   = GX_BG0_AS_2D,
 };
 
 static const int sSceneTransitionTimings[5] = { 890, 1780, 2615, 3030, 4295 };
@@ -75,7 +75,7 @@ static const ScrnFileIds ov76_021E6EE8 = {
     { 0x07, 0x11, 0x09, 0x0F, 0x0D, 0x0B },
 };
 
-static const BGTEMPLATE ov76_021E6F50 = {
+static const BgTemplate ov76_021E6F50 = {
     .x          = 0,
     .y          = 0,
     .bufferSize = 0x0800,
@@ -91,7 +91,7 @@ static const BGTEMPLATE ov76_021E6F50 = {
     .mosaic     = FALSE,
 };
 
-static const BGTEMPLATE ov76_021E6F6C = {
+static const BgTemplate ov76_021E6F6C = {
     .x          = 0,
     .y          = 0,
     .bufferSize = 0x0800,
@@ -107,7 +107,7 @@ static const BGTEMPLATE ov76_021E6F6C = {
     .mosaic     = FALSE,
 };
 
-static const BGTEMPLATE ov76_021E6F88 = {
+static const BgTemplate ov76_021E6F88 = {
     .x          = 0,
     .y          = 0,
     .bufferSize = 0x0800,
@@ -123,7 +123,7 @@ static const BGTEMPLATE ov76_021E6F88 = {
     .mosaic     = FALSE,
 };
 
-static const BGTEMPLATE ov76_021E6FA4 = {
+static const BgTemplate ov76_021E6FA4 = {
     .x          = 0,
     .y          = 0,
     .bufferSize = 0x0800,
@@ -139,7 +139,7 @@ static const BGTEMPLATE ov76_021E6FA4 = {
     .mosaic     = FALSE,
 };
 
-static const BGTEMPLATE ov76_021E6F18 = {
+static const BgTemplate ov76_021E6F18 = {
     .x          = 0,
     .y          = 0,
     .bufferSize = 0x0800,
@@ -155,7 +155,7 @@ static const BGTEMPLATE ov76_021E6F18 = {
     .mosaic     = FALSE,
 };
 
-static const BGTEMPLATE ov76_021E6F34 = {
+static const BgTemplate ov76_021E6F34 = {
     .x          = 0,
     .y          = 0,
     .bufferSize = 0x0800,

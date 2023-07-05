@@ -22,7 +22,7 @@ typedef struct Ov122_021E6C2C {
 } Ov122_021E6C2C;
 
 typedef struct BgTemplates {
-    BGTEMPLATE unk0[6];
+    BgTemplate unk0[6];
 } BgTemplates;
 
 const u8 sMainMenuMsgNos[];

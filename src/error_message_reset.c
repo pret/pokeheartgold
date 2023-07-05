@@ -31,14 +31,14 @@ static const GF_GXBanksConfig sErrorMessageBanksConfig = {
     .texpltt = GX_VRAM_TEXPLTT_NONE,
 };
 
-static const struct GFBgModeSet sErrorMessageBgModeSet = {
+static const struct GraphicsModes sErrorMessageBgModeSet = {
     .dispMode = GX_DISPMODE_GRAPHICS,
-    .bgModeMain = GX_BGMODE_0,
-    .bgModeSub = GX_BGMODE_0,
-    ._2d3dSwitch = GX_BG0_AS_2D,
+    .bgMode = GX_BGMODE_0,
+    .subMode = GX_BGMODE_0,
+    ._2d3dMode = GX_BG0_AS_2D,
 };
 
-static const BGTEMPLATE sErrorMessageBgTemplate = {
+static const BgTemplate sErrorMessageBgTemplate = {
     .x = 0,
     .y = 0,
     .bufferSize = 0x800,

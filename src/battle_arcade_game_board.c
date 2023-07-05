@@ -658,25 +658,25 @@ static void BattleArcade_SetVramBanks() {
     GX_SetBanks(&config);
 }
 
-extern GFBgModeSet ov84_0223F924;
-extern BGTEMPLATE ov84_0223F964;
-extern BGTEMPLATE ov84_0223F980;
-extern BGTEMPLATE ov84_0223F948;
+extern GraphicsModes ov84_0223F924;
+extern BgTemplate ov84_0223F964;
+extern BgTemplate ov84_0223F980;
+extern BgTemplate ov84_0223F948;
 
 static void ov84_0223E9E4(BgConfig *config) {
-    GFBgModeSet bgModeSet = ov84_0223F924;
+    GraphicsModes bgModeSet = ov84_0223F924;
     SetBothScreensModesAndDisable(&bgModeSet);
 
-    BGTEMPLATE template = ov84_0223F964;
+    BgTemplate template = ov84_0223F964;
     InitBgFromTemplate(config, 1, &template, 0);
     BG_ClearCharDataRange(1, 32, 0, HEAP_ID_GAME_BOARD);
     BgClearTilemapBufferAndCommit(config, 1);
 
-    BGTEMPLATE template2 = ov84_0223F980;
+    BgTemplate template2 = ov84_0223F980;
     InitBgFromTemplate(config, 3, &template2, 0);
     BgClearTilemapBufferAndCommit(config, 3);
 
-    BGTEMPLATE template3 = ov84_0223F948;
+    BgTemplate template3 = ov84_0223F948;
     InitBgFromTemplate(config, 4, &template3, 0);
     BgClearTilemapBufferAndCommit(config, 4);
 
