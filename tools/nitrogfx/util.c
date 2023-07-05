@@ -111,6 +111,19 @@ unsigned char *ReadWholeFileZeroPadded(char *path, int *size, int padAmount)
 	return buffer;
 }
 
+void WriteWholeStringToFile(char *path, char *string)
+{
+	FILE *fp = fopen(path, "wb");
+
+	if (fp == NULL)
+		FATAL_ERROR("Failed to open \"%s\" for writing.\n", path);
+
+	if (fputs(string, fp) == EOF)
+		FATAL_ERROR("Failed to write to \"%s\".\n", path);
+
+	fclose(fp);
+}
+
 void WriteWholeFile(char *path, void *buffer, int bufferSize)
 {
 	FILE *fp = fopen(path, "wb");

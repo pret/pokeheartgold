@@ -768,6 +768,19 @@ void HandleJsonToNtrCellCommand(char *inputPath, char *outputPath, int argc UNUS
     FreeNCERCell(options);
 }
 
+void HandleNtrCellToJsonCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
+{
+    struct JsonToCellOptions *options = malloc(sizeof(struct JsonToCellOptions));
+
+    ReadNtrCell(inputPath, options);
+
+    char *json = GetNCERJson(options);
+
+    WriteWholeStringToFile(outputPath, json);
+
+    FreeNCERCell(options);
+}
+
 void HandleJsonToNtrScreenCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
 {
     struct JsonToScreenOptions *options;
@@ -815,6 +828,19 @@ void HandleJsonToNtrAnimationCommand(char *inputPath, char *outputPath, int argc
     options->multiCell = false;
 
     WriteNtrAnimation(outputPath, options);
+
+    FreeNANRAnimation(options);
+}
+
+void HandleNtrAnimationToJsonCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
+{
+    struct JsonToAnimationOptions *options = malloc(sizeof(struct JsonToAnimationOptions));
+
+    ReadNtrAnimation(inputPath, options);
+
+    char *json = GetNANRJson(options);
+
+    WriteWholeStringToFile(outputPath, json);
 
     FreeNANRAnimation(options);
 }
@@ -1094,9 +1120,12 @@ int main(int argc, char **argv)
         { "fwjpnfont", "png", HandleFullwidthJapaneseFontToPngCommand },
         { "png", "fwjpnfont", HandlePngToFullwidthJapaneseFontCommand },
         { "json", "NCER", HandleJsonToNtrCellCommand },
+        { "NCER", "json", HandleNtrCellToJsonCommand },
         { "json", "NSCR", HandleJsonToNtrScreenCommand },
         { "json", "NANR", HandleJsonToNtrAnimationCommand },
+        { "NANR", "json", HandleNtrAnimationToJsonCommand },
         { "json", "NMAR", HandleJsonToNtrMulticellAnimationCommand },
+        { "NMAR", "json", HandleNtrAnimationToJsonCommand },
         { NULL, "huff", HandleHuffCompressCommand },
         { NULL, "lz", HandleLZCompressCommand },
         { "huff", NULL, HandleHuffDecompressCommand },
