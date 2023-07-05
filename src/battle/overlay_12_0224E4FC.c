@@ -6349,3 +6349,35 @@ u32 TryCriticalHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker
     
     return ret;
 }
+
+extern u16 sMetronomeUnuseableMoves[];
+
+BOOL CheckLegalMimicMove(u16 moveNo) {
+    int i = 0;
+    
+    do {
+        if (sMetronomeUnuseableMoves[i] == moveNo) {
+            break;
+        }
+        i++;
+    } while (sMetronomeUnuseableMoves[i] != 0xFFFE);
+    
+    return (sMetronomeUnuseableMoves[i] == 0xFFFE);
+}
+
+BOOL CheckLegalMetronomeMove(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u16 moveNo) {
+    int i = 0;
+    
+    if (BattleContext_CheckMoveUnuseableInGravity(bsys, ctx, battlerId, moveNo) == TRUE || BattleContext_CheckMoveHealBlocked(bsys, ctx, battlerId, moveNo) == TRUE) {
+        return FALSE;
+    }
+
+    do {
+        if (moveNo == sMetronomeUnuseableMoves[i]) {
+            break;
+        }
+        i++;
+    } while (sMetronomeUnuseableMoves[i] != 0xFFFF);
+    
+    return (sMetronomeUnuseableMoves[i] == 0xFFFF);
+}

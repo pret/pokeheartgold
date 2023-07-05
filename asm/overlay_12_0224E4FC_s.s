@@ -16,90 +16,6 @@
     .public GetHeldItemFlingPower
     .public ov12_02256F28
 
-	thumb_func_start CheckLegalMimicMove
-CheckLegalMimicMove: ; 0x02257D6C
-	push {r3, r4}
-	ldr r4, _02257D9C ; =ov12_0226CC04
-	ldr r1, _02257DA0 ; =0x0000FFFE
-	mov r3, #0
-_02257D74:
-	ldrh r2, [r4]
-	cmp r0, r2
-	beq _02257D84
-	add r4, r4, #2
-	ldrh r2, [r4]
-	add r3, r3, #1
-	cmp r2, r1
-	bne _02257D74
-_02257D84:
-	ldr r0, _02257D9C ; =ov12_0226CC04
-	lsl r1, r3, #1
-	ldrh r1, [r0, r1]
-	ldr r0, _02257DA0 ; =0x0000FFFE
-	cmp r1, r0
-	bne _02257D96
-	mov r0, #1
-	pop {r3, r4}
-	bx lr
-_02257D96:
-	mov r0, #0
-	pop {r3, r4}
-	bx lr
-	.balign 4, 0
-_02257D9C: .word ov12_0226CC04
-_02257DA0: .word 0x0000FFFE
-	thumb_func_end CheckLegalMimicMove
-
-	thumb_func_start CheckLegalMetronomeMove
-CheckLegalMetronomeMove: ; 0x02257DA4
-	push {r3, r4, r5, r6, r7, lr}
-	add r6, r0, #0
-	add r7, r1, #0
-	str r2, [sp]
-	add r5, r3, #0
-	mov r4, #0
-	bl BattleContext_CheckMoveUnuseableInGravity
-	cmp r0, #1
-	beq _02257DC8
-	ldr r2, [sp]
-	add r0, r6, #0
-	add r1, r7, #0
-	add r3, r5, #0
-	bl BattleContext_CheckMoveHealBlocked
-	cmp r0, #1
-	bne _02257DCC
-_02257DC8:
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_02257DCC:
-	ldr r2, _02257DF4 ; =ov12_0226CC04
-	ldr r0, _02257DF8 ; =0x0000FFFF
-_02257DD0:
-	ldrh r1, [r2]
-	cmp r5, r1
-	beq _02257DE0
-	add r2, r2, #2
-	ldrh r1, [r2]
-	add r4, r4, #1
-	cmp r1, r0
-	bne _02257DD0
-_02257DE0:
-	ldr r0, _02257DF4 ; =ov12_0226CC04
-	lsl r1, r4, #1
-	ldrh r1, [r0, r1]
-	ldr r0, _02257DF8 ; =0x0000FFFF
-	cmp r1, r0
-	bne _02257DF0
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-_02257DF0:
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02257DF4: .word ov12_0226CC04
-_02257DF8: .word 0x0000FFFF
-	thumb_func_end CheckLegalMetronomeMove
-
 	thumb_func_start IsMoveEncored
 IsMoveEncored: ; 0x02257DFC
 	push {r4, r5}
@@ -1577,11 +1493,12 @@ ov12_0226CBDC: ; 0x0226CBDC
 	.byte 0x14, 0x00, 0x00, 0x00, 0x15, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00, 0x19, 0x00, 0x00, 0x00
 	.byte 0x1A, 0x00, 0x00, 0x00
 
-ov12_0226CC04: ; 0x0226CC04
-	.byte 0x76, 0x00, 0xA5, 0x00, 0xA6, 0x00, 0x66, 0x00, 0xC0, 0x01, 0xFE, 0xFF
-	.byte 0xD6, 0x00, 0x12, 0x01, 0x77, 0x00, 0x44, 0x00, 0xF3, 0x00, 0xB6, 0x00, 0xC5, 0x00, 0xCB, 0x00
-	.byte 0xC2, 0x00, 0xA8, 0x00, 0x0A, 0x01, 0x21, 0x01, 0x0E, 0x01, 0x57, 0x01, 0x0F, 0x01, 0x08, 0x01
-	.byte 0x6C, 0x01, 0x7F, 0x01, 0x7E, 0x01, 0x9F, 0x01, 0xFF, 0xFF
+.public sMetronomeUnuseableMoves
+sMetronomeUnuseableMoves: ; 0x0226CC04
+	.short MOVE_METRONOME, MOVE_STRUGGLE, MOVE_SKETCH, MOVE_MIMIC, MOVE_CHATTER, 0xFFFE
+	.short MOVE_SLEEP_TALK, MOVE_ASSIST, MOVE_MIRROR_MOVE, MOVE_COUNTER, MOVE_MIRROR_COAT, MOVE_PROTECT, MOVE_DETECT, MOVE_ENDURE
+	.short MOVE_DESTINY_BOND, MOVE_THIEF, MOVE_FOLLOW_ME, MOVE_SNATCH, MOVE_HELPING_HAND, MOVE_COVET, MOVE_TRICK, MOVE_FOCUS_PUNCH
+	.short MOVE_FEINT, MOVE_COPYCAT, MOVE_ME_FIRST, MOVE_SWITCHEROO, 0xFFFF
 
 .public sTypeEnhancingItems
 sTypeEnhancingItems: ; 0x0226CC3A
