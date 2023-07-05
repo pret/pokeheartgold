@@ -105,13 +105,13 @@ BOOL ov12_022568B0(BattleSystem *bsys, Pokemon *mon);
 BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script);
 void ov12_02256F28(BattleSystem *bsys, BATTLECONTEXT *ctx);
 void ov12_02256F78(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 selectedMonIndex);
+int CalcMoveDamage(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 moveNo, u32 sideCondition, u32 fieldCondition, u16 power, u8 type, u8 battlerIdAttacker, u8 battlerIdTarget, u8 crit);
 
 //The following functions are static, but the rest of the file is still being worked on
 BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int index);
 
 //The following functions haven't been decompiled as of now
 void Link_CheckTimeout(BATTLECONTEXT *ctx);
-int CalcMoveDamage(BattleSystem *bsys, BATTLECONTEXT *ctx, u32, u32, u32, u16, u8, u8, u8, u8);
 int ov12_02257C30(BattleSystem *bsys, BATTLECONTEXT *ctx, int a2);
 BOOL CheckLegalMetronomeMove(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u16 moveNo);
 BOOL CheckLegalMeFirstMove(BATTLECONTEXT *ctx, u16 move);

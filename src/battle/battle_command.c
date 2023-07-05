@@ -1186,7 +1186,7 @@ BOOL BtlCmd_ShouldGetExp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     adrs = BattleScriptReadWord(ctx);
 
-    if ((opponentData->unk195 & 1) && !(battleType & (BATTLE_TYPE_2 | BATTLE_TYPE_5 | BATTLE_TYPE_7 | BATTLE_TYPE_9))) {
+    if ((opponentData->unk195 & 1) && !(battleType & (BATTLE_TYPE_2 | BATTLE_TYPE_5 | BATTLE_TYPE_TOWER | BATTLE_TYPE_9))) {
         int expMonsCnt = 0;
         int expShareMonsCnt = 0;
         u16 totalExp;
@@ -3038,7 +3038,7 @@ BOOL BtlCmd_TryThief(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     u32 battleType = BattleSystem_GetBattleType(bsys);
     int fieldSide = BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker);
 
-    if (BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker) && !(battleType & (BATTLE_TYPE_2 | BATTLE_TYPE_7))) {
+    if (BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker) && !(battleType & (BATTLE_TYPE_2 | BATTLE_TYPE_TOWER))) {
         BattleScriptIncrementPointer(ctx, adrs1);
     } else if (ctx->fieldSideConditionData[fieldSide].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[ctx->battlerIdAttacker])) {
         BattleScriptIncrementPointer(ctx, adrs1);
@@ -3842,7 +3842,7 @@ BOOL BtlCmd_TryTrick(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int sideAttacker = BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker);
     int sideTarget = BattleSystem_GetFieldSide(bsys, ctx->battlerIdTarget);
 
-    if (BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker) && (battleType & (BATTLE_TYPE_2 | BATTLE_TYPE_7)) == 0) {
+    if (BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker) && (battleType & (BATTLE_TYPE_2 | BATTLE_TYPE_TOWER)) == 0) {
         BattleScriptIncrementPointer(ctx, adrsA);
     } else if ((ctx->fieldSideConditionData[sideAttacker].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[ctx->battlerIdAttacker])) ||
               (ctx->fieldSideConditionData[sideTarget].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[ctx->battlerIdTarget]))) {
@@ -3938,7 +3938,7 @@ BOOL BtlCmd_MagicCoat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     if (ctx->fieldSideConditionData[side].followMeFlag && ctx->battleMons[ctx->fieldSideConditionData[side].battlerIdFollowMe].hp) {
         ctx->battlerIdTarget = ctx->fieldSideConditionData[side].battlerIdFollowMe;
-    } else if (ctx->unk_334.moveData[ctx->moveNoCur].unk8 == 4 || ctx->unk_334.moveData[ctx->moveNoCur].unk8 == 8) {
+    } else if (ctx->unk_334.moveData[ctx->moveNoCur].range == 4 || ctx->unk_334.moveData[ctx->moveNoCur].range == 8) {
         ctx->battlerIdTarget = battlerId;
     } else {
         side = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, (u16) ctx->moveNoCur, 1, 0);

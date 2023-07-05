@@ -1353,17 +1353,17 @@ BOOL ov12_02250490(BattleSystem *bsys, BATTLECONTEXT *ctx, int *out) {
     return ret;
 }
 
-int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker, u16 moveNo, int a4, int a5) {
-    int battlerIdTarget = 0xFF;
-    int unkA;
+int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker, u16 moveNo, int a4, int range) {
+    int battlerIdTarget = BATTLER_NONE;
+    int moveRange;
     
     if (moveNo) {
-        unkA = ctx->unk_334.moveData[moveNo].unk8;
+        moveRange = ctx->unk_334.moveData[moveNo].range;
     } else {
-        unkA = a5;
+        moveRange = range;
     }
     
-    if (unkA == 4) {
+    if (moveRange == 4) {
         int battlerId;
         int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
         OpponentData *opponent = BattleSystem_GetOpponentDataByBattlerId(bsys, battlerIdAttacker);
@@ -1384,7 +1384,7 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
         if (ctx->unk_217E != maxBattlers) {
             ctx->unk_217E++;
         }
-    } else if (unkA == 8) {
+    } else if (moveRange == 8) {
         int battlerId;
         int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
         
@@ -1401,7 +1401,7 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
         if (ctx->unk_217E != maxBattlers) {
             ctx->unk_217E++;
         }
-    } else if (unkA == (1 << 9) && (a4 == 1)) {
+    } else if (moveRange == (1 << 9) && (a4 == 1)) {
         int battleType = BattleSystem_GetBattleType(bsys);
         
         if ((battleType & BATTLE_TYPE_DOUBLES) && (BattleSystem_Random(bsys) % 2) == 0) {
@@ -1412,13 +1412,13 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
         } else {
             battlerIdTarget = battlerIdAttacker;
         }
-    } else if (unkA == (1 << 10) && (a4 == 1)) {
+    } else if (moveRange == (1 << 10) && (a4 == 1)) {
         battlerIdTarget = ov12_02253DA0(bsys, ctx, battlerIdAttacker);
-    } else if (unkA == (1 << 7)) {
+    } else if (moveRange == (1 << 7)) {
         battlerIdTarget = ov12_02253DA0(bsys, ctx, battlerIdAttacker);
-    } else if (unkA == (1 << 4) || unkA == (1 << 5) || unkA == 1 || unkA == (1 << 6)) {
+    } else if (moveRange == (1 << 4) || moveRange == (1 << 5) || moveRange == 1 || moveRange == (1 << 6)) {
         battlerIdTarget = battlerIdAttacker;
-    } else if (unkA == (1 << 8)) {
+    } else if (moveRange == (1 << 8)) {
         int battleType = BattleSystem_GetBattleType(bsys);
         
         if (battleType & BATTLE_TYPE_DOUBLES) {
@@ -1426,7 +1426,7 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
         } else {
             battlerIdTarget = battlerIdAttacker;
         }
-    } else if (unkA == (1 << 9)) {
+    } else if (moveRange == (1 << 9)) {
         int battleType = BattleSystem_GetBattleType(bsys);
         
         if (battleType & BATTLE_TYPE_DOUBLES) {
@@ -1437,7 +1437,7 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
         } else {
             battlerIdTarget = battlerIdAttacker;
         }
-    } else if (unkA == 2 || a4 == 1) {
+    } else if (moveRange == 2 || a4 == 1) {
         int battleType = BattleSystem_GetBattleType(bsys);
         int side = BattleSystem_GetFieldSide(bsys, battlerIdAttacker)^1;
         int battlerIdOpponents[2];
@@ -1508,7 +1508,7 @@ void ov12_02250A18(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker
     maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     
     if (moveType == TYPE_ELECTRIC &&
-        (ctx->unk_334.moveData[moveNo].unk8 == 0 || ctx->unk_334.moveData[moveNo].unk8 == 2) &&
+        (ctx->unk_334.moveData[moveNo].range == 0 || ctx->unk_334.moveData[moveNo].range == 2) &&
         !(ctx->linkStatus & 0x20) &&
         CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP_NOT_USER, battlerIdAttacker, ABILITY_LIGHTNINGROD)) {
         for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
@@ -1522,7 +1522,7 @@ void ov12_02250A18(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker
             ctx->battlerIdTarget = battlerIdTarget;
         }
     } else if (moveType == TYPE_WATER &&
-        (ctx->unk_334.moveData[moveNo].unk8 == 0 || ctx->unk_334.moveData[moveNo].unk8 == 2) &&
+        (ctx->unk_334.moveData[moveNo].range == 0 || ctx->unk_334.moveData[moveNo].range == 2) &&
         !(ctx->linkStatus & 0x20) &&
         CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP_NOT_USER, battlerIdAttacker, ABILITY_STORM_DRAIN)) {
         for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
@@ -5866,4 +5866,433 @@ void ov12_02256F78(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 sel
     dat = ctx->unk_312C[battlerId][flag];
     ctx->unk_312C[battlerId][flag] = ctx->unk_312C[battlerId][index];
     ctx->unk_312C[battlerId][index] = dat;
+}
+
+typedef struct MoveDamageCalc {
+    u16 species;
+    s16 hp;
+    u16 maxHp;
+    u16 unused;
+    int item;
+    int mod;
+    u32 status;
+    u8 ability;
+    u8 gender;
+    u8 type1;
+    u8 type2;
+} MoveDamageCalc;
+
+extern u8 sTypeEnhancingItems[33][2];
+extern u16 sPunchingMoves[15];
+
+int CalcMoveDamage(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 moveNo, u32 sideCondition, u32 fieldCondition, u16 power, u8 type, u8 battlerIdAttacker, u8 battlerIdTarget, u8 crit) {
+    int i;
+    s32 dmg = 0;
+    s32 dmg2 = 0;
+    u8 moveType;
+    u8 moveCategory;
+    u16 monAtk;
+    u16 monDef;
+    u16 monSpAtk;
+    u16 monSpDef;
+    s8 statChangeAtk;
+    s8 statChangeDef;
+    s8 statChangeSpAtk;
+    s8 statChangeSpDef;
+    u8 level;
+    u16 movePower;
+    u16 item;
+    u32 battleType;
+    MoveDamageCalc calcAttacker;
+    MoveDamageCalc calcTarget;
+    
+    GF_ASSERT(crit == 1 || crit > 1);
+    
+    monAtk = GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_ATK, NULL);
+    monDef = GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_DEF, NULL);
+    monSpAtk = GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_SPATK, NULL);
+    monSpDef = GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_SPDEF, NULL);
+    statChangeAtk = GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_STAT_CHANGE_ATK, NULL) - 6;
+    statChangeDef = GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_STAT_CHANGE_DEF, NULL) - 6;
+    statChangeSpAtk = GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_STAT_CHANGE_SPATK, NULL) - 6;
+    statChangeSpDef = GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_STAT_CHANGE_SPDEF, NULL) - 6;
+    level = GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_LEVEL, NULL);
+    calcAttacker.species = GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_SPECIES, NULL);
+    calcTarget.species = GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_SPECIES, NULL);
+    calcAttacker.hp = GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_HP, NULL);
+    calcTarget.hp = GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_HP, NULL);
+    calcAttacker.maxHp = GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_MAXHP, NULL);
+    calcTarget.maxHp = GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_MAXHP, NULL);
+    calcAttacker.status = GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_STATUS, NULL);
+    calcTarget.status = GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_STATUS, NULL);
+    calcAttacker.ability = GetBattlerAbility(ctx, battlerIdAttacker);
+    calcTarget.ability = GetBattlerAbility(ctx, battlerIdTarget);
+    calcAttacker.gender = GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_GENDER, NULL);
+    calcTarget.gender = GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_GENDER, NULL);
+    calcAttacker.type1 = GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_TYPE_1, NULL);
+    calcTarget.type1 = GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_TYPE_1, NULL);
+    calcAttacker.type2 = GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_TYPE_2, NULL);
+    calcTarget.type2 = GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_TYPE_2, NULL);
+    
+    item = GetBattlerHeldItem(ctx, battlerIdAttacker);
+    calcAttacker.item = GetItemVar(ctx, item, ITEM_VAR_HOLD_EFFECT);
+    calcAttacker.mod = GetItemVar(ctx, item, ITEM_VAR_MODIFIER);
+    
+    item = GetBattlerHeldItem(ctx, battlerIdTarget);
+    calcTarget.item = GetItemVar(ctx, item, ITEM_VAR_HOLD_EFFECT);
+    calcTarget.mod = GetItemVar(ctx, item, ITEM_VAR_MODIFIER);
+    
+    battleType = BattleSystem_GetBattleType(bsys);
+    
+    if (power == 0) {
+        movePower = ctx->unk_334.moveData[moveNo].power;
+    } else {
+        movePower = power;
+    }
+    
+    if (calcAttacker.ability == ABILITY_NORMALIZE) {
+        moveType = TYPE_NORMAL;
+    } else if (type == 0) {
+        moveType = ctx->unk_334.moveData[moveNo].type;
+    } else {
+        moveType = type & 0x3F;
+    }
+    
+    GF_ASSERT(ctx->unk_2158 >= 10);
+    movePower = movePower * ctx->unk_2158 / 10;
+    
+    if ((ctx->battleMons[battlerIdAttacker].moveEffectFlags & MOVE_EFFECT_CHARGE) && moveType == TYPE_ELECTRIC) {
+        movePower *= 2;
+    }
+    
+    if (ctx->turnData[battlerIdAttacker].helpingHandFlag) {
+        movePower = movePower * 15 / 10;
+    }
+    
+    if (calcAttacker.ability == ABILITY_TECHNICIAN && moveNo != MOVE_STRUGGLE && movePower <= 60) {
+        movePower = movePower * 15 / 10;
+    }
+    
+    moveCategory = ctx->unk_334.moveData[moveNo].class;
+    
+    if (calcAttacker.ability == ABILITY_HUGE_POWER || calcAttacker.ability == ABILITY_PURE_POWER) {
+        monAtk *= 2;
+    }
+    
+    if (calcAttacker.ability == ABILITY_SLOW_START && (int)(ov12_022581D4(bsys, ctx, 3, 0) - GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_SLOW_START_COUNT, NULL)) < 5) {
+        monAtk /= 2;
+    }
+    
+    for (i = 0; i < NELEMS(sTypeEnhancingItems); i++) {
+        if (calcAttacker.item == sTypeEnhancingItems[i][0] && moveType == sTypeEnhancingItems[i][1]) {
+            movePower = movePower * (100 + calcAttacker.mod) / 100;
+            break;
+        }
+    }
+    
+    if (calcAttacker.item == HOLD_EFFECT_CHOICE_ATK) {
+        monAtk = monAtk * 150 / 100;
+    }
+    if (calcAttacker.item == HOLD_EFFECT_CHOICE_SPATK) {
+        monSpAtk = monSpAtk * 150 / 100;
+    }
+    
+    if (calcAttacker.item == HOLD_EFFECT_LATI_SPECIAL && !(battleType & BATTLE_TYPE_TOWER) && (calcAttacker.species == SPECIES_LATIOS || calcAttacker.species == SPECIES_LATIAS)) {
+        monSpAtk = monSpAtk * 150 / 100;
+    }
+    
+    if (calcTarget.item == HOLD_EFFECT_LATI_SPECIAL && !(battleType & BATTLE_TYPE_TOWER) && (calcTarget.species == SPECIES_LATIOS || calcTarget.species == SPECIES_LATIAS)) {
+        monSpDef = monSpDef * 150 / 100;
+    }
+    
+    if (calcAttacker.item == HOLD_EFFECT_CLAMPERL_SPATK && calcAttacker.species == SPECIES_CLAMPERL) {
+        monSpAtk *= 2;
+    }
+    
+    if (calcTarget.item == HOLD_EFFECT_CLAMPERL_SPDEF && calcTarget.species == SPECIES_CLAMPERL) {
+        monSpDef *= 2;
+    }
+    
+    if (calcAttacker.item == HOLD_EFFECT_PIKA_SPATK_UP && calcAttacker.species == SPECIES_PIKACHU) {
+        movePower *= 2;
+    }
+    
+    if (calcTarget.item == HOLD_EFFECT_DITTO_DEF_UP && calcTarget.species == SPECIES_DITTO) {
+        monDef *= 2;
+    }
+    
+    if (calcAttacker.item == HOLD_EFFECT_CUBONE_ATK_UP && (calcAttacker.species == SPECIES_CUBONE || calcAttacker.species == SPECIES_MAROWAK)) {
+        monAtk *= 2;
+    }
+    
+    if (calcAttacker.item == HOLD_EFFECT_DIALGA_BOOST && (moveType == TYPE_DRAGON || moveType == TYPE_STEEL) && calcAttacker.species == SPECIES_DIALGA) {
+        movePower = movePower * (100 + calcAttacker.mod) / 100;
+    }
+    
+    if (calcAttacker.item == HOLD_EFFECT_PALKIA_BOOST && (moveType == TYPE_DRAGON || moveType == TYPE_WATER) && calcAttacker.species == SPECIES_PALKIA) {
+        movePower = movePower * (100 + calcAttacker.mod) / 100;
+    }
+
+    if (calcAttacker.item == HOLD_EFFECT_GIRATINA_BOOST && (moveType == TYPE_DRAGON || moveType == TYPE_GHOST) && !(GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_STATUS2, NULL) & STATUS2_TRANSFORMED)&& calcAttacker.species == SPECIES_GIRATINA) {
+        movePower = movePower * (100 + calcAttacker.mod) / 100;
+    }
+    
+    if (calcAttacker.item == HOLD_EFFECT_POWER_UP_PHYS && moveCategory == 0) {
+        movePower = movePower * (100 + calcAttacker.mod) / 100;
+    }
+
+    if (calcAttacker.item == HOLD_EFFECT_POWER_UP_SPEC && moveCategory == 1) {
+        movePower = movePower * (100 + calcAttacker.mod) / 100;
+    }
+    
+    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_THICK_FAT) == TRUE && (moveType == TYPE_FIRE || moveType == TYPE_ICE)) {
+        movePower /= 2;
+    }
+    
+    if (calcAttacker.ability == ABILITY_HUSTLE) {
+        monAtk = monAtk * 150 / 100;
+    }
+    
+    if (calcAttacker.ability == ABILITY_GUTS && calcAttacker.status) {
+        monAtk = monAtk * 150 / 100;
+    }
+    
+    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_MARVEL_SCALE) == TRUE && calcTarget.status) {
+        monDef = monDef * 150 / 100;
+    }
+    
+    if (calcAttacker.ability == ABILITY_PLUS && CheckAbilityActive(bsys, ctx, CHECK_ABILITY_SAME_SIDE_HP, battlerIdAttacker, ABILITY_MINUS)) {
+        monSpAtk = monSpAtk * 150 / 100;
+    }
+
+    if (calcAttacker.ability == ABILITY_MINUS && CheckAbilityActive(bsys, ctx, CHECK_ABILITY_SAME_SIDE_HP, battlerIdAttacker, ABILITY_PLUS)) {
+        monSpAtk = monSpAtk * 150 / 100;
+    }
+    
+    if (moveType == TYPE_ELECTRIC && CheckMoveEffectOnField(bsys, ctx, MOVE_EFFECT_MUD_SPORT)) {
+        movePower /= 2;
+    }
+    
+    if (moveType == TYPE_FIRE && CheckMoveEffectOnField(bsys, ctx, MOVE_EFFECT_WATER_SPORT)) {
+        movePower /= 2;
+    }
+    
+    if (moveType == TYPE_GRASS && calcAttacker.ability == ABILITY_OVERGROW && calcAttacker.hp <= calcAttacker.maxHp / 3) {
+        movePower = movePower * 150 / 100;
+    }
+
+    if (moveType == TYPE_FIRE && calcAttacker.ability == ABILITY_BLAZE && calcAttacker.hp <= calcAttacker.maxHp / 3) {
+        movePower = movePower * 150 / 100;
+    }
+
+    if (moveType == TYPE_WATER && calcAttacker.ability == ABILITY_TORRENT && calcAttacker.hp <= calcAttacker.maxHp / 3) {
+        movePower = movePower * 150 / 100;
+    }
+    
+    if (moveType == TYPE_BUG && calcAttacker.ability == ABILITY_SWARM && calcAttacker.hp <= calcAttacker.maxHp / 3) {
+        movePower = movePower * 150 / 100;
+    }
+    
+    if (moveType == TYPE_FIRE && CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_HEATPROOF) == TRUE) {
+        movePower /= 2;
+    }
+    
+    if (moveType == TYPE_FIRE && CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_DRY_SKIN) == TRUE) {
+        movePower = movePower * 125 / 100;
+    }
+    
+    if (calcAttacker.ability == ABILITY_SIMPLE) {
+        statChangeAtk *= 2;
+        if (statChangeAtk < -6) {
+            statChangeAtk = -6;
+        }
+        if (statChangeAtk > 6) {
+            statChangeAtk = 6;
+        }
+        statChangeSpAtk *= 2;
+        if (statChangeSpAtk < -6) {
+            statChangeSpAtk = -6;
+        }
+        if (statChangeSpAtk > 6) {
+            statChangeSpAtk = 6;
+        }
+    }
+    
+    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_SIMPLE) == TRUE) {
+        statChangeDef *= 2;
+        if (statChangeDef < -6) {
+            statChangeDef = -6;
+        }
+        if (statChangeDef > 6) {
+            statChangeDef = 6;
+        }
+        statChangeSpDef *= 2;
+        if (statChangeSpDef < -6) {
+            statChangeSpDef = -6;
+        }
+        if (statChangeSpDef > 6) {
+            statChangeSpDef = 6;
+        }
+    }
+    
+    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_UNAWARE) == TRUE) {
+        statChangeAtk = 0;
+        statChangeSpAtk = 0;
+    }
+    if (calcAttacker.ability == ABILITY_UNAWARE) {
+        statChangeDef = 0;
+        statChangeSpDef = 0;
+    }
+    
+    statChangeAtk += 6;
+    statChangeDef += 6;
+    statChangeSpAtk += 6;
+    statChangeSpDef += 6;
+    
+    if (calcAttacker.ability == ABILITY_RIVALRY && calcAttacker.gender == calcTarget.gender && calcAttacker.gender != 2 && calcTarget.gender != 2) {
+        movePower = movePower * 125 / 100;
+    }
+    if (calcAttacker.ability == ABILITY_RIVALRY && calcAttacker.gender != calcTarget.gender && calcAttacker.gender != 2 && calcTarget.gender != 2) {
+        movePower = movePower * 75 / 100;
+    }
+    
+    for (i = 0; i < NELEMS(sPunchingMoves); i++) {
+        if (sPunchingMoves[i] == moveNo && calcAttacker.ability == ABILITY_IRON_FIST) {
+            movePower = movePower * 12 / 10;
+            break;
+        }
+    }
+    
+    if (!CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) && !CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)) {
+        if ((fieldCondition & FIELD_CONDITION_SUN_ALL) && calcAttacker.ability == ABILITY_SOLAR_POWER) {
+            monSpAtk = monSpAtk * 15 / 10;
+        }
+        if ((fieldCondition & FIELD_CONDITION_SANDSTORM_ALL) && (calcTarget.type1 == TYPE_ROCK || calcTarget.type2 == TYPE_ROCK)) {
+            monSpDef = monSpDef * 15 / 10;
+        }
+        if ((fieldCondition & FIELD_CONDITION_SUN_ALL) && CheckAbilityActive(bsys, ctx, CHECK_ABILITY_SAME_SIDE_HP, battlerIdAttacker, ABILITY_FLOWER_GIFT)) {
+            monAtk = monAtk * 15 / 10;
+        }
+        if ((fieldCondition & FIELD_CONDITION_SUN_ALL) && GetBattlerAbility(ctx, battlerIdAttacker) != ABILITY_MOLD_BREAKER && CheckAbilityActive(bsys, ctx, CHECK_ABILITY_SAME_SIDE_HP, battlerIdTarget, ABILITY_FLOWER_GIFT)) {
+            monSpDef = monSpDef * 15 / 10;
+        }
+    }
+    
+    if (ctx->unk_334.moveData[moveNo].effect == 7) {
+        monDef /= 2;
+    }
+    
+    if (moveCategory == 0) {
+        if (crit > 1) {
+            if (statChangeAtk > 6) {
+                dmg = monAtk * sStatChangeTable[statChangeAtk][0] / sStatChangeTable[statChangeAtk][1];
+            } else {
+                dmg = monAtk;
+            }
+        } else {
+            dmg = monAtk * sStatChangeTable[statChangeAtk][0] / sStatChangeTable[statChangeAtk][1];    
+        }
+        
+        dmg *= movePower;
+        dmg *= ((level * 2 / 5) + 2);
+        
+        if (crit > 1) {
+            if (statChangeDef < 6) {
+                dmg2 = monDef * sStatChangeTable[statChangeDef][0] / sStatChangeTable[statChangeDef][1];
+            } else {
+                dmg2 = monDef;
+            }
+        } else {
+            dmg2 = monDef * sStatChangeTable[statChangeDef][0] / sStatChangeTable[statChangeDef][1];    
+        }
+        
+        dmg /= dmg2;
+        dmg /= 50;
+        
+        if ((calcAttacker.status & STATUS_BURN) && calcAttacker.ability != ABILITY_GUTS) {
+            dmg /= 2;
+        }
+        
+        if ((sideCondition & SIDE_CONDITION_REFLECT) && crit == 1 && ctx->unk_334.moveData[moveNo].effect != 186) {
+            if ((battleType & BATTLE_TYPE_DOUBLES) && GetMonsHitCount(bsys, ctx, 1, battlerIdTarget) == 2) {
+                dmg = dmg * 2 / 3;
+            } else {
+                dmg /= 2;
+            }
+        }
+    } else if (moveCategory == 1) {
+        if (crit > 1) {
+            if (statChangeSpAtk > 6) {
+                dmg = monSpAtk * sStatChangeTable[statChangeSpAtk][0] / sStatChangeTable[statChangeSpAtk][1];
+            } else {
+                dmg = monSpAtk;
+            }
+        } else {
+            dmg = monSpAtk * sStatChangeTable[statChangeSpAtk][0] / sStatChangeTable[statChangeSpAtk][1];    
+        }
+        
+        dmg *= movePower;
+        dmg *= ((level * 2 / 5) + 2);
+        
+        if (crit > 1) {
+            if (statChangeSpDef < 6) {
+                dmg2 = monSpDef * sStatChangeTable[statChangeSpDef][0] / sStatChangeTable[statChangeSpDef][1];
+            } else {
+                dmg2 = monSpDef;
+            }
+        } else {
+            dmg2 = monSpDef * sStatChangeTable[statChangeSpDef][0] / sStatChangeTable[statChangeSpDef][1];    
+        }
+        
+        dmg /= dmg2;
+        dmg /= 50;
+        
+        if ((sideCondition & SIDE_CONDITION_LIGHT_SCREEN) && crit == 1 && ctx->unk_334.moveData[moveNo].effect != 186) {
+            if ((battleType & BATTLE_TYPE_DOUBLES) && GetMonsHitCount(bsys, ctx, 1, battlerIdTarget) == 2) {
+                dmg = dmg * 2 / 3;
+            } else {
+                dmg /= 2;
+            }
+        }
+    }
+    
+    if ((battleType & BATTLE_TYPE_DOUBLES) && ctx->unk_334.moveData[moveNo].range == 4 && GetMonsHitCount(bsys, ctx, 1, battlerIdTarget) == 2) {
+        dmg = dmg * 3 / 4;
+    }
+    if ((battleType & BATTLE_TYPE_DOUBLES) && ctx->unk_334.moveData[moveNo].range == 8 && GetMonsHitCount(bsys, ctx, 0, battlerIdTarget) >= 2) {
+        dmg = dmg * 3 / 4;
+    }
+    
+    if (!CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) && !CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)) {
+        if (fieldCondition & FIELD_CONDITION_RAIN_ALL) {
+            switch (moveType) {
+            case TYPE_FIRE:
+                dmg /= 2;
+                break;
+            case TYPE_WATER:
+                dmg = dmg * 15 / 10;
+                break;
+            }
+        }
+        
+        if ((fieldCondition & FIELD_CONDITION_WEATHER_NO_SUN) && moveNo == MOVE_SOLAR_BEAM) {
+            dmg /= 2;
+        }
+        if (fieldCondition & FIELD_CONDITION_SUN_ALL) {
+            switch(moveType) {
+            case TYPE_FIRE:
+                dmg = dmg * 15 / 10;
+                break;
+            case TYPE_WATER:
+                dmg /= 2;
+                break;
+            }
+        }
+    }
+    
+    if (GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_FLASH_FIRE_ACTIVE, NULL) && moveType == TYPE_FIRE) {
+        dmg = dmg * 15 / 10;
+    }
+    
+    return dmg + 2;
 }
