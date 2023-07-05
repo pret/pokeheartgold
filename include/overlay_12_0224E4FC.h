@@ -110,6 +110,11 @@ int ApplyDamageRange(BattleSystem *bsys, BATTLECONTEXT *ctx, int damage);
 u32 TryCriticalHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int critCnt, u32 sideCondition);
 BOOL CheckLegalMimicMove(u16 moveNo);
 BOOL CheckLegalMetronomeMove(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u16 moveNo);
+BOOL IsMoveEncored(BATTLECONTEXT *ctx, u16 moveNo);
+s32 GetItemVar(BATTLECONTEXT *ctx, u16 itemNo, u16 var);
+int ov12_02257E98(BattleSystem *bsys, BATTLECONTEXT *ctx, int side);
+void ov12_02257EC0(BattleSystem *bsys, BATTLECONTEXT *ctx);
+BOOL CheckStatusEffectsSubstitute(BATTLECONTEXT *bsys, int battlerId, int status);
 
 //The following functions are static, but the rest of the file is still being worked on
 BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int index);
@@ -117,16 +122,13 @@ BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarge
 //The following functions haven't been decompiled as of now
 void Link_CheckTimeout(BATTLECONTEXT *ctx);
 BOOL CheckLegalMeFirstMove(BATTLECONTEXT *ctx, u16 move);
-BOOL IsMoveEncored(BATTLECONTEXT *ctx, u16 move);
 void CheckIgnorePressure(BATTLECONTEXT *ctx, int battlerIdA, int battlerIdB);
 int ov12_02253DA0(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 BOOL CheckItemEffectOnUTurn(BattleSystem *bsys, BATTLECONTEXT *ctx, int *work);
 u32 BattleSystem_GetBattleType(BattleSystem *bsys);
 u32 BattleSystem_GetBattleFlags(BattleSystem *bsys);
 u32 ov12_022581D4(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 a2, int battlerId);
-u32 GetItemVar(BATTLECONTEXT *ctx, int item, u32 a3);
 u32 ov12_0223C24C(PARTY *party, u32 *a1);
-BOOL CheckStatusEffectsSubstitute(BATTLECONTEXT *ctx, int battlerId, u32 status);
 int ov12_0223AB0C(BattleSystem *bsys, int battlerId);
 int ov12_02251D28(BattleSystem *bsys, BATTLECONTEXT *ctx, int moveNo, int moveType, int battlerIdAttacker, int battlerIdTarget, int dmg, u32 *statusFlag);
 void ov12_02252D14(BattleSystem *bsys, BATTLECONTEXT *ctx);

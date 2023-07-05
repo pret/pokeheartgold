@@ -16,247 +16,6 @@
     .public GetHeldItemFlingPower
     .public ov12_02256F28
 
-	thumb_func_start IsMoveEncored
-IsMoveEncored: ; 0x02257DFC
-	push {r4, r5}
-	lsl r1, r1, #4
-	add r4, r0, r1
-	ldr r1, _02257E30 ; =0x000003DE
-	ldr r3, _02257E34 ; =ov12_0226CB58
-	ldrh r1, [r4, r1]
-	ldr r4, _02257E30 ; =0x000003DE
-	mov r2, #0
-_02257E0C:
-	ldrh r5, [r3]
-	lsl r5, r5, #4
-	add r5, r0, r5
-	ldrh r5, [r5, r4]
-	cmp r1, r5
-	beq _02257E20
-	add r2, r2, #1
-	add r3, r3, #2
-	cmp r2, #6
-	blo _02257E0C
-_02257E20:
-	cmp r2, #6
-	bne _02257E2A
-	mov r0, #1
-	pop {r4, r5}
-	bx lr
-_02257E2A:
-	mov r0, #0
-	pop {r4, r5}
-	bx lr
-	.balign 4, 0
-_02257E30: .word 0x000003DE
-_02257E34: .word ov12_0226CB58
-	thumb_func_end IsMoveEncored
-
-	thumb_func_start CheckLegalMeFirstMove
-CheckLegalMeFirstMove: ; 0x02257E38
-	push {r4, r5}
-	lsl r1, r1, #4
-	add r4, r0, r1
-	ldr r1, _02257E6C ; =0x000003DE
-	ldr r3, _02257E70 ; =ov12_0226CB70
-	ldrh r1, [r4, r1]
-	ldr r4, _02257E6C ; =0x000003DE
-	mov r2, #0
-_02257E48:
-	ldrh r5, [r3]
-	lsl r5, r5, #4
-	add r5, r0, r5
-	ldrh r5, [r5, r4]
-	cmp r1, r5
-	beq _02257E5C
-	add r2, r2, #1
-	add r3, r3, #2
-	cmp r2, #6
-	blo _02257E48
-_02257E5C:
-	cmp r2, #6
-	bne _02257E66
-	mov r0, #1
-	pop {r4, r5}
-	bx lr
-_02257E66:
-	mov r0, #0
-	pop {r4, r5}
-	bx lr
-	.balign 4, 0
-_02257E6C: .word 0x000003DE
-_02257E70: .word ov12_0226CB70
-	thumb_func_end CheckLegalMeFirstMove
-
-	thumb_func_start GetItemVar
-GetItemVar: ; 0x02257E74
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r0, r1, #0
-	mov r1, #0
-	add r4, r2, #0
-	bl GetItemIndexMapping
-	add r1, r0, #0
-	ldr r0, _02257E94 ; =0x00002120
-	ldr r0, [r5, r0]
-	bl GetItemDataPtrFromArray
-	add r1, r4, #0
-	bl GetItemAttr_PreloadedItemData
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-_02257E94: .word 0x00002120
-	thumb_func_end GetItemVar
-
-	thumb_func_start ov12_02257E98
-ov12_02257E98: ; 0x02257E98
-	push {r3, r4, r5, r6, r7, lr}
-	add r7, r0, #0
-	add r5, r2, #0
-	bl BattleSystem_GetMaxBattlers
-	add r6, r0, #0
-	mov r4, #0
-	cmp r6, #0
-	ble _02257EBC
-_02257EAA:
-	add r0, r7, #0
-	add r1, r4, #0
-	bl BattleSystem_GetFieldSide
-	cmp r5, r0
-	beq _02257EBC
-	add r4, r4, #1
-	cmp r4, r6
-	blt _02257EAA
-_02257EBC:
-	add r0, r4, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov12_02257E98
-
-	thumb_func_start ov12_02257EC0
-ov12_02257EC0: ; 0x02257EC0
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0x1c
-	str r0, [sp, #4]
-	add r5, r1, #0
-	bl BattleSystem_GetMaxBattlers
-	str r0, [sp, #0x10]
-	mov r0, #0
-	str r0, [sp, #0x14]
-	ldr r0, [sp, #0x10]
-	sub r0, r0, #1
-	str r0, [sp, #0x18]
-	cmp r0, #0
-	ble _02257F46
-_02257EDC:
-	ldr r0, [sp, #0x14]
-	add r7, r0, #1
-	ldr r0, [sp, #0x10]
-	cmp r7, r0
-	bge _02257F3A
-	ldr r0, [sp, #0x14]
-	add r0, r5, r0
-	str r0, [sp, #0xc]
-_02257EEC:
-	ldr r1, [sp, #0xc]
-	ldr r0, _02257F4C ; =0x000021E8
-	ldrb r6, [r1, r0]
-	add r1, r5, r7
-	ldrb r4, [r1, r0]
-	lsl r0, r6, #4
-	str r1, [sp, #8]
-	add r1, r5, r0
-	ldr r0, _02257F50 ; =0x000021B4
-	ldr r0, [r1, r0]
-	lsl r1, r4, #4
-	add r2, r5, r1
-	ldr r1, _02257F50 ; =0x000021B4
-	ldr r1, [r2, r1]
-	cmp r0, r1
-	bne _02257F32
-	cmp r0, #1
-	beq _02257F14
-	mov r0, #1
-	b _02257F16
-_02257F14:
-	mov r0, #0
-_02257F16:
-	str r0, [sp]
-	ldr r0, [sp, #4]
-	add r1, r5, #0
-	add r2, r6, #0
-	add r3, r4, #0
-	bl CheckSortSpeed
-	cmp r0, #0
-	beq _02257F32
-	ldr r1, [sp, #0xc]
-	ldr r0, _02257F4C ; =0x000021E8
-	strb r4, [r1, r0]
-	ldr r1, [sp, #8]
-	strb r6, [r1, r0]
-_02257F32:
-	ldr r0, [sp, #0x10]
-	add r7, r7, #1
-	cmp r7, r0
-	blt _02257EEC
-_02257F3A:
-	ldr r0, [sp, #0x14]
-	add r1, r0, #1
-	ldr r0, [sp, #0x18]
-	str r1, [sp, #0x14]
-	cmp r1, r0
-	blt _02257EDC
-_02257F46:
-	add sp, #0x1c
-	pop {r4, r5, r6, r7, pc}
-	nop
-_02257F4C: .word 0x000021E8
-_02257F50: .word 0x000021B4
-	thumb_func_end ov12_02257EC0
-
-	thumb_func_start CheckStatusEffectsSubstitute
-CheckStatusEffectsSubstitute: ; 0x02257F54
-	push {r4, r5}
-	mov r4, #0xc0
-	mul r4, r1
-	add r5, r0, r4
-	ldr r0, _02257F94 ; =0x00002DB0
-	mov r1, #1
-	ldr r4, [r5, r0]
-	lsl r1, r1, #0x18
-	mov r3, #0
-	tst r1, r4
-	bne _02257F74
-	add r0, #0x10
-	ldr r1, [r5, r0]
-	ldr r0, _02257F98 ; =0x200400C0
-	tst r0, r1
-	beq _02257F8C
-_02257F74:
-	ldr r4, _02257F9C ; =ov12_0226CBDC
-	mov r1, #0
-_02257F78:
-	ldr r0, [r4]
-	cmp r2, r0
-	bne _02257F82
-	mov r3, #1
-	b _02257F8E
-_02257F82:
-	add r1, r1, #1
-	add r4, r4, #4
-	cmp r1, #0xa
-	blo _02257F78
-	b _02257F8E
-_02257F8C:
-	mov r3, #1
-_02257F8E:
-	add r0, r3, #0
-	pop {r4, r5}
-	bx lr
-	.balign 4, 0
-_02257F94: .word 0x00002DB0
-_02257F98: .word 0x200400C0
-_02257F9C: .word ov12_0226CBDC
-	thumb_func_end CheckStatusEffectsSubstitute
-
 	thumb_func_start CheckItemEffectOnUTurn
 CheckItemEffectOnUTurn: ; 0x02257FA0
 	push {r4, r5, r6, r7, lr}
@@ -1452,15 +1211,17 @@ sCritChance: ; 0x0226CB48
 sSpeedHalvingItemEffects: ; 0x0226CB50
 	.byte HOLD_EFFECT_EXP_UP_SPEED_DOWN, HOLD_EFFECT_SPEED_DOWN_GROUNDED, HOLD_EFFECT_LVLUP_HP_EV_UP, HOLD_EFFECT_LVLUP_ATK_EV_UP, HOLD_EFFECT_LVLUP_DEF_EV_UP, HOLD_EFFECT_LVLUP_SPEED_EV_UP, HOLD_EFFECT_LVLUP_SPATK_EV_UP, HOLD_EFFECT_LVLUP_SPDEF_EV_UP
 
-ov12_0226CB58: ; 0x0226CB58
-	.byte 0x90, 0x00, 0x66, 0x00, 0xA6, 0x00, 0x77, 0x00
-	.byte 0xE3, 0x00, 0xA5, 0x00
+.public sEncoreFailMoves
+sEncoreFailMoves: ; 0x0226CB58
+	.short MOVE_TRANSFORM, MOVE_MIMIC, MOVE_SKETCH, MOVE_MIRROR_MOVE
+	.short MOVE_ENCORE, MOVE_STRUGGLE
 
 ov12_0226CB64: ; 0x0226CB64
 	.byte 0x29, 0x00, 0x57, 0x00, 0x58, 0x00, 0x59, 0x00, 0x90, 0x00, 0xE3, 0x00
 
-ov12_0226CB70: ; 0x0226CB70
-	.byte 0x44, 0x00, 0xF3, 0x00, 0xA8, 0x00, 0x57, 0x01, 0x08, 0x01, 0xC0, 0x01
+.public sMeFirstUnuseableMoves
+sMeFirstUnuseableMoves: ; 0x0226CB70
+	.short MOVE_COUNTER, MOVE_MIRROR_COAT, MOVE_THIEF, MOVE_COVET, MOVE_FOCUS_PUNCH, MOVE_CHATTER
 
 .public sGravityUnusableMoves
 sGravityUnusableMoves: ; 0x0226CB7C
@@ -1487,6 +1248,7 @@ sPunchingMoves: ; 0x0226CBBE
 	.short MOVE_FIRE_PUNCH, MOVE_THUNDER_PUNCH, MOVE_MACH_PUNCH, MOVE_FOCUS_PUNCH, MOVE_DIZZY_PUNCH, MOVE_DYNAMIC_PUNCH, MOVE_HAMMER_ARM, MOVE_MEGA_PUNCH
 	.short MOVE_COMET_PUNCH, MOVE_METEOR_MASH, MOVE_SHADOW_PUNCH, MOVE_DRAIN_PUNCH, MOVE_BULLET_PUNCH, MOVE_SKY_UPPERCUT
 
+.public ov12_0226CBDC
 ov12_0226CBDC: ; 0x0226CBDC
 	.byte 0x0F, 0x00, 0x00, 0x00
 	.byte 0x10, 0x00, 0x00, 0x00, 0x11, 0x00, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00, 0x13, 0x00, 0x00, 0x00

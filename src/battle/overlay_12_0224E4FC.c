@@ -6381,3 +6381,100 @@ BOOL CheckLegalMetronomeMove(BattleSystem *bsys, BATTLECONTEXT *ctx, int battler
     
     return (sMetronomeUnuseableMoves[i] == 0xFFFF);
 }
+
+extern u16 sEncoreFailMoves[6];
+
+BOOL IsMoveEncored(BATTLECONTEXT *ctx, u16 moveNo) {
+    int i = 0;
+    
+    do {
+        if (ctx->unk_334.moveData[sEncoreFailMoves[i]].effect == ctx->unk_334.moveData[moveNo].effect) {
+            break;
+        }
+        i++;
+    } while (i < NELEMS(sEncoreFailMoves));
+    
+    return (i == NELEMS(sEncoreFailMoves));
+}
+
+extern u16 sMeFirstUnuseableMoves[6];
+
+BOOL CheckLegalMeFirstMove(BATTLECONTEXT *ctx, u16 moveNo) {
+    int i = 0;
+    
+    do {
+        if (ctx->unk_334.moveData[sMeFirstUnuseableMoves[i]].effect == ctx->unk_334.moveData[moveNo].effect) {
+            break;
+        }
+        i++;
+    } while (i < NELEMS(sMeFirstUnuseableMoves));
+    
+    return (i == NELEMS(sMeFirstUnuseableMoves));
+}
+
+s32 GetItemVar(BATTLECONTEXT *ctx, u16 itemNo, u16 var) {
+    ItemData *itemData;
+    u32 index = GetItemIndexMapping(itemNo, 0);
+    itemData = GetItemDataPtrFromArray(ctx->unk_334.itemData, index);
+    
+    return GetItemAttr_PreloadedItemData(itemData, var);   
+}
+
+int ov12_02257E98(BattleSystem *bsys, BATTLECONTEXT *ctx, int side) {
+    int battlerId;
+    int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+    
+    for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
+        if (BattleSystem_GetFieldSide(bsys, battlerId) == side) {
+            break;
+        }
+    }
+    
+    return battlerId;
+}
+
+void ov12_02257EC0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int i, j;
+    int battlerId1;
+    int battlerId2;
+    int flag;
+    int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+    
+    for (i = 0; i < maxBattlers - 1; i++) {
+        for (j = i + 1; j < maxBattlers; j++) {
+            battlerId1 = ctx->unk_21E8[i];
+            battlerId2 = ctx->unk_21E8[j];
+            if (ctx->unk_21A8[battlerId1][3] == ctx->unk_21A8[battlerId2][3]) {
+                if (ctx->unk_21A8[battlerId1][3] != 1) {
+                    flag = 1;
+                } else {
+                    flag = 0;
+                }
+                if (CheckSortSpeed(bsys, ctx, battlerId1, battlerId2, flag)) {
+                    ctx->unk_21E8[i] = battlerId2;
+                    ctx->unk_21E8[j] = battlerId1;
+                }
+            }
+        }
+    }
+}
+
+extern int ov12_0226CBDC[10];
+
+BOOL CheckStatusEffectsSubstitute(BATTLECONTEXT *ctx, int battlerId, int status) {
+    int i;
+    BOOL ret = FALSE;
+    
+    if ((ctx->battleMons[battlerId].status2 & STATUS2_SUBSTITUTE) || (ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_SUBSTITUTE_HIDE)) {
+        for (i = 0; i < NELEMS(ov12_0226CBDC); i++) {
+            if (ov12_0226CBDC[i] == status) {
+                ret = TRUE;
+                break;
+            }
+        }
+    } else {
+        ret = TRUE;
+    }
+    
+    return ret;
+}
