@@ -21,7 +21,7 @@ typedef struct BgTemplate {
     u32 mosaic;
 } BgTemplate;
 
-typedef struct Bg {
+typedef struct Background {
     void *tilemapBuffer;
     u32 bufferSize;
     u32 baseTile;
@@ -39,20 +39,20 @@ typedef struct Bg {
     fx32 yScale;
     fx32 centerX;
     fx32 centerY;
-} Bg;
+} Background;
 
 typedef struct BgConfig {
     HeapID heapId;
     u16 scrollScheduled;
     u16 bufferTransferScheduled;
-    Bg bgs[8];
+    Background bgs[8];
 } BgConfig;
 
-typedef struct BITMAP {
+typedef struct Bitmap {
     const u8 *pixels;
     u16 width;
     u16 height;
-} BITMAP;
+} Bitmap;
 
 typedef struct WindowTemplate {
     u8 bgId;
@@ -213,19 +213,19 @@ void BG_SetMaskColor(u8 bgId, u16 value);
 void LoadRectToBgTilemapRect(BgConfig *bgConfig, u8 bgId, const void *buffer, u8 destX, u8 destY, u8 width, u8 height);
 void CopyToBgTilemapRect(BgConfig *bgConfig, u8 bgId, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const void *buffer, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight);
 void CopyRectToBgTilemapRect(BgConfig *bgConfig, u8 bgId, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const void *buffer, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight);
-void FillBgTilemapRect(BgConfig *bgConfig, u8 layer, u16 value, u8 x, u8 y, u8 width, u8 height, u8 mode);
-void BgTilemapRectChangePalette(BgConfig *bgConfig, u8 layer, u8 x, u8 y, u8 width, u8 height, u8 palette);
-void BgClearTilemapBufferAndCommit(BgConfig *bgConfig, u8 layer);
-void BgFillTilemapBufferAndCommit(BgConfig *bgConfig, u8 layer, u16 value);
-void BgFillTilemapBufferAndSchedule(BgConfig *bgConfig, u8 layer, u16 value);
-void *BgGetCharPtr(u8 layer);
-u8 *Convert4bppTo8bpp(u8 *src4Bpp, u32 size, u8 paletteNum, HeapID heap_id);
-void *GetBgTilemapBuffer(BgConfig *bgConfig, u8 layer);
-fx32 GetBgHOffset(BgConfig *bgConfig, u8 layer);
-u8 GetBgColorMode(BgConfig *bgConfig, u8 layer);
-u16 GetBgPriority(BgConfig *bgConfig, u8 layer);
-void BlitBitmapRect4Bit(const BITMAP *src, const BITMAP *dst, u16 srcX, u16 srcY, u16 dstX, u16 dstY, u16 width, u16 height, u16 colorKey);
-Window *AllocWindows(HeapID heapId, int num);
+void FillBgTilemapRect(BgConfig *bgConfig, u8 bgId, u16 fillValue, u8 x, u8 y, u8 width, u8 height, u8 mode);
+void BgTilemapRectChangePalette(BgConfig *bgConfig, u8 bgId, u8 x, u8 y, u8 width, u8 height, u8 palette);
+void BgClearTilemapBufferAndCommit(BgConfig *bgConfig, u8 bgId);
+void BgFillTilemapBufferAndCommit(BgConfig *bgConfig, u8 bgId, u16 fillValue);
+void BgFillTilemapBufferAndSchedule(BgConfig *bgConfig, u8 bgId, u16 fillValue);
+void *BgGetCharPtr(u8 bgId);
+u8 *Convert4bppTo8bpp(u8 *src4Bpp, u32 size, u8 paletteNum, HeapID heapId);
+void *GetBgTilemapBuffer(BgConfig *bgConfig, u8 bgId);
+fx32 GetBgHOffset(BgConfig *bgConfig, u8 bgId);
+u8 GetBgColorMode(BgConfig *bgConfig, u8 bgId);
+u8 GetBgPriority(BgConfig *bgConfig, u8 bgId);
+void BlitBitmapRect4Bit(const Bitmap *src, const Bitmap *dest, u16 srcX, u16 srcY, u16 destX, u16 destY, u16 width, u16 height, u16 colorKey);
+Window *AllocWindows(HeapID heapId, s32 num);
 void InitWindow(Window *window);
 BOOL WindowIsInUse(const Window *window);
 void AddWindowParameterized(BgConfig *bgConfig, Window *window, u8 layer, u8 x, u8 y, u8 width, u8 height, u8 paletteNum, u16 baseTile);

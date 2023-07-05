@@ -4,7 +4,7 @@
 
 static u8 TranslateGFBgModePairToGXScreenSize(enum GFBgScreenSize size, enum GFBgType type);
 static void GetBgScreenDimensions(u32 screenSize, u8 *widthPtr, u8 *heightPtr);
-static void Bg_SetPosText(Bg *bg, enum BgPosAdjustOp op, fx32 value);
+static void Bg_SetPosText(Background *bg, enum BgPosAdjustOp op, fx32 value);
 static void BgAffineReset(BgConfig *bgConfig, u8 bgId);
 static void CopyOrUncompressTilemapData(const void *src, void *dest, u32 size);
 static void LoadBgVramScr(u8 bgId, const void *data, u32 offset, u32 size);
@@ -12,17 +12,17 @@ static void BG_LoadCharPixelData(BgConfig *bgConfig, u8 bgId, const void *buffer
 static void LoadBgVramChar(u8 bgId, const void *data, u32 offset, u32 size);
 static u16 GetTileMapIndexFromCoords(u8 x, u8 y, u8 size, u8 mode);
 static u16 GetSrcTileMapIndexFromCoords(u8 x, u8 y, u8 width, u8 height);
-static void CopyToBgTilemapRectText(Bg *bg, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const u16 *buffer, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight, u8 mode);
-static void CopyBgTilemapRectAffine(Bg *bg, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const u8 *buf, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight, u8 mode);
-static void FillBgTilemapRectText(Bg *bg, u16 value, u8 x, u8 y, u8 width, u8 height, u8 mode);
-static void FillBgTilemapRectAffine(Bg *bg, u8 value, u8 x, u8 y, u8 width, u8 height);
-static void BgClearTilemapBufferAndSchedule(BgConfig *bgConfig, u8 layer);
+static void CopyToBgTilemapRectText(Background *bg, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const u16 *buffer, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight, u8 mode);
+static void CopyBgTilemapRectAffine(Background *bg, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const u8 *buffer, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight, u8 mode);
+static void FillBgTilemapRectText(Background *bg, u16 fillValue, u8 x, u8 y, u8 width, u8 height, u8 mode);
+static void FillBgTilemapRectAffine(Background *bg, u8 fillValue, u8 x, u8 y, u8 width, u8 height);
+static void BgClearTilemapBufferAndSchedule(BgConfig *bgConfig, u8 bgId);
 static void Convert4bppTo8bppInternal(u8 *src4bpp, u32 size, u8 *dest8bpp, u8 paletteNum);
-static fx32 GetBgVOffset(BgConfig *bgConfig, u8 layer);
-static u16 GetBgRotation(BgConfig *bgConfig, u8 layer);
-static void BlitBitmapRect8bit(const BITMAP *src, const BITMAP *dst, u16 srcX, u16 srcY, u16 dstX, u16 dstY, u16 width, u16 height, u16 colorKey);
-static void FillBitmapRect4bit(const BITMAP *surface, u16 x, u16 y, u16 width, u16 height, u8 fillValue);
-static void FillBitmapRect8bit(const BITMAP *surface, u16 x, u16 y, u16 width, u16 height, u8 fillValue);
+static fx32 GetBgVOffset(BgConfig *bgConfig, u8 bgId);
+static u16 GetBgRotation(BgConfig *bgConfig, u8 bgId);
+static void BlitBitmapRect8bit(const Bitmap *src, const Bitmap *dest, u16 srcX, u16 srcY, u16 destX, u16 destY, u16 width, u16 height, u16 colorKey);
+static void FillBitmapRect4bit(const Bitmap *surface, u16 x, u16 y, u16 width, u16 height, u8 fillValue);
+static void FillBitmapRect8bit(const Bitmap *surface, u16 x, u16 y, u16 width, u16 height, u8 fillValue);
 static void PutWindowTilemap_TextMode(Window *window);
 static void PutWindowTilemap_AffineMode(Window *window);
 static void ClearWindowTilemapText(Window *window);
@@ -39,7 +39,7 @@ static void ScrollWindow_Text(Window *window, u8 direction, u8 y, u8 fillValue);
 static void ScrollWindow_Affine(Window *window, u8 direction, u8 y, u8 fillValue);
 static void BgConfig_HandleScheduledBufferTransfers(BgConfig *bgConfig);
 static void BgConfig_HandleScheduledScrolls(BgConfig *bgConfig);
-static void Bg_SetAffineScale(Bg *bg, enum BgPosAdjustOp op, fx32 value);
+static void Bg_SetAffineScale(Background *bg, enum BgPosAdjustOp op, fx32 value);
 static void ApplyFlipFlagsToTile(BgConfig *bgConfig, u8 flags, u8 *tile);
 
 static const u8 sTilemapWidthByBufferSize[] = {
@@ -698,7 +698,7 @@ void Bg_SetTextDimAndAffineParams(BgConfig *bgConfig, u8 bgId, enum BgPosAdjustO
     SetBgAffine(bgConfig, bgId, mtx, centerX, centerY);
 }
 
-static void Bg_SetPosText(Bg *bg, enum BgPosAdjustOp op, fx32 value) {
+static void Bg_SetPosText(Background *bg, enum BgPosAdjustOp op, fx32 value) {
     switch (op) {
         case BG_POS_OP_SET_X:
             bg->hOffset = value;
@@ -1039,7 +1039,7 @@ void CopyRectToBgTilemapRect(BgConfig *bgConfig, u8 bgId, u8 destX, u8 destY, u8
     }
 }
 
-static void CopyToBgTilemapRectText(Bg *bg, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const u16 *buffer, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight, u8 mode) {
+static void CopyToBgTilemapRectText(Background *bg, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const u16 *buffer, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight, u8 mode) {
     u16 *tilemapBuffer = bg->tilemapBuffer;
     
     if (tilemapBuffer == NULL) {
@@ -1079,15 +1079,19 @@ static void CopyToBgTilemapRectText(Bg *bg, u8 destX, u8 destY, u8 destWidth, u8
     }
 }
 
-static void CopyBgTilemapRectAffine(Bg *bg, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const u8 *buf, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight, u8 mode) {
-    u8 *buffer;
-    u8 screenWidth, screenHeight;
-    u8 i, j;
-    if (bg->tilemapBuffer == NULL) {
+static void CopyBgTilemapRectAffine(Background *bg, u8 destX, u8 destY, u8 destWidth, u8 destHeight, const u8 *buffer, u8 srcX, u8 srcY, u8 srcWidth, u8 srcHeight, u8 mode) {
+    u8 *tilemapBuffer = bg->tilemapBuffer;
+
+    if (tilemapBuffer == NULL) {
         return;
     }
-    buffer = bg->tilemapBuffer;
+
+    u8 screenWidth;
+    u8 screenHeight;
     GetBgScreenDimensions(bg->size, &screenWidth, &screenHeight);
+
+    u8 i;
+    u8 j;
     if (mode == TILEMAP_COPY_SRC_FLAT) {
         for (i = 0; i < destHeight; i++) {
             if (destY + i >= screenHeight || srcY + i >= srcHeight) {
@@ -1097,7 +1101,7 @@ static void CopyBgTilemapRectAffine(Bg *bg, u8 destX, u8 destY, u8 destWidth, u8
                 if (destX + j >= screenWidth || srcX + j >= srcWidth) {
                     break;
                 }
-                buffer[GetTileMapIndexFromCoords(destX + j, destY + i, bg->size, bg->mode)] = buf[(srcY + i) * srcWidth + srcX + j];
+                tilemapBuffer[GetTileMapIndexFromCoords(destX + j, destY + i, bg->size, bg->mode)] = buffer[(srcY + i) * srcWidth + srcX + j];
             }
         }
     } else {
@@ -1109,30 +1113,33 @@ static void CopyBgTilemapRectAffine(Bg *bg, u8 destX, u8 destY, u8 destWidth, u8
                 if (destX + j >= screenWidth || srcX + j >= srcWidth) {
                     break;
                 }
-                buffer[GetTileMapIndexFromCoords(destX + j, destY + i, bg->size, bg->mode)] = buf[GetSrcTileMapIndexFromCoords(srcX + j, srcY + i, srcWidth, srcHeight)];
+                tilemapBuffer[GetTileMapIndexFromCoords(destX + j, destY + i, bg->size, bg->mode)] = buffer[GetSrcTileMapIndexFromCoords(srcX + j, srcY + i, srcWidth, srcHeight)];
             }
         }
     }
 }
 
-void FillBgTilemapRect(BgConfig *bgConfig, u8 layer, u16 value, u8 x, u8 y, u8 width, u8 height, u8 mode) {
-    if (bgConfig->bgs[layer].mode != GF_BG_TYPE_AFFINE) {
-        FillBgTilemapRectText(&bgConfig->bgs[layer], value, x, y, width, height, mode);
+void FillBgTilemapRect(BgConfig *bgConfig, u8 bgId, u16 fillValue, u8 x, u8 y, u8 width, u8 height, u8 mode) {
+    if (bgConfig->bgs[bgId].mode != GF_BG_TYPE_AFFINE) {
+        FillBgTilemapRectText(&bgConfig->bgs[bgId], fillValue, x, y, width, height, mode);
     } else {
-        FillBgTilemapRectAffine(&bgConfig->bgs[layer], value, x, y, width, height);
+        FillBgTilemapRectAffine(&bgConfig->bgs[bgId], fillValue, x, y, width, height);
     }
 }
 
-static void FillBgTilemapRectText(Bg *bg, u16 value, u8 x, u8 y, u8 width, u8 height, u8 mode) {
-    u16 *buffer;
-    u8 screenWidth, screenHeight;
-    u8 i, j;
-    u16 pos;
-    if (bg->tilemapBuffer == NULL) {
+static void FillBgTilemapRectText(Background *bg, u16 fillValue, u8 x, u8 y, u8 width, u8 height, u8 mode) {
+    u16 *tilemapBuffer = bg->tilemapBuffer;
+
+    if (tilemapBuffer == NULL) {
         return;
     }
-    buffer = bg->tilemapBuffer;
+
+    u8 screenWidth;
+    u8 screenHeight;
     GetBgScreenDimensions(bg->size, &screenWidth, &screenHeight);
+
+    u8 i;
+    u8 j;
     for (i = y; i < y + height; i++) {
         if (i >= screenHeight) {
             break;
@@ -1141,28 +1148,31 @@ static void FillBgTilemapRectText(Bg *bg, u16 value, u8 x, u8 y, u8 width, u8 he
             if (j >= screenWidth) {
                 break;
             }
-            pos = GetTileMapIndexFromCoords(j, i, bg->size, bg->mode);
+            u16 pos = GetTileMapIndexFromCoords(j, i, bg->size, bg->mode);
             if (mode == TILEMAP_FILL_OVWT_PAL) {
-                buffer[pos] = value;
+                tilemapBuffer[pos] = fillValue;
             } else if (mode == TILEMAP_FILL_KEEP_PAL) {
-                buffer[pos] = (buffer[pos] & 0xF000) + (value & 0xFFF);
+                tilemapBuffer[pos] = (tilemapBuffer[pos] & 0xF000) + (fillValue & 0xFFF);
             } else {
-                buffer[pos] = (mode << 12) + (value & 0xFFF);
+                tilemapBuffer[pos] = (mode << 12) + (fillValue & 0xFFF);
             }
         }
     }
 }
 
-static void FillBgTilemapRectAffine(Bg *bg, u8 value, u8 x, u8 y, u8 width, u8 height) {
-    u8 *buffer;
-    u8 screenWidth, screenHeight;
-    u8 i, j;
-    u16 pos;
-    if (bg->tilemapBuffer == NULL) {
+static void FillBgTilemapRectAffine(Background *bg, u8 fillValue, u8 x, u8 y, u8 width, u8 height) {
+    u8 *tilemapBuffer = bg->tilemapBuffer;
+
+    if (tilemapBuffer == NULL) {
         return;
     }
-    buffer = bg->tilemapBuffer;
+
+    u8 screenWidth;
+    u8 screenHeight;
     GetBgScreenDimensions(bg->size, &screenWidth, &screenHeight);
+
+    u8 i;
+    u8 j;
     for (i = y; i < y + height; i++) {
         if (i >= screenHeight) {
             break;
@@ -1171,22 +1181,24 @@ static void FillBgTilemapRectAffine(Bg *bg, u8 value, u8 x, u8 y, u8 width, u8 h
             if (j >= screenWidth) {
                 break;
             }
-            pos = GetTileMapIndexFromCoords(j, i, bg->size, bg->mode);
-            buffer[pos] = value;
+            tilemapBuffer[GetTileMapIndexFromCoords(j, i, bg->size, bg->mode)] = fillValue;
         }
     }
 }
 
-void BgTilemapRectChangePalette(BgConfig *bgConfig, u8 layer, u8 x, u8 y, u8 width, u8 height, u8 palette) {
-    u16 *buffer;
-    u8 screenWidth, screenHeight;
-    u8 i, j;
-    u16 pos;
-    if (bgConfig->bgs[layer].tilemapBuffer == NULL) {
+void BgTilemapRectChangePalette(BgConfig *bgConfig, u8 bgId, u8 x, u8 y, u8 width, u8 height, u8 palette) {
+    u16 *tilemapBuffer = bgConfig->bgs[bgId].tilemapBuffer;
+
+    if (tilemapBuffer == NULL) {
         return;
     }
-    buffer = bgConfig->bgs[layer].tilemapBuffer;
-    GetBgScreenDimensions(bgConfig->bgs[layer].size, &screenWidth, &screenHeight);
+
+    u8 screenWidth;
+    u8 screenHeight;
+    GetBgScreenDimensions(bgConfig->bgs[bgId].size, &screenWidth, &screenHeight);
+
+    u8 i;
+    u8 j;
     for (i = y; i < y + height; i++) {
         if (i >= screenHeight) {
             break;
@@ -1195,58 +1207,58 @@ void BgTilemapRectChangePalette(BgConfig *bgConfig, u8 layer, u8 x, u8 y, u8 wid
             if (j >= screenWidth) {
                 break;
             }
-            pos = GetTileMapIndexFromCoords(j, i, bgConfig->bgs[layer].size, bgConfig->bgs[layer].mode);
-            buffer[pos] = (buffer[pos] & 0xFFF) | (palette << 12);
+            u16 pos = GetTileMapIndexFromCoords(j, i, bgConfig->bgs[bgId].size, bgConfig->bgs[bgId].mode);
+            tilemapBuffer[pos] = (tilemapBuffer[pos] & 0xFFF) | (palette << 12);
         }
     }
 }
 
-void BgClearTilemapBufferAndCommit(BgConfig *bgConfig, u8 layer) {
-    if (bgConfig->bgs[layer].tilemapBuffer != NULL) {
-        MI_CpuClear16(bgConfig->bgs[layer].tilemapBuffer, bgConfig->bgs[layer].bufferSize);
-        BgCommitTilemapBufferToVram(bgConfig, layer);
+void BgClearTilemapBufferAndCommit(BgConfig *bgConfig, u8 bgId) {
+    if (bgConfig->bgs[bgId].tilemapBuffer != NULL) {
+        MI_CpuClear16(bgConfig->bgs[bgId].tilemapBuffer, bgConfig->bgs[bgId].bufferSize);
+        BgCommitTilemapBufferToVram(bgConfig, bgId);
     }
 }
 
-static void BgClearTilemapBufferAndSchedule(BgConfig *bgConfig, u8 layer) {
-    if (bgConfig->bgs[layer].tilemapBuffer != NULL) {
-        MI_CpuClear16(bgConfig->bgs[layer].tilemapBuffer, bgConfig->bgs[layer].bufferSize);
-        ScheduleBgTilemapBufferTransfer(bgConfig, layer);
+static void BgClearTilemapBufferAndSchedule(BgConfig *bgConfig, u8 bgId) {
+    if (bgConfig->bgs[bgId].tilemapBuffer != NULL) {
+        MI_CpuClear16(bgConfig->bgs[bgId].tilemapBuffer, bgConfig->bgs[bgId].bufferSize);
+        ScheduleBgTilemapBufferTransfer(bgConfig, bgId);
     }
 }
 
-void BgFillTilemapBufferAndCommit(BgConfig *bgConfig, u8 layer, u16 value) {
-    if (bgConfig->bgs[layer].tilemapBuffer != NULL) {
-        MI_CpuFill16(bgConfig->bgs[layer].tilemapBuffer, value, bgConfig->bgs[layer].bufferSize);
-        BgCommitTilemapBufferToVram(bgConfig, layer);
+void BgFillTilemapBufferAndCommit(BgConfig *bgConfig, u8 bgId, u16 fillValue) {
+    if (bgConfig->bgs[bgId].tilemapBuffer != NULL) {
+        MI_CpuFill16(bgConfig->bgs[bgId].tilemapBuffer, fillValue, bgConfig->bgs[bgId].bufferSize);
+        BgCommitTilemapBufferToVram(bgConfig, bgId);
     }
 }
 
-void BgFillTilemapBufferAndSchedule(BgConfig *bgConfig, u8 layer, u16 value) {
-    if (bgConfig->bgs[layer].tilemapBuffer != NULL) {
-        MI_CpuFill16(bgConfig->bgs[layer].tilemapBuffer, value, bgConfig->bgs[layer].bufferSize);
-        ScheduleBgTilemapBufferTransfer(bgConfig, layer);
+void BgFillTilemapBufferAndSchedule(BgConfig *bgConfig, u8 bgId, u16 fillValue) {
+    if (bgConfig->bgs[bgId].tilemapBuffer != NULL) {
+        MI_CpuFill16(bgConfig->bgs[bgId].tilemapBuffer, fillValue, bgConfig->bgs[bgId].bufferSize);
+        ScheduleBgTilemapBufferTransfer(bgConfig, bgId);
     }
 }
 
-void *BgGetCharPtr(u8 layer) {
-    switch (layer) {
-    case GF_BG_LYR_MAIN_0:
-        return G2_GetBG0CharPtr();
-    case GF_BG_LYR_MAIN_1:
-        return G2_GetBG1CharPtr();
-    case GF_BG_LYR_MAIN_2:
-        return G2_GetBG2CharPtr();
-    case GF_BG_LYR_MAIN_3:
-        return G2_GetBG3CharPtr();
-    case GF_BG_LYR_SUB_0:
-        return G2S_GetBG0CharPtr();
-    case GF_BG_LYR_SUB_1:
-        return G2S_GetBG1CharPtr();
-    case GF_BG_LYR_SUB_2:
-        return G2S_GetBG2CharPtr();
-    case GF_BG_LYR_SUB_3:
-        return G2S_GetBG3CharPtr();
+void *BgGetCharPtr(u8 bgId) {
+    switch (bgId) {
+        case GF_BG_LYR_MAIN_0:
+            return G2_GetBG0CharPtr();
+        case GF_BG_LYR_MAIN_1:
+            return G2_GetBG1CharPtr();
+        case GF_BG_LYR_MAIN_2:
+            return G2_GetBG2CharPtr();
+        case GF_BG_LYR_MAIN_3:
+            return G2_GetBG3CharPtr();
+        case GF_BG_LYR_SUB_0:
+            return G2S_GetBG0CharPtr();
+        case GF_BG_LYR_SUB_1:
+            return G2S_GetBG1CharPtr();
+        case GF_BG_LYR_SUB_2:
+            return G2S_GetBG2CharPtr();
+        case GF_BG_LYR_SUB_3:
+            return G2S_GetBG3CharPtr();
     }
 
     return NULL;
@@ -1267,240 +1279,204 @@ static void Convert4bppTo8bppInternal(u8 *src4bpp, u32 size, u8 *dest8bpp, u8 pa
     }
 }
 
-u8 *Convert4bppTo8bpp(u8 *src4Bpp, u32 size, u8 paletteNum, HeapID heap_id) {
-    u8 *ptr = (u8*)AllocFromHeap(heap_id, size * 2);
+u8 *Convert4bppTo8bpp(u8 *src4Bpp, u32 size, u8 paletteNum, HeapID heapId) {
+    u8 *ptr = (u8*)AllocFromHeap(heapId, size * 2);
 
     Convert4bppTo8bppInternal(src4Bpp, size, ptr, paletteNum);
 
     return ptr;
 }
 
-void *GetBgTilemapBuffer(BgConfig *bgConfig, u8 layer) {
-    return bgConfig->bgs[layer].tilemapBuffer;
+void *GetBgTilemapBuffer(BgConfig *bgConfig, u8 bgId) {
+    return bgConfig->bgs[bgId].tilemapBuffer;
 }
 
-fx32 GetBgHOffset(BgConfig *bgConfig, u8 layer) {
-    return bgConfig->bgs[layer].hOffset;
+fx32 GetBgHOffset(BgConfig *bgConfig, u8 bgId) {
+    return bgConfig->bgs[bgId].hOffset;
 }
 
-static fx32 GetBgVOffset(BgConfig *bgConfig, u8 layer) {
-    return bgConfig->bgs[layer].vOffset;
+static fx32 GetBgVOffset(BgConfig *bgConfig, u8 bgId) {
+    return bgConfig->bgs[bgId].vOffset;
 }
 
-static u16 GetBgRotation(BgConfig *bgConfig, u8 layer) {
-    return bgConfig->bgs[layer].rotation;
+static u16 GetBgRotation(BgConfig *bgConfig, u8 bgId) {
+    return bgConfig->bgs[bgId].rotation;
 }
 
-u8 GetBgColorMode(BgConfig *bgConfig, u8 layer) {
-    return bgConfig->bgs[layer].colorMode;
+u8 GetBgColorMode(BgConfig *bgConfig, u8 bgId) {
+    return bgConfig->bgs[bgId].colorMode;
 }
 
-u16 GetBgPriority(BgConfig *bgConfig, u8 layer) {
-    switch (layer) {
-    case GF_BG_LYR_MAIN_0: {
-        GXBg01Control control = G2_GetBG0Control();
-        return (u8)control.priority;
+u8 GetBgPriority(BgConfig *bgConfig, u8 bgId) {
+    switch (bgId) {
+        case GF_BG_LYR_MAIN_0:
+            return G2_GetBG0Control().priority;
+        case GF_BG_LYR_MAIN_1:
+            return G2_GetBG1Control().priority;
+        case GF_BG_LYR_MAIN_2:
+            switch (bgConfig->bgs[bgId].mode) {
+                default:
+                case GF_BG_TYPE_TEXT:
+                    return G2_GetBG2ControlText().priority;
+                case GF_BG_TYPE_AFFINE:
+                    return G2_GetBG2ControlAffine().priority;
+                case GF_BG_TYPE_256x16PLTT:
+                    return G2_GetBG2Control256x16Pltt().priority;
+            }
+            break;
+        case GF_BG_LYR_MAIN_3:
+            switch (bgConfig->bgs[bgId].mode) {
+                default:
+                case GF_BG_TYPE_TEXT:
+                    return G2_GetBG3ControlText().priority;
+                case GF_BG_TYPE_AFFINE:
+                    return G2_GetBG3ControlAffine().priority;
+                case GF_BG_TYPE_256x16PLTT:
+                    return G2_GetBG3Control256x16Pltt().priority;
+            }
+            break;
+        case GF_BG_LYR_SUB_0:
+            return G2S_GetBG0Control().priority;
+        case GF_BG_LYR_SUB_1:
+            return G2S_GetBG1Control().priority;
+        case GF_BG_LYR_SUB_2:
+            switch (bgConfig->bgs[bgId].mode) {
+                default:
+                case GF_BG_TYPE_TEXT:
+                    return G2S_GetBG2ControlText().priority;
+                case GF_BG_TYPE_AFFINE:
+                    return G2S_GetBG2ControlAffine().priority;
+                case GF_BG_TYPE_256x16PLTT:
+                    return G2S_GetBG2Control256x16Pltt().priority;
+            }
+            break;
+        case GF_BG_LYR_SUB_3:
+            switch (bgConfig->bgs[bgId].mode) {
+                default:
+                case GF_BG_TYPE_TEXT:
+                    return G2S_GetBG3ControlText().priority;
+                case GF_BG_TYPE_AFFINE:
+                    return G2S_GetBG3ControlAffine().priority;
+                case GF_BG_TYPE_256x16PLTT:
+                    return G2S_GetBG3Control256x16Pltt().priority;
+            }
+            break;
     }
-    case GF_BG_LYR_MAIN_1: {
-        GXBg01Control control = G2_GetBG1Control();
-        return (u8)control.priority;
-    }
-    case GF_BG_LYR_MAIN_2:
-        switch (bgConfig->bgs[layer].mode) {
-        default:
-        case GF_BG_TYPE_TEXT: {
-            GXBg23ControlText control = G2_GetBG2ControlText();
-            return (u8)control.priority;
-        }
-        case GF_BG_TYPE_AFFINE: {
-            GXBg23ControlAffine control = G2_GetBG2ControlAffine();
-            return (u8)control.priority;
-        }
-        case GF_BG_TYPE_256x16PLTT: {
-            GXBg23Control256x16Pltt control = G2_GetBG2Control256x16Pltt();
-            return (u8)control.priority;
-        }
-        }
-    case GF_BG_LYR_MAIN_3:
-        switch (bgConfig->bgs[layer].mode) {
-        default:
-        case GF_BG_TYPE_TEXT: {
-            GXBg23ControlText control = G2_GetBG3ControlText();
-            return (u8)control.priority;
-        }
-        case GF_BG_TYPE_AFFINE: {
-            GXBg23ControlAffine control = G2_GetBG3ControlAffine();
-            return (u8)control.priority;
-        }
-        case GF_BG_TYPE_256x16PLTT: {
-            GXBg23Control256x16Pltt control = G2_GetBG3Control256x16Pltt();
-            return (u8)control.priority;
-        }
-        }
-    case GF_BG_LYR_SUB_0: {
-        GXBg01Control control = G2S_GetBG0Control();
-        return (u8)control.priority;
-    }
-    case GF_BG_LYR_SUB_1: {
-        GXBg01Control control = G2S_GetBG1Control();
-        return (u8)control.priority;
-    }
-    case GF_BG_LYR_SUB_2:
-        switch (bgConfig->bgs[layer].mode) {
-        default:
-        case GF_BG_TYPE_TEXT: {
-            GXBg23ControlText control = G2S_GetBG2ControlText();
-            return (u8)control.priority;
-        }
-        case GF_BG_TYPE_AFFINE: {
-            GXBg23ControlAffine control = G2S_GetBG2ControlAffine();
-            return (u8)control.priority;
-        }
-        case GF_BG_TYPE_256x16PLTT: {
-            GXBg23Control256x16Pltt control = G2S_GetBG2Control256x16Pltt();
-            return (u8)control.priority;
-        }
-        }
-    case GF_BG_LYR_SUB_3:
-        switch (bgConfig->bgs[layer].mode) {
-        default:
-        case GF_BG_TYPE_TEXT: {
-            GXBg23ControlText control = G2S_GetBG3ControlText();
-            return (u8)control.priority;
-        }
-        case GF_BG_TYPE_AFFINE: {
-            GXBg23ControlAffine control = G2S_GetBG3ControlAffine();
-            return (u8)control.priority;
-        }
-        case GF_BG_TYPE_256x16PLTT: {
-            GXBg23Control256x16Pltt control = G2S_GetBG3Control256x16Pltt();
-            return (u8)control.priority;
-        }
-        }
-    }
+
     return 0;
 }
 
 #define GetPixelAddressFromBlit4bpp(ptr, x, y, width) ((u8 *)((ptr) + (((x) >> 1) & 3) + (((x) << 2) & 0x3FE0) + ((((y) << 2) & 0x3FE0) * (width)) + (((u32)(((y) << 2) & 0x1C)))))
 #define GetPixelAddressFromBlit8bpp(ptr, x, y, width) ((u8 *)((ptr) + ((x) & 7) + (((x) << 3) & 0x7FC0) + ((((y) << 3) & 0x7FC0) * (width)) + (((u32)(((y) << 3) & 0x38)))))
-
 #define ConvertPixelsToTiles(x)    (((x) + ((x) & 7)) >> 3)
 
-void BlitBitmapRect4Bit(const BITMAP *src, const BITMAP *dst, u16 srcX, u16 srcY, u16 dstX, u16 dstY, u16 width, u16 height, u16 colorKey) {
+void BlitBitmapRect4Bit(const Bitmap *src, const Bitmap *dest, u16 srcX, u16 srcY, u16 destX, u16 destY, u16 width, u16 height, u16 colorKey) {
     int xEnd, yEnd;
-    int multiplierSrcY, multiplierDstY;
-    int loopSrcY, loopDstY;
-    int loopSrcX, loopDstX;
+    int multiplierSrcY, multiplierDestY;
+    int loopSrcY, loopDestY;
+    int loopSrcX, loopDestX;
     int toOrr, toShift;
-    u8 * pixelsSrc, * pixelsDst;
+    u8 *pixelsSrc, *pixelsDest;
 
-    if (dst->width - dstX < width) {
-        xEnd = dst->width - dstX + srcX;
+    if (dest->width - destX < width) {
+        xEnd = dest->width - destX + srcX;
     } else {
         xEnd = width + srcX;
     }
-    if (dst->height - dstY < height) {
-        yEnd = dst->height - dstY + srcY;
+    if (dest->height - destY < height) {
+        yEnd = dest->height - destY + srcY;
     } else {
         yEnd = height + srcY;
     }
     multiplierSrcY = ConvertPixelsToTiles(src->width);
-    multiplierDstY = ConvertPixelsToTiles(dst->width);
+    multiplierDestY = ConvertPixelsToTiles(dest->width);
 
     if (colorKey == 0xFFFF) {
-        for (loopSrcY = srcY, loopDstY = dstY; loopSrcY < yEnd; loopSrcY++, loopDstY++) {
-            for (loopSrcX = srcX, loopDstX = dstX; loopSrcX < xEnd; loopSrcX++, loopDstX++) {
+        for (loopSrcY = srcY, loopDestY = destY; loopSrcY < yEnd; loopSrcY++, loopDestY++) {
+            for (loopSrcX = srcX, loopDestX = destX; loopSrcX < xEnd; loopSrcX++, loopDestX++) {
                 pixelsSrc = GetPixelAddressFromBlit4bpp(src->pixels, loopSrcX, loopSrcY, multiplierSrcY);
-                pixelsDst = GetPixelAddressFromBlit4bpp(dst->pixels, loopDstX, loopDstY, multiplierDstY);
+                pixelsDest = GetPixelAddressFromBlit4bpp(dest->pixels, loopDestX, loopDestY, multiplierDestY);
 
                 toOrr = (*pixelsSrc >> ((loopSrcX & 1) * 4)) & 0xF;
-                toShift = (loopDstX & 1) * 4;
-                *pixelsDst = ((toOrr << toShift) | (*pixelsDst & (0xF0 >> toShift)));
+                toShift = (loopDestX & 1) * 4;
+                *pixelsDest = ((toOrr << toShift) | (*pixelsDest & (0xF0 >> toShift)));
             }
         }
     } else {
-        for (loopSrcY = srcY, loopDstY = dstY; loopSrcY < yEnd; loopSrcY++, loopDstY++) {
-            for (loopSrcX = srcX, loopDstX = dstX; loopSrcX < xEnd; loopSrcX++, loopDstX++) {
+        for (loopSrcY = srcY, loopDestY = destY; loopSrcY < yEnd; loopSrcY++, loopDestY++) {
+            for (loopSrcX = srcX, loopDestX = destX; loopSrcX < xEnd; loopSrcX++, loopDestX++) {
                 pixelsSrc = GetPixelAddressFromBlit4bpp(src->pixels, loopSrcX, loopSrcY, multiplierSrcY);
-                pixelsDst = GetPixelAddressFromBlit4bpp(dst->pixels, loopDstX, loopDstY, multiplierDstY);
+                pixelsDest = GetPixelAddressFromBlit4bpp(dest->pixels, loopDestX, loopDestY, multiplierDestY);
 
                 toOrr = (*pixelsSrc >> ((loopSrcX & 1) * 4)) & 0xF;
                 if (toOrr != colorKey) {
-                    toShift = (loopDstX & 1) * 4;
-                    *pixelsDst = (u8) ((toOrr << toShift) | (*pixelsDst & (0xF0 >> toShift)));
+                    toShift = (loopDestX & 1) * 4;
+                    *pixelsDest = (u8) ((toOrr << toShift) | (*pixelsDest & (0xF0 >> toShift)));
                 }
             }
         }
     }
 }
 
-static void BlitBitmapRect8bit(const BITMAP *src, const BITMAP *dst, u16 srcX, u16 srcY, u16 dstX, u16 dstY, u16 width, u16 height, u16 colorKey) {
+static void BlitBitmapRect8bit(const Bitmap *src, const Bitmap *dest, u16 srcX, u16 srcY, u16 destX, u16 destY, u16 width, u16 height, u16 colorKey) {
     int xEnd, yEnd;
-    int multiplierSrcY, multiplierDstY;
-    int loopSrcY, loopDstY;
-    int loopSrcX, loopDstX;
-    u8 * pixelsSrc, * pixelsDst;
+    int multiplierSrcY, multiplierDestY;
+    int loopSrcY, loopDestY;
+    int loopSrcX, loopDestX;
+    u8 *pixelsSrc, *pixelsDest;
 
-    if (dst->width - dstX < width) {
-        xEnd = dst->width - dstX + srcX;
+    if (dest->width - destX < width) {
+        xEnd = dest->width - destX + srcX;
     } else {
         xEnd = width + srcX;
     }
-    if (dst->height - dstY < height) {
-        yEnd = dst->height - dstY + srcY;
+    if (dest->height - destY < height) {
+        yEnd = dest->height - destY + srcY;
     } else {
         yEnd = height + srcY;
     }
     multiplierSrcY = ConvertPixelsToTiles(src->width);
-    multiplierDstY = ConvertPixelsToTiles(dst->width);
+    multiplierDestY = ConvertPixelsToTiles(dest->width);
 
     if (colorKey == 0xFFFF) {
-        for (loopSrcY = srcY, loopDstY = dstY; loopSrcY < yEnd; loopSrcY++, loopDstY++) {
-            for (loopSrcX = srcX, loopDstX = dstX; loopSrcX < xEnd; loopSrcX++, loopDstX++) {
+        for (loopSrcY = srcY, loopDestY = destY; loopSrcY < yEnd; loopSrcY++, loopDestY++) {
+            for (loopSrcX = srcX, loopDestX = destX; loopSrcX < xEnd; loopSrcX++, loopDestX++) {
                 pixelsSrc = GetPixelAddressFromBlit8bpp(src->pixels, loopSrcX, loopSrcY, multiplierSrcY);
-                pixelsDst = GetPixelAddressFromBlit8bpp(dst->pixels, loopDstX, loopDstY, multiplierDstY);
+                pixelsDest = GetPixelAddressFromBlit8bpp(dest->pixels, loopDestX, loopDestY, multiplierDestY);
 
-                *pixelsDst = *pixelsSrc;
+                *pixelsDest = *pixelsSrc;
             }
         }
     } else {
-        for (loopSrcY = srcY, loopDstY = dstY; loopSrcY < yEnd; loopSrcY++, loopDstY++) {
-            for (loopSrcX = srcX, loopDstX = dstX; loopSrcX < xEnd; loopSrcX++, loopDstX++) {
+        for (loopSrcY = srcY, loopDestY = destY; loopSrcY < yEnd; loopSrcY++, loopDestY++) {
+            for (loopSrcX = srcX, loopDestX = destX; loopSrcX < xEnd; loopSrcX++, loopDestX++) {
                 pixelsSrc = GetPixelAddressFromBlit8bpp(src->pixels, loopSrcX, loopSrcY, multiplierSrcY);
-                pixelsDst = GetPixelAddressFromBlit8bpp(dst->pixels, loopDstX, loopDstY, multiplierDstY);
+                pixelsDest = GetPixelAddressFromBlit8bpp(dest->pixels, loopDestX, loopDestY, multiplierDestY);
 
                 if (*pixelsSrc != colorKey) {
-                    *pixelsDst = *pixelsSrc;
+                    *pixelsDest = *pixelsSrc;
                 }
             }
         }
     }
 }
 
-static void FillBitmapRect4bit(const BITMAP *surface, u16 x, u16 y, u16 width, u16 height, u8 fillValue) {
-
-    int j;
-    int i;
-    int xEnd;
-    int yEnd;
-    int blitWidth;
-    u8 *pixels;
-
-    xEnd = x + width;
+static void FillBitmapRect4bit(const Bitmap *surface, u16 x, u16 y, u16 width, u16 height, u8 fillValue) {
+    int xEnd = x + width;
     if (xEnd > surface->width) {
         xEnd = surface->width;
     }
 
-    yEnd = y + height;
+    int yEnd = y + height;
     if (yEnd > surface->height) {
         yEnd = surface->height;
     }
 
-    blitWidth = ConvertPixelsToTiles(surface->width);
+    int blitWidth = ConvertPixelsToTiles(surface->width);
 
-    for (i = y; i < yEnd; i++) {
-        for (j = x; j < xEnd; j++) {
-            pixels = GetPixelAddressFromBlit4bpp(surface->pixels, j, i, blitWidth);
+    for (int i = y; i < yEnd; i++) {
+        for (int j = x; j < xEnd; j++) {
+            u8 *pixels = GetPixelAddressFromBlit4bpp(surface->pixels, j, i, blitWidth);
 
             if ((j & 1) != 0) {
                 *pixels &= 0xf;
@@ -1513,40 +1489,30 @@ static void FillBitmapRect4bit(const BITMAP *surface, u16 x, u16 y, u16 width, u
     }
 }
 
-static void FillBitmapRect8bit(const BITMAP *surface, u16 x, u16 y, u16 width, u16 height, u8 fillValue) {
-    int j;
-    int i;
-    int xEnd;
-    int yEnd;
-    int blitWidth;
-    u8 *pixels;
-
-    xEnd = x + width;
+static void FillBitmapRect8bit(const Bitmap *surface, u16 x, u16 y, u16 width, u16 height, u8 fillValue) {
+    int xEnd = x + width;
     if (xEnd > surface->width) {
         xEnd = surface->width;
     }
 
-    yEnd = y + height;
+    int yEnd = y + height;
     if (yEnd > surface->height) {
         yEnd = surface->height;
     }
 
-    blitWidth = ConvertPixelsToTiles(surface->width);
+    int blitWidth = ConvertPixelsToTiles(surface->width);
 
-    for (i = y; i < yEnd; i++) {
-        for (j = x; j < xEnd; j++) {
-            pixels = GetPixelAddressFromBlit8bpp(surface->pixels, j, i, blitWidth);
+    for (int i = y; i < yEnd; i++) {
+        for (int j = x; j < xEnd; j++) {
+            u8 *pixels = GetPixelAddressFromBlit8bpp(surface->pixels, j, i, blitWidth);
             *pixels = fillValue;
         }
     }
 }
 
-Window *AllocWindows(HeapID heapId, int num) {
-    Window *ret;
-    u16 i;
-
-    ret = AllocFromHeap(heapId, num * sizeof(Window));
-    for (i = 0; i < num; i++) {
+Window *AllocWindows(HeapID heapId, s32 num) {
+    Window *ret = AllocFromHeap(heapId, num * sizeof(Window));
+    for (u16 i = 0; i < num; i++) {
         InitWindow(&ret[i]);
     }
     return ret;
@@ -1568,9 +1534,9 @@ void InitWindow(Window *window) {
 BOOL WindowIsInUse(const Window *window) {
     if (window->bgConfig == NULL || window->bgId == 0xFF || window->pixelBuffer == NULL) {
         return FALSE;
-    } else {
-        return TRUE;
     }
+    
+    return TRUE;
 }
 
 void AddWindowParameterized(BgConfig *bgConfig, Window *window, u8 layer, u8 x, u8 y, u8 width, u8 height, u8 paletteNum, u16 baseTile) {
@@ -1809,7 +1775,7 @@ void BlitBitmapRectToWindow(Window *window, void *src, u16 srcX, u16 srcY, u16 s
 }
 
 void BlitBitmapRect(Window *window, void *src, u16 srcX, u16 srcY, u16 srcWidth, u16 srcHeight, u16 destX, u16 destY, u16 destWidth, u16 destHeight, u16 colorKey) {
-    BITMAP bmpSrc, bmpDest;
+    Bitmap bmpSrc, bmpDest;
 
     bmpSrc.pixels = src;
     bmpSrc.width = srcWidth;
@@ -1827,7 +1793,7 @@ void BlitBitmapRect(Window *window, void *src, u16 srcX, u16 srcY, u16 srcWidth,
 }
 
 void FillWindowPixelRect(Window *window, u8 fillValue, u16 x, u16 y, u16 width, u16 height) {
-    BITMAP bmp;
+    Bitmap bmp;
 
     bmp.pixels = window->pixelBuffer;
     bmp.width = window->width * 8;
@@ -2273,7 +2239,7 @@ void ScheduleSetBgAffineScale(BgConfig *bgConfig, u8 layer, enum BgPosAdjustOp o
     bgConfig->scrollScheduled |= 1 << layer;
 }
 
-static void Bg_SetAffineScale(Bg *bg, enum BgPosAdjustOp op, fx32 value) {
+static void Bg_SetAffineScale(Background *bg, enum BgPosAdjustOp op, fx32 value) {
     switch (op) {
     case BG_POS_OP_SET_XSCALE:
         bg->xScale = value;
