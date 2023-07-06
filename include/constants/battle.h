@@ -62,6 +62,9 @@ enum Terrain {
 
 #define BATTLE_TYPE_CAN_ALWAYS_FLEE         (BATTLE_TYPE_2 | BATTLE_TYPE_5 | BATTLE_TYPE_TOWER | BATTLE_TYPE_9)
 
+//Battle Flags
+#define BATTLE_FLAG_7                       (1 << 7)
+
 //Move Effects
 #define MOVE_EFFECT_0                       (1 << 0)
 #define MOVE_EFFECT_1                       (1 << 1)

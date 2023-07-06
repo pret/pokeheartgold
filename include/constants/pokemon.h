@@ -368,6 +368,11 @@ enum MonGender
 };
 #endif //PM_ASM
 
+//Non-Asm Gender Consts
+#define GENDER_MALE     0
+#define GENDER_FEMALE   1
+#define GENDER_NONE     2
+
 // Constants for AdjustFriendship
 #define FRIENDSHIP_EVENT_GROW_LEVEL       0
 #define FRIENDSHIP_EVENT_VITAMIN          1 // unused, handled by PokemonUseItemEffects

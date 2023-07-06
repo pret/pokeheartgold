@@ -5690,7 +5690,7 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BATTLECONTEXT *ctx, int 
     for (i = 0; i < BattleSystem_GetMaxBattlers(bsys); i++) {
         ctx->battlerIdTemp = ctx->turnOrder[i];
         if (ctx->battleMons[ctx->battlerIdTemp].species == SPECIES_CASTFORM && ctx->battleMons[ctx->battlerIdTemp].hp && GetBattlerAbility(ctx, ctx->battlerIdTemp) == ABILITY_FORECAST) {
-            if (!CheckAbilityActive(bsys, ctx,CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) && !CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)) {
+            if (!CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) && !CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)) {
                 if (!(ctx->fieldCondition & FIELD_CONDITION_WEATHER_CASTFORM) && 
                     ctx->battleMons[ctx->battlerIdTemp].type1 != TYPE_NORMAL &&
                     ctx->battleMons[ctx->battlerIdTemp].type2 != TYPE_NORMAL) {
@@ -5739,7 +5739,7 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BATTLECONTEXT *ctx, int 
             }
         }
         if (ctx->battleMons[ctx->battlerIdTemp].species == SPECIES_CHERRIM && ctx->battleMons[ctx->battlerIdTemp].hp) {
-            if (!CheckAbilityActive(bsys, ctx,CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) && !CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)) {
+            if (!CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) && !CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)) {
                 if (!(ctx->fieldCondition & FIELD_CONDITION_WEATHER_CASTFORM) && ctx->battleMons[ctx->battlerIdTemp].form == (u8) CHERRIM_SUNNY) {
                     ctx->battleMons[ctx->battlerIdTemp].form = (u8) CHERRIM_CLOUDY;
                     *script = 262;
@@ -5771,7 +5771,7 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BATTLECONTEXT *ctx, int 
         if (ctx->battleMons[ctx->battlerIdTemp].species == SPECIES_ARCEUS &&
             ctx->battleMons[ctx->battlerIdTemp].hp &&
             GetBattlerAbility(ctx, ctx->battlerIdTemp) == ABILITY_MULTITYPE) {
-            form = GetArceusTypeByHeldItemEffect(GetItemAttr(ctx->battleMons[ctx->battlerIdTemp].item, 1, HEAP_ID_BATTLE));
+            form = GetArceusTypeByHeldItemEffect(GetItemAttr(ctx->battleMons[ctx->battlerIdTemp].item, ITEMATTR_HOLD_EFFECT, HEAP_ID_BATTLE));
             if (ctx->battleMons[ctx->battlerIdTemp].form != form) {
                 ctx->battleMons[ctx->battlerIdTemp].form = form;
                 *script = 262;
@@ -5783,7 +5783,7 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BATTLECONTEXT *ctx, int 
             ctx->battleMons[ctx->battlerIdTemp].hp &&
             ctx->battleMons[ctx->battlerIdTemp].form == GIRATINA_ORIGIN) {
             if ((ctx->battleMons[ctx->battlerIdTemp].status2 & STATUS2_TRANSFORMED) ||
-                (!(BattleSystem_GetBattleFlags(bsys) & 0x80) && ctx->battleMons[ctx->battlerIdTemp].item != ITEM_GRISEOUS_ORB)) {
+                (!(BattleSystem_GetBattleFlags(bsys) & BATTLE_FLAG_7) && ctx->battleMons[ctx->battlerIdTemp].item != ITEM_GRISEOUS_ORB)) {
                 if (ctx->battleMons[ctx->battlerIdTemp].status2 & STATUS2_TRANSFORMED) {
                     Pokemon *mon2;
                     int battlerIdTarget;
@@ -6037,11 +6037,11 @@ int CalcMoveDamage(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 moveNo, u32 sideC
         movePower = movePower * (100 + calcAttacker.mod) / 100;
     }
     
-    if (calcAttacker.item == HOLD_EFFECT_POWER_UP_PHYS && moveCategory == 0) {
+    if (calcAttacker.item == HOLD_EFFECT_POWER_UP_PHYS && moveCategory == CLASS_PHYSICAL) {
         movePower = movePower * (100 + calcAttacker.mod) / 100;
     }
 
-    if (calcAttacker.item == HOLD_EFFECT_POWER_UP_SPEC && moveCategory == 1) {
+    if (calcAttacker.item == HOLD_EFFECT_POWER_UP_SPEC && moveCategory == CLASS_SPECIAL) {
         movePower = movePower * (100 + calcAttacker.mod) / 100;
     }
     
@@ -6149,10 +6149,10 @@ int CalcMoveDamage(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 moveNo, u32 sideC
     statChangeSpAtk += 6;
     statChangeSpDef += 6;
     
-    if (calcAttacker.ability == ABILITY_RIVALRY && calcAttacker.gender == calcTarget.gender && calcAttacker.gender != 2 && calcTarget.gender != 2) {
+    if (calcAttacker.ability == ABILITY_RIVALRY && calcAttacker.gender == calcTarget.gender && calcAttacker.gender != GENDER_NONE && calcTarget.gender != GENDER_NONE) {
         movePower = movePower * 125 / 100;
     }
-    if (calcAttacker.ability == ABILITY_RIVALRY && calcAttacker.gender != calcTarget.gender && calcAttacker.gender != 2 && calcTarget.gender != 2) {
+    if (calcAttacker.ability == ABILITY_RIVALRY && calcAttacker.gender != calcTarget.gender && calcAttacker.gender != GENDER_NONE && calcTarget.gender != GENDER_NONE) {
         movePower = movePower * 75 / 100;
     }
     
@@ -6182,7 +6182,7 @@ int CalcMoveDamage(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 moveNo, u32 sideC
         monDef /= 2;
     }
     
-    if (moveCategory == 0) {
+    if (moveCategory == CLASS_PHYSICAL) {
         if (crit > 1) {
             if (statChangeAtk > 6) {
                 dmg = monAtk * sStatChangeTable[statChangeAtk][0] / sStatChangeTable[statChangeAtk][1];
@@ -6220,7 +6220,7 @@ int CalcMoveDamage(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 moveNo, u32 sideC
                 dmg /= 2;
             }
         }
-    } else if (moveCategory == 1) {
+    } else if (moveCategory == CLASS_SPECIAL) {
         if (crit > 1) {
             if (statChangeSpAtk > 6) {
                 dmg = monSpAtk * sStatChangeTable[statChangeSpAtk][0] / sStatChangeTable[statChangeSpAtk][1];
