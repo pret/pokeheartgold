@@ -2365,7 +2365,7 @@ ov87_021E6C04: ; 0x021E6C04
 	bl sub_0200398C
 _021E6C1C:
 	ldr r0, [r4, #0x58]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl GF_RunVramTransferTasks
 	bl OamManager_ApplyAndResetBuffers
 	ldr r3, _021E6C38 ; =0x027E0000

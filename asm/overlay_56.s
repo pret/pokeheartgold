@@ -1022,7 +1022,7 @@ _021E63CE:
 _021E63DC:
 	bl NNS_GfdDoVramTransfer
 	ldr r0, [r4, #0x18]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _021E63F4 ; =0x027E0000
 	ldr r1, _021E63F8 ; =0x00003FF8
 	mov r0, #1

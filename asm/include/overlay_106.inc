@@ -58,7 +58,7 @@
 .public BG_ClearCharDataRange
 .public BG_SetMaskColor
 .public BgClearTilemapBufferAndCommit
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public sub_0201F51C
 .public Draw3dModel
 .public sub_0201F590

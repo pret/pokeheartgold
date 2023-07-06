@@ -106,7 +106,7 @@
 .public ScheduleWindowCopyToVram
 .public FillWindowPixelBuffer
 .public FillWindowPixelRect
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
 .public sub_0201F988

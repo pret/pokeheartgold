@@ -3896,7 +3896,7 @@ ov96_021E75BC: ; 0x021E75BC
 	add r4, r0, #0
 	bl OamManager_ApplyAndResetBuffers
 	add r0, r4, #0
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl GF_RunVramTransferTasks
 	ldr r3, _021E75DC ; =0x027E0000
 	ldr r1, _021E75E0 ; =0x00003FF8
@@ -19985,7 +19985,7 @@ _021EEEE8: .word ov96_0221B9E8
 ov96_021EEEEC: ; 0x021EEEEC
 	push {r3, lr}
 	ldr r0, [r0, #4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _021EEF04 ; =0x027E0000
 	ldr r1, _021EEF08 ; =0x00003FF8
 	mov r0, #1
@@ -20371,7 +20371,7 @@ ov96_021EF23C: ; 0x021EF23C
 	add r4, r0, #0
 	bl sub_0200D034
 	ldr r0, [r4, #4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _021EF258 ; =0x027E0000
 	ldr r1, _021EF25C ; =0x00003FF8
 	mov r0, #1

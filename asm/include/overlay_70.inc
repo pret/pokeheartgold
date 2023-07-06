@@ -133,7 +133,7 @@
 .public ClearWindowTilemapAndCopyToVram
 .public FillWindowPixelBuffer
 .public FillWindowPixelRect
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public sub_0201F988
 .public LCRandom
 .public TextPrinterCheckActive

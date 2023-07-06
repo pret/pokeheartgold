@@ -4465,7 +4465,7 @@ _0225A83C: .word ov49_02269734
 ov49_0225A840: ; 0x0225A840
 	push {r3, lr}
 	ldr r0, [r0]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl OamManager_ApplyAndResetBuffers
 	bl GF_RunVramTransferTasks
 	pop {r3, pc}

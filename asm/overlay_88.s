@@ -394,7 +394,7 @@ _02258B1C: .word sub_0202457C
 ov88_02258B20: ; 0x02258B20
 	push {r3, lr}
 	ldr r0, [r0]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl OamManager_ApplyAndResetBuffers
 	bl GF_RunVramTransferTasks
 	pop {r3, pc}

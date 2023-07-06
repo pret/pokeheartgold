@@ -385,7 +385,7 @@ BOOL CreditsApp_OvyExec(OVY_MANAGER *man, int *state) {
 }
 
 static void VBlankCB(CreditsAppWork *work) {
-    BgConfig_HandleScheduledScrollAndTransferOps(work->bgConfig);
+    DoScheduledBgGpuUpdates(work->bgConfig);
     OamManager_ApplyAndResetBuffers();
 }
 

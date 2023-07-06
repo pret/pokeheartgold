@@ -917,7 +917,7 @@ ov89_0225901C: ; 0x0225901C
 	ldr r0, [r4, #0xc]
 	bl sub_0200398C
 	ldr r0, [r4, #8]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _02259054 ; =0x027E0000
 	ldr r1, _02259058 ; =0x00003FF8
 	mov r0, #1

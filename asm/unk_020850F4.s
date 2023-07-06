@@ -580,7 +580,7 @@ sub_020855CC: ; 0x020855CC
 	mov r0, #0xbe
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _020855FC ; =OS_IRQTable
 	ldr r1, _02085600 ; =0x00003FF8
 	mov r0, #1

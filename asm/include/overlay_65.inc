@@ -108,7 +108,7 @@
 .public ClearWindowTilemapAndCopyToVram
 .public ClearWindowTilemapAndScheduleTransfer
 .public FillWindowPixelBuffer
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public GF_SinDeg
 .public LCRandom
 .public AddTextPrinterParameterized2

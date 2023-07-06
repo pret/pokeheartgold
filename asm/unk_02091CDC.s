@@ -183,11 +183,11 @@ App_DeleteSave_Exit: ; 0x02091E34
 
 	thumb_func_start sub_02091E54
 sub_02091E54: ; 0x02091E54
-	ldr r3, _02091E5C ; =BgConfig_HandleScheduledScrollAndTransferOps
+	ldr r3, _02091E5C ; =DoScheduledBgGpuUpdates
 	ldr r0, [r0, #0x14]
 	bx r3
 	nop
-_02091E5C: .word BgConfig_HandleScheduledScrollAndTransferOps
+_02091E5C: .word DoScheduledBgGpuUpdates
 	thumb_func_end sub_02091E54
 
 	thumb_func_start sub_02091E60

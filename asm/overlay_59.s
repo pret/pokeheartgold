@@ -2924,7 +2924,7 @@ ov59_022393D4: ; 0x022393D4
 _022393E6:
 	bl NNS_GfdDoVramTransfer
 	ldr r0, [r4, #0x54]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _02239400 ; =0x027E0000
 	ldr r1, _02239404 ; =0x00003FF8
 	mov r0, #1
@@ -7123,7 +7123,7 @@ _0223B3EE:
 	bl ov59_0223C374
 	bl GF_RunVramTransferTasks
 	ldr r0, [r4, #0x54]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _0223B40C ; =0x027E0000
 	ldr r1, _0223B410 ; =0x00003FF8
 	mov r0, #1

@@ -197,7 +197,7 @@
 .public ClearWindowTilemapAndCopyToVram
 .public FillWindowPixelBuffer
 .public FillWindowPixelBufferText_AssumeTileSize32
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
 .public GF_SinDeg

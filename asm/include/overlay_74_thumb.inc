@@ -128,7 +128,7 @@
 .public GetWindowY
 .public SetWindowX
 .public SetWindowY
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
 .public DoesPixelAtScreenXYMatchPtrVal

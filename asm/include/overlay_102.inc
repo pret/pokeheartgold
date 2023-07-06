@@ -106,7 +106,7 @@
 .public FillWindowPixelBufferText_AssumeTileSize32
 .public BlitBitmapRectToWindow
 .public FillWindowPixelRect
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public sub_0201F988
 .public MsgArray_SkipControlCode

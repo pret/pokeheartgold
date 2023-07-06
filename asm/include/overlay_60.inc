@@ -93,7 +93,7 @@
 .public AddWindow
 .public RemoveWindow
 .public FillWindowPixelRect
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
 .public sub_0201F51C

@@ -123,7 +123,7 @@
 .public FillWindowPixelRect
 .public GetWindowBgId
 .public GetWindowWidth
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public AddTextPrinterParameterized2
 .public GF_CreateVramTransferManager

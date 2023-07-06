@@ -1979,7 +1979,7 @@ static void ov122_021E8004(VoltorbFlipAppWork *work) {
 
     sub_0200D020(work->unk148);
     sub_0200D034();
-    BgConfig_HandleScheduledScrollAndTransferOps(work->bgConfig);
+    DoScheduledBgGpuUpdates(work->bgConfig);
 
     REGType32v *regBase = (REGType32v *)0x027e0000;
     *(regBase + 0xffe) |= 1;

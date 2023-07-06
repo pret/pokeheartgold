@@ -444,7 +444,7 @@ ov73_021E5CD8: ; 0x021E5CD8
 	bl GF_RunVramTransferTasks
 	bl OamManager_ApplyAndResetBuffers
 	ldr r0, [r4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _021E5CF8 ; =0x027E0000
 	ldr r1, _021E5CFC ; =0x00003FF8
 	mov r0, #1
@@ -5076,7 +5076,7 @@ ov73_021E8100: ; 0x021E8100
 	add r4, r0, #0
 	bl GF_RunVramTransferTasks
 	ldr r0, [r4, #4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl OamManager_ApplyAndResetBuffers
 	ldr r3, _021E8120 ; =0x027E0000
 	ldr r1, _021E8124 ; =0x00003FF8

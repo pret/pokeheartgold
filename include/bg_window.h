@@ -257,10 +257,10 @@ u16 GetWindowBaseTile(Window *window);
 void SetWindowX(Window *window, u8 x);
 void SetWindowY(Window *window, u8 y);
 void SetWindowPaletteNum(Window *window, u8 paletteNum);
-void BgConfig_HandleScheduledScrollAndTransferOps(BgConfig *bgConfig);
-void ScheduleBgTilemapBufferTransfer(BgConfig *bgConfig, u8 layer);
-void ScheduleSetBgPosText(BgConfig *bgConfig, u8 layer, enum BgPosAdjustOp op, fx32 value);
-void ScheduleSetBgAffineScale(BgConfig *bgConfig, u8 layer, enum BgPosAdjustOp op, fx32 value);
-BOOL DoesPixelAtScreenXYMatchPtrVal(BgConfig *bgConfig, u8 layer, u8 x, u8 y, u16 *src);
+void DoScheduledBgGpuUpdates(BgConfig *bgConfig);
+void ScheduleBgTilemapBufferTransfer(BgConfig *bgConfig, u8 bgId);
+void ScheduleSetBgPosText(BgConfig *bgConfig, u8 bgId, enum BgPosAdjustOp op, fx32 value);
+void ScheduleSetBgAffineScale(BgConfig *bgConfig, u8 bgId, enum BgPosAdjustOp op, fx32 value);
+BOOL DoesPixelAtScreenXYMatchPtrVal(BgConfig *bgConfig, u8 bgId, u8 x, u8 y, u16 *src);
 
 #endif //POKEHEARTGOLD_BG_WINDOW_H

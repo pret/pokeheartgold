@@ -846,7 +846,7 @@ ov41_02246494: ; 0x02246494
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x40]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r0, [r4, #0x20]
 	bl sub_02009418
 	bl OamManager_ApplyAndResetBuffers
@@ -1132,7 +1132,7 @@ ov41_02246698: ; 0x02246698
 ov41_022466B8: ; 0x022466B8
 	push {r3, lr}
 	ldr r0, [r0, #0x40]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl OamManager_ApplyAndResetBuffers
 	pop {r3, pc}
 	.balign 4, 0

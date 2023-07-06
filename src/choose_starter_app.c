@@ -585,7 +585,7 @@ static void freeAllMonSprite2dResObj(struct StarterChooseMonSpriteData *a0) {
 
 static void vBlankCB(struct ChooseStarterAppWork *work) {
     OamManager_ApplyAndResetBuffers();
-    BgConfig_HandleScheduledScrollAndTransferOps(work->bgConfig);
+    DoScheduledBgGpuUpdates(work->bgConfig);
 }
 
 static void setGxBanks(void) {

@@ -180,7 +180,7 @@ _021E5A74:
 ov64_021E5A88: ; 0x021E5A88
 	push {r3, lr}
 	ldr r0, [r0, #4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl sub_0200D034
 	ldr r3, _021E5AA4 ; =0x027E0000
 	ldr r1, _021E5AA8 ; =0x00003FF8

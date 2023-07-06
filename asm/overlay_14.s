@@ -112,7 +112,7 @@ _021E59C6:
 	bl sub_0200398C
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x14]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r0, [r4, #0x34]
 	bl ov14_021F29C4
 	ldr r1, [r4, #0x34]

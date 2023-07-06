@@ -70,7 +70,7 @@ ov103_021EC9B4: ; 0x021EC9B4
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
 	ldr r0, [r0]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl sub_0200D034
 	ldr r3, _021EC9D0 ; =0x027E0000
 	ldr r1, _021EC9D4 ; =0x00003FF8

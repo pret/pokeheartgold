@@ -84,7 +84,7 @@
 .public BG_LoadBlankPltt
 .public CopyToBgTilemapRect
 .public BgClearTilemapBufferAndCommit
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public DoesPixelAtScreenXYMatchPtrVal
 .public GF_CreateVramTransferManager

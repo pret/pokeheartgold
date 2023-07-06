@@ -75,7 +75,7 @@
 .public ClearWindowTilemapAndCopyToVram
 .public FillWindowPixelBuffer
 .public GetWindowWidth
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public AddTextPrinterParameterized2
 .public sub_02020A0C

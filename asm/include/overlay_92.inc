@@ -109,7 +109,7 @@
 .public ClearWindowTilemapAndCopyToVram
 .public FillWindowPixelBuffer
 .public GetWindowWidth
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleSetBgPosText
 .public GF_SinDeg
 .public GF_CosDeg

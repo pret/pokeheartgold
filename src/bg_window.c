@@ -2065,55 +2065,54 @@ static void ScrollWindow8bpp(Window *window, u8 direction, u8 y, u8 fillValue) {
     width = window->width;
 
     switch (direction) {
-    case 0: // up
-        for (i = 0; i < size; i += TILE_SIZE_8BPP) {
-            y0 = y;
-            for (j = 0; j < 8; j++) {
-                y1 = i + (j << 3);
-                y2 = i + (((width * (y0 & ~7)) | (y0 & 7)) << 3);
-                if (y2 < size) {
-                    *(u32 *)(pixelBuffer + y1) = *(u32 *)(pixelBuffer + y2);
-                } else {
-                    *(u32 *)(pixelBuffer + y1) = fillWord;
+        case 0: // up
+            for (i = 0; i < size; i += TILE_SIZE_8BPP) {
+                y0 = y;
+                for (j = 0; j < 8; j++) {
+                    y1 = i + (j << 3);
+                    y2 = i + (((width * (y0 & ~7)) | (y0 & 7)) << 3);
+                    if (y2 < size) {
+                        *(u32 *)(pixelBuffer + y1) = *(u32 *)(pixelBuffer + y2);
+                    } else {
+                        *(u32 *)(pixelBuffer + y1) = fillWord;
+                    }
+                    y1 += 4;
+                    y2 += 4;
+                    if (y2 < size + 4) {
+                        *(u32 *)(pixelBuffer + y1) = *(u32 *)(pixelBuffer + y2);
+                    } else {
+                        *(u32 *)(pixelBuffer + y1) = fillWord;
+                    }
+                    y0++;
                 }
-                y1 += 4;
-                y2 += 4;
-                if (y2 < size + 4) {
-                    *(u32 *)(pixelBuffer + y1) = *(u32 *)(pixelBuffer + y2);
-                } else {
-                    *(u32 *)(pixelBuffer + y1) = fillWord;
-                }
-                y0++;
             }
-        }
-        break;
-    case 1: // down
-        pixelBuffer += size - 8;
-        for (i = 0; i < size; i += TILE_SIZE_8BPP) {
-            y0 = y;
-            for (j = 0; j < 8; j++) {
-                y1 = i + (j << 3);
-                y2 = i + (((width * (y0 & ~7)) | (y0 & 7)) << 3);
-                if (y2 < size) {
-                    *(u32 *)(pixelBuffer - y1) = *(u32 *)(pixelBuffer - y2);
-                } else {
-                    *(u32 *)(pixelBuffer - y1) = fillWord;
+            break;
+        case 1: // down
+            pixelBuffer += size - 8;
+            for (i = 0; i < size; i += TILE_SIZE_8BPP) {
+                y0 = y;
+                for (j = 0; j < 8; j++) {
+                    y1 = i + (j << 3);
+                    y2 = i + (((width * (y0 & ~7)) | (y0 & 7)) << 3);
+                    if (y2 < size) {
+                        *(u32 *)(pixelBuffer - y1) = *(u32 *)(pixelBuffer - y2);
+                    } else {
+                        *(u32 *)(pixelBuffer - y1) = fillWord;
+                    }
+                    y1 -= 4;
+                    y2 -= 4;
+                    if (y2 < size - 4) {
+                        *(u32 *)(pixelBuffer - y1) = *(u32 *)(pixelBuffer - y2);
+                    } else {
+                        *(u32 *)(pixelBuffer - y1) = fillWord;
+                    }
+                    y0++;
                 }
-                y1 -= 4;
-                y2 -= 4;
-                if (y2 < size - 4) {
-                    *(u32 *)(pixelBuffer - y1) = *(u32 *)(pixelBuffer - y2);
-                } else {
-                    *(u32 *)(pixelBuffer - y1) = fillWord;
-                }
-                y0++;
             }
-        }
-        break;
-    case 2: // left
-        break;
-    case 3: // right
-        break;
+            break;
+        case 2: // left
+        case 3: // right
+            break;
     }
 }
 
@@ -2157,7 +2156,7 @@ void SetWindowPaletteNum(Window *window, u8 paletteNum) {
     window->paletteNum = paletteNum;
 }
 
-void BgConfig_HandleScheduledScrollAndTransferOps(BgConfig *bgConfig) {
+void DoScheduledBgGpuUpdates(BgConfig *bgConfig) {
     BgConfig_HandleScheduledScrolls(bgConfig);
     BgConfig_HandleScheduledBufferTransfers(bgConfig);
     bgConfig->scrollScheduled = 0;
@@ -2191,8 +2190,8 @@ static void BgConfig_HandleScheduledBufferTransfers(BgConfig *bgConfig) {
     }
 }
 
-void ScheduleBgTilemapBufferTransfer(BgConfig *bgConfig, u8 layer) {
-    bgConfig->bufferTransferScheduled |= (1 << layer);
+void ScheduleBgTilemapBufferTransfer(BgConfig *bgConfig, u8 bgId) {
+    bgConfig->bufferTransferScheduled |= 1 << bgId;
 }
 
 static void BgConfig_HandleScheduledScrolls(BgConfig *bgConfig) {
@@ -2246,90 +2245,87 @@ static void BgConfig_HandleScheduledScrolls(BgConfig *bgConfig) {
     }
 }
 
-void ScheduleSetBgPosText(BgConfig *bgConfig, u8 layer, enum BgPosAdjustOp op, fx32 value) {
-    Bg_SetPosText(&bgConfig->bgs[layer], op, value);
-    bgConfig->scrollScheduled |= 1 << layer;
+void ScheduleSetBgPosText(BgConfig *bgConfig, u8 bgId, enum BgPosAdjustOp op, fx32 value) {
+    Bg_SetPosText(&bgConfig->bgs[bgId], op, value);
+    bgConfig->scrollScheduled |= 1 << bgId;
 }
 
-void ScheduleSetBgAffineScale(BgConfig *bgConfig, u8 layer, enum BgPosAdjustOp op, fx32 value) {
-    Bg_SetAffineScale(&bgConfig->bgs[layer], op, value);
-    bgConfig->scrollScheduled |= 1 << layer;
+void ScheduleSetBgAffineScale(BgConfig *bgConfig, u8 bgId, enum BgPosAdjustOp op, fx32 value) {
+    Bg_SetAffineScale(&bgConfig->bgs[bgId], op, value);
+    bgConfig->scrollScheduled |= 1 << bgId;
 }
 
 static void Bg_SetAffineScale(Background *bg, enum BgPosAdjustOp op, fx32 value) {
     switch (op) {
-    case BG_POS_OP_SET_XSCALE:
-        bg->xScale = value;
-        break;
-    case BG_POS_OP_ADD_XSCALE:
-        bg->xScale += value;
-        break;
-    case BG_POS_OP_SUB_XSCALE:
-        bg->xScale -= value;
-        break;
-    case BG_POS_OP_SET_YSCALE:
-        bg->yScale = value;
-        break;
-    case BG_POS_OP_ADD_YSCALE:
-        bg->yScale += value;
-        break;
-    case BG_POS_OP_SUB_YSCALE:
-        bg->yScale -= value;
-        break;
+        case BG_POS_OP_SET_XSCALE:
+            bg->xScale = value;
+            break;
+        case BG_POS_OP_ADD_XSCALE:
+            bg->xScale += value;
+            break;
+        case BG_POS_OP_SUB_XSCALE:
+            bg->xScale -= value;
+            break;
+        case BG_POS_OP_SET_YSCALE:
+            bg->yScale = value;
+            break;
+        case BG_POS_OP_ADD_YSCALE:
+            bg->yScale += value;
+            break;
+        case BG_POS_OP_SUB_YSCALE:
+            bg->yScale -= value;
+            break;
     }
 }
 
-BOOL DoesPixelAtScreenXYMatchPtrVal(BgConfig *bgConfig, u8 layer, u8 x, u8 y, u16 *src) {
+BOOL DoesPixelAtScreenXYMatchPtrVal(BgConfig *bgConfig, u8 bgId, u8 x, u8 y, u16 *src) {
     u8 *bgCharPtr;
     u16 tilemapIdx;
     u8 xPixOffs;
     u8 yPixOffs;
     u8 pixelValue;
     u8 i;
-    if (bgConfig->bgs[layer].tilemapBuffer == NULL) {
+    if (bgConfig->bgs[bgId].tilemapBuffer == NULL) {
         return FALSE;
     }
 
-    tilemapIdx = GetTileMapIndexFromCoords(x >> 3, y >> 3, bgConfig->bgs[layer].size, bgConfig->bgs[layer].mode);
-    bgCharPtr = BgGetCharPtr(layer);
+    tilemapIdx = GetTileMapIndexFromCoords(x >> 3, y >> 3, bgConfig->bgs[bgId].size, bgConfig->bgs[bgId].mode);
+    bgCharPtr = BgGetCharPtr(bgId);
     xPixOffs = x & 7;
     yPixOffs = y & 7;
-    if (bgConfig->bgs[layer].colorMode == GX_BG_COLORMODE_16) {
-        u16 *tilemapBuffer;
-        u8 *tile;
+    if (bgConfig->bgs[bgId].colorMode == GX_BG_COLORMODE_16) {
+        u16 *tilemapBuffer = bgConfig->bgs[bgId].tilemapBuffer;
+        u8 *tile = AllocFromHeapAtEnd(bgConfig->heapId, 0x40);
 
-        tilemapBuffer = bgConfig->bgs[layer].tilemapBuffer;
-        tile = AllocFromHeapAtEnd(bgConfig->heapId, 0x40);
         bgCharPtr += (tilemapBuffer[tilemapIdx] & 0x3FF) * TILE_SIZE_4BPP;
         for (i = 0; i < TILE_SIZE_4BPP; i++) {
-            tile[2 * i]     = bgCharPtr[i] & 0xF;
-            tile[2 * i + 1] = bgCharPtr[i] >> 4;
+            tile[i * 2] = bgCharPtr[i] & 0xF;
+            tile[i * 2 + 1] = bgCharPtr[i] >> 4;
         }
         ApplyFlipFlagsToTile(bgConfig, (tilemapBuffer[tilemapIdx] >> 10) & 3, tile);
-        pixelValue = tile[xPixOffs + 8 * yPixOffs];
+        pixelValue = tile[xPixOffs + yPixOffs * 8];
         FreeToHeap(tile);
-        if (((*src) & (1 << pixelValue)) != 0) {
-            return 1;
+        if ((src[0] & (1 << pixelValue)) != 0) {
+            return TRUE;
         }
     } else {
-        if (bgConfig->bgs[layer].mode != GF_BG_TYPE_AFFINE) {
-            u16 *tilemapBuffer;
-            u8 *tile;
-            tilemapBuffer = bgConfig->bgs[layer].tilemapBuffer;
-            tile = AllocFromHeapAtEnd(bgConfig->heapId, 0x40);
+        if (bgConfig->bgs[bgId].mode != GF_BG_TYPE_AFFINE) {
+            u16 *tilemapBuffer = bgConfig->bgs[bgId].tilemapBuffer;
+            u8 *tile = AllocFromHeapAtEnd(bgConfig->heapId, 0x40);
+
             memcpy(tile, bgCharPtr + (tilemapBuffer[tilemapIdx] & 0x3FF) * TILE_SIZE_8BPP, TILE_SIZE_8BPP);
             ApplyFlipFlagsToTile(bgConfig, (tilemapBuffer[tilemapIdx] >> 10) & 3, tile);
-            pixelValue = tile[xPixOffs + 8 * yPixOffs];
+            pixelValue = tile[xPixOffs + yPixOffs * 8];
             FreeToHeap(tile);
         } else {
-            pixelValue = bgCharPtr[((u8 *)bgConfig->bgs[layer].tilemapBuffer)[tilemapIdx] * TILE_SIZE_8BPP + xPixOffs + 8 * yPixOffs];
+            pixelValue = bgCharPtr[((u8 *)bgConfig->bgs[bgId].tilemapBuffer)[tilemapIdx] * TILE_SIZE_8BPP + xPixOffs + yPixOffs * 8];
         }
         // BUG: Infinite loop
-        while (1) {
-            if (*src == 0xFFFF) {
+        while (TRUE) {
+            if (src[0] == 0xFFFF) {
                 break;
             }
-            if (pixelValue == (u8)*src) {
+            if (pixelValue == (u8)(src[0])) {
                 return TRUE;
             }
         }
@@ -2339,9 +2335,8 @@ BOOL DoesPixelAtScreenXYMatchPtrVal(BgConfig *bgConfig, u8 layer, u8 x, u8 y, u1
 
 static void ApplyFlipFlagsToTile(BgConfig *bgConfig, u8 flags, u8 *tile) {
     u8 i, j;
-    u8 *buffer;
     if (flags != 0) {
-        buffer = AllocFromHeapAtEnd(bgConfig->heapId, 0x40);
+        u8 *buffer = AllocFromHeapAtEnd(bgConfig->heapId, 0x40);
         if ((flags & 1) != 0) { // hflip
             for (i = 0; i < 8; i++) {
                 for (j = 0; j < 8; j++) {

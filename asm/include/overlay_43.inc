@@ -109,7 +109,7 @@
 .public ClearWindowTilemapAndScheduleTransfer
 .public FillWindowPixelBuffer
 .public BlitBitmapRectToWindow
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
 .public TextPrinterCheckActive

@@ -132,7 +132,7 @@
 .public CopyWindowToVram
 .public ClearWindowTilemapAndCopyToVram
 .public FillWindowPixelBuffer
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
 .public sub_0201F988

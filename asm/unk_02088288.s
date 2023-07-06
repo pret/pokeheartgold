@@ -396,7 +396,7 @@ sub_020885DC: ; 0x020885DC
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	mov r0, #0x2a
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]

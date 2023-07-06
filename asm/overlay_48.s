@@ -1669,7 +1669,7 @@ _022594D8: .word sub_0202457C
 ov48_022594DC: ; 0x022594DC
 	push {r3, lr}
 	ldr r0, [r0]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl OamManager_ApplyAndResetBuffers
 	bl GF_RunVramTransferTasks
 	pop {r3, pc}

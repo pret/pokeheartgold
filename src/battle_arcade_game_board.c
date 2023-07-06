@@ -645,7 +645,7 @@ static void BattleArcade_VBlank(void *_work) {
         sub_0200398C(work->unk3D4);
     }
 
-    BgConfig_HandleScheduledScrollAndTransferOps(work->bgConfig);
+    DoScheduledBgGpuUpdates(work->bgConfig);
     GF_RunVramTransferTasks();
     OamManager_ApplyAndResetBuffers();
     OS_SetIrqCheckFlag(OS_IE_V_BLANK);

@@ -1104,7 +1104,7 @@ sub_020796B8: ; 0x020796B8
 	mov r2, #3
 	bl BgSetPosTextAndCommit
 	ldr r0, [r4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl GF_RunVramTransferTasks
 	bl sub_0200D034
 	ldr r3, _020796F8 ; =OS_IRQTable

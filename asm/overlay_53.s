@@ -329,7 +329,7 @@ _021E5BC8: .word ov36_App_InitGameState_AfterOakSpeech
 ov53_021E5BCC: ; 0x021E5BCC
 	push {r3, lr}
 	ldr r0, [r0, #0x18]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl sub_0200D034
 	pop {r3, pc}
 	.balign 4, 0

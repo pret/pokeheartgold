@@ -458,7 +458,7 @@ ov80_02238A7C: ; 0x02238A7C
 	ldr r0, [r4, #4]
 	bl sub_0200398C
 	ldr r0, [r4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _02238AA4 ; =0x027E0000
 	ldr r1, _02238AA8 ; =0x00003FF8
 	mov r0, #1
