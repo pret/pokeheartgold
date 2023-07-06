@@ -671,7 +671,7 @@ ov40_0222BD04: ; 0x0222BD04
 	ldr r0, [r4, #0x28]
 	bl sub_0200398C
 	ldr r0, [r4, #0x24]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _0222BD28 ; =0x027E0000
 	ldr r1, _0222BD2C ; =0x00003FF8
 	mov r0, #1
@@ -20112,7 +20112,7 @@ _02235918:
 	ldr r0, [r4, #0x28]
 	bl sub_0200398C
 	ldr r0, [r4, #0x24]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _02235938 ; =0x027E0000
 	ldr r1, _0223593C ; =0x00003FF8
 	mov r0, #1

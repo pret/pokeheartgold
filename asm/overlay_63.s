@@ -208,7 +208,7 @@ ov63_0221BFCC: ; 0x0221BFCC
 	str r0, [r4, #8]
 _0221BFE2:
 	ldr r0, [r4, #0x10]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	add r4, #0xa0
 	ldr r0, [r4]
 	bl sub_0200D020
@@ -5264,7 +5264,7 @@ _0221E912:
 	add r0, r4, #0
 	bl ov63_0221F1D0
 	ldr r0, [r4, #0x10]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	add r4, #0xa0
 	ldr r0, [r4]
 	bl sub_0200D020

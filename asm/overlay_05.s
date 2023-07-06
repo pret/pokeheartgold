@@ -2561,7 +2561,7 @@ ov05_0221CE88: ; 0x0221CE88
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r0, [r4, #8]
 	bl sub_0200398C
 	bl GF_RunVramTransferTasks

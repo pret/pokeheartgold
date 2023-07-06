@@ -58,14 +58,14 @@ static const GF_GXBanksConfig sGameClearSaveBanksConfig = {
     .texpltt       = GX_VRAM_TEXPLTT_01_FG,
 };
 
-static const struct GFBgModeSet sGameClearSaveBgModeSet = {
+static const struct GraphicsModes sGameClearSaveBgModeSet = {
     .dispMode    = GX_DISPMODE_GRAPHICS,
-    .bgModeMain  = GX_BGMODE_0,
-    .bgModeSub   = GX_BGMODE_0,
-    ._2d3dSwitch = GX_BG0_AS_2D,
+    .bgMode      = GX_BGMODE_0,
+    .subMode     = GX_BGMODE_0,
+    ._2d3dMode   = GX_BG0_AS_2D,
 };
 
-static const BGTEMPLATE sGameClearSaveBgTemplate = {
+static const BgTemplate sGameClearSaveBgTemplate = {
     .x          = 0,
     .y          = 0,
     .bufferSize = 0x0800,

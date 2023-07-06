@@ -49,7 +49,7 @@ static void _InitDisplays(BgConfig *bgConfig) {
         GX_SetBanks(&_020FC550);
     }
     {
-        static const struct GFBgModeSet _020FC524 = {
+        static const struct GraphicsModes _020FC524 = {
             GX_DISPMODE_GRAPHICS,
             GX_BGMODE_0,
             GX_BGMODE_0,
@@ -58,7 +58,7 @@ static void _InitDisplays(BgConfig *bgConfig) {
         SetBothScreensModesAndDisable(&_020FC524);
     }
     {
-        static const BGTEMPLATE _020FC534 = {
+        static const BgTemplate _020FC534 = {
             0, 0, 0x800, 0,
             GF_BG_SCR_SIZE_256x256, GF_BG_CLR_4BPP, 31, 0, 0, 1, 0, 0, 0
         };

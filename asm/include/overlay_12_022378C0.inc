@@ -91,7 +91,7 @@
 .public RemoveWindow
 .public WindowArray_Delete
 .public FillWindowPixelBuffer
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public GetLCRNGSeed
 .public SetLCRNGSeed
 .public AddTextPrinterParameterized

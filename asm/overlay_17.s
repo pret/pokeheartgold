@@ -2125,7 +2125,7 @@ _02202C0A:
 	bl NNS_GfdDoVramTransfer
 	add r4, #0x88
 	ldr r0, [r4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _02202C24 ; =0x027E0000
 	ldr r1, _02202C28 ; =0x00003FF8
 	mov r0, #1

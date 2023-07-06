@@ -111,7 +111,7 @@
 .public BlitBitmapRectToWindow
 .public FillWindowPixelRect
 .public GetWindowWidth
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public sub_0201F51C
 .public Draw3dModel

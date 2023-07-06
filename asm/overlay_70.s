@@ -1943,7 +1943,7 @@ _022387C0:
 	blx r1
 _022387CC:
 	ldr r0, [r4, #4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl GF_RunVramTransferTasks
 	bl OamManager_ApplyAndResetBuffers
 	ldr r3, _022387F0 ; =0x027E0000

@@ -61,7 +61,7 @@
 .public BgClearTilemapBufferAndCommit
 .public ScheduleWindowCopyToVram
 .public FillWindowPixelBuffer
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleSetBgPosText
 .public sub_02020A0C
 .public GX_DisableEngineALayers

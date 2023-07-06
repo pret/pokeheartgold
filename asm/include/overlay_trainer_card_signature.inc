@@ -69,7 +69,7 @@
 .public CopyWindowToVram
 .public FillWindowPixelBuffer
 .public BlitBitmapRectToWindow
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public GF_SinDeg
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized

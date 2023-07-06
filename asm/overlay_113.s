@@ -1294,7 +1294,7 @@ ov113_021E62B0: ; 0x021E62B0
 _021E62C0:
 	bl GF_RunVramTransferTasks
 	ldr r0, [r4, #0x40]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _021E62D8 ; =0x027E0000
 	ldr r1, _021E62DC ; =0x00003FF8
 	mov r0, #1

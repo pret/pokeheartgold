@@ -1125,7 +1125,7 @@ _0225CED8:
 	strb r1, [r4, r0]
 _0225CEEE:
 	ldr r0, [r4, #0x2c]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _0225CF0C ; =0x027E0000
 	ldr r1, _0225CF10 ; =0x00003FF8
 	mov r0, #1

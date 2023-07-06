@@ -628,7 +628,7 @@ ov57_02237E38: ; 0x02237E38
 	bl sub_0200398C
 	add r4, #0xe4
 	ldr r0, [r4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl GF_RunVramTransferTasks
 	ldr r3, _02237E70 ; =0x027E0000
 	ldr r1, _02237E74 ; =0x00003FF8

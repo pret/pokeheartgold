@@ -3,7 +3,7 @@
 
 void MI_UncompressLZ8(const void *srcp, void *destp);
 
-static inline u32 MI_GetUncompressedSize(const void *srcp) {
+inline u32 MI_GetUncompressedSize(const void *srcp) {
     return (*(u32 *)srcp >> 8);
 }
 

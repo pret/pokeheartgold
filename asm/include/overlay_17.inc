@@ -95,7 +95,7 @@
 .public ScheduleWindowCopyToVram
 .public ClearWindowTilemapAndCopyToVram
 .public FillWindowPixelBuffer
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public AddTextPrinterParameterized
 .public AddTextPrinterParameterized2
 .public GF_CreateVramTransferManager

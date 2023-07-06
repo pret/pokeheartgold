@@ -785,7 +785,7 @@ _0222A508: .word sub_0202457C
 ov43_0222A50C: ; 0x0222A50C
 	push {r3, lr}
 	ldr r0, [r0]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl GF_RunVramTransferTasks
 	bl OamManager_ApplyAndResetBuffers
 	pop {r3, pc}

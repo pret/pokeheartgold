@@ -66,7 +66,7 @@
 .public FillWindowPixelBuffer
 .public BlitBitmapRectToWindow
 .public FillWindowPixelRect
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public GF_SinDeg
 .public TextPrinterCheckActive
 .public sub_020200A0

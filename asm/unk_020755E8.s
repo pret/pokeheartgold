@@ -3481,7 +3481,7 @@ _020772CE:
 	ldr r0, [r4, #0x14]
 	bl sub_0200398C
 	ldr r0, [r4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _020772F0 ; =OS_IRQTable
 	ldr r1, _020772F4 ; =0x00003FF8
 	mov r0, #1

@@ -72,7 +72,7 @@
 .public BgClearTilemapBufferAndCommit
 .public ClearWindowTilemapAndScheduleTransfer
 .public FillWindowPixelBuffer
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public TextPrinterCheckActive
 .public GF_DestroyVramTransferManager

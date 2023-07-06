@@ -705,7 +705,7 @@ BagApp_SetFlute: ; 0x021F994C
 ov15_021F995C: ; 0x021F995C
 	push {r3, lr}
 	ldr r0, [r0]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl GF_RunVramTransferTasks
 	bl sub_0200D034
 	ldr r3, _021F997C ; =0x027E0000

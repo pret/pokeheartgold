@@ -100,7 +100,7 @@
 .public FillWindowPixelRect
 .public SetWindowX
 .public SetWindowY
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public GF_SinDegNoWrap
 .public GF_CosDegNoWrap
 .public GF_DegreeToSinCosIdxNoWrap

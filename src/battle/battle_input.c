@@ -13,7 +13,7 @@ BattleInput *BattleInput_New() {
     return input;
 }
 
-extern BGTEMPLATE ov12_0226E5DC[4];
+extern BgTemplate ov12_0226E5DC[4];
 
 void ov12_0226604C(BgConfig *config) {
     for (int i = 0; i < NELEMS(ov12_0226E5DC); i++) {

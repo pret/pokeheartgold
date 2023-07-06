@@ -268,12 +268,12 @@ BOOL ChooseStarterApplication_OvyInit(OVY_MANAGER *ovy, int *state_p) {
     work->bgConfig = BgConfig_Alloc(work->heapId);
 
     {
-        struct GFBgModeSet bgModeSet;
+        struct GraphicsModes bgModeSet;
 
         bgModeSet.dispMode = GX_DISPMODE_GRAPHICS;
-        bgModeSet.bgModeMain = GX_BGMODE_0;
-        bgModeSet.bgModeSub = GX_BGMODE_1;
-        bgModeSet._2d3dSwitch = GX_BG0_AS_3D;
+        bgModeSet.bgMode = GX_BGMODE_0;
+        bgModeSet.subMode = GX_BGMODE_1;
+        bgModeSet._2d3dMode = GX_BG0_AS_3D;
 
         SetBothScreensModesAndDisable(&bgModeSet);
     }
@@ -585,7 +585,7 @@ static void freeAllMonSprite2dResObj(struct StarterChooseMonSpriteData *a0) {
 
 static void vBlankCB(struct ChooseStarterAppWork *work) {
     OamManager_ApplyAndResetBuffers();
-    BgConfig_HandleScheduledScrollAndTransferOps(work->bgConfig);
+    DoScheduledBgGpuUpdates(work->bgConfig);
 }
 
 static void setGxBanks(void) {
@@ -697,7 +697,7 @@ static void updateBaseAndBallsRotation(struct ChooseStarterAppWork *work) {
 static void initBgLayers(BgConfig *bgConfig, HeapID heapId) {
     G2_SetBG0Priority(2);
     {
-        const BGTEMPLATE sp70 = {
+        const BgTemplate sp70 = {
             0, 0, 0x800, 0,
             GF_BG_SCR_SIZE_256x256, GF_BG_CLR_4BPP, 0, 1, 0, 0, 0, 0,
             0
@@ -707,7 +707,7 @@ static void initBgLayers(BgConfig *bgConfig, HeapID heapId) {
         BgClearTilemapBufferAndCommit(bgConfig, 1);
     }
     {
-        const BGTEMPLATE sp54 = {
+        const BgTemplate sp54 = {
             0, 0, 0x800, 0,
             GF_BG_SCR_SIZE_256x256, GF_BG_CLR_4BPP, 1, 3, 0, 1, 0, 0,
             0
@@ -717,7 +717,7 @@ static void initBgLayers(BgConfig *bgConfig, HeapID heapId) {
         BgClearTilemapBufferAndCommit(bgConfig, 2);
     }
     {
-        const BGTEMPLATE sp38 = {
+        const BgTemplate sp38 = {
             0, 0, 0x800, 0,
             GF_BG_SCR_SIZE_256x256, GF_BG_CLR_4BPP, 2, 5, 0, 0, 0, 0,
             0
@@ -727,7 +727,7 @@ static void initBgLayers(BgConfig *bgConfig, HeapID heapId) {
         BgClearTilemapBufferAndCommit(bgConfig, 4);
     }
     {
-        const BGTEMPLATE sp1C = {
+        const BgTemplate sp1C = {
             0, 0, 0x800, 0,
             GF_BG_SCR_SIZE_256x256, GF_BG_CLR_4BPP, 0, 4, 0, 2, 0, 0,
             0
@@ -737,7 +737,7 @@ static void initBgLayers(BgConfig *bgConfig, HeapID heapId) {
         BgClearTilemapBufferAndCommit(bgConfig, 5);
     }
     {
-        const BGTEMPLATE sp00 = {
+        const BgTemplate sp00 = {
             0, 0, 0x800, 0,
             GF_BG_SCR_SIZE_256x256, GF_BG_CLR_4BPP, 1, 3, 0, 1, 0 ,0,
             0

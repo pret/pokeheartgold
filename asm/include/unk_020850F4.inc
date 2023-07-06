@@ -25,7 +25,7 @@
 .public InitBgFromTemplate
 .public FreeBgTilemapBuffer
 .public BgClearTilemapBufferAndCommit
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public GF_RunVramTransferTasks
 .public sub_020210BC
 .public sub_02021148
