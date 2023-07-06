@@ -51,7 +51,7 @@ static const WindowTemplate ov76_021E6E98 = {
     .width     = 0x18,
     .height    = 0x18,
     .palette   = 0x0F,
-    .baseBlock = 0x0001,
+    .baseTile  = 0x0001,
 };
 
 static const UnkStruct_020215A0 ov76_021E6EA0 = { 0x28, 0, 0, HEAP_ID_CREDITS };

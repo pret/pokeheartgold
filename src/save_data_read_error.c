@@ -58,7 +58,7 @@ static const WindowTemplate sDataReadErrorWindowTemplate = {
     .width = 26,
     .height = 18,
     .palette = 1,
-    .baseBlock = 0x23,
+    .baseTile = 0x23,
 };
 
 void ShowSaveDataReadError(HeapID heap_id) {

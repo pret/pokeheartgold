@@ -117,7 +117,7 @@ static const WindowTemplate _020FAC94 = {
     .width = 6,
     .height = 4,
     .palette = 13,
-    .baseBlock = 0x021F,
+    .baseTile = 0x021F,
 };
 
 static const u8 sConditionTable[6][3] = {

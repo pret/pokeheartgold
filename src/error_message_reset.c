@@ -61,7 +61,7 @@ static const WindowTemplate sErrorMessageWindowTemplate = {
     .width = 26,
     .height = 18,
     .palette = 1,
-    .baseBlock = 0x23,
+    .baseTile = 0x23,
 };
 
 static const HEAP_PARAM sErrorMessageHeapParams = {

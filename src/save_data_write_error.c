@@ -58,7 +58,7 @@ static const WindowTemplate sDataWriteErrorWindowTemplate = {
     .width = 26,
     .height = 18,
     .palette = 1,
-    .baseBlock = 0x23,
+    .baseTile = 0x23,
 };
 
 void ShowSaveDataWriteError(HeapID heap_id, int code) {

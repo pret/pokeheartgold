@@ -89,7 +89,7 @@ const WindowTemplate sVoltorbFlipWindowTemplates[17] = {
         .width     = 0x1B,
         .height    = 0x04,
         .palette   = 0x0C,
-        .baseBlock = 0x00A2,
+        .baseTile  = 0x00A2,
 
     },
     {
@@ -99,7 +99,7 @@ const WindowTemplate sVoltorbFlipWindowTemplates[17] = {
         .width     = 0x1B,
         .height    = 0x02,
         .palette   = 0x0C,
-        .baseBlock = 0x00A2,
+        .baseTile  = 0x00A2,
 
     },
     {
@@ -109,7 +109,7 @@ const WindowTemplate sVoltorbFlipWindowTemplates[17] = {
         .width     = 0x06,
         .height    = 0x06,
         .palette   = 0x0E,
-        .baseBlock = 0x010E,
+        .baseTile  = 0x010E,
 
     },
     {
@@ -119,7 +119,7 @@ const WindowTemplate sVoltorbFlipWindowTemplates[17] = {
         .width     = 0x06,
         .height    = 0x02,
         .palette   = 0x0E,
-        .baseBlock = 0x0132,
+        .baseTile  = 0x0132,
 
     },
     {
@@ -129,7 +129,7 @@ const WindowTemplate sVoltorbFlipWindowTemplates[17] = {
         .width     = 0x1E,
         .height    = 0x02,
         .palette   = 0x0C,
-        .baseBlock = 0x0001,
+        .baseTile  = 0x0001,
 
     },
     {
@@ -139,7 +139,7 @@ const WindowTemplate sVoltorbFlipWindowTemplates[17] = {
         .width     = 0x1E,
         .height    = 0x02,
         .palette   = 0x0C,
-        .baseBlock = 0x003D,
+        .baseTile  = 0x003D,
 
     },
     {
@@ -149,7 +149,7 @@ const WindowTemplate sVoltorbFlipWindowTemplates[17] = {
         .width     = 0x12,
         .height    = 0x03,
         .palette   = 0x0C,
-        .baseBlock = 0x0079,
+        .baseTile  = 0x0079,
 
     },
     {
@@ -159,7 +159,7 @@ const WindowTemplate sVoltorbFlipWindowTemplates[17] = {
         .width     = 0x12,
         .height    = 0x03,
         .palette   = 0x0C,
-        .baseBlock = 0x00AF,
+        .baseTile  = 0x00AF,
 
     },
     {
@@ -169,7 +169,7 @@ const WindowTemplate sVoltorbFlipWindowTemplates[17] = {
         .width     = 0x13,
         .height    = 0x04,
         .palette   = 0x0C,
-        .baseBlock = 0x00E5,
+        .baseTile  = 0x00E5,
 
     },
     {
@@ -179,7 +179,7 @@ const WindowTemplate sVoltorbFlipWindowTemplates[17] = {
         .width     = 0x13,
         .height    = 0x04,
         .palette   = 0x0C,
-        .baseBlock = 0x0131,
+        .baseTile  = 0x0131,
 
     },
     {
@@ -189,7 +189,7 @@ const WindowTemplate sVoltorbFlipWindowTemplates[17] = {
         .width     = 0x07,
         .height    = 0x02,
         .palette   = 0x0D,
-        .baseBlock = 0x0001,
+        .baseTile  = 0x0001,
 
     },
     {
@@ -199,7 +199,7 @@ const WindowTemplate sVoltorbFlipWindowTemplates[17] = {
         .width     = 0x1E,
         .height    = 0x06,
         .palette   = 0x0C,
-        .baseBlock = 0x000F,
+        .baseTile  = 0x000F,
 
     },
     {
@@ -209,7 +209,7 @@ const WindowTemplate sVoltorbFlipWindowTemplates[17] = {
         .width     = 0x15,
         .height    = 0x04,
         .palette   = 0x0C,
-        .baseBlock = 0x00C3,
+        .baseTile  = 0x00C3,
 
     },
     {
@@ -219,7 +219,7 @@ const WindowTemplate sVoltorbFlipWindowTemplates[17] = {
         .width     = 0x15,
         .height    = 0x04,
         .palette   = 0x0C,
-        .baseBlock = 0x0117,
+        .baseTile  = 0x0117,
 
     },
     {
@@ -229,7 +229,7 @@ const WindowTemplate sVoltorbFlipWindowTemplates[17] = {
         .width     = 0x1E,
         .height    = 0x06,
         .palette   = 0x0C,
-        .baseBlock = 0x0001,
+        .baseTile  = 0x0001,
 
     },
     {
@@ -239,7 +239,7 @@ const WindowTemplate sVoltorbFlipWindowTemplates[17] = {
         .width     = 0x06,
         .height    = 0x06,
         .palette   = 0x0D,
-        .baseBlock = 0x0001,
+        .baseTile  = 0x0001,
 
     },
     {
@@ -249,7 +249,7 @@ const WindowTemplate sVoltorbFlipWindowTemplates[17] = {
         .width     = 0x1E,
         .height    = 0x08,
         .palette   = 0x0C,
-        .baseBlock = 0x0025,
+        .baseTile  = 0x0025,
 
     },
 };

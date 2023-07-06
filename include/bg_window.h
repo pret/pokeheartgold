@@ -61,7 +61,7 @@ typedef struct WindowTemplate {
     u8 width;
     u8 height;
     u8 palette;
-    u16 baseBlock;
+    u16 baseTile;
 } WindowTemplate;
 
 typedef struct Window {
@@ -228,11 +228,11 @@ void BlitBitmapRect4Bit(const Bitmap *src, const Bitmap *dest, u16 srcX, u16 src
 Window *AllocWindows(HeapID heapId, s32 num);
 void InitWindow(Window *window);
 BOOL WindowIsInUse(const Window *window);
-void AddWindowParameterized(BgConfig *bgConfig, Window *window, u8 layer, u8 x, u8 y, u8 width, u8 height, u8 paletteNum, u16 baseTile);
+void AddWindowParameterized(BgConfig *bgConfig, Window *window, u8 bgId, u8 x, u8 y, u8 width, u8 height, u8 paletteNum, u16 baseTile);
 void AddTextWindowTopLeftCorner(BgConfig *bgConfig, Window *window, u8 width, u8 height, u16 baseTile, u8 paletteNum);
 void AddWindow(BgConfig *bgConfig, Window *window, const WindowTemplate *template);
 void RemoveWindow(Window* window);
-void WindowArray_Delete(Window *window, int num);
+void WindowArray_Delete(Window *windows, s32 count);
 void CopyWindowToVram(Window *window);
 void ScheduleWindowCopyToVram(Window *window);
 void PutWindowTilemap(Window *window);
@@ -245,7 +245,7 @@ void FillWindowPixelBufferText_AssumeTileSize32(Window *window, u8 fillValue);
 void BlitBitmapRectToWindow(Window *window, void *src, u16 srcX, u16 srcY, u16 srcWidth, u16 srcHeight, u16 destX, u16 destY, u16 destWidth, u16 destHeight);
 void BlitBitmapRect(Window *window, void *src, u16 srcX, u16 srcY, u16 srcWidth, u16 srcHeight, u16 destX, u16 destY, u16 destWidth, u16 destHeight, u16 colorKey);
 void FillWindowPixelRect(Window *window, u8 fillValue, u16 x, u16 y, u16 width, u16 height);
-void CopyGlyphToWindow(Window *window, u8 *glyphPixels, u16 srcWidth, u16 srcHeight, u16 dstX, u16 dstY, u16 table);
+void CopyGlyphToWindow(Window *window, u8 *glyphPixels, u16 srcWidth, u16 srcHeight, u16 destX, u16 destY, u16 table);
 void ScrollWindow(Window *window, u8 direction, u8 y, u8 fillValue);
 BgConfig *GetWindowBgConfig(Window *window);
 u8 GetWindowBgId(Window *window);
