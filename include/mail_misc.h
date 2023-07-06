@@ -21,7 +21,7 @@ typedef struct {
     SAVE_EASY_CHAT_T *easyChat;
     MAIL_MESSAGE mailMessage;
     u16 unk1C[0x4];
-    u32 unk24;
+    u32 *unk24;
 } Unk02090C94;
 
 typedef struct {
@@ -37,7 +37,7 @@ typedef struct {
     u8 unk1C[0x4];
 } Unk02090E68;
 
-Unk02090C94 *sub_02090C94(u8 a0, u8 a1, SaveData *saveData, u32 a3, HeapID heapId);
+Unk02090C94 *sub_02090C94(u8 a0, u8 a1, SaveData *saveData, u32 *a3, HeapID heapId);
 void sub_02090D0C(Unk02090C94 *a0);
 void sub_02090D14(Unk02090C94 *a0, u16 a1);
 void sub_02090D18(Unk02090C94 *a0, u16 a1, u16 a2);
