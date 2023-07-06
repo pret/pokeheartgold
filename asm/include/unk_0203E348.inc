@@ -250,9 +250,9 @@
 .public ov54_021E5900
 .public ov54_021E5A10
 .public ov54_021E5B3C
-.public ov55_021E5924
-.public ov55_021E598C
-.public ov55_021E5AE8
+.public ov55_UnkApp_Init
+.public ov55_UnkApp_Main
+.public ov55_UnkApp_Exit
 .public ov58_022378E4
 .public ov58_02237924
 .public ov58_0223799C

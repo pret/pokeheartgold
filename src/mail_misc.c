@@ -10,7 +10,7 @@
 #include "constants/mail.h"
 #include "constants/pokemon.h"
 
-Unk02090C94 *sub_02090C94(u8 a0, u8 a1, SaveData *saveData, u32 a3, HeapID heapId) {
+Unk02090C94 *sub_02090C94(u8 a0, u8 a1, SaveData *saveData, u32 *a3, HeapID heapId) {
     Unk02090C94 *ptr = AllocFromHeap(heapId, sizeof(Unk02090C94));
     ptr->unk0 = a0;
     ptr->unk1 = a1;
