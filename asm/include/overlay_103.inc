@@ -169,9 +169,9 @@
 .public _s32_div_f
 .public _0210159C
 .public gSystem
-.public ov55_021E5924
-.public ov55_021E598C
-.public ov55_021E5AE8
+.public ov55_UnkApp_Init
+.public ov55_UnkApp_Main
+.public ov55_UnkApp_Exit
 .public ov103_021EC940
 .public ov103_021EC988
 .public ov103_021EC9A4

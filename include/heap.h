@@ -15,6 +15,7 @@ typedef enum HeapID {
     HEAP_ID_10,
     HEAP_ID_FIELD,
     HEAP_ID_32 = 32,
+    HEAP_ID_OV55 = 40,
     HEAP_ID_CHOOSE_STARTER = 46,
     HEAP_ID_CREDITS = 73,
     HEAP_ID_89 = 89,

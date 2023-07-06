@@ -30,7 +30,7 @@ typedef struct VoltorbFlipAppWork {
     HeapID heapId;
     OPTIONS *options;
     u16 *coins;
-    int unkC;
+    u32 *unkC;
     PlayerProfile *profile;
     NARC *narc;
     BgConfig *bgConfig;
