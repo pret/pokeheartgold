@@ -344,7 +344,7 @@ int GetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
             int i;
             u16 *buffer = data;
             
-            for (i = 0; i < 11; i++) {
+            for (i = 0; i < POKEMON_NAME_LENGTH + 1; i++) {
                 buffer[i] = mon->nickname[i];
             }
         }
@@ -360,7 +360,7 @@ int GetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
         {
             int i;
             u16 *buffer = data;
-            for (i = 0; i < 11; i++) {
+            for (i = 0; i < POKEMON_NAME_LENGTH + 1; i++) {
                 //BUG: this array doesn't have 11 elements, the reason for the bug is a typo in the original code
                 //     where it used the length of a Pokemon's nickname rather than a trainer's nickname
                 buffer[i] = mon->otName[i]; 
@@ -593,7 +593,7 @@ void SetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
         mon->friendship = *data8;
         break;
     case BMON_DATA_NICKNAME:
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < POKEMON_NAME_LENGTH + 1; i++) {
             mon->nickname[i] = data16[i];
         }
         break;
@@ -604,7 +604,7 @@ void SetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
         mon->maxHp = *data16;
         break;
     case BMON_DATA_OT_NAME:
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < POKEMON_NAME_LENGTH + 1; i++) {
             //BUG: this array doesn't have 11 elements, the reason for the bug is a typo in the original code
             //     where it used the length of a Pokemon's nickname rather than a trainer's nickname
             mon->otName[i] = data16[i]; 
@@ -5657,7 +5657,7 @@ BOOL ov12_02256854(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     
     if (trainerId == ctx->battleMons[ctx->battlerIdAttacker].otid &&
         gender == ctx->battleMons[ctx->battlerIdAttacker].metGender &&
-        !StringNotEqualN(name, &ctx->battleMons[ctx->battlerIdAttacker].otName[0], 7)) {
+        !StringNotEqualN(name, &ctx->battleMons[ctx->battlerIdAttacker].otName[0], PLAYER_NAME_LENGTH)) {
         return TRUE;
     }
     
@@ -5675,7 +5675,7 @@ BOOL ov12_022568B0(BattleSystem *bsys, Pokemon *mon) {
     
     if (trainerId == GetMonData(mon, MON_DATA_OTID, NULL) &&
         gender == GetMonData(mon, MON_DATA_MET_GENDER, NULL) &&
-        !StringNotEqualN(name, &otName[0], 7)) {
+        !StringNotEqualN(name, &otName[0], PLAYER_NAME_LENGTH)) {
         return TRUE;
     }
     
