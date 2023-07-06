@@ -82,7 +82,7 @@
 .public GetWindowBgId
 .public GetWindowX
 .public GetWindowY
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
 .public ResetAllTextPrinters

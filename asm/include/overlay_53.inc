@@ -91,7 +91,7 @@
 .public CopyWindowToVram
 .public FillWindowPixelBuffer
 .public FillWindowPixelRect
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleSetBgPosText
 .public GF_SinDeg
 .public ResetAllTextPrinters

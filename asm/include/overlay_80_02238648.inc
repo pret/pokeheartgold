@@ -67,7 +67,7 @@
 .public ToggleBgLayer
 .public BgSetPosTextAndCommit
 .public BgClearTilemapBufferAndCommit
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
 .public GF_CreateVramTransferManager

@@ -88,7 +88,7 @@
 .public FillWindowPixelBuffer
 .public GetWindowBgConfig
 .public GetWindowBaseTile
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public GF_DegreeToSinCosIdxNoWrap
 .public TextPrinterCheckActive

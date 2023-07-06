@@ -55,7 +55,7 @@
 .public ScheduleWindowCopyToVram
 .public ClearWindowTilemapAndScheduleTransfer
 .public FillWindowPixelBuffer
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public TextPrinterCheckActive
 .public sub_020200A0
 .public AddTextPrinterParameterized

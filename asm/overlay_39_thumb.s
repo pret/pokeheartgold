@@ -2683,7 +2683,7 @@ ov39_02228418: ; 0x02228418
 	bl GF_RunVramTransferTasks
 	bl OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _02228438 ; =0x027E0000
 	ldr r1, _0222843C ; =0x00003FF8
 	mov r0, #1

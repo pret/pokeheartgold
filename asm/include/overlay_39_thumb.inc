@@ -61,7 +61,7 @@
 .public AddWindowParameterized
 .public RemoveWindow
 .public FillWindowPixelBuffer
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized
 .public AddTextPrinterParameterized2

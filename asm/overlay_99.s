@@ -1187,7 +1187,7 @@ ov99_021E6250: ; 0x021E6250
 	add r4, r0, #0
 	bl sub_0200D034
 	ldr r0, [r4, #4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _021E626C ; =0x027E0000
 	ldr r1, _021E6270 ; =0x00003FF8
 	mov r0, #1
@@ -2030,7 +2030,7 @@ ov99_021E6938: ; 0x021E6938
 	add r4, r0, #0
 	bl sub_0200D034
 	ldr r0, [r4, #4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _021E6954 ; =0x027E0000
 	ldr r1, _021E6958 ; =0x00003FF8
 	mov r0, #1
@@ -4248,7 +4248,7 @@ ov99_021E7A54: ; 0x021E7A54
 	add r4, r0, #0
 	bl sub_0200D034
 	ldr r0, [r4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _021E7A70 ; =0x027E0000
 	ldr r1, _021E7A74 ; =0x00003FF8
 	mov r0, #1
@@ -5655,7 +5655,7 @@ ov99_021E856C: ; 0x021E856C
 	add r4, r0, #0
 	bl sub_0200D034
 	ldr r0, [r4, #4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _021E8588 ; =0x027E0000
 	ldr r1, _021E858C ; =0x00003FF8
 	mov r0, #1

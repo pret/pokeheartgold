@@ -137,7 +137,7 @@ extern const MsgNoList sMenuMsgNos[];
 extern const Ov122_021E9278 ov122_021E9278;
 extern const u16 ov122_021E92A0[8];
 extern const u8 ov122_021E92B0[4][4];
-extern const struct GFBgModeSet sVoltorbFlipBgModeSet;
+extern const struct GraphicsModes sVoltorbFlipBgModeSet;
 extern const Unk122_021E92D0 ov122_021E92D0;
 extern const Unk122_021E92E4 ov122_021E92E4;
 extern const Unk122_021E92FC ov122_021E92FC;
@@ -1695,7 +1695,7 @@ static void ov122_021E7904(Ov122_021E7888 *a0) {
 static void ov122_021E7928(VoltorbFlipAppWork *work) {
     work->bgConfig = BgConfig_Alloc(work->heapId);
 
-    const struct GFBgModeSet temp1 = sVoltorbFlipBgModeSet;
+    const struct GraphicsModes temp1 = sVoltorbFlipBgModeSet;
     SetBothScreensModesAndDisable(&temp1);
 
     BgTemplates temp2 = sVoltorbFlipBgTemplates;
@@ -1703,8 +1703,8 @@ static void ov122_021E7928(VoltorbFlipAppWork *work) {
     for (int i = 0; i < 6; i++) {
         InitBgFromTemplate(work->bgConfig, ov122_021E9270[i], &temp2.unk0[i], 0);
         BgClearTilemapBufferAndCommit(work->bgConfig, ov122_021E9270[i]);
-        BG_FillCharDataRange(work->bgConfig, ov122_021E9270[i], 0, 1, 0);
-        ToggleBgLayer(ov122_021E9270[i], 1);
+        BG_FillCharDataRange(work->bgConfig, (enum GFBgLayer)ov122_021E9270[i], 0, 1, 0);
+        ToggleBgLayer(ov122_021E9270[i], GX_LAYER_TOGGLE_ON);
     }
 }
 
@@ -1979,7 +1979,7 @@ static void ov122_021E8004(VoltorbFlipAppWork *work) {
 
     sub_0200D020(work->unk148);
     sub_0200D034();
-    BgConfig_HandleScheduledScrollAndTransferOps(work->bgConfig);
+    DoScheduledBgGpuUpdates(work->bgConfig);
 
     REGType32v *regBase = (REGType32v *)0x027e0000;
     *(regBase + 0xffe) |= 1;

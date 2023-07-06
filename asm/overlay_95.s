@@ -277,7 +277,7 @@ ov95_021E5B24: ; 0x021E5B24
 	ldr r0, [r4, #8]
 	bl sub_0200398C
 	ldr r0, [r4, #4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _021E5B50 ; =0x027E0000
 	ldr r1, _021E5B54 ; =0x00003FF8
 	mov r0, #1

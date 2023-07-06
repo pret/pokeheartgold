@@ -67,7 +67,7 @@
 .public ClearWindowTilemap
 .public ClearWindowTilemapAndCopyToVram
 .public FillWindowPixelBuffer
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public sub_0201F988
 .public GF_SinDegNoWrap
 .public LCRandom

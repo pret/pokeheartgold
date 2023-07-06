@@ -749,7 +749,7 @@ ov121_021E5F30: ; 0x021E5F30
 	add r4, r0, #0
 	bl OamManager_ApplyAndResetBuffers
 	add r0, r4, #0
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl GF_RunVramTransferTasks
 	ldr r3, _021E5F50 ; =0x027E0000
 	ldr r1, _021E5F54 ; =0x00003FF8

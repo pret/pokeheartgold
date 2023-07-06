@@ -82,7 +82,7 @@
 .public CopyWindowToVram
 .public ClearWindowTilemapAndCopyToVram
 .public FillWindowPixelBuffer
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized

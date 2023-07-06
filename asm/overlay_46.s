@@ -1324,11 +1324,11 @@ _022592DC: .word _02259598
 
 	thumb_func_start ov46_022592E0
 ov46_022592E0: ; 0x022592E0
-	ldr r3, _022592E8 ; =BgConfig_HandleScheduledScrollAndTransferOps
+	ldr r3, _022592E8 ; =DoScheduledBgGpuUpdates
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_022592E8: .word BgConfig_HandleScheduledScrollAndTransferOps
+_022592E8: .word DoScheduledBgGpuUpdates
 	thumb_func_end ov46_022592E0
 
 	thumb_func_start ov46_022592EC

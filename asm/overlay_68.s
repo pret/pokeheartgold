@@ -290,7 +290,7 @@ ov68_021E5B6C: ; 0x021E5B6C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	mov r0, #0x56
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]

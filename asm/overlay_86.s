@@ -486,7 +486,7 @@ ov86_021E5CDC: ; 0x021E5CDC
 	bl sub_0200398C
 _021E5CEE:
 	ldr r0, [r4, #0xc]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl sub_0200D034
 	ldr r3, _021E5D08 ; =0x027E0000
 	ldr r1, _021E5D0C ; =0x00003FF8

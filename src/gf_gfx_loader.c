@@ -240,7 +240,7 @@ static u32 GfGfxLoader_LoadCharDataInternal(void *data, BgConfig *bgConfig, enum
             if (szByte == 0) {
                 szByte = pCharData->szByte;
             }
-            BG_LoadCharTilesData(bgConfig, layer, pCharData->pRawData, szByte, tileStart);
+            BG_LoadCharTilesData(bgConfig, (u8)layer, pCharData->pRawData, szByte, tileStart);
         }
         FreeToHeap(data);
     }
@@ -258,9 +258,9 @@ static void GfGfxLoader_LoadScrnDataInternal(void *data, BgConfig *bgConfig, enu
             }
             bgTilemapBuffer = GetBgTilemapBuffer(bgConfig, layer);
             if (bgTilemapBuffer != NULL) {
-                BG_LoadScreenTilemapData(bgConfig, layer, pScrnData->rawData, szByte);
+                BG_LoadScreenTilemapData(bgConfig, (u8)layer, pScrnData->rawData, szByte);
             }
-            BgCopyOrUncompressTilemapBufferRangeToVram(bgConfig, layer, pScrnData->rawData, szByte, tileStart);
+            BgCopyOrUncompressTilemapBufferRangeToVram(bgConfig, (u8)layer, pScrnData->rawData, szByte, tileStart);
         }
         FreeToHeap(data);
     }

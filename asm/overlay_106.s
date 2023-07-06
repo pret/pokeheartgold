@@ -1449,7 +1449,7 @@ ov106_021E63E0: ; 0x021E63E0
 	add r4, r0, #0
 	bl ov106_021E6A34
 	ldr r0, [r4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl sub_0200D034
 	ldr r3, _021E6400 ; =0x027E0000
 	ldr r1, _021E6404 ; =0x00003FF8

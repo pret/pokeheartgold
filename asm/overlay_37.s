@@ -438,7 +438,7 @@ ov37_021E5CC8: ; 0x021E5CC8
 	bl GF_RunVramTransferTasks
 	bl OamManager_ApplyAndResetBuffers
 	add r0, r4, #0
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _021E5CE8 ; =0x027E0000
 	ldr r1, _021E5CEC ; =0x00003FF8
 	mov r0, #1

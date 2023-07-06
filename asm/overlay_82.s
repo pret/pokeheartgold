@@ -1809,7 +1809,7 @@ ov82_0223EC0C: ; 0x0223EC0C
 	bl sub_0200398C
 _0223EC24:
 	ldr r0, [r4, #0x48]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl GF_RunVramTransferTasks
 	bl OamManager_ApplyAndResetBuffers
 	ldr r3, _0223EC40 ; =0x027E0000

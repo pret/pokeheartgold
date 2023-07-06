@@ -682,7 +682,7 @@ _021E5E0E:
 	bl sub_0200D020
 	bl sub_0200D034
 	ldr r0, [r4, #8]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _021E5E2C ; =0x027E0000
 	ldr r1, _021E5E30 ; =0x00003FF8
 	mov r0, #1

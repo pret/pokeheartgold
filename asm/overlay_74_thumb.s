@@ -3151,7 +3151,7 @@ ov74_022288F8: ; 0x022288F8
 	bl GF_RunVramTransferTasks
 	bl OamManager_ApplyAndResetBuffers
 	add r0, r4, #0
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _02228918 ; =0x027E0000
 	ldr r1, _0222891C ; =0x00003FF8
 	mov r0, #1
@@ -24270,7 +24270,7 @@ _02233038:
 	bl GF_RunVramTransferTasks
 	bl OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #0x20]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _02233058 ; =0x027E0000
 	ldr r1, _0223305C ; =0x00003FF8
 	mov r0, #1
@@ -29926,7 +29926,7 @@ _02235A8E:
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _02235AA0
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 _02235AA0:
 	ldr r3, _02235ABC ; =0x027E0000
 	ldr r1, _02235AC0 ; =0x00003FF8

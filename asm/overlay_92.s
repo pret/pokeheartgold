@@ -2304,7 +2304,7 @@ ov92_0225D894: ; 0x0225D894
 	ldr r0, [r4, #0x5c]
 	bl sub_0200398C
 	ldr r0, [r4, #0x58]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _0225D8BC ; =0x027E0000
 	ldr r1, _0225D8C0 ; =0x00003FF8
 	mov r0, #1

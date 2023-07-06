@@ -21,7 +21,7 @@ ov01_021E5900: ; 0x021E5900
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #8]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl GF_RunVramTransferTasks
 	bl OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #0x3c]

@@ -51,7 +51,7 @@
 .public FillWindowPixelBuffer
 .public BlitBitmapRect
 .public FillWindowPixelRect
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public AddTextPrinterParameterized
 .public AddTextPrinterParameterized2

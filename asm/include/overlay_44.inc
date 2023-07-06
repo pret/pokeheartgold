@@ -138,7 +138,7 @@
 .public BlitBitmapRectToWindow
 .public FillWindowPixelRect
 .public SetWindowPaletteNum
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public GF_SinDegNoWrap
 .public MTRandom

@@ -1131,7 +1131,7 @@ ov75_02247234: ; 0x02247234
 	bl GF_RunVramTransferTasks
 	bl OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _02247254 ; =0x027E0000
 	ldr r1, _02247258 ; =0x00003FF8
 	mov r0, #1

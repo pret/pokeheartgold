@@ -123,7 +123,7 @@
 .public CopyWindowToVram
 .public ClearWindowTilemapAndCopyToVram
 .public FillWindowPixelBuffer
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public Bind3dModelSet
 .public GF_SinDegFX32

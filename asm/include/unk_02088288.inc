@@ -66,7 +66,7 @@
 .public BgClearTilemapBufferAndCommit
 .public ScheduleWindowCopyToVram
 .public ClearWindowTilemapAndScheduleTransfer
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
 .public GF_DestroyVramTransferManager

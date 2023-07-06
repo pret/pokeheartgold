@@ -2423,7 +2423,7 @@ _021E6C16:
 	mov r0, #0xd
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _021E6C40 ; =0x027E0000
 	ldr r1, _021E6C44 ; =0x00003FF8
 	mov r0, #1
@@ -7962,7 +7962,7 @@ _021E9800:
 	bl GF_RunVramTransferTasks
 	ldr r0, _021E9824 ; =0x00000438
 	ldr r0, [r4, r0]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _021E9828 ; =0x027E0000
 	ldr r1, _021E982C ; =0x00003FF8
 	mov r0, #1

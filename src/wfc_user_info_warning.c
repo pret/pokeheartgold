@@ -26,14 +26,14 @@ static const GF_GXBanksConfig sWFCWarningMsgBanksConfig = {
     .texpltt = GX_VRAM_TEXPLTT_NONE,
 };
 
-static const struct GFBgModeSet sWFCWarningMsgBgModeSet = {
+static const struct GraphicsModes sWFCWarningMsgBgModeSet = {
     .dispMode = GX_DISPMODE_GRAPHICS,
-    .bgModeMain = GX_BGMODE_0,
-    .bgModeSub = GX_BGMODE_0,
-    ._2d3dSwitch = GX_BG0_AS_2D,
+    .bgMode = GX_BGMODE_0,
+    .subMode = GX_BGMODE_0,
+    ._2d3dMode = GX_BG0_AS_2D,
 };
 
-static const BGTEMPLATE sWFCWarningBgTemplate = {
+static const BgTemplate sWFCWarningBgTemplate = {
     .x = 0,
     .y = 0,
     .bufferSize = 0x800,
@@ -56,7 +56,7 @@ static const WindowTemplate sWFCWarningWindowTemplate = {
     .width = 26,
     .height = 18,
     .palette = 1,
-    .baseBlock = 0x23,
+    .baseTile = 0x23,
 };
 
 void ShowWFCUserInfoWarning(HeapID heap_id, int a1) {

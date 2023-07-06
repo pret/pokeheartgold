@@ -3674,7 +3674,7 @@ _02239798:
 	ldr r0, [r4, #0x28]
 	bl sub_0200398C
 	ldr r0, [r4, #4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _022397DC ; =0x027E0000
 	ldr r1, _022397E0 ; =0x00003FF8
 	mov r0, #1
@@ -3701,7 +3701,7 @@ ov12_022397E4: ; 0x022397E4
 	bl sub_0200398C
 	bl GF_RunVramTransferTasks
 	ldr r0, [r4, #4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _02239808 ; =0x027E0000
 	ldr r1, _0223980C ; =0x00003FF8
 	mov r0, #1

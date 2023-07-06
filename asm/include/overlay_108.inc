@@ -136,7 +136,7 @@
 .public FillWindowPixelRect
 .public GetWindowWidth
 .public GetWindowHeight
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public DoesPixelAtScreenXYMatchPtrVal
 .public Draw3dModel
