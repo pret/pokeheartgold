@@ -1363,7 +1363,7 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
         moveRange = range;
     }
     
-    if (moveRange == 4) {
+    if (moveRange == RANGE_BOTH_OPPONENTS) {
         int battlerId;
         int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
         OpponentData *opponent = BattleSystem_GetOpponentDataByBattlerId(bsys, battlerIdAttacker);
@@ -1384,7 +1384,7 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
         if (ctx->unk_217E != maxBattlers) {
             ctx->unk_217E++;
         }
-    } else if (moveRange == 8) {
+    } else if (moveRange == RANGE_ALL_BUT_USER) {
         int battlerId;
         int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
         
@@ -1401,7 +1401,7 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
         if (ctx->unk_217E != maxBattlers) {
             ctx->unk_217E++;
         }
-    } else if (moveRange == (1 << 9) && (a4 == 1)) {
+    } else if (moveRange == RANGE_SINGLE_TARGET_USER_SIDE && (a4 == 1)) {
         int battleType = BattleSystem_GetBattleType(bsys);
         
         if ((battleType & BATTLE_TYPE_DOUBLES) && (BattleSystem_Random(bsys) % 2) == 0) {
@@ -1412,13 +1412,13 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
         } else {
             battlerIdTarget = battlerIdAttacker;
         }
-    } else if (moveRange == (1 << 10) && (a4 == 1)) {
+    } else if (moveRange == RANGE_10 && (a4 == 1)) {
         battlerIdTarget = ov12_02253DA0(bsys, ctx, battlerIdAttacker);
-    } else if (moveRange == (1 << 7)) {
+    } else if (moveRange == RANGE_7) {
         battlerIdTarget = ov12_02253DA0(bsys, ctx, battlerIdAttacker);
-    } else if (moveRange == (1 << 4) || moveRange == (1 << 5) || moveRange == 1 || moveRange == (1 << 6)) {
+    } else if (moveRange == RANGE_4 || moveRange == RANGE_5 || moveRange == RANGE_SINGLE_TARGET || moveRange == RANGE_6) {
         battlerIdTarget = battlerIdAttacker;
-    } else if (moveRange == (1 << 8)) {
+    } else if (moveRange == RANGE_8) {
         int battleType = BattleSystem_GetBattleType(bsys);
         
         if (battleType & BATTLE_TYPE_DOUBLES) {
@@ -1426,7 +1426,7 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
         } else {
             battlerIdTarget = battlerIdAttacker;
         }
-    } else if (moveRange == (1 << 9)) {
+    } else if (moveRange == RANGE_SINGLE_TARGET_USER_SIDE) {
         int battleType = BattleSystem_GetBattleType(bsys);
         
         if (battleType & BATTLE_TYPE_DOUBLES) {
@@ -1437,7 +1437,7 @@ int ov12_022506D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker,
         } else {
             battlerIdTarget = battlerIdAttacker;
         }
-    } else if (moveRange == 2 || a4 == 1) {
+    } else if (moveRange == RANGE_RANDOM_OPPONENT || a4 == 1) {
         int battleType = BattleSystem_GetBattleType(bsys);
         int side = BattleSystem_GetFieldSide(bsys, battlerIdAttacker)^1;
         int battlerIdOpponents[2];
@@ -1486,7 +1486,7 @@ void ov12_02250A18(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker
     int moveType;
     int maxBattlers;
     
-    if (ctx->battlerIdTarget == 0xFF) {
+    if (ctx->battlerIdTarget == BATTLER_NONE) {
         return;
     }
     
@@ -1508,7 +1508,7 @@ void ov12_02250A18(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker
     maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     
     if (moveType == TYPE_ELECTRIC &&
-        (ctx->unk_334.moveData[moveNo].range == 0 || ctx->unk_334.moveData[moveNo].range == 2) &&
+        (ctx->unk_334.moveData[moveNo].range == RANGE_SINGLE_TARGET || ctx->unk_334.moveData[moveNo].range == RANGE_RANDOM_OPPONENT) &&
         !(ctx->linkStatus & 0x20) &&
         CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP_NOT_USER, battlerIdAttacker, ABILITY_LIGHTNINGROD)) {
         for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
@@ -1522,7 +1522,7 @@ void ov12_02250A18(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker
             ctx->battlerIdTarget = battlerIdTarget;
         }
     } else if (moveType == TYPE_WATER &&
-        (ctx->unk_334.moveData[moveNo].range == 0 || ctx->unk_334.moveData[moveNo].range == 2) &&
+        (ctx->unk_334.moveData[moveNo].range == RANGE_SINGLE_TARGET || ctx->unk_334.moveData[moveNo].range == RANGE_RANDOM_OPPONENT) &&
         !(ctx->linkStatus & 0x20) &&
         CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP_NOT_USER, battlerIdAttacker, ABILITY_STORM_DRAIN)) {
         for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
@@ -1576,7 +1576,7 @@ void LockBattlerIntoCurrentMove(BattleSystem *bsys, BATTLECONTEXT *ctx, int batt
 
 void UnlockBattlerOutOfCurrentMove(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     ctx->battleMons[battlerId].status2 &= ~STATUS2_LOCKED_INTO_MOVE;
-    ctx->battleMons[battlerId].status2 &= ~(3 << 8); //??
+    ctx->battleMons[battlerId].status2 &= ~STATUS2_8; 
     ctx->battleMons[battlerId].moveEffectFlags &= 0xDFFBFF3F;
     ctx->battleMons[battlerId].unk88.rolloutCount = 0;
     ctx->battleMons[battlerId].unk88.furyCutterCount = 0;
@@ -6149,10 +6149,10 @@ int CalcMoveDamage(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 moveNo, u32 sideC
     statChangeSpAtk += 6;
     statChangeSpDef += 6;
     
-    if (calcAttacker.ability == ABILITY_RIVALRY && calcAttacker.gender == calcTarget.gender && calcAttacker.gender != GENDER_NONE && calcTarget.gender != GENDER_NONE) {
+    if (calcAttacker.ability == ABILITY_RIVALRY && calcAttacker.gender == calcTarget.gender && calcAttacker.gender != MON_GENDERLESS && calcTarget.gender != MON_GENDERLESS) {
         movePower = movePower * 125 / 100;
     }
-    if (calcAttacker.ability == ABILITY_RIVALRY && calcAttacker.gender != calcTarget.gender && calcAttacker.gender != GENDER_NONE && calcTarget.gender != GENDER_NONE) {
+    if (calcAttacker.ability == ABILITY_RIVALRY && calcAttacker.gender != calcTarget.gender && calcAttacker.gender != MON_GENDERLESS && calcTarget.gender != MON_GENDERLESS) {
         movePower = movePower * 75 / 100;
     }
     
@@ -6256,10 +6256,10 @@ int CalcMoveDamage(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 moveNo, u32 sideC
         }
     }
     
-    if ((battleType & BATTLE_TYPE_DOUBLES) && ctx->unk_334.moveData[moveNo].range == 4 && GetMonsHitCount(bsys, ctx, 1, battlerIdTarget) == 2) {
+    if ((battleType & BATTLE_TYPE_DOUBLES) && ctx->unk_334.moveData[moveNo].range == RANGE_BOTH_OPPONENTS && GetMonsHitCount(bsys, ctx, 1, battlerIdTarget) == 2) {
         dmg = dmg * 3 / 4;
     }
-    if ((battleType & BATTLE_TYPE_DOUBLES) && ctx->unk_334.moveData[moveNo].range == 8 && GetMonsHitCount(bsys, ctx, 0, battlerIdTarget) >= 2) {
+    if ((battleType & BATTLE_TYPE_DOUBLES) && ctx->unk_334.moveData[moveNo].range == RANGE_ALL_BUT_USER && GetMonsHitCount(bsys, ctx, 0, battlerIdTarget) >= 2) {
         dmg = dmg * 3 / 4;
     }
     
@@ -6328,7 +6328,7 @@ u32 TryCriticalHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker
     critUp = (((status2 & STATUS2_FOCUS_ENERGY) != 0)*2) + 
              (item == HOLD_EFFECT_CRITRATE_UP) +
              critCnt +
-            (ability == ABILITY_SUPER_LUCK) +
+             (ability == ABILITY_SUPER_LUCK) +
              2*((item == HOLD_EFFECT_CHANSEY_CRITRATE_UP) && (species == SPECIES_CHANSEY)) +
              2*((item == HOLD_EFFECT_FARFETCHD_CRITRATE_UP) && (species == SPECIES_FARFETCHD));
              

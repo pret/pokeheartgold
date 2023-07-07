@@ -476,6 +476,18 @@
 #define CLASS_SPECIAL  1
 #define CLASS_STATUS   2
 
+#define RANGE_SINGLE_TARGET             (1 << 0)    
+#define RANGE_RANDOM_OPPONENT           (1 << 1)
+#define RANGE_BOTH_OPPONENTS            (1 << 2)    
+#define RANGE_ALL_BUT_USER              (1 << 3)
+#define RANGE_4                         (1 << 4)
+#define RANGE_5                         (1 << 5)
+#define RANGE_6                         (1 << 6)
+#define RANGE_7                         (1 << 7)
+#define RANGE_8                         (1 << 8)
+#define RANGE_SINGLE_TARGET_USER_SIDE   (1 << 9)
+#define RANGE_10                        (1 << 10)
+
 #define NUM_MOVES   MOVE_SHADOW_FORCE
 
 // Tutor move flags

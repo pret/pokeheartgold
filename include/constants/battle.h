@@ -187,6 +187,7 @@ enum Terrain {
 #define STATUS2_CONFUSION                   (7 << 0)
 #define STATUS2_FLINCH                      (1 << 3)
 #define STATUS2_UPROAR                      (7 << 4)
+#define STATUS2_8                           (3 << 8)
 #define STATUS2_RAGE                        (3 << 10)
 #define STATUS2_LOCKED_INTO_MOVE            (1 << 12)
 #define STATUS2_13                          (1 << 13)
