@@ -33,8 +33,8 @@
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public GfGfxLoader_GXLoadPalFromOpenNarc
 .public G2dRenderer_SetSubSurfaceCoords
-.public sub_0200B484
-.public sub_0200B5C0
+.public StartBrightnessTransition
+.public IsBrightnessTransitionActive
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString

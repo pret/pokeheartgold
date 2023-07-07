@@ -2279,7 +2279,7 @@ _021E6B64: .word 0x04001050
 ov60_021E6B68: ; 0x021E6B68
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0200B528
+	bl InitAllScreenBrightnessData
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0200FBF4

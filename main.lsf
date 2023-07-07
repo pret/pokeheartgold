@@ -32,7 +32,7 @@ Static main
 	Object src/unk_0200A090.o
 	Object asm/unk_0200ACF0.o
 	Object asm/unk_0200B150.o
-	Object asm/unk_0200B380.o
+	Object src/brightness.o
 	Object src/msgdata.o
 	Object src/message_format.o
 	Object src/message_printer.o

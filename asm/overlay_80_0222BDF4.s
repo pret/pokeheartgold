@@ -3815,7 +3815,7 @@ _0222D9D6:
 	sub r1, #0x38
 	mov r2, #0
 	mov r3, #0x1e
-	bl sub_0200B484
+	bl StartBrightnessTransition
 	mov r2, #1
 	ldr r0, _0222DAA8 ; =ov80_0222D644
 	add r1, r5, #0
@@ -3827,7 +3827,7 @@ _0222D9D6:
 	b _0222DA94
 _0222DA54:
 	mov r0, #1
-	bl sub_0200B5C0
+	bl IsBrightnessTransitionActive
 	cmp r0, #0
 	beq _0222DA94
 	mov r0, #1
@@ -3994,7 +3994,7 @@ _0222DB70:
 	sub r1, #0x38
 	mov r2, #0
 	mov r3, #0x1c
-	bl sub_0200B484
+	bl StartBrightnessTransition
 	mov r2, #1
 	ldr r0, _0222DC10 ; =ov80_0222D644
 	add r1, r5, #0
@@ -4006,7 +4006,7 @@ _0222DB70:
 	b _0222DBFC
 _0222DBBC:
 	mov r0, #1
-	bl sub_0200B5C0
+	bl IsBrightnessTransitionActive
 	cmp r0, #0
 	beq _0222DBFC
 	mov r0, #1

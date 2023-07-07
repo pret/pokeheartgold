@@ -1074,7 +1074,7 @@ _0225F892:
 	mov r1, #0
 	mov r2, #0x10
 	mov r3, #0x1e
-	bl sub_0200B484
+	bl StartBrightnessTransition
 	ldr r1, _0225F8F4 ; =0x000014A5
 	b _0225F8F8
 	nop
@@ -1124,7 +1124,7 @@ _0225F91E:
 	b _0225FA98
 _0225F944:
 	mov r0, #1
-	bl sub_0200B5C0
+	bl IsBrightnessTransitionActive
 	cmp r0, #0
 	beq _0225F96E
 	mov r0, #0x6d

@@ -18,7 +18,7 @@
 #include "communication_error.h"
 #include "math_util.h"
 #include "unk_020210A0.h"
-#include "unk_0200B380.h"
+#include "brightness.h"
 
 FS_EXTERN_OVERLAY(OVY_60);
 FS_EXTERN_OVERLAY(OVY_36);
@@ -87,7 +87,7 @@ void NitroMain(void) {
     gSystem.unk70 = 1;
     gSystem.unk30 = 0;
     InitializeMainRNG();
-    sub_0200B528();
+    InitAllScreenBrightnessData();
     sub_02018380();
     _02111864 = 0;
     OS_InitTick();
@@ -119,7 +119,7 @@ void NitroMain(void) {
         OS_WaitIrq(TRUE, OS_IE_VBLANK);
         gSystem.vblankCounter++;
         gSystem.unk30 = 0;
-        sub_0200B594();
+        DoAllScreenBrightnessTransitionStep();
         HandleFadeUpdateFrame();
         if (gSystem.vBlankIntr != NULL) {
             gSystem.vBlankIntr(gSystem.vBlankIntrArg);

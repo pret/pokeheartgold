@@ -15,7 +15,7 @@
 #include "text.h"
 #include "unk_02005D10.h"
 #include "unk_02009D48.h"
-#include "unk_0200B380.h"
+#include "brightness.h"
 #include "unk_0200CF18.h"
 #include "render_window.h"
 #include "unk_0200FA24.h"
@@ -1666,29 +1666,29 @@ static void FormatGameLevel(VoltorbFlipAppWork *work, int idx) {
 
 static void ov122_021E7888(Ov122_021E7888 *a0) {
     if (a0->unk0 == 0) {
-        sub_0200B554(1);
-        sub_0200B484(4, -8, 0, 55, 1);
+        InitScreenBrightnessData(SCREEN_MASK_MAIN);
+        StartBrightnessTransition(4, -8, 0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN);
         a0->unk0 = 1;
     }
 }
 
 static void ov122_021E78B4(Ov122_021E7888 *a0) {
-    sub_0200B554(1);
-    sub_0200B484(4, 0, -8, 55, 1);
+    InitScreenBrightnessData(SCREEN_MASK_MAIN);
+    StartBrightnessTransition(4, 0, -8, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN);
     a0->unk0 = 0;
 }
 
 static void ov122_021E78DC(Ov122_021E7888 *a0) {
     if (a0->unk0 == 0) {
-        sub_0200B554(1);
-        sub_0200B484(1, -6, 0, 33, 1);
+        InitScreenBrightnessData(SCREEN_MASK_MAIN);
+        StartBrightnessTransition(1, -6, 0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN);
         a0->unk0 = 1;
     }
 }
 
 static void ov122_021E7904(Ov122_021E7888 *a0) {
-    sub_0200B554(1);
-    sub_0200B484(1, 0, -6, 33, 1);
+    InitScreenBrightnessData(SCREEN_MASK_MAIN);
+    StartBrightnessTransition(1, 0, -6, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN);
     a0->unk0 = 0;
 }
 

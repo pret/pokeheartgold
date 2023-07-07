@@ -1928,7 +1928,7 @@ ov43_0222ADB8: ; 0x0222ADB8
 	mov r1, #8
 	mov r2, #0
 	mov r3, #0x3d
-	bl sub_0200B484
+	bl StartBrightnessTransition
 	add sp, #0x18
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov43_0222ADB8
@@ -4475,7 +4475,7 @@ _0222C1B4:
 	mov r1, #8
 	mov r2, #0
 	mov r3, #0x3d
-	bl sub_0200B484
+	bl StartBrightnessTransition
 	add sp, #0x40
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
