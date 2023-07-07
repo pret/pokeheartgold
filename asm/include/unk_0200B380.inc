@@ -2,7 +2,7 @@
 #pragma once
 .public StartBrightnessTransition
 .public SetBlendBrightness
-.public InitAllScreenBrightnessData
+.public ScreenBrightnessData_InitAll
 .public DoAllScreenBrightnessTransitionStep
 .public IsBrightnessTransitionActive
 .public UpdateMainScreenBrightnessSurface

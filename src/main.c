@@ -87,7 +87,7 @@ void NitroMain(void) {
     gSystem.unk70 = 1;
     gSystem.unk30 = 0;
     InitializeMainRNG();
-    InitAllScreenBrightnessData();
+    ScreenBrightnessData_InitAll();
     sub_02018380();
     _02111864 = 0;
     OS_InitTick();

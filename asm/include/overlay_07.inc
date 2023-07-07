@@ -42,7 +42,7 @@
 .public sub_020094BC
 .public G2dRenderer_SetSubSurfaceCoords
 .public StartBrightnessTransition
-.public InitAllScreenBrightnessData
+.public ScreenBrightnessData_InitAll
 .public DoAllScreenBrightnessTransitionStep
 .public IsBrightnessTransitionActive
 .public sub_0200CF38

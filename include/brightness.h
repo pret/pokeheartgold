@@ -5,7 +5,7 @@
 #include <nitro/gx/g2.h>
 
 #define SCREEN_MASK_MAIN 1
-#define SCREEN_MASK_SUB 2
+#define SCREEN_MASK_SUB  2
 
 typedef struct BrightnessData {
     GXBlendPlaneMask surfaceMask;
@@ -26,7 +26,7 @@ void DoBrightnessTransitionStep(BrightnessData *brightness);
 void InitBrightnessTransition(BrightnessData *brightnessData, u16 stepCount, s16 targetBrightness, s16 startBrightness, GXBlendPlaneMask surfaceMask, u32 screenMask);
 void StartBrightnessTransition(u16 stepCount, s16 targetBrightness, s16 startBrightness, GXBlendPlaneMask surfaceMask, u32 screenMask);
 void SetBlendBrightness(fx32 brightness, GXBlendPlaneMask surfaceMask, u32 screenMask);
-void InitAllScreenBrightnessData(void);
+void ScreenBrightnessData_InitAll(void);
 void InitScreenBrightnessData(u32 screenMask);
 void DoAllScreenBrightnessTransitionStep(void);
 BOOL IsBrightnessTransitionActive(u32 screenMask);

@@ -3054,7 +3054,7 @@ ov07_0221D374: ; 0x0221D374
 	ldr r0, [r5, #0x18]
 	add r0, r0, #4
 	str r0, [r5, #0x18]
-	bl InitAllScreenBrightnessData
+	bl ScreenBrightnessData_InitAll
 	add r0, r4, #0
 	mov r1, #1
 	bl ov07_0221D2F4
