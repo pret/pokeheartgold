@@ -476,6 +476,7 @@
 #define CLASS_SPECIAL  1
 #define CLASS_STATUS   2
 
+#define RANGE_0                          0
 #define RANGE_SINGLE_TARGET             (1 << 0)    
 #define RANGE_RANDOM_OPPONENT           (1 << 1)
 #define RANGE_BOTH_OPPONENTS            (1 << 2)    

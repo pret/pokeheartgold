@@ -1508,7 +1508,7 @@ void ov12_02250A18(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker
     maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     
     if (moveType == TYPE_ELECTRIC &&
-        (ctx->unk_334.moveData[moveNo].range == RANGE_SINGLE_TARGET || ctx->unk_334.moveData[moveNo].range == RANGE_RANDOM_OPPONENT) &&
+        (ctx->unk_334.moveData[moveNo].range == RANGE_0 || ctx->unk_334.moveData[moveNo].range == RANGE_RANDOM_OPPONENT) &&
         !(ctx->linkStatus & 0x20) &&
         CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP_NOT_USER, battlerIdAttacker, ABILITY_LIGHTNINGROD)) {
         for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
@@ -1522,7 +1522,7 @@ void ov12_02250A18(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker
             ctx->battlerIdTarget = battlerIdTarget;
         }
     } else if (moveType == TYPE_WATER &&
-        (ctx->unk_334.moveData[moveNo].range == RANGE_SINGLE_TARGET || ctx->unk_334.moveData[moveNo].range == RANGE_RANDOM_OPPONENT) &&
+        (ctx->unk_334.moveData[moveNo].range == RANGE_0 || ctx->unk_334.moveData[moveNo].range == RANGE_RANDOM_OPPONENT) &&
         !(ctx->linkStatus & 0x20) &&
         CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP_NOT_USER, battlerIdAttacker, ABILITY_STORM_DRAIN)) {
         for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
