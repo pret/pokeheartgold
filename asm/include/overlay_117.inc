@@ -2,8 +2,8 @@
 #pragma once
 .public GfGfxLoader_GXLoadPalFromOpenNarc
 .public GfGfxLoader_GetScrnDataFromOpenNarc
-.public sub_0200B484
-.public sub_0200B5C0
+.public StartBrightnessTransition
+.public IsBrightnessTransitionActive
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString

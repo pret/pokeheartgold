@@ -25,8 +25,8 @@
 .public PlaySE
 .public NARC_New
 .public NARC_Delete
-.public sub_0200B484
-.public sub_0200B5C0
+.public StartBrightnessTransition
+.public IsBrightnessTransitionActive
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString

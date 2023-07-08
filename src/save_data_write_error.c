@@ -12,7 +12,7 @@
 #include "bg_window.h"
 #include "font.h"
 #include "render_window.h"
-#include "unk_0200B380.h"
+#include "brightness.h"
 #include "text.h"
 
 static const GF_GXBanksConfig sDataWriteErrorBanksConfig = {
@@ -121,7 +121,7 @@ void ShowSaveDataWriteError(HeapID heap_id, int code) {
     GX_BothDispOn();
     SetMasterBrightnessNeutral(PM_LCD_TOP);
     SetMasterBrightnessNeutral(PM_LCD_BOTTOM);
-    SetBlendBrightness(0, 0x3F, 3);
+    SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN | SCREEN_MASK_SUB);
 
     while (TRUE) {
         HandleDSLidAction();

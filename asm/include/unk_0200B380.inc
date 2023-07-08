@@ -1,11 +1,11 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_0200B484
+.public StartBrightnessTransition
 .public SetBlendBrightness
-.public sub_0200B528
-.public sub_0200B594
-.public sub_0200B5C0
-.public sub_0200B600
+.public ScreenBrightnessData_InitAll
+.public DoAllScreenBrightnessTransitionStep
+.public IsBrightnessTransitionActive
+.public UpdateMainScreenBrightnessSurface
 .public GF_AssertFail
 .public G2x_SetBlendBrightness_
 .public MI_CpuFill8

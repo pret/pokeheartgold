@@ -38094,10 +38094,10 @@ _021F7F56:
 	sub r1, #0x18
 	mov r2, #0
 	mov r3, #0x3f
-	bl sub_0200B484
+	bl StartBrightnessTransition
 	mov r0, #0x3f
 	add r1, r0, #0
-	bl sub_0200B600
+	bl UpdateMainScreenBrightnessSurface
 	ldr r0, _021F8088 ; =0x04000052
 	mov r1, #0x10
 	strh r1, [r0]
@@ -38107,7 +38107,7 @@ _021F7F56:
 	b _021F805C
 _021F7F7E:
 	mov r0, #1
-	bl sub_0200B5C0
+	bl IsBrightnessTransitionActive
 	cmp r0, #0
 	beq _021F805C
 	mov r0, #0xff
@@ -38147,14 +38147,14 @@ _021F7FB6:
 	mov r1, #0
 	add r2, r0, #0
 	mov r3, #0x3f
-	bl sub_0200B484
+	bl StartBrightnessTransition
 	ldrb r0, [r7]
 	add r0, r0, #1
 	strb r0, [r7]
 	b _021F805C
 _021F7FE0:
 	mov r0, #2
-	bl sub_0200B5C0
+	bl IsBrightnessTransitionActive
 	cmp r0, #0
 	beq _021F805C
 	ldrb r0, [r7]

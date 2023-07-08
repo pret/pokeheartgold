@@ -44,7 +44,7 @@
 .public OamManager_ApplyAndResetBuffers
 .public OamManager_Free
 .public SetBlendBrightness
-.public sub_0200B528
+.public ScreenBrightnessData_InitAll
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString

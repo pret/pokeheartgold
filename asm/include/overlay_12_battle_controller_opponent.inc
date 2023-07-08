@@ -31,8 +31,8 @@
 .public sub_02009414
 .public sub_020094D8
 .public sub_020094E4
-.public sub_0200B484
-.public sub_0200B5C0
+.public StartBrightnessTransition
+.public IsBrightnessTransitionActive
 .public sub_0200D958
 .public sub_0200D968
 .public sub_0200D978

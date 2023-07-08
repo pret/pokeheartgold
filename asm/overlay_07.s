@@ -2974,7 +2974,7 @@ ov07_0221D2F4: ; 0x0221D2F4
 	lsr r0, r0, #0x18
 	mov r2, #0
 	mov r3, #0x3c
-	bl sub_0200B484
+	bl StartBrightnessTransition
 	pop {r3, pc}
 _0221D314:
 	mov r1, #1
@@ -2987,7 +2987,7 @@ _0221D314:
 	lsr r0, r0, #0x18
 	mov r2, #0x10
 	mov r3, #0x3c
-	bl sub_0200B484
+	bl StartBrightnessTransition
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov07_0221D2F4
@@ -2997,9 +2997,9 @@ ov07_0221D330: ; 0x0221D330
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0200B594
+	bl DoAllScreenBrightnessTransitionStep
 	mov r0, #1
-	bl sub_0200B5C0
+	bl IsBrightnessTransitionActive
 	cmp r0, #0
 	beq _0221D370
 	ldr r0, [r4, #4]
@@ -3054,7 +3054,7 @@ ov07_0221D374: ; 0x0221D374
 	ldr r0, [r5, #0x18]
 	add r0, r0, #4
 	str r0, [r5, #0x18]
-	bl sub_0200B528
+	bl ScreenBrightnessData_InitAll
 	add r0, r4, #0
 	mov r1, #1
 	bl ov07_0221D2F4
@@ -38587,7 +38587,7 @@ _0222E978:
 	mov r1, #0x10
 	mov r2, #0
 	mov r3, #0xd
-	bl sub_0200B484
+	bl StartBrightnessTransition
 	mov r0, #0
 	mvn r0, r0
 	str r0, [r4, #0x10]
@@ -38603,7 +38603,7 @@ _0222E99C:
 	cmp r1, r0
 	bne _0222E9C6
 	mov r0, #1
-	bl sub_0200B5C0
+	bl IsBrightnessTransitionActive
 	cmp r0, #0
 	beq _0222E9C6
 	mov r0, #1
@@ -38612,7 +38612,7 @@ _0222E99C:
 	mov r1, #0
 	mov r2, #0x10
 	mov r3, #0xd
-	bl sub_0200B484
+	bl StartBrightnessTransition
 	mov r0, #1
 	mvn r0, r0
 	str r0, [r4, #0x10]
@@ -38627,7 +38627,7 @@ _0222E9C6:
 	b _0222EA3C
 _0222E9D8:
 	mov r0, #1
-	bl sub_0200B5C0
+	bl IsBrightnessTransitionActive
 	cmp r0, #0
 	beq _0222EA3C
 	ldr r0, [r4, #0xc]

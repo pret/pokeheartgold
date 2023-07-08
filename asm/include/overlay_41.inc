@@ -59,8 +59,8 @@
 .public OamManager_Create
 .public OamManager_ApplyAndResetBuffers
 .public OamManager_Free
-.public sub_0200B484
-.public sub_0200B5C0
+.public StartBrightnessTransition
+.public IsBrightnessTransitionActive
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public NewString_ReadMsgData
