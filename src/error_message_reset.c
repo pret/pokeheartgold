@@ -13,7 +13,7 @@
 #include "unk_02035900.h"
 #include "unk_02037C94.h"
 #include "render_window.h"
-#include "unk_0200B380.h"
+#include "brightness.h"
 #include "text.h"
 #include "font.h"
 #include "bg_window.h"
@@ -141,7 +141,7 @@ void PrintErrorMessageAndReset(void) {
     GX_BothDispOn();
     SetMasterBrightnessNeutral(PM_LCD_TOP);
     SetMasterBrightnessNeutral(PM_LCD_BOTTOM);
-    SetBlendBrightness(0, 0x3F, 3);
+    SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN | SCREEN_MASK_SUB);
 
     sub_02038D90();
 

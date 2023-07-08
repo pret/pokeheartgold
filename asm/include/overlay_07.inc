@@ -41,10 +41,10 @@
 .public sub_02009414
 .public sub_020094BC
 .public G2dRenderer_SetSubSurfaceCoords
-.public sub_0200B484
-.public sub_0200B528
-.public sub_0200B594
-.public sub_0200B5C0
+.public StartBrightnessTransition
+.public ScreenBrightnessData_InitAll
+.public DoAllScreenBrightnessTransitionStep
+.public IsBrightnessTransitionActive
 .public sub_0200CF38
 .public sub_0200CF6C
 .public sub_0200CFF4

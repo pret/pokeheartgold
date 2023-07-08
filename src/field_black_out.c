@@ -9,7 +9,7 @@
 #include "save_local_field_data.h"
 #include "unk_0203BA5C.h"
 #include "field_warp_tasks.h"
-#include "unk_0200B380.h"
+#include "brightness.h"
 #include "unk_0206793C.h"
 #include "unk_0200B150.h"
 #include "unk_02054E00.h"
@@ -194,8 +194,8 @@ BOOL FieldTask_BlackOut(TaskManager *taskManager) {
         }
         break;
     case 3:
-        SetBlendBrightness(-16, 0x37, 1);
-        SetBlendBrightness(-16, 0x3F, 2);
+        SetBlendBrightness(-16, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN);
+        SetBlendBrightness(-16, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_SUB);
         DrawBlackoutMessage(fsys, taskManager);
         (*state)++;
         break;
@@ -204,7 +204,7 @@ BOOL FieldTask_BlackOut(TaskManager *taskManager) {
         (*state)++;
         break;
     case 5:
-        SetBlendBrightness(0, 0x3F, 3);
+        SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN | SCREEN_MASK_SUB);
         if (GetMomSpawnId() == LocalFieldData_GetBlackoutSpawn(Save_LocalFieldData_Get(fsys->savedata))) {
             QueueScript(taskManager, std_whited_out_to_mom, NULL, NULL);
         } else {
