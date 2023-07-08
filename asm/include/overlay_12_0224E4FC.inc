@@ -150,7 +150,7 @@
 .public ov12_022565E0
 .public ov12_02256694
 .public ov12_02256748
-.public ov12_022567A0
+.public Battler_CanSelectAction
 .public ov12_022567D4
 .public ov12_0225682C
 .public ov12_02256854
@@ -158,8 +158,8 @@
 .public ov12_02256F28
 .public ov12_02256F78
 .public CalcMoveDamage
-.public ov12_02257C30
-.public ov12_02257C5C
+.public ApplyDamageRange
+.public TryCriticalHit
 .public CheckLegalMimicMove
 .public CheckLegalMetronomeMove
 .public IsMoveEncored

@@ -2087,8 +2087,7 @@ u8 GetGenderBySpeciesAndPersonality(u16 species, u32 pid) {
 }
 
 u8 GetGenderBySpeciesAndPersonality_PreloadedPersonal(const BASE_STATS *personal, u16 species, u32 pid) {
-#pragma unused(species)
-    enum MonGender gender;
+    int gender;
     u8 ratio = GetPersonalAttr(personal, BASE_GENDER_RATIO);
     switch (ratio) {
     case MON_RATIO_MALE:

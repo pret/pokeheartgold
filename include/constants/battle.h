@@ -55,23 +55,27 @@ enum Terrain {
 #define BATTLE_TYPE_INGAME_PARTNER          (1 << 4)
 #define BATTLE_TYPE_5                       (1 << 5)
 #define BATTLE_TYPE_6                       (1 << 6)
-#define BATTLE_TYPE_7                       (1 << 7)
+#define BATTLE_TYPE_TOWER                   (1 << 7)
 #define BATTLE_TYPE_8                       (1 << 8)
 #define BATTLE_TYPE_9                       (1 << 9)
 #define BATTLE_TYPE_TUTORIAL                (1 << 10)
 
-#define BATTLE_TYPE_CAN_ALWAYS_FLEE         (BATTLE_TYPE_2 | BATTLE_TYPE_5 | BATTLE_TYPE_7 | BATTLE_TYPE_9)
+#define BATTLE_TYPE_CAN_ALWAYS_FLEE         (BATTLE_TYPE_2 | BATTLE_TYPE_5 | BATTLE_TYPE_TOWER | BATTLE_TYPE_9)
+
+//Battle Flags
+#define BATTLE_FLAG_7                       (1 << 7)
 
 //Move Effects
 #define MOVE_EFFECT_0                       (1 << 0)
 #define MOVE_EFFECT_1                       (1 << 1)
 #define MOVE_EFFECT_LEECH_SEED              (1 << 2)
 #define MOVE_EFFECT_LOCK_ON                 (3 << 3)
+#define MOVE_EFFECT_LOCK_ON_SET             (1 << 4)
 #define MOVE_EFFECT_PERISH_SONG             (1 << 5)
 #define MOVE_EFFECT_6                       (1 << 6)
 #define MOVE_EFFECT_7                       (1 << 7)
 #define MOVE_EFFECT_8                       (1 << 8)
-#define MOVE_EFFECT_9                       (1 << 9)
+#define MOVE_EFFECT_CHARGE                  (1 << 9)
 #define MOVE_EFFECT_INGRAIN                 (1 << 10)
 #define MOVE_EFFECT_11                      (1 << 11)
 #define MOVE_EFFECT_YAWN                    (1 << 12)
@@ -95,7 +99,7 @@ enum Terrain {
 #define MOVE_EFFECT_IMPRISON                (1 << 30)
 
 #define MOVE_EFFECT_BATON_PASSABLE          (MOVE_EFFECT_0 | MOVE_EFFECT_1 | MOVE_EFFECT_LEECH_SEED | MOVE_EFFECT_LOCK_ON | MOVE_EFFECT_PERISH_SONG | MOVE_EFFECT_INGRAIN | MOVE_EFFECT_LUCKY_CHANT | MOVE_EFFECT_MUD_SPORT | MOVE_EFFECT_WATER_SPORT | MOVE_EFFECT_GASTRO_ACID | MOVE_EFFECT_POWER_TRICK | MOVE_EFFECT_AQUA_RING | MOVE_EFFECT_HEAL_BLOCK | MOVE_EFFECT_EMBARGO | MOVE_EFFECT_MAGNET_RISE)    
-
+#define MOVE_EFFECT_SUBSTITUTE_HIDE         (MOVE_EFFECT_6 | MOVE_EFFECT_7 | MOVE_EFFECT_DIVE | MOVE_EFFECT_PHANTOM_FORCE)
 //Move status
 #define MOVE_STATUS_MISS                    (1 << 0)
 #define MOVE_STATUS_SUPER_EFFECTIVE         (1 << 1) 
@@ -141,6 +145,8 @@ enum Terrain {
 #define FIELD_CONDITION_FOG                 (1 << 15)
 #define FIELD_CONDITION_TRICK_ROOM          (7 << 16)
 
+#define FIELD_CONDITION_WEATHER_NO_SUN      (FIELD_CONDITION_RAIN_ALL | FIELD_CONDITION_SANDSTORM_ALL | FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_FOG)
+#define FIELD_CONDITION_WEATHER_CASTFORM    (FIELD_CONDITION_RAIN_ALL | FIELD_CONDITION_SUN_ALL | FIELD_CONDITION_HAIL_ALL)
 #define FIELD_CONDITION_WEATHER             (FIELD_CONDITION_RAIN_ALL | FIELD_CONDITION_SANDSTORM_ALL | FIELD_CONDITION_SUN_ALL | FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_FOG)
     
 //Field Side Conditions
@@ -154,6 +160,7 @@ enum Terrain {
 #define SIDE_CONDITION_STEALTH_ROCKS        (1 << 7)
 #define SIDE_CONDITION_TAILWIND             (3 << 8)
 #define SIDE_CONDITION_TOXIC_SPIKES         (1 << 10)
+#define SIDE_CONDITION_12                   (7 << 12)
 
 //Status
 #define STATUS_NONE                         0
@@ -179,7 +186,8 @@ enum Terrain {
 //Status 2
 #define STATUS2_CONFUSION                   (7 << 0)
 #define STATUS2_FLINCH                      (1 << 3)
-#define STATUS2_4                           (1 << 4)
+#define STATUS2_UPROAR                      (7 << 4)
+#define STATUS2_8                           (3 << 8)
 #define STATUS2_RAGE                        (3 << 10)
 #define STATUS2_LOCKED_INTO_MOVE            (1 << 12)
 #define STATUS2_13                          (1 << 13)

@@ -357,16 +357,11 @@
 #define MON_RATIO_FEMALE       254
 #define MON_RATIO_UNKNOWN      255
 
-#ifndef PM_ASM
 #define GENDER_RATIO(frac) ( (frac) <= 1 ? (u8)((frac) * 254.75) : 255 )
 
-enum MonGender
-{
-    MON_MALE = 0,
-    MON_FEMALE = 1,
-    MON_GENDERLESS = 2
-};
-#endif //PM_ASM
+#define    MON_MALE             0
+#define    MON_FEMALE           1
+#define    MON_GENDERLESS       2
 
 // Constants for AdjustFriendship
 #define FRIENDSHIP_EVENT_GROW_LEVEL       0
