@@ -3938,7 +3938,7 @@ BOOL BtlCmd_MagicCoat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     if (ctx->fieldSideConditionData[side].followMeFlag && ctx->battleMons[ctx->fieldSideConditionData[side].battlerIdFollowMe].hp) {
         ctx->battlerIdTarget = ctx->fieldSideConditionData[side].battlerIdFollowMe;
-    } else if (ctx->unk_334.moveData[ctx->moveNoCur].range == 4 || ctx->unk_334.moveData[ctx->moveNoCur].range == 8) {
+    } else if (ctx->unk_334.moveData[ctx->moveNoCur].range == RANGE_BOTH_OPPONENTS || ctx->unk_334.moveData[ctx->moveNoCur].range == RANGE_ALL_BUT_USER) {
         ctx->battlerIdTarget = battlerId;
     } else {
         side = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, (u16) ctx->moveNoCur, 1, 0);
