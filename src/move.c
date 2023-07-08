@@ -40,8 +40,8 @@ u32 GetMoveTblAttr(MOVE * moveTbl, MoveAttr attr) {
         return moveTbl->pp;
     case MOVEATTR_EFFECT_CHANCE:
         return moveTbl->effectChance;
-    case MOVEATTR_UNK7:
-        return moveTbl->unk8;
+    case MOVEATTR_RANGE:
+        return moveTbl->range;
     case MOVEATTR_PRIORTY:
         return moveTbl->priority;
     case MOVEATTR_UNK9:

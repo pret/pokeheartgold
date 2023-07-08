@@ -4439,7 +4439,7 @@ ov81_022401C8: ; 0x022401C8
 	bl sub_0200398C
 _022401EA:
 	ldr r0, [r4, #0x4c]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl GF_RunVramTransferTasks
 	bl OamManager_ApplyAndResetBuffers
 	ldr r3, _02240208 ; =0x027E0000

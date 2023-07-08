@@ -2005,7 +2005,7 @@ ov85_021E6764: ; 0x021E6764
 	bl sub_0200398C
 	ldr r0, _021E6788 ; =0x00000D84
 	ldr r0, [r4, r0]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	pop {r4, pc}
 	nop
 _021E6784: .word 0x00000D9C
@@ -6851,7 +6851,7 @@ ov85_021E8C14: ; 0x021E8C14
 	bl GF_RunVramTransferTasks
 	bl OamManager_ApplyAndResetBuffers
 	add r0, r4, #0
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _021E8C34 ; =0x027E0000
 	ldr r1, _021E8C38 ; =0x00003FF8
 	mov r0, #1

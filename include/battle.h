@@ -228,7 +228,7 @@ typedef struct BattleMon {
     u16 nickname[POKEMON_NAME_LENGTH + 1];
     int hp;
     u32 maxHp;
-    u16 unk54[8];
+    u16 otName[PLAYER_NAME_LENGTH + 1];
     u32 exp;
     u32 personality;
     u32 status;

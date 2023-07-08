@@ -306,7 +306,7 @@ ov52_021E837C: ; 0x021E837C
 	bl GF_RunVramTransferTasks
 	bl OamManager_ApplyAndResetBuffers
 	add r0, r4, #0
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _021E839C ; =0x027E0000
 	ldr r1, _021E83A0 ; =0x00003FF8
 	mov r0, #1

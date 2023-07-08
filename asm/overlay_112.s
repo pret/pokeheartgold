@@ -4231,7 +4231,7 @@ _021E79A4: .word 0x0001E444
 ov112_021E79A8: ; 0x021E79A8
 	push {r3, lr}
 	ldr r0, [r0, #0x18]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl GF_RunVramTransferTasks
 	bl sub_0200D034
 	ldr r3, _021E79C8 ; =0x027E0000
@@ -26776,7 +26776,7 @@ _021F2ECE:
 	bl sub_0200D020
 	bl sub_0200D034
 	ldr r0, [r4, #0x14]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _021F2EEC ; =0x027E0000
 	ldr r1, _021F2EF0 ; =0x00003FF8
 	mov r0, #1

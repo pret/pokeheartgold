@@ -1695,7 +1695,7 @@ _021E6632:
 _021E663C:
 	bl GF_RunVramTransferTasks
 	ldr r0, [r4, #0x74]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _021E6654 ; =0x027E0000
 	ldr r1, _021E6658 ; =0x00003FF8
 	mov r0, #1
@@ -1822,21 +1822,21 @@ _021E6706:
 _021E670E:
 	strb r1, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	mov r0, #2
 	pop {r4, pc}
 _021E671A:
 	mov r0, #1
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	mov r0, #4
 	pop {r4, pc}
 _021E6728:
 	mov r0, #3
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	mov r0, #0xa
 	pop {r4, pc}
 _021E6736:
@@ -1962,21 +1962,21 @@ _021E6812:
 	mov r0, #2
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	mov r0, #6
 	pop {r4, pc}
 _021E6820:
 	mov r0, #1
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	mov r0, #4
 	pop {r4, pc}
 _021E682E:
 	mov r0, #3
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	mov r0, #0xa
 	pop {r4, pc}
 _021E683C:
@@ -2022,20 +2022,20 @@ _021E686A:
 	mov r0, #2
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	mov r0, #6
 	pop {r4, pc}
 _021E688A:
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	mov r0, #2
 	pop {r4, pc}
 _021E6896:
 	mov r0, #1
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	mov r0, #4
 	pop {r4, pc}
 _021E68A4:
@@ -2083,20 +2083,20 @@ _021E68E6:
 	mov r0, #2
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	mov r0, #6
 	pop {r4, pc}
 _021E68F4:
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	mov r0, #2
 	pop {r4, pc}
 _021E6900:
 	mov r0, #3
 	strb r0, [r4, #4]
 	ldr r0, [r4, #0x74]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	mov r0, #0xa
 	pop {r4, pc}
 _021E690E:

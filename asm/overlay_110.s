@@ -1121,7 +1121,7 @@ _021E6120:
 _021E612E:
 	bl NNS_GfdDoVramTransfer
 	ldr r0, [r4, #0x14]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _021E6148 ; =0x027E0000
 	ldr r1, _021E614C ; =0x00003FF8
 	mov r0, #1

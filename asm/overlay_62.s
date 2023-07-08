@@ -1000,7 +1000,7 @@ ov62_021E60D4: ; 0x021E60D4
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _021E60E0
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 _021E60E0:
 	pop {r3, pc}
 	.balign 4, 0

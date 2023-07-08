@@ -186,7 +186,7 @@
 .public GetWindowX
 .public GetWindowY
 .public GetWindowBaseTile
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
 .public AddTextPrinterParameterized2

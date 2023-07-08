@@ -52,7 +52,7 @@
 .public StruggleCheck
 .public CheckAbilityActive
 .public ov12_02256748
-.public ov12_022567A0
+.public Battler_CanSelectAction
 .public ov12_022621C4
 .public BattleController_EmitPlayEncounterAnimation
 .public BattleController_EmitPokemonEncounter

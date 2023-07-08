@@ -3033,7 +3033,7 @@ ov83_0223F7A0: ; 0x0223F7A0
 	bl sub_0200398C
 _0223F7B2:
 	ldr r0, [r4, #0x4c]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r0, _0223F7D8 ; =0x00000868
 	add r0, r4, r0
 	bl ov83_0224780C
@@ -12407,7 +12407,7 @@ ov83_02244488: ; 0x02244488
 	bl sub_0200398C
 _0224449A:
 	ldr r0, [r4, #0x4c]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl GF_RunVramTransferTasks
 	bl OamManager_ApplyAndResetBuffers
 	ldr r3, _022444B8 ; =0x027E0000

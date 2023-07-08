@@ -546,7 +546,7 @@ _021E5D66:
 	bl sub_0200398C
 _021E5D74:
 	ldr r0, [r4, #4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	pop {r4, pc}
 	thumb_func_end ov60_021E5D44
 
@@ -2279,7 +2279,7 @@ _021E6B64: .word 0x04001050
 ov60_021E6B68: ; 0x021E6B68
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0200B528
+	bl ScreenBrightnessData_InitAll
 	mov r0, #0
 	add r1, r0, #0
 	bl sub_0200FBF4
@@ -4211,7 +4211,7 @@ _021E79DE:
 ov60_021E79E4: ; 0x021E79E4
 	push {r3, lr}
 	bl ov60_021E7688
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl OamManager_ApplyAndResetBuffers
 	pop {r3, pc}
 	thumb_func_end ov60_021E79E4
@@ -5136,7 +5136,7 @@ _021E813A:
 ov60_021E8140: ; 0x021E8140
 	push {r3, lr}
 	bl ov60_021E7688
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl OamManager_ApplyAndResetBuffers
 	pop {r3, pc}
 	thumb_func_end ov60_021E8140
@@ -6462,7 +6462,7 @@ _021E8C52:
 ov60_021E8C58: ; 0x021E8C58
 	push {r3, lr}
 	bl ov60_021E7688
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl OamManager_ApplyAndResetBuffers
 	pop {r3, pc}
 	thumb_func_end ov60_021E8C58
@@ -8495,7 +8495,7 @@ _021E9D62:
 ov60_021E9D68: ; 0x021E9D68
 	push {r3, lr}
 	bl ov60_021E7688
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl OamManager_ApplyAndResetBuffers
 	pop {r3, pc}
 	thumb_func_end ov60_021E9D68
@@ -10049,7 +10049,7 @@ _021EAA6E:
 ov60_021EAA74: ; 0x021EAA74
 	push {r3, lr}
 	bl ov60_021E7688
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl OamManager_ApplyAndResetBuffers
 	pop {r3, pc}
 	thumb_func_end ov60_021EAA74

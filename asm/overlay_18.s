@@ -456,7 +456,7 @@ ov18_021E5C40: ; 0x021E5C40
 	add r0, r4, #0
 	bl ov18_021E7A3C
 	ldr r0, [r4, #4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl sub_0200D034
 	ldr r3, _021E5C6C ; =0x027E0000
 	ldr r1, _021E5C70 ; =0x00003FF8

@@ -139,7 +139,7 @@
 .public ClearWindowTilemapAndCopyToVram
 .public ClearWindowTilemapAndScheduleTransfer
 .public FillWindowPixelBuffer
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public DoesPixelAtScreenXYMatchPtrVal
 .public AddTextPrinterParameterized
 .public AddTextPrinterParameterized2

@@ -10,7 +10,7 @@
 #include "font.h"
 #include "text.h"
 #include "render_window.h"
-#include "unk_0200B380.h"
+#include "brightness.h"
 #include "unk_02037C94.h"
 #include "overlay_00_thumb.h"
 #include "global.h"
@@ -28,14 +28,14 @@ static const GF_GXBanksConfig sCommunicationErrorBanksConfig = {
     .texpltt = GX_VRAM_TEXPLTT_NONE,
 };
 
-static const struct GFBgModeSet sCommunicationErrorBgModeSet = {
+static const struct GraphicsModes sCommunicationErrorBgModeSet = {
     .dispMode = GX_DISPMODE_GRAPHICS,
-    .bgModeMain = GX_BGMODE_0,
-    .bgModeSub = GX_BGMODE_0,
-    ._2d3dSwitch = GX_BG0_AS_2D,
+    .bgMode = GX_BGMODE_0,
+    .subMode = GX_BGMODE_0,
+    ._2d3dMode = GX_BG0_AS_2D,
 };
 
-static const BGTEMPLATE sCommunicationErrorBgTemplate = {
+static const BgTemplate sCommunicationErrorBgTemplate = {
     .x = 0,
     .y = 0,
     .bufferSize = 0x800,
@@ -58,7 +58,7 @@ static const WindowTemplate sCommunicationErrorWindowTemplate = {
     .width = 26,
     .height = 18,
     .palette = 1,
-    .baseBlock = 0x23,
+    .baseTile = 0x23,
 };
 
 static void VBlankIntr(void) {
@@ -178,7 +178,7 @@ void ShowCommunicationError(HeapID heap_id, u32 error, u32 error_code) {
     GX_BothDispOn();
     SetMasterBrightnessNeutral(PM_LCD_TOP);
     SetMasterBrightnessNeutral(PM_LCD_BOTTOM);
-    SetBlendBrightness(0, 0x3F, 3);
+    SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN | SCREEN_MASK_SUB);
 
     RemoveWindow(&window);
     DestroyMsgData(errors_msgdata);

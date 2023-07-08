@@ -79,7 +79,7 @@
 .public ScheduleWindowCopyToVram
 .public CopyWindowPixelsToVram_TextMode
 .public FillWindowPixelBuffer
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public AddTextPrinterParameterized2
 .public sub_020210BC
 .public sub_02021148

@@ -1531,7 +1531,7 @@ _0225D09C:
 	sub r1, #0x26
 	mov r2, #0
 	mov r3, #0x3f
-	bl sub_0200B484
+	bl StartBrightnessTransition
 	ldr r0, _0225D1BC ; =0x00001AB4
 	add r0, r4, r0
 	bl ov91_0225DBE4
@@ -1576,7 +1576,7 @@ _0225D10A:
 	mov r5, #0
 _0225D118:
 	mov r0, #2
-	bl sub_0200B5C0
+	bl IsBrightnessTransitionActive
 	cmp r0, #0
 	bne _0225D124
 	mov r5, #0
@@ -1778,7 +1778,7 @@ ov91_0225D2D0: ; 0x0225D2D0
 	push {r3, lr}
 	ldr r1, _0225D2E4 ; =0x00001AB4
 	ldr r0, [r0, r1]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl GF_RunVramTransferTasks
 	bl OamManager_ApplyAndResetBuffers
 	pop {r3, pc}
@@ -11137,7 +11137,7 @@ _02261A8E:
 	mov r1, #0x10
 	mov r2, #0
 	mov r3, #0x3f
-	bl sub_0200B484
+	bl StartBrightnessTransition
 	ldrh r0, [r4]
 	add sp, #4
 	add r0, r0, #1
@@ -11145,7 +11145,7 @@ _02261A8E:
 	pop {r3, r4, r5, r6, pc}
 _02261AA8:
 	mov r0, #1
-	bl sub_0200B5C0
+	bl IsBrightnessTransitionActive
 	cmp r0, #1
 	bne _02261B08
 	add r0, r5, #0
@@ -11169,7 +11169,7 @@ _02261AD4:
 	mov r1, #0
 	mov r2, #0x10
 	mov r3, #0x3f
-	bl sub_0200B484
+	bl StartBrightnessTransition
 	ldrh r0, [r4]
 	add sp, #4
 	add r0, r0, #1
@@ -11177,7 +11177,7 @@ _02261AD4:
 	pop {r3, r4, r5, r6, pc}
 _02261AEE:
 	mov r0, #1
-	bl sub_0200B5C0
+	bl IsBrightnessTransitionActive
 	cmp r0, #1
 	bne _02261B08
 	ldrh r0, [r4]

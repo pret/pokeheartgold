@@ -2,6 +2,8 @@
 #define POKEHEARTGOLD_CONSTANTS_GAME_STAT_H
 
 #define GAME_STAT_APRICORN_GET         1
+#define GAME_STAT_UNK2                 2
 #define GAME_STAT_BADGE_GET           22
+#define GAME_STAT_UNK46               46
 
 #endif //POKEHEARTGOLD_CONSTANTS_GAME_STAT_H

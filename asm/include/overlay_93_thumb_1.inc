@@ -113,7 +113,7 @@
 .public RemoveWindow
 .public ScheduleWindowCopyToVram
 .public FillWindowPixelBuffer
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public AllocAndLoad3dTexResources
 .public AddTextPrinterParameterized2

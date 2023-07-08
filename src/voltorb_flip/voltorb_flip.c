@@ -15,7 +15,7 @@
 #include "text.h"
 #include "unk_02005D10.h"
 #include "unk_02009D48.h"
-#include "unk_0200B380.h"
+#include "brightness.h"
 #include "unk_0200CF18.h"
 #include "render_window.h"
 #include "unk_0200FA24.h"
@@ -137,7 +137,7 @@ extern const MsgNoList sMenuMsgNos[];
 extern const Ov122_021E9278 ov122_021E9278;
 extern const u16 ov122_021E92A0[8];
 extern const u8 ov122_021E92B0[4][4];
-extern const struct GFBgModeSet sVoltorbFlipBgModeSet;
+extern const struct GraphicsModes sVoltorbFlipBgModeSet;
 extern const Unk122_021E92D0 ov122_021E92D0;
 extern const Unk122_021E92E4 ov122_021E92E4;
 extern const Unk122_021E92FC ov122_021E92FC;
@@ -1666,36 +1666,36 @@ static void FormatGameLevel(VoltorbFlipAppWork *work, int idx) {
 
 static void ov122_021E7888(Ov122_021E7888 *a0) {
     if (a0->unk0 == 0) {
-        sub_0200B554(1);
-        sub_0200B484(4, -8, 0, 55, 1);
+        InitScreenBrightnessData(SCREEN_MASK_MAIN);
+        StartBrightnessTransition(4, -8, 0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN);
         a0->unk0 = 1;
     }
 }
 
 static void ov122_021E78B4(Ov122_021E7888 *a0) {
-    sub_0200B554(1);
-    sub_0200B484(4, 0, -8, 55, 1);
+    InitScreenBrightnessData(SCREEN_MASK_MAIN);
+    StartBrightnessTransition(4, 0, -8, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN);
     a0->unk0 = 0;
 }
 
 static void ov122_021E78DC(Ov122_021E7888 *a0) {
     if (a0->unk0 == 0) {
-        sub_0200B554(1);
-        sub_0200B484(1, -6, 0, 33, 1);
+        InitScreenBrightnessData(SCREEN_MASK_MAIN);
+        StartBrightnessTransition(1, -6, 0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN);
         a0->unk0 = 1;
     }
 }
 
 static void ov122_021E7904(Ov122_021E7888 *a0) {
-    sub_0200B554(1);
-    sub_0200B484(1, 0, -6, 33, 1);
+    InitScreenBrightnessData(SCREEN_MASK_MAIN);
+    StartBrightnessTransition(1, 0, -6, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN);
     a0->unk0 = 0;
 }
 
 static void ov122_021E7928(VoltorbFlipAppWork *work) {
     work->bgConfig = BgConfig_Alloc(work->heapId);
 
-    const struct GFBgModeSet temp1 = sVoltorbFlipBgModeSet;
+    const struct GraphicsModes temp1 = sVoltorbFlipBgModeSet;
     SetBothScreensModesAndDisable(&temp1);
 
     BgTemplates temp2 = sVoltorbFlipBgTemplates;
@@ -1703,8 +1703,8 @@ static void ov122_021E7928(VoltorbFlipAppWork *work) {
     for (int i = 0; i < 6; i++) {
         InitBgFromTemplate(work->bgConfig, ov122_021E9270[i], &temp2.unk0[i], 0);
         BgClearTilemapBufferAndCommit(work->bgConfig, ov122_021E9270[i]);
-        BG_FillCharDataRange(work->bgConfig, ov122_021E9270[i], 0, 1, 0);
-        ToggleBgLayer(ov122_021E9270[i], 1);
+        BG_FillCharDataRange(work->bgConfig, (enum GFBgLayer)ov122_021E9270[i], 0, 1, 0);
+        ToggleBgLayer(ov122_021E9270[i], GX_LAYER_TOGGLE_ON);
     }
 }
 
@@ -1979,7 +1979,7 @@ static void ov122_021E8004(VoltorbFlipAppWork *work) {
 
     sub_0200D020(work->unk148);
     sub_0200D034();
-    BgConfig_HandleScheduledScrollAndTransferOps(work->bgConfig);
+    DoScheduledBgGpuUpdates(work->bgConfig);
 
     REGType32v *regBase = (REGType32v *)0x027e0000;
     *(regBase + 0xffe) |= 1;

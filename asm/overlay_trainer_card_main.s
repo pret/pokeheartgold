@@ -2053,7 +2053,7 @@ ov51_021E6B88: ; 0x021E6B88
 	bl ov51_021E69EC
 _021E6BD2:
 	ldr r0, [r4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl GF_RunVramTransferTasks
 	bl OamManager_ApplyAndResetBuffers
 	ldr r3, _021E6BF8 ; =0x027E0000

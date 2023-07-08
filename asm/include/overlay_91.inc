@@ -35,8 +35,8 @@
 .public OamManager_Create
 .public OamManager_ApplyAndResetBuffers
 .public OamManager_Free
-.public sub_0200B484
-.public sub_0200B5C0
+.public StartBrightnessTransition
+.public IsBrightnessTransitionActive
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
@@ -100,7 +100,7 @@
 .public FillWindowPixelRect
 .public SetWindowX
 .public SetWindowY
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public GF_SinDegNoWrap
 .public GF_CosDegNoWrap
 .public GF_DegreeToSinCosIdxNoWrap

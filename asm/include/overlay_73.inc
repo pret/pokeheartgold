@@ -91,7 +91,7 @@
 .public RemoveWindow
 .public CopyWindowToVram
 .public FillWindowPixelBuffer
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public DoesPixelAtScreenXYMatchPtrVal
 .public GF_SinDeg

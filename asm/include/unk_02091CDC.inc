@@ -38,7 +38,7 @@
 .public AddWindow
 .public RemoveWindow
 .public FillWindowPixelRect
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ResetAllTextPrinters
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized

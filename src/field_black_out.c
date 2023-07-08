@@ -9,7 +9,7 @@
 #include "save_local_field_data.h"
 #include "unk_0203BA5C.h"
 #include "field_warp_tasks.h"
-#include "unk_0200B380.h"
+#include "brightness.h"
 #include "unk_0206793C.h"
 #include "unk_0200B150.h"
 #include "unk_02054E00.h"
@@ -49,7 +49,7 @@ static void _InitDisplays(BgConfig *bgConfig) {
         GX_SetBanks(&_020FC550);
     }
     {
-        static const struct GFBgModeSet _020FC524 = {
+        static const struct GraphicsModes _020FC524 = {
             GX_DISPMODE_GRAPHICS,
             GX_BGMODE_0,
             GX_BGMODE_0,
@@ -58,7 +58,7 @@ static void _InitDisplays(BgConfig *bgConfig) {
         SetBothScreensModesAndDisable(&_020FC524);
     }
     {
-        static const BGTEMPLATE _020FC534 = {
+        static const BgTemplate _020FC534 = {
             0, 0, 0x800, 0,
             GF_BG_SCR_SIZE_256x256, GF_BG_CLR_4BPP, 31, 0, 0, 1, 0, 0, 0
         };
@@ -194,8 +194,8 @@ BOOL FieldTask_BlackOut(TaskManager *taskManager) {
         }
         break;
     case 3:
-        SetBlendBrightness(-16, 0x37, 1);
-        SetBlendBrightness(-16, 0x3F, 2);
+        SetBlendBrightness(-16, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN);
+        SetBlendBrightness(-16, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_SUB);
         DrawBlackoutMessage(fsys, taskManager);
         (*state)++;
         break;
@@ -204,7 +204,7 @@ BOOL FieldTask_BlackOut(TaskManager *taskManager) {
         (*state)++;
         break;
     case 5:
-        SetBlendBrightness(0, 0x3F, 3);
+        SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN | SCREEN_MASK_SUB);
         if (GetMomSpawnId() == LocalFieldData_GetBlackoutSpawn(Save_LocalFieldData_Get(fsys->savedata))) {
             QueueScript(taskManager, std_whited_out_to_mom, NULL, NULL);
         } else {

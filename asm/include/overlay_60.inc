@@ -44,7 +44,7 @@
 .public OamManager_ApplyAndResetBuffers
 .public OamManager_Free
 .public SetBlendBrightness
-.public sub_0200B528
+.public ScreenBrightnessData_InitAll
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
@@ -93,7 +93,7 @@
 .public AddWindow
 .public RemoveWindow
 .public FillWindowPixelRect
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
 .public sub_0201F51C

@@ -1233,7 +1233,7 @@ ov44_0222A7F8: ; 0x0222A7F8
 	mov r0, #0x57
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl GF_RunVramTransferTasks
 	bl OamManager_ApplyAndResetBuffers
 	ldr r0, _0222A82C ; =0x000010BC
@@ -18610,7 +18610,7 @@ _02233198:
 ov44_0223319C: ; 0x0223319C
 	push {r3, lr}
 	ldr r0, [r0, #0x30]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl GF_RunVramTransferTasks
 	bl OamManager_ApplyAndResetBuffers
 	pop {r3, pc}

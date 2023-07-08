@@ -9,7 +9,7 @@
 #include "wfc_user_info_warning.h"
 #include "bg_window.h"
 #include "render_window.h"
-#include "unk_0200B380.h"
+#include "brightness.h"
 #include "text.h"
 #include "font.h"
 
@@ -26,14 +26,14 @@ static const GF_GXBanksConfig sWFCWarningMsgBanksConfig = {
     .texpltt = GX_VRAM_TEXPLTT_NONE,
 };
 
-static const struct GFBgModeSet sWFCWarningMsgBgModeSet = {
+static const struct GraphicsModes sWFCWarningMsgBgModeSet = {
     .dispMode = GX_DISPMODE_GRAPHICS,
-    .bgModeMain = GX_BGMODE_0,
-    .bgModeSub = GX_BGMODE_0,
-    ._2d3dSwitch = GX_BG0_AS_2D,
+    .bgMode = GX_BGMODE_0,
+    .subMode = GX_BGMODE_0,
+    ._2d3dMode = GX_BG0_AS_2D,
 };
 
-static const BGTEMPLATE sWFCWarningBgTemplate = {
+static const BgTemplate sWFCWarningBgTemplate = {
     .x = 0,
     .y = 0,
     .bufferSize = 0x800,
@@ -56,7 +56,7 @@ static const WindowTemplate sWFCWarningWindowTemplate = {
     .width = 26,
     .height = 18,
     .palette = 1,
-    .baseBlock = 0x23,
+    .baseTile = 0x23,
 };
 
 void ShowWFCUserInfoWarning(HeapID heap_id, int a1) {
@@ -111,7 +111,7 @@ void ShowWFCUserInfoWarning(HeapID heap_id, int a1) {
     GX_BothDispOn();
     SetMasterBrightnessNeutral(0);
     SetMasterBrightnessNeutral(1);
-    SetBlendBrightness(0, 0x3F, 3);
+    SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN | SCREEN_MASK_SUB);
 
     while (TRUE) {
         u16 pressed_buttons = PAD_Read();

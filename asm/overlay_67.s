@@ -369,7 +369,7 @@ ov67_021E5BE0: ; 0x021E5BE0
 	add r4, r0, #0
 	bl ov67_021E6A00
 	ldr r0, [r4, #0x10]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _021E5BFC ; =0x027E0000
 	ldr r1, _021E5C00 ; =0x00003FF8
 	mov r0, #1

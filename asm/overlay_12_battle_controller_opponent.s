@@ -18970,7 +18970,7 @@ ov12_02261E40: ; 0x02261E40
 	pop {r3, r4, r5, pc}
 _02261E56:
 	mov r0, #1
-	bl sub_0200B5C0
+	bl IsBrightnessTransitionActive
 	cmp r0, #0
 	bne _02261E66
 	mov r0, #2
@@ -18983,14 +18983,14 @@ _02261E66:
 	mov r1, #0x10
 	mov r2, #0
 	mov r3, #0x3d
-	bl sub_0200B484
+	bl StartBrightnessTransition
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	pop {r3, r4, r5, pc}
 _02261E7E:
 	mov r0, #1
-	bl sub_0200B5C0
+	bl IsBrightnessTransitionActive
 	cmp r0, #1
 	bne _02261EB6
 	mov r0, #1
@@ -18999,14 +18999,14 @@ _02261E7E:
 	mov r1, #0
 	mov r2, #0x10
 	mov r3, #0x3d
-	bl sub_0200B484
+	bl StartBrightnessTransition
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	pop {r3, r4, r5, pc}
 _02261EA0:
 	mov r0, #1
-	bl sub_0200B5C0
+	bl IsBrightnessTransitionActive
 	cmp r0, #1
 	bne _02261EB6
 	add r0, r4, #0

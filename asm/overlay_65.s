@@ -1242,7 +1242,7 @@ _0221C890:
 	mov r0, #8
 	sub r2, #0x10
 	mov r3, #0x1e
-	bl sub_0200B484
+	bl StartBrightnessTransition
 	mov r0, #1
 	add r1, r0, #0
 	bl ToggleBgLayer
@@ -1261,7 +1261,7 @@ _0221C890:
 	b _0221C99E
 _0221C8CA:
 	mov r0, #1
-	bl sub_0200B5C0
+	bl IsBrightnessTransitionActive
 	cmp r0, #0
 	beq _0221C99E
 	ldr r0, _0221C9AC ; =0x00002224
@@ -1297,7 +1297,7 @@ _0221C90C:
 	mov r0, #8
 	sub r2, #0x10
 	mov r3, #0x17
-	bl sub_0200B484
+	bl StartBrightnessTransition
 	mov r0, #4
 	mov r1, #1
 	bl ToggleBgLayer
@@ -1318,7 +1318,7 @@ _0221C90C:
 	b _0221C99E
 _0221C94C:
 	mov r0, #2
-	bl sub_0200B5C0
+	bl IsBrightnessTransitionActive
 	cmp r0, #0
 	beq _0221C99E
 	ldr r0, _0221C9D0 ; =0x000005B4
@@ -1888,7 +1888,7 @@ ov65_0221CE1C: ; 0x0221CE1C
 	mov r0, #6
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r0, _0221CE84 ; =0x0000211C
 	ldr r0, [r5, r0]
 	cmp r0, #0

@@ -51,7 +51,7 @@
 .public FillWindowPixelBuffer
 .public GetWindowBgConfig
 .public GetWindowWidth
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public AddTextPrinterParameterized2
 .public GF_RunVramTransferTasks

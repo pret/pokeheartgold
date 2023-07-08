@@ -140,7 +140,7 @@
 .public FillWindowPixelBuffer
 .public FillWindowPixelRect
 .public SetWindowPaletteNum
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
 .public Bind3dModelSet

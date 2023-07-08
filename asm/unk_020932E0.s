@@ -326,7 +326,7 @@ _020935B2:
 	bl GF_RunVramTransferTasks
 	bl OamManager_ApplyAndResetBuffers
 	ldr r0, [r4]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	ldr r3, _020935D8 ; =OS_IRQTable
 	ldr r1, _020935DC ; =0x00003FF8
 	mov r0, #1

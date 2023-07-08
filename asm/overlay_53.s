@@ -329,7 +329,7 @@ _021E5BC8: .word ov36_App_InitGameState_AfterOakSpeech
 ov53_021E5BCC: ; 0x021E5BCC
 	push {r3, lr}
 	ldr r0, [r0, #0x18]
-	bl BgConfig_HandleScheduledScrollAndTransferOps
+	bl DoScheduledBgGpuUpdates
 	bl sub_0200D034
 	pop {r3, pc}
 	.balign 4, 0
@@ -3626,13 +3626,13 @@ _021E762A:
 	mov r0, #0x10
 	sub r2, #0x10
 	mov r3, #0x1a
-	bl sub_0200B484
+	bl StartBrightnessTransition
 	mov r0, #0x30
 	str r0, [r4, #0xc]
 	b _021E7CF8
 _021E7672:
 	mov r0, #1
-	bl sub_0200B5C0
+	bl IsBrightnessTransitionActive
 	cmp r0, #0
 	beq _021E76A0
 	mov r0, #0x31
@@ -3694,14 +3694,14 @@ _021E76DE:
 	add r1, r5, #0
 	mov r2, #0x10
 	mov r3, #0x1b
-	bl sub_0200B484
+	bl StartBrightnessTransition
 	mov r0, #2
 	str r0, [sp]
 	mov r0, #4
 	add r1, r5, #0
 	mov r2, #0x10
 	mov r3, #0x1d
-	bl sub_0200B484
+	bl StartBrightnessTransition
 	ldr r0, _021E7940 ; =SEQ_SE_DP_BOWA2
 	bl PlaySE
 	mov r0, #5
@@ -3713,11 +3713,11 @@ _021E76DE:
 	b _021E7CF8
 _021E771C:
 	mov r0, #1
-	bl sub_0200B5C0
+	bl IsBrightnessTransitionActive
 	cmp r0, #1
 	bne _021E77AC
 	mov r0, #2
-	bl sub_0200B5C0
+	bl IsBrightnessTransitionActive
 	cmp r0, #1
 	bne _021E77AC
 	add r0, r4, #0

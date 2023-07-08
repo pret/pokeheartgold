@@ -43,7 +43,7 @@
 .public OamManager_ApplyAndResetBuffers
 .public OamManager_Free
 .public sub_0200B27C
-.public sub_0200B484
+.public StartBrightnessTransition
 .public SetBlendBrightness
 .public NewMsgDataFromNarc
 .public DestroyMsgData
@@ -109,7 +109,7 @@
 .public ClearWindowTilemapAndScheduleTransfer
 .public FillWindowPixelBuffer
 .public BlitBitmapRectToWindow
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
 .public TextPrinterCheckActive

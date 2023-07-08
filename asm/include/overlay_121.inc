@@ -61,7 +61,7 @@
 .public CopyWindowToVram
 .public ClearWindowTilemapAndCopyToVram
 .public FillWindowPixelBuffer
-.public BgConfig_HandleScheduledScrollAndTransferOps
+.public DoScheduledBgGpuUpdates
 .public ResetAllTextPrinters
 .public AddTextPrinterParameterized2
 .public GF_RunVramTransferTasks
