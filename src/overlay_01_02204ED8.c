@@ -96,44 +96,44 @@ void ov01_02204ED8(FieldSystem *fsys, u16 *varPointer) {
 }
 
 static BOOL ov01_02204EFC(TaskManager *taskManager) {
-    UnkStruct_02204EFC *r4;
+    UnkStruct_02204EFC *unk4;
     FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     u16 **didHeadbuttStartBattle = TaskManager_GetEnv(taskManager);
-    r4 = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_a_2_5_2, fsys->location->mapId, HEAP_ID_FIELD);
-    if (r4->unk00 != 0 || r4->unk02 != 0) {
+    unk4 = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_a_2_5_2, fsys->location->mapId, HEAP_ID_FIELD);
+    if (unk4->unk00 != 0 || unk4->unk02 != 0) {
         BATTLE_SETUP *setup;
         u32 x;
         u32 y;
         ov01_022050F8(fsys, &x, &y);
         u32 trainerId = PlayerProfile_GetTrainerID(Save_PlayerData_GetProfileAddr(fsys->savedata));
-        s32 r0 = ov01_02204FE0(r4->unk00, r4->unk02, trainerId, x, y, r4->unk4c);
-        if (r0 == -1) {
-            FreeToHeap(r4);
+        s32 unk0 = ov01_02204FE0(unk4->unk00, unk4->unk02, trainerId, x, y, unk4->unk4c);
+        if (unk0 == -1) {
+            FreeToHeap(unk4);
             FreeToHeap(didHeadbuttStartBattle);
             return TRUE;
         }
-        void *r2;
-        if (r0 == 0) {
-            r2 = &r4->unk04;
-        } else if (r0 == 1) {
-            r2 = &r4->unk1c;
-        } else if (r0 == 2) {
-            r2 = &r4->unk34;
+        void *unk2;
+        if (unk0 == 0) {
+            unk2 = &unk4->unk04;
+        } else if (unk0 == 1) {
+            unk2 = &unk4->unk1c;
+        } else if (unk0 == 2) {
+            unk2 = &unk4->unk34;
         } else {
             GF_ASSERT(FALSE);
-            FreeToHeap(r4);
+            FreeToHeap(unk4);
             FreeToHeap(didHeadbuttStartBattle);
             return TRUE;
         }
-        if (ov02_02247374(fsys, &setup, r2)) {
+        if (ov02_02247374(fsys, &setup, unk2)) {
             **didHeadbuttStartBattle = TRUE;
-            FreeToHeap(r4);
+            FreeToHeap(unk4);
             FreeToHeap(didHeadbuttStartBattle);
             sub_02050B90(fsys, taskManager, setup);
             return FALSE;
         }
     }
-    FreeToHeap(r4);
+    FreeToHeap(unk4);
     FreeToHeap(didHeadbuttStartBattle);
     return TRUE;  
 }
@@ -141,13 +141,14 @@ static BOOL ov01_02204EFC(TaskManager *taskManager) {
 static s8 ov01_02204FE0(u16 a0, u16 a1, u32 trainerId, u32 x, u32 y, s16 a5[][2]) {
     u16 i;
     u16 j = a0 * 6;
-    u16 ip = a1 * 6;
+    u16 unkC = a1 * 6;
     for (i = 0; i < j; i++) {
         if (x == a5[i][0] && y == a5[i][1]) {
             return ov01_02205074(i / 6, a0, trainerId);
         }
     }
-    for (int r5 = j + ip; j < r5; j++) {
+    s32 unk5 = j + unkC;
+    for (; j < unk5; j++) {
         if (x == a5[j][0] && y == a5[j][1]) {
             return 2;
         }
@@ -156,23 +157,23 @@ static s8 ov01_02204FE0(u16 a0, u16 a1, u32 trainerId, u32 x, u32 y, s16 a5[][2]
 }
 
 static s8 ov01_02205074(u8 a0, u8 a1, u32 trainerId) {
-    s8 r7 = -1;
-    u8 r4 = trainerId % 10;
+    s8 unk7 = -1;
+    u8 unk4 = trainerId % 10;
     if (a1 >= 5) {
-        u8 r1 = a0 % 5;
-        r7 = ov01_0220969A[r4][r1];
+        u8 unk1 = a0 % 5;
+        unk7 = ov01_0220969A[unk4][unk1];
     } else if (a1 == 4) {
-        r7 = ov01_02209672[r4][a0];
+        unk7 = ov01_02209672[unk4][a0];
     } else if (a1 == 3) {
-        r7 = ov01_02209654[r4][a0];
+        unk7 = ov01_02209654[unk4][a0];
     } else if (a1 == 2) {
-        r7 = ov01_02209640[r4][a0];
+        unk7 = ov01_02209640[unk4][a0];
     } else if (a1 == 1) {
-        r7 = ov01_02209634[r4];
+        unk7 = ov01_02209634[unk4];
     } else {
         GF_ASSERT(FALSE);
     }
-    return r7;
+    return unk7;
 }
 
 static void ov01_022050F8(FieldSystem *fsys, u32 *x, u32 *y) {
