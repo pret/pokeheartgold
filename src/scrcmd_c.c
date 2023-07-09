@@ -3,6 +3,7 @@
 #include "scrcmd.h"
 #include "bg_window.h"
 #include "overlay_01.h"
+#include "overlay_01_02204ED8.h"
 #include "overlay_26.h"
 #include "overlay_03.h"
 #include "overlay_04.h"
