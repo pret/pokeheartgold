@@ -86,12 +86,12 @@ typedef struct SelfTurnData {
     u32 unk0_5:1;
     u32 rolloutCount:3;
     u32 unk0_9:23;
-    int unk4;
-    int unk8;
-    int unkC;
-    int unk10;
+    int physicalDamage;
+    int battlerIdPhysicalAttacker;
+    int specialDamage;
+    int battlerIdSpecialAttacker;
     int unk14;
-    int unk18;
+    int shellBellDamage;
 } SelfTurnData;
 
 typedef struct UnkBtlCtxSub_76 {

@@ -6039,13 +6039,13 @@ static void *BattleScriptGetVarPointer(BattleSystem *bsys, BATTLECONTEXT *ctx, i
     case 64:
         return &ctx->battlerIdTargetTemp;
     case 65:
-        return &ctx->selfTurnData[ctx->battlerIdTarget].unk4;
+        return &ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage;
     case 66:
         return &ctx->turnData[ctx->battlerIdTemp].unk3C;
     case 67:
         return &ctx->turnData[ctx->battlerIdTarget].unk3C;
     case 68:
-        return &ctx->selfTurnData[ctx->battlerIdAttacker].unk18;
+        return &ctx->selfTurnData[ctx->battlerIdAttacker].shellBellDamage;
     case 69:
         return &ctx->battlersOnField;
     case 70:

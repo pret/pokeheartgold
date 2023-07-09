@@ -3,7 +3,7 @@
 
 typedef struct MoveTbl {
     u16 effect;
-    u8 class;
+    u8 category;
     u8 power;
     u8 type;
     u8 accuracy;

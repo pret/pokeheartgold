@@ -472,9 +472,9 @@
 #define MOVE_OMINOUS_WIND   466
 #define MOVE_SHADOW_FORCE   467
 
-#define CLASS_PHYSICAL 0
-#define CLASS_SPECIAL  1
-#define CLASS_STATUS   2
+#define CATEGORY_PHYSICAL 0
+#define CATEGORY_SPECIAL  1
+#define CATEGORY_STATUS   2
 
 #define RANGE_0                          0
 #define RANGE_SINGLE_TARGET             (1 << 0)    
