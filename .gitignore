@@ -81,3 +81,14 @@ cmake-build-*
 diff.txt
 
 .vscode/
+
+# Save files
+*.dsv
+*.sav
+
+# Savestate files
+*.ds[0-9]
+*.dst
+*.ml[0-9]
+*.mln
+
