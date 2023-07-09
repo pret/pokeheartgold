@@ -54,7 +54,7 @@ typedef struct Camera {
     u8 perspectiveType;
     u16 perspectiveAngle;
     VecFx32 lastTarget;
-    const VecFx32 *currTarget;
+    const VecFx32 *curTarget;
     BOOL enableOffsetX;
     BOOL enableOffsetY;
     BOOL enableOffsetZ;

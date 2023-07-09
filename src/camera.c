@@ -3,7 +3,7 @@
 #include <nitro/fx.h>
 #include "camera.h"
 
-/*static*/ void Camera_CalcLookAtPosFromTargetAndAngle(Camera *camera);
+static void Camera_CalcLookAtPosFromTargetAndAngle(Camera *camera);
 static void Camera_CalcLookAtTargetFromPosAndAngle(Camera *camera);
 static void Camera_InitInternal(u16 perspectiveAngle, Camera *camera);
 static void Camera_VecResetCoordsIfOffsetComponentNotEnabled(Camera *camera, VecFx32 *vec);
@@ -15,7 +15,7 @@ static Camera *sCameraPtr;
 extern void Camera_OffsetLookAtPosAndTarget(const VecFx32 *delta, Camera *camera);
 extern fx16 CalcAngleBetweenVecs(VecFx32 *a, VecFx32 *b);
 
-/*static*/ void Camera_CalcLookAtPosFromTargetAndAngle(Camera *camera) {
+static void Camera_CalcLookAtPosFromTargetAndAngle(Camera *camera) {
     u16 negx = -camera->angle.x;
     camera->lookAt.camPos.x = FX_Mul(FX_Mul(FX_SinIdx(camera->angle.y), camera->distance), FX_CosIdx(camera->angle.x));
     camera->lookAt.camPos.z = FX_Mul(FX_Mul(FX_CosIdx(camera->angle.y), camera->distance), FX_CosIdx(camera->angle.x));
@@ -41,7 +41,7 @@ static void Camera_InitInternal(u16 perspectiveAngle, Camera *camera) {
     camera->lookAt.camUp.x = 0;
     camera->lookAt.camUp.y = FX32_ONE;
     camera->lookAt.camUp.z = 0;
-    camera->currTarget = NULL;
+    camera->curTarget = NULL;
     camera->enableOffsetX = FALSE;
     camera->enableOffsetY = FALSE;
     camera->enableOffsetZ = FALSE;
@@ -92,7 +92,7 @@ static void Camera_GetVecFromSomeRingBufferMaybe(Camera *camera, const VecFx32 *
 }
 
 void Camera_History_New(s32 count, s32 initialWriteIdx, s32 updateEnableFlags, HeapID heapId, Camera *camera) {
-    if (camera->currTarget == NULL) {
+    if (camera->curTarget == NULL) {
         return;
     }
     GF_ASSERT(initialWriteIdx + 1 <= count);
@@ -158,12 +158,12 @@ void Camera_PushLookAtToNNSGlb(void) {
     if (sCameraPtr == NULL) {
         return;
     }
-    if (sCameraPtr->currTarget != NULL) {
-        VEC_Subtract(sCameraPtr->currTarget, &sCameraPtr->lastTarget, &diff);
+    if (sCameraPtr->curTarget != NULL) {
+        VEC_Subtract(sCameraPtr->curTarget, &sCameraPtr->lastTarget, &diff);
         Camera_VecResetCoordsIfOffsetComponentNotEnabled(sCameraPtr, &diff);
         Camera_GetVecFromSomeRingBufferMaybe(sCameraPtr, &diff, &offset);
         Camera_OffsetLookAtPosAndTarget(&offset, sCameraPtr);
-        sCameraPtr->lastTarget = *sCameraPtr->currTarget;
+        sCameraPtr->lastTarget = *sCameraPtr->curTarget;
     }
     NNS_G3dGlbLookAt(&sCameraPtr->lookAt.camPos, &sCameraPtr->lookAt.camUp, &sCameraPtr->lookAt.camTarget);
 }
@@ -173,7 +173,7 @@ void Camera_SetLookAtCamUp(VecFx32 *camUp, Camera *camera) {
 }
 
 void Camera_SetFixedTarget(VecFx32 *target, Camera *camera) {
-    camera->currTarget = target;
+    camera->curTarget = target;
     camera->lastTarget = *target;
     camera->enableOffsetX = TRUE;
     camera->enableOffsetY = TRUE;
@@ -181,7 +181,7 @@ void Camera_SetFixedTarget(VecFx32 *target, Camera *camera) {
 }
 
 void Camera_ClearFixedTarget(Camera *camera) {
-    camera->currTarget = NULL;
+    camera->curTarget = NULL;
     camera->enableOffsetX = FALSE;
     camera->enableOffsetY = FALSE;
     camera->enableOffsetZ = FALSE;
@@ -203,7 +203,7 @@ void Camera_Init_FromTargetDistanceAndAngle(VecFx32 *target, fx32 distance, Came
     if (!setReference) {
         return;
     }        
-    camera->currTarget = target;
+    camera->curTarget = target;
     camera->lastTarget = *target;
     camera->enableOffsetX = TRUE;
     camera->enableOffsetY = TRUE;
@@ -254,7 +254,7 @@ void Camera_Init_FromTargetAndPos(const VecFx32 *target, const VecFx32 *pos, u16
     if (!setReference) {
         return;
     }
-    camera->currTarget = target;
+    camera->curTarget = target;
     camera->lastTarget = *target;
     camera->enableOffsetX = TRUE;
     camera->enableOffsetY = TRUE;
@@ -365,7 +365,7 @@ fx32 Camera_GetPerspectiveClippingPlaneNear(const Camera *camera) {
 }
 
 const VecFx32 *Camera_GetCurrentTarget(const Camera *camera) {
-    return camera->currTarget;
+    return camera->curTarget;
 }
 
 void Camera_SetLookAtCamTarget(const VecFx32 *target, Camera *camera) {
