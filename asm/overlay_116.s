@@ -25,7 +25,7 @@ ov116_0225F020: ; 0x0225F020
 	strh r1, [r0, #4]
 	ldr r1, [r5, #0x24]
 	add r0, sp, #0
-	bl Camera_SetAngle
+	bl Camera_SetAnglePos
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

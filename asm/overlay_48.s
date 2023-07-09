@@ -2580,7 +2580,7 @@ ov48_02259BC0: ; 0x02259BC0
 	sub sp, #8
 	add r4, r0, #0
 	add r0, r3, #0
-	bl Camera_Create
+	bl Camera_New
 	str r0, [r4]
 	mov r3, #0
 	str r3, [sp]
@@ -2589,17 +2589,17 @@ ov48_02259BC0: ; 0x02259BC0
 	str r0, [sp, #4]
 	ldr r0, _02259C30 ; =ov48_0225B184
 	ldr r2, _02259C34 ; =0x000005C1
-	bl sub_02023308
+	bl Camera_Init_FromTargetAndPos
 	mov r1, #0x19
 	ldr r2, [r4]
 	mov r0, #0
 	lsl r1, r1, #0xe
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 	ldr r1, [r4]
 	mov r0, #0
-	bl sub_020233D8
+	bl Camera_ApplyPerspectiveType
 	ldr r0, [r4]
-	bl Camera_RegisterToStaticPtr
+	bl Camera_SetStaticPtr
 	ldr r0, [sp, #0x14]
 	lsl r0, r0, #0x1f
 	lsr r0, r0, #0x1f
@@ -2632,19 +2632,19 @@ _02259C34: .word 0x000005C1
 
 	thumb_func_start ov48_02259C38
 ov48_02259C38: ; 0x02259C38
-	ldr r3, _02259C40 ; =sub_02023120
+	ldr r3, _02259C40 ; =Camera_Delete
 	ldr r0, [r0]
 	bx r3
 	nop
-_02259C40: .word sub_02023120
+_02259C40: .word Camera_Delete
 	thumb_func_end ov48_02259C38
 
 	thumb_func_start ov48_02259C44
 ov48_02259C44: ; 0x02259C44
-	ldr r3, _02259C48 ; =sub_02023154
+	ldr r3, _02259C48 ; =Camera_PushLookAtToNNSGlb
 	bx r3
 	.balign 4, 0
-_02259C48: .word sub_02023154
+_02259C48: .word Camera_PushLookAtToNNSGlb
 	thumb_func_end ov48_02259C44
 
 	thumb_func_start ov48_02259C4C

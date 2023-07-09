@@ -16,10 +16,10 @@
 .public FreeToHeap
 .public SetBgPriority
 .public BgCommitTilemapBufferToVram
-.public sub_020233D8
+.public Camera_ApplyPerspectiveType
 .public Camera_SetPerspectiveAngle
-.public Camera_ShiftBy
-.public Camera_SetAngle
+.public Camera_OffsetLookAtPosAndTarget
+.public Camera_SetAnglePos
 .public Camera_SetDistance
 .public GF_AssertFail
 .public Save_PlayerData_GetProfileAddr

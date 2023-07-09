@@ -147,7 +147,7 @@ static void _CreateParticleSystem(IconFormChangeData* unkPtr) {
 
     unkPtr->particleSystem = sub_02014DB4(texAlloc, plttAlloc, particleHeap, PARTICLE_HEAP_SIZE, 1, HEAPID_PARTY_MENU);
 
-    Camera_SetClipBounds(1 * FX32_ONE, 900 * FX32_ONE, sub_02015524(unkPtr->particleSystem));
+    Camera_SetPerspectiveClippingPlane(1 * FX32_ONE, 900 * FX32_ONE, sub_02015524(unkPtr->particleSystem));
 }
 
 static void _EmitParticles(IconFormChangeData* unkPtr) {

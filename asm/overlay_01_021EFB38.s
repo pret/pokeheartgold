@@ -2747,7 +2747,7 @@ _021F0F64:
 	mov r1, #0xe1
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 	mov r2, #0
 	add r0, r5, #0
 	add r1, r4, #0

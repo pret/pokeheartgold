@@ -4014,7 +4014,7 @@ ov05_0221D9F0: ; 0x0221D9F0
 	mov r1, #0xe1
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 	ldr r2, [r4]
 	mov r0, #0x3b
 	ldr r2, [r2, #0x24]

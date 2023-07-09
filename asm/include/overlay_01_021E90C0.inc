@@ -17,9 +17,9 @@
 .public FreeToHeapExplicit
 .public Ascii_GetDelim
 .public Ascii_StrToL
-.public sub_02023234
-.public Camera_SetClipBounds
-.public sub_020234D0
+.public Camera_ClearFixedTarget
+.public Camera_SetPerspectiveClippingPlane
+.public Camera_AdjustPerspectiveAngle
 .public Camera_GetPerspectiveAngle
 .public GF_AssertFail
 .public sub_0203B58C

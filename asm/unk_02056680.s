@@ -481,11 +481,11 @@ sub_02056A54: ; 0x02056A54
 	sub sp, #0x34
 	add r4, r0, #0
 	ldr r0, [r4, #0x24]
-	bl Camera_GetBindTarget
+	bl Camera_GetCurrentTarget
 	add r5, r0, #0
 	ldr r1, [r4, #0x24]
 	add r0, sp, #4
-	bl Camera_GetTarget
+	bl Camera_GetLookAtCamTarget
 	add r6, sp, #4
 	add r3, sp, #0x10
 	ldmia r6!, {r0, r1}
@@ -533,14 +533,14 @@ _02056AAC:
 	ldr r0, [r4, #0x40]
 	bl PlayerAvatar_GetPositionVecConst
 	ldr r1, [r4, #0x24]
-	bl sub_020235E0
+	bl Camera_SetLookAtTargetAndRecalcPos
 	ldr r0, [r4, #0x40]
 	bl PlayerAvatar_GetPositionVecConst
 	ldr r1, [r4, #0x24]
-	bl sub_02023214
+	bl Camera_SetFixedTarget
 	ldr r1, [r4, #0x24]
 	add r0, sp, #0x1c
-	bl Camera_ShiftBy
+	bl Camera_OffsetLookAtPosAndTarget
 	add sp, #0x34
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end sub_02056A54
@@ -551,11 +551,11 @@ sub_02056AEC: ; 0x02056AEC
 	sub sp, #0x34
 	add r5, r0, #0
 	ldr r0, [r5, #0x24]
-	bl Camera_GetBindTarget
+	bl Camera_GetCurrentTarget
 	add r4, r0, #0
 	ldr r1, [r5, #0x24]
 	add r0, sp, #4
-	bl Camera_GetTarget
+	bl Camera_GetLookAtCamTarget
 	add r6, sp, #4
 	add r3, sp, #0x10
 	ldmia r6!, {r0, r1}
@@ -620,14 +620,14 @@ _02056B70:
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetPositionVecConst
 	ldr r1, [r5, #0x24]
-	bl sub_020235E0
+	bl Camera_SetLookAtTargetAndRecalcPos
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetPositionVecConst
 	ldr r1, [r5, #0x24]
-	bl sub_02023214
+	bl Camera_SetFixedTarget
 	ldr r1, [r5, #0x24]
 	add r0, sp, #0x1c
-	bl Camera_ShiftBy
+	bl Camera_OffsetLookAtPosAndTarget
 	add r0, r5, #0
 	bl FollowingPokemon_IsActive
 	cmp r0, #0
@@ -648,11 +648,11 @@ sub_02056BC8: ; 0x02056BC8
 	sub sp, #0x30
 	add r4, r0, #0
 	ldr r0, [r4, #0x24]
-	bl Camera_GetBindTarget
+	bl Camera_GetCurrentTarget
 	add r5, r0, #0
 	ldr r1, [r4, #0x24]
 	add r0, sp, #0
-	bl Camera_GetTarget
+	bl Camera_GetLookAtCamTarget
 	add r6, sp, #0
 	add r3, sp, #0xc
 	ldmia r6!, {r0, r1}
@@ -685,14 +685,14 @@ sub_02056BC8: ; 0x02056BC8
 	ldr r0, [r4, #0x40]
 	bl PlayerAvatar_GetPositionVecConst
 	ldr r1, [r4, #0x24]
-	bl sub_020235E0
+	bl Camera_SetLookAtTargetAndRecalcPos
 	ldr r0, [r4, #0x40]
 	bl PlayerAvatar_GetPositionVecConst
 	ldr r1, [r4, #0x24]
-	bl sub_02023214
+	bl Camera_SetFixedTarget
 	ldr r1, [r4, #0x24]
 	add r0, sp, #0x18
-	bl Camera_ShiftBy
+	bl Camera_OffsetLookAtPosAndTarget
 	add r0, r5, #0
 	bl MapObject_ClearHeldMovementIfActive
 	mov r1, #2
@@ -714,11 +714,11 @@ sub_02056C64: ; 0x02056C64
 	sub sp, #0x30
 	add r4, r0, #0
 	ldr r0, [r4, #0x24]
-	bl Camera_GetBindTarget
+	bl Camera_GetCurrentTarget
 	add r5, r0, #0
 	ldr r1, [r4, #0x24]
 	add r0, sp, #0
-	bl Camera_GetTarget
+	bl Camera_GetLookAtCamTarget
 	add r6, sp, #0
 	add r3, sp, #0xc
 	ldmia r6!, {r0, r1}
@@ -751,14 +751,14 @@ sub_02056C64: ; 0x02056C64
 	ldr r0, [r4, #0x40]
 	bl PlayerAvatar_GetPositionVecConst
 	ldr r1, [r4, #0x24]
-	bl sub_020235E0
+	bl Camera_SetLookAtTargetAndRecalcPos
 	ldr r0, [r4, #0x40]
 	bl PlayerAvatar_GetPositionVecConst
 	ldr r1, [r4, #0x24]
-	bl sub_02023214
+	bl Camera_SetFixedTarget
 	ldr r1, [r4, #0x24]
 	add r0, sp, #0x18
-	bl Camera_ShiftBy
+	bl Camera_OffsetLookAtPosAndTarget
 	add r0, r5, #0
 	bl MapObject_ClearHeldMovementIfActive
 	mov r1, #2

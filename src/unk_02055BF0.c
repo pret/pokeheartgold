@@ -12,7 +12,7 @@
 #include "unk_02056680.h"
 #include "unk_02054E00.h"
 #include "unk_020552A4.h"
-#include "unk_02022D74.h"
+#include "camera.h"
 #include "unk_0206A360.h"
 #include "unk_02005D10.h"
 #include "unk_02062108.h"
@@ -182,7 +182,7 @@ BOOL sub_02055DBC(TaskManager *man) {
         break;
     case 6:
         if(_020FC76C[env->transitionNo]) {
-            sub_0202367C(fsys->camera, 0);
+            Camera_SetHistoryUnk24(fsys->camera, 0);
             _020FC76C[env->transitionNo](fsys);
         }
         env->state++;
@@ -217,7 +217,7 @@ BOOL sub_02055DBC(TaskManager *man) {
         }
         break;
     case 8:
-        sub_0202367C(fsys->camera, 1);
+        Camera_SetHistoryUnk24(fsys->camera, 1);
         FreeToHeap(env);
         return TRUE;
     case 9:

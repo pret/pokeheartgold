@@ -13,7 +13,7 @@
 #include "unk_0200E320.h"
 #include "list_menu_2d.h"
 #include "render_window.h"
-#include "unk_02022D74.h"
+#include "camera.h"
 #include "field_system.h"
 #include "render_window.h"
 

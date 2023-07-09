@@ -1246,7 +1246,7 @@ ov02_0224650C: ; 0x0224650C
 	str r6, [r4]
 	add r0, r6, #0
 	str r5, [r4, #4]
-	bl Camera_Create
+	bl Camera_New
 	str r0, [r4, #0x18]
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
@@ -1257,7 +1257,7 @@ ov02_02246534: ; 0x02246534
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
-	bl sub_02023120
+	bl Camera_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -1339,10 +1339,10 @@ _022465D8:
 	ldr r0, [r5, #4]
 	ldr r1, [r5, #0x18]
 	ldr r0, [r0, #0x24]
-	bl sub_02023128
+	bl Camera_Copy
 	ldr r1, [r5, #0x18]
 	add r0, sp, #0
-	bl Camera_GetTarget
+	bl Camera_GetLookAtCamTarget
 	add r4, sp, #0
 	add r3, r5, #0
 	add r3, #0x20
@@ -1360,9 +1360,9 @@ _022465D8:
 	str r0, [r3]
 	ldr r1, [r5, #0x18]
 	add r0, r2, #0
-	bl sub_02023214
+	bl Camera_SetFixedTarget
 	ldr r0, [r5, #0x18]
-	bl Camera_RegisterToStaticPtr
+	bl Camera_SetStaticPtr
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -1377,7 +1377,7 @@ ov02_0224662C: ; 0x0224662C
 	ldr r0, [r0, #0x24]
 	bx r3
 	.balign 4, 0
-_02246638: .word Camera_RegisterToStaticPtr
+_02246638: .word Camera_SetStaticPtr
 	thumb_func_end ov02_0224662C
 
 	thumb_func_start ov02_0224663C
@@ -16782,7 +16782,7 @@ ov02_0224D9C0: ; 0x0224D9C0
 	bl ov02_0224D044
 	ldr r1, [r5, #0x24]
 	add r0, sp, #0x10
-	bl Camera_GetTarget
+	bl Camera_GetLookAtCamTarget
 	add r3, sp, #0x10
 	add r2, r4, #0
 	ldmia r3!, {r0, r1}
@@ -16792,7 +16792,7 @@ ov02_0224D9C0: ; 0x0224D9C0
 	str r0, [r2]
 	ldr r1, [r5, #0x24]
 	add r0, sp, #4
-	bl sub_02023640
+	bl Camera_GetLookAtCamPos
 	add r3, sp, #4
 	add r2, r4, #0
 	ldmia r3!, {r0, r1}
@@ -16898,7 +16898,7 @@ ov02_0224DAA4: ; 0x0224DAA4
 	bl ov02_0224CFD8
 	ldr r1, [r5, #0x24]
 	add r0, sp, #0x10
-	bl Camera_GetTarget
+	bl Camera_GetLookAtCamTarget
 	add r3, sp, #0x10
 	add r2, r4, #0
 	ldmia r3!, {r0, r1}
@@ -16908,7 +16908,7 @@ ov02_0224DAA4: ; 0x0224DAA4
 	str r0, [r2]
 	ldr r1, [r5, #0x24]
 	add r0, sp, #4
-	bl sub_02023640
+	bl Camera_GetLookAtCamPos
 	add r3, sp, #4
 	add r2, r4, #0
 	ldmia r3!, {r0, r1}
@@ -17039,17 +17039,17 @@ _0224DBB0:
 	add r0, #0xe5
 	ldr r1, [r5, #0x24]
 	add r0, r4, r0
-	bl Camera_ShiftBy
+	bl Camera_OffsetLookAtPosAndTarget
 	b _0224DC1C
 _0224DBF4:
 	add r0, r4, #0
 	ldr r1, [r5, #0x24]
 	add r0, #0xf8
-	bl sub_0202365C
+	bl Camera_SetLookAtCamTarget
 	add r0, r4, #0
 	ldr r1, [r5, #0x24]
 	add r0, #0xec
-	bl sub_0202366C
+	bl Camera_SetLookAtCamPos
 	ldr r0, _0224DC54 ; =0x00000112
 	ldrb r1, [r4, r0]
 	add r1, r1, #1
@@ -17078,11 +17078,11 @@ _0224DC38:
 	add r0, r4, #0
 	ldr r1, [r5, #0x24]
 	add r0, #0xf8
-	bl sub_0202365C
+	bl Camera_SetLookAtCamTarget
 	add r4, #0xec
 	ldr r1, [r5, #0x24]
 	add r0, r4, #0
-	bl sub_0202366C
+	bl Camera_SetLookAtCamPos
 _0224DC4C:
 	pop {r3, r4, r5, pc}
 	nop
@@ -23205,7 +23205,7 @@ ov02_02250A60: ; 0x02250A60
 	str r0, [r4, #0x24]
 	ldr r1, [r5, #0x24]
 	add r0, sp, #0xc
-	bl Camera_GetTarget
+	bl Camera_GetLookAtCamTarget
 	add r3, sp, #0xc
 	add r2, r4, #0
 	ldmia r3!, {r0, r1}
@@ -23215,7 +23215,7 @@ ov02_02250A60: ; 0x02250A60
 	str r0, [r2]
 	ldr r1, [r5, #0x24]
 	add r0, sp, #0
-	bl sub_02023640
+	bl Camera_GetLookAtCamPos
 	add r3, sp, #0
 	add r2, r4, #0
 	ldmia r3!, {r0, r1}
@@ -24427,11 +24427,11 @@ _02251440:
 	add r0, r6, #0
 	ldr r1, [r5, #0x24]
 	add r0, #0xc
-	bl sub_0202365C
+	bl Camera_SetLookAtCamTarget
 	add r6, #0x18
 	ldr r1, [r5, #0x24]
 	add r0, r6, #0
-	bl sub_0202366C
+	bl Camera_SetLookAtCamPos
 	mov r0, #0x14
 	add r6, r7, #0
 	mul r6, r0
@@ -24447,7 +24447,7 @@ _02251440:
 	ldr r1, [r5, #0x24]
 	add r0, r0, r6
 	add r0, r0, #4
-	bl Camera_SetAngle
+	bl Camera_SetAnglePos
 	mov r0, #0x4b
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -24461,17 +24461,17 @@ _02251440:
 	mul r0, r7
 	add r0, r1, r0
 	ldr r1, [r5, #0x24]
-	bl Camera_ShiftBy
+	bl Camera_OffsetLookAtPosAndTarget
 	mov r0, #0x96
 	ldr r1, _022514C4 ; =0x006A4000
 	ldr r2, [r5, #0x24]
 	lsl r0, r0, #0xc
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 	ldr r1, [r5, #0x24]
 	add r0, sp, #8
-	bl Camera_GetTarget
+	bl Camera_GetLookAtCamTarget
 	ldr r0, [r5, #0x24]
-	bl Camera_GetBindTarget
+	bl Camera_GetCurrentTarget
 	ldr r1, [r5, #0x24]
 	add r0, sp, #0
 	bl Camera_GetAngle
@@ -24585,9 +24585,9 @@ ov02_02251568: ; 0x02251568
 	beq _0225159C
 	ldr r1, [r4, #0x24]
 	add r0, sp, #8
-	bl Camera_GetTarget
+	bl Camera_GetLookAtCamTarget
 	ldr r0, [r4, #0x24]
-	bl Camera_GetBindTarget
+	bl Camera_GetCurrentTarget
 	ldr r1, [r4, #0x24]
 	add r0, sp, #0
 	bl Camera_GetAngle
@@ -25537,7 +25537,7 @@ _02251D1A:
 	strh r0, [r4, #0xa]
 	ldr r1, [r5, #0x24]
 	add r0, sp, #8
-	bl Camera_GetTarget
+	bl Camera_GetLookAtCamTarget
 	add r3, sp, #8
 	ldmia r3!, {r0, r1}
 	add r2, sp, #0x14
@@ -25545,7 +25545,7 @@ _02251D1A:
 	ldr r0, [r3]
 	str r0, [r2]
 	ldr r0, [r5, #0x24]
-	bl Camera_GetBindTarget
+	bl Camera_GetCurrentTarget
 	add r2, r4, #0
 	add r1, r0, #0
 	add r0, sp, #0x14
@@ -25555,28 +25555,28 @@ _02251D1A:
 	bl Camera_GetPerspectiveAngle
 	strh r0, [r4, #0x18]
 	ldr r0, [r5, #0x24]
-	bl sub_02023654
+	bl Camera_GetPerspectiveClippingPlaneNear
 	str r0, [r4, #0x1c]
 	ldr r0, [r5, #0x24]
-	bl sub_02023650
+	bl Camera_GetPerspectiveClippingPlaneFar
 	str r0, [r4, #0x20]
 	ldr r0, _02251DB0 ; =0x0029AEC1
 	ldr r1, [r5, #0x24]
 	bl Camera_SetDistance
 	ldr r0, _02251DB4 ; =ov02_02253C74
 	ldr r1, [r5, #0x24]
-	bl Camera_SetAngle
+	bl Camera_SetAnglePos
 	ldr r0, _02251DB8 ; =0x000005C1
 	ldr r1, [r5, #0x24]
 	bl Camera_SetPerspectiveAngle
 	ldr r0, _02251DBC ; =ov02_02253BC4
 	ldr r1, [r5, #0x24]
-	bl Camera_ShiftBy
+	bl Camera_OffsetLookAtPosAndTarget
 	mov r0, #0x96
 	ldr r1, _02251DC0 ; =0x006A4000
 	ldr r2, [r5, #0x24]
 	lsl r0, r0, #0xc
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 	add sp, #0x20
 	pop {r3, r4, r5, pc}
 	nop
@@ -25672,7 +25672,7 @@ ov02_02251E44: ; 0x02251E44
 	ldr r0, [r5, #0x1c]
 	ldr r1, [r5, #0x20]
 	ldr r2, [r4, #0x24]
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _02251E70:
@@ -26943,7 +26943,7 @@ ov02_022527B0: ; 0x022527B0
 	bl MTX_MultVec33
 	ldr r1, [sp]
 	add r0, sp, #0x34
-	bl Camera_SetBindTarget
+	bl Camera_SetLookAtCamUp
 	lsl r0, r4, #0x10
 	ldr r1, [sp]
 	lsr r0, r0, #0x10

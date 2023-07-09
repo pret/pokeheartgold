@@ -27,19 +27,19 @@ static inline CameraAngle getBoundCameraAngle(GFCameraTranslationWrapper *wrappe
 }
 
 static inline VecFx32 getBoundCameraTarget(GFCameraTranslationWrapper *wrapper) {
-    return Camera_GetTarget(wrapper->camera);
+    return Camera_GetLookAtCamTarget(wrapper->camera);
 }
 
 void SetCameraTranslationPath(GFCameraTranslationWrapper *wrapper, struct CameraTranslationPathTemplate *template, int duration) {
     VecFx32 target;
     CameraAngle angle;
-    VecFx32 *bindTarget;
+    const VecFx32 *bindTarget;
     if (!wrapper->active && duration != 0) {
         wrapper->active = TRUE;
         wrapper->target = *template;
         angle = getBoundCameraAngle(wrapper);
         target = getBoundCameraTarget(wrapper);
-        bindTarget = Camera_GetBindTarget(wrapper->camera);
+        bindTarget = Camera_GetCurrentTarget(wrapper->camera);
 
         wrapper->init.angleX = angle.x;
         wrapper->init.perspectiveAngle = Camera_GetPerspectiveAngle(wrapper->camera);
@@ -107,7 +107,7 @@ static void stepAngleX(Camera *camera, const u16 *first, const u16 *last, u8 ste
         scaled = -((diff * step) / duration);
     }
     cameraAngle.x = *first + scaled;
-    Camera_SetAngle(&cameraAngle, camera);
+    Camera_SetAnglePos(&cameraAngle, camera);
 }
 
 static void stepDistance(Camera *camera, const fx32 *first, const fx32 *last, u8 step, u8 duration) {
@@ -131,7 +131,7 @@ static void stepPosition(Camera *camera, const VecFx32 *first, const VecFx32 *la
     scaled.x = calcPositionComponentStep(diff.x, step, duration);
     scaled.y = calcPositionComponentStep(diff.y, step, duration);
     scaled.z = calcPositionComponentStep(diff.z, step, duration);
-    Camera_ShiftBy(&scaled, camera);
+    Camera_OffsetLookAtPosAndTarget(&scaled, camera);
 }
 
 static fx32 calcPositionComponentStep(fx32 component, u8 step, u8 duration) {

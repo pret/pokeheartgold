@@ -1795,7 +1795,7 @@ ov92_0225D3CC: ; 0x0225D3CC
 	bl GF_3DVramMan_Create
 	str r0, [r4, #0x60]
 	mov r0, #0x71
-	bl Camera_Create
+	bl Camera_New
 	str r0, [r4, #0x64]
 	add r0, r4, #0
 	bl ov92_0225DD88
@@ -1931,7 +1931,7 @@ ov92_0225D49C: ; 0x0225D49C
 	ldr r0, [r4, #0x60]
 	bl GF_3DVramMan_Delete
 	ldr r0, [r4, #0x64]
-	bl sub_02023120
+	bl Camera_Delete
 	ldr r0, [r4, #0x50]
 	ldr r1, [r4, #0x54]
 	bl sub_0200D998
@@ -2533,7 +2533,7 @@ ov92_0225DA40: ; 0x0225DA40
 	sub sp, #0x24
 	add r5, r0, #0
 	bl Thunk_G3X_Reset
-	bl sub_02023154
+	bl Camera_PushLookAtToNNSGlb
 	ldr r4, _0225DD04 ; =ov92_02263B68
 	add r3, sp, #0x18
 	ldmia r4!, {r0, r1}
@@ -2925,14 +2925,14 @@ ov92_0225DD88: ; 0x0225DD88
 	lsl r2, r2, #4
 	str r0, [sp, #4]
 	add r0, r7, #0
-	bl sub_02023308
+	bl Camera_Init_FromTargetAndPos
 	mov r1, #0xfa
 	ldr r0, _0225DDD4 ; =0xFFC18000
 	ldr r2, [r4, #0x64]
 	lsl r1, r1, #0xe
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 	ldr r0, [r4, #0x64]
-	bl Camera_RegisterToStaticPtr
+	bl Camera_SetStaticPtr
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

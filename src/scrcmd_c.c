@@ -1428,7 +1428,7 @@ BOOL ScrCmd_102(ScriptContext *ctx) {
     MapObject_ClearFlag18(*p_cameraObj, FALSE);
     pos = MapObject_GetPositionVecPtr(*p_cameraObj);
     ov01_021F62E8(pos, ctx->fsys->unk2C);
-    sub_02023214(pos, ctx->fsys->camera);
+    Camera_SetFixedTarget(pos, ctx->fsys->camera);
     return FALSE;
 }
 
@@ -1438,7 +1438,7 @@ BOOL ScrCmd_103(ScriptContext *ctx) {
     MapObject_Remove(*p_cameraObj);
     pos = MapObject_GetPositionVecPtr(GetMapObjectByID(ctx->fsys->mapObjectMan, obj_player));
     ov01_021F62E8(pos, ctx->fsys->unk2C);
-    sub_02023214(pos, ctx->fsys->camera);
+    Camera_SetFixedTarget(pos, ctx->fsys->camera);
     return FALSE;
 }
 
@@ -1545,7 +1545,7 @@ BOOL ScrCmd_107(ScriptContext *ctx) {
     shift_v.z = FX32_CONST(z);
 
     sub_0205F9A0(PlayerAvatar_GetMapObject(ctx->fsys->playerAvatar), &shift_v);
-    Camera_ShiftBy(&shift_v, ctx->fsys->camera);
+    Camera_OffsetLookAtPosAndTarget(&shift_v, ctx->fsys->camera);
     return FALSE;
 }
 

@@ -6361,7 +6361,7 @@ ov03_022570D4: ; 0x022570D4
 	add r0, r4, #0
 	bl ov03_02257134
 	mov r0, #0xb
-	bl Camera_Create
+	bl Camera_New
 	add r1, r4, #0
 	add r1, #0x90
 	str r0, [r1]
@@ -6369,11 +6369,11 @@ ov03_022570D4: ; 0x022570D4
 	add r1, #0x90
 	ldr r0, [r5, #0x24]
 	ldr r1, [r1]
-	bl sub_02023128
+	bl Camera_Copy
 	add r0, r4, #0
 	add r0, #0x90
 	ldr r0, [r0]
-	bl Camera_RegisterToStaticPtr
+	bl Camera_SetStaticPtr
 	ldr r0, _02257130 ; =0x00000281
 	mov r1, #0
 	strb r1, [r4, r0]
@@ -8477,13 +8477,13 @@ _0225818C:
 	add r0, #0x90
 	ldr r0, [r0]
 	ldr r1, [r5, #0x24]
-	bl sub_02023128
+	bl Camera_Copy
 	add r0, r4, #0
 	add r0, #0x90
 	ldr r0, [r0]
-	bl sub_02023120
+	bl Camera_Delete
 	ldr r0, [r5, #0x24]
-	bl Camera_RegisterToStaticPtr
+	bl Camera_SetStaticPtr
 	add r0, r4, #0
 	bl ov03_02258288
 	mov r0, #0x1b

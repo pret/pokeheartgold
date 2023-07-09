@@ -2,7 +2,7 @@
 #define POKEHEARTGOLD_CAMERA_TRANSLATION_H
 
 #include "unk_0200E320.h"
-#include "unk_02022D74.h"
+#include "camera.h"
 
 struct CameraTranslationPathTemplate {
     u16 angleX;

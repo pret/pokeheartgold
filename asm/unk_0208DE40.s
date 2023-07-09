@@ -107,7 +107,7 @@ sub_0208DEFC: ; 0x0208DEFC
 	mov r0, #0xa7
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02023120
+	bl Camera_Delete
 	mov r0, #0xb3
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -142,7 +142,7 @@ sub_0208DF2C: ; 0x0208DF2C
 	strh r0, [r1, #4]
 	strh r0, [r1, #6]
 	mov r0, #0x13
-	bl Camera_Create
+	bl Camera_New
 	mov r1, #0xa7
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -154,22 +154,22 @@ sub_0208DF2C: ; 0x0208DF2C
 	ldr r3, _0208DF98 ; =0x000005C1
 	add r0, sp, #0x10
 	add r2, sp, #8
-	bl sub_020232BC
+	bl Camera_Init_FromPosDistanceAndAngle
 	mov r2, #0xa7
 	lsl r2, r2, #2
 	mov r1, #0x19
 	ldr r2, [r4, r2]
 	mov r0, #0
 	lsl r1, r1, #0xe
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 	mov r0, #0xa7
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02023234
+	bl Camera_ClearFixedTarget
 	mov r0, #0xa7
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl Camera_RegisterToStaticPtr
+	bl Camera_SetStaticPtr
 	add sp, #0x1c
 	pop {r3, r4, pc}
 	nop

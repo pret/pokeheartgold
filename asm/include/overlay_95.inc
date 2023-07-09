@@ -135,7 +135,7 @@
 .public GX_DisableEngineBLayers
 .public GX_EngineBToggleLayers
 .public GX_BothDispOn
-.public Camera_SetClipBounds
+.public Camera_SetPerspectiveClippingPlane
 .public sub_02024B34
 .public sub_02025224
 .public GF_AssertFail
