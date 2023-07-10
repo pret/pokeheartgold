@@ -6,7 +6,7 @@
 .public AllocFromHeap
 .public GX_EngineAToggleLayers
 .public Camera_SetPerspectiveAngle
-.public Camera_SetAngle
+.public Camera_SetAnglePos
 .public Camera_SetDistance
 .public Camera_GetPerspectiveAngle
 .public Camera_GetDistance

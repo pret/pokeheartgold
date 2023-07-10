@@ -1661,7 +1661,7 @@ _02254B76:
 	cmp r3, #0
 	bne _02254BB0
 	ldr r1, [r5, #0x24]
-	bl Camera_ShiftBy
+	bl Camera_OffsetLookAtPosAndTarget
 	ldr r0, [r4, #0x44]
 	add r0, r0, #1
 	str r0, [r4, #0x44]

@@ -62,7 +62,7 @@
 .public sub_0201F988
 .public GX_SetBanks
 .public GX_EngineAToggleLayers
-.public Camera_SetClipBounds
+.public Camera_SetPerspectiveClippingPlane
 .public sub_02024504
 .public sub_02024714
 .public GF_AssertFail

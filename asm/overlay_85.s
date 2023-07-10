@@ -2061,7 +2061,7 @@ ov85_021E67F4: ; 0x021E67F4
 	push {r4, lr}
 	add r4, r0, #0
 	bl Thunk_G3X_Reset
-	bl sub_02023154
+	bl Camera_PushLookAtToNNSGlb
 	mov r0, #0
 	ldr r2, _021E6848 ; =0xFFFFF000
 	add r1, r0, #0
@@ -3508,7 +3508,7 @@ ov85_021E7424: ; 0x021E7424
 	ldr r0, _021E748C ; =0x00000D0C
 	add r4, r5, r0
 	mov r0, #0x66
-	bl Camera_Create
+	bl Camera_New
 	str r0, [r4, #0x1c]
 	mov r2, #0
 	str r2, [r4, #8]
@@ -3536,7 +3536,7 @@ ov85_021E7424: ; 0x021E7424
 	add r0, #8
 	add r2, #0x14
 	lsr r3, r3, #0x10
-	bl Camera_InitFromTargetDistanceAndAngle
+	bl Camera_Init_FromTargetDistanceAndAngle
 	mov r1, #0
 	mov r0, #1
 	lsl r0, r0, #0xc
@@ -3545,9 +3545,9 @@ ov85_021E7424: ; 0x021E7424
 	str r1, [sp, #0x14]
 	ldr r1, [r4, #0x1c]
 	add r0, sp, #0xc
-	bl Camera_SetBindTarget
+	bl Camera_SetLookAtCamUp
 	ldr r0, [r4, #0x1c]
-	bl Camera_RegisterToStaticPtr
+	bl Camera_SetStaticPtr
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -3560,12 +3560,12 @@ _021E7498: .word 0x00000444
 	thumb_func_start ov85_021E749C
 ov85_021E749C: ; 0x021E749C
 	ldr r1, _021E74A4 ; =0x00000D28
-	ldr r3, _021E74A8 ; =sub_02023120
+	ldr r3, _021E74A8 ; =Camera_Delete
 	ldr r0, [r0, r1]
 	bx r3
 	.balign 4, 0
 _021E74A4: .word 0x00000D28
-_021E74A8: .word sub_02023120
+_021E74A8: .word Camera_Delete
 	thumb_func_end ov85_021E749C
 
 	thumb_func_start ov85_021E74AC

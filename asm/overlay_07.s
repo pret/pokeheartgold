@@ -9086,7 +9086,7 @@ _0221FFE6:
 	bl Camera_GetAngle
 	add r0, sp, #8
 	add r1, r4, #0
-	bl Camera_SetAngle
+	bl Camera_SetAnglePos
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -12984,7 +12984,7 @@ ov07_02221CEC: ; 0x02221CEC
 	bl sub_02015524
 	add r1, r0, #0
 	add r0, sp, #0
-	bl Camera_SetAngle
+	bl Camera_SetAnglePos
 	mov r0, #1
 	add sp, #8
 	pop {r3, pc}
@@ -13013,7 +13013,7 @@ ov07_02221D10: ; 0x02221D10
 	bl sub_02015528
 	add r0, sp, #0
 	add r1, r5, #0
-	bl Camera_SetAngle
+	bl Camera_SetAnglePos
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -13046,7 +13046,7 @@ ov07_02221D4C: ; 0x02221D4C
 	bl sub_02015524
 	add r1, r0, #0
 	add r0, sp, #0
-	bl Camera_SetAngle
+	bl Camera_SetAnglePos
 	mov r0, #1
 	add sp, #0x18
 	pop {r4, pc}
@@ -13075,7 +13075,7 @@ ov07_02221D88: ; 0x02221D88
 	bl sub_02015528
 	add r0, sp, #0
 	add r1, r5, #0
-	bl Camera_SetAngle
+	bl Camera_SetAnglePos
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -13118,12 +13118,12 @@ ov07_02221DC4: ; 0x02221DC4
 	bne _02221E12
 	add r0, sp, #8
 	add r1, r5, #0
-	bl Camera_SetAngle
+	bl Camera_SetAnglePos
 	b _02221E1A
 _02221E12:
 	add r0, sp, #0
 	add r1, r5, #0
-	bl Camera_SetAngle
+	bl Camera_SetAnglePos
 _02221E1A:
 	mov r0, #1
 	add sp, #0x10
@@ -13155,7 +13155,7 @@ ov07_02221E24: ; 0x02221E24
 	bl sub_02015528
 	add r0, sp, #0
 	add r1, r5, #0
-	bl Camera_SetAngle
+	bl Camera_SetAnglePos
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -13186,7 +13186,7 @@ ov07_02221E60: ; 0x02221E60
 	bl sub_02015528
 	add r0, sp, #0
 	add r1, r5, #0
-	bl Camera_SetAngle
+	bl Camera_SetAnglePos
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -13208,7 +13208,7 @@ ov07_02221E9C: ; 0x02221E9C
 	bl ov07_02231D70
 	add r0, sp, #0
 	add r1, r4, #0
-	bl sub_0202365C
+	bl Camera_SetLookAtCamTarget
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, pc}
@@ -13229,7 +13229,7 @@ ov07_02221EC4: ; 0x02221EC4
 	bl ov07_02231D70
 	add r0, sp, #0
 	add r1, r4, #0
-	bl sub_0202365C
+	bl Camera_SetLookAtCamTarget
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, pc}

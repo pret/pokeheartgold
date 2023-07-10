@@ -1,5 +1,5 @@
 #include "unk_0203E348.h"
-#include "unk_02022D74.h"
+#include "camera.h"
 #include "camera_translation.h"
 #include "unk_0200FA24.h"
 #include "system.h"
@@ -289,7 +289,7 @@ BOOL ChooseStarterApplication_OvyInit(OVY_MANAGER *ovy, int *state_p) {
     loadBgGraphics(work->bgConfig, work->heapId);
     createObjResMans(work);
     initObjRenderers(work);
-    work->camera = Camera_Create(work->heapId);
+    work->camera = Camera_New(work->heapId);
     work->cameraTranslation = CreateCameraTranslationWrapper(work->heapId, work->camera);
     initCameraPosition(work);
     initBallModelPositions(work);
@@ -542,7 +542,7 @@ BOOL ChooseStarterApplication_OvyExit(OVY_MANAGER *ovy, int *state) {
     args->cursorPos = work->curSelection;
     Main_SetVBlankIntrCB(NULL, NULL);
     DeleteCameraTranslationWrapper(work->cameraTranslation);
-    sub_02023120(work->camera);
+    Camera_Delete(work->camera);
     freeAll3dAnmObj(work);
     freeAll3dResHeader(work);
     freeAllMonSprite2dResObj(&work->monSpriteData);
@@ -644,7 +644,7 @@ static void update3dObjectsMain(struct ChooseStarterAppWork *work) {
     sub_0202457C(work->monSpriteData.spriteList);
     Thunk_G3X_Reset();
     NNS_G3dGePushMtx();
-    sub_02023154();
+    Camera_PushLookAtToNNSGlb();
     updateBaseAndBallsRotation(work);
     NNS_G3dGePopMtx(1);
     sub_02026E50(0, 0);
@@ -760,14 +760,14 @@ static void initCameraPosition(struct ChooseStarterAppWork *work) {
     cameraAngle.x = 0xDCC0;
     cameraAngle.y = 0;
     cameraAngle.z = 0;
-    Camera_InitFromTargetDistanceAndAngle(&work->cameraTarget, 100 * FX32_ONE, &cameraAngle, 0x11A4, 0, 1, work->camera);
-    Camera_ShiftBy(&shiftVec, work->camera);
-    Camera_SetClipBounds(FX32_ONE * 4, FX32_ONE * 256, work->camera);
+    Camera_Init_FromTargetDistanceAndAngle(&work->cameraTarget, 100 * FX32_ONE, &cameraAngle, 0x11A4, 0, 1, work->camera);
+    Camera_OffsetLookAtPosAndTarget(&shiftVec, work->camera);
+    Camera_SetPerspectiveClippingPlane(FX32_ONE * 4, FX32_ONE * 256, work->camera);
     bindTarget.x = 0;
     bindTarget.y = FX32_ONE;
     bindTarget.z = 0;
-    Camera_SetBindTarget(&bindTarget, work->camera);
-    Camera_RegisterToStaticPtr(work->camera);
+    Camera_SetLookAtCamUp(&bindTarget, work->camera);
+    Camera_SetStaticPtr(work->camera);
 }
 
 static void createObjResMans(struct ChooseStarterAppWork *work) {

@@ -209,7 +209,7 @@ _021E9218:
 	cmp r0, #0
 	bne _021E9238
 	ldr r0, [r6, #0x24]
-	bl sub_02023234
+	bl Camera_ClearFixedTarget
 	mov r0, #1
 	str r0, [r4, #0x10]
 _021E9238:
@@ -309,7 +309,7 @@ _021E9308:
 	ldr r1, _021E936C ; =0x00456000
 	ldr r2, [r6, #0x24]
 	lsl r0, r0, #0xc
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 	ldr r1, [r6, #0x24]
 	mov r0, #4
 	bl CreateCameraTranslationWrapper
@@ -501,7 +501,7 @@ _021E9486:
 	bne _021E94A2
 	ldr r0, _021E95C8 ; =0x0000FFA0
 	ldr r1, [r4, #0x24]
-	bl sub_020234D0
+	bl Camera_AdjustPerspectiveAngle
 _021E94A2:
 	ldr r0, [r6]
 	add r0, r0, #1
@@ -668,7 +668,7 @@ _021E95EC:
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	add r1, r6, #0
-	bl sub_020234D0
+	bl Camera_AdjustPerspectiveAngle
 _021E9606:
 	ldrb r0, [r5]
 	add r0, r0, #1
@@ -706,7 +706,7 @@ _021E9630:
 	beq _021E9646
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_020234D0
+	bl Camera_AdjustPerspectiveAngle
 _021E9646:
 	ldrb r0, [r5]
 	add r0, r0, #1
@@ -1521,7 +1521,7 @@ _021E9C7A:
 	strh r0, [r6, #0xe]
 	ldr r0, _021E9EE4 ; =0x0000FFA0
 	ldr r1, [r4, #0x24]
-	bl sub_020234D0
+	bl Camera_AdjustPerspectiveAngle
 	mov r0, #6
 	str r0, [sp]
 	mov r1, #1
@@ -1978,7 +1978,7 @@ _021EA052:
 	strh r0, [r4, #2]
 	ldr r0, _021EA124 ; =0x0000FFA0
 	ldr r1, [r5, #0x24]
-	bl sub_020234D0
+	bl Camera_AdjustPerspectiveAngle
 	cmp r7, #3
 	bhi _021EA092
 	add r0, r7, r7

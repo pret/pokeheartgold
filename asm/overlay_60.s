@@ -884,7 +884,7 @@ _021E5FF2:
 	pop {r4, r5, pc}
 _021E6006:
 	bl Thunk_G3X_Reset
-	bl sub_02023154
+	bl Camera_PushLookAtToNNSGlb
 	add r1, r4, #0
 	add r0, sp, #0
 	add r1, #0xa8
@@ -1245,7 +1245,7 @@ _021E62C0:
 	sub r0, #0x20
 	str r1, [r5, r0]
 	add r0, r4, #0
-	bl Camera_Create
+	bl Camera_New
 	add r1, r5, #0
 	add r1, #0xb8
 	str r0, [r1]
@@ -1262,23 +1262,23 @@ _021E62C0:
 	add r1, #0xc
 	add r1, r5, r1
 	lsl r2, r2, #4
-	bl sub_02023308
+	bl Camera_Init_FromTargetAndPos
 	add r2, r5, #0
 	add r2, #0xb8
 	mov r1, #2
 	ldr r2, [r2]
 	mov r0, #0
 	lsl r1, r1, #0xa
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 	add r1, r5, #0
 	add r1, #0xb8
 	ldr r1, [r1]
 	mov r0, #0
-	bl sub_020233D8
+	bl Camera_ApplyPerspectiveType
 	add r0, r5, #0
 	add r0, #0xb8
 	ldr r0, [r0]
-	bl Camera_RegisterToStaticPtr
+	bl Camera_SetStaticPtr
 	mov r3, #0x77
 	lsl r3, r3, #2
 	add r2, r3, #2
@@ -1374,14 +1374,14 @@ _021E642E:
 	lsl r0, r0, #4
 	ldr r1, [r1]
 	add r0, r5, r0
-	bl sub_0202365C
+	bl Camera_SetLookAtCamTarget
 	add r1, r5, #0
 	mov r0, #0x6e
 	add r1, #0xb8
 	lsl r0, r0, #2
 	ldr r1, [r1]
 	add r0, r5, r0
-	bl sub_0202366C
+	bl Camera_SetLookAtCamPos
 	mov r0, #1
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
@@ -1514,7 +1514,7 @@ ov60_021E6544: ; 0x021E6544
 	add r0, r5, #0
 	add r0, #0xb8
 	ldr r0, [r0]
-	bl sub_02023120
+	bl Camera_Delete
 	add r0, r5, #4
 	bl ov60_021E5F4C
 	add r0, r5, #0
@@ -2180,7 +2180,7 @@ _021E6A9C:
 	lsl r0, r0, #2
 	ldr r1, [r1]
 	add r0, r5, r0
-	bl sub_0202366C
+	bl Camera_SetLookAtCamPos
 	ldr r0, [sp]
 	bl ov60_021E69CC
 	mov r1, #1
@@ -7449,11 +7449,11 @@ ov60_021E94A0: ; 0x021E94A0
 	ldrb r0, [r7, #1]
 	cmp r0, #0
 	beq _021E957C
-	bl sub_02023148
+	bl Camera_UnsetStaticPtr
 	add r0, r7, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_02023120
+	bl Camera_Delete
 	mov r0, #0
 	str r0, [sp, #8]
 _021E94CE:
@@ -8180,7 +8180,7 @@ _021E9A6A:
 	ldr r0, [sp, #0x18]
 	bl NARC_Delete
 	mov r0, #0x4a
-	bl Camera_Create
+	bl Camera_New
 	ldr r1, [sp, #0xc]
 	add r3, sp, #0x2c
 	add r1, #0x80
@@ -8202,7 +8202,7 @@ _021E9A6A:
 	str r0, [sp, #8]
 	add r0, r2, #0
 	ldr r2, _021E9B58 ; =_021EB29C
-	bl Camera_InitFromTargetDistanceAndAngle
+	bl Camera_Init_FromTargetDistanceAndAngle
 	ldr r1, [sp, #0xc]
 	ldr r0, _021E9B5C ; =0x00000981
 	add r1, #0x80
@@ -8212,7 +8212,7 @@ _021E9A6A:
 	add r0, #0x80
 	str r0, [sp, #0xc]
 	ldr r0, [r0]
-	bl Camera_RegisterToStaticPtr
+	bl Camera_SetStaticPtr
 	mov r0, #0x1f
 	str r0, [sp]
 	mov r0, #2
@@ -8268,7 +8268,7 @@ _021E9B6C:
 	cmp r4, r0
 	beq _021E9BEC
 	bl Thunk_G3X_Reset
-	bl sub_02023154
+	bl Camera_PushLookAtToNNSGlb
 	lsl r0, r4, #0x18
 	lsr r1, r0, #0x18
 	mov r4, #1
@@ -8577,7 +8577,7 @@ ov60_021E9D78: ; 0x021E9D78
 	mov r1, #0xe1
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 	mov r0, #0x3b
 	mov r1, #4
 	mov r2, #0x4a

@@ -24,7 +24,7 @@ ParticleSystem *ov06_0221BA40(HeapID heap_id) {
     pPVar1 = sub_02014DB4(ov06_0221BB14, ov06_0221BB30, particleHeap, 0x4800, TRUE, heap_id);
     pGVar2 = sub_02015524(pPVar1);
     if (pGVar2 != NULL) {
-        Camera_SetClipBounds(1 * FX32_ONE, 900 * FX32_ONE, pGVar2);
+        Camera_SetPerspectiveClippingPlane(1 * FX32_ONE, 900 * FX32_ONE, pGVar2);
     }
     return pPVar1;
 }
@@ -41,7 +41,7 @@ ParticleSystem *ov06_0221BA88(HeapID heap_id) {
     pPVar1 = sub_02014DB4(ov06_0221BB14, ov06_0221BB30, particleHeap, 0x4200, TRUE, heap_id);
     pGVar2 = sub_02015524(pPVar1);
     if (pGVar2 != NULL) {
-        Camera_SetClipBounds(1 * FX32_ONE, 900 * FX32_ONE, pGVar2);
+        Camera_SetPerspectiveClippingPlane(1 * FX32_ONE, 900 * FX32_ONE, pGVar2);
     }
     return pPVar1;
 }

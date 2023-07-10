@@ -5,7 +5,7 @@
 .public sub_02020B8C
 .public sub_02020B94
 .public GetDistanceFromPointToLine
-.public sub_02020C64
+.public CalcAngleBetweenVecs
 .public sub_02020D2C
 .public sub_02020DA4
 .public sub_02020E10

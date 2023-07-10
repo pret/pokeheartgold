@@ -2218,7 +2218,7 @@ ov89_02259B00: ; 0x02259B00
 	ldr r0, [r3]
 	str r0, [r2]
 	mov r0, #0x7d
-	bl Camera_Create
+	bl Camera_New
 	add r1, r5, #0
 	add r1, #0xcc
 	str r0, [r1]
@@ -2234,7 +2234,7 @@ ov89_02259B00: ; 0x02259B00
 	ldr r3, _02259B98 ; =0x00000FA4
 	add r0, sp, #0x14
 	lsl r1, r1, #0xe
-	bl Camera_InitFromTargetDistanceAndAngle
+	bl Camera_Init_FromTargetDistanceAndAngle
 	add r2, r5, #0
 	add r2, #0xcc
 	mov r0, #1
@@ -2242,11 +2242,11 @@ ov89_02259B00: ; 0x02259B00
 	ldr r2, [r2]
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 	add r0, r5, #0
 	add r0, #0xcc
 	ldr r0, [r0]
-	bl Camera_RegisterToStaticPtr
+	bl Camera_SetStaticPtr
 	add r0, r5, #0
 	add r0, #0xcc
 	ldr r0, [r0]
@@ -2281,12 +2281,12 @@ _02259B9C: .word 0x00001555
 
 	thumb_func_start ov89_02259BA0
 ov89_02259BA0: ; 0x02259BA0
-	ldr r3, _02259BA8 ; =sub_02023120
+	ldr r3, _02259BA8 ; =Camera_Delete
 	add r0, #0xcc
 	ldr r0, [r0]
 	bx r3
 	.balign 4, 0
-_02259BA8: .word sub_02023120
+_02259BA8: .word Camera_Delete
 	thumb_func_end ov89_02259BA0
 
 	thumb_func_start ov89_02259BAC
@@ -2361,13 +2361,13 @@ ov89_02259C0C: ; 0x02259C0C
 	add r0, r4, #0
 	add r0, #0xcc
 	ldr r0, [r0]
-	bl Camera_RegisterToStaticPtr
+	bl Camera_SetStaticPtr
 	add r1, r4, #0
 	add r1, #0xcc
 	ldr r1, [r1]
 	mov r0, #0
-	bl sub_020233D8
-	bl sub_02023154
+	bl Camera_ApplyPerspectiveType
+	bl Camera_PushLookAtToNNSGlb
 	mov r0, #0
 	ldr r2, _02259CBC ; =0xFFFFF000
 	add r1, r0, #0
@@ -7080,7 +7080,7 @@ _0225BF54:
 _0225BF68:
 	ldr r0, _0225BFDC ; =0xFFFFE556
 	add r1, r5, #0
-	bl sub_020235FC
+	bl Camera_AdjustDistance
 	mov r0, #4
 	ldrsh r1, [r4, r0]
 	add r1, r1, #1
@@ -7111,7 +7111,7 @@ _0225BF8A:
 _0225BFA4:
 	ldr r0, _0225BFE0 ; =0x00008555
 	add r1, r5, #0
-	bl sub_020235FC
+	bl Camera_AdjustDistance
 	mov r0, #4
 	ldrsh r1, [r4, r0]
 	add r1, r1, #1
@@ -7225,7 +7225,7 @@ _0225C054:
 _0225C078:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl Camera_SetBindTarget
+	bl Camera_SetLookAtCamUp
 	b _0225C086
 _0225C082:
 	mov r0, #1
@@ -7296,7 +7296,7 @@ _0225C0EA:
 	str r0, [r4, #8]
 	add r0, sp, #8
 	add r1, r5, #0
-	bl sub_020235A8
+	bl Camera_AdjustAnglePos
 	mov r0, #2
 	ldrh r1, [r4, #2]
 	lsl r0, r0, #0xc
@@ -7331,14 +7331,14 @@ _0225C130:
 	add r1, r2, r1
 	str r1, [r4, #8]
 	add r1, r5, #0
-	bl sub_020235A8
+	bl Camera_AdjustAnglePos
 	ldrh r0, [r4, #2]
 	ldr r1, [r4, #8]
 	cmp r1, r0
 	blt _0225C15E
 	add r0, r4, #0
 	add r1, r5, #0
-	bl Camera_SetAngle
+	bl Camera_SetAnglePos
 	add sp, #0x10
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -7409,7 +7409,7 @@ _0225C1C2:
 	str r0, [r4, #8]
 	add r0, sp, #8
 	add r1, r5, #0
-	bl sub_020235A8
+	bl Camera_AdjustAnglePos
 	mov r0, #2
 	ldrh r1, [r4, #2]
 	lsl r0, r0, #0xc
@@ -7444,14 +7444,14 @@ _0225C208:
 	sub r1, r2, r1
 	str r1, [r4, #8]
 	add r1, r5, #0
-	bl sub_020235A8
+	bl Camera_AdjustAnglePos
 	ldrh r0, [r4, #2]
 	ldr r1, [r4, #8]
 	cmp r1, r0
 	bgt _0225C236
 	add r0, r4, #0
 	add r1, r5, #0
-	bl Camera_SetAngle
+	bl Camera_SetAnglePos
 	add sp, #0x10
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -7521,7 +7521,7 @@ _0225C29A:
 	str r0, [r4, #8]
 	add r0, sp, #8
 	add r1, r5, #0
-	bl sub_020235A8
+	bl Camera_AdjustAnglePos
 	mov r0, #2
 	ldrh r1, [r4]
 	lsl r0, r0, #0xc
@@ -7556,14 +7556,14 @@ _0225C2DE:
 	sub r1, r2, r1
 	str r1, [r4, #8]
 	add r1, r5, #0
-	bl sub_020235A8
+	bl Camera_AdjustAnglePos
 	ldrh r0, [r4]
 	ldr r1, [r4, #8]
 	cmp r1, r0
 	bgt _0225C30C
 	add r0, r4, #0
 	add r1, r5, #0
-	bl Camera_SetAngle
+	bl Camera_SetAnglePos
 	add sp, #0x10
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -7668,7 +7668,7 @@ _0225C396:
 	strh r2, [r1, #0xa]
 	add r0, r3, #0
 	add r1, r5, #0
-	bl sub_02023534
+	bl Camera_SetAngleTarget
 	b _0225C3DC
 _0225C3D6:
 	add sp, #0x10
@@ -7714,7 +7714,7 @@ _0225C40A:
 _0225C41E:
 	ldr r0, _0225C490 ; =0x00001AAA
 	add r1, r5, #0
-	bl sub_020235FC
+	bl Camera_AdjustDistance
 	mov r0, #4
 	ldrsh r1, [r4, r0]
 	add r1, r1, #1
@@ -7745,7 +7745,7 @@ _0225C440:
 _0225C45A:
 	ldr r0, _0225C494 ; =0xFFFF7AAB
 	add r1, r5, #0
-	bl sub_020235FC
+	bl Camera_AdjustDistance
 	mov r0, #4
 	ldrsh r1, [r4, r0]
 	add r1, r1, #1
@@ -7794,7 +7794,7 @@ ov89_0225C498: ; 0x0225C498
 _0225C4B8:
 	add r0, sp, #0xc
 	add r1, r5, #0
-	bl sub_02023640
+	bl Camera_GetLookAtCamPos
 	add r3, sp, #0xc
 	add r2, r4, #0
 	ldmia r3!, {r0, r1}
@@ -7804,7 +7804,7 @@ _0225C4B8:
 	add r1, r5, #0
 	str r0, [r2]
 	add r0, sp, #0
-	bl Camera_GetTarget
+	bl Camera_GetLookAtCamTarget
 	add r3, sp, #0
 	ldmia r3!, {r0, r1}
 	add r2, r4, #0
@@ -7861,14 +7861,14 @@ _0225C520:
 	str r1, [sp, #0x18]
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_0202365C
+	bl Camera_SetLookAtCamTarget
 	add r4, #0xc
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_0202366C
+	bl Camera_SetLookAtCamPos
 	add r0, sp, #0x18
 	add r1, r5, #0
-	bl Camera_ShiftBy
+	bl Camera_OffsetLookAtPosAndTarget
 	b _0225C564
 _0225C55E:
 	add sp, #0x24
@@ -7903,7 +7903,7 @@ ov89_0225C570: ; 0x0225C570
 _0225C590:
 	add r0, sp, #0xc
 	add r1, r5, #0
-	bl sub_02023640
+	bl Camera_GetLookAtCamPos
 	add r3, sp, #0xc
 	add r2, r4, #0
 	ldmia r3!, {r0, r1}
@@ -7913,7 +7913,7 @@ _0225C590:
 	add r1, r5, #0
 	str r0, [r2]
 	add r0, sp, #0
-	bl Camera_GetTarget
+	bl Camera_GetLookAtCamTarget
 	add r3, sp, #0
 	ldmia r3!, {r0, r1}
 	add r2, r4, #0
@@ -7970,14 +7970,14 @@ _0225C5F8:
 	str r1, [sp, #0x1c]
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_0202365C
+	bl Camera_SetLookAtCamTarget
 	add r4, #0xc
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_0202366C
+	bl Camera_SetLookAtCamPos
 	add r0, sp, #0x18
 	add r1, r5, #0
-	bl Camera_ShiftBy
+	bl Camera_OffsetLookAtPosAndTarget
 	b _0225C63C
 _0225C636:
 	add sp, #0x24
@@ -8049,7 +8049,7 @@ _0225C6A2:
 	str r0, [r4, #8]
 	add r0, sp, #8
 	add r1, r5, #0
-	bl sub_020235A8
+	bl Camera_AdjustAnglePos
 	mov r0, #2
 	ldrh r1, [r4]
 	lsl r0, r0, #0xc
@@ -8084,14 +8084,14 @@ _0225C6E6:
 	add r1, r2, r1
 	str r1, [r4, #8]
 	add r1, r5, #0
-	bl sub_020235A8
+	bl Camera_AdjustAnglePos
 	ldrh r0, [r4]
 	ldr r1, [r4, #8]
 	cmp r1, r0
 	blt _0225C714
 	add r0, r4, #0
 	add r1, r5, #0
-	bl Camera_SetAngle
+	bl Camera_SetAnglePos
 	add sp, #0x10
 	mov r0, #1
 	pop {r3, r4, r5, pc}

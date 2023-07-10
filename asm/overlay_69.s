@@ -90,7 +90,7 @@ _021E5960:
 	ldr r1, _021E5A28 ; =0x0000C080
 	str r0, [r5, r1]
 	ldr r0, [r5]
-	bl Camera_Create
+	bl Camera_New
 	ldr r1, _021E5A2C ; =0x0000C2DC
 	str r0, [r5, r1]
 	mov r0, #0
@@ -900,7 +900,7 @@ ov69_021E6080: ; 0x021E6080
 	bl GX_EngineBToggleLayers
 	ldr r0, _021E60E8 ; =0x0000C2DC
 	ldr r0, [r4, r0]
-	bl sub_02023120
+	bl Camera_Delete
 	ldr r0, _021E60EC ; =0x0000C080
 	ldr r0, [r4, r0]
 	bl MessageFormat_Delete
@@ -2779,20 +2779,20 @@ ov69_021E6FE8: ; 0x021E6FE8
 	ldr r2, _021E7064 ; =0x000005C1
 	str r0, [sp, #4]
 	add r0, r7, #0
-	bl sub_02023308
+	bl Camera_Init_FromTargetAndPos
 	ldr r2, _021E7060 ; =0x0000C2DC
 	mov r1, #0x19
 	ldr r2, [r4, r2]
 	mov r0, #0
 	lsl r1, r1, #0xe
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 	ldr r1, _021E7060 ; =0x0000C2DC
 	mov r0, #0
 	ldr r1, [r4, r1]
-	bl sub_020233D8
+	bl Camera_ApplyPerspectiveType
 	ldr r0, _021E7060 ; =0x0000C2DC
 	ldr r0, [r4, r0]
-	bl Camera_RegisterToStaticPtr
+	bl Camera_SetStaticPtr
 	ldr r0, _021E7068 ; =0x0000C304
 	ldrh r1, [r4, r0]
 	cmp r1, #0
@@ -3342,7 +3342,7 @@ _021E7414:
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7446:
 	bl Thunk_G3X_Reset
-	bl sub_02023154
+	bl Camera_PushLookAtToNNSGlb
 	ldr r1, _021E7500 ; =0x0000C2C4
 	add r0, sp, #0x4c
 	add r1, r5, r1

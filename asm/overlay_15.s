@@ -8810,7 +8810,7 @@ ov15_021FD93C: ; 0x021FD93C
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
 	mov r0, #6
-	bl Camera_Create
+	bl Camera_New
 	ldr r2, _021FDAAC ; =0x00000818
 	ldr r4, _021FDAB0 ; =ov15_02200500
 	str r0, [r5, r2]
@@ -8848,7 +8848,7 @@ ov15_021FD93C: ; 0x021FD93C
 	ldr r1, [r5, r1]
 	add r0, r6, #0
 	add r2, r5, r2
-	bl Camera_InitFromTargetDistanceAndAngle
+	bl Camera_Init_FromTargetDistanceAndAngle
 	ldr r0, _021FDABC ; =0x00000934
 	ldr r3, _021FDAC0 ; =ov15_0220050C
 	add r2, r5, r0
@@ -8874,10 +8874,10 @@ ov15_021FD93C: ; 0x021FD93C
 	ldr r1, _021FDAC8 ; =0x006A4000
 	ldr r2, [r5, r2]
 	lsl r0, r0, #0xc
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 	ldr r0, _021FDAAC ; =0x00000818
 	ldr r0, [r5, r0]
-	bl Camera_RegisterToStaticPtr
+	bl Camera_SetStaticPtr
 	mov r6, #1
 	ldr r7, _021FDA9C ; =0x00007FFF
 	mov r4, #0
@@ -9154,7 +9154,7 @@ ov15_021FDC6C: ; 0x021FDC6C
 	bl ov15_021FDF20
 	ldr r0, _021FDC84 ; =0x00000818
 	ldr r0, [r4, r0]
-	bl sub_02023120
+	bl Camera_Delete
 	bl sub_0201F63C
 	pop {r4, pc}
 	nop
@@ -9205,9 +9205,9 @@ _021FDC94:
 	ldr r1, [r5, r1]
 	add r0, r5, r0
 	add r2, r5, r2
-	bl Camera_InitFromTargetDistanceAndAngle
+	bl Camera_Init_FromTargetDistanceAndAngle
 	bl Thunk_G3X_Reset
-	bl sub_02023154
+	bl Camera_PushLookAtToNNSGlb
 	ldr r0, _021FDD4C ; =0x0000081C
 	add r4, r5, r0
 	add r0, r4, #0

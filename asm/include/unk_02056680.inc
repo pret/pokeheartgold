@@ -3,11 +3,11 @@
 .public IsPaletteFadeFinished
 .public AllocFromHeapAtEnd
 .public FreeToHeap
-.public sub_02023214
-.public Camera_ShiftBy
-.public sub_020235E0
-.public Camera_GetTarget
-.public Camera_GetBindTarget
+.public Camera_SetFixedTarget
+.public Camera_OffsetLookAtPosAndTarget
+.public Camera_SetLookAtTargetAndRecalcPos
+.public Camera_GetLookAtCamTarget
+.public Camera_GetCurrentTarget
 .public GF_AssertFail
 .public TaskManager_Call
 .public CallApplicationAsTask

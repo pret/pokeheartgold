@@ -74,10 +74,10 @@
 .public GX_EngineASetLayers
 .public GX_EngineBToggleLayers
 .public GX_EngineAGetLayers
-.public Camera_Create
-.public sub_02023120
-.public sub_02023128
-.public Camera_RegisterToStaticPtr
+.public Camera_New
+.public Camera_Delete
+.public Camera_Copy
+.public Camera_SetStaticPtr
 .public sub_0202457C
 .public Sprite_Delete
 .public sub_020247D4

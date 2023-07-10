@@ -6686,7 +6686,7 @@ ov108_021E8E10: ; 0x021E8E10
 	push {r4, lr}
 	add r4, r0, #0
 	bl Thunk_G3X_Reset
-	bl sub_02023154
+	bl Camera_PushLookAtToNNSGlb
 	bl NNS_G3dGeFlushBuffer
 	ldr r2, _021E8E58 ; =0x04000440
 	mov r3, #0
@@ -6734,7 +6734,7 @@ ov108_021E8E60: ; 0x021E8E60
 	bl ov108_021E90C4
 _021E8E76:
 	ldr r0, [r4]
-	bl sub_02023120
+	bl Camera_Delete
 	add r0, r4, #0
 	add r0, #0xe8
 	ldr r0, [r0]
@@ -6793,7 +6793,7 @@ ov108_021E8ED8: ; 0x021E8ED8
 	cmp r0, #0
 	bne _021E8EFA
 	bl Thunk_G3X_Reset
-	bl sub_02023154
+	bl Camera_PushLookAtToNNSGlb
 	bl NNS_G3dGeFlushBuffer
 	ldr r0, _021E8EFC ; =0x04000540
 	mov r1, #1
@@ -7223,7 +7223,7 @@ ov108_021E9230: ; 0x021E9230
 	sub sp, #0xc
 	add r4, r0, #0
 	add r0, r1, #0
-	bl Camera_Create
+	bl Camera_New
 	str r0, [r4]
 	add r0, r4, #0
 	mov r1, #0
@@ -7245,18 +7245,18 @@ ov108_021E9230: ; 0x021E9230
 	ldr r2, _021E9290 ; =ov108_021EA9C4
 	ldr r3, _021E9294 ; =0x000005C1
 	add r0, #0xdc
-	bl Camera_InitFromTargetDistanceAndAngle
+	bl Camera_Init_FromTargetDistanceAndAngle
 	ldr r0, [r4]
-	bl Camera_RegisterToStaticPtr
+	bl Camera_SetStaticPtr
 	mov r0, #0x19
 	mov r1, #0x4b
 	ldr r2, [r4]
 	lsl r0, r0, #0xe
 	lsl r1, r1, #0x10
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 	ldr r0, _021E9298 ; =ov108_021EA9D8
 	ldr r1, [r4]
-	bl Camera_ShiftBy
+	bl Camera_OffsetLookAtPosAndTarget
 	add sp, #0xc
 	pop {r3, r4, pc}
 	nop

@@ -167,13 +167,13 @@ ov106_021E59FC: ; 0x021E59FC
 	ldrh r3, [r4, #0xe]
 	ldr r1, [r4]
 	add r2, r4, #4
-	bl Camera_InitFromTargetDistanceAndAngle
+	bl Camera_Init_FromTargetDistanceAndAngle
 	ldr r0, [r4, #0x20]
 	ldr r1, [r4, #0x24]
 	ldr r2, [r5, #0x18]
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 	ldr r0, [r5, #0x18]
-	bl Camera_RegisterToStaticPtr
+	bl Camera_SetStaticPtr
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov106_021E59FC
@@ -457,7 +457,7 @@ _021E5C3C:
 	str r0, [r1, #4]
 	str r0, [r1, #8]
 	bl Thunk_G3X_Reset
-	bl sub_02023154
+	bl Camera_PushLookAtToNNSGlb
 	mov r1, #0xff
 	ldr r0, [sp]
 	lsl r1, r1, #2
@@ -615,7 +615,7 @@ ov106_021E5D70: ; 0x021E5D70
 	sub sp, #8
 	add r4, r0, #0
 	mov r0, #0x99
-	bl Camera_Create
+	bl Camera_New
 	str r0, [r4, #0x18]
 	mov r0, #0x99
 	bl sub_0201F590
@@ -677,7 +677,7 @@ ov106_021E5DFC: ; 0x021E5DFC
 	add r4, r0, #0
 	bl sub_0201F63C
 	ldr r0, [r4, #0x18]
-	bl sub_02023120
+	bl Camera_Delete
 	pop {r4, pc}
 	thumb_func_end ov106_021E5DFC
 
