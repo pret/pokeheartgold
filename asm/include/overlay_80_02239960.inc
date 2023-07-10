@@ -16,7 +16,7 @@
 .public sub_02015528
 .public AllocFromHeap
 .public FreeToHeap
-.public Camera_SetClipBounds
+.public Camera_SetPerspectiveClippingPlane
 .public GF_AssertFail
 .public Thunk_G3X_Reset
 .public MI_CpuFill8

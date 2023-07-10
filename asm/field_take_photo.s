@@ -1094,7 +1094,7 @@ sub_0206AFD0: ; 0x0206AFD0
 	bl Camera_SetDistance
 	ldr r0, _0206B00C ; =_021100C4 + 4
 	add r1, r4, #0
-	bl Camera_SetAngle
+	bl Camera_SetAnglePos
 	ldr r0, _0206B008 ; =_021100C4
 	add r1, r4, #0
 	ldrh r0, [r0, #0xe]
@@ -1104,10 +1104,10 @@ sub_0206AFD0: ; 0x0206AFD0
 	ldrh r0, [r0, #0xc]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020233D8
+	bl Camera_ApplyPerspectiveType
 	ldr r0, _0206B010 ; =_021100C4 + 24
 	add r1, r4, #0
-	bl Camera_ShiftBy
+	bl Camera_OffsetLookAtPosAndTarget
 	pop {r4, pc}
 	.balign 4, 0
 _0206B008: .word _021100C4

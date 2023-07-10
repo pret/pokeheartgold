@@ -1240,7 +1240,7 @@ ov93_0225CFC0: ; 0x0225CFC0
 	ldr r0, [r3]
 	str r0, [r2]
 	mov r0, #0x75
-	bl Camera_Create
+	bl Camera_New
 	add r1, r4, #0
 	add r1, #0x9c
 	str r0, [r1]
@@ -1257,7 +1257,7 @@ ov93_0225CFC0: ; 0x0225CFC0
 	ldr r3, _0225D060 ; =0x00000FA4
 	add r0, sp, #0xc
 	lsl r1, r1, #0xc
-	bl Camera_InitFromTargetDistanceAndAngle
+	bl Camera_Init_FromTargetDistanceAndAngle
 	add r2, r4, #0
 	add r2, #0x9c
 	mov r0, #1
@@ -1265,13 +1265,13 @@ ov93_0225CFC0: ; 0x0225CFC0
 	ldr r2, [r2]
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 	add r0, r4, #0
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl Camera_RegisterToStaticPtr
+	bl Camera_SetStaticPtr
 	mov r0, #0x75
-	bl Camera_Create
+	bl Camera_New
 	add r1, r4, #0
 	add r1, #0xa0
 	str r0, [r1]
@@ -1288,14 +1288,14 @@ ov93_0225CFC0: ; 0x0225CFC0
 	ldr r3, _0225D060 ; =0x00000FA4
 	add r0, sp, #0xc
 	lsl r1, r1, #0x10
-	bl Camera_InitFromTargetDistanceAndAngle
+	bl Camera_Init_FromTargetDistanceAndAngle
 	add r4, #0xa0
 	mov r0, #1
 	mov r1, #0xe1
 	ldr r2, [r4]
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 	add sp, #0x18
 	pop {r4, pc}
 	nop
@@ -1310,10 +1310,10 @@ ov93_0225D064: ; 0x0225D064
 	add r4, r0, #0
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl sub_02023120
+	bl Camera_Delete
 	add r4, #0xa0
 	ldr r0, [r4]
-	bl sub_02023120
+	bl Camera_Delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov93_0225D064
@@ -1363,13 +1363,13 @@ ov93_0225D07C: ; 0x0225D07C
 	add r0, r4, #0
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl Camera_RegisterToStaticPtr
+	bl Camera_SetStaticPtr
 	add r1, r4, #0
 	add r1, #0x9c
 	ldr r1, [r1]
 	mov r0, #1
-	bl sub_020233D8
-	bl sub_02023154
+	bl Camera_ApplyPerspectiveType
+	bl Camera_PushLookAtToNNSGlb
 	mov r0, #0
 	ldr r2, _0225D1C0 ; =0xFFFFF000
 	add r1, r0, #0
@@ -2044,7 +2044,7 @@ ov93_0225D674: ; 0x0225D674
 	mov r1, #0xe1
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 	mov r0, #0xd5
 	mov r1, #0
 	mov r2, #0x75

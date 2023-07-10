@@ -19,7 +19,7 @@
 .public GX_DisableEngineALayers
 .public GX_EngineAToggleLayers
 .public GX_DisableEngineBLayers
-.public Camera_SetClipBounds
+.public Camera_SetPerspectiveClippingPlane
 .public GF_AssertFail
 .public Thunk_G3X_Reset
 .public sub_02026E50

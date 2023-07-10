@@ -25834,7 +25834,7 @@ _021F1F30:
 	mov r0, #0
 	str r0, [sp, #0x3c]
 	add r0, r2, #0
-	bl sub_02020C64
+	bl CalcAngleBetweenVecs
 	mov r1, #2
 	lsl r1, r1, #0xc
 	cmp r0, r1
@@ -32830,7 +32830,7 @@ ov96_021F553C: ; 0x021F553C
 	mov r0, #0x19
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02023120
+	bl Camera_Delete
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
@@ -34346,7 +34346,7 @@ ov96_021F6138: ; 0x021F6138
 	ldr r0, _021F61C4 ; =0x04000580
 	str r1, [r0]
 	ldr r0, [r4, #0x54]
-	bl Camera_Create
+	bl Camera_New
 	mov r1, #0x19
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -34555,7 +34555,7 @@ ov96_021F637C: ; 0x021F637C
 	push {r4, lr}
 	add r4, r0, #0
 	bl Thunk_G3X_Reset
-	bl sub_02023154
+	bl Camera_PushLookAtToNNSGlb
 	add r0, r4, #0
 	bl ov96_021F61C8
 	mov r0, #0
@@ -34599,19 +34599,19 @@ ov96_021F6398: ; 0x021F6398
 	mov r1, #0x19
 	lsl r1, r1, #0xe
 	mov r3, #0xa4
-	bl Camera_InitFromTargetDistanceAndAngle
+	bl Camera_Init_FromTargetDistanceAndAngle
 	mov r1, #0x19
 	lsl r1, r1, #4
 	ldr r1, [r4, r1]
 	add r0, sp, #0x14
-	bl Camera_ShiftBy
+	bl Camera_OffsetLookAtPosAndTarget
 	mov r2, #0x19
 	mov r0, #1
 	lsl r2, r2, #4
 	lsl r0, r0, #0xe
 	ldr r2, [r4, r2]
 	lsl r1, r0, #6
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 	mov r1, #0
 	mov r0, #1
 	lsl r0, r0, #0xc
@@ -34622,11 +34622,11 @@ ov96_021F6398: ; 0x021F6398
 	lsl r1, r1, #4
 	ldr r1, [r4, r1]
 	add r0, sp, #0x20
-	bl Camera_SetBindTarget
+	bl Camera_SetLookAtCamUp
 	mov r0, #0x19
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl Camera_RegisterToStaticPtr
+	bl Camera_SetStaticPtr
 	add sp, #0x2c
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -69414,7 +69414,7 @@ ov96_022079B8: ; 0x022079B8
 	mov r0, #0
 	str r0, [sp, #4]
 	add r0, r2, #0
-	bl sub_02020C64
+	bl CalcAngleBetweenVecs
 	mov r2, #2
 	lsl r2, r2, #0xc
 	cmp r0, r2
@@ -81419,7 +81419,7 @@ ov96_0220D6CC: ; 0x0220D6CC
 	str r0, [sp, #8]
 	add r0, r2, #0
 	str r4, [sp, #4]
-	bl sub_02020C64
+	bl CalcAngleBetweenVecs
 	mov r2, #2
 	lsl r2, r2, #0xc
 	cmp r0, r2
@@ -91451,7 +91451,7 @@ _022126BA:
 	mov r0, #0
 	str r0, [sp, #0x2c]
 	add r0, r2, #0
-	bl sub_02020C64
+	bl CalcAngleBetweenVecs
 	mov r1, #2
 	lsl r1, r1, #0xc
 	cmp r0, r1
@@ -104036,7 +104036,7 @@ ov96_022186CC: ; 0x022186CC
 	str r0, [sp, #8]
 	add r0, r2, #0
 	str r4, [sp, #4]
-	bl sub_02020C64
+	bl CalcAngleBetweenVecs
 	mov r2, #2
 	lsl r2, r2, #0xc
 	cmp r0, r2

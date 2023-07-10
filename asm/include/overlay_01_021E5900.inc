@@ -40,7 +40,7 @@
 .public GX_EngineAToggleLayers
 .public GX_BothDispOn
 .public GX_SwapDisplay
-.public sub_02023154
+.public Camera_PushLookAtToNNSGlb
 .public Camera_GetAngle
 .public sub_02023738
 .public sub_02023778
@@ -107,7 +107,7 @@
 .public _ll_mul
 .public _u32_div_f
 .public FX_SinCosTable_
-.public _0210F6DC
+.public gG3dDepthBufferingMode
 .public NNS_G3dGlb
 .public ov01_021E5924
 .public ov01_021E5BE4

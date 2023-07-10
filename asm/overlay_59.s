@@ -9010,7 +9010,7 @@ ov59_0223C304: ; 0x0223C304
 	bl sub_0201543C
 	bl Thunk_G3X_Reset
 	bl NNS_G2dSetupSoftwareSpriteCamera
-	bl sub_02023154
+	bl Camera_PushLookAtToNNSGlb
 	ldr r2, _0223C348 ; =0x04000440
 	mov r3, #0
 	add r1, r2, #0
@@ -9039,7 +9039,7 @@ ov59_0223C350: ; 0x0223C350
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #8]
-	bl sub_02023120
+	bl Camera_Delete
 	ldr r0, [r4, #0xc]
 	bl sub_02008524
 	add r0, r4, #0
@@ -9318,7 +9318,7 @@ ov59_0223C53C: ; 0x0223C53C
 	mov r1, #0xe1
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 _0223C574:
 	add r0, r4, #0
 	add sp, #8
@@ -9381,7 +9381,7 @@ ov59_0223C5C4: ; 0x0223C5C4
 	strh r0, [r1, #4]
 	strh r0, [r1, #6]
 	add r0, r2, #0
-	bl Camera_Create
+	bl Camera_New
 	str r0, [r4, #8]
 	mov r1, #1
 	str r1, [sp]
@@ -9391,16 +9391,16 @@ ov59_0223C5C4: ; 0x0223C5C4
 	add r0, sp, #0x10
 	lsl r1, r1, #0x10
 	add r2, sp, #8
-	bl sub_020232BC
+	bl Camera_Init_FromPosDistanceAndAngle
 	mov r1, #0x19
 	ldr r2, [r4, #8]
 	mov r0, #0
 	lsl r1, r1, #0xe
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 	ldr r0, [r4, #8]
-	bl sub_02023234
+	bl Camera_ClearFixedTarget
 	ldr r0, [r4, #8]
-	bl Camera_RegisterToStaticPtr
+	bl Camera_SetStaticPtr
 	add sp, #0x1c
 	pop {r4, r5, pc}
 	.balign 4, 0

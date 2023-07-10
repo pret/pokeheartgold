@@ -630,7 +630,7 @@ ov95_021E5DD0: ; 0x021E5DD0
 	mov r1, #0xe1
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 _021E5E08:
 	add r0, r4, #0
 	add sp, #8

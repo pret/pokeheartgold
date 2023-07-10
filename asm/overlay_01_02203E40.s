@@ -95,7 +95,7 @@ ov01_02203EA0: ; 0x02203EA0
 	bl MapObject_GetPositionVec
 	ldr r1, [r6, #0x24]
 	add r0, sp, #8
-	bl sub_02023640
+	bl Camera_GetLookAtCamPos
 	add r0, sp, #8
 	add r1, sp, #0x14
 	add r2, sp, #0x3c

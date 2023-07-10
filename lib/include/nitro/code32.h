@@ -1,8 +1,4 @@
 #pragma thumb off
-// Prepare to switch the definition of FX_Mul
-#ifdef FX_Mul
-#undef FX_Mul
-#endif
 // Prepare to switch the definition of FX_MulFx64c
 #ifdef FX_Mul32x64c
 #undef FX_Mul32x64c
@@ -12,6 +8,5 @@
 #undef MATH_CountLeadingZeros
 #endif
 // Because CPU is in ARM mode, inline versions are used.
-#define FX_Mul(v1, v2)                 FX_MulInline(v1, v2)
 #define FX_Mul32x64c(v32, v64c)        FX_Mul32x64cInline(v32, v64c)
 #define MATH_CountLeadingZeros(x)      MATH_CountLeadingZerosInline(x)

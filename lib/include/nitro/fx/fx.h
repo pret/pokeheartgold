@@ -153,7 +153,6 @@ static inline fx32 FX32_CAST(s64 res) {
     return (fx32)res;
 }
 
-fx32 FX_MulFunc(fx32 v1, fx32 v2);
 static inline fx32 FX_MulInline(fx32 v1, fx32 v2) {
     return ((s64)v1 * v2 + 0x800LL) >> FX32_SHIFT;
 }
@@ -164,15 +163,9 @@ static inline fx32 FX_Mul32x64cInline(fx32 v32, fx64c v64c) {
     return FX32_CAST(tmp >> FX64C_SHIFT);
 }
 
-// ARM uses the inline version, THUMB uses the function version
-#ifndef FX_Mul
-#ifdef SDK_CODE_ARM
 #define FX_Mul(v1, v2) FX_MulInline(v1, v2)
-#else
-#define FX_Mul(v1, v2) FX_MulFunc(v1, v2)
-#endif //SDK_CODE_ARM
-#endif //FX_Mul
 
+// ARM uses the inline version, THUMB uses the function version
 #ifndef FX_Mul32x64c
 #ifdef SDK_CODE_ARM
 #define FX_Mul32x64c(v32, v64c) FX_Mul32x64cInline(v32, v64c)

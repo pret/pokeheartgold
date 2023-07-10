@@ -147,9 +147,9 @@
 .public LCRandom
 .public GF_CreateNewVramTransferTask
 .public sub_02022808
-.public Camera_SetAngle
+.public Camera_SetAnglePos
 .public Camera_GetAngle
-.public sub_0202365C
+.public Camera_SetLookAtCamTarget
 .public sub_02024B1C
 .public sub_02024B34
 .public sub_02024B68

@@ -9134,7 +9134,7 @@ _0225CB8C:
 	sub r1, r1, #1
 	bne _0225CB8C
 	add r0, r5, #0
-	bl Camera_Create
+	bl Camera_New
 	str r0, [r4]
 	mov r0, #0
 	str r0, [sp]
@@ -9147,15 +9147,15 @@ _0225CB8C:
 	ldr r2, _0225CBD4 ; =ov49_02269A6C
 	ldr r3, _0225CBD8 ; =0x000005C1
 	add r0, #8
-	bl Camera_InitFromTargetDistanceAndAngle
+	bl Camera_Init_FromTargetDistanceAndAngle
 	ldr r0, [r4]
-	bl Camera_RegisterToStaticPtr
+	bl Camera_SetStaticPtr
 	mov r0, #0x96
 	mov r1, #0xe1
 	ldr r2, [r4]
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 	add r0, r4, #0
 	add sp, #0xc
 	pop {r4, r5, pc}
@@ -9169,9 +9169,9 @@ _0225CBD8: .word 0x000005C1
 ov49_0225CBDC: ; 0x0225CBDC
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02023148
+	bl Camera_UnsetStaticPtr
 	ldr r0, [r4]
-	bl sub_02023120
+	bl Camera_Delete
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -9198,7 +9198,7 @@ ov49_0225CBF4: ; 0x0225CBF4
 	sub r0, r1, r0
 	str r0, [r4, #0x10]
 _0225CC18:
-	bl sub_02023154
+	bl Camera_PushLookAtToNNSGlb
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov49_0225CBF4

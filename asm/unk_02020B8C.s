@@ -116,8 +116,8 @@ GetDistanceFromPointToLine: ; 0x02020B9C
 	.balign 4, 0
 	thumb_func_end GetDistanceFromPointToLine
 
-	thumb_func_start sub_02020C64
-sub_02020C64: ; 0x02020C64
+	thumb_func_start CalcAngleBetweenVecs
+CalcAngleBetweenVecs: ; 0x02020C64
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x30
 	add r4, r1, #0
@@ -213,7 +213,7 @@ _02020D1E:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02020D28: .word 0x00000000
-	thumb_func_end sub_02020C64
+	thumb_func_end CalcAngleBetweenVecs
 
 	thumb_func_start sub_02020D2C
 sub_02020D2C: ; 0x02020D2C

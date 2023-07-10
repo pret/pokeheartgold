@@ -13,7 +13,7 @@
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public GF_ExpHeap_FndInitAllocator
-.public Camera_ShiftBy
+.public Camera_OffsetLookAtPosAndTarget
 .public Camera_GetPerspectiveAngle
 .public Camera_GetDistance
 .public Camera_GetAngle

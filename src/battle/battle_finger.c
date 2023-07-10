@@ -121,7 +121,7 @@ static void BattleFinger_Update(SysTask *task, void *data) {
         }
         
         if (!finger->touchAnimationFlag) {
-            yOffset = FX_MulInline(GF_SinDegNoWrap(finger->angle / 100), 14 << FX32_SHIFT) / FX32_ONE;
+            yOffset = FX_Mul(GF_SinDegNoWrap(finger->angle / 100), 14 << FX32_SHIFT) / FX32_ONE;
             sub_0200DDF4(finger->unk0, finger->x, finger->y - yOffset, finger->unk14);
         }
     }

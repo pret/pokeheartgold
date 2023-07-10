@@ -77,7 +77,7 @@ _022399BA:
 	mov r1, #0xe1
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xe
-	bl Camera_SetClipBounds
+	bl Camera_SetPerspectiveClippingPlane
 	ldr r1, [sp, #8]
 	add r0, r4, #0
 	bl sub_02015528
