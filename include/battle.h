@@ -7,6 +7,7 @@
 #include "trainer_data.h"
 #include "filesystem.h"
 #include "constants/battle.h"
+#include "constants/moves.h"
 
 typedef struct BATTLEMSG {
     u8 unk0;
@@ -120,7 +121,7 @@ typedef struct UnkBtlCtxSub_76 {
     u8 unk9F[2];
     u16 unkA0[2];
     u8 unkA4[4];
-    MOVE moveData[468];
+    MOVE moveData[NUM_MOVES + 1];
     ItemData *itemData;
     u16 unk280[4];
     u16 unk288[4];
@@ -383,13 +384,13 @@ typedef struct BATTLECONTEXT {
     int unk_30F4[4];
     int unk_3104;
     u8 unk_3108;
-    u8 unk_3109;
+    u8 levelUpMons;
     u16 unk_310A;
     u16 unk_310C[4];
     int flingData;
     int flingScript;
     u8 unk_311C;
-    u8 unk_311D;
+    u8 safariRunAttempts;
     u8 runAttempts;
     u8 battleEndFlag;
     u8 magnitude;

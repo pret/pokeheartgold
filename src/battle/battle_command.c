@@ -3642,8 +3642,8 @@ BOOL BtlCmd_HiddenPowerDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                      ((ctx->battleMons[ctx->battlerIdAttacker].spAtkIV & 1) << 4) |
                      ((ctx->battleMons[ctx->battlerIdAttacker].spDefIV & 1) << 5);
 
-    ctx->movePower = ctx->movePower * 40/63 + 30;
-    ctx->moveType = ctx->moveType * 15/63 + 1;
+    ctx->movePower = ctx->movePower * 40 / 63 + 30;
+    ctx->moveType = ctx->moveType * 15 / 63 + 1;
 
     if (ctx->moveType >= TYPE_MYSTERY) {
         ctx->moveType++;

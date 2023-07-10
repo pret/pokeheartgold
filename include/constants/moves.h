@@ -472,6 +472,8 @@
 #define MOVE_OMINOUS_WIND   466
 #define MOVE_SHADOW_FORCE   467
 
+#define NUM_MOVES   MOVE_SHADOW_FORCE
+
 #define CATEGORY_PHYSICAL 0
 #define CATEGORY_SPECIAL  1
 #define CATEGORY_STATUS   2
@@ -488,8 +490,6 @@
 #define RANGE_8                         (1 << 8)
 #define RANGE_SINGLE_TARGET_USER_SIDE   (1 << 9)
 #define RANGE_10                        (1 << 10)
-
-#define NUM_MOVES   MOVE_SHADOW_FORCE
 
 // Tutor move flags
 #define TUTOR_DIVE                  0

@@ -117,6 +117,9 @@ void ov12_02257EC0(BattleSystem *bsys, BATTLECONTEXT *ctx);
 BOOL CheckStatusEffectsSubstitute(BATTLECONTEXT *bsys, int battlerId, int status);
 BOOL CheckItemEffectOnUTurn(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script);
 void CheckIgnorePressure(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget);
+BOOL ov12_022581BC(BattleSystem *bsys, BATTLECONTEXT *ctx);
+int ov12_022581D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int var, int battlerId);
+void ov12_022582B8(BattleSystem *bsys, BATTLECONTEXT *ctx, int var, int battlerId, int data);
 
 //The following functions are static, but the rest of the file is still being worked on
 BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int index);
@@ -127,20 +130,10 @@ BOOL CheckLegalMeFirstMove(BATTLECONTEXT *ctx, u16 move);
 int ov12_02253DA0(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 u32 BattleSystem_GetBattleType(BattleSystem *bsys);
 u32 BattleSystem_GetBattleFlags(BattleSystem *bsys);
-u32 ov12_022581D4(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 a2, int battlerId);
 u32 ov12_0223C24C(PARTY *party, u32 *a1);
 int ov12_0223AB0C(BattleSystem *bsys, int battlerId);
 int ov12_02251D28(BattleSystem *bsys, BATTLECONTEXT *ctx, int moveNo, int moveType, int battlerIdAttacker, int battlerIdTarget, int dmg, u32 *statusFlag);
 void ov12_02252D14(BattleSystem *bsys, BATTLECONTEXT *ctx);
-int ov12_022584AC(BATTLECONTEXT *ctx, int battlerId, int id);
-int ov12_02258348(BATTLECONTEXT *ctx, int a1, int a2);
-int BattleSystem_GetMoveType(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
-void ov12_022585A8(BATTLECONTEXT *ctx, u8 battlerId);
-void ov12_02258584(BATTLECONTEXT *ctx, u8 battlerId);
 void ov12_0225859C(BATTLECONTEXT *ctx, u8 battlerId);
-int ov12_02258440(BATTLECONTEXT *ctx, int moveNo);
-u32 ov12_022583B4(BATTLECONTEXT *ctx, int battlerIdA, u8 effectiveness, int damage, u32 movePower, u32 *moveStatusFlag);
-int ov12_022585B8(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int battlerId2);
-BOOL ov12_0225865C(BATTLECONTEXT *ctx, int moveNo);
 
 #endif

@@ -19,6 +19,16 @@
 
 static BOOL CheckFlyingImmunity(BATTLECONTEXT *ctx, int item, int index);
 static void ApplyEffectivenessFlags(int effectiveness, u32 *moveStatusFlag);
+static int ov12_02258348(BATTLECONTEXT *ctx, int statChangeType, u32 flag);
+static int ov12_022583B4(BATTLECONTEXT *ctx, int battlerId, int typeEffectiveness, int damage, int moveDamage, u32 *flag);
+static int ov12_02258440(BATTLECONTEXT *ctx, int moveNo);
+static u8 ov12_022584AC(BATTLECONTEXT *ctx, int battlerId, int var);
+static void ov12_02258584(BATTLECONTEXT *ctx, u8 battlerId);
+static void ov12_0225859C(BATTLECONTEXT *ctx, u8 battlerId);
+static void ov12_022585A8(BATTLECONTEXT *ctx, u8 battlerId);
+static int ov12_022585B8(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdTarget1, int battlerIdTarget2);
+static BOOL ov12_0225865C(BATTLECONTEXT *ctx, int moveNo);
+static int BattleSystem_GetMoveType(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
 
 void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 selectedMon) {
     Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, selectedMon);
@@ -1774,7 +1784,7 @@ void ov12_02251038(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     }
     
     ctx->unk_311C = 6;
-    ctx->unk_311D = 6;   
+    ctx->safariRunAttempts = 6;   
 }
 
 void InitSwitchWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
@@ -6537,3 +6547,376 @@ void CheckIgnorePressure(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerI
         ctx->battleMons[battlerIdAttacker].movePPCur[ctx->movePos[battlerIdAttacker]]--;
     }
 }
+
+BOOL ov12_022581BC(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    if (ov12_0223BFEC(bsys)) {
+        ctx->command = CONTROLLER_COMMAND_43;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+int ov12_022581D4(BattleSystem *bsys, BATTLECONTEXT *ctx, int var, int battlerId) {
+    switch (var) {
+    case 0:
+        return ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(bsys, battlerId)];
+    case 1:
+        return ctx->fieldSideConditionData[BattleSystem_GetFieldSide(bsys, battlerId)].mistTurns;
+    case 2:
+        return ctx->selectedMonIndex[battlerId];
+    case 3:
+        return ctx->totalTurns;
+    case 4:
+        return ctx->levelUpMons;
+    case 5:
+        return ctx->safariRunAttempts;
+    case 6:
+        return ctx->totalTimesFainted[battlerId];
+    case 7:
+        return ctx->totalDamage[battlerId];
+    case 8:
+        return ctx->unk_21A8[battlerId][0];
+    case 9:
+        return ctx->unk_334.unk9C;
+    case 10:
+        return ctx->unk_3108;
+    case 11:
+        return ctx->unk_334.unkA4[battlerId];
+    case 12:
+        return ctx->unk_21A8[battlerId][2];
+    case 13:
+        return (int) ctx->command;
+    case 14:
+        return (int) ctx->commandNext;
+    }
+    
+    GF_ASSERT(FALSE);
+    return 0;
+}
+
+void ov12_022582B8(BattleSystem *bsys, BATTLECONTEXT *ctx, int var, int battlerId, int data) {
+    switch (var) {
+    case 0:
+        ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(bsys, battlerId)] = data;
+        break;
+    case 1:
+        ctx->fieldSideConditionData[BattleSystem_GetFieldSide(bsys, battlerId)].mistTurns = data;
+        break;
+    case 2:
+        ctx->selectedMonIndex[battlerId] = data;
+        break;
+    case 3:
+        ctx->totalTurns = data;
+        break;
+    case 9:
+        ctx->unk_334.unk9C = data;
+        break;
+    case 11:
+        ctx->unk_334.unkA4[battlerId] = data;
+        break;
+    default:
+        GF_ASSERT(FALSE);
+    }
+}
+
+extern const int ov12_0226CDCC[145];
+
+static int ov12_02258348(BATTLECONTEXT *ctx, int statChangeType, u32 flag) {
+    ctx->statChangeType = statChangeType;
+    ctx->statChangeParam = flag & (0x7FFFFF);
+    ctx->statChangeFlag = flag & (0xFF800000);
+    
+    if (flag & (1 << 30)) {
+        ctx->battlerIdStatChange = ctx->battlerIdAttacker;
+    } else if (flag & (1 << 31)) {
+        ctx->battlerIdStatChange = ctx->battlerIdTarget;
+    } else if ((flag & (1 << 29)) || (flag & (1 << 28))) {
+        ctx->battlerIdStatChange = BATTLER_PLAYER;
+    }
+    
+    GF_ASSERT(NELEMS(ov12_0226CDCC) > (flag & (0x7FFFFF)));
+    
+    return ov12_0226CDCC[flag & (0x7FFFFF)];
+}
+
+static int ov12_022583B4(BATTLECONTEXT *ctx, int battlerId, int typeEffectiveness, int damage, int moveDamage, u32 *flag) {
+    if (!(ctx->linkStatus & (1 << 11)) && !(ctx->linkStatus & (1 << 15)) && damage) {
+        damage = DamageDivide(damage * typeEffectiveness, 10);
+    }
+    
+    switch (typeEffectiveness) {
+    case TYPE_MUL_NO_EFFECT:
+        *flag |= MOVE_STATUS_NO_EFFECT;
+        *flag &= ~MOVE_STATUS_NOT_VERY_EFFECTIVE;
+        *flag &= ~MOVE_STATUS_SUPER_EFFECTIVE;
+        break;
+    case TYPE_MUL_NOT_EFFECTIVE:
+        if (moveDamage) {
+            if (*flag & MOVE_STATUS_SUPER_EFFECTIVE) {
+                *flag &= ~MOVE_STATUS_SUPER_EFFECTIVE;
+            } else {
+                *flag |= MOVE_STATUS_NOT_VERY_EFFECTIVE;
+            }
+        }
+        break;
+    case TYPE_MUL_SUPER_EFFECTIVE:
+        if (moveDamage) {
+            if (*flag & MOVE_STATUS_NOT_VERY_EFFECTIVE) {
+                *flag &= ~MOVE_STATUS_NOT_VERY_EFFECTIVE;
+            } else {
+                *flag |= MOVE_STATUS_SUPER_EFFECTIVE;
+            }
+        }
+        break;
+    }
+    
+    return damage;
+}
+
+static int ov12_02258440(BATTLECONTEXT *ctx, int moveNo) {
+    switch (ctx->unk_334.moveData[moveNo].effect) {
+    case 26:
+    case 39:
+    case 75:
+    case 145:
+    case 151:
+    case 155:
+    case 255:
+    case 256:
+    case 263:
+    case 273:
+        return (ctx->linkStatus & (1 << 9));
+    }
+    
+    return TRUE;
+}
+
+static u8 ov12_022584AC(BATTLECONTEXT *ctx, int battlerId, int var) {
+    u8 type;
+    
+    if (var == BMON_DATA_TYPE_1) {
+        type = ctx->battleMons[battlerId].type1;
+    } else if (var == BMON_DATA_TYPE_2) {
+        type = ctx->battleMons[battlerId].type2;
+    } else {
+        GF_ASSERT(FALSE);
+    }
+    
+    if (ctx->battleMons[battlerId].species == SPECIES_ARCEUS && ctx->battleMons[battlerId].ability == ABILITY_MULTITYPE) {
+        switch (GetItemVar(ctx, ctx->battleMons[battlerId].item, ITEM_VAR_HOLD_EFFECT)) {
+        case HOLD_EFFECT_ARCEUS_FIRE:
+            type = TYPE_FIRE;
+            break;
+        case HOLD_EFFECT_ARCEUS_WATER:
+            type = TYPE_WATER;
+            break;
+        case HOLD_EFFECT_ARCEUS_ELECTRIC:
+            type = TYPE_ELECTRIC;
+            break;
+        case HOLD_EFFECT_ARCEUS_GRASS:
+            type = TYPE_GRASS;
+            break;
+        case HOLD_EFFECT_ARCEUS_ICE:
+            type = TYPE_ICE;
+            break;
+        case HOLD_EFFECT_ARCEUS_FIGHT:
+            type = TYPE_FIGHTING;
+            break;
+        case HOLD_EFFECT_ARCEUS_POISON:
+            type = TYPE_POISON;
+            break;
+        case HOLD_EFFECT_ARCEUS_GROUND:
+            type = TYPE_GROUND;
+            break;
+        case HOLD_EFFECT_ARCEUS_FLYING:
+            type = TYPE_FLYING;
+            break;
+        case HOLD_EFFECT_ARCEUS_PSYCHIC:
+            type = TYPE_PSYCHIC;
+            break;
+        case HOLD_EFFECT_ARCEUS_BUG:
+            type = TYPE_BUG;
+            break;
+        case HOLD_EFFECT_ARCEUS_ROCK:
+            type = TYPE_ROCK;
+            break;
+        case HOLD_EFFECT_ARCEUS_GHOST:
+            type = TYPE_GHOST;
+            break;
+        case HOLD_EFFECT_ARCEUS_DRAGON:
+            type = TYPE_DRAGON;
+            break;
+        case HOLD_EFFECT_ARCEUS_DARK:
+            type = TYPE_DARK;
+            break;
+        case HOLD_EFFECT_ARCEUS_STEEL:
+            type = TYPE_STEEL;
+            break;
+        default:
+            type = TYPE_NORMAL;
+            break;
+        }
+    }
+    
+    return type;
+}
+
+static void ov12_02258584(BATTLECONTEXT *ctx, u8 battlerId) {
+    for (int i = 0; i < LEARNED_MOVES_MAX; i++) {
+        ctx->unk_334.unk1C[battlerId][i] = 0;
+    }
+}
+
+static void ov12_0225859C(BATTLECONTEXT *ctx, u8 battlerId) {
+    ctx->unk_334.unk5C[battlerId] = 0;
+}
+
+static void ov12_022585A8(BATTLECONTEXT *ctx, u8 battlerId) {
+    ctx->unk_334.unk60[battlerId] = 0;
+}
+
+static int ov12_022585B8(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdTarget1, int battlerIdTarget2) {
+    int ret = BATTLER_NONE;
+    
+    if (ctx->battleMons[battlerIdTarget1].ability != ABILITY_FORECAST &&
+        ctx->battleMons[battlerIdTarget1].ability != ABILITY_TRACE &&
+        ctx->battleMons[battlerIdTarget1].ability != ABILITY_MULTITYPE &&
+        ctx->battleMons[battlerIdTarget1].hp && ctx->battleMons[battlerIdTarget2].hp &&
+        ctx->battleMons[battlerIdTarget2].ability != ABILITY_FORECAST &&
+        ctx->battleMons[battlerIdTarget2].ability != ABILITY_TRACE &&
+        ctx->battleMons[battlerIdTarget2].ability != ABILITY_MULTITYPE) {
+        if (BattleSystem_Random(bsys) & 1) {
+            ret = battlerIdTarget2;
+        } else {
+            ret = battlerIdTarget1;
+        }
+    } else if (ctx->battleMons[battlerIdTarget1].ability != ABILITY_FORECAST &&
+               ctx->battleMons[battlerIdTarget1].ability != ABILITY_TRACE &&
+               ctx->battleMons[battlerIdTarget1].hp &&
+               ctx->battleMons[battlerIdTarget1].ability != ABILITY_MULTITYPE) {
+        ret = battlerIdTarget1;
+    } else if (ctx->battleMons[battlerIdTarget2].ability != ABILITY_FORECAST &&
+              ctx->battleMons[battlerIdTarget2].ability != ABILITY_TRACE &&
+              ctx->battleMons[battlerIdTarget2].hp &&
+              ctx->battleMons[battlerIdTarget2].ability != ABILITY_MULTITYPE) {
+       ret = battlerIdTarget2;
+   }
+   
+   return ret;
+}
+
+extern u16 ov12_0226CB64[6];
+
+static BOOL ov12_0225865C(BATTLECONTEXT *ctx, int moveNo) {
+    for (int i = 0; i < NELEMS(ov12_0226CB64); i++) {
+        if (ov12_0226CB64[i] == ctx->unk_334.moveData[moveNo].effect) {
+            return TRUE;
+        }
+    }
+    
+    return FALSE;
+}
+
+static int BattleSystem_GetMoveType(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo) {
+    int type;
+    
+    switch (moveNo) {
+    case MOVE_NATURAL_GIFT:
+        type = GetNaturalGiftType(ctx, battlerId);
+        break;
+    case MOVE_JUDGMENT:
+        switch (GetBattlerHeldItemEffect(ctx, battlerId)) {
+        case HOLD_EFFECT_ARCEUS_FIGHT:
+            type = TYPE_FIGHTING;
+            break;
+        case HOLD_EFFECT_ARCEUS_FLYING:
+            type = TYPE_FLYING;
+            break;
+        case HOLD_EFFECT_ARCEUS_POISON:
+            type = TYPE_POISON;
+            break;
+        case HOLD_EFFECT_ARCEUS_GROUND:
+            type = TYPE_GROUND;
+            break;
+        case HOLD_EFFECT_ARCEUS_ROCK:
+            type = TYPE_ROCK;
+            break;
+        case HOLD_EFFECT_ARCEUS_BUG:
+            type = TYPE_BUG;
+            break;
+        case HOLD_EFFECT_ARCEUS_GHOST:
+            type = TYPE_GHOST;
+            break;
+        case HOLD_EFFECT_ARCEUS_STEEL:
+            type = TYPE_STEEL;
+            break;
+        case HOLD_EFFECT_ARCEUS_FIRE:
+            type = TYPE_FIRE;
+            break;
+        case HOLD_EFFECT_ARCEUS_WATER:
+            type = TYPE_WATER;
+            break;
+        case HOLD_EFFECT_ARCEUS_GRASS:
+            type = TYPE_GRASS;
+            break;
+        case HOLD_EFFECT_ARCEUS_ELECTRIC:
+            type = TYPE_ELECTRIC;
+            break;
+        case HOLD_EFFECT_ARCEUS_PSYCHIC:
+            type = TYPE_PSYCHIC;
+            break;
+        case HOLD_EFFECT_ARCEUS_ICE:
+            type = TYPE_ICE;
+            break;
+        case HOLD_EFFECT_ARCEUS_DRAGON:
+            type = TYPE_DRAGON;
+            break;
+        case HOLD_EFFECT_ARCEUS_DARK:
+            type = TYPE_DARK;
+            break;
+        default:
+            type = TYPE_NORMAL;
+            break;
+        }
+        break;
+    case MOVE_HIDDEN_POWER:
+        type = (ctx->battleMons[battlerId].hpIV & 1) |
+               ((ctx->battleMons[battlerId].atkIV & 1) << 1)|
+               ((ctx->battleMons[battlerId].defIV & 1) << 2) |
+               ((ctx->battleMons[battlerId].speedIV & 1) << 3) |
+               ((ctx->battleMons[battlerId].spAtkIV & 1) << 4) |
+               ((ctx->battleMons[battlerId].spDefIV & 1) << 5);
+               
+       type = (type * 15 / 63) + 1;
+       
+       if (type >= TYPE_MYSTERY) {
+           type++;
+       }
+       break;
+    case MOVE_WEATHER_BALL:
+        if (!CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) && !CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)) {
+            if (ctx->fieldCondition & FIELD_CONDITION_WEATHER) {
+                if (ctx->fieldCondition & FIELD_CONDITION_RAIN_ALL) {
+                    type = TYPE_WATER;
+                }
+                if (ctx->fieldCondition & FIELD_CONDITION_SANDSTORM_ALL) {
+                    type = TYPE_ROCK;
+                }
+                if (ctx->fieldCondition & FIELD_CONDITION_SUN_ALL) {
+                    type = TYPE_FIRE;
+                }
+                if (ctx->fieldCondition & FIELD_CONDITION_HAIL_ALL) {
+                    type = TYPE_ICE;
+                }
+                //BUG: If the weather is foggy, then type doesn't get set properly before being returned
+            }
+        }
+        break;
+    default:
+        type = TYPE_NORMAL;
+        break;
+    }
+    
+    return type;
+}
+
