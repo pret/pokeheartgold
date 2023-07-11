@@ -114,8 +114,6 @@ MWASFLAGS          = $(DEFINES) -proc $(PROC_S) -gccinc -i . -i ./include -i $(W
 MWLDFLAGS         := -proc $(PROC) -nopic -nopid -interworking -map closure,unused -symtab sort -m _start -msgstyle gcc
 ARFLAGS           := rcS
 
-$(C_OBJS):   MWCFLAGS  +=          -include global.h
-
 MW_COMPILE = $(WINE) $(MWCC) $(MWCFLAGS)
 MW_ASSEMBLE = $(WINE) $(MWAS) $(MWASFLAGS)
 

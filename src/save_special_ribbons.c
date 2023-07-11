@@ -1,3 +1,4 @@
+#include "global.h"
 #include "save_special_ribbons.h"
 #include "save.h"
 #include "constants/save_arrays.h"

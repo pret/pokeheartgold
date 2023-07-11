@@ -1,3 +1,4 @@
+#include "global.h"
 #include "overlay_12_0226BEC4.h"
 #include "battle_system.h"
 #include "overlay_12_02266024.h"

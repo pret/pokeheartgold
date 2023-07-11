@@ -1,6 +1,7 @@
 #include <nitro/mi/memory.h>
 #include <nitro/os/ownerInfo.h>
 #include <nitro/rtc/ARM9/convert.h>
+#include "global.h"
 #include "gf_rtc.h"
 #include "sav_system_info.h"
 

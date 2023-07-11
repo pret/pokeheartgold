@@ -1,3 +1,4 @@
+#include "global.h"
 #include "overlay_06.h"
 #include "palette.h"
 #include "unk_02026E30.h"

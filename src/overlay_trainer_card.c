@@ -1,3 +1,4 @@
+#include "global.h"
 #include "overlay_manager.h"
 #include "overlay_trainer_card.h"
 #include "overlay_trainer_card_main.h"

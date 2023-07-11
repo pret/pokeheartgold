@@ -1,3 +1,4 @@
+#include "global.h"
 #include "npc_trade.h"
 #include "pokemon.h"
 #include "gf_gfx_loader.h"

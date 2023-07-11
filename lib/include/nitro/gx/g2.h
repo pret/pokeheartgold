@@ -1,6 +1,10 @@
 #ifndef NITRO_GX_GX_G2_H_
 #define NITRO_GX_GX_G2_H_
 
+#include <nitro/types.h>
+#include <nitro/fx/fx.h>
+#include <nitro/hw/common/io_reg.h>
+
 void G2x_SetBGyAffine_(u32 addr, const MtxFx22 *mtx, fx32 a, fx32 b, fx32 c, fx32 d);
 void G2x_SetBlendAlpha_(u32 addr, int plane1, int plane2, int ev1, int ev2);
 void G2x_SetBlendBrightness_(volatile u16 *ptr, fx32 a, fx32 brightness);

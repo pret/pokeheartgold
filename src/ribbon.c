@@ -1,3 +1,4 @@
+#include "global.h"
 #include "constants/pokemon.h"
 #include "msgdata/msg/msg_0424.h"
 #include "ribbon.h"

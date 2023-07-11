@@ -1,6 +1,7 @@
 #ifndef NITRO_FX_FX_TRIG_H_
 #define NITRO_FX_FX_TRIG_H_
 
+#include <nitro/types.h>
 #include <nitro/fx/fx_const.h>
 
 // deg must be in fx32/fx16 format

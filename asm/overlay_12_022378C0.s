@@ -1,3 +1,4 @@
+#include "config.h"
 #include "constants/pokemon.h"
 #include "constants/sndseq.h"
 	.include "asm/macros.inc"

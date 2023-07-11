@@ -1,3 +1,4 @@
+#include "global.h"
 #include "heap.h"
 #include "vram_transfer_manager.h"
 

@@ -1,5 +1,6 @@
 #include <nitro/gx/g2.h>
 #include <nitro/gx/gx_bgcnt.h>
+#include "global.h"
 #include "gx_layers.h"
 #include "main.h"
 #include "msgdata.h"

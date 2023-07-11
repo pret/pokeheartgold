@@ -1,3 +1,4 @@
+#include "global.h"
 #include "save_palpad.h"
 #include "pm_string.h"
 

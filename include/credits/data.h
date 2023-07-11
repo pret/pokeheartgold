@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_CREDITS_DATA_H
 #define POKEHEARTGOLD_CREDITS_DATA_H
 
+#include "global.h"
 #include "gx_layers.h"
 #include "bg_window.h"
 #include "credits/credits.h"

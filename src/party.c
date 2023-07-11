@@ -1,3 +1,4 @@
+#include "global.h"
 #include "pokemon.h"
 #include "heap.h"
 #include "save.h"

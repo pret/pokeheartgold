@@ -1,3 +1,4 @@
+#include "global.h"
 #include "string_util.h"
 #include "constants/charcode.h"
 

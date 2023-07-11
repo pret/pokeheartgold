@@ -1,3 +1,4 @@
+#include "global.h"
 #include "field_player_avatar.h"
 #include "assert.h"
 #include "field_map_object.h"

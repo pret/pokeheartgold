@@ -1,3 +1,4 @@
+#include "global.h"
 #include "math_util.h"
 #include "heap.h"
 

@@ -1,3 +1,4 @@
+#include "global.h"
 #include "unk_02031AF0.h"
 #include "save.h"
 

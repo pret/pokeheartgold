@@ -1,3 +1,4 @@
+#include "global.h"
 #include "move.h"
 #include "filesystem.h"
 #include "constants/moves.h"

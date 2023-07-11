@@ -1,3 +1,4 @@
+#include "global.h"
 #include "gf_gfx_loader.h"
 #include "bg_window.h"
 #include "nnsys.h"

@@ -1,3 +1,4 @@
+#include "global.h"
 #include "unk_02068F84.h"
 #include "font.h"
 

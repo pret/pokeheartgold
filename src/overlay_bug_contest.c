@@ -1,3 +1,4 @@
+#include "global.h"
 #include "bug_contest.h"
 #include "pokedex.h"
 #include "math_util.h"

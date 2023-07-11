@@ -1,3 +1,4 @@
+#include "global.h"
 #include "save_trainer_card.h"
 
 u32 Save_TrainerCard_sizeof(void) {

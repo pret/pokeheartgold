@@ -1,3 +1,4 @@
+#include "global.h"
 #include "save_trainer_house.h"
 #include "string_util.h"
 #include "constants/species.h"

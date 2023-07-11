@@ -1,3 +1,4 @@
+#include "global.h"
 #include "font_data.h"
 #include "text.h"
 #include "string_control_code.h"

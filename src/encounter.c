@@ -1,3 +1,4 @@
+#include "global.h"
 #include "battle_setup.h"
 #include "encounter.h"
 #include "field_black_out.h"

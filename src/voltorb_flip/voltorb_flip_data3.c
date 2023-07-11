@@ -1,3 +1,4 @@
+#include "global.h"
 #include "voltorb_flip/voltorb_flip_internal.h"
 #include "voltorb_flip/voltorb_flip_workflow.h"
 
