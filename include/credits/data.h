@@ -172,7 +172,7 @@ static const BgTemplate ov76_021E6F34 = {
     .mosaic     = FALSE,
 };
 
-static const GF_GXBanksConfig sCreditsGXBanksConfig = {
+static const GraphicsBanks sCreditsGXBanksConfig = {
     .bg            = GX_VRAM_BG_128_B,
     .bgextpltt     = GX_VRAM_BGEXTPLTT_NONE,
     .subbg         = GX_VRAM_SUB_BG_128_C,

@@ -4,13 +4,13 @@
 
 static GF_VramTransferManager *sVramTransferManager;
 
-void GF_CreateVramTransferManager(u32 taskMax, HeapID heap_id) {
+void GF_CreateVramTransferManager(u32 taskMax, HeapID heapId) {
     GF_ASSERT(sVramTransferManager == NULL);
 
-    sVramTransferManager = AllocFromHeap(heap_id, sizeof(GF_VramTransferManager));
+    sVramTransferManager = AllocFromHeap(heapId, sizeof(GF_VramTransferManager));
     GF_ASSERT(sVramTransferManager != NULL);
 
-    sVramTransferManager->tasks = AllocFromHeap(heap_id, taskMax * sizeof(NNSGfdVramTransferTask));
+    sVramTransferManager->tasks = AllocFromHeap(heapId, taskMax * sizeof(NNSGfdVramTransferTask));
     sVramTransferManager->nMax = taskMax;
     sVramTransferManager->nCur = 0;
     NNS_GfdInitVramTransferManager(sVramTransferManager->tasks, sVramTransferManager->nMax);

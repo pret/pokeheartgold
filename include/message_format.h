@@ -24,7 +24,7 @@ typedef struct MessageFormat {
     String *buffer;
 } MessageFormat;
 
-MessageFormat *MessageFormat_New(HeapID heap_id);
+MessageFormat *MessageFormat_New(HeapID heapId);
 MessageFormat *MessageFormat_New_Custom(u32 nstr, u32 _strlen, HeapID heapId);
 void MessageFormat_Delete(MessageFormat *messageFormat);
 void StringExpandPlaceholders(MessageFormat *messageFormat, String *dest, String *src);

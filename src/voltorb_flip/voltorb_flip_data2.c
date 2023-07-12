@@ -39,7 +39,7 @@ const Unk122_021E92E4 ov122_021E92E4 = { 2, 2, 2, 2, 0, 0 };
 
 const Unk122_021E92FC ov122_021E92FC = { 0, 0x7e, 0, 0x20, 1, 0x7e, 0, 0x20 };
 
-const GF_GXBanksConfig sVoltorbFlipGXBanksConfig = {
+const GraphicsBanks sVoltorbFlipGXBanksConfig = {
     GX_VRAM_BG_128_B,
     GX_VRAM_BGEXTPLTT_NONE,
     GX_VRAM_SUB_BG_128_C,

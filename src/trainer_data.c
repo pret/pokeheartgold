@@ -10,16 +10,16 @@
 #include "constants/moves.h"
 #include "msgdata/msg.naix"
 
-void CreateNPCTrainerParty(BATTLE_SETUP *battleSetup, int trainer_idx, HeapID heap_id);
+void CreateNPCTrainerParty(BATTLE_SETUP *battleSetup, int trainer_idx, HeapID heapId);
 
-void EnemyTrainerSet_Init(BATTLE_SETUP *battleSetup, SaveData *saveData, HeapID heap_id) {
+void EnemyTrainerSet_Init(BATTLE_SETUP *battleSetup, SaveData *saveData, HeapID heapId) {
     TRAINER trainer;
     MsgData *msgData;
     const u16 *rivalName;
     int i;
     String *string;
 
-    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0729_bin, heap_id);
+    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0729_bin, heapId);
     rivalName = Save_Misc_RivalName_Const_Get(Save_Misc_Const_Get(saveData));
     for (i = 0; i < 4; i++) {
         if (battleSetup->trainerId[i] != 0) {
@@ -32,7 +32,7 @@ void EnemyTrainerSet_Init(BATTLE_SETUP *battleSetup, SaveData *saveData, HeapID 
                 CopyStringToU16Array(string, battleSetup->trainer[i].name, PLAYER_NAME_LENGTH + 1);
                 String_Delete(string);
             }
-            CreateNPCTrainerParty(battleSetup, i, heap_id);
+            CreateNPCTrainerParty(battleSetup, i, heapId);
         }
     }
     battleSetup->flags |= trainer.doubleBattle;
@@ -72,7 +72,7 @@ int TrainerData_GetAttr(u32 tr_idx, TrainerAttr attr_no) {
     return result;
 }
 
-BOOL TrainerMessageWithIdPairExists(u32 trainer_idx, u32 msg_id, HeapID heap_id) {
+BOOL TrainerMessageWithIdPairExists(u32 trainer_idx, u32 msg_id, HeapID heapId) {
     u16 rdbuf[3];
     struct NARC * trTblNarc;
     BOOL ret = FALSE;
@@ -80,7 +80,7 @@ BOOL TrainerMessageWithIdPairExists(u32 trainer_idx, u32 msg_id, HeapID heap_id)
 
     trTblSize = GetNarcMemberSizeByIdPair(NARC_poketool_trmsg_trtbl, 0);
     ReadFromNarcMemberByIdPair(&rdbuf[0], NARC_poketool_trmsg_trtblofs, 0, trainer_idx * 2, 2);
-    trTblNarc = NARC_New(NARC_poketool_trmsg_trtbl, heap_id);
+    trTblNarc = NARC_New(NARC_poketool_trmsg_trtbl, heapId);
     while (rdbuf[0] != trTblSize) {
         NARC_ReadFromMember(trTblNarc, 0, rdbuf[0], 4, &rdbuf[1]);
         if (rdbuf[1] == trainer_idx && rdbuf[2] == msg_id) {
@@ -95,18 +95,18 @@ BOOL TrainerMessageWithIdPairExists(u32 trainer_idx, u32 msg_id, HeapID heap_id)
     return ret;
 }
 
-void GetTrainerMessageByIdPair(u32 trainer_idx, u32 msg_id, String * str, HeapID heap_id) {
+void GetTrainerMessageByIdPair(u32 trainer_idx, u32 msg_id, String * str, HeapID heapId) {
     u16 rdbuf[3];
     u32 trTblSize;
     NARC * trTblNarc;
 
     trTblSize = GetNarcMemberSizeByIdPair(NARC_poketool_trmsg_trtbl, 0);
     ReadFromNarcMemberByIdPair(&rdbuf[0], NARC_poketool_trmsg_trtblofs, 0, trainer_idx * 2, 2);
-    trTblNarc = NARC_New(NARC_poketool_trmsg_trtbl, heap_id);
+    trTblNarc = NARC_New(NARC_poketool_trmsg_trtbl, heapId);
     while (rdbuf[0] != trTblSize) {
         NARC_ReadFromMember(trTblNarc, 0, rdbuf[0], 4, &rdbuf[1]);
         if (rdbuf[1] == trainer_idx && rdbuf[2] == msg_id) {
-            ReadMsgData_NewNarc_ExistingString(NARC_msgdata_msg, NARC_msg_msg_0728_bin, (u32)(rdbuf[0] / 4), heap_id, str);
+            ReadMsgData_NewNarc_ExistingString(NARC_msgdata_msg, NARC_msg_msg_0728_bin, (u32)(rdbuf[0] / 4), heapId, str);
             break;
         }
         rdbuf[0] += 4;
@@ -263,10 +263,10 @@ TrainerGender TrainerClass_GetGenderOrTrainerCount(int trainerClass) {
 void TrMon_OverridePidGender(int species, int form, int overrideParam, u32 *pid);
 void TrMon_FrustrationCheckAndSetFriendship(Pokemon *mon);
 
-void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) {
+void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heapId) {
     // enemies -> r4
     // party_id -> sp10
-    // heap_id -> sp14
+    // heapId -> sp14
     TRPOKE * data; // sp74
     int i;
     int j;
@@ -280,8 +280,8 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
     // so back up the overworld state here.
     seed_bak = GetLCRNGSeed();
     InitPartyWithMaxSize(enemies->party[party_id], PARTY_SIZE);
-    data = (TRPOKE *)AllocFromHeap(heap_id, sizeof(TRPOKE) * PARTY_SIZE);
-    mon = AllocMonZeroed(heap_id);
+    data = (TRPOKE *)AllocFromHeap(heapId, sizeof(TRPOKE) * PARTY_SIZE);
+    mon = AllocMonZeroed(heapId);
     TrainerData_ReadTrPoke(enemies->trainerId[party_id], data);
 
     // If a Pokemon's gender ratio is 50/50, the generated Pokemon will be the same
@@ -337,7 +337,7 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
 
             // Starting in Platinum, enemy trainer could have
             // personalized ball capsules.
-            SetTrMonCapsule(monSpecies[i].capsule, mon, heap_id);
+            SetTrMonCapsule(monSpecies[i].capsule, mon, heapId);
             SetMonData(mon, MON_DATA_FORM, &form);
             // Starting in HGSS, an AI Pokemon with Frustration
             // will have minimum friendship.
@@ -366,7 +366,7 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
             for (j = 0; j < MAX_MON_MOVES; j++) {
                 MonSetMoveInSlot(mon, monSpeciesMoves[i].moves[j], (u8)j);
             }
-            SetTrMonCapsule(monSpeciesMoves[i].capsule, mon, heap_id);
+            SetTrMonCapsule(monSpeciesMoves[i].capsule, mon, heapId);
             SetMonData(mon, MON_DATA_FORM, &form);
             TrMon_FrustrationCheckAndSetFriendship(mon);
             AddMonToParty(enemies->party[party_id], mon);
@@ -391,7 +391,7 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
             iv = (u8)((monSpeciesItem[i].difficulty * 31) / 255);
             CreateMon(mon, species, monSpeciesItem[i].level, iv, TRUE, (s32)personality, OT_ID_RANDOM_NO_SHINY, 0);
             SetMonData(mon, MON_DATA_HELD_ITEM, &monSpeciesItem[i].item);
-            SetTrMonCapsule(monSpeciesItem[i].capsule, mon, heap_id);
+            SetTrMonCapsule(monSpeciesItem[i].capsule, mon, heapId);
             SetMonData(mon, MON_DATA_FORM, &form);
             TrMon_FrustrationCheckAndSetFriendship(mon);
             AddMonToParty(enemies->party[party_id], mon);
@@ -419,7 +419,7 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heap_id) 
             for (j = 0; j < MAX_MON_MOVES; j++) {
                 MonSetMoveInSlot(mon, monSpeciesItemMoves[i].moves[j], (u8)j);
             }
-            SetTrMonCapsule(monSpeciesItemMoves[i].capsule, mon, heap_id);
+            SetTrMonCapsule(monSpeciesItemMoves[i].capsule, mon, heapId);
             SetMonData(mon, MON_DATA_FORM, &form);
             TrMon_FrustrationCheckAndSetFriendship(mon);
             AddMonToParty(enemies->party[party_id], mon);

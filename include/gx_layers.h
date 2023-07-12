@@ -44,9 +44,9 @@ typedef struct GXBanksConfig {
     GXVRamSubOBJExtPltt subobjextpltt;
     GXVRamTex tex;
     GXVRamTexPltt texpltt;
-} GF_GXBanksConfig;
+} GraphicsBanks;
 
-void GX_SetBanks(const GF_GXBanksConfig *banks);
+void GX_SetBanks(const GraphicsBanks *banks);
 void GX_DisableEngineALayers(void);
 void GX_EngineAToggleLayers(u32 layer_mask, GXLayerToggle enable);
 void GX_EngineASetLayers(u32 layers);

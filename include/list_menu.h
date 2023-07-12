@@ -74,10 +74,10 @@ struct ListMenu
     /*0x31*/ u8 unk_31;
     /*0x32*/ u8 taskId;
     /*0x33*/ u8 unk_33;
-    /*0x34*/ u8 heap_id;
+    /*0x34*/ u8 heapId;
 };
 
-struct ListMenu *ListMenuInit(const struct ListMenuTemplate *template, u16 cursorPos, u16 itemsAbove, HeapID heap_id);
+struct ListMenu *ListMenuInit(const struct ListMenuTemplate *template, u16 cursorPos, u16 itemsAbove, HeapID heapId);
 s32 ListMenu_ProcessInput(struct ListMenu *list);
 void DestroyListMenu(struct ListMenu *list, u16 * cursorPos, u16 * itemsAbove);
 void RedrawListMenu(struct ListMenu *list);

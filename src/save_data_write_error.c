@@ -16,7 +16,7 @@
 #include "brightness.h"
 #include "text.h"
 
-static const GF_GXBanksConfig sDataWriteErrorBanksConfig = {
+static const GraphicsBanks sDataWriteErrorBanksConfig = {
     .bg = GX_VRAM_BG_256_AB,
     .bgextpltt = GX_VRAM_BGEXTPLTT_NONE,
     .subbg = GX_VRAM_SUB_BG_NONE,
@@ -62,7 +62,7 @@ static const WindowTemplate sDataWriteErrorWindowTemplate = {
     .baseTile = 0x23,
 };
 
-void ShowSaveDataWriteError(HeapID heap_id, int code) {
+void ShowSaveDataWriteError(HeapID heapId, int code) {
     Window window;
 
     u32 msg_no;
@@ -96,18 +96,18 @@ void ShowSaveDataWriteError(HeapID heap_id, int code) {
     GXS_SetVisibleWnd(0);
     GX_SetBanks(&sDataWriteErrorBanksConfig);
 
-    BgConfig* bg_config = BgConfig_Alloc(heap_id);
+    BgConfig* bg_config = BgConfig_Alloc(heapId);
     SetBothScreensModesAndDisable(&sDataWriteErrorBgModeSet);
     InitBgFromTemplate(bg_config, 0, &sDataWriteErrorBgTemplate, GX_BGMODE_0);
     BgClearTilemapBufferAndCommit(bg_config, GF_BG_LYR_MAIN_0);
-    LoadUserFrameGfx1(bg_config, GF_BG_LYR_MAIN_0, 0x1F7, 2, 0, heap_id);
-    LoadFontPal0(GF_BG_LYR_MAIN_0, 0x20, heap_id);
-    BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 0x20, 0, heap_id);
+    LoadUserFrameGfx1(bg_config, GF_BG_LYR_MAIN_0, 0x1F7, 2, 0, heapId);
+    LoadFontPal0(GF_BG_LYR_MAIN_0, 0x20, heapId);
+    BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 0x20, 0, heapId);
     BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB(1, 1, 27));
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB(1, 1, 27));
 
-    MsgData* error_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0009_bin, heap_id);
-    String* error_str = String_New(384, heap_id);
+    MsgData* error_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0009_bin, heapId);
+    String* error_str = String_New(384, heapId);
 
     ResetAllTextPrinters();
 
