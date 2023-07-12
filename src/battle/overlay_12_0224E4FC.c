@@ -17,6 +17,8 @@
 #include "constants/species.h"
 #include "msgdata/msg/msg_0197.h"
 
+static const u8 sStatChangeTable[][2];
+
 static BOOL CheckFlyingImmunity(BATTLECONTEXT *ctx, int item, int index);
 static void ApplyEffectivenessFlags(int effectiveness, u32 *moveStatusFlag);
 static int ov12_02258348(BATTLECONTEXT *ctx, int statChangeType, u32 flag);
@@ -965,8 +967,16 @@ void AddBattlerVar(BattleMon *mon, u32 varId, int data) {
     }
 }
 
-extern u8 sStatChangeTable[13][2];
-extern u8 sSpeedHalvingItemEffects[8];
+static const u8 sSpeedHalvingItemEffects[] = {
+    HOLD_EFFECT_EXP_UP_SPEED_DOWN, 
+    HOLD_EFFECT_SPEED_DOWN_GROUNDED, 
+    HOLD_EFFECT_LVLUP_HP_EV_UP, 
+    HOLD_EFFECT_LVLUP_ATK_EV_UP, 
+    HOLD_EFFECT_LVLUP_DEF_EV_UP, 
+    HOLD_EFFECT_LVLUP_SPEED_EV_UP, 
+    HOLD_EFFECT_LVLUP_SPATK_EV_UP, 
+    HOLD_EFFECT_LVLUP_SPDEF_EV_UP
+};
 
 u8 CheckSortSpeed(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId1, int battlerId2, int flag) {
     u8 ret = 0; //0 - don't sort, 1 - sort, 2 - sort (speed tie + won random check)
@@ -2090,7 +2100,120 @@ int BattleMon_GetMoveIndex(BattleMon *mon, u16 moveNo) {
     return movePos;
 }
 
-extern u8 sTypeEffectiveness[112][3];
+static const u8 sTypeEffectiveness[][3] = {
+    { TYPE_NORMAL, TYPE_ROCK, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_NORMAL, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_FIRE, TYPE_FIRE, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_FIRE, TYPE_WATER, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_FIRE, TYPE_GRASS, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_FIRE, TYPE_ICE, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_FIRE, TYPE_BUG, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_FIRE, TYPE_ROCK, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_FIRE, TYPE_DRAGON, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_FIRE, TYPE_STEEL, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_WATER, TYPE_FIRE, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_WATER, TYPE_WATER, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_WATER, TYPE_GRASS, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_WATER, TYPE_GROUND, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_WATER, TYPE_ROCK, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_WATER, TYPE_DRAGON, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_ELECTRIC, TYPE_WATER, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_ELECTRIC, TYPE_ELECTRIC, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_ELECTRIC, TYPE_GRASS, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_ELECTRIC, TYPE_GROUND, TYPE_MUL_NO_EFFECT },
+	{ TYPE_ELECTRIC, TYPE_FLYING, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_ELECTRIC, TYPE_DRAGON, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_GRASS, TYPE_FIRE, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_GRASS, TYPE_WATER, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_GRASS, TYPE_GRASS, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_GRASS, TYPE_POISON, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_GRASS, TYPE_GROUND, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_GRASS, TYPE_FLYING, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_GRASS, TYPE_BUG, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_GRASS, TYPE_ROCK, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_GRASS, TYPE_DRAGON, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_GRASS, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_ICE, TYPE_WATER, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_ICE, TYPE_GRASS, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_ICE, TYPE_ICE, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_ICE, TYPE_GROUND, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_ICE, TYPE_FLYING, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_ICE, TYPE_DRAGON, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_ICE, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_ICE, TYPE_FIRE, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_FIGHTING, TYPE_NORMAL, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_FIGHTING, TYPE_ICE, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_FIGHTING, TYPE_POISON, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_FIGHTING, TYPE_FLYING, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_FIGHTING, TYPE_PSYCHIC, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_FIGHTING, TYPE_BUG, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_FIGHTING, TYPE_ROCK, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_FIGHTING, TYPE_DARK, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_FIGHTING, TYPE_STEEL, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_POISON, TYPE_GRASS, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_POISON, TYPE_POISON, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_POISON, TYPE_GROUND, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_POISON, TYPE_ROCK, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_POISON, TYPE_GHOST, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_POISON, TYPE_STEEL, TYPE_MUL_NO_EFFECT },
+	{ TYPE_GROUND, TYPE_FIRE, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_GROUND, TYPE_ELECTRIC, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_GROUND, TYPE_GRASS, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_GROUND, TYPE_POISON, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_GROUND, TYPE_FLYING, TYPE_MUL_NO_EFFECT },
+	{ TYPE_GROUND, TYPE_BUG, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_GROUND, TYPE_ROCK, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_GROUND, TYPE_STEEL, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_FLYING, TYPE_ELECTRIC, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_FLYING, TYPE_GRASS, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_FLYING, TYPE_FIGHTING, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_FLYING, TYPE_BUG, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_FLYING, TYPE_ROCK, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_FLYING, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_PSYCHIC, TYPE_FIGHTING, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_PSYCHIC, TYPE_POISON, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_PSYCHIC, TYPE_PSYCHIC, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_PSYCHIC, TYPE_DARK, TYPE_MUL_NO_EFFECT },
+	{ TYPE_PSYCHIC, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_BUG, TYPE_FIRE, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_BUG, TYPE_GRASS, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_BUG, TYPE_FIGHTING, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_BUG, TYPE_POISON, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_BUG, TYPE_FLYING, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_BUG, TYPE_PSYCHIC, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_BUG, TYPE_GHOST, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_BUG, TYPE_DARK, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_BUG, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_ROCK, TYPE_FIRE, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_ROCK, TYPE_ICE, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_ROCK, TYPE_FIGHTING, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_ROCK, TYPE_GROUND, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_ROCK, TYPE_FLYING, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_ROCK, TYPE_BUG, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_ROCK, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_GHOST, TYPE_NORMAL, TYPE_MUL_NO_EFFECT },
+	{ TYPE_GHOST, TYPE_PSYCHIC, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_GHOST, TYPE_DARK, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_GHOST, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_GHOST, TYPE_GHOST, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_DRAGON, TYPE_DRAGON, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_DRAGON, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_DARK, TYPE_FIGHTING, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_DARK, TYPE_PSYCHIC, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_DARK, TYPE_GHOST, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_DARK, TYPE_DARK, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_DARK, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_STEEL, TYPE_FIRE, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_STEEL, TYPE_WATER, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_STEEL, TYPE_ELECTRIC, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_STEEL, TYPE_ICE, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_STEEL, TYPE_ROCK, TYPE_MUL_SUPER_EFFECTIVE },
+	{ TYPE_STEEL, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE },
+	{ TYPE_FORESIGHT, TYPE_FORESIGHT, TYPE_MUL_NO_EFFECT },
+	{ TYPE_NORMAL, TYPE_GHOST, TYPE_MUL_NO_EFFECT },
+	{ TYPE_FIGHTING, TYPE_GHOST, TYPE_MUL_NO_EFFECT },
+	{ TYPE_ENDTABLE, TYPE_ENDTABLE, TYPE_MUL_NO_EFFECT }
+};
 
 //static
 BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int index) {
@@ -3273,7 +3396,14 @@ void SortMonsBySpeed(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     }
 }
 
-extern u16 sGravityUnusableMoves[6];
+static const u16 sGravityUnusableMoves[6] = {
+    MOVE_FLY, 
+    MOVE_BOUNCE,
+	MOVE_JUMP_KICK, 
+    MOVE_HIGH_JUMP_KICK, 
+    MOVE_SPLASH, 
+    MOVE_MAGNET_RISE
+};
 
 BOOL BattleContext_CheckMoveUnuseableInGravity(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo) {
     int i;
@@ -3291,7 +3421,22 @@ BOOL BattleContext_CheckMoveUnuseableInGravity(BattleSystem *bsys, BATTLECONTEXT
     return ret;
 }
 
-extern u16 sHealBlockUnusableMoves[14];
+static const u16 sHealBlockUnusableMoves[] = {
+    MOVE_RECOVER, 
+    MOVE_SOFT_BOILED, 
+    MOVE_REST, 
+    MOVE_MILK_DRINK, 
+    MOVE_MORNING_SUN, 
+    MOVE_SYNTHESIS, 
+    MOVE_MOONLIGHT,
+	MOVE_SWALLOW, 
+    MOVE_HEAL_ORDER, 
+    MOVE_SLACK_OFF, 
+    MOVE_ROOST, 
+    MOVE_LUNAR_DANCE, 
+    MOVE_HEALING_WISH, 
+    MOVE_WISH
+};
 
 BOOL BattleContext_CheckMoveHealBlocked(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo) {
     int i;
@@ -3338,7 +3483,21 @@ int GetBattlerLearnedMoveCount(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
     return cnt;
 }
 
-extern u16 sSoundMoves[12];
+//BUG: There isn't a reason why this shouldn't be const, but it's located in .data and not .rodata
+static u16 sSoundMoves[] = {
+	MOVE_GROWL, 
+    MOVE_ROAR, 
+    MOVE_SING, 
+    MOVE_SUPERSONIC, 
+    MOVE_SCREECH, 
+    MOVE_SNORE, 
+    MOVE_UPROAR, 
+    MOVE_METAL_SOUND,
+	MOVE_GRASS_WHISTLE, 
+    MOVE_HYPER_VOICE, 
+    MOVE_BUG_BUZZ, 
+    MOVE_CHATTER
+};
 
 int ov12_02252EC8(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget) {
     int state;
@@ -5892,8 +6051,75 @@ typedef struct MoveDamageCalc {
     u8 type2;
 } MoveDamageCalc;
 
-extern u8 sTypeEnhancingItems[33][2];
-extern u16 sPunchingMoves[15];
+static const u8 sTypeEnhancingItems[][2] = {
+    { HOLD_EFFECT_STRENGTHEN_BUG, TYPE_BUG },
+    { HOLD_EFFECT_STRENGTHEN_STEEL, TYPE_STEEL },
+    { HOLD_EFFECT_STRENGTHEN_GROUND, TYPE_GROUND },
+	{ HOLD_EFFECT_STRENGTHEN_ROCK, TYPE_ROCK },
+    { HOLD_EFFECT_STRENGTHEN_GRASS, TYPE_GRASS },
+    { HOLD_EFFECT_STRENGTHEN_DARK, TYPE_DARK },
+    { HOLD_EFFECT_STRENGTHEN_FIGHT, TYPE_FIGHTING },
+    { HOLD_EFFECT_STRENGTHEN_ELECTRIC, TYPE_ELECTRIC },
+    { HOLD_EFFECT_STRENGTHEN_WATER, TYPE_WATER },
+    { HOLD_EFFECT_STRENGTHEN_FLYING, TYPE_FLYING },
+    { HOLD_EFFECT_STRENGTHEN_POISON, TYPE_POISON },
+	{ HOLD_EFFECT_STRENGTHEN_ICE, TYPE_ICE },
+    { HOLD_EFFECT_STRENGTHEN_GHOST, TYPE_GHOST },
+    { HOLD_EFFECT_STRENGTHEN_PSYCHIC, TYPE_PSYCHIC },
+    { HOLD_EFFECT_STRENGTHEN_FIRE, TYPE_FIRE },
+    { HOLD_EFFECT_STRENGTHEN_DRAGON, TYPE_DRAGON },
+    { HOLD_EFFECT_STRENGTHEN_NORMAL, TYPE_NORMAL },
+    { HOLD_EFFECT_ARCEUS_FIRE, TYPE_FIRE },
+    { HOLD_EFFECT_ARCEUS_WATER, TYPE_WATER },
+	{ HOLD_EFFECT_ARCEUS_ELECTRIC, TYPE_ELECTRIC },
+    { HOLD_EFFECT_ARCEUS_GRASS, TYPE_GRASS },
+    { HOLD_EFFECT_ARCEUS_ICE, TYPE_ICE },
+    { HOLD_EFFECT_ARCEUS_FIGHT, TYPE_FIGHTING },
+    { HOLD_EFFECT_ARCEUS_POISON, TYPE_POISON },
+    { HOLD_EFFECT_ARCEUS_GROUND, TYPE_GROUND },
+    { HOLD_EFFECT_ARCEUS_FLYING, TYPE_FLYING },
+    { HOLD_EFFECT_ARCEUS_PSYCHIC, TYPE_PSYCHIC },
+	{ HOLD_EFFECT_ARCEUS_BUG, TYPE_BUG },
+    { HOLD_EFFECT_ARCEUS_ROCK, TYPE_ROCK },
+    { HOLD_EFFECT_ARCEUS_GHOST, TYPE_GHOST },
+    { HOLD_EFFECT_ARCEUS_DRAGON, TYPE_DRAGON },
+    { HOLD_EFFECT_ARCEUS_DARK, TYPE_DARK },
+    { HOLD_EFFECT_ARCEUS_STEEL, TYPE_STEEL }
+};
+
+static const u8 sStatChangeTable[][2] = {
+    {10, 40},
+    {10, 35},
+    {10, 30},
+    {10, 25},
+    {10, 20},
+    {10, 15},
+    {10, 10},
+    {15, 10},
+    {20, 10},
+    {25, 10},
+    {30, 10},
+    {35, 10},
+    {40, 10}
+};
+
+static const u16 sPunchingMoves[] = {
+    MOVE_ICE_PUNCH,
+	MOVE_FIRE_PUNCH, 
+    MOVE_THUNDER_PUNCH, 
+    MOVE_MACH_PUNCH, 
+    MOVE_FOCUS_PUNCH, 
+    MOVE_DIZZY_PUNCH, 
+    MOVE_DYNAMIC_PUNCH, 
+    MOVE_HAMMER_ARM, 
+    MOVE_MEGA_PUNCH,
+	MOVE_COMET_PUNCH, 
+    MOVE_METEOR_MASH, 
+    MOVE_SHADOW_PUNCH, 
+    MOVE_DRAIN_PUNCH, 
+    MOVE_BULLET_PUNCH, 
+    MOVE_SKY_UPPERCUT
+};
 
 int CalcMoveDamage(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 moveNo, u32 sideCondition, u32 fieldCondition, u16 power, u8 type, u8 battlerIdAttacker, u8 battlerIdTarget, u8 crit) {
     int i;
@@ -6318,7 +6544,9 @@ int ApplyDamageRange(BattleSystem *bsys, BATTLECONTEXT *ctx, int damage) {
     return damage;
 }
 
-extern u8 sCritChance[5];
+static const u8 sCritChance[] = {
+    16, 8, 4, 3, 2
+};
 
 u32 TryCriticalHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int critCnt, u32 sideCondition) {
     u16 critUp;
@@ -6360,7 +6588,35 @@ u32 TryCriticalHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker
     return ret;
 }
 
-extern u16 sMetronomeUnuseableMoves[];
+static const u16 sMetronomeUnuseableMoves[] = {
+    MOVE_METRONOME, 
+    MOVE_STRUGGLE, 
+    MOVE_SKETCH, 
+    MOVE_MIMIC, 
+    MOVE_CHATTER, 
+    0xFFFE,
+	MOVE_SLEEP_TALK, 
+    MOVE_ASSIST, 
+    MOVE_MIRROR_MOVE, 
+    MOVE_COUNTER, 
+    MOVE_MIRROR_COAT, 
+    MOVE_PROTECT, 
+    MOVE_DETECT, 
+    MOVE_ENDURE,
+	MOVE_DESTINY_BOND, 
+    MOVE_THIEF, 
+    MOVE_FOLLOW_ME, 
+    MOVE_SNATCH, 
+    MOVE_HELPING_HAND, 
+    MOVE_COVET, 
+    MOVE_TRICK, 
+    MOVE_FOCUS_PUNCH,
+	MOVE_FEINT, 
+    MOVE_COPYCAT, 
+    MOVE_ME_FIRST, 
+    MOVE_SWITCHEROO, 
+    0xFFFF
+};
 
 BOOL CheckLegalMimicMove(u16 moveNo) {
     int i = 0;
@@ -6392,7 +6648,14 @@ BOOL CheckLegalMetronomeMove(BattleSystem *bsys, BATTLECONTEXT *ctx, int battler
     return (sMetronomeUnuseableMoves[i] == 0xFFFF);
 }
 
-extern u16 sEncoreFailMoves[6];
+static const u16 sEncoreFailMoves[] = {
+    MOVE_TRANSFORM, 
+    MOVE_MIMIC, 
+    MOVE_SKETCH, 
+    MOVE_MIRROR_MOVE,
+	MOVE_ENCORE, 
+    MOVE_STRUGGLE
+};
 
 BOOL IsMoveEncored(BATTLECONTEXT *ctx, u16 moveNo) {
     int i = 0;
@@ -6407,7 +6670,14 @@ BOOL IsMoveEncored(BATTLECONTEXT *ctx, u16 moveNo) {
     return (i == NELEMS(sEncoreFailMoves));
 }
 
-extern u16 sMeFirstUnuseableMoves[6];
+static const u16 sMeFirstUnuseableMoves[] = {
+    MOVE_COUNTER, 
+    MOVE_MIRROR_COAT, 
+    MOVE_THIEF, 
+    MOVE_COVET, 
+    MOVE_FOCUS_PUNCH, 
+    MOVE_CHATTER
+};
 
 BOOL CheckLegalMeFirstMove(BATTLECONTEXT *ctx, u16 moveNo) {
     int i = 0;
@@ -6469,7 +6739,9 @@ void ov12_02257EC0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     }
 }
 
-extern int ov12_0226CBDC[10];
+static const int ov12_0226CBDC[] = {
+    15, 16, 17, 18, 19, 20, 21, 22, 25, 26
+};
 
 BOOL CheckStatusEffectsSubstitute(BATTLECONTEXT *ctx, int battlerId, int status) {
     int i;
@@ -6619,7 +6891,153 @@ void ov12_022582B8(BattleSystem *bsys, BATTLECONTEXT *ctx, int var, int battlerI
     }
 }
 
-extern const int ov12_0226CDCC[145];
+static const int ov12_0226CDCC[145] = {
+    0,
+	18, 
+    22, 
+    25, 
+    27,
+	31, 
+    47, 
+    37, 
+    14,
+	55, 
+    56, 
+    48, 
+    13,
+	58, 
+    63, 
+    12, 
+    12,
+	12, 
+    12, 
+    12, 
+    12,
+	12, 
+    12, 
+    12, 
+    12,
+	12, 
+    12, 
+    12, 
+    12,
+	64, 
+    66, 
+    85, 
+    86,
+	93, 
+    119, 
+    115, 
+    130,
+	138, 
+    147, 
+    12, 
+    12,
+	12, 
+    12, 
+    12, 
+    12,
+	12, 
+    12, 
+    12, 
+    12,
+	12, 
+    12, 
+    12, 
+    12,
+	44, 
+    142, 
+    149, 
+    150,
+	148, 
+    151, 
+    152, 
+    24,
+	33, 
+    34, 
+    35, 
+    43,
+	45, 
+    46, 
+    49, 
+    52,
+	54, 
+    62, 
+    67, 
+    68,
+	70, 
+    73, 
+    77, 
+    78,
+	79, 
+    80, 
+    81, 
+    82,
+	84, 
+    87, 
+    88, 
+    89,
+	91, 
+    92, 
+    95, 
+    96,
+	97, 
+    126, 
+    100, 
+    101,
+	103, 
+    105, 
+    106, 
+    109,
+	112, 
+    113, 
+    114, 
+    120,
+	122, 
+    123, 
+    124, 
+    125,
+	127, 
+    128, 
+    129, 
+    131,
+	132, 
+    134, 
+    135, 
+    140,
+	141, 
+    143, 
+    145, 
+    154,
+	155, 
+    156, 
+    158, 
+    159,
+	160, 
+    161, 
+    162, 
+    163,
+	164, 
+    165, 
+    166, 
+    167,
+	168, 
+    170, 
+    171, 
+    173,
+	175, 
+    218, 
+    219, 
+    220,
+	226, 
+    246, 
+    247, 
+    248,
+	249, 
+    260, 
+    261, 
+    118
+};
 
 static int ov12_02258348(BATTLECONTEXT *ctx, int statChangeType, u32 flag) {
     ctx->statChangeType = statChangeType;
@@ -6805,7 +7223,9 @@ static int ov12_022585B8(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdTa
    return ret;
 }
 
-extern u16 ov12_0226CB64[6];
+static const u16 ov12_0226CB64[] = {
+    41, 87, 88, 89, 144, 227
+};
 
 static BOOL ov12_0225865C(BATTLECONTEXT *ctx, int moveNo) {
     for (int i = 0; i < NELEMS(ov12_0226CB64); i++) {
