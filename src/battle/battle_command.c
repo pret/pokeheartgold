@@ -13,6 +13,7 @@
 #include "overlay_12_0224E4FC.h"
 #include "constants/abilities.h"
 #include "constants/battle.h"
+#include "constants/battle_script.h"
 #include "constants/items.h"
 #include "constants/moves.h"
 #include "constants/pokemon.h"
@@ -5908,149 +5909,149 @@ static void BattleScriptGotoSubscript(BATTLECONTEXT *ctx, NarcId narcId, int adr
 
 static void *BattleScriptGetVarPointer(BattleSystem *bsys, BATTLECONTEXT *ctx, int var) {
     switch (var) {
-    case 0:
+    case BSCRIPT_VAR_BATTLE_FLAGS:
         return &bsys->battleTypeFlags;
-    case 1:
+    case BSCRIPT_VAR_CRIT_COUNT:
         return &ctx->criticalCnt;
-    case 2:
+    case BSCRIPT_VAR_2:
         return &ctx->unk_2170;
-    case 3:
+    case BSCRIPT_VAR_3:
         return &ctx->unk_2174;
-    case 4:
+    case BSCRIPT_VAR_4:
         return &ctx->unk_2178;
-    case 5:
+    case BSCRIPT_VAR_STAT_CHANGE_TYPE:
         return &ctx->statChangeType;
-    case 6:
+    case BSCRIPT_VAR_LINK_STATUS:
         return &ctx->linkStatus;
-    case 7:
+    case BSCRIPT_VAR_FIELD_CONDITION:
         return &ctx->fieldCondition;
-    case 8:
+    case BSCRIPT_VAR_8:
         return &ctx->unk_2158;
-    case 9:
+    case BSCRIPT_VAR_CALC_TEMP:
         return &ctx->calcTemp;
-    case 10:
+    case BSCRIPT_VAR_MOVE_STATUS_FLAG:
         return &ctx->moveStatusFlag;
-    case 11:
+    case BSCRIPT_VAR_SIDE_CONDITION_ATTACKER:
         return &ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker)];
-    case 12:
+    case BSCRIPT_VAR_SIDE_CONDITION_TARGET:
         return &ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(bsys, ctx->battlerIdTarget)];
-    case 13:
+    case BSCRIPT_VAR_SIDE_CONDITION_STAT_CHANGE:
         return &ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(bsys, ctx->battlerIdStatChange)];
-    case 14:
+    case BSCRIPT_VAR_DAMAGE:
         return &ctx->damage;
-    case 15:
+    case BSCRIPT_VAR_BATTLER_ATTACKER:
         return &ctx->battlerIdAttacker;
-    case 16:
+    case BSCRIPT_VAR_BATTLER_TARGET:
         return &ctx->battlerIdTarget;
-    case 17:
+    case BSCRIPT_VAR_BATTLER_STAT_CHANGE:
         return &ctx->battlerIdStatChange;
-    case 18:
+    case BSCRIPT_VAR_BATTLER_FAINTED:
         return &ctx->battlerIdFainted;
-    case 19:
+    case BSCRIPT_VAR_BATTLER_SWITCH:
         return &ctx->battlerIdSwitch;
-    case 20:
+    case BSCRIPT_VAR_BATTLER_TEMP:
         return &ctx->battlerIdTemp;
-    case 21:
+    case BSCRIPT_VAR_21:
         return &ctx->unk_30E4[ctx->battlerIdAttacker];
-    case 22:
+    case BSCRIPT_VAR_MESSAGE:
         return &ctx->msgTemp;
-    case 23:
+    case BSCRIPT_VAR_23:
         return &ctx->unk_14C;
-    case 24:
+    case BSCRIPT_VAR_MOVE_NO_CUR:
         return &ctx->moveNoCur;
-    case 25:
+    case BSCRIPT_VAR_TOTAL_TURNS:
         return &ctx->totalTurns;
-    case 26:
+    case BSCRIPT_VAR_26:
         return &ctx->unk_11C;
-    case 27:
+    case BSCRIPT_VAR_27:
         return &ctx->unk_120;
-    case 28:
+    case BSCRIPT_VAR_MOVE_NO_TEMP:
         return &ctx->moveNoTemp;
-    case 29:
+    case BSCRIPT_VAR_29:
         return &ctx->unk_98;
-    case 30:
+    case BSCRIPT_VAR_MOVE_POWER:
         return &ctx->movePower;
-    case 31:
+    case BSCRIPT_VAR_31:
         return &ctx->unk_38;
-    case 32:
+    case BSCRIPT_VAR_HP_CALC:
         return &ctx->hpCalc;
-    case 33:
+    case BSCRIPT_VAR_BATTLE_OUTCOME:
         return &bsys->battleOutcomeFlag;
-    case 34:
+    case BSCRIPT_VAR_STAT_CHANGE_PARAM:
         return &ctx->statChangeParam;
-    case 35:
+    case BSCRIPT_VAR_MOVE_TEMP:
         return &ctx->moveTemp;
-    case 36:
+    case BSCRIPT_VAR_ITEM_TEMP:
         return &ctx->itemTemp;
-    case 37:
+    case BSCRIPT_VAR_ABILITY_TEMP:
         return &ctx->abilityTemp;
-    case 38:
+    case BSCRIPT_VAR_WEATHER_TURNS:
         return &ctx->fieldConditionData.weatherTurns;
-    case 39:
+    case BSCRIPT_VAR_39:
         return &ctx->unk_3104;
-    case 40:
+    case BSCRIPT_VAR_40:
         return &ctx->unk_2180;
-    case 41:
+    case BSCRIPT_VAR_PHYSICAL_DAMAGE:
         return &ctx->turnData[ctx->battlerIdAttacker].battlerBitPhysicalDamage;
-    case 42:
+    case BSCRIPT_VAR_SPECIAL_DAMAGE:
         return &ctx->turnData[ctx->battlerIdAttacker].battlerBitSpecialDamage;
-    case 43:
+    case BSCRIPT_VAR_TEMP_DATA:
         return &ctx->tempData;
-    case 44:
+    case BSCRIPT_VAR_CRIT_MULTIPLIER:
         return &ctx->criticalMultiplier;
-    case 45:
+    case BSCRIPT_VAR_45:
         return &ctx->turnData[ctx->battlerIdAttacker].unk34;
-    case 46:
+    case BSCRIPT_VAR_46:
         return &ctx->turnData[ctx->battlerIdTarget].unk34;
-    case 47:
+    case BSCRIPT_VAR_47:
         return &ctx->selfTurnData[ctx->battlerIdAttacker].unk14;
-    case 48:
+    case BSCRIPT_VAR_48:
         return &ctx->selfTurnData[ctx->battlerIdTarget].unk14;
-    case 49:
+    case BSCRIPT_VAR_49:
         return &ctx->selfTurnData[ctx->battlerIdStatChange].unk14;
-    case 50:
+    case BSCRIPT_VAR_FLING_DATA:
         return &ctx->flingData;
-    case 51:
+    case BSCRIPT_VAR_FLING_SCRIPT:
         return &ctx->flingScript;
-    case 52:
+    case BSCRIPT_VAR_52:
         return &bsys->unk240C;
-    case 53:
+    case BSCRIPT_VAR_MOVE_LOCKED_INTO_ATTACKER:
         return &ctx->moveNoLockedInto[ctx->battlerIdAttacker];
-    case 54:
+    case BSCRIPT_VAR_HIT_DAMAGE:
         return &ctx->hitDamage;
-    case 55:
+    case BSCRIPT_VAR_SAFARI_BALL_CNT:
         return &bsys->safariBallCnt;
-    case 56:
+    case BSCRIPT_VAR_BATTLER_SWITCH_TEMP:
         return &ctx->battlerIdSwitchTemp;
-    case 57:
+    case BSCRIPT_VAR_MOVE_TYPE:
         return &ctx->moveType;
-    case 58:
+    case BSCRIPT_VAR_58:
         return &ctx->unk_2164;
-    case 59:
+    case BSCRIPT_VAR_59:
         return &bsys->unk241C;
-    case 60:
+    case BSCRIPT_VAR_LINK_STATUS_2:
         return &ctx->linkStatus2;
-    case 61:
+    case BSCRIPT_VAR_61:
         return &ctx->unk_EC;
-    case 62:
+    case BSCRIPT_VAR_62:
         return &bsys->unk44;
-    case 63:
+    case BSCRIPT_VAR_BATTLER_ATTACKER_TEMP:
         return &ctx->battlerIdAttackerTemp;
-    case 64:
+    case BSCRIPT_VAR_BATTLER_TARGET_TEMP:
         return &ctx->battlerIdTargetTemp;
-    case 65:
+    case BSCRIPT_VAR_PHYSICAL_DAMAGE_TAKEN:
         return &ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage;
-    case 66:
+    case BSCRIPT_VAR_66:
         return &ctx->turnData[ctx->battlerIdTemp].unk3C;
-    case 67:
+    case BSCRIPT_VAR_67:
         return &ctx->turnData[ctx->battlerIdTarget].unk3C;
-    case 68:
+    case BSCRIPT_VAR_SHELL_BELL_HP:
         return &ctx->selfTurnData[ctx->battlerIdAttacker].shellBellDamage;
-    case 69:
+    case BSCRIPT_VAR_BATTLERS_ON_FIELD:
         return &ctx->battlersOnField;
-    case 70:
+    case BSCRIPT_VAR_70:
         return &bsys->unk2478;
     }
 
-    return 0;
+    return NULL;
 }
