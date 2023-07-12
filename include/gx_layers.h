@@ -33,7 +33,7 @@ enum GFBgLayer {
     GF_BG_LYR_UNALLOC = 0xFF,
 };
 
-typedef struct GXBanksConfig {
+typedef struct GraphicsBanks {
     GXVRamBG bg;
     GXVRamBGExtPltt bgextpltt;
     GXVRamSubBG subbg;
@@ -44,9 +44,9 @@ typedef struct GXBanksConfig {
     GXVRamSubOBJExtPltt subobjextpltt;
     GXVRamTex tex;
     GXVRamTexPltt texpltt;
-} GF_GXBanksConfig;
+} GraphicsBanks;
 
-void GX_SetBanks(const GF_GXBanksConfig *banks);
+void GX_SetBanks(const GraphicsBanks *banks);
 void GX_DisableEngineALayers(void);
 void GX_EngineAToggleLayers(u32 layer_mask, GXLayerToggle enable);
 void GX_EngineASetLayers(u32 layers);

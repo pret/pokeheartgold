@@ -97,7 +97,7 @@ typedef struct ItemData
 } ItemData;
 
 /*
- * void MoveItemSlotInList(ItemSlot *slots, int from, int to, int pocket, HeapID heap_id)
+ * void MoveItemSlotInList(ItemSlot *slots, int from, int to, int pocket, HeapID heapId)
  *
  * Move item slot within an array, shifting the intermediate slots.
  * Performs the operation out-of-place using a temporary array from the heap.
@@ -106,9 +106,9 @@ typedef struct ItemData
  * @param from:        Source slot index
  * @param to:          Destination slot index
  * @param pocket:      Pocket ID
- * @param heap_id:     Heap ID to allocate the temporary array from
+ * @param heapId:     Heap ID to allocate the temporary array from
  */
-void MoveItemSlotInList(ItemSlot *slots, int from, int to, int pocket, HeapID heap_id);
+void MoveItemSlotInList(ItemSlot *slots, int from, int to, int pocket, HeapID heapId);
 
 
 /*
@@ -159,13 +159,13 @@ int GetItemIconCell(void);
 int GetItemIconAnim(void);
 
 /*
- * void *LoadItemDataOrGfx(u16 itemId, int attrno, HeapID heap_id)
+ * void *LoadItemDataOrGfx(u16 itemId, int attrno, HeapID heapId)
  *
  * Loads the raw data corresponding to the given item. Allocates a new buffer.
  *
  * @param itemId:      Item ID to look up
  * @param attrno:      Type of object to load
- * @param heap_id:     ID of heap to allocate the result from
+ * @param heapId:     ID of heap to allocate the result from
  *
  * @returns: Pointer to loaded data. If attrNo is ... then ...
  *     ITEMNARC_PARAM:   ItemData* from itemtool/itemdata/item_data.narc
@@ -174,45 +174,45 @@ int GetItemIconAnim(void);
  *
  * If itemId or attrno is invalid, or if allocation failed, returns NULL
  */
-void *LoadItemDataOrGfx(u16 itemId, int attrno, HeapID heap_id);
+void *LoadItemDataOrGfx(u16 itemId, int attrno, HeapID heapId);
 
 /*
- * void GetItemNameIntoString(String *dest, u16 itemId, HeapID heap_id)
+ * void GetItemNameIntoString(String *dest, u16 itemId, HeapID heapId)
  *
  * Reads the name of the indicated item into the preallocated string.
  *
  * @param dest:        Pointer to String containing the result
  * @param itemId:      The item whose name you want to get
- * @param heap_id:     Heap in which to allocate the temporary MsgData
+ * @param heapId:     Heap in which to allocate the temporary MsgData
  */
-void GetItemNameIntoString(String *dest, u16 itemId, HeapID heap_id);
+void GetItemNameIntoString(String *dest, u16 itemId, HeapID heapId);
 
 /*
- * void GetItemDescIntoString(String *dest, u16 itemId, HeapID heap_id)
+ * void GetItemDescIntoString(String *dest, u16 itemId, HeapID heapId)
  *
  * Reads the description of the indicated item into the preallocated string.
  *
  * @param dest:        Pointer to String containing the result
  * @param itemId:      The item whose description you want to get
- * @param heap_id:     Heap in which to allocate the temporary MsgData
+ * @param heapId:     Heap in which to allocate the temporary MsgData
  */
-void GetItemDescIntoString(String *dest, u16 itemId, HeapID heap_id);
+void GetItemDescIntoString(String *dest, u16 itemId, HeapID heapId);
 
 /*
- * s32 GetItemAttr(u16 itemId, u16 attrno, HeapID heap_id)
+ * s32 GetItemAttr(u16 itemId, u16 attrno, HeapID heapId)
  *
  * Gets the specified item effect parameter from itemtool/itemdata/item_data.narc
  *
  * @param itemId:      The item you want to query
  * @param attrno:      The attribute you want to read
- * @param heap_id:     Heap in which to allocate the temporary ItemData
+ * @param heapId:     Heap in which to allocate the temporary ItemData
  *
  * @returns: Integer attribute value
  */
-s32 GetItemAttr(u16 itemId, u16 attrno, HeapID heap_id);
+s32 GetItemAttr(u16 itemId, u16 attrno, HeapID heapId);
 
 /*
- * s32 GetItemAttr_PreloadedItemData(u16 itemId, u16 attrno, HeapID heap_id)
+ * s32 GetItemAttr_PreloadedItemData(u16 itemId, u16 attrno, HeapID heapId)
  *
  * Gets the specified item effect parameter from itemtool/itemdata/item_data.narc
  *
@@ -334,27 +334,27 @@ BOOL ItemIdIsBerry(u16 itemId);
 u16 BerryToItemId(u8 berryId);
 
 /*
- * String *GetNutName(u16 berryId, HeapID heap_id)
+ * String *GetNutName(u16 berryId, HeapID heapId)
  *
  * Creates a new String containing the name of the berry
  *
  * @param berryId:     Berry to get the name of
- * @param heap_id:     Heap to allocate the String from
+ * @param heapId:     Heap to allocate the String from
  *
  * @returns: New string containing the name of the berry
  */
-String *GetNutName(u16 berryId, HeapID heap_id);
+String *GetNutName(u16 berryId, HeapID heapId);
 
 /*
- * ItemData *LoadAllItemData(HeapID heap_id)
+ * ItemData *LoadAllItemData(HeapID heapId)
  *
  * Reads the entire FIMG of itemtool/itemdata/item_data.narc into a new buffer
  *
- * @param heap_id:     Heap to allocate the array from
+ * @param heapId:     Heap to allocate the array from
  *
  * @returns: Pointer to new array.
  */
-ItemData *LoadAllItemData(HeapID heap_id);
+ItemData *LoadAllItemData(HeapID heapId);
 
 /*
  * ItemData *GetItemDataPtrFromArray(ItemData *itemData, u32 itemDataIdx)

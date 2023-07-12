@@ -3,8 +3,8 @@
 #include "options.h"
 #include "player_data.h"
 
-OPTIONS* Options_New(HeapID heap_id) {
-    OPTIONS* ret = AllocFromHeap(heap_id, sizeof(OPTIONS));
+OPTIONS* Options_New(HeapID heapId) {
+    OPTIONS* ret = AllocFromHeap(heapId, sizeof(OPTIONS));
     Options_Init(ret);
     return ret;
 }

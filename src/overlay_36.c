@@ -40,9 +40,9 @@ static BOOL ov36_App_InitGameState_AfterOakSpeech_AppExit(OVY_MANAGER* man, int*
 static BOOL ov36_TitleScreen_NewGame_AppInit(OVY_MANAGER* man, int* state);
 static BOOL ov36_TitleScreen_NewGame_AppExec(OVY_MANAGER* man, int* state);
 static BOOL ov36_TitleScreen_NewGame_AppExit(OVY_MANAGER* man, int* state);
-static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SaveData* savedata, BOOL set_trainer_id);
-static void Continue_LoadSaveData_HandleError(HeapID heap_id, SaveData* savedata);
-static void NewGame_InitSaveData(HeapID heap_id, SaveData* savedata);
+static void InitGameStateAfterOakSpeech_Internal(HeapID heapId, SaveData* savedata, BOOL set_trainer_id);
+static void Continue_LoadSaveData_HandleError(HeapID heapId, SaveData* savedata);
+static void NewGame_InitSaveData(HeapID heapId, SaveData* savedata);
 
 const OVY_MGR_TEMPLATE ov36_App_MainMenu_SelectOption_NewGame = {
     .init = ov36_TitleScreen_NewGame_AppInit,
@@ -170,8 +170,8 @@ BOOL ov36_App_MainMenu_SelectOption_Continue_AppExit(OVY_MANAGER* man, int* stat
     return TRUE;
 }
 
-static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SaveData* savedata, BOOL set_trainer_id) {
-#pragma unused(heap_id)
+static void InitGameStateAfterOakSpeech_Internal(HeapID heapId, SaveData* savedata, BOOL set_trainer_id) {
+#pragma unused(heapId)
     s32 i;
     MsgData* friend_names_msgdata;
     String* author_name;
@@ -234,15 +234,15 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heap_id, SaveData* saved
     DestroyMsgData(friend_names_msgdata);
 }
 
-static void Continue_LoadSaveData_HandleError(HeapID heap_id, SaveData* savedata) {
-#pragma unused(heap_id)
+static void Continue_LoadSaveData_HandleError(HeapID heapId, SaveData* savedata) {
+#pragma unused(heapId)
     if (!SaveData_TryLoadOnContinue(savedata)) {
         OS_ResetSystem(0);
     }
 }
 
-static void NewGame_InitSaveData(HeapID heap_id, SaveData* savedata) {
-#pragma unused(heap_id)
+static void NewGame_InitSaveData(HeapID heapId, SaveData* savedata) {
+#pragma unused(heapId)
     Save_InitDynamicRegion(savedata);
     Save_CurrentLocation_BackUp(savedata);
 
