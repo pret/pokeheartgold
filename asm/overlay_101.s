@@ -24849,7 +24849,7 @@ _021F371A:
 	pop {r3, r4, r5, r6, r7, pc}
 _021F3720:
 	ldr r0, [r7, #0x1c]
-	bl Save_DayCare_Get
+	bl Save_Daycare_Get
 	ldr r1, [sp]
 	str r0, [sp, #4]
 	str r0, [r1, #0x50]
@@ -24862,16 +24862,16 @@ _021F3720:
 _021F3738:
 	ldr r0, [sp, #4]
 	add r1, r5, #0
-	bl Save_DayCare_GetMonX
+	bl Save_Daycare_GetMonX
 	add r6, r0, #0
-	bl DayCareMon_GetBoxMon
+	bl DaycareMon_GetBoxMon
 	mov r1, #5
 	mov r2, #0
 	bl GetBoxMonData
 	cmp r0, #0
 	beq _021F376A
 	add r0, r6, #0
-	bl DayCareMon_GetBoxMon
+	bl DaycareMon_GetBoxMon
 	add r2, r0, #0
 	add r1, r5, #0
 	ldr r0, [r7, #0x50]
@@ -24890,7 +24890,7 @@ _021F376A:
 	cmp r0, #2
 	bne _021F3786
 	ldr r0, [sp, #4]
-	bl Save_DayCare_CalcCompatibility
+	bl Save_Daycare_CalcCompatibility
 	ldr r1, [sp]
 	add r1, #0x48
 	strh r0, [r1]
@@ -24940,7 +24940,7 @@ _021F37CA:
 	pop {r3, r4, r5, pc}
 _021F37D6:
 	ldr r0, [r4, #0x50]
-	bl Save_DayCare_HasEgg
+	bl Save_Daycare_HasEgg
 	cmp r0, #0
 	beq _021F37F0
 	ldr r1, [r5, #0x4c]
@@ -25047,7 +25047,7 @@ ov101_021F388C: ; 0x021F388C
 	pop {r3, r4, r5, r6, r7, pc}
 _021F38A2:
 	ldr r0, [r0, #0x1c]
-	bl Save_DayCare_Get
+	bl Save_Daycare_Get
 	add r6, r5, #0
 	str r0, [sp]
 	str r0, [r5, #0x50]
@@ -25059,9 +25059,9 @@ _021F38A2:
 _021F38B8:
 	ldr r0, [sp]
 	add r1, r4, #0
-	bl Save_DayCare_GetMonX
+	bl Save_Daycare_GetMonX
 	add r7, r0, #0
-	bl DayCareMon_GetBoxMon
+	bl DaycareMon_GetBoxMon
 	mov r1, #5
 	mov r2, #0
 	bl GetBoxMonData
@@ -25071,7 +25071,7 @@ _021F38B8:
 	add r0, r0, #1
 	strb r0, [r6]
 	add r0, r7, #0
-	bl DayCareMon_CalcLevelGrowth
+	bl DaycareMon_CalcLevelGrowth
 	add r1, r5, r4
 	add r1, #0x4b
 	b _021F38EA
@@ -25200,8 +25200,8 @@ _021F39B0:
 _021F39C4:
 	ldr r0, [r4, #0x50]
 	add r1, r6, #0
-	bl Save_DayCare_GetMonX
-	bl DayCareMon_GetBoxMon
+	bl Save_Daycare_GetMonX
+	bl DaycareMon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r5, #0x50]
 	mov r1, #0xa
@@ -25234,8 +25234,8 @@ _021F3A02:
 _021F3A10:
 	ldr r0, [r4, #0x50]
 	mov r1, #1
-	bl Save_DayCare_GetMonX
-	bl DayCareMon_GetBoxMon
+	bl Save_Daycare_GetMonX
+	bl DaycareMon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r5, #0x50]
 	mov r1, #0xa
