@@ -15,6 +15,7 @@
 #include "constants/items.h"
 #include "constants/moves.h"
 #include "constants/species.h"
+#include "constants/move_effects.h"
 #include "msgdata/msg/msg_0197.h"
 
 static const u8 sStatChangeTable[][2];
@@ -2957,16 +2958,16 @@ int CheckAbilityActive(BattleSystem *bsys, BATTLECONTEXT *ctx, int flag, int bat
 //FIXME: Function name is wrong
 BOOL BattleCtx_IsIdenticalToCurrentMove(BATTLECONTEXT *ctx, int moveNo) {
     switch (ctx->unk_334.moveData[moveNo].effect) {
-    case 26:
-    case 39:
-    case 75:
-    case 145:
-    case 151:
-    case 155:
-    case 255:
-    case 256:
-    case 263:
-    case 272:
+    case MOVE_EFFECT_26:
+    case MOVE_EFFECT_39:
+    case MOVE_EFFECT_75:
+    case MOVE_EFFECT_145:
+    case MOVE_EFFECT_151:
+    case MOVE_EFFECT_155:
+    case MOVE_EFFECT_255:
+    case MOVE_EFFECT_256:
+    case MOVE_EFFECT_263:
+    case MOVE_EFFECT_272:
         return TRUE;
     }
     return FALSE;
@@ -3800,7 +3801,7 @@ int TryAbilityOnEntry(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                                 if (moveNo) {
                                     moveStatus = 0;
                                     ctx->damage = ov12_02251D28(bsys, ctx, moveNo, 0, battlerIdCheck, battlerId, ctx->damage, &moveStatus);
-                                    if (!(moveStatus & MOVE_STATUS_NO_EFFECT) && !ov12_0225865C(ctx, moveNo) && ((moveStatus & MOVE_STATUS_SUPER_EFFECTIVE) || (ctx->unk_334.moveData[moveNo].effect == 38 && ctx->battleMons[battlerId].level <= ctx->battleMons[battlerIdCheck].level))) {
+                                    if (!(moveStatus & MOVE_STATUS_NO_EFFECT) && !ov12_0225865C(ctx, moveNo) && ((moveStatus & MOVE_STATUS_SUPER_EFFECTIVE) || (ctx->unk_334.moveData[moveNo].effect == MOVE_EFFECT_ONE_HIT_KO && ctx->battleMons[battlerId].level <= ctx->battleMons[battlerIdCheck].level))) {
                                         flag = TRUE;
                                         break;
                                     }
@@ -3847,16 +3848,15 @@ int TryAbilityOnEntry(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                                 switch (power) {
                                 case 1:
                                     switch (ctx->unk_334.moveData[moveNo].effect) {
-                                    case 38: //OHKO?
+                                    case MOVE_EFFECT_ONE_HIT_KO:
                                         if (powerTemp < 150 || (powerTemp == 150 && (BattleSystem_Random(bsys) & 1))) {
                                             powerTemp = 150;
                                             ctx->moveTemp = moveNo;
                                         }
                                         break;
-                                    //Counter, Mirror Coat, Metal Burst
-                                    case 89:
-                                    case 144:
-                                    case 227:
+                                    case MOVE_EFFECT_COUNTER:
+                                    case MOVE_EFFECT_MIRROR_COAT:
+                                    case MOVE_EFFECT_METAL_BURST:
                                         if (powerTemp < 120 || ((powerTemp == 120) && (BattleSystem_Random(bsys) & 1))) {
                                             powerTemp = 120;
                                             ctx->moveTemp = moveNo;
@@ -6414,7 +6414,7 @@ int CalcMoveDamage(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 moveNo, u32 sideC
         }
     }
     
-    if (ctx->unk_334.moveData[moveNo].effect == 7) {
+    if (ctx->unk_334.moveData[moveNo].effect == MOVE_EFFECT_HALVE_DEFENSE) {
         monDef /= 2;
     }
     
@@ -6449,7 +6449,7 @@ int CalcMoveDamage(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 moveNo, u32 sideC
             dmg /= 2;
         }
         
-        if ((sideCondition & SIDE_CONDITION_REFLECT) && crit == 1 && ctx->unk_334.moveData[moveNo].effect != 186) {
+        if ((sideCondition & SIDE_CONDITION_REFLECT) && crit == 1 && ctx->unk_334.moveData[moveNo].effect != MOVE_EFFECT_REMOVE_SCREENS) {
             if ((battleType & BATTLE_TYPE_DOUBLES) && GetMonsHitCount(bsys, ctx, 1, battlerIdTarget) == 2) {
                 dmg = dmg * 2 / 3;
             } else {
@@ -6483,7 +6483,7 @@ int CalcMoveDamage(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 moveNo, u32 sideC
         dmg /= dmg2;
         dmg /= 50;
         
-        if ((sideCondition & SIDE_CONDITION_LIGHT_SCREEN) && crit == 1 && ctx->unk_334.moveData[moveNo].effect != 186) {
+        if ((sideCondition & SIDE_CONDITION_LIGHT_SCREEN) && crit == 1 && ctx->unk_334.moveData[moveNo].effect != MOVE_EFFECT_REMOVE_SCREENS) {
             if ((battleType & BATTLE_TYPE_DOUBLES) && GetMonsHitCount(bsys, ctx, 1, battlerIdTarget) == 2) {
                 dmg = dmg * 2 / 3;
             } else {
@@ -7093,16 +7093,16 @@ static int ov12_022583B4(BATTLECONTEXT *ctx, int battlerId, int typeEffectivenes
 
 static int ov12_02258440(BATTLECONTEXT *ctx, int moveNo) {
     switch (ctx->unk_334.moveData[moveNo].effect) {
-    case 26:
-    case 39:
-    case 75:
-    case 145:
-    case 151:
-    case 155:
-    case 255:
-    case 256:
-    case 263:
-    case 273:
+    case MOVE_EFFECT_26:
+    case MOVE_EFFECT_39:
+    case MOVE_EFFECT_75:
+    case MOVE_EFFECT_145:
+    case MOVE_EFFECT_151:
+    case MOVE_EFFECT_155:
+    case MOVE_EFFECT_255:
+    case MOVE_EFFECT_256:
+    case MOVE_EFFECT_263:
+    case MOVE_EFFECT_FLINCH_BURN_HIT:
         return (ctx->linkStatus & (1 << 9));
     }
     
@@ -7224,7 +7224,12 @@ static int ov12_022585B8(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdTa
 }
 
 static const u16 ov12_0226CB64[] = {
-    41, 87, 88, 89, 144, 227
+    MOVE_EFFECT_41, 
+    MOVE_EFFECT_87, 
+    MOVE_EFFECT_88, 
+    MOVE_EFFECT_COUNTER, 
+    MOVE_EFFECT_MIRROR_COAT, 
+    MOVE_EFFECT_METAL_BURST
 };
 
 static BOOL ov12_0225865C(BATTLECONTEXT *ctx, int moveNo) {
