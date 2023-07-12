@@ -133,7 +133,7 @@ static void ov122_021E8068(void);
 static void ov122_021E8094(OVY_MANAGER *);
 static void FreeOverlayData(OVY_MANAGER *);
 
-extern const GraphicsBanks sVoltorbFlipGXBanksConfig;
+extern const GraphicsBanks sVoltorbFlipGraphicsBanks;
 extern const MsgNoList sMenuMsgNos[];
 extern const Ov122_021E9278 ov122_021E9278;
 extern const u16 ov122_021E92A0[8];
@@ -1987,7 +1987,7 @@ static void ov122_021E8004(VoltorbFlipAppWork *work) {
 }
 
 static void SetGXBanks(void) {
-    GraphicsBanks banks = sVoltorbFlipGXBanksConfig;
+    GraphicsBanks banks = sVoltorbFlipGraphicsBanks;
     GX_SetBanks(&banks);
 }
 

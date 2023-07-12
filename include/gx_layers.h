@@ -33,7 +33,7 @@ enum GFBgLayer {
     GF_BG_LYR_UNALLOC = 0xFF,
 };
 
-typedef struct GXBanksConfig {
+typedef struct GraphicsBanks {
     GXVRamBG bg;
     GXVRamBGExtPltt bgextpltt;
     GXVRamSubBG subbg;

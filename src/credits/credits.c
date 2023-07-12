@@ -391,7 +391,7 @@ static void VBlankCB(CreditsAppWork *work) {
 }
 
 static void SetGXBanks(void) {
-    GraphicsBanks banks = sCreditsGXBanksConfig;
+    GraphicsBanks banks = sCreditsGraphicsBanks;
     GX_SetBanks(&banks);
 }
 
