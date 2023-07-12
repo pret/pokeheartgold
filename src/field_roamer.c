@@ -1,3 +1,4 @@
+#include "global.h"
 #include "field_roamer.h"
 #include "math_util.h"
 #include "player_data.h"

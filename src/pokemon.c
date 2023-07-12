@@ -1,3 +1,4 @@
+#include "global.h"
 #include "pokemon.h"
 #include "math_util.h"
 #include "seal_case.h"

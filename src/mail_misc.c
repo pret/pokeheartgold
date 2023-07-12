@@ -1,3 +1,4 @@
+#include "global.h"
 #include "event_data.h"
 #include "item.h"
 #include "mail.h"

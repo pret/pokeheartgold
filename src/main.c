@@ -1,3 +1,4 @@
+#include "global.h"
 #include "main.h"
 #include "system.h"
 #include "gf_rtc.h"

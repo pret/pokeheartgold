@@ -1,3 +1,4 @@
+#include "global.h"
 #include "use_item_on_mon.h"
 #include "item.h"
 #include "pokemon.h"

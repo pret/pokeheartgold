@@ -1,3 +1,4 @@
+#include "global.h"
 #include "msgdata/msg.naix"
 #include "filesystem.h"
 #include "dex_mon_measures.h"

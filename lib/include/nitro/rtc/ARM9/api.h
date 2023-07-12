@@ -1,6 +1,8 @@
 #ifndef NITRO_RTC_API_H_
 #define NITRO_RTC_API_H_
 
+#include <nitro/types.h>
+
 typedef enum RTCWeek {
     RTC_WEEK_SUNDAY = 0,
     RTC_WEEK_MONDAY,

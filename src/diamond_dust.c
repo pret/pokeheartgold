@@ -1,3 +1,4 @@
+#include "global.h"
 #include "diamond_dust.h"
 #include "map_header.h"
 #include "unk_02055418.h"

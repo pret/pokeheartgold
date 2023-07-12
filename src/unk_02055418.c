@@ -1,3 +1,4 @@
+#include "global.h"
 #include "friend_group.h"
 #include "roamer.h"
 #include "sav_system_info.h"

@@ -1,3 +1,4 @@
+#include "global.h"
 #include "assert.h"
 #include "battle_controller.h"
 #include "battle_controller_player.h"

@@ -1,6 +1,9 @@
 #ifndef NITRO_GX_GX_BGCNT_H
 #define NITRO_GX_GX_BGCNT_H
 
+#include <nitro/types.h>
+#include <nitro/hw/common/io_reg.h>
+
 void *G2_GetBG0ScrPtr();
 void *G2S_GetBG0ScrPtr();
 void *G2_GetBG1ScrPtr();

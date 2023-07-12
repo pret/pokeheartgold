@@ -1,3 +1,4 @@
+#include "global.h"
 #include "pokewalker.h"
 
 static BOOL pokewalkerHasBoxmon(POKEWALKER *pokeWalker);

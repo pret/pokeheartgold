@@ -1,3 +1,4 @@
+#include "global.h"
 #include "overlay_manager.h"
 
 OVY_MANAGER *OverlayManager_New(const OVY_MGR_TEMPLATE *template, void *args, HeapID heapId) {

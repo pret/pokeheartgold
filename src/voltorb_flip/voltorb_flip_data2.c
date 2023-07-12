@@ -1,3 +1,4 @@
+#include "global.h"
 #include "gx_layers.h"
 #include "bg_window.h"
 #include "voltorb_flip/voltorb_flip.h"

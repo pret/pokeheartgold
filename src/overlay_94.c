@@ -1,3 +1,4 @@
+#include "global.h"
 #include "assert.h"
 #include "heap.h"
 #include "party.h"

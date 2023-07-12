@@ -1,3 +1,4 @@
+#include "config.h"
 #include "msgdata/msg/msg_0247.h"
 #include "msgdata/msg/msg_0442.h"
 #include "constants/sndseq.h"

@@ -1,3 +1,4 @@
+#include "global.h"
 #include "save_local_field_data.h"
 #include "field_player_avatar.h"
 #include "field_map_object.h"

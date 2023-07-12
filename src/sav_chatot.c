@@ -1,3 +1,4 @@
+#include "global.h"
 #include "sav_chatot.h"
 #include <nitro/mi/memory.h>
 

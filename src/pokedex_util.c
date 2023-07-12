@@ -1,3 +1,4 @@
+#include "global.h"
 #include "pokedex_util.h"
 #include "pokemon.h"
 

@@ -1,3 +1,4 @@
+#include "global.h"
 #include "gymmick.h"
 #include "overlay_04.h"
 #include "save_misc_data.h"

@@ -1,3 +1,4 @@
+#include "global.h"
 #include "gymmick.h"
 
 void SavGymmick_Clear(struct Gymmick *gymmick) {

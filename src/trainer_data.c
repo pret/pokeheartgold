@@ -1,3 +1,4 @@
+#include "global.h"
 #include "battle_setup.h"
 #include "trainer_data.h"
 #include "msgdata.h"

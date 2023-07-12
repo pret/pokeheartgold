@@ -1,3 +1,4 @@
+#include "global.h"
 #include "unk_0203E348.h"
 #include "camera.h"
 #include "camera_translation.h"
@@ -25,7 +26,6 @@
 #include "unk_02013FDC.h"
 #include "gf_gfx_loader.h"
 #include "choose_starter_app.h"
-#include "global.h"
 
 enum ChooseStarterInput {
     CHOOSE_STARTER_INPUT_NONE                    = 0,

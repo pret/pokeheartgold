@@ -1,3 +1,4 @@
+#include "global.h"
 #include "unk_02037C94.h"
 #include "error_handling.h"
 

@@ -1,3 +1,4 @@
+#include "global.h"
 #include "save_arrays.h"
 #include "save.h"
 #include "unk_0202E41C.h"

@@ -1,4 +1,5 @@
 #include <nitro/mi/memory.h>
+#include "global.h"
 #include "constants/game_stat.h"
 #include "constants/mail.h"
 #include "game_stats.h"

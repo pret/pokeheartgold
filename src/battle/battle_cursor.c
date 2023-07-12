@@ -1,3 +1,4 @@
+#include "global.h"
 #include "battle_cursor.h"
 #include "unk_0200CF18.h"
 

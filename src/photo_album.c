@@ -1,3 +1,4 @@
+#include "global.h"
 #include "photo_album.h"
 #include "pm_string.h"
 

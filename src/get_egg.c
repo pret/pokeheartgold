@@ -1,3 +1,4 @@
+#include "global.h"
 #include "get_egg.h"
 #include "party.h"
 #include "game_stats.h"

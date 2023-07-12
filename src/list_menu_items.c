@@ -1,3 +1,4 @@
+#include "global.h"
 #include "list_menu_items.h"
 
 void ListMenuItems_DestroyMenuStrings(LISTMENUITEM *items);
