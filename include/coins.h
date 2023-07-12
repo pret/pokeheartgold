@@ -10,7 +10,7 @@
  *
  * @param coins:       Pointer to coin case amount
  */
-void InitCoins(u16* coins);
+void InitCoins(u16 *coins);
 
 /*
  * u16 CheckCoins(u16* coins)
@@ -21,7 +21,7 @@ void InitCoins(u16* coins);
  *
  * @returns: The amount of coins owned
  */
-u16 CheckCoins(u16* coins);
+u16 CheckCoins(u16 *coins);
 
 /*
  * BOOL GiveCoins(u16* coins, u16 amount)
@@ -40,8 +40,8 @@ u16 CheckCoins(u16* coins);
  *
  * @returns: TRUE if success, otherwise FALSE
  */
-BOOL GiveCoins(u16* coins, u16 amount);
-BOOL CanGiveCoins(u16* coins, u16 amount);
-BOOL TakeCoins(u16* coins, u16 amount);
+BOOL GiveCoins(u16 *coins, u16 amount);
+BOOL CanGiveCoins(u16 *coins, u16 amount);
+BOOL TakeCoins(u16 *coins, u16 amount);
 
-#endif
+#endif //POKEHEARTGOLD_COINS_H

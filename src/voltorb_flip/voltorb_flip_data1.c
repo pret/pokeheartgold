@@ -1,3 +1,4 @@
+#include "global.h"
 #include "voltorb_flip/voltorb_flip_data.h"
 
 const u8 sMainMenuMsgNos[] = { 17, 18, 19, 0 };

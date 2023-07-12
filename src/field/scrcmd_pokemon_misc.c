@@ -1,3 +1,4 @@
+#include "global.h"
 #include "bag.h"
 #include "bug_contest.h"
 #include "fieldmap.h"

@@ -1,3 +1,4 @@
+#include "config.h"
 #include "constants/species.h"
 #include "constants/items.h"
 #include "constants/moves.h"

@@ -1,6 +1,6 @@
+#include "global.h"
 #include "unk_0200A090.h"
 #include "gf_gfx_loader.h"
-#include "global.h"
 
 static void loadAll2DGfxResObjFromHeaderInternal(struct _2DGfxResMan *mgr, const struct _2DGfxResHeader *header, int first, int count, struct _2DGfxResObjList *list, HeapID heapId);
 static void destroyAllObjects(struct _2DGfxResMan *mgr);

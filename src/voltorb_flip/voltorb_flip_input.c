@@ -1,3 +1,4 @@
+#include "global.h"
 #include "heap.h"
 #include "system.h"
 #include "unk_02005D10.h"

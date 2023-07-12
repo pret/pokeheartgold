@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_SCRIPT_H
 #define POKEHEARTGOLD_SCRIPT_H
 
+#include "global.h"
 #include "map_events_internal.h"
 #include "msgdata.h"
 #include "bg_window.h"

@@ -1,3 +1,4 @@
+#include "global.h"
 #include "system.h"
 #include "options.h"
 #include "player_data.h"

@@ -1,3 +1,4 @@
+#include "global.h"
 #include "party.h"
 #include "update_dex_received.h"
 #include "unk_0206979C.h"

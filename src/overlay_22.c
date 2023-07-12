@@ -1,3 +1,4 @@
+#include "global.h"
 #include "coins.h"
 #include "fieldmap.h"
 #include "unk_02031904.h"

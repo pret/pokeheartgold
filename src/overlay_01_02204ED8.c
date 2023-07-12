@@ -1,3 +1,4 @@
+#include "global.h"
 #include "assert.h"
 #include "encounter.h"
 #include "field_follow_poke.h"

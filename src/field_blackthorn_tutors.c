@@ -1,3 +1,4 @@
+#include "global.h"
 #include "field_blackthorn_tutors.h"
 #include "pokemon.h"
 

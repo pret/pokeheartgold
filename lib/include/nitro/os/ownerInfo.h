@@ -1,6 +1,8 @@
 #ifndef NITRO_OS_OWNERINFO_H_
 #define NITRO_OS_OWNERINFO_H_
 
+#include <nitro/types.h>
+
 typedef struct OSBirthday {
     u8 month;
     u8 day;

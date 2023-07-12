@@ -1,3 +1,4 @@
+#include "config.h"
 #include "constants/pokemon.h"
 	.include "asm/macros.inc"
 	.include "overlay_70.inc"

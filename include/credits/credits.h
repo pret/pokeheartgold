@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_CREDITS_CREDITS_H
 #define POKEHEARTGOLD_CREDITS_CREDITS_H
 
+#include "global.h"
 #include "overlay_manager.h"
 
 #define NUM_CREDIT_PAGES 43

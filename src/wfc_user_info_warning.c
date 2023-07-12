@@ -1,3 +1,4 @@
+#include "global.h"
 #include "gx_layers.h"
 #include "main.h"
 #include "msgdata.h"

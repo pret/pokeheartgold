@@ -1,3 +1,4 @@
+#include "global.h"
 #include "message_format.h"
 #include "msgdata.h"
 #include "pokemon.h"

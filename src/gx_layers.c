@@ -1,5 +1,5 @@
-#include "gx_layers.h"
 #include "global.h"
+#include "gx_layers.h"
 #include "system.h"
 
 static u32 sEngineBLayers = 0;

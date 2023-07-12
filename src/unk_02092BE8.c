@@ -1,3 +1,4 @@
+#include "global.h"
 #include "unk_02005D10.h"
 #include "unk_02092BE8.h"
 #include "safari_zone.h"

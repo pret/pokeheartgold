@@ -1,3 +1,4 @@
+#include "global.h"
 #include "communication_error.h"
 #include "gx_layers.h"
 #include "msgdata.h"
@@ -13,7 +14,6 @@
 #include "brightness.h"
 #include "unk_02037C94.h"
 #include "overlay_00_thumb.h"
-#include "global.h"
 
 static const GF_GXBanksConfig sCommunicationErrorBanksConfig = {
     .bg = GX_VRAM_BG_256_AB,

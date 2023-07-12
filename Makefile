@@ -12,7 +12,7 @@ ALL_BUILDDIRS  := $(BUILD_DIR)/lib
 include common.mk
 include filesystem.mk
 
-$(ASM_OBJS): MWASFLAGS += -DPM_ASM -include config.h
+$(ASM_OBJS): MWASFLAGS += -DPM_ASM
 
 $(BUILD_DIR)/asm/nitrocrypto.o:  MWCCVER := 1.2/sp2p3
 $(BUILD_DIR)/lib/msl/src/*.o:    EXCCFLAGS := -Cpp_exceptions on

@@ -1,3 +1,4 @@
+#include "global.h"
 #include "game_stats.h"
 #include "pokedex.h"
 #include "pokewalker.h"

@@ -1,3 +1,4 @@
+#include "global.h"
 #include "event_data.h"
 
 static u8 sTempFlags[NUM_TEMP_FLAGS / 8] = {0};

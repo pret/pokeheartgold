@@ -1,6 +1,8 @@
 #ifndef NITRO_FX_FX_H_
 #define NITRO_FX_FX_H_
 
+#include <nitro/types.h>
+
 // 19.12
 typedef s32 fx32;
 #define FX32_SHIFT          12

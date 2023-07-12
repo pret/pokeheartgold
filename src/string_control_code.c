@@ -1,3 +1,4 @@
+#include "global.h"
 #include "pm_string.h"
 #include "string_control_code.h"
 
