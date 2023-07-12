@@ -62,7 +62,7 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
     ctx->battleMons[battlerId].isEgg = GetMonData(mon, MON_DATA_IS_EGG, NULL);
     ctx->battleMons[battlerId].hasNickname = GetMonData(mon, MON_DATA_HAS_NICKNAME, NULL);
     
-    if (!(ctx->linkStatus & (1 << 8))) { //Baton pass
+    if (!(ctx->battleStatus & BATTLE_STATUS_BATON_PASS)) { 
         for (i = 0; i < 8; i++) {
             ctx->battleMons[battlerId].statChanges[i] = 6; //6 is the default for stat changes
         }
@@ -1336,13 +1336,13 @@ BOOL ov12_02250490(BattleSystem *bsys, BATTLECONTEXT *ctx, int *out) {
         GF_ASSERT(effectChance);
         
         if ((BattleSystem_Random(bsys) % 100) < effectChance) {
-            ctx->linkStatus |= (1 << 22);
+            ctx->battleStatus |= BATTLE_STATUS_22;
         }
         
         *out = ov12_02258348(ctx, 2, ctx->unk_2174);
         ctx->unk_2174 = 0; 
         if (!ctx->battleMons[ctx->battlerIdStatChange].hp) {
-            ctx->linkStatus &= 0xFFBFFFFF;
+            ctx->battleStatus &= ~BATTLE_STATUS_22;
         }
         
         ret = TRUE;
@@ -1530,7 +1530,7 @@ void ov12_02250A18(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker
     
     if (moveType == TYPE_ELECTRIC &&
         (ctx->unk_334.moveData[moveNo].range == RANGE_0 || ctx->unk_334.moveData[moveNo].range == RANGE_RANDOM_OPPONENT) &&
-        !(ctx->linkStatus & 0x20) &&
+        !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) &&
         CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP_NOT_USER, battlerIdAttacker, ABILITY_LIGHTNINGROD)) {
         for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
             battlerIdTarget = ctx->turnOrder[battlerId];
@@ -1544,7 +1544,7 @@ void ov12_02250A18(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker
         }
     } else if (moveType == TYPE_WATER &&
         (ctx->unk_334.moveData[moveNo].range == RANGE_0 || ctx->unk_334.moveData[moveNo].range == RANGE_RANDOM_OPPONENT) &&
-        !(ctx->linkStatus & 0x20) &&
+        !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) &&
         CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP_NOT_USER, battlerIdAttacker, ABILITY_STORM_DRAIN)) {
         for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
             battlerIdTarget = ctx->turnOrder[battlerId];
@@ -1643,8 +1643,8 @@ BOOL CheckTrainerMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     do {
         switch (state) {
         case 0:
-            if (ctx->battleMons[1].unk78 == 1 && !(ctx->linkStatus2 & 0x20) && TrainerMessageWithIdPairExists(trainerIndex, 13, HEAP_ID_BATTLE)) {
-                ctx->linkStatus2 |= 0x20;
+            if (ctx->battleMons[1].unk78 == 1 && !(ctx->battleStatus2 & BATTLE_STATUS2_5) && TrainerMessageWithIdPairExists(trainerIndex, 13, HEAP_ID_BATTLE)) {
+                ctx->battleStatus2 |= BATTLE_STATUS2_5;
                 ctx->msgTemp = 13;
                 return TRUE;
             }
@@ -1763,8 +1763,8 @@ void BattleContext_Init(BATTLECONTEXT *ctx) {
     ctx->unk_50 = 0;
     ctx->unk_54 = 0;
     
-    ctx->linkStatus &= 0xFF800000;
-    ctx->linkStatus2 &= 0xFFFFFEA1;
+    ctx->battleStatus &= 0xFF800000;
+    ctx->battleStatus2 &= 0xFFFFFEA1;
     
     ctx->magnitude = 0;
     
@@ -1808,7 +1808,7 @@ void InitSwitchWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     BattleSystem_GetBattleType(bsys);
     ctx->unk_21A8[battlerId][0] = 40;
     
-    if (!(ctx->linkStatus & (1 << 8))) { //not baton pass
+    if (!(ctx->battleStatus & BATTLE_STATUS_BATON_PASS)) {
         for (i = 0; i < maxBattlers; i++) {
             if ((ctx->battleMons[i].status2 & STATUS2_MEAN_LOOK) && (ctx->battleMons[i].unk88.battlerIdMeanLook == battlerId)) {
                 ctx->battleMons[i].status2 &= ~STATUS2_MEAN_LOOK;
@@ -1845,7 +1845,7 @@ void InitSwitchWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
         data[i] = 0;
     }
     
-    if (ctx->linkStatus & (1 << 8)) {
+    if (ctx->battleStatus & BATTLE_STATUS_BATON_PASS) {
         ctx->battleMons[battlerId].unk88.substituteHp = unkStruct.substituteHp;
         ctx->battleMons[battlerId].unk88.battlerIdLockOn = unkStruct.battlerIdLockOn;
         ctx->battleMons[battlerId].unk88.perishSongTurns = unkStruct.perishSongTurns;
@@ -2277,7 +2277,7 @@ int ov12_02251D28(BattleSystem *bsys, BATTLECONTEXT *ctx, int moveNo, int moveTy
     movePower = ctx->unk_334.moveData[moveNo].power;
 
     //STAB
-    if (!(ctx->linkStatus & (1 << 11)) && (GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_TYPE_1, NULL) == moveType || GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_TYPE_2, NULL) == moveType)) {
+    if (!(ctx->battleStatus & BATTLE_STATUS_IGNORE_TYPE_EFFECTIVENESS) && (GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_TYPE_1, NULL) == moveType || GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_TYPE_2, NULL) == moveType)) {
         if (GetBattlerAbility(ctx, battlerIdAttacker) == ABILITY_ADAPTABILITY) {
             damage *= 2;
         } else {
@@ -2316,7 +2316,7 @@ int ov12_02251D28(BattleSystem *bsys, BATTLECONTEXT *ctx, int moveNo, int moveTy
     if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_WONDER_GUARD) == TRUE && ov12_02258440(ctx, moveNo) &&
         (!(*moveStatusFlags & MOVE_STATUS_SUPER_EFFECTIVE) || ((*moveStatusFlags & MOVE_STATUS_ANY_EFFECTIVE) == MOVE_STATUS_ANY_EFFECTIVE)) && movePower) {
         *moveStatusFlags |= MOVE_STATUS_WONDER_GUARD_IMMUNE;
-    } else if (!(ctx->linkStatus & (1 << 11)) && !(ctx->linkStatus & (1 << 15))) {
+    } else if (!(ctx->battleStatus & BATTLE_STATUS_IGNORE_TYPE_EFFECTIVENESS) && !(ctx->battleStatus & BATTLE_STATUS_IGNORE_TYPE_IMMUNITY)) {
         if ((*moveStatusFlags & MOVE_STATUS_SUPER_EFFECTIVE) && movePower) {
             if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_FILTER) == TRUE || CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_SOLID_ROCK) == TRUE) {
                 damage = DamageDivide(damage * 3, 4);
@@ -3076,7 +3076,7 @@ BOOL CheckBattlerAbilityIfNotIgnored(BATTLECONTEXT *ctx, int battlerIdAttacker, 
         }
     } else if (GetBattlerAbility(ctx, battlerIdTarget) == ability && !ctx->selfTurnData[battlerIdAttacker].moldBreakerFlag) {
         ctx->selfTurnData[battlerIdAttacker].moldBreakerFlag = TRUE;
-        ctx->linkStatus |= (1 << 23);
+        ctx->battleStatus |= BATTLE_STATUS_MOLD_BREAKER;
     }
     
     return ret;
@@ -3371,7 +3371,7 @@ BOOL CheckMoveEffectOnField(BattleSystem *bsys, BATTLECONTEXT *ctx, int moveEffe
 void ov12_02252D14(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     ctx->moveStatusFlag = 0;
     ctx->criticalMultiplier = 1;
-    ctx->linkStatus &= (0x100000 ^ 0xFFFFFFFF);
+    ctx->battleStatus &= (0x100000 ^ 0xFFFFFFFF);
 }
 
 void SortMonsBySpeed(BattleSystem *bsys, BATTLECONTEXT *ctx) {
@@ -3518,12 +3518,12 @@ int ov12_02252EC8(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget
         ctx->hpCalc = DamageDivide(ctx->battleMons[battlerIdTarget].maxHp, 4);
         state = 178;
     }    
-    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_WATER_ABSORB) == TRUE && moveType == TYPE_WATER && !(ctx->linkStatus & (1 << 5)) && ctx->unk_334.moveData[ctx->moveNoCur].power) {
+    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_WATER_ABSORB) == TRUE && moveType == TYPE_WATER && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) && ctx->unk_334.moveData[ctx->moveNoCur].power) {
         ctx->hpCalc = DamageDivide(ctx->battleMons[battlerIdTarget].maxHp, 4);
         state = 178;
     }
     int moveNoCur = ctx->moveNoCur;
-    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_FLASH_FIRE) == TRUE && moveType == TYPE_FIRE && !(ctx->battleMons[battlerIdTarget].status & STATUS_FREEZE) && !(ctx->linkStatus & (1 << 5))) {
+    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_FLASH_FIRE) == TRUE && moveType == TYPE_FIRE && !(ctx->battleMons[battlerIdTarget].status & STATUS_FREEZE) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN)) {
         if (ctx->unk_334.moveData[ctx->moveNoCur].power || ctx->moveNoCur == MOVE_WILL_O_WISP) {
             state = 179;
         }
@@ -3539,7 +3539,7 @@ int ov12_02252EC8(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget
     if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_MOTOR_DRIVE) == TRUE && moveType == TYPE_ELECTRIC && battlerIdAttacker != battlerIdTarget) {
         state = 182;
     }
-    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_DRY_SKIN) == TRUE && moveType == TYPE_WATER && !(ctx->linkStatus & (1 << 5)) && ctx->unk_334.moveData[ctx->moveNoCur].power) {
+    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_DRY_SKIN) == TRUE && moveType == TYPE_WATER && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) && ctx->unk_334.moveData[ctx->moveNoCur].power) {
         ctx->hpCalc = DamageDivide(ctx->battleMons[battlerIdTarget].maxHp, 4);
         state = 178;
     }
@@ -4078,8 +4078,8 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script
         if (ctx->battleMons[ctx->battlerIdAttacker].hp &&
             !ctx->battleMons[ctx->battlerIdAttacker].status &&
             !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
-            !(ctx->linkStatus & 0x20) &&
-            !(ctx->linkStatus2 & 0x10) &&
+            !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) &&
+            !(ctx->battleStatus2 & BATTLE_STATUS2_4) &&
             (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) &&
             (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1) &&
             (BattleSystem_Random(bsys) % 10 < 3)) {
@@ -4105,7 +4105,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script
             !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
             ctx->moveNoCur != MOVE_STRUGGLE &&
             (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) &&
-            !(ctx->linkStatus2 & 0x10) &&
+            !(ctx->battleStatus2 & BATTLE_STATUS2_4) &&
             ctx->unk_334.moveData[ctx->moveNoCur].power &&
             GetBattlerVar(ctx, ctx->battlerIdTarget, BMON_DATA_TYPE_1, NULL) != moveType &&
             GetBattlerVar(ctx, ctx->battlerIdTarget, BMON_DATA_TYPE_2, NULL) != moveType) {
@@ -4118,8 +4118,8 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script
         if (ctx->battleMons[ctx->battlerIdAttacker].hp &&
             GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_MAGIC_GUARD &&
             !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
-            !(ctx->linkStatus & 0x20) &&
-            !(ctx->linkStatus2 & 0x10) &&
+            !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) &&
+            !(ctx->battleStatus2 & BATTLE_STATUS2_4) &&
             (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) &&
             (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1)) {
             ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp * -1, 8);
@@ -4132,8 +4132,8 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script
         if (ctx->battleMons[ctx->battlerIdAttacker].hp &&
             !ctx->battleMons[ctx->battlerIdAttacker].status &&
             !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
-            !(ctx->linkStatus & 0x20) &&
-            !(ctx->linkStatus2 & 0x10) &&
+            !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) &&
+            !(ctx->battleStatus2 & BATTLE_STATUS2_4) &&
             (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) &&
             (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1) &&
             (BattleSystem_Random(bsys) % 10 < 3)) {
@@ -4159,8 +4159,8 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script
         if (ctx->battleMons[ctx->battlerIdAttacker].hp &&
             !ctx->battleMons[ctx->battlerIdAttacker].status &&
             !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
-            !(ctx->linkStatus & 0x20) &&
-            !(ctx->linkStatus2 & 0x10) &&
+            !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) &&
+            !(ctx->battleStatus2 & BATTLE_STATUS2_4) &&
             (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) &&
             (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1) &&
             (BattleSystem_Random(bsys) % 10 < 3)) {
@@ -4175,8 +4175,8 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script
         if (ctx->battleMons[ctx->battlerIdAttacker].hp &&
             !ctx->battleMons[ctx->battlerIdAttacker].status &&
             !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
-            !(ctx->linkStatus & 0x20) &&
-            !(ctx->linkStatus2 & 0x10) &&
+            !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) &&
+            !(ctx->battleStatus2 & BATTLE_STATUS2_4) &&
             (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) &&
             (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1) &&
             ((BattleSystem_Random(bsys) % 10) < 3)) {
@@ -4191,8 +4191,8 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script
         if (ctx->battleMons[ctx->battlerIdAttacker].hp &&
             !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_ATTRACT_ALL) &&
             !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
-            !(ctx->linkStatus & 0x20) &&
-            !(ctx->linkStatus2 & 0x10) &&
+            !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) &&
+            !(ctx->battleStatus2 & BATTLE_STATUS2_4) &&
             (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) &&
             (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1) &&
             ctx->battleMons[ctx->battlerIdTarget].hp &&
@@ -4208,7 +4208,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script
         if (ctx->battlerIdTarget == ctx->battlerIdFainted &&
             GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_MAGIC_GUARD &&
             !CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_DAMP) && 
-            !(ctx->linkStatus2 & 0x10) &&
+            !(ctx->battleStatus2 & BATTLE_STATUS2_4) &&
             ctx->battleMons[ctx->battlerIdAttacker].hp &&
             !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) &&
             (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1)) {
@@ -4333,13 +4333,13 @@ BOOL TrySyncronizeStatus(BattleSystem *bsys, BATTLECONTEXT *ctx, ControllerComma
     if (ctx->battlerIdTarget != BATTLER_NONE &&
         GetBattlerAbility(ctx, ctx->battlerIdTarget) == ABILITY_SYNCHRONIZE &&
         ctx->battlerIdTarget == ctx->battlerIdStatChange &&
-        (ctx->linkStatus & 0x80)) {
+        (ctx->battleStatus & BATTLE_STATUS_SYNCRONIZE)) {
         ctx->battlerIdTemp = ctx->battlerIdTarget;
         ctx->battlerIdStatChange = ctx->battlerIdAttacker;
         ret = TRUE;
     } else if (GetBattlerAbility(ctx, ctx->battlerIdAttacker) == ABILITY_SYNCHRONIZE &&
         ctx->battlerIdAttacker == ctx->battlerIdStatChange &&
-        (ctx->linkStatus & 0x80)) {
+        (ctx->battleStatus & BATTLE_STATUS_SYNCRONIZE)) {
         ctx->battlerIdTemp = ctx->battlerIdAttacker;
         ctx->battlerIdStatChange = ctx->battlerIdTarget;
         ret = TRUE;
@@ -5085,7 +5085,7 @@ BOOL CheckItemEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script) {
             !(ctx->fieldSideConditionData[side].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[ctx->battlerIdAttacker])) &&
             ctx->moveNoCur != MOVE_KNOCK_OFF &&
             (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) &&
-            !(ctx->linkStatus2 & 0x10) &&
+            !(ctx->battleStatus2 & BATTLE_STATUS2_4) &&
             (ctx->unk_334.moveData[ctx->moveNoCur].unkB & 1)) {
             *script = 216;
             ret = TRUE;
@@ -5094,7 +5094,7 @@ BOOL CheckItemEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script) {
     case HOLD_EFFECT_RECOIL_PHYSICAL: //jacoba berry
         if (ctx->battleMons[ctx->battlerIdAttacker].hp &&
             GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_MAGIC_GUARD &&
-            !(ctx->linkStatus2 & 0x10) &&
+            !(ctx->battleStatus2 & BATTLE_STATUS2_4) &&
             ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage) {
             ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp * -1, boost);
             *script = 266;
@@ -5716,7 +5716,7 @@ void ov12_022565E0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker) == HOLD_EFFECT_BOOST_REPEATED) {
         if (!(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_RAGE) &&
             !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_UPROAR) &&
-            !(ctx->linkStatus & (1 << 9)) &&
+            !(ctx->battleStatus & BATTLE_STATUS_CHARGE_MOVE_HIT) &&
             !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_LOCKED_INTO_MOVE)) {
             if (ctx->moveNoMetronome[ctx->battlerIdAttacker] == ctx->moveNoTemp) {
                 if (ctx->battleMons[ctx->battlerIdAttacker].unk88.metronomeTurns < 10) {
@@ -5740,7 +5740,7 @@ void ov12_02256694(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             !(ctx->selfTurnData[ctx->battlerIdAttacker].rolloutCount) &&
             !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_RAGE) &&
             !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_UPROAR) &&
-            !(ctx->linkStatus & (1 << 9)) &&
+            !(ctx->battleStatus & BATTLE_STATUS_CHARGE_MOVE_HIT) &&
             !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_LOCKED_INTO_MOVE)) {
             ctx->battleMons[ctx->battlerIdAttacker].unk88.metronomeTurns--;
         }
@@ -5978,7 +5978,7 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BATTLECONTEXT *ctx, int 
                     ctx->battleMons[ctx->battlerIdTemp].spDef = GetMonData(mon2, MON_DATA_SPDEF, NULL);
                     ctx->battleMons[ctx->battlerIdTemp].ability = GetMonData(mon2, MON_DATA_ABILITY, NULL);
                     ctx->battleMons[ctx->battlerIdTemp].form = GIRATINA_ALTERED;
-                    ctx->linkStatus2 |= (1 << 26);
+                    ctx->battleStatus2 |= BATTLE_STATUS2_26;
                     BattleController_EmitBattleMonToPartyMonCopy(bsys, ctx, ctx->battlerIdTemp);
                     FreeToHeap(mon2);
                     *script = 262;
@@ -6770,7 +6770,7 @@ BOOL CheckItemEffectOnUTurn(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script)
     int side = BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker);
     
     if (itemAttacker == HOLD_EFFECT_HP_RESTORE_ON_DMG &&
-        (ctx->linkStatus & (1 << 13)) &&
+        (ctx->battleStatus & BATTLE_STATUS_MOVE_SUCCESSFUL) &&
         (ctx->selfTurnData[ctx->battlerIdAttacker].shellBellDamage) &&
         (ctx->battlerIdAttacker != ctx->battlerIdTarget) &&
         (ctx->battleMons[ctx->battlerIdAttacker].hp < ctx->battleMons[ctx->battlerIdAttacker].maxHp) &&
@@ -6783,7 +6783,7 @@ BOOL CheckItemEffectOnUTurn(BattleSystem *bsys, BATTLECONTEXT *ctx, int *script)
     
     if (itemAttacker == HOLD_EFFECT_HP_DRAIN_ON_ATK &&
         GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_MAGIC_GUARD &&
-        (ctx->linkStatus & (1 << 13)) &&
+        (ctx->battleStatus & BATTLE_STATUS_MOVE_SUCCESSFUL) &&
         ctx->unk_334.moveData[ctx->moveNoCur].category != CATEGORY_STATUS &&
         ctx->battleMons[ctx->battlerIdAttacker].hp) {
         ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp * -1, 10);
@@ -7058,7 +7058,7 @@ static int ov12_02258348(BATTLECONTEXT *ctx, int statChangeType, u32 flag) {
 }
 
 static int ov12_022583B4(BATTLECONTEXT *ctx, int battlerId, int typeEffectiveness, int damage, int moveDamage, u32 *flag) {
-    if (!(ctx->linkStatus & (1 << 11)) && !(ctx->linkStatus & (1 << 15)) && damage) {
+    if (!(ctx->battleStatus & BATTLE_STATUS_IGNORE_TYPE_EFFECTIVENESS) && !(ctx->battleStatus & BATTLE_STATUS_IGNORE_TYPE_IMMUNITY) && damage) {
         damage = DamageDivide(damage * typeEffectiveness, 10);
     }
     
@@ -7103,7 +7103,7 @@ static int ov12_02258440(BATTLECONTEXT *ctx, int moveNo) {
     case MOVE_EFFECT_256:
     case MOVE_EFFECT_263:
     case MOVE_EFFECT_FLINCH_BURN_HIT:
-        return (ctx->linkStatus & (1 << 9));
+        return (ctx->battleStatus & BATTLE_STATUS_CHARGE_MOVE_HIT);
     }
     
     return TRUE;

@@ -760,12 +760,12 @@ BOOL BtlCmd_DamageCalcRaw(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 BOOL BtlCmd_PrintAttackMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    if ((ctx->linkStatus & 1) == FALSE) {
+    if (!(ctx->battleStatus & BATTLE_STATUS_NO_ATTACK_MESSAGE)) {
         BattleController_EmitPrintAttackMessage(bsys, ctx);
     }
 
-    ctx->linkStatus |= 1;
-    ctx->linkStatus2 |= 4;
+    ctx->battleStatus |= BATTLE_STATUS_NO_ATTACK_MESSAGE;
+    ctx->battleStatus2 |= BATTLE_STATUS2_DISPLAY_ATTACK_MESSAGE;
 
     return FALSE;
 }
@@ -847,8 +847,8 @@ BOOL BtlCmd_PlayMoveAnimation(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         move = ctx->moveNoCur;
     }
 
-    if ((!(ctx->linkStatus & (1 << 14)) && BattleSystem_AreBattleAnimationsOn(bsys) == TRUE) || move == MOVE_TRANSFORM) {
-        ctx->linkStatus |= (1 << 14);
+    if ((!(ctx->battleStatus & BATTLE_STATUS_MOVE_ANIMATIONS_OFF) && BattleSystem_AreBattleAnimationsOn(bsys) == TRUE) || move == MOVE_TRANSFORM) {
+        ctx->battleStatus |= BATTLE_STATUS_MOVE_ANIMATIONS_OFF;
         BattleController_SetMoveEffect(bsys, ctx, move);
     }
 
@@ -876,8 +876,8 @@ BOOL BtlCmd_PlayMoveAnimation2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     u32 attacker = GetBattlerIDBySide(bsys, ctx, attackerSide);
     u32 defender = GetBattlerIDBySide(bsys, ctx, defenderSide);
 
-    if ((!(ctx->linkStatus & (1 << 14)) && BattleSystem_AreBattleAnimationsOn(bsys) == TRUE) || move == MOVE_TRANSFORM) {
-        ctx->linkStatus |= (1 << 14);
+    if ((!(ctx->battleStatus & BATTLE_STATUS_MOVE_ANIMATIONS_OFF) && BattleSystem_AreBattleAnimationsOn(bsys) == TRUE) || move == MOVE_TRANSFORM) {
+        ctx->battleStatus |= BATTLE_STATUS_MOVE_ANIMATIONS_OFF;
         ov12_0226343C(bsys, ctx, move, attacker, defender);
     }
 
@@ -941,7 +941,7 @@ BOOL BtlCmd_TryFaintMon(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     if (ctx->battleMons[battlerId].hp == 0) {
         ctx->battlerIdFainted = battlerId;
-        ctx->linkStatus |= MaskOfFlagNo(battlerId) << 24;
+        ctx->battleStatus |= MaskOfFlagNo(battlerId) << BATTLE_STATUS_FAINTED_SHIFT;
         ctx->totalTimesFainted[battlerId]++;
         UpdateFrienshipFainted(bsys, ctx, battlerId);
     }
@@ -954,8 +954,8 @@ BOOL BtlCmd_PlayFaintAnimation(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     BattleController_EmitPlayFaintAnimation(bsys, ctx, ctx->battlerIdFainted);
 
-    ctx->linkStatus &= (MaskOfFlagNo(ctx->battlerIdFainted) << 24) ^ -1;
-    ctx->linkStatus2 |= MaskOfFlagNo(ctx->battlerIdFainted) << 28;
+    ctx->battleStatus &= (MaskOfFlagNo(ctx->battlerIdFainted) << BATTLE_STATUS_FAINTED_SHIFT) ^ -1;
+    ctx->battleStatus2 |= MaskOfFlagNo(ctx->battlerIdFainted) << BATTLE_STATUS2_EXP_GAIN_SHIFT;
     ctx->unk_21A8[ctx->battlerIdFainted][0] = 40;
 
     InitFaintedWork(bsys, ctx, ctx->battlerIdFainted);
@@ -1145,8 +1145,8 @@ BOOL BtlCmd_JumpToEffectScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     u32 unkA = BattleScriptReadWord(ctx);
 
-    ctx->linkStatus &= ~1;
-    ctx->linkStatus &= 0xffffbfff;
+    ctx->battleStatus &= ~BATTLE_STATUS_NO_ATTACK_MESSAGE;
+    ctx->battleStatus &= ~BATTLE_STATUS_MOVE_ANIMATIONS_OFF;
 
     ctx->moveNoCur = ctx->moveTemp;
 
@@ -1320,8 +1320,8 @@ BOOL BtlCmd_WaitForMonSelection(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         if ((ctx->unk_13C[battlerId] & 1) && ov12_0225682C(ctx, battlerId)) {
             ctx->unk_21A0[battlerId] = ctx->unk_2300[battlerId][0] - 1;
             switchCnt--;
-            if (!(ctx->linkStatus2 & (MaskOfFlagNo(battlerId) << 24))) {
-                ctx->linkStatus2 |= (MaskOfFlagNo(battlerId) << 24);
+            if (!(ctx->battleStatus2 & (MaskOfFlagNo(battlerId) << BATTLE_STATUS_FAINTED_SHIFT))) {
+                ctx->battleStatus2 |= (MaskOfFlagNo(battlerId) << BATTLE_STATUS_FAINTED_SHIFT);
                 BattleController_EmitShowWaitMessage(bsys, battlerId);
             }
         }
@@ -1333,7 +1333,7 @@ BOOL BtlCmd_WaitForMonSelection(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 ov12_0223BDDC(bsys, battlerId, ctx->unk_2300[battlerId][0]);
             }
         }
-        ctx->linkStatus2 &= 0xf0ffffff;
+        ctx->battleStatus2 &= 0xf0ffffff;
         BattleScriptIncrementPointer(ctx, 1);
     }
 
@@ -1524,7 +1524,7 @@ BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int unkD = 0;
 
-    ctx->linkStatus &= 0xFFFDFFFF;
+    ctx->battleStatus &= ~BATTLE_STATUS_NO_MESSAGE_BETWEEN;
 
     if (ctx->statChangeParam >= 46) {
         stat = ctx->statChangeParam - 46;
@@ -1546,7 +1546,7 @@ BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     if (change > 0) { //Stat Increase
         if (mon->statChanges[stat + 1] == 12) {
-            ctx->linkStatus |= (1 << 17);
+            ctx->battleStatus |= BATTLE_STATUS_NO_MESSAGE_BETWEEN;
             if (ctx->statChangeType == 3 || ctx->statChangeType == 2) {
                 BattleScriptIncrementPointer(ctx, unkB);
             } else {
@@ -1623,7 +1623,7 @@ BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 unkD = TRUE;
                 }
                 else if (mon->statChanges[1 + stat] == 0) {
-                    ctx->linkStatus |= (1 << 17);
+                    ctx->battleStatus |= BATTLE_STATUS_NO_MESSAGE_BETWEEN;
                     if (ctx->statChangeType == 2 || ctx->statChangeType == 3) {
                         BattleScriptIncrementPointer(ctx, unkB);
                         return FALSE;
@@ -1641,7 +1641,7 @@ BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                     unkD = 2;
                 }
             } else if (mon->statChanges[1 + stat] == 0) {
-                ctx->linkStatus |= (1 << 17);
+                ctx->battleStatus |= BATTLE_STATUS_NO_MESSAGE_BETWEEN;
                 if (ctx->statChangeType == 2 || ctx->statChangeType == 3) {
                     BattleScriptIncrementPointer(ctx, unkB);
                     return FALSE;
@@ -2021,8 +2021,8 @@ BOOL BtlCmd_SetMoveToMirrorMove(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         }
     }
     if (move && IsMoveEncored(ctx, move) == TRUE) {
-        ctx->linkStatus &= ~1;
-        ctx->linkStatus &= 0xFFFFBFFF;
+        ctx->battleStatus &= ~BATTLE_STATUS_NO_ATTACK_MESSAGE;
+        ctx->battleStatus &= ~BATTLE_STATUS_MOVE_ANIMATIONS_OFF;
         ctx->moveNoCur = move;
         ctx->battlerIdTarget = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, move, 1, 0);
         if (ctx->battlerIdTarget == 255) {
@@ -2551,10 +2551,10 @@ BOOL BtlCmd_TryOHKO(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     BattleScriptIncrementPointer(ctx, 1);
 
-    ctx->linkStatus |= (1 << 10);
+    ctx->battleStatus |= BATTLE_STATUS_FLAT_HIT_RATE;
 
     if (CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget, ABILITY_STURDY) == TRUE) {
-        ctx->moveStatusFlag |= 1 << 19;
+        ctx->moveStatusFlag |= MOVE_STATUS_19;
     } else {
         if ((ctx->battleMons[ctx->battlerIdTarget].moveEffectFlags & MOVE_EFFECT_LOCK_ON) == FALSE &&
             GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_NO_GUARD &&
@@ -3950,7 +3950,7 @@ BOOL BtlCmd_MagicCoat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         }
     }
 
-    ctx->linkStatus2 |= 8;
+    ctx->battleStatus2 |= BATTLE_STATUS2_MAGIC_COAT;
 
     return FALSE;
 }
@@ -5921,8 +5921,8 @@ static void *BattleScriptGetVarPointer(BattleSystem *bsys, BATTLECONTEXT *ctx, i
         return &ctx->unk_2178;
     case BSCRIPT_VAR_STAT_CHANGE_TYPE:
         return &ctx->statChangeType;
-    case BSCRIPT_VAR_LINK_STATUS:
-        return &ctx->linkStatus;
+    case BSCRIPT_VAR_BATTLE_STATUS:
+        return &ctx->battleStatus;
     case BSCRIPT_VAR_FIELD_CONDITION:
         return &ctx->fieldCondition;
     case BSCRIPT_VAR_8:
@@ -6029,8 +6029,8 @@ static void *BattleScriptGetVarPointer(BattleSystem *bsys, BATTLECONTEXT *ctx, i
         return &ctx->unk_2164;
     case BSCRIPT_VAR_59:
         return &bsys->unk241C;
-    case BSCRIPT_VAR_LINK_STATUS_2:
-        return &ctx->linkStatus2;
+    case BSCRIPT_VAR_BATTLE_STATUS_2:
+        return &ctx->battleStatus2;
     case BSCRIPT_VAR_61:
         return &ctx->unk_EC;
     case BSCRIPT_VAR_62:

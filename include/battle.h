@@ -327,8 +327,8 @@ typedef struct BATTLECONTEXT {
     UnkBtlCtxSub_76 unk_334;
     u32 * unk_2134;
     u32 unk_2138;
-    u32 linkStatus;
-    u32 linkStatus2;
+    u32 battleStatus;
+    u32 battleStatus2;
     int damage;
     int hitDamage;
     int criticalCnt;

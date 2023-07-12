@@ -7,7 +7,7 @@
 #define BSCRIPT_VAR_3                            3
 #define BSCRIPT_VAR_4                            4
 #define BSCRIPT_VAR_STAT_CHANGE_TYPE             5
-#define BSCRIPT_VAR_LINK_STATUS                  6
+#define BSCRIPT_VAR_BATTLE_STATUS                  6
 #define BSCRIPT_VAR_FIELD_CONDITION              7
 #define BSCRIPT_VAR_8                            8
 #define BSCRIPT_VAR_CALC_TEMP                    9
@@ -61,7 +61,7 @@
 #define BSCRIPT_VAR_MOVE_TYPE                   57
 #define BSCRIPT_VAR_58                          58
 #define BSCRIPT_VAR_59                          59
-#define BSCRIPT_VAR_LINK_STATUS_2               60
+#define BSCRIPT_VAR_BATTLE_STATUS_2               60
 #define BSCRIPT_VAR_61                          61
 #define BSCRIPT_VAR_62                          62
 #define BSCRIPT_VAR_BATTLER_ATTACKER_TEMP       63

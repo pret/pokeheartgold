@@ -338,9 +338,48 @@ enum Terrain {
 #define BMON_DATA_HELD_ITEM_RESTORE_HP      95
 #define BMON_DATA_SLOW_START_FLAG           96
 #define BMON_DATA_SLOW_START_END            97
-#define BMON_DATA_FORM                     98
+#define BMON_DATA_FORM                      98
 #define BMON_DATA_99                        99 //unused
 #define BMON_DATA_100                      100
+
+//Battle Status
+#define BATTLE_STATUS_NO_ATTACK_MESSAGE             (1 << 0)
+#define BATTLE_STATUS_NO_DOUBLE_CHECK               (1 << 1)
+#define BATTLE_STATUS_HIT_FLY                       (1 << 2)
+#define BATTLE_STATUS_HIT_DIG                       (1 << 3)     
+#define BATTLE_STATUS_HIT_DIVE                      (1 << 4)
+#define BATTLE_STATUS_CHARGE_TURN                   (1 << 5)
+#define BATTLE_STATUS_NO_BLINK                      (1 << 6)
+#define BATTLE_STATUS_SYNCRONIZE                    (1 << 7)
+#define BATTLE_STATUS_BATON_PASS                    (1 << 8)
+#define BATTLE_STATUS_CHARGE_MOVE_HIT               (1 << 9)
+#define BATTLE_STATUS_FLAT_HIT_RATE                 (1 << 10)
+#define BATTLE_STATUS_IGNORE_TYPE_EFFECTIVENESS     (1 << 11)  
+#define BATTLE_STATUS_CRASH_DAMAGE                  (1 << 12)
+#define BATTLE_STATUS_MOVE_SUCCESSFUL               (1 << 13)
+#define BATTLE_STATUS_MOVE_ANIMATIONS_OFF           (1 << 14)
+#define BATTLE_STATUS_IGNORE_TYPE_IMMUNITY          (1 << 15)
+#define BATTLE_STATUS_MULTI_HIT_IGNORE_MESSAGE      (1 << 16)
+#define BATTLE_STATUS_NO_MESSAGE_BETWEEN            (1 << 17)
+#define BATTLE_STATUS_MISS_MESSAGE                  (1 << 18)
+#define BATTLE_STATUS_SHADOW_FORCE                  (1 << 19)
+#define BATTLE_STATUS_NO_MOVE_SET                   (1 << 20)
+#define BATTLE_STATUS_MESSAGES_OFF                  (1 << 21)
+#define BATTLE_STATUS_22                            (1 << 22)
+#define BATTLE_STATUS_MOLD_BREAKER                  (1 << 23) 
+
+#define BATTLE_STATUS_FAINTED_SHIFT                 24
+
+//Battle Status 2
+#define BATTLE_STATUS2_NO_EXP_GAINED                (1 << 0)
+#define BATTLE_STATUS2_UPDATE_STAT_STAGES           (1 << 1)
+#define BATTLE_STATUS2_DISPLAY_ATTACK_MESSAGE       (1 << 2)
+#define BATTLE_STATUS2_MAGIC_COAT                   (1 << 3)
+#define BATTLE_STATUS2_4                            (1 << 4)
+#define BATTLE_STATUS2_5                            (1 << 5)
+#define BATTLE_STATUS2_26                           (1 << 26)
+
+#define BATTLE_STATUS2_EXP_GAIN_SHIFT               28
 
 //Battle Controller Commands
 typedef enum ControllerCommand {
