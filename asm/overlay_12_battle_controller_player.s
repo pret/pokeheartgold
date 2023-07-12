@@ -10,8 +10,8 @@
     .public BattleControllerPlayer_TrainerMessage
     .public BattleControllerPlayer_PokemonAppear
 
-	thumb_func_start ov12_022487FC
-ov12_022487FC: ; 0x022487FC
+	thumb_func_start BattleControllerPlayer_SelectionScreenInit
+BattleControllerPlayer_SelectionScreenInit: ; 0x022487FC
 	push {r3, r4, r5, r6, r7, lr}
 	str r0, [sp]
 	add r7, r1, #0
@@ -48,7 +48,7 @@ _0224882C:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02248844: .word 0x0000314C
-	thumb_func_end ov12_022487FC
+	thumb_func_end BattleControllerPlayer_SelectionScreenInit
 
 	thumb_func_start ov12_02248848
 ov12_02248848: ; 0x02248848
@@ -12125,7 +12125,7 @@ sPlayerBattleCommands: ; 0x0226CA90
 	.word BattleControllerPlayer_StartEncounter
 	.word BattleControllerPlayer_TrainerMessage
 	.word BattleControllerPlayer_PokemonAppear
-	.word ov12_022487FC
+	.word BattleControllerPlayer_SelectionScreenInit
 	.word ov12_02248848
 	.word ov12_02249190
 	.word ov12_0224930C

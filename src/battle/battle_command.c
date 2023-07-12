@@ -2557,7 +2557,7 @@ BOOL BtlCmd_TryOHKO(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget, ABILITY_STURDY) == TRUE) {
         ctx->moveStatusFlag |= MOVE_STATUS_19;
     } else {
-        if ((ctx->battleMons[ctx->battlerIdTarget].moveEffectFlags & MOVE_EFFECT_LOCK_ON) == FALSE &&
+        if ((ctx->battleMons[ctx->battlerIdTarget].moveEffectFlags & MOVE_EFFECT_FLAG_LOCK_ON) == FALSE &&
             GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_NO_GUARD &&
             GetBattlerAbility(ctx, ctx->battlerIdTarget) != ABILITY_NO_GUARD) {
             hitChance = ctx->battleMons[ctx->battlerIdAttacker].level - ctx->battleMons[ctx->battlerIdTarget].level + ctx->unk_334.moveData[ctx->moveNoCur].accuracy;
@@ -2567,7 +2567,7 @@ BOOL BtlCmd_TryOHKO(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 hitChance = 0;
             }
         } else {
-            if ((((ctx->battleMons[ctx->battlerIdTarget].unk88.battlerIdLockOn == ctx->battlerIdAttacker) && (ctx->battleMons[ctx->battlerIdTarget].moveEffectFlags & MOVE_EFFECT_LOCK_ON)) ||
+            if ((((ctx->battleMons[ctx->battlerIdTarget].unk88.battlerIdLockOn == ctx->battlerIdAttacker) && (ctx->battleMons[ctx->battlerIdTarget].moveEffectFlags & MOVE_EFFECT_FLAG_LOCK_ON)) ||
                         GetBattlerAbility(ctx, ctx->battlerIdAttacker) == ABILITY_NO_GUARD ||
                         GetBattlerAbility(ctx, ctx->battlerIdTarget) == ABILITY_NO_GUARD) &&
                         ctx->battleMons[ctx->battlerIdAttacker].level >= ctx->battleMons[ctx->battlerIdTarget].level) {
@@ -3292,10 +3292,10 @@ BOOL BtlCmd_TryPerishSong(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int cnt = 0;
 
     for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
-        if (ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_PERISH_SONG || ctx->battleMons[battlerId].hp == 0 || CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, battlerId, ABILITY_SOUNDPROOF) == TRUE) {
+        if (ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_PERISH_SONG || ctx->battleMons[battlerId].hp == 0 || CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, battlerId, ABILITY_SOUNDPROOF) == TRUE) {
             cnt++;
         } else {
-            ctx->battleMons[battlerId].moveEffectFlags |= MOVE_EFFECT_PERISH_SONG;
+            ctx->battleMons[battlerId].moveEffectFlags |= MOVE_EFFECT_FLAG_PERISH_SONG;
             ctx->battleMons[battlerId].unk88.perishSongTurns = 3;
         }
     }
@@ -3575,8 +3575,8 @@ BOOL BtlCmd_RapidSpin(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     }
 
     //Leech Seed
-    if (ctx->battleMons[ctx->battlerIdAttacker].moveEffectFlags & MOVE_EFFECT_LEECH_SEED) {
-        ctx->battleMons[ctx->battlerIdAttacker].moveEffectFlags &= ~MOVE_EFFECT_LEECH_SEED;
+    if (ctx->battleMons[ctx->battlerIdAttacker].moveEffectFlags & MOVE_EFFECT_FLAG_LEECH_SEED) {
+        ctx->battleMons[ctx->battlerIdAttacker].moveEffectFlags &= ~MOVE_EFFECT_FLAG_LEECH_SEED;
         ctx->battleMons[ctx->battlerIdAttacker].moveEffectFlags &= ~3;
         ctx->moveTemp = 73;
         BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, 117);
@@ -3940,7 +3940,7 @@ BOOL BtlCmd_MagicCoat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     if (ctx->fieldSideConditionData[side].followMeFlag && ctx->battleMons[ctx->fieldSideConditionData[side].battlerIdFollowMe].hp) {
         ctx->battlerIdTarget = ctx->fieldSideConditionData[side].battlerIdFollowMe;
-    } else if (ctx->unk_334.moveData[ctx->moveNoCur].range == RANGE_BOTH_OPPONENTS || ctx->unk_334.moveData[ctx->moveNoCur].range == RANGE_ALL_BUT_USER) {
+    } else if (ctx->unk_334.moveData[ctx->moveNoCur].range == RANGE_ADJACENT_OPPONENTS || ctx->unk_334.moveData[ctx->moveNoCur].range == RANGE_ALL_ADJACENT) {
         ctx->battlerIdTarget = battlerId;
     } else {
         side = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, (u16) ctx->moveNoCur, 1, 0);
@@ -3994,7 +3994,7 @@ BOOL BtlCmd_TryYawn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (ctx->battleMons[ctx->battlerIdTarget].moveEffectFlags & (192 << 5)) {
         BattleScriptIncrementPointer(ctx, adrs);
     } else {
-        ctx->battleMons[ctx->battlerIdTarget].moveEffectFlags |= MOVE_EFFECT_YAWN;
+        ctx->battleMons[ctx->battlerIdTarget].moveEffectFlags |= MOVE_EFFECT_FLAG_YAWN;
     }
 
     return FALSE;
@@ -4052,10 +4052,10 @@ BOOL BtlCmd_TryImprison(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     battlerIdA = ov12_0223ABB8(bsys, ctx->battlerIdAttacker, 0);
     battlerIdB = ov12_0223ABB8(bsys, ctx->battlerIdAttacker, 2);
 
-    ctx->battleMons[battlerIdA].moveEffectFlags |= MOVE_EFFECT_IMPRISON;
-    ctx->battleMons[battlerIdB].moveEffectFlags |= MOVE_EFFECT_IMPRISON;
+    ctx->battleMons[battlerIdA].moveEffectFlags |= MOVE_EFFECT_FLAG_IMPRISON;
+    ctx->battleMons[battlerIdB].moveEffectFlags |= MOVE_EFFECT_FLAG_IMPRISON;
 
-    if (ctx->battleMons[ctx->battlerIdAttacker].moveEffectFlags & MOVE_EFFECT_IMPRISON_USER) {
+    if (ctx->battleMons[ctx->battlerIdAttacker].moveEffectFlags & MOVE_EFFECT_FLAG_IMPRISON_USER) {
         BattleScriptIncrementPointer(ctx, adrs);
     } else {
         side = BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker);
@@ -4080,7 +4080,7 @@ BOOL BtlCmd_TryImprison(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         if (battlerId == maxBattlers) {
             BattleScriptIncrementPointer(ctx, adrs);
         } else {
-            ctx->battleMons[ctx->battlerIdAttacker].moveEffectFlags |= MOVE_EFFECT_IMPRISON_USER;
+            ctx->battleMons[ctx->battlerIdAttacker].moveEffectFlags |= MOVE_EFFECT_FLAG_IMPRISON_USER;
         }
     }
 
@@ -4240,7 +4240,7 @@ BOOL BtlCmd_TryGrudge(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     BattleSystem_GetFieldSide(bsys, ctx->battlerIdTarget);
 
-    if (ctx->battleMons[ctx->battlerIdFainted].moveEffectFlags & MOVE_EFFECT_GRUDGE &&
+    if (ctx->battleMons[ctx->battlerIdFainted].moveEffectFlags & MOVE_EFFECT_FLAG_GRUDGE &&
         BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker) != BattleSystem_GetFieldSide(bsys, ctx->battlerIdFainted) &&
         ctx->battleMons[ctx->battlerIdAttacker].hp && ctx->moveNoTemp != MOVE_STRUGGLE) {
         pos = ctx->movePos[ctx->battlerIdAttacker];
