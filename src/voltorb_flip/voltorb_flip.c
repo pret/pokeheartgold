@@ -1,3 +1,4 @@
+#include "global.h"
 #include "coins.h"
 #include "font.h"
 #include "game_stats.h"

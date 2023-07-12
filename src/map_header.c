@@ -1,5 +1,6 @@
 #define _IN_MAP_HEADER_C
 
+#include "global.h"
 #include "constants/map_sections.h"
 #include "constants/maps.h"
 #include "constants/sndseq.h"

@@ -1,3 +1,4 @@
+#include "global.h"
 #include "metatile_behavior.h"
 #include "constants/metatile_behavior.h"
 

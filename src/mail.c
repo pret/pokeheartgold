@@ -1,3 +1,4 @@
+#include "global.h"
 #include "mail.h"
 #include "string_util.h"
 #include "mail_message.h"

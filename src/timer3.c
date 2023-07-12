@@ -1,3 +1,4 @@
+#include "global.h"
 #include "timer_3.h"
 
 vu64 _021D2214;

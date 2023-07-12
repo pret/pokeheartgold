@@ -1,3 +1,4 @@
+#include "global.h"
 #include "assert.h"
 #include "bag.h"
 #include "field_player_avatar.h"

@@ -1,3 +1,4 @@
+#include "global.h"
 #include "hall_of_fame.h"
 #include "pokemon.h"
 #include "party.h"

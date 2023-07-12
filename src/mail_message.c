@@ -1,3 +1,4 @@
+#include "global.h"
 #include "mail_message.h"
 #include "constants/easy_chat.h"
 #include "msgdata/msg.naix"

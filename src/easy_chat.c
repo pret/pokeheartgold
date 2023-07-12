@@ -1,3 +1,4 @@
+#include "global.h"
 #include "easy_chat.h"
 #include "save.h"
 #include "math_util.h"

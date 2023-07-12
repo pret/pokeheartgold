@@ -1,3 +1,4 @@
+#include "global.h"
 #include "pokemon.h"
 #include "pokemon_icon_idx.h"
 #include "constants/species.h"

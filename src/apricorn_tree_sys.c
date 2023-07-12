@@ -1,3 +1,4 @@
+#include "global.h"
 #include "constants/apricorns.h"
 #include "save_misc_data.h"
 #include "apricorn_tree.h"

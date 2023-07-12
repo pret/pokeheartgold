@@ -1,3 +1,4 @@
+#include "global.h"
 #include "apricorn_tree.h"
 #include "constants/easy_chat.h"
 #include "constants/mail.h"

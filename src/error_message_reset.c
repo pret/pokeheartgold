@@ -1,6 +1,7 @@
 #include <nitro/gx/g2.h>
 #include <nitro/gx/gx_bgcnt.h>
 #include <nitro/pad/common/pad.h>
+#include "global.h"
 #include "error_message_reset.h"
 #include "gx_layers.h"
 #include "main.h"

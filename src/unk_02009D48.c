@@ -1,3 +1,4 @@
+#include "global.h"
 #include "unk_02009D48.h"
 #include "unk_0200ACF0.h"
 #include "unk_02023694.h"

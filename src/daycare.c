@@ -1,3 +1,4 @@
+#include "global.h"
 #include "daycare.h"
 
 u32 Save_Daycare_sizeof(void) {

@@ -1,3 +1,4 @@
+#include "global.h"
 #include "unk_02025534.h"
 
 void sub_0202568C(struct _2DGfxRawResMan *a0);

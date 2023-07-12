@@ -1,3 +1,4 @@
+#include "global.h"
 #include "save_pokegear.h"
 #include "math_util.h"
 #include "constants/items.h"

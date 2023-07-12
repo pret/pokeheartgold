@@ -1,3 +1,4 @@
+#include "global.h"
 #include "battle_input.h"
 #include "gf_gfx_loader.h"
 #include "heap.h"

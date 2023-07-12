@@ -1,3 +1,4 @@
+#include "global.h"
 #include "font.h"
 #include "text.h"
 #include "gf_gfx_loader.h"

@@ -1,3 +1,4 @@
+#include "global.h"
 #include "list_menu_2d.h"
 #include "font.h"
 #include "system.h"

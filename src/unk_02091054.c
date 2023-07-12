@@ -1,3 +1,4 @@
+#include "global.h"
 #include "unk_02091054.h"
 
 typedef struct {

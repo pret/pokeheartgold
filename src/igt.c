@@ -1,3 +1,4 @@
+#include "global.h"
 #include "igt.h"
 
 void InitIGT(struct IGT* igt) {

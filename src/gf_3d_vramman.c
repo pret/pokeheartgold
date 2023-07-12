@@ -1,3 +1,4 @@
+#include "global.h"
 #include "gf_3d_vramman.h"
 #include "gx_layers.h"
 

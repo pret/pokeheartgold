@@ -1,6 +1,8 @@
 #ifndef NITRO_FX_FX_MTX43_H_
 #define NITRO_FX_FX_MTX43_H_
 
+#include <nitro/types.h>
+
 void MTX_Identity43_(register MtxFx43 *pDst);
 void MTX_TransApply43(const MtxFx43 *pSrc, MtxFx43 *pDst, fx32 x, fx32 y, fx32 z);
 void MTX_Concat43(const MtxFx43 *a, const MtxFx43 *b, MtxFx43 *ab);

@@ -1,3 +1,4 @@
+#include "global.h"
 #include "gear_phone.h"
 #include "msgdata/msg.naix"
 #include "phonebook_dat.h"

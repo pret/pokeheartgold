@@ -1,3 +1,4 @@
+#include "global.h"
 #include "bag_view.h"
 #include "heap.h"
 #include "save.h"

@@ -1,3 +1,4 @@
+#include "global.h"
 #include "heap.h"
 #include "pm_string.h"
 #include "font.h"

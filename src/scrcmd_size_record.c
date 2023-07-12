@@ -1,3 +1,4 @@
+#include "global.h"
 #include "pokemon.h"
 #include "scrcmd.h"
 #include "dex_mon_measures.h"
