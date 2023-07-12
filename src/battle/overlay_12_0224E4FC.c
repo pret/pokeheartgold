@@ -25,13 +25,13 @@ static void ApplyEffectivenessFlags(int effectiveness, u32 *moveStatusFlag);
 static int ov12_02258348(BATTLECONTEXT *ctx, int statChangeType, u32 flag);
 static int ov12_022583B4(BATTLECONTEXT *ctx, int battlerId, int typeEffectiveness, int damage, int moveDamage, u32 *flag);
 static int ov12_02258440(BATTLECONTEXT *ctx, int moveNo);
-static u8 ov12_022584AC(BATTLECONTEXT *ctx, int battlerId, int var);
+static u8 Battler_GetType(BATTLECONTEXT *ctx, int battlerId, int var);
 static void ov12_02258584(BATTLECONTEXT *ctx, u8 battlerId);
 static void ov12_0225859C(BATTLECONTEXT *ctx, u8 battlerId);
 static void ov12_022585A8(BATTLECONTEXT *ctx, u8 battlerId);
 static int ov12_022585B8(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdTarget1, int battlerIdTarget2);
 static BOOL ov12_0225865C(BATTLECONTEXT *ctx, int moveNo);
-static int BattleSystem_GetMoveType(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
+static int GetDynamicMoveType(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo);
 
 void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u8 selectedMon) {
     Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, selectedMon);
@@ -319,7 +319,7 @@ int GetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
         return mon->ability;
     case BMON_DATA_TYPE_1:
     case BMON_DATA_TYPE_2:
-        return ov12_022584AC(ctx, battlerId, id);
+        return Battler_GetType(ctx, battlerId, id);
     case BMON_DATA_GENDER:
         return mon->gender;
     case BMON_DATA_IS_SHINY:
@@ -1521,7 +1521,7 @@ void ov12_02250A18(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker
         return;
     }
     
-    moveType = BattleSystem_GetMoveType(bsys, ctx, battlerIdAttacker, moveNo);
+    moveType = GetDynamicMoveType(bsys, ctx, battlerIdAttacker, moveNo);
     if (!moveType) {
         moveType = ctx->unk_334.moveData[moveNo].type;
     }
@@ -7109,7 +7109,7 @@ static int ov12_02258440(BATTLECONTEXT *ctx, int moveNo) {
     return TRUE;
 }
 
-static u8 ov12_022584AC(BATTLECONTEXT *ctx, int battlerId, int var) {
+static u8 Battler_GetType(BATTLECONTEXT *ctx, int battlerId, int var) {
     u8 type;
     
     if (var == BMON_DATA_TYPE_1) {
@@ -7242,7 +7242,7 @@ static BOOL ov12_0225865C(BATTLECONTEXT *ctx, int moveNo) {
     return FALSE;
 }
 
-static int BattleSystem_GetMoveType(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo) {
+static int GetDynamicMoveType(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int moveNo) {
     int type;
     
     switch (moveNo) {

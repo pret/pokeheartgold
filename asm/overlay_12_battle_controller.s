@@ -2540,8 +2540,8 @@ BattleController_EmitPrintMessage: ; 0x022633F0
 	pop {r3, r4, pc}
 	thumb_func_end BattleController_EmitPrintMessage
 
-	thumb_func_start BattleController_SetMoveEffect
-BattleController_SetMoveEffect: ; 0x0226340C
+	thumb_func_start BattleController_SetMoveAnimation
+BattleController_SetMoveAnimation: ; 0x0226340C
 	push {r4, r5, r6, lr}
 	sub sp, #0x68
 	mov r3, #0
@@ -2564,7 +2564,7 @@ BattleController_SetMoveEffect: ; 0x0226340C
 	bl ov12_02262240
 	add sp, #0x68
 	pop {r4, r5, r6, pc}
-	thumb_func_end BattleController_SetMoveEffect
+	thumb_func_end BattleController_SetMoveAnimation
 
 	thumb_func_start ov12_0226343C
 ov12_0226343C: ; 0x0226343C

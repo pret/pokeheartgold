@@ -80,7 +80,7 @@
 .public BattleController_EmitDrawYesNoBox
 .public BattleController_EmitPrintAttackMessage
 .public BattleController_EmitPrintMessage
-.public BattleController_SetMoveEffect
+.public BattleController_SetMoveAnimation
 .public ov12_0226343C
 .public BattleController_EmitMonFlicker
 .public BattleController_EmitHealthbarUpdate

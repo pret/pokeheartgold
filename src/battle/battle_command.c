@@ -849,7 +849,7 @@ BOOL BtlCmd_PlayMoveAnimation(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     if ((!(ctx->battleStatus & BATTLE_STATUS_MOVE_ANIMATIONS_OFF) && BattleSystem_AreBattleAnimationsOn(bsys) == TRUE) || move == MOVE_TRANSFORM) {
         ctx->battleStatus |= BATTLE_STATUS_MOVE_ANIMATIONS_OFF;
-        BattleController_SetMoveEffect(bsys, ctx, move);
+        BattleController_SetMoveAnimation(bsys, ctx, move);
     }
 
     if (!BattleSystem_AreBattleAnimationsOn(bsys)) {
