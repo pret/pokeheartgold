@@ -34,7 +34,7 @@ void _PrintMessage(struct BlackoutScreenWork *work, int msgno, u8 x, u8 y);
 
 static void _InitDisplays(BgConfig *bgConfig) {
     {
-        static const struct GXBanksConfig _020FC550 = {
+        static const struct GraphicsBanks _020FC550 = {
             GX_VRAM_BG_128_B,
             GX_VRAM_BGEXTPLTT_NONE,
             GX_VRAM_SUB_BG_128_C,

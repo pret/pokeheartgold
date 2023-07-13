@@ -15,7 +15,7 @@
 #include "unk_02037C94.h"
 #include "overlay_00_thumb.h"
 
-static const GF_GXBanksConfig sCommunicationErrorBanksConfig = {
+static const GraphicsBanks sCommunicationErrorGraphicsBanks = {
     .bg = GX_VRAM_BG_256_AB,
     .bgextpltt = GX_VRAM_BGEXTPLTT_NONE,
     .subbg = GX_VRAM_SUB_BG_NONE,
@@ -28,7 +28,7 @@ static const GF_GXBanksConfig sCommunicationErrorBanksConfig = {
     .texpltt = GX_VRAM_TEXPLTT_NONE,
 };
 
-static const struct GraphicsModes sCommunicationErrorBgModeSet = {
+static const struct GraphicsModes sCommunicationErrorGraphicsModes = {
     .dispMode = GX_DISPMODE_GRAPHICS,
     .bgMode = GX_BGMODE_0,
     .subMode = GX_BGMODE_0,
@@ -61,6 +61,8 @@ static const WindowTemplate sCommunicationErrorWindowTemplate = {
     .baseTile = 0x23,
 };
 
+static void VBlankIntr(void);
+
 static void VBlankIntr(void) {
     OS_SetIrqCheckFlag(OS_IE_VBLANK);
     MI_WaitDma(GX_DEFAULT_DMAID);
@@ -72,7 +74,7 @@ static BOOL sub_0203A9FC(u32* error_code_ptr) {
     }
 
     // TODO: this is probably a struct.
-    u32* unk = sub_020392D8();
+    u32 *unk = sub_020392D8();
     s32 unk2 = ov00_021E6A70(unk[0], unk[1]);
 
     *error_code_ptr = unk[0];
@@ -84,40 +86,41 @@ static BOOL sub_0203A9FC(u32* error_code_ptr) {
     return TRUE;
 }
 
-void ShowCommunicationError(HeapID heap_id, u32 error, u32 error_code) {
+void ShowCommunicationError(HeapID heapId, u32 error, u32 errorCode) {
     Window window;
 
-    s32 msg_no;
+    u32 msgNo;
     switch (error) {
-    default:
-        msg_no = msg_0041_00001;
-        break;
-    case 1:
-        msg_no = msg_0041_00002;
-        break;
-    case 2:
-        msg_no = msg_0041_00003;
-        break;
-    case 3:
-        msg_no = msg_0041_00004;
-        break;
-    case 4:
-        msg_no = msg_0041_00005;
-        break;
-    case 5:
-        if (!sub_0203A9FC(&error_code)) {
-            msg_no = msg_0041_00006;
-        } else {
-            msg_no = msg_0041_00008;
-        }
-        break;
-    case 6:
-        if (!sub_0203A9FC(&error_code)) {
-            msg_no = msg_0041_00007;
-        } else {
-            msg_no = msg_0041_00009;
-        }
-        break;
+        default:
+        case 0:
+            msgNo = msg_0041_00001;
+            break;
+        case 1:
+            msgNo = msg_0041_00002;
+            break;
+        case 2:
+            msgNo = msg_0041_00003;
+            break;
+        case 3:
+            msgNo = msg_0041_00004;
+            break;
+        case 4:
+            msgNo = msg_0041_00005;
+            break;
+        case 5:
+            if (!sub_0203A9FC(&errorCode)) {
+                msgNo = msg_0041_00006;
+            } else {
+                msgNo = msg_0041_00008;
+            }
+            break;
+        case 6:
+            if (!sub_0203A9FC(&errorCode)) {
+                msgNo = msg_0041_00007;
+            } else {
+                msgNo = msg_0041_00009;
+            }
+            break;
     }
 
     sub_0200FBF4(PM_LCD_TOP, 0);
@@ -144,35 +147,33 @@ void ShowCommunicationError(HeapID heap_id, u32 error, u32 error_code) {
     G2S_BlendNone();
     GX_SetVisibleWnd(0);
     GXS_SetVisibleWnd(0);
-    GX_SetBanks(&sCommunicationErrorBanksConfig);
+    GX_SetBanks(&sCommunicationErrorGraphicsBanks);
 
-    BgConfig* bg_config = BgConfig_Alloc(heap_id);
-    SetBothScreensModesAndDisable(&sCommunicationErrorBgModeSet);
-    InitBgFromTemplate(bg_config, 0, &sCommunicationErrorBgTemplate, GX_BGMODE_0);
-    BgClearTilemapBufferAndCommit(bg_config, GF_BG_LYR_MAIN_0);
-    LoadUserFrameGfx1(bg_config, GF_BG_LYR_MAIN_0, 0x1F7, 2, 0, heap_id);
-    LoadFontPal0(GF_BG_LYR_MAIN_0, 0x20, heap_id);
-    BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 0x20, 0, heap_id);
-    BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB(1, 1, 27));
-    BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB(1, 1, 27));
+    BgConfig* bgConfig = BgConfig_Alloc(heapId);
+    SetBothScreensModesAndDisable(&sCommunicationErrorGraphicsModes);
+    InitBgFromTemplate(bgConfig, 0, &sCommunicationErrorBgTemplate, GX_BGMODE_0);
+    BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_0);
+    LoadUserFrameGfx1(bgConfig, GF_BG_LYR_MAIN_0, 0x1F7, 2, 0, heapId);
+    LoadFontPal0(GF_BG_LYR_MAIN_0, GF_PAL_SLOT_OFFSET_1, heapId);
+    BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 0x20, 0, heapId);
+    BG_SetMaskColor(GF_BG_LYR_MAIN_0, GX_RGB(1, 1, 27));
+    BG_SetMaskColor(GF_BG_LYR_SUB_0, GX_RGB(1, 1, 27));
 
-    MsgData* errors_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0041_bin, heap_id);
-    String* error_str = String_New(384, heap_id);
-    String* tmp_str = String_New(384, heap_id);
-
+    MsgData* errorMessageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0041_bin, heapId);
+    String* errorMessageStr = String_New(384, heapId);
+    String* tmpStr = String_New(384, heapId);
     ResetAllTextPrinters();
+    MessageFormat* messageFormat = MessageFormat_New(heapId);
 
-    MessageFormat* messageFormat = MessageFormat_New(heap_id);
-
-    AddWindow(bg_config, &window, &sCommunicationErrorWindowTemplate);
+    AddWindow(bgConfig, &window, &sCommunicationErrorWindowTemplate);
     FillWindowPixelRect(&window, 0xF, 0, 0, 208, 144);
     DrawFrameAndWindow1(&window, FALSE, 0x1F7, 2);
 
-    BufferIntegerAsString(messageFormat, 0, error_code, 5, PRINTING_MODE_LEADING_ZEROS, TRUE);
-    ReadMsgDataIntoString(errors_msgdata, msg_no, tmp_str);
-    StringExpandPlaceholders(messageFormat, error_str, tmp_str);
-    AddTextPrinterParameterized(&window, 0, error_str, 0, 0, 0, NULL);
-    String_Delete(error_str);
+    BufferIntegerAsString(messageFormat, 0, errorCode, 5, PRINTING_MODE_LEADING_ZEROS, TRUE);
+    ReadMsgDataIntoString(errorMessageData, msgNo, tmpStr);
+    StringExpandPlaceholders(messageFormat, errorMessageStr, tmpStr);
+    AddTextPrinterParameterized(&window, 0, errorMessageStr, 0, 0, 0, NULL);
+    String_Delete(errorMessageStr);
     // BUG: tmp_str is never destroyed.
 
     GX_BothDispOn();
@@ -181,7 +182,7 @@ void ShowCommunicationError(HeapID heap_id, u32 error, u32 error_code) {
     SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN | SCREEN_MASK_SUB);
 
     RemoveWindow(&window);
-    DestroyMsgData(errors_msgdata);
+    DestroyMsgData(errorMessageData);
     MessageFormat_Delete(messageFormat);
-    FreeToHeap(bg_config);
+    FreeToHeap(bgConfig);
 }

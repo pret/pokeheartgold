@@ -40,7 +40,7 @@ static void ReadFromNarcMemberByPathAndId(void * dest, const char * path, s32 fi
     FS_CloseFile(&file);
 }
 
-static void * AllocAndReadFromNarcMemberByPathAndId(const char * path, s32 file_idx, HeapID heap_id, u32 offset, u32 size, BOOL allocMode) {
+static void * AllocAndReadFromNarcMemberByPathAndId(const char * path, s32 file_idx, HeapID heapId, u32 offset, u32 size, BOOL allocMode) {
     FSFile file;
     u32 btaf_start = 0;
     u32 btnf_start = 0;
@@ -76,10 +76,10 @@ static void * AllocAndReadFromNarcMemberByPathAndId(const char * path, s32 file_
     GF_ASSERT(chunk_size != 0);
     switch (allocMode) {
     case 0:
-        dest = AllocFromHeap(heap_id, chunk_size);
+        dest = AllocFromHeap(heapId, chunk_size);
         break;
     default:
-        dest = AllocFromHeapAtEnd(heap_id, chunk_size);
+        dest = AllocFromHeapAtEnd(heapId, chunk_size);
         break;
     }
     FS_ReadFile(&file, dest, (s32)chunk_size);
@@ -91,24 +91,24 @@ void ReadWholeNarcMemberByIdPair(void * dest, NarcId narc_id, s32 file_id) {
     ReadFromNarcMemberByPathAndId(dest, sNarcFileList[narc_id], file_id, 0, 0);
 }
 
-void * AllocAndReadWholeNarcMemberByIdPair(NarcId narc_id, s32 file_id, HeapID heap_id) {
-    return AllocAndReadFromNarcMemberByPathAndId(sNarcFileList[narc_id], file_id, heap_id, 0, 0, FALSE);
+void * AllocAndReadWholeNarcMemberByIdPair(NarcId narc_id, s32 file_id, HeapID heapId) {
+    return AllocAndReadFromNarcMemberByPathAndId(sNarcFileList[narc_id], file_id, heapId, 0, 0, FALSE);
 }
 
-void * AllocAtEndAndReadWholeNarcMemberByIdPair(NarcId narc_id, s32 file_id, HeapID heap_id) {
-    return AllocAndReadFromNarcMemberByPathAndId(sNarcFileList[narc_id], file_id, heap_id, 0, 0, TRUE);
+void * AllocAtEndAndReadWholeNarcMemberByIdPair(NarcId narc_id, s32 file_id, HeapID heapId) {
+    return AllocAndReadFromNarcMemberByPathAndId(sNarcFileList[narc_id], file_id, heapId, 0, 0, TRUE);
 }
 
 void ReadFromNarcMemberByIdPair(void * dest, NarcId narc_id, s32 file_id, u32 offset, u32 size) {
     ReadFromNarcMemberByPathAndId(dest, sNarcFileList[narc_id], file_id, offset, size);
 }
 
-void * AllocAndReadFromNarcMemberByIdPair(NarcId narc_id, s32 file_id, HeapID heap_id, u32 offset, u32 size) {
-    return AllocAndReadFromNarcMemberByPathAndId(sNarcFileList[narc_id], file_id, heap_id, offset, size, FALSE);
+void * AllocAndReadFromNarcMemberByIdPair(NarcId narc_id, s32 file_id, HeapID heapId, u32 offset, u32 size) {
+    return AllocAndReadFromNarcMemberByPathAndId(sNarcFileList[narc_id], file_id, heapId, offset, size, FALSE);
 }
 
-void * AllocAtEndAndReadFromNarcMemberByIdPair(NarcId narc_id, s32 file_id, HeapID heap_id, u32 offset, u32 size) {
-    return AllocAndReadFromNarcMemberByPathAndId(sNarcFileList[narc_id], file_id, heap_id, offset, size, TRUE);
+void * AllocAtEndAndReadFromNarcMemberByIdPair(NarcId narc_id, s32 file_id, HeapID heapId, u32 offset, u32 size) {
+    return AllocAndReadFromNarcMemberByPathAndId(sNarcFileList[narc_id], file_id, heapId, offset, size, TRUE);
 }
 
 u32 GetNarcMemberSizeByIdPair(NarcId narc_id, s32 file_idx) {
@@ -145,8 +145,8 @@ u32 GetNarcMemberSizeByIdPair(NarcId narc_id, s32 file_idx) {
     return chunk_size;
 }
 
-NARC * NARC_New(NarcId narc_id, HeapID heap_id) {
-    NARC * narc = (NARC *)AllocFromHeap(heap_id, sizeof(NARC));
+NARC * NARC_New(NarcId narc_id, HeapID heapId) {
+    NARC * narc = (NARC *)AllocFromHeap(heapId, sizeof(NARC));
     u32 btnf_start;
     u32 chunk_size;
     if (narc != NULL) {
@@ -171,7 +171,7 @@ void NARC_Delete(NARC * narc) {
     FreeToHeap(narc); // free to heap
 }
 
-void * NARC_AllocAndReadWholeMember(NARC * narc, u32 file_id, HeapID heap_id) {
+void * NARC_AllocAndReadWholeMember(NARC * narc, u32 file_id, HeapID heapId) {
     u32 file_start;
     u32 file_end;
     void * dest;
@@ -180,7 +180,7 @@ void * NARC_AllocAndReadWholeMember(NARC * narc, u32 file_id, HeapID heap_id) {
     FS_ReadFile(&narc->file, &file_start, 4);
     FS_ReadFile(&narc->file, &file_end, 4);
     FS_SeekFile(&narc->file, (s32)(narc->gmif_start + 8 + file_start), FS_SEEK_SET);
-    dest = AllocFromHeap(heap_id, file_end - file_start);
+    dest = AllocFromHeap(heapId, file_end - file_start);
     if (dest != NULL) {
         FS_ReadFile(&narc->file, dest, (s32)(file_end - file_start));
     }
