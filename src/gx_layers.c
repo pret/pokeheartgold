@@ -5,7 +5,7 @@
 static u32 sEngineBLayers = 0;
 static u32 sEngineALayers = 0;
 
-void GX_SetBanks(const GF_GXBanksConfig *banks) {
+void GX_SetBanks(const GraphicsBanks *banks) {
     GX_ResetBankForBG();
     GX_ResetBankForBGExtPltt();
     GX_ResetBankForSubBG();

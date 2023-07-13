@@ -651,10 +651,10 @@ static void BattleArcade_VBlank(void *_work) {
     OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
-extern GF_GXBanksConfig ov84_0223F9BC;
+extern GraphicsBanks ov84_0223F9BC;
 
 static void BattleArcade_SetVramBanks() {
-    GF_GXBanksConfig config = ov84_0223F9BC;
+    GraphicsBanks config = ov84_0223F9BC;
     GX_SetBanks(&config);
 }
 

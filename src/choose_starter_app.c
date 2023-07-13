@@ -589,7 +589,7 @@ static void vBlankCB(struct ChooseStarterAppWork *work) {
 }
 
 static void setGxBanks(void) {
-    const struct GXBanksConfig cfg = {
+    const struct GraphicsBanks cfg = {
         GX_VRAM_BG_80_EF,
         GX_VRAM_BGEXTPLTT_NONE,
         GX_VRAM_SUB_BG_128_C,

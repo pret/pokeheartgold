@@ -19,7 +19,7 @@
 #include "font.h"
 #include "bg_window.h"
 
-static const GF_GXBanksConfig sErrorMessageBanksConfig = {
+static const GraphicsBanks sErrorMessageBanksConfig = {
     .bg = GX_VRAM_BG_256_AB,
     .bgextpltt = GX_VRAM_BGEXTPLTT_NONE,
     .subbg = GX_VRAM_SUB_BG_NONE,

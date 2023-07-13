@@ -45,7 +45,7 @@ typedef struct {
     int bgmVolume;      // also used as a timer
 } GameClearWork;
 
-static const GF_GXBanksConfig sGameClearSaveBanksConfig = {
+static const GraphicsBanks sGameClearSaveBanksConfig = {
     .bg            = GX_VRAM_BG_128_B,
     .bgextpltt     = GX_VRAM_BGEXTPLTT_NONE,
     .subbg         = GX_VRAM_SUB_BG_128_C,

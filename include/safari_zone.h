@@ -75,7 +75,7 @@ u8 sub_0202F730(SafariZone* safari_zone, s32 a1);
 void sub_0202F754(SafariZone* safari_zone, u8 a1);
 void sub_0202F784(SafariZone* safari_zone, IGT* igt);
 u32 sub_0202F798(SafariZone* safari_zone, IGT* igt, s32 a2);
-void SafariZone_SetLinkLeaderFromProfile(SafariZone* safari_zone, PlayerProfile* profile, HeapID heap_id);
+void SafariZone_SetLinkLeaderFromProfile(SafariZone* safari_zone, PlayerProfile* profile, HeapID heapId);
 void SafariZone_GetLinkLeaderToProfile(SafariZone* safari_zone, PlayerProfile* profile);
 u8 SafariZone_GetLinkLeaderGender(SafariZone* safari_zone);
 u8 SafariZone_IsCurrentlyLinked(SafariZone* safari_zone);

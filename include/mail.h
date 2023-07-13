@@ -13,7 +13,7 @@ typedef struct Mailbox {
     Mail msgs[MAILBOX_MSG_COUNT];
 } MAILBOX;
 
-Mail *Mail_New(HeapID heap_id);
+Mail *Mail_New(HeapID heapId);
 void Mail_Copy(const Mail *src, Mail *dest);
 void Mail_Init(Mail *mail);
 BOOL Mail_TypeIsValid(Mail *mail);
