@@ -91,3 +91,20 @@ void BattleControllerPlayer_PokemonAppear(BattleSystem *bsys, BATTLECONTEXT *ctx
         ctx->command = CONTROLLER_COMMAND_SELECTION_SCREEN_INIT;
     }
 }
+
+//static
+void BattleControllerPlayer_SelectionScreenInit(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int battlerId;
+    int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+    
+    for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
+        ctx->unk_0[battlerId] = 0;
+        ctx->battleMons[battlerId].moveEffectFlagsTemp = ctx->battleMons[battlerId].moveEffectFlags;
+        ctx->unk_314C[battlerId] = 0;
+    }
+    
+    ov12_0223BB64(bsys, 0);
+    ov12_02237ED0(bsys, 1);
+    
+    ctx->command = CONTROLLER_COMMAND_SELECTION_SCREEN_INPUT;
+}

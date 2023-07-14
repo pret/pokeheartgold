@@ -402,7 +402,7 @@ int GetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
     case BMON_DATA_MOVE_EFFECT:
         return mon->moveEffectFlags;
     case BMON_DATA_MOVE_EFFECT_TEMP:
-        return mon->unk80;
+        return mon->moveEffectFlagsTemp;
     case BMON_DATA_DISABLED_TURNS:
         return mon->unk88.disabledTurns;
     case BMON_DATA_ENCORED_TURNS:
@@ -656,7 +656,7 @@ void SetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
         mon->moveEffectFlags = *data32;
         break;
     case BMON_DATA_MOVE_EFFECT_TEMP:
-        mon->unk80 = *data32;
+        mon->moveEffectFlagsTemp = *data32;
         break;
     case BMON_DATA_DISABLED_TURNS:
         mon->unk88.disabledTurns = *data8;

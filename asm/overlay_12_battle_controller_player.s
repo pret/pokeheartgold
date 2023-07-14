@@ -9,47 +9,8 @@
     .public BattleControllerPlayer_StartEncounter
     .public BattleControllerPlayer_TrainerMessage
     .public BattleControllerPlayer_PokemonAppear
-
-	thumb_func_start BattleControllerPlayer_SelectionScreenInit
-BattleControllerPlayer_SelectionScreenInit: ; 0x022487FC
-	push {r3, r4, r5, r6, r7, lr}
-	str r0, [sp]
-	add r7, r1, #0
-	bl BattleSystem_GetMaxBattlers
-	add r5, r0, #0
-	mov r4, #0
-	cmp r5, #0
-	ble _0224882C
-	add r6, r7, #0
-	add r2, r4, #0
-_02248812:
-	mov r0, #0xb7
-	strb r2, [r7, r4]
-	lsl r0, r0, #6
-	ldr r1, [r6, r0]
-	add r0, r0, #4
-	str r1, [r6, r0]
-	add r3, r7, r4
-	ldr r0, _02248844 ; =0x0000314C
-	add r4, r4, #1
-	strb r2, [r3, r0]
-	add r6, #0xc0
-	cmp r4, r5
-	blt _02248812
-_0224882C:
-	ldr r0, [sp]
-	mov r1, #0
-	bl ov12_0223BB64
-	ldr r0, [sp]
-	mov r1, #1
-	bl ov12_02237ED0
-	mov r0, #5
-	str r0, [r7, #8]
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_02248844: .word 0x0000314C
-	thumb_func_end BattleControllerPlayer_SelectionScreenInit
-
+    .public BattleControllerPlayer_SelectionScreenInit
+    
 	thumb_func_start ov12_02248848
 ov12_02248848: ; 0x02248848
 	push {r3, r4, r5, r6, r7, lr}
