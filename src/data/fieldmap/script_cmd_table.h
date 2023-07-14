@@ -311,8 +311,8 @@ BOOL ScrCmd_308(ScriptContext *ctx);
 BOOL ScrCmd_309(ScriptContext *ctx);
 BOOL ScrCmd_310(ScriptContext *ctx);
 BOOL ScrCmd_311(ScriptContext *ctx);
-BOOL ScrCmd_BufferDayCareMonNicks(ScriptContext *ctx);
-BOOL ScrCmd_GetDayCareState(ScriptContext *ctx);
+BOOL ScrCmd_BufferDaycareMonNicks(ScriptContext *ctx);
+BOOL ScrCmd_GetDaycareState(ScriptContext *ctx);
 BOOL ScrCmd_EcruteakGymInit(ScriptContext *ctx);
 BOOL ScrCmd_315(ScriptContext *ctx);
 BOOL ScrCmd_316(ScriptContext *ctx);
@@ -360,19 +360,19 @@ BOOL ScrCmd_CountAliveMons(ScriptContext *ctx);
 BOOL ScrCmd_CountAliveMonsAndPC(ScriptContext *ctx);
 BOOL ScrCmd_PartyCountEgg(ScriptContext *ctx);
 BOOL ScrCmd_SubMoneyVar(ScriptContext *ctx);
-BOOL ScrCmd_RetrieveDayCareMon(ScriptContext *ctx);
+BOOL ScrCmd_RetrieveDaycareMon(ScriptContext *ctx);
 BOOL ScrCmd_GiveLoanMon(ScriptContext *ctx);
 BOOL ScrCmd_CheckReturnLoanMon(ScriptContext *ctx);
 BOOL ScrCmd_TakeMon(ScriptContext *ctx);
-BOOL ScrCmd_ResetDayCareEgg(ScriptContext *ctx);
-BOOL ScrCmd_GiveDayCareEgg(ScriptContext *ctx);
-BOOL ScrCmd_BufferDayCareWithdrawCost(ScriptContext *ctx);
+BOOL ScrCmd_ResetDaycareEgg(ScriptContext *ctx);
+BOOL ScrCmd_GiveDaycareEgg(ScriptContext *ctx);
+BOOL ScrCmd_BufferDaycareWithdrawCost(ScriptContext *ctx);
 BOOL ScrCmd_HasEnoughMoneyVar(ScriptContext *ctx);
 BOOL ScrCmd_EggHatchAnim(ScriptContext *ctx);
 BOOL ScrCmd_370(ScriptContext *ctx);
-BOOL ScrCmd_BufferDayCareMonGrowth(ScriptContext *ctx);
-BOOL ScrCmd_GetTailDayCareMonSpeciesAndNick(ScriptContext *ctx);
-BOOL ScrCmd_PutMonInDayCare(ScriptContext *ctx);
+BOOL ScrCmd_BufferDaycareMonGrowth(ScriptContext *ctx);
+BOOL ScrCmd_GetTailDaycareMonSpeciesAndNick(ScriptContext *ctx);
+BOOL ScrCmd_PutMonInDaycare(ScriptContext *ctx);
 BOOL ScrCmd_374(ScriptContext *ctx);
 BOOL ScrCmd_375(ScriptContext *ctx);
 BOOL ScrCmd_376(ScriptContext *ctx);
@@ -384,10 +384,10 @@ BOOL ScrCmd_381(ScriptContext *ctx);
 BOOL ScrCmd_MonGetFriendship(ScriptContext *ctx);
 BOOL ScrCmd_MonAddFriendship(ScriptContext *ctx);
 BOOL ScrCmd_MonSubtractFriendship(ScriptContext *ctx);
-BOOL ScrCmd_BufferDayCareMonStats(ScriptContext *ctx);
+BOOL ScrCmd_BufferDaycareMonStats(ScriptContext *ctx);
 BOOL ScrCmd_GetPlayerFacing(ScriptContext *ctx);
-BOOL ScrCmd_GetDayCareCompatibility(ScriptContext *ctx);
-BOOL ScrCmd_CheckDayCareEgg(ScriptContext *ctx);
+BOOL ScrCmd_GetDaycareCompatibility(ScriptContext *ctx);
+BOOL ScrCmd_CheckDaycareEgg(ScriptContext *ctx);
 BOOL ScrCmd_PlayerHasSpecies(ScriptContext *ctx);
 BOOL ScrCmd_SizeRecordCompare(ScriptContext *ctx);
 BOOL ScrCmd_SizeRecordUpdate(ScriptContext *ctx);
@@ -689,7 +689,7 @@ BOOL ScrCmd_686(ScriptContext *ctx);
 BOOL ScrCmd_687(ScriptContext *ctx);
 BOOL ScrCmd_GetPartySlotWithFatefulEncounter(ScriptContext *ctx);
 BOOL ScrCmd_CommSanitizeParty(ScriptContext *ctx);
-BOOL ScrCmd_DayCareSanitizeMon(ScriptContext *ctx);
+BOOL ScrCmd_DaycareSanitizeMon(ScriptContext *ctx);
 BOOL ScrCmd_691(ScriptContext *ctx);
 BOOL ScrCmd_BufferBattleHallStreak(ScriptContext *ctx);
 BOOL ScrCmd_BattleHallCountUsedSpecies(ScriptContext *ctx);
@@ -714,7 +714,7 @@ BOOL ScrCmd_FollowPokeInteract(ScriptContext *ctx);
 BOOL ScrCmd_712(ScriptContext *ctx);
 BOOL ScrCmd_AlphPuzzle(ScriptContext *ctx);
 BOOL ScrCmd_OpenAlphHiddenRoom(ScriptContext *ctx);
-BOOL ScrCmd_UpdateDayCareMonObjects(ScriptContext *ctx);
+BOOL ScrCmd_UpdateDaycareMonObjects(ScriptContext *ctx);
 BOOL ScrCmd_716(ScriptContext *ctx);
 BOOL ScrCmd_717(ScriptContext *ctx);
 BOOL ScrCmd_718(ScriptContext *ctx);
@@ -1166,8 +1166,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_309,
     ScrCmd_310,
     ScrCmd_311,
-    ScrCmd_BufferDayCareMonNicks,
-    ScrCmd_GetDayCareState,
+    ScrCmd_BufferDaycareMonNicks,
+    ScrCmd_GetDaycareState,
     ScrCmd_EcruteakGymInit,
     ScrCmd_315,
     ScrCmd_316,
@@ -1215,19 +1215,19 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_CountAliveMonsAndPC,
     ScrCmd_PartyCountEgg,
     ScrCmd_SubMoneyVar,
-    ScrCmd_RetrieveDayCareMon,
+    ScrCmd_RetrieveDaycareMon,
     ScrCmd_GiveLoanMon,
     ScrCmd_CheckReturnLoanMon,
     ScrCmd_TakeMon,
-    ScrCmd_ResetDayCareEgg,
-    ScrCmd_GiveDayCareEgg,
-    ScrCmd_BufferDayCareWithdrawCost,
+    ScrCmd_ResetDaycareEgg,
+    ScrCmd_GiveDaycareEgg,
+    ScrCmd_BufferDaycareWithdrawCost,
     ScrCmd_HasEnoughMoneyVar,
     ScrCmd_EggHatchAnim,
     ScrCmd_370,
-    ScrCmd_BufferDayCareMonGrowth,
-    ScrCmd_GetTailDayCareMonSpeciesAndNick,
-    ScrCmd_PutMonInDayCare,
+    ScrCmd_BufferDaycareMonGrowth,
+    ScrCmd_GetTailDaycareMonSpeciesAndNick,
+    ScrCmd_PutMonInDaycare,
     ScrCmd_374,
     ScrCmd_375,
     ScrCmd_376,
@@ -1239,10 +1239,10 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_MonGetFriendship,
     ScrCmd_MonAddFriendship,
     ScrCmd_MonSubtractFriendship,
-    ScrCmd_BufferDayCareMonStats,
+    ScrCmd_BufferDaycareMonStats,
     ScrCmd_GetPlayerFacing,
-    ScrCmd_GetDayCareCompatibility,
-    ScrCmd_CheckDayCareEgg,
+    ScrCmd_GetDaycareCompatibility,
+    ScrCmd_CheckDaycareEgg,
     ScrCmd_PlayerHasSpecies,
     ScrCmd_SizeRecordCompare,
     ScrCmd_SizeRecordUpdate,
@@ -1544,7 +1544,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_687,
     ScrCmd_GetPartySlotWithFatefulEncounter,
     ScrCmd_CommSanitizeParty,
-    ScrCmd_DayCareSanitizeMon,
+    ScrCmd_DaycareSanitizeMon,
     ScrCmd_691,
     ScrCmd_BufferBattleHallStreak,
     ScrCmd_BattleHallCountUsedSpecies,
@@ -1569,7 +1569,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_712,
     ScrCmd_AlphPuzzle,
     ScrCmd_OpenAlphHiddenRoom,
-    ScrCmd_UpdateDayCareMonObjects,
+    ScrCmd_UpdateDaycareMonObjects,
     ScrCmd_716,
     ScrCmd_717,
     ScrCmd_718,
