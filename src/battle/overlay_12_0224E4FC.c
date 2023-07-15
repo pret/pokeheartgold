@@ -1567,7 +1567,7 @@ BOOL ov12_02250BBC(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ctx->selfTurnData[ctx->battlerIdTarget].lightningRodFlag = FALSE;
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 180);
         ctx->commandNext = ctx->command;
-        ctx->command = CONTROLLER_COMMAND_22;
+        ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
         ret = TRUE;
     }
     
@@ -1575,7 +1575,7 @@ BOOL ov12_02250BBC(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ctx->selfTurnData[ctx->battlerIdTarget].stormDrainFlag = FALSE;
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 180);
         ctx->commandNext = ctx->command;
-        ctx->command = CONTROLLER_COMMAND_22;
+        ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
         ret = TRUE;
     }
     
@@ -3587,7 +3587,7 @@ BOOL ov12_02253068(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     if (ret == TRUE) {
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, state);
         ctx->commandNext = ctx->command;
-        ctx->command = CONTROLLER_COMMAND_22;
+        ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
     }
     
     return ret;
@@ -4285,7 +4285,7 @@ BOOL CheckStatusHealAbility(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerI
         if (!flag) {
             ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 221);
             ctx->commandNext = ctx->command;
-            ctx->command = CONTROLLER_COMMAND_22;
+            ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
         }
     }
 
@@ -4358,7 +4358,7 @@ BOOL TrySyncronizeStatus(BattleSystem *bsys, BATTLECONTEXT *ctx, ControllerComma
             ctx->statChangeType = 3;
             ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
             ctx->commandNext = command;
-            ctx->command = CONTROLLER_COMMAND_22;
+            ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
             return ret;
         }
     }
@@ -4367,7 +4367,7 @@ BOOL TrySyncronizeStatus(BattleSystem *bsys, BATTLECONTEXT *ctx, ControllerComma
     if (ret == TRUE) {
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
         ctx->commandNext = command;
-        ctx->command = CONTROLLER_COMMAND_22;
+        ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
         return ret;
     }
     
@@ -4391,7 +4391,7 @@ BOOL TrySyncronizeStatus(BattleSystem *bsys, BATTLECONTEXT *ctx, ControllerComma
         ctx->statChangeType = 5;
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
         ctx->commandNext = command;
-        ctx->command = CONTROLLER_COMMAND_22;
+        ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
         return ret;
     }
     
@@ -4676,7 +4676,7 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
             ctx->itemTemp = GetBattlerHeldItem(ctx, battlerId);
             ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
             ctx->commandNext = ctx->command;
-            ctx->command = CONTROLLER_COMMAND_22;
+            ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
         }
     }
     return ret;
@@ -4720,7 +4720,7 @@ BOOL CheckItemGradualHPRestore(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
             ctx->itemTemp = GetBattlerHeldItem(ctx, battlerId);
             ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
             ctx->commandNext = ctx->command;
-            ctx->command = CONTROLLER_COMMAND_22;
+            ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
         }
     }
     return ret;
@@ -5041,7 +5041,7 @@ BOOL TryHeldItemNegativeEffect(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
             ctx->itemTemp = GetBattlerHeldItem(ctx, battlerId);
             ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
             ctx->commandNext = ctx->command;
-            ctx->command = CONTROLLER_COMMAND_22;
+            ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
         }
     }
     return ret;

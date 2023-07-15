@@ -200,6 +200,7 @@ enum Terrain {
 #define STATUS2_FOCUS_ENERGY                (1 << 20)
 #define STATUS2_TRANSFORMED                 (1 << 21)
 #define STATUS2_RECHARGE                    (1 << 22)
+#define STATUS2_23                          (1 << 23)
 #define STATUS2_SUBSTITUTE                  (1 << 24)
 #define STATUS2_MEAN_LOOK                   (1 << 26)
 #define STATUS2_27                          (1 << 27)
@@ -405,7 +406,7 @@ typedef enum ControllerCommand {
     CONTROLLER_COMMAND_19,
     CONTROLLER_COMMAND_20,
     CONTROLLER_COMMAND_21,
-    CONTROLLER_COMMAND_22,
+    CONTROLLER_COMMAND_RUN_SCRIPT,
     CONTROLLER_COMMAND_23,
     CONTROLLER_COMMAND_24,
     CONTROLLER_COMMAND_25,

@@ -61,7 +61,7 @@ void BattleControllerPlayer_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx)
 //static
 void BattleControllerPlayer_StartEncounter(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 0);
-    ctx->command = CONTROLLER_COMMAND_22;
+    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
     ctx->commandNext = CONTROLLER_COMMAND_TRAINER_MESSAGE;
 }
 
@@ -69,7 +69,7 @@ void BattleControllerPlayer_StartEncounter(BattleSystem *bsys, BATTLECONTEXT *ct
 void BattleControllerPlayer_TrainerMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (CheckTrainerMessage(bsys, ctx)) {
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 41);
-        ctx->command = CONTROLLER_COMMAND_22;
+        ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
         ctx->commandNext = CONTROLLER_COMMAND_SEND_OUT;
     } else {
         ctx->command = CONTROLLER_COMMAND_SEND_OUT;
@@ -85,7 +85,7 @@ void BattleControllerPlayer_PokemonAppear(BattleSystem *bsys, BATTLECONTEXT *ctx
     if (script) {
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
         ctx->commandNext = ctx->command;
-        ctx->command = CONTROLLER_COMMAND_22;
+        ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
     } else {
         SortMonsBySpeed(bsys, ctx);
         ov12_0223C0C4(bsys);
@@ -561,4 +561,59 @@ void ov12_02249190(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     }
     
     ctx->command = CONTROLLER_COMMAND_7;
+}
+
+//static
+void ov12_0224930C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int flag = 0;
+    int battlerId;
+    int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+    
+    do {
+        switch (ctx->unk_28) {
+        case 0: //Focus Punch
+            while (ctx->unk_2C < maxBattlers) {
+                battlerId = ctx->unk_21E8[ctx->unk_2C];
+                if (ctx->unk_3108 & MaskOfFlagNo(battlerId)) {
+                    ctx->unk_2C++;
+                    continue;
+                }
+                ctx->unk_2C++;
+                if (!(ctx->battleMons[battlerId].status & STATUS_SLEEP) &&
+                    (GetBattlerSelectedMove(ctx, battlerId) == MOVE_FOCUS_PUNCH) &&
+                    !CheckTruant(ctx, battlerId) && !ctx->turnData[battlerId].struggleFlag) {
+                    ov12_022642F0(bsys);
+                    ctx->battlerIdTemp = battlerId;
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 232);
+                    ctx->commandNext = ctx->command;
+                    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                    return;
+                }
+            }
+            ctx->unk_2C = 0;
+            ctx->unk_28++;
+            break;
+        case 1: //???
+            for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
+                if ((ctx->battleMons[battlerId].status2 & STATUS2_23) && GetBattlerSelectedMove(ctx, battlerId) != MOVE_RAGE) {
+                    ctx->battleMons[battlerId].status2 &= STATUS2_23;
+                }
+            }
+            ctx->unk_28++;
+            break;
+        case 2: //???
+            for (battlerId = 0; battlerId < 4; battlerId++) {
+                ctx->unk_310C[battlerId] = BattleSystem_Random(bsys);
+            }
+            ctx->unk_28++;
+            break;
+        case 3: //end
+            ctx->unk_28 = 0;
+            flag = 2;
+            break;
+        } 
+    } while (flag == 0);
+    if (flag == 2) {
+        ctx->command = CONTROLLER_COMMAND_8;
+    }
 }
