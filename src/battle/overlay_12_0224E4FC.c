@@ -87,7 +87,7 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
     ctx->battleMons[battlerId].gender = GetMonGender(mon);
     ctx->battleMons[battlerId].shiny = MonIsShiny(mon);
     
-    if (BattleSystem_GetBattleType(bsys) & (BATTLE_TYPE_5|BATTLE_TYPE_9)) { //No abilities battle
+    if (BattleSystem_GetBattleType(bsys) & (BATTLE_TYPE_SAFARI|BATTLE_TYPE_PAL_PARK)) { //No abilities battle
         ctx->battleMons[battlerId].ability = 0;
         ctx->battleMons[battlerId].status = 0;
         ctx->battleMons[battlerId].item = 0;
@@ -97,7 +97,7 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battl
         ctx->battleMons[battlerId].item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
     }
     
-    if ((BattleSystem_GetBattleType(bsys) & (BATTLE_TYPE_5|BATTLE_TYPE_9)) && !BattleSystem_GetFieldSide(bsys, battlerId)) {
+    if ((BattleSystem_GetBattleType(bsys) & (BATTLE_TYPE_SAFARI|BATTLE_TYPE_PAL_PARK)) && !BattleSystem_GetFieldSide(bsys, battlerId)) {
         ctx->battleMons[battlerId].form= 0;
     } else {
         ctx->battleMons[battlerId].form = GetMonData(mon, MON_DATA_FORM, NULL);
@@ -1630,7 +1630,7 @@ BOOL CheckTrainerMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         return FALSE;
     }
     
-    if (!(state & BATTLE_TYPE_TRAINER)) {
+    if (!(state & BATTLE_TYPE_SINGLES)) {
         return FALSE;
     }
     
@@ -3145,7 +3145,7 @@ BOOL CantEscape(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, BATTLEMSG
     battleType = BattleSystem_GetBattleType(bsys);
     item = GetBattlerHeldItemEffect(ctx, battlerId);
     
-    if (item == HOLD_EFFECT_FLEE || (battleType & BATTLE_TYPE_CAN_ALWAYS_FLEE) || GetBattlerAbility(ctx, battlerId) == ABILITY_RUN_AWAY) {
+    if (item == HOLD_EFFECT_FLEE || (battleType & BATTLE_TYPE_NO_EXP) || GetBattlerAbility(ctx, battlerId) == ABILITY_RUN_AWAY) {
         return FALSE;
     }
     
@@ -3227,7 +3227,7 @@ BOOL BattleTryRun(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     if (item == HOLD_EFFECT_FLEE) {
         ctx->turnData[battlerId].runFlag = 1;
         ret = TRUE;
-    } else if (battleType & BATTLE_TYPE_CAN_ALWAYS_FLEE) {
+    } else if (battleType & BATTLE_TYPE_NO_EXP) {
         ret = TRUE;
     } else if (GetBattlerAbility(ctx, battlerId) == ABILITY_RUN_AWAY) {
         ctx->turnData[battlerId].runFlag = 2;
@@ -5796,7 +5796,7 @@ void ov12_022567D4(BattleSystem *bsys, BATTLECONTEXT *ctx, Pokemon *mon) {
     int terrain = BattleSystem_GetTerrainId(bsys);
     int ballId;
     
-    if (BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_9) {
+    if (BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_PAL_PARK) {
         ballId = BallToItemId(BattleSystem_GetMonBall(bsys, mon));
     } else {
         ballId = ctx->itemTemp;

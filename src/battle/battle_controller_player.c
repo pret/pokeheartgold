@@ -175,7 +175,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
             if (ov12_0225682C(ctx, battlerId)) {
                 ctx->unk_21A8[battlerId][3] = ctx->unk_2300[battlerId][0];
 
-                if (battleType & BATTLE_TYPE_9) {
+                if (battleType & BATTLE_TYPE_PAL_PARK) {
                     switch (ov12_0225682C(ctx, battlerId)) {
                     case 1:
                         ctx->unk_0[battlerId] = 17;
@@ -188,7 +188,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
                         ctx->unk_21A8[battlerId][0] = 16;
                         break;
                     }
-                } else if (battleType & BATTLE_TYPE_5) {
+                } else if (battleType & BATTLE_TYPE_SAFARI) {
                     switch (ov12_0225682C(ctx, battlerId)) {
                     case 1:
                         ctx->unk_0[battlerId] = 17;
@@ -254,7 +254,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
                             ctx->unk_0[battlerId] = 17;
                             ctx->unk_4[battlerId] = 13;
                             ctx->unk_21A8[battlerId][0] = 21;
-                        } else if (BattleSystem_GetBattleType(bsys) & (BATTLE_TYPE_2 | BATTLE_TYPE_TOWER)) {
+                        } else if (BattleSystem_GetBattleType(bsys) & (BATTLE_TYPE_LINK | BATTLE_TYPE_TOWER)) {
                             msg.id = 593;
                             msg.tag = 0;
                             ov12_022639B8(bsys, battlerId, msg);
@@ -274,7 +274,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
                         ctx->unk_0[battlerId] = 11;
                         break;
                     case 0xff: //Cancel
-                        if (battleType & BATTLE_TYPE_2) {
+                        if (battleType & BATTLE_TYPE_LINK) {
                             ov12_02263CCC(bsys, battlerId);
                             ctx->unk_0[battlerId] = 0;
                             ctx->unk_0[BattleSystem_GetBattlerIdPartner(bsys, battlerId)] = 0;
@@ -383,7 +383,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
             if (battleType & BATTLE_TYPE_TOWER) {
                 BattleController_EmitDrawYesNoBox(bsys, ctx, battlerId, 955, 0, 0, 0);
                 ctx->unk_0[battlerId] = 12;
-            } else if ((battleType & BATTLE_TYPE_TRAINER) && !(battleType & BATTLE_TYPE_2)) {
+            } else if ((battleType & BATTLE_TYPE_SINGLES) && !(battleType & BATTLE_TYPE_LINK)) {
                 if (BattleSystem_GetBattleFlags(bsys) & 0x10) {
                     ov12_0223BFFC(bsys, 1);
                     ov12_022581BC(bsys, ov12_0223A7E4(bsys));
@@ -427,7 +427,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
         case 13: //WIFI wait for partner to make a move..?
             ov12_02263CCC(bsys, battlerId);
 
-            if (battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_2)) {
+            if (battleType == (BATTLE_TYPE_SINGLES | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_LINK)) {
                 int partnerId;
 
                 partnerId = BattleSystem_GetBattlerIdPartner(bsys, battlerId);
@@ -476,4 +476,89 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
             }
         }
     }
+}
+
+//static
+void ov12_02249190(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int battlerId;
+    int maxBattlers;
+    u32 battleType;
+    int i, j;
+    int turn;
+    u32 flag;
+    
+    maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+    battleType = BattleSystem_GetBattleType(bsys);
+    
+    turn = 0;
+    
+    if (battleType & (BATTLE_TYPE_SAFARI | BATTLE_TYPE_PAL_PARK)) {
+        for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
+            ctx->unk_21E8[battlerId] = battlerId;
+        }
+    } else {
+        if (battleType & BATTLE_TYPE_LINK) {
+            for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
+                if (ctx->unk_21A8[battlerId][3] == 4) {
+                    turn = 5;
+                    break;
+                }
+            }
+        } else {
+            if (ctx->unk_21A8[BATTLER_PLAYER][3] == 4) {
+                battlerId = BATTLER_PLAYER;
+                turn = 5;
+            }
+            if (ctx->unk_21A8[BATTLER_PLAYER2][3] == 4) {
+                battlerId = BATTLER_PLAYER2;
+                turn = 5;
+            }
+        }
+        if (turn == 5) {
+            ctx->unk_21E8[0] = battlerId;
+            turn = 1;
+            for (i = 0; i < maxBattlers; i++) {
+                if (i != battlerId) {
+                    ctx->unk_21E8[turn] = i;
+                    turn++;
+                }
+            }
+        } else {
+            for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
+                if (ctx->unk_21A8[battlerId][3] == 2 || ctx->unk_21A8[battlerId][3] == 3) {
+                    ctx->unk_21E8[turn] = battlerId;
+                    turn++;
+                }
+            }
+            
+            for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
+                if (ctx->unk_21A8[battlerId][3] != 2 && ctx->unk_21A8[battlerId][3] != 3) {
+                    ctx->unk_21E8[turn] = battlerId;
+                    turn++;
+                }
+            }
+            
+            for (i = 0; i < maxBattlers - 1; i++) {
+                for (j = i + 1; j < maxBattlers; j++) {
+                    int battlerId1 = ctx->unk_21E8[i];
+                    int battlerId2 = ctx->unk_21E8[j];
+                    
+                    if (ctx->unk_21A8[battlerId1][3] == ctx->unk_21A8[battlerId2][3]) {
+                        if (ctx->unk_21A8[battlerId1][3] == 1) {
+                            flag = 0;
+                        } else {
+                            flag = 1;
+                        }
+                        if (CheckSortSpeed(bsys, ctx, battlerId1, battlerId2, flag)) {
+                            ctx->unk_21E8[i] = battlerId2;
+                            ctx->unk_21E8[j] = battlerId1;
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    ctx->command = CONTROLLER_COMMAND_7;
 }

@@ -34,7 +34,7 @@ BOOL RunBattleScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     do {
         ret = sBattleScriptCommandTable[ctx->battleScriptBuffer[ctx->scriptSeqNo]](bsys, ctx);
-    } while(ctx->battleContinueFlag == 0 && (BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_2) == 0);
+    } while(ctx->battleContinueFlag == 0 && (BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_LINK) == 0);
 
     ctx->battleContinueFlag = 0;
 
@@ -970,14 +970,14 @@ BOOL BtlCmd_Wait(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int waitFrames = BattleScriptReadWord(ctx);
     int waitIncrement;
 
-    if (!(BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_2)) {
+    if (!(BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_LINK)) {
         if (gSystem.newKeys & 0xC03 || System_GetTouchNew()) {
             //TODO: Rename variable in struct
             ctx->unk_F0 = waitFrames;
         }
     }
 
-    if (bsys->battleTypeFlags & BATTLE_TYPE_2 && !(bsys->unk240C & 16)) {
+    if (bsys->battleTypeFlags & BATTLE_TYPE_LINK && !(bsys->unk240C & 16)) {
         waitIncrement = 2;
     } else {
         waitIncrement = 1;
@@ -1188,7 +1188,7 @@ BOOL BtlCmd_ShouldGetExp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     adrs = BattleScriptReadWord(ctx);
 
-    if ((opponentData->unk195 & 1) && !(battleType & (BATTLE_TYPE_2 | BATTLE_TYPE_5 | BATTLE_TYPE_TOWER | BATTLE_TYPE_9))) {
+    if ((opponentData->unk195 & 1) && !(battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_SAFARI | BATTLE_TYPE_TOWER | BATTLE_TYPE_PAL_PARK))) {
         int expMonsCnt = 0;
         int expShareMonsCnt = 0;
         u16 totalExp;
@@ -1282,7 +1282,7 @@ BOOL BtlCmd_ShowParty(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     }
 
     for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
-        if (BattleSystem_GetBattleType(bsys) == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_2)) {
+        if (BattleSystem_GetBattleType(bsys) == (BATTLE_TYPE_SINGLES | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_LINK)) {
             unkA = BattleSystem_GetBattlerIdPartner(bsys, battlerId);
             if (!(unkB & MaskOfFlagNo(battlerId)) && !(unkB & MaskOfFlagNo(unkA))) {
                 unkB |= MaskOfFlagNo(battlerId);
@@ -2145,7 +2145,7 @@ u32 CalcPrizeMoney(BattleSystem *bsys, BATTLECONTEXT *ctx, int trainerIndex) {
         if (i >= (int)NELEMS(sPrizeMoneyTbl)) {
             i = 2;
         }
-        if (bsys->battleTypeFlags & BATTLE_TYPE_INGAME_PARTNER || bsys->battleTypeFlags == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_6)) {
+        if (bsys->battleTypeFlags & BATTLE_TYPE_INGAME_PARTNER || bsys->battleTypeFlags == (BATTLE_TYPE_SINGLES | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_6)) {
             prizeMoney = level*4*ctx->prizeMoneyValue*sPrizeMoneyTbl[i][1];
             break;
         } else if (bsys->battleTypeFlags & BATTLE_TYPE_DOUBLES) {
@@ -3040,7 +3040,7 @@ BOOL BtlCmd_TryThief(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     u32 battleType = BattleSystem_GetBattleType(bsys);
     int fieldSide = BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker);
 
-    if (BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker) && !(battleType & (BATTLE_TYPE_2 | BATTLE_TYPE_TOWER))) {
+    if (BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker) && !(battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_TOWER))) {
         BattleScriptIncrementPointer(ctx, adrs1);
     } else if (ctx->fieldSideConditionData[fieldSide].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[ctx->battlerIdAttacker])) {
         BattleScriptIncrementPointer(ctx, adrs1);
@@ -3130,7 +3130,7 @@ BOOL BtlCmd_TryWhirlwind(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     u32 battleType = BattleSystem_GetBattleType(bsys);
 
-    if (battleType & BATTLE_TYPE_TRAINER) {
+    if (battleType & BATTLE_TYPE_SINGLES) {
         PARTY *party;
         Pokemon *mon;
         int partySize;
@@ -3844,7 +3844,7 @@ BOOL BtlCmd_TryTrick(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int sideAttacker = BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker);
     int sideTarget = BattleSystem_GetFieldSide(bsys, ctx->battlerIdTarget);
 
-    if (BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker) && (battleType & (BATTLE_TYPE_2 | BATTLE_TYPE_TOWER)) == 0) {
+    if (BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker) && (battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_TOWER)) == 0) {
         BattleScriptIncrementPointer(ctx, adrsA);
     } else if ((ctx->fieldSideConditionData[sideAttacker].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[ctx->battlerIdAttacker])) ||
               (ctx->fieldSideConditionData[sideTarget].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[ctx->battlerIdTarget]))) {
