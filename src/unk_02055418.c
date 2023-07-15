@@ -24,7 +24,7 @@
 void FieldSys_StartBugContestTimer(FieldSystem* fsys) {
     RTCDate date;
     RTCTime time;
-    SYSINFO_RTC* sysinfo = Save_SysInfo_RTC_Get(fsys->savedata);
+    SysInfo_RTC* sysinfo = Save_SysInfo_RTC_Get(fsys->savedata);
     if (!sysinfo->initialized) {
         return;
     }
@@ -33,7 +33,7 @@ void FieldSys_StartBugContestTimer(FieldSystem* fsys) {
     sub_02055478(fsys, sysinfo, &date, &time);
 }
 
-void sub_02055450(FieldSystem* fsys, SYSINFO_RTC* sysinfo, RTCDate* date) {
+void sub_02055450(FieldSystem* fsys, SysInfo_RTC* sysinfo, RTCDate* date) {
     u32 day = RTC_ConvertDateToDay(date);
     if (day < (u32)(sysinfo->days_since_nitro_epoch)) {
         sysinfo->days_since_nitro_epoch = day;
@@ -46,7 +46,7 @@ void sub_02055450(FieldSystem* fsys, SYSINFO_RTC* sysinfo, RTCDate* date) {
     sysinfo->days_since_nitro_epoch = day;
 }
 
-void sub_02055478(FieldSystem* fsys, SYSINFO_RTC* sysinfo, RTCDate* date, RTCTime* time) {
+void sub_02055478(FieldSystem* fsys, SysInfo_RTC* sysinfo, RTCDate* date, RTCTime* time) {
     s64 seconds = RTC_ConvertDateTimeToSecond(date, time);
     s64 sys_seconds = RTC_ConvertDateTimeToSecond(&sysinfo->date, &sysinfo->time);
     if (seconds < sys_seconds) {
@@ -116,22 +116,22 @@ u32 Field_GetHour(FieldSystem* fsys) {
 }
 
 void sub_02055624(FieldSystem* fsys, RTCDate* date, RTCTime* time) {
-    SYSINFO_RTC* sysinfo = Save_SysInfo_RTC_Get(fsys->savedata);
+    SysInfo_RTC* sysinfo = Save_SysInfo_RTC_Get(fsys->savedata);
     RTC_ConvertSecondToDateTime(date, time, sysinfo->seconds_since_nitro_epoch);
 }
 
 void FieldSys_GetGameClearTime(FieldSystem* fsys, RTCDate* date, RTCTime* time) {
-    SYSINFO_RTC* sysinfo = Save_SysInfo_RTC_Get(fsys->savedata);
+    SysInfo_RTC* sysinfo = Save_SysInfo_RTC_Get(fsys->savedata);
     RTC_ConvertSecondToDateTime(date, time, sysinfo->seconds_at_game_clear);
 }
 
 void FieldSys_SetGameClearTime(FieldSystem* fsys) {
-    SYSINFO_RTC* sysinfo = Save_SysInfo_RTC_Get(fsys->savedata);
+    SysInfo_RTC* sysinfo = Save_SysInfo_RTC_Get(fsys->savedata);
     sysinfo->seconds_at_game_clear = GF_RTC_DateTimeToSec();
 }
 
 BOOL sub_02055670(FieldSystem* fsys) {
-    SYSINFO_RTC* sysinfo = Save_SysInfo_RTC_Get(fsys->savedata);
+    SysInfo_RTC* sysinfo = Save_SysInfo_RTC_Get(fsys->savedata);
     return sub_02028E1C(sysinfo);
 }
 

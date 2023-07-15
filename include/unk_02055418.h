@@ -13,8 +13,8 @@ typedef struct UnkStruct_020556FC {
 } UnkStruct_020556FC; //size 0x60
 
 void FieldSys_StartBugContestTimer(FieldSystem* fsys);
-void sub_02055450(FieldSystem* fsys, SYSINFO_RTC* sysinfo,  RTCDate* date);
-void sub_02055478(FieldSystem* fsys, SYSINFO_RTC* sysinfo, RTCDate* date, RTCTime* time);
+void sub_02055450(FieldSystem* fsys, SysInfo_RTC* sysinfo,  RTCDate* date);
+void sub_02055478(FieldSystem* fsys, SysInfo_RTC* sysinfo, RTCDate* date, RTCTime* time);
 void sub_02055508(FieldSystem* fsys, int unkA);
 void sub_020555B4(FieldSystem* fsys, u32 unkA, RTCTime* time);
 TIMEOFDAY Field_GetTimeOfDay(FieldSystem *fsys);
