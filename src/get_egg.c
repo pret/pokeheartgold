@@ -18,15 +18,15 @@
 #include "constants/abilities.h"
 #include "unk_02055418.h"
 
-static u8 Save_DayCare_CountMonsInDayCare(Daycare *daycare);
-static int Save_DayCare_GetAvailableSlot(Daycare *daycare);
-static void DayCareMon_CopyFromPartySlot(PARTY *party, int partyIdx, DaycareMon *daycareMon, SaveData *saveData);
-static void Save_DayCare_Compaction(Daycare *daycare);
+static u8 Save_Daycare_CountMonsInDaycare(Daycare *daycare);
+static int Save_Daycare_GetAvailableSlot(Daycare *daycare);
+static void DaycareMon_CopyFromPartySlot(PARTY *party, int partyIdx, DaycareMon *daycareMon, SaveData *saveData);
+static void Save_Daycare_Compaction(Daycare *daycare);
 static void Daycare_LearnLevelUpMoves(Pokemon *mon);
-static int Save_DayCare_MoveMonToParty(PARTY *party, DaycareMon *daycareMon, MessageFormat *msgFmt);
-static int GetDayCareUpdatedLevel(BoxPokemon *boxMon, u32 steps);
-static u8 DayCareMon_BufferLevelGrowthAndNick(DaycareMon *daycareMon, MessageFormat *msgFmt);
-static u16 DayCareMon_BufferNickAndRetrievalPrice(DaycareMon *daycareMon, MessageFormat *msgFmt);
+static int Save_Daycare_MoveMonToParty(PARTY *party, DaycareMon *daycareMon, MessageFormat *msgFmt);
+static int GetDaycareUpdatedLevel(BoxPokemon *boxMon, u32 steps);
+static u8 DaycareMon_BufferLevelGrowthAndNick(DaycareMon *daycareMon, MessageFormat *msgFmt);
+static u16 DaycareMon_BufferNickAndRetrievalPrice(DaycareMon *daycareMon, MessageFormat *msgFmt);
 static void Daycare_GetBothBoxMonsPtr(Daycare *dayCare, BoxPokemon **boxmons);
 static int Daycare_EverstoneCheck(Daycare *dayCare);
 static void GenerateEggPID(Daycare *dayCare);
@@ -41,24 +41,24 @@ static void SetBreedEggStats(Pokemon *mon, u16 species, Daycare *dayCare, u32 ot
 static u8 GetEggCyclesToSubtract(PARTY *party);
 static BOOL sub_0206CB88(const u16 *a0, const u16 *a1);
 static u8 ComputeCompatibilityBetweenBoxMons(BoxPokemon **parents);
-static u8 Save_DayCare_CalcCompatibilityInternal(Daycare *dayCare);
+static u8 Save_Daycare_CalcCompatibilityInternal(Daycare *dayCare);
 static u8 sub_0206CCD8(FieldSystem *fsys);
-static u8 ConvertDayCareCompatibilityScore(u32 compatibility);
+static u8 ConvertDaycareCompatibilityScore(u32 compatibility);
 static void sub_0206D038(Pokemon *mon, HeapID heapId);
-static BOOL DayCare_TryGetForcedInheritedIV(Daycare *dayCare, u8 *a1, u8 *a2);
+static BOOL Daycare_TryGetForcedInheritedIV(Daycare *dayCare, u8 *a1, u8 *a2);
 static BOOL PowerItemIdToInheritedIvIdx(u16 itemId, u8 *a1);
 
-BoxPokemon *Daycare_GetBoxMonI(Daycare *daycare, int idx) {
-    return DayCareMon_GetBoxMon(Save_DayCare_GetMonX(daycare, idx));
+BoxPokemon *Daycare_GetBoxMonI(Daycare *daycare, s32 idx) {
+    return DaycareMon_GetBoxMon(Save_Daycare_GetMonX(daycare, idx));
 }
 
-static u8 Save_DayCare_CountMonsInDayCare(Daycare *daycare) {
+static u8 Save_Daycare_CountMonsInDaycare(Daycare *daycare) {
     u8 ct, i;
 
     ct = 0;
 
     for (i = 0; i < 2; i++) {
-        if (GetBoxMonData(DayCareMon_GetBoxMon(Save_DayCare_GetMonX(daycare, i)), MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
+        if (GetBoxMonData(DaycareMon_GetBoxMon(Save_Daycare_GetMonX(daycare, i)), MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
             ct++;
         }
     }
@@ -66,13 +66,13 @@ static u8 Save_DayCare_CountMonsInDayCare(Daycare *daycare) {
     return ct;
 }
 
-static int Save_DayCare_GetAvailableSlot(Daycare *daycare) {
+static int Save_Daycare_GetAvailableSlot(Daycare *daycare) {
     u8 i;
     static Daycare *_021D4218;
 
     _021D4218 = daycare;
     for (i = 0; i < 2; i++) {
-        if (GetBoxMonData(DayCareMon_GetBoxMon(Save_DayCare_GetMonX(daycare, i)), MON_DATA_SPECIES, NULL) == SPECIES_NONE) {
+        if (GetBoxMonData(DaycareMon_GetBoxMon(Save_Daycare_GetMonX(daycare, i)), MON_DATA_SPECIES, NULL) == SPECIES_NONE) {
             return i;
         }
     }
@@ -80,7 +80,7 @@ static int Save_DayCare_GetAvailableSlot(Daycare *daycare) {
     return -1;
 }
 
-static void DayCareMon_CopyFromPartySlot(PARTY *party, int partyIdx, DaycareMon *daycareMon, SaveData *saveData) {
+static void DaycareMon_CopyFromPartySlot(PARTY *party, int partyIdx, DaycareMon *daycareMon, SaveData *saveData) {
     u16 nickname[POKEMON_NAME_LENGTH + 1];
     u8 mood;
     DaycareMail *daycareMail;
@@ -89,43 +89,43 @@ static void DayCareMon_CopyFromPartySlot(PARTY *party, int partyIdx, DaycareMon 
     const u16 *playerNamePtr;
 
     partyMon = GetPartyMonByIndex(party, partyIdx);
-    daycareMail = DayCareMon_GetExtras(daycareMon);
-    boxMon = DayCareMon_GetBoxMon(daycareMon);
+    daycareMail = DaycareMon_GetExtras(daycareMon);
+    boxMon = DaycareMon_GetBoxMon(daycareMon);
     playerNamePtr = PlayerProfile_GetNamePtr(Save_PlayerData_GetProfileAddr(saveData));
     GetMonData(partyMon, MON_DATA_NICKNAME, nickname);
     if (BoxMonIsHoldingMail(Mon_GetBoxMon(partyMon))) {
-        GetMonData(partyMon, MON_DATA_MAIL_STRUCT, DayCareMail_GetMailPtr(daycareMail));
+        GetMonData(partyMon, MON_DATA_MAIL_STRUCT, DaycareMail_GetMailPtr(daycareMail));
     }
     mood = 0;
     SetMonData(partyMon, MON_DATA_MOOD, &mood);
     CopyPokemonToBoxPokemon(partyMon, boxMon);
     BoxMon_UpdateShayminForm(boxMon, SHAYMIN_LAND);
-    DayCareMon_SetSteps(daycareMon, 0);
+    DaycareMon_SetSteps(daycareMon, 0);
     RemoveMonFromParty(party, partyIdx);
     if (!PartyHasMon(party, SPECIES_CHATOT)) {
         Chatot_Invalidate(Save_Chatot_Get(saveData));
     }
 }
 
-void Save_DayCare_PutMonIn(PARTY *party, u8 partyIdx, Daycare *dayCare, SaveData *saveData) {
+void Save_Daycare_PutMonIn(PARTY *party, u8 partyIdx, Daycare *dayCare, SaveData *saveData) {
     GameStats_Inc(Save_GameStats_Get(saveData), 41);
-    DayCareMon_CopyFromPartySlot(party, partyIdx, Save_DayCare_GetMonX(dayCare, Save_DayCare_GetAvailableSlot(dayCare)), saveData);
+    DaycareMon_CopyFromPartySlot(party, partyIdx, Save_Daycare_GetMonX(dayCare, Save_Daycare_GetAvailableSlot(dayCare)), saveData);
 }
 
-static void Save_DayCare_Compaction(Daycare *daycare) {
+static void Save_Daycare_Compaction(Daycare *daycare) {
     DaycareMon *mon1;
     DaycareMon *mon2;
     BoxPokemon *boxmon1;
     BoxPokemon *boxmon2;
 
-    mon1 = Save_DayCare_GetMonX(daycare, 0);
-    mon2 = Save_DayCare_GetMonX(daycare, 1);
-    boxmon1 = DayCareMon_GetBoxMon(mon1);
-    boxmon2 = DayCareMon_GetBoxMon(mon2);
+    mon1 = Save_Daycare_GetMonX(daycare, 0);
+    mon2 = Save_Daycare_GetMonX(daycare, 1);
+    boxmon1 = DaycareMon_GetBoxMon(mon1);
+    boxmon2 = DaycareMon_GetBoxMon(mon2);
 
     if (GetBoxMonData(boxmon1, MON_DATA_SPECIES, NULL) == SPECIES_NONE && GetBoxMonData(boxmon2, MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
-        DayCareMon_Copy(mon1, mon2);
-        DayCareMon_Init(mon2);
+        DaycareMon_Copy(mon1, mon2);
+        DaycareMon_Init(mon2);
     }
 }
 
@@ -153,7 +153,7 @@ static void Daycare_LearnLevelUpMoves(Pokemon *mon) {
     CalcMonLevelAndStats(mon);
 }
 
-static int Save_DayCare_MoveMonToParty(PARTY *party, DaycareMon *daycareMon, MessageFormat *msgFmt) {
+static int Save_Daycare_MoveMonToParty(PARTY *party, DaycareMon *daycareMon, MessageFormat *msgFmt) {
     u32 exp;
     Pokemon *mon;
     BoxPokemon *boxMon;
@@ -161,8 +161,8 @@ static int Save_DayCare_MoveMonToParty(PARTY *party, DaycareMon *daycareMon, Mes
     u16 species;
 
     mon = AllocMonZeroed(HEAP_ID_4);
-    boxMon = DayCareMon_GetBoxMon(daycareMon);
-    daycareMail = DayCareMon_GetExtras(daycareMon);
+    boxMon = DaycareMon_GetBoxMon(daycareMon);
+    daycareMail = DaycareMon_GetExtras(daycareMon);
 
     BufferBoxMonNickname(msgFmt, 0, boxMon);
     species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
@@ -170,29 +170,29 @@ static int Save_DayCare_MoveMonToParty(PARTY *party, DaycareMon *daycareMon, Mes
     CopyBoxPokemonToPokemon(boxMon, mon);
     if (GetMonData(mon, MON_DATA_LEVEL, NULL) != MAX_LEVEL) {
         exp = GetMonData(mon, MON_DATA_EXPERIENCE, NULL);
-        exp += DayCareMon_GetSteps(daycareMon);
+        exp += DaycareMon_GetSteps(daycareMon);
         SetMonData(mon, MON_DATA_EXPERIENCE, &exp);
         Daycare_LearnLevelUpMoves(mon);
     }
     if (BoxMonIsHoldingMail(boxMon)) {
-        SetMonData(mon, MON_DATA_MAIL_STRUCT, DayCareMail_GetMailPtr(daycareMail));
+        SetMonData(mon, MON_DATA_MAIL_STRUCT, DaycareMail_GetMailPtr(daycareMail));
     }
     AddMonToParty(party, mon);
     ZeroBoxMonData(boxMon);
-    DayCareMon_SetSteps(daycareMon, 0);
+    DaycareMon_SetSteps(daycareMon, 0);
     FreeToHeap(mon);
     return species;
 }
 
-u16 Save_DayCare_RetrieveMon(PARTY *party, MessageFormat *msgFmt, Daycare *daycare, u8 whomstdve) {
+u16 Save_Daycare_RetrieveMon(PARTY *party, MessageFormat *msgFmt, Daycare *daycare, u8 whomstdve) {
     u16 ret;
 
-    ret = Save_DayCare_MoveMonToParty(party, Save_DayCare_GetMonX(daycare, whomstdve), msgFmt);
-    Save_DayCare_Compaction(daycare);
+    ret = Save_Daycare_MoveMonToParty(party, Save_Daycare_GetMonX(daycare, whomstdve), msgFmt);
+    Save_Daycare_Compaction(daycare);
     return ret;
 }
 
-static int GetDayCareUpdatedLevel(BoxPokemon *boxMon, u32 steps) {
+static int GetDaycareUpdatedLevel(BoxPokemon *boxMon, u32 steps) {
     Pokemon *tmpMon;
     BoxPokemon *boxmon_tmp;
     u32 exp;
@@ -209,50 +209,50 @@ static int GetDayCareUpdatedLevel(BoxPokemon *boxMon, u32 steps) {
     return level;
 }
 
-int DayCareMon_CalcLevelGrowth(DaycareMon *daycareMon) {
+int DaycareMon_CalcLevelGrowth(DaycareMon *daycareMon) {
     BoxPokemon *boxMon;
     u8 cur_level;
     u8 new_level;
 
-    boxMon = DayCareMon_GetBoxMon(daycareMon);
+    boxMon = DaycareMon_GetBoxMon(daycareMon);
     cur_level = CalcBoxMonLevel(boxMon);
-    new_level = GetDayCareUpdatedLevel(boxMon, DayCareMon_GetSteps(daycareMon));
+    new_level = GetDaycareUpdatedLevel(boxMon, DaycareMon_GetSteps(daycareMon));
     return new_level - cur_level;
 }
 
-static u8 DayCareMon_BufferLevelGrowthAndNick(DaycareMon *daycareMon, MessageFormat *msgFmt) {
+static u8 DaycareMon_BufferLevelGrowthAndNick(DaycareMon *daycareMon, MessageFormat *msgFmt) {
     BoxPokemon *boxMon;
     int levelGrowth;
 
-    boxMon = DayCareMon_GetBoxMon(daycareMon);
-    levelGrowth = DayCareMon_CalcLevelGrowth(daycareMon);
+    boxMon = DaycareMon_GetBoxMon(daycareMon);
+    levelGrowth = DaycareMon_CalcLevelGrowth(daycareMon);
     BufferIntegerAsString(msgFmt, 1, levelGrowth, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
     BufferBoxMonNickname(msgFmt, 0, boxMon);
     return levelGrowth;
 }
 
-static u16 DayCareMon_BufferNickAndRetrievalPrice(DaycareMon *daycareMon, MessageFormat *msgFmt) {
+static u16 DaycareMon_BufferNickAndRetrievalPrice(DaycareMon *daycareMon, MessageFormat *msgFmt) {
     BoxPokemon *boxMon;
     u16 levelGrowth;
     u16 price;
-    boxMon = DayCareMon_GetBoxMon(daycareMon);
-    levelGrowth = DayCareMon_CalcLevelGrowth(daycareMon);
+    boxMon = DaycareMon_GetBoxMon(daycareMon);
+    levelGrowth = DaycareMon_CalcLevelGrowth(daycareMon);
     BufferBoxMonNickname(msgFmt, 0, boxMon);
     price = (levelGrowth + 1) * 100;
     BufferIntegerAsString(msgFmt, 1, price, 5, PRINTING_MODE_LEFT_ALIGN, TRUE);
     return price;
 }
 
-u16 Save_DayCare_BufferMonNickAndRetrievalPrice(Daycare *dayCare, u8 slot, MessageFormat *msgFmt) {
-    return DayCareMon_BufferNickAndRetrievalPrice(Save_DayCare_GetMonX(dayCare, slot), msgFmt);
+u16 Save_Daycare_BufferMonNickAndRetrievalPrice(Daycare *dayCare, u8 slot, MessageFormat *msgFmt) {
+    return DaycareMon_BufferNickAndRetrievalPrice(Save_Daycare_GetMonX(dayCare, slot), msgFmt);
 }
 
-u8 Save_DayCare_BufferGrowthAndNick(Daycare *dayCare, u32 slot, MessageFormat *msgFmt) {
+u8 Save_Daycare_BufferGrowthAndNick(Daycare *dayCare, u32 slot, MessageFormat *msgFmt) {
     DaycareMon *daycareMon;
 
-    daycareMon = Save_DayCare_GetMonX(dayCare, slot);
-    if (GetBoxMonData(DayCareMon_GetBoxMon(daycareMon), MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
-        return DayCareMon_BufferLevelGrowthAndNick(daycareMon, msgFmt);
+    daycareMon = Save_Daycare_GetMonX(dayCare, slot);
+    if (GetBoxMonData(DaycareMon_GetBoxMon(daycareMon), MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
+        return DaycareMon_BufferLevelGrowthAndNick(daycareMon, msgFmt);
     } else {
         return 0;
     }
@@ -309,7 +309,7 @@ static void GenerateEggPID(Daycare *dayCare) {
 
     everstone_num = Daycare_EverstoneCheck(dayCare);
     if (everstone_num < 0) {
-        Save_DayCare_SetEggPID(dayCare, MTRandom());
+        Save_Daycare_SetEggPID(dayCare, MTRandom());
     } else {
         nature = GetNatureFromPersonality(GetBoxMonData(Daycare_GetBoxMonI(dayCare, everstone_num), MON_DATA_PERSONALITY, NULL));
         for (;;) {
@@ -321,7 +321,7 @@ static void GenerateEggPID(Daycare *dayCare) {
                 break;
             }
         }
-        Save_DayCare_SetEggPID(dayCare, pid);
+        Save_Daycare_SetEggPID(dayCare, pid);
     }
 }
 
@@ -357,7 +357,7 @@ static void InheritIVs(Pokemon *egg, Daycare *dayCare) {
     for (i = 0; i < 6; i++) {
         spA[i] = i;
     }
-    if (DayCare_TryGetForcedInheritedIV(dayCare, &sp5, &sp4)) {
+    if (Daycare_TryGetForcedInheritedIV(dayCare, &sp5, &sp4)) {
         sp10[0] = sp5;
         r6 = 1;
         _IVList_Remove(spA, sp5);
@@ -521,9 +521,9 @@ static void InheritMoves(Pokemon *egg, BoxPokemon *father, BoxPokemon *mother) {
     FreeToHeap(search);
 }
 
-void Save_DayCare_ResetEggStats(Daycare *dayCare) {
-    Save_DayCare_SetEggPID(dayCare, 0);
-    Save_DayCare_SetEggCycleCounter(dayCare, 0);
+void Save_Daycare_ResetEggStats(Daycare *dayCare) {
+    Save_Daycare_SetEggPID(dayCare, 0);
+    Save_Daycare_SetEggCycleCounter(dayCare, 0);
 }
 
 static const u16 _020FF4AE[][3] = {
@@ -598,14 +598,14 @@ static u16 Daycare_GetEggSpecies(Daycare *dayCare, u8 *gender_idx) {
     mother = parent_species[gender_idx[0]];
     pms = ReadFromPersonalPmsNarc(mother);
     if (pms == SPECIES_NIDORAN_F) {
-        if (Save_DayCare_GetEggPID(dayCare) & 0x8000) {
+        if (Save_Daycare_GetEggPID(dayCare) & 0x8000) {
             pms = SPECIES_NIDORAN_M;
         } else {
             pms = SPECIES_NIDORAN_F;
         }
     }
     if (pms == SPECIES_ILLUMISE) {
-        if (Save_DayCare_GetEggPID(dayCare) & 0x8000) {
+        if (Save_Daycare_GetEggPID(dayCare) & 0x8000) {
             pms = SPECIES_VOLBEAT;
         } else {
             pms = SPECIES_ILLUMISE;
@@ -670,8 +670,8 @@ static void SetBreedEggStats(Pokemon *mon, u16 species, Daycare *dayCare, u32 ot
     int i;
 
     friendship = GetMonBaseStat(species, BASE_EGG_CYCLES);
-    pid = Save_DayCare_GetEggPID(dayCare);
-    if (Save_DayCare_MasudaCheck(dayCare)) {
+    pid = Save_Daycare_GetEggPID(dayCare);
+    if (Save_Daycare_MasudaCheck(dayCare)) {
         if (!CalcShininessByOtIdAndPersonality(otId, pid)) {
             for (i = 0; i < 4; i++) {
                 pid = PRandom(pid);
@@ -718,7 +718,7 @@ void GiveEggToPlayer(Daycare *dayCare, PARTY *party, PlayerProfile* profile) {
     isEgg = TRUE;
     SetMonData(mon, MON_DATA_IS_EGG, &isEgg);
     AddMonToParty(party, mon);
-    Save_DayCare_ResetEggStats(dayCare);
+    Save_Daycare_ResetEggStats(dayCare);
     FreeToHeap(mon);
 }
 
@@ -810,7 +810,7 @@ static u8 ComputeCompatibilityBetweenBoxMons(BoxPokemon **parents) {
     }
 }
 
-static u8 Save_DayCare_CalcCompatibilityInternal(Daycare *dayCare) {
+static u8 Save_Daycare_CalcCompatibilityInternal(Daycare *dayCare) {
     BoxPokemon *parents[2];
     Daycare_GetBothBoxMonsPtr(dayCare, parents);
     return ComputeCompatibilityBetweenBoxMons(parents);
@@ -849,7 +849,7 @@ static u8 sub_0206CCD8(FieldSystem *fsys) {
     return 255;
 }
 
-BOOL HandleDayCareStep(Daycare *dayCare, PARTY *party, FieldSystem *fsys) {
+BOOL HandleDaycareStep(Daycare *dayCare, PARTY *party, FieldSystem *fsys) {
     u32 friendship;
     BoxPokemon *parents[2];
     int cycle_ctr;
@@ -863,24 +863,24 @@ BOOL HandleDayCareStep(Daycare *dayCare, PARTY *party, FieldSystem *fsys) {
     n = 0;
     for (i = 0; i < 2; i++) {
         if (GetBoxMonData(parents[i], MON_DATA_SPECIES_EXISTS, NULL)) {
-            DayCareMon_AddSteps(Save_DayCare_GetMonX(dayCare, i), 1);
+            DaycareMon_AddSteps(Save_Daycare_GetMonX(dayCare, i), 1);
             n++;
         }
     }
-    if (!Save_DayCare_HasEgg(dayCare) && n == 2) {
-        steps = DayCareMon_GetSteps(Save_DayCare_GetMonX(dayCare, 1));
+    if (!Save_Daycare_HasEgg(dayCare) && n == 2) {
+        steps = DaycareMon_GetSteps(Save_Daycare_GetMonX(dayCare, 1));
         if (steps == 255) {
-            compat = Save_DayCare_CalcCompatibilityInternal(dayCare);
+            compat = Save_Daycare_CalcCompatibilityInternal(dayCare);
             if (compat > (LCRandom() * 100u / 0xFFFFu)) {
                 GenerateEggPID(dayCare);
                 sub_0209316C(fsys);
             }
         }
     }
-    cycle_ctr = Save_DayCare_GetEggCycleCounter(dayCare);
-    Save_DayCare_SetEggCycleCounter(dayCare, cycle_ctr + 1);
+    cycle_ctr = Save_Daycare_GetEggCycleCounter(dayCare);
+    Save_Daycare_SetEggCycleCounter(dayCare, cycle_ctr + 1);
     if (cycle_ctr + 1 == sub_0206CCD8(fsys)) {
-        Save_DayCare_SetEggCycleCounter(dayCare, 0);
+        Save_Daycare_SetEggCycleCounter(dayCare, 0);
         to_sub = GetEggCyclesToSubtract(party);
         for (i = 0; i < GetPartyCount(party); i++) {
             mon = GetPartyMonByIndex(party, i);
@@ -917,7 +917,7 @@ Pokemon *sub_0206CE44(PARTY *party) {
     return NULL;
 }
 
-void Save_DayCare_BufferStoredMonNicks(Daycare *dayCare, MessageFormat *msgFmt) {
+void Save_Daycare_BufferStoredMonNicks(Daycare *dayCare, MessageFormat *msgFmt) {
     BoxPokemon *parents[2];
 
     Daycare_GetBothBoxMonsPtr(dayCare, parents);
@@ -930,18 +930,18 @@ void Save_DayCare_BufferStoredMonNicks(Daycare *dayCare, MessageFormat *msgFmt) 
     }
 }
 
-void Save_DayCare_BufferMonStats(Daycare *dayCare, u32 nickname_idx, u32 level_idx, u32 gender_idx, u8 slot, MessageFormat *msgFmt) {
+void Save_Daycare_BufferMonStats(Daycare *dayCare, u32 nickname_idx, u32 level_idx, u32 gender_idx, u8 slot, MessageFormat *msgFmt) {
     DaycareMon *daycareMon;
     BoxPokemon *boxMon;
     u8 level;
     u8 gender;
     u16 species;
 
-    daycareMon = Save_DayCare_GetMonX(dayCare, slot);
+    daycareMon = Save_Daycare_GetMonX(dayCare, slot);
     boxMon = Daycare_GetBoxMonI(dayCare, slot);
     BufferBoxMonNickname(msgFmt, nickname_idx, boxMon);
 
-    level = GetDayCareUpdatedLevel(boxMon, DayCareMon_GetSteps(daycareMon));
+    level = GetDaycareUpdatedLevel(boxMon, DaycareMon_GetSteps(daycareMon));
     BufferIntegerAsString(msgFmt, level_idx, level, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
 
     gender = GetBoxMonData(boxMon, MON_DATA_GENDER, NULL);
@@ -954,14 +954,14 @@ void Save_DayCare_BufferMonStats(Daycare *dayCare, u32 nickname_idx, u32 level_i
     BufferGenderSymbol(msgFmt, gender_idx, gender);
 }
 
-u16 Save_DayCare_BufferTailMonNick(Daycare *dayCare, MessageFormat *msgFmt) {
+u16 Save_Daycare_BufferTailMonNick(Daycare *dayCare, MessageFormat *msgFmt) {
     BoxPokemon *boxMon1;
     BoxPokemon *boxMon2;
     u16 species1;
     u16 species2;
 
-    boxMon1 = DayCareMon_GetBoxMon(Save_DayCare_GetMonX(dayCare, 0));
-    boxMon2 = DayCareMon_GetBoxMon(Save_DayCare_GetMonX(dayCare, 1));
+    boxMon1 = DaycareMon_GetBoxMon(Save_Daycare_GetMonX(dayCare, 0));
+    boxMon2 = DaycareMon_GetBoxMon(Save_Daycare_GetMonX(dayCare, 1));
     species1 = GetBoxMonData(boxMon1, MON_DATA_SPECIES, NULL);
     species2 = GetBoxMonData(boxMon2, MON_DATA_SPECIES, NULL);
     if (species2 == SPECIES_NONE) {
@@ -973,19 +973,19 @@ u16 Save_DayCare_BufferTailMonNick(Daycare *dayCare, MessageFormat *msgFmt) {
     }
 }
 
-u8 Save_DayCare_GetState(Daycare *dayCare) {
+u8 Save_Daycare_GetState(Daycare *dayCare) {
     u8 count;
-    if (Save_DayCare_HasEgg(dayCare)) {
+    if (Save_Daycare_HasEgg(dayCare)) {
         return 1;
     }
-    count = Save_DayCare_CountMonsInDayCare(dayCare);
+    count = Save_Daycare_CountMonsInDaycare(dayCare);
     if (count != 0) {
         return count + 2 - 1;
     }
     return 0;
 }
 
-static u8 ConvertDayCareCompatibilityScore(u32 compatibility) {
+static u8 ConvertDaycareCompatibilityScore(u32 compatibility) {
     switch (compatibility) {
     case 0:
         return 3;
@@ -1000,8 +1000,8 @@ static u8 ConvertDayCareCompatibilityScore(u32 compatibility) {
     }
 }
 
-u8 Save_DayCare_CalcCompatibility(Daycare *dayCare) {
-    return ConvertDayCareCompatibilityScore(Save_DayCare_CalcCompatibilityInternal(dayCare));
+u8 Save_Daycare_CalcCompatibility(Daycare *dayCare) {
+    return ConvertDaycareCompatibilityScore(Save_Daycare_CalcCompatibilityInternal(dayCare));
 }
 
 static void sub_0206D038(Pokemon *mon, HeapID heapId) {
@@ -1110,7 +1110,7 @@ void sub_0206D328(Pokemon *mon, HeapID heapId) {
     CalcMonLevelAndStats(mon);
 }
 
-static BOOL DayCare_TryGetForcedInheritedIV(Daycare *dayCare, u8 *a1, u8 *a2) {
+static BOOL Daycare_TryGetForcedInheritedIV(Daycare *dayCare, u8 *a1, u8 *a2) {
     u8 sp8[2];
     u8 i, n, r7;
 

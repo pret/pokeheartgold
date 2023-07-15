@@ -8,7 +8,7 @@
 .public GF_AssertFail
 .public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_TestBadgeFlag
-.public Save_DayCare_Get
+.public Save_Daycare_Get
 .public Save_GameStats_Get
 .public GameStats_Inc
 .public GameStats_GetCapped
@@ -147,7 +147,7 @@
 .public FollowingPokemon_IsActive
 .public sub_02069FB0
 .public FsysUnkSub108_MoveMoodTowardsNeutral
-.public HandleDayCareStep
+.public HandleDaycareStep
 .public FieldSys_BugContest_Get
 .public MonApplyFriendshipMod
 .public GetPartyCount

@@ -5,7 +5,7 @@ u32 Save_Daycare_sizeof(void) {
     return sizeof(Daycare);
 }
 
-void Save_Daycare_Init(Daycare* daycare) {
+void Save_Daycare_Init(Daycare *daycare) {
     memset(daycare, 0, sizeof(Daycare));
     ZeroBoxMonData(&daycare->mons[0].mon);
     ZeroBoxMonData(&daycare->mons[1].mon);
@@ -13,55 +13,55 @@ void Save_Daycare_Init(Daycare* daycare) {
     daycare->egg_cycles = 0;
 }
 
-DaycareMon* Save_DayCare_GetMonX(Daycare* daycare, int i) {
+DaycareMon *Save_Daycare_GetMonX(Daycare *daycare, s32 i) {
     return &daycare->mons[i];
 }
 
-BoxPokemon *DayCareMon_GetBoxMon(DaycareMon* dcmon) {
+BoxPokemon *DaycareMon_GetBoxMon(DaycareMon *dcmon) {
     return &dcmon->mon;
 }
 
-DaycareMail* DayCareMon_GetExtras(DaycareMon* dcmon) {
+DaycareMail *DaycareMon_GetExtras(DaycareMon *dcmon) {
     return &dcmon->mail;
 }
 
-int DayCareMon_GetSteps(DaycareMon* dcmon) {
+u32 DaycareMon_GetSteps(DaycareMon *dcmon) {
     return dcmon->steps;
 }
 
-Mail* DayCareMail_GetMailPtr(DaycareMail* dcmail) {
+Mail *DaycareMail_GetMailPtr(DaycareMail *dcmail) {
     return &dcmail->mail;
 }
 
-BOOL Save_DayCare_HasEgg(Daycare* daycare) {
+BOOL Save_Daycare_HasEgg(Daycare *daycare) {
     return daycare->egg_pid != 0;
 }
 
-u32 Save_DayCare_GetEggPID(Daycare* daycare) {
+u32 Save_Daycare_GetEggPID(Daycare *daycare) {
     return daycare->egg_pid;
 }
 
-u8 Save_DayCare_GetEggCycleCounter(Daycare* daycare) {
+u8 Save_Daycare_GetEggCycleCounter(Daycare *daycare) {
     return daycare->egg_cycles;
 }
 
-void DayCareMon_SetSteps(DaycareMon* dcmon, u32 steps) {
+void DaycareMon_SetSteps(DaycareMon *dcmon, u32 steps) {
     dcmon->steps = steps;
 }
 
-void DayCareMon_AddSteps(DaycareMon* dcmon, u32 steps) {
+void DaycareMon_AddSteps(DaycareMon *dcmon, u32 steps) {
     dcmon->steps += steps;
 }
 
-void Save_DayCare_SetEggPID(Daycare* daycare, u32 pid) {
+void Save_Daycare_SetEggPID(Daycare *daycare, u32 pid) {
     daycare->egg_pid = pid;
 }
 
-void Save_DayCare_SetEggCycleCounter(Daycare* daycare, int count) {
+void Save_Daycare_SetEggCycleCounter(Daycare *daycare, s32 count) {
     daycare->egg_cycles = count;
 }
 
-BOOL Save_DayCare_MasudaCheck(Daycare* daycare) {
+BOOL Save_Daycare_MasudaCheck(Daycare *daycare) {
     // Checks if the pokemon come from different countries.
     // Uses language as a proxy for country, even though it
     // only accounts for European languages and Japanese.
@@ -70,11 +70,11 @@ BOOL Save_DayCare_MasudaCheck(Daycare* daycare) {
            GetBoxMonData(&daycare->mons[1].mon, MON_DATA_GAME_LANGUAGE, NULL);
 }
 
-void DayCareMon_Copy(DaycareMon* dest, const DaycareMon* src) {
+void DaycareMon_Copy(DaycareMon *dest, const DaycareMon *src) {
     *dest = *src;
 }
 
-void DayCareMon_Extras_Init(DaycareMail* mail) {
+void DaycareMon_Extras_Init(DaycareMail *mail) {
     int i;
 
     for (i = 0; i < PLAYER_NAME_LENGTH + 1; i++) {
@@ -89,12 +89,12 @@ void DayCareMon_Extras_Init(DaycareMail* mail) {
     mail->nickname[0] = EOS;
 }
 
-void DayCareMon_Init(DaycareMon* mon) {
+void DaycareMon_Init(DaycareMon *mon) {
     ZeroBoxMonData(&mon->mon);
     mon->steps = 0;
-    DayCareMon_Extras_Init(&mon->mail);
+    DaycareMon_Extras_Init(&mon->mail);
 }
 
-Daycare* Save_DayCare_Get(SaveData* savedata) {
+Daycare *Save_Daycare_Get(SaveData *savedata) {
     return SaveArray_Get(savedata, SAVE_DAYCARE);
 }

@@ -176,10 +176,10 @@
 .public PlayerProfile_GetTrainerGender
 .public PlayerProfile_TestBadgeFlag
 .public PlayerProfile_CountBadges
-.public Save_DayCare_GetMonX
-.public DayCareMon_GetBoxMon
-.public Save_DayCare_HasEgg
-.public Save_DayCare_Get
+.public Save_Daycare_GetMonX
+.public DaycareMon_GetBoxMon
+.public Save_Daycare_HasEgg
+.public Save_Daycare_Get
 .public Pokedex_CountNationalDexOwned
 .public Pokedex_CountNationalDexSeen
 .public Pokedex_CountJohtoDexOwned
@@ -265,8 +265,8 @@
 .public Save_VarsFlags_SetVar4057
 .public Save_VarsFlags_GetBuenasPasswordSet
 .public sub_02068F98
-.public DayCareMon_CalcLevelGrowth
-.public Save_DayCare_CalcCompatibility
+.public DaycareMon_CalcLevelGrowth
+.public Save_Daycare_CalcCompatibility
 .public GetBoxMonData
 .public TrainerData_ReadTrData
 .public TrainerData_ReadTrPoke
