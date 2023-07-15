@@ -14,6 +14,7 @@ void BattleControllerPlayer_StartEncounter(BattleSystem *bsys, BATTLECONTEXT *ct
 void BattleControllerPlayer_TrainerMessage(BattleSystem *bsys, BATTLECONTEXT *ctx);
 void BattleControllerPlayer_PokemonAppear(BattleSystem *bsys, BATTLECONTEXT *ctx);
 void BattleControllerPlayer_SelectionScreenInit(BattleSystem *bsys, BATTLECONTEXT *ctx);
+void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTEXT *ctx);
 
 //The following functions haven't been decompiled yet
 void ov12_0224E384(BattleSystem *bsys, BATTLECONTEXT *ctx);

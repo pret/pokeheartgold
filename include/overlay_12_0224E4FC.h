@@ -124,11 +124,10 @@ void ov12_022582B8(BattleSystem *bsys, BATTLECONTEXT *ctx, int var, int battlerI
 //The following functions are static, but the rest of the file is still being worked on
 BOOL ov12_02251C74(BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int index);
 
-//The following functions haven't been decompiled as of now
+//The following functions haven't been decompiled as of now, and are in fact in different files
 void Link_CheckTimeout(BATTLECONTEXT *ctx);
 BOOL CheckLegalMeFirstMove(BATTLECONTEXT *ctx, u16 move);
 int ov12_02253DA0(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
-u32 BattleSystem_GetBattleType(BattleSystem *bsys);
 u32 BattleSystem_GetBattleFlags(BattleSystem *bsys);
 u32 ov12_0223C24C(PARTY *party, u32 *a1);
 int ov12_0223AB0C(BattleSystem *bsys, int battlerId);

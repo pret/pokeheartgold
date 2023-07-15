@@ -64,5 +64,14 @@ void BattleController_EmitPlaySong(BattleSystem *bsys, int battlerId, int song);
 void BattleSystem_ReloadMonData(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int monIndex);
 
 void ov12_022645C8(BattleSystem *bsys, BATTLECONTEXT *ctx, u8 a2);
+void ov12_02262B80(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, int index);
+void ov12_022639B8(BattleSystem *bsys, int battlerId, BATTLEMSG msg);
+void ov12_02263CCC(BattleSystem *bsys, int battlerId);
+void ov12_02262F40(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+BOOL ov12_0224DB64(BattleSystem *bsys, BATTLECONTEXT *ctx, u8 battlerId, u32 battleType, int *out, int movePos, u32 *a6);
+void ov12_02262FFC(BattleSystem *bsys, BATTLECONTEXT *ctx, int a2, int battlerId);
+void ov12_02263138(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+void ov12_02263E18(BattleSystem *bsys, int battlerId);
+void ov12_0224E414(BattleSystem *bsys, BATTLECONTEXT *ctx);
 
 #endif
