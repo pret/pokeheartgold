@@ -21,7 +21,7 @@ u32 FieldSystem_GetWeather_HandleDiamondDust(FieldSystem *fieldSystem, u32 mapId
     if (mapId != MAP_D41R0108) {
         return weatherType;
     }
-    SysInfo_RTC* sysinfo_rtc = Save_SysInfo_RTC_Get(fieldSystem->savedata);
+    SysInfo_RTC *sysinfo_rtc = Save_SysInfo_RTC_Get(fieldSystem->savedata);
     for (c = 0; c < NELEMS(DiamondDustDates); c++) {
        u8 month = DiamondDustDates[c].month;
        u8 day = DiamondDustDates[c].day;

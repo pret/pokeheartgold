@@ -28,7 +28,7 @@ typedef struct SysInfo {
 u32 Save_SysInfo_sizeof(void);
 void Save_SysInfo_Init(SysInfo* sys_info);
 SysInfo* Save_SysInfo_Get(SaveData* savedata);
-SysInfo_RTC* Save_SysInfo_RTC_Get(SaveData* savedata);
+SysInfo_RTC *Save_SysInfo_RTC_Get(SaveData* savedata);
 void Save_SysInfo_InitFromSystem(SysInfo* sys_info);
 BOOL Save_SysInfo_MacAddressIsMine(SysInfo* sys_info);
 BOOL Save_SysInfo_RTCOffsetIsMine(SysInfo* sys_info);
@@ -38,9 +38,9 @@ u8 Save_SysInfo_GetMysteryGiftActive(SysInfo* sys_info);
 void Save_SysInfo_SetMysteryGiftActive(SysInfo* sys_info, u8);
 void* Save_SysInfo_GetField4C(SysInfo* sys_info);
 void Save_SysInfo_SetField4C(SysInfo* sys_info, void*);
-void Save_SysInfo_RTC_Init(SysInfo_RTC* rtc_info);
-BOOL sub_02028E1C(SysInfo_RTC* rtc_info);
-void Save_SysInfo_RTC_SubField34(SysInfo_RTC* rtc_info, u32);
-void SysInfoRTC_HandleContinueOnNewConsole(SysInfo_RTC* rtc_info);
+void Save_SysInfo_RTC_Init(SysInfo_RTC *rtc_info);
+BOOL sub_02028E1C(SysInfo_RTC *rtc_info);
+void Save_SysInfo_RTC_SubField34(SysInfo_RTC *rtc_info, u32);
+void SysInfoRTC_HandleContinueOnNewConsole(SysInfo_RTC *rtc_info);
 
 #endif
