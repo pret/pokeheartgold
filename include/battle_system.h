@@ -41,5 +41,6 @@ void ov12_0223BB64(BattleSystem *bsys, int a1);
 void ov12_02237ED0(BattleSystem *bsys, int a1);
 BATTLECONTEXT *ov12_0223A7E4(BattleSystem *bsys);
 void ov12_022642F0(BattleSystem *bsys);
+BOOL ov12_022581BC(BattleSystem *bsys, BATTLECONTEXT *ctx);
 
 #endif

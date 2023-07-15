@@ -617,3 +617,31 @@ void ov12_0224930C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ctx->command = CONTROLLER_COMMAND_8;
     }
 }
+
+//static
+void ov12_02249460(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int maxBattlers;
+    int battlerId;
+    
+    maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+    
+    if (ov12_022581BC(bsys, ctx)) {
+        return;
+    }
+    
+    ctx->battlersOnField = 0;
+    for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
+        if (ctx->unk_21A8[battlerId][0] != 40) {
+            ctx->battlersOnField++;
+        }
+    }
+    
+    SortMonsBySpeed(bsys, ctx);
+    
+    if (ctx->unk_EC == maxBattlers) {
+        ctx->unk_EC = 0;
+        ctx->command = CONTROLLER_COMMAND_9;
+    } else {
+        ctx->command = (ControllerCommand) ctx->unk_21A8[ctx->unk_21E8[ctx->unk_EC]][0];
+    }
+}

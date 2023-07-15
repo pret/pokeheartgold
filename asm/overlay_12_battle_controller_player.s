@@ -13,71 +13,7 @@
     .public BattleControllerPlayer_SelectionScreenInput
     .public ov12_02249190
     .public ov12_0224930C
-    
-	thumb_func_start ov12_02249460
-ov12_02249460: ; 0x02249460
-	push {r3, r4, r5, r6, r7, lr}
-	add r7, r0, #0
-	add r4, r1, #0
-	bl BattleSystem_GetMaxBattlers
-	add r5, r0, #0
-	add r0, r7, #0
-	add r1, r4, #0
-	bl ov12_022581BC
-	cmp r0, #0
-	bne _022494CC
-	ldr r1, _022494D0 ; =0x00003150
-	mov r0, #0
-	str r0, [r4, r1]
-	cmp r5, #0
-	ble _0224949C
-	ldr r3, _022494D0 ; =0x00003150
-	ldr r2, _022494D4 ; =0x000021A8
-	add r1, r4, #0
-_02249488:
-	ldr r6, [r1, r2]
-	cmp r6, #0x28
-	beq _02249494
-	ldr r6, [r4, r3]
-	add r6, r6, #1
-	str r6, [r4, r3]
-_02249494:
-	add r0, r0, #1
-	add r1, #0x10
-	cmp r0, r5
-	blt _02249488
-_0224949C:
-	add r0, r7, #0
-	add r1, r4, #0
-	bl SortMonsBySpeed
-	add r0, r4, #0
-	add r0, #0xec
-	ldr r0, [r0]
-	cmp r0, r5
-	bne _022494BC
-	add r0, r4, #0
-	mov r1, #0
-	add r0, #0xec
-	str r1, [r0]
-	mov r0, #9
-	str r0, [r4, #8]
-	pop {r3, r4, r5, r6, r7, pc}
-_022494BC:
-	add r1, r4, r0
-	ldr r0, _022494D8 ; =0x000021E8
-	ldrb r1, [r1, r0]
-	sub r0, #0x40
-	lsl r1, r1, #4
-	add r1, r4, r1
-	ldr r0, [r1, r0]
-	str r0, [r4, #8]
-_022494CC:
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_022494D0: .word 0x00003150
-_022494D4: .word 0x000021A8
-_022494D8: .word 0x000021E8
-	thumb_func_end ov12_02249460
+    .public ov12_02249460
 
 	thumb_func_start ov12_022494DC
 ov12_022494DC: ; 0x022494DC
