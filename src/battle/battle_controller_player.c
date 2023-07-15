@@ -5,6 +5,7 @@
 #include "battle_system.h"
 #include "overlay_12_0224E4FC.h"
 #include "heap.h"
+#include "msgdata/msg/msg_0197.h"
 
 extern ControllerFunction sPlayerBattleCommands[];
 
@@ -226,7 +227,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
                         if (StruggleCheck(bsys, ctx, battlerId, 0, 0xffffffff) == 15) {
                             ctx->turnData[battlerId].struggleFlag = 1;
 
-                            if (BattleSystem_GetBattleFlags(bsys) & 0x10) {
+                            if (BattleSystem_GetBattleSpecial(bsys) & BATTLE_SPECIAL_RECORDED) {
                                 ctx->unk_0[battlerId] = 13;
                             } else {
                                 ctx->unk_0[battlerId] = 17;
@@ -237,7 +238,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
                             ctx->unk_30B4[battlerId] = ctx->battleMons[battlerId].unk88.encoredMove;
                             ctx->unk_21A8[battlerId][2] = 0;
 
-                            if (BattleSystem_GetBattleFlags(bsys) & 0x10) {
+                            if (BattleSystem_GetBattleSpecial(bsys) & BATTLE_SPECIAL_RECORDED) {
                                 ctx->unk_0[battlerId] = 13;
                             } else {
                                 ctx->unk_0[battlerId] = 17;
@@ -255,7 +256,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
                             ctx->unk_4[battlerId] = 13;
                             ctx->unk_21A8[battlerId][0] = 21;
                         } else if (BattleSystem_GetBattleType(bsys) & (BATTLE_TYPE_LINK | BATTLE_TYPE_TOWER)) {
-                            msg.id = 593;
+                            msg.id = msg_0197_00593; //Items can't be used here
                             msg.tag = 0;
                             ov12_022639B8(bsys, battlerId, msg);
                             ctx->unk_0[battlerId] = 15;
@@ -301,7 +302,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
                     ctx->unk_0[battlerId] = 11;
                     break;
                 } else if (ov12_02251A28(bsys, ctx, battlerId, ctx->unk_2300[battlerId][0] - 1, &msg) == 0) {
-                    if (BattleSystem_GetBattleFlags(bsys) & BATTLE_TYPE_INGAME_PARTNER) {
+                    if (BattleSystem_GetBattleSpecial(bsys) & BATTLE_SPECIAL_RECORDED) {
                         ov12_0223BFFC(bsys, 1);
                         ov12_022581BC(bsys, ov12_0223A7E4(bsys));
                     } else {
@@ -359,7 +360,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
 
             v8 = BattlerCanSwitch(bsys, ctx, battlerId);
 
-            if (((ov12_0223AB0C(bsys, battlerId) == 4) || (ov12_0223AB0C(bsys, battlerId) == 5)) && ((battleType == (0x2 | 0x1)) || (battleType == (0x4 | 0x1 | 0x2)) || (battleType == (0x2 | 0x1 | 0x80)) || ((battleType == (0x2 | 0x1 | 0x10)) && (ov12_0223AB0C(bsys, battlerId) == 4)))) {
+            if (((ov12_0223AB0C(bsys, battlerId) == 4) || (ov12_0223AB0C(bsys, battlerId) == 5)) && ((battleType == (BATTLE_TYPE_SINGLES | BATTLE_TYPE_DOUBLES)) || (battleType == (BATTLE_TYPE_SINGLES | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_LINK)) || (battleType == (BATTLE_TYPE_SINGLES | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TOWER)) || ((battleType == (BATTLE_TYPE_SINGLES | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_INGAME_PARTNER)) && (ov12_0223AB0C(bsys, battlerId) == 4)))) {
                 partnerId = BattleSystem_GetBattlerIdPartner(bsys, battlerId);
 
                 if (ctx->unk_21A8[partnerId][0] == 15) {
@@ -384,18 +385,18 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
                 BattleController_EmitDrawYesNoBox(bsys, ctx, battlerId, 955, 0, 0, 0);
                 ctx->unk_0[battlerId] = 12;
             } else if ((battleType & BATTLE_TYPE_SINGLES) && !(battleType & BATTLE_TYPE_LINK)) {
-                if (BattleSystem_GetBattleFlags(bsys) & 0x10) {
+                if (BattleSystem_GetBattleSpecial(bsys) & BATTLE_SPECIAL_RECORDED) {
                     ov12_0223BFFC(bsys, 1);
                     ov12_022581BC(bsys, ov12_0223A7E4(bsys));
                 } else {
                     msg.tag = 0;
-                    msg.id = 793; //TODO: replace with msg constants
+                    msg.id = msg_0197_00793; //There's no running from a Trainer battle!
                     ov12_022639B8(bsys, battlerId, msg);
                     ctx->unk_0[battlerId] = 15;
                     ctx->unk_4[battlerId] = 0;
                 }
             } else if (CantEscape(bsys, ctx, battlerId, &msg)) {
-                if (BattleSystem_GetBattleFlags(bsys) & 0x10) {
+                if (BattleSystem_GetBattleSpecial(bsys) & BATTLE_SPECIAL_RECORDED) {
                     ov12_0223BFFC(bsys, 1);
                     ov12_022581BC(bsys, ov12_0223A7E4(bsys));
                 } else {
@@ -451,7 +452,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
             break;
         case 16:
             msg.tag = 2;
-            msg.id = 608;
+            msg.id = msg_0197_00608; //Spheal has no moves left!
             msg.param[0] = CreateNicknameTag(ctx, battlerId);
             ov12_022639B8(bsys, battlerId, msg);
             ctx->unk_0[battlerId] = 15;

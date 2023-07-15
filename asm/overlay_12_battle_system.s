@@ -1849,14 +1849,14 @@ _0223B50C:
 	.balign 4, 0
 	thumb_func_end BattleSystem_RecoverStatus
 
-	thumb_func_start BattleSystem_GetBattleFlags
-BattleSystem_GetBattleFlags: ; 0x0223B514
+	thumb_func_start BattleSystem_GetBattleSpecial
+BattleSystem_GetBattleSpecial: ; 0x0223B514
 	ldr r1, _0223B51C ; =0x0000240C
 	ldr r0, [r0, r1]
 	bx lr
 	nop
 _0223B51C: .word 0x0000240C
-	thumb_func_end BattleSystem_GetBattleFlags
+	thumb_func_end BattleSystem_GetBattleSpecial
 
 	thumb_func_start ov12_0223B520
 ov12_0223B520: ; 0x0223B520

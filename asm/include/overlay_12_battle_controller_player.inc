@@ -37,7 +37,7 @@
 .public ov12_0223AB0C
 .public BattleSystem_GetFieldSide
 .public BattleSystem_GetBattlerIdPartner
-.public BattleSystem_GetBattleFlags
+.public BattleSystem_GetBattleSpecial
 .public ov12_0223B6B4
 .public ov12_0223B6C0
 .public ov12_0223B740

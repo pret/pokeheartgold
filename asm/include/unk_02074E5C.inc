@@ -50,7 +50,7 @@
 .public ov12_0223A978
 .public ov12_0223A984
 .public ov12_0223A990
-.public BattleSystem_GetBattleFlags
+.public BattleSystem_GetBattleSpecial
 .public ov12_0223BBFC
 .public ov12_0223BC08
 .public ov12_0223BC14

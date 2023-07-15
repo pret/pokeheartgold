@@ -62,8 +62,10 @@ enum Terrain {
 
 #define BATTLE_TYPE_NO_EXP                  (BATTLE_TYPE_LINK | BATTLE_TYPE_SAFARI | BATTLE_TYPE_TOWER | BATTLE_TYPE_PAL_PARK)
 
-//Battle Flags
-#define BATTLE_FLAG_7                       (1 << 7)
+//Battle Status Flags
+#define BATTLE_SPECIAL_FIRST_RIVAL          (1 << 0)
+#define BATTLE_SPECIAL_RECORDED             (1 << 4)
+#define BATTLE_SPECIAL_DISTORTION_WORLD     (1 << 7)
 
 //Move Effects Flags
 #define MOVE_EFFECT_FLAG_0                       (1 << 0)

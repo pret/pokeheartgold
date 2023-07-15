@@ -3796,7 +3796,7 @@ _022398A0:
 	cmp r0, #0
 	bne _022398BE
 	add r0, r5, #0
-	bl BattleSystem_GetBattleFlags
+	bl BattleSystem_GetBattleSpecial
 	mov r1, #0x10
 	tst r0, r1
 	beq _022398D6
@@ -3807,7 +3807,7 @@ _022398BE:
 	cmp r0, #0
 	bne _022398FE
 	add r0, r5, #0
-	bl BattleSystem_GetBattleFlags
+	bl BattleSystem_GetBattleSpecial
 	mov r1, #0x10
 	tst r0, r1
 	beq _022398FE
