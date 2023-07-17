@@ -252,8 +252,8 @@ typedef struct BATTLECONTEXT {
     u8 unk_4[4];
     ControllerCommand command;
     ControllerCommand commandNext;
-    int unk_10;
-    int unk_14;
+    int stateFieldConditionUpdate;
+    int fieldConditionUpdateData;
     int unk_18;
     int unk_1C;
     int unk_20;

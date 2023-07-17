@@ -662,8 +662,347 @@ void ov12_02249460(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     
     if (ctx->unk_EC == maxBattlers) {
         ctx->unk_EC = 0;
-        ctx->command = CONTROLLER_COMMAND_9;
+        ctx->command = CONTROLLER_COMMAND_UPDATE_FIELD_CONDITION;
     } else {
         ctx->command = (ControllerCommand) ctx->unk_21A8[ctx->unk_21E8[ctx->unk_EC]][0];
+    }
+}
+
+typedef enum UpdateFieldConditionState {
+    UFC_STATE_REFLECT,
+    UFC_STATE_LIGHT_SCREEN,
+    UFC_STATE_MIST,
+    UFC_STATE_SAFEGUARD,
+    UFC_STATE_TAILWIND,
+    UFC_STATE_LUCKY_CHANT,
+    UFC_STATE_WISH,
+    UFC_STATE_RAIN,
+    UFC_STATE_SANDSTORM,
+    UFC_STATE_SUN,
+    UFC_STATE_HAIL,
+    UFC_STATE_FOG,
+    UFC_STATE_GRAVITY,
+    UFC_STATE_END
+} UpdateFieldConditionState;
+
+//static 
+void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int flag = 0;
+    int side;
+    int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+    
+    do {
+        if (ov12_0224DC74(ctx, ctx->command, ctx->command, 1) == TRUE) {
+            return;
+        }
+        if (ov12_0224DD18(ctx, ctx->command, ctx->command) == TRUE) {
+            return;
+        }
+        if (ov12_0224D7EC(bsys, ctx) == TRUE) {
+            return;
+        }
+        
+        switch (ctx->stateFieldConditionUpdate) {
+        case UFC_STATE_REFLECT:
+            while (ctx->fieldConditionUpdateData < 2) {
+                side = ctx->fieldConditionUpdateData;
+                if (ctx->fieldSideConditionFlags[side] & SIDE_CONDITION_REFLECT) {
+                    if (--ctx->fieldSideConditionData[side].reflectTurns == 0) {
+                        ctx->fieldSideConditionFlags[side] &= ~SIDE_CONDITION_REFLECT;
+                        ctx->moveTemp = MOVE_REFLECT;
+                        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 50);
+                        ctx->commandNext = ctx->command;
+                        ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                        ctx->battlerIdTemp = ov12_02257E98(bsys, ctx, side);
+                        flag = 1;
+                    }
+                }
+                ctx->fieldConditionUpdateData++;
+                if (flag) {
+                    break;
+                }
+            }
+            if (!flag) {
+                ctx->stateFieldConditionUpdate++;
+                ctx->fieldConditionUpdateData = 0;
+            }
+            break;
+        case UFC_STATE_LIGHT_SCREEN:
+            while (ctx->fieldConditionUpdateData < 2) {
+                side = ctx->fieldConditionUpdateData;
+                if (ctx->fieldSideConditionFlags[side] & SIDE_CONDITION_LIGHT_SCREEN) {
+                    if (--ctx->fieldSideConditionData[side].lightScreenTurns == 0) {
+                        ctx->fieldSideConditionFlags[side] &= ~SIDE_CONDITION_LIGHT_SCREEN;
+                        ctx->moveTemp = MOVE_LIGHT_SCREEN;
+                        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 50);
+                        ctx->commandNext = ctx->command;
+                        ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                        ctx->battlerIdTemp = ov12_02257E98(bsys, ctx, side);
+                        flag = 1;
+                    }
+                }
+                ctx->fieldConditionUpdateData++;
+                if (flag) {
+                    break;
+                }
+            }
+            if (!flag) {
+                ctx->stateFieldConditionUpdate++;
+                ctx->fieldConditionUpdateData = 0;
+            }
+            break;
+        case UFC_STATE_MIST:
+            while (ctx->fieldConditionUpdateData < 2) {
+                side = ctx->fieldConditionUpdateData;
+                if (ctx->fieldSideConditionFlags[side] & SIDE_CONDITION_MIST) {
+                    if (--ctx->fieldSideConditionData[side].mistTurns == 0) {
+                        ctx->fieldSideConditionFlags[side] &= ~SIDE_CONDITION_MIST;
+                        ctx->moveTemp = MOVE_MIST;
+                        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 50);
+                        ctx->commandNext = ctx->command;
+                        ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                        ctx->battlerIdTemp = ov12_02257E98(bsys, ctx, side);
+                        flag = 1;
+                    }
+                }
+                ctx->fieldConditionUpdateData++;
+                if (flag) {
+                    break;
+                }
+            }
+            if (!flag) {
+                ctx->stateFieldConditionUpdate++;
+                ctx->fieldConditionUpdateData = 0;
+            }
+            break;
+        case UFC_STATE_SAFEGUARD:
+            while (ctx->fieldConditionUpdateData < 2) {
+                side = ctx->fieldConditionUpdateData;
+                if (ctx->fieldSideConditionFlags[side] & SIDE_CONDITION_SAFEGUARD) {
+                    if (--ctx->fieldSideConditionData[side].safeguardTurns == 0) {
+                        ctx->fieldSideConditionFlags[side] &= ~SIDE_CONDITION_SAFEGUARD;
+                        ctx->battlerIdTemp = ctx->fieldSideConditionData[side].safeguardBattler;
+                        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 110);
+                        ctx->commandNext = ctx->command;
+                        ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                        ctx->battlerIdTemp = ov12_02257E98(bsys, ctx, side);
+                        flag = 1;
+                    }
+                }
+                ctx->fieldConditionUpdateData++;
+                if (flag) {
+                    break;
+                }
+            }
+            if (!flag) {
+                ctx->stateFieldConditionUpdate++;
+                ctx->fieldConditionUpdateData = 0;
+            }
+            break;
+        case UFC_STATE_TAILWIND:
+            while (ctx->fieldConditionUpdateData < 2) {
+                side = ctx->fieldConditionUpdateData;
+                if (ctx->fieldSideConditionFlags[side] & SIDE_CONDITION_TAILWIND) {
+                    ctx->fieldSideConditionFlags[side] -= 1 << SIDE_CONDITION_TAILWIND_SHIFT;
+                    if ((ctx->fieldSideConditionFlags[side] & SIDE_CONDITION_TAILWIND) == 0) {
+                        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 233);
+                        ctx->commandNext = ctx->command;
+                        ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                        ctx->battlerIdTemp = ov12_02257E98(bsys, ctx, side);
+                        flag = 1;
+                    }
+                }
+                ctx->fieldConditionUpdateData++;
+                if (flag) {
+                    break;
+                }
+            }
+            if (!flag) {
+                ctx->stateFieldConditionUpdate++;
+                ctx->fieldConditionUpdateData = 0;
+            }
+            break;
+        case UFC_STATE_LUCKY_CHANT:
+            while (ctx->fieldConditionUpdateData < 2) {
+                side = ctx->fieldConditionUpdateData;
+                if (ctx->fieldSideConditionFlags[side] & SIDE_CONDITION_LUCKY_CHANT) {
+                    ctx->fieldSideConditionFlags[side] -= 1 << SIDE_CONDITION_LUCKY_CHANT_SHIFT;
+                    if ((ctx->fieldSideConditionFlags[side] & SIDE_CONDITION_LUCKY_CHANT) == 0) {
+                        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 250);
+                        ctx->commandNext = ctx->command;
+                        ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                        ctx->battlerIdTemp = ov12_02257E98(bsys, ctx, side);
+                        flag = 1;
+                    }
+                }
+                ctx->fieldConditionUpdateData++;
+                if (flag) {
+                    break;
+                }
+            }
+            if (!flag) {
+                ctx->stateFieldConditionUpdate++;
+                ctx->fieldConditionUpdateData = 0;
+            }
+            break;
+        case UFC_STATE_WISH:
+            while (ctx->fieldConditionUpdateData < maxBattlers) {
+                side = ctx->turnOrder[ctx->fieldConditionUpdateData];
+                if (ctx->fieldConditionData.wishTurns[side]) {
+                    if (--ctx->fieldConditionData.wishTurns[side] == 0 && ctx->battleMons[side].hp) {
+                        ctx->battlerIdTemp = side;
+                        ctx->buffMsg.tag = 2;
+                        ctx->buffMsg.id = msg_0197_00533; //Spheal's wish came true!
+                        ctx->buffMsg.param[0] = side | (ctx->fieldConditionData.wishTarget[side] << 8);
+                        ctx->hpCalc = DamageDivide(ctx->battleMons[side].maxHp, 2);
+                        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 136);
+                        ctx->commandNext = ctx->command;
+                        ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                        flag = 1;
+                    }
+                }
+                ctx->fieldConditionUpdateData++;
+                if (flag) {
+                    break;
+                }
+            }
+            if (!flag) {
+                ctx->stateFieldConditionUpdate++;
+                ctx->fieldConditionUpdateData = 0;
+            }
+            break;
+        case UFC_STATE_RAIN:
+            if (ctx->fieldCondition & FIELD_CONDITION_RAIN_ALL) {
+                if (ctx->fieldCondition & FIELD_CONDITION_RAIN_PERMANENT) {
+                    ctx->buffMsg.id = msg_0197_00801; //Rain continues to fall.
+                    ctx->buffMsg.tag = 0;
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
+                    ctx->commandNext = ctx->command;
+                    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                } else if (--ctx->fieldConditionData.weatherTurns == 0) {
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 234);
+                    ctx->commandNext = ctx->command;
+                    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                } else {
+                    ctx->buffMsg.id = msg_0197_00801; //Rain continues to fall.
+                    ctx->buffMsg.tag = 0;
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
+                    ctx->commandNext = ctx->command;
+                    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                }
+                ctx->tempData = 19;
+                flag = 1;
+            }
+            ctx->stateFieldConditionUpdate++;
+            break;
+        case UFC_STATE_SANDSTORM:
+            if (ctx->fieldCondition & FIELD_CONDITION_SANDSTORM_ALL) {
+                if (ctx->fieldCondition & FIELD_CONDITION_SANDSTORM_PERMANENT) {
+                    ctx->buffMsg.id = msg_0197_00805; //The sandstorm rages.
+                    ctx->buffMsg.tag = 0;
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
+                    ctx->commandNext = ctx->command;
+                    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                } else if (--ctx->fieldConditionData.weatherTurns == 0) {
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 235);
+                    ctx->commandNext = ctx->command;
+                    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                } else {
+                    ctx->buffMsg.id = msg_0197_00805; //The sandstorm rages.
+                    ctx->buffMsg.tag = 0;
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
+                    ctx->commandNext = ctx->command;
+                    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                }
+                ctx->tempData = 21;
+                flag = 1;
+            }
+            ctx->stateFieldConditionUpdate++;
+            break;
+        case UFC_STATE_SUN:
+            if (ctx->fieldCondition & FIELD_CONDITION_SUN_ALL) {
+                if (ctx->fieldCondition & FIELD_CONDITION_SUN_PERMANENT) {
+                    ctx->buffMsg.id = msg_0197_00808; //The sunlight is strong.
+                    ctx->buffMsg.tag = 0;
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
+                    ctx->commandNext = ctx->command;
+                    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                } else if (--ctx->fieldConditionData.weatherTurns == 0) {
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 236);
+                    ctx->commandNext = ctx->command;
+                    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                } else {
+                    ctx->buffMsg.id = msg_0197_00808; //The sunlight is strong.
+                    ctx->buffMsg.tag = 0;
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
+                    ctx->commandNext = ctx->command;
+                    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                }
+                ctx->tempData = 22;
+                flag = 1;
+            }
+            ctx->stateFieldConditionUpdate++;
+            break;
+        case UFC_STATE_HAIL:
+            if (ctx->fieldCondition & FIELD_CONDITION_HAIL_ALL) {
+                if (ctx->fieldCondition & FIELD_CONDITION_HAIL_PERMANENT) {
+                    ctx->buffMsg.id = msg_0197_00811; //Hail continues to fall.
+                    ctx->buffMsg.tag = 0;
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
+                    ctx->commandNext = ctx->command;
+                    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                } else if (--ctx->fieldConditionData.weatherTurns == 0) {
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 237);
+                    ctx->commandNext = ctx->command;
+                    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                } else {
+                    ctx->buffMsg.id = msg_0197_00811; //Hail continues to fall.
+                    ctx->buffMsg.tag = 0;
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
+                    ctx->commandNext = ctx->command;
+                    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                }
+                ctx->tempData = 20;
+                flag = 1;
+            }
+            ctx->stateFieldConditionUpdate++;
+            break;
+        case UFC_STATE_FOG:
+            if (ctx->fieldCondition & FIELD_CONDITION_FOG) {
+                ctx->buffMsg.id = msg_0197_00813; //The fog is deep...
+                ctx->buffMsg.tag = 0;
+                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
+                ctx->commandNext = ctx->command;
+                ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                ctx->tempData = 18;
+                flag = 1;
+            }
+            ctx->stateFieldConditionUpdate++;
+            break;
+        case UFC_STATE_GRAVITY:
+            if (ctx->fieldCondition & FIELD_CONDITION_GRAVITY) {
+                ctx->fieldCondition -= (1 << FIELD_CONDITION_GRAVITY_SHIFT);
+                if ((ctx->fieldCondition & FIELD_CONDITION_GRAVITY) == 0) {
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 238);
+                    ctx->commandNext = ctx->command;
+                    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                    flag = 1;
+                }
+            }
+            ctx->stateFieldConditionUpdate++;
+            break;
+        case UFC_STATE_END:
+            flag = 2;
+            break;
+        }
+    } while (!flag);
+    
+    if (flag == 1) {
+        ov12_022642F0(bsys);
+    }
+    
+    if (flag == 2) {
+        ctx->stateFieldConditionUpdate = 0;
+        ctx->command = CONTROLLER_COMMAND_10;
     }
 }

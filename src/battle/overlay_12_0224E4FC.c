@@ -1752,7 +1752,7 @@ void BattleContext_Init(BATTLECONTEXT *ctx) {
     ctx->checkMultiHit = 0;
     
     //unidentified states for different state machines
-    ctx->unk_10 = 0;
+    ctx->stateFieldConditionUpdate = 0;
     ctx->unk_18 = 0;
     ctx->unk_20 = 0;
     ctx->unk_28 = 0;
@@ -6577,7 +6577,7 @@ u32 TryCriticalHit(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker
     
     if ((BattleSystem_Random(bsys) % sCritChance[critUp]) == 0) {
         if (!CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_BATTLE_ARMOR) && !CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_SHELL_ARMOR) &&
-            !(sideCondition & SIDE_CONDITION_12) && !(moveEffect & MOVE_EFFECT_FLAG_LUCKY_CHANT)) {
+            !(sideCondition & SIDE_CONDITION_LUCKY_CHANT) && !(moveEffect & MOVE_EFFECT_FLAG_LUCKY_CHANT)) {
             ret = 2;
         }
     }
