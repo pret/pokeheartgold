@@ -1657,7 +1657,7 @@ BOOL ScrCmd_639(ScriptContext *ctx) {
         (*r5)--;
         *sp0 = partyMenu->unk_30[1];
         (*sp0)--;
-        *r7 = partyMenu->unk_32;
+        *r7 = partyMenu->unk_30[2];
         if (*r7 != 0) {
             (*r7)--;
         }
@@ -1682,7 +1682,7 @@ BOOL ScrCmd_645(ScriptContext *ctx) {
         (*r5)--;
         *sp0 = partyMenu->unk_30[1];
         (*sp0)--;
-        *r7 = partyMenu->unk_32;
+        *r7 = partyMenu->unk_30[2];
         if (*r7 != 0) {
             (*r7)--;
         }

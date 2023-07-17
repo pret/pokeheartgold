@@ -713,7 +713,7 @@ scr_seq_D32R0401_016:
 	lockall
 	faceplayer
 	goto_if_unset FLAG_MET_HALL_STREAK_TRACKER_DUDE, _0AFF
-	buffer_battle_hall_streak 1, 2, 3, 4, VAR_UNK_4054, VAR_SPECIAL_RESULT
+	buffer_battle_hall_streak 1, 2, 3, 4, VAR_BATTLE_HALL_WIN_STREAK_LEVEL, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0AD5
 	compare VAR_SPECIAL_RESULT, 2

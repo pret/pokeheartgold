@@ -124,7 +124,7 @@ BOOL ScrCmd_BufferInt(ScriptContext* ctx) {
     u8 idx = ScriptReadByte(ctx);
     u16 number = ScriptGetVar(ctx);
 
-    BufferIntegerAsString(*msg_fmt, idx, number, sub_0205BB1C(number), PRINTING_MODE_RIGHT_ALIGN, TRUE);
+    BufferIntegerAsString(*msg_fmt, idx, number, CountDigits(number), PRINTING_MODE_RIGHT_ALIGN, TRUE);
 
     return FALSE;
 }
@@ -138,7 +138,7 @@ BOOL ScrCmd_BufferIntEx(ScriptContext* ctx) {
 
     u8 digits = unk2;
     if (str_conv_mode == PRINTING_MODE_LEFT_ALIGN) {
-        digits = sub_0205BB1C(number);
+        digits = CountDigits(number);
     }
 
     BufferIntegerAsString(*msg_fmt, idx, number, digits, (PrintingMode)str_conv_mode, TRUE);
@@ -155,7 +155,7 @@ BOOL ScrCmd_661(ScriptContext* ctx) {
 
     u8 digits = unk2;
     if (str_conv_mode == PRINTING_MODE_LEFT_ALIGN) {
-        digits = sub_0205BB1C(number);
+        digits = CountDigits(number);
     }
 
     BufferIntegerAsString(*msg_fmt, idx, number, digits, (PrintingMode)str_conv_mode, TRUE);
