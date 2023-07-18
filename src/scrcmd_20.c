@@ -27,6 +27,7 @@
 #include "unk_02078E30.h"
 #include "unk_02088288.h"
 #include "unk_02091564.h"
+#include "constants/game_stat.h"
 
 typedef enum BattleHallChallengeType {
     BATTLE_HALL_CHALLENGE_TYPE_SINGLE,
@@ -42,10 +43,12 @@ typedef struct UnkStruct_0204F284 {
     void **unk08;
 } UnkStruct_0204F284;
 
-static const struct {
+typedef struct WinStreakBP {
     u32 winStreakTarget;
     u32 bp;
-} battleHallWinStreakBP[] = {
+} WinStreakBP;
+
+static const WinStreakBP battleHallWinStreakBP[] = {
     {10, 1},
     {30, 3},
     {50, 5},
@@ -404,7 +407,7 @@ BOOL ScrCmd_BufferBattleHallStreak(ScriptContext *ctx) {
     if (unk1 != 1)  {
         winStreak = 0;
     } else {
-        for (i = 0; i < 0x1ed; i++) {
+        for (i = 0; i < MAX_SPECIES; i++) {
             winStreak += sub_020312E0(fsys->savedata, unk0, 0, i);
         }
     }
@@ -422,7 +425,7 @@ BOOL ScrCmd_BufferBattleHallStreak(ScriptContext *ctx) {
             currWinStreakLevel = i;
         }
     }
-    GameStats_Add(Save_GameStats_Get(ctx->fsys->savedata), 0x45, bp);
+    GameStats_Add(Save_GameStats_Get(ctx->fsys->savedata), GAME_STAT_BATTLE_POINTS, bp);
     if (bp != 0) {
         FrontierData_BattlePointAction(Save_FrontierData_Get(ctx->fsys->savedata), bp, 5);
     }
@@ -460,7 +463,7 @@ BOOL ScrCmd_BattleHallCountUsedSpecies(ScriptContext *ctx) {
     if (unk0 != 1) {
         numSpecies = 0;
     } else {
-        for (i = 0; i < 0x1ed; i++) {
+        for (i = 0; i < MAX_SPECIES; i++) {
             u32 winStreak = 0;
             winStreak += sub_020312E0(fsys->savedata, unk1, 0, i);
             winStreak += sub_020312E0(fsys->savedata, unk1, 1, i);
@@ -477,6 +480,8 @@ BOOL ScrCmd_BattleHallCountUsedSpecies(ScriptContext *ctx) {
     return FALSE;
 }
 
+#define BATTLE_HALL_MAX_WIN_STREAK (10000)
+
 BOOL ScrCmd_BattleHallGetTotalStreak(ScriptContext *ctx) {
     FieldSystem* fsys = ctx->fsys;
     u16 *result = ScriptGetVarPointer(ctx);
@@ -488,15 +493,15 @@ BOOL ScrCmd_BattleHallGetTotalStreak(ScriptContext *ctx) {
     }
     void *unk1 = sub_020312C4(fsys->savedata, 0x20, &unk0);
     if (unk0 == 1) {
-        for (u32 i = 0; i < 0x1ed; i++) {
+        for (u32 i = 0; i < MAX_SPECIES; i++) {
             winStreak += sub_020312E0(fsys->savedata, unk1, 0, i);
         }
     }
     if (unk1 != NULL) {
         FreeToHeap(unk1);
     }
-    if (winStreak > 10000) {
-        winStreak = 10000;
+    if (winStreak > BATTLE_HALL_MAX_WIN_STREAK) {
+        winStreak = BATTLE_HALL_MAX_WIN_STREAK;
     }
     *result = winStreak;
     return FALSE;

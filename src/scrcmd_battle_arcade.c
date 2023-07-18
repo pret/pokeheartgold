@@ -158,7 +158,7 @@ static BOOL sub_020500A0(TaskManager *taskManager) {
 }
 
 static void sub_0205011C(TaskManager *taskManager, void *a1, BattleArcadeChallengeType challengeType) {
-    FieldSystem* fsys = TaskManager_GetFieldSystem(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     UnkStruct_0204FBDC *unk = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0204FBDC));
     MI_CpuFill8(unk, 0, sizeof(UnkStruct_0204FBDC));
     unk->challengeType = challengeType;
@@ -167,11 +167,11 @@ static void sub_0205011C(TaskManager *taskManager, void *a1, BattleArcadeChallen
 }
 
 static BOOL sub_02050150(TaskManager *taskManager) {
-    FieldSystem* fsys = TaskManager_GetFieldSystem(taskManager);
+    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     UnkStruct_0204FBDC *unk = TaskManager_GetEnv(taskManager);
     switch (unk->state) {
         case 0:
-            unk->state = sub_020501B8(unk, fsys, 0xb);
+            unk->state = sub_020501B8(unk, fsys, HEAP_ID_FIELD);
             break;
         case 1:
             unk->state = sub_02050290(unk, fsys);
@@ -189,7 +189,7 @@ static BOOL sub_02050150(TaskManager *taskManager) {
     return FALSE;
 }
 
-static u32 sub_020501B8(UnkStruct_0204FBDC* a0, FieldSystem* fsys, u32 a2) {
+static u32 sub_020501B8(UnkStruct_0204FBDC *a0, FieldSystem *fsys, u32 a2) {
     PartyMenuAppData *partyMenu = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuAppData));
     MIi_CpuClearFast(0, (u32 *)partyMenu, sizeof(PartyMenuAppData));
     partyMenu->party = SaveArray_PlayerParty_Get(fsys->savedata);
@@ -216,7 +216,7 @@ static u32 sub_020501B8(UnkStruct_0204FBDC* a0, FieldSystem* fsys, u32 a2) {
     return 1;
 }
 
-static u32 sub_02050290(UnkStruct_0204FBDC* a0, FieldSystem* fsys) {
+static u32 sub_02050290(UnkStruct_0204FBDC *a0, FieldSystem *fsys) {
     if (FieldSys_ApplicationIsRunning(fsys)) {
         return TRUE;
     }
@@ -234,7 +234,7 @@ static u32 sub_02050290(UnkStruct_0204FBDC* a0, FieldSystem* fsys) {
     return 2;
 }
 
-static u32 sub_020502E0(UnkStruct_0204FBDC* a0, FieldSystem* fsys, HeapID heapId) {
+static u32 sub_020502E0(UnkStruct_0204FBDC *a0, FieldSystem *fsys, HeapID heapId) {
     SaveData *saveData = fsys->savedata;
     UnkStruct_0204F448 *unk = AllocFromHeapAtEnd(heapId, sizeof(UnkStruct_0204F448));
     MI_CpuFill8(unk, 0, sizeof(UnkStruct_0204F448));
@@ -256,7 +256,7 @@ static u32 sub_020502E0(UnkStruct_0204FBDC* a0, FieldSystem* fsys, HeapID heapId
     return 3;
 }
 
-static u32 sub_02050370(UnkStruct_0204FBDC* a0, FieldSystem* fsys) {
+static u32 sub_02050370(UnkStruct_0204FBDC *a0, FieldSystem *fsys) {
     if (FieldSys_ApplicationIsRunning(fsys)) {
         return 3;
     }
