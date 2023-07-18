@@ -12,7 +12,7 @@
 #include "field_map_object.h"
 #include "field_follow_poke.h"
 #include "unk_02056D7C.h"
-#include "field_system_weather.h"
+#include "field_system_rtc_weather.h"
 #include "task.h"
 #include "unk_02055244.h"
 #include "sound.h"

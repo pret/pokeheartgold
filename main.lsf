@@ -155,7 +155,7 @@ Static main
 	Object src/map_events.o
 	Object src/save_local_field_data.o
 	Object asm/unk_0203BA5C.o
-	Object src/field_system_weather.o
+	Object src/field_system_rtc_weather.o
 	Object asm/unk_0203BC10.o
 	Object asm/unk_0203DB6C.o
 	Object src/field_system.o
