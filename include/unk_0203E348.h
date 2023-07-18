@@ -30,8 +30,7 @@ typedef struct PartyMenuAppData {
     u8 unk_25;
     u8 unk_26;
     u8 filler_27[9];
-    u8 unk_30[2];
-    u8 unk_32;
+    u8 unk_30[3];
     u8 filler_33[3];
     u8 unk_36_0:4;
     u8 unk_36_4:4;
