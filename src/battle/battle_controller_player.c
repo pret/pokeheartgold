@@ -130,7 +130,7 @@ typedef enum BattleSelectState {
     BS_STATE_15,
     BS_STATE_16,
     BS_STATE_END
-} SelectionScreenInputState;
+} BattleSelectState;
 
 //static
 void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTEXT *ctx) {
