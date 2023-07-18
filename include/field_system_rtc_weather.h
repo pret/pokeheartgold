@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_DIAMOND_DUST_H
-#define POKEHEARTGOLD_DIAMOND_DUST_H
+#ifndef POKEHEARTGOLD_FIELD_SYSTEM_RTC_WEATHER_H
+#define POKEHEARTGOLD_FIELD_SYSTEM_RTC_WEATHER_H
 
 #include "save.h"
 #include "sav_system_info.h"
@@ -25,6 +25,6 @@ typedef struct MonthDay {
     u8 day;
 } MonthDay;
 
-u32 Fsys_GetWeather_HandleDiamondDust(FieldSystem* fsys, u32 mapId);
+u32 FieldSystem_GetWeather_HandleDiamondDust(FieldSystem *fieldSystem, u32 mapId);
 
-#endif //POKEHEARTGOLD_DIAMOND_DUST_H
+#endif //POKEHEARTGOLD_FIELD_SYSTEM_RTC_WEATHER_H
