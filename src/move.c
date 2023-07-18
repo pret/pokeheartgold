@@ -30,7 +30,7 @@ u32 GetMoveTblAttr(MOVE * moveTbl, MoveAttr attr) {
     case MOVEATTR_EFFECT:
         return moveTbl->effect;
     case MOVEATTR_CLASS:
-        return moveTbl->class;
+        return moveTbl->category;
     case MOVEATTR_POWER:
         return moveTbl->power;
     case MOVEATTR_TYPE:

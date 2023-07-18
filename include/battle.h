@@ -7,6 +7,7 @@
 #include "trainer_data.h"
 #include "filesystem.h"
 #include "constants/battle.h"
+#include "constants/moves.h"
 
 typedef struct BATTLEMSG {
     u8 unk0;
@@ -86,12 +87,12 @@ typedef struct SelfTurnData {
     u32 unk0_5:1;
     u32 rolloutCount:3;
     u32 unk0_9:23;
-    int unk4;
-    int unk8;
-    int unkC;
-    int unk10;
+    int physicalDamage;
+    int battlerIdPhysicalAttacker;
+    int specialDamage;
+    int battlerIdSpecialAttacker;
     int unk14;
-    int unk18;
+    int shellBellDamage;
 } SelfTurnData;
 
 typedef struct UnkBtlCtxSub_76 {
@@ -120,7 +121,7 @@ typedef struct UnkBtlCtxSub_76 {
     u8 unk9F[2];
     u16 unkA0[2];
     u8 unkA4[4];
-    MOVE moveData[468];
+    MOVE moveData[NUM_MOVES + 1];
     ItemData *itemData;
     u16 unk280[4];
     u16 unk288[4];
@@ -242,7 +243,7 @@ typedef struct BattleMon {
     u8 metGender:4;
     u8 ball;
     u32 moveEffectFlags;
-    u32 unk80;
+    u32 moveEffectFlagsTemp;
     UnkBattlemonSub unk88;
 } BattleMon;
 
@@ -251,8 +252,8 @@ typedef struct BATTLECONTEXT {
     u8 unk_4[4];
     ControllerCommand command;
     ControllerCommand commandNext;
-    int unk_10;
-    int unk_14;
+    int stateFieldConditionUpdate;
+    int fieldConditionUpdateData;
     int unk_18;
     int unk_1C;
     int unk_20;
@@ -326,8 +327,8 @@ typedef struct BATTLECONTEXT {
     UnkBtlCtxSub_76 unk_334;
     u32 * unk_2134;
     u32 unk_2138;
-    u32 linkStatus;
-    u32 linkStatus2;
+    u32 battleStatus;
+    u32 battleStatus2;
     int damage;
     int hitDamage;
     int criticalCnt;
@@ -383,13 +384,13 @@ typedef struct BATTLECONTEXT {
     int unk_30F4[4];
     int unk_3104;
     u8 unk_3108;
-    u8 unk_3109;
+    u8 levelUpMons;
     u16 unk_310A;
     u16 unk_310C[4];
     int flingData;
     int flingScript;
     u8 unk_311C;
-    u8 unk_311D;
+    u8 safariRunAttempts;
     u8 runAttempts;
     u8 battleEndFlag;
     u8 magnitude;

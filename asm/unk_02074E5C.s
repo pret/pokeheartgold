@@ -50,7 +50,7 @@ _020FFE30:
 sub_02074E5C: ; 0x02074E5C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl BattleSystem_GetBattleFlags
+	bl BattleSystem_GetBattleSpecial
 	mov r1, #0x10
 	tst r0, r1
 	bne _02074EB6

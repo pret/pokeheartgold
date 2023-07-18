@@ -48,58 +48,60 @@ enum Terrain {
 };
 
 //Battle Type
-#define BATTLE_TYPE_TRAINER                 (1 << 0)
+#define BATTLE_TYPE_SINGLES                 (1 << 0)
 #define BATTLE_TYPE_DOUBLES                 (1 << 1)
-#define BATTLE_TYPE_2                       (1 << 2)
+#define BATTLE_TYPE_LINK                    (1 << 2)
 #define BATTLE_TYPE_MULTI                   (1 << 3)
 #define BATTLE_TYPE_INGAME_PARTNER          (1 << 4)
-#define BATTLE_TYPE_5                       (1 << 5)
+#define BATTLE_TYPE_SAFARI                  (1 << 5)
 #define BATTLE_TYPE_6                       (1 << 6)
 #define BATTLE_TYPE_TOWER                   (1 << 7)
 #define BATTLE_TYPE_8                       (1 << 8)
-#define BATTLE_TYPE_9                       (1 << 9)
+#define BATTLE_TYPE_PAL_PARK                (1 << 9)
 #define BATTLE_TYPE_TUTORIAL                (1 << 10)
 
-#define BATTLE_TYPE_CAN_ALWAYS_FLEE         (BATTLE_TYPE_2 | BATTLE_TYPE_5 | BATTLE_TYPE_TOWER | BATTLE_TYPE_9)
+#define BATTLE_TYPE_NO_EXP                  (BATTLE_TYPE_LINK | BATTLE_TYPE_SAFARI | BATTLE_TYPE_TOWER | BATTLE_TYPE_PAL_PARK)
 
-//Battle Flags
-#define BATTLE_FLAG_7                       (1 << 7)
+//Battle Status Flags
+#define BATTLE_SPECIAL_FIRST_RIVAL          (1 << 0)
+#define BATTLE_SPECIAL_RECORDED             (1 << 4)
+#define BATTLE_SPECIAL_DISTORTION_WORLD     (1 << 7)
 
-//Move Effects
-#define MOVE_EFFECT_0                       (1 << 0)
-#define MOVE_EFFECT_1                       (1 << 1)
-#define MOVE_EFFECT_LEECH_SEED              (1 << 2)
-#define MOVE_EFFECT_LOCK_ON                 (3 << 3)
-#define MOVE_EFFECT_LOCK_ON_SET             (1 << 4)
-#define MOVE_EFFECT_PERISH_SONG             (1 << 5)
-#define MOVE_EFFECT_6                       (1 << 6)
-#define MOVE_EFFECT_7                       (1 << 7)
-#define MOVE_EFFECT_8                       (1 << 8)
-#define MOVE_EFFECT_CHARGE                  (1 << 9)
-#define MOVE_EFFECT_INGRAIN                 (1 << 10)
-#define MOVE_EFFECT_11                      (1 << 11)
-#define MOVE_EFFECT_YAWN                    (1 << 12)
-#define MOVE_EFFECT_IMPRISON_USER           (1 << 13)
-#define MOVE_EFFECT_GRUDGE                  (1 << 14)
-#define MOVE_EFFECT_LUCKY_CHANT             (1 << 15) 
-#define MOVE_EFFECT_MUD_SPORT               (1 << 16)
-#define MOVE_EFFECT_WATER_SPORT             (1 << 17)
-#define MOVE_EFFECT_DIVE                    (1 << 18)
-#define MOVE_EFFECT_INTIMIDATE              (1 << 19) //unclear why this is a move effect
-#define MOVE_EFFECT_ROLE_PLAY               (1 << 20)
-#define MOVE_EFFECT_GASTRO_ACID             (1 << 21)
-#define MOVE_EFFECT_MIRACLE_EYE             (1 << 22)
-#define MOVE_EFFECT_POWER_TRICK             (1 << 23)
-#define MOVE_EFFECT_AQUA_RING               (1 << 24)
-#define MOVE_EFFECT_HEAL_BLOCK              (1 << 25)
-#define MOVE_EFFECT_EMBARGO                 (1 << 26)
-#define MOVE_EFFECT_MAGNET_RISE             (1 << 27)
-#define MOVE_EFFECT_CAMOFLAUGE              (1 << 28)    
-#define MOVE_EFFECT_PHANTOM_FORCE           (1 << 29)
-#define MOVE_EFFECT_IMPRISON                (1 << 30)
+//Move Effects Flags
+#define MOVE_EFFECT_FLAG_0                       (1 << 0)
+#define MOVE_EFFECT_FLAG_1                       (1 << 1)
+#define MOVE_EFFECT_FLAG_LEECH_SEED              (1 << 2)
+#define MOVE_EFFECT_FLAG_LOCK_ON                 (3 << 3)
+#define MOVE_EFFECT_FLAG_LOCK_ON_SET             (1 << 4)
+#define MOVE_EFFECT_FLAG_PERISH_SONG             (1 << 5)
+#define MOVE_EFFECT_FLAG_6                       (1 << 6)
+#define MOVE_EFFECT_FLAG_7                       (1 << 7)
+#define MOVE_EFFECT_FLAG_8                       (1 << 8)
+#define MOVE_EFFECT_FLAG_CHARGE                  (1 << 9)
+#define MOVE_EFFECT_FLAG_INGRAIN                 (1 << 10)
+#define MOVE_EFFECT_FLAG_11                      (1 << 11)
+#define MOVE_EFFECT_FLAG_YAWN                    (1 << 12)
+#define MOVE_EFFECT_FLAG_IMPRISON_USER           (1 << 13)
+#define MOVE_EFFECT_FLAG_GRUDGE                  (1 << 14)
+#define MOVE_EFFECT_FLAG_LUCKY_CHANT             (1 << 15) 
+#define MOVE_EFFECT_FLAG_MUD_SPORT               (1 << 16)
+#define MOVE_EFFECT_FLAG_WATER_SPORT             (1 << 17)
+#define MOVE_EFFECT_FLAG_DIVE                    (1 << 18)
+#define MOVE_EFFECT_FLAG_INTIMIDATE              (1 << 19) //unclear why this is a move effect
+#define MOVE_EFFECT_FLAG_ROLE_PLAY               (1 << 20)
+#define MOVE_EFFECT_FLAG_GASTRO_ACID             (1 << 21)
+#define MOVE_EFFECT_FLAG_MIRACLE_EYE             (1 << 22)
+#define MOVE_EFFECT_FLAG_POWER_TRICK             (1 << 23)
+#define MOVE_EFFECT_FLAG_AQUA_RING               (1 << 24)
+#define MOVE_EFFECT_FLAG_HEAL_BLOCK              (1 << 25)
+#define MOVE_EFFECT_FLAG_EMBARGO                 (1 << 26)
+#define MOVE_EFFECT_FLAG_MAGNET_RISE             (1 << 27)
+#define MOVE_EFFECT_FLAG_CAMOFLAUGE              (1 << 28)    
+#define MOVE_EFFECT_FLAG_PHANTOM_FORCE           (1 << 29)
+#define MOVE_EFFECT_FLAG_IMPRISON                (1 << 30)
 
-#define MOVE_EFFECT_BATON_PASSABLE          (MOVE_EFFECT_0 | MOVE_EFFECT_1 | MOVE_EFFECT_LEECH_SEED | MOVE_EFFECT_LOCK_ON | MOVE_EFFECT_PERISH_SONG | MOVE_EFFECT_INGRAIN | MOVE_EFFECT_LUCKY_CHANT | MOVE_EFFECT_MUD_SPORT | MOVE_EFFECT_WATER_SPORT | MOVE_EFFECT_GASTRO_ACID | MOVE_EFFECT_POWER_TRICK | MOVE_EFFECT_AQUA_RING | MOVE_EFFECT_HEAL_BLOCK | MOVE_EFFECT_EMBARGO | MOVE_EFFECT_MAGNET_RISE)    
-#define MOVE_EFFECT_SUBSTITUTE_HIDE         (MOVE_EFFECT_6 | MOVE_EFFECT_7 | MOVE_EFFECT_DIVE | MOVE_EFFECT_PHANTOM_FORCE)
+#define MOVE_EFFECT_FLAG_BATON_PASSABLE          (MOVE_EFFECT_FLAG_0 | MOVE_EFFECT_FLAG_1 | MOVE_EFFECT_FLAG_LEECH_SEED | MOVE_EFFECT_FLAG_LOCK_ON | MOVE_EFFECT_FLAG_PERISH_SONG | MOVE_EFFECT_FLAG_INGRAIN | MOVE_EFFECT_FLAG_LUCKY_CHANT | MOVE_EFFECT_FLAG_MUD_SPORT | MOVE_EFFECT_FLAG_WATER_SPORT | MOVE_EFFECT_FLAG_GASTRO_ACID | MOVE_EFFECT_FLAG_POWER_TRICK | MOVE_EFFECT_FLAG_AQUA_RING | MOVE_EFFECT_FLAG_HEAL_BLOCK | MOVE_EFFECT_FLAG_EMBARGO | MOVE_EFFECT_FLAG_MAGNET_RISE)    
+#define MOVE_EFFECT_FLAG_HIDE_SUBSTITUTE         (MOVE_EFFECT_FLAG_6 | MOVE_EFFECT_FLAG_7 | MOVE_EFFECT_FLAG_DIVE | MOVE_EFFECT_FLAG_PHANTOM_FORCE)
 //Move status
 #define MOVE_STATUS_MISS                    (1 << 0)
 #define MOVE_STATUS_SUPER_EFFECTIVE         (1 << 1) 
@@ -149,6 +151,8 @@ enum Terrain {
 #define FIELD_CONDITION_WEATHER_CASTFORM    (FIELD_CONDITION_RAIN_ALL | FIELD_CONDITION_SUN_ALL | FIELD_CONDITION_HAIL_ALL)
 #define FIELD_CONDITION_WEATHER             (FIELD_CONDITION_RAIN_ALL | FIELD_CONDITION_SANDSTORM_ALL | FIELD_CONDITION_SUN_ALL | FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_FOG)
     
+#define FIELD_CONDITION_GRAVITY_SHIFT       12
+    
 //Field Side Conditions
 #define SIDE_CONDITION_REFLECT              (1 << 0)
 #define SIDE_CONDITION_LIGHT_SCREEN         (1 << 1)
@@ -160,7 +164,10 @@ enum Terrain {
 #define SIDE_CONDITION_STEALTH_ROCKS        (1 << 7)
 #define SIDE_CONDITION_TAILWIND             (3 << 8)
 #define SIDE_CONDITION_TOXIC_SPIKES         (1 << 10)
-#define SIDE_CONDITION_12                   (7 << 12)
+#define SIDE_CONDITION_LUCKY_CHANT          (7 << 12)
+
+#define SIDE_CONDITION_TAILWIND_SHIFT       8
+#define SIDE_CONDITION_LUCKY_CHANT_SHIFT    12
 
 //Status
 #define STATUS_NONE                         0
@@ -200,6 +207,7 @@ enum Terrain {
 #define STATUS2_FOCUS_ENERGY                (1 << 20)
 #define STATUS2_TRANSFORMED                 (1 << 21)
 #define STATUS2_RECHARGE                    (1 << 22)
+#define STATUS2_23                          (1 << 23)
 #define STATUS2_SUBSTITUTE                  (1 << 24)
 #define STATUS2_MEAN_LOOK                   (1 << 26)
 #define STATUS2_27                          (1 << 27)
@@ -338,9 +346,48 @@ enum Terrain {
 #define BMON_DATA_HELD_ITEM_RESTORE_HP      95
 #define BMON_DATA_SLOW_START_FLAG           96
 #define BMON_DATA_SLOW_START_END            97
-#define BMON_DATA_FORM                     98
+#define BMON_DATA_FORM                      98
 #define BMON_DATA_99                        99 //unused
 #define BMON_DATA_100                      100
+
+//Battle Status
+#define BATTLE_STATUS_NO_ATTACK_MESSAGE             (1 << 0)
+#define BATTLE_STATUS_NO_DOUBLE_CHECK               (1 << 1)
+#define BATTLE_STATUS_HIT_FLY                       (1 << 2)
+#define BATTLE_STATUS_HIT_DIG                       (1 << 3)     
+#define BATTLE_STATUS_HIT_DIVE                      (1 << 4)
+#define BATTLE_STATUS_CHARGE_TURN                   (1 << 5)
+#define BATTLE_STATUS_NO_BLINK                      (1 << 6)
+#define BATTLE_STATUS_SYNCRONIZE                    (1 << 7)
+#define BATTLE_STATUS_BATON_PASS                    (1 << 8)
+#define BATTLE_STATUS_CHARGE_MOVE_HIT               (1 << 9)
+#define BATTLE_STATUS_FLAT_HIT_RATE                 (1 << 10)
+#define BATTLE_STATUS_IGNORE_TYPE_EFFECTIVENESS     (1 << 11)  
+#define BATTLE_STATUS_CRASH_DAMAGE                  (1 << 12)
+#define BATTLE_STATUS_MOVE_SUCCESSFUL               (1 << 13)
+#define BATTLE_STATUS_MOVE_ANIMATIONS_OFF           (1 << 14)
+#define BATTLE_STATUS_IGNORE_TYPE_IMMUNITY          (1 << 15)
+#define BATTLE_STATUS_MULTI_HIT_IGNORE_MESSAGE      (1 << 16)
+#define BATTLE_STATUS_NO_MESSAGE_BETWEEN            (1 << 17)
+#define BATTLE_STATUS_MISS_MESSAGE                  (1 << 18)
+#define BATTLE_STATUS_SHADOW_FORCE                  (1 << 19)
+#define BATTLE_STATUS_NO_MOVE_SET                   (1 << 20)
+#define BATTLE_STATUS_MESSAGES_OFF                  (1 << 21)
+#define BATTLE_STATUS_22                            (1 << 22)
+#define BATTLE_STATUS_MOLD_BREAKER                  (1 << 23) 
+
+#define BATTLE_STATUS_FAINTED_SHIFT                 24
+
+//Battle Status 2
+#define BATTLE_STATUS2_NO_EXP_GAINED                (1 << 0)
+#define BATTLE_STATUS2_UPDATE_STAT_STAGES           (1 << 1)
+#define BATTLE_STATUS2_DISPLAY_ATTACK_MESSAGE       (1 << 2)
+#define BATTLE_STATUS2_MAGIC_COAT                   (1 << 3)
+#define BATTLE_STATUS2_4                            (1 << 4)
+#define BATTLE_STATUS2_5                            (1 << 5)
+#define BATTLE_STATUS2_26                           (1 << 26)
+
+#define BATTLE_STATUS2_EXP_GAIN_SHIFT               28
 
 //Battle Controller Commands
 typedef enum ControllerCommand {
@@ -349,11 +396,11 @@ typedef enum ControllerCommand {
     CONTROLLER_COMMAND_TRAINER_MESSAGE,
     CONTROLLER_COMMAND_SEND_OUT,
     CONTROLLER_COMMAND_SELECTION_SCREEN_INIT,
-    CONTROLLER_COMMAND_5,
+    CONTROLLER_COMMAND_SELECTION_SCREEN_INPUT,
     CONTROLLER_COMMAND_6,
     CONTROLLER_COMMAND_7,
     CONTROLLER_COMMAND_8,
-    CONTROLLER_COMMAND_9,
+    CONTROLLER_COMMAND_UPDATE_FIELD_CONDITION,
     CONTROLLER_COMMAND_10,
     CONTROLLER_COMMAND_11,
     CONTROLLER_COMMAND_12,
@@ -366,7 +413,7 @@ typedef enum ControllerCommand {
     CONTROLLER_COMMAND_19,
     CONTROLLER_COMMAND_20,
     CONTROLLER_COMMAND_21,
-    CONTROLLER_COMMAND_22,
+    CONTROLLER_COMMAND_RUN_SCRIPT,
     CONTROLLER_COMMAND_23,
     CONTROLLER_COMMAND_24,
     CONTROLLER_COMMAND_25,

@@ -179,7 +179,7 @@
 .public BattleSystem_GetTerrainId
 .public ov12_0223AB54
 .public BattleSystem_GetBattlerIdPartner
-.public BattleSystem_GetBattleFlags
+.public BattleSystem_GetBattleSpecial
 .public ov12_0223B52C
 .public ov12_0223B580
 .public ov12_0223B688

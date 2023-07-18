@@ -210,7 +210,7 @@
 .public BattleSystem_GetFieldSide
 .public BattleSystem_GetTerrainId
 .public BattleSystem_GetBattlerIdPartner
-.public BattleSystem_GetBattleFlags
+.public BattleSystem_GetBattleSpecial
 .public ov12_0223B52C
 .public ov12_0223B5EC
 .public ov12_0223B708

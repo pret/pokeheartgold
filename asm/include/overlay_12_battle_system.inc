@@ -118,7 +118,7 @@
 .public BattleSystem_GetBattlerIdPartner
 .public ov12_0223ABB8
 .public BattleSystem_RecoverStatus
-.public BattleSystem_GetBattleFlags
+.public BattleSystem_GetBattleSpecial
 .public ov12_0223B520
 .public ov12_0223B52C
 .public ov12_0223B580

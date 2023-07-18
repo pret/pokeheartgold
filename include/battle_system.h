@@ -6,7 +6,7 @@
 #include "pokemon.h"
 #include "sav_chatot.h"
 
-u32 BattleSystem_GetBattleType(BattleSystem *bsys);
+u16 BattleSystem_GetBattleType(BattleSystem *bsys);
 u32 BattleSystem_GetFieldSide(BattleSystem *bsys, int battlerId);
 int BattleSystem_GetMaxBattlers(BattleSystem *bsys);
 int BattleSystem_Random(BattleSystem *bsys);
@@ -36,5 +36,11 @@ u32 BattleSystem_GetWinLoseFlags(BattleSystem *bsys);
 void ov12_0223C0C4(BattleSystem *bsys);
 int BattleSystem_GetWeather(BattleSystem *bsys);
 int ov12_0223AB60(BattleSystem *bsys);
+BOOL ov12_0223BFEC(BattleSystem *bsys);
+void ov12_0223BB64(BattleSystem *bsys, int a1);
+void ov12_02237ED0(BattleSystem *bsys, int a1);
+BATTLECONTEXT *ov12_0223A7E4(BattleSystem *bsys);
+void ov12_022642F0(BattleSystem *bsys);
+BOOL ov12_022581BC(BattleSystem *bsys, BATTLECONTEXT *ctx);
 
 #endif

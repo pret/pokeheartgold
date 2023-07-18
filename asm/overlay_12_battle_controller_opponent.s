@@ -2509,7 +2509,7 @@ _02259AD2:
 	cmp r0, #2
 	bne _02259B12
 	ldr r0, [sp, #0x24]
-	bl BattleSystem_GetBattleFlags
+	bl BattleSystem_GetBattleSpecial
 	mov r1, #0x40
 	tst r0, r1
 	beq _02259B12
@@ -2573,7 +2573,7 @@ _02259B1E:
 	cmp r0, #2
 	bne _02259B78
 	ldr r0, [sp, #0x24]
-	bl BattleSystem_GetBattleFlags
+	bl BattleSystem_GetBattleSpecial
 	mov r1, #0x40
 	tst r0, r1
 	beq _02259B78
@@ -6431,7 +6431,7 @@ _0225B990:
 	tst r0, r1
 	ldr r0, [r4]
 	beq _0225B9C8
-	bl BattleSystem_GetBattleFlags
+	bl BattleSystem_GetBattleSpecial
 	mov r1, #0x20
 	tst r0, r1
 	bne _0225BA06
@@ -6446,7 +6446,7 @@ _0225B990:
 	str r0, [r4, #0x10]
 	b _0225BA06
 _0225B9C8:
-	bl BattleSystem_GetBattleFlags
+	bl BattleSystem_GetBattleSpecial
 	mov r1, #0x20
 	tst r0, r1
 	bne _0225BA06
@@ -7018,7 +7018,7 @@ _0225BE66:
 	tst r0, r1
 	ldr r0, [r4]
 	beq _0225BE9E
-	bl BattleSystem_GetBattleFlags
+	bl BattleSystem_GetBattleSpecial
 	mov r1, #0x20
 	tst r0, r1
 	bne _0225BEDC
@@ -7033,7 +7033,7 @@ _0225BE66:
 	str r0, [r4, #0x10]
 	b _0225BEDC
 _0225BE9E:
-	bl BattleSystem_GetBattleFlags
+	bl BattleSystem_GetBattleSpecial
 	mov r1, #0x20
 	tst r0, r1
 	bne _0225BEDC
@@ -10775,7 +10775,7 @@ _0225DC9E:
 	mov r1, #1
 	bl ov12_022698AC
 	ldr r0, [r4]
-	bl BattleSystem_GetBattleFlags
+	bl BattleSystem_GetBattleSpecial
 	mov r1, #1
 	tst r0, r1
 	beq _0225DD20
@@ -10876,7 +10876,7 @@ _0225DDC8:
 	b _0225DE98
 _0225DDD2:
 	ldr r0, [r4]
-	bl BattleSystem_GetBattleFlags
+	bl BattleSystem_GetBattleSpecial
 	mov r1, #1
 	tst r0, r1
 	beq _0225DDF4
@@ -11623,7 +11623,7 @@ ov12_0225E404: ; 0x0225E404
 	tst r0, r4
 	bne _0225E43A
 	ldr r0, [r6]
-	bl BattleSystem_GetBattleFlags
+	bl BattleSystem_GetBattleSpecial
 	mov r1, #1
 	tst r0, r1
 	bne _0225E43A
@@ -16931,7 +16931,7 @@ ov12_02260EA4: ; 0x02260EA4
 	bl BattleSystem_GetBattleType
 	add r4, r0, #0
 	add r0, r6, #0
-	bl BattleSystem_GetBattleFlags
+	bl BattleSystem_GetBattleSpecial
 	mov r1, #0x40
 	tst r1, r4
 	beq _02260F2C
