@@ -96,7 +96,7 @@
 #define VAR_BATTLE_ARCADE_PRINT_PROGRESS                 0x4051
 #define VAR_UNK_4052                 0x4052
 #define VAR_UNK_4053                 0x4053
-#define VAR_UNK_4054                 0x4054
+#define VAR_BATTLE_HALL_WIN_STREAK_LEVEL                  0x4054
 #define VAR_UNK_4055                 0x4055
 #define VAR_UNK_4056                 0x4056
 #define VAR_UNK_4057                 0x4057

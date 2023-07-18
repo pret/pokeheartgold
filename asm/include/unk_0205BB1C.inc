@@ -6,7 +6,7 @@
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
-.public sub_0205BB1C
+.public CountDigits
 .public ItemIsTMOrHM
 .public sub_0205BBD0
 .public sub_0205BC78

@@ -95,7 +95,7 @@ BOOL ScrCmd_648(ScriptContext *ctx) {
     u32 out_1;
     int out_2;
     s16 *input;
-    u32 *unkPtr_2;
+    u32 unkPtr_2;
 
     MsgData *msgdata2;
     SCR_648_STRUCT *unkPtr;
@@ -135,7 +135,7 @@ BOOL ScrCmd_648(ScriptContext *ctx) {
 
         for (i = 0; i < out_2; i++) {
             unkPtr_2 = sub_020312E0(fsys->savedata, unkG, sub_0205C144(unkA), data[i]);
-            if (unkPtr_2) {
+            if (unkPtr_2 != 0) {
                 ov01_02200DF8(unkPtr, data[i], 0xff, data[i]);
             }
         }

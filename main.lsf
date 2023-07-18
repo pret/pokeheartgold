@@ -181,7 +181,8 @@ Static main
 	Object src/scrcmd_items.o
 	Object src/scrcmd_move_relearner.o
 	Object src/scrcmd_20.o
-	Object asm/unk_0204F500.o
+	Object src/scrcmd_battle_castle.o
+	Object src/scrcmd_battle_arcade.o
 	Object src/event_data.o
 	Object src/task.o
 	Object src/encounter.o
