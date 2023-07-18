@@ -5,7 +5,7 @@
 
 u16 Save_GetPartyLead(SaveData *saveData);
 u16 Save_GetPartyLeadAlive(SaveData *saveData);
-u32 sub_0205BB1C(u32 num);
+u32 CountDigits(u32 num);
 u16 sub_0205BBD0(u16 numCaught, u16 gender, u16 *var_p);
 u16 sub_0205BC78(u16 numCaught, u16 gender, u16 *var_p);
 BOOL Save_PlayerHasAllRegisInParty(SaveData *saveData);

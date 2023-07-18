@@ -1657,7 +1657,7 @@ BOOL ScrCmd_639(ScriptContext *ctx) {
         (*r5)--;
         *sp0 = partyMenu->unk_30[1];
         (*sp0)--;
-        *r7 = partyMenu->unk_32;
+        *r7 = partyMenu->unk_30[2];
         if (*r7 != 0) {
             (*r7)--;
         }
@@ -1682,7 +1682,7 @@ BOOL ScrCmd_645(ScriptContext *ctx) {
         (*r5)--;
         *sp0 = partyMenu->unk_30[1];
         (*sp0)--;
-        *r7 = partyMenu->unk_32;
+        *r7 = partyMenu->unk_30[2];
         if (*r7 != 0) {
             (*r7)--;
         }
@@ -3892,7 +3892,7 @@ BOOL ScrCmd_539(ScriptContext *ctx) {
 BOOL ScrCmd_543(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     FieldSystem *fsys = ctx->fsys;
-    SYSINFO *sysInfo = Save_SysInfo_Get(fsys->savedata);
+    SysInfo *sysInfo = Save_SysInfo_Get(fsys->savedata);
     if (Save_SysInfo_GetBirthMonth(sysInfo) == Field_GetMonth(fsys) && Save_SysInfo_GetBirthDay(sysInfo) == Field_GetDay(fsys)) {
         *p_ret = TRUE;
     } else {

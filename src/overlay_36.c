@@ -144,7 +144,7 @@ BOOL ov36_App_MainMenu_SelectOption_Continue_AppExec(OVY_MANAGER* man, int* stat
 #pragma unused(state)
     struct UnkStruct_02111868_sub* unk_work = OverlayManager_GetArgs(man);
     SaveData* savedata = unk_work->savedata;
-    SYSINFO* sys_info = Save_SysInfo_Get(savedata);
+    SysInfo* sys_info = Save_SysInfo_Get(savedata);
 
     Continue_LoadSaveData_HandleError(HEAPID_OV36, savedata);
 

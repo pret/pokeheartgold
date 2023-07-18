@@ -5,5 +5,6 @@
 #define GAME_STAT_UNK2                 2
 #define GAME_STAT_BADGE_GET           22
 #define GAME_STAT_UNK46               46
+#define GAME_STAT_BATTLE_POINTS       69
 
 #endif //POKEHEARTGOLD_CONSTANTS_GAME_STAT_H

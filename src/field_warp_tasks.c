@@ -12,7 +12,7 @@
 #include "field_map_object.h"
 #include "field_follow_poke.h"
 #include "unk_02056D7C.h"
-#include "diamond_dust.h"
+#include "field_system_rtc_weather.h"
 #include "task.h"
 #include "unk_02055244.h"
 #include "sound.h"
@@ -185,7 +185,7 @@ void sub_02053038(FieldSystem *fsys, BOOL isConnection) {
         SetLakeOfRageWaterLevel(fsys->mapMatrix, ShouldUseAlternateLakeOfRage(fsys->savedata, mapId));
     }
     varsFlags = Save_VarsFlags_Get(fsys->savedata);
-    weather = Fsys_GetWeather_HandleDiamondDust(fsys, mapId);
+    weather = FieldSystem_GetWeather_HandleDiamondDust(fsys, mapId);
     if (sub_02066C74(varsFlags, 1) && mapId == MAP_T29) {
         weather = 0;
     }

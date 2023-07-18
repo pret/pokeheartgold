@@ -155,7 +155,7 @@ Static main
 	Object src/map_events.o
 	Object src/save_local_field_data.o
 	Object asm/unk_0203BA5C.o
-	Object src/diamond_dust.o
+	Object src/field_system_rtc_weather.o
 	Object asm/unk_0203BC10.o
 	Object asm/unk_0203DB6C.o
 	Object src/field_system.o
@@ -181,7 +181,8 @@ Static main
 	Object src/scrcmd_items.o
 	Object src/scrcmd_move_relearner.o
 	Object src/scrcmd_20.o
-	Object asm/unk_0204F500.o
+	Object src/scrcmd_battle_castle.o
+	Object src/scrcmd_battle_arcade.o
 	Object src/event_data.o
 	Object src/task.o
 	Object src/encounter.o

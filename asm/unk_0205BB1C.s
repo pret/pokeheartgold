@@ -12,8 +12,8 @@ sRegiSpecies:
 
 	.text
 
-	thumb_func_start sub_0205BB1C
-sub_0205BB1C: ; 0x0205BB1C
+	thumb_func_start CountDigits
+CountDigits: ; 0x0205BB1C
 	push {r4, lr}
 	mov r1, #0xa
 	add r4, r0, #0
@@ -88,7 +88,7 @@ _0205BBA8: .word 0x000186A0
 _0205BBAC: .word 0x000F4240
 _0205BBB0: .word 0x00989680
 _0205BBB4: .word 0x05F5E100
-	thumb_func_end sub_0205BB1C
+	thumb_func_end CountDigits
 
 	thumb_func_start ItemIsTMOrHM
 ItemIsTMOrHM: ; 0x0205BBB8
