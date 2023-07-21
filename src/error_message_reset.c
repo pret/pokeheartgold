@@ -116,18 +116,18 @@ void PrintErrorMessageAndReset(void) {
     GXS_SetVisibleWnd(0);
     GX_SetBanks(&sErrorMessageBanksConfig);
 
-    BgConfig* bg_config = BgConfig_Alloc(HEAP_ID_0);
+    BgConfig* bg_config = BgConfig_Alloc(HEAP_ID_DEFAULT);
     SetBothScreensModesAndDisable(&sErrorMessageBgModeSet);
     InitBgFromTemplate(bg_config, 0, &sErrorMessageBgTemplate, GX_BGMODE_0);
     BgClearTilemapBufferAndCommit(bg_config, GF_BG_LYR_MAIN_0);
-    LoadUserFrameGfx1(bg_config, GF_BG_LYR_MAIN_0, 0x1F7, 2, 0, HEAP_ID_0);
-    LoadFontPal0(GF_BG_LYR_MAIN_0, 0x20, HEAP_ID_0);
-    BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 0x20, 0, HEAP_ID_0);
+    LoadUserFrameGfx1(bg_config, GF_BG_LYR_MAIN_0, 0x1F7, 2, 0, HEAP_ID_DEFAULT);
+    LoadFontPal0(GF_BG_LYR_MAIN_0, 0x20, HEAP_ID_DEFAULT);
+    BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 0x20, 0, HEAP_ID_DEFAULT);
     BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB(1, 1, 27));
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB(1, 1, 27));
 
-    MsgData* error_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0041_bin, HEAP_ID_0);
-    String* error_str = String_New(384, HEAP_ID_0);
+    MsgData* error_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0041_bin, HEAP_ID_DEFAULT);
+    String* error_str = String_New(384, HEAP_ID_DEFAULT);
 
     ResetAllTextPrinters();
 

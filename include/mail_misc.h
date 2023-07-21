@@ -18,7 +18,7 @@ typedef struct {
     u8 unk6[0x2];
     u32 frame;
     Pokedex *pokedex;
-    SAVE_EASY_CHAT_T *easyChat;
+    SaveEasyChat *easyChat;
     MAIL_MESSAGE mailMessage;
     u16 unk1C[0x4];
     u32 *unk24;
@@ -53,7 +53,7 @@ u8 sub_02090D70(Unk02090C94 *a0);
 u8 sub_02090D74(Unk02090C94 *a0);
 u32 sub_02090D78(Unk02090C94 *a0);
 Pokedex *sub_02090D7C(Unk02090C94 *a0);
-SAVE_EASY_CHAT_T *sub_02090D80(Unk02090C94 *a0);
+SaveEasyChat *sub_02090D80(Unk02090C94 *a0);
 u8 sub_02090D84(Unk02090C94 *a0);
 u8 sub_02090D88(Unk02090C94 *a0);
 void sub_02090D8C(Unk02090C94 *a0, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2);

@@ -70,7 +70,7 @@ static void ReadMsgData_ExistingTable_ExistingString(MAT * table, u32 num, Strin
     if (num < table->count) {
         alloc = table->alloc[num];
         Decrypt1(&alloc, num, table->key);
-        buf = AllocFromHeapAtEnd(HEAP_ID_0, 2 * alloc.length);
+        buf = AllocFromHeapAtEnd(HEAP_ID_DEFAULT, 2 * alloc.length);
         if (buf != NULL) {
             MI_CpuCopy16((char *)table + alloc.offset, buf, 2 * alloc.length);
             Decrypt2(buf, alloc.length, num);
@@ -278,7 +278,7 @@ void GetSpeciesNameIntoArray(u16 species, HeapID heapId, u16 * dest) {
 
 String * ReadMsgData_ExpandPlaceholders(MessageFormat * messageFormat, MsgData * msgData, u32 msgno, HeapID heapId) {
     String * ret = NULL;
-    String * r4 = String_New(1024, HEAP_ID_0);
+    String * r4 = String_New(1024, HEAP_ID_DEFAULT);
     String * r5;
     if (r4 != NULL) {
         r5 = NewString_ReadMsgData(msgData, msgno);

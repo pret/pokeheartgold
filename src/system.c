@@ -144,7 +144,7 @@ void InitSystemForTheGame(void) {
     gSystem.vblankCounter = 0;
     gSystem.screensFlipped = 0;
     CARD_SetCacheFlushThreshold(0x500, 0x2400);
-    GF_CRC16Init(HEAP_ID_0);
+    GF_CRC16Init(HEAP_ID_DEFAULT);
 }
 
 void InitGraphicMemory(void) {

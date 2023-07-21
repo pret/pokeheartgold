@@ -97,7 +97,7 @@ Pokedex *sub_02090D7C(Unk02090C94 *a0) {
     return a0->pokedex;
 }
 
-SAVE_EASY_CHAT_T *sub_02090D80(Unk02090C94 *a0) {
+SaveEasyChat *sub_02090D80(Unk02090C94 *a0) {
     return a0->easyChat;
 }
 
