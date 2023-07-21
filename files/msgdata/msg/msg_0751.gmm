@@ -376,7 +376,7 @@
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">CONFUSION</language>
 	</row>
-	<row id="msg_0751sEasyChatPsychic" index="94">
+	<row id="msg_0751_psychic" index="94">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">PSYCHIC</language>
 	</row>
