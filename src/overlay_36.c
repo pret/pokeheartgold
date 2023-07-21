@@ -70,15 +70,15 @@ static const MAIL_MSG_TEMPLATE sMailMsgTemplates[2] = {
         // ADVENTURE! EXCITED!
         .msg_bank = MAILMSG_BANK_0292_GMM,
         .msg_no = msg_0292_00004,
-        .ec_groups = { EC_GROUP_FEELINGS, EC_GROUP_TOUGH_WORDS },
-        .ec_words = { EC_WORD_FEELINGS_ADVENTURE - EC_WORDS_FEELINGS_MIN, EC_WORD_TOUGH_WORDS_EXCITED - EC_WORDS_TOUGH_WORDS_MIN },
+        .ec_groups = { EC_GROUP_LIFESTYLE, EC_GROUP_FEELINGS },
+        .ec_words = { EC_WORD_LIFESTYLE_ADVENTURE - EC_WORDS_LIFESTYLE_MIN, EC_WORD_FEELINGS_EXCITED - EC_WORDS_FEELINGS_MIN },
     },
     {
         // I love POKEMON!
         .msg_bank = MAILMSG_BANK_0293_GMM,
         .msg_no = msg_0293_00001,
-        .ec_groups = { EC_GROUP_QUESTION_MARKS, 0xFF },
-        .ec_words = { EC_WORD_QUESTION_MARKS_POKEMON - EC_WORDS_QUESTION_MARKS_MIN, 0 },
+        .ec_groups = { EC_GROUP_UNION, 0xFF },
+        .ec_words = { EC_WORD_UNION_POKEMON - EC_WORDS_UNION_MIN, 0 },
     },
 };
 
