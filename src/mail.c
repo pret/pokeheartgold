@@ -151,12 +151,12 @@ Mail *CreateKenyaMail(Pokemon *mon, u8 mailType, u8 gender, String *name, u8 otI
 
     // LETTER! Thank you!
     MailMsg_SetMsgBankAndNum(&ret->unk_20[0], 1, msg_0296_00007);
-    MailMsg_SetFieldI(&ret->unk_20[0], 0, EC_WORD_FEELINGS_LETTER);
+    MailMsg_SetFieldI(&ret->unk_20[0], 0, EC_WORD_LIFESTYLE_LETTER);
     MailMsg_SetFieldI(&ret->unk_20[0], 1, EC_WORD_NULL);
 
     // ADVENTURE was fun, wasn't it?
     MailMsg_SetMsgBankAndNum(&ret->unk_20[1], 1, msg_0296_00015);
-    MailMsg_SetFieldI(&ret->unk_20[1], 0, EC_WORD_FEELINGS_ADVENTURE);
+    MailMsg_SetFieldI(&ret->unk_20[1], 0, EC_WORD_LIFESTYLE_ADVENTURE);
     MailMsg_SetFieldI(&ret->unk_20[1], 1, EC_WORD_NULL);
 
     // ZUBAT was the one thing I wanted to avoid...

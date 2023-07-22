@@ -593,17 +593,17 @@ _02259D7A:
 
 ; It's MATCH!
 ov25_02259D84:
-	.byte 0x00, msg_0294_00003, EC_GROUP_PEOPLE, 0xFF
+	.byte 0x00, msg_0294_00003, EC_GROUP_TRAINER, 0xFF
 	.short msg_0285_match, 0x0000
 
 ; VICTORY! Thank you!
 ov25_02259D8C: ; 0x02259D8C
-	.byte 0x01, msg_0296_00007, EC_GROUP_PEOPLE, 0xFF
+	.byte 0x01, msg_0296_00007, EC_GROUP_TRAINER, 0xFF
 	.short msg_0285_victory, 0x0000
 
 ; You win... THANKS!
 ov25_02259D94: ; 0x02259D94
-	.byte 0x02, msg_0292_00000, EC_GROUP_LIFESTYLE, 0xFF
+	.byte 0x02, msg_0292_00000, EC_GROUP_GREETINGS, 0xFF
 	.short msg_0287_thanks, 0x0000
 
 ov25_02259D9C: ; 0x02259D9C

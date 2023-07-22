@@ -14700,7 +14700,7 @@ ov02_0224CAB8: ; 0x0224CAB8
 	add r6, r2, #0
 	str r1, [sp]
 	add r7, r3, #0
-	bl WallpaperPasswordBank_GetNum
+	bl WallpaperPasswordBank_GetCount
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
@@ -14868,7 +14868,7 @@ ov02_0224CBF8: ; 0x0224CBF8
 	add r6, r2, #0
 	str r1, [sp]
 	add r7, r3, #0
-	bl WallpaperPasswordBank_GetNum
+	bl WallpaperPasswordBank_GetCount
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0

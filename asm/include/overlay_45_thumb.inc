@@ -34,8 +34,8 @@
 .public DestroySysTask
 .public WallpaperPasswordBank_Create
 .public WallpaperPasswordBank_Delete
-.public WallpaperPasswordBank_GetNum
-.public WallpaperPasswordBank_GetWordI
+.public WallpaperPasswordBank_GetCount
+.public WallpaperPasswordBank_GetWordAtIndex
 .public sub_02018068
 .public sub_020181B0
 .public sub_020181EC
