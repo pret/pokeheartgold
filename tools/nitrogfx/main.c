@@ -162,7 +162,7 @@ void ConvertPngToNtr(char *inputPath, char *outputPath, struct PngToNtrOptions *
 
     WriteNtrImage(outputPath, options->numTiles, image.bitDepth, options->metatileWidth, options->metatileHeight,
                   &image, !image.hasPalette, options->clobberSize, options->byteOrder, options->version101,
-                  options->sopc, options->scanMode, key, options->wrongSize);
+                  options->sopc, options->vramTransfer, options->scanMode, options->mappingType, key, options->wrongSize);
 
     FreeImage(&image);
 }
@@ -430,6 +430,8 @@ void HandlePngToNtrCommand(char *inputPath, char *outputPath, int argc, char **a
     options.sopc = false;
     options.scanMode = 0;
     options.handleEmpty = false;
+    options.vramTransfer = false;
+    options.mappingType = 0;
 
     for (int i = 3; i < argc; i++)
     {
@@ -521,6 +523,22 @@ void HandlePngToNtrCommand(char *inputPath, char *outputPath, int argc, char **a
         else if (strcmp(option, "-handleempty") == 0)
         {
             options.handleEmpty = true;
+        }
+        else if (strcmp(option, "-vram") == 0)
+        {
+            options.vramTransfer = true;
+        }
+        else if (strcmp(option, "-mappingtype") == 0) {
+            if (i + 1 >= argc)
+                FATAL_ERROR("No mapping type value following \"-mappingtype\".\n");
+
+            i++;
+
+            if (!ParseNumber(argv[i], NULL, 10, &options.mappingType))
+                FATAL_ERROR("Failed to parse mapping type.\n");
+
+            if (options.mappingType != 0 && options.mappingType != 32 && options.mappingType != 64 && options.mappingType != 128 && options.mappingType != 256)
+                FATAL_ERROR("bitdepth must be one of the following: 0, 32, 64, 128, or 256\n");
         }
         else
         {

@@ -162,6 +162,45 @@ static void ConvertFromTiles8Bpp(unsigned char *src, unsigned char *dest, int nu
     }
 }
 
+static uint32_t ConvertFromScanned8Bpp(unsigned char *src, unsigned char *dest, int fileSize, bool invertColours, bool scanFrontToBack)
+{
+    uint32_t encValue = 0;
+    if (scanFrontToBack) {
+        encValue = (src[1] << 8) | src[0];
+        for (int i = 0; i < fileSize; i += 2)
+        {
+            uint16_t val = src[i] | (src[i + 1] << 8);
+            val ^= (encValue & 0xFFFF);
+            src[i] = val;
+            src[i + 1] = val >> 8;
+            encValue = encValue * 1103515245;
+            encValue = encValue + 24691;
+        }
+    } else {
+        encValue = (src[fileSize - 1] << 8) | src[fileSize - 2];
+        for (int i = fileSize; i > 0; i -= 2)
+        {
+            uint16_t val = (src[i - 1] << 8) | src[i - 2];
+            val ^= (encValue & 0xFFFF);
+            src[i - 1] = (val >> 8);
+            src[i - 2] = val;
+            encValue = encValue * 1103515245;
+            encValue = encValue + 24691;
+        }
+    }
+    for (int i = 0; i < fileSize; i++)
+    {
+        unsigned char srcPixel = src[i];
+
+        if (invertColours) {
+            srcPixel = 255 - srcPixel;
+        }
+
+        dest[i] = srcPixel;
+    }
+    return encValue;
+}
+
 static void ConvertToTiles1Bpp(unsigned char *src, unsigned char *dest, int numTiles, int metatilesWide, int metatileWidth, int metatileHeight, bool invertColors)
 {
     int subTileX = 0;
@@ -393,7 +432,7 @@ uint32_t ReadNtrImage(char *path, int tilesWidth, int bitDepth, int metatileWidt
                 key = ConvertFromScanned4Bpp(imageData, image->pixels, fileSize - 0x30, invertColors, scanFrontToBack);
                 break;
             case 8:
-                FATAL_ERROR("8bpp is not implemented yet\n");
+                key = ConvertFromScanned8Bpp(imageData, image->pixels, fileSize - 0x30, invertColors, scanFrontToBack);
                 break;
         }
     }
@@ -468,8 +507,8 @@ void WriteImage(char *path, int numTiles, int bitDepth, int metatileWidth, int m
 }
 
 void WriteNtrImage(char *path, int numTiles, int bitDepth, int metatileWidth, int metatileHeight, struct Image *image,
-                   bool invertColors, bool clobberSize, bool byteOrder, bool version101, bool sopc, uint32_t scanMode,
-                   uint32_t key, bool wrongSize)
+                   bool invertColors, bool clobberSize, bool byteOrder, bool version101, bool sopc, bool vram, uint32_t scanMode,
+                   uint32_t mappingType, uint32_t key, bool wrongSize)
 {
     FILE *fp = fopen(path, "wb");
 
@@ -560,14 +599,47 @@ void WriteNtrImage(char *path, int numTiles, int bitDepth, int metatileWidth, in
         charHeader[10] = 0xFF;
         charHeader[11] = 0xFF;
 
-        charHeader[16] = 0x10; //seems to be set when size is clobbered
+        charHeader[16] = 0x10; //size clobbering implies mapping type is some variant of 1d - *should* have a mapping type that's not 0
+
+        if (mappingType == 0)
+        {
+            mappingType = 32; // if not specified assume that it is 32k
+        }
     }
 
     charHeader[12] = bitDepth == 4 ? 3 : 4;
 
+    if (mappingType != 0) {
+        uint32_t val = 0;
+        switch (mappingType) {
+            case 32:
+                val = 0;
+                break;
+            case 64:
+                val = 0x10;
+                break;
+            case 128:
+                val = 0x20;
+                break;
+            case 256:
+                val = 0x30;
+                break;
+            default:
+                FATAL_ERROR("Invalid mapping type %d\n", mappingType);
+                break;
+        }
+
+        charHeader[18] = val;
+    }
+
     if (scanMode)
     {
-        charHeader[20] = 1;
+        charHeader[20] = 1; //implies BMP
+    }
+
+    if (vram)
+    {
+        charHeader[21] = 1; //implies VRAM transfer
     }
 
     charHeader[24] = bufferSize & 0xFF;
