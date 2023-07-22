@@ -1836,8 +1836,8 @@ void InitSwitchWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
         if (ctx->battleMons[i].status2 & (MaskOfFlagNo(battlerId) << STATUS2_ATTRACT_SHIFT)) {
             ctx->battleMons[i].status2 &= (MaskOfFlagNo(battlerId) << STATUS2_ATTRACT_SHIFT) ^ 0xFFFFFFFF;
         }
-        if ((ctx->battleMons[i].status2 & STATUS2_BINDING_ALL) && ctx->battleMons[i].unk88.battlerIdBinding == battlerId) {
-            ctx->battleMons[i].status2 &= ~STATUS2_BINDING_ALL;
+        if ((ctx->battleMons[i].status2 & STATUS2_BINDING_TURNS) && ctx->battleMons[i].unk88.battlerIdBinding == battlerId) {
+            ctx->battleMons[i].status2 &= ~STATUS2_BINDING_TURNS;
         }
     }
     
@@ -1917,8 +1917,8 @@ void InitFaintedWork(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
         if (ctx->battleMons[i].status2 & (MaskOfFlagNo(battlerId) << STATUS2_ATTRACT_SHIFT)) {
             ctx->battleMons[i].status2 &= (MaskOfFlagNo(battlerId) << STATUS2_ATTRACT_SHIFT) ^ 0xFFFFFFFF;
         }
-        if ((ctx->battleMons[i].status2 & STATUS2_BINDING_ALL) && ctx->battleMons[i].unk88.battlerIdBinding == battlerId) {
-            ctx->battleMons[i].status2 &= STATUS2_BINDING_ALL ^ 0xFFFFFFFF;
+        if ((ctx->battleMons[i].status2 & STATUS2_BINDING_TURNS) && ctx->battleMons[i].unk88.battlerIdBinding == battlerId) {
+            ctx->battleMons[i].status2 &= STATUS2_BINDING_TURNS ^ 0xFFFFFFFF;
         }
     }
     
@@ -1982,8 +1982,8 @@ void ov12_02251710(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         if ((ctx->battleMons[battlerId].status & STATUS_SLEEP) && (ctx->battleMons[battlerId].status2 & STATUS2_LOCKED_INTO_MOVE)) {
             UnlockBattlerOutOfCurrentMove(bsys, ctx, battlerId);
         }
-        if ((ctx->battleMons[battlerId].status & STATUS_SLEEP) && (ctx->battleMons[battlerId].status2 & STATUS2_RAGE)) {
-            ctx->battleMons[battlerId].status2 &= ~STATUS2_RAGE;
+        if ((ctx->battleMons[battlerId].status & STATUS_SLEEP) && (ctx->battleMons[battlerId].status2 & STATUS2_RAMPAGE_TURNS)) {
+            ctx->battleMons[battlerId].status2 &= ~STATUS2_RAMPAGE_TURNS;
         }
     }
     
@@ -3202,7 +3202,7 @@ BOOL CantEscape(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, BATTLEMSG
         return TRUE;
     }
     
-    if ((ctx->battleMons[battlerId].status2 & (STATUS2_BINDING_ALL | STATUS2_MEAN_LOOK)) || (ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_INGRAIN)){
+    if ((ctx->battleMons[battlerId].status2 & (STATUS2_BINDING_TURNS | STATUS2_MEAN_LOOK)) || (ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_INGRAIN)){
         if (msg == NULL) {
             return TRUE;
         }
@@ -5189,7 +5189,7 @@ BOOL BattlerCanSwitch(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
         return FALSE;
     }
     
-    if ((ctx->battleMons[battlerId].status2 & (STATUS2_BINDING_ALL | STATUS2_MEAN_LOOK)) || (ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_INGRAIN)) {
+    if ((ctx->battleMons[battlerId].status2 & (STATUS2_BINDING_TURNS | STATUS2_MEAN_LOOK)) || (ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_INGRAIN)) {
         ret = TRUE;
     }
     
@@ -5715,7 +5715,7 @@ BOOL TryFling(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
 
 void ov12_022565E0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker) == HOLD_EFFECT_BOOST_REPEATED) {
-        if (!(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_RAGE) &&
+        if (!(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_RAMPAGE_TURNS) &&
             !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_UPROAR) &&
             !(ctx->battleStatus & BATTLE_STATUS_CHARGE_MOVE_HIT) &&
             !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_LOCKED_INTO_MOVE)) {
@@ -5739,7 +5739,7 @@ void ov12_02256694(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             ctx->moveNoMetronome[ctx->battlerIdAttacker] == ctx->moveNoTemp &&
             ctx->battleMons[ctx->battlerIdAttacker].unk88.metronomeTurns &&
             !(ctx->selfTurnData[ctx->battlerIdAttacker].rolloutCount) &&
-            !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_RAGE) &&
+            !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_RAMPAGE_TURNS) &&
             !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_UPROAR) &&
             !(ctx->battleStatus & BATTLE_STATUS_CHARGE_MOVE_HIT) &&
             !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_LOCKED_INTO_MOVE)) {
@@ -5781,7 +5781,7 @@ BOOL Battler_CanSelectAction(BATTLECONTEXT *ctx, int battlerId) {
     BOOL ret = TRUE;
     
     if ((ctx->battleMons[battlerId].status2 & STATUS2_RECHARGE) ||
-        (ctx->battleMons[battlerId].status2 & STATUS2_RAGE) ||
+        (ctx->battleMons[battlerId].status2 & STATUS2_RAMPAGE_TURNS) ||
         (ctx->battleMons[battlerId].status2 & STATUS2_UPROAR) ||
         (ctx->battleMons[battlerId].status2 & STATUS2_LOCKED_INTO_MOVE)) {
         ret = FALSE;
@@ -7345,4 +7345,3 @@ static int GetDynamicMoveType(BattleSystem *bsys, BATTLECONTEXT *ctx, int battle
     
     return type;
 }
-

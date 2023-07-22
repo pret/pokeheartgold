@@ -5,6 +5,7 @@
 #include "battle_system.h"
 #include "overlay_12_0224E4FC.h"
 #include "heap.h"
+#include "constants/abilities.h"
 #include "msgdata/msg/msg_0197.h"
 
 extern ControllerFunction sPlayerBattleCommands[];
@@ -1005,4 +1006,425 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BATTLECONTE
         ctx->stateFieldConditionUpdate = 0;
         ctx->command = CONTROLLER_COMMAND_10;
     }
+}
+
+typedef enum UpdateMonConditionState {
+    UMC_STATE_INGRAIN,
+    UMC_STATE_AQUA_RING,
+    UMC_STATE_ABILITY,
+    UMC_STATE_HELD_ITEM,
+    UMC_STATE_LEFTOVERS_RECOVERY,
+    UMC_STATE_LEECH_SEED,
+    UMC_STATE_POISON,
+    UMC_STATE_BAD_POISON,
+    UMC_STATE_BURN,
+    UMC_STATE_NIGHTMARE,
+    UMC_STATE_CURSE,
+    UMC_STATE_BINDING,
+    UMC_STATE_BAD_DREAMS,
+    UMC_STATE_UPROAR,
+    UMC_STATE_RAMPAGE,
+    UMC_STATE_DISABLE,
+    UMC_STATE_ENCORE,
+    UMC_STATE_LOCK_ON,
+    UMC_STATE_CHARGE,
+    UMC_STATE_TAUNT,
+    UMC_STATE_MAGNET_RISE,
+    UMC_STATE_HEALBLOCK,
+    UMC_STATE_EMBARGO,
+    UMC_STATE_YAWN,
+    UMC_STATE_HELD_ITEM_STATUS,
+    UMC_STATE_HELD_ITEM_DAMAGE,
+    UMC_STATE_END
+} UpdateMonConditionState;
+
+//static
+void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int i;
+    u8 flag = 0;
+    int maxBattlers;
+    int battlerId;
+    
+    maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+    
+    if (ov12_0224DC74(ctx, ctx->command, ctx->command, 1) == TRUE) {
+        return;
+    }
+    
+    if (ov12_0224DD18(ctx, ctx->command, ctx->command) == TRUE) {
+        return;
+    }
+    
+    if (ov12_0224D7EC(bsys, ctx) == TRUE) {
+        return;
+    }
+    
+    while (ctx->unk_1C < maxBattlers) {
+        battlerId = ctx->turnOrder[ctx->unk_1C];
+        if (ctx->unk_3108 & MaskOfFlagNo(battlerId)) {
+            ctx->unk_1C++;
+            continue;
+        }
+        switch (ctx->unk_18) {
+        case UMC_STATE_INGRAIN:
+            if ((ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_INGRAIN) && ctx->battleMons[battlerId].hp != ctx->battleMons[battlerId].maxHp && ctx->battleMons[battlerId].hp) {
+                if (ctx->battleMons[battlerId].unk88.healBlockTurns) {
+                    ctx->battlerIdTemp = battlerId;
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 239);
+                } else {
+                    ctx->battlerIdTemp = battlerId;
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 137);
+                }
+                ctx->commandNext = ctx->command;
+                ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                flag = 1;
+            }
+            ctx->unk_18++;
+            break;
+        case UMC_STATE_AQUA_RING:
+            if ((ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_AQUA_RING) && ctx->battleMons[battlerId].hp != ctx->battleMons[battlerId].maxHp && ctx->battleMons[battlerId].hp) {
+                if (ctx->battleMons[battlerId].unk88.healBlockTurns) {
+                    ctx->battlerIdTemp = battlerId;
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 239);
+                } else {
+                    ctx->battlerIdTemp = battlerId;
+                    ctx->moveTemp = MOVE_AQUA_RING;
+                    ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp, 16);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 169);
+                }
+                ctx->commandNext = ctx->command;
+                ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                flag = 1;
+            }
+            ctx->unk_18++;
+            break;
+        case UMC_STATE_ABILITY:
+            if (ov12_02253068(bsys, ctx, battlerId) == TRUE) {
+                flag = 1;
+            }
+            ctx->unk_18++;
+            break;
+        case UMC_STATE_HELD_ITEM:
+            if (TryUseHeldItem(bsys, ctx, battlerId) == TRUE) {
+                flag = 1;
+            }
+            ctx->unk_18++;
+            break;
+        case UMC_STATE_LEFTOVERS_RECOVERY:
+            if (CheckItemGradualHPRestore(bsys, ctx, battlerId) == TRUE) {
+                flag = 1;
+            }
+            ctx->unk_18++;
+            break;
+        case UMC_STATE_LEECH_SEED:
+            if ((ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_LEECH_SEED) && ctx->battleMons[ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_LEECH_SEED_BATTLER].hp && 
+                GetBattlerAbility(ctx, battlerId) != ABILITY_MAGIC_GUARD && ctx->battleMons[battlerId].hp) {
+                ctx->unk_11C = ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_LEECH_SEED_BATTLER;
+                ctx->unk_120 = battlerId;
+                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 69);
+                ctx->commandNext = ctx->command;
+                ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                flag = 1;
+            }
+            ctx->unk_18++;
+            break;
+        case UMC_STATE_POISON:
+            if ((ctx->battleMons[battlerId].status & STATUS_POISON) && ctx->battleMons[battlerId].hp) {
+                ctx->battlerIdTemp = battlerId;
+                ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp * -1, 8);
+                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 23);
+                ctx->commandNext = ctx->command;
+                ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                flag = 1;
+            }
+            ctx->unk_18++;
+            break;
+        case UMC_STATE_BAD_POISON:
+            if ((ctx->battleMons[battlerId].status & STATUS_BAD_POISON) && ctx->battleMons[battlerId].hp) {
+                ctx->battlerIdTemp = battlerId;
+                ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp, 16);
+                if ((ctx->battleMons[battlerId].status & STATUS_POISON_COUNT) != STATUS_POISON_COUNT) {
+                    ctx->battleMons[battlerId].status += 1 << STATUS_POISON_COUNT_SHIFT;
+                }
+                ctx->hpCalc *= ((ctx->battleMons[battlerId].status & STATUS_POISON_COUNT) >> STATUS_POISON_COUNT_SHIFT);
+                ctx->hpCalc *= -1;
+                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 23);
+                ctx->commandNext = ctx->command;
+                ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                flag = 1;
+            }
+            ctx->unk_18++;
+            break;
+        case UMC_STATE_BURN:
+            if ((ctx->battleMons[battlerId].status & STATUS_BURN) && ctx->battleMons[battlerId].hp) {
+                ctx->battlerIdTemp = battlerId;
+                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 26);
+                ctx->commandNext = ctx->command;
+                ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                flag = 1;
+            }
+            ctx->unk_18++;
+            break;
+        case UMC_STATE_NIGHTMARE:
+            if ((ctx->battleMons[battlerId].status2 & STATUS2_NIGHTMARE) && ctx->battleMons[battlerId].hp) {
+                if (ctx->battleMons[battlerId].status & STATUS_SLEEP) {
+                   ctx->battlerIdTemp = battlerId;
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 94);
+                    ctx->commandNext = ctx->command;
+                    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                    flag = 1; 
+                } else {
+                    ctx->battleMons[battlerId].status2 &= ~STATUS2_NIGHTMARE;
+                }
+            }
+            ctx->unk_18++;
+            break;
+        case UMC_STATE_CURSE:
+            if ((ctx->battleMons[battlerId].status2 & STATUS2_CURSE) && ctx->battleMons[battlerId].hp) {
+                ctx->battlerIdTemp = battlerId;
+                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 98);
+                ctx->commandNext = ctx->command;
+                ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                flag = 1;
+            }
+            ctx->unk_18++;
+            break;
+        case UMC_STATE_BINDING:
+            if ((ctx->battleMons[battlerId].status2 & STATUS2_BINDING_TURNS) && ctx->battleMons[battlerId].hp) {
+                ctx->battleMons[battlerId].status2 -= 1 << STATUS2_BINDING_SHIFT;
+                if (ctx->battleMons[battlerId].status2 & STATUS2_BINDING_TURNS) {
+                    ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp * -1, 16);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 59);
+                } else {
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 60);
+                }
+                ctx->moveTemp = ctx->battleMons[battlerId].unk88.bindingMove;
+                ctx->battlerIdTemp = battlerId;
+                ctx->commandNext = ctx->command;
+                ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                flag = 1;
+            }
+            ctx->unk_18++;
+            break;
+        case UMC_STATE_BAD_DREAMS:
+            ctx->tempData = CheckAbilityActive(bsys, ctx, CHECK_ABILITY_OPPOSING_SIDE_HP_RET, battlerId, ABILITY_BAD_DREAMS);
+            if ((ctx->battleMons[battlerId].status & STATUS_SLEEP) && GetBattlerAbility(ctx, battlerId) != ABILITY_MAGIC_GUARD &&
+                ctx->battleMons[battlerId].hp && ctx->tempData) {
+                ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp * -1, 8);
+                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 263);
+                ctx->battleStatus |= BATTLE_STATUS_NO_BLINK;
+                ctx->battlerIdTemp = battlerId;
+                ctx->commandNext = ctx->command;
+                ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                flag = 1;
+            }
+            ctx->unk_18++;
+            break;
+        case UMC_STATE_UPROAR:
+            if (ctx->battleMons[battlerId].status2 & STATUS2_UPROAR) {
+                u8 battlerIdSleep;
+                for (battlerIdSleep = 0; battlerIdSleep < maxBattlers; battlerIdSleep++) {
+                    if ((ctx->battleMons[battlerIdSleep].status & STATUS_SLEEP) && ctx->battleMons[battlerIdSleep].hp && GetBattlerAbility(ctx, battlerIdSleep) != ABILITY_SOUNDPROOF) {
+                        ctx->battlerIdTemp = battlerIdSleep;
+                        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 19);
+                        ctx->commandNext = ctx->command;
+                        ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                        break;
+                    }
+                }
+                if (battlerIdSleep != maxBattlers) {
+                    flag = 2;
+                    break;
+                }
+                ctx->battleMons[battlerId].status2 -= 1 << STATUS2_UPROAR_SHIFT;
+                if (ov12_02252218(ctx, battlerId)) {
+                    i = 241;
+                    ctx->battleMons[battlerId].status2 &= ~STATUS2_UPROAR;
+                    ctx->fieldCondition &= (MaskOfFlagNo(battlerId) << 8) ^ 0xFFFFFFFF;
+                } else if (ctx->battleMons[battlerId].status2 & STATUS2_UPROAR) {
+                    i = 240;
+                } else {
+                    i = 241;
+                    ctx->battleMons[battlerId].status2 &= ~STATUS2_UPROAR;
+                    ctx->fieldCondition &= (MaskOfFlagNo(battlerId) << 8) ^ 0xFFFFFFFF;
+                }
+                ctx->battlerIdTemp = battlerId;
+                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, i);
+                ctx->commandNext = ctx->command;
+                ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                flag = 1;
+            }
+            if (flag != 2) {
+                ctx->unk_18++;
+            }
+            break;
+        case UMC_STATE_RAMPAGE:
+            if (ctx->battleMons[battlerId].status2 & STATUS2_RAMPAGE_TURNS) {
+                ctx->battleMons[battlerId].status2 -= 1 << STATUS2_RAMPAGE_SHIFT;
+                if (ov12_02252218(ctx, battlerId)) {
+                    ctx->battleMons[battlerId].status2 &= ~STATUS2_RAMPAGE_TURNS;
+                } else if (!(ctx->battleMons[battlerId].status2 & STATUS2_RAMPAGE_TURNS) && !(ctx->battleMons[battlerId].status2 & STATUS2_CONFUSION)) {
+                    ctx->battlerIdStatChange = battlerId;
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 51);
+                    ctx->commandNext = ctx->command;
+                    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                    flag = 1;
+                }
+            }
+            ctx->unk_18++;
+            break;
+        case UMC_STATE_DISABLE:
+            if (ctx->battleMons[battlerId].unk88.disabledMove) {
+                for (i = 0; i < LEARNED_MOVES_MAX; i++) {
+                    if (ctx->battleMons[battlerId].unk88.disabledMove == ctx->battleMons[battlerId].moves[i]) {
+                        break;
+                    }
+                }
+                if (i == LEARNED_MOVES_MAX) {
+                    ctx->battleMons[battlerId].unk88.disabledTurns = 0;
+                }
+                if (ctx->battleMons[battlerId].unk88.disabledTurns) {
+                    ctx->battleMons[battlerId].unk88.disabledTurns--;
+                } else {
+                    ctx->battleMons[battlerId].unk88.disabledMove = 0;
+                    ctx->battlerIdTemp = battlerId;
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 72);
+                    ctx->commandNext = ctx->command;
+                    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                    flag = 1;
+                }
+            }
+            ctx->unk_18++;
+            break;
+        case UMC_STATE_ENCORE:
+            if (ctx->battleMons[battlerId].unk88.encoredMove) {
+                for (i = 0; i < LEARNED_MOVES_MAX; i++) {
+                    if (ctx->battleMons[battlerId].unk88.encoredMove == ctx->battleMons[battlerId].moves[i]) {
+                        break;
+                    }
+                }
+                if (i == LEARNED_MOVES_MAX || (i != LEARNED_MOVES_MAX && !ctx->battleMons[battlerId].movePPCur[i])) {
+                    ctx->battleMons[battlerId].unk88.encoredTurns = 0;
+                }
+                if (ctx->battleMons[battlerId].unk88.encoredTurns) {
+                    ctx->battleMons[battlerId].unk88.encoredTurns--;
+                } else {
+                    ctx->battleMons[battlerId].unk88.encoredMove = 0;
+                    ctx->battlerIdTemp = battlerId;
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 74);
+                    ctx->commandNext = ctx->command;
+                    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                    flag = 1;
+                }
+            }
+            ctx->unk_18++;
+            break;
+        case UMC_STATE_LOCK_ON:
+            if (ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_LOCK_ON) {
+                ctx->battleMons[battlerId].moveEffectFlags -= 1 << MOVE_EFFECT_FLAG_LOCK_ON_SHIFT;
+            }
+            ctx->unk_18++;
+            break;
+        case UMC_STATE_CHARGE:
+            if (ctx->battleMons[battlerId].unk88.isCharged) {
+                if (--ctx->battleMons[battlerId].unk88.isCharged == 0) {
+                    ctx->battleMons[battlerId].moveEffectFlags &= ~MOVE_EFFECT_FLAG_CHARGE;
+                }
+            }
+            ctx->unk_18++;
+            break;
+        case UMC_STATE_TAUNT:
+            if (ctx->battleMons[battlerId].unk88.tauntTurns) {
+                ctx->battleMons[battlerId].unk88.tauntTurns--;
+                if (ctx->battleMons[battlerId].unk88.tauntTurns == 0) {
+                    ctx->battlerIdTemp = battlerId;
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 288);
+                    ctx->commandNext = ctx->command;
+                    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                    flag = 1;
+                }
+            }
+            ctx->unk_18++;
+            break;
+        case UMC_STATE_MAGNET_RISE:
+            if (ctx->battleMons[battlerId].unk88.magnetRiseTurns) {
+                if (--ctx->battleMons[battlerId].unk88.magnetRiseTurns == 0) {
+                    ctx->battlerIdTemp = battlerId;
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 242);
+                    ctx->commandNext = ctx->command;
+                    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                    flag = 1;
+                }
+            }
+            ctx->unk_18++;
+            break;
+        case UMC_STATE_HEALBLOCK:
+            if (ctx->battleMons[battlerId].unk88.healBlockTurns) {
+                if (--ctx->battleMons[battlerId].unk88.healBlockTurns == 0) {
+                    ctx->battlerIdTemp = battlerId;
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 243);
+                    ctx->commandNext = ctx->command;
+                    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                    flag = 1;
+                }
+            }
+            ctx->unk_18++;
+            break;
+        case UMC_STATE_EMBARGO:
+            if (ctx->battleMons[battlerId].unk88.embargoFlag) {
+                if (--ctx->battleMons[battlerId].unk88.embargoFlag == 0) {
+                    ctx->battlerIdTemp = battlerId;
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 244);
+                    ctx->commandNext = ctx->command;
+                    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                    flag = 1;
+                }
+            }
+            ctx->unk_18++;
+            break;
+        case UMC_STATE_YAWN:
+            if (ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_YAWN) {
+                ctx->battleMons[battlerId].moveEffectFlags -= 1 << MOVE_EFFECT_FLAG_YAWN_SHIFT;
+                if ((ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_YAWN) == 0) {
+                    ctx->battlerIdStatChange = battlerId;
+                    ctx->statChangeType = 4;
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 18);
+                    ctx->commandNext = ctx->command;
+                    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                    flag = 1;
+                }
+            }
+            ctx->unk_18++;
+            break;  
+        case UMC_STATE_HELD_ITEM_STATUS:
+            int script;
+            
+            if (CheckUseHeldItem(bsys, ctx, battlerId, &script) == TRUE) {
+                ctx->battlerIdTemp = battlerId;
+                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
+                ctx->commandNext = ctx->command;
+                ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                flag = 1;
+            }
+            ctx->unk_18++;
+            break;
+        case UMC_STATE_HELD_ITEM_DAMAGE:
+            if (TryHeldItemNegativeEffect(bsys, ctx, battlerId) == TRUE) {
+                flag = 1;
+            }
+            ctx->unk_18++;
+            break;
+        case UMC_STATE_END:
+            ctx->unk_18 = 0;
+            ctx->unk_1C++;
+            break;
+        }
+        if (flag) {
+            ov12_022642F0(bsys);
+            return;
+        }
+    }
+    ctx->unk_18 = 0;
+    ctx->unk_1C = 0;
+    ctx->command = CONTROLLER_COMMAND_11;
 }

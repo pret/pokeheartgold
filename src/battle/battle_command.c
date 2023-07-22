@@ -2993,7 +2993,7 @@ BOOL BtlCmd_HealBell(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ctx->moveTemp = ctx->moveNoCur;
         if (GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_SOUNDPROOF) {
             ctx->battleMons[ctx->battlerIdAttacker].status = STATUS_NONE;
-            ctx->battleMons[ctx->battlerIdAttacker].status2 &= ~STATUS2_27;
+            ctx->battleMons[ctx->battlerIdAttacker].status2 &= ~STATUS2_NIGHTMARE;
         } else {
             ctx->calcTemp |= 5;
         }
@@ -3003,7 +3003,7 @@ BOOL BtlCmd_HealBell(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             if (!(ctx->unk_3108 & MaskOfFlagNo(battlerId))) {
                 if (!CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, battlerId, ABILITY_SOUNDPROOF)) {
                     ctx->battleMons[battlerId].status = STATUS_NONE;
-                    ctx->battleMons[battlerId].status2 &= ~STATUS2_27;
+                    ctx->battleMons[battlerId].status2 &= ~STATUS2_NIGHTMARE;
                 } else {
                     ctx->battlerIdTemp = battlerId;
                     ctx->calcTemp |= 10;
@@ -3014,12 +3014,12 @@ BOOL BtlCmd_HealBell(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         }
     } else { //aromatherapy
         ctx->battleMons[ctx->battlerIdAttacker].status = STATUS_NONE;
-        ctx->battleMons[ctx->battlerIdAttacker].status2 &= ~STATUS2_27;
+        ctx->battleMons[ctx->battlerIdAttacker].status2 &= ~STATUS2_NIGHTMARE;
         if (battleType & BATTLE_TYPE_DOUBLES) {
             battlerId = GetBattlerIDBySide(bsys, ctx, B_SIDE_16);
             if (!(ctx->unk_3108 & MaskOfFlagNo(battlerId))) {
                 ctx->battleMons[battlerId].status = STATUS_NONE;
-                ctx->battleMons[battlerId].status2 &= ~STATUS2_27;
+                ctx->battleMons[battlerId].status2 &= ~STATUS2_NIGHTMARE;
             }
         } else {
             ctx->calcTemp |= 8;
@@ -3117,7 +3117,7 @@ BOOL BtlCmd_TrySubstitute(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     } else {
         ctx->hpCalc = -subHp;
         ctx->battleMons[ctx->battlerIdAttacker].unk88.substituteHp = subHp;
-        ctx->battleMons[ctx->battlerIdAttacker].status2 &= ~STATUS2_BINDING_ALL;
+        ctx->battleMons[ctx->battlerIdAttacker].status2 &= ~STATUS2_BINDING_TURNS;
     }
 
     return FALSE;
@@ -3566,8 +3566,8 @@ BOOL BtlCmd_RapidSpin(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int side = BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker);
 
     //Binding Moves
-    if (ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_BINDING_ALL) {
-        ctx->battleMons[ctx->battlerIdAttacker].status2 &= ~STATUS2_BINDING_ALL;
+    if (ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_BINDING_TURNS) {
+        ctx->battleMons[ctx->battlerIdAttacker].status2 &= ~STATUS2_BINDING_TURNS;
         ctx->battlerIdTemp = ctx->battleMons[ctx->battlerIdAttacker].unk88.battlerIdBinding;
         ctx->moveTemp = ctx->battleMons[ctx->battlerIdAttacker].unk88.bindingMove;
         BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, 116);
@@ -3994,7 +3994,7 @@ BOOL BtlCmd_TryYawn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (ctx->battleMons[ctx->battlerIdTarget].moveEffectFlags & (192 << 5)) {
         BattleScriptIncrementPointer(ctx, adrs);
     } else {
-        ctx->battleMons[ctx->battlerIdTarget].moveEffectFlags |= MOVE_EFFECT_FLAG_YAWN;
+        ctx->battleMons[ctx->battlerIdTarget].moveEffectFlags |= (2 << MOVE_EFFECT_FLAG_YAWN_SHIFT);
     }
 
     return FALSE;
