@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_BATTLE_SYSTEM_H
 #define POKEHEARTGOLD_BATTLE_SYSTEM_H
 
+#include "bag.h"
 #include "battle.h"
 #include "player_data.h"
 #include "pokemon.h"
@@ -42,5 +43,7 @@ void ov12_02237ED0(BattleSystem *bsys, int a1);
 BATTLECONTEXT *ov12_0223A7E4(BattleSystem *bsys);
 void ov12_022642F0(BattleSystem *bsys);
 BOOL ov12_022581BC(BattleSystem *bsys, BATTLECONTEXT *ctx);
+Bag *BattleSystem_GetBag(BattleSystem *bsys);
+BagCursor *BattleSystem_GetBagCursor(BattleSystem *bsys);
 
 #endif

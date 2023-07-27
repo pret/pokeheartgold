@@ -1630,7 +1630,7 @@ BOOL CheckTrainerMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         return FALSE;
     }
     
-    if (!(state & BATTLE_TYPE_SINGLES)) {
+    if (!(state & BATTLE_TYPE_TRAINER)) {
         return FALSE;
     }
     

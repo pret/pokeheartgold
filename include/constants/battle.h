@@ -48,7 +48,7 @@ enum Terrain {
 };
 
 //Battle Type
-#define BATTLE_TYPE_SINGLES                 (1 << 0)
+#define BATTLE_TYPE_TRAINER                 (1 << 0)
 #define BATTLE_TYPE_DOUBLES                 (1 << 1)
 #define BATTLE_TYPE_LINK                    (1 << 2)
 #define BATTLE_TYPE_MULTI                   (1 << 3)
@@ -62,7 +62,7 @@ enum Terrain {
 
 #define BATTLE_TYPE_NO_EXP                  (BATTLE_TYPE_LINK | BATTLE_TYPE_SAFARI | BATTLE_TYPE_TOWER | BATTLE_TYPE_PAL_PARK)
 
-//Battle Status Flags
+//Battle Special Flags
 #define BATTLE_SPECIAL_FIRST_RIVAL          (1 << 0)
 #define BATTLE_SPECIAL_RECORDED             (1 << 4)
 #define BATTLE_SPECIAL_DISTORTION_WORLD     (1 << 7)
@@ -379,7 +379,7 @@ enum Terrain {
 #define BATTLE_STATUS_NO_MOVE_SET                   (1 << 20)
 #define BATTLE_STATUS_MESSAGES_OFF                  (1 << 21)
 #define BATTLE_STATUS_22                            (1 << 22)
-#define BATTLE_STATUS_MOLD_BREAKER                  (1 << 23) 
+#define BATTLE_STATUS_MOLD_BREAKER                  (1 << 23)
 
 #define BATTLE_STATUS_FAINTED_SHIFT                 24
 

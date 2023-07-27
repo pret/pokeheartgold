@@ -631,4 +631,11 @@ typedef struct TargetPokemon {
     u16 hpMax;
 } TargetPokemon;
 
+//Information used for selecting an item on the bottom screen
+typedef struct BattleItem {
+    u16 id;
+    u8 page;
+    u8 monIndex;
+} BattleItem;
+
 #endif

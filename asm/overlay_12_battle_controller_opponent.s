@@ -12252,7 +12252,7 @@ _0225E8EC:
 	add r0, #0x26
 	strb r1, [r0]
 	ldr r0, [r4]
-	bl ov12_0223AA80
+	bl BattleSystem_GetBag
 	ldr r1, [r4, #4]
 	str r0, [r1, #8]
 	ldrb r1, [r4, #0xd]

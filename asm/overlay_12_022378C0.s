@@ -1147,7 +1147,7 @@ _02237FD8:
 	add r0, r4, #0
 	bl ov12_0223A620
 	add r0, r4, #0
-	bl ov12_0223AA84
+	bl BattleSystem_GetBagCursor
 	bl BagCursor_Battle_Init
 	mov r0, #5
 	mov r1, #4

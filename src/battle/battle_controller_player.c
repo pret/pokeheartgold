@@ -6,6 +6,7 @@
 #include "overlay_12_0224E4FC.h"
 #include "heap.h"
 #include "constants/abilities.h"
+#include "constants/items.h"
 #include "msgdata/msg/msg_0197.h"
 
 extern ControllerFunction sPlayerBattleCommands[];
@@ -113,24 +114,24 @@ void BattleControllerPlayer_SelectionScreenInit(BattleSystem *bsys, BATTLECONTEX
 }
 
 typedef enum BattleSelectState {
-    BS_STATE_0,
-    BS_STATE_1,
-    BS_STATE_2,
-    BS_STATE_3,
-    BS_STATE_4,
-    BS_STATE_5,
-    BS_STATE_6,
-    BS_STATE_7,
-    BS_STATE_8,
-    BS_STATE_9,
-    BS_STATE_10,
-    BS_STATE_11,
-    BS_STATE_12,
-    BS_STATE_13,
-    BS_STATE_14,
-    BS_STATE_15,
-    BS_STATE_16,
-    BS_STATE_END
+    SSI_STATE_0,
+    SSI_STATE_1,
+    SSI_STATE_2,
+    SSI_STATE_3,
+    SSI_STATE_4,
+    SSI_STATE_5,
+    SSI_STATE_6,
+    SSI_STATE_7,
+    SSI_STATE_8,
+    SSI_STATE_9,
+    SSI_STATE_10,
+    SSI_STATE_11,
+    SSI_STATE_12,
+    SSI_STATE_13,
+    SSI_STATE_14,
+    SSI_STATE_15,
+    SSI_STATE_NO_MOVES,
+    SSI_STATE_END
 } BattleSelectState;
 
 //static
@@ -148,29 +149,29 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
     
     for (battlerId = 0; battlerId < battlersMax; battlerId++) {
         switch (ctx->unk_0[battlerId]) {
-        case BS_STATE_0:
+        case SSI_STATE_0:
             if ((battleType & BATTLE_TYPE_DOUBLES) && !(battleType & BATTLE_TYPE_MULTI) && ((battlerId == BATTLER_PLAYER2) && (ctx->unk_0[0] != 14) || (battlerId == BATTLER_ENEMY2) && (ctx->unk_0[1] != 14))) {
                 break;
             }
             if (ctx->unk_3108 & MaskOfFlagNo(battlerId)) {
-                ctx->unk_0[battlerId] = BS_STATE_13;
+                ctx->unk_0[battlerId] = SSI_STATE_13;
                 ctx->unk_21A8[battlerId][0] = 40;
                 break;
             } else if (Battler_CanSelectAction(ctx, battlerId) == 0) {
                 ctx->turnData[battlerId].unk0_1 = 1;
-                ctx->unk_0[battlerId] = BS_STATE_13;
+                ctx->unk_0[battlerId] = SSI_STATE_13;
                 ctx->unk_21A8[battlerId][0] = 13;
                 break;
             }
 
             if ((ov12_02261264(BattleSystem_GetOpponentDataByBattlerId(bsys, battlerId)) == 1) || (ctx->totalTurns)) {
                 ov12_02262B80(bsys, ctx, battlerId, ctx->selectedMonIndex[battlerId]);
-                ctx->unk_0[battlerId] = BS_STATE_1;
+                ctx->unk_0[battlerId] = SSI_STATE_1;
             } else {
-                ctx->unk_0[battlerId] = BS_STATE_2;
+                ctx->unk_0[battlerId] = SSI_STATE_2;
             }
             break;
-        case BS_STATE_2:
+        case SSI_STATE_2:
             int battlerIdCheck;
 
             for (battlerIdCheck = 0; battlerIdCheck < battlersMax; battlerIdCheck++) {
@@ -182,60 +183,60 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
                     continue;
                 }
 
-                if (ctx->unk_0[battlerIdCheck] != BS_STATE_14) {
+                if (ctx->unk_0[battlerIdCheck] != SSI_STATE_14) {
                     break;
                 }
             }
 
             if (battlerIdCheck == battlersMax) {
                 ov12_02262B80(bsys, ctx, battlerId, ctx->selectedMonIndex[battlerId]);
-                ctx->unk_0[battlerId] = BS_STATE_1;
+                ctx->unk_0[battlerId] = SSI_STATE_1;
             } else {
                 break;
             }
         //fallthrough
-        case BS_STATE_1:
+        case SSI_STATE_1:
             if (ov12_0225682C(ctx, battlerId)) {
                 ctx->unk_21A8[battlerId][3] = ctx->unk_2300[battlerId][0];
 
                 if (battleType & BATTLE_TYPE_PAL_PARK) {
                     switch (ov12_0225682C(ctx, battlerId)) {
                     case 1:
-                        ctx->unk_0[battlerId] = BS_STATE_END;
-                        ctx->unk_4[battlerId] = BS_STATE_13;
+                        ctx->unk_0[battlerId] = SSI_STATE_END;
+                        ctx->unk_4[battlerId] = SSI_STATE_13;
                         ctx->unk_21A8[battlerId][0] = 17;
                         break;
                     case 4:
-                        ctx->unk_0[battlerId] = BS_STATE_END;
-                        ctx->unk_4[battlerId] = BS_STATE_13;
+                        ctx->unk_0[battlerId] = SSI_STATE_END;
+                        ctx->unk_4[battlerId] = SSI_STATE_13;
                         ctx->unk_21A8[battlerId][0] = 16;
                         break;
                     }
                 } else if (battleType & BATTLE_TYPE_SAFARI) {
                     switch (ov12_0225682C(ctx, battlerId)) {
                     case 1:
-                        ctx->unk_0[battlerId] = BS_STATE_END;
-                        ctx->unk_4[battlerId] = BS_STATE_13;
+                        ctx->unk_0[battlerId] = SSI_STATE_END;
+                        ctx->unk_4[battlerId] = SSI_STATE_13;
                         ctx->unk_21A8[battlerId][0] = 17;
                         break;
                     case 2:
-                        ctx->unk_0[battlerId] = BS_STATE_END;
-                        ctx->unk_4[battlerId] = BS_STATE_13;
+                        ctx->unk_0[battlerId] = SSI_STATE_END;
+                        ctx->unk_4[battlerId] = SSI_STATE_13;
                         ctx->unk_21A8[battlerId][0] = 18;
                         break;
                     case 3:
-                        ctx->unk_0[battlerId] = BS_STATE_END;
-                        ctx->unk_4[battlerId] = BS_STATE_13;
+                        ctx->unk_0[battlerId] = SSI_STATE_END;
+                        ctx->unk_4[battlerId] = SSI_STATE_13;
                         ctx->unk_21A8[battlerId][0] = 19;
                         break;
                     case 4:
-                        ctx->unk_0[battlerId] = BS_STATE_END;
-                        ctx->unk_4[battlerId] = BS_STATE_13;
+                        ctx->unk_0[battlerId] = SSI_STATE_END;
+                        ctx->unk_4[battlerId] = SSI_STATE_13;
                         ctx->unk_21A8[battlerId][0] = 16;
                         break;
                     case 5:
-                        ctx->unk_0[battlerId] = BS_STATE_END;
-                        ctx->unk_0[battlerId] = BS_STATE_13;
+                        ctx->unk_0[battlerId] = SSI_STATE_END;
+                        ctx->unk_0[battlerId] = SSI_STATE_13;
                         ctx->unk_21A8[battlerId][0] = 20;
                         break;
                     }
@@ -250,10 +251,10 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
                             ctx->turnData[battlerId].struggleFlag = 1;
 
                             if (BattleSystem_GetBattleSpecial(bsys) & BATTLE_SPECIAL_RECORDED) {
-                                ctx->unk_0[battlerId] = BS_STATE_13;
+                                ctx->unk_0[battlerId] = SSI_STATE_13;
                             } else {
-                                ctx->unk_0[battlerId] = BS_STATE_END;
-                                ctx->unk_4[battlerId] = BS_STATE_16;
+                                ctx->unk_0[battlerId] = SSI_STATE_END;
+                                ctx->unk_4[battlerId] = SSI_STATE_NO_MOVES;
                             }
                         } else if (ctx->battleMons[battlerId].unk88.encoredMove) {
                             ctx->movePos[battlerId] = ctx->battleMons[battlerId].unk88.encoredMoveIndex;
@@ -261,28 +262,28 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
                             ctx->unk_21A8[battlerId][2] = 0;
 
                             if (BattleSystem_GetBattleSpecial(bsys) & BATTLE_SPECIAL_RECORDED) {
-                                ctx->unk_0[battlerId] = BS_STATE_13;
+                                ctx->unk_0[battlerId] = SSI_STATE_13;
                             } else {
-                                ctx->unk_0[battlerId] = BS_STATE_END;
-                                ctx->unk_4[battlerId] = BS_STATE_13;
+                                ctx->unk_0[battlerId] = SSI_STATE_END;
+                                ctx->unk_4[battlerId] = SSI_STATE_13;
                             }
                         } else {
-                            ctx->unk_0[battlerId] = BS_STATE_3;
+                            ctx->unk_0[battlerId] = SSI_STATE_3;
                         }
 
                         ctx->unk_21A8[battlerId][0] = 13;
                         break;
                     case 2: //Item
                         if (BattleSystem_GetBattleType(bsys) & (1 << 12)) {
-                            ctx->unk_0[battlerId] = BS_STATE_END;
-                            ctx->unk_4[battlerId] = BS_STATE_13;
+                            ctx->unk_0[battlerId] = SSI_STATE_END;
+                            ctx->unk_4[battlerId] = SSI_STATE_13;
                             ctx->unk_21A8[battlerId][0] = 21;
                         } else if (BattleSystem_GetBattleType(bsys) & (BATTLE_TYPE_LINK | BATTLE_TYPE_TOWER)) {
                             msg.id = msg_0197_00593; //Items can't be used here
                             msg.tag = 0;
                             ov12_022639B8(bsys, battlerId, msg);
-                            ctx->unk_0[battlerId] = BS_STATE_15;
-                            ctx->unk_4[battlerId] = BS_STATE_0;
+                            ctx->unk_0[battlerId] = SSI_STATE_15;
+                            ctx->unk_4[battlerId] = SSI_STATE_0;
                         } else {
                             ctx->unk_21A8[battlerId][0] = 14;
                             ctx->unk_0[battlerId] = 7;
@@ -290,38 +291,38 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
                         break;
                     case 3: //Pokemon
                         ctx->unk_21A8[battlerId][0] = 15;
-                        ctx->unk_0[battlerId] = BS_STATE_9;
+                        ctx->unk_0[battlerId] = SSI_STATE_9;
                         break;
                     case 4: //Run
                         ctx->unk_21A8[battlerId][0] = 16;
-                        ctx->unk_0[battlerId] = BS_STATE_11;
+                        ctx->unk_0[battlerId] = SSI_STATE_11;
                         break;
                     case 0xff: //Cancel
                         if (battleType & BATTLE_TYPE_LINK) {
                             ov12_02263CCC(bsys, battlerId);
-                            ctx->unk_0[battlerId] = BS_STATE_0;
+                            ctx->unk_0[battlerId] = SSI_STATE_0;
                             ctx->unk_0[BattleSystem_GetBattlerIdPartner(bsys, battlerId)] = 0;
                         } else if ((battleType & BATTLE_TYPE_DOUBLES) && (battlerId == BATTLER_PLAYER2)) {
                             ov12_02263CCC(bsys, battlerId);
-                            ctx->unk_0[0] = BS_STATE_0;
-                            ctx->unk_0[2] = BS_STATE_0;
+                            ctx->unk_0[0] = SSI_STATE_0;
+                            ctx->unk_0[2] = SSI_STATE_0;
                         }
                         break;
                     }
                 }
             }
             break;
-        case BS_STATE_3:
+        case SSI_STATE_3:
             ov12_02262F40(bsys, ctx, battlerId);
-            ctx->unk_0[battlerId] = BS_STATE_4;
+            ctx->unk_0[battlerId] = SSI_STATE_4;
             //fallthrough
-        case BS_STATE_4:
+        case SSI_STATE_4:
             if (ov12_0225682C(ctx, battlerId) == 0xff) {
-                ctx->unk_0[battlerId] = BS_STATE_0;
+                ctx->unk_0[battlerId] = SSI_STATE_0;
             } else if (ov12_0225682C(ctx, battlerId)) {
                 if ((ctx->unk_2300[battlerId][0] - 1) == 4) {
                     ctx->unk_21A8[battlerId][0] = 16;
-                    ctx->unk_0[battlerId] = BS_STATE_11;
+                    ctx->unk_0[battlerId] = SSI_STATE_11;
                     break;
                 } else if (ov12_02251A28(bsys, ctx, battlerId, ctx->unk_2300[battlerId][0] - 1, &msg) == 0) {
                     if (BattleSystem_GetBattleSpecial(bsys) & BATTLE_SPECIAL_RECORDED) {
@@ -329,60 +330,60 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
                         ov12_022581BC(bsys, ov12_0223A7E4(bsys));
                     } else {
                         ov12_022639B8(bsys, battlerId, msg);
-                        ctx->unk_0[battlerId] = BS_STATE_15;
-                        ctx->unk_4[battlerId] = BS_STATE_3;
+                        ctx->unk_0[battlerId] = SSI_STATE_15;
+                        ctx->unk_4[battlerId] = SSI_STATE_3;
                     }
                 } else {
                     ctx->unk_21A8[battlerId][2] = ctx->unk_2300[battlerId][0];
                     ctx->movePos[battlerId] = ctx->unk_2300[battlerId][0] - 1;
                     ctx->unk_30B4[battlerId] = ctx->battleMons[battlerId].moves[ctx->movePos[battlerId]];
-                    ctx->unk_0[battlerId] = BS_STATE_5;
+                    ctx->unk_0[battlerId] = SSI_STATE_5;
                     ctx->unk_314C[battlerId] |= 0x2;
                 }
             }
             break;
-        case BS_STATE_5:
+        case SSI_STATE_5:
             int out;
 
             if (ov12_0224DB64(bsys, ctx, battlerId, battleType, &out, ctx->movePos[battlerId], &ctx->unk_21A8[battlerId][1])) {
                 ov12_02262FFC(bsys, ctx, out, battlerId);
-                ctx->unk_0[battlerId] = BS_STATE_6;
+                ctx->unk_0[battlerId] = SSI_STATE_6;
             } else {
-                ctx->unk_0[battlerId] = BS_STATE_13;
+                ctx->unk_0[battlerId] = SSI_STATE_13;
             }
             break;
-        case BS_STATE_6:
+        case SSI_STATE_6:
             if (ov12_0225682C(ctx, battlerId) == 0xff) {
-                ctx->unk_0[battlerId] = BS_STATE_3;
+                ctx->unk_0[battlerId] = SSI_STATE_3;
             } else if (ov12_0225682C(ctx, battlerId)) {
                 ctx->unk_21A8[battlerId][1] = ctx->unk_2300[battlerId][0] - 1;
-                ctx->unk_0[battlerId] = BS_STATE_13;
+                ctx->unk_0[battlerId] = SSI_STATE_13;
 
                 ctx->unk_314C[battlerId] |= 0x4;
             }
             break;
-        case BS_STATE_7:
+        case SSI_STATE_7:
             ov12_02263138(bsys, ctx, battlerId);
-            ctx->unk_0[battlerId] = BS_STATE_8;
-        case BS_STATE_8:
+            ctx->unk_0[battlerId] = SSI_STATE_8;
+        case SSI_STATE_8:
             if (ov12_0225682C(ctx, battlerId) == 0xff) {
-                ctx->unk_0[battlerId] = BS_STATE_0;
+                ctx->unk_0[battlerId] = SSI_STATE_0;
             } else if (ov12_0225682C(ctx, battlerId)) {
                 u32 *unkPtr;
 
                 unkPtr = (u32 *)&ctx->unk_2300[battlerId][0];
                 ctx->unk_21A8[battlerId][2] = unkPtr[0];
-                ctx->unk_0[battlerId] = BS_STATE_13;
+                ctx->unk_0[battlerId] = SSI_STATE_13;
             }
             break;
-        case BS_STATE_9: //switching..?
+        case SSI_STATE_9: //switching..?
             int v8;
             int v9 = 6;
             int partnerId;
 
             v8 = BattlerCanSwitch(bsys, ctx, battlerId);
 
-            if (((ov12_0223AB0C(bsys, battlerId) == 4) || (ov12_0223AB0C(bsys, battlerId) == 5)) && ((battleType == (BATTLE_TYPE_SINGLES | BATTLE_TYPE_DOUBLES)) || (battleType == (BATTLE_TYPE_SINGLES | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_LINK)) || (battleType == (BATTLE_TYPE_SINGLES | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TOWER)) || ((battleType == (BATTLE_TYPE_SINGLES | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_INGAME_PARTNER)) && (ov12_0223AB0C(bsys, battlerId) == 4)))) {
+            if (((ov12_0223AB0C(bsys, battlerId) == 4) || (ov12_0223AB0C(bsys, battlerId) == 5)) && ((battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES)) || (battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_LINK)) || (battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TOWER)) || ((battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_INGAME_PARTNER)) && (ov12_0223AB0C(bsys, battlerId) == 4)))) {
                 partnerId = BattleSystem_GetBattlerIdPartner(bsys, battlerId);
 
                 if (ctx->unk_21A8[partnerId][0] == 15) {
@@ -391,22 +392,22 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
             }
 
             BattleController_EmitShowMonList(bsys, ctx, battlerId, 0, v8, v9);
-            ctx->unk_0[battlerId] = BS_STATE_10;
+            ctx->unk_0[battlerId] = SSI_STATE_10;
         //fallthrough
-        case BS_STATE_10:
+        case SSI_STATE_10:
             if (ov12_0225682C(ctx, battlerId) == 0xff) {
-                ctx->unk_0[battlerId] = BS_STATE_0;
+                ctx->unk_0[battlerId] = SSI_STATE_0;
             } else if (ov12_0225682C(ctx, battlerId)) {
                 ctx->unk_21A8[battlerId][2] = ctx->unk_2300[battlerId][0] - 1;
                 ctx->unk_21A0[battlerId] = ctx->unk_2300[battlerId][0] - 1;
-                ctx->unk_0[battlerId] = BS_STATE_13;
+                ctx->unk_0[battlerId] = SSI_STATE_13;
             }
             break;
-        case BS_STATE_11: //Flee after a mon fainted..?
+        case SSI_STATE_11: //Flee after a mon fainted..?
             if (battleType & BATTLE_TYPE_TOWER) {
                 BattleController_EmitDrawYesNoBox(bsys, ctx, battlerId, 955, 0, 0, 0);
-                ctx->unk_0[battlerId] = BS_STATE_12;
-            } else if ((battleType & BATTLE_TYPE_SINGLES) && !(battleType & BATTLE_TYPE_LINK)) {
+                ctx->unk_0[battlerId] = SSI_STATE_12;
+            } else if ((battleType & BATTLE_TYPE_TRAINER) && !(battleType & BATTLE_TYPE_LINK)) {
                 if (BattleSystem_GetBattleSpecial(bsys) & BATTLE_SPECIAL_RECORDED) {
                     ov12_0223BFFC(bsys, 1);
                     ov12_022581BC(bsys, ov12_0223A7E4(bsys));
@@ -414,8 +415,8 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
                     msg.tag = 0;
                     msg.id = msg_0197_00793; //There's no running from a Trainer battle!
                     ov12_022639B8(bsys, battlerId, msg);
-                    ctx->unk_0[battlerId] = BS_STATE_15;
-                    ctx->unk_4[battlerId] = BS_STATE_0;
+                    ctx->unk_0[battlerId] = SSI_STATE_15;
+                    ctx->unk_4[battlerId] = SSI_STATE_0;
                 }
             } else if (CantEscape(bsys, ctx, battlerId, &msg)) {
                 if (BattleSystem_GetBattleSpecial(bsys) & BATTLE_SPECIAL_RECORDED) {
@@ -423,64 +424,64 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
                     ov12_022581BC(bsys, ov12_0223A7E4(bsys));
                 } else {
                     ov12_022639B8(bsys, battlerId, msg);
-                    ctx->unk_0[battlerId] = BS_STATE_15;
-                    ctx->unk_4[battlerId] = BS_STATE_0;
+                    ctx->unk_0[battlerId] = SSI_STATE_15;
+                    ctx->unk_4[battlerId] = SSI_STATE_0;
                 }
             } else {
-                ctx->unk_0[battlerId] = BS_STATE_12;
+                ctx->unk_0[battlerId] = SSI_STATE_12;
             }
             break;
-        case BS_STATE_12:
+        case SSI_STATE_12:
             if (battleType & BATTLE_TYPE_TOWER) {
                 if (ov12_0225682C(ctx, battlerId)) {
                     if (ov12_0225682C(ctx, battlerId) == 0xff) {
-                        ctx->unk_0[battlerId] = BS_STATE_0;
+                        ctx->unk_0[battlerId] = SSI_STATE_0;
                     } else {
-                        ctx->unk_0[battlerId] = BS_STATE_13;
+                        ctx->unk_0[battlerId] = SSI_STATE_13;
                     }
                 }
             } else {
-                ctx->unk_0[battlerId] = BS_STATE_13;
+                ctx->unk_0[battlerId] = SSI_STATE_13;
             }
 
             if ((battleType & BATTLE_TYPE_DOUBLES) && !(battleType & BATTLE_TYPE_MULTI) && (ctx->unk_0[battlerId] == 13)) {
-                ctx->unk_0[BattleSystem_GetBattlerIdPartner(bsys, battlerId)] = BS_STATE_13;
+                ctx->unk_0[BattleSystem_GetBattlerIdPartner(bsys, battlerId)] = SSI_STATE_13;
             }
             break;
-        case BS_STATE_13: //WIFI wait for partner to make a move..?
+        case SSI_STATE_13: //WIFI wait for partner to make a move..?
             ov12_02263CCC(bsys, battlerId);
 
-            if (battleType == (BATTLE_TYPE_SINGLES | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_LINK)) {
+            if (battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_LINK)) {
                 int partnerId;
 
                 partnerId = BattleSystem_GetBattlerIdPartner(bsys, battlerId);
 
-                if (ctx->unk_0[partnerId] == BS_STATE_14) {
+                if (ctx->unk_0[partnerId] == SSI_STATE_14) {
                     BattleController_EmitShowWaitMessage(bsys, battlerId);
                 }
             } else {
                 BattleController_EmitShowWaitMessage(bsys, battlerId);
             }
 
-            ctx->unk_0[battlerId] = BS_STATE_14;
-        case BS_STATE_14:
+            ctx->unk_0[battlerId] = SSI_STATE_14;
+        case SSI_STATE_14:
             var++; //this might be counting the number of players who have selected their final action?
             break;
-        case BS_STATE_15:
+        case SSI_STATE_15:
             if (ov12_0225682C(ctx, battlerId)) {
                 ov12_0224EDC0(ctx, battlerId);
                 ctx->unk_0[battlerId] = ctx->unk_4[battlerId];
             }
             break;
-        case BS_STATE_16:
+        case SSI_STATE_NO_MOVES:
             msg.tag = 2;
             msg.id = msg_0197_00608; //Spheal has no moves left!
             msg.param[0] = CreateNicknameTag(ctx, battlerId);
             ov12_022639B8(bsys, battlerId, msg);
-            ctx->unk_0[battlerId] = BS_STATE_15;
-            ctx->unk_4[battlerId] = BS_STATE_13;
+            ctx->unk_0[battlerId] = SSI_STATE_15;
+            ctx->unk_4[battlerId] = SSI_STATE_13;
             break;
-        case BS_STATE_END:
+        case SSI_STATE_END:
             ov12_02263E18(bsys, battlerId);
             ctx->unk_0[battlerId] = ctx->unk_4[battlerId];
             break;
@@ -1578,4 +1579,66 @@ void ov12_0224A9B0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
    ctx->command = CONTROLLER_COMMAND_23;
    ctx->battlerIdTarget = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, ctx->moveNoTemp, flag, 0);
    ov12_022642F0(bsys);
+}
+
+//static
+void ov12_0224AAF0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    BattleItem *item;
+    int script;
+    
+    ctx->battlerIdAttacker = ctx->unk_21E8[ctx->unk_EC];
+    ctx->battlerIdTarget = ov12_02253DA0(bsys, ctx, ctx->battlerIdAttacker);
+    item = (BattleItem *)&ctx->unk_21A8[ctx->battlerIdAttacker][2];
+    
+    if (BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker)) {
+        switch (ctx->unk_334.unk9D[ctx->battlerIdAttacker >> 1]) {
+        case 0:
+            script = 289;
+            break;
+        case 1:
+            script = 267;
+            break;
+        case 2:
+            if ((ctx->unk_334.unk9F[ctx->battlerIdAttacker >> 1] & 1) && (ctx->unk_334.unk9F[ctx->battlerIdAttacker >> 1] & 0x3e)) {
+                ctx->msgTemp = 6;
+            } else {
+                ctx->msgTemp = LowestFlagNo(ctx->unk_334.unk9F[ctx->battlerIdAttacker >> 1]);
+            }
+            script = 268;
+            break;
+        case 3:
+            ctx->msgTemp = ctx->unk_334.unk9F[ctx->battlerIdAttacker >> 1];
+            script = 269;
+            break;
+        case 4:
+            script = 270;
+            break;
+        }
+        ctx->itemTemp = ctx->unk_334.unkA0[ctx->battlerIdAttacker >> 1];
+    } else {
+        switch (item->page) {
+        case 0:
+        case 1:
+        case 3:
+            if (item->id == ITEM_POKE_DOLL || item->id == ITEM_FLUFFY_TAIL) {
+                script = 222;
+            } else {
+                script = 223;
+            }
+            break;
+        case 2:
+            script = 11;
+            if (!(BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_TRAINER) && !(BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_TUTORIAL)) {
+                Bag_TakeItem(BattleSystem_GetBag(bsys), item->id, 1, HEAP_ID_BATTLE);
+                BagCursor_Battle_SetLastUsedItem(BattleSystem_GetBagCursor(bsys), item->id, item->page);
+            }
+            break;
+        }
+        ctx->itemTemp = item->id;
+    }
+    
+    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
+    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+    ctx->commandNext = CONTROLLER_COMMAND_40;
+    ctx->moveStatusFlag |= MOVE_STATUS_31;
 }

@@ -23,6 +23,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
 void ov12_0224A70C(BattleSystem *bsys, BATTLECONTEXT *ctx);
 void BattleControllerPlayer_TurnEnd(BattleSystem *bsys, BATTLECONTEXT *ctx);
 void ov12_0224A9B0(BattleSystem *bsys, BATTLECONTEXT *ctx);
+void ov12_0224AAF0(BattleSystem *bsys, BATTLECONTEXT *ctx);
 
 //The following functions haven't been decompiled yet
 void ov12_0224E384(BattleSystem *bsys, BATTLECONTEXT *ctx);

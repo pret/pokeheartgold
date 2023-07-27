@@ -204,7 +204,7 @@
 .public BattleSystem_GetPartySize
 .public BattleSystem_GetPartyMon
 .public BattleSystem_GetPlayerProfile
-.public ov12_0223AA84
+.public BattleSystem_GetBagCursor
 .public BattleSystem_GetMonBall
 .public ov12_0223AAC8
 .public BattleSystem_GetFieldSide

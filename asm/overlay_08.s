@@ -3798,14 +3798,14 @@ ov08_0221DBCC: ; 0x0221DBCC
 	beq _0221DBF0
 	cmp r4, #0x42
 	beq _0221DBF0
-	bl ov12_0223AA80
+	bl BattleSystem_GetBag
 	add r1, r4, #0
 	mov r2, #1
 	add r3, r7, #0
 	bl Bag_TakeItem
 _0221DBF0:
 	add r0, r5, #0
-	bl ov12_0223AA84
+	bl BattleSystem_GetBagCursor
 	add r1, r4, #0
 	add r2, r6, #0
 	bl BagCursor_Battle_SetLastUsedItem
@@ -12737,7 +12737,7 @@ ov08_022225D4: ; 0x022225D4
 	mov r1, #0
 	strb r1, [r4, r0]
 	ldr r0, [r5]
-	bl ov12_0223AA84
+	bl BattleSystem_GetBagCursor
 	add r6, r0, #0
 	mov r5, #0
 _02222614:
@@ -12938,7 +12938,7 @@ ov08_0222276C: ; 0x0222276C
 	bl FontID_Alloc
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl ov12_0223AA84
+	bl BattleSystem_GetBagCursor
 	bl BagCursor_Battle_GetPocket
 	ldr r1, _02222834 ; =0x0000114D
 	strb r0, [r4, r1]
@@ -13794,7 +13794,7 @@ _02222E40:
 	cmp r0, #0
 	beq _02222EAC
 	ldr r0, [r1]
-	bl ov12_0223AA84
+	bl BattleSystem_GetBagCursor
 	add r6, r0, #0
 	mov r4, #0
 _02222E82:
@@ -14429,13 +14429,13 @@ ov08_02223390: ; 0x02223390
 	add r4, r3, #0
 	add r6, r0, #0
 	add r7, r2, #0
-	bl ov12_0223AA80
+	bl BattleSystem_GetBag
 	add r1, r5, #0
 	mov r2, #1
 	add r3, r4, #0
 	bl Bag_TakeItem
 	add r0, r6, #0
-	bl ov12_0223AA84
+	bl BattleSystem_GetBagCursor
 	add r1, r5, #0
 	add r2, r7, #0
 	bl BagCursor_Battle_SetLastUsedItem

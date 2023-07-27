@@ -172,8 +172,8 @@
 .public ov12_0223A8E4
 .public ov12_0223A938
 .public ov12_0223A9F4
-.public ov12_0223AA80
-.public ov12_0223AA84
+.public BattleSystem_GetBag
+.public BattleSystem_GetBagCursor
 .public ov12_0223AB0C
 .public ov12_0223AB3C
 .public BattleSystem_GetBattlerIdPartner

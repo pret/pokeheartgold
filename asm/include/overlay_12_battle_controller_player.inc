@@ -32,8 +32,8 @@
 .public BattleSystem_GetParty
 .public ov12_0223A9F4
 .public BattleSystem_GetPlayerProfile
-.public ov12_0223AA80
-.public ov12_0223AA84
+.public BattleSystem_GetBag
+.public BattleSystem_GetBagCursor
 .public ov12_0223AB0C
 .public BattleSystem_GetFieldSide
 .public BattleSystem_GetBattlerIdPartner

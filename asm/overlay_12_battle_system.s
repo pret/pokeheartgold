@@ -495,17 +495,17 @@ _0223AA78:
 	pop {r3, r4, r5, pc}
 	thumb_func_end BattleSystem_GetPlayerProfile
 
-	thumb_func_start ov12_0223AA80
-ov12_0223AA80: ; 0x0223AA80
+	thumb_func_start BattleSystem_GetBag
+BattleSystem_GetBag: ; 0x0223AA80
 	ldr r0, [r0, #0x58]
 	bx lr
-	thumb_func_end ov12_0223AA80
+	thumb_func_end BattleSystem_GetBag
 
-	thumb_func_start ov12_0223AA84
-ov12_0223AA84: ; 0x0223AA84
+	thumb_func_start BattleSystem_GetBagCursor
+BattleSystem_GetBagCursor: ; 0x0223AA84
 	ldr r0, [r0, #0x5c]
 	bx lr
-	thumb_func_end ov12_0223AA84
+	thumb_func_end BattleSystem_GetBagCursor
 
 	thumb_func_start BattleSystem_GetMonBall
 BattleSystem_GetMonBall: ; 0x0223AA88
