@@ -612,7 +612,7 @@ static void createOamManager(HeapID heapId) {
             3,
             0,
             0x2800,
-            HEAP_ID_0
+            HEAP_ID_DEFAULT
         };
         baseTrans.heapId = heapId;
         sub_020215C0(&baseTrans, 0x200010, 0x10);

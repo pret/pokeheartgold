@@ -68,7 +68,7 @@
 .public GF_RTC_GetTimeOfDayWildParam
 .public WallpaperPasswordBank_Create
 .public WallpaperPasswordBank_Delete
-.public WallpaperPasswordBank_GetNum
+.public WallpaperPasswordBank_GetCount
 .public WallpaperPasswordBank_GetIndexOfWord
 .public CreateCameraTranslationWrapper
 .public DeleteCameraTranslationWrapper

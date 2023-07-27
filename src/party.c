@@ -108,7 +108,7 @@ BOOL Party_SwapSlots(PARTY *party, int slotA, int slotB) {
 
     PARTY_ASSERT_SLOT(party, slotA);
     PARTY_ASSERT_SLOT(party, slotB);
-    tmp_POKEMON = AllocFromHeap(HEAP_ID_0, sizeof(Pokemon));
+    tmp_POKEMON = AllocFromHeap(HEAP_ID_DEFAULT, sizeof(Pokemon));
     *tmp_POKEMON = party->core.mons[slotA];
     party->core.mons[slotA] = party->core.mons[slotB];
     party->core.mons[slotB] = *tmp_POKEMON;

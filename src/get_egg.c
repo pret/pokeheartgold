@@ -658,7 +658,7 @@ void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profi
         SetMonData(mon, MON_DATA_MET_GENDER, &gender);
         String_Delete(name);
     }
-    MonSetTrainerMemo(mon, profile, a4, a5, HEAP_ID_0);
+    MonSetTrainerMemo(mon, profile, a4, a5, HEAP_ID_DEFAULT);
 }
 
 static void SetBreedEggStats(Pokemon *mon, u16 species, Daycare *dayCare, u32 otId, u8 form) {
@@ -1102,7 +1102,7 @@ void sub_0206D328(Pokemon *mon, HeapID heapId) {
     u8 metLevel = 0;
     sub_0206D038(mon, heapId);
     SetMonData(mon, MON_DATA_IS_EGG, &isEgg);
-    GetSpeciesNameIntoArray(GetMonData(mon, MON_DATA_SPECIES, NULL), HEAP_ID_0, nickname);
+    GetSpeciesNameIntoArray(GetMonData(mon, MON_DATA_SPECIES, NULL), HEAP_ID_DEFAULT, nickname);
     SetMonData(mon, MON_DATA_NICKNAME, nickname);
     SetMonData(mon, MON_DATA_HAS_NICKNAME, &hasNickname);
     SetMonData(mon, MON_DATA_POKEBALL, &pokeball);

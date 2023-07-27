@@ -67,7 +67,7 @@ void NitroMain(void) {
         ShowWFCUserInfoWarning(HEAP_ID_3, 0);
     }
     if (!Save_FlashChipIsDetected(_02111868.unk_10.savedata)) {
-        ShowSaveDataReadError(HEAP_ID_0);
+        ShowSaveDataReadError(HEAP_ID_DEFAULT);
     } else {
         switch (OS_GetResetParameter()) {
         case 0:
@@ -146,7 +146,7 @@ void Main_RunOverlayManager(void) {
             HandleLoadOverlay(_02111868.queuedMainOverlayId, OVY_LOAD_NORMAL);
         }
         _02111868.mainOverlayId = _02111868.queuedMainOverlayId;
-        _02111868.overlayManager = OverlayManager_New(_02111868.queuedMainOverlayTemplate, &_02111868.unk_10, HEAP_ID_0);
+        _02111868.overlayManager = OverlayManager_New(_02111868.queuedMainOverlayTemplate, &_02111868.unk_10, HEAP_ID_DEFAULT);
         _02111868.queuedMainOverlayId = FS_OVERLAY_ID_NONE;
         _02111868.queuedMainOverlayTemplate = NULL;
     }
@@ -239,7 +239,7 @@ void sub_02000FD8(u32 a0, int a1) {
             }
         }
     }
-    ShowCommunicationError(HEAP_ID_0, r5, 0);
+    ShowCommunicationError(HEAP_ID_DEFAULT, r5, 0);
     sub_02038D90();
     sub_02000F14();
     DoSoundUpdateFrame();

@@ -11,7 +11,7 @@ int sub_0205A750(struct UnkStruct_02059E1C *fsys_unk80, int objId, int a2, Messa
 u32 sub_0205A894(void);
 void sub_0205A904(int command);
 int sub_0205A9A0(struct UnkStruct_02059E1C *fsys_unk80, MessageFormat *msgFmt);
-void sub_0205AA9C(MessageFormat *msgFmt, u16 a1, u16 objId, PlayerProfile *profile, SAVE_EASY_CHAT_T *easyChat);
+void sub_0205AA9C(MessageFormat *msgFmt, u16 a1, u16 objId, PlayerProfile *profile, SaveEasyChat *easyChat);
 void sub_0205ABB0(struct UnkStruct_02059E1C *fsys_unk80);
 
 #endif //POKEHEARTGOLD_UNK_0205A44C_H

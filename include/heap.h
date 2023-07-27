@@ -2,7 +2,7 @@
 #define POKEHEARTGOLD_HEAP_H
 
 typedef enum HeapID {
-    HEAP_ID_0,
+    HEAP_ID_DEFAULT,
     HEAP_ID_1,
     HEAP_ID_2,
     HEAP_ID_3,
