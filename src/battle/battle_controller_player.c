@@ -1548,7 +1548,7 @@ void BattleControllerPlayer_TurnEnd(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 //static
-void ov12_0224A9B0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+void BattleControllerPlayer_FightInput(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int flag = 0;
     
     ctx->battlerIdAttacker = ctx->unk_21E8[ctx->unk_EC];
@@ -1582,7 +1582,7 @@ void ov12_0224A9B0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 //static
-void ov12_0224AAF0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+void BattleControllerPlayer_ItemInput(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleItem *item;
     int script;
     
@@ -1641,4 +1641,46 @@ void ov12_0224AAF0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
     ctx->commandNext = CONTROLLER_COMMAND_40;
     ctx->moveStatusFlag |= MOVE_STATUS_31;
+}
+
+//static
+void BattleControllerPlayer_PokemonInput(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 9);
+    ctx->battlerIdAttacker = ctx->unk_21E8[ctx->unk_EC];
+    ctx->battlerIdSwitch = ctx->battlerIdAttacker;
+    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+    ctx->commandNext = CONTROLLER_COMMAND_41;
+    ctx->tempData = 0;
+    ctx->moveStatusFlag |= MOVE_STATUS_31;
+}
+
+//static
+void BattleControllerPlayer_RunInput(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    ctx->battlerIdAttacker = ctx->unk_21E8[ctx->unk_EC];
+    
+    if (BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker) && !(BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_LINK)) {
+        if (ctx->battleMons[ctx->battlerIdAttacker].status2 & (STATUS2_BINDING_TURNS | STATUS2_MEAN_LOOK)) {
+            ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 286);
+            ctx->scriptSeqNo = 0;
+            ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+            ctx->commandNext = CONTROLLER_COMMAND_40;
+        } else {
+            ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 230);
+            ctx->scriptSeqNo = 0;
+            ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+            ctx->commandNext = CONTROLLER_COMMAND_44;
+        }
+    } else {
+        if (BattleTryRun(bsys, ctx, ctx->battlerIdAttacker)) {
+            ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 3);
+            ctx->scriptSeqNo = 0;
+            ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+            ctx->commandNext = CONTROLLER_COMMAND_44;
+        } else {
+            ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 8);
+            ctx->scriptSeqNo = 0;
+            ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+            ctx->commandNext = CONTROLLER_COMMAND_40;
+        }
+    }
 }

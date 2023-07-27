@@ -18,141 +18,10 @@
     .public BattleControllerPlayer_UpdateMonCondition
     .public ov12_0224A70C
     .public BattleControllerPlayer_TurnEnd
-    .public ov12_0224A9B0
-    .public ov12_0224AAF0
-
-	thumb_func_start ov12_0224AC50
-ov12_0224AC50: ; 0x0224AC50
-	push {r4, lr}
-	add r4, r1, #0
-	add r0, r4, #0
-	mov r1, #1
-	mov r2, #9
-	bl ReadBattleScriptFromNarc
-	add r0, r4, #0
-	add r0, #0xec
-	ldr r0, [r0]
-	ldr r1, _0224AC90 ; =0x000021E8
-	add r0, r4, r0
-	ldrb r0, [r0, r1]
-	mov r2, #0
-	str r0, [r4, #0x64]
-	str r0, [r4, #0x78]
-	mov r0, #0x16
-	str r0, [r4, #8]
-	mov r0, #0x29
-	str r0, [r4, #0xc]
-	mov r0, #0x4e
-	lsl r0, r0, #2
-	str r2, [r4, r0]
-	add r0, r1, #0
-	sub r0, #0x7c
-	ldr r2, [r4, r0]
-	mov r0, #2
-	lsl r0, r0, #0x1e
-	orr r0, r2
-	sub r1, #0x7c
-	str r0, [r4, r1]
-	pop {r4, pc}
-	.balign 4, 0
-_0224AC90: .word 0x000021E8
-	thumb_func_end ov12_0224AC50
-
-	thumb_func_start ov12_0224AC94
-ov12_0224AC94: ; 0x0224AC94
-	push {r3, r4, r5, lr}
-	add r4, r1, #0
-	add r1, #0xec
-	ldr r1, [r1]
-	add r5, r0, #0
-	add r2, r4, r1
-	ldr r1, _0224AD4C ; =0x000021E8
-	ldrb r1, [r2, r1]
-	str r1, [r4, #0x64]
-	bl BattleSystem_GetFieldSide
-	cmp r0, #0
-	beq _0224AD06
-	add r0, r5, #0
-	bl BattleSystem_GetBattleType
-	mov r1, #4
-	tst r0, r1
-	bne _0224AD06
-	ldr r0, [r4, #0x64]
-	mov r2, #0xc0
-	add r1, r0, #0
-	mul r1, r2
-	ldr r0, _0224AD50 ; =0x00002DB0
-	add r1, r4, r1
-	ldr r1, [r1, r0]
-	ldr r0, _0224AD54 ; =0x0400E000
-	tst r0, r1
-	beq _0224ACEA
-	add r0, r4, #0
-	mov r1, #1
-	add r2, #0x5e
-	bl ReadBattleScriptFromNarc
-	add r0, r4, #0
-	mov r1, #0
-	add r0, #0xb4
-	str r1, [r0]
-	mov r0, #0x16
-	str r0, [r4, #8]
-	mov r0, #0x28
-	str r0, [r4, #0xc]
-	pop {r3, r4, r5, pc}
-_0224ACEA:
-	add r0, r4, #0
-	mov r1, #1
-	mov r2, #0xe6
-	bl ReadBattleScriptFromNarc
-	add r0, r4, #0
-	mov r1, #0
-	add r0, #0xb4
-	str r1, [r0]
-	mov r0, #0x16
-	str r0, [r4, #8]
-	mov r0, #0x2c
-	str r0, [r4, #0xc]
-	pop {r3, r4, r5, pc}
-_0224AD06:
-	ldr r2, [r4, #0x64]
-	add r0, r5, #0
-	add r1, r4, #0
-	bl BattleTryRun
-	cmp r0, #0
-	beq _0224AD30
-	add r0, r4, #0
-	mov r1, #1
-	mov r2, #3
-	bl ReadBattleScriptFromNarc
-	add r0, r4, #0
-	mov r1, #0
-	add r0, #0xb4
-	str r1, [r0]
-	mov r0, #0x16
-	str r0, [r4, #8]
-	mov r0, #0x2c
-	str r0, [r4, #0xc]
-	pop {r3, r4, r5, pc}
-_0224AD30:
-	add r0, r4, #0
-	mov r1, #1
-	mov r2, #8
-	bl ReadBattleScriptFromNarc
-	add r0, r4, #0
-	mov r1, #0
-	add r0, #0xb4
-	str r1, [r0]
-	mov r0, #0x16
-	str r0, [r4, #8]
-	mov r0, #0x28
-	str r0, [r4, #0xc]
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-_0224AD4C: .word 0x000021E8
-_0224AD50: .word 0x00002DB0
-_0224AD54: .word 0x0400E000
-	thumb_func_end ov12_0224AC94
+    .public BattleControllerPlayer_FightInput
+    .public BattleControllerPlayer_ItemInput
+    .public BattleControllerPlayer_PokemonInput
+    .public BattleControllerPlayer_RunInput
 
 	thumb_func_start ov12_0224AD58
 ov12_0224AD58: ; 0x0224AD58
@@ -7401,10 +7270,10 @@ sPlayerBattleCommands: ; 0x0226CA90
 	.word BattleControllerPlayer_UpdateMonCondition
 	.word ov12_0224A70C
 	.word BattleControllerPlayer_TurnEnd
-	.word ov12_0224A9B0
-	.word ov12_0224AAF0
-	.word ov12_0224AC50
-	.word ov12_0224AC94
+	.word BattleControllerPlayer_FightInput
+	.word BattleControllerPlayer_ItemInput
+	.word BattleControllerPlayer_PokemonInput
+	.word BattleControllerPlayer_RunInput
 	.word ov12_0224AD58
 	.word ov12_0224ADA0
 	.word ov12_0224AE04
