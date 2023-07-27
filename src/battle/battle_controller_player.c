@@ -1428,3 +1428,154 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
     ctx->unk_1C = 0;
     ctx->command = CONTROLLER_COMMAND_11;
 }
+
+typedef enum UpdateSideConditionState {
+    USC_STATE_FUTURE_SIGHT,
+    USC_STATE_PERISH_SONG,
+    USC_STATE_TRICK_ROOM,
+    USC_STATE_END
+} UpdateSideConditionState;
+
+//static
+void ov12_0224A70C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+    int battlerId;
+    
+    if (ov12_0224DC74(ctx, ctx->command, ctx->command, 1) == TRUE) {
+        return;
+    }
+    
+    ov12_022642F0(bsys);
+    
+    switch (ctx->unk_20) {
+    case USC_STATE_FUTURE_SIGHT:
+        while (ctx->unk_24 < maxBattlers) {
+            battlerId = ctx->turnOrder[ctx->unk_24];
+            if (ctx->unk_3108 & MaskOfFlagNo(battlerId)) {
+                ctx->unk_24++;
+                continue;
+            }
+            ctx->unk_24++;
+            if (ctx->fieldConditionData.futureSightTurns[battlerId]) {
+                if (!(--ctx->fieldConditionData.futureSightTurns[battlerId]) && ctx->battleMons[battlerId].hp) {
+                    ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(bsys, battlerId)] &= ~SIDE_CONDITION_FUTURE_SIGHT;
+                    ctx->buffMsg.id = msg_0197_00475; //Seadra took the Doom Desire attack!
+                    ctx->buffMsg.tag = 10;
+                    ctx->buffMsg.param[0] = CreateNicknameTag(ctx, battlerId);
+                    ctx->buffMsg.param[1] = ctx->fieldConditionData.futureSightMoveNo[battlerId];
+                    ctx->battlerIdTemp = battlerId;
+                    ctx->unk_11C = ctx->fieldConditionData.battlerIdFutureSight[battlerId];
+                    ctx->moveTemp = ctx->fieldConditionData.futureSightMoveNo[battlerId];
+                    ctx->hpCalc = ctx->fieldConditionData.futureSightDamage[battlerId];
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 121);
+                    ctx->commandNext = ctx->command;
+                    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                    return;
+                }
+            }
+        }
+        ctx->unk_20++;
+        ctx->unk_24 = 0;
+    case USC_STATE_PERISH_SONG:
+        while (ctx->unk_24 < maxBattlers) {
+            battlerId = ctx->turnOrder[ctx->unk_24];
+            if (ctx->unk_3108 & MaskOfFlagNo(battlerId)) {
+                ctx->unk_24++;
+                continue;
+            }
+            ctx->unk_24++;
+            if (ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_PERISH_SONG) {
+                if (ctx->battleMons[battlerId].unk88.perishSongTurns == 0) {
+                    ctx->battleMons[battlerId].moveEffectFlags &= ~MOVE_EFFECT_FLAG_PERISH_SONG;
+                    ctx->msgTemp = ctx->battleMons[battlerId].unk88.perishSongTurns;
+                    ctx->hpCalc = ctx->battleMons[battlerId].hp * -1;
+                    ctx->battleStatus |= BATTLE_STATUS_NO_BLINK;
+                } else {
+                    ctx->msgTemp = ctx->battleMons[battlerId].unk88.perishSongTurns;
+                    ctx->battleMons[battlerId].unk88.perishSongTurns--;
+                }
+                ctx->battlerIdTemp = battlerId;
+                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 102);
+                ctx->commandNext = ctx->command;
+                ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                return;
+            }
+        }
+        ctx->unk_20++;
+        ctx->unk_24 = 0;
+    case USC_STATE_TRICK_ROOM:
+        if (ctx->fieldCondition & FIELD_CONDITION_TRICK_ROOM) {
+            ctx->fieldCondition -= 1 << FIELD_CONDITION_TRICK_ROOM_SHIFT;
+            if (!(ctx->fieldCondition & FIELD_CONDITION_TRICK_ROOM)) {
+                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 251);
+                ctx->commandNext = ctx->command;
+                ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                return;
+            }
+        }
+        ctx->unk_20++;
+        ctx->unk_24 = 0;
+        break;
+    default:
+        break;
+    }
+    ctx->unk_20 = 0;
+    ctx->unk_24 = 0;
+    ctx->command = CONTROLLER_COMMAND_12;
+}
+
+//static
+void BattleControllerPlayer_TurnEnd(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    if (ov12_0224DD18(ctx, ctx->command, ctx->command) == TRUE) {
+        return;
+    }
+    
+    if (ov12_0224D7EC(bsys, ctx) == TRUE) {
+        return;
+    }
+    
+    if (ov12_0224D540(bsys, ctx) == TRUE) {
+        return;
+    }
+    
+    ctx->totalTurns++;
+    ctx->meFirstTotal++;
+    
+    BattleContext_Init(ctx);
+    ov12_02251710(bsys, ctx);
+    ctx->command = CONTROLLER_COMMAND_TRAINER_MESSAGE;
+}
+
+//static
+void ov12_0224A9B0(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int flag = 0;
+    
+    ctx->battlerIdAttacker = ctx->unk_21E8[ctx->unk_EC];
+    
+    if (ctx->turnData[ctx->battlerIdAttacker].struggleFlag) {
+        ctx->moveNoTemp = MOVE_STRUGGLE;
+        flag = 1;
+    } else if (ctx->battleMons[ctx->battlerIdAttacker].unk88.encoredMove &&
+               ctx->battleMons[ctx->battlerIdAttacker].unk88.encoredMove == ctx->battleMons[ctx->battlerIdAttacker].moves[ctx->battleMons[ctx->battlerIdAttacker].unk88.encoredMoveIndex]) {
+       ctx->moveNoTemp = ctx->battleMons[ctx->battlerIdAttacker].unk88.encoredMove;
+       flag = 1;
+   } else if (ctx->battleMons[ctx->battlerIdAttacker].unk88.encoredMove &&
+               ctx->battleMons[ctx->battlerIdAttacker].unk88.encoredMove != ctx->battleMons[ctx->battlerIdAttacker].moves[ctx->battleMons[ctx->battlerIdAttacker].unk88.encoredMoveIndex]) {
+       ctx->moveNoTemp = ctx->battleMons[ctx->battlerIdAttacker].moves[ctx->battleMons[ctx->battlerIdAttacker].unk88.encoredMoveIndex];
+       ctx->battleMons[ctx->battlerIdAttacker].unk88.encoredMove = 0;
+       ctx->battleMons[ctx->battlerIdAttacker].unk88.encoredMoveIndex = 0;
+       ctx->battleMons[ctx->battlerIdAttacker].unk88.encoredTurns = 0;
+       flag = 1;
+   } else if (!Battler_CanSelectAction(ctx, ctx->battlerIdAttacker)) {
+       ctx->moveNoTemp = ctx->moveNoLockedInto[ctx->battlerIdAttacker];
+   } else if (ctx->unk_30B4[ctx->battlerIdAttacker] != ctx->battleMons[ctx->battlerIdAttacker].moves[ctx->movePos[ctx->battlerIdAttacker]]) {
+       ctx->moveNoTemp = ctx->battleMons[ctx->battlerIdAttacker].moves[ctx->movePos[ctx->battlerIdAttacker]];
+       flag = 1;
+   } else {
+       ctx->moveNoTemp = ctx->battleMons[ctx->battlerIdAttacker].moves[ctx->movePos[ctx->battlerIdAttacker]];
+   }
+   ctx->moveNoCur = ctx->moveNoTemp;
+   ctx->command = CONTROLLER_COMMAND_23;
+   ctx->battlerIdTarget = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, ctx->moveNoTemp, flag, 0);
+   ov12_022642F0(bsys);
+}
