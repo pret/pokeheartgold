@@ -35,6 +35,8 @@ struct PngToNtrOptions {
     uint32_t scanMode;
     bool wrongSize;
     bool handleEmpty;
+    bool vramTransfer;
+    int mappingType;
 };
 
 struct NtrToPngOptions {
