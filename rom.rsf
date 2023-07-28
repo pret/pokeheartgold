@@ -3,14 +3,14 @@ Arm9
 	Static $(BUILD_DIR)/main.sbin_LZ
 	OverlayDefs $(BUILD_DIR)/main_defs.sbin_LZ
 	OverlayTable $(BUILD_DIR)/main_table.sbin_LZ
-	Nef $(BUILD_DIR)/main.nef
+	Elf $(BUILD_DIR)/main.elf
 }
 
 Arm7
 {
 	Static sub/build/ichneumon_sub.sbin
 	OverlayDefs sub/build/ichneumon_sub_defs.sbin
-	Nef sub/build/ichneumon_sub.nef
+	Elf sub/build/ichneumon_sub.elf
 }
 
 Property
