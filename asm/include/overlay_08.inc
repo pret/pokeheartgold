@@ -166,7 +166,7 @@
 .public ov08_022225D4
 .public BattleSystem_GetBgConfig
 .public BattleSystem_GetBattleType
-.public ov12_0223A7E4
+.public BattleSystem_GetBattleContext
 .public BattleSystem_GetParty
 .public BattleSystem_GetPartyMon
 .public ov12_0223A8E4

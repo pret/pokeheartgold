@@ -14412,7 +14412,7 @@ ov08_02223374: ; 0x02223374
 	add r5, r0, #0
 	ldr r4, [r5]
 	ldr r0, [r4]
-	bl ov12_0223A7E4
+	bl BattleSystem_GetBattleContext
 	add r1, r0, #0
 	ldr r0, [r5]
 	ldr r3, [r4, #0x10]

@@ -4560,7 +4560,7 @@ _0224D060:
 	bl BattleSystem_GetMaxBattlers
 	ldr r1, [r4, #0x64]
 	add r0, r5, #0
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	bl ov12_02261258
 	mov r1, #1
 	add r7, r0, #0
@@ -4591,7 +4591,7 @@ _0224D0AE:
 	beq _0224D116
 	add r0, r5, #0
 	add r1, r6, #0
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	str r0, [sp]
 	cmp r7, #0
 	beq _0224D0F6
@@ -5266,7 +5266,7 @@ _0224D5E6:
 	add r6, r0, #0
 	ldr r0, [sp]
 	ldr r1, [sp, #0x2c]
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	add r0, r6, #0
 	add r5, r7, #0
 	bl GetPartyCount
@@ -5359,7 +5359,7 @@ _0224D69E:
 	add r6, r0, #0
 	ldr r0, [sp]
 	ldr r1, [sp, #0x2c]
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	add r0, r6, #0
 	add r5, r7, #0
 	bl GetPartyCount
@@ -5565,7 +5565,7 @@ _0224D820:
 	add r6, r0, #0
 	ldr r0, [sp]
 	ldr r1, [sp, #0x28]
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	add r0, r6, #0
 	add r4, r7, #0
 	bl GetPartyCount
@@ -5644,7 +5644,7 @@ _0224D8DE:
 	str r0, [sp, #0x18]
 	ldr r0, [sp]
 	ldr r1, [sp, #0x28]
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	str r0, [sp, #0x14]
 	add r0, r7, #0
 	add r5, r4, #0
@@ -5748,7 +5748,7 @@ _0224D9C4:
 	add r6, r0, #0
 	ldr r0, [sp]
 	ldr r1, [sp, #0x28]
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	str r0, [sp, #0x10]
 	add r0, r6, #0
 	add r4, r7, #0

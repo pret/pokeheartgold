@@ -117,7 +117,7 @@
 .public BattleSystem_GetBgConfig
 .public BattleSystem_GetWindow
 .public BattleSystem_GetBattleType
-.public BattleSystem_GetOpponentDataByBattlerId
+.public BattleSystem_GetOpponentData
 .public BattleSystem_GetMaxBattlers
 .public BattleSystem_GetParty
 .public BattleSystem_GetPartySize

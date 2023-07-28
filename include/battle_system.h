@@ -9,11 +9,13 @@
 
 BgConfig *BattleSystem_GetBgConfig(BattleSystem *bsys);
 Window *BattleSystem_GetWindow(BattleSystem *bsys, int index);
+u32 BattleSystem_GetBattleType(BattleSystem *bsys);
+BATTLECONTEXT *BattleSystem_GetBattleContext(BattleSystem *bsys);
+OpponentData *BattleSystem_GetOpponentData(BattleSystem *bsys, int battlerId);
+int BattleSystem_GetMaxBattlers(BattleSystem *bsys);
 
 //These functions haven't been decompiled
-u16 BattleSystem_GetBattleType(BattleSystem *bsys);
 u32 BattleSystem_GetFieldSide(BattleSystem *bsys, int battlerId);
-int BattleSystem_GetMaxBattlers(BattleSystem *bsys);
 int BattleSystem_Random(BattleSystem *bsys);
 PlayerProfile *BattleSystem_GetPlayerProfile(BattleSystem *bsys, int a1);
 PARTY *BattleSystem_GetParty(BattleSystem *bsys, int battlerId);
@@ -24,7 +26,6 @@ int ov12_0223ABB8(BattleSystem *bsys, int battlerId, int a2);
 void BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerIdA, int battlerIdB, int a2, int itemWork);
 void ov12_0223BDDC(BattleSystem *bsys, int battlerId, u8 a2);
 void PokedexSetBattlerSeen(BattleSystem *bsys, int battlerId);
-OpponentData *BattleSystem_GetOpponentDataByBattlerId(BattleSystem *bsys, int battlerId);
 SOUND_CHATOT *BattleSystem_GetChatotVoice(BattleSystem *bsys, int battlerId);
 int BattleSystem_GetChatotVoiceParam(BattleSystem *bsys, int battlerId);
 int BattleSystem_GetBattlerIdPartner(BattleSystem *bsys, int battlerId);
@@ -44,7 +45,6 @@ int ov12_0223AB60(BattleSystem *bsys);
 BOOL ov12_0223BFEC(BattleSystem *bsys);
 void ov12_0223BB64(BattleSystem *bsys, int a1);
 void ov12_02237ED0(BattleSystem *bsys, int a1);
-BATTLECONTEXT *ov12_0223A7E4(BattleSystem *bsys);
 void ov12_022642F0(BattleSystem *bsys);
 BOOL ov12_022581BC(BattleSystem *bsys, BATTLECONTEXT *ctx);
 Bag *BattleSystem_GetBag(BattleSystem *bsys);

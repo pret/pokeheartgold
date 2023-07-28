@@ -516,7 +516,7 @@ struct BattleSystem {
     u32 battleTypeFlags;
     BATTLECONTEXT *ctx;
     OpponentData *opponentData[4];
-    int unk44; //offset labels wrong from here until unk23E8
+    int maxBattlers; 
     u32 *unk48[4];
     u32 *unk58;
     u32 *unk5C;

@@ -131,7 +131,7 @@
 .public ov06_0221BA1C
 .public BattleSystem_GetBgConfig
 .public BattleSystem_GetBattleType
-.public BattleSystem_GetOpponentDataByBattlerId
+.public BattleSystem_GetOpponentData
 .public BattleSystem_GetPartyMon
 .public ov12_0223A8E4
 .public ov12_0223A8EC

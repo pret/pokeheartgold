@@ -18,7 +18,7 @@
 .public _s32_div_f
 .public _u32_div_f
 .public BattleSystem_GetBattleType
-.public ov12_0223A7E4
+.public BattleSystem_GetBattleContext
 .public BattleSystem_GetMaxBattlers
 .public BattleSystem_GetParty
 .public BattleSystem_GetPartyMon

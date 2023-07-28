@@ -139,7 +139,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
     int battlerId;
     int battlersMax; 
     int var;
-    u16 battleType;
+    s32 battleType;
     BATTLEMSG msg;
 
     battlersMax = BattleSystem_GetMaxBattlers(bsys);
@@ -164,7 +164,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
                 break;
             }
 
-            if ((ov12_02261264(BattleSystem_GetOpponentDataByBattlerId(bsys, battlerId)) == 1) || (ctx->totalTurns)) {
+            if ((ov12_02261264(BattleSystem_GetOpponentData(bsys, battlerId)) == 1) || (ctx->totalTurns)) {
                 ov12_02262B80(bsys, ctx, battlerId, ctx->selectedMonIndex[battlerId]);
                 ctx->unk_0[battlerId] = SSI_STATE_1;
             } else {
@@ -179,7 +179,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
                     continue;
                 }
 
-                if (ov12_02261264(BattleSystem_GetOpponentDataByBattlerId(bsys, battlerIdCheck)) != 0x1) {
+                if (ov12_02261264(BattleSystem_GetOpponentData(bsys, battlerIdCheck)) != 0x1) {
                     continue;
                 }
 
@@ -327,7 +327,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
                 } else if (ov12_02251A28(bsys, ctx, battlerId, ctx->unk_2300[battlerId][0] - 1, &msg) == 0) {
                     if (BattleSystem_GetBattleSpecial(bsys) & BATTLE_SPECIAL_RECORDED) {
                         ov12_0223BFFC(bsys, 1);
-                        ov12_022581BC(bsys, ov12_0223A7E4(bsys));
+                        ov12_022581BC(bsys, BattleSystem_GetBattleContext(bsys));
                     } else {
                         ov12_022639B8(bsys, battlerId, msg);
                         ctx->unk_0[battlerId] = SSI_STATE_15;
@@ -410,7 +410,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
             } else if ((battleType & BATTLE_TYPE_TRAINER) && !(battleType & BATTLE_TYPE_LINK)) {
                 if (BattleSystem_GetBattleSpecial(bsys) & BATTLE_SPECIAL_RECORDED) {
                     ov12_0223BFFC(bsys, 1);
-                    ov12_022581BC(bsys, ov12_0223A7E4(bsys));
+                    ov12_022581BC(bsys, BattleSystem_GetBattleContext(bsys));
                 } else {
                     msg.tag = 0;
                     msg.id = msg_0197_00793; //There's no running from a Trainer battle!
@@ -421,7 +421,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
             } else if (CantEscape(bsys, ctx, battlerId, &msg)) {
                 if (BattleSystem_GetBattleSpecial(bsys) & BATTLE_SPECIAL_RECORDED) {
                     ov12_0223BFFC(bsys, 1);
-                    ov12_022581BC(bsys, ov12_0223A7E4(bsys));
+                    ov12_022581BC(bsys, BattleSystem_GetBattleContext(bsys));
                 } else {
                     ov12_022639B8(bsys, battlerId, msg);
                     ctx->unk_0[battlerId] = SSI_STATE_15;

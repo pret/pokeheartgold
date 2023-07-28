@@ -1948,7 +1948,7 @@ ov12_022389B8: ; 0x022389B8
 	add r3, r4, #0
 	bl ov12_02265FD4
 	add r0, r5, #0
-	bl ov12_0223A7E4
+	bl BattleSystem_GetBattleContext
 	str r0, [sp]
 	ldr r0, [r5, #0x44]
 	mov r4, #0
@@ -3790,7 +3790,7 @@ _02239898:
 _022398A0:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	add r7, r0, #0
 	bl ov12_02261264
 	cmp r0, #0

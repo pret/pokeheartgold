@@ -63,7 +63,7 @@
 #define BSCRIPT_VAR_59                          59
 #define BSCRIPT_VAR_BATTLE_STATUS_2             60
 #define BSCRIPT_VAR_61                          61
-#define BSCRIPT_VAR_62                          62
+#define BSCRIPT_VAR_MAX_BATTLERS                62
 #define BSCRIPT_VAR_BATTLER_ATTACKER_TEMP       63
 #define BSCRIPT_VAR_BATTLER_TARGET_TEMP         64
 #define BSCRIPT_VAR_PHYSICAL_DAMAGE_TAKEN       65

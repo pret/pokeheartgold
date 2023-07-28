@@ -1748,7 +1748,7 @@ _0224668A:
 _022466B0:
 	ldr r0, [r4]
 	mov r1, #0
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	add r5, r0, #0
 	add r0, #0x88
 	ldr r0, [r0]
@@ -2203,7 +2203,7 @@ _02246A72:
 	bl ov12_02265FC4
 	ldr r0, [r4]
 	mov r1, #0
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	mov r1, #0
 	bl ov12_02261294
 	ldr r0, [r4]
@@ -2374,7 +2374,7 @@ _02246C00:
 	bl sub_0200878C
 	ldr r0, [r4]
 	mov r1, #0
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	mov r1, #0
 	bl ov12_02261294
 	ldr r0, [r4]
@@ -2582,7 +2582,7 @@ _02246DB0:
 _02246DF6:
 	ldr r0, [r4]
 	add r1, r5, #0
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	add r6, r0, #0
 	ldr r0, [r6, #0x18]
 	cmp r0, #0
@@ -3734,7 +3734,7 @@ _022476F8:
 _02247706:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	ldr r1, _022478F0 ; =0x00000195
 	ldrb r0, [r0, r1]
 	tst r0, r7
@@ -3754,7 +3754,7 @@ _0224771E:
 _0224772C:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	ldrb r0, [r0, r7]
 	cmp r0, #3
 	beq _02247744
@@ -3784,7 +3784,7 @@ _02247756:
 _02247764:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	ldr r1, _022478F0 ; =0x00000195
 	ldrb r0, [r0, r1]
 	cmp r0, r6
@@ -3804,7 +3804,7 @@ _0224777C:
 _0224778A:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	ldr r1, _022478F0 ; =0x00000195
 	ldrb r0, [r0, r1]
 	tst r0, r7
@@ -3824,7 +3824,7 @@ _022477A2:
 _022477B0:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	ldrb r0, [r0, r7]
 	cmp r0, #2
 	beq _022477C8
@@ -3854,7 +3854,7 @@ _022477DA:
 _022477E8:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	ldr r1, _022478F0 ; =0x00000195
 	ldrb r0, [r0, r1]
 	cmp r0, r6

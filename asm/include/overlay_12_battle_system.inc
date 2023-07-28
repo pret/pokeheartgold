@@ -68,8 +68,8 @@
 .public BattleSystem_GetBgConfig
 .public BattleSystem_GetWindow
 .public BattleSystem_GetBattleType
-.public ov12_0223A7E4
-.public BattleSystem_GetOpponentDataByBattlerId
+.public BattleSystem_GetBattleContext
+.public BattleSystem_GetOpponentData
 .public BattleSystem_GetMaxBattlers
 .public BattleSystem_GetParty
 .public BattleSystem_GetPartySize

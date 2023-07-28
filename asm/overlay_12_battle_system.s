@@ -5,33 +5,7 @@
 	.include "global.inc"
 
 	.text
-
-	thumb_func_start BattleSystem_GetBattleType
-BattleSystem_GetBattleType: ; 0x0223A7E0
-	ldr r0, [r0, #0x2c]
-	bx lr
-	thumb_func_end BattleSystem_GetBattleType
-
-	thumb_func_start ov12_0223A7E4
-ov12_0223A7E4: ; 0x0223A7E4
-	ldr r0, [r0, #0x30]
-	bx lr
-	thumb_func_end ov12_0223A7E4
-
-	thumb_func_start BattleSystem_GetOpponentDataByBattlerId
-BattleSystem_GetOpponentDataByBattlerId: ; 0x0223A7E8
-	lsl r1, r1, #2
-	add r0, r0, r1
-	ldr r0, [r0, #0x34]
-	bx lr
-	thumb_func_end BattleSystem_GetOpponentDataByBattlerId
-
-	thumb_func_start BattleSystem_GetMaxBattlers
-BattleSystem_GetMaxBattlers: ; 0x0223A7F0
-	ldr r0, [r0, #0x44]
-	bx lr
-	thumb_func_end BattleSystem_GetMaxBattlers
-
+    
 	thumb_func_start BattleSystem_GetParty
 BattleSystem_GetParty: ; 0x0223A7F4
 	push {r3, r4, r5, lr}

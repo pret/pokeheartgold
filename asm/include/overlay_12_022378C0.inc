@@ -198,8 +198,8 @@
 .public ov12_02237ED0
 .public ov12_022399BC
 .public BattleSystem_GetBattleType
-.public ov12_0223A7E4
-.public BattleSystem_GetOpponentDataByBattlerId
+.public BattleSystem_GetBattleContext
+.public BattleSystem_GetOpponentData
 .public BattleSystem_GetMaxBattlers
 .public BattleSystem_GetPartySize
 .public BattleSystem_GetPartyMon
