@@ -7,6 +7,10 @@
 #include "pokemon.h"
 #include "sav_chatot.h"
 
+BgConfig *BattleSystem_GetBgConfig(BattleSystem *bsys);
+Window *BattleSystem_GetWindow(BattleSystem *bsys, int index);
+
+//These functions haven't been decompiled
 u16 BattleSystem_GetBattleType(BattleSystem *bsys);
 u32 BattleSystem_GetFieldSide(BattleSystem *bsys, int battlerId);
 int BattleSystem_GetMaxBattlers(BattleSystem *bsys);
@@ -45,5 +49,8 @@ void ov12_022642F0(BattleSystem *bsys);
 BOOL ov12_022581BC(BattleSystem *bsys, BATTLECONTEXT *ctx);
 Bag *BattleSystem_GetBag(BattleSystem *bsys);
 BagCursor *BattleSystem_GetBagCursor(BattleSystem *bsys);
+int ov12_0223B6B4(BattleSystem *bsys);
+void ov12_0223B6C0(BattleSystem *bsys, int item);
+void ov12_02263A1C(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 
 #endif

@@ -65,8 +65,8 @@
 .public MIi_CpuCopy32
 .public _s32_div_f
 .public _u32_div_f
-.public ov12_0223A7D4
-.public ov12_0223A7D8
+.public BattleSystem_GetBgConfig
+.public BattleSystem_GetWindow
 .public BattleSystem_GetBattleType
 .public ov12_0223A7E4
 .public BattleSystem_GetOpponentDataByBattlerId

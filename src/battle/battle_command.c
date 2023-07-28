@@ -2649,7 +2649,7 @@ BOOL BtlCmd_TryMimic(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         int moveIndex = 0;
         int mimicIndex = -1;
 
-        for (moveIndex = 0; moveIndex < LEARNED_MOVES_MAX; moveIndex++) {
+        for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++) {
             if (ctx->battleMons[ctx->battlerIdAttacker].moves[moveIndex] == ctx->moveNoBattlerPrev[ctx->battlerIdTarget]) {
                 break;
             }
@@ -2658,7 +2658,7 @@ BOOL BtlCmd_TryMimic(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             }
         }
 
-        if (moveIndex == LEARNED_MOVES_MAX) {
+        if (moveIndex == MAX_MON_MOVES) {
             ctx->moveTemp = ctx->moveNoBattlerPrev[ctx->battlerIdTarget];
             ctx->battleMons[ctx->battlerIdAttacker].moves[mimicIndex] = ctx->moveTemp;
             if (ctx->unk_334.moveData[ctx->moveTemp].pp < 5) {
@@ -2799,10 +2799,10 @@ BOOL BtlCmd_TryEncore(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int encoredMoveIndex = BattleMon_GetMoveIndex(&ctx->battleMons[ctx->battlerIdTarget], ctx->moveNoBattlerPrev[ctx->battlerIdTarget]);
 
     if (IsMoveEncored(ctx, ctx->moveNoBattlerPrev[ctx->battlerIdTarget]) == FALSE) {
-        encoredMoveIndex = LEARNED_MOVES_MAX;
+        encoredMoveIndex = MAX_MON_MOVES;
     }
 
-    if (ctx->battleMons[ctx->battlerIdTarget].unk88.encoredMove == 0 && encoredMoveIndex != LEARNED_MOVES_MAX &&
+    if (ctx->battleMons[ctx->battlerIdTarget].unk88.encoredMove == 0 && encoredMoveIndex != MAX_MON_MOVES &&
         ctx->battleMons[ctx->battlerIdTarget].movePPCur[encoredMoveIndex] && ctx->moveNoBattlerPrev[ctx->battlerIdTarget]) {
         ctx->moveTemp = ctx->moveNoBattlerPrev[ctx->battlerIdTarget];
         ctx->battleMons[ctx->battlerIdTarget].unk88.encoredMove = ctx->moveTemp;
@@ -2875,7 +2875,7 @@ BOOL BtlCmd_TrySketch(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_TRANSFORMED || ctx->moveNoSketch[ctx->battlerIdTarget] == MOVE_STRUGGLE || ctx->moveNoSketch[ctx->battlerIdTarget] == MOVE_SKETCH || ctx->moveNoSketch[ctx->battlerIdTarget] == MOVE_CHATTER || ctx->moveNoSketch[ctx->battlerIdTarget] == 0) {
         BattleScriptIncrementPointer(ctx, adrs);
     } else {
-        for (moveIndex = 0; moveIndex < LEARNED_MOVES_MAX; moveIndex++) {
+        for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++) {
             if (ctx->battleMons[ctx->battlerIdAttacker].moves[moveIndex] != MOVE_SKETCH && ctx->battleMons[ctx->battlerIdAttacker].moves[moveIndex] == ctx->moveNoSketch[ctx->battlerIdTarget]) {
                 break;
             }
@@ -2883,7 +2883,7 @@ BOOL BtlCmd_TrySketch(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 sketchIndex = moveIndex;
             }
         }
-        if (moveIndex == LEARNED_MOVES_MAX) {
+        if (moveIndex == MAX_MON_MOVES) {
             ctx->battleMons[ctx->battlerIdAttacker].moves[sketchIndex] = ctx->moveNoSketch[ctx->battlerIdTarget];
             ctx->battleMons[ctx->battlerIdAttacker].movePPCur[sketchIndex] = ctx->unk_334.moveData[ctx->moveNoSketch[ctx->battlerIdTarget]].pp;
             BattleController_EmitBattleMonToPartyMonCopy(bsys, ctx, ctx->battlerIdAttacker);
@@ -2908,7 +2908,7 @@ BOOL BtlCmd_TrySleepTalk(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     nonSelectableMoves = 0;
 
-    for (moveIndex = 0; moveIndex < LEARNED_MOVES_MAX; moveIndex++) {
+    for (moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++) {
         if (CheckMoveCallsOtherMove(ctx->battleMons[ctx->battlerIdAttacker].moves[moveIndex]) ||
             ctx->battleMons[ctx->battlerIdAttacker].moves[moveIndex] == MOVE_FOCUS_PUNCH ||
             ctx->battleMons[ctx->battlerIdAttacker].moves[moveIndex] == MOVE_UPROAR ||
@@ -2962,7 +2962,7 @@ BOOL BtlCmd_TrySpite(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     if (ctx->moveNoBattlerPrev[ctx->battlerIdTarget]) {
         moveIndex = BattleMon_GetMoveIndex(&ctx->battleMons[ctx->battlerIdTarget], ctx->moveNoBattlerPrev[ctx->battlerIdTarget]);
-        if (moveIndex == LEARNED_MOVES_MAX || ctx->battleMons[ctx->battlerIdTarget].movePPCur[moveIndex] == 0) {
+        if (moveIndex == MAX_MON_MOVES || ctx->battleMons[ctx->battlerIdTarget].movePPCur[moveIndex] == 0) {
             BattleScriptIncrementPointer(ctx, adrs);
         } else {
             ppLoss = 4;
@@ -3233,7 +3233,7 @@ BOOL BtlCmd_Transform(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     ctx->battleMons[ctx->battlerIdAttacker].slowStartFlag = 0;
     ctx->battleMons[ctx->battlerIdAttacker].slowStartEnded = 0;
 
-    for (i = 0; (int) i < LEARNED_MOVES_MAX; i++) {
+    for (i = 0; (int) i < MAX_MON_MOVES; i++) {
         if (ctx->unk_334.moveData[ctx->battleMons[ctx->battlerIdAttacker].moves[i]].pp < 5) {
             ctx->battleMons[ctx->battlerIdAttacker].movePPCur[i] = ctx->unk_334.moveData[ctx->battleMons[ctx->battlerIdAttacker].moves[i]].pp;
         } else {
@@ -4062,17 +4062,17 @@ BOOL BtlCmd_TryImprison(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         maxBattlers = BattleSystem_GetMaxBattlers(bsys);
         for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
             if (side != BattleSystem_GetFieldSide(bsys, battlerId)) {
-                for (i = 0; i < LEARNED_MOVES_MAX; i++) {
-                    for (j = 0; j < LEARNED_MOVES_MAX; j++) {
+                for (i = 0; i < MAX_MON_MOVES; i++) {
+                    for (j = 0; j < MAX_MON_MOVES; j++) {
                         if ((ctx->battleMons[ctx->battlerIdAttacker].moves[i] == ctx->battleMons[battlerId].moves[j]) && ctx->battleMons[ctx->battlerIdAttacker].moves[i] && ctx->battleMons[battlerId].moves[j]) {
                             break;
                         }
                     }
-                    if (j != LEARNED_MOVES_MAX) {
+                    if (j != MAX_MON_MOVES) {
                         break;
                     }
                 }
-                if (j != LEARNED_MOVES_MAX) {
+                if (j != MAX_MON_MOVES) {
                     break;
                 }
             }

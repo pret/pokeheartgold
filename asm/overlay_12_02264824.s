@@ -1238,7 +1238,7 @@ ov12_0226516C: ; 0x0226516C
 	sub sp, #0x34
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	add r6, r0, #0
 	ldr r0, [r5, #0xc]
 	bl ov12_0223A930
@@ -1770,7 +1770,7 @@ ov12_022655F0: ; 0x022655F0
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
 	add r5, r1, #0
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	add r6, r0, #0
 	ldr r0, [r4, #0xc]
 	bl ov12_0223A930
@@ -1872,7 +1872,7 @@ ov12_022656CC: ; 0x022656CC
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
 	add r5, r1, #0
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	str r0, [sp, #0x1c]
 	ldr r0, [r4, #0xc]
 	bl ov12_0223A930

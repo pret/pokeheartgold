@@ -164,7 +164,7 @@
 .public _u32_div_f
 .public gSystem
 .public ov08_022225D4
-.public ov12_0223A7D4
+.public BattleSystem_GetBgConfig
 .public BattleSystem_GetBattleType
 .public ov12_0223A7E4
 .public BattleSystem_GetParty

@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_BATTLE_H
 #define POKEHEARTGOLD_BATTLE_H
 
+#include "bg_window.h"
 #include "item.h"
 #include "move.h"
 #include "pokemon_storage_system.h"
@@ -254,10 +255,10 @@ typedef struct BATTLECONTEXT {
     ControllerCommand commandNext;
     int stateFieldConditionUpdate;
     int fieldConditionUpdateData;
-    int unk_18;
-    int unk_1C;
-    int unk_20;
-    int unk_24;
+    int stateUpdateMonCondition;
+    int updateMonConditionData;
+    int stateUpdateFieldConditionExtra;
+    int updateFieldConditionExtraData;
     int unk_28;
     int unk_2C;
     int unk_30;
@@ -496,10 +497,14 @@ typedef struct UnkBattleSystemSub220 {
     int unk8;
 } UnkBattleSystemSub220;
 
+typedef struct BattleSystemSub_C {
+    
+} BattleSystemSub_C;
+
 struct BattleSystem {
     u32 *unk0;
-    u32 *unk4;
-    u32 *unk8;
+    BgConfig *bgConfig;
+    Window *window;
     u32 *unkC;
     u32 *unk10;
     u32 *unk14;

@@ -2275,7 +2275,7 @@ ov12_022598F8: ; 0x022598F8
 	add r4, r1, #0
 	mov r1, #0
 	add r5, r0, #0
-	bl ov12_0223A7D8
+	bl BattleSystem_GetWindow
 	add r6, r0, #0
 	mov r1, #0xff
 	bl FillWindowPixelBuffer
@@ -3450,7 +3450,7 @@ _0225A23E:
 	bne _0225A27A
 _0225A26A:
 	add r0, r6, #0
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	mov r1, #3
 	mov r2, #2
 	mov r3, #0x84
@@ -5437,7 +5437,7 @@ ov12_0225B1A8: ; 0x0225B1A8
 	bl ov12_0223C494
 	add r0, r5, #0
 	mov r1, #0
-	bl ov12_0223A7D8
+	bl BattleSystem_GetWindow
 	mov r1, #1
 	bl WaitingIcon_New
 	add r1, r0, #0
@@ -8968,7 +8968,7 @@ ov12_0225CE28: ; 0x0225CE28
 	bne _0225CE64
 _0225CE4E:
 	ldr r0, [r4]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	mov r1, #3
 	mov r2, #1
 	mov r3, #4
@@ -10509,7 +10509,7 @@ ov12_0225DAD4: ; 0x0225DAD4
 	add r4, r1, #0
 	add r7, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	ldr r0, [r4]
 	bl ov12_0223A900
 	add r6, r0, #0
@@ -11407,7 +11407,7 @@ ov12_0225E250: ; 0x0225E250
 	add r4, r1, #0
 	add r6, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	ldr r0, [r4]
 	bl ov12_0223A900
 	add r7, r0, #0
@@ -11787,7 +11787,7 @@ ov12_0225E568: ; 0x0225E568
 	add r4, r1, #0
 	str r0, [sp, #8]
 	ldr r0, [r4]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]
 	bl BattleSystem_GetOpponentDataByBattlerId
@@ -13736,7 +13736,7 @@ _0225F502: ; jump table
 _0225F50A:
 	ldr r0, [r4]
 	mov r1, #0
-	bl ov12_0223A7D8
+	bl BattleSystem_GetWindow
 	add r6, r0, #0
 	mov r1, #0xff
 	bl FillWindowPixelBuffer
@@ -14372,7 +14372,7 @@ ov12_0225FA44: ; 0x0225FA44
 	add r4, r1, #0
 	add r6, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	ldr r0, [r4]
 	bl ov12_0223A900
 	add r5, r0, #0
@@ -15910,7 +15910,7 @@ ov12_02260668: ; 0x02260668
 	add r4, r1, #0
 	add r6, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	ldr r0, [r4]
 	bl ov12_0223A938
 	add r7, r0, #0
@@ -18621,7 +18621,7 @@ _02261B9E:
 	str r0, [sp, #0x18]
 _02261BA8:
 	ldr r0, [sp]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	str r0, [sp, #0x20]
 	ldr r0, [sp]
 	bl ov12_0223A938

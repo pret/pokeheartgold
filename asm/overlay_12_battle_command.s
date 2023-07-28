@@ -603,11 +603,11 @@ _02245D5A:
 	pop {r3, r4, r5, r6, r7, pc}
 _02245D62:
 	ldr r0, [r4]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	add r6, r0, #0
 	ldr r0, [r4]
 	mov r1, #1
-	bl ov12_0223A7D8
+	bl BattleSystem_GetWindow
 	add r5, r0, #0
 	ldr r0, [r4]
 	bl ov12_0223A938
@@ -693,7 +693,7 @@ _02245E0A:
 	stmia r2!, {r0, r1}
 	ldr r0, [r4]
 	mov r1, #1
-	bl ov12_0223A7D8
+	bl BattleSystem_GetWindow
 	add r7, r0, #0
 	mov r0, #0x5f
 	ldr r1, [r4, #4]
@@ -778,7 +778,7 @@ _02245EC8:
 	stmia r2!, {r0, r1}
 	ldr r0, [r4]
 	mov r1, #1
-	bl ov12_0223A7D8
+	bl BattleSystem_GetWindow
 	mov r1, #0x24
 	str r1, [sp]
 	mov r1, #0x60
@@ -850,7 +850,7 @@ _02245F5C:
 _02245F6C:
 	ldr r0, [r4]
 	mov r1, #1
-	bl ov12_0223A7D8
+	bl BattleSystem_GetWindow
 	add r6, r0, #0
 	mov r1, #0
 	bl sub_0200E5D4
@@ -892,7 +892,7 @@ _02245FBA:
 	pop {r3, r4, r5, r6, r7, pc}
 _02245FCE:
 	ldr r0, [r4]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	add r1, r4, #0
 	add r0, r6, #0
 	add r1, #0x38
@@ -2207,7 +2207,7 @@ _02246A72:
 	mov r1, #0
 	bl ov12_02261294
 	ldr r0, [r4]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	str r0, [sp, #0xd0]
 	ldr r0, [r4]
 	bl ov12_0223A938
@@ -5173,7 +5173,7 @@ ov12_02248228: ; 0x02248228
 	bl ov12_0223A9A4
 	str r0, [sp, #0x24]
 	add r0, r7, #0
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	str r0, [sp, #0x1c]
 	add r0, r7, #0
 	bl ov12_0223A8E4

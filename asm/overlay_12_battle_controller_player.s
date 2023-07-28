@@ -16,47 +16,13 @@
     .public ov12_02249460
     .public BattleControllerPlayer_UpdateFieldCondition
     .public BattleControllerPlayer_UpdateMonCondition
-    .public ov12_0224A70C
+    .public BattleControllerPlayer_UpdateFieldConditionExtra
     .public BattleControllerPlayer_TurnEnd
     .public BattleControllerPlayer_FightInput
     .public BattleControllerPlayer_ItemInput
     .public BattleControllerPlayer_PokemonInput
     .public BattleControllerPlayer_RunInput
-
-	thumb_func_start ov12_0224AD58
-ov12_0224AD58: ; 0x0224AD58
-	push {r3, r4, r5, lr}
-	add r4, r1, #0
-	add r5, r0, #0
-	ldr r2, _0224AD9C ; =0x00000113
-	add r0, r4, #0
-	mov r1, #1
-	bl ReadBattleScriptFromNarc
-	mov r0, #0
-	str r0, [r4, #0x64]
-	mov r0, #1
-	str r0, [r4, #0x6c]
-	mov r0, #0x16
-	str r0, [r4, #8]
-	mov r0, #0x28
-	str r0, [r4, #0xc]
-	mov r0, #0x4a
-	mov r1, #5
-	lsl r0, r0, #2
-	str r1, [r4, r0]
-	add r0, r5, #0
-	bl ov12_0223B6B4
-	sub r1, r0, #1
-	add r0, r5, #0
-	bl ov12_0223B6C0
-	add r0, r5, #0
-	add r1, r4, #0
-	mov r2, #0
-	bl ov12_02263A1C
-	pop {r3, r4, r5, pc}
-	nop
-_0224AD9C: .word 0x00000113
-	thumb_func_end ov12_0224AD58
+    .public BattleControllerPlayer_SafariBallInput
 
 	thumb_func_start ov12_0224ADA0
 ov12_0224ADA0: ; 0x0224ADA0
@@ -7268,13 +7234,13 @@ sPlayerBattleCommands: ; 0x0226CA90
 	.word ov12_02249460
 	.word BattleControllerPlayer_UpdateFieldCondition
 	.word BattleControllerPlayer_UpdateMonCondition
-	.word ov12_0224A70C
+	.word BattleControllerPlayer_UpdateFieldConditionExtra
 	.word BattleControllerPlayer_TurnEnd
 	.word BattleControllerPlayer_FightInput
 	.word BattleControllerPlayer_ItemInput
 	.word BattleControllerPlayer_PokemonInput
 	.word BattleControllerPlayer_RunInput
-	.word ov12_0224AD58
+	.word BattleControllerPlayer_SafariBallInput
 	.word ov12_0224ADA0
 	.word ov12_0224AE04
 	.word ov12_0224AE64

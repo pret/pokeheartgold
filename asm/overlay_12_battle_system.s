@@ -6,20 +6,6 @@
 
 	.text
 
-	thumb_func_start ov12_0223A7D4
-ov12_0223A7D4: ; 0x0223A7D4
-	ldr r0, [r0, #4]
-	bx lr
-	thumb_func_end ov12_0223A7D4
-
-	thumb_func_start ov12_0223A7D8
-ov12_0223A7D8: ; 0x0223A7D8
-	ldr r2, [r0, #8]
-	lsl r0, r1, #4
-	add r0, r2, r0
-	bx lr
-	thumb_func_end ov12_0223A7D8
-
 	thumb_func_start BattleSystem_GetBattleType
 BattleSystem_GetBattleType: ; 0x0223A7E0
 	ldr r0, [r0, #0x2c]
@@ -3984,7 +3970,7 @@ ov12_0223C34C: ; 0x0223C34C
 	mov r1, #0
 	str r2, [sp, #0xc]
 	add r5, r3, #0
-	bl ov12_0223A7D8
+	bl BattleSystem_GetWindow
 	add r7, r0, #0
 	ldr r0, [r6, #0x2c]
 	mov r2, #0x80
@@ -4144,7 +4130,7 @@ ov12_0223C494: ; 0x0223C494
 	add r4, r2, #0
 	mov r1, #0
 	add r6, r3, #0
-	bl ov12_0223A7D8
+	bl BattleSystem_GetWindow
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0

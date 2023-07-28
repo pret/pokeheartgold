@@ -1753,8 +1753,8 @@ void BattleContext_Init(BATTLECONTEXT *ctx) {
     
     //unidentified states for different state machines
     ctx->stateFieldConditionUpdate = 0;
-    ctx->unk_18 = 0;
-    ctx->unk_20 = 0;
+    ctx->stateUpdateMonCondition = 0;
+    ctx->stateUpdateFieldConditionExtra = 0;
     ctx->unk_28 = 0;
     ctx->unk_30 = 0;
     ctx->unk_3C = 0;
@@ -3276,12 +3276,12 @@ BOOL BattleContext_CheckMoveImprisoned(BattleSystem *bsys, BATTLECONTEXT *ctx, i
     
     for (battlerIdCur = 0; battlerIdCur < maxBattlers; battlerIdCur++) {
         if ((side != BattleSystem_GetFieldSide(bsys, battlerIdCur)) && (ctx->battleMons[battlerIdCur].moveEffectFlags & MOVE_EFFECT_FLAG_IMPRISON_USER)) {
-            for (i = 0; i < LEARNED_MOVES_MAX; i++) {
+            for (i = 0; i < MAX_MON_MOVES; i++) {
                 if (moveNo == ctx->battleMons[battlerIdCur].moves[i]) {
                     break;
                 }
             }
-            if (i != LEARNED_MOVES_MAX) {
+            if (i != MAX_MON_MOVES) {
                 ret = TRUE;
             }
         }
@@ -3459,7 +3459,7 @@ BOOL BattleContext_CheckMoveHealBlocked(BattleSystem *bsys, BATTLECONTEXT *ctx, 
 void ov12_02252E30(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int i;
     
-    if (ctx->moveNoTemp == MOVE_LAST_RESORT || ctx->battleMons[ctx->battlerIdAttacker].unk88.lastResortCount == LEARNED_MOVES_MAX) {
+    if (ctx->moveNoTemp == MOVE_LAST_RESORT || ctx->battleMons[ctx->battlerIdAttacker].unk88.lastResortCount == MAX_MON_MOVES) {
         return;
     }
     
@@ -3476,7 +3476,7 @@ void ov12_02252E30(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 int GetBattlerLearnedMoveCount(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     int cnt;
     
-    for (cnt = 0; cnt < LEARNED_MOVES_MAX; cnt++) {
+    for (cnt = 0; cnt < MAX_MON_MOVES; cnt++) {
         if (ctx->battleMons[battlerId].moves[cnt] == MOVE_NONE) {
             break;
         }
@@ -3797,7 +3797,7 @@ int TryAbilityOnEntry(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                     u32 moveStatus;
                     for (battlerIdCheck = 0; battlerIdCheck < maxBattlers; battlerIdCheck++) {
                         if (BattleSystem_GetFieldSide(bsys, battlerId) != BattleSystem_GetFieldSide(bsys, battlerIdCheck) && ctx->battleMons[battlerIdCheck].hp) {
-                            for (index = 0; index < LEARNED_MOVES_MAX; index++) {
+                            for (index = 0; index < MAX_MON_MOVES; index++) {
                                 moveNo = ctx->battleMons[battlerIdCheck].moves[index];
                                 if (moveNo) {
                                     moveStatus = 0;
@@ -3843,7 +3843,7 @@ int TryAbilityOnEntry(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                     for (battlerIdCheck = 0; battlerIdCheck < maxBattlers; battlerIdCheck++) {
                         if (BattleSystem_GetFieldSide(bsys, battlerId) != BattleSystem_GetFieldSide(bsys, battlerIdCheck) && ctx->battleMons[battlerIdCheck].hp) {
                             hp += ctx->battleMons[battlerIdCheck].hp;
-                            for (index = 0; index < LEARNED_MOVES_MAX; index++) {
+                            for (index = 0; index < MAX_MON_MOVES; index++) {
                                 moveNo = ctx->battleMons[battlerIdCheck].moves[index];
                                 power = ctx->unk_334.moveData[moveNo].power;
                                 switch (power) {
@@ -4455,12 +4455,12 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
             break;
         case HOLD_EFFECT_PP_RESTORE: //leppa berry
             int index;
-            for (index = 0; index < LEARNED_MOVES_MAX; index++) {
+            for (index = 0; index < MAX_MON_MOVES; index++) {
                 if (ctx->battleMons[battlerId].moves[index] && !ctx->battleMons[battlerId].movePPCur[index]) {
                     break;
                 }
             }
-            if (index != LEARNED_MOVES_MAX) {
+            if (index != MAX_MON_MOVES) {
                 AddBattlerVar(&ctx->battleMons[battlerId], BMON_DATA_MOVE1PP + index, boost);
                 CopyBattleMonToPartyMon(bsys, ctx, battlerId);
                 ctx->moveTemp = ctx->battleMons[battlerId].moves[index];
@@ -4782,12 +4782,12 @@ BOOL CheckUseHeldItem(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u32
             break;
         case HOLD_EFFECT_PP_RESTORE: //leppa berry
             int index;
-            for (index = 0; index < LEARNED_MOVES_MAX; index++) {
+            for (index = 0; index < MAX_MON_MOVES; index++) {
                 if (ctx->battleMons[battlerId].moves[index] && !ctx->battleMons[battlerId].movePPCur[index]) {
                     break;
                 }
             }
-            if (index != LEARNED_MOVES_MAX) {
+            if (index != MAX_MON_MOVES) {
                 AddBattlerVar(&ctx->battleMons[battlerId], BMON_DATA_MOVE1PP + index, boost);
                 CopyBattleMonToPartyMon(bsys, ctx, battlerId);
                 ctx->moveTemp = ctx->battleMons[battlerId].moves[index];
@@ -5270,7 +5270,7 @@ BOOL TryEatOpponentBerry(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) 
         int index;
         int max = 0;
         int maxIndex;
-        for (index = 0; index < LEARNED_MOVES_MAX; index++) {
+        for (index = 0; index < MAX_MON_MOVES; index++) {
             if (ctx->battleMons[ctx->battlerIdAttacker].moves[index]) {
                 ppCalc = GetMoveMaxPP(ctx->battleMons[ctx->battlerIdAttacker].moves[index], ctx->battleMons[ctx->battlerIdAttacker].movePP[index]) - ctx->battleMons[ctx->battlerIdAttacker].movePPCur[index];
                 if (ppCalc > max) {
@@ -5510,7 +5510,7 @@ BOOL TryFling(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
         int index;
         int max = 0;
         int maxIndex;
-        for (index = 0; index < LEARNED_MOVES_MAX; index++) {
+        for (index = 0; index < MAX_MON_MOVES; index++) {
             if (ctx->battleMons[ctx->battlerIdTarget].moves[index]) {
                 ppCalc = GetMoveMaxPP(ctx->battleMons[ctx->battlerIdTarget].moves[index], ctx->battleMons[ctx->battlerIdTarget].movePP[index]) - ctx->battleMons[ctx->battlerIdTarget].movePPCur[index];
                 if (ppCalc > max) {
@@ -7181,7 +7181,7 @@ static u8 Battler_GetType(BATTLECONTEXT *ctx, int battlerId, int var) {
 }
 
 static void ov12_02258584(BATTLECONTEXT *ctx, u8 battlerId) {
-    for (int i = 0; i < LEARNED_MOVES_MAX; i++) {
+    for (int i = 0; i < MAX_MON_MOVES; i++) {
         ctx->unk_334.unk1C[battlerId][i] = 0;
     }
 }

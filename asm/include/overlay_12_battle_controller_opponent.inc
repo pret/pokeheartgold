@@ -146,8 +146,8 @@
 .public ov12_02237B0C
 .public ov12_02237BB8
 .public ov12_02237ED0
-.public ov12_0223A7D4
-.public ov12_0223A7D8
+.public BattleSystem_GetBgConfig
+.public BattleSystem_GetWindow
 .public BattleSystem_GetBattleType
 .public ov12_0223A7E4
 .public BattleSystem_GetOpponentDataByBattlerId

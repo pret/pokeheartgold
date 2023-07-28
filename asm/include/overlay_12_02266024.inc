@@ -129,7 +129,7 @@
 .public _s32_div_f
 .public gSystem
 .public ov06_0221BA1C
-.public ov12_0223A7D4
+.public BattleSystem_GetBgConfig
 .public BattleSystem_GetBattleType
 .public BattleSystem_GetOpponentDataByBattlerId
 .public BattleSystem_GetPartyMon

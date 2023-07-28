@@ -1060,13 +1060,13 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
         return;
     }
     
-    while (ctx->unk_1C < maxBattlers) {
-        battlerId = ctx->turnOrder[ctx->unk_1C];
+    while (ctx->updateMonConditionData < maxBattlers) {
+        battlerId = ctx->turnOrder[ctx->updateMonConditionData];
         if (ctx->unk_3108 & MaskOfFlagNo(battlerId)) {
-            ctx->unk_1C++;
+            ctx->updateMonConditionData++;
             continue;
         }
-        switch (ctx->unk_18) {
+        switch (ctx->stateUpdateMonCondition) {
         case UMC_STATE_INGRAIN:
             if ((ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_INGRAIN) && ctx->battleMons[battlerId].hp != ctx->battleMons[battlerId].maxHp && ctx->battleMons[battlerId].hp) {
                 if (ctx->battleMons[battlerId].unk88.healBlockTurns) {
@@ -1080,7 +1080,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 flag = 1;
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;
         case UMC_STATE_AQUA_RING:
             if ((ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_AQUA_RING) && ctx->battleMons[battlerId].hp != ctx->battleMons[battlerId].maxHp && ctx->battleMons[battlerId].hp) {
@@ -1097,25 +1097,25 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 flag = 1;
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;
         case UMC_STATE_ABILITY:
             if (ov12_02253068(bsys, ctx, battlerId) == TRUE) {
                 flag = 1;
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;
         case UMC_STATE_HELD_ITEM:
             if (TryUseHeldItem(bsys, ctx, battlerId) == TRUE) {
                 flag = 1;
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;
         case UMC_STATE_LEFTOVERS_RECOVERY:
             if (CheckItemGradualHPRestore(bsys, ctx, battlerId) == TRUE) {
                 flag = 1;
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;
         case UMC_STATE_LEECH_SEED:
             if ((ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_LEECH_SEED) && ctx->battleMons[ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_LEECH_SEED_BATTLER].hp && 
@@ -1127,7 +1127,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 flag = 1;
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;
         case UMC_STATE_POISON:
             if ((ctx->battleMons[battlerId].status & STATUS_POISON) && ctx->battleMons[battlerId].hp) {
@@ -1138,7 +1138,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 flag = 1;
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;
         case UMC_STATE_BAD_POISON:
             if ((ctx->battleMons[battlerId].status & STATUS_BAD_POISON) && ctx->battleMons[battlerId].hp) {
@@ -1154,7 +1154,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 flag = 1;
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;
         case UMC_STATE_BURN:
             if ((ctx->battleMons[battlerId].status & STATUS_BURN) && ctx->battleMons[battlerId].hp) {
@@ -1164,7 +1164,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 flag = 1;
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;
         case UMC_STATE_NIGHTMARE:
             if ((ctx->battleMons[battlerId].status2 & STATUS2_NIGHTMARE) && ctx->battleMons[battlerId].hp) {
@@ -1178,7 +1178,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
                     ctx->battleMons[battlerId].status2 &= ~STATUS2_NIGHTMARE;
                 }
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;
         case UMC_STATE_CURSE:
             if ((ctx->battleMons[battlerId].status2 & STATUS2_CURSE) && ctx->battleMons[battlerId].hp) {
@@ -1188,7 +1188,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 flag = 1;
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;
         case UMC_STATE_BINDING:
             if ((ctx->battleMons[battlerId].status2 & STATUS2_BINDING_TURNS) && ctx->battleMons[battlerId].hp) {
@@ -1205,7 +1205,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 flag = 1;
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;
         case UMC_STATE_BAD_DREAMS:
             ctx->tempData = CheckAbilityActive(bsys, ctx, CHECK_ABILITY_OPPOSING_SIDE_HP_RET, battlerId, ABILITY_BAD_DREAMS);
@@ -1219,7 +1219,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 flag = 1;
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;
         case UMC_STATE_UPROAR:
             if (ctx->battleMons[battlerId].status2 & STATUS2_UPROAR) {
@@ -1256,7 +1256,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
                 flag = 1;
             }
             if (flag != 2) {
-                ctx->unk_18++;
+                ctx->stateUpdateMonCondition++;
             }
             break;
         case UMC_STATE_RAMPAGE:
@@ -1272,16 +1272,16 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
                     flag = 1;
                 }
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;
         case UMC_STATE_DISABLE:
             if (ctx->battleMons[battlerId].unk88.disabledMove) {
-                for (i = 0; i < LEARNED_MOVES_MAX; i++) {
+                for (i = 0; i < MAX_MON_MOVES; i++) {
                     if (ctx->battleMons[battlerId].unk88.disabledMove == ctx->battleMons[battlerId].moves[i]) {
                         break;
                     }
                 }
-                if (i == LEARNED_MOVES_MAX) {
+                if (i == MAX_MON_MOVES) {
                     ctx->battleMons[battlerId].unk88.disabledTurns = 0;
                 }
                 if (ctx->battleMons[battlerId].unk88.disabledTurns) {
@@ -1295,16 +1295,16 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
                     flag = 1;
                 }
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;
         case UMC_STATE_ENCORE:
             if (ctx->battleMons[battlerId].unk88.encoredMove) {
-                for (i = 0; i < LEARNED_MOVES_MAX; i++) {
+                for (i = 0; i < MAX_MON_MOVES; i++) {
                     if (ctx->battleMons[battlerId].unk88.encoredMove == ctx->battleMons[battlerId].moves[i]) {
                         break;
                     }
                 }
-                if (i == LEARNED_MOVES_MAX || (i != LEARNED_MOVES_MAX && !ctx->battleMons[battlerId].movePPCur[i])) {
+                if (i == MAX_MON_MOVES || (i != MAX_MON_MOVES && !ctx->battleMons[battlerId].movePPCur[i])) {
                     ctx->battleMons[battlerId].unk88.encoredTurns = 0;
                 }
                 if (ctx->battleMons[battlerId].unk88.encoredTurns) {
@@ -1318,13 +1318,13 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
                     flag = 1;
                 }
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;
         case UMC_STATE_LOCK_ON:
             if (ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_LOCK_ON) {
                 ctx->battleMons[battlerId].moveEffectFlags -= 1 << MOVE_EFFECT_FLAG_LOCK_ON_SHIFT;
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;
         case UMC_STATE_CHARGE:
             if (ctx->battleMons[battlerId].unk88.isCharged) {
@@ -1332,7 +1332,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
                     ctx->battleMons[battlerId].moveEffectFlags &= ~MOVE_EFFECT_FLAG_CHARGE;
                 }
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;
         case UMC_STATE_TAUNT:
             if (ctx->battleMons[battlerId].unk88.tauntTurns) {
@@ -1345,7 +1345,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
                     flag = 1;
                 }
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;
         case UMC_STATE_MAGNET_RISE:
             if (ctx->battleMons[battlerId].unk88.magnetRiseTurns) {
@@ -1357,7 +1357,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
                     flag = 1;
                 }
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;
         case UMC_STATE_HEALBLOCK:
             if (ctx->battleMons[battlerId].unk88.healBlockTurns) {
@@ -1369,7 +1369,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
                     flag = 1;
                 }
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;
         case UMC_STATE_EMBARGO:
             if (ctx->battleMons[battlerId].unk88.embargoFlag) {
@@ -1381,7 +1381,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
                     flag = 1;
                 }
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;
         case UMC_STATE_YAWN:
             if (ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_YAWN) {
@@ -1395,7 +1395,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
                     flag = 1;
                 }
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;  
         case UMC_STATE_HELD_ITEM_STATUS:
             int script;
@@ -1407,17 +1407,17 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 flag = 1;
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;
         case UMC_STATE_HELD_ITEM_DAMAGE:
             if (TryHeldItemNegativeEffect(bsys, ctx, battlerId) == TRUE) {
                 flag = 1;
             }
-            ctx->unk_18++;
+            ctx->stateUpdateMonCondition++;
             break;
         case UMC_STATE_END:
-            ctx->unk_18 = 0;
-            ctx->unk_1C++;
+            ctx->stateUpdateMonCondition = 0;
+            ctx->updateMonConditionData++;
             break;
         }
         if (flag) {
@@ -1425,20 +1425,22 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT
             return;
         }
     }
-    ctx->unk_18 = 0;
-    ctx->unk_1C = 0;
+    ctx->stateUpdateMonCondition = 0;
+    ctx->updateMonConditionData = 0;
     ctx->command = CONTROLLER_COMMAND_11;
 }
 
-typedef enum UpdateSideConditionState {
-    USC_STATE_FUTURE_SIGHT,
-    USC_STATE_PERISH_SONG,
-    USC_STATE_TRICK_ROOM,
-    USC_STATE_END
-} UpdateSideConditionState;
+typedef enum UpdateFieldConditionExtraState {
+    UFCE_STATE_FUTURE_SIGHT,
+    UFCE_STATE_PERISH_SONG,
+    UFCE_STATE_TRICK_ROOM,
+    UFCE_STATE_END
+} UpdateFieldConditionExtraState;
 
+//Future sight and doom desire are here due to mons being able to faint simulataneously, which means exp shouldn't be awarded like when a mon faints due to burn
+//Trick room is here due to every other update function being reliant on turn order, meaning it must be updated last
 //static
-void ov12_0224A70C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+void BattleControllerPlayer_UpdateFieldConditionExtra(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     int battlerId;
     
@@ -1448,15 +1450,15 @@ void ov12_0224A70C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     
     ov12_022642F0(bsys);
     
-    switch (ctx->unk_20) {
-    case USC_STATE_FUTURE_SIGHT:
-        while (ctx->unk_24 < maxBattlers) {
-            battlerId = ctx->turnOrder[ctx->unk_24];
+    switch (ctx->stateUpdateFieldConditionExtra) {
+    case UFCE_STATE_FUTURE_SIGHT:
+        while (ctx->updateFieldConditionExtraData < maxBattlers) {
+            battlerId = ctx->turnOrder[ctx->updateFieldConditionExtraData];
             if (ctx->unk_3108 & MaskOfFlagNo(battlerId)) {
-                ctx->unk_24++;
+                ctx->updateFieldConditionExtraData++;
                 continue;
             }
-            ctx->unk_24++;
+            ctx->updateFieldConditionExtraData++;
             if (ctx->fieldConditionData.futureSightTurns[battlerId]) {
                 if (!(--ctx->fieldConditionData.futureSightTurns[battlerId]) && ctx->battleMons[battlerId].hp) {
                     ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(bsys, battlerId)] &= ~SIDE_CONDITION_FUTURE_SIGHT;
@@ -1475,16 +1477,16 @@ void ov12_0224A70C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 }
             }
         }
-        ctx->unk_20++;
-        ctx->unk_24 = 0;
-    case USC_STATE_PERISH_SONG:
-        while (ctx->unk_24 < maxBattlers) {
-            battlerId = ctx->turnOrder[ctx->unk_24];
+        ctx->stateUpdateFieldConditionExtra++;
+        ctx->updateFieldConditionExtraData = 0;
+    case UFCE_STATE_PERISH_SONG:
+        while (ctx->updateFieldConditionExtraData < maxBattlers) {
+            battlerId = ctx->turnOrder[ctx->updateFieldConditionExtraData];
             if (ctx->unk_3108 & MaskOfFlagNo(battlerId)) {
-                ctx->unk_24++;
+                ctx->updateFieldConditionExtraData++;
                 continue;
             }
-            ctx->unk_24++;
+            ctx->updateFieldConditionExtraData++;
             if (ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_PERISH_SONG) {
                 if (ctx->battleMons[battlerId].unk88.perishSongTurns == 0) {
                     ctx->battleMons[battlerId].moveEffectFlags &= ~MOVE_EFFECT_FLAG_PERISH_SONG;
@@ -1502,9 +1504,9 @@ void ov12_0224A70C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 return;
             }
         }
-        ctx->unk_20++;
-        ctx->unk_24 = 0;
-    case USC_STATE_TRICK_ROOM:
+        ctx->stateUpdateFieldConditionExtra++;
+        ctx->updateFieldConditionExtraData = 0;
+    case UFCE_STATE_TRICK_ROOM:
         if (ctx->fieldCondition & FIELD_CONDITION_TRICK_ROOM) {
             ctx->fieldCondition -= 1 << FIELD_CONDITION_TRICK_ROOM_SHIFT;
             if (!(ctx->fieldCondition & FIELD_CONDITION_TRICK_ROOM)) {
@@ -1514,14 +1516,14 @@ void ov12_0224A70C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                 return;
             }
         }
-        ctx->unk_20++;
-        ctx->unk_24 = 0;
+        ctx->stateUpdateFieldConditionExtra++;
+        ctx->updateFieldConditionExtraData = 0;
         break;
     default:
         break;
     }
-    ctx->unk_20 = 0;
-    ctx->unk_24 = 0;
+    ctx->stateUpdateFieldConditionExtra = 0;
+    ctx->updateFieldConditionExtraData = 0;
     ctx->command = CONTROLLER_COMMAND_12;
 }
 
@@ -1683,4 +1685,19 @@ void BattleControllerPlayer_RunInput(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             ctx->commandNext = CONTROLLER_COMMAND_40;
         }
     }
+}
+
+//static
+void BattleControllerPlayer_SafariBallInput(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+    int ball;
+    
+    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 275);
+    ctx->battlerIdAttacker = BATTLER_PLAYER;
+    ctx->battlerIdTarget = BATTLER_ENEMY;
+    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+    ctx->commandNext = CONTROLLER_COMMAND_40;
+    ctx->itemTemp = ITEM_SAFARI_BALL;
+    ball = ov12_0223B6B4(bsys) - 1;
+    ov12_0223B6C0(bsys, ball);
+    ov12_02263A1C(bsys, ctx, BATTLER_PLAYER);
 }

@@ -27,7 +27,7 @@ _0221BE2E:
 	bl memset
 	str r5, [r4]
 	ldr r0, [r5, #8]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	mov r1, #0x79
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -12728,7 +12728,7 @@ ov08_022225D4: ; 0x022225D4
 	bl memset
 	str r5, [r4]
 	ldr r0, [r5]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	str r0, [r4, #4]
 	ldr r0, [r5]
 	bl ov12_0223A938

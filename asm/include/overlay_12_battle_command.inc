@@ -114,8 +114,8 @@
 .public ov12_02237B6C
 .public ov12_02237CC4
 .public ov12_02237D00
-.public ov12_0223A7D4
-.public ov12_0223A7D8
+.public BattleSystem_GetBgConfig
+.public BattleSystem_GetWindow
 .public BattleSystem_GetBattleType
 .public BattleSystem_GetOpponentDataByBattlerId
 .public BattleSystem_GetMaxBattlers
