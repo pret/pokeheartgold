@@ -93,7 +93,8 @@ struct Cell {
     short maxY;
     short minX;
     short minY;
-    struct OAM oam;
+    short oamCount;
+    struct OAM *oam;
 };
 
 struct JsonToCellOptions {
