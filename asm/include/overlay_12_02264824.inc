@@ -52,8 +52,8 @@
 .public BattleSystem_GetPartyMon
 .public ov12_0223A8E4
 .public ov12_0223A8EC
-.public ov12_0223A920
-.public ov12_0223A928
+.public BattleSystem_GetHpFont
+.public BattleSystem_GetLevelFont
 .public ov12_0223A930
 .public ov12_0223A938
 .public ov12_0223A9A4

@@ -977,7 +977,7 @@ BOOL BtlCmd_Wait(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         }
     }
 
-    if (bsys->battleTypeFlags & BATTLE_TYPE_LINK && !(bsys->unk240C & 16)) {
+    if (bsys->battleType & BATTLE_TYPE_LINK && !(bsys->unk240C & 16)) {
         waitIncrement = 2;
     } else {
         waitIncrement = 1;
@@ -2145,10 +2145,10 @@ u32 CalcPrizeMoney(BattleSystem *bsys, BATTLECONTEXT *ctx, int trainerIndex) {
         if (i >= (int)NELEMS(sPrizeMoneyTbl)) {
             i = 2;
         }
-        if (bsys->battleTypeFlags & BATTLE_TYPE_INGAME_PARTNER || bsys->battleTypeFlags == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_6)) {
+        if (bsys->battleType & BATTLE_TYPE_INGAME_PARTNER || bsys->battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_6)) {
             prizeMoney = level*4*ctx->prizeMoneyValue*sPrizeMoneyTbl[i][1];
             break;
-        } else if (bsys->battleTypeFlags & BATTLE_TYPE_DOUBLES) {
+        } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
             prizeMoney = level*4*ctx->prizeMoneyValue*2*sPrizeMoneyTbl[i][1];
             break;
         } else {
@@ -2170,7 +2170,7 @@ BOOL BtlCmd_CalcPrizeMoney(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     if (bsys->battleOutcomeFlag == 1) {
         prizeMoney = CalcPrizeMoney(bsys, ctx, 1);
-        if (bsys->battleTypeFlags & BATTLE_TYPE_INGAME_PARTNER || bsys->battleTypeFlags == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_6)) {
+        if (bsys->battleType & BATTLE_TYPE_INGAME_PARTNER || bsys->battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_6)) {
             prizeMoney += CalcPrizeMoney(bsys, ctx, 3);
         }
         PlayerProfile_AddMoney(BattleSystem_GetPlayerProfile(bsys, 0), prizeMoney);
@@ -5799,7 +5799,7 @@ BOOL BtlCmd_WaitWithoutInterrupt(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int wait = BattleScriptReadWord(ctx);
 
-    if ((bsys->battleTypeFlags & BATTLE_TYPE_LINK) && !(bsys->unk240C & BATTLE_TYPE_INGAME_PARTNER)) {
+    if ((bsys->battleType & BATTLE_TYPE_LINK) && !(bsys->unk240C & BATTLE_TYPE_INGAME_PARTNER)) {
         tSpeed = 2;
     } else {
         tSpeed = 1;
@@ -5911,7 +5911,7 @@ static void BattleScriptGotoSubscript(BATTLECONTEXT *ctx, NarcId narcId, int adr
 static void *BattleScriptGetVarPointer(BattleSystem *bsys, BATTLECONTEXT *ctx, int var) {
     switch (var) {
     case BSCRIPT_VAR_BATTLE_FLAGS:
-        return &bsys->battleTypeFlags;
+        return &bsys->battleType;
     case BSCRIPT_VAR_CRIT_COUNT:
         return &ctx->criticalCnt;
     case BSCRIPT_VAR_2:

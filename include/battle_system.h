@@ -13,14 +13,24 @@ u32 BattleSystem_GetBattleType(BattleSystem *bsys);
 BATTLECONTEXT *BattleSystem_GetBattleContext(BattleSystem *bsys);
 OpponentData *BattleSystem_GetOpponentData(BattleSystem *bsys, int battlerId);
 int BattleSystem_GetMaxBattlers(BattleSystem *bsys);
+PARTY *BattleSystem_GetParty(BattleSystem *bsys, int battlerId);
+int BattleSystem_GetPartySize(BattleSystem *bsys, int battlerId);
+Pokemon *BattleSystem_GetPartyMon(BattleSystem *bsys, int battlerId, int index);
+u32 *ov12_0223A8D4(BattleSystem *bsys);
+u32 *ov12_0223A8DC(BattleSystem *bsys);
+u32 *ov12_0223A8E4(BattleSystem *bsys);
+u32 *ov12_0223A8EC(BattleSystem *bsys);
+UnkBattleSystemSub17C *ov12_0223A8F4(BattleSystem *bsys, int index);
+u32 *ov12_0223A900(BattleSystem *bsys);
+u32 *ov12_0223A908(BattleSystem *bsys, int index);
+void ov12_0223A914(BattleSystem *bsys, int index, u32 *a2);
+FontID *BattleSystem_GetHpFont(BattleSystem *bsys);
+FontID *BattleSystem_GetLevelFont(BattleSystem *bsys);
 
 //These functions haven't been decompiled
 u32 BattleSystem_GetFieldSide(BattleSystem *bsys, int battlerId);
 int BattleSystem_Random(BattleSystem *bsys);
 PlayerProfile *BattleSystem_GetPlayerProfile(BattleSystem *bsys, int a1);
-PARTY *BattleSystem_GetParty(BattleSystem *bsys, int battlerId);
-int BattleSystem_GetPartySize(BattleSystem *bsys, int battlerId);
-Pokemon *BattleSystem_GetPartyMon(BattleSystem *bsys, int battlerId, int index);
 int BattleSystem_GetTerrainId(BattleSystem *bsys);
 int ov12_0223ABB8(BattleSystem *bsys, int battlerId, int a2);
 void BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerIdA, int battlerIdB, int a2, int itemWork);
@@ -32,7 +42,6 @@ int BattleSystem_GetBattlerIdPartner(BattleSystem *bsys, int battlerId);
 int BattleSystem_GetTrainerIndex(BattleSystem *bsys, int battlerId);
 BOOL Link_QueueNotEmpty(BATTLECONTEXT *ctx);
 BOOL BattleSystem_AreBattleAnimationsOn(BattleSystem *bsys);
-u32 *ov12_0223A900(BattleSystem *bsys);
 BOOL ov12_0223C080(BattleSystem *bsys);
 void ov12_0223BFFC(BattleSystem *bsys, u32 a1);
 void *ov12_0223A938(BattleSystem *bsys);
@@ -52,5 +61,6 @@ BagCursor *BattleSystem_GetBagCursor(BattleSystem *bsys);
 int ov12_0223B6B4(BattleSystem *bsys);
 void ov12_0223B6C0(BattleSystem *bsys, int item);
 void ov12_02263A1C(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+u32 ov12_0223AB0C(BattleSystem *bsys, int battlerId);
 
 #endif

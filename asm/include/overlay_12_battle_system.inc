@@ -82,8 +82,8 @@
 .public ov12_0223A900
 .public ov12_0223A908
 .public ov12_0223A914
-.public ov12_0223A920
-.public ov12_0223A928
+.public BattleSystem_GetHpFont
+.public BattleSystem_GetLevelFont
 .public ov12_0223A930
 .public ov12_0223A934
 .public ov12_0223A938

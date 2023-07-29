@@ -3,6 +3,7 @@
 
 #include "bg_window.h"
 #include "item.h"
+#include "font.h"
 #include "move.h"
 #include "pokemon_storage_system.h"
 #include "trainer_data.h"
@@ -513,7 +514,7 @@ struct BattleSystem {
     u32 unk20;
     u32 unk24;
     u32 unk28;
-    u32 battleTypeFlags;
+    u32 battleType;
     BATTLECONTEXT *ctx;
     OpponentData *opponentData[4];
     int maxBattlers; 
@@ -525,19 +526,19 @@ struct BattleSystem {
     PARTY *trainerParty[4];
     u32 *unk78[4];
     u32 *unk88;
-    u32 unk8C;
-    u32 unk90;
-    u32 unk94;
+    u32 *unk8C;
+    u32 *unk90;
+    u32 *unk94;
     u32 *unk98;
     u32 *unk9C;
     u16 trainerId[4];
     u8 trainerGender[4];
     TRAINER trainers[4];
     UnkBattleSystemSub17C unk17C[2];
-    u32 unk19C;
-    u32 unk1A0[2];
-    u32 *unk1A8;
-    u32 *unk1AC;
+    u32 *unk19C;
+    u32 *unk1A0[2];
+    FontID *hpFont;
+    FontID *levelFont;
     void *unk1B0;
     u32 *unk1B4;
     u32 *unk1B8;

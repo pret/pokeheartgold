@@ -1471,7 +1471,7 @@ ov12_02265354: ; 0x02265354
 	bl MI_CpuFill8
 	ldr r0, [sp, #4]
 	ldr r0, [r0, #0xc]
-	bl ov12_0223A928
+	bl BattleSystem_GetLevelFont
 	ldr r1, [sp, #4]
 	str r4, [sp]
 	add r1, #0x48
@@ -1599,7 +1599,7 @@ ov12_02265474: ; 0x02265474
 	add r4, r0, #0
 	bl MI_CpuFill8
 	ldr r0, [r5, #0xc]
-	bl ov12_0223A920
+	bl BattleSystem_GetHpFont
 	str r4, [sp]
 	add r1, r6, #0
 	mov r2, #3
@@ -1660,7 +1660,7 @@ ov12_02265500: ; 0x02265500
 	add r4, r0, #0
 	bl MI_CpuFill8
 	ldr r0, [r5, #0xc]
-	bl ov12_0223A920
+	bl BattleSystem_GetHpFont
 	str r4, [sp]
 	ldr r1, [r5, #0x2c]
 	mov r2, #3

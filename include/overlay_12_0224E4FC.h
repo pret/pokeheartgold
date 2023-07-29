@@ -130,7 +130,6 @@ BOOL CheckLegalMeFirstMove(BATTLECONTEXT *ctx, u16 move);
 int ov12_02253DA0(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 u32 BattleSystem_GetBattleSpecial(BattleSystem *bsys);
 u32 ov12_0223C24C(PARTY *party, u32 *a1);
-int ov12_0223AB0C(BattleSystem *bsys, int battlerId);
 int ov12_02251D28(BattleSystem *bsys, BATTLECONTEXT *ctx, int moveNo, int moveType, int battlerIdAttacker, int battlerIdTarget, int dmg, u32 *statusFlag);
 void ov12_02252D14(BattleSystem *bsys, BATTLECONTEXT *ctx);
 void ov12_0225859C(BATTLECONTEXT *ctx, u8 battlerId);
