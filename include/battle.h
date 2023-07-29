@@ -1,10 +1,14 @@
 #ifndef POKEHEARTGOLD_BATTLE_H
 #define POKEHEARTGOLD_BATTLE_H
 
+#include "bag.h"
+#include "bag_cursor.h"
 #include "bg_window.h"
 #include "item.h"
 #include "font.h"
 #include "move.h"
+#include "player_data.h"
+#include "pokedex.h"
 #include "pokemon_storage_system.h"
 #include "trainer_data.h"
 #include "filesystem.h"
@@ -509,19 +513,19 @@ struct BattleSystem {
     u32 *unkC;
     u32 *unk10;
     u32 *unk14;
-    u32 *unk18;
+    String *msgBuffer;
     u32 unk1C;
     u32 unk20;
     u32 unk24;
-    u32 unk28;
+    void *unk28;
     u32 battleType;
     BATTLECONTEXT *ctx;
     OpponentData *opponentData[4];
     int maxBattlers; 
-    u32 *unk48[4];
-    u32 *unk58;
-    u32 *unk5C;
-    u32 *unk60;
+    PlayerProfile *playerProfile[4];
+    Bag *bag;
+    BagCursor *bagCursor;
+    Pokedex *pokedex;
     PC_STORAGE *storage;
     PARTY *trainerParty[4];
     u32 *unk78[4];
@@ -552,8 +556,8 @@ struct BattleSystem {
     u32 *unk22C;
     u8 *unk230;
     u16 *unk234;
-    u8 unk238[0x1000];
-    u8 unk1238[0x1000];
+    u8 sendBuffer[0x1000];
+    u8 recvBuffer[0x1000];
     u16 unk2238[0x70];
     u16 unk2318[0x70];
     u16 unk23E8; //labeling may be wrong before here

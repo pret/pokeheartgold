@@ -128,9 +128,9 @@
 .public ov12_0223A8F4
 .public ov12_0223A930
 .public ov12_0223A938
-.public ov12_0223A93C
+.public BattleSystem_GetPokedex
 .public ov12_0223A9A4
-.public ov12_0223A9A8
+.public BattleSystem_GetMessageBuffer
 .public ov12_0223AAB8
 .public ov12_0223AAD8
 .public BattleSystem_GetFieldSide

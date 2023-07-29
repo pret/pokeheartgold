@@ -30,7 +30,7 @@
 .public BattleSystem_GetOpponentData
 .public BattleSystem_GetMaxBattlers
 .public BattleSystem_GetParty
-.public ov12_0223A9F4
+.public BattleSystem_GetTrainer
 .public BattleSystem_GetPlayerProfile
 .public BattleSystem_GetBag
 .public BattleSystem_GetBagCursor

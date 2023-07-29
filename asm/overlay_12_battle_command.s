@@ -2225,7 +2225,7 @@ _02246A72:
 	bl BattleSystem_GetPartyMon
 	str r0, [sp, #0xdc]
 	ldr r0, [r4]
-	bl ov12_0223A93C
+	bl BattleSystem_GetPokedex
 	bl Pokedex_IsNatDexEnabled
 	str r0, [sp, #0xe0]
 	bl sub_02021BD0
@@ -5167,7 +5167,7 @@ ov12_02248228: ; 0x02248228
 	bl ov12_0223A930
 	str r0, [sp, #0x28]
 	add r0, r7, #0
-	bl ov12_0223A9A8
+	bl BattleSystem_GetMessageBuffer
 	str r0, [sp, #0x20]
 	add r0, r7, #0
 	bl ov12_0223A9A4

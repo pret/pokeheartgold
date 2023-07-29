@@ -3504,7 +3504,7 @@ ov12_0225A2A0: ; 0x0225A2A0
 _0225A2DA:
 	ldrb r1, [r5, r1]
 	add r0, r6, #0
-	bl ov12_0223A9F4
+	bl BattleSystem_GetTrainer
 	add r2, r0, #0
 	mov r0, #0
 	strb r0, [r4, #0xb]

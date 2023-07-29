@@ -95,3 +95,101 @@ FontID *BattleSystem_GetHpFont(BattleSystem *bsys) {
 FontID *BattleSystem_GetLevelFont(BattleSystem *bsys) {
     return bsys->levelFont;
 }
+
+u32 *ov12_0223A930(BattleSystem *bsys) {
+    return bsys->unkC;
+}
+
+u32 *ov12_0223A934(BattleSystem *bsys) {
+    return bsys->unk10;
+}
+
+void *ov12_0223A938(BattleSystem *bsys) {
+    return bsys->unk28;
+}
+
+Pokedex *BattleSystem_GetPokedex(BattleSystem *bsys) {
+    return bsys->pokedex;
+}
+
+u8 *BattleSystem_GetSendBufferPtr(BattleSystem *bsys) {
+    return &bsys->sendBuffer[0];
+}
+
+u8 *BattleSystem_GetRecvBufferPtr(BattleSystem *bsys) {
+    return &bsys->recvBuffer[0];
+}
+
+u16 *ov12_0223A954(BattleSystem *bsys) {
+    return &bsys->unk23E8;
+}
+
+u16 *ov12_0223A960(BattleSystem *bsys) {
+    return &bsys->unk23EA;
+}
+
+u16 *ov12_0223A96C(BattleSystem *bsys) {
+    return &bsys->unk23EC;
+}
+
+u16 *ov12_0223A978(BattleSystem *bsys) {
+    return &bsys->unk23EE;
+}
+
+u16 *ov12_0223A984(BattleSystem *bsys) {
+    return &bsys->unk23F0;
+}
+
+u16 *ov12_0223A990(BattleSystem *bsys) {
+    return &bsys->unk23F2;
+}
+
+UnkBattleSystemSub1D0 *ov12_0223A99C(BattleSystem *bsys) {
+    return &bsys->unk1D0[0];
+}
+
+u32 *ov12_0223A9A4(BattleSystem *bsys) {
+    return bsys->unk14;
+}
+
+String *BattleSystem_GetMessageBuffer(BattleSystem *bsys) {
+    return bsys->msgBuffer;
+}
+
+u16 BattleSystem_GetTrainerIndex(BattleSystem *bsys, int battlerId) {
+    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_INGAME_PARTNER) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
+        return bsys->trainerId[battlerId];
+    } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
+        return bsys->trainerId[battlerId & 1];
+    } else {
+        return bsys->trainerId[battlerId];
+    }
+}
+
+TRAINER *BattleSystem_GetTrainer(BattleSystem *bsys, int battlerId) {
+    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_INGAME_PARTNER) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
+        return &bsys->trainers[battlerId];
+    } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
+        return &bsys->trainers[battlerId & 1];
+    } else {
+        return &bsys->trainers[battlerId];
+    }
+}
+
+PlayerProfile *BattleSystem_GetPlayerProfile(BattleSystem *bsys, int battlerId) {
+    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_INGAME_PARTNER) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
+        return bsys->playerProfile[battlerId];
+    } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
+        return bsys->playerProfile[battlerId & 1];
+    } else {
+        return bsys->playerProfile[battlerId];
+    }
+}
+
+Bag *BattleSystem_GetBag(BattleSystem *bsys) {
+    return bsys->bag;
+}
+
+BagCursor *BattleSystem_GetBagCursor(BattleSystem *bsys) {
+    return bsys->bagCursor;
+}

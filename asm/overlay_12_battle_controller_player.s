@@ -5842,7 +5842,7 @@ _0224DA80:
 _0224DA96:
 	ldr r0, [sp]
 	mov r1, #1
-	bl ov12_0223A9F4
+	bl BattleSystem_GetTrainer
 	ldrb r0, [r0, #1]
 	sub r0, #0x42
 	cmp r0, #0x2e

@@ -87,7 +87,7 @@
 .public ov12_0223A930
 .public ov12_0223A934
 .public ov12_0223A938
-.public ov12_0223A93C
+.public BattleSystem_GetPokedex
 .public BattleSystem_GetSendBufferPtr
 .public BattleSystem_GetRecvBufferPtr
 .public ov12_0223A954
@@ -98,9 +98,9 @@
 .public ov12_0223A990
 .public ov12_0223A99C
 .public ov12_0223A9A4
-.public ov12_0223A9A8
+.public BattleSystem_GetMessageBuffer
 .public BattleSystem_GetTrainerIndex
-.public ov12_0223A9F4
+.public BattleSystem_GetTrainer
 .public BattleSystem_GetPlayerProfile
 .public BattleSystem_GetBag
 .public BattleSystem_GetBagCursor

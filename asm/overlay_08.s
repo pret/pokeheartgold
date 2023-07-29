@@ -3461,7 +3461,7 @@ ov08_0221D91C: ; 0x0221D91C
 	add r1, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
-	bl ov12_0223A9F4
+	bl BattleSystem_GetTrainer
 	add r2, r0, #0
 	ldr r0, _0221DABC ; =0x00001FAC
 	mov r1, #0

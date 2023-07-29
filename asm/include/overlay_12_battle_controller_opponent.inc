@@ -168,7 +168,7 @@
 .public ov12_0223A938
 .public ov12_0223A99C
 .public BattleSystem_GetTrainerIndex
-.public ov12_0223A9F4
+.public BattleSystem_GetTrainer
 .public BattleSystem_GetPlayerProfile
 .public BattleSystem_GetBag
 .public ov12_0223AAC8
