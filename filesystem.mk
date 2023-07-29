@@ -481,7 +481,8 @@ $(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;
 include graphics_files_rules.mk
 
 NTR_FILE_EXT := bin NCGR NCLR NCER NSCR NSBMD NSBCA NSBTA
-
+$(NITROFS_FILES):
+$(NARC_DEPS):
 %.narc: NARC_DEPS = $(foreach ext,$(NTR_FILE_EXT),$(wildcard $*/*.$ext))
 %.narc: $(NARC_DEPS)
 	$(KNARC) -d $* -p $@ -i
