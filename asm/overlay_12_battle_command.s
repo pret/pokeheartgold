@@ -2014,7 +2014,7 @@ _022468A2:
 	ldr r1, [r4, #4]
 	bl ov12_022567D4
 	ldr r0, [r4]
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #1
 	bl sub_0201649C
 	mov r1, #0
@@ -2070,7 +2070,7 @@ _02246950:
 	tst r0, r1
 	ldr r0, [r4]
 	beq _022469B0
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #1
 	bl sub_0201649C
 	mov r1, #0
@@ -2096,7 +2096,7 @@ _02246950:
 	str r0, [r4, #0x40]
 	pop {r3, r4, r5, r6, r7, pc}
 _022469B0:
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #1
 	bl sub_0201649C
 	mov r1, #0
@@ -2172,7 +2172,7 @@ _02246A18:
 	add r3, r1, #0
 	bl sub_020090E4
 	ldr r0, [r4]
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #1
 	bl sub_0201649C
 	add sp, #0x158
@@ -2423,7 +2423,7 @@ _02246C84:
 	mov r0, #0x12
 	str r0, [r4, #0x28]
 	ldr r0, [r4]
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #0
 	bl sub_0201649C
 	add r0, r5, #0
@@ -2476,7 +2476,7 @@ _02246CEA:
 	pop {r3, r4, r5, r6, r7, pc}
 _02246D0A:
 	ldr r0, [r4]
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #1
 	bl sub_0201649C
 	mov r1, #0
@@ -2557,7 +2557,7 @@ _02246DB0:
 	bl GetMonData
 	str r0, [r5, #8]
 	ldr r0, [r4]
-	bl ov12_0223AB3C
+	bl BattleSystem_GetPcStorage
 	str r0, [r5, #0x48]
 	add r0, r6, #0
 	mov r1, #0x6f
@@ -2697,7 +2697,7 @@ _02246EEC:
 	cmp r0, #0x16
 	bne _02246F0C
 	ldr r0, [r4]
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #1
 	bl sub_0201649C
 _02246F0C:
@@ -2715,7 +2715,7 @@ _02246F14:
 	cmp r0, #0x16
 	bne _02246F56
 	ldr r0, [r4]
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #1
 	bl sub_0201649C
 	mov r1, #0
@@ -2741,7 +2741,7 @@ _02246F56:
 	pop {r3, r4, r5, r6, r7, pc}
 _02246F5E:
 	ldr r0, [r4]
-	bl ov12_0223AB3C
+	bl BattleSystem_GetPcStorage
 	str r0, [sp, #0x1c]
 	bl PCStorage_GetActiveBox
 	str r0, [sp, #0x18]
@@ -2847,7 +2847,7 @@ _0224702E:
 	str r0, [r4, #0x34]
 	bne _022470E6
 	ldr r0, [r4]
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #1
 	bl sub_0201649C
 	mov r1, #0

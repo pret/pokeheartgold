@@ -30,7 +30,7 @@ enum BattleSide {
     B_SIDE_18
 };
 
-enum Terrain {
+typedef enum Terrain {
     TERRAIN_PLAIN,
     TERRAIN_SAND,
     TERRAIN_GRASS,
@@ -44,8 +44,20 @@ enum Terrain {
     TERRAIN_MARSH,
     TERRAIN_BRIDGE,
     TERRAIN_LINK,
+    TERRAIN_END,
+    //Special terrains
+    TERRAIN_ELITE_4_WILL,
+    TERRAIN_ELITE_4_KOGA,
+    TERRAIN_ELITE_4_BRUNO,
+    TERRAIN_ELITE_4_KAREN,
+    TERRAIN_CHAMPION_LANCE,
+    TERRAIN_17,
+    TERRAIN_TOWER,
+    TERRAIN_ARCADE,
+    TERRAIN_CASTLE,
+    TERRAIN_22,
     TERRAIN_MAX
-};
+} Terrain;
 
 //Battle Type
 #define BATTLE_TYPE_TRAINER                 (1 << 0)

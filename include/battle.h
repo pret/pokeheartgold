@@ -543,7 +543,7 @@ struct BattleSystem {
     u32 *unk1A0[2];
     FontID *hpFont;
     FontID *levelFont;
-    void *unk1B0;
+    void *msgIcon;
     u32 *unk1B4;
     u32 *unk1B8;
     void *unk1BC;
@@ -572,7 +572,7 @@ struct BattleSystem {
     u8 unk23FD;
     u8 unk23FE;
     u8 unk240F_0:1, unk240F_1:1, unk240E_F:1, unk240F_3:2, unk240F_5:3;
-    int unk2400;
+    Terrain terrain;
     int unk2404;
     int unk2408;
     u32 unk240C;
@@ -599,7 +599,11 @@ struct BattleSystem {
     u16 unk2454[4];
     u16 unk245C[4];
     int unk2464[4];
-    u32 unk2474_0:1, unk2474_1:1, unk2474_2:30;
+    u32 unk2474_0:1, 
+        unk2474_1:1, 
+        unk2474_2:1, 
+        unk2474_3:1,
+        unk2474_4:28;
     u32 unk2478;
     u8 unk247C[4];
 };

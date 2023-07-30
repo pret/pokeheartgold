@@ -413,7 +413,7 @@ _02237BDE:
 	bl ov12_0223BFC0
 	add r1, r0, #0
 	add r0, r5, #0
-	bl ov12_0223AAC8
+	bl BattleSystem_GetTrainerGender
 	add r3, r0, #0
 	mov r0, #7
 	lsl r0, r0, #6
@@ -855,7 +855,7 @@ _02237FD8:
 	bl ov12_0223BFC0
 	add r1, r0, #0
 	add r0, r4, #0
-	bl ov12_0223AAC8
+	bl BattleSystem_GetTrainerGender
 	add r3, r0, #0
 	mov r0, #7
 	lsl r0, r0, #6

@@ -1,4 +1,5 @@
 #include "global.h"
+#include "battle_controller_opponent.h"
 #include "battle_system.h"
 #include "party.h"
 
@@ -192,4 +193,100 @@ Bag *BattleSystem_GetBag(BattleSystem *bsys) {
 
 BagCursor *BattleSystem_GetBagCursor(BattleSystem *bsys) {
     return bsys->bagCursor;
+}
+
+u16 BattleSystem_GetMonBall(BattleSystem *bsys, Pokemon *mon) {
+    if (bsys->unk2474_2) {
+        return GetMonData(mon, MON_DATA_DP_POKEBALL, NULL);
+    } else {
+        return GetMonData(mon, MON_DATA_POKEBALL, NULL);
+    }
+}
+
+u32 ov12_0223AAB8(BattleSystem *bsys) {
+    return bsys->unk2474_3;
+}
+
+u32 BattleSystem_GetTrainerGender(BattleSystem *bsys, int battlerId) {
+    return PlayerProfile_GetTrainerGender(bsys->playerProfile[battlerId]);
+}
+
+int ov12_0223AAD8(BattleSystem *bsys, int a1) {
+    int battlerId;
+    for (battlerId = 0; battlerId < bsys->maxBattlers; battlerId++) {
+        if (ov12_02261258(bsys->opponentData[battlerId]) == a1) {
+            break;
+        }
+    }
+    
+    GF_ASSERT(battlerId < bsys->maxBattlers);
+    
+    return battlerId;
+}
+
+u8 ov12_0223AB0C(BattleSystem *bsys, int battlerId) {
+    return ov12_02261258(bsys->opponentData[battlerId]);
+}
+
+u8 BattleSystem_GetFieldSide(BattleSystem *bsys, int battlerId) {
+    return ov12_02261258(bsys->opponentData[battlerId]) & 1;
+}
+
+void *BattleSystem_GetMessageIcon(BattleSystem *bsys) {
+    return bsys->msgIcon;
+}
+
+PC_STORAGE *BattleSystem_GetPcStorage(BattleSystem *bsys) {
+    return bsys->storage;
+}
+
+Terrain BattleSystem_GetTerrainId(BattleSystem *bsys) {
+    if (bsys->terrain > TERRAIN_MAX || bsys->terrain < 0) {
+        return TERRAIN_MAX;
+    }
+    return bsys->terrain;
+}
+
+int ov12_0223AB54(BattleSystem *bsys) {
+    return bsys->unk2404;
+}
+
+int ov12_0223AB60(BattleSystem *bsys) {
+    return bsys->unk2408;
+}
+
+int BattleSystem_GetBattlerIdPartner(BattleSystem *bsys, int battlerId) {
+    int battlerIdPartner;
+    int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+    u32 battleType = BattleSystem_GetBattleType(bsys);
+    
+    if (!(battleType & BATTLE_TYPE_DOUBLES)) {
+        return battlerId;
+    }
+    
+    for (battlerIdPartner = 0; battlerIdPartner < maxBattlers; battlerIdPartner++) {
+        if (battlerIdPartner != battlerId && BattleSystem_GetFieldSide(bsys, battlerIdPartner) == BattleSystem_GetFieldSide(bsys, battlerId)) {
+            break;
+        }
+    }
+    
+    return battlerIdPartner;
+}
+
+int ov12_0223ABB8(BattleSystem *bsys, int battlerId, int side) {
+    int battlerIdOpponent;
+    int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+    u32 battleType = BattleSystem_GetBattleType(bsys);
+    
+    if (!(battleType & BATTLE_TYPE_DOUBLES)) {
+        return battlerId ^ 1;
+    }
+    
+    for (battlerIdOpponent = 0; battlerIdOpponent < maxBattlers; battlerIdOpponent++) {
+        if (battlerIdOpponent != battlerId && (ov12_0223AB0C(bsys, battlerIdOpponent) & 2) == side && BattleSystem_GetFieldSide(bsys, battlerIdOpponent) != BattleSystem_GetFieldSide(bsys, battlerId)) {
+            break;
+        }
+    }
+    
+    return battlerIdOpponent;
 }

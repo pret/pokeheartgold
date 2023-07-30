@@ -134,8 +134,8 @@
 .public ov12_0223AAB8
 .public ov12_0223AAD8
 .public BattleSystem_GetFieldSide
-.public ov12_0223AB34
-.public ov12_0223AB3C
+.public BattleSystem_GetMessageIcon
+.public BattleSystem_GetPcStorage
 .public BattleSystem_GetTerrainId
 .public ov12_0223AB60
 .public ov12_0223B520

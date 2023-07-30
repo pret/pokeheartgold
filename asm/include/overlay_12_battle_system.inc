@@ -106,12 +106,12 @@
 .public BattleSystem_GetBagCursor
 .public BattleSystem_GetMonBall
 .public ov12_0223AAB8
-.public ov12_0223AAC8
+.public BattleSystem_GetTrainerGender
 .public ov12_0223AAD8
 .public ov12_0223AB0C
 .public BattleSystem_GetFieldSide
-.public ov12_0223AB34
-.public ov12_0223AB3C
+.public BattleSystem_GetMessageIcon
+.public BattleSystem_GetPcStorage
 .public BattleSystem_GetTerrainId
 .public ov12_0223AB54
 .public ov12_0223AB60

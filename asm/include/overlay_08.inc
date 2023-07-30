@@ -175,7 +175,7 @@
 .public BattleSystem_GetBag
 .public BattleSystem_GetBagCursor
 .public ov12_0223AB0C
-.public ov12_0223AB3C
+.public BattleSystem_GetPcStorage
 .public BattleSystem_GetBattlerIdPartner
 .public BattleSystem_RecoverStatus
 .public ov12_0223B708

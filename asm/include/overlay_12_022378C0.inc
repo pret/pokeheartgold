@@ -206,7 +206,7 @@
 .public BattleSystem_GetPlayerProfile
 .public BattleSystem_GetBagCursor
 .public BattleSystem_GetMonBall
-.public ov12_0223AAC8
+.public BattleSystem_GetTrainerGender
 .public BattleSystem_GetFieldSide
 .public BattleSystem_GetTerrainId
 .public BattleSystem_GetBattlerIdPartner

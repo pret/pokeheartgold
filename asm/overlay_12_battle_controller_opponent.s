@@ -10630,7 +10630,7 @@ _0225DBCC:
 	add r0, sp, #0x10
 	strb r1, [r0, #0xd]
 	ldr r0, [r4]
-	bl ov12_0223AAC8
+	bl BattleSystem_GetTrainerGender
 	ldr r1, _0225DEDC ; =0x000004CA
 	add r1, r0, r1
 	add r0, sp, #0x10
@@ -12191,7 +12191,7 @@ _0225E896:
 	bl ov12_0226A8E4
 	strb r0, [r4, #0x10]
 	ldr r0, [r4]
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #1
 	bl sub_0201649C
 	mov r1, #0
@@ -12585,7 +12585,7 @@ _0225EBC6:
 	b _0225F376
 _0225EBC8:
 	ldr r0, [r4]
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #0
 	bl sub_0201649C
 	ldr r0, [r4, #4]
@@ -13747,7 +13747,7 @@ _0225F50A:
 	bl ov12_0226A8E4
 	strb r0, [r4, #0x17]
 	ldr r0, [r4]
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #1
 	bl sub_0201649C
 	mov r1, #0
@@ -14127,7 +14127,7 @@ _0225F846:
 	cmp r0, #0
 	bne _0225F8A6
 	ldr r0, [r4]
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #0
 	bl sub_0201649C
 	ldr r3, [r4, #4]
@@ -15554,7 +15554,7 @@ ov12_0226037C: ; 0x0226037C
 	pop {r4, r5, r6, r7, pc}
 _022603A6:
 	ldr r0, [r5]
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #1
 	bl sub_0201649C
 	mov r1, #0
@@ -16193,7 +16193,7 @@ _022608BC:
 	pop {r3, r4, r5, r6, r7, pc}
 _022608CC:
 	ldr r0, [r4]
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #0
 	bl sub_0201649C
 	add r0, r4, #0
@@ -16809,7 +16809,7 @@ _02260DAE:
 	cmp r0, #0
 	bne _02260DD2
 	ldr r0, [r5]
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #1
 	bl sub_0201649C
 	ldr r0, _02260EA0 ; =0x0000FFFF

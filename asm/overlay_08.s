@@ -13614,7 +13614,7 @@ _02222D26:
 	bl BattleSystem_GetParty
 	add r6, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223AB3C
+	bl BattleSystem_GetPcStorage
 	add r4, r0, #0
 	add r0, r6, #0
 	bl GetPartyCount
