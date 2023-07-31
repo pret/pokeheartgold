@@ -114,7 +114,7 @@
 .public BattleSystem_GetPcStorage
 .public BattleSystem_GetTerrainId
 .public ov12_0223AB54
-.public ov12_0223AB60
+.public BattleSystem_GetLocation
 .public BattleSystem_GetBattlerIdPartner
 .public ov12_0223ABB8
 .public BattleSystem_RecoverStatus
@@ -206,7 +206,7 @@
 .public ov12_0223C4E8
 .public GetBattlerVar
 .public SetBattlerVar
-.public ov12_0224F794
+.public AddBattlerVar
 .public ov12_022581D4
 .public ov12_022582B8
 .public ov12_02261258

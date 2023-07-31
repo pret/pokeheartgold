@@ -515,7 +515,7 @@ _02245C88:
 	cmp r1, #6
 	blt _02245C88
 	ldr r0, [r4]
-	bl ov12_0223AB60
+	bl BattleSystem_GetLocation
 	add r2, r0, #0
 	lsl r2, r2, #0x10
 	add r0, r6, #0
@@ -5570,7 +5570,7 @@ _022485B4:
 	cmp r0, #0x1e
 	blt _02248602
 	add r0, r5, #0
-	bl ov12_0223AB60
+	bl BattleSystem_GetLocation
 	add r2, r0, #0
 	lsl r2, r2, #0x10
 	add r0, r7, #0
@@ -5583,7 +5583,7 @@ _022485B4:
 	pop {r3, r4, r5, r6, r7, pc}
 _02248602:
 	add r0, r5, #0
-	bl ov12_0223AB60
+	bl BattleSystem_GetLocation
 	add r2, r0, #0
 	lsl r2, r2, #0x10
 	add r0, r7, #0
@@ -5596,7 +5596,7 @@ _02248602:
 	pop {r3, r4, r5, r6, r7, pc}
 _02248620:
 	add r0, r5, #0
-	bl ov12_0223AB60
+	bl BattleSystem_GetLocation
 	add r2, r0, #0
 	lsl r2, r2, #0x10
 	add r0, r7, #0

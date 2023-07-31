@@ -2,6 +2,8 @@
 #include "battle_controller_opponent.h"
 #include "battle_system.h"
 #include "party.h"
+#include "pokemon_mood.h"
+#include "overlay_12_0224E4FC.h"
 
 BgConfig *BattleSystem_GetBgConfig(BattleSystem *bsys) {
     return bsys->bgConfig;
@@ -251,8 +253,8 @@ int ov12_0223AB54(BattleSystem *bsys) {
     return bsys->unk2404;
 }
 
-int ov12_0223AB60(BattleSystem *bsys) {
-    return bsys->unk2408;
+int BattleSystem_GetLocation(BattleSystem *bsys) {
+    return bsys->location;
 }
 
 int BattleSystem_GetBattlerIdPartner(BattleSystem *bsys, int battlerId) {
@@ -289,4 +291,309 @@ int ov12_0223ABB8(BattleSystem *bsys, int battlerId, int side) {
     }
     
     return battlerIdOpponent;
+}
+
+BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedMonIndex, int movePos, int item) {
+    BATTLECONTEXT *ctx = bsys->ctx;
+    Pokemon *mon;
+    BOOL ret = FALSE;
+    int data;
+    int index1 = ov12_022581D4(bsys, ctx, 2, battlerId);
+    int index2;
+    int friendship;
+    
+    if (BattleSystem_GetBattleType(bsys) == (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TRAINER) || ((BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_INGAME_PARTNER) && !(ov12_0223AB0C(bsys, battlerId) & 1))) {
+        index2 = ov12_022581D4(bsys, ctx, 2, BattleSystem_GetBattlerIdPartner(bsys, battlerId));
+        if (index2 == selectedMonIndex) {
+            battlerId = BattleSystem_GetBattlerIdPartner(bsys, battlerId);
+        }
+    } else {
+        index2 = index1;
+    }
+    mon = BattleSystem_GetPartyMon(bsys, battlerId, selectedMonIndex);
+    friendship = 0;
+    
+    if (GetItemAttr(item, ITEMATTR_SLP_HEAL, HEAP_ID_BATTLE)) {
+        data = GetMonData(mon, MON_DATA_STATUS, NULL);
+        if (data & STATUS_SLEEP) {
+            data &= ~STATUS_SLEEP;
+            SetMonData(mon, MON_DATA_STATUS, &data);
+            if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
+                data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, NULL);
+                data &= ~STATUS_SLEEP;
+                SetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, &data);
+                data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL);
+                data &= ~STATUS2_NIGHTMARE;
+                SetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, &data);
+            }
+            ret = TRUE;
+        }
+    }
+
+    if (GetItemAttr(item, ITEMATTR_PSN_HEAL, HEAP_ID_BATTLE)) {
+        data = GetMonData(mon, MON_DATA_STATUS, NULL);
+        if (data & STATUS_POISON_ALL) {
+            data &= ~STATUS_POISON_ALL;
+            SetMonData(mon, MON_DATA_STATUS, &data);
+            if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
+                data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, NULL);
+                data &= ~STATUS_POISON_ALL;
+                SetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, &data);
+            }
+            ret = TRUE;
+        }
+    }
+
+    if (GetItemAttr(item, ITEMATTR_BRN_HEAL, HEAP_ID_BATTLE)) {
+        data = GetMonData(mon, MON_DATA_STATUS, NULL);
+        if (data & STATUS_BURN) {
+            data &= ~STATUS_BURN;
+            SetMonData(mon, MON_DATA_STATUS, &data);
+            if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
+                data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, NULL);
+                data &= ~STATUS_BURN;
+                SetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, &data);
+            }
+            ret = TRUE;
+        }
+    }
+
+    if (GetItemAttr(item, ITEMATTR_FRZ_HEAL, HEAP_ID_BATTLE)) {
+        data = GetMonData(mon, MON_DATA_STATUS, NULL);
+        if (data & STATUS_FREEZE) {
+            data &= ~STATUS_FREEZE;
+            SetMonData(mon, MON_DATA_STATUS, &data);
+            if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
+                data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, NULL);
+                data &= ~STATUS_FREEZE;
+                SetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, &data);
+            }
+            ret = TRUE;
+        }
+    }
+
+    if (GetItemAttr(item, ITEMATTR_PRZ_HEAL, HEAP_ID_BATTLE)) {
+        data = GetMonData(mon, MON_DATA_STATUS, NULL);
+        if (data & STATUS_PARALYSIS) {
+            data &= ~STATUS_PARALYSIS;
+            SetMonData(mon, MON_DATA_STATUS, &data);
+            if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
+                data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, NULL);
+                data &= ~STATUS_PARALYSIS;
+                SetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, &data);
+            }
+            ret = TRUE;
+        }
+    }
+
+    if (GetItemAttr(item, ITEMATTR_CFS_HEAL, HEAP_ID_BATTLE)) {
+        if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
+            data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL);
+            if (data & STATUS2_CONFUSION) {
+                data &= ~STATUS2_CONFUSION;
+                SetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, &data);
+                ret = TRUE;
+            }
+        }
+    }
+
+    if (GetItemAttr(item, ITEMATTR_INF_HEAL, HEAP_ID_BATTLE)) {
+        if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
+            data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL);
+            if (data & STATUS2_ATTRACT_ALL) {
+                data &= ~STATUS2_ATTRACT_ALL;
+                SetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, &data);
+                ret = TRUE;
+            }
+        }
+    }
+
+    if (GetItemAttr(item, ITEMATTR_GUARD_SPEC, HEAP_ID_BATTLE)) {
+        data = ov12_022581D4(bsys, ctx, 1, battlerId);
+        if (!data) {
+            data = ov12_022581D4(bsys, ctx, 0, battlerId);
+            data |= SIDE_CONDITION_MIST;
+            ov12_022582B8(bsys, ctx, 0, battlerId, data);
+            ov12_022582B8(bsys, ctx, 1, battlerId, 5);
+            ret = TRUE;
+        }
+    }
+
+    if (GetItemAttr(item, ITEMATTR_ATK_STAGES, HEAP_ID_BATTLE)) {
+        if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
+            if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_ATK, NULL) < 12) {
+                AddBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_ATK, 1);
+                ret = TRUE;
+            }
+        }
+    }
+  
+    if (GetItemAttr(item, ITEMATTR_DEF_STAGES, HEAP_ID_BATTLE)) {
+        if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
+            if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_DEF, NULL) < 12) {
+                AddBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_DEF, 1);
+                ret = TRUE;
+            }
+        }
+    }  
+    
+    if (GetItemAttr(item, ITEMATTR_SPATK_STAGES, HEAP_ID_BATTLE)) {
+        if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
+            if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPATK, NULL) < 12) {
+                AddBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPATK, 1);
+                ret = TRUE;
+            }
+        }
+    }
+    
+    if (GetItemAttr(item, ITEMATTR_SPDEF_STAGES, HEAP_ID_BATTLE)) {
+        if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
+            if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPDEF, NULL) < 12) {
+                AddBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPDEF, 1);
+                ret = TRUE;
+            }
+        }
+    }
+
+    if (GetItemAttr(item, ITEMATTR_SPEED_STAGES, HEAP_ID_BATTLE)) {
+        if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
+            if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPEED, NULL) < 12) {
+                AddBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPEED, 1);
+                ret = TRUE;
+            }
+        }
+    }
+    
+    if (GetItemAttr(item, ITEMATTR_ACCURACY_STAGES, HEAP_ID_BATTLE)) {
+        if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
+            if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_ACC, NULL) < 12) {
+                AddBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_ACC, 1);
+                ret = TRUE;
+            }
+        }
+    }
+    
+    if (GetItemAttr(item, ITEMATTR_CRITRATE_STAGES, HEAP_ID_BATTLE)) {
+        if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
+            data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL);
+            if (!(data & STATUS2_FOCUS_ENERGY)) {
+                data |= STATUS2_FOCUS_ENERGY;
+                SetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, &data);
+                ret = TRUE;
+            }
+        }
+    }
+    
+    if (GetItemAttr(item, ITEMATTR_PP_RESTORE, HEAP_ID_BATTLE)) {
+        data = GetItemAttr(item, ITEMATTR_PP_RESTORE_PARAM, HEAP_ID_BATTLE);
+        if (GetMonData(mon, MON_DATA_MOVE1PP + movePos, NULL) != GetMonData(mon, MON_DATA_MOVE1MAXPP + movePos, NULL)) {
+            AddMonData(mon, MON_DATA_MOVE1PP + movePos, data);
+            if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
+                if (!(GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL) & STATUS2_TRANSFORMED) && !(GetBattlerVar(ctx, battlerId, BMON_DATA_MIMICED_MOVE, NULL) & MaskOfFlagNo(movePos))) {
+                    AddBattlerVar(ctx, battlerId, BMON_DATA_MOVE1PP + movePos, data);
+                }
+            }
+            ret = TRUE;
+        }
+    }
+
+    if (GetItemAttr(item, ITEMATTR_PP_RESTORE_ALL, HEAP_ID_BATTLE)) {
+        data = GetItemAttr(item, ITEMATTR_PP_RESTORE_PARAM, HEAP_ID_BATTLE);
+        for (movePos = 0; movePos < MAX_MON_MOVES; movePos++) {
+            if (GetMonData(mon, MON_DATA_MOVE1PP + movePos, NULL) != GetMonData(mon, MON_DATA_MOVE1MAXPP + movePos, NULL)) {
+                AddMonData(mon, MON_DATA_MOVE1PP + movePos, data);
+                if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
+                    if (!(GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL) & STATUS2_TRANSFORMED) && !(GetBattlerVar(ctx, battlerId, BMON_DATA_MIMICED_MOVE, NULL) & MaskOfFlagNo(movePos))) {
+                        AddBattlerVar(ctx, battlerId, BMON_DATA_MOVE1PP + movePos, data);
+                    }
+                }
+                ret = TRUE;
+            }
+        }
+    }
+    
+    if (GetItemAttr(item, ITEMATTR_HP_RESTORE, HEAP_ID_BATTLE)) {
+        data = 0;
+        if (GetItemAttr(item, ITEMATTR_REVIVE, HEAP_ID_BATTLE)) {
+            if (GetMonData(mon, MON_DATA_HP, NULL) == 0) {
+                data = 1;
+            }
+        } else {
+            data = GetMonData(mon, MON_DATA_HP, NULL);
+        }
+        if (data && GetMonData(mon, MON_DATA_HP, NULL) != GetMonData(mon, MON_DATA_MAXHP, NULL)) {
+            data = GetItemAttr(item, ITEMATTR_HP_RESTORE_PARAM, HEAP_ID_BATTLE);
+            switch (data) {
+            case HP_RESTORE_ALL:
+                data = GetMonData(mon, MON_DATA_MAXHP, NULL);
+                break;
+            case HP_RESTORE_HALF:
+                data = GetMonData(mon, MON_DATA_MAXHP, NULL) / 2;
+                if (data == 0) {
+                    data = 1;
+                }
+                break;
+            case HP_RESTORE_QTR:
+                data = GetMonData(mon, MON_DATA_MAXHP, NULL) *25 / 100;
+                if (data == 0) {
+                    data = 1;
+                }
+                break;
+            default:
+                break;
+            }
+            AddMonData(mon, MON_DATA_HP, data);
+            if (!GetItemAttr(item, ITEMATTR_REVIVE, HEAP_ID_BATTLE)) {
+                if (BattleSystem_GetFieldSide(bsys, battlerId)) {
+                    SetBattlerVar(ctx, battlerId, BMON_DATA_HELD_ITEM_RESTORE_HP, &data);
+                } else if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
+                    AddBattlerVar(ctx, battlerId, BMON_DATA_HP, data);
+                }
+            }
+            ret = TRUE;
+        }
+    }
+    
+    if (GetItemAttr(item, ITEMATTR_FRIENDSHIP_MOD_LO, HEAP_ID_BATTLE)) {
+        if (GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) < 100 && ret == TRUE) {
+            friendship = GetItemAttr(item, ITEMATTR_FRIENDSHIP_MOD_LO_PARAM, HEAP_ID_BATTLE);
+        }
+    }
+
+    if (GetItemAttr(item, ITEMATTR_FRIENDSHIP_MOD_MED, HEAP_ID_BATTLE)) {
+        if (GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) >= 100 && GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) < 200 && ret == TRUE) {
+            friendship = GetItemAttr(item, ITEMATTR_FRIENDSHIP_MOD_MED_PARAM, HEAP_ID_BATTLE);
+        }
+    }
+
+    if (GetItemAttr(item, ITEMATTR_FRIENDSHIP_MOD_HI, HEAP_ID_BATTLE)) {
+        if (GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) >= 200 && ret == TRUE) {
+            friendship = GetItemAttr(item, ITEMATTR_FRIENDSHIP_MOD_HI_PARAM, HEAP_ID_BATTLE);
+        }
+    }
+    
+    if (friendship) {
+        if (friendship > 0) {
+            if (BallToItemId(BattleSystem_GetMonBall(bsys, mon)) == ITEM_LUXURY_BALL) {
+                friendship++;
+            }
+            if (GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == BattleSystem_GetLocation(bsys)) {
+                friendship++;
+            }
+            data = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+            if (GetItemAttr(data, ITEMATTR_HOLD_EFFECT, HEAP_ID_BATTLE) == HOLD_EFFECT_FRIENDSHIP_UP) {
+                friendship = friendship * 150 / 100;
+            }
+        }
+        AddMonData(mon, MON_DATA_FRIENDSHIP, friendship);
+        if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
+            AddBattlerVar(ctx, battlerId, BMON_DATA_FRIENDSHIP, friendship);
+        }
+    }
+
+    if (ret == TRUE) {
+        ApplyItemEffectOnMonMood(mon, item);
+    }
+    
+    return ret;
 }

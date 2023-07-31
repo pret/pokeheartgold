@@ -137,7 +137,7 @@
 .public BattleSystem_GetMessageIcon
 .public BattleSystem_GetPcStorage
 .public BattleSystem_GetTerrainId
-.public ov12_0223AB60
+.public BattleSystem_GetLocation
 .public ov12_0223B520
 .public ov12_0223B6CC
 .public ov12_0223B718

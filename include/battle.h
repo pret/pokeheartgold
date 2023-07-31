@@ -574,7 +574,7 @@ struct BattleSystem {
     u8 unk240F_0:1, unk240F_1:1, unk240E_F:1, unk240F_3:2, unk240F_5:3;
     Terrain terrain;
     int unk2404;
-    int unk2408;
+    int location;
     u32 unk240C;
     int unk2410;
     int safariBallCnt;

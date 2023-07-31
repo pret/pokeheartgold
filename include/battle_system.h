@@ -55,13 +55,13 @@ void *BattleSystem_GetMessageIcon(BattleSystem *bsys);
 PC_STORAGE *BattleSystem_GetPcStorage(BattleSystem *bsys);
 Terrain BattleSystem_GetTerrainId(BattleSystem *bsys);
 int ov12_0223AB54(BattleSystem *bsys);
-int ov12_0223AB60(BattleSystem *bsys);
+int BattleSystem_GetLocation(BattleSystem *bsys);
 int BattleSystem_GetBattlerIdPartner(BattleSystem *bsys, int battlerId);
 int ov12_0223ABB8(BattleSystem *bsys, int battlerId, int side);
+BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedMonIndex, int movePos, int item);
 
 //These functions haven't been decompiled
 int BattleSystem_Random(BattleSystem *bsys);
-void BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerIdA, int battlerIdB, int a2, int itemWork);
 void ov12_0223BDDC(BattleSystem *bsys, int battlerId, u8 a2);
 void PokedexSetBattlerSeen(BattleSystem *bsys, int battlerId);
 SOUND_CHATOT *BattleSystem_GetChatotVoice(BattleSystem *bsys, int battlerId);

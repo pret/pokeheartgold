@@ -780,11 +780,11 @@ void SetBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 id, void *data) {
     }
 }
 
-void ov12_0224F794(BATTLECONTEXT *ctx, int battlerId, u32 varId, int data) {
-    AddBattlerVar(&ctx->battleMons[battlerId], varId, data);
+void AddBattlerVar(BATTLECONTEXT *ctx, int battlerId, u32 varId, int data) {
+    BattleMon_AddVar(&ctx->battleMons[battlerId], varId, data);
 }
 
-void AddBattlerVar(BattleMon *mon, u32 varId, int data) {
+void BattleMon_AddVar(BattleMon *mon, u32 varId, int data) {
     switch (varId) {
     case BMON_DATA_ATK:
         mon->atk += data;
@@ -4461,7 +4461,7 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
                 }
             }
             if (index != MAX_MON_MOVES) {
-                AddBattlerVar(&ctx->battleMons[battlerId], BMON_DATA_MOVE1PP + index, boost);
+                BattleMon_AddVar(&ctx->battleMons[battlerId], BMON_DATA_MOVE1PP + index, boost);
                 CopyBattleMonToPartyMon(bsys, ctx, battlerId);
                 ctx->moveTemp = ctx->battleMons[battlerId].moves[index];
                 script = 204;
@@ -4788,7 +4788,7 @@ BOOL CheckUseHeldItem(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId, u32
                 }
             }
             if (index != MAX_MON_MOVES) {
-                AddBattlerVar(&ctx->battleMons[battlerId], BMON_DATA_MOVE1PP + index, boost);
+                BattleMon_AddVar(&ctx->battleMons[battlerId], BMON_DATA_MOVE1PP + index, boost);
                 CopyBattleMonToPartyMon(bsys, ctx, battlerId);
                 ctx->moveTemp = ctx->battleMons[battlerId].moves[index];
                 *script = 204;
@@ -5280,7 +5280,7 @@ BOOL TryEatOpponentBerry(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) 
             }
         }
 
-        AddBattlerVar(&ctx->battleMons[ctx->battlerIdAttacker], BMON_DATA_MOVE1PP + maxIndex, mod);
+        BattleMon_AddVar(&ctx->battleMons[ctx->battlerIdAttacker], BMON_DATA_MOVE1PP + maxIndex, mod);
         CopyBattleMonToPartyMon(bsys, ctx, ctx->battlerIdAttacker);
         ctx->moveTemp = ctx->battleMons[ctx->battlerIdAttacker].moves[maxIndex];
         script = 204;
@@ -5520,7 +5520,7 @@ BOOL TryFling(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
             }
         }
         if (max) {
-            AddBattlerVar(&ctx->battleMons[ctx->battlerIdTarget], BMON_DATA_MOVE1PP + maxIndex, mod);
+            BattleMon_AddVar(&ctx->battleMons[ctx->battlerIdTarget], BMON_DATA_MOVE1PP + maxIndex, mod);
             CopyBattleMonToPartyMon(bsys, ctx, ctx->battlerIdTarget);
             ctx->moveTemp = ctx->battleMons[ctx->battlerIdTarget].moves[maxIndex];
             ctx->flingScript = 204;
@@ -5792,7 +5792,7 @@ BOOL Battler_CanSelectAction(BATTLECONTEXT *ctx, int battlerId) {
 
 void ov12_022567D4(BattleSystem *bsys, BATTLECONTEXT *ctx, Pokemon *mon) {
     PlayerProfile *profile = BattleSystem_GetPlayerProfile(bsys, BATTLER_PLAYER);
-    int a3 = ov12_0223AB60(bsys);
+    int location = BattleSystem_GetLocation(bsys);
     int terrain = BattleSystem_GetTerrainId(bsys);
     int ballId;
     
@@ -5802,7 +5802,7 @@ void ov12_022567D4(BattleSystem *bsys, BATTLECONTEXT *ctx, Pokemon *mon) {
         ballId = ctx->itemTemp;
     }
     
-    sub_020720FC(mon, profile, ballId, a3, terrain, HEAP_ID_BATTLE);
+    sub_020720FC(mon, profile, ballId, location, terrain, HEAP_ID_BATTLE);
 }
 
 u8 ov12_0225682C(BATTLECONTEXT *ctx, int battlerId) {
