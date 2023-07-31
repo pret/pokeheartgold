@@ -575,8 +575,8 @@ struct BattleSystem {
     Terrain terrain;
     int unk2404;
     int location;
-    u32 unk240C;
-    int unk2410;
+    u32 battleSpecial;
+    int timezone;
     int safariBallCnt;
     u8 unk2418[4];
     u32 unk241C;

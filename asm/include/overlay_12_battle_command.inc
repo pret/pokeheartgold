@@ -138,7 +138,7 @@
 .public BattleSystem_GetPcStorage
 .public BattleSystem_GetTerrainId
 .public BattleSystem_GetLocation
-.public ov12_0223B520
+.public BattleSystem_GetTimezone
 .public ov12_0223B6CC
 .public ov12_0223B718
 .public ov12_0223B870

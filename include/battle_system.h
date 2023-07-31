@@ -59,6 +59,9 @@ int BattleSystem_GetLocation(BattleSystem *bsys);
 int BattleSystem_GetBattlerIdPartner(BattleSystem *bsys, int battlerId);
 int ov12_0223ABB8(BattleSystem *bsys, int battlerId, int side);
 BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedMonIndex, int movePos, int item);
+u32 BattleSystem_GetBattleSpecial(BattleSystem *bsys);
+int BattleSystem_GetTimezone(BattleSystem *bsys);
+int ov12_0223B52C(BattleSystem *bsys);
 
 //These functions haven't been decompiled
 int BattleSystem_Random(BattleSystem *bsys);

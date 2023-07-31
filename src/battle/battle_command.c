@@ -977,7 +977,7 @@ BOOL BtlCmd_Wait(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         }
     }
 
-    if (bsys->battleType & BATTLE_TYPE_LINK && !(bsys->unk240C & 16)) {
+    if (bsys->battleType & BATTLE_TYPE_LINK && !(bsys->battleSpecial & BATTLE_SPECIAL_RECORDED)) {
         waitIncrement = 2;
     } else {
         waitIncrement = 1;
@@ -5799,7 +5799,7 @@ BOOL BtlCmd_WaitWithoutInterrupt(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
     int wait = BattleScriptReadWord(ctx);
 
-    if ((bsys->battleType & BATTLE_TYPE_LINK) && !(bsys->unk240C & BATTLE_TYPE_INGAME_PARTNER)) {
+    if ((bsys->battleType & BATTLE_TYPE_LINK) && !(bsys->battleSpecial & BATTLE_SPECIAL_RECORDED)) {
         tSpeed = 2;
     } else {
         tSpeed = 1;
@@ -6015,7 +6015,7 @@ static void *BattleScriptGetVarPointer(BattleSystem *bsys, BATTLECONTEXT *ctx, i
     case BSCRIPT_VAR_FLING_SCRIPT:
         return &ctx->flingScript;
     case BSCRIPT_VAR_52:
-        return &bsys->unk240C;
+        return &bsys->battleSpecial;
     case BSCRIPT_VAR_MOVE_LOCKED_INTO_ATTACKER:
         return &ctx->moveNoLockedInto[ctx->battlerIdAttacker];
     case BSCRIPT_VAR_HIT_DAMAGE:

@@ -3304,11 +3304,11 @@ _022473C8:
 	b _02247512
 _022473DC:
 	add r0, r7, #0
-	bl ov12_0223B520
+	bl BattleSystem_GetTimezone
 	cmp r0, #3
 	beq _022473FC
 	add r0, r7, #0
-	bl ov12_0223B520
+	bl BattleSystem_GetTimezone
 	cmp r0, #4
 	beq _022473FC
 	add r0, r7, #0

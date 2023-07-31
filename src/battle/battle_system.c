@@ -597,3 +597,43 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
     
     return ret;
 }
+
+u32 BattleSystem_GetBattleSpecial(BattleSystem *bsys) {
+    return bsys->battleSpecial;
+}
+
+int BattleSystem_GetTimezone(BattleSystem *bsys) {
+    return bsys->timezone;
+}
+
+int ov12_0223B52C(BattleSystem *bsys) {
+    int ret;
+    
+    switch (bsys->unk2404) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+        switch (bsys->timezone) {
+        case 0:
+        case 1:
+            ret = 0;
+            break;
+        case 2:
+            ret = 1;
+            break;
+        case 3:
+        case 4:
+            ret = 2;
+            break;
+        }
+        break;
+    default:
+        ret = 0;
+        break;
+    }
+    
+    return ret;
+}

@@ -119,7 +119,7 @@
 .public ov12_0223ABB8
 .public BattleSystem_RecoverStatus
 .public BattleSystem_GetBattleSpecial
-.public ov12_0223B520
+.public BattleSystem_GetTimezone
 .public ov12_0223B52C
 .public ov12_0223B580
 .public ov12_0223B5EC
