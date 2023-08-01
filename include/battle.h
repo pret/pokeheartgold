@@ -7,6 +7,7 @@
 #include "item.h"
 #include "font.h"
 #include "move.h"
+#include "options.h"
 #include "player_data.h"
 #include "pokedex.h"
 #include "pokemon_storage_system.h"
@@ -544,7 +545,7 @@ struct BattleSystem {
     FontID *hpFont;
     FontID *levelFont;
     void *msgIcon;
-    u32 *unk1B4;
+    OPTIONS *options;
     u32 *unk1B8;
     void *unk1BC;
     u32 *unk1C0;
@@ -576,7 +577,7 @@ struct BattleSystem {
     int unk2404;
     int location;
     u32 battleSpecial;
-    int timezone;
+    int timezone; //might be timeOfDay? unclear
     int safariBallCnt;
     u8 unk2418[4];
     u32 unk241C;

@@ -1383,7 +1383,7 @@ _02262AE2:
 	orr r0, r1
 	strb r0, [r3, #7]
 	ldr r0, [sp, #4]
-	bl ov12_0223B6B4
+	bl BattleSystem_GetSafariBallCount
 	str r0, [sp, #0x24]
 	ldr r0, [sp, #8]
 	add r1, sp, #0x14
@@ -3480,7 +3480,7 @@ _02263AD0:
 	orr r0, r1
 	strb r0, [r3, #7]
 	ldr r0, [sp, #4]
-	bl ov12_0223B6B4
+	bl BattleSystem_GetSafariBallCount
 	str r0, [sp, #0x20]
 	mov r0, #0x14
 	str r0, [sp]

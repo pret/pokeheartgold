@@ -2295,7 +2295,7 @@ ov08_0221CF38: ; 0x0221CF38
 	bl PaletteData_LoadNarc
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
-	bl ov12_0223B708
+	bl BattleSystem_GetFrame
 	add r4, r0, #0
 	bl sub_0200E63C
 	add r1, r0, #0
@@ -14174,7 +14174,7 @@ ov08_022230F4: ; 0x022230F4
 	bl PaletteData_LoadNarc
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl ov12_0223B708
+	bl BattleSystem_GetFrame
 	add r4, r0, #0
 	bl sub_0200E63C
 	add r1, r0, #0

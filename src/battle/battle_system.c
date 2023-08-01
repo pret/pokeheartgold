@@ -637,3 +637,81 @@ int ov12_0223B52C(BattleSystem *bsys) {
     
     return ret;
 }
+
+u8 ov12_0223B580(BattleSystem *bsys, int battlerId, u8 a2) {
+    u16 item;
+    
+    if (ov12_0223AB0C(bsys, battlerId) == 4 && !(bsys->battleType & BATTLE_TYPE_MULTI)) {
+        if (bsys->battleType & BATTLE_TYPE_LINK) {
+            if (!(a2 & MaskOfFlagNo(BattleSystem_GetBattlerIdPartner(bsys, battlerId)))) {
+                return 1;
+            }
+        } else {
+            item = ov12_022581D4(bsys, bsys->ctx, 12, 0);
+            if ((ov12_022581D4(bsys, bsys->ctx, 8, 0) == 14 && item > ITEM_CHERISH_BALL) || (a2 & MaskOfFlagNo(0))) {
+                return 0;
+            } else {
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+
+u16 BattleSystem_CheckEvolution(BATTLE_SETUP *setup, int *selectedMonIndex, int *evolutionCondition) {
+    Pokemon *mon;
+    u16 species = 0;
+    
+    if (setup->winFlag != 1 && setup->winFlag != 4 && setup->winFlag != 5) {
+        return 0;
+    }
+    
+    while (setup->levelUpFlag) {
+        for (*selectedMonIndex = 0; *selectedMonIndex < 6; (*selectedMonIndex)++) {
+            if (setup->levelUpFlag & MaskOfFlagNo(*selectedMonIndex)) {
+                setup->levelUpFlag &= MaskOfFlagNo(*selectedMonIndex) ^ 0xFFFFFFFF;
+                break;
+            }
+        }
+        if (*selectedMonIndex < 6) {
+            mon = GetPartyMonByIndex(setup->party[0], *selectedMonIndex);
+            species = GetMonEvolution(setup->party[0], mon, EVOCTX_LEVELUP, setup->evolutionLocation, evolutionCondition);
+            if (species) {
+                return species;
+            }
+        }
+    }
+    return species;
+}
+
+u8 ov12_0223B688(BattleSystem *bsys) {
+    return bsys->unk23FC;
+}
+
+u8 ov12_0223B694(BattleSystem *bsys) {
+    GF_ASSERT(bsys->ctx != NULL);
+    return ov12_022581D4(bsys, bsys->ctx, 5, 0);
+}
+
+int BattleSystem_GetSafariBallCount(BattleSystem *bsys) {
+    return bsys->safariBallCnt;
+}
+
+void BattleSystem_SetSafariBallCount(BattleSystem *bsys, int cnt) {
+    bsys->safariBallCnt = cnt;
+}
+
+OPTIONS *BattleSystem_GetOptions(BattleSystem *bsys) {
+    return bsys->options;
+}
+
+BOOL BattleSystem_AreBattleAnimationsOn(BattleSystem *bsys) {
+    if ((bsys->battleType & BATTLE_TYPE_LINK) && !(bsys->battleSpecial & BATTLE_SPECIAL_RECORDED)) {
+        return TRUE;
+    }
+    return (Options_GetBattleScene(bsys->options) == 0);
+}
+
+u16 BattleSystem_GetFrame(BattleSystem *bsys) {
+    return Options_GetFrame(bsys->options);
+}

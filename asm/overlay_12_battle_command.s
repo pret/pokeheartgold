@@ -2526,7 +2526,7 @@ _02246D4E:
 	bl GetMonData
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223B6CC
+	bl BattleSystem_GetOptions
 	str r0, [sp]
 	mov r0, #0
 	str r0, [sp, #4]

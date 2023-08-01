@@ -220,7 +220,7 @@ _02237A64:
 _02237A6A:
 	add r1, sp, #0x20
 	add r2, sp, #0x1c
-	bl ov12_0223B5EC
+	bl BattleSystem_CheckEvolution
 	add r6, r0, #0
 	beq _02237ACC
 	mov r0, #3
@@ -566,7 +566,7 @@ _02237D1A:
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
 	add r0, r5, #0
-	bl ov12_0223B708
+	bl BattleSystem_GetFrame
 	add r4, r0, #0
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
@@ -1804,7 +1804,7 @@ _02238838:
 	add r0, r4, #0
 	bl ov12_0226604C
 	add r0, r5, #0
-	bl ov12_0223B708
+	bl BattleSystem_GetFrame
 	add r7, r0, #0
 	lsl r0, r7, #0x18
 	lsr r0, r0, #0x18

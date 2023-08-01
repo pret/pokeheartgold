@@ -1689,7 +1689,7 @@ void BattleControllerPlayer_RunInput(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 //static
 void BattleControllerPlayer_SafariBallInput(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    int ball;
+    int cnt;
     
     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 275);
     ctx->battlerIdAttacker = BATTLER_PLAYER;
@@ -1697,7 +1697,7 @@ void BattleControllerPlayer_SafariBallInput(BattleSystem *bsys, BATTLECONTEXT *c
     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
     ctx->commandNext = CONTROLLER_COMMAND_40;
     ctx->itemTemp = ITEM_SAFARI_BALL;
-    ball = ov12_0223B6B4(bsys) - 1;
-    ov12_0223B6C0(bsys, ball);
+    cnt = BattleSystem_GetSafariBallCount(bsys) - 1;
+    BattleSystem_SetSafariBallCount(bsys, cnt);
     ov12_02263A1C(bsys, ctx, BATTLER_PLAYER);
 }

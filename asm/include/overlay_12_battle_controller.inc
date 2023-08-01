@@ -37,7 +37,7 @@
 .public BattleSystem_GetBattlerIdPartner
 .public ov12_0223ABB8
 .public ov12_0223B688
-.public ov12_0223B6B4
+.public BattleSystem_GetSafariBallCount
 .public ov12_0223B854
 .public BattleSystem_GetWinLoseFlags
 .public ov12_0223BDC4

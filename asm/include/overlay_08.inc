@@ -178,7 +178,7 @@
 .public BattleSystem_GetPcStorage
 .public BattleSystem_GetBattlerIdPartner
 .public BattleSystem_RecoverStatus
-.public ov12_0223B708
+.public BattleSystem_GetFrame
 .public ov12_0223B718
 .public ov12_022581D4
 .public BattleCursor_LoadResources

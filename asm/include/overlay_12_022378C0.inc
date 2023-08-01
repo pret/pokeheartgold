@@ -212,8 +212,8 @@
 .public BattleSystem_GetBattlerIdPartner
 .public BattleSystem_GetBattleSpecial
 .public ov12_0223B52C
-.public ov12_0223B5EC
-.public ov12_0223B708
+.public BattleSystem_CheckEvolution
+.public BattleSystem_GetFrame
 .public ov12_0223B798
 .public ov12_0223B870
 .public ov12_0223BBF0

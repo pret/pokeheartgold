@@ -38,8 +38,8 @@
 .public BattleSystem_GetFieldSide
 .public BattleSystem_GetBattlerIdPartner
 .public BattleSystem_GetBattleSpecial
-.public ov12_0223B6B4
-.public ov12_0223B6C0
+.public BattleSystem_GetSafariBallCount
+.public BattleSystem_SetSafariBallCount
 .public ov12_0223B740
 .public ov12_0223BB64
 .public BattleSystem_GetWinLoseFlags

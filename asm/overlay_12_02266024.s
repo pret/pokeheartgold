@@ -2209,7 +2209,7 @@ _02267252:
 	bl ov12_02268440
 _022672B6:
 	ldr r0, [r5]
-	bl ov12_0223B6B4
+	bl BattleSystem_GetSafariBallCount
 	mov r1, #0
 	add r2, r0, #0
 	str r1, [sp]

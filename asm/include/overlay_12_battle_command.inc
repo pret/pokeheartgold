@@ -139,7 +139,7 @@
 .public BattleSystem_GetTerrainId
 .public BattleSystem_GetLocation
 .public BattleSystem_GetTimezone
-.public ov12_0223B6CC
+.public BattleSystem_GetOptions
 .public ov12_0223B718
 .public ov12_0223B870
 .public ov12_0223BB1C

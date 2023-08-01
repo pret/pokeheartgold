@@ -140,7 +140,7 @@
 .public ov12_0223A9A4
 .public ov12_0223AAD8
 .public ov12_0223AB54
-.public ov12_0223B6B4
+.public BattleSystem_GetSafariBallCount
 .public ov12_0223BB04
 .public ov12_0223BB64
 .public ov12_0223C134

@@ -32,10 +32,11 @@ struct BATTLE_SETUP { //declared in trainer_data.h
     int unk94;
     int unk98;
     int unk9C;
-    int unkA0;
+    int evolutionLocation;
     int unkA4;
     int unkA8;
-    u32 unkAC[4];
+    u32 unkAC[3];
+    int levelUpFlag;
     u32 unkBC;
     int unkC0;
     u32 unkC4;

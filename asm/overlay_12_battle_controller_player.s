@@ -166,10 +166,10 @@ ov12_0224AE84: ; 0x0224AE84
 	sub r0, #0xcb
 	str r1, [r4, r0]
 	add r0, r5, #0
-	bl ov12_0223B6B4
+	bl BattleSystem_GetSafariBallCount
 	sub r1, r0, #1
 	add r0, r5, #0
-	bl ov12_0223B6C0
+	bl BattleSystem_SetSafariBallCount
 	ldr r1, _0224AECC ; =0x0000216C
 	mov r0, #2
 	ldr r2, [r4, r1]
