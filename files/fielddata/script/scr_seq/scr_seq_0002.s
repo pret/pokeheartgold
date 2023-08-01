@@ -11,19 +11,19 @@
 	scrdef_end
 
 scr_seq_0002_000:
-	setvar VAR_SPECIAL_x8000, 0
+	setvar VAR_SPECIAL_x8000, MOVE_TUTOR_NPC_FRONTIER_TOP_LEFT
 	setvar VAR_TEMP_x400F, 0
 	setvar VAR_SPECIAL_x8007, 0
 	goto _005C
 	.byte 0x02, 0x00
 scr_seq_0002_001:
-	setvar VAR_SPECIAL_x8000, 1
+	setvar VAR_SPECIAL_x8000, MOVE_TUTOR_NPC_FRONTIER_TOP_RIGHT
 	setvar VAR_TEMP_x400F, 12
 	setvar VAR_SPECIAL_x8007, 1
 	goto _005C
 	.byte 0x02, 0x00
 scr_seq_0002_002:
-	setvar VAR_SPECIAL_x8000, 2
+	setvar VAR_SPECIAL_x8000, MOVE_TUTOR_NPC_FRONTIER_BOTTOM_RIGHT
 	setvar VAR_TEMP_x400F, 24
 	setvar VAR_SPECIAL_x8007, 2
 	goto _005C
