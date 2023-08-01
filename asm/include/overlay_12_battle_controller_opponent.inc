@@ -185,7 +185,7 @@
 .public ov12_0223B688
 .public ov12_0223B694
 .public BattleSystem_AreBattleAnimationsOn
-.public ov12_0223B718
+.public BattleSystem_GetTextFrameDelay
 .public ov12_0223B750
 .public BattleSystem_GetChatotVoice
 .public ov12_0223B874

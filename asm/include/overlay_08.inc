@@ -179,7 +179,7 @@
 .public BattleSystem_GetBattlerIdPartner
 .public BattleSystem_RecoverStatus
 .public BattleSystem_GetFrame
-.public ov12_0223B718
+.public BattleSystem_GetTextFrameDelay
 .public ov12_022581D4
 .public BattleCursor_LoadResources
 .public BattleCursor_FreeResources

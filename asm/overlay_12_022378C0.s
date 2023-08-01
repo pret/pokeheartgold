@@ -1376,7 +1376,7 @@ _022384A0:
 	add r1, r5, #0
 	bl sub_0200FBF4
 	add r0, r4, #0
-	bl ov12_0223B798
+	bl BattleSystem_TryChangeForm
 	ldr r0, _02238784 ; =0x00002420
 	ldrb r0, [r4, r0]
 	cmp r0, #4

@@ -5449,7 +5449,7 @@ _0224D75E:
 	tst r0, r1
 	bne _0224D7C6
 	ldr r0, [sp]
-	bl ov12_0223B740
+	bl BattleSystem_GetBattleStyle
 	cmp r0, #0
 	bne _0224D7C6
 	mov r1, #0x4f

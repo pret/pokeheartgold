@@ -11,6 +11,7 @@
 #include "player_data.h"
 #include "pokedex.h"
 #include "pokemon_storage_system.h"
+#include "sav_chatot.h"
 #include "trainer_data.h"
 #include "filesystem.h"
 #include "constants/battle.h"
@@ -529,7 +530,7 @@ struct BattleSystem {
     Pokedex *pokedex;
     PC_STORAGE *storage;
     PARTY *trainerParty[4];
-    u32 *unk78[4];
+    SOUND_CHATOT *chatotVoice[4];
     u32 *unk88;
     u32 *unk8C;
     u32 *unk90;
@@ -550,7 +551,7 @@ struct BattleSystem {
     void *unk1BC;
     u32 *unk1C0;
     u32 *unk1C4;
-    u32 unk1C8;
+    void *unk1C8; //related to animations
     u32 *unk1CC;
     UnkBattleSystemSub1D0 unk1D0[4];
     UnkBattleSystemSub220 unk220;

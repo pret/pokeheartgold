@@ -140,7 +140,7 @@
 .public BattleSystem_GetLocation
 .public BattleSystem_GetTimezone
 .public BattleSystem_GetOptions
-.public ov12_0223B718
+.public BattleSystem_GetTextFrameDelay
 .public ov12_0223B870
 .public ov12_0223BB1C
 .public ov12_0223BB28

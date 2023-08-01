@@ -155,7 +155,6 @@
 // Shiny odds
 #define SHINY_ODDS 8 // Actual probability is SHINY_ODDS/65536
 
-
 #define MON_DATA_PERSONALITY                      0
 #define MON_DATA_PARTY_LOCK                       1
 #define MON_DATA_BOX_LOCK                         2

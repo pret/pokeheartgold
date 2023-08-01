@@ -130,11 +130,11 @@
 .public BattleSystem_GetOptions
 .public BattleSystem_AreBattleAnimationsOn
 .public BattleSystem_GetFrame
-.public ov12_0223B718
-.public ov12_0223B740
+.public BattleSystem_GetTextFrameDelay
+.public BattleSystem_GetBattleStyle
 .public ov12_0223B750
 .public BattleSystem_GetChatotVoice
-.public ov12_0223B798
+.public BattleSystem_TryChangeForm
 .public ov12_0223B854
 .public ov12_0223B870
 .public ov12_0223B874

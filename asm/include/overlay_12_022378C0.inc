@@ -214,7 +214,7 @@
 .public ov12_0223B52C
 .public BattleSystem_CheckEvolution
 .public BattleSystem_GetFrame
-.public ov12_0223B798
+.public BattleSystem_TryChangeForm
 .public ov12_0223B870
 .public ov12_0223BBF0
 .public ov12_0223BC48

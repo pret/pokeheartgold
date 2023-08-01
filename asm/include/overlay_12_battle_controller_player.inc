@@ -40,7 +40,7 @@
 .public BattleSystem_GetBattleSpecial
 .public BattleSystem_GetSafariBallCount
 .public BattleSystem_SetSafariBallCount
-.public ov12_0223B740
+.public BattleSystem_GetBattleStyle
 .public ov12_0223BB64
 .public BattleSystem_GetWinLoseFlags
 .public ov12_0223BD20

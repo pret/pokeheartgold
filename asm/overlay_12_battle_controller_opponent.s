@@ -4250,7 +4250,7 @@ ov12_0225A85C: ; 0x0225A85C
 	orr r0, r1
 	str r0, [sp, #8]
 	add r0, r6, #0
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r1, [sp]
 	add r0, r6, #0
@@ -4289,7 +4289,7 @@ ov12_0225A8C4: ; 0x0225A8C4
 	ldrb r0, [r6, r0]
 	strb r0, [r4, #5]
 	add r0, r5, #0
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r1, [sp]
 	add r0, r5, #0
@@ -4837,7 +4837,7 @@ ov12_0225ACE8: ; 0x0225ACE8
 	ldrb r0, [r5, r0]
 	strb r0, [r4, #5]
 	add r0, r6, #0
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	str r0, [sp]
 	mov r2, #0x65
 	lsl r2, r2, #2
@@ -4881,7 +4881,7 @@ ov12_0225AD44: ; 0x0225AD44
 	ldrb r0, [r6, r0]
 	strb r0, [r4, #5]
 	add r0, r5, #0
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r1, [sp]
 	add r0, r5, #0
@@ -4922,7 +4922,7 @@ ov12_0225AD9C: ; 0x0225AD9C
 	ldrb r0, [r6, r0]
 	strb r0, [r4, #5]
 	add r0, r5, #0
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r1, [sp]
 	add r0, r5, #0
@@ -4962,7 +4962,7 @@ ov12_0225ADF4: ; 0x0225ADF4
 	ldrb r0, [r6, r0]
 	strb r0, [r4, #5]
 	add r0, r5, #0
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
@@ -5003,7 +5003,7 @@ ov12_0225AE48: ; 0x0225AE48
 	ldrb r0, [r6, r0]
 	strb r0, [r4, #5]
 	add r0, r5, #0
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r1, [sp]
 	add r0, r5, #0
@@ -5075,7 +5075,7 @@ ov12_0225AED8: ; 0x0225AED8
 	mov r0, #0
 	strb r0, [r7, #7]
 	add r0, r6, #0
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r1, [sp]
 	add r0, r6, #0
@@ -5567,7 +5567,7 @@ ov12_0225B2A4: ; 0x0225B2A4
 	ldrb r0, [r6, r0]
 	strb r0, [r4, #5]
 	add r0, r5, #0
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
@@ -5607,7 +5607,7 @@ ov12_0225B2F8: ; 0x0225B2F8
 	ldrb r0, [r6, r0]
 	strb r0, [r4, #5]
 	add r0, r5, #0
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
@@ -5647,7 +5647,7 @@ ov12_0225B34C: ; 0x0225B34C
 	ldrb r0, [r6, r0]
 	strb r0, [r4, #5]
 	add r0, r5, #0
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
@@ -10636,7 +10636,7 @@ _0225DBCC:
 	add r0, sp, #0x10
 	strh r1, [r0, #0xe]
 	ldr r0, [r4]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r0, [r4]
 	add r1, r6, #0
@@ -12865,7 +12865,7 @@ _0225EDE0:
 	bl ov12_0223A930
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
@@ -13122,7 +13122,7 @@ _0225EFFE:
 	bl ov12_0223A930
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
@@ -13306,7 +13306,7 @@ _0225F178:
 	str r0, [sp, #0x48]
 _0225F18E:
 	ldr r0, [r4]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
@@ -13497,7 +13497,7 @@ _0225F2FA:
 	bl ov12_0223A930
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
@@ -14437,7 +14437,7 @@ _0225FACA:
 	add r0, sp, #0x10
 	strh r1, [r0, #6]
 	ldr r0, [r4]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0

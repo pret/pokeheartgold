@@ -5,7 +5,6 @@
 #include "battle.h"
 #include "battle_setup.h"
 #include "pokemon.h"
-#include "sav_chatot.h"
 
 BgConfig *BattleSystem_GetBgConfig(BattleSystem *bsys);
 Window *BattleSystem_GetWindow(BattleSystem *bsys, int index);
@@ -72,12 +71,18 @@ void BattleSystem_SetSafariBallCount(BattleSystem *bsys, int item);
 OPTIONS *BattleSystem_GetOptions(BattleSystem *bsys);
 BOOL BattleSystem_AreBattleAnimationsOn(BattleSystem *bsys);
 u16 BattleSystem_GetFrame(BattleSystem *bsys);
+u8 BattleSystem_GetTextFrameDelay(BattleSystem *bsys);
+u16 BattleSystem_GetBattleStyle(BattleSystem *bsys);
+void *ov12_0223B750(BattleSystem *bsys);
+SOUND_CHATOT *BattleSystem_GetChatotVoice(BattleSystem *bsys, int battlerId);
+void BattleSystem_TryChangeForm(BattleSystem *bsys);
+void ov12_0223B854(BattleSystem *bsys, int battlerId, int selectedMonIndex);
+void ov12_0223B870();
 
 //These functions haven't been decompiled
 int BattleSystem_Random(BattleSystem *bsys);
 void ov12_0223BDDC(BattleSystem *bsys, int battlerId, u8 a2);
 void PokedexSetBattlerSeen(BattleSystem *bsys, int battlerId);
-SOUND_CHATOT *BattleSystem_GetChatotVoice(BattleSystem *bsys, int battlerId);
 int BattleSystem_GetChatotVoiceParam(BattleSystem *bsys, int battlerId);
 BOOL Link_QueueNotEmpty(BATTLECONTEXT *ctx);
 BOOL ov12_0223C080(BattleSystem *bsys);

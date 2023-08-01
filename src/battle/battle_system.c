@@ -715,3 +715,89 @@ BOOL BattleSystem_AreBattleAnimationsOn(BattleSystem *bsys) {
 u16 BattleSystem_GetFrame(BattleSystem *bsys) {
     return Options_GetFrame(bsys->options);
 }
+
+u8 BattleSystem_GetTextFrameDelay(BattleSystem *bsys) {
+    if ((bsys->battleType & BATTLE_TYPE_LINK) && !(bsys->battleSpecial & BATTLE_SPECIAL_RECORDED)) {
+        return 1;
+    }
+    return Options_GetTextFrameDelay(bsys->options);
+}
+
+u16 BattleSystem_GetBattleStyle(BattleSystem *bsys) {
+    return Options_GetBattleStyle(bsys->options);
+}
+
+void *ov12_0223B750(BattleSystem *bsys) {
+    return bsys->unk1C8;
+}
+
+SOUND_CHATOT *BattleSystem_GetChatotVoice(BattleSystem *bsys, int battlerId) {
+    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_INGAME_PARTNER) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
+        return bsys->chatotVoice[battlerId];
+    } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
+        return bsys->chatotVoice[battlerId & 1];
+    } else {
+        return bsys->chatotVoice[battlerId];
+    }
+}
+
+void BattleSystem_TryChangeForm(BattleSystem *bsys) {
+    int i;
+    AlternateForms form;
+    Pokemon *mon;
+    u16 species;
+    
+    if (bsys->battleType & BATTLE_TYPE_NO_EXP) {
+        return;
+    }
+    
+    for (i = 0; i < BattleSystem_GetPartySize(bsys, BATTLER_PLAYER); i++) {
+        mon = BattleSystem_GetPartyMon(bsys, BATTLER_PLAYER, i);
+        species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL);
+        if (species == SPECIES_BURMY && bsys->unk2418[BATTLER_PLAYER] & MaskOfFlagNo(i)) {
+            switch (BattleSystem_GetTerrainId(bsys)) {
+            case TERRAIN_GRASS:
+            case TERRAIN_PUDDLE:
+            case TERRAIN_SNOW:
+            case TERRAIN_WATER:
+            case TERRAIN_ICE:
+            case TERRAIN_MARSH:
+            default:
+                form = BURMY_PLANT;
+                break;
+            case TERRAIN_PLAIN:
+            case TERRAIN_SAND:
+            case TERRAIN_CAVE:
+            case TERRAIN_ROCKS:
+            case TERRAIN_ELITE_4_KAREN:
+            case TERRAIN_22:
+                form = BURMY_SANDY;
+                break;
+            case TERRAIN_BUILDING:
+            case TERRAIN_BRIDGE:
+            case TERRAIN_LINK:
+            case TERRAIN_END:
+            case TERRAIN_ELITE_4_WILL:
+            case TERRAIN_ELITE_4_KOGA:
+            case TERRAIN_ELITE_4_BRUNO:
+            case TERRAIN_CHAMPION_LANCE:
+            case TERRAIN_17:
+            case TERRAIN_TOWER:
+            case TERRAIN_ARCADE:
+            case TERRAIN_CASTLE:
+                form = BURMY_TRASH;
+                break;
+            }
+            SetMonData(mon, MON_DATA_FORM, &form);
+        }
+    }
+}
+
+void ov12_0223B854(BattleSystem *bsys, int battlerId, int selectedMonIndex) {
+    bsys->unk2418[battlerId] |= MaskOfFlagNo(selectedMonIndex);
+}
+
+//usesd to be related to poketch in dppt
+void ov12_0223B870() {
+    
+}

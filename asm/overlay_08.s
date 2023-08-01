@@ -8273,7 +8273,7 @@ ov08_022201E8: ; 0x022201E8
 	bl TextFlags_SetCanABSpeedUpPrint
 	ldr r0, [r4]
 	ldr r0, [r0, #8]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -15402,7 +15402,7 @@ ov08_02223B48: ; 0x02223B48
 	bl TextFlags_SetCanABSpeedUpPrint
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
