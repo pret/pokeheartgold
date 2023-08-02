@@ -3,9 +3,10 @@ MSGDATA_MSG_DIR := files/msgdata/msg
 
 # TRNAME_GMM is autogenned from json
 TRNAME_GMM 	:= $(MSGDATA_MSG_DIR)/msg_0729.gmm
-MSGFILE_GMM := $(sort $(wildcard $(MSGDATA_MSG_DIR)/*.gmm) $(TRNAME_GMM))
+BUILT_GMMS  := $(sort $(TRNAME_GMM)) # add any built GMMs here
+MSGFILE_GMM := $(sort $(wildcard $(MSGDATA_MSG_DIR)/*.gmm) $(BUILT_GMMS))
 MSGFILE_BIN := $(patsubst %.gmm,%.bin,$(MSGFILE_GMM))
-MSGFILE_H := $(patsubst %.gmm,%.h,$(MSGFILE_GMM))
+MSGFILE_H   := $(patsubst %.gmm,%.h,$(MSGFILE_GMM))
 
 TRAINER_JSON := files/poketool/trainer/trainers.json
 TRNAME_TEMPLATE := files/poketool/trainer/trname.json.txt
@@ -20,10 +21,10 @@ $(TRNAME_GMM):
 $(MSGDATA_MSG_DIR).narc: %.narc: $(MSGFILE_BIN)
 
 # extremely ugly hack to get it actually building
-$(MSGDATA_MSG_DIR)/msg_0729.bin: $(TRNAME_GMM)
+#$(MSGDATA_MSG_DIR)/msg_0729.bin: $(TRNAME_GMM)
 
 $(MSGFILE_BIN): MSGENCFLAGS = -e -c charmap.txt --gmm -H $*.h
-$(MSGFILE_BIN): %.bin: %.gmm charmap.txt
+$(MSGFILE_BIN): %.bin: %.gmm charmap.txt | $(BUILT_GMMS)
 	$(MSGENC) $(MSGENCFLAGS) $< $@
 
 $(MSGFILE_H): %.h: %.bin
