@@ -131,13 +131,11 @@ DUMMY := $(shell mkdir -p $(ALL_BUILDDIRS))
 .SECONDARY:
 .SECONDEXPANSION:
 .DELETE_ON_ERROR:
-.PHONY: all tidy clean tools clean-tools $(TOOLDIRS)
+.PHONY: all tidy clean tools clean-tools patch_mwasmarm $(TOOLDIRS)
 .PRECIOUS: $(SBIN)
-.NOTPARALLEL:
 
-.PHONY: $(MWAS)
-$(MWAS):
-	$(ASPATCH) -q $@
+patch_mwasmarm:
+	$(ASPATCH) -q $(MWAS)
 
 ifeq ($(NODEP),)
 ifneq ($(WINPATH),)
@@ -222,7 +220,9 @@ ifeq ($(COMPARE),1)
 	$(SHA1SUM) --quiet -c $*.sha1
 endif
 
-$(ELF): $(LCF) $(RESPONSE) $(ALL_OBJS)
+$(ELF): $(ALL_OBJS)
+	$(MAKE) $(LCF)
+	$(MAKE) $(RESPONSE)
 	cd $(BUILD_DIR) && LM_LICENSE_FILE=$(BACK_REL)/$(LM_LICENSE_FILE) $(WINE) $(MWLD) $(MWLDFLAGS) $(LIBS) -o $(BACK_REL)/$(ELF) $(LCF:$(BUILD_DIR)/%=%) @$(RESPONSE:$(BUILD_DIR)/%=%) $(CRT0_OBJ)
 #	$(NTRMERGE) $*
 

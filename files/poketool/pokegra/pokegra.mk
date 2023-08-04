@@ -23,24 +23,23 @@ POKEGRA_MALE_FRONT_OBJS := $(patsubst $(POKEGRA_SPRITES_DIR)/%/male/front.png,$(
 POKEGRA_NORMAL_PALS := $(patsubst $(POKEGRA_SPRITES_DIR)/%/female/back.png,$(POKEGRA_BUILD_DIR)/%-04.NCLR,$(POKEGRA_FEMALE_BACK_FILES))
 POKEGRA_SHINY_PALS := $(patsubst $(POKEGRA_SPRITES_DIR)/%/female/back.png,$(POKEGRA_BUILD_DIR)/%-05.NCLR,$(POKEGRA_FEMALE_BACK_FILES))
 
-
-$(POKEGRA_BUILD_DIR)/%-00.NCGR:$(POKEGRA_SPRITES_DIR)/%/female/back.png
+$(POKEGRA_BUILD_DIR)/%-00.NCGR: $(POKEGRA_SPRITES_DIR)/%/female/back.png
 	@mkdir -p $(POKEGRA_BUILD_DIR)
 	$(GFX) $< $@ $(POKEGRA_GFX_FLAGS_SPRITE)
 
-$(POKEGRA_BUILD_DIR)/%-01.NCGR:$(POKEGRA_SPRITES_DIR)/%/male/back.png
+$(POKEGRA_BUILD_DIR)/%-01.NCGR: $(POKEGRA_SPRITES_DIR)/%/male/back.png
 	@mkdir -p $(POKEGRA_BUILD_DIR)
 	$(GFX) $< $@ $(POKEGRA_GFX_FLAGS_SPRITE)
 
-$(POKEGRA_BUILD_DIR)/%-02.NCGR:$(POKEGRA_SPRITES_DIR)/%/female/front.png
+$(POKEGRA_BUILD_DIR)/%-02.NCGR: $(POKEGRA_SPRITES_DIR)/%/female/front.png
 	@mkdir -p $(POKEGRA_BUILD_DIR)
 	$(GFX) $< $@ $(POKEGRA_GFX_FLAGS_SPRITE)
 
-$(POKEGRA_BUILD_DIR)/%-03.NCGR:$(POKEGRA_SPRITES_DIR)/%/male/front.png
+$(POKEGRA_BUILD_DIR)/%-03.NCGR: $(POKEGRA_SPRITES_DIR)/%/male/front.png
 	@mkdir -p $(POKEGRA_BUILD_DIR)
 	$(GFX) $< $@ $(POKEGRA_GFX_FLAGS_SPRITE)
 
-$(POKEGRA_BUILD_DIR)/%-04.NCLR:$(POKEGRA_SPRITES_DIR)/%/male/front.png
+$(POKEGRA_BUILD_DIR)/%-04.NCLR: $(POKEGRA_SPRITES_DIR)/%/male/front.png
 	@mkdir -p $(POKEGRA_BUILD_DIR)
 	if test -s $<; then \
 		$(GFX) $< $@ $(POKEGRA_GFX_FLAGS_PAL); \
@@ -48,7 +47,7 @@ $(POKEGRA_BUILD_DIR)/%-04.NCLR:$(POKEGRA_SPRITES_DIR)/%/male/front.png
 		$(GFX) $(patsubst $(POKEGRA_SPRITES_DIR)/%/male/front.png,$(POKEGRA_SPRITES_DIR)/%/female/front.png,$<) $@ $(POKEGRA_GFX_FLAGS_PAL); \
 	fi
 
-$(POKEGRA_BUILD_DIR)/%-05.NCLR:$(POKEGRA_SPRITES_DIR)/%/male/back.png
+$(POKEGRA_BUILD_DIR)/%-05.NCLR: $(POKEGRA_SPRITES_DIR)/%/male/back.png
 	@mkdir -p $(POKEGRA_BUILD_DIR)
 	if test -s $<; then \
 		$(GFX) $< $@ $(POKEGRA_GFX_FLAGS_PAL); \

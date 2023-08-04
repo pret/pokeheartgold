@@ -28,7 +28,7 @@ endif
 
 $(SCRIPT_NARC): $(SCRIPT_BINS) check_scripts
 
-check_scripts:
+check_scripts: $(SCRIPT_BINS)
 ifeq ($(COMPARE),1)
 	@$(SHA1SUM) --quiet -c $(PROJECT_ROOT)/scr_seq.sha1
 endif
