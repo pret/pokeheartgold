@@ -86,9 +86,9 @@ static const TutorMove sTutorMoves[] = {
     { MOVE_HEADBUTT,       0, MOVE_TUTOR_NPC_HEADBUTT              },
 };
 
-static u16 GetMoveTutorLearnsetIndex(u16, u8);
-static u16 GetLearnableTutorMoves(Pokemon*, u32, u8[]);
-static MoveTutorLearnset *GetMoveTutorLearnset(HeapID, u32);
+static u16 GetMoveTutorLearnsetIndex(u16 species, u8 form);
+static u16 GetLearnableTutorMoves(Pokemon *mon, u32 moveTutorNpc, u8 dest[]);
+static MoveTutorLearnset *GetMoveTutorLearnset(HeapID heapId, u32 index);
 static BOOL ov01_0220305C(ScriptContext *ctx);
 
 // get number of pages needed to show learnable moves from move tutor
@@ -201,6 +201,8 @@ static u16 GetLearnableTutorMoves(Pokemon *mon, u32 moveTutorNpc, u8 dest[]) {
     MoveTutorLearnset *learnset = GetMoveTutorLearnset(HEAP_ID_FIELD, GetMoveTutorLearnsetIndex(species, form));
     u16 numLearnableMoves = 0;
     for (j = 0; j < NELEMS(sTutorMoves); j++) {
+        // this is equivalent to treating `learnset` as a bitfield of 64 bits
+        // and then checking whether bit j is set
         BOOL canLearnMove = (learnset->moves[j / 8] >> (j % 8)) & 1;
         if (canLearnMove && moveTutorNpc == sTutorMoves[j].tutorNpc) {
             for (i = 0; i < MAX_MON_MOVES; i++) {
