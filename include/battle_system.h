@@ -27,7 +27,7 @@ FontID *BattleSystem_GetHpFont(BattleSystem *bsys);
 FontID *BattleSystem_GetLevelFont(BattleSystem *bsys);
 u32 *ov12_0223A930(BattleSystem *bsys);
 u32 *ov12_0223A934(BattleSystem *bsys);
-void *ov12_0223A938(BattleSystem *bsys);
+PaletteData *BattleSystem_GetPaletteData(BattleSystem *bsys);
 Pokedex *BattleSystem_GetPokedex(BattleSystem *bsys);
 u8 *BattleSystem_GetSendBufferPtr(BattleSystem *bsys);
 u8 *BattleSystem_GetRecvBufferPtr(BattleSystem *bsys);
@@ -78,6 +78,7 @@ SOUND_CHATOT *BattleSystem_GetChatotVoice(BattleSystem *bsys, int battlerId);
 void BattleSystem_TryChangeForm(BattleSystem *bsys);
 void ov12_0223B854(BattleSystem *bsys, int battlerId, int selectedMonIndex);
 void ov12_0223B870();
+void BattleSystem_SetBackground(BattleSystem *bsys);
 
 //These functions haven't been decompiled
 int BattleSystem_Random(BattleSystem *bsys);
@@ -87,7 +88,6 @@ int BattleSystem_GetChatotVoiceParam(BattleSystem *bsys, int battlerId);
 BOOL Link_QueueNotEmpty(BATTLECONTEXT *ctx);
 BOOL ov12_0223C080(BattleSystem *bsys);
 void ov12_0223BFFC(BattleSystem *bsys, u32 a1);
-void *ov12_0223A938(BattleSystem *bsys);
 u32 BattleSystem_GetWinLoseFlags(BattleSystem *bsys);
 void ov12_0223C0C4(BattleSystem *bsys);
 int BattleSystem_GetWeather(BattleSystem *bsys);
@@ -97,5 +97,5 @@ void ov12_02237ED0(BattleSystem *bsys, int a1);
 void ov12_022642F0(BattleSystem *bsys);
 BOOL ov12_022581BC(BattleSystem *bsys, BATTLECONTEXT *ctx);
 void ov12_02263A1C(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
-
+void ov12_02266008(UnkBattleSystemSub17C *a0);
 #endif

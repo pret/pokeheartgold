@@ -500,7 +500,7 @@ ov12_02264BCC: ; 0x02264BCC
 	bl ov12_0223A8EC
 	str r0, [sp, #4]
 	ldr r0, [r5, #0xc]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	str r0, [sp, #8]
 	add r0, r5, #0
 	add r0, #0x25
@@ -2668,7 +2668,7 @@ ov12_02265C88: ; 0x02265C88
 	add r5, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	add r6, r0, #0
 	ldrb r0, [r4, #8]
 	cmp r0, #0

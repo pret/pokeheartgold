@@ -32,7 +32,7 @@ _0221BE2E:
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r5, #8]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	mov r1, #0x7a
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -12731,7 +12731,7 @@ ov08_022225D4: ; 0x022225D4
 	bl BattleSystem_GetBgConfig
 	str r0, [r4, #4]
 	ldr r0, [r5]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	str r0, [r4, #8]
 	ldr r0, _0222266C ; =0x0000114A
 	mov r1, #0

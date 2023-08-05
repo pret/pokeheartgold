@@ -8,12 +8,14 @@
 #include "font.h"
 #include "move.h"
 #include "options.h"
+#include "palette.h"
 #include "player_data.h"
 #include "pokedex.h"
 #include "pokemon_storage_system.h"
 #include "sav_chatot.h"
 #include "trainer_data.h"
 #include "filesystem.h"
+#include "unk_02023694.h"
 #include "constants/battle.h"
 #include "constants/moves.h"
 
@@ -482,7 +484,7 @@ typedef struct OpponentData {
 } OpponentData;
 
 typedef struct UnkBattleSystemSub17C {
-    u32 unk0;
+    UnkImageStruct *unk0;
     BattleSystem *bsys;
     u8 unk8;
     u8 unk9;
@@ -519,7 +521,7 @@ struct BattleSystem {
     u32 unk1C;
     u32 unk20;
     u32 unk24;
-    void *unk28;
+    PaletteData *palette;
     u32 battleType;
     BATTLECONTEXT *ctx;
     OpponentData *opponentData[4];
@@ -540,7 +542,7 @@ struct BattleSystem {
     u16 trainerId[4];
     u8 trainerGender[4];
     TRAINER trainers[4];
-    UnkBattleSystemSub17C unk17C[2];
+    UnkBattleSystemSub17C unk17C[2]; //Battle Background..?
     u32 *unk19C;
     u32 *unk1A0[2];
     FontID *hpFont;

@@ -107,8 +107,8 @@ u32 *ov12_0223A934(BattleSystem *bsys) {
     return bsys->unk10;
 }
 
-void *ov12_0223A938(BattleSystem *bsys) {
-    return bsys->unk28;
+PaletteData *BattleSystem_GetPaletteData(BattleSystem *bsys) {
+    return bsys->palette;
 }
 
 Pokedex *BattleSystem_GetPokedex(BattleSystem *bsys) {
@@ -797,7 +797,87 @@ void ov12_0223B854(BattleSystem *bsys, int battlerId, int selectedMonIndex) {
     bsys->unk2418[battlerId] |= MaskOfFlagNo(selectedMonIndex);
 }
 
-//usesd to be related to poketch in dppt
+//used to be related to poketch in dppt
 void ov12_0223B870() {
     
+}
+
+void BattleSystem_SetBackground(BattleSystem *bsys) {
+    NNSG2dImageProxy *image;
+    int bgX, bgY, objX, objY, data, i;
+    u8 *vram;
+    u32* src;
+    u32* dst;
+    
+    bsys->unk230 = AllocFromHeap(HEAP_ID_BATTLE, 0x10000);
+    bsys->unk234 = AllocFromHeap(HEAP_ID_BATTLE, 0x200);
+    
+    MIi_CpuCopy32((void *)0x6010000, (u32 *)bsys->unk230, 0x10000);
+    dst = (u32 *)bsys->unk234;
+    src = (u32 *)PaletteData_GetUnfadedBuf(bsys->palette, 0);
+    MIi_CpuCopy32(src, dst, 0x200);
+
+    vram = (u8 *)0x6400000;
+    image = sub_02024B1C(bsys->unk17C[1].unk0->unk0);
+    vram += image->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN];
+    
+    for (bgY = 20; bgY < 28; bgY++) {
+        for (bgX = 16; bgX < 32; bgX++) {
+            objX = bgX - 16;
+            objY = bgY - 20;
+            for (i = 0; i < 64; i++) {
+                if (objX < 8) {
+                    if (i & 1) {
+                        data = (vram[objY * 0x100 + objX * 0x20 + i / 2] & 0xF0) >> 4;
+                    } else {
+                        data = (vram[objY * 0x100 + objX * 0x20 + i / 2] & 0xF);
+                    }
+                } else if (i & 1) {
+                    data = (vram[0x700 + objY * 0x100 + objX * 0x20 + i / 2] & 0xF0) >> 4;
+                } else {
+                    data = (vram[0x700 + objY * 0x100 + objX * 0x20 + i / 2] & 0xF);
+                }
+                if (data) {
+                    bsys->unk230[bgY * 0x800 + bgX * 0x40 + i] = data + 0x70;
+                }
+            }
+        }
+    }
+    
+    vram = (u8 *)0x6400000;
+    image = sub_02024B1C(bsys->unk17C[0].unk0->unk0);
+    vram += image->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN];
+    
+    for (i = 0; i < 0x800; i++) {
+        if (i & 1) {
+            data = (vram[i / 2] & 0xF0) >> 4;
+        } else {
+            data = (vram[i / 2] & 0xF);
+        }
+        if (data) {
+            bsys->unk230[0x9800 + i] = data + 0x70;
+        }
+    }
+    
+    for (bgY = 28; bgY < 32; bgY++) {
+        for (bgX = 0; bgX < 24; bgX++) {
+            objX = bgX;
+            objY = bgY - 28;
+            for (i = 0; i < 0x40; i++) {
+                if (i & 1) {
+                    data = (vram[0x400 + (objX / 8) * 0x400 + (objX % 8) * 0x20 + objY * 0x100 + i / 2] & 0xF0) >> 4;
+                } else {
+                    data = (vram[0x400 + (objX / 8) * 0x400 + (objX % 8) * 0x20 + objY * 0x100 + i / 2] & 0xF);
+                }
+                if (data) {
+                    bsys->unk230[bgY * 0x800 + bgX * 0x40 + i] = data + 0x70;
+                }
+            }
+        }
+    }
+    
+    BG_LoadCharTilesData(bsys->bgConfig, 3, bsys->unk230, 0x10000, 0);
+    
+    ov12_02266008(&bsys->unk17C[0]);
+    ov12_02266008(&bsys->unk17C[1]);
 }

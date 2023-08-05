@@ -165,7 +165,7 @@
 .public ov12_0223A914
 .public ov12_0223A930
 .public ov12_0223A934
-.public ov12_0223A938
+.public BattleSystem_GetPaletteData
 .public ov12_0223A99C
 .public BattleSystem_GetTrainerIndex
 .public BattleSystem_GetTrainer
@@ -188,7 +188,7 @@
 .public BattleSystem_GetTextFrameDelay
 .public ov12_0223B750
 .public BattleSystem_GetChatotVoice
-.public ov12_0223B874
+.public BattleSystem_SetBackground
 .public ov12_0223BAD0
 .public ov12_0223BAD8
 .public ov12_0223BAE0

@@ -170,7 +170,7 @@
 .public BattleSystem_GetParty
 .public BattleSystem_GetPartyMon
 .public ov12_0223A8E4
-.public ov12_0223A938
+.public BattleSystem_GetPaletteData
 .public BattleSystem_GetTrainer
 .public BattleSystem_GetBag
 .public BattleSystem_GetBagCursor

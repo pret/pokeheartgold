@@ -86,7 +86,7 @@
 .public BattleSystem_GetLevelFont
 .public ov12_0223A930
 .public ov12_0223A934
-.public ov12_0223A938
+.public BattleSystem_GetPaletteData
 .public BattleSystem_GetPokedex
 .public BattleSystem_GetSendBufferPtr
 .public BattleSystem_GetRecvBufferPtr
@@ -137,7 +137,7 @@
 .public BattleSystem_TryChangeForm
 .public ov12_0223B854
 .public ov12_0223B870
-.public ov12_0223B874
+.public BattleSystem_SetBackground
 .public ov12_0223BAD0
 .public ov12_0223BAD8
 .public ov12_0223BAE0

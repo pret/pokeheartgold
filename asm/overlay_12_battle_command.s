@@ -610,7 +610,7 @@ _02245D62:
 	bl BattleSystem_GetWindow
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	add r7, r0, #0
 	ldr r0, _02246018 ; =0x04000008
 	mov r2, #3
@@ -1625,7 +1625,7 @@ Task_GetPokemon: ; 0x022465A8
 	bl ov12_0223A930
 	str r0, [sp, #0x20]
 	ldr r0, [r4]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	add r5, r0, #0
 	ldr r0, [r4]
 	bl ov12_0223A8D4
@@ -1703,7 +1703,7 @@ _02246636:
 	bl ov12_0223A8E4
 	str r0, [sp, #0x14c]
 	ldr r0, [r4]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	str r0, [sp, #0x150]
 	mov r0, #1
 	str r0, [sp, #0x144]
@@ -2210,7 +2210,7 @@ _02246A72:
 	bl BattleSystem_GetBgConfig
 	str r0, [sp, #0xd0]
 	ldr r0, [r4]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	str r0, [sp, #0xd4]
 	ldr r0, [sp, #0x24]
 	add r1, r7, #0
@@ -5182,7 +5182,7 @@ ov12_02248228: ; 0x02248228
 	bl ov12_0223A8EC
 	add r4, r0, #0
 	add r0, r7, #0
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	add r7, r0, #0
 	mov r0, #1
 	str r0, [sp]
