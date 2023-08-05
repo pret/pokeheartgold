@@ -406,6 +406,21 @@ typedef enum Terrain {
 
 #define BATTLE_STATUS2_EXP_GAIN_SHIFT               28
 
+//Stat Changes
+#define STAT_DOWN_6          0
+#define STAT_DOWN_5          1
+#define STAT_DOWN_4          2
+#define STAT_DOWN_3          3
+#define STAT_DOWN_2          4
+#define STAT_DOWN_1          5
+#define STAT_NEUTRAL         6
+#define STAT_UP_1            7
+#define STAT_UP_2            8
+#define STAT_UP_3            9
+#define STAT_UP_4           10
+#define STAT_UP_5           11
+#define STAT_UP_6           12
+
 //Battle Controller Commands
 typedef enum ControllerCommand {
     CONTROLLER_COMMAND_GET_BATTLE_MON,

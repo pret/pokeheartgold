@@ -1619,16 +1619,16 @@ void BattleControllerPlayer_ItemInput(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         ctx->itemTemp = ctx->unk_334.unkA0[ctx->battlerIdAttacker >> 1];
     } else {
         switch (item->page) {
-        case 0:
-        case 1:
-        case 3:
+        case BTLPOCKETLIST_HP_PP_RESTORE:
+        case BTLPOCKETLIST_STATUS_RESTORE:
+        case BTLPOCKETLIST_BATTLE_ITEMS:
             if (item->id == ITEM_POKE_DOLL || item->id == ITEM_FLUFFY_TAIL) {
                 script = 222;
             } else {
                 script = 223;
             }
             break;
-        case 2:
+        case BTLPOCKETLIST_BALLS:
             script = 11;
             if (!(BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_TRAINER) && !(BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_TUTORIAL)) {
                 Bag_TakeItem(BattleSystem_GetBag(bsys), item->id, 1, HEAP_ID_BATTLE);

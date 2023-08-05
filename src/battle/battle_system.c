@@ -421,7 +421,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
 
     if (GetItemAttr(item, ITEMATTR_ATK_STAGES, HEAP_ID_BATTLE)) {
         if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
-            if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_ATK, NULL) < 12) {
+            if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_ATK, NULL) < STAT_UP_6) {
                 AddBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_ATK, 1);
                 ret = TRUE;
             }
@@ -430,7 +430,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
   
     if (GetItemAttr(item, ITEMATTR_DEF_STAGES, HEAP_ID_BATTLE)) {
         if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
-            if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_DEF, NULL) < 12) {
+            if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_DEF, NULL) < STAT_UP_6) {
                 AddBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_DEF, 1);
                 ret = TRUE;
             }
@@ -439,7 +439,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
     
     if (GetItemAttr(item, ITEMATTR_SPATK_STAGES, HEAP_ID_BATTLE)) {
         if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
-            if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPATK, NULL) < 12) {
+            if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPATK, NULL) < STAT_UP_6) {
                 AddBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPATK, 1);
                 ret = TRUE;
             }
@@ -448,7 +448,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
     
     if (GetItemAttr(item, ITEMATTR_SPDEF_STAGES, HEAP_ID_BATTLE)) {
         if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
-            if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPDEF, NULL) < 12) {
+            if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPDEF, NULL) < STAT_UP_6) {
                 AddBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPDEF, 1);
                 ret = TRUE;
             }
@@ -457,7 +457,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
 
     if (GetItemAttr(item, ITEMATTR_SPEED_STAGES, HEAP_ID_BATTLE)) {
         if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
-            if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPEED, NULL) < 12) {
+            if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPEED, NULL) < STAT_UP_6) {
                 AddBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPEED, 1);
                 ret = TRUE;
             }
@@ -466,7 +466,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
     
     if (GetItemAttr(item, ITEMATTR_ACCURACY_STAGES, HEAP_ID_BATTLE)) {
         if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
-            if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_ACC, NULL) < 12) {
+            if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_ACC, NULL) < STAT_UP_6) {
                 AddBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_ACC, 1);
                 ret = TRUE;
             }
@@ -667,13 +667,13 @@ u16 BattleSystem_CheckEvolution(BATTLE_SETUP *setup, int *selectedMonIndex, int 
     }
     
     while (setup->levelUpFlag) {
-        for (*selectedMonIndex = 0; *selectedMonIndex < 6; (*selectedMonIndex)++) {
+        for (*selectedMonIndex = 0; *selectedMonIndex < PARTY_MAX; (*selectedMonIndex)++) {
             if (setup->levelUpFlag & MaskOfFlagNo(*selectedMonIndex)) {
                 setup->levelUpFlag &= MaskOfFlagNo(*selectedMonIndex) ^ 0xFFFFFFFF;
                 break;
             }
         }
-        if (*selectedMonIndex < 6) {
+        if (*selectedMonIndex < PARTY_MAX) {
             mon = GetPartyMonByIndex(setup->party[0], *selectedMonIndex);
             species = GetMonEvolution(setup->party[0], mon, EVOCTX_LEVELUP, setup->evolutionLocation, evolutionCondition);
             if (species) {

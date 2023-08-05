@@ -3975,7 +3975,6 @@ BOOL BtlCmd_TryBreakScreens(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     int adrs = BattleScriptReadWord(ctx);
     int side = BattleSystem_GetFieldSide(bsys, ctx->battlerIdTarget);
 
-    //in order flags are: reflect, light screen
     if ((ctx->fieldSideConditionFlags[side] & SIDE_CONDITION_REFLECT) || (ctx->fieldSideConditionFlags[side] & SIDE_CONDITION_LIGHT_SCREEN)) {
         ctx->fieldSideConditionFlags[side] &= ~SIDE_CONDITION_REFLECT;
         ctx->fieldSideConditionFlags[side] &= ~SIDE_CONDITION_LIGHT_SCREEN;
@@ -3991,7 +3990,7 @@ BOOL BtlCmd_TryBreakScreens(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 BOOL BtlCmd_TryYawn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
     u32 adrs = BattleScriptReadWord(ctx);
-    if (ctx->battleMons[ctx->battlerIdTarget].moveEffectFlags & (192 << 5)) {
+    if (ctx->battleMons[ctx->battlerIdTarget].moveEffectFlags & MOVE_EFFECT_FLAG_YAWN) {
         BattleScriptIncrementPointer(ctx, adrs);
     } else {
         ctx->battleMons[ctx->battlerIdTarget].moveEffectFlags |= (2 << MOVE_EFFECT_FLAG_YAWN_SHIFT);
