@@ -31,7 +31,10 @@ HEADER_TEMPLATE := $(buildname)/rom_header_template.sbin
 
 MAKEFLAGS += --no-print-directory
 
-all: $(ROM)
+all:
+	$(MAKE) tools
+	$(MAKE) patch_mwasmarm
+	$(MAKE) $(ROM)
 
 tidy:
 	@$(MAKE) -C sub tidy
@@ -50,16 +53,17 @@ sdk9 sdk7: sdk
 main filesystem: | sdk9
 sub: | sdk7
 
-main: $(SBIN) $(ELF)
+main: $(SBIN) $(ELF) 
 main_lz: $(SBIN_LZ)
 sub: ; @$(MAKE) -C sub
 
 ROMSPEC        := rom.rsf
 MAKEROM_FLAGS  := $(DEFINES)
 
-$(NEF): libsyscall
+$(ALL_OBJS): filesystem
+$(ELF): filesystem libsyscall
 
-libsyscall:
+libsyscall: filesystem
 	$(MAKE) -C lib/syscall all install INSTALL_PREFIX=$(abspath $(WORK_DIR)/$(BUILD_DIR)) GAME_CODE=$(GAME_CODE)
 
 $(SBIN_LZ): $(BUILD_DIR)/component.files
@@ -69,7 +73,7 @@ $(BUILD_DIR)/component.files: main ;
 
 $(HEADER_TEMPLATE): ;
 
-$(ROM): $(ROMSPEC) tools filesystem main_lz sub $(BANNER)
+$(ROM): $(ROMSPEC) filesystem main_lz sub $(BANNER)
 	$(WINE) $(MAKEROM) $(MAKEROM_FLAGS) -DBUILD_DIR=$(BUILD_DIR) -DNITROFS_FILES="$(NITROFS_FILES:files/%=%)" -DTITLE_NAME="$(TITLE_NAME)" -DBNR="$(BANNER)" -DHEADER_TEMPLATE="$(HEADER_TEMPLATE)" $< $@
 	$(FIXROM) $@ --secure-crc $(SECURE_CRC) --game-code $(GAME_CODE)
 ifeq ($(COMPARE),1)
@@ -90,9 +94,11 @@ $(WORK_DIR)/include/global.h: $(FX_CONST_H) ;
 # Convenience targets
 heartgold:          ; @$(MAKE) GAME_VERSION=HEARTGOLD
 soulsilver:         ; @$(MAKE) GAME_VERSION=SOULSILVER
-compare-heartgold:  ; @$(MAKE) GAME_VERSION=HEARTGOLD  COMPARE=1
-compare-soulsilver: ; @$(MAKE) GAME_VERSION=SOULSILVER COMPARE=1
+compare_heartgold:  ; @$(MAKE) GAME_VERSION=HEARTGOLD  COMPARE=1
+compare_soulsilver: ; @$(MAKE) GAME_VERSION=SOULSILVER COMPARE=1
+clean_heartgold:    ; @$(MAKE) GAME_VERSION=HEARTGOLD clean
+clean_soulsilver:   ; @$(MAKE) GAME_VERSION=SOULSILVER clean
 
-compare:             compare-heartgold
+compare:             compare_heartgold
 
-.PHONY: heartgold soulsilver compare compare-heartgold compare-soulsilver
+.PHONY: heartgold soulsilver compare compare_heartgold compare_soulsilver clean_heartgold clean_soulsilver

@@ -865,10 +865,11 @@ void ReadNtrCell(char *path, struct JsonToCellOptions *options)
 
     options->cellCount = data[0x18] | (data[0x19] << 8);
     options->extended = data[0x1A] == 1;
-    if (!options->extended)
+    /*if (!options->extended)
     {
+        //in theory not extended should be implemented, however not 100% sure
         FATAL_ERROR("Don't know how to deal with not extended yet, bug red031000.\n");
-    }
+    }*/
 
     options->mappingType = data[0x20];
 
@@ -876,8 +877,9 @@ void ReadNtrCell(char *path, struct JsonToCellOptions *options)
 
     for (int i = 0; i < options->cellCount; i++)
     {
-        int offset = 0x30 + (i * 0x10);
+        int offset = 0x30 + (i * (options->extended ? 0x10 : 0x8));
         options->cells[i] = malloc(sizeof(struct Cell));
+        options->cells[i]->oamCount = data[offset] | (data[offset + 1] << 8);
         short cellAttrs = data[offset + 2] | (data[offset + 3] << 8);
         options->cells[i]->attributes.hFlip = (cellAttrs >> 8) & 1;
         options->cells[i]->attributes.vFlip = (cellAttrs >> 9) & 1;
@@ -885,60 +887,68 @@ void ReadNtrCell(char *path, struct JsonToCellOptions *options)
         options->cells[i]->attributes.boundingRect = (cellAttrs >> 11) & 1;
         options->cells[i]->attributes.boundingSphereRadius = cellAttrs & 0x3F;
 
-        options->cells[i]->maxX = data[offset + 8] | (data[offset + 9] << 8);
-        options->cells[i]->maxY = data[offset + 10] | (data[offset + 11] << 8);
-        options->cells[i]->minX = data[offset + 12] | (data[offset + 13] << 8);
-        options->cells[i]->minY = data[offset + 14] | (data[offset + 15] << 8);
+        if (options->extended)
+        {
+            options->cells[i]->maxX = data[offset + 8] | (data[offset + 9] << 8);
+            options->cells[i]->maxY = data[offset + 10] | (data[offset + 11] << 8);
+            options->cells[i]->minX = data[offset + 12] | (data[offset + 13] << 8);
+            options->cells[i]->minY = data[offset + 14] | (data[offset + 15] << 8);
+        }
     }
 
+    int offset = 0x30 + (options->cellCount * (options->extended ? 0x10 : 0x8));
     for (int i = 0; i < options->cellCount; i++)
     {
-        int offset = 0x30 + (options->cellCount * 0x10) + (i * 0x6);
+        options->cells[i]->oam = malloc(sizeof(struct OAM) * options->cells[i]->oamCount);
+        for (int j = 0; j < options->cells[i]->oamCount; j++)
+        {
+            //Attr0
 
-        //Attr0
+            //bits 0-7 Y coordinate
+            options->cells[i]->oam[j].attr0.YCoordinate = data[offset];
 
-        //bits 0-7 Y coordinate
-        options->cells[i]->oam.attr0.YCoordinate = data[offset];
+            //bit 8 rotation
+            options->cells[i]->oam[j].attr0.Rotation = data[offset + 1] & 1;
 
-        //bit 8 rotation
-        options->cells[i]->oam.attr0.Rotation = data[offset + 1] & 1;
+            //bit 9 Obj Size (if rotation) or Obj Disable (if not rotation)
+            options->cells[i]->oam[j].attr0.SizeDisable = (data[offset + 1] >> 1) & 1;
 
-        //bit 9 Obj Size (if rotation) or Obj Disable (if not rotation)
-        options->cells[i]->oam.attr0.SizeDisable = (data[offset + 1] >> 1) & 1;
+            //bits 10-11 Obj Mode
+            options->cells[i]->oam[j].attr0.Mode = (data[offset + 1] >> 2) & 3;
 
-        //bits 10-11 Obj Mode
-        options->cells[i]->oam.attr0.Mode = (data[offset + 1] >> 2) & 3;
+            //bit 12 Obj Mosaic
+            options->cells[i]->oam[j].attr0.Mosaic = (data[offset + 1] >> 4) & 1;
 
-        //bit 12 Obj Mosaic
-        options->cells[i]->oam.attr0.Mosaic = (data[offset + 1] >> 4) & 1;
+            //bit 13 Colours
+            options->cells[i]->oam[j].attr0.Colours = ((data[offset + 1] >> 5) & 1) == 0 ? 16 : 256;
 
-        //bit 13 Colours
-        options->cells[i]->oam.attr0.Colours = ((data[offset + 1] >> 5) & 1) == 0 ? 16 : 256;
+            //bits 14-15 Obj Shape
+            options->cells[i]->oam[j].attr0.Shape = (data[offset + 1] >> 6) & 3;
 
-        //bits 14-15 Obj Shape
-        options->cells[i]->oam.attr0.Shape = (data[offset + 1] >> 6) & 3;
+            //Attr1
 
-        //Attr1
+            //bits 0-8 X coordinate
+            options->cells[i]->oam[j].attr1.XCoordinate = data[offset + 2] | ((data[offset + 3] & 1) << 8);
 
-        //bits 0-8 X coordinate
-        options->cells[i]->oam.attr1.XCoordinate = data[offset + 2] | ((data[offset + 3] & 1) << 8);
+            //bits 9-13 Rotation and scaling (if rotation) bit 12 Horizontal flip, bit 13 Vertical flip (if not rotation)
+            options->cells[i]->oam[j].attr1.RotationScaling = (data[offset + 3] >> 1) & 0x1F;
 
-        //bits 9-13 Rotation and scaling (if rotation) bit 12 Horizontal flip, bit 13 Vertical flip (if not rotation)
-        options->cells[i]->oam.attr1.RotationScaling = (data[offset + 3] >> 1) & 0x1F;
+            //bits 14-15 Obj Size
+            options->cells[i]->oam[j].attr1.Size = (data[offset + 3] >> 6) & 3;
 
-        //bits 14-15 Obj Size
-        options->cells[i]->oam.attr1.Size = (data[offset + 3] >> 6) & 3;
+            //Attr2
 
-        //Attr2
+            //bits 0-9 Character Name?
+            options->cells[i]->oam[j].attr2.CharName = data[offset + 4] | ((data[offset + 5] & 3) << 8);
 
-        //bits 0-9 Character Name?
-        options->cells[i]->oam.attr2.CharName = data[offset + 4] | ((data[offset + 5] & 3) << 8);
+            //bits 10-11 Priority
+            options->cells[i]->oam[j].attr2.Priority = (data[offset + 5] >> 2) & 3;
 
-        //bits 10-11 Priority
-        options->cells[i]->oam.attr2.Priority = (data[offset + 5] >> 2) & 3;
+            //bits 12-15 Palette Number
+            options->cells[i]->oam[j].attr2.Palette = (data[offset + 5] >> 4) & 0xF;
 
-        //bits 12-15 Palette Number
-        options->cells[i]->oam.attr2.Palette = (data[offset + 5] >> 4) & 0xF;
+            offset += 6;
+        }
     }
 
     if (options->labelEnabled)
@@ -1020,81 +1030,95 @@ void WriteNtrCell(char *path, struct JsonToCellOptions *options)
 
     memset(KBECContents, 0, size);
 
-    if (!options->extended)
+    /*if (!options->extended)
     {
+        //in theory not extended should be implemented, however not 100% sure
         FATAL_ERROR("Don't know how to deal with not extended yet, bug red031000.\n");
-    }
+    }*/
 
     int i;
-    for (i = 0; i < options->cellCount * 0x10; i += 0x10)
+    int iterNum = (options->extended ? 0x10 : 0x8);
+    int totalOam = 0;
+    for (i = 0; i < options->cellCount * iterNum; i += iterNum)
     {
-        KBECContents[i] = 0x01; //number of images
-        short cellAttrs = (options->cells[i / 0x10]->attributes.hFlip << 8) | (options->cells[i / 0x10]->attributes.vFlip << 9)
-                        | (options->cells[i / 0x10]->attributes.hvFlip << 10) | (options->cells[i / 0x10]->attributes.boundingRect << 11)
-                        | (options->cells[i / 0x10]->attributes.boundingSphereRadius & 0x3F);
+        KBECContents[i] = options->cells[i / iterNum]->oamCount; //number of OAM entries
+        short cellAttrs = (options->cells[i / iterNum]->attributes.hFlip << 8) | (options->cells[i / iterNum]->attributes.vFlip << 9)
+                        | (options->cells[i / iterNum]->attributes.hvFlip << 10) | (options->cells[i / iterNum]->attributes.boundingRect << 11)
+                        | (options->cells[i / iterNum]->attributes.boundingSphereRadius & 0x3F);
         KBECContents[i + 2] = cellAttrs & 0xff; //cell attributes
         KBECContents[i + 3] = cellAttrs >> 8;
-        KBECContents[i + 4] = (i / 0x10 * 6) & 0xff; //pointer to OAM data
-        KBECContents[i + 5] = (i / 0x10 * 6) >> 8; //unlikely to be more than 16 bits, but there are 32 allocated, change if necessary
-        KBECContents[i + 8] = options->cells[i / 0x10]->maxX & 0xff; //maxX
-        KBECContents[i + 9] = options->cells[i / 0x10]->maxX >> 8;
-        KBECContents[i + 10] = options->cells[i / 0x10]->maxY & 0xff; //maxY
-        KBECContents[i + 11] = options->cells[i / 0x10]->maxY >> 8;
-        KBECContents[i + 12] = options->cells[i / 0x10]->minX & 0xff; //minX
-        KBECContents[i + 13] = options->cells[i / 0x10]->minX >> 8;
-        KBECContents[i + 14] = options->cells[i / 0x10]->minY & 0xff; //minY
-        KBECContents[i + 15] = options->cells[i / 0x10]->minY >> 8;
+        KBECContents[i + 4] = (totalOam * 6) & 0xff; //pointer to OAM data
+        KBECContents[i + 5] = (totalOam * 6) >> 8; //unlikely to be more than 16 bits, but there are 32 allocated, change if necessary
+        if (options->extended)
+        {
+            KBECContents[i + 8] = options->cells[i / iterNum]->maxX & 0xff; //maxX
+            KBECContents[i + 9] = options->cells[i / iterNum]->maxX >> 8;
+            KBECContents[i + 10] = options->cells[i / iterNum]->maxY & 0xff; //maxY
+            KBECContents[i + 11] = options->cells[i / iterNum]->maxY >> 8;
+            KBECContents[i + 12] = options->cells[i / iterNum]->minX & 0xff; //minX
+            KBECContents[i + 13] = options->cells[i / iterNum]->minX >> 8;
+            KBECContents[i + 14] = options->cells[i / iterNum]->minY & 0xff; //minY
+            KBECContents[i + 15] = options->cells[i / iterNum]->minY >> 8;
+        }
+        totalOam += options->cells[i / iterNum]->oamCount;
     }
 
     //OAM data
-    for (int j = i; j < options->cellCount * 6 + i; j += 6)
+
+    int offset = i;
+    for (int j = 0; j < options->cellCount; j++)
     {
-        //Attr0
+        for (int k = 0; k < options->cells[j]->oamCount; k++)
+        {
+            //Attr0
 
-        //bits 0-7 Y coordinate
-        KBECContents[j] = options->cells[(j - i) / 6]->oam.attr0.YCoordinate & 0xff;
+            //bits 0-7 Y coordinate
+            KBECContents[offset] = options->cells[j]->oam[k].attr0.YCoordinate & 0xff;
 
-        //bit 8 rotation
-        KBECContents[j + 1] = options->cells[(j - i) / 6]->oam.attr0.Rotation;
+            //bit 8 rotation
+            KBECContents[offset + 1] = options->cells[j]->oam[k].attr0.Rotation;
 
-        //bit 9 Obj Size (if rotation) or Obj Disable (if not rotation)
-        KBECContents[j + 1] |= options->cells[(j - i) / 6]->oam.attr0.SizeDisable << 1;
+            //bit 9 Obj Size (if rotation) or Obj Disable (if not rotation)
+            KBECContents[offset + 1] |= options->cells[j]->oam[k].attr0.SizeDisable << 1;
 
-        //bits 10-11 Obj Mode
-        KBECContents[j + 1] |= options->cells[(j - i) / 6]->oam.attr0.Mode << 2;
+            //bits 10-11 Obj Mode
+            KBECContents[offset + 1] |= options->cells[j]->oam[k].attr0.Mode << 2;
 
-        //bit 12 Obj Mosaic
-        KBECContents[j + 1] |= options->cells[(j - i) / 6]->oam.attr0.Mosaic << 4;
+            //bit 12 Obj Mosaic
+            KBECContents[offset + 1] |= options->cells[j]->oam[k].attr0.Mosaic << 4;
 
-        //bit 13 Colours
-        KBECContents[j + 1] |= (options->cells[(j - i) / 6]->oam.attr0.Colours == 16 ? 0 : 1) << 5;
+            //bit 13 Colours
+            KBECContents[offset + 1] |= (options->cells[j]->oam[k].attr0.Colours == 16 ? 0 : 1) << 5;
 
-        //bits 14-15 Obj Shape
-        KBECContents[j + 1] |= options->cells[(j - i) / 6]->oam.attr0.Shape << 6;
+            //bits 14-15 Obj Shape
+            KBECContents[offset + 1] |= options->cells[j]->oam[k].attr0.Shape << 6;
 
-        //Attr1
+            //Attr1
 
-        //bits 0-8 X coordinate
-        KBECContents[j + 2] = options->cells[(j - i) / 6]->oam.attr1.XCoordinate & 0xff;
-        KBECContents[j + 3] = options->cells[(j - i) / 6]->oam.attr1.XCoordinate >> 8;
+            //bits 0-8 X coordinate
+            KBECContents[offset + 2] = options->cells[j]->oam[k].attr1.XCoordinate & 0xff;
+            KBECContents[offset + 3] = options->cells[j]->oam[k].attr1.XCoordinate >> 8;
 
-        //bits 9-13 Rotation and scaling (if rotation) bit 12 Horizontal flip, bit 13 Vertical flip (if not rotation)
-        KBECContents[j + 3] |= options->cells[(j - i) / 6]->oam.attr1.RotationScaling << 1;
+            //bits 9-13 Rotation and scaling (if rotation) bit 12 Horizontal flip, bit 13 Vertical flip (if not rotation)
+            KBECContents[offset + 3] |= options->cells[j]->oam[k].attr1.RotationScaling << 1;
 
-        //bits 14-15 Obj Size
-        KBECContents[j + 3] |= options->cells[(j - i) / 6]->oam.attr1.Size << 6;
+            //bits 14-15 Obj Size
+            KBECContents[offset + 3] |= options->cells[j]->oam[k].attr1.Size << 6;
 
-        //Attr2
+            //Attr2
 
-        //bits 0-9 Character Name?
-        KBECContents[j + 4] = options->cells[(j - i) / 6]->oam.attr2.CharName & 0xff;
-        KBECContents[j + 5] = options->cells[(j - i) / 6]->oam.attr2.CharName >> 8;
+            //bits 0-9 Character Name?
+            KBECContents[offset + 4] = options->cells[j]->oam[k].attr2.CharName & 0xff;
+            KBECContents[offset + 5] = options->cells[j]->oam[k].attr2.CharName >> 8;
 
-        //bits 10-11 Priority
-        KBECContents[j + 5] |= options->cells[(j - i) / 6]->oam.attr2.Priority << 2;
+            //bits 10-11 Priority
+            KBECContents[offset + 5] |= options->cells[j]->oam[k].attr2.Priority << 2;
 
-        //bits 12-15 Palette Number
-        KBECContents[j + 5] |= options->cells[(j - i) / 6]->oam.attr2.Palette << 4;
+            //bits 12-15 Palette Number
+            KBECContents[offset + 5] |= options->cells[j]->oam[k].attr2.Palette << 4;
+
+            offset += 6;
+        }
     }
 
     fwrite(KBECContents, 1, size, fp);

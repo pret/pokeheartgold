@@ -99,19 +99,18 @@ $(ALL_LIB_OBJS): DEFINES = $(GLB_DEFINES)
 
 ALL_BUILDDIRS             := $(sort $(ALL_BUILDDIRS) $(foreach obj,$(ALL_OBJS),$(dir $(obj))))
 
-NEF               := $(BUILD_DIR)/$(NEFNAME).nef
-ELF               := $(NEF:%.nef=%.elf)
-LCF               := $(NEF:%.nef=%.lcf)
-RESPONSE          := $(NEF:%.nef=%.response)
-SBIN              := $(NEF:%.nef=%.sbin)
-XMAP              := $(NEF).xMAP
+ELF               := $(BUILD_DIR)/$(ELFNAME).elf
+LCF               := $(ELF:%.elf=%.lcf)
+RESPONSE          := $(ELF:%.elf=%.response)
+SBIN              := $(ELF:%.elf=%.sbin)
+XMAP              := $(ELF).xMAP
 
 EXCCFLAGS         := -Cpp_exceptions off
 
-MWCFLAGS           = $(DEFINES) $(OPTFLAGS) -enum int -lang c99 $(EXCCFLAGS) -gccext,on -proc $(PROC) -msgstyle gcc -gccinc -i ./include -i ./include/library -i $(WORK_DIR)/files -I$(WORK_DIR)/lib/include -ipa file -interworking -inline on,noauto -char signed -W all -W pedantic -W noimpl_signedunsigned -W noimplicitconv -W nounusedarg -W nomissingreturn -W error
+MWCFLAGS           = $(DEFINES) $(OPTFLAGS) -sym on -enum int -lang c99 $(EXCCFLAGS) -gccext,on -proc $(PROC) -msgstyle gcc -gccinc -i ./include -i ./include/library -i $(WORK_DIR)/files -I$(WORK_DIR)/lib/include -ipa file -interworking -inline on,noauto -char signed -W all -W pedantic -W noimpl_signedunsigned -W noimplicitconv -W nounusedarg -W nomissingreturn -W error
 
-MWASFLAGS          = $(DEFINES) -proc $(PROC_S) -gccinc -i . -i ./include -i $(WORK_DIR)/asm/include -i $(WORK_DIR)/files -i $(WORK_DIR)/lib/asm/include -i $(WORK_DIR)/lib/NitroDWC/asm/include -i $(WORK_DIR)/lib/NitroSDK/asm/include -i $(WORK_DIR)/lib/syscall/asm/include -I$(WORK_DIR)/lib/include -DSDK_ASM
-MWLDFLAGS         := -proc $(PROC) -nopic -nopid -interworking -map closure,unused -symtab sort -m _start -msgstyle gcc
+MWASFLAGS          = $(DEFINES) -proc $(PROC_S) -g -gccinc -i . -i ./include -i $(WORK_DIR)/asm/include -i $(WORK_DIR)/files -i $(WORK_DIR)/lib/asm/include -i $(WORK_DIR)/lib/NitroDWC/asm/include -i $(WORK_DIR)/lib/NitroSDK/asm/include -i $(WORK_DIR)/lib/syscall/asm/include -I$(WORK_DIR)/lib/include -DSDK_ASM
+MWLDFLAGS         := -proc $(PROC) -sym on -nopic -nopid -interworking -map closure,unused -symtab sort -m _start -msgstyle gcc
 ARFLAGS           := rcS
 
 MW_COMPILE = $(WINE) $(MWCC) $(MWCFLAGS)
@@ -119,7 +118,7 @@ MW_ASSEMBLE = $(WINE) $(MWAS) $(MWASFLAGS)
 
 export MWCIncludes := lib/include
 
-LSF               := $(addsuffix .lsf,$(NEFNAME))
+LSF               := $(addsuffix .lsf,$(ELFNAME))
 ifneq ($(LSF),)
 OVERLAYS          := $(shell $(GREP) -o "^Overlay \w+" $(LSF) | cut -d' ' -f2)
 else
@@ -132,13 +131,11 @@ DUMMY := $(shell mkdir -p $(ALL_BUILDDIRS))
 .SECONDARY:
 .SECONDEXPANSION:
 .DELETE_ON_ERROR:
-.PHONY: all tidy clean tools clean-tools $(TOOLDIRS)
+.PHONY: all tidy clean tools clean-tools patch_mwasmarm $(TOOLDIRS)
 .PRECIOUS: $(SBIN)
-.NOTPARALLEL:
 
-.PHONY: $(MWAS)
-$(MWAS):
-	$(ASPATCH) -q $@
+patch_mwasmarm:
+	$(ASPATCH) -q $(MWAS)
 
 ifeq ($(NODEP),)
 ifneq ($(WINPATH),)
@@ -212,12 +209,9 @@ $(RESPONSE): $(LSF) $(RESPONSE_TEMPLATE)
 # Locate crt0.o
 CRT0_OBJ := lib/asm/crt0.o
 
-$(NEF): $(LCF) $(RESPONSE) $(ALL_OBJS)
-	cd $(BUILD_DIR) && LM_LICENSE_FILE=$(BACK_REL)/$(LM_LICENSE_FILE) $(WINE) $(MWLD) $(MWLDFLAGS) $(LIBS) -o $(BACK_REL)/$(NEF) $(LCF:$(BUILD_DIR)/%=%) @$(RESPONSE:$(BUILD_DIR)/%=%) $(CRT0_OBJ)
-
 .INTERMEDIATE: $(BUILD_DIR)/obj.list
 
-$(SBIN): build/%.sbin: build/%.nef
+$(SBIN): build/%.sbin: build/%.elf
 ifeq ($(SBIN),$(BUILD_DIR)/main.sbin)
 # Overlay 123 is encrypted in the retail ROM, so we need to reencrypt it after building it
 	cd $(BUILD_DIR) && ../../$(MOD123ENCRY) encry main OVY_123_enc.sbin 123 && mv OVY_123_enc.sbin OVY_123.sbin
@@ -226,7 +220,10 @@ ifeq ($(COMPARE),1)
 	$(SHA1SUM) --quiet -c $*.sha1
 endif
 
-$(ELF): %.elf: %.nef
-	$(NTRMERGE) $*
+$(ELF): $(ALL_OBJS)
+	$(MAKE) $(LCF)
+	$(MAKE) $(RESPONSE)
+	cd $(BUILD_DIR) && LM_LICENSE_FILE=$(BACK_REL)/$(LM_LICENSE_FILE) $(WINE) $(MWLD) $(MWLDFLAGS) $(LIBS) -o $(BACK_REL)/$(ELF) $(LCF:$(BUILD_DIR)/%=%) @$(RESPONSE:$(BUILD_DIR)/%=%) $(CRT0_OBJ)
+#	$(NTRMERGE) $*
 
 print-% : ; $(info $* is a $(flavor $*) variable set to [$($*)]) @true

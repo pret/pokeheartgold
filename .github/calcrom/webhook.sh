@@ -8,7 +8,7 @@ fi
 build_name=$1
 url=$2
 build_subdir=${1//poke/}.us
-arm9name=${arm9name:-main.nef}
+arm9name=${arm9name:-main.elf}
 map_file=$(dirname "$0")/../../build/${build_subdir}/${arm9name}.xMAP
 if [ ! -f $map_file ]; then
   echo "$map_file does not exist!"

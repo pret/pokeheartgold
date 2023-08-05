@@ -30,7 +30,7 @@ $(error Unsupported game language: $(GAME_LANGUAGE))
 endif
 
 BUILD_DIR         := build/$(buildname)
-NEFNAME           := main
+ELFNAME           := main
 
 GF_DEFINES  := -D$(GAME_VERSION) -DGAME_REMASTER=$(GAME_REMASTER) -D$(GAME_LANGUAGE)
 ifeq ($(NO_GF_ASSERT),)

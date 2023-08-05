@@ -122,48 +122,64 @@ struct JsonToCellOptions *ParseNCERJson(char *path)
             options->cells[i]->minY = (short)GetInt(minY);
         }
         //OAM data
-        cJSON *OAM = cJSON_GetObjectItemCaseSensitive(cell, "OAM");
+        cJSON *oamCount = cJSON_GetObjectItemCaseSensitive(cell, "oamCount");
 
-        //Attr0
-        cJSON *Attr0 = cJSON_GetObjectItemCaseSensitive(OAM, "Attr0");
+        options->cells[i]->oamCount = (short)GetInt(oamCount);
+        options->cells[i]->oam = malloc(sizeof(struct OAM) * options->cells[i]->oamCount);
 
-        cJSON *YCoordinate = cJSON_GetObjectItemCaseSensitive(Attr0, "YCoordinate");
-        cJSON *Rotation = cJSON_GetObjectItemCaseSensitive(Attr0, "Rotation");
-        cJSON *SizeDisable = cJSON_GetObjectItemCaseSensitive(Attr0, "SizeDisable");
-        cJSON *Mode = cJSON_GetObjectItemCaseSensitive(Attr0, "Mode");
-        cJSON *Mosaic = cJSON_GetObjectItemCaseSensitive(Attr0, "Mosaic");
-        cJSON *Colours = cJSON_GetObjectItemCaseSensitive(Attr0, "Colours");
-        cJSON *Shape = cJSON_GetObjectItemCaseSensitive(Attr0, "Shape");
+        cJSON *OAMArray = cJSON_GetObjectItemCaseSensitive(cell, "OAM");
+        cJSON *OAM = NULL;
 
-        options->cells[i]->oam.attr0.YCoordinate = GetInt(YCoordinate);
-        options->cells[i]->oam.attr0.Rotation = GetBool(Rotation);
-        options->cells[i]->oam.attr0.SizeDisable = GetBool(SizeDisable);
-        options->cells[i]->oam.attr0.Mode = GetInt(Mode);
-        options->cells[i]->oam.attr0.Mosaic = GetBool(Mosaic);
-        options->cells[i]->oam.attr0.Colours = GetInt(Colours);
-        options->cells[i]->oam.attr0.Shape = GetInt(Shape);
+        int j = 0;
 
-        //Attr1
-        cJSON *Attr1 = cJSON_GetObjectItemCaseSensitive(OAM, "Attr1");
+        cJSON_ArrayForEach(OAM, OAMArray)
+        {
+            if (j > options->cells[i]->oamCount - 1)
+                FATAL_ERROR("OAM count is incorrect.\n");
 
-        cJSON *XCoordinate = cJSON_GetObjectItemCaseSensitive(Attr1, "XCoordinate");
-        cJSON *RotationScaling = cJSON_GetObjectItemCaseSensitive(Attr1, "RotationScaling");
-        cJSON *Size = cJSON_GetObjectItemCaseSensitive(Attr1, "Size");
+            //Attr0
+            cJSON *Attr0 = cJSON_GetObjectItemCaseSensitive(OAM, "Attr0");
 
-        options->cells[i]->oam.attr1.XCoordinate = GetInt(XCoordinate);
-        options->cells[i]->oam.attr1.RotationScaling = GetInt(RotationScaling);
-        options->cells[i]->oam.attr1.Size = GetInt(Size);
+            cJSON *YCoordinate = cJSON_GetObjectItemCaseSensitive(Attr0, "YCoordinate");
+            cJSON *Rotation = cJSON_GetObjectItemCaseSensitive(Attr0, "Rotation");
+            cJSON *SizeDisable = cJSON_GetObjectItemCaseSensitive(Attr0, "SizeDisable");
+            cJSON *Mode = cJSON_GetObjectItemCaseSensitive(Attr0, "Mode");
+            cJSON *Mosaic = cJSON_GetObjectItemCaseSensitive(Attr0, "Mosaic");
+            cJSON *Colours = cJSON_GetObjectItemCaseSensitive(Attr0, "Colours");
+            cJSON *Shape = cJSON_GetObjectItemCaseSensitive(Attr0, "Shape");
 
-        //Attr2
-        cJSON *Attr2 = cJSON_GetObjectItemCaseSensitive(OAM, "Attr2");
+            options->cells[i]->oam[j].attr0.YCoordinate = GetInt(YCoordinate);
+            options->cells[i]->oam[j].attr0.Rotation = GetBool(Rotation);
+            options->cells[i]->oam[j].attr0.SizeDisable = GetBool(SizeDisable);
+            options->cells[i]->oam[j].attr0.Mode = GetInt(Mode);
+            options->cells[i]->oam[j].attr0.Mosaic = GetBool(Mosaic);
+            options->cells[i]->oam[j].attr0.Colours = GetInt(Colours);
+            options->cells[i]->oam[j].attr0.Shape = GetInt(Shape);
 
-        cJSON *CharName = cJSON_GetObjectItemCaseSensitive(Attr2, "CharName");
-        cJSON *Priority = cJSON_GetObjectItemCaseSensitive(Attr2, "Priority");
-        cJSON *Palette = cJSON_GetObjectItemCaseSensitive(Attr2, "Palette");
+            //Attr1
+            cJSON *Attr1 = cJSON_GetObjectItemCaseSensitive(OAM, "Attr1");
 
-        options->cells[i]->oam.attr2.CharName = GetInt(CharName);
-        options->cells[i]->oam.attr2.Priority = GetInt(Priority);
-        options->cells[i]->oam.attr2.Palette = GetInt(Palette);
+            cJSON *XCoordinate = cJSON_GetObjectItemCaseSensitive(Attr1, "XCoordinate");
+            cJSON *RotationScaling = cJSON_GetObjectItemCaseSensitive(Attr1, "RotationScaling");
+            cJSON *Size = cJSON_GetObjectItemCaseSensitive(Attr1, "Size");
+
+            options->cells[i]->oam[j].attr1.XCoordinate = GetInt(XCoordinate);
+            options->cells[i]->oam[j].attr1.RotationScaling = GetInt(RotationScaling);
+            options->cells[i]->oam[j].attr1.Size = GetInt(Size);
+
+            //Attr2
+            cJSON *Attr2 = cJSON_GetObjectItemCaseSensitive(OAM, "Attr2");
+
+            cJSON *CharName = cJSON_GetObjectItemCaseSensitive(Attr2, "CharName");
+            cJSON *Priority = cJSON_GetObjectItemCaseSensitive(Attr2, "Priority");
+            cJSON *Palette = cJSON_GetObjectItemCaseSensitive(Attr2, "Palette");
+
+            options->cells[i]->oam[j].attr2.CharName = GetInt(CharName);
+            options->cells[i]->oam[j].attr2.Priority = GetInt(Priority);
+            options->cells[i]->oam[j].attr2.Palette = GetInt(Palette);
+
+            j++;
+        }
 
         i++;
     }
@@ -204,29 +220,38 @@ char *GetNCERJson(struct JsonToCellOptions *options)
             cJSON_AddNumberToObject(cell, "minY", options->cells[i]->minY);
         }
 
-        cJSON *OAM = cJSON_AddObjectToObject(cell, "OAM");
+        cJSON_AddNumberToObject(cell, "oamCount", options->cells[i]->oamCount);
 
-        cJSON *Attr0 = cJSON_AddObjectToObject(OAM, "Attr0");
+        cJSON *OAMArray = cJSON_AddArrayToObject(cell, "OAM");
 
-        cJSON_AddNumberToObject(Attr0, "YCoordinate", options->cells[i]->oam.attr0.YCoordinate);
-        cJSON_AddBoolToObject(Attr0, "Rotation", options->cells[i]->oam.attr0.Rotation);
-        cJSON_AddBoolToObject(Attr0, "SizeDisable", options->cells[i]->oam.attr0.SizeDisable);
-        cJSON_AddNumberToObject(Attr0, "Mode", options->cells[i]->oam.attr0.Mode);
-        cJSON_AddBoolToObject(Attr0, "Mosaic", options->cells[i]->oam.attr0.Mosaic);
-        cJSON_AddNumberToObject(Attr0, "Colours", options->cells[i]->oam.attr0.Colours);
-        cJSON_AddNumberToObject(Attr0, "Shape", options->cells[i]->oam.attr0.Shape);
+        for (int j = 0; j < options->cells[i]->oamCount; j++)
+        {
+            cJSON *OAM = cJSON_CreateObject();
 
-        cJSON *Attr1 = cJSON_AddObjectToObject(OAM, "Attr1");
+            cJSON *Attr0 = cJSON_AddObjectToObject(OAM, "Attr0");
 
-        cJSON_AddNumberToObject(Attr1, "XCoordinate", options->cells[i]->oam.attr1.XCoordinate);
-        cJSON_AddNumberToObject(Attr1, "RotationScaling", options->cells[i]->oam.attr1.RotationScaling);
-        cJSON_AddNumberToObject(Attr1, "Size", options->cells[i]->oam.attr1.Size);
+            cJSON_AddNumberToObject(Attr0, "YCoordinate", options->cells[i]->oam[j].attr0.YCoordinate);
+            cJSON_AddBoolToObject(Attr0, "Rotation", options->cells[i]->oam[j].attr0.Rotation);
+            cJSON_AddBoolToObject(Attr0, "SizeDisable", options->cells[i]->oam[j].attr0.SizeDisable);
+            cJSON_AddNumberToObject(Attr0, "Mode", options->cells[i]->oam[j].attr0.Mode);
+            cJSON_AddBoolToObject(Attr0, "Mosaic", options->cells[i]->oam[j].attr0.Mosaic);
+            cJSON_AddNumberToObject(Attr0, "Colours", options->cells[i]->oam[j].attr0.Colours);
+            cJSON_AddNumberToObject(Attr0, "Shape", options->cells[i]->oam[j].attr0.Shape);
 
-        cJSON *Attr2 = cJSON_AddObjectToObject(OAM, "Attr2");
+            cJSON *Attr1 = cJSON_AddObjectToObject(OAM, "Attr1");
 
-        cJSON_AddNumberToObject(Attr2, "CharName", options->cells[i]->oam.attr2.CharName);
-        cJSON_AddNumberToObject(Attr2, "Priority", options->cells[i]->oam.attr2.Priority);
-        cJSON_AddNumberToObject(Attr2, "Palette", options->cells[i]->oam.attr2.Palette);
+            cJSON_AddNumberToObject(Attr1, "XCoordinate", options->cells[i]->oam[j].attr1.XCoordinate);
+            cJSON_AddNumberToObject(Attr1, "RotationScaling", options->cells[i]->oam[j].attr1.RotationScaling);
+            cJSON_AddNumberToObject(Attr1, "Size", options->cells[i]->oam[j].attr1.Size);
+
+            cJSON *Attr2 = cJSON_AddObjectToObject(OAM, "Attr2");
+
+            cJSON_AddNumberToObject(Attr2, "CharName", options->cells[i]->oam[j].attr2.CharName);
+            cJSON_AddNumberToObject(Attr2, "Priority", options->cells[i]->oam[j].attr2.Priority);
+            cJSON_AddNumberToObject(Attr2, "Palette", options->cells[i]->oam[j].attr2.Palette);
+
+            cJSON_AddItemToArray(OAMArray, OAM);
+        }
 
         cJSON_AddItemToArray(cells, cell);
     }
@@ -564,6 +589,7 @@ void FreeNCERCell(struct JsonToCellOptions *options)
 {
     for (int i = 0; i < options->cellCount; i++)
     {
+        free(options->cells[i]->oam);
         free(options->cells[i]);
     }
     if (options->labelEnabled)

@@ -15,7 +15,9 @@ LIB            := $(BUILD_DIR)/libsyscall.a
 INSTALL_PREFIX ?= $(WORK_DIR)/lib/ARM9-TS
 INSTALL_LIBDIR := $(INSTALL_PREFIX)/lib
 
-all: $(LIB)
+all: 
+	$(MAKE) patch_mwasmarm
+	$(MAKE) $(LIB)
 
 ASM_SRCS    := asm/_secure_$(GAME_CODE).s
 

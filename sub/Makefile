@@ -3,7 +3,7 @@ BUILD_DIR    := build
 # all paths referring up from BUILD_DIR must be relative.
 BACK_REL     := ..
 TOOLSDIR     := ../tools
-NEFNAME      := ichneumon_sub
+ELFNAME      := ichneumon_sub
 MWCCVER      := 2.0/sp2p3
 PROC         := arm7tdmi
 PROC_S       := arm4t
@@ -19,7 +19,11 @@ tidy:
 
 clean: tidy
 
-all: $(SBIN) $(ELF)
+all:
+	$(MAKE) patch_mwasmarm 
+	$(MAKE) target
+
+target: $(SBIN) $(ELF)
 
 compare: COMPARE := 1
 compare: all
