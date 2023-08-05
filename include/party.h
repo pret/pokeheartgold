@@ -3,6 +3,8 @@
 
 #include "pokemon_types_def.h"
 
+#define PARTY_MAX 6
+
 u32 SaveArray_Party_sizeof(void);
 u32 PartyCore_sizeof(void);
 PARTY * SaveArray_Party_Alloc(HeapID heapId);
