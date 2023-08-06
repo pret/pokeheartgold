@@ -667,13 +667,13 @@ u16 BattleSystem_CheckEvolution(BATTLE_SETUP *setup, int *selectedMonIndex, int 
     }
     
     while (setup->levelUpFlag) {
-        for (*selectedMonIndex = 0; *selectedMonIndex < PARTY_MAX; (*selectedMonIndex)++) {
+        for (*selectedMonIndex = 0; *selectedMonIndex < PARTY_SIZE; (*selectedMonIndex)++) {
             if (setup->levelUpFlag & MaskOfFlagNo(*selectedMonIndex)) {
                 setup->levelUpFlag &= MaskOfFlagNo(*selectedMonIndex) ^ 0xFFFFFFFF;
                 break;
             }
         }
-        if (*selectedMonIndex < PARTY_MAX) {
+        if (*selectedMonIndex < PARTY_SIZE) {
             mon = GetPartyMonByIndex(setup->party[0], *selectedMonIndex);
             species = GetMonEvolution(setup->party[0], mon, EVOCTX_LEVELUP, setup->evolutionLocation, evolutionCondition);
             if (species) {
