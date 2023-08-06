@@ -1809,7 +1809,7 @@ ov12_02259514: ; 0x02259514
 	cmp r1, r0
 	beq _02259586
 	add r0, r5, #0
-	bl ov12_0223BC38
+	bl BattleSystem_GetHpBar
 	bl ov12_02265D74
 _02259586:
 	add r0, r4, #0
@@ -1983,14 +1983,14 @@ ov12_022596B8: ; 0x022596B8
 	cmp r1, #0
 	bne _022596E4
 	ldrh r1, [r4, #2]
-	bl ov12_0223BB28
+	bl BattleSystem_GameStatIncrement
 	b _022596E4
 _022596D8:
 	ldrb r1, [r5, r1]
 	cmp r1, #0
 	beq _022596E4
 	ldrh r1, [r4, #2]
-	bl ov12_0223BB28
+	bl BattleSystem_GameStatIncrement
 _022596E4:
 	mov r1, #0x65
 	lsl r1, r1, #2
@@ -10528,7 +10528,7 @@ ov12_0225DAD4: ; 0x0225DAD4
 	cmp r1, r0
 	beq _0225DB16
 	ldr r0, [r4]
-	bl ov12_0223BC38
+	bl BattleSystem_GetHpBar
 	str r0, [sp, #8]
 	b _0225DB1A
 _0225DB16:
@@ -11423,7 +11423,7 @@ ov12_0225E250: ; 0x0225E250
 	cmp r1, r0
 	beq _0225E28A
 	ldr r0, [r4]
-	bl ov12_0223BC38
+	bl BattleSystem_GetHpBar
 	add r5, r0, #0
 	b _0225E28C
 _0225E28A:
@@ -11803,7 +11803,7 @@ ov12_0225E568: ; 0x0225E568
 	cmp r1, r0
 	beq _0225E5A2
 	ldr r0, [r4]
-	bl ov12_0223BC38
+	bl BattleSystem_GetHpBar
 	add r6, r0, #0
 	b _0225E5A4
 _0225E5A2:
@@ -13179,7 +13179,7 @@ _0225F070:
 	ldrb r7, [r0]
 	ldr r0, [r4]
 	add r1, r6, #0
-	bl ov12_0223BC38
+	bl BattleSystem_GetHpBar
 	mov r1, #0
 	mov r2, #1
 	add r5, r0, #0
@@ -13244,7 +13244,7 @@ _0225F10A:
 	ldr r1, [r1, #4]
 	ldrb r1, [r1, #0x11]
 	lsl r1, r1, #1
-	bl ov12_0223BC38
+	bl BattleSystem_GetHpBar
 	add r5, r0, #0
 	bl ov12_02264E00
 	mov r1, #0
@@ -13329,7 +13329,7 @@ _0225F1B2:
 	lsl r7, r0, #1
 	ldr r0, [r4]
 	add r1, r7, #0
-	bl ov12_0223BC38
+	bl BattleSystem_GetHpBar
 	str r0, [sp, #0x10]
 	ldr r0, [r4, #8]
 	add r1, r7, #0
@@ -14388,7 +14388,7 @@ ov12_0225FA44: ; 0x0225FA44
 	cmp r1, r0
 	beq _0225FA7E
 	ldr r0, [r4]
-	bl ov12_0223BC38
+	bl BattleSystem_GetHpBar
 	add r7, r0, #0
 	b _0225FA80
 _0225FA7E:
@@ -17416,11 +17416,11 @@ _02261278:
 	bx lr
 	thumb_func_end ov12_02261270
 
-	thumb_func_start ov12_0226127C
-ov12_0226127C: ; 0x0226127C
+	thumb_func_start OpponentData_GetHpBar
+OpponentData_GetHpBar: ; 0x0226127C
 	add r0, #0x28
 	bx lr
-	thumb_func_end ov12_0226127C
+	thumb_func_end OpponentData_GetHpBar
 
 	thumb_func_start ov12_02261280
 ov12_02261280: ; 0x02261280

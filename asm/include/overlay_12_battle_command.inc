@@ -143,7 +143,7 @@
 .public BattleSystem_GetTextFrameDelay
 .public ov12_0223B870
 .public ov12_0223BB1C
-.public ov12_0223BB28
+.public BattleSystem_GameStatIncrement
 .public ov12_0223BB44
 .public ov12_0223BBF0
 .public ov12_0223BCF0

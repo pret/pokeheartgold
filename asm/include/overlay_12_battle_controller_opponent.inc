@@ -195,7 +195,7 @@
 .public ov12_0223BAEC
 .public ov12_0223BB04
 .public ov12_0223BB10
-.public ov12_0223BB28
+.public BattleSystem_GameStatIncrement
 .public ov12_0223BB64
 .public ov12_0223BB6C
 .public ov12_0223BB78
@@ -205,7 +205,7 @@
 .public ov12_0223BBA8
 .public ov12_0223BBC0
 .public ov12_0223BBD8
-.public ov12_0223BC38
+.public BattleSystem_GetHpBar
 .public ov12_0223BC98
 .public ov12_0223BCC8
 .public BattleSystem_GetWinLoseFlags
@@ -248,7 +248,7 @@
 .public ov12_02261258
 .public ov12_02261264
 .public ov12_02261270
-.public ov12_0226127C
+.public OpponentData_GetHpBar
 .public ov12_02261280
 .public ov12_02261294
 .public ov12_02261FD4

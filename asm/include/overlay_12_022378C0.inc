@@ -217,7 +217,7 @@
 .public BattleSystem_TryChangeForm
 .public ov12_0223B870
 .public ov12_0223BBF0
-.public ov12_0223BC48
+.public BattleSystem_HpBar_Init
 .public ov12_0223BCC8
 .public ov12_0223BD2C
 .public ov12_0223BD3C
@@ -238,7 +238,7 @@
 .public ov12_02258E7C
 .public ov12_02260EA4
 .public ov12_02261264
-.public ov12_0226127C
+.public OpponentData_GetHpBar
 .public ov12_022621C4
 .public ov12_02265FD4
 .public ov12_0226604C

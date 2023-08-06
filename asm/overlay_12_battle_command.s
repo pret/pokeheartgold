@@ -2624,7 +2624,7 @@ _02246E2A:
 	bl SetMonData
 	ldr r0, [r4]
 	mov r1, #0x32
-	bl ov12_0223BB28
+	bl BattleSystem_GameStatIncrement
 _02246E5C:
 	add r0, r5, #0
 	bl sub_0208311C

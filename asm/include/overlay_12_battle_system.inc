@@ -146,7 +146,7 @@
 .public ov12_0223BB04
 .public ov12_0223BB10
 .public ov12_0223BB1C
-.public ov12_0223BB28
+.public BattleSystem_GameStatIncrement
 .public ov12_0223BB44
 .public ov12_0223BB64
 .public ov12_0223BB6C
@@ -163,8 +163,8 @@
 .public ov12_0223BC14
 .public ov12_0223BC20
 .public ov12_0223BC2C
-.public ov12_0223BC38
-.public ov12_0223BC48
+.public BattleSystem_GetHpBar
+.public BattleSystem_HpBar_Init
 .public ov12_0223BC98
 .public ov12_0223BCC8
 .public ov12_0223BCF0
@@ -211,8 +211,8 @@
 .public ov12_022582B8
 .public ov12_02261258
 .public ov12_02261270
-.public ov12_0226127C
-.public ov12_02264BCC
+.public OpponentData_GetHpBar
+.public BattleHpBar_LoadResources
 .public ov12_02264C68
 .public ov12_02264EE0
 .public ov12_02264F28

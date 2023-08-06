@@ -1,4 +1,5 @@
 #include "global.h"
+#include "battle/battle_hp_bar.h"
 #include "battle_controller_opponent.h"
 #include "battle_system.h"
 #include "party.h"
@@ -880,4 +881,131 @@ void BattleSystem_SetBackground(BattleSystem *bsys) {
     
     ov12_02266008(&bsys->unk17C[0]);
     ov12_02266008(&bsys->unk17C[1]);
+}
+
+u8 *ov12_0223BAD0(BattleSystem *bsys) {
+    return bsys->unk230;
+}
+
+u16 *ov12_0223BAD8(BattleSystem *bsys) {
+    return bsys->unk234;
+}
+
+u16 *ov12_0223BAE0(BattleSystem *bsys) {
+    return &bsys->unk2238[0];
+}
+
+u16 *ov12_0223BAEC(BattleSystem *bsys) {
+    return &bsys->unk2318[0];
+}
+
+int BattleSystem_GetWeather(BattleSystem *bsys) {
+    return bsys->weather;
+}
+
+u8 ov12_0223BB04(BattleSystem *bsys) {
+    return bsys->unk2421;
+}
+
+void ov12_0223BB10(BattleSystem *bsys, u8 a1) {
+    bsys->unk2421 = a1;
+}
+
+int ov12_0223BB1C(BattleSystem *bsys) {
+    return bsys->unk2430;
+}
+
+void BattleSystem_GameStatIncrement(BattleSystem *bsys, int id) {
+    if (bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) {
+        return;
+    }
+    GameStats_Inc(bsys->gameStats, id);
+}
+
+void ov12_0223BB44(BattleSystem *bsys) {
+    if (bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) {
+        return;
+    }
+    GameStats_AddSpecial(bsys->gameStats, 21);
+}
+
+void ov12_0223BB64(BattleSystem *bsys, int a1) {
+    bsys->unk2440 = a1;
+}
+
+void ov12_0223BB6C(BattleSystem *bsys, u8 a1) {
+    bsys->unk2442 = a1;
+}
+
+void *ov12_0223BB78(BattleSystem *bsys) {
+    return bsys->unk1BC;
+}
+
+void ov12_0223BB80(BattleSystem *bsys, void *a1) {
+    bsys->unk1BC = a1;
+}
+
+UnkBattleSystemSub1D0 *ov12_0223BB88(BattleSystem *bsys, int index) {
+    return &bsys->unk1D0[index];
+}
+
+u8 *ov12_0223BB94(UnkBattleSystemSub1D0 *ptr, int index) {
+    GF_ASSERT(index < 4);
+    return ptr[index].unk0;
+}
+
+void ov12_0223BBA8(UnkBattleSystemSub1D0 *ptr, int index, int a2) {
+    GF_ASSERT(index < 4);
+    ptr[index].unk4 = a2;
+}
+
+void ov12_0223BBC0(UnkBattleSystemSub1D0 *ptr, int index, int a2) {
+    GF_ASSERT(index < 4);
+    ptr[index].unk8 = a2;
+}
+
+void ov12_0223BBD8(UnkBattleSystemSub1D0 *ptr, int index, int a2) {
+    GF_ASSERT(index < 4);
+    ptr[index].unkC = a2;
+}
+
+void ov12_0223BBF0(BattleSystem *bsys, u8 a1) {
+    bsys->unk23FD = a1;
+}
+
+void ov12_0223BBFC(BattleSystem *bsys, u8 *a1) {
+    bsys->unk23F4 = a1;
+}
+
+void ov12_0223BC08(BattleSystem *bsys, u8 *a1) {
+    bsys->unk23F8 = a1;
+}
+
+void ov12_0223BC14(BattleSystem *bsys, u8 a1) {
+    *bsys->unk23F4 = a1;
+}
+
+void ov12_0223BC20(BattleSystem *bsys, u8 a1) {
+    *bsys->unk23F8 = a1;
+}
+
+void ov12_0223BC2C(BattleSystem *bsys, u8 a1) {
+    bsys->unk23FE = a1;
+}
+
+BattleHpBar *BattleSystem_GetHpBar(BattleSystem *bsys, int battlerId) {
+    return OpponentData_GetHpBar(bsys->opponentData[battlerId]);
+}
+
+void BattleSystem_HpBar_Init(BattleSystem *bsys) {
+    int i;
+    BattleHpBar *hpBar;
+    
+    for (i = 0; i < bsys->maxBattlers; i++) {
+        hpBar = OpponentData_GetHpBar(bsys->opponentData[i]);
+        hpBar->bsys = bsys;
+        hpBar->type = ov12_02265B64(ov12_02261258(bsys->opponentData[i]), BattleSystem_GetBattleType(bsys));
+        BattleHpBar_LoadResources(hpBar);
+        ov12_02264F28(hpBar, FALSE);
+    }
 }

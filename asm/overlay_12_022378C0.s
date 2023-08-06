@@ -989,7 +989,7 @@ _02237FD8:
 	mov r2, #0xc0
 	bl sub_02009408
 	add r0, r4, #0
-	bl ov12_0223BC48
+	bl BattleSystem_HpBar_Init
 	bl ov12_022396F0
 	mov r0, #5
 	bl ov07_0221BEDC
@@ -3813,7 +3813,7 @@ _022398BE:
 	beq _022398FE
 _022398D6:
 	add r0, r7, #0
-	bl ov12_0226127C
+	bl OpponentData_GetHpBar
 	add r1, r0, #0
 	beq _022398FE
 	ldr r0, [r1, #0x28]

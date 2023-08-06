@@ -6,6 +6,7 @@
 #include "bg_window.h"
 #include "item.h"
 #include "font.h"
+#include "game_stats.h"
 #include "move.h"
 #include "options.h"
 #include "palette.h"
@@ -418,35 +419,38 @@ typedef struct BATTLECONTEXT {
 
 typedef struct BattleSystem BattleSystem;
 
-typedef struct OpponentData_UnkSub_28 {
-    u8 unk0;
-    u32 unk4;
-    u32 unk8;
+typedef struct BattleHpBar {
+    u8 script;
+    void *unk4;
+    void *unk8;
     BattleSystem *bsys;
-    u32 unk10;
-    u8 unk14;
-    u8 unk15;
-    u8 unk16;
-    u8 unk17;
-    int unk18;
-    int unk1C;
-    int unk20;
-    int unk24;
-    int unk28;
-    int unk2C;
-    int unk30;
-    int unk34;
-    u8 unk38;
-    u8 unk39;
-    u8 unk3A;
+    void *unk10;
+    s32 hp;
+    s32 maxHp;
+    s32 damage;
+    s32 hpCalc;
+    u8 battlerId;
+    u8 type;
+    u8 unk26;
+    u8 unk27;
+    s32 exp;
+    s32 maxExp;
+    s32 gainedExp;
+    s32 expCalc;
+    u8 level;
+    u8 gender;
+    u8 status;
     u8 unk3B;
     u8 unk3C;
     u8 unk3D;
     u8 unk3E;
-    u8 unk3F_0:1, unk3F_1:1, unk3F_2:1, unk3F_3:1;
-    u32 unk40;
+    u8 unk3F_0:1;
+    u8 unk3F_1:1;
+    u8 unk3F_2:1;
+    u8 unk3F_3:1;
+    void *unk40;
     u16 unk44;
-} OpponentData_UnkSub_28;
+} BattleHpBar;
 
 typedef struct OpponentData_UnkSub_70 {
     s8 unk0;
@@ -465,7 +469,7 @@ typedef struct OpponentData {
     u32 *unk1C;
     u32 *unk20;
     u32 *unk24;
-    OpponentData_UnkSub_28 unk28;
+    BattleHpBar hpBar;
     OpponentData_UnkSub_70 unk70;
     u32 unk78;
     u32 *unk7C;
@@ -505,10 +509,6 @@ typedef struct UnkBattleSystemSub220 {
     int unk4;
     int unk8;
 } UnkBattleSystemSub220;
-
-typedef struct BattleSystemSub_C {
-    
-} BattleSystemSub_C;
 
 struct BattleSystem {
     u32 *unk0;
@@ -557,7 +557,7 @@ struct BattleSystem {
     u32 *unk1CC;
     UnkBattleSystemSub1D0 unk1D0[4];
     UnkBattleSystemSub220 unk220;
-    u32 *unk22C;
+    GAME_STATS *gameStats;
     u8 *unk230;
     u16 *unk234;
     u8 sendBuffer[0x1000];
@@ -589,14 +589,14 @@ struct BattleSystem {
     u16 unk2422;
     int unk2424;
     int unk2428;
-    int unk242C;
+    int weather;
     int unk2430;
     u32 unk2434;
     int unk2438;
     int unk243C;
-    u8 unk2440;
-    u8 unk2441;
-    u32 unk2442;
+    int unk2440;
+    u8 unk2442;
+    u8 unk2445;
     u32 unk2444;
     u32 unk2448;
     u16 unk244C[4];

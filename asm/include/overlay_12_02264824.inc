@@ -58,7 +58,7 @@
 .public BattleSystem_GetPaletteData
 .public ov12_0223A9A4
 .public ov12_0226498C
-.public ov12_02264BCC
+.public BattleHpBar_LoadResources
 .public ov12_02264C68
 .public ov12_02264C84
 .public ov12_02264DCC

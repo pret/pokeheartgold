@@ -484,8 +484,8 @@ _02264BC8:
 	.balign 4, 0
 	thumb_func_end ov12_02264B94
 
-	thumb_func_start ov12_02264BCC
-ov12_02264BCC: ; 0x02264BCC
+	thumb_func_start BattleHpBar_LoadResources
+BattleHpBar_LoadResources: ; 0x02264BCC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -555,7 +555,7 @@ _02264C5A:
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02264C64: .word ov12_0226D368
-	thumb_func_end ov12_02264BCC
+	thumb_func_end BattleHpBar_LoadResources
 
 	thumb_func_start ov12_02264C68
 ov12_02264C68: ; 0x02264C68

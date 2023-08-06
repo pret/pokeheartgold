@@ -6,325 +6,6 @@
 
 	.text
 
-	thumb_func_start ov12_0223BAD0
-ov12_0223BAD0: ; 0x0223BAD0
-	mov r1, #0x22
-	lsl r1, r1, #4
-	ldr r0, [r0, r1]
-	bx lr
-	thumb_func_end ov12_0223BAD0
-
-	thumb_func_start ov12_0223BAD8
-ov12_0223BAD8: ; 0x0223BAD8
-	mov r1, #0x89
-	lsl r1, r1, #2
-	ldr r0, [r0, r1]
-	bx lr
-	thumb_func_end ov12_0223BAD8
-
-	thumb_func_start ov12_0223BAE0
-ov12_0223BAE0: ; 0x0223BAE0
-	ldr r1, _0223BAE8 ; =0x00002228
-	add r0, r0, r1
-	bx lr
-	nop
-_0223BAE8: .word 0x00002228
-	thumb_func_end ov12_0223BAE0
-
-	thumb_func_start ov12_0223BAEC
-ov12_0223BAEC: ; 0x0223BAEC
-	ldr r1, _0223BAF4 ; =0x00002308
-	add r0, r0, r1
-	bx lr
-	nop
-_0223BAF4: .word 0x00002308
-	thumb_func_end ov12_0223BAEC
-
-	thumb_func_start BattleSystem_GetWeather
-BattleSystem_GetWeather: ; 0x0223BAF8
-	ldr r1, _0223BB00 ; =0x0000242C
-	ldr r0, [r0, r1]
-	bx lr
-	nop
-_0223BB00: .word 0x0000242C
-	thumb_func_end BattleSystem_GetWeather
-
-	thumb_func_start ov12_0223BB04
-ov12_0223BB04: ; 0x0223BB04
-	ldr r1, _0223BB0C ; =0x00002421
-	ldrb r0, [r0, r1]
-	bx lr
-	nop
-_0223BB0C: .word 0x00002421
-	thumb_func_end ov12_0223BB04
-
-	thumb_func_start ov12_0223BB10
-ov12_0223BB10: ; 0x0223BB10
-	ldr r2, _0223BB18 ; =0x00002421
-	strb r1, [r0, r2]
-	bx lr
-	nop
-_0223BB18: .word 0x00002421
-	thumb_func_end ov12_0223BB10
-
-	thumb_func_start ov12_0223BB1C
-ov12_0223BB1C: ; 0x0223BB1C
-	ldr r1, _0223BB24 ; =0x00002430
-	ldr r0, [r0, r1]
-	bx lr
-	nop
-_0223BB24: .word 0x00002430
-	thumb_func_end ov12_0223BB1C
-
-	thumb_func_start ov12_0223BB28
-ov12_0223BB28: ; 0x0223BB28
-	push {r3, lr}
-	ldr r2, _0223BB40 ; =0x0000240C
-	ldr r3, [r0, r2]
-	mov r2, #0x10
-	tst r2, r3
-	bne _0223BB3E
-	mov r2, #0x87
-	lsl r2, r2, #2
-	ldr r0, [r0, r2]
-	bl GameStats_Inc
-_0223BB3E:
-	pop {r3, pc}
-	.balign 4, 0
-_0223BB40: .word 0x0000240C
-	thumb_func_end ov12_0223BB28
-
-	thumb_func_start ov12_0223BB44
-ov12_0223BB44: ; 0x0223BB44
-	push {r3, lr}
-	ldr r1, _0223BB60 ; =0x0000240C
-	ldr r2, [r0, r1]
-	mov r1, #0x10
-	tst r1, r2
-	bne _0223BB5C
-	mov r1, #0x87
-	lsl r1, r1, #2
-	ldr r0, [r0, r1]
-	mov r1, #0x15
-	bl GameStats_AddSpecial
-_0223BB5C:
-	pop {r3, pc}
-	nop
-_0223BB60: .word 0x0000240C
-	thumb_func_end ov12_0223BB44
-
-	thumb_func_start ov12_0223BB64
-ov12_0223BB64: ; 0x0223BB64
-	mov r2, #0x91
-	lsl r2, r2, #6
-	str r1, [r0, r2]
-	bx lr
-	thumb_func_end ov12_0223BB64
-
-	thumb_func_start ov12_0223BB6C
-ov12_0223BB6C: ; 0x0223BB6C
-	ldr r2, _0223BB74 ; =0x00002444
-	strb r1, [r0, r2]
-	bx lr
-	nop
-_0223BB74: .word 0x00002444
-	thumb_func_end ov12_0223BB6C
-
-	thumb_func_start ov12_0223BB78
-ov12_0223BB78: ; 0x0223BB78
-	mov r1, #0x6f
-	lsl r1, r1, #2
-	ldr r0, [r0, r1]
-	bx lr
-	thumb_func_end ov12_0223BB78
-
-	thumb_func_start ov12_0223BB80
-ov12_0223BB80: ; 0x0223BB80
-	mov r2, #0x6f
-	lsl r2, r2, #2
-	str r1, [r0, r2]
-	bx lr
-	thumb_func_end ov12_0223BB80
-
-	thumb_func_start ov12_0223BB88
-ov12_0223BB88: ; 0x0223BB88
-	mov r2, #0x1d
-	lsl r2, r2, #4
-	add r2, r0, r2
-	lsl r0, r1, #4
-	add r0, r2, r0
-	bx lr
-	thumb_func_end ov12_0223BB88
-
-	thumb_func_start ov12_0223BB94
-ov12_0223BB94: ; 0x0223BB94
-	push {r3, r4, r5, lr}
-	add r5, r1, #0
-	add r4, r0, #0
-	cmp r5, #4
-	blt _0223BBA2
-	bl GF_AssertFail
-_0223BBA2:
-	lsl r0, r5, #4
-	ldr r0, [r4, r0]
-	pop {r3, r4, r5, pc}
-	thumb_func_end ov12_0223BB94
-
-	thumb_func_start ov12_0223BBA8
-ov12_0223BBA8: ; 0x0223BBA8
-	push {r4, r5, r6, lr}
-	add r4, r1, #0
-	add r5, r0, #0
-	add r6, r2, #0
-	cmp r4, #4
-	blt _0223BBB8
-	bl GF_AssertFail
-_0223BBB8:
-	lsl r0, r4, #4
-	add r0, r5, r0
-	str r6, [r0, #4]
-	pop {r4, r5, r6, pc}
-	thumb_func_end ov12_0223BBA8
-
-	thumb_func_start ov12_0223BBC0
-ov12_0223BBC0: ; 0x0223BBC0
-	push {r4, r5, r6, lr}
-	add r4, r1, #0
-	add r5, r0, #0
-	add r6, r2, #0
-	cmp r4, #4
-	blt _0223BBD0
-	bl GF_AssertFail
-_0223BBD0:
-	lsl r0, r4, #4
-	add r0, r5, r0
-	str r6, [r0, #8]
-	pop {r4, r5, r6, pc}
-	thumb_func_end ov12_0223BBC0
-
-	thumb_func_start ov12_0223BBD8
-ov12_0223BBD8: ; 0x0223BBD8
-	push {r4, r5, r6, lr}
-	add r4, r1, #0
-	add r5, r0, #0
-	add r6, r2, #0
-	cmp r4, #4
-	blt _0223BBE8
-	bl GF_AssertFail
-_0223BBE8:
-	lsl r0, r4, #4
-	add r0, r5, r0
-	str r6, [r0, #0xc]
-	pop {r4, r5, r6, pc}
-	thumb_func_end ov12_0223BBD8
-
-	thumb_func_start ov12_0223BBF0
-ov12_0223BBF0: ; 0x0223BBF0
-	ldr r2, _0223BBF8 ; =0x000023FD
-	strb r1, [r0, r2]
-	bx lr
-	nop
-_0223BBF8: .word 0x000023FD
-	thumb_func_end ov12_0223BBF0
-
-	thumb_func_start ov12_0223BBFC
-ov12_0223BBFC: ; 0x0223BBFC
-	ldr r2, _0223BC04 ; =0x000023F4
-	str r1, [r0, r2]
-	bx lr
-	nop
-_0223BC04: .word 0x000023F4
-	thumb_func_end ov12_0223BBFC
-
-	thumb_func_start ov12_0223BC08
-ov12_0223BC08: ; 0x0223BC08
-	ldr r2, _0223BC10 ; =0x000023F8
-	str r1, [r0, r2]
-	bx lr
-	nop
-_0223BC10: .word 0x000023F8
-	thumb_func_end ov12_0223BC08
-
-	thumb_func_start ov12_0223BC14
-ov12_0223BC14: ; 0x0223BC14
-	ldr r2, _0223BC1C ; =0x000023F4
-	ldr r0, [r0, r2]
-	strb r1, [r0]
-	bx lr
-	.balign 4, 0
-_0223BC1C: .word 0x000023F4
-	thumb_func_end ov12_0223BC14
-
-	thumb_func_start ov12_0223BC20
-ov12_0223BC20: ; 0x0223BC20
-	ldr r2, _0223BC28 ; =0x000023F8
-	ldr r0, [r0, r2]
-	strb r1, [r0]
-	bx lr
-	.balign 4, 0
-_0223BC28: .word 0x000023F8
-	thumb_func_end ov12_0223BC20
-
-	thumb_func_start ov12_0223BC2C
-ov12_0223BC2C: ; 0x0223BC2C
-	ldr r2, _0223BC34 ; =0x000023FE
-	strb r1, [r0, r2]
-	bx lr
-	nop
-_0223BC34: .word 0x000023FE
-	thumb_func_end ov12_0223BC2C
-
-	thumb_func_start ov12_0223BC38
-ov12_0223BC38: ; 0x0223BC38
-	lsl r1, r1, #2
-	add r0, r0, r1
-	ldr r3, _0223BC44 ; =ov12_0226127C
-	ldr r0, [r0, #0x34]
-	bx r3
-	nop
-_0223BC44: .word ov12_0226127C
-	thumb_func_end ov12_0223BC38
-
-	thumb_func_start ov12_0223BC48
-ov12_0223BC48: ; 0x0223BC48
-	push {r3, r4, r5, r6, r7, lr}
-	add r6, r0, #0
-	ldr r0, [r6, #0x44]
-	mov r7, #0
-	cmp r0, #0
-	ble _0223BC94
-	add r5, r6, #0
-_0223BC56:
-	ldr r0, [r5, #0x34]
-	bl ov12_0226127C
-	add r4, r0, #0
-	str r6, [r4, #0xc]
-	ldr r0, [r5, #0x34]
-	bl ov12_02261258
-	str r0, [sp]
-	add r0, r6, #0
-	bl BattleSystem_GetBattleType
-	add r1, r0, #0
-	ldr r0, [sp]
-	bl ov12_02265B64
-	add r1, r4, #0
-	add r1, #0x25
-	strb r0, [r1]
-	add r0, r4, #0
-	bl ov12_02264BCC
-	add r0, r4, #0
-	mov r1, #0
-	bl ov12_02264F28
-	ldr r0, [r6, #0x44]
-	add r7, r7, #1
-	add r5, r5, #4
-	cmp r7, r0
-	blt _0223BC56
-_0223BC94:
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ov12_0223BC48
-
 	thumb_func_start ov12_0223BC98
 ov12_0223BC98: ; 0x0223BC98
 	push {r3, r4, r5, r6, r7, lr}
@@ -337,7 +18,7 @@ ov12_0223BC98: ; 0x0223BC98
 	mov r7, #1
 _0223BCA8:
 	ldr r0, [r5, #0x34]
-	bl ov12_0226127C
+	bl OpponentData_GetHpBar
 	ldr r1, [r0, #0x28]
 	cmp r1, #0
 	beq _0223BCBA
@@ -366,7 +47,7 @@ ov12_0223BCC8: ; 0x0223BCC8
 	add r7, r4, #0
 _0223BCD8:
 	ldr r0, [r5, #0x34]
-	bl ov12_0226127C
+	bl OpponentData_GetHpBar
 	add r1, r7, #0
 	bl ov12_02264F28
 	ldr r0, [r6, #0x44]
@@ -389,7 +70,7 @@ ov12_0223BCF0: ; 0x0223BCF0
 	add r5, r6, #0
 _0223BCFE:
 	ldr r0, [r5, #0x34]
-	bl ov12_0226127C
+	bl OpponentData_GetHpBar
 	bl ov12_02264C68
 	ldr r0, [r6, #0x44]
 	add r4, r4, #1
@@ -1156,7 +837,7 @@ ov12_0223C224: ; 0x0223C224
 	add r5, r6, #0
 _0223C234:
 	ldr r0, [r5, #0x34]
-	bl ov12_0226127C
+	bl OpponentData_GetHpBar
 	add r1, r7, #0
 	bl ov12_02264EE0
 	ldr r0, [r6, #0x44]

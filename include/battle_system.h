@@ -79,6 +79,33 @@ void BattleSystem_TryChangeForm(BattleSystem *bsys);
 void ov12_0223B854(BattleSystem *bsys, int battlerId, int selectedMonIndex);
 void ov12_0223B870();
 void BattleSystem_SetBackground(BattleSystem *bsys);
+u8 *ov12_0223BAD0(BattleSystem *bsys);
+u16 *ov12_0223BAD8(BattleSystem *bsys);
+u16 *ov12_0223BAE0(BattleSystem *bsys);
+u16 *ov12_0223BAEC(BattleSystem *bsys);
+int BattleSystem_GetWeather(BattleSystem *bsys);
+u8 ov12_0223BB04(BattleSystem *bsys);
+void ov12_0223BB10(BattleSystem *bsys, u8 a1);
+int ov12_0223BB1C(BattleSystem *bsys);
+void BattleSystem_GameStatIncrement(BattleSystem *bsys, int id);
+void ov12_0223BB44(BattleSystem *bsys);
+void ov12_0223BB64(BattleSystem *bsys, int a1);
+void ov12_0223BB6C(BattleSystem *bsys, u8 a1);
+void *ov12_0223BB78(BattleSystem *bsys);
+void ov12_0223BB80(BattleSystem *bsys, void *a1);
+UnkBattleSystemSub1D0 *ov12_0223BB88(BattleSystem *bsys, int index);
+u8 *ov12_0223BB94(UnkBattleSystemSub1D0 *ptr, int index);
+void ov12_0223BBA8(UnkBattleSystemSub1D0 *ptr, int index, int a2);
+void ov12_0223BBC0(UnkBattleSystemSub1D0 *ptr, int index, int a2);
+void ov12_0223BBD8(UnkBattleSystemSub1D0 *ptr, int index, int a2);
+void ov12_0223BBF0(BattleSystem *bsys, u8 a1);
+void ov12_0223BBFC(BattleSystem *bsys, u8 *a1);
+void ov12_0223BC08(BattleSystem *bsys, u8 *a1);
+void ov12_0223BC14(BattleSystem *bsys, u8 a1);
+void ov12_0223BC20(BattleSystem *bsys, u8 a1);
+void ov12_0223BC2C(BattleSystem *bsys, u8 a1);
+BattleHpBar *BattleSystem_GetHpBar(BattleSystem *bsys, int battlerId);
+void BattleSystem_HpBar_Init(BattleSystem *bsys);
 
 //These functions haven't been decompiled
 int BattleSystem_Random(BattleSystem *bsys);
@@ -90,12 +117,12 @@ BOOL ov12_0223C080(BattleSystem *bsys);
 void ov12_0223BFFC(BattleSystem *bsys, u32 a1);
 u32 BattleSystem_GetWinLoseFlags(BattleSystem *bsys);
 void ov12_0223C0C4(BattleSystem *bsys);
-int BattleSystem_GetWeather(BattleSystem *bsys);
 BOOL ov12_0223BFEC(BattleSystem *bsys);
-void ov12_0223BB64(BattleSystem *bsys, int a1);
 void ov12_02237ED0(BattleSystem *bsys, int a1);
 void ov12_022642F0(BattleSystem *bsys);
 BOOL ov12_022581BC(BattleSystem *bsys, BATTLECONTEXT *ctx);
 void ov12_02263A1C(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
 void ov12_02266008(UnkBattleSystemSub17C *a0);
+BattleHpBar *OpponentData_GetHpBar(OpponentData *opponentData);
+
 #endif
