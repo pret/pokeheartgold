@@ -19,7 +19,11 @@ tidy:
 
 clean: tidy
 
-all: $(SBIN) $(ELF)
+all:
+	$(MAKE) patch_mwasmarm 
+	$(MAKE) target
+
+target: $(SBIN) $(ELF)
 
 compare: COMPARE := 1
 compare: all
