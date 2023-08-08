@@ -165,7 +165,7 @@
 .public ov12_0223BC2C
 .public BattleSystem_GetHpBar
 .public BattleSystem_HpBar_Init
-.public ov12_0223BC98
+.public BattleSystem_SetHpBarEnabled
 .public ov12_0223BCC8
 .public ov12_0223BCF0
 .public BattleSystem_GetWinLoseFlags
@@ -215,7 +215,7 @@
 .public BattleHpBar_LoadResources
 .public ov12_02264C68
 .public ov12_02264EE0
-.public ov12_02264F28
+.public BattleHpBar_SetEnabled
 .public ov12_02265B64
 .public ov12_02266008
 .public ov12_0226AA8C

@@ -928,8 +928,8 @@ _02264F26:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_02264F00
 
-	thumb_func_start ov12_02264F28
-ov12_02264F28: ; 0x02264F28
+	thumb_func_start BattleHpBar_SetEnabled
+BattleHpBar_SetEnabled: ; 0x02264F28
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #4]
@@ -943,7 +943,7 @@ ov12_02264F28: ; 0x02264F28
 _02264F40:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02264F28
+	thumb_func_end BattleHpBar_SetEnabled
 
 	thumb_func_start ov12_02264F44
 ov12_02264F44: ; 0x02264F44

@@ -3732,7 +3732,7 @@ ov12_0225A414: ; 0x0225A414
 	add r0, #0x27
 	strb r2, [r0]
 	add r0, r4, #0
-	bl ov12_02264F28
+	bl BattleHpBar_SetEnabled
 	mov r2, #0
 	ldr r1, [r4, #0x28]
 	add r0, r4, #0
@@ -10430,7 +10430,7 @@ _0225DA42:
 	bl ov12_02264FB0
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02264F28
+	bl BattleHpBar_SetEnabled
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
@@ -10496,7 +10496,7 @@ _0225DAAC:
 	bl DestroySysTask
 	add r0, r4, #0
 	mov r1, #0
-	bl ov12_02264F28
+	bl BattleHpBar_SetEnabled
 _0225DAD0:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -14880,7 +14880,7 @@ _0225FE50:
 	cmp r0, #0
 	beq _0225FE68
 	ldr r0, [r4]
-	bl ov12_0223BC98
+	bl BattleSystem_SetHpBarEnabled
 _0225FE68:
 	add r0, r4, #0
 	add r0, #0x6c

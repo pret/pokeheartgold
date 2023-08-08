@@ -40,6 +40,8 @@
 #include "field_warp_tasks.h"
 #include "unk_02058034.h"
 #include "pokedex_util.h"
+#include "constants/battle.h"
+#include "constants/game_stat.h"
 
 static void sub_02051660(FieldSystem *fsys, BATTLE_SETUP *setup);
 
@@ -94,7 +96,7 @@ static BOOL sub_020506F4(ENCOUNTER *work, FieldSystem *fsys) {
 }
 
 static void sub_02050724(BATTLE_SETUP *setup, FieldSystem *fsys) {
-    if (!(setup->flags & (1 << 31))) {
+    if (!(setup->flags & BATTLE_TYPE_DEBUG)) {
         sub_0205239C(setup, fsys);
     }
 }
@@ -198,7 +200,7 @@ static BOOL sub_020508B8(TaskManager *man) {
     case 3:
         sub_0205087C(encounter->setup->winFlag, fsys);
         sub_02052444(encounter->setup, fsys);
-        GameStats_AddSpecial(Save_GameStats_Get(fsys->savedata), 20);
+        GameStats_AddSpecial(Save_GameStats_Get(fsys->savedata), GAME_STAT_UNK20);
         sub_020506F4(encounter, fsys);
         sub_020552A4(man);
         (*state)++;
@@ -226,7 +228,7 @@ static BOOL sub_02050960(TaskManager *man) {
     case 1:
         sub_0205087C(encounter->setup->winFlag, fsys);
         sub_02052444(encounter->setup, fsys);
-        GameStats_AddSpecial(Save_GameStats_Get(fsys->savedata), 20);
+        GameStats_AddSpecial(Save_GameStats_Get(fsys->savedata), GAME_STAT_UNK20);
         sub_020506F4(encounter, fsys);
         (*state)++;
         break;
@@ -690,26 +692,26 @@ void SetupAndStartTutorialBattle(TaskManager *man) {
 }
 
 void SetupAndStartTrainerBattle(TaskManager *man, u32 opponentTrainer1, u32 opponentTrainer2, u32 followerTrainerNum, u32 a4, u32 a5, HeapID heapId, u32 *winFlag) {
-    u32 battleFlags;
+    u32 battleType;
     BATTLE_SETUP *setup;
     FieldSystem *fsys = TaskManager_GetFieldSystem(man);
 
     if (opponentTrainer2 != 0 && opponentTrainer1 != opponentTrainer2) {
         if (followerTrainerNum == 0) {
-            battleFlags = 0x13;
+            battleType = (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_INGAME_PARTNER);
         } else {
-            battleFlags = 0x4b;
+            battleType = 0x4b;
         }
     } else if (opponentTrainer1 == opponentTrainer2) {
-        battleFlags = 3;
+        battleType = 3;
     } else {
-        battleFlags = 1;
+        battleType = 1;
         if (a4) {
-            battleFlags |= (1 << 11);
+            battleType |= BATTLE_TYPE_11;
         }
     }
 
-    setup = BattleSetup_New(HEAP_ID_FIELD, battleFlags);
+    setup = BattleSetup_New(HEAP_ID_FIELD, battleType);
     BattleSetup_InitFromFsys(setup, fsys);
 
     setup->trainerId[1] = opponentTrainer1;
@@ -718,12 +720,12 @@ void SetupAndStartTrainerBattle(TaskManager *man, u32 opponentTrainer1, u32 oppo
 
     EnemyTrainerSet_Init(setup, fsys->savedata, heapId);
 
-    GameStats_Inc(Save_GameStats_Get(fsys->savedata), 9);
+    GameStats_Inc(Save_GameStats_Get(fsys->savedata), GAME_STAT_UNK9);
 
     if (a5) {
-        if (battleFlags & 8) {
+        if (battleType & BATTLE_TYPE_MULTI) {
             setup->unk1CE = 0;
-        } else if (!(battleFlags & 2)) {
+        } else if (!(battleType & BATTLE_TYPE_DOUBLES)) {
             setup->unk1CD = 0;
         }
     }
@@ -733,13 +735,13 @@ void SetupAndStartTrainerBattle(TaskManager *man, u32 opponentTrainer1, u32 oppo
 
 static BOOL sub_020508B8(TaskManager *man);
 
-void sub_02051428(TaskManager *man, void *a1, int battleFlags) {
+void sub_02051428(TaskManager *man, void *a1, int battleType) {
     FieldSystem *fsys;
     ENCOUNTER *encounter;
     BATTLE_SETUP *setup;
 
     fsys = TaskManager_GetFieldSystem(man);
-    setup = BattleSetup_New(HEAP_ID_FIELD, battleFlags);
+    setup = BattleSetup_New(HEAP_ID_FIELD, battleType);
 
     sub_020522F0(setup, fsys, a1);
 
@@ -747,13 +749,13 @@ void sub_02051428(TaskManager *man, void *a1, int battleFlags) {
     TaskManager_Call(man, sub_020508B8, encounter);
 }
 
-static int sub_02051474(void *a0, int battleFlags) {
+static int sub_02051474(void *a0, int battleType) {
     int var = sub_02029264(a0);
     int mode;
 
-    if (battleFlags & 8) {
+    if (battleType & BATTLE_TYPE_MULTI) {
         mode = 14;
-    } else if (battleFlags & 2) {
+    } else if (battleType & BATTLE_TYPE_DOUBLES) {
         mode = 7;
     } else {
         mode = 0;
@@ -821,32 +823,32 @@ static BOOL sub_02051540(TaskManager *man) {
     return FALSE;
 }
 
-void sub_02051598(FieldSystem *fsys, void *a1, int battleFlags) {
+void sub_02051598(FieldSystem *fsys, void *a1, int battleType) {
     ENCOUNTER *encounter;
     BATTLE_SETUP *setup;
     int var;
 
-    setup = BattleSetup_New(HEAP_ID_FIELD, battleFlags);
+    setup = BattleSetup_New(HEAP_ID_FIELD, battleType);
     sub_020522F0(setup, fsys, a1);
     sub_0202FBF0(fsys->savedata, HEAP_ID_FIELD, &var);
 
-    setup->unk1B2 = sub_02051474(fsys->unkA4, battleFlags);
+    setup->unk1B2 = sub_02051474(fsys->unkA4, battleType);
 
     encounter = Encounter_New(setup, sub_020517E8(setup), sub_020517FC(setup), NULL);
 
     FieldSys_CreateTask(fsys, sub_02051540, encounter);
 }
 
-void sub_020515FC(FieldSystem *fsys, PARTY *party, int battleFlags) {
+void sub_020515FC(FieldSystem *fsys, PARTY *party, int battleType) {
     ENCOUNTER *encounter;
     BATTLE_SETUP *setup;
     int var;
 
-    setup = BattleSetup_New(HEAP_ID_FIELD, battleFlags);
+    setup = BattleSetup_New(HEAP_ID_FIELD, battleType);
     sub_020520B0(setup, fsys, party, NULL);
     sub_0202FBF0(fsys->savedata, HEAP_ID_FIELD, &var);
 
-    setup->unk1B2 = sub_02051474(fsys->unkA4, battleFlags);
+    setup->unk1B2 = sub_02051474(fsys->unkA4, battleType);
 
     encounter = Encounter_New(setup, sub_020517E8(setup), sub_020517FC(setup), NULL);
 
@@ -855,34 +857,34 @@ void sub_020515FC(FieldSystem *fsys, PARTY *party, int battleFlags) {
 
 static void sub_02051660(FieldSystem *fsys, BATTLE_SETUP *setup) {
     Pokemon *mon;
-    u32 battleFlags = setup->flags;
+    u32 battleType = setup->flags;
     int winFlag = setup->winFlag;
 
-    if (battleFlags & 4 || battleFlags & 0x80) {
+    if (battleType & BATTLE_TYPE_LINK || battleType & BATTLE_TYPE_TOWER) {
         return;
     }
 
-    if (battleFlags == 0 || battleFlags == 0x100 || battleFlags == 0x4A) {
+    if (battleType == 0 || battleType == BATTLE_TYPE_8 || battleType == (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_6)) {
         if (winFlag == 1) {
-            GameStats_AddSpecial(Save_GameStats_Get(fsys->savedata), 9);
+            GameStats_AddSpecial(Save_GameStats_Get(fsys->savedata), GAME_STAT_UNK9);
         } else if (winFlag == 4) {
             mon = GetPartyMonByIndex(setup->party[1], 0);
-            if (Pokedex_ConvertToCurrentDexNo(0, GetMonData(mon, 5, NULL)) != 0) {
-                GameStats_AddSpecial(Save_GameStats_Get(fsys->savedata), 10);
+            if (Pokedex_ConvertToCurrentDexNo(0, GetMonData(mon, MON_DATA_SPECIES, NULL)) != 0) {
+                GameStats_AddSpecial(Save_GameStats_Get(fsys->savedata), GAME_STAT_UNK10);
             } else {
-                GameStats_AddSpecial(Save_GameStats_Get(fsys->savedata), 11);
+                GameStats_AddSpecial(Save_GameStats_Get(fsys->savedata), GAME_STAT_UNK11);
             }
         }
-    } else if ((battleFlags & 1) || (battleFlags & 0x10)) {
+    } else if ((battleType & BATTLE_TYPE_TRAINER) || (battleType & BATTLE_TYPE_INGAME_PARTNER)) {
         if (winFlag == 1) {
-            GameStats_AddSpecial(Save_GameStats_Get(fsys->savedata), 12);
+            GameStats_AddSpecial(Save_GameStats_Get(fsys->savedata), GAME_STAT_UNK12);
         }
-    } else if ((battleFlags & 0x20 || battleFlags & 0x200) && winFlag == 4) {
+    } else if ((battleType & BATTLE_TYPE_SAFARI || battleType & BATTLE_TYPE_PAL_PARK) && winFlag == 4) {
         mon = GetPartyMonByIndex(setup->party[1], 0);
-        if (Pokedex_ConvertToCurrentDexNo(0, GetMonData(mon, 5, NULL)) != 0) {
-            GameStats_AddSpecial(Save_GameStats_Get(fsys->savedata), 10);
+        if (Pokedex_ConvertToCurrentDexNo(0, GetMonData(mon, MON_DATA_SPECIES, NULL)) != 0) {
+            GameStats_AddSpecial(Save_GameStats_Get(fsys->savedata), GAME_STAT_UNK10);
         } else {
-            GameStats_AddSpecial(Save_GameStats_Get(fsys->savedata), 11);
+            GameStats_AddSpecial(Save_GameStats_Get(fsys->savedata), GAME_STAT_UNK11);
         }
     }
 }

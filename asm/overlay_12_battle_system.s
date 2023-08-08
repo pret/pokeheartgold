@@ -6,35 +6,6 @@
 
 	.text
 
-	thumb_func_start ov12_0223BC98
-ov12_0223BC98: ; 0x0223BC98
-	push {r3, r4, r5, r6, r7, lr}
-	add r6, r0, #0
-	ldr r0, [r6, #0x44]
-	mov r4, #0
-	cmp r0, #0
-	ble _0223BCC4
-	add r5, r6, #0
-	mov r7, #1
-_0223BCA8:
-	ldr r0, [r5, #0x34]
-	bl OpponentData_GetHpBar
-	ldr r1, [r0, #0x28]
-	cmp r1, #0
-	beq _0223BCBA
-	add r1, r7, #0
-	bl ov12_02264F28
-_0223BCBA:
-	ldr r0, [r6, #0x44]
-	add r4, r4, #1
-	add r5, r5, #4
-	cmp r4, r0
-	blt _0223BCA8
-_0223BCC4:
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ov12_0223BC98
-
 	thumb_func_start ov12_0223BCC8
 ov12_0223BCC8: ; 0x0223BCC8
 	push {r3, r4, r5, r6, r7, lr}
@@ -49,7 +20,7 @@ _0223BCD8:
 	ldr r0, [r5, #0x34]
 	bl OpponentData_GetHpBar
 	add r1, r7, #0
-	bl ov12_02264F28
+	bl BattleHpBar_SetEnabled
 	ldr r0, [r6, #0x44]
 	add r4, r4, #1
 	add r5, r5, #4

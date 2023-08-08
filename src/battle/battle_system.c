@@ -5,6 +5,7 @@
 #include "party.h"
 #include "pokemon_mood.h"
 #include "overlay_12_0224E4FC.h"
+#include "constants/game_stat.h"
 
 BgConfig *BattleSystem_GetBgConfig(BattleSystem *bsys) {
     return bsys->bgConfig;
@@ -926,7 +927,7 @@ void ov12_0223BB44(BattleSystem *bsys) {
     if (bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) {
         return;
     }
-    GameStats_AddSpecial(bsys->gameStats, 21);
+    GameStats_AddSpecial(bsys->gameStats, GAME_STAT_UNK21);
 }
 
 void ov12_0223BB64(BattleSystem *bsys, int a1) {
@@ -1006,6 +1007,18 @@ void BattleSystem_HpBar_Init(BattleSystem *bsys) {
         hpBar->bsys = bsys;
         hpBar->type = ov12_02265B64(ov12_02261258(bsys->opponentData[i]), BattleSystem_GetBattleType(bsys));
         BattleHpBar_LoadResources(hpBar);
-        ov12_02264F28(hpBar, FALSE);
+        BattleHpBar_SetEnabled(hpBar, FALSE);
+    }
+}
+
+void BattleSystem_SetHpBarEnabled(BattleSystem *bsys) {
+    int i;
+    BattleHpBar *hpBar;
+    
+    for (i = 0; i < bsys->maxBattlers; i++) {
+        hpBar = OpponentData_GetHpBar(bsys->opponentData[i]);
+        if (hpBar->hp) {
+            BattleHpBar_SetEnabled(hpBar, TRUE);
+        }
     }
 }

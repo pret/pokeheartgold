@@ -68,7 +68,7 @@
 .public ov12_02264E84
 .public ov12_02264EB4
 .public ov12_02264EE0
-.public ov12_02264F28
+.public BattleHpBar_SetEnabled
 .public ov12_02264FB0
 .public ov12_02265B64
 .public ov12_02265C54
