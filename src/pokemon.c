@@ -3298,7 +3298,7 @@ s8 GetFlavorPreferenceFromPID(u32 personality, int flavor) {
     return sFlavorPreferencesByNature[GetNatureFromPersonality(personality)][flavor];
 }
 
-int Species_LoadLearnsetTable(u16 species, u32 form, u16 * dest) {
+int Species_LoadLearnsetTable(u32 species, u32 form, u16 * dest) {
     int i;
     u16 * wotbl = AllocFromHeap(HEAP_ID_DEFAULT, 22 * sizeof(u16));
     LoadWotbl_HandleAlternateForm(species, (int)form, wotbl);

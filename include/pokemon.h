@@ -107,7 +107,7 @@ void CopyPokemonToBoxPokemon(const Pokemon *src, BoxPokemon *dest);
 s8 MonGetFlavorPreference(Pokemon *mon, int flavor);
 s8 BoxMonGetFlavorPreference(BoxPokemon *boxMon, int flavor);
 s8 GetFlavorPreferenceFromPID(u32 personality, int flavor);
-int Species_LoadLearnsetTable(u16 species, u32 form, u16 * dest);
+int Species_LoadLearnsetTable(u32 species, u32 form, u16 * dest);
 void Party_GivePokerusAtRandom(PARTY * party);
 u8 Party_MaskMonsWithPokerus(PARTY * party, u8 mask);
 void Party_UpdatePokerus(PARTY * party, int r5);

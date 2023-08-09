@@ -20,14 +20,12 @@
 #include "constants/badge.h"
 #include "constants/global.fieldmap.h"
 
-#ifdef PM_ASM
 #define lt    0
 #define eq    1
 #define gt    2
 #define le    3
 #define ge    4
 #define ne    5
-#endif
 
 #define obj_daycare_poke_1         250
 #define obj_daycare_poke_2         251
@@ -36,8 +34,9 @@
 #define obj_player                 255
 #define SCRDEF_END              0xFD13
 
-#ifndef PM_ASM
-
-#endif //PM_ASM
+#define MOVE_TUTOR_NPC_FRONTIER_TOP_LEFT     0
+#define MOVE_TUTOR_NPC_FRONTIER_TOP_RIGHT    1
+#define MOVE_TUTOR_NPC_FRONTIER_BOTTOM_RIGHT 2
+#define MOVE_TUTOR_NPC_HEADBUTT              3
 
 #endif //POKEHEARTGOLD_CONSTANTS_SCRCMD_H
