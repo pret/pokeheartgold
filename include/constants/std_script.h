@@ -3,6 +3,9 @@
 
 #include "constants/trainers.h"
 
+// TODO: decide whether we want to keep this case
+// or whether we want to capitalise this file.
+
 // The _std_XXX constants are group thresholds for
 // use in fieldmap.c (sScriptBankMapping).
 // The std_XXX constants (no leading underscore)

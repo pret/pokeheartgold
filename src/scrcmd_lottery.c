@@ -23,7 +23,7 @@ BOOL ScrCmd_LotoIdGet(ScriptContext *ctx) {
 
 BOOL ScrCmd_LotoIdSearch(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    PC_STORAGE *storage = SaveArray_PCStorage_Get(fieldSystem->saveData);
+    PCStorage *storage = SaveArray_PCStorage_Get(fieldSystem->saveData);
     u16 *retPtr0 = ScriptGetVarPointer(ctx);
     u16 *retPtr1 = ScriptGetVarPointer(ctx);
     u16 *retPtr2 = ScriptGetVarPointer(ctx);

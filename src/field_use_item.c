@@ -306,7 +306,7 @@ static BOOL Task_MountOrDismountBicycle(TaskManager *taskManager) {
         (*state_p)++;
         break;
     case 2:
-        MapObjectManager_UnpauseAllMovement(fieldSystem->mapObjectMan);
+        MapObjectManager_UnpauseAllMovement(fieldSystem->mapObjectManager);
         return TRUE;
     }
 
@@ -491,7 +491,7 @@ static BOOL Task_PrintRegisteredKeyItemUseMessage(TaskManager *taskManager) {
     switch (env->state) {
     case 0:
         fieldSystem->unkD2_6 = TRUE;
-        MapObjectManager_PauseAllMovement(fieldSystem->mapObjectMan);
+        MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
         sub_0205B514(fieldSystem->bgConfig, &env->window, 3);
         options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
         sub_0205B564(&env->window, options);
@@ -508,7 +508,7 @@ static BOOL Task_PrintRegisteredKeyItemUseMessage(TaskManager *taskManager) {
         }
         break;
     case 2:
-        MapObjectManager_UnpauseAllMovement(fieldSystem->mapObjectMan);
+        MapObjectManager_UnpauseAllMovement(fieldSystem->mapObjectManager);
         RemoveWindow(&env->window);
         String_Delete(env->strbuf);
         FreeToHeap(env);
@@ -661,7 +661,7 @@ static BOOL Task_ActivateDowsingMchnUI(TaskManager *taskManager) {
         break;
     case 1:
         if (ov01_021F6B10(fieldSystem) == TRUE) {
-            MapObjectManager_UnpauseAllMovement(fieldSystem->mapObjectMan);
+            MapObjectManager_UnpauseAllMovement(fieldSystem->mapObjectManager);
             return TRUE;
         }
         break;
@@ -817,7 +817,7 @@ static BOOL Task_RegisteredItem_GoToApp(TaskManager *taskManager) {
 
     switch (env->state) {
     case 0:
-        MapObjectManager_PauseAllMovement(fieldSystem->mapObjectMan);
+        MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
         ov01_021E636C(0);
         env->state = 1;
         break;
@@ -845,14 +845,14 @@ static BOOL Task_RegisteredItem_GoToApp(TaskManager *taskManager) {
         break;
     case 4:
         if (sub_020505C8(fieldSystem)) {
-            MapObjectManager_PauseAllMovement(fieldSystem->mapObjectMan);
+            MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
             ov01_021E636C(1);
             env->state = 5;
         }
         break;
     case 5:
         if (IsPaletteFadeFinished()) {
-            MapObjectManager_UnpauseAllMovement(fieldSystem->mapObjectMan);
+            MapObjectManager_UnpauseAllMovement(fieldSystem->mapObjectManager);
             FreeToHeap(env);
             return TRUE;
         }

@@ -16,25 +16,25 @@ typedef struct BUGMON {
 
 #define BUGMON_COUNT        10
 
-typedef struct BUGCONTESTANT_BIN {
+typedef struct BugContestantData {
     u8 national;
     u8 day;
     u16 species;
     u16 score;
     u16 randmod;
-} BUGCONTESTANT_BIN;
+} BugContestantData;
 
-typedef struct BUGCONTESTANT {
+typedef struct BugContestant {
     u8 id;
     u16 score;
-    BUGCONTESTANT_BIN data;
-} BUGCONTESTANT;
+    BugContestantData data;
+} BugContestant;
 
 #define BUGCONTESTANT_NPC_COUNT 5
 #define BUGCONTESTANT_PLAYER    BUGCONTESTANT_NPC_COUNT
 #define BUGCONTESTANT_COUNT     (BUGCONTESTANT_NPC_COUNT+1)
 
-typedef struct BUGCONTEST {
+typedef struct BugContest {
     HeapID heapId;           // Always set to 3
     SaveData *saveData;      // Pointer to save data
     Party *party_bak;        // Player's party is held for the contest
@@ -50,8 +50,8 @@ typedef struct BUGCONTEST {
     u16 prize;               // Item ID
     u32 elapsed_time;        // Used to determine when the contest ends
     BUGMON encounters[BUGMON_COUNT]; // Which wild Pokemon you can find
-    BUGCONTESTANT contestants[BUGCONTESTANT_COUNT]; // 5 NPCs + player
+    BugContestant contestants[BUGCONTESTANT_COUNT]; // 5 NPCs + player
     u8 ranking[BUGCONTESTANT_COUNT]; // Index sorting by score at the end
-} BUGCONTEST;
+} BugContest;
 
 #endif //POKEHEARTGOLD_BUG_CONTEST_INTERNAL_H

@@ -123,7 +123,7 @@ struct SavedMapObjectList *Save_MapObjects_Get(SaveData *saveData) {
 
 void FieldSystem_SyncMapObjectsToSave(FieldSystem *fieldSystem) {
     struct SavedMapObjectList *unk = Save_MapObjects_Get(fieldSystem->saveData);
-    FieldSystem_SyncMapObjectsToSaveEx(fieldSystem, fieldSystem->mapObjectMan, unk->subs, 64);
+    FieldSystem_SyncMapObjectsToSaveEx(fieldSystem, fieldSystem->mapObjectManager, unk->subs, 64);
 }
 
 void FieldSystem_RestoreMapObjectsFromSave(FieldSystem *fieldSystem) {
@@ -143,5 +143,5 @@ void FieldSystem_RestoreMapObjectsFromSave(FieldSystem *fieldSystem) {
             follower->gfxId = SPRITE_FOLLOWER_MON_SHAYMIN;
         }
     }
-    MapObjectManager_RestoreFromSave(fieldSystem->mapObjectMan, unk->subs, 64);
+    MapObjectManager_RestoreFromSave(fieldSystem->mapObjectManager, unk->subs, 64);
 }
