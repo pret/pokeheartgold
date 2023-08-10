@@ -10,5 +10,7 @@ struct UnkStruct_0202FBCC {
 
 void sub_0202FBF0(SaveData *save, HeapID heapId, u32 *out);
 BOOL sub_0202FC48(void);
+void sub_02030260(int battlerId, u16 a1, u8 data);
+u8 sub_0203027C(int battlerId, u16 a1);
 
 #endif //POKEHEARTGOLD_UNK_0202FBCC_H

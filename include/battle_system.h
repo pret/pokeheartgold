@@ -119,9 +119,10 @@ void ov12_0223BD8C(BattleSystem *bsys, int a1);
 u16 BattleSystem_Random(BattleSystem *bsys);
 u32 BattleSystem_GetRandTemp(BattleSystem *bsys);
 void BattleSystem_SetRandTemp(BattleSystem *bsys, u32 temp);
+void ov12_0223BDDC(BattleSystem *bsys, int battlerId, u8 data);
+BOOL ov12_0223BE0C(BattleSystem *bsys, int battlerId, u8 *data);
 
 //These functions haven't been decompiled
-void ov12_0223BDDC(BattleSystem *bsys, int battlerId, u8 a2);
 void PokedexSetBattlerSeen(BattleSystem *bsys, int battlerId);
 int BattleSystem_GetChatotVoiceParam(BattleSystem *bsys, int battlerId);
 BOOL Link_QueueNotEmpty(BATTLECONTEXT *ctx);

@@ -6,6 +6,7 @@
 #include "pokemon_mood.h"
 #include "overlay_12_0224E4FC.h"
 #include "constants/game_stat.h"
+#include "unk_0202FBCC.h"
 
 BgConfig *BattleSystem_GetBgConfig(BattleSystem *bsys) {
     return bsys->bgConfig;
@@ -1083,4 +1084,24 @@ u32 BattleSystem_GetRandTemp(BattleSystem *bsys) {
 
 void BattleSystem_SetRandTemp(BattleSystem *bsys, u32 temp) {
     bsys->randTemp = temp;
+}
+
+void ov12_0223BDDC(BattleSystem *bsys, int battlerId, u8 data) {
+    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) && bsys->unk245C[battlerId] < 1024) {
+        sub_02030260(battlerId, bsys->unk245C[battlerId], data);
+        bsys->unk245C[battlerId]++;
+    }
+}
+
+BOOL ov12_0223BE0C(BattleSystem *bsys, int battlerId, u8 *data) {
+    BOOL ret;
+    *data = -1;
+    if ((bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) && (bsys->unk245C[battlerId] < 1024)) {
+        *data = sub_0203027C(battlerId, bsys->unk245C[battlerId]);
+        bsys->unk245C[battlerId]++;
+        ret = FALSE;
+    } else if ((bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) && bsys->unk245C[battlerId] >= 1024) {
+        ret = TRUE;
+    }
+    return ret;
 }
