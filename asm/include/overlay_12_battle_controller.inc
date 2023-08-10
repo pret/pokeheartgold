@@ -18,7 +18,7 @@
 .public _s32_div_f
 .public _u32_div_f
 .public BattleSystem_GetBattleType
-.public ov12_0223A7E4
+.public BattleSystem_GetBattleContext
 .public BattleSystem_GetMaxBattlers
 .public BattleSystem_GetParty
 .public BattleSystem_GetPartyMon
@@ -37,10 +37,10 @@
 .public BattleSystem_GetBattlerIdPartner
 .public ov12_0223ABB8
 .public ov12_0223B688
-.public ov12_0223B6B4
+.public BattleSystem_GetSafariBallCount
 .public ov12_0223B854
-.public BattleSystem_GetWinLoseFlags
-.public ov12_0223BDC4
+.public BattleSystem_GetBattleOutcomeFlags
+.public BattleSystem_GetRandTemp
 .public ov12_0223BE68
 .public ov12_0223C140
 .public ov12_0223C330

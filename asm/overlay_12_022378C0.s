@@ -220,7 +220,7 @@ _02237A64:
 _02237A6A:
 	add r1, sp, #0x20
 	add r2, sp, #0x1c
-	bl ov12_0223B5EC
+	bl BattleSystem_CheckEvolution
 	add r6, r0, #0
 	beq _02237ACC
 	mov r0, #3
@@ -413,7 +413,7 @@ _02237BDE:
 	bl ov12_0223BFC0
 	add r1, r0, #0
 	add r0, r5, #0
-	bl ov12_0223AAC8
+	bl BattleSystem_GetTrainerGender
 	add r3, r0, #0
 	mov r0, #7
 	lsl r0, r0, #6
@@ -505,7 +505,7 @@ ov12_02237CC4: ; 0x02237CC4
 	mov r1, #3
 	bl FreeBgTilemapBuffer
 	add r0, r4, #0
-	bl ov12_0223BCC8
+	bl BattleSystem_SetHpBarDisabled
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov12_02237CC4
@@ -566,7 +566,7 @@ _02237D1A:
 	add r1, r0, #0
 	bl GX_EngineAToggleLayers
 	add r0, r5, #0
-	bl ov12_0223B708
+	bl BattleSystem_GetFrame
 	add r4, r0, #0
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
@@ -855,7 +855,7 @@ _02237FD8:
 	bl ov12_0223BFC0
 	add r1, r0, #0
 	add r0, r4, #0
-	bl ov12_0223AAC8
+	bl BattleSystem_GetTrainerGender
 	add r3, r0, #0
 	mov r0, #7
 	lsl r0, r0, #6
@@ -989,7 +989,7 @@ _02237FD8:
 	mov r2, #0xc0
 	bl sub_02009408
 	add r0, r4, #0
-	bl ov12_0223BC48
+	bl BattleSystem_HpBar_Init
 	bl ov12_022396F0
 	mov r0, #5
 	bl ov07_0221BEDC
@@ -1147,7 +1147,7 @@ _02237FD8:
 	add r0, r4, #0
 	bl ov12_0223A620
 	add r0, r4, #0
-	bl ov12_0223AA84
+	bl BattleSystem_GetBagCursor
 	bl BagCursor_Battle_Init
 	mov r0, #5
 	mov r1, #4
@@ -1376,7 +1376,7 @@ _022384A0:
 	add r1, r5, #0
 	bl sub_0200FBF4
 	add r0, r4, #0
-	bl ov12_0223B798
+	bl BattleSystem_TryChangeForm
 	ldr r0, _02238784 ; =0x00002420
 	ldrb r0, [r4, r0]
 	cmp r0, #4
@@ -1643,7 +1643,7 @@ _022386C0:
 	ldr r0, [r4, r0]
 	bl SetLCRNGSeed
 	add r0, r4, #0
-	bl ov12_0223BD2C
+	bl BattleSystem_GetCriticalHpMusicFlag
 	cmp r0, #0
 	beq _0223872E
 	ldr r0, _0223879C ; =0x00000704
@@ -1804,7 +1804,7 @@ _02238838:
 	add r0, r4, #0
 	bl ov12_0226604C
 	add r0, r5, #0
-	bl ov12_0223B708
+	bl BattleSystem_GetFrame
 	add r7, r0, #0
 	lsl r0, r7, #0x18
 	lsr r0, r0, #0x18
@@ -1948,7 +1948,7 @@ ov12_022389B8: ; 0x022389B8
 	add r3, r4, #0
 	bl ov12_02265FD4
 	add r0, r5, #0
-	bl ov12_0223A7E4
+	bl BattleSystem_GetBattleContext
 	str r0, [sp]
 	ldr r0, [r5, #0x44]
 	mov r4, #0
@@ -3759,7 +3759,7 @@ ov12_02239854: ; 0x02239854
 	str r0, [sp]
 	add r0, r5, #0
 	mov r6, #0
-	bl ov12_0223BD2C
+	bl BattleSystem_GetCriticalHpMusicFlag
 	add r4, r0, #0
 	add r0, r5, #0
 	bl BattleSystem_GetBattleType
@@ -3780,7 +3780,7 @@ _0223987A:
 	bl StopSE
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223BD3C
+	bl BattleSystem_SetCriticalHpMusicFlag
 	pop {r3, r4, r5, r6, r7, pc}
 _02239898:
 	ldr r0, [sp]
@@ -3790,7 +3790,7 @@ _02239898:
 _022398A0:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	add r7, r0, #0
 	bl ov12_02261264
 	cmp r0, #0
@@ -3813,7 +3813,7 @@ _022398BE:
 	beq _022398FE
 _022398D6:
 	add r0, r7, #0
-	bl ov12_0226127C
+	bl OpponentData_GetHpBar
 	add r1, r0, #0
 	beq _022398FE
 	ldr r0, [r1, #0x28]
@@ -3838,23 +3838,23 @@ _02239906:
 	cmp r6, #0
 	beq _0223992C
 	add r0, r5, #0
-	bl ov12_0223BD2C
+	bl BattleSystem_GetCriticalHpMusicFlag
 	cmp r0, #0
 	bne _0223992C
 	ldr r0, _02239988 ; =0x00000704
 	bl PlaySE
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223BD3C
+	bl BattleSystem_SetCriticalHpMusicFlag
 	add r0, r5, #0
 	mov r1, #4
-	bl ov12_0223BD68
+	bl BattleSystem_SetCriticalHpMusicDelay
 	b _0223994A
 _0223992C:
 	cmp r6, #0
 	bne _0223994A
 	add r0, r5, #0
-	bl ov12_0223BD2C
+	bl BattleSystem_GetCriticalHpMusicFlag
 	cmp r0, #0
 	beq _0223994A
 	ldr r0, _02239988 ; =0x00000704
@@ -3862,14 +3862,14 @@ _0223992C:
 	bl StopSE
 	add r0, r5, #0
 	mov r1, #0
-	bl ov12_0223BD3C
+	bl BattleSystem_SetCriticalHpMusicFlag
 _0223994A:
 	add r0, r5, #0
-	bl ov12_0223BD2C
+	bl BattleSystem_GetCriticalHpMusicFlag
 	cmp r0, #0
 	beq _02239984
 	add r0, r5, #0
-	bl ov12_0223BD58
+	bl BattleSystem_GetCriticalHpMusicDelay
 	add r4, r0, #0
 	ldr r0, _02239988 ; =0x00000704
 	bl IsSEPlaying
@@ -3881,13 +3881,13 @@ _0223994A:
 	bl PlaySE
 	add r0, r5, #0
 	mov r1, #4
-	bl ov12_0223BD68
+	bl BattleSystem_SetCriticalHpMusicDelay
 	pop {r3, r4, r5, r6, r7, pc}
 _0223997A:
 	lsl r1, r1, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
-	bl ov12_0223BD68
+	bl BattleSystem_SetCriticalHpMusicDelay
 _02239984:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

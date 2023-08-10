@@ -1,11 +1,22 @@
 #ifndef POKEHEARTGOLD_BATTLE_H
 #define POKEHEARTGOLD_BATTLE_H
 
+#include "bag.h"
+#include "bag_cursor.h"
+#include "bg_window.h"
 #include "item.h"
+#include "font.h"
+#include "game_stats.h"
 #include "move.h"
+#include "options.h"
+#include "palette.h"
+#include "player_data.h"
+#include "pokedex.h"
 #include "pokemon_storage_system.h"
+#include "sav_chatot.h"
 #include "trainer_data.h"
 #include "filesystem.h"
+#include "unk_02023694.h"
 #include "constants/battle.h"
 #include "constants/moves.h"
 
@@ -254,10 +265,10 @@ typedef struct BATTLECONTEXT {
     ControllerCommand commandNext;
     int stateFieldConditionUpdate;
     int fieldConditionUpdateData;
-    int unk_18;
-    int unk_1C;
-    int unk_20;
-    int unk_24;
+    int stateUpdateMonCondition;
+    int updateMonConditionData;
+    int stateUpdateFieldConditionExtra;
+    int updateFieldConditionExtraData;
     int unk_28;
     int unk_2C;
     int unk_30;
@@ -408,35 +419,38 @@ typedef struct BATTLECONTEXT {
 
 typedef struct BattleSystem BattleSystem;
 
-typedef struct OpponentData_UnkSub_28 {
-    u8 unk0;
-    u32 unk4;
-    u32 unk8;
+typedef struct BattleHpBar {
+    u8 script;
+    void *unk4;
+    void *unk8;
     BattleSystem *bsys;
-    u32 unk10;
-    u8 unk14;
-    u8 unk15;
-    u8 unk16;
-    u8 unk17;
-    int unk18;
-    int unk1C;
-    int unk20;
-    int unk24;
-    int unk28;
-    int unk2C;
-    int unk30;
-    int unk34;
-    u8 unk38;
-    u8 unk39;
-    u8 unk3A;
+    void *unk10;
+    s32 exp;
+    s32 maxExp;
+    s32 damage;
+    s32 hpCalc;
+    u8 battlerId;
+    u8 type;
+    u8 unk26;
+    u8 unk27;
+    s32 hp;
+    s32 maxHp;
+    s32 gainedExp;
+    s32 expCalc;
+    u8 level;
+    u8 gender;
+    u8 status;
     u8 unk3B;
     u8 unk3C;
     u8 unk3D;
     u8 unk3E;
-    u8 unk3F_0:1, unk3F_1:1, unk3F_2:1, unk3F_3:1;
-    u32 unk40;
+    u8 unk3F_0:1;
+    u8 unk3F_1:1;
+    u8 unk3F_2:1;
+    u8 unk3F_3:1;
+    void *unk40;
     u16 unk44;
-} OpponentData_UnkSub_28;
+} BattleHpBar;
 
 typedef struct OpponentData_UnkSub_70 {
     s8 unk0;
@@ -455,7 +469,7 @@ typedef struct OpponentData {
     u32 *unk1C;
     u32 *unk20;
     u32 *unk24;
-    OpponentData_UnkSub_28 unk28;
+    BattleHpBar hpBar;
     OpponentData_UnkSub_70 unk70;
     u32 unk78;
     u32 *unk7C;
@@ -474,7 +488,7 @@ typedef struct OpponentData {
 } OpponentData;
 
 typedef struct UnkBattleSystemSub17C {
-    u32 unk0;
+    UnkImageStruct *unk0;
     BattleSystem *bsys;
     u8 unk8;
     u8 unk9;
@@ -498,56 +512,56 @@ typedef struct UnkBattleSystemSub220 {
 
 struct BattleSystem {
     u32 *unk0;
-    u32 *unk4;
-    u32 *unk8;
+    BgConfig *bgConfig;
+    Window *window;
     u32 *unkC;
     u32 *unk10;
     u32 *unk14;
-    u32 *unk18;
+    String *msgBuffer;
     u32 unk1C;
     u32 unk20;
     u32 unk24;
-    u32 unk28;
-    u32 battleTypeFlags;
+    PaletteData *palette;
+    u32 battleType;
     BATTLECONTEXT *ctx;
     OpponentData *opponentData[4];
-    int unk44; //offset labels wrong from here until unk23E8
-    u32 *unk48[4];
-    u32 *unk58;
-    u32 *unk5C;
-    u32 *unk60;
+    int maxBattlers; 
+    PlayerProfile *playerProfile[4];
+    Bag *bag;
+    BagCursor *bagCursor;
+    Pokedex *pokedex;
     PC_STORAGE *storage;
     PARTY *trainerParty[4];
-    u32 *unk78[4];
+    SOUND_CHATOT *chatotVoice[4];
     u32 *unk88;
-    u32 unk8C;
-    u32 unk90;
-    u32 unk94;
+    u32 *unk8C;
+    u32 *unk90;
+    u32 *unk94;
     u32 *unk98;
     u32 *unk9C;
     u16 trainerId[4];
     u8 trainerGender[4];
     TRAINER trainers[4];
-    UnkBattleSystemSub17C unk17C[2];
-    u32 unk19C;
-    u32 unk1A0[2];
-    u32 *unk1A8;
-    u32 *unk1AC;
-    void *unk1B0;
-    u32 *unk1B4;
+    UnkBattleSystemSub17C unk17C[2]; //Battle Background..?
+    u32 *unk19C;
+    u32 *unk1A0[2];
+    FontID *hpFont;
+    FontID *levelFont;
+    void *msgIcon;
+    OPTIONS *options;
     u32 *unk1B8;
     void *unk1BC;
     u32 *unk1C0;
     u32 *unk1C4;
-    u32 unk1C8;
+    void *unk1C8; //related to animations
     u32 *unk1CC;
     UnkBattleSystemSub1D0 unk1D0[4];
     UnkBattleSystemSub220 unk220;
-    u32 *unk22C;
+    GAME_STATS *gameStats;
     u8 *unk230;
     u16 *unk234;
-    u8 unk238[0x1000];
-    u8 unk1238[0x1000];
+    u8 sendBuffer[0x1000];
+    u8 recvBuffer[0x1000];
     u16 unk2238[0x70];
     u16 unk2318[0x70];
     u16 unk23E8; //labeling may be wrong before here
@@ -561,12 +575,16 @@ struct BattleSystem {
     u8 unk23FC;
     u8 unk23FD;
     u8 unk23FE;
-    u8 unk240F_0:1, unk240F_1:1, unk240E_F:1, unk240F_3:2, unk240F_5:3;
-    int unk2400;
+    u8 unk240F_0:1; 
+    u8 unk240F_1:1; 
+    u8 unk240E_F:1;
+    u8 criticalHpMusic:2;
+    u8 criticalHpMusicDelay:3;
+    Terrain terrain;
     int unk2404;
-    int unk2408;
-    u32 unk240C;
-    int unk2410;
+    int location;
+    u32 battleSpecial;
+    int timezone; //might be timeOfDay? unclear
     int safariBallCnt;
     u8 unk2418[4];
     u32 unk241C;
@@ -575,21 +593,25 @@ struct BattleSystem {
     u16 unk2422;
     int unk2424;
     int unk2428;
-    int unk242C;
+    int weather;
     int unk2430;
     u32 unk2434;
     int unk2438;
     int unk243C;
-    u8 unk2440;
-    u8 unk2441;
-    u32 unk2442;
-    u32 unk2444;
-    u32 unk2448;
+    int unk2440;
+    u8 unk2442;
+    u8 unk2445;
+    u32 rand;
+    u32 randTemp;
     u16 unk244C[4];
     u16 unk2454[4];
     u16 unk245C[4];
     int unk2464[4];
-    u32 unk2474_0:1, unk2474_1:1, unk2474_2:30;
+    u32 unk2474_0:1, 
+        unk2474_1:1, 
+        unk2474_2:1, 
+        unk2474_3:1,
+        unk2474_4:28;
     u32 unk2478;
     u8 unk247C[4];
 };
@@ -630,5 +652,12 @@ typedef struct TargetPokemon {
     s16 hp;
     u16 hpMax;
 } TargetPokemon;
+
+//Information used for selecting an item on the bottom screen
+typedef struct BattleItem {
+    u16 id;
+    u8 page;
+    u8 monIndex;
+} BattleItem;
 
 #endif

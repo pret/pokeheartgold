@@ -30,7 +30,7 @@ enum BattleSide {
     B_SIDE_18
 };
 
-enum Terrain {
+typedef enum Terrain {
     TERRAIN_PLAIN,
     TERRAIN_SAND,
     TERRAIN_GRASS,
@@ -44,11 +44,23 @@ enum Terrain {
     TERRAIN_MARSH,
     TERRAIN_BRIDGE,
     TERRAIN_LINK,
+    TERRAIN_END,
+    //Special terrains
+    TERRAIN_ELITE_4_WILL,
+    TERRAIN_ELITE_4_KOGA,
+    TERRAIN_ELITE_4_BRUNO,
+    TERRAIN_ELITE_4_KAREN,
+    TERRAIN_CHAMPION_LANCE,
+    TERRAIN_17,
+    TERRAIN_TOWER,
+    TERRAIN_ARCADE,
+    TERRAIN_CASTLE,
+    TERRAIN_22,
     TERRAIN_MAX
-};
+} Terrain;
 
 //Battle Type
-#define BATTLE_TYPE_SINGLES                 (1 << 0)
+#define BATTLE_TYPE_TRAINER                 (1 << 0)
 #define BATTLE_TYPE_DOUBLES                 (1 << 1)
 #define BATTLE_TYPE_LINK                    (1 << 2)
 #define BATTLE_TYPE_MULTI                   (1 << 3)
@@ -59,17 +71,18 @@ enum Terrain {
 #define BATTLE_TYPE_8                       (1 << 8)
 #define BATTLE_TYPE_PAL_PARK                (1 << 9)
 #define BATTLE_TYPE_TUTORIAL                (1 << 10)
+#define BATTLE_TYPE_11                      (1 << 11)
+#define BATTLE_TYPE_DEBUG                   (1 << 31)
 
 #define BATTLE_TYPE_NO_EXP                  (BATTLE_TYPE_LINK | BATTLE_TYPE_SAFARI | BATTLE_TYPE_TOWER | BATTLE_TYPE_PAL_PARK)
 
-//Battle Status Flags
+//Battle Special Flags
 #define BATTLE_SPECIAL_FIRST_RIVAL          (1 << 0)
 #define BATTLE_SPECIAL_RECORDED             (1 << 4)
 #define BATTLE_SPECIAL_DISTORTION_WORLD     (1 << 7)
 
 //Move Effects Flags
-#define MOVE_EFFECT_FLAG_0                       (1 << 0)
-#define MOVE_EFFECT_FLAG_1                       (1 << 1)
+#define MOVE_EFFECT_FLAG_LEECH_SEED_BATTLER      (3 << 0)
 #define MOVE_EFFECT_FLAG_LEECH_SEED              (1 << 2)
 #define MOVE_EFFECT_FLAG_LOCK_ON                 (3 << 3)
 #define MOVE_EFFECT_FLAG_LOCK_ON_SET             (1 << 4)
@@ -79,8 +92,7 @@ enum Terrain {
 #define MOVE_EFFECT_FLAG_8                       (1 << 8)
 #define MOVE_EFFECT_FLAG_CHARGE                  (1 << 9)
 #define MOVE_EFFECT_FLAG_INGRAIN                 (1 << 10)
-#define MOVE_EFFECT_FLAG_11                      (1 << 11)
-#define MOVE_EFFECT_FLAG_YAWN                    (1 << 12)
+#define MOVE_EFFECT_FLAG_YAWN                    (3 << 11)
 #define MOVE_EFFECT_FLAG_IMPRISON_USER           (1 << 13)
 #define MOVE_EFFECT_FLAG_GRUDGE                  (1 << 14)
 #define MOVE_EFFECT_FLAG_LUCKY_CHANT             (1 << 15) 
@@ -100,8 +112,12 @@ enum Terrain {
 #define MOVE_EFFECT_FLAG_PHANTOM_FORCE           (1 << 29)
 #define MOVE_EFFECT_FLAG_IMPRISON                (1 << 30)
 
-#define MOVE_EFFECT_FLAG_BATON_PASSABLE          (MOVE_EFFECT_FLAG_0 | MOVE_EFFECT_FLAG_1 | MOVE_EFFECT_FLAG_LEECH_SEED | MOVE_EFFECT_FLAG_LOCK_ON | MOVE_EFFECT_FLAG_PERISH_SONG | MOVE_EFFECT_FLAG_INGRAIN | MOVE_EFFECT_FLAG_LUCKY_CHANT | MOVE_EFFECT_FLAG_MUD_SPORT | MOVE_EFFECT_FLAG_WATER_SPORT | MOVE_EFFECT_FLAG_GASTRO_ACID | MOVE_EFFECT_FLAG_POWER_TRICK | MOVE_EFFECT_FLAG_AQUA_RING | MOVE_EFFECT_FLAG_HEAL_BLOCK | MOVE_EFFECT_FLAG_EMBARGO | MOVE_EFFECT_FLAG_MAGNET_RISE)    
+#define MOVE_EFFECT_FLAG_BATON_PASSABLE          (MOVE_EFFECT_FLAG_LEECH_SEED_BATTLER | MOVE_EFFECT_FLAG_LEECH_SEED | MOVE_EFFECT_FLAG_LOCK_ON | MOVE_EFFECT_FLAG_PERISH_SONG | MOVE_EFFECT_FLAG_INGRAIN | MOVE_EFFECT_FLAG_LUCKY_CHANT | MOVE_EFFECT_FLAG_MUD_SPORT | MOVE_EFFECT_FLAG_WATER_SPORT | MOVE_EFFECT_FLAG_GASTRO_ACID | MOVE_EFFECT_FLAG_POWER_TRICK | MOVE_EFFECT_FLAG_AQUA_RING | MOVE_EFFECT_FLAG_HEAL_BLOCK | MOVE_EFFECT_FLAG_EMBARGO | MOVE_EFFECT_FLAG_MAGNET_RISE)    
 #define MOVE_EFFECT_FLAG_HIDE_SUBSTITUTE         (MOVE_EFFECT_FLAG_6 | MOVE_EFFECT_FLAG_7 | MOVE_EFFECT_FLAG_DIVE | MOVE_EFFECT_FLAG_PHANTOM_FORCE)
+
+#define MOVE_EFFECT_FLAG_LOCK_ON_SHIFT          3
+#define MOVE_EFFECT_FLAG_YAWN_SHIFT             11
+
 //Move status
 #define MOVE_STATUS_MISS                    (1 << 0)
 #define MOVE_STATUS_SUPER_EFFECTIVE         (1 << 1) 
@@ -152,6 +168,7 @@ enum Terrain {
 #define FIELD_CONDITION_WEATHER             (FIELD_CONDITION_RAIN_ALL | FIELD_CONDITION_SANDSTORM_ALL | FIELD_CONDITION_SUN_ALL | FIELD_CONDITION_HAIL_ALL | FIELD_CONDITION_FOG)
     
 #define FIELD_CONDITION_GRAVITY_SHIFT       12
+#define FIELD_CONDITION_TRICK_ROOM_SHIFT    16
     
 //Field Side Conditions
 #define SIDE_CONDITION_REFLECT              (1 << 0)
@@ -182,6 +199,8 @@ enum Terrain {
 #define STATUS_POISON_ALL                   (STATUS_POISON | STATUS_BAD_POISON | STATUS_POISON_COUNT)
 #define STATUS_ALL                          (STATUS_SLEEP | STATUS_POISON | STATUS_BURN | STATUS_FREEZE | STATUS_PARALYSIS | STATUS_BAD_POISON)
 
+#define STATUS_POISON_COUNT_SHIFT           8
+
 //Status Conditions
 #define CONDITION_NONE                      0
 #define CONDITION_SLEEP                     1
@@ -195,11 +214,9 @@ enum Terrain {
 #define STATUS2_FLINCH                      (1 << 3)
 #define STATUS2_UPROAR                      (7 << 4)
 #define STATUS2_8                           (3 << 8)
-#define STATUS2_RAGE                        (3 << 10)
+#define STATUS2_RAMPAGE_TURNS               (3 << 10)
 #define STATUS2_LOCKED_INTO_MOVE            (1 << 12)
-#define STATUS2_13                          (1 << 13)
-#define STATUS2_14                          (1 << 14)
-#define STATUS2_15                          (1 << 15)
+#define STATUS2_BINDING_TURNS               (7 << 13)
 #define STATUS2_ATTRACT_BATTLER1            (1 << 16)
 #define STATUS2_ATTRACT_BATTLER2            (1 << 17)
 #define STATUS2_ATTRACT_BATTLER3            (1 << 18)
@@ -210,18 +227,20 @@ enum Terrain {
 #define STATUS2_23                          (1 << 23)
 #define STATUS2_SUBSTITUTE                  (1 << 24)
 #define STATUS2_MEAN_LOOK                   (1 << 26)
-#define STATUS2_27                          (1 << 27)
-#define STATUS2_28                          (1 << 28)
+#define STATUS2_NIGHTMARE                   (1 << 27)
+#define STATUS2_CURSE                       (1 << 28)
 #define STATUS2_FORESIGHT                   (1 << 29)
 #define STATUS2_DEFENCE_CURL                (1 << 30)
 #define STATUS2_TORMENT                     (1 << 31)
 
-#define STATUS2_BINDING_ALL                 (STATUS2_13 | STATUS2_14 | STATUS2_15)
 #define STATUS2_ATTRACT_ALL                 (STATUS2_ATTRACT_BATTLER1 | STATUS2_ATTRACT_BATTLER2 | STATUS2_ATTRACT_BATTLER3 | STATUS2_ATTRACT_BATTLER4)
 
+#define STATUS2_UPROAR_SHIFT                4
+#define STATUS2_RAMPAGE_SHIFT               10
+#define STATUS2_BINDING_SHIFT               13
 #define STATUS2_ATTRACT_SHIFT               16    
 
-#define STATUS2_BATON_PASSABLE              (STATUS2_CONFUSION | STATUS2_FOCUS_ENERGY | STATUS2_SUBSTITUTE | STATUS2_MEAN_LOOK | STATUS2_28)
+#define STATUS2_BATON_PASSABLE              (STATUS2_CONFUSION | STATUS2_FOCUS_ENERGY | STATUS2_SUBSTITUTE | STATUS2_MEAN_LOOK | STATUS2_CURSE)
 
 //Struggle Checks
 #define STRUGGLE_CHECK_NO_MOVES             (1 << 0)
@@ -374,7 +393,7 @@ enum Terrain {
 #define BATTLE_STATUS_NO_MOVE_SET                   (1 << 20)
 #define BATTLE_STATUS_MESSAGES_OFF                  (1 << 21)
 #define BATTLE_STATUS_22                            (1 << 22)
-#define BATTLE_STATUS_MOLD_BREAKER                  (1 << 23) 
+#define BATTLE_STATUS_MOLD_BREAKER                  (1 << 23)
 
 #define BATTLE_STATUS_FAINTED_SHIFT                 24
 
@@ -388,6 +407,21 @@ enum Terrain {
 #define BATTLE_STATUS2_26                           (1 << 26)
 
 #define BATTLE_STATUS2_EXP_GAIN_SHIFT               28
+
+//Stat Changes
+#define STAT_DOWN_6          0
+#define STAT_DOWN_5          1
+#define STAT_DOWN_4          2
+#define STAT_DOWN_3          3
+#define STAT_DOWN_2          4
+#define STAT_DOWN_1          5
+#define STAT_NEUTRAL         6
+#define STAT_UP_1            7
+#define STAT_UP_2            8
+#define STAT_UP_3            9
+#define STAT_UP_4           10
+#define STAT_UP_5           11
+#define STAT_UP_6           12
 
 //Battle Controller Commands
 typedef enum ControllerCommand {

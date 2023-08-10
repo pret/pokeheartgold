@@ -484,8 +484,8 @@ _02264BC8:
 	.balign 4, 0
 	thumb_func_end ov12_02264B94
 
-	thumb_func_start ov12_02264BCC
-ov12_02264BCC: ; 0x02264BCC
+	thumb_func_start BattleHpBar_LoadResources
+BattleHpBar_LoadResources: ; 0x02264BCC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -500,7 +500,7 @@ ov12_02264BCC: ; 0x02264BCC
 	bl ov12_0223A8EC
 	str r0, [sp, #4]
 	ldr r0, [r5, #0xc]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	str r0, [sp, #8]
 	add r0, r5, #0
 	add r0, #0x25
@@ -555,10 +555,10 @@ _02264C5A:
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02264C64: .word ov12_0226D368
-	thumb_func_end ov12_02264BCC
+	thumb_func_end BattleHpBar_LoadResources
 
-	thumb_func_start ov12_02264C68
-ov12_02264C68: ; 0x02264C68
+	thumb_func_start BattleHpBar_FreeResources
+BattleHpBar_FreeResources: ; 0x02264C68
 	push {r4, lr}
 	add r4, r0, #0
 	bl ov12_02264B28
@@ -569,7 +569,7 @@ ov12_02264C68: ; 0x02264C68
 	add r0, r4, #0
 	bl ov12_02264B94
 	pop {r4, pc}
-	thumb_func_end ov12_02264C68
+	thumb_func_end BattleHpBar_FreeResources
 
 	thumb_func_start ov12_02264C84
 ov12_02264C84: ; 0x02264C84
@@ -928,8 +928,8 @@ _02264F26:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_02264F00
 
-	thumb_func_start ov12_02264F28
-ov12_02264F28: ; 0x02264F28
+	thumb_func_start BattleHpBar_SetEnabled
+BattleHpBar_SetEnabled: ; 0x02264F28
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #4]
@@ -943,7 +943,7 @@ ov12_02264F28: ; 0x02264F28
 _02264F40:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov12_02264F28
+	thumb_func_end BattleHpBar_SetEnabled
 
 	thumb_func_start ov12_02264F44
 ov12_02264F44: ; 0x02264F44
@@ -1238,7 +1238,7 @@ ov12_0226516C: ; 0x0226516C
 	sub sp, #0x34
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	add r6, r0, #0
 	ldr r0, [r5, #0xc]
 	bl ov12_0223A930
@@ -1471,7 +1471,7 @@ ov12_02265354: ; 0x02265354
 	bl MI_CpuFill8
 	ldr r0, [sp, #4]
 	ldr r0, [r0, #0xc]
-	bl ov12_0223A928
+	bl BattleSystem_GetLevelFont
 	ldr r1, [sp, #4]
 	str r4, [sp]
 	add r1, #0x48
@@ -1599,7 +1599,7 @@ ov12_02265474: ; 0x02265474
 	add r4, r0, #0
 	bl MI_CpuFill8
 	ldr r0, [r5, #0xc]
-	bl ov12_0223A920
+	bl BattleSystem_GetHpFont
 	str r4, [sp]
 	add r1, r6, #0
 	mov r2, #3
@@ -1660,7 +1660,7 @@ ov12_02265500: ; 0x02265500
 	add r4, r0, #0
 	bl MI_CpuFill8
 	ldr r0, [r5, #0xc]
-	bl ov12_0223A920
+	bl BattleSystem_GetHpFont
 	str r4, [sp]
 	ldr r1, [r5, #0x2c]
 	mov r2, #3
@@ -1770,7 +1770,7 @@ ov12_022655F0: ; 0x022655F0
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
 	add r5, r1, #0
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	add r6, r0, #0
 	ldr r0, [r4, #0xc]
 	bl ov12_0223A930
@@ -1872,7 +1872,7 @@ ov12_022656CC: ; 0x022656CC
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
 	add r5, r1, #0
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	str r0, [sp, #0x1c]
 	ldr r0, [r4, #0xc]
 	bl ov12_0223A930
@@ -2668,7 +2668,7 @@ ov12_02265C88: ; 0x02265C88
 	add r5, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0, #0xc]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	add r6, r0, #0
 	ldrb r0, [r4, #8]
 	cmp r0, #0

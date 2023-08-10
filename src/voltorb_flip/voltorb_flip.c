@@ -26,6 +26,7 @@
 #include "unk_02025154.h"
 #include "bg_window.h"
 #include "constants/sndseq.h"
+#include "constants/game_stat.h"
 #include "msgdata/msg/msg_0039.h"
 #include "voltorb_flip/voltorb_flip.h"
 #include "voltorb_flip/voltorb_flip_data.h"
@@ -2054,7 +2055,7 @@ static void ov122_021E8094(OVY_MANAGER *man) {
     sub_02002B8C(TRUE);
 
     Main_SetVBlankIntrCB((GFIntrCB)ov122_021E8004, work);
-    GameStats_AddSpecial(Save_GameStats_Get(args->savedata), 6);
+    GameStats_AddSpecial(Save_GameStats_Get(args->savedata), GAME_STAT_UNK6);
 }
 
 static void FreeOverlayData(OVY_MANAGER *man) {

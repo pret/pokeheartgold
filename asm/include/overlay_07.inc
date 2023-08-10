@@ -236,7 +236,7 @@
 .public ov07_022377F4
 .public ov12_0223A8E4
 .public ov12_0223A8EC
-.public ov12_0223A938
+.public BattleSystem_GetPaletteData
 .public ov12_0223BB88
 .public ov12_0223C1C4
 .public ov12_0223C1F4

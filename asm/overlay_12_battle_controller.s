@@ -306,7 +306,7 @@ BattleController_EmitPlayEncounterAnimation: ; 0x022622C8
 	mov r1, #1
 	add r5, r0, #0
 	str r1, [sp, #4]
-	bl ov12_0223BDC4
+	bl BattleSystem_GetRandTemp
 	str r0, [sp, #8]
 	mov r0, #8
 	str r0, [sp]
@@ -1383,7 +1383,7 @@ _02262AE2:
 	orr r0, r1
 	strb r0, [r3, #7]
 	ldr r0, [sp, #4]
-	bl ov12_0223B6B4
+	bl BattleSystem_GetSafariBallCount
 	str r0, [sp, #0x24]
 	ldr r0, [sp, #8]
 	add r1, sp, #0x14
@@ -1435,7 +1435,7 @@ ov12_02262B80: ; 0x02262B80
 	add r6, r3, #0
 	bl MIi_CpuClearFast
 	ldr r0, [sp, #4]
-	bl ov12_0223A7E4
+	bl BattleSystem_GetBattleContext
 	ldr r1, [sp, #0xc]
 	bl ov12_0224EDC0
 	mov r5, #0
@@ -1905,7 +1905,7 @@ ov12_02262F40: ; 0x02262F40
 	str r2, [sp, #0xc]
 	str r0, [sp, #4]
 	str r1, [sp, #8]
-	bl ov12_0223A7E4
+	bl BattleSystem_GetBattleContext
 	ldr r1, [sp, #0xc]
 	bl ov12_0224EDC0
 	mov r0, #0xf
@@ -3307,7 +3307,7 @@ ov12_022639B8: ; 0x022639B8
 	sub sp, #0x2c
 	add r4, r1, #0
 	add r5, r0, #0
-	bl ov12_0223A7E4
+	bl BattleSystem_GetBattleContext
 	add r1, r4, #0
 	bl ov12_0224EDC0
 	mov r1, #0x25
@@ -3480,7 +3480,7 @@ _02263AD0:
 	orr r0, r1
 	strb r0, [r3, #7]
 	ldr r0, [sp, #4]
-	bl ov12_0223B6B4
+	bl BattleSystem_GetSafariBallCount
 	str r0, [sp, #0x20]
 	mov r0, #0x14
 	str r0, [sp]
@@ -3743,7 +3743,7 @@ ov12_02263D14: ; 0x02263D14
 	add r7, r0, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl ov12_0223A7E4
+	bl BattleSystem_GetBattleContext
 	add r1, r5, #0
 	bl ov12_0224EDC0
 	mov r1, #0x2b
@@ -4496,7 +4496,7 @@ BattleController_EmitSetBattleResults: ; 0x02264288
 	add r0, sp, #4
 	strb r1, [r0]
 	add r0, r5, #0
-	bl BattleSystem_GetWinLoseFlags
+	bl BattleSystem_GetBattleOutcomeFlags
 	str r0, [sp, #8]
 	mov r1, #0
 	add r0, sp, #4

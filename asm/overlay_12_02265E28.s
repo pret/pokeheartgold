@@ -58,7 +58,7 @@ _02265E82:
 	add r2, r4, #0
 	bl sub_0200D504
 	ldr r0, [r5, #4]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	str r4, [sp]
 	ldrb r1, [r5, #9]
 	mov r2, #6
@@ -81,7 +81,7 @@ _02265E82:
 	mov r1, #2
 	bl sub_0200D68C
 	ldr r0, [r5, #4]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	mov r1, #0
 	str r1, [sp]
 	mov r1, #0x20

@@ -27,7 +27,7 @@ ov12_022660D0: ; 0x022660D0
 	strb r1, [r6, r0]
 _022660F4:
 	ldr r0, [sp, #0xc]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0xc]
 	bl ov12_0223AB54
@@ -341,10 +341,10 @@ ov12_02266390: ; 0x02266390
 	bl ov12_0223A8EC
 	add r4, r0, #0
 	ldr r0, [r7]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	add r5, r0, #0
 	ldr r0, [r7]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	str r0, [sp, #0x14]
 	ldr r0, [r7]
 	bl ov12_0226ADC4
@@ -374,7 +374,7 @@ _022663C6:
 	add r3, r2, #0
 	bl sub_0207775C
 	ldr r0, [r7]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	mov r1, #2
 	str r1, [sp]
 	ldr r1, _02266478 ; =0x00004E34
@@ -520,7 +520,7 @@ _02266526:
 	mov r1, #0
 	strb r1, [r7, r0]
 	ldr r0, [r7]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	str r0, [sp, #0x28]
 	ldr r0, [r7]
 	bl ov12_0223A8E4
@@ -551,7 +551,7 @@ _02266560:
 	add r0, r2, r1
 	str r0, [sp, #0x2c]
 	ldr r0, [r7]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	mov r1, #2
 	lsl r1, r1, #8
 	str r1, [sp]
@@ -595,7 +595,7 @@ _022665BC:
 	cmp r4, #4
 	blt _02266586
 	ldr r0, [r7]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	ldr r1, [sp, #0x18]
 	ldr r2, [sp, #0x24]
 	str r1, [sp]
@@ -799,7 +799,7 @@ _02266774:
 	str r0, [r1, #8]
 	add r0, r1, #0
 	ldr r0, [r0]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	ldr r1, _022667F4 ; =0x00004FBD
 	add r2, r0, #0
 	ldr r0, _022667F8 ; =0x00004E43
@@ -1630,7 +1630,7 @@ ov12_02266DC4: ; 0x02266DC4
 	str r0, [sp]
 	ldr r0, [r5]
 	mov r4, #0
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	add r7, r0, #0
 	ldr r0, _02266E58 ; =0x000006CC
 	add r1, r0, #4
@@ -2209,7 +2209,7 @@ _02267252:
 	bl ov12_02268440
 _022672B6:
 	ldr r0, [r5]
-	bl ov12_0223B6B4
+	bl BattleSystem_GetSafariBallCount
 	mov r1, #0
 	add r2, r0, #0
 	str r1, [sp]
@@ -2303,7 +2303,7 @@ ov12_0226739C: ; 0x0226739C
 	add r5, r0, #0
 	bl ov12_02266F84
 	ldr r0, [r5]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	mov r1, #0x10
 	str r1, [sp]
 	mov r1, #0x20
@@ -2360,7 +2360,7 @@ ov12_02267418: ; 0x02267418
 	add r5, r0, #0
 	bl ov12_02266F84
 	ldr r0, [r5]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	mov r1, #0x10
 	str r1, [sp]
 	mov r1, #0xa
@@ -2649,7 +2649,7 @@ _0226767A:
 	blt _02267654
 _0226767E:
 	ldr r0, [r5]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	ldrh r0, [r6]
 	cmp r0, #0
 	bne _022676AA
@@ -3013,7 +3013,7 @@ ov12_02267984: ; 0x02267984
 	add r0, r6, #0
 	bl FreeToHeap
 	ldr r0, [r5]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	mov r1, #4
 	ldr r2, [r5, #0x58]
 	add r6, r0, #0
@@ -3023,7 +3023,7 @@ ov12_02267984: ; 0x02267984
 	mov r1, #4
 	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [r5]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	mov r2, #2
 	add r6, r0, #0
 	ldr r1, [r5, #0x50]
@@ -3884,7 +3884,7 @@ _0226809E:
 	pop {r3, r4, r5, r6, pc}
 _022680E4:
 	ldr r0, [r4]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	ldr r2, _02268124 ; =0x000002FF
 	add r6, r0, #0
 	mov r1, #5
@@ -3976,7 +3976,7 @@ ov12_02268194: ; 0x02268194
 	bl ov12_0223A8EC
 	add r6, r0, #0
 	ldr r0, [r5]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	add r5, r0, #0
 	bl sub_02074490
 	mov r1, #0x14
@@ -4455,7 +4455,7 @@ _0226856A:
 	bl ov12_0223A8EC
 	str r0, [sp, #0x20]
 	ldr r0, [r7]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	str r0, [sp, #0x24]
 	cmp r4, #0
 	bne _0226858C
@@ -4622,7 +4622,7 @@ ov12_022686BC: ; 0x022686BC
 	sub sp, #8
 	add r7, r0, #0
 	ldr r0, [r7]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	mov r1, #5
 	bl GetBgTilemapBuffer
 	add r4, r0, #0
@@ -5117,7 +5117,7 @@ _02268A90:
 	add r0, r4, #0
 	bl InitWindow
 	ldr r0, [r5]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -5323,7 +5323,7 @@ ov12_02268C30: ; 0x02268C30
 	ldr r0, [r0]
 	add r5, r1, #0
 	add r4, r2, #0
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	add r4, #8
 	add r1, r5, #0
 	mov r2, #5
@@ -5339,7 +5339,7 @@ ov12_02268C4C: ; 0x02268C4C
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r4, r1, #0
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	add r6, r0, #0
 	mov r7, #0
 	b _02268C92
@@ -5394,10 +5394,10 @@ ov12_02268CA0: ; 0x02268CA0
 	strb r2, [r0, #2]
 	strb r1, [r0, #3]
 	ldr r0, [r5]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	add r6, r0, #0
 	ldr r0, [r5]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -5699,7 +5699,7 @@ ov12_02268EE4: ; 0x02268EE4
 	add r6, r1, #0
 	add r4, r2, #0
 	add r7, r3, #0
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	mov r1, #4
 	str r0, [sp, #4]
 	bl GetBgTilemapBuffer
@@ -5759,7 +5759,7 @@ ov12_02268F58: ; 0x02268F58
 	sub sp, #0xc
 	add r4, r1, #0
 	ldr r0, [r4]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	ldr r3, _0226909C ; =0x0000069C
 	ldrsh r0, [r4, r3]
 	cmp r0, #0
@@ -5925,7 +5925,7 @@ ov12_022690A8: ; 0x022690A8
 	sub sp, #0x24
 	add r4, r1, #0
 	ldr r0, [r4]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	ldr r0, _02269350 ; =0x000006A8
 	add r1, r4, #0
 	ldr r0, [r4, r0]
@@ -6267,7 +6267,7 @@ ov12_02269360: ; 0x02269360
 	sub sp, #0x10
 	add r4, r1, #0
 	ldr r0, [r4]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	ldr r1, _022694F0 ; =0x0000069C
 	ldrsh r0, [r4, r1]
 	cmp r0, #3
@@ -6540,7 +6540,7 @@ ov12_02269568: ; 0x02269568
 	add r6, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	add r4, r0, #0
 	ldrb r0, [r5, #0x13]
 	cmp r0, #0
@@ -6659,7 +6659,7 @@ ov12_02269668: ; 0x02269668
 	add r5, r1, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	add r6, r0, #0
 	ldrb r0, [r5, #0x12]
 	cmp r0, #4
@@ -6800,7 +6800,7 @@ ov12_02269774: ; 0x02269774
 	bne _022697BE
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	mov r2, #0
 	mov r1, #4
 	add r3, r2, #0
@@ -6829,7 +6829,7 @@ _022697BE:
 	ble _02269828
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	ldrb r1, [r4, #0x12]
 	add r5, r0, #0
 	cmp r1, #4
@@ -6972,7 +6972,7 @@ ov12_022698C4: ; 0x022698C4
 	sub sp, #8
 	add r5, r1, #0
 	ldr r0, [r5]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	add r4, r0, #0
 	bl sub_02003B44
 	cmp r0, #0
@@ -7052,7 +7052,7 @@ ov12_02269954: ; 0x02269954
 	bl sub_02002BD4
 	bl sub_02002BF4
 	ldr r0, [r5]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	add r4, r0, #0
 	bl sub_02003B44
 	cmp r0, #0
@@ -7220,7 +7220,7 @@ ov12_02269A9C: ; 0x02269A9C
 	bl ov12_0223AAD8
 	add r1, r0, #0
 	ldr r0, [r6]
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	bl ov12_02261280
 	ldr r1, [sp, #8]
 	cmp r1, #1
@@ -7462,7 +7462,7 @@ ov12_02269C7C: ; 0x02269C7C
 	bne _02269CCE
 _02269C9A:
 	ldr r0, [r5]
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	bl ov12_02261280
 	mov r5, #0
 	ldr r1, _02269CD8 ; =ov12_0226E220
@@ -7639,7 +7639,7 @@ ov12_02269DD4: ; 0x02269DD4
 	bl ov12_0223AAD8
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	bl ov12_02261280
 	ldr r1, _02269F44 ; =0x000006DC
 	add r3, r0, #0
@@ -7838,7 +7838,7 @@ ov12_02269F54: ; 0x02269F54
 	bl ov12_0223AAD8
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	bl ov12_02261280
 	mov r3, #0
 	ldr r7, _02269FA0 ; =ov12_0226E218
@@ -7886,7 +7886,7 @@ ov12_02269FA4: ; 0x02269FA4
 	bl ov12_0223AAD8
 	add r1, r0, #0
 	ldr r0, [r6]
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	bl ov12_02261280
 	ldr r1, _0226A288 ; =0x000006DC
 	str r0, [sp, #0x1c]
@@ -8690,7 +8690,7 @@ ov12_0226A594: ; 0x0226A594
 	bl ov12_0223AAD8
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	bl ov12_02261280
 	ldr r1, _0226A5E8 ; =0x0000068C
 	mov r3, #0
@@ -9165,7 +9165,7 @@ ov12_0226A8F4: ; 0x0226A8F4
 	ldr r0, [r4]
 	bl ov12_0223A8EC
 	ldr r0, [r4]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	ldr r0, [r4]
 	bl ov12_0223BB04
 	cmp r0, #0
@@ -9372,11 +9372,11 @@ ov12_0226AA8C: ; 0x0226AA8C
 	str r0, [sp, #0x1c]
 	ldr r0, [r0]
 	add r4, r1, #0
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	add r5, r0, #0
 	ldr r0, [sp, #0x1c]
 	ldr r0, [r0]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	add r6, r0, #0
 	ldr r1, _0226AC50 ; =0x0000068B
 	ldr r0, [sp, #0x1c]

@@ -27,12 +27,12 @@ _0221BE2E:
 	bl memset
 	str r5, [r4]
 	ldr r0, [r5, #8]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	mov r1, #0x79
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r5, #8]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	mov r1, #0x7a
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -2295,7 +2295,7 @@ ov08_0221CF38: ; 0x0221CF38
 	bl PaletteData_LoadNarc
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
-	bl ov12_0223B708
+	bl BattleSystem_GetFrame
 	add r4, r0, #0
 	bl sub_0200E63C
 	add r1, r0, #0
@@ -3461,7 +3461,7 @@ ov08_0221D91C: ; 0x0221D91C
 	add r1, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
-	bl ov12_0223A9F4
+	bl BattleSystem_GetTrainer
 	add r2, r0, #0
 	ldr r0, _0221DABC ; =0x00001FAC
 	mov r1, #0
@@ -3798,14 +3798,14 @@ ov08_0221DBCC: ; 0x0221DBCC
 	beq _0221DBF0
 	cmp r4, #0x42
 	beq _0221DBF0
-	bl ov12_0223AA80
+	bl BattleSystem_GetBag
 	add r1, r4, #0
 	mov r2, #1
 	add r3, r7, #0
 	bl Bag_TakeItem
 _0221DBF0:
 	add r0, r5, #0
-	bl ov12_0223AA84
+	bl BattleSystem_GetBagCursor
 	add r1, r4, #0
 	add r2, r6, #0
 	bl BagCursor_Battle_SetLastUsedItem
@@ -8273,7 +8273,7 @@ ov08_022201E8: ; 0x022201E8
 	bl TextFlags_SetCanABSpeedUpPrint
 	ldr r0, [r4]
 	ldr r0, [r0, #8]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]
@@ -12728,16 +12728,16 @@ ov08_022225D4: ; 0x022225D4
 	bl memset
 	str r5, [r4]
 	ldr r0, [r5]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	str r0, [r4, #4]
 	ldr r0, [r5]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	str r0, [r4, #8]
 	ldr r0, _0222266C ; =0x0000114A
 	mov r1, #0
 	strb r1, [r4, r0]
 	ldr r0, [r5]
-	bl ov12_0223AA84
+	bl BattleSystem_GetBagCursor
 	add r6, r0, #0
 	mov r5, #0
 _02222614:
@@ -12938,7 +12938,7 @@ ov08_0222276C: ; 0x0222276C
 	bl FontID_Alloc
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl ov12_0223AA84
+	bl BattleSystem_GetBagCursor
 	bl BagCursor_Battle_GetPocket
 	ldr r1, _02222834 ; =0x0000114D
 	strb r0, [r4, r1]
@@ -13614,7 +13614,7 @@ _02222D26:
 	bl BattleSystem_GetParty
 	add r6, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223AB3C
+	bl BattleSystem_GetPcStorage
 	add r4, r0, #0
 	add r0, r6, #0
 	bl GetPartyCount
@@ -13794,7 +13794,7 @@ _02222E40:
 	cmp r0, #0
 	beq _02222EAC
 	ldr r0, [r1]
-	bl ov12_0223AA84
+	bl BattleSystem_GetBagCursor
 	add r6, r0, #0
 	mov r4, #0
 _02222E82:
@@ -14174,7 +14174,7 @@ ov08_022230F4: ; 0x022230F4
 	bl PaletteData_LoadNarc
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl ov12_0223B708
+	bl BattleSystem_GetFrame
 	add r4, r0, #0
 	bl sub_0200E63C
 	add r1, r0, #0
@@ -14412,7 +14412,7 @@ ov08_02223374: ; 0x02223374
 	add r5, r0, #0
 	ldr r4, [r5]
 	ldr r0, [r4]
-	bl ov12_0223A7E4
+	bl BattleSystem_GetBattleContext
 	add r1, r0, #0
 	ldr r0, [r5]
 	ldr r3, [r4, #0x10]
@@ -14429,13 +14429,13 @@ ov08_02223390: ; 0x02223390
 	add r4, r3, #0
 	add r6, r0, #0
 	add r7, r2, #0
-	bl ov12_0223AA80
+	bl BattleSystem_GetBag
 	add r1, r5, #0
 	mov r2, #1
 	add r3, r4, #0
 	bl Bag_TakeItem
 	add r0, r6, #0
-	bl ov12_0223AA84
+	bl BattleSystem_GetBagCursor
 	add r1, r5, #0
 	add r2, r7, #0
 	bl BagCursor_Battle_SetLastUsedItem
@@ -15402,7 +15402,7 @@ ov08_02223B48: ; 0x02223B48
 	bl TextFlags_SetCanABSpeedUpPrint
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	mov r3, #0
 	str r3, [sp]
 	str r0, [sp, #4]

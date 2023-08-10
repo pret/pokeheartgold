@@ -186,7 +186,7 @@ _022459AC:
 	str r2, [r1, r0]
 	ldr r0, [r4]
 	mov r1, #2
-	bl ov12_0223BD3C
+	bl BattleSystem_SetCriticalHpMusicFlag
 _02245A0A:
 	mov r0, #0
 	str r0, [sp, #0x38]
@@ -351,7 +351,7 @@ _02245B3E:
 	ldr r0, [sp, #0x38]
 	str r0, [sp, #0xbc]
 	ldr r0, [r4]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r0, [r4]
 	ldr r1, [sp, #0x40]
@@ -515,7 +515,7 @@ _02245C88:
 	cmp r1, #6
 	blt _02245C88
 	ldr r0, [r4]
-	bl ov12_0223AB60
+	bl BattleSystem_GetLocation
 	add r2, r0, #0
 	lsl r2, r2, #0x10
 	add r0, r6, #0
@@ -559,7 +559,7 @@ _02245CDE:
 	ldr r0, [sp, #0x34]
 	str r0, [sp, #0xbc]
 	ldr r0, [r4]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r0, [r4]
 	ldr r1, [sp, #0x40]
@@ -603,14 +603,14 @@ _02245D5A:
 	pop {r3, r4, r5, r6, r7, pc}
 _02245D62:
 	ldr r0, [r4]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	add r6, r0, #0
 	ldr r0, [r4]
 	mov r1, #1
-	bl ov12_0223A7D8
+	bl BattleSystem_GetWindow
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	add r7, r0, #0
 	ldr r0, _02246018 ; =0x04000008
 	mov r2, #3
@@ -693,7 +693,7 @@ _02245E0A:
 	stmia r2!, {r0, r1}
 	ldr r0, [r4]
 	mov r1, #1
-	bl ov12_0223A7D8
+	bl BattleSystem_GetWindow
 	add r7, r0, #0
 	mov r0, #0x5f
 	ldr r1, [r4, #4]
@@ -778,7 +778,7 @@ _02245EC8:
 	stmia r2!, {r0, r1}
 	ldr r0, [r4]
 	mov r1, #1
-	bl ov12_0223A7D8
+	bl BattleSystem_GetWindow
 	mov r1, #0x24
 	str r1, [sp]
 	mov r1, #0x60
@@ -850,7 +850,7 @@ _02245F5C:
 _02245F6C:
 	ldr r0, [r4]
 	mov r1, #1
-	bl ov12_0223A7D8
+	bl BattleSystem_GetWindow
 	add r6, r0, #0
 	mov r1, #0
 	bl sub_0200E5D4
@@ -892,7 +892,7 @@ _02245FBA:
 	pop {r3, r4, r5, r6, r7, pc}
 _02245FCE:
 	ldr r0, [r4]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	add r1, r4, #0
 	add r0, r6, #0
 	add r1, #0x38
@@ -961,7 +961,7 @@ _02246050:
 	ldrh r0, [r0]
 	str r0, [sp, #0xbc]
 	ldr r0, [r4]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r0, [r4]
 	ldr r1, [sp, #0x40]
@@ -984,7 +984,7 @@ _02246082:
 	ldr r0, [r4, #0x40]
 	str r0, [sp, #0xbc]
 	ldr r0, [r4]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r0, [r4]
 	ldr r1, [sp, #0x40]
@@ -1006,7 +1006,7 @@ _022460B4:
 	orr r0, r7
 	str r0, [sp, #0xb8]
 	ldr r0, [r4]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r0, [r4]
 	ldr r1, [sp, #0x40]
@@ -1071,7 +1071,7 @@ _0224613C:
 	mov r1, #0
 	strb r1, [r0, #1]
 	ldr r0, [r4]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r0, [r4]
 	ldr r1, [sp, #0x40]
@@ -1135,7 +1135,7 @@ _022461BE:
 	mov r1, #0
 	strb r1, [r0, #1]
 	ldr r0, [r4]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r0, [r4]
 	ldr r1, [sp, #0x40]
@@ -1191,7 +1191,7 @@ _0224622A:
 	ldr r0, [r4, #0x40]
 	str r0, [sp, #0xbc]
 	ldr r0, [r4]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r0, [r4]
 	ldr r1, [sp, #0x40]
@@ -1223,7 +1223,7 @@ _02246272:
 	mov r1, #0
 	strb r1, [r0, #1]
 	ldr r0, [r4]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r0, [r4]
 	ldr r1, [sp, #0x40]
@@ -1251,7 +1251,7 @@ _0224629A:
 	bl GetMonData
 	str r0, [sp, #0xbc]
 	ldr r0, [r4]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r0, [r4]
 	ldr r1, [sp, #0x40]
@@ -1270,7 +1270,7 @@ _022462D6:
 	mov r1, #0
 	strb r1, [r0, #1]
 	ldr r0, [r4]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r0, [r4]
 	ldr r1, [sp, #0x40]
@@ -1294,7 +1294,7 @@ _022462FE:
 	ldr r0, [r4, #0x40]
 	str r0, [sp, #0xbc]
 	ldr r0, [r4]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r0, [r4]
 	ldr r1, [sp, #0x40]
@@ -1625,7 +1625,7 @@ Task_GetPokemon: ; 0x022465A8
 	bl ov12_0223A930
 	str r0, [sp, #0x20]
 	ldr r0, [r4]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	add r5, r0, #0
 	ldr r0, [r4]
 	bl ov12_0223A8D4
@@ -1703,7 +1703,7 @@ _02246636:
 	bl ov12_0223A8E4
 	str r0, [sp, #0x14c]
 	ldr r0, [r4]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	str r0, [sp, #0x150]
 	mov r0, #1
 	str r0, [sp, #0x144]
@@ -1748,7 +1748,7 @@ _0224668A:
 _022466B0:
 	ldr r0, [r4]
 	mov r1, #0
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	add r5, r0, #0
 	add r0, #0x88
 	ldr r0, [r0]
@@ -1940,7 +1940,7 @@ _02246826:
 	strb r1, [r0, #1]
 	str r7, [sp, #0x110]
 	ldr r0, [r4]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r0, [r4]
 	ldr r1, [sp, #0x20]
@@ -1955,7 +1955,7 @@ _02246826:
 	bl PlayBGM
 	ldr r0, [r4]
 	mov r1, #2
-	bl ov12_0223BD3C
+	bl BattleSystem_SetCriticalHpMusicFlag
 	add sp, #0x158
 	pop {r3, r4, r5, r6, r7, pc}
 _0224686C:
@@ -2014,7 +2014,7 @@ _022468A2:
 	ldr r1, [r4, #4]
 	bl ov12_022567D4
 	ldr r0, [r4]
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #1
 	bl sub_0201649C
 	mov r1, #0
@@ -2070,7 +2070,7 @@ _02246950:
 	tst r0, r1
 	ldr r0, [r4]
 	beq _022469B0
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #1
 	bl sub_0201649C
 	mov r1, #0
@@ -2096,7 +2096,7 @@ _02246950:
 	str r0, [r4, #0x40]
 	pop {r3, r4, r5, r6, r7, pc}
 _022469B0:
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #1
 	bl sub_0201649C
 	mov r1, #0
@@ -2127,7 +2127,7 @@ _022469E6:
 	strb r1, [r0, #1]
 	str r7, [sp, #0xec]
 	ldr r0, [r4]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r0, [r4]
 	ldr r1, [sp, #0x20]
@@ -2172,7 +2172,7 @@ _02246A18:
 	add r3, r1, #0
 	bl sub_020090E4
 	ldr r0, [r4]
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #1
 	bl sub_0201649C
 	add sp, #0x158
@@ -2203,14 +2203,14 @@ _02246A72:
 	bl ov12_02265FC4
 	ldr r0, [r4]
 	mov r1, #0
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	mov r1, #0
 	bl ov12_02261294
 	ldr r0, [r4]
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	str r0, [sp, #0xd0]
 	ldr r0, [r4]
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	str r0, [sp, #0xd4]
 	ldr r0, [sp, #0x24]
 	add r1, r7, #0
@@ -2225,7 +2225,7 @@ _02246A72:
 	bl BattleSystem_GetPartyMon
 	str r0, [sp, #0xdc]
 	ldr r0, [r4]
-	bl ov12_0223A93C
+	bl BattleSystem_GetPokedex
 	bl Pokedex_IsNatDexEnabled
 	str r0, [sp, #0xe0]
 	bl sub_02021BD0
@@ -2374,7 +2374,7 @@ _02246C00:
 	bl sub_0200878C
 	ldr r0, [r4]
 	mov r1, #0
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	mov r1, #0
 	bl ov12_02261294
 	ldr r0, [r4]
@@ -2423,7 +2423,7 @@ _02246C84:
 	mov r0, #0x12
 	str r0, [r4, #0x28]
 	ldr r0, [r4]
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #0
 	bl sub_0201649C
 	add r0, r5, #0
@@ -2476,7 +2476,7 @@ _02246CEA:
 	pop {r3, r4, r5, r6, r7, pc}
 _02246D0A:
 	ldr r0, [r4]
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #1
 	bl sub_0201649C
 	mov r1, #0
@@ -2526,7 +2526,7 @@ _02246D4E:
 	bl GetMonData
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223B6CC
+	bl BattleSystem_GetOptions
 	str r0, [sp]
 	mov r0, #0
 	str r0, [sp, #4]
@@ -2557,7 +2557,7 @@ _02246DB0:
 	bl GetMonData
 	str r0, [r5, #8]
 	ldr r0, [r4]
-	bl ov12_0223AB3C
+	bl BattleSystem_GetPcStorage
 	str r0, [r5, #0x48]
 	add r0, r6, #0
 	mov r1, #0x6f
@@ -2572,7 +2572,7 @@ _02246DB0:
 	mov r0, #0x15
 	str r0, [r4, #0x28]
 	ldr r0, [r4]
-	bl ov12_0223BCF0
+	bl BattleSystem_HpBar_Delete
 	ldr r0, [r4]
 	mov r5, #0
 	bl BattleSystem_GetMaxBattlers
@@ -2582,7 +2582,7 @@ _02246DB0:
 _02246DF6:
 	ldr r0, [r4]
 	add r1, r5, #0
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	add r6, r0, #0
 	ldr r0, [r6, #0x18]
 	cmp r0, #0
@@ -2624,7 +2624,7 @@ _02246E2A:
 	bl SetMonData
 	ldr r0, [r4]
 	mov r1, #0x32
-	bl ov12_0223BB28
+	bl BattleSystem_GameStatIncrement
 _02246E5C:
 	add r0, r5, #0
 	bl sub_0208311C
@@ -2697,7 +2697,7 @@ _02246EEC:
 	cmp r0, #0x16
 	bne _02246F0C
 	ldr r0, [r4]
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #1
 	bl sub_0201649C
 _02246F0C:
@@ -2715,7 +2715,7 @@ _02246F14:
 	cmp r0, #0x16
 	bne _02246F56
 	ldr r0, [r4]
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #1
 	bl sub_0201649C
 	mov r1, #0
@@ -2741,7 +2741,7 @@ _02246F56:
 	pop {r3, r4, r5, r6, r7, pc}
 _02246F5E:
 	ldr r0, [r4]
-	bl ov12_0223AB3C
+	bl BattleSystem_GetPcStorage
 	str r0, [sp, #0x1c]
 	bl PCStorage_GetActiveBox
 	str r0, [sp, #0x18]
@@ -2817,7 +2817,7 @@ _02246FEC:
 	str r0, [sp, #0xa8]
 _02247006:
 	ldr r0, [r4]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r0, [r4]
 	ldr r1, [sp, #0x20]
@@ -2847,7 +2847,7 @@ _0224702E:
 	str r0, [r4, #0x34]
 	bne _022470E6
 	ldr r0, [r4]
-	bl ov12_0223AB34
+	bl BattleSystem_GetMessageIcon
 	mov r1, #1
 	bl sub_0201649C
 	mov r1, #0
@@ -2892,7 +2892,7 @@ _02247094:
 	mov r1, #0
 	strb r1, [r0, #1]
 	ldr r0, [r4]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r0, [r4]
 	ldr r1, [sp, #0x20]
@@ -2927,7 +2927,7 @@ _022470E8:
 	add r0, sp, #0x54
 	strb r1, [r0, #1]
 	ldr r0, [r4]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r0, [r4]
 	ldr r1, [sp, #0x20]
@@ -2998,7 +2998,7 @@ _02247174:
 	mov r1, #0
 	strb r1, [r0, #5]
 	ldr r0, [r4]
-	bl ov12_0223B718
+	bl BattleSystem_GetTextFrameDelay
 	add r3, r0, #0
 	ldr r0, [r4]
 	ldr r1, [sp, #0x20]
@@ -3304,11 +3304,11 @@ _022473C8:
 	b _02247512
 _022473DC:
 	add r0, r7, #0
-	bl ov12_0223B520
+	bl BattleSystem_GetTimezone
 	cmp r0, #3
 	beq _022473FC
 	add r0, r7, #0
-	bl ov12_0223B520
+	bl BattleSystem_GetTimezone
 	cmp r0, #4
 	beq _022473FC
 	add r0, r7, #0
@@ -3734,7 +3734,7 @@ _022476F8:
 _02247706:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	ldr r1, _022478F0 ; =0x00000195
 	ldrb r0, [r0, r1]
 	tst r0, r7
@@ -3754,7 +3754,7 @@ _0224771E:
 _0224772C:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	ldrb r0, [r0, r7]
 	cmp r0, #3
 	beq _02247744
@@ -3784,7 +3784,7 @@ _02247756:
 _02247764:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	ldr r1, _022478F0 ; =0x00000195
 	ldrb r0, [r0, r1]
 	cmp r0, r6
@@ -3804,7 +3804,7 @@ _0224777C:
 _0224778A:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	ldr r1, _022478F0 ; =0x00000195
 	ldrb r0, [r0, r1]
 	tst r0, r7
@@ -3824,7 +3824,7 @@ _022477A2:
 _022477B0:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	ldrb r0, [r0, r7]
 	cmp r0, #2
 	beq _022477C8
@@ -3854,7 +3854,7 @@ _022477DA:
 _022477E8:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl BattleSystem_GetOpponentDataByBattlerId
+	bl BattleSystem_GetOpponentData
 	ldr r1, _022478F0 ; =0x00000195
 	ldrb r0, [r0, r1]
 	cmp r0, r6
@@ -5167,13 +5167,13 @@ ov12_02248228: ; 0x02248228
 	bl ov12_0223A930
 	str r0, [sp, #0x28]
 	add r0, r7, #0
-	bl ov12_0223A9A8
+	bl BattleSystem_GetMessageBuffer
 	str r0, [sp, #0x20]
 	add r0, r7, #0
 	bl ov12_0223A9A4
 	str r0, [sp, #0x24]
 	add r0, r7, #0
-	bl ov12_0223A7D4
+	bl BattleSystem_GetBgConfig
 	str r0, [sp, #0x1c]
 	add r0, r7, #0
 	bl ov12_0223A8E4
@@ -5182,7 +5182,7 @@ ov12_02248228: ; 0x02248228
 	bl ov12_0223A8EC
 	add r4, r0, #0
 	add r0, r7, #0
-	bl ov12_0223A938
+	bl BattleSystem_GetPaletteData
 	add r7, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -5570,7 +5570,7 @@ _022485B4:
 	cmp r0, #0x1e
 	blt _02248602
 	add r0, r5, #0
-	bl ov12_0223AB60
+	bl BattleSystem_GetLocation
 	add r2, r0, #0
 	lsl r2, r2, #0x10
 	add r0, r7, #0
@@ -5583,7 +5583,7 @@ _022485B4:
 	pop {r3, r4, r5, r6, r7, pc}
 _02248602:
 	add r0, r5, #0
-	bl ov12_0223AB60
+	bl BattleSystem_GetLocation
 	add r2, r0, #0
 	lsl r2, r2, #0x10
 	add r0, r7, #0
@@ -5596,7 +5596,7 @@ _02248602:
 	pop {r3, r4, r5, r6, r7, pc}
 _02248620:
 	add r0, r5, #0
-	bl ov12_0223AB60
+	bl BattleSystem_GetLocation
 	add r2, r0, #0
 	lsl r2, r2, #0x10
 	add r0, r7, #0

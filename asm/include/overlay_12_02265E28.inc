@@ -19,7 +19,7 @@
 .public MIi_CpuClearFast
 .public ov12_0223A8E4
 .public ov12_0223A8EC
-.public ov12_0223A938
+.public BattleSystem_GetPaletteData
 .public ov12_0223B52C
 .public ov12_02265FC4
 .public ov12_02265FD4
