@@ -146,8 +146,8 @@
 .public BattleSystem_GameStatIncrement
 .public ov12_0223BB44
 .public ov12_0223BBF0
-.public ov12_0223BCF0
-.public ov12_0223BD3C
+.public BattleSystem_HpBar_Delete
+.public BattleSystem_SetCriticalHpMusicFlag
 .public ov12_0223BD8C
 .public BattleSystem_Random
 .public ov12_0223C134

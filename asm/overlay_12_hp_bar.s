@@ -557,8 +557,8 @@ _02264C5A:
 _02264C64: .word ov12_0226D368
 	thumb_func_end BattleHpBar_LoadResources
 
-	thumb_func_start ov12_02264C68
-ov12_02264C68: ; 0x02264C68
+	thumb_func_start BattleHpBar_FreeResources
+BattleHpBar_FreeResources: ; 0x02264C68
 	push {r4, lr}
 	add r4, r0, #0
 	bl ov12_02264B28
@@ -569,7 +569,7 @@ ov12_02264C68: ; 0x02264C68
 	add r0, r4, #0
 	bl ov12_02264B94
 	pop {r4, pc}
-	thumb_func_end ov12_02264C68
+	thumb_func_end BattleHpBar_FreeResources
 
 	thumb_func_start ov12_02264C84
 ov12_02264C84: ; 0x02264C84

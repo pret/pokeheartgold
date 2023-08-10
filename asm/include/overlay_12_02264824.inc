@@ -59,7 +59,7 @@
 .public ov12_0223A9A4
 .public ov12_0226498C
 .public BattleHpBar_LoadResources
-.public ov12_02264C68
+.public BattleHpBar_FreeResources
 .public ov12_02264C84
 .public ov12_02264DCC
 .public ov12_02264E00

@@ -218,11 +218,11 @@
 .public ov12_0223B870
 .public ov12_0223BBF0
 .public BattleSystem_HpBar_Init
-.public ov12_0223BCC8
-.public ov12_0223BD2C
-.public ov12_0223BD3C
-.public ov12_0223BD58
-.public ov12_0223BD68
+.public BattleSystem_SetHpBarDisabled
+.public BattleSystem_GetCriticalHpMusicFlag
+.public BattleSystem_SetCriticalHpMusicFlag
+.public BattleSystem_GetCriticalHpMusicDelay
+.public BattleSystem_SetCriticalHpMusicDelay
 .public ov12_0223BFC0
 .public ov12_0223BFCC
 .public ov12_0223BFEC

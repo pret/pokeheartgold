@@ -575,7 +575,11 @@ struct BattleSystem {
     u8 unk23FC;
     u8 unk23FD;
     u8 unk23FE;
-    u8 unk240F_0:1, unk240F_1:1, unk240E_F:1, unk240F_3:2, unk240F_5:3;
+    u8 unk240F_0:1; 
+    u8 unk240F_1:1; 
+    u8 unk240E_F:1;
+    u8 criticalHpMusic:2;
+    u8 criticalHpMusicDelay:3;
     Terrain terrain;
     int unk2404;
     int location;
@@ -597,8 +601,8 @@ struct BattleSystem {
     int unk2440;
     u8 unk2442;
     u8 unk2445;
-    u32 unk2444;
-    u32 unk2448;
+    u32 rand;
+    u32 randTemp;
     u16 unk244C[4];
     u16 unk2454[4];
     u16 unk245C[4];

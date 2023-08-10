@@ -1022,3 +1022,65 @@ void BattleSystem_SetHpBarEnabled(BattleSystem *bsys) {
         }
     }
 }
+
+void BattleSystem_SetHpBarDisabled(BattleSystem *bsys) {
+    int i;
+    BattleHpBar *hpBar;
+    
+    for (i = 0; i < bsys->maxBattlers; i++) {
+        hpBar = OpponentData_GetHpBar(bsys->opponentData[i]);
+        BattleHpBar_SetEnabled(hpBar, FALSE);
+    }
+}
+
+void BattleSystem_HpBar_Delete(BattleSystem *bsys) {
+    int i;
+    BattleHpBar *hpBar;
+
+    for (i = 0; i < bsys->maxBattlers; i++) {
+        hpBar = OpponentData_GetHpBar(bsys->opponentData[i]);
+        BattleHpBar_FreeResources(hpBar);
+    }
+}
+
+u8 BattleSystem_GetBattleOutcomeFlags(BattleSystem *bsys) {
+    return bsys->battleOutcomeFlag;
+}
+
+void BattleSystem_SetBattleOutcomeFlags(BattleSystem *bsys, u8 battleOutcomeFlag) {
+    bsys->battleOutcomeFlag = battleOutcomeFlag;
+}
+
+u8 BattleSystem_GetCriticalHpMusicFlag(BattleSystem *bsys) {
+    return bsys->criticalHpMusic;
+}
+
+u8 BattleSystem_SetCriticalHpMusicFlag(BattleSystem *bsys, u8 flag) {
+    bsys->criticalHpMusic = flag;
+}
+
+u8 BattleSystem_GetCriticalHpMusicDelay(BattleSystem *bsys) {
+    return bsys->criticalHpMusicDelay;
+}
+
+void BattleSystem_SetCriticalHpMusicDelay(BattleSystem *bsys, u8 delay) {
+    GF_ASSERT(delay < 15);
+    bsys->criticalHpMusicDelay = delay;
+}
+
+void ov12_0223BD8C(BattleSystem *bsys, int a1) {
+    bsys->unk243C = a1;
+}
+
+u16 BattleSystem_Random(BattleSystem *bsys) {
+    bsys->rand = bsys->rand * 1103515245L + 24691;
+    return bsys->rand / 65536L;
+}
+
+u32 BattleSystem_GetRandTemp(BattleSystem *bsys) {
+    return bsys->randTemp;
+}
+
+void BattleSystem_SetRandTemp(BattleSystem *bsys, u32 temp) {
+    bsys->randTemp = temp;
+}

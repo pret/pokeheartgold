@@ -107,16 +107,26 @@ void ov12_0223BC2C(BattleSystem *bsys, u8 a1);
 BattleHpBar *BattleSystem_GetHpBar(BattleSystem *bsys, int battlerId);
 void BattleSystem_HpBar_Init(BattleSystem *bsys);
 void BattleSystem_SetHpBarEnabled(BattleSystem *bsys);
+void BattleSystem_SetHpBarDisabled(BattleSystem *bsys);
+void BattleSystem_HpBar_Delete(BattleSystem *bsys);
+u8 BattleSystem_GetBattleOutcomeFlags(BattleSystem *bsys);
+void BattleSystem_SetBattleOutcomeFlags(BattleSystem *bsys, u8 battleOutcomeFlag);
+u8 BattleSystem_GetCriticalHpMusicFlag(BattleSystem *bsys);
+u8 BattleSystem_SetCriticalHpMusicFlag(BattleSystem *bsys, u8 flag);
+u8 BattleSystem_GetCriticalHpMusicDelay(BattleSystem *bsys);
+void BattleSystem_SetCriticalHpMusicDelay(BattleSystem *bsys, u8 delay);
+void ov12_0223BD8C(BattleSystem *bsys, int a1);
+u16 BattleSystem_Random(BattleSystem *bsys);
+u32 BattleSystem_GetRandTemp(BattleSystem *bsys);
+void BattleSystem_SetRandTemp(BattleSystem *bsys, u32 temp);
 
 //These functions haven't been decompiled
-int BattleSystem_Random(BattleSystem *bsys);
 void ov12_0223BDDC(BattleSystem *bsys, int battlerId, u8 a2);
 void PokedexSetBattlerSeen(BattleSystem *bsys, int battlerId);
 int BattleSystem_GetChatotVoiceParam(BattleSystem *bsys, int battlerId);
 BOOL Link_QueueNotEmpty(BATTLECONTEXT *ctx);
 BOOL ov12_0223C080(BattleSystem *bsys);
 void ov12_0223BFFC(BattleSystem *bsys, u32 a1);
-u32 BattleSystem_GetWinLoseFlags(BattleSystem *bsys);
 void ov12_0223C0C4(BattleSystem *bsys);
 BOOL ov12_0223BFEC(BattleSystem *bsys);
 void ov12_02237ED0(BattleSystem *bsys, int a1);

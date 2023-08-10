@@ -856,7 +856,7 @@ ov12_02258E7C: ; 0x02258E7C
 	beq _02258E8C
 	add r0, r4, #0
 	add r0, #0x28
-	bl ov12_02264C68
+	bl BattleHpBar_FreeResources
 _02258E8C:
 	ldr r0, [r4, #0x18]
 	cmp r0, #0
@@ -888,7 +888,7 @@ ov12_02258EB4: ; 0x02258EB4
 	add r1, #0x98
 	ldr r1, [r1]
 	add r5, r0, #0
-	bl ov12_0223BDD0
+	bl BattleSystem_SetRandTemp
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov12_02259944
@@ -2165,7 +2165,7 @@ ov12_022597EC: ; 0x022597EC
 	ldr r1, [r1, #4]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl ov12_0223BD20
+	bl BattleSystem_SetBattleOutcomeFlags
 	b _022598DC
 _02259824:
 	add r0, r7, #0
@@ -2241,19 +2241,19 @@ _022598B2:
 	bne _022598C6
 	ldr r0, [sp]
 	mov r1, #3
-	bl ov12_0223BD20
+	bl BattleSystem_SetBattleOutcomeFlags
 	b _022598DC
 _022598C6:
 	cmp r7, #0
 	bne _022598D4
 	ldr r0, [sp]
 	mov r1, #2
-	bl ov12_0223BD20
+	bl BattleSystem_SetBattleOutcomeFlags
 	b _022598DC
 _022598D4:
 	ldr r0, [sp]
 	mov r1, #1
-	bl ov12_0223BD20
+	bl BattleSystem_SetBattleOutcomeFlags
 _022598DC:
 	mov r2, #0x65
 	ldr r1, [sp, #4]
@@ -14836,14 +14836,14 @@ _0225FDA6:
 _0225FE02:
 	ldr r0, [r4]
 	mov r1, #2
-	bl ov12_0223BD3C
+	bl BattleSystem_SetCriticalHpMusicFlag
 	add r0, r4, #0
 	add r0, #0x6b
 	ldrb r0, [r0]
 	cmp r0, #0
 	beq _0225FE1A
 	ldr r0, [r4]
-	bl ov12_0223BCC8
+	bl BattleSystem_SetHpBarDisabled
 _0225FE1A:
 	add r0, r4, #0
 	add r0, #0x6c
@@ -14873,7 +14873,7 @@ _0225FE30:
 _0225FE50:
 	ldr r0, [r4]
 	mov r1, #0
-	bl ov12_0223BD3C
+	bl BattleSystem_SetCriticalHpMusicFlag
 	add r0, r4, #0
 	add r0, #0x6b
 	ldrb r0, [r0]
@@ -18300,7 +18300,7 @@ ov12_02261928: ; 0x02261928
 	bl BattleSystem_GetBattleType
 	add r6, r0, #0
 	ldr r0, [sp]
-	bl BattleSystem_GetWinLoseFlags
+	bl BattleSystem_GetBattleOutcomeFlags
 	add r7, r0, #0
 	mov r0, #2
 	tst r0, r6
@@ -18438,7 +18438,7 @@ _02261A2C:
 	mov r0, #0
 	strb r0, [r7, #1]
 	add r0, r5, #0
-	bl ov12_0223BD20
+	bl BattleSystem_SetBattleOutcomeFlags
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 _02261A4A:
@@ -18450,7 +18450,7 @@ _02261A4A:
 	mov r0, #0
 	strb r0, [r7, #1]
 	add r0, r5, #0
-	bl ov12_0223BD20
+	bl BattleSystem_SetBattleOutcomeFlags
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 _02261A62:
@@ -18499,7 +18499,7 @@ _02261AAE:
 _02261ABE:
 	add r0, r5, #0
 	mov r1, #0xc1
-	bl ov12_0223BD20
+	bl BattleSystem_SetBattleOutcomeFlags
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -18548,7 +18548,7 @@ _02261B1A:
 _02261B22:
 	add r0, r5, #0
 	mov r1, #0xc2
-	bl ov12_0223BD20
+	bl BattleSystem_SetBattleOutcomeFlags
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov12_02261AD4
 

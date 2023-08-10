@@ -306,7 +306,7 @@ BattleController_EmitPlayEncounterAnimation: ; 0x022622C8
 	mov r1, #1
 	add r5, r0, #0
 	str r1, [sp, #4]
-	bl ov12_0223BDC4
+	bl BattleSystem_GetRandTemp
 	str r0, [sp, #8]
 	mov r0, #8
 	str r0, [sp]
@@ -4496,7 +4496,7 @@ BattleController_EmitSetBattleResults: ; 0x02264288
 	add r0, sp, #4
 	strb r1, [r0]
 	add r0, r5, #0
-	bl BattleSystem_GetWinLoseFlags
+	bl BattleSystem_GetBattleOutcomeFlags
 	str r0, [sp, #8]
 	mov r1, #0
 	add r0, sp, #4

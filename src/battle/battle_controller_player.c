@@ -26,7 +26,7 @@ BATTLECONTEXT *BattleContext_New(BattleSystem *bsys) {
 
 BOOL BattleMain(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     if (!ctx->battleEndFlag) {
-        if (BattleSystem_GetWinLoseFlags(bsys) && !(BattleSystem_GetWinLoseFlags(bsys) & 0x40)) {
+        if (BattleSystem_GetBattleOutcomeFlags(bsys) && !(BattleSystem_GetBattleOutcomeFlags(bsys) & 0x40)) {
             ctx->command = CONTROLLER_COMMAND_42;
         }
     }

@@ -5055,7 +5055,7 @@ ov12_0224D464: ; 0x0224D464
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl BattleSystem_GetWinLoseFlags
+	bl BattleSystem_GetBattleOutcomeFlags
 	mov r1, #0x80
 	tst r0, r1
 	beq _0224D47A
@@ -5064,11 +5064,11 @@ ov12_0224D464: ; 0x0224D464
 	b _0224D4E2
 _0224D47A:
 	add r0, r5, #0
-	bl BattleSystem_GetWinLoseFlags
+	bl BattleSystem_GetBattleOutcomeFlags
 	cmp r0, #2
 	beq _0224D48E
 	add r0, r5, #0
-	bl BattleSystem_GetWinLoseFlags
+	bl BattleSystem_GetBattleOutcomeFlags
 	cmp r0, #3
 	bne _0224D4A2
 _0224D48E:
@@ -5083,7 +5083,7 @@ _0224D48E:
 	b _0224D4E2
 _0224D4A2:
 	add r0, r5, #0
-	bl BattleSystem_GetWinLoseFlags
+	bl BattleSystem_GetBattleOutcomeFlags
 	cmp r0, #1
 	bne _0224D4C0
 	add r0, r4, #0
@@ -5097,7 +5097,7 @@ _0224D4A2:
 	b _0224D4E2
 _0224D4C0:
 	add r0, r5, #0
-	bl BattleSystem_GetWinLoseFlags
+	bl BattleSystem_GetBattleOutcomeFlags
 	cmp r0, #4
 	bne _0224D4D4
 	mov r0, #0x16
@@ -5107,7 +5107,7 @@ _0224D4C0:
 	b _0224D4E2
 _0224D4D4:
 	add r0, r5, #0
-	bl BattleSystem_GetWinLoseFlags
+	bl BattleSystem_GetBattleOutcomeFlags
 	cmp r0, #5
 	bne _0224D4E2
 	mov r0, #0x2c
@@ -5923,14 +5923,14 @@ _0224DB38:
 _0224DB3C:
 	ldr r0, [sp]
 	mov r1, #2
-	bl ov12_0223BD3C
+	bl BattleSystem_SetCriticalHpMusicFlag
 _0224DB44:
 	ldr r0, [sp, #0x1c]
 	cmp r0, #0
 	beq _0224DB52
 	ldr r0, [sp]
 	ldr r1, [sp, #0x1c]
-	bl ov12_0223BD20
+	bl BattleSystem_SetBattleOutcomeFlags
 _0224DB52:
 	ldr r0, [sp, #0x1c]
 	cmp r0, #0

@@ -186,7 +186,7 @@ _022459AC:
 	str r2, [r1, r0]
 	ldr r0, [r4]
 	mov r1, #2
-	bl ov12_0223BD3C
+	bl BattleSystem_SetCriticalHpMusicFlag
 _02245A0A:
 	mov r0, #0
 	str r0, [sp, #0x38]
@@ -1955,7 +1955,7 @@ _02246826:
 	bl PlayBGM
 	ldr r0, [r4]
 	mov r1, #2
-	bl ov12_0223BD3C
+	bl BattleSystem_SetCriticalHpMusicFlag
 	add sp, #0x158
 	pop {r3, r4, r5, r6, r7, pc}
 _0224686C:
@@ -2572,7 +2572,7 @@ _02246DB0:
 	mov r0, #0x15
 	str r0, [r4, #0x28]
 	ldr r0, [r4]
-	bl ov12_0223BCF0
+	bl BattleSystem_HpBar_Delete
 	ldr r0, [r4]
 	mov r5, #0
 	bl BattleSystem_GetMaxBattlers

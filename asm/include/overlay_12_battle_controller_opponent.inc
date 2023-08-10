@@ -207,12 +207,12 @@
 .public ov12_0223BBD8
 .public BattleSystem_GetHpBar
 .public BattleSystem_SetHpBarEnabled
-.public ov12_0223BCC8
-.public BattleSystem_GetWinLoseFlags
-.public ov12_0223BD20
-.public ov12_0223BD3C
+.public BattleSystem_SetHpBarDisabled
+.public BattleSystem_GetBattleOutcomeFlags
+.public BattleSystem_SetBattleOutcomeFlags
+.public BattleSystem_SetCriticalHpMusicFlag
 .public BattleSystem_Random
-.public ov12_0223BDD0
+.public BattleSystem_SetRandTemp
 .public ov12_0223BE0C
 .public ov12_0223BF14
 .public ov12_0223BFC0
@@ -262,7 +262,7 @@
 .public ov12_0226430C
 .public ov12_022643C8
 .public ov12_0226498C
-.public ov12_02264C68
+.public BattleHpBar_FreeResources
 .public ov12_02264C84
 .public ov12_02264DCC
 .public ov12_02264E00

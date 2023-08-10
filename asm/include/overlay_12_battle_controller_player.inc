@@ -42,9 +42,9 @@
 .public BattleSystem_SetSafariBallCount
 .public BattleSystem_GetBattleStyle
 .public ov12_0223BB64
-.public BattleSystem_GetWinLoseFlags
-.public ov12_0223BD20
-.public ov12_0223BD3C
+.public BattleSystem_GetBattleOutcomeFlags
+.public BattleSystem_SetBattleOutcomeFlags
+.public BattleSystem_SetCriticalHpMusicFlag
 .public BattleSystem_Random
 .public ov12_0223BDDC
 .public ov12_0223BFDC
