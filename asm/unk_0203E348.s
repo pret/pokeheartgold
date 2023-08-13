@@ -1385,8 +1385,8 @@ sub_0203EC98: ; 0x0203EC98
 _0203ECBC: .word _020FA384
 	thumb_func_end sub_0203EC98
 
-	thumb_func_start CreateBerryPotsWork
-CreateBerryPotsWork: ; 0x0203ECC0
+	thumb_func_start CreateBerryPotsArgs
+CreateBerryPotsArgs: ; 0x0203ECC0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r0, #0xb
@@ -1413,7 +1413,7 @@ CreateBerryPotsWork: ; 0x0203ECC0
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end CreateBerryPotsWork
+	thumb_func_end CreateBerryPotsArgs
 
 	thumb_func_start sub_0203ECFC
 sub_0203ECFC: ; 0x0203ECFC

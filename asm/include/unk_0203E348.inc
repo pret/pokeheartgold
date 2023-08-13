@@ -93,7 +93,7 @@
 .public sub_0203EBA4
 .public Fsys_CreateApplication_AlphPuzzle
 .public CreateUnownReportWork
-.public CreateBerryPotsWork
+.public CreateBerryPotsArgs
 .public CreateApricornBoxWork
 .public sub_0203ED80
 .public sub_0203EDDC
