@@ -16,7 +16,13 @@ typedef struct APRICORN_TREE {
 typedef struct BERRY_POT {
     u8 unk_0;
     u8 unk_1;
-    u8 filler_2[10];
+    u16 unk_2;
+    u16 unk_4;
+    u16 unk_6;
+    u8 unk_8;
+    u8 moistureMaybe;
+    u8 unk_A;
+    u8 unk_B;
 } BERRY_POT;
 
 #define MAX_APRICORN_TREE 128

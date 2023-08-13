@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_GF_RTC_H
 #define POKEHEARTGOLD_GF_RTC_H
 
+#include <nitro/rtc/ARM9/api.h>
+
 typedef enum RTC_TimeOfDay {
     RTC_TIMEOFDAY_MORN = 0,
     RTC_TIMEOFDAY_DAY,
