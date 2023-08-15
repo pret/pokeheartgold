@@ -354,84 +354,39 @@ _0220175E:
 }
 #endif
 
-void ov16_02201760(BERRY_POT *a0, UnkStruct_ov16_022014A0 *a1, u32 a2);
-asm void ov16_02201760(BERRY_POT *a0, UnkStruct_ov16_022014A0 *a1, u32 a2) {
-    push {r3, r4, r5, r6, r7, lr}
-    add r4, r0, #0
-    mov r0, #0
-    add r6, r1, #0
-    add r7, r2, #0
-    str r0, [sp]
-_0220176C:
-    ldrb r1, [r4]
-    cmp r1, #0
-    beq _022017EE
-    ldrb r0, [r4, #1]
-    cmp r0, #0
-    beq _022017EE
-    ldrb r2, [r4, #0xb]
-    add r0, r6, #0
-    bl ov16_02201528
-    add r5, r0, #0
-    add r0, r4, #0
-    bl ov16_02201598
-    mul r0, r5
-    cmp r7, r0
-    blt _02201796
-    add r0, r4, #0
-    bl ov16_022014FC
-    b _022017EE
-_02201796:
-    add r5, r7, #0
-    b _022017E4
-_0220179A:
-    ldrh r2, [r4, #2]
-    cmp r2, r5
-    ble _022017B2
-    add r0, r4, #0
-    add r1, r6, #0
-    add r2, r5, #0
-    bl ov16_022016F4
-    ldrh r0, [r4, #2]
-    sub r0, r0, r5
-    strh r0, [r4, #2]
-    b _022017EE
-_022017B2:
-    add r0, r4, #0
-    add r1, r6, #0
-    bl ov16_022016F4
-    add r0, r4, #0
-    add r1, r6, #0
-    bl ov16_02201688
-    ldrh r0, [r4, #2]
-    ldrb r1, [r4]
-    ldrb r2, [r4, #0xb]
-    sub r5, r5, r0
-    add r0, r6, #0
-    bl ov16_02201528
-    strh r0, [r4, #2]
-    ldrb r0, [r4, #1]
-    cmp r0, #5
-    bne _022017E4
-    add r0, r4, #0
-    bl ov16_02201578
-    ldrh r1, [r4, #2]
-    mul r0, r1
-    strh r0, [r4, #2]
-_022017E4:
-    ldrb r0, [r4, #1]
-    cmp r0, #0
-    beq _022017EE
-    cmp r5, #0
-    bne _0220179A
-_022017EE:
-    ldr r0, [sp]
-    add r4, #0xc
-    add r0, r0, #1
-    str r0, [sp]
-    cmp r0, #4
-    blt _0220176C
-    pop {r3, r4, r5, r6, r7, pc}
+void ov16_02201760(BERRY_POT *berryPots, UnkStruct_ov16_022014A0 *a1, s32 a2);
+void ov16_02201760(BERRY_POT *berryPots, UnkStruct_ov16_022014A0 *a1, s32 a2) {
+    for (s32 i = 0; i < 4; i++) {
+        if (berryPots[i].unk_0 == 0 || berryPots[i].unk_1 == 0) {
+            continue;
+        }
+
+        s32 growthInterval = ov16_02201528(a1, berryPots[i].unk_0, berryPots[i].unk_B);
+        s32 iVar4 = ov16_02201598(&berryPots[i]);
+
+        if (a2 >= growthInterval * iVar4) {
+            ov16_022014FC(&berryPots[i]);
+            continue;
+        }
+
+        s32 a2Tmp = a2;
+
+        while (berryPots[i].unk_1 != 0 && a2Tmp != 0) {
+            if (berryPots[i].unk_2 > a2Tmp) {
+                ov16_022016F4(&berryPots[i], a1, a2Tmp);
+                berryPots[i].unk_2 -= a2Tmp;
+                break;
+            }
+            
+            ov16_022016F4(&berryPots[i], a1, berryPots[i].unk_2);
+            ov16_02201688(&berryPots[i], a1);
+            a2Tmp -= berryPots[i].unk_2;
+            berryPots[i].unk_2 = ov16_02201528(a1, berryPots[i].unk_0, berryPots[i].unk_B);
+            if (berryPots[i].unk_1 == 5) {
+                berryPots[i].unk_2 *= ov16_02201578(&berryPots[i]);
+            }
+        }
+    }
 }
 
 void ov16_022017FC(struct GF_RTC_DateTime *dest, struct GF_RTC_DateTime src);
