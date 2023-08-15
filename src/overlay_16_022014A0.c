@@ -32,18 +32,18 @@ u16 ov16_0220185C(UnkStruct_a066 *unk, u32 attr);
 extern _s32_div_f();
 
 UnkStruct_ov16_022014A0 *ov16_022014A0(HeapID heapId);
-#ifdef NONMATCHING
 UnkStruct_ov16_022014A0 *ov16_022014A0(HeapID heapId) {
-    NARC *narc = ov16_02201840(heapId);
-    UnkStruct_ov16_022014A0 *unk = AllocFromHeap(heapId, 64 * sizeof(UnkStruct_ov16_022014A0));
+    UnkStruct_ov16_022014A0 *unk;
+    NARC *narc;
 
-    s32 fileId = 0;
-    UnkStruct_ov16_022014A0 *Unk = unk;
-    for (; fileId < 64; fileId++, Unk++) {
+    narc = ov16_02201840(heapId);
+    unk = AllocFromHeap(heapId, NUM_BERRIES * sizeof(UnkStruct_ov16_022014A0));
+
+    for (int fileId = 0; fileId < NUM_BERRIES; fileId++) {
         UnkStruct_a066 *unk_a066 = ov16_0220184C(narc, fileId, heapId);
-        Unk->unk0 = ov16_0220185C(unk_a066, 3);
-        Unk->unk1 = ov16_0220185C(unk_a066, 4);
-        Unk->unk2 = ov16_0220185C(unk_a066, 2);
+        unk[fileId].unk0 = ov16_0220185C(unk_a066, 3);
+        unk[fileId].unk1 = ov16_0220185C(unk_a066, 4);
+        unk[fileId].unk2 = ov16_0220185C(unk_a066, 2);
 
         FreeToHeap(unk_a066);
     }
@@ -52,49 +52,6 @@ UnkStruct_ov16_022014A0 *ov16_022014A0(HeapID heapId) {
 
     return unk;
 }
-#else
-asm UnkStruct_ov16_022014A0 *ov16_022014A0(HeapID heapId) {
-    push {r3, r4, r5, r6, r7, lr}
-    sub sp, #8
-    add r7, r0, #0
-    bl ov16_02201840
-    str r0, [sp]
-    add r0, r7, #0
-    mov r1, #0xc0
-    bl AllocFromHeap
-    str r0, [sp, #4]
-    mov r6, #0
-    add r5, r0, #0
-_022014BA:
-    ldr r0, [sp]
-    add r1, r6, #0
-    add r2, r7, #0
-    bl ov16_0220184C
-    add r4, r0, #0
-    mov r1, #3
-    bl ov16_0220185C
-    strb r0, [r5]
-    add r0, r4, #0
-    mov r1, #4
-    bl ov16_0220185C
-    strb r0, [r5, #1]
-    add r0, r4, #0
-    mov r1, #2
-    bl ov16_0220185C
-    strb r0, [r5, #2]
-    add r0, r4, #0
-    bl FreeToHeap
-    add r6, r6, #1
-    add r5, r5, #3
-    cmp r6, #0x40
-    blt _022014BA
-    ldr r0, [sp]
-    bl ov16_02201854
-    ldr r0, [sp, #4]
-    add sp, #8
-    pop {r3, r4, r5, r6, r7, pc}
-}
-#endif
 
 void ov16_022014FC(BERRY_POT *berryPot);
 void ov16_022014FC(BERRY_POT *berryPot) {
@@ -264,95 +221,36 @@ void ov16_02201688(BERRY_POT *berryPot, UnkStruct_ov16_022014A0 *a1) {
     }
 }
 
-void ov16_022016F4(BERRY_POT *berryPot, UnkStruct_ov16_022014A0 *a1, u32 a2);
-#ifdef NONMATCHING
-void ov16_022016F4(BERRY_POT *berryPot, UnkStruct_ov16_022014A0 *a1, u32 a2) {
+void ov16_022016F4(BERRY_POT *berryPot, UnkStruct_ov16_022014A0 *a1, int a2);
+void ov16_022016F4(BERRY_POT *berryPot, UnkStruct_ov16_022014A0 *a1, int a2) {
     if (berryPot->unk_1 == 5) {
         return;
     }
 
-    s32 iVar2 = ov16_02201554(a1, berryPot->unk_0, berryPot->unk_B);
-    s32 iVar3 = (a2 + berryPot->unk_4) / 60;
-    berryPot->unk_4 = (a2 + berryPot->unk_4) / 60;
+    int iVar2 = ov16_02201554(a1, berryPot->unk_0, berryPot->unk_B);
+    int iVar3 = (a2 + berryPot->unk_4) / 60;
+    berryPot->unk_4 = (a2 + berryPot->unk_4) % 60;
     if (iVar3 == 0) {
         return;
     }
 
-    if (iVar3 * iVar2 <= berryPot->moistureMaybe) {
+    if (berryPot->moistureMaybe >= (iVar2 * iVar3)) {
         berryPot->moistureMaybe -= (iVar3 * iVar2);
         return;
     }
 
     if (berryPot->moistureMaybe != 0) {
-        iVar3 -= (berryPot->moistureMaybe + iVar2 - 1) / iVar2;
+        iVar3 -= (berryPot->moistureMaybe + (iVar2 - 1)) / iVar2;
         berryPot->moistureMaybe = 0;
     }
 
-    if (berryPot->unk_A >= iVar3) {
+    if (berryPot->unk_A > iVar3) {
         berryPot->unk_A -= iVar3;
         return;
     }
 
     berryPot->unk_A = 0;
 }
-#else
-asm void ov16_022016F4(BERRY_POT *a0, UnkStruct_ov16_022014A0 *a1, u32 a2) {
-    push {r3, r4, r5, r6, r7, lr}
-    add r5, r0, #0
-    ldrb r0, [r5, #1]
-    add r7, r2, #0
-    cmp r0, #5
-    beq _0220175E
-    add r0, r1, #0
-    ldrb r1, [r5]
-    ldrb r2, [r5, #0xb]
-    bl ov16_02201554
-    add r6, r0, #0
-    ldrh r0, [r5, #4]
-    mov r1, #0x3c
-    str r0, [sp]
-    add r0, r7, r0
-    bl _s32_div_f
-    add r4, r0, #0
-    ldr r0, [sp]
-    mov r1, #0x3c
-    add r0, r7, r0
-    bl _s32_div_f
-    strh r1, [r5, #4]
-    cmp r4, #0
-    beq _0220175E
-    ldrb r1, [r5, #9]
-    add r0, r6, #0
-    mul r0, r4
-    cmp r1, r0
-    blt _0220173A
-    sub r0, r1, r0
-    strb r0, [r5, #9]
-    pop {r3, r4, r5, r6, r7, pc}
-_0220173A:
-    cmp r1, #0
-    beq _0220174E
-    sub r0, r6, #1
-    add r0, r1, r0
-    add r1, r6, #0
-    bl _s32_div_f
-    sub r4, r4, r0
-    mov r0, #0
-    strb r0, [r5, #9]
-_0220174E:
-    ldrb r0, [r5, #0xa]
-    cmp r0, r4
-    ble _0220175A
-    sub r0, r0, r4
-    strb r0, [r5, #0xa]
-    pop {r3, r4, r5, r6, r7, pc}
-_0220175A:
-    mov r0, #0
-    strb r0, [r5, #0xa]
-_0220175E:
-    pop {r3, r4, r5, r6, r7, pc}
-}
-#endif
 
 void ov16_02201760(BERRY_POT *berryPots, UnkStruct_ov16_022014A0 *a1, s32 a2);
 void ov16_02201760(BERRY_POT *berryPots, UnkStruct_ov16_022014A0 *a1, s32 a2) {
@@ -482,7 +380,7 @@ u32 ov16_022018E4(u16 itemId) {
 u16 ov16_022018F0(Bag *bag, HeapID heapId);
 u16 ov16_022018F0(Bag *bag, HeapID heapId) {
     s32 i;
-    u16 total = 0;
+    u16 total;
     for (total = 0, i = 0; i < NUM_BAG_BERRIES; i++) {
         total += Bag_GetQuantity(bag, FIRST_BERRY_IDX + i, heapId);
     }
