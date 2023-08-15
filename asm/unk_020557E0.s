@@ -2,90 +2,87 @@
 	.include "unk_020557E0.inc"
 	.include "global.inc"
 
-	.bss
-
-_021D4178:
-	.space 0x4C
+	.extern _021D4178
 
 	.text
 
-	thumb_func_start sub_020557E0
-sub_020557E0: ; 0x020557E0
-	mov r2, #0
-	ldr r3, _020557F4 ; =_021D4178
-	add r1, r2, #0
-_020557E6:
-	add r0, r3, r2
-	add r0, #0x30
-	add r2, r2, #1
-	strb r1, [r0]
-	cmp r2, #6
-	blt _020557E6
-	bx lr
-	.balign 4, 0
-_020557F4: .word _021D4178
-	thumb_func_end sub_020557E0
+; 	thumb_func_start sub_020557E0
+; sub_020557E0: ; 0x020557E0
+; 	mov r2, #0
+; 	ldr r3, _020557F4 ; =_021D4178
+; 	add r1, r2, #0
+; _020557E6:
+; 	add r0, r3, r2
+; 	add r0, #0x30
+; 	add r2, r2, #1
+; 	strb r1, [r0]
+; 	cmp r2, #6
+; 	blt _020557E6
+; 	bx lr
+; 	.balign 4, 0
+; _020557F4: .word _021D4178
+; 	thumb_func_end sub_020557E0
 
-	thumb_func_start sub_020557F8
-sub_020557F8: ; 0x020557F8
-	push {r4, lr}
-	ldr r1, _02055820 ; =_021D4178
-	add r4, r0, #0
-	mov r0, #0
-	mov r2, #0x4c
-	bl MIi_CpuClearFast
-	ldr r1, _02055820 ; =_021D4178
-	add r0, r4, #0
-	bl sub_0205592C
-	ldr r0, _02055820 ; =_021D4178
-	bl sub_020559D0
-	bl GF_RTC_DateTimeToSec
-	ldr r2, _02055824 ; =_021D4178
-	str r0, [r2, #0x40]
-	str r1, [r2, #0x44]
-	pop {r4, pc}
-	.balign 4, 0
-_02055820: .word _021D4178
-_02055824: .word _021D4178
-	thumb_func_end sub_020557F8
+; 	thumb_func_start sub_020557F8
+; sub_020557F8: ; 0x020557F8
+; 	push {r4, lr}
+; 	ldr r1, _02055820 ; =_021D4178
+; 	add r4, r0, #0
+; 	mov r0, #0
+; 	mov r2, #0x4c
+; 	bl MIi_CpuClearFast
+; 	ldr r1, _02055820 ; =_021D4178
+; 	add r0, r4, #0
+; 	bl sub_0205592C
+; 	ldr r0, _02055820 ; =_021D4178
+; 	bl sub_020559D0
+; 	bl GF_RTC_DateTimeToSec
+; 	ldr r2, _02055824 ; =_021D4178
+; 	str r0, [r2, #0x40]
+; 	str r1, [r2, #0x44]
+; 	pop {r4, pc}
+; 	.balign 4, 0
+; _02055820: .word _021D4178
+; _02055824: .word _021D4178
+; 	thumb_func_end sub_020557F8
 
-	thumb_func_start sub_02055828
-sub_02055828: ; 0x02055828
-	push {r3, r4, r5, lr}
-	ldr r0, [r0, #0xc]
-	ldr r4, _0205586C ; =_021D4178
-	bl Save_GameStats_Get
-	add r5, r0, #0
-	bl GF_RTC_DateTimeToSec
-	add r3, r1, #0
-	ldr r1, _02055870 ; =_021D4178
-	add r2, r0, #0
-	ldr r0, [r1, #0x40]
-	ldr r1, [r1, #0x44]
-	bl GF_RTC_TimeDelta
-	mov r2, #0xfa
-	mov r3, #0
-	lsl r2, r2, #2
-	sub r2, r0, r2
-	sbc r1, r3
-	bge _0205585C
-	mov r1, #0xfa
-	lsl r1, r1, #2
-	sub r0, r1, r0
-	lsl r0, r0, #1
-	b _0205585E
-_0205585C:
-	mov r0, #0
-_0205585E:
-	str r0, [r4, #0x48]
-	add r0, r5, #0
-	mov r1, #0x11
-	bl GameStats_AddSpecial
-	pop {r3, r4, r5, pc}
-	nop
-_0205586C: .word _021D4178
-_02055870: .word _021D4178
-	thumb_func_end sub_02055828
+; 	thumb_func_start sub_02055828
+; sub_02055828: ; 0x02055828
+; 	push {r3, r4, r5, lr}
+; 	ldr r0, [r0, #0xc]
+; 	ldr r4, _0205586C ; =_021D4178
+; 	bl Save_GameStats_Get
+; 	add r5, r0, #0
+; 	bl GF_RTC_DateTimeToSec
+; 	add r3, r1, #0
+; 	ldr r1, _02055870 ; =_021D4178
+; 	add r2, r0, #0
+; 	ldr r0, [r1, #0x40]
+; 	ldr r1, [r1, #0x44]
+; 	bl GF_RTC_TimeDelta
+; 	mov r2, #0xfa
+; 	mov r3, #0
+; 	lsl r2, r2, #2
+; 	sub r2, r0, r2
+; 	sbc r1, r3
+; 	bge _0205585C
+; 	mov r1, #0xfa
+; 	lsl r1, r1, #2
+; 	sub r0, r1, r0
+; 	lsl r0, r0, #1
+; 	b _0205585E
+; _0205585C:
+; 	mov r0, #0
+; _0205585E:
+; 	str r0, [r4, #0x48]
+; 	add r0, r5, #0
+; 	mov r1, #0x11
+; 	bl GameStats_AddSpecial
+; 	pop {r3, r4, r5, pc}
+; 	nop
+; _0205586C: .word _021D4178
+; _02055870: .word _021D4178
+; 	thumb_func_end sub_02055828
 
 	thumb_func_start sub_02055874
 sub_02055874: ; 0x02055874
