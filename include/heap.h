@@ -21,7 +21,7 @@ typedef enum HeapID {
     HEAP_ID_CREDITS = 73,
     HEAP_ID_89 = 89,
     HEAP_ID_GAME_BOARD = 110,
-    HEAP_ID_OV16 = 130,
+    HEAP_ID_BERRY_POTS = 130,
     HEAP_ID_VOLTORB_FLIP = 160
 } HeapID;
 

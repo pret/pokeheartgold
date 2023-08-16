@@ -75,11 +75,11 @@ BOOL ov16_0220196C(OVY_MANAGER *manager, int *state) {
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_17), OVY_LOAD_ASYNC);
     ov17_02201BC0();
 
-    CreateHeap(HEAP_ID_3, HEAP_ID_OV16, 0x20000);
+    CreateHeap(HEAP_ID_3, HEAP_ID_BERRY_POTS, 0x20000);
 
-    UnkStruct_ov16_0220196C *unk = OverlayManager_CreateAndGetData(manager, sizeof(UnkStruct_ov16_0220196C), HEAP_ID_OV16);
+    UnkStruct_ov16_0220196C *unk = OverlayManager_CreateAndGetData(manager, sizeof(UnkStruct_ov16_0220196C), HEAP_ID_BERRY_POTS);
     MI_CpuFill8(unk, 0, sizeof(UnkStruct_ov16_0220196C));
-    unk->heapId = HEAP_ID_OV16;
+    unk->heapId = HEAP_ID_BERRY_POTS;
     unk->args = OverlayManager_GetArgs(manager);
     ov16_02201A34(unk);
 
@@ -116,7 +116,7 @@ BOOL ov16_02201A04(OVY_MANAGER *manager, int *state) {
     ov16_02201A4C(unk);
 
     OverlayManager_FreeData(manager);
-    DestroyHeap(HEAP_ID_OV16);
+    DestroyHeap(HEAP_ID_BERRY_POTS);
     UnloadOverlayByID(FS_OVERLAY_ID(OVY_17));
 
     return TRUE;
