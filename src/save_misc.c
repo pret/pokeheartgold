@@ -6,13 +6,13 @@
 #include "msgdata/msg/msg_0295.h"
 #include "msgdata/msg/msg_0287.h"
 
-void Save_BerryPots_Init(BERRY_POT *berryPot) {
+void Save_BerryPots_Init(BERRY_POT *berryPots) {
     int i;
 
-    MI_CpuClear8(berryPot, MAX_BERRY_POT * sizeof(BERRY_POT));
+    MI_CpuClear8(berryPots, MAX_BERRY_POT * sizeof(BERRY_POT));
     for (i = 0; i < MAX_BERRY_POT; i++) {
-        berryPot[i].unk_1 = 0;
-        berryPot[i].unk_0 = 0;
+        berryPots[i].growthStage = BERRY_POT_GROWTH_STAGE_INVALID;
+        berryPots[i].berryId = 0;
     }
 }
 

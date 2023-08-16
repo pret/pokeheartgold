@@ -13,16 +13,23 @@ typedef struct APRICORN_TREE {
     u16 unk_2;
 } APRICORN_TREE;
 
+#define BERRY_POT_GROWTH_STAGE_INVALID  0
+#define BERRY_POT_GROWTH_STAGE_PLANTED  1
+#define BERRY_POT_GROWTH_STAGE_SPROUTED 2
+#define BERRY_POT_GROWTH_STAGE_GROWING  3
+#define BERRY_POT_GROWTH_STAGE_BLOOM    4
+#define BERRY_POT_GROWTH_STAGE_BERRIES  5
+
 typedef struct BERRY_POT {
-    u8 unk_0;
-    u8 unk_1;
+    u8 berryId;
+    u8 growthStage;
     u16 unk_2;
     u16 unk_4;
     u16 unk_6;
     u8 unk_8;
-    u8 moistureMaybe;
+    u8 moisture;
     u8 unk_A;
-    u8 unk_B;
+    u8 mulch;
 } BERRY_POT;
 
 #define MAX_APRICORN_TREE 128

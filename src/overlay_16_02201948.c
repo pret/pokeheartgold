@@ -1,23 +1,29 @@
 #include "global.h"
 #include "constants/items.h"
 #include "bag_cursor.h"
-#include "overlay_manager.h"
+#include "overlay_16.h"
 #include "unk_0203E348.h"
 
 FS_EXTERN_OVERLAY(OVY_15);
 FS_EXTERN_OVERLAY(OVY_17);
 
-static const u8 _02201B60[] = {
+extern BOOL ov15_BagApp_Init(OVY_MANAGER*, int*);
+extern BOOL ov15_BagApp_Exec(OVY_MANAGER*, int*);
+extern BOOL ov15_BagApp_Exit(OVY_MANAGER*, int*);
+
+extern BOOL ov17_02201C10(OVY_MANAGER*, int*);
+extern BOOL ov17_02201C78(OVY_MANAGER*, int*);
+extern BOOL ov17_02201D04(OVY_MANAGER*, int*);
+
+extern void ov17_02201BC0(void);
+
+static const u8 ov16_02201B60[] = {
     POCKET_ITEMS, 0xFF
 };
 
 static const u8 ov16_02201B64[] = {
     POCKET_BERRIES, 0xFF
 };
-
-extern BOOL ov17_02201C10(OVY_MANAGER*, int*);
-extern BOOL ov17_02201C78(OVY_MANAGER*, int*);
-extern BOOL ov17_02201D04(OVY_MANAGER*, int*);
 
 static const OVY_MGR_TEMPLATE ov16_02201B68 = {
     .init = ov17_02201C10,
@@ -26,18 +32,14 @@ static const OVY_MGR_TEMPLATE ov16_02201B68 = {
     .ovy_id = FS_OVERLAY_ID_NONE,
 };
 
-extern u8* unused_02201BA0;
-
-extern BOOL ov15_BagApp_Init(OVY_MANAGER*, int*);
-extern BOOL ov15_BagApp_Exec(OVY_MANAGER*, int*);
-extern BOOL ov15_BagApp_Exit(OVY_MANAGER*, int*);
-
 static const OVY_MGR_TEMPLATE ov16_02201B78 = {
     .init = ov15_BagApp_Init,
     .exec = ov15_BagApp_Exec,
     .exit = ov15_BagApp_Exit,
     .ovy_id = FS_OVERLAY_ID(OVY_15),
 };
+
+extern u8* unused_02201BA0;
 
 typedef struct UnkStruct_ov16_0220196C {
     HeapID heapId;
@@ -51,18 +53,15 @@ typedef struct UnkStruct_ov16_0220196C {
     BagCursor *cursor2;
 } UnkStruct_ov16_0220196C; // size: 0x20
 
-BOOL ov16_02201948(OVY_MANAGER **manager);
-BOOL ov16_0220196C(OVY_MANAGER *manager, int *state);
-BOOL ov16_022019B8(OVY_MANAGER *manager, int *state);
-BOOL ov16_02201A04(OVY_MANAGER *manager, int *state);
-void ov16_02201A34(UnkStruct_ov16_0220196C *unk);
-void ov16_02201A4C(UnkStruct_ov16_0220196C *unk);
-u32 ov16_02201A60(UnkStruct_ov16_0220196C *unk);
-u32 ov16_02201A78(UnkStruct_ov16_0220196C *unk);
-u32 ov16_02201AA0(UnkStruct_ov16_0220196C *unk);
-u32 ov16_02201B24(UnkStruct_ov16_0220196C *unk);
+static BOOL ov16_02201948(OVY_MANAGER **manager);
+static void ov16_02201A34(UnkStruct_ov16_0220196C *unk);
+static void ov16_02201A4C(UnkStruct_ov16_0220196C *unk);
+static u32 ov16_02201A60(UnkStruct_ov16_0220196C *unk);
+static u32 ov16_02201A78(UnkStruct_ov16_0220196C *unk);
+static u32 ov16_02201AA0(UnkStruct_ov16_0220196C *unk);
+static u32 ov16_02201B24(UnkStruct_ov16_0220196C *unk);
 
-BOOL ov16_02201948(OVY_MANAGER **manager) {
+static BOOL ov16_02201948(OVY_MANAGER **manager) {
     if (*manager != NULL && OverlayManager_Run(*manager)) {
         OverlayManager_Delete(*manager);
         *manager = NULL;
@@ -71,8 +70,6 @@ BOOL ov16_02201948(OVY_MANAGER **manager) {
 
     return FALSE;
 }
-
-extern void ov17_02201BC0(void);
 
 BOOL ov16_0220196C(OVY_MANAGER *manager, int *state) {
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_17), OVY_LOAD_ASYNC);
@@ -125,22 +122,22 @@ BOOL ov16_02201A04(OVY_MANAGER *manager, int *state) {
     return TRUE;
 }
 
-void ov16_02201A34(UnkStruct_ov16_0220196C *unk) {
+static void ov16_02201A34(UnkStruct_ov16_0220196C *unk) {
     unk->cursor1 = BagCursor_New(unk->heapId);
     unk->cursor2 = BagCursor_New(unk->heapId);
 }
 
-void ov16_02201A4C(UnkStruct_ov16_0220196C *unk) {
+static void ov16_02201A4C(UnkStruct_ov16_0220196C *unk) {
     FreeToHeap(unk->cursor2);
     FreeToHeap(unk->cursor1);
 }
 
-u32 ov16_02201A60(UnkStruct_ov16_0220196C *unk) {
+static u32 ov16_02201A60(UnkStruct_ov16_0220196C *unk) {
     unk->ovyManager = OverlayManager_New(&ov16_02201B68, unk, unk->heapId);
     return 1;
 }
 
-u32 ov16_02201A78(UnkStruct_ov16_0220196C *unk) {
+static u32 ov16_02201A78(UnkStruct_ov16_0220196C *unk) {
     if (!ov16_02201948(&unk->ovyManager)) {
         return 1;
     }
@@ -152,14 +149,14 @@ u32 ov16_02201A78(UnkStruct_ov16_0220196C *unk) {
     return 4;
 }
 
-u32 ov16_02201AA0(UnkStruct_ov16_0220196C *unk) {
+static u32 ov16_02201AA0(UnkStruct_ov16_0220196C *unk) {
     Bag *bag = Save_Bag_Get(unk->args->savedata);
 
     switch (unk->unk14) {
         case 1:
-            unused_02201BA0 = (u8*)_02201B60;
+            unused_02201BA0 = (u8*)ov16_02201B60;
 
-            unk->bagView = Bag_CreateView(bag, _02201B60, unk->heapId);
+            unk->bagView = Bag_CreateView(bag, ov16_02201B60, unk->heapId);
             sub_0207789C(unk->bagView, unk->args->savedata, 6, unk->cursor2, unk->args->unk4);
             break;
         case 2:
@@ -177,7 +174,7 @@ u32 ov16_02201AA0(UnkStruct_ov16_0220196C *unk) {
     return 3;
 }
 
-u32 ov16_02201B24(UnkStruct_ov16_0220196C *unk) {
+static u32 ov16_02201B24(UnkStruct_ov16_0220196C *unk) {
     if (!ov16_02201948(&unk->ovyManager)) {
         return 3;
     }

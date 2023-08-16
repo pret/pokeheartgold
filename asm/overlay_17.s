@@ -249,13 +249,13 @@ _02201DA8:
 	bl ov17_022023B0
 	ldr r0, [r5, #0xc]
 	ldr r1, [r5]
-	bl ov16_022018F0
+	bl GetTotalBerryQuantity
 	add r1, r5, #0
 	add r1, #0x82
 	strh r0, [r1]
 	ldr r0, [r5, #0xc]
 	ldr r1, [r5]
-	bl ov16_0220191C
+	bl GetTotalMulchQuantity
 	add r1, r5, #0
 	add r1, #0x84
 	strh r0, [r1]
@@ -838,7 +838,7 @@ _0220220C:
 	mul r0, r1
 	add r5, r2, r0
 	ldrb r0, [r2, r0]
-	bl ov16_022018B4
+	bl BerryIdToItemId
 	add r1, r0, #0
 	ldrb r2, [r5, #5]
 	ldr r0, [r4, #0xc]
@@ -1060,13 +1060,13 @@ ov17_022023B0: ; 0x022023B0
 	beq _02202438
 	ldr r0, [r4, #4]
 	ldrh r0, [r0, #0x16]
-	bl ov16_022018E4
+	bl ItemIdToMulchId
 	add r1, r4, #0
 	add r1, #0x7c
 	add r2, r0, #0
 	ldrb r1, [r1]
 	ldr r0, [r4, #0x14]
-	bl ov16_0220165C
+	bl BerryPots_SetPotMulch
 	add r0, r4, #0
 	mov r1, #1
 	add r0, #0x7b
@@ -1080,7 +1080,7 @@ _022023F6:
 	beq _02202438
 	ldr r0, [r4, #4]
 	ldrh r0, [r0, #0x16]
-	bl ov16_022018C4
+	bl ItemIdToBerryId
 	add r1, r4, #0
 	add r1, #0x7c
 	add r3, r0, #0
@@ -2044,7 +2044,7 @@ ov17_02202B58: ; 0x02202B58
 	mul r0, r6
 	add r4, r2, r0
 	ldr r0, [r5, #0x14]
-	bl ov16_02201644
+	bl BerryPots_ResetPotMoisture
 	add r0, r5, #0
 	bl ov17_0220387C
 	add r0, r6, #3
@@ -2081,7 +2081,7 @@ ov17_02202B98: ; 0x02202B98
 	add r4, r6, r7
 	bl ov16_02201674
 	ldrb r0, [r6, r7]
-	bl ov16_022018B4
+	bl BerryIdToItemId
 	add r1, r0, #0
 	ldrb r2, [r4, #5]
 	ldr r0, [r5, #0xc]
@@ -3159,7 +3159,7 @@ ov17_02203460: ; 0x02203460
 	add r0, r5, r0
 	add r0, #0x20
 	ldrb r0, [r0]
-	bl ov16_022018B4
+	bl BerryIdToItemId
 	mov r1, #1
 	add r4, r0, #0
 	bl GetItemIndexMapping
@@ -3526,7 +3526,7 @@ _0220371E: ; jump table
 	.short _0220376C - _0220371E - 2 ; case 16
 _02203740:
 	ldrb r0, [r6, #4]
-	bl ov16_022018D4
+	bl MulchIdToItemId
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xa0
@@ -3704,13 +3704,13 @@ _02203884:
 	strb r1, [r0]
 	ldr r0, [r6, #0x14]
 	add r1, r4, #0
-	bl ov16_022015BC
+	bl BerryPots_GetPotBerryId
 	add r1, r5, #0
 	add r1, #0x20
 	strb r0, [r1]
 	ldr r0, [r6, #0x14]
 	add r1, r4, #0
-	bl ov16_022015B0
+	bl BerryPots_GetPotGrowthStage
 	add r1, r5, #0
 	add r1, #0x21
 	strb r0, [r1]
@@ -3722,13 +3722,13 @@ _02203884:
 	strb r0, [r1]
 	ldr r0, [r6, #0x14]
 	add r1, r4, #0
-	bl ov16_022015E0
+	bl BerryPots_GetPotMoisture
 	add r1, r5, #0
 	add r1, #0x23
 	strb r0, [r1]
 	ldr r0, [r6, #0x14]
 	add r1, r4, #0
-	bl ov16_02201650
+	bl BerryPots_GetPotMulch
 	add r1, r5, #0
 	add r1, #0x24
 	strb r0, [r1]
