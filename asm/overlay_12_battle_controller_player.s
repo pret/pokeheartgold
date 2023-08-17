@@ -7055,7 +7055,7 @@ _0224E3C4:
 	ldr r0, [sp]
 	add r1, r6, #0
 	add r2, r4, #0
-	bl ov12_0223BFDC
+	bl BattleSystem_GetTrainerItem
 	cmp r0, #0
 	beq _0224E3EC
 	ldr r1, _0224E408 ; =0x000003CD

@@ -47,7 +47,7 @@
 .public BattleSystem_SetCriticalHpMusicFlag
 .public BattleSystem_Random
 .public ov12_0223BDDC
-.public ov12_0223BFDC
+.public BattleSystem_GetTrainerItem
 .public ov12_0223BFFC
 .public ov12_0223C0C4
 .public RunBattleScript

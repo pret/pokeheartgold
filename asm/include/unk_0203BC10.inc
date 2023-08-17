@@ -2,7 +2,7 @@
 #pragma once
 .public sub_02004AD8
 .public StopBGM
-.public sub_02005FA0
+.public Sound_Stop
 .public PlaySE
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_LoadScrnData

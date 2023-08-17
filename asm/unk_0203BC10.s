@@ -3771,7 +3771,7 @@ sub_0203D9E8: ; 0x0203D9E8
 	mov r0, #0xe
 	lsl r0, r0, #6
 	ldr r5, [r6, r0]
-	bl sub_02005FA0
+	bl Sound_Stop
 	mov r0, #3
 	mov r1, #0x47
 	lsl r2, r0, #0x10

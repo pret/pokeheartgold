@@ -5,8 +5,11 @@
 #include "party.h"
 #include "pokemon_mood.h"
 #include "overlay_12_0224E4FC.h"
+#include "overlay_12_0226BEC4.h"
 #include "constants/game_stat.h"
 #include "unk_0202FBCC.h"
+#include "unk_0200FA24.h"
+#include "unk_02005D10.h"
 
 BgConfig *BattleSystem_GetBgConfig(BattleSystem *bsys) {
     return bsys->bgConfig;
@@ -1104,4 +1107,104 @@ BOOL ov12_0223BE0C(BattleSystem *bsys, int battlerId, u8 *data) {
         ret = TRUE;
     }
     return ret;
+}
+
+u8 ov12_0223BE68(BattleSystem *bsys, u8 *buffer) {
+    u8 i;
+    u8 battlerId;
+    u8 index = 0;
+    
+    for (battlerId = 0; battlerId < bsys->maxBattlers; battlerId++) {
+        if (bsys->unk245C[battlerId] != bsys->unk244C[battlerId]) {
+            buffer[index++] = battlerId;
+            buffer[index++] = bsys->unk245C[battlerId] - bsys->unk244C[battlerId];
+            for (i = 0; i < bsys->unk245C[battlerId] - bsys->unk244C[battlerId]; i++) {
+                buffer[index++] = sub_0203027C(battlerId, bsys->unk244C[battlerId] + i);
+            }
+            bsys->unk244C[battlerId] = bsys->unk245C[battlerId];
+        }
+    }
+    
+    GF_ASSERT(index <= 28);
+    
+    return index;
+}
+
+static u8 ov12_0223BFB0(u8 *buffer, u8 *index, u16 *size);
+
+void ov12_0223BF14(BattleSystem *bsys, u16 size, u8 *buffer) {
+    int i;
+    u8 battlerId;
+    u8 byte;
+    u8 index = 0;
+    
+    if (!(bsys->battleType & BATTLE_TYPE_LINK)) {
+        return;
+    }
+    
+    if (bsys->unk23FC) {
+        return;
+    }
+    
+    while (size) {
+        battlerId = ov12_0223BFB0(buffer, &index, &size);
+        byte = ov12_0223BFB0(buffer, &index, &size);
+        for (i = 0; i < byte; i++) {
+            sub_02030260(battlerId, bsys->unk2454[battlerId] + i, ov12_0223BFB0(buffer, &index, &size));
+        }
+        bsys->unk2454[battlerId] += byte;
+    }
+}
+
+static u8 ov12_0223BFB0(u8 *buffer, u8 *index, u16 *size) {
+    (*size)--;
+    return buffer[(*index)++];
+}
+
+u16 ov12_0223BFC0(BattleSystem *bsys) {
+    return bsys->unk2446;
+}
+
+int ov12_0223BFCC(BattleSystem *bsys, u16 battlerId) {
+    return bsys->unk2464[battlerId];
+}
+
+u16 BattleSystem_GetTrainerItem(BattleSystem *bsys, int battlerId, int index) {
+    return bsys->trainers[battlerId].items[index];
+}
+
+BOOL ov12_0223BFEC(BattleSystem *bsys) {
+    return bsys->unk2474_0;
+}
+
+void ov12_0223BFFC(BattleSystem *bsys, u32 flag) {
+    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) || 
+        bsys->unk2474_0 ||
+        ov12_022581D4(bsys, bsys->ctx, 13, 0) == 44 ||
+        ov12_022581D4(bsys, bsys->ctx, 14, 0) == 44) {
+        return;
+    }
+    
+    ov12_0226AA8C(bsys->unk19C, flag);
+    BeginNormalPaletteFade(3, 0, 0, 0, 16, 2, HEAP_ID_BATTLE);
+    Sound_Stop();
+    Sound_SetMasterVolume(0);
+    bsys->unk2474_0 = TRUE;
+}
+
+BOOL ov12_0223C080(BattleSystem *bsys) {
+    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) || 
+        bsys->unk2474_0 ||
+        ov12_022581D4(bsys, bsys->ctx, 13, 0) == 44 ||
+        ov12_022581D4(bsys, bsys->ctx, 14, 0) == 44) {
+        return FALSE;
+    }
+    return TRUE;
+}
+
+void ov12_0223C0C4(BattleSystem *bsys) {
+    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) || bsys->unk247C) {
+        return;
+    }
+    bsys->unk247C = ov12_0226BEC4(bsys);
 }

@@ -17,6 +17,7 @@
 #include "trainer_data.h"
 #include "filesystem.h"
 #include "unk_02023694.h"
+#include "unk_0200E320.h"
 #include "constants/battle.h"
 #include "constants/moves.h"
 
@@ -601,6 +602,7 @@ struct BattleSystem {
     int unk2440;
     u8 unk2442;
     u8 unk2445;
+    u16 unk2446;
     u32 rand;
     u32 randTemp;
     u16 unk244C[4];
@@ -613,7 +615,7 @@ struct BattleSystem {
         unk2474_3:1,
         unk2474_4:28;
     u32 unk2478;
-    u8 unk247C[4];
+    SysTask *unk247C;
 };
 
 struct GetterWork {

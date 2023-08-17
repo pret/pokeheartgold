@@ -67,7 +67,7 @@
 .public GF_SndSetMonoFlag
 .public sub_02005990
 .public GF_SndGetAfterFadeDelayTimer
-.public sub_020059D0
+.public Sound_SetMasterVolume
 .public sub_020059D8
 .public sub_020059E0
 .public GF_NowStartMusicId
@@ -90,7 +90,7 @@
 .public GF_SndStartFadeInBGM
 .public GF_SndStartFadeOutBGM
 .public GF_SndGetFadeTimer
-.public sub_02005FA0
+.public Sound_Stop
 .public sub_02005FD8
 .public AllocFromHeap
 .public FreeToHeap

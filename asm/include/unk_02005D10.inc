@@ -54,7 +54,7 @@
 .public GF_SndStartFadeOutBGM
 .public GF_SndGetFadeTimer
 .public sub_02005F94
-.public sub_02005FA0
+.public Sound_Stop
 .public sub_02005FD8
 .public sub_0200602C
 .public PlaySE

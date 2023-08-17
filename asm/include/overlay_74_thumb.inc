@@ -16,7 +16,7 @@
 .public sub_02004AD8
 .public sub_02004EC4
 .public sub_02005AF8
-.public sub_02005FA0
+.public Sound_Stop
 .public PlaySE
 .public PlayCry
 .public OverlayManager_CreateAndGetData

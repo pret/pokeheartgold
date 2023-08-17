@@ -10,7 +10,7 @@
 .public GF_FadeStartMusicId
 .public sub_02005CF4
 .public GF_SndStartFadeOutBGM
-.public sub_02005FA0
+.public Sound_Stop
 .public IsNighttime
 .public GF_AssertFail
 .public MapMatrix_GetWidth

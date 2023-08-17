@@ -1659,7 +1659,7 @@ _0223872E:
 	cmp r0, #0
 	beq _02238748
 	mov r0, #0x7f
-	bl sub_020059D0
+	bl Sound_SetMasterVolume
 _02238748:
 	mov r0, #0x92
 	lsl r0, r0, #6

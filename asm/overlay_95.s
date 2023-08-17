@@ -1396,7 +1396,7 @@ _021E63DC:
 	bl IsPaletteFadeFinished
 	cmp r0, #1
 	bne _021E6412
-	bl sub_02005FA0
+	bl Sound_Stop
 	ldr r1, _021E6598 ; =0x000003F3
 	mov r0, #0xd
 	mov r2, #1
@@ -2690,7 +2690,7 @@ ov95_021E6D70: ; 0x021E6D70
 	add r1, r4, #0
 	add r1, #0x88
 	str r0, [r1]
-	bl sub_02005FA0
+	bl Sound_Stop
 	ldr r0, _021E6E84 ; =ov95_021E5B24
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
