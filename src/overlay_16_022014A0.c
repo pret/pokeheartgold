@@ -17,6 +17,20 @@ typedef struct BerryFile {
     u8 smoothness;
 } BerryFile; // size: 0xc
 
+enum BerryAttr {
+    BERRY_ATTR_SIZE,
+    BERRY_ATTR_FIRMNESS,
+    BERRY_ATTR_UNK2,
+    BERRY_ATTR_GROWTH_INTERVAL,
+    BERRY_ATTR_DRAIN_RATE,
+    BERRY_ATTR_SPICINESS,
+    BERRY_ATTR_DRYNESS,
+    BERRY_ATTR_SWEETNESS,
+    BERRY_ATTR_BITTERNESS,
+    BERRY_ATTR_SOURNESS,
+    BERRY_ATTR_SMOOTHNESS,
+};
+
 static void BerryPot_Clear(BerryPot *berryPot);
 static u32 ov16_02201514(BerryPot *berryPot, UnkStruct_ov16_022014A0 *a1);
 static u32 CalculateBerryPotGrowthInterval(UnkStruct_ov16_022014A0 *a0, int berryId, int a2);
@@ -29,7 +43,7 @@ static void ov16_022016F4(BerryPot *berryPot, UnkStruct_ov16_022014A0 *a1, int a
 static NARC *GetBerryInfoNarc(HeapID heapId);
 static BerryFile *GetBerryFileFromNarc(NARC *narc, s32 fileId, HeapID heapId);
 static void FreeBerryInfoNarc(NARC *narc);
-static u16 GetBerryAttr(BerryFile *unk, u32 attr);
+static u16 GetBerryAttr(BerryFile *unk, enum BerryAttr attr);
 
 UnkStruct_ov16_022014A0 *ov16_022014A0(HeapID heapId) {
     UnkStruct_ov16_022014A0 *unk;
@@ -40,9 +54,9 @@ UnkStruct_ov16_022014A0 *ov16_022014A0(HeapID heapId) {
 
     for (int fileId = 0; fileId < NUM_BERRIES; fileId++) {
         BerryFile *berryFile = GetBerryFileFromNarc(narc, fileId, heapId);
-        unk[fileId].defaultGrowthTimeInHours = GetBerryAttr(berryFile, 3);
-        unk[fileId].defaultDrainRate = GetBerryAttr(berryFile, 4);
-        unk[fileId].unk2 = GetBerryAttr(berryFile, 2);
+        unk[fileId].defaultGrowthTimeInHours = GetBerryAttr(berryFile, BERRY_ATTR_GROWTH_INTERVAL);
+        unk[fileId].defaultDrainRate = GetBerryAttr(berryFile, BERRY_ATTR_DRAIN_RATE);
+        unk[fileId].unk2 = GetBerryAttr(berryFile, BERRY_ATTR_UNK2);
 
         FreeToHeap(berryFile);
     }
@@ -53,7 +67,7 @@ UnkStruct_ov16_022014A0 *ov16_022014A0(HeapID heapId) {
 }
 
 static void BerryPot_Clear(BerryPot *berryPot) {
-    berryPot->berryId = 0;
+    berryPot->berryId = BERRY_NONE;
     berryPot->growthStage = BERRY_POT_GROWTH_STAGE_INVALID;
     berryPot->unk_2 = 0;
     berryPot->unk_4 = 0;
@@ -61,7 +75,7 @@ static void BerryPot_Clear(BerryPot *berryPot) {
     berryPot->unk_6 = 0;
     berryPot->moisture = 0;
     berryPot->unk_A = 0;
-    berryPot->mulch = 0;
+    berryPot->mulch = MULCH_NONE;
 }
 
 static u32 ov16_02201514(BerryPot *berryPot, UnkStruct_ov16_022014A0 *a1) {
@@ -70,9 +84,9 @@ static u32 ov16_02201514(BerryPot *berryPot, UnkStruct_ov16_022014A0 *a1) {
 
 static u32 CalculateBerryPotGrowthInterval(UnkStruct_ov16_022014A0 *a0, int berryId, int mulch) {
     s32 growthTimeInMinutes = a0[berryId - 1].defaultGrowthTimeInHours * 60;
-    if (mulch == 1) { // Growth mulch
+    if (mulch == MULCH_IDX(ITEM_GROWTH_MULCH)) {
         return (growthTimeInMinutes * 3) / 4;
-    } else if (mulch == 2) { // Damp mulch
+    } else if (mulch == MULCH_IDX(ITEM_DAMP_MULCH)) {
         growthTimeInMinutes += (growthTimeInMinutes / 2);
     }
     return growthTimeInMinutes;
@@ -80,22 +94,20 @@ static u32 CalculateBerryPotGrowthInterval(UnkStruct_ov16_022014A0 *a0, int berr
 
 static u32 CalculateBerryPotDrainRate(UnkStruct_ov16_022014A0 *a0, int berryId, int mulch) {
     s32 drainRate = a0[berryId - 1].defaultDrainRate;
-    if (mulch == 2) { // Damp mulch
+    if (mulch == MULCH_IDX(ITEM_DAMP_MULCH)) {
         return drainRate / 2;
-    } else if (mulch == 1) { // Growth mulch
+    } else if (mulch == MULCH_IDX(ITEM_GROWTH_MULCH)) {
         drainRate += (drainRate / 2);
     }
     return drainRate;
 }
 
 static u32 ov16_02201578(BerryPot *berryPot) {
-    // Stable mulch
-    return (berryPot->mulch == 3) ? 6 : 4;
+    return (berryPot->mulch == MULCH_IDX(ITEM_STABLE_MULCH)) ? 6 : 4;
 }
 
 static u32 ov16_02201588(BerryPot *berryPot) {
-    // Gooey mulch
-    return (berryPot->mulch == 4) ? 15 : 10;
+    return (berryPot->mulch == MULCH_IDX(ITEM_GOOEY_MULCH)) ? 15 : 10;
 }
 
 static u32 ov16_02201598(BerryPot *berryPot) {
@@ -233,7 +245,7 @@ static void ov16_022016F4(BerryPot *berryPot, UnkStruct_ov16_022014A0 *a1, int a
 
 void ov16_02201760(BerryPot *berryPots, UnkStruct_ov16_022014A0 *a1, s32 a2) {
     for (s32 i = 0; i < MAX_BERRY_POT; i++) {
-        if (berryPots[i].berryId == 0 || berryPots[i].growthStage == BERRY_POT_GROWTH_STAGE_INVALID) {
+        if (berryPots[i].berryId == BERRY_NONE || berryPots[i].growthStage == BERRY_POT_GROWTH_STAGE_INVALID) {
             continue;
         }
 
@@ -287,29 +299,29 @@ static void FreeBerryInfoNarc(NARC *narc) {
     NARC_Delete(narc);
 }
 
-static u16 GetBerryAttr(BerryFile *unk, u32 attr) {
+static u16 GetBerryAttr(BerryFile *unk, enum BerryAttr attr) {
     switch (attr) {
-        case 0:
+        case BERRY_ATTR_SIZE:
             return unk->sizeInMillimeters;
-        case 1:
+        case BERRY_ATTR_FIRMNESS:
             return unk->firmness;
-        case 2:
+        case BERRY_ATTR_UNK2:
             return unk->unk3;
-        case 3:
+        case BERRY_ATTR_GROWTH_INTERVAL:
             return unk->defaultGrowthInterval;
-        case 4:
+        case BERRY_ATTR_DRAIN_RATE:
             return unk->defaultDrainRate;
-        case 5:
+        case BERRY_ATTR_SPICINESS:
             return unk->spiciness;
-        case 6:
+        case BERRY_ATTR_DRYNESS:
             return unk->dryness;
-        case 7:
+        case BERRY_ATTR_SWEETNESS:
             return unk->sweetness;
-        case 8:
+        case BERRY_ATTR_BITTERNESS:
             return unk->bitterness;
-        case 9:
+        case BERRY_ATTR_SOURNESS:
             return unk->sourness;
-        case 10:
+        case BERRY_ATTR_SMOOTHNESS:
             return unk->smoothness;
         default:
             return 0;
@@ -317,7 +329,7 @@ static u16 GetBerryAttr(BerryFile *unk, u32 attr) {
 }
 
 u16 BerryIdToItemId(u16 berryId) {
-    if (berryId == 0) {
+    if (berryId == BERRY_NONE) {
         return ITEM_NONE;
     }
 
@@ -326,14 +338,14 @@ u16 BerryIdToItemId(u16 berryId) {
 
 u16 ItemIdToBerryId(u16 itemId) {
     if (itemId == ITEM_NONE) {
-        return 0;
+        return BERRY_NONE;
     }
 
     return itemId - FIRST_BERRY_IDX + 1;
 }
 
 u16 MulchIdToItemId(u16 mulchId) {
-    if (mulchId == 0) {
+    if (mulchId == MULCH_NONE) {
         return ITEM_NONE;
     }
 
@@ -342,7 +354,7 @@ u16 MulchIdToItemId(u16 mulchId) {
 
 u32 ItemIdToMulchId(u16 itemId) {
     if (itemId == ITEM_NONE) {
-        return 0;
+        return MULCH_NONE;
     }
 
     return itemId - ITEM_GROWTH_MULCH + 1;
@@ -360,7 +372,7 @@ u16 GetTotalBerryQuantity(Bag *bag, HeapID heapId) {
 u16 GetTotalMulchQuantity(Bag *bag, HeapID heapId) {
     s32 i;
     u16 total;
-    for (total = 0, i = 0; i < 4; i++) {
+    for (total = 0, i = 0; i < NUM_MULCHES; i++) {
         total += Bag_GetQuantity(bag, ITEM_GROWTH_MULCH + i, heapId);
     }
     return total;
