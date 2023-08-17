@@ -1208,3 +1208,98 @@ void ov12_0223C0C4(BattleSystem *bsys) {
     }
     bsys->unk247C = ov12_0226BEC4(bsys);
 }
+
+u8 BattleSystem_GetChatotVoiceParam(BattleSystem *bsys, int battlerId) {
+    if ((bsys->battleType & BATTLE_TYPE_MULTI) ||
+        ((bsys->battleType & BATTLE_TYPE_INGAME_PARTNER) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
+        return bsys->chatotVoiceParam[battlerId];
+    } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
+        return bsys->chatotVoiceParam[battlerId & 1];
+    } else {
+        return bsys->chatotVoiceParam[battlerId];
+    }
+}
+
+u32 ov12_0223C134(BattleSystem *bsys) {
+    return bsys->unk2488;
+}
+
+u8 ov12_0223C140(BattleSystem *bsys, u32 battlerId) {
+    if (battlerId >= 4) {
+        return 0xFF;
+    }
+    if (bsys->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_SAFARI | BATTLE_TYPE_TOWER | BATTLE_TYPE_PAL_PARK)) {
+        return 0xFF;
+    }
+    
+    if ((bsys->battleType & BATTLE_TYPE_DOUBLES) && (ov12_0223AB0C(bsys, battlerId) & 1)) {
+        return 0xFF;
+    }
+
+    if (bsys->battleType & BATTLE_TYPE_MULTI) {
+        return bsys->unk248C[battlerId];
+    }
+    if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
+        return bsys->unk248C[battlerId & 1];
+    }
+    return bsys->unk248C[battlerId];
+}
+
+void ov12_0223C1A0(BattleSystem *bsys, u8 *buffer) {
+    int i;
+    for (i = 0; i < bsys->maxBattlers; i++) {
+        buffer[ov12_02261258(bsys->opponentData[i])] = i;
+    }
+}
+
+void ov12_0223C1C4(BattleSystem *bsys, u8 *buffer) {
+    int i;
+    
+    for (i = 0; i < 4; i++) {
+        buffer[i] = 0xFF;
+    }
+    
+    for (i = 0; i < bsys->maxBattlers; i++) {
+        buffer[i] = ov12_02261258(bsys->opponentData[i]);
+    }
+}
+
+void ov12_0223C1F4(BattleSystem *bsys, void **a1) {
+    int i;
+    
+    for (i = 0; i < 4; i++) {
+        a1[i] = NULL;
+    }
+    
+    for (i = 0; i < bsys->maxBattlers; i++) {
+        a1[i] = ov12_02261270(bsys->opponentData[i]);
+    }
+}
+
+void ov12_0223C224(BattleSystem *bsys, int a1) {
+    int i;
+    BattleHpBar *hpBar;
+    
+    for (i = 0; i < bsys->maxBattlers; i++) {
+        hpBar = OpponentData_GetHpBar(bsys->opponentData[i]);
+        ov12_02264EE0(hpBar, a1);
+    }
+}
+
+u32 CalcMoneyLoss(PARTY *party, PlayerProfile *profile) {
+    static const u8 sBadgePenalty[] = {
+        2, 4, 6, 9, 12, 16, 20, 25, 30
+    };
+    u8 badgeCount = PlayerProfile_CountBadges(profile);
+    if (badgeCount > 8) {
+        badgeCount = 8;
+    }
+    u32 loss = Party_GetMaxLevel(party) * 4 * sBadgePenalty[badgeCount];
+    u32 money = PlayerProfile_GetMoney(profile);
+    
+    if (loss > money) {
+        loss = money;
+    }
+    
+    return loss;
+}

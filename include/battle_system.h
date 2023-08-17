@@ -130,10 +130,17 @@ BOOL ov12_0223BFEC(BattleSystem *bsys);
 void ov12_0223BFFC(BattleSystem *bsys, u32 flag);
 BOOL ov12_0223C080(BattleSystem *bsys);
 void ov12_0223C0C4(BattleSystem *bsys);
+u8 BattleSystem_GetChatotVoiceParam(BattleSystem *bsys, int battlerId);
+u32 ov12_0223C134(BattleSystem *bsys);
+u8 ov12_0223C140(BattleSystem *bsys, u32 battlerId);
+void ov12_0223C1A0(BattleSystem *bsys, u8 *buffer);
+void ov12_0223C1C4(BattleSystem *bsys, u8 *buffer);
+void ov12_0223C1F4(BattleSystem *bsys, void **a1);
+void ov12_0223C224(BattleSystem *bsys, int a1);
+u32 CalcMoneyLoss(PARTY *party, PlayerProfile *profile);
 
 //These functions haven't been decompiled
 void PokedexSetBattlerSeen(BattleSystem *bsys, int battlerId);
-int BattleSystem_GetChatotVoiceParam(BattleSystem *bsys, int battlerId);
 BOOL Link_QueueNotEmpty(BATTLECONTEXT *ctx);
 void ov12_02237ED0(BattleSystem *bsys, int a1);
 void ov12_022642F0(BattleSystem *bsys);

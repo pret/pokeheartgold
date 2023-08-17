@@ -616,6 +616,9 @@ struct BattleSystem {
         unk2474_4:28;
     u32 unk2478;
     SysTask *unk247C;
+    u8 chatotVoiceParam[4];
+    u32 unk2488;
+    u8 unk248C[4];
 };
 
 struct GetterWork {

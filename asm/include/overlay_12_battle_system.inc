@@ -196,7 +196,7 @@
 .public ov12_0223C1C4
 .public ov12_0223C1F4
 .public ov12_0223C224
-.public ov12_0223C24C
+.public CalcMoneyLoss
 .public PokedexSetBattlerSeen
 .public ov12_0223C2F0
 .public ov12_0223C330
