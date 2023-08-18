@@ -31,7 +31,8 @@ static inline u16 LCRandRange(const u16 maximum) {
     if (maximum <= 1) {
         return 0;
     } else {
-        return LCRandom() % maximum;
+        u16 result = LCRandom() % maximum;
+        return result;
     }
 }
 

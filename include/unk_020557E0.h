@@ -11,7 +11,7 @@ void sub_02055828(FieldSystem *fsys);
 void sub_0202EC70(struct UnkStruct_0202EB30 *a0, int i, Pokemon *mon);
 int sub_020558D0(FieldSystem *fsys);
 int sub_020558E0(FieldSystem *fsys);
-int sub_020558F0(FieldSystem *fsys);
+u32 sub_020558F0(FieldSystem *fsys);
 BOOL sub_02055874(FieldSystem* fsys, int x, int y);
 BATTLE_SETUP* sub_0205589C(FieldSystem* fsys);
 void sub_020558AC(FieldSystem *fsys, BATTLE_SETUP *setup);
