@@ -92,3 +92,7 @@ diff.txt
 *.ml[0-9]
 *.mln
 
+# Python
+__pycache__/
+*.py[cod]
+*$py.class

@@ -1,0 +1,2 @@
+code_files_glob_specifier: {asm,include,lib,src,sub}/**/*.{c,h,inc,s}
+repo_game: hgss
