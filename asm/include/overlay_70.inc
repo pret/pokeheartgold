@@ -325,7 +325,6 @@
 .public ov00_021ECDC8
 .public ov00_021ED9B4
 .public ov00_021FA0D8
-.public _0223F900
 .public ov38_0221BE84
 .public ov38_0221BEA8
 .public ov38_0221BF48
@@ -341,7 +340,6 @@
 .public ov70_02238430
 .public ov70_022385C0
 .public ov70_022386F4
-.public _0223DD40
 .public ov71_02246960
 .public ov71_02246B58
 .public ov71_02246BB8
