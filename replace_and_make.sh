@@ -8,6 +8,7 @@ unrenamed_state=${unreplaced_unrenamed_state:2:3}
 if [ "$unreplaced_state" = "1" ] || [ "$unrenamed_state" = "1" ] ; then
 	# Make an entire copy of the repo including ONLY files that are tracked and untracked, but not ignored
 	# as well as files which the user has to supply
+	set -e
 	echo "Finding files to copy over!"
 	unignored_files=$(git ls-files --exclude-standard --others --cached)
 	tools_bin_files=(tools/bin/*)
