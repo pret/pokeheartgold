@@ -7,7 +7,7 @@
 .public sub_02034818
 .public sub_0203769C
 .public BattleSetup_New
-.public sub_02051C9C
+.public BattleSetup_AddMonToParty
 .public sub_02051D18
 .public sub_02052580
 .public AllocMonZeroed

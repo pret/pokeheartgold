@@ -8,6 +8,7 @@
 #define GAME_STAT_UNK10               10
 #define GAME_STAT_UNK11               11
 #define GAME_STAT_UNK12               12
+#define GAME_STAT_UNK17               17
 #define GAME_STAT_UNK20               20
 #define GAME_STAT_UNK21               21
 #define GAME_STAT_BADGE_GET           22

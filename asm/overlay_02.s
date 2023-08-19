@@ -3419,7 +3419,7 @@ ov02_0224762C: ; 0x0224762C
 	cmp r0, #0
 	beq _02247668
 	add r0, r6, #0
-	bl sub_0205B778
+	bl MetatileBehavior_IsSurfableWater
 	cmp r0, #0
 	beq _02247658
 	mov r0, #1
@@ -4660,7 +4660,7 @@ ov02_02247F9C: ; 0x02247F9C
 	cmp r0, #0
 	beq _02247FCA
 	add r0, r6, #0
-	bl sub_0205B778
+	bl MetatileBehavior_IsSurfableWater
 	cmp r0, #0
 	beq _02247FC2
 	add r0, r5, #0
@@ -21678,7 +21678,7 @@ _0224FE9E:
 	add r5, r0, #0
 	lsl r0, r5, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B6E8
+	bl MetatileBehavior_IsEncounterGrass
 	cmp r0, #1
 	bne _0224FEE0
 	mov r0, #1

@@ -2,7 +2,7 @@
 #define POKEHEARTGOLD_UNK_METATILE_BEHAVIOR_H
 
 
-BOOL sub_0205B6E8(u8 tile);
+BOOL MetatileBehavior_IsEncounterGrass(u8 tile);
 BOOL sub_0205B6F4(u8 tile);
 BOOL sub_0205B700(u8 tile);
 BOOL sub_0205B70C(u8 tile);
@@ -14,7 +14,7 @@ BOOL sub_0205B748(u8 tile);
 BOOL sub_0205B754(u8 tile);
 BOOL sub_0205B760(u8 tile);
 BOOL sub_0205B76C(u8 tile);
-BOOL sub_0205B778(u8 tile);
+BOOL MetatileBehavior_IsSurfableWater(u8 tile);
 BOOL sub_0205B78C(u8 tile);
 BOOL sub_0205B798(u8 tile);
 BOOL sub_0205B7A4(u8 tile);

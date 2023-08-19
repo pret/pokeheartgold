@@ -59,6 +59,15 @@ typedef enum Terrain {
     TERRAIN_MAX
 } Terrain;
 
+// Battle outcome
+// Used with BATTLE_SETUP::winFlag
+#define BATTLE_OUTCOME_WIN                  1
+#define BATTLE_OUTCOME_LOSE                 2
+#define BATTLE_OUTCOME_DRAW                 3
+#define BATTLE_OUTCOME_MON_CAUGHT           4
+#define BATTLE_OUTCOME_PLAYER_FLED          5
+#define BATTLE_OUTCOME_FOE_FLED             6
+
 //Battle Type
 #define BATTLE_TYPE_TRAINER                 (1 << 0)
 #define BATTLE_TYPE_DOUBLES                 (1 << 1)

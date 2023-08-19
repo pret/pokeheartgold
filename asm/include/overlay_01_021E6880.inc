@@ -67,8 +67,8 @@
 .public GetMetatileBehaviorAt
 .public MapModel_IsHeadbuttTree
 .public MapCoordToMatrixIndex
-.public sub_02055874
-.public sub_0205589C
+.public PalPark_TryEncounter
+.public PalPark_SetupEncounter
 .public NewFieldTransitionEnvironment
 .public sub_02055CD8
 .public sub_02057F18

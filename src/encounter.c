@@ -27,7 +27,7 @@
 #include "unk_02034354.h"
 #include "unk_02004A44.h"
 #include "unk_02066EDC.h"
-#include "unk_020557E0.h"
+#include "pal_park.h"
 #include "unk_0202FBCC.h"
 #include "unk_020290B4.h"
 #include "unk_02058034.h"
@@ -42,6 +42,7 @@
 #include "pokedex_util.h"
 #include "constants/battle.h"
 #include "constants/game_stat.h"
+#include "fielddata/script/scr_seq/event_D10R0101.h"
 
 static void sub_02051660(FieldSystem *fsys, BATTLE_SETUP *setup);
 
@@ -598,7 +599,7 @@ static BOOL Task_PalParkEncounter(TaskManager *man) {
         break;
     case 3:
         sub_02050724(encounter->setup, fsys);
-        sub_020558AC(fsys, encounter->setup);
+        PalPark_HandleBattleEnd(fsys, encounter->setup);
         sub_02051660(fsys, encounter->setup);
         (*state)++;
         break;
@@ -613,8 +614,12 @@ static BOOL Task_PalParkEncounter(TaskManager *man) {
         break;
     case 6:
         Encounter_Delete(encounter);
-        if (sub_020558BC(fsys) == 0) {
-            StartScriptFromMenu(man, 3, NULL);
+        if (PalPark_CountMonsNotCaught(fsys) == 0) {
+            // Ding-dong!
+            // Congratulations!
+            // $PLAYER has successfully
+            // caught the stocked Pokémon!
+            StartScriptFromMenu(man, _EV_scr_seq_D10R0101_002 + 1, NULL);
             return FALSE;
         }
         return TRUE;

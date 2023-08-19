@@ -1115,11 +1115,11 @@ _021E7132:
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r4, #0
-	bl sub_02055874
+	bl PalPark_TryEncounter
 	cmp r0, #1
 	bne _021E716C
 	add r0, r4, #0
-	bl sub_0205589C
+	bl PalPark_SetupEncounter
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_020511F8

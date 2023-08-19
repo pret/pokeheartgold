@@ -4111,7 +4111,7 @@ ov27_0225C06C: ; 0x0225C06C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
-	bl sub_020558BC
+	bl PalPark_CountMonsNotCaught
 	add r3, r0, #0
 	mov r1, #0xe
 	lsl r3, r3, #0x10

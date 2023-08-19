@@ -2,7 +2,7 @@
 #pragma once
 .public GF_AssertFail
 .public GetMetatileBehaviorAt
-.public sub_0205B6E8
+.public MetatileBehavior_IsEncounterGrass
 .public sub_0205B6F4
 .public sub_0205C600
 .public PlayerAvatar_GetFacingDirection

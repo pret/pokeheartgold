@@ -462,7 +462,7 @@ static enum ItemUseError ItemCheckUseFunc_FishingRod(const struct ItemCheckUseDa
     if (data->haveRocketCostume == TRUE) {
         return ITEMUSEERROR_NOTNOW;
     }
-    if (sub_0205B778(data->facingTile) == TRUE) {
+    if (MetatileBehavior_IsSurfableWater(data->facingTile) == TRUE) {
         if (sub_0205BA30(data->standingTile) == TRUE || sub_0205BA24(data->standingTile) == TRUE) {
             if (MapObject_CheckFlag28(PlayerAvatar_GetMapObject(data->playerAvatar)) == TRUE) {
                 return ITEMUSEERROR_OAKSWORDS;

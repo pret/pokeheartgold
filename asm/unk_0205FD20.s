@@ -585,7 +585,7 @@ sub_020601BC: ; 0x020601BC
 	bl MapObject_GetID
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_0205B6E8
+	bl MetatileBehavior_IsEncounterGrass
 	cmp r0, #1
 	bne _020601EE
 	cmp r4, #0xfd
@@ -632,7 +632,7 @@ _020601EE:
 	add r4, r0, #0
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B6E8
+	bl MetatileBehavior_IsEncounterGrass
 	cmp r0, #1
 	bne _02060254
 	mov r0, #1
@@ -671,7 +671,7 @@ sub_02060274: ; 0x02060274
 	bl MapObject_GetID
 	add r4, r0, #0
 	add r0, r6, #0
-	bl sub_0205B6E8
+	bl MetatileBehavior_IsEncounterGrass
 	cmp r0, #1
 	bne _020602A6
 	cmp r4, #0xfd
@@ -718,7 +718,7 @@ _020602A6:
 	add r4, r0, #0
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B6E8
+	bl MetatileBehavior_IsEncounterGrass
 	cmp r0, #1
 	bne _0206030A
 	mov r1, #1
@@ -878,7 +878,7 @@ _02060418:
 	cmp r0, #2
 	bne _020604B0
 	add r0, r4, #0
-	bl sub_0205B6E8
+	bl MetatileBehavior_IsEncounterGrass
 	cmp r0, #1
 	beq _02060484
 	add r0, r4, #0
@@ -886,7 +886,7 @@ _02060418:
 	cmp r0, #1
 	beq _02060484
 	add r0, r6, #0
-	bl sub_0205B6E8
+	bl MetatileBehavior_IsEncounterGrass
 	cmp r0, #1
 	beq _02060484
 	add r0, r6, #0
@@ -941,7 +941,7 @@ _02060490:
 	pop {r3, r4, r5, r6, r7, pc}
 _020604B0:
 	add r0, r4, #0
-	bl sub_0205B6E8
+	bl MetatileBehavior_IsEncounterGrass
 	cmp r0, #1
 	beq _02060504
 	add r0, r4, #0
@@ -1020,7 +1020,7 @@ _02060546:
 	lsl r0, r0, #0x10
 	lsr r6, r0, #0x10
 	add r0, r4, #0
-	bl sub_0205B6E8
+	bl MetatileBehavior_IsEncounterGrass
 	cmp r0, #1
 	beq _020605C8
 	add r0, r4, #0
@@ -1029,7 +1029,7 @@ _02060546:
 	beq _020605C8
 	lsl r0, r6, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B6E8
+	bl MetatileBehavior_IsEncounterGrass
 	cmp r0, #1
 	beq _020605C8
 	lsl r0, r6, #0x18
@@ -1077,7 +1077,7 @@ _020605D4:
 	pop {r4, r5, r6, pc}
 _020605E0:
 	add r0, r4, #0
-	bl sub_0205B6E8
+	bl MetatileBehavior_IsEncounterGrass
 	cmp r0, #1
 	beq _02060634
 	add r0, r4, #0
@@ -2170,7 +2170,7 @@ sub_02060E54: ; 0x02060E54
 _02060E74:
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B778
+	bl MetatileBehavior_IsSurfableWater
 	cmp r0, #0
 	beq _02060E84
 	mov r0, #1

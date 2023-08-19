@@ -56,10 +56,10 @@
 .public BattleSetup_New
 .public sub_02051A60
 .public sub_02051A74
-.public sub_02051A98
+.public BattleSetup_New_PalPark
 .public sub_02051AAC
 .public BattleSetup_Delete
-.public sub_02051C9C
+.public BattleSetup_AddMonToParty
 .public sub_02051D18
 .public BattleSetup_InitFromFsys
 .public sub_02051F2C
@@ -75,9 +75,9 @@
 .public GetMetatileBehaviorAt
 .public Field_GetTimeOfDay
 .public sub_0205B46C
-.public sub_0205B6E8
+.public MetatileBehavior_IsEncounterGrass
 .public sub_0205B6F4
-.public sub_0205B778
+.public MetatileBehavior_IsSurfableWater
 .public sub_0205B798
 .public sub_0205B828
 .public sub_0205B8AC

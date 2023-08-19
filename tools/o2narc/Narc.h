@@ -13,9 +13,9 @@ struct FileAllocationTableEntry
             if (i == 0) {
                 ret[i].Start = 0;
             } else {
-                ret[i].Start = ret[i - 1].End;
+                ret[i].Start = (ret[i - 1].End + 3) & ~3;
             }
-            ret[i].End = (ret[i].Start + sizes[i] + 3) & ~3;
+            ret[i].End = ret[i].Start + sizes[i];
         }
         return ret;
     }

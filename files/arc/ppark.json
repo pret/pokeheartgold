@@ -1,0 +1,3948 @@
+{
+    "mons": [
+        {
+            "species": "BULBASAUR",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 6
+        },
+        {
+            "species": "IVYSAUR",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 1,
+            "unk5": 6
+        },
+        {
+            "species": "VENUSAUR",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 1,
+            "unk5": 6
+        },
+        {
+            "species": "CHARMANDER",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "CHARMELEON",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "CHARIZARD",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 2,
+            "unk5": 17
+        },
+        {
+            "species": "SQUIRTLE",
+            "area": "POND",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "WARTORTLE",
+            "area": "POND",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "BLASTOISE",
+            "area": "POND",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "CATERPIE",
+            "area": "FOREST",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 4,
+            "unk5": 4
+        },
+        {
+            "species": "METAPOD",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 4
+        },
+        {
+            "species": "BUTTERFREE",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 17
+        },
+        {
+            "species": "WEEDLE",
+            "area": "FOREST",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 4,
+            "unk5": 6
+        },
+        {
+            "species": "KAKUNA",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 6
+        },
+        {
+            "species": "BEEDRILL",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 6
+        },
+        {
+            "species": "PIDGEY",
+            "area": "FIELD",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "PIDGEOTTO",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "PIDGEOT",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "RATTATA",
+            "area": "FIELD",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "RATICATE",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "SPEAROW",
+            "area": "FIELD",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "FEAROW",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "EKANS",
+            "area": "FOREST",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "ARBOK",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "PIKACHU",
+            "area": "FOREST",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "RAICHU",
+            "area": "FOREST",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "SANDSHREW",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 8,
+            "unk5": 8
+        },
+        {
+            "species": "SANDSLASH",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 8,
+            "unk5": 8
+        },
+        {
+            "species": "NIDORAN_F",
+            "area": "FIELD",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "NIDORINA",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "NIDOQUEEN",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 6,
+            "unk5": 8
+        },
+        {
+            "species": "NIDORAN_M",
+            "area": "FIELD",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "NIDORINO",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "NIDOKING",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 6,
+            "unk5": 8
+        },
+        {
+            "species": "CLEFAIRY",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "CLEFABLE",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "VULPIX",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "NINETALES",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "JIGGLYPUFF",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "WIGGLYTUFF",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "ZUBAT",
+            "area": "MOUNTAIN",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 6,
+            "unk5": 17
+        },
+        {
+            "species": "GOLBAT",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 6,
+            "unk5": 17
+        },
+        {
+            "species": "ODDISH",
+            "area": "FOREST",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 1,
+            "unk5": 6
+        },
+        {
+            "species": "GLOOM",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 6
+        },
+        {
+            "species": "VILEPLUME",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 1,
+            "unk5": 6
+        },
+        {
+            "species": "PARAS",
+            "area": "FOREST",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 4,
+            "unk5": 1
+        },
+        {
+            "species": "PARASECT",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 1
+        },
+        {
+            "species": "VENONAT",
+            "area": "FOREST",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 4,
+            "unk5": 6
+        },
+        {
+            "species": "VENOMOTH",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 6
+        },
+        {
+            "species": "DIGLETT",
+            "area": "MOUNTAIN",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 8,
+            "unk5": 8
+        },
+        {
+            "species": "DUGTRIO",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 8,
+            "unk5": 8
+        },
+        {
+            "species": "MEOWTH",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "PERSIAN",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "PSYDUCK",
+            "area": "POND",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "GOLDUCK",
+            "area": "POND",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "MANKEY",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 9,
+            "unk5": 9
+        },
+        {
+            "species": "PRIMEAPE",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 9,
+            "unk5": 9
+        },
+        {
+            "species": "GROWLITHE",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "ARCANINE",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "POLIWAG",
+            "area": "POND",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "POLIWHIRL",
+            "area": "POND",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "POLIWRATH",
+            "area": "POND",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 9
+        },
+        {
+            "species": "ABRA",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "KADABRA",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "ALAKAZAM",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "MACHOP",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 9,
+            "unk5": 9
+        },
+        {
+            "species": "MACHOKE",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 9,
+            "unk5": 9
+        },
+        {
+            "species": "MACHAMP",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 9,
+            "unk5": 9
+        },
+        {
+            "species": "BELLSPROUT",
+            "area": "FOREST",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 1,
+            "unk5": 6
+        },
+        {
+            "species": "WEEPINBELL",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 6
+        },
+        {
+            "species": "VICTREEBEL",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 1,
+            "unk5": 6
+        },
+        {
+            "species": "TENTACOOL",
+            "area": "SEA",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 3,
+            "unk5": 6
+        },
+        {
+            "species": "TENTACRUEL",
+            "area": "SEA",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 6
+        },
+        {
+            "species": "GEODUDE",
+            "area": "MOUNTAIN",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 11,
+            "unk5": 8
+        },
+        {
+            "species": "GRAVELER",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 11,
+            "unk5": 8
+        },
+        {
+            "species": "GOLEM",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 8
+        },
+        {
+            "species": "PONYTA",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "RAPIDASH",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "SLOWPOKE",
+            "area": "POND",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 10
+        },
+        {
+            "species": "SLOWBRO",
+            "area": "POND",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 10
+        },
+        {
+            "species": "MAGNEMITE",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 7,
+            "unk5": 14
+        },
+        {
+            "species": "MAGNETON",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 7,
+            "unk5": 14
+        },
+        {
+            "species": "FARFETCHD",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "DODUO",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "DODRIO",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "SEEL",
+            "area": "SEA",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "DEWGONG",
+            "area": "SEA",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 13
+        },
+        {
+            "species": "GRIMER",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "MUK",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "SHELLDER",
+            "area": "SEA",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "CLOYSTER",
+            "area": "SEA",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 13
+        },
+        {
+            "species": "GASTLY",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 12,
+            "unk5": 6
+        },
+        {
+            "species": "HAUNTER",
+            "area": "FOREST",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 12,
+            "unk5": 6
+        },
+        {
+            "species": "GENGAR",
+            "area": "FOREST",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 12,
+            "unk5": 6
+        },
+        {
+            "species": "ONIX",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 11,
+            "unk5": 8
+        },
+        {
+            "species": "DROWZEE",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "HYPNO",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "KRABBY",
+            "area": "SEA",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "KINGLER",
+            "area": "SEA",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "VOLTORB",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "ELECTRODE",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "EXEGGCUTE",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 10
+        },
+        {
+            "species": "EXEGGUTOR",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 1,
+            "unk5": 10
+        },
+        {
+            "species": "CUBONE",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 8,
+            "unk5": 8
+        },
+        {
+            "species": "MAROWAK",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 8,
+            "unk5": 8
+        },
+        {
+            "species": "HITMONLEE",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 9,
+            "unk5": 9
+        },
+        {
+            "species": "HITMONCHAN",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 9,
+            "unk5": 9
+        },
+        {
+            "species": "LICKITUNG",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "KOFFING",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "WEEZING",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "RHYHORN",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 8,
+            "unk5": 11
+        },
+        {
+            "species": "RHYDON",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 8,
+            "unk5": 11
+        },
+        {
+            "species": "CHANSEY",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "TANGELA",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "KANGASKHAN",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "HORSEA",
+            "area": "SEA",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "SEADRA",
+            "area": "SEA",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "GOLDEEN",
+            "area": "POND",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "SEAKING",
+            "area": "POND",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "STARYU",
+            "area": "SEA",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "STARMIE",
+            "area": "SEA",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 10
+        },
+        {
+            "species": "MR_MIME",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "SCYTHER",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 17
+        },
+        {
+            "species": "JYNX",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 13,
+            "unk5": 10
+        },
+        {
+            "species": "ELECTABUZZ",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "MAGMAR",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "PINSIR",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 4
+        },
+        {
+            "species": "TAUROS",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "MAGIKARP",
+            "area": "POND",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "GYARADOS",
+            "area": "POND",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 17
+        },
+        {
+            "species": "LAPRAS",
+            "area": "SEA",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 13
+        },
+        {
+            "species": "DITTO",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "EEVEE",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "VAPOREON",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "JOLTEON",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "FLAREON",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "PORYGON",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "OMANYTE",
+            "area": "SEA",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 11,
+            "unk5": 3
+        },
+        {
+            "species": "OMASTAR",
+            "area": "SEA",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 3
+        },
+        {
+            "species": "KABUTO",
+            "area": "SEA",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 11,
+            "unk5": 3
+        },
+        {
+            "species": "KABUTOPS",
+            "area": "SEA",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 3
+        },
+        {
+            "species": "AERODACTYL",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 17
+        },
+        {
+            "species": "SNORLAX",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "ARTICUNO",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 13,
+            "unk5": 17
+        },
+        {
+            "species": "ZAPDOS",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 7,
+            "unk5": 17
+        },
+        {
+            "species": "MOLTRES",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 2,
+            "unk5": 17
+        },
+        {
+            "species": "DRATINI",
+            "area": "POND",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 15,
+            "unk5": 15
+        },
+        {
+            "species": "DRAGONAIR",
+            "area": "POND",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 15,
+            "unk5": 15
+        },
+        {
+            "species": "DRAGONITE",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 15,
+            "unk5": 17
+        },
+        {
+            "species": "MEWTWO",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "MEW",
+            "area": "FOREST",
+            "score": 100,
+            "encounter_rate": 1,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "CHIKORITA",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "BAYLEEF",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "MEGANIUM",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "CYNDAQUIL",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "QUILAVA",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "TYPHLOSION",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "TOTODILE",
+            "area": "POND",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "CROCONAW",
+            "area": "POND",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "FERALIGATR",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "SENTRET",
+            "area": "FIELD",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "FURRET",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "HOOTHOOT",
+            "area": "FOREST",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "NOCTOWL",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "LEDYBA",
+            "area": "FIELD",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 4,
+            "unk5": 17
+        },
+        {
+            "species": "LEDIAN",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 17
+        },
+        {
+            "species": "SPINARAK",
+            "area": "FIELD",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 4,
+            "unk5": 6
+        },
+        {
+            "species": "ARIADOS",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 6
+        },
+        {
+            "species": "CROBAT",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 6,
+            "unk5": 17
+        },
+        {
+            "species": "CHINCHOU",
+            "area": "SEA",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 7
+        },
+        {
+            "species": "LANTURN",
+            "area": "SEA",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 7
+        },
+        {
+            "species": "PICHU",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "CLEFFA",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "IGGLYBUFF",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "TOGEPI",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "TOGETIC",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "NATU",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 10,
+            "unk5": 17
+        },
+        {
+            "species": "XATU",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 10,
+            "unk5": 17
+        },
+        {
+            "species": "MAREEP",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "FLAAFFY",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "AMPHAROS",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "BELLOSSOM",
+            "area": "FOREST",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "MARILL",
+            "area": "POND",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "AZUMARILL",
+            "area": "POND",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "SUDOWOODO",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 11
+        },
+        {
+            "species": "POLITOED",
+            "area": "POND",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "HOPPIP",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 17
+        },
+        {
+            "species": "SKIPLOOM",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 1,
+            "unk5": 17
+        },
+        {
+            "species": "JUMPLUFF",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 1,
+            "unk5": 17
+        },
+        {
+            "species": "AIPOM",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "SUNKERN",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "SUNFLORA",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "YANMA",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 4,
+            "unk5": 17
+        },
+        {
+            "species": "WOOPER",
+            "area": "POND",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 8
+        },
+        {
+            "species": "QUAGSIRE",
+            "area": "POND",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 8
+        },
+        {
+            "species": "ESPEON",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "UMBREON",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 16,
+            "unk5": 16
+        },
+        {
+            "species": "MURKROW",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 16,
+            "unk5": 17
+        },
+        {
+            "species": "SLOWKING",
+            "area": "POND",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 10
+        },
+        {
+            "species": "MISDREAVUS",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 12,
+            "unk5": 12
+        },
+        {
+            "species": "UNOWN",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "WOBBUFFET",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "GIRAFARIG",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 10
+        },
+        {
+            "species": "PINECO",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 4
+        },
+        {
+            "species": "FORRETRESS",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 14
+        },
+        {
+            "species": "DUNSPARCE",
+            "area": "FOREST",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "GLIGAR",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 8,
+            "unk5": 17
+        },
+        {
+            "species": "STEELIX",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 14,
+            "unk5": 8
+        },
+        {
+            "species": "SNUBBULL",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "GRANBULL",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "QWILFISH",
+            "area": "SEA",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 6
+        },
+        {
+            "species": "SCIZOR",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 4,
+            "unk5": 14
+        },
+        {
+            "species": "SHUCKLE",
+            "area": "SEA",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 4,
+            "unk5": 11
+        },
+        {
+            "species": "HERACROSS",
+            "area": "FOREST",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 4,
+            "unk5": 9
+        },
+        {
+            "species": "SNEASEL",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 16,
+            "unk5": 13
+        },
+        {
+            "species": "TEDDIURSA",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "URSARING",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "SLUGMA",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "MAGCARGO",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 2,
+            "unk5": 11
+        },
+        {
+            "species": "SWINUB",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 13,
+            "unk5": 8
+        },
+        {
+            "species": "PILOSWINE",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 13,
+            "unk5": 8
+        },
+        {
+            "species": "CORSOLA",
+            "area": "SEA",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 11
+        },
+        {
+            "species": "REMORAID",
+            "area": "SEA",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "OCTILLERY",
+            "area": "SEA",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "DELIBIRD",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 13,
+            "unk5": 17
+        },
+        {
+            "species": "MANTINE",
+            "area": "SEA",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 17
+        },
+        {
+            "species": "SKARMORY",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 14,
+            "unk5": 17
+        },
+        {
+            "species": "HOUNDOUR",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 16,
+            "unk5": 2
+        },
+        {
+            "species": "HOUNDOOM",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 16,
+            "unk5": 2
+        },
+        {
+            "species": "KINGDRA",
+            "area": "SEA",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 15
+        },
+        {
+            "species": "PHANPY",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 8,
+            "unk5": 8
+        },
+        {
+            "species": "DONPHAN",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 8,
+            "unk5": 8
+        },
+        {
+            "species": "PORYGON2",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "STANTLER",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "SMEARGLE",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "TYROGUE",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 9,
+            "unk5": 9
+        },
+        {
+            "species": "HITMONTOP",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 9,
+            "unk5": 9
+        },
+        {
+            "species": "SMOOCHUM",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 13,
+            "unk5": 10
+        },
+        {
+            "species": "ELEKID",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "MAGBY",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "MILTANK",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "BLISSEY",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "RAIKOU",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "ENTEI",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "SUICUNE",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "LARVITAR",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 8
+        },
+        {
+            "species": "PUPITAR",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 11,
+            "unk5": 8
+        },
+        {
+            "species": "TYRANITAR",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 11,
+            "unk5": 16
+        },
+        {
+            "species": "LUGIA",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 10,
+            "unk5": 17
+        },
+        {
+            "species": "HO_OH",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 2,
+            "unk5": 17
+        },
+        {
+            "species": "CELEBI",
+            "area": "FOREST",
+            "score": 100,
+            "encounter_rate": 1,
+            "unk4": 10,
+            "unk5": 1
+        },
+        {
+            "species": "TREECKO",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "GROVYLE",
+            "area": "FOREST",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "SCEPTILE",
+            "area": "FOREST",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "TORCHIC",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "COMBUSKEN",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 2,
+            "unk5": 9
+        },
+        {
+            "species": "BLAZIKEN",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 2,
+            "unk5": 9
+        },
+        {
+            "species": "MUDKIP",
+            "area": "POND",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "MARSHTOMP",
+            "area": "POND",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 8
+        },
+        {
+            "species": "SWAMPERT",
+            "area": "POND",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 8
+        },
+        {
+            "species": "POOCHYENA",
+            "area": "FIELD",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 16,
+            "unk5": 16
+        },
+        {
+            "species": "MIGHTYENA",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 16,
+            "unk5": 16
+        },
+        {
+            "species": "ZIGZAGOON",
+            "area": "FIELD",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "LINOONE",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "WURMPLE",
+            "area": "FOREST",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 4,
+            "unk5": 4
+        },
+        {
+            "species": "SILCOON",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 4
+        },
+        {
+            "species": "BEAUTIFLY",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 17
+        },
+        {
+            "species": "CASCOON",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 4
+        },
+        {
+            "species": "DUSTOX",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 6
+        },
+        {
+            "species": "LOTAD",
+            "area": "POND",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 3,
+            "unk5": 1
+        },
+        {
+            "species": "LOMBRE",
+            "area": "POND",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 1
+        },
+        {
+            "species": "LUDICOLO",
+            "area": "POND",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 1
+        },
+        {
+            "species": "SEEDOT",
+            "area": "FOREST",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "NUZLEAF",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 16
+        },
+        {
+            "species": "SHIFTRY",
+            "area": "FOREST",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 1,
+            "unk5": 16
+        },
+        {
+            "species": "TAILLOW",
+            "area": "FIELD",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "SWELLOW",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "WINGULL",
+            "area": "SEA",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 3,
+            "unk5": 17
+        },
+        {
+            "species": "PELIPPER",
+            "area": "SEA",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 17
+        },
+        {
+            "species": "RALTS",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "KIRLIA",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "GARDEVOIR",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "SURSKIT",
+            "area": "POND",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 3
+        },
+        {
+            "species": "MASQUERAIN",
+            "area": "POND",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 17
+        },
+        {
+            "species": "SHROOMISH",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "BRELOOM",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 1,
+            "unk5": 9
+        },
+        {
+            "species": "SLAKOTH",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "VIGOROTH",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "SLAKING",
+            "area": "FOREST",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "NINCADA",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 8
+        },
+        {
+            "species": "NINJASK",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 17
+        },
+        {
+            "species": "SHEDINJA",
+            "area": "FOREST",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 4,
+            "unk5": 12
+        },
+        {
+            "species": "WHISMUR",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "LOUDRED",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "EXPLOUD",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "MAKUHITA",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 9,
+            "unk5": 9
+        },
+        {
+            "species": "HARIYAMA",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 9,
+            "unk5": 9
+        },
+        {
+            "species": "AZURILL",
+            "area": "POND",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "NOSEPASS",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 11
+        },
+        {
+            "species": "SKITTY",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "DELCATTY",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "SABLEYE",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 16,
+            "unk5": 12
+        },
+        {
+            "species": "MAWILE",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 14,
+            "unk5": 14
+        },
+        {
+            "species": "ARON",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 14,
+            "unk5": 11
+        },
+        {
+            "species": "LAIRON",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 14,
+            "unk5": 11
+        },
+        {
+            "species": "AGGRON",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 14,
+            "unk5": 11
+        },
+        {
+            "species": "MEDITITE",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 9,
+            "unk5": 10
+        },
+        {
+            "species": "MEDICHAM",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 9,
+            "unk5": 10
+        },
+        {
+            "species": "ELECTRIKE",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "MANECTRIC",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "PLUSLE",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "MINUN",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "VOLBEAT",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 4
+        },
+        {
+            "species": "ILLUMISE",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 4
+        },
+        {
+            "species": "ROSELIA",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 1,
+            "unk5": 6
+        },
+        {
+            "species": "GULPIN",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "SWALOT",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "CARVANHA",
+            "area": "SEA",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 16
+        },
+        {
+            "species": "SHARPEDO",
+            "area": "SEA",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 16
+        },
+        {
+            "species": "WAILMER",
+            "area": "SEA",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "WAILORD",
+            "area": "SEA",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "NUMEL",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 2,
+            "unk5": 8
+        },
+        {
+            "species": "CAMERUPT",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 2,
+            "unk5": 8
+        },
+        {
+            "species": "TORKOAL",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "SPOINK",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "GRUMPIG",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "SPINDA",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "TRAPINCH",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 8,
+            "unk5": 8
+        },
+        {
+            "species": "VIBRAVA",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 8,
+            "unk5": 15
+        },
+        {
+            "species": "FLYGON",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 8,
+            "unk5": 15
+        },
+        {
+            "species": "CACNEA",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "CACTURNE",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 1,
+            "unk5": 16
+        },
+        {
+            "species": "SWABLU",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "ALTARIA",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 15,
+            "unk5": 17
+        },
+        {
+            "species": "ZANGOOSE",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "SEVIPER",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "LUNATONE",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 10
+        },
+        {
+            "species": "SOLROCK",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 10
+        },
+        {
+            "species": "BARBOACH",
+            "area": "POND",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 8
+        },
+        {
+            "species": "WHISCASH",
+            "area": "POND",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 8
+        },
+        {
+            "species": "CORPHISH",
+            "area": "POND",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "CRAWDAUNT",
+            "area": "POND",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 16
+        },
+        {
+            "species": "BALTOY",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 8,
+            "unk5": 10
+        },
+        {
+            "species": "CLAYDOL",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 8,
+            "unk5": 10
+        },
+        {
+            "species": "LILEEP",
+            "area": "SEA",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 1
+        },
+        {
+            "species": "CRADILY",
+            "area": "SEA",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 11,
+            "unk5": 1
+        },
+        {
+            "species": "ANORITH",
+            "area": "SEA",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 4
+        },
+        {
+            "species": "ARMALDO",
+            "area": "SEA",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 11,
+            "unk5": 4
+        },
+        {
+            "species": "FEEBAS",
+            "area": "SEA",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "MILOTIC",
+            "area": "SEA",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "CASTFORM",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "KECLEON",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "SHUPPET",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 12,
+            "unk5": 12
+        },
+        {
+            "species": "BANETTE",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 12,
+            "unk5": 12
+        },
+        {
+            "species": "DUSKULL",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 12,
+            "unk5": 12
+        },
+        {
+            "species": "DUSCLOPS",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 12,
+            "unk5": 12
+        },
+        {
+            "species": "TROPIUS",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 1,
+            "unk5": 17
+        },
+        {
+            "species": "CHIMECHO",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "ABSOL",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 16,
+            "unk5": 16
+        },
+        {
+            "species": "WYNAUT",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "SNORUNT",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 13,
+            "unk5": 13
+        },
+        {
+            "species": "GLALIE",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 13,
+            "unk5": 13
+        },
+        {
+            "species": "SPHEAL",
+            "area": "SEA",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 13,
+            "unk5": 3
+        },
+        {
+            "species": "SEALEO",
+            "area": "SEA",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 13,
+            "unk5": 3
+        },
+        {
+            "species": "WALREIN",
+            "area": "SEA",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 13,
+            "unk5": 3
+        },
+        {
+            "species": "CLAMPERL",
+            "area": "SEA",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "HUNTAIL",
+            "area": "SEA",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "GOREBYSS",
+            "area": "SEA",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "RELICANTH",
+            "area": "SEA",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 11
+        },
+        {
+            "species": "LUVDISC",
+            "area": "SEA",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "BAGON",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 15,
+            "unk5": 15
+        },
+        {
+            "species": "SHELGON",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 15,
+            "unk5": 15
+        },
+        {
+            "species": "SALAMENCE",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 15,
+            "unk5": 17
+        },
+        {
+            "species": "BELDUM",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 14,
+            "unk5": 10
+        },
+        {
+            "species": "METANG",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 14,
+            "unk5": 10
+        },
+        {
+            "species": "METAGROSS",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 14,
+            "unk5": 10
+        },
+        {
+            "species": "REGIROCK",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 11,
+            "unk5": 11
+        },
+        {
+            "species": "REGICE",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 13,
+            "unk5": 13
+        },
+        {
+            "species": "REGISTEEL",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 14,
+            "unk5": 14
+        },
+        {
+            "species": "LATIAS",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 15,
+            "unk5": 10
+        },
+        {
+            "species": "LATIOS",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 15,
+            "unk5": 10
+        },
+        {
+            "species": "KYOGRE",
+            "area": "SEA",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "GROUDON",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 8,
+            "unk5": 8
+        },
+        {
+            "species": "RAYQUAZA",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 15,
+            "unk5": 17
+        },
+        {
+            "species": "JIRACHI",
+            "area": "MOUNTAIN",
+            "score": 100,
+            "encounter_rate": 1,
+            "unk4": 14,
+            "unk5": 10
+        },
+        {
+            "species": "DEOXYS",
+            "area": "MOUNTAIN",
+            "score": 100,
+            "encounter_rate": 1,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "TURTWIG",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "GROTLE",
+            "area": "FOREST",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "TORTERRA",
+            "area": "FOREST",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 1,
+            "unk5": 8
+        },
+        {
+            "species": "CHIMCHAR",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "MONFERNO",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 2,
+            "unk5": 9
+        },
+        {
+            "species": "INFERNAPE",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 2,
+            "unk5": 9
+        },
+        {
+            "species": "PIPLUP",
+            "area": "POND",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "PRINPLUP",
+            "area": "POND",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "EMPOLEON",
+            "area": "POND",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 14
+        },
+        {
+            "species": "STARLY",
+            "area": "FIELD",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "STARAVIA",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "STARAPTOR",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "BIDOOF",
+            "area": "FIELD",
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "BIBAREL",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 3
+        },
+        {
+            "species": "KRICKETOT",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 4
+        },
+        {
+            "species": "KRICKETUNE",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 4
+        },
+        {
+            "species": "SHINX",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "LUXIO",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "LUXRAY",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "BUDEW",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 1,
+            "unk5": 6
+        },
+        {
+            "species": "ROSERADE",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 1,
+            "unk5": 6
+        },
+        {
+            "species": "CRANIDOS",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 14
+        },
+        {
+            "species": "RAMPARDOS",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 11,
+            "unk5": 14
+        },
+        {
+            "species": "SHIELDON",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 11
+        },
+        {
+            "species": "BASTIODON",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 11,
+            "unk5": 11
+        },
+        {
+            "species": "BURMY",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 4
+        },
+        {
+            "species": "WORMADAM",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 1
+        },
+        {
+            "species": "MOTHIM",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 17
+        },
+        {
+            "species": "COMBEE",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 17
+        },
+        {
+            "species": "VESPIQUEN",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 17
+        },
+        {
+            "species": "PACHIRISU",
+            "area": "FOREST",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "BUIZEL",
+            "area": "FOREST",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "FLOATZEL",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 12,
+            "unk5": 17
+        },
+        {
+            "species": "CHERUBI",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 12,
+            "unk5": 17
+        },
+        {
+            "species": "CHERRIM",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "SHELLOS",
+            "area": "SEA",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "GASTRODON",
+            "area": "SEA",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 8
+        },
+        {
+            "species": "AMBIPOM",
+            "area": "POND",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "DRIFLOON",
+            "area": "POND",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "DRIFBLIM",
+            "area": "FOREST",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "BUNEARY",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "LOPUNNY",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "MISMAGIUS",
+            "area": "FOREST",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 12,
+            "unk5": 12
+        },
+        {
+            "species": "HONCHKROW",
+            "area": "FOREST",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 16,
+            "unk5": 17
+        },
+        {
+            "species": "GLAMEOW",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 6,
+            "unk5": 16
+        },
+        {
+            "species": "PURUGLY",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 6,
+            "unk5": 16
+        },
+        {
+            "species": "CHINGLING",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 17,
+            "unk5": 5
+        },
+        {
+            "species": "STUNKY",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "SKUNTANK",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 14,
+            "unk5": 10
+        },
+        {
+            "species": "BRONZOR",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 14,
+            "unk5": 10
+        },
+        {
+            "species": "BRONZONG",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 11,
+            "unk5": 11
+        },
+        {
+            "species": "BONSLY",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "MIME_JR",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "HAPPINY",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "CHATOT",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "SPIRITOMB",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "GIBLE",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 6,
+            "unk5": 4
+        },
+        {
+            "species": "GABITE",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 6,
+            "unk5": 16
+        },
+        {
+            "species": "GARCHOMP",
+            "area": "POND",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 6,
+            "unk5": 9
+        },
+        {
+            "species": "MUNCHLAX",
+            "area": "POND",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 6,
+            "unk5": 9
+        },
+        {
+            "species": "RIOLU",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "LUCARIO",
+            "area": "FIELD",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 8,
+            "unk5": 8
+        },
+        {
+            "species": "HIPPOPOTAS",
+            "area": "FIELD",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 8,
+            "unk5": 8
+        },
+        {
+            "species": "HIPPOWDON",
+            "area": "SEA",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 17
+        },
+        {
+            "species": "SKORUPI",
+            "area": "SEA",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "DRAPION",
+            "area": "SEA",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "CROAGUNK",
+            "area": "FOREST",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 12,
+            "unk5": 16
+        },
+        {
+            "species": "TOXICROAK",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 13
+        },
+        {
+            "species": "CARNIVINE",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 1,
+            "unk5": 13
+        },
+        {
+            "species": "FINNEON",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 16,
+            "unk5": 13
+        },
+        {
+            "species": "LUMINEON",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 9,
+            "unk5": 9
+        },
+        {
+            "species": "MANTYKE",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 9,
+            "unk5": 14
+        },
+        {
+            "species": "SNOVER",
+            "area": "MOUNTAIN",
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 15,
+            "unk5": 8
+        },
+        {
+            "species": "ABOMASNOW",
+            "area": "MOUNTAIN",
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 15,
+            "unk5": 8
+        },
+        {
+            "species": "WEAVILE",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 15,
+            "unk5": 8
+        },
+        {
+            "species": "MAGNEZONE",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 7,
+            "unk5": 14
+        },
+        {
+            "species": "LICKILICKY",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "RHYPERIOR",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 8,
+            "unk5": 11
+        },
+        {
+            "species": "TANGROWTH",
+            "area": "FOREST",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "ELECTIVIRE",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "MAGMORTAR",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "TOGEKISS",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "YANMEGA",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 4,
+            "unk5": 17
+        },
+        {
+            "species": "LEAFEON",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "GLACEON",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 13,
+            "unk5": 13
+        },
+        {
+            "species": "GLISCOR",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 8,
+            "unk5": 17
+        },
+        {
+            "species": "MAMOSWINE",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 13,
+            "unk5": 8
+        },
+        {
+            "species": "PORYGON_Z",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "GALLADE",
+            "area": "FIELD",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 10,
+            "unk5": 9
+        },
+        {
+            "species": "PROBOPASS",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 11,
+            "unk5": 11
+        },
+        {
+            "species": "DUSKNOIR",
+            "area": "FOREST",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 12,
+            "unk5": 12
+        },
+        {
+            "species": "FROSLASS",
+            "area": "MOUNTAIN",
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 13,
+            "unk5": 12
+        },
+        {
+            "species": "ROTOM",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 7,
+            "unk5": 12
+        },
+        {
+            "species": "UXIE",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "MESPRIT",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "AZELF",
+            "area": "FIELD",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "DIALGA",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 14,
+            "unk5": 15
+        },
+        {
+            "species": "PALKIA",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 15
+        },
+        {
+            "species": "HEATRAN",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "REGIGIGAS",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "GIRATINA",
+            "area": "MOUNTAIN",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 12,
+            "unk5": 15
+        },
+        {
+            "species": "CRESSELIA",
+            "area": "FOREST",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "PHIONE",
+            "area": "SEA",
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "MANAPHY",
+            "area": "SEA",
+            "score": 100,
+            "encounter_rate": 1,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "DARKRAI",
+            "area": "MOUNTAIN",
+            "score": 100,
+            "encounter_rate": 1,
+            "unk4": 16,
+            "unk5": 14
+        },
+        {
+            "species": "SHAYMIN",
+            "area": "FIELD",
+            "score": 100,
+            "encounter_rate": 1,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "ARCEUS",
+            "area": "MOUNTAIN",
+            "score": 100,
+            "encounter_rate": 1,
+            "unk4": 5,
+            "unk5": 5
+        }
+    ]
+}

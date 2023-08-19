@@ -100,7 +100,7 @@
 .public MapSceneScriptCheck
 .public Save_VarsFlags_Get
 .public Fsys_TaskIsRunning
-.public sub_020558BC
+.public PalPark_CountMonsNotCaught
 .public sub_02056EE0
 .public sub_02057A0C
 .public sub_02057F18

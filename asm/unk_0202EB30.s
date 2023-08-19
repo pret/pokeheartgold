@@ -178,8 +178,8 @@ _0202EC68: .word 0x000005D8
 _0202EC6C: .word 0x00000678
 	thumb_func_end sub_0202EC28
 
-	thumb_func_start sub_0202EC70
-sub_0202EC70: ; 0x0202EC70
+	thumb_func_start GetMigratedPokemonByIndex
+GetMigratedPokemonByIndex: ; 0x0202EC70
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	add r6, r0, #0
@@ -201,7 +201,7 @@ _0202EC88:
 	str r0, [r4]
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0202EC70
+	thumb_func_end GetMigratedPokemonByIndex
 
 	thumb_func_start sub_0202EC98
 sub_0202EC98: ; 0x0202EC98

@@ -69,6 +69,9 @@ void Options::ReadObjectFile(vector<unsigned char> &rodata, vector<uint32_t> &si
 }
 
 void Options::OverwritePadding(vector<unsigned char> &rodata, vector<uint32_t> &sizes) const {
+    if (rodata.size() & 3) {
+        rodata.resize((rodata.size() + 3) & ~3, padval);
+    }
     uint32_t end = 0;
     for (auto & size : sizes) {
         end += size;

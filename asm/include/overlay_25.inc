@@ -23,7 +23,7 @@
 .public sub_020517E8
 .public sub_020517FC
 .public BattleSetup_New
-.public sub_02051C9C
+.public BattleSetup_AddMonToParty
 .public sub_02051D18
 .public sub_02052580
 .public sub_0205B46C
