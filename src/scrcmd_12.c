@@ -61,7 +61,7 @@ BOOL ScrCmd_510(ScriptContext *ctx) {
     int i;
 
     for (i = 0; i < PARTY_SIZE; i++) {
-        GetMigratedPokemonI(unkStruct, i, mon);
+        GetMigratedPokemonByIndex(unkStruct, i, mon);
         MonSetTrainerMemo(mon, profile, 2, 0, HEAP_ID_32);
         GF_ASSERT(PCStorage_PlaceMonInFirstEmptySlotInAnyBox(storage, Mon_GetBoxMon(mon)));
         UpdatePokedexWithReceivedSpecies(ctx->fsys->savedata, mon);
@@ -73,7 +73,7 @@ BOOL ScrCmd_510(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_511(ScriptContext *ctx) {
+BOOL ScrCmd_PalParkScoreGet(ScriptContext *ctx) {
     u16 var0 = ScriptGetVar(ctx);
     u16 *retPtr = ScriptGetVarPointer(ctx);
 

@@ -9,9 +9,9 @@
 .public Save_MigratedPokemon_Get
 .public Save_GameStats_Get
 .public GameStats_AddSpecial
-.public GetMigratedPokemonI
-.public sub_02051A98
-.public sub_02051C9C
+.public GetMigratedPokemonByIndex
+.public BattleSetup_New_PalPark
+.public BattleSetup_AddMonToParty
 .public BattleSetup_InitFromFsys
 .public GetMetatileBehaviorAt
 .public PalPark_ClearState
@@ -24,8 +24,8 @@
 .public PalPark_CalcSpeciesScore
 .public PalPark_CalcTimeScore
 .public PalPark_CalcTypesScore
-.public sub_0205B6E8
-.public sub_0205B778
+.public MetatileBehavior_IsEncounterGrass
+.public MetatileBehavior_IsSurfableWater
 .public AllocMonZeroed
 .public GetMonData
 .public MIi_CpuClearFast

@@ -1,19 +1,14 @@
 #include "global.h"
-
-struct PalParkMonsData {
-    u8 land_sector;
-    u8 water_sector;
-    u8 score;
-    u8 encounter_rate;
-    u8 unk4;
-    u8 unk5;
-};
+#include "pal_park.h"
 
 const struct PalParkMonsData gData[] = {
 {% for mon in mons %}
     { // {{mon.species}}
-        {{mon.land_sector}},
-        {{mon.water_sector}},
+        {% if mon.area in ["FOREST", "MOUNTAIN", "FIELD"] %}
+        PP_ENCTYPE_{{mon.area}}, 0,
+        {% else %}
+        0, PP_ENCTYPE_{{mon.area}} - 4,
+        {% endif %}
         {{mon.score}},
         {{mon.encounter_rate}},
         {{mon.unk4}},

@@ -8,7 +8,7 @@
 .public GameStats_Inc
 .public GetMetatileBehaviorAt
 .public sub_020549F4
-.public sub_0205B6E8
+.public MetatileBehavior_IsEncounterGrass
 .public sub_0205B6F4
 .public sub_0205B70C
 .public sub_0205B718

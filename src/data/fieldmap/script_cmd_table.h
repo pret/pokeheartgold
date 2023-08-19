@@ -510,7 +510,7 @@ BOOL ScrCmd_CountPCEmptySpace(ScriptContext *ctx);
 BOOL ScrCmd_PalParkAction(ScriptContext *ctx);
 BOOL ScrCmd_509(ScriptContext *ctx);
 BOOL ScrCmd_510(ScriptContext *ctx);
-BOOL ScrCmd_511(ScriptContext *ctx);
+BOOL ScrCmd_PalParkScoreGet(ScriptContext *ctx);
 BOOL ScrCmd_PlayerMovementSavingSet(ScriptContext *ctx);
 BOOL ScrCmd_PlayerMovementSavingClear(ScriptContext *ctx);
 BOOL ScrCmd_HallOfFameAnim(ScriptContext *ctx);
@@ -1365,7 +1365,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_PalParkAction,
     ScrCmd_509,
     ScrCmd_510,
-    ScrCmd_511,
+    ScrCmd_PalParkScoreGet,
     ScrCmd_PlayerMovementSavingSet,
     ScrCmd_PlayerMovementSavingClear,
     ScrCmd_HallOfFameAnim,

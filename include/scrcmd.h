@@ -545,7 +545,7 @@ BOOL ScrCmd_CountPCEmptySpace(ScriptContext* ctx);
 BOOL ScrCmd_PalParkAction(ScriptContext* ctx);
 BOOL ScrCmd_509(ScriptContext* ctx);
 BOOL ScrCmd_510(ScriptContext* ctx);
-BOOL ScrCmd_511(ScriptContext* ctx);
+BOOL ScrCmd_PalParkScoreGet(ScriptContext* ctx);
 BOOL ScrCmd_PlayerMovementSavingSet(ScriptContext* ctx);
 BOOL ScrCmd_PlayerMovementSavingClear(ScriptContext* ctx);
 BOOL ScrCmd_HallOfFameAnim(ScriptContext* ctx);

@@ -14,6 +14,6 @@ struct MigratedPokemonSav {
 
 int sub_0202EC98(struct MigratedPokemonSav *a0);
 void sub_0202EB74(struct MigratedPokemonSav *a0);
-void GetMigratedPokemonI(struct MigratedPokemonSav *a0, int i, Pokemon *mon);
+void GetMigratedPokemonByIndex(struct MigratedPokemonSav *a0, int i, Pokemon *mon);
 
 #endif //POKEHEARTGOLD_UNK_0202EB30_H

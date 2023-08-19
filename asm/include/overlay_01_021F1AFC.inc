@@ -23,7 +23,7 @@
 .public FieldSystem_SetSavedMusicId
 .public GetMapMusic
 .public FieldSystem_PlayOrFadeToNewMusicId
-.public sub_0205B778
+.public MetatileBehavior_IsSurfableWater
 .public sub_0205B78C
 .public sub_0205B834
 .public sub_0205B840

@@ -8,13 +8,14 @@
 #include "unk_02054648.h"
 #include "metatile_behavior.h"
 #include "constants/game_stat.h"
+#include "constants/battle.h"
 #include "pal_park.h"
 #include "arc/ppark.naix"
 
 struct PalParkMon {
     u16 species;
-    u8 encounter_tile;
-    u8 encounter_rate;
+    u8 area;
+    u8 encounterRate;
     u16 score;
     u8 type1;
     u8 type2;
@@ -24,22 +25,10 @@ struct PalParkLocal {
     struct PalParkMon mons[PARTY_SIZE];
     u8 caught_order[PARTY_SIZE];
     s32 stepsUntilEncounterRoll;
-    s32 encounter_index;
+    s32 encounterIndex;
     s64 timestamp; // 40
     int timeRemainingFactor;
 };
-
-typedef enum PalParkEncounterType {
-    PP_ENCTYPE_NONE,
-    PP_ENCTYPE_FOREST,
-    PP_ENCTYPE_MOUNTAIN,
-    PP_ENCTYPE_FIELD,
-    PP_ENCTYPE_4, // unused
-    PP_ENCTYPE_5, // unused
-    PP_ENCTYPE_POND,
-    PP_ENCTYPE_7, // unused
-    PP_ENCTYPE_SEA,
-} PalParkEncounterType;
 
 static struct PalParkLocal sPalParkLocalState;
 
@@ -48,7 +37,7 @@ static void InitPalParkMonsData(FieldSystem* fsys, struct PalParkLocal* palpark)
 static int CountCaughtMons(struct PalParkLocal* palpark);
 static void SetNumStepsUntilNextEncounterCheck(struct PalParkLocal* palpark);
 static BOOL ShouldTryEncounter(struct PalParkLocal* palpark);
-static PalParkEncounterType GetEncounterTypeAt(FieldSystem* fsys, int x, int z);
+static enum PalParkEncounterType GetEncounterTypeAt(FieldSystem* fsys, int x, int z);
 static BOOL TryEncounter(FieldSystem* fsys, struct PalParkLocal* palpark, int x, int z);
 static BATTLE_SETUP* SetupEncounter(FieldSystem* fsys, struct PalParkLocal* palpark);
 static void HandleBattleEnd(FieldSystem *fsys, BATTLE_SETUP *setup, struct PalParkLocal* palpark);
@@ -128,16 +117,16 @@ static void InitPalParkMonsData(FieldSystem* fsys, struct PalParkLocal* palpark)
     u16 species;
     for (int i = 0; i < PARTY_SIZE; ++i) {
         palpark->caught_order[i] = 0;
-        GetMigratedPokemonI(migrated, i, mon);
+        GetMigratedPokemonByIndex(migrated, i, mon);
         palpark->mons[i].species = species = GetMonData(mon, MON_DATA_SPECIES, NULL);
         LoadMonPalParkStats(species, narc_data);
         if (narc_data[0] != 0) {
-            palpark->mons[i].encounter_tile = narc_data[0];    
+            palpark->mons[i].area = narc_data[PPMONDAT_OFFSET_LAND_SECTOR];    
         } else {
-            palpark->mons[i].encounter_tile = narc_data[1] + 4;
+            palpark->mons[i].area = narc_data[PPMONDAT_OFFSET_WATER_SECTOR] + (int)(PP_ENCTYPE_WATER_MIN - PP_ENCTYPE_LAND_MIN);
         }
-        palpark->mons[i].encounter_rate = narc_data[3];
-        palpark->mons[i].score = narc_data[2];
+        palpark->mons[i].encounterRate = narc_data[PPMONDAT_OFFSET_ENCOUTER_RATE];
+        palpark->mons[i].score = narc_data[PPMONDAT_OFFSET_SCORE];
         palpark->mons[i].type1 = GetMonData(mon, MON_DATA_TYPE_1, NULL);
         palpark->mons[i].type2 = GetMonData(mon, MON_DATA_TYPE_2, NULL);
     }
@@ -168,15 +157,15 @@ static BOOL ShouldTryEncounter(struct PalParkLocal* palpark) {
     return FALSE;
 }
 
-static PalParkEncounterType GetEncounterTypeAt(FieldSystem* fsys, int x, int z) {
+static enum PalParkEncounterType GetEncounterTypeAt(FieldSystem* fsys, int x, int z) {
     int behavior = GetMetatileBehaviorAt(fsys, x, z);
-    int r5 = (x >= 32 ? 1 : 0);
-    r5 += (z < 32 ? 0 : 2);
-    if (sub_0205B6E8(behavior)) {
-        return (PalParkEncounterType)(r5 + PP_ENCTYPE_FOREST);
+    int quadrant = (x < 32 ? 0 : 1);
+    quadrant += (z < 32 ? 0 : 2);
+    if (MetatileBehavior_IsEncounterGrass(behavior)) {
+        return (enum PalParkEncounterType)(quadrant + PP_ENCTYPE_LAND_MIN);
     }
-    if (sub_0205B778(behavior)) {
-        return (PalParkEncounterType)(r5 + PP_ENCTYPE_5);
+    if (MetatileBehavior_IsSurfableWater(behavior)) {
+        return (enum PalParkEncounterType)(quadrant + PP_ENCTYPE_WATER_MIN);
     }
     return PP_ENCTYPE_NONE;
 }
@@ -184,44 +173,58 @@ static PalParkEncounterType GetEncounterTypeAt(FieldSystem* fsys, int x, int z) 
 static BOOL TryEncounter(FieldSystem* fsys, struct PalParkLocal* palpark, int x, int z) {
     int i;
     int rnd, total_rate = 0;
-    PalParkEncounterType standing_tile = GetEncounterTypeAt(fsys, x, z);
+    enum PalParkEncounterType area = GetEncounterTypeAt(fsys, x, z);
 
-    if (standing_tile == PP_ENCTYPE_NONE) {
+    if (area == PP_ENCTYPE_NONE) {
         return FALSE;
     }
+
+    // Each uncaught Pokemon has an encounter
+    // chance weight based on its species.
+    // Compute the total weight for the current
+    // area. If it's zero, bail.
     for (i = 0; i < PARTY_SIZE; ++i) {
-        if (palpark->caught_order[i] == 0 && palpark->mons[i].encounter_tile == standing_tile) {
-            total_rate += palpark->mons[i].encounter_rate;
+        if (palpark->caught_order[i] == 0 && palpark->mons[i].area == area) {
+            total_rate += palpark->mons[i].encounterRate;
         }
     }
     if (total_rate == 0) {
         return FALSE;
     }
+
+    // Prepend an extra bucket of weight 20
+    // for a no-encounter roll.
     rnd = LCRandRange(total_rate + 20);
     if (rnd < 20) {
         return FALSE;
     }
     rnd -= 20;
+
+    // Using the random number generated,
+    // select the bucket to serve as the
+    // encounter.
     for (i = 0; i < PARTY_SIZE; ++i) {
-        if (palpark->caught_order[i] == 0 && palpark->mons[i].encounter_tile == standing_tile) {
-            if (rnd < palpark->mons[i].encounter_rate) {
-                palpark->encounter_index = i;
+        if (palpark->caught_order[i] == 0 && palpark->mons[i].area == area) {
+            if (rnd < palpark->mons[i].encounterRate) {
+                palpark->encounterIndex = i;
                 return TRUE;
             } else {
-                rnd -= palpark->mons[i].encounter_rate;
+                rnd -= palpark->mons[i].encounterRate;
             }
         }
     }
+
+    // In theory, this is unreachable.
     GF_ASSERT(0);
     return FALSE;
 }
 
 static void HandleBattleEnd(FieldSystem *fsys, BATTLE_SETUP *setup, struct PalParkLocal* palpark) {
     switch (setup->winFlag) {
-    case 4:
-        palpark->caught_order[palpark->encounter_index] = CountCaughtMons(palpark) + 1;
+    case BATTLE_OUTCOME_MON_CAUGHT:
+        palpark->caught_order[palpark->encounterIndex] = CountCaughtMons(palpark) + 1;
         break;
-    case 5:
+    case BATTLE_OUTCOME_PLAYER_FLED:
         break;
     default:
         GF_ASSERT(0);
@@ -231,10 +234,10 @@ static void HandleBattleEnd(FieldSystem *fsys, BATTLE_SETUP *setup, struct PalPa
 static BATTLE_SETUP* SetupEncounter(FieldSystem* fsys, struct PalParkLocal* palpark) {
     Pokemon* mon = AllocMonZeroed(HEAP_ID_32);
     struct MigratedPokemonSav* migratedMons = Save_MigratedPokemon_Get(fsys->savedata);
-    BATTLE_SETUP* ret = sub_02051A98(HEAP_ID_FIELD, PalPark_CountMonsNotCaught(fsys));
+    BATTLE_SETUP* ret = BattleSetup_New_PalPark(HEAP_ID_FIELD, PalPark_CountMonsNotCaught(fsys));
     BattleSetup_InitFromFsys(ret, fsys);
-    GetMigratedPokemonI(migratedMons, palpark->encounter_index, mon);
-    sub_02051C9C(ret, mon, 1);
+    GetMigratedPokemonByIndex(migratedMons, palpark->encounterIndex, mon);
+    BattleSetup_AddMonToParty(ret, mon, BATTLER_ENEMY);
     FreeToHeap(mon);
     return ret;
 }
@@ -251,6 +254,11 @@ static u32 CalcTypesScore(struct PalParkLocal* palpark) {
     int j, i;
     u8 type1, type2, last_type1, last_type2;
     u32 seen_types = 0, score = 0;
+
+    // This score is calculated in two phases
+    // Phase 1: +200 points each time you don't
+    // catch two Pokemon sharing a type in a row.
+    // Maximum 1000 points.
     for (i = 1; i < PARTY_SIZE + 1; ++i) {
         for (j = 0; j < PARTY_SIZE; ++j) {
             if (palpark->caught_order[j] == i) {
@@ -267,6 +275,9 @@ static u32 CalcTypesScore(struct PalParkLocal* palpark) {
             }
         }
     }
+
+    // Phase 2: +50 points for each unique
+    // type caught. Maximum 600 points.
     while (seen_types != 0) {
         if (seen_types & 1) {
             score += 50;

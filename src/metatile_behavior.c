@@ -21,7 +21,7 @@ static const u8 _020FCA74[] = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 };
 
-BOOL sub_0205B6E8(u8 tile) {
+BOOL MetatileBehavior_IsEncounterGrass(u8 tile) {
     return tile == TILE_BEHAVIOR_2;
 }
 
@@ -69,7 +69,7 @@ BOOL sub_0205B76C(u8 tile) {
     return tile == TILE_BEHAVIOR_111;
 }
 
-BOOL sub_0205B778(u8 tile) {
+BOOL MetatileBehavior_IsSurfableWater(u8 tile) {
     return (_020FCA74[tile] & 1) != FALSE;
 }
 
@@ -326,7 +326,7 @@ BOOL sub_0205BAD0(u8 tile) {
 }
 
 BOOL sub_0205BAE4(u8 tile) {
-    return sub_0205B778(tile);
+    return MetatileBehavior_IsSurfableWater(tile);
 }
 
 BOOL sub_0205BAEC(u8 tile) {

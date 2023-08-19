@@ -6,9 +6,9 @@
 .public GetMetatileBehaviorAt
 .public sub_02054940
 .public sub_020549A8
-.public sub_0205B6E8
+.public MetatileBehavior_IsEncounterGrass
 .public sub_0205B6F4
-.public sub_0205B778
+.public MetatileBehavior_IsSurfableWater
 .public sub_0205B78C
 .public sub_0205B798
 .public sub_0205B7A4

@@ -250,10 +250,11 @@ sub_02051A74: ; 0x02051A74
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_02051A74
 
-	thumb_func_start sub_02051A98
-sub_02051A98: ; 0x02051A98
+	thumb_func_start BattleSetup_New_PalPark
+BattleSetup_New_PalPark: ; 0x02051A98
 	push {r4, lr}
 	add r4, r1, #0
+	; BATTLE_TYPE_PAL_PARK
 	mov r1, #2
 	lsl r1, r1, #8
 	bl BattleSetup_New
@@ -261,7 +262,7 @@ sub_02051A98: ; 0x02051A98
 	lsl r1, r1, #4
 	str r4, [r0, r1]
 	pop {r4, pc}
-	thumb_func_end sub_02051A98
+	thumb_func_end BattleSetup_New_PalPark
 
 	thumb_func_start sub_02051AAC
 sub_02051AAC: ; 0x02051AAC
@@ -487,8 +488,8 @@ _02051C4E:
 	.balign 4, 0
 	thumb_func_end BattleSetup_Delete
 
-	thumb_func_start sub_02051C9C
-sub_02051C9C: ; 0x02051C9C
+	thumb_func_start BattleSetup_AddMonToParty
+BattleSetup_AddMonToParty: ; 0x02051C9C
 	push {r4, r5, r6, lr}
 	add r4, r2, #0
 	add r5, r0, #0
@@ -508,7 +509,7 @@ _02051CAC:
 _02051CC0:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_02051C9C
+	thumb_func_end BattleSetup_AddMonToParty
 
 	thumb_func_start sub_02051CC4
 sub_02051CC4: ; 0x02051CC4
@@ -666,7 +667,7 @@ _02051DDA:
 	add r1, r0, #0
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_02051C9C
+	bl BattleSetup_AddMonToParty
 	b _02051E14
 _02051E0A:
 	ldr r1, [sp, #0x18]
@@ -888,7 +889,7 @@ _02051FEE:
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_02051C9C
+	bl BattleSetup_AddMonToParty
 	ldr r0, [sp, #0x14]
 	add r7, r7, #1
 	bl GetPartyCount
@@ -1102,7 +1103,7 @@ _020521C2:
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_02051C9C
+	bl BattleSetup_AddMonToParty
 	ldr r0, [sp, #8]
 	add r7, r7, #1
 	add r0, r0, #1
@@ -1434,7 +1435,7 @@ sub_02052470: ; 0x02052470
 	pop {r3, r4, r5, pc}
 _0205248C:
 	add r0, r5, #0
-	bl sub_0205B6E8
+	bl MetatileBehavior_IsEncounterGrass
 	cmp r0, #0
 	bne _020524A0
 	add r0, r5, #0
@@ -1474,7 +1475,7 @@ _020524CE:
 	pop {r3, r4, r5, pc}
 _020524DC:
 	add r0, r5, #0
-	bl sub_0205B778
+	bl MetatileBehavior_IsSurfableWater
 	cmp r0, #0
 	beq _020524EA
 	mov r0, #7

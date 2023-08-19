@@ -260,11 +260,11 @@ _0205CD36:
 	bl PlaySE
 _0205CD3C:
 	add r0, r5, #0
-	bl sub_0205B6E8
+	bl MetatileBehavior_IsEncounterGrass
 	cmp r0, #1
 	beq _0205CD50
 	add r0, r7, #0
-	bl sub_0205B6E8
+	bl MetatileBehavior_IsEncounterGrass
 	cmp r0, #1
 	bne _0205CD56
 _0205CD50:
@@ -312,7 +312,7 @@ sub_0205CD70: ; 0x0205CD70
 	cmp r0, #1
 	beq _0205CE58
 	add r0, r7, #0
-	bl sub_0205B6E8
+	bl MetatileBehavior_IsEncounterGrass
 	cmp r0, #0
 	bne _0205CE58
 	mov r1, #0

@@ -1619,7 +1619,7 @@ sub_020664D8: ; 0x020664D8
 	add r6, r0, #0
 	lsl r0, r6, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B6E8
+	bl MetatileBehavior_IsEncounterGrass
 	cmp r0, #1
 	bne _02066516
 	add r0, r5, #0
@@ -1660,7 +1660,7 @@ _0206652A:
 	add r4, r0, #0
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B6E8
+	bl MetatileBehavior_IsEncounterGrass
 	cmp r0, #1
 	bne _0206657C
 	mov r1, #1

@@ -11,7 +11,7 @@
 .public sub_0204B4D4
 .public sub_0204B510
 .public BattleSetup_New
-.public sub_02051C9C
+.public BattleSetup_AddMonToParty
 .public sub_02051D18
 .public sub_02052580
 .public AllocMonZeroed

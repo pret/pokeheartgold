@@ -690,7 +690,7 @@ _022369A6:
 	add r0, r7, #0
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_02051C9C
+	bl BattleSetup_AddMonToParty
 	ldrb r0, [r5, #0xe]
 	add r6, r6, #1
 	cmp r6, r0

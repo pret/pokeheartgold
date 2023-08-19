@@ -75,7 +75,7 @@ BATTLE_SETUP *BattleSetup_New(HeapID heapId, u32 battleFlags);
 void sub_020522F0(BATTLE_SETUP *setup, FieldSystem *fsys, void *a1);
 void sub_02051F2C(BATTLE_SETUP *setup, FieldSystem *fsys, int level);
 void sub_020520B0(BATTLE_SETUP *setup, FieldSystem *fsys, PARTY *party, void *a4);
-BATTLE_SETUP* sub_02051A98(HeapID heapId, int a1);
-void sub_02051C9C(BATTLE_SETUP* setup, Pokemon* mon, int a2);
+BATTLE_SETUP* BattleSetup_New_PalPark(HeapID heapId, int monsRemaining);
+void BattleSetup_AddMonToParty(BATTLE_SETUP* setup, Pokemon* mon, int battler);
 
 #endif //POKEHEARTGOLD_BATTLE_SETUP_H
