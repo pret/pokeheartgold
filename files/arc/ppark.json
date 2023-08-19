@@ -1,0 +1,4441 @@
+{
+    "mons": [
+        {
+            "species": "BULBASAUR",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 6
+        },
+        {
+            "species": "IVYSAUR",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 1,
+            "unk5": 6
+        },
+        {
+            "species": "VENUSAUR",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 1,
+            "unk5": 6
+        },
+        {
+            "species": "CHARMANDER",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "CHARMELEON",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "CHARIZARD",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 2,
+            "unk5": 17
+        },
+        {
+            "species": "SQUIRTLE",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "WARTORTLE",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "BLASTOISE",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "CATERPIE",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 4,
+            "unk5": 4
+        },
+        {
+            "species": "METAPOD",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 4
+        },
+        {
+            "species": "BUTTERFREE",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 17
+        },
+        {
+            "species": "WEEDLE",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 4,
+            "unk5": 6
+        },
+        {
+            "species": "KAKUNA",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 6
+        },
+        {
+            "species": "BEEDRILL",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 6
+        },
+        {
+            "species": "PIDGEY",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "PIDGEOTTO",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "PIDGEOT",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "RATTATA",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "RATICATE",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "SPEAROW",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "FEAROW",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "EKANS",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "ARBOK",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "PIKACHU",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "RAICHU",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "SANDSHREW",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 8,
+            "unk5": 8
+        },
+        {
+            "species": "SANDSLASH",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 8,
+            "unk5": 8
+        },
+        {
+            "species": "NIDORAN_F",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "NIDORINA",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "NIDOQUEEN",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 6,
+            "unk5": 8
+        },
+        {
+            "species": "NIDORAN_M",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "NIDORINO",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "NIDOKING",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 6,
+            "unk5": 8
+        },
+        {
+            "species": "CLEFAIRY",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "CLEFABLE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "VULPIX",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "NINETALES",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "JIGGLYPUFF",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "WIGGLYTUFF",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "ZUBAT",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 6,
+            "unk5": 17
+        },
+        {
+            "species": "GOLBAT",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 6,
+            "unk5": 17
+        },
+        {
+            "species": "ODDISH",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 1,
+            "unk5": 6
+        },
+        {
+            "species": "GLOOM",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 6
+        },
+        {
+            "species": "VILEPLUME",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 1,
+            "unk5": 6
+        },
+        {
+            "species": "PARAS",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 4,
+            "unk5": 1
+        },
+        {
+            "species": "PARASECT",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 1
+        },
+        {
+            "species": "VENONAT",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 4,
+            "unk5": 6
+        },
+        {
+            "species": "VENOMOTH",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 6
+        },
+        {
+            "species": "DIGLETT",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 8,
+            "unk5": 8
+        },
+        {
+            "species": "DUGTRIO",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 8,
+            "unk5": 8
+        },
+        {
+            "species": "MEOWTH",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "PERSIAN",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "PSYDUCK",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "GOLDUCK",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "MANKEY",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 9,
+            "unk5": 9
+        },
+        {
+            "species": "PRIMEAPE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 9,
+            "unk5": 9
+        },
+        {
+            "species": "GROWLITHE",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "ARCANINE",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "POLIWAG",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "POLIWHIRL",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "POLIWRATH",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 9
+        },
+        {
+            "species": "ABRA",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "KADABRA",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "ALAKAZAM",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "MACHOP",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 9,
+            "unk5": 9
+        },
+        {
+            "species": "MACHOKE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 9,
+            "unk5": 9
+        },
+        {
+            "species": "MACHAMP",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 9,
+            "unk5": 9
+        },
+        {
+            "species": "BELLSPROUT",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 1,
+            "unk5": 6
+        },
+        {
+            "species": "WEEPINBELL",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 6
+        },
+        {
+            "species": "VICTREEBEL",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 1,
+            "unk5": 6
+        },
+        {
+            "species": "TENTACOOL",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 3,
+            "unk5": 6
+        },
+        {
+            "species": "TENTACRUEL",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 6
+        },
+        {
+            "species": "GEODUDE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 11,
+            "unk5": 8
+        },
+        {
+            "species": "GRAVELER",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 11,
+            "unk5": 8
+        },
+        {
+            "species": "GOLEM",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 8
+        },
+        {
+            "species": "PONYTA",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "RAPIDASH",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "SLOWPOKE",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 10
+        },
+        {
+            "species": "SLOWBRO",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 10
+        },
+        {
+            "species": "MAGNEMITE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 7,
+            "unk5": 14
+        },
+        {
+            "species": "MAGNETON",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 7,
+            "unk5": 14
+        },
+        {
+            "species": "FARFETCHD",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "DODUO",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "DODRIO",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "SEEL",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "DEWGONG",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 13
+        },
+        {
+            "species": "GRIMER",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "MUK",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "SHELLDER",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "CLOYSTER",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 13
+        },
+        {
+            "species": "GASTLY",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 12,
+            "unk5": 6
+        },
+        {
+            "species": "HAUNTER",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 12,
+            "unk5": 6
+        },
+        {
+            "species": "GENGAR",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 12,
+            "unk5": 6
+        },
+        {
+            "species": "ONIX",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 11,
+            "unk5": 8
+        },
+        {
+            "species": "DROWZEE",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "HYPNO",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "KRABBY",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "KINGLER",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "VOLTORB",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "ELECTRODE",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "EXEGGCUTE",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 10
+        },
+        {
+            "species": "EXEGGUTOR",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 1,
+            "unk5": 10
+        },
+        {
+            "species": "CUBONE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 8,
+            "unk5": 8
+        },
+        {
+            "species": "MAROWAK",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 8,
+            "unk5": 8
+        },
+        {
+            "species": "HITMONLEE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 9,
+            "unk5": 9
+        },
+        {
+            "species": "HITMONCHAN",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 9,
+            "unk5": 9
+        },
+        {
+            "species": "LICKITUNG",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "KOFFING",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "WEEZING",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "RHYHORN",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 8,
+            "unk5": 11
+        },
+        {
+            "species": "RHYDON",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 8,
+            "unk5": 11
+        },
+        {
+            "species": "CHANSEY",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "TANGELA",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "KANGASKHAN",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "HORSEA",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "SEADRA",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "GOLDEEN",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "SEAKING",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "STARYU",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "STARMIE",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 10
+        },
+        {
+            "species": "MR_MIME",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "SCYTHER",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 17
+        },
+        {
+            "species": "JYNX",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 13,
+            "unk5": 10
+        },
+        {
+            "species": "ELECTABUZZ",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "MAGMAR",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "PINSIR",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 4
+        },
+        {
+            "species": "TAUROS",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "MAGIKARP",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "GYARADOS",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 17
+        },
+        {
+            "species": "LAPRAS",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 13
+        },
+        {
+            "species": "DITTO",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "EEVEE",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "VAPOREON",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "JOLTEON",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "FLAREON",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "PORYGON",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "OMANYTE",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 11,
+            "unk5": 3
+        },
+        {
+            "species": "OMASTAR",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 3
+        },
+        {
+            "species": "KABUTO",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 11,
+            "unk5": 3
+        },
+        {
+            "species": "KABUTOPS",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 3
+        },
+        {
+            "species": "AERODACTYL",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 17
+        },
+        {
+            "species": "SNORLAX",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "ARTICUNO",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 13,
+            "unk5": 17
+        },
+        {
+            "species": "ZAPDOS",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 7,
+            "unk5": 17
+        },
+        {
+            "species": "MOLTRES",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 2,
+            "unk5": 17
+        },
+        {
+            "species": "DRATINI",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 15,
+            "unk5": 15
+        },
+        {
+            "species": "DRAGONAIR",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 15,
+            "unk5": 15
+        },
+        {
+            "species": "DRAGONITE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 15,
+            "unk5": 17
+        },
+        {
+            "species": "MEWTWO",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "MEW",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 100,
+            "encounter_rate": 1,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "CHIKORITA",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "BAYLEEF",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "MEGANIUM",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "CYNDAQUIL",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "QUILAVA",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "TYPHLOSION",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "TOTODILE",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "CROCONAW",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "FERALIGATR",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "SENTRET",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "FURRET",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "HOOTHOOT",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "NOCTOWL",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "LEDYBA",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 4,
+            "unk5": 17
+        },
+        {
+            "species": "LEDIAN",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 17
+        },
+        {
+            "species": "SPINARAK",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 4,
+            "unk5": 6
+        },
+        {
+            "species": "ARIADOS",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 6
+        },
+        {
+            "species": "CROBAT",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 6,
+            "unk5": 17
+        },
+        {
+            "species": "CHINCHOU",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 7
+        },
+        {
+            "species": "LANTURN",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 7
+        },
+        {
+            "species": "PICHU",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "CLEFFA",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "IGGLYBUFF",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "TOGEPI",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "TOGETIC",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "NATU",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 10,
+            "unk5": 17
+        },
+        {
+            "species": "XATU",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 10,
+            "unk5": 17
+        },
+        {
+            "species": "MAREEP",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "FLAAFFY",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "AMPHAROS",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "BELLOSSOM",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "MARILL",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "AZUMARILL",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "SUDOWOODO",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 11
+        },
+        {
+            "species": "POLITOED",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "HOPPIP",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 17
+        },
+        {
+            "species": "SKIPLOOM",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 1,
+            "unk5": 17
+        },
+        {
+            "species": "JUMPLUFF",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 1,
+            "unk5": 17
+        },
+        {
+            "species": "AIPOM",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "SUNKERN",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "SUNFLORA",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "YANMA",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 4,
+            "unk5": 17
+        },
+        {
+            "species": "WOOPER",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 8
+        },
+        {
+            "species": "QUAGSIRE",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 8
+        },
+        {
+            "species": "ESPEON",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "UMBREON",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 16,
+            "unk5": 16
+        },
+        {
+            "species": "MURKROW",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 16,
+            "unk5": 17
+        },
+        {
+            "species": "SLOWKING",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 10
+        },
+        {
+            "species": "MISDREAVUS",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 12,
+            "unk5": 12
+        },
+        {
+            "species": "UNOWN",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "WOBBUFFET",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "GIRAFARIG",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 10
+        },
+        {
+            "species": "PINECO",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 4
+        },
+        {
+            "species": "FORRETRESS",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 14
+        },
+        {
+            "species": "DUNSPARCE",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "GLIGAR",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 8,
+            "unk5": 17
+        },
+        {
+            "species": "STEELIX",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 14,
+            "unk5": 8
+        },
+        {
+            "species": "SNUBBULL",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "GRANBULL",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "QWILFISH",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 6
+        },
+        {
+            "species": "SCIZOR",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 4,
+            "unk5": 14
+        },
+        {
+            "species": "SHUCKLE",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 4,
+            "unk5": 11
+        },
+        {
+            "species": "HERACROSS",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 4,
+            "unk5": 9
+        },
+        {
+            "species": "SNEASEL",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 16,
+            "unk5": 13
+        },
+        {
+            "species": "TEDDIURSA",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "URSARING",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "SLUGMA",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "MAGCARGO",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 2,
+            "unk5": 11
+        },
+        {
+            "species": "SWINUB",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 13,
+            "unk5": 8
+        },
+        {
+            "species": "PILOSWINE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 13,
+            "unk5": 8
+        },
+        {
+            "species": "CORSOLA",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 11
+        },
+        {
+            "species": "REMORAID",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "OCTILLERY",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "DELIBIRD",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 13,
+            "unk5": 17
+        },
+        {
+            "species": "MANTINE",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 17
+        },
+        {
+            "species": "SKARMORY",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 14,
+            "unk5": 17
+        },
+        {
+            "species": "HOUNDOUR",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 16,
+            "unk5": 2
+        },
+        {
+            "species": "HOUNDOOM",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 16,
+            "unk5": 2
+        },
+        {
+            "species": "KINGDRA",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 15
+        },
+        {
+            "species": "PHANPY",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 8,
+            "unk5": 8
+        },
+        {
+            "species": "DONPHAN",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 8,
+            "unk5": 8
+        },
+        {
+            "species": "PORYGON2",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "STANTLER",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "SMEARGLE",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "TYROGUE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 9,
+            "unk5": 9
+        },
+        {
+            "species": "HITMONTOP",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 9,
+            "unk5": 9
+        },
+        {
+            "species": "SMOOCHUM",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 13,
+            "unk5": 10
+        },
+        {
+            "species": "ELEKID",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "MAGBY",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "MILTANK",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "BLISSEY",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "RAIKOU",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "ENTEI",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "SUICUNE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "LARVITAR",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 8
+        },
+        {
+            "species": "PUPITAR",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 11,
+            "unk5": 8
+        },
+        {
+            "species": "TYRANITAR",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 11,
+            "unk5": 16
+        },
+        {
+            "species": "LUGIA",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 10,
+            "unk5": 17
+        },
+        {
+            "species": "HO_OH",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 2,
+            "unk5": 17
+        },
+        {
+            "species": "CELEBI",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 100,
+            "encounter_rate": 1,
+            "unk4": 10,
+            "unk5": 1
+        },
+        {
+            "species": "TREECKO",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "GROVYLE",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "SCEPTILE",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "TORCHIC",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "COMBUSKEN",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 2,
+            "unk5": 9
+        },
+        {
+            "species": "BLAZIKEN",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 2,
+            "unk5": 9
+        },
+        {
+            "species": "MUDKIP",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "MARSHTOMP",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 8
+        },
+        {
+            "species": "SWAMPERT",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 8
+        },
+        {
+            "species": "POOCHYENA",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 16,
+            "unk5": 16
+        },
+        {
+            "species": "MIGHTYENA",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 16,
+            "unk5": 16
+        },
+        {
+            "species": "ZIGZAGOON",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "LINOONE",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "WURMPLE",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 4,
+            "unk5": 4
+        },
+        {
+            "species": "SILCOON",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 4
+        },
+        {
+            "species": "BEAUTIFLY",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 17
+        },
+        {
+            "species": "CASCOON",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 4
+        },
+        {
+            "species": "DUSTOX",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 6
+        },
+        {
+            "species": "LOTAD",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 3,
+            "unk5": 1
+        },
+        {
+            "species": "LOMBRE",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 1
+        },
+        {
+            "species": "LUDICOLO",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 1
+        },
+        {
+            "species": "SEEDOT",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "NUZLEAF",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 16
+        },
+        {
+            "species": "SHIFTRY",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 1,
+            "unk5": 16
+        },
+        {
+            "species": "TAILLOW",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "SWELLOW",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "WINGULL",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 3,
+            "unk5": 17
+        },
+        {
+            "species": "PELIPPER",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 17
+        },
+        {
+            "species": "RALTS",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "KIRLIA",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "GARDEVOIR",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "SURSKIT",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 3
+        },
+        {
+            "species": "MASQUERAIN",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 17
+        },
+        {
+            "species": "SHROOMISH",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "BRELOOM",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 1,
+            "unk5": 9
+        },
+        {
+            "species": "SLAKOTH",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "VIGOROTH",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "SLAKING",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "NINCADA",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 8
+        },
+        {
+            "species": "NINJASK",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 17
+        },
+        {
+            "species": "SHEDINJA",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 4,
+            "unk5": 12
+        },
+        {
+            "species": "WHISMUR",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "LOUDRED",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "EXPLOUD",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "MAKUHITA",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 9,
+            "unk5": 9
+        },
+        {
+            "species": "HARIYAMA",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 9,
+            "unk5": 9
+        },
+        {
+            "species": "AZURILL",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "NOSEPASS",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 11
+        },
+        {
+            "species": "SKITTY",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "DELCATTY",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "SABLEYE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 16,
+            "unk5": 12
+        },
+        {
+            "species": "MAWILE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 14,
+            "unk5": 14
+        },
+        {
+            "species": "ARON",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 14,
+            "unk5": 11
+        },
+        {
+            "species": "LAIRON",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 14,
+            "unk5": 11
+        },
+        {
+            "species": "AGGRON",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 14,
+            "unk5": 11
+        },
+        {
+            "species": "MEDITITE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 9,
+            "unk5": 10
+        },
+        {
+            "species": "MEDICHAM",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 9,
+            "unk5": 10
+        },
+        {
+            "species": "ELECTRIKE",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "MANECTRIC",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "PLUSLE",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "MINUN",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "VOLBEAT",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 4
+        },
+        {
+            "species": "ILLUMISE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 4
+        },
+        {
+            "species": "ROSELIA",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 1,
+            "unk5": 6
+        },
+        {
+            "species": "GULPIN",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "SWALOT",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "CARVANHA",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 16
+        },
+        {
+            "species": "SHARPEDO",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 16
+        },
+        {
+            "species": "WAILMER",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "WAILORD",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "NUMEL",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 2,
+            "unk5": 8
+        },
+        {
+            "species": "CAMERUPT",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 2,
+            "unk5": 8
+        },
+        {
+            "species": "TORKOAL",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "SPOINK",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "GRUMPIG",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "SPINDA",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "TRAPINCH",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 8,
+            "unk5": 8
+        },
+        {
+            "species": "VIBRAVA",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 8,
+            "unk5": 15
+        },
+        {
+            "species": "FLYGON",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 8,
+            "unk5": 15
+        },
+        {
+            "species": "CACNEA",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "CACTURNE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 1,
+            "unk5": 16
+        },
+        {
+            "species": "SWABLU",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "ALTARIA",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 15,
+            "unk5": 17
+        },
+        {
+            "species": "ZANGOOSE",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "SEVIPER",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 6,
+            "unk5": 6
+        },
+        {
+            "species": "LUNATONE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 10
+        },
+        {
+            "species": "SOLROCK",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 10
+        },
+        {
+            "species": "BARBOACH",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 8
+        },
+        {
+            "species": "WHISCASH",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 8
+        },
+        {
+            "species": "CORPHISH",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "CRAWDAUNT",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 16
+        },
+        {
+            "species": "BALTOY",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 8,
+            "unk5": 10
+        },
+        {
+            "species": "CLAYDOL",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 8,
+            "unk5": 10
+        },
+        {
+            "species": "LILEEP",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 1
+        },
+        {
+            "species": "CRADILY",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 11,
+            "unk5": 1
+        },
+        {
+            "species": "ANORITH",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 4
+        },
+        {
+            "species": "ARMALDO",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 11,
+            "unk5": 4
+        },
+        {
+            "species": "FEEBAS",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "MILOTIC",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "CASTFORM",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "KECLEON",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "SHUPPET",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 12,
+            "unk5": 12
+        },
+        {
+            "species": "BANETTE",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 12,
+            "unk5": 12
+        },
+        {
+            "species": "DUSKULL",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 12,
+            "unk5": 12
+        },
+        {
+            "species": "DUSCLOPS",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 12,
+            "unk5": 12
+        },
+        {
+            "species": "TROPIUS",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 1,
+            "unk5": 17
+        },
+        {
+            "species": "CHIMECHO",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "ABSOL",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 16,
+            "unk5": 16
+        },
+        {
+            "species": "WYNAUT",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "SNORUNT",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 13,
+            "unk5": 13
+        },
+        {
+            "species": "GLALIE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 13,
+            "unk5": 13
+        },
+        {
+            "species": "SPHEAL",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 13,
+            "unk5": 3
+        },
+        {
+            "species": "SEALEO",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 13,
+            "unk5": 3
+        },
+        {
+            "species": "WALREIN",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 13,
+            "unk5": 3
+        },
+        {
+            "species": "CLAMPERL",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "HUNTAIL",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "GOREBYSS",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "RELICANTH",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 11
+        },
+        {
+            "species": "LUVDISC",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "BAGON",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 15,
+            "unk5": 15
+        },
+        {
+            "species": "SHELGON",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 15,
+            "unk5": 15
+        },
+        {
+            "species": "SALAMENCE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 15,
+            "unk5": 17
+        },
+        {
+            "species": "BELDUM",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 14,
+            "unk5": 10
+        },
+        {
+            "species": "METANG",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 14,
+            "unk5": 10
+        },
+        {
+            "species": "METAGROSS",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 14,
+            "unk5": 10
+        },
+        {
+            "species": "REGIROCK",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 11,
+            "unk5": 11
+        },
+        {
+            "species": "REGICE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 13,
+            "unk5": 13
+        },
+        {
+            "species": "REGISTEEL",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 14,
+            "unk5": 14
+        },
+        {
+            "species": "LATIAS",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 15,
+            "unk5": 10
+        },
+        {
+            "species": "LATIOS",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 15,
+            "unk5": 10
+        },
+        {
+            "species": "KYOGRE",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "GROUDON",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 8,
+            "unk5": 8
+        },
+        {
+            "species": "RAYQUAZA",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 15,
+            "unk5": 17
+        },
+        {
+            "species": "JIRACHI",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 100,
+            "encounter_rate": 1,
+            "unk4": 14,
+            "unk5": 10
+        },
+        {
+            "species": "DEOXYS",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 100,
+            "encounter_rate": 1,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "TURTWIG",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "GROTLE",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "TORTERRA",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 1,
+            "unk5": 8
+        },
+        {
+            "species": "CHIMCHAR",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "MONFERNO",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 2,
+            "unk5": 9
+        },
+        {
+            "species": "INFERNAPE",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 2,
+            "unk5": 9
+        },
+        {
+            "species": "PIPLUP",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "PRINPLUP",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "EMPOLEON",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 14
+        },
+        {
+            "species": "STARLY",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "STARAVIA",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "STARAPTOR",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "BIDOOF",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 30,
+            "encounter_rate": 50,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "BIBAREL",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 3
+        },
+        {
+            "species": "KRICKETOT",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 4
+        },
+        {
+            "species": "KRICKETUNE",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 4
+        },
+        {
+            "species": "SHINX",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "LUXIO",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "LUXRAY",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "BUDEW",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 1,
+            "unk5": 6
+        },
+        {
+            "species": "ROSERADE",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 1,
+            "unk5": 6
+        },
+        {
+            "species": "CRANIDOS",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 14
+        },
+        {
+            "species": "RAMPARDOS",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 11,
+            "unk5": 14
+        },
+        {
+            "species": "SHIELDON",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 11,
+            "unk5": 11
+        },
+        {
+            "species": "BASTIODON",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 11,
+            "unk5": 11
+        },
+        {
+            "species": "BURMY",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 4
+        },
+        {
+            "species": "WORMADAM",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 1
+        },
+        {
+            "species": "MOTHIM",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 17
+        },
+        {
+            "species": "COMBEE",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 4,
+            "unk5": 17
+        },
+        {
+            "species": "VESPIQUEN",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 4,
+            "unk5": 17
+        },
+        {
+            "species": "PACHIRISU",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "BUIZEL",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "FLOATZEL",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 12,
+            "unk5": 17
+        },
+        {
+            "species": "CHERUBI",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 12,
+            "unk5": 17
+        },
+        {
+            "species": "CHERRIM",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "SHELLOS",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "GASTRODON",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 8
+        },
+        {
+            "species": "AMBIPOM",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "DRIFLOON",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "DRIFBLIM",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "BUNEARY",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "LOPUNNY",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "MISMAGIUS",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 12,
+            "unk5": 12
+        },
+        {
+            "species": "HONCHKROW",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 16,
+            "unk5": 17
+        },
+        {
+            "species": "GLAMEOW",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 6,
+            "unk5": 16
+        },
+        {
+            "species": "PURUGLY",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 6,
+            "unk5": 16
+        },
+        {
+            "species": "CHINGLING",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 17,
+            "unk5": 5
+        },
+        {
+            "species": "STUNKY",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "SKUNTANK",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 14,
+            "unk5": 10
+        },
+        {
+            "species": "BRONZOR",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 14,
+            "unk5": 10
+        },
+        {
+            "species": "BRONZONG",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 11,
+            "unk5": 11
+        },
+        {
+            "species": "BONSLY",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "MIME_JR",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "HAPPINY",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "CHATOT",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "SPIRITOMB",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "GIBLE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 6,
+            "unk5": 4
+        },
+        {
+            "species": "GABITE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 6,
+            "unk5": 16
+        },
+        {
+            "species": "GARCHOMP",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 6,
+            "unk5": 9
+        },
+        {
+            "species": "MUNCHLAX",
+            "land_sector": 0,
+            "water_sector": 2,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 6,
+            "unk5": 9
+        },
+        {
+            "species": "RIOLU",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "LUCARIO",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 8,
+            "unk5": 8
+        },
+        {
+            "species": "HIPPOPOTAS",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 8,
+            "unk5": 8
+        },
+        {
+            "species": "HIPPOWDON",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 3,
+            "unk5": 17
+        },
+        {
+            "species": "SKORUPI",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "DRAPION",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "CROAGUNK",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 12,
+            "unk5": 16
+        },
+        {
+            "species": "TOXICROAK",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 1,
+            "unk5": 13
+        },
+        {
+            "species": "CARNIVINE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 1,
+            "unk5": 13
+        },
+        {
+            "species": "FINNEON",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 16,
+            "unk5": 13
+        },
+        {
+            "species": "LUMINEON",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 9,
+            "unk5": 9
+        },
+        {
+            "species": "MANTYKE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 9,
+            "unk5": 14
+        },
+        {
+            "species": "SNOVER",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 50,
+            "encounter_rate": 30,
+            "unk4": 15,
+            "unk5": 8
+        },
+        {
+            "species": "ABOMASNOW",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 70,
+            "encounter_rate": 20,
+            "unk4": 15,
+            "unk5": 8
+        },
+        {
+            "species": "WEAVILE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 15,
+            "unk5": 8
+        },
+        {
+            "species": "MAGNEZONE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 7,
+            "unk5": 14
+        },
+        {
+            "species": "LICKILICKY",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "RHYPERIOR",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 8,
+            "unk5": 11
+        },
+        {
+            "species": "TANGROWTH",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "ELECTIVIRE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 7,
+            "unk5": 7
+        },
+        {
+            "species": "MAGMORTAR",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "TOGEKISS",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 17
+        },
+        {
+            "species": "YANMEGA",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 4,
+            "unk5": 17
+        },
+        {
+            "species": "LEAFEON",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "GLACEON",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 13,
+            "unk5": 13
+        },
+        {
+            "species": "GLISCOR",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 8,
+            "unk5": 17
+        },
+        {
+            "species": "MAMOSWINE",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 13,
+            "unk5": 8
+        },
+        {
+            "species": "PORYGON_Z",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "GALLADE",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 10,
+            "unk5": 9
+        },
+        {
+            "species": "PROBOPASS",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 11,
+            "unk5": 11
+        },
+        {
+            "species": "DUSKNOIR",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 12,
+            "unk5": 12
+        },
+        {
+            "species": "FROSLASS",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 80,
+            "encounter_rate": 10,
+            "unk4": 13,
+            "unk5": 12
+        },
+        {
+            "species": "ROTOM",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 7,
+            "unk5": 12
+        },
+        {
+            "species": "UXIE",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "MESPRIT",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "AZELF",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "DIALGA",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 14,
+            "unk5": 15
+        },
+        {
+            "species": "PALKIA",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 15
+        },
+        {
+            "species": "HEATRAN",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 2,
+            "unk5": 2
+        },
+        {
+            "species": "REGIGIGAS",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 5,
+            "unk5": 5
+        },
+        {
+            "species": "GIRATINA",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 12,
+            "unk5": 15
+        },
+        {
+            "species": "CRESSELIA",
+            "land_sector": 1,
+            "water_sector": 0,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 10,
+            "unk5": 10
+        },
+        {
+            "species": "PHIONE",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 90,
+            "encounter_rate": 3,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "MANAPHY",
+            "land_sector": 0,
+            "water_sector": 4,
+            "score": 100,
+            "encounter_rate": 1,
+            "unk4": 3,
+            "unk5": 3
+        },
+        {
+            "species": "DARKRAI",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 100,
+            "encounter_rate": 1,
+            "unk4": 16,
+            "unk5": 14
+        },
+        {
+            "species": "SHAYMIN",
+            "land_sector": 3,
+            "water_sector": 0,
+            "score": 100,
+            "encounter_rate": 1,
+            "unk4": 1,
+            "unk5": 1
+        },
+        {
+            "species": "ARCEUS",
+            "land_sector": 2,
+            "water_sector": 0,
+            "score": 100,
+            "encounter_rate": 1,
+            "unk4": 5,
+            "unk5": 5
+        }
+    ]
+}

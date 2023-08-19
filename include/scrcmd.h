@@ -542,7 +542,7 @@ BOOL ScrCmd_LotoIdSearch(ScriptContext* ctx);
 BOOL ScrCmd_LotoIdSet(ScriptContext* ctx);
 BOOL ScrCmd_BufferBoxMonNick(ScriptContext* ctx);
 BOOL ScrCmd_CountPCEmptySpace(ScriptContext* ctx);
-BOOL ScrCmd_508(ScriptContext* ctx);
+BOOL ScrCmd_PalParkAction(ScriptContext* ctx);
 BOOL ScrCmd_509(ScriptContext* ctx);
 BOOL ScrCmd_510(ScriptContext* ctx);
 BOOL ScrCmd_511(ScriptContext* ctx);

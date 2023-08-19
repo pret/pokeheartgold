@@ -2900,7 +2900,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_508 arg0
+	.macro palpark_action arg0
 	.short 508
 	.short \arg0
 	.endm

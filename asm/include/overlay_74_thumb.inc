@@ -185,7 +185,7 @@
 .public CopyStringToU16Array
 .public sub_02027098
 .public Save_MysteryGift_Get
-.public sub_020270F8
+.public Save_MigratedPokemon_Get
 .public SaveGameNormal
 .public Save_NowWriteFile_AfterMGInit
 .public Save_FileExists

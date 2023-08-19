@@ -507,7 +507,7 @@ BOOL ScrCmd_LotoIdSearch(ScriptContext *ctx);
 BOOL ScrCmd_LotoIdSet(ScriptContext *ctx);
 BOOL ScrCmd_BufferBoxMonNick(ScriptContext *ctx);
 BOOL ScrCmd_CountPCEmptySpace(ScriptContext *ctx);
-BOOL ScrCmd_508(ScriptContext *ctx);
+BOOL ScrCmd_PalParkAction(ScriptContext *ctx);
 BOOL ScrCmd_509(ScriptContext *ctx);
 BOOL ScrCmd_510(ScriptContext *ctx);
 BOOL ScrCmd_511(ScriptContext *ctx);
@@ -1362,7 +1362,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_LotoIdSet,
     ScrCmd_BufferBoxMonNick,
     ScrCmd_CountPCEmptySpace,
-    ScrCmd_508,
+    ScrCmd_PalParkAction,
     ScrCmd_509,
     ScrCmd_510,
     ScrCmd_511,

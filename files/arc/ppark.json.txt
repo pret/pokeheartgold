@@ -1,0 +1,23 @@
+#include "global.h"
+
+struct PalParkMonsData {
+    u8 land_sector;
+    u8 water_sector;
+    u8 score;
+    u8 encounter_rate;
+    u8 unk4;
+    u8 unk5;
+};
+
+const struct PalParkMonsData gData[] = {
+{% for mon in mons %}
+    { // {{mon.species}}
+        {{mon.land_sector}},
+        {{mon.water_sector}},
+        {{mon.score}},
+        {{mon.encounter_rate}},
+        {{mon.unk4}},
+        {{mon.unk5}},
+    },
+{% endfor %}
+};
