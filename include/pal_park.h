@@ -3,7 +3,7 @@
 
 #include "script.h"
 #include "unk_0202EB30.h"
-#include "battle_setup.h"
+#include "battle/battle_setup.h"
 
 enum PalParkEncounterType {
     PP_ENCTYPE_NONE,
@@ -94,12 +94,12 @@ BOOL PalPark_TryEncounter(FieldSystem* fsys, int x, int z);
 // Called if PalPark_TryEncounter succeeds. Loads the
 // migrated Pokemon as the opponent and sets the Pal Park
 // state.
-BATTLE_SETUP* PalPark_SetupEncounter(FieldSystem* fsys);
+BattleSetup* PalPark_SetupEncounter(FieldSystem* fsys);
 
 // Called on return from the battle. Action is based on
 // whether the player caught the Pokemon or fled from it.
 // Other outcomes are unexpected and trip an assert.
-void PalPark_HandleBattleEnd(FieldSystem *fsys, BATTLE_SETUP *setup);
+void PalPark_HandleBattleEnd(FieldSystem *fsys, BattleSetup *setup);
 
 // Determines how many of the Pokemon in Pal Park were not
 // caught.

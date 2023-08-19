@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_BATTLE_HP_BAR_H
 #define POKEHEARTGOLD_BATTLE_HP_BAR_H
 
-#include "battle.h"
+#include "battle/battle.h"
 
 void BattleHpBar_LoadResources(BattleHpBar *hpBar);
 void BattleHpBar_FreeResources(BattleHpBar *hpBar);

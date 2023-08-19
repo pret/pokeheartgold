@@ -1,11 +1,11 @@
 #include "global.h"
 #include "battle/battle_hp_bar.h"
-#include "battle_controller_opponent.h"
-#include "battle_system.h"
+#include "battle/battle_controller_opponent.h"
+#include "battle/battle_system.h"
 #include "party.h"
 #include "pokemon_mood.h"
-#include "overlay_12_0224E4FC.h"
-#include "overlay_12_0226BEC4.h"
+#include "battle/overlay_12_0224E4FC.h"
+#include "battle/overlay_12_0226BEC4.h"
 #include "constants/game_stat.h"
 #include "unk_0202FBCC.h"
 #include "unk_0200FA24.h"
@@ -23,7 +23,7 @@ u32 BattleSystem_GetBattleType(BattleSystem *bsys) {
     return bsys->battleType;
 }
 
-BATTLECONTEXT *BattleSystem_GetBattleContext(BattleSystem *bsys) {
+BattleContext *BattleSystem_GetBattleContext(BattleSystem *bsys) {
     return bsys->ctx;
 }
 
@@ -300,7 +300,7 @@ int ov12_0223ABB8(BattleSystem *bsys, int battlerId, int side) {
 }
 
 BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedMonIndex, int movePos, int item) {
-    BATTLECONTEXT *ctx = bsys->ctx;
+    BattleContext *ctx = bsys->ctx;
     Pokemon *mon;
     BOOL ret = FALSE;
     int data;
@@ -664,7 +664,7 @@ u8 ov12_0223B580(BattleSystem *bsys, int battlerId, u8 a2) {
     return 0;
 }
 
-u16 BattleSystem_CheckEvolution(BATTLE_SETUP *setup, int *selectedMonIndex, int *evolutionCondition) {
+u16 BattleSystem_CheckEvolution(BattleSetup *setup, int *selectedMonIndex, int *evolutionCondition) {
     Pokemon *mon;
     u16 species = 0;
     

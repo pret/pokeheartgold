@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_OVERLAY_12_0226BEC4_H
 #define POKEHEARTGOLD_OVERLAY_12_0226BEC4_H
 
-#include "battle.h"
+#include "battle/battle.h"
 #include "unk_0200E320.h"
 
 typedef struct UnkBattleStruct_0226BEC4 {

@@ -2,14 +2,14 @@
 #define POKEHEARTGOLD_BATTLE_SYSTEM_H
 
 #include "bag.h"
-#include "battle.h"
-#include "battle_setup.h"
+#include "battle/battle.h"
+#include "battle/battle_setup.h"
 #include "pokemon.h"
 
 BgConfig *BattleSystem_GetBgConfig(BattleSystem *bsys);
 Window *BattleSystem_GetWindow(BattleSystem *bsys, int index);
 u32 BattleSystem_GetBattleType(BattleSystem *bsys);
-BATTLECONTEXT *BattleSystem_GetBattleContext(BattleSystem *bsys);
+BattleContext *BattleSystem_GetBattleContext(BattleSystem *bsys);
 OpponentData *BattleSystem_GetOpponentData(BattleSystem *bsys, int battlerId);
 int BattleSystem_GetMaxBattlers(BattleSystem *bsys);
 PARTY *BattleSystem_GetParty(BattleSystem *bsys, int battlerId);
@@ -63,7 +63,7 @@ u32 BattleSystem_GetBattleSpecial(BattleSystem *bsys);
 int BattleSystem_GetTimezone(BattleSystem *bsys);
 int ov12_0223B52C(BattleSystem *bsys);
 u8 ov12_0223B580(BattleSystem *bsys, int battlerId, u8 a2);
-u16 BattleSystem_CheckEvolution(BATTLE_SETUP *setup, int *selectedMonIndex, int *evolutionCondition);
+u16 BattleSystem_CheckEvolution(BattleSetup *setup, int *selectedMonIndex, int *evolutionCondition);
 u8 ov12_0223B688(BattleSystem *bsys);
 u8 ov12_0223B694(BattleSystem *bsys);
 int BattleSystem_GetSafariBallCount(BattleSystem *bsys);
@@ -141,11 +141,11 @@ u32 CalcMoneyLoss(PARTY *party, PlayerProfile *profile);
 
 //These functions haven't been decompiled
 void PokedexSetBattlerSeen(BattleSystem *bsys, int battlerId);
-BOOL Link_QueueNotEmpty(BATTLECONTEXT *ctx);
+BOOL Link_QueueNotEmpty(BattleContext *ctx);
 void ov12_02237ED0(BattleSystem *bsys, int a1);
 void ov12_022642F0(BattleSystem *bsys);
-BOOL ov12_022581BC(BattleSystem *bsys, BATTLECONTEXT *ctx);
-void ov12_02263A1C(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+BOOL ov12_022581BC(BattleSystem *bsys, BattleContext *ctx);
+void ov12_02263A1C(BattleSystem *bsys, BattleContext *ctx, int battlerId);
 void ov12_02266008(UnkBattleSystemSub17C *a0);
 BattleHpBar *OpponentData_GetHpBar(OpponentData *opponentData);
 void ov12_0226AA8C(u32 *a1, u32 flag);

@@ -102,7 +102,7 @@ static BOOL ov01_02204EFC(TaskManager *taskManager) {
     u16 **didHeadbuttStartBattle = TaskManager_GetEnv(taskManager);
     unk4 = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_a_2_5_2, fsys->location->mapId, HEAP_ID_FIELD);
     if (unk4->unk00 != 0 || unk4->unk02 != 0) {
-        BATTLE_SETUP *setup;
+        BattleSetup *setup;
         u32 x;
         u32 y;
         ov01_022050F8(fsys, &x, &y);

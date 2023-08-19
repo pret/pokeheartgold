@@ -7,7 +7,7 @@
 #include "map_header.h"
 #include "unk_02054E00.h"
 #include "field_black_out.h"
-#include "battle_setup.h"
+#include "battle/battle_setup.h"
 #include "script_pokemon_util.h"
 #include "field_map_object.h"
 #include "sound_02004A44.h"

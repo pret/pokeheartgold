@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_UNK_0203E348_H
 #define POKEHEARTGOLD_UNK_0203E348_H
 
-#include "battle_setup.h"
+#include "battle/battle_setup.h"
 #include "script.h"
 #include "overlay_02.h"
 #include "overlay_63.h"
@@ -163,7 +163,7 @@ void LaunchHOFCongratsApp(FieldSystem *fsys, HOFCongratsAppArgs *args);
 void LaunchCreditsApp(FieldSystem *fsys, CreditsAppArgs *args);
 void LocationData_BackUp(Location *data);
 void LocationData_Restore(Location *data);
-void sub_0203E3C4(FieldSystem *fsys, BATTLE_SETUP *battleSetup);
+void sub_0203E3C4(FieldSystem *fsys, BattleSetup *battleSetup);
 u32 *LaunchVoltorbFlipApp(FieldSystem *fsys, u32 luck);
 
 #endif //POKEHEARTGOLD_UNK_0203E348_H

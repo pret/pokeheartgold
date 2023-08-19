@@ -1,15 +1,15 @@
 #include "global.h"
+#include "pal_park.h"
 #include "field_system.h"
 #include "gf_rtc.h"
 #include "game_stats.h"
 #include "save_arrays.h"
 #include "math_util.h"
-#include "battle_setup.h"
 #include "unk_02054648.h"
 #include "metatile_behavior.h"
+#include "battle/battle_setup.h"
 #include "constants/game_stat.h"
 #include "constants/battle.h"
-#include "pal_park.h"
 #include "arc/ppark.naix"
 
 struct PalParkMon {
@@ -39,8 +39,8 @@ static void SetNumStepsUntilNextEncounterCheck(struct PalParkLocal* palpark);
 static BOOL ShouldTryEncounter(struct PalParkLocal* palpark);
 static enum PalParkEncounterType GetEncounterTypeAt(FieldSystem* fsys, int x, int z);
 static BOOL TryEncounter(FieldSystem* fsys, struct PalParkLocal* palpark, int x, int z);
-static BATTLE_SETUP* SetupEncounter(FieldSystem* fsys, struct PalParkLocal* palpark);
-static void HandleBattleEnd(FieldSystem *fsys, BATTLE_SETUP *setup, struct PalParkLocal* palpark);
+static BattleSetup* SetupEncounter(FieldSystem* fsys, struct PalParkLocal* palpark);
+static void HandleBattleEnd(FieldSystem *fsys, BattleSetup *setup, struct PalParkLocal* palpark);
 static int CalcSpeciesScore(struct PalParkLocal* palpark);
 static u32 CalcTypesScore(struct PalParkLocal* palpark);
 static int CalcTimeScore(struct PalParkLocal* palpark);
@@ -79,11 +79,11 @@ BOOL PalPark_TryEncounter(FieldSystem* fsys, int x, int z) {
     return FALSE;
 }
 
-BATTLE_SETUP* PalPark_SetupEncounter(FieldSystem* fsys) {
+BattleSetup* PalPark_SetupEncounter(FieldSystem* fsys) {
     return SetupEncounter(fsys, &sPalParkLocalState);
 }
 
-void PalPark_HandleBattleEnd(FieldSystem *fsys, BATTLE_SETUP *setup) {
+void PalPark_HandleBattleEnd(FieldSystem *fsys, BattleSetup *setup) {
     return HandleBattleEnd(fsys, setup, &sPalParkLocalState);
 }
 
@@ -219,7 +219,7 @@ static BOOL TryEncounter(FieldSystem* fsys, struct PalParkLocal* palpark, int x,
     return FALSE;
 }
 
-static void HandleBattleEnd(FieldSystem *fsys, BATTLE_SETUP *setup, struct PalParkLocal* palpark) {
+static void HandleBattleEnd(FieldSystem *fsys, BattleSetup *setup, struct PalParkLocal* palpark) {
     switch (setup->winFlag) {
     case BATTLE_OUTCOME_MON_CAUGHT:
         palpark->caught_order[palpark->encounterIndex] = CountCaughtMons(palpark) + 1;
@@ -231,10 +231,10 @@ static void HandleBattleEnd(FieldSystem *fsys, BATTLE_SETUP *setup, struct PalPa
     }
 }
 
-static BATTLE_SETUP* SetupEncounter(FieldSystem* fsys, struct PalParkLocal* palpark) {
+static BattleSetup* SetupEncounter(FieldSystem* fsys, struct PalParkLocal* palpark) {
     Pokemon* mon = AllocMonZeroed(HEAP_ID_32);
     struct MigratedPokemonSav* migratedMons = Save_MigratedPokemon_Get(fsys->savedata);
-    BATTLE_SETUP* ret = BattleSetup_New_PalPark(HEAP_ID_FIELD, PalPark_CountMonsNotCaught(fsys));
+    BattleSetup* ret = BattleSetup_New_PalPark(HEAP_ID_FIELD, PalPark_CountMonsNotCaught(fsys));
     BattleSetup_InitFromFsys(ret, fsys);
     GetMigratedPokemonByIndex(migratedMons, palpark->encounterIndex, mon);
     BattleSetup_AddMonToParty(ret, mon, BATTLER_ENEMY);

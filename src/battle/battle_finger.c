@@ -1,5 +1,5 @@
 #include "global.h"
-#include "battle_finger.h"
+#include "battle/battle_finger.h"
 #include "math_util.h"
 #include "unk_0200CF18.h"
 
