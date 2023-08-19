@@ -27,6 +27,7 @@ Gen 4 decompilation projects:
 * [**Pokémon Platinum (pret)**](https://github.com/pret/pokeplatinum) 
 * [**Pokémon Platinum (JimB16)**](https://github.com/JimB16/PokePlat)
 * [**Pokémon Platinum (Ganix)**](https://github.com/KernelEquinox/PokePlatinum)
+* [**Pokémon Mystery Dungeon: Explorers of Sky**](https://github.com/pret/pmd-sky)
 
 ## Contacts
 
