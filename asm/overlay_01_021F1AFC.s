@@ -769,7 +769,7 @@ Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors: ; 0x021F20C0
 	add r6, r0, #0
 	lsl r0, r4, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0205B778
+	bl MetatileBehavior_IsSurfableWater
 	cmp r0, #1
 	bne _021F2112
 	lsl r0, r5, #0x18

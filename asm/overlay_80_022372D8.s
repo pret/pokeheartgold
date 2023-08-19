@@ -473,7 +473,7 @@ _02237642:
 	ldr r1, [sp, #0x20]
 	add r0, r4, #0
 	mov r2, #0
-	bl sub_02051C9C
+	bl BattleSetup_AddMonToParty
 	ldr r0, [sp, #0x18]
 	add r6, r6, #1
 	cmp r6, r0
@@ -591,7 +591,7 @@ _0223772C:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #1
-	bl sub_02051C9C
+	bl BattleSetup_AddMonToParty
 	ldr r0, [sp, #0xc]
 	add r1, r0, #1
 	ldr r0, [sp, #0x10]
@@ -663,7 +663,7 @@ _022377D0:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #3
-	bl sub_02051C9C
+	bl BattleSetup_AddMonToParty
 	add r0, r6, #0
 	bl FreeToHeap
 _02237810:

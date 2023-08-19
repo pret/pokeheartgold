@@ -15,6 +15,9 @@ sub/build/**
 .idea/
 cmake-build-debug/
 
+# VSCode folder
+.vscode/
+
 # ROM
 *.srl
 

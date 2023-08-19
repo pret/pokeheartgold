@@ -13515,10 +13515,7 @@ _0222FE16:
 _0222FE2C:
 	mov r1, #0
 	b _0222FE32
-	thumb_func_end ov45_0222FDD8
-
-	thumb_func_start ov45_0222FE30
-ov45_0222FE30: ; 0x0222FE30
+_0222FE30: ; 0x0222FE30 unreachable
 	pop {r3, r4, r5, r6, r7, pc}
 _0222FE32:
 	add r4, r1, #0
@@ -13561,7 +13558,7 @@ _0222FE78:
 	nop
 _0222FE7C: .word _022577C0
 _0222FE80: .word 0x0000012D
-	thumb_func_end ov45_0222FE30
+	thumb_func_end ov45_0222FDD8
 
 	thumb_func_start ov45_0222FE84
 ov45_0222FE84: ; 0x0222FE84

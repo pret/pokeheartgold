@@ -1477,13 +1477,13 @@ BOOL ScrCmd_FacePlayer(ScriptContext *ctx) {
             ov01_02205604(*p_lastInteracted, &x, &y);
             metatile = GetMetatileBehaviorAt(fsys, x, y);
             if (rvsDir == 2 || rvsDir == 3) {
-                if (sub_0205B6E8(metatile) == TRUE) {
+                if (MetatileBehavior_IsEncounterGrass(metatile) == TRUE) {
                     ov01_021FF0E4(*p_lastInteracted, 0, x, y, 1);
                 } else if (sub_0205B6F4(metatile) == TRUE) {
                     ov01_021FF964(*p_lastInteracted, 0, x, y, 1);
                 }
             }
-            if (sub_0205B6E8(metatile) == FALSE
+            if (MetatileBehavior_IsEncounterGrass(metatile) == FALSE
              && sub_0205B6F4(metatile) == FALSE
              && sub_02060E54(*p_lastInteracted, metatile) == FALSE
              && sub_0205B984(metatile) == FALSE
@@ -4467,7 +4467,7 @@ BOOL ScrCmd_FollowPokeFacePlayer(ScriptContext *ctx) {
             u8 facingTile = GetMetatileBehaviorAt(ctx->fsys, playerX + deltaX, playerY + deltaY);
             VecFx32 posVec;
             MapObject_GetPositionVec(myObject, &posVec);
-            if (sub_020549A8(ctx->fsys, &posVec, playerX + deltaX, playerY + deltaY, 0) || sub_0205B778(facingTile) || sub_02060BFC(myObject, playerX + deltaX, playerElev, playerY + deltaY)) {
+            if (sub_020549A8(ctx->fsys, &posVec, playerX + deltaX, playerY + deltaY, 0) || MetatileBehavior_IsSurfableWater(facingTile) || sub_02060BFC(myObject, playerX + deltaX, playerElev, playerY + deltaY)) {
                 doFace = FALSE;
             }
         }

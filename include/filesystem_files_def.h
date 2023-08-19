@@ -130,7 +130,7 @@ typedef enum NarcId
     NARC_a_1_2_2                                            = 122,
     NARC_a_1_2_3                                            = 123,
     NARC_a_1_2_4                                            = 124,
-    NARC_a_1_2_5                                            = 125,
+    NARC_arc_ppark                                          = 125,
     NARC_a_1_2_6                                            = 126,
     NARC_a_1_2_7                                            = 127,
     NARC_a_1_2_8                                            = 128,

@@ -26,5 +26,6 @@ gTrainerPoke_{{ i }}:
 	.short 0
 	.short SPECIES_NONE
 	.short 0{% endif %}
+	.balign 4, 0
 	.size gTrainerPoke_{{ i }},.-gTrainerPoke_{{ i }}{% set i=i+1 %}
 ## endfor

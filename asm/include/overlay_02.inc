@@ -235,9 +235,9 @@
 .public sub_0205B564
 .public sub_0205B5B4
 .public IsPrintFinished
-.public sub_0205B6E8
+.public MetatileBehavior_IsEncounterGrass
 .public sub_0205B6F4
-.public sub_0205B778
+.public MetatileBehavior_IsSurfableWater
 .public sub_0205B994
 .public sub_0205BAD0
 .public sub_0205BAE4

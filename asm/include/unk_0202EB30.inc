@@ -7,7 +7,7 @@
 .public sub_0202EB74
 .public sub_0202EC14
 .public sub_0202EC28
-.public sub_0202EC70
+.public GetMigratedPokemonByIndex
 .public sub_0202EC98
 .public ZeroMonData
 .public GetMonData

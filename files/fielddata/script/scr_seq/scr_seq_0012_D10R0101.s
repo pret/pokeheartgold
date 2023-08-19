@@ -14,7 +14,7 @@
 	scrdef_end
 
 scr_seq_D10R0101_000:
-	scrcmd_508 2
+	palpark_action 2
 	end
 
 scr_seq_D10R0101_001:
@@ -34,13 +34,20 @@ scr_seq_D10R0101_001:
 	non_npc_msg msg_0052_D10R0101_00010
 	play_se SEQ_SE_DP_CON_016
 	wait 30, VAR_SPECIAL_RESULT
-	scrcmd_508 0
+	palpark_action 0
 	setvar VAR_UNK_4124, 1
 	closemsg
 	releaseall
 	end
-	.byte 0xfc, 0x01, 0x00, 0x00, 0x29, 0x00, 0x24, 0x41, 0x01, 0x00, 0x32, 0x00, 0x35
-	.byte 0x00, 0x61, 0x00, 0x02, 0x00
+
+	; unreferenced
+	palpark_action 0
+	setvar VAR_UNK_4124, 1
+	wait_button_or_walk_away
+	closemsg
+	releaseall
+	end
+
 scr_seq_D10R0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -98,7 +105,7 @@ _0110:
 	scrcmd_604 48
 	releaseall
 	end
-	.byte 0x00, 0x00
+	.balign 4, 0
 
 _0134:
 	step 12, 1
@@ -121,7 +128,7 @@ _0169:
 	wait_movement
 	releaseall
 	end
-	.byte 0x00
+	.balign 4, 0
 
 _0178:
 	step 34, 1
@@ -155,7 +162,7 @@ _01C9:
 	return
 
 _01D4:
-	scrcmd_508 1
+	palpark_action 1
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_T08R0201, 0, 7, 7, DIR_SOUTH

@@ -276,7 +276,7 @@ MYSTERY_GIFT_SAVE *Save_MysteryGift_Get(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_MYSTERY_GIFT);
 }
 
-struct UnkStruct_0202EB30 *sub_020270F8(SaveData *saveData) {
+struct MigratedPokemonSav *Save_MigratedPokemon_Get(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_UNK_28);
 }
 

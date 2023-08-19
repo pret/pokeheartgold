@@ -21231,7 +21231,7 @@ _022317F6: ; jump table
 _0223180A:
 	bl ov74_0223195C
 	ldr r0, [r5, #0x10]
-	bl sub_020270F8
+	bl Save_MigratedPokemon_Get
 	add r5, r0, #0
 	bl ov74_02233F68
 	add r1, r0, #0
@@ -21376,7 +21376,7 @@ ov74_02231930: ; 0x02231930
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x10]
-	bl sub_020270F8
+	bl Save_MigratedPokemon_Get
 	add r4, r0, #0
 	bl ov74_02233F68
 	add r1, r0, #0
@@ -21397,7 +21397,7 @@ ov74_0223195C: ; 0x0223195C
 	sub sp, #0xf4
 	add r7, r0, #0
 	ldr r0, [r7, #0x10]
-	bl sub_020270F8
+	bl Save_MigratedPokemon_Get
 	str r0, [sp]
 	add r0, sp, #8
 	bl Mon_GetBoxMon
@@ -24291,7 +24291,7 @@ ov74_02233060: ; 0x02233060
 	sub sp, #0xc
 	str r0, [sp]
 	ldr r0, [r0, #0x10]
-	bl sub_020270F8
+	bl Save_MigratedPokemon_Get
 	mov r6, #0
 	str r0, [sp, #8]
 	str r6, [sp, #4]
