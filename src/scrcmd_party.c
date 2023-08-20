@@ -327,7 +327,7 @@ BOOL ScrCmd_GetMonTypes(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_Party_GetCount(ScriptContext *ctx) {
+BOOL ScrCmd_GetPartyCount(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 *count = ScriptGetVarPointer(ctx);
     *count = Party_GetCount(SaveArray_Party_Get(fieldSystem->savedata));
