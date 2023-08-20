@@ -268,24 +268,24 @@ struct Evolution {
 };
 #define MAX_EVOS_PER_POKE      7
 
-typedef struct PARTY {
+typedef struct PartyCore {
     int maxCount;
     int curCount;
     Pokemon mons[PARTY_SIZE];
-} PARTY_CORE;
+} PartyCore;
 
-typedef struct PARTY_EXTRA_SUB {
+typedef struct PartyExtraSub {
     u8 unk_00[5];
-} PARTY_EXTRA_SUB;
+} PartyExtraSub;
 
-typedef struct PARTY_EXTRA {
-    PARTY_EXTRA_SUB unk_00[PARTY_SIZE];
-} PARTY_EXTRA;
+typedef struct PartyExtra {
+    PartyExtraSub unk_00[PARTY_SIZE];
+} PartyExtra;
 
-typedef struct SAVE_PARTY_T {
-    PARTY_CORE core;
-    PARTY_EXTRA extra;
-} PARTY;
+typedef struct Party {
+    PartyCore core;
+    PartyExtra extra;
+} Party;
 
 struct PokeathlonBasePerformance {
     u8 base[5];

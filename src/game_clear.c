@@ -99,7 +99,7 @@ BOOL sub_0205298C(TaskManager *taskman) {
     case 0:
         sub_0206DB58(taskman, fsys);
         Fsys_ClearFollowingTrainer(fsys);
-        HealParty(SaveArray_PlayerParty_Get(fsys->savedata));
+        HealParty(SaveArray_Party_Get(fsys->savedata));
         *state += 1;
         break;
     case 1:
@@ -139,7 +139,7 @@ static void AddHallOfFameEntry(FieldSystem *fsys, BOOL gameCleared) {
     if (val != 1 || !gameCleared) {
         Save_HOF_Init(hof);
     }
-    PARTY *party = SaveArray_PlayerParty_Get(fsys->savedata);
+    Party *party = SaveArray_Party_Get(fsys->savedata);
 
     GF_RTC_CopyDate(&date);
     Save_HOF_RecordParty(hof, party, &date);
@@ -189,7 +189,7 @@ static BOOL Task_GameClear(TaskManager *taskman) {
         }
         break;
     case 4:
-        HealParty(SaveArray_PlayerParty_Get(fsys->savedata));
+        HealParty(SaveArray_Party_Get(fsys->savedata));
         int writeStatus = SaveGameNormal(fsys->savedata);
         if (!env->vsTrainerRed) {
             AddHallOfFameEntry(fsys, env->gameCleared);
@@ -273,7 +273,7 @@ void CallTask_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
 
     env->gameCleared = CheckGameClearFlag(varsFlags);
     env->hofCongratsArgs.profile = Save_PlayerData_GetProfileAddr(fsys->savedata);
-    env->hofCongratsArgs.party = SaveArray_PlayerParty_Get(fsys->savedata);
+    env->hofCongratsArgs.party = SaveArray_Party_Get(fsys->savedata);
     env->hofCongratsArgs.igt = Save_PlayerData_GetIGTAddr(fsys->savedata);
     env->creditsArgs.gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fsys->savedata));
     env->creditsArgs.gameCleared = CheckGameClearFlag(varsFlags);
@@ -282,7 +282,7 @@ void CallTask_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
     if (!CheckGameClearFlag(varsFlags)) {
         FieldSys_SetGameClearTime(fsys);
     }
-    SaveArray_PlayerParty_Get(fsys->savedata);
+    SaveArray_Party_Get(fsys->savedata);
     LocationData_BackUp(dynamicWarp);
     LocationData_Restore(spawnWarp);
     SetFlag966(varsFlags);

@@ -217,7 +217,7 @@ static void ItemMenuUseFunc_HealingItem(struct ItemMenuUseData *data, const stru
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     struct UseItemInPartyTaskEnv *usedat = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct UseItemInPartyTaskEnv));
     memset(usedat, 0, sizeof(struct UseItemInPartyTaskEnv));
-    usedat->party = SaveArray_PlayerParty_Get(fsys->savedata);
+    usedat->party = SaveArray_Party_Get(fsys->savedata);
     usedat->bag = Save_Bag_Get(fsys->savedata);
     usedat->mailbox = Save_Mailbox_Get(fsys->savedata);
     usedat->options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
@@ -340,7 +340,7 @@ static void ItemMenuUseFunc_TMHM(struct ItemMenuUseData *data, const struct Item
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     struct UseItemInPartyTaskEnv *usedat = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct UseItemInPartyTaskEnv));
     memset(usedat, 0, sizeof(struct UseItemInPartyTaskEnv));
-    usedat->party = SaveArray_PlayerParty_Get(fsys->savedata);
+    usedat->party = SaveArray_Party_Get(fsys->savedata);
     usedat->bag = Save_Bag_Get(fsys->savedata);
     usedat->mailbox = Save_Mailbox_Get(fsys->savedata);
     usedat->options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
@@ -530,7 +530,7 @@ static void ItemMenuUseFunc_EvoStone(struct ItemMenuUseData *data, const struct 
     env = TaskManager_GetEnv(data->taskManager);
     usedat = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct UseItemInPartyTaskEnv));
     memset(usedat, 0, sizeof(struct UseItemInPartyTaskEnv));
-    usedat->party = SaveArray_PlayerParty_Get(fsys->savedata);
+    usedat->party = SaveArray_Party_Get(fsys->savedata);
     usedat->bag = Save_Bag_Get(fsys->savedata);
     usedat->mailbox = Save_Mailbox_Get(fsys->savedata);
     usedat->options = Save_PlayerData_GetOptionsAddr(fsys->savedata);

@@ -24,18 +24,18 @@ void Save_HOF_Init(HALL_OF_FAME *hof) {
     MI_CpuClear32(hof, sizeof(HALL_OF_FAME));
 }
 
-void Save_HOF_RecordParty(HALL_OF_FAME *hof, PARTY *party, RTCDate *date) {
+void Save_HOF_RecordParty(HALL_OF_FAME *hof, Party *party, RTCDate *date) {
     ASSERT_HALL_OF_FAME(hof);
     if (hof->num_total < 9999) {
         HOFTEAM *team = &hof->parties[hof->next_record];
-        int npokes = GetPartyCount(party);
+        int npokes = Party_GetCount(party);
         String *string = String_New(POKEMON_NAME_LENGTH + 1, HEAP_ID_DEFAULT);
         int i, j;
 
         MI_CpuClear16(team->party, sizeof(team->party));
 
         for (i = 0, j = 0; i < npokes; i++) {
-            Pokemon *mon = GetPartyMonByIndex(party, i);
+            Pokemon *mon = Party_GetMonByIndex(party, i);
             BOOL lock = AcquireMonLock(mon);
             if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
                 team->party[j].species = GetMonData(mon, MON_DATA_SPECIES, NULL);

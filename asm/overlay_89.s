@@ -2644,9 +2644,9 @@ ov89_02259E50: ; 0x02259E50
 	mov r2, #0x48
 	bl MI_CpuFill8
 	add r0, r4, #0
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [sp, #4]
-	bl GetPartyCount
+	bl Party_GetCount
 	add r7, r0, #0
 	mov r6, #0
 	cmp r7, #0
@@ -2654,7 +2654,7 @@ ov89_02259E50: ; 0x02259E50
 _02259E78:
 	ldr r0, [sp, #4]
 	add r1, r6, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0xae
 	mov r2, #0
 	add r4, r0, #0

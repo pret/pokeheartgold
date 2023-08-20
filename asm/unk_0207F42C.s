@@ -164,7 +164,7 @@ sub_0207F520: ; 0x0207F520
 	bne _0207F590
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r2, #0x1f
 	lsl r2, r2, #6
 	add r6, r0, #0
@@ -202,7 +202,7 @@ _0207F590:
 	ldr r0, [r5, r0]
 	ldrb r1, [r5, r1]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0
 	str r1, [sp]
 	add r6, r0, #0
@@ -547,7 +547,7 @@ sub_0207F870: ; 0x0207F870
 	ldr r0, [r4, r0]
 	ldrb r1, [r4, r1]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r0, #0
 	ldr r0, _0207F8E4 ; =0x00000654
 	mov r2, #0xc
@@ -648,7 +648,7 @@ sub_0207F924: ; 0x0207F924
 	ldr r0, [r4, r0]
 	ldrb r1, [r4, r1]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0
 	str r1, [sp]
 	add r5, r0, #0
@@ -811,7 +811,7 @@ sub_0207FAA8: ; 0x0207FAA8
 	ldr r0, [r4, r0]
 	ldrb r1, [r4, r1]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	bl Pokemon_RemoveCapsule
 	ldr r0, _0207FACC ; =0x00000654
 	mov r1, #0
@@ -2426,7 +2426,7 @@ sub_020807AC: ; 0x020807AC
 	ldr r0, [r4, r0]
 	ldrb r1, [r4, r1]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0xa2
 	mov r2, #0
 	bl GetMonData

@@ -61,11 +61,11 @@
 .public SetMonData
 .public sub_02072A98
 .public sub_02072D64
-.public InitPartyWithMaxSize
-.public AddMonToParty
-.public GetPartyMaxCount
-.public GetPartyCount
-.public GetPartyMonByIndex
+.public Party_InitWithMaxSize
+.public Party_AddMon
+.public Party_GetMaxCount
+.public Party_GetCount
+.public Party_GetMonByIndex
 .public MIi_CpuClear32
 .public MIi_CpuCopy32
 .public MI_CpuFill8

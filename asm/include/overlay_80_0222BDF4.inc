@@ -155,8 +155,8 @@
 .public sub_02074490
 .public sub_02074498
 .public sub_020744A4
-.public GetPartyMonByIndex
-.public SaveArray_PlayerParty_Get
+.public Party_GetMonByIndex
+.public SaveArray_Party_Get
 .public sub_0207CA9C
 .public sub_0207CAA0
 .public sub_0207CAA4

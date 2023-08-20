@@ -35,7 +35,7 @@ int BattleSystem_GetMaxBattlers(BattleSystem *bsys) {
     return bsys->maxBattlers;
 }
 
-PARTY *BattleSystem_GetParty(BattleSystem *bsys, int battlerId) {
+Party *BattleSystem_GetParty(BattleSystem *bsys, int battlerId) {
     if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_INGAME_PARTNER) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
         return bsys->trainerParty[battlerId];
     } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
@@ -47,21 +47,21 @@ PARTY *BattleSystem_GetParty(BattleSystem *bsys, int battlerId) {
 
 int BattleSystem_GetPartySize(BattleSystem *bsys, int battlerId) {
     if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_INGAME_PARTNER) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
-        return GetPartyCount(bsys->trainerParty[battlerId]);
+        return Party_GetCount(bsys->trainerParty[battlerId]);
     } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
-        return GetPartyCount(bsys->trainerParty[battlerId & 1]);
+        return Party_GetCount(bsys->trainerParty[battlerId & 1]);
     } else {
-        return GetPartyCount(bsys->trainerParty[battlerId]);
+        return Party_GetCount(bsys->trainerParty[battlerId]);
     }
 }
 
 Pokemon *BattleSystem_GetPartyMon(BattleSystem *bsys, int battlerId, int index) {
     if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_INGAME_PARTNER) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
-        return GetPartyMonByIndex(bsys->trainerParty[battlerId], index);
+        return Party_GetMonByIndex(bsys->trainerParty[battlerId], index);
     } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
-        return GetPartyMonByIndex(bsys->trainerParty[battlerId & 1], index);
+        return Party_GetMonByIndex(bsys->trainerParty[battlerId & 1], index);
     } else {
-        return GetPartyMonByIndex(bsys->trainerParty[battlerId], index);
+        return Party_GetMonByIndex(bsys->trainerParty[battlerId], index);
     }
 }
 
@@ -680,7 +680,7 @@ u16 BattleSystem_CheckEvolution(BattleSetup *setup, int *selectedMonIndex, int *
             }
         }
         if (*selectedMonIndex < PARTY_SIZE) {
-            mon = GetPartyMonByIndex(setup->party[0], *selectedMonIndex);
+            mon = Party_GetMonByIndex(setup->party[0], *selectedMonIndex);
             species = GetMonEvolution(setup->party[0], mon, EVOCTX_LEVELUP, setup->evolutionLocation, evolutionCondition);
             if (species) {
                 return species;

@@ -14,8 +14,8 @@
 .public MaskOfFlagNo
 .public LowestFlagNo
 .public LoadMoveTbl
-.public GetPartyCount
-.public GetPartyMonByIndex
+.public Party_GetCount
+.public Party_GetMonByIndex
 .public LoadAllItemData
 .public Bag_TakeItem
 .public BagCursor_Battle_SetLastUsedItem

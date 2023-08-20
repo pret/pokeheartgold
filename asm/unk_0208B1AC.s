@@ -1734,7 +1734,7 @@ _0208BF36:
 _0208BF4A:
 	ldr r0, [r1]
 	add r1, r4, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r7, r0, #0
 	bl Pokemon_GetIconPalette
 	add r1, r0, #0

@@ -5269,7 +5269,7 @@ _0224D5E6:
 	bl BattleSystem_GetOpponentData
 	add r0, r6, #0
 	add r5, r7, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	ble _0224D65E
 	ldr r0, [sp, #0x2c]
@@ -5281,7 +5281,7 @@ _0224D5E6:
 _0224D612:
 	add r0, r6, #0
 	add r1, r5, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0xae
 	mov r2, #0
 	add r4, r0, #0
@@ -5310,7 +5310,7 @@ _0224D612:
 _0224D652:
 	add r0, r6, #0
 	add r5, r5, #1
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r5, r0
 	blt _0224D612
 _0224D65E:
@@ -5362,13 +5362,13 @@ _0224D69E:
 	bl BattleSystem_GetOpponentData
 	add r0, r6, #0
 	add r5, r7, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	ble _0224D706
 _0224D6C8:
 	add r0, r6, #0
 	add r1, r5, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0xae
 	mov r2, #0
 	add r4, r0, #0
@@ -5390,7 +5390,7 @@ _0224D6C8:
 _0224D6FA:
 	add r0, r6, #0
 	add r5, r5, #1
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r5, r0
 	blt _0224D6C8
 _0224D706:
@@ -5568,13 +5568,13 @@ _0224D820:
 	bl BattleSystem_GetOpponentData
 	add r0, r6, #0
 	add r4, r7, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	ble _0224D8A8
 _0224D86A:
 	add r0, r6, #0
 	add r1, r4, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0xae
 	mov r2, #0
 	add r5, r0, #0
@@ -5596,7 +5596,7 @@ _0224D86A:
 _0224D89C:
 	add r0, r6, #0
 	add r4, r4, #1
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r4, r0
 	blt _0224D86A
 _0224D8A8:
@@ -5648,13 +5648,13 @@ _0224D8DE:
 	str r0, [sp, #0x14]
 	add r0, r7, #0
 	add r5, r4, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	ble _0224D950
 _0224D912:
 	add r0, r7, #0
 	add r1, r5, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0xae
 	mov r2, #0
 	add r6, r0, #0
@@ -5676,20 +5676,20 @@ _0224D912:
 _0224D944:
 	add r0, r7, #0
 	add r5, r5, #1
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r5, r0
 	blt _0224D912
 _0224D950:
 	ldr r0, [sp, #0x18]
 	mov r5, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	ble _0224D99A
 	ldr r7, _0224DB28 ; =0x000001EE
 _0224D95E:
 	ldr r0, [sp, #0x18]
 	add r1, r5, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0xae
 	mov r2, #0
 	add r6, r0, #0
@@ -5710,7 +5710,7 @@ _0224D95E:
 _0224D98E:
 	ldr r0, [sp, #0x18]
 	add r5, r5, #1
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r5, r0
 	blt _0224D95E
 _0224D99A:
@@ -5752,13 +5752,13 @@ _0224D9C4:
 	str r0, [sp, #0x10]
 	add r0, r6, #0
 	add r4, r7, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	ble _0224DA2E
 _0224D9F0:
 	add r0, r6, #0
 	add r1, r4, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0xae
 	mov r2, #0
 	add r5, r0, #0
@@ -5780,7 +5780,7 @@ _0224D9F0:
 _0224DA22:
 	add r0, r6, #0
 	add r4, r4, #1
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r4, r0
 	blt _0224D9F0
 _0224DA2E:

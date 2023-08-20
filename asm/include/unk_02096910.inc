@@ -8,8 +8,8 @@
 .public sub_0203769C
 .public sub_0205C268
 .public GetMonData
-.public GetPartyMonByIndex
-.public SaveArray_PlayerParty_Get
+.public Party_GetMonByIndex
+.public SaveArray_Party_Get
 .public sub_02096910
 .public sub_02096998
 .public sub_02096A34

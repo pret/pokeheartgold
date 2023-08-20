@@ -143,8 +143,8 @@
 .public sub_02074490
 .public sub_02074498
 .public sub_020744A4
-.public GetPartyCount
-.public GetPartyMonByIndex
+.public Party_GetCount
+.public Party_GetMonByIndex
 .public SaveArray_IsNatDexEnabled
 .public sub_02088288
 .public sub_02089D40

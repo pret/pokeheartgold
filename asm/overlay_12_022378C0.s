@@ -229,7 +229,7 @@ _02237A6A:
 	bl CreateHeap
 	ldr r0, [r5, #4]
 	ldr r1, [sp, #0x20]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r2, #0x59
 	lsl r2, r2, #2
 	add r1, r0, #0
@@ -1383,7 +1383,7 @@ _022384A0:
 	beq _022384CE
 	ldr r0, [r4, #0x6c]
 	mov r1, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov12_0223B870
@@ -2326,13 +2326,13 @@ _02238CB2:
 _02238CD6:
 	ldr r0, [r6, #4]
 	mov r5, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	ble _02238D08
 _02238CE2:
 	ldr r0, [r6, #4]
 	add r1, r5, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r7, r0, #0
 	bl GetMonGender
 	str r0, [sp, #0x44]
@@ -2342,7 +2342,7 @@ _02238CE2:
 	bl SetMonData
 	ldr r0, [r6, #4]
 	add r5, r5, #1
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r5, r0
 	blt _02238CE2
 _02238D08:
@@ -2426,13 +2426,13 @@ _02238D86:
 _02238DB2:
 	ldr r0, [r7, #0x68]
 	mov r5, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	ble _02238DFC
 _02238DBE:
 	ldr r0, [r7, #0x68]
 	add r1, r5, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #5
 	mov r2, #0
 	add r6, r0, #0
@@ -2454,7 +2454,7 @@ _02238DBE:
 _02238DF0:
 	ldr r0, [r7, #0x68]
 	add r5, r5, #1
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r5, r0
 	blt _02238DBE
 _02238DFC:
@@ -2534,13 +2534,13 @@ _02238E68:
 _02238E94:
 	ldr r0, [r7, #0x68]
 	mov r5, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	ble _02238EDE
 _02238EA0:
 	ldr r0, [r7, #0x68]
 	add r1, r5, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #5
 	mov r2, #0
 	add r6, r0, #0
@@ -2562,7 +2562,7 @@ _02238EA0:
 _02238ED2:
 	ldr r0, [r7, #0x68]
 	add r5, r5, #1
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r5, r0
 	blt _02238EA0
 _02238EDE:
@@ -2642,13 +2642,13 @@ _02238F64:
 	add r7, r4, r0
 	ldr r0, [r7, #0x68]
 	mov r6, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	ble _02238FFC
 _02238F7C:
 	ldr r0, [r7, #0x68]
 	add r1, r6, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	ldr r1, [sp, #0x18]
 	add r5, r0, #0
 	cmp r1, #1
@@ -2700,7 +2700,7 @@ _02238FC8:
 _02238FF0:
 	ldr r0, [r7, #0x68]
 	add r6, r6, #1
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r6, r0
 	blt _02238F7C
 _02238FFC:
@@ -2753,13 +2753,13 @@ _02239050:
 	bl Party_Copy
 	ldr r0, [r7, #0x68]
 	mov r5, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	ble _022390A4
 _02239066:
 	ldr r0, [r7, #0x68]
 	add r1, r5, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #5
 	mov r2, #0
 	add r6, r0, #0
@@ -2781,7 +2781,7 @@ _02239066:
 _02239098:
 	ldr r0, [r7, #0x68]
 	add r5, r5, #1
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r5, r0
 	blt _02239066
 _022390A4:
@@ -2989,13 +2989,13 @@ _02239220:
 _02239244:
 	ldr r0, [r7, #0x68]
 	mov r5, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	ble _0223928E
 _02239250:
 	ldr r0, [r7, #0x68]
 	add r1, r5, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #5
 	mov r2, #0
 	add r6, r0, #0
@@ -3017,7 +3017,7 @@ _02239250:
 _02239282:
 	ldr r0, [r7, #0x68]
 	add r5, r5, #1
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r5, r0
 	blt _02239250
 _0223928E:
@@ -3097,13 +3097,13 @@ _02239314:
 	add r7, r4, r0
 	ldr r0, [r7, #0x68]
 	mov r6, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	ble _022393AC
 _0223932C:
 	ldr r0, [r7, #0x68]
 	add r1, r6, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	ldr r1, [sp, #0x24]
 	add r5, r0, #0
 	cmp r1, #1
@@ -3155,7 +3155,7 @@ _02239378:
 _022393A0:
 	ldr r0, [r7, #0x68]
 	add r6, r6, #1
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r6, r0
 	blt _0223932C
 _022393AC:
@@ -3211,13 +3211,13 @@ _02239408:
 	bl Party_Copy
 	ldr r0, [r7, #0x68]
 	mov r5, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	ble _0223945C
 _0223941E:
 	ldr r0, [r7, #0x68]
 	add r1, r5, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #5
 	mov r2, #0
 	add r6, r0, #0
@@ -3239,7 +3239,7 @@ _0223941E:
 _02239450:
 	ldr r0, [r7, #0x68]
 	add r5, r5, #1
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r5, r0
 	blt _0223941E
 _0223945C:
@@ -3272,7 +3272,7 @@ _0223948A:
 	beq _022394A6
 	ldr r0, [r4, #0x6c]
 	mov r1, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r2, r4, #0
 	mov r1, #0x90
 	add r2, #0xf4
@@ -3296,7 +3296,7 @@ _022394A6:
 _022394C8:
 	ldr r0, [r4, #0x68]
 	mov r5, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	ble _02239516
 	ldr r7, _022394E8 ; =0x00002408
@@ -3310,7 +3310,7 @@ _022394E8: .word 0x00002408
 _022394EC:
 	ldr r0, [r4, #0x68]
 	add r1, r5, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	ldr r2, [r4, r7]
 	add r6, r0, #0
 	lsl r2, r2, #0x10
@@ -3322,20 +3322,20 @@ _022394EC:
 	bl ApplyMonMoodModifier
 	ldr r0, [r4, #0x68]
 	add r5, r5, #1
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r5, r0
 	blt _022394EC
 _02239516:
 	ldr r0, [r4, #0x70]
 	mov r5, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	ble _0223954E
 	ldr r7, _022395B0 ; =0x00002408
 _02239524:
 	ldr r0, [r4, #0x70]
 	add r1, r5, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	ldr r2, [r4, r7]
 	add r6, r0, #0
 	lsl r2, r2, #0x10
@@ -3347,7 +3347,7 @@ _02239524:
 	bl ApplyMonMoodModifier
 	ldr r0, [r4, #0x70]
 	add r5, r5, #1
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r5, r0
 	blt _02239524
 _0223954E:

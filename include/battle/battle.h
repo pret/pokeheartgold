@@ -532,7 +532,7 @@ struct BattleSystem {
     BagCursor *bagCursor;
     Pokedex *pokedex;
     PC_STORAGE *storage;
-    PARTY *trainerParty[4];
+    Party *trainerParty[4];
     SOUND_CHATOT *chatotVoice[4];
     u32 *unk88;
     u32 *unk8C;

@@ -120,9 +120,9 @@
 .public sub_020691C4
 .public sub_020691E0
 .public GetMonData
-.public GetPartyCount
-.public GetPartyMonByIndex
-.public SaveArray_PlayerParty_Get
+.public Party_GetCount
+.public Party_GetMonByIndex
+.public SaveArray_Party_Get
 .public SaveArray_IsNatDexEnabled
 .public sub_02075A7C
 .public sub_02075D3C

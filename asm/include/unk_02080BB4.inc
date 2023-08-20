@@ -28,7 +28,7 @@
 .public MonTryLearnMoveOnLevelUp
 .public GetMonTMHMCompat
 .public GetMoveMaxPP
-.public GetPartyMonByIndex
+.public Party_GetMonByIndex
 .public LoadItemDataOrGfx
 .public GetItemAttr
 .public GetItemAttr_PreloadedItemData

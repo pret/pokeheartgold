@@ -8,7 +8,7 @@
 
 struct BattleSetup { //declared in trainer_data.h
     u32 flags;
-    PARTY *party[4];
+    Party *party[4];
     u32 winFlag;
     int trainerId[4];
     TRAINER trainer[4];
@@ -74,7 +74,7 @@ void BattleSetup_InitFromFsys(BattleSetup *setup, FieldSystem *fsys);
 BattleSetup *BattleSetup_New(HeapID heapId, u32 battleFlags);
 void sub_020522F0(BattleSetup *setup, FieldSystem *fsys, void *a1);
 void sub_02051F2C(BattleSetup *setup, FieldSystem *fsys, int level);
-void sub_020520B0(BattleSetup *setup, FieldSystem *fsys, PARTY *party, void *a4);
+void sub_020520B0(BattleSetup *setup, FieldSystem *fsys, Party *party, void *a4);
 BattleSetup* BattleSetup_New_PalPark(HeapID heapId, int monsRemaining);
 void BattleSetup_AddMonToParty(BattleSetup* setup, Pokemon* mon, int battler);
 

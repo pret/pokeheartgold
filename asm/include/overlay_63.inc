@@ -139,8 +139,8 @@
 .public Mon_GetBoxMon
 .public sub_02072914
 .public sub_020729A4
-.public GetPartyCount
-.public GetPartyMonByIndex
+.public Party_GetCount
+.public Party_GetMonByIndex
 .public NNS_G2dGetImageLocation
 .public NNS_G2dGetImagePaletteLocation
 .public NNS_G3dGeBufferOP_N

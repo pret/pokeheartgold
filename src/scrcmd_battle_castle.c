@@ -196,7 +196,7 @@ static BOOL sub_0204FC10(TaskManager *taskManager) {
 static u32 sub_0204FC78(UnkStruct_0204FBDC *a0, FieldSystem *fsys, HeapID unused) {
     PartyMenuAppData *partyMenu = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuAppData));
     MIi_CpuClearFast(0, (u32 *)partyMenu, sizeof(PartyMenuAppData));
-    partyMenu->party = SaveArray_PlayerParty_Get(fsys->savedata);
+    partyMenu->party = SaveArray_Party_Get(fsys->savedata);
     partyMenu->bag = Save_Bag_Get(fsys->savedata);
     partyMenu->mailbox = Save_Mailbox_Get(fsys->savedata);
     partyMenu->options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
@@ -243,12 +243,12 @@ static u32 sub_0204FDA0(UnkStruct_0204FBDC *a0, FieldSystem *fsys, HeapID heapId
     UnkStruct_0204F448 *unk = AllocFromHeapAtEnd(heapId, sizeof(UnkStruct_0204F448));
     MI_CpuFill8(unk, 0, sizeof(UnkStruct_0204F448));
     unk->options = Save_PlayerData_GetOptionsAddr(saveData);
-    unk->party = SaveArray_PlayerParty_Get(saveData);
+    unk->party = SaveArray_Party_Get(saveData);
     unk->isNatDexEnabled = SaveArray_IsNatDexEnabled(saveData);
     unk->unk2C = sub_02088288(saveData);
     unk->unk11 = 1;
     unk->unk14 = a0->unk05;
-    unk->partyCount = GetPartyCount(unk->party);
+    unk->partyCount = Party_GetCount(unk->party);
     unk->unk18 = 0;
     unk->unk12 = 0;
     unk->ribbons = Save_SpecialRibbons_Get(saveData);

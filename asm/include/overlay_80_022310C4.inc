@@ -29,8 +29,8 @@
 .public AllocMonZeroed
 .public GetMonData
 .public SaveArray_Party_Alloc
-.public GetPartyMonByIndex
-.public SaveArray_PlayerParty_Get
+.public Party_GetMonByIndex
+.public SaveArray_Party_Get
 .public MI_CpuFill8
 .public _dadd
 .public _d2f

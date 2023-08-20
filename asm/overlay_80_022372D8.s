@@ -428,7 +428,7 @@ ov80_022375D0: ; 0x022375D0
 	str r0, [sp, #0x10]
 	ldr r0, _02237818 ; =0x000006FC
 	ldr r0, [r5, r0]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [sp, #0x1c]
 	bl HealParty
 	ldrb r0, [r5, #4]
@@ -453,7 +453,7 @@ ov80_022375D0: ; 0x022375D0
 	str r1, [r4, r0]
 	ldr r0, [r4, #4]
 	ldr r1, [sp, #0x18]
-	bl InitPartyWithMaxSize
+	bl Party_InitWithMaxSize
 	mov r0, #0xb
 	bl AllocMonZeroed
 	str r0, [sp, #0x20]
@@ -467,7 +467,7 @@ _02237642:
 	lsl r1, r1, #4
 	ldrb r1, [r2, r1]
 	ldr r0, [sp, #0x1c]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	ldr r1, [sp, #0x20]
 	bl CopyPokemonToPokemon
 	ldr r1, [sp, #0x20]
@@ -503,7 +503,7 @@ _02237668:
 	bl ov80_0222A480
 	ldr r0, [r4, #8]
 	ldr r1, [sp, #0x10]
-	bl InitPartyWithMaxSize
+	bl Party_InitWithMaxSize
 	ldr r1, _0223781C ; =0x000006F5
 	ldrb r2, [r5, #4]
 	ldrb r0, [r5, r1]
@@ -635,7 +635,7 @@ _0223777E:
 	bl ov80_0222A480
 	ldr r0, [r4, #0x10]
 	ldr r1, [sp, #0x10]
-	bl InitPartyWithMaxSize
+	bl Party_InitWithMaxSize
 	mov r0, #0xb
 	bl AllocMonZeroed
 	add r6, r0, #0
@@ -866,11 +866,11 @@ ov80_0223793C: ; 0x0223793C
 	add r4, r0, #0
 	ldr r0, _02237968 ; =0x000006FC
 	ldr r0, [r4, r0]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	mov r1, #0x26
 	lsl r1, r1, #4
 	ldrb r1, [r4, r1]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0xa1
 	mov r2, #0
 	bl GetMonData
@@ -950,12 +950,12 @@ ov80_022379C8: ; 0x022379C8
 	add r5, r0, #0
 	ldr r0, _02237A34 ; =0x000006FC
 	ldr r0, [r5, r0]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	mov r1, #0x26
 	lsl r1, r1, #4
 	ldrb r1, [r5, r1]
 	add r6, r0, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0xa1
 	mov r2, #0
 	bl GetMonData
@@ -968,7 +968,7 @@ ov80_022379C8: ; 0x022379C8
 	ldr r1, _02237A38 ; =0x00000261
 	add r0, r6, #0
 	ldrb r1, [r5, r1]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0xa1
 	mov r2, #0
 	bl GetMonData

@@ -187,29 +187,29 @@ ENC_SLOT *BugContest_GetEncounterSlot(BUGCONTEST *bugContest, HeapID heapId) {
 void BugContest_BackUpParty(BUGCONTEST *bugContest) {
     int i;
     bugContest->party_bak = SaveArray_Party_Alloc(bugContest->heapId);
-    bugContest->party_cur = SaveArray_PlayerParty_Get(bugContest->saveData);
+    bugContest->party_cur = SaveArray_Party_Get(bugContest->saveData);
     Party_Copy(bugContest->party_cur, bugContest->party_bak);
-    bugContest->party_cur_num = GetPartyCount(bugContest->party_cur);
+    bugContest->party_cur_num = Party_GetCount(bugContest->party_cur);
     bugContest->lead_mon_idx = Save_GetPartyLeadAlive(bugContest->saveData);
     // You can only enter the contest with one pokemon, so
     // remove any Pokemon other than the first that can battle.
     for (i = 0; i < bugContest->party_cur_num - 1; i++) {
         if (i < bugContest->lead_mon_idx) {
-            RemoveMonFromParty(bugContest->party_cur, 0);
+            Party_RemoveMon(bugContest->party_cur, 0);
         } else {
-            RemoveMonFromParty(bugContest->party_cur, 1);
+            Party_RemoveMon(bugContest->party_cur, 1);
         }
     }
 }
 
 void BugContest_RestoreParty_RetrieveCaughtPokemon(BUGCONTEST *bugContest) {
     Pokemon *mon;
-    PARTY_EXTRA_SUB sub;
+    PartyExtraSub sub;
 
     // Restore the player's party to its prior state, but keep the
     // state of the Pokemon you used intact.
     mon = AllocMonZeroed(bugContest->heapId);
-    CopyPokemonToPokemon(GetPartyMonByIndex(bugContest->party_cur, 0), mon);
+    CopyPokemonToPokemon(Party_GetMonByIndex(bugContest->party_cur, 0), mon);
     Party_GetUnkSubSlot(bugContest->party_cur, &sub, 0);
     Party_Copy(bugContest->party_bak, bugContest->party_cur);
     Party_SafeCopyMonToSlot_ResetUnkSub(bugContest->party_cur, bugContest->lead_mon_idx, mon);
@@ -222,7 +222,7 @@ void BugContest_RestoreParty_RetrieveCaughtPokemon(BUGCONTEST *bugContest) {
         if (bugContest->party_cur_num >= PARTY_SIZE) {
             PCStorage_PlaceMonInFirstEmptySlotInAnyBox(GetStoragePCPointer(bugContest->saveData), Mon_GetBoxMon(bugContest->mon));
         } else {
-            AddMonToParty(bugContest->party_cur, bugContest->mon);
+            Party_AddMon(bugContest->party_cur, bugContest->mon);
         }
     }
 }

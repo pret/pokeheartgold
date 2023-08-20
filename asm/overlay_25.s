@@ -257,7 +257,7 @@ ov25_02259AAC: ; 0x02259AAC
 	ldr r5, [r4, #0xc]
 	add r6, r0, #0
 	add r0, r5, #0
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	add r0, #0x94
@@ -284,18 +284,18 @@ ov25_02259AAC: ; 0x02259AAC
 	bl AllocMonZeroed
 	add r5, r0, #0
 	ldr r0, [sp, #0xc]
-	bl GetPartyCount
+	bl Party_GetCount
 	add r7, r0, #0
 	ldr r0, [r6, #4]
 	mov r1, #6
-	bl InitPartyWithMaxSize
+	bl Party_InitWithMaxSize
 	mov r4, #0
 	cmp r7, #0
 	ble _02259B60
 _02259B12:
 	ldr r0, [sp, #0xc]
 	add r1, r4, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r5, #0
 	bl CopyPokemonToPokemon
 	add r0, r5, #0
@@ -561,7 +561,7 @@ ov25_02259D14: ; 0x02259D14
 	mov r1, #6
 	add r0, r0, r4
 	ldr r0, [r0, #4]
-	bl InitPartyWithMaxSize
+	bl Party_InitWithMaxSize
 	add r5, #0x30
 	mov r7, #0
 	add r4, r5, #0

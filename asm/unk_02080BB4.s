@@ -374,7 +374,7 @@ sub_02080E9C: ; 0x02080E9C
 	ldrb r1, [r4, r1]
 	ldr r0, [r0]
 	add r5, r2, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, _02081244 ; =0x000007C4
@@ -1037,7 +1037,7 @@ sub_02081444: ; 0x02081444
 	ldr r0, [r5, r0]
 	ldrb r1, [r5, r1]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0xd
 	mov r2, #0
 	add r4, r0, #0
@@ -1236,7 +1236,7 @@ sub_020815E4: ; 0x020815E4
 	ldr r0, [r5, r0]
 	ldrb r1, [r5, r1]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0xa3
 	mov r2, #0
 	str r0, [sp, #8]
@@ -1364,7 +1364,7 @@ sub_02081720: ; 0x02081720
 	ldr r0, [r5, r0]
 	ldrb r1, [r5, r1]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0xa3
 	mov r2, #0
 	bl GetMonData
@@ -1554,7 +1554,7 @@ _02081894:
 	ldr r0, [r4, r0]
 	ldrb r1, [r4, r1]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r5, r0, #0
 	add r0, r4, #0
 	bl sub_020828EC
@@ -1641,7 +1641,7 @@ _0208195C:
 	ldr r0, [r4, r0]
 	ldrb r1, [r4, r1]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0xa3
 	mov r2, #0
 	bl GetMonData
@@ -1769,7 +1769,7 @@ sub_02081A74: ; 0x02081A74
 	ldr r0, [r5, r0]
 	ldrb r1, [r5, r1]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0xa4
 	mov r2, #0
 	add r4, r0, #0
@@ -2043,7 +2043,7 @@ _02081CE4:
 	ldr r0, [r4, r0]
 	ldrb r1, [r4, r1]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	ldr r1, _02081EB8 ; =0x00000654
 	add r5, r0, #0
 	ldr r2, [r4, r1]
@@ -2167,7 +2167,7 @@ _02081DF0:
 	ldr r0, [r4, r0]
 	ldrb r1, [r4, r1]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	ldr r2, _02081EB8 ; =0x00000654
 	add r1, r0, #0
 	ldr r2, [r4, r2]
@@ -2211,7 +2211,7 @@ _02081E54:
 	ldr r0, [r4, r0]
 	ldrb r1, [r4, r1]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r5, r0, #0
 	ldr r0, _02081EB8 ; =0x00000654
 	ldr r0, [r4, r0]
@@ -2278,7 +2278,7 @@ sub_02081ED0: ; 0x02081ED0
 	ldr r0, [r4, r0]
 	ldrb r1, [r4, r1]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r5, r0, #0
 	bl Mon_GetBoxMon
 	add r2, r0, #0
@@ -2561,7 +2561,7 @@ sub_02082134: ; 0x02082134
 	ldr r0, [r4, r0]
 	ldrb r1, [r4, r1]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r6, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
@@ -2749,7 +2749,7 @@ sub_020822CC: ; 0x020822CC
 	ldr r0, [r4, r0]
 	ldrb r1, [r4, r1]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r5, r0, #0
 	bl Mon_GetBoxMon
 	add r2, r0, #0
@@ -2822,7 +2822,7 @@ sub_02082370: ; 0x02082370
 	ldr r0, [r5, r0]
 	ldrb r1, [r5, r1]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	ldr r2, _020823E4 ; =0x00000654
 	add r1, r0, #0
 	ldr r2, [r5, r2]
@@ -3110,7 +3110,7 @@ sub_020825D8: ; 0x020825D8
 	ldr r0, [r5, r0]
 	ldrb r1, [r5, r1]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r6, #0
 	add r1, #0x36
 	mov r2, #0
@@ -3342,7 +3342,7 @@ _02082794:
 	ldr r0, [r5, r0]
 	ldrb r1, [r5, r1]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r4, #0x36
 	add r1, r4, #0
 	mov r2, #0

@@ -149,8 +149,8 @@
 .public sub_02074490
 .public sub_02074498
 .public sub_020744A4
-.public GetPartyCount
-.public GetPartyMonByIndex
+.public Party_GetCount
+.public Party_GetMonByIndex
 .public ItemIdIsMail
 .public Bag_HasItem
 .public Save_Bag_Get

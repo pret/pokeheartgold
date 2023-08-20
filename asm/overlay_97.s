@@ -219,7 +219,7 @@ _0221E76A:
 	bl GetStoragePCPointer
 	add r7, r0, #0
 	ldr r0, [r5]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r3, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -518,9 +518,9 @@ _0221E9B4:
 	cmp r6, #0x12
 	bne _0221EA20
 	ldr r0, [r0]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	ldr r1, [r5, #0x14]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #5
 	mov r2, #0
 	add r6, r0, #0
@@ -550,7 +550,7 @@ _0221E9B4:
 	strb r0, [r4, #0x1d]
 	ldr r0, [r7]
 	ldr r0, [r0]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	ldr r1, [r5, #0x14]
 	ldr r2, [sp]
 	lsl r1, r1, #0x18
@@ -620,7 +620,7 @@ ov97_0221EA88: ; 0x0221EA88
 	bl Party_GetUnkSubSlot
 	add r0, r6, #0
 	add r1, r5, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r0, #0
 	add r0, sp, #0
 	add r2, sp, #8
@@ -838,10 +838,10 @@ _0221EC3C:
 	cmp r6, #0x12
 	ldr r0, [r5, #0x2c]
 	bne _0221ED1C
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r1, r4, #0
 	add r7, r0, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0
 	add r6, r0, #0
 	add r2, r1, #0
@@ -876,7 +876,7 @@ _0221EC3C:
 	strb r0, [r1, #8]
 	add r0, r7, #0
 	add r1, r4, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	bl Mon_GetBoxMon
 	lsl r1, r4, #0x18
 	add r6, r0, #0

@@ -846,7 +846,7 @@ _0207D214:
 	ldr r1, _0207D25C ; =0x00000C65
 	ldr r0, [r0]
 	ldrb r1, [r5, r1]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r6, r0, #0
 	mov r0, #0x1f
 	lsl r0, r0, #6
@@ -1504,7 +1504,7 @@ _0207D75A:
 	add r1, r4, #0
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r0, #0
 	mov r0, #0
 	ldr r3, _0207D7A4 ; =0x00000654
@@ -1574,7 +1574,7 @@ _0207D7EE:
 	add r1, r4, #0
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r0, #0
 	add r0, r5, #0
 	bl sub_020820DC
@@ -2354,7 +2354,7 @@ sub_0207DDFC: ; 0x0207DDFC
 	ldr r0, [r5, r0]
 	ldrb r1, [r5, r1]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0xa4
 	mov r2, #0
 	add r4, r0, #0
@@ -2650,7 +2650,7 @@ sub_0207E068: ; 0x0207E068
 	ldr r0, [r5, r0]
 	ldrb r1, [r5, r1]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r6, r0, #0
 	mov r0, #0x1f
 	lsl r0, r0, #6
@@ -2692,7 +2692,7 @@ sub_0207E068: ; 0x0207E068
 	ldr r0, [r5, r0]
 	ldrb r1, [r5, r1]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r6, r0, #0
 	mov r0, #0x1f
 	lsl r0, r0, #6

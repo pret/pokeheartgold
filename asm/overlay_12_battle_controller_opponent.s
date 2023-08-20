@@ -2180,13 +2180,13 @@ _02259832:
 	bl BattleSystem_GetParty
 	add r6, r0, #0
 	mov r5, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	ble _022598A0
 _02259846:
 	add r0, r6, #0
 	add r1, r5, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #5
 	mov r2, #0
 	add r4, r0, #0
@@ -2221,7 +2221,7 @@ _02259888:
 _02259894:
 	add r0, r6, #0
 	add r5, r5, #1
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r5, r0
 	blt _02259846
 _022598A0:
@@ -12377,10 +12377,10 @@ _0225EA18:
 	mov r1, #6
 	ldr r0, [r0, #4]
 	ldr r0, [r0]
-	bl InitPartyWithMaxSize
+	bl Party_InitWithMaxSize
 	ldr r0, [sp, #0x14]
 	mov r6, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	ble _0225EA66
 	mov r0, #6
@@ -12395,7 +12395,7 @@ _0225EA36:
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #4]
 	ldr r0, [r0]
-	bl AddMonToParty
+	bl Party_AddMon
 	ldr r1, [r4, #8]
 	ldrb r0, [r5, #0x18]
 	ldr r1, [r1, #4]
@@ -12405,7 +12405,7 @@ _0225EA36:
 	strb r0, [r1]
 	ldr r0, [sp, #0x14]
 	add r6, r6, #1
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r6, r0
 	blt _0225EA36
 _0225EA66:
@@ -13835,7 +13835,7 @@ _0225F5E6:
 	ldr r0, [r4, #4]
 	add r1, r6, #0
 	ldr r0, [r0]
-	bl AddMonToParty
+	bl Party_AddMon
 	add r5, r5, #1
 	cmp r5, #6
 	blt _0225F5E6
@@ -13861,7 +13861,7 @@ _0225F614:
 	ldr r0, [r4, #4]
 	add r1, r6, #0
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r0, #0
 	ldr r0, [sp, #0x1c]
 	bl CopyPokemonToPokemon
@@ -13901,7 +13901,7 @@ _0225F66A:
 	ldr r0, [r4, #4]
 	ldr r1, [sp, #0xc]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r0, #0
 	ldr r0, [sp, #0x20]
 	bl CopyPokemonToPokemon
@@ -13972,7 +13972,7 @@ _0225F6FC:
 	bl BattleSystem_GetParty
 	str r0, [sp, #0x10]
 	mov r6, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	ble _0225F746
 	mov r0, #6
@@ -13986,7 +13986,7 @@ _0225F71A:
 	add r1, r0, #0
 	ldr r0, [r4, #4]
 	ldr r0, [r0]
-	bl AddMonToParty
+	bl Party_AddMon
 	ldr r0, [r4, #4]
 	ldrb r1, [r5, #0x1c]
 	add r0, r0, r6
@@ -13995,7 +13995,7 @@ _0225F71A:
 	ldr r0, [sp, #0x10]
 	add r5, r5, #1
 	add r6, r6, #1
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r6, r0
 	blt _0225F71A
 _0225F746:
@@ -14209,7 +14209,7 @@ _0225F8D6:
 	bl BattleSystem_GetParty
 	str r0, [sp, #8]
 	mov r4, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	ble _0225F93A
 	ldr r0, [sp, #4]
@@ -14234,7 +14234,7 @@ _0225F90C:
 _0225F92E:
 	ldr r0, [sp, #8]
 	add r4, r4, #1
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r4, r0
 	blt _0225F90C
 _0225F93A:
@@ -14317,7 +14317,7 @@ _0225F9CA:
 _0225F9D2:
 	add r1, sp, #0
 	ldrb r5, [r1]
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r5, r0
 	ldr r0, [r4]
 	ble _0225F9E6

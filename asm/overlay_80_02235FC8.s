@@ -140,7 +140,7 @@ ov80_0223608C: ; 0x0223608C
 	mov r2, #0x44
 	bl MIi_CpuClearFast
 	ldr r0, [r5]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r1, r5, #0
 	add r1, #0xa8
 	ldr r1, [r1]
@@ -491,7 +491,7 @@ ov80_02236330: ; 0x02236330
 	ldr r1, [r1]
 	str r0, [r1, #4]
 	ldr r0, [r4]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r1, r4, #0
 	add r1, #0xac
 	ldr r1, [r1]
@@ -524,7 +524,7 @@ ov80_02236330: ; 0x02236330
 	add r0, #0xac
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl GetPartyCount
+	bl Party_GetCount
 	add r1, r4, #0
 	add r1, #0xac
 	ldr r1, [r1]

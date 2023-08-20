@@ -1971,7 +1971,7 @@ _0203CB1A:
 	bl AllocFromHeap
 	add r7, r0, #0
 	ldr r0, [r5, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [r7]
 	ldr r0, [r5, #0xc]
 	bl Save_PlayerData_GetOptionsAddr
@@ -1983,7 +1983,7 @@ _0203CB1A:
 	ldrb r0, [r0]
 	strb r0, [r7, #0x14]
 	ldr r0, [r7]
-	bl GetPartyCount
+	bl Party_GetCount
 	strb r0, [r7, #0x13]
 	mov r0, #0
 	strh r0, [r7, #0x18]
@@ -2030,7 +2030,7 @@ _0203CBA8:
 	bl AllocFromHeap
 	add r7, r0, #0
 	ldr r0, [r5, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [r7]
 	ldr r0, [r5, #0xc]
 	bl Save_PlayerData_GetOptionsAddr
@@ -2094,7 +2094,7 @@ _0203CC3E:
 	bl AllocFromHeap
 	add r7, r0, #0
 	ldr r0, [r5, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [r7]
 	ldr r0, [r5, #0xc]
 	bl Save_PlayerData_GetOptionsAddr
@@ -2195,11 +2195,11 @@ _0203CD1A:
 	b _0203CEFE
 _0203CD2A:
 	ldr r0, [r5, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r1, r6, #0
 	add r1, #0x26
 	ldrb r1, [r1]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r0, #0
 	add r0, r5, #0
 	mov r2, #0xb
@@ -2478,7 +2478,7 @@ sub_0203CF74: ; 0x0203CF74
 	add r5, r0, #0
 	bl memset
 	ldr r0, [r4, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [r5]
 	ldr r0, [r4, #0xc]
 	bl Save_Bag_Get
@@ -2614,7 +2614,7 @@ _0203D066:
 _0203D0AC:
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [sp, #4]
 	mov r0, #0xe1
 	lsl r0, r0, #2
@@ -2625,7 +2625,7 @@ _0203D0AC:
 	add r5, r0, #0
 	ldr r0, [sp, #4]
 	add r1, r6, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	str r0, [sp, #0xc]
 	mov r0, #0xe1
 	lsl r0, r0, #2
@@ -3488,9 +3488,9 @@ Task_UseFlyInField: ; 0x0203D758
 	b _0203D808
 _0203D7AE:
 	ldr r0, [r7, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r1, r6, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r2, r0, #0
 	ldrh r0, [r5, #0x20]
 	lsl r3, r6, #0x10
@@ -3706,7 +3706,7 @@ sub_0203D940: ; 0x0203D940
 	strb r0, [r1]
 	ldrb r1, [r6, #2]
 	ldr r0, [r4]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r0, #0
 	mov r0, #0xe
 	lsl r0, r0, #6
@@ -3777,10 +3777,10 @@ sub_0203D9E8: ; 0x0203D9E8
 	lsl r2, r0, #0x10
 	bl CreateHeap
 	ldr r0, [r4, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	ldrb r1, [r5]
 	str r0, [sp, #0x1c]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	str r0, [sp, #0x20]
 	ldrb r0, [r5, #1]
 	cmp r0, #0

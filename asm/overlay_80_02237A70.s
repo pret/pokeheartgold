@@ -210,7 +210,7 @@ ov80_02237B8C: ; 0x02237B8C
 	str r1, [r4, r0]
 	ldr r0, [r4, #4]
 	ldr r1, [sp, #0x10]
-	bl InitPartyWithMaxSize
+	bl Party_InitWithMaxSize
 	bl sub_0203769C
 	cmp r0, #0
 	bne _02237BF0
@@ -230,7 +230,7 @@ _02237BF2:
 _02237C04:
 	ldr r0, [r5, #0x28]
 	add r1, r6, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r7, #0
 	bl CopyPokemonToPokemon
 	add r0, r4, #0
@@ -270,7 +270,7 @@ _02237C2A:
 	bl ov80_02237B58
 	add r1, r0, #0
 	ldr r0, [r4, #8]
-	bl InitPartyWithMaxSize
+	bl Party_InitWithMaxSize
 	mov r7, #0
 	add r6, r4, #0
 _02237C70:
@@ -291,7 +291,7 @@ _02237C70:
 _02237C90:
 	ldr r0, [r5, #0x2c]
 	add r1, r6, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r7, #0
 	bl CopyPokemonToPokemon
 	add r0, r4, #0
@@ -343,7 +343,7 @@ _02237CC0:
 	bl ov80_02237B58
 	add r1, r0, #0
 	ldr r0, [r4, #0x10]
-	bl InitPartyWithMaxSize
+	bl Party_InitWithMaxSize
 	mov r0, #0xb
 	bl AllocMonZeroed
 	add r7, r0, #0
@@ -356,7 +356,7 @@ _02237CC0:
 _02237D28:
 	ldr r0, [r5, #0x2c]
 	add r1, r6, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r7, #0
 	bl CopyPokemonToPokemon
 	add r0, r4, #0
@@ -436,7 +436,7 @@ _02237D98:
 ov80_02237D9C: ; 0x02237D9C
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	add r6, r0, #0
 	mov r4, #0
 	cmp r6, #0
@@ -444,7 +444,7 @@ ov80_02237D9C: ; 0x02237D9C
 _02237DAC:
 	add r0, r7, #0
 	add r1, r4, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0xac
 	mov r2, #0
 	add r5, r0, #0
@@ -507,7 +507,7 @@ ov80_02237E18: ; 0x02237E18
 	bl ov80_02237DF4
 	add r0, r5, #0
 	add r1, r4, #0
-	bl AddMonToParty
+	bl Party_AddMon
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov80_02237E18

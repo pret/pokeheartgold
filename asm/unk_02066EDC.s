@@ -31,7 +31,7 @@ sub_02066EDC: ; 0x02066EDC
 	bl Save_PlayerData_GetOptionsAddr
 	str r0, [r4, #0xc]
 	add r0, r7, #0
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [r4]
 	add r0, r7, #0
 	bl Save_Bag_Get
@@ -169,7 +169,7 @@ sub_02066FEC: ; 0x02066FEC
 	bl Save_PlayerData_GetOptionsAddr
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [r4]
 	add r0, r5, #0
 	bl SaveArray_IsNatDexEnabled
@@ -182,7 +182,7 @@ sub_02066FEC: ; 0x02066FEC
 	ldrb r0, [r6, #0xd]
 	strb r0, [r4, #0x14]
 	ldr r0, [r4]
-	bl GetPartyCount
+	bl Party_GetCount
 	strb r0, [r4, #0x13]
 	mov r0, #0
 	strh r0, [r4, #0x18]

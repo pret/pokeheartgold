@@ -4,8 +4,8 @@
 .public GetMonData
 .public GetMonBaseStat
 .public MaskOfFlagNo
-.public GetPartyCount
-.public GetPartyMonByIndex
+.public Party_GetCount
+.public Party_GetMonByIndex
 .public _s32_div_f
 .public _u32_div_f
 .public ov10_0221BE20

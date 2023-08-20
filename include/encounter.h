@@ -32,7 +32,7 @@ void sub_02050B90(FieldSystem *fsys, TaskManager *taskManager, BattleSetup *setu
 void sub_0205239C(BattleSetup *setup, FieldSystem *fsys);
 void sub_02050AAC(TaskManager *man, BattleSetup *setup, int effect, int bgm, u32 *winFlag);
 void sub_020511F8(FieldSystem *fsys, BattleSetup *setup);
-void sub_020515FC(FieldSystem *fsys, PARTY *party, int battleFlags);
+void sub_020515FC(FieldSystem *fsys, Party *party, int battleFlags);
 void sub_02051598(FieldSystem *fsys, void *a1, int battleFlags);
 void sub_020514A4(TaskManager *man, int target, int maxLevel, int flag);
 

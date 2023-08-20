@@ -89,9 +89,9 @@
 .public CalcMonPokeathlonStars
 .public PCStorage_GetBoxName
 .public PCStorage_GetMonByIndexPair
-.public GetPartyMonByIndex
+.public Party_GetMonByIndex
 .public Party_GetUnkSubSlot
-.public SaveArray_PlayerParty_Get
+.public SaveArray_Party_Get
 .public sub_0208B85C
 .public sub_020932E0
 .public sub_02093354

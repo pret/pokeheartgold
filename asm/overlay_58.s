@@ -311,7 +311,7 @@ _02237B10:
 	bl Party_SetUnkSubSlot
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #7
 	bl ApplyMonMoodModifier
 	add sp, #0x24
@@ -431,7 +431,7 @@ ov58_02237BD4: ; 0x02237BD4
 	bl MI_CpuFill8
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [r4]
 	ldr r0, [r5, #4]
 	ldr r0, [r0, #0x18]

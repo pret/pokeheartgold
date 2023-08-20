@@ -57,8 +57,8 @@
 .public Party_GetMaxLevel
 .public MaskOfFlagNo
 .public GetTrainerMessageByIdPair
-.public GetPartyCount
-.public GetPartyMonByIndex
+.public Party_GetCount
+.public Party_GetMonByIndex
 .public GetItemAttr
 .public BallToItemId
 .public ApplyItemEffectOnMonMood

@@ -4,7 +4,7 @@
 extern struct OVY_MGR_TEMPLATE _02103A1C;
 
 typedef struct UnkStruct_0204F448 {
-    PARTY *party;
+    Party *party;
     OPTIONS *options;
     u8 filler08[9];
     u8 unk11;

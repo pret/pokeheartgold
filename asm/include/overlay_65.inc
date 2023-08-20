@@ -202,11 +202,11 @@
 .public GetMonIconPaletteEx
 .public sub_02074490
 .public SaveArray_Party_sizeof
-.public InitPartyWithMaxSize
-.public GetPartyCount
-.public GetPartyMonByIndex
+.public Party_InitWithMaxSize
+.public Party_GetCount
+.public Party_GetMonByIndex
 .public Party_ResetUnkSubSlot
-.public PartyHasMon
+.public Party_HasMon
 .public GetItemNameIntoString
 .public ItemIdIsMail
 .public Bag_HasItem

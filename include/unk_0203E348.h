@@ -19,7 +19,7 @@ struct UnownReportWork;
 struct GracideaWork;
 
 typedef struct PartyMenuAppData {
-    PARTY *party;
+    Party *party;
     Bag *bag;
     MAILBOX *mailbox;
     OPTIONS *options;

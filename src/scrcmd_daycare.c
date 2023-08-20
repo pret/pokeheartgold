@@ -43,7 +43,7 @@ BOOL ScrCmd_ResetDaycareEgg(ScriptContext* ctx) {
 BOOL ScrCmd_GiveDaycareEgg(ScriptContext* ctx) {
     FieldSystem* fsys = ctx->fsys;
     Daycare* daycare = SaveArray_Get(fsys->savedata, SAVE_DAYCARE);
-    PARTY* party = SaveArray_PlayerParty_Get(fsys->savedata);
+    Party* party = SaveArray_Party_Get(fsys->savedata);
     SaveData* savedata = FieldSystem_GetSaveDataPtr(ctx->fsys);
     PlayerProfile* profile = Save_PlayerData_GetProfileAddr(savedata);
 
@@ -59,7 +59,7 @@ BOOL ScrCmd_RetrieveDaycareMon(ScriptContext* ctx) {
     u16* ret_ptr = ScriptGetVarPointer(ctx);
     u16 daycare_mon_idx = ScriptGetVar(ctx);
     Daycare* daycare = SaveArray_Get(savedata, SAVE_DAYCARE);
-    PARTY* party = SaveArray_PlayerParty_Get(fsys->savedata);
+    Party* party = SaveArray_Party_Get(fsys->savedata);
 
     *ret_ptr = Save_Daycare_RetrieveMon(party, *msg_fmt, daycare, (u8)daycare_mon_idx);
 
@@ -106,7 +106,7 @@ BOOL ScrCmd_PutMonInDaycare(ScriptContext* ctx) {
     FieldSystem* fsys = ctx->fsys;
     SaveData* savedata = fsys->savedata;
     u16 slot = ScriptGetVar(ctx);
-    PARTY* party = SaveArray_PlayerParty_Get(fsys->savedata);
+    Party* party = SaveArray_Party_Get(fsys->savedata);
     Daycare* daycare = SaveArray_Get(savedata, SAVE_DAYCARE);
 
     Save_Daycare_PutMonIn(party, (u8)slot, daycare, savedata);
@@ -205,8 +205,8 @@ BOOL ScrCmd_DaycareSanitizeMon(ScriptContext* ctx) {
     FieldSystem* fsys = ctx->fsys;
     u16 party_slot = ScriptGetVar(ctx);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
-    PARTY* party = SaveArray_PlayerParty_Get(fsys->savedata);
-    mon = GetPartyMonByIndex(party, party_slot);
+    Party* party = SaveArray_Party_Get(fsys->savedata);
+    mon = Party_GetMonByIndex(party, party_slot);
 
     *ret_ptr = 0;
 

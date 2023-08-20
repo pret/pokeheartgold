@@ -13,10 +13,10 @@
 .public AllocMonZeroed
 .public CopyPokemonToPokemon
 .public SaveArray_Party_Init
-.public InitPartyWithMaxSize
-.public RemoveMonFromParty
-.public GetPartyCount
-.public GetPartyMonByIndex
+.public Party_InitWithMaxSize
+.public Party_RemoveMon
+.public Party_GetCount
+.public Party_GetMonByIndex
 .public HealParty
 .public _s32_div_f
 .public ov80_02229EF4

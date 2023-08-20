@@ -2809,7 +2809,7 @@ ov80_0222D284: ; 0x0222D284
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	bl HealParty
 	mov r0, #0
 	pop {r3, pc}
@@ -4507,9 +4507,9 @@ ov80_0222DF64: ; 0x0222DF64
 	ldr r0, [r0]
 	bl sub_02096808
 	ldr r0, [r0, #8]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	ldr r1, [sp, #0x18]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	str r4, [sp]
 	add r1, r0, #0
 	str r6, [sp, #4]

@@ -133,7 +133,7 @@ static BOOL sub_02050738(TaskManager *man) {
 
             if (sub_020506F4(encounter, fsys) == 0) {
                 if (encounter->setup->flags & (1 << 11)) {
-                    HealParty(SaveArray_PlayerParty_Get(fsys->savedata));
+                    HealParty(SaveArray_Party_Get(fsys->savedata));
                 } else {
                     Encounter_Delete(encounter);
                     return TRUE;
@@ -141,7 +141,7 @@ static BOOL sub_02050738(TaskManager *man) {
             }
 
             if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(fsys->savedata))) {
-                HealParty(SaveArray_PlayerParty_Get(fsys->savedata));
+                HealParty(SaveArray_Party_Get(fsys->savedata));
             }
 
             sub_02051660(fsys, encounter->setup);
@@ -374,7 +374,7 @@ static BOOL Task_WildEncounter(TaskManager *man) {
         }
 
         if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(fsys->savedata))) {
-            HealParty(SaveArray_PlayerParty_Get(fsys->savedata));
+            HealParty(SaveArray_Party_Get(fsys->savedata));
         }
 
         sub_02051660(fsys, encounter->setup);
@@ -421,7 +421,7 @@ static BOOL Task_SafariEncounter(TaskManager *man) {
         sub_02050724(encounter->setup, fsys);
         if (encounter->setup->winFlag == BATTLE_OUTCOME_MON_CAUGHT) {
             sub_020270C4(fsys->savedata);
-            GetPartyMonByIndex(encounter->setup->party[1], 0);
+            Party_GetMonByIndex(encounter->setup->party[1], 0);
             sub_02093070(fsys);
             sub_020930C4(fsys);
         }
@@ -458,8 +458,8 @@ static BOOL Task_SafariEncounter(TaskManager *man) {
             }
         } else {
             PC_STORAGE *pc = GetStoragePCPointer(fsys->savedata);
-            PARTY *party = SaveArray_PlayerParty_Get(fsys->savedata);
-            if (PCStorage_FindFirstBoxWithEmptySlot(pc) == 18 && GetPartyCount(party) == 6) {
+            Party *party = SaveArray_Party_Get(fsys->savedata);
+            if (PCStorage_FindFirstBoxWithEmptySlot(pc) == 18 && Party_GetCount(party) == 6) {
                 QueueScript(man, std_safari_storage_out, NULL, NULL);
             }
         }
@@ -566,7 +566,7 @@ void sub_02051090(TaskManager *man, u16 species, u8 level, u32 *winFlag, BOOL ca
 
     var = 1;
 
-    SetMonData(GetPartyMonByIndex(setup->party[1], 0), 110, &var);
+    SetMonData(Party_GetMonByIndex(setup->party[1], 0), 110, &var);
 
     if (canRun) {
         setup->unkCC |= 8;
@@ -844,7 +844,7 @@ void sub_02051598(FieldSystem *fsys, void *a1, int battleType) {
     FieldSys_CreateTask(fsys, sub_02051540, encounter);
 }
 
-void sub_020515FC(FieldSystem *fsys, PARTY *party, int battleType) {
+void sub_020515FC(FieldSystem *fsys, Party *party, int battleType) {
     ENCOUNTER *encounter;
     BattleSetup *setup;
     int var;
@@ -873,7 +873,7 @@ static void sub_02051660(FieldSystem *fsys, BattleSetup *setup) {
         if (winFlag == BATTLE_OUTCOME_WIN) {
             GameStats_AddSpecial(Save_GameStats_Get(fsys->savedata), GAME_STAT_UNK9);
         } else if (winFlag == BATTLE_OUTCOME_MON_CAUGHT) {
-            mon = GetPartyMonByIndex(setup->party[1], 0);
+            mon = Party_GetMonByIndex(setup->party[1], 0);
             if (Pokedex_ConvertToCurrentDexNo(0, GetMonData(mon, MON_DATA_SPECIES, NULL)) != 0) {
                 GameStats_AddSpecial(Save_GameStats_Get(fsys->savedata), GAME_STAT_UNK10);
             } else {
@@ -885,7 +885,7 @@ static void sub_02051660(FieldSystem *fsys, BattleSetup *setup) {
             GameStats_AddSpecial(Save_GameStats_Get(fsys->savedata), GAME_STAT_UNK12);
         }
     } else if ((battleType & BATTLE_TYPE_SAFARI || battleType & BATTLE_TYPE_PAL_PARK) && winFlag == BATTLE_OUTCOME_MON_CAUGHT) {
-        mon = GetPartyMonByIndex(setup->party[1], 0);
+        mon = Party_GetMonByIndex(setup->party[1], 0);
         if (Pokedex_ConvertToCurrentDexNo(0, GetMonData(mon, MON_DATA_SPECIES, NULL)) != 0) {
             GameStats_AddSpecial(Save_GameStats_Get(fsys->savedata), GAME_STAT_UNK10);
         } else {

@@ -317,8 +317,8 @@ _0205BD1C: .word 0x000004AA
 Save_GetPartyLead: ; 0x0205BD20
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
-	bl SaveArray_PlayerParty_Get
-	bl GetPartyCount
+	bl SaveArray_Party_Get
+	bl Party_GetCount
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	ldr r4, _0205BD60 ; =0x00000000
@@ -326,9 +326,9 @@ Save_GetPartyLead: ; 0x0205BD20
 	mov r7, #0x4c
 _0205BD36:
 	add r0, r6, #0
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r1, r4, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r7, #0
 	mov r2, #0
 	bl GetMonData
@@ -353,17 +353,17 @@ _0205BD60: .word 0x00000000
 Save_GetPartyLeadAlive: ; 0x0205BD64
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
-	bl SaveArray_PlayerParty_Get
-	bl GetPartyCount
+	bl SaveArray_Party_Get
+	bl Party_GetCount
 	lsl r0, r0, #0x10
 	lsr r6, r0, #0x10
 	ldr r5, _0205BDB4 ; =0x00000000
 	beq _0205BDAE
 _0205BD78:
 	add r0, r7, #0
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r1, r5, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0x4c
 	mov r2, #0
 	add r4, r0, #0
@@ -396,9 +396,9 @@ Save_PlayerHasAllRegisInParty: ; 0x0205BDB8
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	mov r7, #0
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [sp]
-	bl GetPartyCount
+	bl Party_GetCount
 	add r4, r0, #0
 	add r6, r7, #0
 	cmp r4, #0
@@ -407,7 +407,7 @@ Save_PlayerHasAllRegisInParty: ; 0x0205BDB8
 _0205BDD2:
 	ldr r0, [sp]
 	add r1, r6, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #5
 	mov r2, #0
 	bl GetMonData

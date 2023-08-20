@@ -37,7 +37,7 @@ _021E593C:
 	bl GF_AssertFail
 _021E5946:
 	ldr r0, [r5]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r7, r0, #0
 	mov r0, #0x52
 	str r0, [r4]
@@ -50,7 +50,7 @@ _021E5946:
 	str r0, [r4, #0xc]
 	add r0, r7, #0
 	add r1, r6, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	str r0, [r4, #0x10]
 	mov r0, #0
 	add r1, r0, #0

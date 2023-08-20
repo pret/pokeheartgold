@@ -6,8 +6,8 @@
 .public IsPokemonBannedFromBattleFrontier
 .public SpeciesIsMythical
 .public MonCheckFrontierIneligibility
-.public GetPartyCount
-.public GetPartyMonByIndex
+.public Party_GetCount
+.public Party_GetMonByIndex
 .public sub_02074944
 .public sub_0207495C
 .public sub_0207496C

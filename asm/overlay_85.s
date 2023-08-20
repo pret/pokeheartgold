@@ -45,7 +45,7 @@ ov85_021E5900: ; 0x021E5900
 	add r0, #0xcc
 	ldr r0, [r0]
 	ldr r0, [r0, #0x1c]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [r6, #0x24]
 	mov r0, #0xbb
 	mov r1, #0x66
@@ -6192,11 +6192,11 @@ ov85_021E86CC: ; 0x021E86CC
 	ldr r5, [r0, #0x44]
 	ldr r1, [r1, #4]
 	add r0, r6, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r4, r0, #0
 	add r0, r7, #0
 	add r1, r5, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r5, r0, #0
 	bl sub_0203769C
 	bl sub_02034818
@@ -6341,7 +6341,7 @@ _021E87EC: .word ov85_021EA758
 ov85_021E87F0: ; 0x021E87F0
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	add r6, r0, #0
 	mov r5, #0
 	cmp r6, #0
@@ -6349,7 +6349,7 @@ ov85_021E87F0: ; 0x021E87F0
 _021E8800:
 	add r0, r7, #0
 	add r1, r5, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0x4c
 	mov r2, #0
 	add r4, r0, #0

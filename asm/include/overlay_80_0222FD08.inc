@@ -29,8 +29,8 @@
 .public GetMonData
 .public SaveArray_Party_Alloc
 .public SaveArray_Party_Init
-.public GetPartyCount
-.public GetPartyMonByIndex
+.public Party_GetCount
+.public Party_GetMonByIndex
 .public Party_SafeCopyMonToSlot_ResetUnkSub
 .public MI_CpuFill8
 .public _s32_div_f

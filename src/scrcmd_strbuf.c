@@ -62,8 +62,8 @@ BOOL ScrCmd_BufferMonSpeciesName(ScriptContext* ctx) {
     u8 idx = ScriptReadByte(ctx);
     u16 party_mon_idx = ScriptGetVar(ctx);
 
-    PARTY* party = SaveArray_PlayerParty_Get(fsys->savedata);
-    Pokemon *mon = GetPartyMonByIndex(party, party_mon_idx);
+    Party* party = SaveArray_Party_Get(fsys->savedata);
+    Pokemon *mon = Party_GetMonByIndex(party, party_mon_idx);
     BufferBoxMonSpeciesName(*msg_fmt, idx, &mon->box);
 
     return FALSE;
@@ -169,8 +169,8 @@ BOOL ScrCmd_BufferPartyMonNick(ScriptContext* ctx) {
     u8 idx = ScriptReadByte(ctx);
     u16 party_mon_idx = ScriptGetVar(ctx);
 
-    PARTY* party = SaveArray_PlayerParty_Get(fsys->savedata);
-    Pokemon *mon = GetPartyMonByIndex(party, party_mon_idx);
+    Party* party = SaveArray_Party_Get(fsys->savedata);
+    Pokemon *mon = Party_GetMonByIndex(party, party_mon_idx);
     BufferBoxMonNickname(*msg_fmt, idx, &mon->box);
 
     return FALSE;
@@ -351,8 +351,8 @@ BOOL ScrCmd_BufferPartyMonMoveName(ScriptContext* ctx) {
     u16 party_slot = ScriptGetVar(ctx);
     u16 move_slot = ScriptGetVar(ctx);
 
-    PARTY* party = SaveArray_PlayerParty_Get(fsys->savedata);
-    Pokemon *mon = GetPartyMonByIndex(party, party_slot);
+    Party* party = SaveArray_Party_Get(fsys->savedata);
+    Pokemon *mon = Party_GetMonByIndex(party, party_slot);
     u16 move_id = GetMonData(mon, MON_DATA_MOVE1 + move_slot, NULL);
     BufferMoveName(*msg_fmt, idx, move_id);
 
@@ -426,8 +426,8 @@ BOOL ScrCmd_BufferPartyMonSpeciesNameIndef(ScriptContext* ctx) {
     u8 idx = ScriptReadByte(ctx);
     u16 party_mon_slot = ScriptGetVar(ctx);
 
-    PARTY* party = SaveArray_PlayerParty_Get(fsys->savedata);
-    Pokemon *mon = GetPartyMonByIndex(party, party_mon_slot);
+    Party* party = SaveArray_Party_Get(fsys->savedata);
+    Pokemon *mon = Party_GetMonByIndex(party, party_mon_slot);
     BufferBoxMonSpeciesNameWithArticle(*msg_fmt, idx, &mon->box);
 
     return FALSE;
