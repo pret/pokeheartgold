@@ -54,7 +54,7 @@ typedef BOOL (*ItemFieldUseFunc)(struct ItemFieldUseData *data);
 typedef enum ItemUseError (*ItemCheckUseFunc)(const struct ItemCheckUseData *data);
 
 struct UseItemInPartyTaskEnv {
-    PARTY *party;
+    Party *party;
     Bag *bag;
     MAILBOX *mailbox;
     OPTIONS *options;

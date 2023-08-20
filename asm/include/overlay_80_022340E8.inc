@@ -37,10 +37,10 @@
 .public SetMonData
 .public GetMonExpBySpeciesAndLevel
 .public SaveArray_Party_Alloc
-.public AddMonToParty
-.public GetPartyCount
-.public GetPartyMonByIndex
-.public SaveArray_PlayerParty_Get
+.public Party_AddMon
+.public Party_GetCount
+.public Party_GetMonByIndex
+.public SaveArray_Party_Get
 .public GX_BeginLoadBGExtPltt
 .public GX_LoadBGExtPltt
 .public GX_EndLoadBGExtPltt

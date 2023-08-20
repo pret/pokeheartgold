@@ -3243,7 +3243,7 @@ ov05_0221D414: ; 0x0221D414
 	str r1, [sp]
 	str r2, [sp, #4]
 	add r7, r3, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #8]
@@ -3267,7 +3267,7 @@ _0221D43A:
 	bls _0221D4C0
 	ldr r0, [sp]
 	add r1, r4, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #5
 	mov r2, #0
 	add r7, r0, #0
@@ -4628,7 +4628,7 @@ ov05_0221DF38: ; 0x0221DF38
 	add r0, r1, #0
 	str r1, [sp]
 	add r5, r2, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp, #8]
@@ -4657,7 +4657,7 @@ _0221DF58:
 _0221DF7A:
 	ldr r0, [sp]
 	add r1, r6, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0x18
 	add r2, r6, #0
 	mul r2, r1
@@ -5513,13 +5513,13 @@ ov05_0221E624: ; 0x0221E624
 	bhs _0221E64C
 	ldr r0, [r0, #4]
 	add r1, r4, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	str r0, [sp, #0x18]
 	b _0221E656
 _0221E64C:
 	ldr r0, [r0, #0xc]
 	sub r1, r4, #3
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	str r0, [sp, #0x18]
 _0221E656:
 	add r1, r4, #0

@@ -33,7 +33,7 @@ void PartyMenu_InitIconFormChangeData(PartyMenuStruct* unkPtr) {
     if (unkPtr->iconFormChange != NULL) {
         GF_ASSERT(FALSE);
     }
-    unkPtr->iconFormChange = AllocFromHeap(HEAPID_PARTY_MENU, sizeof(IconFormChangeData));
+    unkPtr->iconFormChange = AllocFromHeap(HEAP_ID_PARTY_MENU, sizeof(IconFormChangeData));
     MI_CpuClear8(unkPtr->iconFormChange, sizeof(IconFormChangeData));
     unkPtr->iconFormChange->partyMonIndex = unkPtr->partyMonIndex;
 }
@@ -44,7 +44,7 @@ void PartyMenu_InitIconFormChangeData(PartyMenuStruct* unkPtr) {
 
 BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct* unkPtr) {
     IconFormChangeData* work = unkPtr->iconFormChange;
-    Pokemon *mon = GetPartyMonByIndex(unkPtr->unk654->party, unkPtr->partyMonIndex);
+    Pokemon *mon = Party_GetMonByIndex(unkPtr->unk654->party, unkPtr->partyMonIndex);
 
     switch (work->state) {
     case 0:
@@ -144,15 +144,15 @@ static void _CleanupEffects(PartyMenuStruct* unkPtr) {
 
 static void _CreateParticleSystem(IconFormChangeData* unkPtr) {
     sub_02014DA0();
-    void* particleHeap = AllocFromHeap(HEAPID_PARTY_MENU, PARTICLE_HEAP_SIZE);
+    void* particleHeap = AllocFromHeap(HEAP_ID_PARTY_MENU, PARTICLE_HEAP_SIZE);
 
-    unkPtr->particleSystem = sub_02014DB4(texAlloc, plttAlloc, particleHeap, PARTICLE_HEAP_SIZE, 1, HEAPID_PARTY_MENU);
+    unkPtr->particleSystem = sub_02014DB4(texAlloc, plttAlloc, particleHeap, PARTICLE_HEAP_SIZE, 1, HEAP_ID_PARTY_MENU);
 
     Camera_SetPerspectiveClippingPlane(1 * FX32_ONE, 900 * FX32_ONE, sub_02015524(unkPtr->particleSystem));
 }
 
 static void _EmitParticles(IconFormChangeData* unkPtr) {
-    sub_0201526C(unkPtr->particleSystem, sub_02015264(NARC_a_2_0_6, unkPtr->fileId, HEAPID_PARTY_MENU), 0xA, 1);
+    sub_0201526C(unkPtr->particleSystem, sub_02015264(NARC_a_2_0_6, unkPtr->fileId, HEAP_ID_PARTY_MENU), 0xA, 1);
 
     switch (unkPtr->species) {
     case SPECIES_GIRATINA:

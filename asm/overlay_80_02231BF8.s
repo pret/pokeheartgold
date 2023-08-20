@@ -164,14 +164,14 @@ ov80_02231D34: ; 0x02231D34
 	ldr r5, [r4, #0xc]
 	mov r1, #0
 	ldr r0, [r5, #4]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r2, r0, #0
 	ldr r0, [r4, #0x28]
 	mov r1, #0
 	bl Party_SafeCopyMonToSlot_ResetUnkSub
 	ldr r0, [r5, #4]
 	mov r1, #1
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r2, r0, #0
 	ldr r0, [r4, #0x28]
 	mov r1, #1
@@ -182,7 +182,7 @@ ov80_02231D34: ; 0x02231D34
 	bne _02231D84
 	ldr r0, [r5, #4]
 	mov r1, #2
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r2, r0, #0
 	ldr r0, [r4, #0x28]
 	mov r1, #2
@@ -191,14 +191,14 @@ ov80_02231D34: ; 0x02231D34
 _02231D84:
 	ldr r0, [r5, #0xc]
 	mov r1, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r2, r0, #0
 	ldr r0, [r4, #0x28]
 	mov r1, #2
 	bl Party_SafeCopyMonToSlot_ResetUnkSub
 	ldr r0, [r5, #0xc]
 	mov r1, #1
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r2, r0, #0
 	ldr r0, [r4, #0x28]
 	mov r1, #3
@@ -515,7 +515,7 @@ _02231FDE:
 	b _0223228E
 _02231FF4:
 	ldr r0, [r7, #8]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r7, r0, #0
 	ldr r0, _02232298 ; =0x0000036A
 	mov r5, #0
@@ -525,7 +525,7 @@ _02232002:
 	add r1, #0x24
 	ldrb r1, [r1]
 	add r0, r7, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #6
 	add r2, r6, #0
 	bl SetMonData

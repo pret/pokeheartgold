@@ -15,9 +15,9 @@
 .public sub_0205C1F0
 .public sub_0205C268
 .public SetMonData
-.public GetPartyMonByIndex
+.public Party_GetMonByIndex
 .public Party_SafeCopyMonToSlot_ResetUnkSub
-.public SaveArray_PlayerParty_Get
+.public SaveArray_Party_Get
 .public sub_02096808
 .public sub_02096810
 .public sub_02096818

@@ -15,10 +15,10 @@
 .public SizeOfStructPokemon
 .public AllocMonZeroed
 .public GetMonData
-.public AddMonToParty
-.public GetPartyMonByIndex
+.public Party_AddMon
+.public Party_GetMonByIndex
 .public Party_SwapSlots
-.public SaveArray_PlayerParty_Get
+.public SaveArray_Party_Get
 .public MI_CpuCopy8
 .public ov80_0222AEF8
 .public ov80_0222AF10

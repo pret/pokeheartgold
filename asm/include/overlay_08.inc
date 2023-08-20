@@ -115,8 +115,8 @@
 .public sub_02074490
 .public sub_02074498
 .public sub_020744A4
-.public GetPartyCount
-.public GetPartyMonByIndex
+.public Party_GetCount
+.public Party_GetMonByIndex
 .public sub_02077678
 .public sub_0207769C
 .public sub_020776B4

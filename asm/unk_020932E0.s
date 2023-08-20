@@ -2264,7 +2264,7 @@ sub_02094528: ; 0x02094528
 	str r0, [sp, #0x24]
 	ldr r0, _02094654 ; =0x00004640
 	ldr r0, [r6, r0]
-	bl GetPartyCount
+	bl Party_GetCount
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	mov r4, #0
@@ -3509,7 +3509,7 @@ sub_02094F14: ; 0x02094F14
 	add r4, r2, #0
 	ldr r2, _02094F58 ; =0x00004640
 	ldr r0, [r0, r2]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r5, r0, #0
 	mov r1, #MON_DATA_SPECIES
 	mov r2, #0

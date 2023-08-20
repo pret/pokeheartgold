@@ -20,10 +20,10 @@
 .public Save_PlayerData_GetOptionsAddr
 .public Save_Mailbox_Get
 .public sub_02031DA0
-.public GetPartyMonByIndex
+.public Party_GetMonByIndex
 .public Party_GetUnkSubSlot
 .public Party_SetUnkSubSlot
-.public SaveArray_PlayerParty_Get
+.public SaveArray_Party_Get
 .public Save_Bag_Get
 .public ApplyMonMoodModifier
 .public MI_CpuFill8

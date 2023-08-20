@@ -12,7 +12,7 @@ u32 BattleSystem_GetBattleType(BattleSystem *bsys);
 BATTLECONTEXT *BattleSystem_GetBattleContext(BattleSystem *bsys);
 OpponentData *BattleSystem_GetOpponentData(BattleSystem *bsys, int battlerId);
 int BattleSystem_GetMaxBattlers(BattleSystem *bsys);
-PARTY *BattleSystem_GetParty(BattleSystem *bsys, int battlerId);
+Party *BattleSystem_GetParty(BattleSystem *bsys, int battlerId);
 int BattleSystem_GetPartySize(BattleSystem *bsys, int battlerId);
 Pokemon *BattleSystem_GetPartyMon(BattleSystem *bsys, int battlerId, int index);
 u32 *ov12_0223A8D4(BattleSystem *bsys);

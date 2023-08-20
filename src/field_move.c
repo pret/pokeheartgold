@@ -688,7 +688,7 @@ static BOOL Task_UseHeadbuttInField(TaskManager *taskManager) {
 
 static struct TeleportFieldEnv *sub_020689A4(HeapID heapId, u8 slotno, SaveData *saveData) {
     struct TeleportFieldEnv *ret = AllocFromHeapAtEnd(heapId, sizeof(struct TeleportFieldEnv));
-    ret->mon = GetPartyMonByIndex(SaveArray_PlayerParty_Get(saveData), slotno);
+    ret->mon = Party_GetMonByIndex(SaveArray_Party_Get(saveData), slotno);
     ret->flySub = NULL;
     return ret;
 }

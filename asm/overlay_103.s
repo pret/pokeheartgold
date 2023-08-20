@@ -1225,8 +1225,8 @@ ov103_021ED2B8: ; 0x021ED2B8
 	push {r3, lr}
 	ldr r0, [r0, #8]
 	ldr r0, [r0]
-	bl SaveArray_PlayerParty_Get
-	bl GetPartyCount
+	bl SaveArray_Party_Get
+	bl Party_GetCount
 	cmp r0, #0
 	ble _021ED2CE
 	mov r0, #4
@@ -2501,7 +2501,7 @@ ov103_021EDC68: ; 0x021EDC68
 	bl MI_CpuFill8
 	ldr r0, [r5, #8]
 	ldr r0, [r0]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [r4]
 	ldr r0, [r5, #8]
 	ldr r0, [r0]
@@ -2559,9 +2559,9 @@ ov103_021EDCE0: ; 0x021EDCE0
 	bhi _021EDD08
 	ldr r0, [r5, #8]
 	ldr r0, [r0]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r1, r4, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r2, r0, #0
 	ldrb r1, [r5, #0x1f]
 	ldr r0, [r5, #4]
@@ -2659,13 +2659,13 @@ ov103_021EDD98: ; 0x021EDD98
 	bne _021EDDD8
 	ldr r0, [r4, #8]
 	ldr r0, [r0]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r1, r4, #0
 	add r1, #0x21
 	ldrb r1, [r1]
 	lsl r1, r1, #0x19
 	lsr r1, r1, #0x19
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r0, #0
 	ldr r0, [r4, #0x14]
 	bl sub_02090F70

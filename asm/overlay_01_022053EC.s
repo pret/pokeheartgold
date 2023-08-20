@@ -1943,7 +1943,7 @@ _022062C8:
 ov01_022062CC: ; 0x022062CC
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	bl GetIdxOfFirstAliveMonInParty_CrashIfNone
 	pop {r3, pc}
 	.balign 4, 0

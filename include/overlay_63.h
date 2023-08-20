@@ -7,7 +7,7 @@
 
 typedef struct {
     PlayerProfile *profile;
-    PARTY *party;
+    Party *party;
     IGT *igt;
 } HOFCongratsAppArgs;
 

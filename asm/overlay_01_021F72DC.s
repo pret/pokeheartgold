@@ -332,7 +332,7 @@ _021F7524:
 	bl MapObjectManager_GetFieldSysPtr
 	str r0, [sp, #0x10]
 	ldr r0, [r0, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	bl GetFirstAliveMonInParty_CrashIfNone
 	str r0, [sp, #0xc]
 	mov r1, #5

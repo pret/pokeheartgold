@@ -4055,7 +4055,7 @@ _0208A35C:
 	cmp r5, r0
 	bge _0208A3C6
 	ldr r0, [r2]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #5
 	mov r2, #0
 	add r5, r0, #0
@@ -4215,7 +4215,7 @@ _0208A480:
 _0208A486:
 	ldr r0, [r1]
 	add r1, r4, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #5
 	mov r2, #0
 	add r6, r0, #0
@@ -4317,7 +4317,7 @@ _0208A538:
 _0208A546:
 	ldrb r1, [r4, #0x14]
 	ldr r0, [r4]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	pop {r4, pc}
 _0208A550:
 	bl sub_02070D94

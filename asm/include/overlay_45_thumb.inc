@@ -129,9 +129,9 @@
 .public sub_020397FC
 .public sub_02039FD8
 .public GetMonData
-.public GetPartyCount
-.public GetPartyMonByIndex
-.public SaveArray_PlayerParty_Get
+.public Party_GetCount
+.public Party_GetMonByIndex
+.public SaveArray_Party_Get
 .public sub_02078DD8
 .public sub_02078E28
 .public LoadDwcOverlay

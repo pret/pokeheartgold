@@ -33,8 +33,8 @@ typedef struct GAME_BOARD_ARGS {
     u8 opponentLevelFlag[ARCADE_ENEMY_POKEMON_MAX];
     u8 opponentUnkFlag[ARCADE_ENEMY_POKEMON_MAX];
     u8 opponentMoveFlag[ARCADE_ENEMY_POKEMON_MAX];
-    PARTY *playerParty;
-    PARTY *opponentParty;
+    Party *playerParty;
+    Party *opponentParty;
     u16 returnWork;
     void *work;
     u16 unk;
@@ -126,8 +126,8 @@ typedef struct GAME_BOARD_WORK {
     void *button;
     int *weather;
     u16 *returnWork;
-    PARTY *playerParty;
-    PARTY *opponentParty;
+    Party *playerParty;
+    Party *opponentParty;
     NARC *narc;
     u16 sendBuffer[40];
     u8 multiCursorPos;

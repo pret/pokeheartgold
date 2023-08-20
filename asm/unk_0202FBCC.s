@@ -1533,10 +1533,10 @@ sub_020306DC: ; 0x020306DC
 	lsl r2, r2, #2
 	bl MI_CpuFill8
 	add r0, r7, #0
-	bl GetPartyMaxCount
+	bl Party_GetMaxCount
 	strh r0, [r6]
 	add r0, r7, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	strh r0, [r6, #2]
 	ldrh r0, [r6, #2]
 	mov r4, #0
@@ -1546,7 +1546,7 @@ sub_020306DC: ; 0x020306DC
 _02030708:
 	add r0, r7, #0
 	add r1, r4, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r5, #0
 	bl sub_02072A98
 	ldrh r0, [r6, #2]
@@ -1573,7 +1573,7 @@ sub_02030724: ; 0x02030724
 	add r4, r0, #0
 	ldrh r1, [r7]
 	ldr r0, [sp]
-	bl InitPartyWithMaxSize
+	bl Party_InitWithMaxSize
 	ldrh r0, [r7, #2]
 	mov r6, #0
 	cmp r0, #0
@@ -1589,7 +1589,7 @@ _0203074C:
 	bl SetMonData
 	ldr r0, [sp]
 	add r1, r4, #0
-	bl AddMonToParty
+	bl Party_AddMon
 	ldrh r0, [r7, #2]
 	add r6, r6, #1
 	add r5, #0x70

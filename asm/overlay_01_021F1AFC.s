@@ -2881,9 +2881,9 @@ ov01_021F3100: ; 0x021F3100
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	add r4, r1, #0
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r1, r4, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021F3100

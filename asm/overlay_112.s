@@ -18675,7 +18675,7 @@ _021EEF86:
 	bl GetStoragePCPointer
 	add r4, r0, #0
 	ldr r0, [r5, #0x20]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	mov r1, #0
 	str r1, [sp]
 	add r3, r0, #0
@@ -19115,9 +19115,9 @@ ov112_021EF31C: ; 0x021EF31C
 	ldr r0, [r4, #0x20]
 	cmp r6, #0x12
 	bne _021EF38C
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	ldr r1, [r5, #0x10]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r6, r0, #0
 	mov r1, #5
 	mov r2, #0
@@ -19228,9 +19228,9 @@ _021EF414:
 	cmp r5, #0x12
 	ldr r0, [r2, #0x20]
 	bne _021EF4D6
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r1, r4, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0
 	add r7, r0, #0
 	add r2, r1, #0
@@ -27239,7 +27239,7 @@ ov112_021F3244: ; 0x021F3244
 	add r4, r1, #0
 	bl Save_PlayerData_GetProfileAddr
 	add r0, r5, #0
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	mov r2, #0x7d
 	add r6, r0, #0
 	mov r0, #0
@@ -27434,7 +27434,7 @@ ov112_021F33D8: ; 0x021F33D8
 	add r6, r0, #0
 	add r0, r1, #0
 	str r1, [sp]
-	bl GetPartyCount
+	bl Party_GetCount
 	str r0, [sp, #0x18]
 	mov r0, #0
 	str r0, [sp, #0x14]
@@ -27448,7 +27448,7 @@ _021F33F6:
 	str r0, [sp, #0xc]
 	ldr r0, [sp]
 	ldr r1, [sp, #0x1c]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #3
 	mov r2, #0
 	add r5, r0, #0

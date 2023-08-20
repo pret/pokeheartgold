@@ -186,7 +186,7 @@
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx
 .public sub_02074490
-.public GetPartyMonByIndex
+.public Party_GetMonByIndex
 .public SaveArray_IsNatDexEnabled
 .public sub_02089D40
 .public sub_0208AD34

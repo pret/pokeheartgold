@@ -2331,7 +2331,7 @@ _0221CFF2:
 _0221D000:
 	ldr r0, [sp, #0xc]
 	add r1, r4, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	ldr r1, [sp, #8]
 	add r6, r0, #0
 	cmp r4, r1
@@ -2883,7 +2883,7 @@ _0221D412:
 _0221D42A:
 	ldr r0, [sp, #0x14]
 	add r1, r5, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	ldr r1, [sp, #8]
 	add r4, r0, #0
 	cmp r5, r1
@@ -2998,7 +2998,7 @@ _0221D506:
 _0221D51E:
 	ldr r0, [sp, #0x14]
 	add r1, r5, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	ldr r1, [sp, #8]
 	add r4, r0, #0
 	cmp r5, r1
@@ -9504,13 +9504,13 @@ _02220704:
 	bl BattleSystem_GetParty
 	add r7, r0, #0
 	mov r5, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	ble _02220762
 _02220718:
 	add r0, r7, #0
 	add r1, r5, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0xa3
 	mov r2, #0
 	add r6, r0, #0
@@ -9538,7 +9538,7 @@ _02220718:
 _02220756:
 	add r0, r7, #0
 	add r5, r5, #1
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r5, r0
 	blt _02220718
 _02220762:

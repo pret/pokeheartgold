@@ -52,10 +52,10 @@
 .public SetMonData
 .public GetMonExpBySpeciesAndLevel
 .public SaveArray_Party_Alloc
-.public AddMonToParty
-.public GetPartyCount
-.public GetPartyMonByIndex
-.public SaveArray_PlayerParty_Get
+.public Party_AddMon
+.public Party_GetCount
+.public Party_GetMonByIndex
+.public SaveArray_Party_Get
 .public MI_CpuFill8
 .public _s32_div_f
 .public ov80_02229F04

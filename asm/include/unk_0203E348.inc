@@ -163,9 +163,9 @@
 .public Mon_GetBoxMon
 .public GetMonEvolution
 .public CopyPokemonToPokemon
-.public GetPartyCount
-.public GetPartyMonByIndex
-.public SaveArray_PlayerParty_Get
+.public Party_GetCount
+.public Party_GetMonByIndex
+.public SaveArray_Party_Get
 .public SaveArray_IsNatDexEnabled
 .public sub_02075A7C
 .public sub_02075D3C

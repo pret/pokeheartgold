@@ -30,7 +30,7 @@
 .public Pokemon_UpdateArceusForm
 .public Mon_UpdateGiratinaForm
 .public Pokemon_RemoveCapsule
-.public GetPartyMonByIndex
+.public Party_GetMonByIndex
 .public Party_SwapSlots
 .public Bag_AddItem
 .public sub_02079224

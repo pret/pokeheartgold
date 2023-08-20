@@ -147,9 +147,9 @@
 .public sub_02072914
 .public sub_0207294C
 .public sub_020729A4
-.public AddMonToParty
-.public GetPartyMaxCount
-.public GetPartyCount
+.public Party_AddMon
+.public Party_GetMaxCount
+.public Party_GetCount
 .public sub_02075A7C
 .public sub_02075D3C
 .public sub_02075D4C

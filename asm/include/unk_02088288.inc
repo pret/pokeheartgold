@@ -115,7 +115,7 @@
 .public Pokemon_IsImmuneToPokerus
 .public sub_020729A4
 .public GetMoveMaxPP
-.public GetPartyMonByIndex
+.public Party_GetMonByIndex
 .public MoveIsHM
 .public RatioToInt
 .public sub_020880B0

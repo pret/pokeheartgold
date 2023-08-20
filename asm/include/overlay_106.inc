@@ -84,9 +84,9 @@
 .public OverworldModelLookupHasFemaleForm
 .public GetMonData
 .public MonIsShiny
-.public GetPartyCount
-.public GetPartyMonByIndex
-.public SaveArray_PlayerParty_Get
+.public Party_GetCount
+.public Party_GetMonByIndex
+.public SaveArray_Party_Get
 .public NNS_G2dGetImageLocation
 .public NNS_G2dGetImagePaletteLocation
 .public NNS_G3dAnmObjInit

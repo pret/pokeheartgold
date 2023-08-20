@@ -55,7 +55,7 @@
 .public sub_02069FB0
 .public FsysUnkSub108_AddMonMood
 .public GetMonData
-.public SaveArray_PlayerParty_Get
+.public SaveArray_Party_Get
 .public MIi_CpuClearFast
 .public ov01_02205A60
 .public ov01_02205D68

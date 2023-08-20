@@ -94,8 +94,8 @@
 .public sub_02074490
 .public sub_0207449C
 .public sub_020744A8
-.public AddMonToParty
-.public GetPartyMonByIndex
+.public Party_AddMon
+.public Party_GetMonByIndex
 .public Pokedex_IsNatDexEnabled
 .public GetItemAttr
 .public sub_020830D8

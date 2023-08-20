@@ -102,12 +102,12 @@
 .public GetMonExpBySpeciesAndLevel
 .public CopyPokemonToPokemon
 .public SaveArray_Party_Alloc
-.public InitPartyWithMaxSize
-.public AddMonToParty
-.public GetPartyCount
-.public GetPartyMonByIndex
+.public Party_InitWithMaxSize
+.public Party_AddMon
+.public Party_GetCount
+.public Party_GetMonByIndex
 .public Party_Copy
-.public SaveArray_PlayerParty_Get
+.public SaveArray_Party_Get
 .public Save_Bag_New
 .public Save_Bag_Copy
 .public Bag_AddItem

@@ -92,8 +92,8 @@
 .public FollowingPokemon_IsActive
 .public FsysUnkSub108_AddMonMood
 .public GetMonData
-.public GetPartyMonByIndex
-.public SaveArray_PlayerParty_Get
+.public Party_GetMonByIndex
+.public SaveArray_Party_Get
 .public memset
 .public ov01_021E7F00
 .public ov01_021F1640

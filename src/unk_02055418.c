@@ -74,7 +74,7 @@ void sub_02055508(FieldSystem* fsys, int unkA) {
     sub_0206759C(fsys->savedata, unkA); //reset badge shininess..?
     sub_0202C78C(Save_FriendGroup_Get(fsys->savedata), unkA);
     Roamers_SetRand(Save_Roamers_Get(fsys->savedata), sub_0202C7DC(Save_FriendGroup_Get(fsys->savedata)));
-    Party_UpdatePokerus(SaveArray_PlayerParty_Get(fsys->savedata), unkA);
+    Party_UpdatePokerus(SaveArray_Party_Get(fsys->savedata), unkA);
     Save_LCRNGAdvanceLotoID(fsys->savedata, (u16) unkA);
     sub_02066D60(fsys->savedata);
     sub_020674BC(fsys->savedata);
@@ -92,7 +92,7 @@ void sub_02055508(FieldSystem* fsys, int unkA) {
 void sub_020555B4(FieldSystem* fsys, u32 unkA, RTCTime* time) {
     sub_02092E34(Fsys_GetGearPhoneRingManager(fsys), unkA, 0);
     FieldSys_IncrementBugContestTimer(fsys, unkA);
-    Party_TryResetShaymin(SaveArray_PlayerParty_Get(fsys->savedata), unkA, time);
+    Party_TryResetShaymin(SaveArray_Party_Get(fsys->savedata), unkA, time);
 }
 
 TIMEOFDAY Field_GetTimeOfDay(FieldSystem* fsys) {

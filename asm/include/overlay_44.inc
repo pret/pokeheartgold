@@ -279,9 +279,9 @@
 .public Save_VarsFlags_Get
 .public Save_VarsFlags_FlypointFlagAction
 .public GetMonData
-.public GetPartyCount
-.public GetPartyMonByIndex
-.public SaveArray_PlayerParty_Get
+.public Party_GetCount
+.public Party_GetMonByIndex
+.public SaveArray_Party_Get
 .public sub_02078D24
 .public LoadDwcOverlay
 .public UnloadDwcOverlay

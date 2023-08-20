@@ -15,7 +15,7 @@
 .public AllocMonZeroed
 .public GetMonData
 .public Mon_GetBoxMon
-.public GetPartyMonByIndex
+.public Party_GetMonByIndex
 .public sub_02096808
 .public sub_02096810
 .public sub_02096818

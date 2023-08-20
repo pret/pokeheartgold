@@ -6,11 +6,10 @@
 #include "script.h"
 #include "unk_02014DA0.h"
 
-#define HEAPID_PARTY_MENU         ((HeapID)12)
 #define PARTICLE_HEAP_SIZE        (0x4800)
 
 typedef struct UnkStruct_Overlay_94_B {
-    PARTY* party;
+    Party* party;
     u8 unk4[0x17];
     FieldSystem* fsys;
     u8 unk2[0x7];
