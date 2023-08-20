@@ -16,7 +16,7 @@
 .public sub_0205C048
 .public sub_0205C11C
 .public sub_0205C268
-.public SaveArray_PlayerParty_Get
+.public SaveArray_Party_Get
 .public HealParty
 .public sub_02096808
 .public sub_02096810

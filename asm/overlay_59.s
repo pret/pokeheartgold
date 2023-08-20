@@ -6356,9 +6356,9 @@ ov59_0223AE20: ; 0x0223AE20
 	sub sp, #0xc
 	add r5, r0, #0
 	ldr r0, [r5, #8]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [r5, #0x10]
-	bl GetPartyCount
+	bl Party_GetCount
 	mov r6, #0
 	add r4, r6, #0
 	str r0, [sp, #4]
@@ -6371,7 +6371,7 @@ ov59_0223AE20: ; 0x0223AE20
 _0223AE44:
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0x4c
 	mov r2, #0
 	add r7, r0, #0

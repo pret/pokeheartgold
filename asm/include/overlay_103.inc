@@ -146,9 +146,9 @@
 .public sub_02074490
 .public sub_02074494
 .public sub_02074498
-.public GetPartyCount
-.public GetPartyMonByIndex
-.public SaveArray_PlayerParty_Get
+.public Party_GetCount
+.public Party_GetMonByIndex
+.public SaveArray_Party_Get
 .public ItemToMailId
 .public MailToItemId
 .public Bag_AddItem

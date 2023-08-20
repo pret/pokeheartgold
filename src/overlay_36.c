@@ -154,7 +154,7 @@ BOOL ov36_App_MainMenu_SelectOption_Continue_AppExec(OVY_MANAGER* man, int* stat
         SysInfoRTC_HandleContinueOnNewConsole(Save_SysInfo_RTC_Get(savedata));
         Save_BerryPotRTC_Init(Save_BerryPotRTC_Get(savedata));
         Save_SysInfo_InitFromSystem(sys_info);
-        Party_ResetAllShayminToLandForm(SaveArray_PlayerParty_Get(savedata));
+        Party_ResetAllShayminToLandForm(SaveArray_Party_Get(savedata));
     }
 
     sub_0201838C(Save_PlayerData_GetIGTAddr(savedata));

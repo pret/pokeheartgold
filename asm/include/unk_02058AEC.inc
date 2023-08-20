@@ -130,11 +130,11 @@
 .public sub_02070D90
 .public Mon_GetBoxMon
 .public SaveArray_Party_Alloc
-.public InitPartyWithMaxSize
-.public AddMonToParty
-.public GetPartyCount
-.public GetPartyMonByIndex
-.public SaveArray_PlayerParty_Get
+.public Party_InitWithMaxSize
+.public Party_AddMon
+.public Party_GetCount
+.public Party_GetMonByIndex
+.public SaveArray_Party_Get
 .public SaveArray_IsNatDexEnabled
 .public Save_Bag_Get
 .public sub_02088288

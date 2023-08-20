@@ -20,7 +20,7 @@ struct BattleSetupSub_138 {
 
 struct BATTLE_SETUP { //declared in trainer_data.h
     u32 flags; // 0
-    PARTY *party[4]; // 4
+    Party *party[4]; // 4
     int winFlag; // 14
     int trainerId[4]; // 18
     TRAINER trainer[4]; // 28
@@ -83,7 +83,8 @@ void sub_02052444(BATTLE_SETUP *setup, FieldSystem *fsys);
 void BattleSetup_InitFromFsys(BATTLE_SETUP *setup, FieldSystem *fsys);
 void sub_020522F0(BATTLE_SETUP *setup, FieldSystem *fsys, void *a1);
 void sub_02051F2C(BATTLE_SETUP *setup, FieldSystem *fsys, int level);
-void sub_020520B0(BATTLE_SETUP *setup, FieldSystem *fsys, PARTY *party, void *a4);
+void sub_020520B0(BATTLE_SETUP *setup, FieldSystem *fsys, Party *party, void *a4);
+BATTLE_SETUP* BattleSetup_New_PalPark(HeapID heapId, int monsRemaining);
 void BattleSetup_AddMonToParty(BATTLE_SETUP* setup, Pokemon* mon, int battler);
 
 #endif //POKEHEARTGOLD_BATTLE_SETUP_H

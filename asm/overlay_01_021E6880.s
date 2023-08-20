@@ -370,7 +370,7 @@ _021E6B12:
 	lsr r0, r0, #0x1f
 	bne _021E6B66
 	ldr r0, [r4, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	bl HasEnoughAlivePokemonForDoubleBattle
 	add r6, r0, #0
 	ldr r0, [r4, #0xc]
@@ -437,7 +437,7 @@ _021E6B94:
 	orr r6, r0
 _021E6BB6:
 	ldr r0, [r4, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	mov r1, #MOVE_WATERFALL
 	bl GetIdxOfFirstPartyMonWithMove
 	cmp r0, #0xff
@@ -1602,7 +1602,7 @@ _021E7510:
 	cmp r0, #0
 	beq _021E7550
 	ldr r0, [r5, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	mov r1, #MOVE_SURF
 	bl GetIdxOfFirstPartyMonWithMove
 	cmp r0, #0xff
@@ -1993,7 +1993,7 @@ ov01_021E788C: ; 0x021E788C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl Save_Daycare_Get
@@ -2060,7 +2060,7 @@ ov01_021E790C: ; 0x021E790C
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r6, r0, #0
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0]
@@ -2068,7 +2068,7 @@ ov01_021E790C: ; 0x021E790C
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	add r0, r6, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	add r7, r0, #0
 	mov r4, #0
 	cmp r7, #0
@@ -2076,7 +2076,7 @@ ov01_021E790C: ; 0x021E790C
 _021E7932:
 	add r0, r6, #0
 	add r1, r4, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #5
 	add r2, r5, #0
 	bl MonApplyFriendshipMod
@@ -2093,7 +2093,7 @@ ov01_021E794C: ; 0x021E794C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Save_LocalFieldData_Get

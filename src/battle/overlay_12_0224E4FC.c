@@ -1663,14 +1663,14 @@ BOOL CheckTrainerMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             if (!(ctx->battleMons[1].msgFlag & 3)) {
                 int i;
                 int aliveMons;
-                PARTY *party;
+                Party *party;
                 Pokemon *mon;
                 
                 party = BattleSystem_GetParty(bsys, 1);
                 aliveMons = 0;
                 
-                for (i = 0; i < GetPartyCount(party); i++) {
-                    mon = GetPartyMonByIndex(party, i);
+                for (i = 0; i < Party_GetCount(party); i++) {
+                    mon = Party_GetMonByIndex(party, i);
                     if (GetMonData(mon, MON_DATA_HP, NULL)) {
                         aliveMons++;
                     }
@@ -1687,14 +1687,14 @@ BOOL CheckTrainerMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             if (!(ctx->battleMons[1].msgFlag & 4)) {
                 int i;
                 int aliveMons;
-                PARTY *party;
+                Party *party;
                 Pokemon *mon;
                 
                 party = BattleSystem_GetParty(bsys, 1);
                 aliveMons = 0;
                 
-                for (i = 0; i < GetPartyCount(party); i++) {
-                    mon = GetPartyMonByIndex(party, i);
+                for (i = 0; i < Party_GetCount(party); i++) {
+                    mon = Party_GetMonByIndex(party, i);
                     if (GetMonData(mon, MON_DATA_HP, NULL)) {
                         aliveMons++;
                     }
@@ -3085,7 +3085,7 @@ BOOL CheckBattlerAbilityIfNotIgnored(BATTLECONTEXT *ctx, int battlerIdAttacker, 
 
 BOOL CanSwitchMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     BOOL ret;
-    PARTY *party;
+    Party *party;
     Pokemon *mon;
     int partySize;
     int cnt;
@@ -3120,7 +3120,7 @@ BOOL CanSwitchMon(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId) {
     }
     
     for (i = start; i < partySize; i++) {
-        mon = GetPartyMonByIndex(party, i);
+        mon = Party_GetMonByIndex(party, i);
         if (GetMonData(mon, MON_DATA_SPECIES, NULL) != SPECIES_NONE
         && !GetMonData(mon, MON_DATA_IS_EGG, NULL)
         && GetMonData(mon, MON_DATA_HP, NULL) != 0

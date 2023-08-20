@@ -35,10 +35,10 @@
 .public SetMonData
 .public GetMonExpBySpeciesAndLevel
 .public CopyPokemonToPokemon
-.public InitPartyWithMaxSize
-.public GetPartyCount
-.public GetPartyMonByIndex
-.public SaveArray_PlayerParty_Get
+.public Party_InitWithMaxSize
+.public Party_GetCount
+.public Party_GetMonByIndex
+.public SaveArray_Party_Get
 .public MIi_CpuClear16
 .public MIi_CpuCopy16
 .public MI_CpuFill8

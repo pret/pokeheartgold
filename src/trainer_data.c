@@ -279,7 +279,7 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heapId) {
     // We abuse the global RNG for personality value generation,
     // so back up the overworld state here.
     seed_bak = GetLCRNGSeed();
-    InitPartyWithMaxSize(enemies->party[party_id], PARTY_SIZE);
+    Party_InitWithMaxSize(enemies->party[party_id], PARTY_SIZE);
     data = (TRPOKE *)AllocFromHeap(heapId, sizeof(TRPOKE) * PARTY_SIZE);
     mon = AllocMonZeroed(heapId);
     TrainerData_ReadTrPoke(enemies->trainerId[party_id], data);
@@ -342,7 +342,7 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heapId) {
             // Starting in HGSS, an AI Pokemon with Frustration
             // will have minimum friendship.
             TrMon_FrustrationCheckAndSetFriendship(mon);
-            AddMonToParty(enemies->party[party_id], mon);
+            Party_AddMon(enemies->party[party_id], mon);
         }
         break;
     }
@@ -369,7 +369,7 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heapId) {
             SetTrMonCapsule(monSpeciesMoves[i].capsule, mon, heapId);
             SetMonData(mon, MON_DATA_FORM, &form);
             TrMon_FrustrationCheckAndSetFriendship(mon);
-            AddMonToParty(enemies->party[party_id], mon);
+            Party_AddMon(enemies->party[party_id], mon);
         }
         break;
     }
@@ -394,7 +394,7 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heapId) {
             SetTrMonCapsule(monSpeciesItem[i].capsule, mon, heapId);
             SetMonData(mon, MON_DATA_FORM, &form);
             TrMon_FrustrationCheckAndSetFriendship(mon);
-            AddMonToParty(enemies->party[party_id], mon);
+            Party_AddMon(enemies->party[party_id], mon);
         }
         break;
     }
@@ -422,7 +422,7 @@ void CreateNPCTrainerParty(BATTLE_SETUP *enemies, int party_id, HeapID heapId) {
             SetTrMonCapsule(monSpeciesItemMoves[i].capsule, mon, heapId);
             SetMonData(mon, MON_DATA_FORM, &form);
             TrMon_FrustrationCheckAndSetFriendship(mon);
-            AddMonToParty(enemies->party[party_id], mon);
+            Party_AddMon(enemies->party[party_id], mon);
         }
         break;
     }

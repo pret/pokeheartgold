@@ -432,9 +432,9 @@ ov44_0222A168: ; 0x0222A168
 	mov r1, #0x16
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [sp]
-	bl GetPartyCount
+	bl Party_GetCount
 	mov r5, #0
 	add r7, r0, #0
 	add r4, r5, #0
@@ -443,7 +443,7 @@ ov44_0222A168: ; 0x0222A168
 _0222A184:
 	ldr r0, [sp]
 	add r1, r4, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0xa3
 	mov r2, #0
 	add r6, r0, #0
@@ -3180,7 +3180,7 @@ ov44_0222B778: ; 0x0222B778
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [sp, #0xc]
 	mov r0, #0x16
 	lsl r0, r0, #4
@@ -3188,7 +3188,7 @@ ov44_0222B778: ; 0x0222B778
 	bl sub_0202CA44
 	str r0, [sp, #8]
 	ldr r0, [sp, #0xc]
-	bl GetPartyCount
+	bl Party_GetCount
 	mov r6, #0
 	str r0, [sp, #4]
 	cmp r0, #0
@@ -3197,7 +3197,7 @@ ov44_0222B778: ; 0x0222B778
 _0222B7C0:
 	ldr r0, [sp, #0xc]
 	add r1, r6, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #5
 	mov r2, #0
 	add r7, r0, #0

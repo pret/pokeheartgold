@@ -304,8 +304,8 @@ _0204BF94: .word sScriptMysteryGiftActionTable
 MGCheck_PartySpace: ; 0x0204BF98
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl SaveArray_PlayerParty_Get
-	bl GetPartyCount
+	bl SaveArray_Party_Get
+	bl Party_GetCount
 	cmp r0, #6
 	bge _0204BFAC
 	mov r0, #1
@@ -700,9 +700,9 @@ _0204C2FE:
 	add r0, r4, #0
 	bl CalcMonLevelAndStats
 	ldr r0, [r7, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r1, r4, #0
-	bl AddMonToParty
+	bl Party_AddMon
 	cmp r0, #0
 	beq _0204C31C
 	ldr r0, [r7, #0xc]

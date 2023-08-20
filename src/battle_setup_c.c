@@ -8,7 +8,7 @@
 #include "unk_02055418.h"
 #include "constants/battle.h"
 
-void BattleSetup_SetParty(BATTLE_SETUP* setup, PARTY* party, int battlerId);
+void BattleSetup_SetParty(BATTLE_SETUP* setup, Party* party, int battlerId);
 void BattleSetup_SetProfile(BATTLE_SETUP* setup, PlayerProfile* profile, int battlerId);
 void BattleSetup_SetChatotVoiceClip(BATTLE_SETUP* setup, SOUND_CHATOT* chatot, int battlerId);
 void sub_02052504(BATTLE_SETUP* setup, FieldSystem* fsys);
@@ -113,9 +113,9 @@ BATTLE_SETUP* BattleSetup_New_Tutorial(HeapID heapId, FieldSystem* fsys) {
     {
     Pokemon* pokemon = AllocMonZeroed(heapId);
     CreateMon(pokemon, SPECIES_MARILL, 5, 32, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
-    AddMonToParty(setup->party[0], pokemon);
+    Party_AddMon(setup->party[0], pokemon);
     CreateMon(pokemon, SPECIES_RATTATA, 2, 32, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
-    AddMonToParty(setup->party[1], pokemon);
+    Party_AddMon(setup->party[1], pokemon);
     FreeToHeap(pokemon);
     }
     setup->unk1CC[0] = 0;
@@ -156,10 +156,10 @@ void BattleSetup_Delete(BATTLE_SETUP* setup) {
 
 void BattleSetup_AddMonToParty(BATTLE_SETUP* setup, Pokemon* mon, int battlerId) {
     GF_ASSERT(battlerId < 4);
-    GF_ASSERT(AddMonToParty(setup->party[battlerId], mon));
+    GF_ASSERT(Party_AddMon(setup->party[battlerId], mon));
 }
 
-void BattleSetup_SetParty(BATTLE_SETUP* setup, PARTY* party, int battlerId) {
+void BattleSetup_SetParty(BATTLE_SETUP* setup, Party* party, int battlerId) {
     GF_ASSERT(battlerId < 4);
     Party_Copy(party, setup->party[battlerId]);
 }

@@ -1269,9 +1269,9 @@ sub_0204A5B0: ; 0x0204A5B0
 	str r0, [sp]
 	add r0, r1, #0
 	str r2, [sp, #4]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [sp, #8]
-	bl GetPartyCount
+	bl Party_GetCount
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
 	str r1, [sp, #0x10]
@@ -1290,7 +1290,7 @@ _0204A5D6:
 _0204A5E0:
 	ldr r0, [sp, #8]
 	ldr r1, [sp, #0x14]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #5
 	mov r2, #0
 	add r6, r0, #0
@@ -1903,7 +1903,7 @@ _0204AA96:
 	pop {r4, r5, r6, r7, pc}
 _0204AAA6:
 	add r0, r2, #0
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [sp, #8]
 	ldrb r0, [r5, #0xe]
 	mov r4, #0
@@ -1922,7 +1922,7 @@ _0204AAB6:
 	add r1, #0x2a
 	ldrb r1, [r1]
 	ldr r0, [sp, #8]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	lsl r1, r4, #1
 	add r6, r5, r1
 	add r7, r0, #0
@@ -1960,7 +1960,7 @@ sub_0204AB10: ; 0x0204AB10
 	sub sp, #0x1c
 	str r0, [sp]
 	add r0, r1, #0
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [sp, #4]
 	ldr r0, [sp]
 	mov r5, #0
@@ -1975,7 +1975,7 @@ _0204AB2C:
 	add r1, r1, r5
 	add r1, #0x2a
 	ldrb r1, [r1]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	str r0, [sp, #8]
 	lsl r6, r5, #1
 	mov r1, #5
@@ -2992,7 +2992,7 @@ sub_0204B2B8: ; 0x0204B2B8
 	mov r2, #1
 	add r1, sp, #8
 	strb r2, [r1]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [sp]
 	mov r7, #0
 	ldrb r0, [r5, #0xe]
@@ -3004,7 +3004,7 @@ _0204B2D6:
 	add r1, #0x2a
 	ldrb r1, [r1]
 	ldr r0, [sp]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r6, #0
 	mov r2, #0
 	str r0, [sp, #4]
@@ -3220,7 +3220,7 @@ sub_0204B470: ; 0x0204B470
 	str r0, [sp, #4]
 	bl MI_CpuFill8
 	add r0, r4, #0
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	ldr r5, [sp, #4]
 	add r7, r0, #0
 	mov r4, #0
@@ -3229,7 +3229,7 @@ _0204B498:
 	add r1, #0x2a
 	ldrb r1, [r1]
 	add r0, r7, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r0, #0
 	add r0, r5, #0
 	bl sub_0204B34C
@@ -3526,7 +3526,7 @@ sub_0204B6AC: ; 0x0204B6AC
 	ldr r1, _0204B700 ; =0x0000083E
 	strh r0, [r6, r1]
 	add r0, r4, #0
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r7, r0, #0
 	mov r4, #0
 	add r5, r6, #0
@@ -3535,7 +3535,7 @@ _0204B6CC:
 	add r1, #0x2a
 	ldrb r1, [r1]
 	add r0, r7, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #5
 	mov r2, #0
 	bl GetMonData

@@ -4271,7 +4271,7 @@ ov63_0221E114: ; 0x0221E114
 	ldr r0, [r6]
 	mov r7, #0
 	ldr r0, [r0, #4]
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	bhi _0221E148
 	b _0221E2EC
@@ -4284,7 +4284,7 @@ _0221E150:
 	ldr r0, [r6]
 	add r1, r7, #0
 	ldr r0, [r0, #4]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r4, r0, #0
 	bl AcquireMonLock
 	str r0, [sp, #0x14]
@@ -4466,7 +4466,7 @@ _0221E2D4:
 	ldr r0, [r6]
 	add r7, r7, #1
 	ldr r0, [r0, #4]
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r7, r0
 	bhs _0221E2EC
 	b _0221E150

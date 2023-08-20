@@ -232,11 +232,11 @@ ov80_0222B070: ; 0x0222B070
 	add r4, r0, #0
 	ldr r0, _0222B0B0 ; =0x000006FC
 	ldr r0, [r5, r0]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	mov r1, #0x26
 	lsl r1, r1, #4
 	ldrb r1, [r5, r1]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	ldr r1, _0222B0B4 ; =0x00000784
 	add r2, r4, #0
 	add r1, r5, r1
@@ -789,7 +789,7 @@ _0222B46C:
 	ldr r0, _0222B524 ; =0x000004D4
 	ldr r1, [sp, #8]
 	ldr r0, [r5, r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	str r0, [sp, #0xc]
 	mov r1, #0x47
 	mov r2, #0
@@ -1496,7 +1496,7 @@ ov80_0222B968: ; 0x0222B968
 _0222B990:
 	ldr r0, [r7, #0x28]
 	add r1, r4, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	ldr r1, [sp, #4]
 	add r2, r6, #0
 	add r1, r1, r5
@@ -1565,7 +1565,7 @@ _0222BA0E:
 	ldr r0, [sp, #4]
 	add r1, r6, #0
 	ldr r0, [r0, #0x28]
-	bl AddMonToParty
+	bl Party_AddMon
 	ldr r0, [sp, #8]
 	add r7, r7, #1
 	add r4, r4, r5
@@ -1977,7 +1977,7 @@ ov80_0222BCE0: ; 0x0222BCE0
 _0222BD06:
 	ldr r0, [r7, #0x70]
 	add r1, r4, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	ldr r1, [sp, #4]
 	add r2, r6, #0
 	add r1, r1, r5
@@ -2047,7 +2047,7 @@ _0222BD86:
 	ldr r0, [sp, #4]
 	add r1, r6, #0
 	ldr r0, [r0, #0x70]
-	bl AddMonToParty
+	bl Party_AddMon
 	ldr r0, [sp, #8]
 	add r7, r7, #1
 	add r4, r4, r5

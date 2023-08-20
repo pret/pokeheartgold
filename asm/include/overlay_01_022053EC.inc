@@ -74,7 +74,7 @@
 .public GetFollowPokePermissionBySpeciesAndMap
 .public sub_0206A040
 .public sub_0206A054
-.public SaveArray_PlayerParty_Get
+.public SaveArray_Party_Get
 .public NNS_G3dGetTex
 .public MIi_CpuCopy16
 .public MI_CpuFill8

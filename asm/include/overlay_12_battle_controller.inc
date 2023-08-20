@@ -10,8 +10,8 @@
 .public sub_020708D8
 .public MaskOfFlagNo
 .public GetMoveMaxPP
-.public GetPartyCount
-.public GetPartyMonByIndex
+.public Party_GetCount
+.public Party_GetMonByIndex
 .public sub_02074F9C
 .public MIi_CpuClearFast
 .public MI_CpuFill8

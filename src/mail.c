@@ -94,13 +94,13 @@ void Mail_SetNewMessageDetails(Mail *mail, u8 mailType, u8 mon_no, SaveData *sav
     u16 species;
     u32 icon, isEgg, form;
     PlayerProfile *profile;
-    PARTY *party;
+    Party *party;
     Pokemon *mon;
 
     Mail_Init(mail);
     mail->mail_type = mailType;
 
-    party = SaveArray_PlayerParty_Get(saveData);
+    party = SaveArray_Party_Get(saveData);
     profile = Save_PlayerData_GetProfileAddr(saveData);
 
     CopyU16StringArray(mail->author_name, PlayerProfile_GetNamePtr(profile));
@@ -109,8 +109,8 @@ void Mail_SetNewMessageDetails(Mail *mail, u8 mailType, u8 mon_no, SaveData *sav
 
     // Get the Pokemon icon data
     mail->form_flags = 0;
-    for (i = mon_no, j = 0; i < GetPartyCount(party); i++) {
-        mon = GetPartyMonByIndex(party, i);
+    for (i = mon_no, j = 0; i < Party_GetCount(party); i++) {
+        mon = Party_GetMonByIndex(party, i);
         species = GetMonData(mon, MON_DATA_SPECIES, NULL);
         isEgg = GetMonData(mon, MON_DATA_IS_EGG, NULL);
         form = GetMonData(mon, MON_DATA_FORM, NULL);

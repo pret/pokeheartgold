@@ -191,8 +191,8 @@ static BOOL BattleHall_DoesPartyContainEligibleMons(s32 numRequiredMons, SaveDat
     u16 species;
     u16 level;
     u16 form;
-    PARTY *party = SaveArray_PlayerParty_Get(savedata);
-    u8 partyCount = GetPartyCount(party);
+    Party *party = SaveArray_Party_Get(savedata);
+    u8 partyCount = Party_GetCount(party);
     if (partyCount < numRequiredMons) {
         return FALSE;
     }
@@ -201,7 +201,7 @@ static BOOL BattleHall_DoesPartyContainEligibleMons(s32 numRequiredMons, SaveDat
         arr[i] = SPECIES_NONE;
     }
     for (i = 0, numEligibleMons = 0; i < partyCount; i++) {
-        Pokemon *mon = GetPartyMonByIndex(party, i);
+        Pokemon *mon = Party_GetMonByIndex(party, i);
         species = GetMonData(mon, MON_DATA_SPECIES, NULL);
         level = GetMonData(mon, MON_DATA_LEVEL, NULL);
         form = GetMonData(mon, MON_DATA_FORM, NULL);
@@ -310,7 +310,7 @@ static BOOL sub_0204F2B8(TaskManager *taskManager) {
 static u32 sub_0204F320(UnkStruct_0204F284 *a0, FieldSystem *fsys, HeapID unused) {
     PartyMenuAppData *partyMenu = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuAppData));
     MIi_CpuClearFast(0, (u32*)partyMenu, sizeof(PartyMenuAppData));
-    partyMenu->party = SaveArray_PlayerParty_Get(fsys->savedata);
+    partyMenu->party = SaveArray_Party_Get(fsys->savedata);
     partyMenu->bag = Save_Bag_Get(fsys->savedata);
     partyMenu->mailbox = Save_Mailbox_Get(fsys->savedata);
     partyMenu->options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
@@ -358,12 +358,12 @@ static u32 sub_0204F448(UnkStruct_0204F284 *a0, FieldSystem *fsys, HeapID heapId
     UnkStruct_0204F448 *r4 = AllocFromHeapAtEnd(heapId, sizeof(UnkStruct_0204F448));
     MI_CpuFill8(r4, 0, sizeof(UnkStruct_0204F448));
     r4->options = Save_PlayerData_GetOptionsAddr(savedata);
-    r4->party = SaveArray_PlayerParty_Get(savedata);
+    r4->party = SaveArray_Party_Get(savedata);
     r4->isNatDexEnabled = SaveArray_IsNatDexEnabled(savedata);
     r4->unk2C = sub_02088288(savedata);
     r4->unk11 = 1;
     r4->unk14 = a0->unk05;
-    r4->partyCount = GetPartyCount(r4->party);
+    r4->partyCount = Party_GetCount(r4->party);
     r4->unk18 = 0;
     r4->unk12 = 0;
     r4->ribbons = Save_SpecialRibbons_Get(savedata);

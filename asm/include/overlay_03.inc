@@ -196,9 +196,9 @@
 .public CheckFlag09A
 .public sub_02066D80
 .public GetMonData
-.public GetPartyCount
-.public GetPartyMonByIndex
-.public SaveArray_PlayerParty_Get
+.public Party_GetCount
+.public Party_GetMonByIndex
+.public SaveArray_Party_Get
 .public sub_02074944
 .public sub_0207495C
 .public sub_02074CD0

@@ -147,8 +147,8 @@
 .public GetMonGender
 .public MaskOfFlagNo
 .public SaveArray_Party_Alloc
-.public GetPartyCount
-.public GetPartyMonByIndex
+.public Party_GetCount
+.public Party_GetMonByIndex
 .public Party_Copy
 .public sub_02074E5C
 .public sub_02074EC4

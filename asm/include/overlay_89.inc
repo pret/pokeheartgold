@@ -187,9 +187,9 @@
 .public sub_0203A914
 .public GetMonData
 .public GetNatureFromPersonality
-.public GetPartyCount
-.public GetPartyMonByIndex
-.public SaveArray_PlayerParty_Get
+.public Party_GetCount
+.public Party_GetMonByIndex
+.public SaveArray_Party_Get
 .public NNS_G2dGetUnpackedCharacterData
 .public NNS_G3dTexGetRequiredSize
 .public NNS_G3dTexSetTexKey

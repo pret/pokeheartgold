@@ -2783,7 +2783,7 @@ BOOL Pokemon_TryLevelUp(Pokemon *mon) {
     return FALSE;
 }
 
-u16 GetMonEvolution(PARTY *party, Pokemon *mon, u8 context, u16 usedItem, int *method_ret) {
+u16 GetMonEvolution(Party *party, Pokemon *mon, u8 context, u16 usedItem, int *method_ret) {
     u16 species;
     u16 heldItem;
     u8 level;
@@ -2922,7 +2922,7 @@ u16 GetMonEvolution(PARTY *party, Pokemon *mon, u8 context, u16 usedItem, int *m
                 }
                 break;
             case EVO_OTHER_PARTY_MON:
-                if (party != NULL && PartyHasMon(party, evoTable[i].param) == 1) {
+                if (party != NULL && Party_HasMon(party, evoTable[i].param) == 1) {
                     target = evoTable[i].target;
                     *method_ret = EVO_OTHER_PARTY_MON;
                 }
@@ -3246,13 +3246,13 @@ void CopyBoxPokemonToPokemon(const BoxPokemon *src, Pokemon *dest) {
     CalcMonLevelAndStats(dest);
 }
 
-u8 Party_GetMaxLevel(PARTY * party) {
+u8 Party_GetMaxLevel(Party * party) {
     int i;
-    int r7 = GetPartyCount(party);
+    int r7 = Party_GetCount(party);
     u8 ret = 1;
     u8 level;
     for (i = 0; i < r7; i++) {
-        Pokemon *mon = GetPartyMonByIndex(party, i);
+        Pokemon *mon = Party_GetMonByIndex(party, i);
         if (GetMonData(mon, MON_DATA_SPECIES, NULL) != SPECIES_NONE
             && !GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
             level = (u8)GetMonData(mon, MON_DATA_LEVEL, NULL);
@@ -3309,8 +3309,8 @@ int Species_LoadLearnsetTable(u32 species, u32 form, u16 * dest) {
     return i;
 }
 
-void Party_GivePokerusAtRandom(PARTY * party) {
-    int count = GetPartyCount(party);
+void Party_GivePokerusAtRandom(Party * party) {
+    int count = Party_GetCount(party);
     int idx;
     Pokemon *mon;
     u8 sp0;
@@ -3320,7 +3320,7 @@ void Party_GivePokerusAtRandom(PARTY * party) {
     case 0xC000:
         do {
             idx = LCRandom() % count;
-            mon = GetPartyMonByIndex(party, idx);
+            mon = Party_GetMonByIndex(party, idx);
         } while (GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_NONE || GetMonData(mon, MON_DATA_IS_EGG, NULL));
         if (!Party_MaskMonsWithPokerus(party, (u8)MaskOfFlagNo(idx))) {
             do {
@@ -3337,7 +3337,7 @@ void Party_GivePokerusAtRandom(PARTY * party) {
     }
 }
 
-u8 Party_MaskMonsWithPokerus(PARTY * party, u8 mask) {
+u8 Party_MaskMonsWithPokerus(Party * party, u8 mask) {
     int i = 0;
     u32 flag = 1;
     u8 ret = 0;
@@ -3345,7 +3345,7 @@ u8 Party_MaskMonsWithPokerus(PARTY * party, u8 mask) {
     if (mask != 0) {
         do {
             if (mask & 1) {
-                mon = GetPartyMonByIndex(party, i);
+                mon = Party_GetMonByIndex(party, i);
                 if (GetMonData(mon, MON_DATA_POKERUS, NULL)) {
                     ret |= flag;
                 }
@@ -3356,20 +3356,20 @@ u8 Party_MaskMonsWithPokerus(PARTY * party, u8 mask) {
         }
         while (mask != 0);
     } else {
-        mon = GetPartyMonByIndex(party, 0);
+        mon = Party_GetMonByIndex(party, 0);
         if (GetMonData(mon, MON_DATA_POKERUS, NULL))
             ret++;
     }
     return ret;
 }
 
-void Party_UpdatePokerus(PARTY * party, int r5) {
+void Party_UpdatePokerus(Party * party, int r5) {
     int i;
     u8 pokerus;
     Pokemon *mon;
-    int count = GetPartyCount(party);
+    int count = Party_GetCount(party);
     for (i = 0; i < count; i++) {
-        mon = GetPartyMonByIndex(party, i);
+        mon = Party_GetMonByIndex(party, i);
         if (GetMonData(mon, MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
             pokerus = (u8)GetMonData(mon, MON_DATA_POKERUS, NULL);
             if (pokerus & 0xF) {
@@ -3387,25 +3387,25 @@ void Party_UpdatePokerus(PARTY * party, int r5) {
     }
 }
 
-void Party_SpreadPokerus(PARTY * party) {
-    int count = GetPartyCount(party);
+void Party_SpreadPokerus(Party * party) {
+    int count = Party_GetCount(party);
     int i;
     Pokemon *mon;
     u8 pokerus;
     if ((LCRandom() % 3) == 0) {
         for (i = 0; i < count; i++) {
-            mon = GetPartyMonByIndex(party, i);
+            mon = Party_GetMonByIndex(party, i);
             if (GetMonData(mon, MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
                 pokerus = (u8)GetMonData(mon, MON_DATA_POKERUS, NULL);
                 if (pokerus & 0xF) {
                     if (i != 0) {
-                        mon = GetPartyMonByIndex(party, i - 1);
+                        mon = Party_GetMonByIndex(party, i - 1);
                         if (!(GetMonData(mon, MON_DATA_POKERUS, NULL) & 0xF0)) {
                             SetMonData(mon, MON_DATA_POKERUS, &pokerus);
                         }
                     }
                     if (i < count - 1) {
-                        mon = GetPartyMonByIndex(party, i + 1);
+                        mon = Party_GetMonByIndex(party, i + 1);
                         if (!(GetMonData(mon, MON_DATA_POKERUS, NULL) & 0xF0)) {
                             SetMonData(mon, MON_DATA_POKERUS, &pokerus);
                             i++; // don't infect the rest of the party
@@ -3528,12 +3528,12 @@ void Mon_ForceSetGiratinaOriginForm(Pokemon *mon) {
     }
 }
 
-void Party_UpdateAllGiratina_DistortionWorld(PARTY *party, BOOL force_origin) {
-    int npoke = GetPartyCount(party);
+void Party_UpdateAllGiratina_DistortionWorld(Party *party, BOOL force_origin) {
+    int npoke = Party_GetCount(party);
     int i;
     Pokemon *mon;
     for (i = 0; i < npoke; i++) {
-        mon = GetPartyMonByIndex(party, i);
+        mon = Party_GetMonByIndex(party, i);
         if (force_origin) {
             Mon_ForceSetGiratinaOriginForm(mon);
         } else {
@@ -3571,14 +3571,14 @@ BOOL Mon_CanUseGracidea(Pokemon *mon) {
     }
 }
 
-void Party_ResetAllShayminToLandForm(PARTY *party) {
-    int npoke = GetPartyCount(party);
+void Party_ResetAllShayminToLandForm(Party *party) {
+    int npoke = Party_GetCount(party);
     int i;
     int species;
     int form;
     Pokemon *mon;
     for (i = 0; i < npoke; i++) {
-        mon = GetPartyMonByIndex(party, i);
+        mon = Party_GetMonByIndex(party, i);
         species = GetMonData(mon, MON_DATA_SPECIES, NULL);
         form = GetMonData(mon, MON_DATA_FORM, NULL);
         if (species == SPECIES_SHAYMIN && form == SHAYMIN_SKY) {
@@ -3587,7 +3587,7 @@ void Party_ResetAllShayminToLandForm(PARTY *party) {
     }
 }
 
-BOOL Party_TryResetShaymin(PARTY *party, int min_max, const RTCTime *time) {
+BOOL Party_TryResetShaymin(Party *party, int min_max, const RTCTime *time) {
     int hour, minute;
     if (time->hour >= 20 || time->hour < 4) {
         hour = time->hour;

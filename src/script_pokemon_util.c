@@ -15,14 +15,14 @@ static BOOL MonNotFaintedOrEgg(Pokemon *mon) {
 }
 
 BOOL GiveMon(HeapID heapId, SaveData *saveData, int species, int level, int form, u8 ability, u16 heldItem, int ball, int encounterType) {
-    PARTY *party;
+    Party *party;
     Pokemon *mon;
     PlayerProfile *profile;
     u32 sp1C;
     BOOL result;
 
     profile = Save_PlayerData_GetProfileAddr(saveData);
-    party = SaveArray_PlayerParty_Get(saveData);
+    party = SaveArray_Party_Get(saveData);
     {
         mon = AllocMonZeroed(heapId);
         ZeroMonData(mon);
@@ -34,7 +34,7 @@ BOOL GiveMon(HeapID heapId, SaveData *saveData, int species, int level, int form
         if (ability != 0) {
             SetMonData(mon, MON_DATA_ABILITY, &ability);
         }
-        result = AddMonToParty(party, mon);
+        result = Party_AddMon(party, mon);
         if (result) {
             UpdatePokedexWithReceivedSpecies(saveData, mon);
         }
@@ -46,32 +46,32 @@ BOOL GiveMon(HeapID heapId, SaveData *saveData, int species, int level, int form
 BOOL GiveEgg(HeapID heapId, SaveData *saveData, int species, u8 metLocation, MapsecType sp20, int sp24) {
 #pragma unused(heapId)
     PlayerProfile *profile;
-    PARTY *party;
+    Party *party;
     Pokemon *mon;
     BOOL result;
 
     profile = Save_PlayerData_GetProfileAddr(saveData);
-    party = SaveArray_PlayerParty_Get(saveData);
+    party = SaveArray_Party_Get(saveData);
     mon = AllocMonZeroed(HEAP_ID_32);
     ZeroMonData(mon);
     SetEggStats(mon, species, metLocation, profile, 4, sub_02017FE4(sp20, sp24));
-    result = AddMonToParty(party, mon);
+    result = Party_AddMon(party, mon);
     FreeToHeap(mon);
     return result;
 }
 
-void PartyMonSetMoveInSlot(PARTY *party, int mon_slot, int move_slot, u16 moveId) {
-    MonSetMoveInSlot_ResetPpUp(GetPartyMonByIndex(party, mon_slot), moveId, move_slot);
+void PartyMonSetMoveInSlot(Party *party, int mon_slot, int move_slot, u16 moveId) {
+    MonSetMoveInSlot_ResetPpUp(Party_GetMonByIndex(party, mon_slot), moveId, move_slot);
 }
 
-int GetIdxOfFirstPartyMonWithMove(PARTY *party, u16 move) {
+int GetIdxOfFirstPartyMonWithMove(Party *party, u16 move) {
     int i;
     int n;
     Pokemon *mon;
 
-    n = GetPartyCount(party);
+    n = Party_GetCount(party);
     for (i = 0; i < n; i++) {
-        mon = GetPartyMonByIndex(party, i);
+        mon = Party_GetMonByIndex(party, i);
         if (GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
             continue;
         }
@@ -85,16 +85,16 @@ int GetIdxOfFirstPartyMonWithMove(PARTY *party, u16 move) {
     return 0xFF;
 }
 
-int CountAlivePokemon(PARTY *party) {
+int CountAlivePokemon(Party *party) {
     int i;
     int n;
     int c;
     Pokemon *mon;
 
-    n = GetPartyCount(party);
+    n = Party_GetCount(party);
     c = 0;
     for (i = 0; i < n; i++) {
-        mon = GetPartyMonByIndex(party, i);
+        mon = Party_GetMonByIndex(party, i);
         if (MonNotFaintedOrEgg(mon)) {
             c++;
         }
@@ -102,14 +102,14 @@ int CountAlivePokemon(PARTY *party) {
     return c;
 }
 
-Pokemon *GetFirstAliveMonInParty_CrashIfNone(PARTY *party) {
+Pokemon *GetFirstAliveMonInParty_CrashIfNone(Party *party) {
     int i;
     int n;
     Pokemon *mon;
 
-    n = GetPartyCount(party);
+    n = Party_GetCount(party);
     for (i = 0; i < n; i++) {
-        mon = GetPartyMonByIndex(party, i);
+        mon = Party_GetMonByIndex(party, i);
         if (MonNotFaintedOrEgg(mon)) {
             return mon;
         }
@@ -118,14 +118,14 @@ Pokemon *GetFirstAliveMonInParty_CrashIfNone(PARTY *party) {
     return NULL;
 }
 
-u8 GetIdxOfFirstAliveMonInParty_CrashIfNone(PARTY *party) {
+u8 GetIdxOfFirstAliveMonInParty_CrashIfNone(Party *party) {
     int i;
     int n;
     Pokemon *mon;
 
-    n = GetPartyCount(party);
+    n = Party_GetCount(party);
     for (i = 0; i < n; i++) {
-        mon = GetPartyMonByIndex(party, i);
+        mon = Party_GetMonByIndex(party, i);
         if (MonNotFaintedOrEgg(mon)) {
             return i;
         }
@@ -134,14 +134,14 @@ u8 GetIdxOfFirstAliveMonInParty_CrashIfNone(PARTY *party) {
     return 0;
 }
 
-Pokemon *GetFirstNonEggInParty(PARTY *party) {
+Pokemon *GetFirstNonEggInParty(Party *party) {
     u16 i;
     u16 n;
     Pokemon *mon;
 
-    n = GetPartyCount(party);
+    n = Party_GetCount(party);
     for (i = 0; i < n; i++) {
-        mon = GetPartyMonByIndex(party, i);
+        mon = Party_GetMonByIndex(party, i);
         if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
             return mon;
         }
@@ -149,11 +149,11 @@ Pokemon *GetFirstNonEggInParty(PARTY *party) {
     return NULL;
 }
 
-BOOL HasEnoughAlivePokemonForDoubleBattle(PARTY *party) {
+BOOL HasEnoughAlivePokemonForDoubleBattle(Party *party) {
     return CountAlivePokemon(party) >= 2;
 }
 
-BOOL ApplyPoisonStep(PARTY *party, u16 location) {
+BOOL ApplyPoisonStep(Party *party, u16 location) {
     int n;
     int i;
     int n_poisoned;
@@ -163,9 +163,9 @@ BOOL ApplyPoisonStep(PARTY *party, u16 location) {
 
     n_poisoned = 0;
     n_fainted = 0;
-    n = GetPartyCount(party);
+    n = Party_GetCount(party);
     for (i = 0; i < n; i++) {
-        mon = GetPartyMonByIndex(party, i);
+        mon = Party_GetMonByIndex(party, i);
         if (!MonNotFaintedOrEgg(mon)) {
             continue;
         }

@@ -302,7 +302,7 @@ _02067C78:
 	b _02067DE4
 _02067C8E:
 	ldr r0, [r5, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	bl GetIdxOfFirstAliveMonInParty_CrashIfNone
 	ldrh r1, [r4, #0xe]
 	cmp r1, r0

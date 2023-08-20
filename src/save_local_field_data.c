@@ -134,7 +134,7 @@ void Fsys_RestoreMapObjectsFromSave(FieldSystem *fsys) {
     int form;
 
     if (follower != NULL && follower->objId == obj_partner_poke) {
-        mon = GetFirstAliveMonInParty_CrashIfNone(SaveArray_PlayerParty_Get(fsys->savedata));
+        mon = GetFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(fsys->savedata));
         species = GetMonData(mon, MON_DATA_SPECIES, NULL);
         form = GetMonData(mon, MON_DATA_FORM, NULL);
         if (species != SPECIES_SHAYMIN) {

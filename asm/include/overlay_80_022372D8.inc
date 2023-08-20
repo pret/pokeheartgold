@@ -15,9 +15,9 @@
 .public CalcShininessByOtIdAndPersonality
 .public CopyPokemonToPokemon
 .public UpdateMonAbility
-.public InitPartyWithMaxSize
-.public GetPartyMonByIndex
-.public SaveArray_PlayerParty_Get
+.public Party_InitWithMaxSize
+.public Party_GetMonByIndex
+.public SaveArray_Party_Get
 .public HealParty
 .public FX_Sqrt
 .public _fadd

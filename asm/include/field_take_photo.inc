@@ -91,9 +91,9 @@
 .public sub_0206A8DC
 .public GetMonData
 .public MonIsShiny
-.public GetPartyCount
-.public GetPartyMonByIndex
-.public SaveArray_PlayerParty_Get
+.public Party_GetCount
+.public Party_GetMonByIndex
+.public SaveArray_Party_Get
 .public MI_CpuFill8
 .public MI_CpuCopy8
 .public NNS_G3dGlb

@@ -62,9 +62,9 @@
 .public Mon_GetBoxMon
 .public CopyPokemonToPokemon
 .public SetMonPersonality
-.public AddMonToParty
-.public GetPartyCount
-.public SaveArray_PlayerParty_Get
+.public Party_AddMon
+.public Party_GetCount
+.public SaveArray_Party_Get
 .public Bag_HasSpaceForItem
 .public Bag_AddItem
 .public Bag_HasItem

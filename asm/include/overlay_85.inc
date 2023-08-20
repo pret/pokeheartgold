@@ -210,9 +210,9 @@
 .public sub_020699D0
 .public GetMonData
 .public CopyPokemonToPokemon
-.public GetPartyCount
-.public GetPartyMonByIndex
-.public SaveArray_PlayerParty_Get
+.public Party_GetCount
+.public Party_GetMonByIndex
+.public SaveArray_Party_Get
 .public Bag_AddItem
 .public Save_Bag_Get
 .public MonSetTrainerMemo

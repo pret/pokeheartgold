@@ -287,9 +287,9 @@
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx
 .public sub_02074490
-.public GetPartyCount
-.public GetPartyMonByIndex
-.public SaveArray_PlayerParty_Get
+.public Party_GetCount
+.public Party_GetMonByIndex
+.public SaveArray_Party_Get
 .public GetItemNameIntoString
 .public Bag_AddItem
 .public Save_Bag_Get

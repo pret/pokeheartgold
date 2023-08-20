@@ -26,10 +26,10 @@
 .public CopyPokemonToPokemon
 .public sub_0207217C
 .public SaveArray_Party_Init
-.public InitPartyWithMaxSize
-.public AddMonToParty
-.public GetPartyCount
-.public GetPartyMonByIndex
+.public Party_InitWithMaxSize
+.public Party_AddMon
+.public Party_GetCount
+.public Party_GetMonByIndex
 .public HealParty
 .public _s32_div_f
 .public ov80_02229F04

@@ -217,7 +217,7 @@ _02074AC8:
 	beq _02074B16
 	ldr r0, [sp, #4]
 	sub r1, r1, #1
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r4, r0, #0
 	ldr r0, [sp]
 	ldr r2, [sp, #8]
@@ -497,7 +497,7 @@ sub_02074CD0: ; 0x02074CD0
 	add r0, r1, #0
 	str r1, [sp, #0x10]
 	str r2, [sp, #0x14]
-	bl GetPartyCount
+	bl Party_GetCount
 	str r0, [sp, #0x20]
 	add r6, r0, #0
 	add r0, sp, #0x30
@@ -513,7 +513,7 @@ sub_02074CD0: ; 0x02074CD0
 _02074CFA:
 	ldr r0, [sp, #0x10]
 	add r1, r7, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	str r0, [sp, #0x24]
 	mov r1, #5
 	mov r2, #0

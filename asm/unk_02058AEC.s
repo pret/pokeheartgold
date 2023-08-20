@@ -55,7 +55,7 @@ sub_02058AEC: ; 0x02058AEC
 	ldr r0, [sp, #4]
 	strb r0, [r4, #0x14]
 	ldr r0, [r4]
-	bl GetPartyCount
+	bl Party_GetCount
 	strb r0, [r4, #0x13]
 	mov r0, #0
 	strh r0, [r4, #0x18]
@@ -105,7 +105,7 @@ sub_02058B84: ; 0x02058B84
 	str r0, [r4, #0x14]
 	ldr r0, [r5, #0x24]
 	ldr r0, [r0, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [r4]
 	ldr r0, [r5, #0x24]
 	ldr r0, [r0, #0xc]
@@ -648,7 +648,7 @@ _02058FC0:
 _02058FC6:
 	ldr r0, [r4, #0x24]
 	ldr r0, [r0, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -978,7 +978,7 @@ _02059274:
 	add r1, #0x84
 	ldrb r1, [r1]
 	ldr r0, [r4, #0x50]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r4, #0x28]
@@ -1403,7 +1403,7 @@ _020595F0:
 	bl SaveArray_Party_Alloc
 	mov r1, #3
 	str r0, [r4, #0x50]
-	bl InitPartyWithMaxSize
+	bl Party_InitWithMaxSize
 	add r0, r4, #0
 	mov r1, #5
 	add r0, #0x44
@@ -1490,7 +1490,7 @@ sub_020596A8: ; 0x020596A8
 	ldr r0, [r7, #0x24]
 	add r5, r1, #0
 	ldr r0, [r0, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [sp]
 	ldr r4, [r7, #0x4c]
 	bl sub_02070D90
@@ -1508,7 +1508,7 @@ _020596CE:
 	ldrb r1, [r1]
 	ldr r0, [sp]
 	sub r1, r1, #1
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r4, #0
 	add r2, r6, #0
 	bl MI_CpuCopy8
@@ -1643,7 +1643,7 @@ sub_020597A8: ; 0x020597A8
 	add r6, r0, #0
 	ldr r0, [r5, #0x50]
 	mov r1, #3
-	bl InitPartyWithMaxSize
+	bl Party_InitWithMaxSize
 	mov r4, #0
 _020597BC:
 	add r1, r4, #0
@@ -1651,7 +1651,7 @@ _020597BC:
 	mul r1, r6
 	ldr r0, [r5, #0x50]
 	add r1, r2, r1
-	bl AddMonToParty
+	bl Party_AddMon
 	add r4, r4, #1
 	cmp r4, #3
 	blt _020597BC
@@ -1683,7 +1683,7 @@ sub_020597D4: ; 0x020597D4
 	bl MI_CpuCopy8
 	ldr r0, [r6, #0x50]
 	mov r1, #3
-	bl InitPartyWithMaxSize
+	bl Party_InitWithMaxSize
 	mov r5, #0
 _0205980A:
 	add r1, r5, #0
@@ -1691,7 +1691,7 @@ _0205980A:
 	mul r1, r4
 	ldr r0, [r6, #0x50]
 	add r1, r2, r1
-	bl AddMonToParty
+	bl Party_AddMon
 	add r5, r5, #1
 	cmp r5, #3
 	blt _0205980A

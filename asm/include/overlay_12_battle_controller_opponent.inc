@@ -88,10 +88,10 @@
 .public sub_02072A20
 .public GetMoveAttr
 .public SaveArray_Party_Alloc
-.public InitPartyWithMaxSize
-.public AddMonToParty
-.public GetPartyCount
-.public GetPartyMonByIndex
+.public Party_InitWithMaxSize
+.public Party_AddMon
+.public Party_GetCount
+.public Party_GetMonByIndex
 .public GetItemAttr
 .public MIi_CpuCopy16
 .public MIi_CpuClearFast

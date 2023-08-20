@@ -110,9 +110,9 @@ _0206B9BC:
 	add r0, r5, r0
 	str r0, [r6, #0x2c]
 	ldr r0, [r7, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [r6, #0x1c]
-	bl GetPartyCount
+	bl Party_GetCount
 	mov r4, #0
 	str r0, [sp, #4]
 	str r0, [r6]
@@ -122,7 +122,7 @@ _0206B9BC:
 _0206B9F2:
 	ldr r0, [r6, #0x1c]
 	add r1, r4, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	str r0, [r5, #4]
 	ldr r0, [sp, #4]
 	add r4, r4, #1

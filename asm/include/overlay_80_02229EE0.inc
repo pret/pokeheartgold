@@ -37,7 +37,7 @@
 .public CalcShininessByOtIdAndPersonality
 .public sub_0207217C
 .public MaskOfFlagNo
-.public AddMonToParty
+.public Party_AddMon
 .public sub_020880B0
 .public MonSetTrainerMemo
 .public MI_CpuFill8

@@ -47,7 +47,7 @@ sub_02051D18: ; 0x02051D18
 	bl Save_PlayerData_GetProfileAddr
 	str r0, [sp, #0x1c]
 	add r0, r4, #0
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [sp, #0x18]
 	add r0, r4, #0
 	bl Save_Bag_Get
@@ -133,10 +133,10 @@ _02051DDA:
 	beq _02051E0A
 	ldr r0, [r5, #4]
 	mov r1, #1
-	bl InitPartyWithMaxSize
+	bl Party_InitWithMaxSize
 	ldr r0, [sp, #0x18]
 	mov r1, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r0, #0
 	add r0, r5, #0
 	mov r2, #0
@@ -289,7 +289,7 @@ sub_02051F2C: ; 0x02051F2C
 	add r4, r0, #0
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [sp, #0x14]
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
@@ -322,19 +322,19 @@ sub_02051F2C: ; 0x02051F2C
 	bl AllocMonZeroed
 	add r4, r0, #0
 	ldr r0, [sp, #0x14]
-	bl GetPartyCount
+	bl Party_GetCount
 	add r1, r0, #0
 	ldr r0, [r5, #4]
-	bl InitPartyWithMaxSize
+	bl Party_InitWithMaxSize
 	ldr r0, [sp, #0x14]
 	mov r7, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	ble _02052004
 _02051FAC:
 	ldr r0, [sp, #0x14]
 	add r1, r7, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r4, #0
 	bl CopyPokemonToPokemon
 	add r0, r4, #0
@@ -365,7 +365,7 @@ _02051FEE:
 	bl BattleSetup_AddMonToParty
 	ldr r0, [sp, #0x14]
 	add r7, r7, #1
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r7, r0
 	blt _02051FAC
 _02052004:
@@ -525,7 +525,7 @@ _02052146:
 	cmp r1, #6
 	blt _02052146
 	ldr r0, [sp, #4]
-	bl GetPartyCount
+	bl Party_GetCount
 	add r6, r0, #0
 _02052158:
 	mov r0, #0xb
@@ -533,7 +533,7 @@ _02052158:
 	add r4, r0, #0
 	ldr r0, [r5, #4]
 	add r1, r6, #0
-	bl InitPartyWithMaxSize
+	bl Party_InitWithMaxSize
 	mov r0, #0
 	str r0, [sp, #8]
 	cmp r6, #0
@@ -543,7 +543,7 @@ _02052172:
 	ldrb r1, [r7]
 	ldr r0, [sp, #4]
 	sub r1, r1, #1
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r4, #0
 	bl CopyPokemonToPokemon
 	add r0, r4, #0
@@ -718,7 +718,7 @@ sub_020522F0: ; 0x020522F0
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	add r6, r2, #0
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -806,7 +806,7 @@ sub_0205239C: ; 0x0205239C
 	bl Save_PlayerData_GetProfileAddr
 	add r6, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r7, r0, #0
 	ldr r0, [r4, #0xc]
 	bl Save_Bag_Get
@@ -879,7 +879,7 @@ sub_02052444: ; 0x02052444
 	ldr r0, [r5, #0xc]
 	bl Save_PlayerData_GetProfileAddr
 	ldr r0, [r5, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	ldr r0, [r5, #0xc]
 	bl Save_Bag_Get
 	ldr r0, [r5, #0xc]
