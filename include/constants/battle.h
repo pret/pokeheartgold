@@ -81,6 +81,7 @@ typedef enum Terrain {
 #define BATTLE_TYPE_PAL_PARK                (1 << 9)
 #define BATTLE_TYPE_TUTORIAL                (1 << 10)
 #define BATTLE_TYPE_11                      (1 << 11)
+#define BATTLE_TYPE_BUG_CONTEST             (1 << 12)
 #define BATTLE_TYPE_DEBUG                   (1 << 31)
 
 #define BATTLE_TYPE_NO_EXP                  (BATTLE_TYPE_LINK | BATTLE_TYPE_SAFARI | BATTLE_TYPE_TOWER | BATTLE_TYPE_PAL_PARK)

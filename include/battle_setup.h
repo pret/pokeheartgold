@@ -5,70 +5,71 @@
 #include "party.h"
 #include "player_data.h"
 #include "trainer_data.h"
+#include "bag.h"
+#include "pokedex.h"
+
+struct BattleSetupSub_138 {
+    int unk_0;
+    int unk_4;
+    int unk_8;
+};
 
 struct BATTLE_SETUP { //declared in trainer_data.h
     u32 flags;
-    PARTY *party[4];
-    u32 winFlag;
-    int trainerId[4];
-    TRAINER trainer[4];
-    PlayerProfile *profile[4];
-    void *unk48;
-    void *unk4C;
-    void *unk50;
-    void *unk54;
-    void *unk58[4];
-    void *unk68;
-    void *unk6C;
-    void *unk70;
-    void *unk74;
-    void *unk78;
-    void *unk7C;
-    int unk80;
-    int unk84;
-    int unk88;
-    int unk8C;
-    int unk90;
-    int unk94;
-    int unk98;
-    int unk9C;
-    int evolutionLocation;
-    int unkA4;
-    int unkA8;
-    u32 unkAC[3];
+    PARTY *party[4]; // 4
+    int winFlag; // 14
+    int trainerId[4]; // 18
+    TRAINER trainer[4]; // 28
+    PlayerProfile *profile[4]; // f8
+    Bag* bag; // 108
+    void* unk_10C;
+    Pokedex* pokedex; // 110
+    void* unk_114;
+    SOUND_CHATOT* chatot[4]; // 118
+    void* unk_128;
+    void* unk_12C;
+    OPTIONS* options;
+    void* unk_134;
+    struct BattleSetupSub_138 unk138;
+    void* unk_144;
+    int unk_148;
+    u32 unk_14C;
+    u32 unk_150;
+    u32 unk_154;
+    u32 unk_158;
+    u32 unk_15C;
+    u32 evolutionLocation;
+    u32 unk_164;
+    u32 unk_168;
+    int unk_16C;
+    u32 unk_170;
+    u32 unk_174;
     int levelUpFlag;
-    u32 unkBC;
-    int unkC0;
-    u32 unkC4;
-    void *unkC8;
-    u32 unkCC;
-    int unkD0[4];
-    u16 unkE0;
-    u8 unkE2;
-    u8 unkE3;
-    int unkE4;
-    void *unkE8;
-    u8 unkEC[4];
+    u8 filler_17C[0x10];
+    u32 unk_18C;
+    int unk_190;
+    void* unk_194;
+    u8 filler_198[4];
+    int unk_19C;
+    int unk_1A0[4];
     u16 unk1B0;
     u8 unk1B2;
     u8 unk1B3;
-    u32 unk1B4;
-    int unk1B8;
+    int unk1B4;
+    void* unk1B8;
     int unk1BC;
     int unk1C0;
     int unk1C4;
-    int unk1C8;
-    u8 unk1CC;
-    u8 unk1CD;
-    u8 unk1CE;
-    u8 unk1CF;
+    Pokemon* unk1C8;
+    u8 unk1CC[4];
+    u8 filler_1D0[4];
 };
 
 BOOL IsBattleResultWin(u32 a0);
 int sub_02052564(u32 a0);
 int sub_02052574(u32 a0);
 void BattleSetup_Delete(BATTLE_SETUP *setup);
-BATTLE_SETUP *sub_02051AAC(HeapID heapId, FieldSystem *fsys);
+BATTLE_SETUP *BattleSetup_New_Tutorial(HeapID heapId, FieldSystem *fsys);
 void sub_02052444(BATTLE_SETUP *setup, FieldSystem *fsys);
 void BattleSetup_InitFromFsys(BATTLE_SETUP *setup, FieldSystem *fsys);
 BATTLE_SETUP *BattleSetup_New(HeapID heapId, u32 battleFlags);

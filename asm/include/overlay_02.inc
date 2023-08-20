@@ -215,8 +215,8 @@
 .public sub_02050B08
 .public sub_02050B90
 .public BattleSetup_New
-.public sub_02051A60
-.public sub_02051A74
+.public BattleSetup_New_SafariZone
+.public BattleSetup_New_BugContest
 .public BattleSetup_Delete
 .public BattleSetup_InitFromFsys
 .public sub_02052544

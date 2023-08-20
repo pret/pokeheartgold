@@ -54,10 +54,10 @@
 .public Save_LocalFieldData_Get
 .public Save_VarsFlags_Get
 .public BattleSetup_New
-.public sub_02051A60
-.public sub_02051A74
+.public BattleSetup_New_SafariZone
+.public BattleSetup_New_BugContest
 .public BattleSetup_New_PalPark
-.public sub_02051AAC
+.public BattleSetup_New_Tutorial
 .public BattleSetup_Delete
 .public BattleSetup_AddMonToParty
 .public sub_02051D18

@@ -5059,7 +5059,7 @@ _02248252:
 	add r1, r0, #0
 	ldrh r1, [r1]
 	mov r0, #0xb
-	bl sub_02051A60
+	bl BattleSetup_New_SafariZone
 	str r0, [r5]
 	pop {r3, r4, r5, pc}
 _0224826A:
@@ -5070,7 +5070,7 @@ _0224826A:
 	ldrh r1, [r1]
 	ldr r2, [r4, #0x10]
 	mov r0, #0xb
-	bl sub_02051A74
+	bl BattleSetup_New_BugContest
 	str r0, [r5]
 	pop {r3, r4, r5, pc}
 _02248284:

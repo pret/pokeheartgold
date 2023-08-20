@@ -31,196 +31,11 @@ _020FC4C0:
 
 	.text
 
-	thumb_func_start BattleSetup_New
-BattleSetup_New: ; 0x020518D8
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x20
-	add r5, r1, #0
-	mov r1, #0x75
-	lsl r1, r1, #2
-	add r6, r0, #0
-	bl AllocFromHeap
-	mov r2, #0x75
-	mov r1, #0
-	lsl r2, r2, #2
-	add r4, r0, #0
-	bl MI_CpuFill8
-	mov r0, #0x63
-	str r5, [r4]
-	lsl r0, r0, #2
-	mov r7, #0
-	str r7, [r4, r0]
-	add r1, r0, #0
-	str r7, [r4, #0x14]
-	sub r1, #0x40
-	str r7, [r4, r1]
-	add r1, r0, #0
-	mov r2, #0x18
-	sub r1, #0x3c
-	str r2, [r4, r1]
-	add r1, r0, #0
-	sub r1, #0x38
-	str r7, [r4, r1]
-	add r1, r0, #0
-	sub r1, #0x30
-	str r7, [r4, r1]
-	add r1, r0, #0
-	sub r1, #0x2c
-	str r7, [r4, r1]
-	add r1, r0, #0
-	mov r2, #1
-	sub r1, #0x28
-	str r2, [r4, r1]
-	add r1, r0, #0
-	sub r1, #0x24
-	str r2, [r4, r1]
-	sub r0, #0x18
-	str r7, [r4, r0]
-	add r0, r4, #0
-	str r0, [sp]
-	add r0, #0x28
-	add r5, r4, #0
-	str r0, [sp]
-_0205193C:
-	ldr r1, [sp]
-	mov r0, #0
-	mov r2, #0x34
-	str r0, [r5, #0x18]
-	bl MIi_CpuClear32
-	add r0, r6, #0
-	bl SaveArray_Party_Alloc
-	str r0, [r5, #4]
-	add r0, r6, #0
-	bl PlayerProfile_New
-	add r1, r5, #0
-	add r1, #0xf8
-	str r0, [r1]
-	add r0, r6, #0
-	bl Chatot_New
-	mov r1, #0x46
-	lsl r1, r1, #2
-	str r0, [r5, r1]
-	mov r1, #0xff
-	add r0, r1, #0
-	add r2, r4, r7
-	add r0, #0xcd
-	strb r1, [r2, r0]
-	ldr r0, [sp]
-	add r7, r7, #1
-	add r0, #0x34
-	add r5, r5, #4
-	str r0, [sp]
-	cmp r7, #4
-	blt _0205193C
-	add r0, r6, #0
-	bl Save_Bag_New
-	mov r1, #0x42
-	lsl r1, r1, #2
-	str r0, [r4, r1]
-	add r0, r6, #0
-	bl Pokedex_New
-	mov r1, #0x11
-	lsl r1, r1, #4
-	str r0, [r4, r1]
-	add r0, r6, #0
-	bl Options_New
-	mov r1, #0x13
-	lsl r1, r1, #4
-	str r0, [r4, r1]
-	add r0, r6, #0
-	bl sub_02067A60
-	mov r1, #0x4d
-	lsl r1, r1, #2
-	add r2, r1, #0
-	str r0, [r4, r1]
-	mov r0, #0
-	sub r2, #0x28
-	str r0, [r4, r2]
-	add r2, r1, #0
-	add r2, #0x84
-	str r0, [r4, r2]
-	add r2, r1, #0
-	add r2, #0x5c
-	str r0, [r4, r2]
-	add r2, r1, #0
-	sub r2, #8
-	str r0, [r4, r2]
-	add r2, r1, #0
-	add r2, #0x10
-	str r0, [r4, r2]
-	add r1, #0x60
-	str r0, [r4, r1]
-	add r0, r6, #0
-	bl AllocMonZeroed
-	mov r1, #0x72
-	lsl r1, r1, #2
-	str r0, [r4, r1]
-	add r0, sp, #0x10
-	add r1, sp, #4
-	bl GF_RTC_CopyDateTime
-	ldr r0, _02051A5C ; =gSystem
-	ldr r6, [sp, #0x14]
-	ldr r5, [r0, #0x2c]
-	ldr r1, [sp, #8]
-	ldr r0, [sp, #0xc]
-	lsl r6, r6, #8
-	add r0, r1, r0
-	lsl r3, r0, #0x18
-	ldr r0, [sp, #4]
-	ldr r1, [sp, #0x10]
-	lsl r2, r0, #0x10
-	ldr r0, [sp, #0x18]
-	mul r6, r0
-	lsl r0, r6, #0x10
-	add r0, r1, r0
-	add r0, r2, r0
-	add r0, r3, r0
-	add r1, r5, r0
-	mov r0, #0x67
-	lsl r0, r0, #2
-	str r1, [r4, r0]
-	bl sub_02037474
-	cmp r0, #1
-	bne _02051A48
-	mov r5, #0
-	bl sub_02037454
-	cmp r0, #0
-	ble _02051A3E
-	mov r7, #0x1a
-	add r6, r4, #0
-	lsl r7, r7, #4
-_02051A2A:
-	add r0, r5, #0
-	bl sub_020378AC
-	str r0, [r6, r7]
-	add r6, r6, #4
-	add r5, r5, #1
-	bl sub_02037454
-	cmp r5, r0
-	blt _02051A2A
-_02051A3E:
-	bl sub_0203769C
-	mov r1, #0x1b
-	lsl r1, r1, #4
-	strh r0, [r4, r1]
-_02051A48:
-	mov r0, #0x4e
-	lsl r0, r0, #2
-	add r0, r4, r0
-	mov r1, #0
-	mov r2, #0xc
-	bl MI_CpuFill8
-	add r0, r4, #0
-	add sp, #0x20
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02051A5C: .word gSystem
-	thumb_func_end BattleSetup_New
-
-	thumb_func_start sub_02051A60
-sub_02051A60: ; 0x02051A60
+	thumb_func_start BattleSetup_New_SafariZone
+BattleSetup_New_SafariZone: ; 0x02051A60
 	push {r4, lr}
 	add r4, r1, #0
+	; BATTLE_TYPE_SAFARI
 	mov r1, #0x20
 	bl BattleSetup_New
 	mov r1, #0x19
@@ -228,12 +43,13 @@ sub_02051A60: ; 0x02051A60
 	str r4, [r0, r1]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02051A60
+	thumb_func_end BattleSetup_New_SafariZone
 
-	thumb_func_start sub_02051A74
-sub_02051A74: ; 0x02051A74
+	thumb_func_start BattleSetup_New_BugContest
+BattleSetup_New_BugContest: ; 0x02051A74
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
+	; BATTLE_TYPE_BUG_CONTEST
 	mov r1, #1
 	lsl r1, r1, #0xc
 	add r6, r2, #0
@@ -248,7 +64,7 @@ sub_02051A74: ; 0x02051A74
 	bl CopyPokemonToPokemon
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_02051A74
+	thumb_func_end BattleSetup_New_BugContest
 
 	thumb_func_start BattleSetup_New_PalPark
 BattleSetup_New_PalPark: ; 0x02051A98
@@ -264,8 +80,8 @@ BattleSetup_New_PalPark: ; 0x02051A98
 	pop {r4, pc}
 	thumb_func_end BattleSetup_New_PalPark
 
-	thumb_func_start sub_02051AAC
-sub_02051AAC: ; 0x02051AAC
+	thumb_func_start BattleSetup_New_Tutorial
+BattleSetup_New_Tutorial: ; 0x02051AAC
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1c
 	add r5, r1, #0
@@ -278,7 +94,7 @@ sub_02051AAC: ; 0x02051AAC
 	mov r1, #1
 	str r0, [sp, #0x14]
 	add r0, r6, #0
-	lsl r1, r1, #0xa
+	lsl r1, r1, #0xa ; BATTLE_TYPE_TUTORIAL
 	bl BattleSetup_New
 	add r4, r0, #0
 	mov r2, #7
@@ -406,7 +222,7 @@ sub_02051AAC: ; 0x02051AAC
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02051AAC
+	thumb_func_end BattleSetup_New_Tutorial
 
 	thumb_func_start BattleSetup_Delete
 BattleSetup_Delete: ; 0x02051BF8
@@ -511,8 +327,8 @@ _02051CC0:
 	.balign 4, 0
 	thumb_func_end BattleSetup_AddMonToParty
 
-	thumb_func_start sub_02051CC4
-sub_02051CC4: ; 0x02051CC4
+	thumb_func_start BattleSetup_SetParty
+BattleSetup_SetParty: ; 0x02051CC4
 	push {r4, r5, r6, lr}
 	add r4, r2, #0
 	add r5, r0, #0
@@ -528,10 +344,10 @@ _02051CD4:
 	bl Party_Copy
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_02051CC4
+	thumb_func_end BattleSetup_SetParty
 
-	thumb_func_start sub_02051CE4
-sub_02051CE4: ; 0x02051CE4
+	thumb_func_start BattleSetup_SetProfile
+BattleSetup_SetProfile: ; 0x02051CE4
 	push {r4, r5, r6, lr}
 	add r4, r2, #0
 	add r5, r0, #0
@@ -547,10 +363,10 @@ _02051CF4:
 	add r0, r6, #0
 	bl PlayerProfile_Copy
 	pop {r4, r5, r6, pc}
-	thumb_func_end sub_02051CE4
+	thumb_func_end BattleSetup_SetProfile
 
-	thumb_func_start sub_02051D04
-sub_02051D04: ; 0x02051D04
+	thumb_func_start BattleSetup_SetChatotVoiceClip
+BattleSetup_SetChatotVoiceClip: ; 0x02051D04
 	lsl r2, r2, #2
 	add r2, r0, r2
 	mov r0, #0x46
@@ -560,7 +376,7 @@ sub_02051D04: ; 0x02051D04
 	bx r3
 	nop
 _02051D14: .word Chatot_Copy
-	thumb_func_end sub_02051D04
+	thumb_func_end BattleSetup_SetChatotVoiceClip
 
 	thumb_func_start sub_02051D18
 sub_02051D18: ; 0x02051D18
@@ -652,7 +468,7 @@ _02051DDA:
 	ldr r1, [sp, #0x1c]
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_02051CE4
+	bl BattleSetup_SetProfile
 	mov r0, #1
 	ldr r1, [r5]
 	lsl r0, r0, #0xc
@@ -673,7 +489,7 @@ _02051E0A:
 	ldr r1, [sp, #0x18]
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_02051CC4
+	bl BattleSetup_SetParty
 _02051E14:
 	mov r1, #0x42
 	lsl r1, r1, #2
@@ -693,7 +509,7 @@ _02051E14:
 	ldr r1, [sp, #0xc]
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_02051D04
+	bl BattleSetup_SetChatotVoiceClip
 	add r0, r4, #0
 	bl GetStoragePCPointer
 	mov r1, #0x45
@@ -844,7 +660,7 @@ sub_02051F2C: ; 0x02051F2C
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_02051CE4
+	bl BattleSetup_SetProfile
 	mov r0, #0xb
 	bl AllocMonZeroed
 	add r4, r0, #0
@@ -916,7 +732,7 @@ _02052004:
 	ldr r1, [sp, #8]
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_02051D04
+	bl BattleSetup_SetChatotVoiceClip
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
 	bl GetStoragePCPointer
@@ -1015,13 +831,13 @@ sub_020520B0: ; 0x020520B0
 	str r1, [r5, r0]
 	ldr r1, [sp, #0x20]
 	add r0, r5, #0
-	bl sub_02051CE4
+	bl BattleSetup_SetProfile
 	cmp r4, #0
 	bne _0205211E
 	ldr r1, [sp, #4]
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_02051CC4
+	bl BattleSetup_SetParty
 	b _020521DE
 _0205211E:
 	add r0, r4, #0
@@ -1144,7 +960,7 @@ _020521F6:
 	ldr r1, [sp, #0x14]
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_02051D04
+	bl BattleSetup_SetChatotVoiceClip
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
 	bl GetStoragePCPointer
