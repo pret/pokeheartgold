@@ -1286,7 +1286,7 @@ void ov12_0223C224(BattleSystem *bsys, int a1) {
     }
 }
 
-u32 CalcMoneyLoss(PARTY *party, PlayerProfile *profile) {
+u32 CalcMoneyLoss(Party *party, PlayerProfile *profile) {
     static const u8 sBadgePenalty[] = {
         2, 4, 6, 9, 12, 16, 20, 25, 30
     };

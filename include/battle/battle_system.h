@@ -137,7 +137,7 @@ void ov12_0223C1A0(BattleSystem *bsys, u8 *buffer);
 void ov12_0223C1C4(BattleSystem *bsys, u8 *buffer);
 void ov12_0223C1F4(BattleSystem *bsys, void **a1);
 void ov12_0223C224(BattleSystem *bsys, int a1);
-u32 CalcMoneyLoss(PARTY *party, PlayerProfile *profile);
+u32 CalcMoneyLoss(Party *party, PlayerProfile *profile);
 
 //These functions haven't been decompiled
 void PokedexSetBattlerSeen(BattleSystem *bsys, int battlerId);

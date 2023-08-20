@@ -128,7 +128,7 @@ BOOL ov12_02251C74(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarge
 void Link_CheckTimeout(BattleContext *ctx);
 BOOL CheckLegalMeFirstMove(BattleContext *ctx, u16 move);
 int ov12_02253DA0(BattleSystem *bsys, BattleContext *ctx, int battlerId);
-u32 CalcMoneyLoss(PARTY *party, PlayerProfile *profile);
+u32 CalcMoneyLoss(Party *party, PlayerProfile *profile);
 int ov12_02251D28(BattleSystem *bsys, BattleContext *ctx, int moveNo, int moveType, int battlerIdAttacker, int battlerIdTarget, int dmg, u32 *statusFlag);
 void ov12_02252D14(BattleSystem *bsys, BattleContext *ctx);
 void ov12_0225859C(BattleContext *ctx, u8 battlerId);
