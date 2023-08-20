@@ -196,8 +196,8 @@ sub_02067BC0: ; 0x02067BC0
 	.balign 4, 0
 	thumb_func_end sub_02067BC0
 
-	thumb_func_start Fsys_ClearFollowingTrainer
-Fsys_ClearFollowingTrainer: ; 0x02067BD0
+	thumb_func_start FieldSystem_ClearFollowingTrainer
+FieldSystem_ClearFollowingTrainer: ; 0x02067BD0
 	push {r4, lr}
 	ldr r0, [r0, #0xc]
 	bl Save_VarsFlags_Get
@@ -207,7 +207,7 @@ Fsys_ClearFollowingTrainer: ; 0x02067BD0
 	mov r1, #0
 	bl Save_VarsFlags_SetFollowerTrainerNum
 	pop {r4, pc}
-	thumb_func_end Fsys_ClearFollowingTrainer
+	thumb_func_end FieldSystem_ClearFollowingTrainer
 
 	thumb_func_start sub_02067BE8
 sub_02067BE8: ; 0x02067BE8
@@ -329,7 +329,7 @@ _02067CAE:
 	ldr r0, [r5, r0]
 	mov r1, #1
 	mov r6, #2
-	bl FsysUnkSub108_AddMonMood
+	bl FieldSystemUnkSub108_AddMonMood
 	b _02067CD6
 _02067CD4:
 	mov r6, #1

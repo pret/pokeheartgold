@@ -126,7 +126,7 @@ BOOL ScrCmd_491(ScriptContext *ctx) {
 BOOL ScrCmd_628(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
     u16 r5 = ScriptGetVar(ctx);
-    u32 r0 = sub_02030AE8(ctx->fsys->savedata);
+    u32 r0 = sub_02030AE8(ctx->fieldSystem->savedata);
     u8 s = 0;
     sub_02030AA4(r0, 0xa, r5 * 4 + r4, &s);
     if (r4 == 3) {
@@ -136,10 +136,10 @@ BOOL ScrCmd_628(ScriptContext *ctx) {
         } else {
             r7 = 0x68;
         }
-        sub_02031108(sub_0203107C(ctx->fsys->savedata), r7, sub_0205C268(r7), 0);
+        sub_02031108(sub_0203107C(ctx->fieldSystem->savedata), r7, sub_0205C268(r7), 0);
     }
-    sub_02031108(sub_0203107C(ctx->fsys->savedata), sub_0205BFF0(r5, r4), sub_0205C268(sub_0205BFF0(r5, r4)), 0);
-    sub_02031108(sub_0203107C(ctx->fsys->savedata), sub_0205C048(r5, r4), sub_0205C268(sub_0205C048(r5, r4)), 0);
+    sub_02031108(sub_0203107C(ctx->fieldSystem->savedata), sub_0205BFF0(r5, r4), sub_0205C268(sub_0205BFF0(r5, r4)), 0);
+    sub_02031108(sub_0203107C(ctx->fieldSystem->savedata), sub_0205C048(r5, r4), sub_0205C268(sub_0205C048(r5, r4)), 0);
     return FALSE;
 }
 
@@ -147,25 +147,25 @@ BOOL ScrCmd_633(ScriptContext *ctx) {
     u16 r7 = ScriptReadHalfword(ctx);
     u16 r5 = ScriptGetVar(ctx);
     u16 *resultPtr = ScriptGetVarPointer(ctx);
-    sub_02030B04(ctx->fsys->savedata);
-    u32 sp04 = sub_02030C5C(ctx->fsys->savedata);
-    void *r1 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
+    sub_02030B04(ctx->fieldSystem->savedata);
+    u32 sp04 = sub_02030C5C(ctx->fieldSystem->savedata);
+    void *r1 = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     switch (r7) {
         case 0:
-            *resultPtr = BattleHall_DoesPartyContainEligibleMons(r5, ctx->fsys->savedata);
+            *resultPtr = BattleHall_DoesPartyContainEligibleMons(r5, ctx->fieldSystem->savedata);
             break;
         case 1:
             if (r5 == 3) {
-                *resultPtr = sub_020310BC(sub_0203107C(ctx->fsys->savedata), 0x6a, sub_0205C268(0x6a));
+                *resultPtr = sub_020310BC(sub_0203107C(ctx->fieldSystem->savedata), 0x6a, sub_0205C268(0x6a));
             } else {
                 *resultPtr = sub_02030CA0(sp04, 5, r5, 0, 0);
             }
             break;
         case 2:
-            *resultPtr = sub_020310BC(sub_0203107C(ctx->fsys->savedata), sub_0205C11C(r5), sub_0205C268(sub_0205C11C(r5)));
+            *resultPtr = sub_020310BC(sub_0203107C(ctx->fieldSystem->savedata), sub_0205C11C(r5), sub_0205C268(sub_0205C11C(r5)));
             break;
         case 3:
-            sub_0204F878(ctx->fsys->savedata, sp04, r5);
+            sub_0204F878(ctx->fieldSystem->savedata, sp04, r5);
             break;
         case 4:
             BattleHallChallengeType challengeType;
@@ -228,8 +228,8 @@ static BOOL BattleHall_DoesPartyContainEligibleMons(s32 numRequiredMons, SaveDat
 // upon continuing battle hall challenge without previously saving
 BOOL ScrCmd_636(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
-    u32 r1 = sub_02030C5C(ctx->fsys->savedata);
-    sub_0204F878(ctx->fsys->savedata, r1, r4);
+    u32 r1 = sub_02030C5C(ctx->fieldSystem->savedata);
+    sub_0204F878(ctx->fieldSystem->savedata, r1, r4);
     return FALSE;
 }
 
@@ -276,29 +276,29 @@ static BOOL sub_0204F228(TaskManager *taskManager) {
 }
 
 static void sub_0204F284(TaskManager *taskManager, void *a1, BattleHallChallengeType challengeType) {
-    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     UnkStruct_0204F284 *r4 = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0204F284));
     MI_CpuFill8(r4, 0, sizeof(UnkStruct_0204F284));
     r4->challengeType = challengeType;
     r4->unk08 = a1;
-    TaskManager_Call(fsys->taskman, sub_0204F2B8, r4);
+    TaskManager_Call(fieldSystem->taskman, sub_0204F2B8, r4);
 }
 
 static BOOL sub_0204F2B8(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     UnkStruct_0204F284 *r4 = TaskManager_GetEnv(taskManager);
     switch (r4->state) {
         case 0:
-            r4->state = sub_0204F320(r4, fsys, HEAP_ID_FIELD);
+            r4->state = sub_0204F320(r4, fieldSystem, HEAP_ID_FIELD);
             break;
         case 1:
-            r4->state = sub_0204F3F8(r4, fsys);
+            r4->state = sub_0204F3F8(r4, fieldSystem);
             break;
         case 2:
-            r4->state = sub_0204F448(r4, fsys, HEAP_ID_FIELD);
+            r4->state = sub_0204F448(r4, fieldSystem, HEAP_ID_FIELD);
             break;
         case 3:
-            r4->state = sub_0204F4D8(r4, fsys);
+            r4->state = sub_0204F4D8(r4, fieldSystem);
             break;
         case 4:
             FreeToHeap(r4);
@@ -307,16 +307,16 @@ static BOOL sub_0204F2B8(TaskManager *taskManager) {
     return FALSE;
 }
 
-static u32 sub_0204F320(UnkStruct_0204F284 *a0, FieldSystem *fsys, HeapID unused) {
+static u32 sub_0204F320(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem, HeapID unused) {
     PartyMenuAppData *partyMenu = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuAppData));
     MIi_CpuClearFast(0, (u32*)partyMenu, sizeof(PartyMenuAppData));
-    partyMenu->party = SaveArray_Party_Get(fsys->savedata);
-    partyMenu->bag = Save_Bag_Get(fsys->savedata);
-    partyMenu->mailbox = Save_Mailbox_Get(fsys->savedata);
-    partyMenu->options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
+    partyMenu->party = SaveArray_Party_Get(fieldSystem->savedata);
+    partyMenu->bag = Save_Bag_Get(fieldSystem->savedata);
+    partyMenu->mailbox = Save_Mailbox_Get(fieldSystem->savedata);
+    partyMenu->options = Save_PlayerData_GetOptionsAddr(fieldSystem->savedata);
     partyMenu->unk_25 = 0;
     partyMenu->unk_24 = 22;
-    partyMenu->fsys = fsys;
+    partyMenu->fieldSystem = fieldSystem;
     partyMenu->unk_26 = a0->unk05;
     for (u8 i = 0; i < 2; i++) {
         partyMenu->unk_30[i] = a0->unk06[i];
@@ -324,18 +324,18 @@ static u32 sub_0204F320(UnkStruct_0204F284 *a0, FieldSystem *fsys, HeapID unused
     partyMenu->unk_37 = 30;
     partyMenu->unk_36_0 = 1;
     partyMenu->unk_36_4 = 1;
-    partyMenu->fsys_unk_10C = &fsys->unk_10C;
+    partyMenu->fieldSystem_unk_10C = &fieldSystem->unk_10C;
     if (a0->challengeType == 1) { // doubles
         partyMenu->unk_36_0 = 2;
         partyMenu->unk_36_4 = 2;
     }
-    FieldSys_LaunchApplication(fsys, &_0210159C, partyMenu);
+    FieldSystem_LaunchApplication(fieldSystem, &_0210159C, partyMenu);
     *(a0->unk08) = partyMenu;
     return 1;
 }
 
-static u32 sub_0204F3F8(UnkStruct_0204F284 *a0, FieldSystem *fsys) {
-    if (FieldSys_ApplicationIsRunning(fsys)) {
+static u32 sub_0204F3F8(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem) {
+    if (FieldSystem_ApplicationIsRunning(fieldSystem)) {
         return 1;
     }
     PartyMenuAppData *partyMenu = *(a0->unk08);
@@ -353,8 +353,8 @@ static u32 sub_0204F3F8(UnkStruct_0204F284 *a0, FieldSystem *fsys) {
     }
 }
 
-static u32 sub_0204F448(UnkStruct_0204F284 *a0, FieldSystem *fsys, HeapID heapId) {
-    SaveData *savedata = fsys->savedata;
+static u32 sub_0204F448(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem, HeapID heapId) {
+    SaveData *savedata = fieldSystem->savedata;
     UnkStruct_0204F448 *r4 = AllocFromHeapAtEnd(heapId, sizeof(UnkStruct_0204F448));
     MI_CpuFill8(r4, 0, sizeof(UnkStruct_0204F448));
     r4->options = Save_PlayerData_GetOptionsAddr(savedata);
@@ -370,13 +370,13 @@ static u32 sub_0204F448(UnkStruct_0204F284 *a0, FieldSystem *fsys, HeapID heapId
     r4->isFlag982Set = sub_0208828C(savedata);
     sub_02089D40(r4, unk_020FC224);
     sub_0208AD34(r4, Save_PlayerData_GetProfileAddr(savedata));
-    FieldSys_LaunchApplication(fsys, &_02103A1C, r4);
+    FieldSystem_LaunchApplication(fieldSystem, &_02103A1C, r4);
     *(a0->unk08) = r4;
     return 3;
 }
 
-static u32 sub_0204F4D8(UnkStruct_0204F284 *a0, FieldSystem *fsys) {
-    if (FieldSys_ApplicationIsRunning(fsys)) {
+static u32 sub_0204F4D8(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem) {
+    if (FieldSystem_ApplicationIsRunning(fieldSystem)) {
         return 3;
     }
     UnkStruct_0204F448 *r0 = *(a0->unk08);
@@ -389,8 +389,8 @@ static u32 sub_0204F4D8(UnkStruct_0204F284 *a0, FieldSystem *fsys) {
 BOOL ScrCmd_BufferBattleHallStreak(ScriptContext *ctx) {
     u32 i;
     void *unk0;
-    FieldSystem* fsys = ctx->fsys;
-    MessageFormat **messageFormat = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
+    FieldSystem* fieldSystem = ctx->fieldSystem;
+    MessageFormat **messageFormat = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 strIdxWinStreak = ScriptReadByte(ctx);
     u8 strIdxCurrWinStreakTarget = ScriptReadByte(ctx);
     u8 strIdxNextWinStreakTarget = ScriptReadByte(ctx);
@@ -399,16 +399,16 @@ BOOL ScrCmd_BufferBattleHallStreak(ScriptContext *ctx) {
     u16 *result = ScriptGetVarPointer(ctx);
     u32 winStreak = 0;
     u32 unk1 = 1;
-    if (Save_CheckExtraChunksExist(fsys->savedata) == FALSE) {
+    if (Save_CheckExtraChunksExist(fieldSystem->savedata) == FALSE) {
         *result = 0;
         return FALSE;
     }
-    unk0 = sub_020312C4(fsys->savedata, 0x20, &unk1);
+    unk0 = sub_020312C4(fieldSystem->savedata, 0x20, &unk1);
     if (unk1 != 1)  {
         winStreak = 0;
     } else {
         for (i = 0; i < MAX_SPECIES; i++) {
-            winStreak += sub_020312E0(fsys->savedata, unk0, 0, i);
+            winStreak += sub_020312E0(fieldSystem->savedata, unk0, 0, i);
         }
     }
     if (unk0 != NULL) {
@@ -425,9 +425,9 @@ BOOL ScrCmd_BufferBattleHallStreak(ScriptContext *ctx) {
             currWinStreakLevel = i;
         }
     }
-    GameStats_Add(Save_GameStats_Get(ctx->fsys->savedata), GAME_STAT_BATTLE_POINTS, bp);
+    GameStats_Add(Save_GameStats_Get(ctx->fieldSystem->savedata), GAME_STAT_BATTLE_POINTS, bp);
     if (bp != 0) {
-        FrontierData_BattlePointAction(Save_FrontierData_Get(ctx->fsys->savedata), bp, 5);
+        FrontierData_BattlePointAction(Save_FrontierData_Get(ctx->fieldSystem->savedata), bp, 5);
     }
     if (winStreak == 0) {
         *result = 0;
@@ -451,23 +451,23 @@ BOOL ScrCmd_BufferBattleHallStreak(ScriptContext *ctx) {
 
 BOOL ScrCmd_BattleHallCountUsedSpecies(ScriptContext *ctx) {
     u32 i;
-    FieldSystem* fsys = ctx->fsys;
+    FieldSystem* fieldSystem = ctx->fieldSystem;
     u16 *result = ScriptGetVarPointer(ctx);
     u32 numSpecies = 0;
     u32 unk0 = 1;
-    if (!Save_CheckExtraChunksExist(fsys->savedata)) {
+    if (!Save_CheckExtraChunksExist(fieldSystem->savedata)) {
         *result = 0;
         return FALSE;
     }
-    void *unk1 = sub_020312C4(fsys->savedata, 0x20, &unk0);
+    void *unk1 = sub_020312C4(fieldSystem->savedata, 0x20, &unk0);
     if (unk0 != 1) {
         numSpecies = 0;
     } else {
         for (i = 0; i < MAX_SPECIES; i++) {
             u32 winStreak = 0;
-            winStreak += sub_020312E0(fsys->savedata, unk1, 0, i);
-            winStreak += sub_020312E0(fsys->savedata, unk1, 1, i);
-            winStreak += sub_020312E0(fsys->savedata, unk1, 2, i);
+            winStreak += sub_020312E0(fieldSystem->savedata, unk1, 0, i);
+            winStreak += sub_020312E0(fieldSystem->savedata, unk1, 1, i);
+            winStreak += sub_020312E0(fieldSystem->savedata, unk1, 2, i);
             if (winStreak > 0) {
                 numSpecies++;
             }
@@ -483,18 +483,18 @@ BOOL ScrCmd_BattleHallCountUsedSpecies(ScriptContext *ctx) {
 #define BATTLE_HALL_MAX_WIN_STREAK (10000)
 
 BOOL ScrCmd_BattleHallGetTotalStreak(ScriptContext *ctx) {
-    FieldSystem* fsys = ctx->fsys;
+    FieldSystem* fieldSystem = ctx->fieldSystem;
     u16 *result = ScriptGetVarPointer(ctx);
     u32 winStreak = 0;
     u32 unk0 = 1;
-    if (!Save_CheckExtraChunksExist(fsys->savedata)) {
+    if (!Save_CheckExtraChunksExist(fieldSystem->savedata)) {
         *result = 0;
         return FALSE;
     }
-    void *unk1 = sub_020312C4(fsys->savedata, 0x20, &unk0);
+    void *unk1 = sub_020312C4(fieldSystem->savedata, 0x20, &unk0);
     if (unk0 == 1) {
         for (u32 i = 0; i < MAX_SPECIES; i++) {
-            winStreak += sub_020312E0(fsys->savedata, unk1, 0, i);
+            winStreak += sub_020312E0(fieldSystem->savedata, unk1, 0, i);
         }
     }
     if (unk1 != NULL) {
@@ -510,8 +510,8 @@ BOOL ScrCmd_BattleHallGetTotalStreak(ScriptContext *ctx) {
 // Unused
 BOOL ScrCmd_697(ScriptContext *ctx) {
     u16 *result = ScriptGetVarPointer(ctx);
-    sub_020310BC(sub_0203107C(ctx->fsys->savedata), sub_0205C11C(0), 0xff);
-    u32 unk0 = sub_020310BC(sub_0203107C(ctx->fsys->savedata), sub_0205C0CC(0), 0xff);
+    sub_020310BC(sub_0203107C(ctx->fieldSystem->savedata), sub_0205C11C(0), 0xff);
+    u32 unk0 = sub_020310BC(sub_0203107C(ctx->fieldSystem->savedata), sub_0205C0CC(0), 0xff);
     *result = 0;
     if (unk0 == 50) {
         *result = 1;

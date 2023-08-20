@@ -35,7 +35,7 @@
 .public FieldSystem_GetSaveDataPtr
 .public sub_0203EBA4
 .public TaskManager_Call
-.public FieldSys_ApplicationIsRunning
+.public FieldSystem_ApplicationIsRunning
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public sub_020537A8
@@ -85,7 +85,7 @@
 .public sub_02069DC8
 .public FollowPokeMapObjectSetParams
 .public FollowingPokemon_IsActive
-.public FieldSys_TakePhoto
+.public FieldSystem_TakePhoto
 .public sub_0206A860
 .public sub_0206A8C0
 .public sub_0206A8DC

@@ -96,8 +96,8 @@ _0203DBF2:
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0203DBD4
 
-	thumb_func_start Fsys_GetFacingObject
-Fsys_GetFacingObject: ; 0x0203DBF8
+	thumb_func_start FieldSystem_GetFacingObject
+FieldSystem_GetFacingObject: ; 0x0203DBF8
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r6, r1, #0
@@ -154,14 +154,14 @@ _0203DC52:
 	str r0, [r6]
 	add sp, #8
 	pop {r4, r5, r6, pc}
-	thumb_func_end Fsys_GetFacingObject
+	thumb_func_end FieldSystem_GetFacingObject
 
 	thumb_func_start sub_0203DC64
 sub_0203DC64: ; 0x0203DC64
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
-	bl Fsys_GetFacingObject
+	bl FieldSystem_GetFacingObject
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _0203DC8C

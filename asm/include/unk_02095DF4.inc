@@ -4,9 +4,9 @@
 .public FreeToHeap
 .public sub_0203E30C
 .public FieldSystem_GetSaveDataPtr
-.public Fsys_LaunchPokeathlonCourseApplication
+.public FieldSystem_LaunchPokeathlonCourseApplication
 .public TaskManager_Call
-.public FieldSys_ApplicationIsRunning
+.public FieldSystem_ApplicationIsRunning
 .public sub_020505C0
 .public sub_020505C8
 .public TaskManager_GetFieldSystem

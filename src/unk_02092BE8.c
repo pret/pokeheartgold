@@ -27,7 +27,7 @@ static void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL a2) 
     LocalFieldData *points = Save_LocalFieldData_Get(sys->savedata);
     Location *warpPtr = LocalFieldData_GetSpecialSpawnWarpPtr(points);
     Location *PosPtr = LocalFieldData_GetCurrentPosition(points);
-    GearPhoneRingManager* phoneRingMgr = Fsys_GetGearPhoneRingManager(sys);
+    GearPhoneRingManager* phoneRingMgr = FieldSystem_GetGearPhoneRingManager(sys);
     ptr->saveData = sys->savedata;
     ptr->mapID = PosPtr->mapId;
     if (MapHeader_MapIsOnMainMatrix(ptr->mapID)) {
@@ -109,7 +109,7 @@ void sub_02092DD8(GearPhoneRingManager * ptr) {
     FreeToHeap(ptr);
 }
 
-GearPhoneRingManager* Fsys_GetGearPhoneRingManager(FieldSystem* sys) {
+GearPhoneRingManager* FieldSystem_GetGearPhoneRingManager(FieldSystem* sys) {
     return sys->unk114;
 }
 
@@ -281,7 +281,7 @@ BOOL sub_02093070(FieldSystem* sys) {
     if (PCStorage_CountEmptySpotsInAllBoxes(GetStoragePCPointer(sys->savedata)) != 0) {
         return FALSE;
     }
-    sub_02092E14(Fsys_GetGearPhoneRingManager(sys), 3, TRUE);
+    sub_02092E14(FieldSystem_GetGearPhoneRingManager(sys), 3, TRUE);
     return TRUE;
 }
 
@@ -299,7 +299,7 @@ BOOL sub_020930C4(FieldSystem* sys) {
         var = 9; // unreachable
     }
     if (!CheckFlagInArray(state, var + FLAG_UNK_988)) {
-        sub_02092E14(Fsys_GetGearPhoneRingManager(sys), 4, FALSE);
+        sub_02092E14(FieldSystem_GetGearPhoneRingManager(sys), 4, FALSE);
         return TRUE;
     }
     return FALSE;
@@ -309,7 +309,7 @@ BOOL sub_02093134(FieldSystem* sys, Pokemon *mon) {
     if (sub_0206D8D0(mon, sys->savedata) == 0) {
         return FALSE;
     }
-    sub_02092E14(Fsys_GetGearPhoneRingManager(sys), 0, 1);
+    sub_02092E14(FieldSystem_GetGearPhoneRingManager(sys), 0, 1);
     SetFlagInArray(Save_VarsFlags_Get(sys->savedata), FLAG_UNK_983);
     return TRUE;
 }
@@ -322,6 +322,6 @@ BOOL sub_0209316C(FieldSystem* sys) {
     if (CheckFlagInArray(state, FLAG_UNK_992) && !CheckFlagInArray(state, FLAG_UNK_99E)) {
         return FALSE;
     }
-    sub_02092E14(Fsys_GetGearPhoneRingManager(sys), 5, 1);
+    sub_02092E14(FieldSystem_GetGearPhoneRingManager(sys), 5, 1);
     return TRUE;
 }

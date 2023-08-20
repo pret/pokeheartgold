@@ -31,14 +31,14 @@ BOOL ScrCmd_StopBGM(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_ResetBGM(ScriptContext *ctx) {
-    u16 seqno = GetMapMusic(ctx->fsys, ctx->fsys->location->mapId);
+    u16 seqno = GetMapMusic(ctx->fieldSystem, ctx->fieldSystem->location->mapId);
     PlayBGM(seqno);
     return FALSE;
 }
 
 BOOL ScrCmd_083(ScriptContext *ctx) {
     u16 seqno = ScriptReadHalfword(ctx);
-    FieldSystem_SetSavedMusicId(ctx->fsys, seqno);
+    FieldSystem_SetSavedMusicId(ctx->fieldSystem, seqno);
     return FALSE;
 }
 
@@ -152,7 +152,7 @@ BOOL ScrNative_WaitFanfare(ScriptContext *ctx) {
 
 BOOL ScrCmd_ChatotHasCry(ScriptContext *ctx) {
     u16 *retPtr = ScriptGetVarPointer(ctx);
-    SOUND_CHATOT *chatot = Save_Chatot_Get(ctx->fsys->savedata);
+    SOUND_CHATOT *chatot = Save_Chatot_Get(ctx->fieldSystem->savedata);
     if (Chatot_CheckCry(chatot) == TRUE) {
         *retPtr = TRUE;
         return FALSE;
@@ -180,7 +180,7 @@ BOOL ScrCmd_ChatotStopRecording(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_ChatotSaveRecording(ScriptContext *ctx) {
-    SOUND_CHATOT *chatot = Save_Chatot_Get(ctx->fsys->savedata);
+    SOUND_CHATOT *chatot = Save_Chatot_Get(ctx->fieldSystem->savedata);
     Chatot_SaveRecording(chatot);
     return TRUE;
 }
@@ -203,7 +203,7 @@ BOOL ScrCmd_664(ScriptContext *ctx) {
 
 BOOL ScrCmd_665(ScriptContext *ctx) {
     u16 var0 = ScriptGetVar(ctx);
-    sub_02055198(ctx->fsys, var0);
+    sub_02055198(ctx->fieldSystem, var0);
     return TRUE;
 }
 

@@ -3,7 +3,7 @@
 
 #include "script.h"
 
-void sub_02069464(FieldSystem *fsys);
-int sub_020691E8(FieldSystem *fsys);
+void sub_02069464(FieldSystem *fieldSystem);
+int sub_020691E8(FieldSystem *fieldSystem);
 
 #endif //POKEHEARTGOLD_UNK_02068FC8_H

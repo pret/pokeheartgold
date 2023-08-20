@@ -17,7 +17,7 @@
 static String* _get_species_name(u16 species, HeapID heapId);
 
 BOOL ScrCmd_BufferStatName(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u8 stat_id = ScriptGetVar(ctx);
 
@@ -27,10 +27,10 @@ BOOL ScrCmd_BufferStatName(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferPlayersName(ScriptContext* ctx) {
-    FieldSystem* fsys = ctx->fsys;
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    FieldSystem* fieldSystem = ctx->fieldSystem;
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
-    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(fsys));
+    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(fieldSystem));
 
     BufferPlayersName(*msg_fmt, idx, profile);
 
@@ -38,32 +38,32 @@ BOOL ScrCmd_BufferPlayersName(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferRivalsName(ScriptContext* ctx) {
-    FieldSystem* fsys = ctx->fsys;
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    FieldSystem* fieldSystem = ctx->fieldSystem;
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
 
-    BufferRivalsName(*msg_fmt, idx, fsys->savedata);
+    BufferRivalsName(*msg_fmt, idx, fieldSystem->savedata);
 
     return FALSE;
 }
 
 BOOL ScrCmd_BufferFriendsName(ScriptContext* ctx) {
-    FieldSystem* fsys = ctx->fsys;
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    FieldSystem* fieldSystem = ctx->fieldSystem;
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
 
-    BufferFriendsName(*msg_fmt, idx, fsys->savedata);
+    BufferFriendsName(*msg_fmt, idx, fieldSystem->savedata);
 
     return FALSE;
 }
 
 BOOL ScrCmd_BufferMonSpeciesName(ScriptContext* ctx) {
-    FieldSystem* fsys = ctx->fsys;
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
+    FieldSystem* fieldSystem = ctx->fieldSystem;
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 party_mon_idx = ScriptGetVar(ctx);
 
-    Party* party = SaveArray_Party_Get(fsys->savedata);
+    Party* party = SaveArray_Party_Get(fieldSystem->savedata);
     Pokemon *mon = Party_GetMonByIndex(party, party_mon_idx);
     BufferBoxMonSpeciesName(*msg_fmt, idx, &mon->box);
 
@@ -71,7 +71,7 @@ BOOL ScrCmd_BufferMonSpeciesName(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferTypeName(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 type_id = ScriptGetVar(ctx);
 
@@ -81,7 +81,7 @@ BOOL ScrCmd_BufferTypeName(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferItemName(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 item_id = ScriptGetVar(ctx);
 
@@ -91,7 +91,7 @@ BOOL ScrCmd_BufferItemName(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferPocketName(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 pocket_id = ScriptGetVar(ctx);
 
@@ -101,7 +101,7 @@ BOOL ScrCmd_BufferPocketName(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferTMHMMoveName(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 move_id = ScriptGetVar(ctx);
 
@@ -111,7 +111,7 @@ BOOL ScrCmd_BufferTMHMMoveName(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferMoveName(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 move_id = ScriptGetVar(ctx);
 
@@ -121,7 +121,7 @@ BOOL ScrCmd_BufferMoveName(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferInt(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 number = ScriptGetVar(ctx);
 
@@ -131,7 +131,7 @@ BOOL ScrCmd_BufferInt(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferIntEx(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 number = ScriptGetVar(ctx);
     u8 str_conv_mode = ScriptReadByte(ctx);
@@ -148,7 +148,7 @@ BOOL ScrCmd_BufferIntEx(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_661(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u32 number = ScriptReadWord(ctx);
     u8 str_conv_mode = ScriptReadByte(ctx);
@@ -165,12 +165,12 @@ BOOL ScrCmd_661(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferPartyMonNick(ScriptContext* ctx) {
-    FieldSystem* fsys = ctx->fsys;
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
+    FieldSystem* fieldSystem = ctx->fieldSystem;
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 party_mon_idx = ScriptGetVar(ctx);
 
-    Party* party = SaveArray_Party_Get(fsys->savedata);
+    Party* party = SaveArray_Party_Get(fieldSystem->savedata);
     Pokemon *mon = Party_GetMonByIndex(party, party_mon_idx);
     BufferBoxMonNickname(*msg_fmt, idx, &mon->box);
 
@@ -178,9 +178,9 @@ BOOL ScrCmd_BufferPartyMonNick(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferBoxMonNick(ScriptContext* ctx) {
-    FieldSystem* fsys = ctx->fsys;
-    PC_STORAGE* pc = GetStoragePCPointer(fsys->savedata);
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
+    FieldSystem* fieldSystem = ctx->fieldSystem;
+    PC_STORAGE* pc = GetStoragePCPointer(fieldSystem->savedata);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 box_mon_slot = ScriptGetVar(ctx);
 
@@ -191,7 +191,7 @@ BOOL ScrCmd_BufferBoxMonNick(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferTrainerClassName(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 trainer_class_id = ScriptGetVar(ctx);
 
@@ -201,10 +201,10 @@ BOOL ScrCmd_BufferTrainerClassName(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferPlayerUnionAvatarClassName(ScriptContext* ctx) {
-    FieldSystem* fsys = ctx->fsys;
-    SaveData* savedata = FieldSystem_GetSaveDataPtr(fsys);
+    FieldSystem* fieldSystem = ctx->fieldSystem;
+    SaveData* savedata = FieldSystem_GetSaveDataPtr(fieldSystem);
     PlayerProfile* profile = Save_PlayerData_GetProfileAddr(savedata);
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u32 gender = PlayerProfile_GetTrainerGender(profile);
     u8 avatar = PlayerProfile_GetAvatar(profile);
@@ -215,7 +215,7 @@ BOOL ScrCmd_BufferPlayerUnionAvatarClassName(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferSpeciesName(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 species = ScriptGetVar(ctx);
     u16 unk2 = ScriptReadHalfword(ctx);
@@ -236,9 +236,9 @@ String* _get_species_name(u16 species, HeapID heapId) {
 }
 
 BOOL ScrCmd_BufferStarterSpeciesName(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
-    u16 species = Save_VarsFlags_GetStarter(Save_VarsFlags_Get(ctx->fsys->savedata));
+    u16 species = Save_VarsFlags_GetStarter(Save_VarsFlags_Get(ctx->fieldSystem->savedata));
 
     String* species_name = _get_species_name(species, HEAP_ID_4);
     BufferString(*msg_fmt, idx, species_name, 0, 1, 2);
@@ -248,9 +248,9 @@ BOOL ScrCmd_BufferStarterSpeciesName(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferDPPtRivalStarterSpeciesName(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
-    u16 species = DPPtLeftover_GetRivalSpecies(Save_VarsFlags_Get(ctx->fsys->savedata));
+    u16 species = DPPtLeftover_GetRivalSpecies(Save_VarsFlags_Get(ctx->fieldSystem->savedata));
 
     String* species_name = _get_species_name(species, HEAP_ID_4);
     BufferString(*msg_fmt, idx, species_name, 0, 1, 2);
@@ -260,9 +260,9 @@ BOOL ScrCmd_BufferDPPtRivalStarterSpeciesName(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferDPPtFriendStarterSpeciesName(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
-    u16 species = DPPtLeftover_GetFriendStarterSpecies(Save_VarsFlags_Get(ctx->fsys->savedata));
+    u16 species = DPPtLeftover_GetFriendStarterSpecies(Save_VarsFlags_Get(ctx->fieldSystem->savedata));
 
     String* species_name = _get_species_name(species, HEAP_ID_4);
     BufferString(*msg_fmt, idx, species_name, 0, 1, 2);
@@ -272,7 +272,7 @@ BOOL ScrCmd_BufferDPPtFriendStarterSpeciesName(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferDecorationName(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 decoration_id = ScriptGetVar(ctx);
 
@@ -283,7 +283,7 @@ BOOL ScrCmd_BufferDecorationName(ScriptContext* ctx) {
 
 // This may be what's left of ScrCmd_GetUndergroundTrapName from D/P/Pt.
 BOOL ScrCmd_208(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 unused_id = ScriptGetVar(ctx);
 
@@ -292,7 +292,7 @@ BOOL ScrCmd_208(ScriptContext* ctx) {
 
 // This may be what's left of ScrCmd_GetUndergroundItemName from D/P/Pt.
 BOOL ScrCmd_209(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 unused_id = ScriptGetVar(ctx);
 
@@ -301,7 +301,7 @@ BOOL ScrCmd_209(ScriptContext* ctx) {
 
 BOOL ScrCmd_BufferMapSecName(ScriptContext* ctx) {
     String* str = String_New(22, HEAP_ID_4);
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 mapno = ScriptGetVar(ctx);
 
@@ -313,7 +313,7 @@ BOOL ScrCmd_BufferMapSecName(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferBerryName(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 berry_id = ScriptGetVar(ctx);
     u16 unk = ScriptGetVar(ctx);
@@ -326,7 +326,7 @@ BOOL ScrCmd_BufferBerryName(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferNatureName(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 nature_id = ScriptGetVar(ctx);
 
@@ -336,7 +336,7 @@ BOOL ScrCmd_BufferNatureName(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferFashionName(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 fashion_id = ScriptGetVar(ctx);
 
@@ -346,13 +346,13 @@ BOOL ScrCmd_BufferFashionName(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferPartyMonMoveName(ScriptContext* ctx) {
-    FieldSystem* fsys = ctx->fsys;
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
+    FieldSystem* fieldSystem = ctx->fieldSystem;
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 party_slot = ScriptGetVar(ctx);
     u16 move_slot = ScriptGetVar(ctx);
 
-    Party* party = SaveArray_Party_Get(fsys->savedata);
+    Party* party = SaveArray_Party_Get(fieldSystem->savedata);
     Pokemon *mon = Party_GetMonByIndex(party, party_slot);
     u16 move_id = GetMonData(mon, MON_DATA_MOVE1 + move_slot, NULL);
     BufferMoveName(*msg_fmt, idx, move_id);
@@ -361,7 +361,7 @@ BOOL ScrCmd_BufferPartyMonMoveName(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferRibbonName(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u8 unk = ScriptGetVar(ctx);
 
@@ -372,7 +372,7 @@ BOOL ScrCmd_BufferRibbonName(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferSealName(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 seal_id = ScriptGetVar(ctx);
 
@@ -382,7 +382,7 @@ BOOL ScrCmd_BufferSealName(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferTrainerName(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 trainer_id = ScriptGetVar(ctx);
 
@@ -392,7 +392,7 @@ BOOL ScrCmd_BufferTrainerName(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferApricornName(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u8 apricorn_id = ScriptGetVar(ctx);
 
@@ -402,7 +402,7 @@ BOOL ScrCmd_BufferApricornName(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferItemNameIndef(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 item_id = ScriptGetVar(ctx);
 
@@ -412,7 +412,7 @@ BOOL ScrCmd_BufferItemNameIndef(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferItemNamePlural(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 item_id = ScriptGetVar(ctx);
 
@@ -422,12 +422,12 @@ BOOL ScrCmd_BufferItemNamePlural(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferPartyMonSpeciesNameIndef(ScriptContext* ctx) {
-    FieldSystem* fsys = ctx->fsys;
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
+    FieldSystem* fieldSystem = ctx->fieldSystem;
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 party_mon_slot = ScriptGetVar(ctx);
 
-    Party* party = SaveArray_Party_Get(fsys->savedata);
+    Party* party = SaveArray_Party_Get(fieldSystem->savedata);
     Pokemon *mon = Party_GetMonByIndex(party, party_mon_slot);
     BufferBoxMonSpeciesNameWithArticle(*msg_fmt, idx, &mon->box);
 
@@ -435,7 +435,7 @@ BOOL ScrCmd_BufferPartyMonSpeciesNameIndef(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferSpeciesNameIndef(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 item_id = ScriptGetVar(ctx);
     u16 unused1 = ScriptReadHalfword(ctx);
@@ -447,9 +447,9 @@ BOOL ScrCmd_BufferSpeciesNameIndef(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferDPPtFriendStarterSpeciesNameIndef(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
-    u16 species = DPPtLeftover_GetFriendStarterSpecies(Save_VarsFlags_Get(ctx->fsys->savedata));
+    u16 species = DPPtLeftover_GetFriendStarterSpecies(Save_VarsFlags_Get(ctx->fieldSystem->savedata));
 
     BufferSpeciesNameWithArticle(*msg_fmt, idx, species);
 
@@ -457,7 +457,7 @@ BOOL ScrCmd_BufferDPPtFriendStarterSpeciesNameIndef(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferFashionNameIndef(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 fashion_id = ScriptGetVar(ctx);
 
@@ -467,7 +467,7 @@ BOOL ScrCmd_BufferFashionNameIndef(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferTrainerClassNameIndef(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 trainer_class_id = ScriptGetVar(ctx);
 
@@ -477,7 +477,7 @@ BOOL ScrCmd_BufferTrainerClassNameIndef(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferSealNamePlural(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 seal_id = ScriptGetVar(ctx);
 
@@ -487,7 +487,7 @@ BOOL ScrCmd_BufferSealNamePlural(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_Capitalize(ScriptContext* ctx) {
-    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
+    MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
 
     MessageFormat_UpperFirstChar(*msg_fmt, idx);

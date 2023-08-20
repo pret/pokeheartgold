@@ -89,24 +89,24 @@ const s8 ov01_0220969A[][5] = {
     { 0,  1,  0,  1, -1},
 };
 
-void ov01_02204ED8(FieldSystem *fsys, u16 *varPointer) {
+void ov01_02204ED8(FieldSystem *fieldSystem, u16 *varPointer) {
     u16 **didHeadbuttStartBattle = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(didHeadbuttStartBattle));
     *didHeadbuttStartBattle = varPointer;
     *varPointer = FALSE;
-    TaskManager_Call(fsys->taskman, ov01_02204EFC, didHeadbuttStartBattle);
+    TaskManager_Call(fieldSystem->taskman, ov01_02204EFC, didHeadbuttStartBattle);
 }
 
 static BOOL ov01_02204EFC(TaskManager *taskManager) {
     UnkStruct_02204EFC *unk4;
-    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     u16 **didHeadbuttStartBattle = TaskManager_GetEnv(taskManager);
-    unk4 = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_a_2_5_2, fsys->location->mapId, HEAP_ID_FIELD);
+    unk4 = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_a_2_5_2, fieldSystem->location->mapId, HEAP_ID_FIELD);
     if (unk4->unk00 != 0 || unk4->unk02 != 0) {
         BattleSetup *setup;
         u32 x;
         u32 y;
-        ov01_022050F8(fsys, &x, &y);
-        u32 trainerId = PlayerProfile_GetTrainerID(Save_PlayerData_GetProfileAddr(fsys->savedata));
+        ov01_022050F8(fieldSystem, &x, &y);
+        u32 trainerId = PlayerProfile_GetTrainerID(Save_PlayerData_GetProfileAddr(fieldSystem->savedata));
         s32 unk0 = ov01_02204FE0(unk4->unk00, unk4->unk02, trainerId, x, y, unk4->unk4c);
         if (unk0 == -1) {
             FreeToHeap(unk4);
@@ -126,11 +126,11 @@ static BOOL ov01_02204EFC(TaskManager *taskManager) {
             FreeToHeap(didHeadbuttStartBattle);
             return TRUE;
         }
-        if (ov02_02247374(fsys, &setup, unk2)) {
+        if (ov02_02247374(fieldSystem, &setup, unk2)) {
             **didHeadbuttStartBattle = TRUE;
             FreeToHeap(unk4);
             FreeToHeap(didHeadbuttStartBattle);
-            sub_02050B90(fsys, taskManager, setup);
+            sub_02050B90(fieldSystem, taskManager, setup);
             return FALSE;
         }
     }
@@ -177,11 +177,11 @@ static s8 ov01_02205074(u8 a0, u8 a1, u32 trainerId) {
     return unk7;
 }
 
-static void ov01_022050F8(FieldSystem *fsys, u32 *x, u32 *y) {
+static void ov01_022050F8(FieldSystem *fieldSystem, u32 *x, u32 *y) {
     u32 inFrontX, inFrontY;
-    PlayerAvatar_GetCoordsInFront(fsys->playerAvatar, &inFrontX, &inFrontY);
-    if (FollowingPokemon_IsActive(fsys)) {
-        LocalMapObject *object = FollowingPokemon_GetMapObject(fsys);
+    PlayerAvatar_GetCoordsInFront(fieldSystem->playerAvatar, &inFrontX, &inFrontY);
+    if (FollowingPokemon_IsActive(fieldSystem)) {
+        LocalMapObject *object = FollowingPokemon_GetMapObject(fieldSystem);
         u32 followingMonX = MapObject_GetCurrentX(object);
         u32 followingMonY = MapObject_GetCurrentY(object);
         if (inFrontX == followingMonX && inFrontY == followingMonY) {
@@ -195,23 +195,23 @@ static void ov01_022050F8(FieldSystem *fsys, u32 *x, u32 *y) {
 }
 
 BOOL ScrCmd_795(ScriptContext *ctx) {
-    FieldSystem *fsys = ctx->fsys;
+    FieldSystem *fieldSystem = ctx->fieldSystem;
     u8 x = ScriptGetVar(ctx);
     u8 y = ScriptGetVar(ctx);
-    Window **moneyBox = FieldSysGetAttrAddr(fsys, SCRIPTENV_MONEY_BOX);
-    *moneyBox = ov01_021EED60(ctx->fsys, x, y);
+    Window **moneyBox = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MONEY_BOX);
+    *moneyBox = ov01_021EED60(ctx->fieldSystem, x, y);
     return FALSE;
 }
 
 BOOL ScrCmd_796(ScriptContext *ctx) {
-    Window **moneyBox = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MONEY_BOX);
+    Window **moneyBox = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MONEY_BOX);
     ov01_021EEE30(*moneyBox);
     return FALSE;
 }
 
 // Unused
 BOOL ScrCmd_797(ScriptContext *ctx) {
-    Window **moneyBox = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MONEY_BOX);
-    ov01_021EEE44(ctx->fsys, *moneyBox);
+    Window **moneyBox = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MONEY_BOX);
+    ov01_021EEE44(ctx->fieldSystem, *moneyBox);
     return FALSE;
 }

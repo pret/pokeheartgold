@@ -1,7 +1,7 @@
 #include "task.h"
 #include "unk_0203DFA4.h"
 
-static TaskManager *Task_New(FieldSystem *fsys, TaskFunc taskFunc, void *env) {
+static TaskManager *Task_New(FieldSystem *fieldSystem, TaskFunc taskFunc, void *env) {
     TaskManager *taskman;
 
     taskman = AllocFromHeapAtEnd((HeapID)32, sizeof(TaskManager));
@@ -11,16 +11,16 @@ static TaskManager *Task_New(FieldSystem *fsys, TaskFunc taskFunc, void *env) {
     taskman->env = env;
     taskman->unk10 = 0;
     taskman->unk14 = NULL;
-    taskman->fsys = fsys;
+    taskman->fieldSystem = fieldSystem;
     taskman->unk1C = AllocFromHeapAtEnd((HeapID)32, sizeof(TaskManagerUnkSub1C));
     return taskman;
 }
 
-TaskManager *FieldSys_CreateTask(FieldSystem *fsys, TaskFunc taskFunc, void *env) {
+TaskManager *FieldSystem_CreateTask(FieldSystem *fieldSystem, TaskFunc taskFunc, void *env) {
     TaskManager *ret;
-    GF_ASSERT(fsys->taskman == NULL);
-    ret = Task_New(fsys, taskFunc, env);
-    fsys->taskman = ret;
+    GF_ASSERT(fieldSystem->taskman == NULL);
+    ret = Task_New(fieldSystem, taskFunc, env);
+    fieldSystem->taskman = ret;
     return ret;
 }
 
@@ -40,25 +40,25 @@ void TaskManager_Jump(TaskManager *taskman, TaskFunc taskFunc, void *env) {
 void TaskManager_Call(TaskManager *taskman, TaskFunc taskFunc, void *env) {
     TaskManager *newman;
 
-    newman = Task_New(taskman->fsys, taskFunc, env);
+    newman = Task_New(taskman->fieldSystem, taskFunc, env);
     newman->prev = taskman;
-    taskman->fsys->taskman = newman;
+    taskman->fieldSystem->taskman = newman;
 }
 
-BOOL Fsys_RunTaskFrame(FieldSystem *fsys) {
+BOOL FieldSystem_RunTaskFrame(FieldSystem *fieldSystem) {
     TaskManager *prevTask;
 
-    if (fsys->taskman == 0) {
+    if (fieldSystem->taskman == 0) {
         return FALSE;
     }
-    while (fsys->taskman->func(fsys->taskman) == TRUE) {
-        prevTask = fsys->taskman->prev;
-        if (fsys->taskman->unk14 != NULL) {
-            FreeToHeap(fsys->taskman->unk14);
+    while (fieldSystem->taskman->func(fieldSystem->taskman) == TRUE) {
+        prevTask = fieldSystem->taskman->prev;
+        if (fieldSystem->taskman->unk14 != NULL) {
+            FreeToHeap(fieldSystem->taskman->unk14);
         }
-        FreeToHeap(fsys->taskman->unk1C);
-        FreeToHeap(fsys->taskman);
-        fsys->taskman = prevTask;
+        FreeToHeap(fieldSystem->taskman->unk1C);
+        FreeToHeap(fieldSystem->taskman);
+        fieldSystem->taskman = prevTask;
         if (prevTask == NULL) {
             return TRUE;
         }
@@ -66,36 +66,36 @@ BOOL Fsys_RunTaskFrame(FieldSystem *fsys) {
     return FALSE;
 }
 
-BOOL Fsys_TaskIsRunning(FieldSystem *fsys) {
-    return fsys->taskman != NULL;
+BOOL FieldSystem_TaskIsRunning(FieldSystem *fieldSystem) {
+    return fieldSystem->taskman != NULL;
 }
 
-BOOL FieldSys_ApplicationIsRunning(FieldSystem *fsys) {
-    return sub_0203DF7C(fsys) || sub_0203DFA4(fsys);
+BOOL FieldSystem_ApplicationIsRunning(FieldSystem *fieldSystem) {
+    return sub_0203DF7C(fieldSystem) || sub_0203DFA4(fieldSystem);
 }
 
-void sub_020505C0(FieldSystem *fsys) {
-    sub_0203DEF0(fsys);
+void sub_020505C0(FieldSystem *fieldSystem) {
+    sub_0203DEF0(fieldSystem);
 }
 
-BOOL sub_020505C8(FieldSystem *fsys) {
-    return sub_0203DF8C(fsys) != FALSE;
+BOOL sub_020505C8(FieldSystem *fieldSystem) {
+    return sub_0203DF8C(fieldSystem) != FALSE;
 }
 
 static BOOL Task_RunApplicationUntilComplete(TaskManager *taskManager) {
-    FieldSystem *fsys;
+    FieldSystem *fieldSystem;
     struct UnkTaskEnv *env;
 
-    fsys = TaskManager_GetFieldSystem(taskManager);
+    fieldSystem = TaskManager_GetFieldSystem(taskManager);
     env = TaskManager_GetEnv(taskManager);
 
     switch (env->state) {
     case 0:
-        FieldSys_LaunchApplication(fsys, env->template, env->work);
+        FieldSystem_LaunchApplication(fieldSystem, env->template, env->work);
         env->state++;
         break;
     case 1:
-        if (!FieldSys_ApplicationIsRunning(fsys)) {
+        if (!FieldSystem_ApplicationIsRunning(fieldSystem)) {
             FreeToHeap(env);
             return TRUE;
         }
@@ -115,7 +115,7 @@ void CallApplicationAsTask(TaskManager *taskManager, const OVY_MGR_TEMPLATE *tem
 }
 
 FieldSystem *TaskManager_GetFieldSystem(TaskManager *taskManager) {
-    return taskManager->fsys;
+    return taskManager->fieldSystem;
 }
 
 void *TaskManager_GetEnv(TaskManager *taskManager) {

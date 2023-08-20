@@ -21,7 +21,7 @@
 
 struct BlackoutScreenWork {
     int state;
-    FieldSystem *fsys;
+    FieldSystem *fieldSystem;
     BgConfig *bgConfig;
     Window window;
     MsgData *msgData;
@@ -29,7 +29,7 @@ struct BlackoutScreenWork {
 };
 
 void _InitDisplays(BgConfig *bgConfig);
-void DrawBlackoutMessage(FieldSystem *fsys, TaskManager *taskManager);
+void DrawBlackoutMessage(FieldSystem *fieldSystem, TaskManager *taskManager);
 BOOL FieldTask_ShowPrintedMessage(TaskManager *taskManager);
 void _PrintMessage(struct BlackoutScreenWork *work, int msgno, u8 x, u8 y);
 
@@ -69,14 +69,14 @@ static void _InitDisplays(BgConfig *bgConfig) {
     BG_SetMaskColor(3, RGB_WHITE);
 }
 
-static void DrawBlackoutMessage(FieldSystem *fsys, TaskManager *taskManager) {
+static void DrawBlackoutMessage(FieldSystem *fieldSystem, TaskManager *taskManager) {
     struct BlackoutScreenWork *env;
 
     env = AllocFromHeap((HeapID)11, sizeof(struct BlackoutScreenWork));
     GF_ASSERT(env != NULL);
     memset(env, 0, sizeof(struct BlackoutScreenWork));
     env->state = 0;
-    env->fsys = fsys;
+    env->fieldSystem = fieldSystem;
     env->bgConfig = BgConfig_Alloc((HeapID)11);
     sub_0200FBF4(0, RGB_WHITE);
     sub_0200FBF4(1, RGB_WHITE);
@@ -98,8 +98,8 @@ static void DrawBlackoutMessage(FieldSystem *fsys, TaskManager *taskManager) {
 
         AddWindow(env->bgConfig, &env->window, &_020FC51C);
     }
-    BufferPlayersName(env->msgFmt, 0, Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(fsys)));
-    if (fsys->location->mapId == MAP_T20R0201) {
+    BufferPlayersName(env->msgFmt, 0, Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(fieldSystem)));
+    if (fieldSystem->location->mapId == MAP_T20R0201) {
         _PrintMessage(env, msg_0203_00004, 0, 0);
     } else {
         _PrintMessage(env, msg_0203_00003, 0, 0);
@@ -167,7 +167,7 @@ static void _PrintMessage(struct BlackoutScreenWork *work, int msgno, u8 x, u8 y
 }
 
 BOOL FieldTask_BlackOut(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     u32 *state = TaskManager_GetStatePtr(taskManager);
     LocalFieldData *localFieldData;
     Location deathWarp;
@@ -175,13 +175,13 @@ BOOL FieldTask_BlackOut(TaskManager *taskManager) {
 
     switch (*state) {
     case 0:
-        localFieldData = Save_LocalFieldData_Get(fsys->savedata);
+        localFieldData = Save_LocalFieldData_Get(fieldSystem->savedata);
         deathSpawn = LocalFieldData_GetBlackoutSpawn(localFieldData);
         GetDeathWarpData(deathSpawn, &deathWarp);
         GetSpecialSpawnWarpData(deathSpawn, LocalFieldData_GetSpecialSpawnWarpPtr(localFieldData));
         sub_020537A8(taskManager, &deathWarp);
-        Fsys_ClearFollowingTrainer(fsys);
-        HealParty(SaveArray_Party_Get(fsys->savedata));
+        FieldSystem_ClearFollowingTrainer(fieldSystem);
+        HealParty(SaveArray_Party_Get(fieldSystem->savedata));
         (*state)++;
         break;
     case 1:
@@ -197,7 +197,7 @@ BOOL FieldTask_BlackOut(TaskManager *taskManager) {
     case 3:
         SetBlendBrightness(-16, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN);
         SetBlendBrightness(-16, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_SUB);
-        DrawBlackoutMessage(fsys, taskManager);
+        DrawBlackoutMessage(fieldSystem, taskManager);
         (*state)++;
         break;
     case 4:
@@ -206,7 +206,7 @@ BOOL FieldTask_BlackOut(TaskManager *taskManager) {
         break;
     case 5:
         SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN | SCREEN_MASK_SUB);
-        if (GetMomSpawnId() == LocalFieldData_GetBlackoutSpawn(Save_LocalFieldData_Get(fsys->savedata))) {
+        if (GetMomSpawnId() == LocalFieldData_GetBlackoutSpawn(Save_LocalFieldData_Get(fieldSystem->savedata))) {
             QueueScript(taskManager, std_whited_out_to_mom, NULL, NULL);
         } else {
             QueueScript(taskManager, std_whited_out_to_pokecenter, NULL, NULL);

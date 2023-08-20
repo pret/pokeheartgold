@@ -42,10 +42,10 @@
 .public sub_02068B48
 .public FollowingPokemon_GetMapObject
 .public FollowingPokemon_IsActive
-.public FsysUnkSub108_GetMonMood
+.public FieldSystemUnkSub108_GetMonMood
 .public GetMonData
 .public SaveArray_Party_Get
-.public Fsys_GetGearPhoneRingManager
+.public FieldSystem_GetGearPhoneRingManager
 .public sub_02092FA8
 .public memset
 .public _s32_div_f

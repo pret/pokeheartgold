@@ -8,7 +8,7 @@
 .public FieldSystem_GetSaveDataPtr
 .public sub_0203FD08
 .public TaskManager_Call
-.public FieldSys_ApplicationIsRunning
+.public FieldSystem_ApplicationIsRunning
 .public sub_020505C0
 .public sub_020505C8
 .public TaskManager_GetFieldSystem

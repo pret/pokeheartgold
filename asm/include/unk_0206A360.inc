@@ -18,7 +18,7 @@
 .public AddWindowParameterized
 .public WindowArray_Delete
 .public GF_AssertFail
-.public FieldSys_GetBgConfigPtr
+.public FieldSystem_GetBgConfigPtr
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv

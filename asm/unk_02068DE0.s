@@ -232,8 +232,8 @@ InitViridianGym: ; 0x02068F54
 	.balign 4, 0
 	thumb_func_end InitViridianGym
 
-	thumb_func_start Fsys_IsSavGymmickTypeEqualTo
-Fsys_IsSavGymmickTypeEqualTo: ; 0x02068F68
+	thumb_func_start FieldSystem_IsSavGymmickTypeEqualTo
+FieldSystem_IsSavGymmickTypeEqualTo: ; 0x02068F68
 	push {r4, lr}
 	add r4, r1, #0
 	bl FieldSystem_GetSaveDataPtr
@@ -246,4 +246,4 @@ Fsys_IsSavGymmickTypeEqualTo: ; 0x02068F68
 _02068F80:
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end Fsys_IsSavGymmickTypeEqualTo
+	thumb_func_end FieldSystem_IsSavGymmickTypeEqualTo

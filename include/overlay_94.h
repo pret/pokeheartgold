@@ -11,7 +11,7 @@
 typedef struct UnkStruct_Overlay_94_B {
     Party* party;
     u8 unk4[0x17];
-    FieldSystem* fsys;
+    FieldSystem* fieldSystem;
     u8 unk2[0x7];
     u8 unk27;
 } UnkStruct_Overlay_94_B;

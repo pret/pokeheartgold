@@ -20,7 +20,7 @@ struct ItemCheckUseData {
     u16 facingTile;
     u16 standingTile;
     PlayerAvatar *playerAvatar;
-    FieldSystem *fsys;
+    FieldSystem *fieldSystem;
 };
 
 struct AlphItemUseData {
@@ -31,10 +31,10 @@ struct AlphItemUseData {
     u16 var_8003;
 };
 
-typedef void *(*FieldApplicationWorkCtor)(FieldSystem *fsys);
+typedef void *(*FieldApplicationWorkCtor)(FieldSystem *fieldSystem);
 
 struct ItemFieldUseData {
-    FieldSystem *fsys;             // 00
+    FieldSystem *fieldSystem;             // 00
     struct ItemCheckUseData dat;   // 04
     FieldApplicationWorkCtor ctor; // 1C
     void *work;                    // 20
@@ -61,7 +61,7 @@ struct UseItemInPartyTaskEnv {
     struct UnkStruct_0202E474 *unk10;
     u32 unk14;
     void *unk18;
-    FieldSystem *fsys;
+    FieldSystem *fieldSystem;
     void *unk20;
     u8 unk24;
     u8 unk25;
@@ -79,8 +79,8 @@ struct RegisteredKeyItemUseMessagePrintTaskData {
 };
 
 void *GetItemFieldUseFunc(int funcType, int itemType);
-void ItemCheckUseData_Init(FieldSystem *fsys, struct ItemCheckUseData *dat);
+void ItemCheckUseData_Init(FieldSystem *fieldSystem, struct ItemCheckUseData *dat);
 BOOL Leftover_CanPlantBerry(const struct ItemCheckUseData *data);
-int UseRegisteredItemButtonInField(FieldSystem *fsys, u8 slot);
+int UseRegisteredItemButtonInField(FieldSystem *fieldSystem, u8 slot);
 
 #endif //POKEHEARTGOLD_FIELD_USE_ITEM_H

@@ -9,11 +9,11 @@
 .public sub_020378E4
 .public sub_020398C8
 .public sub_0203A05C
-.public FieldSys_LaunchApplication
+.public FieldSystem_LaunchApplication
 .public sub_0203F4A8
 .public Save_VarsFlags_Get
 .public TaskManager_Call
-.public FieldSys_ApplicationIsRunning
+.public FieldSystem_ApplicationIsRunning
 .public CallApplicationAsTask
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv

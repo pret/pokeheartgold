@@ -75,7 +75,7 @@
 .public sub_02035754
 .public sub_02035784
 .public sub_02035798
-.public Fsys_TaskIsRunning
+.public FieldSystem_TaskIsRunning
 .public sub_0205AA84
 .public sub_0205B4EC
 .public DC_FlushRange

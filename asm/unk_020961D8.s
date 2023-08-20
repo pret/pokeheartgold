@@ -107,7 +107,7 @@ _02096284:
 	b _02096314
 _020962A2:
 	ldr r0, [r4]
-	bl FieldSys_ApplicationIsRunning
+	bl FieldSystem_ApplicationIsRunning
 	cmp r0, #0
 	bne _02096314
 	ldr r0, [r4]

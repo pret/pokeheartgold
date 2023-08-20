@@ -66,13 +66,13 @@
 .public sub_0203E348
 .public TryStartMapScriptByType
 .public Save_VarsFlags_Get
-.public Fsys_TaskIsRunning
+.public FieldSystem_TaskIsRunning
 .public sub_02053018
 .public sub_02053038
 .public FieldSystem_GetOverriddenMusicId
 .public FieldSystem_PlayOrFadeToNewMusicId
 .public sub_02055164
-.public FieldSys_StartBugContestTimer
+.public FieldSystem_StartBugContestTimer
 .public sub_02055680
 .public sub_020556A8
 .public sub_02057FA4

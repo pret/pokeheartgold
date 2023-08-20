@@ -120,7 +120,7 @@ _02097A72:
 	b _02097A94
 _02097A7C:
 	add r0, r4, #0
-	bl FieldSys_ApplicationIsRunning
+	bl FieldSystem_ApplicationIsRunning
 	cmp r0, #0
 	beq _02097A94
 	mov r0, #0

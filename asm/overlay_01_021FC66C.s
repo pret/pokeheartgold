@@ -87,7 +87,7 @@ _021FC6E2:
 	cmp r7, #1
 	bne _021FC728
 	add r0, r4, #0
-	bl Fsys_GetGearPhoneRingManager
+	bl FieldSystem_GetGearPhoneRingManager
 	bl sub_02092FA8
 	ldr r0, [r4, #0xc]
 	bl Save_GameStats_Get
@@ -910,7 +910,7 @@ ov01_021FCCB0: ; 0x021FCCB0
 	ldr r1, [r4, #0x20]
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl FsysUnkSub108_GetMonMood
+	bl FieldSystemUnkSub108_GetMonMood
 	mov r1, #9
 	mvn r1, r1
 	cmp r0, r1

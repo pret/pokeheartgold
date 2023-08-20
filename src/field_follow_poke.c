@@ -8,7 +8,7 @@
 #include "constants/scrcmd.h"
 #include "constants/follow_poke_idx.h"
 
-static void FsysFollowMonClear(FollowMon *followMon);
+static void FieldSystemFollowMonClear(FollowMon *followMon);
 static void FollowingPoke_SetObjectShinyFlag(LocalMapObject *mapObject, BOOL enable);
 static BOOL FollowPokePermissionDiglettCheck(int mapno);
 static void FollowingPoke_SetObjectFormParam(LocalMapObject *mapObject, int species, u8 form);
@@ -1504,7 +1504,7 @@ static const u16 sFemaleFlagLUT[] = {
 };
 
 LocalMapObject *sub_020699F8(MapObjectManager *mapObjectMan, int x, int y, int direction, u32 mapno) {
-    FieldSystem *fsys;
+    FieldSystem *fieldSystem;
     Party *party;
     int partyCount;
     Pokemon *mon;
@@ -1514,11 +1514,11 @@ LocalMapObject *sub_020699F8(MapObjectManager *mapObjectMan, int x, int y, int d
     int shiny;
     int player_unk;
 
-    fsys = MapObjectManager_GetFieldSysPtr(mapObjectMan);
-    party = SaveArray_Party_Get(fsys->savedata);
+    fieldSystem = MapObjectManager_GetFieldSysPtr(mapObjectMan);
+    party = SaveArray_Party_Get(fieldSystem->savedata);
     partyCount = Party_GetCount(party);
-    FsysFollowMonClear(&fsys->followMon);
-    SavFollowPoke_SetUnused2bitField(0, Save_FollowPoke_Get(fsys->savedata));
+    FieldSystemFollowMonClear(&fieldSystem->followMon);
+    SavFollowPoke_SetUnused2bitField(0, Save_FollowPoke_Get(fieldSystem->savedata));
     if (partyCount != 0) {
         if (CountAlivePokemon(party) == 0) {
             mon = GetFirstNonEggInParty(party);
@@ -1526,40 +1526,40 @@ LocalMapObject *sub_020699F8(MapObjectManager *mapObjectMan, int x, int y, int d
             mon = GetFirstAliveMonInParty_CrashIfNone(party);
         }
         species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        fsys->followMon.mapObject = NULL;
+        fieldSystem->followMon.mapObject = NULL;
         if (GetFollowPokePermissionBySpeciesAndMap(species, mapno)) {
             form = GetMonData(mon, MON_DATA_FORM, NULL);
             gender = GetMonData(mon, MON_DATA_GENDER, NULL);
             shiny = MonIsShiny(mon);
-            fsys->followMon.mapObject = CreateFollowingSpriteFieldObject(mapObjectMan, species, form, gender, direction, x, y, shiny);
-            fsys->followMon.active = TRUE;
-            FollowPokeFsysParamSet(fsys, species, form, shiny, gender);
-            FsysUnkSub108_Set(fsys->unk108, mon, species, GetMonData(mon, MON_DATA_PERSONALITY, NULL));
-            player_unk = PlayerAvatar_GetState(fsys->playerAvatar);
+            fieldSystem->followMon.mapObject = CreateFollowingSpriteFieldObject(mapObjectMan, species, form, gender, direction, x, y, shiny);
+            fieldSystem->followMon.active = TRUE;
+            FollowPokeFieldSystemParamSet(fieldSystem, species, form, shiny, gender);
+            FieldSystemUnkSub108_Set(fieldSystem->unk108, mon, species, GetMonData(mon, MON_DATA_PERSONALITY, NULL));
+            player_unk = PlayerAvatar_GetState(fieldSystem->playerAvatar);
             if (player_unk == 0 || player_unk == 3) {
-                SavFollowPoke_SetUnused2bitField(1, Save_FollowPoke_Get(fsys->savedata));
+                SavFollowPoke_SetUnused2bitField(1, Save_FollowPoke_Get(fieldSystem->savedata));
             } else if (player_unk == 1) {
-                SavFollowPoke_SetUnused2bitField(2, Save_FollowPoke_Get(fsys->savedata));
-                sub_0206A054(fsys);
-                sub_0205FC94(FollowingPokemon_GetMapObject(fsys), 56);
+                SavFollowPoke_SetUnused2bitField(2, Save_FollowPoke_Get(fieldSystem->savedata));
+                sub_0206A054(fieldSystem);
+                sub_0205FC94(FollowingPokemon_GetMapObject(fieldSystem), 56);
             } else if (player_unk == 2) {
-                SavFollowPoke_SetUnused2bitField(2, Save_FollowPoke_Get(fsys->savedata));
-                sub_0206A054(fsys);
-                sub_0205FC94(FollowingPokemon_GetMapObject(fsys), 56);
+                SavFollowPoke_SetUnused2bitField(2, Save_FollowPoke_Get(fieldSystem->savedata));
+                sub_0206A054(fieldSystem);
+                sub_0205FC94(FollowingPokemon_GetMapObject(fieldSystem), 56);
             } else {
                 GF_ASSERT(0);
             }
-            if (SavFollowPoke_GetInhibitFlagState(Save_FollowPoke_Get(fsys->savedata))) {
-                sub_0206A054(fsys);
+            if (SavFollowPoke_GetInhibitFlagState(Save_FollowPoke_Get(fieldSystem->savedata))) {
+                sub_0206A054(fieldSystem);
             }
         }
     }
 
-    return fsys->followMon.mapObject;
+    return fieldSystem->followMon.mapObject;
 }
 
 void sub_02069B74(MapObjectManager *mapObjectMan, u32 mapno) {
-    FieldSystem *fsys;
+    FieldSystem *fieldSystem;
     Party *party;
     int partyCount;
     Pokemon *mon;
@@ -1570,66 +1570,66 @@ void sub_02069B74(MapObjectManager *mapObjectMan, u32 mapno) {
     int player_unk;
     LocalMapObject *followPokeObj;
 
-    fsys = MapObjectManager_GetFieldSysPtr(mapObjectMan);
-    party = SaveArray_Party_Get(fsys->savedata);
+    fieldSystem = MapObjectManager_GetFieldSysPtr(mapObjectMan);
+    party = SaveArray_Party_Get(fieldSystem->savedata);
     partyCount = Party_GetCount(party);
-    FsysFollowMonClear(&fsys->followMon);
+    FieldSystemFollowMonClear(&fieldSystem->followMon);
     if (partyCount != 0) {
         mon = GetFirstAliveMonInParty_CrashIfNone(party);
         species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        FsysUnkSub108_Set(fsys->unk108, mon, species, GetMonData(mon, MON_DATA_PERSONALITY, NULL));
+        FieldSystemUnkSub108_Set(fieldSystem->unk108, mon, species, GetMonData(mon, MON_DATA_PERSONALITY, NULL));
         if (GetFollowPokePermissionBySpeciesAndMap(species, mapno)) {
-            followPokeObj = GetMapObjectByID(fsys->mapObjectMan, obj_partner_poke);
+            followPokeObj = GetMapObjectByID(fieldSystem->mapObjectMan, obj_partner_poke);
             if (followPokeObj == NULL) {
-                fsys->followMon.unk15 = 1;
+                fieldSystem->followMon.unk15 = 1;
             } else {
                 form = GetMonData(mon, MON_DATA_FORM, NULL);
                 gender = GetMonGender(mon);
                 shiny = MonIsShiny(mon);
-                fsys->followMon.mapObject = followPokeObj;
-                fsys->followMon.active = TRUE;
-                FollowPokeFsysParamSet(fsys, species, form, shiny, gender);
+                fieldSystem->followMon.mapObject = followPokeObj;
+                fieldSystem->followMon.active = TRUE;
+                FollowPokeFieldSystemParamSet(fieldSystem, species, form, shiny, gender);
                 FollowPokeMapObjectSetParams(followPokeObj, species, form, shiny);
-                MapObject_SetGfxID(fsys->followMon.mapObject, FollowingPokemon_GetSpriteID(species, form, gender));
-                player_unk = PlayerAvatar_GetState(fsys->playerAvatar);
+                MapObject_SetGfxID(fieldSystem->followMon.mapObject, FollowingPokemon_GetSpriteID(species, form, gender));
+                player_unk = PlayerAvatar_GetState(fieldSystem->playerAvatar);
                 if (player_unk == 0 || player_unk == 3) {
-                    SavFollowPoke_SetUnused2bitField(1, Save_FollowPoke_Get(fsys->savedata));
+                    SavFollowPoke_SetUnused2bitField(1, Save_FollowPoke_Get(fieldSystem->savedata));
                 } else if (player_unk == 1) {
-                    SavFollowPoke_SetUnused2bitField(2, Save_FollowPoke_Get(fsys->savedata));
-                    sub_0206A040(fsys->followMon.mapObject, TRUE);
+                    SavFollowPoke_SetUnused2bitField(2, Save_FollowPoke_Get(fieldSystem->savedata));
+                    sub_0206A040(fieldSystem->followMon.mapObject, TRUE);
                 } else if (player_unk == 2) {
-                    SavFollowPoke_SetUnused2bitField(2, Save_FollowPoke_Get(fsys->savedata));
-                    sub_0206A040(fsys->followMon.mapObject, TRUE);
+                    SavFollowPoke_SetUnused2bitField(2, Save_FollowPoke_Get(fieldSystem->savedata));
+                    sub_0206A040(fieldSystem->followMon.mapObject, TRUE);
                 } else {
                     GF_ASSERT(0);
                 }
-                if (sub_02069E14(fsys->followMon.mapObject)) {
-                    sub_0206A040(fsys->followMon.mapObject, TRUE);
+                if (sub_02069E14(fieldSystem->followMon.mapObject)) {
+                    sub_0206A040(fieldSystem->followMon.mapObject, TRUE);
                 }
-                if (SavFollowPoke_GetInhibitFlagState(Save_FollowPoke_Get(fsys->savedata))) {
-                    sub_0206A054(fsys);
+                if (SavFollowPoke_GetInhibitFlagState(Save_FollowPoke_Get(fieldSystem->savedata))) {
+                    sub_0206A054(fieldSystem);
                 }
-                MapObject_ClearFlag18(fsys->followMon.mapObject, FALSE);
+                MapObject_ClearFlag18(fieldSystem->followMon.mapObject, FALSE);
             }
         } else {
-            followPokeObj = GetMapObjectByID(fsys->mapObjectMan, obj_partner_poke);
+            followPokeObj = GetMapObjectByID(fieldSystem->mapObjectMan, obj_partner_poke);
             if (followPokeObj != NULL) {
                 form = GetMonData(mon, MON_DATA_FORM, NULL);
                 gender = GetMonGender(mon);
                 shiny = MonIsShiny(mon);
-                FollowPokeFsysParamSet(fsys, species, form, shiny, gender);
+                FollowPokeFieldSystemParamSet(fieldSystem, species, form, shiny, gender);
                 FollowPokeMapObjectSetParams(followPokeObj, species, form, shiny);
                 MapObject_SetGfxID(followPokeObj, FollowingPokemon_GetSpriteID(species, form, gender));
-                fsys->followMon.mapObject = followPokeObj;
-                fsys->followMon.active = TRUE;
-                fsys->followMon.unk15 = 1;
+                fieldSystem->followMon.mapObject = followPokeObj;
+                fieldSystem->followMon.active = TRUE;
+                fieldSystem->followMon.unk15 = 1;
             }
         }
     }
 }
 
-LocalMapObject *FollowingPokemon_GetMapObject(FieldSystem *fsys) {
-    return fsys->followMon.mapObject;
+LocalMapObject *FollowingPokemon_GetMapObject(FieldSystem *fieldSystem) {
+    return fieldSystem->followMon.mapObject;
 }
 
 u32 FollowingPokemon_GetSpriteID(int species, u16 form, u32 gender) {
@@ -1755,11 +1755,11 @@ void sub_02069F0C(LocalMapObject *mapObject, int species, u8 form, BOOL shiny, i
     MapObject_SetParam(mapObject, species, 0);
 }
 
-void FollowPokeFsysParamSet(FieldSystem *fsys, int species, u8 form, BOOL shiny, u8 gender) {
-    fsys->followMon.species = species;
-    fsys->followMon.shiny = shiny;
-    fsys->followMon.form = form;
-    fsys->followMon.gender = gender;
+void FollowPokeFieldSystemParamSet(FieldSystem *fieldSystem, int species, u8 form, BOOL shiny, u8 gender) {
+    fieldSystem->followMon.species = species;
+    fieldSystem->followMon.shiny = shiny;
+    fieldSystem->followMon.form = form;
+    fieldSystem->followMon.gender = gender;
 }
 
 u8 GetFollowPokeSizeParamBySpecies(int species) {
@@ -1773,21 +1773,21 @@ int FollowPokeObj_GetSpecies(LocalMapObject *mapObject) {
     return MapObject_GetParam(mapObject, 0);
 }
 
-BOOL FollowingPokemon_IsActive(FieldSystem *fsys) {
-    if (fsys->followMon.active == 0) {
+BOOL FollowingPokemon_IsActive(FieldSystem *fieldSystem) {
+    if (fieldSystem->followMon.active == 0) {
         return FALSE;
     }
 
-    if (CountAlivePokemon(SaveArray_Party_Get(fsys->savedata)) != 0) {
+    if (CountAlivePokemon(SaveArray_Party_Get(fieldSystem->savedata)) != 0) {
         return TRUE;
     } else {
         return FALSE;
     }
 }
 
-BOOL sub_02069FB0(FieldSystem *fsys) {
-    if (FollowingPokemon_IsActive(fsys)) {
-        if (!MapObject_CheckVisible(fsys->followMon.mapObject)) {
+BOOL sub_02069FB0(FieldSystem *fieldSystem) {
+    if (FollowingPokemon_IsActive(fieldSystem)) {
+        if (!MapObject_CheckVisible(fieldSystem->followMon.mapObject)) {
             return TRUE;
         } else {
             return FALSE;
@@ -1797,11 +1797,11 @@ BOOL sub_02069FB0(FieldSystem *fsys) {
     }
 }
 
-BOOL GetFollowPokePermission(FieldSystem *fsys) {
+BOOL GetFollowPokePermission(FieldSystem *fieldSystem) {
     u32 mapno;
 
-    mapno = SavFollowPoke_GetMapId(Save_FollowPoke_Get(fsys->savedata));
-    return GetFollowPokePermissionBySpeciesAndMap(FollowPokeObj_GetSpecies(fsys->followMon.mapObject), mapno);
+    mapno = SavFollowPoke_GetMapId(Save_FollowPoke_Get(fieldSystem->savedata));
+    return GetFollowPokePermissionBySpeciesAndMap(FollowPokeObj_GetSpecies(fieldSystem->followMon.mapObject), mapno);
 }
 
 BOOL GetFollowPokePermissionBySpeciesAndMap(int species, u32 mapno) {
@@ -1834,13 +1834,13 @@ void sub_0206A040(LocalMapObject *mapObject, BOOL enable_bit) {
     MapObject_SetFlag19(mapObject, enable_bit);
 }
 
-void sub_0206A054(FieldSystem *fsys) {
-    LocalMapObject *obj = fsys->followMon.mapObject;
+void sub_0206A054(FieldSystem *fieldSystem) {
+    LocalMapObject *obj = fieldSystem->followMon.mapObject;
     sub_02069DC8(obj, TRUE);
     sub_02069DEC(obj, FALSE);
 }
 
-static void FsysFollowMonClear(FollowMon *followMon) {
+static void FieldSystemFollowMonClear(FollowMon *followMon) {
     followMon->active = FALSE;
     followMon->mapObject = NULL;
     followMon->unk4 = 0;
@@ -1932,7 +1932,7 @@ static LocalMapObject *CreateFollowingSpriteFieldObject(MapObjectManager *mapObj
     return ret;
 }
 
-struct FieldSystemUnk108 *FsysUnkSub108_Alloc(HeapID heapId) {
+struct FieldSystemUnk108 *FieldSystemUnkSub108_Alloc(HeapID heapId) {
     struct FieldSystemUnk108 *ret;
 
     ret = AllocFromHeap(heapId, sizeof(struct FieldSystemUnk108));
@@ -1944,7 +1944,7 @@ struct FieldSystemUnk108 *FsysUnkSub108_Alloc(HeapID heapId) {
     return ret;
 }
 
-void FsysUnkSub108_AddMonMood(struct FieldSystemUnk108 *unk, s8 by) {
+void FieldSystemUnkSub108_AddMonMood(struct FieldSystemUnk108 *unk, s8 by) {
     s8 mood;
 
     if (unk->mon == NULL) {
@@ -1963,7 +1963,7 @@ void FsysUnkSub108_AddMonMood(struct FieldSystemUnk108 *unk, s8 by) {
     SetMonData(unk->mon, MON_DATA_MOOD, &mood);
 }
 
-void FsysUnkSub108_SetMonMood(struct FieldSystemUnk108 *unk, s8 mood) {
+void FieldSystemUnkSub108_SetMonMood(struct FieldSystemUnk108 *unk, s8 mood) {
     if (unk->mon == NULL) {
         GF_ASSERT(0);
         return;
@@ -1972,7 +1972,7 @@ void FsysUnkSub108_SetMonMood(struct FieldSystemUnk108 *unk, s8 mood) {
     SetMonData(unk->mon, MON_DATA_MOOD, &mood);
 }
 
-s8 FsysUnkSub108_GetMonMood(struct FieldSystemUnk108 *unk) {
+s8 FieldSystemUnkSub108_GetMonMood(struct FieldSystemUnk108 *unk) {
     if (unk->mon == NULL) {
         GF_ASSERT(0);
         return 0;
@@ -1981,7 +1981,7 @@ s8 FsysUnkSub108_GetMonMood(struct FieldSystemUnk108 *unk) {
     return GetMonData(unk->mon, MON_DATA_MOOD, NULL);
 }
 
-void FsysUnkSub108_Set(struct FieldSystemUnk108 *a0, Pokemon *mon, u16 species, u32 personality) {
+void FieldSystemUnkSub108_Set(struct FieldSystemUnk108 *a0, Pokemon *mon, u16 species, u32 personality) {
     s8 mood;
     if (species != SPECIES_NONE && (a0->isRegistered == 0 || a0->species != species || a0->personality != personality)) {
         a0->species = species;
@@ -1993,7 +1993,7 @@ void FsysUnkSub108_Set(struct FieldSystemUnk108 *a0, Pokemon *mon, u16 species, 
     }
 }
 
-void FsysUnkSub108_MoveMoodTowardsNeutral(struct FieldSystemUnk108 *a0) {
+void FieldSystemUnkSub108_MoveMoodTowardsNeutral(struct FieldSystemUnk108 *a0) {
     s8 mood;
     if (a0->mon == NULL) {
         GF_ASSERT(0);

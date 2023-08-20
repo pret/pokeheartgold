@@ -2,7 +2,7 @@
 #pragma once
 .public FreeToHeap
 .public TaskManager_Jump
-.public FieldSys_ApplicationIsRunning
+.public FieldSystem_ApplicationIsRunning
 .public sub_020505C0
 .public sub_020505C8
 .public TaskManager_GetFieldSystem

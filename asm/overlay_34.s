@@ -95,7 +95,7 @@ _0225D5C4: ; jump table
 	.short _0225D5F4 - _0225D5C4 - 2 ; case 4
 	.short _0225D5F4 - _0225D5C4 - 2 ; case 5
 _0225D5D0:
-	bl Fsys_TaskIsRunning
+	bl FieldSystem_TaskIsRunning
 	cmp r0, #0
 	bne _0225D5E0
 	add r0, r4, #0
@@ -1542,7 +1542,7 @@ ov34_0225E164: ; 0x0225E164
 	ldr r0, [r5, #0xc]
 	mov r4, #0
 	mvn r4, r4
-	bl Fsys_TaskIsRunning
+	bl FieldSystem_TaskIsRunning
 	cmp r0, #0
 	bne _0225E19A
 	add r0, r5, #0
@@ -2012,7 +2012,7 @@ ov34_0225E4F8: ; 0x0225E4F8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl Fsys_TaskIsRunning
+	bl FieldSystem_TaskIsRunning
 	cmp r0, #0
 	bne _0225E55C
 	mov r4, #0

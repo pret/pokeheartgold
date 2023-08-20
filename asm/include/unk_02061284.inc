@@ -5,7 +5,7 @@
 .public GetPlayerXCoord
 .public GetPlayerYCoord
 .public PlayerAvatar_GetMapObject
-.public FieldSys_GetPlayerAvatar
+.public FieldSystem_GetPlayerAvatar
 .public sub_0205DE98
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits

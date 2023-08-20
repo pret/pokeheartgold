@@ -3,7 +3,7 @@
 .public sub_0203DB6C
 .public sub_0203DB70
 .public sub_0203DB74
-.public Fsys_GetFacingObject
+.public FieldSystem_GetFacingObject
 .public sub_0203DC64
 .public GetInteractedBackgroundEventScript
 .public sub_0203DDA4

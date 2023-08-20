@@ -27,14 +27,14 @@
 .public sub_0203769C
 .public sub_02037C44
 .public sub_0203A05C
-.public FieldSys_LaunchApplication
+.public FieldSystem_LaunchApplication
 .public sub_0203F8EC
 .public GetVarPointer
 .public sub_0204B610
 .public sub_0204B66C
 .public sub_0204B690
 .public TaskManager_Call
-.public FieldSys_ApplicationIsRunning
+.public FieldSystem_ApplicationIsRunning
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public sub_02067118

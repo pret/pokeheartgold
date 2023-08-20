@@ -1642,7 +1642,7 @@ _02063E9C:
 	add r0, r5, #0
 	bl MapObject_GetFieldSysPtr
 	add r1, r5, #0
-	bl FieldSys_ApricornTree_TryGetApricorn
+	bl FieldSystem_ApricornTree_TryGetApricorn
 	add r1, r6, #0
 	bl sub_020640A4
 	str r0, [r4]
@@ -1667,7 +1667,7 @@ _02063ECC:
 	add r0, r5, #0
 	bl MapObject_GetFieldSysPtr
 	add r1, r5, #0
-	bl FieldSys_ApricornTree_TryGetApricorn
+	bl FieldSystem_ApricornTree_TryGetApricorn
 	add r1, r6, #0
 	bl sub_020640A4
 	str r0, [r4]
@@ -1954,7 +1954,7 @@ _02064114:
 	ldr r2, [sp, #0x40]
 	ldr r3, [sp, #0x44]
 	add r0, r5, #0
-	bl FieldSys_SetEngagedTrainer
+	bl FieldSystem_SetEngagedTrainer
 	add sp, #0x58
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1971,7 +1971,7 @@ _02064134:
 	ldr r2, [sp, #0x40]
 	ldr r3, [sp, #0x44]
 	add r0, r5, #0
-	bl FieldSys_SetEngagedTrainer
+	bl FieldSystem_SetEngagedTrainer
 	ldr r0, [sp, #0x30]
 	str r0, [sp]
 	ldr r0, [sp, #0x34]
@@ -1984,7 +1984,7 @@ _02064134:
 	ldr r2, [sp, #0x28]
 	ldr r3, [sp, #0x2c]
 	add r0, r5, #0
-	bl FieldSys_SetEngagedTrainer
+	bl FieldSystem_SetEngagedTrainer
 	add sp, #0x58
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2023,7 +2023,7 @@ _02064180:
 	ldr r2, [sp, #0x40]
 	ldr r3, [sp, #0x44]
 	add r0, r5, #0
-	bl FieldSys_SetEngagedTrainer
+	bl FieldSystem_SetEngagedTrainer
 	ldr r0, [sp, #0x18]
 	str r0, [sp]
 	ldr r0, [sp, #0x1c]
@@ -2035,7 +2035,7 @@ _02064180:
 	ldr r2, [sp, #0x10]
 	ldr r3, [sp, #0x14]
 	add r0, r5, #0
-	bl FieldSys_SetEngagedTrainer
+	bl FieldSystem_SetEngagedTrainer
 	add sp, #0x58
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}

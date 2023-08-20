@@ -5,7 +5,7 @@
 extern BOOL ItemIsTMOrHM(u16 item_id);
 
 BOOL ScrCmd_GiveItem(ScriptContext* ctx) {
-    FieldSystem* sav_ptr = ctx->fsys;
+    FieldSystem* sav_ptr = ctx->fieldSystem;
     u16 item_id = ScriptGetVar(ctx);
     u16 quantity = ScriptGetVar(ctx);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
@@ -17,7 +17,7 @@ BOOL ScrCmd_GiveItem(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_TakeItem(ScriptContext* ctx) {
-    FieldSystem* sav_ptr = ctx->fsys;
+    FieldSystem* sav_ptr = ctx->fieldSystem;
     u16 item_id = ScriptGetVar(ctx);
     u16 quantity = ScriptGetVar(ctx);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
@@ -29,7 +29,7 @@ BOOL ScrCmd_TakeItem(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_HasSpaceForItem(ScriptContext* ctx) {
-    FieldSystem* sav_ptr = ctx->fsys;
+    FieldSystem* sav_ptr = ctx->fieldSystem;
     u16 item_id = ScriptGetVar(ctx);
     u16 quantity = ScriptGetVar(ctx);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
@@ -41,7 +41,7 @@ BOOL ScrCmd_HasSpaceForItem(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_HasItem(ScriptContext* ctx) {
-    FieldSystem* sav_ptr = ctx->fsys;
+    FieldSystem* sav_ptr = ctx->fieldSystem;
     u16 item_id = ScriptGetVar(ctx);
     u16 quantity = ScriptGetVar(ctx);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
@@ -53,7 +53,7 @@ BOOL ScrCmd_HasItem(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_GetItemQuantity(ScriptContext* ctx) {
-    FieldSystem* sav_ptr = ctx->fsys;
+    FieldSystem* sav_ptr = ctx->fieldSystem;
     u16 item_id = ScriptGetVar(ctx);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
 

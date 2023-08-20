@@ -26,9 +26,9 @@ typedef struct MessageBox {
 static void ovFieldMain_ShowMessageInField(ScriptContext *ctx, MsgData *messageData, u32 messageNum);
 static void ov01_021EF5C8(ScriptContext *ctx, MessageFormat *messageFormat, u8 messageNum, u32 canABSpeedUp);
 static u32 ovFieldMain_GetTextFrameDelay(ScriptContext *ctx);
-static void ovFieldMain_GetMsgBoxParameters(FieldSystem *fsys, MessageBox *messageBox);
-static void ovFieldMain_GetMsgBoxParametersEx(FieldSystem *fsys, MessageFormat *messageFormat, MessageBox *messageBox);
-static void ovFieldMain_CreateMessageBox(FieldSystem *fsys, MessageBox *messageBox);
+static void ovFieldMain_GetMsgBoxParameters(FieldSystem *fieldSystem, MessageBox *messageBox);
+static void ovFieldMain_GetMsgBoxParametersEx(FieldSystem *fieldSystem, MessageFormat *messageFormat, MessageBox *messageBox);
+static void ovFieldMain_CreateMessageBox(FieldSystem *fieldSystem, MessageBox *messageBox);
 static void ovFieldMain_ReadAndExpandMsgDataViaBuffer(MessageBox *messageBox, MsgData *messageData, u32 messageNum);
 static void ovFieldMain_GetFormattedECMessage(MessageBox *messageBox, u16 messageBank, u16 messageNum, u16 word1, u16 word2);
 static void ov01_021EF758(MessageBox *messageBox, FontID fontId, u32 textFrameDelay, BOOL canABSpeedUp, u32 a4);
@@ -98,7 +98,7 @@ BOOL ScrCmd_442(ScriptContext *ctx) {
 
 BOOL ScrCmd_443(ScriptContext *ctx) {
     u8 r1 = ScriptReadByte(ctx);
-    void *r2 = ctx->fsys->unkA0;
+    void *r2 = ctx->fieldSystem->unkA0;
     if (r2 == NULL) {
         return FALSE;
     }
@@ -115,13 +115,13 @@ BOOL ScrCmd_443(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_444(ScriptContext *ctx) {
-    FieldSystem *fsys = ctx->fsys;
+    FieldSystem *fieldSystem = ctx->fieldSystem;
     u8 baseMessageNum = ScriptReadByte(ctx);
     u16 numEligiblePokemon = ScriptGetVar(ctx);
     u16 r2 = ScriptReadHalfword(ctx);
     u8 r3 = ScriptReadByte(ctx);
     u8 numLegendaryPokemonSeen = 0;
-    MessageFormat *messageFormat = sub_0204B538(fsys->savedata, numEligiblePokemon, r2, r3, &numLegendaryPokemonSeen);
+    MessageFormat *messageFormat = sub_0204B538(fieldSystem->savedata, numEligiblePokemon, r2, r3, &numLegendaryPokemonSeen);
     ov01_021EF5C8(ctx, messageFormat, baseMessageNum + numLegendaryPokemonSeen, TRUE);
     MessageFormat_Delete(messageFormat);
     SetupNativeScript(ctx, ov01_021EF348);
@@ -146,7 +146,7 @@ BOOL ScrCmd_NPCMsg(ScriptContext *ctx) {
 }
 
 BOOL ov01_021EF348(ScriptContext *ctx) {
-    u8 *textPrinterNumPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
+    u8 *textPrinterNumPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_TEXT_PRINTER_NUMBER);
     return IsPrintFinished(*textPrinterNumPtr);
 }
 
@@ -175,10 +175,10 @@ BOOL ScrCmd_NpcMsgVar(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_GenderMsgbox(ScriptContext *ctx) {
-    void *unused = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(ctx->fsys));
+    void *unused = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(ctx->fieldSystem));
     u8 messageNumMale = ScriptReadByte(ctx);
     u8 messageNumFemale = ScriptReadByte(ctx);
-    u32 gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(ctx->fsys)));
+    u32 gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(ctx->fieldSystem)));
     if (gender != PLAYER_GENDER_MALE) {
         ov01_021EF4DC(ctx, ctx->msgdata, messageNumFemale, TRUE, NULL);
     } else {
@@ -189,7 +189,7 @@ BOOL ScrCmd_GenderMsgbox(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_455(ScriptContext *ctx) {
-    LocalMapObject **objPtr = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_INTERACTED);
+    LocalMapObject **objPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_LAST_INTERACTED);
     u8 mapObjectType = MapObject_GetType(*objPtr);
     ov01_021EF4DC(ctx, ctx->msgdata, mapObjectType, TRUE, NULL);
     SetupNativeScript(ctx, ov01_021EF348);
@@ -204,8 +204,8 @@ void ov01_021EF4C4(struct UnkStruct_Ov01_021EF4C4 *unkStruct, ScriptContext *ctx
 
 void ov01_021EF4DC(ScriptContext *ctx, MsgData *messageData, u16 messageNum, u8 canABSpeedUp, struct UnkStruct_Ov01_021EF4C4 *unkStruct) {
     MessageBox messageBox;
-    ovFieldMain_GetMsgBoxParameters(ctx->fsys, &messageBox);
-    ovFieldMain_CreateMessageBox(ctx->fsys, &messageBox);
+    ovFieldMain_GetMsgBoxParameters(ctx->fieldSystem, &messageBox);
+    ovFieldMain_CreateMessageBox(ctx->fieldSystem, &messageBox);
     ovFieldMain_ReadAndExpandMsgDataViaBuffer(&messageBox, messageData, messageNum);
     u32 textFrameDelay;
     u32 unk1;
@@ -224,8 +224,8 @@ void ov01_021EF4DC(ScriptContext *ctx, MsgData *messageData, u16 messageNum, u8 
 
 static void ovFieldMain_ShowMessageInField(ScriptContext *ctx, MsgData *messageData, u32 messageNum) {
     MessageBox messageBox;
-    ovFieldMain_GetMsgBoxParameters(ctx->fsys, &messageBox);
-    ovFieldMain_CreateMessageBox(ctx->fsys, &messageBox);
+    ovFieldMain_GetMsgBoxParameters(ctx->fieldSystem, &messageBox);
+    ovFieldMain_CreateMessageBox(ctx->fieldSystem, &messageBox);
     ovFieldMain_ReadAndExpandMsgDataViaBuffer(&messageBox, messageData, messageNum);
     ovFieldMain_AddTextPrinterParameterized(&messageBox, 1);
 }
@@ -233,8 +233,8 @@ static void ovFieldMain_ShowMessageInField(ScriptContext *ctx, MsgData *messageD
 // word2 needs to be signed to match
 void ov01_021EF564(ScriptContext *ctx, u16 messageBank, u16 messageNum, u16 word1, s16 word2, u8 canABSpeedUp) {
     MessageBox messageBox;
-    ovFieldMain_GetMsgBoxParameters(ctx->fsys, &messageBox);
-    ovFieldMain_CreateMessageBox(ctx->fsys, &messageBox);
+    ovFieldMain_GetMsgBoxParameters(ctx->fieldSystem, &messageBox);
+    ovFieldMain_CreateMessageBox(ctx->fieldSystem, &messageBox);
     ovFieldMain_GetFormattedECMessage(&messageBox, messageBank, messageNum, word1, (u16)word2);
     if (canABSpeedUp != 0xFF) {
         ov01_021EF758(&messageBox, 1, ovFieldMain_GetTextFrameDelay(ctx), canABSpeedUp, 0);
@@ -245,40 +245,40 @@ void ov01_021EF564(ScriptContext *ctx, u16 messageBank, u16 messageNum, u16 word
 
 static void ov01_021EF5C8(ScriptContext *ctx, MessageFormat *messageFormat, u8 messageNum, u32 canABSpeedUp) {
     MessageBox messageBox;
-    ovFieldMain_GetMsgBoxParametersEx(ctx->fsys, messageFormat, &messageBox);
-    ovFieldMain_CreateMessageBox(ctx->fsys, &messageBox);
+    ovFieldMain_GetMsgBoxParametersEx(ctx->fieldSystem, messageFormat, &messageBox);
+    ovFieldMain_CreateMessageBox(ctx->fieldSystem, &messageBox);
     ovFieldMain_ReadAndExpandMsgDataViaBuffer(&messageBox, ctx->msgdata, messageNum);
     ov01_021EF758(&messageBox, 1, ovFieldMain_GetTextFrameDelay(ctx), canABSpeedUp, 0);
 }
 
 static u32 ovFieldMain_GetTextFrameDelay(ScriptContext *ctx) {
-    return Options_GetTextFrameDelay(Save_PlayerData_GetOptionsAddr(ctx->fsys->savedata));
+    return Options_GetTextFrameDelay(Save_PlayerData_GetOptionsAddr(ctx->fieldSystem->savedata));
 }
 
-static void ovFieldMain_GetMsgBoxParameters(FieldSystem *fsys, MessageBox *messageBox) {
-    messageBox->message = *(String **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
-    messageBox->buffer = *(String **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
-    messageBox->messageFormat = *(MessageFormat **)FieldSysGetAttrAddr(fsys, SCRIPTENV_MESSAGE_FORMAT);
-    messageBox->window = (Window *)FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW);
-    messageBox->unk10 = (u8 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_08);
-    messageBox->textPrinterNumPtr = (u8 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
+static void ovFieldMain_GetMsgBoxParameters(FieldSystem *fieldSystem, MessageBox *messageBox) {
+    messageBox->message = *(String **)FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_STRING_BUFFER_0);
+    messageBox->buffer = *(String **)FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_STRING_BUFFER_1);
+    messageBox->messageFormat = *(MessageFormat **)FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
+    messageBox->window = (Window *)FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_WINDOW);
+    messageBox->unk10 = (u8 *)FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_FIELD_08);
+    messageBox->textPrinterNumPtr = (u8 *)FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_TEXT_PRINTER_NUMBER);
 }
 
-static void ovFieldMain_GetMsgBoxParametersEx(FieldSystem *fsys, MessageFormat *messageFormat, MessageBox *messageBox) {
-    messageBox->message = *(String **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_0);
-    messageBox->buffer = *(String **)FieldSysGetAttrAddr(fsys, SCRIPTENV_STRING_BUFFER_1);
+static void ovFieldMain_GetMsgBoxParametersEx(FieldSystem *fieldSystem, MessageFormat *messageFormat, MessageBox *messageBox) {
+    messageBox->message = *(String **)FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_STRING_BUFFER_0);
+    messageBox->buffer = *(String **)FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_STRING_BUFFER_1);
     messageBox->messageFormat = messageFormat;
-    messageBox->window = (Window *)FieldSysGetAttrAddr(fsys, SCRIPTENV_WINDOW);
-    messageBox->unk10 = (u8 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_FIELD_08);
-    messageBox->textPrinterNumPtr = (u8 *)FieldSysGetAttrAddr(fsys, SCRIPTENV_TEXT_PRINTER_NUMBER);
+    messageBox->window = (Window *)FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_WINDOW);
+    messageBox->unk10 = (u8 *)FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_FIELD_08);
+    messageBox->textPrinterNumPtr = (u8 *)FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_TEXT_PRINTER_NUMBER);
 }
 
-static void ovFieldMain_CreateMessageBox(FieldSystem *fsys, MessageBox *messageBox) {
+static void ovFieldMain_CreateMessageBox(FieldSystem *fieldSystem, MessageBox *messageBox) {
     if (*(messageBox->unk10) == 0) {
-        sub_0205B514(fsys->bgConfig, messageBox->window, 3);
-        sub_0205B564(messageBox->window, Save_PlayerData_GetOptionsAddr(fsys->savedata));
+        sub_0205B514(fieldSystem->bgConfig, messageBox->window, 3);
+        sub_0205B564(messageBox->window, Save_PlayerData_GetOptionsAddr(fieldSystem->savedata));
         *(messageBox->unk10) = 1;
-        fsys->unkD2_6 = TRUE;
+        fieldSystem->unkD2_6 = TRUE;
     }
     FillWindowPixelBuffer(messageBox->window, 15);
 }

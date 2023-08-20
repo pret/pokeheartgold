@@ -3,8 +3,8 @@
 
 #include "script.h"
 
-BOOL CheckUseEscapeRopeInAlphChamber(FieldSystem* fsys);
-BOOL CheckUseFlashInAlphChamber(FieldSystem* fsys);
-BOOL CheckUseWaterStoneInAlphChamber(FieldSystem* fsys);
+BOOL CheckUseEscapeRopeInAlphChamber(FieldSystem* fieldSystem);
+BOOL CheckUseFlashInAlphChamber(FieldSystem* fieldSystem);
+BOOL CheckUseWaterStoneInAlphChamber(FieldSystem* fieldSystem);
 
 #endif //POKEHEARTGOLD_FIELD_ALPH_CHECKS_H
