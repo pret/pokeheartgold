@@ -31,55 +31,6 @@ _020FC4C0:
 
 	.text
 
-	thumb_func_start BattleSetup_New_SafariZone
-BattleSetup_New_SafariZone: ; 0x02051A60
-	push {r4, lr}
-	add r4, r1, #0
-	; BATTLE_TYPE_SAFARI
-	mov r1, #0x20
-	bl BattleSetup_New
-	mov r1, #0x19
-	lsl r1, r1, #4
-	str r4, [r0, r1]
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end BattleSetup_New_SafariZone
-
-	thumb_func_start BattleSetup_New_BugContest
-BattleSetup_New_BugContest: ; 0x02051A74
-	push {r4, r5, r6, lr}
-	add r5, r1, #0
-	; BATTLE_TYPE_BUG_CONTEST
-	mov r1, #1
-	lsl r1, r1, #0xc
-	add r6, r2, #0
-	bl BattleSetup_New
-	mov r1, #0x19
-	add r4, r0, #0
-	lsl r1, r1, #4
-	str r5, [r4, r1]
-	add r1, #0x38
-	ldr r1, [r4, r1]
-	add r0, r6, #0
-	bl CopyPokemonToPokemon
-	add r0, r4, #0
-	pop {r4, r5, r6, pc}
-	thumb_func_end BattleSetup_New_BugContest
-
-	thumb_func_start BattleSetup_New_PalPark
-BattleSetup_New_PalPark: ; 0x02051A98
-	push {r4, lr}
-	add r4, r1, #0
-	; BATTLE_TYPE_PAL_PARK
-	mov r1, #2
-	lsl r1, r1, #8
-	bl BattleSetup_New
-	mov r1, #0x19
-	lsl r1, r1, #4
-	str r4, [r0, r1]
-	pop {r4, pc}
-	thumb_func_end BattleSetup_New_PalPark
-
 	thumb_func_start BattleSetup_New_Tutorial
 BattleSetup_New_Tutorial: ; 0x02051AAC
 	push {r4, r5, r6, r7, lr}

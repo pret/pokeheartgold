@@ -3,8 +3,7 @@
 #include "system.h"
 #include "gf_rtc.h"
 #include "unk_02035900.h"
-
-extern void* sub_02067A60(HeapID heapId);
+#include "constants/battle.h"
 
 BATTLE_SETUP* BattleSetup_New(HeapID heapId, u32 battleTypeFlags) {
     int i;
@@ -35,11 +34,11 @@ BATTLE_SETUP* BattleSetup_New(HeapID heapId, u32 battleTypeFlags) {
     setup->unk_134 = sub_02067A60(heapId);
     setup->unk_10C = NULL;
     setup->unk1B8 = NULL;
-    setup->unk_190 = 0;
+    setup->safariBalls = 0;
     setup->unk_12C = NULL;
     setup->unk_144 = NULL;
     setup->unk_194 = NULL;
-    setup->unk1C8 = AllocMonZeroed(heapId);
+    setup->bugContestMon = AllocMonZeroed(heapId);
 
     {
     RTCDate date;
@@ -60,5 +59,24 @@ BATTLE_SETUP* BattleSetup_New(HeapID heapId, u32 battleTypeFlags) {
         setup->unk1B0 = sub_0203769C();
     }
     MI_CpuClear8(&setup->unk138, sizeof(setup->unk138));
+    return setup;
+}
+
+BATTLE_SETUP* BattleSetup_New_SafariZone(HeapID heapId, int balls) {
+    BATTLE_SETUP* setup = BattleSetup_New(heapId, BATTLE_TYPE_SAFARI);
+    setup->safariBalls = balls;
+    return setup;
+}
+
+BATTLE_SETUP* BattleSetup_New_BugContest(HeapID heapId, int balls, Pokemon* bugmon) {
+    BATTLE_SETUP* setup = BattleSetup_New(heapId, BATTLE_TYPE_BUG_CONTEST);
+    setup->safariBalls = balls;
+    CopyPokemonToPokemon(bugmon, setup->bugContestMon);
+    return setup;
+}
+
+BATTLE_SETUP* BattleSetup_New_PalPark(HeapID heapId, int balls) {
+    BATTLE_SETUP* setup = BattleSetup_New(heapId, BATTLE_TYPE_PAL_PARK);
+    setup->safariBalls = balls;
     return setup;
 }

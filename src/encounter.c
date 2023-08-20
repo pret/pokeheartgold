@@ -505,7 +505,7 @@ static BOOL Task_BugContestEncounter(TaskManager *man) {
         sub_02051660(fsys, encounter->setup);
 
         if (encounter->setup->winFlag == 4) {
-            sub_0206DB94(man, encounter->setup->unk1C8);
+            sub_0206DB94(man, encounter->setup->bugContestMon);
             sub_02093070(fsys);
             sub_020930C4(fsys);
         }
