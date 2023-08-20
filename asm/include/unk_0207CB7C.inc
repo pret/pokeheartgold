@@ -55,7 +55,7 @@
 .public GetMonData
 .public Mon_GetBoxMon
 .public GetMonEvolution
-.public GetPartyMonByIndex
+.public Party_GetMonByIndex
 .public sub_0207B364
 .public sub_0207B418
 .public sub_0207B4A0

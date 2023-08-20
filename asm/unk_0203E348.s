@@ -376,7 +376,7 @@ sub_0203E4FC: ; 0x0203E4FC
 	mov r2, #0x44
 	bl MIi_CpuClearFast
 	ldr r0, [r5, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [r4]
 	ldr r0, [r5, #0xc]
 	bl Save_Bag_Get
@@ -708,14 +708,14 @@ sub_0203E76C: ; 0x0203E76C
 	bl Save_PlayerData_GetOptionsAddr
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [r4]
 	mov r0, #1
 	strb r0, [r4, #0x11]
 	mov r0, #0
 	strb r0, [r4, #0x14]
 	ldr r0, [r4]
-	bl GetPartyCount
+	bl Party_GetCount
 	strb r0, [r4, #0x13]
 	mov r0, #0
 	strh r0, [r4, #0x18]
@@ -763,7 +763,7 @@ sub_0203E7F4: ; 0x0203E7F4
 	add r4, r0, #0
 	bl MI_CpuFill8
 	ldr r0, [r5, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [r4]
 	ldr r0, [r5, #0xc]
 	bl Save_PlayerData_GetOptionsAddr
@@ -1929,9 +1929,9 @@ sub_0203F0D0: ; 0x0203F0D0
 	add r5, r0, #0
 	bl memset
 	add r0, r6, #0
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r1, r4, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	str r0, [r5]
 	add r0, r6, #0
 	bl Save_FashionData_Get
@@ -2091,7 +2091,7 @@ sub_0203F218: ; 0x0203F218
 	bl Save_PlayerData_GetProfileAddr
 	str r0, [r5, #4]
 	ldr r0, [r4, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [r5, #8]
 	ldr r0, [r4, #0xc]
 	mov r1, #8
@@ -2358,7 +2358,7 @@ _0203F446:
 	beq _0203F49A
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4, #0x2c]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r0, #0
 	ldr r0, [r4, #0x40]
 	bl CopyPokemonToPokemon
@@ -2664,9 +2664,9 @@ _0203F6A2:
 	b _0203F6BE
 _0203F6B2:
 	ldr r0, [r5, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r1, r6, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 _0203F6BE:
 	ldr r2, [r4, #0xc]
 	mov r1, #0x76
@@ -2739,9 +2739,9 @@ _0203F73C:
 	b _0203F75A
 _0203F74C:
 	ldr r0, [r6, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	ldr r1, [r4, #4]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r6, r0, #0
 _0203F75A:
 	add r0, r6, #0
@@ -3081,7 +3081,7 @@ HatchEggInParty: ; 0x0203F9F4
 	sub sp, #0x10
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	bl sub_0206CE44
 	add r5, r0, #0
 	bne _0203FA0C
@@ -3207,7 +3207,7 @@ sub_0203FAE8: ; 0x0203FAE8
 	add r4, r0, #0
 	bl memset
 	ldr r0, [r5, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [r4]
 	ldr r0, [r5, #0xc]
 	bl Save_Bag_Get
@@ -3287,7 +3287,7 @@ sub_0203FB94: ; 0x0203FB94
 	bl AllocFromHeap
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [r4]
 	ldr r0, [r5, #0xc]
 	bl Save_PlayerData_GetOptionsAddr
@@ -3296,7 +3296,7 @@ sub_0203FB94: ; 0x0203FB94
 	strb r0, [r4, #0x11]
 	strb r6, [r4, #0x14]
 	ldr r0, [r4]
-	bl GetPartyCount
+	bl Party_GetCount
 	strb r0, [r4, #0x13]
 	mov r0, #0
 	strh r0, [r4, #0x18]

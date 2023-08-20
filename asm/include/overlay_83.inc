@@ -202,7 +202,7 @@
 .public sub_02074490
 .public sub_02074498
 .public sub_020744A4
-.public GetPartyMonByIndex
+.public Party_GetMonByIndex
 .public GetItemIndexMapping
 .public GetItemIconCell
 .public GetItemIconAnim

@@ -182,10 +182,10 @@
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public CalcMonPokeathlonPerformance
 .public CalcMonPokeathlonStars
-.public GetPartyCount
-.public GetPartyMonByIndex
+.public Party_GetCount
+.public Party_GetMonByIndex
 .public Party_GetUnkSubSlot
-.public SaveArray_PlayerParty_Get
+.public SaveArray_Party_Get
 .public NNS_GfdDoVramTransfer
 .public NNS_G2dSetupSoftwareSpriteCamera
 .public NNS_G3dGlbFlushP

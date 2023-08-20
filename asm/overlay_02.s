@@ -2238,14 +2238,14 @@ _02246CD6:
 	add r0, r5, #0
 	bl ov02_02248698
 	ldr r0, [r5, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r6, r0, #0
 	add r0, r5, #0
 	bl MapEvents_GetLoadedEncTable
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	str r0, [sp, #0x10]
 	ldr r1, [sp, #0x10]
 	add r0, r5, #0
@@ -2560,9 +2560,9 @@ ov02_02246F70: ; 0x02246F70
 _02246F88:
 	ldr r0, [sp, #0x20]
 	ldr r0, [r0, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	mov r1, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #0x20]
 	ldr r1, [sp, #0x1c]
@@ -2707,9 +2707,9 @@ ov02_022470A0: ; 0x022470A0
 _022470B8:
 	ldr r0, [sp, #0xc]
 	ldr r0, [r0, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	mov r1, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	str r0, [sp, #8]
 	ldr r0, [sp, #0xc]
 	ldr r1, [sp, #8]
@@ -2818,14 +2818,14 @@ ov02_02247170: ; 0x02247170
 	pop {r4, r5, r6, r7, pc}
 _022471AC:
 	ldr r0, [r5, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r6, r0, #0
 	add r0, r5, #0
 	bl MapEvents_GetLoadedEncTable
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	str r0, [sp, #0x10]
 	ldr r1, [sp, #0x10]
 	add r0, r5, #0
@@ -3039,9 +3039,9 @@ ov02_02247374: ; 0x02247374
 	ldr r0, [r5, #0xc]
 	str r1, [sp, #0xc]
 	add r4, r2, #0
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	mov r1, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	str r0, [sp, #0x10]
 	ldr r1, [sp, #0x10]
 	add r0, r5, #0
@@ -4606,9 +4606,9 @@ ov02_02247F30: ; 0x02247F30
 	add r6, r1, #0
 	add r7, r2, #0
 	str r3, [sp, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	mov r1, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -4769,7 +4769,7 @@ _02248060:
 	cmp r0, #0
 	beq _0224808A
 	ldr r0, [r5, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	bl GetFirstAliveMonInParty_CrashIfNone
 	mov r1, #9
 	mov r2, #0
@@ -5173,7 +5173,7 @@ ov02_022482BC: ; 0x022482BC
 	bl SetMonData
 	ldr r0, [r6, #8]
 	add r1, r4, #0
-	bl AddMonToParty
+	bl Party_AddMon
 	cmp r0, #0
 	bne _02248350
 	bl GF_AssertFail
@@ -5487,7 +5487,7 @@ _022485A2:
 	add r0, r6, r0
 	ldr r0, [r0, #4]
 	add r1, r4, #0
-	bl AddMonToParty
+	bl Party_AddMon
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov02_0224855C
 
@@ -12495,7 +12495,7 @@ ov02_BattleExit_HandleRoamerAction: ; 0x0224B998
 	ldr r0, [r1, #8]
 	str r1, [sp]
 	mov r1, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r7, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Save_Roamers_Get
@@ -19735,7 +19735,7 @@ ov02_0224F058: ; 0x0224F058
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	add r4, r1, #0
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	bl GetFirstAliveMonInParty_CrashIfNone
 	mov r1, #5
 	mov r2, #0
@@ -20586,7 +20586,7 @@ ov02_0224F6AC: ; 0x0224F6AC
 	sub sp, #0x10
 	ldr r0, [r0, #0xc]
 	add r5, r3, #0
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r4, r0, #0
 	bl GetIdxOfFirstAliveMonInParty_CrashIfNone
 	add r6, r0, #0
@@ -20596,7 +20596,7 @@ ov02_0224F6AC: ; 0x0224F6AC
 	bl Party_GetUnkSubSlot
 	add r0, r4, #0
 	add r1, r6, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r1, r0, #0
 	add r0, sp, #0
 	add r2, sp, #8
@@ -21483,7 +21483,7 @@ _0224FD30:
 	mov r1, #0x5f
 	b _0224FD72
 _0224FD3E:
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	bl GetFirstAliveMonInParty_CrashIfNone
 	bl Mon_GetBoxMon
 	str r0, [sp, #4]
@@ -22324,7 +22324,7 @@ _022503B2:
 	pop {r3, r4, r5, r6, r7, pc}
 _022503BA:
 	ldr r0, [r4, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	bl GetFirstAliveMonInParty_CrashIfNone
 	add r1, r5, #0
 	mov r2, #0
@@ -22428,7 +22428,7 @@ FollowPoke_PlaceholdersSet: ; 0x022504A0
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	add r4, r1, #0
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	bl GetFirstAliveMonInParty_CrashIfNone
 	add r6, r0, #0
 	bl Mon_GetBoxMon
@@ -22470,7 +22470,7 @@ ov02_02250504: ; 0x02250504
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	bl GetFirstAliveMonInParty_CrashIfNone
 	add r4, r0, #0
 	mov r0, #0x42
@@ -22837,7 +22837,7 @@ ov02_02250780: ; 0x02250780
 	push {r4, r5, r6, lr}
 	ldr r0, [r0, #0xc]
 	add r5, r1, #0
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	bl GetFirstAliveMonInParty_CrashIfNone
 	add r6, r0, #0
 	mov r1, #0xb1
@@ -26327,7 +26327,7 @@ _0225234A:
 	cmp r1, r0
 	bne _022523B0
 	ldr r0, [r5, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	bl GetFirstAliveMonInParty_CrashIfNone
 	add r6, r0, #0
 	mov r1, #5

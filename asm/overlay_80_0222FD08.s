@@ -438,7 +438,7 @@ _02230078:
 _022300B0:
 	ldr r0, [r4, r6]
 	add r1, r5, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r5, r5, #1
 	cmp r5, #6
 	blt _022300B0
@@ -1140,7 +1140,7 @@ _0223064E:
 	blo _0223064E
 	ldr r0, _02230770 ; =0x000004D4
 	ldr r0, [r5, r0]
-	bl GetPartyCount
+	bl Party_GetCount
 	add r7, r0, #0
 	ldr r4, _02230774 ; =0x00000000
 	beq _022306E8
@@ -1148,7 +1148,7 @@ _0223067C:
 	ldr r0, _02230770 ; =0x000004D4
 	add r1, r4, #0
 	ldr r0, [r5, r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r6, r0, #0
 	lsl r0, r4, #1
 	add r1, r5, r0
@@ -1196,7 +1196,7 @@ _0223067C:
 _022306E8:
 	ldr r0, _0223077C ; =0x000004D8
 	ldr r0, [r5, r0]
-	bl GetPartyCount
+	bl Party_GetCount
 	add r7, r0, #0
 	ldr r4, _02230774 ; =0x00000000
 	beq _02230762
@@ -1204,7 +1204,7 @@ _022306F6:
 	ldr r0, _0223077C ; =0x000004D8
 	add r1, r4, #0
 	ldr r0, [r5, r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r6, r0, #0
 	lsl r0, r4, #1
 	add r1, r5, r0
@@ -1453,7 +1453,7 @@ _022308D2:
 	str r0, [sp, #0x1c]
 	ldr r0, _022309EC ; =0x000004D4
 	ldr r0, [r5, r0]
-	bl GetPartyCount
+	bl Party_GetCount
 	mov r7, #0
 	str r0, [sp, #0x20]
 	cmp r0, #0
@@ -1464,7 +1464,7 @@ _022308FE:
 	ldr r0, _022309EC ; =0x000004D4
 	add r1, r7, #0
 	ldr r0, [r5, r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	str r0, [sp, #0x24]
 	mov r1, #5
 	mov r2, #0
@@ -1484,7 +1484,7 @@ _022308FE:
 _0223092C:
 	ldr r0, _022309F0 ; =0x000004D8
 	ldr r0, [r5, r0]
-	bl GetPartyCount
+	bl Party_GetCount
 	mov r7, #0
 	str r0, [sp, #0x14]
 	cmp r0, #0
@@ -1500,7 +1500,7 @@ _0223094A:
 	ldr r0, _022309F0 ; =0x000004D8
 	add r1, r7, #0
 	ldr r0, [r5, r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	str r0, [sp, #0x28]
 	mov r1, #5
 	mov r2, #0
@@ -1591,7 +1591,7 @@ ov80_022309F8: ; 0x022309F8
 	add r1, r1, #2
 	ldrh r1, [r4, r1]
 	ldr r0, [r4, r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	ldr r1, _02230A54 ; =0x000004D4
 	add r2, r0, #0
 	ldr r0, [r4, r1]
@@ -1679,7 +1679,7 @@ _02230ABC:
 _02230ACA:
 	ldr r0, [r4, r7]
 	add r1, r5, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r5, r5, #1
 	cmp r5, r6
 	blt _02230ACA

@@ -331,7 +331,7 @@ BOOL ScrCmd_AzaleaGymSwitch(ScriptContext *ctx);
 BOOL ScrCmd_BlackthornGymInit(ScriptContext *ctx);
 BOOL ScrCmd_FuchsiaGymInit(ScriptContext *ctx);
 BOOL ScrCmd_ViridianGymInit(ScriptContext *ctx);
-BOOL ScrCmd_GetPartyCount(ScriptContext *ctx);
+BOOL ScrCmd_Party_GetCount(ScriptContext *ctx);
 BOOL ScrCmd_333(ScriptContext *ctx);
 BOOL ScrCmd_334(ScriptContext *ctx);
 BOOL ScrCmd_335(ScriptContext *ctx);
@@ -1186,7 +1186,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_BlackthornGymInit,
     ScrCmd_FuchsiaGymInit,
     ScrCmd_ViridianGymInit,
-    ScrCmd_GetPartyCount,
+    ScrCmd_Party_GetCount,
     ScrCmd_333,
     ScrCmd_334,
     ScrCmd_335,

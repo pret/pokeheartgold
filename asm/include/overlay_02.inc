@@ -332,10 +332,10 @@
 .public WildMonSetRandomHeldItem
 .public CalcMonPokeathlonStars
 .public EnemyTrainerSet_Init
-.public AddMonToParty
-.public GetPartyMonByIndex
+.public Party_AddMon
+.public Party_GetMonByIndex
 .public Party_GetUnkSubSlot
-.public SaveArray_PlayerParty_Get
+.public SaveArray_Party_Get
 .public GetItemAttr
 .public sub_02092DF4
 .public GearPhone_ToggleRinging

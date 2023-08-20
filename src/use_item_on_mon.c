@@ -213,8 +213,8 @@ BOOL CanUseItemOnPokemon(Pokemon *mon, u16 itemID, s32 moveIdx, HeapID heapID) {
     return FALSE;
 }
 
-BOOL CanUseItemOnMonInParty(PARTY *party, u16 itemID, s32 partyIdx, s32 moveIdx, HeapID heapID) {
-    Pokemon *mon = GetPartyMonByIndex(party, partyIdx);
+BOOL CanUseItemOnMonInParty(Party *party, u16 itemID, s32 partyIdx, s32 moveIdx, HeapID heapID) {
+    Pokemon *mon = Party_GetMonByIndex(party, partyIdx);
     return CanUseItemOnPokemon(mon, itemID, moveIdx, heapID);
 }
 
@@ -469,8 +469,8 @@ BOOL UseItemOnPokemon(Pokemon *mon, u16 itemID, u16 moveIdx, u16 location, HeapI
 #undef sp58
 #undef sp54
 
-BOOL UseItemOnMonInParty(PARTY *party, u16 itemID, s32 partyIdx, u16 moveIdx, u16 location, HeapID heapID) {
-    Pokemon *mon = GetPartyMonByIndex(party, partyIdx);
+BOOL UseItemOnMonInParty(Party *party, u16 itemID, s32 partyIdx, u16 moveIdx, u16 location, HeapID heapID) {
+    Pokemon *mon = Party_GetMonByIndex(party, partyIdx);
     return UseItemOnPokemon(mon, itemID, moveIdx, location, heapID);
 }
 
@@ -646,12 +646,12 @@ BOOL DoItemFriendshipMod(Pokemon *mon, s32 friendship, s32 mod, u16 location, He
     return TRUE;
 }
 
-void HealParty(PARTY * party) {
+void HealParty(Party * party) {
     int i, j;
 
-    int partyCount = GetPartyCount(party);
+    int partyCount = Party_GetCount(party);
     for (i = 0; i < partyCount; i++) {
-        Pokemon *mon = GetPartyMonByIndex(party, i);
+        Pokemon *mon = Party_GetMonByIndex(party, i);
         if (GetMonData(mon, MON_DATA_SPECIES_EXISTS, NULL)) {
             u32 sp8 = GetMonData(mon, MON_DATA_MAXHP, NULL);
             SetMonData(mon, MON_DATA_HP, &sp8);

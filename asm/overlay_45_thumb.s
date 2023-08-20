@@ -3691,7 +3691,7 @@ ov45_0222B8A0: ; 0x0222B8A0
 	bl Save_PlayerData_GetProfileAddr
 	str r0, [sp, #0x18]
 	ldr r0, [sp]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [sp, #0x14]
 	ldr r0, [sp]
 	bl Save_Pokedex_Get
@@ -3723,7 +3723,7 @@ ov45_0222B8A0: ; 0x0222B8A0
 	bl PlayerProfile_GetTrainerID
 	str r0, [r5, #0x24]
 	ldr r0, [sp, #0x14]
-	bl GetPartyCount
+	bl Party_GetCount
 	str r0, [sp, #4]
 	mov r4, #0
 	add r6, r5, #0
@@ -3733,7 +3733,7 @@ _0222B910:
 	bge _0222B950
 	ldr r0, [sp, #0x14]
 	add r1, r4, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #5
 	mov r2, #0
 	add r7, r0, #0

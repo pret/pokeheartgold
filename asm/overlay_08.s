@@ -2459,7 +2459,7 @@ ov08_0221D184: ; 0x0221D184
 	ldr r0, [sp]
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	bgt _0221D19E
 	b _0221D432
@@ -2473,7 +2473,7 @@ _0221D19E:
 	ldr r0, [r0]
 	ldr r1, [sp, #8]
 	ldr r0, [r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	str r0, [r4, #4]
 	mov r1, #5
 	mov r2, #0
@@ -2760,7 +2760,7 @@ _0221D416:
 	ldr r0, [sp]
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl GetPartyCount
+	bl Party_GetCount
 	ldr r1, [sp, #8]
 	cmp r1, r0
 	bge _0221D432
@@ -6719,7 +6719,7 @@ ov08_0221F4A4: ; 0x0221F4A4
 	ldr r0, [r5]
 	mov r4, #0
 	ldr r0, [r0]
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	ble _0221F52A
 	add r0, r4, #0
@@ -6773,7 +6773,7 @@ _0221F512:
 	add r7, #0x50
 	ldr r0, [r0]
 	add r4, r4, #1
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r4, r0
 	blt _0221F4C2
 _0221F52A:
@@ -10532,7 +10532,7 @@ ov08_0222145C: ; 0x0222145C
 	ldr r0, [r5]
 	mov r4, #0
 	ldr r0, [r0]
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #0
 	ble _022214B4
 	add r7, r5, #4
@@ -10565,7 +10565,7 @@ _022214A2:
 	lsr r4, r0, #0x10
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r4, r0
 	blt _02221470
 _022214B4:
@@ -13617,7 +13617,7 @@ _02222D26:
 	bl BattleSystem_GetPcStorage
 	add r4, r0, #0
 	add r0, r6, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	cmp r0, #6
 	bne _02222D66
 	add r0, r4, #0

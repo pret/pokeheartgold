@@ -28,7 +28,7 @@ static BOOL CreateStarter(TaskManager *taskManager) {
     struct ChooseStarterTaskData *env = TaskManager_GetEnv(taskManager);
     int i;
     u32 mapsec;
-    PARTY *party;
+    Party *party;
 
     switch (env->state) {
     case 0:
@@ -74,12 +74,12 @@ static BOOL CreateStarter(TaskManager *taskManager) {
         break;
     case 3: {
         Pokedex *pokedex = Save_Pokedex_Get(fsys->savedata);
-        party = SaveArray_PlayerParty_Get(fsys->savedata);
+        party = SaveArray_Party_Get(fsys->savedata);
         Pokemon *myChoice = &env->args->starters[env->args->cursorPos];
-        if (AddMonToParty(party, myChoice)) {
+        if (Party_AddMon(party, myChoice)) {
             UpdatePokedexWithReceivedSpecies(fsys->savedata, myChoice);
         }
-        Pokedex_SetMonCaughtFlag(pokedex, GetPartyMonByIndex(party, 0));
+        Pokedex_SetMonCaughtFlag(pokedex, Party_GetMonByIndex(party, 0));
         env->state = 4;
         sub_020505C0(fsys);
         break;

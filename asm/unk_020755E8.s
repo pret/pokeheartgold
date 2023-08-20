@@ -2797,10 +2797,10 @@ _02076CC4:
 	cmp r0, #0
 	beq _02076CE4
 	ldr r0, [r4, #0x24]
-	bl GetPartyCount
+	bl Party_GetCount
 	add r5, r0, #0
 	ldr r0, [r4, #0x24]
-	bl GetPartyMaxCount
+	bl Party_GetMaxCount
 	cmp r5, r0
 	blt _02076CE6
 _02076CE4:
@@ -2938,7 +2938,7 @@ _02076D62:
 	bl CalcMonLevelAndStats
 	ldr r0, [r4, #0x24]
 	add r1, r5, #0
-	bl AddMonToParty
+	bl Party_AddMon
 	ldr r0, [r4, #0x48]
 	add r1, r5, #0
 	bl Pokedex_SetMonCaughtFlag

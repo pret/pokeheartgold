@@ -33,8 +33,8 @@
 .public GetMonData
 .public Pokemon_GetIconNaix
 .public GetMonIconPaletteEx
-.public GetPartyCount
-.public GetPartyMonByIndex
+.public Party_GetCount
+.public Party_GetMonByIndex
 .public ItemIdIsMail
 .public sub_0207B5EC
 .public sub_0207EB24

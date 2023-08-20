@@ -49,8 +49,8 @@
 .public sub_0206751C
 .public sub_02067584
 .public sub_0206759C
-.public GetPartyCount
-.public SaveArray_PlayerParty_Get
+.public Party_GetCount
+.public SaveArray_Party_Get
 .public SaveArray_IsNatDexEnabled
 .public Save_Bag_Get
 .public sub_02088288

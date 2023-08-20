@@ -24,10 +24,10 @@
 .public CalcShininessByOtIdAndPersonality
 .public CopyPokemonToPokemon
 .public MaskOfFlagNo
-.public InitPartyWithMaxSize
-.public AddMonToParty
-.public GetPartyMonByIndex
-.public SaveArray_PlayerParty_Get
+.public Party_InitWithMaxSize
+.public Party_AddMon
+.public Party_GetMonByIndex
+.public SaveArray_Party_Get
 .public MI_CpuFill8
 .public MI_CpuCopy8
 .public _s32_div_f

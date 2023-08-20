@@ -69,13 +69,13 @@ static u8 ov84_0223F178(GAME_BOARD_WORK*, u8);
 static void ov84_0223F1BC(GAME_BOARD_WORK *work);
 static BOOL BattleArcadeGameBoard_CheckButtonPress(GAME_BOARD_WORK *work);
 static void ov84_0223F28C(GAME_BOARD_WORK *work);
-static void ov84_0223F2B4(GAME_BOARD_SUB_3E8 *work, PARTY *playerParty, PARTY *opponentParty, u8 type);
+static void ov84_0223F2B4(GAME_BOARD_SUB_3E8 *work, Party *playerParty, Party *opponentParty, u8 type);
 static Sprite *ov84_0223F374(GAME_BOARD_SUB_3E8 *work, u32 chara, u32 pal, u32 cell, u32 anim, u32 prio, int bgPrio, u8 display);
 static void ov84_0223F418(GAME_BOARD_SUB_3E8 *work);
 static void ov84_0223F480(void);
 static void ov84_0223F4B4(GAME_BOARD_SUB_3E8 *work);
 static void ov84_0223F538(GAME_BOARD_SUB_3E8 *work);
-static void ov84_0223F5E4(GAME_BOARD_SUB_3E8 *work, PARTY *playerParty, PARTY *opponentParty, u8 type);
+static void ov84_0223F5E4(GAME_BOARD_SUB_3E8 *work, Party *playerParty, Party *opponentParty, u8 type);
 static void ov84_0223F714(GAME_BOARD_SUB_3E8 *work);
 static BATTLE_ARCADE_OBJECT *BattleArcadeObject_Create(GAME_BOARD_SUB_3E8 *work, u32 chara, u32 pal, u32 cell, u32 anim, u16 x, u16 y, u32 priority, int bgPrio, u8 display);
 static void *BattleArcadeObj_Delete(BATTLE_ARCADE_OBJECT *obj);
@@ -592,8 +592,8 @@ static void BattleArcadeGameBoard_InitObjects(GAME_BOARD_WORK *work) {
         work->itemB[i] = BattleArcadeObject_Create(&work->unk3E8, 2, 2, 2, 0, 246, yOffset2 + i*40, 0, 2, 0);
         work->iconA[i] = BattleArcadeObject_Create(&work->unk3E8, 3 + i, 3, 3, 1, 16, yOffset + i*40, 1, 2, 0);
         work->iconB[i] = BattleArcadeObject_Create(&work->unk3E8, 7 + i, 3, 3, 1, 238, yOffset + i*40, 1, 2, 0);
-        ov84_0223F894(work->iconA[i], GetPartyMonByIndex(work->playerParty, i));
-        ov84_0223F894(work->iconB[i], GetPartyMonByIndex(work->opponentParty, i));
+        ov84_0223F894(work->iconA[i], Party_GetMonByIndex(work->playerParty, i));
+        ov84_0223F894(work->iconB[i], Party_GetMonByIndex(work->opponentParty, i));
         ov84_0223F8A8(work->iconA[i], 0);
         ov84_0223F8A8(work->iconB[i], 0);
     }
@@ -1166,7 +1166,7 @@ static void ov84_0223F1BC(GAME_BOARD_WORK *work) {
     opponentPartyCount = BattleArcade_GetOpponentMonCount(work->type, 1);
 
     for (i = 0; i < partyCount; i++) {
-        mon = GetPartyMonByIndex(work->playerParty, i);
+        mon = Party_GetMonByIndex(work->playerParty, i);
         if (GetMonData(mon, 6, NULL) == 0) {
             BattleArcadeObj_SetVisible(work->itemA[i], 0);
         } else {
@@ -1175,7 +1175,7 @@ static void ov84_0223F1BC(GAME_BOARD_WORK *work) {
     }
 
     for (i = 0; i < opponentPartyCount; i++) {
-        mon = GetPartyMonByIndex(work->opponentParty, i);
+        mon = Party_GetMonByIndex(work->opponentParty, i);
         if (GetMonData(mon, 6, NULL) == 0) {
             BattleArcadeObj_SetVisible(work->itemB[i], 0);
         } else {
@@ -1205,7 +1205,7 @@ static void ov84_0223F28C(GAME_BOARD_WORK *work) {
 
 extern u8 ov84_0223F9E4[4];
 
-static void ov84_0223F2B4(GAME_BOARD_SUB_3E8 *work, PARTY *playerParty, PARTY *opponentParty, u8 type) {
+static void ov84_0223F2B4(GAME_BOARD_SUB_3E8 *work, Party *playerParty, Party *opponentParty, u8 type) {
     int i;
 
     GF_CreateVramTransferManager(32, HEAP_ID_GAME_BOARD);
@@ -1322,7 +1322,7 @@ static void ov84_0223F538(GAME_BOARD_SUB_3E8 *work) {
     NARC_Delete(narc);
 }
 
-static void ov84_0223F5E4(GAME_BOARD_SUB_3E8 *work, PARTY *playerParty, PARTY *opponentParty, u8 type) {
+static void ov84_0223F5E4(GAME_BOARD_SUB_3E8 *work, Party *playerParty, Party *opponentParty, u8 type) {
     u32 i;
     Pokemon *playerMon;
     Pokemon *opponentMon;
@@ -1335,15 +1335,15 @@ static void ov84_0223F5E4(GAME_BOARD_SUB_3E8 *work, PARTY *playerParty, PARTY *o
     for (i = 0; i < 4; i++) {
         if (i == 3) {
             if (type == FALSE) {
-                playerMon = GetPartyMonByIndex(playerParty, 0);
-                opponentMon = GetPartyMonByIndex(opponentParty, 0);
+                playerMon = Party_GetMonByIndex(playerParty, 0);
+                opponentMon = Party_GetMonByIndex(opponentParty, 0);
             } else {
-                playerMon = GetPartyMonByIndex(playerParty, i);
-                opponentMon = GetPartyMonByIndex(opponentParty, i);
+                playerMon = Party_GetMonByIndex(playerParty, i);
+                opponentMon = Party_GetMonByIndex(opponentParty, i);
             }
         } else {
-            playerMon = GetPartyMonByIndex(playerParty, i);
-            opponentMon = GetPartyMonByIndex(opponentParty, i);
+            playerMon = Party_GetMonByIndex(playerParty, i);
+            opponentMon = Party_GetMonByIndex(opponentParty, i);
         }
 
         work->resourceObj[3 + i][0] = AddCharResObjFromOpenNarc(work->resourceMan[0], narc, Pokemon_GetIconNaix(playerMon), FALSE, 3 + i, 1, HEAP_ID_GAME_BOARD);

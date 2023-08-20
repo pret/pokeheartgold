@@ -4687,7 +4687,7 @@ ov03_022563F8: ; 0x022563F8
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r1, r0, #0
 	ldr r0, [r4, #0x10]
 	ldr r2, [r4, #0x6c]
@@ -5451,7 +5451,7 @@ ov03_02256A2C: ; 0x02256A2C
 	ldr r0, [r0, #0xc]
 	str r1, [sp, #0xc]
 	str r2, [sp, #0x10]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	add r6, r0, #0
 	mov r0, #0xb
 	bl sub_02074944
@@ -5460,7 +5460,7 @@ ov03_02256A2C: ; 0x02256A2C
 	cmp r0, #0xa
 	bne _02256A84
 	add r0, r6, #0
-	bl GetPartyCount
+	bl Party_GetCount
 	add r7, r0, #0
 	add r5, r7, #0
 	mov r4, #0
@@ -5469,7 +5469,7 @@ ov03_02256A2C: ; 0x02256A2C
 _02256A5C:
 	add r0, r6, #0
 	add r1, r4, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0x4c
 	mov r2, #0
 	bl GetMonData
@@ -9848,9 +9848,9 @@ ScrCmd_791: ; 0x02258C00
 	bl GetVarPointer
 	str r0, [sp]
 	ldr r0, [r4, #0xc]
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [sp, #4]
-	bl GetPartyCount
+	bl Party_GetCount
 	add r6, r0, #0
 	ldr r0, [r4, #0xc]
 	bl Save_PlayerData_GetProfileAddr
@@ -9869,7 +9869,7 @@ ScrCmd_791: ; 0x02258C00
 _02258C62:
 	ldr r0, [sp, #4]
 	add r1, r5, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0x4c
 	mov r2, #0
 	add r4, r0, #0

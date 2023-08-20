@@ -1129,7 +1129,7 @@ sub_0206B014: ; 0x0206B014
 	bl Save_PlayerData_GetProfileAddr
 	add r6, r0, #0
 	add r0, r7, #0
-	bl SaveArray_PlayerParty_Get
+	bl SaveArray_Party_Get
 	str r0, [sp, #8]
 	add r0, r5, #0
 	bl Photo_Init
@@ -1149,7 +1149,7 @@ sub_0206B014: ; 0x0206B014
 	orr r0, r2
 	str r0, [r5, #0x38]
 	ldr r0, [sp, #8]
-	bl GetPartyCount
+	bl Party_GetCount
 	str r0, [sp, #0xc]
 	add r0, r6, #0
 	bl PlayerProfile_GetNamePtr
@@ -1257,7 +1257,7 @@ _0206B128:
 _0206B13C:
 	ldr r0, [sp, #8]
 	add r1, r7, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0x4c
 	mov r2, #0
 	add r6, r0, #0

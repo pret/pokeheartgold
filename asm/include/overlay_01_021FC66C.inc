@@ -44,7 +44,7 @@
 .public FollowingPokemon_IsActive
 .public FsysUnkSub108_GetMonMood
 .public GetMonData
-.public SaveArray_PlayerParty_Get
+.public SaveArray_Party_Get
 .public Fsys_GetGearPhoneRingManager
 .public sub_02092FA8
 .public memset

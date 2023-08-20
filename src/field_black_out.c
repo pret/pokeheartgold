@@ -180,7 +180,7 @@ BOOL FieldTask_BlackOut(TaskManager *taskManager) {
         GetSpecialSpawnWarpData(deathSpawn, LocalFieldData_GetSpecialSpawnWarpPtr(localFieldData));
         sub_020537A8(taskManager, &deathWarp);
         Fsys_ClearFollowingTrainer(fsys);
-        HealParty(SaveArray_PlayerParty_Get(fsys->savedata));
+        HealParty(SaveArray_Party_Get(fsys->savedata));
         (*state)++;
         break;
     case 1:

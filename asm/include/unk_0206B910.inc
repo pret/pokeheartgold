@@ -30,9 +30,9 @@
 .public sub_020552A4
 .public sub_0206B910
 .public SetMonData
-.public GetPartyCount
-.public GetPartyMonByIndex
-.public SaveArray_PlayerParty_Get
+.public Party_GetCount
+.public Party_GetMonByIndex
+.public SaveArray_Party_Get
 .public Save_Bag_Get
 .public sub_0209106C
 .public MI_CpuFill8

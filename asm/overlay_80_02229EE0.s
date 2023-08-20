@@ -612,7 +612,7 @@ ov80_0222A3BC: ; 0x0222A3BC
 	bl ov80_0222A334
 	add r0, r5, #0
 	add r1, r4, #0
-	bl AddMonToParty
+	bl Party_AddMon
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov80_0222A3BC

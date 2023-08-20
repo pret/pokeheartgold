@@ -232,7 +232,7 @@ BOOL ScrCmd_588(ScriptContext *ctx) {
 
 BOOL ScrCmd_PartyCheckForDouble(ScriptContext *ctx) {
     u16 *doubleBattlePtr = ScriptGetVarPointer(ctx);
-    *doubleBattlePtr = HasEnoughAlivePokemonForDoubleBattle(SaveArray_PlayerParty_Get(ctx->fsys->savedata));
+    *doubleBattlePtr = HasEnoughAlivePokemonForDoubleBattle(SaveArray_Party_Get(ctx->fsys->savedata));
     return FALSE;
 }
 

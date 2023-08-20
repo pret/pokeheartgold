@@ -4349,7 +4349,7 @@ _02240114:
 	add r1, #8
 	ldrh r1, [r4, r1]
 	add r1, r1, #2
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	bl Mon_GetBoxMon
 	add r2, r0, #0
 	add r0, r4, #0
@@ -4360,7 +4360,7 @@ _02240114:
 	ldr r0, [r4, r1]
 	add r1, r1, #6
 	ldrh r1, [r4, r1]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	bl Mon_GetBoxMon
 	add r2, r0, #0
 	add r0, r4, #0
@@ -5445,7 +5445,7 @@ ov81_022409B0: ; 0x022409B0
 	bl FillWindowPixelBuffer
 	ldr r0, [sp, #0x4c]
 	add r1, r6, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r7, r0, #0
 	mov r0, #0xb
 	mov r1, #0x64
@@ -6267,7 +6267,7 @@ _02241062:
 	lsl r0, r0, #6
 	ldrh r1, [r7, r1]
 	ldr r0, [r5, r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #5
 	mov r2, #0
 	bl GetMonData
@@ -6296,7 +6296,7 @@ _0224109C:
 	lsl r0, r0, #6
 	ldrh r1, [r6, r1]
 	ldr r0, [r5, r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #0x6f
 	mov r2, #0
 	bl GetMonData
@@ -8011,7 +8011,7 @@ _02241E0A:
 	lsl r2, r2, #2
 	ldrh r1, [r1, r2]
 	ldr r0, [r5, r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	add r2, r0, #0
 	mov r0, #0x90
 	str r0, [sp]
@@ -8071,7 +8071,7 @@ ov81_02241E68: ; 0x02241E68
 	sub r0, #0xbc
 	ldr r0, [r5, r0]
 	add r1, r7, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r3, #0x50
 	add r2, r0, #0
 	mov r0, #0x90
@@ -8089,7 +8089,7 @@ _02241EB0:
 	sub r0, #0xbc
 	ldr r0, [r5, r0]
 	add r1, r7, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r3, #0x70
 	add r2, r0, #0
 	mov r0, #0x90
@@ -8128,7 +8128,7 @@ ov81_02241EDC: ; 0x02241EDC
 	sub r0, #0xb8
 	ldr r0, [r5, r0]
 	add r1, r7, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r3, #0x50
 	add r2, r0, #0
 	mov r0, #0x90
@@ -8146,7 +8146,7 @@ _02241F24:
 	sub r0, #0xb8
 	ldr r0, [r5, r0]
 	add r1, r7, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r3, #0x70
 	add r2, r0, #0
 	mov r0, #0x90
@@ -8561,7 +8561,7 @@ ov81_02242218: ; 0x02242218
 	bhs _022422FA
 	add r0, r4, #0
 	add r1, r6, #0
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #5
 	mov r2, #0
 	str r0, [sp, #0x1c]

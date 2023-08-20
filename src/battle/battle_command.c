@@ -1194,7 +1194,7 @@ BOOL BtlCmd_ShouldGetExp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         u16 totalExp;
         u16 itemNo;
         Pokemon *mon;
-        for (int i = 0; i < GetPartyCount(BattleSystem_GetParty(bsys, 0)); i++) {
+        for (int i = 0; i < Party_GetCount(BattleSystem_GetParty(bsys, 0)); i++) {
             mon = BattleSystem_GetPartyMon(bsys, 0, i);
             if (GetMonData(mon, MON_DATA_SPECIES, 0) && GetMonData(mon, MON_DATA_HP, 0)) {
                 if (ctx->unk_A4[(ctx->battlerIdFainted >> 1) & 1] & MaskOfFlagNo(i)) {
@@ -3131,7 +3131,7 @@ BOOL BtlCmd_TryWhirlwind(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     u32 battleType = BattleSystem_GetBattleType(bsys);
 
     if (battleType & BATTLE_TYPE_TRAINER) {
-        PARTY *party;
+        Party *party;
         Pokemon *mon;
         int partySize;
         int cnt = 0;
@@ -3166,7 +3166,7 @@ BOOL BtlCmd_TryWhirlwind(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         }
 
         for (monIndex = index0; monIndex < indexEnd; monIndex++) {
-            mon = GetPartyMonByIndex(party, monIndex);
+            mon = Party_GetMonByIndex(party, monIndex);
             if (GetMonData(mon, MON_DATA_SPECIES, 0) != SPECIES_NONE
              && !GetMonData(mon, MON_DATA_IS_EGG, 0)
              && GetMonData(mon, MON_DATA_HP, 0) != 0) {
@@ -3182,7 +3182,7 @@ BOOL BtlCmd_TryWhirlwind(BattleSystem *bsys, BATTLECONTEXT *ctx) {
                     monIndex = (BattleSystem_Random(bsys) % maxRand);
                     monIndex += index0;
                 } while (monIndex == monIndexA || monIndex == monIndexB);
-                mon = GetPartyMonByIndex(party, monIndex);
+                mon = Party_GetMonByIndex(party, monIndex);
             } while (GetMonData(mon, MON_DATA_SPECIES, 0) == SPECIES_NONE
                   || GetMonData(mon, MON_DATA_IS_EGG, 0) == TRUE
                   || GetMonData(mon, MON_DATA_HP, 0) == 0);
@@ -5509,13 +5509,13 @@ BOOL BtlCmd_CheckWhiteout(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     battlerId = GetBattlerIDBySide(bsys, ctx, side);
 
     if (battleType & BATTLE_TYPE_MULTI || (battleType & BATTLE_TYPE_INGAME_PARTNER && BattleSystem_GetFieldSide(bsys, battlerId))) {
-        PARTY *party1 = BattleSystem_GetParty(bsys, battlerId);
-        PARTY *party2 = BattleSystem_GetParty(bsys, BattleSystem_GetBattlerIdPartner(bsys, battlerId));
+        Party *party1 = BattleSystem_GetParty(bsys, battlerId);
+        Party *party2 = BattleSystem_GetParty(bsys, BattleSystem_GetBattlerIdPartner(bsys, battlerId));
 
         BattleSystem_GetOpponentData(bsys, battlerId);
 
-        for (i = 0; i < GetPartyCount(party1); i++) {
-            mon = GetPartyMonByIndex(party1, i);
+        for (i = 0; i < Party_GetCount(party1); i++) {
+            mon = Party_GetMonByIndex(party1, i);
             if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_NONE
              && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG) {
                 partyHp += GetMonData(mon, MON_DATA_HP, 0);
@@ -5524,8 +5524,8 @@ BOOL BtlCmd_CheckWhiteout(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
         if ((battleType == 75 || battleType == 74) && BattleSystem_GetFieldSide(bsys, battlerId) == 0 && ov12_0223AB0C(bsys, battlerId) == 2) {
 
-        } else for (i = 0; i < GetPartyCount(party2); i++) {
-            mon = GetPartyMonByIndex(party2, i);
+        } else for (i = 0; i < Party_GetCount(party2); i++) {
+            mon = Party_GetMonByIndex(party2, i);
             if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_NONE
              && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG) {
                 partyHp += GetMonData(mon, MON_DATA_HP, 0);
@@ -5536,12 +5536,12 @@ BOOL BtlCmd_CheckWhiteout(BattleSystem *bsys, BATTLECONTEXT *ctx) {
             BattleScriptIncrementPointer(ctx, adrs);
         }
     } else {
-        PARTY *party = BattleSystem_GetParty(bsys, battlerId);
+        Party *party = BattleSystem_GetParty(bsys, battlerId);
 
         BattleSystem_GetOpponentData(bsys, battlerId);
 
-        for (i = 0; i < GetPartyCount(party); i++) {
-            mon = GetPartyMonByIndex(party, i);
+        for (i = 0; i < Party_GetCount(party); i++) {
+            mon = Party_GetMonByIndex(party, i);
             if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_NONE
              && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG) {
                 partyHp += GetMonData(mon, MON_DATA_HP, 0);

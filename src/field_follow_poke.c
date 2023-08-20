@@ -1505,7 +1505,7 @@ static const u16 sFemaleFlagLUT[] = {
 
 LocalMapObject *sub_020699F8(MapObjectManager *mapObjectMan, int x, int y, int direction, u32 mapno) {
     FieldSystem *fsys;
-    PARTY *party;
+    Party *party;
     int partyCount;
     Pokemon *mon;
     int species;
@@ -1515,8 +1515,8 @@ LocalMapObject *sub_020699F8(MapObjectManager *mapObjectMan, int x, int y, int d
     int player_unk;
 
     fsys = MapObjectManager_GetFieldSysPtr(mapObjectMan);
-    party = SaveArray_PlayerParty_Get(fsys->savedata);
-    partyCount = GetPartyCount(party);
+    party = SaveArray_Party_Get(fsys->savedata);
+    partyCount = Party_GetCount(party);
     FsysFollowMonClear(&fsys->followMon);
     SavFollowPoke_SetUnused2bitField(0, Save_FollowPoke_Get(fsys->savedata));
     if (partyCount != 0) {
@@ -1560,7 +1560,7 @@ LocalMapObject *sub_020699F8(MapObjectManager *mapObjectMan, int x, int y, int d
 
 void sub_02069B74(MapObjectManager *mapObjectMan, u32 mapno) {
     FieldSystem *fsys;
-    PARTY *party;
+    Party *party;
     int partyCount;
     Pokemon *mon;
     int species;
@@ -1571,8 +1571,8 @@ void sub_02069B74(MapObjectManager *mapObjectMan, u32 mapno) {
     LocalMapObject *followPokeObj;
 
     fsys = MapObjectManager_GetFieldSysPtr(mapObjectMan);
-    party = SaveArray_PlayerParty_Get(fsys->savedata);
-    partyCount = GetPartyCount(party);
+    party = SaveArray_Party_Get(fsys->savedata);
+    partyCount = Party_GetCount(party);
     FsysFollowMonClear(&fsys->followMon);
     if (partyCount != 0) {
         mon = GetFirstAliveMonInParty_CrashIfNone(party);
@@ -1778,7 +1778,7 @@ BOOL FollowingPokemon_IsActive(FieldSystem *fsys) {
         return FALSE;
     }
 
-    if (CountAlivePokemon(SaveArray_PlayerParty_Get(fsys->savedata)) != 0) {
+    if (CountAlivePokemon(SaveArray_Party_Get(fsys->savedata)) != 0) {
         return TRUE;
     } else {
         return FALSE;

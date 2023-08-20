@@ -688,7 +688,7 @@ _0222FB42:
 	ldr r0, _0222FC04 ; =0x000004D4
 	add r1, r5, #0
 	ldr r0, [r4, r0]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	bl Mon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r6]

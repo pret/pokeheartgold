@@ -48,7 +48,7 @@ void NPCTradeApp_Delete(NPCTradeAppData *work) {
 }
 
 void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fsys, u8 tradeno, u8 level, u16 mapno) {
-    PARTY *party;
+    Party *party;
     Pokemon *mon;
     NPCTrade *trade_dat;
     Pokemon *kenya;
@@ -60,10 +60,10 @@ void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fsys, u8 tradeno, u8 level, u16 ma
     trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeno, FALSE, HEAP_ID_FIELD, TRUE);
     _CreateTradeMon(mon, trade_dat, level, tradeno, mapno, 7, HEAP_ID_FIELD);
     UpdatePokedexWithReceivedSpecies(fsys->savedata, mon);
-    party = SaveArray_PlayerParty_Get(fsys->savedata);
-    AddMonToParty(party, mon);
+    party = SaveArray_Party_Get(fsys->savedata);
+    Party_AddMon(party, mon);
     if (tradeno == 7) {
-        kenya = GetPartyMonByIndex(party, GetPartyCount(party) - 1);
+        kenya = Party_GetMonByIndex(party, Party_GetCount(party) - 1);
         name = _GetNpcTradeName(HEAP_ID_FIELD, tradeno + TRADE_MAX);
         mailno = ItemToMailId(trade_dat->heldItem);
         mail = CreateKenyaMail(mon, mailno, trade_dat->gender, name, trade_dat->otId);
@@ -95,14 +95,14 @@ Mail *NPCTrade_MakeKenyaMail(void) {
 }
 
 int NPCTrade_CanGiveUpLoanMon(FieldSystem *fsys, u8 tradeno, u8 idx) {
-    PARTY *party;
+    Party *party;
     Pokemon *mon, *cur_poke;
     u8 capsule;
     u16 heldItem;
     int i, n, party_count;
 
-    party = SaveArray_PlayerParty_Get(fsys->savedata);
-    mon = GetPartyMonByIndex(party, idx);
+    party = SaveArray_Party_Get(fsys->savedata);
+    mon = Party_GetMonByIndex(party, idx);
     if (!MonIsInGameTradePoke(mon, tradeno)) {
         return 1;
     }
@@ -113,9 +113,9 @@ int NPCTrade_CanGiveUpLoanMon(FieldSystem *fsys, u8 tradeno, u8 idx) {
     }
 
     n = 0;
-    party_count = GetPartyCount(party);
+    party_count = Party_GetCount(party);
     for (i = 0; i < party_count; i++) {
-        cur_poke = GetPartyMonByIndex(party, i);
+        cur_poke = Party_GetMonByIndex(party, i);
         if (GetMonData(cur_poke, MON_DATA_CHECKSUM_FAILED, NULL) != TRUE && GetMonData(cur_poke, MON_DATA_HP, NULL) != 0 && !GetMonData(cur_poke, MON_DATA_IS_EGG, NULL)) {
             n++;
         }
@@ -145,7 +145,7 @@ int NPCTradeApp_GetUnusedFlag(NPCTradeAppData *work) {
 }
 
 void NPCTrade_ReceiveMonToSlot(FieldSystem *fsys, NPCTradeAppData *work, int slot) {
-    Party_SafeCopyMonToSlot_ResetUnkSub(SaveArray_PlayerParty_Get(fsys->savedata), slot, work->mon);
+    Party_SafeCopyMonToSlot_ResetUnkSub(SaveArray_Party_Get(fsys->savedata), slot, work->mon);
     UpdatePokedexWithReceivedSpecies(fsys->savedata, work->mon);
 }
 
@@ -153,7 +153,7 @@ void NPCTrade_CreateTradeAnim(FieldSystem *fsys, NPCTradeAppData *work, int slot
     Pokemon *my_poke;
     u32 time_of_day;
 
-    my_poke = GetPartyMonByIndex(SaveArray_PlayerParty_Get(fsys->savedata), slot);
+    my_poke = Party_GetMonByIndex(SaveArray_Party_Get(fsys->savedata), slot);
     _CreateTradeMon(work->mon, work->trade_dat, GetMonData(my_poke, MON_DATA_LEVEL, NULL), work->tradeno, fsys->location->mapId, 1, work->heapId);
     CopyPokemonToPokemon(my_poke, my_mon_buf);
     CopyPokemonToPokemon(work->mon, trade_mon_buf);

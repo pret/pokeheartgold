@@ -252,11 +252,11 @@
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx
 .public sub_02074490
-.public AddMonToParty
-.public RemoveMonFromParty
-.public GetPartyCount
-.public GetPartyMonByIndex
-.public PartyHasMon
+.public Party_AddMon
+.public Party_RemoveMon
+.public Party_GetCount
+.public Party_GetMonByIndex
+.public Party_HasMon
 .public sub_02075A7C
 .public sub_02075D3C
 .public sub_02075D4C

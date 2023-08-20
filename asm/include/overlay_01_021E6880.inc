@@ -150,9 +150,9 @@
 .public HandleDaycareStep
 .public FieldSys_BugContest_Get
 .public MonApplyFriendshipMod
-.public GetPartyCount
-.public GetPartyMonByIndex
-.public SaveArray_PlayerParty_Get
+.public Party_GetCount
+.public Party_GetMonByIndex
+.public SaveArray_Party_Get
 .public Fsys_GetGearPhoneRingManager
 .public sub_02092E14
 .public ov01_021E5924

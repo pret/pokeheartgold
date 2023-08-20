@@ -1401,7 +1401,7 @@ ov12_022463E8: ; 0x022463E8
 	add r7, r0, #0
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
-	bl GetPartyMonByIndex
+	bl Party_GetMonByIndex
 	mov r1, #6
 	add r2, r4, #0
 	str r0, [sp, #0x14]
@@ -2708,7 +2708,7 @@ _02246F0C:
 _02246F14:
 	ldr r0, [sp, #0x28]
 	add r1, r6, #0
-	bl AddMonToParty
+	bl Party_AddMon
 	cmp r0, #1
 	bne _02246F5E
 	ldr r0, [r4, #0x28]
