@@ -2,8 +2,17 @@
 #include "battle_setup.h"
 #include "system.h"
 #include "gf_rtc.h"
+#include "msgdata.h"
+#include "msgdata/msg/msg_0445.h"
 #include "unk_02035900.h"
+#include "unk_02055418.h"
 #include "constants/battle.h"
+
+void BattleSetup_SetParty(BATTLE_SETUP* setup, PARTY* party, int battlerId);
+void BattleSetup_SetProfile(BATTLE_SETUP* setup, PlayerProfile* profile, int battlerId);
+void BattleSetup_SetChatotVoiceClip(BATTLE_SETUP* setup, SOUND_CHATOT* chatot, int battlerId);
+void sub_02052504(BATTLE_SETUP* setup, FieldSystem* fsys);
+void sub_02052580(BATTLE_SETUP* setup);
 
 BATTLE_SETUP* BattleSetup_New(HeapID heapId, u32 battleTypeFlags) {
     int i;
@@ -36,7 +45,7 @@ BATTLE_SETUP* BattleSetup_New(HeapID heapId, u32 battleTypeFlags) {
     setup->unk1B8 = NULL;
     setup->safariBalls = 0;
     setup->unk_12C = NULL;
-    setup->unk_144 = NULL;
+    setup->gameStats = NULL;
     setup->unk_194 = NULL;
     setup->bugContestMon = AllocMonZeroed(heapId);
 
@@ -79,4 +88,87 @@ BATTLE_SETUP* BattleSetup_New_PalPark(HeapID heapId, int balls) {
     BATTLE_SETUP* setup = BattleSetup_New(heapId, BATTLE_TYPE_PAL_PARK);
     setup->safariBalls = balls;
     return setup;
+}
+
+BATTLE_SETUP* BattleSetup_New_Tutorial(HeapID heapId, FieldSystem* fsys) {
+    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(fsys->savedata);
+    OPTIONS* options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
+    BATTLE_SETUP* setup = BattleSetup_New(heapId, BATTLE_TYPE_TUTORIAL);
+    setup->saveData = fsys->savedata;
+    {
+    MsgData* msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0445_bin, heapId);
+    {
+    String* name = String_New(PLAYER_NAME_LENGTH + 1, heapId);
+    ReadMsgDataIntoString(msgData, PlayerProfile_GetTrainerGender(profile) ^ 1, name);
+    Save_Profile_PlayerName_Set(setup->profile[0], String_cstr(name));
+    String_Delete(name);
+    }
+    DestroyMsgData(msgData);
+    }
+    PlayerProfile_SetTrainerGender(setup->profile[0], PlayerProfile_GetTrainerGender(profile) ^ 1);
+    sub_02052504(setup, fsys);
+    Options_Copy(options, setup->options);
+    setup->unk_15C = Field_GetTimeOfDay(fsys);
+    Bag_AddItem(setup->bag, ITEM_POKE_BALL, 20, heapId);
+    {
+    Pokemon* pokemon = AllocMonZeroed(heapId);
+    CreateMon(pokemon, SPECIES_MARILL, 5, 32, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
+    AddMonToParty(setup->party[0], pokemon);
+    CreateMon(pokemon, SPECIES_RATTATA, 2, 32, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
+    AddMonToParty(setup->party[1], pokemon);
+    FreeToHeap(pokemon);
+    }
+    setup->unk1CC[0] = 0;
+    setup->unk_114 = GetStoragePCPointer(fsys->savedata);
+    setup->unk_10C = fsys->unk94;
+    setup->unk1B8 = NULL;
+    setup->gameStats = Save_GameStats_Get(fsys->savedata);
+    setup->unk_158 = fsys->location->mapId;
+    sub_02052580(setup);
+    return setup;
+}
+
+void BattleSetup_Delete(BATTLE_SETUP* setup) {
+    int i;
+
+    for (i = 0; i < 4; ++i) {
+        GF_ASSERT(setup->party[i] != NULL);
+        FreeToHeap(setup->party[i]);
+    }
+    
+    for (i = 0; i < 4; ++i) {
+        GF_ASSERT(setup->profile[i] != NULL);
+        FreeToHeap(setup->profile[i]);
+    }
+    
+    for (i = 0; i < 4; ++i) {
+        GF_ASSERT(setup->chatot[i] != NULL);
+        FreeToHeap(setup->chatot[i]);
+    }
+    
+    FreeToHeap(setup->bag);
+    FreeToHeap(setup->pokedex);
+    FreeToHeap(setup->options);
+    sub_02067A78(setup->unk_134);
+    FreeToHeap(setup->bugContestMon);
+    FreeToHeap(setup);
+}
+
+void BattleSetup_AddMonToParty(BATTLE_SETUP* setup, Pokemon* mon, int battlerId) {
+    GF_ASSERT(battlerId < 4);
+    GF_ASSERT(AddMonToParty(setup->party[battlerId], mon));
+}
+
+void BattleSetup_SetParty(BATTLE_SETUP* setup, PARTY* party, int battlerId) {
+    GF_ASSERT(battlerId < 4);
+    Party_Copy(party, setup->party[battlerId]);
+}
+
+void BattleSetup_SetProfile(BATTLE_SETUP* setup, PlayerProfile* profile, int battlerId) {
+    GF_ASSERT(battlerId < 4);
+    PlayerProfile_Copy(profile, setup->profile[battlerId]);
+}
+
+void BattleSetup_SetChatotVoiceClip(BATTLE_SETUP* setup, SOUND_CHATOT* chatot, int battlerId) {
+    Chatot_Copy(setup->chatot[battlerId], chatot);
 }
