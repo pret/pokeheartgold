@@ -11,6 +11,8 @@
 #include "unk_0200FA24.h"
 #include "unk_02005D10.h"
 
+static u8 ov12_0223BFB0(u8 *buffer, u8 *index, u16 *size);
+
 BgConfig *BattleSystem_GetBgConfig(BattleSystem *bsys) {
     return bsys->bgConfig;
 }
@@ -1098,7 +1100,7 @@ void ov12_0223BDDC(BattleSystem *bsys, int battlerId, u8 data) {
 
 BOOL ov12_0223BE0C(BattleSystem *bsys, int battlerId, u8 *data) {
     BOOL ret;
-    *data = -1;
+    *data = 0xFF;
     if ((bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) && (bsys->unk245C[battlerId] < 1024)) {
         *data = sub_0203027C(battlerId, bsys->unk245C[battlerId]);
         bsys->unk245C[battlerId]++;
@@ -1129,8 +1131,6 @@ u8 ov12_0223BE68(BattleSystem *bsys, u8 *buffer) {
     
     return index;
 }
-
-static u8 ov12_0223BFB0(u8 *buffer, u8 *index, u16 *size);
 
 void ov12_0223BF14(BattleSystem *bsys, u16 size, u8 *buffer) {
     int i;

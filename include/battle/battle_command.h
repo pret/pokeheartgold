@@ -234,8 +234,8 @@ BOOL BtlCmd_222(BattleSystem *bsys, BattleContext *ctx);
 BOOL BtlCmd_223(BattleSystem *bsys, BattleContext *ctx);
 BOOL BtlCmd_EndScript(BattleSystem *bsys, BattleContext *ctx);
 int BattleScriptReadWord(BattleContext *ctx);
-void InitBattleMsgData(BattleContext *ctx, BattleMessageDATA *msgdata);
-void InitBattleMsg(BattleSystem *bsys, BattleContext *ctx, BattleMessageDATA *msgdata, BattleMessage *msg);
+void InitBattleMsgData(BattleContext *ctx, BattleMessageData *msgdata);
+void InitBattleMsg(BattleSystem *bsys, BattleContext *ctx, BattleMessageData *msgdata, BattleMessage *msg);
 void UpdateFrienshipFainted(BattleSystem *bsys, BattleContext *ctx, int battlerId);
 int GetMoveMessageNo(BattleContext *ctx, int move);
 

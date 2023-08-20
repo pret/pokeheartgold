@@ -30,13 +30,13 @@ typedef struct BattleMessage {
     int battlerId;
 } BattleMessage;
 
-typedef struct BattleMessageDATA {
+typedef struct BattleMessageData {
     u8 unk0;
     u8 unk1;
     u16 unk2;
     int unk4[6];
     int unk1C;
-} BattleMessageDATA;
+} BattleMessageData;
 
 typedef struct GetterWork GetterWork;
 

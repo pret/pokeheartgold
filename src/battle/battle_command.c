@@ -772,7 +772,7 @@ BOOL BtlCmd_PrintAttackMessage(BattleSystem *bsys, BattleContext *ctx) {
 }
 
 BOOL BtlCmd_PrintMessage(BattleSystem *bsys, BattleContext *ctx) {
-    BattleMessageDATA msgdata;
+    BattleMessageData msgdata;
     BattleMessage msg;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -785,7 +785,7 @@ BOOL BtlCmd_PrintMessage(BattleSystem *bsys, BattleContext *ctx) {
 }
 
 BOOL BtlCmd_PrintMessage2(BattleSystem *bsys, BattleContext *ctx) {
-    BattleMessageDATA msgdata;
+    BattleMessageData msgdata;
     BattleMessage msg;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -807,7 +807,7 @@ BOOL BtlCmd_PrintBufferedMessage(BattleSystem *bsys, BattleContext *ctx) {
 }
 
 BOOL BtlCmd_BufferMessage(BattleSystem *bsys, BattleContext *ctx) {
-    BattleMessageDATA msgdata;
+    BattleMessageData msgdata;
 
     BattleScriptIncrementPointer(ctx, 1);
 
@@ -818,7 +818,7 @@ BOOL BtlCmd_BufferMessage(BattleSystem *bsys, BattleContext *ctx) {
 }
 
 BOOL BtlCmd_BufferMessageSide(BattleSystem *bsys, BattleContext *ctx) {
-    BattleMessageDATA msgdata;
+    BattleMessageData msgdata;
     BattleMessage msg;
 
     BattleScriptIncrementPointer(ctx, 1);

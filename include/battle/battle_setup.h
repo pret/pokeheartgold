@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_BattleSetup_H
-#define POKEHEARTGOLD_BattleSetup_H
+#ifndef POKEHEARTGOLD_BATTLE_SETUP_H
+#define POKEHEARTGOLD_BATTLE_SETUP_H
 
 #include "field_system.h"
 #include "party.h"
@@ -78,4 +78,4 @@ void sub_020520B0(BattleSetup *setup, FieldSystem *fsys, Party *party, void *a4)
 BattleSetup* BattleSetup_New_PalPark(HeapID heapId, int monsRemaining);
 void BattleSetup_AddMonToParty(BattleSetup* setup, Pokemon* mon, int battler);
 
-#endif //POKEHEARTGOLD_BattleSetup_H
+#endif //POKEHEARTGOLD_BATTLE_SETUP_H
