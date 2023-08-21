@@ -1,5 +1,5 @@
 #include "global.h"
-#include "battle_cursor.h"
+#include "battle/battle_cursor.h"
 #include "unk_0200CF18.h"
 
 static void BattleCursor_Update(SysTask *task, void *data);

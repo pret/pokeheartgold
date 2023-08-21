@@ -17,7 +17,7 @@
 .public sub_02003B44
 .public sub_02003B50
 .public sub_02003D5C
-.public sub_020059D0
+.public Sound_SetMasterVolume
 .public sub_02005BEC
 .public PlaySE
 .public StopSE

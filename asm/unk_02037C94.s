@@ -4017,7 +4017,7 @@ _02039A36:
 	bl sub_020399B8
 	cmp r0, #0
 	bne _02039A98
-	bl sub_02005FA0
+	bl Sound_Stop
 	ldr r0, _02039A9C ; =_021D4150
 	ldr r0, [r0]
 	ldr r0, [r0, #0x28]

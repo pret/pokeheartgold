@@ -1,9 +1,9 @@
 #include "global.h"
-#include "battle_controller_player.h"
-#include "battle_controller.h"
-#include "battle_controller_opponent.h"
-#include "battle_system.h"
-#include "overlay_12_0224E4FC.h"
+#include "battle/battle_controller_player.h"
+#include "battle/battle_controller.h"
+#include "battle/battle_controller_opponent.h"
+#include "battle/battle_system.h"
+#include "battle/overlay_12_0224E4FC.h"
 #include "heap.h"
 #include "constants/abilities.h"
 #include "constants/items.h"
@@ -11,9 +11,9 @@
 
 extern ControllerFunction sPlayerBattleCommands[];
 
-BATTLECONTEXT *BattleContext_New(BattleSystem *bsys) {
-    BATTLECONTEXT *ctx = (BATTLECONTEXT *) AllocFromHeap(HEAP_ID_BATTLE, sizeof(BATTLECONTEXT));
-    MIi_CpuClearFast(0, (u32 *)ctx, sizeof(BATTLECONTEXT));
+BattleContext *BattleContext_New(BattleSystem *bsys) {
+    BattleContext *ctx = (BattleContext *) AllocFromHeap(HEAP_ID_BATTLE, sizeof(BattleContext));
+    MIi_CpuClearFast(0, (u32 *)ctx, sizeof(BattleContext));
     
     BattleContext_Init(ctx);
     ov12_02251038(bsys, ctx);
@@ -24,7 +24,7 @@ BATTLECONTEXT *BattleContext_New(BattleSystem *bsys) {
     return ctx;
 }
 
-BOOL BattleMain(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BattleMain(BattleSystem *bsys, BattleContext *ctx) {
     if (!ctx->battleEndFlag) {
         if (BattleSystem_GetBattleOutcomeFlags(bsys) && !(BattleSystem_GetBattleOutcomeFlags(bsys) & 0x40)) {
             ctx->command = CONTROLLER_COMMAND_42;
@@ -38,18 +38,18 @@ BOOL BattleMain(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-void BattleContext_Delete(BATTLECONTEXT *ctx) {
+void BattleContext_Delete(BattleContext *ctx) {
     FreeToHeap(ctx->unk_334.itemData);
     FreeToHeap(ctx);
 }
 
-void BattleSystem_CheckMoveHitEffect(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerIdAttacker, int battlerIdTarget, int moveNo) {
+void BattleSystem_CheckMoveHitEffect(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int moveNo) {
     BattleSystem_CheckMoveHit(bsys, ctx, battlerIdAttacker, battlerIdTarget, moveNo);
     BattleSystem_CheckMoveEffect(bsys, ctx, battlerIdAttacker, battlerIdTarget, moveNo);
 }
 
 //static
-void BattleControllerPlayer_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+void BattleControllerPlayer_GetBattleMon(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     
@@ -62,14 +62,14 @@ void BattleControllerPlayer_GetBattleMon(BattleSystem *bsys, BATTLECONTEXT *ctx)
 }
 
 //static
-void BattleControllerPlayer_StartEncounter(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+void BattleControllerPlayer_StartEncounter(BattleSystem *bsys, BattleContext *ctx) {
     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 0);
     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
     ctx->commandNext = CONTROLLER_COMMAND_TRAINER_MESSAGE;
 }
 
 //static
-void BattleControllerPlayer_TrainerMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+void BattleControllerPlayer_TrainerMessage(BattleSystem *bsys, BattleContext *ctx) {
     if (CheckTrainerMessage(bsys, ctx)) {
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 41);
         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
@@ -82,7 +82,7 @@ void BattleControllerPlayer_TrainerMessage(BattleSystem *bsys, BATTLECONTEXT *ct
 }
 
 //static
-void BattleControllerPlayer_PokemonAppear(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+void BattleControllerPlayer_PokemonAppear(BattleSystem *bsys, BattleContext *ctx) {
     int script = TryAbilityOnEntry(bsys, ctx);
     
     if (script) {
@@ -97,7 +97,7 @@ void BattleControllerPlayer_PokemonAppear(BattleSystem *bsys, BATTLECONTEXT *ctx
 }
 
 //static
-void BattleControllerPlayer_SelectionScreenInit(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+void BattleControllerPlayer_SelectionScreenInit(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     
@@ -135,12 +135,12 @@ typedef enum BattleSelectState {
 } BattleSelectState;
 
 //static
-void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
     int battlersMax; 
     int var;
     s32 battleType;
-    BATTLEMSG msg;
+    BattleMessage msg;
 
     battlersMax = BattleSystem_GetMaxBattlers(bsys);
     battleType = BattleSystem_GetBattleType(bsys);
@@ -503,7 +503,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BATTLECONTE
 }
 
 //static
-void ov12_02249190(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+void ov12_02249190(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
     int maxBattlers;
     u32 battleType;
@@ -588,7 +588,7 @@ void ov12_02249190(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 //static
-void ov12_0224930C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+void ov12_0224930C(BattleSystem *bsys, BattleContext *ctx) {
     int flag = 0;
     int battlerId;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
@@ -643,7 +643,7 @@ void ov12_0224930C(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 //static
-void ov12_02249460(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+void ov12_02249460(BattleSystem *bsys, BattleContext *ctx) {
     int maxBattlers;
     int battlerId;
     
@@ -688,7 +688,7 @@ typedef enum UpdateFieldConditionState {
 } UpdateFieldConditionState;
 
 //static 
-void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleContext *ctx) {
     int flag = 0;
     int side;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
@@ -1040,7 +1040,7 @@ typedef enum UpdateMonConditionState {
 } UpdateMonConditionState;
 
 //static
-void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext *ctx) {
     int i;
     u8 flag = 0;
     int maxBattlers;
@@ -1440,7 +1440,7 @@ typedef enum UpdateFieldConditionExtraState {
 //Future sight and doom desire are here due to mons being able to faint simulataneously, which means exp shouldn't be awarded like when a mon faints due to burn
 //Trick room is here due to every other update function being reliant on turn order, meaning it must be updated last
 //static
-void BattleControllerPlayer_UpdateFieldConditionExtra(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+void BattleControllerPlayer_UpdateFieldConditionExtra(BattleSystem *bsys, BattleContext *ctx) {
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     int battlerId;
     
@@ -1528,7 +1528,7 @@ void BattleControllerPlayer_UpdateFieldConditionExtra(BattleSystem *bsys, BATTLE
 }
 
 //static
-void BattleControllerPlayer_TurnEnd(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+void BattleControllerPlayer_TurnEnd(BattleSystem *bsys, BattleContext *ctx) {
     if (ov12_0224DD18(ctx, ctx->command, ctx->command) == TRUE) {
         return;
     }
@@ -1550,7 +1550,7 @@ void BattleControllerPlayer_TurnEnd(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 //static
-void BattleControllerPlayer_FightInput(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+void BattleControllerPlayer_FightInput(BattleSystem *bsys, BattleContext *ctx) {
     int flag = 0;
     
     ctx->battlerIdAttacker = ctx->unk_21E8[ctx->unk_EC];
@@ -1584,7 +1584,7 @@ void BattleControllerPlayer_FightInput(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 //static
-void BattleControllerPlayer_ItemInput(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+void BattleControllerPlayer_ItemInput(BattleSystem *bsys, BattleContext *ctx) {
     BattleItem *item;
     int script;
     
@@ -1646,7 +1646,7 @@ void BattleControllerPlayer_ItemInput(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 //static
-void BattleControllerPlayer_PokemonInput(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+void BattleControllerPlayer_PokemonInput(BattleSystem *bsys, BattleContext *ctx) {
     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 9);
     ctx->battlerIdAttacker = ctx->unk_21E8[ctx->unk_EC];
     ctx->battlerIdSwitch = ctx->battlerIdAttacker;
@@ -1657,7 +1657,7 @@ void BattleControllerPlayer_PokemonInput(BattleSystem *bsys, BATTLECONTEXT *ctx)
 }
 
 //static
-void BattleControllerPlayer_RunInput(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+void BattleControllerPlayer_RunInput(BattleSystem *bsys, BattleContext *ctx) {
     ctx->battlerIdAttacker = ctx->unk_21E8[ctx->unk_EC];
     
     if (BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker) && !(BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_LINK)) {
@@ -1688,7 +1688,7 @@ void BattleControllerPlayer_RunInput(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 //static
-void BattleControllerPlayer_SafariBallInput(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+void BattleControllerPlayer_SafariBallInput(BattleSystem *bsys, BattleContext *ctx) {
     int cnt;
     
     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 275);

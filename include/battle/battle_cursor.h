@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_BATTLE_CURSOR_H
 #define POKEHEARTGOLD_BATTLE_CURSOR_H
 
-#include "battle.h"
+#include "battle/battle.h"
 #include "unk_0200E320.h"
 
 typedef struct BattleCursor {

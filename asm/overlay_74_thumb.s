@@ -3518,20 +3518,20 @@ _02228BE6:
 	bl sub_02027098
 	pop {r3, pc}
 _02228BEE:
-	bl sub_02005FA0
+	bl Sound_Stop
 	mov r0, #0
 	ldr r1, _02228C44 ; =gApp_MainMenu_SelectOption_NintendoWFCSetup
 	mvn r0, r0
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228BFE:
-	bl sub_02005FA0
+	bl Sound_Stop
 	ldr r0, _02228C48 ; =FS_OVERLAY_ID(OVY_112)
 	ldr r1, _02228C4C ; =ov112_App_MainMenu_SelectOption_ConnectToPokewalker
 	bl RegisterMainOverlay
 	pop {r3, pc}
 _02228C0C:
-	bl sub_02005FA0
+	bl Sound_Stop
 	ldr r0, _02228C50 ; =FS_OVERLAY_ID(OVY_75)
 	ldr r1, _02228C54 ; =ov75_App_MainMenu_SelectOption_WiiMessageSettings
 	bl RegisterMainOverlay

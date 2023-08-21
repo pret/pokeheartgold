@@ -17,7 +17,7 @@ typedef struct UnkStruct_02004A44_0 {
 void sub_02004B10(void);
 void GF_SndHandleMoveVolume(int, int, int);
 
-void sub_020059D0(int a0);
+void Sound_SetMasterVolume(int a0);
 void sub_02005D00(void);
 void GF_MicPauseOnLidClose(void);
 void GF_MicResumeOnLidOpen(void);

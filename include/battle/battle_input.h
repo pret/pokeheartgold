@@ -1,9 +1,9 @@
 #ifndef POKEHEARTGOLD_BATTLE_INPUT_H
 #define POKEHEARTGOLD_BATTLE_INPUT_H
 
-#include "battle_system.h"
-#include "battle_cursor.h"
-#include "battle_finger.h"
+#include "battle/battle_system.h"
+#include "battle/battle_cursor.h"
+#include "battle/battle_finger.h"
 #include "bg_window.h"
 #include "unk_0200E320.h"
 

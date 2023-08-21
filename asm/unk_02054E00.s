@@ -166,7 +166,7 @@ _02054F00:
 	thumb_func_start sub_02054F14
 sub_02054F14: ; 0x02054F14
 	push {r3, lr}
-	bl sub_02005FA0
+	bl Sound_Stop
 	bl sub_020053F0
 	mov r0, #0
 	bl sub_02004AD8

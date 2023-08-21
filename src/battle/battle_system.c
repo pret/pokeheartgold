@@ -1,11 +1,17 @@
 #include "global.h"
 #include "battle/battle_hp_bar.h"
-#include "battle_controller_opponent.h"
-#include "battle_system.h"
+#include "battle/battle_controller_opponent.h"
+#include "battle/battle_system.h"
 #include "party.h"
 #include "pokemon_mood.h"
-#include "overlay_12_0224E4FC.h"
+#include "battle/overlay_12_0224E4FC.h"
+#include "battle/overlay_12_0226BEC4.h"
 #include "constants/game_stat.h"
+#include "unk_0202FBCC.h"
+#include "unk_0200FA24.h"
+#include "unk_02005D10.h"
+
+static u8 ov12_0223BFB0(u8 *buffer, u8 *index, u16 *size);
 
 BgConfig *BattleSystem_GetBgConfig(BattleSystem *bsys) {
     return bsys->bgConfig;
@@ -19,7 +25,7 @@ u32 BattleSystem_GetBattleType(BattleSystem *bsys) {
     return bsys->battleType;
 }
 
-BATTLECONTEXT *BattleSystem_GetBattleContext(BattleSystem *bsys) {
+BattleContext *BattleSystem_GetBattleContext(BattleSystem *bsys) {
     return bsys->ctx;
 }
 
@@ -296,7 +302,7 @@ int ov12_0223ABB8(BattleSystem *bsys, int battlerId, int side) {
 }
 
 BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedMonIndex, int movePos, int item) {
-    BATTLECONTEXT *ctx = bsys->ctx;
+    BattleContext *ctx = bsys->ctx;
     Pokemon *mon;
     BOOL ret = FALSE;
     int data;
@@ -660,7 +666,7 @@ u8 ov12_0223B580(BattleSystem *bsys, int battlerId, u8 a2) {
     return 0;
 }
 
-u16 BattleSystem_CheckEvolution(BATTLE_SETUP *setup, int *selectedMonIndex, int *evolutionCondition) {
+u16 BattleSystem_CheckEvolution(BattleSetup *setup, int *selectedMonIndex, int *evolutionCondition) {
     Pokemon *mon;
     u16 species = 0;
     
@@ -1083,4 +1089,217 @@ u32 BattleSystem_GetRandTemp(BattleSystem *bsys) {
 
 void BattleSystem_SetRandTemp(BattleSystem *bsys, u32 temp) {
     bsys->randTemp = temp;
+}
+
+void ov12_0223BDDC(BattleSystem *bsys, int battlerId, u8 data) {
+    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) && bsys->unk245C[battlerId] < 1024) {
+        sub_02030260(battlerId, bsys->unk245C[battlerId], data);
+        bsys->unk245C[battlerId]++;
+    }
+}
+
+BOOL ov12_0223BE0C(BattleSystem *bsys, int battlerId, u8 *data) {
+    BOOL ret;
+    *data = 0xFF;
+    if ((bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) && (bsys->unk245C[battlerId] < 1024)) {
+        *data = sub_0203027C(battlerId, bsys->unk245C[battlerId]);
+        bsys->unk245C[battlerId]++;
+        ret = FALSE;
+    } else if ((bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) && bsys->unk245C[battlerId] >= 1024) {
+        ret = TRUE;
+    }
+    return ret;
+}
+
+u8 ov12_0223BE68(BattleSystem *bsys, u8 *buffer) {
+    u8 i;
+    u8 battlerId;
+    u8 index = 0;
+    
+    for (battlerId = 0; battlerId < bsys->maxBattlers; battlerId++) {
+        if (bsys->unk245C[battlerId] != bsys->unk244C[battlerId]) {
+            buffer[index++] = battlerId;
+            buffer[index++] = bsys->unk245C[battlerId] - bsys->unk244C[battlerId];
+            for (i = 0; i < bsys->unk245C[battlerId] - bsys->unk244C[battlerId]; i++) {
+                buffer[index++] = sub_0203027C(battlerId, bsys->unk244C[battlerId] + i);
+            }
+            bsys->unk244C[battlerId] = bsys->unk245C[battlerId];
+        }
+    }
+    
+    GF_ASSERT(index <= 28);
+    
+    return index;
+}
+
+void ov12_0223BF14(BattleSystem *bsys, u16 size, u8 *buffer) {
+    int i;
+    u8 battlerId;
+    u8 byte;
+    u8 index = 0;
+    
+    if (!(bsys->battleType & BATTLE_TYPE_LINK)) {
+        return;
+    }
+    
+    if (bsys->unk23FC) {
+        return;
+    }
+    
+    while (size) {
+        battlerId = ov12_0223BFB0(buffer, &index, &size);
+        byte = ov12_0223BFB0(buffer, &index, &size);
+        for (i = 0; i < byte; i++) {
+            sub_02030260(battlerId, bsys->unk2454[battlerId] + i, ov12_0223BFB0(buffer, &index, &size));
+        }
+        bsys->unk2454[battlerId] += byte;
+    }
+}
+
+static u8 ov12_0223BFB0(u8 *buffer, u8 *index, u16 *size) {
+    (*size)--;
+    return buffer[(*index)++];
+}
+
+u16 ov12_0223BFC0(BattleSystem *bsys) {
+    return bsys->unk2446;
+}
+
+int ov12_0223BFCC(BattleSystem *bsys, u16 battlerId) {
+    return bsys->unk2464[battlerId];
+}
+
+u16 BattleSystem_GetTrainerItem(BattleSystem *bsys, int battlerId, int index) {
+    return bsys->trainers[battlerId].items[index];
+}
+
+BOOL ov12_0223BFEC(BattleSystem *bsys) {
+    return bsys->unk2474_0;
+}
+
+void ov12_0223BFFC(BattleSystem *bsys, u32 flag) {
+    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) || 
+        bsys->unk2474_0 ||
+        ov12_022581D4(bsys, bsys->ctx, 13, 0) == 44 ||
+        ov12_022581D4(bsys, bsys->ctx, 14, 0) == 44) {
+        return;
+    }
+    
+    ov12_0226AA8C(bsys->unk19C, flag);
+    BeginNormalPaletteFade(3, 0, 0, 0, 16, 2, HEAP_ID_BATTLE);
+    Sound_Stop();
+    Sound_SetMasterVolume(0);
+    bsys->unk2474_0 = TRUE;
+}
+
+BOOL ov12_0223C080(BattleSystem *bsys) {
+    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) || 
+        bsys->unk2474_0 ||
+        ov12_022581D4(bsys, bsys->ctx, 13, 0) == 44 ||
+        ov12_022581D4(bsys, bsys->ctx, 14, 0) == 44) {
+        return FALSE;
+    }
+    return TRUE;
+}
+
+void ov12_0223C0C4(BattleSystem *bsys) {
+    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) || bsys->unk247C) {
+        return;
+    }
+    bsys->unk247C = ov12_0226BEC4(bsys);
+}
+
+u8 BattleSystem_GetChatotVoiceParam(BattleSystem *bsys, int battlerId) {
+    if ((bsys->battleType & BATTLE_TYPE_MULTI) ||
+        ((bsys->battleType & BATTLE_TYPE_INGAME_PARTNER) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
+        return bsys->chatotVoiceParam[battlerId];
+    } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
+        return bsys->chatotVoiceParam[battlerId & 1];
+    } else {
+        return bsys->chatotVoiceParam[battlerId];
+    }
+}
+
+u32 ov12_0223C134(BattleSystem *bsys) {
+    return bsys->unk2488;
+}
+
+u8 ov12_0223C140(BattleSystem *bsys, u32 battlerId) {
+    if (battlerId >= 4) {
+        return 0xFF;
+    }
+    if (bsys->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_SAFARI | BATTLE_TYPE_TOWER | BATTLE_TYPE_PAL_PARK)) {
+        return 0xFF;
+    }
+    
+    if ((bsys->battleType & BATTLE_TYPE_DOUBLES) && (ov12_0223AB0C(bsys, battlerId) & 1)) {
+        return 0xFF;
+    }
+
+    if (bsys->battleType & BATTLE_TYPE_MULTI) {
+        return bsys->unk248C[battlerId];
+    }
+    if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
+        return bsys->unk248C[battlerId & 1];
+    }
+    return bsys->unk248C[battlerId];
+}
+
+void ov12_0223C1A0(BattleSystem *bsys, u8 *buffer) {
+    int i;
+    for (i = 0; i < bsys->maxBattlers; i++) {
+        buffer[ov12_02261258(bsys->opponentData[i])] = i;
+    }
+}
+
+void ov12_0223C1C4(BattleSystem *bsys, u8 *buffer) {
+    int i;
+    
+    for (i = 0; i < 4; i++) {
+        buffer[i] = 0xFF;
+    }
+    
+    for (i = 0; i < bsys->maxBattlers; i++) {
+        buffer[i] = ov12_02261258(bsys->opponentData[i]);
+    }
+}
+
+void ov12_0223C1F4(BattleSystem *bsys, void **a1) {
+    int i;
+    
+    for (i = 0; i < 4; i++) {
+        a1[i] = NULL;
+    }
+    
+    for (i = 0; i < bsys->maxBattlers; i++) {
+        a1[i] = ov12_02261270(bsys->opponentData[i]);
+    }
+}
+
+void ov12_0223C224(BattleSystem *bsys, int a1) {
+    int i;
+    BattleHpBar *hpBar;
+    
+    for (i = 0; i < bsys->maxBattlers; i++) {
+        hpBar = OpponentData_GetHpBar(bsys->opponentData[i]);
+        ov12_02264EE0(hpBar, a1);
+    }
+}
+
+u32 CalcMoneyLoss(Party *party, PlayerProfile *profile) {
+    static const u8 sBadgePenalty[] = {
+        2, 4, 6, 9, 12, 16, 20, 25, 30
+    };
+    u8 badgeCount = PlayerProfile_CountBadges(profile);
+    if (badgeCount > 8) {
+        badgeCount = 8;
+    }
+    u32 loss = Party_GetMaxLevel(party) * 4 * sBadgePenalty[badgeCount];
+    u32 money = PlayerProfile_GetMoney(profile);
+    
+    if (loss > money) {
+        loss = money;
+    }
+    
+    return loss;
 }
