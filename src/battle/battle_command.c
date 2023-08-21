@@ -1,8 +1,8 @@
 #include "global.h"
 #include "assert.h"
-#include "battle_controller.h"
-#include "battle_controller_player.h"
-#include "battle_command.h"
+#include "battle/battle_controller.h"
+#include "battle/battle_controller_player.h"
+#include "battle/battle_command.h"
 #include "item.h"
 #include "party.h"
 #include "pokemon.h"
@@ -11,7 +11,7 @@
 #include "unk_0208805C.h"
 #include "unk_02025154.h"
 #include "sound_chatot.h"
-#include "overlay_12_0224E4FC.h"
+#include "battle/overlay_12_0224E4FC.h"
 #include "constants/abilities.h"
 #include "constants/battle.h"
 #include "constants/battle_script.h"
@@ -19,17 +19,17 @@
 #include "constants/moves.h"
 #include "constants/pokemon.h"
 
-int BattleScriptReadWord(BATTLECONTEXT *ctx);
-static void BattleScriptIncrementPointer(BATTLECONTEXT *ctx, int adrs);
-static void BattleScriptJump(BATTLECONTEXT *ctx, NarcId narcId, int adrs);
-static void BattleScriptGotoSubscript(BATTLECONTEXT *ctx, NarcId narcId, int adrs);
-static void *BattleScriptGetVarPointer(BattleSystem *bsys, BATTLECONTEXT *ctx, int var);
+int BattleScriptReadWord(BattleContext *ctx);
+static void BattleScriptIncrementPointer(BattleContext *ctx, int adrs);
+static void BattleScriptJump(BattleContext *ctx, NarcId narcId, int adrs);
+static void BattleScriptGotoSubscript(BattleContext *ctx, NarcId narcId, int adrs);
+static void *BattleScriptGetVarPointer(BattleSystem *bsys, BattleContext *ctx, int var);
 
-u8 GetBattlerIDBySide(BattleSystem *bsys, BATTLECONTEXT *ctx, u32 a2);
+u8 GetBattlerIDBySide(BattleSystem *bsys, BattleContext *ctx, u32 a2);
 
 extern BtlCmdFunc sBattleScriptCommandTable[];
 
-BOOL RunBattleScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL RunBattleScript(BattleSystem *bsys, BattleContext *ctx) {
     BOOL ret;
 
     do {
@@ -41,13 +41,13 @@ BOOL RunBattleScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return ret;
 }
 
-BOOL BtlCmd_PlayEncounterAnimation(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_PlayEncounterAnimation(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
     BattleController_EmitPlayEncounterAnimation(bsys, FALSE);
     return FALSE;
 }
 
-BOOL BtlCmd_PokemonEncounter(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_PokemonEncounter(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
     int battlersMax = BattleSystem_GetMaxBattlers(bsys);
     BattleScriptIncrementPointer(ctx, 1);
@@ -76,7 +76,7 @@ BOOL BtlCmd_PokemonEncounter(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
     int battlersMax = BattleSystem_GetMaxBattlers(bsys);
 
@@ -154,7 +154,7 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_PokemonSendOut(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_PokemonSendOut(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
     int battlersMax = BattleSystem_GetMaxBattlers(bsys);
 
@@ -232,7 +232,7 @@ BOOL BtlCmd_PokemonSendOut(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_RecallPokemon(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_RecallPokemon(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
     int battlersMax = BattleSystem_GetMaxBattlers(bsys);
     OpponentData *opponentData;
@@ -270,7 +270,7 @@ BOOL BtlCmd_RecallPokemon(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_DeletePokemon(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_DeletePokemon(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     u32 battlerId = GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx));
@@ -279,7 +279,7 @@ BOOL BtlCmd_DeletePokemon(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TrainerEncounter(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TrainerEncounter(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
     int battlersMax = BattleSystem_GetMaxBattlers(bsys);
     OpponentData *opponentData;
@@ -337,7 +337,7 @@ BOOL BtlCmd_TrainerEncounter(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_ThrowPokeball(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_ThrowPokeball(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
     int battlersMax = BattleSystem_GetMaxBattlers(bsys);
     OpponentData *opponentData;
@@ -391,7 +391,7 @@ BOOL BtlCmd_ThrowPokeball(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TrainerSlideOut(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TrainerSlideOut(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
     int battlersMax = BattleSystem_GetMaxBattlers(bsys);
     OpponentData *opponentData;
@@ -478,7 +478,7 @@ BOOL BtlCmd_TrainerSlideOut(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TrainerSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TrainerSlideIn(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
     int battlersMax = BattleSystem_GetMaxBattlers(bsys);
     OpponentData *opponentData;
@@ -561,7 +561,7 @@ BOOL BtlCmd_TrainerSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_BackgroundSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_BackgroundSlideIn(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
     int battlersMax = BattleSystem_GetMaxBattlers(bsys);
     BattleScriptIncrementPointer(ctx, 1);
@@ -573,7 +573,7 @@ BOOL BtlCmd_BackgroundSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_HealthbarSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_HealthbarSlideIn(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
     int battlersMax = BattleSystem_GetMaxBattlers(bsys);
     OpponentData *opponentData;
@@ -611,7 +611,7 @@ BOOL BtlCmd_HealthbarSlideIn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_HealthbarSlideInDelay(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_HealthbarSlideInDelay(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
     int battlersMax = BattleSystem_GetMaxBattlers(bsys);
     OpponentData *opponentData;
@@ -654,7 +654,7 @@ BOOL BtlCmd_HealthbarSlideInDelay(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_HealthbarSlideOut(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_HealthbarSlideOut(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
     int battlersMax = BattleSystem_GetMaxBattlers(bsys);
     OpponentData *opponentData;
@@ -692,7 +692,7 @@ BOOL BtlCmd_HealthbarSlideOut(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_WaitForMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_WaitForMessage(BattleSystem *bsys, BattleContext *ctx) {
     if (Link_QueueNotEmpty(ctx)) {
         BattleScriptIncrementPointer(ctx, 1);
     } else {
@@ -704,7 +704,7 @@ BOOL BtlCmd_WaitForMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-static void DamageCalcDefault(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+static void DamageCalcDefault(BattleSystem *bsys, BattleContext *ctx) {
     int type;
 
     if (GetBattlerAbility(ctx, ctx->battlerIdAttacker) == ABILITY_NORMALIZE) {
@@ -739,7 +739,7 @@ static void DamageCalcDefault(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     }
 }
 
-BOOL BtlCmd_DamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_DamageCalc(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     DamageCalcDefault(bsys, ctx);
@@ -749,7 +749,7 @@ BOOL BtlCmd_DamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_DamageCalcRaw(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_DamageCalcRaw(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     DamageCalcDefault(bsys, ctx);
@@ -758,7 +758,7 @@ BOOL BtlCmd_DamageCalcRaw(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_PrintAttackMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_PrintAttackMessage(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     if (!(ctx->battleStatus & BATTLE_STATUS_NO_ATTACK_MESSAGE)) {
@@ -771,9 +771,9 @@ BOOL BtlCmd_PrintAttackMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_PrintMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    BATTLEMSGDATA msgdata;
-    BATTLEMSG msg;
+BOOL BtlCmd_PrintMessage(BattleSystem *bsys, BattleContext *ctx) {
+    BattleMessageData msgdata;
+    BattleMessage msg;
 
     BattleScriptIncrementPointer(ctx, 1);
 
@@ -784,9 +784,9 @@ BOOL BtlCmd_PrintMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_PrintMessage2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    BATTLEMSGDATA msgdata;
-    BATTLEMSG msg;
+BOOL BtlCmd_PrintMessage2(BattleSystem *bsys, BattleContext *ctx) {
+    BattleMessageData msgdata;
+    BattleMessage msg;
 
     BattleScriptIncrementPointer(ctx, 1);
 
@@ -800,14 +800,14 @@ BOOL BtlCmd_PrintMessage2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_PrintBufferedMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_PrintBufferedMessage(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
     BattleController_EmitPrintMessage(bsys, ctx, &ctx->buffMsg);
     return FALSE;
 }
 
-BOOL BtlCmd_BufferMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    BATTLEMSGDATA msgdata;
+BOOL BtlCmd_BufferMessage(BattleSystem *bsys, BattleContext *ctx) {
+    BattleMessageData msgdata;
 
     BattleScriptIncrementPointer(ctx, 1);
 
@@ -817,9 +817,9 @@ BOOL BtlCmd_BufferMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_BufferMessageSide(BattleSystem *bsys, BATTLECONTEXT *ctx) {
-    BATTLEMSGDATA msgdata;
-    BATTLEMSG msg;
+BOOL BtlCmd_BufferMessageSide(BattleSystem *bsys, BattleContext *ctx) {
+    BattleMessageData msgdata;
+    BattleMessage msg;
 
     BattleScriptIncrementPointer(ctx, 1);
 
@@ -836,7 +836,7 @@ BOOL BtlCmd_BufferMessageSide(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_PlayMoveAnimation(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_PlayMoveAnimation(BattleSystem *bsys, BattleContext *ctx) {
     u16 move;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -860,7 +860,7 @@ BOOL BtlCmd_PlayMoveAnimation(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_PlayMoveAnimation2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_PlayMoveAnimation2(BattleSystem *bsys, BattleContext *ctx) {
     u16 move;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -889,7 +889,7 @@ BOOL BtlCmd_PlayMoveAnimation2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_MonFlicker(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_MonFlicker(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     u32 side = BattleScriptReadWord(ctx);
@@ -899,7 +899,7 @@ BOOL BtlCmd_MonFlicker(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_HealthbarDataUpdate(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_HealthbarDataUpdate(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     u8 battlerId = GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx));
@@ -927,7 +927,7 @@ BOOL BtlCmd_HealthbarDataUpdate(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_HealthbarUpdate(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_HealthbarUpdate(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     BattleController_EmitHealthbarUpdate(bsys, ctx, GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx)));
@@ -935,7 +935,7 @@ BOOL BtlCmd_HealthbarUpdate(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryFaintMon(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryFaintMon(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     u32 battlerId = GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx));
@@ -950,7 +950,7 @@ BOOL BtlCmd_TryFaintMon(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_PlayFaintAnimation(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_PlayFaintAnimation(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     BattleController_EmitPlayFaintAnimation(bsys, ctx, ctx->battlerIdFainted);
@@ -964,7 +964,7 @@ BOOL BtlCmd_PlayFaintAnimation(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_Wait(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_Wait(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int waitFrames = BattleScriptReadWord(ctx);
@@ -995,7 +995,7 @@ BOOL BtlCmd_Wait(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_PlaySE(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_PlaySE(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     u32 side = BattleScriptReadWord(ctx);
@@ -1006,7 +1006,7 @@ BOOL BtlCmd_PlaySE(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_If(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_If(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     u32 operator = BattleScriptReadWord(ctx);
@@ -1061,7 +1061,7 @@ BOOL BtlCmd_If(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_IfMonStat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_IfMonStat(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     u32 operator = BattleScriptReadWord(ctx);
@@ -1117,7 +1117,7 @@ BOOL BtlCmd_IfMonStat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_FadeOutBattle(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_FadeOutBattle(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     BattleController_EmitFadeOutBattle(bsys, ctx);
@@ -1125,7 +1125,7 @@ BOOL BtlCmd_FadeOutBattle(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_JumpToSubSeq(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_JumpToSubSeq(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     BattleScriptJump(ctx, NARC_a_0_0_1, BattleScriptReadWord(ctx));
@@ -1133,7 +1133,7 @@ BOOL BtlCmd_JumpToSubSeq(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_JumpToCurMoveEffectScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_JumpToCurMoveEffectScript(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     BattleScriptJump(ctx, NARC_a_0_3_0, ctx->unk_334.moveData[ctx->moveNoCur].effect);
@@ -1141,7 +1141,7 @@ BOOL BtlCmd_JumpToCurMoveEffectScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_JumpToEffectScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_JumpToEffectScript(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     u32 unkA = BattleScriptReadWord(ctx);
@@ -1167,7 +1167,7 @@ BOOL BtlCmd_JumpToEffectScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CritCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_CritCalc(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     if ((BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_TUTORIAL) || (BattleSystem_GetBattleSpecial(bsys) & BATTLE_SPECIAL_FIRST_RIVAL)) {
@@ -1179,7 +1179,7 @@ BOOL BtlCmd_CritCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_ShouldGetExp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_ShouldGetExp(BattleSystem *bsys, BattleContext *ctx) {
     int adrs;
     u32 battleType = BattleSystem_GetBattleType(bsys);
     OpponentData *opponentData = BattleSystem_GetOpponentData(bsys, ctx->battlerIdFainted);
@@ -1233,7 +1233,7 @@ BOOL BtlCmd_ShouldGetExp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 void Task_GetExp(SysTask *task, void *data);
 
-BOOL BtlCmd_InitGetExp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_InitGetExp(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     ctx->getterWork = AllocFromHeap(HEAP_ID_BATTLE, sizeof(GetterWork));
@@ -1248,7 +1248,7 @@ BOOL BtlCmd_InitGetExp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_GetExp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_GetExp(BattleSystem *bsys, BattleContext *ctx) {
     if (ctx->getterWork == NULL) {
         BattleScriptIncrementPointer(ctx, 1);
     }
@@ -1258,7 +1258,7 @@ BOOL BtlCmd_GetExp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_GetExpLoop(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_GetExpLoop(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     BattleScriptReadWord(ctx);
@@ -1266,7 +1266,7 @@ BOOL BtlCmd_GetExpLoop(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_ShowParty(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_ShowParty(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId, unkA, unkB;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
 
@@ -1305,7 +1305,7 @@ BOOL BtlCmd_ShowParty(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_WaitForMonSelection(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_WaitForMonSelection(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
 
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
@@ -1343,7 +1343,7 @@ BOOL BtlCmd_WaitForMonSelection(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_SwitchInDataUpdate(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_SwitchInDataUpdate(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -1377,7 +1377,7 @@ BOOL BtlCmd_SwitchInDataUpdate(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_JumpIfCantSwitch(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_JumpIfCantSwitch(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
 
@@ -1398,7 +1398,7 @@ BOOL BtlCmd_JumpIfCantSwitch(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 void Task_GetPokemon(SysTask *task, void *data);
 
-BOOL BtlCmd_InitGetPokemon(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_InitGetPokemon(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int unkA = BattleScriptReadWord(ctx);
@@ -1415,7 +1415,7 @@ BOOL BtlCmd_InitGetPokemon(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_GetPokemon(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_GetPokemon(BattleSystem *bsys, BattleContext *ctx) {
     if (ctx->getterWork == NULL) {
         BattleScriptIncrementPointer(ctx, 1);
     }
@@ -1425,7 +1425,7 @@ BOOL BtlCmd_GetPokemon(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_SetMultiHit(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_SetMultiHit(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int cnt = BattleScriptReadWord(ctx);
@@ -1449,7 +1449,7 @@ BOOL BtlCmd_SetMultiHit(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_ChangeVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_ChangeVar(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int operator = BattleScriptReadWord(ctx);
@@ -1513,7 +1513,7 @@ BOOL BtlCmd_ChangeVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BattleContext *ctx) {
     int change, stat;
     BattleMon *mon = &ctx->battleMons[ctx->battlerIdStatChange];
 
@@ -1689,9 +1689,9 @@ BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 //TODO: Move to above of file once defined as static
-void BattlerSetAbility(BATTLECONTEXT *ctx, u8 a1, u8 a2);
+void BattlerSetAbility(BattleContext *ctx, u8 a1, u8 a2);
 
-BOOL BtlCmd_ChangeMonDataVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_ChangeMonDataVar(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int operator = BattleScriptReadWord(ctx);
@@ -1763,7 +1763,7 @@ BOOL BtlCmd_ChangeMonDataVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_53(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_53(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -1776,7 +1776,7 @@ BOOL BtlCmd_53(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_ToggleVanish(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_ToggleVanish(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -1788,7 +1788,7 @@ BOOL BtlCmd_ToggleVanish(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CheckAbility(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_CheckAbility(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -1829,7 +1829,7 @@ BOOL BtlCmd_CheckAbility(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_Random(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_Random(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int modulo = BattleScriptReadWord(ctx);
@@ -1842,7 +1842,7 @@ BOOL BtlCmd_Random(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_ChangeVar2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_ChangeVar2(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int operator = BattleScriptReadWord(ctx);
@@ -1907,7 +1907,7 @@ BOOL BtlCmd_ChangeVar2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_ChangeMonDataByVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_ChangeMonDataByVar(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int operator = BattleScriptReadWord(ctx);
@@ -1983,26 +1983,26 @@ BOOL BtlCmd_ChangeMonDataByVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_Goto(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_Goto(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
     BattleScriptIncrementPointer(ctx, BattleScriptReadWord(ctx));
     return FALSE;
 }
 
-BOOL BtlCmd_GotoSubscript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_GotoSubscript(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
     BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, BattleScriptReadWord(ctx));
     return FALSE;
 }
 
-BOOL BtlCmd_GotoSubscriptVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_GotoSubscriptVar(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
     int *var = BattleScriptGetVarPointer(bsys, ctx, BattleScriptReadWord(ctx));
     BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, *var);
     return FALSE;
 }
 
-BOOL BtlCmd_SetMoveToMirrorMove(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_SetMoveToMirrorMove(BattleSystem *bsys, BattleContext *ctx) {
     int move = 0;
     int battleType = BattleSystem_GetBattleType(bsys);
 
@@ -2040,7 +2040,7 @@ BOOL BtlCmd_SetMoveToMirrorMove(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_ResetAllStatChanges(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_ResetAllStatChanges(BattleSystem *bsys, BattleContext *ctx) {
     int stat, battlerId;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -2057,7 +2057,7 @@ BOOL BtlCmd_ResetAllStatChanges(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_64(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_64(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     LockBattlerIntoCurrentMove(bsys, ctx, GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx)));
@@ -2065,7 +2065,7 @@ BOOL BtlCmd_64(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_65(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_65(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     UnlockBattlerOutOfCurrentMove(bsys, ctx, GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx)));
@@ -2073,7 +2073,7 @@ BOOL BtlCmd_65(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_SetHealthbarStatus(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_SetHealthbarStatus(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -2084,7 +2084,7 @@ BOOL BtlCmd_SetHealthbarStatus(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_PrintTrainerMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_PrintTrainerMessage(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -2097,7 +2097,7 @@ BOOL BtlCmd_PrintTrainerMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 extern u16 sPrizeMoneyTbl[0x81][2];
 
-u32 CalcPrizeMoney(BattleSystem *bsys, BATTLECONTEXT *ctx, int trainerIndex) {
+u32 CalcPrizeMoney(BattleSystem *bsys, BattleContext *ctx, int trainerIndex) {
     int i;
     TRPOKE *trPoke;
     u32 prizeMoney;
@@ -2163,7 +2163,7 @@ u32 CalcPrizeMoney(BattleSystem *bsys, BATTLECONTEXT *ctx, int trainerIndex) {
     return prizeMoney;
 }
 
-BOOL BtlCmd_CalcPrizeMoney(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_CalcPrizeMoney(BattleSystem *bsys, BattleContext *ctx) {
     u32 prizeMoney;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -2175,7 +2175,7 @@ BOOL BtlCmd_CalcPrizeMoney(BattleSystem *bsys, BATTLECONTEXT *ctx) {
         }
         PlayerProfile_AddMoney(BattleSystem_GetPlayerProfile(bsys, 0), prizeMoney);
     } else {
-        prizeMoney = ov12_0223C24C(bsys->trainerParty[0], bsys->playerProfile[0]);
+        prizeMoney = CalcMoneyLoss(bsys->trainerParty[0], bsys->playerProfile[0]);
         PlayerProfile_SubMoney(BattleSystem_GetPlayerProfile(bsys, 0), prizeMoney);
     }
 
@@ -2190,7 +2190,7 @@ BOOL BtlCmd_CalcPrizeMoney(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_SetStatus2Effect(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_SetStatus2Effect(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -2206,7 +2206,7 @@ BOOL BtlCmd_SetStatus2Effect(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CopyStatus2Effect(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_CopyStatus2Effect(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int sideA = BattleScriptReadWord(ctx);
@@ -2224,7 +2224,7 @@ BOOL BtlCmd_CopyStatus2Effect(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_SetStatus2EffectVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_SetStatus2EffectVar(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -2242,7 +2242,7 @@ BOOL BtlCmd_SetStatus2EffectVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_ReturnMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_ReturnMessage(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int battlerId = GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx));
@@ -2252,7 +2252,7 @@ BOOL BtlCmd_ReturnMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_SendOutMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_SendOutMessage(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int battlerId = GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx));
@@ -2262,7 +2262,7 @@ BOOL BtlCmd_SendOutMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_EncounterMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_EncounterMessage(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     BattleController_EmitPrintEncounterMessage(bsys, ctx, GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx)));
@@ -2270,7 +2270,7 @@ BOOL BtlCmd_EncounterMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_FirstSendOutMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_FirstSendOutMessage(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     BattleController_EmitPrintFirstSendOutMessage(bsys, ctx, GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx)));
@@ -2278,7 +2278,7 @@ BOOL BtlCmd_FirstSendOutMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TrainerMessageVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TrainerMessageVar(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     BattleController_EmitPrintTrainerMessage(bsys, GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx)), ctx->msgTemp);
@@ -2286,7 +2286,7 @@ BOOL BtlCmd_TrainerMessageVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryConversion(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryConversion(BattleSystem *bsys, BattleContext *ctx) {
     int i, cnt, moveType;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -2344,7 +2344,7 @@ BOOL BtlCmd_TryConversion(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_Compare(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_Compare(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int operator = BattleScriptReadWord(ctx);
@@ -2400,7 +2400,7 @@ BOOL BtlCmd_Compare(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_IfMonStatVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_IfMonStatVar(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int operator = BattleScriptReadWord(ctx);
@@ -2457,7 +2457,7 @@ BOOL BtlCmd_IfMonStatVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_PayDay(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_PayDay(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     ctx->msgTemp = ctx->unk_14C * ctx->prizeMoneyValue;
@@ -2471,7 +2471,7 @@ BOOL BtlCmd_PayDay(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryLightScreen(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryLightScreen(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -2500,7 +2500,7 @@ BOOL BtlCmd_TryLightScreen(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryReflect(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryReflect(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -2529,7 +2529,7 @@ BOOL BtlCmd_TryReflect(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryMist(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryMist(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -2547,7 +2547,7 @@ BOOL BtlCmd_TryMist(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryOHKO(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryOHKO(BattleSystem *bsys, BattleContext *ctx) {
     u16 hitChance;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -2596,7 +2596,7 @@ BOOL BtlCmd_TryOHKO(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_SetDamageDivide(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_SetDamageDivide(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int varNo = BattleScriptReadWord(ctx);
@@ -2609,7 +2609,7 @@ BOOL BtlCmd_SetDamageDivide(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_SetDamageDivideVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_SetDamageDivideVar(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int varNo = BattleScriptReadWord(ctx);
@@ -2635,7 +2635,7 @@ BOOL BtlCmd_SetDamageDivideVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryMimic(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryMimic(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -2679,7 +2679,7 @@ BOOL BtlCmd_TryMimic(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_Metronome(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_Metronome(BattleSystem *bsys, BattleContext *ctx) {
     int metronomeIndex;
     u16 moveNo;
 
@@ -2710,7 +2710,7 @@ BOOL BtlCmd_Metronome(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryDisable(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryDisable(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -2729,7 +2729,7 @@ BOOL BtlCmd_TryDisable(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_Counter(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_Counter(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int battlerId = ctx->turnData[ctx->battlerIdAttacker].battlerIdPhysicalDamage;
@@ -2760,7 +2760,7 @@ BOOL BtlCmd_Counter(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_MirrorCoat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_MirrorCoat(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int battlerId = ctx->turnData[ctx->battlerIdAttacker].battlerIdSpecialDamage;
@@ -2791,7 +2791,7 @@ BOOL BtlCmd_MirrorCoat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryEncore(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryEncore(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -2816,7 +2816,7 @@ BOOL BtlCmd_TryEncore(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryConversion2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryConversion2(BattleSystem *bsys, BattleContext *ctx) {
     int i, moveType;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -2864,7 +2864,7 @@ BOOL BtlCmd_TryConversion2(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TrySketch(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TrySketch(BattleSystem *bsys, BattleContext *ctx) {
     int moveIndex;
     int sketchIndex = -1;
 
@@ -2899,7 +2899,7 @@ BOOL BtlCmd_TrySketch(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TrySleepTalk(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TrySleepTalk(BattleSystem *bsys, BattleContext *ctx) {
     int moveIndex, nonSelectableMoves;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -2935,7 +2935,7 @@ BOOL BtlCmd_TrySleepTalk(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 extern u8 sFlailDamageTable[6][2];
 
-BOOL BtlCmd_FlailDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_FlailDamageCalc(BattleSystem *bsys, BattleContext *ctx) {
     int i;
     int unkA;
 
@@ -2953,7 +2953,7 @@ BOOL BtlCmd_FlailDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TrySpite(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TrySpite(BattleSystem *bsys, BattleContext *ctx) {
     int moveIndex, ppLoss;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -2981,7 +2981,7 @@ BOOL BtlCmd_TrySpite(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_HealBell(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_HealBell(BattleSystem *bsys, BattleContext *ctx) {
     u32 battleType = BattleSystem_GetBattleType(bsys);
     int battlerId;
 
@@ -3031,7 +3031,7 @@ BOOL BtlCmd_HealBell(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryThief(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryThief(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs1 = BattleScriptReadWord(ctx);
@@ -3063,7 +3063,7 @@ BOOL BtlCmd_TryThief(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 extern u16 sProtectSuccessChance[4];
 
-BOOL BtlCmd_TryProtect(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryProtect(BattleSystem *bsys, BattleContext *ctx) {
     int flag;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -3105,7 +3105,7 @@ BOOL BtlCmd_TryProtect(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TrySubstitute(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TrySubstitute(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -3123,7 +3123,7 @@ BOOL BtlCmd_TrySubstitute(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryWhirlwind(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryWhirlwind(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -3198,7 +3198,7 @@ BOOL BtlCmd_TryWhirlwind(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_Transform(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_Transform(BattleSystem *bsys, BattleContext *ctx) {
     u32 i;
     u8 *src, *dest;
 
@@ -3244,7 +3244,7 @@ BOOL BtlCmd_Transform(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TrySpikes(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TrySpikes(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -3262,7 +3262,7 @@ BOOL BtlCmd_TrySpikes(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CheckSpikes(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_CheckSpikes(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -3280,7 +3280,7 @@ BOOL BtlCmd_CheckSpikes(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryPerishSong(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryPerishSong(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
     BattleScriptIncrementPointer(ctx, 1);
 
@@ -3306,7 +3306,7 @@ BOOL BtlCmd_TryPerishSong(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_SetTurnOrderBySpeed(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_SetTurnOrderBySpeed(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     u32 *unkPtr = BattleScriptGetVarPointer(bsys, ctx, BattleScriptReadWord(ctx));
@@ -3316,7 +3316,7 @@ BOOL BtlCmd_SetTurnOrderBySpeed(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_JumpIfValidBattlerVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_JumpIfValidBattlerVar(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     u32 varId = BattleScriptReadWord(ctx);
@@ -3330,7 +3330,7 @@ BOOL BtlCmd_JumpIfValidBattlerVar(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_WeatherDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_WeatherDamageCalc(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     u32 battlerId = GetBattlerIDBySide(bsys, ctx, BattleScriptReadWord(ctx));
@@ -3406,7 +3406,7 @@ BOOL BtlCmd_WeatherDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_RolloutDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_RolloutDamageCalc(BattleSystem *bsys, BattleContext *ctx) {
     int i, j;
     BattleScriptIncrementPointer(ctx, 1);
 
@@ -3436,7 +3436,7 @@ BOOL BtlCmd_RolloutDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_FuryCutterDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_FuryCutterDamageCalc(BattleSystem *bsys, BattleContext *ctx) {
     int i;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -3454,7 +3454,7 @@ BOOL BtlCmd_FuryCutterDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryAttract(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryAttract(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -3470,7 +3470,7 @@ BOOL BtlCmd_TryAttract(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TrySafeguard(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TrySafeguard(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -3491,7 +3491,7 @@ BOOL BtlCmd_TrySafeguard(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_Present(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_Present(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
     int adrs = BattleScriptReadWord(ctx);
     int rand = (u8)BattleSystem_Random(bsys);
@@ -3510,7 +3510,7 @@ BOOL BtlCmd_Present(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_MagnitudeDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_MagnitudeDamageCalc(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     if (ctx->magnitude == 0) {
@@ -3544,7 +3544,7 @@ BOOL BtlCmd_MagnitudeDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TrySwitchMon(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TrySwitchMon(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -3562,7 +3562,7 @@ BOOL BtlCmd_TrySwitchMon(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_RapidSpin(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_RapidSpin(BattleSystem *bsys, BattleContext *ctx) {
     int side = BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker);
 
     //Binding Moves
@@ -3614,7 +3614,7 @@ BOOL BtlCmd_RapidSpin(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_ChangeWeatherBasedHPRecovery(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_ChangeWeatherBasedHPRecovery(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     if (!(ctx->fieldCondition & FIELD_CONDITION_WEATHER) || CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) || CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)) {
@@ -3628,7 +3628,7 @@ BOOL BtlCmd_ChangeWeatherBasedHPRecovery(BattleSystem *bsys, BATTLECONTEXT *ctx)
     return FALSE;
 }
 
-BOOL BtlCmd_HiddenPowerDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_HiddenPowerDamageCalc(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     ctx->movePower = ((ctx->battleMons[ctx->battlerIdAttacker].hpIV & 2) >> 1) |
@@ -3654,7 +3654,7 @@ BOOL BtlCmd_HiddenPowerDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_PsychUp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_PsychUp(BattleSystem *bsys, BattleContext *ctx) {
     int stat;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -3668,7 +3668,7 @@ BOOL BtlCmd_PsychUp(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryFutureSight(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryFutureSight(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -3691,7 +3691,7 @@ BOOL BtlCmd_TryFutureSight(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CheckHitRate(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_CheckHitRate(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int sideAttacker = BattleScriptReadWord(ctx);
@@ -3712,7 +3712,7 @@ BOOL BtlCmd_CheckHitRate(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryTeleport(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryTeleport(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     u32 adrs = BattleScriptReadWord(ctx);
@@ -3724,7 +3724,7 @@ BOOL BtlCmd_TryTeleport(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_BeatUpDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_BeatUpDamageCalc(BattleSystem *bsys, BattleContext *ctx) {
     int species;
     int form;
     int level;
@@ -3800,7 +3800,7 @@ BOOL BtlCmd_BeatUpDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_FollowMe(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_FollowMe(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker);
@@ -3810,7 +3810,7 @@ BOOL BtlCmd_FollowMe(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryHelpingHand(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryHelpingHand(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -3834,7 +3834,7 @@ BOOL BtlCmd_TryHelpingHand(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryTrick(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryTrick(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrsA = BattleScriptReadWord(ctx);
@@ -3859,7 +3859,7 @@ BOOL BtlCmd_TryTrick(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryWish(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryWish(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -3874,7 +3874,7 @@ BOOL BtlCmd_TryWish(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryAssist(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryAssist(BattleSystem *bsys, BattleContext *ctx) {
     u32 unkA;
     u16 avaliableMoves[6*4];
     u16 move;
@@ -3913,7 +3913,7 @@ BOOL BtlCmd_TryAssist(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TrySetMagicCoat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TrySetMagicCoat(BattleSystem *bsys, BattleContext *ctx) {
     int i;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -3930,7 +3930,7 @@ BOOL BtlCmd_TrySetMagicCoat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_MagicCoat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_MagicCoat(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker);
@@ -3956,7 +3956,7 @@ BOOL BtlCmd_MagicCoat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_RevengeDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_RevengeDamageCalc(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     if ((ctx->turnData[ctx->battlerIdAttacker].physicalDamage[ctx->battlerIdTarget] && ctx->turnData[ctx->battlerIdAttacker].battlerBitPhysicalDamage & MaskOfFlagNo(ctx->battlerIdTarget)) ||
@@ -3969,7 +3969,7 @@ BOOL BtlCmd_RevengeDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryBreakScreens(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryBreakScreens(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -3987,7 +3987,7 @@ BOOL BtlCmd_TryBreakScreens(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryYawn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryYawn(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
     u32 adrs = BattleScriptReadWord(ctx);
     if (ctx->battleMons[ctx->battlerIdTarget].moveEffectFlags & MOVE_EFFECT_FLAG_YAWN) {
@@ -3999,7 +3999,7 @@ BOOL BtlCmd_TryYawn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryKnockOff(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryKnockOff(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -4026,7 +4026,7 @@ BOOL BtlCmd_TryKnockOff(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_EruptionDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_EruptionDamageCalc(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     if (ctx->movePower == 0) {
@@ -4041,7 +4041,7 @@ BOOL BtlCmd_EruptionDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 //Matches in compiler explorer- here some of the variables get stored in the wrong place on the stack pointer
 #ifdef NONMATCHING
-BOOL BtlCmd_TryImprison(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryImprison(BattleSystem *bsys, BattleContext *ctx) {
     int adrs, side, i, j, battlerId, maxBattlers, battlerIdA, battlerIdB;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -4086,7 +4086,7 @@ BOOL BtlCmd_TryImprison(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 #else
-asm BOOL BtlCmd_TryImprison(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+asm BOOL BtlCmd_TryImprison(BattleSystem *bsys, BattleContext *ctx) {
     push {r3, r4, r5, r6, r7, lr}
     sub sp, #0x18
     add r7, r1, #0
@@ -4230,7 +4230,7 @@ _0224313C:
 }
 #endif
 
-BOOL BtlCmd_TryGrudge(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryGrudge(BattleSystem *bsys, BattleContext *ctx) {
     int pos;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -4253,7 +4253,7 @@ BOOL BtlCmd_TryGrudge(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TrySnatch(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TrySnatch(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
     u32 maxBattlers;
 
@@ -4279,7 +4279,7 @@ BOOL BtlCmd_TrySnatch(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 extern u16 sLowKickDamageTable[6][2];
 
-BOOL BtlCmd_LowKickDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_LowKickDamageCalc(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int cnt = 0;
@@ -4301,7 +4301,7 @@ BOOL BtlCmd_LowKickDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_WeatherBallDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_WeatherBallDamageCalc(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     if (!CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) && !CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)) {
@@ -4327,7 +4327,7 @@ BOOL BtlCmd_WeatherBallDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryPursuit(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryPursuit(BattleSystem *bsys, BattleContext *ctx) {
     int adrs, battlerId, maxBattlers, moveNo, moveIndex;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -4378,7 +4378,7 @@ BOOL BtlCmd_TryPursuit(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TypeEffectivenessCheck(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TypeEffectivenessCheck(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     ctx->damage = ov12_02251D28(bsys, ctx, ctx->moveNoCur, ctx->moveType, ctx->battlerIdAttacker, ctx->battlerIdTarget, ctx->damage, &ctx->moveStatusFlag);
@@ -4387,7 +4387,7 @@ BOOL BtlCmd_TypeEffectivenessCheck(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 //TODO: Rename to BtlCmd_CheckTurnDataFlag
-BOOL BtlCmd_PokemonEncounter44(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_PokemonEncounter44(BattleSystem *bsys, BattleContext *ctx) {
     int ret = FALSE;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -4445,7 +4445,7 @@ BOOL BtlCmd_PokemonEncounter44(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 //Todo: Rename to BtlCmd_SetTurnDataFlag
-BOOL BtlCmd_PokemonEncounter45(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_PokemonEncounter45(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -4481,7 +4481,7 @@ BOOL BtlCmd_PokemonEncounter45(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_GyroBallDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_GyroBallDamageCalc(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     ctx->movePower = 1 + 25*ctx->unk_21F0[ctx->battlerIdTarget]/ctx->unk_21F0[ctx->battlerIdAttacker];
@@ -4493,7 +4493,7 @@ BOOL BtlCmd_GyroBallDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_MetalBurstDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_MetalBurstDamageCalc(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -4523,7 +4523,7 @@ BOOL BtlCmd_MetalBurstDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_PaybackDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_PaybackDamageCalc(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     if (ctx->unk_21A8[ctx->battlerIdTarget][0] == 40) {
@@ -4537,7 +4537,7 @@ BOOL BtlCmd_PaybackDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 extern u8 sTrumpCardPowerTable[];
 
-BOOL BtlCmd_TrumpCardDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TrumpCardDamageCalc(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     u8 pp = ctx->battleMons[ctx->battlerIdAttacker].movePPCur[ctx->movePos[ctx->battlerIdAttacker]];
@@ -4551,7 +4551,7 @@ BOOL BtlCmd_TrumpCardDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_WringOutDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_WringOutDamageCalc(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     ctx->movePower = 1 + (120*ctx->battleMons[ctx->battlerIdTarget].hp)/ctx->battleMons[ctx->battlerIdTarget].maxHp;
@@ -4559,7 +4559,7 @@ BOOL BtlCmd_WringOutDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryMeFirst(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryMeFirst(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     u16 move;
@@ -4585,7 +4585,7 @@ BOOL BtlCmd_TryMeFirst(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryCopycat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryCopycat(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -4599,7 +4599,7 @@ BOOL BtlCmd_TryCopycat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_PunishmentDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_PunishmentDamageCalc(BattleSystem *bsys, BattleContext *ctx) {
     int stat, cnt;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -4620,7 +4620,7 @@ BOOL BtlCmd_PunishmentDamageCalc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TrySuckerPunch(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TrySuckerPunch(BattleSystem *bsys, BattleContext *ctx) {
     int move;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -4642,7 +4642,7 @@ BOOL BtlCmd_TrySuckerPunch(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CheckSideCondition(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_CheckSideCondition(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -4718,7 +4718,7 @@ BOOL BtlCmd_CheckSideCondition(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryFeint(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryFeint(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -4730,7 +4730,7 @@ BOOL BtlCmd_TryFeint(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryPyschoShift(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryPyschoShift(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -4742,7 +4742,7 @@ BOOL BtlCmd_TryPyschoShift(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryLastResort(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryLastResort(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -4756,7 +4756,7 @@ BOOL BtlCmd_TryLastResort(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryToxicSpikes(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryToxicSpikes(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -4774,7 +4774,7 @@ BOOL BtlCmd_TryToxicSpikes(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CheckToxicSpikes(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_CheckToxicSpikes(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -4799,7 +4799,7 @@ BOOL BtlCmd_CheckToxicSpikes(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CheckMoldBreaker(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_CheckMoldBreaker(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
     BattleScriptIncrementPointer(ctx, 1);
 
@@ -4842,7 +4842,7 @@ BOOL BtlCmd_CheckMoldBreaker(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CheckTeammates(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_CheckTeammates(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int sideA = BattleScriptReadWord(ctx);
@@ -4864,7 +4864,7 @@ extern const u16 sPickupTable2[11];
 extern const u8 sPickupWeightTable[9];
 extern const u8 sHoneyGatherChanceTable[10];
 
-BOOL BtlCmd_Pickup(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_Pickup(BattleSystem *bsys, BattleContext *ctx) {
     int rnd, i, j, k;
     u16 species, item;
     u8 ability, lvl;
@@ -4921,7 +4921,7 @@ BOOL BtlCmd_Pickup(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TrickRoom(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TrickRoom(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     ctx->selfTurnData[ctx->battlerIdAttacker].trickRoomFlag = TRUE;
@@ -4929,7 +4929,7 @@ BOOL BtlCmd_TrickRoom(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CheckMoveFinished(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_CheckMoveFinished(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -4943,7 +4943,7 @@ BOOL BtlCmd_CheckMoveFinished(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CheckItemEffect(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_CheckItemEffect(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int flag = BattleScriptReadWord(ctx);
@@ -4964,7 +4964,7 @@ BOOL BtlCmd_CheckItemEffect(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_GetItemHoldEffect(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_GetItemHoldEffect(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -4978,7 +4978,7 @@ BOOL BtlCmd_GetItemHoldEffect(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_GetItemModifier(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_GetItemModifier(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -4992,7 +4992,7 @@ BOOL BtlCmd_GetItemModifier(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 extern const u8 sCamouflageTypeTable[13];
 
-BOOL BtlCmd_TryCamouflage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryCamouflage(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -5021,7 +5021,7 @@ BOOL BtlCmd_TryCamouflage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 extern u16 sNaturePowerMoveTable[];
 
-BOOL BtlCmd_NaturePower(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_NaturePower(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int terrain = BattleSystem_GetTerrainId(bsys);
@@ -5035,7 +5035,7 @@ BOOL BtlCmd_NaturePower(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 
 extern u32 sSecretPowerEffectTable[];
 
-BOOL BtlCmd_SecretPower(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_SecretPower(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int terrain = BattleSystem_GetTerrainId(bsys);
@@ -5047,7 +5047,7 @@ BOOL BtlCmd_SecretPower(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryNaturalGift(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryNaturalGift(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -5063,7 +5063,7 @@ BOOL BtlCmd_TryNaturalGift(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryPluck(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryPluck(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs1 = BattleScriptReadWord(ctx);
@@ -5078,7 +5078,7 @@ BOOL BtlCmd_TryPluck(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryFling(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryFling(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -5090,7 +5090,7 @@ BOOL BtlCmd_TryFling(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_YesNoBox(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_YesNoBox(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     BattleController_EmitDrawYesNoBox(bsys, ctx, 0, 0, BattleScriptReadWord(ctx), 0, 0);
@@ -5098,7 +5098,7 @@ BOOL BtlCmd_YesNoBox(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_YesNoBoxWait(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_YesNoBoxWait(BattleSystem *bsys, BattleContext *ctx) {
     u8 selection = ov12_0225682C(ctx, 0);
 
     if (selection) {
@@ -5121,7 +5121,7 @@ BOOL BtlCmd_YesNoBoxWait(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_MonList(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_MonList(BattleSystem *bsys, BattleContext *ctx) {
     BattleSystem_GetMaxBattlers(bsys);
     BattleScriptIncrementPointer(ctx, 1);
     BattleController_EmitShowMonList(bsys, ctx, 0, 0, 0, 6);
@@ -5130,7 +5130,7 @@ BOOL BtlCmd_MonList(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_MonListWait(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_MonListWait(BattleSystem *bsys, BattleContext *ctx) {
     u8 selection = ov12_0225682C(ctx, 0);
 
     if (selection) {
@@ -5149,7 +5149,7 @@ BOOL BtlCmd_MonListWait(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_SetBattleResults(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_SetBattleResults(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     if (BattleSystem_GetBattleType(bsys) & 4) {
@@ -5159,7 +5159,7 @@ BOOL BtlCmd_SetBattleResults(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CheckStealthRock(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_CheckStealthRock(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -5202,7 +5202,7 @@ BOOL BtlCmd_CheckStealthRock(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CheckEffectActivation(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_CheckEffectActivation(BattleSystem *bsys, BattleContext *ctx) {
     u16 effectChance;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -5226,7 +5226,7 @@ BOOL BtlCmd_CheckEffectActivation(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CheckChatterActivation(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_CheckChatterActivation(BattleSystem *bsys, BattleContext *ctx) {
     u16 effectChance;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -5264,7 +5264,7 @@ BOOL BtlCmd_CheckChatterActivation(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_GetMoveParam(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_GetMoveParam(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     ctx->calcTemp = GetMoveTblAttr(&ctx->unk_334.moveData[ctx->moveNoCur], (MoveAttr) BattleScriptReadWord(ctx));
@@ -5272,7 +5272,7 @@ BOOL BtlCmd_GetMoveParam(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_Mosaic(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_Mosaic(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -5286,7 +5286,7 @@ BOOL BtlCmd_Mosaic(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_ChangeForm(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_ChangeForm(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -5296,13 +5296,13 @@ BOOL BtlCmd_ChangeForm(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_SetBattleBackground(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_SetBattleBackground(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
     BattleController_EmitSetBattleBackground(bsys, 0);
     return FALSE;
 }
 
-BOOL BtlCmd_RecoverStatus(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_RecoverStatus(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -5313,7 +5313,7 @@ BOOL BtlCmd_RecoverStatus(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryRun(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryRun(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -5327,7 +5327,7 @@ BOOL BtlCmd_TryRun(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_InitStartBallGauge(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_InitStartBallGauge(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -5338,7 +5338,7 @@ BOOL BtlCmd_InitStartBallGauge(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_DeleteStartBallGauge(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_DeleteStartBallGauge(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -5349,7 +5349,7 @@ BOOL BtlCmd_DeleteStartBallGauge(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_InitBallGauge(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_InitBallGauge(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -5360,7 +5360,7 @@ BOOL BtlCmd_InitBallGauge(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_DeleteBallGauge(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_DeleteBallGauge(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -5371,7 +5371,7 @@ BOOL BtlCmd_DeleteBallGauge(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_LoadBallGfx(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_LoadBallGfx(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     BattleController_EmitLoadBallGfx(bsys);
@@ -5379,7 +5379,7 @@ BOOL BtlCmd_LoadBallGfx(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_DeleteBallGfx(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_DeleteBallGfx(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     BattleController_EmitDeleteBallGfx(bsys);
@@ -5387,7 +5387,7 @@ BOOL BtlCmd_DeleteBallGfx(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_IncrementGameStat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_IncrementGameStat(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -5401,7 +5401,7 @@ BOOL BtlCmd_IncrementGameStat(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_196(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_196(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -5411,7 +5411,7 @@ BOOL BtlCmd_196(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_CheckAbilityEffectOnHit(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -5422,7 +5422,7 @@ BOOL BtlCmd_CheckAbilityEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_198(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_198(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
     OpponentData *opponentData;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
@@ -5457,7 +5457,7 @@ BOOL BtlCmd_198(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_199(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_199(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
     OpponentData *opponentData;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
@@ -5492,7 +5492,7 @@ BOOL BtlCmd_199(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CheckWhiteout(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_CheckWhiteout(BattleSystem *bsys, BattleContext *ctx) {
     int i;
     int adrs;
     int battlerId;
@@ -5556,7 +5556,7 @@ BOOL BtlCmd_CheckWhiteout(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryAcupressure(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryAcupressure(BattleSystem *bsys, BattleContext *ctx) {
     int i, cnt;
     int statChanges[8];
     BattleScriptIncrementPointer(ctx, 1);
@@ -5580,7 +5580,7 @@ BOOL BtlCmd_TryAcupressure(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_RemoveItem(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_RemoveItem(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -5595,7 +5595,7 @@ BOOL BtlCmd_RemoveItem(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryRecycle(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryRecycle(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -5610,7 +5610,7 @@ BOOL BtlCmd_TryRecycle(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CheckItemEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_CheckItemEffectOnHit(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -5621,7 +5621,7 @@ BOOL BtlCmd_CheckItemEffectOnHit(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_BattleResultMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_BattleResultMessage(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     BattleController_EmitPrintResultMessage(bsys);
@@ -5629,7 +5629,7 @@ BOOL BtlCmd_BattleResultMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_RunAwayMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_RunAwayMessage(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     BattleController_EmitRunAwayMessage(bsys, ctx);
@@ -5637,7 +5637,7 @@ BOOL BtlCmd_RunAwayMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_ForefitMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_ForefitMessage(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     BattleController_EmitForefitMessage(bsys);
@@ -5645,7 +5645,7 @@ BOOL BtlCmd_ForefitMessage(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CheckHoldOnWith1HP(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_CheckHoldOnWith1HP(BattleSystem *bsys, BattleContext *ctx) {
     BOOL flag = FALSE;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -5671,7 +5671,7 @@ BOOL BtlCmd_CheckHoldOnWith1HP(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_TryNaturalCure(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_TryNaturalCure(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -5692,7 +5692,7 @@ BOOL BtlCmd_TryNaturalCure(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CheckSubstitute(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_CheckSubstitute(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -5707,7 +5707,7 @@ BOOL BtlCmd_CheckSubstitute(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CheckCloudNine(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_CheckCloudNine(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -5721,7 +5721,7 @@ BOOL BtlCmd_CheckCloudNine(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_211(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_211(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -5732,7 +5732,7 @@ BOOL BtlCmd_211(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CheckItemEffectOnUTurn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_CheckItemEffectOnUTurn(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -5744,7 +5744,7 @@ BOOL BtlCmd_CheckItemEffectOnUTurn(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_SwapToSubstituteSprite(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_SwapToSubstituteSprite(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -5755,7 +5755,7 @@ BOOL BtlCmd_SwapToSubstituteSprite(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_PlayMoveSE(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_PlayMoveSE(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -5767,7 +5767,7 @@ BOOL BtlCmd_PlayMoveSE(BattleSystem *bsys, BATTLECONTEXT *ctx) {
 }
 
 
-BOOL BtlCmd_PlaySong(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_PlaySong(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -5779,7 +5779,7 @@ BOOL BtlCmd_PlaySong(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CheckSafariEncounterDone(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_CheckSafariEncounterDone(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -5791,7 +5791,7 @@ BOOL BtlCmd_CheckSafariEncounterDone(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_WaitWithoutInterrupt(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_WaitWithoutInterrupt(BattleSystem *bsys, BattleContext *ctx) {
     int tSpeed;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -5816,7 +5816,7 @@ BOOL BtlCmd_WaitWithoutInterrupt(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CheckCurMoveIsType(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_CheckCurMoveIsType(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int type = BattleScriptReadWord(ctx);
@@ -5829,7 +5829,7 @@ BOOL BtlCmd_CheckCurMoveIsType(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_GetMonDataFromNarc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_GetMonDataFromNarc(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int species = BattleScriptReadWord(ctx);
@@ -5843,7 +5843,7 @@ BOOL BtlCmd_GetMonDataFromNarc(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_RefreshMonData(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_RefreshMonData(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -5854,7 +5854,7 @@ BOOL BtlCmd_RefreshMonData(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_222(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_222(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int side = BattleScriptReadWord(ctx);
@@ -5871,7 +5871,7 @@ BOOL BtlCmd_222(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_223(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_223(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int a2 = BattleScriptReadWord(ctx);
@@ -5881,13 +5881,13 @@ BOOL BtlCmd_223(BattleSystem *bsys, BATTLECONTEXT *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_EndScript(BattleSystem *bsys, BATTLECONTEXT *ctx) {
+BOOL BtlCmd_EndScript(BattleSystem *bsys, BattleContext *ctx) {
     ctx->battleContinueFlag = TRUE;
 
     return ov12_0224EC74(ctx);
 }
 
-int BattleScriptReadWord(BATTLECONTEXT *ctx) {
+int BattleScriptReadWord(BattleContext *ctx) {
     int data = ctx->battleScriptBuffer[ctx->scriptSeqNo];
 
     ctx->scriptSeqNo++;
@@ -5895,19 +5895,19 @@ int BattleScriptReadWord(BATTLECONTEXT *ctx) {
     return data;
 }
 
-static void BattleScriptIncrementPointer(BATTLECONTEXT *ctx, int adrs) {
+static void BattleScriptIncrementPointer(BattleContext *ctx, int adrs) {
     ctx->scriptSeqNo += adrs;
 }
 
-static void BattleScriptJump(BATTLECONTEXT *ctx, NarcId narcId, int adrs) {
+static void BattleScriptJump(BattleContext *ctx, NarcId narcId, int adrs) {
     ReadBattleScriptFromNarc(ctx, narcId, adrs);
 }
 
-static void BattleScriptGotoSubscript(BATTLECONTEXT *ctx, NarcId narcId, int adrs) {
+static void BattleScriptGotoSubscript(BattleContext *ctx, NarcId narcId, int adrs) {
     ov12_0224EBDC(ctx, narcId, adrs);
 }
 
-static void *BattleScriptGetVarPointer(BattleSystem *bsys, BATTLECONTEXT *ctx, int var) {
+static void *BattleScriptGetVarPointer(BattleSystem *bsys, BattleContext *ctx, int var) {
     switch (var) {
     case BSCRIPT_VAR_BATTLE_FLAGS:
         return &bsys->battleType;

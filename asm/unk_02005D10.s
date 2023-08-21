@@ -325,8 +325,8 @@ sub_02005F94: ; 0x02005F94
 	pop {r3, pc}
 	thumb_func_end sub_02005F94
 
-	thumb_func_start sub_02005FA0
-sub_02005FA0: ; 0x02005FA0
+	thumb_func_start Sound_Stop
+Sound_Stop: ; 0x02005FA0
 	push {r3, r4, r5, lr}
 	mov r0, #0x10
 	bl GF_SdatGetAttrPtr
@@ -351,7 +351,7 @@ _02005FD0:
 	mov r0, #0
 	bl GF_SndSetState
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02005FA0
+	thumb_func_end Sound_Stop
 
 	thumb_func_start sub_02005FD8
 sub_02005FD8: ; 0x02005FD8

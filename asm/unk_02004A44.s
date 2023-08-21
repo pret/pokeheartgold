@@ -1005,7 +1005,7 @@ _020050F4:
 	mov r0, #1
 	mov r1, #0
 	bl sub_020053A8
-	bl sub_02005FA0
+	bl Sound_Stop
 _02005104:
 	ldrb r0, [r6]
 	cmp r0, #1
@@ -1164,7 +1164,7 @@ sub_02005260: ; 0x02005260
 	add r4, r0, #0
 	mov r0, #0x18
 	bl GF_SdatGetAttrPtr
-	bl sub_02005FA0
+	bl Sound_Stop
 	bl sub_020053F0
 	mov r0, #4
 	bl sub_02005060
@@ -1179,7 +1179,7 @@ sub_02005280: ; 0x02005280
 	add r4, r0, #0
 	mov r0, #0x18
 	bl GF_SdatGetAttrPtr
-	bl sub_02005FA0
+	bl Sound_Stop
 	mov r0, #6
 	bl sub_02005060
 	mov r0, #1
@@ -1196,7 +1196,7 @@ sub_020052A4: ; 0x020052A4
 	add r4, r0, #0
 	mov r0, #0x18
 	bl GF_SdatGetAttrPtr
-	bl sub_02005FA0
+	bl Sound_Stop
 	mov r0, #7
 	bl sub_02005060
 	mov r0, #1
@@ -1228,7 +1228,7 @@ sub_020052E4: ; 0x020052E4
 	mov r0, #0x18
 	add r4, r1, #0
 	bl GF_SdatGetAttrPtr
-	bl sub_02005FA0
+	bl Sound_Stop
 	add r0, r5, #0
 	bl sub_02005060
 	add r0, r4, #0
@@ -2201,13 +2201,13 @@ _020059C6:
 	.balign 4, 0
 	thumb_func_end GF_SndGetAfterFadeDelayTimer
 
-	thumb_func_start sub_020059D0
-sub_020059D0: ; 0x020059D0
+	thumb_func_start Sound_SetMasterVolume
+Sound_SetMasterVolume: ; 0x020059D0
 	ldr r3, _020059D4 ; =NNS_SndSetMasterVolume
 	bx r3
 	.balign 4, 0
 _020059D4: .word NNS_SndSetMasterVolume
-	thumb_func_end sub_020059D0
+	thumb_func_end Sound_SetMasterVolume
 
 	thumb_func_start sub_020059D8
 sub_020059D8: ; 0x020059D8
@@ -2409,7 +2409,7 @@ sub_02005B20: ; 0x02005B20
 	bl sub_020053A8
 	pop {r3, pc}
 _02005B4A:
-	bl sub_02005FA0
+	bl Sound_Stop
 	pop {r3, pc}
 	thumb_func_end sub_02005B20
 

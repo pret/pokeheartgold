@@ -60,7 +60,7 @@ typedef enum Terrain {
 } Terrain;
 
 // Battle outcome
-// Used with BATTLE_SETUP::winFlag
+// Used with BattleSetup::winFlag
 #define BATTLE_OUTCOME_WIN                  1
 #define BATTLE_OUTCOME_LOSE                 2
 #define BATTLE_OUTCOME_DRAW                 3

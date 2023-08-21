@@ -1,6 +1,6 @@
 #include "global.h"
 #include "assert.h"
-#include "battle_command.h"
+#include "battle/battle_command.h"
 #include "field_player_avatar.h"
 #include "fieldmap.h"
 #include "heap.h"

@@ -13,7 +13,7 @@
 .public sub_02003B44
 .public sub_02003B50
 .public sub_02004EC4
-.public sub_02005FA0
+.public Sound_Stop
 .public PlaySE
 .public PlayCry
 .public IsCryFinished

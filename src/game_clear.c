@@ -220,7 +220,7 @@ static BOOL Task_GameClear(TaskManager *taskman) {
         break;
     case 8:
         env->bgmVolume--;
-        sub_020059D0(env->bgmVolume);
+        Sound_SetMasterVolume(env->bgmVolume);
         if (env->bgmVolume == 0) {
             StopBGM(GF_GetCurrentPlayingBGM(), 0);
             sub_0200616C(0);
@@ -238,7 +238,7 @@ static BOOL Task_GameClear(TaskManager *taskman) {
     case 10:
         if (IsPaletteFadeFinished()) {
             GameClearSave_Free(fsys, env);
-            sub_020059D0(127);
+            Sound_SetMasterVolume(127);
             LaunchCreditsApp(fsys, &env->creditsArgs);
             *state += 1;
         }
