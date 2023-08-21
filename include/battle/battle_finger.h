@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_BATTLE_FINGER_H
 #define POKEHEARTGOLD_BATTLE_FINGER_H
 
-#include "battle.h"
+#include "battle/battle.h"
 #include "unk_0200E320.h"
 
 //This file handles the finger that comes up during the catching tutorial

@@ -101,7 +101,7 @@ void FieldSys_RockSmashItemCheck(FieldSystem *fsys, int followMonKnowsHm, u16 *i
 }
 
 static BOOL Task_RockSmashItemCheck(TaskManager *taskman) {
-    BATTLE_SETUP *setup;
+    BattleSetup *setup;
     FieldSystem *fsys = TaskManager_GetFieldSystem(taskman);
     RockSmashItemCheckWork *env = TaskManager_GetEnv(taskman);
 

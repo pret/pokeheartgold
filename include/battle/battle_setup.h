@@ -18,7 +18,7 @@ struct BattleSetupSub_138 {
     int unk_8;
 };
 
-struct BATTLE_SETUP { //declared in trainer_data.h
+struct BattleSetup { //declared in trainer_data.h
     u32 flags; // 0
     Party *party[4]; // 4
     int winFlag; // 14
@@ -69,22 +69,22 @@ struct BATTLE_SETUP { //declared in trainer_data.h
     u8 filler_1D0[4];
 };
 
-BATTLE_SETUP *BattleSetup_New(HeapID heapId, u32 battleFlags);
-BATTLE_SETUP* BattleSetup_New_SafariZone(HeapID heapId, int balls);
-BATTLE_SETUP* BattleSetup_New_BugContest(HeapID heapId, int balls, Pokemon* bugmon);
-BATTLE_SETUP* BattleSetup_New_PalPark(HeapID heapId, int balls);
-BATTLE_SETUP *BattleSetup_New_Tutorial(HeapID heapId, FieldSystem *fsys);
+BattleSetup* BattleSetup_New(HeapID heapId, u32 battleFlags);
+BattleSetup* BattleSetup_New_SafariZone(HeapID heapId, int balls);
+BattleSetup* BattleSetup_New_BugContest(HeapID heapId, int balls, Pokemon* bugmon);
+BattleSetup* BattleSetup_New_PalPark(HeapID heapId, int balls);
+BattleSetup* BattleSetup_New_Tutorial(HeapID heapId, FieldSystem *fsys);
 
 BOOL IsBattleResultWin(u32 a0);
 int sub_02052564(u32 a0);
 int sub_02052574(u32 a0);
-void BattleSetup_Delete(BATTLE_SETUP *setup);
-void sub_02052444(BATTLE_SETUP *setup, FieldSystem *fsys);
-void BattleSetup_InitFromFsys(BATTLE_SETUP *setup, FieldSystem *fsys);
-void sub_020522F0(BATTLE_SETUP *setup, FieldSystem *fsys, void *a1);
-void sub_02051F2C(BATTLE_SETUP *setup, FieldSystem *fsys, int level);
-void sub_020520B0(BATTLE_SETUP *setup, FieldSystem *fsys, Party *party, void *a4);
-BATTLE_SETUP* BattleSetup_New_PalPark(HeapID heapId, int monsRemaining);
-void BattleSetup_AddMonToParty(BATTLE_SETUP* setup, Pokemon* mon, int battler);
+void BattleSetup_Delete(BattleSetup* setup);
+void sub_02052444(BattleSetup* setup, FieldSystem *fsys);
+void BattleSetup_InitFromFsys(BattleSetup* setup, FieldSystem *fsys);
+void sub_020522F0(BattleSetup* setup, FieldSystem *fsys, void *a1);
+void sub_02051F2C(BattleSetup* setup, FieldSystem *fsys, int level);
+void sub_020520B0(BattleSetup* setup, FieldSystem *fsys, Party *party, void *a4);
+BattleSetup* BattleSetup_New_PalPark(HeapID heapId, int monsRemaining);
+void BattleSetup_AddMonToParty(BattleSetup* setup, Pokemon* mon, int battler);
 
 #endif //POKEHEARTGOLD_BATTLE_SETUP_H

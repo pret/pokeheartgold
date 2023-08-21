@@ -17,25 +17,26 @@
 #include "trainer_data.h"
 #include "filesystem.h"
 #include "unk_02023694.h"
+#include "unk_0200E320.h"
 #include "constants/battle.h"
 #include "constants/moves.h"
 
-typedef struct BATTLEMSG {
+typedef struct BattleMessage {
     u8 unk0;
     u8 tag;
     u16 id;
     int param[6];
     int unk1C;
     int battlerId;
-} BATTLEMSG;
+} BattleMessage;
 
-typedef struct BATTLEMSGDATA {
+typedef struct BattleMessageData {
     u8 unk0;
     u8 unk1;
     u16 unk2;
     int unk4[6];
     int unk1C;
-} BATTLEMSGDATA;
+} BattleMessageData;
 
 typedef struct GetterWork GetterWork;
 
@@ -258,7 +259,7 @@ typedef struct BattleMon {
     UnkBattlemonSub unk88;
 } BattleMon;
 
-typedef struct BATTLECONTEXT {
+typedef struct BattleContext {
     u8 unk_0[4];
     u8 unk_4[4];
     ControllerCommand command;
@@ -310,7 +311,7 @@ typedef struct BATTLECONTEXT {
     int unk_DC[4];
     int unk_EC;
     int unk_F0;
-    BATTLEMSG buffMsg;
+    BattleMessage buffMsg;
     int battlerIdTemp;
     int unk_11C;
     int unk_120;
@@ -415,7 +416,7 @@ typedef struct BATTLECONTEXT {
     int battlersOnField;
     u32 battleContinueFlag:1;
     u32 unused:31;
-} BATTLECONTEXT;
+} BattleContext;
 
 typedef struct BattleSystem BattleSystem;
 
@@ -523,7 +524,7 @@ struct BattleSystem {
     u32 unk24;
     PaletteData *palette;
     u32 battleType;
-    BATTLECONTEXT *ctx;
+    BattleContext *ctx;
     OpponentData *opponentData[4];
     int maxBattlers; 
     PlayerProfile *playerProfile[4];
@@ -601,6 +602,7 @@ struct BattleSystem {
     int unk2440;
     u8 unk2442;
     u8 unk2445;
+    u16 unk2446;
     u32 rand;
     u32 randTemp;
     u16 unk244C[4];
@@ -613,12 +615,15 @@ struct BattleSystem {
         unk2474_3:1,
         unk2474_4:28;
     u32 unk2478;
-    u8 unk247C[4];
+    SysTask *unk247C;
+    u8 chatotVoiceParam[4];
+    u32 unk2488;
+    u8 unk248C[4];
 };
 
 struct GetterWork {
     BattleSystem *bsys;
-    BATTLECONTEXT *ctx;
+    BattleContext *ctx;
     u32 unk8;
     u32 unkC[2];
     u32 unk14;
@@ -630,7 +635,7 @@ struct GetterWork {
     void *unk50[2];
 }; //size: 0x58
 
-typedef BOOL (*BtlCmdFunc)(BattleSystem*, BATTLECONTEXT*);
+typedef BOOL (*BtlCmdFunc)(BattleSystem*, BattleContext*);
 
 typedef struct {
     u16 unk0;

@@ -2,14 +2,14 @@
 #define POKEHEARTGOLD_BATTLE_SYSTEM_H
 
 #include "bag.h"
-#include "battle.h"
-#include "battle_setup.h"
+#include "battle/battle.h"
+#include "battle/battle_setup.h"
 #include "pokemon.h"
 
 BgConfig *BattleSystem_GetBgConfig(BattleSystem *bsys);
 Window *BattleSystem_GetWindow(BattleSystem *bsys, int index);
 u32 BattleSystem_GetBattleType(BattleSystem *bsys);
-BATTLECONTEXT *BattleSystem_GetBattleContext(BattleSystem *bsys);
+BattleContext *BattleSystem_GetBattleContext(BattleSystem *bsys);
 OpponentData *BattleSystem_GetOpponentData(BattleSystem *bsys, int battlerId);
 int BattleSystem_GetMaxBattlers(BattleSystem *bsys);
 Party *BattleSystem_GetParty(BattleSystem *bsys, int battlerId);
@@ -63,7 +63,7 @@ u32 BattleSystem_GetBattleSpecial(BattleSystem *bsys);
 int BattleSystem_GetTimezone(BattleSystem *bsys);
 int ov12_0223B52C(BattleSystem *bsys);
 u8 ov12_0223B580(BattleSystem *bsys, int battlerId, u8 a2);
-u16 BattleSystem_CheckEvolution(BATTLE_SETUP *setup, int *selectedMonIndex, int *evolutionCondition);
+u16 BattleSystem_CheckEvolution(BattleSetup *setup, int *selectedMonIndex, int *evolutionCondition);
 u8 ov12_0223B688(BattleSystem *bsys);
 u8 ov12_0223B694(BattleSystem *bsys);
 int BattleSystem_GetSafariBallCount(BattleSystem *bsys);
@@ -119,21 +119,35 @@ void ov12_0223BD8C(BattleSystem *bsys, int a1);
 u16 BattleSystem_Random(BattleSystem *bsys);
 u32 BattleSystem_GetRandTemp(BattleSystem *bsys);
 void BattleSystem_SetRandTemp(BattleSystem *bsys, u32 temp);
+void ov12_0223BDDC(BattleSystem *bsys, int battlerId, u8 data);
+BOOL ov12_0223BE0C(BattleSystem *bsys, int battlerId, u8 *data);
+u8 ov12_0223BE68(BattleSystem *bsys, u8 *buffer);
+void ov12_0223BF14(BattleSystem *bsys, u16 size, u8 *buffer);
+u16 ov12_0223BFC0(BattleSystem *bsys);
+int ov12_0223BFCC(BattleSystem *bsys, u16 battlerId);
+u16 BattleSystem_GetTrainerItem(BattleSystem *bsys, int battlerId, int index);
+BOOL ov12_0223BFEC(BattleSystem *bsys);
+void ov12_0223BFFC(BattleSystem *bsys, u32 flag);
+BOOL ov12_0223C080(BattleSystem *bsys);
+void ov12_0223C0C4(BattleSystem *bsys);
+u8 BattleSystem_GetChatotVoiceParam(BattleSystem *bsys, int battlerId);
+u32 ov12_0223C134(BattleSystem *bsys);
+u8 ov12_0223C140(BattleSystem *bsys, u32 battlerId);
+void ov12_0223C1A0(BattleSystem *bsys, u8 *buffer);
+void ov12_0223C1C4(BattleSystem *bsys, u8 *buffer);
+void ov12_0223C1F4(BattleSystem *bsys, void **a1);
+void ov12_0223C224(BattleSystem *bsys, int a1);
+u32 CalcMoneyLoss(Party *party, PlayerProfile *profile);
 
 //These functions haven't been decompiled
-void ov12_0223BDDC(BattleSystem *bsys, int battlerId, u8 a2);
 void PokedexSetBattlerSeen(BattleSystem *bsys, int battlerId);
-int BattleSystem_GetChatotVoiceParam(BattleSystem *bsys, int battlerId);
-BOOL Link_QueueNotEmpty(BATTLECONTEXT *ctx);
-BOOL ov12_0223C080(BattleSystem *bsys);
-void ov12_0223BFFC(BattleSystem *bsys, u32 a1);
-void ov12_0223C0C4(BattleSystem *bsys);
-BOOL ov12_0223BFEC(BattleSystem *bsys);
+BOOL Link_QueueNotEmpty(BattleContext *ctx);
 void ov12_02237ED0(BattleSystem *bsys, int a1);
 void ov12_022642F0(BattleSystem *bsys);
-BOOL ov12_022581BC(BattleSystem *bsys, BATTLECONTEXT *ctx);
-void ov12_02263A1C(BattleSystem *bsys, BATTLECONTEXT *ctx, int battlerId);
+BOOL ov12_022581BC(BattleSystem *bsys, BattleContext *ctx);
+void ov12_02263A1C(BattleSystem *bsys, BattleContext *ctx, int battlerId);
 void ov12_02266008(UnkBattleSystemSub17C *a0);
 BattleHpBar *OpponentData_GetHpBar(OpponentData *opponentData);
+void ov12_0226AA8C(u32 *a1, u32 flag);
 
 #endif

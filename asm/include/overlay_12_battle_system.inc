@@ -2,8 +2,8 @@
 #pragma once
 .public FontID_String_GetWidth
 .public PaletteData_GetUnfadedBuf
-.public sub_020059D0
-.public sub_02005FA0
+.public Sound_SetMasterVolume
+.public Sound_Stop
 .public PlaySE
 .public GF_IsAnySEPlaying
 .public PlayFanfare
@@ -184,7 +184,7 @@
 .public ov12_0223BF14
 .public ov12_0223BFC0
 .public ov12_0223BFCC
-.public ov12_0223BFDC
+.public BattleSystem_GetTrainerItem
 .public ov12_0223BFEC
 .public ov12_0223BFFC
 .public ov12_0223C080
@@ -196,7 +196,7 @@
 .public ov12_0223C1C4
 .public ov12_0223C1F4
 .public ov12_0223C224
-.public ov12_0223C24C
+.public CalcMoneyLoss
 .public PokedexSetBattlerSeen
 .public ov12_0223C2F0
 .public ov12_0223C330
