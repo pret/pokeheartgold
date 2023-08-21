@@ -10,6 +10,7 @@
 #include "friend_group.h"
 #include "string_control_code.h"
 #include "constants/map_sections.h"
+#include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0445.h"
 #include "msgdata/msg/msg_0040.h"
 #include "msgdata/msg/msg_0313.h"

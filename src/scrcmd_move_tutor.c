@@ -15,6 +15,7 @@
 #include "script_pokemon_util.h"
 #include "script.h"
 #include "constants/species.h"
+#include "msgdata/msg.naix"
 
 // Note: move tutors for Blast Burn, Hydro Cannon, Frenzy Plant
 // and Draco Meteor are handled separately in scr_seq_0948_T30R0601.s

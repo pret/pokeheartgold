@@ -11,6 +11,7 @@
 #include "message_format.h"
 #include "constants/items.h"
 
+#include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0010.h"
 #include "msgdata/msg/msg_0040.h"
 

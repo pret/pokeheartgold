@@ -12,12 +12,6 @@
 
 #include "pm_string.h"
 
-#include "msgdata/msg/msg_0294.h"
-#include "msgdata/msg/msg_0296.h"
-#include "msgdata/msg/msg_0292.h"
-#include "msgdata/msg/msg_0293.h"
-#include "msgdata/msg/msg_0295.h"
-
 #ifndef PM_ASM
 
 typedef struct MailMessageTemplate {

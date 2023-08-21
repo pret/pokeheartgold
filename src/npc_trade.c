@@ -12,6 +12,7 @@
 #include "constants/maps.h"
 #include "constants/items.h"
 #include "unk_02055418.h"
+#include "msgdata/msg.naix"
 
 static String *_GetNpcTradeName(HeapID heapId, s32 msgno);
 static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, u32 tradeno, u32 mapno, u32 met_level_strat, HeapID heapId);
