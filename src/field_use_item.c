@@ -28,6 +28,7 @@
 #include "fielddata/script/scr_seq/event_D24R0206.h"
 #include "msgdata/msg/msg_0010.h"
 #include "script.h"
+#include "msgdata/msg.naix"
 
 struct ItemUseFuncDat {
     ItemMenuUseFunc menu;

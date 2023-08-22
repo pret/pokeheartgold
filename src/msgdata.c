@@ -2,6 +2,7 @@
 #include "heap.h"
 #include "msgdata.h"
 #include "message_format.h"
+#include "msgdata/msg.naix"
 
 static void CopyEncryptedMessage16(u16 *dest, const u16 *src, MAT_ENTRY *alloc);
 static void ReadMsgData_ExistingNarc_ExistingString(NARC * narc, u32 group, u32 num, HeapID heapId, String * dest);

@@ -12,6 +12,7 @@
 #include "text.h"
 #include "text_0205B4EC.h"
 #include "bg_window.h"
+#include "msgdata/msg.naix"
 
 typedef struct MessageBox {
     String *message;

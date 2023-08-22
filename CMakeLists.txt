@@ -17,6 +17,6 @@ add_compile_options(-fms-extensions)
 file(GLOB_RECURSE SOURCES "*.c" "*.cpp" "*.s")
 
 add_executable(PokeHeartGold ${SOURCES})
-target_include_directories(PokeHeartGold PRIVATE include files lib/include lib/include/cw lib/include/nitro lib/include/nnsys lib/include/nitro/os)
-target_compile_definitions(PokeHeartGold PUBLIC __CLION_IDE__)
+target_include_directories(PokeHeartGold PRIVATE include files lib/include lib/include/cw lib/include/nitro lib/include/nnsys lib/include/nitro/os include/library)
+target_compile_definitions(PokeHeartGold PUBLIC __CLION_IDE__ SDK_ARM9)
 target_compile_options(PokeHeartGold PRIVATE -include ${CMAKE_CURRENT_SOURCE_DIR}/include/global.h)

@@ -27,6 +27,7 @@
 #include "credits/credits.h"
 #include "msgdata/msg/msg_0040.h"
 #include "render_window.h"
+#include "msgdata/msg.naix"
 
 #define WAIT_SE_SAVE_FRAMES   32
 #define SCREEN_FADEOUT_FRAMES 32

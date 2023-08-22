@@ -12,6 +12,7 @@
 #include "ribbon.h"
 #include "sys_vars.h"
 #include "unk_0205BB1C.h"
+#include "msgdata/msg.naix"
 
 static String* _get_species_name(u16 species, HeapID heapId);
 

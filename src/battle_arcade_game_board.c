@@ -30,6 +30,8 @@
 #include "unk_0200ACF0.h"
 #include "pokemon_icon_idx.h"
 
+#include "msgdata/msg.naix"
+
 FS_EXTERN_OVERLAY(OVY_80);
 
 static u8 s_0223FA20[2];

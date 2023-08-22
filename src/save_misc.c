@@ -2,6 +2,8 @@
 #include "save_misc_data.h"
 #include "apricorn_tree.h"
 #include "easy_chat.h"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0295.h"
 #include "msgdata/msg/msg_0287.h"
 
 void Save_BerryPots_Init(BERRY_POT *berryPot) {

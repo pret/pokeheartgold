@@ -13,6 +13,7 @@
 #include "brightness.h"
 #include "text.h"
 #include "font.h"
+#include "msgdata/msg.naix"
 
 static const GraphicsBanks sWFCWarningMsgBanksConfig = {
     .bg = GX_VRAM_BG_256_AB,

@@ -2,6 +2,7 @@
 #include "pokemon_storage_system.h"
 #include "msgdata.h"
 #include "pokemon.h"
+#include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0024.h"
 
 void PCStorage_InitializeBoxes(PC_STORAGE *storage);

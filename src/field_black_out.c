@@ -17,6 +17,7 @@
 #include "use_item_on_mon.h"
 #include "sound.h"
 #include "msgdata/msg/msg_0203.h"
+#include "msgdata/msg.naix"
 
 struct BlackoutScreenWork {
     int state;

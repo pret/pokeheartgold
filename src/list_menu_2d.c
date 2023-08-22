@@ -7,6 +7,7 @@
 #include "render_window.h"
 #include "constants/sndseq.h"
 #include "msgdata/msg/msg_0191.h"
+#include "msgdata/msg.naix"
 
 static struct ListMenu2D *Create2dMenuInternalEx(const struct ListMenu2DTemplate *template, u8 x, u8 y, u8 initialSelection, u8 heapId, int cancelKey);
 static struct ListMenu2D *Create2dMenuInternal(const struct ListMenu2DTemplate *template, u8 x, u8 y, u8 initialSelection, u8 heapId, int cancelKey);
