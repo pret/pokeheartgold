@@ -25,6 +25,9 @@ static int AlphPuzzleMainSeq_6(AlphPuzzleData *data);
 static void ov110_021E5BE4(AlphPuzzleData *data);
 //static void ov110_021E5C18(AlphPuzzleData *data);
 static void ov110_021E5C3C(AlphPuzzleData *data);
+static int ov110_021E5CCC(AlphPuzzleData *data);
+static s32 ov110_021E5D30(AlphPuzzleData *data, u16 touchX, u16 touchY);
+//static int ov110_021E5D90(AlphPuzzleData *data, u8 *xOut, u8 *yOut);
 
 BOOL ov110_AlphPuzzle_OvyInit(OVY_MANAGER *man, int *state) {
     switch (*state) {
@@ -257,4 +260,81 @@ static int ov110_021E5C60(AlphPuzzleData *data) {
     PlaySE(SEQ_SE_GS_SEKIBAN_SENTAKU);
     data->unk4 = 1;
     return ALPH_PUZZLE_STATE_2;
+}
+
+static int ov110_021E5CCC(AlphPuzzleData *data) {
+    if (!System_GetTouchHeld()) {
+        data->unkE = 0;
+        return ALPH_PUZZLE_STATE_4;
+    }
+    if (data->unkE++ >= 2) {
+        data->unkE = 0;
+        data->unk1C = (data->unk15C->unk0 << 5) + 0x40;
+        data->unk1E = (data->unk15C->unk1 << 5) + 0x20;
+        data->unk22 = data->unk15C->unk0;
+        data->unk23 = data->unk15C->unk1;
+        ov110_021E6A44(data, data->unk15C->unk0, data->unk15C->unk1, 3);
+        return ALPH_PUZZLE_STATE_3;
+    }
+    return ALPH_PUZZLE_STATE_2;
+}
+
+s32 ov110_021E5D30(AlphPuzzleData *data, u16 touchX, u16 touchY) {
+    u16 x = touchX;
+    u16 y = touchY;
+    
+    if (x < 32 || x >= 224) {
+        return -1;
+    }
+
+    x = (x - 32) / 32;
+    y = y / 32;
+
+    for (s32 i = 0; i < 16; i++) {
+        if (data->unkDC[i].x == x && data->unkDC[i].y == y) {
+            if (data->unkDC[i].unk3) {
+                return -1;
+            }
+            return i;
+        } 
+    }
+
+    return -1;
+}
+
+extern u8 ov110_021E6D9C[4][2];
+
+int ov110_021E5D90(AlphPuzzleData *data, u8 *xOut, u8 *yOut) { 
+    int i;
+    
+    *xOut = 0;
+    *yOut = 0;
+
+    s16 x = data->unk1C;
+    u16 x2;
+    u16 y2;
+    
+    if (x < 32 || x >= 224) {
+        return FALSE;
+    }
+
+    x2 = (x - 32) / 32;
+    y2 = ((s16)data->unk1E) / 32;
+
+    for (i = 0; i < 4; i++) {
+        if (x2 == ov110_021E6D9C[i][0] && y2 == ov110_021E6D9C[i][1]) {
+            return FALSE;
+        }
+    }
+
+    for (i = 0; i < 16; i++) {
+        if (data->unk1B != i && data->unkDC[i].x == x2 && data->unkDC[i].y == y2) {
+            return FALSE;
+        }
+    }
+
+    *xOut = x2;
+    *yOut = y2;
+    
+    return TRUE;
 }

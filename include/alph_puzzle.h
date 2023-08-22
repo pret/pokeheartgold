@@ -15,19 +15,38 @@ typedef struct UnkAlphSub_10 {
     SaveData *savedata;
 } UnkAlphSub_10;
 
+typedef struct UnkAlphSub_15C {
+    u8 unk0;
+    u8 unk1;
+    u16 unk2;
+} UnkAlphSub_15C;
+
+typedef struct UnkAlphSub_DC {
+    u8 x;
+    u8 y;
+    u8 unk2;
+    u8 unk3;
+    u32 unk4;
+} UnkAlphSub_DC;
+
 typedef struct AlphPuzzleData {
     HeapID heapId;
     int unk4;
     int unkState;
-    u32 unkC;
+    u16 unkC;
+    u16 unkE;
     UnkAlphSub_10 *unk10;
     BgConfig *bgConfig;
     u8 unk18;
     u8 unk19;
     u8 unk1A;
     u8 unk1B;
-    u32 unk1C;
-    u32 unk20;
+    u16 unk1C;
+    u16 unk1E;
+    u8 unk20;
+    u8 unk21;
+    u8 unk22;
+    u8 unk23;
     u8 unk24;
     u8 textFrameDelay;
     u8 frame;
@@ -37,7 +56,9 @@ typedef struct AlphPuzzleData {
     u32 unk30;
     u8 unk34[0x54];
     UnkStruct_0200CF18 *unk88;
-    u8 unk8C[0xD4];
+    u8 unk8C[0x50];
+    UnkAlphSub_DC unkDC[16];
+    UnkAlphSub_15C *unk15C;
 } AlphPuzzleData;
 
 BOOL ov110_AlphPuzzle_OvyInit(OVY_MANAGER *man, int *state);
@@ -50,11 +71,11 @@ BOOL ov110_021E5AD4(AlphPuzzleData *data);
 BOOL ov110_021E5B0C(AlphPuzzleData *data);
 
 void ov110_021E5C18(AlphPuzzleData *data);
+int ov110_021E5D90(AlphPuzzleData *data, u8 *xOut, u8 *yOut);
 
 //the following functions haven't been decompiled yet
 void ov110_021E5C18(AlphPuzzleData *data);
 int ov110_021E5C60(AlphPuzzleData *data);
-int ov110_021E5CCC(AlphPuzzleData *data);
 int ov110_021E5E1C(AlphPuzzleData *data);
 int ov110_021E5F84(AlphPuzzleData *data);
 int ov110_021E6014(AlphPuzzleData *data);
@@ -73,8 +94,8 @@ int ov110_021E6544(AlphPuzzleData *data);
 int ov110_021E6348(AlphPuzzleData *data);
 void ov110_021E6904(AlphPuzzleData *data, int a1);
 void ov110_021E6A04(AlphPuzzleData *data);
-int ov110_021E5D30(AlphPuzzleData *data, u16 touchX, u16 touchY);
 void ov110_021E6C58(AlphPuzzleData *, u8, int);
 void ov110_021E6D20(AlphPuzzleData *data);
+void ov110_021E6A44(AlphPuzzleData *data, u8 a1, u8 a2, int a3);
 
 #endif //POKEHEARTGOLD_ALPH_PUZZLE_H
