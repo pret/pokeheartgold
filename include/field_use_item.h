@@ -34,7 +34,7 @@ struct AlphItemUseData {
 typedef void *(*FieldApplicationWorkCtor)(FieldSystem *fieldSystem);
 
 struct ItemFieldUseData {
-    FieldSystem *fieldSystem;             // 00
+    FieldSystem *fieldSystem;      // 00
     struct ItemCheckUseData dat;   // 04
     FieldApplicationWorkCtor ctor; // 1C
     void *work;                    // 20
