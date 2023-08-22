@@ -218,7 +218,7 @@
 .public BattleSetup_New_SafariZone
 .public BattleSetup_New_BugContest
 .public BattleSetup_Delete
-.public BattleSetup_InitFromFsys
+.public BattleSetup_InitFromFieldSystem
 .public sub_02052544
 .public sub_02053B04
 .public GetFirstAliveMonInParty_CrashIfNone
@@ -309,10 +309,10 @@
 .public FollowPokeObj_GetSpecies
 .public FollowingPokemon_IsActive
 .public sub_02069FB0
-.public FsysUnkSub108_AddMonMood
-.public FsysUnkSub108_SetMonMood
-.public FsysUnkSub108_GetMonMood
-.public FieldSys_BugContest_Get
+.public FieldSystemUnkSub108_AddMonMood
+.public FieldSystemUnkSub108_SetMonMood
+.public FieldSystemUnkSub108_GetMonMood
+.public FieldSystem_BugContest_Get
 .public BugContest_GetSportBallsAddr
 .public ZeroMonData
 .public AllocMonZeroed
@@ -503,7 +503,7 @@
 .public ov02_0224E4EC
 .public ov02_0224E698
 .public ov02_0224E754
-.public Fsys_FollowPokeInteract
+.public FieldSystem_FollowPokeInteract
 .public ov02_0224F864
 .public ov02_0224F8F4
 .public ov02_02250780

@@ -47,7 +47,7 @@ sub_02092B40: ; 0x02092B40
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl FieldSys_ApplicationIsRunning
+	bl FieldSystem_ApplicationIsRunning
 	cmp r0, #0
 	beq _02092B52
 	mov r0, #0x18

@@ -74,13 +74,13 @@
 .public sub_02039918
 .public sub_0203993C
 .public sub_0203996C
-.public FieldSys_LaunchApplication
+.public FieldSystem_LaunchApplication
 .public sub_0203E2F4
 .public FieldSystem_GetSaveDataPtr
 .public sub_0203F7B0
-.public FieldSys_CreateTask
-.public Fsys_TaskIsRunning
-.public FieldSys_ApplicationIsRunning
+.public FieldSystem_CreateTask
+.public FieldSystem_TaskIsRunning
+.public FieldSystem_ApplicationIsRunning
 .public sub_020505C0
 .public sub_020505C8
 .public TaskManager_GetFieldSystem

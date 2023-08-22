@@ -12,6 +12,7 @@
 #include "constants/maps.h"
 #include "constants/items.h"
 #include "unk_02055418.h"
+#include "msgdata/msg.naix"
 
 static String *_GetNpcTradeName(HeapID heapId, s32 msgno);
 static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, u32 tradeno, u32 mapno, u32 met_level_strat, HeapID heapId);
@@ -47,7 +48,7 @@ void NPCTradeApp_Delete(NPCTradeAppData *work) {
     FreeToHeap(work);
 }
 
-void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fsys, u8 tradeno, u8 level, u16 mapno) {
+void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fieldSystem, u8 tradeno, u8 level, u16 mapno) {
     Party *party;
     Pokemon *mon;
     NPCTrade *trade_dat;
@@ -59,8 +60,8 @@ void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fsys, u8 tradeno, u8 level, u16 ma
     mon = AllocMonZeroed(HEAP_ID_FIELD);
     trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeno, FALSE, HEAP_ID_FIELD, TRUE);
     _CreateTradeMon(mon, trade_dat, level, tradeno, mapno, 7, HEAP_ID_FIELD);
-    UpdatePokedexWithReceivedSpecies(fsys->savedata, mon);
-    party = SaveArray_Party_Get(fsys->savedata);
+    UpdatePokedexWithReceivedSpecies(fieldSystem->savedata, mon);
+    party = SaveArray_Party_Get(fieldSystem->savedata);
     Party_AddMon(party, mon);
     if (tradeno == 7) {
         kenya = Party_GetMonByIndex(party, Party_GetCount(party) - 1);
@@ -94,14 +95,14 @@ Mail *NPCTrade_MakeKenyaMail(void) {
     return mail;
 }
 
-int NPCTrade_CanGiveUpLoanMon(FieldSystem *fsys, u8 tradeno, u8 idx) {
+int NPCTrade_CanGiveUpLoanMon(FieldSystem *fieldSystem, u8 tradeno, u8 idx) {
     Party *party;
     Pokemon *mon, *cur_poke;
     u8 capsule;
     u16 heldItem;
     int i, n, party_count;
 
-    party = SaveArray_Party_Get(fsys->savedata);
+    party = SaveArray_Party_Get(fieldSystem->savedata);
     mon = Party_GetMonByIndex(party, idx);
     if (!MonIsInGameTradePoke(mon, tradeno)) {
         return 1;
@@ -144,25 +145,25 @@ int NPCTradeApp_GetUnusedFlag(NPCTradeAppData *work) {
     return work->trade_dat->unk_50;
 }
 
-void NPCTrade_ReceiveMonToSlot(FieldSystem *fsys, NPCTradeAppData *work, int slot) {
-    Party_SafeCopyMonToSlot_ResetUnkSub(SaveArray_Party_Get(fsys->savedata), slot, work->mon);
-    UpdatePokedexWithReceivedSpecies(fsys->savedata, work->mon);
+void NPCTrade_ReceiveMonToSlot(FieldSystem *fieldSystem, NPCTradeAppData *work, int slot) {
+    Party_SafeCopyMonToSlot_ResetUnkSub(SaveArray_Party_Get(fieldSystem->savedata), slot, work->mon);
+    UpdatePokedexWithReceivedSpecies(fieldSystem->savedata, work->mon);
 }
 
-void NPCTrade_CreateTradeAnim(FieldSystem *fsys, NPCTradeAppData *work, int slot, TRADE_ANIM_WORK *anim_work, Pokemon *my_mon_buf, Pokemon *trade_mon_buf) {
+void NPCTrade_CreateTradeAnim(FieldSystem *fieldSystem, NPCTradeAppData *work, int slot, TRADE_ANIM_WORK *anim_work, Pokemon *my_mon_buf, Pokemon *trade_mon_buf) {
     Pokemon *my_poke;
     u32 time_of_day;
 
-    my_poke = Party_GetMonByIndex(SaveArray_Party_Get(fsys->savedata), slot);
-    _CreateTradeMon(work->mon, work->trade_dat, GetMonData(my_poke, MON_DATA_LEVEL, NULL), work->tradeno, fsys->location->mapId, 1, work->heapId);
+    my_poke = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->savedata), slot);
+    _CreateTradeMon(work->mon, work->trade_dat, GetMonData(my_poke, MON_DATA_LEVEL, NULL), work->tradeno, fieldSystem->location->mapId, 1, work->heapId);
     CopyPokemonToPokemon(my_poke, my_mon_buf);
     CopyPokemonToPokemon(work->mon, trade_mon_buf);
     anim_work->my_boxmon = Mon_GetBoxMon(my_mon_buf);
     anim_work->trade_boxmon = Mon_GetBoxMon(trade_mon_buf);
     anim_work->trade_profile = work->profile;
     anim_work->is_ingame = 1;
-    anim_work->options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
-    time_of_day = Field_GetTimeOfDay(fsys);
+    anim_work->options = Save_PlayerData_GetOptionsAddr(fieldSystem->savedata);
+    time_of_day = Field_GetTimeOfDay(fieldSystem);
     if (time_of_day == RTC_TIMEOFDAY_MORN || time_of_day == RTC_TIMEOFDAY_DAY) {
         anim_work->time_of_day = 0;
     } else if (time_of_day == RTC_TIMEOFDAY_EVE) {

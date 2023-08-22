@@ -7,11 +7,11 @@
 
 BOOL MonIsInGameTradePoke(Pokemon *mon, u8 tradeno);
 BOOL sub_0206D8D0(Pokemon *mon, SaveData *saveData);
-BUGCONTEST *FieldSys_BugContest_Get(FieldSystem *fsys);
+BUGCONTEST *FieldSystem_BugContest_Get(FieldSystem *fieldSystem);
 u16 *BugContest_GetSportBallsAddr(BUGCONTEST *contest);
-void FieldSys_IncrementBugContestTimer(FieldSystem *fsys, int a1);
-void Fsys_InitMystriStageGymmick(FieldSystem *fsys);
-void sub_0206DB58(TaskManager *taskman, FieldSystem *fsys);
+void FieldSystem_IncrementBugContestTimer(FieldSystem *fieldSystem, int a1);
+void FieldSystem_InitMystriStageGymmick(FieldSystem *fieldSystem);
+void sub_0206DB58(TaskManager *taskman, FieldSystem *fieldSystem);
 void sub_0206DB94(TaskManager *man, Pokemon* a1);
 
 #endif //POKEHEARTGOLD_UNK_0206D494_H

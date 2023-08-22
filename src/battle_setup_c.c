@@ -12,12 +12,13 @@
 #include "unk_0202CA24.h"
 #include "sys_flags.h"
 #include "save_pokegear.h"
+#include "msgdata/msg.naix"
 #include "constants/battle.h"
 
 void BattleSetup_SetParty(BattleSetup* setup, Party* party, int battlerId);
 void BattleSetup_SetProfile(BattleSetup* setup, PlayerProfile* profile, int battlerId);
 void BattleSetup_SetChatotVoiceClip(BattleSetup* setup, SOUND_CHATOT* chatot, int battlerId);
-void sub_02052504(BattleSetup* setup, FieldSystem* fsys);
+void sub_02052504(BattleSetup* setup, FieldSystem* fieldSystem);
 void sub_02052580(BattleSetup* setup);
 
 BattleSetup* BattleSetup_New(HeapID heapId, u32 battleTypeFlags) {
@@ -96,11 +97,11 @@ BattleSetup* BattleSetup_New_PalPark(HeapID heapId, int balls) {
     return setup;
 }
 
-BattleSetup* BattleSetup_New_Tutorial(HeapID heapId, FieldSystem* fsys) {
-    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(fsys->savedata);
-    OPTIONS* options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
+BattleSetup* BattleSetup_New_Tutorial(HeapID heapId, FieldSystem* fieldSystem) {
+    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(fieldSystem->savedata);
+    OPTIONS* options = Save_PlayerData_GetOptionsAddr(fieldSystem->savedata);
     BattleSetup* setup = BattleSetup_New(heapId, BATTLE_TYPE_TUTORIAL);
-    setup->saveData = fsys->savedata;
+    setup->saveData = fieldSystem->savedata;
     {
     MsgData* msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0445_bin, heapId);
     {
@@ -112,9 +113,9 @@ BattleSetup* BattleSetup_New_Tutorial(HeapID heapId, FieldSystem* fsys) {
     DestroyMsgData(msgData);
     }
     PlayerProfile_SetTrainerGender(setup->profile[0], PlayerProfile_GetTrainerGender(profile) ^ 1);
-    sub_02052504(setup, fsys);
+    sub_02052504(setup, fieldSystem);
     Options_Copy(options, setup->options);
-    setup->timeOfDay = Field_GetTimeOfDay(fsys);
+    setup->timeOfDay = Field_GetTimeOfDay(fieldSystem);
     Bag_AddItem(setup->bag, ITEM_POKE_BALL, 20, heapId);
     {
     Pokemon* pokemon = AllocMonZeroed(heapId);
@@ -125,11 +126,11 @@ BattleSetup* BattleSetup_New_Tutorial(HeapID heapId, FieldSystem* fsys) {
     FreeToHeap(pokemon);
     }
     setup->unk1CC[0] = 0;
-    setup->storagePC = GetStoragePCPointer(fsys->savedata);
-    setup->unk_10C = fsys->unk94;
+    setup->storagePC = GetStoragePCPointer(fieldSystem->savedata);
+    setup->unk_10C = fieldSystem->unk94;
     setup->unk1B8 = NULL;
-    setup->gameStats = Save_GameStats_Get(fsys->savedata);
-    setup->mapNumber = fsys->location->mapId;
+    setup->gameStats = Save_GameStats_Get(fieldSystem->savedata);
+    setup->mapNumber = fieldSystem->location->mapId;
     sub_02052580(setup);
     return setup;
 }
@@ -179,7 +180,7 @@ void BattleSetup_SetChatotVoiceClip(BattleSetup* setup, SOUND_CHATOT* chatot, in
     Chatot_Copy(setup->chatot[battlerId], chatot);
 }
 
-void sub_02051D18(BattleSetup* setup, FieldSystem* fsys, SaveData* savedata, u32 mapno, void* arg4, void* arg5) {
+void sub_02051D18(BattleSetup* setup, FieldSystem* fieldSystem, SaveData* savedata, u32 mapno, void* arg4, void* arg5) {
     PlayerProfile* profile; // sp1C
     Party* party; // sp18
     Bag* bag; // sp14
@@ -198,18 +199,18 @@ void sub_02051D18(BattleSetup* setup, FieldSystem* fsys, SaveData* savedata, u32
     options = Save_PlayerData_GetOptionsAddr(savedata);
     local = Save_LocalFieldData_Get(savedata);
 
-    if (fsys != NULL) {
+    if (fieldSystem != NULL) {
         forceNite = FALSE;
-        battle_bg = MapHeader_GetBattleBg(fsys->location->mapId);
+        battle_bg = MapHeader_GetBattleBg(fieldSystem->location->mapId);
         if (battle_bg == 9 || battle_bg == 10 || battle_bg == 11) {
             forceNite = TRUE;
         }
-        sub_02052504(setup, fsys);
-        setup->timeOfDay = Field_GetTimeOfDay(fsys);
+        sub_02052504(setup, fieldSystem);
+        setup->timeOfDay = Field_GetTimeOfDay(fieldSystem);
         if (forceNite) {
             setup->timeOfDay = RTC_TIMEOFDAY_NITE;
         }
-        if (FollowingPokemon_IsActive(fsys) && sub_02069FB0(fsys)) {
+        if (FollowingPokemon_IsActive(fieldSystem) && sub_02069FB0(fieldSystem)) {
             setup->unk1CC[0] = Save_GetPartyLeadAlive(savedata);
         }
     } else {

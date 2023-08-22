@@ -31,13 +31,13 @@ void BugContest_InitEncounters(BUGCONTEST *bugContest);
 void BugContest_RestoreParty_RetrieveCaughtPokemon(BUGCONTEST *bugContest);
 u16 BugContest_JudgePlayerMon(BUGCONTEST *bugContest, Pokemon *mon);
 
-BUGCONTEST *BugContest_New(FieldSystem *fsys, u32 weekday) {
+BUGCONTEST *BugContest_New(FieldSystem *fieldSystem, u32 weekday) {
     BUGCONTEST *bugContest;
 
     bugContest = (BUGCONTEST *)AllocFromHeap(HEAP_ID_3, sizeof(BUGCONTEST));
     MI_CpuClear8(bugContest, sizeof(BUGCONTEST));
     bugContest->heapId = HEAP_ID_3;
-    bugContest->saveData = fsys->savedata;
+    bugContest->saveData = fieldSystem->savedata;
     bugContest->sport_balls = 20;
     bugContest->mon = AllocMonZeroed(bugContest->heapId);
     bugContest->national_dex = Pokedex_GetNatDexFlag(Save_Pokedex_Get(bugContest->saveData));
@@ -45,7 +45,7 @@ BUGCONTEST *BugContest_New(FieldSystem *fsys, u32 weekday) {
     BugContest_BackUpParty(bugContest);
     BugContest_InitOpponents(bugContest);
     BugContest_InitEncounters(bugContest);
-    FieldSys_StartBugContestTimer(fsys);
+    FieldSystem_StartBugContestTimer(fieldSystem);
     return bugContest;
 }
 

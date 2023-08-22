@@ -94,12 +94,12 @@
 .public LocalFieldData_GetSafariBallsCounter
 .public Save_LocalFieldData_Get
 .public sub_0203C3CC
-.public Fsys_GetFacingObject
+.public FieldSystem_GetFacingObject
 .public sub_0203DF8C
 .public sub_0203E13C
 .public MapSceneScriptCheck
 .public Save_VarsFlags_Get
-.public Fsys_TaskIsRunning
+.public FieldSystem_TaskIsRunning
 .public PalPark_CountMonsNotCaught
 .public sub_02056EE0
 .public sub_02057A0C
@@ -111,7 +111,7 @@
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_GetState
 .public PlayerSaveData_CheckRunningShoes
-.public FieldSys_GetPlayerAvatar
+.public FieldSystem_GetPlayerAvatar
 .public sub_0205CB38
 .public sub_0205CB40
 .public MapObject_GetGfxID
@@ -121,7 +121,7 @@
 .public CheckFlag996
 .public Save_VarsFlags_CheckPalParkSysFlag
 .public sub_02067584
-.public FieldSys_BugContest_Get
+.public FieldSystem_BugContest_Get
 .public BugContest_GetSportBallsAddr
 .public GetMonData
 .public Pokemon_GetIconNaix
@@ -131,7 +131,7 @@
 .public Bag_GetRegisteredItem1
 .public Bag_GetRegisteredItem2
 .public Save_Bag_Get
-.public Fsys_GetGearPhoneRingManager
+.public FieldSystem_GetGearPhoneRingManager
 .public sub_02092E08
 .public GXS_SetGraphicsMode
 .public GX_SetBankForSubBG

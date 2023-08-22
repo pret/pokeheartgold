@@ -76,18 +76,18 @@ BattleSetup* BattleSetup_New(HeapID heapId, u32 battleFlags);
 BattleSetup* BattleSetup_New_SafariZone(HeapID heapId, int balls);
 BattleSetup* BattleSetup_New_BugContest(HeapID heapId, int balls, Pokemon* bugmon);
 BattleSetup* BattleSetup_New_PalPark(HeapID heapId, int balls);
-BattleSetup* BattleSetup_New_Tutorial(HeapID heapId, FieldSystem *fsys);
-void sub_02051D18(BattleSetup* setup, FieldSystem* fsys, SaveData* savedata, u32 mapno, void* arg4, void* arg5);
+BattleSetup* BattleSetup_New_Tutorial(HeapID heapId, FieldSystem *fieldSystem);
+void sub_02051D18(BattleSetup* setup, FieldSystem* fieldSystem, SaveData* savedata, u32 mapno, void* arg4, void* arg5);
 
 BOOL IsBattleResultWin(u32 a0);
 int sub_02052564(u32 a0);
 int sub_02052574(u32 a0);
 void BattleSetup_Delete(BattleSetup* setup);
-void sub_02052444(BattleSetup* setup, FieldSystem *fsys);
-void BattleSetup_InitFromFsys(BattleSetup* setup, FieldSystem *fsys);
-void sub_020522F0(BattleSetup* setup, FieldSystem *fsys, void *a1);
-void sub_02051F2C(BattleSetup* setup, FieldSystem *fsys, int level);
-void sub_020520B0(BattleSetup* setup, FieldSystem *fsys, Party *party, void *a4);
+void sub_02052444(BattleSetup* setup, FieldSystem *fieldSystem);
+void BattleSetup_InitFromFieldSystem(BattleSetup* setup, FieldSystem *fieldSystem);
+void sub_020522F0(BattleSetup* setup, FieldSystem *fieldSystem, void *a1);
+void sub_02051F2C(BattleSetup* setup, FieldSystem *fieldSystem, int level);
+void sub_020520B0(BattleSetup* setup, FieldSystem *fieldSystem, Party *party, void *a4);
 BattleSetup* BattleSetup_New_PalPark(HeapID heapId, int monsRemaining);
 void BattleSetup_AddMonToParty(BattleSetup* setup, Pokemon* mon, int battler);
 

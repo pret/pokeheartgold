@@ -26,6 +26,8 @@
 #include "unk_0203E348.h"
 #include "field_system.h"
 #include "msgdata/msg/msg_0445.h"
+#include "msgdata/msg/msg_0292.h"
+#include "msgdata/msg/msg_0293.h"
 
 #define HEAPID_OV36   ((HeapID)75)
 

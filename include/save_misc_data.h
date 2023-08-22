@@ -13,11 +13,24 @@ typedef struct APRICORN_TREE {
     u16 unk_2;
 } APRICORN_TREE;
 
-typedef struct BERRY_POT {
-    u8 unk_0;
-    u8 unk_1;
-    u8 filler_2[10];
-} BERRY_POT;
+#define BERRY_POT_GROWTH_STAGE_INVALID  0
+#define BERRY_POT_GROWTH_STAGE_PLANTED  1
+#define BERRY_POT_GROWTH_STAGE_SPROUTED 2
+#define BERRY_POT_GROWTH_STAGE_GROWING  3
+#define BERRY_POT_GROWTH_STAGE_BLOOM    4
+#define BERRY_POT_GROWTH_STAGE_BERRIES  5
+
+typedef struct BerryPot {
+    u8 berryId;
+    u8 growthStage;
+    u16 unk_2;
+    u16 unk_4;
+    u16 unk_6;
+    u8 unk_8;
+    u8 moisture;
+    u8 unk_A;
+    u8 mulch;
+} BerryPot;
 
 #define MAX_APRICORN_TREE 128
 #define NUM_APRICORN_TREE 31
@@ -26,7 +39,7 @@ typedef struct BERRY_POT {
 
 typedef struct SAVE_MISC_DATA {
     APRICORN_TREE apricorn_trees[MAX_APRICORN_TREE];
-    BERRY_POT berry_pots[MAX_BERRY_POT];
+    BerryPot berry_pots[MAX_BERRY_POT];
     struct GF_RTC_DateTime berry_datetime;
     struct Gymmick gymmick;
     u16 rivalName[PLAYER_NAME_LENGTH + 1];
@@ -47,14 +60,14 @@ typedef struct SAVE_MISC_DATA {
     u8 dummy_02DD[3];
 } SAVE_MISC_DATA;
 
-void Save_BerryPots_Init(BERRY_POT *berryPot);
+void Save_BerryPots_Init(BerryPot *berryPot);
 void Save_BerryPotRTC_Init(struct GF_RTC_DateTime *dateTime);
 u32 Save_Misc_sizeof(void);
 void Save_Misc_Init(SAVE_MISC_DATA *saveMiscData);
 SAVE_MISC_DATA *Save_Misc_Get(SaveData *saveData);
 const SAVE_MISC_DATA *Save_Misc_Const_Get(const SaveData *saveData);
 APRICORN_TREE *Save_FieldApricornTrees_Get(SaveData *saveData);
-BERRY_POT *Save_BerryPots_Get(SaveData *saveData);
+BerryPot *Save_BerryPots_Get(SaveData *saveData);
 struct GF_RTC_DateTime *Save_BerryPotRTC_Get(SaveData *saveData);
 struct Gymmick *Save_GetGymmickPtr(SaveData *saveData);
 const u16 *Save_Misc_RivalName_Const_Get(const SAVE_MISC_DATA *saveMiscData);

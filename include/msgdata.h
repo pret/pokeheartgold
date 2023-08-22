@@ -4,7 +4,6 @@
 #include "pm_string.h"
 #include "filesystem.h"
 #include "message_format.h"
-#include "msgdata/msg.naix"
 
 typedef enum MsgDataLoadType {
     MSGDATA_LOAD_DIRECT,

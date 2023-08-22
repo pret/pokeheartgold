@@ -3,7 +3,7 @@
 
 #include "script.h"
 
-void FieldSys_TakePhoto(FieldSystem *fsys, u16 photo_id);
-void sub_0206A860(FieldSystem *fsys);
+void FieldSystem_TakePhoto(FieldSystem *fieldSystem, u16 photo_id);
+void sub_0206A860(FieldSystem *fieldSystem);
 
 #endif //POKEHEARTGOLD_FIELD_TAKE_PHOTO_H

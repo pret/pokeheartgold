@@ -512,7 +512,7 @@ ov01_021F1EA4: ; 0x021F1EA4
 	ldr r1, _021F1EC8 ; =ov01_021F1ECC
 	add r0, r4, #0
 	str r6, [r2, #0xc]
-	bl FieldSys_CreateTask
+	bl FieldSystem_CreateTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021F1EC8: .word ov01_021F1ECC
@@ -888,7 +888,7 @@ _021F21A8:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl FsysUnkSub108_AddMonMood
+	bl FieldSystemUnkSub108_AddMonMood
 	mov r1, #2
 	b _021F21C6
 _021F21C4:
@@ -1120,7 +1120,7 @@ _021F23A6:
 	ldr r1, _021F23B4 ; =ov01_021F23B8
 	add r0, r5, #0
 	add r2, r4, #0
-	bl FieldSys_CreateTask
+	bl FieldSystem_CreateTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021F23B4: .word ov01_021F23B8
@@ -1534,7 +1534,7 @@ ov01_021F26CC: ; 0x021F26CC
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl FsysUnkSub108_AddMonMood
+	bl FieldSystemUnkSub108_AddMonMood
 	mov r1, #2
 	b _021F26F0
 _021F26EE:
@@ -1812,7 +1812,7 @@ ov01_021F28EC: ; 0x021F28EC
 	add r2, r0, #0
 	ldr r1, _021F2904 ; =ov01_021F2944
 	add r0, r4, #0
-	bl FieldSys_CreateTask
+	bl FieldSystem_CreateTask
 	pop {r4, pc}
 	nop
 _021F2904: .word ov01_021F2944

@@ -12,7 +12,7 @@
 .public GetPlayerLastYCoord
 .public sub_0205C6D4
 .public PlayerAvatar_GetMapObject
-.public FieldSys_GetPlayerAvatar
+.public FieldSystem_GetPlayerAvatar
 .public sub_0205CB00
 .public sub_0205EEF4
 .public MapObject_SetFlagsBits

@@ -32,7 +32,7 @@
 .public sub_0203A1C4
 .public sub_0203A280
 .public sub_0203E30C
-.public FieldSys_CreateTask
+.public FieldSystem_CreateTask
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv

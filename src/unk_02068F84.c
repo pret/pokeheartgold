@@ -1,6 +1,7 @@
 #include "global.h"
 #include "unk_02068F84.h"
 #include "font.h"
+#include "msgdata/msg.naix"
 
 u32 sub_02068F84(MsgData *msgData, u32 map_sec, String *dest) {
     ReadMsgDataIntoString(msgData, map_sec, dest);

@@ -5,6 +5,6 @@
 
 typedef struct TownMap TownMap;
 
-TownMap *TownMap_New(FieldSystem *fsys, int kind);
+TownMap *TownMap_New(FieldSystem *fieldSystem, int kind);
 
 #endif //POKEHEARTGOLD_POKEGEAR_H

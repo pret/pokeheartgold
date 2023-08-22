@@ -3,6 +3,6 @@
 
 #include "field_system.h"
 
-void ov01_021F6304(FsysUnkSub2C *a0);
+void ov01_021F6304(FieldSystemUnkSub2C *a0);
 
 #endif //POKEHEARTGOLD_OVERLAY_01_021F4704_H

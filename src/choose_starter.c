@@ -17,14 +17,14 @@ struct ChooseStarterTaskData {
 
 static BOOL CreateStarter(TaskManager *taskManager);
 
-void LaunchStarterChoiceScene(FieldSystem *fsys) {
+void LaunchStarterChoiceScene(FieldSystem *fieldSystem) {
     struct ChooseStarterTaskData *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct ChooseStarterTaskData));
     env->state = 0;
-    TaskManager_Call(fsys->taskman, CreateStarter, env);
+    TaskManager_Call(fieldSystem->taskman, CreateStarter, env);
 }
 
 static BOOL CreateStarter(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     struct ChooseStarterTaskData *env = TaskManager_GetEnv(taskManager);
     int i;
     u32 mapsec;
@@ -45,14 +45,14 @@ static BOOL CreateStarter(TaskManager *taskManager) {
                 SPECIES_CYNDAQUIL,
                 SPECIES_TOTODILE,
             };
-            mapsec = MapHeader_GetMapSec(fsys->location->mapId); //sp14
+            mapsec = MapHeader_GetMapSec(fieldSystem->location->mapId); //sp14
 
             env->args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct ChooseStarterAppArgs));
             env->args->cursorPos = 0;
-            env->args->options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
+            env->args->options = Save_PlayerData_GetOptionsAddr(fieldSystem->savedata);
             for (i = 0; i < (int)NELEMS(species); i++) {
                 Pokemon *mon = &env->args->starters[i];
-                PlayerProfile *profile = Save_PlayerData_GetProfileAddr(fsys->savedata);
+                PlayerProfile *profile = Save_PlayerData_GetProfileAddr(fieldSystem->savedata);
                 ZeroMonData(mon);
                 CreateMon(mon, species[i], 5, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
                 sub_020720FC(mon, profile, BALL_POKE, mapsec, 12, HEAP_ID_FIELD);
@@ -62,30 +62,30 @@ static BOOL CreateStarter(TaskManager *taskManager) {
                 }
             }
         }
-        LaunchChooseStarterApp(fsys, env->args);
+        LaunchChooseStarterApp(fieldSystem, env->args);
         sub_0203E30C();
         env->state = 2;
         break;
     case 2:
-        if (FieldSys_ApplicationIsRunning(fsys)) {
+        if (FieldSystem_ApplicationIsRunning(fieldSystem)) {
             break;
         }
         env->state = 3;
         break;
     case 3: {
-        Pokedex *pokedex = Save_Pokedex_Get(fsys->savedata);
-        party = SaveArray_Party_Get(fsys->savedata);
+        Pokedex *pokedex = Save_Pokedex_Get(fieldSystem->savedata);
+        party = SaveArray_Party_Get(fieldSystem->savedata);
         Pokemon *myChoice = &env->args->starters[env->args->cursorPos];
         if (Party_AddMon(party, myChoice)) {
-            UpdatePokedexWithReceivedSpecies(fsys->savedata, myChoice);
+            UpdatePokedexWithReceivedSpecies(fieldSystem->savedata, myChoice);
         }
         Pokedex_SetMonCaughtFlag(pokedex, Party_GetMonByIndex(party, 0));
         env->state = 4;
-        sub_020505C0(fsys);
+        sub_020505C0(fieldSystem);
         break;
     }
     case 4:
-        if (!sub_020505C8(fsys)) {
+        if (!sub_020505C8(fieldSystem)) {
             break;
         }
         BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, HEAP_ID_4);

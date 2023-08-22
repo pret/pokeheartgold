@@ -50,7 +50,7 @@ sub_020968B0: ; 0x020968B0
 	ldr r1, _0209690C ; =_02108584
 	add r0, r5, #0
 	str r5, [r4, #0x24]
-	bl FieldSys_LaunchApplication
+	bl FieldSystem_LaunchApplication
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	nop

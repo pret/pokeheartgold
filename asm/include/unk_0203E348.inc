@@ -60,7 +60,7 @@
 .public sub_0203A040
 .public LocalFieldData_GetCurrentPosition
 .public Save_LocalFieldData_Get
-.public FieldSys_LaunchApplication
+.public FieldSystem_LaunchApplication
 .public FieldSystem_GetSaveDataPtr
 .public LocationData_BackUp
 .public LocationData_Restore
@@ -91,9 +91,9 @@
 .public sub_0203EB08
 .public sub_0203EB64
 .public sub_0203EBA4
-.public Fsys_CreateApplication_AlphPuzzle
+.public FieldSystem_CreateApplication_AlphPuzzle
 .public CreateUnownReportWork
-.public CreateBerryPotsWork
+.public BerryPotsArgs_New
 .public CreateApricornBoxWork
 .public sub_0203ED80
 .public sub_0203EDDC
@@ -134,7 +134,7 @@
 .public ScratchOffCards_Create
 .public sub_0203FB94
 .public sub_0203FC14
-.public Fsys_LaunchPokeathlonCourseApplication
+.public FieldSystem_LaunchPokeathlonCourseApplication
 .public sub_0203FC68
 .public sub_0203FC90
 .public sub_0203FCB8
@@ -142,7 +142,7 @@
 .public Save_VarsFlags_Get
 .public CheckFlagInArray
 .public TaskManager_Call
-.public FieldSys_ApplicationIsRunning
+.public FieldSystem_ApplicationIsRunning
 .public CallApplicationAsTask
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
@@ -156,7 +156,7 @@
 .public CheckGameClearFlag
 .public CheckFlag997
 .public sub_0206CE44
-.public FieldSys_BugContest_Get
+.public FieldSystem_BugContest_Get
 .public GetMonData
 .public SetMonData
 .public sub_02070D90

@@ -15,28 +15,28 @@
 BOOL ScrCmd_GetTrainerPathToPlayer(ScriptContext *ctx) {
     int *sp18, *encounterType, *sp10, *r7;
     LocalMapObject **localMapObject;
-    FieldSystem *fsys = ctx->fsys;
+    FieldSystem *fieldSystem = ctx->fieldSystem;
 
     u16 trainerNum = ScriptGetVar(ctx);
     if (trainerNum == 0) {
-        sp18 = FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_0_FIELD_00);
-        sp10 = FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_0_FIELD_04);
-        FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_0_FIELD_08);
-        FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_0_ID);
-        encounterType = FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_0_ENCOUNTER_TYPE);
-        localMapObject = FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_0_EVENT);
-        r7 = FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_0_FIELD_18);
+        sp18 = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_ENGAGED_TRAINER_0_FIELD_00);
+        sp10 = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_ENGAGED_TRAINER_0_FIELD_04);
+        FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_ENGAGED_TRAINER_0_FIELD_08);
+        FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_ENGAGED_TRAINER_0_ID);
+        encounterType = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_ENGAGED_TRAINER_0_ENCOUNTER_TYPE);
+        localMapObject = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_ENGAGED_TRAINER_0_EVENT);
+        r7 = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_ENGAGED_TRAINER_0_FIELD_18);
     } else {
-        sp18 = FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_1_FIELD_00);
-        sp10 = FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_1_FIELD_04);
-        FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_1_FIELD_08);
-        FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_1_ID);
-        encounterType = FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_1_ENCOUNTER_TYPE);
-        localMapObject = FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_1_EVENT);
-        r7 = FieldSysGetAttrAddr(fsys, SCRIPTENV_ENGAGED_TRAINER_1_FIELD_18);
+        sp18 = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_ENGAGED_TRAINER_1_FIELD_00);
+        sp10 = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_ENGAGED_TRAINER_1_FIELD_04);
+        FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_ENGAGED_TRAINER_1_FIELD_08);
+        FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_ENGAGED_TRAINER_1_ID);
+        encounterType = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_ENGAGED_TRAINER_1_ENCOUNTER_TYPE);
+        localMapObject = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_ENGAGED_TRAINER_1_EVENT);
+        r7 = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_ENGAGED_TRAINER_1_FIELD_18);
     }
 
-    *r7 = sub_0206457C(fsys, *localMapObject, fsys->playerAvatar, *sp10, *sp18, 0, *encounterType, trainerNum);
+    *r7 = sub_0206457C(fieldSystem, *localMapObject, fieldSystem->playerAvatar, *sp10, *sp18, 0, *encounterType, trainerNum);
     return FALSE;
 }
 
@@ -47,9 +47,9 @@ BOOL ScrCmd_TrainerStepTowardsPlayer(ScriptContext *ctx) {
 
     *var1 = 0;
     if (trainerNum == 0) {
-        r5 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_ENGAGED_TRAINER_0_FIELD_18);
+        r5 = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_ENGAGED_TRAINER_0_FIELD_18);
     } else {
-        r5 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_ENGAGED_TRAINER_1_FIELD_18);
+        r5 = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_ENGAGED_TRAINER_1_FIELD_18);
     }
 
     if (*r5 == 0) {
@@ -67,15 +67,15 @@ BOOL ScrCmd_TrainerStepTowardsPlayer(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_GetTrainerEyeType(ScriptContext *ctx) {
-    u16 *encounterType = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_ENGAGED_TRAINER_0_ENCOUNTER_TYPE);
+    u16 *encounterType = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_ENGAGED_TRAINER_0_ENCOUNTER_TYPE);
     u16 *retEncounterType = ScriptGetVarPointer(ctx);
     *retEncounterType = *encounterType;
     return FALSE;
 }
 
 BOOL ScrCmd_GetEyeTrainerNum(ScriptContext *ctx) {
-    u16 *trainerId0 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_ENGAGED_TRAINER_0_ID);
-    u16 *trainerId1 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_ENGAGED_TRAINER_1_ID);
+    u16 *trainerId0 = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_ENGAGED_TRAINER_0_ID);
+    u16 *trainerId1 = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_ENGAGED_TRAINER_1_ID);
     u16 trainerNum = ScriptGetVar(ctx);
     u16 *retTrainerId = ScriptGetVarPointer(ctx);
 
@@ -89,24 +89,24 @@ BOOL ScrCmd_GetEyeTrainerNum(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_GetTrainerNum(ScriptContext *ctx) {
-    u16 *script = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_ACTIVE_SCRIPT_NUMBER);
+    u16 *script = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_ACTIVE_SCRIPT_NUMBER);
     u16 *retTrainerNum = ScriptGetVarPointer(ctx);
     *retTrainerNum = ScriptNumToTrainerNum(*script);
     return FALSE;
 }
 
 BOOL ScrCmd_TrainerBattle(ScriptContext *ctx) {
-    FieldSystem *fsys = ctx->fsys;
-    u16 *script = FieldSysGetAttrAddr(fsys, SCRIPTENV_ACTIVE_SCRIPT_NUMBER);
-    u32 *winFlag = FieldSysGetAttrAddr(fsys, SCRIPTENV_BATTLE_WIN_FLAG);
+    FieldSystem *fieldSystem = ctx->fieldSystem;
+    u16 *script = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_ACTIVE_SCRIPT_NUMBER);
+    u32 *winFlag = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_BATTLE_WIN_FLAG);
     u16 var0 = ScriptGetVar(ctx);
     u16 var1 = ScriptGetVar(ctx);
     u8 var2 = ScriptReadByte(ctx);
     u8 var3 = ScriptReadByte(ctx);
     u16 followerTrainerNum = 0;
 
-    if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(ctx->fsys->savedata)) == TRUE) {
-        followerTrainerNum = Save_VarsFlags_GetFollowerTrainerNum(Save_VarsFlags_Get(fsys->savedata));
+    if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(ctx->fieldSystem->savedata)) == TRUE) {
+        followerTrainerNum = Save_VarsFlags_GetFollowerTrainerNum(Save_VarsFlags_Get(fieldSystem->savedata));
     }
 
     SetupAndStartTrainerBattle(ctx->taskman, var0, var1, followerTrainerNum, var2, var3, HEAP_ID_FIELD, winFlag);
@@ -114,7 +114,7 @@ BOOL ScrCmd_TrainerBattle(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_MultiBattle(ScriptContext *ctx) {
-    u32 *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_BATTLE_WIN_FLAG);
+    u32 *winFlag = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_BATTLE_WIN_FLAG);
     u16 var0 = ScriptGetVar(ctx);
     u16 var1 = ScriptGetVar(ctx);
     u16 var2 = ScriptGetVar(ctx);
@@ -125,7 +125,7 @@ BOOL ScrCmd_MultiBattle(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_GetTrainerMsgParams(ScriptContext *ctx) {
-    u16 *script = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_ACTIVE_SCRIPT_NUMBER);
+    u16 *script = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_ACTIVE_SCRIPT_NUMBER);
     u16 *msgPtr0 = ScriptGetVarPointer(ctx);
     u16 *msgPtr1 = ScriptGetVarPointer(ctx);
     u16 *msgPtr2 = ScriptGetVarPointer(ctx);
@@ -154,7 +154,7 @@ BOOL ScrCmd_GetTrainerMsgParams(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_GetRematchMsgParams(ScriptContext *ctx) {
-    u16 *script = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_ACTIVE_SCRIPT_NUMBER);
+    u16 *script = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_ACTIVE_SCRIPT_NUMBER);
     u16 *msgPtr0 = ScriptGetVarPointer(ctx);
     u16 *msgPtr1 = ScriptGetVarPointer(ctx);
     u16 *msgPtr2 = ScriptGetVarPointer(ctx);
@@ -183,7 +183,7 @@ BOOL ScrCmd_GetRematchMsgParams(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_TrainerIsDoubleBattle(ScriptContext *ctx) {
-    u16 *script = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_ACTIVE_SCRIPT_NUMBER);
+    u16 *script = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_ACTIVE_SCRIPT_NUMBER);
     u16 *retDoubleBattle = ScriptGetVarPointer(ctx);
     *retDoubleBattle = TrainerNumIsDouble(ScriptNumToTrainerNum(*script));
     return FALSE;
@@ -191,7 +191,7 @@ BOOL ScrCmd_TrainerIsDoubleBattle(ScriptContext *ctx) {
 
 BOOL ScrCmd_EncounterMusic(ScriptContext *ctx) {
     u16 var0 = ScriptGetVar(ctx);
-    BOOL isKanto = MapHeader_IsKanto(ctx->fsys->location->mapId);
+    BOOL isKanto = MapHeader_IsKanto(ctx->fieldSystem->location->mapId);
     BGM_SaveStateAndPlayNew(Trainer_GetEncounterMusic(var0, isKanto));
     return TRUE;
 }
@@ -202,7 +202,7 @@ BOOL ScrCmd_WhiteOut(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_CheckBattleWon(ScriptContext *ctx) {
-    u32 *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_BATTLE_WIN_FLAG);
+    u32 *winFlag = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_BATTLE_WIN_FLAG);
     u16 *retBattleWon = ScriptGetVarPointer(ctx);
     *retBattleWon = IsBattleResultWin(*winFlag);
     return TRUE;
@@ -214,9 +214,9 @@ BOOL ScrCmd_221(ScriptContext *ctx) {
 
     int val;
     if (var0 == 1) {
-        val = sub_02052564(VarGet(ctx->fsys, VAR_BATTLE_RESULT));
+        val = sub_02052564(VarGet(ctx->fieldSystem, VAR_BATTLE_RESULT));
     } else {
-        val = sub_02052564(*(u32 *)FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_BATTLE_WIN_FLAG));
+        val = sub_02052564(*(u32 *)FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_BATTLE_WIN_FLAG));
     }
 
     *retPtr = val;
@@ -224,7 +224,7 @@ BOOL ScrCmd_221(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_588(ScriptContext *ctx) {
-    u32 *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_BATTLE_WIN_FLAG);
+    u32 *winFlag = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_BATTLE_WIN_FLAG);
     u16 *retPtr = ScriptGetVarPointer(ctx);
     *retPtr = sub_02052574(*winFlag);
     return TRUE;
@@ -232,30 +232,30 @@ BOOL ScrCmd_588(ScriptContext *ctx) {
 
 BOOL ScrCmd_PartyCheckForDouble(ScriptContext *ctx) {
     u16 *doubleBattlePtr = ScriptGetVarPointer(ctx);
-    *doubleBattlePtr = HasEnoughAlivePokemonForDoubleBattle(SaveArray_Party_Get(ctx->fsys->savedata));
+    *doubleBattlePtr = HasEnoughAlivePokemonForDoubleBattle(SaveArray_Party_Get(ctx->fieldSystem->savedata));
     return FALSE;
 }
 
 BOOL ScrCmd_223(ScriptContext *ctx) {
-    u32 *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_BATTLE_WIN_FLAG);
+    u32 *winFlag = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_BATTLE_WIN_FLAG);
     SetupAndStartTrainerBattle(ctx->taskman, 1, 0, 0, 0, 0, HEAP_ID_FIELD, winFlag);
     return TRUE;
 }
 
 BOOL ScrCmd_224(ScriptContext *ctx) {
-    LocalMapObject **lastInteracted = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_INTERACTED);
+    LocalMapObject **lastInteracted = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_LAST_INTERACTED);
     u32 mapObjectId = MapObject_GetID(*lastInteracted);
-    TrainerFlagSet(ctx->fsys->savedata, (u16)mapObjectId);
+    TrainerFlagSet(ctx->fieldSystem->savedata, (u16)mapObjectId);
     return FALSE;
 }
 
 BOOL ScrCmd_GotoIfTrainerDefeated(ScriptContext *ctx) {
-    FieldSystem *fsys = ctx->fsys;
-    LocalMapObject **lastInteracted = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_INTERACTED);
+    FieldSystem *fieldSystem = ctx->fieldSystem;
+    LocalMapObject **lastInteracted = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_LAST_INTERACTED);
     u32 offset = ScriptReadWord(ctx);
     u32 mapObjectId = MapObject_GetID(*lastInteracted);
 
-    if (TrainerFlagCheck(fsys->savedata, (u16)mapObjectId) == TRUE) {
+    if (TrainerFlagCheck(fieldSystem->savedata, (u16)mapObjectId) == TRUE) {
         ScriptJump(ctx, ctx->script_ptr + offset);
         return TRUE;
     }

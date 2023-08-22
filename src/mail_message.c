@@ -7,6 +7,12 @@
 #include "msgdata.h"
 #include "string_control_code.h"
 
+#include "msgdata/msg/msg_0294.h"
+#include "msgdata/msg/msg_0296.h"
+#include "msgdata/msg/msg_0292.h"
+#include "msgdata/msg/msg_0293.h"
+#include "msgdata/msg/msg_0295.h"
+
 static const u16 sMessageBanks[] = {
     NARC_msg_msg_0294_bin,
     NARC_msg_msg_0296_bin,

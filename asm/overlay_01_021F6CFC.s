@@ -772,7 +772,7 @@ ov01_021F729C: ; 0x021F729C
 	ldr r1, _021F72D8 ; =ov01_021F7100
 	add r0, r6, #0
 	add r2, r4, #0
-	bl FieldSys_CreateTask
+	bl FieldSystem_CreateTask
 	pop {r4, r5, r6, pc}
 _021F72CA:
 	ldr r1, _021F72D8 ; =ov01_021F7100

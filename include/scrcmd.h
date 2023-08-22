@@ -7,11 +7,11 @@
 #include "script.h"
 
 static inline u16 ScriptGetVar(ScriptContext* ctx) {
-    return VarGet(ctx->fsys, ScriptReadHalfword(ctx));
+    return VarGet(ctx->fieldSystem, ScriptReadHalfword(ctx));
 }
 
 static inline u16* ScriptGetVarPointer(ScriptContext* ctx) {
-    return GetVarPointer(ctx->fsys, ScriptReadHalfword(ctx));
+    return GetVarPointer(ctx->fieldSystem, ScriptReadHalfword(ctx));
 }
 
 // Basic commands
@@ -364,7 +364,7 @@ BOOL ScrCmd_AzaleaGymSwitch(ScriptContext* ctx);
 BOOL ScrCmd_BlackthornGymInit(ScriptContext* ctx);
 BOOL ScrCmd_FuchsiaGymInit(ScriptContext* ctx);
 BOOL ScrCmd_ViridianGymInit(ScriptContext* ctx);
-BOOL ScrCmd_Party_GetCount(ScriptContext* ctx);
+BOOL ScrCmd_GetPartyCount(ScriptContext* ctx);
 BOOL ScrCmd_333(ScriptContext* ctx);
 BOOL ScrCmd_334(ScriptContext* ctx);
 BOOL ScrCmd_335(ScriptContext* ctx);

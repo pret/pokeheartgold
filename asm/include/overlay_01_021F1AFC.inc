@@ -15,7 +15,7 @@
 .public FlagSet
 .public FlagClear
 .public Save_VarsFlags_Get
-.public FieldSys_CreateTask
+.public FieldSystem_CreateTask
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
@@ -90,7 +90,7 @@
 .public FollowingPokemon_GetMapObject
 .public sub_02069DC8
 .public FollowingPokemon_IsActive
-.public FsysUnkSub108_AddMonMood
+.public FieldSystemUnkSub108_AddMonMood
 .public GetMonData
 .public Party_GetMonByIndex
 .public SaveArray_Party_Get

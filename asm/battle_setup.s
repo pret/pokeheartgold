@@ -35,8 +35,8 @@ _020FC4C0:
 
 	.text
 
-	thumb_func_start BattleSetup_InitFromFsys
-BattleSetup_InitFromFsys: ; 0x02051F00
+	thumb_func_start BattleSetup_InitFromFieldSystem
+BattleSetup_InitFromFieldSystem: ; 0x02051F00
 	push {r4, lr}
 	sub sp, #8
 	add r2, r1, #0
@@ -57,7 +57,7 @@ BattleSetup_InitFromFsys: ; 0x02051F00
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end BattleSetup_InitFromFsys
+	thumb_func_end BattleSetup_InitFromFieldSystem
 
 	thumb_func_start sub_02051F2C
 sub_02051F2C: ; 0x02051F2C
@@ -568,7 +568,7 @@ _0205237A:
 	cmp r0, #0
 	beq _02052394
 	add r0, r6, #0
-	bl Fsys_GetGearPhoneRingManager
+	bl FieldSystem_GetGearPhoneRingManager
 	mov r1, #0xc
 	mov r2, #1
 	bl sub_02092E14
@@ -639,7 +639,7 @@ _0205241E:
 	cmp r0, #0
 	beq _02052434
 	add r0, r4, #0
-	bl FieldSys_BugContest_Get
+	bl FieldSystem_BugContest_Get
 	bl BugContest_GetSportBallsAddr
 	add r6, r0, #0
 _02052434:

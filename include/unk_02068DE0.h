@@ -3,14 +3,14 @@
 
 #include "script.h"
 
-void InitEcruteakGym(FieldSystem *fsys);
-void InitCianwoodGym(FieldSystem *fsys);
-void InitVermilionGym(FieldSystem *fsys);
-void PlaceVermilionGymSwitches(FieldSystem *fsys);
-void InitVioletGym(FieldSystem *fsys);
-void InitAzaleaGym(FieldSystem *fsys);
-void InitBlackthornGym(FieldSystem *fsys);
-void InitFuchsiaGym(FieldSystem *fsys);
-void InitViridianGym(FieldSystem *fsys);
+void InitEcruteakGym(FieldSystem *fieldSystem);
+void InitCianwoodGym(FieldSystem *fieldSystem);
+void InitVermilionGym(FieldSystem *fieldSystem);
+void PlaceVermilionGymSwitches(FieldSystem *fieldSystem);
+void InitVioletGym(FieldSystem *fieldSystem);
+void InitAzaleaGym(FieldSystem *fieldSystem);
+void InitBlackthornGym(FieldSystem *fieldSystem);
+void InitFuchsiaGym(FieldSystem *fieldSystem);
+void InitViridianGym(FieldSystem *fieldSystem);
 
 #endif //POKEHEARTGOLD_UNK_02068DE0_H

@@ -48,12 +48,12 @@
 .public sub_02067B88
 .public sub_02067BA4
 .public sub_02067BC0
-.public Fsys_ClearFollowingTrainer
+.public FieldSystem_ClearFollowingTrainer
 .public sub_02067BE8
 .public sub_02067BF8
 .public sub_02067C30
 .public sub_02069FB0
-.public FsysUnkSub108_AddMonMood
+.public FieldSystemUnkSub108_AddMonMood
 .public GetMonData
 .public SaveArray_Party_Get
 .public MIi_CpuClearFast

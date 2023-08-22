@@ -25,12 +25,12 @@
 .public sub_02054EB0
 .public sub_02054F14
 .public FieldSystem_SetSavedMusicId
-.public Fsys_ClearSavedMusicId
+.public FieldSystem_ClearSavedMusicId
 .public FieldSystem_GetOverriddenMusicId
 .public GetMapMusic
 .public FieldSystem_PlayOrFadeToNewMusicId
 .public Trainer_GetEncounterMusic
-.public Fsys_BeginFadeOutMusic
+.public FieldSystem_BeginFadeOutMusic
 .public sub_02055110
 .public sub_02055164
 .public sub_02055198

@@ -11,7 +11,7 @@
 .public SaveMisc_SetBattleGreeting
 .public sub_0203EA24
 .public TaskManager_Call
-.public FieldSys_ApplicationIsRunning
+.public FieldSystem_ApplicationIsRunning
 .public sub_020505C0
 .public sub_020505C8
 .public TaskManager_GetFieldSystem

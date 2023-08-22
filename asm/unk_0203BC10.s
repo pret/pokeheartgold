@@ -127,7 +127,7 @@ _0203BCCA:
 	ldr r1, _0203BCD8 ; =sub_0203BEF0
 	add r0, r5, #0
 	add r2, r4, #0
-	bl FieldSys_CreateTask
+	bl FieldSystem_CreateTask
 	pop {r3, r4, r5, pc}
 	nop
 _0203BCD8: .word sub_0203BEF0
@@ -160,7 +160,7 @@ _0203BD10:
 	ldr r1, _0203BD1C ; =sub_0203BEF0
 	add r0, r5, #0
 	add r2, r4, #0
-	bl FieldSys_CreateTask
+	bl FieldSystem_CreateTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0203BD1C: .word sub_0203BEF0
@@ -193,7 +193,7 @@ _0203BD54:
 	ldr r1, _0203BD60 ; =sub_0203BEF0
 	add r0, r5, #0
 	add r2, r4, #0
-	bl FieldSys_CreateTask
+	bl FieldSystem_CreateTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0203BD60: .word sub_0203BEF0
@@ -482,7 +482,7 @@ _0203BF60:
 	lsl r1, r1, #4
 	add r0, r4, #0
 	add r1, r5, r1
-	bl Fsys_MakeFieldMoveCheckData
+	bl FieldSystem_MakeFieldMoveCheckData
 	add r0, r6, #0
 	bl sub_0203C14C
 	add r0, r4, #0
@@ -528,7 +528,7 @@ _0203BFBA:
 	lsl r1, r1, #4
 	add r0, r4, #0
 	add r1, r5, r1
-	bl Fsys_MakeFieldMoveCheckData
+	bl FieldSystem_MakeFieldMoveCheckData
 	mov r0, #3
 	strh r0, [r5, #0x26]
 	b _0203C136
@@ -1666,7 +1666,7 @@ sub_0203C8B0: ; 0x0203C8B0
 	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r5, #0
-	bl FieldSys_ApplicationIsRunning
+	bl FieldSystem_ApplicationIsRunning
 	cmp r0, #0
 	bne _0203C8EE
 	mov r1, #0xd5
@@ -2603,7 +2603,7 @@ _0203D066:
 	ldr r0, [sp, #8]
 	ldr r1, _0203D19C ; =_0210159C
 	add r2, r5, #0
-	bl FieldSys_LaunchApplication
+	bl FieldSystem_LaunchApplication
 	mov r0, #0xe
 	lsl r0, r0, #6
 	str r5, [r4, r0]
@@ -2700,7 +2700,7 @@ _0203D166:
 	ldr r0, [sp, #8]
 	ldr r1, _0203D19C ; =_0210159C
 	add r2, r5, #0
-	bl FieldSys_LaunchApplication
+	bl FieldSystem_LaunchApplication
 	mov r0, #0xe
 	lsl r0, r0, #6
 	str r5, [r4, r0]
@@ -3295,7 +3295,7 @@ _0203D604:
 	ldr r0, [sp]
 	ldr r1, _0203D65C ; =_0210159C
 	add r2, r5, #0
-	bl FieldSys_LaunchApplication
+	bl FieldSystem_LaunchApplication
 	mov r0, #0xe1
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -3719,7 +3719,7 @@ sub_0203D940: ; 0x0203D940
 	ldr r1, _0203D9AC ; =_0210159C
 	add r0, r7, #0
 	add r2, r4, #0
-	bl FieldSys_LaunchApplication
+	bl FieldSystem_LaunchApplication
 	mov r0, #0xe
 	lsl r0, r0, #6
 	str r4, [r5, r0]

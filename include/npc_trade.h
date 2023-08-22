@@ -41,13 +41,13 @@ typedef struct NPCTradeAppData {
 
 NPCTradeAppData *NPCTradeApp_Init(HeapID heapId, u32 tradeno);
 void NPCTradeApp_Delete(NPCTradeAppData *work);
-void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fsys, u8 tradeno, u8 level, u16 mapno);
+void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fieldSystem, u8 tradeno, u8 level, u16 mapno);
 Mail *NPCTrade_MakeKenyaMail(void);
-int NPCTrade_CanGiveUpLoanMon(FieldSystem *fsys, u8 tradeno, u8 idx);
+int NPCTrade_CanGiveUpLoanMon(FieldSystem *fieldSystem, u8 tradeno, u8 idx);
 int NPCTradeApp_GetOfferedSpecies(NPCTradeAppData *work);
 int NPCTradeApp_GetRequestedSpecies(NPCTradeAppData *work);
 int NPCTradeApp_GetUnusedFlag(NPCTradeAppData *work);
-void NPCTrade_ReceiveMonToSlot(FieldSystem *fsys, NPCTradeAppData *work, int slot);
-void NPCTrade_CreateTradeAnim(FieldSystem *fsys, NPCTradeAppData *work, int slot, TRADE_ANIM_WORK *anim_work, Pokemon *my_mon_buf, Pokemon *trade_mon_buf);
+void NPCTrade_ReceiveMonToSlot(FieldSystem *fieldSystem, NPCTradeAppData *work, int slot);
+void NPCTrade_CreateTradeAnim(FieldSystem *fieldSystem, NPCTradeAppData *work, int slot, TRADE_ANIM_WORK *anim_work, Pokemon *my_mon_buf, Pokemon *trade_mon_buf);
 
 #endif //POKEHEARTGOLD_NPC_TRADE_H

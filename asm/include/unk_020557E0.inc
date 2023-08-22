@@ -12,7 +12,7 @@
 .public GetMigratedPokemonByIndex
 .public BattleSetup_New_PalPark
 .public BattleSetup_AddMonToParty
-.public BattleSetup_InitFromFsys
+.public BattleSetup_InitFromFieldSystem
 .public GetMetatileBehaviorAt
 .public PalPark_ClearState
 .public PalPark_InitFromSave

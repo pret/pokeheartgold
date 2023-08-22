@@ -12,6 +12,7 @@
 #include "itemtool/itemdata/item_icon.naix"
 #include "pm_string.h"
 #include "msgdata.h"
+#include "msgdata/msg.naix"
 
 static const u16 sPocketCounts[POCKETS_COUNT] = {
     [POCKET_ITEMS]        = NUM_BAG_ITEMS,

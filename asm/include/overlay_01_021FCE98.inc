@@ -12,7 +12,7 @@
 .public MapObject_GetPositionVec
 .public FollowingPokemon_GetMapObject
 .public sub_02069FB0
-.public FsysUnkSub108_AddMonMood
+.public FieldSystemUnkSub108_AddMonMood
 .public memset
 .public ov01_021FBCD8
 .public ov01_021FBDA8

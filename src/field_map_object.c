@@ -11,9 +11,9 @@ static void sub_0205E954(LocalMapObject* object);
 static void sub_0205ED18(LocalMapObject* object);
 static void sub_0205EF8C(LocalMapObject* object);
 
-MapObjectManager* sub_0205E0BC(FieldSystem* fsys, int object_count, HeapID heapId) {
+MapObjectManager* sub_0205E0BC(FieldSystem* fieldSystem, int object_count, HeapID heapId) {
     MapObjectManager* ret = MapObjectManager_New(object_count);
-    MapObjectManager_SetFieldSysPtr(ret, fsys);
+    MapObjectManager_SetFieldSysPtr(ret, fieldSystem);
     MapObjectManager_SetCount(ret, object_count);
     MapObjectManager_SetHeapID(ret, heapId);
 
@@ -237,8 +237,8 @@ LocalMapObject* CreateMapObjectFromTemplate(MapObjectManager* manager, u16 id, u
     ObjectEvent* event = sub_0205FA98(id, num_object_events, (ObjectEvent*)templates);
     if (event != NULL) {
         u32 flag_id = ObjectEventTemplate_GetFlagID(event);
-        FieldSystem* fsys = MapObjectManager_GetFieldSysPtr(manager);
-        if (FlagGet(fsys, (u16)flag_id) == FALSE) {
+        FieldSystem* fieldSystem = MapObjectManager_GetFieldSysPtr(manager);
+        if (FlagGet(fieldSystem, (u16)flag_id) == FALSE) {
             ret = sub_0205E1D0(manager, event, map_no);
         }
     }
@@ -272,8 +272,8 @@ void MapObject_Remove(LocalMapObject* object) {
 
 void DeleteMapObject(LocalMapObject* object) {
     u32 flag_id = MapObject_GetFlagID(object);
-    FieldSystem* fsys = MapObject_GetFieldSysPtr(object);
-    FlagSet(fsys, (u16)flag_id);
+    FieldSystem* fieldSystem = MapObject_GetFieldSysPtr(object);
+    FlagSet(fieldSystem, (u16)flag_id);
     MapObject_Remove(object);
 }
 
@@ -377,12 +377,12 @@ void sub_0205E580(MapObjectManager* manager) {
     } while (i < count);
 }
 
-void Fsys_SyncMapObjectsToSaveEx(FieldSystem* fsys, MapObjectManager* manager, SavedMapObject* list, int count) {
+void FieldSystem_SyncMapObjectsToSaveEx(FieldSystem* fieldSystem, MapObjectManager* manager, SavedMapObject* list, int count) {
     int index = 0;
     LocalMapObject* local_object;
     SavedMapObject* saved_object = list;
     while (sub_0205EEF4(manager, &local_object, &index, MAPOBJECTFLAG_ACTIVE)) {
-        sub_0205E680(fsys, local_object, saved_object);
+        sub_0205E680(fieldSystem, local_object, saved_object);
 
         count--;
         saved_object++;
@@ -445,9 +445,9 @@ _0205E67E:
 }
 #endif
 
-extern BOOL sub_02061248(FieldSystem* fsys, VecFx32*, BOOL);
+extern BOOL sub_02061248(FieldSystem* fieldSystem, VecFx32*, BOOL);
 
-void sub_0205E680(FieldSystem* fsys, LocalMapObject* local_object, SavedMapObject* saved_object) {
+void sub_0205E680(FieldSystem* fieldSystem, LocalMapObject* local_object, SavedMapObject* saved_object) {
     saved_object->unk0 = MapObject_GetFlagsWord(local_object);
     saved_object->unk4 = MapObject_GetFlags2Word(local_object);
     saved_object->objId = MapObject_GetID(local_object);
@@ -476,7 +476,7 @@ void sub_0205E680(FieldSystem* fsys, LocalMapObject* local_object, SavedMapObjec
     sub_020611C8(saved_object->currentX, saved_object->currentY, &coords);
     coords.y = MapObject_GetPosVecYCoord(local_object);
 
-    if (!sub_02061248(fsys, &coords, MapObject_CheckFlag29(local_object))) {
+    if (!sub_02061248(fieldSystem, &coords, MapObject_CheckFlag29(local_object))) {
         saved_object->unk2C = MapObject_GetPosVecYCoord(local_object);
     } else {
         if (MapObject_CheckIgnoreHeights(local_object) == TRUE) {
@@ -596,11 +596,11 @@ void InitMapObjectsFromEventTemplates(MapObjectManager* manager, u32 map_no, u32
 }
 
 void sub_0205EA08(struct MapObjectInitArgs* args) {
-    FieldSystem* fsys = MapObjectManager_GetFieldSysPtr(args->manager);
+    FieldSystem* fieldSystem = MapObjectManager_GetFieldSysPtr(args->manager);
     ObjectEvent* template = args->templates;
 
     do {
-        GF_ASSERT((ObjectEventTemplate_ScriptIdIsFFFF(template) != TRUE && FlagGet(fsys, template->flag) != FALSE) ||
+        GF_ASSERT((ObjectEventTemplate_ScriptIdIsFFFF(template) != TRUE && FlagGet(fieldSystem, template->flag) != FALSE) ||
                   sub_0205E1D0(args->manager, template, args->map_no) != NULL);
 
         template++;
@@ -654,9 +654,9 @@ void sub_0205EAF0(MapObjectManager* manager, LocalMapObject* object) {
     sub_0205F338(object, task);
 }
 
-void MapObject_InitFromObjectEventTemplate(LocalMapObject* object, ObjectEvent* template, FieldSystem* fsys) {
+void MapObject_InitFromObjectEventTemplate(LocalMapObject* object, ObjectEvent* template, FieldSystem* fieldSystem) {
     MapObject_SetID(object, ObjectEventTemplate_GetID(template));
-    MapObject_SetGfxID(object, ResolveObjectGfxId(fsys, ObjectEventTemplate_GetSprite(template)));
+    MapObject_SetGfxID(object, ResolveObjectGfxId(fieldSystem, ObjectEventTemplate_GetSprite(template)));
     MapObject_SetMovement(object, ObjectEventTemplate_GetMovement(template));
     MapObject_SetType(object, ObjectEventTemplate_GetType(template));
     MapObject_SetFlagID(object, ObjectEventTemplate_GetFlagID(template));
@@ -842,9 +842,9 @@ void sub_0205EF6C(LocalMapObject* object) {
     // No-op
 }
 
-u32 ResolveObjectGfxId(FieldSystem* fsys, int a1) {
+u32 ResolveObjectGfxId(FieldSystem* fieldSystem, int a1) {
     if (a1 >= 101 && a1 <= 117) {
-        a1 = VarGetObjectEventGraphicsId(fsys, (u16)(a1 - 101));
+        a1 = VarGetObjectEventGraphicsId(fieldSystem, (u16)(a1 - 101));
     }
     return a1;
 }
@@ -1025,12 +1025,12 @@ void sub_0205F1D0(LocalMapObject** objects) {
     (*objects)++;
 }
 
-void MapObjectManager_SetFieldSysPtr(MapObjectManager* manager, FieldSystem* fsys) {
-    manager->fsys = fsys;
+void MapObjectManager_SetFieldSysPtr(MapObjectManager* manager, FieldSystem* fieldSystem) {
+    manager->fieldSystem = fieldSystem;
 }
 
 FieldSystem* MapObjectManager_GetFieldSysPtr(MapObjectManager* manager) {
-    return manager->fsys;
+    return manager->fieldSystem;
 }
 
 void FldObjSys_SetMModelNarc(MapObjectManager* manager, NARC* mmodel_narc) {
