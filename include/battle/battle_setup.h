@@ -11,6 +11,9 @@
 #include "pokemon_storage_system.h"
 #include "unk_02067A60.h"
 #include "game_stats.h"
+#include "gf_rtc.h"
+#include "map_header.h"
+#include "save_palpad.h"
 
 struct BattleSetupSub_138 {
     int unk_0;
@@ -28,7 +31,7 @@ struct BattleSetup { //declared in trainer_data.h
     Bag* bag; // 108
     void* unk_10C;
     Pokedex* pokedex; // 110
-    PC_STORAGE* unk_114;
+    PC_STORAGE* storagePC;
     SOUND_CHATOT* chatot[4]; // 118
     void* unk_128;
     void* unk_12C;
@@ -36,18 +39,18 @@ struct BattleSetup { //declared in trainer_data.h
     struct UnkStruct_02067A60* unk_134;
     struct BattleSetupSub_138 unk138;
     GAME_STATS* gameStats; // 144
-    int unk_148;
-    u32 unk_14C;
+    SavePalPad* palPad;
+    u32 battleBg;
     u32 unk_150;
-    u32 unk_154;
-    u32 unk_158;
-    u32 unk_15C;
+    u32 mapSection;
+    u32 mapNumber;
+    TIMEOFDAY timeOfDay;
     u32 evolutionLocation; // 160
     u32 unk_164;
-    u32 unk_168;
-    int unk_16C;
+    u32 metBill;
+    int momsSavingsActive;
     u32 unk_170;
-    u32 unk_174;
+    u32 weatherType;
     int levelUpFlag; // 178
     u8 filler_17C[0x10];
     u32 unk_18C;
@@ -74,6 +77,7 @@ BattleSetup* BattleSetup_New_SafariZone(HeapID heapId, int balls);
 BattleSetup* BattleSetup_New_BugContest(HeapID heapId, int balls, Pokemon* bugmon);
 BattleSetup* BattleSetup_New_PalPark(HeapID heapId, int balls);
 BattleSetup* BattleSetup_New_Tutorial(HeapID heapId, FieldSystem *fsys);
+void sub_02051D18(BattleSetup* setup, FieldSystem* fsys, SaveData* savedata, u32 mapno, void* arg4, void* arg5);
 
 BOOL IsBattleResultWin(u32 a0);
 int sub_02052564(u32 a0);

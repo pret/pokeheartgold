@@ -1,11 +1,17 @@
 #include "global.h"
 #include "battle/battle_setup.h"
 #include "system.h"
-#include "gf_rtc.h"
 #include "msgdata.h"
 #include "msgdata/msg/msg_0445.h"
 #include "unk_02035900.h"
 #include "unk_02055418.h"
+#include "save_local_field_data.h"
+#include "field_follow_poke.h"
+#include "unk_0205BB1C.h"
+#include "unk_02088288.h"
+#include "unk_0202CA24.h"
+#include "sys_flags.h"
+#include "save_pokegear.h"
 #include "constants/battle.h"
 
 void BattleSetup_SetParty(BattleSetup* setup, Party* party, int battlerId);
@@ -21,14 +27,14 @@ BattleSetup* BattleSetup_New(HeapID heapId, u32 battleTypeFlags) {
     setup->flags = battleTypeFlags;
     setup->unk_18C = 0;
     setup->winFlag = 0;
-    setup->unk_14C = 0;
+    setup->battleBg = 0;
     setup->unk_150 = 24;
-    setup->unk_154 = 0;
-    setup->unk_15C = 0;
+    setup->mapSection = 0;
+    setup->timeOfDay = RTC_TIMEOFDAY_MORN;
     setup->evolutionLocation = 0;
     setup->unk_164 = 1;
-    setup->unk_168 = 1;
-    setup->unk_174 = 0;
+    setup->metBill = 1;
+    setup->weatherType = 0;
     for (i = 0; i < 4; ++i) {
         setup->trainerId[i] = 0;
         MI_CpuClear32(&setup->trainer[i], sizeof(TRAINER));
@@ -108,7 +114,7 @@ BattleSetup* BattleSetup_New_Tutorial(HeapID heapId, FieldSystem* fsys) {
     PlayerProfile_SetTrainerGender(setup->profile[0], PlayerProfile_GetTrainerGender(profile) ^ 1);
     sub_02052504(setup, fsys);
     Options_Copy(options, setup->options);
-    setup->unk_15C = Field_GetTimeOfDay(fsys);
+    setup->timeOfDay = Field_GetTimeOfDay(fsys);
     Bag_AddItem(setup->bag, ITEM_POKE_BALL, 20, heapId);
     {
     Pokemon* pokemon = AllocMonZeroed(heapId);
@@ -119,11 +125,11 @@ BattleSetup* BattleSetup_New_Tutorial(HeapID heapId, FieldSystem* fsys) {
     FreeToHeap(pokemon);
     }
     setup->unk1CC[0] = 0;
-    setup->unk_114 = GetStoragePCPointer(fsys->savedata);
+    setup->storagePC = GetStoragePCPointer(fsys->savedata);
     setup->unk_10C = fsys->unk94;
     setup->unk1B8 = NULL;
     setup->gameStats = Save_GameStats_Get(fsys->savedata);
-    setup->unk_158 = fsys->location->mapId;
+    setup->mapNumber = fsys->location->mapId;
     sub_02052580(setup);
     return setup;
 }
@@ -171,4 +177,73 @@ void BattleSetup_SetProfile(BattleSetup* setup, PlayerProfile* profile, int batt
 
 void BattleSetup_SetChatotVoiceClip(BattleSetup* setup, SOUND_CHATOT* chatot, int battlerId) {
     Chatot_Copy(setup->chatot[battlerId], chatot);
+}
+
+void sub_02051D18(BattleSetup* setup, FieldSystem* fsys, SaveData* savedata, u32 mapno, void* arg4, void* arg5) {
+    PlayerProfile* profile; // sp1C
+    Party* party; // sp18
+    Bag* bag; // sp14
+    Pokedex* pokedex; // sp10
+    SOUND_CHATOT* chatot; // spC
+    OPTIONS* options; // sp8
+    LocalFieldData* local; // sp4
+    BOOL forceNite;
+    u32 battle_bg;
+
+    profile = Save_PlayerData_GetProfileAddr(savedata);
+    party = SaveArray_Party_Get(savedata);
+    bag = Save_Bag_Get(savedata);
+    pokedex = Save_Pokedex_Get(savedata);
+    chatot = Save_Chatot_Get(savedata);
+    options = Save_PlayerData_GetOptionsAddr(savedata);
+    local = Save_LocalFieldData_Get(savedata);
+
+    if (fsys != NULL) {
+        forceNite = FALSE;
+        battle_bg = MapHeader_GetBattleBg(fsys->location->mapId);
+        if (battle_bg == 9 || battle_bg == 10 || battle_bg == 11) {
+            forceNite = TRUE;
+        }
+        sub_02052504(setup, fsys);
+        setup->timeOfDay = Field_GetTimeOfDay(fsys);
+        if (forceNite) {
+            setup->timeOfDay = RTC_TIMEOFDAY_NITE;
+        }
+        if (FollowingPokemon_IsActive(fsys) && sub_02069FB0(fsys)) {
+            setup->unk1CC[0] = Save_GetPartyLeadAlive(savedata);
+        }
+    } else {
+        setup->battleBg = MapHeader_GetBattleBg(mapno);
+        setup->unk_150 = 9;
+        setup->timeOfDay = GF_RTC_GetTimeOfDayByHour(Save_SysInfo_RTC_Get(savedata)->time.hour);
+    }
+    BattleSetup_SetProfile(setup, profile, BATTLER_PLAYER);
+    if (setup->flags & BATTLE_TYPE_BUG_CONTEST) {
+        Party_InitWithMaxSize(setup->party[BATTLER_PLAYER], 1);
+        BattleSetup_AddMonToParty(setup, Party_GetMonByIndex(party, 0), BATTLER_PLAYER);
+    } else {
+        BattleSetup_SetParty(setup, party, BATTLER_PLAYER);
+    }
+    Save_Bag_Copy(bag, setup->bag);
+    Pokedex_Copy(pokedex, setup->pokedex);
+    Options_Copy(options, setup->options);
+    BattleSetup_SetChatotVoiceClip(setup, chatot, BATTLER_PLAYER);
+    setup->storagePC = GetStoragePCPointer(savedata);
+    setup->mapSection = MapHeader_GetMapSec(mapno);
+    setup->evolutionLocation = MapHeader_GetMapEvolutionMethod(mapno);
+    setup->unk_164 = sub_02088288(savedata);
+    setup->metBill = CheckMetBill(Save_VarsFlags_Get(savedata));
+    if (MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(savedata), MOMS_BALANCE_GET, 0) < 999999) {
+        setup->momsSavingsActive = Save_VarsFlags_MomsSavingsFlagCheck(Save_VarsFlags_Get(savedata));
+    } else {
+        setup->momsSavingsActive = FALSE;
+    }
+    setup->weatherType = LocalFieldData_GetWeatherType(local);
+    setup->unk_10C = arg4;
+    setup->unk1B8 = arg5;
+    setup->unk_12C = sub_0202CA44(savedata);
+    setup->gameStats = Save_GameStats_Get(savedata);
+    setup->palPad = Save_PalPad_Get(savedata);
+    setup->mapNumber = mapno;
+    setup->saveData = savedata;
 }
