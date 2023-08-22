@@ -3,6 +3,7 @@
 
 #include "filesystem.h"
 #include "unk_02009D48.h"
+#include "save.h"
 
 typedef struct UnkStruct_0200D748 {
     s16 x;
