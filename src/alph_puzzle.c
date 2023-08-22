@@ -111,10 +111,8 @@ void ov110_021E5A24(void) {
     HBlankInterruptDisable();
     GX_DisableEngineALayers();
     GX_DisableEngineBLayers();
-    int *ptr = (int *) 0x4000000;
-    *ptr = *ptr & 0xFFFFE0FF;
-    ptr = (int *) 0x4001000;
-    *ptr = *ptr & 0xFFFFE0FF;
+    GX_SetVisiblePlane(0);
+    GXS_SetVisiblePlane(0);
     sub_0200FBF4(0, 0);
     sub_0200FBF4(1, 0);
     sub_0200FBDC(0);
