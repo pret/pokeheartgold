@@ -385,6 +385,12 @@
 #define ITEM_ODD_KEYSTONE        111
 #define ITEM_GRISEOUS_ORB        112
 
+#define FIRST_MULCH_IDX ITEM_GROWTH_MULCH
+#define LAST_MULCH_IDX ITEM_GOOEY_MULCH
+#define NUM_MULCHES (LAST_MULCH_IDX - FIRST_MULCH_IDX + 1)
+#define MULCH_IDX(mulch) ((mulch) - FIRST_MULCH_IDX + 1)
+#define MULCH_NONE 0
+
 // Unused
 #define ITEM_UNUSED_113          113
 #define ITEM_UNUSED_114          114
@@ -499,6 +505,8 @@
 #define FIRST_BERRY_IDX ITEM_CHERI_BERRY
 #define LAST_BERRY_IDX ITEM_ROWAP_BERRY
 #define NUM_BERRIES (LAST_BERRY_IDX - FIRST_BERRY_IDX + 1)
+#define BERRY_IDX(berry) ((berry) - FIRST_BERRY_IDX + 1)
+#define BERRY_NONE 0
 
 // Battle Held items
 #define ITEM_BRIGHTPOWDER        213

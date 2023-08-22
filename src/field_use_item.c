@@ -71,7 +71,7 @@ static BOOL ItemFieldUseFunc_ApricornBox(struct ItemFieldUseData *data);
 static struct ApricornBoxWork *_CreateApricornBoxWork(FieldSystem *fsys);
 static void ItemMenuUseFunc_BerryPots(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
 static BOOL ItemFieldUseFunc_BerryPots(struct ItemFieldUseData *data);
-static struct BerryPotsWork *_CreateBerryPotsWork(FieldSystem *fsys);
+static struct BerryPotsArgs *_BerryPotsArgs_New(FieldSystem *fsys);
 static void ItemMenuUseFunc_UnownReport(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
 static BOOL ItemFieldUseFunc_UnownReport(struct ItemFieldUseData *data);
 static struct UnownReportWork *_CreateUnownReportWork(FieldSystem *fsys);
@@ -606,17 +606,17 @@ static struct ApricornBoxWork *_CreateApricornBoxWork(FieldSystem *fsys) {
 static void ItemMenuUseFunc_BerryPots(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
     FieldSystem *fsys = TaskManager_GetFieldSystem(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
-    env->atexit_TaskEnv = CreateBerryPotsWork(fsys);
+    env->atexit_TaskEnv = BerryPotsArgs_New(fsys);
     sub_0203C8F0(env, sub_0203D718);
 }
 
 static BOOL ItemFieldUseFunc_BerryPots(struct ItemFieldUseData *data) {
-    RegisteredItem_CreateGoToAppTask(data, (FieldApplicationWorkCtor)_CreateBerryPotsWork, FALSE);
+    RegisteredItem_CreateGoToAppTask(data, (FieldApplicationWorkCtor)_BerryPotsArgs_New, FALSE);
     return TRUE;
 }
 
-static struct BerryPotsWork *_CreateBerryPotsWork(FieldSystem *fsys) {
-    return CreateBerryPotsWork(fsys);
+static struct BerryPotsArgs *_BerryPotsArgs_New(FieldSystem *fsys) {
+    return BerryPotsArgs_New(fsys);
 }
 
 static void ItemMenuUseFunc_UnownReport(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {

@@ -14,9 +14,15 @@
 struct UseMailWork;
 struct ApricornBoxWork;
 struct PalPadWork;
-struct BerryPotsWork;
 struct UnownReportWork;
 struct GracideaWork;
+
+typedef struct BerryPotsArgs {
+    u8 unk0[4];
+    u32 unk4;
+    BagCursor *cursor;
+    SaveData *savedata;
+} BerryPotsArgs;
 
 typedef struct PartyMenuAppData {
     Party *party;
@@ -90,7 +96,7 @@ typedef struct ScratchCardAppData {
 struct UseMailWork *CreateUseMailWork(FieldSystem *fsys, int kind, int mailId, HeapID heapId);
 struct ApricornBoxWork *CreateApricornBoxWork(FieldSystem *fsys, int a1);
 struct PalPadWork *CreatePalPadWork(FieldSystem *fsys, SaveData *saveData, HeapID heapId);
-struct BerryPotsWork *CreateBerryPotsWork(FieldSystem *fsys);
+struct BerryPotsArgs *BerryPotsArgs_New(FieldSystem *fsys);
 struct UnownReportWork *CreateUnownReportWork(FieldSystem *fsys);
 struct GracideaWork *sub_0203FAE8(FieldSystem *fsys, HeapID heapId, u16 itemId);
 PartyMenuAppData *sub_0203E580(HeapID heapId, FieldSystem *fsys); //todo: party select screen
