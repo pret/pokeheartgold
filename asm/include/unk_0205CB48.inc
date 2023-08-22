@@ -113,7 +113,7 @@
 .public MapObject_ClearHeldMovement
 .public sub_0206234C
 .public sub_02062390
-.public FieldSystem_IsSave_GymmickTypeEqualTo
+.public FieldSystem_IsSaveGymmickTypeEqualTo
 .public FollowingPokemon_IsActive
 .public sub_0206D494
 .public Field_PlayerAvatar_ApplyTransitionFlags

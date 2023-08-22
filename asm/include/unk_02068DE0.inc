@@ -17,5 +17,5 @@
 .public InitBlackthornGym
 .public InitFuchsiaGym
 .public InitViridianGym
-.public FieldSystem_IsSave_GymmickTypeEqualTo
+.public FieldSystem_IsSaveGymmickTypeEqualTo
 .public _s32_div_f
