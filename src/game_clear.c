@@ -167,7 +167,7 @@ static BOOL Task_GameClear(TaskManager *taskman) {
         break;
     case 1:
         if (!FieldSys_ApplicationIsRunning(fsys)) {
-            CreateHeap(3, 4, 0x20000);
+            CreateHeap(HEAP_ID_3, HEAP_ID_4, 0x20000);
             GameClearSave_InitGraphics(fsys, env);
             BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 8, 1, HEAP_ID_32);
             *state += 1;

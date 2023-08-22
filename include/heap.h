@@ -20,6 +20,7 @@ typedef enum HeapID {
     HEAP_ID_CHOOSE_STARTER = 46,
     HEAP_ID_CREDITS = 73,
     HEAP_ID_89 = 89,
+    HEAP_ID_ALPH_PUZZLE = 97,
     HEAP_ID_GAME_BOARD = 110,
     HEAP_ID_VOLTORB_FLIP = 160
 } HeapID;
@@ -30,8 +31,8 @@ typedef struct HeapParam {
 } HEAP_PARAM;
 
 void InitHeapSystem(const HEAP_PARAM *templates, u32 nTemplates, u32 totalNumHeaps, u32 pre_size);
-BOOL CreateHeap(u32 parent, u32 child, u32 size);
-BOOL CreateHeapAtEnd(u32 parent, u32 child, u32 size);
+BOOL CreateHeap(HeapID parent, HeapID child, u32 size);
+BOOL CreateHeapAtEnd(HeapID parent, HeapID child, u32 size);
 void DestroyHeap(HeapID heapId);
 void * AllocFromHeap(HeapID heapId, u32 size);
 void * AllocFromHeapAtEnd(HeapID heapId, u32 size);

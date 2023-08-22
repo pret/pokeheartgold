@@ -212,7 +212,7 @@ BOOL CreditsApp_OvyInit(OVY_MANAGER *man, int *state) {
 
     switch (*state) {
     case 0:
-        CreateHeap(3, HEAP_ID_CREDITS, 0x40000);
+        CreateHeap(HEAP_ID_3, HEAP_ID_CREDITS, 0x40000);
         work = OverlayManager_CreateAndGetData(man, sizeof(CreditsAppWork), HEAP_ID_CREDITS);
         if (work != NULL) {
             MI_CpuFill8(work, 0, sizeof(CreditsAppWork));

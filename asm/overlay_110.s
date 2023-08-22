@@ -5,62 +5,6 @@
 
 	.text
 
-	thumb_func_start ov110_AlphPuzzle_OvyInit
-ov110_AlphPuzzle_OvyInit: ; 0x021E5900
-	push {r4, r5, r6, lr}
-	add r5, r1, #0
-	ldr r1, [r5]
-	add r6, r0, #0
-	cmp r1, #0
-	beq _021E5912
-	cmp r1, #1
-	beq _021E595E
-	b _021E596E
-_021E5912:
-	bl ov110_021E5A24
-	mov r2, #2
-	mov r0, #3
-	mov r1, #0x61
-	lsl r2, r2, #0x10
-	bl CreateHeap
-	mov r1, #0x16
-	add r0, r6, #0
-	lsl r1, r1, #4
-	mov r2, #0x61
-	bl OverlayManager_CreateAndGetData
-	mov r2, #0x16
-	mov r1, #0
-	lsl r2, r2, #4
-	add r4, r0, #0
-	bl MI_CpuFill8
-	mov r0, #0x61
-	str r0, [r4]
-	add r0, r6, #0
-	bl OverlayManager_GetArgs
-	mov r1, #0
-	str r0, [r4, #0x10]
-	mov r0, #0x4a
-	add r2, r1, #0
-	bl sub_02004EC4
-	add r0, r4, #0
-	bl ov110_021E5A74
-	ldr r0, [r5]
-	add r0, r0, #1
-	str r0, [r5]
-	b _021E596E
-_021E595E:
-	bl OverlayManager_GetData
-	bl ov110_021E5AD4
-	cmp r0, #0
-	beq _021E596E
-	mov r0, #1
-	pop {r4, r5, r6, pc}
-_021E596E:
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end ov110_AlphPuzzle_OvyInit
-
 	thumb_func_start ov110_AlphPuzzle_OvyExec
 ov110_AlphPuzzle_OvyExec: ; 0x021E5974
 	push {r3, r4, r5, lr}
