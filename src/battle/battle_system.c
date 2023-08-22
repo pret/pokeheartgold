@@ -709,7 +709,7 @@ void BattleSystem_SetSafariBallCount(BattleSystem *bsys, int cnt) {
     bsys->safariBallCnt = cnt;
 }
 
-OPTIONS *BattleSystem_GetOptions(BattleSystem *bsys) {
+Options *BattleSystem_GetOptions(BattleSystem *bsys) {
     return bsys->options;
 }
 

@@ -19,7 +19,7 @@ PlayerProfile* Save_PlayerData_GetProfileAddr(SaveData* savedata) {
     return &player->profile;
 }
 
-OPTIONS* Save_PlayerData_GetOptionsAddr(SaveData* savedata) {
+Options* Save_PlayerData_GetOptionsAddr(SaveData* savedata) {
     PLAYERDATA* player = SaveArray_Get(savedata, SAVE_PLAYERDATA);
     return &player->options;
 }

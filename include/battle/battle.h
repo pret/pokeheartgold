@@ -549,7 +549,7 @@ struct BattleSystem {
     FontID *hpFont;
     FontID *levelFont;
     void *msgIcon;
-    OPTIONS *options;
+    Options *options;
     u32 *unk1B8;
     void *unk1BC;
     u32 *unk1C0;

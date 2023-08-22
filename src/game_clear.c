@@ -311,7 +311,7 @@ static void GameClearSave_InitGraphics(FieldSystem *fsys, GameClearWork *env) {
 }
 
 static void GameClearSave_PrintSaving(FieldSystem *fsys, GameClearWork *env) {
-    OPTIONS *options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
+    Options *options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
     env->windowText = ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, NARC_msg_msg_0040_bin, msg_0040_00015, HEAP_ID_32);
     sub_0205B514(env->bgConfig, &env->window, 3);
     sub_0205B564(&env->window, options);
@@ -341,7 +341,7 @@ static void GameClearSave_PrintSaveStatus(FieldSystem *fsys, GameClearWork *env,
         env->windowText = NewString_ReadMsgData(msgData, msg_0040_00018);
     }
     DestroyMsgData(msgData);
-    OPTIONS *options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
+    Options *options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
     env->printerId = sub_0205B5B4(&env->window, env->windowText, options, 1);
 }
 

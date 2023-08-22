@@ -123,7 +123,7 @@ void ov110_021E5A24(void) {
 
 void ov110_021E5A74(AlphPuzzleData *data) {
     data->unk4 = sub_020183F0(data->unk10->unk8);
-    OPTIONS *options = Save_PlayerData_GetOptionsAddr(data->unk10->savedata);
+    Options *options = Save_PlayerData_GetOptionsAddr(data->unk10->savedata);
     data->textFrameDelay = Options_GetTextFrameDelay(options);
     data->frame = Options_GetFrame(options);
     data->unk19 = data->unk10->unk5;

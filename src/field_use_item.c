@@ -485,7 +485,7 @@ static BOOL ItemFieldUseFunc_Generic(struct ItemFieldUseData *data) {
 static BOOL Task_PrintRegisteredKeyItemUseMessage(TaskManager *taskManager) {
     FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
     struct RegisteredKeyItemUseMessagePrintTaskData *env = TaskManager_GetEnv(taskManager);
-    OPTIONS *options;
+    Options *options;
 
     switch (env->state) {
     case 0:
