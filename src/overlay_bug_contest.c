@@ -37,7 +37,7 @@ BUGCONTEST *BugContest_New(FieldSystem *fieldSystem, u32 weekday) {
     bugContest = (BUGCONTEST *)AllocFromHeap(HEAP_ID_3, sizeof(BUGCONTEST));
     MI_CpuClear8(bugContest, sizeof(BUGCONTEST));
     bugContest->heapId = HEAP_ID_3;
-    bugContest->saveData = fieldSystem->savedata;
+    bugContest->saveData = fieldSystem->saveData;
     bugContest->sport_balls = 20;
     bugContest->mon = AllocMonZeroed(bugContest->heapId);
     bugContest->national_dex = Pokedex_GetNatDexFlag(Save_Pokedex_Get(bugContest->saveData));
@@ -220,7 +220,7 @@ void BugContest_RestoreParty_RetrieveCaughtPokemon(BUGCONTEST *bugContest) {
 
     if (bugContest->caught_poke) {
         if (bugContest->party_cur_num >= PARTY_SIZE) {
-            PCStorage_PlaceMonInFirstEmptySlotInAnyBox(GetStoragePCPointer(bugContest->saveData), Mon_GetBoxMon(bugContest->mon));
+            PCStorage_PlaceMonInFirstEmptySlotInAnyBox(Save_PCStorage_Get(bugContest->saveData), Mon_GetBoxMon(bugContest->mon));
         } else {
             Party_AddMon(bugContest->party_cur, bugContest->mon);
         }

@@ -138,7 +138,7 @@ static void sub_02052F30(FieldSystem *fieldSystem) {
 }
 
 static void sub_02052F94(FieldSystem *fieldSystem, Location *location) {
-    LocalFieldData *localFieldData = Save_LocalFieldData_Get(fieldSystem->savedata);
+    LocalFieldData *localFieldData = Save_LocalFieldData_Get(fieldSystem->saveData);
     Location *r2 = LocalFieldData_GetPreviousPosition(localFieldData);
     const WARP_EVENT *warp;
     if (location != NULL) {
@@ -163,7 +163,7 @@ void sub_02053018(FieldSystem *fieldSystem) {
 
 void sub_02053038(FieldSystem *fieldSystem, BOOL isConnection) {
     u32 mapId = fieldSystem->location->mapId;
-    LocalFieldData *localFieldData = Save_LocalFieldData_Get(fieldSystem->savedata);
+    LocalFieldData *localFieldData = Save_LocalFieldData_Get(fieldSystem->saveData);
     SaveVarsFlags *varsFlags;
     u16 weather;
     u16 spawnId;
@@ -181,10 +181,10 @@ void sub_02053038(FieldSystem *fieldSystem, BOOL isConnection) {
         FieldSystem_StartBugContestTimer(fieldSystem);
     }
     if (!isConnection) {
-        SavGymmick_Clear(Save_GetGymmickPtr(fieldSystem->savedata));
-        SetLakeOfRageWaterLevel(fieldSystem->mapMatrix, ShouldUseAlternateLakeOfRage(fieldSystem->savedata, mapId));
+        Save_Gymmick_Clear(Save_GetGymmickPtr(fieldSystem->saveData));
+        SetLakeOfRageWaterLevel(fieldSystem->mapMatrix, ShouldUseAlternateLakeOfRage(fieldSystem->saveData, mapId));
     }
-    varsFlags = Save_VarsFlags_Get(fieldSystem->savedata);
+    varsFlags = Save_VarsFlags_Get(fieldSystem->saveData);
     weather = FieldSystem_GetWeather_HandleDiamondDust(fieldSystem, mapId);
     if (sub_02066C74(varsFlags, 1) && mapId == MAP_T29) {
         weather = 0;
@@ -211,21 +211,21 @@ void sub_02053038(FieldSystem *fieldSystem, BOOL isConnection) {
     fieldSystem->unk7E = 0;
     fieldSystem->unk7C = 0;
     fieldSystem->unk78 = 0;
-    SavFollowPoke_SetInhibitFlagState(Save_FollowPoke_Get(fieldSystem->savedata), FALSE);
-    ClearFlag99A(Save_VarsFlags_Get(fieldSystem->savedata));
+    SavFollowPoke_SetInhibitFlagState(Save_FollowPoke_Get(fieldSystem->saveData), FALSE);
+    ClearFlag99A(Save_VarsFlags_Get(fieldSystem->saveData));
 }
 
 static void sub_0205316C(FieldSystem *fieldSystem) {
     u32 gender;
     struct PlayerSaveData *playerSaveData;
     if (fieldSystem->unkAC) {
-        gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->savedata));
-        playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->savedata));
+        gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
+        playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->saveData));
         fieldSystem->playerAvatar = sub_0205C390(fieldSystem->mapObjectMan, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, playerSaveData->unk4, gender, 2, playerSaveData);
     } else {
         fieldSystem->mapObjectMan = sub_0205E0BC(fieldSystem, 64, HEAP_ID_BATTLE);
-        gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->savedata));
-        playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->savedata));
+        gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
+        playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->saveData));
         fieldSystem->playerAvatar = sub_0205C390(fieldSystem->mapObjectMan, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, playerSaveData->unk4, gender, 2, playerSaveData);
         sub_020699F8(fieldSystem->mapObjectMan, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, fieldSystem->location->mapId);
         Field_InitMapObjectsFromZoneEventData(fieldSystem);
@@ -250,8 +250,8 @@ static void sub_0205323C(FieldSystem *fieldSystem) {
 
     fieldSystem->mapObjectMan = sub_0205E0BC(fieldSystem, 64, HEAP_ID_BATTLE);
     FieldSystem_RestoreMapObjectsFromSave(fieldSystem);
-    playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->savedata));
-    gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->savedata));
+    playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->saveData));
+    gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
     fieldSystem->playerAvatar = sub_0205C408(fieldSystem->mapObjectMan, playerSaveData, gender);
     sub_02069B74(fieldSystem->mapObjectMan, fieldSystem->location->mapId);
     sub_0205F55C(fieldSystem->mapObjectMan);
@@ -263,12 +263,12 @@ static void sub_02053284(FieldSystem *fieldSystem) {
     sub_02052F30(fieldSystem);
     GF_ASSERT(fieldSystem->unk60 == 0);
     MapMatrix_Load(fieldSystem->location->mapId, fieldSystem->mapMatrix);
-    varsFlags = Save_VarsFlags_Get(fieldSystem->savedata);
+    varsFlags = Save_VarsFlags_Get(fieldSystem->saveData);
     if (sub_02066C74(varsFlags, 0)) {
         RemoveMahoganyTownAntennaTree(fieldSystem->mapMatrix);
     }
     SetLakeOfRageWaterLevel(fieldSystem->mapMatrix, sub_02066C74(varsFlags, 1));
-    PlaceSafariZoneAreas(fieldSystem->mapMatrix, fieldSystem->savedata);
+    PlaceSafariZoneAreas(fieldSystem->mapMatrix, fieldSystem->saveData);
     GF_ASSERT(fieldSystem->unk70 < 6);
     fieldSystem->unk74 = &_020FC5CC[fieldSystem->unk70];
     fieldSystem->unk64 = fieldSystem->unk74->unk0_04;
@@ -313,8 +313,8 @@ static BOOL _IsPlayerStandingInFrontOfUnionRoomReception(FieldSystem *fieldSyste
 }
 
 static void _SetDynamicWarpToUnionRoomExit(FieldSystem *fieldSystem) {
-    Location *dynamicWarp = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->savedata));
-    SaveVarsFlags *varsFlags = Save_VarsFlags_Get(fieldSystem->savedata); // unused
+    Location *dynamicWarp = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->saveData));
+    SaveVarsFlags *varsFlags = Save_VarsFlags_Get(fieldSystem->saveData); // unused
     if (MapHeader_MapIsPokemonLeagueLobby(fieldSystem->location->mapId) == TRUE) {
         InitLocation(dynamicWarp, fieldSystem->location->mapId, -1, 4, 11, DIR_SOUTH);
     } else {
@@ -353,14 +353,14 @@ TaskManager *CallFieldTask_NewGame(FieldSystem *fieldSystem) {
 
 static BOOL FieldTask_ContinueGame_Normal(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    SaveVarsFlags *varsFlags = Save_VarsFlags_Get(fieldSystem->savedata);
+    SaveVarsFlags *varsFlags = Save_VarsFlags_Get(fieldSystem->saveData);
     LocalFieldData *localFieldData;
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
 
     switch (*state_p) {
     case 0:
         if (CheckFlag966(varsFlags)) {
-            localFieldData = Save_LocalFieldData_Get(fieldSystem->savedata);
+            localFieldData = Save_LocalFieldData_Get(fieldSystem->saveData);
             if (_IsPlayerStandingInFrontOfUnionRoomReception(fieldSystem)) {
                 _SetDynamicWarpToUnionRoomExit(fieldSystem);
             }
@@ -397,7 +397,7 @@ TaskManager *CallFieldTask_ContinueGame_Normal(FieldSystem *fieldSystem) {
 static BOOL FieldTask_ContinueGame_CommError(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     struct ErrorContinueEnv *env = TaskManager_GetEnv(taskManager);
-    SaveVarsFlags *varsFlags = Save_VarsFlags_Get(fieldSystem->savedata);
+    SaveVarsFlags *varsFlags = Save_VarsFlags_Get(fieldSystem->saveData);
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
 
     switch (*state_p) {
@@ -442,7 +442,7 @@ TaskManager *CallFieldTask_ContinueGame_CommError(FieldSystem *fieldSystem) {
     struct ErrorContinueEnv *env;
     if (!MapHeader_MapIsUnionRoom(fieldSystem->location->mapId)) {
         if (_IsPlayerStandingInFrontOfUnionRoomReception(fieldSystem)) {
-            varsFlags = Save_VarsFlags_Get(fieldSystem->savedata);
+            varsFlags = Save_VarsFlags_Get(fieldSystem->saveData);
             _SetDynamicWarpToUnionRoomExit(fieldSystem);
             SetFlag966(varsFlags);
         } else {
@@ -936,7 +936,7 @@ static BOOL sub_02053E5C(TaskManager *taskManager) {
 }
 
 void sub_02053F14(FieldSystem *fieldSystem) {
-    Location *location = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->savedata));
+    Location *location = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->saveData));
     struct UnkTaskEnv_02053E5C *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct UnkTaskEnv_02053E5C));
     MI_CpuClear8(env, sizeof(struct UnkTaskEnv_02053E5C));
     env->location = *location;
@@ -995,7 +995,7 @@ static BOOL sub_02053F70(TaskManager *taskManager) {
 
 void sub_02054030(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    Location *location = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->savedata));
+    Location *location = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->saveData));
     struct UnkTaskEnv_02053E5C *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct UnkTaskEnv_02053E5C));
     MI_CpuClear8(env, sizeof(struct UnkTaskEnv_02053E5C));
     _CopyPlayerPosToLocationWorkFacingSouth(location, fieldSystem);
@@ -1040,7 +1040,7 @@ static BOOL sub_020540A4(TaskManager *taskManager) {
 void sub_0205412C(TaskManager *taskManager, u32 mapId, int warpId, int x, int y, int direction) {
     struct UnkTaskEnv_02053688 *env;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    _CopyPlayerPosToLocationWorkFacingSouth(LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->savedata)), fieldSystem);
+    _CopyPlayerPosToLocationWorkFacingSouth(LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->saveData)), fieldSystem);
     fieldSystem->unk70 = 3;
     env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct UnkTaskEnv_02053688));
     {
@@ -1059,7 +1059,7 @@ void sub_0205412C(TaskManager *taskManager, u32 mapId, int warpId, int x, int y,
 
 void sub_02054190(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    Location *location = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->savedata));
+    Location *location = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->saveData));
     fieldSystem->unk70 = 0;
     sub_02053710(fieldSystem->taskman, location);
 }

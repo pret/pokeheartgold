@@ -200,7 +200,7 @@
 .public CopyStringToU16Array
 .public String_Cat
 .public String_AddChar
-.public GetStoragePCPointer
+.public Save_PCStorage_Get
 .public SaveGameNormal
 .public Save_ClearStatusFlags
 .public Save_PlayerData_GetProfileAddr

@@ -307,8 +307,8 @@ BgConfig *FieldSystem_GetBgConfigPtr(FieldSystem *fieldSystem) {
     return fieldSystem->bgConfig;
 }
 
-SaveData *FieldSystem_GetSaveDataPtr(FieldSystem *fieldSystem) {
-    return fieldSystem->savedata;
+SaveData *FieldSystem_GetSaveData(FieldSystem *fieldSystem) {
+    return fieldSystem->saveData;
 }
 
 void sub_0203E348() {

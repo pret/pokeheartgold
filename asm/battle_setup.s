@@ -378,7 +378,7 @@ sub_02051AAC: ; 0x02051AAC
 	lsl r0, r0, #2
 	strb r1, [r4, r0]
 	ldr r0, [r5, #0xc]
-	bl GetStoragePCPointer
+	bl Save_PCStorage_Get
 	mov r1, #0x45
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -695,7 +695,7 @@ _02051E14:
 	mov r2, #0
 	bl sub_02051D04
 	add r0, r4, #0
-	bl GetStoragePCPointer
+	bl Save_PCStorage_Get
 	mov r1, #0x45
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -919,7 +919,7 @@ _02052004:
 	bl sub_02051D04
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl GetStoragePCPointer
+	bl Save_PCStorage_Get
 	mov r1, #0x45
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -1147,7 +1147,7 @@ _020521F6:
 	bl sub_02051D04
 	ldr r0, [sp]
 	ldr r0, [r0, #0xc]
-	bl GetStoragePCPointer
+	bl Save_PCStorage_Get
 	mov r1, #0x45
 	lsl r1, r1, #2
 	str r0, [r5, r1]

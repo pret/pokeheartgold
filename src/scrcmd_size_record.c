@@ -91,11 +91,11 @@ BOOL ScrCmd_SizeRecordCompare(ScriptContext *ctx) {
     fieldSystem = ctx->fieldSystem;
     ret_p = ScriptGetVarPointer(ctx);
     slot = ScriptGetVar(ctx);
-    mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->savedata), slot);
+    mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), slot);
     species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     rand = GetMonSizeHash(mon);
     cm1 = GetMonSize(species, rand);
-    record = Save_VarsFlags_GetFishingCompetitionLengthRecord(Save_VarsFlags_Get(fieldSystem->savedata));
+    record = Save_VarsFlags_GetFishingCompetitionLengthRecord(Save_VarsFlags_Get(fieldSystem->saveData));
     cm2 = GetMonSize(species, record);
     {
         u32 in1 = LengthConvertToImperial(cm1);
@@ -121,8 +121,8 @@ BOOL ScrCmd_SizeRecordUpdate(ScriptContext *ctx) {
 
     fieldSystem = ctx->fieldSystem;
     slot = ScriptGetVar(ctx);
-    mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->savedata), slot);
-    Save_VarsFlags_SetFishingCompetitionLengthRecord(Save_VarsFlags_Get(fieldSystem->savedata), GetMonSizeHash(mon));
+    mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), slot);
+    Save_VarsFlags_SetFishingCompetitionLengthRecord(Save_VarsFlags_Get(fieldSystem->saveData), GetMonSizeHash(mon));
     return FALSE;
 }
 
@@ -137,7 +137,7 @@ BOOL ScrCmd_BufferRecordSize(ScriptContext *ctx) {
     idx0 = ScriptGetVar(ctx);
     idx1 = ScriptGetVar(ctx);
     species = ScriptGetVar(ctx);
-    rand = Save_VarsFlags_GetFishingCompetitionLengthRecord(Save_VarsFlags_Get(fieldSystem->savedata));
+    rand = Save_VarsFlags_GetFishingCompetitionLengthRecord(Save_VarsFlags_Get(fieldSystem->saveData));
     FormatSizeRecord(fieldSystem, idx0, idx1, species, rand);
     return FALSE;
 }
@@ -153,7 +153,7 @@ BOOL ScrCmd_BufferMonSize(ScriptContext *ctx) {
     idx0 = ScriptGetVar(ctx);
     idx1 = ScriptGetVar(ctx);
     slot = ScriptGetVar(ctx);
-    mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->savedata), slot);
+    mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), slot);
     FormatSizeRecord(fieldSystem, idx0, idx1, GetMonData(mon, MON_DATA_SPECIES, NULL), GetMonSizeHash(mon));
     return FALSE;
 }

@@ -48,9 +48,9 @@ struct Gymmick {
     union GymmickUnion data;
 };
 
-void SavGymmick_Clear(struct Gymmick *gymmick);
-union GymmickUnion *SavGymmick_Init(struct Gymmick *gymmick, int kind);
-union GymmickUnion *SavGymmick_AssertMagic_GetData(struct Gymmick *gymmick, int kind);
-int SavGymmick_GetType(struct Gymmick *gymmick);
+void Save_Gymmick_Clear(struct Gymmick *gymmick);
+union GymmickUnion *Save_Gymmick_Init(struct Gymmick *gymmick, int kind);
+union GymmickUnion *Save_Gymmick_AssertMagic_GetData(struct Gymmick *gymmick, int kind);
+int Save_Gymmick_GetType(struct Gymmick *gymmick);
 
 #endif //POKEHEARTGOLD_GYMMICK_H

@@ -24741,7 +24741,7 @@ _021F3634:
 	pop {r4, r5, r6, pc}
 _021F3642:
 	ldr r0, [r4, #0x1c]
-	bl GetStoragePCPointer
+	bl Save_PCStorage_Get
 	add r6, r0, #0
 	bl PCStorage_GetActiveBox
 	add r1, r0, #0

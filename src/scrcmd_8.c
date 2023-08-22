@@ -14,8 +14,8 @@ BOOL ScrCmd_GetStaticEncounterOutcomeFlag(ScriptContext *ctx) {
 
 BOOL ScrCmd_465(ScriptContext *ctx) {
     MessageFormat **msg = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
-    SAV_FRIEND_GRP *group = Save_FriendGroup_Get(ctx->fieldSystem->savedata);
-    SaveData *save = ctx->fieldSystem->savedata;
+    SAV_FRIEND_GRP *group = Save_FriendGroup_Get(ctx->fieldSystem->saveData);
+    SaveData *save = ctx->fieldSystem->saveData;
 
     u16 var = ScriptReadHalfword(ctx);
     switch (var) {
@@ -57,7 +57,7 @@ BOOL ScrCmd_465(ScriptContext *ctx) {
     }
     case 6: {
         String *str = String_New(64, HEAP_ID_32);
-        PlayerProfile *profile = Save_PlayerData_GetProfileAddr(ctx->fieldSystem->savedata);
+        PlayerProfile *profile = Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData);
         PlayerName_FlatToString(profile, str);
         sub_0202C7F8(group, 0, 1, str);
         sub_0202C824(group, 0, PlayerProfile_GetTrainerGender(profile));

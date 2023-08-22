@@ -504,7 +504,7 @@ BOOL ScrCmd_ClearFlagVar(ScriptContext* ctx) {
 BOOL ScrCmd_SetTrainerFlag(ScriptContext* ctx) {
     u16 flag_to_set = ScriptGetVar(ctx);
 
-    TrainerFlagSet(ctx->fieldSystem->savedata, flag_to_set);
+    TrainerFlagSet(ctx->fieldSystem->saveData, flag_to_set);
 
     return FALSE;
 }
@@ -512,7 +512,7 @@ BOOL ScrCmd_SetTrainerFlag(ScriptContext* ctx) {
 BOOL ScrCmd_ClearTrainerFlag(ScriptContext* ctx) {
     u16 flag_to_clear = ScriptGetVar(ctx);
 
-    TrainerFlagClear(ctx->fieldSystem->savedata, flag_to_clear);
+    TrainerFlagClear(ctx->fieldSystem->saveData, flag_to_clear);
 
     return FALSE;
 }
@@ -521,7 +521,7 @@ BOOL ScrCmd_CheckTrainerFlag(ScriptContext* ctx) {
     FieldSystem* fieldSystem = ctx->fieldSystem;
     u16 flag_to_check = ScriptGetVar(ctx);
 
-    ctx->comparisonResult = TrainerFlagCheck(fieldSystem->savedata, flag_to_check);
+    ctx->comparisonResult = TrainerFlagCheck(fieldSystem->saveData, flag_to_check);
 
     return FALSE;
 }
@@ -668,7 +668,7 @@ BOOL ScrCmd_OpenMsg(ScriptContext* ctx) {
     u8* unk = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_FIELD_08);
 
     sub_0205B514(fieldSystem->bgConfig, FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_WINDOW), 3);
-    sub_0205B564(FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_WINDOW), Save_PlayerData_GetOptionsAddr(ctx->fieldSystem->savedata));
+    sub_0205B564(FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_WINDOW), Save_PlayerData_GetOptionsAddr(ctx->fieldSystem->saveData));
 
     fieldSystem->unkD2_6 = 1;
     *unk = 1;
@@ -844,7 +844,7 @@ BOOL ScrCmd_TrainerTips(ScriptContext* ctx) {
     sub_02002B8C(FALSE);
 
     Window* window = ov01_021F3D80(fieldSystem->unk68);
-    u8 text_speed = Options_GetTextFrameDelay(Save_PlayerData_GetOptionsAddr(fieldSystem->savedata));
+    u8 text_speed = Options_GetTextFrameDelay(Save_PlayerData_GetOptionsAddr(fieldSystem->saveData));
     *printer_id_ptr = AddTextPrinterParameterized2(window, 1, *unk, 0, 0, text_speed, MakeTextColor(2, 10, 15), NULL);
 
     ctx->data[0] = result_var_id;
@@ -1582,7 +1582,7 @@ BOOL ScrCmd_574(ScriptContext *ctx) {
 BOOL ScrCmd_136(ScriptContext *ctx) {
     u16 partyIdx = ScriptGetVar(ctx);
     u16 *p_dest = ScriptGetVarPointer(ctx);
-    *p_dest = GetMonUnownLetter(Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->savedata), partyIdx));
+    *p_dest = GetMonUnownLetter(Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), partyIdx));
     return FALSE;
 }
 
@@ -1727,7 +1727,7 @@ BOOL ScrCmd_GetPhoneBookRematch(ScriptContext *ctx) {
     u16 *r6 = ScriptGetVarPointer(ctx);
     struct PhoneBook *phoneBook = AllocAndReadPhoneBook(HEAP_ID_32);
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_26), OVY_LOAD_ASYNC);
-    *r6 = PhoneBookTrainerGetRematchInfo(r4, ctx->fieldSystem->savedata, phoneBook, (TimeOfDayWildParam)(u8)Field_GetTimeOfDayWildParam(ctx->fieldSystem));
+    *r6 = PhoneBookTrainerGetRematchInfo(r4, ctx->fieldSystem->saveData, phoneBook, (TimeOfDayWildParam)(u8)Field_GetTimeOfDayWildParam(ctx->fieldSystem));
     UnloadOverlayByID(FS_OVERLAY_ID(OVY_26));
     FreePhoneBook(phoneBook);
     return FALSE;
@@ -1735,7 +1735,7 @@ BOOL ScrCmd_GetPhoneBookRematch(ScriptContext *ctx) {
 
 BOOL ScrCmd_684(ScriptContext *ctx) {
     u16 *p_dest = ScriptGetVarPointer(ctx);
-    *p_dest = LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(ctx->fieldSystem->savedata));
+    *p_dest = LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(ctx->fieldSystem->saveData));
     return FALSE;
 }
 
@@ -1791,7 +1791,7 @@ BOOL ScrCmd_436(ScriptContext *ctx) {
 }
 
 static BOOL sub_02042A30(FieldSystem *fieldSystem, int a1, int a2) {
-    SaveFashionData *fashionData = Save_FashionData_Get(fieldSystem->savedata);
+    SaveFashionData *fashionData = Save_FashionData_Get(fieldSystem->saveData);
     if (a1 == 0) {
         if (!sub_0202B9EC(fashionData, a2)) {
             return FALSE;
@@ -1805,7 +1805,7 @@ static BOOL sub_02042A30(FieldSystem *fieldSystem, int a1, int a2) {
 }
 
 static FashionAppData *sub_02042A60(HeapID heapId, FieldSystem *fieldSystem, int a2, int a3) {
-    SaveFashionData *saveFashionData = Save_FashionData_Get(fieldSystem->savedata);
+    SaveFashionData *saveFashionData = Save_FashionData_Get(fieldSystem->saveData);
     FashionAppData *fashionAppData;
     if (!sub_02042A30(fieldSystem, a2, a3)) {
         return NULL;
@@ -1855,7 +1855,7 @@ BOOL ScrCmd_452(ScriptContext *ctx) {
 BOOL ScrCmd_547(ScriptContext *ctx) {
     struct PokepicManager **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
     u16 partyIdx = ScriptGetVar(ctx);
-    Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->savedata), partyIdx);
+    Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), partyIdx);
     LoadUserFrameGfx1(ctx->fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 0x3D9, 0xB, 0, HEAP_ID_4);
     *p_work = DrawPokemonPicFromMon(ctx->fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 10, 5, 11, 0x3D9, mon, HEAP_ID_4);
     return FALSE;
@@ -1905,7 +1905,7 @@ BOOL ScrCmd_154(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
     u16 *r6 = ScriptGetVarPointer(ctx);
     u16 sp0 = ScriptGetVar(ctx);
-    sub_0203F198(ctx->fieldSystem->taskman, r6, ctx->fieldSystem->savedata, r4, sp0);
+    sub_0203F198(ctx->fieldSystem->taskman, r6, ctx->fieldSystem->saveData, r4, sp0);
     return TRUE;
 }
 
@@ -1939,7 +1939,7 @@ BOOL ScrCmd_255(ScriptContext *ctx) {
 
 BOOL ScrCmd_256(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
-    sub_0202BD7C(sub_0202B9B8(Save_FashionData_Get(ctx->fieldSystem->savedata), 0), r4);
+    sub_0202BD7C(sub_0202B9B8(Save_FashionData_Get(ctx->fieldSystem->saveData), 0), r4);
     return TRUE;
 }
 
@@ -1950,7 +1950,7 @@ BOOL ScrCmd_450(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_156(ScriptContext *ctx) {
-    sub_0206B910(ctx->taskman, ctx->fieldSystem->savedata);
+    sub_0206B910(ctx->taskman, ctx->fieldSystem->saveData);
     return TRUE;
 }
 
@@ -2020,7 +2020,7 @@ BOOL ScrCmd_164(ScriptContext *ctx) {
 
 BOOL ScrCmd_706(ScriptContext *ctx) {
     int saveOk;
-    HALL_OF_FAME *hof = LoadHallOfFame(ctx->fieldSystem->savedata, HEAP_ID_4, &saveOk);
+    HALL_OF_FAME *hof = LoadHallOfFame(ctx->fieldSystem->saveData, HEAP_ID_4, &saveOk);
     u16 *p_var = ScriptGetVarPointer(ctx);
     *p_var = 0;
     if (saveOk == 2) {
@@ -2033,7 +2033,7 @@ BOOL ScrCmd_706(ScriptContext *ctx) {
 BOOL ScrCmd_165(ScriptContext *ctx) {
     u16 r6 = ScriptGetVar(ctx);
     u16 *r4 = ScriptGetVarPointer(ctx);
-    if (sub_0203A05C(ctx->fieldSystem->savedata)) {
+    if (sub_0203A05C(ctx->fieldSystem->saveData)) {
         *r4 = 1;
         sub_0203F844(ctx->fieldSystem, r6);
         SetupNativeScript(ctx, ScrNative_WaitApplication);
@@ -2112,7 +2112,7 @@ BOOL ScrCmd_NicknameInput(ScriptContext *ctx) {
         }
         mon = contest->mon;
     } else {
-        mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->savedata), partyPos);
+        mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), partyPos);
     }
     GetMonData(mon, MON_DATA_NICKNAME, nickname);
     var_ret = ScriptGetVarPointer(ctx);
@@ -2217,7 +2217,7 @@ BOOL ScrCmd_449(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_445(ScriptContext *ctx) {
-    Location *location = LocalFieldData_GetPreviousPosition(Save_LocalFieldData_Get(ctx->fieldSystem->savedata));
+    Location *location = LocalFieldData_GetPreviousPosition(Save_LocalFieldData_Get(ctx->fieldSystem->saveData));
     u16 *ret_p = ScriptGetVarPointer(ctx);
     *ret_p = location->mapId;
     return FALSE;
@@ -2273,7 +2273,7 @@ BOOL ScrCmd_180(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_FlashEffect(ScriptContext *ctx) {
-    LocalFieldData *localFieldData = Save_LocalFieldData_Get(ctx->fieldSystem->savedata);
+    LocalFieldData *localFieldData = Save_LocalFieldData_Get(ctx->fieldSystem->saveData);
     LocalFieldData_SetWeatherType(localFieldData, 12);
     FieldWeatherUpdate_UsedFlash(ctx->fieldSystem->unk4->unk_0C, LocalFieldData_GetWeatherType(localFieldData)); //CallFieldTask_Flash?
     return TRUE;
@@ -2291,7 +2291,7 @@ BOOL sub_0204378C(ScriptContext *ctx);
 BOOL ScrCmd_183(ScriptContext *ctx) {
     void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
     u16 partyIdx = ScriptGetVar(ctx);
-    Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->savedata), partyIdx);
+    Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), partyIdx);
     int playerGender = PlayerAvatar_GetGender(ctx->fieldSystem->playerAvatar);
     *p_work = ov02_02249458(ctx->fieldSystem, 0, mon, playerGender);
     SetupNativeScript(ctx, sub_0204378C);
@@ -2363,7 +2363,7 @@ BOOL ScrCmd_UpdateAvatarState(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_211(ScriptContext *ctx) {
-    RoamerSaveData *roamerSave = Save_Roamers_Get(ctx->fieldSystem->savedata);
+    RoamerSaveData *roamerSave = Save_Roamers_Get(ctx->fieldSystem->saveData);
     u16 *r6 = ScriptGetVarPointer(ctx);
     u16 *r4 = ScriptGetVarPointer(ctx);
     GetSwarmInfoFromRand(Roamers_GetRand(roamerSave, 2), r6, r4);
@@ -2372,13 +2372,13 @@ BOOL ScrCmd_211(ScriptContext *ctx) {
 
 BOOL ScrCmd_GetStarterChoice(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = Save_VarsFlags_GetStarter(Save_VarsFlags_Get(ctx->fieldSystem->savedata));
+    *p_ret = Save_VarsFlags_GetStarter(Save_VarsFlags_Get(ctx->fieldSystem->saveData));
     return FALSE;
 }
 
 BOOL ScrCmd_SetStarterChoice(ScriptContext *ctx) {
     u16 choice = ScriptGetVar(ctx);
-    Save_VarsFlags_SetStarter(Save_VarsFlags_Get(ctx->fieldSystem->savedata), choice);
+    Save_VarsFlags_SetStarter(Save_VarsFlags_Get(ctx->fieldSystem->saveData), choice);
     return FALSE;
 }
 
@@ -2396,7 +2396,7 @@ BOOL ScrCmd_TrainerMessage(ScriptContext *ctx) {
     *p_printerno = sub_0205B5B4(
         FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_WINDOW),
         *p_strbuf1,
-        Save_PlayerData_GetOptionsAddr(ctx->fieldSystem->savedata),
+        Save_PlayerData_GetOptionsAddr(ctx->fieldSystem->saveData),
         TRUE
     );
     SetupNativeScript(ctx, ov01_021EF348);
@@ -2484,13 +2484,13 @@ BOOL ScrCmd_SetDynamicWarp(ScriptContext *ctx) {
     warp.x = ScriptGetVar(ctx);
     warp.y = ScriptGetVar(ctx);
     warp.direction = ScriptGetVar(ctx);
-    LocalFieldData_SetDynamicWarp(Save_LocalFieldData_Get(ctx->fieldSystem->savedata), &warp);
+    LocalFieldData_SetDynamicWarp(Save_LocalFieldData_Get(ctx->fieldSystem->saveData), &warp);
     return FALSE;
 }
 
 BOOL ScrCmd_GetDynamicWarpFloorNo(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    Location *warp = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(ctx->fieldSystem->savedata));
+    Location *warp = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(ctx->fieldSystem->saveData));
     *p_ret = MapNumToFloorNo(warp->mapId);
     return FALSE;
 }
@@ -2507,28 +2507,28 @@ BOOL ScrCmd_ElevatorCurFloorBox(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_CountJohtoDexSeen(ScriptContext *ctx) {
-    Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->saveData);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = Pokedex_CountJohtoDexSeen(pokedex);
     return FALSE;
 }
 
 BOOL ScrCmd_CountJohtoDexOwned(ScriptContext *ctx) {
-    Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->saveData);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = Pokedex_CountJohtoDexOwned(pokedex);
     return FALSE;
 }
 
 BOOL ScrCmd_CountNationalDexSeen(ScriptContext *ctx) {
-    Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->saveData);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = Pokedex_CountNationalDexSeen(pokedex);
     return FALSE;
 }
 
 BOOL ScrCmd_CountNationalDexOwned(ScriptContext *ctx) {
-    Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->saveData);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = Pokedex_CountNationalDexOwned(pokedex);
     return FALSE;
@@ -2540,8 +2540,8 @@ BOOL ScrCmd_247(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_GetDexEvalResult(ScriptContext *ctx) {
-    Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->savedata);
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(ctx->fieldSystem->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->saveData);
+    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData);
     u8 kind = ScriptReadByte(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     u16 *p_ret2 = ScriptGetVarPointer(ctx);
@@ -2598,7 +2598,7 @@ BOOL ScrCmd_252(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_GetSaveFileState(ScriptContext *ctx) {
-    SaveData *saveData = ctx->fieldSystem->savedata;
+    SaveData *saveData = ctx->fieldSystem->saveData;
     u16 *p_ret = ScriptGetVarPointer(ctx);
 
     if (Save_FileDoesNotBelongToPlayer(saveData)) {
@@ -2622,13 +2622,13 @@ BOOL ScrCmd_SaveGameNormal(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_SaveWipeExtraChunks(ScriptContext *ctx) {
-    Save_WipeExtraChunks(ctx->fieldSystem->savedata);
+    Save_WipeExtraChunks(ctx->fieldSystem->saveData);
     return FALSE;
 }
 
 BOOL ScrCmd_642(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = Save_CheckExtraChunksExist(ctx->fieldSystem->savedata);
+    *p_ret = Save_CheckExtraChunksExist(ctx->fieldSystem->saveData);
     return FALSE;
 }
 
@@ -2688,8 +2688,8 @@ BOOL ScrCmd_264(ScriptContext *ctx) {
     LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_LAST_INTERACTED);
     MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u16 r4 = ScriptReadHalfword(ctx);
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(ctx->fieldSystem));
-    SaveEasyChat *easyChat = Save_EasyChat_Get(FieldSystem_GetSaveDataPtr(ctx->fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
+    SaveEasyChat *easyChat = Save_EasyChat_Get(FieldSystem_GetSaveData(ctx->fieldSystem));
     u16 objId;
 
     if (r4 == 0) {
@@ -2853,7 +2853,7 @@ BOOL ScrCmd_286(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_287(ScriptContext *ctx) {
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(ctx->fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
     MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     sub_0205B3DC(
         PlayerProfile_GetTrainerID(profile),
@@ -2864,7 +2864,7 @@ BOOL ScrCmd_287(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_288(ScriptContext *ctx) {
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(ctx->fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
     u16 choice = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = sub_0205B418(
@@ -2881,7 +2881,7 @@ BOOL ScrCmd_288(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_558(ScriptContext *ctx) {
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(ctx->fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
     u16 choice = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = sub_0205B418(
@@ -2893,7 +2893,7 @@ BOOL ScrCmd_558(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_289(ScriptContext *ctx) {
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(ctx->fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
     u16 choice = ScriptGetVar(ctx);
     PlayerProfile_SetAvatar(profile, choice);
     return FALSE;
@@ -2906,13 +2906,13 @@ BOOL ScrCmd_OverworldWhiteOut(ScriptContext *ctx) {
 
 BOOL ScrCmd_SetSpawn(ScriptContext *ctx) {
     u16 spawnPoint = ScriptGetVar(ctx);
-    LocalFieldData *localFieldData = Save_LocalFieldData_Get(ctx->fieldSystem->savedata);
+    LocalFieldData *localFieldData = Save_LocalFieldData_Get(ctx->fieldSystem->saveData);
     LocalFieldData_SetBlackoutSpawn(localFieldData, spawnPoint);
     return FALSE;
 }
 
 BOOL ScrCmd_GetPlayerGender(ScriptContext *ctx) {
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(ctx->fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = PlayerProfile_GetTrainerGender(profile);
     return FALSE;
@@ -2920,7 +2920,7 @@ BOOL ScrCmd_GetPlayerGender(ScriptContext *ctx) {
 
 BOOL ScrCmd_HealParty(ScriptContext *ctx) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(ctx->taskman); // ???
-    HealParty(SaveArray_Party_Get(fieldSystem->savedata));
+    HealParty(SaveArray_Party_Get(fieldSystem->saveData));
     return FALSE;
 }
 
@@ -2960,7 +2960,7 @@ BOOL ScrCmd_285(ScriptContext *ctx) {
 BOOL ScrCmd_335(ScriptContext *ctx) {
     u16 pocket = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = Bag_PocketNotEmpty(Save_Bag_Get(ctx->fieldSystem->savedata), pocket);
+    *p_ret = Bag_PocketNotEmpty(Save_Bag_Get(ctx->fieldSystem->saveData), pocket);
     return FALSE;
 }
 
@@ -3073,7 +3073,7 @@ BOOL ScrCmd_EcruteakGymInit(ScriptContext *ctx) {
 
 BOOL ScrCmd_315(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    if (SavGymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveDataPtr(fieldSystem))) != GYMMICK_ECRUTEAK) {
+    if (Save_Gymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem))) != GYMMICK_ECRUTEAK) {
         return FALSE;
     }
     ov04_02254D98(fieldSystem);
@@ -3082,7 +3082,7 @@ BOOL ScrCmd_315(ScriptContext *ctx) {
 
 BOOL ScrCmd_316(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    if (SavGymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveDataPtr(fieldSystem))) != GYMMICK_ECRUTEAK) {
+    if (Save_Gymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem))) != GYMMICK_ECRUTEAK) {
         return FALSE;
     }
     ov04_02254DD0(fieldSystem);
@@ -3092,7 +3092,7 @@ BOOL ScrCmd_316(ScriptContext *ctx) {
 BOOL ScrCmd_317(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u8 r5 = ScriptReadByte(ctx);
-    if (SavGymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveDataPtr(fieldSystem))) != GYMMICK_ECRUTEAK) {
+    if (Save_Gymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem))) != GYMMICK_ECRUTEAK) {
         return TRUE;
     }
     ov04_02254DE0(fieldSystem, (r5 != 0) ? 10 : 30);
@@ -3226,7 +3226,7 @@ BOOL ScrCmd_376(ScriptContext *ctx) { //todo: mail screen
 BOOL ScrCmd_377(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = Mailbox_CountMessages(Save_Mailbox_Get(fieldSystem->savedata), 0);
+    *p_ret = Mailbox_CountMessages(Save_Mailbox_Get(fieldSystem->saveData), 0);
     return FALSE;
 }
 
@@ -3260,7 +3260,7 @@ BOOL ScrCmd_381(ScriptContext *ctx) {
 BOOL ScrCmd_403(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
     u16 r6 = ScriptGetVar(ctx);
-    sub_0202BB08(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->savedata)), r4, r6);
+    sub_0202BB08(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->saveData)), r4, r6);
     return FALSE;
 }
 
@@ -3268,7 +3268,7 @@ BOOL ScrCmd_404(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
     u16 r6 = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = sub_0202BA2C(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->savedata)), r4, r6);
+    *p_ret = sub_0202BA2C(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->saveData)), r4, r6);
     return FALSE;
 }
 
@@ -3276,25 +3276,25 @@ BOOL ScrCmd_405(ScriptContext *ctx) {
     u16 r7 = ScriptGetVar(ctx);
     u16 r6 = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = r6 <= sub_0202BA70(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->savedata)), r7);
+    *p_ret = r6 <= sub_0202BA70(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->saveData)), r7);
     return FALSE;
 }
 
 BOOL ScrCmd_406(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
-    sub_0202BBD8(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->savedata)), r4);
+    sub_0202BBD8(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->saveData)), r4);
     return FALSE;
 }
 
 BOOL ScrCmd_407(ScriptContext *ctx) {
     u16 r6 = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = sub_0202BA5C(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->savedata)), r6);
+    *p_ret = sub_0202BA5C(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->saveData)), r6);
     return FALSE;
 }
 
 BOOL ScrCmd_CheckJohtoDexComplete(ScriptContext *ctx) {
-    Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->saveData);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = FALSE;
     if (Pokedex_JohtoDexIsComplete(pokedex) == TRUE) {
@@ -3304,7 +3304,7 @@ BOOL ScrCmd_CheckJohtoDexComplete(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_CheckNationalDexComplete(ScriptContext *ctx) {
-    Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->saveData);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = FALSE;
     if (Pokedex_NationalDexIsComplete(pokedex) == TRUE) {
@@ -3329,7 +3329,7 @@ BOOL ScrCmd_427(ScriptContext *ctx) {
 
 BOOL ScrCmd_420(ScriptContext *ctx) {
     u16 statno = ScriptReadHalfword(ctx);
-    GameStats_Inc(Save_GameStats_Get(ctx->fieldSystem->savedata), statno);
+    GameStats_Inc(Save_GameStats_Get(ctx->fieldSystem->saveData), statno);
     return FALSE;
 }
 
@@ -3339,7 +3339,7 @@ BOOL ScrCmd_421(ScriptContext *ctx) {
     u16 r6 = ScriptReadHalfword(ctx);
     u16 *p_ret_hi = GetVarPointer(ctx->fieldSystem, r4);
     u16 *p_ret_lo = GetVarPointer(ctx->fieldSystem, r6);
-    u32 statval = GameStats_GetCapped(Save_GameStats_Get(ctx->fieldSystem->savedata), r7);
+    u32 statval = GameStats_GetCapped(Save_GameStats_Get(ctx->fieldSystem->saveData), r7);
     *p_ret_hi = (statval & 0xFFFF0000) >> 16;
     *p_ret_lo = statval & 0x0000FFFF;
     return FALSE;
@@ -3354,13 +3354,13 @@ BOOL ScrCmd_422(ScriptContext *ctx) {
     u32 value = (value_hi << 16) | value_lo;
     switch (action) {
     case 0:
-        GameStats_Add(Save_GameStats_Get(ctx->fieldSystem->savedata), statIdx, value);
+        GameStats_Add(Save_GameStats_Get(ctx->fieldSystem->saveData), statIdx, value);
         break;
     case 1:
-        GameStats_SetCapped(Save_GameStats_Get(ctx->fieldSystem->savedata), statIdx, value);
+        GameStats_SetCapped(Save_GameStats_Get(ctx->fieldSystem->saveData), statIdx, value);
         break;
     case 2:
-        GameStats_UpdateBounded(Save_GameStats_Get(ctx->fieldSystem->savedata), statIdx, value);
+        GameStats_UpdateBounded(Save_GameStats_Get(ctx->fieldSystem->saveData), statIdx, value);
         break;
     }
     return FALSE;
@@ -3369,21 +3369,21 @@ BOOL ScrCmd_422(ScriptContext *ctx) {
 BOOL ScrCmd_704(ScriptContext *ctx) {
     u16 statIdx = ScriptReadHalfword(ctx);
     u16 value = ScriptGetVar(ctx);
-    GameStats_Add(Save_GameStats_Get(ctx->fieldSystem->savedata), statIdx, value);
+    GameStats_Add(Save_GameStats_Get(ctx->fieldSystem->saveData), statIdx, value);
     return FALSE;
 }
 
 BOOL ScrCmd_705(ScriptContext *ctx) {
     u16 statIdx = ScriptReadHalfword(ctx);
     u32 value = ScriptReadWord(ctx);
-    GameStats_Add(Save_GameStats_Get(ctx->fieldSystem->savedata), statIdx, value);
+    GameStats_Add(Save_GameStats_Get(ctx->fieldSystem->saveData), statIdx, value);
     return FALSE;
 }
 
 BOOL ScrCmd_SafariZoneAction(ScriptContext *ctx) {
-    LocalFieldData *localFieldData = Save_LocalFieldData_Get(ctx->fieldSystem->savedata);
-    SaveVarsFlags *varsFlags = Save_VarsFlags_Get(ctx->fieldSystem->savedata);
-    SafariZone *safariZone = Save_SafariZone_Get(ctx->fieldSystem->savedata);
+    LocalFieldData *localFieldData = Save_LocalFieldData_Get(ctx->fieldSystem->saveData);
+    SaveVarsFlags *varsFlags = Save_VarsFlags_Get(ctx->fieldSystem->saveData);
+    SafariZone *safariZone = Save_SafariZone_Get(ctx->fieldSystem->saveData);
     u8 action = ScriptReadByte(ctx);
     u8 areaSet = ScriptReadByte(ctx);
     u16 *p_nSafariBall = LocalFieldData_GetSafariBallsCounter(localFieldData);
@@ -3402,7 +3402,7 @@ BOOL ScrCmd_SafariZoneAction(ScriptContext *ctx) {
         sub_0202F5F8(safariZone, 1);
         r1 = sub_0202F6AC(safariZone);
         if (r1 != 0) {
-            sub_0209730C(ctx->fieldSystem->savedata, r1);
+            sub_0209730C(ctx->fieldSystem->saveData, r1);
             sub_0202F6A0(safariZone, 0);
         }
         *p_nSafariBall = 0;
@@ -3424,13 +3424,13 @@ BOOL ScrCmd_456(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_EnableMassOutbreaks(ScriptContext *ctx) {
-    RoamerSave_SetOutbreakActive(ctx->fieldSystem->savedata);
+    RoamerSave_SetOutbreakActive(ctx->fieldSystem->saveData);
     return FALSE;
 }
 
 BOOL ScrCmd_CreateRoamer(ScriptContext *ctx) {
     u8 roamerNo = ScriptReadByte(ctx);
-    Save_CreateRoamerByID(ctx->fieldSystem->savedata, roamerNo);
+    Save_CreateRoamerByID(ctx->fieldSystem->saveData, roamerNo);
     return FALSE;
 }
 
@@ -3504,7 +3504,7 @@ BOOL ScrCmd_475(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_476(ScriptContext *ctx) {
-    sub_0202A57C(Save_Pokedex_Get(ctx->fieldSystem->savedata));
+    sub_0202A57C(Save_Pokedex_Get(ctx->fieldSystem->saveData));
     return FALSE;
 }
 
@@ -3513,10 +3513,10 @@ BOOL ScrCmd_NatDexFlagAction(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = 0;
     if (action == 1) {
-        Pokedex_SetNatDexFlag(Save_Pokedex_Get(ctx->fieldSystem->savedata));
-        PlayerProfile_SetNatDexFlag(Save_PlayerData_GetProfileAddr(ctx->fieldSystem->savedata));
+        Pokedex_SetNatDexFlag(Save_Pokedex_Get(ctx->fieldSystem->saveData));
+        PlayerProfile_SetNatDexFlag(Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData));
     } else if (action == 2) {
-        *p_ret = Pokedex_GetNatDexFlag(Save_Pokedex_Get(ctx->fieldSystem->savedata));
+        *p_ret = Pokedex_GetNatDexFlag(Save_Pokedex_Get(ctx->fieldSystem->saveData));
     } else {
         GF_ASSERT(0);
     }
@@ -3526,7 +3526,7 @@ BOOL ScrCmd_NatDexFlagAction(ScriptContext *ctx) {
 BOOL ScrCmd_GetEVTotal(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     u16 partyIdx = ScriptGetVar(ctx);
-    Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->savedata),  partyIdx);
+    Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData),  partyIdx);
 
     int hpEv = GetMonData(mon, MON_DATA_HP_EV, NULL);
     int atkEv = GetMonData(mon, MON_DATA_ATK_EV, NULL);
@@ -3573,9 +3573,9 @@ BOOL ScrCmd_GetGameVersion(ScriptContext *ctx) {
 
 BOOL ScrCmd_PrimoPasswordCheck1(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem));
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    PC_STORAGE *pcStorage = GetStoragePCPointer(fieldSystem->savedata);
+    PC_STORAGE *pcStorage = Save_PCStorage_Get(fieldSystem->saveData);
     u16 a = ScriptGetVar(ctx);
     u16 b = ScriptGetVar(ctx);
     u16 c = ScriptGetVar(ctx);
@@ -3595,9 +3595,9 @@ BOOL ScrCmd_PrimoPasswordCheck1(ScriptContext *ctx) {
 
 BOOL ScrCmd_PrimoPasswordCheck2(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem));
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    PC_STORAGE *pcStorage = GetStoragePCPointer(fieldSystem->savedata);
+    PC_STORAGE *pcStorage = Save_PCStorage_Get(fieldSystem->saveData);
     u16 a = ScriptGetVar(ctx);
     u16 b = ScriptGetVar(ctx);
     u16 c = ScriptGetVar(ctx);
@@ -3634,7 +3634,7 @@ BOOL ScrCmd_502(ScriptContext *ctx) {
 }
 
 void Script_SetMonSeenFlagBySpecies(FieldSystem *fieldSystem, u16 species) {
-    Pokedex *pokedex = Save_Pokedex_Get(fieldSystem->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(fieldSystem->saveData);
     Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
     ZeroMonData(mon);
     CreateMon(mon, species, 50, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
@@ -3650,7 +3650,7 @@ BOOL ScrCmd_687(ScriptContext *ctx) {
 
 BOOL ScrCmd_CountPCEmptySpace(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = PCStorage_CountEmptySpotsInAllBoxes(GetStoragePCPointer(ctx->fieldSystem->savedata));
+    *p_ret = PCStorage_CountEmptySpotsInAllBoxes(Save_PCStorage_Get(ctx->fieldSystem->saveData));
     return FALSE;
 }
 
@@ -3675,22 +3675,22 @@ BOOL ScrCmd_HallOfFameAnim(ScriptContext *ctx) {
 
 BOOL ScrCmd_AddSpecialGameStat(ScriptContext *ctx) {
     u16 statno = ScriptReadHalfword(ctx);
-    GameStats_AddSpecial(Save_GameStats_Get(ctx->fieldSystem->savedata), statno);
+    GameStats_AddSpecial(Save_GameStats_Get(ctx->fieldSystem->saveData), statno);
     return FALSE;
 }
 
 BOOL ScrCmd_517(ScriptContext *ctx) {
     u16 species = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = Party_HasMon(SaveArray_Party_Get(ctx->fieldSystem->savedata), species);
+    *p_ret = Party_HasMon(SaveArray_Party_Get(ctx->fieldSystem->saveData), species);
     return TRUE;
 }
 
 BOOL ScrCmd_518(ScriptContext *ctx) {
     u16 form = ScriptGetVar(ctx);
-    Party *party = SaveArray_Party_Get(ctx->fieldSystem->savedata);
+    Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
     int partyCount = Party_GetCount(party);
-    Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->saveData);
     int i;
 
     for (i = 0; i < partyCount; i++) {
@@ -3706,7 +3706,7 @@ BOOL ScrCmd_518(ScriptContext *ctx) {
 
 BOOL ScrCmd_519(ScriptContext *ctx) {
     u16 *sp0 = ScriptGetVarPointer(ctx);
-    Party *party = SaveArray_Party_Get(ctx->fieldSystem->savedata);
+    Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
     int partyCount = Party_GetCount(party);
 
     int sp18[PARTY_SIZE] = {
@@ -3743,12 +3743,12 @@ BOOL ScrCmd_519(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_520(ScriptContext *ctx) {
-    SetFlag975(Save_VarsFlags_Get(ctx->fieldSystem->savedata));
+    SetFlag975(Save_VarsFlags_Get(ctx->fieldSystem->saveData));
     return FALSE;
 }
 
 BOOL ScrCmd_521(ScriptContext *ctx) {
-    ClearFlag975(Save_VarsFlags_Get(ctx->fieldSystem->savedata));
+    ClearFlag975(Save_VarsFlags_Get(ctx->fieldSystem->saveData));
     return FALSE;
 }
 
@@ -3782,13 +3782,13 @@ BOOL ScrCmd_524(ScriptContext *ctx) {
 
 BOOL ScrCmd_525(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = Save_PlayerHasAllRegisInParty(ctx->fieldSystem->savedata);
+    *p_ret = Save_PlayerHasAllRegisInParty(ctx->fieldSystem->saveData);
     return FALSE;
 }
 
 BOOL ScrCmd_526(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    FashionCase *fashionCase = Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->savedata));
+    FashionCase *fashionCase = Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->saveData));
     int i, k, n = 0;
     u16 sp4[16];
 
@@ -3828,7 +3828,7 @@ BOOL ScrCmd_528(ScriptContext *ctx) {
 BOOL ScrCmd_530(ScriptContext *ctx) {
     u16 r6 = ScriptGetVar(ctx);
     u8 action = ScriptReadByte(ctx);
-    SaveVarsFlags *varsFlags = Save_VarsFlags_Get(ctx->fieldSystem->savedata);
+    SaveVarsFlags *varsFlags = Save_VarsFlags_Get(ctx->fieldSystem->saveData);
     if (action) {
         sub_02066C1C(varsFlags, r6);
     } else {
@@ -3847,19 +3847,19 @@ BOOL ScrCmd_BufferBackgroundName(ScriptContext *ctx) {
 
 BOOL ScrCmd_534(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = Save_VarsFlags_GetVar4041(Save_VarsFlags_Get(ctx->fieldSystem->savedata));
+    *p_ret = Save_VarsFlags_GetVar4041(Save_VarsFlags_Get(ctx->fieldSystem->saveData));
     return FALSE;
 }
 
 BOOL ScrCmd_536(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
     u16 r6 = ScriptGetVar(ctx);
-    sub_0202BB7C(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->savedata)), r4, r6);
+    sub_0202BB7C(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->saveData)), r4, r6);
     return FALSE;
 }
 
 BOOL ScrCmd_537(ScriptContext *ctx) {
-    sub_02066D60(ctx->fieldSystem->savedata);
+    sub_02066D60(ctx->fieldSystem->saveData);
     return FALSE;
 }
 
@@ -3867,7 +3867,7 @@ BOOL ScrCmd_538(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     u16 wordIdx = ScriptGetVar(ctx);
     MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
-    int trendy = Save_EasyChat_SetRandomTrendySaying(Save_EasyChat_Get(ctx->fieldSystem->savedata));
+    int trendy = Save_EasyChat_SetRandomTrendySaying(Save_EasyChat_Get(ctx->fieldSystem->saveData));
     if (trendy == 32) {
         *p_ret = 0xFFFF;
         return FALSE;
@@ -3879,12 +3879,12 @@ BOOL ScrCmd_538(ScriptContext *ctx) {
 
 BOOL ScrCmd_540(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = Save_EasyChat_TrendySayingsUnlockedAllCheck(Save_EasyChat_Get(ctx->fieldSystem->savedata)) == TRUE;
+    *p_ret = Save_EasyChat_TrendySayingsUnlockedAllCheck(Save_EasyChat_Get(ctx->fieldSystem->saveData)) == TRUE;
     return FALSE;
 }
 
 BOOL ScrCmd_539(ScriptContext *ctx) {
-    SaveVarsFlags *varsFlags = Save_VarsFlags_Get(ctx->fieldSystem->savedata);
+    SaveVarsFlags *varsFlags = Save_VarsFlags_Get(ctx->fieldSystem->saveData);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = Save_VarsFlags_GetVar4042(varsFlags) >= 5;
     return FALSE;
@@ -3893,7 +3893,7 @@ BOOL ScrCmd_539(ScriptContext *ctx) {
 BOOL ScrCmd_543(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    SysInfo *sysInfo = Save_SysInfo_Get(fieldSystem->savedata);
+    SysInfo *sysInfo = Save_SysInfo_Get(fieldSystem->saveData);
     if (Save_SysInfo_GetBirthMonth(sysInfo) == Field_GetMonth(fieldSystem) && Save_SysInfo_GetBirthDay(sysInfo) == Field_GetDay(fieldSystem)) {
         *p_ret = TRUE;
     } else {
@@ -3903,7 +3903,7 @@ BOOL ScrCmd_543(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_545(ScriptContext *ctx) {
-    Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->savedata);
+    Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->saveData);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = Pokedex_GetSeenFormNum_Unown(pokedex, TRUE);
     return FALSE;
@@ -3912,7 +3912,7 @@ BOOL ScrCmd_545(ScriptContext *ctx) {
 BOOL ScrCmd_546(ScriptContext *ctx) {
     u8 mode = ScriptReadByte(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    SaveVarsFlags *varsFlags = Save_VarsFlags_Get(ctx->fieldSystem->savedata);
+    SaveVarsFlags *varsFlags = Save_VarsFlags_Get(ctx->fieldSystem->saveData);
     GF_ASSERT(mode <= 1);
     *p_ret = sub_02066BC0(varsFlags, mode);
     return FALSE;
@@ -3921,7 +3921,7 @@ BOOL ScrCmd_546(ScriptContext *ctx) {
 BOOL ScrCmd_550(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     int loadResult;
-    HALL_OF_FAME *hof = LoadHallOfFame(ctx->fieldSystem->savedata, HEAP_ID_32, &loadResult);
+    HALL_OF_FAME *hof = LoadHallOfFame(ctx->fieldSystem->saveData, HEAP_ID_32, &loadResult);
     if (loadResult == 0) {
         *p_ret = 0;
         FreeToHeap(hof);
@@ -4012,13 +4012,13 @@ BOOL ScrCmd_560(ScriptContext *ctx) {
 
 BOOL ScrCmd_564(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = sub_0203A05C(ctx->fieldSystem->savedata);
+    *p_ret = sub_0203A05C(ctx->fieldSystem->saveData);
     return FALSE;
 }
 
 BOOL ScrCmd_565(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = sub_0202C2F8(sub_0202C6F4(ctx->fieldSystem->savedata));
+    *p_ret = sub_0202C2F8(sub_0202C6F4(ctx->fieldSystem->saveData));
     return FALSE;
 }
 
@@ -4057,7 +4057,7 @@ BOOL ScrCmd_571(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_573(ScriptContext *ctx) {
-    Save_SysInfo_SetMysteryGiftActive(Save_SysInfo_Get(ctx->fieldSystem->savedata), 1);
+    Save_SysInfo_SetMysteryGiftActive(Save_SysInfo_Get(ctx->fieldSystem->saveData), 1);
     return FALSE;
 }
 
@@ -4088,7 +4088,7 @@ BOOL ScrCmd_582(ScriptContext *ctx) {
     u16 mapId = ScriptGetVar(ctx);
     u16 x = ScriptGetVar(ctx);
     u16 y = ScriptGetVar(ctx);
-    Location *specialSpawn = LocalFieldData_GetSpecialSpawnWarpPtr(Save_LocalFieldData_Get(ctx->fieldSystem->savedata));
+    Location *specialSpawn = LocalFieldData_GetSpecialSpawnWarpPtr(Save_LocalFieldData_Get(ctx->fieldSystem->saveData));
     specialSpawn->mapId = mapId;
     specialSpawn->x = x;
     specialSpawn->y = y;
@@ -4116,7 +4116,7 @@ BOOL ScrCmd_GetTrcardStars(ScriptContext *ctx) {
 BOOL ScrCmd_ShowSaveStats(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     struct SaveStatsPrinter **saveStatsPrinter = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_SAVE_STATS_PRINTER);
-    if (!Save_FileDoesNotBelongToPlayer(fieldSystem->savedata)) {
+    if (!Save_FileDoesNotBelongToPlayer(fieldSystem->saveData)) {
         *saveStatsPrinter = Field_SaveStatsPrinter_New(fieldSystem, HEAP_ID_4, 3);
         Field_SaveStatsPrinter_Print(*saveStatsPrinter);
     }
@@ -4126,7 +4126,7 @@ BOOL ScrCmd_ShowSaveStats(ScriptContext *ctx) {
 BOOL ScrCmd_HideSaveStats(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     struct SaveStatsPrinter **saveStatsPrinter = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_SAVE_STATS_PRINTER);
-    if (!Save_FileDoesNotBelongToPlayer(fieldSystem->savedata)) {
+    if (!Save_FileDoesNotBelongToPlayer(fieldSystem->saveData)) {
         Field_SaveStatsPrinter_RemoveFromScreen(*saveStatsPrinter);
         Field_SaveStatsPrinter_Delete(*saveStatsPrinter);
     }
@@ -4150,9 +4150,9 @@ BOOL ScrCmd_627(ScriptContext *ctx) {
     } else {
         work->unk_0 = NULL;
     }
-    work->options = Save_PlayerData_GetOptionsAddr(ctx->fieldSystem->savedata);
+    work->options = Save_PlayerData_GetOptionsAddr(ctx->fieldSystem->saveData);
     work->unk_20 = r6;
-    work->saveData = ctx->fieldSystem->savedata;
+    work->saveData = ctx->fieldSystem->saveData;
     work->mapId = ctx->fieldSystem->location->mapId;
     work->unk_0C = ctx->fieldSystem->unk94;
     work->unk_1C = ctx->fieldSystem->unkB0;
@@ -4200,7 +4200,7 @@ BOOL ScrCmd_662(ScriptContext *ctx) {
     u16 r6 = ScriptGetVar(ctx);
     u16 r7 = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    if (sub_0203A05C(ctx->fieldSystem->savedata)) {
+    if (sub_0203A05C(ctx->fieldSystem->saveData)) {
         *p_ret = 1;
         sub_0203FC14(ctx->fieldSystem, r7, r6);
         SetupNativeScript(ctx, ScrNative_WaitApplication);
@@ -4212,7 +4212,7 @@ BOOL ScrCmd_662(ScriptContext *ctx) {
 
 BOOL ScrCmd_663(ScriptContext *ctx) {
     u16 *p_var = ScriptGetVarPointer(ctx);
-    if (sub_0203A05C(ctx->fieldSystem->savedata)) {
+    if (sub_0203A05C(ctx->fieldSystem->saveData)) {
         sub_02056D00(ctx->taskman, *p_var);
     }
     return TRUE;
@@ -4247,7 +4247,7 @@ BOOL ScrCmd_GetOwnedRotomForms(ScriptContext *ctx) {
     *hasFan = FALSE;
     *hasMow = FALSE;
 
-    flag = sub_020467A8(fieldSystem->savedata);
+    flag = sub_020467A8(fieldSystem->saveData);
     if (((flag >> ROTOM_HEAT) & 1) == 1) {
         *hasHeat = TRUE;
     }
@@ -4287,7 +4287,7 @@ u32 sub_020467A8(SaveData *saveData) {
         }
     }
 
-    PC_STORAGE *pcStorage = GetStoragePCPointer(saveData);
+    PC_STORAGE *pcStorage = Save_PCStorage_Get(saveData);
     for (i = 0; i < (u32)NUM_BOXES; i++) {
         for (j = 0; j < MONS_PER_BOX; j++) {
             BoxPokemon *boxMon = PCStorage_GetMonByIndexPair(pcStorage, i, j);
@@ -4312,7 +4312,7 @@ u32 sub_020467A8(SaveData *saveData) {
 
 BOOL ScrCmd_AddSpecialGameStat2(ScriptContext *ctx) {
     u16 statno = ScriptReadHalfword(ctx);
-    GameStats_AddSpecial(Save_GameStats_Get(ctx->fieldSystem->savedata), statno);
+    GameStats_AddSpecial(Save_GameStats_Get(ctx->fieldSystem->saveData), statno);
     return FALSE;
 }
 
@@ -4351,7 +4351,7 @@ BOOL ScrCmd_691(ScriptContext *ctx) {
 BOOL ScrCmd_696(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 r5 = ScriptGetVar(ctx);
-    Party *party = SaveArray_Party_Get(ctx->fieldSystem->savedata);
+    Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
     int i, partyCount;
     Pokemon *mon;
 
@@ -4360,7 +4360,7 @@ BOOL ScrCmd_696(ScriptContext *ctx) {
     for (i = 0; i < partyCount; i++) {
         mon = Party_GetMonByIndex(party, i);
         if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
-            Pokedex_SetMonCaughtFlag(Save_Pokedex_Get(fieldSystem->savedata), mon);
+            Pokedex_SetMonCaughtFlag(Save_Pokedex_Get(fieldSystem->saveData), mon);
         }
     }
     return FALSE;
@@ -4374,7 +4374,7 @@ BOOL ScrCmd_FollowerPokeIsEventTrigger(ScriptContext *ctx) {
     int species;
 
     *r6 = 0;
-    mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->savedata), r7);
+    mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), r7);
 
     if (r4 >= 4) {
         return FALSE;
@@ -4383,7 +4383,7 @@ BOOL ScrCmd_FollowerPokeIsEventTrigger(ScriptContext *ctx) {
         return FALSE;
     }
     if (!sub_0208E9E0(r4, mon, GetMonData(mon, MON_DATA_OTID, NULL) == PlayerProfile_GetTrainerID(
-        Save_PlayerData_GetProfileAddr(ctx->fieldSystem->savedata)))) {
+        Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData)))) {
         return FALSE;
     }
 
@@ -4585,7 +4585,7 @@ BOOL ScrCmd_Pokeathlon(ScriptContext *ctx) {
 
 BOOL ScrCmd_GetFriendSprite(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    if (PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(ctx->fieldSystem))) != PLAYER_GENDER_MALE) {
+    if (PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem))) != PLAYER_GENDER_MALE) {
         *p_ret = SPRITE_HERO;
     } else {
         *p_ret = SPRITE_HEROINE;
@@ -4594,7 +4594,7 @@ BOOL ScrCmd_GetFriendSprite(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_RegisterPokegearCard(ScriptContext *ctx) {
-    SavePokegear *pokegear = SaveData_GSPlayerMisc_Get(FieldSystem_GetSaveDataPtr(ctx->fieldSystem));
+    SavePokegear *pokegear = SaveData_GSPlayerMisc_Get(FieldSystem_GetSaveData(ctx->fieldSystem));
     u8 card = ScriptReadByte(ctx);
     switch (card) {
     case 1:
@@ -4612,12 +4612,12 @@ BOOL ScrCmd_RegisterPokegearCard(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_804(ScriptContext *ctx) {
-    sub_0202EE58(SaveData_GSPlayerMisc_Get(ctx->fieldSystem->savedata), ScriptReadByte(ctx));
+    sub_0202EE58(SaveData_GSPlayerMisc_Get(ctx->fieldSystem->saveData), ScriptReadByte(ctx));
     return FALSE;
 }
 
 BOOL ScrCmd_RegisterGearNumber(ScriptContext *ctx) {
-    SavePokegear *pokegear = SaveData_GSPlayerMisc_Get(FieldSystem_GetSaveDataPtr(ctx->fieldSystem));
+    SavePokegear *pokegear = SaveData_GSPlayerMisc_Get(FieldSystem_GetSaveData(ctx->fieldSystem));
     u8 number = ScriptGetVar(ctx);
     if (number < NUM_PHONE_CONTACTS) {
         RegisterPhoneNumberInPokeGear(pokegear, number);
@@ -4626,7 +4626,7 @@ BOOL ScrCmd_RegisterGearNumber(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_CheckRegisteredPhoneNumber(ScriptContext *ctx) {
-    SavePokegear *pokegear = SaveData_GSPlayerMisc_Get(FieldSystem_GetSaveDataPtr(ctx->fieldSystem));
+    SavePokegear *pokegear = SaveData_GSPlayerMisc_Get(FieldSystem_GetSaveData(ctx->fieldSystem));
     u8 number = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     if (number < NUM_PHONE_CONTACTS) {
@@ -4698,7 +4698,7 @@ BOOL ScrCmd_GetPhoneContactMsgIds(ScriptContext *ctx) {
 
 BOOL ScrCmd_462(ScriptContext *ctx) {
     u16 idx = ScriptGetVar(ctx);
-    PhoneRematches_SetSeeking(SaveData_GetMomsSavingsAddr(ctx->fieldSystem->savedata), idx, FALSE);
+    PhoneRematches_SetSeeking(SaveData_GetMomsSavingsAddr(ctx->fieldSystem->saveData), idx, FALSE);
     return FALSE;
 }
 
@@ -4716,7 +4716,7 @@ BOOL ScrCmd_GetPhoneContactRandomGiftBerry(ScriptContext *ctx) {
 BOOL ScrCmd_GetPhoneContactGiftItem(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     PhoneBookEntry *entry = sub_02092E10(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem));
-    MomsSavings *momsSavings = SaveData_GetMomsSavingsAddr(ctx->fieldSystem->savedata);
+    MomsSavings *momsSavings = SaveData_GetMomsSavingsAddr(ctx->fieldSystem->saveData);
     *p_ret = PhoneRematches_GiftItemIdGet(momsSavings, entry->unk0);
     PhoneRematches_GiftItemIdSet(momsSavings, entry->unk0, ITEM_NONE);
     return FALSE;
@@ -4729,7 +4729,7 @@ BOOL ScrCmd_148(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_149(ScriptContext *ctx) {
-    sub_0202F050(SaveData_GetMomsSavingsAddr(ctx->fieldSystem->savedata), ScriptReadByte(ctx));
+    sub_0202F050(SaveData_GetMomsSavingsAddr(ctx->fieldSystem->saveData), ScriptReadByte(ctx));
     return FALSE;
 }
 
@@ -4741,7 +4741,7 @@ BOOL ScrCmd_CameronPhoto(ScriptContext *ctx) {
 
 BOOL ScrCmd_616(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = PhotoAlbum_GetNumSaved(Save_PhotoAlbum_Get(ctx->fieldSystem->savedata));
+    *p_ret = PhotoAlbum_GetNumSaved(Save_PhotoAlbum_Get(ctx->fieldSystem->saveData));
     return FALSE;
 }
 
@@ -4759,7 +4759,7 @@ BOOL ScrCmd_621(ScriptContext *ctx) {
     };
     int n, i;
 
-    int partyCount = Party_GetCount(SaveArray_Party_Get(fieldSystem->savedata));
+    int partyCount = Party_GetCount(SaveArray_Party_Get(fieldSystem->saveData));
     if (FlagGet(fieldSystem, FLAG_GOT_TM51_FROM_FALKNER)) {
         n = 0;
     } else if (FlagGet(fieldSystem, FLAG_MET_PASSERBY_BOY)) {
@@ -4853,7 +4853,7 @@ BOOL ScrCmd_Cinematic(ScriptContext *ctx) {
 
 BOOL ScrCmd_727(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = GetIdxOfFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(ctx->fieldSystem->savedata));
+    *p_ret = GetIdxOfFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(ctx->fieldSystem->saveData));
     return FALSE;
 }
 
@@ -5046,8 +5046,8 @@ BOOL sub_02047908(struct UnkStruct_ov01_021EDC28 *menu, int idx) {
 
 static u32 GetMaxBankTransactionAmount(FieldSystem *fieldSystem, int action) {
     u32 ret;
-    u32 wallet = PlayerProfile_GetMoney(Save_PlayerData_GetProfileAddr(fieldSystem->savedata));
-    u32 bank = MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(fieldSystem->savedata), MOMS_BALANCE_GET, 0);
+    u32 wallet = PlayerProfile_GetMoney(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
+    u32 bank = MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(fieldSystem->saveData), MOMS_BALANCE_GET, 0);
     switch (action) {
     case 0:
         ret = MAX_MONEY - bank;
@@ -5093,7 +5093,7 @@ BOOL sub_020479D4(ScriptContext *ctx) {
     } else if (work->sub->selected == 0) {
         *p_ret = 1;
     } else {
-        SaveData *saveData = ctx->fieldSystem->savedata;
+        SaveData *saveData = ctx->fieldSystem->saveData;
         switch (work->mode) {
         case 0:
             PlayerProfile_SubMoney(Save_PlayerData_GetProfileAddr(saveData), work->sub->selected);
@@ -5118,13 +5118,13 @@ BOOL ScrCmd_BankOrWalletIsFull(ScriptContext *ctx) {
     u16 action = ScriptReadHalfword(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     if (action == 0) {
-        if (MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(ctx->fieldSystem->savedata), MOMS_BALANCE_GET, 0) == MAX_MONEY) {
+        if (MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(ctx->fieldSystem->saveData), MOMS_BALANCE_GET, 0) == MAX_MONEY) {
             *p_ret = TRUE;
         } else {
             *p_ret = FALSE;
         }
     } else {
-        if (PlayerProfile_GetMoney(Save_PlayerData_GetProfileAddr(ctx->fieldSystem->savedata)) == MAX_MONEY) {
+        if (PlayerProfile_GetMoney(Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData)) == MAX_MONEY) {
             *p_ret = TRUE;
         } else {
             *p_ret = FALSE;
@@ -5226,7 +5226,7 @@ BOOL ScrCmd_769(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_SetFollowPokeInhibitState(ScriptContext *ctx) {
-    SavFollowPoke_SetInhibitFlagState(Save_FollowPoke_Get(ctx->fieldSystem->savedata), ScriptReadByte(ctx));
+    SavFollowPoke_SetInhibitFlagState(Save_FollowPoke_Get(ctx->fieldSystem->saveData), ScriptReadByte(ctx));
     return FALSE;
 }
 
@@ -5259,7 +5259,7 @@ BOOL ScrCmd_ScriptOverlayCmd(ScriptContext *ctx) {
 BOOL ScrCmd_CheckBankBalance(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     u32 check_amt = ScriptReadWord(ctx);
-    if (MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(ctx->fieldSystem->savedata), MOMS_BALANCE_GET, 0) >= check_amt) {
+    if (MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(ctx->fieldSystem->saveData), MOMS_BALANCE_GET, 0) >= check_amt) {
         *p_ret = TRUE;
     } else {
         *p_ret = FALSE;
@@ -5324,7 +5324,7 @@ BOOL ScrCmd_810(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_814(ScriptContext *ctx) {
-    SetFlag99A(Save_VarsFlags_Get(ctx->fieldSystem->savedata));
+    SetFlag99A(Save_VarsFlags_Get(ctx->fieldSystem->saveData));
     return FALSE;
 }
 
@@ -5362,14 +5362,14 @@ BOOL ScrCmd_823(ScriptContext *ctx) {
     u16 *p_var = ScriptGetVarPointer(ctx);
     MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     PlayerProfile *profile = PlayerProfile_New(HEAP_ID_4);
-    SafariZone_GetLinkLeaderToProfile(Save_SafariZone_Get(ctx->fieldSystem->savedata), profile);
+    SafariZone_GetLinkLeaderToProfile(Save_SafariZone_Get(ctx->fieldSystem->saveData), profile);
     BufferPlayersName(*p_msgFmt, *p_var, profile);
     FreeToHeap(profile);
     return FALSE;
 }
 
 BOOL ScrCmd_824(ScriptContext *ctx) {
-    SafariZone *safariZone = Save_SafariZone_Get(ctx->fieldSystem->savedata);
+    SafariZone *safariZone = Save_SafariZone_Get(ctx->fieldSystem->saveData);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     SafariZone_DeactivateLinkIfExpired(safariZone);
     if (SafariZone_IsCurrentlyLinked(safariZone)) {
@@ -5392,7 +5392,7 @@ BOOL ScrCmd_829(ScriptContext *ctx) {
 
 BOOL ScrCmd_830(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    if (ov02_02253134(ctx->fieldSystem->savedata) == TRUE) {
+    if (ov02_02253134(ctx->fieldSystem->saveData) == TRUE) {
         *p_ret = TRUE;
     } else {
         *p_ret = FALSE;
@@ -5408,7 +5408,7 @@ BOOL ScrCmd_831(ScriptContext *ctx) {
 
 BOOL ScrCmd_832(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    if (ov02_02253188(ctx->fieldSystem->savedata) == TRUE) {
+    if (ov02_02253188(ctx->fieldSystem->saveData) == TRUE) {
         *p_ret = TRUE;
     } else {
         *p_ret = FALSE;
@@ -5418,13 +5418,13 @@ BOOL ScrCmd_832(ScriptContext *ctx) {
 
 BOOL ScrCmd_833(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = ov02_022531B4(ctx->fieldSystem->savedata);
+    *p_ret = ov02_022531B4(ctx->fieldSystem->saveData);
     return FALSE;
 }
 
 BOOL ScrCmd_837(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    if (sub_020291A4(ctx->fieldSystem->savedata, 0)) {
+    if (sub_020291A4(ctx->fieldSystem->saveData, 0)) {
         *p_ret = TRUE;
     } else {
         *p_ret = FALSE;

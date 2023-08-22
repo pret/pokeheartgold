@@ -4,10 +4,10 @@
 .public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_TestBadgeFlag
 .public Save_GetGymmickPtr
-.public SavGymmick_Init
-.public SavGymmick_AssertMagic_GetData
-.public SavGymmick_GetType
-.public FieldSystem_GetSaveDataPtr
+.public Save_Gymmick_Init
+.public Save_Gymmick_AssertMagic_GetData
+.public Save_Gymmick_GetType
+.public FieldSystem_GetSaveData
 .public InitEcruteakGym
 .public InitCianwoodGym
 .public InitVermilionGym
@@ -17,5 +17,5 @@
 .public InitBlackthornGym
 .public InitFuchsiaGym
 .public InitViridianGym
-.public FieldSystem_IsSavGymmickTypeEqualTo
+.public FieldSystem_IsSave_GymmickTypeEqualTo
 .public _s32_div_f

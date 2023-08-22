@@ -105,8 +105,8 @@ BOOL ScrCmd_TrainerBattle(ScriptContext *ctx) {
     u8 var3 = ScriptReadByte(ctx);
     u16 followerTrainerNum = 0;
 
-    if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(ctx->fieldSystem->savedata)) == TRUE) {
-        followerTrainerNum = Save_VarsFlags_GetFollowerTrainerNum(Save_VarsFlags_Get(fieldSystem->savedata));
+    if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(ctx->fieldSystem->saveData)) == TRUE) {
+        followerTrainerNum = Save_VarsFlags_GetFollowerTrainerNum(Save_VarsFlags_Get(fieldSystem->saveData));
     }
 
     SetupAndStartTrainerBattle(ctx->taskman, var0, var1, followerTrainerNum, var2, var3, HEAP_ID_FIELD, winFlag);
@@ -232,7 +232,7 @@ BOOL ScrCmd_588(ScriptContext *ctx) {
 
 BOOL ScrCmd_PartyCheckForDouble(ScriptContext *ctx) {
     u16 *doubleBattlePtr = ScriptGetVarPointer(ctx);
-    *doubleBattlePtr = HasEnoughAlivePokemonForDoubleBattle(SaveArray_Party_Get(ctx->fieldSystem->savedata));
+    *doubleBattlePtr = HasEnoughAlivePokemonForDoubleBattle(SaveArray_Party_Get(ctx->fieldSystem->saveData));
     return FALSE;
 }
 
@@ -245,7 +245,7 @@ BOOL ScrCmd_223(ScriptContext *ctx) {
 BOOL ScrCmd_224(ScriptContext *ctx) {
     LocalMapObject **lastInteracted = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_LAST_INTERACTED);
     u32 mapObjectId = MapObject_GetID(*lastInteracted);
-    TrainerFlagSet(ctx->fieldSystem->savedata, (u16)mapObjectId);
+    TrainerFlagSet(ctx->fieldSystem->saveData, (u16)mapObjectId);
     return FALSE;
 }
 
@@ -255,7 +255,7 @@ BOOL ScrCmd_GotoIfTrainerDefeated(ScriptContext *ctx) {
     u32 offset = ScriptReadWord(ctx);
     u32 mapObjectId = MapObject_GetID(*lastInteracted);
 
-    if (TrainerFlagCheck(fieldSystem->savedata, (u16)mapObjectId) == TRUE) {
+    if (TrainerFlagCheck(fieldSystem->saveData, (u16)mapObjectId) == TRUE) {
         ScriptJump(ctx, ctx->script_ptr + offset);
         return TRUE;
     }

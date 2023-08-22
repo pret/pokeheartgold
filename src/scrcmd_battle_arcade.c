@@ -60,22 +60,22 @@ BOOL ScrCmd_643(ScriptContext *ctx) {
     u16 arg0 = ScriptReadHalfword(ctx);
     u16 arg1 = ScriptGetVar(ctx);
     u16 *result = ScriptGetVarPointer(ctx);
-    sub_02030E88(ctx->fieldSystem->savedata);
-    void *unk0 = sub_02030FA0(ctx->fieldSystem->savedata);
+    sub_02030E88(ctx->fieldSystem->saveData);
+    void *unk0 = sub_02030FA0(ctx->fieldSystem->saveData);
     void *unk1 = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     switch (arg0) {
         case 0:
-            *result = sub_0204A5B0(arg1, ctx->fieldSystem->savedata, 0);
+            *result = sub_0204A5B0(arg1, ctx->fieldSystem->saveData, 0);
             break;
         case 1: // Unused
             if (arg1 == 3) {
-                *result = sub_020310BC(sub_0203107C(ctx->fieldSystem->savedata), 110, sub_0205C268(110));
+                *result = sub_020310BC(sub_0203107C(ctx->fieldSystem->saveData), 110, sub_0205C268(110));
             } else {
                 *result = sub_02030FE4(unk0, 8, arg1, 0, 0);
             }
             break;
         case 3: // Unused
-            sub_0204FFB0(ctx->fieldSystem->savedata, unk0, arg1);
+            sub_0204FFB0(ctx->fieldSystem->saveData, unk0, arg1);
             break;
         case 4:
             BattleArcadeChallengeType challengeType;
@@ -98,7 +98,7 @@ BOOL ScrCmd_643(ScriptContext *ctx) {
 
 BOOL ScrCmd_646(ScriptContext *ctx) {
     u16 unk = ScriptGetVar(ctx);
-    sub_0204FFB0(ctx->fieldSystem->savedata, sub_02030FA0(ctx->fieldSystem->savedata), unk);
+    sub_0204FFB0(ctx->fieldSystem->saveData, sub_02030FA0(ctx->fieldSystem->saveData), unk);
     return FALSE;
 }
 
@@ -192,10 +192,10 @@ static BOOL sub_02050150(TaskManager *taskManager) {
 static u32 sub_020501B8(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, u32 a2) {
     PartyMenuAppData *partyMenu = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuAppData));
     MIi_CpuClearFast(0, (u32 *)partyMenu, sizeof(PartyMenuAppData));
-    partyMenu->party = SaveArray_Party_Get(fieldSystem->savedata);
-    partyMenu->bag = Save_Bag_Get(fieldSystem->savedata);
-    partyMenu->mailbox = Save_Mailbox_Get(fieldSystem->savedata);
-    partyMenu->options = Save_PlayerData_GetOptionsAddr(fieldSystem->savedata);
+    partyMenu->party = SaveArray_Party_Get(fieldSystem->saveData);
+    partyMenu->bag = Save_Bag_Get(fieldSystem->saveData);
+    partyMenu->mailbox = Save_Mailbox_Get(fieldSystem->saveData);
+    partyMenu->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     partyMenu->unk_25 = 0;
     partyMenu->unk_24 = 0x17;
     partyMenu->fieldSystem = fieldSystem;
@@ -235,7 +235,7 @@ static u32 sub_02050290(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
 }
 
 static u32 sub_020502E0(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID heapId) {
-    SaveData *saveData = fieldSystem->savedata;
+    SaveData *saveData = fieldSystem->saveData;
     UnkStruct_0204F448 *unk = AllocFromHeapAtEnd(heapId, sizeof(UnkStruct_0204F448));
     MI_CpuFill8(unk, 0, sizeof(UnkStruct_0204F448));
     unk->options = Save_PlayerData_GetOptionsAddr(saveData);
