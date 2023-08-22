@@ -2091,8 +2091,8 @@ ov01_021EEA44: ; 0x021EEA44
 	bx lr
 	thumb_func_end ov01_021EEA44
 
-	thumb_func_start Fsys_ShowMoneyBox
-Fsys_ShowMoneyBox: ; 0x021EEA90
+	thumb_func_start FieldSystem_ShowMoneyBox
+FieldSystem_ShowMoneyBox: ; 0x021EEA90
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x14
 	add r5, r0, #0
@@ -2164,7 +2164,7 @@ Fsys_ShowMoneyBox: ; 0x021EEA90
 	nop
 _021EEB30: .word 0x000003D9
 _021EEB34: .word 0x000001B3
-	thumb_func_end Fsys_ShowMoneyBox
+	thumb_func_end FieldSystem_ShowMoneyBox
 
 	thumb_func_start MoneyBoxSys_Delete
 MoneyBoxSys_Delete: ; 0x021EEB38

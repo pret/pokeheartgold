@@ -174,7 +174,7 @@ ov27_02259F80: ; 0x02259F80
 	b _0225A11A
 _0225A102:
 	add r0, r5, #0
-	bl Fsys_TaskIsRunning
+	bl FieldSystem_TaskIsRunning
 	cmp r0, #0
 	bne _0225A11A
 	add r0, r5, #0
@@ -503,7 +503,7 @@ _0225A3AE:
 	str r2, [r5, r1]
 _0225A3C8:
 	ldr r0, [r5, #0x10]
-	bl Fsys_TaskIsRunning
+	bl FieldSystem_TaskIsRunning
 	cmp r0, #0
 	beq _0225A3DA
 	add r0, r5, #0
@@ -602,7 +602,7 @@ ov27_0225A48C: ; 0x0225A48C
 	cmp r1, #0
 	bne _0225A4B6
 	ldr r0, [r5, #0x10]
-	bl FieldSys_GetPlayerAvatar
+	bl FieldSystem_GetPlayerAvatar
 	add r6, r0, #0
 	bl sub_0205CB38
 	add r4, r0, #0
@@ -623,7 +623,7 @@ ov27_0225A4B8: ; 0x0225A4B8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
-	bl FieldSys_GetPlayerAvatar
+	bl FieldSystem_GetPlayerAvatar
 	bl sub_0205CB38
 	add r1, r0, #0
 	add r0, r4, #0
@@ -749,7 +749,7 @@ _0225A5A8:
 	cmp r0, #0
 	bne _0225A5E6
 	add r0, r4, #0
-	bl FieldSys_GetPlayerAvatar
+	bl FieldSystem_GetPlayerAvatar
 	bl PlayerAvatar_GetMapObject
 	add r7, r0, #0
 	bl sub_0205F330
@@ -780,7 +780,7 @@ _0225A5E6:
 	bne _0225A618
 	add r0, r4, #0
 	add r1, sp, #0
-	bl Fsys_GetFacingObject
+	bl FieldSystem_GetFacingObject
 	ldr r0, [sp]
 	bl MapObject_GetScript
 	bl ov01_021F6BD0
@@ -1920,7 +1920,7 @@ _0225AEDE:
 	cmp r2, r0
 	bne _0225AF22
 	mov r0, ip
-	bl FieldSys_BugContest_Get
+	bl FieldSystem_BugContest_Get
 	str r0, [sp, #0x14]
 	cmp r0, #0
 	bne _0225AEFA
@@ -2347,7 +2347,7 @@ _0225B27E:
 	cmp r0, #2
 	bne _0225B2D2
 	ldr r0, [r5, #0x10]
-	bl FieldSys_BugContest_Get
+	bl FieldSystem_BugContest_Get
 	add r4, r0, #0
 	bne _0225B298
 	bl GF_AssertFail
@@ -3782,7 +3782,7 @@ ov27_0225BDDC: ; 0x0225BDDC
 	add r4, r1, #0
 	add r5, r0, #0
 	ldr r0, [r4, #0x10]
-	bl Fsys_GetGearPhoneRingManager
+	bl FieldSystem_GetGearPhoneRingManager
 	str r0, [r5, #4]
 	mov r0, #0xe7
 	lsl r0, r0, #2
@@ -4127,7 +4127,7 @@ ov27_0225C088: ; 0x0225C088
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x10]
-	bl FieldSys_BugContest_Get
+	bl FieldSystem_BugContest_Get
 	add r4, r0, #0
 	bne _0225C09A
 	bl GF_AssertFail
@@ -4610,7 +4610,7 @@ ov27_0225C434: ; 0x0225C434
 	push {r4, lr}
 	add r4, r1, #0
 	ldr r0, [r4, #0x24]
-	bl Fsys_TaskIsRunning
+	bl FieldSystem_TaskIsRunning
 	cmp r0, #0
 	bne _0225C46C
 	ldr r0, [r4, #0x24]

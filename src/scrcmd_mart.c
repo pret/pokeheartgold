@@ -47,7 +47,7 @@ BOOL ScrCmd_MartBuy(ScriptContext *ctx) {
     nitems = 0;
     badge_count = 0;
     for (i = 0; i < 16; i++) {
-        if (PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(ctx->fsys->savedata), i) == TRUE) {
+        if (PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(ctx->fieldSystem->savedata), i) == TRUE) {
             badge_count++;
         }
     }
@@ -84,7 +84,7 @@ BOOL ScrCmd_MartBuy(ScriptContext *ctx) {
         }
     }
     items[nitems] = 0xFFFF;
-    InitMartUI(ctx->taskman, ctx->fsys, items, 0, 0, 0, 0);
+    InitMartUI(ctx->taskman, ctx->fieldSystem, items, 0, 0, 0, 0);
     return TRUE;
 }
 
@@ -92,7 +92,7 @@ BOOL ScrCmd_MartSell(ScriptContext *ctx) {
     u16 dummy[1];
 
     dummy[0] = 0xFFFF;
-    InitMartUI(ctx->taskman, ctx->fsys, dummy, 0, 1, 0, 0);
+    InitMartUI(ctx->taskman, ctx->fieldSystem, dummy, 0, 1, 0, 0);
     return TRUE;
 }
 
@@ -164,7 +164,7 @@ BOOL ScrCmd_SpecialMartBuy(ScriptContext *ctx) {
     u16 which;
 
     which = ScriptGetVar(ctx);
-    InitMartUI(ctx->taskman, ctx->fsys, _0210FA3C[which], 0, 0, 0, NULL);
+    InitMartUI(ctx->taskman, ctx->fieldSystem, _0210FA3C[which], 0, 0, 0, NULL);
     return TRUE;
 }
 
@@ -185,7 +185,7 @@ BOOL ScrCmd_DecorationMart(ScriptContext *ctx) {
     u16 which;
 
     which = ScriptGetVar(ctx);
-    InitMartUI(ctx->taskman, ctx->fsys, _0210F9CC[which], 1, 0, which <= 1 ? 1 : 0, NULL);
+    InitMartUI(ctx->taskman, ctx->fieldSystem, _0210F9CC[which], 1, 0, which <= 1 ? 1 : 0, NULL);
     return TRUE;
 }
 
@@ -211,7 +211,7 @@ BOOL ScrCmd_SealMart(ScriptContext *ctx) {
     u16 which;
 
     which = ScriptGetVar(ctx);
-    InitMartUI(ctx->taskman, ctx->fsys, _0210F9E8[which], 2, 0, 0, NULL);
+    InitMartUI(ctx->taskman, ctx->fieldSystem, _0210F9E8[which], 2, 0, 0, NULL);
     return TRUE;
 }
 
@@ -405,14 +405,14 @@ BOOL ScrCmd_771(ScriptContext *ctx) {
     SaveVarsFlags *flagsys;
     RTCDate date;
 
-    flagsys = Save_VarsFlags_Get(ctx->fsys->savedata);
+    flagsys = Save_VarsFlags_Get(ctx->fieldSystem->savedata);
     GF_RTC_CopyDate(&date);
 
     // UB: Possibly illegal access to _0210F9CC between Tuesday and Saturday, inclusive
-    if (Pokedex_GetNatDexFlag(Save_Pokedex_Get(ctx->fsys->savedata))) {
-        InitMartUI(ctx->taskman, ctx->fsys, _0210F9CC[date.week], 3, 0, 0, _0210FA04[date.week + 7]);
+    if (Pokedex_GetNatDexFlag(Save_Pokedex_Get(ctx->fieldSystem->savedata))) {
+        InitMartUI(ctx->taskman, ctx->fieldSystem, _0210F9CC[date.week], 3, 0, 0, _0210FA04[date.week + 7]);
     } else {
-        InitMartUI(ctx->taskman, ctx->fsys, _0210F9CC[date.week], 3, 0, 0, _0210FA04[date.week]);
+        InitMartUI(ctx->taskman, ctx->fieldSystem, _0210F9CC[date.week], 3, 0, 0, _0210FA04[date.week]);
     }
     return TRUE;
 }
@@ -472,13 +472,13 @@ BOOL ScrCmd_772(ScriptContext *ctx) {
     POKEATHLON_SAV *pokeathlon;
     int i;
 
-    pokeathlon = Save_Pokeathlon_Get(ctx->fsys->savedata);
+    pokeathlon = Save_Pokeathlon_Get(ctx->fieldSystem->savedata);
     for (i = 0; i < 27; i++) {
         if (!sub_02031A78(pokeathlon, i)) {
             break;
         }
     }
-    InitMartUI(ctx->taskman, ctx->fsys, _0210F9CC[0], 4, 0, 0, _0210F9D4[i / 6]);
+    InitMartUI(ctx->taskman, ctx->fieldSystem, _0210F9CC[0], 4, 0, 0, _0210F9D4[i / 6]);
     return TRUE;
 }
 
@@ -493,12 +493,12 @@ BOOL ScrCmd_834(ScriptContext *ctx) {
     int i;
 
     sp0 = ScriptGetVarPointer(ctx);
-    pokeathlon = Save_Pokeathlon_Get(ctx->fsys->savedata);
+    pokeathlon = Save_Pokeathlon_Get(ctx->fieldSystem->savedata);
     r6 = 0;
     r4 = 0;
-    varsFlags = Save_VarsFlags_Get(ctx->fsys->savedata);
+    varsFlags = Save_VarsFlags_Get(ctx->fieldSystem->savedata);
     GF_RTC_CopyDate(&date);
-    if (Pokedex_GetNatDexFlag(Save_Pokedex_Get(ctx->fsys->savedata))) {
+    if (Pokedex_GetNatDexFlag(Save_Pokedex_Get(ctx->fieldSystem->savedata))) {
         r3 = _0210FA04[date.week + 7];
     } else {
         r3 = _0210FA04[date.week];
@@ -528,7 +528,7 @@ BOOL ScrCmd_835(ScriptContext *ctx) {
     POKEATHLON_SAV *pokeathlon;
 
     ret_ptr = ScriptGetVarPointer(ctx);
-    pokeathlon = Save_Pokeathlon_Get(ctx->fsys->savedata);
+    pokeathlon = Save_Pokeathlon_Get(ctx->fieldSystem->savedata);
     for (i = 0; i < 27; i++) {
         if (!sub_02031A78(pokeathlon, i)) {
             break;

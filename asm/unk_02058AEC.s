@@ -75,7 +75,7 @@ sub_02058AEC: ; 0x02058AEC
 	ldr r1, _02058B80 ; =_02103A1C
 	add r0, r6, #0
 	add r2, r4, #0
-	bl FieldSys_LaunchApplication
+	bl FieldSystem_LaunchApplication
 	str r4, [r7]
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -203,7 +203,7 @@ _02058C5C:
 	ldr r0, [r5, #0x24]
 	ldr r1, _02058C7C ; =_0210159C
 	add r2, r4, #0
-	bl FieldSys_LaunchApplication
+	bl FieldSystem_LaunchApplication
 	str r4, [r5, #4]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -215,7 +215,7 @@ sub_02058C80: ; 0x02058C80
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl FieldSys_ApplicationIsRunning
+	bl FieldSystem_ApplicationIsRunning
 	cmp r0, #0
 	beq _02058C92
 	mov r0, #0
@@ -264,7 +264,7 @@ sub_02058CD8: ; 0x02058CD8
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl FieldSys_ApplicationIsRunning
+	bl FieldSystem_ApplicationIsRunning
 	cmp r0, #0
 	beq _02058CEA
 	mov r0, #0
@@ -1431,7 +1431,7 @@ _02059640:
 	ldr r1, _0205964C ; =sub_02058D4C
 	add r0, r5, #0
 	add r2, r4, #0
-	bl FieldSys_CreateTask
+	bl FieldSystem_CreateTask
 _0205964A:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -2312,7 +2312,7 @@ _02059CCC:
 	b _02059D36
 _02059CE8:
 	add r0, r5, #0
-	bl FieldSys_ApplicationIsRunning
+	bl FieldSystem_ApplicationIsRunning
 	cmp r0, #0
 	bne _02059D36
 	ldr r0, [r4, #0x28]
@@ -2390,7 +2390,7 @@ _02059D66:
 	str r0, [r2, #0x28]
 	ldr r0, [sp]
 	ldr r1, _02059DAC ; =sub_02059B64
-	bl FieldSys_CreateTask
+	bl FieldSystem_CreateTask
 	bl sub_0203E2F4
 	pop {r3, r4, r5, r6, r7, pc}
 _02059D9C:
@@ -2856,7 +2856,7 @@ sub_0205A114: ; 0x0205A114
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl Fsys_TaskIsRunning
+	bl FieldSystem_TaskIsRunning
 	cmp r0, #0
 	bne _0205A13C
 	bl sub_02037FF0

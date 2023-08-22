@@ -5,17 +5,17 @@
 
 BOOL ScrCmd_AnimApricornTree(ScriptContext *ctx) {
     u16 varId = ScriptReadHalfword(ctx);
-    LocalMapObject **lastInteracted = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_INTERACTED);
-    u16 *retPtr = GetVarPointer(ctx->fsys, varId);
-    FieldSys_AnimApricornTree(ctx->fsys, *lastInteracted, retPtr);
+    LocalMapObject **lastInteracted = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_LAST_INTERACTED);
+    u16 *retPtr = GetVarPointer(ctx->fieldSystem, varId);
+    FieldSystem_AnimApricornTree(ctx->fieldSystem, *lastInteracted, retPtr);
     return TRUE;
 }
 
 BOOL ScrCmd_ApricornTreeGetApricorn(ScriptContext *ctx) {
     u16 varId = ScriptReadHalfword(ctx);
-    LocalMapObject **lastInteracted = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_LAST_INTERACTED);
-    u16 *retPtr = GetVarPointer(ctx->fsys, varId);
-    *retPtr = FieldSys_ApricornTree_GetApricorn(ctx->fsys, *lastInteracted);
+    LocalMapObject **lastInteracted = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_LAST_INTERACTED);
+    u16 *retPtr = GetVarPointer(ctx->fieldSystem, varId);
+    *retPtr = FieldSystem_ApricornTree_GetApricorn(ctx->fieldSystem, *lastInteracted);
     return FALSE;
 }
 
@@ -23,7 +23,7 @@ BOOL ScrCmd_GiveApricornFromTree(ScriptContext *ctx) {
     u16 var0 = ScriptGetVar(ctx);
     u8 var1 = ScriptGetVar(ctx);
     u16 *retPtr = ScriptGetVarPointer(ctx);
-    SaveApricornBox *apricornBox = Save_ApricornBox_Get(ctx->fsys->savedata);
+    SaveApricornBox *apricornBox = Save_ApricornBox_Get(ctx->fieldSystem->savedata);
     u8 var2 = var0;
     int apricornCount = ApricornBox_CountApricorn(apricornBox, var2);
 

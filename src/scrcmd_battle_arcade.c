@@ -60,22 +60,22 @@ BOOL ScrCmd_643(ScriptContext *ctx) {
     u16 arg0 = ScriptReadHalfword(ctx);
     u16 arg1 = ScriptGetVar(ctx);
     u16 *result = ScriptGetVarPointer(ctx);
-    sub_02030E88(ctx->fsys->savedata);
-    void *unk0 = sub_02030FA0(ctx->fsys->savedata);
-    void *unk1 = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_RUNNING_APP_DATA);
+    sub_02030E88(ctx->fieldSystem->savedata);
+    void *unk0 = sub_02030FA0(ctx->fieldSystem->savedata);
+    void *unk1 = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     switch (arg0) {
         case 0:
-            *result = sub_0204A5B0(arg1, ctx->fsys->savedata, 0);
+            *result = sub_0204A5B0(arg1, ctx->fieldSystem->savedata, 0);
             break;
         case 1: // Unused
             if (arg1 == 3) {
-                *result = sub_020310BC(sub_0203107C(ctx->fsys->savedata), 110, sub_0205C268(110));
+                *result = sub_020310BC(sub_0203107C(ctx->fieldSystem->savedata), 110, sub_0205C268(110));
             } else {
                 *result = sub_02030FE4(unk0, 8, arg1, 0, 0);
             }
             break;
         case 3: // Unused
-            sub_0204FFB0(ctx->fsys->savedata, unk0, arg1);
+            sub_0204FFB0(ctx->fieldSystem->savedata, unk0, arg1);
             break;
         case 4:
             BattleArcadeChallengeType challengeType;
@@ -98,7 +98,7 @@ BOOL ScrCmd_643(ScriptContext *ctx) {
 
 BOOL ScrCmd_646(ScriptContext *ctx) {
     u16 unk = ScriptGetVar(ctx);
-    sub_0204FFB0(ctx->fsys->savedata, sub_02030FA0(ctx->fsys->savedata), unk);
+    sub_0204FFB0(ctx->fieldSystem->savedata, sub_02030FA0(ctx->fieldSystem->savedata), unk);
     return FALSE;
 }
 
@@ -158,29 +158,29 @@ static BOOL sub_020500A0(TaskManager *taskManager) {
 }
 
 static void sub_0205011C(TaskManager *taskManager, void *a1, BattleArcadeChallengeType challengeType) {
-    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     UnkStruct_0204FBDC *unk = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0204FBDC));
     MI_CpuFill8(unk, 0, sizeof(UnkStruct_0204FBDC));
     unk->challengeType = challengeType;
     unk->unk0c = a1;
-    TaskManager_Call(fsys->taskman, sub_02050150, unk);
+    TaskManager_Call(fieldSystem->taskman, sub_02050150, unk);
 }
 
 static BOOL sub_02050150(TaskManager *taskManager) {
-    FieldSystem *fsys = TaskManager_GetFieldSystem(taskManager);
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     UnkStruct_0204FBDC *unk = TaskManager_GetEnv(taskManager);
     switch (unk->state) {
         case 0:
-            unk->state = sub_020501B8(unk, fsys, HEAP_ID_FIELD);
+            unk->state = sub_020501B8(unk, fieldSystem, HEAP_ID_FIELD);
             break;
         case 1:
-            unk->state = sub_02050290(unk, fsys);
+            unk->state = sub_02050290(unk, fieldSystem);
             break;
         case 2:
-            unk->state = sub_020502E0(unk, fsys, HEAP_ID_FIELD);
+            unk->state = sub_020502E0(unk, fieldSystem, HEAP_ID_FIELD);
             break;
         case 3:
-            unk->state = sub_02050370(unk, fsys);
+            unk->state = sub_02050370(unk, fieldSystem);
             break;
         case 4:
             FreeToHeap(unk);
@@ -189,16 +189,16 @@ static BOOL sub_02050150(TaskManager *taskManager) {
     return FALSE;
 }
 
-static u32 sub_020501B8(UnkStruct_0204FBDC *a0, FieldSystem *fsys, u32 a2) {
+static u32 sub_020501B8(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, u32 a2) {
     PartyMenuAppData *partyMenu = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuAppData));
     MIi_CpuClearFast(0, (u32 *)partyMenu, sizeof(PartyMenuAppData));
-    partyMenu->party = SaveArray_Party_Get(fsys->savedata);
-    partyMenu->bag = Save_Bag_Get(fsys->savedata);
-    partyMenu->mailbox = Save_Mailbox_Get(fsys->savedata);
-    partyMenu->options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
+    partyMenu->party = SaveArray_Party_Get(fieldSystem->savedata);
+    partyMenu->bag = Save_Bag_Get(fieldSystem->savedata);
+    partyMenu->mailbox = Save_Mailbox_Get(fieldSystem->savedata);
+    partyMenu->options = Save_PlayerData_GetOptionsAddr(fieldSystem->savedata);
     partyMenu->unk_25 = 0;
     partyMenu->unk_24 = 0x17;
-    partyMenu->fsys = fsys;
+    partyMenu->fieldSystem = fieldSystem;
     partyMenu->unk_26 = a0->unk05;
     for (u8 i = 0; i < 3; i++) {
         partyMenu->unk_30[i] = a0->unk06[i];
@@ -206,18 +206,18 @@ static u32 sub_020501B8(UnkStruct_0204FBDC *a0, FieldSystem *fsys, u32 a2) {
     partyMenu->unk_37 = 100;
     partyMenu->unk_36_0 = 3;
     partyMenu->unk_36_4 = 3;
-    partyMenu->fsys_unk_10C = &(fsys->unk_10C);
+    partyMenu->fieldSystem_unk_10C = &(fieldSystem->unk_10C);
     if (a0->challengeType == BATTLE_ARCADE_CHALLENGE_TYPE_MULTI) {
         partyMenu->unk_36_0 = 2;
         partyMenu->unk_36_4 = 2;
     }
-    FieldSys_LaunchApplication(fsys, &_0210159C, partyMenu);
+    FieldSystem_LaunchApplication(fieldSystem, &_0210159C, partyMenu);
     *(a0->unk0c) = partyMenu;
     return 1;
 }
 
-static u32 sub_02050290(UnkStruct_0204FBDC *a0, FieldSystem *fsys) {
-    if (FieldSys_ApplicationIsRunning(fsys)) {
+static u32 sub_02050290(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
+    if (FieldSystem_ApplicationIsRunning(fieldSystem)) {
         return TRUE;
     }
     PartyMenuAppData *partyMenu = *(a0->unk0c);
@@ -234,8 +234,8 @@ static u32 sub_02050290(UnkStruct_0204FBDC *a0, FieldSystem *fsys) {
     return 2;
 }
 
-static u32 sub_020502E0(UnkStruct_0204FBDC *a0, FieldSystem *fsys, HeapID heapId) {
-    SaveData *saveData = fsys->savedata;
+static u32 sub_020502E0(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID heapId) {
+    SaveData *saveData = fieldSystem->savedata;
     UnkStruct_0204F448 *unk = AllocFromHeapAtEnd(heapId, sizeof(UnkStruct_0204F448));
     MI_CpuFill8(unk, 0, sizeof(UnkStruct_0204F448));
     unk->options = Save_PlayerData_GetOptionsAddr(saveData);
@@ -251,13 +251,13 @@ static u32 sub_020502E0(UnkStruct_0204FBDC *a0, FieldSystem *fsys, HeapID heapId
     unk->isFlag982Set = sub_0208828C(saveData);
     sub_02089D40(unk, unk_020FC3AC);
     sub_0208AD34(unk, Save_PlayerData_GetProfileAddr(saveData));
-    FieldSys_LaunchApplication(fsys, &_02103A1C, unk);
+    FieldSystem_LaunchApplication(fieldSystem, &_02103A1C, unk);
     *(a0->unk0c) = unk;
     return 3;
 }
 
-static u32 sub_02050370(UnkStruct_0204FBDC *a0, FieldSystem *fsys) {
-    if (FieldSys_ApplicationIsRunning(fsys)) {
+static u32 sub_02050370(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
+    if (FieldSystem_ApplicationIsRunning(fieldSystem)) {
         return 3;
     }
     UnkStruct_0204F448 *unk = *(a0->unk0c);

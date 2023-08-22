@@ -52,8 +52,8 @@ void ov01_021FFF5C(LocalMapObject *mapObject, int a1) {
     VecFx32 temp;
     UnkOv01_021FFF5C temp2;
 
-    FieldSystem *fsys = ov01_021F146C(mapObject);
-    TaskManager* taskman = ov01_021F1468(fsys);
+    FieldSystem *fieldSystem = ov01_021F146C(mapObject);
+    TaskManager* taskman = ov01_021F1468(fieldSystem);
 
     int x = MapObject_GetCurrentX(mapObject);
     int y = MapObject_GetCurrentY(mapObject);
@@ -62,15 +62,15 @@ void ov01_021FFF5C(LocalMapObject *mapObject, int a1) {
     sub_0206121C(taskman, &temp);
 
     temp2.unk0 = a1;
-    temp2.unk4 = fsys;
+    temp2.unk4 = fieldSystem;
 
-    UnkOv01_021FFECC *val1 = ov01_021F1450(fsys, 0xe);
+    UnkOv01_021FFECC *val1 = ov01_021F1450(fieldSystem, 0xe);
     temp2.unk8 = val1;
     temp2.unkC = mapObject;
     temp2.unk10 = ov01_021FFF50(val1, a1);
 
     int val3 = sub_0205F09C(mapObject, 2);
-    ov01_021F1620(fsys, &ov01_02209280, &temp, 0, &temp2, val3);
+    ov01_021F1620(fieldSystem, &ov01_02209280, &temp, 0, &temp2, val3);
 }
 
 static BOOL ov01_021FFFCC(void *a0, UnkOv01_021FFFCD *a1) {

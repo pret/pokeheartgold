@@ -28,8 +28,8 @@ typedef struct FieldTransitionEnvironment {
 } FieldTransitionEnvironment; //size: 0x28
 
 void NewFieldFadeEnvironment(TaskManager* man, int pattern, int typeTop, int typeBottom, u16 colour, int duration, int framesPer, HeapID heapID);
-void NewFieldTransitionEnvironment(FieldSystem* fsys, int mapID, int warpID, int x, int z, int dir, u32 transNo);
-void sub_02055CD8(FieldSystem* fsys, int mapID, int warpID, int x, int z, int dir);
+void NewFieldTransitionEnvironment(FieldSystem* fieldSystem, int mapID, int warpID, int x, int z, int dir, u32 transNo);
+void sub_02055CD8(FieldSystem* fieldSystem, int mapID, int warpID, int x, int z, int dir);
 
 BOOL sub_02056004(TaskManager *man);
 BOOL sub_02056040(TaskManager *man);

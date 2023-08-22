@@ -17,7 +17,7 @@
 .public PalPad_PlayerIdIsFriendOrMutual
 .public sub_02037F94
 .public sub_02037FCC
-.public Fsys_TaskIsRunning
+.public FieldSystem_TaskIsRunning
 .public sub_0205A1F0
 .public sub_0205A1F4
 .public sub_0205AC88

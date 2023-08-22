@@ -6,11 +6,11 @@
 .public Options_GetFrame
 .public Save_GameStats_Get
 .public sub_020398D4
-.public FieldSys_LaunchApplication
+.public FieldSystem_LaunchApplication
 .public sub_0203E4EC
 .public sub_0203E740
 .public sub_0203E76C
-.public FieldSys_ApplicationIsRunning
+.public FieldSystem_ApplicationIsRunning
 .public sub_02096C88
 .public sub_02096CC8
 .public sub_02096CF4

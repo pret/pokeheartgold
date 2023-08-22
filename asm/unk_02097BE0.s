@@ -177,7 +177,7 @@ _02097CFC:
 	b _02097D36
 _02097D14:
 	add r0, r5, #0
-	bl FieldSys_ApplicationIsRunning
+	bl FieldSystem_ApplicationIsRunning
 	cmp r0, #0
 	bne _02097D36
 	ldr r0, [r4, #8]

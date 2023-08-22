@@ -13,30 +13,30 @@ static const FieldSystemFunc1 _020FE214[];
 static const FieldSystemFunc1 _020FE1EC[];
 static const FieldSystemFunc2 _020FE23C[];
 
-void sub_020648EC(FieldSystem* fsys) {
-    int gymmickType = SavGymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveDataPtr(fsys)));
+void sub_020648EC(FieldSystem* fieldSystem) {
+    int gymmickType = SavGymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveDataPtr(fieldSystem)));
     if (gymmickType != GYMMICK_NONE) {
-        _020FE214[gymmickType](fsys);
+        _020FE214[gymmickType](fieldSystem);
     }
 }
 
-void sub_02064910(FieldSystem* fsys) {
-    int gymmickType = SavGymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveDataPtr(fsys)));
+void sub_02064910(FieldSystem* fieldSystem) {
+    int gymmickType = SavGymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveDataPtr(fieldSystem)));
     if (gymmickType) {
         FieldSystemFunc1 func = _020FE1EC[gymmickType];
         if (func != NULL) {
-            func(fsys);
+            func(fieldSystem);
         }
     }
 }
 
-BOOL sub_02064938(FieldSystem *fsys, u32 a1, u32 a2, u32 a3, u32 a4) {
-    int gymmickType = SavGymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveDataPtr(fsys)));
+BOOL sub_02064938(FieldSystem *fieldSystem, u32 a1, u32 a2, u32 a3, u32 a4) {
+    int gymmickType = SavGymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveDataPtr(fieldSystem)));
     if (gymmickType == GYMMICK_NONE) return FALSE;
 
     FieldSystemFunc2 func = _020FE23C[gymmickType];
     if (func != NULL) {
-        return func(fsys, a1, a2, a3, a4);
+        return func(fieldSystem, a1, a2, a3, a4);
     }
     return FALSE;
 }

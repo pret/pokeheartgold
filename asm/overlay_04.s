@@ -3230,7 +3230,7 @@ _0225574A:
 	ldr r0, [r5]
 	ldr r1, _022557FC ; =ov04_02255AC4
 	add r2, r4, #0
-	bl FieldSys_CreateTask
+	bl FieldSystem_CreateTask
 	mov r1, #1
 	b _022557F2
 _02255762:
@@ -3263,7 +3263,7 @@ _02255762:
 	ldr r0, [r5]
 	ldr r1, _02255800 ; =ov04_022559C8
 	add r2, r4, #0
-	bl FieldSys_CreateTask
+	bl FieldSystem_CreateTask
 	mov r1, #1
 	b _022557F2
 _022557AA:
@@ -3297,7 +3297,7 @@ _022557AA:
 	ldr r0, [r5]
 	ldr r1, _02255800 ; =ov04_022559C8
 	add r2, r4, #0
-	bl FieldSys_CreateTask
+	bl FieldSystem_CreateTask
 	mov r1, #1
 _022557F2:
 	add r0, r1, #0

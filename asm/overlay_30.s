@@ -212,7 +212,7 @@ ov30_0225D700: ; 0x0225D700
 	push {r4, lr}
 	add r4, r1, #0
 	ldr r0, [r4, #0x1c]
-	bl Fsys_TaskIsRunning
+	bl FieldSystem_TaskIsRunning
 	cmp r0, #0
 	ldr r0, [r4, #0x1c]
 	bne _0225D73E

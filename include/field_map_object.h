@@ -42,7 +42,7 @@ struct MapObjectManager { //declared field_system.h
     u8 unk18[4];
     u8 unk1C[0x124-0x1C];
     LocalMapObject* objects;
-    FieldSystem* fsys;
+    FieldSystem* fieldSystem;
 }; // size: 0x12c
 
 typedef void (*LocalMapObject_UnkCallback)(LocalMapObject* object);
@@ -154,7 +154,7 @@ typedef enum MapObjectFlagBits {
 struct MapObjectInitArgs;
 
 // FIXME: Some of these declarations are static and don't belong in here.
-MapObjectManager *sub_0205E0BC(FieldSystem *fsys, int num, HeapID heapId);
+MapObjectManager *sub_0205E0BC(FieldSystem *fieldSystem, int num, HeapID heapId);
 void MapObjectManager_Delete(MapObjectManager *man);
 void sub_0205E104(MapObjectManager* manager, u32 a1, u32 a2, u32 num_object_events, ObjectEvent* object_events);
 MapObjectManager* MapObjectManager_New(u32 count);
@@ -171,9 +171,9 @@ void MapObjectManager_RemoveAllActiveObjects(MapObjectManager *man);
 void sub_0205E4C8(MapObjectManager* manager);
 void sub_0205E520(MapObjectManager* manager);
 void sub_0205E580(MapObjectManager* manager);
-void Fsys_SyncMapObjectsToSaveEx(FieldSystem *fsys, MapObjectManager *mapObjectMan, struct SavedMapObject *saveObj, int objNum);
+void FieldSystem_SyncMapObjectsToSaveEx(FieldSystem *fieldSystem, MapObjectManager *mapObjectMan, struct SavedMapObject *saveObj, int objNum);
 void MapObjectManager_RestoreFromSave(MapObjectManager *mapObjectMan, SavedMapObject *list, u32 numObj);
-void sub_0205E680(FieldSystem* fsys, LocalMapObject* local_object, SavedMapObject* saved_object);
+void sub_0205E680(FieldSystem* fieldSystem, LocalMapObject* local_object, SavedMapObject* saved_object);
 void sub_0205E7C4(LocalMapObject* local_object, SavedMapObject* saved_object);
 void sub_0205E8EC(MapObjectManager* manager, LocalMapObject* object);
 void InitMapObjectsFromEventTemplates(MapObjectManager* man, u32 mapId, u32 nObjs, ObjectEvent* dest);
@@ -181,7 +181,7 @@ void sub_0205EA08(struct MapObjectInitArgs* args);
 LocalMapObject* MapObjectManager_GetFirstInactiveObject(MapObjectManager*);
 LocalMapObject* sub_0205EA98(MapObjectManager*, u32, u32);
 void sub_0205EAF0(MapObjectManager* manager, LocalMapObject* object);
-void MapObject_InitFromObjectEventTemplate(LocalMapObject* object, ObjectEvent* template, FieldSystem* fsys);
+void MapObject_InitFromObjectEventTemplate(LocalMapObject* object, ObjectEvent* template, FieldSystem* fieldSystem);
 void MapObject_SetPositionVecFromTemplate(LocalMapObject* object, ObjectEvent* template);
 void sub_0205EC90(LocalMapObject* object, MapObjectManager* manager);
 void sub_0205ECE0(LocalMapObject* object);
@@ -194,7 +194,7 @@ BOOL sub_0205EEF4(MapObjectManager*, LocalMapObject**, int*, u32);
 void sub_0205EF48(LocalMapObject* object);
 void sub_0205EF5C(LocalMapObject* object);
 void sub_0205EF6C(LocalMapObject* object);
-u32 ResolveObjectGfxId(FieldSystem* fsys, int a1);
+u32 ResolveObjectGfxId(FieldSystem* fieldSystem, int a1);
 void sub_0205EFA4(LocalMapObject* object);
 void sub_0205EFB4(LocalMapObject* object);
 BOOL MapObject_ScriptIdIsFFFF(LocalMapObject* object);

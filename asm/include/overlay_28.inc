@@ -66,14 +66,14 @@
 .public System_GetTouchNew
 .public sub_02025364
 .public String_Delete
-.public Fsys_GetFacingObject
+.public FieldSystem_GetFacingObject
 .public sub_0203DF8C
 .public sub_0203E13C
 .public AllocAndFetchNearbyHiddenItems
-.public Fsys_TaskIsRunning
+.public FieldSystem_TaskIsRunning
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_GetState
-.public FieldSys_GetPlayerAvatar
+.public FieldSystem_GetPlayerAvatar
 .public sub_0205CB38
 .public sub_0205CB40
 .public MapObject_GetGfxID

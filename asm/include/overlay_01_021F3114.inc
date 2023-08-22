@@ -5,7 +5,7 @@
 .public AllocFromHeapAtEnd
 .public FreeToHeapExplicit
 .public GF_AssertFail
-.public FieldSys_CreateTask
+.public FieldSystem_CreateTask
 .public TaskManager_GetEnv
 .public sub_0205B9DC
 .public sub_0205B9E8

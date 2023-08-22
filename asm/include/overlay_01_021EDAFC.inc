@@ -67,7 +67,7 @@
 .public PrintCurFloorInNewWindow
 .public MapNumToFloorNo
 .public ov01_021EE974
-.public Fsys_ShowMoneyBox
+.public FieldSystem_ShowMoneyBox
 .public MoneyBoxSys_Delete
 .public MoneyBoxSys_Update
 .public ov01_021EEC00

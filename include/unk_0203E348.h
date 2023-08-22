@@ -30,8 +30,8 @@ typedef struct PartyMenuAppData {
     MAILBOX *mailbox;
     OPTIONS *options;
     u8 filler_10[0xC];
-    FieldSystem *fsys;
-    void *fsys_unk_10C;
+    FieldSystem *fieldSystem;
+    void *fieldSystem_unk_10C;
     u8 unk_24;
     u8 unk_25;
     u8 unk_26;
@@ -81,7 +81,7 @@ struct UnkStruct_ScrCmd627 {
 
 typedef struct PCBoxAppData {
     SaveData *saveData;
-    void *fsysUnk10C;
+    void *fieldSystemUnk10C;
     int unk8;
 } PCBoxAppData;
 
@@ -93,52 +93,52 @@ typedef struct ScratchCardAppData {
     u8 filler_14[4];
 } ScratchCardAppData;
 
-struct UseMailWork *CreateUseMailWork(FieldSystem *fsys, int kind, int mailId, HeapID heapId);
-struct ApricornBoxWork *CreateApricornBoxWork(FieldSystem *fsys, int a1);
-struct PalPadWork *CreatePalPadWork(FieldSystem *fsys, SaveData *saveData, HeapID heapId);
-struct BerryPotsArgs *BerryPotsArgs_New(FieldSystem *fsys);
-struct UnownReportWork *CreateUnownReportWork(FieldSystem *fsys);
-struct GracideaWork *sub_0203FAE8(FieldSystem *fsys, HeapID heapId, u16 itemId);
-PartyMenuAppData *sub_0203E580(HeapID heapId, FieldSystem *fsys); //todo: party select screen
-PartyMenuAppData *sub_0203E5A4(HeapID heapId, FieldSystem *fsys); //todo: party trade screen
+struct UseMailWork *CreateUseMailWork(FieldSystem *fieldSystem, int kind, int mailId, HeapID heapId);
+struct ApricornBoxWork *CreateApricornBoxWork(FieldSystem *fieldSystem, int a1);
+struct PalPadWork *CreatePalPadWork(FieldSystem *fieldSystem, SaveData *saveData, HeapID heapId);
+struct BerryPotsArgs *BerryPotsArgs_New(FieldSystem *fieldSystem);
+struct UnownReportWork *CreateUnownReportWork(FieldSystem *fieldSystem);
+struct GracideaWork *sub_0203FAE8(FieldSystem *fieldSystem, HeapID heapId, u16 itemId);
+PartyMenuAppData *sub_0203E580(HeapID heapId, FieldSystem *fieldSystem); //todo: party select screen
+PartyMenuAppData *sub_0203E5A4(HeapID heapId, FieldSystem *fieldSystem); //todo: party trade screen
 PartyMenuAppData *sub_0203E6D4(TaskManager *taskManager, HeapID heapId); //todo: union party select screen
 int sub_0203E5C8(struct PartyMenuAppData *partyWork);
 int sub_0203E5F8(struct PartyMenuAppData *partyWork);
-void sub_0203F570(FieldSystem *fsys, SaveData *saveData);
-UnkStruct_Ov02_0224E4EC* sub_0203EB64(FieldSystem *fsys);
-void sub_0203F964(FieldSystem *fsys);
-void LaunchChooseStarterApp(FieldSystem *fsys, struct ChooseStarterAppArgs *args);
+void sub_0203F570(FieldSystem *fieldSystem, SaveData *saveData);
+UnkStruct_Ov02_0224E4EC* sub_0203EB64(FieldSystem *fieldSystem);
+void sub_0203F964(FieldSystem *fieldSystem);
+void LaunchChooseStarterApp(FieldSystem *fieldSystem, struct ChooseStarterAppArgs *args);
 void Save_CurrentLocation_BackUp(SaveData *saveData);
 u16 sub_0203E864(void *a0);
 u16 sub_0203E600(void *a0);
-void *sub_0203E7F4(HeapID heapId, FieldSystem *fsys, u8 a2, u16 a3);
-u32 *sub_0203ED80(FieldSystem *fsys, u32 a1, u16 *a2);
-void *sub_0203FB94(HeapID heapId, FieldSystem *fsys, u16 a2, u16 a3);
+void *sub_0203E7F4(HeapID heapId, FieldSystem *fieldSystem, u8 a2, u16 a3);
+u32 *sub_0203ED80(FieldSystem *fieldSystem, u32 a1, u16 *a2);
+void *sub_0203FB94(HeapID heapId, FieldSystem *fieldSystem, u16 a2, u16 a3);
 void sub_0203F198(TaskManager *taskManager, u16 *ret_p, SaveData *saveData, u16 a3, u16 a4);
-void sub_0203F204(FieldSystem *fsys, FashionAppData *fashionData);
-void sub_0203F0A8(FieldSystem *fsys, struct UnkStruct_ScrCmd408 *unk);
-void sub_0203E868(FieldSystem *fsys, PCBoxAppData *pcBoxData);
+void sub_0203F204(FieldSystem *fieldSystem, FashionAppData *fashionData);
+void sub_0203F0A8(FieldSystem *fieldSystem, struct UnkStruct_ScrCmd408 *unk);
+void sub_0203E868(FieldSystem *fieldSystem, PCBoxAppData *pcBoxData);
 void sub_0203F4A8(TaskManager *taskManager);
-void sub_0203F4C8(FieldSystem *fsys);
-void *sub_0203F4F8(FieldSystem *fsys);
-void *sub_0203F984(FieldSystem *fsys);
-void *sub_0203F844(FieldSystem *fsys, u16 a1);
-void *sub_0203E460(FieldSystem *fsys, u8 a1);
+void sub_0203F4C8(FieldSystem *fieldSystem);
+void *sub_0203F4F8(FieldSystem *fieldSystem);
+void *sub_0203F984(FieldSystem *fieldSystem);
+void *sub_0203F844(FieldSystem *fieldSystem, u16 a1);
+void *sub_0203E460(FieldSystem *fieldSystem, u8 a1);
 u16 sub_0203E4CC(void *a0);
-void sub_0203F9C4(FieldSystem *fsys, struct MoveRelearner *moveRelearner);
+void sub_0203F9C4(FieldSystem *fieldSystem, struct MoveRelearner *moveRelearner);
 
 static inline void InitUnkStructScrCmd408(struct UnkStruct_ScrCmd408 *data, u16 a1, u16 a2, ScriptContext *ctx) {
     MI_CpuClear8(data, sizeof(struct UnkStruct_ScrCmd408));
     data->unk_4 = a1;
     data->unk_6 = a2;
-    data->saveData = ctx->fsys->savedata;
+    data->saveData = ctx->fieldSystem->savedata;
 }
 
 static inline PCBoxAppData *PCBoxAppData_New(ScriptContext *ctx) {
     PCBoxAppData *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(PCBoxAppData));
-    ret->saveData = ctx->fsys->savedata;
+    ret->saveData = ctx->fieldSystem->savedata;
     ret->unk8 = ScriptReadByte(ctx);
-    ret->fsysUnk10C = &ctx->fsys->unk_10C;
+    ret->fieldSystemUnk10C = &ctx->fieldSystem->unk_10C;
     return ret;
 }
 
@@ -151,25 +151,25 @@ static inline PCBoxAppData *PCBoxAppData_New(ScriptContext *ctx) {
 
 void CreateNamingScreen(TaskManager *taskManager, int kind, int param, int maxLen, int initPos, const u16 *defaultStr, u16 *retVar);
 void sub_0203E960(TaskManager *taskManager, int a1, u16 *a2, u16 *a3, u16 *a4);
-void sub_0203F818(FieldSystem *fsys);
-void HatchEggInParty(FieldSystem *fsys);
-void *sub_0203F074(FieldSystem *fsys, HeapID heapId);
-void *sub_0203FA8C(FieldSystem *fsys, HeapID heapId, u16 a2);
-void *sub_0203E5D0(HeapID heapId, FieldSystem *fsys, u16 a2);
-void *sub_0203FAB4(FieldSystem *fsys, u8 a1, u8 a2, u16 a3, HeapID heapId);
-ScratchCardAppData *ScratchOffCards_Create(FieldSystem *fsys, HeapID heapId);
-void sub_0203FC14(FieldSystem *fsys, u16 a1, u16 a2);
-void *PhoneUI_New(FieldSystem *fsys);
-void *sub_0203EEE4(FieldSystem *fsys);
-void *sub_0203EF40(FieldSystem *fsys);
-void *sub_0203EFA0(FieldSystem *fsys);
-void *sub_0203EEA0(FieldSystem *fsys);
-void *Fsys_CreateApplication_AlphPuzzle(FieldSystem *fsys, u8 puzzle);
-void LaunchHOFCongratsApp(FieldSystem *fsys, HOFCongratsAppArgs *args);
-void LaunchCreditsApp(FieldSystem *fsys, CreditsAppArgs *args);
+void sub_0203F818(FieldSystem *fieldSystem);
+void HatchEggInParty(FieldSystem *fieldSystem);
+void *sub_0203F074(FieldSystem *fieldSystem, HeapID heapId);
+void *sub_0203FA8C(FieldSystem *fieldSystem, HeapID heapId, u16 a2);
+void *sub_0203E5D0(HeapID heapId, FieldSystem *fieldSystem, u16 a2);
+void *sub_0203FAB4(FieldSystem *fieldSystem, u8 a1, u8 a2, u16 a3, HeapID heapId);
+ScratchCardAppData *ScratchOffCards_Create(FieldSystem *fieldSystem, HeapID heapId);
+void sub_0203FC14(FieldSystem *fieldSystem, u16 a1, u16 a2);
+void *PhoneUI_New(FieldSystem *fieldSystem);
+void *sub_0203EEE4(FieldSystem *fieldSystem);
+void *sub_0203EF40(FieldSystem *fieldSystem);
+void *sub_0203EFA0(FieldSystem *fieldSystem);
+void *sub_0203EEA0(FieldSystem *fieldSystem);
+void *FieldSystem_CreateApplication_AlphPuzzle(FieldSystem *fieldSystem, u8 puzzle);
+void LaunchHOFCongratsApp(FieldSystem *fieldSystem, HOFCongratsAppArgs *args);
+void LaunchCreditsApp(FieldSystem *fieldSystem, CreditsAppArgs *args);
 void LocationData_BackUp(Location *data);
 void LocationData_Restore(Location *data);
-void sub_0203E3C4(FieldSystem *fsys, BattleSetup *battleSetup);
-u32 *LaunchVoltorbFlipApp(FieldSystem *fsys, u32 luck);
+void sub_0203E3C4(FieldSystem *fieldSystem, BattleSetup *battleSetup);
+u32 *LaunchVoltorbFlipApp(FieldSystem *fieldSystem, u32 luck);
 
 #endif //POKEHEARTGOLD_UNK_0203E348_H

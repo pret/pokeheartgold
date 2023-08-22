@@ -34,7 +34,7 @@ sub_0206D494: ; 0x0206D494
 	ldr r1, _0206D4DC ; =sub_0206D4E4
 	add r0, r6, #0
 	add r2, r4, #0
-	bl FieldSys_CreateTask
+	bl FieldSystem_CreateTask
 	ldr r0, _0206D4E0 ; =0x00000905
 	bl PlaySE
 	mov r0, #1
@@ -835,13 +835,13 @@ _0206DB18:
 _0206DB24: .word gGameVersion
 	thumb_func_end MonIsInGameTradePokeEx
 
-	thumb_func_start FieldSys_BugContest_Get
-FieldSys_BugContest_Get: ; 0x0206DB28
+	thumb_func_start FieldSystem_BugContest_Get
+FieldSystem_BugContest_Get: ; 0x0206DB28
 	mov r1, #0x46
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
 	bx lr
-	thumb_func_end FieldSys_BugContest_Get
+	thumb_func_end FieldSystem_BugContest_Get
 
 	thumb_func_start BugContest_GetSportBallsAddr
 BugContest_GetSportBallsAddr: ; 0x0206DB30
@@ -849,12 +849,12 @@ BugContest_GetSportBallsAddr: ; 0x0206DB30
 	bx lr
 	thumb_func_end BugContest_GetSportBallsAddr
 
-	thumb_func_start FieldSys_IncrementBugContestTimer
-FieldSys_IncrementBugContestTimer: ; 0x0206DB34
+	thumb_func_start FieldSystem_IncrementBugContestTimer
+FieldSystem_IncrementBugContestTimer: ; 0x0206DB34
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
-	bl FieldSys_BugContest_Get
+	bl FieldSystem_BugContest_Get
 	add r4, r0, #0
 	beq _0206DB56
 	ldr r0, [r5, #0xc]
@@ -867,7 +867,7 @@ FieldSys_IncrementBugContestTimer: ; 0x0206DB34
 	str r0, [r4, #0x1c]
 _0206DB56:
 	pop {r4, r5, r6, pc}
-	thumb_func_end FieldSys_IncrementBugContestTimer
+	thumb_func_end FieldSystem_IncrementBugContestTimer
 
 	thumb_func_start sub_0206DB58
 sub_0206DB58: ; 0x0206DB58
@@ -931,7 +931,7 @@ sub_0206DBC0: ; 0x0206DBC0
 	bl TaskManager_GetEnv
 	add r4, r0, #0
 	add r0, r7, #0
-	bl FieldSys_BugContest_Get
+	bl FieldSystem_BugContest_Get
 	add r5, r0, #0
 	add r0, r6, #0
 	bl TaskManager_GetStatePtr
@@ -963,7 +963,7 @@ _0206DBFC:
 	b _0206DC4C
 _0206DC10:
 	add r0, r7, #0
-	bl FieldSys_ApplicationIsRunning
+	bl FieldSystem_ApplicationIsRunning
 	cmp r0, #0
 	bne _0206DC4C
 	ldr r0, [r4, #8]
@@ -1052,8 +1052,8 @@ _0206DCBA:
 _0206DCC0: .word 0x00004021
 	thumb_func_end ScrCmd_807
 
-	thumb_func_start Fsys_InitMystriStageGymmick
-Fsys_InitMystriStageGymmick: ; 0x0206DCC4
+	thumb_func_start FieldSystem_InitMystriStageGymmick
+FieldSystem_InitMystriStageGymmick: ; 0x0206DCC4
 	push {r4, lr}
 	bl FieldSystem_GetSaveDataPtr
 	bl Save_GetGymmickPtr
@@ -1066,4 +1066,4 @@ Fsys_InitMystriStageGymmick: ; 0x0206DCC4
 	mov r1, #0
 	str r1, [r0]
 	pop {r4, pc}
-	thumb_func_end Fsys_InitMystriStageGymmick
+	thumb_func_end FieldSystem_InitMystriStageGymmick

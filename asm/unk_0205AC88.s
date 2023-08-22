@@ -123,7 +123,7 @@ sub_0205AD60: ; 0x0205AD60
 	add r5, r1, #0
 	ldr r0, [r5, r0]
 	ldr r4, [r5]
-	bl Fsys_TaskIsRunning
+	bl FieldSystem_TaskIsRunning
 	cmp r0, #0
 	bne _0205AD96
 	ldr r3, _0205AD98 ; =0x000004D4

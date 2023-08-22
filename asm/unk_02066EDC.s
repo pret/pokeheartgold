@@ -93,7 +93,7 @@ _02066F64:
 	ldr r1, _02066F8C ; =_0210159C
 	add r0, r6, #0
 	add r2, r4, #0
-	bl FieldSys_LaunchApplication
+	bl FieldSystem_LaunchApplication
 	ldr r0, [r5, #0x14]
 	str r4, [r0]
 	mov r0, #1
@@ -107,7 +107,7 @@ sub_02066F90: ; 0x02066F90
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r0, r1, #0
-	bl FieldSys_ApplicationIsRunning
+	bl FieldSystem_ApplicationIsRunning
 	cmp r0, #0
 	beq _02066FA2
 	mov r0, #1
@@ -209,7 +209,7 @@ sub_02066FEC: ; 0x02066FEC
 	ldr r1, _02067084 ; =_02103A1C
 	add r0, r7, #0
 	add r2, r4, #0
-	bl FieldSys_LaunchApplication
+	bl FieldSystem_LaunchApplication
 	ldr r0, [r6, #0x14]
 	str r4, [r0]
 	mov r0, #3
@@ -224,7 +224,7 @@ sub_02067088: ; 0x02067088
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl FieldSys_ApplicationIsRunning
+	bl FieldSystem_ApplicationIsRunning
 	cmp r0, #0
 	beq _0206709A
 	mov r0, #3
@@ -363,7 +363,7 @@ sub_0206718C: ; 0x0206718C
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl FieldSys_ApplicationIsRunning
+	bl FieldSystem_ApplicationIsRunning
 	cmp r0, #0
 	beq _0206719E
 	mov r0, #1

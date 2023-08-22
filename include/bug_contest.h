@@ -4,8 +4,8 @@
 #include "bug_contest_internal.h"
 #include "script.h"
 
-void FieldSys_StartBugContestTimer(FieldSystem *fsys);
-BUGCONTEST *BugContest_New(FieldSystem *fsys, u32 weekday);
+void FieldSystem_StartBugContestTimer(FieldSystem *fieldSystem);
+BUGCONTEST *BugContest_New(FieldSystem *fieldSystem, u32 weekday);
 void BugContest_Delete(BUGCONTEST *bugContest);
 void BugContest_Judge(BUGCONTEST *bugContest);
 void BugContest_BufferContestWinnerNames(BUGCONTEST *bugContest, MsgData *msgData, MessageFormat *msgFmt, u8 place);

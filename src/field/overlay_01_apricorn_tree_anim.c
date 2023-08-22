@@ -48,14 +48,14 @@ static BOOL Task_AnimPlayerShakeTree(TaskManager *taskman);
 static LocalMapObject *CreateJumpingApricornObj(MapObjectManager *taskman, u32 sprite, u32 x, u32 z);
 BOOL DoApricornJump(AnimApricornTreeWork *env);
 
-void FieldSys_AnimApricornTree(FieldSystem *fsys, LocalMapObject *tree, u16 *a2) {
+void FieldSystem_AnimApricornTree(FieldSystem *fieldSystem, LocalMapObject *tree, u16 *a2) {
     AnimApricornTreeWork *env = AllocFromHeap(HEAP_ID_32, sizeof(AnimApricornTreeWork));
     MI_CpuFill8(env, 0, sizeof(AnimApricornTreeWork));
     env->state = 0;
     env->tree = tree;
     env->unk24 = a2;
 
-    TaskManager_Call(fsys->taskman, Task_AnimApricornTree, env);
+    TaskManager_Call(fieldSystem->taskman, Task_AnimApricornTree, env);
 }
 
 static BOOL Task_AnimApricornTree(TaskManager *taskman) {
@@ -65,12 +65,12 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
     VecFx32 pos;
     int apricornType;
 
-    FieldSystem *fsys = TaskManager_GetFieldSystem(taskman);
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     AnimApricornTreeWork *env = TaskManager_GetEnv(taskman);
 
     switch (env->state) {
     case 0:
-        if (!sub_02055708(fsys, env->tree)) {
+        if (!sub_02055708(fieldSystem, env->tree)) {
             *env->unk24 = 0;
             env->state = 10;
             break;
@@ -97,8 +97,8 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
         }
         sub_0205F328(env->tree, 0);
         MapObject_PauseMovement(env->tree);
-        if (sub_02055708(fsys, env->tree)) {
-            sub_02055760(fsys, env->tree);
+        if (sub_02055708(fieldSystem, env->tree)) {
+            sub_02055760(fieldSystem, env->tree);
             *env->unk24 = 1;
             env->state = 3;
             break;
@@ -107,7 +107,7 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
         env->state = 10;
         break;
     case 3:
-        direction = PlayerAvatar_GetFacingDirection(fsys->playerAvatar);
+        direction = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
         env->jumpDx = 0;
         env->jumpDz = 0;
         env->unk18 = 0;
@@ -128,10 +128,10 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
         env->state = 4;
         break;
     case 4:
-        PlayerAvatar_GetCoordsInFront(fsys->playerAvatar, &posX, &posZ);
-        apricornType = FieldSys_ApricornTree_TryGetApricorn(fsys, env->tree) - 1;
+        PlayerAvatar_GetCoordsInFront(fieldSystem->playerAvatar, &posX, &posZ);
+        apricornType = FieldSystem_ApricornTree_TryGetApricorn(fieldSystem, env->tree) - 1;
         GF_ASSERT(apricornType >= APRICORN_NONE);
-        env->apricorn = CreateJumpingApricornObj(fsys->mapObjectMan, SPRITE_BONMI_R + apricornType, posX, posZ);
+        env->apricorn = CreateJumpingApricornObj(fieldSystem->mapObjectMan, SPRITE_BONMI_R + apricornType, posX, posZ);
         MapObject_GetPositionVec(env->apricorn, &pos);
         pos.y += 12 * FX32_ONE;
         MapObject_SetPositionVec(env->apricorn, &pos);
@@ -211,8 +211,8 @@ static BOOL DoApricornJump(AnimApricornTreeWork *env) {
 }
 
 static BOOL Task_AnimPlayerShakeTree(TaskManager *taskman) {
-    FieldSystem *fsys = TaskManager_GetFieldSystem(taskman);
-    LocalMapObject *playerObj = PlayerAvatar_GetMapObject(fsys->playerAvatar);
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
+    LocalMapObject *playerObj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
     int *state_p = TaskManager_GetStatePtr(taskman);
     AnimPlayerShakeTreeWork *env = TaskManager_GetEnv(taskman);
 
@@ -224,8 +224,8 @@ static BOOL Task_AnimPlayerShakeTree(TaskManager *taskman) {
     case 1:
         if (MapObject_AreBitsSetForMovementScriptInit(playerObj) == TRUE) {
             MapObject_ClearHeldMovementIfActive(playerObj);
-            Field_PlayerAvatar_OrrTransitionFlags(fsys->playerAvatar, 0x2000);
-            Field_PlayerAvatar_ApplyTransitionFlags(fsys->playerAvatar);
+            Field_PlayerAvatar_OrrTransitionFlags(fieldSystem->playerAvatar, 0x2000);
+            Field_PlayerAvatar_ApplyTransitionFlags(fieldSystem->playerAvatar);
             sub_0205F328(playerObj, 0);
             env->timer = 0;
             *state_p += 1;
@@ -235,9 +235,9 @@ static BOOL Task_AnimPlayerShakeTree(TaskManager *taskman) {
         if (++env->timer > 24) {
             if (MapObject_AreBitsSetForMovementScriptInit(playerObj) == TRUE) {
                 MapObject_ClearHeldMovementIfActive(playerObj);
-                int flags = PlayerAvatar_GetTransitionBits(PlayerAvatar_GetState(fsys->playerAvatar));
-                Field_PlayerAvatar_OrrTransitionFlags(fsys->playerAvatar, flags);
-                Field_PlayerAvatar_ApplyTransitionFlags(fsys->playerAvatar);
+                int flags = PlayerAvatar_GetTransitionBits(PlayerAvatar_GetState(fieldSystem->playerAvatar));
+                Field_PlayerAvatar_OrrTransitionFlags(fieldSystem->playerAvatar, flags);
+                Field_PlayerAvatar_ApplyTransitionFlags(fieldSystem->playerAvatar);
                 *state_p += 1;
             }
         }

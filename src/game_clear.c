@@ -83,24 +83,24 @@ static const BgTemplate sGameClearSaveBgTemplate = {
 };
 
 BOOL Task_GameClear(TaskManager *taskman);
-static void GameClearSave_InitGraphics(FieldSystem *fsys, GameClearWork *env);
-static void GameClearSave_PrintSaving(FieldSystem *fsys, GameClearWork *env);
+static void GameClearSave_InitGraphics(FieldSystem *fieldSystem, GameClearWork *env);
+static void GameClearSave_PrintSaving(FieldSystem *fieldSystem, GameClearWork *env);
 static BOOL GameClearSave_IsPrintFinished(GameClearWork *env);
 static void sub_02052E70(GameClearWork *env);
-static void GameClearSave_PrintSaveStatus(FieldSystem *fsys, GameClearWork *env, int a2);
-static void GameClearSave_Free(FieldSystem *fsys, GameClearWork *env);
+static void GameClearSave_PrintSaveStatus(FieldSystem *fieldSystem, GameClearWork *env, int a2);
+static void GameClearSave_Free(FieldSystem *fieldSystem, GameClearWork *env);
 
 // Might be called as Lance escorts player out of Champion room and into
 // Hall of Fame?
 BOOL sub_0205298C(TaskManager *taskman) {
-    FieldSystem *fsys = TaskManager_GetFieldSystem(taskman);
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     int *state = TaskManager_GetStatePtr(taskman);
 
     switch (*state) {
     case 0:
-        sub_0206DB58(taskman, fsys);
-        Fsys_ClearFollowingTrainer(fsys);
-        HealParty(SaveArray_Party_Get(fsys->savedata));
+        sub_0206DB58(taskman, fieldSystem);
+        FieldSystem_ClearFollowingTrainer(fieldSystem);
+        HealParty(SaveArray_Party_Get(fieldSystem->savedata));
         *state += 1;
         break;
     case 1:
@@ -132,52 +132,52 @@ BOOL sub_0205298C(TaskManager *taskman) {
     return FALSE;
 }
 
-static void AddHallOfFameEntry(FieldSystem *fsys, BOOL gameCleared) {
+static void AddHallOfFameEntry(FieldSystem *fieldSystem, BOOL gameCleared) {
     int val;
     RTCDate date;
 
-    HALL_OF_FAME *hof = LoadHallOfFame(fsys->savedata, HEAP_ID_FIELD, &val);
+    HALL_OF_FAME *hof = LoadHallOfFame(fieldSystem->savedata, HEAP_ID_FIELD, &val);
     if (val != 1 || !gameCleared) {
         Save_HOF_Init(hof);
     }
-    Party *party = SaveArray_Party_Get(fsys->savedata);
+    Party *party = SaveArray_Party_Get(fieldSystem->savedata);
 
     GF_RTC_CopyDate(&date);
     Save_HOF_RecordParty(hof, party, &date);
-    SaveHallOfFame(fsys->savedata, hof);
+    SaveHallOfFame(fieldSystem->savedata, hof);
     FreeToHeap(hof);
 }
 
 // Launches the Hall of Fame Congratulations app if the player beat Lance. Saves
 // the game and launches the credits.
 static BOOL Task_GameClear(TaskManager *taskman) {
-    FieldSystem *fsys = TaskManager_GetFieldSystem(taskman);
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     GameClearWork *env = TaskManager_GetEnv(taskman);
     int *state = TaskManager_GetStatePtr(taskman);
 
     switch (*state) {
     case 0:
         if (!env->vsTrainerRed) {
-            LaunchHOFCongratsApp(fsys, &env->hofCongratsArgs);
+            LaunchHOFCongratsApp(fieldSystem, &env->hofCongratsArgs);
             *state += 1;
             break;
         }
-        GameClearSave_InitGraphics(fsys, env);
+        GameClearSave_InitGraphics(fieldSystem, env);
         BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 8, 1, HEAP_ID_32);
         *state = 2;
         break;
     case 1:
-        if (!FieldSys_ApplicationIsRunning(fsys)) {
+        if (!FieldSystem_ApplicationIsRunning(fieldSystem)) {
             CreateHeap(3, 4, 0x20000);
-            GameClearSave_InitGraphics(fsys, env);
+            GameClearSave_InitGraphics(fieldSystem, env);
             BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 8, 1, HEAP_ID_32);
             *state += 1;
         }
         break;
     case 2:
         if (IsPaletteFadeFinished()) {
-            if (!Save_FileDoesNotBelongToPlayer(fsys->savedata)) {
-                GameClearSave_PrintSaving(fsys, env);
+            if (!Save_FileDoesNotBelongToPlayer(fieldSystem->savedata)) {
+                GameClearSave_PrintSaving(fieldSystem, env);
                 *state += 1;
                 break;
             }
@@ -190,13 +190,13 @@ static BOOL Task_GameClear(TaskManager *taskman) {
         }
         break;
     case 4:
-        HealParty(SaveArray_Party_Get(fsys->savedata));
-        int writeStatus = SaveGameNormal(fsys->savedata);
+        HealParty(SaveArray_Party_Get(fieldSystem->savedata));
+        int writeStatus = SaveGameNormal(fieldSystem->savedata);
         if (!env->vsTrainerRed) {
-            AddHallOfFameEntry(fsys, env->gameCleared);
+            AddHallOfFameEntry(fieldSystem, env->gameCleared);
         }
         sub_02052E70(env);
-        GameClearSave_PrintSaveStatus(fsys, env, writeStatus);
+        GameClearSave_PrintSaveStatus(fieldSystem, env, writeStatus);
         *state += 1;
         break;
     case 5:
@@ -237,14 +237,14 @@ static BOOL Task_GameClear(TaskManager *taskman) {
         break;
     case 10:
         if (IsPaletteFadeFinished()) {
-            GameClearSave_Free(fsys, env);
+            GameClearSave_Free(fieldSystem, env);
             Sound_SetMasterVolume(127);
-            LaunchCreditsApp(fsys, &env->creditsArgs);
+            LaunchCreditsApp(fieldSystem, &env->creditsArgs);
             *state += 1;
         }
         break;
     case 11:
-        if (!FieldSys_ApplicationIsRunning(fsys)) {
+        if (!FieldSystem_ApplicationIsRunning(fieldSystem)) {
             FreeToHeap(env);
             DestroyHeap(HEAP_ID_4);
             OS_ResetSystem(0);
@@ -258,32 +258,32 @@ static BOOL Task_GameClear(TaskManager *taskman) {
 // Marks the game as cleared and launches Hall of Fame Congratulations and
 // Credits.
 void CallTask_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
-    FieldSystem *fsys;
+    FieldSystem *fieldSystem;
     GameClearWork *env;
     SaveVarsFlags *varsFlags;
     Location *dynamicWarp;
     Location *spawnWarp;
     PlayerProfile *profile;
 
-    fsys = TaskManager_GetFieldSystem(taskman);
+    fieldSystem = TaskManager_GetFieldSystem(taskman);
     env = AllocFromHeap(HEAP_ID_32, sizeof(GameClearWork));
-    varsFlags = Save_VarsFlags_Get(fsys->savedata);
-    profile = Save_PlayerData_GetProfileAddr(fsys->savedata);
-    dynamicWarp = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fsys->savedata));
-    spawnWarp = LocalFieldData_GetSpecialSpawnWarpPtr(Save_LocalFieldData_Get(fsys->savedata));
+    varsFlags = Save_VarsFlags_Get(fieldSystem->savedata);
+    profile = Save_PlayerData_GetProfileAddr(fieldSystem->savedata);
+    dynamicWarp = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->savedata));
+    spawnWarp = LocalFieldData_GetSpecialSpawnWarpPtr(Save_LocalFieldData_Get(fieldSystem->savedata));
 
     env->gameCleared = CheckGameClearFlag(varsFlags);
-    env->hofCongratsArgs.profile = Save_PlayerData_GetProfileAddr(fsys->savedata);
-    env->hofCongratsArgs.party = SaveArray_Party_Get(fsys->savedata);
-    env->hofCongratsArgs.igt = Save_PlayerData_GetIGTAddr(fsys->savedata);
-    env->creditsArgs.gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fsys->savedata));
+    env->hofCongratsArgs.profile = Save_PlayerData_GetProfileAddr(fieldSystem->savedata);
+    env->hofCongratsArgs.party = SaveArray_Party_Get(fieldSystem->savedata);
+    env->hofCongratsArgs.igt = Save_PlayerData_GetIGTAddr(fieldSystem->savedata);
+    env->creditsArgs.gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->savedata));
     env->creditsArgs.gameCleared = CheckGameClearFlag(varsFlags);
     env->vsTrainerRed = vsTrainerRed;
 
     if (!CheckGameClearFlag(varsFlags)) {
-        FieldSys_SetGameClearTime(fsys);
+        FieldSystem_SetGameClearTime(fieldSystem);
     }
-    SaveArray_Party_Get(fsys->savedata);
+    SaveArray_Party_Get(fieldSystem->savedata);
     LocationData_BackUp(dynamicWarp);
     LocationData_Restore(spawnWarp);
     SetFlag966(varsFlags);
@@ -291,12 +291,12 @@ void CallTask_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
     PlayerProfile_SetGameClearFlag(profile);
 
     if (!env->vsTrainerRed) {
-        GameStats_Inc(Save_GameStats_Get(fsys->savedata), 74);
+        GameStats_Inc(Save_GameStats_Get(fieldSystem->savedata), 74);
     }
     TaskManager_Call(taskman, Task_GameClear, env);
 }
 
-static void GameClearSave_InitGraphics(FieldSystem *fsys, GameClearWork *env) {
+static void GameClearSave_InitGraphics(FieldSystem *fieldSystem, GameClearWork *env) {
     env->bgConfig = BgConfig_Alloc(HEAP_ID_FIELD);
     env->windowText = NULL;
     env->waitingIcon = NULL;
@@ -311,8 +311,8 @@ static void GameClearSave_InitGraphics(FieldSystem *fsys, GameClearWork *env) {
     BgCommitTilemapBufferToVram(env->bgConfig, 3);
 }
 
-static void GameClearSave_PrintSaving(FieldSystem *fsys, GameClearWork *env) {
-    OPTIONS *options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
+static void GameClearSave_PrintSaving(FieldSystem *fieldSystem, GameClearWork *env) {
+    OPTIONS *options = Save_PlayerData_GetOptionsAddr(fieldSystem->savedata);
     env->windowText = ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, NARC_msg_msg_0040_bin, msg_0040_00015, HEAP_ID_32);
     sub_0205B514(env->bgConfig, &env->window, 3);
     sub_0205B564(&env->window, options);
@@ -330,23 +330,23 @@ static void sub_02052E70(GameClearWork *env) {
     sub_0205B5A8(&env->window);
 }
 
-static void GameClearSave_PrintSaveStatus(FieldSystem *fsys, GameClearWork *env, int writeStatus) {
+static void GameClearSave_PrintSaveStatus(FieldSystem *fieldSystem, GameClearWork *env, int writeStatus) {
     MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0040_bin, HEAP_ID_4);
 
     if (writeStatus == 2) {
         MessageFormat *msgFmt = MessageFormat_New(HEAP_ID_4);
-        BufferPlayersName(msgFmt, 0, Save_PlayerData_GetProfileAddr(fsys->savedata));
+        BufferPlayersName(msgFmt, 0, Save_PlayerData_GetProfileAddr(fieldSystem->savedata));
         env->windowText = ReadMsgData_ExpandPlaceholders(msgFmt, msgData, msg_0040_00016, HEAP_ID_4);
         MessageFormat_Delete(msgFmt);
     } else {
         env->windowText = NewString_ReadMsgData(msgData, msg_0040_00018);
     }
     DestroyMsgData(msgData);
-    OPTIONS *options = Save_PlayerData_GetOptionsAddr(fsys->savedata);
+    OPTIONS *options = Save_PlayerData_GetOptionsAddr(fieldSystem->savedata);
     env->printerId = sub_0205B5B4(&env->window, env->windowText, options, 1);
 }
 
-static void GameClearSave_Free(FieldSystem *fsys, GameClearWork *env) {
+static void GameClearSave_Free(FieldSystem *fieldSystem, GameClearWork *env) {
     if (env->windowText != NULL) {
         String_Delete(env->windowText);
     }

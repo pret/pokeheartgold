@@ -731,7 +731,7 @@ sub_020572AC: ; 0x020572AC
 _020572BC:
 	cmp r0, #0
 	beq _020572CE
-	bl FieldSys_GetPlayerAvatar
+	bl FieldSystem_GetPlayerAvatar
 	bl sub_0205CB38
 	cmp r0, #0
 	beq _020572CE

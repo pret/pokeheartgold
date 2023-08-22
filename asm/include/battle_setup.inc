@@ -61,7 +61,7 @@
 .public BattleSetup_Delete
 .public BattleSetup_AddMonToParty
 .public sub_02051D18
-.public BattleSetup_InitFromFsys
+.public BattleSetup_InitFromFieldSystem
 .public sub_02051F2C
 .public sub_020520B0
 .public sub_020522F0
@@ -92,7 +92,7 @@
 .public sub_02067A78
 .public FollowingPokemon_IsActive
 .public sub_02069FB0
-.public FieldSys_BugContest_Get
+.public FieldSystem_BugContest_Get
 .public BugContest_GetSportBallsAddr
 .public AllocMonZeroed
 .public CreateMon
@@ -113,7 +113,7 @@
 .public Bag_AddItem
 .public Save_Bag_Get
 .public sub_02088288
-.public Fsys_GetGearPhoneRingManager
+.public FieldSystem_GetGearPhoneRingManager
 .public sub_02092E14
 .public sub_0209322C
 .public MIi_CpuClear32

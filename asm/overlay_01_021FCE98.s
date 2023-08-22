@@ -135,7 +135,7 @@ _021FCF80:
 	ldr r0, [r6, r0]
 	mov r1, #1
 	mov r5, #2
-	bl FsysUnkSub108_AddMonMood
+	bl FieldSystemUnkSub108_AddMonMood
 	b _021FCF9E
 _021FCF9C:
 	mov r5, #1

@@ -39,7 +39,7 @@
 .public MapHeader_GetMapSec
 .public LocalFieldData_GetCurrentPosition
 .public Save_LocalFieldData_Get
-.public Fsys_SyncMapObjectsToSave
+.public FieldSystem_SyncMapObjectsToSave
 .public PlayerAvatar_GetFacingDirection
 .public GetPlayerXCoord
 .public GetPlayerYCoord

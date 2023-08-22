@@ -3,7 +3,7 @@
 
 #include "script.h"
 
-void sub_02058190(FieldSystem *fsys);
+void sub_02058190(FieldSystem *fieldSystem);
 void sub_02058284(void);
 void sub_020582A8(void);
 

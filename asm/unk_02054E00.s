@@ -186,18 +186,18 @@ FieldSystem_SetSavedMusicId: ; 0x02054F28
 	.balign 4, 0
 	thumb_func_end FieldSystem_SetSavedMusicId
 
-	thumb_func_start Fsys_GetSavedMusicId
-Fsys_GetSavedMusicId: ; 0x02054F3C
+	thumb_func_start FieldSystem_GetSavedMusicId
+FieldSystem_GetSavedMusicId: ; 0x02054F3C
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
 	bl Save_LocalFieldData_Get
 	bl LocalFieldData_GetMusicIdAddr
 	ldrh r0, [r0]
 	pop {r3, pc}
-	thumb_func_end Fsys_GetSavedMusicId
+	thumb_func_end FieldSystem_GetSavedMusicId
 
-	thumb_func_start Fsys_ClearSavedMusicId
-Fsys_ClearSavedMusicId: ; 0x02054F4C
+	thumb_func_start FieldSystem_ClearSavedMusicId
+FieldSystem_ClearSavedMusicId: ; 0x02054F4C
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
 	bl Save_LocalFieldData_Get
@@ -206,7 +206,7 @@ Fsys_ClearSavedMusicId: ; 0x02054F4C
 	strh r1, [r0]
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end Fsys_ClearSavedMusicId
+	thumb_func_end FieldSystem_ClearSavedMusicId
 
 	thumb_func_start FieldSystem_GetOverriddenMusicId
 FieldSystem_GetOverriddenMusicId: ; 0x02054F60
@@ -230,11 +230,11 @@ _02054F82:
 	bl GetMapMusic
 	add r5, r0, #0
 	add r0, r4, #0
-	bl Fsys_GetSavedMusicId
+	bl FieldSystem_GetSavedMusicId
 	cmp r0, #0
 	beq _02054F9E
 	add r0, r4, #0
-	bl Fsys_GetSavedMusicId
+	bl FieldSystem_GetSavedMusicId
 	add r5, r0, #0
 _02054F9E:
 	add r0, r5, #0
@@ -418,8 +418,8 @@ _020550DC: .word SEQ_GS_EYE_J_SHOUNEN
 _020550E0: .word sTrainerEncounterMusicParam
 	thumb_func_end Trainer_GetEncounterMusic
 
-	thumb_func_start Fsys_BeginFadeOutMusic
-Fsys_BeginFadeOutMusic: ; 0x020550E4
+	thumb_func_start FieldSystem_BeginFadeOutMusic
+FieldSystem_BeginFadeOutMusic: ; 0x020550E4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -439,7 +439,7 @@ Fsys_BeginFadeOutMusic: ; 0x020550E4
 _0205510C:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end Fsys_BeginFadeOutMusic
+	thumb_func_end FieldSystem_BeginFadeOutMusic
 
 	thumb_func_start sub_02055110
 sub_02055110: ; 0x02055110

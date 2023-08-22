@@ -13,7 +13,7 @@
 .public PlayerProfile_GetTrainerGender
 .public sub_0203FC68
 .public TaskManager_Call
-.public FieldSys_ApplicationIsRunning
+.public FieldSystem_ApplicationIsRunning
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public TaskManager_GetStatePtr
