@@ -15,19 +15,13 @@ typedef struct UnkAlphSub_10 {
     SaveData *savedata;
 } UnkAlphSub_10;
 
-typedef struct UnkAlphSub_15C {
-    u8 unk0;
-    u8 unk1;
-    u16 unk2;
-} UnkAlphSub_15C;
-
-typedef struct UnkAlphSub_DC {
+typedef struct AlphPuzzleTile {
     u8 x;
     u8 y;
-    u8 unk2;
+    u8 rotation;
     u8 unk3;
     u32 unk4;
-} UnkAlphSub_DC;
+} AlphPuzzleTile;
 
 typedef struct AlphPuzzleData {
     HeapID heapId;
@@ -41,24 +35,28 @@ typedef struct AlphPuzzleData {
     u8 unk19;
     u8 unk1A;
     u8 unk1B;
-    u16 unk1C;
-    u16 unk1E;
+    s16 unk1C;
+    s16 unk1E;
     u8 unk20;
     u8 unk21;
     u8 unk22;
     u8 unk23;
-    u8 unk24;
+    u8 textPrinterId;
     u8 textFrameDelay;
     u8 frame;
     u8 unk27;
     u32 unk28;
     u32 unk2C;
     u32 unk30;
-    u8 unk34[0x54];
+    u8 unk34[0x4C];
+    void *unk80;
+    u32 unk84;
     UnkStruct_0200CF18 *unk88;
-    u8 unk8C[0x50];
-    UnkAlphSub_DC unkDC[16];
-    UnkAlphSub_15C *unk15C;
+    u32 unk8C;
+    u32 unk90;
+    u8 unk94[0x48];
+    AlphPuzzleTile tileGrid[16];
+    AlphPuzzleTile *selectedTile;
 } AlphPuzzleData;
 
 BOOL ov110_AlphPuzzle_OvyInit(OVY_MANAGER *man, int *state);
@@ -76,11 +74,7 @@ int ov110_021E5D90(AlphPuzzleData *data, u8 *xOut, u8 *yOut);
 //the following functions haven't been decompiled yet
 void ov110_021E5C18(AlphPuzzleData *data);
 int ov110_021E5C60(AlphPuzzleData *data);
-int ov110_021E5E1C(AlphPuzzleData *data);
-int ov110_021E5F84(AlphPuzzleData *data);
 int ov110_021E6014(AlphPuzzleData *data);
-int ov110_021E6070(AlphPuzzleData *data);
-void ov110_021E6110(void *);
 int ov110_021E6150(AlphPuzzleData *data);
 int ov110_021E61D0(AlphPuzzleData *data);
 int ov110_021E6394(AlphPuzzleData *data);
@@ -97,5 +91,15 @@ void ov110_021E6A04(AlphPuzzleData *data);
 void ov110_021E6C58(AlphPuzzleData *, u8, int);
 void ov110_021E6D20(AlphPuzzleData *data);
 void ov110_021E6A44(AlphPuzzleData *data, u8 a1, u8 a2, int a3);
+void ov110_021E6BEC(AlphPuzzleTile *tile, s16 x, s16 y);
+void ov110_021E6C18(AlphPuzzleData *data, s16 a1, u8 a2, u8 a3, u8 a4);
+BOOL ov110_021E68B4(AlphPuzzleData *data);
+void ov110_021E6ABC(AlphPuzzleData *data, u8 x, u8 y);
+void sub_0200DD88(u32 a0, s16 x, s16 y);
+void sub_02024818(u32 a0, u16 a1);
+void ov110_021E6988(AlphPuzzleData *data, int a1, int a2, u8 textFrameDelay);
+void ov110_021E6B38(AlphPuzzleData *data);
+int ov110_021E6B94(AlphPuzzleData *data);
+void sub_02003E5C(void *, u32, u32, u32, u8, u32);
 
 #endif //POKEHEARTGOLD_ALPH_PUZZLE_H

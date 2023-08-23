@@ -12,22 +12,30 @@
 #include "unk_020210A0.h"
 #include "unk_02025154.h"
 #include "unk_02005D10.h"
+#include "unk_0200CF18.h"
+#include "palette.h"
 #include "constants/sndseq.h"
+#include "text.h"
 
 static int AlphPuzzleMainSeq_FadeIn(AlphPuzzleData *data);
 static int AlphPuzzleMainSeq_FadeOut(AlphPuzzleData *data);
 static int AlphPuzzleMainSeq_1(AlphPuzzleData *data);
 static int AlphPuzzleMainSeq_2(AlphPuzzleData *data);
 static int AlphPuzzleMainSeq_3(AlphPuzzleData *data);
-static int AlphPuzzleMainSeq_4(AlphPuzzleData *data);
+static int AlphPuzzleMainSeq_RotateTile(AlphPuzzleData *data);
 static int AlphPuzzleMainSeq_5(AlphPuzzleData *data);
-static int AlphPuzzleMainSeq_6(AlphPuzzleData *data);
+static int AlphPuzzleMainSeq_Clear(AlphPuzzleData *data);
 static void ov110_021E5BE4(AlphPuzzleData *data);
 //static void ov110_021E5C18(AlphPuzzleData *data);
 static void ov110_021E5C3C(AlphPuzzleData *data);
 static int ov110_021E5CCC(AlphPuzzleData *data);
 static s32 ov110_021E5D30(AlphPuzzleData *data, u16 touchX, u16 touchY);
 //static int ov110_021E5D90(AlphPuzzleData *data, u8 *xOut, u8 *yOut);
+static int ov110_021E5E1C(AlphPuzzleData *data);
+static int ov110_021E5F84(AlphPuzzleData *data);
+static int ov110_021E6014(AlphPuzzleData *data);
+static int ov110_021E6070(AlphPuzzleData *data);
+static void ov110_021E6110(void *dat);
 
 BOOL ov110_AlphPuzzle_OvyInit(OVY_MANAGER *man, int *state) {
     switch (*state) {
@@ -56,9 +64,9 @@ typedef enum AlphPuzzleStates {
     ALPH_PUZZLE_STATE_1,
     ALPH_PUZZLE_STATE_2,
     ALPH_PUZZLE_STATE_3,
-    ALPH_PUZZLE_STATE_4,
+    ALPH_PUZZLE_STATE_ROTATE_TILE,
     ALPH_PUZZLE_STATE_5,
-    ALPH_PUZZLE_STATE_6,
+    ALPH_PUZZLE_STATE_CLEAR,
     ALPH_PUZZLE_STATE_FADE_OUT,
     ALPH_PUZZLE_STATE_END
 } AlphPuzzleStates;
@@ -78,14 +86,14 @@ BOOL ov110_AlphPuzzle_OvyExec(OVY_MANAGER *man, int *state) {
     case ALPH_PUZZLE_STATE_3:
         *state = AlphPuzzleMainSeq_3(data);
         break;
-    case ALPH_PUZZLE_STATE_4:
-        *state = AlphPuzzleMainSeq_4(data);
+    case ALPH_PUZZLE_STATE_ROTATE_TILE:
+        *state = AlphPuzzleMainSeq_RotateTile(data);
         break;
     case ALPH_PUZZLE_STATE_5:
         *state = AlphPuzzleMainSeq_5(data);
         break;
-    case ALPH_PUZZLE_STATE_6:
-        *state = AlphPuzzleMainSeq_6(data);
+    case ALPH_PUZZLE_STATE_CLEAR:
+        *state = AlphPuzzleMainSeq_Clear(data);
         break;
     case ALPH_PUZZLE_STATE_FADE_OUT:
         *state = AlphPuzzleMainSeq_FadeOut(data);
@@ -203,7 +211,7 @@ static int AlphPuzzleMainSeq_3(AlphPuzzleData *data) {
     return ov110_021E5E1C(data);
 }
 
-static int AlphPuzzleMainSeq_4(AlphPuzzleData *data) {
+static int AlphPuzzleMainSeq_RotateTile(AlphPuzzleData *data) {
     return ov110_021E5F84(data);
 }
 
@@ -211,7 +219,7 @@ static int AlphPuzzleMainSeq_5(AlphPuzzleData *data) {
     return ov110_021E6014(data);
 }
 
-static int AlphPuzzleMainSeq_6(AlphPuzzleData *data) {
+static int AlphPuzzleMainSeq_Clear(AlphPuzzleData *data) {
     return ov110_021E6070(data);
 }
 
@@ -265,15 +273,15 @@ static int ov110_021E5C60(AlphPuzzleData *data) {
 static int ov110_021E5CCC(AlphPuzzleData *data) {
     if (!System_GetTouchHeld()) {
         data->unkE = 0;
-        return ALPH_PUZZLE_STATE_4;
+        return ALPH_PUZZLE_STATE_ROTATE_TILE;
     }
     if (data->unkE++ >= 2) {
         data->unkE = 0;
-        data->unk1C = (data->unk15C->unk0 << 5) + 0x40;
-        data->unk1E = (data->unk15C->unk1 << 5) + 0x20;
-        data->unk22 = data->unk15C->unk0;
-        data->unk23 = data->unk15C->unk1;
-        ov110_021E6A44(data, data->unk15C->unk0, data->unk15C->unk1, 3);
+        data->unk1C = (data->selectedTile->x << 5) + 0x40;
+        data->unk1E = (data->selectedTile->y << 5) + 0x20;
+        data->unk22 = data->selectedTile->x;
+        data->unk23 = data->selectedTile->y;
+        ov110_021E6A44(data, data->selectedTile->x, data->selectedTile->y, 3);
         return ALPH_PUZZLE_STATE_3;
     }
     return ALPH_PUZZLE_STATE_2;
@@ -291,8 +299,8 @@ s32 ov110_021E5D30(AlphPuzzleData *data, u16 touchX, u16 touchY) {
     y = y / 32;
 
     for (s32 i = 0; i < 16; i++) {
-        if (data->unkDC[i].x == x && data->unkDC[i].y == y) {
-            if (data->unkDC[i].unk3) {
+        if (data->tileGrid[i].x == x && data->tileGrid[i].y == y) {
+            if (data->tileGrid[i].unk3) {
                 return -1;
             }
             return i;
@@ -319,7 +327,7 @@ int ov110_021E5D90(AlphPuzzleData *data, u8 *xOut, u8 *yOut) {
     }
 
     x2 = (x - 32) / 32;
-    y2 = ((s16)data->unk1E) / 32;
+    y2 = data->unk1E / 32;
 
     for (i = 0; i < 4; i++) {
         if (x2 == ov110_021E6D9C[i][0] && y2 == ov110_021E6D9C[i][1]) {
@@ -328,7 +336,7 @@ int ov110_021E5D90(AlphPuzzleData *data, u8 *xOut, u8 *yOut) {
     }
 
     for (i = 0; i < 16; i++) {
-        if (data->unk1B != i && data->unkDC[i].x == x2 && data->unkDC[i].y == y2) {
+        if (data->unk1B != i && data->tileGrid[i].x == x2 && data->tileGrid[i].y == y2) {
             return FALSE;
         }
     }
@@ -337,4 +345,159 @@ int ov110_021E5D90(AlphPuzzleData *data, u8 *xOut, u8 *yOut) {
     *yOut = y2;
     
     return TRUE;
+}
+
+static int ov110_021E5E1C(AlphPuzzleData *data) {
+    if (!System_GetTouchHeld()) {
+        ov110_021E6A44(data, data->selectedTile->x, data->selectedTile->y, 0);
+        ov110_021E6A44(data, data->unk22, data->unk23, 0);
+        ScheduleBgTilemapBufferTransfer(data->bgConfig, 2);
+        if (data->unk22 == 0 && data->unk23 == 0) {
+            PlaySE(SEQ_SE_DP_BOX01);
+            ov110_021E6C18(data, data->unk1B, data->selectedTile->x, data->selectedTile->y, data->selectedTile->rotation);
+        } else {
+            PlaySE(SEQ_SE_GS_SEKIBAN_SENTAKU); //SE Slate Select
+            ov110_021E6C18(data, data->unk1B, data->unk22, data->unk23, data->selectedTile->rotation);
+        }
+        ov110_021E6C58(data, 0xFF, 0);
+        if (ov110_021E68B4(data)) {
+            return ALPH_PUZZLE_STATE_CLEAR;
+        }
+        return ALPH_PUZZLE_STATE_1;
+    }
+    
+    s16 x = gSystem.touchX;
+    s16 y = gSystem.touchY;
+    
+    data->unk20 = data->unk1C;
+    data->unk21 = data->unk1E;
+    
+    if (y < 16) {
+        y = 16;
+    } else if (y > 176) {
+        y = 176;
+    }
+
+    if (x < 48) {
+        x = 48;
+    } else if (x > 208) {
+        x = 208;
+    }
+    
+    sub_0200DD88(data->unk90, x, y);
+    ov110_021E6BEC(data->selectedTile, x - 2, y - 2);
+
+    u8 xOut;
+    u8 yOut;
+
+    data->unk1C = x;
+    data->unk1E = y;
+    
+    ov110_021E5D90(data, &xOut, &yOut);
+
+    if (data->unk22 != xOut || data->unk23 != yOut) {
+        ov110_021E6ABC(data, xOut, yOut);
+        data->unk22 = xOut;
+        data->unk23 = yOut;
+    }
+    
+    return ALPH_PUZZLE_STATE_3;
+}
+
+static int ov110_021E5F84(AlphPuzzleData *data) {
+    switch (data->unkC) {
+    case 0:
+        PlaySE(SEQ_SE_GS_SEKIBAN_KAITEN);
+        data->unkC++;
+        break;
+    case 1:
+        u16 temp = data->unkE++;
+        sub_02024818(data->selectedTile->unk4, (u16)(temp << 0xb) + (data->selectedTile->rotation << 0xe));
+        if (data->unkE >= 8) {
+            data->unkC++;
+        }
+        break;
+    case 2:
+        data->selectedTile->rotation = (data->selectedTile->rotation + 1) % 4;
+        
+        ov110_021E6C58(data, 0xFF, 0);
+        
+        data->unkE = 0;
+        data->unkC = 0;
+        
+        if (ov110_021E68B4(data)) {
+            return ALPH_PUZZLE_STATE_CLEAR;
+        }
+        return ALPH_PUZZLE_STATE_1;
+    }
+    return ALPH_PUZZLE_STATE_ROTATE_TILE;
+}
+
+static int ov110_021E6014(AlphPuzzleData *data) {
+    switch (data->unkC) {
+    case 0:
+        if (!data->unk1A) {
+            ov110_021E6988(data, 0, 1, data->textFrameDelay);
+            data->unkC++;
+        }
+        break;
+    case 1:
+        if (!TextPrinterCheckActive(data->textPrinterId)) {
+            ov110_021E6B38(data);
+            data->unkC++;
+        }
+        break;
+    case 2:
+        int ret = ov110_021E6B94(data);
+        if (ret != ALPH_PUZZLE_STATE_5) {
+            data->unkC = 0;
+            return ret;
+        }
+        break;
+    }
+    return ALPH_PUZZLE_STATE_5;
+}
+
+static int ov110_021E6070(AlphPuzzleData *data) {
+    switch (data->unkC) {
+    case 0:
+        PlaySE(SEQ_SE_GS_PUZZLETOKU);
+        data->unkC++;
+        break;
+    case 1:
+        sub_02003E5C(data->unk80, 2, 0x2b, 5, data->unkE, 0x7FFF);
+        if (data->unkE++ >= 15) {
+            data->unkC++;
+        }
+        break;
+    case 2:
+        sub_02003E5C(data->unk80, 2, 0x2b, 5, data->unkE, 0x7FFF);
+        if (data->unkE-- == 0) {
+            data->unkC++;
+        }
+        break;
+    default:
+        data->unkC = 0;
+        data->unkE = 0;
+        data->unk27 = 1;
+        return ALPH_PUZZLE_STATE_FADE_OUT;
+    }
+
+    return ALPH_PUZZLE_STATE_CLEAR;
+}
+
+static void ov110_021E6110(void *dat) {
+    AlphPuzzleData *data = dat;
+    if (data->unk80) {
+        sub_0200398C(data->unk80);
+    }
+    if (data->unk84) {
+        sub_0200D034();
+    }
+
+    NNS_GfdDoVramTransfer();
+    DoScheduledBgGpuUpdates(data->bgConfig);
+
+    u32 *ptr = (u32 *) 0x27E0000;
+    ptr[0xFFE] |= 1;
 }
