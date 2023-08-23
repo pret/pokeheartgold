@@ -12,6 +12,10 @@
 #include "unk_0202CA24.h"
 #include "sys_flags.h"
 #include "save_pokegear.h"
+#include "unk_02037C94.h"
+#include "unk_02033AE0.h"
+#include "unk_0205B3DC.h"
+#include "unk_020290B4.h"
 #include "msgdata/msg.naix"
 #include "constants/battle.h"
 
@@ -53,7 +57,7 @@ BattleSetup* BattleSetup_New(HeapID heapId, u32 battleTypeFlags) {
     setup->safariBalls = 0;
     setup->unk_12C = NULL;
     setup->gameStats = NULL;
-    setup->unk_194 = NULL;
+    setup->unk_194 = 0;
     setup->bugContestMon = AllocMonZeroed(heapId);
 
     {
@@ -278,7 +282,7 @@ void BattleSetup_InitForFixedLevelFacility(BattleSetup* setup, FieldSystem *fiel
     for (int i = 0; i < Party_GetCount(party); ++i) {
         CopyPokemonToPokemon(Party_GetMonByIndex(party, i), pokemon);
         if (level != GetMonData(pokemon, MON_DATA_LEVEL, NULL) && level != 0) {
-            int exp = GetMonExpBySpeciesAndLevel(GetMonData(pokemon, MON_DATA_SPECIES, NULL), level);
+            u32 exp = GetMonExpBySpeciesAndLevel(GetMonData(pokemon, MON_DATA_SPECIES, NULL), level);
             SetMonData(pokemon, MON_DATA_EXPERIENCE, &exp);
             CalcMonLevelAndStats(pokemon);
         }
@@ -300,4 +304,84 @@ void BattleSetup_InitForFixedLevelFacility(BattleSetup* setup, FieldSystem *fiel
     setup->mapNumber = fieldSystem->location->mapId;
     setup->saveData = fieldSystem->savedata;
     sub_02052580(setup);
+}
+
+void sub_020520B0(BattleSetup* setup, FieldSystem *fieldSystem, Party *party, u8 *a4) {
+    PlayerProfile* profile; // sp20
+    Bag* bag; // sp1C
+    Pokedex* pokedex; // sp18
+    SOUND_CHATOT* chatot; // sp14
+    OPTIONS* options; // sp10
+    void* fieldSystem_unkA4; // spC
+
+    profile = Save_PlayerData_GetProfileAddr(fieldSystem->savedata);
+    bag = Save_Bag_Get(fieldSystem->savedata);
+    pokedex = Save_Pokedex_Get(fieldSystem->savedata);
+    chatot = Save_Chatot_Get(fieldSystem->savedata);
+    options = Save_PlayerData_GetOptionsAddr(fieldSystem->savedata);
+    fieldSystem_unkA4 = fieldSystem->unkA4;
+
+    setup->battleBg = 6;
+    setup->unk_150 = 9;
+    BattleSetup_SetProfile(setup, profile, BATTLER_PLAYER);
+
+    if (a4 == NULL) {
+        BattleSetup_SetParty(setup, party, BATTLER_PLAYER);
+    } else {
+        int r6;
+        int i;
+        u8 sp28[6];
+        MI_CpuCopy8(a4, sp28, 6);
+        r6 = 0;
+        for (i = 0; i < 6; ++i) {
+            if (sp28[i] != 0) {
+                ++r6;
+            }
+        }
+        if (r6 == 0) {
+            for (i = 0; i < 6; ++i) {
+                sp28[i] = i + 1;
+            }
+            r6 = Party_GetCount(party);
+        }
+        Pokemon* pokemon = AllocMonZeroed(HEAP_ID_FIELD);
+        Party_InitWithMaxSize(setup->party[BATTLER_PLAYER], r6);
+        for (i = 0; i < r6; ++i) {
+            CopyPokemonToPokemon(Party_GetMonByIndex(party, sp28[i] - 1), pokemon);
+            if (GetMonData(pokemon, MON_DATA_LEVEL, NULL) > 50 && (sub_0203993C() == 37 || sub_0203993C() == 38)) {
+                u32 exp = GetMonExpBySpeciesAndLevel(GetMonData(pokemon, MON_DATA_SPECIES, NULL), 50);
+                SetMonData(pokemon, MON_DATA_EXPERIENCE, &exp);
+                CalcMonLevelAndStats(pokemon);
+            }
+            BattleSetup_AddMonToParty(setup, pokemon, BATTLER_PLAYER);
+        }
+        FreeToHeap(pokemon);
+    }
+
+    if (fieldSystem_unkA4 != NULL && sub_020290FC(fieldSystem_unkA4, 12)) {
+        setup->unk_194 = 1;
+    }
+    Save_Bag_Copy(bag, setup->bag);
+    Pokedex_Copy(pokedex, setup->pokedex);
+    Options_Copy(options, setup->options);
+    BattleSetup_SetChatotVoiceClip(setup, chatot, BATTLER_PLAYER);
+    setup->storagePC = GetStoragePCPointer(fieldSystem->savedata);
+    setup->timeOfDay = Field_GetTimeOfDay(fieldSystem);
+    setup->unk_10C = fieldSystem->unk94;
+    setup->unk1B8 = fieldSystem->unkB0;
+    setup->unk_12C = sub_0202CA44(fieldSystem->savedata);
+    setup->gameStats = Save_GameStats_Get(fieldSystem->savedata);
+    setup->mapNumber = fieldSystem->location->mapId;
+    setup->palPad = Save_PalPad_Get(fieldSystem->savedata);
+    setup->saveData = fieldSystem->savedata;
+
+    if (sub_0203401C(sub_0203993C())) {
+        int avatar = PlayerProfile_GetAvatar(profile);
+        int gender = PlayerProfile_GetTrainerGender(profile);
+        setup->trainer[BATTLER_PLAYER].trainerClass = sub_0205B46C(gender, avatar, 1);
+        CopyU16StringArray(setup->trainer[BATTLER_PLAYER].name, PlayerProfile_GetNamePtr(setup->profile[BATTLER_PLAYER]));
+        setup->trainer[BATTLER_PLAYER2] = setup->trainer[BATTLER_PLAYER];
+    } else {
+        sub_02052580(setup);
+    }
 }
