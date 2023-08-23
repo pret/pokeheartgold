@@ -796,7 +796,7 @@ void sub_020514A4(TaskManager *man, int target, int maxLevel, int flag) {
         mode = 14;
     }
 
-    sub_02051F2C(setup, fieldSystem, maxLevel);
+    BattleSetup_InitForFixedLevelFacility(setup, fieldSystem, maxLevel);
 
     sub_0202FBF0(fieldSystem->savedata, HEAP_ID_FIELD, &result);
 

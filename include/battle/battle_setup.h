@@ -39,18 +39,18 @@ struct BattleSetup { //declared in trainer_data.h
     struct UnkStruct_02067A60* unk_134;
     struct BattleSetupSub_138 unk138;
     GAME_STATS* gameStats; // 144
-    SavePalPad* palPad;
-    u32 battleBg;
+    SavePalPad* palPad; // 148
+    u32 battleBg; // 14C
     u32 unk_150;
-    u32 mapSection;
-    u32 mapNumber;
-    TIMEOFDAY timeOfDay;
+    u32 mapSection; // 154
+    u32 mapNumber; // 158
+    TIMEOFDAY timeOfDay; // 15C
     u32 evolutionLocation; // 160
     u32 unk_164;
-    u32 metBill;
-    int momsSavingsActive;
+    u32 metBill; // 168
+    int momsSavingsActive; // 16C
     u32 unk_170;
-    u32 weatherType;
+    u32 weatherType; // 174
     int levelUpFlag; // 178
     u8 filler_17C[0x10];
     u32 unk_18C;
@@ -86,7 +86,7 @@ void BattleSetup_Delete(BattleSetup* setup);
 void sub_02052444(BattleSetup* setup, FieldSystem *fieldSystem);
 void BattleSetup_InitFromFieldSystem(BattleSetup* setup, FieldSystem *fieldSystem);
 void sub_020522F0(BattleSetup* setup, FieldSystem *fieldSystem, void *a1);
-void sub_02051F2C(BattleSetup* setup, FieldSystem *fieldSystem, int level);
+void BattleSetup_InitForFixedLevelFacility(BattleSetup* setup, FieldSystem *fieldSystem, int level);
 void sub_020520B0(BattleSetup* setup, FieldSystem *fieldSystem, Party *party, void *a4);
 BattleSetup* BattleSetup_New_PalPark(HeapID heapId, int monsRemaining);
 void BattleSetup_AddMonToParty(BattleSetup* setup, Pokemon* mon, int battler);

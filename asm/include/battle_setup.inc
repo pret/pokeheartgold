@@ -62,7 +62,7 @@
 .public BattleSetup_AddMonToParty
 .public sub_02051D18
 .public BattleSetup_InitFromFieldSystem
-.public sub_02051F2C
+.public BattleSetup_InitForFixedLevelFacility
 .public sub_020520B0
 .public sub_020522F0
 .public sub_0205239C

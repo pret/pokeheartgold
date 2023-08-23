@@ -248,3 +248,56 @@ void sub_02051D18(BattleSetup* setup, FieldSystem* fieldSystem, SaveData* saveda
     setup->mapNumber = mapno;
     setup->saveData = savedata;
 }
+
+void BattleSetup_InitFromFieldSystem(BattleSetup* setup, FieldSystem *fieldSystem) {
+    sub_02051D18(setup, fieldSystem, fieldSystem->savedata, fieldSystem->location->mapId, fieldSystem->unk94, fieldSystem->unkB0);
+    sub_02052580(setup);
+}
+
+void BattleSetup_InitForFixedLevelFacility(BattleSetup* setup, FieldSystem *fieldSystem, int level) {
+    PlayerProfile* profile; // r4
+    Party* party; // sp14
+    Bag* bag; // sp10
+    Pokedex* pokedex; // spC
+    SOUND_CHATOT* chatot; // sp8
+    OPTIONS* options; // sp4
+
+    profile = Save_PlayerData_GetProfileAddr(fieldSystem->savedata);
+    party = SaveArray_Party_Get(fieldSystem->savedata);
+    bag = Save_Bag_Get(fieldSystem->savedata);
+    pokedex = Save_Pokedex_Get(fieldSystem->savedata);
+    chatot = Save_Chatot_Get(fieldSystem->savedata);
+    options = Save_PlayerData_GetOptionsAddr(fieldSystem->savedata);
+
+    setup->battleBg = 6;
+    setup->unk_150 = 9;
+    BattleSetup_SetProfile(setup, profile, BATTLER_PLAYER);
+
+    Pokemon* pokemon = AllocMonZeroed(HEAP_ID_FIELD);
+    Party_InitWithMaxSize(setup->party[BATTLER_PLAYER], Party_GetCount(party));
+    for (int i = 0; i < Party_GetCount(party); ++i) {
+        CopyPokemonToPokemon(Party_GetMonByIndex(party, i), pokemon);
+        if (level != GetMonData(pokemon, MON_DATA_LEVEL, NULL) && level != 0) {
+            int exp = GetMonExpBySpeciesAndLevel(GetMonData(pokemon, MON_DATA_SPECIES, NULL), level);
+            SetMonData(pokemon, MON_DATA_EXPERIENCE, &exp);
+            CalcMonLevelAndStats(pokemon);
+        }
+        BattleSetup_AddMonToParty(setup, pokemon, BATTLER_PLAYER);
+    }
+    FreeToHeap(pokemon);
+
+    Save_Bag_Copy(bag, setup->bag);
+    Pokedex_Copy(pokedex, setup->pokedex);
+    Options_Copy(options, setup->options);
+    BattleSetup_SetChatotVoiceClip(setup, chatot, BATTLER_PLAYER);
+    setup->storagePC = GetStoragePCPointer(fieldSystem->savedata);
+    setup->timeOfDay = Field_GetTimeOfDay(fieldSystem);
+    setup->unk_10C = fieldSystem->unk94;
+    setup->unk1B8 = fieldSystem->unkB0;
+    setup->unk_12C = sub_0202CA44(fieldSystem->savedata);
+    setup->gameStats = Save_GameStats_Get(fieldSystem->savedata);
+    setup->palPad = Save_PalPad_Get(fieldSystem->savedata);
+    setup->mapNumber = fieldSystem->location->mapId;
+    setup->saveData = fieldSystem->savedata;
+    sub_02052580(setup);
+}
