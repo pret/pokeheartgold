@@ -78,16 +78,17 @@ BattleSetup* BattleSetup_New_BugContest(HeapID heapId, int balls, Pokemon* bugmo
 BattleSetup* BattleSetup_New_PalPark(HeapID heapId, int balls);
 BattleSetup* BattleSetup_New_Tutorial(HeapID heapId, FieldSystem *fieldSystem);
 void sub_02051D18(BattleSetup* setup, FieldSystem* fieldSystem, SaveData* savedata, u32 mapno, void* arg4, void* arg5);
+void BattleSetup_InitFromFieldSystem(BattleSetup* setup, FieldSystem *fieldSystem);
 void BattleSetup_InitForFixedLevelFacility(BattleSetup* setup, FieldSystem *fieldSystem, int level);
 void sub_020520B0(BattleSetup* setup, FieldSystem *fieldSystem, Party *party, u8 *a4);
+void sub_020522F0(BattleSetup* setup, FieldSystem *fieldSystem, void *a1);
+void sub_0205230C(FieldSystem* fieldSystem, PlayerProfile* profile1, PlayerProfile* profile2);
 
 BOOL IsBattleResultWin(u32 a0);
 int sub_02052564(u32 a0);
 int sub_02052574(u32 a0);
 void BattleSetup_Delete(BattleSetup* setup);
 void sub_02052444(BattleSetup* setup, FieldSystem *fieldSystem);
-void BattleSetup_InitFromFieldSystem(BattleSetup* setup, FieldSystem *fieldSystem);
-void sub_020522F0(BattleSetup* setup, FieldSystem *fieldSystem, void *a1);
 BattleSetup* BattleSetup_New_PalPark(HeapID heapId, int monsRemaining);
 void BattleSetup_AddMonToParty(BattleSetup* setup, Pokemon* mon, int battler);
 

@@ -7,6 +7,7 @@
 	.extern BattleSetup_SetParty
 	.extern BattleSetup_SetProfile
 	.extern BattleSetup_SetChatotVoiceClip
+	.extern sub_0205230C
 
 _020FC4C0:
 	.word 0x00000000
@@ -34,91 +35,6 @@ _020FC4C0:
 	.word 0x00000016
 
 	.text
-
-	thumb_func_start sub_020522F0
-sub_020522F0: ; 0x020522F0
-	push {r4, r5, r6, lr}
-	add r4, r1, #0
-	add r5, r0, #0
-	ldr r0, [r4, #0xc]
-	add r6, r2, #0
-	bl SaveArray_Party_Get
-	add r2, r0, #0
-	add r0, r5, #0
-	add r1, r4, #0
-	add r3, r6, #0
-	bl sub_020520B0
-	pop {r4, r5, r6, pc}
-	thumb_func_end sub_020522F0
-
-	thumb_func_start sub_0205230C
-sub_0205230C: ; 0x0205230C
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #8
-	add r6, r0, #0
-	ldr r0, [r6, #0xc]
-	add r5, r1, #0
-	str r2, [sp]
-	bl Save_VarsFlags_Get
-	add r4, r0, #0
-	ldr r0, [r6, #0xc]
-	bl SaveData_GetMomsSavingsAddr
-	str r0, [sp, #4]
-	add r0, r4, #0
-	bl Save_VarsFlags_MomsSavingsFlagCheck
-	cmp r0, #0
-	beq _02052394
-	ldr r0, [sp]
-	bl PlayerProfile_GetMoney
-	add r7, r0, #0
-	add r0, r5, #0
-	bl PlayerProfile_GetMoney
-	sub r1, r7, r0
-	asr r0, r1, #1
-	lsr r0, r0, #0x1e
-	add r0, r1, r0
-	asr r4, r0, #2
-	mov r1, #0
-	ldr r0, [sp, #4]
-	add r2, r1, #0
-	bl MomSavingsBalanceAction
-	add r5, r0, #0
-	cmp r4, #0
-	ble _02052378
-	ldr r0, _02052398 ; =0x000F423F
-	add r1, r5, r4
-	cmp r1, r0
-	blo _02052362
-	sub r4, r0, r5
-_02052362:
-	ldr r0, [sp]
-	sub r1, r7, r4
-	bl PlayerProfile_SetMoney
-	ldr r0, [sp, #4]
-	mov r1, #2
-	add r2, r4, #0
-	bl MomSavingsBalanceAction
-	add r1, r0, #0
-	b _0205237A
-_02052378:
-	add r1, r5, #0
-_0205237A:
-	ldr r0, [sp, #4]
-	add r2, r5, #0
-	bl sub_0209322C
-	cmp r0, #0
-	beq _02052394
-	add r0, r6, #0
-	bl FieldSystem_GetGearPhoneRingManager
-	mov r1, #0xc
-	mov r2, #1
-	bl sub_02092E14
-_02052394:
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02052398: .word 0x000F423F
-	thumb_func_end sub_0205230C
 
 	thumb_func_start sub_0205239C
 sub_0205239C: ; 0x0205239C

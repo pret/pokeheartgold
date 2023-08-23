@@ -16,6 +16,8 @@
 #include "unk_02033AE0.h"
 #include "unk_0205B3DC.h"
 #include "unk_020290B4.h"
+#include "unk_020931C4.h"
+#include "unk_02092BE8.h"
 #include "msgdata/msg.naix"
 #include "constants/battle.h"
 
@@ -383,5 +385,33 @@ void sub_020520B0(BattleSetup* setup, FieldSystem *fieldSystem, Party *party, u8
         setup->trainer[BATTLER_PLAYER2] = setup->trainer[BATTLER_PLAYER];
     } else {
         sub_02052580(setup);
+    }
+}
+
+void sub_020522F0(BattleSetup* setup, FieldSystem *fieldSystem, void *a1) {
+    sub_020520B0(setup, fieldSystem, SaveArray_Party_Get(fieldSystem->savedata), a1);
+}
+
+void sub_0205230C(FieldSystem* fieldSystem, PlayerProfile* profile1, PlayerProfile* profile2) {
+    SaveVarsFlags* vars_flags = Save_VarsFlags_Get(fieldSystem->savedata);
+    MomsSavings* savings = SaveData_GetMomsSavingsAddr(fieldSystem->savedata);
+
+    if (Save_VarsFlags_MomsSavingsFlagCheck(vars_flags)) {
+        u32 money2 = PlayerProfile_GetMoney(profile2);
+        int delta = (int)(money2 - PlayerProfile_GetMoney(profile1)) / 4;
+        u32 savingsBalance = MomSavingsBalanceAction(savings, MOMS_BALANCE_GET, 0);
+        u32 r1;
+        if (delta > 0) {
+            if (savingsBalance + delta >= 999999) {
+                delta = 999999 - savingsBalance;
+            }
+            PlayerProfile_SetMoney(profile2, money2 - delta);
+            r1 = MomSavingsBalanceAction(savings, MOMS_BALANCE_ADD, delta);
+        } else {
+            r1 = savingsBalance;
+        }
+        if (sub_0209322C(savings, r1, savingsBalance)) {
+            sub_02092E14(FieldSystem_GetGearPhoneRingManager(fieldSystem), 12, TRUE);
+        }
     }
 }
