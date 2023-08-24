@@ -135,8 +135,8 @@ FieldSystem *FieldSystem_New(OVY_MANAGER *man) {
     CreateHeap(HEAP_ID_3, HEAP_ID_FIELD, 0x1C000);
     CreateHeap(HEAP_ID_3, HEAP_ID_32, 0x4000);
     CreateHeap(HEAP_ID_DEFAULT, HEAP_ID_89, 0x570);
-    FieldSystem *fsys = OverlayManager_CreateAndGetData(man, sizeof(FieldSystem), HEAP_ID_FIELD);
-    MI_CpuFill8(fsys, 0, sizeof(FieldSystem));
+    FieldSystem *fieldSystem = OverlayManager_CreateAndGetData(man, sizeof(FieldSystem), HEAP_ID_FIELD);
+    MI_CpuFill8(fieldSystem, 0, sizeof(FieldSystem));
     fieldSystem->unk0 = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct FieldSystemUnkSub0));
 
     fieldSystem->unk0->unk0 = NULL;
