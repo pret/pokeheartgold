@@ -567,3 +567,9 @@ BOOL sub_02052574(u32 result) {
         return TRUE;
     }
 }
+
+void sub_02052580(BattleSetup* setup) {
+    setup->trainer[BATTLER_PLAYER].trainerClass = PlayerProfile_GetTrainerGender(setup->profile[BATTLER_PLAYER]);
+    CopyU16StringArray(setup->trainer[BATTLER_PLAYER].name, PlayerProfile_GetNamePtr(setup->profile[BATTLER_PLAYER]));
+    setup->trainer[BATTLER_PLAYER2] = setup->trainer[BATTLER_PLAYER];
+}
