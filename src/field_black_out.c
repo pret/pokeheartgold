@@ -98,7 +98,7 @@ static void DrawBlackoutMessage(FieldSystem *fieldSystem, TaskManager *taskManag
 
         AddWindow(env->bgConfig, &env->window, &_020FC51C);
     }
-    BufferPlayersName(env->msgFmt, 0, Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(fieldSystem)));
+    BufferPlayersName(env->msgFmt, 0, Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem)));
     if (fieldSystem->location->mapId == MAP_T20R0201) {
         _PrintMessage(env, msg_0203_00004, 0, 0);
     } else {
@@ -175,13 +175,13 @@ BOOL FieldTask_BlackOut(TaskManager *taskManager) {
 
     switch (*state) {
     case 0:
-        localFieldData = Save_LocalFieldData_Get(fieldSystem->savedata);
+        localFieldData = Save_LocalFieldData_Get(fieldSystem->saveData);
         deathSpawn = LocalFieldData_GetBlackoutSpawn(localFieldData);
         GetDeathWarpData(deathSpawn, &deathWarp);
         GetSpecialSpawnWarpData(deathSpawn, LocalFieldData_GetSpecialSpawnWarpPtr(localFieldData));
         sub_020537A8(taskManager, &deathWarp);
         FieldSystem_ClearFollowingTrainer(fieldSystem);
-        HealParty(SaveArray_Party_Get(fieldSystem->savedata));
+        HealParty(SaveArray_Party_Get(fieldSystem->saveData));
         (*state)++;
         break;
     case 1:
@@ -206,7 +206,7 @@ BOOL FieldTask_BlackOut(TaskManager *taskManager) {
         break;
     case 5:
         SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN | SCREEN_MASK_SUB);
-        if (GetMomSpawnId() == LocalFieldData_GetBlackoutSpawn(Save_LocalFieldData_Get(fieldSystem->savedata))) {
+        if (GetMomSpawnId() == LocalFieldData_GetBlackoutSpawn(Save_LocalFieldData_Get(fieldSystem->saveData))) {
             QueueScript(taskManager, std_whited_out_to_mom, NULL, NULL);
         } else {
             QueueScript(taskManager, std_whited_out_to_pokecenter, NULL, NULL);

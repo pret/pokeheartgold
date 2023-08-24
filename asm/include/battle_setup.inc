@@ -12,7 +12,7 @@
 .public String_New
 .public String_Delete
 .public String_cstr
-.public GetStoragePCPointer
+.public SaveArray_PCStorage_Get
 .public Save_SysInfo_RTC_Get
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr

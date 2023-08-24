@@ -20,9 +20,9 @@
 .public sub_02023F90
 .public GF_AssertFail
 .public Save_GetGymmickPtr
-.public SavGymmick_AssertMagic_GetData
-.public SavGymmick_GetType
-.public FieldSystem_GetSaveDataPtr
+.public Save_Gymmick_AssertMagic_GetData
+.public Save_Gymmick_GetType
+.public FieldSystem_GetSaveData
 .public FieldSysGetAttrAddr
 .public FieldSystem_CreateTask
 .public TaskManager_Call

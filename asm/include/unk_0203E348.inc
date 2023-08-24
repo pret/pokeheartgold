@@ -16,7 +16,7 @@
 .public CopyU16ArrayToString
 .public String_cstr
 .public sub_020270C4
-.public GetStoragePCPointer
+.public SaveArray_PCStorage_Get
 .public LoadHallOfFame
 .public SaveArray_Get
 .public Save_SysInfo_Get
@@ -61,7 +61,7 @@
 .public LocalFieldData_GetCurrentPosition
 .public Save_LocalFieldData_Get
 .public FieldSystem_LaunchApplication
-.public FieldSystem_GetSaveDataPtr
+.public FieldSystem_GetSaveData
 .public LocationData_BackUp
 .public LocationData_Restore
 .public Save_CurrentLocation_BackUp

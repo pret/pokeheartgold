@@ -207,7 +207,7 @@ _02253F84:
 	str r0, [r2, #0x74]
 	ldr r0, [r1]
 	ldr r0, [r0, #0x68]
-	bl FieldSystem_GetSaveDataPtr
+	bl FieldSystem_GetSaveData
 	bl Save_PlayerData_GetProfileAddr
 	ldr r1, _02254050 ; =ov03_022598A0
 	ldr r1, [r1]

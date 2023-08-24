@@ -112,7 +112,7 @@ struct FieldSystem {
     struct FieldSystemUnkSub0 *unk0;
     FieldSystemUnkSub4 *unk4;
     BgConfig *bgConfig;
-    SaveData *savedata;
+    SaveData *saveData;
     TaskManager *taskman;
     MapEvents *mapEvents;
     u32 unk18;
@@ -198,7 +198,7 @@ void sub_0203E30C();
 int sub_0203E324();
 void sub_0203E33C(FieldSystem *fieldSystem, int a1);
 BgConfig *FieldSystem_GetBgConfigPtr(FieldSystem *fieldSystem);
-SaveData *FieldSystem_GetSaveDataPtr(FieldSystem *fieldSystem);
+SaveData *FieldSystem_GetSaveData(FieldSystem *fieldSystem);
 void sub_0203E348();
 void sub_0203E354();
 

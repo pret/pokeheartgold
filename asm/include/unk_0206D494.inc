@@ -18,14 +18,14 @@
 .public Save_Misc_Get
 .public Save_GetGymmickPtr
 .public SaveMisc_GetTogepiPersonalityGender
-.public SavGymmick_Init
-.public SavGymmick_AssertMagic_GetData
+.public Save_Gymmick_Init
+.public Save_Gymmick_AssertMagic_GetData
 .public Save_TrainerHouse_Get
 .public TrainerHouseSet_CheckHasData
 .public LocalFieldData_GetDynamicWarp
 .public LocalFieldData_SetDynamicWarp
 .public Save_LocalFieldData_Get
-.public FieldSystem_GetSaveDataPtr
+.public FieldSystem_GetSaveData
 .public sub_0203EDDC
 .public ScriptReadHalfword
 .public GetVarPointer

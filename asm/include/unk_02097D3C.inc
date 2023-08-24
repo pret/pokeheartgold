@@ -5,7 +5,7 @@
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public sub_0203E30C
-.public FieldSystem_GetSaveDataPtr
+.public FieldSystem_GetSaveData
 .public sub_0203FD08
 .public TaskManager_Call
 .public FieldSystem_ApplicationIsRunning

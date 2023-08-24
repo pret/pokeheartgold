@@ -122,19 +122,19 @@ struct SavedMapObjectList *Save_MapObjects_Get(SaveData *saveData) {
 }
 
 void FieldSystem_SyncMapObjectsToSave(FieldSystem *fieldSystem) {
-    struct SavedMapObjectList *unk = Save_MapObjects_Get(fieldSystem->savedata);
+    struct SavedMapObjectList *unk = Save_MapObjects_Get(fieldSystem->saveData);
     FieldSystem_SyncMapObjectsToSaveEx(fieldSystem, fieldSystem->mapObjectMan, unk->subs, 64);
 }
 
 void FieldSystem_RestoreMapObjectsFromSave(FieldSystem *fieldSystem) {
-    struct SavedMapObjectList *unk = Save_MapObjects_Get(fieldSystem->savedata);
+    struct SavedMapObjectList *unk = Save_MapObjects_Get(fieldSystem->saveData);
     struct SavedMapObject *follower = SaveMapObjects_SearchSpriteId(unk->subs, 64, SPRITE_FOLLOWER_MON_SHAYMIN_SKY);
     Pokemon *mon;
     int species;
     int form;
 
     if (follower != NULL && follower->objId == obj_partner_poke) {
-        mon = GetFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(fieldSystem->savedata));
+        mon = GetFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(fieldSystem->saveData));
         species = GetMonData(mon, MON_DATA_SPECIES, NULL);
         form = GetMonData(mon, MON_DATA_FORM, NULL);
         if (species != SPECIES_SHAYMIN) {

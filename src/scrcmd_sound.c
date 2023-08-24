@@ -152,7 +152,7 @@ BOOL ScrNative_WaitFanfare(ScriptContext *ctx) {
 
 BOOL ScrCmd_ChatotHasCry(ScriptContext *ctx) {
     u16 *retPtr = ScriptGetVarPointer(ctx);
-    SOUND_CHATOT *chatot = Save_Chatot_Get(ctx->fieldSystem->savedata);
+    SOUND_CHATOT *chatot = Save_Chatot_Get(ctx->fieldSystem->saveData);
     if (Chatot_CheckCry(chatot) == TRUE) {
         *retPtr = TRUE;
         return FALSE;
@@ -180,7 +180,7 @@ BOOL ScrCmd_ChatotStopRecording(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_ChatotSaveRecording(ScriptContext *ctx) {
-    SOUND_CHATOT *chatot = Save_Chatot_Get(ctx->fieldSystem->savedata);
+    SOUND_CHATOT *chatot = Save_Chatot_Get(ctx->fieldSystem->saveData);
     Chatot_SaveRecording(chatot);
     return TRUE;
 }

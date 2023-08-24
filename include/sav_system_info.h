@@ -27,8 +27,8 @@ typedef struct SysInfo {
 
 u32 Save_SysInfo_sizeof(void);
 void Save_SysInfo_Init(SysInfo* sys_info);
-SysInfo* Save_SysInfo_Get(SaveData* savedata);
-SysInfo_RTC *Save_SysInfo_RTC_Get(SaveData* savedata);
+SysInfo* Save_SysInfo_Get(SaveData* saveData);
+SysInfo_RTC *Save_SysInfo_RTC_Get(SaveData* saveData);
 void Save_SysInfo_InitFromSystem(SysInfo* sys_info);
 BOOL Save_SysInfo_MacAddressIsMine(SysInfo* sys_info);
 BOOL Save_SysInfo_RTCOffsetIsMine(SysInfo* sys_info);

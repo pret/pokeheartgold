@@ -2,8 +2,8 @@
 #include "pokedex_util.h"
 #include "pokemon.h"
 
-BOOL SaveArray_IsNatDexEnabled(SaveData* savedata) {
-    return Pokedex_IsNatDexEnabled(Save_Pokedex_Get(savedata));
+BOOL SaveArray_IsNatDexEnabled(SaveData* saveData) {
+    return Pokedex_IsNatDexEnabled(Save_Pokedex_Get(saveData));
 }
 
 BOOL Pokedex_IsNatDexEnabled(const Pokedex* pokedex) {

@@ -24,9 +24,9 @@ void Options_Init(OPTIONS* options) {
     options->frame = 0;       // frame 1
 }
 
-void Options_SetButtonModeOnMain(SaveData* savedata, u32 buttonMode) {
-    if (savedata != NULL) {
-        buttonMode = Options_GetButtonMode(Save_PlayerData_GetOptionsAddr(savedata));
+void Options_SetButtonModeOnMain(SaveData* saveData, u32 buttonMode) {
+    if (saveData != NULL) {
+        buttonMode = Options_GetButtonMode(Save_PlayerData_GetOptionsAddr(saveData));
     }
 
     switch (buttonMode) {

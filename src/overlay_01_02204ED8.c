@@ -106,7 +106,7 @@ static BOOL ov01_02204EFC(TaskManager *taskManager) {
         u32 x;
         u32 y;
         ov01_022050F8(fieldSystem, &x, &y);
-        u32 trainerId = PlayerProfile_GetTrainerID(Save_PlayerData_GetProfileAddr(fieldSystem->savedata));
+        u32 trainerId = PlayerProfile_GetTrainerID(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
         s32 unk0 = ov01_02204FE0(unk4->unk00, unk4->unk02, trainerId, x, y, unk4->unk4c);
         if (unk0 == -1) {
             FreeToHeap(unk4);

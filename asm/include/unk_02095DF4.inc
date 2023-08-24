@@ -3,7 +3,7 @@
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public sub_0203E30C
-.public FieldSystem_GetSaveDataPtr
+.public FieldSystem_GetSaveData
 .public FieldSystem_LaunchPokeathlonCourseApplication
 .public TaskManager_Call
 .public FieldSystem_ApplicationIsRunning

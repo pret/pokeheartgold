@@ -150,20 +150,20 @@ static u32 ov16_02201A78(UnkStruct_ov16_0220196C *unk) {
 }
 
 static u32 ov16_02201AA0(UnkStruct_ov16_0220196C *unk) {
-    Bag *bag = Save_Bag_Get(unk->args->savedata);
+    Bag *bag = Save_Bag_Get(unk->args->saveData);
 
     switch (unk->unk14) {
         case 1:
             unused_02201BA0 = (u8*)ov16_02201B60;
 
             unk->bagView = Bag_CreateView(bag, ov16_02201B60, unk->heapId);
-            sub_0207789C(unk->bagView, unk->args->savedata, 6, unk->cursor2, unk->args->unk4);
+            sub_0207789C(unk->bagView, unk->args->saveData, 6, unk->cursor2, unk->args->unk4);
             break;
         case 2:
             unused_02201BA0 = (u8*)ov16_02201B64;
 
             unk->bagView = Bag_CreateView(bag, ov16_02201B64, unk->heapId);
-            sub_0207789C(unk->bagView, unk->args->savedata, 6, unk->cursor1, unk->args->unk4);
+            sub_0207789C(unk->bagView, unk->args->saveData, 6, unk->cursor1, unk->args->unk4);
             break;
         default:
             GF_ASSERT(FALSE);

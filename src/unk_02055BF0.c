@@ -164,7 +164,7 @@ BOOL sub_02055DBC(TaskManager *man) {
         if (FollowingPokemon_IsActive(fieldSystem) && ov01_022057C4(fieldSystem) && !GetFollowPokePermission(fieldSystem)) {
             ov01_022057D0(fieldSystem);
         }
-        SavFollowPoke_SetMapId(fieldSystem->location->mapId, Save_FollowPoke_Get(fieldSystem->savedata));
+        SavFollowPoke_SetMapId(fieldSystem->location->mapId, Save_FollowPoke_Get(fieldSystem->saveData));
         env->destinationMapID = fieldSystem->location->mapId;
         env->state++;
         break;
