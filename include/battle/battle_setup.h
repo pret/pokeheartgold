@@ -69,7 +69,7 @@ struct BattleSetup { //declared in trainer_data.h
     int unk1C4;
     Pokemon* bugContestMon; // 1c8
     u8 unk1CC[4];
-    u8 filler_1D0[4];
+    BOOL unk_1D0;
 };
 
 BattleSetup* BattleSetup_New(HeapID heapId, u32 battleFlags);
@@ -83,13 +83,14 @@ void BattleSetup_InitForFixedLevelFacility(BattleSetup* setup, FieldSystem *fiel
 void sub_020520B0(BattleSetup* setup, FieldSystem *fieldSystem, Party *party, u8 *a4);
 void sub_020522F0(BattleSetup* setup, FieldSystem *fieldSystem, void *a1);
 void sub_0205230C(FieldSystem* fieldSystem, PlayerProfile* profile1, PlayerProfile* profile2);
-
+void sub_0205239C(BattleSetup* setup, FieldSystem* fieldSystem);
+void sub_02052444(BattleSetup* setup, FieldSystem* fieldSystem);
+void sub_02052504(BattleSetup* setup, FieldSystem* fieldSystem);
+void sub_02052544(BattleSetup* setup);
 BOOL IsBattleResultWin(u32 a0);
-int sub_02052564(u32 a0);
-int sub_02052574(u32 a0);
+BOOL sub_02052564(u32 a0);
+BOOL sub_02052574(u32 a0);
 void BattleSetup_Delete(BattleSetup* setup);
-void sub_02052444(BattleSetup* setup, FieldSystem *fieldSystem);
-BattleSetup* BattleSetup_New_PalPark(HeapID heapId, int monsRemaining);
 void BattleSetup_AddMonToParty(BattleSetup* setup, Pokemon* mon, int battler);
 
 #endif //POKEHEARTGOLD_BATTLE_SETUP_H

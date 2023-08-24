@@ -18,12 +18,16 @@
 #include "unk_020290B4.h"
 #include "unk_020931C4.h"
 #include "unk_02092BE8.h"
+#include "unk_0206D494.h"
+#include "unk_02054648.h"
+#include "metatile_behavior.h"
 #include "msgdata/msg.naix"
 #include "constants/battle.h"
 
 void BattleSetup_SetParty(BattleSetup* setup, Party* party, int battlerId);
 void BattleSetup_SetProfile(BattleSetup* setup, PlayerProfile* profile, int battlerId);
 void BattleSetup_SetChatotVoiceClip(BattleSetup* setup, SOUND_CHATOT* chatot, int battlerId);
+static u32 sub_02052470(FieldSystem* fieldSystem, u32 battleBg);
 void sub_02052504(BattleSetup* setup, FieldSystem* fieldSystem);
 void sub_02052580(BattleSetup* setup);
 
@@ -413,5 +417,153 @@ void sub_0205230C(FieldSystem* fieldSystem, PlayerProfile* profile1, PlayerProfi
         if (sub_0209322C(savings, r1, savingsBalance)) {
             sub_02092E14(FieldSystem_GetGearPhoneRingManager(fieldSystem), 12, TRUE);
         }
+    }
+}
+
+void sub_0205239C(BattleSetup* setup, FieldSystem* fieldSystem) {
+    PlayerProfile* profile;
+    Party* party;
+    Bag* bag;
+    Pokedex* pokedex;
+    SaveVarsFlags* vars_flags;
+    u16* balls_ptr;
+
+    profile = Save_PlayerData_GetProfileAddr(fieldSystem->savedata);
+    party = SaveArray_Party_Get(fieldSystem->savedata);
+    bag = Save_Bag_Get(fieldSystem->savedata);
+    pokedex = Save_Pokedex_Get(fieldSystem->savedata);
+
+    sub_0205230C(fieldSystem, profile, setup->profile[BATTLER_PLAYER]);
+    PlayerProfile_Copy(setup->profile[BATTLER_PLAYER], profile);
+    Party_Copy(setup->party[BATTLER_PLAYER], party);
+    Save_Bag_Copy(setup->bag, bag);
+    Pokedex_Copy(setup->pokedex, pokedex);
+    
+    balls_ptr = NULL;
+    vars_flags = Save_VarsFlags_Get(fieldSystem->savedata);
+    if (Save_VarsFlags_CheckSafariSysFlag(vars_flags)) {
+        balls_ptr = LocalFieldData_GetSafariBallsCounter(Save_LocalFieldData_Get(fieldSystem->savedata));
+    } else if (CheckFlag996(vars_flags)) {
+        balls_ptr = BugContest_GetSportBallsAddr(FieldSystem_BugContest_Get(fieldSystem));
+    }
+    if (balls_ptr != NULL) {
+        *balls_ptr = setup->safariBalls;
+    }
+}
+
+void sub_02052444(BattleSetup* setup, FieldSystem* fieldSystem) {
+    PlayerProfile* profile;
+    Party* party;
+    Bag* bag;
+    Pokedex* pokedex;
+
+    profile = Save_PlayerData_GetProfileAddr(fieldSystem->savedata);
+    party = SaveArray_Party_Get(fieldSystem->savedata);
+    bag = Save_Bag_Get(fieldSystem->savedata);
+    pokedex = Save_Pokedex_Get(fieldSystem->savedata);
+
+    Pokedex_Copy(setup->pokedex, pokedex);
+}
+
+static const u32 _020FC4C0[] = {
+    0,
+    7,
+    9,
+    2,
+    4,
+    6,
+    9,
+    9,
+    9,
+    5,
+    5,
+    5,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+};
+
+static u32 sub_02052470(FieldSystem* fieldSystem, u32 battleBg) {
+    u8 behavior = GetMetatileBehaviorAt(fieldSystem, fieldSystem->location->x, fieldSystem->location->y);
+
+    if (sub_0205B828(behavior)) {
+        return 8;
+    }
+    if (MetatileBehavior_IsEncounterGrass(behavior) || sub_0205B6F4(behavior)) {
+        return 2;
+    }
+    if (sub_0205B798(behavior)) {
+        return 1;
+    }
+    if (sub_0205B8B8(behavior)) {
+        return 6;
+    }
+    if (sub_0205B8AC(behavior)) {
+        return 10;
+    }
+    if (sub_0205B8D0(behavior)) {
+        return 5;
+    }
+    if (MetatileBehavior_IsSurfableWater(behavior)) {
+        return 7;
+    }
+    if (battleBg < NELEMS(_020FC4C0)) {
+        return _020FC4C0[battleBg];
+    }
+
+    GF_ASSERT(0);
+    return NELEMS(_020FC4C0) + 1;
+}
+
+void sub_02052504(BattleSetup* setup, FieldSystem* fieldSystem) {
+    PlayerSaveData* player = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->savedata));
+    setup->battleBg = MapHeader_GetBattleBg(fieldSystem->location->mapId);
+
+    if (player->unk4 == 2) {
+        setup->battleBg = 1;
+    }
+
+    setup->unk_150 = sub_02052470(fieldSystem, setup->battleBg);
+}
+
+void sub_02052544(BattleSetup* setup) {
+    setup->unk_150 = 7;
+    setup->unk_1D0 = TRUE;
+}
+
+BOOL IsBattleResultWin(u32 result) {
+    switch (result) {
+    case BATTLE_OUTCOME_LOSE:
+    case BATTLE_OUTCOME_DRAW:
+        return FALSE;
+    default:
+        return TRUE;
+    }
+}
+
+BOOL sub_02052564(u32 result) {
+    switch (result) {
+    case BATTLE_OUTCOME_WIN:
+    case BATTLE_OUTCOME_MON_CAUGHT:
+        return FALSE;
+    default:
+        return TRUE;
+    }
+}
+
+BOOL sub_02052574(u32 result) {
+    switch (result) {
+    case BATTLE_OUTCOME_MON_CAUGHT:
+        return FALSE;
+    default:
+        return TRUE;
     }
 }
