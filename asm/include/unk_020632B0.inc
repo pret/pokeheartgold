@@ -14,12 +14,12 @@
 .public sub_02023F40
 .public GF_AssertFail
 .public StartMapSceneScript
-.public FieldSys_SetEngagedTrainer
+.public FieldSystem_SetEngagedTrainer
 .public ScriptNumToTrainerNum
 .public TrainerNumIsDouble
 .public TrainerFlagCheck
 .public sub_02055780
-.public FieldSys_ApricornTree_TryGetApricorn
+.public FieldSystem_ApricornTree_TryGetApricorn
 .public PlayerAvatar_GetFacingDirection
 .public GetPlayerXCoord
 .public GetPlayerYCoord

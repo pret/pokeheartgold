@@ -66,7 +66,7 @@ typedef struct ScriptEnvironment {
     WaitingIcon *waitingIcon;
     EngagedTrainer engagedTrainers[2];
     u16 specialVars[NUM_SPECIAL_VARS];
-    void (*scrctx_end_cb)(FieldSystem *fsys);
+    void (*scrctx_end_cb)(FieldSystem *fieldSystem);
     void *runningAppData;
     void *miscDataPtr;
     void *unk_B4;
@@ -169,7 +169,7 @@ struct ScriptContext {
     TaskManager *taskman;
     MsgData *msgdata;
     u8 *mapScripts;
-    FieldSystem *fsys;
+    FieldSystem *fieldSystem;
 };
 
 void InitScriptContext(ScriptContext *ctx, const ScrCmdFunc *cmd_table, u32 cmd_count);

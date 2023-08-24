@@ -32,11 +32,11 @@
 .public Save_VarsFlags_Get
 .public CheckFlagInArray
 .public TaskManager_Call
-.public FieldSys_ApplicationIsRunning
+.public FieldSystem_ApplicationIsRunning
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public sub_02055624
-.public FieldSys_GetGameClearTime
+.public FieldSystem_GetGameClearTime
 .public sub_0205ABD8
 .public sub_0205AC4C
 .public sub_0205AC70

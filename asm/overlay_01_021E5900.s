@@ -763,11 +763,11 @@ ov01_021E5FC0: ; 0x021E5FC0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl Fsys_TaskIsRunning
+	bl FieldSystem_TaskIsRunning
 	cmp r0, #0
 	bne _021E5FD4
 	add r0, r5, #0
-	bl FieldSys_StartBugContestTimer
+	bl FieldSystem_StartBugContestTimer
 _021E5FD4:
 	ldr r0, [r5, #0x50]
 	bl ov01_021EA2A4

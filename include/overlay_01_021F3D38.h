@@ -3,6 +3,6 @@
 
 #include "script.h"
 
-void ov01_021F3DFC(FieldSystem *fsys, int a1);
+void ov01_021F3DFC(FieldSystem *fieldSystem, int a1);
 
 #endif

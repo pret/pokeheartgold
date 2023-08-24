@@ -31,9 +31,9 @@
 .public GetVarPointer
 .public VarGet
 .public Save_VarsFlags_Get
-.public FieldSys_CreateTask
+.public FieldSystem_CreateTask
 .public TaskManager_Call
-.public FieldSys_ApplicationIsRunning
+.public FieldSystem_ApplicationIsRunning
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv
 .public TaskManager_GetStatePtr
@@ -71,12 +71,12 @@
 .public sub_0206D494
 .public MonIsInGameTradePoke
 .public sub_0206D8D0
-.public FieldSys_BugContest_Get
+.public FieldSystem_BugContest_Get
 .public BugContest_GetSportBallsAddr
-.public FieldSys_IncrementBugContestTimer
+.public FieldSystem_IncrementBugContestTimer
 .public sub_0206DB58
 .public sub_0206DB94
-.public Fsys_InitMystriStageGymmick
+.public FieldSystem_InitMystriStageGymmick
 .public GetMonData
 .public CopyPokemonToPokemon
 .public MI_CpuFill8

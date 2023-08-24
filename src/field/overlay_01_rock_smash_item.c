@@ -86,34 +86,34 @@ static const u16 sRockSmashItems_CliffCave[] = {
 #endif //HEARTGOLD
 
 static BOOL Task_RockSmashItemCheck(TaskManager *taskman);
-static BOOL CheckRockSmashItemDrop(FieldSystem *fsys, RockSmashItemCheckWork *a1);
+static BOOL CheckRockSmashItemDrop(FieldSystem *fieldSystem, RockSmashItemCheckWork *a1);
 static BOOL Task_GetRockSmashItem(TaskManager *taskman);
-static int DrawRockSmashIdx(FieldSystem *fsys);
+static int DrawRockSmashIdx(FieldSystem *fieldSystem);
 
-void FieldSys_RockSmashItemCheck(FieldSystem *fsys, int followMonKnowsHm, u16 *itemFound, u16 *item) {
+void FieldSystem_RockSmashItemCheck(FieldSystem *fieldSystem, int followMonKnowsHm, u16 *itemFound, u16 *item) {
     RockSmashItemCheckWork *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(RockSmashItemCheckWork));
     env->followMonKnowsHM = followMonKnowsHm != 0;
     env->itemFound = itemFound;
     env->item = item;
     *env->itemFound = FALSE;
     *env->item = ITEM_NONE;
-    TaskManager_Call(fsys->taskman, Task_RockSmashItemCheck, env);
+    TaskManager_Call(fieldSystem->taskman, Task_RockSmashItemCheck, env);
 }
 
 static BOOL Task_RockSmashItemCheck(TaskManager *taskman) {
     BattleSetup *setup;
-    FieldSystem *fsys = TaskManager_GetFieldSystem(taskman);
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     RockSmashItemCheckWork *env = TaskManager_GetEnv(taskman);
 
-    if (ov02_022470A0(fsys, &setup)) {
+    if (ov02_022470A0(fieldSystem, &setup)) {
         *env->itemFound = FALSE;
         *env->item = ITEM_NONE;
         FreeToHeap(env);
-        sub_02050B90(fsys, taskman, setup);
+        sub_02050B90(fieldSystem, taskman, setup);
         return FALSE;
     }
 
-    if (CheckRockSmashItemDrop(fsys, env)) {
+    if (CheckRockSmashItemDrop(fieldSystem, env)) {
         TaskManager_Jump(taskman, Task_GetRockSmashItem, env);
         return FALSE;
     }
@@ -124,12 +124,12 @@ static BOOL Task_RockSmashItemCheck(TaskManager *taskman) {
     return TRUE;
 }
 
-static BOOL CheckRockSmashItemDrop(FieldSystem *fsys, RockSmashItemCheckWork *env) {
+static BOOL CheckRockSmashItemDrop(FieldSystem *fieldSystem, RockSmashItemCheckWork *env) {
     int odds;
     int ability;
     ROCK_SMASH data;
 
-    ReadWholeNarcMemberByIdPair(&data, NARC_a_2_5_3, fsys->location->mapId);
+    ReadWholeNarcMemberByIdPair(&data, NARC_a_2_5_3, fieldSystem->location->mapId);
     odds = data.odds;
     if (odds == 0) {
         return FALSE;
@@ -138,7 +138,7 @@ static BOOL CheckRockSmashItemDrop(FieldSystem *fsys, RockSmashItemCheckWork *en
         GF_ASSERT(FALSE);
         return FALSE;
     }
-    Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fsys->savedata), 0);
+    Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->savedata), 0);
     if (GetMonData(mon, MON_DATA_IS_EGG, NULL) == 0) {
         ability = GetMonData(mon, MON_DATA_ABILITY, NULL);
     } else {
@@ -176,14 +176,14 @@ static BOOL Task_GetRockSmashItem(TaskManager *taskman) {
 
     int *state_p = TaskManager_GetStatePtr(taskman);
     RockSmashItemCheckWork *env = TaskManager_GetEnv(taskman);
-    FieldSystem *fsys = TaskManager_GetFieldSystem(taskman);
+    FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
 
     switch (*state_p) {
     case 0:
         if (env->followMonKnowsHM) {
-            obj = FollowingPokemon_GetMapObject(fsys);
+            obj = FollowingPokemon_GetMapObject(fieldSystem);
         } else {
-            obj = PlayerAvatar_GetMapObject(fsys->playerAvatar);
+            obj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
         }
         env->unk14 = ov01_02200540(obj, 0, 1);
         *state_p += 1;
@@ -195,7 +195,7 @@ static BOOL Task_GetRockSmashItem(TaskManager *taskman) {
         }
         break;
     case 2:
-        u32 idx = DrawRockSmashIdx(fsys);
+        u32 idx = DrawRockSmashIdx(fieldSystem);
         if ((env->ability == ABILITY_SERENE_GRACE || env->ability == ABILITY_SUPER_LUCK) && idx < 7) {
             idx = (u8)(idx + 1);
         }
@@ -227,7 +227,7 @@ static BOOL Task_GetRockSmashItem(TaskManager *taskman) {
     return FALSE;
 }
 
-static int DrawRockSmashIdx(FieldSystem *fsys) {
+static int DrawRockSmashIdx(FieldSystem *fieldSystem) {
     u8 rand = LCRandom() % 100;
     if (rand < 25) {
         return 0;

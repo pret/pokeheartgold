@@ -631,8 +631,8 @@ u32 PlayerAvatar_GetTransitionBits(u32 unkA) {
     }
 }
 
-PlayerAvatar* FieldSys_GetPlayerAvatar(FieldSystem* fsys) {
-    return fsys->playerAvatar;
+PlayerAvatar* FieldSystem_GetPlayerAvatar(FieldSystem* fieldSystem) {
+    return fieldSystem->playerAvatar;
 }
 
 void sub_0205CA20(PlayerAvatar* avatar, BOOL unkA) {

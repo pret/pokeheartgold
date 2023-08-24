@@ -12,8 +12,8 @@
 
 	.text
 
-	thumb_func_start FieldSys_TakePhoto
-FieldSys_TakePhoto: ; 0x0206A798
+	thumb_func_start FieldSystem_TakePhoto
+FieldSystem_TakePhoto: ; 0x0206A798
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x28
 	add r5, r0, #0
@@ -101,7 +101,7 @@ _0206A858:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0206A85C: .word sub_0206B270
-	thumb_func_end FieldSys_TakePhoto
+	thumb_func_end FieldSystem_TakePhoto
 
 	thumb_func_start sub_0206A860
 sub_0206A860: ; 0x0206A860
@@ -287,7 +287,7 @@ sub_0206A9A0: ; 0x0206A9A0
 sub_0206A9B4: ; 0x0206A9B4
 	push {r3, r4, r5, lr}
 	add r5, r2, #0
-	bl FieldSys_ApplicationIsRunning
+	bl FieldSystem_ApplicationIsRunning
 	cmp r0, #0
 	beq _0206A9C4
 	mov r0, #1

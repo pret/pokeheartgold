@@ -47,7 +47,7 @@
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public Fsys_TaskIsRunning
+.public FieldSystem_TaskIsRunning
 .public GXS_SetGraphicsMode
 .public GX_SetBankForSubBG
 .public GX_SetBankForSubOBJ

@@ -49,7 +49,7 @@ ov28_0225D520: ; 0x0225D520
 	bne _0225D5A6
 	ldr r0, [r4, #0x18]
 	add r1, sp, #8
-	bl Fsys_GetFacingObject
+	bl FieldSystem_GetFacingObject
 	ldr r0, [sp, #8]
 	bl MapObject_GetScript
 	bl ov01_021F6BD0
@@ -735,7 +735,7 @@ ov28_0225DA74: ; 0x0225DA74
 	add r2, sp, #0x20
 	bl ov28_0225DA1C
 	ldr r0, [r5, #0x18]
-	bl FieldSys_GetPlayerAvatar
+	bl FieldSystem_GetPlayerAvatar
 	bl sub_0205CB38
 	cmp r0, #0
 	bne _0225DB22
@@ -923,7 +923,7 @@ _0225DC56:
 	str r1, [r4, r0]
 _0225DC76:
 	ldr r0, [r4, #0x18]
-	bl Fsys_TaskIsRunning
+	bl FieldSystem_TaskIsRunning
 	cmp r0, #1
 	beq _0225DC98
 	ldr r0, _0225DD1C ; =ov28_0225EA88
@@ -2469,7 +2469,7 @@ _0225E828:
 	cmp r0, #0
 	ldr r0, [r5, #0x18]
 	bne _0225E860
-	bl FieldSys_GetPlayerAvatar
+	bl FieldSystem_GetPlayerAvatar
 	bl PlayerAvatar_GetMapObject
 	add r4, r0, #0
 	bl MapObject_GetGfxID
@@ -2497,7 +2497,7 @@ _0225E860:
 	bne _0225E890
 	ldr r0, [r5, #0x18]
 	add r1, sp, #0
-	bl Fsys_GetFacingObject
+	bl FieldSystem_GetFacingObject
 	ldr r0, [sp]
 	bl MapObject_GetScript
 	bl ov01_021F6BD0
@@ -2640,7 +2640,7 @@ _0225E96C:
 	cmp r0, #1
 	bne _0225E9DA
 	ldr r0, [r5, #0x18]
-	bl FieldSys_GetPlayerAvatar
+	bl FieldSystem_GetPlayerAvatar
 	add r6, r0, #0
 	bl sub_0205CB38
 	add r4, r0, #0
@@ -2740,7 +2740,7 @@ ov28_0225EA58: ; 0x0225EA58
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
-	bl Fsys_TaskIsRunning
+	bl FieldSystem_TaskIsRunning
 	cmp r0, #1
 	bne _0225EA76
 	ldr r0, [r4, #0x18]

@@ -3,6 +3,6 @@
 
 #include "script.h"
 
-void Fsys_GetFacingObject(FieldSystem *fsys, LocalMapObject **ret_p);
+void FieldSystem_GetFacingObject(FieldSystem *fieldSystem, LocalMapObject **ret_p);
 
 #endif //POKEHEARTGOLD_UNK_0203DB6C_H

@@ -2336,7 +2336,7 @@ _02246D8A:
 	bl BattleSetup_New
 	str r0, [sp, #0x20]
 	add r1, r5, #0
-	bl BattleSetup_InitFromFsys
+	bl BattleSetup_InitFromFieldSystem
 	ldr r0, [sp, #0x24]
 	ldr r1, [sp, #0x1c]
 	ldr r2, [sp, #0x20]
@@ -2386,7 +2386,7 @@ _02246E18:
 _02246E22:
 	ldr r0, [sp, #0x20]
 	add r1, r5, #0
-	bl BattleSetup_InitFromFsys
+	bl BattleSetup_InitFromFieldSystem
 	add r0, sp, #0x18
 	ldrb r0, [r0, #1]
 	cmp r0, #0
@@ -2613,7 +2613,7 @@ _02247002:
 	ldr r0, [sp, #0x10]
 	ldr r1, [sp, #0x20]
 	ldr r0, [r0]
-	bl BattleSetup_InitFromFsys
+	bl BattleSetup_InitFromFieldSystem
 	ldr r0, [sp, #0x10]
 	ldr r0, [r0]
 	bl sub_02052544
@@ -2744,7 +2744,7 @@ _02247106:
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0xc]
 	ldr r0, [r0]
-	bl BattleSetup_InitFromFsys
+	bl BattleSetup_InitFromFieldSystem
 	ldr r0, [sp, #0xc]
 	bl MapEvents_GetLoadedEncTable
 	add r5, r0, #0
@@ -2850,7 +2850,7 @@ _022471AC:
 	bl BattleSetup_New
 	str r0, [sp, #0x1c]
 	add r1, r5, #0
-	bl BattleSetup_InitFromFsys
+	bl BattleSetup_InitFromFieldSystem
 	ldr r0, [sp, #0x20]
 	ldr r1, [sp, #0x18]
 	ldr r2, [sp, #0x1c]
@@ -2894,7 +2894,7 @@ _0224724A:
 _02247254:
 	ldr r0, [sp, #0x1c]
 	add r1, r5, #0
-	bl BattleSetup_InitFromFsys
+	bl BattleSetup_InitFromFieldSystem
 	add r0, sp, #0x14
 	ldrb r0, [r0]
 	cmp r0, #0
@@ -3055,7 +3055,7 @@ ov02_02247374: ; 0x02247374
 	ldr r0, [sp, #0xc]
 	add r1, r5, #0
 	ldr r0, [r0]
-	bl BattleSetup_InitFromFsys
+	bl BattleSetup_InitFromFieldSystem
 	mov r5, #0
 	add r0, sp, #0x14
 _022473B0:
@@ -4560,7 +4560,7 @@ ov02_02247ED8: ; 0x02247ED8
 	sub sp, #0xc
 	add r6, r1, #0
 	add r5, r3, #0
-	bl FieldSys_BugContest_Get
+	bl FieldSystem_BugContest_Get
 	mov r1, #4
 	bl BugContest_GetEncounterSlot
 	add r4, r0, #0
@@ -5063,7 +5063,7 @@ _02248252:
 	str r0, [r5]
 	pop {r3, r4, r5, pc}
 _0224826A:
-	bl FieldSys_BugContest_Get
+	bl FieldSystem_BugContest_Get
 	add r4, r0, #0
 	bl BugContest_GetSportBallsAddr
 	add r1, r0, #0
@@ -5187,7 +5187,7 @@ _02248350:
 	bx r3
 	thumb_func_end ov02_022482BC
 
-; BOOL ov02_GetRandomActiveRoamerInCurrMap(FieldSystem *fsys, Roamer **out);
+; BOOL ov02_GetRandomActiveRoamerInCurrMap(FieldSystem *fieldSystem, Roamer **out);
 	thumb_func_start ov02_GetRandomActiveRoamerInCurrMap
 ov02_GetRandomActiveRoamerInCurrMap: ; 0x02248360
 	push {r3, r4, r5, r6, r7, lr}
@@ -13835,7 +13835,7 @@ _0224C3F8:
 	ldr r0, [r6, r0]
 	mov r1, #1
 	mov r4, #2
-	bl FsysUnkSub108_AddMonMood
+	bl FieldSystemUnkSub108_AddMonMood
 	b _0224C420
 _0224C41E:
 	mov r4, #1
@@ -14058,7 +14058,7 @@ _0224C5A4:
 	ldr r0, [r6, r0]
 	mov r1, #1
 	mov r4, #2
-	bl FsysUnkSub108_AddMonMood
+	bl FieldSystemUnkSub108_AddMonMood
 	b _0224C5CC
 _0224C5CA:
 	mov r4, #1
@@ -19616,8 +19616,8 @@ _0224EF78:
 	.balign 4, 0
 	thumb_func_end ov02_0224EF6C
 
-	thumb_func_start Fsys_FollowPokeInteract
-Fsys_FollowPokeInteract: ; 0x0224EF80
+	thumb_func_start FieldSystem_FollowPokeInteract
+FieldSystem_FollowPokeInteract: ; 0x0224EF80
 	ldr r3, _0224EF8C ; =TaskManager_Call
 	ldr r0, [r0, #0x10]
 	ldr r1, _0224EF90 ; =Task_FollowPokeInteract
@@ -19626,7 +19626,7 @@ Fsys_FollowPokeInteract: ; 0x0224EF80
 	nop
 _0224EF8C: .word TaskManager_Call
 _0224EF90: .word Task_FollowPokeInteract
-	thumb_func_end Fsys_FollowPokeInteract
+	thumb_func_end FieldSystem_FollowPokeInteract
 
 	thumb_func_start ov02_0224EF94
 ov02_0224EF94: ; 0x0224EF94
@@ -20574,7 +20574,7 @@ ov02_0224F698: ; 0x0224F698
 	mov r1, #0x42
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl FsysUnkSub108_GetMonMood
+	bl FieldSystemUnkSub108_GetMonMood
 	strb r0, [r4, #0x15]
 	pop {r4, pc}
 	.balign 4, 0
@@ -22476,7 +22476,7 @@ ov02_02250504: ; 0x02250504
 	mov r0, #0x42
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl FsysUnkSub108_GetMonMood
+	bl FieldSystemUnkSub108_GetMonMood
 	mov r1, #0x12
 	str r0, [sp]
 	lsl r1, r1, #4
@@ -22503,7 +22503,7 @@ _02250542:
 	lsl r1, r1, #0x18
 	ldr r0, [r5, r0]
 	asr r1, r1, #0x18
-	bl FsysUnkSub108_SetMonMood
+	bl FieldSystemUnkSub108_SetMonMood
 	add r0, r4, #0
 	mov r1, #9
 	mov r2, #0

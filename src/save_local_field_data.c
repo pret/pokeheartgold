@@ -121,20 +121,20 @@ struct SavedMapObjectList *Save_MapObjects_Get(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_MAP_OBJECTS);
 }
 
-void Fsys_SyncMapObjectsToSave(FieldSystem *fsys) {
-    struct SavedMapObjectList *unk = Save_MapObjects_Get(fsys->savedata);
-    Fsys_SyncMapObjectsToSaveEx(fsys, fsys->mapObjectMan, unk->subs, 64);
+void FieldSystem_SyncMapObjectsToSave(FieldSystem *fieldSystem) {
+    struct SavedMapObjectList *unk = Save_MapObjects_Get(fieldSystem->savedata);
+    FieldSystem_SyncMapObjectsToSaveEx(fieldSystem, fieldSystem->mapObjectMan, unk->subs, 64);
 }
 
-void Fsys_RestoreMapObjectsFromSave(FieldSystem *fsys) {
-    struct SavedMapObjectList *unk = Save_MapObjects_Get(fsys->savedata);
+void FieldSystem_RestoreMapObjectsFromSave(FieldSystem *fieldSystem) {
+    struct SavedMapObjectList *unk = Save_MapObjects_Get(fieldSystem->savedata);
     struct SavedMapObject *follower = SaveMapObjects_SearchSpriteId(unk->subs, 64, SPRITE_FOLLOWER_MON_SHAYMIN_SKY);
     Pokemon *mon;
     int species;
     int form;
 
     if (follower != NULL && follower->objId == obj_partner_poke) {
-        mon = GetFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(fsys->savedata));
+        mon = GetFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(fieldSystem->savedata));
         species = GetMonData(mon, MON_DATA_SPECIES, NULL);
         form = GetMonData(mon, MON_DATA_FORM, NULL);
         if (species != SPECIES_SHAYMIN) {
@@ -143,5 +143,5 @@ void Fsys_RestoreMapObjectsFromSave(FieldSystem *fsys) {
             follower->gfxId = SPRITE_FOLLOWER_MON_SHAYMIN;
         }
     }
-    MapObjectManager_RestoreFromSave(fsys->mapObjectMan, unk->subs, 64);
+    MapObjectManager_RestoreFromSave(fieldSystem->mapObjectMan, unk->subs, 64);
 }

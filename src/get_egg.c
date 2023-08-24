@@ -42,7 +42,7 @@ static u8 GetEggCyclesToSubtract(Party *party);
 static BOOL sub_0206CB88(const u16 *a0, const u16 *a1);
 static u8 ComputeCompatibilityBetweenBoxMons(BoxPokemon **parents);
 static u8 Save_Daycare_CalcCompatibilityInternal(Daycare *dayCare);
-static u8 sub_0206CCD8(FieldSystem *fsys);
+static u8 sub_0206CCD8(FieldSystem *fieldSystem);
 static u8 ConvertDaycareCompatibilityScore(u32 compatibility);
 static void sub_0206D038(Pokemon *mon, HeapID heapId);
 static BOOL Daycare_TryGetForcedInheritedIV(Daycare *dayCare, u8 *a1, u8 *a2);
@@ -834,11 +834,11 @@ static const u16 _020FF490[] = {
     1225,
 };
 
-static u8 sub_0206CCD8(FieldSystem *fsys) {
+static u8 sub_0206CCD8(FieldSystem *fieldSystem) {
     int day, i;
 
-    day = Field_GetDay(fsys) + Field_GetMonth(fsys) * 100;
-    if (sub_02055670(fsys)) {
+    day = Field_GetDay(fieldSystem) + Field_GetMonth(fieldSystem) * 100;
+    if (sub_02055670(fieldSystem)) {
         return 255;
     }
     for (i = 0; i < NELEMS(_020FF490); i++) {
@@ -849,7 +849,7 @@ static u8 sub_0206CCD8(FieldSystem *fsys) {
     return 255;
 }
 
-BOOL HandleDaycareStep(Daycare *dayCare, Party *party, FieldSystem *fsys) {
+BOOL HandleDaycareStep(Daycare *dayCare, Party *party, FieldSystem *fieldSystem) {
     u32 friendship;
     BoxPokemon *parents[2];
     int cycle_ctr;
@@ -873,13 +873,13 @@ BOOL HandleDaycareStep(Daycare *dayCare, Party *party, FieldSystem *fsys) {
             compat = Save_Daycare_CalcCompatibilityInternal(dayCare);
             if (compat > (LCRandom() * 100u / 0xFFFFu)) {
                 GenerateEggPID(dayCare);
-                sub_0209316C(fsys);
+                sub_0209316C(fieldSystem);
             }
         }
     }
     cycle_ctr = Save_Daycare_GetEggCycleCounter(dayCare);
     Save_Daycare_SetEggCycleCounter(dayCare, cycle_ctr + 1);
-    if (cycle_ctr + 1 == sub_0206CCD8(fsys)) {
+    if (cycle_ctr + 1 == sub_0206CCD8(fieldSystem)) {
         Save_Daycare_SetEggCycleCounter(dayCare, 0);
         to_sub = GetEggCyclesToSubtract(party);
         for (i = 0; i < Party_GetCount(party); i++) {

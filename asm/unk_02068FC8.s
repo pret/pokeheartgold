@@ -86,7 +86,7 @@ sub_02068FC8: ; 0x02068FC8
 	add r0, r6, #0
 	add r1, sp, #0x84
 	add r2, sp, #0x78
-	bl FieldSys_GetGameClearTime
+	bl FieldSystem_GetGameClearTime
 	ldr r0, [r6, #0xc]
 	bl Save_VarsFlags_Get
 	bl CheckGameClearFlag
@@ -660,7 +660,7 @@ _020694E4:
 	b _0206951C
 _02069500:
 	add r0, r4, #0
-	bl FieldSys_ApplicationIsRunning
+	bl FieldSystem_ApplicationIsRunning
 	cmp r0, #0
 	bne _0206951C
 	add r4, #0x80

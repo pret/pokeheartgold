@@ -1762,7 +1762,7 @@ sub_02061E90: ; 0x02061E90
 _02061EA6:
 	add r0, r5, #0
 	bl MapObject_GetFieldSysPtr
-	bl FieldSys_GetPlayerAvatar
+	bl FieldSystem_GetPlayerAvatar
 	add r6, r0, #0
 	bl sub_0205DE98
 	cmp r0, #0
@@ -1892,7 +1892,7 @@ _02061F92:
 	str r0, [sp, #4]
 	ldr r0, [sp]
 	bl MapObject_GetFieldSysPtr
-	bl FieldSys_GetPlayerAvatar
+	bl FieldSystem_GetPlayerAvatar
 	str r0, [sp, #0xc]
 	bl GetPlayerXCoord
 	str r0, [sp, #0x10]

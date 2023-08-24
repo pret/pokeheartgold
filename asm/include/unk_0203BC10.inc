@@ -68,7 +68,7 @@
 .public sub_0203D830
 .public sub_0203D9B4
 .public sub_0203DF64
-.public FieldSys_LaunchApplication
+.public FieldSystem_LaunchApplication
 .public sub_0203E3D4
 .public sub_0203E3FC
 .public sub_0203E4EC
@@ -82,9 +82,9 @@
 .public sub_0203F7F4
 .public StartScriptFromMenu
 .public Save_VarsFlags_Get
-.public FieldSys_CreateTask
+.public FieldSystem_CreateTask
 .public TaskManager_Jump
-.public FieldSys_ApplicationIsRunning
+.public FieldSystem_ApplicationIsRunning
 .public sub_020505C0
 .public sub_020505C8
 .public TaskManager_GetFieldSystem
@@ -115,7 +115,7 @@
 .public sub_02067BF8
 .public sub_02067C30
 .public PartyMenu_GetFieldMoveFunc
-.public Fsys_MakeFieldMoveCheckData
+.public FieldSystem_MakeFieldMoveCheckData
 .public sub_02068FC8
 .public sub_020691C4
 .public sub_020691E0

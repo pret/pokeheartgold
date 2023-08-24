@@ -24,7 +24,7 @@
 .public SavGymmick_GetType
 .public FieldSystem_GetSaveDataPtr
 .public FieldSysGetAttrAddr
-.public FieldSys_CreateTask
+.public FieldSystem_CreateTask
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnv

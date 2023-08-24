@@ -9,6 +9,12 @@
 #include "constants/mail.h"
 #include "constants/easy_chat.h"
 
+#include "msgdata/msg/msg_0294.h"
+#include "msgdata/msg/msg_0296.h"
+#include "msgdata/msg/msg_0292.h"
+#include "msgdata/msg/msg_0293.h"
+#include "msgdata/msg/msg_0295.h"
+
 struct UnkStruct_020F67A4 {
     u16 base_icon;
     u16 formed_icon;

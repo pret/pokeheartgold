@@ -6,16 +6,16 @@
 #include "math_util.h"
 
 BOOL ScrCmd_GetStaticEncounterOutcomeFlag(ScriptContext *ctx) {
-    u32 *winFlag = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_BATTLE_WIN_FLAG);
+    u32 *winFlag = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_BATTLE_WIN_FLAG);
     u16 *variable = ScriptGetVarPointer(ctx);
     *variable = *winFlag;
     return TRUE;
 }
 
 BOOL ScrCmd_465(ScriptContext *ctx) {
-    MessageFormat **msg = FieldSysGetAttrAddr(ctx->fsys, SCRIPTENV_MESSAGE_FORMAT);
-    SAV_FRIEND_GRP *group = Save_FriendGroup_Get(ctx->fsys->savedata);
-    SaveData *save = ctx->fsys->savedata;
+    MessageFormat **msg = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
+    SAV_FRIEND_GRP *group = Save_FriendGroup_Get(ctx->fieldSystem->savedata);
+    SaveData *save = ctx->fieldSystem->savedata;
 
     u16 var = ScriptReadHalfword(ctx);
     switch (var) {
@@ -57,7 +57,7 @@ BOOL ScrCmd_465(ScriptContext *ctx) {
     }
     case 6: {
         String *str = String_New(64, HEAP_ID_32);
-        PlayerProfile *profile = Save_PlayerData_GetProfileAddr(ctx->fsys->savedata);
+        PlayerProfile *profile = Save_PlayerData_GetProfileAddr(ctx->fieldSystem->savedata);
         PlayerName_FlatToString(profile, str);
         sub_0202C7F8(group, 0, 1, str);
         sub_0202C824(group, 0, PlayerProfile_GetTrainerGender(profile));

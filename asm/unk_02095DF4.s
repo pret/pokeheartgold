@@ -91,14 +91,14 @@ _02095E72:
 	strb r1, [r0, #0xf]
 	ldr r1, [r4, #4]
 	add r0, r5, #0
-	bl Fsys_LaunchPokeathlonCourseApplication
+	bl FieldSystem_LaunchPokeathlonCourseApplication
 	bl sub_0203E30C
 	mov r0, #1
 	str r0, [r4]
 	b _02095EF4
 _02095E9E:
 	add r0, r5, #0
-	bl FieldSys_ApplicationIsRunning
+	bl FieldSystem_ApplicationIsRunning
 	cmp r0, #0
 	bne _02095EF4
 	mov r0, #2

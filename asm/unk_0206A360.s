@@ -57,7 +57,7 @@ sub_0206A388: ; 0x0206A388
 	str r0, [r4]
 	str r0, [r4, #4]
 	ldr r0, [sp, #4]
-	bl FieldSys_GetBgConfigPtr
+	bl FieldSystem_GetBgConfigPtr
 	str r0, [r4, #0xc]
 	mov r0, #0
 	strh r0, [r4, #0x18]

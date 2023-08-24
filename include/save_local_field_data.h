@@ -30,7 +30,7 @@ u16 *LocalFieldData_GetSafariStepsCounter(LocalFieldData *localFieldData);
 u16 *LocalFieldData_GetPoisonStepCounter(LocalFieldData *localFieldData);
 LocalFieldData *Save_LocalFieldData_Get(SaveData *saveData);
 struct SavedMapObjectList *Save_MapObjects_Get(SaveData *saveData);
-void Fsys_SyncMapObjectsToSave(FieldSystem *fsys);
-void Fsys_RestoreMapObjectsFromSave(FieldSystem *fsys);
+void FieldSystem_SyncMapObjectsToSave(FieldSystem *fieldSystem);
+void FieldSystem_RestoreMapObjectsFromSave(FieldSystem *fieldSystem);
 
 #endif //POKEHEARTGOLD_SAVE_LOCAL_FIELD_DATA_H

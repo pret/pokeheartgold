@@ -114,7 +114,7 @@ ov01_021E6928: ; 0x021E6928
 	add r6, r3, #0
 	bl ov01_021E6880
 	add r0, r4, #0
-	bl FieldSys_GetPlayerAvatar
+	bl FieldSystem_GetPlayerAvatar
 	bl sub_0205CB38
 	cmp r0, #0
 	beq _021E694E
@@ -667,7 +667,7 @@ _021E6D9E:
 	lsr r0, r0, #0x1f
 	beq _021E6DB6
 	add r0, r4, #0
-	bl Fsys_GetGearPhoneRingManager
+	bl FieldSystem_GetGearPhoneRingManager
 	bl ov02_02251F20
 	cmp r0, #0
 	beq _021E6DB6
@@ -1698,7 +1698,7 @@ ov01_021E7628: ; 0x021E7628
 	push {r3, r4, r5, r6, r7, lr}
 	mov r1, #6
 	add r5, r0, #0
-	bl Fsys_IsSavGymmickTypeEqualTo
+	bl FieldSystem_IsSavGymmickTypeEqualTo
 	cmp r0, #0
 	beq _021E7644
 	add r0, r5, #0
@@ -1822,7 +1822,7 @@ _021E7732:
 	mov r0, #0x42
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl FsysUnkSub108_MoveMoodTowardsNeutral
+	bl FieldSystemUnkSub108_MoveMoodTowardsNeutral
 _021E7746:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2210,7 +2210,7 @@ ov01_021E7A08: ; 0x021E7A08
 	cmp r0, r1
 	blo _021E7A56
 	add r0, r4, #0
-	bl Fsys_GetGearPhoneRingManager
+	bl FieldSystem_GetGearPhoneRingManager
 	mov r1, #2
 	mov r2, #1
 	bl sub_02092E14
@@ -2227,7 +2227,7 @@ _021E7A5C: .word 0x00000984
 BugContestTimeoutCheck: ; 0x021E7A60
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl FieldSys_BugContest_Get
+	bl FieldSystem_BugContest_Get
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl Save_VarsFlags_Get
@@ -2867,7 +2867,7 @@ _021E7F34:
 	thumb_func_start ov01_021E7F38
 ov01_021E7F38: ; 0x021E7F38
 	push {r3, lr}
-	bl FieldSys_FacingModelIsHeadbuttTree
+	bl FieldSystem_FacingModelIsHeadbuttTree
 	cmp r0, #0
 	beq _021E7F46
 	ldr r0, _021E7F4C ; =std_field_headbutt
@@ -2924,8 +2924,8 @@ _021E7F9E:
 _021E7FA4: .word 0x0000FFFF
 	thumb_func_end ov01_021E7F54
 
-	thumb_func_start FieldSys_FacingModelIsHeadbuttTree
-FieldSys_FacingModelIsHeadbuttTree: ; 0x021E7FA8
+	thumb_func_start FieldSystem_FacingModelIsHeadbuttTree
+FieldSystem_FacingModelIsHeadbuttTree: ; 0x021E7FA8
 	push {r4, lr}
 	sub sp, #8
 	add r1, sp, #4
@@ -2949,7 +2949,7 @@ _021E7FD4:
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end FieldSys_FacingModelIsHeadbuttTree
+	thumb_func_end FieldSystem_FacingModelIsHeadbuttTree
 
 	.rodata
 

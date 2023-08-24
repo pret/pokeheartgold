@@ -103,7 +103,7 @@ void PlayerAvatar_ToggleAutomaticHeightUpdating(PlayerAvatar *avatar, u8 unkA);
 void PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(PlayerAvatar *avatar, BOOL unkA);
 u32 PlayerAvatar_GetSpriteByStateAndGender(u32 unkA, BOOL unkB);
 u32 PlayerAvatar_GetTransitionBits(u32 unkA);
-PlayerAvatar *FieldSys_GetPlayerAvatar(FieldSystem *fsys);
+PlayerAvatar *FieldSystem_GetPlayerAvatar(FieldSystem *fieldSystem);
 void sub_0205CA20(PlayerAvatar *avatar, BOOL unkA);
 BOOL sub_0205CA38(PlayerAvatar *avatar);
 void sub_0205CA4C(PlayerAvatar *avatar, BOOL unkA);

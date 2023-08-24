@@ -124,7 +124,7 @@ _020978A2:
 	b _020978C4
 _020978AC:
 	add r0, r4, #0
-	bl FieldSys_ApplicationIsRunning
+	bl FieldSystem_ApplicationIsRunning
 	cmp r0, #0
 	beq _020978C4
 	mov r0, #0

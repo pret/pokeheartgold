@@ -26,6 +26,7 @@
 #include "unk_02013FDC.h"
 #include "gf_gfx_loader.h"
 #include "choose_starter_app.h"
+#include "msgdata/msg.naix"
 
 enum ChooseStarterInput {
     CHOOSE_STARTER_INPUT_NONE                    = 0,

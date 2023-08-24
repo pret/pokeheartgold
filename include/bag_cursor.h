@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_BAG_CURSOR_H
 #define POKEHEARTGOLD_BAG_CURSOR_H
 
+#include "heap.h"
+
 /*
  * Remembers the cursor position in the field bag view
  */
