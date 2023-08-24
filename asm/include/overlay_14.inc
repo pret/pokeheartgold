@@ -202,7 +202,7 @@
 .public sub_02025380
 .public String_New
 .public String_Delete
-.public Save_PCStorage_Get
+.public SaveArray_PCStorage_Get
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetFrame

@@ -216,7 +216,7 @@ ov97_0221E700: ; 0x0221E700
 	mov r6, #1
 _0221E76A:
 	ldr r0, [r5]
-	bl Save_PCStorage_Get
+	bl SaveArray_PCStorage_Get
 	add r7, r0, #0
 	ldr r0, [r5]
 	bl SaveArray_Party_Get
@@ -559,7 +559,7 @@ _0221E9B4:
 	b _0221EA6A
 _0221EA20:
 	ldr r0, [r0]
-	bl Save_PCStorage_Get
+	bl SaveArray_PCStorage_Get
 	ldr r2, [r5, #0x14]
 	add r1, r6, #0
 	add r3, sp, #0xc
@@ -583,7 +583,7 @@ _0221EA20:
 	strb r0, [r4, #0x1d]
 	ldr r0, [r7]
 	ldr r0, [r0]
-	bl Save_PCStorage_Get
+	bl SaveArray_PCStorage_Get
 	ldr r1, [r5, #0x10]
 	ldr r2, [r5, #0x14]
 	bl PCStorage_GetMonByIndexPair
@@ -931,7 +931,7 @@ _0221ED04:
 	add sp, #0xc0
 	pop {r3, r4, r5, r6, r7, pc}
 _0221ED1C:
-	bl Save_PCStorage_Get
+	bl SaveArray_PCStorage_Get
 	add r1, r6, #0
 	add r2, r4, #0
 	add r3, sp, #0x2c
@@ -956,7 +956,7 @@ _0221ED1C:
 	ldrh r1, [r1, #0x3e]
 	strb r1, [r0, #8]
 	ldr r0, [r5, #0x2c]
-	bl Save_PCStorage_Get
+	bl SaveArray_PCStorage_Get
 	add r1, r6, #0
 	add r2, r4, #0
 	bl PCStorage_GetMonByIndexPair

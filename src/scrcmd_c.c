@@ -3575,7 +3575,7 @@ BOOL ScrCmd_PrimoPasswordCheck1(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem));
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    PC_STORAGE *pcStorage = Save_PCStorage_Get(fieldSystem->saveData);
+    PC_STORAGE *pcStorage = SaveArray_PCStorage_Get(fieldSystem->saveData);
     u16 a = ScriptGetVar(ctx);
     u16 b = ScriptGetVar(ctx);
     u16 c = ScriptGetVar(ctx);
@@ -3597,7 +3597,7 @@ BOOL ScrCmd_PrimoPasswordCheck2(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem));
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    PC_STORAGE *pcStorage = Save_PCStorage_Get(fieldSystem->saveData);
+    PC_STORAGE *pcStorage = SaveArray_PCStorage_Get(fieldSystem->saveData);
     u16 a = ScriptGetVar(ctx);
     u16 b = ScriptGetVar(ctx);
     u16 c = ScriptGetVar(ctx);
@@ -3650,7 +3650,7 @@ BOOL ScrCmd_687(ScriptContext *ctx) {
 
 BOOL ScrCmd_CountPCEmptySpace(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = PCStorage_CountEmptySpotsInAllBoxes(Save_PCStorage_Get(ctx->fieldSystem->saveData));
+    *p_ret = PCStorage_CountEmptySpotsInAllBoxes(SaveArray_PCStorage_Get(ctx->fieldSystem->saveData));
     return FALSE;
 }
 
@@ -4287,7 +4287,7 @@ u32 sub_020467A8(SaveData *saveData) {
         }
     }
 
-    PC_STORAGE *pcStorage = Save_PCStorage_Get(saveData);
+    PC_STORAGE *pcStorage = SaveArray_PCStorage_Get(saveData);
     for (i = 0; i < (u32)NUM_BOXES; i++) {
         for (j = 0; j < MONS_PER_BOX; j++) {
             BoxPokemon *boxMon = PCStorage_GetMonByIndexPair(pcStorage, i, j);

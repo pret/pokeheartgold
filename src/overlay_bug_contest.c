@@ -220,7 +220,7 @@ void BugContest_RestoreParty_RetrieveCaughtPokemon(BUGCONTEST *bugContest) {
 
     if (bugContest->caught_poke) {
         if (bugContest->party_cur_num >= PARTY_SIZE) {
-            PCStorage_PlaceMonInFirstEmptySlotInAnyBox(Save_PCStorage_Get(bugContest->saveData), Mon_GetBoxMon(bugContest->mon));
+            PCStorage_PlaceMonInFirstEmptySlotInAnyBox(SaveArray_PCStorage_Get(bugContest->saveData), Mon_GetBoxMon(bugContest->mon));
         } else {
             Party_AddMon(bugContest->party_cur, bugContest->mon);
         }

@@ -2891,7 +2891,7 @@ sub_0203F844: ; 0x0203F844
 	bl SaveArray_Get
 	str r0, [r4, #8]
 	ldr r0, [r5, #0xc]
-	bl Save_PCStorage_Get
+	bl SaveArray_PCStorage_Get
 	str r0, [r4, #0xc]
 	ldr r0, [r5, #0xc]
 	bl Save_Pokedex_Get

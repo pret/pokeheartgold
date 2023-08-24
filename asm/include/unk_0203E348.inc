@@ -16,7 +16,7 @@
 .public CopyU16ArrayToString
 .public String_cstr
 .public sub_020270C4
-.public Save_PCStorage_Get
+.public SaveArray_PCStorage_Get
 .public LoadHallOfFame
 .public SaveArray_Get
 .public Save_SysInfo_Get

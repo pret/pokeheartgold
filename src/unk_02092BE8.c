@@ -278,7 +278,7 @@ BOOL sub_02093070(FieldSystem* sys) {
     if (CheckFlagInArray(Save_VarsFlags_Get(sys->saveData), FLAG_UNK_985)) {
         return FALSE;
     }
-    if (PCStorage_CountEmptySpotsInAllBoxes(Save_PCStorage_Get(sys->saveData)) != 0) {
+    if (PCStorage_CountEmptySpotsInAllBoxes(SaveArray_PCStorage_Get(sys->saveData)) != 0) {
         return FALSE;
     }
     sub_02092E14(FieldSystem_GetGearPhoneRingManager(sys), 3, TRUE);

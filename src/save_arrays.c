@@ -267,7 +267,7 @@ struct UnkStruct_0202E474 *sub_020270C4(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_UNK_23);
 }
 
-PC_STORAGE *Save_PCStorage_Get(SaveData *saveData) {
+PC_STORAGE *SaveArray_PCStorage_Get(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_PCSTORAGE);
 }
 

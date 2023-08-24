@@ -457,7 +457,7 @@ static BOOL Task_SafariEncounter(TaskManager *man) {
                 QueueScript(man, std_safari_balls_out, NULL, NULL);
             }
         } else {
-            PC_STORAGE *pc = Save_PCStorage_Get(fieldSystem->saveData);
+            PC_STORAGE *pc = SaveArray_PCStorage_Get(fieldSystem->saveData);
             Party *party = SaveArray_Party_Get(fieldSystem->saveData);
             if (PCStorage_FindFirstBoxWithEmptySlot(pc) == 18 && Party_GetCount(party) == 6) {
                 QueueScript(man, std_safari_storage_out, NULL, NULL);

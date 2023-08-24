@@ -180,7 +180,7 @@
 .public sub_02026E50
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
-.public Save_PCStorage_Get
+.public SaveArray_PCStorage_Get
 .public sub_02027134
 .public SaveGameNormal
 .public Save_NumModifiedPCBoxesIsMany

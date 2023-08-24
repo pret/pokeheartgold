@@ -168,7 +168,7 @@
 .public String_CountLines
 .public String_GetLineN
 .public String_RadioAddStatic
-.public Save_PCStorage_Get
+.public SaveArray_PCStorage_Get
 .public Save_SysInfo_RTC_Get
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr
