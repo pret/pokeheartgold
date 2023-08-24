@@ -122,11 +122,11 @@
 #define SPRITE_LADDERHERO                        248
 #define SPRITE_LADDERHEROINE                     249
 #define SPRITE_ITAKO_                            250
-#define SPRITE_BABYBOY1_3                        251
-#define SPRITE_BABYBOY1_4                        252
+#define SPRITE_GATE_RIGHT                        251
+#define SPRITE_GATE_LEFT                         252
 #define SPRITE_BABYBOY1_5                        253
-#define SPRITE_BABYBOY1_6                        254
-#define SPRITE_BABYBOY1_7                        255
+#define SPRITE_GATE_TOP                          254
+#define SPRITE_GATE_BOTTOM                       255
 #define SPRITE_BABYBOY1_8                        256
 #define SPRITE_BABYBOY1_9                        257
 #define SPRITE_RHERO                             258
