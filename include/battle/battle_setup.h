@@ -84,13 +84,12 @@ void BattleSetup_InitFromFieldSystem(BattleSetup* setup, FieldSystem *fieldSyste
 void BattleSetup_InitForFixedLevelFacility(BattleSetup* setup, FieldSystem *fieldSystem, int level);
 void sub_020520B0(BattleSetup* setup, FieldSystem *fieldSystem, Party *party, u8 *a4);
 void sub_020522F0(BattleSetup* setup, FieldSystem *fieldSystem, void *a1);
-void sub_0205230C(FieldSystem* fieldSystem, PlayerProfile* profile1, PlayerProfile* profile2);
 void sub_0205239C(BattleSetup* setup, FieldSystem* fieldSystem);
 void sub_02052444(BattleSetup* setup, FieldSystem* fieldSystem);
-void sub_02052504(BattleSetup* setup, FieldSystem* fieldSystem);
 void sub_02052544(BattleSetup* setup);
 BOOL IsBattleResultWin(u32 a0);
 BOOL sub_02052564(u32 a0);
 BOOL sub_02052574(u32 a0);
+void sub_02052580(BattleSetup* setup);
 
 #endif //POKEHEARTGOLD_BATTLE_SETUP_H

@@ -24,12 +24,12 @@
 #include "msgdata/msg.naix"
 #include "constants/battle.h"
 
-void BattleSetup_SetParty(BattleSetup* setup, Party* party, int battlerId);
-void BattleSetup_SetProfile(BattleSetup* setup, PlayerProfile* profile, int battlerId);
-void BattleSetup_SetChatotVoiceClip(BattleSetup* setup, SOUND_CHATOT* chatot, int battlerId);
+static void BattleSetup_SetParty(BattleSetup* setup, Party* party, int battlerId);
+static void BattleSetup_SetProfile(BattleSetup* setup, PlayerProfile* profile, int battlerId);
+static void BattleSetup_SetChatotVoiceClip(BattleSetup* setup, SOUND_CHATOT* chatot, int battlerId);
+static void sub_0205230C(FieldSystem* fieldSystem, PlayerProfile* profile1, PlayerProfile* profile2);
 static u32 sub_02052470(FieldSystem* fieldSystem, u32 battleBg);
-void sub_02052504(BattleSetup* setup, FieldSystem* fieldSystem);
-void sub_02052580(BattleSetup* setup);
+static void sub_02052504(BattleSetup* setup, FieldSystem* fieldSystem);
 
 BattleSetup* BattleSetup_New(HeapID heapId, u32 battleTypeFlags) {
     int i;
@@ -176,17 +176,17 @@ void BattleSetup_AddMonToParty(BattleSetup* setup, Pokemon* mon, int battlerId) 
     GF_ASSERT(Party_AddMon(setup->party[battlerId], mon));
 }
 
-void BattleSetup_SetParty(BattleSetup* setup, Party* party, int battlerId) {
+static void BattleSetup_SetParty(BattleSetup* setup, Party* party, int battlerId) {
     GF_ASSERT(battlerId < 4);
     Party_Copy(party, setup->party[battlerId]);
 }
 
-void BattleSetup_SetProfile(BattleSetup* setup, PlayerProfile* profile, int battlerId) {
+static void BattleSetup_SetProfile(BattleSetup* setup, PlayerProfile* profile, int battlerId) {
     GF_ASSERT(battlerId < 4);
     PlayerProfile_Copy(profile, setup->profile[battlerId]);
 }
 
-void BattleSetup_SetChatotVoiceClip(BattleSetup* setup, SOUND_CHATOT* chatot, int battlerId) {
+static void BattleSetup_SetChatotVoiceClip(BattleSetup* setup, SOUND_CHATOT* chatot, int battlerId) {
     Chatot_Copy(setup->chatot[battlerId], chatot);
 }
 
@@ -396,7 +396,7 @@ void sub_020522F0(BattleSetup* setup, FieldSystem *fieldSystem, void *a1) {
     sub_020520B0(setup, fieldSystem, SaveArray_Party_Get(fieldSystem->savedata), a1);
 }
 
-void sub_0205230C(FieldSystem* fieldSystem, PlayerProfile* profile1, PlayerProfile* profile2) {
+static void sub_0205230C(FieldSystem* fieldSystem, PlayerProfile* profile1, PlayerProfile* profile2) {
     SaveVarsFlags* vars_flags = Save_VarsFlags_Get(fieldSystem->savedata);
     MomsSavings* savings = SaveData_GetMomsSavingsAddr(fieldSystem->savedata);
 
@@ -523,7 +523,7 @@ static u32 sub_02052470(FieldSystem* fieldSystem, u32 battleBg) {
     return NELEMS(_020FC4C0) + 1;
 }
 
-void sub_02052504(BattleSetup* setup, FieldSystem* fieldSystem) {
+static void sub_02052504(BattleSetup* setup, FieldSystem* fieldSystem) {
     PlayerSaveData* player = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->savedata));
     setup->battleBg = MapHeader_GetBattleBg(fieldSystem->location->mapId);
 
