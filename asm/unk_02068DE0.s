@@ -41,14 +41,14 @@ sTrashCanData:
 	thumb_func_start InitEcruteakGym
 InitEcruteakGym: ; 0x02068DE0
 	push {r4, lr}
-	bl FieldSystem_GetSaveDataPtr
+	bl FieldSystem_GetSaveData
 	bl Save_GetGymmickPtr
 	add r4, r0, #0
 	mov r1, #1
-	bl SavGymmick_Init
+	bl Save_Gymmick_Init
 	add r0, r4, #0
 	mov r1, #1
-	bl SavGymmick_AssertMagic_GetData
+	bl Save_Gymmick_AssertMagic_GetData
 	mov r2, #0
 	add r1, r2, #0
 _02068DFE:
@@ -62,14 +62,14 @@ _02068DFE:
 	thumb_func_start InitCianwoodGym
 InitCianwoodGym: ; 0x02068E08
 	push {r4, lr}
-	bl FieldSystem_GetSaveDataPtr
+	bl FieldSystem_GetSaveData
 	bl Save_GetGymmickPtr
 	add r4, r0, #0
 	mov r1, #2
-	bl SavGymmick_Init
+	bl Save_Gymmick_Init
 	add r0, r4, #0
 	mov r1, #2
-	bl SavGymmick_AssertMagic_GetData
+	bl Save_Gymmick_AssertMagic_GetData
 	pop {r4, pc}
 	thumb_func_end InitCianwoodGym
 
@@ -77,14 +77,14 @@ InitCianwoodGym: ; 0x02068E08
 InitVermilionGym: ; 0x02068E24
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl FieldSystem_GetSaveDataPtr
+	bl FieldSystem_GetSaveData
 	bl Save_GetGymmickPtr
 	add r4, r0, #0
 	mov r1, #3
-	bl SavGymmick_Init
+	bl Save_Gymmick_Init
 	add r0, r4, #0
 	mov r1, #3
-	bl SavGymmick_AssertMagic_GetData
+	bl Save_Gymmick_AssertMagic_GetData
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Save_PlayerData_GetProfileAddr
@@ -112,10 +112,10 @@ _02068E60:
 	thumb_func_start PlaceVermilionGymSwitches
 PlaceVermilionGymSwitches: ; 0x02068E70
 	push {r3, r4, r5, r6, r7, lr}
-	bl FieldSystem_GetSaveDataPtr
+	bl FieldSystem_GetSaveData
 	bl Save_GetGymmickPtr
 	mov r1, #3
-	bl SavGymmick_AssertMagic_GetData
+	bl Save_Gymmick_AssertMagic_GetData
 	add r5, r0, #0
 	bl LCRandom
 	mov r1, #0xf
@@ -141,14 +141,14 @@ _02068EAC: .word sTrashCanData
 	thumb_func_start InitVioletGym
 InitVioletGym: ; 0x02068EB0
 	push {r4, lr}
-	bl FieldSystem_GetSaveDataPtr
+	bl FieldSystem_GetSaveData
 	bl Save_GetGymmickPtr
 	add r4, r0, #0
 	mov r1, #4
-	bl SavGymmick_Init
+	bl Save_Gymmick_Init
 	add r0, r4, #0
 	mov r1, #4
-	bl SavGymmick_AssertMagic_GetData
+	bl Save_Gymmick_AssertMagic_GetData
 	mov r1, #0
 	str r1, [r0]
 	pop {r4, pc}
@@ -157,14 +157,14 @@ InitVioletGym: ; 0x02068EB0
 	thumb_func_start InitAzaleaGym
 InitAzaleaGym: ; 0x02068ED0
 	push {r4, lr}
-	bl FieldSystem_GetSaveDataPtr
+	bl FieldSystem_GetSaveData
 	bl Save_GetGymmickPtr
 	add r4, r0, #0
 	mov r1, #5
-	bl SavGymmick_Init
+	bl Save_Gymmick_Init
 	add r0, r4, #0
 	mov r1, #5
-	bl SavGymmick_AssertMagic_GetData
+	bl Save_Gymmick_AssertMagic_GetData
 	mov r2, #0
 	strb r2, [r0]
 	mov r1, #1
@@ -181,14 +181,14 @@ InitAzaleaGym: ; 0x02068ED0
 	thumb_func_start InitBlackthornGym
 InitBlackthornGym: ; 0x02068F00
 	push {r4, lr}
-	bl FieldSystem_GetSaveDataPtr
+	bl FieldSystem_GetSaveData
 	bl Save_GetGymmickPtr
 	add r4, r0, #0
 	mov r1, #6
-	bl SavGymmick_Init
+	bl Save_Gymmick_Init
 	add r0, r4, #0
 	mov r1, #6
-	bl SavGymmick_AssertMagic_GetData
+	bl Save_Gymmick_AssertMagic_GetData
 	mov r1, #0xd
 	strh r1, [r0]
 	mov r1, #0x4b
@@ -213,10 +213,10 @@ InitBlackthornGym: ; 0x02068F00
 	thumb_func_start InitFuchsiaGym
 InitFuchsiaGym: ; 0x02068F40
 	push {r3, lr}
-	bl FieldSystem_GetSaveDataPtr
+	bl FieldSystem_GetSaveData
 	bl Save_GetGymmickPtr
 	mov r1, #7
-	bl SavGymmick_Init
+	bl Save_Gymmick_Init
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end InitFuchsiaGym
@@ -224,21 +224,21 @@ InitFuchsiaGym: ; 0x02068F40
 	thumb_func_start InitViridianGym
 InitViridianGym: ; 0x02068F54
 	push {r3, lr}
-	bl FieldSystem_GetSaveDataPtr
+	bl FieldSystem_GetSaveData
 	bl Save_GetGymmickPtr
 	mov r1, #8
-	bl SavGymmick_Init
+	bl Save_Gymmick_Init
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end InitViridianGym
 
-	thumb_func_start FieldSystem_IsSavGymmickTypeEqualTo
-FieldSystem_IsSavGymmickTypeEqualTo: ; 0x02068F68
+	thumb_func_start FieldSystem_IsSaveGymmickTypeEqualTo
+FieldSystem_IsSaveGymmickTypeEqualTo: ; 0x02068F68
 	push {r4, lr}
 	add r4, r1, #0
-	bl FieldSystem_GetSaveDataPtr
+	bl FieldSystem_GetSaveData
 	bl Save_GetGymmickPtr
-	bl SavGymmick_GetType
+	bl Save_Gymmick_GetType
 	cmp r4, r0
 	bne _02068F80
 	mov r0, #1
@@ -246,4 +246,4 @@ FieldSystem_IsSavGymmickTypeEqualTo: ; 0x02068F68
 _02068F80:
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end FieldSystem_IsSavGymmickTypeEqualTo
+	thumb_func_end FieldSystem_IsSaveGymmickTypeEqualTo

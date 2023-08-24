@@ -47,7 +47,7 @@ BOOL ScrCmd_MartBuy(ScriptContext *ctx) {
     nitems = 0;
     badge_count = 0;
     for (i = 0; i < 16; i++) {
-        if (PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(ctx->fieldSystem->savedata), i) == TRUE) {
+        if (PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData), i) == TRUE) {
             badge_count++;
         }
     }
@@ -405,11 +405,11 @@ BOOL ScrCmd_771(ScriptContext *ctx) {
     SaveVarsFlags *flagsys;
     RTCDate date;
 
-    flagsys = Save_VarsFlags_Get(ctx->fieldSystem->savedata);
+    flagsys = Save_VarsFlags_Get(ctx->fieldSystem->saveData);
     GF_RTC_CopyDate(&date);
 
     // UB: Possibly illegal access to _0210F9CC between Tuesday and Saturday, inclusive
-    if (Pokedex_GetNatDexFlag(Save_Pokedex_Get(ctx->fieldSystem->savedata))) {
+    if (Pokedex_GetNatDexFlag(Save_Pokedex_Get(ctx->fieldSystem->saveData))) {
         InitMartUI(ctx->taskman, ctx->fieldSystem, _0210F9CC[date.week], 3, 0, 0, _0210FA04[date.week + 7]);
     } else {
         InitMartUI(ctx->taskman, ctx->fieldSystem, _0210F9CC[date.week], 3, 0, 0, _0210FA04[date.week]);
@@ -472,7 +472,7 @@ BOOL ScrCmd_772(ScriptContext *ctx) {
     POKEATHLON_SAV *pokeathlon;
     int i;
 
-    pokeathlon = Save_Pokeathlon_Get(ctx->fieldSystem->savedata);
+    pokeathlon = Save_Pokeathlon_Get(ctx->fieldSystem->saveData);
     for (i = 0; i < 27; i++) {
         if (!sub_02031A78(pokeathlon, i)) {
             break;
@@ -493,12 +493,12 @@ BOOL ScrCmd_834(ScriptContext *ctx) {
     int i;
 
     sp0 = ScriptGetVarPointer(ctx);
-    pokeathlon = Save_Pokeathlon_Get(ctx->fieldSystem->savedata);
+    pokeathlon = Save_Pokeathlon_Get(ctx->fieldSystem->saveData);
     r6 = 0;
     r4 = 0;
-    varsFlags = Save_VarsFlags_Get(ctx->fieldSystem->savedata);
+    varsFlags = Save_VarsFlags_Get(ctx->fieldSystem->saveData);
     GF_RTC_CopyDate(&date);
-    if (Pokedex_GetNatDexFlag(Save_Pokedex_Get(ctx->fieldSystem->savedata))) {
+    if (Pokedex_GetNatDexFlag(Save_Pokedex_Get(ctx->fieldSystem->saveData))) {
         r3 = _0210FA04[date.week + 7];
     } else {
         r3 = _0210FA04[date.week];
@@ -528,7 +528,7 @@ BOOL ScrCmd_835(ScriptContext *ctx) {
     POKEATHLON_SAV *pokeathlon;
 
     ret_ptr = ScriptGetVarPointer(ctx);
-    pokeathlon = Save_Pokeathlon_Get(ctx->fieldSystem->savedata);
+    pokeathlon = Save_Pokeathlon_Get(ctx->fieldSystem->saveData);
     for (i = 0; i < 27; i++) {
         if (!sub_02031A78(pokeathlon, i)) {
             break;

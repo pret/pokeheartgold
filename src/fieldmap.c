@@ -348,7 +348,7 @@ u32 GetCurrentMapMessageBank(u32 mapno) {
 }
 
 u16 *GetVarPointer(FieldSystem *fieldSystem, u16 varIdx) {
-    SaveVarsFlags *state = Save_VarsFlags_Get(fieldSystem->savedata);
+    SaveVarsFlags *state = Save_VarsFlags_Get(fieldSystem->saveData);
     if (varIdx < VAR_BASE) {
         return NULL;
     } else if (varIdx < SPECIAL_VAR_BASE) {
@@ -381,22 +381,22 @@ u16 VarGetObjectEventGraphicsId(FieldSystem *fieldSystem, u16 varobjId) {
 }
 
 BOOL FlagGet(FieldSystem *fieldSystem, u16 flagId) {
-    return CheckFlagInArray(Save_VarsFlags_Get(fieldSystem->savedata), flagId);
+    return CheckFlagInArray(Save_VarsFlags_Get(fieldSystem->saveData), flagId);
 }
 
 void FlagSet(FieldSystem *fieldSystem, u16 flagId) {
-    return SetFlagInArray(Save_VarsFlags_Get(fieldSystem->savedata), flagId);
+    return SetFlagInArray(Save_VarsFlags_Get(fieldSystem->saveData), flagId);
 }
 
 void FlagClear(FieldSystem *fieldSystem, u16 flagId) {
-    return ClearFlagInArray(Save_VarsFlags_Get(fieldSystem->savedata), flagId);
+    return ClearFlagInArray(Save_VarsFlags_Get(fieldSystem->saveData), flagId);
 }
 
 void ClearTempFieldEventData(FieldSystem *fieldSystem) {
     u8 *flags;
     u16 *vars;
 
-    SaveVarsFlags *state = Save_VarsFlags_Get(fieldSystem->savedata);
+    SaveVarsFlags *state = Save_VarsFlags_Get(fieldSystem->saveData);
     flags = GetFlagAddr(state, MAPTEMP_FLAG_BASE);
     memset(flags, 0, NUM_MAPTEMP_FLAGS / 8);
     vars = GetVarAddr(state, TEMP_VAR_BASE);
@@ -406,7 +406,7 @@ void ClearTempFieldEventData(FieldSystem *fieldSystem) {
 void ClearDailyFlags(FieldSystem *fieldSystem) {
     u8 *flags;
 
-    SaveVarsFlags *state = Save_VarsFlags_Get(fieldSystem->savedata);
+    SaveVarsFlags *state = Save_VarsFlags_Get(fieldSystem->saveData);
     flags = GetFlagAddr(state, DAILY_FLAG_BASE);
     memset(flags, 0, NUM_DAILY_FLAGS / 8);
 }

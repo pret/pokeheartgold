@@ -60,8 +60,8 @@ void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fieldSystem, u8 tradeno, u8 level,
     mon = AllocMonZeroed(HEAP_ID_FIELD);
     trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeno, FALSE, HEAP_ID_FIELD, TRUE);
     _CreateTradeMon(mon, trade_dat, level, tradeno, mapno, 7, HEAP_ID_FIELD);
-    UpdatePokedexWithReceivedSpecies(fieldSystem->savedata, mon);
-    party = SaveArray_Party_Get(fieldSystem->savedata);
+    UpdatePokedexWithReceivedSpecies(fieldSystem->saveData, mon);
+    party = SaveArray_Party_Get(fieldSystem->saveData);
     Party_AddMon(party, mon);
     if (tradeno == 7) {
         kenya = Party_GetMonByIndex(party, Party_GetCount(party) - 1);
@@ -102,7 +102,7 @@ int NPCTrade_CanGiveUpLoanMon(FieldSystem *fieldSystem, u8 tradeno, u8 idx) {
     u16 heldItem;
     int i, n, party_count;
 
-    party = SaveArray_Party_Get(fieldSystem->savedata);
+    party = SaveArray_Party_Get(fieldSystem->saveData);
     mon = Party_GetMonByIndex(party, idx);
     if (!MonIsInGameTradePoke(mon, tradeno)) {
         return 1;
@@ -146,15 +146,15 @@ int NPCTradeApp_GetUnusedFlag(NPCTradeAppData *work) {
 }
 
 void NPCTrade_ReceiveMonToSlot(FieldSystem *fieldSystem, NPCTradeAppData *work, int slot) {
-    Party_SafeCopyMonToSlot_ResetUnkSub(SaveArray_Party_Get(fieldSystem->savedata), slot, work->mon);
-    UpdatePokedexWithReceivedSpecies(fieldSystem->savedata, work->mon);
+    Party_SafeCopyMonToSlot_ResetUnkSub(SaveArray_Party_Get(fieldSystem->saveData), slot, work->mon);
+    UpdatePokedexWithReceivedSpecies(fieldSystem->saveData, work->mon);
 }
 
 void NPCTrade_CreateTradeAnim(FieldSystem *fieldSystem, NPCTradeAppData *work, int slot, TRADE_ANIM_WORK *anim_work, Pokemon *my_mon_buf, Pokemon *trade_mon_buf) {
     Pokemon *my_poke;
     u32 time_of_day;
 
-    my_poke = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->savedata), slot);
+    my_poke = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), slot);
     _CreateTradeMon(work->mon, work->trade_dat, GetMonData(my_poke, MON_DATA_LEVEL, NULL), work->tradeno, fieldSystem->location->mapId, 1, work->heapId);
     CopyPokemonToPokemon(my_poke, my_mon_buf);
     CopyPokemonToPokemon(work->mon, trade_mon_buf);
@@ -162,7 +162,7 @@ void NPCTrade_CreateTradeAnim(FieldSystem *fieldSystem, NPCTradeAppData *work, i
     anim_work->trade_boxmon = Mon_GetBoxMon(trade_mon_buf);
     anim_work->trade_profile = work->profile;
     anim_work->is_ingame = 1;
-    anim_work->options = Save_PlayerData_GetOptionsAddr(fieldSystem->savedata);
+    anim_work->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     time_of_day = Field_GetTimeOfDay(fieldSystem);
     if (time_of_day == RTC_TIMEOFDAY_MORN || time_of_day == RTC_TIMEOFDAY_DAY) {
         anim_work->time_of_day = 0;

@@ -76,7 +76,7 @@
 .public sub_0203996C
 .public FieldSystem_LaunchApplication
 .public sub_0203E2F4
-.public FieldSystem_GetSaveDataPtr
+.public FieldSystem_GetSaveData
 .public sub_0203F7B0
 .public FieldSystem_CreateTask
 .public FieldSystem_TaskIsRunning

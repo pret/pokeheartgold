@@ -74,7 +74,7 @@
 .public String_New
 .public String_Delete
 .public CopyU16ArrayToString
-.public GetStoragePCPointer
+.public SaveArray_PCStorage_Get
 .public Save_Pokeathlon_Get
 .public sub_020319A8
 .public sub_0203A994

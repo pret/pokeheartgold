@@ -58,7 +58,7 @@ FieldSystem_TakePhoto: ; 0x0206A798
 	strb r0, [r1]
 _0206A7FE:
 	add r0, r5, #0
-	bl FieldSystem_GetSaveDataPtr
+	bl FieldSystem_GetSaveData
 	bl Save_PhotoAlbum_Get
 	bl PhotoAlbum_GetIndexOfFirstEmptySlot
 	cmp r0, #0xff
@@ -653,7 +653,7 @@ _0206AC36:
 	ldr r0, _0206AEAC ; =NNS_G3dGlb + 0x80
 	str r1, [r0, #0x20]
 	add r0, r6, #0
-	bl FieldSystem_GetSaveDataPtr
+	bl FieldSystem_GetSaveData
 	bl Save_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
 	add r5, #0x30
@@ -1124,7 +1124,7 @@ sub_0206B014: ; 0x0206B014
 	add r0, r4, #0
 	str r2, [sp]
 	str r3, [sp, #4]
-	bl FieldSystem_GetSaveDataPtr
+	bl FieldSystem_GetSaveData
 	add r7, r0, #0
 	bl Save_PlayerData_GetProfileAddr
 	add r6, r0, #0
@@ -1512,7 +1512,7 @@ _0206B332:
 	b _0206B824
 _0206B346:
 	add r0, r5, #0
-	bl FieldSystem_GetSaveDataPtr
+	bl FieldSystem_GetSaveData
 	bl Save_PlayerData_GetProfileAddr
 	bl PlayerProfile_GetTrainerGender
 	ldr r1, [r4, #0x40]
@@ -1898,7 +1898,7 @@ _0206B652:
 	cmp r0, #0
 	beq _0206B6EA
 	add r0, r5, #0
-	bl FieldSystem_GetSaveDataPtr
+	bl FieldSystem_GetSaveData
 	bl Save_PhotoAlbum_Get
 	add r5, r0, #0
 	bl PhotoAlbum_GetIndexOfFirstEmptySlot

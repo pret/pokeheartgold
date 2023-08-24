@@ -32,7 +32,7 @@
 .public PhotoAlbum_GetPhotoByIndex
 .public Photo_Init
 .public sub_0203E33C
-.public FieldSystem_GetSaveDataPtr
+.public FieldSystem_GetSaveData
 .public sub_0203EBA4
 .public TaskManager_Call
 .public FieldSystem_ApplicationIsRunning

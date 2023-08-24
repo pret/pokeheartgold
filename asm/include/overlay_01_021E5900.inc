@@ -50,7 +50,7 @@
 .public Thunk_G3X_Reset
 .public sub_02026E50
 .public Save_GetGymmickPtr
-.public SavGymmick_GetType
+.public Save_Gymmick_GetType
 .public MapMatrix_GetMapHeader
 .public MapHeader_GetAreaDataBank
 .public MapHeader_GetMoveModelBank
@@ -62,7 +62,7 @@
 .public LocalFieldData_GetWeatherType
 .public LocalFieldData_GetCameraType
 .public Save_LocalFieldData_Get
-.public FieldSystem_GetSaveDataPtr
+.public FieldSystem_GetSaveData
 .public sub_0203E348
 .public TryStartMapScriptByType
 .public Save_VarsFlags_Get

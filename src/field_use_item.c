@@ -139,8 +139,8 @@ void ItemCheckUseData_Init(FieldSystem *fieldSystem, struct ItemCheckUseData *da
 
     dat->fieldSystem = fieldSystem;
     dat->mapId = fieldSystem->location->mapId;
-    dat->haveFollower = Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(fieldSystem->savedata));
-    dat->haveRocketCostume = Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(fieldSystem->savedata));
+    dat->haveFollower = Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(fieldSystem->saveData));
+    dat->haveRocketCostume = Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(fieldSystem->saveData));
     dat->playerState = PlayerAvatar_GetState(fieldSystem->playerAvatar);
 
     x = GetPlayerXCoord(fieldSystem->playerAvatar);
@@ -218,11 +218,11 @@ static void ItemMenuUseFunc_HealingItem(struct ItemMenuUseData *data, const stru
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     struct UseItemInPartyTaskEnv *usedat = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct UseItemInPartyTaskEnv));
     memset(usedat, 0, sizeof(struct UseItemInPartyTaskEnv));
-    usedat->party = SaveArray_Party_Get(fieldSystem->savedata);
-    usedat->bag = Save_Bag_Get(fieldSystem->savedata);
-    usedat->mailbox = Save_Mailbox_Get(fieldSystem->savedata);
-    usedat->options = Save_PlayerData_GetOptionsAddr(fieldSystem->savedata);
-    usedat->unk10 = sub_020270C4(fieldSystem->savedata);
+    usedat->party = SaveArray_Party_Get(fieldSystem->saveData);
+    usedat->bag = Save_Bag_Get(fieldSystem->saveData);
+    usedat->mailbox = Save_Mailbox_Get(fieldSystem->saveData);
+    usedat->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
+    usedat->unk10 = sub_020270C4(fieldSystem->saveData);
     usedat->unk18 = &env->unk_0370;
     usedat->unk25 = 0;
     usedat->unk24 = 5;
@@ -341,10 +341,10 @@ static void ItemMenuUseFunc_TMHM(struct ItemMenuUseData *data, const struct Item
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
     struct UseItemInPartyTaskEnv *usedat = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct UseItemInPartyTaskEnv));
     memset(usedat, 0, sizeof(struct UseItemInPartyTaskEnv));
-    usedat->party = SaveArray_Party_Get(fieldSystem->savedata);
-    usedat->bag = Save_Bag_Get(fieldSystem->savedata);
-    usedat->mailbox = Save_Mailbox_Get(fieldSystem->savedata);
-    usedat->options = Save_PlayerData_GetOptionsAddr(fieldSystem->savedata);
+    usedat->party = SaveArray_Party_Get(fieldSystem->saveData);
+    usedat->bag = Save_Bag_Get(fieldSystem->saveData);
+    usedat->mailbox = Save_Mailbox_Get(fieldSystem->saveData);
+    usedat->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     usedat->unk18 = &env->unk_0370;
     usedat->unk25 = 0;
     usedat->unk24 = 6;
@@ -386,7 +386,7 @@ BOOL Leftover_CanPlantBerry(const struct ItemCheckUseData *data) {
 static void ItemMenuUseFunc_PalPad(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
-    env->atexit_TaskEnv = CreatePalPadWork(fieldSystem, fieldSystem->savedata, HEAP_ID_FIELD);
+    env->atexit_TaskEnv = CreatePalPadWork(fieldSystem, fieldSystem->saveData, HEAP_ID_FIELD);
     sub_0203C8F0(env, sub_0203D718);
 }
 
@@ -396,7 +396,7 @@ static BOOL ItemFieldUseFunc_PalPad(struct ItemFieldUseData *data) {
 }
 
 static struct PalPadWork *_CreatePalPadWork(FieldSystem *fieldSystem) {
-    return CreatePalPadWork(fieldSystem, fieldSystem->savedata, HEAP_ID_FIELD);
+    return CreatePalPadWork(fieldSystem, fieldSystem->saveData, HEAP_ID_FIELD);
 }
 
 static void ItemMenuUseFunc_Honey(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
@@ -411,7 +411,7 @@ static void ItemMenuUseFunc_Honey(struct ItemMenuUseData *data, const struct Ite
     env->atexit_TaskFunc = Task_HoneyOrSweetScent;
     env->atexit_TaskEnv = honey_work;
     env->state = 12;
-    Bag_TakeItem(Save_Bag_Get(fieldSystem->savedata), data->itemId, 1, HEAP_ID_FIELD);
+    Bag_TakeItem(Save_Bag_Get(fieldSystem->saveData), data->itemId, 1, HEAP_ID_FIELD);
 }
 
 static void ItemMenuUseFunc_OldRod(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
@@ -478,7 +478,7 @@ static BOOL ItemFieldUseFunc_Generic(struct ItemFieldUseData *data) {
     struct RegisteredKeyItemUseMessagePrintTaskData *env = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct RegisteredKeyItemUseMessagePrintTaskData));
     env->state = 0;
     env->strbuf = String_New(128, HEAP_ID_FIELD);
-    TryFormatRegisteredKeyItemUseMessage(data->fieldSystem->savedata, env->strbuf, data->itemId, HEAP_ID_FIELD);
+    TryFormatRegisteredKeyItemUseMessage(data->fieldSystem->saveData, env->strbuf, data->itemId, HEAP_ID_FIELD);
     FieldSystem_CreateTask(data->fieldSystem, Task_PrintRegisteredKeyItemUseMessage, env);
     return FALSE;
 }
@@ -493,7 +493,7 @@ static BOOL Task_PrintRegisteredKeyItemUseMessage(TaskManager *taskManager) {
         fieldSystem->unkD2_6 = TRUE;
         MapObjectManager_PauseAllMovement(fieldSystem->mapObjectMan);
         sub_0205B514(fieldSystem->bgConfig, &env->window, 3);
-        options = Save_PlayerData_GetOptionsAddr(fieldSystem->savedata);
+        options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
         sub_0205B564(&env->window, options);
         env->printerId = sub_0205B5B4(&env->window, env->strbuf, options, TRUE);
         env->state++;
@@ -531,11 +531,11 @@ static void ItemMenuUseFunc_EvoStone(struct ItemMenuUseData *data, const struct 
     env = TaskManager_GetEnv(data->taskManager);
     usedat = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct UseItemInPartyTaskEnv));
     memset(usedat, 0, sizeof(struct UseItemInPartyTaskEnv));
-    usedat->party = SaveArray_Party_Get(fieldSystem->savedata);
-    usedat->bag = Save_Bag_Get(fieldSystem->savedata);
-    usedat->mailbox = Save_Mailbox_Get(fieldSystem->savedata);
-    usedat->options = Save_PlayerData_GetOptionsAddr(fieldSystem->savedata);
-    usedat->unk10 = sub_020270C4(fieldSystem->savedata);
+    usedat->party = SaveArray_Party_Get(fieldSystem->saveData);
+    usedat->bag = Save_Bag_Get(fieldSystem->saveData);
+    usedat->mailbox = Save_Mailbox_Get(fieldSystem->saveData);
+    usedat->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
+    usedat->unk10 = sub_020270C4(fieldSystem->saveData);
     usedat->unk18 = &env->unk_0370;
     usedat->unk25 = 0;
     usedat->unk24 = 16;
@@ -563,7 +563,7 @@ static void ItemMenuUseFunc_EscapeRope(struct ItemMenuUseData *data, const struc
     env->atexit_TaskFunc = Task_JumpToFieldEscapeRope;
     env->atexit_TaskEnv = NULL;
     env->state = 12;
-    Bag_TakeItem(Save_Bag_Get(fieldSystem->savedata), data->itemId, 1, HEAP_ID_FIELD);
+    Bag_TakeItem(Save_Bag_Get(fieldSystem->saveData), data->itemId, 1, HEAP_ID_FIELD);
 }
 
 static enum ItemUseError ItemCheckUseFunc_EscapeRope(const struct ItemCheckUseData *data) {
@@ -704,7 +704,7 @@ static struct GracideaWork *_CreateGracideaWork(FieldSystem *fieldSystem) {
 static void ItemMenuUseFunc_VSRecorder(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnv(data->taskManager);
-    sub_0203F570(fieldSystem, fieldSystem->savedata);
+    sub_0203F570(fieldSystem, fieldSystem->saveData);
     env->atexit_TaskEnv = NULL;
     sub_0203C8F0(env, sub_0203D9B4);
 }
@@ -716,7 +716,7 @@ static BOOL ItemFieldUseFunc_VSRecorder(struct ItemFieldUseData *data) {
 
 static void *_VsRecorderInit(FieldSystem *fieldSystem) {
     ov01_021F4440(fieldSystem);
-    sub_0203F570(fieldSystem, fieldSystem->savedata);
+    sub_0203F570(fieldSystem, fieldSystem->saveData);
     return NULL;
 }
 
@@ -756,19 +756,19 @@ int UseRegisteredItemButtonInField(FieldSystem *fieldSystem, u8 slot) {
     if (sub_02067584(fieldSystem) == TRUE) {
          return 0;
     }
-    if (Save_VarsFlags_CheckPalParkSysFlag(Save_VarsFlags_Get(fieldSystem->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckPalParkSysFlag(Save_VarsFlags_Get(fieldSystem->saveData)) == TRUE) {
         return 0;
     }
-    if (CheckFlag996(Save_VarsFlags_Get(fieldSystem->savedata)) == TRUE) {
+    if (CheckFlag996(Save_VarsFlags_Get(fieldSystem->saveData)) == TRUE) {
         return 0;
     }
     if (ov01_021F6B10(fieldSystem) != TRUE) {
         return 0;
     }
     if (slot == 1) {
-        itemId = Bag_GetRegisteredItem1(Save_Bag_Get(fieldSystem->savedata));
+        itemId = Bag_GetRegisteredItem1(Save_Bag_Get(fieldSystem->saveData));
     } else {
-        itemId = Bag_GetRegisteredItem2(Save_Bag_Get(fieldSystem->savedata));
+        itemId = Bag_GetRegisteredItem2(Save_Bag_Get(fieldSystem->saveData));
     }
     if (itemId == ITEM_DOWSING_MCHN && ov01_021F6B00(fieldSystem) == 4) {
         return 0;
@@ -807,7 +807,7 @@ static void RegisteredItem_GoToPrintErrorTask(struct ItemFieldUseData *data, enu
     struct RegisteredKeyItemUseMessagePrintTaskData *env = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct RegisteredKeyItemUseMessagePrintTaskData));
     env->state = 0;
     env->strbuf = String_New(128, HEAP_ID_FIELD);
-    GetItemUseErrorMessage(Save_PlayerData_GetProfileAddr(data->fieldSystem->savedata), env->strbuf, data->itemId, error, HEAP_ID_FIELD);
+    GetItemUseErrorMessage(Save_PlayerData_GetProfileAddr(data->fieldSystem->saveData), env->strbuf, data->itemId, error, HEAP_ID_FIELD);
     FieldSystem_CreateTask(data->fieldSystem, Task_PrintRegisteredKeyItemUseMessage, env);
 }
 

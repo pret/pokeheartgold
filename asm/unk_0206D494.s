@@ -1055,14 +1055,14 @@ _0206DCC0: .word 0x00004021
 	thumb_func_start FieldSystem_InitMystriStageGymmick
 FieldSystem_InitMystriStageGymmick: ; 0x0206DCC4
 	push {r4, lr}
-	bl FieldSystem_GetSaveDataPtr
+	bl FieldSystem_GetSaveData
 	bl Save_GetGymmickPtr
 	add r4, r0, #0
 	mov r1, #9
-	bl SavGymmick_Init
+	bl Save_Gymmick_Init
 	add r0, r4, #0
 	mov r1, #9
-	bl SavGymmick_AssertMagic_GetData
+	bl Save_Gymmick_AssertMagic_GetData
 	mov r1, #0
 	str r1, [r0]
 	pop {r4, pc}

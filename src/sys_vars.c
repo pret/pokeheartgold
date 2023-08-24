@@ -168,10 +168,10 @@ void Save_VarsFlags_RollLotoId(SaveVarsFlags* state) {
     Save_VarsFlags_SetLotoId(state, hi << 16 | lo);
 }
 
-void Save_LCRNGAdvanceLotoID(SaveData* savedata, u16 var) {
+void Save_LCRNGAdvanceLotoID(SaveData* saveData, u16 var) {
 #pragma unused(var)
-    SaveVarsFlags* state = Save_VarsFlags_Get(savedata);
-    SAV_FRIEND_GRP* friend_groups = Save_FriendGroup_Get(savedata);
+    SaveVarsFlags* state = Save_VarsFlags_Get(saveData);
+    SAV_FRIEND_GRP* friend_groups = Save_FriendGroup_Get(saveData);
     u32 rand_id = sub_0202C7DC(friend_groups) * 1103515245 + 12345;
 
     Save_VarsFlags_SetLotoId(state, rand_id);
@@ -185,8 +185,8 @@ void Save_VarsFlags_SetVar4041(SaveVarsFlags* state, u16 value) {
     SetScriptVar(state, VAR_UNK_4041, value);
 }
 
-void sub_02066D60(SaveData* savedata) {
-    SaveVarsFlags* state = Save_VarsFlags_Get(savedata);
+void sub_02066D60(SaveData* saveData) {
+    SaveVarsFlags* state = Save_VarsFlags_Get(saveData);
     u32 rand = LCRandom() % 98;
 
     Save_VarsFlags_SetVar4041(state, rand + 2);

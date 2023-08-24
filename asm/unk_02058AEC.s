@@ -2475,7 +2475,7 @@ sub_02059E1C: ; 0x02059E1C
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 _02059E2E:
-	bl FieldSystem_GetSaveDataPtr
+	bl FieldSystem_GetSaveData
 	add r6, r0, #0
 	bl sub_02037F18
 	mov r1, #0x19

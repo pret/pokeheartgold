@@ -49,10 +49,10 @@ static BOOL CreateStarter(TaskManager *taskManager) {
 
             env->args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct ChooseStarterAppArgs));
             env->args->cursorPos = 0;
-            env->args->options = Save_PlayerData_GetOptionsAddr(fieldSystem->savedata);
+            env->args->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
             for (i = 0; i < (int)NELEMS(species); i++) {
                 Pokemon *mon = &env->args->starters[i];
-                PlayerProfile *profile = Save_PlayerData_GetProfileAddr(fieldSystem->savedata);
+                PlayerProfile *profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
                 ZeroMonData(mon);
                 CreateMon(mon, species[i], 5, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
                 sub_020720FC(mon, profile, BALL_POKE, mapsec, 12, HEAP_ID_FIELD);
@@ -73,11 +73,11 @@ static BOOL CreateStarter(TaskManager *taskManager) {
         env->state = 3;
         break;
     case 3: {
-        Pokedex *pokedex = Save_Pokedex_Get(fieldSystem->savedata);
-        party = SaveArray_Party_Get(fieldSystem->savedata);
+        Pokedex *pokedex = Save_Pokedex_Get(fieldSystem->saveData);
+        party = SaveArray_Party_Get(fieldSystem->saveData);
         Pokemon *myChoice = &env->args->starters[env->args->cursorPos];
         if (Party_AddMon(party, myChoice)) {
-            UpdatePokedexWithReceivedSpecies(fieldSystem->savedata, myChoice);
+            UpdatePokedexWithReceivedSpecies(fieldSystem->saveData, myChoice);
         }
         Pokedex_SetMonCaughtFlag(pokedex, Party_GetMonByIndex(party, 0));
         env->state = 4;

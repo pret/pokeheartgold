@@ -27,7 +27,7 @@
 .public GameStats_GetStat2
 .public sub_0203107C
 .public sub_020310BC
-.public FieldSystem_GetSaveDataPtr
+.public FieldSystem_GetSaveData
 .public sub_0203F7B0
 .public Save_VarsFlags_Get
 .public CheckFlagInArray

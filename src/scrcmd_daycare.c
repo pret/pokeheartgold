@@ -13,9 +13,9 @@ extern u32 FollowingPokemon_GetSpriteID(int species, u16 form, u32 gender);
 static LocalMapObject* CreateDaycareMonSpriteInternal(MapObjectManager* object_man, u8 dc_mon_idx, u16 species, u8 form, u32 gender, u32 direction, u32 x, u32 y, u32 map_no, BOOL shiny);
 
 BOOL ScrCmd_BufferDaycareMonNicks(ScriptContext* ctx) {
-    SaveData* savedata = ctx->fieldSystem->savedata;
+    SaveData* saveData = ctx->fieldSystem->saveData;
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
-    Daycare* daycare = Save_Daycare_Get(savedata);
+    Daycare* daycare = Save_Daycare_Get(saveData);
 
     Save_Daycare_BufferStoredMonNicks(daycare, *msg_fmt);
 
@@ -23,9 +23,9 @@ BOOL ScrCmd_BufferDaycareMonNicks(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_GetDaycareState(ScriptContext* ctx) {
-    SaveData* savedata = ctx->fieldSystem->savedata;
+    SaveData* saveData = ctx->fieldSystem->saveData;
     u16* ret_ptr = ScriptGetVarPointer(ctx);
-    Daycare* daycare = SaveArray_Get(savedata, SAVE_DAYCARE);
+    Daycare* daycare = SaveArray_Get(saveData, SAVE_DAYCARE);
 
     *ret_ptr = Save_Daycare_GetState(daycare);
 
@@ -33,7 +33,7 @@ BOOL ScrCmd_GetDaycareState(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_ResetDaycareEgg(ScriptContext* ctx) {
-    Daycare* daycare = SaveArray_Get(ctx->fieldSystem->savedata, SAVE_DAYCARE);
+    Daycare* daycare = SaveArray_Get(ctx->fieldSystem->saveData, SAVE_DAYCARE);
 
     Save_Daycare_ResetEggStats(daycare);
 
@@ -42,10 +42,10 @@ BOOL ScrCmd_ResetDaycareEgg(ScriptContext* ctx) {
 
 BOOL ScrCmd_GiveDaycareEgg(ScriptContext* ctx) {
     FieldSystem* fieldSystem = ctx->fieldSystem;
-    Daycare* daycare = SaveArray_Get(fieldSystem->savedata, SAVE_DAYCARE);
-    Party* party = SaveArray_Party_Get(fieldSystem->savedata);
-    SaveData* savedata = FieldSystem_GetSaveDataPtr(ctx->fieldSystem);
-    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(savedata);
+    Daycare* daycare = SaveArray_Get(fieldSystem->saveData, SAVE_DAYCARE);
+    Party* party = SaveArray_Party_Get(fieldSystem->saveData);
+    SaveData* saveData = FieldSystem_GetSaveData(ctx->fieldSystem);
+    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(saveData);
 
     GiveEggToPlayer(daycare, party, profile);
 
@@ -55,11 +55,11 @@ BOOL ScrCmd_GiveDaycareEgg(ScriptContext* ctx) {
 BOOL ScrCmd_RetrieveDaycareMon(ScriptContext* ctx) {
     FieldSystem* fieldSystem = ctx->fieldSystem;
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
-    SaveData* savedata = fieldSystem->savedata;
+    SaveData* saveData = fieldSystem->saveData;
     u16* ret_ptr = ScriptGetVarPointer(ctx);
     u16 daycare_mon_idx = ScriptGetVar(ctx);
-    Daycare* daycare = SaveArray_Get(savedata, SAVE_DAYCARE);
-    Party* party = SaveArray_Party_Get(fieldSystem->savedata);
+    Daycare* daycare = SaveArray_Get(saveData, SAVE_DAYCARE);
+    Party* party = SaveArray_Party_Get(fieldSystem->saveData);
 
     *ret_ptr = Save_Daycare_RetrieveMon(party, *msg_fmt, daycare, (u8)daycare_mon_idx);
 
@@ -69,10 +69,10 @@ BOOL ScrCmd_RetrieveDaycareMon(ScriptContext* ctx) {
 BOOL ScrCmd_BufferDaycareWithdrawCost(ScriptContext* ctx) {
     FieldSystem* fieldSystem = ctx->fieldSystem;
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
-    SaveData* savedata = fieldSystem->savedata;
+    SaveData* saveData = fieldSystem->saveData;
     u16* ret_ptr = ScriptGetVarPointer(ctx);
     u16 daycare_mon_idx = ScriptGetVar(ctx);
-    Daycare* daycare = SaveArray_Get(savedata, SAVE_DAYCARE);
+    Daycare* daycare = SaveArray_Get(saveData, SAVE_DAYCARE);
 
     *ret_ptr = Save_Daycare_BufferMonNickAndRetrievalPrice(daycare, (u8)daycare_mon_idx, *msg_fmt);
 
@@ -80,11 +80,11 @@ BOOL ScrCmd_BufferDaycareWithdrawCost(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_BufferDaycareMonGrowth(ScriptContext* ctx) {
-    SaveData* savedata = ctx->fieldSystem->savedata;
+    SaveData* saveData = ctx->fieldSystem->saveData;
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
     u16 daycare_mon_idx = ScriptGetVar(ctx);
-    Daycare* daycare = SaveArray_Get(savedata, SAVE_DAYCARE);
+    Daycare* daycare = SaveArray_Get(saveData, SAVE_DAYCARE);
 
     *ret_ptr = Save_Daycare_BufferGrowthAndNick(daycare, daycare_mon_idx, *msg_fmt);
 
@@ -95,7 +95,7 @@ BOOL ScrCmd_GetTailDaycareMonSpeciesAndNick(ScriptContext* ctx) {
     FieldSystem* fieldSystem = ctx->fieldSystem;
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
-    Daycare* daycare = Save_Daycare_Get(fieldSystem->savedata);
+    Daycare* daycare = Save_Daycare_Get(fieldSystem->saveData);
 
     *ret_ptr = Save_Daycare_BufferTailMonNick(daycare, *msg_fmt);
 
@@ -104,24 +104,24 @@ BOOL ScrCmd_GetTailDaycareMonSpeciesAndNick(ScriptContext* ctx) {
 
 BOOL ScrCmd_PutMonInDaycare(ScriptContext* ctx) {
     FieldSystem* fieldSystem = ctx->fieldSystem;
-    SaveData* savedata = fieldSystem->savedata;
+    SaveData* saveData = fieldSystem->saveData;
     u16 slot = ScriptGetVar(ctx);
-    Party* party = SaveArray_Party_Get(fieldSystem->savedata);
-    Daycare* daycare = SaveArray_Get(savedata, SAVE_DAYCARE);
+    Party* party = SaveArray_Party_Get(fieldSystem->saveData);
+    Daycare* daycare = SaveArray_Get(saveData, SAVE_DAYCARE);
 
-    Save_Daycare_PutMonIn(party, (u8)slot, daycare, savedata);
+    Save_Daycare_PutMonIn(party, (u8)slot, daycare, saveData);
 
     return FALSE;
 }
 
 BOOL ScrCmd_BufferDaycareMonStats(ScriptContext* ctx) {
-    SaveData* savedata = ctx->fieldSystem->savedata;
+    SaveData* saveData = ctx->fieldSystem->saveData;
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u16 nickname_idx = ScriptGetVar(ctx);
     u16 level_idx = ScriptGetVar(ctx);
     u16 gender_idx = ScriptGetVar(ctx);
     u16 slot = ScriptGetVar(ctx);
-    Daycare* daycare = Save_Daycare_Get(savedata);
+    Daycare* daycare = Save_Daycare_Get(saveData);
 
     Save_Daycare_BufferMonStats(daycare, (u8)nickname_idx, (u8)level_idx, (u8)gender_idx, (u8)slot, *msg_fmt);
 
@@ -129,9 +129,9 @@ BOOL ScrCmd_BufferDaycareMonStats(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_GetDaycareCompatibility(ScriptContext* ctx) {
-    SaveData* savedata = ctx->fieldSystem->savedata;
+    SaveData* saveData = ctx->fieldSystem->saveData;
     u16* ret_ptr = ScriptGetVarPointer(ctx);
-    Daycare* daycare = SaveArray_Get(savedata, SAVE_DAYCARE);
+    Daycare* daycare = SaveArray_Get(saveData, SAVE_DAYCARE);
 
     *ret_ptr = Save_Daycare_CalcCompatibility(daycare);
 
@@ -139,9 +139,9 @@ BOOL ScrCmd_GetDaycareCompatibility(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_CheckDaycareEgg(ScriptContext* ctx) {
-    SaveData* savedata = ctx->fieldSystem->savedata;
+    SaveData* saveData = ctx->fieldSystem->saveData;
     u16* ret_ptr = ScriptGetVarPointer(ctx);
-    Daycare* daycare = SaveArray_Get(savedata, SAVE_DAYCARE);
+    Daycare* daycare = SaveArray_Get(saveData, SAVE_DAYCARE);
 
     *ret_ptr = Save_Daycare_HasEgg(daycare);
 
@@ -154,7 +154,7 @@ BOOL ScrCmd_UpdateDaycareMonObjects(ScriptContext* ctx) {
     u16 species;
 
     FieldSystem* fieldSystem = ctx->fieldSystem;
-    daycare = Save_Daycare_Get(fieldSystem->savedata);
+    daycare = Save_Daycare_Get(fieldSystem->saveData);
 
     for (s32 dc_mon_idx = 0, y = 5, x = 8; dc_mon_idx < 2; dc_mon_idx++, y += 4, x += 2) {
         LocalMapObject* mon_map_object = GetMapObjectByID(fieldSystem->mapObjectMan, obj_daycare_poke_1 + dc_mon_idx);
@@ -205,7 +205,7 @@ BOOL ScrCmd_DaycareSanitizeMon(ScriptContext* ctx) {
     FieldSystem* fieldSystem = ctx->fieldSystem;
     u16 party_slot = ScriptGetVar(ctx);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
-    Party* party = SaveArray_Party_Get(fieldSystem->savedata);
+    Party* party = SaveArray_Party_Get(fieldSystem->saveData);
     mon = Party_GetMonByIndex(party, party_slot);
 
     *ret_ptr = 0;
@@ -216,7 +216,7 @@ BOOL ScrCmd_DaycareSanitizeMon(ScriptContext* ctx) {
 
     u32 held_item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
     if (held_item == ITEM_GRISEOUS_ORB) {
-        Bag* bag = Save_Bag_Get(fieldSystem->savedata);
+        Bag* bag = Save_Bag_Get(fieldSystem->saveData);
         if (!Bag_AddItem(bag, ITEM_GRISEOUS_ORB, 1, HEAP_ID_FIELD)) {
             *ret_ptr = 0xFF;
             return FALSE;

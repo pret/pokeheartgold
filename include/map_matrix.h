@@ -40,8 +40,8 @@ MAPDATA* MapMatrix_MapData_New(HeapID heapId);
 void MapMatrix_MapData_Free(MAPDATA* map_data);
 u16 GetMapModelNo(u32 map_no, MAPMATRIX* map_matrix);
 void RemoveMahoganyTownAntennaTree(MAPMATRIX* map_matrix);
-BOOL ShouldUseAlternateLakeOfRage(SaveData* savedata, u32 map_no);
+BOOL ShouldUseAlternateLakeOfRage(SaveData* saveData, u32 map_no);
 void SetLakeOfRageWaterLevel(MAPMATRIX* map_matrix, BOOL lower_water_level);
-void PlaceSafariZoneAreas(MAPMATRIX* map_matrix, SaveData* savedata);
+void PlaceSafariZoneAreas(MAPMATRIX* map_matrix, SaveData* saveData);
 
 #endif
