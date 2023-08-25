@@ -1,3 +1,27 @@
+; Goldenrod Tunnel B2F
+
+; Puzzle:
+;   When you hit a red, green, or blue switch, any gate bordering a room of that
+;   color will open if closed, or close if open.
+
+; Gate diagram:
+;  - Each gate has an index
+;  - The room color is noted by a lowercase letter {r,g,b,p}
+;
+; [ ]--0--[ ]-----[ ]--1--[ ]
+;  |       |       |       |
+;  |   g   2   b   3   r   |
+;  |       |       |       |
+; [ ]--4--[ ]--5--[ ]--6--[ ]-----[ ]
+;  |       |       |       |
+;  |   b   7   r   8   g   9   p
+;  |       |       |       |
+; [ ]-----[ ]-----[ ]-----[ ]
+
+; There are temp variables indicating whether each gate is open or closed. The
+; temp variable corresponds to the gate's index, (e.g. gate 2 uses
+; VAR_TEMP_x4002).
+
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_D37R0104.h"
 #include "msgdata/msg/msg_0119_D37R0104.h"
@@ -20,16 +44,16 @@ scr_seq_D37R0104_006:
 	goto_if_ne _0033
 	clearflag FLAG_HIDE_ROCKET_TAKEOVER_1
 _0033:
-	setvar VAR_TEMP_x4000, 0
-	setvar VAR_TEMP_x4001, 0
-	setvar VAR_TEMP_x4002, 1
-	setvar VAR_TEMP_x4003, 0
-	setvar VAR_TEMP_x4004, 0
-	setvar VAR_TEMP_x4005, 0
-	setvar VAR_TEMP_x4006, 0
-	setvar VAR_TEMP_x4007, 0
-	setvar VAR_TEMP_x4008, 0
-	setvar VAR_TEMP_x4009, 1
+	setvar VAR_TEMP_x4000, GATE_OPEN
+	setvar VAR_TEMP_x4001, GATE_OPEN
+	setvar VAR_TEMP_x4002, GATE_CLOSED
+	setvar VAR_TEMP_x4003, GATE_OPEN
+	setvar VAR_TEMP_x4004, GATE_OPEN
+	setvar VAR_TEMP_x4005, GATE_OPEN
+	setvar VAR_TEMP_x4006, GATE_OPEN
+	setvar VAR_TEMP_x4007, GATE_OPEN
+	setvar VAR_TEMP_x4008, GATE_OPEN
+	setvar VAR_TEMP_x4009, GATE_CLOSED
 	end
 
 scr_seq_D37R0104_005:
@@ -39,269 +63,290 @@ scr_seq_D37R0104_005:
 	scrcmd_375 obj_D37R0104_stop_4
 	scrcmd_375 obj_D37R0104_stop_5
 	scrcmd_375 obj_D37R0104_stop_6
-	goto_if_set FLAG_UNK_09B, _0096
+	goto_if_set FLAG_OPENED_GOLDENROD_PURPLE_GATE, _open_purple_gate
 	end
 
-_0096:
-	move_person_facing obj_D37R0104_babyboy1_4_6, 18, 0, 14, DIR_NORTH
-	move_person_facing obj_D37R0104_babyboy1_3_6, 24, 0, 14, DIR_NORTH
+_open_purple_gate:
+	move_person_facing obj_D37R0104_purplegate_left, 18, 0, 14, DIR_NORTH
+	move_person_facing obj_D37R0104_purplegate_right, 24, 0, 14, DIR_NORTH
 	move_person_facing obj_D37R0104_stop_6, 24, 0, 14, DIR_NORTH
 	end
 
+; Press the red switch.
 scr_seq_D37R0104_002:
 	scrcmd_609
 	lockall
 	play_se SEQ_SE_GS_ZUKAN06
-	compare VAR_TEMP_x4001, 0
+	compare VAR_TEMP_x4001, GATE_OPEN
 	goto_if_ne _00F5
-	apply_movement obj_D37R0104_babyboy1_4_2, _05CC
-	apply_movement obj_D37R0104_babyboy1_3_2, _05D4
+	apply_movement obj_D37R0104_gate1_left, _05CC
+	apply_movement obj_D37R0104_gate1_right, _05D4
 	apply_movement obj_D37R0104_stop_2, _060C
-	setvar VAR_TEMP_x4001, 1
+	setvar VAR_TEMP_x4001, GATE_CLOSED
 	goto _0113
-
 _00F5:
-	apply_movement obj_D37R0104_babyboy1_4_2, _05DC
-	apply_movement obj_D37R0104_babyboy1_3_2, _05E4
+	apply_movement obj_D37R0104_gate1_left, _05DC
+	apply_movement obj_D37R0104_gate1_right, _05E4
 	apply_movement obj_D37R0104_stop_2, _0614
-	setvar VAR_TEMP_x4001, 0
+	setvar VAR_TEMP_x4001, GATE_OPEN
+	; fallthrough
+
 _0113:
-	compare VAR_TEMP_x4003, 0
+	compare VAR_TEMP_x4003, GATE_OPEN
 	goto_if_ne _013C
-	apply_movement obj_D37R0104_babyboy1_6_2, _05EC
-	apply_movement obj_D37R0104_babyboy1_7_2, _05F4
-	setvar VAR_TEMP_x4003, 1
+	apply_movement obj_D37R0104_gate3_top, _05EC
+	apply_movement obj_D37R0104_gate3_bottom, _05F4
+	setvar VAR_TEMP_x4003, GATE_CLOSED
 	goto _0152
-
 _013C:
-	apply_movement obj_D37R0104_babyboy1_6_2, _05FC
-	apply_movement obj_D37R0104_babyboy1_7_2, _0604
-	setvar VAR_TEMP_x4003, 0
+	apply_movement obj_D37R0104_gate3_top, _05FC
+	apply_movement obj_D37R0104_gate3_bottom, _0604
+	setvar VAR_TEMP_x4003, GATE_OPEN
+	; fallthrough
+
 _0152:
-	compare VAR_TEMP_x4005, 0
+	compare VAR_TEMP_x4005, GATE_OPEN
 	goto_if_ne _0183
-	apply_movement obj_D37R0104_babyboy1_4_4, _05CC
-	apply_movement obj_D37R0104_babyboy1_3_4, _05D4
+	apply_movement obj_D37R0104_gate5_left, _05CC
+	apply_movement obj_D37R0104_gate5_right, _05D4
 	apply_movement obj_D37R0104_stop_4, _060C
-	setvar VAR_TEMP_x4005, 1
+	setvar VAR_TEMP_x4005, GATE_CLOSED
 	goto _01A1
-
 _0183:
-	apply_movement obj_D37R0104_babyboy1_4_4, _05DC
-	apply_movement obj_D37R0104_babyboy1_3_4, _05E4
+	apply_movement obj_D37R0104_gate5_left, _05DC
+	apply_movement obj_D37R0104_gate5_right, _05E4
 	apply_movement obj_D37R0104_stop_4, _0614
-	setvar VAR_TEMP_x4005, 0
+	setvar VAR_TEMP_x4005, GATE_OPEN
+	; fallthrough
+
 _01A1:
-	compare VAR_TEMP_x4006, 0
+	compare VAR_TEMP_x4006, GATE_OPEN
 	goto_if_ne _01D2
-	apply_movement obj_D37R0104_babyboy1_4_5, _05CC
-	apply_movement obj_D37R0104_babyboy1_3_5, _05D4
+	apply_movement obj_D37R0104_gate6_left, _05CC
+	apply_movement obj_D37R0104_gate6_right, _05D4
 	apply_movement obj_D37R0104_stop_5, _060C
-	setvar VAR_TEMP_x4006, 1
+	setvar VAR_TEMP_x4006, GATE_CLOSED
 	goto _01F0
-
 _01D2:
-	apply_movement obj_D37R0104_babyboy1_4_5, _05DC
-	apply_movement obj_D37R0104_babyboy1_3_5, _05E4
+	apply_movement obj_D37R0104_gate6_left, _05DC
+	apply_movement obj_D37R0104_gate6_right, _05E4
 	apply_movement obj_D37R0104_stop_5, _0614
-	setvar VAR_TEMP_x4006, 0
+	setvar VAR_TEMP_x4006, GATE_OPEN
+	; fallthrough
+
 _01F0:
-	compare VAR_TEMP_x4007, 0
+	compare VAR_TEMP_x4007, GATE_OPEN
 	goto_if_ne _0219
-	apply_movement obj_D37R0104_babyboy1_6_3, _05EC
-	apply_movement obj_D37R0104_babyboy1_7_3, _05F4
-	setvar VAR_TEMP_x4007, 1
+	apply_movement obj_D37R0104_gate7_top, _05EC
+	apply_movement obj_D37R0104_gate7_bottom, _05F4
+	setvar VAR_TEMP_x4007, GATE_CLOSED
 	goto _022F
-
 _0219:
-	apply_movement obj_D37R0104_babyboy1_6_3, _05FC
-	apply_movement obj_D37R0104_babyboy1_7_3, _0604
-	setvar VAR_TEMP_x4007, 0
-_022F:
-	compare VAR_TEMP_x4008, 0
-	goto_if_ne _0258
-	apply_movement obj_D37R0104_babyboy1_6_4, _05EC
-	apply_movement obj_D37R0104_babyboy1_7_4, _05F4
-	setvar VAR_TEMP_x4008, 1
-	goto _026E
+	apply_movement obj_D37R0104_gate7_top, _05FC
+	apply_movement obj_D37R0104_gate7_bottom, _0604
+	setvar VAR_TEMP_x4007, GATE_OPEN
+	; fallthrough
 
+_022F:
+	compare VAR_TEMP_x4008, GATE_OPEN
+	goto_if_ne _0258
+	apply_movement obj_D37R0104_gate8_top, _05EC
+	apply_movement obj_D37R0104_gate8_bottom, _05F4
+	setvar VAR_TEMP_x4008, GATE_CLOSED
+	goto _026E
 _0258:
-	apply_movement obj_D37R0104_babyboy1_6_4, _05FC
-	apply_movement obj_D37R0104_babyboy1_7_4, _0604
-	setvar VAR_TEMP_x4008, 0
+	apply_movement obj_D37R0104_gate8_top, _05FC
+	apply_movement obj_D37R0104_gate8_bottom, _0604
+	setvar VAR_TEMP_x4008, GATE_OPEN
+	; fallthrough
+
 _026E:
 	wait_movement
 	releaseall
 	end
 
+; Press the green switch.
 scr_seq_D37R0104_001:
 	scrcmd_609
 	lockall
 	play_se SEQ_SE_GS_ZUKAN06
-	compare VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, GATE_OPEN
 	goto_if_ne _02AD
-	apply_movement obj_D37R0104_babyboy1_4, _05CC
-	apply_movement obj_D37R0104_babyboy1_3, _05D4
+	apply_movement obj_D37R0104_gate0_left, _05CC
+	apply_movement obj_D37R0104_gate0_right, _05D4
 	apply_movement obj_D37R0104_stop_3, _060C
-	setvar VAR_TEMP_x4000, 1
+	setvar VAR_TEMP_x4000, GATE_CLOSED
 	goto _02CB
-
 _02AD:
-	apply_movement obj_D37R0104_babyboy1_4, _05DC
-	apply_movement obj_D37R0104_babyboy1_3, _05E4
+	apply_movement obj_D37R0104_gate0_left, _05DC
+	apply_movement obj_D37R0104_gate0_right, _05E4
 	apply_movement obj_D37R0104_stop_3, _0614
-	setvar VAR_TEMP_x4000, 0
+	setvar VAR_TEMP_x4000, GATE_OPEN
+	; fallthrough
+
 _02CB:
-	compare VAR_TEMP_x4002, 0
+	compare VAR_TEMP_x4002, GATE_OPEN
 	goto_if_ne _02F4
-	apply_movement obj_D37R0104_babyboy1_6, _05EC
-	apply_movement obj_D37R0104_babyboy1_7, _05F4
-	setvar VAR_TEMP_x4002, 1
+	apply_movement obj_D37R0104_gate2_top, _05EC
+	apply_movement obj_D37R0104_gate2_bottom, _05F4
+	setvar VAR_TEMP_x4002, GATE_CLOSED
 	goto _030A
-
 _02F4:
-	apply_movement obj_D37R0104_babyboy1_6, _05FC
-	apply_movement obj_D37R0104_babyboy1_7, _0604
-	setvar VAR_TEMP_x4002, 0
+	apply_movement obj_D37R0104_gate2_top, _05FC
+	apply_movement obj_D37R0104_gate2_bottom, _0604
+	setvar VAR_TEMP_x4002, GATE_OPEN
+	; fallthrough
+
 _030A:
-	compare VAR_TEMP_x4004, 0
+	compare VAR_TEMP_x4004, GATE_OPEN
 	goto_if_ne _033B
-	apply_movement obj_D37R0104_babyboy1_4_3, _05CC
-	apply_movement obj_D37R0104_babyboy1_3_3, _05D4
+	apply_movement obj_D37R0104_gate4_left, _05CC
+	apply_movement obj_D37R0104_gate4_right, _05D4
 	apply_movement obj_D37R0104_stop, _060C
-	setvar VAR_TEMP_x4004, 1
+	setvar VAR_TEMP_x4004, GATE_CLOSED
 	goto _0359
-
 _033B:
-	apply_movement obj_D37R0104_babyboy1_4_3, _05DC
-	apply_movement obj_D37R0104_babyboy1_3_3, _05E4
+	apply_movement obj_D37R0104_gate4_left, _05DC
+	apply_movement obj_D37R0104_gate4_right, _05E4
 	apply_movement obj_D37R0104_stop, _0614
-	setvar VAR_TEMP_x4004, 0
+	setvar VAR_TEMP_x4004, GATE_OPEN
+	; fallthrough
+
 _0359:
-	compare VAR_TEMP_x4006, 0
+	compare VAR_TEMP_x4006, GATE_OPEN
 	goto_if_ne _038A
-	apply_movement obj_D37R0104_babyboy1_4_5, _05CC
-	apply_movement obj_D37R0104_babyboy1_3_5, _05D4
+	apply_movement obj_D37R0104_gate6_left, _05CC
+	apply_movement obj_D37R0104_gate6_right, _05D4
 	apply_movement obj_D37R0104_stop_5, _060C
-	setvar VAR_TEMP_x4006, 1
+	setvar VAR_TEMP_x4006, GATE_CLOSED
 	goto _03A8
-
 _038A:
-	apply_movement obj_D37R0104_babyboy1_4_5, _05DC
-	apply_movement obj_D37R0104_babyboy1_3_5, _05E4
+	apply_movement obj_D37R0104_gate6_left, _05DC
+	apply_movement obj_D37R0104_gate6_right, _05E4
 	apply_movement obj_D37R0104_stop_5, _0614
-	setvar VAR_TEMP_x4006, 0
+	setvar VAR_TEMP_x4006, GATE_OPEN
+	; fallthrough
+
 _03A8:
-	compare VAR_TEMP_x4008, 0
+	compare VAR_TEMP_x4008, GATE_OPEN
 	goto_if_ne _03D1
-	apply_movement obj_D37R0104_babyboy1_6_4, _05EC
-	apply_movement obj_D37R0104_babyboy1_7_4, _05F4
-	setvar VAR_TEMP_x4008, 1
+	apply_movement obj_D37R0104_gate8_top, _05EC
+	apply_movement obj_D37R0104_gate8_bottom, _05F4
+	setvar VAR_TEMP_x4008, GATE_CLOSED
 	goto _03E7
-
 _03D1:
-	apply_movement obj_D37R0104_babyboy1_6_4, _05FC
-	apply_movement obj_D37R0104_babyboy1_7_4, _0604
-	setvar VAR_TEMP_x4008, 0
-_03E7:
-	compare VAR_TEMP_x4009, 0
-	goto_if_ne _0410
-	apply_movement obj_D37R0104_babyboy1_6_5, _05EC
-	apply_movement obj_D37R0104_babyboy1_7_5, _05F4
-	setvar VAR_TEMP_x4009, 1
-	goto _0426
+	apply_movement obj_D37R0104_gate8_top, _05FC
+	apply_movement obj_D37R0104_gate8_bottom, _0604
+	setvar VAR_TEMP_x4008, GATE_OPEN
+	; fallthrough
 
+_03E7:
+	compare VAR_TEMP_x4009, GATE_OPEN
+	goto_if_ne _0410
+	apply_movement obj_D37R0104_gate9_top, _05EC
+	apply_movement obj_D37R0104_gate9_bottom, _05F4
+	setvar VAR_TEMP_x4009, GATE_CLOSED
+	goto _0426
 _0410:
-	apply_movement obj_D37R0104_babyboy1_6_5, _05FC
-	apply_movement obj_D37R0104_babyboy1_7_5, _0604
-	setvar VAR_TEMP_x4009, 0
+	apply_movement obj_D37R0104_gate9_top, _05FC
+	apply_movement obj_D37R0104_gate9_bottom, _0604
+	setvar VAR_TEMP_x4009, GATE_OPEN
+	; fallthrough
+
 _0426:
 	wait_movement
 	releaseall
 	end
 
+; Press the blue switch.
 scr_seq_D37R0104_000:
 	scrcmd_609
 	lockall
 	play_se SEQ_SE_GS_ZUKAN06
-	compare VAR_TEMP_x4002, 0
+	compare VAR_TEMP_x4002, GATE_OPEN
 	goto_if_ne _045D
-	apply_movement obj_D37R0104_babyboy1_6, _05EC
-	apply_movement obj_D37R0104_babyboy1_7, _05F4
-	setvar VAR_TEMP_x4002, 1
+	apply_movement obj_D37R0104_gate2_top, _05EC
+	apply_movement obj_D37R0104_gate2_bottom, _05F4
+	setvar VAR_TEMP_x4002, GATE_CLOSED
 	goto _0473
-
 _045D:
-	apply_movement obj_D37R0104_babyboy1_6, _05FC
-	apply_movement obj_D37R0104_babyboy1_7, _0604
-	setvar VAR_TEMP_x4002, 0
+	apply_movement obj_D37R0104_gate2_top, _05FC
+	apply_movement obj_D37R0104_gate2_bottom, _0604
+	setvar VAR_TEMP_x4002, GATE_OPEN
+	; fallthrough
+
 _0473:
-	compare VAR_TEMP_x4003, 0
+	compare VAR_TEMP_x4003, GATE_OPEN
 	goto_if_ne _049C
-	apply_movement obj_D37R0104_babyboy1_6_2, _05EC
-	apply_movement obj_D37R0104_babyboy1_7_2, _05F4
-	setvar VAR_TEMP_x4003, 1
+	apply_movement obj_D37R0104_gate3_top, _05EC
+	apply_movement obj_D37R0104_gate3_bottom, _05F4
+	setvar VAR_TEMP_x4003, GATE_CLOSED
 	goto _04B2
-
 _049C:
-	apply_movement obj_D37R0104_babyboy1_6_2, _05FC
-	apply_movement obj_D37R0104_babyboy1_7_2, _0604
-	setvar VAR_TEMP_x4003, 0
+	apply_movement obj_D37R0104_gate3_top, _05FC
+	apply_movement obj_D37R0104_gate3_bottom, _0604
+	setvar VAR_TEMP_x4003, GATE_OPEN
+	; fallthrough
+
 _04B2:
-	compare VAR_TEMP_x4004, 0
+	compare VAR_TEMP_x4004, GATE_OPEN
 	goto_if_ne _04E3
-	apply_movement obj_D37R0104_babyboy1_4_3, _05CC
-	apply_movement obj_D37R0104_babyboy1_3_3, _05D4
+	apply_movement obj_D37R0104_gate4_left, _05CC
+	apply_movement obj_D37R0104_gate4_right, _05D4
 	apply_movement obj_D37R0104_stop, _060C
-	setvar VAR_TEMP_x4004, 1
+	setvar VAR_TEMP_x4004, GATE_CLOSED
 	goto _0501
-
 _04E3:
-	apply_movement obj_D37R0104_babyboy1_4_3, _05DC
-	apply_movement obj_D37R0104_babyboy1_3_3, _05E4
+	apply_movement obj_D37R0104_gate4_left, _05DC
+	apply_movement obj_D37R0104_gate4_right, _05E4
 	apply_movement obj_D37R0104_stop, _0614
-	setvar VAR_TEMP_x4004, 0
+	setvar VAR_TEMP_x4004, GATE_OPEN
+	; fallthrough
+
 _0501:
-	compare VAR_TEMP_x4005, 0
+	compare VAR_TEMP_x4005, GATE_OPEN
 	goto_if_ne _0532
-	apply_movement obj_D37R0104_babyboy1_4_4, _05CC
-	apply_movement obj_D37R0104_babyboy1_3_4, _05D4
+	apply_movement obj_D37R0104_gate5_left, _05CC
+	apply_movement obj_D37R0104_gate5_right, _05D4
 	apply_movement obj_D37R0104_stop_4, _060C
-	setvar VAR_TEMP_x4005, 1
+	setvar VAR_TEMP_x4005, GATE_CLOSED
 	goto _0550
-
 _0532:
-	apply_movement obj_D37R0104_babyboy1_4_4, _05DC
-	apply_movement obj_D37R0104_babyboy1_3_4, _05E4
+	apply_movement obj_D37R0104_gate5_left, _05DC
+	apply_movement obj_D37R0104_gate5_right, _05E4
 	apply_movement obj_D37R0104_stop_4, _0614
-	setvar VAR_TEMP_x4005, 0
-_0550:
-	compare VAR_TEMP_x4007, 0
-	goto_if_ne _0579
-	apply_movement obj_D37R0104_babyboy1_6_3, _05EC
-	apply_movement obj_D37R0104_babyboy1_7_3, _05F4
-	setvar VAR_TEMP_x4007, 1
-	goto _058F
+	setvar VAR_TEMP_x4005, GATE_OPEN
+	; fallthrough
 
+_0550:
+	compare VAR_TEMP_x4007, GATE_OPEN
+	goto_if_ne _0579
+	apply_movement obj_D37R0104_gate7_top, _05EC
+	apply_movement obj_D37R0104_gate7_bottom, _05F4
+	setvar VAR_TEMP_x4007, GATE_CLOSED
+	goto _058F
 _0579:
-	apply_movement obj_D37R0104_babyboy1_6_3, _05FC
-	apply_movement obj_D37R0104_babyboy1_7_3, _0604
-	setvar VAR_TEMP_x4007, 0
+	apply_movement obj_D37R0104_gate7_top, _05FC
+	apply_movement obj_D37R0104_gate7_bottom, _0604
+	setvar VAR_TEMP_x4007, GATE_OPEN
+	; fallthrough
+
 _058F:
 	wait_movement
 	releaseall
 	end
 
+; Press the purple switch.
 scr_seq_D37R0104_003:
-	goto_if_set FLAG_UNK_09B, _05CA
+	goto_if_set FLAG_OPENED_GOLDENROD_PURPLE_GATE, _05CA
 	scrcmd_609
 	lockall
 	play_se SEQ_SE_GS_ZUKAN06
-	apply_movement obj_D37R0104_babyboy1_4_6, _05DC
-	apply_movement obj_D37R0104_babyboy1_3_6, _05E4
+	apply_movement obj_D37R0104_purplegate_left, _05DC
+	apply_movement obj_D37R0104_purplegate_right, _05E4
 	apply_movement obj_D37R0104_stop_6, _0614
 	wait_movement
-	setflag FLAG_UNK_09B
+	setflag FLAG_OPENED_GOLDENROD_PURPLE_GATE
 	releaseall
 	end
 

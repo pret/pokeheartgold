@@ -202,7 +202,7 @@
 #define MAP_T25R0502                          198
 #define MAP_D37R0102                          199
 #define MAP_D37R0103                          200
-#define MAP_D37R0104                          201
+#define MAP_D37R0104                          201  // Goldenrod Tunnel B2F
 #define MAP_D37R0105                          202
 #define MAP_T25R0401                          203
 #define MAP_T25R0301                          204

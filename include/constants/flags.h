@@ -172,7 +172,7 @@
 #define FLAG_UNK_098                                                0x98
 #define FLAG_MET_PASSERBY_BOY                                       0x99
 #define FLAG_UNK_09A                                                0x9A
-#define FLAG_UNK_09B                                                0x9B
+#define FLAG_OPENED_GOLDENROD_PURPLE_GATE                           0x9B
 #define FLAG_GOT_POKEGEAR                                           0x9C
 #define FLAG_UNK_09D                                                0x9D
 #define FLAG_UNK_09E                                                0x9E
