@@ -37,9 +37,9 @@ _0057:
 scr_seq_T01R0301_006:
 	scrcmd_609
 	lockall
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _00C8
 	wait_movement
 	buffer_players_name 0
@@ -52,9 +52,9 @@ scr_seq_T01R0301_006:
 	apply_movement obj_T01R0301_ookido, _00F4
 	apply_movement obj_player, _00D0
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0451_T01R0301_00042
 	wait_button_or_walk_away
 	closemsg
@@ -582,9 +582,9 @@ _0852:
 	get_person_coords 0, VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4000, 8
 	goto_if_eq _0908
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	compare VAR_SPECIAL_x8004, 1
 	goto_if_ne _08D3
 	apply_movement obj_player, _0998
@@ -600,9 +600,9 @@ _08EE:
 	apply_movement obj_player, _09B0
 _08F6:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	goto _0912
 
 _0908:

@@ -69,12 +69,12 @@
 .public sub_02052444
 .public sub_02052544
 .public IsBattleResultWin
-.public sub_02052564
-.public sub_02052574
-.public sub_02052580
+.public IsBattleResultStaticWildWin
+.public IsBattleResultLatiCaught
+.public BattleSetup_SetAllySideBattlersToPlayer
 .public GetMetatileBehaviorAt
 .public Field_GetTimeOfDay
-.public sub_0205B46C
+.public GetUnionRoomAvatarAttrBySprite
 .public MetatileBehavior_IsEncounterGrass
 .public sub_0205B6F4
 .public MetatileBehavior_IsSurfableWater

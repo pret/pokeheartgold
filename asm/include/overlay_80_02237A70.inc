@@ -16,7 +16,7 @@
 .public BattleSetup_New
 .public BattleSetup_AddMonToParty
 .public sub_02051D18
-.public sub_02052580
+.public BattleSetup_SetAllySideBattlersToPlayer
 .public sub_0205C1F0
 .public sub_0205C218
 .public sub_0205C268

@@ -38,14 +38,14 @@ _0060:
 scr_seq_D35R0104_001:
 	scrcmd_609
 	lockall
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _00EC
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	apply_movement obj_D35R0104_wataru, _00F4
 	wait_movement
 	apply_movement obj_D35R0104_wataru, _00FC
@@ -103,15 +103,15 @@ scr_seq_D35R0104_007:
 	wait_movement
 	npc_msg msg_0114_D35R0104_00010
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_D35R0104_tsure_poke_static_murkrow_2, _0194
 	apply_movement obj_player, _01A4
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	setvar VAR_UNK_40AC, 6
 	hide_person obj_D35R0104_tsure_poke_static_murkrow_2
 	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_2
@@ -161,26 +161,26 @@ _01FE:
 _0219:
 	apply_movement obj_D35R0104_gsrivel, _02A8
 _0221:
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _02B4
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	buffer_rivals_name 0
 	npc_msg msg_0114_D35R0104_00003
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 56
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 56
 	apply_movement obj_D35R0104_gsrivel, _02BC
 	apply_movement obj_player, _02C4
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	apply_movement obj_D35R0104_gsrivel, _02D8
 	wait_movement
 	callstd std_fade_end_rival_intro_music
@@ -233,9 +233,9 @@ scr_seq_D35R0104_003:
 	lockall
 	apply_movement obj_player, _00F4
 	wait_movement
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4000, 23
 	goto_if_ne _0329
@@ -247,9 +247,9 @@ _0329:
 _0331:
 	apply_movement obj_D35R0104_sakaki, _0440
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	buffer_players_name 0
 	npc_msg msg_0114_D35R0104_00004
 	closemsg
@@ -283,15 +283,15 @@ _0331:
 	closemsg
 	npc_msg msg_0114_D35R0104_00009
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_D35R0104_tsure_poke_static_murkrow, _04F4
 	apply_movement obj_player, _042C
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	setvar VAR_UNK_40AC, 4
 	hide_person obj_D35R0104_tsure_poke_static_murkrow
 	setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_1

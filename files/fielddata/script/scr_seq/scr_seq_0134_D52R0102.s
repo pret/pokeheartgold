@@ -83,9 +83,9 @@ _00FB:
 	setflag FLAG_CAUGHT_KYOGRE
 	clearflag FLAG_HIDE_EMBEDDED_TOWER_KYOGRE_HIKER
 	show_person obj_D52R0102_mount_2
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	get_player_facing VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _0142
@@ -101,9 +101,9 @@ _0142:
 	apply_movement obj_player, _01C8
 	wait_movement
 _0156:
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0149_D52R0102_00002
 	closemsg
 	apply_movement obj_D52R0102_mount_2, _01D0

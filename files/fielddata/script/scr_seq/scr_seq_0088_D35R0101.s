@@ -86,16 +86,16 @@ scr_seq_D35R0101_006:
 	buffer_players_name 0
 	gender_msgbox msg_0111_D35R0101_00005, msg_0111_D35R0101_00006
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_D35R0101_wataru, _0240
 	apply_movement obj_player, _025C
 	apply_movement obj_D35R0101_tsure_poke_static_dragonite, _02CC
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	apply_movement obj_D35R0101_sunglasses, _0268
 	wait_movement
 	apply_movement obj_D35R0101_wataru, _0280

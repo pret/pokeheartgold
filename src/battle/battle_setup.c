@@ -141,7 +141,7 @@ BattleSetup* BattleSetup_New_Tutorial(HeapID heapId, FieldSystem* fieldSystem) {
     setup->unk1B8 = NULL;
     setup->gameStats = Save_GameStats_Get(fieldSystem->saveData);
     setup->mapNumber = fieldSystem->location->mapId;
-    sub_02052580(setup);
+    BattleSetup_SetAllySideBattlersToPlayer(setup);
     return setup;
 }
 
@@ -261,7 +261,7 @@ void sub_02051D18(BattleSetup* setup, FieldSystem* fieldSystem, SaveData* saveDa
 
 void BattleSetup_InitFromFieldSystem(BattleSetup* setup, FieldSystem *fieldSystem) {
     sub_02051D18(setup, fieldSystem, fieldSystem->saveData, fieldSystem->location->mapId, fieldSystem->unk94, fieldSystem->unkB0);
-    sub_02052580(setup);
+    BattleSetup_SetAllySideBattlersToPlayer(setup);
 }
 
 void BattleSetup_InitForFixedLevelFacility(BattleSetup* setup, FieldSystem *fieldSystem, int level) {
@@ -309,7 +309,7 @@ void BattleSetup_InitForFixedLevelFacility(BattleSetup* setup, FieldSystem *fiel
     setup->palPad = Save_PalPad_Get(fieldSystem->saveData);
     setup->mapNumber = fieldSystem->location->mapId;
     setup->saveData = fieldSystem->saveData;
-    sub_02052580(setup);
+    BattleSetup_SetAllySideBattlersToPlayer(setup);
 }
 
 void sub_020520B0(BattleSetup* setup, FieldSystem *fieldSystem, Party *party, u8 *a4) {
@@ -384,11 +384,11 @@ void sub_020520B0(BattleSetup* setup, FieldSystem *fieldSystem, Party *party, u8
     if (sub_0203401C(sub_0203993C())) {
         int avatar = PlayerProfile_GetAvatar(profile);
         int gender = PlayerProfile_GetTrainerGender(profile);
-        setup->trainer[BATTLER_PLAYER].trainerClass = sub_0205B46C(gender, avatar, 1);
+        setup->trainer[BATTLER_PLAYER].trainerClass = GetUnionRoomAvatarAttrBySprite(gender, avatar, 1);
         CopyU16StringArray(setup->trainer[BATTLER_PLAYER].name, PlayerProfile_GetNamePtr(setup->profile[BATTLER_PLAYER]));
         setup->trainer[BATTLER_PLAYER2] = setup->trainer[BATTLER_PLAYER];
     } else {
-        sub_02052580(setup);
+        BattleSetup_SetAllySideBattlersToPlayer(setup);
     }
 }
 
@@ -549,7 +549,7 @@ BOOL IsBattleResultWin(u32 result) {
     }
 }
 
-BOOL sub_02052564(u32 result) {
+BOOL IsBattleResultStaticWildWin(u32 result) {
     switch (result) {
     case BATTLE_OUTCOME_WIN:
     case BATTLE_OUTCOME_MON_CAUGHT:
@@ -559,7 +559,7 @@ BOOL sub_02052564(u32 result) {
     }
 }
 
-BOOL sub_02052574(u32 result) {
+BOOL IsBattleResultLatiCaught(u32 result) {
     switch (result) {
     case BATTLE_OUTCOME_MON_CAUGHT:
         return FALSE;
@@ -568,7 +568,7 @@ BOOL sub_02052574(u32 result) {
     }
 }
 
-void sub_02052580(BattleSetup* setup) {
+void BattleSetup_SetAllySideBattlersToPlayer(BattleSetup* setup) {
     setup->trainer[BATTLER_PLAYER].trainerClass = PlayerProfile_GetTrainerGender(setup->profile[BATTLER_PLAYER]);
     CopyU16StringArray(setup->trainer[BATTLER_PLAYER].name, PlayerProfile_GetNamePtr(setup->profile[BATTLER_PLAYER]));
     setup->trainer[BATTLER_PLAYER2] = setup->trainer[BATTLER_PLAYER];

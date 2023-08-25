@@ -88,8 +88,8 @@ void sub_0205239C(BattleSetup* setup, FieldSystem* fieldSystem);
 void sub_02052444(BattleSetup* setup, FieldSystem* fieldSystem);
 void sub_02052544(BattleSetup* setup);
 BOOL IsBattleResultWin(u32 a0);
-BOOL sub_02052564(u32 a0);
-BOOL sub_02052574(u32 a0);
-void sub_02052580(BattleSetup* setup);
+BOOL IsBattleResultStaticWildWin(u32 a0);
+BOOL IsBattleResultLatiCaught(u32 a0);
+void BattleSetup_SetAllySideBattlersToPlayer(BattleSetup* setup);
 
 #endif //POKEHEARTGOLD_BATTLE_SETUP_H

@@ -53,14 +53,14 @@ scr_seq_R36R0201_002:
 	callstd std_bug_contest_guard_ask_end
 	compare VAR_UNK_4118, 1
 	goto_if_ne _011A
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0128
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -105,9 +105,9 @@ scr_seq_R36R0201_001:
 	goto_if_ne _0231
 	goto_if_set FLAG_UNK_1C4, _01BA
 	get_player_facing VAR_SPECIAL_RESULT
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0185
 	apply_movement obj_player, _0238
@@ -123,21 +123,21 @@ _01A0:
 	apply_movement obj_player, _024C
 _01A8:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	goto _01DC
 
 _01BA:
 	get_player_facing VAR_SPECIAL_RESULT
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _025C
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 _01DC:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK

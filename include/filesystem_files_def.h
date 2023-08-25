@@ -89,7 +89,7 @@ typedef enum NarcId
     NARC_data_mmodel_mmodel                                 =  81,
     NARC_application_choose_starter_choose_starter_main_res =  82,
     NARC_a_0_8_3                                            =  83,
-    NARC_a_0_8_4                                            =  84,
+    NARC_application_record_record                          =  84,
     NARC_a_0_8_5                                            =  85,
     NARC_a_0_8_6                                            =  86,
     NARC_a_0_8_7                                            =  87,

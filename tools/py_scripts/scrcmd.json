@@ -1387,7 +1387,7 @@
       ]
     },
     {
-      "name": "scrcmd_221",
+      "name": "static_wild_won_or_caught",
       "args": [
         "var",
         1
@@ -1771,11 +1771,11 @@
       "args": []
     },
     {
-      "name": "scrcmd_287",
+      "name": "buffer_union_room_avatar_choices",
       "args": []
     },
     {
-      "name": "scrcmd_288",
+      "name": "union_room_avatar_idx_to_trainer_class",
       "args": [
         "var",
         "var"
@@ -3720,7 +3720,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_588",
+      "name": "lati_caught_check",
       "args": [
         "var"
       ]
@@ -3792,17 +3792,17 @@
       "args": []
     },
     {
-      "name": "scrcmd_602",
+      "name": "toggle_following_pokemon_movement",
       "args": [
         2
       ]
     },
     {
-      "name": "scrcmd_603",
+      "name": "wait_following_pokemon_movement",
       "args": []
     },
     {
-      "name": "scrcmd_604",
+      "name": "following_pokemon_movement",
       "args": [
         2
       ]

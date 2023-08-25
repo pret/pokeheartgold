@@ -479,15 +479,15 @@ _0591:
 	apply_movement obj_T25_rocketm_9, _0734
 _05A6:
 	wait_movement
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 56
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 56
 	apply_movement obj_T25_rocketm_9, _073C
 	apply_movement obj_player, _0744
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0581_T25_00035
 	closemsg
 	compare VAR_TEMP_x4000, 354

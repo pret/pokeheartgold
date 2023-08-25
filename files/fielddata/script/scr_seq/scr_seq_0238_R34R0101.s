@@ -12,16 +12,16 @@
 scr_seq_R34R0101_001:
 	scrcmd_609
 	lockall
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_R34R0101_var_1, _0140
 	apply_movement obj_R34R0101_tsure_poke_static_marill, _014C
 	apply_movement obj_player, _0158
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	buffer_players_name 0
 	gender_msgbox msg_0385_R34R0101_00000, msg_0385_R34R0101_00010
 	closemsg

@@ -7567,7 +7567,7 @@ _0222DA0E:
 	add r1, r0, #0
 	ldr r0, [sp, #0x20]
 	mov r2, #1
-	bl sub_0205B46C
+	bl GetUnionRoomAvatarAttrBySprite
 	mov r1, #2
 	add r2, sp, #0x28
 	bl sub_02070D84

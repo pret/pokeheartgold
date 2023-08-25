@@ -274,15 +274,15 @@ _03F5:
 	closemsg
 	apply_movement obj_D23R0102_gswoman1, _0638
 	wait_movement
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_D23R0102_gswoman2_2, _0648
 	apply_movement obj_player, _0614
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	buffer_int 0, VAR_BLUE_CARD_POINTS
 	buffer_item_name 1, VAR_SPECIAL_x8004
 	npc_msg msg_0066_D23R0102_00035

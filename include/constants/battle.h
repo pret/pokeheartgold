@@ -8,6 +8,7 @@
 #define BATTLER_PLAYER2 2
 #define BATTLER_ENEMY2  3
 
+#ifndef PM_ASM
 enum BattleSide {
     B_SIDE_ALL,
     B_SIDE_1,
@@ -58,6 +59,7 @@ typedef enum Terrain {
     TERRAIN_22,
     TERRAIN_MAX
 } Terrain;
+#endif //PM_ASM
 
 // Battle outcome
 // Used with BattleSetup::winFlag
@@ -434,6 +436,7 @@ typedef enum Terrain {
 #define STAT_UP_6           12
 
 //Battle Controller Commands
+#ifndef PM_ASM
 typedef enum ControllerCommand {
     CONTROLLER_COMMAND_GET_BATTLE_MON,
     CONTROLLER_COMMAND_START_ENCOUNTER,
@@ -483,5 +486,5 @@ typedef enum ControllerCommand {
     CONTROLLER_COMMAND_45,
     CONTROLLER_COMMAND_MAX
 } ControllerCommand;
-
-#endif
+#endif //PM_ASM
+#endif //POKEHEARTGOLD_CONSTANTS_BATTLE_H

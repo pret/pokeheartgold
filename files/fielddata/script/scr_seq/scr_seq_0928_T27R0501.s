@@ -584,9 +584,9 @@ scr_seq_T27R0501_007:
 	goto _0944
 	.byte 0x02, 0x00
 _07BA:
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _07DF
 	apply_movement obj_player, _0828
@@ -605,9 +605,9 @@ _07FA:
 _080F:
 	apply_movement obj_T27R0501_dancer_6, _085C
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	return
 	.byte 0x00, 0x00, 0x00
 
@@ -686,14 +686,14 @@ scr_seq_T27R0501_016:
 	lockall
 	setvar VAR_SPECIAL_x8000, 11
 	setvar VAR_UNK_410C, 5
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0BF4
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	get_game_version VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _092A

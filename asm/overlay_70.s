@@ -19408,7 +19408,7 @@ ov70_022412C8: ; 0x022412C8
 	ldr r0, [sp, #0x18]
 	add r1, r3, #0
 	add r5, r2, #0
-	bl sub_0205B464
+	bl SpriteToUnionRoomAvatarIdx
 	add r4, r0, #0
 	mov r0, #6
 	lsl r0, r0, #8

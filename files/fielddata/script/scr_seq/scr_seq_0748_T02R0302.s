@@ -17,14 +17,14 @@ scr_seq_T02R0302_002:
 	setvar VAR_UNK_412E, 2
 	npc_msg msg_0458_T02R0302_00007
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0070
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0458_T02R0302_00008
 	goto_if_set FLAG_UNK_176, _0063
 	npc_msg msg_0458_T02R0302_00009
@@ -79,14 +79,14 @@ _00ED:
 	set_follow_poke_inhibit_state 0
 	npc_msg msg_0458_T02R0302_00003
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0184
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	setvar VAR_UNK_412E, 3
 	releaseall
 	end

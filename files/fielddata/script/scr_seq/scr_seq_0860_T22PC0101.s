@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T22PC0101.h"
 #include "msgdata/msg/msg_0559_T22PC0101.h"
+#include "msgdata/msg/msg_0191.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -176,19 +177,19 @@ _0280:
 _028C:
 	npc_msg msg_0559_T22PC0101_00022
 	touchscreen_menu_hide
-	scrcmd_287
+	buffer_union_room_avatar_choices
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 53, 255, 0
-	menu_item_add 54, 255, 1
-	menu_item_add 55, 255, 2
-	menu_item_add 56, 255, 3
-	menu_item_add 44, 255, 4
+	menu_item_add msg_0191_00053, 255, 0
+	menu_item_add msg_0191_00054, 255, 1
+	menu_item_add msg_0191_00055, 255, 2
+	menu_item_add msg_0191_00056, 255, 3
+	menu_item_add msg_0191_00044, 255, 4
 	menu_exec
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	switch VAR_SPECIAL_RESULT
 	case 4, _0331
 	case -2, _0331
-	scrcmd_288 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	union_room_avatar_idx_to_trainer_class VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	buffer_trainer_class_name_indef 0, VAR_SPECIAL_x8005
 	capitalize 0
 	npc_msg msg_0559_T22PC0101_00023

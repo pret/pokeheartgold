@@ -654,7 +654,7 @@ void HandleNtrToJascPaletteCommand(char *inputPath, char *outputPath, int argc, 
         }
     }
 
-    ReadNtrPalette(inputPath, &palette, bitdepth, 1);
+    ReadNtrPalette(inputPath, &palette, bitdepth, 0);
     WriteJascPalette(outputPath, &palette);
 }
 

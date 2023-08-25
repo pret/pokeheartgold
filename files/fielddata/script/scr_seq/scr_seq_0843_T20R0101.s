@@ -161,10 +161,10 @@ scr_seq_T20R0101_012:
 	choose_starter
 	setflag FLAG_GOT_STARTER
 	scrcmd_605 3, 2
-	scrcmd_602 0
+	toggle_following_pokemon_movement 0
 	scrcmd_608
 	wait 10, VAR_SPECIAL_RESULT
-	scrcmd_602 1
+	toggle_following_pokemon_movement 1
 	get_partymon_species 0, VAR_TEMP_x4001
 	set_starter_choice VAR_TEMP_x4001
 	buffer_players_name 0
@@ -180,15 +180,15 @@ scr_seq_T20R0101_012:
 	compare VAR_SPECIAL_RESULT, 0
 	call_if_eq _02EE
 	touchscreen_menu_show
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0370
 	apply_movement obj_T20R0101_doctor, _0388
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0543_T20R0101_00010
 	closemsg
 	apply_movement obj_T20R0101_doctor, _0380
@@ -634,14 +634,14 @@ _0888:
 scr_seq_T20R0101_002:
 	scrcmd_609
 	lockall
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0A68
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	apply_movement obj_T20R0101_policeman, _0A7C
 	wait_movement
 	npc_msg msg_0543_T20R0101_00023
@@ -849,15 +849,15 @@ scr_seq_T20R0101_014:
 	buffer_players_name 0
 	gender_msgbox msg_0543_T20R0101_00058, msg_0543_T20R0101_00059
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0CA4
 	apply_movement obj_T20R0101_var_1, _0C90
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	apply_movement obj_T20R0101_doctor, _0B2C
 	wait_movement
 	buffer_players_name 0
@@ -1020,9 +1020,9 @@ _0DE3:
 	gender_msgbox msg_0543_T20R0101_00084, msg_0543_T20R0101_00085
 	closemsg
 	get_player_facing VAR_TEMP_x4005
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	get_person_coords 0, VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
 	compare VAR_TEMP_x4005, 0
 	goto_if_ne _0E27
@@ -1061,9 +1061,9 @@ _0E96:
 	apply_movement obj_partner_poke, _0F1C
 _0EA8:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	return
 	.byte 0x00, 0x00
 

@@ -145,16 +145,16 @@ _0206:
 	scrcmd_729 VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 0
 	goto_if_eq _0223
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 56
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 56
 _0223:
 	apply_movement obj_W40_gsmiddleman1, _031C
 	apply_movement obj_player, _02B8
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0744_W40_00015
 	closemsg
 	apply_movement obj_W40_gsmiddleman1, _02C8

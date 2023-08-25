@@ -417,6 +417,7 @@ $(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_data.n
 $(eval $(call arc_strip_name,files/a/0/7/5.$(buildname),files/a/0/7/5))
 $(eval $(call arc_strip_name,files/data/mmodel/mmodel.narc,files/a/0/8/1))
 $(eval $(call arc_strip_name,files/application/choose_starter/choose_starter_main_res.narc,files/a/0/8/2))
+$(eval $(call arc_strip_name,files/application/record/record.narc,files/a/0/8/4))
 $(eval $(call arc_strip_name,files/application/choose_starter/choose_starter_sub_res.narc,files/a/0/9/3))
 $(eval $(call arc_strip_name,files/poketool/pokegra/otherpoke.narc,files/a/1/1/4))
 $(eval $(call arc_strip_name,files/poketool/pokegra/height_o.narc,files/a/1/1/7))
@@ -476,6 +477,7 @@ include files/data/mushi/mushi.mk
 include files/fielddata/tsurepoke/tp_param.mk
 include files/application/choose_starter/choose_starter.mk
 include files/arc/ppark.mk
+include files/application/record/record.mk
 
 $(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;
 

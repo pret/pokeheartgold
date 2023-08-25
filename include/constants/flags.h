@@ -484,7 +484,7 @@
 #define FLAG_HIDE_BURNED_TOWER_1F_MORTY                            0x1CC
 #define FLAG_UNK_1CD                                               0x1CD
 #define FLAG_UNK_1CE                                               0x1CE
-#define FLAG_UNK_1CF                                               0x1CF
+#define FLAG_HIDE_ROUTE_36_FLOWERSHOP_GIRL                                               0x1CF
 #define FLAG_HIDE_GOLDENROD_FLOWERSHOP_GIRL                        0x1D0
 #define FLAG_UNK_1D1                                               0x1D1
 #define FLAG_UNK_1D2                                               0x1D2
