@@ -14,6 +14,7 @@
 #include "gf_rtc.h"
 #include "map_header.h"
 #include "save_palpad.h"
+#include "constants/battle.h"
 
 struct BattleSetupSub_138 {
     int unk_0;
@@ -23,16 +24,16 @@ struct BattleSetupSub_138 {
 
 struct BattleSetup { //declared in trainer_data.h
     u32 flags; // 0
-    Party *party[4]; // 4
+    Party *party[BATTLER_MAX]; // 4
     int winFlag; // 14
-    int trainerId[4]; // 18
-    TRAINER trainer[4]; // 28
-    PlayerProfile *profile[4]; // f8
+    int trainerId[BATTLER_MAX]; // 18
+    TRAINER trainer[BATTLER_MAX]; // 28
+    PlayerProfile *profile[BATTLER_MAX]; // f8
     Bag* bag; // 108
     void* unk_10C;
     Pokedex* pokedex; // 110
-    PC_STORAGE* storagePC;
-    SOUND_CHATOT* chatot[4]; // 118
+    PC_STORAGE* storagePC; // 114
+    SOUND_CHATOT* chatot[BATTLER_MAX]; // 118
     void* unk_128;
     void* unk_12C;
     OPTIONS* options; // 130
@@ -68,7 +69,7 @@ struct BattleSetup { //declared in trainer_data.h
     SaveData* saveData; // 1c0
     int unk1C4;
     Pokemon* bugContestMon; // 1c8
-    u8 unk1CC[4];
+    u8 unk1CC[BATTLER_MAX];
     BOOL unk_1D0;
 };
 

@@ -46,7 +46,7 @@ BattleSetup* BattleSetup_New(HeapID heapId, u32 battleTypeFlags) {
     setup->unk_164 = 1;
     setup->metBill = 1;
     setup->weatherType = 0;
-    for (i = 0; i < 4; ++i) {
+    for (i = 0; i < BATTLER_MAX; ++i) {
         setup->trainerId[i] = 0;
         MI_CpuClear32(&setup->trainer[i], sizeof(TRAINER));
         setup->party[i] = SaveArray_Party_Alloc(heapId);
@@ -117,12 +117,12 @@ BattleSetup* BattleSetup_New_Tutorial(HeapID heapId, FieldSystem* fieldSystem) {
     {
     String* name = String_New(PLAYER_NAME_LENGTH + 1, heapId);
     ReadMsgDataIntoString(msgData, PlayerProfile_GetTrainerGender(profile) ^ 1, name);
-    Save_Profile_PlayerName_Set(setup->profile[0], String_cstr(name));
+    Save_Profile_PlayerName_Set(setup->profile[BATTLER_PLAYER], String_cstr(name));
     String_Delete(name);
     }
     DestroyMsgData(msgData);
     }
-    PlayerProfile_SetTrainerGender(setup->profile[0], PlayerProfile_GetTrainerGender(profile) ^ 1);
+    PlayerProfile_SetTrainerGender(setup->profile[BATTLER_PLAYER], PlayerProfile_GetTrainerGender(profile) ^ 1);
     sub_02052504(setup, fieldSystem);
     Options_Copy(options, setup->options);
     setup->timeOfDay = Field_GetTimeOfDay(fieldSystem);
@@ -130,12 +130,12 @@ BattleSetup* BattleSetup_New_Tutorial(HeapID heapId, FieldSystem* fieldSystem) {
     {
     Pokemon* pokemon = AllocMonZeroed(heapId);
     CreateMon(pokemon, SPECIES_MARILL, 5, 32, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
-    Party_AddMon(setup->party[0], pokemon);
+    Party_AddMon(setup->party[BATTLER_PLAYER], pokemon);
     CreateMon(pokemon, SPECIES_RATTATA, 2, 32, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
-    Party_AddMon(setup->party[1], pokemon);
+    Party_AddMon(setup->party[BATTLER_ENEMY], pokemon);
     FreeToHeap(pokemon);
     }
-    setup->unk1CC[0] = 0;
+    setup->unk1CC[BATTLER_PLAYER] = 0;
     setup->storagePC = SaveArray_PCStorage_Get(fieldSystem->saveData);
     setup->unk_10C = fieldSystem->unk94;
     setup->unk1B8 = NULL;
@@ -148,17 +148,17 @@ BattleSetup* BattleSetup_New_Tutorial(HeapID heapId, FieldSystem* fieldSystem) {
 void BattleSetup_Delete(BattleSetup* setup) {
     int i;
 
-    for (i = 0; i < 4; ++i) {
+    for (i = 0; i < BATTLER_MAX; ++i) {
         GF_ASSERT(setup->party[i] != NULL);
         FreeToHeap(setup->party[i]);
     }
     
-    for (i = 0; i < 4; ++i) {
+    for (i = 0; i < BATTLER_MAX; ++i) {
         GF_ASSERT(setup->profile[i] != NULL);
         FreeToHeap(setup->profile[i]);
     }
     
-    for (i = 0; i < 4; ++i) {
+    for (i = 0; i < BATTLER_MAX; ++i) {
         GF_ASSERT(setup->chatot[i] != NULL);
         FreeToHeap(setup->chatot[i]);
     }
@@ -172,17 +172,17 @@ void BattleSetup_Delete(BattleSetup* setup) {
 }
 
 void BattleSetup_AddMonToParty(BattleSetup* setup, Pokemon* mon, int battlerId) {
-    GF_ASSERT(battlerId < 4);
+    GF_ASSERT(battlerId < BATTLER_MAX);
     GF_ASSERT(Party_AddMon(setup->party[battlerId], mon));
 }
 
 static void BattleSetup_SetParty(BattleSetup* setup, Party* party, int battlerId) {
-    GF_ASSERT(battlerId < 4);
+    GF_ASSERT(battlerId < BATTLER_MAX);
     Party_Copy(party, setup->party[battlerId]);
 }
 
 static void BattleSetup_SetProfile(BattleSetup* setup, PlayerProfile* profile, int battlerId) {
-    GF_ASSERT(battlerId < 4);
+    GF_ASSERT(battlerId < BATTLER_MAX);
     PlayerProfile_Copy(profile, setup->profile[battlerId]);
 }
 
@@ -191,13 +191,13 @@ static void BattleSetup_SetChatotVoiceClip(BattleSetup* setup, SOUND_CHATOT* cha
 }
 
 void sub_02051D18(BattleSetup* setup, FieldSystem* fieldSystem, SaveData* saveData, u32 mapno, void* arg4, void* arg5) {
-    PlayerProfile* profile; // sp1C
-    Party* party; // sp18
-    Bag* bag; // sp14
-    Pokedex* pokedex; // sp10
-    SOUND_CHATOT* chatot; // spC
-    OPTIONS* options; // sp8
-    LocalFieldData* local; // sp4
+    PlayerProfile* profile;
+    Party* party;
+    Bag* bag;
+    Pokedex* pokedex;
+    SOUND_CHATOT* chatot;
+    OPTIONS* options;
+    LocalFieldData* local;
     BOOL forceNite;
     u32 battle_bg;
 
@@ -221,7 +221,7 @@ void sub_02051D18(BattleSetup* setup, FieldSystem* fieldSystem, SaveData* saveDa
             setup->timeOfDay = RTC_TIMEOFDAY_NITE;
         }
         if (FollowingPokemon_IsActive(fieldSystem) && sub_02069FB0(fieldSystem)) {
-            setup->unk1CC[0] = Save_GetPartyLeadAlive(saveData);
+            setup->unk1CC[BATTLER_PLAYER] = Save_GetPartyLeadAlive(saveData);
         }
     } else {
         setup->battleBg = MapHeader_GetBattleBg(mapno);
@@ -265,12 +265,12 @@ void BattleSetup_InitFromFieldSystem(BattleSetup* setup, FieldSystem *fieldSyste
 }
 
 void BattleSetup_InitForFixedLevelFacility(BattleSetup* setup, FieldSystem *fieldSystem, int level) {
-    PlayerProfile* profile; // r4
-    Party* party; // sp14
-    Bag* bag; // sp10
-    Pokedex* pokedex; // spC
-    SOUND_CHATOT* chatot; // sp8
-    OPTIONS* options; // sp4
+    PlayerProfile* profile;
+    Party* party;
+    Bag* bag;
+    Pokedex* pokedex;
+    SOUND_CHATOT* chatot;
+    OPTIONS* options;
 
     profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
     party = SaveArray_Party_Get(fieldSystem->saveData);
@@ -313,12 +313,12 @@ void BattleSetup_InitForFixedLevelFacility(BattleSetup* setup, FieldSystem *fiel
 }
 
 void sub_020520B0(BattleSetup* setup, FieldSystem *fieldSystem, Party *party, u8 *a4) {
-    PlayerProfile* profile; // sp20
-    Bag* bag; // sp1C
-    Pokedex* pokedex; // sp18
-    SOUND_CHATOT* chatot; // sp14
-    OPTIONS* options; // sp10
-    void* fieldSystem_unkA4; // spC
+    PlayerProfile* profile;
+    Bag* bag;
+    Pokedex* pokedex;
+    SOUND_CHATOT* chatot;
+    OPTIONS* options;
+    void* fieldSystem_unkA4;
 
     profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
     bag = Save_Bag_Get(fieldSystem->saveData);

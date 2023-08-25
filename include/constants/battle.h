@@ -7,6 +7,7 @@
 #define BATTLER_ENEMY   1
 #define BATTLER_PLAYER2 2
 #define BATTLER_ENEMY2  3
+#define BATTLER_MAX     4
 
 #ifndef PM_ASM
 enum BattleSide {
