@@ -26,7 +26,7 @@ ov14_021E5900: ; 0x021E5900
 	bl OverlayManager_GetArgs
 	str r0, [r4]
 	ldr r0, [r0]
-	bl GetStoragePCPointer
+	bl SaveArray_PCStorage_Get
 	str r0, [r4, #4]
 	bl PCStorage_GetActiveBox
 	strb r0, [r4, #0x1f]

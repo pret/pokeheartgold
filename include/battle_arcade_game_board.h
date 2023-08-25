@@ -16,7 +16,7 @@
 
 
 typedef struct GAME_BOARD_ARGS {
-    SaveData *savedata;
+    SaveData *saveData;
     u8 type;
     u8 level;
     u8 unk6;
@@ -68,7 +68,7 @@ typedef struct GAME_BOARD_SUB_3E8 {
 
 typedef struct GAME_BOARD_WORK {
     OVY_MANAGER *man;
-    FRONTIER_SAVE *frontierSavedata;
+    FRONTIER_SAVE *frontierSaveData;
     u8 substate;
     u8 type;
     u8 unkA;
@@ -113,9 +113,9 @@ typedef struct GAME_BOARD_WORK {
     GAME_BOARD_SUB_3C4 unk3C4[2];
     void *unk3D4;
     OPTIONS *options;
-    SaveData *savedata;
-    void *arcadeSavedata;
-    void *arcadeScoreSavedata;
+    SaveData *saveData;
+    void *arcadeSaveData;
+    void *arcadeScoreSaveData;
     GAME_BOARD_SUB_3E8 unk3E8;
     void *cursor;
     void *panel[16];

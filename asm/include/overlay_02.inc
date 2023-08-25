@@ -201,7 +201,7 @@
 .public Save_LocalFieldData_Get
 .public GetFlyWarpData
 .public GetSpecialSpawnWarpData
-.public FieldSystem_GetSaveDataPtr
+.public FieldSystem_GetSaveData
 .public StartMapSceneScript
 .public QueueScript
 .public FlagGet

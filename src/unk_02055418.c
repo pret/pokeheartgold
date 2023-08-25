@@ -24,7 +24,7 @@
 void FieldSystem_StartBugContestTimer(FieldSystem* fieldSystem) {
     RTCDate date;
     RTCTime time;
-    SysInfo_RTC *sysinfo = Save_SysInfo_RTC_Get(fieldSystem->savedata);
+    SysInfo_RTC *sysinfo = Save_SysInfo_RTC_Get(fieldSystem->saveData);
     if (!sysinfo->initialized) {
         return;
     }
@@ -71,67 +71,67 @@ void sub_02055478(FieldSystem* fieldSystem, SysInfo_RTC *sysinfo, RTCDate* date,
 void sub_02055508(FieldSystem* fieldSystem, int unkA) {
     BOOL unkFlag = sub_02055670(fieldSystem);
     ClearDailyFlags(fieldSystem);
-    sub_0206759C(fieldSystem->savedata, unkA); //reset badge shininess..?
-    sub_0202C78C(Save_FriendGroup_Get(fieldSystem->savedata), unkA);
-    Roamers_SetRand(Save_Roamers_Get(fieldSystem->savedata), sub_0202C7DC(Save_FriendGroup_Get(fieldSystem->savedata)));
-    Party_UpdatePokerus(SaveArray_Party_Get(fieldSystem->savedata), unkA);
-    Save_LCRNGAdvanceLotoID(fieldSystem->savedata, (u16) unkA);
-    sub_02066D60(fieldSystem->savedata);
-    sub_020674BC(fieldSystem->savedata);
-    sub_0202CB6C(sub_0202CA44(fieldSystem->savedata));
+    sub_0206759C(fieldSystem->saveData, unkA); //reset badge shininess..?
+    sub_0202C78C(Save_FriendGroup_Get(fieldSystem->saveData), unkA);
+    Roamers_SetRand(Save_Roamers_Get(fieldSystem->saveData), sub_0202C7DC(Save_FriendGroup_Get(fieldSystem->saveData)));
+    Party_UpdatePokerus(SaveArray_Party_Get(fieldSystem->saveData), unkA);
+    Save_LCRNGAdvanceLotoID(fieldSystem->saveData, (u16) unkA);
+    sub_02066D60(fieldSystem->saveData);
+    sub_020674BC(fieldSystem->saveData);
+    sub_0202CB6C(sub_0202CA44(fieldSystem->saveData));
     sub_020556B8(fieldSystem);
-    sub_0202F294(SaveData_GetMomsSavingsAddr(fieldSystem->savedata), unkA);
+    sub_0202F294(SaveData_GetMomsSavingsAddr(fieldSystem->saveData), unkA);
     if (!unkFlag) {
-        sub_02031CCC(Save_ApricornBox_Get(fieldSystem->savedata), unkA);
-        sub_0209730C(fieldSystem->savedata, unkA);
+        sub_02031CCC(Save_ApricornBox_Get(fieldSystem->saveData), unkA);
+        sub_0209730C(fieldSystem->saveData, unkA);
     }
-    sub_02031AE4(Save_Pokeathlon_Get(fieldSystem->savedata));
-    Save_VarsFlags_UpdateBuenasPasswordSet(Save_VarsFlags_Get(fieldSystem->savedata));
+    sub_02031AE4(Save_Pokeathlon_Get(fieldSystem->saveData));
+    Save_VarsFlags_UpdateBuenasPasswordSet(Save_VarsFlags_Get(fieldSystem->saveData));
 }
 
 void sub_020555B4(FieldSystem* fieldSystem, u32 unkA, RTCTime* time) {
     sub_02092E34(FieldSystem_GetGearPhoneRingManager(fieldSystem), unkA, 0);
     FieldSystem_IncrementBugContestTimer(fieldSystem, unkA);
-    Party_TryResetShaymin(SaveArray_Party_Get(fieldSystem->savedata), unkA, time);
+    Party_TryResetShaymin(SaveArray_Party_Get(fieldSystem->saveData), unkA, time);
 }
 
 TIMEOFDAY Field_GetTimeOfDay(FieldSystem* fieldSystem) {
-    return GF_RTC_GetTimeOfDayByHour(Save_SysInfo_RTC_Get(fieldSystem->savedata)->time.hour);
+    return GF_RTC_GetTimeOfDayByHour(Save_SysInfo_RTC_Get(fieldSystem->saveData)->time.hour);
 }
 
 TimeOfDayWildParam Field_GetTimeOfDayWildParam(FieldSystem* fieldSystem) {
-    return GF_RTC_GetTimeOfDayWildParamByHour(Save_SysInfo_RTC_Get(fieldSystem->savedata)->time.hour);
+    return GF_RTC_GetTimeOfDayWildParamByHour(Save_SysInfo_RTC_Get(fieldSystem->saveData)->time.hour);
 }
 
 u32 Field_GetMonth(FieldSystem* fieldSystem) {
-    return Save_SysInfo_RTC_Get(fieldSystem->savedata)->date.month;
+    return Save_SysInfo_RTC_Get(fieldSystem->saveData)->date.month;
 }
 
 u32 Field_GetDay(FieldSystem* fieldSystem) {
-    return Save_SysInfo_RTC_Get(fieldSystem->savedata)->date.day;
+    return Save_SysInfo_RTC_Get(fieldSystem->saveData)->date.day;
 }
 
 u32 Field_GetHour(FieldSystem* fieldSystem) {
-    return Save_SysInfo_RTC_Get(fieldSystem->savedata)->time.hour;
+    return Save_SysInfo_RTC_Get(fieldSystem->saveData)->time.hour;
 }
 
 void sub_02055624(FieldSystem* fieldSystem, RTCDate* date, RTCTime* time) {
-    SysInfo_RTC *sysinfo = Save_SysInfo_RTC_Get(fieldSystem->savedata);
+    SysInfo_RTC *sysinfo = Save_SysInfo_RTC_Get(fieldSystem->saveData);
     RTC_ConvertSecondToDateTime(date, time, sysinfo->seconds_since_nitro_epoch);
 }
 
 void FieldSystem_GetGameClearTime(FieldSystem* fieldSystem, RTCDate* date, RTCTime* time) {
-    SysInfo_RTC *sysinfo = Save_SysInfo_RTC_Get(fieldSystem->savedata);
+    SysInfo_RTC *sysinfo = Save_SysInfo_RTC_Get(fieldSystem->saveData);
     RTC_ConvertSecondToDateTime(date, time, sysinfo->seconds_at_game_clear);
 }
 
 void FieldSystem_SetGameClearTime(FieldSystem* fieldSystem) {
-    SysInfo_RTC *sysinfo = Save_SysInfo_RTC_Get(fieldSystem->savedata);
+    SysInfo_RTC *sysinfo = Save_SysInfo_RTC_Get(fieldSystem->saveData);
     sysinfo->seconds_at_game_clear = GF_RTC_DateTimeToSec();
 }
 
 BOOL sub_02055670(FieldSystem* fieldSystem) {
-    SysInfo_RTC *sysinfo = Save_SysInfo_RTC_Get(fieldSystem->savedata);
+    SysInfo_RTC *sysinfo = Save_SysInfo_RTC_Get(fieldSystem->saveData);
     return sub_02028E1C(sysinfo);
 }
 
@@ -149,7 +149,7 @@ void sub_020556A8(UnkStruct_020556FC *unkPtr) {
 }
 
 void sub_020556B8(FieldSystem* fieldSystem) {
-    APRICORN_TREE* trees = Save_FieldApricornTrees_Get(fieldSystem->savedata);
+    APRICORN_TREE* trees = Save_FieldApricornTrees_Get(fieldSystem->saveData);
     sub_0202AE74(trees);
 }
 
@@ -185,20 +185,20 @@ BOOL sub_02055708(FieldSystem* fieldSystem, LocalMapObject* mapObject) {
 }
 
 BOOL sub_02055760(FieldSystem* fieldSystem, LocalMapObject* mapObj) {
-    sub_0202AE68(Save_FieldApricornTrees_Get(fieldSystem->savedata), MapObject_GetParam(mapObj, 0));
+    sub_0202AE68(Save_FieldApricornTrees_Get(fieldSystem->saveData), MapObject_GetParam(mapObj, 0));
     return TRUE;
 }
 
 BOOL sub_02055780(FieldSystem* fieldSystem, LocalMapObject* mapObj) {
-    APRICORN_TREE* trees = Save_FieldApricornTrees_Get(fieldSystem->savedata);
+    APRICORN_TREE* trees = Save_FieldApricornTrees_Get(fieldSystem->saveData);
     int idx = MapObject_GetParam(mapObj, 0);
     return sub_0202AE38(trees, idx);
 }
 
 u32 FieldSystem_ApricornTree_TryGetApricorn(FieldSystem* fieldSystem, LocalMapObject* mapObject) {
-    return ApricornTrees_TryGetApricorn(Save_FieldApricornTrees_Get(fieldSystem->savedata), MapObject_GetParam(mapObject, 0));
+    return ApricornTrees_TryGetApricorn(Save_FieldApricornTrees_Get(fieldSystem->saveData), MapObject_GetParam(mapObject, 0));
 }
 
 int FieldSystem_ApricornTree_GetApricorn(FieldSystem* fieldSystem, LocalMapObject* mapObject) {
-    return ApricornTrees_GetApricorn(Save_FieldApricornTrees_Get(fieldSystem->savedata), MapObject_GetParam(mapObject, 0));
+    return ApricornTrees_GetApricorn(Save_FieldApricornTrees_Get(fieldSystem->saveData), MapObject_GetParam(mapObject, 0));
 }

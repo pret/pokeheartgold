@@ -33,10 +33,10 @@ typedef struct PLAYERDATA {
 
 u32 Save_PlayerData_sizeof(void);
 void Save_PlayerData_Init(PLAYERDATA* player);
-PlayerProfile* Save_PlayerData_GetProfileAddr(SaveData* savedata);
-OPTIONS* Save_PlayerData_GetOptionsAddr(SaveData* savedata);
-u16* Save_PlayerData_GetCoinsAddr(SaveData* savedata);
-IGT* Save_PlayerData_GetIGTAddr(SaveData* savedata);
+PlayerProfile* Save_PlayerData_GetProfileAddr(SaveData* saveData);
+OPTIONS* Save_PlayerData_GetOptionsAddr(SaveData* saveData);
+u16* Save_PlayerData_GetCoinsAddr(SaveData* saveData);
+IGT* Save_PlayerData_GetIGTAddr(SaveData* saveData);
 u32 PlayerProfile_sizeof(void);
 PlayerProfile* PlayerProfile_New(HeapID heapId);
 void PlayerProfile_Copy(const PlayerProfile* src, PlayerProfile* dest);

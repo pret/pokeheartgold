@@ -30,7 +30,7 @@ BOOL ScrCmd_395(ScriptContext *ctx) {
 BOOL ScrCmd_466(ScriptContext *ctx) {
     u16 *retPtr = ScriptGetVarPointer(ctx);
     u16 slot = ScriptGetVar(ctx);
-    Party *party = SaveArray_Party_Get(ctx->fieldSystem->savedata);
+    Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
     Pokemon *mon = Party_GetMonByIndex(party, slot);
     u16 *eligibleMoves = GetEligibleLevelUpMoves(mon, HEAP_ID_32);
     *retPtr = sub_0209186C(eligibleMoves);
@@ -44,8 +44,8 @@ static void CreateMoveRelearner(ScriptContext *ctx, int a1, Pokemon *mon, u16 *e
     *moveRelearnerPtr = moveRelearner;
 
     moveRelearner->mon = mon;
-    moveRelearner->profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(ctx->fieldSystem));
-    moveRelearner->options = Save_PlayerData_GetOptionsAddr(ctx->fieldSystem->savedata);
+    moveRelearner->profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
+    moveRelearner->options = Save_PlayerData_GetOptionsAddr(ctx->fieldSystem->saveData);
     moveRelearner->eligibleMoves = eligibleMoves;
     moveRelearner->unk_19 = a1;
 
@@ -56,7 +56,7 @@ static void CreateMoveRelearner(ScriptContext *ctx, int a1, Pokemon *mon, u16 *e
 
 BOOL ScrCmd_MoveRelearnerInit(ScriptContext *ctx) {
     u16 slot = ScriptGetVar(ctx);
-    Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->savedata), slot);
+    Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), slot);
     u16 *eligibleMoves = GetEligibleLevelUpMoves(mon, HEAP_ID_32);
     CreateMoveRelearner(ctx, 1, mon, eligibleMoves);
     return TRUE;
@@ -65,7 +65,7 @@ BOOL ScrCmd_MoveRelearnerInit(ScriptContext *ctx) {
 BOOL ScrCmd_MoveTutorInit(ScriptContext *ctx) {
     u16 slot = ScriptGetVar(ctx);
     u16 move = ScriptGetVar(ctx);
-    Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->savedata), slot);
+    Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), slot);
     u16 *eligibleMoves = AllocFromHeap(HEAP_ID_32, 2 * sizeof(u16));
     eligibleMoves[0] = move;
     eligibleMoves[1] = 0xffff;

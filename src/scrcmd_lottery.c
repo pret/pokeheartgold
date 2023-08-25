@@ -14,7 +14,7 @@ BOOL ScrCmd_BufferDeptStoreFloorNo(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_LotoIdGet(ScriptContext *ctx) {
-    SaveVarsFlags *state = Save_VarsFlags_Get(ctx->fieldSystem->savedata);
+    SaveVarsFlags *state = Save_VarsFlags_Get(ctx->fieldSystem->saveData);
     u16 *retPtr = ScriptGetVarPointer(ctx);
     u32 lotoId = Save_VarsFlags_GetLotoId(state);
     *retPtr = lotoId;
@@ -23,7 +23,7 @@ BOOL ScrCmd_LotoIdGet(ScriptContext *ctx) {
 
 BOOL ScrCmd_LotoIdSearch(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    PC_STORAGE *storage = GetStoragePCPointer(fieldSystem->savedata);
+    PC_STORAGE *storage = SaveArray_PCStorage_Get(fieldSystem->saveData);
     u16 *retPtr0 = ScriptGetVarPointer(ctx);
     u16 *retPtr1 = ScriptGetVarPointer(ctx);
     u16 *retPtr2 = ScriptGetVarPointer(ctx);
@@ -41,9 +41,9 @@ BOOL ScrCmd_LotoIdSearch(ScriptContext *ctx) {
     u32 ii;
     u32 j;
 
-    partyCount = Party_GetCount(SaveArray_Party_Get(fieldSystem->savedata));
+    partyCount = Party_GetCount(SaveArray_Party_Get(fieldSystem->saveData));
     for (monDigit = 0, monPosition = 0, i = 0; i < partyCount; i++) {
-        Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->savedata), i);
+        Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), i);
         if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
             otid = GetMonData(mon, MON_DATA_OTID, NULL) & 0xffff;
             digitCount = LotoId_CountDigitsMatched(lotoId, otid);
@@ -86,7 +86,7 @@ BOOL ScrCmd_LotoIdSearch(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_LotoIdSet(ScriptContext *ctx) {
-    SaveVarsFlags *state = Save_VarsFlags_Get(ctx->fieldSystem->savedata);
+    SaveVarsFlags *state = Save_VarsFlags_Get(ctx->fieldSystem->saveData);
     Save_VarsFlags_RollLotoId(state);
     return FALSE;
 }

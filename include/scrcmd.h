@@ -889,7 +889,7 @@ BOOL ScrCmd_Capitalize(ScriptContext* ctx);
 BOOL ScrCmd_BufferDeptStoreFloorNo(ScriptContext* ctx);
 
 
-MessageFormat *sub_0204B538(SaveData *savedata, u16 numEligblePokemon, u16 a2, u8 a3, u8 *numLegendaryPokemonSeen);
+MessageFormat *sub_0204B538(SaveData *saveData, u16 numEligblePokemon, u16 a2, u8 a3, u8 *numLegendaryPokemonSeen);
 void ov01_021EF564(ScriptContext *ctx, u16 messageBank, u16 messageNum, u16 word1, s16 word2, u8 canABSpeedUp);
 
 #endif

@@ -97,7 +97,7 @@ BOOL ScrCmd_652(ScriptContext *ctx) {
     u16 slot = ScriptGetVar(ctx);
     u16 moveTutorNpc = ScriptGetVar(ctx);
     u16 *result = ScriptGetVarPointer(ctx);
-    Party *party = SaveArray_Party_Get(ctx->fieldSystem->savedata);
+    Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
     Pokemon *mon = Party_GetMonByIndex(party, slot);
     u32 numLearnableMoves = GetLearnableTutorMoves(mon, moveTutorNpc, NULL);
     if (numLearnableMoves == 0) {
@@ -114,7 +114,7 @@ BOOL ScrCmd_TutorMoveTeachInSlot(ScriptContext *ctx) {
     u16 partySlot = ScriptGetVar(ctx);
     u16 moveSlot = ScriptGetVar(ctx);
     u16 move = ScriptGetVar(ctx);
-    Party *party = SaveArray_Party_Get(ctx->fieldSystem->savedata);
+    Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
     PartyMonSetMoveInSlot(party, partySlot, moveSlot, move);
     return FALSE;
 }
@@ -137,7 +137,7 @@ BOOL ScrCmd_TutorMoveGetPrice(ScriptContext *ctx) {
 BOOL ScrCmd_656(ScriptContext *ctx) {
     u16 slot = ScriptGetVar(ctx);
     u16 *result = ScriptGetVarPointer(ctx);
-    Party *party = SaveArray_Party_Get(ctx->fieldSystem->savedata);
+    Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
     Pokemon *mon = Party_GetMonByIndex(party, slot);
     u32 numLearnableMoves = GetLearnableTutorMoves(mon, MOVE_TUTOR_NPC_HEADBUTT, NULL);
     *result = numLearnableMoves > 0 ? TRUE : FALSE;
@@ -259,7 +259,7 @@ BOOL ScrCmd_MoveTutorChooseMove(ScriptContext *ctx) {
     u16 pageNum = ScriptGetVar(ctx);
     resultVarId = ScriptReadHalfword(ctx);
     ctx->data[0] = resultVarId;
-    Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->savedata), slot);
+    Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), slot);
     numLearnableMoves = GetLearnableTutorMoves(mon, moveTutorNpc, learnableMoves);
     s32 numMovesToSkip;
     if (numLearnableMoves <= 7) {
@@ -321,7 +321,7 @@ BOOL ScrCmd_742(ScriptContext *ctx) {
     u16 move = ScriptGetVar(ctx);
     u16 *result = ScriptGetVarPointer(ctx);
     *result = FALSE;
-    Party *party = SaveArray_Party_Get(ctx->fieldSystem->savedata);
+    Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
     Pokemon *mon = Party_GetMonByIndex(party, slot);
     u16 *unk = AllocFromHeapAtEnd(HEAP_ID_FIELD, 0x2c);
     u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);

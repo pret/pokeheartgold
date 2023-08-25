@@ -41,7 +41,7 @@ BOOL Save_Daycare_MasudaCheck(Daycare *daycare);
 void DaycareMon_Copy(DaycareMon *dest, const DaycareMon *src);
 void DaycareMon_Extras_Init(DaycareMail *mail);
 void DaycareMon_Init(DaycareMon *mon);
-Daycare *Save_Daycare_Get(SaveData *savedata);
+Daycare *Save_Daycare_Get(SaveData *saveData);
 BOOL Save_Daycare_HasEgg(Daycare *daycare);
 
 #endif

@@ -2,8 +2,8 @@
 #include "player_data.h"
 
 BOOL ScrCmd_AddMoney(ScriptContext* ctx) {
-    SaveData* savedata = FieldSystem_GetSaveDataPtr(ctx->fieldSystem);
-    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(savedata);
+    SaveData* saveData = FieldSystem_GetSaveData(ctx->fieldSystem);
+    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(saveData);
 
     u32 amount = ScriptReadWord(ctx);
     PlayerProfile_AddMoney(profile, amount);
@@ -12,8 +12,8 @@ BOOL ScrCmd_AddMoney(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_SubMoneyImmediate(ScriptContext* ctx) {
-    SaveData* savedata = FieldSystem_GetSaveDataPtr(ctx->fieldSystem);
-    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(savedata);
+    SaveData* saveData = FieldSystem_GetSaveData(ctx->fieldSystem);
+    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(saveData);
 
     u32 amount = ScriptReadWord(ctx);
     PlayerProfile_SubMoney(profile, amount);
@@ -22,8 +22,8 @@ BOOL ScrCmd_SubMoneyImmediate(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_SubMoneyVar(ScriptContext* ctx) {
-    SaveData* savedata = FieldSystem_GetSaveDataPtr(ctx->fieldSystem);
-    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(savedata);
+    SaveData* saveData = FieldSystem_GetSaveData(ctx->fieldSystem);
+    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(saveData);
 
     u16 amount = ScriptGetVar(ctx);
     PlayerProfile_SubMoney(profile, amount);
@@ -32,8 +32,8 @@ BOOL ScrCmd_SubMoneyVar(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_HasEnoughMoneyImmediate(ScriptContext* ctx) {
-    SaveData* savedata = FieldSystem_GetSaveDataPtr(ctx->fieldSystem);
-    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(savedata);
+    SaveData* saveData = FieldSystem_GetSaveData(ctx->fieldSystem);
+    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(saveData);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
 
     u32 amount = ScriptReadWord(ctx);
@@ -48,8 +48,8 @@ BOOL ScrCmd_HasEnoughMoneyImmediate(ScriptContext* ctx) {
 }
 
 BOOL ScrCmd_HasEnoughMoneyVar(ScriptContext* ctx) {
-    SaveData* savedata = FieldSystem_GetSaveDataPtr(ctx->fieldSystem);
-    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(savedata);
+    SaveData* saveData = FieldSystem_GetSaveData(ctx->fieldSystem);
+    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(saveData);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
 
     u16 amount = ScriptGetVar(ctx);

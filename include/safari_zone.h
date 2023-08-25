@@ -59,7 +59,7 @@ typedef struct SafariZone {
 } SafariZone;
 
 u32 Save_SafariZone_sizeof(void);
-SafariZone* Save_SafariZone_Get(SaveData* savedata);
+SafariZone* Save_SafariZone_Get(SaveData* saveData);
 void Save_SafariZone_Init(SafariZone* safari_zone);
 void SafariZone_ResetAreaSetToDefaultSet(SAFARIZONE_AREASET* area_set, u32 default_set_no);
 void sub_0202F5F8(SafariZone* safari_zone, s32 areaSetNo);

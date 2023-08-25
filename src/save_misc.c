@@ -31,7 +31,7 @@ void Save_Misc_Init(SAVE_MISC_DATA *saveMiscData) {
     ApricornTrees_Init(saveMiscData->apricorn_trees);
     Save_BerryPots_Init(saveMiscData->berry_pots);
     Save_BerryPotRTC_Init(&saveMiscData->berry_datetime);
-    SavGymmick_Clear(&saveMiscData->gymmick);
+    Save_Gymmick_Clear(&saveMiscData->gymmick);
     MI_CpuFill16(saveMiscData->rivalName, EOS, PLAYER_NAME_LENGTH + 1);
     MI_CpuFill8(saveMiscData->unk_0280, 0xFF, 8);
     MailMsg_Init_WithBank(&saveMiscData->battleGreetingEC, MAILMSG_BANK_0295_GMM);

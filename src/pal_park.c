@@ -62,7 +62,7 @@ void PalPark_InitFromSave(FieldSystem* fieldSystem) {
 
 void PalPark_StopClock(FieldSystem* fieldSystem) {
     struct PalParkLocal* local = &sPalParkLocalState;
-    GAME_STATS* stats = Save_GameStats_Get(fieldSystem->savedata);
+    GAME_STATS* stats = Save_GameStats_Get(fieldSystem->saveData);
     s64 elapsed = GF_RTC_TimeDelta(local->timestamp, GF_RTC_DateTimeToSec());
     if (elapsed < 1000) {
         local->timeRemainingFactor = 2 * (1000 - elapsed);
@@ -111,7 +111,7 @@ static void LoadMonPalParkStats(u16 species, u8* dest) {
 }
 
 static void InitPalParkMonsData(FieldSystem* fieldSystem, struct PalParkLocal* palpark) {
-    struct MigratedPokemonSav* migrated = Save_MigratedPokemon_Get(fieldSystem->savedata);
+    struct MigratedPokemonSav* migrated = Save_MigratedPokemon_Get(fieldSystem->saveData);
     Pokemon* mon = AllocMonZeroed(HEAP_ID_4);
     u8 narc_data[6];
     u16 species;
@@ -233,7 +233,7 @@ static void HandleBattleEnd(FieldSystem *fieldSystem, BattleSetup *setup, struct
 
 static BattleSetup* SetupEncounter(FieldSystem* fieldSystem, struct PalParkLocal* palpark) {
     Pokemon* mon = AllocMonZeroed(HEAP_ID_32);
-    struct MigratedPokemonSav* migratedMons = Save_MigratedPokemon_Get(fieldSystem->savedata);
+    struct MigratedPokemonSav* migratedMons = Save_MigratedPokemon_Get(fieldSystem->saveData);
     BattleSetup* ret = BattleSetup_New_PalPark(HEAP_ID_FIELD, PalPark_CountMonsNotCaught(fieldSystem));
     BattleSetup_InitFromFieldSystem(ret, fieldSystem);
     GetMigratedPokemonByIndex(migratedMons, palpark->encounterIndex, mon);

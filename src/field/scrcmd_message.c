@@ -121,7 +121,7 @@ BOOL ScrCmd_444(ScriptContext *ctx) {
     u16 r2 = ScriptReadHalfword(ctx);
     u8 r3 = ScriptReadByte(ctx);
     u8 numLegendaryPokemonSeen = 0;
-    MessageFormat *messageFormat = sub_0204B538(fieldSystem->savedata, numEligiblePokemon, r2, r3, &numLegendaryPokemonSeen);
+    MessageFormat *messageFormat = sub_0204B538(fieldSystem->saveData, numEligiblePokemon, r2, r3, &numLegendaryPokemonSeen);
     ov01_021EF5C8(ctx, messageFormat, baseMessageNum + numLegendaryPokemonSeen, TRUE);
     MessageFormat_Delete(messageFormat);
     SetupNativeScript(ctx, ov01_021EF348);
@@ -175,10 +175,10 @@ BOOL ScrCmd_NpcMsgVar(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_GenderMsgbox(ScriptContext *ctx) {
-    void *unused = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(ctx->fieldSystem));
+    void *unused = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
     u8 messageNumMale = ScriptReadByte(ctx);
     u8 messageNumFemale = ScriptReadByte(ctx);
-    u32 gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveDataPtr(ctx->fieldSystem)));
+    u32 gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem)));
     if (gender != PLAYER_GENDER_MALE) {
         ov01_021EF4DC(ctx, ctx->msgdata, messageNumFemale, TRUE, NULL);
     } else {
@@ -252,7 +252,7 @@ static void ov01_021EF5C8(ScriptContext *ctx, MessageFormat *messageFormat, u8 m
 }
 
 static u32 ovFieldMain_GetTextFrameDelay(ScriptContext *ctx) {
-    return Options_GetTextFrameDelay(Save_PlayerData_GetOptionsAddr(ctx->fieldSystem->savedata));
+    return Options_GetTextFrameDelay(Save_PlayerData_GetOptionsAddr(ctx->fieldSystem->saveData));
 }
 
 static void ovFieldMain_GetMsgBoxParameters(FieldSystem *fieldSystem, MessageBox *messageBox) {
@@ -276,7 +276,7 @@ static void ovFieldMain_GetMsgBoxParametersEx(FieldSystem *fieldSystem, MessageF
 static void ovFieldMain_CreateMessageBox(FieldSystem *fieldSystem, MessageBox *messageBox) {
     if (*(messageBox->unk10) == 0) {
         sub_0205B514(fieldSystem->bgConfig, messageBox->window, 3);
-        sub_0205B564(messageBox->window, Save_PlayerData_GetOptionsAddr(fieldSystem->savedata));
+        sub_0205B564(messageBox->window, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData));
         *(messageBox->unk10) = 1;
         fieldSystem->unkD2_6 = TRUE;
     }
