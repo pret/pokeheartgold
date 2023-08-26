@@ -24,7 +24,7 @@ struct BattleSetupSub_138 {
 
 struct BattleSetup { //declared in trainer_data.h
     u32 flags; // 0
-    Party *party[BATTLER_MAX]; // 4
+    Party* party[BATTLER_MAX]; // 4
     int winFlag; // 14
     int trainerId[BATTLER_MAX]; // 18
     TRAINER trainer[BATTLER_MAX]; // 28
