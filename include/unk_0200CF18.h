@@ -25,17 +25,23 @@ typedef struct UnkStruct_0200D748 {
 typedef struct UnkStruct_0200CF18 {
     HeapID heapId;
     u32 unk_004;
-    u32 unk_008;
+    BOOL unk_008;
     NNSG2dCellTransferState* cellTransferState;
     GF_G2dRenderer renderer;
 } UnkStruct_0200CF18; // size: 0x138
 
+typedef struct UnkStruct_0200CF38_sub {
+    struct _2DGfxResObjList* obj_list;
+    struct _2DGfxResMan* manager;
+} UnkStruct_0200CF38_sub;
+
 typedef struct UnkStruct_0200CF38 {
     SpriteList* spriteList;
     ListOfUnkStruct_02009D48* unk_04;
-    struct _2DGfxResHeader* filler_08;
-    void* unk_0C[6];
-    u8 filler_24[0x30];
+    struct _2DGfxResHeader* unk_08;
+    struct _2DGfxResMan* unk_0C[6];
+    struct _2DGfxResObjList* unk_24[6];
+    void* unk_3C[6];
     int unk_54;
 } UnkStruct_0200CF38; // size: 0x58
 
@@ -80,6 +86,7 @@ void sub_0200D018(Sprite* sprite);
 void sub_0200D020(UnkStruct_0200CF38*);
 void sub_0200D034(void);
 void sub_0200D03C(void);
+void sub_0200D0E4(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1);
 
 void sub_0200D108(UnkStruct_0200CF18*);
 void sub_0200D3F8(UnkStruct_0200CF18*, UnkStruct_0200CF38*, Unk122_021E92E4*);

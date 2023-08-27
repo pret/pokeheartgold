@@ -4,7 +4,9 @@
 #include "unk_0200A090.h"
 
 void sub_0200AEB0(struct _2DGfxResObj *charResObj);
+void sub_0200AED4(struct _2DGfxResObjList *charResObjList);
 void sub_0200B0A8(struct _2DGfxResObj *plttResObj);
+void sub_0200B0CC(struct _2DGfxResObjList *plttResObjList);
 void sub_0200ADA4(struct _2DGfxResObj *charResObj);
 void sub_0200B00C(struct _2DGfxResObj *plttResObj);
 void sub_0200ACF0(struct _2DGfxResObj *obj);
