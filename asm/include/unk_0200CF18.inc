@@ -214,3 +214,4 @@
 .public _fflt
 .public _fmul
 .public _fsub
+.public sub_0200D044

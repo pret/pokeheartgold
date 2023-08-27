@@ -7,6 +7,9 @@
 #include "unk_0200B150.h"
 #include "unk_0200CF18.h"
 #include "unk_02020654.h"
+#include "unk_02023694.h"
+
+void sub_0200D044(UnkStruct_0200CF38* a0);
 
 UnkStruct_0200CF18* sub_0200CF18(HeapID heapId) {
     UnkStruct_0200CF18* ret = AllocFromHeap(heapId, sizeof(UnkStruct_0200CF18));
@@ -56,4 +59,33 @@ BOOL sub_0200CF70(UnkStruct_0200CF18* a0, Unk122_021E92FC* a1, Unk122_021E92D0* 
     sub_020216C8();
     sub_02022638();
     return TRUE;
+}
+
+BOOL sub_0200CFF4(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, int a2) {
+    if (a0 == NULL || a1 == NULL) {
+        return FALSE;
+    }
+    a1->spriteList = G2dRenderer_Init(a2, &a0->renderer, a0->heapId);
+    return TRUE;
+}
+
+void sub_0200D018(Sprite* sprite) {
+    Sprite_Delete(sprite);
+}
+
+void sub_0200D020(UnkStruct_0200CF38* a0) {
+    GF_ASSERT(a0 != NULL);
+    sub_0202457C(a0->spriteList);
+}
+
+void sub_0200D034(void) {
+    OamManager_ApplyAndResetBuffers();
+}
+
+void sub_0200D03C(void) {
+    sub_02020674();
+}
+
+void sub_0200D044(UnkStruct_0200CF38* a0) {
+    sub_02024504(a0->spriteList);
 }
