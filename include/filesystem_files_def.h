@@ -271,7 +271,7 @@ typedef enum NarcId
     NARC_a_2_6_1                                            = 263,
     NARC_a_2_6_2                                            = 264,
     NARC_a_2_6_3                                            = 265,
-    NARC_a_2_6_4                                            = 266,
+    NARC_application_voltorb_flip                           = 266,
 } NarcId;
 
 #ifdef _IN_FILESYSTEM_C
