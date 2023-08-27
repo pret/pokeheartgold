@@ -43,10 +43,10 @@ _0050:
 _009E:
 	scrcmd_605 3, 2
 _00A2:
-	scrcmd_602 0
+	toggle_following_pokemon_movement 0
 	scrcmd_608
 	wait 10, VAR_SPECIAL_RESULT
-	scrcmd_602 1
+	toggle_following_pokemon_movement 1
 _00B2:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
@@ -92,10 +92,10 @@ _0155:
 _016C:
 	scrcmd_605 3, 2
 _0170:
-	scrcmd_602 0
+	toggle_following_pokemon_movement 0
 	scrcmd_608
 	wait 10, VAR_SPECIAL_RESULT
-	scrcmd_602 1
+	toggle_following_pokemon_movement 1
 _0180:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
@@ -128,10 +128,10 @@ _01D5:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0220
 	scrcmd_605 2, 3
-	scrcmd_602 0
+	toggle_following_pokemon_movement 0
 	scrcmd_608
 	wait 10, VAR_SPECIAL_RESULT
-	scrcmd_602 1
+	toggle_following_pokemon_movement 1
 _0220:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
@@ -164,10 +164,10 @@ _0275:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _02C0
 	scrcmd_605 3, 2
-	scrcmd_602 0
+	toggle_following_pokemon_movement 0
 	scrcmd_608
 	wait 10, VAR_SPECIAL_RESULT
-	scrcmd_602 1
+	toggle_following_pokemon_movement 1
 _02C0:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade

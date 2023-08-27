@@ -46,14 +46,14 @@ scr_seq_T07R0203_010:
 	closemsg
 	apply_movement obj_T07R0203_var_1, _0140
 	apply_movement obj_T07R0203_tsure_poke_static_marill, _0148
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0150
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	buffer_players_name 0
 	gender_msgbox msg_0503_T07R0203_00014, msg_0503_T07R0203_00015
 	closemsg

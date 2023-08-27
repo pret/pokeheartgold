@@ -220,7 +220,7 @@ BOOL ScrCmd_TrainerIsDoubleBattle(ScriptContext *ctx);
 BOOL ScrCmd_EncounterMusic(ScriptContext *ctx);
 BOOL ScrCmd_WhiteOut(ScriptContext *ctx);
 BOOL ScrCmd_CheckBattleWon(ScriptContext *ctx);
-BOOL ScrCmd_221(ScriptContext *ctx);
+BOOL ScrCmd_StaticWildWonOrCaughtCheck(ScriptContext *ctx);
 BOOL ScrCmd_PartyCheckForDouble(ScriptContext *ctx);
 BOOL ScrCmd_223(ScriptContext *ctx);
 BOOL ScrCmd_224(ScriptContext *ctx);
@@ -286,8 +286,8 @@ BOOL ScrCmd_283(ScriptContext *ctx);
 BOOL ScrCmd_284(ScriptContext *ctx);
 BOOL ScrCmd_285(ScriptContext *ctx);
 BOOL ScrCmd_286(ScriptContext *ctx);
-BOOL ScrCmd_287(ScriptContext *ctx);
-BOOL ScrCmd_288(ScriptContext *ctx);
+BOOL ScrCmd_BufferUnionRoomAvatarChoices(ScriptContext *ctx);
+BOOL ScrCmd_UnionRoomAvatarIdxToTrainerClass(ScriptContext *ctx);
 BOOL ScrCmd_289(ScriptContext *ctx);
 BOOL ScrCmd_CheckPokedex(ScriptContext *ctx);
 BOOL ScrCmd_GivePokedex(ScriptContext *ctx);
@@ -557,7 +557,7 @@ BOOL ScrCmd_554(ScriptContext *ctx);
 BOOL ScrCmd_555(ScriptContext *ctx);
 BOOL ScrCmd_556(ScriptContext *ctx);
 BOOL ScrCmd_CheckBattlePoints(ScriptContext *ctx);
-BOOL ScrCmd_558(ScriptContext *ctx);
+BOOL ScrCmd_UnionRoomAvatarIdxToSprite(ScriptContext *ctx);
 BOOL ScrCmd_559(ScriptContext *ctx);
 BOOL ScrCmd_560(ScriptContext *ctx);
 BOOL ScrCmd_ScreenShake(ScriptContext *ctx);
@@ -587,7 +587,7 @@ BOOL ScrCmd_PartyLegalCheck(ScriptContext *ctx);
 BOOL ScrCmd_585(ScriptContext *ctx);
 BOOL ScrCmd_586(ScriptContext *ctx);
 BOOL ScrCmd_587(ScriptContext *ctx);
-BOOL ScrCmd_588(ScriptContext *ctx);
+BOOL Scrcmd_LatiCaughtCheck(ScriptContext *ctx);
 BOOL ScrCmd_WildBattle(ScriptContext *ctx);
 BOOL ScrCmd_GetTrcardStars(ScriptContext *ctx);
 BOOL ScrCmd_591(ScriptContext *ctx);
@@ -601,9 +601,9 @@ BOOL ScrCmd_598(ScriptContext *ctx);
 BOOL ScrCmd_599(ScriptContext *ctx);
 BOOL ScrCmd_600(ScriptContext *ctx);
 BOOL ScrCmd_FollowPokeFacePlayer(ScriptContext *ctx);
-BOOL ScrCmd_602(ScriptContext *ctx);
-BOOL ScrCmd_603(ScriptContext *ctx);
-BOOL ScrCmd_604(ScriptContext *ctx);
+BOOL ScrCmd_ToggleFollowingPokemonMovement(ScriptContext *ctx);
+BOOL ScrCmd_WaitFollowingPokemonMovement(ScriptContext *ctx);
+BOOL ScrCmd_FollowingPokemonMovement(ScriptContext *ctx);
 BOOL ScrCmd_605(ScriptContext *ctx);
 BOOL ScrCmd_606(ScriptContext *ctx);
 BOOL ScrCmd_607(ScriptContext *ctx);
@@ -1075,7 +1075,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_EncounterMusic,
     ScrCmd_WhiteOut,
     ScrCmd_CheckBattleWon,
-    ScrCmd_221,
+    ScrCmd_StaticWildWonOrCaughtCheck,
     ScrCmd_PartyCheckForDouble,
     ScrCmd_223,
     ScrCmd_224,
@@ -1141,8 +1141,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_284,
     ScrCmd_285,
     ScrCmd_286,
-    ScrCmd_287,
-    ScrCmd_288,
+    ScrCmd_BufferUnionRoomAvatarChoices,
+    ScrCmd_UnionRoomAvatarIdxToTrainerClass,
     ScrCmd_289,
     ScrCmd_CheckPokedex,
     ScrCmd_GivePokedex,
@@ -1412,7 +1412,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_555,
     ScrCmd_556,
     ScrCmd_CheckBattlePoints,
-    ScrCmd_558,
+    ScrCmd_UnionRoomAvatarIdxToSprite,
     ScrCmd_559,
     ScrCmd_560,
     ScrCmd_ScreenShake,
@@ -1442,7 +1442,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_585,
     ScrCmd_586,
     ScrCmd_587,
-    ScrCmd_588,
+    Scrcmd_LatiCaughtCheck,
     ScrCmd_WildBattle,
     ScrCmd_GetTrcardStars,
     ScrCmd_591,
@@ -1456,9 +1456,9 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_599,
     ScrCmd_600,
     ScrCmd_FollowPokeFacePlayer,
-    ScrCmd_602,
-    ScrCmd_603,
-    ScrCmd_604,
+    ScrCmd_ToggleFollowingPokemonMovement,
+    ScrCmd_WaitFollowingPokemonMovement,
+    ScrCmd_FollowingPokemonMovement,
     ScrCmd_605,
     ScrCmd_606,
     ScrCmd_607,

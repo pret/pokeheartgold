@@ -135,15 +135,15 @@ scr_seq_D23R0101_002:
 	closemsg
 	register_pokegear_card 2
 	setflag FLAG_GOT_RADIO_CARD
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_D23R0101_gsleader3, _0250
 	apply_movement obj_player, _0270
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0065_D23R0101_00015
 	closemsg
 	apply_movement obj_D23R0101_gsleader3, _0264
@@ -387,9 +387,9 @@ _0540:
 	goto_if_eq _0655
 	npc_msg msg_0065_D23R0101_00024
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 56
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 56
 	compare VAR_TEMP_x4001, 5
 	goto_if_ne _0592
 	apply_movement obj_D23R0101_rocketm, _08EC
@@ -403,9 +403,9 @@ _0592:
 	apply_movement obj_player, _0914
 _05AF:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	hide_person obj_D23R0101_rocketm
 	callstd std_play_rival_outro_music
 	compare VAR_TEMP_x4001, 5

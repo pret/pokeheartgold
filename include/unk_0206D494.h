@@ -12,6 +12,6 @@ u16 *BugContest_GetSportBallsAddr(BUGCONTEST *contest);
 void FieldSystem_IncrementBugContestTimer(FieldSystem *fieldSystem, int a1);
 void FieldSystem_InitMystriStageGymmick(FieldSystem *fieldSystem);
 void sub_0206DB58(TaskManager *taskman, FieldSystem *fieldSystem);
-void sub_0206DB94(TaskManager *man, int a1);
+void sub_0206DB94(TaskManager *man, Pokemon* a1);
 
 #endif //POKEHEARTGOLD_UNK_0206D494_H

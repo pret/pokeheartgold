@@ -133,7 +133,7 @@
       "ovid": "SPRITE_GSGIRL1",
       "mvt": 0,
       "type": 0,
-      "flag": "FLAG_UNK_1CF",
+      "flag": "FLAG_HIDE_ROUTE_36_FLOWERSHOP_GIRL",
       "scr": "_EV_scr_seq_R36_007 + 1",
       "dirn": 0,
       "eye": 0,

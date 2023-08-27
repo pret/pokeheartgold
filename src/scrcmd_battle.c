@@ -208,25 +208,25 @@ BOOL ScrCmd_CheckBattleWon(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_221(ScriptContext *ctx) {
+BOOL ScrCmd_StaticWildWonOrCaughtCheck(ScriptContext *ctx) {
     u16 *retPtr = ScriptGetVarPointer(ctx);
     u8 var0 = ScriptReadByte(ctx);
 
     int val;
     if (var0 == 1) {
-        val = sub_02052564(VarGet(ctx->fieldSystem, VAR_BATTLE_RESULT));
+        val = IsBattleResultStaticWildWin(VarGet(ctx->fieldSystem, VAR_BATTLE_RESULT));
     } else {
-        val = sub_02052564(*(u32 *)FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_BATTLE_WIN_FLAG));
+        val = IsBattleResultStaticWildWin(*(u32 *)FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_BATTLE_WIN_FLAG));
     }
 
     *retPtr = val;
     return TRUE;
 }
 
-BOOL ScrCmd_588(ScriptContext *ctx) {
+BOOL Scrcmd_LatiCaughtCheck(ScriptContext *ctx) {
     u32 *winFlag = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_BATTLE_WIN_FLAG);
     u16 *retPtr = ScriptGetVarPointer(ctx);
-    *retPtr = sub_02052574(*winFlag);
+    *retPtr = IsBattleResultLatiCaught(*winFlag);
     return TRUE;
 }
 

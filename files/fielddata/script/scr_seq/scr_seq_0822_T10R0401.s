@@ -22,14 +22,14 @@ _0023:
 scr_seq_T10R0401_000:
 	scrcmd_609
 	lockall
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0060
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	play_se SEQ_SE_DP_KI_GASYAN
 	clearflag FLAG_HIDE_BRUNOS_ROOM_RETREAT
 	show_person obj_T10R0401_babyboy1_11

@@ -174,7 +174,7 @@
 .public sub_020311AC
 .public sub_0203A128
 .public Save_VarsFlags_Get
-.public sub_0205B46C
+.public GetUnionRoomAvatarAttrBySprite
 .public Save_VarsFlags_FlypointFlagAction
 .public sub_02070D84
 .public sub_020830D8

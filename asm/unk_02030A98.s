@@ -1673,7 +1673,7 @@ _02031566:
 	add r1, r0, #0
 	add r0, r7, #0
 	mov r2, #0
-	bl sub_0205B46C
+	bl GetUnionRoomAvatarAttrBySprite
 	strb r0, [r5, #0x16]
 	mov r0, #GAME_VERSION
 	strb r0, [r5, #0x19]

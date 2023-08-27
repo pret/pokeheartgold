@@ -42,15 +42,15 @@ _006E:
 	buffer_rivals_name 0
 	npc_msg msg_0060_D18R0101_00001
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 56
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 56
 	apply_movement obj_player, _00E8
 	apply_movement obj_D18R0101_gsrivel, _00F8
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	hide_person obj_D18R0101_gsrivel
 	callstd std_fade_end_rival_outro_music
 	setflag FLAG_HIDE_BURNED_TOWER_1F_RIVAL

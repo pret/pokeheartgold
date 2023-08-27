@@ -1500,9 +1500,9 @@ scr_seq_D36R0101_018:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 1
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _1625
@@ -1529,9 +1529,9 @@ _1663:
 	apply_movement obj_D36R0101_gsmiddleman1, _174C
 _1677:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _169E
@@ -1656,14 +1656,14 @@ _1816:
 	wait_movement
 	callstd std_play_pichu_music
 	apply_movement obj_D36R0101_tsure_poke_static_pichu_spiky, _1C64
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _1C8C
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0115_D36R0101_00038
 	closemsg
 	apply_movement obj_partner_poke, _1CB4
@@ -1706,14 +1706,14 @@ _1816:
 	wait_movement
 	apply_movement obj_partner_poke, _1E48
 	wait_movement
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _1E74
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0115_D36R0101_00039
 	play_cry SPECIES_PICHU, 0
 	npc_msg msg_0115_D36R0101_00043
@@ -1742,14 +1742,14 @@ _19AA:
 _19AC:
 	npc_msg msg_0115_D36R0101_00052
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _1EB4
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 _19CF:
 	get_player_facing VAR_TEMP_x4005
 	compare VAR_TEMP_x4005, 3
@@ -1766,9 +1766,9 @@ _19F6:
 	npc_msg msg_0115_D36R0101_00044
 	wait_fanfare
 	npc_msg msg_0115_D36R0101_00053
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	compare VAR_TEMP_x4005, 3
 	goto_if_ne _1A2C
 	apply_movement obj_player, _1ED8
@@ -1778,9 +1778,9 @@ _1A2C:
 	apply_movement obj_player, _1EE4
 _1A34:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	compare VAR_TEMP_x4008, 0
 	goto_if_ne _1A51
 	callstd std_fade_end_pichu_music
@@ -1865,9 +1865,9 @@ _1B67:
 	call _1987
 	compare VAR_SPECIAL_x8004, 1
 	goto_if_ge _1C36
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	get_player_facing VAR_TEMP_x4005
 	compare VAR_TEMP_x4005, 3
 	goto_if_ne _1BB2
@@ -1902,9 +1902,9 @@ _1C16:
 	apply_movement obj_player, _1EC0
 _1C1E:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	call _19CF
 	goto _1C3D
 
@@ -2284,15 +2284,15 @@ _208C:
 scr_seq_D36R0101_022:
 	scrcmd_609
 	lockall
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_D36R0101_var_1, _2148
 	apply_movement obj_player, _21F4
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	gender_msgbox msg_0115_D36R0101_00061, msg_0115_D36R0101_00060
 	closemsg
 	apply_movement obj_D36R0101_tsure_poke_static_marill, _2170

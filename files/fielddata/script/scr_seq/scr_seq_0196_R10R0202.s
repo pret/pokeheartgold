@@ -85,16 +85,16 @@ scr_seq_R10R0202_007:
 	scrcmd_609
 	lockall
 	play_se SEQ_SE_GS_PHONE0
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 56
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 56
 	apply_movement obj_R10R0202_policeman, _0198
 	apply_movement obj_player, _01B4
 	apply_movement obj_R10R0202_gsassistantm, _01CC
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0345_R10R0202_00001
 	closemsg
 	apply_movement obj_R10R0202_policeman, _01D8

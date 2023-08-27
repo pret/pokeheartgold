@@ -25,8 +25,8 @@
 .public BattleSetup_New
 .public BattleSetup_AddMonToParty
 .public sub_02051D18
-.public sub_02052580
-.public sub_0205B46C
+.public BattleSetup_SetAllySideBattlersToPlayer
+.public GetUnionRoomAvatarAttrBySprite
 .public ZeroMonData
 .public AllocMonZeroed
 .public CreateMonWithFixedIVs

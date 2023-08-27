@@ -1316,7 +1316,7 @@
 	.short \var
 	.endm
 
-	.macro scrcmd_221 arg0, arg1
+	.macro static_wild_won_or_caught arg0, arg1
 	.short 221
 	.short \arg0
 	.byte \arg1
@@ -1662,11 +1662,11 @@
 	.short 286
 	.endm
 
-	.macro scrcmd_287
+	.macro buffer_union_room_avatar_choices
 	.short 287
 	.endm
 
-	.macro scrcmd_288 arg0, arg1
+	.macro union_room_avatar_idx_to_trainer_class arg0, arg1
 	.short 288
 	.short \arg0
 	.short \arg1
@@ -3338,7 +3338,7 @@
 	.short 587
 	.endm
 
-	.macro scrcmd_588 arg0
+	.macro lati_caught_check arg0
 	.short 588
 	.short \arg0
 	.endm
@@ -3403,18 +3403,18 @@
 	.short 601
 	.endm
 
-	.macro scrcmd_602 arg0
+	.macro toggle_following_pokemon_movement flag
 	.short 602
-	.short \arg0
+	.short \flag
 	.endm
 
-	.macro scrcmd_603
+	.macro wait_following_pokemon_movement
 	.short 603
 	.endm
 
-	.macro scrcmd_604 arg0
+	.macro following_pokemon_movement movement
 	.short 604
-	.short \arg0
+	.short \movement
 	.endm
 
 	.macro scrcmd_605 arg0, arg1

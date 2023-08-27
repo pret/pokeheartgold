@@ -1,0 +1,5 @@
+record.narc
+# *.NCLR
+# PCMP blocks are not implemented yet
+# so skip dumping NCLR for now
+*.pal
