@@ -2885,13 +2885,11 @@ BOOL CheckTruant(BattleContext *ctx, int battlerId) {
     return ret;
 }
 
-//FIXME: Matches up to regswap, ret <-> side, https://decomp.me/scratch/FiPFk -adrienn
-#ifdef NONMATCHING
 BOOL BattleContext_CheckMoveImprisoned(BattleSystem *bsys, BattleContext *ctx, int battlerId, int moveNo) {
     int maxBattlers;
-    BOOL ret;
-    int battlerIdCur;
     int side;
+    int battlerIdCur;
+    BOOL ret;
     int i;
     
     ret = FALSE;
@@ -2913,68 +2911,6 @@ BOOL BattleContext_CheckMoveImprisoned(BattleSystem *bsys, BattleContext *ctx, i
     
     return ret;
 }
-#else
-asm BOOL BattleContext_CheckMoveImprisoned(BattleSystem *bsys, BattleContext *ctx, int battlerId, int moveNo) {
-      push {r3, r4, r5, r6, r7, lr}
-    sub sp, #0x10
-    add r6, r1, #0
-    mov r1, #0
-    str r0, [sp, #0]
-    add r4, r2, #0
-    add r5, r3, #0
-    str r1, [sp, #4]
-    bl BattleSystem_GetMaxBattlers
-    str r0, [sp, #0xc]
-    ldr r0, [sp, #0]
-    add r1, r4, #0
-    bl BattleSystem_GetFieldSide
-    str r0, [sp, #8]
-    ldr r0, [sp, #0xc]
-    mov r7, #0
-    cmp r0, #0
-    ble _02252CDE
-    ldr r4, =0x00002D4C
-_02252C9E:
-    ldr r0, [sp, #0]
-    add r1, r7, #0
-    bl BattleSystem_GetFieldSide
-    ldr r1, [sp, #8]
-    cmp r1, r0
-    beq _02252CD4
-    mov r0, #0xb7
-    lsl r0, r0, #6
-    ldr r1, [r6, r0]
-    mov r0, #2
-    lsl r0, r0, #0xc
-    tst r0, r1
-    beq _02252CD4
-    mov r1, #0
-    add r2, r6, #0
-_02252CBE:
-    ldrh r0, [r2, r4]
-    cmp r5, r0
-    beq _02252CCC
-    add r1, r1, #1
-    add r2, r2, #2
-    cmp r1, #4
-    blt _02252CBE
-_02252CCC:
-    cmp r1, #4
-    beq _02252CD4
-    mov r0, #1
-    str r0, [sp, #4]
-_02252CD4:
-    ldr r0, [sp, #0xc]
-    add r7, r7, #1
-    add r6, #0xc0
-    cmp r7, r0
-    blt _02252C9E
-_02252CDE:
-    ldr r0, [sp, #4]
-    add sp, #0x10
-    pop {r3, r4, r5, r6, r7, pc}
-}  
-#endif
 
 BOOL CheckMoveEffectOnField(BattleSystem *bsys, BattleContext *ctx, int moveEffect) {
     int battlerId;
