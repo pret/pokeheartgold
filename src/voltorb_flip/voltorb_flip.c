@@ -1463,90 +1463,20 @@ static void ov122_021E745C(VoltorbFlipAppWork *work) {
     sub_02018474(work->unk1C);
 }
 
-// decomp.me: https://decomp.me/scratch/xZj2x
-#ifdef NONMATCHING
-static void ov122_021E7488(VoltorbFlipAppWork *work, int a1) {
-    Ov122_021E7488 temp1 = {0};
+void ov122_021E7488(VoltorbFlipAppWork *a0, int a1)
+{    
+    Ov122_021E7488 temp1 = {0};   
     const MsgNoList *ptr = &sMenuMsgNos[a1];
-    GF_ASSERT(work->bgConfig != 0);
+    GF_ASSERT(a0->bgConfig != 0);
 
     temp1.unk0 = ov122_021E9278.unkA;
 
-    temp1.unkC = work->menuItems[a1];
-    temp1.unk10 = work->bgConfig;
+    temp1.unkC = a0->menuItems[a1];
+    temp1.unk10 = a0->bgConfig;
     temp1.unk14 = ptr->size;
-
-    work->unk20 = sub_020185FC(work->unk1C, &temp1, work->unk228, 17, 17 - ptr->size * 3, 13, 0);
+    
+    a0->unk20 = sub_020185FC(a0->unk1C, &temp1, a0->unk228, 17, 17 - ptr->size * 3, 13, 0);
 }
-#else
-asm void ov122_021E7488(VoltorbFlipAppWork *work, int a1) {
-	push {r3, r4, r5, r6, lr}
-	sub sp, #0x24
-	add r5, r0, #0
-	add r6, r1, #0
-	add r1, sp, #0xc
-	mov r0, #0
-	str r0, [r1]
-	str r0, [r1, #4]
-	str r0, [r1, #8]
-	str r0, [r1, #0xc]
-	str r0, [r1, #0x10]
-	str r0, [r1, #0x14]
-	ldr r1, =sMenuMsgNos
-	lsl r0, r6, #3
-	add r4, r1, r0
-	ldr r0, [r5, #0x18]
-	cmp r0, #0
-	bne _021E74B0
-	bl GF_AssertFail
-_021E74B0:
-	ldr r2, =ov122_021E9278
-	add r0, sp, #0xc
-	ldrh r3, [r2, #0xa]
-	add r1, sp, #0xc
-	strh r3, [r0]
-	ldrh r3, [r2, #0xc]
-	strh r3, [r0, #2]
-	ldrh r3, [r2, #0xe]
-	strh r3, [r0, #4]
-	ldrh r3, [r2, #0x10]
-	strh r3, [r0, #6]
-	ldrh r3, [r2, #0x12]
-	ldrh r2, [r2, #0x14]
-	strh r3, [r0, #8]
-	strh r2, [r0, #0xa]
-	lsl r2, r6, #2
-	add r3, r5, r2
-	mov r2, #0x4d
-	lsl r2, r2, #2
-	ldr r3, [r3, r2]
-	add r2, #0xf4
-	str r3, [sp, #0x18]
-	ldr r3, [r5, #0x18]
-	str r3, [sp, #0x1c]
-	ldr r3, [r4, #4]
-	strb r3, [r0, #0x14]
-	ldr r3, [r4, #4]
-	lsl r0, r3, #1
-	add r0, r3, r0
-	mov r3, #0x11
-	sub r0, r3, r0
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	str r0, [sp]
-	mov r0, #0xd
-	str r0, [sp, #4]
-	mov r0, #0
-	str r0, [sp, #8]
-	ldrb r2, [r5, r2]
-	ldr r0, [r5, #0x1c]
-	bl sub_020185FC
-	str r0, [r5, #0x20]
-	add sp, #0x24
-	pop {r3, r4, r5, r6, pc}
-	nop
-}
-#endif // NONMATCHING
 
 static int ov122_021E7514(VoltorbFlipAppWork *work) {
     int var1 = sub_020186A4(work->unk20);
