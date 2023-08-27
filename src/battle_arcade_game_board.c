@@ -105,20 +105,20 @@ BOOL BattleArcadeGameBoard_InitOverlay(OVY_MANAGER *man, int *state) {
     work->bgConfig = BgConfig_Alloc(HEAP_ID_GAME_BOARD);
     work->man = man;
     args = (GAME_BOARD_ARGS *) OverlayManager_GetArgs(man);
-    work->savedata = args->savedata;
-    work->arcadeSavedata = sub_02030E88(work->savedata);
-    work->arcadeScoreSavedata = sub_02030FA0(work->savedata);
+    work->saveData = args->saveData;
+    work->arcadeSaveData = sub_02030E88(work->saveData);
+    work->arcadeScoreSaveData = sub_02030FA0(work->saveData);
     work->type = args->type;
     work->unk2A = args->unk1E;
     work->winstreak = args->winstreak;
     work->multiWinstreak = args->multiWinstreak;
     work->unk12 = args->unk7;
     work->returnWork = &args->returnWork;
-    work->options = Save_PlayerData_GetOptionsAddr(work->savedata);
+    work->options = Save_PlayerData_GetOptionsAddr(work->saveData);
     work->playerParty = args->playerParty;
     work->opponentParty = args->opponentParty;
     work->unkE = 0xff;
-    work->frontierSavedata = sub_0203107C(work->savedata);
+    work->frontierSaveData = sub_0203107C(work->saveData);
     work->weather = args->weather;
     work->cursorSpeed = args->cursorSpeed;
     work->unk20 = args->unk10;
@@ -809,7 +809,7 @@ static BOOL ov84_0223ECBC(GAME_BOARD_WORK *work, u16 type, u16 a2) {
 static void ov84_0223ED00(GAME_BOARD_WORK *work, u16 type) {
     int i, offset;
 
-    Save_PlayerData_GetProfileAddr(work->savedata);
+    Save_PlayerData_GetProfileAddr(work->saveData);
 
     work->sendBuffer[0] = type;
 

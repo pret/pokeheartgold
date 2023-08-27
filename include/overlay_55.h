@@ -36,7 +36,7 @@ typedef struct UnkArgs_ov55 {
     u32 unk4;
     u8 unk8[0x7];
     u8 mailType;
-    SaveData *savedata;
+    SaveData *saveData;
     Mail *mail;
     u8 unk18[4];
     u32 *unk1C;

@@ -17,7 +17,7 @@ typedef struct Options {
 Options* Options_New(HeapID heapId);
 void Options_Copy(Options* src, Options* dest);
 void Options_Init(Options* options);
-void Options_SetButtonModeOnMain(SaveData* savedata, u32 buttonMode);
+void Options_SetButtonModeOnMain(SaveData* saveData, u32 buttonMode);
 u16 Options_GetTextSpeed(Options* options);
 void Options_SetTextSpeed(Options* options, u32 textSpeed);
 u8 Options_GetTextFrameDelay(Options* options);

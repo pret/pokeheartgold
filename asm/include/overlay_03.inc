@@ -163,7 +163,7 @@
 .public sub_02037EC0
 .public sub_020398D4
 .public MapHeader_GetMapSec
-.public FieldSystem_GetSaveDataPtr
+.public FieldSystem_GetSaveData
 .public sub_0203E3D4
 .public sub_0203EB08
 .public SetupNativeScript

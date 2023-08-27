@@ -44,7 +44,7 @@
 .public Save_Pokewalker_Get
 .public Pokewalker_CourseIsUnlocked
 .public Pokewalker_UnlockCourse
-.public FieldSystem_GetSaveDataPtr
+.public FieldSystem_GetSaveData
 .public ScriptReadHalfword
 .public FieldSysGetAttrAddr
 .public GetVarPointer

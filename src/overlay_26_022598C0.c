@@ -4,8 +4,8 @@
 #include "sys_flags.h"
 
 static u16 GetRematchIdByBaseTrainerId(u16 trainer_no);
-static u16 GetIndexOfFirstUnbeatenRematch(SaveData* savedata, u16 rematch_set_no);
-static u32 CheckUnlockedRematchGroup(SaveData* savedata, u16 rematch_set_no, u16 rematch_no);
+static u16 GetIndexOfFirstUnbeatenRematch(SaveData* saveData, u16 rematch_set_no);
+static u32 CheckUnlockedRematchGroup(SaveData* saveData, u16 rematch_set_no, u16 rematch_no);
 static u16 GetPreviousRematchIndexForTrainer(u32 rematch_set_no, u16 rematch_no);
 static u16 GetRematchTrainerIdByIndexPair(u16 rematch_set_no, u32 rematch_no);
 
@@ -75,14 +75,14 @@ static const u16 sTrainerRematchSets[][6] = {
     { TRAINER_LEADER_BLUE_BLUE, TRAINER_LEADER_BLUE_BLUE, TRAINER_LEADER_BLUE_BLUE_2, TRAINER_NONE, TRAINER_NONE, TRAINER_NONE },
 };
 
-u16 TryGetRematchTrainerIdByBaseTrainerId(SaveData* savedata, u16 trainer_id) {
+u16 TryGetRematchTrainerIdByBaseTrainerId(SaveData* saveData, u16 trainer_id) {
     u16 rematch_set_no = GetRematchIdByBaseTrainerId(trainer_id);
     if (rematch_set_no == 0xFF) {
         return 0;
     }
 
-    u16 rematch_no = GetIndexOfFirstUnbeatenRematch(savedata, rematch_set_no);
-    u32 checked_rematch_no = CheckUnlockedRematchGroup(savedata, rematch_set_no, rematch_no);
+    u16 rematch_no = GetIndexOfFirstUnbeatenRematch(saveData, rematch_set_no);
+    u32 checked_rematch_no = CheckUnlockedRematchGroup(saveData, rematch_set_no, rematch_no);
     return GetRematchTrainerIdByIndexPair(rematch_set_no, checked_rematch_no);
 }
 
@@ -96,7 +96,7 @@ static u16 GetRematchIdByBaseTrainerId(u16 trainer_no) {
     return 0xFF;
 }
 
-static u16 GetIndexOfFirstUnbeatenRematch(SaveData* savedata, u16 rematch_set_no) {
+static u16 GetIndexOfFirstUnbeatenRematch(SaveData* saveData, u16 rematch_set_no) {
     int i;
     for (i = 1; i < 6; i++) {
         u16 trainer_no = sTrainerRematchSets[rematch_set_no][i];
@@ -104,7 +104,7 @@ static u16 GetIndexOfFirstUnbeatenRematch(SaveData* savedata, u16 rematch_set_no
             return i - 1;
         }
 
-        if (trainer_no != 0xFFFF && !TrainerFlagCheck(savedata, trainer_no)) {
+        if (trainer_no != 0xFFFF && !TrainerFlagCheck(saveData, trainer_no)) {
             return i;
         }
     }
@@ -112,8 +112,8 @@ static u16 GetIndexOfFirstUnbeatenRematch(SaveData* savedata, u16 rematch_set_no
     return i - 1;
 }
 
-static u32 CheckUnlockedRematchGroup(SaveData* savedata, u16 rematch_set_no, u16 rematch_no) {
-    SaveVarsFlags* state = Save_VarsFlags_Get(savedata);
+static u32 CheckUnlockedRematchGroup(SaveData* saveData, u16 rematch_set_no, u16 rematch_no) {
+    SaveVarsFlags* state = Save_VarsFlags_Get(saveData);
 
     if (rematch_no == 0) {
         return rematch_no;

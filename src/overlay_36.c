@@ -42,9 +42,9 @@ static BOOL ov36_App_InitGameState_AfterOakSpeech_AppExit(OVY_MANAGER* man, int*
 static BOOL ov36_TitleScreen_NewGame_AppInit(OVY_MANAGER* man, int* state);
 static BOOL ov36_TitleScreen_NewGame_AppExec(OVY_MANAGER* man, int* state);
 static BOOL ov36_TitleScreen_NewGame_AppExit(OVY_MANAGER* man, int* state);
-static void InitGameStateAfterOakSpeech_Internal(HeapID heapId, SaveData* savedata, BOOL set_trainer_id);
-static void Continue_LoadSaveData_HandleError(HeapID heapId, SaveData* savedata);
-static void NewGame_InitSaveData(HeapID heapId, SaveData* savedata);
+static void InitGameStateAfterOakSpeech_Internal(HeapID heapId, SaveData* saveData, BOOL set_trainer_id);
+static void Continue_LoadSaveData_HandleError(HeapID heapId, SaveData* saveData);
+static void NewGame_InitSaveData(HeapID heapId, SaveData* saveData);
 
 const OVY_MGR_TEMPLATE ov36_App_MainMenu_SelectOption_NewGame = {
     .init = ov36_TitleScreen_NewGame_AppInit,
@@ -94,8 +94,8 @@ BOOL ov36_TitleScreen_NewGame_AppInit(OVY_MANAGER* man, int* state) {
 
 BOOL ov36_TitleScreen_NewGame_AppExec(OVY_MANAGER* man, int* state) {
 #pragma unused(state)
-    SaveData* savedata = ((struct UnkStruct_02111868_sub*)OverlayManager_GetArgs(man))->savedata;
-    NewGame_InitSaveData(HEAPID_OV36, savedata);
+    SaveData* saveData = ((struct UnkStruct_02111868_sub*)OverlayManager_GetArgs(man))->saveData;
+    NewGame_InitSaveData(HEAPID_OV36, saveData);
 
     return TRUE;
 }
@@ -119,9 +119,9 @@ BOOL ov36_App_InitGameState_AfterOakSpeech_AppInit(OVY_MANAGER* man, int* state)
 BOOL ov36_App_InitGameState_AfterOakSpeech_AppExec(OVY_MANAGER* man, int* state) {
 #pragma unused(state)
     struct UnkStruct_02111868_sub* unk_work = OverlayManager_GetArgs(man);
-    SaveData* savedata = unk_work->savedata;
-    InitGameStateAfterOakSpeech_Internal(HEAPID_OV36, savedata, TRUE);
-    sub_0201838C(Save_PlayerData_GetIGTAddr(savedata));
+    SaveData* saveData = unk_work->saveData;
+    InitGameStateAfterOakSpeech_Internal(HEAPID_OV36, saveData, TRUE);
+    sub_0201838C(Save_PlayerData_GetIGTAddr(saveData));
 
     return TRUE;
 }
@@ -145,21 +145,21 @@ BOOL ov36_App_MainMenu_SelectOption_Continue_AppInit(OVY_MANAGER* man, int* stat
 BOOL ov36_App_MainMenu_SelectOption_Continue_AppExec(OVY_MANAGER* man, int* state) {
 #pragma unused(state)
     struct UnkStruct_02111868_sub* unk_work = OverlayManager_GetArgs(man);
-    SaveData* savedata = unk_work->savedata;
-    SysInfo* sys_info = Save_SysInfo_Get(savedata);
+    SaveData* saveData = unk_work->saveData;
+    SysInfo* sys_info = Save_SysInfo_Get(saveData);
 
-    Continue_LoadSaveData_HandleError(HEAPID_OV36, savedata);
+    Continue_LoadSaveData_HandleError(HEAPID_OV36, saveData);
 
-    Options_SetButtonModeOnMain(savedata, 0);
+    Options_SetButtonModeOnMain(saveData, 0);
 
     if (!Save_SysInfo_MacAddressIsMine(sys_info) || !Save_SysInfo_RTCOffsetIsMine(sys_info)) {
-        SysInfoRTC_HandleContinueOnNewConsole(Save_SysInfo_RTC_Get(savedata));
-        Save_BerryPotRTC_Init(Save_BerryPotRTC_Get(savedata));
+        SysInfoRTC_HandleContinueOnNewConsole(Save_SysInfo_RTC_Get(saveData));
+        Save_BerryPotRTC_Init(Save_BerryPotRTC_Get(saveData));
         Save_SysInfo_InitFromSystem(sys_info);
-        Party_ResetAllShayminToLandForm(SaveArray_Party_Get(savedata));
+        Party_ResetAllShayminToLandForm(SaveArray_Party_Get(saveData));
     }
 
-    sub_0201838C(Save_PlayerData_GetIGTAddr(savedata));
+    sub_0201838C(Save_PlayerData_GetIGTAddr(saveData));
 
     return TRUE;
 }
@@ -172,40 +172,40 @@ BOOL ov36_App_MainMenu_SelectOption_Continue_AppExit(OVY_MANAGER* man, int* stat
     return TRUE;
 }
 
-static void InitGameStateAfterOakSpeech_Internal(HeapID heapId, SaveData* savedata, BOOL set_trainer_id) {
+static void InitGameStateAfterOakSpeech_Internal(HeapID heapId, SaveData* saveData, BOOL set_trainer_id) {
 #pragma unused(heapId)
     s32 i;
     MsgData* friend_names_msgdata;
     String* author_name;
 
-    Save_SysInfo_InitFromSystem(Save_SysInfo_Get(savedata));
-    Save_SysInfo_RTC_Init(Save_SysInfo_RTC_Get(savedata));
-    Save_BerryPotRTC_Init(Save_BerryPotRTC_Get(savedata));
-    sub_0202C7C0(Save_FriendGroup_Get(savedata), 1, MTRandom());
-    sub_020674BC(savedata);
+    Save_SysInfo_InitFromSystem(Save_SysInfo_Get(saveData));
+    Save_SysInfo_RTC_Init(Save_SysInfo_RTC_Get(saveData));
+    Save_BerryPotRTC_Init(Save_BerryPotRTC_Get(saveData));
+    sub_0202C7C0(Save_FriendGroup_Get(saveData), 1, MTRandom());
+    sub_020674BC(saveData);
 
-    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(savedata);
+    PlayerProfile* profile = Save_PlayerData_GetProfileAddr(saveData);
     u32 rand = MTRandom();
 
     if (set_trainer_id) {
         PlayerProfile_SetTrainerID(profile, rand);
     }
 
-    SafariZone* safari_zone = Save_SafariZone_Get(savedata);
+    SafariZone* safari_zone = Save_SafariZone_Get(saveData);
     SafariZone_ResetAreaSetToDefaultSet(safari_zone->area_sets, rand);
 
     PlayerProfile_SetAvatar(profile, sub_0205B418(rand, PlayerProfile_GetTrainerGender(profile), 0));
 
-    sub_0202AE0C(Save_FieldApricornTrees_Get(savedata));
+    sub_0202AE0C(Save_FieldApricornTrees_Get(saveData));
 
-    u32* pokewalker_unk = sub_02032728(Save_Pokewalker_Get(savedata));
+    u32* pokewalker_unk = sub_02032728(Save_Pokewalker_Get(saveData));
     for (i = 0; i < 10; i++) {
         pokewalker_unk[i] = MTRandom();
     }
 
     // Put an email from your friend into your PC.
     friend_names_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0445_bin, HEAP_ID_3);
-    MAILBOX* mailbox = Save_Mailbox_Get(savedata);
+    MAILBOX* mailbox = Save_Mailbox_Get(saveData);
     Pokemon *mon = AllocMonZeroed(HEAP_ID_3);
 
     CreateMon(mon, SPECIES_MARILL, 1, 0, FALSE, 0, OT_ID_PLAYER_ID, 0);
@@ -236,21 +236,21 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heapId, SaveData* saveda
     DestroyMsgData(friend_names_msgdata);
 }
 
-static void Continue_LoadSaveData_HandleError(HeapID heapId, SaveData* savedata) {
+static void Continue_LoadSaveData_HandleError(HeapID heapId, SaveData* saveData) {
 #pragma unused(heapId)
-    if (!SaveData_TryLoadOnContinue(savedata)) {
+    if (!SaveData_TryLoadOnContinue(saveData)) {
         OS_ResetSystem(0);
     }
 }
 
-static void NewGame_InitSaveData(HeapID heapId, SaveData* savedata) {
+static void NewGame_InitSaveData(HeapID heapId, SaveData* saveData) {
 #pragma unused(heapId)
-    Save_InitDynamicRegion(savedata);
-    Save_CurrentLocation_BackUp(savedata);
+    Save_InitDynamicRegion(saveData);
+    Save_CurrentLocation_BackUp(saveData);
 
-    PlayerProfile_SetMoney(Save_PlayerData_GetProfileAddr(savedata), 3000);
+    PlayerProfile_SetMoney(Save_PlayerData_GetProfileAddr(saveData), 3000);
 
-    Save_VarsFlags_SetFishingCompetitionLengthRecord(Save_VarsFlags_Get(savedata), 56150); // 3'6"
+    Save_VarsFlags_SetFishingCompetitionLengthRecord(Save_VarsFlags_Get(saveData), 56150); // 3'6"
 
-    SetFlag960(Save_VarsFlags_Get(savedata));
+    SetFlag960(Save_VarsFlags_Get(saveData));
 }

@@ -56,7 +56,7 @@ BOOL ov55_UnkApp_Init(OVY_MANAGER *manager, int *state) {
 
     overlayData->heapId = HEAP_ID_OV55;
     overlayData->unk10 = ov55_021E5B08(args->mail, HEAP_ID_OV55);
-    overlayData->unk10->options = Save_PlayerData_GetOptionsAddr(args->savedata);
+    overlayData->unk10->options = Save_PlayerData_GetOptionsAddr(args->saveData);
     if (args->unk0 == 1) {
         overlayData->unk10->mailType = args->mailType;
     }
@@ -102,8 +102,8 @@ BOOL ov55_UnkApp_Main(OVY_MANAGER *manager, int *state) {
             if (args->unk0 == 1) {
                 if (overlayData->unk10->unk0 == 3) {
                     ov55_021E5BC4(args->mail, overlayData->unk10);
-                    GameStats_AddSpecial(Save_GameStats_Get(args->savedata), GAME_STAT_UNK2);
-                    GameStats_Inc(Save_GameStats_Get(args->savedata), GAME_STAT_UNK46);
+                    GameStats_AddSpecial(Save_GameStats_Get(args->saveData), GAME_STAT_UNK2);
+                    GameStats_Inc(Save_GameStats_Get(args->saveData), GAME_STAT_UNK46);
                     args->unk4 = 1;
                 } else {
                     args->unk4 = 0;
@@ -113,7 +113,7 @@ BOOL ov55_UnkApp_Main(OVY_MANAGER *manager, int *state) {
             return TRUE;
 
         case 3:
-            overlayData->unk8 = sub_02090C94(2, 0, args->savedata, args->unk1C, overlayData->heapId);
+            overlayData->unk8 = sub_02090C94(2, 0, args->saveData, args->unk1C, overlayData->heapId);
             if (MailMsg_IsInit(&overlayData->unk10->mailMessages[overlayData->unk10->mailMessageIdx])) {
                 MailMsg_Copy(&overlayData->unk14, &overlayData->unk10->mailMessages[overlayData->unk10->mailMessageIdx]);
             } else {

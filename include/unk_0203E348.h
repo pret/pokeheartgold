@@ -21,7 +21,7 @@ typedef struct BerryPotsArgs {
     u8 unk0[4];
     u32 unk4;
     BagCursor *cursor;
-    SaveData *savedata;
+    SaveData *saveData;
 } BerryPotsArgs;
 
 typedef struct PartyMenuAppData {
@@ -131,12 +131,12 @@ static inline void InitUnkStructScrCmd408(struct UnkStruct_ScrCmd408 *data, u16 
     MI_CpuClear8(data, sizeof(struct UnkStruct_ScrCmd408));
     data->unk_4 = a1;
     data->unk_6 = a2;
-    data->saveData = ctx->fieldSystem->savedata;
+    data->saveData = ctx->fieldSystem->saveData;
 }
 
 static inline PCBoxAppData *PCBoxAppData_New(ScriptContext *ctx) {
     PCBoxAppData *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(PCBoxAppData));
-    ret->saveData = ctx->fieldSystem->savedata;
+    ret->saveData = ctx->fieldSystem->saveData;
     ret->unk8 = ScriptReadByte(ctx);
     ret->fieldSystemUnk10C = &ctx->fieldSystem->unk_10C;
     return ret;

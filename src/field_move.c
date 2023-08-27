@@ -85,8 +85,8 @@ static const struct FieldMoveFuncDat sFieldMoveFuncTable[] = {
 };
 
 static inline BOOL MoveUseCheck_SafariOrPalPark(const struct FieldMoveCheckData *checkData) {
-    if (Save_VarsFlags_CheckSafariSysFlag(Save_VarsFlags_Get(checkData->fieldSystem->savedata)) == TRUE || Save_VarsFlags_CheckPalParkSysFlag(
-        Save_VarsFlags_Get(checkData->fieldSystem->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckSafariSysFlag(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE || Save_VarsFlags_CheckPalParkSysFlag(
+        Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
         return TRUE;
     } else {
         return FALSE;
@@ -95,7 +95,7 @@ static inline BOOL MoveUseCheck_SafariOrPalPark(const struct FieldMoveCheckData 
 
 static inline BOOL MoveUseCheck_PalPark(const struct FieldMoveCheckData *checkData) {
     if (Save_VarsFlags_CheckPalParkSysFlag(
-        Save_VarsFlags_Get(checkData->fieldSystem->savedata)) == TRUE) {
+        Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
         return TRUE;
     } else {
         return FALSE;
@@ -161,7 +161,7 @@ void FieldSystem_MakeFieldMoveCheckData(FieldSystem *fieldSystem, struct FieldMo
     if (MetatileBehavior_IsWhirlpool(facingTile)) {
         checkData->flag |= (1 << FIELD_MOVE_CHECK_WHIRLPOOL_F);
     }
-    if (LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(fieldSystem->savedata)) == 11) {
+    if (LocalFieldData_GetWeatherType(Save_LocalFieldData_Get(fieldSystem->saveData)) == 11) {
         checkData->flag |= (1 << FIELD_MOVE_CHECK_FLASH_F);
     }
     if (MetatileBehavior_IsHeadbutt(facingTile) || FieldSystem_FacingModelIsHeadbuttTree(fieldSystem)) {
@@ -186,7 +186,7 @@ static u32 FieldMoveMenuCheck_Cut(const struct FieldMoveCheckData *checkData) {
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
-    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fieldSystem->savedata), BADGE_HIVE)) {
+    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fieldSystem->saveData), BADGE_HIVE)) {
         return PARTY_MENU_RESPONSE_NEED_BADGE;
     }
     if (MoveUseCheck_FieldContextFlagCheck(checkData, FIELD_MOVE_CHECK_TREE_F)) {
@@ -218,7 +218,7 @@ static u32 FieldMoveMenuCheck_Fly(const struct FieldMoveCheckData *checkData) {
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
-    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fieldSystem->savedata), BADGE_STORM)) {
+    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fieldSystem->saveData), BADGE_STORM)) {
         return PARTY_MENU_RESPONSE_NEED_BADGE;
     }
 
@@ -226,11 +226,11 @@ static u32 FieldMoveMenuCheck_Fly(const struct FieldMoveCheckData *checkData) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(checkData->fieldSystem->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(checkData->fieldSystem->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 
@@ -255,7 +255,7 @@ static u32 FieldMoveMenuCheck_Surf(const struct FieldMoveCheckData *checkData) {
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
-    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fieldSystem->savedata), BADGE_FOG)) {
+    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fieldSystem->saveData), BADGE_FOG)) {
         return PARTY_MENU_RESPONSE_NEED_BADGE;
     }
 
@@ -267,11 +267,11 @@ static u32 FieldMoveMenuCheck_Surf(const struct FieldMoveCheckData *checkData) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(checkData->fieldSystem->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(checkData->fieldSystem->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 
@@ -300,7 +300,7 @@ static u32 FieldMoveMenuCheck_Strength(const struct FieldMoveCheckData *checkDat
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
-    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fieldSystem->savedata), BADGE_PLAIN)) {
+    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fieldSystem->saveData), BADGE_PLAIN)) {
         return PARTY_MENU_RESPONSE_NEED_BADGE;
     }
 
@@ -336,7 +336,7 @@ static u32 FieldMoveMenuCheck_RockSmash(const struct FieldMoveCheckData *checkDa
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
-    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fieldSystem->savedata), BADGE_ZEPHYR)) {
+    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fieldSystem->saveData), BADGE_ZEPHYR)) {
         return PARTY_MENU_RESPONSE_NEED_BADGE;
     }
 
@@ -371,7 +371,7 @@ static u32 FieldMoveMenuCheck_Waterfall(const struct FieldMoveCheckData *checkDa
     if (PlayerAvatar_GetState(checkData->fieldSystem->playerAvatar) != PLAYER_STATE_SURFING) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
-    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fieldSystem->savedata), BADGE_RISING)) {
+    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fieldSystem->saveData), BADGE_RISING)) {
         return PARTY_MENU_RESPONSE_NEED_BADGE;
     }
 
@@ -403,7 +403,7 @@ static u32 FieldMoveMenuCheck_RockClimb(const struct FieldMoveCheckData *checkDa
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
-    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fieldSystem->savedata), BADGE_EARTH)) {
+    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fieldSystem->saveData), BADGE_EARTH)) {
         return PARTY_MENU_RESPONSE_NEED_BADGE;
     }
 
@@ -411,11 +411,11 @@ static u32 FieldMoveMenuCheck_RockClimb(const struct FieldMoveCheckData *checkDa
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(checkData->fieldSystem->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(checkData->fieldSystem->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 
@@ -486,11 +486,11 @@ static u32 FieldMoveMenuCheck_Teleport(const struct FieldMoveCheckData *checkDat
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(checkData->fieldSystem->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(checkData->fieldSystem->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 
@@ -505,7 +505,7 @@ static void FieldMoveMenuUse_Teleport(struct FieldMoveUseData *useData, const st
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(useData->taskManager);
     struct BagViewAppWork *menuEnv = TaskManager_GetEnv(useData->taskManager);
     sub_020505C0(fieldSystem);
-    struct TeleportFieldEnv *retEnv = sub_020689A4(HEAP_ID_FIELD, useData->partySlot, fieldSystem->savedata);
+    struct TeleportFieldEnv *retEnv = sub_020689A4(HEAP_ID_FIELD, useData->partySlot, fieldSystem->saveData);
     struct FlyTaskStruct *retSub = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct FlyTaskStruct));
     retEnv->flySub = retSub;
     retSub->partySlot = useData->partySlot;
@@ -532,11 +532,11 @@ static u32 FieldMoveMenuCheck_Dig(const struct FieldMoveCheckData *checkData) {
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(checkData->fieldSystem->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckHaveFollower(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
         return PARTY_MENU_RESPONSE_HAVE_FOLLOWER;
     }
 
-    if (Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(checkData->fieldSystem->savedata)) == TRUE) {
+    if (Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
         return PARTY_MENU_RESPONSE_NOT_NOW;
     }
 
@@ -547,7 +547,7 @@ static void FieldMoveMenuUse_Dig(struct FieldMoveUseData *useData, const struct 
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(useData->taskManager);
     struct BagViewAppWork *menuEnv = TaskManager_GetEnv(useData->taskManager);
     sub_020505C0(fieldSystem);
-    struct TeleportFieldEnv *retEnv = sub_020689A4(HEAP_ID_FIELD, useData->partySlot, fieldSystem->savedata);
+    struct TeleportFieldEnv *retEnv = sub_020689A4(HEAP_ID_FIELD, useData->partySlot, fieldSystem->saveData);
     struct FlyTaskStruct *retSub = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct FlyTaskStruct));
     retEnv->flySub = retSub;
     retSub->partySlot = useData->partySlot;
@@ -581,7 +581,7 @@ static u32 FieldMoveMenuCheck_SweetScent(const struct FieldMoveCheckData *checkD
 static void FieldMoveMenuUse_SweetScent(struct FieldMoveUseData *useData, const struct FieldMoveCheckData *checkData) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(useData->taskManager);
     struct BagViewAppWork *menuEnv = TaskManager_GetEnv(useData->taskManager);
-    struct TeleportFieldEnv *retEnv = sub_020689A4(HEAP_ID_FIELD, useData->partySlot, fieldSystem->savedata);
+    struct TeleportFieldEnv *retEnv = sub_020689A4(HEAP_ID_FIELD, useData->partySlot, fieldSystem->saveData);
     struct FlyTaskStruct *retSub = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct FlyTaskStruct));
     retEnv->flySub = retSub;
     retSub->partySlot = useData->partySlot;
@@ -627,7 +627,7 @@ static u32 FieldMoveMenuCheck_Whirlpool(const struct FieldMoveCheckData *checkDa
         return PARTY_MENU_RESPONSE_NOT_HERE;
     }
 
-    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fieldSystem->savedata), BADGE_GLACIER)) {
+    if (!PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(checkData->fieldSystem->saveData), BADGE_GLACIER)) {
         return PARTY_MENU_RESPONSE_NEED_BADGE;
     }
 

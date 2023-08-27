@@ -59,14 +59,14 @@ void NitroMain(void) {
     FontID_Alloc(1, HEAP_ID_3);
     FontID_Alloc(3, HEAP_ID_3);
     _02111868.unk_10.unk_00 = -1;
-    _02111868.unk_10.savedata = SaveData_New();
+    _02111868.unk_10.saveData = SaveData_New();
     sub_02005D00();
-    InitSoundData(Save_Chatot_Get(_02111868.unk_10.savedata), Save_PlayerData_GetOptionsAddr(_02111868.unk_10.savedata));
+    InitSoundData(Save_Chatot_Get(_02111868.unk_10.saveData), Save_PlayerData_GetOptionsAddr(_02111868.unk_10.saveData));
     Init_Timer3();
     if (sub_02039FFC(3) == 3) {
         ShowWFCUserInfoWarning(HEAP_ID_3, 0);
     }
-    if (!Save_FlashChipIsDetected(_02111868.unk_10.savedata)) {
+    if (!Save_FlashChipIsDetected(_02111868.unk_10.saveData)) {
         ShowSaveDataReadError(HEAP_ID_DEFAULT);
     } else {
         switch (OS_GetResetParameter()) {

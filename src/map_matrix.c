@@ -157,9 +157,9 @@ static inline BOOL MapAndDayCheck(u32 map_no, RTCDate* date) {
     return (map_no == MAP_T29 || map_no == MAP_R43) && date->week == RTC_WEEK_WEDNESDAY;
 }
 
-BOOL ShouldUseAlternateLakeOfRage(SaveData* savedata, u32 map_no) {
+BOOL ShouldUseAlternateLakeOfRage(SaveData* saveData, u32 map_no) {
     RTCDate date;
-    SaveVarsFlags *state = Save_VarsFlags_Get(savedata);
+    SaveVarsFlags *state = Save_VarsFlags_Get(saveData);
 
     GF_RTC_CopyDate(&date);
 
