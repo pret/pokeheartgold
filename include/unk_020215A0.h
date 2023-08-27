@@ -4,7 +4,9 @@
 #include "heap.h"
 
 typedef struct UnkStruct_020215A0 {
-    u32 filler_00[3];
+    u32 unk_00;
+    u32 unk_04;
+    u32 unk_08;
     HeapID heapId;
 } UnkStruct_020215A0;
 

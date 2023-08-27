@@ -122,8 +122,8 @@ static void ov122_021E79D0(VoltorbFlipAppWork *);
 static void ov122_021E7AEC(VoltorbFlipAppWork *);
 static void ov122_021E7B94(VoltorbFlipAppWork *);
 static void ov122_021E7BD4(VoltorbFlipAppWork *);
-static UnkStruct_0200D748 *ov122_021E7C9C(UnkStruct_0200CF18 *, void *, u16, u16, u16, u16);
-static UnkStruct_0200D748 *ov122_021E7D04(UnkStruct_0200CF18 *, void *, u16, u16, u16, u16);
+static UnkStruct_0200D748 *ov122_021E7C9C(UnkStruct_0200CF18 *, UnkStruct_0200CF38 *, u16, u16, u16, u16);
+static UnkStruct_0200D748 *ov122_021E7D04(UnkStruct_0200CF18 *, UnkStruct_0200CF38 *, u16, u16, u16, u16);
 static void ov122_021E7D6C(VoltorbFlipAppWork *);
 static void ov122_021E7F48(VoltorbFlipAppWork *);
 static void ov122_021E7F64(void *, u32);
@@ -1700,7 +1700,7 @@ static void ov122_021E7BD4(VoltorbFlipAppWork *work) {
     GF_ASSERT(work->narc != 0);
 
     UnkStruct_0200CF18 *var1 = work->unk144;
-    void *var2 = work->unk148;
+    UnkStruct_0200CF38 *var2 = work->unk148;
 
     sub_0200D5D4(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000010_bin, 0, 5, 1, 0);
     sub_0200D504(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000011_bin, 1, 1, 0);
@@ -1809,7 +1809,7 @@ _021E7BE4:
 }
 #endif //NONMATCHING
 
-static UnkStruct_0200D748 *ov122_021E7C9C(UnkStruct_0200CF18 *a0, void *a1, u16 a2, u16 a3, u16 a4, u16 a5) {
+static UnkStruct_0200D748 *ov122_021E7C9C(UnkStruct_0200CF18 *a0, UnkStruct_0200CF38 *a1, u16 a2, u16 a3, u16 a4, u16 a5) {
     Unk122_021E9374 temp1 = ov122_021E9374;
 
     GF_ASSERT(a0 != NULL);
@@ -1826,7 +1826,7 @@ static UnkStruct_0200D748 *ov122_021E7C9C(UnkStruct_0200CF18 *a0, void *a1, u16 
     return var1;
 }
 
-static UnkStruct_0200D748 *ov122_021E7D04(UnkStruct_0200CF18 *a0, void *a1, u16 a2, u16 a3, u16 a4, u16 a5) {
+static UnkStruct_0200D748 *ov122_021E7D04(UnkStruct_0200CF18 *a0, UnkStruct_0200CF38 *a1, u16 a2, u16 a3, u16 a4, u16 a5) {
     Unk122_021E9374 temp1 = ov122_021E93A8;
 
     GF_ASSERT(a0 != NULL);
