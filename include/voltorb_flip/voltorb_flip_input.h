@@ -4,8 +4,8 @@
 #include "unk_0200CF18.h"
 
 typedef struct Ov122_021E8CFC {
-    struct UnkStruct_0200CF18 *unk0;
-    struct UnkStruct_0200CF18 *unk4;
+    struct UnkStruct_0200D748 *unk0;
+    struct UnkStruct_0200D748 *unk4;
     void *unk8;
     u8 unkC;
     u8 unkD;
@@ -19,7 +19,7 @@ typedef struct Ov122_021E8CFC {
 
 typedef void (*Ov122UnkCB)(struct Ov122_021E8CFC *a0, int a1, int a2);
 
-Ov122_021E8CFC *ov122_021E8CFC(HeapID , struct UnkStruct_0200CF18 *, struct UnkStruct_0200CF18 *);
+Ov122_021E8CFC *ov122_021E8CFC(HeapID, struct UnkStruct_0200D748 *, struct UnkStruct_0200D748 *);
 void ov122_021E8D58(Ov122_021E8CFC *);
 int ov122_021E8D74(Ov122_021E8CFC *);
 void ov122_021E8D8C(Ov122_021E8CFC *, int);

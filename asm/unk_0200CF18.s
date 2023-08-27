@@ -4,26 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_0200CF18
-sub_0200CF18: ; 0x0200CF18
-	push {r4, lr}
-	mov r1, #0x4e
-	lsl r1, r1, #2
-	add r4, r0, #0
-	bl AllocFromHeap
-	cmp r0, #0
-	bne _0200CF2C
-	mov r0, #0
-	pop {r4, pc}
-_0200CF2C:
-	str r4, [r0]
-	mov r1, #0
-	str r1, [r0, #4]
-	mov r1, #1
-	str r1, [r0, #8]
-	pop {r4, pc}
-	thumb_func_end sub_0200CF18
-
 	thumb_func_start sub_0200CF38
 sub_0200CF38: ; 0x0200CF38
 	push {r4, lr}

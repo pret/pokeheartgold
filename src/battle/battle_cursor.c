@@ -20,7 +20,7 @@ void BattleCursor_FreeResources(void *a0, u32 character, u32 pal, u32 cell, u32 
     sub_0200D988(a0, animation);
 }
 
-static const UnkStruct_0200D748 ov12_0226EBA0 = {
+static const UnkTemplate_0200D748 ov12_0226EBA0 = {
     .x = 0,
     .y = 0,
     .z = 0,
@@ -35,7 +35,7 @@ static const UnkStruct_0200D748 ov12_0226EBA0 = {
 
 BattleCursor *BattleCursor_New(void *a0, void *a1, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation, u32 a7, u32 a8) {
     BattleCursor *cursor;
-    UnkStruct_0200D748 unkStruct;
+    UnkTemplate_0200D748 unkStruct;
     int i;
     
     unkStruct = ov12_0226EBA0;
