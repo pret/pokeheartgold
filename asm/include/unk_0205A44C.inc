@@ -59,7 +59,7 @@
 .public sub_0205ABD8
 .public sub_0205AC4C
 .public sub_0205AC70
-.public sub_0205B46C
+.public GetUnionRoomAvatarAttrBySprite
 .public sub_02068FC8
 .public sub_020691A8
 .public MI_CpuFill8

@@ -103,9 +103,9 @@ scr_seq_T03_007:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 1
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0184
@@ -124,9 +124,9 @@ _01A7:
 	apply_movement obj_T03_gsmiddleman1, _0274
 _01B7:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _01DE
@@ -287,9 +287,9 @@ _03B3:
 scr_seq_T03_012:
 	scrcmd_609
 	lockall
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0440
 	wait_movement
 	apply_movement obj_T03_daigo, _045C
@@ -307,9 +307,9 @@ _03F4:
 	apply_movement obj_T03_daigo, _0464
 	apply_movement obj_player, _0464
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	get_game_version VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 7
 	goto_if_ne _042C
@@ -367,13 +367,13 @@ scr_seq_T03_010:
 	get_game_version VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _04C8
-	setvar VAR_TEMP_x400A, 381
+	setvar VAR_TEMP_x400A, SPECIES_LATIOS
 	play_cry VAR_TEMP_x400A, 0
 	npc_msg msg_0460_T03_00010
 	goto _04D7
 
 _04C8:
-	setvar VAR_TEMP_x400A, 380
+	setvar VAR_TEMP_x400A, SPECIES_LATIAS
 	play_cry VAR_TEMP_x400A, 0
 	npc_msg msg_0460_T03_00011
 _04D7:
@@ -387,7 +387,7 @@ _04D7:
 	goto_if_eq _057B
 	compare VAR_TEMP_x4000, 3
 	goto_if_eq _057B
-	scrcmd_588 VAR_SPECIAL_RESULT
+	lati_caught_check VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0526
 	compare VAR_SPECIAL_RESULT, 0
@@ -419,15 +419,15 @@ _057B:
 	goto _0649
 	.byte 0x02, 0x00
 _0585:
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_T03_daigo, _046C
 	apply_movement obj_player, _044C
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	compare VAR_TEMP_x4000, 5
 	goto_if_eq _060C
 	compare VAR_TEMP_x4000, 1

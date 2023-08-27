@@ -55,14 +55,14 @@ scr_seq_D24R0216_001:
 	scrcmd_609
 	lockall
 	apply_movement obj_D24R0216_suit, _0178
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _01C4
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0084_D24R0216_00001
 	closemsg
 	apply_movement obj_D24R0216_suit, _0184
@@ -132,15 +132,15 @@ _01C4:
 scr_seq_D24R0216_002:
 	scrcmd_609
 	lockall
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_D24R0216_suit, _0230
 	apply_movement obj_player, _0260
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	apply_movement obj_player, _0258
 	wait_movement
 	npc_msg msg_0084_D24R0216_00004
@@ -184,14 +184,14 @@ _0260:
 scr_seq_D24R0216_003:
 	scrcmd_609
 	lockall
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0324
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
 	fade_screen 6, 6, 0, RGB_BLACK
 	wait_fade

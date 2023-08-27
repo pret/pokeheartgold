@@ -869,7 +869,7 @@ _0205A9DA:
 	bl PlayerProfile_GetTrainerGender
 	add r1, r4, #0
 	mov r2, #2
-	bl sub_0205B46C
+	bl GetUnionRoomAvatarAttrBySprite
 	add r2, r0, #0
 	add r0, r6, #0
 	mov r1, #0
@@ -1158,7 +1158,7 @@ sub_0205ABD8: ; 0x0205ABD8
 	add r1, r0, #0
 	add r0, r5, #0
 	mov r2, #0
-	bl sub_0205B46C
+	bl GetUnionRoomAvatarAttrBySprite
 	add r3, r0, #0
 	ldr r0, [r4]
 	lsl r3, r3, #0x18

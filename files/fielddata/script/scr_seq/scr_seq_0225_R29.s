@@ -190,9 +190,9 @@ _02D5:
 	closemsg
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	get_player_gender VAR_TEMP_x4002
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	compare VAR_TEMP_x4001, 396
 	goto_if_ne _033E
 	apply_movement obj_R29_var_2, _0764
@@ -296,9 +296,9 @@ _04D4:
 	apply_movement obj_player, _091C
 _04DC:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	compare VAR_TEMP_x4002, 0
 	call_if_eq _0559
 	wait 10, VAR_SPECIAL_RESULT
@@ -333,16 +333,16 @@ _0559:
 	wait_movement
 	npc_msg msg_0373_R29_00002
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_R29_var_2, _062C
 	apply_movement obj_R29_tsure_poke_static_marill, _0634
 	apply_movement obj_player, _0640
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	return
 
 

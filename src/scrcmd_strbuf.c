@@ -209,7 +209,7 @@ BOOL ScrCmd_BufferPlayerUnionAvatarClassName(ScriptContext* ctx) {
     u32 gender = PlayerProfile_GetTrainerGender(profile);
     u8 avatar = PlayerProfile_GetAvatar(profile);
 
-    BufferTrainerClassNameWithArticle(*msg_fmt, idx, sub_0205B46C(gender, avatar, 2));
+    BufferTrainerClassNameWithArticle(*msg_fmt, idx, GetUnionRoomAvatarAttrBySprite(gender, avatar, 2));
 
     return FALSE;
 }

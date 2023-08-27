@@ -61,9 +61,9 @@ scr_seq_D26R0102_002:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	move_person_facing obj_D26R0102_gantetsu, 36, 0, 7, DIR_WEST
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _00F7
@@ -76,9 +76,9 @@ _00F7:
 	apply_movement obj_player, _01DC
 _0107:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	buffer_players_name 0
 	npc_msg msg_0091_D26R0102_00000
 	closemsg

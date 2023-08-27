@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_R36.h"
 #include "msgdata/msg/msg_0390_R36.h"
+#include "constants/battle.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -74,13 +75,13 @@ _00E0:
 	npc_msg msg_0390_R36_00001
 	play_se SEQ_SE_GS_ZENIGAME_JOURO
 	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 2
+	compare VAR_SPECIAL_RESULT, DIR_WEST
 	goto_if_ne _0109
 	apply_movement obj_player, _039C
 	goto _012C
 
 _0109:
-	compare VAR_SPECIAL_RESULT, 1
+	compare VAR_SPECIAL_RESULT, DIR_SOUTH
 	goto_if_ne _0124
 	apply_movement obj_player, _03AC
 	goto _012C
@@ -102,22 +103,22 @@ _012C:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0255
 	get_static_encounter_outcome VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 3
+	compare VAR_TEMP_x4001, BATTLE_OUTCOME_DRAW
 	goto_if_eq _0251
-	compare VAR_TEMP_x4001, 4
+	compare VAR_TEMP_x4001, BATTLE_OUTCOME_MON_CAUGHT
 	call_if_eq _023F
 	setflag FLAG_UNK_0B5
 	get_player_facing VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
+	compare VAR_SPECIAL_RESULT, DIR_NORTH
 	goto_if_ne _01BC
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement FALSE
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _03B4
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement TRUE
+	following_pokemon_movement 48
 	goto _01C6
 
 _01BC:
@@ -132,6 +133,7 @@ _01C6:
 	giveitem_no_check ITEM_PECHA_BERRY, 3
 	npc_msg msg_0390_R36_00018
 	closemsg
+_0200:
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0225
@@ -144,7 +146,7 @@ _0225:
 	wait_movement
 _022F:
 	hide_person obj_R36_gsgirl1_2
-	setflag FLAG_UNK_1CF
+	setflag FLAG_HIDE_ROUTE_36_FLOWERSHOP_GIRL
 	clearflag FLAG_HIDE_GOLDENROD_FLOWERSHOP_GIRL
 	releaseall
 	end
@@ -152,8 +154,12 @@ _022F:
 _023F:
 	setflag FLAG_CAUGHT_SUDOWOODO
 	return
-	.byte 0x14, 0x00, 0xd9, 0x07, 0x35, 0x00, 0x16, 0x00, 0xb3, 0xff, 0xff
-	.byte 0xff
+
+	; unreferenced
+	callstd std_bag_is_full
+	closemsg
+	goto _0200
+
 _0251:
 	releaseall
 	end
@@ -214,23 +220,38 @@ _02E2:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0255
 	get_static_encounter_outcome VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 4
+	compare VAR_TEMP_x4001, BATTLE_OUTCOME_MON_CAUGHT
 	call_if_eq _023F
-	scrcmd_221 VAR_TEMP_x4000, 0
-	compare VAR_TEMP_x4000, 1
+	static_wild_won_or_caught VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, TRUE
 	goto_if_eq _0251
 	releaseall
 	end
-	.byte 0x00, 0x00
-	.byte 0x0c, 0x00, 0x02, 0x00, 0x01, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x3e, 0x00, 0x05, 0x00
-	.byte 0x24, 0x00, 0x02, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
+
+	.balign 4, 0
+; unreferenced
+	step 12, 2
+	step 1, 1
+	step_end
+
+; unreferenced
+	step 62, 5
+	step 36, 2
+	step_end
+
+; unreferenced
+	step 12, 1
+	step_end
 
 _0360:
 	step 12, 3
 	step 3, 1
 	step_end
-	.byte 0x3f, 0x00, 0x01, 0x00
-	.byte 0x01, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
+
+; unreferenced
+	step 63, 1
+	step 1, 1
+	step_end
 
 _0378:
 	step 14, 10
@@ -367,8 +388,8 @@ _0533:
 	closemsg
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _053C:
 	step 0, 1
 	step_end
@@ -387,9 +408,19 @@ _0572:
 	closemsg
 	releaseall
 	end
-	.byte 0x2d, 0x00, 0x05
-	.byte 0x32, 0x00, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00, 0x14, 0x00, 0xd9, 0x07, 0x35, 0x00, 0x61, 0x00
-	.byte 0x02, 0x00
+	; unreferenced
+	npc_msg msg_0390_R36_00005
+	wait_button_or_walk_away
+	closemsg
+	releaseall
+	end
+
+	; unreferenced
+	callstd std_bag_is_full
+	closemsg
+	releaseall
+	end
+
 scr_seq_R36_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall

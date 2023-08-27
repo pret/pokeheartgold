@@ -83,15 +83,15 @@ scr_seq_T10R0101_006:
 	clearflag FLAG_HIDE_INDIGO_PLATEAU_RIVAL
 	show_person obj_T10R0101_gsrivel
 	move_person_facing obj_T10R0101_gsrivel, VAR_SPECIAL_x8000, 0, 23, DIR_NORTH
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_T10R0101_gsrivel, _0208
 	apply_movement obj_player, _01E8
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	buffer_rivals_name 0
 	npc_msg msg_0522_T10R0101_00003
 	closemsg

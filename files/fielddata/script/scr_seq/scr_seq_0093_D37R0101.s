@@ -33,14 +33,14 @@ _0050:
 	wait 8, VAR_SPECIAL_RESULT
 	play_cry SPECIES_MARILL, 0
 	wait_cry
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _01BC
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	clearflag FLAG_HIDE_GOLDENROD_UNDERGROUND_FRIEND
 	show_person obj_D37R0101_var_1
 	compare VAR_TEMP_x4001, 30
@@ -166,18 +166,18 @@ _0228:
 	apply_movement obj_player, _0220
 	apply_movement obj_D37R0101_var_1, _0308
 	wait_movement
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0310
 	apply_movement obj_D37R0101_var_1, _0318
 	wait 8, VAR_SPECIAL_RESULT
 	move_person_facing obj_D37R0101_tsure_poke_static_marill, 25, 0, 9, DIR_NORTH
 	apply_movement obj_D37R0101_tsure_poke_static_marill, _0320
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	buffer_players_name 0
 	gender_msgbox msg_0116_D37R0101_00006, msg_0116_D37R0101_00009
 	gender_msgbox msg_0116_D37R0101_00007, msg_0116_D37R0101_00010

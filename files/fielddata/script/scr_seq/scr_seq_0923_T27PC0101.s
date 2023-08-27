@@ -20,15 +20,15 @@ scr_seq_T27PC0101_000:
 scr_seq_T27PC0101_001:
 	scrcmd_609
 	lockall
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_T27PC0101_masaki, _0084
 	apply_movement obj_player, _00A0
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	buffer_players_name 0
 	npc_msg msg_0615_T27PC0101_00000
 	npc_msg msg_0615_T27PC0101_00001

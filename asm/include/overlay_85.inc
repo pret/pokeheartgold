@@ -194,7 +194,7 @@
 .public sub_0203A880
 .public sub_02055198
 .public sub_0205A904
-.public sub_0205B464
+.public SpriteToUnionRoomAvatarIdx
 .public sub_0205B4A4
 .public sub_020696C4
 .public sub_02069714

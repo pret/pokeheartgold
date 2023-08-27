@@ -259,9 +259,9 @@ _02FF:
 	return
 
 _0333:
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_D32R0101_bfsw2, _038C
 	apply_movement obj_D32R0101_bfsw2_2, _038C
 	apply_movement obj_D32R0101_bfsw2_3, _038C
@@ -270,9 +270,9 @@ _0333:
 	apply_movement obj_D32R0101_bfsw2_6, _0394
 	apply_movement obj_player, _039C
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	return
 	.byte 0x00
 

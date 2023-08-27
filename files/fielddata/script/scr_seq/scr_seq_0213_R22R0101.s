@@ -144,15 +144,15 @@ _01EC:
 	wait_movement
 	npc_msg msg_0361_R22R0101_00005
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 56
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 56
 	apply_movement obj_R22R0101_policeman_3, _02AC
 	apply_movement obj_player, _02B4
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	wait 16, VAR_SPECIAL_RESULT
 	compare VAR_TEMP_x4001, 8
 	goto_if_ne _023A
@@ -273,15 +273,15 @@ _037E:
 	wait_movement
 	npc_msg msg_0361_R22R0101_00002
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 56
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 56
 	apply_movement obj_R22R0101_policeman_2, _0440
 	apply_movement obj_player, _0448
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	wait 16, VAR_SPECIAL_RESULT
 	compare VAR_TEMP_x4001, 8
 	goto_if_ne _03CC

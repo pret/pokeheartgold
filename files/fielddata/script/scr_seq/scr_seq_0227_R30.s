@@ -75,9 +75,9 @@ scr_seq_R30_002:
 	npc_msg msg_0375_R30_00005
 	closemsg
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	compare VAR_TEMP_x4000, 558
 	goto_if_ne _010A
 	apply_movement obj_player, _01D4
@@ -99,9 +99,9 @@ _0140:
 	apply_movement obj_player, _0210
 _0148:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0375_R30_00006
 	giveitem_no_check ITEM_APRICORN_BOX, 1
 	npc_msg msg_0375_R30_00008

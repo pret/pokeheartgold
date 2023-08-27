@@ -13,14 +13,14 @@
 scr_seq_T10R0601_001:
 	scrcmd_609
 	lockall
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0048
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	play_se SEQ_SE_DP_KI_GASYAN
 	clearflag FLAG_UNK_210
 	show_person obj_T10R0601_babyboy1_11
@@ -40,9 +40,9 @@ scr_seq_T10R0601_002:
 scr_seq_T10R0601_000:
 	scrcmd_609
 	lockall
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4000, 5
 	goto_if_ne _008B
@@ -59,9 +59,9 @@ _00A6:
 	apply_movement obj_player, _02B0
 _00AE:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	apply_movement obj_T10R0601_wataru, _02C0
 	wait_movement
 	buffer_players_name 0
@@ -130,15 +130,15 @@ _01A1:
 	buffer_players_name 0
 	gender_msgbox msg_0527_T10R0601_00009, msg_0527_T10R0601_00010
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_T10R0601_wataru, _0384
 	apply_movement obj_player, _0394
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0234

@@ -68,14 +68,14 @@ _00EF:
 	closemsg
 	apply_movement obj_P01R0103_seaman_2, _0190
 	wait_movement
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _01B0
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	setvar VAR_TEMP_x4002, 1
 	setvar VAR_BOAT_DIRECTION, 2
 	setvar VAR_UNK_40DC, 0
@@ -103,14 +103,14 @@ _014D:
 _0158:
 	apply_movement obj_P01R0103_seaman_2, _01B8
 	wait_movement
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _01D8
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	apply_movement obj_P01R0103_seaman_2, _01E4
 	wait_movement
 	releaseall

@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_UNK_02088288_H
 #define POKEHEARTGOLD_UNK_02088288_H
 
+#include "save_special_ribbons.h"
+
 extern struct OVY_MGR_TEMPLATE _02103A1C;
 
 typedef struct UnkStruct_0204F448 {

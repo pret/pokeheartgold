@@ -94,7 +94,7 @@
 .public sub_0203164C
 .public sub_020316F0
 .public sub_02031700
-.public sub_0205B46C
+.public GetUnionRoomAvatarAttrBySprite
 .public sub_02070438
 .public LocationGmmDatRegionCountGetByCountryMsgNo
 .public OS_GetOwnerInfo

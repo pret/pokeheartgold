@@ -194,7 +194,7 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heapId, SaveData* saveDa
     SafariZone* safari_zone = Save_SafariZone_Get(saveData);
     SafariZone_ResetAreaSetToDefaultSet(safari_zone->area_sets, rand);
 
-    PlayerProfile_SetAvatar(profile, sub_0205B418(rand, PlayerProfile_GetTrainerGender(profile), 0));
+    PlayerProfile_SetAvatar(profile, UnionRoomAvatarIdxToSprite(rand, PlayerProfile_GetTrainerGender(profile), 0));
 
     sub_0202AE0C(Save_FieldApricornTrees_Get(saveData));
 

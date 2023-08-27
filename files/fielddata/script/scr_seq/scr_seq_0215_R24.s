@@ -81,17 +81,17 @@ scr_seq_R24_002:
 	fade_out_bgm 0, 30
 	npc_msg msg_0362_R24_00003
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 56
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 56
 	apply_movement obj_R24_rocketm, _0150
 	apply_movement obj_player, _015C
 	apply_movement obj_R24_gsman1, _0170
 	apply_movement obj_R24_gswoman2, _017C
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	hide_person obj_R24_rocketm
 	setflag FLAG_HIDE_ROUTE_24_ROCKET
 	clearflag FLAG_HIDE_CERULEAN_GYM_MACHINE_PART

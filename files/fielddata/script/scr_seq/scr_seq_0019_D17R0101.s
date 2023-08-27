@@ -67,9 +67,9 @@ _009F:
 	compare VAR_TEMP_x400A, 2
 	call_if_eq _0192
 	goto_if_set FLAG_UNK_093, _028E
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 56
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 56
 	compare VAR_TEMP_x400A, 0
 	goto_if_ne _00F1
 	apply_movement obj_player, _0344
@@ -80,9 +80,9 @@ _00F1:
 	apply_movement obj_player, _0354
 _0101:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	get_game_version VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _0127

@@ -263,7 +263,7 @@ static BOOL sub_020509F0(TaskManager *man) {
         sub_02052444(encounter->setup, fieldSystem);
 
         if (fieldSystem->unkA0 != NULL) {
-            sub_02067484(fieldSystem, &encounter->setup->unk78);
+            sub_02067484(fieldSystem, &encounter->setup->unk138);
         }
 
         sub_020506F4(encounter, fieldSystem);
@@ -505,7 +505,7 @@ static BOOL Task_BugContestEncounter(TaskManager *man) {
         sub_02051660(fieldSystem, encounter->setup);
 
         if (encounter->setup->winFlag == BATTLE_OUTCOME_MON_CAUGHT) {
-            sub_0206DB94(man, encounter->setup->unk1C8);
+            sub_0206DB94(man, encounter->setup->bugContestMon);
             sub_02093070(fieldSystem);
             sub_020930C4(fieldSystem);
         }
@@ -545,7 +545,7 @@ void SetupAndStartWildBattle(TaskManager *man, u16 mon, u8 level, u32 *winFlag, 
     ov02_02247F30(fieldSystem, mon, level, shiny, setup);
 
     if (canFlee) {
-        setup->unkCC |= 8;
+        setup->unk_18C |= 8;
     }
 
     GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), 8);
@@ -569,7 +569,7 @@ void sub_02051090(TaskManager *man, u16 species, u8 level, u32 *winFlag, BOOL ca
     SetMonData(Party_GetMonByIndex(setup->party[1], 0), 110, &var);
 
     if (canRun) {
-        setup->unkCC |= 8;
+        setup->unk_18C |= 8;
     }
 
     GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), 8);
@@ -639,7 +639,7 @@ void sub_02051228(TaskManager *man, u16 species, u8 level) {
 
     ov02_02247F30(fieldSystem, species, level, 0, setup);
 
-    setup->unkCC = 1;
+    setup->unk_18C = 1;
 
     GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), 8);
 
@@ -690,7 +690,7 @@ void SetupAndStartTutorialBattle(TaskManager *man) {
     FieldSystem *fieldSystem;
 
     fieldSystem = TaskManager_GetFieldSystem(man);
-    setup = sub_02051AAC(HEAP_ID_FIELD, fieldSystem);
+    setup = BattleSetup_New_Tutorial(HEAP_ID_FIELD, fieldSystem);
     encounter = Encounter_New(setup, sub_020517E8(setup), sub_020517FC(setup), NULL);
 
     TaskManager_Call(man, Task_TutorialBattle, encounter);
@@ -729,9 +729,9 @@ void SetupAndStartTrainerBattle(TaskManager *man, u32 opponentTrainer1, u32 oppo
 
     if (a5) {
         if (battleType & BATTLE_TYPE_MULTI) {
-            setup->unk1CE = 0;
+            setup->unk1CC[2] = 0;
         } else if (!(battleType & BATTLE_TYPE_DOUBLES)) {
-            setup->unk1CD = 0;
+            setup->unk1CC[1] = 0;
         }
     }
 
@@ -796,7 +796,7 @@ void sub_020514A4(TaskManager *man, int target, int maxLevel, int flag) {
         mode = 14;
     }
 
-    sub_02051F2C(setup, fieldSystem, maxLevel);
+    BattleSetup_InitForFixedLevelFacility(setup, fieldSystem, maxLevel);
 
     sub_0202FBF0(fieldSystem->saveData, HEAP_ID_FIELD, &result);
 

@@ -147,15 +147,15 @@ _0200:
 scr_seq_D47R0101_008:
 	scrcmd_609
 	lockall
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_D47R0101_gsgentleman, _0310
 	apply_movement obj_player, _03B8
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0135_D47R0101_00029
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -182,37 +182,37 @@ _025B:
 scr_seq_D47R0101_009:
 	scrcmd_609
 	lockall
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_D47R0101_gsgentleman, _0310
 	apply_movement obj_player, _03B8
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0135_D47R0101_00034
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_D47R0101_gsgentleman, _0324
 	apply_movement obj_player, _03C8
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0135_D47R0101_00035
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_D47R0101_gsgentleman, _0334
 	apply_movement obj_player, _03D8
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0135_D47R0101_00036
 	wait_button_or_walk_away
 	closemsg
@@ -352,9 +352,9 @@ _04CB:
 	goto_if_eq _057E
 	npc_msg msg_0135_D47R0101_00037
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0515
@@ -381,9 +381,9 @@ _054C:
 	apply_movement obj_D47R0101_gsgentleman, _0370
 	apply_movement obj_player, _040C
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0135_D47R0101_00039
 	setvar VAR_UNK_4057, 6
 	scrcmd_792

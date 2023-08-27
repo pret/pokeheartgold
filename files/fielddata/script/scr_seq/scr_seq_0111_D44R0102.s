@@ -125,9 +125,9 @@ _019A:
 scr_seq_D44R0102_000:
 	scrcmd_609
 	lockall
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _02C0
 	wait_movement
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
@@ -146,9 +146,9 @@ _01F0:
 	apply_movement obj_D44R0102_gsleader8, _02D8
 _01F8:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0129_D44R0102_00000
 	npc_msg msg_0129_D44R0102_00001
 	goto_if_no_item_space ITEM_TM59, 1, _02A7
@@ -344,9 +344,9 @@ scr_seq_D44R0102_004:
 	scrcmd_609
 	lockall
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_D44R0102_gsrivel_2, _0674
 	compare VAR_TEMP_x4000, 24
 	goto_if_ne _04AA
@@ -357,9 +357,9 @@ _04AA:
 	apply_movement obj_player, _0694
 _04B2:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	callstd std_play_rival_intro_music
 	buffer_rivals_name 1
 	npc_msg msg_0129_D44R0102_00014

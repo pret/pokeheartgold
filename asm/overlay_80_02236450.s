@@ -699,7 +699,7 @@ _022369B8:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r7, #0
-	bl sub_02052580
+	bl BattleSetup_SetAllySideBattlersToPlayer
 	ldr r0, [r5, #4]
 	add r1, r5, #0
 	str r0, [sp]

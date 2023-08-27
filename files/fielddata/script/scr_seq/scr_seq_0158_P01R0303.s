@@ -19,15 +19,15 @@ scr_seq_P01R0303_000:
 	goto_if_eq _009D
 	apply_movement obj_P01R0303_seaman_2, _0120
 	wait_movement
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_P01R0303_seaman_2, _0144
 	apply_movement obj_player, _01C8
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0261_P01R0303_00005
 	closemsg
 	trainer_battle TRAINER_SAILOR_STANLY, 0, 0, 0
@@ -47,15 +47,15 @@ scr_seq_P01R0303_000:
 _009D:
 	apply_movement obj_P01R0303_seaman_2, _016C
 	wait_movement
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_P01R0303_seaman_2, _0190
 	apply_movement obj_player, _01DC
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0261_P01R0303_00005
 	closemsg
 	trainer_battle TRAINER_SAILOR_STANLY, 0, 0, 0
@@ -173,17 +173,17 @@ scr_seq_P01R0303_001:
 	scrcmd_729 VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 0
 	goto_if_eq _0247
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 56
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 56
 _0247:
 	apply_movement obj_player, _02C4
 	wait_movement
 	compare VAR_TEMP_x4002, 0
 	goto_if_eq _0268
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 _0268:
 	compare VAR_UNK_40CB, 7
 	goto_if_ge _0279

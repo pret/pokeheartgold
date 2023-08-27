@@ -248,7 +248,7 @@ _02237C2A:
 	add r0, r7, #0
 	bl FreeToHeap
 	add r0, r4, #0
-	bl sub_02052580
+	bl BattleSetup_SetAllySideBattlersToPlayer
 	ldrb r1, [r5, #0x11]
 	add r0, sp, #0x18
 	mov r2, #0xb
@@ -312,7 +312,7 @@ _02237CB0:
 	bne _02237D54
 _02237CC0:
 	add r0, r4, #0
-	bl sub_02052580
+	bl BattleSetup_SetAllySideBattlersToPlayer
 	bl sub_0203769C
 	mov r1, #1
 	sub r0, r1, r0

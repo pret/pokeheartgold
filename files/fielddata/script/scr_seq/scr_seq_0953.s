@@ -1700,7 +1700,7 @@ _0EBC:
 	step 101, 1
 	step_end
 scr_seq_0953_739:
-	scrcmd_603
+	wait_following_pokemon_movement
 	lockall
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1

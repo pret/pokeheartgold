@@ -223,7 +223,7 @@
 .public sub_0203A930
 .public ShowCommunicationError
 .public Save_VarsFlags_Get
-.public sub_0205B464
+.public SpriteToUnionRoomAvatarIdx
 .public Save_VarsFlags_GetVar404C
 .public Save_VarsFlags_SetVar404C
 .public SizeOfStructPokemon
