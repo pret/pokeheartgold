@@ -14,8 +14,12 @@
 #include "unk_02005D10.h"
 #include "unk_0200CF18.h"
 #include "palette.h"
+#include "gf_gfx_loader.h"
+#include "render_window.h"
 #include "constants/sndseq.h"
 #include "text.h"
+#include "font.h"
+#include "unk_0201660C.h"
 
 static int AlphPuzzleMainSeq_FadeIn(AlphPuzzleData *data);
 static int AlphPuzzleMainSeq_FadeOut(AlphPuzzleData *data);
@@ -36,6 +40,15 @@ static int ov110_021E5F84(AlphPuzzleData *data);
 static int ov110_021E6014(AlphPuzzleData *data);
 static int ov110_021E6070(AlphPuzzleData *data);
 static void ov110_021E6110(void *dat);
+static void AlphPuzzle_InitTileData(AlphPuzzleData *data);
+static void ov110_021E61B0();
+static void ov110_021E61D0(AlphPuzzleData *data);
+static void ov110_021E6348(AlphPuzzleData *data);
+static void ov110_021E6394(AlphPuzzleData *data);
+static void ov110_021E6544(AlphPuzzleData *data);
+static void ov110_021E6580(AlphPuzzleData *data);
+static void ov110_021E65DC(AlphPuzzleData *data);
+static void ov110_021E6618(AlphPuzzleData *data);
 
 BOOL ov110_AlphPuzzle_OvyInit(OVY_MANAGER *man, int *state) {
     switch (*state) {
@@ -135,13 +148,13 @@ void ov110_021E5A74(AlphPuzzleData *data) {
     Options *options = Save_PlayerData_GetOptionsAddr(data->unk10->savedata);
     data->textFrameDelay = Options_GetTextFrameDelay(options);
     data->frame = Options_GetFrame(options);
-    data->unk19 = data->unk10->unk5;
+    data->puzzleIndex = data->unk10->unk5;
 }
 
 void ov110_021E5AAC(AlphPuzzleData *data) {
     sub_02018410(data->unk10->unk8, data->unk4);
     if (data->unk27) {
-        Save_VarsFlags_SetAlphPuzzleFlag(Save_VarsFlags_Get(data->unk10->savedata), data->unk19);
+        Save_VarsFlags_SetAlphPuzzleFlag(Save_VarsFlags_Get(data->unk10->savedata), data->puzzleIndex);
     }
 }
 
@@ -224,7 +237,7 @@ static int AlphPuzzleMainSeq_Clear(AlphPuzzleData *data) {
 }
 
 static void ov110_021E5BE4(AlphPuzzleData *data) {
-    ov110_021E6150(data);
+    AlphPuzzle_InitTileData(data);
     ov110_021E61D0(data);
     ov110_021E6394(data);
     ov110_021E6580(data);
@@ -300,7 +313,7 @@ s32 ov110_021E5D30(AlphPuzzleData *data, u16 touchX, u16 touchY) {
 
     for (s32 i = 0; i < 16; i++) {
         if (data->tileGrid[i].x == x && data->tileGrid[i].y == y) {
-            if (data->tileGrid[i].unk3) {
+            if (data->tileGrid[i].isImmovable) {
                 return -1;
             }
             return i;
@@ -465,13 +478,13 @@ static int ov110_021E6070(AlphPuzzleData *data) {
         data->unkC++;
         break;
     case 1:
-        sub_02003E5C(data->unk80, 2, 0x2b, 5, data->unkE, 0x7FFF);
+        sub_02003E5C(data->palette, 2, 0x2b, 5, data->unkE, 0x7FFF);
         if (data->unkE++ >= 15) {
             data->unkC++;
         }
         break;
     case 2:
-        sub_02003E5C(data->unk80, 2, 0x2b, 5, data->unkE, 0x7FFF);
+        sub_02003E5C(data->palette, 2, 0x2b, 5, data->unkE, 0x7FFF);
         if (data->unkE-- == 0) {
             data->unkC++;
         }
@@ -488,8 +501,8 @@ static int ov110_021E6070(AlphPuzzleData *data) {
 
 static void ov110_021E6110(void *dat) {
     AlphPuzzleData *data = dat;
-    if (data->unk80) {
-        sub_0200398C(data->unk80);
+    if (data->palette) {
+        sub_0200398C(data->palette);
     }
     if (data->unk84) {
         sub_0200D034();
@@ -498,6 +511,185 @@ static void ov110_021E6110(void *dat) {
     NNS_GfdDoVramTransfer();
     DoScheduledBgGpuUpdates(data->bgConfig);
 
+    //This is probably an inline somewhere but I couldn't find it
     u32 *ptr = (u32 *) 0x27E0000;
     ptr[0xFFE] |= 1;
 }
+
+typedef struct AlphaPuzzleInitTileData {
+    u8 index:5;
+    u8 rotation:2;
+    u8 isImmovable:1;
+} AlphaPuzzleInitTileData;
+
+typedef AlphaPuzzleInitTileData AlphPuzzle[6];
+
+extern AlphPuzzle *dAlphPuzzles[4];
+
+static void AlphPuzzle_InitTileData(AlphPuzzleData *data) {
+    int y;
+    int x;
+    
+    AlphPuzzleTile* tile;
+    AlphPuzzle *puzzle = dAlphPuzzles[data->puzzleIndex];
+    
+    for (y = 0; y < 6; y++) {
+        for (x = 0; x < 6; x++) {
+            u32 pos = y * 6 + x;
+            if ((*puzzle)[pos].index != 0 && (*puzzle)[pos].index <= 16) {
+                tile = &data->tileGrid[(*puzzle)[pos].index - 1];
+                tile->x = x;
+                tile->y = y; 
+                tile->rotation = (*puzzle)[pos].rotation;
+                tile->isImmovable = (*puzzle)[pos].isImmovable;
+                tile->unk4 = 0;
+            }
+        }
+    }
+}
+
+extern const GraphicsBanks ov110_021E6F54;
+
+static void ov110_021E61B0() {
+    GraphicsBanks banks = ov110_021E6F54;
+    GX_SetBanks(&banks);
+}
+
+extern GraphicsModes ov110_021E6DC0;
+extern BgTemplate ov110_021E6E34;
+extern BgTemplate ov110_021E6E6C;
+extern BgTemplate ov110_021E6E88;
+extern BgTemplate ov110_021E6DFC;
+extern BgTemplate ov110_021E6E18;
+extern BgTemplate ov110_021E6E50;
+
+static void ov110_021E61D0(AlphPuzzleData *data) {
+    u16 *unkPtr;
+    ov110_021E61B0();
+    data->bgConfig = BgConfig_Alloc(data->heapId);
+
+    GraphicsModes mode = ov110_021E6DC0;
+    
+    SetBothScreensModesAndDisable(&mode);
+
+    unkPtr = (u16 *)(0x04000304);
+    *unkPtr = *unkPtr & ~(1 << 15);
+    
+    BgTemplate temp = ov110_021E6E34;
+    InitBgFromTemplate(data->bgConfig, 4, &temp, 0);
+    BgClearTilemapBufferAndCommit(data->bgConfig, 4);
+   
+    BgTemplate temp2 = ov110_021E6E6C;
+    InitBgFromTemplate(data->bgConfig, 6, &temp2, 0);
+    BgClearTilemapBufferAndCommit(data->bgConfig, 6);
+
+    BgTemplate temp3 = ov110_021E6E88;
+    InitBgFromTemplate(data->bgConfig, 7, &temp3, 0);
+    BgClearTilemapBufferAndCommit(data->bgConfig, 7);
+
+    BgTemplate temp4 = ov110_021E6DFC;
+    InitBgFromTemplate(data->bgConfig, 0, &temp4, 0);
+    BgClearTilemapBufferAndCommit(data->bgConfig, 0);
+
+    BgTemplate temp5 = ov110_021E6E18;
+    InitBgFromTemplate(data->bgConfig, 2, &temp5, 0);
+    BgClearTilemapBufferAndCommit(data->bgConfig, 2);
+
+    BgTemplate temp6 = ov110_021E6E50;
+    InitBgFromTemplate(data->bgConfig, 3, &temp6, 0);
+    BgClearTilemapBufferAndCommit(data->bgConfig, 3);
+
+    BG_ClearCharDataRange(4, 32, 0, data->heapId);
+    BG_ClearCharDataRange(7, 32, 0, data->heapId);
+    BG_ClearCharDataRange(0, 32, 0, data->heapId);
+    BG_ClearCharDataRange(3, 64, 0, data->heapId);
+}
+
+static void ov110_021E6348(AlphPuzzleData *data) {
+    FreeBgTilemapBuffer(data->bgConfig, 3);
+    FreeBgTilemapBuffer(data->bgConfig, 2);
+    FreeBgTilemapBuffer(data->bgConfig, 0);
+    FreeBgTilemapBuffer(data->bgConfig, 7);
+    FreeBgTilemapBuffer(data->bgConfig, 6);
+    FreeBgTilemapBuffer(data->bgConfig, 4);
+    FreeToHeap(data->bgConfig);
+    
+    u16 *unkPtr = (u16 *)(0x04000304);
+    *unkPtr |= (1 << 15);
+}
+
+static void ov110_021E6394(AlphPuzzleData *data) {
+    NARC *narc = NARC_New(NARC_a_1_7_2, data->heapId);
+    data->palette = PaletteData_Init(data->heapId);
+    
+    PaletteData_AllocBuffers(data->palette, 0, (1 << 8), data->heapId);
+    PaletteData_AllocBuffers(data->palette, 1, 256, data->heapId);
+    PaletteData_AllocBuffers(data->palette, 2, 256, data->heapId);
+    
+    sub_02003220(data->palette, narc, 10, data->heapId, 0, (1 << 8), 0, 0);
+    sub_02003220(data->palette, narc, 10, data->heapId, 1, 256, 0, 0);
+    sub_02003220(data->palette, narc, 0, data->heapId, 2, 256, 0, 0);
+    
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 11, data->bgConfig, GF_BG_LYR_SUB_3, 0, 0, 0, data->heapId);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 14, data->bgConfig, GF_BG_LYR_SUB_3, 0, 0, 0, data->heapId);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 15, data->bgConfig, GF_BG_LYR_SUB_2, 0, 0, 0, data->heapId);
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 11, data->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 0, data->heapId);
+    
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 12, data->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 0, data->heapId);
+    data->unkD8 = GfGfxLoader_GetScrnDataFromOpenNarc(narc, 13, 0, &data->screenData, data->heapId);
+    
+    NARC_Delete(narc);
+    
+    PaletteData_LoadNarc(data->palette, NARC_a_0_3_8, data->frame + 26, data->heapId, 0, 32, 80);
+    PaletteData_LoadNarc(data->palette, NARC_graphic_font, 8, data->heapId, 0, 32, 64);
+    
+    LoadUserFrameGfx2(data->bgConfig, GF_BG_LYR_MAIN_0, 1, 5, data->frame, data->heapId);
+    sub_02003B50(data->palette, 1);
+    sub_0200398C(data->palette);
+}
+
+static void ov110_021E6544(AlphPuzzleData *data) {
+    FreeToHeap(data->unkD8);
+    PaletteData_FreeBuffers(data->palette, 2);
+    PaletteData_FreeBuffers(data->palette, 1);
+    PaletteData_FreeBuffers(data->palette, 0);
+    PaletteData_Free(data->palette);
+}
+
+static void ov110_021E6580(AlphPuzzleData *data) {
+    FontID_Alloc(4, data->heapId);
+    
+    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 2, data->heapId);
+    data->messageFormat = MessageFormat_New_Custom(6, 16, data->heapId);
+    data->unk30 = String_New(0x80, data->heapId);
+    
+    data->unk34 = NewString_ReadMsgData(data->msgData, 0);
+    
+    for (int i = 0; i < 4; i++) {
+        data->unk38[i] = NewString_ReadMsgData(data->msgData, i + 1);
+    }
+    
+    data->unk48 = NewString_ReadMsgData(data->msgData, 5);
+}
+
+static void ov110_021E65DC(AlphPuzzleData *data) {
+    String_Delete(data->unk48);
+    for (int i = 0; i < 4; i++) {
+        String_Delete(data->unk38[i]);
+    }
+    String_Delete(data->unk34);
+    String_Delete(data->unk30);
+    MessageFormat_Delete(data->messageFormat);
+    DestroyMsgData(data->msgData);
+    FontID_Release(4);
+}
+
+extern WindowTemplate ov110_021E6DE4[3];
+static void ov110_021E6618(AlphPuzzleData *data) {
+    for (int i = 0; i < 3; i++) {
+        AddWindow(data->bgConfig, &data->window[i], &ov110_021E6DE4[i]);
+        FillWindowPixelBuffer(&data->window[i], 0);
+    }
+    data->unk7C = sub_0201660C(data->heapId);
+}
+

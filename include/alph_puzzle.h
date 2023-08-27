@@ -4,6 +4,9 @@
 #include "bg_window.h"
 #include "overlay_manager.h"
 #include "unk_0200CF18.h"
+#include "palette.h"
+#include "message_format.h"
+#include "msgdata.h"
 
 typedef struct UnkAlphSub_10 {
     void *unk_00;
@@ -19,7 +22,7 @@ typedef struct AlphPuzzleTile {
     u8 x;
     u8 y;
     u8 rotation;
-    u8 unk3;
+    u8 isImmovable;
     u32 unk4;
 } AlphPuzzleTile;
 
@@ -32,7 +35,7 @@ typedef struct AlphPuzzleData {
     UnkAlphSub_10 *unk10;
     BgConfig *bgConfig;
     u8 unk18;
-    u8 unk19;
+    u8 puzzleIndex;
     u8 unk1A;
     u8 unk1B;
     s16 unk1C;
@@ -45,16 +48,22 @@ typedef struct AlphPuzzleData {
     u8 textFrameDelay;
     u8 frame;
     u8 unk27;
-    u32 unk28;
-    u32 unk2C;
-    u32 unk30;
-    u8 unk34[0x4C];
-    void *unk80;
+    MsgData *msgData;
+    MessageFormat *messageFormat;
+    String *unk30;
+    String *unk34;
+    String *unk38[4];
+    String *unk48;
+    Window window[3];
+    void *unk7C;
+    PaletteData *palette;
     u32 unk84;
     UnkStruct_0200CF18 *unk88;
     u32 unk8C;
     u32 unk90;
-    u8 unk94[0x48];
+    u8 unk94[0x40];
+    NNSG2dScreenData *screenData;
+    void *unkD8;
     AlphPuzzleTile tileGrid[16];
     AlphPuzzleTile *selectedTile;
 } AlphPuzzleData;
@@ -76,16 +85,9 @@ void ov110_021E5C18(AlphPuzzleData *data);
 int ov110_021E5C60(AlphPuzzleData *data);
 int ov110_021E6014(AlphPuzzleData *data);
 int ov110_021E6150(AlphPuzzleData *data);
-int ov110_021E61D0(AlphPuzzleData *data);
-int ov110_021E6394(AlphPuzzleData *data);
-int ov110_021E6580(AlphPuzzleData *data);
-int ov110_021E6618(AlphPuzzleData *data);
 int ov110_021E6730(AlphPuzzleData *data);
 int ov110_021E6748(AlphPuzzleData *data);
 int ov110_021E6650(AlphPuzzleData *data);
-int ov110_021E65DC(AlphPuzzleData *data);
-int ov110_021E6544(AlphPuzzleData *data);
-int ov110_021E6348(AlphPuzzleData *data);
 void ov110_021E6904(AlphPuzzleData *data, int a1);
 void ov110_021E6A04(AlphPuzzleData *data);
 void ov110_021E6C58(AlphPuzzleData *, u8, int);
