@@ -1,6 +1,7 @@
 #include "assert.h"
 #include "global.h"
 #include "heap.h"
+#include "gf_gfx_loader.h"
 #include "unk_02009D48.h"
 #include "unk_020215A0.h"
 #include "unk_02022588.h"
@@ -15,6 +16,7 @@ void sub_0200D050(UnkStruct_0200CF38* a0);
 void sub_0200D060(UnkStruct_0200CF38* a0);
 void sub_0200D0B4(UnkStruct_0200CF18* a0);
 void sub_0200D0D4(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1);
+BOOL sub_0200D124(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, u16* a2, int a3, int a4, int a5);
 
 UnkStruct_0200CF18* sub_0200CF18(HeapID heapId) {
     UnkStruct_0200CF18* ret = AllocFromHeap(heapId, sizeof(UnkStruct_0200CF18));
@@ -133,4 +135,76 @@ void sub_0200D0E4(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1) {
     sub_0200D050(a1);
     sub_0200D060(a1);
     sub_0200D0D4(a0, a1);
+}
+
+void sub_0200D108(UnkStruct_0200CF18* a0) {
+    GF_ASSERT(a0->unk_004 == 0);
+    sub_0200D0B4(a0);
+    FreeToHeap(a0);
+}
+
+BOOL sub_0200D124(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, u16* a2, int a3, int a4, int a5) {
+    int i;
+    int r7;
+    int size;
+    struct _2DGfxResHeader* header;
+    void* data;
+    NARC* narc;
+
+    r7 = 6;
+    
+    if (a0 == NULL || a1 == NULL) {
+        return FALSE;
+    }
+    if (a2[4] == 0xFFFF) {
+        r7 = 4;
+    }
+    a1->unk_54 = r7;
+    size = sub_0200A8FC();
+    a1->unk_08 = AllocFromHeap(a0->heapId, size * r7);
+    narc = NARC_New(NARC_a_1_7_5, a0->heapId);
+
+    for (i = 0; i < r7; ++i) {
+        header = sub_0200A900(a1->unk_08, i);
+        data = GfGfxLoader_LoadFromOpenNarc(narc, a2[i], FALSE, a0->heapId, TRUE);
+        sub_0200A908(data, header, a0->heapId);
+        FreeToHeap(data);
+    }
+    for (i = 0; i < r7; ++i) {
+        header = sub_0200A900(a1->unk_08, i);
+        size = sub_0200A96C(header);
+        a1->unk_0C[i] = Create2DGfxResObjMan(size, (GfGfxResType)i, a0->heapId);
+    }
+    for (i = 0; i < r7; ++i) {
+        header = sub_0200A900(a1->unk_08, i);
+        size = sub_0200A96C(header);
+        a1->unk_24[i] = Create2DGfxResObjList(size, a0->heapId);
+        a1->unk_3C[i] = LoadAll2DGfxResObjsFromHeader(a1->unk_0C[i], header, a1->unk_24[i], a0->heapId);
+    }
+    switch (a3) {
+    case 0:
+        sub_0200ADE4(a1->unk_24[0]);
+        break;
+    case 1:
+        sub_0200AE58(a1->unk_24[0]);
+        break;
+    case 2:
+    default:
+        sub_0200AD30(a1->unk_24[0]);
+        break;
+    }
+    switch (a4) {
+    case 0:
+        sub_0200B050(a1->unk_24[1]);
+        break;
+    case 1:
+    default:
+        sub_0200AFD8(a1->unk_24[1]);
+        break;
+    }
+    data = GfGfxLoader_LoadFromOpenNarc(narc, a2[6], FALSE, a0->heapId, TRUE);
+    a1->unk_04 = sub_02009E84(data, a0->heapId, a1->unk_0C[0], a1->unk_0C[1], a1->unk_0C[2], a1->unk_0C[3], a1->unk_0C[4], a1->unk_0C[5]);
+    FreeToHeap(data);
+    NARC_Delete(narc);
+    return TRUE;
 }

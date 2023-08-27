@@ -41,7 +41,7 @@ typedef struct UnkStruct_0200CF38 {
     struct _2DGfxResHeader* unk_08;
     struct _2DGfxResMan* unk_0C[6];
     struct _2DGfxResObjList* unk_24[6];
-    void* unk_3C[6];
+    int unk_3C[6];
     int unk_54;
 } UnkStruct_0200CF38; // size: 0x58
 

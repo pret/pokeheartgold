@@ -219,3 +219,4 @@
 .public sub_0200D060
 .public sub_0200D0B4
 .public sub_0200D0D4
+.public sub_0200D124
