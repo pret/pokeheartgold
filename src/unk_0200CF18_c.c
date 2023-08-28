@@ -16,7 +16,8 @@ void sub_0200D050(UnkStruct_0200CF38* a0);
 void sub_0200D060(UnkStruct_0200CF38* a0);
 void sub_0200D0B4(UnkStruct_0200CF18* a0);
 void sub_0200D0D4(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1);
-BOOL sub_0200D124(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, u16* a2, int a3, int a4, int a5);
+BOOL sub_0200D124(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, const u16* a2, int a3, int a4);
+Sprite* sub_0200D2F0(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, int a2, s16 x, s16 y, s16 z, u16 animSeqNo, int rotation, int a8, int whichScreen, int a10, int a11, int a12, int a13);
 
 UnkStruct_0200CF18* sub_0200CF18(HeapID heapId) {
     UnkStruct_0200CF18* ret = AllocFromHeap(heapId, sizeof(UnkStruct_0200CF18));
@@ -143,7 +144,7 @@ void sub_0200D108(UnkStruct_0200CF18* a0) {
     FreeToHeap(a0);
 }
 
-BOOL sub_0200D124(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, u16* a2, int a3, int a4, int a5) {
+BOOL sub_0200D124(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, const u16* a2, int a3, int a4) {
     int i;
     int r7;
     int size;
@@ -207,4 +208,54 @@ BOOL sub_0200D124(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, u16* a2, int a
     FreeToHeap(data);
     NARC_Delete(narc);
     return TRUE;
+}
+
+BOOL sub_0200D294(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, const u16* a2) {
+    return sub_0200D124(a0, a1, a2, 2, 1);
+}
+
+BOOL sub_0200D2A4(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, const u16* a2, int a3, int a4) {
+    return sub_0200D124(a0, a1, a2, a3, a4);
+}
+
+Sprite* sub_0200D2B4(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, const UnkStruct_0200D2B4* a2) {
+    return sub_0200D2F0(a0, a1, a2->unk_00, a2->x, a2->y, a2->x /* typo? */, a2->unk_0A, a2->unk_0C, a2->unk_10, a2->unk_14, a2->unk_18, a2->unk_1C, a2->unk_20, a2->unk_24);
+}
+
+Sprite* sub_0200D2F0(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, int headerIndex, s16 x, s16 y, s16 z, u16 animSeqNo, int rotation, int a8, int whichScreen, int a10, int a11, int a12, int a13) {
+    Sprite* ret = NULL;
+    SpriteTemplate template;
+
+    template.spriteList = a1->spriteList;
+    template.header = &a1->unk_04->headers[headerIndex];
+
+    template.position.x = FX32_CONST(x);
+    template.position.y = FX32_CONST(y);
+    template.position.z = FX32_CONST(z);
+
+    if (whichScreen == 2) {
+        template.position.y += FX32_CONST(0xC0);
+    }
+    template.scale.x = FX32_ONE;
+    template.scale.y = FX32_ONE;
+    template.scale.z = FX32_ONE;
+    template.rotation = 0;
+    template.priority = rotation;
+    template.whichScreen = whichScreen;
+    template.heapId = a0->heapId;
+    ret = CreateSprite(&template);
+    if (ret != NULL) {
+        Set2dSpriteAnimSeqNo(ret, animSeqNo);
+        switch (a10) {
+        case 0:
+            sub_02024A14(ret, a8);
+            break;
+        case 1:
+            break;
+        case 2:
+            sub_02024A48(ret, a8);
+            break;
+        }
+    }
+    return ret;
 }

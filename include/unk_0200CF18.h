@@ -5,6 +5,21 @@
 #include "unk_02009D48.h"
 #include "unk_02023694.h"
 
+typedef struct UnkStruct_0200D2B4 {
+    int unk_00;
+    s16 x;
+    s16 y;
+    s16 z;
+    u16 unk_0A;
+    int unk_0C;
+    int unk_10;
+    int unk_14;
+    int unk_18;
+    int unk_1C;
+    int unk_20;
+    int unk_24;
+} UnkStruct_0200D2B4;
+
 typedef struct UnkTemplate_0200D748 {
     s16 x;
     s16 y;
@@ -87,8 +102,11 @@ void sub_0200D020(UnkStruct_0200CF38*);
 void sub_0200D034(void);
 void sub_0200D03C(void);
 void sub_0200D0E4(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1);
-
 void sub_0200D108(UnkStruct_0200CF18*);
+BOOL sub_0200D294(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, const u16* a2);
+BOOL sub_0200D2A4(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, const u16* a2, int a3, int a4);
+Sprite* sub_0200D2B4(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, const UnkStruct_0200D2B4* a2);
+
 void sub_0200D3F8(UnkStruct_0200CF18*, UnkStruct_0200CF38*, Unk122_021E92E4*);
 void sub_0200D504(UnkStruct_0200CF18*, UnkStruct_0200CF38*, NARC*, int, int, int, int);
 void sub_0200D5D4(UnkStruct_0200CF18*, UnkStruct_0200CF38*, NARC*, int, int, int, int, int);

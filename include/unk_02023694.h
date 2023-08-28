@@ -3,8 +3,6 @@
 
 #include "unk_02009D48.h"
 
-typedef struct Sprite Sprite;
-
 typedef struct SpriteTemplate {
     void *spriteList;
     const struct SpriteResourcesHeader *header;
@@ -21,7 +19,7 @@ typedef struct Unk122_021E7F64 {
     int unk10;
 } Unk122_021E7F64;
 
-typedef struct UnkImageSubstruct {
+typedef struct Sprite {
     VecFx32 matrix;
     VecFx32 affineMatrix;
     VecFx32 scale;
@@ -45,12 +43,12 @@ typedef struct UnkImageSubstruct {
     u8 priority;
     u16 drawPriority;
     NNS_G2D_VRAM_TYPE type;
-    struct UnkImageSubstruct *prev;
-    struct UnkImageSubstruct *next;
-} UnkImageSubstruct;
+    struct Sprite *prev;
+    struct Sprite *next;
+} Sprite;
 
 typedef struct UnkImageStruct {
-    UnkImageSubstruct *unk0;
+    Sprite *unk0;
     void *unk4;
     void *unk8;
     int vramTransfer;
@@ -72,6 +70,8 @@ VecFx32 *sub_020248AC(Sprite *);
 void sub_02024868(Sprite *, int);
 void sub_02024950(Sprite *, int);
 void sub_02023EA4(Sprite *, int);
-NNSG2dImageProxy *sub_02024B1C(UnkImageSubstruct *);
+void sub_02024A14(Sprite*, int);
+void sub_02024A48(Sprite*, int);
+NNSG2dImageProxy *sub_02024B1C(Sprite *);
 
 #endif //POKEHEARTGOLD_UNK_02023694_H
