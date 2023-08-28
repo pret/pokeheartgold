@@ -38,6 +38,7 @@ typedef enum GF_GraphicsResourceType {
     GF_GFX_RES_TYPE_ANIM = 3,
     GF_GFX_RES_TYPE_MCEL = 4,
     GF_GFX_RES_TYPE_MANM = 5,
+    GF_GFX_RES_TYPE_MAX  = 6,
 } GfGfxResType;
 
 typedef struct _2DGfxResObj {

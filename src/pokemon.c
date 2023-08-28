@@ -2689,12 +2689,12 @@ static const int _020FF50C[] = {
     0, 1, 1, 2, 0, 3
 };
 
-struct UnkStruct_0200D748 *sub_02070C24(UnkStruct_0200CF18 *r6, void *sp18, void *sp1C, s32 sp20, s32 sp88, s32 trainerClass, s32 sp90, s32 sp94, s32 r5, HeapID heapId) {
-    s32 r7;
-    NARC *narc_r4;
-    struct UnkStruct_0200D748 *ret_r4;
+struct UnkStruct_0200D748 *sub_02070C24(UnkStruct_0200CF18 *r6, UnkStruct_0200CF38 *sp18, void *sp1C, int sp20, int sp88, int trainerClass, int sp90, int sp94, int r5, HeapID heapId) {
     struct UnkTemplate_0200D748 sp3C;
+    struct UnkStruct_0200D748 *ret_r4;
+    NARC *narc_r4;
     struct UnkStruct_02070D3C sp24;
+    int r7;
 
     r7 = 1;
     sub_02070D3C(trainerClass, sp90, sp94, &sp24);
@@ -2702,10 +2702,10 @@ struct UnkStruct_0200D748 *sub_02070C24(UnkStruct_0200CF18 *r6, void *sp18, void
         r7 = 2;
     }
     narc_r4 = NARC_New(sp24.narcId, heapId);
-    sub_0200D504(r6, sp18, narc_r4, sp24.ncgr_id, 0, 1, r5 + 0x4E2F);
-    sub_0200D68C(sp1C, 2, r6, sp18, narc_r4, sp24.nclr_id, 0, r7, 1, r5 + 0x4E2A);
-    sub_0200D6EC(r6, sp18, narc_r4, sp24.ncer_id, 0, r5 + 0x4E27);
-    sub_0200D71C(r6, sp18, narc_r4, sp24.nanr_id, 0, r5 + 0x4E27);
+    sub_0200D504(r6, sp18, narc_r4, sp24.ncgr_id, FALSE, 1, r5 + 0x4E2F);
+    sub_0200D68C(sp1C, 2, r6, sp18, narc_r4, sp24.nclr_id, FALSE, r7, 1, r5 + 0x4E2A);
+    sub_0200D6EC(r6, sp18, narc_r4, sp24.ncer_id, FALSE, r5 + 0x4E27);
+    sub_0200D71C(r6, sp18, narc_r4, sp24.nanr_id, FALSE, r5 + 0x4E27);
     NARC_Delete(narc_r4);
     sp3C = _020FF588;
     sp3C.unk_14[0] = r5 + 0x4E2F;
