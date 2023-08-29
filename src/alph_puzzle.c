@@ -20,6 +20,8 @@
 #include "text.h"
 #include "font.h"
 #include "unk_0201660C.h"
+#include "vram_transfer_manager.h"
+#include "unk_0200B150.h"
 
 static int AlphPuzzleMainSeq_FadeIn(AlphPuzzleData *data);
 static int AlphPuzzleMainSeq_FadeOut(AlphPuzzleData *data);
@@ -49,6 +51,8 @@ static void ov110_021E6544(AlphPuzzleData *data);
 static void ov110_021E6580(AlphPuzzleData *data);
 static void ov110_021E65DC(AlphPuzzleData *data);
 static void ov110_021E6618(AlphPuzzleData *data);
+static void ov110_021E6650(AlphPuzzleData *data);
+//static void ov110_021E6678(AlphPuzzleData *data);
 
 BOOL ov110_AlphPuzzle_OvyInit(OVY_MANAGER *man, int *state) {
     switch (*state) {
@@ -693,3 +697,25 @@ static void ov110_021E6618(AlphPuzzleData *data) {
     data->unk7C = sub_0201660C(data->heapId);
 }
 
+static void ov110_021E6650(AlphPuzzleData *data) {
+    for (int i = 0; i < 3; i++) {
+        ClearWindowTilemapAndCopyToVram(&data->window[i]);
+        RemoveWindow(&data->window[i]);
+    }
+    sub_02016624(data->unk7C);
+}
+
+extern Unk122_021E92FC ov110_021E6EA4;
+extern Unk122_021E92D0 ov110_021E6DD0;
+extern Unk122_021E92D0 ov110_021E6DB0;
+
+void ov110_021E6678(AlphPuzzleData *data) {
+    GF_CreateVramTransferManager(32, data->heapId);
+    data->unk84 = sub_0200CF18(data->heapId);
+    sub_0200CF70(data->unk84, &ov110_021E6EA4, &ov110_021E6DD0, 3);
+    sub_0200B2E0(data->heapId);
+    sub_0200B2E8(data->heapId);
+    data->unk88 = sub_0200CF38(data->unk84);
+    sub_0200CFF4(data->unk84, data->unk88, 18);
+    sub_0200D2A4(data->unk84, data->unk88, &ov110_021E6DB0, 2, 1);
+}

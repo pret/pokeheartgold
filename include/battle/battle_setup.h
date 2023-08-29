@@ -36,7 +36,7 @@ struct BattleSetup { //declared in trainer_data.h
     SOUND_CHATOT* chatot[BATTLER_MAX]; // 118
     void* unk_128;
     void* unk_12C;
-    OPTIONS* options; // 130
+    Options* options; // 130
     struct UnkStruct_02067A60* unk_134;
     struct BattleSetupSub_138 unk138;
     GAME_STATS* gameStats; // 144

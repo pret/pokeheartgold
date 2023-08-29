@@ -14,86 +14,8 @@
     .public ov110_021E6DFC
     .public ov110_021E6E18
     .public ov110_021E6E50
-
-	thumb_func_start ov110_021E6650
-ov110_021E6650: ; 0x021E6650
-	push {r4, r5, r6, lr}
-	add r6, r0, #0
-	add r5, r6, #0
-	mov r4, #0
-	add r5, #0x4c
-_021E665A:
-	add r0, r5, #0
-	bl ClearWindowTilemapAndCopyToVram
-	add r0, r5, #0
-	bl RemoveWindow
-	add r4, r4, #1
-	add r5, #0x10
-	cmp r4, #3
-	blt _021E665A
-	ldr r0, [r6, #0x7c]
-	bl sub_02016624
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end ov110_021E6650
-
-	thumb_func_start ov110_021E6678
-ov110_021E6678: ; 0x021E6678
-	push {r3, r4, lr}
-	sub sp, #4
-	add r4, r0, #0
-	ldr r1, [r4]
-	mov r0, #0x20
-	bl GF_CreateVramTransferManager
-	ldr r0, [r4]
-	bl sub_0200CF18
-	add r1, r4, #0
-	add r1, #0x84
-	str r0, [r1]
-	add r0, r4, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	ldr r1, _021E66EC ; =ov110_021E6EA4
-	ldr r2, _021E66F0 ; =ov110_021E6DD0
-	mov r3, #3
-	bl sub_0200CF70
-	ldr r0, [r4]
-	bl sub_0200B2E0
-	ldr r0, [r4]
-	bl sub_0200B2E8
-	add r0, r4, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	bl sub_0200CF38
-	add r1, r4, #0
-	add r1, #0x88
-	str r0, [r1]
-	add r0, r4, #0
-	add r1, r4, #0
-	add r0, #0x84
-	add r1, #0x88
-	ldr r0, [r0]
-	ldr r1, [r1]
-	mov r2, #0x12
-	bl sub_0200CFF4
-	mov r0, #1
-	str r0, [sp]
-	add r0, r4, #0
-	add r0, #0x84
-	add r4, #0x88
-	ldr r0, [r0]
-	ldr r1, [r4]
-	ldr r2, _021E66F4 ; =ov110_021E6DB0
-	mov r3, #2
-	bl sub_0200D2A4
-	add sp, #4
-	pop {r3, r4, pc}
-	nop
-_021E66EC: .word ov110_021E6EA4
-_021E66F0: .word ov110_021E6DD0
-_021E66F4: .word ov110_021E6DB0
-	thumb_func_end ov110_021E6678
-
+    .public ov110_021E6678
+    
 	thumb_func_start ov110_021E66F8
 ov110_021E66F8: ; 0x021E66F8
 	push {r4, lr}
@@ -973,12 +895,14 @@ ov110_021E6DA4: ; 0x021E6DA4
 	.word 0x00030400
 	.word 0x00050600
 
+.public ov110_021E6DB0
 ov110_021E6DB0: ; 0x021E6DB0
 	.byte 0x0A, 0x00, 0x0B, 0x00, 0x09, 0x00, 0x08, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0x4A, 0x00, 0x00, 0x00
 
 ov110_021E6DC0: ; 0x021E6DC0
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
+.public ov110_021E6DD0
 ov110_021E6DD0: ; 0x021E6DD0
 	.byte 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00
 	.byte 0x10, 0x00, 0x00, 0x00
@@ -1021,6 +945,7 @@ ov110_021E6E88: ; 0x021E6E88
 	.byte 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x1D, 0x00, 0x00, 0x03, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
 
+.public ov110_021E6EA4
 ov110_021E6EA4: ; 0x021E6EA4
 	.byte 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

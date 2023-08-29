@@ -81,5 +81,6 @@ void sub_0200D978(void *a0, u32 cell);
 void sub_0200D988(void *a0, u32 animation);
 void sub_0200DDF4(void *a0, s16 x, s16 y, fx32 a3);
 BOOL sub_0200DCFC(void *a0);
+void sub_0200D2A4(Unk122_021E7C9C *, void *, Unk122_021E92D0 *, int, int);
 
 #endif //POKEHEARTGOLD_UNK_0200CF18_H

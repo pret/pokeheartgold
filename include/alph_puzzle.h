@@ -57,8 +57,8 @@ typedef struct AlphPuzzleData {
     Window window[3];
     void *unk7C;
     PaletteData *palette;
-    u32 unk84;
-    UnkStruct_0200CF18 *unk88;
+    Unk122_021E7C9C *unk84;
+    void *unk88;
     u32 unk8C;
     u32 unk90;
     u8 unk94[0x40];
@@ -87,7 +87,6 @@ int ov110_021E6014(AlphPuzzleData *data);
 int ov110_021E6150(AlphPuzzleData *data);
 int ov110_021E6730(AlphPuzzleData *data);
 int ov110_021E6748(AlphPuzzleData *data);
-int ov110_021E6650(AlphPuzzleData *data);
 void ov110_021E6904(AlphPuzzleData *data, int a1);
 void ov110_021E6A04(AlphPuzzleData *data);
 void ov110_021E6C58(AlphPuzzleData *, u8, int);
@@ -103,5 +102,6 @@ void ov110_021E6988(AlphPuzzleData *data, int a1, int a2, u8 textFrameDelay);
 void ov110_021E6B38(AlphPuzzleData *data);
 int ov110_021E6B94(AlphPuzzleData *data);
 void sub_02003E5C(void *, u32, u32, u32, u8, u32);
+void ov110_021E6678(AlphPuzzleData *data);
 
 #endif //POKEHEARTGOLD_ALPH_PUZZLE_H

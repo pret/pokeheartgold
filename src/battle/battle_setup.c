@@ -109,7 +109,7 @@ BattleSetup* BattleSetup_New_PalPark(HeapID heapId, int balls) {
 
 BattleSetup* BattleSetup_New_Tutorial(HeapID heapId, FieldSystem* fieldSystem) {
     PlayerProfile* profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
-    OPTIONS* options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
+    Options* options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     BattleSetup* setup = BattleSetup_New(heapId, BATTLE_TYPE_TUTORIAL);
     setup->saveData = fieldSystem->saveData;
     {
@@ -196,7 +196,7 @@ void sub_02051D18(BattleSetup* setup, FieldSystem* fieldSystem, SaveData* saveDa
     Bag* bag;
     Pokedex* pokedex;
     SOUND_CHATOT* chatot;
-    OPTIONS* options;
+    Options* options;
     LocalFieldData* local;
     BOOL forceNite;
     u32 battle_bg;
@@ -270,7 +270,7 @@ void BattleSetup_InitForFixedLevelFacility(BattleSetup* setup, FieldSystem *fiel
     Bag* bag;
     Pokedex* pokedex;
     SOUND_CHATOT* chatot;
-    OPTIONS* options;
+    Options* options;
 
     profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
     party = SaveArray_Party_Get(fieldSystem->saveData);
@@ -317,7 +317,7 @@ void sub_020520B0(BattleSetup* setup, FieldSystem *fieldSystem, Party *party, u8
     Bag* bag;
     Pokedex* pokedex;
     SOUND_CHATOT* chatot;
-    OPTIONS* options;
+    Options* options;
     void* fieldSystem_unkA4;
 
     profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
