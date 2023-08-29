@@ -122,8 +122,8 @@ static void ov122_021E79D0(VoltorbFlipAppWork *);
 static void ov122_021E7AEC(VoltorbFlipAppWork *);
 static void ov122_021E7B94(VoltorbFlipAppWork *);
 static void ov122_021E7BD4(VoltorbFlipAppWork *);
-static UnkStruct_0200D748 *ov122_021E7C9C(UnkStruct_0200CF18 *, UnkStruct_0200CF38 *, u16, u16, u16, u16);
-static UnkStruct_0200D748 *ov122_021E7D04(UnkStruct_0200CF18 *, UnkStruct_0200CF38 *, u16, u16, u16, u16);
+static UnkImageStruct *ov122_021E7C9C(UnkStruct_0200CF18 *, UnkStruct_0200CF38 *, u16, u16, u16, u16);
+static UnkImageStruct *ov122_021E7D04(UnkStruct_0200CF18 *, UnkStruct_0200CF38 *, u16, u16, u16, u16);
 static void ov122_021E7D6C(VoltorbFlipAppWork *);
 static void ov122_021E7F48(VoltorbFlipAppWork *);
 static void ov122_021E7F64(void *, u32);
@@ -146,8 +146,8 @@ extern const Unk122_021E92D0 ov122_021E92D0;
 extern const Unk122_021E92E4 ov122_021E92E4;
 extern const Unk122_021E92FC ov122_021E92FC;
 extern const Ov122_021E6C2C ov122_021E9344[4];
-extern const Unk122_021E9374 ov122_021E9374;
-extern const Unk122_021E9374 ov122_021E93A8;
+extern const UnkTemplate_0200D748 ov122_021E9374;
+extern const UnkTemplate_0200D748 ov122_021E93A8;
 extern const WindowTemplate sVoltorbFlipWindowTemplates[];
 extern const BgTemplates sVoltorbFlipBgTemplates;
 extern VoltorbFlipWorkflows sVoltorbFlipWorkflows;
@@ -1809,35 +1809,35 @@ _021E7BE4:
 }
 #endif //NONMATCHING
 
-static UnkStruct_0200D748 *ov122_021E7C9C(UnkStruct_0200CF18 *a0, UnkStruct_0200CF38 *a1, u16 a2, u16 a3, u16 a4, u16 a5) {
-    Unk122_021E9374 temp1 = ov122_021E9374;
+static UnkImageStruct *ov122_021E7C9C(UnkStruct_0200CF18 *a0, UnkStruct_0200CF38 *a1, u16 a2, u16 a3, u16 a4, u16 a5) {
+    UnkTemplate_0200D748 temp1 = ov122_021E9374;
 
     GF_ASSERT(a0 != NULL);
     GF_ASSERT(a1 != NULL);
 
-    temp1.unk0 = a2;
-    temp1.unk2 = a3;
-    temp1.unk6 = a4;
-    temp1.unk8 = a5;
+    temp1.x = a2;
+    temp1.y = a3;
+    temp1.animation = a4;
+    temp1.unk_08 = a5;
 
-    UnkStruct_0200D748 *var1 = sub_0200D740(a0, a1, &temp1, 0x20c000);
+    UnkImageStruct *var1 = sub_0200D740(a0, a1, &temp1, 0x20c000);
     sub_0200DC78(var1, 1);
     sub_0200DCE8(var1, 0);
     return var1;
 }
 
-static UnkStruct_0200D748 *ov122_021E7D04(UnkStruct_0200CF18 *a0, UnkStruct_0200CF38 *a1, u16 a2, u16 a3, u16 a4, u16 a5) {
-    Unk122_021E9374 temp1 = ov122_021E93A8;
+static UnkImageStruct *ov122_021E7D04(UnkStruct_0200CF18 *a0, UnkStruct_0200CF38 *a1, u16 a2, u16 a3, u16 a4, u16 a5) {
+    UnkTemplate_0200D748 temp1 = ov122_021E93A8;
 
     GF_ASSERT(a0 != NULL);
     GF_ASSERT(a1 != NULL);
 
-    temp1.unk0 = a2;
-    temp1.unk2 = a3;
-    temp1.unk6 = a4;
-    temp1.unk8 = a5;
+    temp1.x = a2;
+    temp1.y = a3;
+    temp1.animation = a4;
+    temp1.unk_08 = a5;
 
-    UnkStruct_0200D748 *var1 = sub_0200D740(a0, a1, &temp1, 0x20c000);
+    UnkImageStruct *var1 = sub_0200D740(a0, a1, &temp1, 0x20c000);
     sub_0200DC78(var1, 1);
     sub_0200DCE8(var1, 0);
     return var1;
@@ -1858,7 +1858,7 @@ static void ov122_021E7D6C(VoltorbFlipAppWork *work) {
     work->unk14C[11] = ov122_021E7D04(work->unk144, work->unk148, 0x48, 0x38, 0, 0);
     work->unk14C[12] = ov122_021E7D04(work->unk144, work->unk148, 0x88, 0x28, 0, 0);
 
-    ov122_021E7F64(work->unk14C[12]->unk_00, 0x20000);
+    ov122_021E7F64(work->unk14C[12]->unk0, 0x20000);
 
     sub_0200DCE8(work->unk14C[2], 1);
     sub_0200DCE8(work->unk14C[3], 1);

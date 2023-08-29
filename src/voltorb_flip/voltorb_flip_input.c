@@ -26,7 +26,7 @@ extern const u8 ov122_021E9A3C[];
 extern const u8 ov122_021E9AAC[];
 extern u8 ov122_021E9BA0[5][2];
 
-Ov122_021E8CFC *ov122_021E8CFC(HeapID heapId, struct UnkStruct_0200D748 *a1, struct UnkStruct_0200D748 *a2) {
+Ov122_021E8CFC *ov122_021E8CFC(HeapID heapId, struct UnkImageStruct *a1, struct UnkImageStruct *a2) {
     GF_ASSERT(a1 != NULL);
 
     Ov122_021E8CFC *ptr = AllocFromHeap(heapId, sizeof(Ov122_021E8CFC));

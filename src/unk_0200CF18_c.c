@@ -22,6 +22,7 @@ Sprite* sub_0200D2F0(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, int a2, s16
 void sub_0200DAE4(struct _2DGfxResObjList* list, _2DGfxResObj* obj);
 BOOL sub_0200DA04(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId, int fileId, BOOL compressed, int a6, int resId);
 BOOL sub_0200DA74(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NARC* narc, int fileId, BOOL compressed, int a6, int resId);
+UnkImageStruct* sub_0200D748(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, UnkTemplate_0200D748* a2, u32 a3);
 
 UnkStruct_0200CF18* sub_0200CF18(HeapID heapId) {
     UnkStruct_0200CF18* ret = AllocFromHeap(heapId, sizeof(UnkStruct_0200CF18));
@@ -226,7 +227,7 @@ Sprite* sub_0200D2B4(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, const UnkSt
     return sub_0200D2F0(a0, a1, a2->unk_00, a2->x, a2->y, a2->x /* typo? */, a2->unk_0A, a2->unk_0C, a2->unk_10, a2->unk_14, a2->unk_18, a2->unk_1C, a2->unk_20, a2->unk_24);
 }
 
-Sprite* sub_0200D2F0(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, int headerIndex, s16 x, s16 y, s16 z, u16 animSeqNo, int rotation, int a8, int whichScreen, int a10, int a11, int a12, int a13) {
+Sprite* sub_0200D2F0(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, int headerIndex, s16 x, s16 y, s16 z, u16 animSeqNo, int priority, int a8, int whichScreen, int a10, int a11, int a12, int a13) {
     Sprite* ret = NULL;
     SpriteTemplate template;
 
@@ -244,7 +245,7 @@ Sprite* sub_0200D2F0(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, int headerI
     template.scale.y = FX32_ONE;
     template.scale.z = FX32_ONE;
     template.rotation = 0;
-    template.priority = rotation;
+    template.priority = priority;
     template.whichScreen = whichScreen;
     template.heapId = a0->heapId;
     ret = CreateSprite(&template);
@@ -381,4 +382,95 @@ BOOL sub_0200D704(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId,
 
 BOOL sub_0200D71C(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NARC* narc, int fileId, BOOL compressed, int resId) {
     return sub_0200DA74(a0, a1, narc, fileId, compressed, 3, resId);
+}
+
+UnkImageStruct* sub_0200D734(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, UnkTemplate_0200D748* a2) {
+    return sub_0200D748(a0, a1, a2, FX32_CONST(0xC0));
+}
+
+UnkImageStruct* sub_0200D740(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, UnkTemplate_0200D748* a2, u32 a3) {
+    return sub_0200D748(a0, a1, a2, a3);
+}
+
+UnkImageStruct* sub_0200D748(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, UnkTemplate_0200D748* a2, u32 a3) {
+    int i;
+    int r2;
+    UnkImageStruct* ret = AllocFromHeap(a0->heapId, sizeof(UnkImageStruct));
+    SpriteTemplate template;
+    int resIdList[GF_GFX_RES_TYPE_MAX];
+
+    if (ret == NULL) {
+        return NULL;
+    }
+    ret->unk8 = AllocFromHeap(a0->heapId, sizeof(ListOfUnkStruct_02009D48));
+    if (ret->unk8 == NULL) {
+        return NULL;
+    }
+    ret->unk8->headers = AllocFromHeap(a0->heapId, sizeof(SpriteResourcesHeader));
+    ret->unk4 = ret->unk8->headers;
+    if (ret->unk8->headers == NULL) {
+        if (ret->unk8 != NULL) { // always true
+            FreeToHeap(ret->unk8);
+        }
+        return NULL; // leaks 16 bytes
+    }
+    for (i = 0; i < GF_GFX_RES_TYPE_MAX; ++i) {
+        resIdList[i] = a2->unk_14[i];
+    }
+    if (a1->_2dGfxResMan[GF_GFX_RES_TYPE_MCEL] == NULL || a1->_2dGfxResMan[GF_GFX_RES_TYPE_MANM] == NULL) {
+        resIdList[GF_GFX_RES_TYPE_MCEL] = -1;
+        resIdList[GF_GFX_RES_TYPE_MANM] = -1;
+    } else {
+        if (resIdList[GF_GFX_RES_TYPE_MCEL] != -1 && !_2DGfxResObjExistsById(a1->_2dGfxResMan[GF_GFX_RES_TYPE_MCEL], resIdList[GF_GFX_RES_TYPE_MCEL])) {
+            resIdList[GF_GFX_RES_TYPE_MCEL] = -1;
+        }
+        if (resIdList[GF_GFX_RES_TYPE_MANM] != -1 && !_2DGfxResObjExistsById(a1->_2dGfxResMan[GF_GFX_RES_TYPE_MANM], resIdList[GF_GFX_RES_TYPE_MANM])) {
+            resIdList[GF_GFX_RES_TYPE_MANM] = -1;
+        }
+    }
+    CreateSpriteResourcesHeader(
+        ret->unk4,
+        resIdList[GF_GFX_RES_TYPE_CHAR],
+        resIdList[GF_GFX_RES_TYPE_PLTT],
+        resIdList[GF_GFX_RES_TYPE_CELL],
+        resIdList[GF_GFX_RES_TYPE_ANIM],
+        resIdList[GF_GFX_RES_TYPE_MCEL],
+        resIdList[GF_GFX_RES_TYPE_MANM],
+        a2->unk_30,
+        a2->unk_2C,
+        a1->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR],
+        a1->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT],
+        a1->_2dGfxResMan[GF_GFX_RES_TYPE_CELL],
+        a1->_2dGfxResMan[GF_GFX_RES_TYPE_ANIM],
+        a1->_2dGfxResMan[GF_GFX_RES_TYPE_MCEL],
+        a1->_2dGfxResMan[GF_GFX_RES_TYPE_MANM]
+    );
+
+    template.spriteList = a1->spriteList;
+    template.header = ret->unk4;
+    template.position.x = FX32_CONST(a2->x);
+    template.position.y = FX32_CONST(a2->y);
+    template.position.z = FX32_CONST(a2->z);
+    if (a2->vram == NNS_G2D_VRAM_TYPE_2DSUB) {
+        template.position.y += a3;
+    }
+    template.scale.x = FX32_ONE;
+    template.scale.y = FX32_ONE;
+    template.scale.z = FX32_ONE;
+    template.rotation = 0;
+    template.priority = a2->unk_08;
+    template.whichScreen = a2->vram;
+    template.heapId = a0->heapId;
+    ret->unk0 = CreateSprite(&template);
+    ret->vramTransfer = a2->unk_30;
+    if (ret->unk0 != NULL) {
+        Set2dSpriteAnimSeqNo(ret->unk0, a2->animation);
+        if (a2->pal != 0xFFFF) {
+            r2 = sub_02024A6C(ret->unk0);
+            sub_02024A14(ret->unk0, r2 + a2->pal);
+        }
+    } else {
+        GF_ASSERT(0);
+    }
+    return ret;
 }

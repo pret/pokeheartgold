@@ -49,8 +49,8 @@ typedef struct Sprite {
 
 typedef struct UnkImageStruct {
     Sprite *unk0;
-    void *unk4;
-    void *unk8;
+    SpriteResourcesHeader *unk4;
+    ListOfUnkStruct_02009D48 *unk8;
     int vramTransfer;
 } UnkImageStruct;
 
@@ -72,6 +72,7 @@ void sub_02024950(Sprite *, int);
 void sub_02023EA4(Sprite *, int);
 void sub_02024A14(Sprite*, int);
 void sub_02024A48(Sprite*, int);
+int sub_02024A6C(Sprite*);
 NNSG2dImageProxy *sub_02024B1C(Sprite *);
 
 #endif //POKEHEARTGOLD_UNK_02023694_H

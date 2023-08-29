@@ -2689,9 +2689,9 @@ static const int _020FF50C[] = {
     0, 1, 1, 2, 0, 3
 };
 
-struct UnkStruct_0200D748 *sub_02070C24(UnkStruct_0200CF18 *r6, UnkStruct_0200CF38 *sp18, void *sp1C, int sp20, int sp88, int trainerClass, int sp90, int sp94, int r5, HeapID heapId) {
+struct UnkImageStruct *sub_02070C24(UnkStruct_0200CF18 *r6, UnkStruct_0200CF38 *sp18, void *sp1C, int sp20, int sp88, int trainerClass, int sp90, int sp94, int r5, HeapID heapId) {
     struct UnkTemplate_0200D748 sp3C;
-    struct UnkStruct_0200D748 *ret_r4;
+    struct UnkImageStruct *ret_r4;
     NARC *narc_r4;
     struct UnkStruct_02070D3C sp24;
     int r7;
@@ -2714,7 +2714,7 @@ struct UnkStruct_0200D748 *sub_02070C24(UnkStruct_0200CF18 *r6, UnkStruct_0200CF
     sp3C.unk_14[3] = r5 + 0x4E27;
     sp3C.unk_08 = _020FF50C[r5];
     ret_r4 = sub_0200D734(r6, sp18, &sp3C);
-    sub_02024AA8(ret_r4->unk_00, 0);
+    sub_02024AA8(ret_r4->unk0, 0);
     sub_0200DDB8(ret_r4, sp20, sp88);
     sub_0200DC18(ret_r4);
     sub_0200DC78(ret_r4, 1);
