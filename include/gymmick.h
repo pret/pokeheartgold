@@ -12,7 +12,7 @@
 #define GYMMICK_VIRIDIAN     8
 #define GYMMICK_SINJOH       9
 
-union GymmickUnion {
+typedef union GymmickUnion {
     u8 raw[0x20];
     struct {
         u8 candles[4];
@@ -41,16 +41,16 @@ union GymmickUnion {
     struct {
         u32 choice;
     } sinjoh;
-};
+} GymmickUnion;
 
-struct Gymmick {
+typedef struct Gymmick {
     int kind;
-    union GymmickUnion data;
-};
+    GymmickUnion data;
+} Gymmick;
 
-void Save_Gymmick_Clear(struct Gymmick *gymmick);
-union GymmickUnion *Save_Gymmick_Init(struct Gymmick *gymmick, int kind);
-union GymmickUnion *Save_Gymmick_AssertMagic_GetData(struct Gymmick *gymmick, int kind);
-int Save_Gymmick_GetType(struct Gymmick *gymmick);
+void Save_Gymmick_Clear(Gymmick *gymmick);
+GymmickUnion *Save_Gymmick_Init(Gymmick *gymmick, int kind);
+GymmickUnion *Save_Gymmick_AssertMagic_GetData(Gymmick *gymmick, int kind);
+int Save_Gymmick_GetType(Gymmick *gymmick);
 
 #endif //POKEHEARTGOLD_GYMMICK_H

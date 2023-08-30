@@ -34,27 +34,27 @@ static const TrashCan sTrashCans[NUM_TRASH_CANS] = {
 };
 
 void InitEcruteakGym(FieldSystem *fieldSystem) {
-    struct Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
+    Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
     Save_Gymmick_Init(gymmick, GYMMICK_ECRUTEAK);
     
-    union GymmickUnion *data = Save_Gymmick_AssertMagic_GetData(gymmick, GYMMICK_ECRUTEAK);
+    GymmickUnion *data = Save_Gymmick_AssertMagic_GetData(gymmick, GYMMICK_ECRUTEAK);
     for (int i = 0; i < 4; i++) {
         data->ecruteak.candles[i] = 0;
     }
 }
 
 void InitCianwoodGym(FieldSystem *fieldSystem) {
-    struct Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
+    Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
     Save_Gymmick_Init(gymmick, GYMMICK_CIANWOOD);
 
-    union GymmickUnion *unused = Save_Gymmick_AssertMagic_GetData(gymmick, GYMMICK_CIANWOOD);
+    GymmickUnion *unused = Save_Gymmick_AssertMagic_GetData(gymmick, GYMMICK_CIANWOOD);
 }
 
 void InitVermilionGym(FieldSystem *fieldSystem) {
-    struct Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
+    Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
     Save_Gymmick_Init(gymmick, GYMMICK_VERMILION);
 
-    union GymmickUnion *data = Save_Gymmick_AssertMagic_GetData(gymmick, GYMMICK_VERMILION);
+    GymmickUnion *data = Save_Gymmick_AssertMagic_GetData(gymmick, GYMMICK_VERMILION);
     if (PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(fieldSystem->saveData), BADGE_THUNDER)) {
         data->vermilion.switches[0] = 0;
         data->vermilion.switches[1] = 0;
@@ -69,8 +69,8 @@ void InitVermilionGym(FieldSystem *fieldSystem) {
 }
 
 void PlaceVermilionGymSwitches(FieldSystem *fieldSystem) {
-    struct Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
-    union GymmickUnion *data = Save_Gymmick_AssertMagic_GetData(gymmick, GYMMICK_VERMILION);
+    Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
+    GymmickUnion *data = Save_Gymmick_AssertMagic_GetData(gymmick, GYMMICK_VERMILION);
     data->vermilion.switches[0] = LCRandom() % NUM_TRASH_CANS;
 
     const TrashCan *trashCan = &sTrashCans[data->vermilion.switches[0]];
@@ -79,18 +79,18 @@ void PlaceVermilionGymSwitches(FieldSystem *fieldSystem) {
 }
 
 void InitVioletGym(FieldSystem *fieldSystem) {
-    struct Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
+    Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
     Save_Gymmick_Init(gymmick, GYMMICK_VIOLET);
 
-    union GymmickUnion *data = Save_Gymmick_AssertMagic_GetData(gymmick, GYMMICK_VIOLET);
+    GymmickUnion *data = Save_Gymmick_AssertMagic_GetData(gymmick, GYMMICK_VIOLET);
     data->violet.liftState = 0;
 }
 
 void InitAzaleaGym(FieldSystem *fieldSystem) {
-    struct Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
+    Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
     Save_Gymmick_Init(gymmick, GYMMICK_AZALEA);
 
-    union GymmickUnion *data = Save_Gymmick_AssertMagic_GetData(gymmick, GYMMICK_AZALEA);
+    GymmickUnion *data = Save_Gymmick_AssertMagic_GetData(gymmick, GYMMICK_AZALEA);
     data->azalea.spiders[0] = 0;
     data->azalea.spiders[1] = 1;
     data->azalea.spiders[2] = 2;
@@ -99,10 +99,10 @@ void InitAzaleaGym(FieldSystem *fieldSystem) {
 }
 
 void InitBlackthornGym(FieldSystem *fieldSystem) {
-    struct Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
+    Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
     Save_Gymmick_Init(gymmick, GYMMICK_BLACKTHORN);
 
-    union GymmickUnion *data = Save_Gymmick_AssertMagic_GetData(gymmick, GYMMICK_BLACKTHORN);
+    GymmickUnion *data = Save_Gymmick_AssertMagic_GetData(gymmick, GYMMICK_BLACKTHORN);
 
     data->blackthorn.x[0] = 13;
     data->blackthorn.z[0] = 75;
@@ -118,12 +118,12 @@ void InitBlackthornGym(FieldSystem *fieldSystem) {
 }
 
 void InitFuchsiaGym(FieldSystem *fieldSystem) {
-    struct Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
+    Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
     Save_Gymmick_Init(gymmick, GYMMICK_FUCHSIA);
 }
 
 void InitViridianGym(FieldSystem *fieldSystem) {
-    struct Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
+    Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
     Save_Gymmick_Init(gymmick, GYMMICK_VIRIDIAN);
 }
 
