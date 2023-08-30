@@ -310,7 +310,7 @@
 #define FLAG_GOT_NUGGET_FROM_ACE_TRAINER_M_KEVIN                   0x122
 #define FLAG_UNK_123                                               0x123
 #define FLAG_GOT_TM19_FROM_ERIKA                                   0x124
-#define FLAG_UNK_125                                               0x125
+#define FLAG_FARFETCHD_NOTICED_YOU                                 0x125
 #define FLAG_UNK_126                                               0x126
 #define FLAG_UNK_127                                               0x127
 #define FLAG_UNK_128                                               0x128
