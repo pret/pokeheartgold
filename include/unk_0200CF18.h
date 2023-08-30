@@ -107,10 +107,12 @@ BOOL sub_0200D704(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId,
 BOOL sub_0200D71C(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NARC* narc, int fileId, BOOL compressed, int resId);
 UnkImageStruct* sub_0200D734(UnkStruct_0200CF18*, UnkStruct_0200CF38*, struct UnkTemplate_0200D748*);
 UnkImageStruct* sub_0200D740(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, UnkTemplate_0200D748* a2, u32 a3);
-void sub_0200D958(void* a0, u32 character);
-void sub_0200D968(void* a0, u32 pal);
-void sub_0200D978(void* a0, u32 cell);
-void sub_0200D988(void* a0, u32 animation);
+NNSG2dImagePaletteProxy* sub_0200D934(UnkStruct_0200CF38* a0, int id);
+int sub_0200D944(UnkStruct_0200CF38* a0, int id, int vram);
+BOOL sub_0200D958(UnkStruct_0200CF38* a0, u32 character);
+BOOL sub_0200D968(UnkStruct_0200CF38* a0, u32 pal);
+BOOL sub_0200D978(UnkStruct_0200CF38* a0, u32 cell);
+BOOL sub_0200D988(UnkStruct_0200CF38* a0, u32 animation);
 void sub_0200D998(UnkStruct_0200CF18*, UnkStruct_0200CF38*);
 void sub_0200D9DC(UnkImageStruct*);
 void sub_0200DC18(UnkImageStruct*);

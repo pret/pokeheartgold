@@ -76,11 +76,11 @@ struct _2DGfxResHeader {
     u8 isNarc;
 };
 
-struct _2DGfxResObjList {
+typedef struct _2DGfxResObjList {
     struct _2DGfxResObj **obj;
     int max;
     int num;
-};
+} _2DGfxResObjList;
 
 struct _2DGfxResMan *Create2DGfxResObjMan(int num, GfGfxResType type, HeapID heapId);
 void Destroy2DGfxResObjMan(struct _2DGfxResMan *mgr);

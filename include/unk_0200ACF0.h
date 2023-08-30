@@ -12,6 +12,7 @@ void sub_0200AEB0(struct _2DGfxResObj *charResObj);
 void sub_0200AED4(struct _2DGfxResObjList *charResObjList);
 NNSG2dImageProxy *sub_0200AF00(struct _2DGfxResObj *charResObj);
 NNSG2dImageProxy *sub_0200AF24(struct _2DGfxResObj *charResObj, struct _2DGfxResObj *cellResObj);
+void sub_0200AF80(const NNSG2dImageProxy* imgProxy);
 void sub_0200AF94(struct _2DGfxResObj *obj);
 void sub_0200AFD8(struct _2DGfxResObjList *plttResObjList);
 BOOL sub_0200B00C(struct _2DGfxResObj *plttResObj);

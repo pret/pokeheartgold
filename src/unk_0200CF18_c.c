@@ -19,10 +19,13 @@ void sub_0200D0B4(UnkStruct_0200CF18* a0);
 void sub_0200D0D4(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1);
 BOOL sub_0200D124(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, const u16* a2, int a3, int a4);
 Sprite* sub_0200D2F0(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, int a2, s16 x, s16 y, s16 z, u16 animSeqNo, int rotation, int a8, int whichScreen, int a10, int a11, int a12, int a13);
-void sub_0200DAE4(struct _2DGfxResObjList* list, _2DGfxResObj* obj);
-BOOL sub_0200DA04(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId, int fileId, BOOL compressed, int a6, int resId);
-BOOL sub_0200DA74(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NARC* narc, int fileId, BOOL compressed, int a6, int resId);
 UnkImageStruct* sub_0200D748(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, UnkTemplate_0200D748* a2, u32 a3);
+BOOL sub_0200DA04(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId, int fileId, BOOL compressed, GfGfxResType a6, int resId);
+BOOL sub_0200DA74(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NARC* narc, int fileId, BOOL compressed, GfGfxResType a6, int resId);
+BOOL sub_0200DAE4(_2DGfxResObjList* list, _2DGfxResObj* obj);
+BOOL sub_0200DB64(_2DGfxResMan* manager, _2DGfxResObjList* list, u32 charId);
+BOOL sub_0200DBB8(_2DGfxResMan* manager, _2DGfxResObjList* list, u32 plttId);
+BOOL sub_0200DB18(_2DGfxResMan* manager, _2DGfxResObjList* list, u32 cellOrAnimId);
 
 UnkStruct_0200CF18* sub_0200CF18(HeapID heapId) {
     UnkStruct_0200CF18* ret = AllocFromHeap(heapId, sizeof(UnkStruct_0200CF18));
@@ -369,19 +372,19 @@ u8 sub_0200D68C(PaletteData* a0, u32 bufferId, UnkStruct_0200CF18* a2, UnkStruct
 }
 
 BOOL sub_0200D6D4(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId, int fileId, BOOL compressed, int resId) {
-    return sub_0200DA04(a0, a1, narcId, fileId, compressed, 2, resId);
+    return sub_0200DA04(a0, a1, narcId, fileId, compressed, GF_GFX_RES_TYPE_CELL, resId);
 }
 
 BOOL sub_0200D6EC(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NARC* narc, int fileId, BOOL compressed, int resId) {
-    return sub_0200DA74(a0, a1, narc, fileId, compressed, 2, resId);
+    return sub_0200DA74(a0, a1, narc, fileId, compressed, GF_GFX_RES_TYPE_CELL, resId);
 }
 
 BOOL sub_0200D704(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId, int fileId, BOOL compressed, int resId) {
-    return sub_0200DA04(a0, a1, narcId, fileId, compressed, 3, resId);
+    return sub_0200DA04(a0, a1, narcId, fileId, compressed, GF_GFX_RES_TYPE_ANIM, resId);
 }
 
 BOOL sub_0200D71C(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NARC* narc, int fileId, BOOL compressed, int resId) {
-    return sub_0200DA74(a0, a1, narc, fileId, compressed, 3, resId);
+    return sub_0200DA74(a0, a1, narc, fileId, compressed, GF_GFX_RES_TYPE_ANIM, resId);
 }
 
 UnkImageStruct* sub_0200D734(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, UnkTemplate_0200D748* a2) {
@@ -473,4 +476,137 @@ UnkImageStruct* sub_0200D748(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, Unk
         GF_ASSERT(0);
     }
     return ret;
+}
+
+NNSG2dImagePaletteProxy* sub_0200D934(UnkStruct_0200CF38* a0, int id) {
+    return sub_0200B0F8(Get2DGfxResObjById(a0->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], id), NULL);
+}
+
+int sub_0200D944(UnkStruct_0200CF38* a0, int id, int vram) {
+    return sub_0200B12C(Get2DGfxResObjById(a0->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], id), vram);
+}
+
+BOOL sub_0200D958(UnkStruct_0200CF38* a0, u32 character) {
+    return sub_0200DB64(a0->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], a0->_2dGfxResObjList[GF_GFX_RES_TYPE_CHAR], character);
+}
+
+BOOL sub_0200D968(UnkStruct_0200CF38* a0, u32 pal) {
+    return sub_0200DBB8(a0->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], a0->_2dGfxResObjList[GF_GFX_RES_TYPE_PLTT], pal);
+}
+
+BOOL sub_0200D978(UnkStruct_0200CF38* a0, u32 cell) {
+    return sub_0200DB18(a0->_2dGfxResMan[GF_GFX_RES_TYPE_CELL], a0->_2dGfxResObjList[GF_GFX_RES_TYPE_CELL], cell);
+}
+
+BOOL sub_0200D988(UnkStruct_0200CF38* a0, u32 animation) {
+    return sub_0200DB18(a0->_2dGfxResMan[GF_GFX_RES_TYPE_ANIM], a0->_2dGfxResObjList[GF_GFX_RES_TYPE_ANIM], animation);
+}
+
+void sub_0200D998(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1) {
+    int i;
+
+    sub_0200D044(a1);
+    sub_0200AED4(a1->_2dGfxResObjList[GF_GFX_RES_TYPE_CHAR]);
+    sub_0200B0CC(a1->_2dGfxResObjList[GF_GFX_RES_TYPE_PLTT]);
+
+    for (i = 0; i < a1->unk_54; ++i) {
+        Delete2DGfxResObjList(a1->_2dGfxResObjList[i]);
+        Destroy2DGfxResObjMan(a1->_2dGfxResMan[i]);
+    }
+    sub_0200D0D4(a0, a1);
+}
+
+void sub_0200D9DC(UnkImageStruct* a0) {
+    if (a0->vramTransfer) {
+        sub_0200AF80(a0->unk4->imageProxy);
+    }
+    Sprite_Delete(a0->unk0);
+    sub_02009F24(a0->unk8);
+    FreeToHeap(a0);
+}
+
+BOOL sub_0200DA04(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId, int fileId, BOOL compressed, GfGfxResType a6, int resId) {
+    if (!_2DGfxResObjExistsById(a1->_2dGfxResMan[a6], resId)) {
+        return FALSE;
+    }
+    _2DGfxResObj* data = AddCellOrAnimResObjFromNarc(a1->_2dGfxResMan[a6], narcId, fileId, compressed, resId, a6, a0->heapId);
+    if (data != NULL) {
+        BOOL result = sub_0200DAE4(a1->_2dGfxResObjList[a6], data);
+        GF_ASSERT(result == TRUE);
+        return result;
+    }
+    GF_ASSERT(0);
+    return data != NULL;
+}
+
+BOOL sub_0200DA74(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NARC* narc, int fileId, BOOL compressed, GfGfxResType a6, int resId) {
+    if (!_2DGfxResObjExistsById(a1->_2dGfxResMan[a6], resId)) {
+        return FALSE;
+    }
+    _2DGfxResObj* data = AddCellOrAnimResObjFromOpenNarc(a1->_2dGfxResMan[a6], narc, fileId, compressed, resId, a6, a0->heapId);
+    if (data != NULL) {
+        BOOL result = sub_0200DAE4(a1->_2dGfxResObjList[a6], data);
+        GF_ASSERT(result == TRUE);
+        return result;
+    }
+    GF_ASSERT(0);
+    return data != NULL;
+}
+
+BOOL sub_0200DAE4(_2DGfxResObjList* list, _2DGfxResObj* obj) {
+    for (int i = 0; i < list->max; ++i) {
+        if (list->obj[i] == NULL) {
+            list->obj[i] = obj;
+            ++list->num;
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
+BOOL sub_0200DB18(_2DGfxResMan* manager, _2DGfxResObjList* list, u32 cellOrAnimId) {
+    for (int i = 0; i < list->max; ++i) {
+        if (list->obj[i] != NULL) {
+            u32 test_id = sub_0200A7FC(list->obj[i]);
+            if (test_id == cellOrAnimId) {
+                DestroySingle2DGfxResObj(manager, list->obj[i]);
+                list->obj[i] = NULL;
+                --list->num;
+                return TRUE;
+            }
+        }
+    }
+    return FALSE;
+}
+
+BOOL sub_0200DB64(_2DGfxResMan* manager, _2DGfxResObjList* list, u32 charId) {
+    for (int i = 0; i < list->max; ++i) {
+        if (list->obj[i] != NULL) {
+            u32 test_id = sub_0200A7FC(list->obj[i]);
+            if (test_id == charId) {
+                sub_02021884(charId);
+                DestroySingle2DGfxResObj(manager, list->obj[i]);
+                list->obj[i] = NULL;
+                --list->num;
+                return TRUE;
+            }
+        }
+    }
+    return FALSE;
+}
+
+BOOL sub_0200DBB8(_2DGfxResMan* manager, _2DGfxResObjList* list, u32 plttId) {
+    for (int i = 0; i < list->max; ++i) {
+        if (list->obj[i] != NULL) {
+            u32 test_id = sub_0200A7FC(list->obj[i]);
+            if (test_id == plttId) {
+                sub_02022744(plttId);
+                DestroySingle2DGfxResObj(manager, list->obj[i]);
+                list->obj[i] = NULL;
+                --list->num;
+                return TRUE;
+            }
+        }
+    }
+    return FALSE;
 }
