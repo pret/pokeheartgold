@@ -41,7 +41,7 @@ typedef struct SAVE_MISC_DATA {
     APRICORN_TREE apricorn_trees[MAX_APRICORN_TREE];
     BerryPot berry_pots[MAX_BERRY_POT];
     struct GF_RTC_DateTime berry_datetime;
-    struct Gymmick gymmick;
+    Gymmick gymmick;
     u16 rivalName[PLAYER_NAME_LENGTH + 1];
     u8 unk_0280[8]; // 3 chunks of size (4, 2, 2)
     u8 filler_0288[0x10];
@@ -69,7 +69,7 @@ const SAVE_MISC_DATA *Save_Misc_Const_Get(const SaveData *saveData);
 APRICORN_TREE *Save_FieldApricornTrees_Get(SaveData *saveData);
 BerryPot *Save_BerryPots_Get(SaveData *saveData);
 struct GF_RTC_DateTime *Save_BerryPotRTC_Get(SaveData *saveData);
-struct Gymmick *Save_GetGymmickPtr(SaveData *saveData);
+Gymmick *Save_GetGymmickPtr(SaveData *saveData);
 const u16 *Save_Misc_RivalName_Const_Get(const SAVE_MISC_DATA *saveMiscData);
 void Save_Misc_RivalName_Set(SAVE_MISC_DATA *saveMiscData, const String *name);
 void SaveMisc_SetExtraChunksExist(SAVE_MISC_DATA *saveMiscData);

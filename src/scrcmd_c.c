@@ -65,7 +65,7 @@
 #include "unk_02058034.h"
 #include "unk_02056D7C.h"
 #include "unk_02034B0C.h"
-#include "unk_02068DE0.h"
+#include "gymmick_init.h"
 #include "unk_02097D3C.h"
 #include "math_util.h"
 #include "game_stats.h"

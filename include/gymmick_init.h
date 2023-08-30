@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_UNK_02068DE0_H
-#define POKEHEARTGOLD_UNK_02068DE0_H
+#ifndef POKEHEARTGOLD_GYMMICK_INIT_H
+#define POKEHEARTGOLD_GYMMICK_INIT_H
 
 #include "script.h"
 
@@ -12,5 +12,6 @@ void InitAzaleaGym(FieldSystem *fieldSystem);
 void InitBlackthornGym(FieldSystem *fieldSystem);
 void InitFuchsiaGym(FieldSystem *fieldSystem);
 void InitViridianGym(FieldSystem *fieldSystem);
+BOOL FieldSystem_IsSaveGymmickTypeEqualTo(FieldSystem *fieldSystem, int kind);
 
-#endif //POKEHEARTGOLD_UNK_02068DE0_H
+#endif //POKEHEARTGOLD_GYMMICK_INIT_H
