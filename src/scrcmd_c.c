@@ -2852,10 +2852,10 @@ BOOL ScrCmd_286(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_287(ScriptContext *ctx) {
+BOOL ScrCmd_BufferUnionRoomAvatarChoices(ScriptContext *ctx) {
     PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
     MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
-    sub_0205B3DC(
+    BufferUnionRoomAvatarChoicesNames(
         PlayerProfile_GetTrainerID(profile),
         PlayerProfile_GetTrainerGender(profile),
         *p_msgFmt
@@ -2863,16 +2863,16 @@ BOOL ScrCmd_287(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_288(ScriptContext *ctx) {
+BOOL ScrCmd_UnionRoomAvatarIdxToTrainerClass(ScriptContext *ctx) {
     PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
     u16 choice = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = sub_0205B418(
+    *p_ret = UnionRoomAvatarIdxToSprite(
         PlayerProfile_GetTrainerID(profile),
         PlayerProfile_GetTrainerGender(profile),
         choice
     );
-    *p_ret = sub_0205B46C(
+    *p_ret = GetUnionRoomAvatarAttrBySprite(
         PlayerProfile_GetTrainerGender(profile),
         *p_ret,
         2
@@ -2880,11 +2880,11 @@ BOOL ScrCmd_288(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_558(ScriptContext *ctx) {
+BOOL ScrCmd_UnionRoomAvatarIdxToSprite(ScriptContext *ctx) {
     PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
     u16 choice = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = sub_0205B418(
+    *p_ret = UnionRoomAvatarIdxToSprite(
         PlayerProfile_GetTrainerID(profile),
         PlayerProfile_GetTrainerGender(profile),
         choice
@@ -4479,7 +4479,7 @@ BOOL ScrCmd_FollowPokeFacePlayer(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_602(ScriptContext *ctx) {
+BOOL ScrCmd_ToggleFollowingPokemonMovement(ScriptContext *ctx) {
     u16 mode = ScriptReadHalfword(ctx);
     if (FollowingPokemon_IsActive(ctx->fieldSystem)) {
         if (mode) {
@@ -4491,16 +4491,16 @@ BOOL ScrCmd_602(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL sub_02046D40(ScriptContext *ctx);
+static BOOL NativeScript_WaitFollowingPokemonMovement(ScriptContext *ctx);
 
-BOOL ScrCmd_603(ScriptContext *ctx) {
+BOOL ScrCmd_WaitFollowingPokemonMovement(ScriptContext *ctx) {
     if (FollowingPokemon_IsActive(ctx->fieldSystem)) {
-        SetupNativeScript(ctx, sub_02046D40);
+        SetupNativeScript(ctx, NativeScript_WaitFollowingPokemonMovement);
     }
     return TRUE;
 }
 
-BOOL ScrCmd_604(ScriptContext *ctx) {
+BOOL ScrCmd_FollowingPokemonMovement(ScriptContext *ctx) {
     u16 movement = ScriptReadHalfword(ctx);
     if (FollowingPokemon_IsActive(ctx->fieldSystem)) {
         sub_0205FC94(GetMapObjectByID(ctx->fieldSystem->mapObjectMan, obj_partner_poke), movement);
@@ -4508,7 +4508,7 @@ BOOL ScrCmd_604(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL sub_02046D40(ScriptContext *ctx) {
+static BOOL NativeScript_WaitFollowingPokemonMovement(ScriptContext *ctx) {
     if (MapObject_IsMovementPaused(FollowingPokemon_GetMapObject(ctx->fieldSystem))) {
         return TRUE;
     } else {

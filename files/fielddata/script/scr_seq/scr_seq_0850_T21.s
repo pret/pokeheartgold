@@ -106,9 +106,9 @@ _0187:
 	wait_movement
 	npc_msg msg_0550_T21_00001
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	compare VAR_TEMP_x4001, 397
 	goto_if_ne _01C5
 	apply_movement obj_T21_gsoldman1, _0418
@@ -136,55 +136,55 @@ _020B:
 	apply_movement obj_player, _04A8
 _0228:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0550_T21_00002
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_T21_gsoldman1, _04B8
 	apply_movement obj_player, _04CC
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0550_T21_00003
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_T21_gsoldman1, _04E0
 	apply_movement obj_player, _04FC
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0550_T21_00004
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_T21_gsoldman1, _050C
 	apply_movement obj_player, _052C
 	wait_movement
 	play_se SEQ_SE_GS_N_UMIBE
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0550_T21_00005
 	closemsg
 	stop_se SEQ_SE_GS_N_UMIBE
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_T21_gsoldman1, _054C
 	apply_movement obj_player, _0568
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0550_T21_00006
 	give_running_shoes
 	buffer_players_name 0
@@ -528,9 +528,9 @@ _072F:
 	npc_msg msg_0550_T21_00014
 	closemsg
 	play_se SEQ_SE_DP_WALL_HIT2
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 56
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 56
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	compare VAR_SPECIAL_x8005, 398
 	goto_if_ne _076B
@@ -541,9 +541,9 @@ _076B:
 	apply_movement obj_player, _08A4
 _0773:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	compare VAR_SPECIAL_x8005, 398
 	goto_if_ne _079A
 	apply_movement obj_T21_gsrivel, _0810
@@ -678,9 +678,9 @@ scr_seq_T21_009:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 1
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0992
@@ -706,9 +706,9 @@ _09D0:
 	apply_movement obj_T21_gsmiddleman1, _0AC0
 _09E0:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0A07

@@ -49,14 +49,14 @@ _00A2:
 _00AA:
 	wait_movement
 	play_se SEQ_SE_DP_WALL_HIT2
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 56
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 56
 	apply_movement obj_player, _0184
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0399_R42_00005
 	closemsg
 	apply_movement obj_R42_mount_2_2, _01D4
@@ -176,15 +176,15 @@ scr_seq_R42_001:
 	scrcmd_523 obj_R42_tsure_poke_static_suicune, 2, 90, 2, 0
 	lock obj_R42_tsure_poke_static_suicune
 	wait_cry
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 56
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 56
 	apply_movement obj_R42_tsure_poke_static_suicune, _02EC
 	apply_movement obj_player, _0308
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	clearflag FLAG_HIDE_ROUTE_42_EUSINE
 	show_person obj_R42_minaki
 	callstd std_play_eusine_music

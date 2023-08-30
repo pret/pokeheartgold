@@ -49,14 +49,14 @@ scr_seq_T06_013:
 	scrcmd_609
 	lockall
 	apply_movement obj_T06_daigo, _016C
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0190
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0483_T06_00016
 	closemsg
 	apply_movement obj_T06_daigo, _0180
@@ -204,9 +204,9 @@ _0270:
 	lock obj_T06_tsure_poke_static_suicune
 	wait_cry
 	callstd std_play_eusine_music
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 331
 	goto_if_ne _02D5
@@ -229,9 +229,9 @@ _0300:
 	apply_movement obj_T06_tsure_poke_static_suicune, _042C
 _0318:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0483_T06_00014
 	closemsg
 	apply_movement obj_T06_minaki, _04D0
@@ -401,9 +401,9 @@ scr_seq_T06_012:
 	lock obj_T06_tsure_poke_static_suicune
 	wait_cry
 	callstd std_play_eusine_music
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4000, 1324
 	goto_if_ne _057D
@@ -426,9 +426,9 @@ _05A8:
 	apply_movement obj_T06_tsure_poke_static_suicune, _042C
 _05C0:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0483_T06_00014
 	closemsg
 	apply_movement obj_T06_minaki_2, _0690
@@ -582,9 +582,9 @@ scr_seq_T06_010:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 1
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _07DB
@@ -603,9 +603,9 @@ _07FE:
 	apply_movement obj_T06_gsmiddleman1_2, _08CC
 _080E:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0835

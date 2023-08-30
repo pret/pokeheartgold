@@ -16,26 +16,26 @@ scr_seq_T10R0701_001:
 scr_seq_T10R0701_000:
 	scrcmd_609
 	lockall
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0188
 	apply_movement obj_T10R0701_wataru, _0194
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	buffer_players_name 0
 	gender_msgbox msg_0528_T10R0701_00000, msg_0528_T10R0701_00001
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _01A8
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	party_count_not_egg VAR_SPECIAL_RESULT
 	hall_of_fame_anim VAR_SPECIAL_RESULT
 	add_special_game_stat 23

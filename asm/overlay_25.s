@@ -329,7 +329,7 @@ _02259B60:
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_02052580
+	bl BattleSetup_SetAllySideBattlersToPlayer
 	ldr r1, [sp, #8]
 	add r0, r6, #0
 	mov r2, #1
@@ -506,7 +506,7 @@ ov25_02259CC4: ; 0x02259CC4
 	ldrb r0, [r5, #7]
 	ldrb r1, [r5, #4]
 	mov r2, #1
-	bl sub_0205B46C
+	bl GetUnionRoomAvatarAttrBySprite
 	strb r0, [r4, #1]
 	mov r0, #0
 	strb r0, [r4, #2]

@@ -124,9 +124,9 @@ scr_seq_P01R0307_003:
 	scrcmd_729 VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 0
 	goto_if_eq _0180
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 56
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 56
 _0180:
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
@@ -142,9 +142,9 @@ _01B7:
 	wait_movement
 	compare VAR_TEMP_x4002, 0
 	goto_if_eq _01D0
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 _01D0:
 	npc_msg msg_0263_P01R0307_00006
 	closemsg

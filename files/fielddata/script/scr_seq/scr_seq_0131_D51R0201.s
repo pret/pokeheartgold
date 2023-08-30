@@ -35,14 +35,14 @@ _0065:
 scr_seq_D51R0201_007:
 	scrcmd_609
 	lockall
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _00C4
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 13
 	releaseall
 	end
@@ -50,14 +50,14 @@ scr_seq_D51R0201_007:
 scr_seq_D51R0201_006:
 	scrcmd_609
 	lockall
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _00C4
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 4
 	releaseall
 	end
@@ -138,9 +138,9 @@ _01BE:
 	wait_movement
 	npc_msg msg_0146_D51R0201_00004
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	compare VAR_TEMP_x4002, 2
 	goto_if_ne _01EA
 	apply_movement obj_D51R0201_champion, _02D4
@@ -168,9 +168,9 @@ _023A:
 	apply_movement obj_D51R0201_champion, _02EC
 _024A:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0146_D51R0201_00005
 	closemsg
 	apply_movement obj_D51R0201_champion, _0324

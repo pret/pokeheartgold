@@ -48,9 +48,9 @@ scr_seq_R14_000:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 1
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _00CE
@@ -76,9 +76,9 @@ _010C:
 	apply_movement obj_R14_gsmiddleman1_3, _01F4
 _011C:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0143
@@ -159,9 +159,9 @@ scr_seq_R14_002:
 	lockall
 	clearflag FLAG_HIDE_ROUTE_14_EUSINE
 	show_person obj_R14_minaki
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4000, 1358
 	goto_if_ne _024F
@@ -269,9 +269,9 @@ _03D2:
 	apply_movement obj_R14_tsure_poke_static_suicune, _0488
 	apply_movement obj_player, _055C
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	callstd std_play_eusine_music
 	apply_movement obj_R14_minaki, _057C
 	apply_movement obj_player, _056C

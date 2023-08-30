@@ -42,15 +42,15 @@ scr_seq_P01R0301_008:
 scr_seq_P01R0301_005:
 	scrcmd_609
 	lockall
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _009C
 	apply_movement obj_P01R0301_seaman_2_2, _00A4
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	setvar VAR_UNK_40DC, 1
 	releaseall
 	end

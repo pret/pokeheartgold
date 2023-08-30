@@ -670,7 +670,7 @@ u16 BattleSystem_CheckEvolution(BattleSetup *setup, int *selectedMonIndex, int *
     Pokemon *mon;
     u16 species = 0;
     
-    if (setup->winFlag != 1 && setup->winFlag != 4 && setup->winFlag != 5) {
+    if (setup->winFlag != BATTLE_OUTCOME_WIN && setup->winFlag != BATTLE_OUTCOME_MON_CAUGHT && setup->winFlag != BATTLE_OUTCOME_PLAYER_FLED) {
         return 0;
     }
     

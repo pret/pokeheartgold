@@ -78,7 +78,7 @@ sub_02069528: ; 0x02069528
 	mov r2, #1
 	lsl r0, r0, #0x1e
 	lsr r0, r0, #0x1f
-	bl sub_0205B46C
+	bl GetUnionRoomAvatarAttrBySprite
 	add r1, r7, #0
 	add r1, #0xc9
 	strb r0, [r1]

@@ -3842,7 +3842,7 @@ ov73_021E77A4: ; 0x021E77A4
 	ldr r0, [sp, #0x18]
 	add r1, r3, #0
 	add r5, r2, #0
-	bl sub_0205B464
+	bl SpriteToUnionRoomAvatarIdx
 	add r4, r0, #0
 	ldr r0, [r6, #4]
 	mov r2, #6

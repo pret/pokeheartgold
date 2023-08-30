@@ -187,7 +187,7 @@ Static main
 	Object src/task.o
 	Object src/encounter.o
 	Object asm/unk_020517A4.o
-	Object asm/battle_setup.o
+	Object src/battle/battle_setup.o
 	Object src/field_black_out.o
 	Object src/game_clear.o
 	Object src/field_warp_tasks.o

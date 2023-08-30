@@ -65,9 +65,9 @@ _00B1:
 	end
 
 _00C7:
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 56
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 56
 	get_person_coords 253, VAR_TEMP_x4002, VAR_TEMP_x4003
 	compare VAR_TEMP_x4002, 5
 	goto_if_ne _00F4
@@ -80,9 +80,9 @@ _00F4:
 	apply_movement obj_player, _02C8
 _0108:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	goto _00B1
 
 _011A:

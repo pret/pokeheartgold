@@ -35,6 +35,8 @@
 #include "voltorb_flip/voltorb_flip_internal.h"
 #include "voltorb_flip/voltorb_flip_work.h"
 #include "voltorb_flip/voltorb_flip_workflow.h"
+#include "msgdata/msg.naix"
+#include "application/voltorb_flip.naix"
 
 typedef enum CoinDisplay {
     COIN_DISPLAY_TOTAL,
@@ -152,7 +154,7 @@ extern VoltorbFlipWorkflows sVoltorbFlipWorkflows;
 
 static void RenderCoinPayoutScreen(VoltorbFlipAppWork *work) {
     BgClearTilemapBufferAndCommit(work->bgConfig, 5);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, 6, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, 1, work->heapId);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000006_bin, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, 1, work->heapId);
 
     int payout = GamePayout(work->game);
     u16 coins = (u32)CheckCoins(work->coins);
@@ -168,7 +170,7 @@ static void RenderCoinPayoutScreen(VoltorbFlipAppWork *work) {
 
 static void RenderHowToPlayScreen(VoltorbFlipAppWork *work) {
     BgClearTilemapBufferAndCommit(work->bgConfig, 5);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, 8, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, 1, work->heapId);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000008_bin, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, 1, work->heapId);
 
     // "Quit" (on blue button)
     PaintMessageOnWindow(work, 4, msg_0039_00008, &work->wTutorialQuit, 0, 0);
@@ -182,7 +184,7 @@ static void RenderHowToPlayScreen(VoltorbFlipAppWork *work) {
 
 static void RenderHintScreen(VoltorbFlipAppWork *work) {
     BgClearTilemapBufferAndCommit(work->bgConfig, 5);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, 7, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, 1, work->heapId);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000007_bin, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, 1, work->heapId);
 
     // "By looking at the numbers on the sides of..."
     PaintMessageOnWindow(work, 0, msg_0039_00009, &work->wHint, 0, 0);
@@ -190,7 +192,7 @@ static void RenderHintScreen(VoltorbFlipAppWork *work) {
 
 static void RenderAboutMemoScreen(VoltorbFlipAppWork *work) {
     BgClearTilemapBufferAndCommit(work->bgConfig, 5);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, 9, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, 1, work->heapId);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000009_bin, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, 1, work->heapId);
 
     // "Open Memo" (text in button)
     PaintMessageOnWindow(work, 4, msg_0039_00006, &work->wAboutMemoOpen, 0, 0);
@@ -1463,90 +1465,20 @@ static void ov122_021E745C(VoltorbFlipAppWork *work) {
     sub_02018474(work->unk1C);
 }
 
-// decomp.me: https://decomp.me/scratch/xZj2x
-#ifdef NONMATCHING
-static void ov122_021E7488(VoltorbFlipAppWork *work, int a1) {
-    Ov122_021E7488 temp1 = {0};
+void ov122_021E7488(VoltorbFlipAppWork *a0, int a1)
+{    
+    Ov122_021E7488 temp1 = {0};   
     const MsgNoList *ptr = &sMenuMsgNos[a1];
-    GF_ASSERT(work->bgConfig != 0);
+    GF_ASSERT(a0->bgConfig != 0);
 
     temp1.unk0 = ov122_021E9278.unkA;
 
-    temp1.unkC = work->menuItems[a1];
-    temp1.unk10 = work->bgConfig;
+    temp1.unkC = a0->menuItems[a1];
+    temp1.unk10 = a0->bgConfig;
     temp1.unk14 = ptr->size;
-
-    work->unk20 = sub_020185FC(work->unk1C, &temp1, work->unk228, 17, 17 - ptr->size * 3, 13, 0);
+    
+    a0->unk20 = sub_020185FC(a0->unk1C, &temp1, a0->unk228, 17, 17 - ptr->size * 3, 13, 0);
 }
-#else
-asm void ov122_021E7488(VoltorbFlipAppWork *work, int a1) {
-	push {r3, r4, r5, r6, lr}
-	sub sp, #0x24
-	add r5, r0, #0
-	add r6, r1, #0
-	add r1, sp, #0xc
-	mov r0, #0
-	str r0, [r1]
-	str r0, [r1, #4]
-	str r0, [r1, #8]
-	str r0, [r1, #0xc]
-	str r0, [r1, #0x10]
-	str r0, [r1, #0x14]
-	ldr r1, =sMenuMsgNos
-	lsl r0, r6, #3
-	add r4, r1, r0
-	ldr r0, [r5, #0x18]
-	cmp r0, #0
-	bne _021E74B0
-	bl GF_AssertFail
-_021E74B0:
-	ldr r2, =ov122_021E9278
-	add r0, sp, #0xc
-	ldrh r3, [r2, #0xa]
-	add r1, sp, #0xc
-	strh r3, [r0]
-	ldrh r3, [r2, #0xc]
-	strh r3, [r0, #2]
-	ldrh r3, [r2, #0xe]
-	strh r3, [r0, #4]
-	ldrh r3, [r2, #0x10]
-	strh r3, [r0, #6]
-	ldrh r3, [r2, #0x12]
-	ldrh r2, [r2, #0x14]
-	strh r3, [r0, #8]
-	strh r2, [r0, #0xa]
-	lsl r2, r6, #2
-	add r3, r5, r2
-	mov r2, #0x4d
-	lsl r2, r2, #2
-	ldr r3, [r3, r2]
-	add r2, #0xf4
-	str r3, [sp, #0x18]
-	ldr r3, [r5, #0x18]
-	str r3, [sp, #0x1c]
-	ldr r3, [r4, #4]
-	strb r3, [r0, #0x14]
-	ldr r3, [r4, #4]
-	lsl r0, r3, #1
-	add r0, r3, r0
-	mov r3, #0x11
-	sub r0, r3, r0
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	str r0, [sp]
-	mov r0, #0xd
-	str r0, [sp, #4]
-	mov r0, #0
-	str r0, [sp, #8]
-	ldrb r2, [r5, r2]
-	ldr r0, [r5, #0x1c]
-	bl sub_020185FC
-	str r0, [r5, #0x20]
-	add sp, #0x24
-	pop {r3, r4, r5, r6, pc}
-	nop
-}
-#endif // NONMATCHING
 
 static int ov122_021E7514(VoltorbFlipAppWork *work) {
     int var1 = sub_020186A4(work->unk20);
@@ -1723,18 +1655,18 @@ static void ov122_021E79D0(VoltorbFlipAppWork *work) {
     FontID_Alloc(4, work->heapId);
     GF_ASSERT(work->narc != 0);
 
-    GfGfxLoader_GXLoadPalFromOpenNarc(work->narc, 0, GF_BG_LYR_MAIN_0, 0, 0, work->heapId);
+    GfGfxLoader_GXLoadPalFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000000_bin, GF_BG_LYR_MAIN_0, 0, 0, work->heapId);
     GfGfxLoader_GXLoadPal(NARC_graphic_font, 9, GF_BG_LYR_MAIN_0, 0x1c0, 32, work->heapId);
     LoadFontPal1(GF_BG_LYR_MAIN_0, 0x180, work->heapId);
     LoadFontPal0(GF_BG_LYR_SUB_0, 0x180, work->heapId);
     GfGfxLoader_GXLoadPal(NARC_graphic_font, 9, GF_BG_LYR_SUB_0, 0x1a0, 32, work->heapId);
     LoadUserFrameGfx2(work->bgConfig, GF_BG_LYR_MAIN_3, 1, 13, work->unk229, work->heapId);
-    GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, 2, work->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, 1, work->heapId);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, 4, work->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, 1, work->heapId);
-    GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, 2, work->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 1, work->heapId);
-    GfGfxLoader_GXLoadPalFromOpenNarc(work->narc, 1, GF_BG_LYR_SUB_0, 0, 0, work->heapId);
-    GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, 3, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, 1, work->heapId);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, 6, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, 1, work->heapId);
+    GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000002_bin, work->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, 1, work->heapId);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000004_bin, work->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, 1, work->heapId);
+    GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000002_bin, work->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 1, work->heapId);
+    GfGfxLoader_GXLoadPalFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000001_bin, GF_BG_LYR_SUB_0, 0, 0, work->heapId);
+    GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000003_bin, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, 1, work->heapId);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000006_bin, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, 1, work->heapId);
 }
 
 static void ov122_021E7AEC(VoltorbFlipAppWork *work) {
@@ -1770,15 +1702,15 @@ static void ov122_021E7BD4(VoltorbFlipAppWork *work) {
     Unk122_021E7C9C *var1 = work->unk144;
     void *var2 = work->unk148;
 
-    sub_0200D5D4(var1, var2, work->narc, 10, 0, 5, 1, 0);
-    sub_0200D504(var1, var2, work->narc, 11, 1, 1, 0);
-    sub_0200D6EC(var1, var2, work->narc, 12, 1, 0);
-    sub_0200D71C(var1, var2, work->narc, 13, 1, 0);
+    sub_0200D5D4(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000010_bin, 0, 5, 1, 0);
+    sub_0200D504(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000011_bin, 1, 1, 0);
+    sub_0200D6EC(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000012_bin, 1, 0);
+    sub_0200D71C(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000013_bin, 1, 0);
 
-    sub_0200D5D4(var1, var2, work->narc, 14, 0, 1, 2, 1);
-    sub_0200D504(var1, var2, work->narc, 15, 1, 2, 1);
-    sub_0200D6EC(var1, var2, work->narc, 16, 1, 1);
-    sub_0200D71C(var1, var2, work->narc, 17, 1, 1);
+    sub_0200D5D4(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000014_bin, 0, 1, 2, 1);
+    sub_0200D504(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000015_bin, 1, 2, 1);
+    sub_0200D6EC(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000016_bin, 1, 1);
+    sub_0200D71C(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000017_bin, 1, 1);
 }
 #else
 asm void ov122_021E7BD4(VoltorbFlipAppWork *work) {
@@ -2024,8 +1956,8 @@ static void ov122_021E8094(OVY_MANAGER *man) {
     work->unk229 = Options_GetFrame(work->options);
     work->unk22A = Options_GetTextFrameDelay(work->options);
 
-    work->narc = NARC_New(NARC_a_2_6_4, work->heapId);
-    work->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 0x27, work->heapId);
+    work->narc = NARC_New(NARC_application_voltorb_flip, work->heapId);
+    work->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0039_bin, work->heapId);
     work->msgFmt = MessageFormat_New(work->heapId);
     work->unk13C = sub_0201660C(work->heapId);
 

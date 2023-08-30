@@ -29,15 +29,15 @@ scr_seq_P01R0101_002:
 	wait_movement
 	stop_bgm 0
 	play_bgm SEQ_GS_OHKIDO
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_P01R0101_ookido, _00EC
 	apply_movement obj_player, _0100
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	buffer_players_name 0
 	gender_msgbox msg_0255_P01R0101_00009, msg_0255_P01R0101_00010
 	closemsg
@@ -134,14 +134,14 @@ scr_seq_P01R0101_000:
 	closemsg
 	apply_movement obj_P01R0101_seaman_2, _038C
 	wait_movement
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _03AC
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	setvar VAR_TEMP_x4002, 1
 	setvar VAR_BOAT_DIRECTION, 1
 	setvar VAR_UNK_40DC, 0
@@ -193,14 +193,14 @@ _029B:
 	closemsg
 	apply_movement obj_P01R0101_seaman_2, _038C
 	wait_movement
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _03AC
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	setvar VAR_TEMP_x4002, 1
 	setvar VAR_BOAT_DIRECTION, 1
 	setvar VAR_UNK_40DC, 0
@@ -235,14 +235,14 @@ _02F9:
 _0320:
 	apply_movement obj_P01R0101_seaman_2, _03B4
 	wait_movement
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _03D4
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	apply_movement obj_P01R0101_seaman_2, _03E0
 	wait_movement
 	releaseall

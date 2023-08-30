@@ -53,7 +53,7 @@ scr_seq_D35R0103_007:
 	end
 
 _00BF:
-	scrcmd_221 VAR_TEMP_x4000, 1
+	static_wild_won_or_caught VAR_TEMP_x4000, 1
 	compare VAR_TEMP_x4000, 1
 	goto_if_eq _0127
 	compare VAR_TEMP_x400A, 1
@@ -85,14 +85,14 @@ _0127:
 scr_seq_D35R0103_000:
 	scrcmd_609
 	lockall
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _01AC
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0113_D35R0103_00000
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -138,14 +138,14 @@ scr_seq_D35R0103_013:
 	wait_movement
 	npc_msg msg_0113_D35R0103_00024
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_D35R0103_tsure_poke_static_murkrow, _021C
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	setvar VAR_UNK_40AC, 5
 	hide_person obj_D35R0103_tsure_poke_static_murkrow
 	setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_1
@@ -298,9 +298,9 @@ scr_seq_D35R0103_003:
 	move_person_facing obj_D35R0103_rocketm_4, 30, 1, 30, DIR_NORTH
 	stop_bgm 0
 	play_bgm SEQ_GS_EYE_ROCKET
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4000, 30
 	goto_if_ne _042E
@@ -313,9 +313,9 @@ _0436:
 	apply_movement obj_D35R0103_rkanbuw, _0638
 	apply_movement obj_D35R0103_rocketm_4, _0650
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	apply_movement obj_D35R0103_rkanbuw, _0648
 	wait_movement
 	npc_msg msg_0113_D35R0103_00004
@@ -350,14 +350,14 @@ _0436:
 	wait_fade
 	move_person_facing obj_D35R0103_wataru, 28, 1, 24, DIR_SOUTH
 	move_person_facing obj_D35R0103_tsure_poke_static_dragonite, 27, 1, 24, DIR_EAST
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _06A8
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	hide_person obj_D35R0103_rkanbuw
 	hide_person obj_D35R0103_rocketm_4
 	hide_person obj_D35R0103_rocketm_2
@@ -374,16 +374,16 @@ _0436:
 	buffer_players_name 0
 	gender_msgbox msg_0113_D35R0103_00010, msg_0113_D35R0103_00011
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0738
 	apply_movement obj_D35R0103_wataru, _06D0
 	apply_movement obj_D35R0103_tsure_poke_static_dragonite, _070C
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	play_cry SPECIES_DRAGONITE, 0
 	wait_cry
 	apply_movement obj_D35R0103_wataru, _06FC
@@ -392,16 +392,16 @@ _0436:
 	buffer_players_name 0
 	gender_msgbox msg_0113_D35R0103_00012, msg_0113_D35R0103_00013
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0744
 	apply_movement obj_D35R0103_wataru, _0758
 	apply_movement obj_D35R0103_tsure_poke_static_dragonite, _0760
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	move_person_facing obj_D35R0103_wataru, 39, 0, 18, DIR_NORTH
 	move_person_facing obj_D35R0103_tsure_poke_static_dragonite, 40, 0, 18, DIR_NORTH
 	releaseall
@@ -552,8 +552,8 @@ scr_seq_D35R0103_004:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _089C
-	scrcmd_221 VAR_TEMP_x4000, 0
-	compare VAR_TEMP_x4000, 1
+	static_wild_won_or_caught VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, TRUE
 	goto_if_eq _07D0
 	setflag FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_1
 	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_2, _07D0
@@ -575,8 +575,8 @@ scr_seq_D35R0103_005:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _089C
-	scrcmd_221 VAR_TEMP_x4000, 0
-	compare VAR_TEMP_x4000, 1
+	static_wild_won_or_caught VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, TRUE
 	goto_if_eq _0834
 	setflag FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_2
 	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_1, _0834
@@ -598,8 +598,8 @@ scr_seq_D35R0103_006:
 	check_battle_won VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _089C
-	scrcmd_221 VAR_TEMP_x4000, 0
-	compare VAR_TEMP_x4000, 1
+	static_wild_won_or_caught VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, TRUE
 	goto_if_eq _0898
 	setflag FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_3
 	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_1, _0898
@@ -617,9 +617,9 @@ _089C:
 
 _08A2:
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	compare VAR_TEMP_x4001, 16
 	goto_if_ne _08CD
 	apply_movement obj_player, _09E0
@@ -635,9 +635,9 @@ _08E8:
 	apply_movement obj_player, _09F8
 _08F0:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	apply_movement obj_D35R0103_wataru, _0A04
 	apply_movement obj_D35R0103_tsure_poke_static_dragonite, _0A0C
 	wait_movement
@@ -728,14 +728,14 @@ scr_seq_D35R0103_008:
 	lockall
 	npc_msg msg_0113_D35R0103_00014
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0A6C
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	releaseall
 	end
 	.byte 0x00
@@ -750,14 +750,14 @@ scr_seq_D35R0103_009:
 	wait_movement
 	npc_msg msg_0113_D35R0103_00014
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0A6C
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	releaseall
 	end
 	.byte 0x00, 0x00, 0x00

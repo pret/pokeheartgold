@@ -398,15 +398,15 @@ scr_seq_D37R0104_004:
 	lockall
 	callstd std_play_rival_intro_music
 	move_person_facing obj_D37R0104_gsrivel, 28, 0, 4, DIR_WEST
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_D37R0104_gsrivel, _06E0
 	apply_movement obj_player, _06F4
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	buffer_rivals_name 0
 	npc_msg msg_0119_D37R0104_00000
 	closemsg

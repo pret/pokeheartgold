@@ -39,15 +39,15 @@ scr_seq_D27R0107_000:
 _0062:
 	npc_msg msg_0094_D27R0107_00000
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 56
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 56
 	apply_movement obj_player, _01D0
 	apply_movement obj_D27R0107_gsleader6, _01B8
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	play_se SEQ_SE_DP_DOOR
 	hide_person obj_D27R0107_stop
 	hide_person obj_D27R0107_babyboy1_8
@@ -90,15 +90,15 @@ _00B5:
 	wait_cry
 	npc_msg msg_0094_D27R0107_00007
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 56
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 56
 	apply_movement obj_player, _0218
 	apply_movement obj_D27R0107_gsleader6, _0200
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	hide_person obj_D27R0107_gsleader6
 	releaseall
 	setflag FLAG_UNK_96A

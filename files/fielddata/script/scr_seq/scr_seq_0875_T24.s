@@ -107,15 +107,15 @@ scr_seq_T24_002:
 	apply_movement obj_player, _0320
 	wait_movement
 	wait 30, VAR_SPECIAL_RESULT
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_T24_tsure_poke_static_suicune, _0300
 	apply_movement obj_player, _0344
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	hide_person obj_T24_tsure_poke_static_suicune
 	setflag FLAG_HIDE_CIANWOOD_SUICUNE
 	addvar VAR_UNK_4076, 1
@@ -289,9 +289,9 @@ scr_seq_T24_007:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 7
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _03FF
@@ -308,9 +308,9 @@ _041A:
 	apply_movement obj_player, _04BC
 _0422:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0449

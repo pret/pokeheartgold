@@ -18,14 +18,14 @@ scr_seq_0164_000:
 	lockall
 	npc_msg msg_0267_00000
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0100
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0267_00001
 	giveitem_no_check ITEM_PAL_PAD, 1
 	goto _005C

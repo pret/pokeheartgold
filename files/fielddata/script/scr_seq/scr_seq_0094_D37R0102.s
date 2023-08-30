@@ -626,9 +626,9 @@ _096B:
 	npc_msg msg_0117_D37R0102_00036
 	closemsg
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	compare VAR_TEMP_x4001, 7
 	goto_if_ne _09A5
 	apply_movement obj_D37R0102_rocketm, _0B04
@@ -677,9 +677,9 @@ _0A54:
 	apply_movement obj_player, _0BB8
 _0A71:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	set_avatar_bits PLAYER_TRANSITION_ROCKET
@@ -1030,15 +1030,15 @@ _0F05:
 	set_avatar_bits PLAYER_TRANSITION_ROCKET
 	update_avatar_state
 	rocket_costume_flag_action 1
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0FE8
 	apply_movement obj_D37R0102_gsmiddleman1, _1000
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0F79
@@ -1058,14 +1058,14 @@ _0F79:
 	set_avatar_bits PLAYER_TRANSITION_WALKING
 	update_avatar_state
 	rocket_costume_flag_action 0
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _1010
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0117_D37R0102_00032

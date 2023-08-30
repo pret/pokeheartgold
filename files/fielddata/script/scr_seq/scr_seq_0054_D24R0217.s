@@ -64,9 +64,9 @@ scr_seq_D24R0217_003:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 1
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _00F9
@@ -92,9 +92,9 @@ _0137:
 	apply_movement obj_D24R0217_gsmiddleman1, _020C
 _0147:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	apply_movement obj_partner_poke, _0218
 	wait_movement
 	setflag FLAG_UNK_189

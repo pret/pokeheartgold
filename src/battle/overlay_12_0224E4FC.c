@@ -2102,6 +2102,12 @@ int BattleMon_GetMoveIndex(BattleMon *mon, u16 moveNo) {
     return movePos;
 }
 
+enum {
+    TYPETABLE_ATTACKER,
+    TYPETABLE_DEFENDER,
+    TYPETABLE_EFFECT,
+};
+
 static const u8 sTypeEffectiveness[][3] = {
     { TYPE_NORMAL, TYPE_ROCK, TYPE_MUL_NOT_EFFECTIVE },
     { TYPE_NORMAL, TYPE_STEEL, TYPE_MUL_NOT_EFFECTIVE },
@@ -2246,18 +2252,21 @@ BOOL ov12_02251C74(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarge
     
     return ret;
 }
-
-#ifdef NONMATCHING
-//FIXME: Matches up to regswaps: https://decomp.me/scratch/h06Ji -adrienn
-int ov12_02251D28(BattleSystem *bsys, BattleContext *ctx, int moveNo, int moveTypeDefault, int battlerIdAttacker, int battlerIdTarget, int damage, u32 *moveStatusFlags) {
+//regswaps :
+//sTypeEffectiveness[i][1] [0xc] <-> &(ctx + battlerId*sizeof(BATTLEMON)) [0x18] 
+//movePower[0x14] <-> ctx->battleMons[battlerIdTarget]? [0x18]
+int ov12_02251D28(BattleSystem *bsys, BattleContext *ctx, int moveNo, int moveTypeDefault, int battlerIdAttacker, int battlerIdTarget, int damage, u32 *moveStatusFlag) {
     int i;
+    int seffectMod; // this variable is not used but is required to match
     u8 moveType;
+    u32 movePower;
     u8 itemAttacker;
     u8 itemTarget;
     u8 extraAttacker; 
     u8 extraTarget;
-    u32 movePower;
 
+    seffectMod = 1;
+    
     if (moveNo == MOVE_STRUGGLE) {
         return damage;
     }
@@ -2287,13 +2296,14 @@ int ov12_02251D28(BattleSystem *bsys, BattleContext *ctx, int moveNo, int moveTy
     }
     
     if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_LEVITATE) == TRUE && moveType == TYPE_GROUND && itemTarget != HOLD_EFFECT_SPEED_DOWN_GROUNDED) {
-        *moveStatusFlags |= MOVE_STATUS_LEVITATE_IMMUNE;
+        *moveStatusFlag |= MOVE_STATUS_LEVITATE_IMMUNE;
     } else if (ctx->battleMons[battlerIdTarget].unk88.magnetRiseTurns && !(ctx->battleMons[battlerIdTarget].moveEffectFlags & MOVE_EFFECT_FLAG_INGRAIN) && moveType == TYPE_GROUND && itemTarget != HOLD_EFFECT_SPEED_DOWN_GROUNDED) {
-        *moveStatusFlags |= MOVE_STATUS_MAGNET_RISE_IMMUNE;
+        *moveStatusFlag |= MOVE_STATUS_MAGNET_RISE_IMMUNE;
     } else {
         i = 0;
         do {
-            if (sTypeEffectiveness[i][0] == TYPE_FORESIGHT) {
+            // &sTypeEffectiveness[i] -> spC
+            if (sTypeEffectiveness[i][TYPETABLE_ATTACKER] == TYPE_FORESIGHT) {
                 if ((ctx->battleMons[battlerIdTarget].status2 & STATUS2_FORESIGHT) || GetBattlerAbility(ctx, battlerIdAttacker) == ABILITY_SCRAPPY) {
                     break;
                 } else {
@@ -2301,24 +2311,34 @@ int ov12_02251D28(BattleSystem *bsys, BattleContext *ctx, int moveNo, int moveTy
                     continue;
                 }
             }
-            if (sTypeEffectiveness[i][0] == moveType) {
-                u8 monType = sTypeEffectiveness[i][1];
-                if (monType == GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_TYPE_1, NULL) && ov12_02251C74(ctx, battlerIdAttacker, battlerIdTarget, i) == TRUE) {
-                    damage = ov12_022583B4(ctx, battlerIdAttacker, sTypeEffectiveness[i][2], damage, movePower, moveStatusFlags);
+            if (sTypeEffectiveness[i][TYPETABLE_ATTACKER] == moveType) {
+                // sTypeEffectiveness[i][TYPETABLE_DEFENDER] -> sp10
+                if (sTypeEffectiveness[i][TYPETABLE_DEFENDER] == GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_TYPE_1, NULL)) {
+                    if (ov12_02251C74(ctx, battlerIdAttacker, battlerIdTarget, i) == TRUE) {
+                        damage = ov12_022583B4(ctx, battlerIdAttacker, sTypeEffectiveness[i][TYPETABLE_EFFECT], damage, movePower, moveStatusFlag);
+                        if (sTypeEffectiveness[i][TYPETABLE_EFFECT] == TYPE_MUL_SUPER_EFFECTIVE) {
+                            seffectMod *= 2;
+                        }
+                    }
                 }
-                if (monType == GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_TYPE_2, NULL) && GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_TYPE_1, NULL) != GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_TYPE_2, NULL) && ov12_02251C74(ctx, battlerIdAttacker, battlerIdTarget, i) == TRUE) {
-                    damage = ov12_022583B4(ctx, battlerIdAttacker, sTypeEffectiveness[i][2], damage, movePower, moveStatusFlags);
+                if (sTypeEffectiveness[i][TYPETABLE_DEFENDER] == GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_TYPE_2, NULL) && GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_TYPE_1, NULL) != GetBattlerVar(ctx, battlerIdTarget, BMON_DATA_TYPE_2, NULL)) {
+                    if (ov12_02251C74(ctx, battlerIdAttacker, battlerIdTarget, i) == TRUE) {
+                        damage = ov12_022583B4(ctx, battlerIdAttacker, sTypeEffectiveness[i][TYPETABLE_EFFECT], damage, movePower, moveStatusFlag);
+                        if (sTypeEffectiveness[i][TYPETABLE_EFFECT] == TYPE_MUL_SUPER_EFFECTIVE) {
+                            seffectMod *= 2;
+                        }
+                    }
                 }
             }
             i++;
-        } while (sTypeEffectiveness[i][0] != TYPE_ENDTABLE);
+        } while (sTypeEffectiveness[i][TYPETABLE_ATTACKER] != TYPE_ENDTABLE);
     }
     
     if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_WONDER_GUARD) == TRUE && ov12_02258440(ctx, moveNo) &&
-        (!(*moveStatusFlags & MOVE_STATUS_SUPER_EFFECTIVE) || ((*moveStatusFlags & MOVE_STATUS_ANY_EFFECTIVE) == MOVE_STATUS_ANY_EFFECTIVE)) && movePower) {
-        *moveStatusFlags |= MOVE_STATUS_WONDER_GUARD_IMMUNE;
+        (!(*moveStatusFlag & MOVE_STATUS_SUPER_EFFECTIVE) || ((*moveStatusFlag & MOVE_STATUS_ANY_EFFECTIVE) == MOVE_STATUS_ANY_EFFECTIVE)) && movePower) {
+        *moveStatusFlag |= MOVE_STATUS_WONDER_GUARD_IMMUNE;
     } else if (!(ctx->battleStatus & BATTLE_STATUS_IGNORE_TYPE_EFFECTIVENESS) && !(ctx->battleStatus & BATTLE_STATUS_IGNORE_TYPE_IMMUNITY)) {
-        if ((*moveStatusFlags & MOVE_STATUS_SUPER_EFFECTIVE) && movePower) {
+        if ((*moveStatusFlag & MOVE_STATUS_SUPER_EFFECTIVE) && movePower) {
             if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_FILTER) == TRUE || CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_SOLID_ROCK) == TRUE) {
                 damage = DamageDivide(damage * 3, 4);
             }
@@ -2326,414 +2346,18 @@ int ov12_02251D28(BattleSystem *bsys, BattleContext *ctx, int moveNo, int moveTy
                 damage = damage * (100 + extraAttacker) / 100;
             }
         }
-        if ((*moveStatusFlags & MOVE_STATUS_NOT_VERY_EFFECTIVE) && movePower) {
+        if ((*moveStatusFlag & MOVE_STATUS_NOT_VERY_EFFECTIVE) && movePower) {
             if (GetBattlerAbility(ctx, battlerIdAttacker) == ABILITY_TINTED_LENS) {
                 damage *= 2;
             }
         }
     } else {
-        *moveStatusFlags &= ~MOVE_STATUS_SUPER_EFFECTIVE;
-        *moveStatusFlags &= ~MOVE_STATUS_NOT_VERY_EFFECTIVE;
+        *moveStatusFlag &= ~MOVE_STATUS_SUPER_EFFECTIVE;
+        *moveStatusFlag &= ~MOVE_STATUS_NOT_VERY_EFFECTIVE;
     }
     
     return damage;
 }
-#else
-extern s32 _s32_div_f(s32 a1, s32 a2);
-
-asm int ov12_02251D28(BattleSystem *bsys, BattleContext *ctx, int moveNo, int moveTypeDefault, int battlerIdAttacker, int battlerIdTarget, int damage, u32 *moveStatusFlag) {
-    push {r3, r4, r5, r6, r7, lr}
-    sub sp, #0x30
-    ldr r0, [sp, #0x50]
-    add r5, r1, #0
-    str r0, [sp, #0x50]
-    ldr r0, [sp, #0x54]
-    str r2, [sp, #8]
-    str r0, [sp, #0x54]
-    add r0, r2, #0
-    add r4, r3, #0
-    ldr r7, [sp, #0x48]
-    ldr r6, [sp, #0x4c]
-    cmp r0, #0xa5
-    bne _02251D4A
-    ldr r0, [sp, #0x50]
-    add sp, #0x30
-    pop {r3, r4, r5, r6, r7, pc}
-_02251D4A:
-    add r0, r5, #0
-    add r1, r7, #0
-    bl GetBattlerHeldItemEffect
-    lsl r0, r0, #0x18
-    lsr r0, r0, #0x18
-    str r0, [sp, #0x24]
-    add r0, r5, #0
-    add r1, r7, #0
-    mov r2, #0
-    bl GetHeldItemModifier
-    lsl r0, r0, #0x18
-    lsr r0, r0, #0x18
-    str r0, [sp, #0x1c]
-    add r0, r5, #0
-    add r1, r6, #0
-    bl GetBattlerHeldItemEffect
-    lsl r0, r0, #0x18
-    lsr r0, r0, #0x18
-    str r0, [sp, #0x20]
-    add r0, r5, #0
-    add r1, r6, #0
-    mov r2, #0
-    bl GetHeldItemModifier
-    add r0, r5, #0
-    add r1, r7, #0
-    bl GetBattlerAbility
-    cmp r0, #0x60
-    bne _02251D92
-    mov r0, #0
-    str r0, [sp, #0x28]
-    b _02251DAA
-_02251D92:
-    cmp r4, #0
-    beq _02251D9E
-    lsl r0, r4, #0x18
-    lsr r0, r0, #0x18
-    str r0, [sp, #0x28]
-    b _02251DAA
-_02251D9E:
-    ldr r0, [sp, #8]
-    lsl r0, r0, #4
-    add r1, r5, r0
-    ldr r0, =0x000003E2
-    ldrb r0, [r1, r0]
-    str r0, [sp, #0x28]
-_02251DAA:
-    ldr r0, [sp, #8]
-    lsl r0, r0, #4
-    add r1, r5, r0
-    ldr r0, =0x000003E1
-    ldrb r0, [r1, r0]
-    str r0, [sp, #0x14]
-    ldr r0, =0x0000213C
-    ldr r1, [r5, r0]
-    mov r0, #2
-    lsl r0, r0, #0xa
-    tst r0, r1
-    bne _02251E08
-    add r0, r5, #0
-    add r1, r7, #0
-    mov r2, #0x1b
-    mov r3, #0
-    bl GetBattlerVar
-    ldr r1, [sp, #0x28]
-    cmp r1, r0
-    beq _02251DE6
-    add r0, r5, #0
-    add r1, r7, #0
-    mov r2, #0x1c
-    mov r3, #0
-    bl GetBattlerVar
-    ldr r1, [sp, #0x28]
-    cmp r1, r0
-    bne _02251E08
-_02251DE6:
-    add r0, r5, #0
-    add r1, r7, #0
-    bl GetBattlerAbility
-    cmp r0, #0x5b
-    bne _02251DFA
-    ldr r0, [sp, #0x50]
-    lsl r0, r0, #1
-    str r0, [sp, #0x50]
-    b _02251E08
-_02251DFA:
-    ldr r1, [sp, #0x50]
-    mov r0, #0xf
-    mul r0, r1
-    mov r1, #0xa
-    bl _s32_div_f
-    str r0, [sp, #0x50]
-_02251E08:
-    add r0, r5, #0
-    add r1, r7, #0
-    add r2, r6, #0
-    mov r3, #0x1a
-    bl CheckBattlerAbilityIfNotIgnored
-    cmp r0, #1
-    bne _02251E34
-    ldr r0, [sp, #0x28]
-    cmp r0, #4
-    bne _02251E34
-    ldr r0, [sp, #0x20]
-    cmp r0, #0x6a
-    beq _02251E34
-    ldr r0, [sp, #0x54]
-    ldr r1, [r0, #0]
-    mov r0, #2
-    lsl r0, r0, #0xa
-    orr r1, r0
-    ldr r0, [sp, #0x54]
-    str r1, [r0]
-    b _02251F50
-_02251E34:
-    mov r0, #0xc0
-    add r1, r6, #0
-    mul r1, r0
-    ldr r0, =0x00002DCC
-    add r3, r5, r1
-    ldr r2, [r3, r0]
-    lsl r2, r2, #0x10
-    lsr r2, r2, #0x1d
-    beq _02251E6C
-    sub r0, #0xc
-    ldr r2, [r3, r0]
-    mov r0, #1
-    lsl r0, r0, #0xa
-    tst r2, r0
-    bne _02251E6C
-    ldr r2, [sp, #0x28]
-    cmp r2, #4
-    bne _02251E6C
-    ldr r2, [sp, #0x20]
-    cmp r2, #0x6a
-    beq _02251E6C
-    ldr r1, [sp, #0x54]
-    lsl r0, r0, #0xa
-    ldr r1, [r1, #0]
-    orr r1, r0
-    ldr r0, [sp, #0x54]
-    str r1, [r0]
-    b _02251F50
-_02251E6C:
-    add r0, r5, r1
-    mov r4, #0
-    str r0, [sp, #0x18]
-_02251E72:
-    lsl r0, r4, #1
-    ldr r1, =sTypeEffectiveness
-    add r0, r4, r0
-    add r1, r1, r0
-    str r1, [sp, #0xc]
-    ldr r1,  =sTypeEffectiveness
-    ldrb r1, [r1, r0]
-    cmp r1, #0xfe
-    bne _02251EA2
-    ldr r1, [sp, #0x18]
-    ldr r0, =0x00002DB0
-    ldr r1, [r1, r0]
-    mov r0, #2
-    lsl r0, r0, #0x1c
-    tst r0, r1
-    bne _02251F50
-    add r0, r5, #0
-    add r1, r7, #0
-    bl GetBattlerAbility
-    cmp r0, #0x71
-    beq _02251F50
-    add r4, r4, #1
-    b _02251F44
-_02251EA2:
-    ldr r0, [sp, #0x28]
-    cmp r0, r1
-    bne _02251F42
-    ldr r0, [sp, #0xc]
-    add r1, r6, #0
-    ldrb r0, [r0, #1]
-    mov r2, #0x1b
-    mov r3, #0
-    str r0, [sp, #0x10]
-    add r0, r5, #0
-    bl GetBattlerVar
-    ldr r1, [sp, #0x10]
-    cmp r1, r0
-    bne _02251EE8
-    add r0, r5, #0
-    add r1, r7, #0
-    add r2, r6, #0
-    add r3, r4, #0
-    bl ov12_02251C74
-    cmp r0, #1
-    bne _02251EE8
-    ldr r0, [sp, #0x14]
-    ldr r2, [sp, #0xc]
-    str r0, [sp]
-    ldr r0, [sp, #0x54]
-    ldr r3, [sp, #0x50]
-    str r0, [sp, #4]
-    ldrb r2, [r2, #2]
-    add r0, r5, #0
-    add r1, r7, #0
-    bl ov12_022583B4
-    str r0, [sp, #0x50]
-_02251EE8:
-    add r0, r5, #0
-    add r1, r6, #0
-    mov r2, #0x1c
-    mov r3, #0
-    bl GetBattlerVar
-    ldr r1, [sp, #0x10]
-    cmp r1, r0
-    bne _02251F42
-    add r0, r5, #0
-    add r1, r6, #0
-    mov r2, #0x1b
-    mov r3, #0
-    bl GetBattlerVar
-    str r0, [sp, #0x2c]
-    add r0, r5, #0
-    add r1, r6, #0
-    mov r2, #0x1c
-    mov r3, #0
-    bl GetBattlerVar
-    ldr r1, [sp, #0x2c]
-    cmp r1, r0
-    beq _02251F42
-    add r0, r5, #0
-    add r1, r7, #0
-    add r2, r6, #0
-    add r3, r4, #0
-    bl ov12_02251C74
-    cmp r0, #1
-    bne _02251F42
-    ldr r0, [sp, #0x14]
-    ldr r2, [sp, #0xc]
-    str r0, [sp]
-    ldr r0, [sp, #0x54]
-    ldr r3, [sp, #0x50]
-    str r0, [sp, #4]
-    ldrb r2, [r2, #2]
-    add r0, r5, #0
-    add r1, r7, #0
-    bl ov12_022583B4
-    str r0, [sp, #0x50]
-_02251F42:
-    add r4, r4, #1
-_02251F44:
-    lsl r0, r4, #1
-    add r1, r4, r0
-    ldr r0, =sTypeEffectiveness
-    ldrb r0, [r0, r1]
-    cmp r0, #0xff
-    bne _02251E72
-_02251F50:
-    add r0, r5, #0
-    add r1, r7, #0
-    add r2, r6, #0
-    mov r3, #0x19
-    bl CheckBattlerAbilityIfNotIgnored
-    cmp r0, #1
-    bne _02251F94
-    ldr r1, [sp, #8]
-    add r0, r5, #0
-    bl ov12_02258440
-    cmp r0, #0
-    beq _02251F94
-    ldr r0, [sp, #0x54]
-    ldr r1, [r0, #0]
-    mov r0, #2
-    tst r0, r1
-    beq _02251F7E
-    mov r0, #6
-    and r0, r1
-    cmp r0, #6
-    bne _02251F94
-_02251F7E:
-    ldr r0, [sp, #0x14]
-    cmp r0, #0
-    beq _02251F94
-    ldr r0, [sp, #0x54]
-    ldr r1, [r0, #0]
-    mov r0, #1
-    lsl r0, r0, #0x12
-    orr r1, r0
-    ldr r0, [sp, #0x54]
-    str r1, [r0]
-    b _02252036
-_02251F94:
-    ldr r0, =0x0000213C
-    ldr r2, [r5, r0]
-    mov r0, #2
-    lsl r0, r0, #0xa
-    add r1, r2, #0
-    tst r1, r0
-    bne _02252022
-    lsl r0, r0, #4
-    tst r0, r2
-    bne _02252022
-    ldr r0, [sp, #0x54]
-    ldr r1, [r0, #0]
-    mov r0, #2
-    tst r0, r1
-    beq _02251FFE
-    ldr r0, [sp, #0x14]
-    cmp r0, #0
-    beq _02251FFE
-    add r0, r5, #0
-    add r1, r7, #0
-    add r2, r6, #0
-    mov r3, #0x6f
-    bl CheckBattlerAbilityIfNotIgnored
-    cmp r0, #1
-    beq _02251FD8
-    add r0, r5, #0
-    add r1, r7, #0
-    add r2, r6, #0
-    mov r3, #0x74
-    bl CheckBattlerAbilityIfNotIgnored
-    cmp r0, #1
-    bne _02251FE6
-_02251FD8:
-    ldr r0, [sp, #0x50]
-    lsl r1, r0, #1
-    add r0, r0, r1
-    mov r1, #4
-    bl DamageDivide
-    str r0, [sp, #0x50]
-_02251FE6:
-    ldr r0, [sp, #0x24]
-    cmp r0, #0x60
-    bne _02251FFE
-    ldr r0, [sp, #0x1c]
-    ldr r1, [sp, #0x50]
-    add r0, #0x64
-    str r0, [sp, #0x1c]
-    mul r0, r1
-    mov r1, #0x64
-    bl _s32_div_f
-    str r0, [sp, #0x50]
-_02251FFE:
-    ldr r0, [sp, #0x54]
-    ldr r1, [r0, #0]
-    mov r0, #4
-    tst r0, r1
-    beq _02252036
-    ldr r0, [sp, #0x14]
-    cmp r0, #0
-    beq _02252036
-    add r0, r5, #0
-    add r1, r7, #0
-    bl GetBattlerAbility
-    cmp r0, #0x6e
-    bne _02252036
-    ldr r0, [sp, #0x50]
-    lsl r0, r0, #1
-    str r0, [sp, #0x50]
-    b _02252036
-_02252022:
-    ldr r0, [sp, #0x54]
-    ldr r1, [r0, #0]
-    mov r0, #2
-    bic r1, r0
-    ldr r0, [sp, #0x54]
-    str r1, [r0]
-    mov r0, #4
-    bic r1, r0
-    ldr r0, [sp, #0x54]
-    str r1, [r0]
-_02252036:
-    ldr r0, [sp, #0x50]
-    add sp, #0x30
-    pop {r3, r4, r5, r6, r7, pc}
-}
-#endif
 
 void ov12_02252054(BattleContext *ctx, int moveNo, int moveTypeDefault, int abilityAttacker, int abilityTarget, int item, int type1, int type2, u32 *moveStatusFlag) {
     int i;
@@ -3261,13 +2885,11 @@ BOOL CheckTruant(BattleContext *ctx, int battlerId) {
     return ret;
 }
 
-//FIXME: Matches up to regswap, ret <-> side, https://decomp.me/scratch/FiPFk -adrienn
-#ifdef NONMATCHING
 BOOL BattleContext_CheckMoveImprisoned(BattleSystem *bsys, BattleContext *ctx, int battlerId, int moveNo) {
     int maxBattlers;
-    BOOL ret;
-    int battlerIdCur;
     int side;
+    int battlerIdCur;
+    BOOL ret;
     int i;
     
     ret = FALSE;
@@ -3289,68 +2911,6 @@ BOOL BattleContext_CheckMoveImprisoned(BattleSystem *bsys, BattleContext *ctx, i
     
     return ret;
 }
-#else
-asm BOOL BattleContext_CheckMoveImprisoned(BattleSystem *bsys, BattleContext *ctx, int battlerId, int moveNo) {
-      push {r3, r4, r5, r6, r7, lr}
-    sub sp, #0x10
-    add r6, r1, #0
-    mov r1, #0
-    str r0, [sp, #0]
-    add r4, r2, #0
-    add r5, r3, #0
-    str r1, [sp, #4]
-    bl BattleSystem_GetMaxBattlers
-    str r0, [sp, #0xc]
-    ldr r0, [sp, #0]
-    add r1, r4, #0
-    bl BattleSystem_GetFieldSide
-    str r0, [sp, #8]
-    ldr r0, [sp, #0xc]
-    mov r7, #0
-    cmp r0, #0
-    ble _02252CDE
-    ldr r4, =0x00002D4C
-_02252C9E:
-    ldr r0, [sp, #0]
-    add r1, r7, #0
-    bl BattleSystem_GetFieldSide
-    ldr r1, [sp, #8]
-    cmp r1, r0
-    beq _02252CD4
-    mov r0, #0xb7
-    lsl r0, r0, #6
-    ldr r1, [r6, r0]
-    mov r0, #2
-    lsl r0, r0, #0xc
-    tst r0, r1
-    beq _02252CD4
-    mov r1, #0
-    add r2, r6, #0
-_02252CBE:
-    ldrh r0, [r2, r4]
-    cmp r5, r0
-    beq _02252CCC
-    add r1, r1, #1
-    add r2, r2, #2
-    cmp r1, #4
-    blt _02252CBE
-_02252CCC:
-    cmp r1, #4
-    beq _02252CD4
-    mov r0, #1
-    str r0, [sp, #4]
-_02252CD4:
-    ldr r0, [sp, #0xc]
-    add r7, r7, #1
-    add r6, #0xc0
-    cmp r7, r0
-    blt _02252C9E
-_02252CDE:
-    ldr r0, [sp, #4]
-    add sp, #0x10
-    pop {r3, r4, r5, r6, r7, pc}
-}  
-#endif
 
 BOOL CheckMoveEffectOnField(BattleSystem *bsys, BattleContext *ctx, int moveEffect) {
     int battlerId;

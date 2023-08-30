@@ -420,9 +420,9 @@ scr_seq_R25_004:
 	scrcmd_523 obj_R25_tsure_poke_static_suicune, 2, 90, 2, 0
 	lock obj_R25_tsure_poke_static_suicune
 	wait_cry
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	get_player_coords VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 40
 	goto_if_ne _05D4
@@ -439,9 +439,9 @@ _05EF:
 	apply_movement obj_player, _0670
 _05F7:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	callstd std_play_eusine_music
 	apply_movement obj_R25_minaki, _069C
 	apply_movement obj_player, _0690

@@ -13,7 +13,7 @@
 .public BattleSetup_New
 .public BattleSetup_AddMonToParty
 .public sub_02051D18
-.public sub_02052580
+.public BattleSetup_SetAllySideBattlersToPlayer
 .public AllocMonZeroed
 .public CalcMonLevelAndStats
 .public GetMonData

@@ -82,130 +82,41 @@ MapObjectManager* MapObjectManager_New(u32 object_count) {
     return manager;
 }
 
-#ifdef NONMATCHING
 LocalMapObject* sub_0205E1D0(MapObjectManager* manager, ObjectEvent* object_events, u32 map_no) {
-    ObjectEvent template = *object_events;
     LocalMapObject* ret;
-    u16 flag_id;
-    u32 object_id;
+    ObjectEvent template = *object_events;
+    ObjectEvent* ptemplate = &template;
 
-    object_id = ObjectEventTemplate_GetID(&template);
-    if (!ObjectEventTemplate_ScriptIdIsFFFF(&template)) {
+    u32 object_id = ObjectEventTemplate_GetID(ptemplate);
+    if (!ObjectEventTemplate_ScriptIdIsFFFF(ptemplate)) {
         ret = sub_0205EA98(manager, object_id, map_no);
         if (ret != NULL) {
-            sub_0205F014(ret, &template, map_no);
+            sub_0205F014(ret, ptemplate, map_no);
             return ret;
         }
     } else {
-        flag_id = ObjectEventTemplate_GetFlagID_AssertScriptIdIsFFFF(&template);
-        ret = sub_0205EE10(manager, object_id, (u32)flag_id);
+        ret = sub_0205EE10(manager, object_id, ObjectEventTemplate_GetFlagID_AssertScriptIdIsFFFF(ptemplate));
         if (ret != NULL) {
-            sub_0205F058(ret, map_no, &template);
+            sub_0205F058(ret, map_no, ptemplate);
             return ret;
         }
     }
-
+    
     ret = MapObjectManager_GetFirstInactiveObject(manager);
-    if (ret != NULL) {
-        MapObject_InitFromObjectEventTemplate(ret, &template, MapObjectManager_GetFieldSysPtr(manager));
-        sub_0205EC90(ret, manager);
-        sub_0205F250(ret, map_no);
-        sub_0205EFA4(ret);
-        sub_0205EFB4(ret);
-        MapObject_SetFlagsBits(ret, MAPOBJECTFLAG_UNK2);
-        sub_0205EAF0(manager, ret);
-        sub_0205F16C(sub_0205F160(manager));
+    if (ret == NULL) {
+        return ret;
     }
 
+    MapObject_InitFromObjectEventTemplate(ret, ptemplate, MapObjectManager_GetFieldSysPtr(manager));
+    sub_0205EC90(ret, manager);
+    sub_0205F250(ret, map_no);
+    sub_0205EFA4(ret);
+    sub_0205EFB4(ret);
+    MapObject_SetFlagsBits(ret, MAPOBJECTFLAG_UNK2);
+    sub_0205EAF0(manager, ret);
+    sub_0205F16C(sub_0205F160(manager));
     return ret;
 }
-#else
-asm LocalMapObject* sub_0205E1D0(MapObjectManager* manager, ObjectEvent* object_events, u32 a2) {
-    push {r3, r4, r5, r6, r7, lr}
-    sub sp, #0x20
-    add r7, r2, #0
-    add r2, sp, #0
-    add r3, r1, #0
-    add r5, r0, #0
-    add r6, r2, #0
-    ldmia r3!, {r0, r1}
-    stmia r2!, {r0, r1}
-    ldmia r3!, {r0, r1}
-    stmia r2!, {r0, r1}
-    ldmia r3!, {r0, r1}
-    stmia r2!, {r0, r1}
-    ldmia r3!, {r0, r1}
-    stmia r2!, {r0, r1}
-    add r0, r6, #0
-    bl ObjectEventTemplate_GetID
-    add r4, r0, #0
-    add r0, r6, #0
-    bl ObjectEventTemplate_ScriptIdIsFFFF
-    cmp r0, #0
-    bne _0205E21C
-    add r0, r5, #0
-    add r1, r4, #0
-    add r2, r7, #0
-    bl sub_0205EA98
-    add r4, r0, #0
-    beq _0205E23E
-    add r1, r6, #0
-    add r2, r7, #0
-    bl sub_0205F014
-    add sp, #0x20
-    add r0, r4, #0
-    pop {r3, r4, r5, r6, r7, pc}
-_0205E21C:
-    add r0, r6, #0
-    bl ObjectEventTemplate_GetFlagID_AssertScriptIdIsFFFF
-    add r2, r0, #0
-    add r0, r5, #0
-    add r1, r4, #0
-    bl sub_0205EE10
-    add r4, r0, #0
-    beq _0205E23E
-    add r1, r7, #0
-    add r2, r6, #0
-    bl sub_0205F058
-    add sp, #0x20
-    add r0, r4, #0
-    pop {r3, r4, r5, r6, r7, pc}
-_0205E23E:
-    add r0, r5, #0
-    bl MapObjectManager_GetFirstInactiveObject
-    add r4, r0, #0
-    beq _0205E290
-    add r0, r5, #0
-    bl MapObjectManager_GetFieldSysPtr
-    add r2, r0, #0
-    add r0, r4, #0
-    add r1, r6, #0
-    bl MapObject_InitFromObjectEventTemplate
-    add r0, r4, #0
-    add r1, r5, #0
-    bl sub_0205EC90
-    add r0, r4, #0
-    add r1, r7, #0
-    bl sub_0205F250
-    add r0, r4, #0
-    bl sub_0205EFA4
-    add r0, r4, #0
-    bl sub_0205EFB4
-    add r0, r4, #0
-    mov r1, #4
-    bl MapObject_SetFlagsBits
-    add r0, r5, #0
-    add r1, r4, #0
-    bl sub_0205EAF0
-    add r0, r5, #0
-    bl sub_0205F160
-    bl sub_0205F16C
-    add r0, r4, #0
-_0205E290:
-    add sp, #0x20
-    pop {r3, r4, r5, r6, r7, pc}
-}
-#endif
 
 LocalMapObject* CreateSpecialFieldObject(MapObjectManager* manager, u32 x, u32 y, u32 direction, u32 sprite, u32 movement, u32 map_no) {
     return CreateSpecialFieldObjectEx(manager, x, y, direction, sprite, movement, map_no, 0, 0, 0);
@@ -395,55 +306,19 @@ void FieldSystem_SyncMapObjectsToSaveEx(FieldSystem* fieldSystem, MapObjectManag
     }
 }
 
-// FIXME(tgsm): This matches on Compiler Explorer, but not here.
-//              https://ce.athq.de/z/GE1ohW
-#ifdef NONMATCHING
 void MapObjectManager_RestoreFromSave(MapObjectManager* manager, SavedMapObject* list, u32 num_objects) {
-    SavedMapObject* saved_object = list;
-    for (; num_objects > 0; saved_object++, num_objects--) {
-        if ((saved_object->unk0 & MAPOBJECTFLAG_ACTIVE) == 0) {
-            continue;
+    while (num_objects) {
+        if ((list->unk0 & MAPOBJECTFLAG_ACTIVE)) {
+            LocalMapObject* local_object = MapObjectManager_GetFirstInactiveObject(manager);
+            GF_ASSERT(local_object != NULL);
+
+            sub_0205E7C4(local_object, list);
+            sub_0205E8EC(manager, local_object);
         }
-
-        LocalMapObject* local_object = MapObjectManager_GetFirstInactiveObject(manager);
-        GF_ASSERT(local_object != NULL);
-
-        sub_0205E7C4(local_object, saved_object);
-        sub_0205E8EC(manager, local_object);
+        list++;
+        num_objects--;
     }
 }
-#else
-asm void MapObjectManager_RestoreFromSave(MapObjectManager* manager, SavedMapObject* list, u32 num_objects) {
-    push {r3, r4, r5, r6, r7, lr}
-    add r6, r0, #0
-    add r5, r1, #0
-    add r7, r2, #0
-    beq _0205E67E
-_0205E652:
-    ldr r1, [r5, #0]
-    mov r0, #1
-    tst r0, r1
-    beq _0205E678
-    add r0, r6, #0
-    bl MapObjectManager_GetFirstInactiveObject
-    add r4, r0, #0
-    bne _0205E668
-    bl GF_AssertFail
-_0205E668:
-    add r0, r4, #0
-    add r1, r5, #0
-    bl sub_0205E7C4
-    add r0, r6, #0
-    add r1, r4, #0
-    bl sub_0205E8EC
-_0205E678:
-    add r5, #0x50
-    sub r7, r7, #1
-    bne _0205E652
-_0205E67E:
-    pop {r3, r4, r5, r6, r7, pc}
-}
-#endif
 
 extern BOOL sub_02061248(FieldSystem* fieldSystem, VecFx32*, BOOL);
 

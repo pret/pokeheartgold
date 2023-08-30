@@ -135,9 +135,9 @@ _020C:
 	npc_msg msg_0137_D49_00001
 _0218:
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	compare VAR_TEMP_x4000, 40
 	goto_if_ne _024F
 	apply_movement obj_D49_thlonowner, _0528
@@ -191,9 +191,9 @@ _0326:
 	apply_movement obj_player, _06B4
 _033E:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	npc_msg msg_0137_D49_00002
 	closemsg
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
@@ -723,9 +723,9 @@ _095F:
 	wait_movement
 	npc_msg msg_0137_D49_00039
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	compare VAR_TEMP_x4007, 0
 	goto_if_ne _0993
 	apply_movement obj_player, _09E0
@@ -741,9 +741,9 @@ _09AE:
 	apply_movement obj_player, _09F8
 _09B6:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	apply_movement obj_D49_shopm1_2, _0BF4
 	wait_movement
 	goto _093E
@@ -920,9 +920,9 @@ scr_seq_D49_016:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 1
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0C75
@@ -948,9 +948,9 @@ _0CB3:
 	apply_movement obj_D49_gsmiddleman1, _0EB8
 _0CC3:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0CEA
@@ -989,9 +989,9 @@ scr_seq_D49_017:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 1
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	get_player_facing VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _0D9D
@@ -1017,9 +1017,9 @@ _0DDB:
 	apply_movement obj_D49_gsmiddleman1_2, _0EB8
 _0DEB:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0E12

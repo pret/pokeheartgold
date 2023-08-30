@@ -155,14 +155,14 @@ _028F:
 	call _04A3
 	scrcmd_307 0, 0, 22, 9, 77
 	call _045C
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0820
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	call _04DE
 	apply_movement obj_player, _0848
 	wait 40, VAR_SPECIAL_RESULT
@@ -176,14 +176,14 @@ _028F:
 	wait 30, VAR_SPECIAL_RESULT
 	npc_msg msg_0312_00006
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0828
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_309 77
@@ -195,14 +195,14 @@ _028F:
 	script_overlay_cmd 3, 0
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _08DC
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	scrcmd_307 0, 0, 22, 9, 77
 	call _045C
 	compare VAR_SPECIAL_RESULT, 1
@@ -253,14 +253,14 @@ _0464:
 
 _046F:
 	script_overlay_cmd 3, 1
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _090C
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	call _0540
 	call _0464
 	scrcmd_606
@@ -268,9 +268,9 @@ _046F:
 	end
 
 _04A3:
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	compare VAR_TEMP_x400A, 0
 	goto_if_ne _04C8
 	apply_movement obj_player, _0814
@@ -280,9 +280,9 @@ _04C8:
 	apply_movement obj_player, _083C
 _04D0:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	return
 
 _04DE:
@@ -298,9 +298,9 @@ _0501:
 	return
 
 _0505:
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	compare VAR_TEMP_x400A, 0
 	goto_if_ne _052A
 	apply_movement obj_player, _08EC
@@ -310,9 +310,9 @@ _052A:
 	apply_movement obj_player, _08FC
 _0532:
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	return
 
 _0540:
@@ -798,24 +798,24 @@ _0CE3:
 	wait 30, VAR_SPECIAL_x8004
 	closemsg
 	scrcmd_600
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0814
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	scrcmd_307 0, 0, 10, 9, 77
 	call _045C
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0820
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	apply_movement 2, _0914
 	apply_movement obj_player, _0848
 	wait 40, VAR_SPECIAL_RESULT
@@ -854,14 +854,14 @@ _0DCE:
 	wait 30, VAR_SPECIAL_x8004
 _0DD7:
 	closemsg
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0FD4
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_309 77
@@ -875,24 +875,24 @@ _0DD7:
 	script_overlay_cmd 3, 0
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _0FDC
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	scrcmd_307 0, 0, 10, 9, 77
 	call _045C
-	scrcmd_602 0
-	scrcmd_603
-	scrcmd_604 55
+	toggle_following_pokemon_movement 0
+	wait_following_pokemon_movement
+	following_pokemon_movement 55
 	apply_movement obj_player, _08EC
 	wait_movement
-	scrcmd_603
-	scrcmd_602 1
-	scrcmd_604 48
+	wait_following_pokemon_movement
+	toggle_following_pokemon_movement 1
+	following_pokemon_movement 48
 	apply_movement 2, _0924
 	wait_movement
 	call _0464

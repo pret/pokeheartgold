@@ -89,7 +89,7 @@ typedef enum NarcId
     NARC_data_mmodel_mmodel                                 =  81,
     NARC_application_choose_starter_choose_starter_main_res =  82,
     NARC_a_0_8_3                                            =  83,
-    NARC_a_0_8_4                                            =  84,
+    NARC_application_record_record                          =  84,
     NARC_a_0_8_5                                            =  85,
     NARC_a_0_8_6                                            =  86,
     NARC_a_0_8_7                                            =  87,
@@ -271,7 +271,7 @@ typedef enum NarcId
     NARC_a_2_6_1                                            = 263,
     NARC_a_2_6_2                                            = 264,
     NARC_a_2_6_3                                            = 265,
-    NARC_a_2_6_4                                            = 266,
+    NARC_application_voltorb_flip                           = 266,
 } NarcId;
 
 #ifdef _IN_FILESYSTEM_C
