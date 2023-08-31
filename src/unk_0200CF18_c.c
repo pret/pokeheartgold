@@ -710,3 +710,43 @@ void sub_0200DD08(Sprite* sprite, int a1) {
 void sub_0200DD10(UnkImageStruct* unk, int a1) {
     sub_0200DD08(unk->sprite, a1);
 }
+
+void sub_0200DD1C(Sprite* sprite, u8 a1) {
+    sub_02024A74(sprite, a1);
+}
+
+void sub_0200DD24(UnkImageStruct* unk, u8 a1) {
+    sub_0200DD1C(unk->sprite, a1);
+}
+
+u8 sub_0200DD30(UnkImageStruct* unk) {
+    return sub_02024ACC(unk->sprite);
+}
+
+void sub_0200DD3C(Sprite* sprite, int a1) {
+    sub_02024A04(sprite, a1);
+}
+
+int sub_0200DD48(UnkImageStruct* unk) {
+    return sub_02024A0C(unk->sprite);
+}
+
+void sub_0200DD54(UnkImageStruct* unk, int a1) {
+    sub_0200DD3C(unk->sprite, a1);
+}
+
+void sub_0200DD60(Sprite* sprite, u16 a1) {
+    sub_02024ADC(sprite, a1);
+}
+
+void sub_0200DD68(UnkImageStruct* unk, u16 a1) {
+    sub_0200DD60(unk->sprite, a1);
+}
+
+u16 sub_0200DD74(Sprite* sprite) {
+    return sub_02024AF8(sprite);
+}
+
+u16 sub_0200DD7C(UnkImageStruct* unk) {
+    return sub_0200DD74(unk->sprite);
+}

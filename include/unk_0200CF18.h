@@ -140,7 +140,16 @@ BOOL sub_0200DCF4(Sprite*);
 BOOL sub_0200DCFC(UnkImageStruct* a0);
 void sub_0200DD08(Sprite*, int);
 void sub_0200DD10(UnkImageStruct*, int);
+void sub_0200DD1C(Sprite* sprite, u8 a1);
+void sub_0200DD24(UnkImageStruct* unk, u8 a1);
+u8 sub_0200DD30(UnkImageStruct* unk);
+void sub_0200DD3C(Sprite* sprite, int a1);
+int sub_0200DD48(UnkImageStruct* unk);
 void sub_0200DD54(UnkImageStruct*, int);
+void sub_0200DD60(Sprite* sprite, u16 a1);
+void sub_0200DD68(UnkImageStruct* unk, u16 a1);
+u16 sub_0200DD74(Sprite* sprite);
+u16 sub_0200DD7C(UnkImageStruct* unk);
 void sub_0200DDB8(UnkImageStruct*, s16, s16);
 void sub_0200DDF4(void* a0, s16 x, s16 y, fx32 a3);
 
