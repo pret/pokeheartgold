@@ -161,7 +161,7 @@ BOOL sub_0200D124(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, const u16* a2,
     NARC* narc;
 
     r7 = GF_GFX_RES_TYPE_MAX;
-    
+
     if (a0 == NULL || a1 == NULL) {
         return FALSE;
     }
@@ -629,4 +629,84 @@ void sub_0200DC34(UnkImageStruct* unk, fx32 frames) {
 
 u32 sub_0200DC40(UnkImageStruct* unk) {
     return sub_020248C8(unk->sprite);
+}
+
+void sub_0200DC4C(UnkImageStruct* unk, int seqno) {
+    Set2dSpriteAnimSeqNo(unk->sprite, seqno);
+}
+
+void sub_0200DC58(UnkImageStruct* unk, int a1) {
+    sub_02024950(unk->sprite, a1);
+}
+
+u16 sub_0200DC64(UnkImageStruct* unk) {
+    return sub_020249A8(unk->sprite);
+}
+
+void sub_0200DC70(Sprite* sprite, int a1) {
+    Set2dSpriteAnimActiveFlag(sprite, a1);
+}
+
+void sub_0200DC78(UnkImageStruct* unk, int a1) {
+    sub_0200DC70(unk->sprite, a1);
+}
+
+void sub_0200DC84(Sprite* sprite, fx32 frame) {
+    sub_02024868(sprite, frame);
+}
+
+void sub_0200DC8C(UnkImageStruct* unk, fx32 frame) {
+    sub_0200DC84(unk->sprite, frame);
+}
+
+BOOL sub_0200DC98(Sprite* sprite) {
+    return sub_02024B68(sprite);
+}
+
+BOOL sub_0200DCA0(UnkImageStruct* unk) {
+    return sub_0200DC98(unk->sprite);
+}
+
+void sub_0200DCAC(UnkImageStruct* unk) {
+    sub_02024964(unk->sprite);
+}
+
+void sub_0200DCB8(Sprite* sprite) {
+    sub_020249D4(sprite);
+}
+
+void sub_0200DCC0(UnkImageStruct *unk) {
+    sub_0200DCB8(unk->sprite);
+}
+
+u16 sub_0200DCCC(Sprite* sprite) {
+    return sub_020249F8(sprite);
+}
+
+u16 sub_0200DCD4(UnkImageStruct* unk) {
+    return sub_0200DCCC(unk->sprite);
+}
+
+void sub_0200DCE0(Sprite* sprite, int flag) {
+    Set2dSpriteVisibleFlag(sprite, flag);
+}
+
+void sub_0200DCE8(UnkImageStruct* unk, int flag) {
+    sub_0200DCE0(unk->sprite, flag);
+}
+
+BOOL sub_0200DCF4(Sprite* sprite) {
+    return sub_020248B8(sprite);
+}
+
+BOOL sub_0200DCFC(UnkImageStruct* a0) {
+    return sub_0200DCF4(a0->sprite);
+}
+
+void sub_0200DD08(Sprite* sprite, int a1) {
+    sub_02024A14(sprite, a1);
+}
+
+void sub_0200DD10(UnkImageStruct* unk, int a1) {
+    sub_0200DD08(unk->sprite, a1);
 }
