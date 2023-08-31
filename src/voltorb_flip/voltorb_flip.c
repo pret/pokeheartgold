@@ -126,7 +126,7 @@ static UnkImageStruct *ov122_021E7C9C(UnkStruct_0200CF18 *, UnkStruct_0200CF38 *
 static UnkImageStruct *ov122_021E7D04(UnkStruct_0200CF18 *, UnkStruct_0200CF38 *, u16, u16, u16, u16);
 static void ov122_021E7D6C(VoltorbFlipAppWork *);
 static void ov122_021E7F48(VoltorbFlipAppWork *);
-static void ov122_021E7F64(void *, u32);
+static void ov122_021E7F64(Sprite *, fx32);
 static BOOL ov122_021E7F70(VoltorbFlipAppWork *);
 static CardType ov122_021E7FA8(VoltorbFlipAppWork *);
 static int MemoFlagToIdx(int);
@@ -1466,8 +1466,8 @@ static void ov122_021E745C(VoltorbFlipAppWork *work) {
 }
 
 void ov122_021E7488(VoltorbFlipAppWork *a0, int a1)
-{    
-    Ov122_021E7488 temp1 = {0};   
+{
+    Ov122_021E7488 temp1 = {0};
     const MsgNoList *ptr = &sMenuMsgNos[a1];
     GF_ASSERT(a0->bgConfig != 0);
 
@@ -1476,7 +1476,7 @@ void ov122_021E7488(VoltorbFlipAppWork *a0, int a1)
     temp1.unkC = a0->menuItems[a1];
     temp1.unk10 = a0->bgConfig;
     temp1.unk14 = ptr->size;
-    
+
     a0->unk20 = sub_020185FC(a0->unk1C, &temp1, a0->unk228, 17, 17 - ptr->size * 3, 13, 0);
 }
 
@@ -1858,7 +1858,7 @@ static void ov122_021E7D6C(VoltorbFlipAppWork *work) {
     work->unk14C[11] = ov122_021E7D04(work->unk144, work->unk148, 0x48, 0x38, 0, 0);
     work->unk14C[12] = ov122_021E7D04(work->unk144, work->unk148, 0x88, 0x28, 0, 0);
 
-    ov122_021E7F64(work->unk14C[12]->unk0, 0x20000);
+    ov122_021E7F64(work->unk14C[12]->sprite, 0x20000);
 
     sub_0200DCE8(work->unk14C[2], 1);
     sub_0200DCE8(work->unk14C[3], 1);
@@ -1872,9 +1872,9 @@ static void ov122_021E7F48(VoltorbFlipAppWork *work) {
     }
 }
 
-static void ov122_021E7F64(void *a0, u32 a1) {
-    Unk122_021E7F64 *ptr = sub_02024CB8(a0);
-    ptr->unk10 = a1;
+static void ov122_021E7F64(Sprite *a0, fx32 a1) {
+    NNSG2dCellAnimation *ptr = sub_02024CB8(a0);
+    ptr->animCtrl.currentTime = a1;
 }
 
 static BOOL ov122_021E7F70(VoltorbFlipAppWork *work) {

@@ -10,7 +10,7 @@ typedef enum NNS_G2D_VRAM_TYPE {
 
 typedef struct NNSG2dVRamLocation {
     u32 baseAddrOfVram[ NNS_G2D_VRAM_TYPE_MAX ];
-} NNSG2dVRamLocation;
+} NNSG2dVRamLocation;  // size: 0xC
 
 typedef struct NNSG2dImageAttr {
     GXTexSizeS sizeS;
@@ -19,18 +19,18 @@ typedef struct NNSG2dImageAttr {
     BOOL bExtendedPlt;
     GXTexPlttColor0 plttUse;
     GXOBJVRamModeChar mappingType;
-} NNSG2dImageAttr;
+} NNSG2dImageAttr;  // size: 0x18
 
 typedef struct NNSG2dImageProxy {
     NNSG2dVRamLocation vramLocation;
     NNSG2dImageAttr attr;
-} NNSG2dImageProxy;
+} NNSG2dImageProxy;  // size: 0x24
 
 typedef struct NNSG2dImagePaletteProxy {
     GXTexFmt fmt;
     BOOL bExtendedPlt;
     NNSG2dVRamLocation vramLocation;
-} NNSG2dImagePaletteProxy;
+} NNSG2dImagePaletteProxy;  // size: 0x14
 
 void NNS_G2dLoadPaletteEx(const NNSG2dPaletteData* pSrcData, const NNSG2dPaletteCompressInfo* pCmpInfo, u32 addr, NNS_G2D_VRAM_TYPE type, NNSG2dImagePaletteProxy* pPltProxy);
 void NNS_G2dLoadPalette(const NNSG2dPaletteData* pSrcData, u32 addr, NNS_G2D_VRAM_TYPE type, NNSG2dImagePaletteProxy* pPltProxy);

@@ -4,54 +4,6 @@
 
 	.text
 
-	thumb_func_start sub_0200DC0C
-sub_0200DC0C: ; 0x0200DC0C
-	ldr r3, _0200DC14 ; =sub_020249B0
-	mov r1, #1
-	lsl r1, r1, #0xc
-	bx r3
-	.balign 4, 0
-_0200DC14: .word sub_020249B0
-	thumb_func_end sub_0200DC0C
-
-	thumb_func_start sub_0200DC18
-sub_0200DC18: ; 0x0200DC18
-	ldr r3, _0200DC20 ; =sub_0200DC0C
-	ldr r0, [r0]
-	bx r3
-	nop
-_0200DC20: .word sub_0200DC0C
-	thumb_func_end sub_0200DC18
-
-	thumb_func_start sub_0200DC24
-sub_0200DC24: ; 0x0200DC24
-	ldr r3, _0200DC30 ; =sub_020249B0
-	mov r1, #2
-	ldr r0, [r0]
-	lsl r1, r1, #0xc
-	bx r3
-	nop
-_0200DC30: .word sub_020249B0
-	thumb_func_end sub_0200DC24
-
-	thumb_func_start sub_0200DC34
-sub_0200DC34: ; 0x0200DC34
-	ldr r3, _0200DC3C ; =sub_020249B0
-	ldr r0, [r0]
-	bx r3
-	nop
-_0200DC3C: .word sub_020249B0
-	thumb_func_end sub_0200DC34
-
-	thumb_func_start sub_0200DC40
-sub_0200DC40: ; 0x0200DC40
-	ldr r3, _0200DC48 ; =sub_020248C8
-	ldr r0, [r0]
-	bx r3
-	nop
-_0200DC48: .word sub_020248C8
-	thumb_func_end sub_0200DC40
-
 	thumb_func_start sub_0200DC4C
 sub_0200DC4C: ; 0x0200DC4C
 	ldr r3, _0200DC54 ; =sub_020248F0
