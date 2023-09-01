@@ -222,3 +222,4 @@
 .public sub_0200D124
 .public sub_0200DB64
 .public sub_0200DAE4
+.public sub_0200E080

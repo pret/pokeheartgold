@@ -750,3 +750,210 @@ u16 sub_0200DD74(Sprite* sprite) {
 u16 sub_0200DD7C(UnkImageStruct* unk) {
     return sub_0200DD74(unk->sprite);
 }
+
+void sub_0200DD88(Sprite* sprite, s16 x, s16 y) {
+    VecFx32 vec;
+
+    vec.x = x * FX32_ONE;
+    vec.y = y * FX32_ONE;
+    if (sub_02024B60(sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
+        vec.y += 192 * FX32_ONE;
+    }
+    vec.z = 0;
+    sub_020247D4(sprite, &vec);
+}
+
+void sub_0200DDB8(UnkImageStruct* unk, s16 x, s16 y) {
+    sub_0200DD88(unk->sprite, x, y);
+}
+
+void sub_0200DDC4(Sprite* sprite, s16 x, s16 y, fx32 yOffset) {
+    VecFx32 vec;
+
+    vec.x = x * FX32_ONE;
+    vec.y = y * FX32_ONE;
+    if (sub_02024B60(sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
+        vec.y += yOffset;
+    }
+    vec.z = 0;
+    sub_020247D4(sprite, &vec);
+}
+
+void sub_0200DDF4(UnkImageStruct* unk, s16 x, s16 y, fx32 yOffset) {
+    sub_0200DDC4(unk->sprite, x, y, yOffset);
+}
+
+void sub_0200DE00(Sprite* sprite, s16* x, s16* y) {
+    const VecFx32* pos = sub_020248AC(sprite);
+    *x = pos->x / FX32_ONE;
+    if (sub_02024B60(sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
+        *y = (pos->y - 192 * FX32_ONE) / FX32_ONE;
+    } else {
+        *y = pos->y / FX32_ONE;
+    }
+}
+
+void sub_0200DE44(UnkImageStruct* unk, s16* x, s16* y) {
+    sub_0200DE00(unk->sprite, x, y);
+}
+
+void sub_0200DE50(Sprite* sprite, s16* x, s16* y, fx32 yOffset) {
+    const VecFx32* pos = sub_020248AC(sprite);
+    *x = pos->x / FX32_ONE;
+    if (sub_02024B60(sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
+        *y = (pos->y - yOffset) / FX32_ONE;
+    } else {
+        *y = pos->y / FX32_ONE;
+    }
+}
+
+void sub_0200DE94(UnkImageStruct* unk, s16* x, s16* y, fx32 yOffset) {
+    sub_0200DE50(unk->sprite, x, y, yOffset);
+}
+
+void sub_0200DEA0(Sprite* sprite, s16 dx, s16 dy) {
+    VecFx32 vec;
+    const VecFx32* pos = sub_020248AC(sprite);
+    vec.x = pos->x + dx * FX32_ONE;
+    vec.y = pos->y + dy * FX32_ONE;
+    vec.z = pos->z;
+    sub_020247D4(sprite, &vec);
+}
+
+void sub_0200DED0(UnkImageStruct* unk, s16 dx, s16 dy) {
+    sub_0200DEA0(unk->sprite, dx, dy);
+}
+
+void sub_0200DEDC(UnkImageStruct* unk, fx32 dx, fx32 dy) {
+    VecFx32 vec;
+    const VecFx32* pos = sub_020248AC(unk->sprite);
+    vec.x = pos->x + dx;
+    vec.y = pos->y + dy;
+    vec.z = pos->z;
+    sub_020247D4(unk->sprite, &vec);
+}
+
+void sub_0200DF08(UnkImageStruct* unk, fx32 x, fx32 y) {
+    VecFx32 vec;
+    const VecFx32* pos = sub_020248AC(unk->sprite);
+    vec.x = x;
+    vec.y = y;
+    vec.z = pos->z;
+    sub_020247D4(unk->sprite, &vec);
+}
+
+void sub_0200DF2C(UnkImageStruct* unk, fx32* x, fx32* y) {
+    const VecFx32* pos = sub_020248AC(unk->sprite);
+    *x = pos->x;
+    *y = pos->y;
+}
+
+void sub_0200DF44(UnkImageStruct* unk, fx32 x, fx32 y, fx32 yOffset) {
+    if (sub_02024B60(unk->sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
+        sub_0200DF08(unk, x, y + yOffset);
+    } else {
+        sub_0200DF08(unk, x, y);
+    }
+}
+
+void sub_0200DF70(UnkImageStruct* unk, fx32* x, fx32* y, fx32 yOffset) {
+    sub_0200DF2C(unk, x, y);
+    if (sub_02024B60(unk->sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
+        *y -= yOffset;
+    }
+}
+
+void sub_0200DF90(Sprite* sprite, u8 a1) {
+    sub_0202487C(sprite, a1);
+}
+
+void sub_0200DF98(UnkImageStruct* unk, u8 a1) {
+    sub_0200DF90(unk->sprite, a1);
+}
+
+void sub_0200DFA4(Sprite* sprite, f32 x, f32 y) {
+    VecFx32* scale = sub_020248B0(sprite);
+    scale->x = FX_F32_TO_FX32(x);
+    scale->y = FX_F32_TO_FX32(y);
+    sub_020247F4(sprite, scale);
+}
+
+void sub_0200E024(UnkImageStruct* unk, f32 x, f32 y) {
+    sub_0200DFA4(unk->sprite, x, y);
+}
+
+void sub_0200E030(Sprite* sprite, f32* x, f32* y) {
+    VecFx32* scale = sub_020248B0(sprite);
+    *x = FX_FX32_TO_F32(scale->x);
+    *y = FX_FX32_TO_F32(scale->y);
+}
+
+void sub_0200E060(UnkImageStruct* unk, f32* x, f32* y) {
+    sub_0200E030(unk->sprite, x, y);
+}
+
+void sub_0200E06C(Sprite* sprite, u16 a1) {
+    sub_02024818(sprite, a1);
+}
+
+void sub_0200E074(UnkImageStruct* unk, u16 a1) {
+    sub_0200E06C(unk->sprite, a1);
+}
+
+void sub_0200E080(Sprite* sprite, u16 a1) {
+    u16 rotation = sub_020248B4(sprite);
+    rotation += a1;
+    sub_02024818(sprite, rotation);
+}
+
+void sub_0200E098(UnkImageStruct* unk, u16 a1) {
+    sub_0200E080(unk->sprite, a1);
+}
+
+u16 sub_0200E0A4(Sprite* sprite) {
+    return sub_020248B4(sprite);
+}
+
+u16 sub_0200E0AC(UnkImageStruct* unk) {
+    return sub_0200E0A4(unk->sprite);
+}
+
+void sub_0200E0B8(Sprite* sprite, u8 a1) {
+    sub_02024890(sprite, a1);
+}
+
+void sub_0200E0C0(UnkImageStruct* unk, u8 a1) {
+    sub_0200E0B8(unk->sprite, a1);
+}
+
+void sub_0200E0CC(UnkImageStruct* unk, s16 x, s16 y) {
+    VecFx32 matrix;
+    matrix.x = x * FX32_ONE;
+    matrix.y = y * FX32_ONE;
+    matrix.z = 0;
+    sub_020247E4(unk->sprite, &matrix);
+}
+
+void sub_0200E0E8(UnkImageStruct* unk, BOOL mosaic) {
+    sub_02024B38(unk->sprite, mosaic);
+}
+
+void sub_0200E0F4(Sprite* sprite, GXOamMode mode) {
+    sub_02024B78(sprite, mode);
+}
+
+void sub_0200E0FC(UnkImageStruct* unk, GXOamMode mode) {
+    sub_0200E0F4(unk->sprite, mode);
+}
+
+GXOamMode sub_0200E108(Sprite* sprite) {
+    return sub_02024BAC(sprite);
+}
+
+GXOamMode sub_0200E110(UnkImageStruct* unk) {
+    return sub_0200E108(unk->sprite);
+}
+
+u32 sub_0200E11C(UnkImageStruct* unk) {
+    return sub_02024C9C(unk->sprite);
+}
