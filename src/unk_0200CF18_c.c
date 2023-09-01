@@ -957,3 +957,45 @@ GXOamMode sub_0200E110(UnkImageStruct* unk) {
 u32 sub_0200E11C(UnkImageStruct* unk) {
     return sub_02024C9C(unk->sprite);
 }
+
+BOOL sub_0200E128(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId, int fileId, BOOL compressed, int vram, int resId) {
+    if (!_2DGfxResObjExistsById(a1->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], resId)) {
+        return FALSE;
+    }
+    _2DGfxResObj* obj = AddCharResObjFromNarc(a1->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], narcId, fileId, compressed, resId, vram, a0->heapId);
+    if (obj != NULL) {
+        sub_0200AD64(obj);
+        sub_0200DAE4(a1->_2dGfxResObjList[GF_GFX_RES_TYPE_CHAR], obj);
+        return TRUE;
+    }
+    GF_ASSERT(0);
+    return obj != NULL;
+}
+
+BOOL sub_0200E188(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId, int fileId, BOOL compressed, int vram, int resId) {
+    if (!_2DGfxResObjExistsById(a1->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], resId)) {
+        return FALSE;
+    }
+    _2DGfxResObj* obj = AddCharResObjFromNarc(a1->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], narcId, fileId, compressed, resId, vram, a0->heapId);
+    if (obj != NULL) {
+        sub_0200AE18(obj);
+        sub_0200DAE4(a1->_2dGfxResObjList[GF_GFX_RES_TYPE_CHAR], obj);
+        return TRUE;
+    }
+    GF_ASSERT(0);
+    return obj != NULL;
+}
+
+BOOL sub_0200E1E8(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NARC* narc, int fileId, BOOL compressed, int vram, int resId) {
+    if (!_2DGfxResObjExistsById(a1->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], resId)) {
+        return FALSE;
+    }
+    _2DGfxResObj* obj = AddCharResObjFromOpenNarc(a1->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], narc, fileId, compressed, resId, vram, a0->heapId);
+    if (obj != NULL) {
+        sub_0200AE18(obj);
+        sub_0200DAE4(a1->_2dGfxResObjList[GF_GFX_RES_TYPE_CHAR], obj);
+        return TRUE;
+    }
+    GF_ASSERT(0);
+    return obj != NULL;
+}

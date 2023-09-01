@@ -5,8 +5,10 @@
 
 void sub_0200ACF0(struct _2DGfxResObj *obj);
 void sub_0200AD30(struct _2DGfxResObjList *charResObjList);
+void sub_0200AD64(struct _2DGfxResObj* obj);
 void sub_0200ADA4(struct _2DGfxResObj *charResObj);
 void sub_0200ADE4(struct _2DGfxResObjList *charResObjList);
+void sub_0200AE18(struct _2DGfxResObj* obj);
 void sub_0200AE58(struct _2DGfxResObjList *charResObjList);
 void sub_0200AEB0(struct _2DGfxResObj *charResObj);
 void sub_0200AED4(struct _2DGfxResObjList *charResObjList);

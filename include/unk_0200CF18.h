@@ -186,5 +186,8 @@ void sub_0200E0FC(UnkImageStruct* unk, GXOamMode mode);
 GXOamMode sub_0200E108(Sprite* sprite);
 GXOamMode sub_0200E110(UnkImageStruct* unk);
 u32 sub_0200E11C(UnkImageStruct* unk);
+BOOL sub_0200E128(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId, int fileId, BOOL compressed, int vram, int resId);
+BOOL sub_0200E188(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId, int fileId, BOOL compressed, int vram, int resId);
+BOOL sub_0200E1E8(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NARC* narc, int fileId, BOOL compressed, int vram, int resId);
 
 #endif //POKEHEARTGOLD_UNK_0200CF18_H
