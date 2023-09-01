@@ -189,5 +189,11 @@ u32 sub_0200E11C(UnkImageStruct* unk);
 BOOL sub_0200E128(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId, int fileId, BOOL compressed, int vram, int resId);
 BOOL sub_0200E188(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId, int fileId, BOOL compressed, int vram, int resId);
 BOOL sub_0200E1E8(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NARC* narc, int fileId, BOOL compressed, int vram, int resId);
+void sub_0200E248(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId, int fileId, BOOL compressed, int resId);
+void sub_0200E27C(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId, int fileId, BOOL compressed, int resId);
+SpriteList* sub_0200E2B0(UnkStruct_0200CF38* a0);
+void sub_0200E2B4(UnkStruct_0200CF38* a0, SpriteList* spriteList);
+void sub_0200E2B8(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NARC* narc, int fileId, BOOL compressed, int resId);
+void sub_0200E2EC(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NARC* narc, int fileId, BOOL compressed, int resId);
 
 #endif //POKEHEARTGOLD_UNK_0200CF18_H

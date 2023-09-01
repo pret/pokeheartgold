@@ -999,3 +999,35 @@ BOOL sub_0200E1E8(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NARC* narc, in
     GF_ASSERT(0);
     return obj != NULL;
 }
+
+void sub_0200E248(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId, int fileId, BOOL compressed, int resId) {
+    _2DGfxResObj* obj = Get2DGfxResObjById(a1->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], resId);
+    ReplaceCharResObjFromNarc(a1->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], obj, narcId, fileId, compressed, a0->heapId);
+    sub_0200AE8C(obj);
+}
+
+void sub_0200E27C(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId, int fileId, BOOL compressed, int resId) {
+    _2DGfxResObj* obj = Get2DGfxResObjById(a1->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], resId);
+    ReplacePlttResObjFromNarc(a1->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], obj, narcId, fileId, compressed, a0->heapId);
+    sub_0200B084(obj);
+}
+
+SpriteList* sub_0200E2B0(UnkStruct_0200CF38* a0) {
+    return a0->spriteList;
+}
+
+void sub_0200E2B4(UnkStruct_0200CF38* a0, SpriteList* spriteList) {
+    a0->spriteList = spriteList;
+}
+
+void sub_0200E2B8(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NARC* narc, int fileId, BOOL compressed, int resId) {
+    _2DGfxResObj* obj = Get2DGfxResObjById(a1->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], resId);
+    ReplaceCharResObjFromOpenNarc(a1->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], obj, narc, fileId, compressed, a0->heapId);
+    sub_0200AE8C(obj);
+}
+
+void sub_0200E2EC(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NARC* narc, int fileId, BOOL compressed, int resId) {
+    _2DGfxResObj* obj = Get2DGfxResObjById(a1->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], resId);
+    ReplacePlttResObjFromOpenNarc(a1->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], obj, narc, fileId, compressed, a0->heapId);
+    sub_0200B084(obj);
+}
