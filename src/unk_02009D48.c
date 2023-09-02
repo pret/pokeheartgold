@@ -98,23 +98,23 @@ void sub_02009F24(ListOfUnkStruct_02009D48 *list) {
     FreeToHeap(list);
 }
 
-SpriteList *G2dRenderer_Init(int a0, GF_G2dRenderer *a1, HeapID heapId) {
+SpriteList *G2dRenderer_Init(int a0, GF_G2dRenderer *renderer, HeapID heapId) {
     struct SpriteListParam param;
     NNSG2dViewRect rect;
 
-    sub_02025C44(&a1->rendererInstance, -FX32_ONE);
+    sub_02025C44(&renderer->rendererInstance, -FX32_ONE);
     rect.posTopLeft.x = 0;
     rect.posTopLeft.y = 0;
     rect.sizeView.x = 255 * FX32_ONE;
     rect.sizeView.y = 192 * FX32_ONE;
-    sub_0200B27C(&a1->renderSurface[0], &rect, 1, &a1->rendererInstance);
+    sub_0200B27C(&renderer->renderSurface[0], &rect, 1, &renderer->rendererInstance);
     rect.posTopLeft.x = 0;
     rect.posTopLeft.y = 192 * FX32_ONE;
     rect.sizeView.x = 255 * FX32_ONE;
     rect.sizeView.y = 192 * FX32_ONE;
-    sub_0200B27C(&a1->renderSurface[1], &rect, 2, &a1->rendererInstance);
+    sub_0200B27C(&renderer->renderSurface[1], &rect, 2, &renderer->rendererInstance);
     param.unk_0 = a0;
-    param.rendererInstance = &a1->rendererInstance;
+    param.rendererInstance = &renderer->rendererInstance;
     param.heapId = heapId;
     return SpriteList_Create(&param);
 }

@@ -1997,7 +1997,7 @@ _02202AFE:
 	add r1, r1, #4
 	ldr r1, [r5, r1]
 	add r2, sp, #0
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	str r0, [r4, #0x10]
 	mov r1, #1
 	bl Set2dSpriteVisibleFlag
@@ -2120,7 +2120,7 @@ ov17_02202BF8: ; 0x02202BF8
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _02202C0A
-	bl sub_0200D034
+	bl thunk_OamManager_ApplyAndResetBuffers
 _02202C0A:
 	bl NNS_GfdDoVramTransfer
 	add r4, #0x88
@@ -2709,7 +2709,7 @@ ov17_022030A8: ; 0x022030A8
 	mov r0, #0x20
 	bl GF_CreateVramTransferManager
 	ldr r0, [r4]
-	bl sub_0200CF18
+	bl SpriteRenderer_Create
 	mov r1, #0x13
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -2725,7 +2725,7 @@ ov17_022030A8: ; 0x022030A8
 	mov r0, #0x13
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0200CF38
+	bl SpriteRenderer_CreateGfxHandler
 	mov r1, #0x4d
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -2759,7 +2759,7 @@ ov17_022030A8: ; 0x022030A8
 	sub r2, #0x60
 	stmia r3!, {r0, r1}
 	ldr r0, [r4, r2]
-	bl sub_0200CF38
+	bl SpriteRenderer_CreateGfxHandler
 	mov r1, #0x4e
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -2768,7 +2768,7 @@ ov17_022030A8: ; 0x022030A8
 	ldr r0, [r4, r0]
 	ldr r1, [r4, r1]
 	add r2, sp, #0x10
-	bl sub_0200D3F8
+	bl SpriteRenderer_Init2DGfxResManagersFromCountsArray
 	mov r0, #0x4d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -2797,7 +2797,7 @@ ov17_022030A8: ; 0x022030A8
 	add r2, #0x60
 	ldr r1, [r4, r1]
 	ldr r2, [r4, r2]
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	mov r0, #0x95
 	mov r1, #2
 	bl GetItemIndexMapping
@@ -2818,7 +2818,7 @@ ov17_022030A8: ; 0x022030A8
 	add r2, #0x60
 	ldr r1, [r4, r1]
 	ldr r2, [r4, r2]
-	bl sub_0200D5D4
+	bl SpriteRenderer_LoadPlttResObjFromOpenNarc
 	bl GetItemIconCell
 	add r3, r0, #0
 	mov r0, #0
@@ -2834,7 +2834,7 @@ ov17_022030A8: ; 0x022030A8
 	add r2, #0x60
 	ldr r1, [r4, r1]
 	ldr r2, [r4, r2]
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	bl GetItemIconAnim
 	add r3, r0, #0
 	mov r0, #0
@@ -2850,7 +2850,7 @@ ov17_022030A8: ; 0x022030A8
 	add r2, #0x60
 	ldr r1, [r4, r1]
 	ldr r2, [r4, r2]
-	bl sub_0200D71C
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
 	ldr r0, [r4]
 	mov r1, #0
 	bl sub_02018424
@@ -2887,7 +2887,7 @@ ov17_0220321C: ; 0x0220321C
 	ldr r0, [r4, r1]
 	add r1, r1, #4
 	ldr r1, [r4, r1]
-	bl sub_0200D0E4
+	bl SpriteRenderer_RemoveGfxHandler
 	mov r1, #0x4e
 	lsl r1, r1, #2
 	mov r2, #0
@@ -2896,7 +2896,7 @@ ov17_0220321C: ; 0x0220321C
 	sub r1, #8
 	str r2, [r4, r0]
 	ldr r0, [r4, r1]
-	bl sub_0200D108
+	bl SpriteRenderer_Delete
 	mov r0, #0x13
 	mov r1, #0
 	lsl r0, r0, #4
@@ -2951,7 +2951,7 @@ _022032B6:
 	ldr r0, [r4, r0]
 	ldr r1, [r4, r1]
 	add r2, r6, #0
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	mov r1, #0x59
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -2975,7 +2975,7 @@ _022032B6:
 	add r1, r1, #4
 	ldr r1, [r4, r1]
 	ldr r2, _022033D8 ; =ov17_02203F48
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	mov r1, #0x5b
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -3002,7 +3002,7 @@ _0220331E:
 	ldr r0, [r4, r0]
 	ldr r1, [r4, r1]
 	ldr r2, _022033DC ; =ov17_02203F70
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	mov r1, #0x59
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3042,7 +3042,7 @@ _0220331E:
 	ldr r0, [r4, r0]
 	ldr r1, [r4, r1]
 	ldr r2, _022033E0 ; =ov17_02203F98
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	mov r1, #0x59
 	lsl r1, r1, #2
 	str r0, [r5, r1]

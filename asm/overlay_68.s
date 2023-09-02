@@ -296,7 +296,7 @@ ov68_021E5B6C: ; 0x021E5B6C
 	ldr r0, [r4, r0]
 	bl sub_02009418
 	bl GF_RunVramTransferTasks
-	bl sub_0200D034
+	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r3, _021E5B98 ; =0x027E0000
 	ldr r1, _021E5B9C ; =0x00003FF8
 	mov r0, #1
@@ -2630,12 +2630,12 @@ ov68_021E6DDC: ; 0x021E6DDC
 	mov r1, #0x42
 	bl GF_CreateVramTransferManager
 	mov r0, #0x42
-	bl sub_0200CF18
+	bl SpriteRenderer_Create
 	mov r1, #0x47
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
-	bl sub_0200CF38
+	bl SpriteRenderer_CreateGfxHandler
 	mov r7, #0x12
 	lsl r7, r7, #4
 	add r2, sp, #0x14
@@ -2675,7 +2675,7 @@ ov68_021E6DDC: ; 0x021E6DDC
 	add r1, r1, #4
 	ldr r1, [r4, r1]
 	add r2, sp, #0x34
-	bl sub_0200D3F8
+	bl SpriteRenderer_Init2DGfxResManagersFromCountsArray
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -2714,7 +2714,7 @@ _021E6E90:
 	mov r0, #0x47
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	bl sub_0200D108
+	bl SpriteRenderer_Delete
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov68_021E6E84
 
@@ -2737,7 +2737,7 @@ ov68_021E6EB8: ; 0x021E6EB8
 	ldr r1, [r5, r1]
 	add r2, r6, #0
 	mov r3, #6
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2
@@ -2751,7 +2751,7 @@ ov68_021E6EB8: ; 0x021E6EB8
 	ldr r1, [r5, r1]
 	add r2, r6, #0
 	mov r3, #0xb
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	ldr r4, _021E701C ; =0x0000B8AB
 	add r7, r4, #4
 _021E6F00:
@@ -2808,7 +2808,7 @@ _021E6F30:
 	ldr r1, [r5, r1]
 	add r2, r6, #0
 	mov r3, #5
-	bl sub_0200D5D4
+	bl SpriteRenderer_LoadPlttResObjFromOpenNarc
 	mov r1, #0x47
 	lsl r1, r1, #2
 	ldr r0, [r5, r1]
@@ -2836,7 +2836,7 @@ _021E6F30:
 	ldr r1, [r5, r1]
 	add r2, r6, #0
 	mov r3, #7
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _021E7018 ; =0x0000B8A9
@@ -2848,7 +2848,7 @@ _021E6F30:
 	ldr r1, [r5, r1]
 	add r2, r6, #0
 	mov r3, #0xa
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _021E7014 ; =0x0000B8A8
@@ -2860,7 +2860,7 @@ _021E6F30:
 	ldr r1, [r5, r1]
 	add r2, r6, #0
 	mov r3, #8
-	bl sub_0200D71C
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _021E7018 ; =0x0000B8A9
@@ -2872,7 +2872,7 @@ _021E6F30:
 	ldr r1, [r5, r1]
 	add r2, r6, #0
 	mov r3, #9
-	bl sub_0200D71C
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
 	mov r1, #0x47
 	lsl r1, r1, #2
 	ldr r0, [r5, r1]

@@ -16,10 +16,10 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public NewString_ReadMsgData
-.public sub_0200D504
+.public SpriteRenderer_LoadCharResObjFromOpenNarc
 .public sub_0200D68C
-.public sub_0200D6EC
-.public sub_0200D71C
+.public SpriteRenderer_LoadCellResObjFromOpenNarc
+.public SpriteRenderer_LoadAnimResObjFromOpenNarc
 .public sub_0200D734
 .public sub_0200D934
 .public sub_0200D9DC

@@ -33,7 +33,7 @@
 .public MessagePrinter_New
 .public MessagePrinter_Delete
 .public sub_0200D020
-.public sub_0200D034
+.public thunk_OamManager_ApplyAndResetBuffers
 .public sub_0200DCE0
 .public sub_0200DD08
 .public LoadUserFrameGfx2

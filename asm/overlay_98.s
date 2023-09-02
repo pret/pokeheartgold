@@ -40,9 +40,9 @@ ov98_0221E5E0: ; 0x0221E5E0
 	add r4, r0, #0
 	str r6, [r4]
 	add r0, r6, #0
-	bl sub_0200CF18
+	bl SpriteRenderer_Create
 	str r0, [r4, #4]
-	bl sub_0200CF38
+	bl SpriteRenderer_CreateGfxHandler
 	str r0, [r4, #8]
 	ldr r1, [r4]
 	mov r0, #0x14
@@ -84,7 +84,7 @@ ov98_0221E5E0: ; 0x0221E5E0
 	ldr r0, [r4, #4]
 	ldr r1, [r4, #8]
 	ldr r2, [sp]
-	bl sub_0200D3F8
+	bl SpriteRenderer_Init2DGfxResManagersFromCountsArray
 	ldr r0, [r4]
 	bl PaletteData_Init
 	str r0, [r4, #0xc]
@@ -132,7 +132,7 @@ _0221E6B4:
 	ldr r1, [r7, #8]
 	bl sub_0200D998
 	ldr r0, [r7, #4]
-	bl sub_0200D108
+	bl SpriteRenderer_Delete
 	add r0, r7, #0
 	bl FreeToHeap
 	pop {r3, r4, r5, r6, r7, pc}
@@ -260,7 +260,7 @@ ov98_0221E784: ; 0x0221E784
 	mov r2, #8
 	add r6, r0, #0
 	add r7, r1, #0
-	bl sub_0200D4A4
+	bl SpriteRenderer_LoadCharResObjFromNarcId
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #1
@@ -272,7 +272,7 @@ ov98_0221E784: ; 0x0221E784
 	add r0, r6, #0
 	mov r2, #8
 	mov r3, #0x4b
-	bl sub_0200D564
+	bl SpriteRenderer_LoadPlttResObjFromNarcId
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [r5, #8]
@@ -281,7 +281,7 @@ ov98_0221E784: ; 0x0221E784
 	add r0, r6, #0
 	mov r2, #8
 	mov r3, #0x4d
-	bl sub_0200D6D4
+	bl SpriteRenderer_LoadCellResObjFromNarcId
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [r5, #0xc]
@@ -290,7 +290,7 @@ ov98_0221E784: ; 0x0221E784
 	add r0, r6, #0
 	mov r2, #8
 	mov r3, #0x4e
-	bl sub_0200D704
+	bl SpriteRenderer_LoadAnimResObjFromNarcId
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov98_0221E784
@@ -433,7 +433,7 @@ _0221E8E6:
 	str r0, [sp, #8]
 	add r0, r7, #0
 	mov r2, #0xb1
-	bl sub_0200D4A4
+	bl SpriteRenderer_LoadCharResObjFromNarcId
 	ldr r0, [sp, #0x14]
 	add r4, r4, #1
 	cmp r4, r0
@@ -447,7 +447,7 @@ _0221E908:
 	add r0, r7, #0
 	add r1, r6, #0
 	mov r2, #0x14
-	bl sub_0200D6D4
+	bl SpriteRenderer_LoadCellResObjFromNarcId
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [r5, #0xc]
@@ -456,7 +456,7 @@ _0221E908:
 	add r0, r7, #0
 	add r1, r6, #0
 	mov r2, #0x14
-	bl sub_0200D704
+	bl SpriteRenderer_LoadAnimResObjFromNarcId
 	ldr r0, [sp, #0x10]
 	mov r1, #0x14
 	ldrsb r0, [r0, r1]
@@ -479,7 +479,7 @@ _0221E908:
 	ldr r0, [r5, #4]
 	str r0, [sp, #0xc]
 	add r0, r7, #0
-	bl sub_0200D564
+	bl SpriteRenderer_LoadPlttResObjFromNarcId
 	ldr r1, [sp, #0x10]
 	strb r0, [r1, #0x14]
 _0221E966:

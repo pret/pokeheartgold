@@ -3550,7 +3550,7 @@ ov07_0221D740: ; 0x0221D740
 	ldr r0, [r0]
 	add r0, #0xac
 	ldr r0, [r0]
-	bl sub_0200CF38
+	bl SpriteRenderer_CreateGfxHandler
 	mov r1, #0x4e
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -3567,7 +3567,7 @@ ov07_0221D740: ; 0x0221D740
 	ldr r0, [r0]
 	add r0, #0xac
 	ldr r0, [r0]
-	bl sub_0200CF6C
+	bl SpriteRenderer_GetG2dRendererPtr
 	mov r2, #0x11
 	mov r1, #0
 	lsl r2, r2, #0x10
@@ -3581,7 +3581,7 @@ ov07_0221D740: ; 0x0221D740
 	ldr r0, [r0]
 	ldr r1, [r4, r1]
 	add r2, sp, #0
-	bl sub_0200D3F8
+	bl SpriteRenderer_Init2DGfxResManagersFromCountsArray
 	add sp, #0x18
 	pop {r4, pc}
 	.balign 4, 0
@@ -3621,7 +3621,7 @@ ov07_0221D7B8: ; 0x0221D7B8
 	ldr r1, [r5, r1]
 	ldr r2, [r5, r2]
 	mov r3, #0x4c
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	mov r0, #0x6d
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -3660,7 +3660,7 @@ ov07_0221D7B8: ; 0x0221D7B8
 	ldr r0, [r0]
 	ldr r2, [r5, r2]
 	mov r3, #0x4d
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	add r0, r5, #0
@@ -3675,7 +3675,7 @@ ov07_0221D7B8: ; 0x0221D7B8
 	ldr r0, [r0]
 	ldr r2, [r5, r2]
 	mov r3, #0x4e
-	bl sub_0200D71C
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -7425,7 +7425,7 @@ _0221F458:
 	ldr r0, [r0]
 	add r0, #0xac
 	ldr r0, [r0]
-	bl sub_0200CF38
+	bl SpriteRenderer_CreateGfxHandler
 	str r0, [r6, r4]
 	ldr r0, [r6, r4]
 	cmp r0, #0
@@ -7445,7 +7445,7 @@ _0221F472:
 	ldr r0, [r0]
 	add r0, #0xac
 	ldr r0, [r0]
-	bl sub_0200CF6C
+	bl SpriteRenderer_GetG2dRendererPtr
 	mov r2, #0x11
 	mov r1, #0
 	lsl r2, r2, #0x10
@@ -7471,7 +7471,7 @@ _0221F4A4:
 	add r0, #0xac
 	ldr r0, [r0]
 	add r2, sp, #0
-	bl sub_0200D3F8
+	bl SpriteRenderer_Init2DGfxResManagersFromCountsArray
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov07_0221F430
@@ -7508,7 +7508,7 @@ ov07_0221F4CC: ; 0x0221F4CC
 	ldr r0, [r0]
 	ldr r1, [r1]
 	ldr r2, [r2, r4]
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	add sp, #0xc
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -7596,7 +7596,7 @@ ov07_0221F574: ; 0x0221F574
 	ldr r0, [r0]
 	ldr r1, [r1]
 	ldr r2, [r2, r4]
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	add sp, #8
 	pop {r4, pc}
 	nop
@@ -7634,7 +7634,7 @@ ov07_0221F5BC: ; 0x0221F5BC
 	ldr r0, [r0]
 	ldr r1, [r1]
 	ldr r2, [r2, r4]
-	bl sub_0200D71C
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
 	add sp, #8
 	pop {r4, pc}
 	nop
@@ -8566,7 +8566,7 @@ _0221FC18:
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
 	add r2, r6, #0
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	str r6, [sp]
 	mov r0, #0x4b
 	str r0, [sp, #4]
@@ -8588,7 +8588,7 @@ _0221FC18:
 	ldr r1, [r4, #0xc]
 	add r2, r6, #0
 	mov r3, #0x4d
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r5, [sp, #4]
@@ -8596,7 +8596,7 @@ _0221FC18:
 	ldr r1, [r4, #0xc]
 	add r2, r6, #0
 	mov r3, #0x4e
-	bl sub_0200D71C
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
 _0221FC82:
 	ldr r0, [sp, #0x1c]
 	add r7, r7, #1
@@ -8801,10 +8801,10 @@ _0221FE10:
 	beq _0221FE2C
 	ldr r0, [r5, #0xc]
 	ldr r1, [r4, #0x14]
-	bl sub_0200D958
+	bl SpriteGfxHandler_UnloadCharObjById
 	ldr r0, [r5, #0xc]
 	ldr r1, [r4, #0x14]
-	bl sub_0200D968
+	bl SpriteGfxHandler_UnloadPlttObjById
 	ldr r0, [r4, #0x24]
 	bl sub_0200D9DC
 _0221FE2C:
@@ -8829,10 +8829,10 @@ _0221FE44:
 	beq _0221FE60
 	ldr r0, [r5, #0xc]
 	ldr r1, [r4, #0x14]
-	bl sub_0200D958
+	bl SpriteGfxHandler_UnloadCharObjById
 	ldr r0, [r5, #0xc]
 	ldr r1, [r4, #0x14]
-	bl sub_0200D968
+	bl SpriteGfxHandler_UnloadPlttObjById
 	ldr r0, [r4, #0x24]
 	bl sub_0200D9DC
 _0221FE60:
@@ -49527,7 +49527,7 @@ _02233DDC:
 	add r0, r4, #0
 	add r0, #0xac
 	ldr r0, [r0]
-	bl sub_0200CF38
+	bl SpriteRenderer_CreateGfxHandler
 	str r0, [r4, #0x2c]
 	add r0, r4, #0
 	mov r1, #0
@@ -50213,7 +50213,7 @@ ov07_022342E4: ; 0x022342E4
 	add r0, r5, #0
 	add r0, #0xac
 	ldr r0, [r0]
-	bl sub_0200CF6C
+	bl SpriteRenderer_GetG2dRendererPtr
 	mov r2, #0x11
 	mov r1, #0
 	lsl r2, r2, #0x10
@@ -50235,7 +50235,7 @@ _0223431A:
 	ldr r0, [r0]
 	ldr r1, [r5, #0x2c]
 	add r2, sp, #0x20
-	bl sub_0200D3F8
+	bl SpriteRenderer_Init2DGfxResManagersFromCountsArray
 	add r0, r5, #0
 	add r0, #0xa0
 	ldr r0, [r0]
@@ -50281,7 +50281,7 @@ _0223431A:
 	ldr r0, [r0]
 	ldr r1, [r5, #0x2c]
 	add r3, r7, #0
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	str r4, [sp]
 	add r2, r5, #0
 	str r6, [sp, #4]
@@ -50318,7 +50318,7 @@ _0223431A:
 	ldr r0, [r0]
 	ldr r1, [r5, #0x2c]
 	add r2, r4, #0
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	add r0, r5, #0
@@ -50333,7 +50333,7 @@ _0223431A:
 	ldr r0, [r0]
 	ldr r1, [r5, #0x2c]
 	add r2, r4, #0
-	bl sub_0200D71C
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
 	add r0, r4, #0
 	bl NARC_Delete
 	add sp, #0x38

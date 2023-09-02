@@ -20,11 +20,11 @@
 .public BufferPokeathlonCourseName
 .public BufferPokeathlonMedalName
 .public BufferPokeathlonEventName
-.public sub_0200D034
-.public sub_0200D504
-.public sub_0200D5D4
-.public sub_0200D6EC
-.public sub_0200D71C
+.public thunk_OamManager_ApplyAndResetBuffers
+.public SpriteRenderer_LoadCharResObjFromOpenNarc
+.public SpriteRenderer_LoadPlttResObjFromOpenNarc
+.public SpriteRenderer_LoadCellResObjFromOpenNarc
+.public SpriteRenderer_LoadAnimResObjFromOpenNarc
 .public sub_0200DC4C
 .public sub_0200DC64
 .public sub_0200DC78

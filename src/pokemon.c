@@ -2689,7 +2689,7 @@ static const int _020FF50C[] = {
     0, 1, 1, 2, 0, 3
 };
 
-struct UnkImageStruct *sub_02070C24(UnkStruct_0200CF18 *r6, UnkStruct_0200CF38 *sp18, void *sp1C, int sp20, int sp88, int trainerClass, int sp90, int sp94, int r5, HeapID heapId) {
+struct UnkImageStruct *sub_02070C24(SpriteRenderer *r6, SpriteGfxHandler *sp18, void *sp1C, int sp20, int sp88, int trainerClass, int sp90, int sp94, int r5, HeapID heapId) {
     struct UnkTemplate_0200D748 sp3C;
     struct UnkImageStruct *ret_r4;
     NARC *narc_r4;
@@ -2702,17 +2702,17 @@ struct UnkImageStruct *sub_02070C24(UnkStruct_0200CF18 *r6, UnkStruct_0200CF38 *
         r7 = 2;
     }
     narc_r4 = NARC_New(sp24.narcId, heapId);
-    sub_0200D504(r6, sp18, narc_r4, sp24.ncgr_id, FALSE, 1, r5 + 0x4E2F);
+    SpriteRenderer_LoadCharResObjFromOpenNarc(r6, sp18, narc_r4, sp24.ncgr_id, FALSE, 1, r5 + 0x4E2F);
     sub_0200D68C(sp1C, 2, r6, sp18, narc_r4, sp24.nclr_id, FALSE, r7, 1, r5 + 0x4E2A);
-    sub_0200D6EC(r6, sp18, narc_r4, sp24.ncer_id, FALSE, r5 + 0x4E27);
-    sub_0200D71C(r6, sp18, narc_r4, sp24.nanr_id, FALSE, r5 + 0x4E27);
+    SpriteRenderer_LoadCellResObjFromOpenNarc(r6, sp18, narc_r4, sp24.ncer_id, FALSE, r5 + 0x4E27);
+    SpriteRenderer_LoadAnimResObjFromOpenNarc(r6, sp18, narc_r4, sp24.nanr_id, FALSE, r5 + 0x4E27);
     NARC_Delete(narc_r4);
     sp3C = _020FF588;
-    sp3C.unk_14[0] = r5 + 0x4E2F;
-    sp3C.unk_14[1] = r5 + 0x4E2A;
-    sp3C.unk_14[2] = r5 + 0x4E27;
-    sp3C.unk_14[3] = r5 + 0x4E27;
-    sp3C.unk_08 = _020FF50C[r5];
+    sp3C.resIdList[GF_GFX_RES_TYPE_CHAR] = r5 + 0x4E2F;
+    sp3C.resIdList[GF_GFX_RES_TYPE_PLTT] = r5 + 0x4E2A;
+    sp3C.resIdList[GF_GFX_RES_TYPE_CELL] = r5 + 0x4E27;
+    sp3C.resIdList[GF_GFX_RES_TYPE_ANIM] = r5 + 0x4E27;
+    sp3C.spritePriority = _020FF50C[r5];
     ret_r4 = sub_0200D734(r6, sp18, &sp3C);
     sub_02024AA8(ret_r4->sprite, 0);
     sub_0200DDB8(ret_r4, sp20, sp88);

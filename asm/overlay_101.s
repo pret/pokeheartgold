@@ -2239,7 +2239,7 @@ ov101_021E886C: ; 0x021E886C
 	ldr r0, [r4, #0x10]
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl sub_0200CF6C
+	bl SpriteRenderer_GetG2dRendererPtr
 	mov r2, #0xf
 	mov r1, #0
 	lsl r2, r2, #0x10
@@ -2259,7 +2259,7 @@ ov101_021E88A8: ; 0x021E88A8
 	ldr r0, [r4, #0x10]
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl sub_0200CF6C
+	bl SpriteRenderer_GetG2dRendererPtr
 	mov r2, #3
 	mov r1, #0
 	lsl r2, r2, #0x12
@@ -2294,7 +2294,7 @@ _021E88EA:
 	add r1, #0x90
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x84
@@ -2334,7 +2334,7 @@ _021E88EA:
 	add r1, #0x90
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x84
@@ -2352,7 +2352,7 @@ _021E88EA:
 	add r1, #0x90
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x84
@@ -2365,7 +2365,7 @@ _021E88EA:
 	add r1, #0x90
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x84
@@ -2382,7 +2382,7 @@ _021E89AE:
 	add r1, #0x90
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x84
@@ -2486,7 +2486,7 @@ _021E8A94:
 	add r1, #0x90
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x84
@@ -2657,7 +2657,7 @@ ov101_021E8BE8: ; 0x021E8BE8
 	ldr r0, [r0]
 	ldr r1, [r1]
 	ldr r2, _021E8E00 ; =ov101_021F7C70
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x84
@@ -2683,7 +2683,7 @@ _021E8C2A:
 	add r1, #0x90
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x84
@@ -2743,7 +2743,7 @@ _021E8CAC:
 	add r1, #0x90
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x84
@@ -2789,7 +2789,7 @@ _021E8D0C:
 	add r1, #0x90
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x84
@@ -2833,7 +2833,7 @@ _021E8D68:
 	add r1, #0x90
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x84
@@ -13924,7 +13924,7 @@ ov101_021EE394: ; 0x021EE394
 	ldr r0, [r4, #0x10]
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl sub_0200CF6C
+	bl SpriteRenderer_GetG2dRendererPtr
 	mov r2, #0xf
 	mov r1, #0
 	lsl r2, r2, #0x10
@@ -13948,7 +13948,7 @@ ov101_021EE3D8: ; 0x021EE3D8
 	ldr r0, [r4, #0x10]
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl sub_0200CF6C
+	bl SpriteRenderer_GetG2dRendererPtr
 	mov r2, #3
 	mov r1, #0
 	lsl r2, r2, #0x12
@@ -13983,7 +13983,7 @@ _021EE422:
 	add r1, #0x90
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x84
@@ -14023,7 +14023,7 @@ _021EE422:
 	add r1, #0x90
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x84
@@ -14041,7 +14041,7 @@ _021EE422:
 	add r1, #0x90
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x84
@@ -14054,7 +14054,7 @@ _021EE422:
 	add r1, #0x90
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x84
@@ -14071,7 +14071,7 @@ _021EE4E6:
 	add r1, #0x90
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x84
@@ -14119,7 +14119,7 @@ _021EE54A:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	add r2, r7, r2
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x84
@@ -14155,7 +14155,7 @@ _021EE5A2:
 	add r1, #0x90
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	add r1, r0, #0
 	add r0, r5, #0
 	add r0, #0x84
@@ -15526,7 +15526,7 @@ _021EF046:
 	add r1, #0x90
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	str r0, [r5, #0x14]
 	mov r1, #1
 	bl sub_0200DD3C
@@ -15556,7 +15556,7 @@ _021EF082:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	add r2, r7, r2
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	str r0, [r4, #0x14]
 	mov r1, #1
 	bl sub_0200DD3C
@@ -15585,7 +15585,7 @@ ov101_021EF0C8: ; 0x021EF0C8
 	mov r4, #0
 _021EF0CE:
 	ldr r0, [r5, #0x14]
-	bl sub_0200D018
+	bl thunk_Sprite_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #9
@@ -18502,7 +18502,7 @@ _021F0766:
 	add r1, #0x90
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	add r1, r5, #0
 	add r1, #0x88
 	str r0, [r1]
@@ -18538,7 +18538,7 @@ _021F07B4:
 	add r1, #0x90
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	add r1, r4, #0
 	add r1, #0x88
 	str r0, [r1]
@@ -18583,7 +18583,7 @@ _021F07B4:
 	add r1, #0x90
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	add r1, r6, #0
 	add r1, #0xbc
 	str r0, [r1]
@@ -18617,7 +18617,7 @@ _021F086A:
 	add r0, r5, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_0200D018
+	bl thunk_Sprite_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0xe
@@ -27931,7 +27931,7 @@ _021F4E8E:
 	add r1, #0x90
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	str r0, [r5, #0x10]
 	mov r1, #1
 	bl sub_0200DD3C
@@ -27970,7 +27970,7 @@ ov101_021F4EE8: ; 0x021F4EE8
 	mov r4, #0
 _021F4EEE:
 	ldr r0, [r5, #0x10]
-	bl sub_0200D018
+	bl thunk_Sprite_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #5

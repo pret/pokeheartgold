@@ -12,8 +12,8 @@
 .public OverlayManager_GetArgs
 .public NARC_New
 .public NARC_Delete
-.public sub_0200D034
-.public sub_0200D108
+.public thunk_OamManager_ApplyAndResetBuffers
+.public SpriteRenderer_Delete
 .public sub_0200D998
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable

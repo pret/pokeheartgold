@@ -26,36 +26,31 @@ typedef struct UnkTemplate_0200D748 {
     s16 y;
     s16 z;
     u16 animation;
-    u32 unk_08;
+    u32 spritePriority;
     u32 pal;
     NNS_G2D_VRAM_TYPE vram;
-    u32 unk_14[GF_GFX_RES_TYPE_MAX];
-    u32 unk_2C;
-    u32 unk_30;
+    u32 resIdList[GF_GFX_RES_TYPE_MAX];
+    u32 bgPriority;
+    u32 vramTransfer;
 } UnkTemplate_0200D748; // size=0x34
 
-typedef struct UnkStruct_0200CF18 {
+typedef struct SpriteRenderer {
     HeapID heapId;
-    u32 unk_004;
-    BOOL unk_008;
+    u32 numGfxHandlers;
+    BOOL hasOamManager;
     NNSG2dCellTransferState* cellTransferState; // 00C
     GF_G2dRenderer renderer; // 010
-} UnkStruct_0200CF18; // size: 0x138
+} SpriteRenderer; // size: 0x138
 
-typedef struct UnkStruct_0200CF38_sub {
-    struct _2DGfxResObjList* obj_list;
-    struct _2DGfxResMan* manager;
-} UnkStruct_0200CF38_sub;
-
-typedef struct UnkStruct_0200CF38 {
+typedef struct SpriteGfxHandler {
     SpriteList* spriteList;
     ListOfUnkStruct_02009D48* listOfUnkStruct_9D48; // 4
     struct _2DGfxResHeader* _2dGfxResHeader; // 8
     struct _2DGfxResMan* _2dGfxResMan[GF_GFX_RES_TYPE_MAX]; // C
     struct _2DGfxResObjList* _2dGfxResObjList[GF_GFX_RES_TYPE_MAX]; // 24
-    int unk_3C[GF_GFX_RES_TYPE_MAX];
-    int unk_54;
-} UnkStruct_0200CF38; // size: 0x58
+    int numGfxResObjects[GF_GFX_RES_TYPE_MAX];
+    int numGfxResObjectTypes;
+} SpriteGfxHandler; // size: 0x58
 
 typedef struct Unk122_021E92FC {
     int unk0;
@@ -76,44 +71,52 @@ typedef struct Unk122_021E92D0 {
     int unk10;
 } Unk122_021E92D0;
 
-typedef struct Unk122_021E92E4 {
-    int unk0[GF_GFX_RES_TYPE_MAX];
-} Unk122_021E92E4;
+typedef union SpriteResourceCountsListUnion {
+    int asArray[GF_GFX_RES_TYPE_MAX];
+    struct {
+        int numChar;
+        int numPltt;
+        int numCell;
+        int numAnim;
+        int numMcel;
+        int numManm;
+    };
+} SpriteResourceCountsListUnion;
 
-UnkStruct_0200CF18* sub_0200CF18(HeapID);
-UnkStruct_0200CF38* sub_0200CF38(UnkStruct_0200CF18*);
-GF_G2dRenderer* sub_0200CF6C(UnkStruct_0200CF18*);
-BOOL sub_0200CF70(UnkStruct_0200CF18*, Unk122_021E92FC*, Unk122_021E92D0*, int);
-BOOL sub_0200CFF4(UnkStruct_0200CF18*, UnkStruct_0200CF38*, int);
-void sub_0200D018(Sprite* sprite);
-void sub_0200D020(UnkStruct_0200CF38*);
-void sub_0200D034(void);
+SpriteRenderer* SpriteRenderer_Create(HeapID);
+SpriteGfxHandler* SpriteRenderer_CreateGfxHandler(SpriteRenderer*);
+GF_G2dRenderer* SpriteRenderer_GetG2dRendererPtr(SpriteRenderer*);
+BOOL sub_0200CF70(SpriteRenderer* renderer, Unk122_021E92FC*, Unk122_021E92D0*, int);
+BOOL sub_0200CFF4(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, int);
+void thunk_Sprite_Delete(Sprite* sprite);
+void sub_0200D020(SpriteGfxHandler* gfxHandler);
+void thunk_OamManager_ApplyAndResetBuffers(void);
 void sub_0200D03C(void);
-void sub_0200D0E4(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1);
-void sub_0200D108(UnkStruct_0200CF18*);
-BOOL sub_0200D294(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, const u16* a2);
-BOOL sub_0200D2A4(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, const u16* a2, int a3, int a4);
-Sprite* sub_0200D2B4(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, const UnkStruct_0200D2B4* a2);
-BOOL sub_0200D3F8(UnkStruct_0200CF18*, UnkStruct_0200CF38*, Unk122_021E92E4*);
-BOOL sub_0200D4A4(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId, int fileId, BOOL compressed, int vram, int resId);
-BOOL sub_0200D504(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NARC* narc, int fileId, BOOL compressed, int vram, int resId);
-s8 sub_0200D564(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId sub_0200D564, int fileId, BOOL compressed, int pltt_num, int vram, int resId);
-s8 sub_0200D5D4(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NARC* sub_0200D564, int fileId, BOOL compressed, int pltt_num, int vram, int resId);
-u8 sub_0200D644(PaletteData* a0, u32 bufferId, UnkStruct_0200CF18* a2, UnkStruct_0200CF38* a3, NarcId narcId, int fileId, BOOL compressed, int pltt_num, int vram, int resId);
-u8 sub_0200D68C(PaletteData* a0, u32 bufferId, UnkStruct_0200CF18* a2, UnkStruct_0200CF38* a3, NARC* narc, int fileId, BOOL compressed, int pltt_num, int vram, int resId);
-BOOL sub_0200D6D4(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId, int fileId, BOOL compressed, int resId);
-BOOL sub_0200D6EC(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NARC* narc, int fileId, BOOL compressed, int resId);
-BOOL sub_0200D704(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId, int fileId, BOOL compressed, int resId);
-BOOL sub_0200D71C(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NARC* narc, int fileId, BOOL compressed, int resId);
-UnkImageStruct* sub_0200D734(UnkStruct_0200CF18*, UnkStruct_0200CF38*, struct UnkTemplate_0200D748*);
-UnkImageStruct* sub_0200D740(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, UnkTemplate_0200D748* a2, u32 a3);
-NNSG2dImagePaletteProxy* sub_0200D934(UnkStruct_0200CF38* a0, int id);
-int sub_0200D944(UnkStruct_0200CF38* a0, int id, int vram);
-BOOL sub_0200D958(UnkStruct_0200CF38* a0, u32 character);
-BOOL sub_0200D968(UnkStruct_0200CF38* a0, u32 pal);
-BOOL sub_0200D978(UnkStruct_0200CF38* a0, u32 cell);
-BOOL sub_0200D988(UnkStruct_0200CF38* a0, u32 animation);
-void sub_0200D998(UnkStruct_0200CF18*, UnkStruct_0200CF38*);
+void SpriteRenderer_RemoveGfxHandler(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler);
+void SpriteRenderer_Delete(SpriteRenderer*);
+BOOL sub_0200D294(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const u16* a2);
+BOOL sub_0200D2A4(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const u16* a2, int a3, int a4);
+Sprite* SpriteRenderer_CreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const UnkStruct_0200D2B4* a2);
+BOOL SpriteRenderer_Init2DGfxResManagersFromCountsArray(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, SpriteResourceCountsListUnion*);
+BOOL SpriteRenderer_LoadCharResObjFromNarcId(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int vram, int resId);
+BOOL SpriteRenderer_LoadCharResObjFromOpenNarc(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, int vram, int resId);
+s8 SpriteRenderer_LoadPlttResObjFromNarcId(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId SpriteRenderer_LoadPlttResObjFromNarcId, int fileId, BOOL compressed, int pltt_num, int vram, int resId);
+s8 SpriteRenderer_LoadPlttResObjFromOpenNarc(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* SpriteRenderer_LoadPlttResObjFromNarcId, int fileId, BOOL compressed, int pltt_num, int vram, int resId);
+u8 sub_0200D644(PaletteData* plttData, u32 bufferId, SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int pltt_num, int vram, int resId);
+u8 sub_0200D68C(PaletteData* plttData, u32 bufferId, SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, int pltt_num, int vram, int resId);
+BOOL SpriteRenderer_LoadCellResObjFromNarcId(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int resId);
+BOOL SpriteRenderer_LoadCellResObjFromOpenNarc(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, int resId);
+BOOL SpriteRenderer_LoadAnimResObjFromNarcId(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int resId);
+BOOL SpriteRenderer_LoadAnimResObjFromOpenNarc(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, int resId);
+UnkImageStruct* sub_0200D734(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, UnkTemplate_0200D748* unkTemplate);
+UnkImageStruct* sub_0200D740(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, UnkTemplate_0200D748* unkTemplate, fx32 yOffset);
+NNSG2dImagePaletteProxy* sub_0200D934(SpriteGfxHandler* gfxHandler, int id);
+int sub_0200D944(SpriteGfxHandler* gfxHandler, int id, int vram);
+BOOL SpriteGfxHandler_UnloadCharObjById(SpriteGfxHandler* gfxHandler, u32 character);
+BOOL SpriteGfxHandler_UnloadPlttObjById(SpriteGfxHandler* gfxHandler, u32 pal);
+BOOL SpriteGfxHandler_UnloadCellObjById(SpriteGfxHandler* gfxHandler, u32 cell);
+BOOL SpriteGfxHandler_UnloadAnimObjById(SpriteGfxHandler* gfxHandler, u32 animation);
+void sub_0200D998(SpriteRenderer* renderer, SpriteGfxHandler*);
 void sub_0200D9DC(UnkImageStruct*);
 void sub_0200DC0C(Sprite* sprite);
 void sub_0200DC18(UnkImageStruct*);
@@ -186,14 +189,14 @@ void sub_0200E0FC(UnkImageStruct* unk, GXOamMode mode);
 GXOamMode sub_0200E108(Sprite* sprite);
 GXOamMode sub_0200E110(UnkImageStruct* unk);
 u32 sub_0200E11C(UnkImageStruct* unk);
-BOOL sub_0200E128(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId, int fileId, BOOL compressed, int vram, int resId);
-BOOL sub_0200E188(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId, int fileId, BOOL compressed, int vram, int resId);
-BOOL sub_0200E1E8(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NARC* narc, int fileId, BOOL compressed, int vram, int resId);
-void sub_0200E248(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId, int fileId, BOOL compressed, int resId);
-void sub_0200E27C(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NarcId narcId, int fileId, BOOL compressed, int resId);
-SpriteList* sub_0200E2B0(UnkStruct_0200CF38* a0);
-void sub_0200E2B4(UnkStruct_0200CF38* a0, SpriteList* spriteList);
-void sub_0200E2B8(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NARC* narc, int fileId, BOOL compressed, int resId);
-void sub_0200E2EC(UnkStruct_0200CF18* a0, UnkStruct_0200CF38* a1, NARC* narc, int fileId, BOOL compressed, int resId);
+BOOL sub_0200E128(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int vram, int resId);
+BOOL sub_0200E188(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int vram, int resId);
+BOOL sub_0200E1E8(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, int vram, int resId);
+void sub_0200E248(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int resId);
+void sub_0200E27C(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int resId);
+SpriteList* sub_0200E2B0(SpriteGfxHandler* gfxHandler);
+void sub_0200E2B4(SpriteGfxHandler* gfxHandler, SpriteList* spriteList);
+void sub_0200E2B8(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, int resId);
+void sub_0200E2EC(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, int resId);
 
 #endif //POKEHEARTGOLD_UNK_0200CF18_H

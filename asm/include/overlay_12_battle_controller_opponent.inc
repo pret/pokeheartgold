@@ -33,10 +33,10 @@
 .public sub_020094E4
 .public StartBrightnessTransition
 .public IsBrightnessTransitionActive
-.public sub_0200D958
-.public sub_0200D968
-.public sub_0200D978
-.public sub_0200D988
+.public SpriteGfxHandler_UnloadCharObjById
+.public SpriteGfxHandler_UnloadPlttObjById
+.public SpriteGfxHandler_UnloadCellObjById
+.public SpriteGfxHandler_UnloadAnimObjById
 .public sub_0200D9DC
 .public sub_0200DC40
 .public sub_0200DC4C

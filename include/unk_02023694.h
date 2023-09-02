@@ -52,8 +52,8 @@ typedef struct Sprite {
 
 typedef struct UnkImageStruct {
     Sprite *sprite;
-    SpriteResourcesHeader *unk4;
-    ListOfUnkStruct_02009D48 *unk8;
+    SpriteResourcesHeader *spriteResourcesHeader;
+    ListOfUnkStruct_02009D48 *listOfUnkStruct_9D48;
     int vramTransfer;
 } UnkImageStruct;
 

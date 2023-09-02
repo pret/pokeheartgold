@@ -1691,7 +1691,7 @@ _021E660C:
 _021E6632:
 	add r0, r4, #0
 	bl ov100_021E69E8
-	bl sub_0200D034
+	bl thunk_OamManager_ApplyAndResetBuffers
 _021E663C:
 	bl GF_RunVramTransferTasks
 	ldr r0, [r4, #0x74]
@@ -2113,7 +2113,7 @@ ov100_021E6914: ; 0x021E6914
 	mov r0, #0x20
 	bl GF_CreateVramTransferManager
 	ldr r0, [r4]
-	bl sub_0200CF18
+	bl SpriteRenderer_Create
 	add r1, r4, #0
 	add r1, #0x8c
 	str r0, [r1]
@@ -2140,7 +2140,7 @@ ov100_021E6950: ; 0x021E6950
 	add r4, r0, #0
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl sub_0200D108
+	bl SpriteRenderer_Delete
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0x8c
@@ -2163,7 +2163,7 @@ ov100_021E6978: ; 0x021E6978
 	add r5, r1, #0
 	cmp r0, #0
 	beq _021E69BE
-	bl sub_0200CF38
+	bl SpriteRenderer_CreateGfxHandler
 	add r1, r4, #0
 	add r1, #0x90
 	str r0, [r1]
@@ -2206,7 +2206,7 @@ ov100_021E69C8: ; 0x021E69C8
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl sub_0200D0E4
+	bl SpriteRenderer_RemoveGfxHandler
 	mov r0, #0
 	add r4, #0x90
 	str r0, [r4]
@@ -2898,7 +2898,7 @@ _021E6F02:
 	ldr r0, [r0, #0x20]
 	cmp r0, #0
 	beq _021E6F14
-	bl sub_0200D018
+	bl thunk_Sprite_Delete
 _021E6F14:
 	add r0, r4, #1
 	lsl r0, r0, #0x10
@@ -2940,7 +2940,7 @@ _021E6F4C:
 	ldr r0, [r0, #0x20]
 	cmp r0, #0
 	beq _021E6F5E
-	bl sub_0200D018
+	bl thunk_Sprite_Delete
 _021E6F5E:
 	add r0, r4, #1
 	lsl r0, r0, #0x10

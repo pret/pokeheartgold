@@ -55,9 +55,9 @@
 .public BufferECWord
 .public BufferSafariZoneAreaName
 .public StringExpandPlaceholders
-.public sub_0200CF6C
-.public sub_0200D018
-.public sub_0200D2B4
+.public SpriteRenderer_GetG2dRendererPtr
+.public thunk_Sprite_Delete
+.public SpriteRenderer_CreateSprite
 .public sub_0200D934
 .public sub_0200DD3C
 .public sub_0200DD60

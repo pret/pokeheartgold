@@ -1895,11 +1895,11 @@ ov67_021E6820: ; 0x021E6820
 	sub sp, #0x5c
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl sub_0200CF18
+	bl SpriteRenderer_Create
 	ldr r1, _021E6974 ; =0x0000047C
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
-	bl sub_0200CF38
+	bl SpriteRenderer_CreateGfxHandler
 	mov r7, #0x12
 	lsl r7, r7, #6
 	add r2, sp, #0x3c
@@ -1947,10 +1947,10 @@ ov67_021E6820: ; 0x021E6820
 	ldr r0, [r5, r1]
 	add r1, r1, #4
 	ldr r1, [r5, r1]
-	bl sub_0200D3F8
+	bl SpriteRenderer_Init2DGfxResManagersFromCountsArray
 	sub r0, r7, #4
 	ldr r0, [r5, r0]
-	bl sub_0200CF6C
+	bl SpriteRenderer_GetG2dRendererPtr
 	mov r2, #2
 	mov r1, #0
 	lsl r2, r2, #0x14
@@ -1970,7 +1970,7 @@ ov67_021E6820: ; 0x021E6820
 	ldr r1, [r5, r1]
 	add r2, r4, #0
 	mov r3, #0
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2
@@ -1985,7 +1985,7 @@ ov67_021E6820: ; 0x021E6820
 	ldr r1, [r5, r1]
 	add r2, r4, #0
 	mov r3, #3
-	bl sub_0200D5D4
+	bl SpriteRenderer_LoadPlttResObjFromOpenNarc
 	mov r3, #1
 	ldr r0, _021E6984 ; =0x0000D158
 	str r3, [sp]
@@ -1995,7 +1995,7 @@ ov67_021E6820: ; 0x021E6820
 	add r1, r1, #4
 	ldr r1, [r5, r1]
 	add r2, r4, #0
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	ldr r0, _021E6984 ; =0x0000D158
@@ -2006,7 +2006,7 @@ ov67_021E6820: ; 0x021E6820
 	ldr r1, [r5, r1]
 	add r2, r4, #0
 	mov r3, #2
-	bl sub_0200D71C
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
 	add r0, r4, #0
 	bl NARC_Delete
 	ldr r6, _021E6988 ; =ov67_021E6F50
@@ -2086,7 +2086,7 @@ _021E69AA:
 	ldr r1, _021E69D4 ; =0x0000047C
 	ldr r0, [sp]
 	ldr r0, [r0, r1]
-	bl sub_0200D108
+	bl SpriteRenderer_Delete
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E69D0: .word 0x00000484
@@ -2118,10 +2118,10 @@ _021E69FC: .word 0x00000484
 
 	thumb_func_start ov67_021E6A00
 ov67_021E6A00: ; 0x021E6A00
-	ldr r3, _021E6A04 ; =sub_0200D034
+	ldr r3, _021E6A04 ; =thunk_OamManager_ApplyAndResetBuffers
 	bx r3
 	.balign 4, 0
-_021E6A04: .word sub_0200D034
+_021E6A04: .word thunk_OamManager_ApplyAndResetBuffers
 	thumb_func_end ov67_021E6A00
 
 	thumb_func_start ov67_021E6A08

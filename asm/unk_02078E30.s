@@ -1106,7 +1106,7 @@ sub_020796B8: ; 0x020796B8
 	ldr r0, [r4]
 	bl DoScheduledBgGpuUpdates
 	bl GF_RunVramTransferTasks
-	bl sub_0200D034
+	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r3, _020796F8 ; =OS_IRQTable
 	ldr r1, _020796FC ; =0x00003FF8
 	mov r0, #1

@@ -25,7 +25,7 @@ ov12_02264824: ; 0x02264824
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	str r4, [sp]
 	mov r0, #0x47
 	str r0, [sp, #4]
@@ -48,7 +48,7 @@ ov12_02264824: ; 0x02264824
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	ldr r3, [r7, #0x20]
 	mov r0, #1
 	str r0, [sp]
@@ -56,7 +56,7 @@ ov12_02264824: ; 0x02264824
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_0200D71C
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
 	str r4, [sp]
 	mov r0, #0x47
 	str r0, [sp, #4]
@@ -122,7 +122,7 @@ ov12_022648EC: ; 0x022648EC
 	add r0, r6, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	str r5, [sp]
 	mov r0, #0x47
 	str r0, [sp, #4]
@@ -145,7 +145,7 @@ ov12_022648EC: ; 0x022648EC
 	add r0, r6, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	ldr r3, [r4, #0x20]
 	mov r0, #1
 	str r0, [sp]
@@ -153,7 +153,7 @@ ov12_022648EC: ; 0x022648EC
 	add r1, r7, #0
 	add r2, r5, #0
 	str r3, [sp, #4]
-	bl sub_0200D71C
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
 _0226495E:
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
@@ -447,13 +447,13 @@ ov12_02264B60: ; 0x02264B60
 	bl ov12_0223A8EC
 	ldr r1, [r4, #0x14]
 	add r5, r0, #0
-	bl sub_0200D958
+	bl SpriteGfxHandler_UnloadCharObjById
 	ldr r1, [r4, #0x1c]
 	add r0, r5, #0
-	bl sub_0200D978
+	bl SpriteGfxHandler_UnloadCellObjById
 	ldr r1, [r4, #0x20]
 	add r0, r5, #0
-	bl sub_0200D988
+	bl SpriteGfxHandler_UnloadAnimObjById
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_02264B60
 
@@ -472,13 +472,13 @@ ov12_02264B94: ; 0x02264B94
 	bl ov12_0223A8EC
 	ldr r1, [r4, #0x14]
 	add r5, r0, #0
-	bl sub_0200D958
+	bl SpriteGfxHandler_UnloadCharObjById
 	ldr r1, [r4, #0x1c]
 	add r0, r5, #0
-	bl sub_0200D978
+	bl SpriteGfxHandler_UnloadCellObjById
 	ldr r1, [r4, #0x20]
 	add r0, r5, #0
-	bl sub_0200D988
+	bl SpriteGfxHandler_UnloadAnimObjById
 _02264BC8:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

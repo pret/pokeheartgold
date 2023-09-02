@@ -9569,28 +9569,28 @@ _0225D2E6:
 	ldrb r2, [r2, r1]
 	ldr r1, _0225D4FC ; =0x00004E2F
 	add r1, r2, r1
-	bl sub_0200D958
+	bl SpriteGfxHandler_UnloadCharObjById
 	ldr r2, [r4, #4]
 	ldr r1, _0225D4F8 ; =0x00000195
 	add r0, r5, #0
 	ldrb r2, [r2, r1]
 	ldr r1, _0225D500 ; =0x00004E2A
 	add r1, r2, r1
-	bl sub_0200D968
+	bl SpriteGfxHandler_UnloadPlttObjById
 	ldr r2, [r4, #4]
 	ldr r1, _0225D4F8 ; =0x00000195
 	add r0, r5, #0
 	ldrb r2, [r2, r1]
 	ldr r1, _0225D504 ; =0x00004E27
 	add r1, r2, r1
-	bl sub_0200D978
+	bl SpriteGfxHandler_UnloadCellObjById
 	ldr r2, [r4, #4]
 	ldr r1, _0225D4F8 ; =0x00000195
 	add r0, r5, #0
 	ldrb r2, [r2, r1]
 	ldr r1, _0225D504 ; =0x00004E27
 	add r1, r2, r1
-	bl sub_0200D988
+	bl SpriteGfxHandler_UnloadAnimObjById
 	mov r0, #6
 	add sp, #0x30
 	strb r0, [r4, #0xa]
@@ -9769,21 +9769,21 @@ _0225D49C:
 	ldrb r2, [r2, r1]
 	ldr r1, _0225D4FC ; =0x00004E2F
 	add r1, r2, r1
-	bl sub_0200D958
+	bl SpriteGfxHandler_UnloadCharObjById
 	ldr r2, [r4, #4]
 	ldr r1, _0225D4F8 ; =0x00000195
 	add r0, r5, #0
 	ldrb r2, [r2, r1]
 	ldr r1, _0225D500 ; =0x00004E2A
 	add r1, r2, r1
-	bl sub_0200D968
+	bl SpriteGfxHandler_UnloadPlttObjById
 	ldr r2, [r4, #4]
 	ldr r1, _0225D4F8 ; =0x00000195
 	add r0, r5, #0
 	ldrb r2, [r2, r1]
 	ldr r1, _0225D504 ; =0x00004E27
 	add r1, r2, r1
-	bl sub_0200D978
+	bl SpriteGfxHandler_UnloadCellObjById
 	ldr r2, [r4, #4]
 	ldr r1, _0225D4F8 ; =0x00000195
 	add r0, r5, #0
@@ -9802,7 +9802,7 @@ _0225D50C: .word 0x00007FFF
 _0225D510: .word ov12_0226D1EA
 _0225D514:
 	add r1, r2, r1
-	bl sub_0200D988
+	bl SpriteGfxHandler_UnloadAnimObjById
 	mov r0, #6
 	add sp, #0x30
 	strb r0, [r4, #0xa]
@@ -10001,28 +10001,28 @@ _0225D694:
 	ldrb r2, [r2, r1]
 	ldr r1, _0225D878 ; =0x00004E2F
 	add r1, r2, r1
-	bl sub_0200D958
+	bl SpriteGfxHandler_UnloadCharObjById
 	ldr r2, [r5, #4]
 	ldr r1, _0225D874 ; =0x00000195
 	add r0, r4, #0
 	ldrb r2, [r2, r1]
 	ldr r1, _0225D87C ; =0x00004E2A
 	add r1, r2, r1
-	bl sub_0200D968
+	bl SpriteGfxHandler_UnloadPlttObjById
 	ldr r2, [r5, #4]
 	ldr r1, _0225D874 ; =0x00000195
 	add r0, r4, #0
 	ldrb r2, [r2, r1]
 	ldr r1, _0225D880 ; =0x00004E27
 	add r1, r2, r1
-	bl sub_0200D978
+	bl SpriteGfxHandler_UnloadCellObjById
 	ldr r2, [r5, #4]
 	ldr r1, _0225D874 ; =0x00000195
 	add r0, r4, #0
 	ldrb r2, [r2, r1]
 	ldr r1, _0225D880 ; =0x00004E27
 	add r1, r2, r1
-	bl sub_0200D988
+	bl SpriteGfxHandler_UnloadAnimObjById
 	mov r0, #2
 	strb r0, [r5, #0xa]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -10164,28 +10164,28 @@ _0225D7F2:
 	ldrb r2, [r2, r1]
 	ldr r1, _0225D878 ; =0x00004E2F
 	add r1, r2, r1
-	bl sub_0200D958
+	bl SpriteGfxHandler_UnloadCharObjById
 	ldr r2, [r5, #4]
 	ldr r1, _0225D874 ; =0x00000195
 	add r0, r4, #0
 	ldrb r2, [r2, r1]
 	ldr r1, _0225D87C ; =0x00004E2A
 	add r1, r2, r1
-	bl sub_0200D968
+	bl SpriteGfxHandler_UnloadPlttObjById
 	ldr r2, [r5, #4]
 	ldr r1, _0225D874 ; =0x00000195
 	add r0, r4, #0
 	ldrb r2, [r2, r1]
 	ldr r1, _0225D880 ; =0x00004E27
 	add r1, r2, r1
-	bl sub_0200D978
+	bl SpriteGfxHandler_UnloadCellObjById
 	ldr r2, [r5, #4]
 	ldr r1, _0225D874 ; =0x00000195
 	add r0, r4, #0
 	ldrb r2, [r2, r1]
 	ldr r1, _0225D880 ; =0x00004E27
 	add r1, r2, r1
-	bl sub_0200D988
+	bl SpriteGfxHandler_UnloadAnimObjById
 	mov r0, #2
 	strb r0, [r5, #0xa]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -10289,28 +10289,28 @@ _0225D90E:
 	ldrb r2, [r2, r1]
 	ldr r1, _0225D984 ; =0x00004E2F
 	add r1, r2, r1
-	bl sub_0200D958
+	bl SpriteGfxHandler_UnloadCharObjById
 	ldr r2, [r5, #4]
 	ldr r1, _0225D980 ; =0x00000195
 	add r0, r4, #0
 	ldrb r2, [r2, r1]
 	ldr r1, _0225D988 ; =0x00004E2A
 	add r1, r2, r1
-	bl sub_0200D968
+	bl SpriteGfxHandler_UnloadPlttObjById
 	ldr r2, [r5, #4]
 	ldr r1, _0225D980 ; =0x00000195
 	add r0, r4, #0
 	ldrb r2, [r2, r1]
 	ldr r1, _0225D98C ; =0x00004E27
 	add r1, r2, r1
-	bl sub_0200D978
+	bl SpriteGfxHandler_UnloadCellObjById
 	ldr r2, [r5, #4]
 	ldr r1, _0225D980 ; =0x00000195
 	add r0, r4, #0
 	ldrb r2, [r2, r1]
 	ldr r1, _0225D98C ; =0x00004E27
 	add r1, r2, r1
-	bl sub_0200D988
+	bl SpriteGfxHandler_UnloadAnimObjById
 	ldrb r1, [r5, #9]
 	ldrb r2, [r5, #8]
 	ldr r0, [r5]

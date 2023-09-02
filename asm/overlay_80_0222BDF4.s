@@ -6718,7 +6718,7 @@ ov80_0222F030: ; 0x0222F030
 	add r1, r6, #0
 	mov r3, #0x70
 	str r4, [sp, #8]
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	ldr r0, [sp, #0x30]
 	mov r1, #2
 	str r0, [sp]
@@ -6741,7 +6741,7 @@ ov80_0222F030: ; 0x0222F030
 	add r1, r6, #0
 	mov r3, #0x71
 	str r4, [sp, #4]
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	ldr r2, [sp, #0x30]
@@ -6749,7 +6749,7 @@ ov80_0222F030: ; 0x0222F030
 	add r1, r6, #0
 	mov r3, #0x72
 	str r4, [sp, #4]
-	bl sub_0200D71C
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
 	ldr r0, [sp, #0x30]
 	bl NARC_Delete
 	add r0, sp, #0x38
@@ -6901,16 +6901,16 @@ ov80_0222F1D0: ; 0x0222F1D0
 	str r0, [r4, r7]
 	ldr r0, [r5, #0x38]
 	add r1, r6, #0
-	bl sub_0200D958
+	bl SpriteGfxHandler_UnloadCharObjById
 	ldr r0, [r5, #0x38]
 	add r1, r6, #0
-	bl sub_0200D968
+	bl SpriteGfxHandler_UnloadPlttObjById
 	ldr r0, [r5, #0x38]
 	add r1, r6, #0
-	bl sub_0200D978
+	bl SpriteGfxHandler_UnloadCellObjById
 	ldr r0, [r5, #0x38]
 	add r1, r6, #0
-	bl sub_0200D988
+	bl SpriteGfxHandler_UnloadAnimObjById
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0222F20C: .word 0x0000C350
@@ -6949,7 +6949,7 @@ ov80_0222F210: ; 0x0222F210
 	ldr r0, [r4, #0x34]
 	ldr r1, [r4, #0x38]
 	mov r2, #0x14
-	bl sub_0200D6D4
+	bl SpriteRenderer_LoadCellResObjFromNarcId
 	bl sub_020744A4
 	add r3, r0, #0
 	mov r0, #0
@@ -6960,7 +6960,7 @@ ov80_0222F210: ; 0x0222F210
 	ldr r0, [r4, #0x34]
 	ldr r1, [r4, #0x38]
 	mov r2, #0x14
-	bl sub_0200D704
+	bl SpriteRenderer_LoadAnimResObjFromNarcId
 	add sp, #0x18
 	pop {r4, pc}
 	.balign 4, 0
@@ -6973,15 +6973,15 @@ ov80_0222F278: ; 0x0222F278
 	mov r1, #0x7d
 	ldr r0, [r4, #0x38]
 	lsl r1, r1, #4
-	bl sub_0200D978
+	bl SpriteGfxHandler_UnloadCellObjById
 	mov r1, #0x7d
 	ldr r0, [r4, #0x38]
 	lsl r1, r1, #4
-	bl sub_0200D988
+	bl SpriteGfxHandler_UnloadAnimObjById
 	mov r1, #0x7d
 	ldr r0, [r4, #0x38]
 	lsl r1, r1, #4
-	bl sub_0200D968
+	bl SpriteGfxHandler_UnloadPlttObjById
 	pop {r4, pc}
 	thumb_func_end ov80_0222F278
 
@@ -7059,7 +7059,7 @@ ov80_0222F324: ; 0x0222F324
 	lsl r1, r1, #4
 	ldr r0, [r0, #0x38]
 	add r1, r2, r1
-	bl sub_0200D958
+	bl SpriteGfxHandler_UnloadCharObjById
 	add r0, r4, #0
 	bl sub_0200D9DC
 	pop {r4, pc}
@@ -7098,7 +7098,7 @@ ov80_0222F33C: ; 0x0222F33C
 	str r0, [sp, #4]
 	ldr r0, [r5, #0x34]
 	ldr r1, [r5, #0x38]
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	bl sub_0207CAA8
 	add r3, r0, #0
 	mov r0, #0
@@ -7108,7 +7108,7 @@ ov80_0222F33C: ; 0x0222F33C
 	str r0, [sp, #4]
 	ldr r0, [r5, #0x34]
 	ldr r1, [r5, #0x38]
-	bl sub_0200D71C
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
 	bl sub_0207CA9C
 	add r3, r0, #0
 	mov r0, #0
@@ -7136,16 +7136,16 @@ ov80_0222F3CC: ; 0x0222F3CC
 	add r4, r0, #0
 	ldr r0, [r4, #0x38]
 	ldr r1, _0222F3F4 ; =0x000007D9
-	bl sub_0200D958
+	bl SpriteGfxHandler_UnloadCharObjById
 	ldr r0, [r4, #0x38]
 	ldr r1, _0222F3F8 ; =0x000007D1
-	bl sub_0200D978
+	bl SpriteGfxHandler_UnloadCellObjById
 	ldr r0, [r4, #0x38]
 	ldr r1, _0222F3F8 ; =0x000007D1
-	bl sub_0200D988
+	bl SpriteGfxHandler_UnloadAnimObjById
 	ldr r0, [r4, #0x38]
 	ldr r1, _0222F3F8 ; =0x000007D1
-	bl sub_0200D968
+	bl SpriteGfxHandler_UnloadPlttObjById
 	pop {r4, pc}
 	nop
 _0222F3F4: .word 0x000007D9

@@ -1450,7 +1450,7 @@ ov106_021E63E0: ; 0x021E63E0
 	bl ov106_021E6A34
 	ldr r0, [r4]
 	bl DoScheduledBgGpuUpdates
-	bl sub_0200D034
+	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r3, _021E6400 ; =0x027E0000
 	ldr r1, _021E6404 ; =0x00003FF8
 	mov r0, #1
@@ -1600,9 +1600,9 @@ ov106_021E6520: ; 0x021E6520
 	ldr r0, _021E661C ; =0x00000418
 	ldr r4, [r7, r0]
 	mov r0, #0x99
-	bl sub_0200CF18
+	bl SpriteRenderer_Create
 	str r0, [r4, #8]
-	bl sub_0200CF38
+	bl SpriteRenderer_CreateGfxHandler
 	add r2, sp, #0x3c
 	ldr r3, _021E6620 ; =ov106_021E6FC8
 	str r0, [r4, #0xc]
@@ -1643,9 +1643,9 @@ ov106_021E6520: ; 0x021E6520
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
 	add r2, sp, #0x10
-	bl sub_0200D3F8
+	bl SpriteRenderer_Init2DGfxResManagersFromCountsArray
 	ldr r0, [r4, #8]
-	bl sub_0200CF6C
+	bl SpriteRenderer_GetG2dRendererPtr
 	mov r2, #1
 	mov r1, #0
 	lsl r2, r2, #0x16
@@ -1658,7 +1658,7 @@ ov106_021E6520: ; 0x021E6520
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
 	ldr r2, [r4, #4]
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	ldr r0, _021E662C ; =0x0000C8E9
@@ -1667,7 +1667,7 @@ ov106_021E6520: ; 0x021E6520
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
 	ldr r2, [r4, #4]
-	bl sub_0200D71C
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #1
@@ -1679,7 +1679,7 @@ ov106_021E6520: ; 0x021E6520
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
 	ldr r2, [r4, #4]
-	bl sub_0200D5D4
+	bl SpriteRenderer_LoadPlttResObjFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1689,7 +1689,7 @@ ov106_021E6520: ; 0x021E6520
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
 	ldr r2, [r4, #4]
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
 	ldr r2, _021E6630 ; =ov106_021E7010
@@ -1739,7 +1739,7 @@ ov106_021E664C: ; 0x021E664C
 	ldr r1, [r4, #0xc]
 	bl sub_0200D998
 	ldr r0, [r4, #8]
-	bl sub_0200D108
+	bl SpriteRenderer_Delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov106_021E664C

@@ -19,7 +19,7 @@ sub_020863F4: ; 0x020863F4
 	sub sp, #0x4c
 	add r4, r0, #0
 	mov r0, #0x6c
-	bl sub_0200CF18
+	bl SpriteRenderer_Create
 	mov r7, #0x2f
 	lsl r7, r7, #4
 	add r2, sp, #0x2c
@@ -57,7 +57,7 @@ sub_020863F4: ; 0x020863F4
 	stmia r2!, {r0, r1}
 	add r0, r7, #0
 	ldr r0, [r4, r0]
-	bl sub_0200CF38
+	bl SpriteRenderer_CreateGfxHandler
 	add r1, r7, #4
 	str r0, [r4, r1]
 	sub r0, r1, #4
@@ -75,7 +75,7 @@ _02086468:
 	add r1, r1, #4
 	ldr r1, [r4, r1]
 	add r2, sp, #0
-	bl sub_0200D3F8
+	bl SpriteRenderer_Init2DGfxResManagersFromCountsArray
 	cmp r0, #0
 	bne _02086480
 	bl GF_AssertFail
@@ -198,7 +198,7 @@ sub_02086490: ; 0x02086490
 	add r0, r6, #0
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0xfa
@@ -208,7 +208,7 @@ sub_02086490: ; 0x02086490
 	add r1, r5, #0
 	add r2, r4, #0
 	mov r3, #2
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0xfa
@@ -218,7 +218,7 @@ sub_02086490: ; 0x02086490
 	add r1, r5, #0
 	add r2, r4, #0
 	mov r3, #3
-	bl sub_0200D71C
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
 	str r4, [sp]
 	mov r0, #5
 	str r0, [sp, #4]
@@ -244,7 +244,7 @@ sub_02086490: ; 0x02086490
 	add r0, r6, #0
 	add r2, r4, #0
 	mov r3, #4
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _020866C4 ; =0x000003E9
@@ -253,7 +253,7 @@ sub_02086490: ; 0x02086490
 	add r0, r6, #0
 	add r2, r4, #0
 	mov r3, #6
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _020866C4 ; =0x000003E9
@@ -262,7 +262,7 @@ sub_02086490: ; 0x02086490
 	add r0, r6, #0
 	add r2, r4, #0
 	mov r3, #7
-	bl sub_0200D71C
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
 	str r4, [sp]
 	mov r0, #9
 	str r0, [sp, #4]
@@ -288,7 +288,7 @@ sub_02086490: ; 0x02086490
 	add r0, r6, #0
 	add r2, r4, #0
 	mov r3, #8
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _020866C8 ; =0x000003EA
@@ -297,7 +297,7 @@ sub_02086490: ; 0x02086490
 	add r0, r6, #0
 	add r2, r4, #0
 	mov r3, #0xa
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _020866C8 ; =0x000003EA
@@ -306,7 +306,7 @@ sub_02086490: ; 0x02086490
 	add r0, r6, #0
 	add r2, r4, #0
 	mov r3, #0xb
-	bl sub_0200D71C
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
 	mov r0, #0xf6
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]

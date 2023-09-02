@@ -28,12 +28,12 @@ sub_0208B1AC: ; 0x0208B1AC
 	mov r1, #0x13
 	bl GF_CreateVramTransferManager
 	mov r0, #0x13
-	bl sub_0200CF18
+	bl SpriteRenderer_Create
 	mov r1, #0xff
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
-	bl sub_0200CF38
+	bl SpriteRenderer_CreateGfxHandler
 	mov r7, #1
 	lsl r7, r7, #0xa
 	add r2, sp, #0x24
@@ -102,11 +102,11 @@ sub_0208B258: ; 0x0208B258
 	ldr r0, [r4, r1]
 	add r1, r1, #4
 	ldr r1, [r4, r1]
-	bl sub_0200D0E4
+	bl SpriteRenderer_RemoveGfxHandler
 	mov r0, #0xff
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200D108
+	bl SpriteRenderer_Delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_0208B258
@@ -160,7 +160,7 @@ _0208B2CA:
 	ldr r0, [r5, r0]
 	ldr r1, [r5, r1]
 	add r2, r6, r2
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	lsl r1, r4, #2
 	add r1, r5, r1
 	str r0, [r1, r7]

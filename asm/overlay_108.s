@@ -3397,7 +3397,7 @@ _021E73A4:
 	add r1, r1, #4
 	ldr r1, [r5, r1]
 	ldr r2, _021E7500 ; =ov108_021EA7F8
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	mov r1, #0xd5
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3407,7 +3407,7 @@ _021E73A4:
 	ldr r0, [r5, r0]
 	ldr r1, [r5, r1]
 	ldr r2, _021E7500 ; =ov108_021EA7F8
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	mov r1, #0xd6
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3417,7 +3417,7 @@ _021E73A4:
 	ldr r0, [r5, r0]
 	ldr r1, [r5, r1]
 	ldr r2, _021E7500 ; =ov108_021EA7F8
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	mov r1, #0x36
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -3427,7 +3427,7 @@ _021E73A4:
 	ldr r0, [r5, r0]
 	ldr r1, [r5, r1]
 	ldr r2, _021E7504 ; =ov108_021EA820
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	mov r1, #0xd7
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3437,7 +3437,7 @@ _021E73A4:
 	ldr r0, [r5, r0]
 	ldr r1, [r5, r1]
 	ldr r2, _021E7508 ; =ov108_021EA848
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	mov r1, #0xd9
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3447,7 +3447,7 @@ _021E73A4:
 	ldr r0, [r5, r0]
 	ldr r1, [r5, r1]
 	ldr r2, _021E750C ; =ov108_021EA870
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	mov r1, #0xda
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3515,27 +3515,27 @@ ov108_021E7510: ; 0x021E7510
 	mov r0, #0xd5
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200D018
+	bl thunk_Sprite_Delete
 	mov r0, #0xd6
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200D018
+	bl thunk_Sprite_Delete
 	mov r0, #0xd7
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200D018
+	bl thunk_Sprite_Delete
 	mov r0, #0x36
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0200D018
+	bl thunk_Sprite_Delete
 	mov r0, #0xd9
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200D018
+	bl thunk_Sprite_Delete
 	mov r0, #0xda
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200D018
+	bl thunk_Sprite_Delete
 	mov r6, #0xdb
 	mov r4, #0
 	lsl r6, r6, #2
@@ -5336,7 +5336,7 @@ ov108_021E838C: ; 0x021E838C
 	mov r0, #0x20
 	bl GF_CreateVramTransferManager
 	ldr r0, [r4]
-	bl sub_0200CF18
+	bl SpriteRenderer_Create
 	mov r1, #0xd3
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -5362,7 +5362,7 @@ ov108_021E83C8: ; 0x021E83C8
 	mov r0, #0xd3
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200D108
+	bl SpriteRenderer_Delete
 	mov r0, #0xd3
 	mov r1, #0
 	lsl r0, r0, #2
@@ -5385,7 +5385,7 @@ ov108_021E83F0: ; 0x021E83F0
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E8442
-	bl sub_0200CF38
+	bl SpriteRenderer_CreateGfxHandler
 	mov r1, #0x35
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -5431,7 +5431,7 @@ ov108_021E844C: ; 0x021E844C
 	beq _021E846A
 	sub r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0200D0E4
+	bl SpriteRenderer_RemoveGfxHandler
 	mov r0, #0x35
 	mov r1, #0
 	lsl r0, r0, #4
@@ -5470,7 +5470,7 @@ ov108_021E8490: ; 0x021E8490
 	ldr r0, [r0, r1]
 	cmp r0, #0
 	beq _021E84A0
-	bl sub_0200D034
+	bl thunk_OamManager_ApplyAndResetBuffers
 _021E84A0:
 	pop {r3, pc}
 	.balign 4, 0
@@ -7957,7 +7957,7 @@ _021E97F4:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E9800
-	bl sub_0200D034
+	bl thunk_OamManager_ApplyAndResetBuffers
 _021E9800:
 	bl GF_RunVramTransferTasks
 	ldr r0, _021E9824 ; =0x00000438
@@ -8689,7 +8689,7 @@ ov108_021E9E10: ; 0x021E9E10
 	mov r0, #0x20
 	bl GF_CreateVramTransferManager
 	ldr r0, [r4]
-	bl sub_0200CF18
+	bl SpriteRenderer_Create
 	ldr r1, _021E9E70 ; =0x0000043C
 	ldr r2, _021E9E74 ; =ov108_021EAAD0
 	str r0, [r4, r1]
@@ -8699,7 +8699,7 @@ ov108_021E9E10: ; 0x021E9E10
 	bl sub_0200CF70
 	ldr r0, _021E9E70 ; =0x0000043C
 	ldr r0, [r4, r0]
-	bl sub_0200CF38
+	bl SpriteRenderer_CreateGfxHandler
 	mov r1, #0x11
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -8737,10 +8737,10 @@ ov108_021E9E80: ; 0x021E9E80
 	ldr r0, [r4, r1]
 	add r1, r1, #4
 	ldr r1, [r4, r1]
-	bl sub_0200D0E4
+	bl SpriteRenderer_RemoveGfxHandler
 	ldr r0, _021E9EB4 ; =0x0000043C
 	ldr r0, [r4, r0]
-	bl sub_0200D108
+	bl SpriteRenderer_Delete
 	ldr r0, _021E9EB4 ; =0x0000043C
 	mov r1, #0
 	str r1, [r4, r0]
@@ -8770,7 +8770,7 @@ _021E9EC2:
 	ldr r0, [r6, r0]
 	ldr r1, [r6, r1]
 	add r2, r4, #0
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	ldr r1, _021E9F00 ; =0x00000444
 	str r0, [r5, r1]
 	add r0, r1, #0
@@ -8801,7 +8801,7 @@ ov108_021E9F04: ; 0x021E9F04
 	mov r4, #0
 _021E9F0C:
 	ldr r0, [r5, r6]
-	bl sub_0200D018
+	bl thunk_Sprite_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4

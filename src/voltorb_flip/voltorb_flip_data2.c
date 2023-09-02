@@ -35,7 +35,7 @@ const Unk122_021E92D0 ov122_021E92D0 = {
     0x00000010,
 };
 
-const Unk122_021E92E4 ov122_021E92E4 = { 2, 2, 2, 2, 0, 0 };
+const SpriteResourceCountsListUnion ov122_021E92E4 = { 2, 2, 2, 2, 0, 0 };
 
 const Unk122_021E92FC ov122_021E92FC = { 0, 0x7e, 0, 0x20, 1, 0x7e, 0, 0x20 };
 

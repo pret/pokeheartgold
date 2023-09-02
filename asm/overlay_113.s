@@ -1290,7 +1290,7 @@ ov113_021E62B0: ; 0x021E62B0
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _021E62C0
-	bl sub_0200D034
+	bl thunk_OamManager_ApplyAndResetBuffers
 _021E62C0:
 	bl GF_RunVramTransferTasks
 	ldr r0, [r4, #0x40]
@@ -1864,7 +1864,7 @@ ov113_021E677C: ; 0x021E677C
 	mov r0, #0x20
 	bl GF_CreateVramTransferManager
 	ldr r0, [r5]
-	bl sub_0200CF18
+	bl SpriteRenderer_Create
 	add r1, r5, #0
 	add r1, #0xac
 	str r0, [r1]
@@ -1882,7 +1882,7 @@ ov113_021E677C: ; 0x021E677C
 	add r0, r5, #0
 	add r0, #0xac
 	ldr r0, [r0]
-	bl sub_0200CF38
+	bl SpriteRenderer_CreateGfxHandler
 	add r1, r5, #0
 	add r1, #0xb0
 	str r0, [r1]
@@ -1915,7 +1915,7 @@ ov113_021E677C: ; 0x021E677C
 	add r0, r5, #0
 	add r0, #0xac
 	ldr r0, [r0]
-	bl sub_0200CF38
+	bl SpriteRenderer_CreateGfxHandler
 	add r1, r5, #0
 	add r1, #0xb4
 	str r0, [r1]
@@ -1926,7 +1926,7 @@ ov113_021E677C: ; 0x021E677C
 	ldr r0, [r0]
 	ldr r1, [r1]
 	add r2, sp, #0x10
-	bl sub_0200D3F8
+	bl SpriteRenderer_Init2DGfxResManagersFromCountsArray
 	add r0, r5, #0
 	add r0, #0xb0
 	ldr r0, [r0]
@@ -1960,7 +1960,7 @@ ov113_021E677C: ; 0x021E677C
 	ldr r0, [r0]
 	ldr r1, [r1]
 	ldr r2, [r2]
-	bl sub_0200D5D4
+	bl SpriteRenderer_LoadPlttResObjFromOpenNarc
 	bl sub_02074494
 	add r3, r0, #0
 	mov r0, #0
@@ -1976,7 +1976,7 @@ ov113_021E677C: ; 0x021E677C
 	ldr r0, [r0]
 	ldr r1, [r1]
 	ldr r2, [r2]
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	bl sub_020744A0
 	add r3, r0, #0
 	mov r0, #0
@@ -1990,7 +1990,7 @@ ov113_021E677C: ; 0x021E677C
 	ldr r0, [r0]
 	ldr r1, [r1]
 	mov r2, #0x14
-	bl sub_0200D704
+	bl SpriteRenderer_LoadAnimResObjFromNarcId
 	mov r4, #0
 	add r6, r4, #0
 	mov r7, #2
@@ -2013,7 +2013,7 @@ _021E68B4:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	ldr r2, [r2]
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	add r4, r4, #1
 	cmp r4, #7
 	blt _021E68B4
@@ -2039,7 +2039,7 @@ _021E68EA:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	ldr r2, [r2]
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	add r4, r4, #1
 	cmp r4, #0xe
 	blt _021E68EA
@@ -2068,7 +2068,7 @@ ov113_021E6930: ; 0x021E6930
 	add r1, #0xb0
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D0E4
+	bl SpriteRenderer_RemoveGfxHandler
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0xb4
@@ -2083,7 +2083,7 @@ ov113_021E6930: ; 0x021E6930
 	add r0, r4, #0
 	add r0, #0xac
 	ldr r0, [r0]
-	bl sub_0200D108
+	bl SpriteRenderer_Delete
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0xac
@@ -2144,7 +2144,7 @@ _021E69D8:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	add r2, r6, #0
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	add r1, r4, #0
 	add r1, #0xb8
 	str r0, [r1]

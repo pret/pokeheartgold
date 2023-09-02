@@ -330,7 +330,7 @@ ov53_021E5BCC: ; 0x021E5BCC
 	push {r3, lr}
 	ldr r0, [r0, #0x18]
 	bl DoScheduledBgGpuUpdates
-	bl sub_0200D034
+	bl thunk_OamManager_ApplyAndResetBuffers
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov53_021E5BCC
@@ -4714,14 +4714,14 @@ ov53_021E7F24: ; 0x021E7F24
 	mov r1, #0x50
 	bl GF_CreateVramTransferManager
 	mov r0, #0x50
-	bl sub_0200CF18
+	bl SpriteRenderer_Create
 	add r1, r4, #0
 	add r1, #0xd0
 	str r0, [r1]
 	add r0, r4, #0
 	add r0, #0xd0
 	ldr r0, [r0]
-	bl sub_0200CF38
+	bl SpriteRenderer_CreateGfxHandler
 	add r1, r4, #0
 	add r1, #0xd4
 	add r2, sp, #0x24
@@ -4762,7 +4762,7 @@ ov53_021E7F24: ; 0x021E7F24
 	add r0, r4, #0
 	add r0, #0xd0
 	ldr r0, [r0]
-	bl sub_0200CF6C
+	bl SpriteRenderer_GetG2dRendererPtr
 	mov r2, #3
 	mov r1, #0
 	lsl r2, r2, #0x12
@@ -4801,11 +4801,11 @@ ov53_021E7FEC: ; 0x021E7FEC
 	add r1, #0xd4
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D0E4
+	bl SpriteRenderer_RemoveGfxHandler
 	add r0, r4, #0
 	add r0, #0xd0
 	ldr r0, [r0]
-	bl sub_0200D108
+	bl SpriteRenderer_Delete
 	bl GF_DestroyVramTransferManager
 	mov r0, #0
 	add r4, #0xd4
@@ -4830,7 +4830,7 @@ _021E801E:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	add r2, r6, r2
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	lsl r1, r4, #2
 	add r1, r5, r1
 	add r1, #0xd8

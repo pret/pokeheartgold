@@ -402,7 +402,7 @@ sub_020885DC: ; 0x020885DC
 	ldr r0, [r4, r0]
 	bl sub_02009418
 	bl GF_RunVramTransferTasks
-	bl sub_0200D034
+	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r3, _02088608 ; =OS_IRQTable
 	ldr r1, _0208860C ; =0x00003FF8
 	mov r0, #1
