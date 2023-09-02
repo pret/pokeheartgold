@@ -1229,14 +1229,14 @@ ov111_021E6268: ; 0x021E6268
 	bl sub_0200DD10
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	mov r1, #1
 	add r0, r5, #0
 	lsl r1, r1, #0xc
 	bl sub_0200DC8C
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r0, r7, #0
 	bl NARC_Delete
 	add sp, #0x10
@@ -1317,7 +1317,7 @@ _021E6342:
 	bl sub_0200D740
 	mov r1, #1
 	add r4, r0, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r0, r4, #0
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}

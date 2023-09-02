@@ -6262,7 +6262,7 @@ _0225703E:
 	beq _0225704C
 	mov r1, #1
 	lsl r1, r1, #0xc
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 _0225704C:
 	add r6, r6, #1
 	add r5, r5, #4

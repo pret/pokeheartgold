@@ -60,7 +60,7 @@
 .public GX_EngineBToggleLayers
 .public sub_0202457C
 .public Set2dSpriteAnimSeqNo
-.public sub_020249B0
+.public Sprite_TickCellOrMulticellAnimation
 .public sub_020249F8
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public GetMonSpriteCharAndPlttNarcIdsEx

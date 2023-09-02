@@ -12,7 +12,7 @@
 .public SpriteGfxHandler_UnloadCellObjById
 .public SpriteGfxHandler_UnloadAnimObjById
 .public sub_0200D9DC
-.public sub_0200DC18
+.public UnkImageStruct_TickSpriteAnimation1Frame
 .public sub_0200DCE8
 .public sub_0200DCFC
 .public sub_0200DDF4

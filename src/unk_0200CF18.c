@@ -18,7 +18,7 @@ static void sub_0200D060(SpriteGfxHandler* gfxHandler);
 static void DeinitSpriteRenderer(SpriteRenderer* renderer);
 static void MyRemoveSpriteGfxHandler(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler);
 static BOOL sub_0200D124(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const u16* a2, int a3, int a4);
-static Sprite* MyCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, int a2, s16 x, s16 y, s16 z, u16 animSeqNo, int rotation, int a8, int whichScreen, int a10, int a11, int a12, int a13);
+static Sprite* MyCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, int a2, s16 x, s16 y, s16 z, u16 animSeqNo, int rotation, int a8, NNS_G2D_VRAM_TYPE whichScreen, int a10, int a11, int a12, int a13);
 static UnkImageStruct* sub_0200D748(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, UnkTemplate_0200D748* unkTemplate, fx32 yOffset);
 static BOOL MyLoadCellOrAnim_NarcId(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, GfGfxResType a6, int resId);
 static BOOL MyLoadCellOrAnim_OpenNarc(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, GfGfxResType a6, int resId);
@@ -227,10 +227,10 @@ BOOL sub_0200D2A4(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const 
 }
 
 Sprite* SpriteRenderer_CreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const UnkStruct_0200D2B4* a2) {
-    return MyCreateSprite(renderer, gfxHandler, a2->unk_00, a2->x, a2->y, a2->x /* typo? */, a2->unk_0A, a2->unk_0C, a2->unk_10, a2->unk_14, a2->unk_18, a2->unk_1C, a2->unk_20, a2->unk_24);
+    return MyCreateSprite(renderer, gfxHandler, a2->unk_00, a2->x, a2->y, a2->x /* typo? */, a2->animSeqNo, a2->rotation, a2->unk_10, a2->whichScreen, a2->unk_18, a2->unk_1C, a2->unk_20, a2->unk_24);
 }
 
-static Sprite* MyCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, int headerIndex, s16 x, s16 y, s16 z, u16 animSeqNo, int priority, int a8, int whichScreen, int a10, int a11, int a12, int a13) {
+static Sprite* MyCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, int headerIndex, s16 x, s16 y, s16 z, u16 animSeqNo, int priority, int a8, NNS_G2D_VRAM_TYPE whichScreen, int a10, int a11, int a12, int a13) {
     Sprite* ret = NULL;
     SpriteTemplate template;
 
@@ -241,8 +241,8 @@ static Sprite* MyCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHan
     template.position.y = FX32_CONST(y);
     template.position.z = FX32_CONST(z);
 
-    if (whichScreen == 2) {
-        template.position.y += FX32_CONST(0xC0);
+    if (whichScreen == NNS_G2D_VRAM_TYPE_2DSUB) {
+        template.position.y += FX32_CONST(GX_LCD_SIZE_Y);
     }
     template.scale.x = FX32_ONE;
     template.scale.y = FX32_ONE;
@@ -388,7 +388,7 @@ BOOL SpriteRenderer_LoadAnimResObjFromOpenNarc(SpriteRenderer* renderer, SpriteG
 }
 
 UnkImageStruct* sub_0200D734(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, UnkTemplate_0200D748* template) {
-    return sub_0200D748(renderer, gfxHandler, template, FX32_CONST(0xC0));
+    return sub_0200D748(renderer, gfxHandler, template, FX32_CONST(GX_LCD_SIZE_Y));
 }
 
 UnkImageStruct* sub_0200D740(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, UnkTemplate_0200D748* template, fx32 yOffset) {
@@ -611,44 +611,44 @@ static BOOL MyUnloadPlttById(_2DGfxResMan* manager, _2DGfxResObjList* list, u32 
     return FALSE;
 }
 
-void sub_0200DC0C(Sprite* sprite) {
-    sub_020249B0(sprite, FX32_ONE);
+void TickSpriteAnimation1Frame(Sprite* sprite) {
+    Sprite_TickCellOrMulticellAnimation(sprite, FX32_ONE);
 }
 
-void sub_0200DC18(UnkImageStruct* unk) {
-    sub_0200DC0C(unk->sprite);
+void UnkImageStruct_TickSpriteAnimation1Frame(UnkImageStruct* unk) {
+    TickSpriteAnimation1Frame(unk->sprite);
 }
 
-void sub_0200DC24(UnkImageStruct* unk) {
-    sub_020249B0(unk->sprite, 2 * FX32_ONE);
+void UnkImageStruct_TickSpriteAnimation2Frames(UnkImageStruct* unk) {
+    Sprite_TickCellOrMulticellAnimation(unk->sprite, 2 * FX32_ONE);
 }
 
-void sub_0200DC34(UnkImageStruct* unk, fx32 frames) {
-    sub_020249B0(unk->sprite, frames);
+void UnkImageStruct_TickSpriteAnimationNFrames(UnkImageStruct* unk, fx32 frames) {
+    Sprite_TickCellOrMulticellAnimation(unk->sprite, frames);
 }
 
-u32 sub_0200DC40(UnkImageStruct* unk) {
-    return sub_020248C8(unk->sprite);
+u32 UnkImageStruct_GetSpriteAnimSeqNo(UnkImageStruct* unk) {
+    return Get2dSpriteAnimSeqNo(unk->sprite);
 }
 
-void sub_0200DC4C(UnkImageStruct* unk, int seqno) {
+void UnkImageStruct_SetSpriteAnimSeqNo(UnkImageStruct* unk, int seqno) {
     Set2dSpriteAnimSeqNo(unk->sprite, seqno);
 }
 
-void sub_0200DC58(UnkImageStruct* unk, int a1) {
-    sub_02024950(unk->sprite, a1);
+void UnkImageStruct_TryChangeSpriteAnimSeqNo(UnkImageStruct* unk, int a1) {
+    TryChange2dSpriteAnimSeqNo(unk->sprite, a1);
 }
 
-u16 sub_0200DC64(UnkImageStruct* unk) {
-    return sub_020249A8(unk->sprite);
+u16 UnkImageStruct_GetSpriteCurrentAnimSeqNo(UnkImageStruct* unk) {
+    return Get2dSpriteCurrentAnimSeqNo(unk->sprite);
 }
 
-void sub_0200DC70(Sprite* sprite, int a1) {
+void thunk_Set2dSpriteAnimActiveFlag(Sprite* sprite, int a1) {
     Set2dSpriteAnimActiveFlag(sprite, a1);
 }
 
-void sub_0200DC78(UnkImageStruct* unk, int a1) {
-    sub_0200DC70(unk->sprite, a1);
+void UnkImageStruct_SetSpriteAnimActiveFlag(UnkImageStruct* unk, int a1) {
+    thunk_Set2dSpriteAnimActiveFlag(unk->sprite, a1);
 }
 
 void sub_0200DC84(Sprite* sprite, fx32 frame) {
@@ -757,7 +757,7 @@ void sub_0200DD88(Sprite* sprite, s16 x, s16 y) {
     vec.x = x * FX32_ONE;
     vec.y = y * FX32_ONE;
     if (sub_02024B60(sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
-        vec.y += 192 * FX32_ONE;
+        vec.y += GX_LCD_SIZE_Y * FX32_ONE;
     }
     vec.z = 0;
     sub_020247D4(sprite, &vec);
@@ -787,7 +787,7 @@ void sub_0200DE00(Sprite* sprite, s16* x, s16* y) {
     const VecFx32* pos = sub_020248AC(sprite);
     *x = pos->x / FX32_ONE;
     if (sub_02024B60(sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
-        *y = (pos->y - 192 * FX32_ONE) / FX32_ONE;
+        *y = (pos->y - GX_LCD_SIZE_Y * FX32_ONE) / FX32_ONE;
     } else {
         *y = pos->y / FX32_ONE;
     }

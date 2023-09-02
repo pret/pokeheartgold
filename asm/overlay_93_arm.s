@@ -916,7 +916,7 @@ ov93_0225FB00: ; 0x0225FB00
 	mov r1, #0
 	bl sub_0200DCE8
 	ldr r0, [r4]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	mov r0, r4
 	add sp, sp, #0x34
 	ldmia sp!, {r4, r5, pc}
@@ -952,9 +952,9 @@ _0225FB94:
 	bl sub_0200DDF4
 	mov r0, r5
 	mov r1, r4
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
 _0225FBE0: .word ov93_02262C07

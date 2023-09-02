@@ -113,10 +113,10 @@
 .public sub_0200D740
 .public sub_0200D998
 .public sub_0200D9DC
-.public sub_0200DC4C
-.public sub_0200DC58
-.public sub_0200DC64
-.public sub_0200DC78
+.public UnkImageStruct_SetSpriteAnimSeqNo
+.public UnkImageStruct_TryChangeSpriteAnimSeqNo
+.public UnkImageStruct_GetSpriteCurrentAnimSeqNo
+.public UnkImageStruct_SetSpriteAnimActiveFlag
 .public sub_0200DC8C
 .public sub_0200DCA0
 .public sub_0200DCAC
@@ -257,7 +257,7 @@
 .public sub_020248B0
 .public sub_020248B8
 .public Set2dSpriteAnimSeqNo
-.public sub_02024950
+.public TryChange2dSpriteAnimSeqNo
 .public sub_02024A14
 .public sub_02024A48
 .public sub_02024A74

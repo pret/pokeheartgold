@@ -76,10 +76,10 @@ void ov12_0226BA4C(BattleCursor *cursor, int x0, int y0, int x1, int y1, int x2,
     sub_0200DDF4(cursor->unk0[2], x2, y2, a9);
     sub_0200DDF4(cursor->unk0[3], x3, y3, a9);
 
-    sub_0200DC4C(cursor->unk0[0], 0);
-    sub_0200DC4C(cursor->unk0[1], 1);
-    sub_0200DC4C(cursor->unk0[2], 2);
-    sub_0200DC4C(cursor->unk0[3], 3);
+    UnkImageStruct_SetSpriteAnimSeqNo(cursor->unk0[0], 0);
+    UnkImageStruct_SetSpriteAnimSeqNo(cursor->unk0[1], 1);
+    UnkImageStruct_SetSpriteAnimSeqNo(cursor->unk0[2], 2);
+    UnkImageStruct_SetSpriteAnimSeqNo(cursor->unk0[3], 3);
 
     for (i = 0; i < 4; i++) {
         sub_0200DCE8(cursor->unk0[i], TRUE);
@@ -100,7 +100,7 @@ void ov12_0226BB1C(BattleCursor *cursor, int left, int right, int top, int botto
 
 void ov12_0226BB40(BattleCursor *cursor, int x, int y, int a3, fx32 a4) {
     sub_0200DDF4(cursor->unk0[4], x, y, a4);
-    sub_0200DC4C(cursor->unk0[4], a3);
+    UnkImageStruct_SetSpriteAnimSeqNo(cursor->unk0[4], a3);
     sub_0200DCE8(cursor->unk0[4], TRUE);
 }
 
@@ -123,9 +123,9 @@ static void BattleCursor_Update(SysTask *task, void *data) {
     }
 
     for (i = 0; i < 4; i++) {
-        sub_0200DC18(cursor->unk0[i]);
+        UnkImageStruct_TickSpriteAnimation1Frame(cursor->unk0[i]);
     }
     if (sub_0200DCFC(cursor->unk0[4]) == TRUE) {
-        sub_0200DC18(cursor->unk0[4]);
+        UnkImageStruct_TickSpriteAnimation1Frame(cursor->unk0[4]);
     }
 }

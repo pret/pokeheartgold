@@ -175,7 +175,7 @@ ov12_02264968: ; 0x02264968
 	bl sub_0200D734
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_02264968

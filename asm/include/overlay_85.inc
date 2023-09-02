@@ -80,8 +80,8 @@
 .public sub_0200D734
 .public sub_0200D998
 .public sub_0200D9DC
-.public sub_0200DC18
-.public sub_0200DC34
+.public UnkImageStruct_TickSpriteAnimation1Frame
+.public UnkImageStruct_TickSpriteAnimationNFrames
 .public sub_0200DCA0
 .public CreateSysTask
 .public sub_0200E33C

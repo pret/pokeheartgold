@@ -5238,7 +5238,7 @@ ov12_02248228: ; 0x02248228
 	add r1, r4, #0
 	bl sub_0200D734
 	str r0, [r5, #0xc]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [sp, #0x18]
 	bl Pokemon_GetIconNaix
 	add r3, r0, #0
@@ -5301,7 +5301,7 @@ ov12_02248228: ; 0x02248228
 	ldr r0, [r0]
 	bl sub_02024AA8
 	ldr r0, [r5, #0x10]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	mov r0, #1
 	mov r1, #5
 	bl sub_02013534

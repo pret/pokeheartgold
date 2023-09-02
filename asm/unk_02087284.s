@@ -690,7 +690,7 @@ _02087804:
 	add r2, sp, #4
 	bl sub_0200D734
 	str r0, [r4, #0x24]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [r4, #0x24]
 	mov r1, #0x80
 	mov r2, #0x60
@@ -1016,7 +1016,7 @@ sub_02087A30: ; 0x02087A30
 _02087A40:
 	ldr r0, [r5, #0x24]
 	add r1, r7, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r6, #0x10]
 	add r4, r4, #1
 	add r5, #0x10
@@ -1039,7 +1039,7 @@ sub_02087A54: ; 0x02087A54
 _02087A64:
 	ldr r0, [r5, #0x24]
 	add r1, r7, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r6, #0x10]
 	add r4, r4, #1
 	add r5, #0x10

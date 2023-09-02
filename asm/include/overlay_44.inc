@@ -174,8 +174,8 @@
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public Set2dSpriteAnimSeqNo
-.public sub_020249A8
-.public sub_020249B0
+.public Get2dSpriteCurrentAnimSeqNo
+.public Sprite_TickCellOrMulticellAnimation
 .public sub_020249D4
 .public sub_020249F8
 .public sub_02024ADC

@@ -87,7 +87,7 @@ _020755FA:
 	bl sub_0200D734
 	mov r1, #1
 	add r4, r0, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r0, r4, #0
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
@@ -534,7 +534,7 @@ _020759A0:
 	add r5, #0xb4
 	ldr r0, [r5]
 	mov r1, #3
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, _020759C4 ; =0x000005DC
 	bl PlaySE
 _020759BA:
@@ -559,7 +559,7 @@ _020759DC:
 	add r0, r4, #0
 	add r0, #0xb4
 	ldr r0, [r0]
-	bl sub_0200DC64
+	bl UnkImageStruct_GetSpriteCurrentAnimSeqNo
 	cmp r0, #3
 	beq _020759EE
 	bl GF_AssertFail

@@ -4922,7 +4922,7 @@ sub_0207B51C: ; 0x0207B51C
 	mov r0, #0x1a
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
 	cmp r6, #0
@@ -4947,7 +4947,7 @@ _0207B556:
 	bne _0207B584
 	ldr r0, _0207B5E4 ; =0x00000684
 	ldr r0, [r5, r0]
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
 	cmp r6, #0

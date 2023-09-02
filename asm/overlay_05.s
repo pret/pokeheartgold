@@ -1824,7 +1824,7 @@ ov05_0221C8A0: ; 0x0221C8A0
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, _0221C8DC ; =0x00000B81
 	mov r1, #0x20
 	strb r1, [r4, r0]
@@ -2544,7 +2544,7 @@ _0221CE68:
 	mov r1, #1
 	ldr r0, [r0]
 	lsl r1, r1, #0xc
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
@@ -3261,7 +3261,7 @@ _0221D43A:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [sp, #8]
 	cmp r0, r4
 	bls _0221D4C0
@@ -3292,7 +3292,7 @@ _0221D43A:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #3
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	b _0221D4BA
 _0221D494:
 	cmp r0, #7
@@ -3303,7 +3303,7 @@ _0221D494:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #2
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	b _0221D4BA
 _0221D4AA:
 	lsl r0, r5, #2
@@ -3312,7 +3312,7 @@ _0221D4AA:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 _0221D4BA:
 	add r0, r5, #1
 	lsl r0, r0, #0x18
@@ -3879,7 +3879,7 @@ ov05_0221D904: ; 0x0221D904
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #2
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	pop {r4, pc}
 _0221D946:
 	bl ov05_0221CCF4
@@ -3953,12 +3953,12 @@ _0221D9D6:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	mov r0, #0x73
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	pop {r4, pc}
 	thumb_func_end ov05_0221D904
 
@@ -4950,7 +4950,7 @@ _0221E19C:
 	bl ov05_0221E0A8
 	add r1, r0, #0
 	ldr r0, [r7, r4]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r1, _0221E270 ; =0x0000021E
 	add r0, r5, r6
 	ldrh r0, [r0, r1]
@@ -4971,7 +4971,7 @@ _0221E1E6:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	b _0221E20C
 _0221E1FE:
 	mov r0, #0x67
@@ -4979,7 +4979,7 @@ _0221E1FE:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 _0221E20C:
 	mov r0, #0x89
 	add r1, r5, r6
@@ -4998,7 +4998,7 @@ _0221E226:
 	sub r0, #0x84
 	ldr r0, [r1, r0]
 	mov r1, #2
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 _0221E232:
 	mov r3, #0x8a
 	add r0, r5, r6
@@ -5023,7 +5023,7 @@ _0221E24E:
 	mul r2, r1
 	add r1, r5, r2
 	ldr r1, [r1, r3]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

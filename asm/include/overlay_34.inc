@@ -56,7 +56,7 @@
 .public Set2dSpriteAnimActiveFlag
 .public sub_020248C0
 .public Set2dSpriteAnimSeqNo
-.public sub_020249A8
+.public Get2dSpriteCurrentAnimSeqNo
 .public sub_020249D4
 .public sub_020249F8
 .public sub_02025204

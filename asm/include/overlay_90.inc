@@ -124,7 +124,7 @@
 .public Set2dSpriteAnimActiveFlag
 .public sub_02024890
 .public Set2dSpriteAnimSeqNo
-.public sub_020249B0
+.public Sprite_TickCellOrMulticellAnimation
 .public sub_020249F8
 .public sub_02024A04
 .public sub_02024A74

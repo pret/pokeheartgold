@@ -925,7 +925,7 @@ ov95_021E6000: ; 0x021E6000
 	add r2, sp, #0
 	bl sub_0200D734
 	str r0, [r4, #0x74]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [r4, #0x74]
 	mov r1, #2
 	bl sub_0200DF98
@@ -949,7 +949,7 @@ ov95_021E6000: ; 0x021E6000
 	add r2, sp, #0
 	bl sub_0200D734
 	str r0, [r4, #0x78]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	mov r1, #0x90
 	add r0, sp, #0
 	strh r1, [r0, #2]
@@ -958,7 +958,7 @@ ov95_021E6000: ; 0x021E6000
 	add r2, sp, #0
 	bl sub_0200D734
 	str r0, [r4, #0x7c]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	add sp, #0x34
 	pop {r3, r4, pc}
 	nop
@@ -3356,7 +3356,7 @@ _021E73C2:
 	bl sub_0200D734
 	add r4, r0, #0
 	mov r1, #1
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_0200DCE8
@@ -3500,7 +3500,7 @@ _021E74EC:
 	bl ov95_021E7410
 	ldr r0, [r5, #0x10]
 	mov r1, #3
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, _021E750C ; =0x000005DC
 	bl PlaySE
 _021E7504:
@@ -3517,7 +3517,7 @@ ov95_021E7514: ; 0x021E7514
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
-	bl sub_0200DC64
+	bl UnkImageStruct_GetSpriteCurrentAnimSeqNo
 	cmp r0, #3
 	beq _021E7526
 	bl GF_AssertFail

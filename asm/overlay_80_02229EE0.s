@@ -622,7 +622,7 @@ ov80_0222A3D4: ; 0x0222A3D4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	cmp r4, r0
 	beq _0222A3FC
 	add r0, r5, #0
@@ -634,7 +634,7 @@ ov80_0222A3D4: ; 0x0222A3D4
 	mov r1, #1
 	add r0, r5, #0
 	lsl r1, r1, #0xc
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 _0222A3FC:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

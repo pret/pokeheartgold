@@ -1565,11 +1565,11 @@ _022595A6:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	add r1, r6, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, _022596BC ; =0x00000924
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	add r6, r6, #1
 	add r4, #0x20
 	add r5, r5, #4
@@ -1602,11 +1602,11 @@ _022595F2:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	add r1, r6, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, _022596C4 ; =0x0000093C
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	add r6, r6, #1
 	add r4, #0x20
 	add r5, r5, #4
@@ -1642,7 +1642,7 @@ _0225963E:
 	add r0, r1, #0
 	ldr r0, [r4, r0]
 	ldr r0, [r0]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	add r5, r5, #1
 	add r6, #0x20
 	add r4, r4, #4
@@ -1845,7 +1845,7 @@ ov89_022597FC: ; 0x022597FC
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
 	ldr r0, [r0]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	ldr r0, _02259898 ; =0x0000096C
 	mov r1, #0
 	ldr r0, [r5, r0]
@@ -1893,7 +1893,7 @@ _0225983E:
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	ldr r0, [r0]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	lsl r0, r4, #2
 	add r0, r5, r0
 	ldr r0, [r0, r7]
@@ -3149,7 +3149,7 @@ _0225A248:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 _0225A254:
 	add r4, r4, #1
 	add r5, r5, #4

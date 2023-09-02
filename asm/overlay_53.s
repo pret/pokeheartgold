@@ -4625,7 +4625,7 @@ ov53_021E7E94: ; 0x021E7E94
 	push {r3, lr}
 	add r0, #0xe4
 	ldr r0, [r0]
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	cmp r0, #1
 	bne _021E7EA6
 	mov r0, #1
@@ -5429,7 +5429,7 @@ ov53_021E84D4: ; 0x021E84D4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	cmp r0, #3
 	beq _021E84E6
 	bl GF_AssertFail

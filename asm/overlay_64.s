@@ -879,7 +879,7 @@ _021E6066:
 	ldr r0, [r5, r6]
 	cmp r0, #0
 	beq _021E6070
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 _021E6070:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -1649,7 +1649,7 @@ _021E660A:
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -2355,7 +2355,7 @@ _021E6C02:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	add r1, r5, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov64_021E6BD8
 

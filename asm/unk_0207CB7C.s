@@ -89,7 +89,7 @@ sub_0207CBD0: ; 0x0207CBD0
 	lsl r1, r1, #4
 	add r6, r0, r1
 	ldr r0, [r6, r4]
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	mov r1, #2
 	and r0, r1
 	strb r0, [r5, #7]

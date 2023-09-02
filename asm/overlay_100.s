@@ -1258,7 +1258,7 @@ _021E6196:
 	add r0, #0xbc
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	ldr r0, [r5, #0x20]
 	ldrh r0, [r0, #0x10]
 	bl MapHeader_GetField14_1D
@@ -1283,7 +1283,7 @@ _021E62FA:
 	add r0, #0x98
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #3
@@ -3632,7 +3632,7 @@ _021E7420:
 	bl sub_02024964
 	ldr r0, [r4, #0x10]
 	add r1, r5, #0
-	bl sub_0200DC70
+	bl thunk_Set2dSpriteAnimActiveFlag
 	pop {r4, r5, r6, pc}
 _021E7450:
 	mov r6, #0
@@ -3641,7 +3641,7 @@ _021E7452:
 	bl sub_02024964
 	ldr r0, [r4, #0x10]
 	add r1, r5, #0
-	bl sub_0200DC70
+	bl thunk_Set2dSpriteAnimActiveFlag
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #4
@@ -3655,7 +3655,7 @@ _021E746A:
 	bl sub_0200DCAC
 	ldr r0, [r4, #0x10]
 	add r1, r5, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	pop {r4, r5, r6, pc}
 _021E7480:
 	mov r6, #0
@@ -3664,7 +3664,7 @@ _021E7482:
 	bl sub_0200DCAC
 	ldr r0, [r4, #0x10]
 	add r1, r5, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #4

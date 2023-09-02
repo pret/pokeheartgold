@@ -2701,8 +2701,8 @@ sub_020248C0: ; 0x020248C0
 	.balign 4, 0
 	thumb_func_end sub_020248C0
 
-	thumb_func_start sub_020248C8
-sub_020248C8: ; 0x020248C8
+	thumb_func_start Get2dSpriteAnimSeqNo
+Get2dSpriteAnimSeqNo: ; 0x020248C8
 	push {r4, lr}
 	add r4, r0, #0
 	bne _020248D2
@@ -2725,14 +2725,14 @@ _020248E6:
 	ldrh r0, [r0]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_020248C8
+	thumb_func_end Get2dSpriteAnimSeqNo
 
 	thumb_func_start Set2dSpriteAnimSeqNo
 Set2dSpriteAnimSeqNo: ; 0x020248F0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_020248C8
+	bl Get2dSpriteAnimSeqNo
 	cmp r0, r4
 	bhi _02024902
 	bl GF_AssertFail
@@ -2776,8 +2776,8 @@ _02024936:
 	.balign 4, 0
 	thumb_func_end Set2dSpriteAnimSeqNo
 
-	thumb_func_start sub_02024950
-sub_02024950: ; 0x02024950
+	thumb_func_start TryChange2dSpriteAnimSeqNo
+TryChange2dSpriteAnimSeqNo: ; 0x02024950
 	push {r3, lr}
 	add r2, r0, #0
 	add r2, #0xf0
@@ -2788,7 +2788,7 @@ sub_02024950: ; 0x02024950
 _02024960:
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02024950
+	thumb_func_end TryChange2dSpriteAnimSeqNo
 
 	thumb_func_start sub_02024964
 sub_02024964: ; 0x02024964
@@ -2826,16 +2826,16 @@ _0202498E:
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02024964
 
-	thumb_func_start sub_020249A8
-sub_020249A8: ; 0x020249A8
+	thumb_func_start Get2dSpriteCurrentAnimSeqNo
+Get2dSpriteCurrentAnimSeqNo: ; 0x020249A8
 	add r0, #0xf0
 	ldrh r0, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_020249A8
+	thumb_func_end Get2dSpriteCurrentAnimSeqNo
 
-	thumb_func_start sub_020249B0
-sub_020249B0: ; 0x020249B0
+	thumb_func_start Sprite_TickCellOrMulticellAnimation
+Sprite_TickCellOrMulticellAnimation: ; 0x020249B0
 	push {r3, lr}
 	add r2, r0, #0
 	add r2, #0xec
@@ -2854,7 +2854,7 @@ _020249CA:
 	add r0, #8
 	bl NNS_G2dTickMCAnimation
 	pop {r3, pc}
-	thumb_func_end sub_020249B0
+	thumb_func_end Sprite_TickCellOrMulticellAnimation
 
 	thumb_func_start sub_020249D4
 sub_020249D4: ; 0x020249D4
@@ -3312,7 +3312,7 @@ _02024C98: .word 0x55414154
 sub_02024C9C: ; 0x02024C9C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_020249F8
@@ -3786,11 +3786,11 @@ sub_02025010: ; 0x02025010
 
 	thumb_func_start sub_02025014
 sub_02025014: ; 0x02025014
-	ldr r3, _0202501C ; =sub_020249B0
+	ldr r3, _0202501C ; =Sprite_TickCellOrMulticellAnimation
 	ldr r1, [r0, #0x38]
 	bx r3
 	nop
-_0202501C: .word sub_020249B0
+_0202501C: .word Sprite_TickCellOrMulticellAnimation
 	thumb_func_end sub_02025014
 
 	thumb_func_start sub_02025020

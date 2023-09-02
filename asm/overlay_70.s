@@ -19340,7 +19340,7 @@ _0224123C:
 	beq _0224126E
 	ldr r0, _02241278 ; =0x00000EE8
 	ldr r0, [r5, r0]
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ov70_0224122C

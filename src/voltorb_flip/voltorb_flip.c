@@ -508,7 +508,7 @@ BOOL AwaitBoardInteraction(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
         break;
     case 4:
         PlaySE(SEQ_SE_DP_SELECT);
-        sub_0200DC4C(work->unk14C[2], 6);
+        UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[2], 6);
         if (ov122_021E8E70(work->unk240)) {
             EnqueueWorkflow(workflow, WORKFLOW_UNK_13); // open memo
         } else {
@@ -518,7 +518,7 @@ BOOL AwaitBoardInteraction(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     case 2:
     case 3:
         PlaySE(SEQ_SE_DP_DECIDE);
-        sub_0200DC4C(work->unk14C[3], 3);
+        UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[3], 3);
         EnqueueWorkflow(workflow, WORKFLOW_QUIT_ROUND);
         return TRUE;
     default:
@@ -608,7 +608,7 @@ BOOL AwaitCardFlipAndResult(WorkflowEngine *workflow, VoltorbFlipAppWork *work) 
         FlipCard(work->game, cardId);
         if (type == CARD_TYPE_VOLTORB) {
             sub_0200DDB8(work->unk14C[1], var5, var7);
-            sub_0200DC4C(work->unk14C[1], 1);
+            UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[1], 1);
             // Plays Voltorb explosion SE
             PlaySE(SEQ_SE_GS_COIN_HAZURE);
         } else {
@@ -621,7 +621,7 @@ BOOL AwaitCardFlipAndResult(WorkflowEngine *workflow, VoltorbFlipAppWork *work) 
             BufferIntegerAsString(work->msgFmt, 0, type, 1, PRINTING_MODE_LEFT_ALIGN, 1);
             BufferIntegerAsString(work->msgFmt, 1, var9, 5, PRINTING_MODE_LEFT_ALIGN, 1);
             sub_0200DDB8(work->unk14C[1], var5, var7);
-            sub_0200DC4C(work->unk14C[1], 0);
+            UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[1], 0);
 
             if (var8 == 0) {
                 PrintMessageToSmallWindow(work, msg_0039_00030);
@@ -798,13 +798,13 @@ BOOL ov122_021E65FC(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     case 4:
         PlaySE(SEQ_SE_DP_SELECT);
         work->unk238 = 0;
-        sub_0200DC4C(work->unk14C[2], 6);
+        UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[2], 6);
         EnqueueWorkflow(workflow, WORKFLOW_AWAIT_BOARD_INTERACT);
         return TRUE;
     case 2:
         PlaySE(SEQ_SE_DP_DECIDE);
         work->unk238 = 0;
-        sub_0200DC4C(work->unk14C[3], 3);
+        UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[3], 3);
         EnqueueWorkflow(workflow, WORKFLOW_QUIT_ROUND);
         return TRUE;
     case 5:
@@ -852,18 +852,18 @@ BOOL ov122_021E6700(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     case 4:
         PlaySE(SEQ_SE_DP_SELECT);
         work->unk238 = 0;
-        sub_0200DC4C(work->unk14C[2], 6);
+        UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[2], 6);
         EnqueueWorkflow(workflow, WORKFLOW_AWAIT_BOARD_INTERACT);
         return TRUE;
     case 3:
         PlaySE(SEQ_SE_DP_BUTTON3);
-        sub_0200DC4C(work->unk14C[9], 17);
+        UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[9], 17);
         EnqueueWorkflow(workflow, WORKFLOW_UNK_13);
         return TRUE;
     case 2:
         PlaySE(SEQ_SE_DP_DECIDE);
         work->unk238 = 0;
-        sub_0200DC4C(work->unk14C[3], 3);
+        UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[3], 3);
         EnqueueWorkflow(workflow, WORKFLOW_QUIT_ROUND);
         return TRUE;
     case 0:
@@ -1357,7 +1357,7 @@ static void AnimateOpenMenu(VoltorbFlipAppWork *work) {
     ov122_021E8E58(work->unk240);
     SetMemoOpen(work->unk240, TRUE);
     sub_0200DCE8(work->unk14C[4], 1);
-    sub_0200DC4C(work->unk14C[4], 20);
+    UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[4], 20);
     // "Close Memo" (text in button)
     PaintMessageOnWindow(work, 4, msg_0039_00007, &work->wMemo, 0, 0);
     work->unk238 = 1;
@@ -1370,7 +1370,7 @@ static void AnimateCloseMenu(VoltorbFlipAppWork *work) {
     SetMemoOpen(work->unk240, FALSE);
     ov122_021E8E58(work->unk240);
     ov122_021E7274(work, 0);
-    sub_0200DC4C(work->unk14C[4], 21);
+    UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[4], 21);
     // "Open Memo" (text in button)
     PaintMessageOnWindow(work, 4, msg_0039_00006, &work->wMemo, 0, 0);
     PlaySE(SEQ_SE_DP_CARD2);
@@ -1403,7 +1403,7 @@ static void ov122_021E72D0(VoltorbFlipAppWork *work) {
             int var3 = ov122_021E92B0[i][2];
             void *var2 = work->unk14C[var3];
             int var4 = IsCardMemoFlagOn(work->game, var1, ov122_021E92B0[i][3]);
-            sub_0200DC4C(var2, ov122_021E92B0[i][var4]);
+            UnkImageStruct_SetSpriteAnimSeqNo(var2, ov122_021E92B0[i][var4]);
         }
         ov122_021E7274(work, 1);
         return;
@@ -1821,7 +1821,7 @@ static UnkImageStruct *ov122_021E7C9C(SpriteRenderer *a0, SpriteGfxHandler *a1, 
     temp1.spritePriority = a5;
 
     UnkImageStruct *var1 = sub_0200D740(a0, a1, &temp1, 0x20c000);
-    sub_0200DC78(var1, 1);
+    UnkImageStruct_SetSpriteAnimActiveFlag(var1, 1);
     sub_0200DCE8(var1, 0);
     return var1;
 }
@@ -1838,7 +1838,7 @@ static UnkImageStruct *ov122_021E7D04(SpriteRenderer *a0, SpriteGfxHandler *a1, 
     temp1.spritePriority = a5;
 
     UnkImageStruct *var1 = sub_0200D740(a0, a1, &temp1, 0x20c000);
-    sub_0200DC78(var1, 1);
+    UnkImageStruct_SetSpriteAnimActiveFlag(var1, 1);
     sub_0200DCE8(var1, 0);
     return var1;
 }

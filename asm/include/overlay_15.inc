@@ -59,8 +59,8 @@
 .public sub_0200D740
 .public sub_0200D998
 .public sub_0200D9DC
-.public sub_0200DC18
-.public sub_0200DC4C
+.public UnkImageStruct_TickSpriteAnimation1Frame
+.public UnkImageStruct_SetSpriteAnimSeqNo
 .public sub_0200DCA0
 .public sub_0200DCC0
 .public sub_0200DCE8

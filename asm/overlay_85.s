@@ -5414,7 +5414,7 @@ _021E81A8:
 	mov r1, #6
 	ldr r0, [r4, #0x14]
 	lsl r1, r1, #0xa
-	bl sub_0200DC34
+	bl UnkImageStruct_TickSpriteAnimationNFrames
 	ldr r0, [r4, #0x14]
 	bl sub_0200DCA0
 	cmp r0, #0
@@ -5484,7 +5484,7 @@ _021E81F6:
 	add r1, sp, #0
 	bl ov85_021E7044
 	str r0, [r4, #0x14]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, _021E8258 ; =ov85_021E815C
 	add r1, r4, #0
 	mov r2, #0

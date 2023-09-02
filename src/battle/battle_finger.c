@@ -162,7 +162,7 @@ static void BattleFinger_Update(SysTask *task, void *data) {
         }
     }
 
-    sub_0200DC18(finger->unk0);
+    UnkImageStruct_TickSpriteAnimation1Frame(finger->unk0);
 }
 
 static void ov12_0226BEB8(BattleFinger *finger) {

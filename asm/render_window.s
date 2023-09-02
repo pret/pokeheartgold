@@ -2292,7 +2292,7 @@ _0200F5A8:
 	mov r1, #1
 	ldr r0, [r0]
 	lsl r1, r1, #0xc
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 	ldr r0, [r4]
 	bl sub_0202457C
 	pop {r3, r4, r5, pc}

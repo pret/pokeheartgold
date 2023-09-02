@@ -235,7 +235,7 @@ _0221E75C:
 	bl ov98_0221E6E0
 	mov r1, #1
 	stmia r4!, {r0}
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r7, r7, #1
 	add r6, #0x10
 	cmp r7, #0xa
@@ -542,14 +542,14 @@ _0221E984:
 	beq _0221E9F8
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	mov r1, #1
 	add r0, r5, #0
 	lsl r1, r1, #0xc
 	bl sub_0200DC8C
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 _0221E9F8:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}

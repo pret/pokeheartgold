@@ -2409,7 +2409,7 @@ _021E89F0:
 	mov r0, #0x4e
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 	mov r0, #1
 	lsl r0, r0, #0xc
 	add r7, r7, #1
@@ -14098,7 +14098,7 @@ _021EE528:
 	mov r0, #0x4e
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 	mov r0, #1
 	lsl r0, r0, #0xc
 	add r7, r7, #1

@@ -285,7 +285,7 @@ static void ov122_021E9154(Ov122_021E8CFC *a0, int newFocus) {
     } else {
         sub_0200DD10(a0->unk0, 2);
     }
-    sub_0200DC58(a0->unk0, indicatorType);
+    UnkImageStruct_TryChangeSpriteAnimSeqNo(a0->unk0, indicatorType);
 }
 
 static void ov122_021E91AC(Ov122_021E8CFC *a0, u32 newFocus, int a2, int a3) {

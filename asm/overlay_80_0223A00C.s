@@ -432,7 +432,7 @@ _0223A1BA:
 	add r0, #0x90
 	ldr r0, [r0]
 	ldr r0, [r0]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	mov r0, #0x2a
 	ldrsh r0, [r4, r0]
 	cmp r0, #0

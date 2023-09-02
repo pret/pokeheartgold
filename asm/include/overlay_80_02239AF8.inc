@@ -10,7 +10,7 @@
 .public SpriteGfxHandler_UnloadCellObjById
 .public SpriteGfxHandler_UnloadAnimObjById
 .public sub_0200D9DC
-.public sub_0200DC0C
+.public TickSpriteAnimation1Frame
 .public GF_AssertFail
 .public ov80_02239AF8
 .public ov80_02239B7C

@@ -57,7 +57,7 @@
 .public sub_0202481C
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo
-.public sub_020249A8
+.public Get2dSpriteCurrentAnimSeqNo
 .public sub_02024A48
 .public sub_02025244
 .public sub_0202529C

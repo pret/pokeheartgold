@@ -1171,7 +1171,7 @@ _02266A76:
 	ldr r0, _02266ABC ; =0x000005D8
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	ldrb r0, [r7, r4]
 	bl ov12_022684F8
 	add r1, r0, #0
@@ -1184,7 +1184,7 @@ _02266A76:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #6
@@ -4261,10 +4261,10 @@ _022683EA:
 _022683EC:
 	add r0, r6, #0
 	add r1, r7, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 _022683F4:
 	add r0, r6, #0
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	lsl r0, r5, #2
 	add r1, r4, r0
 	ldr r0, _0226841C ; =0x00000628
@@ -4359,7 +4359,7 @@ _02268488:
 	ldr r0, [r4]
 	bl sub_02024AA8
 	add r0, r4, #0
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, _022684E0 ; =0x000006EC
 	str r4, [r5, r0]
 	add r0, r4, #0
@@ -4373,11 +4373,11 @@ _022684E8: .word ov12_0226E4E4
 
 	thumb_func_start ov12_022684EC
 ov12_022684EC: ; 0x022684EC
-	ldr r3, _022684F4 ; =sub_0200DC18
+	ldr r3, _022684F4 ; =UnkImageStruct_TickSpriteAnimation1Frame
 	add r0, r1, #0
 	bx r3
 	nop
-_022684F4: .word sub_0200DC18
+_022684F4: .word UnkImageStruct_TickSpriteAnimation1Frame
 	thumb_func_end ov12_022684EC
 
 	thumb_func_start ov12_022684F8
@@ -9661,7 +9661,7 @@ _0226AC84:
 	bl sub_0200DDF4
 	ldr r0, _0226AD58 ; =0x000006F4
 	ldr r0, [r5, r0]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r2, _0226AD5C ; =ov12_0226E518
 	add r0, r4, #0
 	add r1, r6, #0
@@ -9684,7 +9684,7 @@ _0226AC84:
 	mov r0, #0x6f
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

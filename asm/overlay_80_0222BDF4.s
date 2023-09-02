@@ -1664,7 +1664,7 @@ ov80_0222CA1C: ; 0x0222CA1C
 	add r4, r0, #0
 	bl ov80_02239700
 	add r1, r6, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #1
@@ -6784,7 +6784,7 @@ _0222F0DA:
 	add r2, sp, #0x38
 	bl sub_0200D734
 	add r6, r0, #0
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	mov r1, #0x32
 	ldr r0, [sp, #0x24]
 	lsl r1, r1, #6
@@ -7043,7 +7043,7 @@ _0222F2D8:
 	ldr r0, [r4]
 	bl sub_02024AA8
 	add r0, r4, #0
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	add r0, r4, #0
 	add sp, #0x44
 	pop {r4, r5, r6, r7, pc}
@@ -7180,7 +7180,7 @@ _0222F40C:
 	ldr r1, [r3, #0x38]
 	bl sub_0200D734
 	add r4, r0, #0
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	add r0, r4, #0
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}

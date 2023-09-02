@@ -538,11 +538,11 @@ _020867FA:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0x16
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	mov r0, #0x73
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [sp, #0xc]
 	add r4, #0x1c
 	add r0, r0, #1
@@ -563,12 +563,12 @@ _0208684C:
 	bl sub_02086D98
 	add r1, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5, #0xc]
 	mov r1, #2
 	bl sub_0200DF98
 	ldr r0, [r5, #0xc]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	add r5, #0x1c
 _02086882:
 	ldr r1, [sp]
@@ -649,11 +649,11 @@ sub_020868A0: ; 0x020868A0
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	mov r0, #0x22
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	mov r2, #0x91
 	lsl r2, r2, #2
 	mov r1, #0
@@ -670,11 +670,11 @@ sub_020868A0: ; 0x020868A0
 	ldr r0, [r5, r1]
 	sub r1, #0xc
 	ldr r1, [r5, r1]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	mov r0, #0x8f
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	mov r0, #0x8f
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -696,11 +696,11 @@ sub_020868A0: ; 0x020868A0
 	ldr r0, [r5, r1]
 	sub r1, #0xc
 	ldr r1, [r5, r1]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	mov r0, #0x96
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	mov r0, #0x96
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -796,11 +796,11 @@ sub_020869BC: ; 0x020869BC
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	mov r0, #0x9d
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	mov r2, #0x29
 	lsl r2, r2, #4
 	add r1, r2, #0
@@ -830,11 +830,11 @@ sub_020869BC: ; 0x020869BC
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	mov r0, #0x29
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	add sp, #0x34
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end sub_020869BC
@@ -986,15 +986,15 @@ sub_02086BB4: ; 0x02086BB4
 	mov r0, #0x22
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	mov r0, #0x8f
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	mov r0, #0x96
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	add r4, r5, #0
 	mov r7, #0x22
 	mov r6, #1
@@ -1002,7 +1002,7 @@ sub_02086BB4: ; 0x02086BB4
 	lsl r7, r7, #4
 _02086BE0:
 	ldr r0, [r4, r7]
-	bl sub_0200DC64
+	bl UnkImageStruct_GetSpriteCurrentAnimSeqNo
 	cmp r0, #3
 	bne _02086C34
 	mov r0, #0x22
@@ -1017,7 +1017,7 @@ _02086BE0:
 	lsl r1, r1, #2
 	ldr r0, [r4, r0]
 	ldr r1, [r4, r1]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	mov r0, #0xdd
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -1048,12 +1048,12 @@ _02086C34:
 	mov r0, #0x22
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 _02086C48:
 	mov r0, #0x96
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200DC64
+	bl UnkImageStruct_GetSpriteCurrentAnimSeqNo
 	cmp r0, #3
 	beq _02086C76
 	mov r0, #0xdd
@@ -1151,7 +1151,7 @@ _02086CE2:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	mov r0, #0xdf
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -1166,7 +1166,7 @@ _02086D12:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #2
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	mov r0, #0xdf
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -1181,7 +1181,7 @@ _02086D32:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	mov r0, #0xdf
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -1201,7 +1201,7 @@ _02086D60:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	mov r0, #0xdf
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]

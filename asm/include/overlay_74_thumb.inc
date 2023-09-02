@@ -163,10 +163,10 @@
 .public sub_020248AC
 .public sub_020248B8
 .public Set2dSpriteAnimSeqNo
-.public sub_02024950
+.public TryChange2dSpriteAnimSeqNo
 .public sub_02024964
-.public sub_020249A8
-.public sub_020249B0
+.public Get2dSpriteCurrentAnimSeqNo
+.public Sprite_TickCellOrMulticellAnimation
 .public sub_020249D4
 .public sub_02024A04
 .public sub_02024A14

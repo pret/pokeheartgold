@@ -118,7 +118,7 @@ _02239BC8:
 	bl sub_0200D734
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

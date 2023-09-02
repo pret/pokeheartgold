@@ -1087,7 +1087,7 @@ _021E61D6:
 	bl sub_0200D740
 	mov r1, #0
 	add r4, r0, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r0, r4, #0
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}

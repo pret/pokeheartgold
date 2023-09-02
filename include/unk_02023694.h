@@ -4,14 +4,14 @@
 #include "unk_02009D48.h"
 
 typedef struct SpriteTemplate {
-    void *spriteList;
-    const struct SpriteResourcesHeader *header;
-    VecFx32 position;
-    VecFx32 scale;
-    u16 rotation;
-    u32 priority;
-    int whichScreen;
-    HeapID heapId;
+    void *spriteList;                            // 000
+    const struct SpriteResourcesHeader *header;  // 004
+    VecFx32 position;                            // 008
+    VecFx32 scale;                               // 014
+    u16 rotation;                                // 020
+    u32 priority;                                // 024
+    NNS_G2D_VRAM_TYPE whichScreen;               // 028
+    HeapID heapId;                               // 02C
 } SpriteTemplate;
 
 struct SpriteAnimationData {
@@ -80,16 +80,16 @@ void sub_02024B38(Sprite*, BOOL);
 void sub_02024B78(Sprite* sprite, GXOamMode mode);
 GXOamMode sub_02024BAC(Sprite* sprite);
 u32 sub_02024C9C(Sprite*);
-u32 sub_020248C8(Sprite*);
+u32 Get2dSpriteAnimSeqNo(Sprite*);
 void Set2dSpriteAnimSeqNo(Sprite *, int);
-void sub_02024950(Sprite *, int);
-u16 sub_020249A8(Sprite *);
+void TryChange2dSpriteAnimSeqNo(Sprite *, int);
+u16 Get2dSpriteCurrentAnimSeqNo(Sprite *);
 void sub_02024964(Sprite*);
 void sub_020249D4(Sprite*);
 u16 sub_020249F8(Sprite*);
 BOOL sub_020248B8(Sprite*);
 void sub_02024A74(Sprite*, u8);
-void sub_020249B0(Sprite*, fx32);
+void Sprite_TickCellOrMulticellAnimation(Sprite*, fx32);
 void sub_02024A14(Sprite*, int);
 void sub_02024A48(Sprite*, int);
 int sub_02024A6C(Sprite*);

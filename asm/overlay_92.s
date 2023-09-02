@@ -963,7 +963,7 @@ _0225CD00:
 	add r0, r5, #0
 	add r0, #0xf0
 	ldr r0, [r0]
-	bl sub_0200DC64
+	bl UnkImageStruct_GetSpriteCurrentAnimSeqNo
 	cmp r0, #2
 	beq _0225CD76
 	add r0, r5, #0
@@ -976,7 +976,7 @@ _0225CD00:
 	add r0, #0xf0
 	ldr r0, [r0]
 	mov r1, #2
-	bl sub_0200DC58
+	bl UnkImageStruct_TryChangeSpriteAnimSeqNo
 	mov r0, #0xa9
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -1058,7 +1058,7 @@ _0225CD76:
 _0225CDDC:
 	add r5, #0xf0
 	ldr r0, [r5]
-	bl sub_0200DC24
+	bl UnkImageStruct_TickSpriteAnimation2Frames
 	mov r0, #0
 	add sp, #0xcc
 	pop {r4, r5, r6, r7, pc}
@@ -3003,7 +3003,7 @@ _0225DE1C:
 	bl _s32_div_f
 	ldr r0, [r5, #0x40]
 	add r1, r1, #1
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	add r6, r6, #1
 	add r4, #8
 	add r5, r5, #4
@@ -3065,7 +3065,7 @@ _0225DE96:
 	add r0, r5, #0
 	add r0, #0xd0
 	ldr r0, [r0]
-	bl sub_0200DC24
+	bl UnkImageStruct_TickSpriteAnimation2Frames
 	add r0, r5, #0
 	add r0, #0xd0
 	ldr r0, [r0]
@@ -3126,7 +3126,7 @@ ov92_0225DF28: ; 0x0225DF28
 	mov r4, #0
 _0225DF2E:
 	ldr r0, [r5, #0x40]
-	bl sub_0200DC24
+	bl UnkImageStruct_TickSpriteAnimation2Frames
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0x24
@@ -3178,12 +3178,12 @@ ov92_0225DF58: ; 0x0225DF58
 	lsl r6, r0, #2
 	add r0, r5, r6
 	ldr r0, [r0, #0x1c]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	add r0, r5, r6
 	add r1, sp, #4
 	ldr r0, [r0, #0x28]
 	ldr r1, [r1, r4]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -3213,11 +3213,11 @@ ov92_0225DFA4: ; 0x0225DFA4
 	lsl r6, r0, #2
 	add r0, r5, r6
 	ldr r0, [r0, #0x1c]
-	bl sub_0200DC64
+	bl UnkImageStruct_GetSpriteCurrentAnimSeqNo
 	add r4, r0, #0
 	add r0, r5, r6
 	ldr r0, [r0, #0x28]
-	bl sub_0200DC64
+	bl UnkImageStruct_GetSpriteCurrentAnimSeqNo
 	mov r2, #0
 	add r3, sp, #0
 _0225DFE0:
@@ -3257,11 +3257,11 @@ _0225E016:
 	cmp r4, r0
 	beq _0225E030
 	ldr r0, [r5, #0x1c]
-	bl sub_0200DC24
+	bl UnkImageStruct_TickSpriteAnimation2Frames
 	ldr r0, [r5, #0x28]
-	bl sub_0200DC24
+	bl UnkImageStruct_TickSpriteAnimation2Frames
 	ldr r0, [r5, #0x34]
-	bl sub_0200DC24
+	bl UnkImageStruct_TickSpriteAnimation2Frames
 	add r5, r5, #4
 _0225E030:
 	ldr r0, [r6, #4]
@@ -4186,13 +4186,13 @@ _0225E6C8:
 	bl sub_0200DD24
 	ldr r0, [r5, #0x34]
 	mov r1, #5
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5, #0x1c]
-	bl sub_0200DC24
+	bl UnkImageStruct_TickSpriteAnimation2Frames
 	ldr r0, [r5, #0x28]
-	bl sub_0200DC24
+	bl UnkImageStruct_TickSpriteAnimation2Frames
 	ldr r0, [r5, #0x34]
-	bl sub_0200DC24
+	bl UnkImageStruct_TickSpriteAnimation2Frames
 	add r0, r6, #0
 	add r1, r4, #0
 	mov r2, #0
@@ -4241,7 +4241,7 @@ ov92_0225E7E4: ; 0x0225E7E4
 	add r2, sp, #8
 	bl sub_0200D734
 	add r4, r0, #0
-	bl sub_0200DC24
+	bl UnkImageStruct_TickSpriteAnimation2Frames
 	add r0, r4, #0
 	add sp, #0x3c
 	pop {r4, r5, pc}
@@ -4285,11 +4285,11 @@ _0225E832:
 	add r0, #0xe8
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	add r0, r5, #0
 	add r0, #0xe8
 	ldr r0, [r0]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	add r0, r5, #0
 	add r0, #0xe8
 	ldr r0, [r0]
@@ -4329,11 +4329,11 @@ _0225E832:
 	add r0, #0xe0
 	ldr r0, [r0]
 	mov r1, #6
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	add r0, r5, #0
 	add r0, #0xe0
 	ldr r0, [r0]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	add r0, r5, #0
 	add r0, #0xe0
 	ldr r0, [r0]
@@ -4414,7 +4414,7 @@ ov92_0225E93C: ; 0x0225E93C
 	add r0, #0xf0
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	add r0, r5, #0
 	add r0, #0xf0
 	ldr r0, [r0]
@@ -4423,7 +4423,7 @@ ov92_0225E93C: ; 0x0225E93C
 	add r0, r5, #0
 	add r0, #0xf0
 	ldr r0, [r0]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	add r5, #0xf0
 	ldr r0, [r5]
 	mov r1, #7
@@ -5689,7 +5689,7 @@ _0225F374: ; jump table
 _0225F380:
 	ldr r0, [r4, #0xc]
 	mov r1, #7
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	bl sub_0200DD68
@@ -5865,7 +5865,7 @@ _0225F4F2:
 	bl sub_0200E024
 	ldr r0, [r4, #0xc]
 	mov r1, #5
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r4, #0xc]
 	mov r1, #2
 	bl sub_0200DD68
@@ -8433,7 +8433,7 @@ _022609D0:
 	str r0, [sp, #0x18]
 _022609D4:
 	ldr r0, [r5, #8]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [sp, #0x14]
 	add r4, #8
 	add r0, #0x30
@@ -8536,7 +8536,7 @@ _02260A84:
 	bl _s32_div_f
 	ldr r0, _02260AD8 ; =0x00002498
 	ldr r0, [r4, r0]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	add r7, r7, #1
 	add r4, r4, #4
 	add r6, r6, r5
@@ -8957,7 +8957,7 @@ _02260DF6:
 	bne _02260E0E
 	ldr r0, [r5, #0x14]
 	mov r1, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 _02260E0E:
 	mov r0, #0x46
 	ldrsh r1, [r5, r0]
@@ -9637,7 +9637,7 @@ _0226133C:
 	ldr r0, [r5, #8]
 	cmp r0, #0
 	beq _02261346
-	bl sub_0200DC24
+	bl UnkImageStruct_TickSpriteAnimation2Frames
 _02261346:
 	add r4, r4, #1
 	add r5, r5, #4

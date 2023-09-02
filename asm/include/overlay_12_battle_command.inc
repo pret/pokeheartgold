@@ -32,7 +32,7 @@
 .public SpriteGfxHandler_UnloadCellObjById
 .public SpriteGfxHandler_UnloadAnimObjById
 .public sub_0200D9DC
-.public sub_0200DC18
+.public UnkImageStruct_TickSpriteAnimation1Frame
 .public sub_0200E188
 .public sub_0200E2B0
 .public DestroySysTask

@@ -12,8 +12,8 @@
 .public LCRandom
 .public sub_020247D4
 .public Set2dSpriteAnimSeqNo
-.public sub_020249A8
-.public sub_020249B0
+.public Get2dSpriteCurrentAnimSeqNo
+.public Sprite_TickCellOrMulticellAnimation
 .public sub_020249D4
 .public sub_020249F8
 .public GF_AssertFail

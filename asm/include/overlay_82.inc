@@ -115,7 +115,7 @@
 .public sub_02024868
 .public sub_020248AC
 .public Set2dSpriteAnimSeqNo
-.public sub_02024950
+.public TryChange2dSpriteAnimSeqNo
 .public sub_02024AA8
 .public GF_AssertFail
 .public String_New

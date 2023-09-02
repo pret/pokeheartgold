@@ -3083,7 +3083,7 @@ _021E7190:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r7, r7, #1
 	add r4, #0x34
 	add r5, r5, #4
@@ -3411,19 +3411,19 @@ _021E7444:
 	sub r0, #0x94
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	b _021E746A
 _021E7460:
 	sub r0, #0x94
 	ldr r0, [r5, r0]
 	add r1, r4, #2
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 _021E746A:
 	mov r0, #0x49
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	cmp r6, #1
 	bne _021E748C
 	cmp r7, #0
@@ -3445,20 +3445,20 @@ _021E748E:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, r4, #4
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	b _021E74B0
 _021E74A4:
 	mov r0, #0x4a
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, r4, #6
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 _021E74B0:
 	mov r0, #0x4a
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov68_021E7424
@@ -4050,12 +4050,12 @@ ov68_021E797C: ; 0x021E797C
 	add r4, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	mov r0, #0x49
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	mov r0, #0x4a
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -4079,19 +4079,19 @@ ov68_021E797C: ; 0x021E797C
 	sub r0, #0x94
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	b _021E79DC
 _021E79D2:
 	sub r0, #0x94
 	ldr r0, [r5, r0]
 	mov r1, #3
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 _021E79DC:
 	mov r0, #0x4a
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #4
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	pop {r3, r4, r5, pc}
 _021E79EA:
 	ldrh r0, [r0, #0x16]
@@ -4101,20 +4101,20 @@ _021E79EA:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #7
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	b _021E7A0A
 _021E79FE:
 	mov r0, #0x4a
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #5
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 _021E7A0A:
 	mov r0, #0x49
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov68_021E797C
 

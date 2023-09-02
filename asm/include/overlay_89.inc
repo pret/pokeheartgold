@@ -60,8 +60,8 @@
 .public sub_0200D934
 .public sub_0200D998
 .public sub_0200D9DC
-.public sub_0200DC0C
-.public sub_0200DC4C
+.public TickSpriteAnimation1Frame
+.public UnkImageStruct_SetSpriteAnimSeqNo
 .public sub_0200DCA0
 .public sub_0200DCE8
 .public sub_0200DDF4

@@ -2102,7 +2102,7 @@ ov67_021E69D8: ; 0x021E69D8
 	add r5, r7, #0
 _021E69E2:
 	ldr r0, [r5, r6]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -2136,7 +2136,7 @@ ov67_021E6A08: ; 0x021E6A08
 	bl sub_0200DCC0
 	ldr r0, [r5, r4]
 	add r1, r6, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021E6A24: .word 0x00000484

@@ -2168,7 +2168,7 @@ ov34_0225E5EC: ; 0x0225E5EC
 	bl sub_020249F8
 	str r0, [sp]
 	ldr r0, [r4, r6]
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
 	ldr r0, [sp]

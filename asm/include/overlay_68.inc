@@ -55,8 +55,8 @@
 .public sub_0200D734
 .public sub_0200D998
 .public sub_0200D9DC
-.public sub_0200DC4C
-.public sub_0200DC78
+.public UnkImageStruct_SetSpriteAnimSeqNo
+.public UnkImageStruct_SetSpriteAnimActiveFlag
 .public sub_0200DCAC
 .public sub_0200DCC0
 .public sub_0200DCE8

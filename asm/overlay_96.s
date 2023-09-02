@@ -1793,13 +1793,13 @@ ov96_021E658C: ; 0x021E658C
 	lsl r1, r1, #4
 	add r1, r0, r1
 	ldr r0, _021E659C ; =0x00000D3C
-	ldr r3, _021E65A0 ; =sub_02024950
+	ldr r3, _021E65A0 ; =TryChange2dSpriteAnimSeqNo
 	ldr r0, [r1, r0]
 	add r1, r2, #0
 	bx r3
 	nop
 _021E659C: .word 0x00000D3C
-_021E65A0: .word sub_02024950
+_021E65A0: .word TryChange2dSpriteAnimSeqNo
 	thumb_func_end ov96_021E658C
 
 	thumb_func_start ov96_021E65A4
@@ -11181,7 +11181,7 @@ _021EAC50:
 	bl GF_AssertFail
 	pop {r4, pc}
 _021EAC56:
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 _021EAC5A:
 	pop {r4, pc}
 	thumb_func_end ov96_021EAC0C
@@ -11282,7 +11282,7 @@ _021EACFC:
 	lsl r1, r4, #0x18
 	lsr r1, r1, #0x18
 _021EAD00:
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 _021EAD04:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -11353,7 +11353,7 @@ _021EAD6C:
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
 _021EAD72:
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov96_021EAD08
 
@@ -12468,11 +12468,11 @@ _021EB56C: .word Set2dSpriteAnimSeqNo
 
 	thumb_func_start ov96_021EB570
 ov96_021EB570: ; 0x021EB570
-	ldr r3, _021EB578 ; =sub_02024950
+	ldr r3, _021EB578 ; =TryChange2dSpriteAnimSeqNo
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_021EB578: .word sub_02024950
+_021EB578: .word TryChange2dSpriteAnimSeqNo
 	thumb_func_end ov96_021EB570
 
 	thumb_func_start ov96_021EB57C
@@ -12975,7 +12975,7 @@ _021EB89A:
 	lsl r0, r0, #2
 	add r0, r4, r0
 	ldr r0, [r0, #0x20]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	add r1, r4, #0
 	add r1, #0xb2
 	ldrb r1, [r1]
@@ -13828,7 +13828,7 @@ _021EBF44:
 	lsl r0, r0, #2
 	add r0, r4, r0
 	ldr r0, [r0, #0x20]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, _021EBFFC ; =0x000006EE
 	mov r1, #0
 	bl StopSE
@@ -14575,7 +14575,7 @@ _021EC59C:
 	bl sub_0200D740
 	mov r1, #1
 	str r0, [r6, #0x20]
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r4, r4, #1
 	add r5, #0x40
 	add r6, r6, #4
@@ -14638,7 +14638,7 @@ _021EC5E4:
 	bl sub_0200D740
 	mov r1, #1
 	str r0, [r4, #0x20]
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	mov r2, #1
 	mov r4, #0
 	str r4, [sp, #0x18]
@@ -14663,7 +14663,7 @@ _021EC642:
 	bl sub_0200D740
 	mov r1, #1
 	str r0, [r6, #0x20]
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r1, sp, #0xc
 	mov r0, #0
 	ldrsh r1, [r1, r0]
@@ -14811,7 +14811,7 @@ _021EC760:
 	bl sub_0200D740
 	str r0, [r6, #0x20]
 	mov r1, #1
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	ldr r0, [r6, #0x20]
 	mov r1, #0
 	bl sub_0200DCE8
@@ -15591,13 +15591,13 @@ _021ECD4C:
 	lsr r4, r0, #0x10
 	ldr r0, [r6, #4]
 	add r1, r7, #1
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r6, #8]
 	add r1, r5, #1
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r6, #0xc]
 	add r1, r4, #1
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r6, #0x14]
 	mov r1, #0x14
 	bl _u32_div_f
@@ -15801,7 +15801,7 @@ _021ECF20:
 	bl sub_0200D740
 	mov r1, #1
 	str r0, [r5]
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -15916,7 +15916,7 @@ _021ED008:
 	mov r0, #0
 	str r0, [r5, #0x10]
 	ldr r0, [r5]
-	bl sub_0200DC64
+	bl UnkImageStruct_GetSpriteCurrentAnimSeqNo
 	sub r0, #0xb
 	add r1, sp, #0
 	strh r0, [r1, #6]
@@ -15936,7 +15936,7 @@ _021ED008:
 	bl sub_0200D740
 	mov r1, #1
 	str r0, [r5]
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -21316,7 +21316,7 @@ _021EF9AE:
 	bl sub_0200D740
 	mov r1, #1
 	str r0, [r6, #0x38]
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	ldr r0, [sp, #4]
 	add r4, r4, #4
 	add r0, r0, #1
@@ -21329,7 +21329,7 @@ _021EF9AE:
 	ldr r0, [sp]
 	mov r1, #0
 	ldr r0, [r0, #0x40]
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	ldr r0, [sp]
 	bl ov96_021EFA04
 	add sp, #8
@@ -21354,7 +21354,7 @@ ov96_021EFA04: ; 0x021EFA04
 	lsl r2, r1, #2
 	add r1, r3, r4
 	ldr r1, [r2, r1]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	pop {r4, pc}
 	.balign 4, 0
 _021EFA24: .word ov96_0221BAE8
@@ -21866,7 +21866,7 @@ _021EFE2C:
 	bl BeginNormalPaletteFade
 	ldr r0, [r5, #0x40]
 	mov r1, #1
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	ldr r0, [r5, #0x24]
 	cmp r0, #0
 	bne _021EFE60
@@ -73754,7 +73754,7 @@ ov96_02209BF8: ; 0x02209BF8
 _02209C00:
 	ldr r0, [r5, #0x24]
 	add r1, r6, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #2
@@ -74763,7 +74763,7 @@ _0220A3FE:
 _0220A400:
 	ldr r0, [r5, #0x28]
 	add r1, r4, #0
-	bl sub_0200DC58
+	bl UnkImageStruct_TryChangeSpriteAnimSeqNo
 _0220A408:
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
@@ -75319,11 +75319,11 @@ ov96_0220A87C: ; 0x0220A87C
 	str r0, [sp]
 	ldr r0, [r0, #0x10]
 	mov r1, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	ldr r0, [sp]
 	mov r1, #0
 	ldr r0, [r0, #0xc]
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	mov r7, #0x55
 	lsl r7, r7, #2
 	ldr r5, [sp]
@@ -75337,11 +75337,11 @@ _0220A89C:
 	beq _0220A8B8
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	ldr r0, [r5, r7]
 	mov r1, #0
 	ldr r0, [r0, #4]
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 _0220A8B8:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -75670,7 +75670,7 @@ _0220AB3C:
 _0220AB3E:
 	ldr r0, [r5, #0xc]
 	add r1, r7, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5, #0xc]
 	mov r1, #1
 	bl sub_0200DCE8
@@ -75771,7 +75771,7 @@ _0220AB90:
 _0220AC08:
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	add r1, sp, #0x18
 	ldr r0, [r4]
 	add r1, #2
@@ -75833,7 +75833,7 @@ _0220AC78:
 	bl sub_0200DDB8
 	ldr r0, [r5, #0x10]
 	mov r1, #6
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5, #0x10]
 	mov r1, #1
 	bl sub_0200DCE8
@@ -75857,14 +75857,14 @@ _0220ACA0:
 	bgt _0220ACCC
 	ldr r0, [r1]
 	mov r1, #3
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	b _0220ACFC
 _0220ACCC:
 	cmp r0, #0x3c
 	bgt _0220ACFC
 	ldr r0, [r1]
 	mov r1, #2
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, _0220AD2C ; =0x000008B8
 	bl PlaySE
 	bl LCRandom
@@ -76120,7 +76120,7 @@ _0220AE5C:
 	bl sub_0200DCE8
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r0, r4, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -76150,7 +76150,7 @@ _0220AEDE:
 	str r0, [r4, #0x10]
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r4]
 	mov r1, #0x78
 	mov r2, #0
@@ -76730,7 +76730,7 @@ _0220B35C:
 	bne _0220B36A
 	ldr r0, [r5]
 	add r1, r6, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 _0220B36A:
 	add r4, r4, #1
 	add r5, #0x14
@@ -77138,7 +77138,7 @@ _0220B69C:
 _0220B6AE:
 	ldr r0, [r5, #0x10]
 	mov r1, #2
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5, #0xc]
 	bl ov96_021E5F24
 	add r1, r0, #0
@@ -77196,7 +77196,7 @@ _0220B718:
 	cmp r0, #0
 	beq _0220B724
 	add r1, r6, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 _0220B724:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -77503,7 +77503,7 @@ _0220B91C:
 _0220B920:
 	ldr r0, [r5, #0x1c]
 	add r1, r7, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #6
@@ -77530,7 +77530,7 @@ ov96_0220B940: ; 0x0220B940
 	bne _0220B95A
 	ldr r0, [r4, #0x10]
 	mov r1, #1
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 _0220B95A:
 	pop {r4, pc}
 	thumb_func_end ov96_0220B940
@@ -77645,7 +77645,7 @@ _0220BA1A:
 	bl sub_0200DCAC
 	ldr r0, [r4, #0x20]
 	mov r1, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	ldr r0, [r4, #0x20]
 	mov r1, #1
 	bl sub_0200DCE8
@@ -77936,7 +77936,7 @@ _0220BC56:
 	bl sub_0200DDB8
 	ldr r0, [r4, #0x20]
 	mov r1, #1
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	ldr r0, [r4, #0x1c]
 	bl sub_0200DCAC
 	ldr r1, [r4, #0x44]
@@ -78083,7 +78083,7 @@ _0220BD90:
 	bne _0220BDCA
 	ldr r1, [sp, #8]
 	add r0, r4, #0
-	bl sub_0200DC58
+	bl UnkImageStruct_TryChangeSpriteAnimSeqNo
 	add r0, r4, #0
 	bl sub_0200DCFC
 	cmp r0, #0
@@ -78112,7 +78112,7 @@ _0220BDCA:
 	beq _0220BE02
 	ldr r1, [sp, #4]
 	add r0, r4, #0
-	bl sub_0200DC58
+	bl UnkImageStruct_TryChangeSpriteAnimSeqNo
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_0200DCE8
@@ -78365,7 +78365,7 @@ _0220BFE8:
 	bl sub_0200DDB8
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_0200DC58
+	bl UnkImageStruct_TryChangeSpriteAnimSeqNo
 	add r0, r5, #0
 	mov r1, #1
 	bl sub_0200DCE8
@@ -78383,7 +78383,7 @@ ov96_0220C004: ; 0x0220C004
 	beq _0220C024
 	ldr r0, [r5, #0x28]
 	mov r1, #0x10
-	bl sub_0200DC58
+	bl UnkImageStruct_TryChangeSpriteAnimSeqNo
 	ldr r0, [r5, #0x28]
 	mov r1, #1
 	bl sub_0200DCE8
@@ -78499,11 +78499,11 @@ ov96_0220C0DC: ; 0x0220C0DC
 	ldr r0, [r5, #0x1c]
 	beq _0220C10C
 	add r1, r2, #0
-	bl sub_0200DC58
+	bl UnkImageStruct_TryChangeSpriteAnimSeqNo
 	b _0220C112
 _0220C10C:
 	mov r1, #0xd
-	bl sub_0200DC58
+	bl UnkImageStruct_TryChangeSpriteAnimSeqNo
 _0220C112:
 	ldr r1, [r5, #0x38]
 	lsl r2, r4, #1
@@ -78521,7 +78521,7 @@ _0220C112:
 	bl sub_0200DDB8
 	ldr r0, [r5, #0x20]
 	mov r1, #5
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5, #0x20]
 	mov r1, #1
 	bl sub_0200DCE8
@@ -78611,10 +78611,10 @@ _0220C1B2:
 	bl ov96_021EAB38
 	add r0, r5, #0
 	mov r1, #0x1b
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r0, r5, #0
 	mov r1, #1
 	bl sub_0200DCE8
@@ -78761,7 +78761,7 @@ _0220C2DA:
 	bl sub_0200DDB8
 	ldr r0, [r4, #0x30]
 	mov r1, #1
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	ldr r0, [r4, #0x2c]
 	bl sub_0200DCAC
 	ldr r2, [r4, #0x38]
@@ -79004,7 +79004,7 @@ _0220C4C0:
 	bl sub_0200D740
 	mov r1, #1
 	str r0, [r5]
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	mov r4, #0
 	mov r6, #0x30
 _0220C4FA:
@@ -79033,7 +79033,7 @@ _0220C4FA:
 	bl sub_0200D740
 	mov r1, #1
 	str r0, [r5, #0x14]
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r4, r4, #1
 	add r6, #0x58
 	add r5, r5, #4
@@ -79388,7 +79388,7 @@ ov96_0220C7C4: ; 0x0220C7C4
 	str r0, [r4, #0x40]
 	ldr r0, [r4, #0x14]
 	mov r1, #0x10
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	mov r1, #1
 	ldr r0, [r4, #0x14]
 	lsl r1, r1, #0xc
@@ -79522,7 +79522,7 @@ _0220C8D6:
 	bl sub_0200DC8C
 	add r0, r5, #0
 	mov r1, #0x11
-	bl sub_0200DC58
+	bl UnkImageStruct_TryChangeSpriteAnimSeqNo
 	cmp r4, #0
 	beq _0220C8FC
 	add r0, r5, #0
@@ -80694,7 +80694,7 @@ _0220D16A:
 	bl sub_0200D740
 	mov r1, #1
 	add r4, r0, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r0, r4, #0
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
@@ -80745,7 +80745,7 @@ _0220D1CE:
 	bl sub_0200D740
 	mov r1, #1
 	add r4, r0, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r0, r4, #0
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
@@ -82100,7 +82100,7 @@ _0220DBFA:
 	bl sub_0200DDF4
 	ldr r0, [r5, #0x10]
 	add r1, r7, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5, #0x14]
 	bl sub_0200DCAC
 	ldr r0, [r5, #0x10]
@@ -82326,7 +82326,7 @@ _0220DDB6:
 	add r0, r4, r0
 	ldr r0, [r0, #8]
 	mov r1, #1
-	bl sub_0200DC58
+	bl UnkImageStruct_TryChangeSpriteAnimSeqNo
 _0220DDDE:
 	ldr r0, [r4, #0x18]
 	lsl r0, r0, #0x10
@@ -83948,7 +83948,7 @@ ov96_0220EAC4: ; 0x0220EAC4
 _0220EAE4:
 	ldr r0, [r5, r6]
 	add r1, r7, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r4, r4, #1
 	add r5, #0x1c
 	cmp r4, #0xc
@@ -83967,10 +83967,10 @@ _0220EB04:
 _0220EB08:
 	ldr r0, [r5]
 	add r1, r6, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	ldr r0, [r5, #8]
 	add r1, r7, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #2
@@ -84220,7 +84220,7 @@ _0220ECF0:
 	bl sub_0200DF98
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_0200DCE8
@@ -84275,7 +84275,7 @@ _0220ED62:
 	bl sub_0200D740
 	add r4, r0, #0
 	mov r1, #1
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_0200DCE8
@@ -87134,7 +87134,7 @@ _022103A8:
 	add r0, r5, r0
 	ldr r0, [r0, #0x68]
 	add r1, r4, #4
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5]
 	bl ov96_021E5F24
 	cmp r4, r0
@@ -87261,12 +87261,12 @@ _022104A6:
 	ldr r0, [r6, #0x6c]
 	add r1, #9
 	str r1, [sp, #4]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r1, [sp]
 	ldr r0, [r6, #0x70]
 	add r1, #9
 	str r1, [sp]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -87329,7 +87329,7 @@ _02210506:
 	bl sub_0200D740
 	mov r1, #1
 	add r4, r0, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r0, r4, #0
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
@@ -87683,7 +87683,7 @@ ov96_022107D4: ; 0x022107D4
 _022107DC:
 	ldr r0, [r5, #0x68]
 	add r1, r6, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0x1f
@@ -99715,7 +99715,7 @@ _0221651A:
 	bl sub_0200D740
 	mov r1, #1
 	add r4, r0, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r0, r4, #0
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
@@ -101045,7 +101045,7 @@ _02216F8C:
 	add r1, #0xb
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	bl sub_0200DC58
+	bl UnkImageStruct_TryChangeSpriteAnimSeqNo
 	ldr r0, [r4, #4]
 	mov r1, #1
 	bl sub_0200DCE8
@@ -101070,7 +101070,7 @@ _02216FCC:
 	add r1, #0xf
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r4, #4]
 	mov r1, #1
 	bl sub_0200DCE8
@@ -101175,7 +101175,7 @@ _022170A0:
 	bne _022170C2
 	ldr r0, [r4, #8]
 	mov r1, #1
-	bl sub_0200DC58
+	bl UnkImageStruct_TryChangeSpriteAnimSeqNo
 	mov r0, #0x89
 	lsl r0, r0, #4
 	bl IsSEPlaying
@@ -101190,7 +101190,7 @@ _022170C2:
 	bne _022170CE
 	ldr r0, [r4, #8]
 	mov r1, #9
-	bl sub_0200DC58
+	bl UnkImageStruct_TryChangeSpriteAnimSeqNo
 _022170CE:
 	cmp r7, #0
 	beq _022170D6
@@ -101959,7 +101959,7 @@ _0221771A:
 _0221771E:
 	ldr r0, [r7, #0xc]
 	add r1, r5, #0
-	bl sub_0200DC58
+	bl UnkImageStruct_TryChangeSpriteAnimSeqNo
 	mov r0, #0xee
 	lsl r0, r0, #2
 	ldrb r0, [r7, r0]
@@ -102100,7 +102100,7 @@ _0221782E:
 _02217832:
 	ldr r0, [r5, #0x14]
 	add r1, r6, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #5
@@ -102114,7 +102114,7 @@ _02217832:
 	ldr r0, [sp]
 	mov r1, #0
 	ldr r0, [r0, #0xc]
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov96_02217820
@@ -106063,7 +106063,7 @@ _02219654:
 	add r0, #0xa0
 	ldr r0, [r0]
 	add r1, r6, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #2
@@ -106098,7 +106098,7 @@ _0221968E:
 	add r0, r6, r0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_0200DC58
+	bl UnkImageStruct_TryChangeSpriteAnimSeqNo
 	cmp r4, #3
 	beq _022196AC
 	ldrb r1, [r5]
@@ -106554,7 +106554,7 @@ _022199D6:
 	bl sub_0200D740
 	mov r1, #1
 	add r4, r0, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r0, r4, #0
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
@@ -106956,7 +106956,7 @@ _02219CF6:
 	add r0, #0x98
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r4, r4, #1
 	add r7, #0x58
 	add r6, r6, #4
@@ -107102,7 +107102,7 @@ _02219E2E:
 	bl sub_0200D740
 	mov r1, #1
 	add r4, r0, #0
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r0, r4, #0
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}

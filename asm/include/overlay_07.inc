@@ -59,11 +59,11 @@
 .public SpriteGfxHandler_UnloadPlttObjById
 .public sub_0200D998
 .public sub_0200D9DC
-.public sub_0200DC0C
-.public sub_0200DC18
-.public sub_0200DC34
-.public sub_0200DC4C
-.public sub_0200DC78
+.public TickSpriteAnimation1Frame
+.public UnkImageStruct_TickSpriteAnimation1Frame
+.public UnkImageStruct_TickSpriteAnimationNFrames
+.public UnkImageStruct_SetSpriteAnimSeqNo
+.public UnkImageStruct_SetSpriteAnimActiveFlag
 .public sub_0200DC8C
 .public sub_0200DCA0
 .public sub_0200DCC0

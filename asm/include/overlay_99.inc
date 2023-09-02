@@ -25,9 +25,9 @@
 .public SpriteRenderer_LoadPlttResObjFromOpenNarc
 .public SpriteRenderer_LoadCellResObjFromOpenNarc
 .public SpriteRenderer_LoadAnimResObjFromOpenNarc
-.public sub_0200DC4C
-.public sub_0200DC64
-.public sub_0200DC78
+.public UnkImageStruct_SetSpriteAnimSeqNo
+.public UnkImageStruct_GetSpriteCurrentAnimSeqNo
+.public UnkImageStruct_SetSpriteAnimActiveFlag
 .public sub_0200DC8C
 .public sub_0200DCE8
 .public sub_0200DD10

@@ -119,22 +119,22 @@ sub_0208B278: ; 0x0208B278
 	mov r1, #1
 	ldr r0, [r4, r0]
 	lsl r1, r1, #0xc
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 	ldr r0, _0208B2B4 ; =0x0000045C
 	mov r1, #1
 	ldr r0, [r4, r0]
 	lsl r1, r1, #0xc
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 	ldr r0, _0208B2B8 ; =0x00000504
 	mov r1, #1
 	ldr r0, [r4, r0]
 	lsl r1, r1, #0xc
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 	ldr r0, _0208B2BC ; =0x00000508
 	mov r1, #1
 	ldr r0, [r4, r0]
 	lsl r1, r1, #0xc
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 	pop {r4, pc}
 	nop
 _0208B2B0: .word 0x00000458
@@ -2292,7 +2292,7 @@ sub_0208C3C0: ; 0x0208C3C0
 	mov r1, #1
 	ldr r0, [r4, r0]
 	lsl r1, r1, #0xc
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 _0208C3DC:
 	pop {r4, pc}
 	nop

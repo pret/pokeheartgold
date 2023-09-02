@@ -152,7 +152,7 @@
 .public sub_0202487C
 .public Set2dSpriteAnimSeqNo
 .public sub_02024964
-.public sub_020249B0
+.public Sprite_TickCellOrMulticellAnimation
 .public sub_020249D4
 .public sub_02024A04
 .public sub_02025224

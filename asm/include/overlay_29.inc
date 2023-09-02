@@ -56,7 +56,7 @@
 .public sub_020247D4
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo
-.public sub_020249B0
+.public Sprite_TickCellOrMulticellAnimation
 .public sub_02025224
 .public String_Delete
 .public GXS_SetGraphicsMode

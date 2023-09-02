@@ -2814,7 +2814,7 @@ _021E7046:
 	ldr r0, [r5, r6]
 	cmp r0, #0
 	beq _021E7050
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 _021E7050:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -2837,7 +2837,7 @@ ov86_021E705C: ; 0x021E705C
 	bl sub_0200DCC0
 	ldr r0, [r5, r4]
 	add r1, r6, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov86_021E705C

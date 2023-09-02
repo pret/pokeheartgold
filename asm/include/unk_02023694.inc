@@ -64,12 +64,12 @@
 .public sub_020248B4
 .public sub_020248B8
 .public sub_020248C0
-.public sub_020248C8
+.public Get2dSpriteAnimSeqNo
 .public Set2dSpriteAnimSeqNo
-.public sub_02024950
+.public TryChange2dSpriteAnimSeqNo
 .public sub_02024964
-.public sub_020249A8
-.public sub_020249B0
+.public Get2dSpriteCurrentAnimSeqNo
+.public Sprite_TickCellOrMulticellAnimation
 .public sub_020249D4
 .public sub_020249F8
 .public sub_02024A04

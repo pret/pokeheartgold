@@ -6061,7 +6061,7 @@ _0225F2B2:
 	mov r1, #2
 	ldr r0, [r4, #0x34]
 	lsl r1, r1, #0xc
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 	ldr r0, [r4, #0x34]
 	bl sub_020249F8
 	add r6, r0, #0

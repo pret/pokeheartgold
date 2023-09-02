@@ -211,16 +211,16 @@ ov12_0226BA4C: ; 0x0226BA4C
 	bl sub_0200DDF4
 	ldr r0, [r5]
 	mov r1, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5, #4]
 	mov r1, #1
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5, #8]
 	mov r1, #2
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5, #0xc]
 	mov r1, #3
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	mov r4, #0
 	mov r6, #1
 _0226BAC2:
@@ -311,7 +311,7 @@ ov12_0226BB40: ; 0x0226BB40
 	bl sub_0200DDF4
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5, #0x10]
 	mov r1, #1
 	bl sub_0200DCE8
@@ -358,7 +358,7 @@ ov12_0226BB90: ; 0x0226BB90
 	add r5, r6, #0
 _0226BBA2:
 	ldr r0, [r5]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -368,7 +368,7 @@ _0226BBA2:
 	cmp r0, #1
 	bne _0226BBC0
 	ldr r0, [r6, #0x10]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 _0226BBC0:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

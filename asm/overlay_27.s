@@ -469,7 +469,7 @@ _0225A36E:
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	mov r1, #2
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 _0225A38A:
 	ldr r0, _0225A460 ; =0x0000051C
 	ldr r0, [r5, r0]
@@ -689,7 +689,7 @@ ov27_0225A530: ; 0x0225A530
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	add r4, r1, #0
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	add r6, r0, #0
 	mov r0, #0xf
 	lsl r0, r0, #6
@@ -3856,7 +3856,7 @@ _0225BE3A:
 	bl String_Delete
 	ldr r0, [r5, #8]
 	mov r1, #5
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 	mov r0, #1
 	add sp, #0x14
 	str r0, [r5, #0x1c]
@@ -3866,12 +3866,12 @@ _0225BE8A:
 	ldr r0, [r5, #8]
 	beq _0225BE9A
 	mov r1, #5
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 	add sp, #0x14
 	pop {r4, r5, pc}
 _0225BE9A:
 	mov r1, #0
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 	add r0, r5, #0
 	bl ov27_0225BEB0
 	mov r0, #0

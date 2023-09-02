@@ -146,7 +146,7 @@ ov12_02265F34: ; 0x02265F34
 	bl sub_0200D734
 	str r0, [r4]
 	ldr r0, [r0]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	pop {r3, r4, r5, pc}
 	nop
 _02265F64: .word ov12_0226E100

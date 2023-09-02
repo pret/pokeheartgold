@@ -4023,7 +4023,7 @@ ov82_0223FCBC: ; 0x0223FCBC
 	beq _0223FCD4
 	ldrb r1, [r1]
 	ldr r0, [r5, #0x10]
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 _0223FCD4:
 	ldr r0, [r5, #0x10]
 	bl sub_020248AC
@@ -4056,7 +4056,7 @@ ov82_0223FCFC: ; 0x0223FCFC
 	bl sub_02024868
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov82_0223FCFC

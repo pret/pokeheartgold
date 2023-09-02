@@ -405,7 +405,7 @@ _0221C152:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0221C160
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 _0221C160:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -427,7 +427,7 @@ ov63_0221C16C: ; 0x0221C16C
 	bl sub_0200DCC0
 	ldr r0, [r5, r4]
 	add r1, r6, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov63_0221C16C
 

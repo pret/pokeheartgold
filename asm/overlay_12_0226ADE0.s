@@ -337,7 +337,7 @@ _0226B044:
 _0226B05C:
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	str r6, [r5, #0xc]
 	mov r2, #0x7d
 	str r4, [r5, #0x10]
@@ -682,7 +682,7 @@ _0226B2FE:
 	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	add r0, r5, #0
 	str r6, [r5, #8]
 	add r0, #0x2d
@@ -876,7 +876,7 @@ _0226B472:
 _0226B486:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	pop {r3, r4, r5, pc}
 _0226B490:
 	ldr r1, [r4, #0x14]
@@ -899,7 +899,7 @@ _0226B4A8:
 	beq _0226B4BC
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	pop {r3, r4, r5, pc}
 _0226B4BC:
 	ldr r0, [r4, #8]
@@ -1009,7 +1009,7 @@ _0226B574:
 _0226B588:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	pop {r3, r4, r5, pc}
 _0226B592:
 	ldr r0, [r4]
@@ -1338,7 +1338,7 @@ _0226B7F0:
 _0226B7FE:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	pop {r3, r4, r5, pc}
 _0226B808:
 	ldr r0, [r4]

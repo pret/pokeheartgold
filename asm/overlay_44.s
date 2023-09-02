@@ -15217,7 +15217,7 @@ _02231876:
 	mov r1, #2
 	ldr r0, [r7, r4]
 	lsl r1, r1, #0xc
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 	ldr r0, [r7, r4]
 	bl sub_020249F8
 	add r4, r0, #0
@@ -15253,7 +15253,7 @@ _022318BE:
 	lsl r4, r5, #2
 	add r6, r0, r1
 	ldr r0, [r6, r4]
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	add r7, r0, #0
 	ldr r0, [r6, r4]
 	bl sub_020249F8
@@ -15277,7 +15277,7 @@ _022318FA:
 	mov r1, #2
 	ldr r0, [r6, r4]
 	lsl r1, r1, #0xc
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 _02231904:
 	ldr r0, [sp, #8]
 	add sp, #0x10

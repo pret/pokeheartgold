@@ -523,7 +523,7 @@ _02238AF4:
 	mov r1, #1
 	tst r1, r4
 	beq _02238B04
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 _02238B04:
 	add r6, r6, #1
 	lsr r4, r4, #1
@@ -2074,7 +2074,7 @@ _02239782:
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _022397F0
-	bl sub_0200DC64
+	bl UnkImageStruct_GetSpriteCurrentAnimSeqNo
 	strb r0, [r6, #0x15]
 	ldr r0, [r4]
 	bl sub_0200DCD4
@@ -2214,7 +2214,7 @@ _02239870:
 	bl ov80_02239708
 	ldrb r1, [r5, #0x15]
 	ldr r0, [sp, #8]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldrh r1, [r4]
 	ldr r0, [sp, #8]
 	lsl r1, r1, #0x13

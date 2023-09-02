@@ -161,7 +161,7 @@
 .public sub_020248AC
 .public sub_020248B8
 .public Set2dSpriteAnimSeqNo
-.public sub_020249A8
+.public Get2dSpriteCurrentAnimSeqNo
 .public sub_02024A04
 .public sub_02024A14
 .public sub_02024B68

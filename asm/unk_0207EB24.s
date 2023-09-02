@@ -722,7 +722,7 @@ sub_0207F0FC: ; 0x0207F0FC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	cmp r4, r0
 	beq _0207F11A
 	add r0, r5, #0
@@ -839,7 +839,7 @@ _0207F1BE:
 	mov r1, #1
 	ldr r0, [r4, #0x24]
 	lsl r1, r1, #0xc
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 	ldr r0, _0207F23C ; =0x00000C65
 	ldrb r0, [r6, r0]
 	cmp r0, r5
@@ -995,7 +995,7 @@ sub_0207F2F8: ; 0x0207F2F8
 	mov r1, #1
 	ldr r0, [r4, r0]
 	lsl r1, r1, #0xc
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 	mov r0, #0x6d
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]

@@ -8996,7 +8996,7 @@ _0225CE78: ; jump table
 	.short _0225D11C - _0225CE78 - 2 ; case 4
 _0225CE82:
 	ldr r0, [r4, #0xc]
-	bl sub_0200DC40
+	bl UnkImageStruct_GetSpriteAnimSeqNo
 	cmp r0, #2
 	bls _0225CE9C
 	ldr r0, [r4, #0xc]
@@ -9004,7 +9004,7 @@ _0225CE82:
 	bl sub_0200DCC0
 	ldr r0, [r4, #0xc]
 	mov r1, #2
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 _0225CE9C:
 	mov r0, #0x1c
 	str r0, [r4, #0x1c]
@@ -9154,7 +9154,7 @@ _0225CFB0:
 	bl sub_0200DDB8
 _0225CFBC:
 	ldr r0, [r4, #0xc]
-	bl sub_0200DC40
+	bl UnkImageStruct_GetSpriteAnimSeqNo
 	cmp r0, #1
 	bls _0225CFE6
 	ldr r0, [r4, #0xc]
@@ -9162,7 +9162,7 @@ _0225CFBC:
 	bl sub_0200DCC0
 	ldr r0, [r4, #0xc]
 	mov r1, #1
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldrh r1, [r4, #0x16]
 	mov r0, #1
 	add sp, #8
@@ -9470,11 +9470,11 @@ _0225D1CA:
 	ldr r0, [r4, #4]
 	mov r1, #1
 	ldr r0, [r0, #0x18]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r4, #4]
 	mov r1, #1
 	ldr r0, [r0, #0x18]
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	mov r0, #3
 	add sp, #0x30
 	strb r0, [r4, #0xa]
@@ -9602,11 +9602,11 @@ _0225D344:
 	ldr r0, [r4, #4]
 	mov r1, #1
 	ldr r0, [r0, #0x18]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r4, #4]
 	mov r1, #1
 	ldr r0, [r0, #0x18]
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	mov r0, #2
 	add sp, #0x30
 	strb r0, [r4, #0xa]
@@ -10037,11 +10037,11 @@ _0225D6F0:
 	ldr r0, [r5, #4]
 	mov r1, #1
 	ldr r0, [r0, #0x18]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5, #4]
 	mov r1, #1
 	ldr r0, [r0, #0x18]
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	mov r0, #1
 	strb r0, [r5, #0xa]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -18945,7 +18945,7 @@ _02261E0E:
 	bl sub_0200DCC0
 	ldr r0, [r5, #0xc]
 	sub r1, r6, #1
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	mov r4, #1
 _02261E34:
 	add r0, r4, #0

@@ -22559,7 +22559,7 @@ _021F100E:
 	ldr r0, [r5, r6]
 	cmp r0, #0
 	beq _021F1018
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 _021F1018:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -22767,7 +22767,7 @@ ov18_021F118C: ; 0x021F118C
 	bl sub_0200DCC0
 	ldr r0, [r5, r4]
 	add r1, r6, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov18_021F118C
@@ -26102,7 +26102,7 @@ ov18_021F2C98: ; 0x021F2C98
 	mov r0, #0x67
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
-	bl sub_0200DC64
+	bl UnkImageStruct_GetSpriteCurrentAnimSeqNo
 	ldr r1, _021F2CB0 ; =_021FA311
 	ldrb r0, [r1, r0]
 	pop {r3, pc}
@@ -32824,7 +32824,7 @@ ov18_021F6214: ; 0x021F6214
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	add r4, r2, #0
-	bl sub_0200DC64
+	bl UnkImageStruct_GetSpriteCurrentAnimSeqNo
 	add r0, r4, r0
 	sub r0, #0xe
 	ldrb r0, [r0]

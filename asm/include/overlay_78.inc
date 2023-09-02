@@ -37,7 +37,7 @@
 .public sub_0200D740
 .public sub_0200D998
 .public sub_0200D9DC
-.public sub_0200DC78
+.public UnkImageStruct_SetSpriteAnimActiveFlag
 .public sub_0200DCE0
 .public sub_0200DCE8
 .public sub_0200DDF4

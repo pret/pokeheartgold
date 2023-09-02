@@ -2541,7 +2541,7 @@ ov28_0225E8B8: ; 0x0225E8B8
 	bl sub_020252F4
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	add r7, r0, #0
 	cmp r4, #1
 	bne _0225E8E6

@@ -306,7 +306,7 @@ _02227276:
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	lsr r0, r0, #1
 	beq _022272DA
 	mov r0, #0x1a
@@ -354,7 +354,7 @@ _022272DA:
 	mov r0, #0x69
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	lsr r0, r0, #1
 	beq _02227328
 	mov r0, #0x69
@@ -8189,7 +8189,7 @@ ov74_0222B144: ; 0x0222B144
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	mov r1, #2
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 	ldr r0, _0222B198 ; =0x00003014
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -8230,7 +8230,7 @@ ov74_0222B19C: ; 0x0222B19C
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	mov r1, #4
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 	ldr r0, _0222B1F0 ; =0x00003060
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -8306,13 +8306,13 @@ _0222B232:
 	cmp r0, #0
 	beq _0222B242
 	add r1, r6, #0
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 _0222B242:
 	ldr r0, [r5, r7]
 	cmp r0, #0
 	beq _0222B24E
 	add r1, r6, #0
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 _0222B24E:
 	add r4, r4, #1
 	add r5, #0x4c
@@ -8325,7 +8325,7 @@ _0222B24E:
 	beq _0222B268
 	mov r1, #2
 	lsl r1, r1, #0xc
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 _0222B268:
 	ldr r1, _0222B284 ; =0x00003060
 	ldr r0, [sp]
@@ -8334,7 +8334,7 @@ _0222B268:
 	beq _0222B27A
 	mov r1, #2
 	lsl r1, r1, #0xc
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 _0222B27A:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -8361,7 +8361,7 @@ _0222B292:
 	add r0, #0x94
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 	add r0, r5, #0
 	add r0, #0x94
 	ldr r0, [r0]
@@ -8395,7 +8395,7 @@ _0222B2CE:
 	add r0, #0x94
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 	add r0, r5, #0
 	add r0, #0x94
 	ldr r0, [r0]
@@ -8431,7 +8431,7 @@ _0222B316:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #5
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 	ldr r0, [r5, r7]
 	mov r1, #0
 	bl sub_020249D4
@@ -8924,7 +8924,7 @@ _0222B6AC:
 	add r0, #0x94
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 	add r0, r5, #0
 	add r0, #0x94
 	ldr r0, [r0]
@@ -10107,7 +10107,7 @@ _0222C0B4:
 	ldr r0, _0222C2D8 ; =0x00003014
 	mov r1, #4
 	ldr r0, [r4, r0]
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 	b _0222C0EA
 _0222C0CC:
 	cmp r5, #0x1e
@@ -10115,7 +10115,7 @@ _0222C0CC:
 	ldr r0, _0222C2D8 ; =0x00003014
 	mov r1, #3
 	ldr r0, [r4, r0]
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 	b _0222C0EA
 _0222C0DC:
 	cmp r5, #7
@@ -10314,7 +10314,7 @@ _0222C260:
 	ldr r0, _0222C2E4 ; =0x00003060
 	mov r1, #2
 	ldr r0, [r4, r0]
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 	b _0222C27E
 _0222C270:
 	cmp r5, #7
@@ -10322,7 +10322,7 @@ _0222C270:
 	ldr r0, _0222C2E4 ; =0x00003060
 	mov r1, #3
 	ldr r0, [r4, r0]
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 _0222C27E:
 	cmp r6, #0
 	beq _0222C2D0

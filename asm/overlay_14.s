@@ -26288,7 +26288,7 @@ _021F29CE:
 	ldr r0, [r5, r6]
 	cmp r0, #0
 	beq _021F29D8
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 _021F29D8:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -26311,7 +26311,7 @@ ov14_021F29E4: ; 0x021F29E4
 	bl sub_0200DCC0
 	ldr r0, [r5, r4]
 	add r1, r6, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov14_021F29E4

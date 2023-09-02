@@ -803,7 +803,7 @@ ov29_0225DB7C: ; 0x0225DB7C
 _0225DB8A:
 	ldr r0, [r5, r6]
 	add r1, r7, #0
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0xb

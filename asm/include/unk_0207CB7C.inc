@@ -46,7 +46,7 @@
 .public AddTextPrinterParameterized2
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo
-.public sub_020249A8
+.public Get2dSpriteCurrentAnimSeqNo
 .public sub_020249D4
 .public sub_02025224
 .public GF_AssertFail

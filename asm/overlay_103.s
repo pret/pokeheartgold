@@ -2884,7 +2884,7 @@ _021EDF72:
 	ldr r0, [r5, r6]
 	cmp r0, #0
 	beq _021EDF7C
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 _021EDF7C:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -3061,7 +3061,7 @@ ov103_021EE0AC: ; 0x021EE0AC
 	bl sub_0200DCC0
 	ldr r0, [r5, r4]
 	add r1, r6, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov103_021EE0AC

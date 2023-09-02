@@ -391,7 +391,7 @@ _0226BE8E:
 	strb r0, [r4, #0x1d]
 _0226BEAA:
 	ldr r0, [r4]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 _0226BEB0:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

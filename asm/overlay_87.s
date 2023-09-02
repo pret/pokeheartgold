@@ -5073,7 +5073,7 @@ ov87_021E803C: ; 0x021E803C
 	bl sub_02024868
 	ldr r0, [r5, #0xc]
 	add r1, r4, #0
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov87_021E803C
@@ -5120,7 +5120,7 @@ ov87_021E8084: ; 0x021E8084
 	lsl r1, r1, #0xc
 	bl sub_02024868
 	ldr r0, [r4, #0xc]
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	add r1, r0, #0
 	ldr r0, [r4, #0xc]
 	bl Set2dSpriteAnimSeqNo

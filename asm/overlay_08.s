@@ -9419,7 +9419,7 @@ ov08_02220B90: ; 0x02220B90
 	beq _02220BB0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r7, #0
@@ -9481,12 +9481,12 @@ ov08_02220C08: ; 0x02220C08
 	bne _02220C26
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	b _02220C2E
 _02220C26:
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 _02220C2E:
 	add r0, r5, #0
 	add r1, r4, #0
@@ -9507,7 +9507,7 @@ ov08_02220C3C: ; 0x02220C3C
 	beq _02220C5A
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
@@ -10457,7 +10457,7 @@ ov08_022213E4: ; 0x022213E4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0200DC64
+	bl UnkImageStruct_GetSpriteCurrentAnimSeqNo
 	cmp r4, r0
 	beq _02221402
 	add r0, r5, #0
@@ -10465,7 +10465,7 @@ ov08_022213E4: ; 0x022213E4
 	bl sub_0200DCC0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 _02221402:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov08_022213E4
@@ -10558,7 +10558,7 @@ _02221470:
 	mov r1, #1
 	ldr r0, [r6, r0]
 	lsl r1, r1, #0xc
-	bl sub_0200DC34
+	bl UnkImageStruct_TickSpriteAnimationNFrames
 _022214A2:
 	add r0, r4, #1
 	lsl r0, r0, #0x10

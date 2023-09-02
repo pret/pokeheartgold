@@ -1750,7 +1750,7 @@ ov106_021E6668: ; 0x021E6668
 	ldr r0, [r0, #0x10]
 	cmp r0, #0
 	beq _021E6674
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 _021E6674:
 	pop {r3, pc}
 	.balign 4, 0
