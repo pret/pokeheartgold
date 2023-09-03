@@ -307,7 +307,7 @@ _0226B00E:
 	ldr r1, [sp, #0x18]
 	ldr r2, _0226B084 ; =ov12_0226EB38
 	add r0, r7, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	str r0, [r5]
 	cmp r6, #0
 	ldr r0, [r5]
@@ -595,7 +595,7 @@ _0226B240:
 	strh r1, [r4, #0x18]
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	ldrb r0, [r4, #0x1a]
 	add r0, r0, #1
 	strb r0, [r4, #0x1a]
@@ -654,7 +654,7 @@ _0226B2C0:
 	ldr r0, [sp, #0x24]
 	ldr r1, [sp, #0x28]
 	ldr r2, _0226B390 ; =ov12_0226EB6C
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	str r0, [r5]
 	cmp r6, #0
 	ldr r0, [r5]
@@ -1344,7 +1344,7 @@ _0226B808:
 	ldr r0, [r4]
 	mov r1, #0
 	ldr r0, [r0]
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	add r0, r5, #0
 	bl DestroySysTask
 	mov r0, #0
@@ -1395,7 +1395,7 @@ _0226B86C:
 	ldr r0, [r4]
 	mov r1, #0
 	ldr r0, [r0]
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	add r0, r5, #0
 	bl DestroySysTask
 	mov r0, #0

@@ -154,7 +154,7 @@ _02078F6A:
 	ldr r0, _0207902C ; =0x00000678
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	b _02078FE4
 _02078F76:
 	cmp r2, #2
@@ -211,7 +211,7 @@ _02078FDA:
 	add r1, #0x24
 	ldr r0, [r5, r1]
 	mov r1, #1
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 _02078FE4:
 	add r0, r5, #0
 	bl sub_0207A89C
@@ -706,7 +706,7 @@ _020793A4:
 	add r0, #0x24
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	add r0, r4, #0
 	bl sub_020807AC
 	pop {r4, pc}
@@ -730,7 +730,7 @@ _020793D0:
 	ldr r0, _020793F8 ; =0x00000678
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	add r0, r4, #0
 	bl sub_0207C288
 	pop {r4, pc}
@@ -765,7 +765,7 @@ _02079410:
 	ldr r0, _02079438 ; =0x00000678
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	add r0, r4, #0
 	bl sub_0207C400
 	pop {r4, pc}
@@ -832,7 +832,7 @@ _02079460:
 	ldr r0, _020794C4 ; =0x00000678
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	add sp, #4
 	mov r0, #1
 	pop {r3, r4, pc}
@@ -941,7 +941,7 @@ _02079560:
 	ldr r0, _020795CC ; =0x00000678
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	ldr r0, _020795D0 ; =0x00000C65
 	mov r1, #0x30
 	ldrb r0, [r4, r0]
@@ -4289,7 +4289,7 @@ _0207B07A:
 	ldr r0, _0207B0AC ; =0x00000678
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0207B0A8: .word 0x00000654
@@ -5886,7 +5886,7 @@ _0207BC9C:
 	ldr r0, _0207BCBC ; =0x00000678
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _0207BCAA:
@@ -5945,7 +5945,7 @@ _0207BCFE:
 	ldr r0, _0207BD64 ; =0x00000678
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	ldr r0, _0207BD68 ; =0x00000C65
 	mov r1, #0x30
 	ldrb r2, [r4, r0]
@@ -6162,7 +6162,7 @@ _0207BEB2:
 	ldr r0, _0207BFC4 ; =0x00000678
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	add r0, r4, #0
 	mov r1, #0x25
 	mov r2, #1
@@ -6258,7 +6258,7 @@ _0207BF88:
 	ldr r0, _0207BFC4 ; =0x00000678
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	add r0, r4, #0
 	bl sub_0207FBC8
 	add sp, #8
@@ -6316,7 +6316,7 @@ _0207C010:
 	ldr r0, _0207C040 ; =0x00000678
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	add r0, r4, #0
 	mov r1, #0x78
 	mov r2, #1
@@ -7391,7 +7391,7 @@ sub_0207C8B4: ; 0x0207C8B4
 	ldr r0, _0207C904 ; =0x00000678
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	ldr r0, _0207C900 ; =0x00000654
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -7571,7 +7571,7 @@ _0207CA54:
 	ldr r0, _0207CA8C ; =0x00000678
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	add r0, r4, #0
 	mov r1, #0xb3
 	mov r2, #1

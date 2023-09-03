@@ -84,7 +84,7 @@ _020755FA:
 	strh r0, [r1, #6]
 	add r0, r7, #0
 	mov r1, ip
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	mov r1, #1
 	add r4, r0, #0
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
@@ -232,7 +232,7 @@ sub_02075630: ; 0x02075630
 	add r0, #0xb4
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #1
 	add r5, #0xb8
 	str r0, [r5]
@@ -266,7 +266,7 @@ _0207578C:
 	bl sub_0200D9DC
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	add r0, r4, #0
 	bl SpriteRenderer_Delete
 	mov r0, #0
@@ -413,7 +413,7 @@ _02075878:
 	add r5, #0xb4
 	ldr r0, [r5]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _020758C8: .word 0x0000049D
@@ -628,7 +628,7 @@ _02075A52:
 	add r0, #0xb4
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r4, #0x8b
 	ldrb r0, [r4]
 	pop {r4, pc}

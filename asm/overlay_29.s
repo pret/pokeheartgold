@@ -390,7 +390,7 @@ ov29_0225D828: ; 0x0225D828
 	add r0, r4, #0
 	bl ov29_0225D864
 	ldr r0, [r4, #0x18]
-	bl sub_02024504
+	bl SpriteList_Delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov29_0225D828

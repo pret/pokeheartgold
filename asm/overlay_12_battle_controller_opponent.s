@@ -9631,7 +9631,7 @@ _0225D368:
 	cmp r0, #0
 	beq _0225D48E
 	ldr r0, [r1, #0x18]
-	bl sub_0200DCD4
+	bl UnkImageStruct_GetSpriteAnimCtrlCurrentFrame
 	ldr r1, [r4, #0xc]
 	str r0, [sp]
 	lsl r5, r0, #2
@@ -9816,7 +9816,7 @@ _0225D522:
 	bl sub_0200DE44
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x18]
-	bl sub_0200DCD4
+	bl UnkImageStruct_GetSpriteAnimCtrlCurrentFrame
 	add r7, r0, #0
 	cmp r7, #4
 	bne _0225D54A
@@ -10071,7 +10071,7 @@ _0225D71C:
 	tst r1, r4
 	bne _0225D7F2
 	ldr r0, [r0, #0x18]
-	bl sub_0200DCD4
+	bl UnkImageStruct_GetSpriteAnimCtrlCurrentFrame
 	add r7, r0, #0
 	ldr r1, [r5, #0xc]
 	mov r0, #0x18
@@ -17445,7 +17445,7 @@ ov12_02261294: ; 0x02261294
 	ldr r0, [r0, #0x18]
 	cmp r0, #0
 	beq _022612A0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 _022612A0:
 	pop {r3, pc}
 	.balign 4, 0

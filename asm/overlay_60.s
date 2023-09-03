@@ -2677,7 +2677,7 @@ _021E6EBC: .word _021EAFF8
 ov60_021E6EC0: ; 0x021E6EC0
 	push {r3, lr}
 	ldr r0, [r0, #0x10]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608

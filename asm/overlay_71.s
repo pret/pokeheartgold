@@ -257,7 +257,7 @@ ov71_02246B58: ; 0x02246B58
 	ldr r0, [r4, #8]
 	bl FreeToHeap
 	ldr r0, [r4, #0x18]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl OamManager_Free
 	add r0, r5, #0
 	bl OverlayManager_FreeData

@@ -688,7 +688,7 @@ _02087804:
 	ldr r0, [sp]
 	add r1, r7, #0
 	add r2, sp, #4
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	str r0, [r4, #0x24]
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [r4, #0x24]
@@ -966,7 +966,7 @@ sub_020879E0: ; 0x020879E0
 _020879F0:
 	ldr r0, [r5, #0x24]
 	add r1, r7, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r6, #0x10]
 	add r4, r4, #1
 	add r5, #0x10

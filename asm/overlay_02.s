@@ -5998,7 +5998,7 @@ _02248920:
 	ldr r0, [r5, #8]
 	bl sub_02024544
 	ldr r0, [r5, #8]
-	bl sub_02024504
+	bl SpriteList_Delete
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov02_0224886C
@@ -9469,7 +9469,7 @@ _0224A2EC:
 	ldr r0, [r6, #0x70]
 	bl sub_02024544
 	ldr r0, [r6, #0x70]
-	bl sub_02024504
+	bl SpriteList_Delete
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov02_0224A288

@@ -151,7 +151,7 @@
 .public GX_EngineAToggleLayers
 .public GX_DisableEngineBLayers
 .public GX_EngineBToggleLayers
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
 .public Sprite_Delete
@@ -159,11 +159,11 @@
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public sub_020248AC
-.public sub_020248B8
+.public Get2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo
 .public Get2dSpriteCurrentAnimSeqNo
 .public sub_02024A04
-.public sub_02024A14
+.public Sprite_SetPalIndex
 .public sub_02024B68
 .public sub_02024B78
 .public sub_02025224

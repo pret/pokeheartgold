@@ -3014,7 +3014,7 @@ ov85_021E7024: ; 0x021E7024
 	ldr r0, [r4, r1]
 	add r1, r1, #4
 	ldr r1, [r4, r1]
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	ldr r0, _021E7040 ; =0x00000D94
 	ldr r0, [r4, r0]
 	bl SpriteRenderer_Delete
@@ -3031,11 +3031,11 @@ ov85_021E7044: ; 0x021E7044
 	ldr r0, [r3, r1]
 	add r1, r1, #4
 	ldr r1, [r3, r1]
-	ldr r3, _021E7058 ; =sub_0200D734
+	ldr r3, _021E7058 ; =SpriteRenderer_LoadResourcesAndCreateSprite
 	bx r3
 	.balign 4, 0
 _021E7054: .word 0x00000D94
-_021E7058: .word sub_0200D734
+_021E7058: .word SpriteRenderer_LoadResourcesAndCreateSprite
 	thumb_func_end ov85_021E7044
 
 	thumb_func_start ov85_021E705C
@@ -6748,7 +6748,7 @@ _021E8B34:
 	cmp r4, #4
 	blt _021E8B34
 	ldr r0, [r6, #0x60]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608

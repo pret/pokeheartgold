@@ -3636,7 +3636,7 @@ _021E9166:
 	bl DestroySysTask
 	bl OamManager_Free
 	ldr r0, [r6, #0x24]
-	bl sub_02024504
+	bl SpriteList_Delete
 	add r0, r6, #0
 	bl ov102_021E91BC
 	ldr r0, [r6, #0x20]

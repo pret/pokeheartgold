@@ -130,7 +130,7 @@ _0221E6AC:
 _0221E6B4:
 	ldr r0, [r7, #4]
 	ldr r1, [r7, #8]
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	ldr r0, [r7, #4]
 	bl SpriteRenderer_Delete
 	add r0, r7, #0
@@ -158,10 +158,10 @@ ov98_0221E6E0: ; 0x0221E6E0
 	add r2, r1, #0
 	ldr r0, [r3, #4]
 	ldr r1, [r3, #8]
-	ldr r3, _0221E6EC ; =sub_0200D734
+	ldr r3, _0221E6EC ; =SpriteRenderer_LoadResourcesAndCreateSprite
 	bx r3
 	.balign 4, 0
-_0221E6EC: .word sub_0200D734
+_0221E6EC: .word SpriteRenderer_LoadResourcesAndCreateSprite
 	thumb_func_end ov98_0221E6E0
 
 	thumb_func_start ov98_0221E6F0
@@ -308,7 +308,7 @@ ov98_0221E7E8: ; 0x0221E7E8
 	lsr r1, r1, #0x17
 	bne _0221E806
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 _0221E806:
@@ -379,7 +379,7 @@ _0221E806:
 	bl ov98_0221EA4C
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r0, r7, #0
 	bl FreeToHeap
 	add sp, #0x38
@@ -526,7 +526,7 @@ _0221E984:
 	bl FreeToHeap
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r1, [sp]
 	add r0, r7, #0
 	mov r2, #0
@@ -536,7 +536,7 @@ _0221E984:
 	ldrsb r1, [r6, r1]
 	add r0, r5, #0
 	add r1, r2, r1
-	bl sub_0200DD10
+	bl UnkImageStruct_SetSpritePalIndex
 	ldr r0, [sp, #0x20]
 	cmp r0, #0
 	beq _0221E9F8

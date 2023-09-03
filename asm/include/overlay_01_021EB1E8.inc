@@ -48,7 +48,7 @@
 .public Camera_GetPerspectiveAngle
 .public Camera_GetDistance
 .public SpriteList_Create
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
 .public Sprite_Delete

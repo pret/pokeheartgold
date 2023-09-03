@@ -145,7 +145,7 @@
 .public Set2dSpriteAnimSeqNo
 .public sub_02024964
 .public sub_02024A04
-.public sub_02024A14
+.public Sprite_SetPalIndex
 .public sub_02024ADC
 .public sub_02024B68
 .public sub_02024B78

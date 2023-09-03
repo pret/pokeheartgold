@@ -9779,7 +9779,7 @@ _02242B66:
 	cmp r4, #4
 	blo _02242B66
 	ldr r0, [r5]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
@@ -10120,11 +10120,11 @@ ov81_02242DE4: ; 0x02242DE4
 
 	thumb_func_start ov81_02242DFC
 ov81_02242DFC: ; 0x02242DFC
-	ldr r3, _02242E04 ; =sub_02024A14
+	ldr r3, _02242E04 ; =Sprite_SetPalIndex
 	ldr r0, [r0, #8]
 	bx r3
 	nop
-_02242E04: .word sub_02024A14
+_02242E04: .word Sprite_SetPalIndex
 	thumb_func_end ov81_02242DFC
 
 	thumb_func_start ov81_02242E08
@@ -10203,7 +10203,7 @@ _02242E6A:
 	bl ov81_02242F10
 	ldr r0, [r4, #0xc]
 	mov r1, #1
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	add r0, r4, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -10383,11 +10383,11 @@ ov81_02242F94: ; 0x02242F94
 
 	thumb_func_start ov81_02242FB0
 ov81_02242FB0: ; 0x02242FB0
-	ldr r3, _02242FB8 ; =sub_02024A14
+	ldr r3, _02242FB8 ; =Sprite_SetPalIndex
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_02242FB8: .word sub_02024A14
+_02242FB8: .word Sprite_SetPalIndex
 	thumb_func_end ov81_02242FB0
 
 	thumb_func_start ov81_02242FBC

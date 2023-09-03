@@ -34,7 +34,7 @@
 .public Set2dSpriteVisibleFlag
 .public sub_020248AC
 .public sub_02024A04
-.public sub_02024A14
+.public Sprite_SetPalIndex
 .public sub_02024A48
 .public sub_02024A74
 .public sub_02024AA8

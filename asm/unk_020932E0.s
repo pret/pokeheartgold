@@ -109,7 +109,7 @@ _020933AA:
 	cmp r6, #6
 	blt _020933AA
 	ldr r0, [r5, #0x18]
-	bl sub_02024504
+	bl SpriteList_Delete
 	ldr r0, _02093430 ; =0x000046A4
 	ldr r0, [r5, r0]
 	bl FreeToHeap
@@ -2588,7 +2588,7 @@ sub_020947C0: ; 0x020947C0
 	ldr r0, [r1, r0]
 	cmp r0, #0
 	beq _020947E4
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #0
 	bne _020947E4
 	mov r0, #3
@@ -2711,7 +2711,7 @@ _020948A0:
 	ldr r0, [r1, r0]
 	cmp r0, #0
 	beq _020948BA
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #0
 	bne _020948BA
 	mov r0, #3
@@ -3170,7 +3170,7 @@ sub_02094C08: ; 0x02094C08
 	str r0, [r4, #4]
 	ldr r1, [r4, #4]
 	add r0, r5, #0
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	pop {r3, r4, r5, r6, r7, pc}
 _02094C64:
 	mov r0, #0

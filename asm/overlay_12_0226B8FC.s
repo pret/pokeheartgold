@@ -128,10 +128,10 @@ _0226B9EE:
 	add r0, r6, #0
 	add r1, r7, #0
 	add r2, sp, #4
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	mov r1, #0
 	stmia r5!, {r0}
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r4, r4, #1
 	cmp r4, #5
 	blt _0226B9EE
@@ -226,7 +226,7 @@ ov12_0226BA4C: ; 0x0226BA4C
 _0226BAC2:
 	ldr r0, [r5]
 	add r1, r6, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -314,7 +314,7 @@ ov12_0226BB40: ; 0x0226BB40
 	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5, #0x10]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_0226BB40
 
@@ -327,7 +327,7 @@ ov12_0226BB68: ; 0x0226BB68
 _0226BB70:
 	ldr r0, [r5]
 	add r1, r6, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #5
@@ -338,12 +338,12 @@ _0226BB70:
 
 	thumb_func_start ov12_0226BB84
 ov12_0226BB84: ; 0x0226BB84
-	ldr r3, _0226BB8C ; =sub_0200DCE8
+	ldr r3, _0226BB8C ; =UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r0, #0x10]
 	mov r1, #0
 	bx r3
 	.balign 4, 0
-_0226BB8C: .word sub_0200DCE8
+_0226BB8C: .word UnkImageStruct_SetSpriteVisibleFlag
 	thumb_func_end ov12_0226BB84
 
 	thumb_func_start ov12_0226BB90
@@ -351,7 +351,7 @@ ov12_0226BB90: ; 0x0226BB90
 	push {r4, r5, r6, lr}
 	add r6, r1, #0
 	ldr r0, [r6]
-	bl sub_0200DCFC
+	bl UnkImageStruct_GetSpriteVisibleFlag
 	cmp r0, #0
 	beq _0226BBC0
 	mov r4, #0
@@ -364,7 +364,7 @@ _0226BBA2:
 	cmp r4, #4
 	blt _0226BBA2
 	ldr r0, [r6, #0x10]
-	bl sub_0200DCFC
+	bl UnkImageStruct_GetSpriteVisibleFlag
 	cmp r0, #1
 	bne _0226BBC0
 	ldr r0, [r6, #0x10]

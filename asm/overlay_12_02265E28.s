@@ -143,7 +143,7 @@ ov12_02265F34: ; 0x02265F34
 	ldr r5, _02265F64 ; =ov12_0226E100
 	mul r2, r3
 	add r2, r5, r2
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	str r0, [r4]
 	ldr r0, [r0]
 	bl TickSpriteAnimation1Frame
@@ -207,7 +207,7 @@ ov12_02265FC4: ; 0x02265FC4
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02265FD0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 _02265FD0:
 	pop {r3, pc}
 	.balign 4, 0

@@ -7,14 +7,14 @@
 .public sub_0200D68C
 .public SpriteRenderer_LoadCellResObjFromOpenNarc
 .public SpriteRenderer_LoadAnimResObjFromOpenNarc
-.public sub_0200D734
+.public SpriteRenderer_LoadResourcesAndCreateSprite
 .public SpriteGfxHandler_UnloadCharObjById
 .public SpriteGfxHandler_UnloadPlttObjById
 .public SpriteGfxHandler_UnloadCellObjById
 .public SpriteGfxHandler_UnloadAnimObjById
 .public sub_0200D9DC
 .public TickSpriteAnimation1Frame
-.public sub_0200DCE0
+.public thunk_Set2dSpriteVisibleFlag
 .public sub_0200DDB8
 .public sub_0200DE44
 .public sub_0200E0FC

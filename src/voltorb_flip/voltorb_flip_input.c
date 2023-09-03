@@ -55,10 +55,10 @@ int ov122_021E8D74(Ov122_021E8CFC *a0) {
 
 void ov122_021E8D8C(Ov122_021E8CFC *a0, int a1) {
     if (a1 != 0) {
-        sub_0200DCE8(a0->unk0, 1);
+        UnkImageStruct_SetSpriteVisibleFlag(a0->unk0, 1);
         return;
     }
-    sub_0200DCE8(a0->unk0, 0);
+    UnkImageStruct_SetSpriteVisibleFlag(a0->unk0, 0);
     a0->unkD = 0;
 }
 
@@ -70,7 +70,7 @@ void SetMemoOpen(Ov122_021E8CFC *a0, BOOL val) {
 void SetMemoFocused(Ov122_021E8CFC *a0, BOOL val) {
     a0->memoFocused = val;
     ov122_021E9154(a0, a0->unkD);
-    sub_0200DCE8(a0->unk4, val);
+    UnkImageStruct_SetSpriteVisibleFlag(a0->unk4, val);
 }
 
 int ov122_021E8DF0(Ov122_021E8CFC *a0) {
@@ -281,9 +281,9 @@ static void ov122_021E9154(Ov122_021E8CFC *a0, int newFocus) {
     }
 
     if (a0->memoOpen) {
-        sub_0200DD10(a0->unk0, 4);
+        UnkImageStruct_SetSpritePalIndex(a0->unk0, 4);
     } else {
-        sub_0200DD10(a0->unk0, 2);
+        UnkImageStruct_SetSpritePalIndex(a0->unk0, 2);
     }
     UnkImageStruct_TryChangeSpriteAnimSeqNo(a0->unk0, indicatorType);
 }

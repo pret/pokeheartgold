@@ -419,7 +419,7 @@ _0223A1BA:
 	ldr r0, [r4, #0x14]
 	ldr r1, [r4, #0x18]
 	ldr r2, _0223A528 ; =ov80_0223DB30
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r1, r5, #0
 	add r1, #0x90
 	str r0, [r1]
@@ -427,7 +427,7 @@ _0223A1BA:
 	add r0, #0x90
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r0, r5, #0
 	add r0, #0x90
 	ldr r0, [r0]
@@ -966,10 +966,10 @@ _0223A7C0:
 	ldr r0, [r7, #0x14]
 	ldr r1, [r7, #0x18]
 	add r2, sp, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	mov r1, #0
 	str r0, [r4, #4]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	cmp r6, #3
 	beq _0223A7FA
 	ldr r0, [r4, #4]
@@ -1509,7 +1509,7 @@ _0223ABA8:
 	add r5, #0x90
 	ldr r0, [r5]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #1
 	lsl r0, r0, #0x10
 	str r0, [r4]

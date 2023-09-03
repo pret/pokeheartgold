@@ -1308,7 +1308,7 @@ _02259154: .word ov90_0225C294
 ov90_02259158: ; 0x02259158
 	push {r3, lr}
 	ldr r0, [r0]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl sub_0202168C
 	bl sub_02022608
 	bl OamManager_Free
@@ -7358,14 +7358,14 @@ _0225BF46:
 	pop {r4, r5, r6, pc}
 _0225BF54:
 	ldr r0, [r4, #0x30]
-	bl sub_020249F8
+	bl Sprite_GetAnimCtrlCurrentFrame
 	add r6, r0, #0
 	mov r1, #2
 	ldr r0, [r4, #0x30]
 	lsl r1, r1, #0xc
 	bl Sprite_TickCellOrMulticellAnimation
 	ldr r0, [r4, #0x30]
-	bl sub_020249F8
+	bl Sprite_GetAnimCtrlCurrentFrame
 	add r5, r0, #0
 	cmp r6, r5
 	beq _0225BFC8

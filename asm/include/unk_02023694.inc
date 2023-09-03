@@ -42,7 +42,7 @@
 .public sub_02023FDC
 .public sub_02023FE4
 .public SpriteList_Create
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_02024544
 .public sub_0202457C
 .public CreateSprite
@@ -62,7 +62,7 @@
 .public sub_020248AC
 .public sub_020248B0
 .public sub_020248B4
-.public sub_020248B8
+.public Get2dSpriteVisibleFlag
 .public sub_020248C0
 .public Get2dSpriteAnimSeqNo
 .public Set2dSpriteAnimSeqNo
@@ -71,12 +71,12 @@
 .public Get2dSpriteCurrentAnimSeqNo
 .public Sprite_TickCellOrMulticellAnimation
 .public sub_020249D4
-.public sub_020249F8
+.public Sprite_GetAnimCtrlCurrentFrame
 .public sub_02024A04
 .public sub_02024A0C
-.public sub_02024A14
+.public Sprite_SetPalIndex
 .public sub_02024A48
-.public sub_02024A6C
+.public Sprite_GetPalIndex
 .public sub_02024A74
 .public sub_02024AA8
 .public sub_02024ACC

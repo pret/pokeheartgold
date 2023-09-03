@@ -265,7 +265,7 @@ _020777D6:
 	add r0, r4, #0
 	add r1, r7, #0
 	add r2, sp, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end sub_020777C8

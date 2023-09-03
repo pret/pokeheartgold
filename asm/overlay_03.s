@@ -6686,7 +6686,7 @@ _0225738A:
 	lsl r5, r5, #2
 	ldrb r1, [r1, r5]
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	ldr r1, _022573CC ; =ov03_0225949E
 	ldr r2, _022573D0 ; =ov03_0225949F
 	mov r0, #0x22
@@ -7311,13 +7311,13 @@ ov03_02257874: ; 0x02257874
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r4, r1, #0
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	mov r1, #0x91
 	lsl r1, r1, #2
 	strh r0, [r5, r1]
 	sub r1, #0x48
 	ldr r0, [r5, r1]
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	ldr r1, _0225793C ; =0x00000246
 	strh r0, [r5, r1]
 	sub r1, #0x4e
@@ -9125,11 +9125,11 @@ ov03_02258648: ; 0x02258648
 ov03_022586BC: ; 0x022586BC
 	mov r2, #2
 	lsl r2, r2, #8
-	ldr r3, _022586C8 ; =sub_0200DD08
+	ldr r3, _022586C8 ; =thunk_Sprite_SetPalIndex
 	ldr r0, [r0, r2]
 	bx r3
 	nop
-_022586C8: .word sub_0200DD08
+_022586C8: .word thunk_Sprite_SetPalIndex
 	thumb_func_end ov03_022586BC
 
 	thumb_func_start ov03_022586CC
@@ -9167,7 +9167,7 @@ _022586F8:
 	add r0, r0, r2
 	ldr r0, [r0, r1]
 	mov r1, #7
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	ldrb r0, [r4, #1]
 	add r0, r0, #1
 	strb r0, [r4, #1]
@@ -9185,7 +9185,7 @@ _02258710:
 	add r0, r0, r2
 	ldr r0, [r0, r1]
 	mov r1, #6
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	mov r0, #0
 	strb r0, [r4, #2]
 	ldrb r0, [r4, #1]

@@ -283,7 +283,7 @@ _021E5B06:
 	bl sub_020169CC
 	ldr r0, [r4, #0x14]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x20]
 	mov r1, #0
 	mov r2, #1
@@ -305,7 +305,7 @@ _021E5B3A:
 	bl sub_020169CC
 	ldr r0, [r4, #0x14]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r2, #1
 	add r3, r2, #0
 	ldr r0, [r4, #0x20]
@@ -427,7 +427,7 @@ ov111_021E5BE4: ; 0x021E5BE4
 	bl ov111_021E6330
 	mov r1, #1
 	str r0, [r5, #0x14]
-	bl sub_0200DD10
+	bl UnkImageStruct_SetSpritePalIndex
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov111_021E5BE4
@@ -1076,7 +1076,7 @@ _021E616C: .word ov111_021E6BA0
 ov111_021E6170: ; 0x021E6170
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	add r0, r4, #0
 	bl SpriteRenderer_Delete
 	pop {r4, pc}
@@ -1226,7 +1226,7 @@ ov111_021E6268: ; 0x021E6268
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
 	add r0, r5, #0
-	bl sub_0200DD10
+	bl UnkImageStruct_SetSpritePalIndex
 	add r0, r5, #0
 	mov r1, #1
 	bl UnkImageStruct_SetSpriteAnimSeqNo
@@ -1314,7 +1314,7 @@ _021E6342:
 	strh r0, [r1, #6]
 	add r0, r7, #0
 	mov r1, ip
-	bl sub_0200D740
+	bl SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 	mov r1, #1
 	add r4, r0, #0
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
@@ -1361,7 +1361,7 @@ _021E63AA:
 	add r0, r7, #0
 	add r2, sp, #4
 	lsl r3, r3, #0xe
-	bl sub_0200D740
+	bl SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

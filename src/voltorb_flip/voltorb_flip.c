@@ -162,8 +162,8 @@ static void RenderCoinPayoutScreen(VoltorbFlipAppWork *work) {
     PrintCoins(work, COIN_DISPLAY_PAYOUT, payout);
     PrintCoins(work, COIN_DISPLAY_TOTAL, coins);
 
-    sub_0200DCE8(work->unk14C[11], 0);
-    sub_0200DCE8(work->unk14C[12], 0);
+    UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[11], 0);
+    UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[12], 0);
 
     RenderTopScreen(work);
 }
@@ -199,8 +199,8 @@ static void RenderAboutMemoScreen(VoltorbFlipAppWork *work) {
     // "Touch 'Open Memo' to open the Memo Window..."
     PaintMessageOnWindow(work, 0, msg_0039_00010, &work->wAboutMemoTouchOpen, 0, 0);
 
-    sub_0200DCE8(work->unk14C[11], 1);
-    sub_0200DCE8(work->unk14C[12], 1);
+    UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[11], 1);
+    UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[12], 1);
 }
 
 static BOOL PrintAndAwaitMessage(WorkflowEngine *workflow, VoltorbFlipAppWork *work, int msgNo) {
@@ -604,7 +604,7 @@ BOOL AwaitCardFlipAndResult(WorkflowEngine *workflow, VoltorbFlipAppWork *work) 
         s16 var6 = ((cardId / 5) * 4 + 1);
         s16 var7 = var6 * 8 + 12;
 
-        sub_0200DCE8(work->unk14C[1], 1);
+        UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[1], 1);
         FlipCard(work->game, cardId);
         if (type == CARD_TYPE_VOLTORB) {
             sub_0200DDB8(work->unk14C[1], var5, var7);
@@ -906,7 +906,7 @@ BOOL ov122_021E67E0(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
         break;
     case 3:
         if (sub_0200DCA0(work->unk14C[4]) == 0) {
-            sub_0200DCE8(work->unk14C[4], 0);
+            UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[4], 0);
             return TRUE;
         }
         break;
@@ -1356,7 +1356,7 @@ static void AnimateOpenMenu(VoltorbFlipAppWork *work) {
 
     ov122_021E8E58(work->unk240);
     SetMemoOpen(work->unk240, TRUE);
-    sub_0200DCE8(work->unk14C[4], 1);
+    UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[4], 1);
     UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[4], 20);
     // "Close Memo" (text in button)
     PaintMessageOnWindow(work, 4, msg_0039_00007, &work->wMemo, 0, 0);
@@ -1377,10 +1377,10 @@ static void AnimateCloseMenu(VoltorbFlipAppWork *work) {
 }
 
 static void ov122_021E7274(VoltorbFlipAppWork *work, int a1) {
-    sub_0200DCE8(work->unk14C[5], a1);
-    sub_0200DCE8(work->unk14C[6], a1);
-    sub_0200DCE8(work->unk14C[7], a1);
-    sub_0200DCE8(work->unk14C[8], a1);
+    UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[5], a1);
+    UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[6], a1);
+    UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[7], a1);
+    UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[8], a1);
 
     if (a1 != 0) {
         if (CurrentWorkflow(work->workflow) == WORKFLOW_UNK_14) {
@@ -1390,7 +1390,7 @@ static void ov122_021E7274(VoltorbFlipAppWork *work, int a1) {
         }
     }
 
-    sub_0200DCE8(work->unk14C[9], a1);
+    UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[9], a1);
 }
 
 static void ov122_021E72D0(VoltorbFlipAppWork *work) {
@@ -1690,7 +1690,7 @@ static void ov122_021E7B94(VoltorbFlipAppWork *work) {
     GF_ASSERT(work->unk148 != 0);
 
     ov122_021E7F48(work);
-    sub_0200D998(work->unk144, work->unk148);
+    SpriteRenderer_UnloadResourcesAndRemoveGfxHandler(work->unk144, work->unk148);
     SpriteRenderer_Delete(work->unk144);
 }
 
@@ -1820,9 +1820,9 @@ static UnkImageStruct *ov122_021E7C9C(SpriteRenderer *a0, SpriteGfxHandler *a1, 
     temp1.animation = a4;
     temp1.spritePriority = a5;
 
-    UnkImageStruct *var1 = sub_0200D740(a0, a1, &temp1, 0x20c000);
+    UnkImageStruct *var1 = SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset(a0, a1, &temp1, 0x20c000);
     UnkImageStruct_SetSpriteAnimActiveFlag(var1, 1);
-    sub_0200DCE8(var1, 0);
+    UnkImageStruct_SetSpriteVisibleFlag(var1, 0);
     return var1;
 }
 
@@ -1837,9 +1837,9 @@ static UnkImageStruct *ov122_021E7D04(SpriteRenderer *a0, SpriteGfxHandler *a1, 
     temp1.animation = a4;
     temp1.spritePriority = a5;
 
-    UnkImageStruct *var1 = sub_0200D740(a0, a1, &temp1, 0x20c000);
+    UnkImageStruct *var1 = SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset(a0, a1, &temp1, 0x20c000);
     UnkImageStruct_SetSpriteAnimActiveFlag(var1, 1);
-    sub_0200DCE8(var1, 0);
+    UnkImageStruct_SetSpriteVisibleFlag(var1, 0);
     return var1;
 }
 
@@ -1860,10 +1860,10 @@ static void ov122_021E7D6C(VoltorbFlipAppWork *work) {
 
     ov122_021E7F64(work->unk14C[12]->sprite, 0x20000);
 
-    sub_0200DCE8(work->unk14C[2], 1);
-    sub_0200DCE8(work->unk14C[3], 1);
+    UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[2], 1);
+    UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[3], 1);
     sub_0200DD54(work->unk14C[1], 1);
-    sub_0200DD10(work->unk14C[10], 4);
+    UnkImageStruct_SetSpritePalIndex(work->unk14C[10], 4);
 }
 
 static void ov122_021E7F48(VoltorbFlipAppWork *work) {

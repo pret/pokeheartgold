@@ -923,7 +923,7 @@ ov95_021E6000: ; 0x021E6000
 	ldr r0, [r4, #0x54]
 	ldr r1, [r4, #0x50]
 	add r2, sp, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	str r0, [r4, #0x74]
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [r4, #0x74]
@@ -947,7 +947,7 @@ ov95_021E6000: ; 0x021E6000
 	ldr r0, [r4, #0x54]
 	ldr r1, [r4, #0x50]
 	add r2, sp, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	str r0, [r4, #0x78]
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	mov r1, #0x90
@@ -956,7 +956,7 @@ ov95_021E6000: ; 0x021E6000
 	ldr r0, [r4, #0x54]
 	ldr r1, [r4, #0x50]
 	add r2, sp, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	str r0, [r4, #0x7c]
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	add sp, #0x34
@@ -1175,7 +1175,7 @@ ov95_021E6228: ; 0x021E6228
 	add r4, r0, #0
 	ldr r0, [r4, #0x50]
 	ldr r1, [r4, #0x4c]
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	ldr r0, [r4, #0x50]
 	bl SpriteRenderer_Delete
 	pop {r4, pc}
@@ -1674,7 +1674,7 @@ _021E65E0:
 	bl ov95_021E6000
 	ldr r0, [r4, #0x74]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r3, _021E67E4 ; =0x0000520A
 	str r3, [sp]
 	add r0, r3, #1
@@ -2151,7 +2151,7 @@ _021E69D6:
 	bne _021E69F8
 	ldr r0, [r4, #0x74]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #0
 	str r0, [r4, #0x64]
 	ldr r0, [r4, #0x68]
@@ -2264,13 +2264,13 @@ _021E6AA0:
 	bl ov95_021E62F0
 	ldr r0, [r4, #0x74]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x78]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x7c]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x68]
 	add r0, r0, #1
 	str r0, [r4, #0x68]
@@ -2510,13 +2510,13 @@ _021E6CA0:
 	bl GX_EngineAToggleLayers
 	ldr r0, [r4, #0x74]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x78]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x7c]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x68]
 	add r0, r0, #1
 	str r0, [r4, #0x68]
@@ -3144,7 +3144,7 @@ ov95_021E7208: ; 0x021E7208
 	bl GX_EngineBToggleLayers
 	ldr r0, [r4, #0x10]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov95_021E7208
@@ -3184,7 +3184,7 @@ _021E728A:
 	bl ToggleBgLayer
 	ldr r0, [r4, #0x10]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #0x10
 	mov r1, #0
 	bl GX_EngineBToggleLayers
@@ -3353,13 +3353,13 @@ _021E73C2:
 	str r7, [sp, #0x1c]
 	str r0, [sp, #0x28]
 	add r0, r6, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r4, r0, #0
 	mov r1, #1
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	str r4, [r5, #0x10]
 	add sp, #0x3c
 	pop {r4, r5, r6, r7, pc}

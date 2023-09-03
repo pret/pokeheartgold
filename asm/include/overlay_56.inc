@@ -37,10 +37,10 @@
 .public SpriteRenderer_LoadPlttResObjFromNarcId
 .public SpriteRenderer_LoadCellResObjFromNarcId
 .public SpriteRenderer_LoadAnimResObjFromNarcId
-.public sub_0200D734
-.public sub_0200D998
+.public SpriteRenderer_LoadResourcesAndCreateSprite
+.public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 .public sub_0200D9DC
-.public sub_0200DCE8
+.public UnkImageStruct_SetSpriteVisibleFlag
 .public sub_0200E128
 .public CreateSysTask
 .public DestroySysTask

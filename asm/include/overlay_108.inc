@@ -60,7 +60,7 @@
 .public SpriteRenderer_CreateSprite
 .public sub_0200D934
 .public sub_0200D9DC
-.public sub_0200DCE0
+.public thunk_Set2dSpriteVisibleFlag
 .public sub_0200DD3C
 .public sub_0200DD54
 .public sub_0200DD60
@@ -164,7 +164,7 @@
 .public Camera_Init_FromTargetDistanceAndAngle
 .public Camera_OffsetLookAtPosAndTarget
 .public Camera_SetDistance
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
 .public Set2dSpriteVisibleFlag

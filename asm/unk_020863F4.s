@@ -524,7 +524,7 @@ _020867FA:
 	ldr r0, [sp, #8]
 	ldr r1, [sp, #4]
 	add r2, sp, #0x10
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	mov r1, #0x73
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -552,7 +552,7 @@ _0208684C:
 	ldr r0, [sp, #8]
 	ldr r1, [sp, #4]
 	add r2, sp, #0x10
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	lsl r1, r7, #0x10
 	str r0, [r5, #0xc]
 	asr r1, r1, #0x10
@@ -622,21 +622,21 @@ sub_020868A0: ; 0x020868A0
 	add r0, r6, #0
 	add r1, r4, #0
 	add r2, sp, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	mov r1, #0x22
 	lsl r1, r1, #4
 	str r0, [r5, r1]
 	add r0, r6, #0
 	add r1, r4, #0
 	add r2, sp, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	mov r1, #0x8f
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r6, #0
 	add r1, r4, #0
 	add r2, sp, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	mov r1, #0x96
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -754,7 +754,7 @@ sub_020869BC: ; 0x020869BC
 	add r0, r6, #0
 	add r1, r4, #0
 	add r2, sp, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	mov r1, #0x9d
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -763,7 +763,7 @@ sub_020869BC: ; 0x020869BC
 	add r0, r6, #0
 	add r1, r4, #0
 	add r2, sp, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	mov r2, #0x29
 	lsl r2, r2, #4
 	add r1, r2, #0
@@ -851,7 +851,7 @@ sub_02086AB4: ; 0x02086AB4
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	pop {r3, pc}
 _02086ACE:
 	mov r2, #0x1c
@@ -861,7 +861,7 @@ _02086ACE:
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end sub_02086AB4

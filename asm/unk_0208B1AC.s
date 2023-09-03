@@ -496,7 +496,7 @@ _0208B5B2:
 	add r0, r5, r0
 	ldr r0, [r0, r6]
 	add r1, r7, #0
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
@@ -522,7 +522,7 @@ _0208B5E4:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	mov r0, #9
 	lsl r0, r0, #6
 	ldrb r1, [r5, r0]
@@ -547,7 +547,7 @@ _0208B60E:
 	ldr r0, _0208B704 ; =0x00000434
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	ldr r0, _0208B704 ; =0x00000434
 	mov r1, #0x7d
 	ldr r0, [r5, r0]
@@ -583,7 +583,7 @@ _0208B63A:
 	ldr r0, _0208B708 ; =0x00000438
 	mov r1, #1
 	ldr r0, [r6, r0]
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	ldr r0, _0208B708 ; =0x00000438
 	lsl r2, r4, #5
 	add r2, #0x10
@@ -616,7 +616,7 @@ _0208B684:
 	ldr r0, _0208B70C ; =0x00000448
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	ldr r0, _0208B70C ; =0x00000448
 	mov r1, #0x18
 	ldr r0, [r5, r0]
@@ -627,7 +627,7 @@ _0208B6C8:
 	ldr r0, _0208B70C ; =0x00000448
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 _0208B6D2:
 	mov r0, #0x43
 	lsl r0, r0, #4
@@ -1141,7 +1141,7 @@ sub_0208BA88: ; 0x0208BA88
 	ldr r0, _0208BAD4 ; =0x00000404
 	ldr r0, [r1, r0]
 	add r1, r2, #3
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -1273,7 +1273,7 @@ sub_0208BB8C: ; 0x0208BB8C
 	ldr r0, _0208BBD8 ; =0x0000044C
 	add r1, r1, #3
 	ldr r0, [r5, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -1507,13 +1507,13 @@ _0208BD6A:
 	ldr r0, _0208BDC0 ; =0x000004D4
 	mov r1, #1
 	ldr r0, [r6, r0]
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	b _0208BD9C
 _0208BD92:
 	ldr r0, _0208BDC0 ; =0x000004D4
 	mov r1, #0
 	ldr r0, [r6, r0]
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 _0208BD9C:
 	mov r0, #0xa
 	lsl r0, r0, #6
@@ -1524,12 +1524,12 @@ _0208BD9C:
 	bne _0208BDB4
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, r6, r7, pc}
 _0208BDB4:
 	ldr r0, [r6, r0]
 	mov r1, #0
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0208BDC0: .word 0x000004D4
@@ -1646,7 +1646,7 @@ sub_0208BE70: ; 0x0208BE70
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	add r1, #0xc
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	mov r1, #0x8f
 	lsl r1, r1, #2
 	ldrh r0, [r4, r1]
@@ -1720,7 +1720,7 @@ _0208BF1C:
 	ldr r0, _0208BF98 ; =0x00000528
 	add r1, #0xc
 	ldr r0, [r5, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	b _0208BF64
 _0208BF36:
 	add r0, r7, #0
@@ -1729,7 +1729,7 @@ _0208BF36:
 	ldr r0, _0208BF98 ; =0x00000528
 	add r1, #0xc
 	ldr r0, [r5, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	b _0208BF64
 _0208BF4A:
 	ldr r0, [r1]
@@ -1741,7 +1741,7 @@ _0208BF4A:
 	ldr r0, _0208BF98 ; =0x00000528
 	add r1, #0xc
 	ldr r0, [r5, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 _0208BF64:
 	add r2, r4, #0
 	add r0, r6, #0
@@ -1763,7 +1763,7 @@ _0208BF7A:
 _0208BF86:
 	ldr r0, [r5, r6]
 	add r1, r7, #0
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #6
@@ -1820,11 +1820,11 @@ sub_0208BFD0: ; 0x0208BFD0
 	bne _0208C020
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	ldr r0, _0208C064 ; =0x0000052C
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #0x49
@@ -1835,16 +1835,16 @@ sub_0208BFD0: ; 0x0208BFD0
 	ldr r0, _0208C060 ; =0x00000528
 	add r1, #0xc
 	ldr r0, [r5, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	b _0208C04E
 _0208C020:
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	ldr r0, _0208C064 ; =0x0000052C
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #0x4a
@@ -1855,7 +1855,7 @@ _0208C020:
 	ldr r0, _0208C064 ; =0x0000052C
 	add r1, #0xc
 	ldr r0, [r5, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 _0208C04E:
 	ldr r1, _0208C05C ; =0x000007D4
 	mov r0, #1
@@ -1897,7 +1897,7 @@ _0208C092:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	pop {r4, pc}
 	.balign 4, 0
 _0208C0A0: .word 0x000007BC
@@ -2127,7 +2127,7 @@ sub_0208C250: ; 0x0208C250
 	ldr r0, _0208C29C ; =0x00000404
 	ldr r0, [r1, r0]
 	add r1, r2, #7
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -2285,7 +2285,7 @@ sub_0208C3C0: ; 0x0208C3C0
 	add r4, r0, #0
 	ldr r0, _0208C3E0 ; =0x0000050C
 	ldr r0, [r4, r0]
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #1
 	bne _0208C3DC
 	ldr r0, _0208C3E0 ; =0x0000050C

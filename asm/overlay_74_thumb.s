@@ -10253,7 +10253,7 @@ _0222C1CE:
 	str r1, [r0, #4]
 	ldr r0, _0222C2E4 ; =0x00003060
 	ldr r0, [r4, r0]
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #0
 	bne _0222C2D0
 	ldr r0, _0222C2E4 ; =0x00003060
@@ -13679,7 +13679,7 @@ _0222DD6A:
 	ldr r0, _0222DDF0 ; =0x00002DCC
 	add r1, r1, #3
 	ldr r0, [r5, r0]
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	ldr r0, [sp, #0x14]
 	bl FreeToHeap
 _0222DDD4:
@@ -16580,7 +16580,7 @@ _0222F504:
 	ldr r0, _0222F58C ; =0x00002D84
 	add r1, r1, #3
 	ldr r0, [r5, r0]
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	ldr r0, [sp, #0x14]
 	bl FreeToHeap
 _0222F56E:
@@ -22147,7 +22147,7 @@ ov74_02231EC4: ; 0x02231EC4
 	add r1, r0, #0
 	ldr r0, [sp, #0x1c]
 	add r1, #8
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	add r0, r6, #0
 	bl FreeToHeap
 	pop {r3, r4, r5, r6, r7, pc}
@@ -22243,7 +22243,7 @@ _02231FC0:
 	bl GX_LoadOBJ
 	ldr r0, [r5, #8]
 	ldr r1, [r5, #4]
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 _02231FE4:
 	add r4, r4, #1
 	add r5, r5, r7
@@ -22858,7 +22858,7 @@ ov74_022324A0: ; 0x022324A0
 	ldr r0, [r1, r0]
 	cmp r0, #0
 	beq _022324CC
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #0
 	bne _022324CC
 	add sp, #0x14
@@ -24127,7 +24127,7 @@ _02232EEE:
 	cmp r5, #6
 	blt _02232EEE
 	ldr r0, [r6, #0x28]
-	bl sub_02024504
+	bl SpriteList_Delete
 	mov r0, #0
 	str r0, [r6, #0x28]
 	bl OamManager_Free
@@ -29701,7 +29701,7 @@ ov74_022358C8: ; 0x022358C8
 	bne _02235918
 	sub r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #0
 	bne _022358FC
 	cmp r5, #0
@@ -29879,7 +29879,7 @@ _02235A24:
 	blt _02235A24
 	ldr r0, _02235A64 ; =ov74_0223D488
 	ldr r0, [r0]
-	bl sub_02024504
+	bl SpriteList_Delete
 	ldr r0, _02235A64 ; =ov74_0223D488
 	mov r1, #0
 	str r1, [r0]

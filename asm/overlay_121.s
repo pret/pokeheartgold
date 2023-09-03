@@ -177,7 +177,7 @@ _021E5A5A:
 	add r0, r4, #0
 	add r0, #0x98
 	ldr r0, [r0]
-	bl sub_02024504
+	bl SpriteList_Delete
 	mov r0, #4
 	bl FontID_Release
 	bl OamManager_Free

@@ -589,11 +589,11 @@ _022274A8:
 
 	thumb_func_start ov42_022274AC
 ov42_022274AC: ; 0x022274AC
-	ldr r3, _022274B4 ; =sub_020248B8
+	ldr r3, _022274B4 ; =Get2dSpriteVisibleFlag
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_022274B4: .word sub_020248B8
+_022274B4: .word Get2dSpriteVisibleFlag
 	thumb_func_end ov42_022274AC
 
 	thumb_func_start ov42_022274B8
@@ -621,11 +621,11 @@ _022274CC: .word sub_020249D4
 
 	thumb_func_start ov42_022274D0
 ov42_022274D0: ; 0x022274D0
-	ldr r3, _022274D8 ; =sub_020249F8
+	ldr r3, _022274D8 ; =Sprite_GetAnimCtrlCurrentFrame
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_022274D8: .word sub_020249F8
+_022274D8: .word Sprite_GetAnimCtrlCurrentFrame
 	thumb_func_end ov42_022274D0
 
 	thumb_func_start ov42_022274DC

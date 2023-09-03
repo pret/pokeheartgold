@@ -124,7 +124,7 @@
 .public GX_EngineAToggleLayers
 .public GX_DisableEngineBLayers
 .public GX_EngineBToggleLayers
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
 .public sub_020247D4
@@ -132,7 +132,7 @@
 .public Set2dSpriteAnimActiveFlag
 .public sub_02024890
 .public Set2dSpriteAnimSeqNo
-.public sub_02024A14
+.public Sprite_SetPalIndex
 .public sub_02024A74
 .public sub_02024ADC
 .public sub_02024B78

@@ -300,7 +300,7 @@ _0207ED8E:
 	add r1, r0, #0
 	ldr r0, [r6, r4]
 	add r1, r1, #3
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	ldr r0, [sp, #0xc]
 	ldr r1, [sp, #8]
 	mov r2, #0
@@ -311,7 +311,7 @@ _0207ED8E:
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	add r1, r2, #1
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	ldr r0, [sp, #0x10]
 	bl NARC_Delete
 	add sp, #0x1c
@@ -849,7 +849,7 @@ _0207F1BE:
 	cmp r7, #5
 	beq _0207F216
 	ldr r0, [r4, #0x24]
-	bl sub_020249F8
+	bl Sprite_GetAnimCtrlCurrentFrame
 	cmp r0, #0
 	ldr r0, [r4, #0x24]
 	bne _0207F202
@@ -931,7 +931,7 @@ sub_0207F240: ; 0x0207F240
 	ldr r0, _0207F2A4 ; =0x00000678
 	add r1, r6, #0
 	ldr r0, [r5, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	nop
@@ -987,7 +987,7 @@ sub_0207F2F8: ; 0x0207F2F8
 	mov r0, #0x6d
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #1
 	bne _0207F332
 	mov r0, #0x6d
@@ -999,7 +999,7 @@ sub_0207F2F8: ; 0x0207F2F8
 	mov r0, #0x6d
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_020249F8
+	bl Sprite_GetAnimCtrlCurrentFrame
 	cmp r0, #2
 	bne _0207F332
 	mov r0, #0x6d

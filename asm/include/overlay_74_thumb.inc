@@ -152,7 +152,7 @@
 .public GX_DisableEngineBLayers
 .public GX_EngineBToggleLayers
 .public GX_SwapDisplay
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
 .public Sprite_Delete
@@ -161,7 +161,7 @@
 .public Set2dSpriteAnimActiveFlag
 .public sub_0202487C
 .public sub_020248AC
-.public sub_020248B8
+.public Get2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo
 .public TryChange2dSpriteAnimSeqNo
 .public sub_02024964
@@ -169,7 +169,7 @@
 .public Sprite_TickCellOrMulticellAnimation
 .public sub_020249D4
 .public sub_02024A04
-.public sub_02024A14
+.public Sprite_SetPalIndex
 .public sub_02024ADC
 .public sub_02024B1C
 .public sub_02024B34

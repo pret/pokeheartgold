@@ -2426,7 +2426,7 @@ ov91_0225D768: ; 0x0225D768
 	add r6, r4, #0
 _0225D782:
 	ldr r0, [r5]
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #0
 	bne _0225D794
 	mov r0, #1
@@ -2523,7 +2523,7 @@ _0225D80A:
 	ldr r0, [sp]
 	add r1, r4, #0
 	ldr r0, [r0, r5]
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2537,7 +2537,7 @@ ov91_0225D84C: ; 0x0225D84C
 	add r5, r6, #0
 _0225D854:
 	ldr r0, [r5]
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #1
 	bne _0225D87A
 	ldr r0, [r5, #0xc]
@@ -6063,7 +6063,7 @@ _0225F2B2:
 	lsl r1, r1, #0xc
 	bl Sprite_TickCellOrMulticellAnimation
 	ldr r0, [r4, #0x34]
-	bl sub_020249F8
+	bl Sprite_GetAnimCtrlCurrentFrame
 	add r6, r0, #0
 	cmp r6, #0xa
 	beq _0225F2CE
@@ -7068,7 +7068,7 @@ ov91_0225FB48: ; 0x0225FB48
 	ldr r0, [r5, r0]
 	bl sub_020135AC
 	ldr r0, [r5, #0x1c]
-	bl sub_02024504
+	bl SpriteList_Delete
 	mov r6, #0x52
 	mov r4, #0
 	lsl r6, r6, #2
@@ -8752,7 +8752,7 @@ ov91_02260848: ; 0x02260848
 	ldrh r1, [r4, #4]
 	ldr r0, [r5]
 	add r6, r3, #0
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
@@ -9292,7 +9292,7 @@ ov91_02260C48: ; 0x02260C48
 	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5, #4]
 	add r1, r4, #0
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	mov r0, #0
 	str r0, [r5]
 	add sp, #0x30
@@ -9414,7 +9414,7 @@ _02260D50:
 	bl sub_0202487C
 	ldr r0, [r5, #4]
 	add r1, r6, #0
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	str r7, [r5]
 	add r4, r4, #1
 	add r5, #0x1c

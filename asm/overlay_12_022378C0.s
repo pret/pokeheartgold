@@ -361,7 +361,7 @@ ov12_02237B6C: ; 0x02237B6C
 	add r1, #0x94
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	add r4, #0x90
 	ldr r0, [r4]
 	bl SpriteRenderer_Delete

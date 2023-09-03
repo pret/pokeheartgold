@@ -332,7 +332,7 @@ _021E5BD8:
 	cmp r4, #4
 	blt _021E5BD8
 	ldr r0, [r6, #0x50]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
@@ -5549,7 +5549,7 @@ _021E8496:
 	blt _021E8496
 	ldr r0, _021E84CC ; =0x00000BF8
 	ldr r0, [r6, r0]
-	bl sub_02024504
+	bl SpriteList_Delete
 	ldr r0, _021E84CC ; =0x00000BF8
 	mov r1, #0
 	str r1, [r6, r0]

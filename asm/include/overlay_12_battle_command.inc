@@ -25,7 +25,7 @@
 .public sub_0200D644
 .public SpriteRenderer_LoadCellResObjFromNarcId
 .public SpriteRenderer_LoadAnimResObjFromNarcId
-.public sub_0200D734
+.public SpriteRenderer_LoadResourcesAndCreateSprite
 .public sub_0200D934
 .public SpriteGfxHandler_UnloadCharObjById
 .public SpriteGfxHandler_UnloadPlttObjById

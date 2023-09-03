@@ -12,14 +12,14 @@
 #include "unk_02020654.h"
 #include "unk_02023694.h"
 
-static void sub_0200D044(SpriteGfxHandler* gfxHandler);
+static void SpriteGfxHandler_DeleteSpriteList(SpriteGfxHandler* gfxHandler);
 static void sub_0200D050(SpriteGfxHandler* gfxHandler);
-static void sub_0200D060(SpriteGfxHandler* gfxHandler);
+static void SpriteGfxHandler_DestroyResObjsAndMans(SpriteGfxHandler* gfxHandler);
 static void DeinitSpriteRenderer(SpriteRenderer* renderer);
 static void MyRemoveSpriteGfxHandler(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler);
 static BOOL sub_0200D124(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const u16* a2, int a3, int a4);
 static Sprite* MyCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, int a2, s16 x, s16 y, s16 z, u16 animSeqNo, int rotation, int a8, NNS_G2D_VRAM_TYPE whichScreen, int a10, int a11, int a12, int a13);
-static UnkImageStruct* sub_0200D748(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, UnkTemplate_0200D748* unkTemplate, fx32 yOffset);
+static UnkImageStruct* MyLoadResourcesAndCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, UnkTemplate_0200D748* unkTemplate, fx32 yOffset);
 static BOOL MyLoadCellOrAnim_NarcId(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, GfGfxResType a6, int resId);
 static BOOL MyLoadCellOrAnim_OpenNarc(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, GfGfxResType a6, int resId);
 static BOOL MyInsertResObjIntoList(_2DGfxResObjList* list, _2DGfxResObj* obj);
@@ -102,8 +102,8 @@ void sub_0200D03C(void) {
     sub_02020674();
 }
 
-static void sub_0200D044(SpriteGfxHandler* gfxHandler) {
-    sub_02024504(gfxHandler->spriteList);
+static void SpriteGfxHandler_DeleteSpriteList(SpriteGfxHandler* gfxHandler) {
+    SpriteList_Delete(gfxHandler->spriteList);
 }
 
 static void sub_0200D050(SpriteGfxHandler* gfxHandler) {
@@ -112,7 +112,7 @@ static void sub_0200D050(SpriteGfxHandler* gfxHandler) {
     }
 }
 
-static void sub_0200D060(SpriteGfxHandler* gfxHandler) {
+static void SpriteGfxHandler_DestroyResObjsAndMans(SpriteGfxHandler* gfxHandler) {
     for (int i = 0; i < gfxHandler->numGfxResObjectTypes; ++i) {
         sub_0200A954(sub_0200A900(gfxHandler->_2dGfxResHeader, i));
     }
@@ -140,9 +140,9 @@ static void MyRemoveSpriteGfxHandler(SpriteRenderer* renderer, SpriteGfxHandler*
 }
 
 void SpriteRenderer_RemoveGfxHandler(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler) {
-    sub_0200D044(gfxHandler);
+    SpriteGfxHandler_DeleteSpriteList(gfxHandler);
     sub_0200D050(gfxHandler);
-    sub_0200D060(gfxHandler);
+    SpriteGfxHandler_DestroyResObjsAndMans(gfxHandler);
     MyRemoveSpriteGfxHandler(renderer, gfxHandler);
 }
 
@@ -256,7 +256,7 @@ static Sprite* MyCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHan
         Set2dSpriteAnimSeqNo(ret, animSeqNo);
         switch (a10) {
         case 0:
-            sub_02024A14(ret, a8);
+            Sprite_SetPalIndex(ret, a8);
             break;
         case 1:
             break;
@@ -387,15 +387,15 @@ BOOL SpriteRenderer_LoadAnimResObjFromOpenNarc(SpriteRenderer* renderer, SpriteG
     return MyLoadCellOrAnim_OpenNarc(renderer, gfxHandler, narc, fileId, compressed, GF_GFX_RES_TYPE_ANIM, resId);
 }
 
-UnkImageStruct* sub_0200D734(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, UnkTemplate_0200D748* template) {
-    return sub_0200D748(renderer, gfxHandler, template, FX32_CONST(GX_LCD_SIZE_Y));
+UnkImageStruct* SpriteRenderer_LoadResourcesAndCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, UnkTemplate_0200D748* template) {
+    return MyLoadResourcesAndCreateSprite(renderer, gfxHandler, template, FX32_CONST(GX_LCD_SIZE_Y));
 }
 
-UnkImageStruct* sub_0200D740(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, UnkTemplate_0200D748* template, fx32 yOffset) {
-    return sub_0200D748(renderer, gfxHandler, template, yOffset);
+UnkImageStruct* SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, UnkTemplate_0200D748* template, fx32 yOffset) {
+    return MyLoadResourcesAndCreateSprite(renderer, gfxHandler, template, yOffset);
 }
 
-static UnkImageStruct* sub_0200D748(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, UnkTemplate_0200D748* unkTemplate, fx32 yOffset) {
+static UnkImageStruct* MyLoadResourcesAndCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, UnkTemplate_0200D748* unkTemplate, fx32 yOffset) {
     int i;
     int paletteOffset;
     UnkImageStruct* ret = AllocFromHeap(renderer->heapId, sizeof(UnkImageStruct));
@@ -469,8 +469,8 @@ static UnkImageStruct* sub_0200D748(SpriteRenderer* renderer, SpriteGfxHandler* 
     if (ret->sprite != NULL) {
         Set2dSpriteAnimSeqNo(ret->sprite, unkTemplate->animation);
         if (unkTemplate->pal != 0xFFFF) {
-            paletteOffset = sub_02024A6C(ret->sprite);
-            sub_02024A14(ret->sprite, paletteOffset + unkTemplate->pal);
+            paletteOffset = Sprite_GetPalIndex(ret->sprite);
+            Sprite_SetPalIndex(ret->sprite, paletteOffset + unkTemplate->pal);
         }
     } else {
         GF_ASSERT(0);
@@ -502,10 +502,10 @@ BOOL SpriteGfxHandler_UnloadAnimObjById(SpriteGfxHandler* gfxHandler, u32 animat
     return MyUnloadCellOrAnimById(gfxHandler->_2dGfxResMan[GF_GFX_RES_TYPE_ANIM], gfxHandler->_2dGfxResObjList[GF_GFX_RES_TYPE_ANIM], animation);
 }
 
-void sub_0200D998(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler) {
+void SpriteRenderer_UnloadResourcesAndRemoveGfxHandler(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler) {
     int i;
 
-    sub_0200D044(gfxHandler);
+    SpriteGfxHandler_DeleteSpriteList(gfxHandler);
     sub_0200AED4(gfxHandler->_2dGfxResObjList[GF_GFX_RES_TYPE_CHAR]);
     sub_0200B0CC(gfxHandler->_2dGfxResObjList[GF_GFX_RES_TYPE_PLTT]);
 
@@ -679,36 +679,36 @@ void sub_0200DCC0(UnkImageStruct *unk) {
     sub_0200DCB8(unk->sprite);
 }
 
-u16 sub_0200DCCC(Sprite* sprite) {
-    return sub_020249F8(sprite);
+u16 thunk_Sprite_GetAnimCtrlCurrentFrame(Sprite* sprite) {
+    return Sprite_GetAnimCtrlCurrentFrame(sprite);
 }
 
-u16 sub_0200DCD4(UnkImageStruct* unk) {
-    return sub_0200DCCC(unk->sprite);
+u16 UnkImageStruct_GetSpriteAnimCtrlCurrentFrame(UnkImageStruct* unk) {
+    return thunk_Sprite_GetAnimCtrlCurrentFrame(unk->sprite);
 }
 
-void sub_0200DCE0(Sprite* sprite, int flag) {
+void thunk_Set2dSpriteVisibleFlag(Sprite* sprite, int flag) {
     Set2dSpriteVisibleFlag(sprite, flag);
 }
 
-void sub_0200DCE8(UnkImageStruct* unk, int flag) {
-    sub_0200DCE0(unk->sprite, flag);
+void UnkImageStruct_SetSpriteVisibleFlag(UnkImageStruct* unk, int flag) {
+    thunk_Set2dSpriteVisibleFlag(unk->sprite, flag);
 }
 
-BOOL sub_0200DCF4(Sprite* sprite) {
-    return sub_020248B8(sprite);
+BOOL thunk_Get2dSpriteVisibleFlag(Sprite* sprite) {
+    return Get2dSpriteVisibleFlag(sprite);
 }
 
-BOOL sub_0200DCFC(UnkImageStruct* a0) {
-    return sub_0200DCF4(a0->sprite);
+BOOL UnkImageStruct_GetSpriteVisibleFlag(UnkImageStruct* a0) {
+    return thunk_Get2dSpriteVisibleFlag(a0->sprite);
 }
 
-void sub_0200DD08(Sprite* sprite, int a1) {
-    sub_02024A14(sprite, a1);
+void thunk_Sprite_SetPalIndex(Sprite* sprite, int a1) {
+    Sprite_SetPalIndex(sprite, a1);
 }
 
-void sub_0200DD10(UnkImageStruct* unk, int a1) {
-    sub_0200DD08(unk->sprite, a1);
+void UnkImageStruct_SetSpritePalIndex(UnkImageStruct* unk, int a1) {
+    thunk_Sprite_SetPalIndex(unk->sprite, a1);
 }
 
 void sub_0200DD1C(Sprite* sprite, u8 a1) {

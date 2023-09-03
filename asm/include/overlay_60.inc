@@ -127,7 +127,7 @@
 .public Camera_SetPerspectiveAngle
 .public Camera_SetLookAtCamTarget
 .public Camera_SetLookAtCamPos
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
 .public Sprite_Delete

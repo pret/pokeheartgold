@@ -128,7 +128,7 @@
 .public GX_SetBanks
 .public GX_EngineAToggleLayers
 .public GX_SwapDisplay
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
 .public Sprite_Delete
@@ -137,7 +137,7 @@
 .public Set2dSpriteAnimActiveFlag
 .public Set2dSpriteAnimSeqNo
 .public sub_02024964
-.public sub_020249F8
+.public Sprite_GetAnimCtrlCurrentFrame
 .public sub_02024A04
 .public sub_02024ADC
 .public sub_02024B68

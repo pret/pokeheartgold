@@ -14,7 +14,7 @@
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public NewString_ReadMsgData
-.public sub_0200D734
+.public SpriteRenderer_LoadResourcesAndCreateSprite
 .public sub_0200D934
 .public sub_0200D944
 .public sub_0200D9DC
@@ -24,8 +24,8 @@
 .public UnkImageStruct_SetSpriteAnimActiveFlag
 .public sub_0200DCA0
 .public sub_0200DCC0
-.public sub_0200DCE8
-.public sub_0200DD10
+.public UnkImageStruct_SetSpriteVisibleFlag
+.public UnkImageStruct_SetSpritePalIndex
 .public sub_0200DDF4
 .public sub_0200DE94
 .public sub_0200DED0

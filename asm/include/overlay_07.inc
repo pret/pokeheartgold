@@ -54,10 +54,10 @@
 .public sub_0200D68C
 .public SpriteRenderer_LoadCellResObjFromOpenNarc
 .public SpriteRenderer_LoadAnimResObjFromOpenNarc
-.public sub_0200D734
+.public SpriteRenderer_LoadResourcesAndCreateSprite
 .public SpriteGfxHandler_UnloadCharObjById
 .public SpriteGfxHandler_UnloadPlttObjById
-.public sub_0200D998
+.public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 .public sub_0200D9DC
 .public TickSpriteAnimation1Frame
 .public UnkImageStruct_TickSpriteAnimation1Frame
@@ -67,9 +67,9 @@
 .public sub_0200DC8C
 .public sub_0200DCA0
 .public sub_0200DCC0
-.public sub_0200DCD4
-.public sub_0200DCE8
-.public sub_0200DCFC
+.public UnkImageStruct_GetSpriteAnimCtrlCurrentFrame
+.public UnkImageStruct_SetSpriteVisibleFlag
+.public UnkImageStruct_GetSpriteVisibleFlag
 .public sub_0200DD24
 .public sub_0200DD30
 .public sub_0200DD48

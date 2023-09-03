@@ -133,7 +133,7 @@
 .public Camera_Init_FromTargetDistanceAndAngle
 .public Camera_SetAnglePos
 .public Camera_GetAngle
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
 .public sub_02024714
@@ -144,12 +144,12 @@
 .public Set2dSpriteAnimActiveFlag
 .public sub_02024868
 .public sub_0202487C
-.public sub_020248B8
+.public Get2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo
 .public Sprite_TickCellOrMulticellAnimation
 .public sub_020249D4
-.public sub_020249F8
-.public sub_02024A14
+.public Sprite_GetAnimCtrlCurrentFrame
+.public Sprite_SetPalIndex
 .public sub_02024ADC
 .public sub_02024AF8
 .public GF_AssertFail

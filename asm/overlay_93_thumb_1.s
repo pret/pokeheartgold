@@ -1008,7 +1008,7 @@ _0225CD72:
 	bl sub_020135AC
 	ldr r0, [r4, #0x24]
 	ldr r1, [r4, #0x28]
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	ldr r0, [r4, #0x24]
 	bl SpriteRenderer_Delete
 	bl GF_DestroyVramTransferManager

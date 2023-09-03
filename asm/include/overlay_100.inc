@@ -59,8 +59,8 @@
 .public UnkImageStruct_SetSpriteAnimActiveFlag
 .public sub_0200DCAC
 .public sub_0200DCC0
-.public sub_0200DCE0
-.public sub_0200DCE8
+.public thunk_Set2dSpriteVisibleFlag
+.public UnkImageStruct_SetSpriteVisibleFlag
 .public sub_0200DD88
 .public sub_0200DDB8
 .public sub_0200FBDC
@@ -96,12 +96,12 @@
 .public GX_SetBanks
 .public GX_DisableEngineALayers
 .public GX_DisableEngineBLayers
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
 .public Set2dSpriteAnimSeqNo
 .public sub_02024964
-.public sub_02024A14
+.public Sprite_SetPalIndex
 .public sub_02025224
 .public GF_AssertFail
 .public Save_PlayerData_GetProfileAddr

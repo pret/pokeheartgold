@@ -9,8 +9,8 @@
 .public SpriteRenderer_Delete
 .public sub_0200D294
 .public SpriteRenderer_CreateSprite
-.public sub_0200DCE0
-.public sub_0200DD08
+.public thunk_Set2dSpriteVisibleFlag
+.public thunk_Sprite_SetPalIndex
 .public sub_0200DD88
 .public sub_0200DE00
 .public sub_0200E248
@@ -22,7 +22,7 @@
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public sub_02024890
-.public sub_020248B8
+.public Get2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo
 .public Sprite_TickCellOrMulticellAnimation
 .public sub_020249D4

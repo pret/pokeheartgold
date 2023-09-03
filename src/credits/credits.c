@@ -488,7 +488,7 @@ static void FreeOamAndObjResMgrs(CreditsAppWork *work) {
     for (u8 i = GF_GFX_RES_TYPE_CHAR; i < GF_GFX_RES_TYPE_ANIM + 1; i++) {
         Destroy2DGfxResObjMan(work->_2dGfxResMan[i]);
     }
-    sub_02024504(work->spriteList);
+    SpriteList_Delete(work->spriteList);
     OamManager_Free();
     sub_0202168C();
     sub_02022608();

@@ -56,7 +56,7 @@
 .public sub_0200D03C
 .public SpriteRenderer_Delete
 .public SpriteRenderer_Init2DGfxResManagersFromCountsArray
-.public sub_0200D998
+.public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 .public CreateSysTask
 .public sub_0200E33C
 .public DestroySysTask

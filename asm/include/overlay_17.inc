@@ -44,8 +44,8 @@
 .public SpriteRenderer_LoadPlttResObjFromOpenNarc
 .public SpriteRenderer_LoadCellResObjFromOpenNarc
 .public SpriteRenderer_LoadAnimResObjFromOpenNarc
-.public sub_0200D734
-.public sub_0200D998
+.public SpriteRenderer_LoadResourcesAndCreateSprite
+.public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 .public sub_0200D9DC
 .public sub_0200DD88
 .public sub_0200DE00

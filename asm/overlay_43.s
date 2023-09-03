@@ -1192,7 +1192,7 @@ _0222A856:
 	cmp r5, #4
 	blt _0222A856
 	ldr r0, [r7, #4]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl sub_0202168C
 	bl sub_02022608
 	bl OamManager_Free
@@ -5136,7 +5136,7 @@ _0222C728:
 	add r0, r4, #0
 	add r0, #0xf8
 	ldr r0, [r0]
-	bl sub_020249F8
+	bl Sprite_GetAnimCtrlCurrentFrame
 	add r1, r4, #0
 	add r1, #0xfc
 	ldr r1, [r1]

@@ -3912,7 +3912,7 @@ _0223FBEA:
 	cmp r4, #4
 	blo _0223FBEA
 	ldr r0, [r5]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608

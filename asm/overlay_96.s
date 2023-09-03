@@ -6759,7 +6759,7 @@ _021E8AEA:
 	cmp r0, #0
 	beq _021E8B14
 	ldr r0, [r5, #0x14]
-	bl sub_02024504
+	bl SpriteList_Delete
 _021E8B14:
 	add r0, r5, #0
 	bl FreeToHeap
@@ -11880,7 +11880,7 @@ ov96_021EB120: ; 0x021EB120
 	push {r3, lr}
 	ldr r0, [r0]
 	bl ov96_021E8BAC
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #0
 	beq _021EB134
 	mov r0, #1
@@ -12058,7 +12058,7 @@ _021EB264:
 	cmp r4, #4
 	blo _021EB264
 	ldr r0, [r5, #0x14]
-	bl sub_02024504
+	bl SpriteList_Delete
 	mov r0, #0x55
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -13891,7 +13891,7 @@ _021EC008:
 	add r0, #0x80
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r0, r4, #0
 	add r0, #0xb1
 	ldrb r0, [r0]
@@ -13911,7 +13911,7 @@ _021EC008:
 	ldr r0, [r0]
 	mov r1, #1
 	mov r7, #0x1c
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r0, r4, #0
 	add r0, #0xb1
 	ldrb r0, [r0]
@@ -14518,7 +14518,7 @@ _021EC534:
 	blo _021EC524
 	ldr r0, [r6, #0x18]
 	ldr r1, [r6, #0x1c]
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	ldr r0, [r6, #0x18]
 	bl SpriteRenderer_Delete
 	pop {r3, r4, r5, r6, r7, pc}
@@ -14572,7 +14572,7 @@ _021EC59C:
 	ldr r1, [r7, #0x1c]
 	add r2, sp, #0
 	lsl r3, r3, #0xe
-	bl sub_0200D740
+	bl SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 	mov r1, #1
 	str r0, [r6, #0x20]
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
@@ -14635,7 +14635,7 @@ _021EC5E4:
 	ldr r0, [r5, #0x18]
 	add r2, sp, #0xc
 	lsl r3, r3, #0xe
-	bl sub_0200D740
+	bl SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 	mov r1, #1
 	str r0, [r4, #0x20]
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
@@ -14660,7 +14660,7 @@ _021EC642:
 	ldr r1, [r5, #0x1c]
 	add r2, sp, #0xc
 	lsl r3, r3, #0xe
-	bl sub_0200D740
+	bl SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 	mov r1, #1
 	str r0, [r6, #0x20]
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
@@ -14736,13 +14736,13 @@ _021EC6AE:
 	ldr r1, [r7, #0x1c]
 	add r2, sp, #4
 	lsl r3, r3, #0xe
-	bl sub_0200D740
+	bl SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 	ldr r1, [sp]
 	str r0, [r6, #0x20]
-	bl sub_0200DD10
+	bl UnkImageStruct_SetSpritePalIndex
 	ldr r0, [r6, #0x20]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [sp]
 	add r4, r4, #1
 	add r0, r0, #3
@@ -14808,13 +14808,13 @@ _021EC760:
 	ldr r1, [r5, #0x1c]
 	add r2, sp, #0
 	lsl r3, r3, #0xe
-	bl sub_0200D740
+	bl SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 	str r0, [r6, #0x20]
 	mov r1, #1
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	ldr r0, [r6, #0x20]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r7, r7, #1
 	add r4, #0x40
 	cmp r7, #2
@@ -15798,7 +15798,7 @@ _021ECF20:
 	add r1, r7, #0
 	add r2, sp, #0
 	lsl r3, r3, #0xe
-	bl sub_0200D740
+	bl SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 	mov r1, #1
 	str r0, [r5]
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
@@ -15933,7 +15933,7 @@ _021ED008:
 	add r1, r7, #0
 	add r2, sp, #0
 	lsl r3, r3, #0xe
-	bl sub_0200D740
+	bl SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 	mov r1, #1
 	str r0, [r5]
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
@@ -19418,7 +19418,7 @@ ov96_021EEA94: ; 0x021EEA94
 	mov r1, #0
 	add r6, r0, #0
 	add r4, r2, #0
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	ldr r1, [sp, #0xc]
 	mov r0, #0x51
 	bl NARC_New
@@ -19507,7 +19507,7 @@ _021EEB5A:
 	bl NARC_Delete
 	add r0, r6, #0
 	mov r1, #1
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -19614,7 +19614,7 @@ ov96_021EEC0C: ; 0x021EEC0C
 	cmp r1, #0
 	bne _021EEC28
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 _021EEC28:
@@ -19676,7 +19676,7 @@ _021EEC28:
 _021EECA0:
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r0, r7, #0
 	bl FreeToHeap
 	add sp, #0x38
@@ -19724,7 +19724,7 @@ _021EECE6:
 	add r1, r0, #0
 	add r0, r5, #0
 	add r1, r6, r1
-	bl sub_0200DD10
+	bl UnkImageStruct_SetSpritePalIndex
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov96_021EECB8
@@ -20338,7 +20338,7 @@ _021EF1EA:
 	blt _021EF1DE
 	ldr r0, [r6, #0x10]
 	ldr r1, [r6, #0x14]
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	ldr r0, [r6, #0x10]
 	bl SpriteRenderer_Delete
 	mov r0, #0
@@ -21313,7 +21313,7 @@ _021EF9AE:
 	lsl r3, r3, #0x14
 	strh r2, [r5, #2]
 	add r2, r7, #0
-	bl sub_0200D740
+	bl SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 	mov r1, #1
 	str r0, [r6, #0x38]
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
@@ -21541,16 +21541,16 @@ ov96_021EFB58: ; 0x021EFB58
 	bl ov96_021EF95C
 	ldr r0, [r5, #0x38]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r5, #0x3c]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r5, #0x40]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r5, #0x44]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #5
 	mov r1, #1
 	bl ToggleBgLayer
@@ -21625,16 +21625,16 @@ ov96_021EFC10: ; 0x021EFC10
 	bl ov96_021EF95C
 	ldr r0, [r4, #0x38]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x3c]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x40]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x44]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #5
 	mov r1, #0
 	bl ToggleBgLayer
@@ -21679,16 +21679,16 @@ ov96_021EFC8C: ; 0x021EFC8C
 	bl ov96_021EF95C
 	ldr r0, [r4, #0x38]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x3c]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x40]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x44]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #5
 	mov r1, #0
 	bl ToggleBgLayer
@@ -21876,7 +21876,7 @@ _021EFE60:
 	mov r1, #0
 _021EFE62:
 	ldr r0, [r5, #0x44]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
@@ -38860,7 +38860,7 @@ _021F8502:
 	add r1, #0x98
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	add r5, #0x94
 	ldr r0, [r5]
 	bl SpriteRenderer_Delete
@@ -38965,7 +38965,7 @@ ov96_021F85A0: ; 0x021F85A0
 	add r1, #0x98
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r4, #0x9c
 	str r0, [r4]
 	add sp, #0x34
@@ -39201,7 +39201,7 @@ _021F87AE:
 	ldr r0, [sp]
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl sub_02024504
+	bl SpriteList_Delete
 	ldr r0, [sp]
 	bl FreeToHeap
 	pop {r3, r4, r5, r6, r7, pc}
@@ -39789,7 +39789,7 @@ ov96_021F8C2C: ; 0x021F8C2C
 	ldr r1, [r4, #0x40]
 	ldr r0, [r4]
 	add r1, r1, #2
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	ldr r0, [r4, #4]
 	add r4, #0x44
 	ldrh r1, [r4]
@@ -46486,7 +46486,7 @@ _021FC1F4:
 	blt _021FC1F4
 	ldr r0, [sp]
 	ldr r0, [r0, #4]
-	bl sub_02024504
+	bl SpriteList_Delete
 	ldr r0, [sp]
 	bl FreeToHeap
 	pop {r3, r4, r5, r6, r7, pc}
@@ -46943,7 +46943,7 @@ _021FC52A:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, r6, #0
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	mov r0, #2
 	ldr r1, [sp, #8]
 	lsl r0, r0, #8
@@ -54877,7 +54877,7 @@ ov96_022004B4: ; 0x022004B4
 	lsl r1, r1, #2
 	ldrb r1, [r2, r1]
 	ldr r0, [sp]
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov96_022004B4
@@ -70617,7 +70617,7 @@ ov96_0220831C: ; 0x0220831C
 	add r1, #0xfc
 	ldrb r1, [r1]
 	ldr r0, [sp]
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov96_0220831C
@@ -73378,7 +73378,7 @@ ov96_022098E8: ; 0x022098E8
 	bl ov96_021E9C0C
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	ldr r0, [r4, #8]
 	bl SpriteRenderer_Delete
 	pop {r4, pc}
@@ -74259,7 +74259,7 @@ _02209FD0:
 	ldr r1, [sp, #0x18]
 	str r0, [r1, #8]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [sp, #0x14]
 	mov r6, #0
 	lsl r0, r0, #0x10
@@ -74294,7 +74294,7 @@ _0220A034:
 	bl ov96_0220D1A0
 	mov r1, #0
 	str r0, [r5, #0x5c]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r6, r6, #1
 	add r4, #0x10
 	add r5, r5, #4
@@ -74328,7 +74328,7 @@ _0220A080:
 	bl ov96_0220D1A0
 	mov r1, #0
 	str r0, [r4, #0xc]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r5, r5, #1
 	add r6, r6, #4
 	add r4, r4, #4
@@ -74444,7 +74444,7 @@ _0220A176:
 	cmp r6, #0x14
 	ble _0220A1BE
 	ldr r0, [r7, #0x5c]
-	bl sub_0200DCFC
+	bl UnkImageStruct_GetSpriteVisibleFlag
 	cmp r0, #0
 	bne _0220A1BC
 	mov r4, #0
@@ -74452,7 +74452,7 @@ _0220A176:
 _0220A198:
 	ldr r0, [r5, #0x5c]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #5
@@ -74462,7 +74462,7 @@ _0220A198:
 _0220A1AC:
 	ldr r0, [r4, #0xc]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #0x14
@@ -74480,14 +74480,14 @@ _0220A1C4:
 	add r5, r7, #0
 _0220A1CC:
 	ldr r0, [r5, #0xc]
-	bl sub_0200DCFC
+	bl UnkImageStruct_GetSpriteVisibleFlag
 	cmp r0, #0
 	bne _0220A1E4
 	ldr r0, [r5, #0xc]
 	bl sub_0200DCAC
 	ldr r0, [r5, #0xc]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 _0220A1E4:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -74519,18 +74519,18 @@ _0220A1EC:
 _0220A21A:
 	ldr r0, [r7, #4]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r7, #8]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	b _0220A23C
 _0220A22C:
 	ldr r0, [r7, #8]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r7, #4]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 _0220A23C:
 	ldr r0, [sp, #4]
 	add r7, #0x70
@@ -75203,7 +75203,7 @@ ov96_0220A744: ; 0x0220A744
 	ldr r1, [sp, #0xc]
 	str r0, [r1, #0xc]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #0x12
 	str r0, [sp]
 	mov r0, #1
@@ -75216,7 +75216,7 @@ ov96_0220A744: ; 0x0220A744
 	ldr r1, [sp, #0xc]
 	str r0, [r1, #0x10]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r5, [sp, #0xc]
 	mov r4, #0
 _0220A7CA:
@@ -75673,7 +75673,7 @@ _0220AB3E:
 	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5, #0xc]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [sp, #0x38]
 	cmp r0, #0
 	beq _0220AB62
@@ -75779,7 +75779,7 @@ _0220AC08:
 	bl sub_0200DE44
 	ldr r0, [r4, #4]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #8
 	ldrsh r0, [r4, r0]
 	add r3, sp, #0x18
@@ -75836,7 +75836,7 @@ _0220AC78:
 	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5, #0x10]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 _0220ACA0:
 	ldr r0, [sp, #8]
 	cmp r0, #0
@@ -76103,7 +76103,7 @@ _0220AE5C:
 	bl ov96_0220D13C
 	mov r1, #0
 	str r0, [r4, #4]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #1
 	str r0, [sp]
 	add r0, r5, #1
@@ -76117,7 +76117,7 @@ _0220AE5C:
 	bl ov96_0220D13C
 	str r0, [r4]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4]
 	mov r1, #1
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
@@ -76157,14 +76157,14 @@ _0220AEDE:
 	bl sub_0200DDB8
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r0, r4, #0
 	bl ov96_0220AFF8
 	add r0, r4, #0
 	bl ov96_0220B068
 	ldr r0, [r4, #4]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	pop {r4, pc}
 	.balign 4, 0
 _0220AF28: .word 0xFFFFF00F
@@ -76497,7 +76497,7 @@ _0220B184:
 	bl ov96_0220D13C
 	mov r1, #0
 	str r0, [r5]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r4, r4, #1
 	add r5, #0x14
 	cmp r4, #0x10
@@ -76630,7 +76630,7 @@ _0220B2A0:
 	bl sub_0200DCAC
 	ldr r0, [r5]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r4, r4, #1
 _0220B2C0:
 	ldr r0, [sp]
@@ -76707,7 +76707,7 @@ _0220B32E:
 	beq _0220B348
 	ldr r0, [r5]
 	add r1, r7, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	str r6, [r5, #4]
 _0220B348:
 	add r4, r4, #1
@@ -76802,7 +76802,7 @@ ov96_0220B374: ; 0x0220B374
 	bl ov96_0220D1A0
 	str r0, [r4, #0x2c]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r1, sp, #0x14
 	ldr r0, [r4, #0x28]
 	add r1, #2
@@ -76825,7 +76825,7 @@ ov96_0220B374: ; 0x0220B374
 	bl ov96_0220D1A0
 	str r0, [r4, #0x30]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r1, sp, #0x10
 	ldr r0, [r4, #0x10]
 	add r1, #2
@@ -76845,7 +76845,7 @@ ov96_0220B374: ; 0x0220B374
 	bl ov96_0220D13C
 	mov r1, #0
 	str r0, [r4, #0x14]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #0xf
 	str r0, [sp]
 	mov r0, #0x17
@@ -76859,7 +76859,7 @@ ov96_0220B374: ; 0x0220B374
 	bl ov96_0220D13C
 	mov r1, #0
 	str r0, [r4, #0x1c]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #0x1b
 	str r0, [sp]
 	mov r0, #0x18
@@ -76873,7 +76873,7 @@ ov96_0220B374: ; 0x0220B374
 	bl ov96_0220D13C
 	mov r1, #0
 	str r0, [r4, #0x20]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r3, r7, #0
 	mov r7, #0
 	ldrsh r0, [r3, r7]
@@ -76891,7 +76891,7 @@ ov96_0220B374: ; 0x0220B374
 	bl ov96_0220D13C
 	add r1, r7, #0
 	str r0, [r4, #0x18]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #1
 	str r0, [sp]
 	add r1, r7, #0
@@ -77611,7 +77611,7 @@ _0220B9D4:
 	bl sub_0200DCAC
 	ldr r0, [r4, #0x1c]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, _0220BD24 ; =0x000008B4
 	bl PlaySE
 	ldr r1, [r4, #0x44]
@@ -77648,16 +77648,16 @@ _0220BA1A:
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	ldr r0, [r4, #0x20]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x10]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x14]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x18]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r1, [r4, #0x44]
 	ldr r0, _0220BD2C ; =0x00FFFFFF
 	add r2, r1, #0
@@ -77974,7 +77974,7 @@ _0220BCB0:
 	blo _0220BD1E
 	ldr r0, [r4, #0x20]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0xc]
 	bl ov96_021E5F24
 	add r2, r0, #0
@@ -78085,12 +78085,12 @@ _0220BD90:
 	add r0, r4, #0
 	bl UnkImageStruct_TryChangeSpriteAnimSeqNo
 	add r0, r4, #0
-	bl sub_0200DCFC
+	bl UnkImageStruct_GetSpriteVisibleFlag
 	cmp r0, #0
 	bne _0220BDB4
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 _0220BDB4:
 	mov r0, #0x89
 	lsl r0, r0, #4
@@ -78115,7 +78115,7 @@ _0220BDCA:
 	bl UnkImageStruct_TryChangeSpriteAnimSeqNo
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r6, #0x40]
 	lsl r0, r0, #0x1e
 	lsr r0, r0, #0x1e
@@ -78130,7 +78130,7 @@ _0220BDCA:
 _0220BE02:
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r1, #1
 	add r0, r4, #0
 	lsl r1, r1, #0xc
@@ -78263,7 +78263,7 @@ _0220BE8A:
 	bl ov96_0220D13C
 	mov r1, #0
 	str r0, [r5, #0x20]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #0x1f
@@ -78283,7 +78283,7 @@ _0220BE8A:
 	bl sub_0200E024
 	ldr r0, [r5, #0x28]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #0x18
 	str r0, [sp]
 	mov r0, #0x1f
@@ -78296,7 +78296,7 @@ _0220BE8A:
 	bl ov96_0220D13C
 	mov r1, #0
 	str r0, [r5, #0x24]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #0xe
 	str r0, [sp]
 	mov r0, #0x1e
@@ -78309,7 +78309,7 @@ _0220BE8A:
 	bl ov96_0220D13C
 	mov r1, #0
 	str r0, [r5, #0x2c]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #0x1b
 	str r0, [sp]
 	mov r0, #0x1e
@@ -78322,7 +78322,7 @@ _0220BE8A:
 	bl ov96_0220D13C
 	mov r1, #0
 	str r0, [r5, #0x30]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -78368,7 +78368,7 @@ _0220BFE8:
 	bl UnkImageStruct_TryChangeSpriteAnimSeqNo
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov96_0220BFB4
 
@@ -78386,7 +78386,7 @@ ov96_0220C004: ; 0x0220C004
 	bl UnkImageStruct_TryChangeSpriteAnimSeqNo
 	ldr r0, [r5, #0x28]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	b _0220C040
 _0220C024:
 	lsl r0, r0, #8
@@ -78401,7 +78401,7 @@ _0220C024:
 	b _0220C040
 _0220C03A:
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 _0220C040:
 	ldr r0, [r4]
 	lsl r0, r0, #0x10
@@ -78412,7 +78412,7 @@ _0220C040:
 	bl ov96_0220BFB4
 	ldr r0, [r5, #0x28]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r5, #0x38]
 	mov r1, #0xc
 	lsl r0, r0, #7
@@ -78464,7 +78464,7 @@ _0220C0A2:
 _0220C0BE:
 	ldr r0, [r5, #0x24]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r5, #0x38]
 	mov r1, #4
 	lsl r0, r0, #7
@@ -78524,7 +78524,7 @@ _0220C112:
 	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5, #0x20]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r1, [r5, #0x38]
 	ldr r0, _0220C158 ; =0xFF807FFF
 	and r1, r0
@@ -78573,7 +78573,7 @@ _0220C188:
 	bl sub_0200DCAC
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r2, [r4, #0x38]
 	mov r1, #0x3c
 	add r0, r2, #0
@@ -78617,7 +78617,7 @@ _0220C1B2:
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r1, [r4, #0x38]
 	ldr r0, _0220C3D4 ; =0xFFFFC03F
 	add r2, r1, #0
@@ -78801,7 +78801,7 @@ _0220C33E:
 	blo _0220C3CE
 	ldr r0, [r4, #0x30]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x38]
 	mov r1, #1
 	lsl r0, r0, #0x1e
@@ -78915,10 +78915,10 @@ ov96_0220C40C: ; 0x0220C40C
 _0220C43E:
 	ldr r0, [r5, #0x24]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r5, #0x28]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 _0220C44E:
 	add r0, r5, #0
 	add r1, r6, r4
@@ -79001,7 +79001,7 @@ _0220C4C0:
 	add r0, r7, #0
 	add r2, sp, #4
 	lsl r3, r3, #0x13
-	bl sub_0200D740
+	bl SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 	mov r1, #1
 	str r0, [r5]
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
@@ -79030,7 +79030,7 @@ _0220C4FA:
 	ldr r1, [sp]
 	add r0, r7, #0
 	lsl r3, r3, #0x14
-	bl sub_0200D740
+	bl SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 	mov r1, #1
 	str r0, [r5, #0x14]
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
@@ -79273,7 +79273,7 @@ _0220C6EC:
 _0220C704:
 	ldr r0, [r0, #0x14]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 _0220C70C:
 	pop {r4, pc}
 	nop
@@ -79431,7 +79431,7 @@ ov96_0220C7FC: ; 0x0220C7FC
 	str r3, [r2, r1]
 	ldr r0, [r0, #0x14]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	pop {r4, pc}
 	nop
 _0220C83C: .word 0xFFFFFEFF
@@ -79526,7 +79526,7 @@ _0220C8D6:
 	cmp r4, #0
 	beq _0220C8FC
 	add r0, r5, #0
-	bl sub_0200DCFC
+	bl UnkImageStruct_GetSpriteVisibleFlag
 	cmp r0, #0
 	bne _0220C8FC
 	mov r0, #0x23
@@ -79535,7 +79535,7 @@ _0220C8D6:
 _0220C8FC:
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	pop {r3, r4, r5, pc}
 	nop
 _0220C908: .word 0x0000099A
@@ -80691,7 +80691,7 @@ _0220D16A:
 	str r3, [sp, #0x30]
 	add r0, r5, #0
 	lsl r3, r3, #0x14
-	bl sub_0200D740
+	bl SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 	mov r1, #1
 	add r4, r0, #0
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
@@ -80742,7 +80742,7 @@ _0220D1CE:
 	add r2, sp, #4
 	str r0, [sp, #0xc]
 	add r0, r5, #0
-	bl sub_0200D740
+	bl SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 	mov r1, #1
 	add r4, r0, #0
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
@@ -82003,7 +82003,7 @@ ov96_0220DB3C: ; 0x0220DB3C
 _0220DB50:
 	ldr r0, [r5]
 	add r1, r4, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	cmp r4, #0
 	bne _0220DB60
 	mov r6, #1
@@ -82013,13 +82013,13 @@ _0220DB60:
 _0220DB62:
 	ldr r0, [r5, #4]
 	add r1, r6, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r5, #8]
 	add r1, r4, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r5, #0xc]
 	add r1, r6, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	pop {r4, r5, r6, pc}
 _0220DB7C:
 	cmp r4, #0
@@ -82031,30 +82031,30 @@ _0220DB84:
 _0220DB86:
 	ldr r0, [r5]
 	add r1, r6, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r5, #4]
 	add r1, r4, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r5, #8]
 	add r1, r6, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r5, #0xc]
 	add r1, r4, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	pop {r4, r5, r6, pc}
 _0220DBA8:
 	ldr r0, [r5]
 	add r1, r4, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r5, #4]
 	add r1, r4, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r5, #8]
 	add r1, r4, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r5, #0xc]
 	add r1, r4, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov96_0220DB3C
@@ -82105,10 +82105,10 @@ _0220DBFA:
 	bl sub_0200DCAC
 	ldr r0, [r5, #0x10]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r5, #0x14]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov96_0220DBE8
@@ -82224,10 +82224,10 @@ _0220DCDE:
 	bl ov96_0220DB3C
 	ldr r0, [r4, #0x10]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x14]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	b _0220DD90
 _0220DD0E:
 	cmp r0, #3
@@ -82271,7 +82271,7 @@ _0220DD0E:
 _0220DD62:
 	ldr r0, [r4, #0x10]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 _0220DD6A:
 	ldr r0, _0220DE74 ; =0x000008C4
 	bl PlaySE
@@ -82285,10 +82285,10 @@ _0220DD72:
 	bl ov96_0220DB3C
 	ldr r0, [r4, #0x10]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x14]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 _0220DD90:
 	ldr r0, [r4, #0x18]
 	lsl r1, r0, #8
@@ -82539,7 +82539,7 @@ _0220DF68:
 	bl sub_0200DDF4
 	ldr r0, [r5]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r5]
 	bl sub_0200DCAC
 	add r0, r4, #0
@@ -83923,7 +83923,7 @@ ov96_0220EAA4: ; 0x0220EAA4
 	bl ov96_021E9C0C
 	ldr r0, [r4, #0xc]
 	ldr r1, [r4, #0x10]
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	ldr r0, [r4, #0xc]
 	bl SpriteRenderer_Delete
 	pop {r4, pc}
@@ -84214,7 +84214,7 @@ _0220ECF0:
 	add r1, r6, #0
 	str r0, [r4, #8]
 	add r0, r5, #0
-	bl sub_0200D740
+	bl SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 	add r4, r0, #0
 	mov r1, #2
 	bl sub_0200DF98
@@ -84223,7 +84223,7 @@ _0220ECF0:
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r0, r4, #0
 	add sp, #0x6c
 	pop {r4, r5, r6, r7, pc}
@@ -84272,13 +84272,13 @@ _0220ED62:
 	add r2, sp, #4
 	str r0, [sp, #0xc]
 	add r0, r5, #0
-	bl sub_0200D740
+	bl SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 	add r4, r0, #0
 	mov r1, #1
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r0, r4, #0
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
@@ -87219,7 +87219,7 @@ _0221044E:
 _02210458:
 	ldr r0, [r5, #0x6c]
 	add r1, r7, #0
-	bl sub_0200DD10
+	bl UnkImageStruct_SetSpritePalIndex
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #2
@@ -87241,7 +87241,7 @@ _02210478:
 _02210482:
 	ldr r0, [r5, #0x6c]
 	add r1, r7, #0
-	bl sub_0200DD10
+	bl UnkImageStruct_SetSpritePalIndex
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #2
@@ -87326,7 +87326,7 @@ _02210506:
 	add r2, sp, #4
 	str r0, [sp, #0xc]
 	add r0, r5, #0
-	bl sub_0200D740
+	bl SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 	mov r1, #1
 	add r4, r0, #0
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
@@ -87503,7 +87503,7 @@ _02210668:
 	bl ov96_022104D8
 	mov r1, #1
 	str r0, [r5, #0x6c]
-	bl sub_0200DD10
+	bl UnkImageStruct_SetSpritePalIndex
 	add r6, r6, #1
 	add r4, #0x10
 	add r5, r5, #4
@@ -99514,7 +99514,7 @@ ov96_02216390: ; 0x02216390
 	bl ov96_021E9C0C
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	ldr r0, [r4, #8]
 	bl SpriteRenderer_Delete
 	pop {r4, pc}
@@ -99712,7 +99712,7 @@ _0221651A:
 	add r2, sp, #4
 	str r0, [sp, #0xc]
 	add r0, r5, #0
-	bl sub_0200D740
+	bl SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 	mov r1, #1
 	add r4, r0, #0
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
@@ -100020,7 +100020,7 @@ _0221679E:
 	bl sub_0200DDF4
 	ldr r0, [r4, #0x10]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x10]
 	bl sub_0200DCAC
 	mov r1, #0
@@ -100033,7 +100033,7 @@ _0221679E:
 	bl sub_0200DDF4
 	ldr r0, [r4, #0xc]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4]
 	mov r1, #0
 	bl ov96_021EAB38
@@ -100089,7 +100089,7 @@ _02216810:
 	blt _02216922
 	ldr r0, [r4, #0xc]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r1, [r0]
@@ -100244,7 +100244,7 @@ _0221695C:
 	bl sub_0200DDF4
 	ldr r0, [r4, #0xc]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0xe2
@@ -100373,7 +100373,7 @@ ov96_02216A54: ; 0x02216A54
 	bl sub_0200DCAC
 	ldr r0, [r5, #0xc]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, _02216A9C ; =0x000008B6
 	ldr r1, [sp, #0x18]
 	bl ov96_022193CC
@@ -100906,7 +100906,7 @@ _02216E62:
 	bl sub_0200DCAC
 	ldr r0, [r4, #0x14]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 _02216E82:
 	add r0, r4, #0
 	add r0, #0xe4
@@ -101048,7 +101048,7 @@ _02216F8C:
 	bl UnkImageStruct_TryChangeSpriteAnimSeqNo
 	ldr r0, [r4, #4]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	b _02216FE6
 _02216FB8:
 	cmp r1, #6
@@ -101073,7 +101073,7 @@ _02216FCC:
 	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r4, #4]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 _02216FE6:
 	ldr r0, [r4, #4]
 	bl sub_0200DCA0
@@ -101111,10 +101111,10 @@ _02217024:
 	bl ov96_021EAB38
 	ldr r0, [r4, #4]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #8]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	b _022170DE
 _0221703E:
 	ldrb r0, [r5, #5]
@@ -101200,7 +101200,7 @@ _022170D6:
 	mov r1, #0
 _022170D8:
 	ldr r0, [r4, #8]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 _022170DE:
 	lsl r0, r6, #0x18
 	lsr r0, r0, #0x18
@@ -101294,7 +101294,7 @@ _02217174:
 	bl sub_0200DDF4
 	ldr r0, [r4, #0x10]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x10]
 	bl sub_0200DCAC
 	ldr r0, [sp, #0xc]
@@ -101810,7 +101810,7 @@ _022175A0:
 	ldr r1, [sp, #8]
 	str r0, [r1, #0x14]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #5
@@ -101823,7 +101823,7 @@ _022175A0:
 	ldr r1, [sp, #8]
 	str r0, [r1, #8]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #0xb
 	str r0, [sp]
 	mov r0, #4
@@ -101836,7 +101836,7 @@ _022175A0:
 	ldr r1, [sp, #8]
 	str r0, [r1, #4]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #0x15
 	str r0, [sp]
 	mov r0, #6
@@ -101849,7 +101849,7 @@ _022175A0:
 	ldr r1, [sp, #8]
 	str r0, [r1, #0xc]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #8
 	str r0, [sp]
 	mov r0, #2
@@ -101862,7 +101862,7 @@ _022175A0:
 	ldr r1, [sp, #8]
 	str r0, [r1, #0x10]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [sp, #8]
 	add r0, #0xe8
 	str r0, [sp, #8]
@@ -106189,7 +106189,7 @@ _0221973E:
 	add r0, r5, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -106217,11 +106217,11 @@ ov96_02219770: ; 0x02219770
 	add r0, #0xa0
 	ldr r0, [r0]
 	add r4, r2, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r5, #0xa4
 	ldr r0, [r5]
 	add r1, r4, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov96_02219770
@@ -106551,7 +106551,7 @@ _022199D6:
 	add r2, sp, #4
 	str r0, [sp, #0xc]
 	add r0, r5, #0
-	bl sub_0200D740
+	bl SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 	mov r1, #1
 	add r4, r0, #0
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
@@ -106862,7 +106862,7 @@ ov96_02219C30: ; 0x02219C30
 	bl ov96_022199A8
 	mov r1, #1
 	str r0, [r5, #0x60]
-	bl sub_0200DD10
+	bl UnkImageStruct_SetSpritePalIndex
 	mov r7, #0
 	mov r6, #0x78
 	add r4, r5, #0
@@ -106898,7 +106898,7 @@ _02219C76:
 	bl ov96_022199A8
 	mov r1, #0
 	str r0, [r4, #0x78]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #0
@@ -106916,7 +106916,7 @@ _02219C76:
 	add r0, #0x88
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r7, r7, #1
 	add r6, #0x20
 	add r4, r4, #4
@@ -106948,7 +106948,7 @@ _02219CF6:
 	ldr r1, [r5, #0xc]
 	add r2, sp, #0xc
 	lsl r3, r3, #0x10
-	bl sub_0200D740
+	bl SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 	add r1, r6, #0
 	add r1, #0x98
 	str r0, [r1]
@@ -106997,7 +106997,7 @@ _02219D48:
 	add r0, #0xa0
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r6, r6, #1
 	add r4, r4, #4
 	add r7, #0x58
@@ -107099,7 +107099,7 @@ _02219E2E:
 	add r2, sp, #4
 	str r0, [sp, #0xc]
 	add r0, r5, #0
-	bl sub_0200D740
+	bl SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 	mov r1, #1
 	add r4, r0, #0
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
@@ -107126,7 +107126,7 @@ ov96_02219E60: ; 0x02219E60
 	bl ov96_02219E00
 	mov r1, #0xe
 	str r0, [r6, #0x64]
-	bl sub_0200DD10
+	bl UnkImageStruct_SetSpritePalIndex
 	mov r7, #0
 	add r4, r6, #0
 	mov r5, #0x86
@@ -107248,13 +107248,13 @@ _02219F60:
 	lsl r0, r0, #2
 	add r0, r5, r0
 	ldr r0, [r0, #0x60]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r0, r4, #6
 	lsl r0, r0, #2
 	add r0, r5, r0
 	ldr r0, [r0, #0x60]
 	add r1, r6, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov96_02219F50
 

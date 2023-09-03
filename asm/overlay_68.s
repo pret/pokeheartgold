@@ -1451,14 +1451,14 @@ _021E64A2:
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	b _021E659C
 _021E64C4:
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r2, r4, #4
 	lsl r2, r2, #0x10
 	ldr r1, [sp, #0x14]
@@ -1977,7 +1977,7 @@ ov68_021E68D4: ; 0x021E68D4
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #1
 	mvn r0, r0
 	cmp r4, r0
@@ -2071,7 +2071,7 @@ _021E697C:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r0, r5, #0
 	add r0, #8
 	bl ScheduleWindowCopyToVram
@@ -2710,7 +2710,7 @@ _021E6E90:
 	ldr r0, [r7, r1]
 	add r1, r1, #4
 	ldr r1, [r7, r1]
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	mov r0, #0x47
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
@@ -2942,7 +2942,7 @@ _021E7050:
 	lsl r0, r0, #2
 	ldr r0, [r2, r0]
 	add r1, r1, #4
-	bl sub_0200DD10
+	bl UnkImageStruct_SetSpritePalIndex
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 _021E709A:
@@ -2955,7 +2955,7 @@ _021E709A:
 	mov r0, #0x49
 	lsl r0, r0, #2
 	ldr r0, [r2, r0]
-	bl sub_0200DD10
+	bl UnkImageStruct_SetSpritePalIndex
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -2989,14 +2989,14 @@ _021E70C6:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	b _021E7116
 _021E70F4:
 	mov r0, #0x4d
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r2, [r6]
 	add r0, r6, #0
 	ldr r1, [r2, #0x10]
@@ -3049,7 +3049,7 @@ ov68_021E7124: ; 0x021E7124
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	add r1, r1, #4
-	bl sub_0200DD10
+	bl UnkImageStruct_SetSpritePalIndex
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	nop
@@ -3076,7 +3076,7 @@ _021E7190:
 	ldr r0, [r6, r0]
 	ldr r1, [r6, r1]
 	add r2, r4, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	mov r1, #0x49
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -3376,7 +3376,7 @@ _021E7414:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, r5, #0
-	bl sub_0200DD10
+	bl UnkImageStruct_SetSpritePalIndex
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov68_021E73A4

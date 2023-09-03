@@ -138,7 +138,7 @@
 .public GX_DisableEngineBLayers
 .public GX_EngineBToggleLayers
 .public GX_BothDispOn
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
 .public Sprite_Delete
@@ -149,7 +149,7 @@
 .public sub_020248AC
 .public Set2dSpriteAnimSeqNo
 .public sub_020249D4
-.public sub_02024A14
+.public Sprite_SetPalIndex
 .public sub_02024A48
 .public sub_02024B1C
 .public sub_02024B68

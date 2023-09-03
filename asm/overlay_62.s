@@ -775,7 +775,7 @@ _021E5EFC:
 	ldr r0, [r5]
 	ldr r1, [r5, #4]
 	add r2, r7, r2
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	mov r1, #1
 	str r0, [r6, #8]
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
@@ -791,7 +791,7 @@ _021E5F28:
 	add r0, r5, r0
 	ldr r0, [r0, #0x18]
 	add r1, r6, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
@@ -847,7 +847,7 @@ _021E5FB2:
 	blt _021E5FA8
 	ldr r0, [r6]
 	ldr r1, [r6, #4]
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov62_021E5FA0
 
@@ -1627,7 +1627,7 @@ ov62_021E6570: ; 0x021E6570
 	bne _021E65FC
 	ldr r0, [r5]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	pop {r3, r4, r5, r6, r7, pc}
 _021E658C:
 	add r0, r5, #0
@@ -1678,7 +1678,7 @@ _021E65C6:
 	bge _021E65FC
 	ldr r0, [r5]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r0, r7, #0
 	bl DestroySysTask
 	mov r0, #0

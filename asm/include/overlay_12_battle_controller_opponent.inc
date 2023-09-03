@@ -43,8 +43,8 @@
 .public UnkImageStruct_SetSpriteAnimActiveFlag
 .public sub_0200DCA0
 .public sub_0200DCC0
-.public sub_0200DCD4
-.public sub_0200DCE8
+.public UnkImageStruct_GetSpriteAnimCtrlCurrentFrame
+.public UnkImageStruct_SetSpriteVisibleFlag
 .public sub_0200DD54
 .public sub_0200DDB8
 .public sub_0200DE44

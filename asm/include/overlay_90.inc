@@ -115,7 +115,7 @@
 .public GX_EngineAToggleLayers
 .public GX_EngineBToggleLayers
 .public GX_SwapDisplay
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_0202457C
 .public sub_02024714
 .public Sprite_Delete
@@ -125,7 +125,7 @@
 .public sub_02024890
 .public Set2dSpriteAnimSeqNo
 .public Sprite_TickCellOrMulticellAnimation
-.public sub_020249F8
+.public Sprite_GetAnimCtrlCurrentFrame
 .public sub_02024A04
 .public sub_02024A74
 .public sub_02024AA8

@@ -166,7 +166,7 @@
 .public GX_DisableEngineBLayers
 .public GX_EngineBToggleLayers
 .public GX_SwapDisplay
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
 .public Sprite_Delete
@@ -177,7 +177,7 @@
 .public Get2dSpriteCurrentAnimSeqNo
 .public Sprite_TickCellOrMulticellAnimation
 .public sub_020249D4
-.public sub_020249F8
+.public Sprite_GetAnimCtrlCurrentFrame
 .public sub_02024ADC
 .public System_GetTouchNew
 .public GF_AssertFail

@@ -4168,7 +4168,7 @@ _021E7CF0:
 	lsl r2, r2, #0x12
 	bl G2dRenderer_SetSubSurfaceCoords
 	ldr r0, [r5]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608

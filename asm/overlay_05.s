@@ -1814,12 +1814,12 @@ ov05_0221C8A0: ; 0x0221C8A0
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #0x73
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #0x72
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1845,7 +1845,7 @@ ov05_0221C8E0: ; 0x0221C8E0
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, _0221C904 ; =0x00000B81
 	mov r1, #0x40
 	strb r1, [r4, r0]
@@ -2481,7 +2481,7 @@ ov05_0221CDC4: ; 0x0221CDC4
 	add r1, r1, #4
 	ldr r1, [r2, r1]
 	add r2, sp, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add sp, #0x34
 	pop {pc}
 	thumb_func_end ov05_0221CDC4
@@ -2515,7 +2515,7 @@ _0221CE36:
 	ldr r0, [r6, r1]
 	add r1, r1, #4
 	ldr r1, [r6, r1]
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	mov r0, #0x19
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
@@ -3858,12 +3858,12 @@ ov05_0221D904: ; 0x0221D904
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #0x73
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4]
 	add r0, #0x2a
 	ldrb r0, [r0]
@@ -4920,7 +4920,7 @@ _0221E182:
 	ldr r0, [sp, #4]
 	add r1, r6, #0
 	ldr r0, [r0, r4]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [sp, #4]
 	add r5, r5, #1
 	add r0, r0, #4
@@ -4944,7 +4944,7 @@ _0221E19C:
 	bl GetMonIconPaletteEx
 	add r1, r0, #0
 	ldr r0, [r7, r4]
-	bl sub_0200DD10
+	bl UnkImageStruct_SetSpritePalIndex
 	ldr r1, [sp]
 	add r0, r5, #0
 	bl ov05_0221E0A8
@@ -4960,7 +4960,7 @@ _0221E19C:
 	sub r1, #0x82
 	ldr r0, [r0, r1]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	b _0221E20C
 _0221E1E6:
 	bl ItemIdIsMail
@@ -4991,7 +4991,7 @@ _0221E20C:
 	sub r0, #0x84
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	b _0221E232
 _0221E226:
 	add r1, r5, r4
@@ -5010,7 +5010,7 @@ _0221E232:
 	sub r3, #0x84
 	ldr r0, [r0, r3]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 _0221E24E:

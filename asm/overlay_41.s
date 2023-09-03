@@ -1709,7 +1709,7 @@ ov41_02246B34: ; 0x02246B34
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x44]
-	bl sub_02024504
+	bl SpriteList_Delete
 	mov r4, #0
 _02246B40:
 	ldr r0, [r5, #0x48]

@@ -77,8 +77,8 @@
 .public sub_0200D68C
 .public SpriteRenderer_LoadCellResObjFromOpenNarc
 .public SpriteRenderer_LoadAnimResObjFromOpenNarc
-.public sub_0200D734
-.public sub_0200D998
+.public SpriteRenderer_LoadResourcesAndCreateSprite
+.public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 .public sub_0200D9DC
 .public UnkImageStruct_TickSpriteAnimation1Frame
 .public UnkImageStruct_TickSpriteAnimationNFrames
@@ -155,7 +155,7 @@
 .public Camera_PushLookAtToNNSGlb
 .public Camera_SetLookAtCamUp
 .public Camera_Init_FromTargetDistanceAndAngle
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
 .public Set2dSpriteVisibleFlag

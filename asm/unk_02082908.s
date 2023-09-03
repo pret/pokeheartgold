@@ -495,7 +495,7 @@ sub_02082CF8: ; 0x02082CF8
 	mov r0, #0xd3
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #0
 	bne _02082D2A
 	mov r0, #0xd3
@@ -855,7 +855,7 @@ _02082FD6:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl OamManager_Free
 	ldr r1, _020830C4 ; =0x000004AC
 	mov r0, #0x12
@@ -3236,7 +3236,7 @@ sub_0208432C: ; 0x0208432C
 	ldr r0, [r5, r0]
 	add r6, r4, #0
 	add r7, r4, #0
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #0
 	bne _02084346
 	mov r7, #1
@@ -3950,7 +3950,7 @@ _020848B0:
 	mov r0, #0xd3
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #0
 	bne _020848D8
 	ldr r0, _02084BC4 ; =gSystem + 0x40

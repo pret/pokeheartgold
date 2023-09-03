@@ -55,7 +55,7 @@
 .public ScheduleBgTilemapBufferTransfer
 .public sub_0201F988
 .public AddTextPrinterParameterized2
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
 .public Sprite_Delete

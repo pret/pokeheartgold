@@ -34,12 +34,12 @@
 .public SpriteRenderer_LoadPlttResObjFromOpenNarc
 .public SpriteRenderer_LoadCellResObjFromOpenNarc
 .public SpriteRenderer_LoadAnimResObjFromOpenNarc
-.public sub_0200D740
-.public sub_0200D998
+.public SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
+.public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 .public sub_0200D9DC
 .public UnkImageStruct_SetSpriteAnimActiveFlag
-.public sub_0200DCE0
-.public sub_0200DCE8
+.public thunk_Set2dSpriteVisibleFlag
+.public UnkImageStruct_SetSpriteVisibleFlag
 .public sub_0200DDF4
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished

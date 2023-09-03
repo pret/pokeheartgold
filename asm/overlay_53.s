@@ -3674,7 +3674,7 @@ _021E76A8:
 	add r0, #0xec
 	ldr r0, [r0]
 	mov r1, #5
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	add r0, r4, #0
 	add r0, #0xec
 	ldr r0, [r0]
@@ -3729,7 +3729,7 @@ _021E771C:
 	add r0, #0xec
 	ldr r0, [r0]
 	mov r1, #4
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	mov r2, #5
 	mov r1, #0x10
 	lsl r2, r2, #6
@@ -4575,7 +4575,7 @@ _021E7E2E:
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #1
 	beq _021E7E40
 	bl GF_AssertFail
@@ -4591,7 +4591,7 @@ _021E7E52:
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #0
 	beq _021E7E64
 	bl GF_AssertFail
@@ -4645,7 +4645,7 @@ ov53_021E7EAC: ; 0x021E7EAC
 _021E7EB6:
 	add r4, #0xe4
 	ldr r0, [r4]
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #1
 	bne _021E7EC6
 	mov r0, #1

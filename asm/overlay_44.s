@@ -1118,7 +1118,7 @@ _0222A6F0:
 	mov r0, #0x19
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
@@ -15197,7 +15197,7 @@ ov44_0223183C: ; 0x0223183C
 	lsl r4, r5, #2
 	add r7, r0, r1
 	ldr r0, [r7, r4]
-	bl sub_020249F8
+	bl Sprite_GetAnimCtrlCurrentFrame
 	str r0, [sp, #4]
 	cmp r6, #0
 	beq _02231868
@@ -15219,7 +15219,7 @@ _02231876:
 	lsl r1, r1, #0xc
 	bl Sprite_TickCellOrMulticellAnimation
 	ldr r0, [r7, r4]
-	bl sub_020249F8
+	bl Sprite_GetAnimCtrlCurrentFrame
 	add r4, r0, #0
 	cmp r5, #1
 	bne _022318A6
@@ -15256,7 +15256,7 @@ _022318BE:
 	bl Get2dSpriteCurrentAnimSeqNo
 	add r7, r0, #0
 	ldr r0, [r6, r4]
-	bl sub_020249F8
+	bl Sprite_GetAnimCtrlCurrentFrame
 	str r0, [sp, #0xc]
 	ldr r0, _0223190C ; =ov44_02235360
 	ldrb r0, [r0, r5]
@@ -16619,7 +16619,7 @@ _022322FE:
 	cmp r4, #4
 	blt _022322FE
 	ldr r0, [r7]
-	bl sub_02024504
+	bl SpriteList_Delete
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov44_022322E8
 
@@ -19393,7 +19393,7 @@ ov44_02233820: ; 0x02233820
 	ldr r0, [r5, r0]
 	bl ov42_02228050
 	ldr r0, [r5, #0x18]
-	bl sub_02024504
+	bl SpriteList_Delete
 	mov r6, #0x51
 	mov r4, #0
 	lsl r6, r6, #2

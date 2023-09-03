@@ -1932,7 +1932,7 @@ _0223882A:
 	blt _0223882A
 	ldr r0, _02238868 ; =0x00000BF8
 	ldr r0, [r6, r0]
-	bl sub_02024504
+	bl SpriteList_Delete
 	ldr r0, _02238868 ; =0x00000BF8
 	mov r1, #0
 	str r1, [r6, r0]

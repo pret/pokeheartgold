@@ -14,7 +14,7 @@
 .public NARC_Delete
 .public thunk_OamManager_ApplyAndResetBuffers
 .public SpriteRenderer_Delete
-.public sub_0200D998
+.public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
 .public CreateHeap

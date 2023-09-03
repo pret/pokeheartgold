@@ -1084,7 +1084,7 @@ _021E61D6:
 	strh r0, [r1, #6]
 	add r0, r7, #0
 	mov r1, ip
-	bl sub_0200D740
+	bl SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 	mov r1, #0
 	add r4, r0, #0
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
@@ -1121,7 +1121,7 @@ _021E6226:
 	add r0, r7, #0
 	add r2, sp, #0
 	lsl r3, r3, #0x12
-	bl sub_0200D740
+	bl SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -1154,7 +1154,7 @@ _021E6262:
 	add r0, r7, #0
 	add r2, sp, #0
 	lsl r3, r3, #0x12
-	bl sub_0200D740
+	bl SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -1259,7 +1259,7 @@ _021E634C:
 	blt _021E6342
 	add r0, r6, #0
 	add r1, r7, #0
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	add r0, r6, #0
 	bl SpriteRenderer_Delete
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1445,7 +1445,7 @@ ov78_021E636C: ; 0x021E636C
 	str r0, [r5, #0x54]
 	ldr r0, [r5, #0x4c]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r5, #0x50]
 	ldr r1, [r5, #0xc]
 	ldr r0, [r0]
@@ -1551,7 +1551,7 @@ ov78_021E65BC: ; 0x021E65BC
 	mov r1, #0
 	add r6, r0, #0
 	str r2, [sp, #0xc]
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	mov r0, #0x51
 	add r1, r4, #0
 	bl NARC_New
@@ -1609,7 +1609,7 @@ ov78_021E65BC: ; 0x021E65BC
 	bl NARC_Delete
 	add r0, r6, #0
 	mov r1, #1
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov78_021E65BC
@@ -1790,7 +1790,7 @@ _021E679E:
 	bl NARC_Delete
 	add r0, r7, #0
 	mov r1, #1
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov78_021E66D4

@@ -1467,7 +1467,7 @@ ov65_0221CA64: ; 0x0221CA64
 	bl GfGfxLoader_GXLoadPal
 	ldr r0, [r6, r7]
 	mov r1, #0xb
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 _0221CAA6:
@@ -1488,7 +1488,7 @@ _0221CAA6:
 	bl GfGfxLoader_GXLoadPal
 	ldr r0, [r6, r7]
 	mov r1, #0xc
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 _0221CACE:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1753,7 +1753,7 @@ _0221CCE4:
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608

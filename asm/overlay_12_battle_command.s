@@ -5236,7 +5236,7 @@ ov12_02248228: ; 0x02248228
 	ldr r2, _022484B4 ; =ov12_0226C428
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	str r0, [r5, #0xc]
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [sp, #0x18]
@@ -5292,7 +5292,7 @@ ov12_02248228: ; 0x02248228
 	ldr r2, _022484C4 ; =ov12_0226C45C
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	str r0, [r5, #0x10]
 	ldr r0, [sp, #0x18]
 	bl Pokemon_GetIconPalette

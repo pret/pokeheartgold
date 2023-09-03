@@ -2146,7 +2146,7 @@ _021E6CC4:
 	add r1, #0xb4
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r1, r7, #0
 	add r1, #0xb8
 	str r0, [r1]
@@ -2161,7 +2161,7 @@ _021E6CC4:
 	add r0, #0xb8
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 _021E6D6C:
 	ldr r0, [sp, #0x10]
 	add r6, r6, #1
@@ -2208,7 +2208,7 @@ _021E6DAC:
 	add r1, #0xb4
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	add r6, #0xb0
 	ldr r0, [r6]
 	bl SpriteRenderer_Delete

@@ -542,7 +542,7 @@ _021EB5AC:
 	add r0, r6, #0
 	add r0, #0xf4
 	ldr r0, [r0]
-	bl sub_02024504
+	bl SpriteList_Delete
 	add r0, r6, #0
 	mov r1, #0
 	add r0, #0xf4

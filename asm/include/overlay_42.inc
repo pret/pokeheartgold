@@ -33,12 +33,12 @@
 .public Sprite_Delete
 .public sub_020247D4
 .public Set2dSpriteVisibleFlag
-.public sub_020248B8
+.public Get2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo
 .public TryChange2dSpriteAnimSeqNo
 .public Sprite_TickCellOrMulticellAnimation
 .public sub_020249D4
-.public sub_020249F8
+.public Sprite_GetAnimCtrlCurrentFrame
 .public sub_02024A04
 .public sub_02024ACC
 .public sub_02024ADC

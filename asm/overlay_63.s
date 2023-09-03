@@ -371,7 +371,7 @@ ov63_0221C118: ; 0x0221C118
 	add r1, #0xa0
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	add r4, #0x9c
 	ldr r0, [r4]
 	bl SpriteRenderer_Delete
@@ -841,12 +841,12 @@ _0221C40A:
 	add r0, #0xd4
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r0, r5, #0
 	add r0, #0xd8
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, _0221C594 ; =0x00013048
 	mov r6, #0
 	ldr r0, [r5, r0]
@@ -870,7 +870,7 @@ _0221C4CA:
 	add r0, #0xbc
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r0, r4, #0
 	add r0, #0xa4
 	ldr r0, [r0]
@@ -2523,7 +2523,7 @@ _0221D264:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	add r2, r4, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r1, r6, #0
 	add r1, #0xa4
 	add r7, r7, #1
@@ -5011,7 +5011,7 @@ _0221E6E0:
 	add r0, #0xdc
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldrh r0, [r4, #0xe]
 	add r0, r0, #1
 	strh r0, [r4, #0xe]
@@ -5833,7 +5833,7 @@ _0221EDBE:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	add r2, r7, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r1, r4, #0
 	add r1, #0xa4
 	str r0, [r1]
@@ -5849,7 +5849,7 @@ _0221EDBE:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	add r2, r2, r3
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r1, r4, #0
 	add r1, #0xbc
 	str r0, [r1]
@@ -5868,7 +5868,7 @@ _0221EE0E:
 	add r0, #0xa4
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 _0221EE1A:
 	add r0, r5, #0
 	add r1, r6, #0
@@ -5904,7 +5904,7 @@ _0221EE1A:
 	add r0, #0xbc
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x10]
 	add r0, #0x34
@@ -5924,7 +5924,7 @@ _0221EE1A:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	ldr r2, _0221EFCC ; =ov63_02220310
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r1, r5, #0
 	add r1, #0xd4
 	str r0, [r1]
@@ -5935,7 +5935,7 @@ _0221EE1A:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	ldr r2, _0221EFD0 ; =ov63_02220344
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r1, r5, #0
 	add r1, #0xd8
 	str r0, [r1]
@@ -5953,12 +5953,12 @@ _0221EE1A:
 	add r0, #0xd4
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r0, r5, #0
 	add r0, #0xd8
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r5]
 	ldr r0, [r0]
 	bl PlayerProfile_GetTrainerGender
@@ -6022,7 +6022,7 @@ _0221EF06:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	ldr r2, _0221EFD4 ; =ov63_02220378
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r1, r5, #0
 	add r1, #0xdc
 	str r0, [r1]
@@ -6030,7 +6030,7 @@ _0221EF06:
 	add r0, #0xdc
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r0, r5, #0
 	mov r1, #0xd
 	mov r2, #0

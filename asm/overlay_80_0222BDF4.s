@@ -1527,7 +1527,7 @@ _0222C8D2:
 	bl sub_0200DDB8
 	ldr r1, [sp, #0x14]
 	add r0, r7, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r1, [sp, #4]
 	ldr r2, [sp, #8]
 	add r0, r6, #0
@@ -1583,7 +1583,7 @@ ov80_0222C96C: ; 0x0222C96C
 _0222C998:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov80_0222C96C
@@ -6782,7 +6782,7 @@ _0222F0DA:
 	add r0, r7, #0
 	add r1, r6, #0
 	add r2, sp, #0x38
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r6, r0, #0
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	mov r1, #0x32
@@ -7035,7 +7035,7 @@ _0222F2D8:
 	str r0, [sp, #0x18]
 	ldr r0, [r5, #0x34]
 	ldr r1, [r5, #0x38]
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r4, r0, #0
 	add r0, r7, #0
 	bl Pokemon_GetIconPalette
@@ -7178,7 +7178,7 @@ _0222F40C:
 	str r0, [sp, #8]
 	ldr r0, [r3, #0x34]
 	ldr r1, [r3, #0x38]
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r4, r0, #0
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	add r0, r4, #0

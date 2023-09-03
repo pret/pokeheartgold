@@ -689,7 +689,7 @@ ov32_0225DAC0: ; 0x0225DAC0
 	mov r0, #0x53
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024504
+	bl SpriteList_Delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov32_0225DAC0

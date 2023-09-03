@@ -1377,7 +1377,7 @@ _0221F0BC:
 	cmp r4, #6
 	blo _0221F0BC
 	ldr r0, [r5, #4]
-	bl sub_02024504
+	bl SpriteList_Delete
 	add r0, r7, #0
 	bl FreeToHeap
 	pop {r3, r4, r5, r6, r7, pc}

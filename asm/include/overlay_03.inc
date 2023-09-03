@@ -32,7 +32,7 @@
 .public BufferIntegerAsString
 .public BufferSafariZoneObjectName
 .public StringExpandPlaceholders
-.public sub_0200DD08
+.public thunk_Sprite_SetPalIndex
 .public sub_0200DD88
 .public CreateSysTask
 .public DestroySysTask
@@ -83,7 +83,7 @@
 .public sub_020247D4
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
-.public sub_020248B8
+.public Get2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo
 .public Sprite_TickCellOrMulticellAnimation
 .public sub_020249D4

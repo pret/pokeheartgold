@@ -29,8 +29,8 @@
 .public UnkImageStruct_GetSpriteCurrentAnimSeqNo
 .public UnkImageStruct_SetSpriteAnimActiveFlag
 .public sub_0200DC8C
-.public sub_0200DCE8
-.public sub_0200DD10
+.public UnkImageStruct_SetSpriteVisibleFlag
+.public UnkImageStruct_SetSpritePalIndex
 .public sub_0200DDB8
 .public sub_0200DE44
 .public sub_0200DED0

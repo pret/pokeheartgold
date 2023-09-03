@@ -115,7 +115,7 @@ _02239BC8:
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r3, r2
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r4, r0, #0
 	ldr r0, [r4]
 	bl TickSpriteAnimation1Frame

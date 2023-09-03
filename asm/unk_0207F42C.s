@@ -327,7 +327,7 @@ sub_0207F694: ; 0x0207F694
 	ldr r0, _0207F6E0 ; =0x00000678
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_02079224
@@ -718,7 +718,7 @@ sub_0207F9CC: ; 0x0207F9CC
 	ldr r0, _0207FA04 ; =0x00000678
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -742,7 +742,7 @@ sub_0207FA08: ; 0x0207FA08
 	ldr r0, _0207FA38 ; =0x00000678
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_02079224
@@ -844,7 +844,7 @@ sub_0207FAD4: ; 0x0207FAD4
 	ldr r0, _0207FB08 ; =0x00000678
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -874,7 +874,7 @@ sub_0207FB0C: ; 0x0207FB0C
 	ldr r0, _0207FBBC ; =0x00000678
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	ldr r0, _0207FBBC ; =0x00000678
 	add r1, sp, #0
 	ldr r0, [r5, r0]
@@ -2122,7 +2122,7 @@ _02080542:
 	ldr r0, _02080608 ; =0x00000678
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	ldr r0, _02080600 ; =0x00000654
 	ldr r0, [r5, r0]
 	add r0, #0x36
@@ -2220,7 +2220,7 @@ sub_02080610: ; 0x02080610
 	ldr r0, _02080638 ; =0x00000678
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -2333,7 +2333,7 @@ _020806DC:
 	ldr r0, _02080724 ; =0x00000678
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	ldr r0, [sp]
 	mov r1, #1
 	str r1, [r0]
@@ -2864,7 +2864,7 @@ _02080AB8:
 	ldr r0, _02080B60 ; =0x00000678
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	ldr r0, _02080B60 ; =0x00000678
 	add r1, sp, #0
 	ldr r0, [r4, r0]
@@ -2944,7 +2944,7 @@ sub_02080B74: ; 0x02080B74
 	ldr r0, _02080BAC ; =0x00000678
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	ldr r0, _02080BB0 ; =0x04000050
 	mov r1, #0
 	strh r1, [r0]

@@ -308,7 +308,7 @@ _0225A216:
 	bl AllocFromHeapAtEnd
 _0225A238:
 	ldr r0, [r6, #0x18]
-	bl sub_02024504
+	bl SpriteList_Delete
 	mov r0, #0x3f
 	lsl r0, r0, #4
 	mov r5, #0
@@ -694,7 +694,7 @@ ov27_0225A530: ; 0x0225A530
 	mov r0, #0xf
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #0
 	beq _0225A58C
 	cmp r4, #1
@@ -4559,7 +4559,7 @@ _0225C3C4:
 	mov r0, #0x86
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	bl sub_02024504
+	bl SpriteList_Delete
 	mov r0, #0
 	bl sub_02002B8C
 	add r0, r7, #0

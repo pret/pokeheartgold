@@ -353,7 +353,7 @@ _021E5BF8:
 	cmp r4, #4
 	blt _021E5BF8
 	ldr r0, [r6, #0x34]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608

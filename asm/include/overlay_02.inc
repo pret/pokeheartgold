@@ -129,7 +129,7 @@
 .public Camera_SetLookAtCamTarget
 .public Camera_SetLookAtCamPos
 .public sub_02023E78
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_02024544
 .public sub_0202457C
 .public sub_02024714

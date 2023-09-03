@@ -743,7 +743,7 @@ _02266702:
 	ldr r0, [sp, #0x18]
 	ldr r2, _022667E4 ; =ov12_0226E448
 	add r1, r7, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	ldr r1, _022667D0 ; =0x000005D8
 	mov r3, #0x11
 	str r0, [r4, r1]
@@ -762,7 +762,7 @@ _02266702:
 	ldr r0, [sp, #0x18]
 	ldr r2, _022667E8 ; =ov12_0226E47C
 	add r1, r7, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	mov r1, #0x5f
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -964,7 +964,7 @@ _022668F8:
 	ldr r0, _02266A48 ; =0x000005D8
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl sub_0200DCF4
+	bl thunk_Get2dSpriteVisibleFlag
 	cmp r0, #0
 	beq _0226690C
 	ldrb r0, [r4, #2]
@@ -1229,7 +1229,7 @@ _02266AF4:
 	mov r1, #1
 	ldr r0, [r4, r0]
 	ldr r0, [r0]
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, r7
@@ -1248,7 +1248,7 @@ _02266B1C:
 	ldr r0, [r5, r6]
 	add r1, r7, #0
 	ldr r0, [r0]
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #6
@@ -1282,11 +1282,11 @@ _02266B54:
 	ldr r0, [r5, r7]
 	mov r1, #0
 	ldr r0, [r0]
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	ldr r0, [r5, r6]
 	mov r1, #0
 	ldr r0, [r0]
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #6
@@ -4201,7 +4201,7 @@ _02268356:
 	strh r1, [r0, #2]
 	ldr r0, [sp, #0x18]
 	ldr r1, [sp, #0x14]
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r3, sp, #0x1c
 	mov r1, #0
 	mov r2, #2
@@ -4343,7 +4343,7 @@ _02268488:
 	strh r1, [r0, #2]
 	add r0, r7, #0
 	add r1, r4, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r3, sp, #0x10
 	mov r1, #0
 	mov r2, #2
@@ -9650,7 +9650,7 @@ _0226AC84:
 	ldr r2, _0226AD54 ; =ov12_0226E54C
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	ldr r1, _0226AD58 ; =0x000006F4
 	mov r3, #0x11
 	str r0, [r5, r1]
@@ -9665,7 +9665,7 @@ _0226AC84:
 	ldr r2, _0226AD5C ; =ov12_0226E518
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	mov r1, #0x6f
 	lsl r1, r1, #4
 	str r0, [r5, r1]

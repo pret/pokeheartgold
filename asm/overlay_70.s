@@ -2849,7 +2849,7 @@ _02238ECC:
 	blt _02238ECC
 	ldr r0, _02238F00 ; =0x00000BF4
 	ldr r0, [r6, r0]
-	bl sub_02024504
+	bl SpriteList_Delete
 	ldr r0, _02238F00 ; =0x00000BF4
 	mov r1, #0
 	str r1, [r6, r0]
@@ -13004,7 +13004,7 @@ _0223E134:
 	bl GX_LoadOBJ
 	ldr r0, [r5, #8]
 	ldr r1, [r5, #4]
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 _0223E158:
 	add r4, r4, #1
 	add r5, r5, r7
@@ -19335,7 +19335,7 @@ ov70_02241234: ; 0x02241234
 	mov r4, #0
 _0224123C:
 	ldr r0, [r5, r7]
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #0
 	beq _0224126E
 	ldr r0, _02241278 ; =0x00000EE8

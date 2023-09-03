@@ -654,7 +654,7 @@ ov80_0222A400: ; 0x0222A400
 	str r1, [sp, #8]
 	cmp r3, #1
 	bne _0222A42E
-	bl sub_020249F8
+	bl Sprite_GetAnimCtrlCurrentFrame
 	cmp r0, #0
 	bne _0222A428
 	sub r0, r4, #3

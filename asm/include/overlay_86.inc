@@ -44,13 +44,13 @@
 .public SpriteRenderer_LoadPlttResObjFromOpenNarc
 .public SpriteRenderer_LoadCellResObjFromOpenNarc
 .public SpriteRenderer_LoadAnimResObjFromOpenNarc
-.public sub_0200D734
-.public sub_0200D998
+.public SpriteRenderer_LoadResourcesAndCreateSprite
+.public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 .public sub_0200D9DC
 .public UnkImageStruct_TickSpriteAnimation1Frame
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public sub_0200DCC0
-.public sub_0200DD10
+.public UnkImageStruct_SetSpritePalIndex
 .public sub_0200DDB8
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2

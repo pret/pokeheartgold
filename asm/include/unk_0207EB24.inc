@@ -13,7 +13,7 @@
 .public SpriteRenderer_Delete
 .public sub_0200D294
 .public SpriteRenderer_CreateSprite
-.public sub_0200DD08
+.public thunk_Sprite_SetPalIndex
 .public sub_0200DD88
 .public sub_0200E2B8
 .public FreeToHeap
@@ -23,12 +23,12 @@
 .public GX_EngineBToggleLayers
 .public sub_020247D4
 .public Set2dSpriteVisibleFlag
-.public sub_020248B8
+.public Get2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo
 .public Get2dSpriteCurrentAnimSeqNo
 .public Sprite_TickCellOrMulticellAnimation
 .public sub_020249D4
-.public sub_020249F8
+.public Sprite_GetAnimCtrlCurrentFrame
 .public sub_02024B1C
 .public GetMonData
 .public Pokemon_GetIconNaix

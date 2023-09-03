@@ -66,14 +66,14 @@
 .public sub_0201F988
 .public AddTextPrinterParameterized2
 .public GX_EngineBToggleLayers
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
 .public sub_020247D4
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public sub_0202487C
-.public sub_020248B8
+.public Get2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo
 .public TryChange2dSpriteAnimSeqNo
 .public Get2dSpriteCurrentAnimSeqNo

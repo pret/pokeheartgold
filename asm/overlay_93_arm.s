@@ -911,10 +911,10 @@ ov93_0225FB00: ; 0x0225FB00
 	str r0, [ip]
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	mov r4, r0
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4]
 	bl TickSpriteAnimation1Frame
 	mov r0, r4

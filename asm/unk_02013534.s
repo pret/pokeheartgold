@@ -458,7 +458,7 @@ _02013868:
 	ldr r0, [r5]
 	add r1, r7, #0
 	ldr r0, [r0, r4]
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	ldr r0, [r5, #4]
 	add r6, r6, #1
 	add r4, #0xc

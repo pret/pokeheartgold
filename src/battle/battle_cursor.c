@@ -50,8 +50,8 @@ BattleCursor *BattleCursor_New(void *a0, void *a1, HeapID heapId, u32 character,
     MI_CpuFill8(cursor, 0, sizeof(BattleCursor));
 
     for (i = 0; i < 5; i++) {
-        cursor->unk0[i] = sub_0200D734(a0, a1, &unkStruct);
-        sub_0200DCE8(cursor->unk0[i], FALSE);
+        cursor->unk0[i] = SpriteRenderer_LoadResourcesAndCreateSprite(a0, a1, &unkStruct);
+        UnkImageStruct_SetSpriteVisibleFlag(cursor->unk0[i], FALSE);
     }
 
     cursor->task = CreateSysTask(BattleCursor_Update, cursor, 0x9C40);
@@ -82,7 +82,7 @@ void ov12_0226BA4C(BattleCursor *cursor, int x0, int y0, int x1, int y1, int x2,
     UnkImageStruct_SetSpriteAnimSeqNo(cursor->unk0[3], 3);
 
     for (i = 0; i < 4; i++) {
-        sub_0200DCE8(cursor->unk0[i], TRUE);
+        UnkImageStruct_SetSpriteVisibleFlag(cursor->unk0[i], TRUE);
     }
 }
 
@@ -101,31 +101,31 @@ void ov12_0226BB1C(BattleCursor *cursor, int left, int right, int top, int botto
 void ov12_0226BB40(BattleCursor *cursor, int x, int y, int a3, fx32 a4) {
     sub_0200DDF4(cursor->unk0[4], x, y, a4);
     UnkImageStruct_SetSpriteAnimSeqNo(cursor->unk0[4], a3);
-    sub_0200DCE8(cursor->unk0[4], TRUE);
+    UnkImageStruct_SetSpriteVisibleFlag(cursor->unk0[4], TRUE);
 }
 
 void BattleCursor_Disable(BattleCursor *cursor) {
     for (int i = 0; i < 5; i++) {
-        sub_0200DCE8(cursor->unk0[i], FALSE);
+        UnkImageStruct_SetSpriteVisibleFlag(cursor->unk0[i], FALSE);
     }
 }
 
 void ov12_0226BB84(BattleCursor *cursor) {
-    sub_0200DCE8(cursor->unk0[4], FALSE);
+    UnkImageStruct_SetSpriteVisibleFlag(cursor->unk0[4], FALSE);
 }
 
 static void BattleCursor_Update(SysTask *task, void *data) {
     BattleCursor *cursor = data;
     int i;
 
-    if (!sub_0200DCFC(cursor->unk0[0])) {
+    if (!UnkImageStruct_GetSpriteVisibleFlag(cursor->unk0[0])) {
         return;
     }
 
     for (i = 0; i < 4; i++) {
         UnkImageStruct_TickSpriteAnimation1Frame(cursor->unk0[i]);
     }
-    if (sub_0200DCFC(cursor->unk0[4]) == TRUE) {
+    if (UnkImageStruct_GetSpriteVisibleFlag(cursor->unk0[4]) == TRUE) {
         UnkImageStruct_TickSpriteAnimation1Frame(cursor->unk0[4]);
     }
 }

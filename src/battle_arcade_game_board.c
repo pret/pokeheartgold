@@ -1290,7 +1290,7 @@ static void ov84_0223F418(GAME_BOARD_SUB_3E8 *work) {
         Destroy2DGfxResObjMan(work->resourceMan[i]);
     }
 
-    sub_02024504(work->spriteList);
+    SpriteList_Delete(work->spriteList);
     OamManager_Free();
     sub_0202168C();
     sub_02022608();

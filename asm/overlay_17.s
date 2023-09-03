@@ -2881,7 +2881,7 @@ ov17_0220321C: ; 0x0220321C
 	ldr r0, [r4, r1]
 	add r1, #8
 	ldr r1, [r4, r1]
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	mov r1, #0x13
 	lsl r1, r1, #4
 	ldr r0, [r4, r1]
@@ -3238,7 +3238,7 @@ ov17_022034C8: ; 0x022034C8
 	add r1, #8
 	ldr r1, [r5, r1]
 	add r2, sp, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add sp, #0x34
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0

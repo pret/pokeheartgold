@@ -1278,7 +1278,7 @@ _021E62FA:
 	add r0, #0x98
 	ldr r0, [r0]
 	add r1, r7, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r0, r4, #0
 	add r0, #0x98
 	ldr r0, [r0]
@@ -1296,7 +1296,7 @@ _021E6320:
 	add r0, #0x98
 	ldr r0, [r0]
 	add r1, r6, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0xb
@@ -1317,7 +1317,7 @@ _021E6342:
 	add r0, #0x98
 	ldr r0, [r0]
 	add r1, r6, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r0, r5, #0
 	add r0, #0x98
 	ldr r0, [r0]
@@ -2506,7 +2506,7 @@ _021E6BE0:
 	ldrb r1, [r1, r5]
 	ldr r0, [r4]
 	add r1, r1, r2
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	b _021E6C38
 _021E6C34:
 	bl GF_AssertFail
@@ -2617,7 +2617,7 @@ ov100_021E6CF4: ; 0x021E6CF4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x10]
-	bl sub_02024504
+	bl SpriteList_Delete
 	mov r0, #0x15
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -3219,7 +3219,7 @@ _021E7150:
 	ldr r0, [r4, #0x10]
 	bne _021E7184
 	add r1, r5, #0
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	ldrb r0, [r4]
 	lsl r0, r0, #0x1d
 	lsr r0, r0, #0x1f
@@ -3227,17 +3227,17 @@ _021E7150:
 	bne _021E71AC
 	ldr r0, [r4, #0x14]
 	add r1, r5, #0
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	ldr r0, [r4, #0x18]
 	add r1, r5, #0
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	ldr r0, [r4, #0x1c]
 	add r1, r5, #0
-	bl sub_0200DCE0
+	bl thunk_Set2dSpriteVisibleFlag
 	b _021E71AC
 _021E7184:
 	add r1, r5, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldrb r0, [r4]
 	lsl r0, r0, #0x1d
 	lsr r0, r0, #0x1f
@@ -3245,13 +3245,13 @@ _021E7184:
 	bne _021E71AC
 	ldr r0, [r4, #0x14]
 	add r1, r5, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x18]
 	add r1, r5, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x1c]
 	add r1, r5, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 _021E71AC:
 	add r0, r6, #0
 	pop {r4, r5, r6, pc}

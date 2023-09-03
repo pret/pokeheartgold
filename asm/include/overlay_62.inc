@@ -31,14 +31,14 @@
 .public SpriteRenderer_LoadPlttResObjFromNarcId
 .public SpriteRenderer_LoadCellResObjFromNarcId
 .public SpriteRenderer_LoadAnimResObjFromNarcId
-.public sub_0200D734
-.public sub_0200D998
+.public SpriteRenderer_LoadResourcesAndCreateSprite
+.public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 .public sub_0200D9DC
 .public UnkImageStruct_TickSpriteAnimation1Frame
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public UnkImageStruct_SetSpriteAnimActiveFlag
 .public sub_0200DCA0
-.public sub_0200DCE8
+.public UnkImageStruct_SetSpriteVisibleFlag
 .public sub_0200DD54
 .public sub_0200DDB8
 .public sub_0200E0C0

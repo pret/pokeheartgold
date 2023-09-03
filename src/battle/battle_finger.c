@@ -50,8 +50,8 @@ BattleFinger *BattleFinger_New(void *a0, void *a1, HeapID heapId, u32 character,
     finger = AllocFromHeap(heapId, sizeof(BattleFinger));
     MI_CpuFill8(finger, 0, sizeof(BattleFinger));
 
-    finger->unk0 = sub_0200D734(a0, a1, &unkStruct);
-    sub_0200DCE8(finger->unk0, 0);
+    finger->unk0 = SpriteRenderer_LoadResourcesAndCreateSprite(a0, a1, &unkStruct);
+    UnkImageStruct_SetSpriteVisibleFlag(finger->unk0, 0);
 
     finger->unk14 = 0xC0000;
     finger->task = CreateSysTask(BattleFinger_Update, finger, 0x3e7);
@@ -72,7 +72,7 @@ void ov12_0226BCFC(BattleFinger *finger, int x, int y, fx32 a3) {
     finger->y = y;
     finger->unk14 = a3;
     sub_0200DDF4(finger->unk0, x, y, a3);
-    sub_0200DCE8(finger->unk0, TRUE);
+    UnkImageStruct_SetSpriteVisibleFlag(finger->unk0, TRUE);
 }
 
 void ov12_0226BD2C(BattleFinger *finger, int x, int y) {
@@ -80,7 +80,7 @@ void ov12_0226BD2C(BattleFinger *finger, int x, int y) {
 }
 
 void BattleFinger_Disable(BattleFinger *finger) {
-    sub_0200DCE8(finger->unk0, FALSE);
+    UnkImageStruct_SetSpriteVisibleFlag(finger->unk0, FALSE);
     ov12_0226BEB8(finger);
 }
 
@@ -106,7 +106,7 @@ static void BattleFinger_Update(SysTask *task, void *data) {
         }
     }
 
-    if (!sub_0200DCFC(finger->unk0)) {
+    if (!UnkImageStruct_GetSpriteVisibleFlag(finger->unk0)) {
         return;
     }
 

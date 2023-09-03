@@ -2019,7 +2019,7 @@ _021E692C:
 	ldr r0, [r5, r0]
 	ldr r1, [r5, r1]
 	add r2, r6, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	ldr r1, _021E698C ; =0x00000484
 	add r7, r7, #1
 	str r0, [r4, r1]
@@ -2034,12 +2034,12 @@ _021E692C:
 	add r0, #8
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #0x49
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 _021E6968:
 	mov r0, #0x10
 	mov r1, #1
@@ -2082,7 +2082,7 @@ _021E69AA:
 	ldr r0, [r0, r1]
 	ldr r1, [sp]
 	ldr r1, [r1, r2]
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	ldr r1, _021E69D4 ; =0x0000047C
 	ldr r0, [sp]
 	ldr r0, [r0, r1]
@@ -2188,7 +2188,7 @@ _021E6A58:
 	ldrb r1, [r4, r1]
 	lsl r1, r1, #0x1c
 	lsr r1, r1, #0x1c
-	bl sub_0200DD10
+	bl UnkImageStruct_SetSpritePalIndex
 	b _021E6AB8
 _021E6A7E:
 	add r0, r3, #4
@@ -2249,7 +2249,7 @@ _021E6AC2:
 	ldrb r1, [r4, r1]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x1c
-	bl sub_0200DD10
+	bl UnkImageStruct_SetSpritePalIndex
 	b _021E6B32
 _021E6AF8:
 	add r0, r3, #4

@@ -20,11 +20,11 @@
 .public sub_0200D68C
 .public SpriteRenderer_LoadCellResObjFromOpenNarc
 .public SpriteRenderer_LoadAnimResObjFromOpenNarc
-.public sub_0200D734
+.public SpriteRenderer_LoadResourcesAndCreateSprite
 .public sub_0200D934
 .public sub_0200D9DC
 .public TickSpriteAnimation1Frame
-.public sub_0200DCE8
+.public UnkImageStruct_SetSpriteVisibleFlag
 .public sub_0200DDF4
 .public sub_0200E2B0
 .public CreateSysTask

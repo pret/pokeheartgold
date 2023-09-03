@@ -2279,7 +2279,7 @@ _0200F594:
 	sub r0, #0xb
 	ldr r0, [r4, r0]
 	ldr r0, [r0]
-	bl sub_020249F8
+	bl Sprite_GetAnimCtrlCurrentFrame
 	cmp r0, #6
 	bne _0200F5A8
 	ldr r0, _0200F5C0 ; =0x0000016F

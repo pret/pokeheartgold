@@ -35,7 +35,7 @@
 .public MessagePrinter_Delete
 .public sub_0200D020
 .public thunk_OamManager_ApplyAndResetBuffers
-.public sub_0200DD08
+.public thunk_Sprite_SetPalIndex
 .public sub_0200DD88
 .public sub_0200DE00
 .public LoadUserFrameGfx1

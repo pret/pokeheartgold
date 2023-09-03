@@ -54,7 +54,7 @@
 .public SpriteRenderer_LoadCellResObjFromOpenNarc
 .public SpriteRenderer_LoadAnimResObjFromNarcId
 .public SpriteRenderer_LoadAnimResObjFromOpenNarc
-.public sub_0200D998
+.public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 .public sub_0200E2B0
 .public CreateSysTask
 .public DestroySysTask

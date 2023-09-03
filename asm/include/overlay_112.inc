@@ -83,9 +83,9 @@
 .public SpriteRenderer_LoadPlttResObjFromOpenNarc
 .public SpriteRenderer_LoadCellResObjFromOpenNarc
 .public SpriteRenderer_LoadAnimResObjFromOpenNarc
-.public sub_0200D734
-.public sub_0200D740
-.public sub_0200D998
+.public SpriteRenderer_LoadResourcesAndCreateSprite
+.public SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset
+.public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 .public sub_0200D9DC
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public UnkImageStruct_TryChangeSpriteAnimSeqNo
@@ -94,10 +94,10 @@
 .public sub_0200DCA0
 .public sub_0200DCAC
 .public sub_0200DCC0
-.public sub_0200DCE0
-.public sub_0200DCE8
-.public sub_0200DCFC
-.public sub_0200DD10
+.public thunk_Set2dSpriteVisibleFlag
+.public UnkImageStruct_SetSpriteVisibleFlag
+.public UnkImageStruct_GetSpriteVisibleFlag
+.public UnkImageStruct_SetSpritePalIndex
 .public sub_0200DD54
 .public sub_0200DD68
 .public sub_0200DDB8
@@ -177,7 +177,7 @@
 .public GX_DisableEngineBLayers
 .public GX_EngineBToggleLayers
 .public GX_SwapDisplay
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
 .public Sprite_Delete

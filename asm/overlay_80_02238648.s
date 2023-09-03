@@ -1627,7 +1627,7 @@ _0223945A:
 	blt _02239426
 	ldr r0, [r5, #0x34]
 	ldr r1, [r5, #0x38]
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	ldr r0, [r5, #0x34]
 	bl SpriteRenderer_Delete
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2077,7 +2077,7 @@ _02239782:
 	bl UnkImageStruct_GetSpriteCurrentAnimSeqNo
 	strb r0, [r6, #0x15]
 	ldr r0, [r4]
-	bl sub_0200DCD4
+	bl UnkImageStruct_GetSpriteAnimCtrlCurrentFrame
 	ldrh r2, [r5]
 	ldr r1, _02239818 ; =0xFFFFE000
 	and r1, r2
@@ -2099,7 +2099,7 @@ _02239782:
 	orr r0, r1
 	strh r0, [r5]
 	ldr r0, [r4]
-	bl sub_0200DCFC
+	bl UnkImageStruct_GetSpriteVisibleFlag
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	lsl r0, r0, #0x1f
@@ -2204,7 +2204,7 @@ _02239870:
 	ldr r0, [sp, #8]
 	lsl r1, r1, #0x11
 	lsr r1, r1, #0x1f
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldrh r2, [r4]
 	lsl r1, r6, #0x10
 	add r0, r7, #0

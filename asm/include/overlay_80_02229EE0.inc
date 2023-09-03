@@ -15,7 +15,7 @@
 .public Get2dSpriteCurrentAnimSeqNo
 .public Sprite_TickCellOrMulticellAnimation
 .public sub_020249D4
-.public sub_020249F8
+.public Sprite_GetAnimCtrlCurrentFrame
 .public GF_AssertFail
 .public String_Delete
 .public CopyStringToU16Array

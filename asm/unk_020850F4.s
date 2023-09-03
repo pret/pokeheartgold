@@ -297,7 +297,7 @@ _02085294:
 	ldr r0, [r4, r1]
 	add r1, r1, #4
 	ldr r1, [r4, r1]
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
