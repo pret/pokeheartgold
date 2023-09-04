@@ -11,8 +11,8 @@
 .public SpriteRenderer_CreateSprite
 .public thunk_Set2dSpriteVisibleFlag
 .public thunk_Sprite_SetPalIndex
-.public sub_0200DD88
-.public sub_0200DE00
+.public Sprite_SetPositionXY
+.public Sprite_GetPositionXY
 .public sub_0200E248
 .public sub_0200E27C
 .public FreeToHeap
@@ -25,8 +25,8 @@
 .public Get2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo
 .public Sprite_TickCellOrMulticellAnimation
-.public sub_020249D4
-.public sub_02024ADC
+.public Sprite_SetAnimCtrlCurrentFrame
+.public Sprite_SetDrawPriority
 .public sub_02024B1C
 .public GetMonBaseStat_HandleAlternateForm
 .public CalcBoxMonPokeathlonPerformance

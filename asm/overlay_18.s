@@ -22764,7 +22764,7 @@ ov18_021F118C: ; 0x021F118C
 	add r5, r0, r2
 	ldr r0, [r5, r4]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	ldr r0, [r5, r4]
 	add r1, r6, #0
 	bl UnkImageStruct_SetSpriteAnimSeqNo
@@ -22852,7 +22852,7 @@ ov18_021F121C: ; 0x021F121C
 	ldr r0, [r5, r7]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	add r2, sp, #0
 	mov r1, #2
 	ldrsh r1, [r2, r1]
@@ -22865,7 +22865,7 @@ ov18_021F121C: ; 0x021F121C
 	ldr r0, [r5, r7]
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	pop {r3, r4, r5, r6, r7, pc}
 _021F125A:
 	mov r2, #0x67
@@ -22878,7 +22878,7 @@ _021F125A:
 	add r1, #2
 	add r2, sp, #0
 	lsl r3, r3, #0x14
-	bl sub_0200DE94
+	bl UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 	add r2, sp, #0
 	mov r3, #2
 	ldrsh r1, [r2, r3]
@@ -22892,7 +22892,7 @@ _021F125A:
 	add r2, r2, r6
 	lsl r2, r2, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov18_021F121C
@@ -22910,7 +22910,7 @@ ov18_021F1294: ; 0x021F1294
 	ldr r0, [r1, r0]
 	add r1, r2, #0
 	add r2, r3, #0
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	pop {r4, pc}
 _021F12B0:
 	lsl r1, r1, #2
@@ -22922,7 +22922,7 @@ _021F12B0:
 	add r2, r3, #0
 	mov r3, #2
 	lsl r3, r3, #0x14
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	pop {r4, pc}
 	thumb_func_end ov18_021F1294
 
@@ -22939,7 +22939,7 @@ ov18_021F12C8: ; 0x021F12C8
 	ldr r0, [r1, r0]
 	add r1, r2, #0
 	add r2, r3, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	pop {r4, pc}
 _021F12E4:
 	lsl r1, r1, #2
@@ -22951,7 +22951,7 @@ _021F12E4:
 	add r2, r3, #0
 	mov r3, #2
 	lsl r3, r3, #0x14
-	bl sub_0200DE94
+	bl UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 	pop {r4, pc}
 	thumb_func_end ov18_021F12C8
 
@@ -23424,7 +23424,7 @@ _021F1656:
 	lsl r2, r3, #0x10
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
@@ -23468,7 +23468,7 @@ _021F16DC:
 	add r1, sp, #0x14
 	add r1, #2
 	add r2, sp, #0x14
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	mov r0, #0
 	ldrsh r0, [r4, r0]
 	cmp r0, #0xe0
@@ -23503,7 +23503,7 @@ _021F172C:
 	mov r1, #2
 	ldrsh r1, [r4, r1]
 	ldrsh r2, [r4, r2]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	add r0, r7, #1
 	lsl r0, r0, #0x10
 	lsr r7, r0, #0x10
@@ -23548,7 +23548,7 @@ _021F1778:
 	add r1, sp, #0x14
 	add r1, #2
 	add r2, sp, #0x14
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	mov r0, #0
 	ldrsh r1, [r4, r0]
 	sub r0, #0x10
@@ -23583,7 +23583,7 @@ _021F17C8:
 	mov r1, #2
 	ldrsh r1, [r4, r1]
 	ldrsh r2, [r4, r2]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	add r0, r7, #1
 	lsl r0, r0, #0x10
 	lsr r7, r0, #0x10
@@ -25273,7 +25273,7 @@ _021F25E2:
 	ldr r0, [r4, r0]
 	add r1, #2
 	add r2, sp, #0x14
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	mov r1, #5
 	sub r2, r1, r7
 	mov r1, #0x18
@@ -25287,7 +25287,7 @@ _021F25E2:
 	ldrsh r2, [r3, r2]
 	ldr r0, [r4, r0]
 	asr r1, r1, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	mov r0, #0x67
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -25849,7 +25849,7 @@ ov18_021F2AC0: ; 0x021F2AC0
 	ldr r0, [r1, r0]
 	mov r1, #0x90
 	mov r2, #0x80
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	pop {r3, pc}
 _021F2ADE:
 	lsl r1, r1, #2
@@ -25859,7 +25859,7 @@ _021F2ADE:
 	ldr r0, [r1, r0]
 	mov r1, #0x70
 	mov r2, #0x80
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	pop {r3, pc}
 	nop
 _021F2AF4: .word 0x00001858
@@ -25876,7 +25876,7 @@ ov18_021F2AF8: ; 0x021F2AF8
 	add r4, r2, #0
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	add r1, sp, #0
 	mov r0, #2
 	ldrsh r2, [r1, r0]
@@ -25916,7 +25916,7 @@ ov18_021F2B3C: ; 0x021F2B3C
 	ldr r0, [r5, r4]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	add r3, sp, #0
 	mov r1, #2
 	ldrsh r1, [r3, r1]
@@ -25926,7 +25926,7 @@ ov18_021F2B3C: ; 0x021F2B3C
 	lsl r1, r1, #0x10
 	ldr r0, [r5, r4]
 	asr r1, r1, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov18_021F2B3C
@@ -25944,13 +25944,13 @@ ov18_021F2B70: ; 0x021F2B70
 	ldr r0, [r5, r4]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	add r3, sp, #0
 	mov r2, #0
 	ldrsh r2, [r3, r2]
 	ldr r0, [r5, r4]
 	add r1, r6, #0
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov18_021F2B70
@@ -25998,7 +25998,7 @@ ov18_021F2BB0: ; 0x021F2BB0
 	ldr r0, [r5, r4]
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r0, [r5, r4]
 	mov r1, #1
 	bl UnkImageStruct_SetSpriteVisibleFlag
@@ -26145,7 +26145,7 @@ ov18_021F2CD0: ; 0x021F2CD0
 	add r1, #2
 	add r2, sp, #0
 	add r4, r3, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	add r0, r6, #0
 	add r1, r7, #0
 	bl ov18_021F2C98
@@ -26191,7 +26191,7 @@ ov18_021F2D24: ; 0x021F2D24
 	add r1, #2
 	add r2, sp, #8
 	add r6, r3, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov18_021F2CB4
@@ -26213,7 +26213,7 @@ _021F2D60:
 	lsl r2, r6, #0x10
 	ldr r0, [r7, r0]
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov18_021F2CB4
@@ -26310,7 +26310,7 @@ ov18_021F2E14: ; 0x021F2E14
 	add r1, #2
 	add r2, sp, #0
 	add r4, r3, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	add r1, sp, #0
 	mov r0, #0
 	ldrsh r0, [r1, r0]
@@ -26340,7 +26340,7 @@ ov18_021F2E4C: ; 0x021F2E4C
 	ldr r0, [r5, r4]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	add r3, sp, #0
 	mov r2, #0
 	ldrsh r2, [r3, r2]
@@ -26350,7 +26350,7 @@ ov18_021F2E4C: ; 0x021F2E4C
 	lsl r2, r2, #0x10
 	ldr r0, [r5, r4]
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov18_021F2E4C
@@ -26370,7 +26370,7 @@ ov18_021F2E80: ; 0x021F2E80
 	ldr r0, [r6, r7]
 	add r1, #2
 	add r2, sp, #4
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	ldr r1, _021F2EC4 ; =0x00001859
 	ldr r3, [sp]
 	ldrb r1, [r5, r1]
@@ -26384,7 +26384,7 @@ ov18_021F2E80: ; 0x021F2E80
 	lsl r2, r3, #0x10
 	ldr r0, [r6, r7]
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -26805,7 +26805,7 @@ _021F3252:
 	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r5, r6]
 	mov r1, #2
-	bl sub_0200DD54
+	bl UnkImageStruct_SetSpritePriority
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0x3a
@@ -27123,7 +27123,7 @@ ov18_021F34EC: ; 0x021F34EC
 	ldr r0, [r5, r0]
 	mov r1, #0xe0
 	mov r2, #0x48
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	mov r4, #0x1d
 	mov r6, #0
 _021F350C:
@@ -27141,7 +27141,7 @@ _021F351E:
 	ldr r0, [r5, r0]
 	mov r1, #0x98
 	mov r2, #0x14
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	mov r4, #0x1d
 	mov r6, #1
 _021F3530:
@@ -27361,7 +27361,7 @@ ov18_021F36D4: ; 0x021F36D4
 	add r1, #2
 	add r2, sp, #4
 	str r3, [sp]
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	cmp r4, #0
 	bne _021F36FE
 	add r1, sp, #4
@@ -27385,21 +27385,21 @@ _021F370C:
 	ldr r0, [r7, r6]
 	add r1, #2
 	add r2, sp, #4
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	lsl r1, r4, #0x10
 	add r3, sp, #4
 	mov r2, #0
 	ldrsh r2, [r3, r2]
 	ldr r0, [r7, r6]
 	asr r1, r1, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r0, _021F37C8 ; =0x00000674
 	add r1, sp, #4
 	add r7, r5, r0
 	ldr r0, [r7, r6]
 	add r1, #2
 	add r2, sp, #4
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	add r1, r4, #0
 	sub r1, #0x14
 	lsl r1, r1, #0x10
@@ -27408,7 +27408,7 @@ _021F370C:
 	ldrsh r2, [r3, r2]
 	ldr r0, [r7, r6]
 	asr r1, r1, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r0, _021F37CC ; =0x00000678
 	add r1, r5, r6
 	ldr r0, [r1, r0]
@@ -27419,7 +27419,7 @@ _021F370C:
 	mov r2, #0
 	ldrsh r2, [r3, r2]
 	asr r1, r1, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r0, _021F37D0 ; =0x0000067C
 	add r1, r5, r6
 	ldr r0, [r1, r0]
@@ -27429,7 +27429,7 @@ _021F370C:
 	mov r2, #0
 	ldrsh r2, [r3, r2]
 	asr r1, r1, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	mov r0, #0x1a
 	add r1, r5, r6
 	lsl r0, r0, #6
@@ -27441,7 +27441,7 @@ _021F370C:
 	mov r2, #0
 	ldrsh r2, [r3, r2]
 	asr r1, r1, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r0, [sp]
 	cmp r0, #1
 	bne _021F37C4
@@ -27451,7 +27451,7 @@ _021F370C:
 	ldr r0, [r5, r0]
 	add r1, #2
 	add r2, sp, #4
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	mov r0, #0x67
 	lsl r0, r0, #4
 	lsl r1, r4, #0x10
@@ -27460,7 +27460,7 @@ _021F370C:
 	ldrsh r2, [r3, r2]
 	ldr r0, [r5, r0]
 	asr r1, r1, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 _021F37C4:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -27485,7 +27485,7 @@ ov18_021F37D4: ; 0x021F37D4
 	add r1, #2
 	add r2, sp, #4
 	str r3, [sp]
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	cmp r4, #0
 	bne _021F37FE
 	add r1, sp, #4
@@ -27509,21 +27509,21 @@ _021F380C:
 	ldr r0, [r7, r6]
 	add r1, #2
 	add r2, sp, #4
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	lsl r1, r4, #0x10
 	add r3, sp, #4
 	mov r2, #0
 	ldrsh r2, [r3, r2]
 	ldr r0, [r7, r6]
 	asr r1, r1, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r0, _021F38E0 ; =0x00000674
 	add r1, sp, #4
 	add r7, r5, r0
 	ldr r0, [r7, r6]
 	add r1, #2
 	add r2, sp, #4
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	add r1, r4, #0
 	sub r1, #0x14
 	lsl r1, r1, #0x10
@@ -27532,7 +27532,7 @@ _021F380C:
 	ldrsh r2, [r3, r2]
 	ldr r0, [r7, r6]
 	asr r1, r1, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r0, _021F38E4 ; =0x00000678
 	add r1, r5, r6
 	ldr r0, [r1, r0]
@@ -27543,7 +27543,7 @@ _021F380C:
 	mov r2, #0
 	ldrsh r2, [r3, r2]
 	asr r1, r1, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r0, _021F38E8 ; =0x0000067C
 	add r1, r5, r6
 	ldr r0, [r1, r0]
@@ -27553,7 +27553,7 @@ _021F380C:
 	mov r2, #0
 	ldrsh r2, [r3, r2]
 	asr r1, r1, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	mov r0, #0x1a
 	add r1, r5, r6
 	lsl r0, r0, #6
@@ -27564,7 +27564,7 @@ _021F380C:
 	mov r2, #0
 	ldrsh r2, [r3, r2]
 	asr r1, r1, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r0, _021F38EC ; =0x00000684
 	add r1, r5, r6
 	ldr r0, [r1, r0]
@@ -27575,7 +27575,7 @@ _021F380C:
 	mov r2, #0
 	ldrsh r2, [r3, r2]
 	asr r1, r1, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r0, [sp]
 	cmp r0, #1
 	bne _021F38DA
@@ -27585,7 +27585,7 @@ _021F380C:
 	ldr r0, [r5, r0]
 	add r1, #2
 	add r2, sp, #4
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	mov r0, #0x67
 	lsl r0, r0, #4
 	lsl r1, r4, #0x10
@@ -27594,7 +27594,7 @@ _021F380C:
 	ldrsh r2, [r3, r2]
 	ldr r0, [r5, r0]
 	asr r1, r1, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 _021F38DA:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -27829,7 +27829,7 @@ ov18_021F3AB0: ; 0x021F3AB0
 	add r1, sp, #0
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	add r1, sp, #0
 	mov r0, #2
 	ldrsh r0, [r1, r0]
@@ -27865,7 +27865,7 @@ ov18_021F3AD8: ; 0x021F3AD8
 	ldr r0, [r4, r0]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	ldr r0, _021F3B28 ; =0x000006B4
 	add r3, sp, #0
 	mov r1, #2
@@ -27878,7 +27878,7 @@ ov18_021F3AD8: ; 0x021F3AD8
 	ldrsh r2, [r3, r2]
 	ldr r0, [r4, r0]
 	asr r1, r1, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 _021F3B20:
 	add sp, #4
 	pop {r3, r4, pc}
@@ -27897,7 +27897,7 @@ ov18_021F3B2C: ; 0x021F3B2C
 	ldr r0, [r5, r0]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	ldr r0, _021F3B5C ; =0x000006B4
 	add r3, sp, #0
 	mov r1, #2
@@ -27908,7 +27908,7 @@ ov18_021F3B2C: ; 0x021F3B2C
 	lsl r1, r1, #0x10
 	ldr r0, [r5, r0]
 	asr r1, r1, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	pop {r3, r4, r5, pc}
 	nop
 _021F3B5C: .word 0x000006B4
@@ -27988,7 +27988,7 @@ ov18_021F3BD4: ; 0x021F3BD4
 	ldr r0, [r5, r0]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	mov r0, #0x6e
 	lsl r0, r0, #4
 	add r3, sp, #0
@@ -28000,13 +28000,13 @@ ov18_021F3BD4: ; 0x021F3BD4
 	lsl r2, r2, #0x10
 	ldr r0, [r5, r0]
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r0, _021F3C2C ; =0x0000071C
 	add r1, sp, #0
 	ldr r0, [r5, r0]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	ldr r0, _021F3C2C ; =0x0000071C
 	add r3, sp, #0
 	mov r2, #0
@@ -28017,7 +28017,7 @@ ov18_021F3BD4: ; 0x021F3BD4
 	lsl r2, r2, #0x10
 	ldr r0, [r5, r0]
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021F3C2C: .word 0x0000071C
@@ -28032,7 +28032,7 @@ ov18_021F3C30: ; 0x021F3C30
 	add r2, r1, #0
 	ldr r0, [r4, r0]
 	sub r2, #0x90
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	add r0, r4, #0
 	mov r1, #0x19
 	mov r2, #1
@@ -28052,7 +28052,7 @@ ov18_021F3C54: ; 0x021F3C54
 	ldr r0, [r5, r0]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	ldr r0, _021F3C84 ; =0x000006D4
 	add r3, sp, #0
 	mov r2, #0
@@ -28063,7 +28063,7 @@ ov18_021F3C54: ; 0x021F3C54
 	lsl r2, r2, #0x10
 	ldr r0, [r5, r0]
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	pop {r3, r4, r5, pc}
 	nop
 _021F3C84: .word 0x000006D4
@@ -28077,7 +28077,7 @@ ov18_021F3C88: ; 0x021F3C88
 	mov r1, #0x30
 	ldr r0, [r4, r0]
 	mov r2, #0x18
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	add r0, r4, #0
 	mov r1, #0x19
 	mov r2, #1
@@ -32478,7 +32478,7 @@ _021F5F4A:
 	mov r1, #0x40
 	mov r2, #0x78
 	lsl r3, r1, #0xf
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	mov r0, #0
 	str r0, [sp]
 	str r4, [sp, #4]
@@ -32510,7 +32510,7 @@ _021F5F4A:
 	mov r1, #0xc0
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x14
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	add r0, r5, #0
 	add r1, r6, #0
 	mov r2, #1
@@ -32870,7 +32870,7 @@ ov18_021F6258: ; 0x021F6258
 	ldr r0, [r6, r0]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	ldr r2, _021F62B0 ; =_021FA310
 	add r0, r6, #0
 	mov r1, #5
@@ -32918,7 +32918,7 @@ ov18_021F62B4: ; 0x021F62B4
 	ldr r0, [r6, r0]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	ldr r2, _021F630C ; =_021FA304
 	add r0, r6, #0
 	mov r1, #5
@@ -32965,7 +32965,7 @@ ov18_021F6310: ; 0x021F6310
 	ldr r0, [r5, r0]
 	add r1, #2
 	add r2, sp, #4
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	mov r0, #0x56
 	str r0, [sp]
 	ldr r2, _021F63D0 ; =_021FA310
@@ -32995,7 +32995,7 @@ _021F6352:
 	lsl r2, r6, #0x10
 	ldr r0, [r5, r0]
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	mov r0, #0x56
 	str r0, [sp]
 	ldr r2, _021F63D0 ; =_021FA310
@@ -33065,7 +33065,7 @@ ov18_021F63DC: ; 0x021F63DC
 	ldr r0, [r5, r0]
 	add r1, #2
 	add r2, sp, #4
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	mov r0, #0x56
 	str r0, [sp]
 	ldr r2, _021F649C ; =_021FA304
@@ -33095,7 +33095,7 @@ _021F641E:
 	lsl r2, r6, #0x10
 	ldr r0, [r5, r0]
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	mov r0, #0x56
 	str r0, [sp]
 	ldr r2, _021F649C ; =_021FA304
@@ -33247,7 +33247,7 @@ ov18_021F6540: ; 0x021F6540
 	add r1, #2
 	add r2, sp, #0
 	add r4, r3, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	add r1, sp, #0
 	mov r0, #0
 	ldrsh r0, [r1, r0]
@@ -33277,7 +33277,7 @@ ov18_021F6578: ; 0x021F6578
 	ldr r0, [r5, r4]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	add r3, sp, #0
 	mov r2, #0
 	ldrsh r2, [r3, r2]
@@ -33287,7 +33287,7 @@ ov18_021F6578: ; 0x021F6578
 	lsl r2, r2, #0x10
 	ldr r0, [r5, r4]
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov18_021F6578
@@ -33302,7 +33302,7 @@ ov18_021F65AC: ; 0x021F65AC
 	ldr r0, [r4, r0]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	ldr r1, _021F65E8 ; =0x000018C5
 	add r0, r4, #0
 	ldrsb r1, [r4, r1]
@@ -33315,7 +33315,7 @@ ov18_021F65AC: ; 0x021F65AC
 	lsl r2, r3, #0x10
 	ldr r0, [r4, r0]
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	add sp, #4
 	pop {r3, r4, pc}
 	nop
@@ -33333,7 +33333,7 @@ ov18_021F65EC: ; 0x021F65EC
 	ldr r0, [r4, r0]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	ldr r1, _021F6628 ; =0x000018CA
 	add r0, r4, #0
 	ldrsb r1, [r4, r1]
@@ -33346,7 +33346,7 @@ ov18_021F65EC: ; 0x021F65EC
 	lsl r2, r3, #0x10
 	ldr r0, [r4, r0]
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	add sp, #4
 	pop {r3, r4, pc}
 	nop
@@ -34404,7 +34404,7 @@ ov18_021F6E58: ; 0x021F6E58
 	ldrb r1, [r2, #1]
 	ldrb r2, [r2]
 	ldr r0, [r5, r0]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r2, _021F6E94 ; =_021FBD1C
 	add r0, r5, #0
 	ldrb r2, [r2, r4]
@@ -34516,7 +34516,7 @@ ov18_021F6F38: ; 0x021F6F38
 	ldrb r1, [r2, #1]
 	ldrb r2, [r2]
 	ldr r0, [r5, r0]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r2, _021F6F74 ; =_021FB628
 	add r0, r5, #0
 	ldrb r2, [r2, r4]
@@ -34628,7 +34628,7 @@ ov18_021F7018: ; 0x021F7018
 	ldrb r1, [r2, #1]
 	ldrb r2, [r2]
 	ldr r0, [r5, r0]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	cmp r4, #0x1b
 	blt _021F7050
 	add r0, r5, #0
@@ -34825,7 +34825,7 @@ ov18_021F719C: ; 0x021F719C
 	ldrb r1, [r2, #1]
 	ldrb r2, [r2]
 	ldr r0, [r5, r0]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r2, _021F71D8 ; =_021FBD3C
 	add r0, r5, #0
 	ldrb r2, [r2, r4]
@@ -35180,7 +35180,7 @@ _021F7482:
 	ldrb r1, [r2, #1]
 	ldrb r2, [r2]
 	ldr r0, [r5, r0]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r2, _021F74AC ; =_021FB618
 	add r0, r5, #0
 	ldrb r2, [r2, r4]
@@ -35373,7 +35373,7 @@ _021F7608:
 	ldrb r1, [r2, #1]
 	ldrb r2, [r2]
 	ldr r0, [r5, r0]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r2, _021F7630 ; =_021FB61C
 	add r0, r5, #0
 	ldrb r2, [r2, r4]
@@ -35495,7 +35495,7 @@ ov18_021F76E0: ; 0x021F76E0
 	ldrb r1, [r2, #1]
 	ldrb r2, [r2]
 	ldr r0, [r5, r0]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r2, _021F771C ; =_021FB620
 	add r0, r5, #0
 	ldrb r2, [r2, r4]
@@ -35607,7 +35607,7 @@ ov18_021F77C0: ; 0x021F77C0
 	ldrb r1, [r2, #1]
 	ldrb r2, [r2]
 	ldr r0, [r5, r0]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r2, _021F77FC ; =_021FBD28
 	add r0, r5, #0
 	ldrb r2, [r2, r4]

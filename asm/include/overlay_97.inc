@@ -69,7 +69,7 @@
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public Set2dSpriteAnimSeqNo
-.public sub_02024A04
+.public Sprite_SetPriority
 .public GF_AssertFail
 .public String_New
 .public String_Delete

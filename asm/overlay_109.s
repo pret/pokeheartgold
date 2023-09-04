@@ -2885,7 +2885,7 @@ _021E6EEE:
 	add r0, #0xa8
 	ldr r0, [r0]
 	mov r1, #2
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	add r6, #0xa8
 	ldr r0, [r6]
 	mov r1, #1
@@ -3452,7 +3452,7 @@ ov109_021E7388: ; 0x021E7388
 	add r0, r4, #0
 	add r0, #0xa8
 	ldr r0, [r0]
-	bl sub_02024964
+	bl Sprite_ResetAnimCtrlState
 _021E73B2:
 	ldr r1, [r4, #0x30]
 	mov r0, #4
@@ -3567,7 +3567,7 @@ ov109_021E7474: ; 0x021E7474
 	mov r1, #1
 	mov r7, #0xc0
 	mov r4, #0xa0
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	b _021E74C4
 _021E749C:
 	mov r0, #0x30
@@ -3588,13 +3588,13 @@ _021E749C:
 	add r0, #0x98
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 _021E74C4:
 	add r5, #0x98
 	ldr r0, [r5]
 	add r1, r7, #0
 	add r2, r4, #0
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov109_021E7474
@@ -3633,7 +3633,7 @@ _021E74EE:
 	ldr r0, [r0]
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	add r5, #0x9c
 	ldr r0, [r5]
 	add r1, r4, #0
@@ -3699,7 +3699,7 @@ ov109_021E7584: ; 0x021E7584
 	add r5, #0x98
 	lsl r4, r6, #2
 	ldr r0, [r5, r4]
-	bl sub_02024964
+	bl Sprite_ResetAnimCtrlState
 	ldr r0, [r5, r4]
 	mov r1, #1
 	bl Set2dSpriteAnimActiveFlag

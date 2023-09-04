@@ -57,12 +57,12 @@
 .public sub_0200D9DC
 .public thunk_Set2dSpriteAnimActiveFlag
 .public UnkImageStruct_SetSpriteAnimActiveFlag
-.public sub_0200DCAC
-.public sub_0200DCC0
+.public UnkImageStruct_ResetSpriteAnimCtrlState
+.public UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 .public thunk_Set2dSpriteVisibleFlag
 .public UnkImageStruct_SetSpriteVisibleFlag
-.public sub_0200DD88
-.public sub_0200DDB8
+.public Sprite_SetPositionXY
+.public UnkImageStruct_SetSpritePositionXY
 .public sub_0200FBDC
 .public sub_0200FBF4
 .public GF_RTC_CopyDateTime
@@ -100,7 +100,7 @@
 .public sub_0202457C
 .public CreateSprite
 .public Set2dSpriteAnimSeqNo
-.public sub_02024964
+.public Sprite_ResetAnimCtrlState
 .public Sprite_SetPalIndex
 .public sub_02025224
 .public GF_AssertFail

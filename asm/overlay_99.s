@@ -803,7 +803,7 @@ _021E5F46:
 	add r0, r5, r0
 	ldr r0, [r0, #0x18]
 	mov r2, #0
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -860,7 +860,7 @@ _021E5FAC:
 	ldr r0, [r0, #0x18]
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -1778,7 +1778,7 @@ _021E6700:
 	ldrsh r1, [r1, r2]
 	ldrsh r2, [r3, r2]
 	ldr r0, [r5, #0x18]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	mov r0, #0
 	ldrsb r0, [r4, r0]
 	cmp r0, #5
@@ -3731,7 +3731,7 @@ _021E75F4:
 	ldr r0, _021E76D4 ; =0x00000458
 	add r1, #2
 	ldr r0, [r4, r0]
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	ldr r0, _021E76D4 ; =0x00000458
 	add r2, sp, #4
 	mov r1, #2
@@ -3744,7 +3744,7 @@ _021E75F4:
 	ldrsh r2, [r3, r2]
 	ldr r0, [r4, r0]
 	asr r1, r1, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #0x1e
@@ -3779,7 +3779,7 @@ _021E766A:
 	add r1, r7, #0
 	ldr r0, [r4, r0]
 	mov r2, #0
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #0x1e
@@ -4530,7 +4530,7 @@ ov99_021E7C58: ; 0x021E7C58
 	ldrb r1, [r2, #1]
 	ldrb r2, [r2]
 	ldr r0, [r5, r0]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	mov r1, #0xfd
 	lsl r1, r1, #2
 	ldr r2, [r5, r1]
@@ -7324,7 +7324,7 @@ _021E923A:
 	ldr r0, [r5, #0x18]
 	mov r1, #0xe0
 	mov r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r0, [r5, #0x18]
 	mov r1, #0xc
 	bl UnkImageStruct_SetSpriteAnimSeqNo
@@ -7335,7 +7335,7 @@ _021E9266:
 	ldr r0, [r5, #0x18]
 	mov r1, #0xe0
 	mov r2, #0xb0
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r0, [r5, #0x18]
 	mov r1, #0xc
 	bl UnkImageStruct_SetSpriteAnimSeqNo
@@ -7364,7 +7364,7 @@ _021E9292:
 	ldr r0, [r5, #0x18]
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r0, [r5, #0x18]
 	bl UnkImageStruct_GetSpriteCurrentAnimSeqNo
 	cmp r0, #0xb

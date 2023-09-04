@@ -96,7 +96,7 @@
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public Set2dSpriteAnimSeqNo
-.public sub_02024A04
+.public Sprite_SetPriority
 .public Sprite_SetPalIndex
 .public sub_02025204
 .public sub_02025224

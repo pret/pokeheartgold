@@ -47,10 +47,10 @@
 .public SpriteRenderer_LoadResourcesAndCreateSprite
 .public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 .public sub_0200D9DC
-.public sub_0200DD88
-.public sub_0200DE00
-.public sub_0200DEA0
-.public sub_0200DED0
+.public Sprite_SetPositionXY
+.public Sprite_GetPositionXY
+.public Sprite_AddPositionXY
+.public UnkImageStruct_AddSpritePositionXY
 .public sub_0200E2B0
 .public sub_0200E2B4
 .public sub_0200E2B8
@@ -111,8 +111,8 @@
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public Set2dSpriteAnimSeqNo
-.public sub_02024964
-.public sub_020249D4
+.public Sprite_ResetAnimCtrlState
+.public Sprite_SetAnimCtrlCurrentFrame
 .public sub_02025320
 .public System_GetTouchNew
 .public String_New

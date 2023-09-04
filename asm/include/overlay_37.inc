@@ -91,12 +91,12 @@
 .public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
-.public sub_020247D4
+.public Sprite_SetMatrix
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public Set2dSpriteAnimSeqNo
-.public sub_02024A04
-.public sub_02024ADC
+.public Sprite_SetPriority
+.public Sprite_SetDrawPriority
 .public sub_02025204
 .public sub_02025224
 .public GF_AssertFail

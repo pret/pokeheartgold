@@ -56,7 +56,7 @@
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public sub_0200DCA0
 .public UnkImageStruct_SetSpriteVisibleFlag
-.public sub_0200DDB8
+.public UnkImageStruct_SetSpritePositionXY
 .public sub_0200E0B8
 .public sub_0200E0F4
 .public sub_0200E188

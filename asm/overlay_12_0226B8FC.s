@@ -182,7 +182,7 @@ ov12_0226BA4C: ; 0x0226BA4C
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	add r3, r4, #0
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r2, [sp, #0x10]
 	lsl r1, r6, #0x10
 	lsl r2, r2, #0x10
@@ -190,7 +190,7 @@ ov12_0226BA4C: ; 0x0226BA4C
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	add r3, r4, #0
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r1, [sp, #0x14]
 	ldr r2, [sp, #0x18]
 	lsl r1, r1, #0x10
@@ -199,7 +199,7 @@ ov12_0226BA4C: ; 0x0226BA4C
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	add r3, r4, #0
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r1, [sp, #0x1c]
 	ldr r2, [sp, #0x20]
 	lsl r1, r1, #0x10
@@ -208,7 +208,7 @@ ov12_0226BA4C: ; 0x0226BA4C
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	add r3, r4, #0
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [r5]
 	mov r1, #0
 	bl UnkImageStruct_SetSpriteAnimSeqNo
@@ -308,7 +308,7 @@ ov12_0226BB40: ; 0x0226BB40
 	ldr r3, [sp, #0x10]
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
 	bl UnkImageStruct_SetSpriteAnimSeqNo

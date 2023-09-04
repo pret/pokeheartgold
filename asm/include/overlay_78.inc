@@ -40,7 +40,7 @@
 .public UnkImageStruct_SetSpriteAnimActiveFlag
 .public thunk_Set2dSpriteVisibleFlag
 .public UnkImageStruct_SetSpriteVisibleFlag
-.public sub_0200DDF4
+.public UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_0200FBF4
@@ -76,7 +76,7 @@
 .public GX_BothDispOn
 .public sub_02024B1C
 .public sub_02024B34
-.public sub_02024B60
+.public Sprite_GetVramType
 .public GF_AssertFail
 .public String_New
 .public String_Delete

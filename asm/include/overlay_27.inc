@@ -38,7 +38,7 @@
 .public MessageFormat_Delete
 .public BufferPlayersName
 .public BufferIntegerAsString
-.public sub_0200DDC4
+.public Sprite_SetPositionXY_CustomScreenYOffset
 .public IsPaletteFadeFinished
 .public sub_020183F0
 .public CreateHeap
@@ -69,7 +69,7 @@
 .public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
-.public sub_020247D4
+.public Sprite_SetMatrix
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public sub_0202487C
@@ -77,7 +77,7 @@
 .public Set2dSpriteAnimSeqNo
 .public TryChange2dSpriteAnimSeqNo
 .public Get2dSpriteCurrentAnimSeqNo
-.public sub_02024A04
+.public Sprite_SetPriority
 .public sub_02024AA8
 .public sub_02024B68
 .public sub_02024B78

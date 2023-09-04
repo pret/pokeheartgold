@@ -1093,7 +1093,7 @@ _0225DDE8:
 	str r0, [sp, #8]
 	add r0, r4, #0
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {r3, r4, pc}
 	thumb_func_end ov34_0225DDB8
@@ -2234,7 +2234,7 @@ _0225E662:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 _0225E688:
 	add r6, r6, #1
 	add r5, r5, #4

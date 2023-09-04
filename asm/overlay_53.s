@@ -4869,7 +4869,7 @@ _021E801E:
 	add r0, #0xe4
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	add r0, r5, #0
 	add r0, #0xec
 	ldr r0, [r0]
@@ -5289,7 +5289,7 @@ _021E83BA:
 	ldrsh r1, [r1, r3]
 	ldrsh r2, [r2, r3]
 	ldr r0, [r5, #0x10]
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E83CC: .word ov53_021E8874

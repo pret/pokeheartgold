@@ -37,7 +37,7 @@
 .public SpriteRenderer_Delete
 .public sub_0200D2A4
 .public SpriteRenderer_CreateSprite
-.public sub_0200DD88
+.public Sprite_SetPositionXY
 .public CreateSysTask
 .public DestroySysTask
 .public LoadUserFrameGfx2
@@ -101,9 +101,9 @@
 .public Set2dSpriteAnimActiveFlag
 .public sub_02024868
 .public Set2dSpriteAnimSeqNo
-.public sub_02024964
-.public sub_020249D4
-.public sub_02024A04
+.public Sprite_ResetAnimCtrlState
+.public Sprite_SetAnimCtrlCurrentFrame
+.public Sprite_SetPriority
 .public sub_02024B68
 .public sub_02025224
 .public String_New

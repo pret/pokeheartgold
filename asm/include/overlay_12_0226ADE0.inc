@@ -15,8 +15,8 @@
 .public sub_0200D9DC
 .public TickSpriteAnimation1Frame
 .public thunk_Set2dSpriteVisibleFlag
-.public sub_0200DDB8
-.public sub_0200DE44
+.public UnkImageStruct_SetSpritePositionXY
+.public UnkImageStruct_GetSpritePositionXY
 .public sub_0200E0FC
 .public sub_0200E110
 .public CreateSysTask
@@ -24,7 +24,7 @@
 .public AllocFromHeap
 .public FreeToHeap
 .public Set2dSpriteAnimSeqNo
-.public sub_020249D4
+.public Sprite_SetAnimCtrlCurrentFrame
 .public GF_AssertFail
 .public G2x_SetBlendAlpha_
 .public MI_CpuFill8

@@ -627,7 +627,7 @@ ov80_0222A3D4: ; 0x0222A3D4
 	beq _0222A3FC
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	add r0, r5, #0
 	add r1, r4, #0
 	bl Set2dSpriteAnimSeqNo
@@ -668,7 +668,7 @@ _0222A428:
 _0222A42E:
 	add r0, r5, #0
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0

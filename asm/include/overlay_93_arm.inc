@@ -17,7 +17,7 @@
 .public TickSpriteAnimation1Frame
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public UnkImageStruct_SetSpriteVisibleFlag
-.public sub_0200DDF4
+.public UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 .public GF_AssertFail
 .public NNS_G3dGeBufferOP_N
 .public FX_Atan2Idx

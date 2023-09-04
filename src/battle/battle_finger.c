@@ -71,7 +71,7 @@ void ov12_0226BCFC(BattleFinger *finger, int x, int y, fx32 a3) {
     finger->x = x;
     finger->y = y;
     finger->unk14 = a3;
-    sub_0200DDF4(finger->unk0, x, y, a3);
+    UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset(finger->unk0, x, y, a3);
     UnkImageStruct_SetSpriteVisibleFlag(finger->unk0, TRUE);
 }
 
@@ -123,7 +123,7 @@ static void BattleFinger_Update(SysTask *task, void *data) {
 
         if (!finger->touchAnimationFlag) {
             yOffset = FX_Mul(GF_SinDegNoWrap(finger->angle / 100), 14 << FX32_SHIFT) / FX32_ONE;
-            sub_0200DDF4(finger->unk0, finger->x, finger->y - yOffset, finger->unk14);
+            UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset(finger->unk0, finger->x, finger->y - yOffset, finger->unk14);
         }
     }
 
@@ -137,14 +137,14 @@ static void BattleFinger_Update(SysTask *task, void *data) {
             }
             break;
         case 1:
-            sub_0200DDF4(finger->unk0, finger->x, finger->y + 8, finger->unk14);
+            UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset(finger->unk0, finger->x, finger->y + 8, finger->unk14);
             finger->touchOccurrence = TRUE;
             finger->touchAnimationState++;
             break;
         case 2:
             finger->touchAnimationDelay++;
             if (finger->touchAnimationDelay > 2) {
-                sub_0200DDF4(finger->unk0, finger->x, finger->y + 2, finger->unk14);
+                UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset(finger->unk0, finger->x, finger->y + 2, finger->unk14);
                 finger->touchAnimationDelay = 0;
                 finger->touchAnimationState++;
             }

@@ -1984,7 +1984,7 @@ _0225E470:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	add r1, r7, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x19
 	mov r1, #0x87
 	lsl r0, r0, #4
@@ -2021,7 +2021,7 @@ _0225E4BC:
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
 	add r1, sp, #4
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x19
 	mov r1, #0x87
 	lsl r0, r0, #4

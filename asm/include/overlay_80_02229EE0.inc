@@ -10,11 +10,11 @@
 .public BufferPlayersName
 .public FreeToHeap
 .public LCRandom
-.public sub_020247D4
+.public Sprite_SetMatrix
 .public Set2dSpriteAnimSeqNo
 .public Get2dSpriteCurrentAnimSeqNo
 .public Sprite_TickCellOrMulticellAnimation
-.public sub_020249D4
+.public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_GetAnimCtrlCurrentFrame
 .public GF_AssertFail
 .public String_Delete

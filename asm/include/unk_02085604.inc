@@ -5,7 +5,7 @@
 .public sub_0200D020
 .public UnkImageStruct_TickSpriteAnimation1Frame
 .public UnkImageStruct_SetSpriteAnimSeqNo
-.public sub_0200DED0
+.public UnkImageStruct_AddSpritePositionXY
 .public sub_0200E024
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished

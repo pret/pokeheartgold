@@ -754,7 +754,7 @@ _02266702:
 	asr r1, r1, #0x10
 	mov r2, #0xd
 	lsl r3, r3, #0x10
-	bl sub_0200DDC4
+	bl Sprite_SetPositionXY_CustomScreenYOffset
 	ldr r0, _022667D0 ; =0x000005D8
 	mov r1, #1
 	ldr r0, [r4, r0]
@@ -774,7 +774,7 @@ _02266702:
 	asr r1, r1, #0x10
 	mov r2, #9
 	lsl r3, r3, #0x10
-	bl sub_0200DDC4
+	bl Sprite_SetPositionXY_CustomScreenYOffset
 	ldr r0, [sp, #0x1c]
 	add r4, r4, #4
 	add r0, r0, #1
@@ -1030,7 +1030,7 @@ _0226694A:
 	asr r1, r1, #0x10
 	mov r2, #0xd
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldrb r0, [r4, #6]
 	add r0, r0, #1
 	strb r0, [r4, #6]
@@ -1058,7 +1058,7 @@ _022669A0:
 	asr r1, r1, #0x10
 	mov r2, #0xd
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	mov r0, #0
 	strh r0, [r4]
 	ldrb r0, [r4, #8]
@@ -1105,7 +1105,7 @@ _022669E2:
 	asr r1, r1, #0x10
 	mov r2, #0xd
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldrb r0, [r4, #6]
 	add r0, r0, #1
 	strb r0, [r4, #6]
@@ -2087,7 +2087,7 @@ _0226719A:
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	lsl r3, r3, #0xc
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [r5]
 	bl BattleSystem_GetBattleType
 	mov r1, #1
@@ -4210,7 +4210,7 @@ _02268356:
 	mov r3, #0x11
 	lsl r3, r3, #0x10
 	add r6, r0, #0
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [sp, #0xc]
 	bl Pokemon_GetIconPalette
 	add r1, r0, #0
@@ -4352,7 +4352,7 @@ _02268488:
 	mov r3, #0x11
 	lsl r3, r3, #0x10
 	add r4, r0, #0
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [sp, #0xc]
 	bl Pokemon_GetIconPalette
 	add r1, r0, #0
@@ -5220,7 +5220,7 @@ _02268B20:
 	ldrsh r1, [r6, r1]
 	ldrsh r2, [r6, r2]
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	lsl r0, r4, #2
 	add r1, r5, r0
 	ldr r0, _02268BAC ; =0x00000608
@@ -5816,7 +5816,7 @@ _02268F76:
 	beq _02268FDC
 	mov r1, #0
 	sub r2, r1, #2
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 _02268FDC:
 	ldr r0, _0226909C ; =0x0000069C
 	add sp, #0xc
@@ -5886,7 +5886,7 @@ _02269004:
 	beq _0226906A
 	mov r1, #0
 	mov r2, #1
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 _0226906A:
 	ldr r0, _0226909C ; =0x0000069C
 	add sp, #0xc
@@ -6072,7 +6072,7 @@ _02269132:
 	mov r1, #0
 	ldr r0, [r0]
 	sub r2, r1, #2
-	bl sub_0200DEA0
+	bl Sprite_AddPositionXY
 	ldr r0, _0226935C ; =0x00000618
 	add r1, r4, r5
 	ldr r0, [r1, r0]
@@ -6081,7 +6081,7 @@ _02269132:
 	mov r1, #0
 	ldr r0, [r0]
 	sub r2, r1, #2
-	bl sub_0200DEA0
+	bl Sprite_AddPositionXY
 	b _02269208
 _022691EC:
 	mov r0, #0x52
@@ -6194,7 +6194,7 @@ _02269232:
 	mov r1, #0
 	ldr r0, [r0]
 	mov r2, #1
-	bl sub_0200DEA0
+	bl Sprite_AddPositionXY
 	ldr r0, _0226935C ; =0x00000618
 	add r1, r4, r5
 	ldr r0, [r1, r0]
@@ -6203,7 +6203,7 @@ _02269232:
 	ldr r0, [r0]
 	mov r1, #0
 	mov r2, #1
-	bl sub_0200DEA0
+	bl Sprite_AddPositionXY
 	b _02269308
 _022692EC:
 	mov r0, #0x52
@@ -6342,7 +6342,7 @@ _022693EE:
 	beq _02269402
 	mov r1, #0
 	sub r2, r1, #2
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 _02269402:
 	add r5, r5, #1
 _02269404:
@@ -6426,7 +6426,7 @@ _02269494:
 	beq _022694A8
 	mov r1, #0
 	mov r2, #1
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 _022694A8:
 	add r5, r5, #1
 _022694AA:
@@ -9658,7 +9658,7 @@ _0226AC84:
 	mov r1, #0xd0
 	mov r2, #0x10
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, _0226AD58 ; =0x000006F4
 	ldr r0, [r5, r0]
 	bl UnkImageStruct_TickSpriteAnimation1Frame
@@ -9680,7 +9680,7 @@ _0226AC84:
 	mov r1, #0x58
 	mov r2, #8
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	mov r0, #0x6f
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]

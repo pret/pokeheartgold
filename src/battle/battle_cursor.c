@@ -71,10 +71,10 @@ void BattleCursor_Delete(BattleCursor *cursor) {
 void ov12_0226BA4C(BattleCursor *cursor, int x0, int y0, int x1, int y1, int x2, int y2, int x3, int y3, fx32 a9) {
     int i;
 
-    sub_0200DDF4(cursor->unk0[0], x0, y0, a9);
-    sub_0200DDF4(cursor->unk0[1], x1, y1, a9);
-    sub_0200DDF4(cursor->unk0[2], x2, y2, a9);
-    sub_0200DDF4(cursor->unk0[3], x3, y3, a9);
+    UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset(cursor->unk0[0], x0, y0, a9);
+    UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset(cursor->unk0[1], x1, y1, a9);
+    UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset(cursor->unk0[2], x2, y2, a9);
+    UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset(cursor->unk0[3], x3, y3, a9);
 
     UnkImageStruct_SetSpriteAnimSeqNo(cursor->unk0[0], 0);
     UnkImageStruct_SetSpriteAnimSeqNo(cursor->unk0[1], 1);
@@ -99,7 +99,7 @@ void ov12_0226BB1C(BattleCursor *cursor, int left, int right, int top, int botto
 }
 
 void ov12_0226BB40(BattleCursor *cursor, int x, int y, int a3, fx32 a4) {
-    sub_0200DDF4(cursor->unk0[4], x, y, a4);
+    UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset(cursor->unk0[4], x, y, a4);
     UnkImageStruct_SetSpriteAnimSeqNo(cursor->unk0[4], a3);
     UnkImageStruct_SetSpriteVisibleFlag(cursor->unk0[4], TRUE);
 }

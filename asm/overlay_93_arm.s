@@ -949,7 +949,7 @@ _0225FB94:
 	mov r1, r1, asr #0x10
 	mov r2, r2, asr #0x10
 	mov r3, #0x160000
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	mov r0, r5
 	mov r1, r4
 	bl UnkImageStruct_SetSpriteAnimSeqNo

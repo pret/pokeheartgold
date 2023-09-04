@@ -120,7 +120,7 @@
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public Set2dSpriteAnimSeqNo
-.public sub_02024ADC
+.public Sprite_SetDrawPriority
 .public sub_02025224
 .public System_GetTouchHeld
 .public GF_AssertFail

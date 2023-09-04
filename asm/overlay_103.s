@@ -3058,7 +3058,7 @@ ov103_021EE0AC: ; 0x021EE0AC
 	add r5, r0, r2
 	ldr r0, [r5, r4]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	ldr r0, [r5, r4]
 	add r1, r6, #0
 	bl UnkImageStruct_SetSpriteAnimSeqNo
@@ -3100,10 +3100,10 @@ ov103_021EE0F8: ; 0x021EE0F8
 	ldr r0, [r1, r0]
 	add r1, r2, #0
 	add r2, r3, #0
-	ldr r3, _021EE10C ; =sub_0200DDB8
+	ldr r3, _021EE10C ; =UnkImageStruct_SetSpritePositionXY
 	bx r3
 	nop
-_021EE10C: .word sub_0200DDB8
+_021EE10C: .word UnkImageStruct_SetSpritePositionXY
 	thumb_func_end ov103_021EE0F8
 
 	thumb_func_start ov103_021EE110

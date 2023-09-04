@@ -562,7 +562,7 @@ ov98_0221E9FC: ; 0x0221E9FC
 	ldr r0, [r5]
 	add r6, r1, #0
 	add r7, r2, #0
-	bl sub_02024B60
+	bl Sprite_GetVramType
 	add r4, r0, #0
 	ldr r0, [r5]
 	bl sub_02024B1C

@@ -2181,7 +2181,7 @@ _0225B0F4:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	mov r0, #0x39
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -2259,7 +2259,7 @@ _0225B1A2:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #2
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	ldr r0, [sp, #0x30]
 	add r6, r6, #4
 	add r0, r0, #1
@@ -2333,7 +2333,7 @@ _0225B246:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	mov r0, #0xf3
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -2363,7 +2363,7 @@ _0225B298:
 	mov r1, #0x68
 	mov r2, #0x88
 	lsl r3, r3, #0x14
-	bl sub_0200DDC4
+	bl Sprite_SetPositionXY_CustomScreenYOffset
 	ldr r0, [r4, #0x10]
 	bl Pokemon_GetIconPalette
 	add r1, r0, #0
@@ -2420,7 +2420,7 @@ _0225B2E2:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	add r0, r5, #0
 	bl ov27_0225A4B8
 	add r0, r5, #0
@@ -5750,7 +5750,7 @@ ov27_0225CCE0: ; 0x0225CCE0
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
@@ -5794,7 +5794,7 @@ ov27_0225CD18: ; 0x0225CD18
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {r3, r4, pc}
 	nop

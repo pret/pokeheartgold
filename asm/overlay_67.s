@@ -2133,7 +2133,7 @@ ov67_021E6A08: ; 0x021E6A08
 	add r5, r0, r2
 	ldr r0, [r5, r4]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	ldr r0, [r5, r4]
 	add r1, r6, #0
 	bl UnkImageStruct_SetSpriteAnimSeqNo
@@ -2150,11 +2150,11 @@ ov67_021E6A28: ; 0x021E6A28
 	ldr r0, [r1, r0]
 	add r1, r2, #0
 	add r2, r3, #0
-	ldr r3, _021E6A3C ; =sub_0200DDB8
+	ldr r3, _021E6A3C ; =UnkImageStruct_SetSpritePositionXY
 	bx r3
 	.balign 4, 0
 _021E6A38: .word 0x00000484
-_021E6A3C: .word sub_0200DDB8
+_021E6A3C: .word UnkImageStruct_SetSpritePositionXY
 	thumb_func_end ov67_021E6A28
 
 	thumb_func_start ov67_021E6A40

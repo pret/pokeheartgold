@@ -53,7 +53,7 @@
 .public sub_0202457C
 .public CreateSprite
 .public Sprite_Delete
-.public sub_020247D4
+.public Sprite_SetMatrix
 .public sub_0202481C
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo

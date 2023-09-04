@@ -49,9 +49,9 @@
 .public sub_0200D9DC
 .public UnkImageStruct_TickSpriteAnimation1Frame
 .public UnkImageStruct_SetSpriteAnimSeqNo
-.public sub_0200DCC0
+.public UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 .public UnkImageStruct_SetSpritePalIndex
-.public sub_0200DDB8
+.public UnkImageStruct_SetSpritePositionXY
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2

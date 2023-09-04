@@ -1018,7 +1018,7 @@ ov32_0225DD24: ; 0x0225DD24
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	cmp r4, #8
 	bne _0225DD64
 	mov r0, #0xa6

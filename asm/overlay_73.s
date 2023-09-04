@@ -1088,7 +1088,7 @@ ov73_021E6184: ; 0x021E6184
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0x64
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	mov r7, #0x8b
 	ldr r4, _021E6298 ; =ov73_021EA560
 	mov r6, #0

@@ -5362,7 +5362,7 @@ ov48_0225B010: ; 0x0225B010
 	lsl r0, r0, #2
 	add r0, r5, r0
 	ldr r0, [r0, #0x3c]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {r4, r5, pc}
 	thumb_func_end ov48_0225B010

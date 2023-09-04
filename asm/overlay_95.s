@@ -1018,7 +1018,7 @@ _021E60F6:
 _021E60FE:
 	ldr r0, [sp]
 	ldr r0, [r0, #0x74]
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 	mov r0, #0
 	add r1, r7, #0
 	bl _fneq
@@ -1902,7 +1902,7 @@ ov95_021E67F0: ; 0x021E67F0
 _021E6800:
 	ldr r0, [r4, #0x74]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	ldr r0, [r4, #0x68]
 	add r0, r0, #1
 	str r0, [r4, #0x68]
@@ -1948,7 +1948,7 @@ _021E6848:
 	beq _021E68A0
 	ldr r0, [r4, #0x74]
 	mov r1, #1
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	ldr r0, [r4, #0x68]
 	add r0, r0, #1
 	str r0, [r4, #0x68]
@@ -1962,7 +1962,7 @@ _021E6862:
 	bl PlaySE
 	ldr r0, [r4, #0x74]
 	mov r1, #2
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	ldr r0, [r4, #0x68]
 	add r0, r0, #1
 	str r0, [r4, #0x68]
@@ -1976,7 +1976,7 @@ _021E6886:
 	bne _021E68A0
 	ldr r0, [r4, #0x74]
 	mov r1, #2
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	mov r0, #0
 	str r0, [r4, #0x68]
 	str r0, [r4, #0x64]
@@ -2012,7 +2012,7 @@ _021E68BE:
 	bl PlaySE
 	ldr r0, [r4, #0x74]
 	mov r1, #3
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	ldr r0, [r4, #0x44]
 	mov r1, #0
 	bl ov95_021E5EC0
@@ -2066,7 +2066,7 @@ _021E6922:
 	bl PlaySE
 	ldr r0, [r4, #0x74]
 	mov r1, #4
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	ldr r0, [r4, #0x44]
 	mov r1, #1
 	bl ov95_021E5EC0
@@ -2121,7 +2121,7 @@ _021E698A:
 	beq _021E69F8
 	ldr r0, [r4, #0x74]
 	mov r1, #4
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	mov r0, #2
 	mov r1, #0
 	bl GX_EngineAToggleLayers
@@ -2137,7 +2137,7 @@ _021E69AC:
 	bne _021E69D6
 	ldr r0, [r4, #0x74]
 	mov r1, #5
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	ldr r0, _021E6B6C ; =0x00000707
 	bl PlaySE
 	ldr r0, [r4, #0x44]
@@ -2214,7 +2214,7 @@ _021E6A56:
 	mov r5, #0
 	add r1, #2
 	add r2, sp, #0xc
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	add r0, sp, #0xc
 	add r1, r5, #0
 	ldrsh r2, [r0, r1]
@@ -2224,7 +2224,7 @@ _021E6A56:
 	ble _021E6A7C
 	ldr r0, [r4, #0x78]
 	sub r2, r1, #4
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 	b _021E6A7E
 _021E6A7C:
 	add r5, r5, #1
@@ -2233,7 +2233,7 @@ _021E6A7E:
 	ldr r0, [r4, #0x7c]
 	add r1, #2
 	add r2, sp, #0xc
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	add r0, sp, #0xc
 	mov r1, #0
 	ldrsh r0, [r0, r1]
@@ -2241,7 +2241,7 @@ _021E6A7E:
 	bge _021E6A9E
 	ldr r0, [r4, #0x7c]
 	mov r2, #4
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 	b _021E6AA0
 _021E6A9E:
 	add r5, r5, #1
@@ -2460,7 +2460,7 @@ _021E6C56:
 	mov r5, #0
 	add r1, #2
 	add r2, sp, #0xc
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	add r0, sp, #0xc
 	add r1, r5, #0
 	ldrsh r2, [r0, r1]
@@ -2470,7 +2470,7 @@ _021E6C56:
 	ble _021E6C7C
 	ldr r0, [r4, #0x78]
 	sub r2, r1, #4
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 	b _021E6C7E
 _021E6C7C:
 	add r5, r5, #1
@@ -2479,7 +2479,7 @@ _021E6C7E:
 	ldr r0, [r4, #0x7c]
 	add r1, #2
 	add r2, sp, #0xc
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	add r0, sp, #0xc
 	mov r1, #0
 	ldrsh r0, [r0, r1]
@@ -2487,7 +2487,7 @@ _021E6C7E:
 	bge _021E6C9E
 	ldr r0, [r4, #0x7c]
 	mov r2, #4
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 	b _021E6CA0
 _021E6C9E:
 	add r5, r5, #1
@@ -3406,7 +3406,7 @@ _021E7436:
 	ldrsh r1, [r1, r3]
 	ldrsh r2, [r2, r3]
 	ldr r0, [r5, #0x10]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E7448: .word ov95_021E7818

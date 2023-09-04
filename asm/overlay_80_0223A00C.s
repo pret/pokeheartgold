@@ -1505,7 +1505,7 @@ _0223ABA8:
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x14
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	add r5, #0x90
 	ldr r0, [r5]
 	mov r1, #1
@@ -1544,7 +1544,7 @@ _0223ABFE:
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x14
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	b _0223AC20
 _0223AC1C:
 	mov r0, #1

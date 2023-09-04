@@ -74,7 +74,7 @@
 .public UnkImageStruct_SetSpriteAnimActiveFlag
 .public sub_0200DCA0
 .public UnkImageStruct_SetSpriteVisibleFlag
-.public sub_0200DDB8
+.public UnkImageStruct_SetSpritePositionXY
 .public CreateSysTask
 .public DestroySysTask
 .public sub_0200E398

@@ -2715,7 +2715,7 @@ struct UnkImageStruct *sub_02070C24(SpriteRenderer *r6, SpriteGfxHandler *sp18, 
     sp3C.spritePriority = _020FF50C[r5];
     ret_r4 = SpriteRenderer_LoadResourcesAndCreateSprite(r6, sp18, &sp3C);
     sub_02024AA8(ret_r4->sprite, 0);
-    sub_0200DDB8(ret_r4, sp20, sp88);
+    UnkImageStruct_SetSpritePositionXY(ret_r4, sp20, sp88);
     UnkImageStruct_TickSpriteAnimation1Frame(ret_r4);
     UnkImageStruct_SetSpriteAnimActiveFlag(ret_r4, 1);
     return ret_r4;

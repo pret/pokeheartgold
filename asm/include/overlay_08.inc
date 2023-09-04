@@ -56,12 +56,12 @@
 .public UnkImageStruct_TickSpriteAnimationNFrames
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public UnkImageStruct_GetSpriteCurrentAnimSeqNo
-.public sub_0200DCC0
+.public UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 .public UnkImageStruct_SetSpriteVisibleFlag
 .public UnkImageStruct_GetSpriteVisibleFlag
 .public UnkImageStruct_SetSpritePalIndex
-.public sub_0200DDB8
-.public sub_0200DED0
+.public UnkImageStruct_SetSpritePositionXY
+.public UnkImageStruct_AddSpritePositionXY
 .public sub_0200E248
 .public sub_0200E63C
 .public sub_0200E640

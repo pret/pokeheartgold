@@ -415,7 +415,7 @@ _021E5C0E:
 	add r0, #0xac
 	ldrb r1, [r6, r4]
 	ldr r0, [r0]
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -427,7 +427,7 @@ _021E5C0E:
 	lsl r1, r1, #0x10
 	ldr r0, [r0]
 	lsr r1, r1, #0x10
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	add r3, sp, #4
 	add r2, r5, #0
 	ldmia r3!, {r0, r1}
@@ -1268,7 +1268,7 @@ _021E6196:
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 _021E62F4:
 	mov r6, #0
 	add r4, r5, #0
@@ -2839,7 +2839,7 @@ _021E6E94:
 	ldr r0, [r2, #0x20]
 	ldrsh r1, [r2, r1]
 	ldrsh r2, [r2, r7]
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 _021E6EB4:
 	add r0, r4, #1
 	lsl r0, r0, #0x10
@@ -3292,7 +3292,7 @@ _021E71CE:
 	bne _021E71F2
 	ldrb r1, [r5, #6]
 	ldrb r2, [r5, #7]
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	pop {r3, r4, r5, pc}
 _021E71F2:
 	mov r1, #8
@@ -3307,7 +3307,7 @@ _021E71F2:
 	add r2, r3, r2
 	lsl r2, r2, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	mov r1, #8
 	ldrb r2, [r5, #6]
 	ldrsb r1, [r5, r1]
@@ -3321,7 +3321,7 @@ _021E71F2:
 	add r2, r3, r2
 	lsl r2, r2, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	mov r1, #9
 	ldrb r2, [r5, #6]
 	ldrsb r1, [r5, r1]
@@ -3335,7 +3335,7 @@ _021E71F2:
 	add r2, r3, r2
 	lsl r2, r2, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	mov r1, #9
 	ldrb r2, [r5, #6]
 	ldrsb r1, [r5, r1]
@@ -3349,7 +3349,7 @@ _021E71F2:
 	add r2, r3, r2
 	lsl r2, r2, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	pop {r3, r4, r5, pc}
 _021E726A:
 	lsl r0, r0, #0x1d
@@ -3358,7 +3358,7 @@ _021E726A:
 	bne _021E727C
 	ldrb r1, [r5, #6]
 	ldrb r2, [r5, #7]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	pop {r3, r4, r5, pc}
 _021E727C:
 	mov r1, #8
@@ -3373,7 +3373,7 @@ _021E727C:
 	add r2, r3, r2
 	lsl r2, r2, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	mov r1, #8
 	ldrb r2, [r5, #6]
 	ldrsb r1, [r5, r1]
@@ -3387,7 +3387,7 @@ _021E727C:
 	add r2, r3, r2
 	lsl r2, r2, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	mov r1, #9
 	ldrb r2, [r5, #6]
 	ldrsb r1, [r5, r1]
@@ -3401,7 +3401,7 @@ _021E727C:
 	add r2, r3, r2
 	lsl r2, r2, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	mov r1, #9
 	ldrb r2, [r5, #6]
 	ldrsb r1, [r5, r1]
@@ -3415,7 +3415,7 @@ _021E727C:
 	add r2, r3, r2
 	lsl r2, r2, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 _021E72F2:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -3629,7 +3629,7 @@ _021E7420:
 	lsr r0, r0, #0x1f
 	bne _021E7450
 	ldr r0, [r4, #0x10]
-	bl sub_02024964
+	bl Sprite_ResetAnimCtrlState
 	ldr r0, [r4, #0x10]
 	add r1, r5, #0
 	bl thunk_Set2dSpriteAnimActiveFlag
@@ -3638,7 +3638,7 @@ _021E7450:
 	mov r6, #0
 _021E7452:
 	ldr r0, [r4, #0x10]
-	bl sub_02024964
+	bl Sprite_ResetAnimCtrlState
 	ldr r0, [r4, #0x10]
 	add r1, r5, #0
 	bl thunk_Set2dSpriteAnimActiveFlag
@@ -3652,7 +3652,7 @@ _021E746A:
 	lsr r0, r0, #0x1f
 	bne _021E7480
 	ldr r0, [r4, #0x10]
-	bl sub_0200DCAC
+	bl UnkImageStruct_ResetSpriteAnimCtrlState
 	ldr r0, [r4, #0x10]
 	add r1, r5, #0
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
@@ -3661,7 +3661,7 @@ _021E7480:
 	mov r6, #0
 _021E7482:
 	ldr r0, [r4, #0x10]
-	bl sub_0200DCAC
+	bl UnkImageStruct_ResetSpriteAnimCtrlState
 	ldr r0, [r4, #0x10]
 	add r1, r5, #0
 	bl UnkImageStruct_SetSpriteAnimActiveFlag

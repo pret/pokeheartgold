@@ -36,8 +36,8 @@
 .public sub_0200D020
 .public thunk_OamManager_ApplyAndResetBuffers
 .public thunk_Sprite_SetPalIndex
-.public sub_0200DD88
-.public sub_0200DE00
+.public Sprite_SetPositionXY
+.public Sprite_GetPositionXY
 .public LoadUserFrameGfx1
 .public sub_0200E5D4
 .public LoadUserFrameGfx2
@@ -89,7 +89,7 @@
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo
 .public Get2dSpriteCurrentAnimSeqNo
-.public sub_020249D4
+.public Sprite_SetAnimCtrlCurrentFrame
 .public sub_02025224
 .public String_New
 .public String_Delete

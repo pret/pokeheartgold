@@ -730,7 +730,7 @@ ov113_021E5E64: ; 0x021E5E64
 	add r0, r4, #0
 	add r0, #0xb8
 	ldr r0, [r0]
-	bl sub_02024964
+	bl Sprite_ResetAnimCtrlState
 	add r0, r4, #0
 	add r0, #0x68
 	mov r1, #0
@@ -2162,7 +2162,7 @@ _021E69D8:
 	add r0, #0xb8
 	ldr r0, [r0]
 	mov r1, #2
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	add r7, r7, #1
 	add r6, #0x28
 	add r4, r4, #4

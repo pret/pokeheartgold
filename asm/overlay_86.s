@@ -2834,7 +2834,7 @@ ov86_021E705C: ; 0x021E705C
 	add r5, r0, r2
 	ldr r0, [r5, r4]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	ldr r0, [r5, r4]
 	add r1, r6, #0
 	bl UnkImageStruct_SetSpriteAnimSeqNo
@@ -2851,10 +2851,10 @@ ov86_021E707C: ; 0x021E707C
 	ldr r0, [r1, r0]
 	add r1, r2, #0
 	add r2, r3, #0
-	ldr r3, _021E7090 ; =sub_0200DDB8
+	ldr r3, _021E7090 ; =UnkImageStruct_SetSpritePositionXY
 	bx r3
 	nop
-_021E7090: .word sub_0200DDB8
+_021E7090: .word UnkImageStruct_SetSpritePositionXY
 	thumb_func_end ov86_021E707C
 
 	thumb_func_start ov86_021E7094

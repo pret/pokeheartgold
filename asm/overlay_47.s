@@ -1264,7 +1264,7 @@ ov47_022591F8: ; 0x022591F8
 	mul r1, r2
 	ldr r0, [r4, #0x14]
 	add r1, r3, r1
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	pop {r4, pc}
 	nop
 _02259218: .word ov47_02259E78

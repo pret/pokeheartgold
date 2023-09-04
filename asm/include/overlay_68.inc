@@ -57,11 +57,11 @@
 .public sub_0200D9DC
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public UnkImageStruct_SetSpriteAnimActiveFlag
-.public sub_0200DCAC
-.public sub_0200DCC0
+.public UnkImageStruct_ResetSpriteAnimCtrlState
+.public UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 .public UnkImageStruct_SetSpriteVisibleFlag
 .public UnkImageStruct_SetSpritePalIndex
-.public sub_0200DDB8
+.public UnkImageStruct_SetSpritePositionXY
 .public sub_0200E248
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2

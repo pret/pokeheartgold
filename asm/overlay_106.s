@@ -2659,7 +2659,7 @@ _021E6D2E:
 	ldr r0, [r4, #0x10]
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2679,7 +2679,7 @@ ov106_021E6D48: ; 0x021E6D48
 _021E6D5A:
 	ldr r0, [r4, #0x10]
 	ldr r1, [r5, #4]
-	bl sub_0200DD54
+	bl UnkImageStruct_SetSpritePriority
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop

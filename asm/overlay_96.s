@@ -1360,7 +1360,7 @@ ov96_021E61D8: ; 0x021E61D8
 	str r0, [sp, #0x14]
 	ldr r0, [r5, r1]
 	add r1, sp, #0x10
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, _021E6288 ; =0x0000070E
 	mov r1, #0
 	strh r4, [r5, r0]
@@ -1375,7 +1375,7 @@ ov96_021E61D8: ; 0x021E61D8
 	str r1, [sp, #8]
 	ldr r0, [r5, r0]
 	add r1, sp, #4
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, _021E628C ; =0x0000070D
 	mov r1, #0
 	strb r1, [r5, r0]
@@ -1385,7 +1385,7 @@ ov96_021E61D8: ; 0x021E61D8
 	add r0, r0, #3
 	ldr r0, [r5, r0]
 	add r1, sp, #0x10
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, _021E6280 ; =0x00000708
 	add r0, r5, r0
 	add sp, #0x1c
@@ -1464,7 +1464,7 @@ _021E62D2:
 	ldr r0, _021E6344 ; =0x0000071C
 	add r1, sp, #0x10
 	ldr r0, [r5, r0]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -1964,7 +1964,7 @@ _021E66A0:
 	str r1, [sp, #4]
 	ldr r0, [r4, r0]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, _021E678C ; =0x00000708
 	mov r1, #3
 	ldr r0, [r4, r0]
@@ -5509,7 +5509,7 @@ ov96_021E81D8: ; 0x021E81D8
 	lsl r0, r0, #0xc
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #8]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r4, #4]
 	bl ov96_021EB120
 	cmp r0, #0
@@ -11079,21 +11079,21 @@ ov96_021EABA8: ; 0x021EABA8
 	add r4, r1, #0
 	bl ov96_021E8BAC
 	add r1, r4, #0
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	ldr r0, [r5, #4]
 	cmp r0, #0
 	beq _021EABCA
 	ldr r1, [r5, #0x3c]
 	lsl r1, r1, #1
 	add r1, r4, r1
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 _021EABCA:
 	ldr r0, [r5, #8]
 	cmp r0, #0
 	beq _021EABD8
 	ldr r1, [r5, #0x3c]
 	add r1, r4, r1
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 _021EABD8:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -11418,7 +11418,7 @@ ov96_021EAD88: ; 0x021EAD88
 	str r0, [sp, #0x14]
 	ldr r0, [r5, #8]
 	add r1, r2, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 _021EADF0:
 	cmp r7, #0
 	beq _021EAE2A
@@ -11447,7 +11447,7 @@ _021EADF0:
 	str r0, [sp, #0x14]
 	ldr r0, [r5, #4]
 	add r1, r2, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 _021EAE2A:
 	ldr r0, [r5]
 	bl ov96_021E92AC
@@ -11461,7 +11461,7 @@ _021EAE2A:
 _021EAE3E:
 	ldr r0, [sp]
 	add r1, sp, #4
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -11504,7 +11504,7 @@ ov96_021EAE4C: ; 0x021EAE4C
 _021EAE90:
 	add r0, r7, #0
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov96_021EAE4C
@@ -11516,7 +11516,7 @@ ov96_021EAE9C: ; 0x021EAE9C
 	add r4, r2, #0
 	bl ov96_021EAA20
 	bl ov96_021E8BAC
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	ldr r2, [r0]
 	asr r1, r2, #0xb
 	lsr r1, r1, #0x14
@@ -11567,25 +11567,25 @@ ov96_021EAED4: ; 0x021EAED4
 	add r1, r6, #0
 	bl ov96_021EAC0C
 	add r0, r4, #0
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r1, r0, #0
 	add r0, sp, #0xc
 	add r2, sp, #0
 	bl VEC_Add
 	add r0, r4, #0
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r5, #8]
 	cmp r0, #0
 	beq _021EAF38
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r1, r0, #0
 	add r0, sp, #0xc
 	add r2, sp, #0
 	bl VEC_Add
 	ldr r0, [r5, #8]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 _021EAF38:
 	ldr r0, [sp, #0x28]
 	cmp r0, #0
@@ -11593,14 +11593,14 @@ _021EAF38:
 	ldr r0, [r5, #4]
 	cmp r0, #0
 	beq _021EAF5A
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r1, r0, #0
 	add r0, sp, #0xc
 	add r2, sp, #0
 	bl VEC_Add
 	ldr r0, [r5, #4]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 _021EAF5A:
 	add sp, #0x18
 	pop {r4, r5, r6, pc}
@@ -11685,13 +11685,13 @@ ov96_021EAF94: ; 0x021EAF94
 	cmp r0, #0
 	beq _021EAFD2
 	add r1, r7, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 _021EAFD2:
 	ldr r0, [r5, #8]
 	cmp r0, #0
 	beq _021EAFDE
 	add r1, sp, #0x10
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 _021EAFDE:
 	ldr r0, [r5, #0x10]
 	add r1, r6, r0
@@ -11720,7 +11720,7 @@ _021EAFDE:
 _021EB010:
 	ldr r0, [sp]
 	add r1, sp, #4
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov96_021EAF94
@@ -12486,20 +12486,20 @@ _021EB584: .word sub_02024B68
 
 	thumb_func_start ov96_021EB588
 ov96_021EB588: ; 0x021EB588
-	ldr r3, _021EB590 ; =sub_020247D4
+	ldr r3, _021EB590 ; =Sprite_SetMatrix
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_021EB590: .word sub_020247D4
+_021EB590: .word Sprite_SetMatrix
 	thumb_func_end ov96_021EB588
 
 	thumb_func_start ov96_021EB594
 ov96_021EB594: ; 0x021EB594
-	ldr r3, _021EB59C ; =sub_020248AC
+	ldr r3, _021EB59C ; =Sprite_GetMatrixPtr
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_021EB59C: .word sub_020248AC
+_021EB59C: .word Sprite_GetMatrixPtr
 	thumb_func_end ov96_021EB594
 
 	thumb_func_start ov96_021EB5A0
@@ -12601,11 +12601,11 @@ _021EB628:
 
 	thumb_func_start ov96_021EB630
 ov96_021EB630: ; 0x021EB630
-	ldr r3, _021EB638 ; =sub_02024ADC
+	ldr r3, _021EB638 ; =Sprite_SetDrawPriority
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_021EB638: .word sub_02024ADC
+_021EB638: .word Sprite_SetDrawPriority
 	thumb_func_end ov96_021EB630
 
 	thumb_func_start ov96_021EB63C
@@ -15611,7 +15611,7 @@ _021ECD9A:
 	ldr r0, [r5]
 	add r1, r7, #0
 	mvn r2, r2
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -15851,7 +15851,7 @@ _021ECF54:
 	str r2, [r5, #0x10]
 	ldr r0, [r5]
 	ldr r1, [r5, #0xc]
-	bl sub_0200DF44
+	bl UnkImageStruct_SetSpritePrecisePositionXY
 	ldr r0, [r5, #0x10]
 	asr r0, r0, #0xc
 	cmp r0, #0xe0
@@ -19479,7 +19479,7 @@ _021EEAEA:
 	ldr r0, [sp, #0x18]
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_02024B60
+	bl Sprite_GetVramType
 	ldr r4, [r5, #0x38]
 	add r7, r0, #0
 	add r0, r5, r4
@@ -19736,7 +19736,7 @@ ov96_021EED14: ; 0x021EED14
 	add r7, r1, #0
 	str r2, [sp]
 	add r5, r3, #0
-	bl sub_02024B60
+	bl Sprite_GetVramType
 	add r4, r0, #0
 	add r0, r6, #0
 	bl sub_02024B1C
@@ -21265,7 +21265,7 @@ _021EF96A:
 	ldrsh r2, [r4, r7]
 	ldr r0, [r5, #0x38]
 	lsl r3, r3, #0x14
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	add r6, r6, #1
 	add r4, r4, #4
 	add r5, r5, #4
@@ -22555,7 +22555,7 @@ _021F03FC:
 	str r0, [r5, #0x24]
 	bl ov96_021EB5B8
 	mov r1, #2
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	ldr r0, [r6, #0x18]
 	mov r1, #0x68
 	mov r2, #7
@@ -22563,7 +22563,7 @@ _021F03FC:
 	str r0, [r5, #0x28]
 	bl ov96_021EB5B8
 	mov r1, #4
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	add r4, r4, #1
 	cmp r4, #0xc
 	blt _021F03FC
@@ -22576,7 +22576,7 @@ _021F03FC:
 	ldr r0, [r0]
 	mov r1, #1
 	str r0, [r6, #0x1c]
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	ldr r1, _021F0498 ; =0x00000774
 	ldr r0, [r6, #0x18]
 	ldr r1, [r6, r1]
@@ -22938,7 +22938,7 @@ _021F0766:
 	add r1, r4, #0
 	bl ov96_021E64F8
 	mov r1, #3
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 _021F079E:
 	ldr r0, [sp, #0x44]
 	add r0, r0, #1
@@ -25248,7 +25248,7 @@ _021F1A34:
 	ldr r0, [r4, #4]
 	bl ov96_021EB5B8
 	add r1, sp, #0xc8
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r1, #0
 	add r0, sp, #0xbc
 	str r1, [r0]
@@ -25304,7 +25304,7 @@ _021F1AE8:
 	ldr r0, [r4, #8]
 	bl ov96_021EB5B8
 	add r1, sp, #0xbc
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, _021F1CA4 ; =0x0000076C
 	lsl r1, r5, #0x18
 	ldr r0, [r6, r0]
@@ -28179,7 +28179,7 @@ _021F30CC:
 	bl sub_02024B78
 	add r0, r6, #0
 	mov r1, #0x64
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #8
@@ -28387,7 +28387,7 @@ _021F321C:
 	lsl r0, r0, #0xc
 	str r0, [sp, #8]
 	add r0, r6, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
@@ -30111,7 +30111,7 @@ _021F3F10:
 	bl ov96_021EB5B8
 	mov r1, #2
 	str r0, [sp, #0x10]
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	mov r0, #0
 	str r0, [sp, #0x2c]
 	lsl r0, r5, #0xc
@@ -30121,7 +30121,7 @@ _021F3F10:
 	str r0, [sp, #0x28]
 	ldr r0, [sp, #0x10]
 	add r1, sp, #0x24
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r4, #0
 	add r0, #0xf8
 	ldr r0, [r0]
@@ -30250,7 +30250,7 @@ _021F4020:
 	bl ov96_021EB5B8
 	add r6, r0, #0
 	mov r1, #4
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	add r0, r6, #0
 	mov r1, #0
 	bl Set2dSpriteAnimSeqNo
@@ -30262,7 +30262,7 @@ _021F4020:
 	str r0, [sp, #0x1c]
 	add r0, r6, #0
 	add r1, sp, #0x18
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r4, #0
 	add r0, #0xb4
 	mov r1, #1
@@ -30282,7 +30282,7 @@ _021F4020:
 	bl ov96_021EB5B8
 	add r6, r0, #0
 	mov r1, #3
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	add r0, r6, #0
 	mov r1, #1
 	bl Set2dSpriteAnimSeqNo
@@ -30294,7 +30294,7 @@ _021F4020:
 	str r0, [sp, #0x1c]
 	add r0, r6, #0
 	add r1, sp, #0x18
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r4, #0
 	add r0, #0xb8
 	mov r1, #1
@@ -30314,7 +30314,7 @@ _021F4020:
 	bl ov96_021EB5B8
 	add r6, r0, #0
 	mov r1, #5
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	add r0, r6, #0
 	mov r1, #0xd
 	bl Set2dSpriteAnimSeqNo
@@ -30325,7 +30325,7 @@ _021F4020:
 	str r0, [sp, #0x1c]
 	add r0, r6, #0
 	add r1, sp, #0x18
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r4, #0
 	add r0, #0xc4
 	ldr r0, [r0]
@@ -30348,7 +30348,7 @@ _021F411C:
 	bl ov96_021EB5B8
 	str r0, [sp, #4]
 	mov r1, #6
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	add r1, r6, #0
 	ldr r0, [sp, #4]
 	add r1, #0xb
@@ -30363,7 +30363,7 @@ _021F411C:
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #4]
 	add r1, sp, #0x18
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r4, r7
 	add r0, #0xbc
 	mov r1, #1
@@ -30391,7 +30391,7 @@ _021F417C:
 	bl ov96_021EB5B8
 	str r0, [sp, #8]
 	mov r1, #8
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	ldr r0, [sp, #8]
 	mov r1, #0xe
 	bl Set2dSpriteAnimSeqNo
@@ -30408,7 +30408,7 @@ _021F417C:
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #8]
 	add r1, sp, #0x18
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r4, r7
 	add r0, #0xc8
 	mov r1, #1
@@ -30436,7 +30436,7 @@ _021F41E0:
 	bl ov96_021EB5B8
 	str r0, [sp, #0xc]
 	mov r1, #7
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	ldr r0, [sp, #0xc]
 	mov r1, #0x12
 	bl Set2dSpriteAnimSeqNo
@@ -30453,7 +30453,7 @@ _021F41E0:
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #0xc]
 	add r1, sp, #0x18
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r4, r7
 	add r0, #0xd8
 	ldr r0, [r0]
@@ -31445,7 +31445,7 @@ ov96_021F4990: ; 0x021F4990
 	ldr r0, [r0]
 	bl ov96_021EB5B8
 	add r1, sp, #0x1c
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r3, r5, #0
 	add r2, r5, #0
 	add r3, #0xa8
@@ -31773,7 +31773,7 @@ _021F4C38:
 	ldr r0, [r4]
 	bl ov96_021EB5B8
 	add r1, sp, #4
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0x20
 	pop {r3, r4, r5, pc}
 _021F4C6E:
@@ -31885,7 +31885,7 @@ _021F4CF4:
 	str r0, [sp, #4]
 	add r0, r3, #0
 	add r1, r2, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r7, #0
 	add r0, #0x94
 	ldr r0, [r0]
@@ -31905,7 +31905,7 @@ _021F4CF4:
 	str r0, [sp, #4]
 	add r0, r3, #0
 	add r1, r2, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r7, #0
 	add r0, #0x90
 	mov r1, #1
@@ -32005,7 +32005,7 @@ _021F4E3C:
 	str r1, [sp, #0xc]
 	add r1, sp, #4
 	str r7, [sp, #4]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -32032,7 +32032,7 @@ ov96_021F4E5C: ; 0x021F4E5C
 	mov r1, #0
 	str r1, [sp, #8]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r4, #0x90
 	mov r1, #1
 	ldr r0, [r4]
@@ -32087,7 +32087,7 @@ _021F4ED8:
 	mov r1, #0
 	str r1, [sp, #8]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {r4, r5, pc}
 	thumb_func_end ov96_021F4E9C
@@ -32492,7 +32492,7 @@ _021F523C:
 	bl ov96_021E6290
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	ldr r0, [r4]
 	bl ov96_021E6030
 	ldr r0, [sp, #0x14]
@@ -35849,7 +35849,7 @@ _021F6D32:
 	add r0, r4, #0
 	add r0, #0x84
 	ldr r0, [r0]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r4, #0
 	add r0, #0x84
 	ldrb r1, [r6]
@@ -39630,7 +39630,7 @@ ov96_021F8ACC: ; 0x021F8ACC
 	bl Set2dSpriteVisibleFlag
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -39671,7 +39671,7 @@ ov96_021F8AFC: ; 0x021F8AFC
 	bl ov96_021F8ACC
 	str r0, [r4, #0xc]
 	add r4, r0, #0
-	bl sub_02024B60
+	bl Sprite_GetVramType
 	add r6, r0, #0
 	add r0, r4, #0
 	bl sub_02024B1C
@@ -39716,7 +39716,7 @@ ov96_021F8AFC: ; 0x021F8AFC
 	bl sub_02024B20
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_02024A74
+	bl Sprite_SetPalOffset
 	add sp, #0x44
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov96_021F8AFC
@@ -39849,20 +39849,20 @@ ov96_021F8C88: ; 0x021F8C88
 	str r0, [sp]
 	ldr r0, [r5]
 	add r1, r7, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r4, #0
 	add r0, #0x10
 	lsl r0, r0, #0xc
 	str r0, [sp]
 	ldr r0, [r5, #4]
 	add r1, r7, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r4, #0x30
 	lsl r0, r4, #0xc
 	str r0, [sp]
 	ldr r0, [r5, #8]
 	add r1, r7, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #1
 	ldr r1, [sp, #4]
 	lsl r0, r0, #0xe
@@ -39870,7 +39870,7 @@ ov96_021F8C88: ; 0x021F8C88
 	str r0, [sp, #4]
 	ldr r0, [r5, #0xc]
 	add r1, r7, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r5, #0x10]
 	bl sub_02013728
 	ldr r0, [r5, #0x20]
@@ -39889,7 +39889,7 @@ ov96_021F8CFC: ; 0x021F8CFC
 	add r5, r0, #0
 	ldr r0, [r4]
 	add r7, r1, #0
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r3, r0, #0
 	add r2, sp, #0
 	lsl r6, r5, #0xc
@@ -39907,9 +39907,9 @@ ov96_021F8CFC: ; 0x021F8CFC
 	add r0, r0, r5
 	str r0, [sp, #4]
 	ldr r0, [r4]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r4, #4]
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r3, r0, #0
 	add r2, sp, #0
 	ldmia r3!, {r0, r1}
@@ -39925,9 +39925,9 @@ ov96_021F8CFC: ; 0x021F8CFC
 	add r0, r0, r5
 	str r0, [sp, #4]
 	ldr r0, [r4, #4]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r4, #0xc]
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r3, r0, #0
 	ldmia r3!, {r0, r1}
 	add r2, r7, #0
@@ -39942,10 +39942,10 @@ ov96_021F8CFC: ; 0x021F8CFC
 	add r0, r0, r5
 	str r0, [sp, #4]
 	ldr r0, [r4, #0xc]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r4, #8]
 	add r1, r7, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r4, #0x10]
 	bl sub_02013728
 	ldr r0, [r4, #0x20]
@@ -40243,7 +40243,7 @@ _021F8FB8:
 	ldr r1, [sp, #0x20]
 	str r1, [sp, #0x3c]
 	add r1, sp, #0x38
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r4, #0
 	mov r1, #1
 	bl Set2dSpriteAnimActiveFlag
@@ -40255,7 +40255,7 @@ _021F8FB8:
 	bl sub_02024A48
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	ldr r5, [sp, #0x24]
 	mov r7, #0
 _021F9002:
@@ -40274,7 +40274,7 @@ _021F9002:
 	add r4, r0, #0
 	str r1, [sp, #0x3c]
 	add r1, sp, #0x38
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r4, #0
 	mov r1, #1
 	bl Set2dSpriteAnimActiveFlag
@@ -40283,7 +40283,7 @@ _021F9002:
 	bl Set2dSpriteAnimSeqNo
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	add r7, r7, #1
 	add r5, #0x10
 	cmp r7, #3
@@ -41279,7 +41279,7 @@ _021F9888:
 	mov r3, #0x65
 	bl ov96_021EB408
 	mov r1, #0x1b
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #0x89
@@ -41290,7 +41290,7 @@ _021F9888:
 	mov r3, #0x67
 	bl ov96_021EB408
 	mov r1, #0x1b
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	add r5, r5, #1
 	cmp r5, #0xc
 	blt _021F9888
@@ -41403,7 +41403,7 @@ _021F9968:
 	mov r0, #0xeb
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0xeb
 	lsl r0, r0, #2
 	ldrb r1, [r7]
@@ -41602,7 +41602,7 @@ _021F9B38:
 	bl ov96_021E6290
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	ldr r3, _021F9CA0 ; =ov96_0221C410
 	add r2, sp, #0x4c
 	ldmia r3!, {r0, r1}
@@ -42453,14 +42453,14 @@ _021FA23E:
 	lsl r1, r1, #0xc
 	str r1, [sp, #0x30]
 	add r1, sp, #0x2c
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r4, #0x44]
 	mov r1, #1
 	mov r2, #0
 	bl ov96_021EB52C
 	add r0, r6, #0
 	mov r1, #3
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	ldr r0, [sp, #0x58]
 	mov r1, #0x68
 	mov r2, #7
@@ -42478,10 +42478,10 @@ _021FA23E:
 	add r0, r6, #0
 	add r1, sp, #0x20
 	str r5, [sp, #0x20]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r6, #0
 	mov r1, #4
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	add r0, r6, #0
 	mov r1, #2
 	bl sub_0202487C
@@ -42502,14 +42502,14 @@ _021FA23E:
 	str r5, [sp, #0x14]
 	add r0, r6, #0
 	add r1, sp, #0x14
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r1, #1
 	ldr r0, [r4, #0x4c]
 	add r2, r1, #0
 	bl ov96_021EB52C
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	mov r0, #0xfe
 	lsl r0, r0, #0x16
 	str r0, [r4, #0xc]
@@ -43429,7 +43429,7 @@ _021FAA6A:
 	ldr r0, [r4, #0x20]
 	bl ov96_021EB5B8
 	add r5, r0, #0
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r6, r0, #0
 	add r3, sp, #0x18
 	ldmia r6!, {r0, r1}
@@ -43442,7 +43442,7 @@ _021FAA6A:
 	lsl r0, r0, #0xc
 	str r0, [sp, #0x1c]
 	add r0, r5, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r4]
 	add r1, sp, #8
 	add r2, sp, #4
@@ -43450,7 +43450,7 @@ _021FAA6A:
 	ldr r0, [r4, #0x28]
 	bl ov96_021EB5B8
 	add r4, r0, #0
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r5, r0, #0
 	add r3, sp, #0xc
 	ldmia r5!, {r0, r1}
@@ -43463,7 +43463,7 @@ _021FAA6A:
 	lsl r0, r0, #0xc
 	str r0, [sp, #0x10]
 	add r0, r4, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0x24
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -44470,7 +44470,7 @@ _021FB29C:
 	cmp r0, #0
 	beq _021FB2D2
 	add r0, r6, #0
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r3, r0, #0
 	add r2, sp, #0x24
 	ldmia r3!, {r0, r1}
@@ -44483,7 +44483,7 @@ _021FB29C:
 	lsl r0, r0, #0xe
 	str r0, [sp, #0x28]
 	add r0, r6, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r1, r5, #0
 	add r0, r6, #0
 	add r1, #0xb
@@ -46055,11 +46055,11 @@ ov96_021FBEDC: ; 0x021FBEDC
 	add r4, r1, #0
 	bl ov96_021EB5B8
 	add r1, r4, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r5, #8]
 	bl ov96_021EB5B8
 	add r1, r4, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov96_021FBEDC
 
@@ -46079,7 +46079,7 @@ ov96_021FBEFC: ; 0x021FBEFC
 	bl ov96_021EB5B8
 	str r0, [sp]
 	add r0, r6, #0
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r3, r0, #0
 	add r2, sp, #4
 	ldmia r3!, {r0, r1}
@@ -46093,10 +46093,10 @@ ov96_021FBEFC: ; 0x021FBEFC
 	str r0, [sp, #8]
 	add r0, r6, #0
 	add r1, r7, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [sp]
 	add r1, r7, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x82
 	ldr r1, [sp, #8]
 	lsl r0, r0, #0xe
@@ -46116,7 +46116,7 @@ ov96_021FBF5C: ; 0x021FBF5C
 	ldr r0, [r0, #4]
 	add r4, r1, #0
 	bl ov96_021EB5B8
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	mov r1, #0x40
 	strh r1, [r4, #4]
 	mov r1, #0x10
@@ -46536,19 +46536,19 @@ ov96_021FC248: ; 0x021FC248
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x62
 	add r1, r5, r4
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x63
 	add r1, r5, r4
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {r4, r5, pc}
 	thumb_func_end ov96_021FC248
@@ -46892,17 +46892,17 @@ _021FC52A:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #2
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #3
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	mov r0, #0x63
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	ldr r0, [sp]
 	ldr r2, [sp, #4]
 	add r1, r4, #0
@@ -47419,7 +47419,7 @@ _021FC8C6:
 	bl ov96_021E6290
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	ldr r0, [sp, #0x34]
 	add r1, r0, #0
 	ldr r1, [r1, #0x18]
@@ -53873,10 +53873,10 @@ _021FFCCE:
 	bl ov96_021EB588
 	ldr r0, [r4]
 	add r1, sp, #0xc
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r4, #4]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r1, #1
 	ldr r0, [r4, #8]
 	add r2, r1, #0
@@ -54601,7 +54601,7 @@ _0220028E:
 	mov r0, #0x5f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x5f
 	lsl r0, r0, #2
 	ldrb r1, [r6]
@@ -55638,7 +55638,7 @@ _02200B10:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #2
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #6
@@ -55651,7 +55651,7 @@ _02200B28:
 	ldr r0, [r4, r0]
 	bl ov96_021EB5B8
 	mov r1, #2
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #2
@@ -55896,7 +55896,7 @@ _02200CD8:
 	add r1, r2, r1
 	str r1, [sp, #0x20]
 	add r1, sp, #0x1c
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x15
 	lsl r0, r0, #4
 	mov r1, #1
@@ -57209,7 +57209,7 @@ _022016A2:
 	bl ov96_021E6290
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	add r0, r6, #0
 	bl ov96_021E5F24
 	add r2, r0, #0
@@ -58125,10 +58125,10 @@ _02201F02:
 	str r0, [sp, #0x58]
 	ldr r0, [r5, #0x50]
 	add r1, sp, #0x50
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r5, #0x50]
 	mov r1, #2
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	ldr r0, [sp, #0x10]
 	add r5, r5, #4
 	add r0, r0, #1
@@ -63383,7 +63383,7 @@ _0220494E:
 	bl ov96_021E6290
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	ldr r0, [sp, #0x38]
 	add r1, r0, #0
 	ldr r1, [r1, #0x20]
@@ -70290,7 +70290,7 @@ _02208086:
 	mov r0, #0x6d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x6d
 	lsl r0, r0, #2
 	ldrb r1, [r6]
@@ -71152,7 +71152,7 @@ _02208790:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #2
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #2
@@ -71165,7 +71165,7 @@ _022087A8:
 	ldr r0, [r4, r0]
 	bl ov96_021EB5B8
 	mov r1, #2
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #2
@@ -71417,7 +71417,7 @@ _02208960:
 	add r1, r2, r1
 	str r1, [sp, #0x20]
 	add r1, sp, #0x1c
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x13
 	lsl r0, r0, #4
 	mov r1, #1
@@ -73036,7 +73036,7 @@ _022095E0:
 	bl ov96_021E61D8
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	ldr r0, [sp, #0xc]
 	bl ov96_021E5DEC
 	b _02209722
@@ -73412,10 +73412,10 @@ _02209926:
 	bl ov96_021EA584
 	str r0, [r4, #0x2c]
 	add r1, sp, #0x14
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r4, #0x2c]
 	mov r1, #2
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	ldr r0, [r4, #0x2c]
 	mov r1, #1
 	bl Set2dSpriteAnimSeqNo
@@ -73465,7 +73465,7 @@ _0220998A:
 	str r0, [sp, #0x10]
 	ldr r0, [r4, #0x38]
 	add r1, sp, #8
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r4, #0x38]
 	mov r1, #1
 	bl Set2dSpriteVisibleFlag
@@ -74484,7 +74484,7 @@ _0220A1CC:
 	cmp r0, #0
 	bne _0220A1E4
 	ldr r0, [r5, #0xc]
-	bl sub_0200DCAC
+	bl UnkImageStruct_ResetSpriteAnimCtrlState
 	ldr r0, [r5, #0xc]
 	mov r1, #1
 	bl UnkImageStruct_SetSpriteVisibleFlag
@@ -75659,7 +75659,7 @@ _0220AB16:
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	mov r7, #7
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	cmp r4, #0
 	bne _0220AB3C
 	ldr r0, [sp, #0x38]
@@ -75776,7 +75776,7 @@ _0220AC08:
 	ldr r0, [r4]
 	add r1, #2
 	add r2, sp, #0x18
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	ldr r0, [r4, #4]
 	mov r1, #0
 	bl UnkImageStruct_SetSpriteVisibleFlag
@@ -75830,7 +75830,7 @@ _0220AC78:
 	ldr r0, [r5, #0x10]
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r0, [r5, #0x10]
 	mov r1, #6
 	bl UnkImageStruct_SetSpriteAnimSeqNo
@@ -76154,7 +76154,7 @@ _0220AEDE:
 	ldr r0, [r4]
 	mov r1, #0x78
 	mov r2, #0
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r0, [r4]
 	mov r1, #1
 	bl UnkImageStruct_SetSpriteVisibleFlag
@@ -76226,23 +76226,23 @@ ov96_0220AF64: ; 0x0220AF64
 	ldr r0, [r5]
 	mov r1, #0
 	lsr r2, r2, #0x18
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 	ldr r2, [r5, #0x10]
 	ldr r0, [r5, #4]
 	lsl r2, r2, #0x14
 	mov r1, #0
 	lsr r2, r2, #0x18
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 	add r1, sp, #0
 	ldr r0, [r5, #4]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	add r1, sp, #0
 	ldr r0, [r5]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	add r3, sp, #0
 	mov r2, #0
 	ldrsh r0, [r3, r2]
@@ -76253,7 +76253,7 @@ ov96_0220AF64: ; 0x0220AF64
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	ldr r0, [r5]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	add r0, r5, #0
 	bl ov96_0220B068
 	ldr r1, [r5, #0x10]
@@ -76352,7 +76352,7 @@ _0220B072:
 	ldrsh r1, [r2, r1]
 	ldrsh r2, [r2, r3]
 	ldr r0, [r4, #4]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov96_0220B068
 
@@ -76392,7 +76392,7 @@ _0220B0D0:
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
 	ldr r0, [r6, #4]
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	mov r0, #0
 	cmp r5, #0
 	ble _0220B11E
@@ -76454,7 +76454,7 @@ _0220B158:
 	ldr r0, [r5]
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov96_0220B148
 
@@ -76625,9 +76625,9 @@ _0220B2A0:
 	ldr r0, [r5]
 	ldr r2, [sp, #4]
 	add r1, r7, #0
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r0, [r5]
-	bl sub_0200DCAC
+	bl UnkImageStruct_ResetSpriteAnimCtrlState
 	ldr r0, [r5]
 	mov r1, #1
 	bl UnkImageStruct_SetSpriteVisibleFlag
@@ -76674,7 +76674,7 @@ ov96_0220B2D4: ; 0x0220B2D4
 	ldrsh r1, [r4, r1]
 	ldrsh r2, [r4, r2]
 	ldr r0, [r4]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	mov r0, #0x10
 	ldrsh r1, [r4, r0]
 	cmp r1, #0
@@ -76784,7 +76784,7 @@ ov96_0220B374: ; 0x0220B374
 	add r1, #2
 	add r2, sp, #0x14
 	lsl r3, r3, #0x14
-	bl sub_0200DE94
+	bl UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 	add r3, sp, #0x10
 	mov r7, #4
 	ldrsh r0, [r3, r7]
@@ -76808,7 +76808,7 @@ ov96_0220B374: ; 0x0220B374
 	add r1, #2
 	add r2, sp, #0x14
 	lsl r3, r7, #0x12
-	bl sub_0200DE94
+	bl UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 	add r3, sp, #0x10
 	ldrsh r0, [r3, r7]
 	mov r2, #6
@@ -76830,7 +76830,7 @@ ov96_0220B374: ; 0x0220B374
 	ldr r0, [r4, #0x10]
 	add r1, #2
 	add r2, sp, #0x10
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	mov r0, #0x11
 	str r0, [sp]
 	mov r0, #0x1a
@@ -77038,7 +77038,7 @@ _0220B5E2:
 	ldr r0, [r4, #0x10]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	mov r0, #4
 	add r3, sp, #0
 	mov r1, #2
@@ -77055,7 +77055,7 @@ _0220B5E2:
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	ldr r0, [r4, #0x14]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	add r3, sp, #0
 	mov r2, #0
 	ldrsh r0, [r3, r2]
@@ -77065,7 +77065,7 @@ _0220B5E2:
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	ldr r0, [r4, #0x18]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 _0220B628:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
@@ -77608,7 +77608,7 @@ _0220B9C6: ; jump table
 	.short _0220BD10 - _0220B9C6 - 2 ; case 6
 _0220B9D4:
 	ldr r0, [r4, #0x1c]
-	bl sub_0200DCAC
+	bl UnkImageStruct_ResetSpriteAnimCtrlState
 	ldr r0, [r4, #0x1c]
 	mov r1, #1
 	bl UnkImageStruct_SetSpriteVisibleFlag
@@ -77642,7 +77642,7 @@ _0220BA02:
 	b _0220BD1E
 _0220BA1A:
 	ldr r0, [r4, #0x20]
-	bl sub_0200DCAC
+	bl UnkImageStruct_ResetSpriteAnimCtrlState
 	ldr r0, [r4, #0x20]
 	mov r1, #0
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
@@ -77679,7 +77679,7 @@ _0220BA68:
 	ldr r0, [r4, #0x20]
 	add r1, #2
 	add r2, sp, #0xc
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	mov r3, #8
 	add r1, sp, #4
 	add r0, r3, #0
@@ -77749,14 +77749,14 @@ _0220BAF0:
 	ldr r0, [r4, #0x20]
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x11
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	add r1, sp, #0xc
 	mov r3, #1
 	ldr r0, [r4, #0x28]
 	add r1, #2
 	add r2, sp, #0xc
 	lsl r3, r3, #0x14
-	bl sub_0200DE94
+	bl UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 	add r1, sp, #4
 	mov r0, #8
 	ldrsh r1, [r1, r0]
@@ -77795,7 +77795,7 @@ _0220BB4E:
 	add r1, #2
 	add r2, sp, #8
 	lsl r3, r3, #0x14
-	bl sub_0200DE94
+	bl UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 	add r1, sp, #4
 	mov r0, #4
 	ldrsh r1, [r1, r0]
@@ -77829,7 +77829,7 @@ _0220BB7A:
 	add r1, #2
 	add r2, sp, #8
 	lsl r3, r3, #0x14
-	bl sub_0200DE94
+	bl UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 	mov r3, #4
 	ldrsh r0, [r6, r3]
 	mov r1, #6
@@ -77878,7 +77878,7 @@ _0220BBD0:
 	ldr r0, [r4, #0x20]
 	sub r2, #0x90
 	lsl r3, r3, #0x14
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, _0220BD30 ; =0x000008B5
 	bl PlaySE
 	ldr r1, [r4, #0x44]
@@ -77902,7 +77902,7 @@ _0220BC2E:
 	ldr r0, [r4, #0x20]
 	add r1, #2
 	add r2, sp, #4
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	add r1, sp, #4
 	mov r0, #0
 	ldrsh r1, [r1, r0]
@@ -77933,12 +77933,12 @@ _0220BC56:
 	ldr r0, [r4, #0x20]
 	mov r1, #0x88
 	mov r2, #0x70
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r0, [r4, #0x20]
 	mov r1, #1
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	ldr r0, [r4, #0x1c]
-	bl sub_0200DCAC
+	bl UnkImageStruct_ResetSpriteAnimCtrlState
 	ldr r1, [r4, #0x44]
 	ldr r0, _0220BD28 ; =0xFFFF03FF
 	add r2, r1, #0
@@ -77957,7 +77957,7 @@ _0220BCA0:
 	ldrsh r1, [r1, r3]
 	ldr r0, [r4, #0x20]
 	lsl r3, r3, #0x13
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 _0220BCB0:
@@ -78362,7 +78362,7 @@ _0220BFE8:
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	add r0, r5, #0
 	add r1, r7, #0
 	bl UnkImageStruct_TryChangeSpriteAnimSeqNo
@@ -78518,7 +78518,7 @@ _0220C112:
 	ldr r0, [r5, #0x20]
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r0, [r5, #0x20]
 	mov r1, #5
 	bl UnkImageStruct_SetSpriteAnimSeqNo
@@ -78570,7 +78570,7 @@ _0220C17A: ; jump table
 _0220C188:
 	ldr r5, [r4, #0x2c]
 	add r0, r5, #0
-	bl sub_0200DCAC
+	bl UnkImageStruct_ResetSpriteAnimCtrlState
 	add r0, r5, #0
 	mov r1, #1
 	bl UnkImageStruct_SetSpriteVisibleFlag
@@ -78639,7 +78639,7 @@ _0220C216:
 	ldr r0, [r4, #0x30]
 	add r1, #2
 	add r2, sp, #4
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	mov r3, #4
 	add r1, sp, #0
 	add r0, r3, #0
@@ -78679,7 +78679,7 @@ _0220C25E:
 	ldrsh r1, [r1, r4]
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x12
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	add sp, #8
 	pop {r3, r4, r5, pc}
 _0220C274:
@@ -78721,7 +78721,7 @@ _0220C2B2:
 	ldr r0, [r4, #0x30]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	add r1, sp, #0
 	mov r0, #0
 	ldrsh r1, [r1, r0]
@@ -78758,12 +78758,12 @@ _0220C2DA:
 	mov r1, #2
 	ldrsh r1, [r5, r1]
 	ldr r0, [r4, #0x30]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r0, [r4, #0x30]
 	mov r1, #1
 	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	ldr r0, [r4, #0x2c]
-	bl sub_0200DCAC
+	bl UnkImageStruct_ResetSpriteAnimCtrlState
 	ldr r2, [r4, #0x38]
 	mov r1, #0x3c
 	add r0, r2, #0
@@ -78782,7 +78782,7 @@ _0220C32E:
 	ldrsh r1, [r5, r3]
 	ldr r0, [r4, #0x30]
 	lsl r3, r3, #0x13
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	add sp, #8
 	pop {r3, r4, r5, pc}
 _0220C33E:
@@ -79554,7 +79554,7 @@ ov96_0220C90C: ; 0x0220C90C
 	add r1, r7, #0
 	add r2, r4, #0
 	lsl r3, r3, #0x14
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	add r0, r5, r6
 	sub r4, #0x18
 	lsl r2, r4, #0x10
@@ -79563,7 +79563,7 @@ ov96_0220C90C: ; 0x0220C90C
 	add r1, r7, #0
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x14
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov96_0220C90C
 
@@ -82091,18 +82091,18 @@ _0220DBFA:
 	add r1, r4, #0
 	add r2, r6, #0
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	mov r3, #0x1e
 	ldr r0, [r5, #0x14]
 	add r1, r4, #0
 	add r2, r6, #0
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [r5, #0x10]
 	add r1, r7, #0
 	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5, #0x14]
-	bl sub_0200DCAC
+	bl UnkImageStruct_ResetSpriteAnimCtrlState
 	ldr r0, [r5, #0x10]
 	mov r1, #1
 	bl UnkImageStruct_SetSpriteVisibleFlag
@@ -82365,13 +82365,13 @@ _0220DDDE:
 	ldr r1, [sp, #4]
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	mov r3, #0x1e
 	ldr r0, [r6, #8]
 	ldr r1, [sp, #4]
 	add r2, r7, #0
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 _0220DE46:
 	ldr r1, [r4, #0x18]
 	ldr r0, _0220DE8C ; =0xFF00FFFF
@@ -82536,12 +82536,12 @@ _0220DF68:
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [r5]
 	mov r1, #1
 	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r5]
-	bl sub_0200DCAC
+	bl UnkImageStruct_ResetSpriteAnimCtrlState
 	add r0, r4, #0
 	mov r1, #0
 	bl ov96_0220D554
@@ -83171,7 +83171,7 @@ _0220E4C4:
 	bl ov96_021E61D8
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	add r0, r5, #0
 	bl ov96_021E5DEC
 	b _0220E5CA
@@ -85396,7 +85396,7 @@ _0220F50C:
 	add r1, r4, #0
 	bl ov96_021E64F8
 	mov r1, #4
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	add r0, r4, #0
 	mov r1, #6
 	bl ov96_021EABA8
@@ -87656,7 +87656,7 @@ _0221078C:
 	bl ov96_022104D8
 	mov r1, #3
 	str r0, [r6, #0x68]
-	bl sub_0200DD54
+	bl UnkImageStruct_SetSpritePriority
 	add r4, r4, #1
 	cmp r4, #2
 	blt _0221077E
@@ -88890,7 +88890,7 @@ _022111A6:
 	bl ov96_021E6290
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	mov r2, #0x75
 	lsl r2, r2, #4
 	ldr r1, [r4, r2]
@@ -95843,7 +95843,7 @@ _0221479A:
 	mov r0, #0
 	str r0, [sp, #0x10]
 	ldr r0, [r5, #8]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r1, _022147F8 ; =ov96_0221D64C
 	ldr r0, [r5, #8]
 	ldrb r1, [r1, r4]
@@ -98523,7 +98523,7 @@ _02215BA0:
 	bl ov96_021E61D8
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	add r0, r5, #0
 	bl ov96_021E5DEC
 	b _02215CA4
@@ -100017,12 +100017,12 @@ _0221679E:
 	ldrsh r2, [r5, r2]
 	ldr r0, [r4, #0x10]
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [r4, #0x10]
 	mov r1, #1
 	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x10]
-	bl sub_0200DCAC
+	bl UnkImageStruct_ResetSpriteAnimCtrlState
 	mov r1, #0
 	mov r2, #2
 	mov r3, #0x1e
@@ -100030,7 +100030,7 @@ _0221679E:
 	ldrsh r2, [r5, r2]
 	ldr r0, [r4, #0xc]
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [r4, #0xc]
 	mov r1, #1
 	bl UnkImageStruct_SetSpriteVisibleFlag
@@ -100065,7 +100065,7 @@ _02216810:
 	ldr r0, [r4, #0xc]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	add r3, sp, #0
 	mov r2, #0
 	ldrsh r0, [r3, r2]
@@ -100077,7 +100077,7 @@ _02216810:
 	mov r3, #0x1e
 	ldr r0, [r4, #0xc]
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	mov r1, #0xe2
 	ldrsb r0, [r4, r1]
 	add r2, r0, #1
@@ -100241,7 +100241,7 @@ _0221695C:
 	ldr r0, [r4, #0xc]
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [r4, #0xc]
 	mov r1, #1
 	bl UnkImageStruct_SetSpriteVisibleFlag
@@ -100273,7 +100273,7 @@ _022169B0:
 	ldr r0, [r4, #0xc]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	add r3, sp, #0
 	mov r2, #0
 	ldrsh r0, [r3, r2]
@@ -100285,7 +100285,7 @@ _022169B0:
 	mov r3, #0x1e
 	ldr r0, [r4, #0xc]
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	mov r1, #0xe2
 	ldrsb r0, [r4, r1]
 	add r2, r0, #1
@@ -100368,9 +100368,9 @@ ov96_02216A54: ; 0x02216A54
 	ldrsh r2, [r4, r2]
 	ldr r0, [r5, #0x10]
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [r5, #0x10]
-	bl sub_0200DCAC
+	bl UnkImageStruct_ResetSpriteAnimCtrlState
 	ldr r0, [r5, #0xc]
 	mov r1, #0
 	bl UnkImageStruct_SetSpriteVisibleFlag
@@ -100901,9 +100901,9 @@ _02216E62:
 	mov r3, #0x1e
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [r4, #0x14]
-	bl sub_0200DCAC
+	bl UnkImageStruct_ResetSpriteAnimCtrlState
 	ldr r0, [r4, #0x14]
 	mov r1, #1
 	bl UnkImageStruct_SetSpriteVisibleFlag
@@ -101084,7 +101084,7 @@ _02216FE6:
 	ldrb r2, [r5, #1]
 	ldr r0, [r4, #4]
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 _02216FFE:
 	ldrb r0, [r5, #4]
 	lsl r0, r0, #0x1c
@@ -101160,7 +101160,7 @@ _02217064:
 	ldr r0, [r4, #8]
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [sp, #0x20]
 	cmp r0, #0
 	bne _0221709C
@@ -101291,12 +101291,12 @@ _02217174:
 	ldrb r2, [r5, #1]
 	ldr r0, [r4, #0x10]
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [r4, #0x10]
 	mov r1, #1
 	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4, #0x10]
-	bl sub_0200DCAC
+	bl UnkImageStruct_ResetSpriteAnimCtrlState
 	ldr r0, [sp, #0xc]
 	bl ov96_021E5F24
 	cmp r6, r0
@@ -106270,7 +106270,7 @@ _022197C8:
 	add r1, #2
 	add r2, sp, #8
 	lsl r3, r3, #0x10
-	bl sub_0200DE94
+	bl UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 	add r0, sp, #4
 	mov r1, #4
 	ldrsh r1, [r0, r1]
@@ -106340,7 +106340,7 @@ _02219856:
 	add r1, #2
 	add r2, sp, #4
 	lsl r3, r3, #0x10
-	bl sub_0200DE94
+	bl UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 	add r1, sp, #4
 	mov r0, #0
 	ldrsh r0, [r1, r0]
@@ -106381,7 +106381,7 @@ _02219890:
 	add r1, #2
 	add r2, sp, #4
 	lsl r3, r3, #0x10
-	bl sub_0200DE94
+	bl UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 	mov r3, #0
 	ldrsh r0, [r6, r3]
 	mov r2, #2
@@ -107157,7 +107157,7 @@ _02219E88:
 	add r0, #0xa8
 	ldr r0, [r0]
 	add r1, sp, #8
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r4, #0
 	add r0, #0xa8
 	ldr r0, [r0]
@@ -107219,7 +107219,7 @@ ov96_02219F20: ; 0x02219F20
 	add r1, r7, #0
 	add r2, r4, #0
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	add r0, r5, r6
 	sub r4, #0x18
 	lsl r2, r4, #0x10
@@ -107228,7 +107228,7 @@ ov96_02219F20: ; 0x02219F20
 	add r1, r7, #0
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov96_02219F20
 

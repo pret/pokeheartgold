@@ -37,8 +37,8 @@
 .public sub_0200D9DC
 .public UnkImageStruct_TickSpriteAnimation1Frame
 .public UnkImageStruct_SetSpriteVisibleFlag
-.public sub_0200DD54
-.public sub_0200DDB8
+.public UnkImageStruct_SetSpritePriority
+.public UnkImageStruct_SetSpritePositionXY
 .public sub_0200E374
 .public DestroySysTask
 .public BeginNormalPaletteFade

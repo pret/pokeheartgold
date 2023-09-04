@@ -109,11 +109,11 @@
 .public sub_0202457C
 .public CreateSprite
 .public Sprite_Delete
-.public sub_020247D4
+.public Sprite_SetMatrix
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public sub_02024868
-.public sub_020248AC
+.public Sprite_GetMatrixPtr
 .public Set2dSpriteAnimSeqNo
 .public TryChange2dSpriteAnimSeqNo
 .public sub_02024AA8

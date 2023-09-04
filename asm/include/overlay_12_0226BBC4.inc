@@ -15,7 +15,7 @@
 .public UnkImageStruct_TickSpriteAnimation1Frame
 .public UnkImageStruct_SetSpriteVisibleFlag
 .public UnkImageStruct_GetSpriteVisibleFlag
-.public sub_0200DDF4
+.public UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 .public CreateSysTask
 .public DestroySysTask
 .public AllocFromHeap

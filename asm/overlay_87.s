@@ -5008,11 +5008,11 @@ _021E7FDC: .word Set2dSpriteVisibleFlag
 
 	thumb_func_start ov87_021E7FE0
 ov87_021E7FE0: ; 0x021E7FE0
-	ldr r3, _021E7FE8 ; =sub_02024ADC
+	ldr r3, _021E7FE8 ; =Sprite_SetDrawPriority
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_021E7FE8: .word sub_02024ADC
+_021E7FE8: .word Sprite_SetDrawPriority
 	thumb_func_end ov87_021E7FE0
 
 	thumb_func_start ov87_021E7FEC
@@ -5033,7 +5033,7 @@ ov87_021E7FEC: ; 0x021E7FEC
 _021E8006:
 	ldr r0, [r0, #0xc]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
@@ -5045,7 +5045,7 @@ ov87_021E8014: ; 0x021E8014
 	ldr r0, [r0, #0xc]
 	add r5, r1, #0
 	add r4, r2, #0
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	ldr r2, [r0]
 	asr r1, r2, #0xb
 	lsr r1, r1, #0x14

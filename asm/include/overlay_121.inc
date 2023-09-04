@@ -78,11 +78,11 @@
 .public sub_0202457C
 .public CreateSprite
 .public Sprite_Delete
-.public sub_020247D4
+.public Sprite_SetMatrix
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public Set2dSpriteAnimSeqNo
-.public sub_02024A04
+.public Sprite_SetPriority
 .public sub_0202529C
 .public System_GetTouchHeld
 .public System_GetTouchNew

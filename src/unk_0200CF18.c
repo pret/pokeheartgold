@@ -667,16 +667,16 @@ BOOL sub_0200DCA0(UnkImageStruct* unk) {
     return sub_0200DC98(unk->sprite);
 }
 
-void sub_0200DCAC(UnkImageStruct* unk) {
-    sub_02024964(unk->sprite);
+void UnkImageStruct_ResetSpriteAnimCtrlState(UnkImageStruct* unk) {
+    Sprite_ResetAnimCtrlState(unk->sprite);
 }
 
-void sub_0200DCB8(Sprite* sprite) {
-    sub_020249D4(sprite);
+void thunk_Sprite_SetAnimCtrlCurrentFrame(Sprite* sprite, u16 frameIndex) {
+    Sprite_SetAnimCtrlCurrentFrame(sprite, frameIndex);
 }
 
-void sub_0200DCC0(UnkImageStruct *unk) {
-    sub_0200DCB8(unk->sprite);
+void UnkImageStruct_SetSpriteAnimCtrlCurrentFrame(UnkImageStruct *unk, u16 frameIndex) {
+    thunk_Sprite_SetAnimCtrlCurrentFrame(unk->sprite, frameIndex);
 }
 
 u16 thunk_Sprite_GetAnimCtrlCurrentFrame(Sprite* sprite) {
@@ -711,154 +711,154 @@ void UnkImageStruct_SetSpritePalIndex(UnkImageStruct* unk, int a1) {
     thunk_Sprite_SetPalIndex(unk->sprite, a1);
 }
 
-void sub_0200DD1C(Sprite* sprite, u8 a1) {
-    sub_02024A74(sprite, a1);
+void thunk_Sprite_SetPalOffset(Sprite* sprite, u8 a1) {
+    Sprite_SetPalOffset(sprite, a1);
 }
 
-void sub_0200DD24(UnkImageStruct* unk, u8 a1) {
-    sub_0200DD1C(unk->sprite, a1);
+void UnkImageStruct_SetSpritePalOffset(UnkImageStruct* unk, u8 a1) {
+    thunk_Sprite_SetPalOffset(unk->sprite, a1);
 }
 
-u8 sub_0200DD30(UnkImageStruct* unk) {
-    return sub_02024ACC(unk->sprite);
+u8 UnkImageStruct_GetSpritePalOffset(UnkImageStruct* unk) {
+    return Sprite_GetPalOffset(unk->sprite);
 }
 
-void sub_0200DD3C(Sprite* sprite, int a1) {
-    sub_02024A04(sprite, a1);
+void thunk_Sprite_SetPriority(Sprite* sprite, int a1) {
+    Sprite_SetPriority(sprite, a1);
 }
 
-int sub_0200DD48(UnkImageStruct* unk) {
-    return sub_02024A0C(unk->sprite);
+int UnkImageStruct_GetSpritePriority(UnkImageStruct* unk) {
+    return Sprite_GetPriority(unk->sprite);
 }
 
-void sub_0200DD54(UnkImageStruct* unk, int a1) {
-    sub_0200DD3C(unk->sprite, a1);
+void UnkImageStruct_SetSpritePriority(UnkImageStruct* unk, int a1) {
+    thunk_Sprite_SetPriority(unk->sprite, a1);
 }
 
-void sub_0200DD60(Sprite* sprite, u16 a1) {
-    sub_02024ADC(sprite, a1);
+void thunk_Sprite_SetDrawPriority(Sprite* sprite, u16 a1) {
+    Sprite_SetDrawPriority(sprite, a1);
 }
 
-void sub_0200DD68(UnkImageStruct* unk, u16 a1) {
-    sub_0200DD60(unk->sprite, a1);
+void UnkImageStruct_SetSpriteDrawPriority(UnkImageStruct* unk, u16 a1) {
+    thunk_Sprite_SetDrawPriority(unk->sprite, a1);
 }
 
-u16 sub_0200DD74(Sprite* sprite) {
-    return sub_02024AF8(sprite);
+u16 thunk_Sprite_GetDrawPriority(Sprite* sprite) {
+    return Sprite_GetDrawPriority(sprite);
 }
 
-u16 sub_0200DD7C(UnkImageStruct* unk) {
-    return sub_0200DD74(unk->sprite);
+u16 UnkImageStruct_GetSpriteDrawPriority(UnkImageStruct* unk) {
+    return thunk_Sprite_GetDrawPriority(unk->sprite);
 }
 
-void sub_0200DD88(Sprite* sprite, s16 x, s16 y) {
+void Sprite_SetPositionXY(Sprite* sprite, s16 x, s16 y) {
     VecFx32 vec;
 
     vec.x = x * FX32_ONE;
     vec.y = y * FX32_ONE;
-    if (sub_02024B60(sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
+    if (Sprite_GetVramType(sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
         vec.y += GX_LCD_SIZE_Y * FX32_ONE;
     }
     vec.z = 0;
-    sub_020247D4(sprite, &vec);
+    Sprite_SetMatrix(sprite, &vec);
 }
 
-void sub_0200DDB8(UnkImageStruct* unk, s16 x, s16 y) {
-    sub_0200DD88(unk->sprite, x, y);
+void UnkImageStruct_SetSpritePositionXY(UnkImageStruct* unk, s16 x, s16 y) {
+    Sprite_SetPositionXY(unk->sprite, x, y);
 }
 
-void sub_0200DDC4(Sprite* sprite, s16 x, s16 y, fx32 yOffset) {
+void Sprite_SetPositionXY_CustomScreenYOffset(Sprite* sprite, s16 x, s16 y, fx32 yOffset) {
     VecFx32 vec;
 
     vec.x = x * FX32_ONE;
     vec.y = y * FX32_ONE;
-    if (sub_02024B60(sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
+    if (Sprite_GetVramType(sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
         vec.y += yOffset;
     }
     vec.z = 0;
-    sub_020247D4(sprite, &vec);
+    Sprite_SetMatrix(sprite, &vec);
 }
 
-void sub_0200DDF4(UnkImageStruct* unk, s16 x, s16 y, fx32 yOffset) {
-    sub_0200DDC4(unk->sprite, x, y, yOffset);
+void UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset(UnkImageStruct* unk, s16 x, s16 y, fx32 yOffset) {
+    Sprite_SetPositionXY_CustomScreenYOffset(unk->sprite, x, y, yOffset);
 }
 
-void sub_0200DE00(Sprite* sprite, s16* x, s16* y) {
-    const VecFx32* pos = sub_020248AC(sprite);
+void Sprite_GetPositionXY(Sprite* sprite, s16* x, s16* y) {
+    const VecFx32* pos = Sprite_GetMatrixPtr(sprite);
     *x = pos->x / FX32_ONE;
-    if (sub_02024B60(sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
+    if (Sprite_GetVramType(sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
         *y = (pos->y - GX_LCD_SIZE_Y * FX32_ONE) / FX32_ONE;
     } else {
         *y = pos->y / FX32_ONE;
     }
 }
 
-void sub_0200DE44(UnkImageStruct* unk, s16* x, s16* y) {
-    sub_0200DE00(unk->sprite, x, y);
+void UnkImageStruct_GetSpritePositionXY(UnkImageStruct* unk, s16* x, s16* y) {
+    Sprite_GetPositionXY(unk->sprite, x, y);
 }
 
-void sub_0200DE50(Sprite* sprite, s16* x, s16* y, fx32 yOffset) {
-    const VecFx32* pos = sub_020248AC(sprite);
+void Sprite_GetPositionXY_CustomScreenYOffset(Sprite* sprite, s16* x, s16* y, fx32 yOffset) {
+    const VecFx32* pos = Sprite_GetMatrixPtr(sprite);
     *x = pos->x / FX32_ONE;
-    if (sub_02024B60(sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
+    if (Sprite_GetVramType(sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
         *y = (pos->y - yOffset) / FX32_ONE;
     } else {
         *y = pos->y / FX32_ONE;
     }
 }
 
-void sub_0200DE94(UnkImageStruct* unk, s16* x, s16* y, fx32 yOffset) {
-    sub_0200DE50(unk->sprite, x, y, yOffset);
+void UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset(UnkImageStruct* unk, s16* x, s16* y, fx32 yOffset) {
+    Sprite_GetPositionXY_CustomScreenYOffset(unk->sprite, x, y, yOffset);
 }
 
-void sub_0200DEA0(Sprite* sprite, s16 dx, s16 dy) {
+void Sprite_AddPositionXY(Sprite* sprite, s16 dx, s16 dy) {
     VecFx32 vec;
-    const VecFx32* pos = sub_020248AC(sprite);
+    const VecFx32* pos = Sprite_GetMatrixPtr(sprite);
     vec.x = pos->x + dx * FX32_ONE;
     vec.y = pos->y + dy * FX32_ONE;
     vec.z = pos->z;
-    sub_020247D4(sprite, &vec);
+    Sprite_SetMatrix(sprite, &vec);
 }
 
-void sub_0200DED0(UnkImageStruct* unk, s16 dx, s16 dy) {
-    sub_0200DEA0(unk->sprite, dx, dy);
+void UnkImageStruct_AddSpritePositionXY(UnkImageStruct* unk, s16 dx, s16 dy) {
+    Sprite_AddPositionXY(unk->sprite, dx, dy);
 }
 
-void sub_0200DEDC(UnkImageStruct* unk, fx32 dx, fx32 dy) {
+void UnkImageStruct_AddSpritePrecisePositionXY(UnkImageStruct* unk, fx32 dx, fx32 dy) {
     VecFx32 vec;
-    const VecFx32* pos = sub_020248AC(unk->sprite);
+    const VecFx32* pos = Sprite_GetMatrixPtr(unk->sprite);
     vec.x = pos->x + dx;
     vec.y = pos->y + dy;
     vec.z = pos->z;
-    sub_020247D4(unk->sprite, &vec);
+    Sprite_SetMatrix(unk->sprite, &vec);
 }
 
-void sub_0200DF08(UnkImageStruct* unk, fx32 x, fx32 y) {
+void UnkImageStruct_SetSpritePrecisePositionXY_NoBottomScreenCorrection(UnkImageStruct* unk, fx32 x, fx32 y) {
     VecFx32 vec;
-    const VecFx32* pos = sub_020248AC(unk->sprite);
+    const VecFx32* pos = Sprite_GetMatrixPtr(unk->sprite);
     vec.x = x;
     vec.y = y;
     vec.z = pos->z;
-    sub_020247D4(unk->sprite, &vec);
+    Sprite_SetMatrix(unk->sprite, &vec);
 }
 
-void sub_0200DF2C(UnkImageStruct* unk, fx32* x, fx32* y) {
-    const VecFx32* pos = sub_020248AC(unk->sprite);
+void UnkImageStruct_GetSpritePositionXY_NoBottomScreenCorrection(UnkImageStruct* unk, fx32* x, fx32* y) {
+    const VecFx32* pos = Sprite_GetMatrixPtr(unk->sprite);
     *x = pos->x;
     *y = pos->y;
 }
 
-void sub_0200DF44(UnkImageStruct* unk, fx32 x, fx32 y, fx32 yOffset) {
-    if (sub_02024B60(unk->sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
-        sub_0200DF08(unk, x, y + yOffset);
+void UnkImageStruct_SetSpritePrecisePositionXY(UnkImageStruct* unk, fx32 x, fx32 y, fx32 yOffset) {
+    if (Sprite_GetVramType(unk->sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
+        UnkImageStruct_SetSpritePrecisePositionXY_NoBottomScreenCorrection(unk, x, y + yOffset);
     } else {
-        sub_0200DF08(unk, x, y);
+        UnkImageStruct_SetSpritePrecisePositionXY_NoBottomScreenCorrection(unk, x, y);
     }
 }
 
-void sub_0200DF70(UnkImageStruct* unk, fx32* x, fx32* y, fx32 yOffset) {
-    sub_0200DF2C(unk, x, y);
-    if (sub_02024B60(unk->sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
+void UnkImageStruct_GetSpritePrecisePositionXY(UnkImageStruct* unk, fx32* x, fx32* y, fx32 yOffset) {
+    UnkImageStruct_GetSpritePositionXY_NoBottomScreenCorrection(unk, x, y);
+    if (Sprite_GetVramType(unk->sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
         *y -= yOffset;
     }
 }

@@ -40,8 +40,8 @@
 .public SpriteRenderer_Delete
 .public sub_0200D2A4
 .public SpriteRenderer_CreateSprite
-.public sub_0200DD88
-.public sub_0200DEA0
+.public Sprite_SetPositionXY
+.public Sprite_AddPositionXY
 .public sub_0200E248
 .public CreateSysTask
 .public DestroySysTask
@@ -99,9 +99,9 @@
 .public sub_02024868
 .public sub_0202487C
 .public Set2dSpriteAnimSeqNo
-.public sub_02024964
-.public sub_02024A04
-.public sub_02024ADC
+.public Sprite_ResetAnimCtrlState
+.public Sprite_SetPriority
+.public Sprite_SetDrawPriority
 .public sub_02024B68
 .public sub_02024B78
 .public sub_02025224

@@ -45,10 +45,10 @@
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public thunk_Set2dSpriteVisibleFlag
 .public thunk_Get2dSpriteVisibleFlag
-.public sub_0200DDC4
-.public sub_0200DDF4
-.public sub_0200DEA0
-.public sub_0200DED0
+.public Sprite_SetPositionXY_CustomScreenYOffset
+.public UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
+.public Sprite_AddPositionXY
+.public UnkImageStruct_AddSpritePositionXY
 .public sub_0200DF98
 .public sub_0200E074
 .public sub_0200E098

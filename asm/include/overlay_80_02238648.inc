@@ -41,12 +41,12 @@
 .public UnkImageStruct_TickSpriteAnimation1Frame
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public UnkImageStruct_GetSpriteCurrentAnimSeqNo
-.public sub_0200DCC0
+.public UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 .public UnkImageStruct_GetSpriteAnimCtrlCurrentFrame
 .public UnkImageStruct_SetSpriteVisibleFlag
 .public UnkImageStruct_GetSpriteVisibleFlag
-.public sub_0200DDB8
-.public sub_0200DE44
+.public UnkImageStruct_SetSpritePositionXY
+.public UnkImageStruct_GetSpritePositionXY
 .public sub_0200E2B0
 .public CreateSysTask
 .public sub_0200E33C

@@ -9293,7 +9293,7 @@ ov08_02220A8C: ; 0x02220A8C
 	add r0, r6, #0
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov08_02220A8C
@@ -10462,7 +10462,7 @@ ov08_022213E4: ; 0x022213E4
 	beq _02221402
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	add r0, r5, #0
 	add r1, r4, #0
 	bl UnkImageStruct_SetSpriteAnimSeqNo
@@ -11970,14 +11970,14 @@ _02221FE6:
 	add r2, r6, #0
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 	lsl r0, r5, #2
 	add r1, r4, r0
 	ldr r0, _022220A4 ; =0x00001FB8
 	add r2, r6, #0
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 	add r0, r5, #7
 	lsl r0, r0, #2
 	add r1, r4, r0
@@ -11985,7 +11985,7 @@ _02221FE6:
 	add r2, r6, #0
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 	pop {r4, r5, r6, pc}
 _02222024:
 	ldr r0, _022220A8 ; =ov08_022259C0
@@ -11999,7 +11999,7 @@ _02222024:
 	ldr r0, _022220A4 ; =0x00001FB8
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 	ldr r0, [r4]
 	add r2, r5, #0
 	ldrb r0, [r0, #0x11]
@@ -12009,7 +12009,7 @@ _02222024:
 	ldr r0, _022220A4 ; =0x00001FB8
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 	pop {r4, r5, r6, pc}
 _02222056:
 	add r0, r5, #7
@@ -12021,7 +12021,7 @@ _02222056:
 	ldrsh r2, [r2, r3]
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 	pop {r4, r5, r6, pc}
 _0222206E:
 	add r0, r5, #2
@@ -12033,7 +12033,7 @@ _0222206E:
 	ldrsh r2, [r2, r3]
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 	pop {r4, r5, r6, pc}
 _02222086:
 	sub r0, r5, #2
@@ -12045,7 +12045,7 @@ _02222086:
 	ldrsh r2, [r2, r3]
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 _0222209C:
 	pop {r4, r5, r6, pc}
 	nop
@@ -15958,7 +15958,7 @@ ov08_02223F74: ; 0x02223F74
 	add r0, r6, #0
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov08_02223F74
@@ -17177,13 +17177,13 @@ _0222491E:
 	add r0, r6, #0
 	mov r1, #0
 	mov r2, #2
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 	pop {r3, r4, r5, r6, r7, pc}
 _0222492A:
 	mov r1, #0
 	add r0, r6, #0
 	sub r2, r1, #4
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 _02224934:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

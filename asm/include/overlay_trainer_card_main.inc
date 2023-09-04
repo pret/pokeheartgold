@@ -114,8 +114,8 @@
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public Set2dSpriteAnimSeqNo
-.public sub_02024964
-.public sub_02024ADC
+.public Sprite_ResetAnimCtrlState
+.public Sprite_SetDrawPriority
 .public sub_02025320
 .public System_GetTouchNew
 .public GF_AssertFail

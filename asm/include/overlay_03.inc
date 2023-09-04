@@ -33,7 +33,7 @@
 .public BufferSafariZoneObjectName
 .public StringExpandPlaceholders
 .public thunk_Sprite_SetPalIndex
-.public sub_0200DD88
+.public Sprite_SetPositionXY
 .public CreateSysTask
 .public DestroySysTask
 .public LoadUserFrameGfx1
@@ -80,14 +80,14 @@
 .public Camera_SetStaticPtr
 .public sub_0202457C
 .public Sprite_Delete
-.public sub_020247D4
+.public Sprite_SetMatrix
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public Get2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo
 .public Sprite_TickCellOrMulticellAnimation
-.public sub_020249D4
-.public sub_02024A04
+.public Sprite_SetAnimCtrlCurrentFrame
+.public Sprite_SetPriority
 .public sub_02024B68
 .public System_GetTouchNew
 .public GF_AssertFail

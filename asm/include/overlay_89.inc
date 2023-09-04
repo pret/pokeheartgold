@@ -64,7 +64,7 @@
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public sub_0200DCA0
 .public UnkImageStruct_SetSpriteVisibleFlag
-.public sub_0200DDF4
+.public UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 .public sub_0200E2B0
 .public CreateSysTask
 .public DestroySysTask

@@ -173,7 +173,7 @@ ov12_0226BCFC: ; 0x0226BCFC
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	add r3, r6, #0
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [r5]
 	mov r1, #1
 	bl UnkImageStruct_SetSpriteVisibleFlag
@@ -303,7 +303,7 @@ _0226BDB2:
 	ldr r0, [r4]
 	ldr r3, [r4, #0x14]
 	asr r2, r2, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 _0226BE06:
 	ldrb r0, [r4, #0x1c]
 	cmp r0, #1
@@ -345,7 +345,7 @@ _0226BE3E:
 	ldr r3, [r4, #0x14]
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	mov r0, #1
 	strb r0, [r4, #0x1b]
 	ldrb r0, [r4, #0x1d]
@@ -368,7 +368,7 @@ _0226BE60:
 	ldr r3, [r4, #0x14]
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	mov r0, #0
 	strb r0, [r4, #0x1e]
 	ldrb r0, [r4, #0x1d]

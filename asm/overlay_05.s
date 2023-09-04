@@ -3220,7 +3220,7 @@ _0221D3D6:
 	add r2, r2, r3
 	lsl r2, r2, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	add r7, r7, #1
 	add r4, #0x13
 	add r5, r5, #4
@@ -3874,7 +3874,7 @@ ov05_0221D904: ; 0x0221D904
 	ldr r0, [r4, r0]
 	mov r1, #0x80
 	mov r2, #0x48
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	mov r0, #0x72
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -3895,13 +3895,13 @@ _0221D946:
 	ldr r0, [r4, r0]
 	mov r1, #0x30
 	mov r2, #0x48
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	mov r0, #0x73
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0xd0
 	mov r2, #0x48
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	b _0221D9D6
 _0221D976:
 	mov r0, #0x72
@@ -3909,13 +3909,13 @@ _0221D976:
 	ldr r0, [r4, r0]
 	mov r1, #0xd0
 	mov r2, #0x48
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	mov r0, #0x73
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0x30
 	mov r2, #0x48
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	b _0221D9D6
 _0221D994:
 	add r0, #0x2a
@@ -3927,13 +3927,13 @@ _0221D994:
 	ldr r0, [r4, r0]
 	mov r1, #0xd0
 	mov r2, #0x48
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	mov r0, #0x73
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0x30
 	mov r2, #0x48
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	b _0221D9D6
 _0221D9BA:
 	mov r0, #0x72
@@ -3941,13 +3941,13 @@ _0221D9BA:
 	ldr r0, [r4, r0]
 	mov r1, #0x30
 	mov r2, #0x48
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	mov r0, #0x73
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0xd0
 	mov r2, #0x48
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 _0221D9D6:
 	mov r0, #0x72
 	lsl r0, r0, #2
@@ -4893,7 +4893,7 @@ _0221E134:
 	ldrb r1, [r6]
 	ldrb r2, [r6, #1]
 	ldr r0, [r4, r0]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r0, [sp, #8]
 	add r7, r7, #1
 	add r0, r0, #1
@@ -5436,7 +5436,7 @@ _0221E5AE:
 	ldrb r2, [r4, #1]
 	ldr r0, [r5, r0]
 	asr r1, r1, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	add r6, r6, #1
 	add r4, r4, #2
 	add r5, r5, #4

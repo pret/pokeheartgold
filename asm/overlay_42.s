@@ -395,7 +395,7 @@ _02227346:
 	ldrsh r1, [r6, r1]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	add r0, r5, r7
 	ldr r0, [r0, #0x20]
 	cmp r0, #1
@@ -473,7 +473,7 @@ _022273E2:
 	ldrsh r1, [r6, r1]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	b _022273FC
 _022273F8:
 	mov r0, #0
@@ -528,7 +528,7 @@ ov42_02227434: ; 0x02227434
 	str r0, [sp, #8]
 	ldr r0, [r4, #4]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	beq _02227470
@@ -544,7 +544,7 @@ ov42_02227434: ; 0x02227434
 	str r0, [sp, #4]
 	ldr r0, [r4, #8]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 _02227470:
 	add sp, #0xc
 	pop {r3, r4, pc}
@@ -552,18 +552,18 @@ _02227470:
 
 	thumb_func_start ov42_02227474
 ov42_02227474: ; 0x02227474
-	ldr r3, _0222747C ; =sub_02024ADC
+	ldr r3, _0222747C ; =Sprite_SetDrawPriority
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_0222747C: .word sub_02024ADC
+_0222747C: .word Sprite_SetDrawPriority
 	thumb_func_end ov42_02227474
 
 	thumb_func_start ov42_02227480
 ov42_02227480: ; 0x02227480
 	push {r3, lr}
 	ldr r0, [r0, #4]
-	bl sub_02024AF8
+	bl Sprite_GetDrawPriority
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	pop {r3, pc}
@@ -612,11 +612,11 @@ ov42_022274C0: ; 0x022274C0
 
 	thumb_func_start ov42_022274C4
 ov42_022274C4: ; 0x022274C4
-	ldr r3, _022274CC ; =sub_020249D4
+	ldr r3, _022274CC ; =Sprite_SetAnimCtrlCurrentFrame
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_022274CC: .word sub_020249D4
+_022274CC: .word Sprite_SetAnimCtrlCurrentFrame
 	thumb_func_end ov42_022274C4
 
 	thumb_func_start ov42_022274D0
@@ -645,7 +645,7 @@ ov42_022274DC: ; 0x022274DC
 	str r1, [sp, #8]
 	ldr r0, [r0, #8]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 _022274FE:
 	add sp, #0xc
 	pop {pc}
@@ -1886,7 +1886,7 @@ ov42_02227DF8: ; 0x02227DF8
 	ldr r0, [r1, #4]
 	bne _02227E0E
 	mov r1, #1
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	pop {r3, pc}
 _02227E0E:
 	ldr r1, [r1, #0x10]
@@ -4722,7 +4722,7 @@ ov42_02229248: ; 0x02229248
 	push {r3, lr}
 	ldr r0, [r0, #4]
 	bl ov42_02227430
-	bl sub_02024ACC
+	bl Sprite_GetPalOffset
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov42_02229248

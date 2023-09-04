@@ -1494,7 +1494,7 @@ _021E6540:
 	ldr r0, [r4, #0x4c]
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x12
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	add r6, r6, #1
 	add r4, r4, #4
 	add r5, r5, #4
@@ -1512,7 +1512,7 @@ ov78_021E656C: ; 0x021E656C
 	add r5, r1, #0
 	add r6, r2, #0
 	add r4, r3, #0
-	bl sub_02024B60
+	bl Sprite_GetVramType
 	cmp r0, #3
 	beq _021E6582
 	bl GF_AssertFail
@@ -1588,7 +1588,7 @@ ov78_021E65BC: ; 0x021E65BC
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl sub_02024B60
+	bl Sprite_GetVramType
 	ldr r4, [r5, #0x38]
 	mov r1, #0x20
 	add r0, r5, r4
@@ -1762,7 +1762,7 @@ _021E6738:
 	ldr r0, [sp, #0x28]
 	bl FreeToHeap
 	add r0, r7, #0
-	bl sub_02024B60
+	bl Sprite_GetVramType
 	ldr r0, [sp, #0x24]
 	ldr r1, [r0, #0x38]
 	add r4, r0, r1

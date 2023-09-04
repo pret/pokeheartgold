@@ -15163,7 +15163,7 @@ ov44_02231800: ; 0x02231800
 	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r6, r7]
 	mov r1, #4
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	cmp r4, #1
 	bne _02231836
 	mov r0, #0x8d
@@ -15272,7 +15272,7 @@ _022318BE:
 	lsl r1, r1, #0x10
 	ldr r0, [r6, r4]
 	lsr r1, r1, #0x10
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 _022318FA:
 	mov r1, #2
 	ldr r0, [r6, r4]
@@ -16955,7 +16955,7 @@ ov44_0223254C: ; 0x0223254C
 	mov r0, #0x61
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x61
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -17000,12 +17000,12 @@ ov44_022325A4: ; 0x022325A4
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]

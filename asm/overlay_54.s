@@ -2268,7 +2268,7 @@ _021E6B64:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #2
-	bl sub_0200DD3C
+	bl thunk_Sprite_SetPriority
 	mov r0, #0xb6
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -2303,7 +2303,7 @@ _021E6BC2:
 	ldr r0, [r5, r0]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE00
+	bl Sprite_GetPositionXY
 	add r0, r6, #0
 	add r0, #0x86
 	ldrh r0, [r0]
@@ -2320,7 +2320,7 @@ _021E6BC2:
 	lsl r0, r0, #2
 	ldrsh r2, [r3, r2]
 	ldr r0, [r5, r0]
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	add r7, r7, #1
 	add r5, r5, #4
 	add r4, #0xc

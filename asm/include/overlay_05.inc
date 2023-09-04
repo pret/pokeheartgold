@@ -54,7 +54,7 @@
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public UnkImageStruct_SetSpriteVisibleFlag
 .public UnkImageStruct_SetSpritePalIndex
-.public sub_0200DDB8
+.public UnkImageStruct_SetSpritePositionXY
 .public sub_0200E2B0
 .public LoadUserFrameGfx1
 .public LoadUserFrameGfx2

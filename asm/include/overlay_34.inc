@@ -51,13 +51,13 @@
 .public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
-.public sub_020247D4
+.public Sprite_SetMatrix
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public sub_020248C0
 .public Set2dSpriteAnimSeqNo
 .public Get2dSpriteCurrentAnimSeqNo
-.public sub_020249D4
+.public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_GetAnimCtrlCurrentFrame
 .public sub_02025204
 .public sub_02025364

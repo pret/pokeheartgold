@@ -508,7 +508,7 @@ _020859A2:
 	ldrsh r1, [r4, r1]
 	ldrsh r2, [r4, r2]
 	ldr r0, [r4, #0xc]
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 	ldrb r0, [r4, #0x18]
 	sub r0, r0, #1
 	strb r0, [r4, #0x18]
@@ -582,7 +582,7 @@ _02085A2E:
 	ldrsh r1, [r4, r1]
 	ldrsh r2, [r4, r2]
 	ldr r0, [r4, r0]
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 	mov r0, #0x76
 	lsl r0, r0, #2
 	ldrb r0, [r4, r0]

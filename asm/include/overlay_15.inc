@@ -62,12 +62,12 @@
 .public UnkImageStruct_TickSpriteAnimation1Frame
 .public UnkImageStruct_SetSpriteAnimSeqNo
 .public sub_0200DCA0
-.public sub_0200DCC0
+.public UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 .public UnkImageStruct_SetSpriteVisibleFlag
 .public UnkImageStruct_SetSpritePalIndex
-.public sub_0200DD54
-.public sub_0200DDB8
-.public sub_0200DDF4
+.public UnkImageStruct_SetSpritePriority
+.public UnkImageStruct_SetSpritePositionXY
+.public UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 .public sub_0200E248
 .public sub_0200E27C
 .public LoadUserFrameGfx1

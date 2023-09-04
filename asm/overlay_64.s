@@ -1644,7 +1644,7 @@ _021E660A:
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	mov r0, #0x4e
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
@@ -1888,7 +1888,7 @@ _021E67D0:
 	ldr r0, [r0, r6]
 	asr r2, r2, #0x10
 	lsl r3, r1, #0xf
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	mov r1, #0x65
 	lsl r1, r1, #2
 	ldr r0, [r5, r1]
@@ -2338,7 +2338,7 @@ ov64_021E6BD8: ; 0x021E6BD8
 	ldrb r1, [r2]
 	ldrb r2, [r2, #1]
 	ldr r0, [r4, r0]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	cmp r5, #6
 	bne _021E6C00
 	mov r5, #4
@@ -2350,7 +2350,7 @@ _021E6C02:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	mov r0, #0x17
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]

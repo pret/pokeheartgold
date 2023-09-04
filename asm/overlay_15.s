@@ -3804,7 +3804,7 @@ ov15_021FB114: ; 0x021FB114
 	lsl r2, r2, #0x10
 	mov r1, #0xb1
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 _021FB146:
 	pop {r4, pc}
 	.balign 4, 0
@@ -5394,7 +5394,7 @@ _021FBDBC:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	mov r0, #0x2d
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -5417,7 +5417,7 @@ _021FBDEE:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	mov r0, #0xb5
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -5440,7 +5440,7 @@ _021FBE20:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	mov r0, #0xb6
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -5464,7 +5464,7 @@ _021FBE52:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	mov r0, #0xb7
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -5488,7 +5488,7 @@ _021FBE86:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	mov r0, #0x2e
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -5512,7 +5512,7 @@ _021FBEBA:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	mov r0, #0xb9
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -5642,7 +5642,7 @@ ov15_021FBFC0: ; 0x021FBFC0
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	mov r0, #0xa7
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -7406,7 +7406,7 @@ _021FCE32:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	mov r0, #0x2d
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -7429,7 +7429,7 @@ _021FCE64:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	mov r0, #0xb5
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -7453,7 +7453,7 @@ _021FCE96:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	mov r0, #0xb7
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -7477,7 +7477,7 @@ _021FCECA:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	mov r0, #0x2e
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -8543,7 +8543,7 @@ ov15_021FD788: ; 0x021FD788
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	mov r0, #0xa7
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -8620,7 +8620,7 @@ ov15_021FD810: ; 0x021FD810
 	lsl r4, r1, #2
 	ldr r0, [r5, r4]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	ldr r0, [r5, r4]
 	add r1, r6, #0
 	bl UnkImageStruct_SetSpriteAnimSeqNo
@@ -13332,7 +13332,7 @@ _021FFDE2:
 	add r0, #0x4c
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl sub_0200DD54
+	bl UnkImageStruct_SetSpritePriority
 	mov r7, #0xb
 	mov r5, #0
 	add r4, r6, #0
@@ -13340,7 +13340,7 @@ _021FFDE2:
 _021FFE1C:
 	ldr r0, [r4, r7]
 	mov r1, #1
-	bl sub_0200DD54
+	bl UnkImageStruct_SetSpritePriority
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #4
@@ -13352,7 +13352,7 @@ _021FFE1C:
 _021FFE34:
 	ldr r0, [r4, r7]
 	mov r1, #1
-	bl sub_0200DD54
+	bl UnkImageStruct_SetSpritePriority
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #8
@@ -13408,7 +13408,7 @@ _021FFE90:
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl sub_0200DD54
+	bl UnkImageStruct_SetSpritePriority
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021FFEBC: .word ov15_02200B0C
@@ -13438,7 +13438,7 @@ ov15_021FFECC: ; 0x021FFECC
 	ldrb r2, [r2, r4]
 	ldr r0, [r5, r0]
 	lsl r3, r3, #0x14
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r1, _021FFF1C ; =ov15_02200ABA
 	mov r0, #0x2a
 	lsl r0, r0, #4
@@ -13542,7 +13542,7 @@ _021FFFA0:
 	ldrb r2, [r2, r4]
 	ldr r0, [r5, r0]
 	lsl r3, r3, #0x14
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r1, _021FFFD8 ; =ov15_02200A37
 	mov r0, #0x2a
 	lsl r0, r0, #4
@@ -13577,7 +13577,7 @@ _021FFFEA:
 	ldrb r2, [r2, r4]
 	ldr r0, [r5, r0]
 	lsl r3, r3, #0x14
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r1, _02200028 ; =ov15_022009D6
 	mov r0, #0x2a
 	lsl r0, r0, #4
@@ -13764,7 +13764,7 @@ _02200152:
 	ldrsh r2, [r6, r2]
 	ldr r0, [r5, r0]
 	lsl r3, r3, #0x14
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [sp, #4]
 	cmp r4, r0
 	bge _0220019A
@@ -13844,7 +13844,7 @@ _022001F2:
 	ldrsh r2, [r4, r2]
 	ldr r0, [r5, r0]
 	lsl r3, r3, #0x14
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	cmp r6, r7
 	bne _0220021A
 	mov r0, #0x95
@@ -13961,7 +13961,7 @@ _022002CE:
 	mov r1, #0x56
 	mov r2, #0x4c
 	lsl r3, r3, #0x14
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 _022002E0:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -14104,7 +14104,7 @@ _022003D4:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	mov r0, #0xba
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -14114,7 +14114,7 @@ _022003D4:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	mov r0, #0xa7
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]

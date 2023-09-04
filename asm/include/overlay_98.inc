@@ -64,7 +64,7 @@
 .public GX_EngineBToggleLayers
 .public sub_02024B1C
 .public sub_02024B34
-.public sub_02024B60
+.public Sprite_GetVramType
 .public sub_02025320
 .public GF_AssertFail
 .public String_New

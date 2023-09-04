@@ -4905,7 +4905,7 @@ _0208A9DA:
 	ldr r0, _0208AA90 ; =0x00000428
 	mov r1, #3
 	ldr r0, [r4, r0]
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	ldr r0, _0208AA90 ; =0x00000428
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -5050,7 +5050,7 @@ _0208AB0E:
 	ldr r0, _0208AB54 ; =0x00000428
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	ldr r0, _0208AB54 ; =0x00000428
 	mov r1, #2
 	ldr r0, [r4, r0]

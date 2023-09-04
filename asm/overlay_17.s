@@ -1338,7 +1338,7 @@ _022025DC:
 	lsl r1, r1, #0x10
 	asr r1, r1, #0x10
 	mov r2, #0x38
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	mov r0, #0x5b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1347,7 +1347,7 @@ _022025DC:
 	mov r0, #0x5b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024964
+	bl Sprite_ResetAnimCtrlState
 	mov r0, #0x5b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1389,7 +1389,7 @@ _02202664:
 	mov r0, #0x5b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024964
+	bl Sprite_ResetAnimCtrlState
 	mov r0, #0x5b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1644,7 +1644,7 @@ ov17_02202850: ; 0x02202850
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024964
+	bl Sprite_ResetAnimCtrlState
 	add r0, r4, #0
 	add r0, #0xfc
 	mov r1, #0
@@ -1697,7 +1697,7 @@ ov17_022028B8: ; 0x022028B8
 	ldr r0, [r5, r0]
 	asr r1, r1, #0x10
 	mov r2, #0x60
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	mov r0, #0x14
 	mul r0, r4
 	add r0, r5, r0
@@ -1957,7 +1957,7 @@ _02202AA8:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #2
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 _02202AC8:
@@ -2011,7 +2011,7 @@ _02202AFE:
 	add r1, #0x2a
 	ldrb r1, [r1]
 	ldr r0, [r4, #0x10]
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	b _02202B38
 _02202B32:
 	mov r1, #1
@@ -2026,7 +2026,7 @@ _02202B38:
 	add r1, r5, r7
 	add r1, #0x2a
 	ldrb r1, [r1]
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -2054,13 +2054,13 @@ ov17_02202B58: ; 0x02202B58
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #2
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	ldrb r0, [r4, #1]
 	cmp r0, #1
 	bne _02202B94
 	ldrb r1, [r4, #0xa]
 	ldr r0, [r4, #0x10]
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 _02202B94:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -2103,7 +2103,7 @@ ov17_02202B98: ; 0x02202B98
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #2
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	ldr r0, [r5, #0x10]
 	mov r1, #0
 	bl GameStats_AddSpecial
@@ -3013,14 +3013,14 @@ _0220331E:
 	ldr r0, [r5, r0]
 	asr r1, r1, #0x10
 	mov r2, #0x63
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	ldr r1, [sp]
 	mov r0, #0x59
 	add r1, #0x2a
 	lsl r0, r0, #2
 	ldrb r1, [r1]
 	ldr r0, [r5, r0]
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -3053,7 +3053,7 @@ _0220331E:
 	ldr r0, [r5, r0]
 	asr r1, r1, #0x10
 	mov r2, #0x58
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -3328,14 +3328,14 @@ ov17_022035A4: ; 0x022035A4
 	ldr r0, [r4, r0]
 	asr r1, r1, #0x10
 	mov r2, #0
-	bl sub_0200DEA0
+	bl Sprite_AddPositionXY
 	mov r0, #0x5b
 	lsl r0, r0, #2
 	add r1, sp, #0
 	ldr r0, [r4, r0]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE00
+	bl Sprite_GetPositionXY
 	add r1, sp, #0
 	mov r0, #2
 	ldrsh r0, [r1, r0]
@@ -3371,7 +3371,7 @@ _022035F8:
 	ldr r0, [r4, r0]
 	asr r1, r1, #0x10
 	mov r2, #0x38
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	add r0, r4, #0
 	add r0, #0x7d
 	ldrb r0, [r0]
@@ -3458,7 +3458,7 @@ _022036BA:
 	mov r1, #2
 	ldr r0, [r5, #8]
 	sub r2, r1, #4
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 	ldrb r1, [r5, #5]
 	add r0, r1, #1
 	strb r0, [r5, #5]
@@ -3778,13 +3778,13 @@ _0220393A:
 	mov r0, #0x17
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	ldrb r0, [r4, #1]
 	cmp r0, #1
 	bne _0220395A
 	ldrb r1, [r4, #0xa]
 	ldr r0, [r4, #0x10]
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 _0220395A:
 	ldrb r1, [r4, #1]
 	ldrb r0, [r4, #0xc]

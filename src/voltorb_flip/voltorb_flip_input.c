@@ -253,12 +253,12 @@ static void ov122_021E9108(Ov122_021E8CFC *a0, int a1) {
 
     ov122_021E9154(a0, a1);
     sub_02020A0C(sub_0201A018(a0->unk8, a1), &temp1, &temp2);
-    sub_0200DDB8(a0->unk0, temp1, temp2);
+    UnkImageStruct_SetSpritePositionXY(a0->unk0, temp1, temp2);
     a0->unkD = a1;
 }
 
 static void ov122_021E9134(Ov122_021E8CFC *a0) {
-    sub_0200DDB8(a0->unk4, ov122_021E9BA0[a0->unkEx][0], ov122_021E9BA0[a0->unkEx][1]);
+    UnkImageStruct_SetSpritePositionXY(a0->unk4, ov122_021E9BA0[a0->unkEx][0], ov122_021E9BA0[a0->unkEx][1]);
 }
 
 static void ov122_021E9154(Ov122_021E8CFC *a0, int newFocus) {

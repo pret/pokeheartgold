@@ -1524,7 +1524,7 @@ _0222C8D2:
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	add r7, r0, #0
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r1, [sp, #0x14]
 	add r0, r7, #0
 	bl UnkImageStruct_SetSpriteVisibleFlag

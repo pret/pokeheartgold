@@ -1886,7 +1886,7 @@ _0225983E:
 	ldrsh r2, [r3, r2]
 	mov r3, #0x11
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	lsl r0, r4, #2
 	add r1, r5, r0
 	mov r0, #0x97
@@ -2936,7 +2936,7 @@ _0225A09C:
 	mov r3, #0x11
 	ldr r0, [r6, r0]
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, _0225A13C ; =0x0000096C
 	mov r1, #1
 	ldr r0, [r6, r0]
@@ -3371,7 +3371,7 @@ _0225A3F2:
 	asr r1, r1, #0x10
 	add r2, r7, #0
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	add r6, r6, #1
 	add r4, #0x20
 	add r5, r5, #4

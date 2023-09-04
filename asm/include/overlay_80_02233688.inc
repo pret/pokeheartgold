@@ -9,9 +9,9 @@
 .public AllocFromHeap
 .public FreeToHeap
 .public GX_EngineAToggleLayers
-.public sub_020247D4
-.public sub_020248AC
-.public sub_02024A04
+.public Sprite_SetMatrix
+.public Sprite_GetMatrixPtr
+.public Sprite_SetPriority
 .public Save_PlayerData_GetProfileAddr
 .public sub_02030E98
 .public sub_02034818

@@ -607,7 +607,7 @@ BOOL AwaitCardFlipAndResult(WorkflowEngine *workflow, VoltorbFlipAppWork *work) 
         UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[1], 1);
         FlipCard(work->game, cardId);
         if (type == CARD_TYPE_VOLTORB) {
-            sub_0200DDB8(work->unk14C[1], var5, var7);
+            UnkImageStruct_SetSpritePositionXY(work->unk14C[1], var5, var7);
             UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[1], 1);
             // Plays Voltorb explosion SE
             PlaySE(SEQ_SE_GS_COIN_HAZURE);
@@ -620,7 +620,7 @@ BOOL AwaitCardFlipAndResult(WorkflowEngine *workflow, VoltorbFlipAppWork *work) 
 
             BufferIntegerAsString(work->msgFmt, 0, type, 1, PRINTING_MODE_LEFT_ALIGN, 1);
             BufferIntegerAsString(work->msgFmt, 1, var9, 5, PRINTING_MODE_LEFT_ALIGN, 1);
-            sub_0200DDB8(work->unk14C[1], var5, var7);
+            UnkImageStruct_SetSpritePositionXY(work->unk14C[1], var5, var7);
             UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[1], 0);
 
             if (var8 == 0) {
@@ -1862,7 +1862,7 @@ static void ov122_021E7D6C(VoltorbFlipAppWork *work) {
 
     UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[2], 1);
     UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[3], 1);
-    sub_0200DD54(work->unk14C[1], 1);
+    UnkImageStruct_SetSpritePriority(work->unk14C[1], 1);
     UnkImageStruct_SetSpritePalIndex(work->unk14C[10], 4);
 }
 

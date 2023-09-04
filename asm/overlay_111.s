@@ -1250,7 +1250,7 @@ ov111_021E62E0: ; 0x021E62E0
 	ldr r0, [r5]
 	add r6, r1, #0
 	add r7, r2, #0
-	bl sub_02024B60
+	bl Sprite_GetVramType
 	add r4, r0, #0
 	ldr r0, [r5]
 	bl sub_02024B1C
@@ -1694,7 +1694,7 @@ _021E6646:
 	add r1, #2
 	add r2, sp, #8
 	lsl r3, r3, #0xe
-	bl sub_0200DE94
+	bl UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 	mov r0, #0
 	ldrsh r0, [r4, r0]
 	mov r3, #0x83
@@ -1706,7 +1706,7 @@ _021E6646:
 	ldrsh r2, [r4, r2]
 	ldr r0, [r5, #4]
 	lsl r3, r3, #0xe
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	add r7, r7, #1
 	add r5, r5, #4
 	cmp r7, #2

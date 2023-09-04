@@ -55,11 +55,11 @@
 .public sub_0200D9DC
 .public UnkImageStruct_TickSpriteAnimation1Frame
 .public UnkImageStruct_SetSpriteAnimSeqNo
-.public sub_0200DCC0
+.public UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 .public UnkImageStruct_SetSpriteVisibleFlag
-.public sub_0200DD54
-.public sub_0200DDB8
-.public sub_0200DED0
+.public UnkImageStruct_SetSpritePriority
+.public UnkImageStruct_SetSpritePositionXY
+.public UnkImageStruct_AddSpritePositionXY
 .public sub_0200DF98
 .public sub_0200E024
 .public sub_0200E0FC

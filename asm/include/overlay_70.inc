@@ -155,14 +155,14 @@
 .public sub_0202457C
 .public CreateSprite
 .public Sprite_Delete
-.public sub_020247D4
+.public Sprite_SetMatrix
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
-.public sub_020248AC
+.public Sprite_GetMatrixPtr
 .public Get2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo
 .public Get2dSpriteCurrentAnimSeqNo
-.public sub_02024A04
+.public Sprite_SetPriority
 .public Sprite_SetPalIndex
 .public sub_02024B68
 .public sub_02024B78

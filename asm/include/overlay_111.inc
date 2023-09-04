@@ -46,8 +46,8 @@
 .public sub_0200DC8C
 .public UnkImageStruct_SetSpriteVisibleFlag
 .public UnkImageStruct_SetSpritePalIndex
-.public sub_0200DDF4
-.public sub_0200DE94
+.public UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
+.public UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
@@ -95,7 +95,7 @@
 .public GX_DisableEngineBLayers
 .public GX_EngineBToggleLayers
 .public sub_02024B1C
-.public sub_02024B60
+.public Sprite_GetVramType
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_Delete

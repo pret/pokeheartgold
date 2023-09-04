@@ -880,7 +880,7 @@ sub_0207FB0C: ; 0x0207FB0C
 	ldr r0, [r5, r0]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE00
+	bl Sprite_GetPositionXY
 	ldr r0, _0207FBC0 ; =0x0000067C
 	add r3, sp, #0
 	mov r1, #2
@@ -888,7 +888,7 @@ sub_0207FB0C: ; 0x0207FB0C
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	ldr r0, [r5, r0]
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	ldr r0, _0207FBC4 ; =0x00000654
 	ldr r1, _0207FBB8 ; =0x00000C63
 	ldr r0, [r5, r0]
@@ -1494,7 +1494,7 @@ sub_02080040: ; 0x02080040
 	ldr r0, [r1, r0]
 	add r1, sp, #0
 	add r1, #2
-	bl sub_0200DE00
+	bl Sprite_GetPositionXY
 	cmp r7, #0
 	ldr r0, _02080188 ; =0x0000083E
 	bne _020800A8
@@ -1569,7 +1569,7 @@ _020800E0:
 	sub r2, #0xc
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	ldrb r2, [r6, r4]
 	mov r0, #0x30
 	ldr r3, _02080190 ; =0x00000842
@@ -1585,7 +1585,7 @@ _020800E0:
 	ldrsh r1, [r2, r3]
 	add r3, r3, #2
 	ldrsh r2, [r2, r3]
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	ldrb r2, [r6, r4]
 	mov r0, #0x30
 	ldr r3, _02080194 ; =0x00000846
@@ -1601,7 +1601,7 @@ _020800E0:
 	ldrsh r1, [r2, r3]
 	add r3, r3, #2
 	ldrsh r2, [r2, r3]
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	ldrb r2, [r6, r4]
 	mov r0, #0x30
 	ldr r3, _02080194 ; =0x00000846
@@ -1620,7 +1620,7 @@ _020800E0:
 	add r1, #8
 	lsl r1, r1, #0x10
 	asr r1, r1, #0x10
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	ldrb r0, [r6, r4]
 	add r3, sp, #0
 	mov r2, #0
@@ -1632,7 +1632,7 @@ _020800E0:
 	mov r1, #2
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02080184: .word 0x0000094C
@@ -2870,7 +2870,7 @@ _02080AB8:
 	ldr r0, [r4, r0]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE00
+	bl Sprite_GetPositionXY
 	ldr r0, _02080B64 ; =0x0000067C
 	add r3, sp, #0
 	mov r1, #2
@@ -2878,7 +2878,7 @@ _02080AB8:
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	ldr r0, [r4, r0]
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	ldr r0, _02080B68 ; =0x00000654
 	ldr r1, _02080B6C ; =0x00000C63
 	ldr r0, [r4, r0]

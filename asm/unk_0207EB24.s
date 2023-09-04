@@ -656,7 +656,7 @@ sub_0207F064: ; 0x0207F064
 	ldr r0, [r1, r0]
 	ldrsh r1, [r4, r5]
 	ldrsh r2, [r2, r5]
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	pop {r4, r5, r6, pc}
 	nop
 _0207F094: .word 0x00000846
@@ -681,12 +681,12 @@ sub_0207F098: ; 0x0207F098
 	ldrsh r2, [r3, r2]
 	add r1, #8
 	lsl r1, r1, #0x10
-	ldr r3, _0207F0C4 ; =sub_0200DD88
+	ldr r3, _0207F0C4 ; =Sprite_SetPositionXY
 	asr r1, r1, #0x10
 	bx r3
 	.balign 4, 0
 _0207F0C0: .word 0x00000846
-_0207F0C4: .word sub_0200DD88
+_0207F0C4: .word Sprite_SetPositionXY
 	thumb_func_end sub_0207F098
 
 	thumb_func_start sub_0207F0C8
@@ -727,7 +727,7 @@ sub_0207F0FC: ; 0x0207F0FC
 	beq _0207F11A
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	add r0, r5, #0
 	add r1, r4, #0
 	bl Set2dSpriteAnimSeqNo
@@ -860,7 +860,7 @@ _0207F1BE:
 	sub r2, r2, #3
 	lsl r2, r2, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	b _0207F224
 _0207F202:
 	mov r2, #0x18
@@ -870,7 +870,7 @@ _0207F202:
 	add r2, r2, #1
 	lsl r2, r2, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	b _0207F224
 _0207F216:
 	mov r1, #0x16
@@ -878,7 +878,7 @@ _0207F216:
 	ldrsh r1, [r4, r1]
 	ldrsh r2, [r4, r2]
 	ldr r0, [r4, #0x24]
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 _0207F224:
 	add r0, r5, #1
 	lsl r0, r0, #0x10
@@ -927,7 +927,7 @@ sub_0207F240: ; 0x0207F240
 	ldrb r1, [r2, #1]
 	ldrb r2, [r2]
 	ldr r0, [r5, r0]
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	ldr r0, _0207F2A4 ; =0x00000678
 	add r1, r6, #0
 	ldr r0, [r5, r0]
@@ -959,7 +959,7 @@ sub_0207F2A8: ; 0x0207F2A8
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x6d
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -969,7 +969,7 @@ sub_0207F2A8: ; 0x0207F2A8
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	mov r0, #0x6d
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -1045,12 +1045,12 @@ _0207F36A:
 	ldr r0, [r6, r0]
 	ldr r2, [sp, #4]
 	mov r1, #0x1e
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	ldr r0, _0207F3A0 ; =0x00000748
 	ldr r2, [sp, #8]
 	ldr r0, [r5, r0]
 	mov r1, #0x32
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	ldr r0, _0207F39C ; =0x00000654
 	add r6, #0x30
 	ldr r0, [r7, r0]

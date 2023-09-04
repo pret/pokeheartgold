@@ -138,7 +138,7 @@
 .public CreateSprite
 .public sub_02024714
 .public Sprite_Delete
-.public sub_020247D4
+.public Sprite_SetMatrix
 .public sub_020247F4
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
@@ -147,11 +147,11 @@
 .public Get2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo
 .public Sprite_TickCellOrMulticellAnimation
-.public sub_020249D4
+.public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_GetAnimCtrlCurrentFrame
 .public Sprite_SetPalIndex
-.public sub_02024ADC
-.public sub_02024AF8
+.public Sprite_SetDrawPriority
+.public Sprite_GetDrawPriority
 .public GF_AssertFail
 .public String_New
 .public String_Delete

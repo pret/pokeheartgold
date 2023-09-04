@@ -59,7 +59,7 @@
 .public sub_0202457C
 .public CreateSprite
 .public Sprite_Delete
-.public sub_020247D4
+.public Sprite_SetMatrix
 .public Set2dSpriteAnimSeqNo
 .public Sprite_TickCellOrMulticellAnimation
 .public sub_02025224

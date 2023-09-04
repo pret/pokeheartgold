@@ -47,7 +47,7 @@
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo
 .public Get2dSpriteCurrentAnimSeqNo
-.public sub_020249D4
+.public Sprite_SetAnimCtrlCurrentFrame
 .public sub_02025224
 .public GF_AssertFail
 .public String_Delete

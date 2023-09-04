@@ -21,10 +21,10 @@
 .public TickSpriteAnimation1Frame
 .public UnkImageStruct_SetSpriteVisibleFlag
 .public UnkImageStruct_SetSpritePalIndex
-.public sub_0200DD54
-.public sub_0200DD88
-.public sub_0200DDB8
-.public sub_0200DE44
+.public UnkImageStruct_SetSpritePriority
+.public Sprite_SetPositionXY
+.public UnkImageStruct_SetSpritePositionXY
+.public UnkImageStruct_GetSpritePositionXY
 .public CreateSysTask
 .public DestroySysTask
 .public AllocFromHeap
@@ -34,7 +34,7 @@
 .public GF_SinDegNoWrap
 .public AddTextPrinterParameterized3
 .public Set2dSpriteAnimActiveFlag
-.public sub_020249D4
+.public Sprite_SetAnimCtrlCurrentFrame
 .public sub_02024B1C
 .public GF_AssertFail
 .public String_New

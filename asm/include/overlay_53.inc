@@ -54,7 +54,7 @@
 .public SpriteRenderer_Delete
 .public sub_0200D294
 .public SpriteRenderer_CreateSprite
-.public sub_0200DD88
+.public Sprite_SetPositionXY
 .public LoadUserFrameGfx1
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
@@ -112,7 +112,7 @@
 .public Get2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo
 .public Get2dSpriteCurrentAnimSeqNo
-.public sub_02024A04
+.public Sprite_SetPriority
 .public Sprite_SetPalIndex
 .public sub_02024B68
 .public sub_02025204

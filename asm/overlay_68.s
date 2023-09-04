@@ -2976,7 +2976,7 @@ _021E70C6:
 	ldr r0, [r5, r0]
 	mov r1, #0x16
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r0, [r6]
 	ldrh r0, [r0, #0x16]
 	add r1, r0, r4
@@ -3333,12 +3333,12 @@ ov68_021E73A4: ; 0x021E73A4
 	ldr r0, [r4, r0]
 	mov r1, #0
 	asr r2, r2, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	b _021E7414
 _021E73D2:
 	cmp r3, #6
@@ -3352,12 +3352,12 @@ _021E73D2:
 	ldr r0, [r4, r0]
 	asr r1, r1, #0x10
 	mov r2, #0xa8
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	b _021E7414
 _021E73FA:
 	mov r0, #0x4b
@@ -3365,12 +3365,12 @@ _021E73FA:
 	ldr r0, [r4, r0]
 	mov r1, #0xc0
 	mov r2, #0xa0
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #2
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 _021E7414:
 	mov r0, #0x4b
 	lsl r0, r0, #2
@@ -3395,7 +3395,7 @@ ov68_021E7424: ; 0x021E7424
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r4, #1
-	bl sub_0200DCAC
+	bl UnkImageStruct_ResetSpriteAnimCtrlState
 	b _021E7444
 _021E7442:
 	mov r4, #0
@@ -3432,7 +3432,7 @@ _021E746A:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r4, #1
-	bl sub_0200DCAC
+	bl UnkImageStruct_ResetSpriteAnimCtrlState
 	b _021E748E
 _021E748C:
 	mov r4, #0
@@ -4060,12 +4060,12 @@ ov68_021E797C: ; 0x021E797C
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	mov r0, #0x49
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	cmp r4, #0
 	ldr r0, [r5]
 	ble _021E79EA

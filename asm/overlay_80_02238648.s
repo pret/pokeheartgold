@@ -2115,7 +2115,7 @@ _02239782:
 	ldr r2, [sp, #8]
 	strb r0, [r6, #0x14]
 	ldr r0, [r4]
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	mov r0, #2
 	ldrh r1, [r5]
 	lsl r0, r0, #0xe
@@ -2199,7 +2199,7 @@ _02239870:
 	ldrsh r1, [r5, r1]
 	ldrsh r2, [r5, r2]
 	str r0, [sp, #8]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldrh r1, [r4]
 	ldr r0, [sp, #8]
 	lsl r1, r1, #0x11
@@ -2219,7 +2219,7 @@ _02239870:
 	ldr r0, [sp, #8]
 	lsl r1, r1, #0x13
 	lsr r1, r1, #0x13
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 _022398C4:
 	add r6, r6, #1
 	add r4, #8

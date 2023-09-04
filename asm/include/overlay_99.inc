@@ -31,9 +31,9 @@
 .public sub_0200DC8C
 .public UnkImageStruct_SetSpriteVisibleFlag
 .public UnkImageStruct_SetSpritePalIndex
-.public sub_0200DDB8
-.public sub_0200DE44
-.public sub_0200DED0
+.public UnkImageStruct_SetSpritePositionXY
+.public UnkImageStruct_GetSpritePositionXY
+.public UnkImageStruct_AddSpritePositionXY
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_0200FBDC

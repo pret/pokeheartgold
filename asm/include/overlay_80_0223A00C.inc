@@ -25,7 +25,7 @@
 .public sub_0200D9DC
 .public TickSpriteAnimation1Frame
 .public UnkImageStruct_SetSpriteVisibleFlag
-.public sub_0200DDF4
+.public UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 .public sub_0200E2B0
 .public CreateSysTask
 .public sub_0200E374

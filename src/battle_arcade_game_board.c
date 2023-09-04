@@ -1387,7 +1387,7 @@ static BATTLE_ARCADE_OBJECT *BattleArcadeObject_Create(GAME_BOARD_SUB_3E8 *work,
         vec.y += (192 * FX32_ONE);
     }
 
-    sub_020247D4(obj->sprite, &vec);
+    Sprite_SetMatrix(obj->sprite, &vec);
 
     return obj;
 }
@@ -1404,7 +1404,7 @@ static void BattleArcadeObj_SetVisible(BATTLE_ARCADE_OBJECT *obj, int flag) {
 
 static void BattleArcadeObj_SetPos(BATTLE_ARCADE_OBJECT *obj, u16 x, u16 y) {
     VecFx32 vec;
-    vec = *sub_020248AC(obj->sprite);
+    vec = *Sprite_GetMatrixPtr(obj->sprite);
     vec.x = x * FX32_ONE;
     vec.y = y * FX32_ONE;
 
@@ -1412,7 +1412,7 @@ static void BattleArcadeObj_SetPos(BATTLE_ARCADE_OBJECT *obj, u16 x, u16 y) {
         vec.y += (192 * FX32_ONE);
     }
 
-    sub_020247D4(obj->sprite, &vec);
+    Sprite_SetMatrix(obj->sprite, &vec);
 }
 
 static void BattleArcadeObj_SetAnimation(BATTLE_ARCADE_OBJECT *obj, u32 val) {

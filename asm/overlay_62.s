@@ -802,7 +802,7 @@ _021E5F28:
 	bl sub_0200E0C0
 	ldr r0, [r5, #0x14]
 	mov r1, #1
-	bl sub_0200DD54
+	bl UnkImageStruct_SetSpritePriority
 	mov r0, #0xa
 	add r5, #0xb4
 	str r0, [r5]
@@ -1608,7 +1608,7 @@ _021E64EE:
 	str r0, [r4, #0x28]
 	ldr r0, [r4]
 	add r2, r6, #0
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021E656C: .word ov62_021E6570
@@ -1671,7 +1671,7 @@ _021E65C6:
 	lsl r0, r0, #0x10
 	asr r1, r0, #0x10
 	ldr r0, [r5]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	mov r0, #0xf
 	mvn r0, r0
 	cmp r4, r0

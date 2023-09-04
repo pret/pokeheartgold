@@ -2435,11 +2435,11 @@ _0225D782:
 	b _0225D7B4
 _0225D794:
 	ldr r0, [r5]
-	bl sub_02024AF8
+	bl Sprite_GetDrawPriority
 	add r7, r0, #0
 	ldr r0, [r5]
 	add r1, r7, #1
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	ldr r0, [sp, #0x10]
 	cmp r0, #0
 	bne _0225D7B4
@@ -2519,7 +2519,7 @@ _0225D80A:
 	ldr r0, [sp]
 	mov r1, #0
 	ldr r0, [r0, r5]
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	ldr r0, [sp]
 	add r1, r4, #0
 	ldr r0, [r0, r5]
@@ -2601,7 +2601,7 @@ ov91_0225D884: ; 0x0225D884
 	add r0, r0, r2
 	str r0, [sp, #4]
 	ldr r0, [r5, r4]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -6037,7 +6037,7 @@ _0225F278: ; jump table
 _0225F280:
 	ldr r0, [r4, #0x34]
 	mov r1, #0
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	ldr r0, _0225F37C ; =0x00008544
 	add r0, r5, r0
 	bl ov91_02260CB4
@@ -9063,7 +9063,7 @@ ov91_02260A88: ; 0x02260A88
 	str r0, [sp, #8]
 	ldr r0, [r4]
 	add r1, sp, #4
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r1, sp, #0
 	mov r0, #0
 	ldrsh r0, [r1, r0]
@@ -9352,7 +9352,7 @@ ov91_02260CE0: ; 0x02260CE0
 	str r1, [sp, #4]
 	ldr r0, [r0, #4]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
@@ -9532,7 +9532,7 @@ _02260E34:
 	add r1, r5, #0
 	ldr r0, [r5, #4]
 	add r1, #8
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r1, [r5, #8]
 	ldr r0, _02260E84 ; =0xFFFE0000
 	cmp r1, r0
@@ -9607,7 +9607,7 @@ _02260EB4:
 	add r1, r4, #0
 	ldr r0, [r4, #4]
 	add r1, #8
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r1, #1
 	str r1, [r4]
 	ldr r0, [r4, #4]
@@ -11037,7 +11037,7 @@ _022619C0:
 	ldr r0, [r4, #0x7c]
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x34]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r4, #0x48]
 	bl sub_02013728
 	add sp, #0xc

@@ -30,9 +30,9 @@
 .public SpriteRenderer_Delete
 .public sub_0200D294
 .public SpriteRenderer_CreateSprite
-.public sub_0200DD3C
-.public sub_0200DD88
-.public sub_0200DE00
+.public thunk_Sprite_SetPriority
+.public Sprite_SetPositionXY
+.public Sprite_GetPositionXY
 .public sub_0200E5D4
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
