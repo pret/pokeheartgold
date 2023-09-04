@@ -2,6 +2,7 @@
 
 import collections
 import json
+import copy
 import struct
 import os
 import traceback
@@ -10,6 +11,7 @@ import warnings
 import enum
 import abc
 import re
+from collections.abc import Mapping, Callable
 from progressbar import progressbar
 from xml.etree import ElementTree
 import csv
@@ -20,7 +22,15 @@ import argparse
 project_root = os.path.realpath(os.path.join(os.path.dirname(__file__), '../..'))
 
 
-def parse_c_header(filename: str, prefix='', as_list=False) -> typing.Union[list[tuple[int, str]], dict[int, str]]:
+@typing.overload
+def parse_c_header(filename: str, prefix: str = ..., as_list: typing.Literal[False] = ...) -> Mapping[int, str]:
+    ...
+
+@typing.overload
+def parse_c_header(filename: str, prefix: str = ..., as_list: typing.Literal[True] = ...) -> list[tuple[int, str]]:
+    ...
+
+def parse_c_header(filename: str, prefix='', as_list=False):
     with open(filename) as fp:
         data = fp.read()
     pat = re.compile(rf'#define\s+({prefix}\w+)\s+(\d+|0x[0-9a-fA-F]+)\n')
@@ -40,13 +50,6 @@ class ScriptType(enum.Enum):
             return cls.__members__[arg]
         else:
             raise TypeError
-
-
-class Namespace(argparse.Namespace):
-    binfile: BinaryIO
-    scrfile: TextIO
-    name: str
-    mode: ScriptType
 
 
 class NamedStruct(struct.Struct):
@@ -143,6 +146,66 @@ assert WarpEvent.size == 12, WarpEvent.size
 assert CoordEvent.size == 16, CoordEvent.size
 
 
+class ScriptCommand(typing.TypedDict):
+    name: str
+    args: list[int | str]
+    cases: Mapping[str, list[str]]
+
+
+_R = typing.TypeVar('_R')
+_T = typing.TypeVar('_T')
+
+class class_property(classmethod):
+    def __init__(self, func: Callable[[typing.Type[_T]], _R]):
+        self.func = func
+
+    def __get__(self, obj: _T, objtype: typing.Type[_T] = None):
+        if objtype is not None:
+            obj = objtype
+        return self.func(obj)
+
+
+class ScriptCommandsData:
+    _is_init = False
+    _constants: Mapping[str, Mapping[int, str]]
+    _commands: list[ScriptCommand]
+    _commands_d: Mapping[str, ScriptCommand]
+    _movement_cmds: list
+
+    @classmethod
+    def load(cls):
+        if cls._is_init:
+            return
+        with open(os.path.join(os.path.dirname(__file__), 'scrcmd.json')) as jsonfp:
+            scrcmds: dict[str, typing.Any] = json.load(jsonfp)
+        cls._constants = {key: parse_c_header(os.path.join(project_root, value['header']), value['prefix']) for key, value in scrcmds['argtypes'].items()}
+        cls._constants['stdscr'] |= {
+            x + 2999: f'std_trainer({y})' for x, y in cls._constants['trainer'].items()
+        } | {
+            x + 4999: f'std_trainer_2({y})' for x, y in cls._constants['trainer'].items()
+        }
+        cls._commands = scrcmds.get('commands', [])
+        cls._commands_d = {x['name']: x for x in cls._commands}
+        cls._movement_cmds = scrcmds.get('movement_commands', [])
+        cls._is_init = True
+
+    @class_property
+    def constants(cls):
+        return copy.deepcopy(cls._constants)
+
+    @class_property
+    def commands(cls):
+        return copy.deepcopy(cls._commands)
+
+    @class_property
+    def commands_d(cls):
+        return copy.deepcopy(cls._commands_d)
+
+    @class_property
+    def movement_cmds(cls):
+        return copy.deepcopy(cls._movement_cmds)
+
+
 class ScriptParserBase(abc.ABC):
     def __init__(self, header: str, raw: bytes, prefix='_EV'):
         self.c_header = header
@@ -165,17 +228,11 @@ class ScriptParserBase(abc.ABC):
 class NormalScriptParser(ScriptParserBase):
     def __init__(self, header: str, raw: bytes, events: str, gmm: str, prefix='_EV'):
         super().__init__(header, raw, prefix)
-        with open(os.path.join(os.path.dirname(__file__), 'scrcmd.json')) as jsonfp:
-            scrcmds = json.load(jsonfp)
-        self.constants = {key: parse_c_header(os.path.join(project_root, value['header']), value['prefix']) for key, value in scrcmds['argtypes'].items()}
-        self.constants['stdscr'] |= {
-            x + 2999: f'std_trainer({y})' for x, y in self.constants['trainer'].items()
-        } | {
-            x + 4999: f'std_trainer_2({y})' for x, y in self.constants['trainer'].items()
-        }
-        self.commands: list[dict[str, Union[str, int, list[int], dict[str, list[int]]]]] = scrcmds.get('commands', [])
-        self.commands_d = {x['name']: x for x in self.commands}
-        self.movement_cmds = scrcmds.get('movement_commands', [])
+        ScriptCommandsData.load()
+        self.commands = ScriptCommandsData.commands
+        self.commands_d = ScriptCommandsData.commands_d
+        self.constants = ScriptCommandsData.constants
+        self.movement_cmds = ScriptCommandsData.movement_cmds
         self.exported = []
         self.labels = {}
         self.lines = {}
@@ -478,7 +535,7 @@ class NormalScriptParser(ScriptParserBase):
                 return ret, pc
             case _:
                 raise ValueError('unknown arg type: ' + size)
-    
+
     def parse_script(self, pc: int, warn=True):
         self.pc_history.clear()
         while not self.labels.get(pc, False) and pc < len(self.raw):
@@ -515,8 +572,10 @@ class NormalScriptParser(ScriptParserBase):
                 break
         return False
 
-    def parse_all(self):
+    def parse_all(self, *additional_labels):
         self.parse_header()
+        for x in additional_labels:
+            self.labels[x] = False
         self.make_events_json()
         while not all(self.labels.values()):
             for label in sorted(self.labels):
@@ -527,7 +586,7 @@ class NormalScriptParser(ScriptParserBase):
     def make_gap_internal(self, pc, nextpc):
         if pc == nextpc:
             return ''
-        s = ''
+        s = f'\n\t; 0x{pc:04X}\n'
         if pc in self.movement_scripts:
             if pc & 1:
                 pc += 1
@@ -698,44 +757,85 @@ class SpecialScriptParser(ScriptParserBase):
         return s
 
 
+class MapParser:
+    def __init__(self, events: str | None, scripts: str | None, header: str | None, gmm: str | None):
+        self.events = events and os.path.join(project_root, events)
+        self.scripts = scripts and os.path.join(project_root, scripts)
+        self.scripts_bin = scripts and os.path.splitext(self.scripts)[0] + '.bin'
+        self.header = header and os.path.join(project_root, header)
+        self.header_bin = header and os.path.splitext(self.header)[0] + '.bin'
+        self.gmm = gmm and os.path.join(project_root, gmm)
+
+        self.scr_pref = os.path.splitext(os.path.basename(self.scripts))[0]
+        self.scr_pref = re.sub(r'scr_seq_\d{4}_', 'scr_seq_', self.scr_pref)
+
+        if not self.events or 'DUMMY' in self.events:
+            self.c_header_abs = (re.sub(r'scr_seq_\d{4}_', 'scr_seq_', os.path.splitext(self.scripts)[0]) + '.h').replace('scr_seq_', 'event_')
+        else:
+            self.c_header_abs = re.sub(r'eventdata/zone_event/\d{3}_', 'script/scr_seq/event_', os.path.splitext(self.events)[0] + '.h')
+        self.c_header = os.path.relpath(self.c_header_abs, os.path.join(project_root, 'files'))
+        assert not self.c_header.startswith('..')
+        self.parser = None
+
+    def parse(self, *extra_labels):
+        with open(self.scripts_bin, 'rb') as fp:
+            self.parser = NormalScriptParser(self.c_header, fp.read(), self.events, self.gmm, prefix=self.scr_pref).parse_all(*extra_labels)
+        return self
+
+    def __bool__(self):
+        return self.parser is not None
+
+    def dump_script_asm(self):
+        if self:
+            with open(self.scripts, 'wt') as ofp:
+                print(self.parser, file=ofp, end='')
+        return self
+
+    def dump_script_header(self):
+        if self:
+            with open(self.c_header_abs, 'wt') as ofp:
+                print(self.parser.make_header(), file=ofp, end='')
+        return self
+
+    def dump_events(self):
+        if self and self.header:
+            with open(self.header_bin, 'rb') as fp:
+                h_parser = SpecialScriptParser(self.c_header, fp.read(), prefix=self.scr_pref).parse_all()
+            with open(self.header, 'wt') as ofp:
+                print(h_parser, file=ofp, end='')
+        return self
+
+    def dump(self):
+        self.dump_script_asm().dump_script_header().dump_events()
+
 def parse_map(events, scripts, header, gmm):
-    if events:
-        events = os.path.join(project_root, events)
-    scripts = os.path.join(project_root, scripts)
-    scripts_bin = os.path.splitext(scripts)[0] + '.bin'
-    if header:
-        header = os.path.join(project_root, header)
-        header_bin = os.path.splitext(header)[0] + '.bin'
-    else:
-        header_bin = None
-    gmm = os.path.join(project_root, gmm)
-    scr_pref = os.path.splitext(os.path.basename(scripts))[0]
-    scr_pref = re.sub(r'scr_seq_\d{4}_', 'scr_seq_', scr_pref)
-
-    if not events or 'DUMMY' in events:
-        c_header_abs = (re.sub(r'scr_seq_\d{4}_', 'scr_seq_', os.path.splitext(scripts)[0]) + '.h').replace('scr_seq_', 'event_')
-    else:
-        c_header_abs = re.sub(r'eventdata/zone_event/\d{3}_', 'script/scr_seq/event_', os.path.splitext(events)[0] + '.h')
-    c_header = os.path.relpath(c_header_abs, os.path.join(project_root, 'files'))
-    assert not c_header.startswith('..')
-    with open(scripts_bin, 'rb') as fp:
-        parser = NormalScriptParser(c_header, fp.read(), events, gmm, prefix=scr_pref).parse_all()
-    with open(scripts, 'wt') as ofp:
-        print(parser, file=ofp, end='')
-    with open(c_header_abs, 'wt') as ofp:
-        print(parser.make_header(), file=ofp, end='')
-    if header:
-        with open(header_bin, 'rb') as fp:
-            h_parser = SpecialScriptParser(c_header, fp.read(), prefix=scr_pref).parse_all()
-        with open(header, 'wt') as ofp:
-            print(h_parser, file=ofp, end='')
+    MapParser(events, scripts, header, gmm).parse().dump()
 
 
-def main():
-    with open(os.path.join(os.path.dirname(__file__), 'event_mapping.csv')) as fp:
-        for row in progressbar(csv.reader(fp)):
-            parse_map(*row)
+class CLI(argparse.Namespace):
+    infile: str = None
+    offset: int = None
+
+    _parser = argparse.ArgumentParser()
+    _parser.add_argument('infile', nargs='?')
+    _parser.add_argument('offset', type=lambda x: int(x, 0), nargs='*')
+
+    def __init__(self, args=None):
+        self.__class__._parser.parse_args(args, self)
+
+    def main(self):
+        if self.infile is None:
+            with open(os.path.join(os.path.dirname(__file__), 'event_mapping.csv')) as fp:
+                for row in progressbar(csv.reader(fp)):
+                    parse_map(*row)
+        else:
+            with open(os.path.join(os.path.dirname(__file__), 'event_mapping.csv')) as fp:
+                for events, scripts, header, gmm in csv.reader(fp):
+                    if scripts == self.infile:
+                        parser = MapParser(events, scripts, header, gmm).parse(*self.offset)
+                        print(parser.parser)
+                        break
 
 
 if __name__ == '__main__':
-    main()
+    CLI().main()
