@@ -219,8 +219,7 @@ _02E7:
 	end
 _0329:
 	goto _0254
-	.byte 0x02
-	.byte 0x00
+	end
 _0331:
 	scrcmd_283
 	closemsg
