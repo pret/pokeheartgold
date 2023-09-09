@@ -60,7 +60,7 @@ void sub_02090D8C(Unk02090C94 *a0, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2);
 BOOL sub_02090DC0(Unk02090C94 *a0, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2);
 void sub_02090E04(Unk02090C94 *a0, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2);
 int sub_02090E44(Unk02090C94 *a0);
-void sub_02090E5C(Unk02090C94 *a0);
+void sub_02090E5C(Unk02090C94 *a0, u32 a1);
 Unk02090E68 *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 a3, HeapID heapId);
 Unk02090E68 *sub_02090EC0(SaveData *saveData, int n, u16 i, HeapID heapId);
 Unk02090E68 *sub_02090F00(SaveData *saveData, Pokemon *mon, HeapID heapId);

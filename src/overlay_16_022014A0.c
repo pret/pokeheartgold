@@ -151,7 +151,7 @@ u16 ov16_02201604(BerryPot *berryPots, u32 idx) {
     return berryPots[idx].unk_4;
 }
 
-void ov16_02201610(BerryPot *berryPots, u32 idx, UnkStruct_ov16_022014A0 *a2, u8 berryId) {
+void ov16_02201610(BerryPot *berryPots, u32 idx, UnkStruct_ov16_022014A0 *a2, u32 berryId) {
     berryPots[idx].berryId = berryId;
     berryPots[idx].growthStage = BERRY_POT_GROWTH_STAGE_PLANTED;
     berryPots[idx].unk_2 = CalculateBerryPotGrowthInterval(a2, berryId, berryPots[idx].mulch);
@@ -170,7 +170,7 @@ u8 BerryPots_GetPotMulch(BerryPot *berryPots, u32 idx) {
     return berryPots[idx].mulch;
 }
 
-void BerryPots_SetPotMulch(BerryPot *berryPots, u32 idx, u8 mulch) {
+void BerryPots_SetPotMulch(BerryPot *berryPots, u32 idx, u32 mulch) {
     berryPots[idx].mulch = mulch;
 }
 

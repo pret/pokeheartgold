@@ -156,8 +156,8 @@ int sub_02090E44(Unk02090C94 *a0) {
     return sub_020183F0(a0->unk24);
 }
 
-void sub_02090E5C(Unk02090C94 *a0) {
-    sub_02018410(a0->unk24);
+void sub_02090E5C(Unk02090C94 *a0, u32 a1) {
+    sub_02018410(a0->unk24, a1);
 }
 
 Unk02090E68 *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 a3, HeapID heapId) {

@@ -169,3 +169,11 @@
 .public ov17_02201C10
 .public ov17_02201C78
 .public ov17_02201D04
+.public ov17_022023A0
+.public ov17_022028B8
+.public ov17_02202850
+.public ov17_02202A84
+.public ov17_02202B58
+.public ov17_02202C2C
+.public ov17_02203A74
+.public ov17_02203C78
