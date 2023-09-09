@@ -44,7 +44,7 @@ typedef struct SpriteRenderer {
 
 typedef struct SpriteGfxHandler {
     SpriteList* spriteList;
-    ListOfUnkStruct_02009D48* listOfUnkStruct_9D48; // 4
+    SpriteResourceHeaderList* spriteHeaderList; // 4
     struct _2DGfxResHeader* _2dGfxResHeader; // 8
     struct _2DGfxResMan* _2dGfxResMan[GF_GFX_RES_TYPE_MAX]; // C
     struct _2DGfxResObjList* _2dGfxResObjList[GF_GFX_RES_TYPE_MAX]; // 24
@@ -94,8 +94,8 @@ void thunk_OamManager_ApplyAndResetBuffers(void);
 void sub_0200D03C(void);
 void SpriteRenderer_RemoveGfxHandler(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler);
 void SpriteRenderer_Delete(SpriteRenderer*);
-BOOL sub_0200D294(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const u16* a2);
-BOOL sub_0200D2A4(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const u16* a2, int a3, int a4);
+BOOL sub_0200D294(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const u16* fileIdList);
+BOOL sub_0200D2A4(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const u16* fileIdList, int loadCharMode, int loadPlttMode);
 Sprite* SpriteRenderer_CreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const UnkStruct_0200D2B4* a2);
 BOOL SpriteRenderer_Init2DGfxResManagersFromCountsArray(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, SpriteResourceCountsListUnion*);
 BOOL SpriteRenderer_LoadCharResObjFromNarcId(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int vram, int resId);

@@ -13,7 +13,7 @@
 #include "unk_02023694.h"
 
 static void SpriteGfxHandler_DeleteSpriteList(SpriteGfxHandler* gfxHandler);
-static void sub_0200D050(SpriteGfxHandler* gfxHandler);
+static void SpriteGfxHandler_DeleteResourceHeaderList(SpriteGfxHandler* gfxHandler);
 static void SpriteGfxHandler_DestroyResObjsAndMans(SpriteGfxHandler* gfxHandler);
 static void DeinitSpriteRenderer(SpriteRenderer* renderer);
 static void MyRemoveSpriteGfxHandler(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler);
@@ -106,9 +106,9 @@ static void SpriteGfxHandler_DeleteSpriteList(SpriteGfxHandler* gfxHandler) {
     SpriteList_Delete(gfxHandler->spriteList);
 }
 
-static void sub_0200D050(SpriteGfxHandler* gfxHandler) {
-    if (gfxHandler->listOfUnkStruct_9D48 != NULL) {
-        sub_02009F24(gfxHandler->listOfUnkStruct_9D48);
+static void SpriteGfxHandler_DeleteResourceHeaderList(SpriteGfxHandler* gfxHandler) {
+    if (gfxHandler->spriteHeaderList != NULL) {
+        SpriteResourceHeaderList_Destroy(gfxHandler->spriteHeaderList);
     }
 }
 
@@ -141,7 +141,7 @@ static void MyRemoveSpriteGfxHandler(SpriteRenderer* renderer, SpriteGfxHandler*
 
 void SpriteRenderer_RemoveGfxHandler(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler) {
     SpriteGfxHandler_DeleteSpriteList(gfxHandler);
-    sub_0200D050(gfxHandler);
+    SpriteGfxHandler_DeleteResourceHeaderList(gfxHandler);
     SpriteGfxHandler_DestroyResObjsAndMans(gfxHandler);
     MyRemoveSpriteGfxHandler(renderer, gfxHandler);
 }
@@ -152,7 +152,7 @@ void SpriteRenderer_Delete(SpriteRenderer* renderer) {
     FreeToHeap(renderer);
 }
 
-static BOOL sub_0200D124(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const u16* a2, int a3, int a4) {
+static BOOL sub_0200D124(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const u16* fileIdList, int loadCharMode, int loadPlttMode) {
     int i;
     int numGfxResTypes;
     int size;
@@ -165,18 +165,18 @@ static BOOL sub_0200D124(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler,
     if (renderer == NULL || gfxHandler == NULL) {
         return FALSE;
     }
-    if (a2[GF_GFX_RES_TYPE_MCEL] == 0xFFFF) {
+    if (fileIdList[GF_GFX_RES_TYPE_MCEL] == 0xFFFF) {
         numGfxResTypes = GF_GFX_RES_TYPE_MAX - 2;
     }
     gfxHandler->numGfxResObjectTypes = numGfxResTypes;
     size = sub_0200A8FC();
     gfxHandler->_2dGfxResHeader = AllocFromHeap(renderer->heapId, size * numGfxResTypes);
-    narc = NARC_New(NARC_a_1_7_5, renderer->heapId);
+    narc = NARC_New(NARC_data_resdat, renderer->heapId);
 
     for (i = 0; i < numGfxResTypes; ++i) {
         header = sub_0200A900(gfxHandler->_2dGfxResHeader, i);
-        data = GfGfxLoader_LoadFromOpenNarc(narc, a2[i], FALSE, renderer->heapId, TRUE);
-        sub_0200A908(data, header, renderer->heapId);
+        data = GfGfxLoader_LoadFromOpenNarc(narc, fileIdList[i], FALSE, renderer->heapId, TRUE);
+        sub_0200A908((_2DGfxResHeaderNarcList *)data, header, renderer->heapId);
         FreeToHeap(data);
     }
     for (i = 0; i < numGfxResTypes; ++i) {
@@ -190,7 +190,7 @@ static BOOL sub_0200D124(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler,
         gfxHandler->_2dGfxResObjList[i] = Create2DGfxResObjList(size, renderer->heapId);
         gfxHandler->numGfxResObjects[i] = LoadAll2DGfxResObjsFromHeader(gfxHandler->_2dGfxResMan[i], header, gfxHandler->_2dGfxResObjList[i], renderer->heapId);
     }
-    switch (a3) {
+    switch (loadCharMode) {
     case 0:
         sub_0200ADE4(gfxHandler->_2dGfxResObjList[GF_GFX_RES_TYPE_CHAR]);
         break;
@@ -202,28 +202,37 @@ static BOOL sub_0200D124(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler,
         sub_0200AD30(gfxHandler->_2dGfxResObjList[GF_GFX_RES_TYPE_CHAR]);
         break;
     }
-    switch (a4) {
+    switch (loadPlttMode) {
     case 0:
-        sub_0200B050(gfxHandler->_2dGfxResObjList[1]);
+        sub_0200B050(gfxHandler->_2dGfxResObjList[GF_GFX_RES_TYPE_PLTT]);
         break;
     case 1:
     default:
-        sub_0200AFD8(gfxHandler->_2dGfxResObjList[1]);
+        sub_0200AFD8(gfxHandler->_2dGfxResObjList[GF_GFX_RES_TYPE_PLTT]);
         break;
     }
-    data = GfGfxLoader_LoadFromOpenNarc(narc, a2[6], FALSE, renderer->heapId, TRUE);
-    gfxHandler->listOfUnkStruct_9D48 = sub_02009E84(data, renderer->heapId, gfxHandler->_2dGfxResMan[0], gfxHandler->_2dGfxResMan[1], gfxHandler->_2dGfxResMan[2], gfxHandler->_2dGfxResMan[3], gfxHandler->_2dGfxResMan[4], gfxHandler->_2dGfxResMan[5]);
+    data = GfGfxLoader_LoadFromOpenNarc(narc, fileIdList[6], FALSE, renderer->heapId, TRUE);
+    gfxHandler->spriteHeaderList = SpriteResourceHeaderList_Create(
+        (struct ResdatNarcEntry*)data,
+        renderer->heapId,
+        gfxHandler->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR],
+        gfxHandler->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT],
+        gfxHandler->_2dGfxResMan[GF_GFX_RES_TYPE_CELL],
+        gfxHandler->_2dGfxResMan[GF_GFX_RES_TYPE_ANIM],
+        gfxHandler->_2dGfxResMan[GF_GFX_RES_TYPE_MCEL],
+        gfxHandler->_2dGfxResMan[GF_GFX_RES_TYPE_MANM]
+    );
     FreeToHeap(data);
     NARC_Delete(narc);
     return TRUE;
 }
 
-BOOL sub_0200D294(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const u16* a2) {
-    return sub_0200D124(renderer, gfxHandler, a2, 2, 1);
+BOOL sub_0200D294(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const u16* fileIdList) {
+    return sub_0200D124(renderer, gfxHandler, fileIdList, 2, 1);
 }
 
-BOOL sub_0200D2A4(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const u16* a2, int a3, int a4) {
-    return sub_0200D124(renderer, gfxHandler, a2, a3, a4);
+BOOL sub_0200D2A4(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const u16* fileIdList, int loadCharMode, int loadPlttMode) {
+    return sub_0200D124(renderer, gfxHandler, fileIdList, loadCharMode, loadPlttMode);
 }
 
 Sprite* SpriteRenderer_CreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, const UnkStruct_0200D2B4* a2) {
@@ -235,7 +244,7 @@ static Sprite* MyCreateSprite(SpriteRenderer* renderer, SpriteGfxHandler* gfxHan
     SpriteTemplate template;
 
     template.spriteList = gfxHandler->spriteList;
-    template.header = &gfxHandler->listOfUnkStruct_9D48->headers[headerIndex];
+    template.header = &gfxHandler->spriteHeaderList->headers[headerIndex];
 
     template.position.x = FX32_CONST(x);
     template.position.y = FX32_CONST(y);
@@ -405,15 +414,15 @@ static UnkImageStruct* MyLoadResourcesAndCreateSprite(SpriteRenderer* renderer, 
     if (ret == NULL) {
         return NULL;
     }
-    ret->listOfUnkStruct_9D48 = AllocFromHeap(renderer->heapId, sizeof(ListOfUnkStruct_02009D48));
-    if (ret->listOfUnkStruct_9D48 == NULL) {
+    ret->spriteResourceHeaderList = AllocFromHeap(renderer->heapId, sizeof(SpriteResourceHeaderList));
+    if (ret->spriteResourceHeaderList == NULL) {
         return NULL;
     }
-    ret->listOfUnkStruct_9D48->headers = AllocFromHeap(renderer->heapId, sizeof(SpriteResourcesHeader));
-    ret->spriteResourcesHeader = ret->listOfUnkStruct_9D48->headers;
-    if (ret->listOfUnkStruct_9D48->headers == NULL) {
-        if (ret->listOfUnkStruct_9D48 != NULL) { // always true
-            FreeToHeap(ret->listOfUnkStruct_9D48);
+    ret->spriteResourceHeaderList->headers = AllocFromHeap(renderer->heapId, sizeof(SpriteResourcesHeader));
+    ret->spriteResourcesHeader = ret->spriteResourceHeaderList->headers;
+    if (ret->spriteResourceHeaderList->headers == NULL) {
+        if (ret->spriteResourceHeaderList != NULL) { // always true
+            FreeToHeap(ret->spriteResourceHeaderList);
         }
         return NULL; // leaks 16 bytes
     }
@@ -521,7 +530,7 @@ void sub_0200D9DC(UnkImageStruct* unk) {
         sub_0200AF80(unk->spriteResourcesHeader->imageProxy);
     }
     Sprite_Delete(unk->sprite);
-    sub_02009F24(unk->listOfUnkStruct_9D48);
+    SpriteResourceHeaderList_Destroy(unk->spriteResourceHeaderList);
     FreeToHeap(unk);
 }
 

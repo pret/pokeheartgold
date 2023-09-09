@@ -28,7 +28,7 @@ struct HiddenItemData {
 
 const struct ScriptBankMapping sScriptBankMapping[30] = {
     {_std_scratch_card,        NARC_scr_seq_scr_seq_0263_bin, NARC_msg_msg_0433_bin},
-    {_std_frontier_records,    NARC_scr_seq_scr_seq_0264_bin,  NARC_msg_msg_0019_bin},
+    {_std_frontier_records,    NARC_scr_seq_scr_seq_0264_bin, NARC_msg_msg_0019_bin},
     {_std_frontier_move_tutor, NARC_scr_seq_scr_seq_0002_bin, NARC_msg_msg_0748_bin},
     {_std_bug_contest,         NARC_scr_seq_scr_seq_0151_bin, NARC_msg_msg_0246_bin},
     {_std_trainer_house,       NARC_scr_seq_scr_seq_0952_bin, NARC_msg_msg_0726_bin},

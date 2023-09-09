@@ -69,6 +69,11 @@ struct _2DGfxResHeaderNarc {
     int extra[2];
 };
 
+typedef struct _2DGfxResHeaderNarcList {
+    GfGfxResType type;
+    struct _2DGfxResHeaderNarc internal;
+} _2DGfxResHeaderNarcList;
+
 struct _2DGfxResHeader {
     void *table;
     int num;
@@ -116,7 +121,7 @@ int sub_0200A8B0(struct _2DGfxResObj *obj);
 int sub_0200A8DC(struct _2DGfxResObj *obj);
 u32 sub_0200A8FC(void);
 struct _2DGfxResHeader *sub_0200A900(struct _2DGfxResHeader *headers, int num);
-void sub_0200A908(const void *a0, struct _2DGfxResHeader *header, HeapID heapId);
+void sub_0200A908(const _2DGfxResHeaderNarcList *a0, struct _2DGfxResHeader *header, HeapID heapId);
 void sub_0200A954(struct _2DGfxResHeader *header);
 int sub_0200A96C(const struct _2DGfxResHeader *header);
 int sub_0200A97C(struct _2DGfxResHeader *header, int idx);

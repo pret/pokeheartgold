@@ -4,8 +4,8 @@
 .public NARC_Delete
 .public GfGfxLoader_LoadFromOpenNarc
 .public CreateSpriteResourcesHeader
-.public sub_02009E84
-.public sub_02009F24
+.public SpriteResourceHeaderList_Create
+.public SpriteResourceHeaderList_Destroy
 .public G2dRenderer_Init
 .public Create2DGfxResObjMan
 .public Destroy2DGfxResObjMan

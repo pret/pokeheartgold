@@ -2301,13 +2301,13 @@ _0208C3E0: .word 0x0000050C
 
 	.rodata
 _02103A2C:
-	.short 0x0036
-	.short 0x0037
-	.short 0x0035
-	.short 0x0034
+	.short 0x0036  // NARC_resdat_resdat_00000054
+	.short 0x0037  // NARC_resdat_resdat_00000055
+	.short 0x0035  // NARC_resdat_resdat_00000053
+	.short 0x0034  // NARC_resdat_resdat_00000052
 	.short 0xFFFF
 	.short 0xFFFF
-	.short 0x0055
+	.short 0x0055  // NARC_resdat_resdat_00000085
 	.balign 4, 0
 _02103A3C:
 	.byte 0x73, 0x00, 0x00, 0x00

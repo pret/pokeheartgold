@@ -208,7 +208,7 @@ _021E811A:
 	ldr r2, [r5, r2]
 	ldr r3, [r5, r3]
 	add r1, r4, #0
-	bl sub_02009E84
+	bl SpriteResourceHeaderList_Create
 	mov r1, #0x4b
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -232,7 +232,7 @@ ov01_021E8194: ; 0x021E8194
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02009F24
+	bl SpriteResourceHeaderList_Destroy
 	mov r0, #0x52
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
