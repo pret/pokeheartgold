@@ -75,7 +75,7 @@ sub_02096248: ; 0x02096248
 	thumb_func_start sub_02096260
 sub_02096260: ; 0x02096260
 	push {r4, lr}
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r1, [r4, #0x18]
 	cmp r1, #4

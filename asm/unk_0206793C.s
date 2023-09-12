@@ -20,7 +20,7 @@ sub_0206793C: ; 0x0206793C
 	add r4, r0, #0
 	bl TaskManager_GetFieldSystem
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r2, r0, #0
 	ldr r1, _02067958 ; =_020FE79C
 	add r0, r4, #0
@@ -39,7 +39,7 @@ Task_NPCTrade: ; 0x0206795C
 	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	cmp r0, #6
@@ -100,14 +100,14 @@ _020679D4:
 	b _02067A16
 _020679E2:
 	add r0, r5, #0
-	bl sub_020552A4
+	bl CallTask_RestoreOverworld
 	ldr r0, [r4, #4]
 	add r0, r0, #1
 	str r0, [r4, #4]
 	b _02067A16
 _020679F0:
 	add r0, r5, #0
-	bl sub_0205532C
+	bl CallTask_FadeFromBlack
 	ldr r0, [r4, #4]
 	add r0, r0, #1
 	str r0, [r4, #4]

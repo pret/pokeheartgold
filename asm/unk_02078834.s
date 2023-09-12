@@ -20,7 +20,7 @@ sub_02078834: ; 0x02078834
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r6, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r1, [r4, #4]
 	cmp r1, #0x19

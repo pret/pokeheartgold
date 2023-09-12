@@ -516,7 +516,7 @@ sub_0203E604: ; 0x0203E604
 	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetStatePtr
@@ -826,7 +826,7 @@ sub_0203E878: ; 0x0203E878
 	bl TaskManager_GetStatePtr
 	add r5, r0, #0
 	add r0, r6, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	add r0, r6, #0
 	bl TaskManager_GetFieldSystem
@@ -1967,7 +1967,7 @@ sub_0203F134: ; 0x0203F134
 	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0
@@ -2172,7 +2172,7 @@ sub_0203F2C8: ; 0x0203F2C8
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r6, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #7
@@ -2516,7 +2516,7 @@ sub_0203F580: ; 0x0203F580
 	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #3
@@ -2550,7 +2550,7 @@ _0203F5BA:
 	b _0203F648
 _0203F5CC:
 	add r0, r5, #0
-	bl sub_020552A4
+	bl CallTask_RestoreOverworld
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -2621,7 +2621,7 @@ NamingScreen_SetName: ; 0x0203F650
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0]

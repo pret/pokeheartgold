@@ -20,7 +20,7 @@
 .public Save_VarsFlags_Get
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public sub_02053908
 .public GetIdxOfFirstAliveMonInParty_CrashIfNone
 .public PlayerAvatar_GetMapObject

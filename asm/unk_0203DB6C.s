@@ -262,7 +262,7 @@ _0203DD1E:
 	bl HiddenItemScriptNoToFlagId
 	add r1, r0, #0
 	add r0, r4, #0
-	bl FlagGet
+	bl FieldSystem_FlagGet
 	cmp r0, #1
 	beq _0203DD34
 	mov r0, #1
@@ -430,7 +430,7 @@ _0203DE2A:
 	bge _0203DE5E
 	ldrh r1, [r5, #0xe]
 	ldr r0, [sp]
-	bl VarGet
+	bl FieldSystem_VarGet
 	ldrh r1, [r5, #0xc]
 	cmp r1, r0
 	bne _0203DE5E

@@ -66,7 +66,7 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
     int apricornType;
 
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
-    AnimApricornTreeWork *env = TaskManager_GetEnv(taskman);
+    AnimApricornTreeWork *env = TaskManager_GetEnvironment(taskman);
 
     switch (env->state) {
     case 0:
@@ -214,7 +214,7 @@ static BOOL Task_AnimPlayerShakeTree(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     LocalMapObject *playerObj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
     int *state_p = TaskManager_GetStatePtr(taskman);
-    AnimPlayerShakeTreeWork *env = TaskManager_GetEnv(taskman);
+    AnimPlayerShakeTreeWork *env = TaskManager_GetEnvironment(taskman);
 
     switch (*state_p) {
     case 0:

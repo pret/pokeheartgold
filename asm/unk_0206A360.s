@@ -121,7 +121,7 @@ sub_0206A410: ; 0x0206A410
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #3

@@ -249,7 +249,7 @@ sub_020670B0: ; 0x020670B0
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r1, [r4, #4]
 	cmp r1, #4
@@ -386,7 +386,7 @@ sub_020671B0: ; 0x020671B0
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r1, [r4, #4]
 	cmp r1, #0
@@ -456,7 +456,7 @@ sub_02067238: ; 0x02067238
 	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r5, r0, #0
 	bl sub_0203769C
 	mov r1, #1

@@ -354,7 +354,7 @@ MapObjectManager* MapObject_GetManager(LocalMapObject* object);
 MapObjectManager* sub_0205F364(LocalMapObject* object);
 ObjectEvent* sub_0205FA98(u16 id, int num_templates, ObjectEvent* templates);
 void sub_0205F338(LocalMapObject* object, SysTask* a1);
-BOOL FlagGet(FieldSystem*, u16);
+BOOL FieldSystem_FlagGet(FieldSystem*, u16);
 u16 ObjectEventTemplate_GetXCoord(ObjectEvent* template);
 u32 ObjectEventTemplate_GetHeight(ObjectEvent* template);
 u16 ObjectEventTemplate_GetYCoord(ObjectEvent* template);

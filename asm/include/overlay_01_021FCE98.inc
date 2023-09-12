@@ -5,7 +5,7 @@
 .public GF_ExpHeap_FndInitAllocator
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public TaskManager_GetStatePtr
 .public PlayerAvatar_GetState
 .public PlayerAvatar_GetGender

@@ -6,7 +6,7 @@
 .public sub_020505C0
 .public sub_020505C8
 .public TaskManager_GetFieldSystem
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public sub_0207791C
 .public sub_02092B04
 .public ov01_021E636C

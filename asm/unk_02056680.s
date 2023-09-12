@@ -16,7 +16,7 @@ sub_02056680: ; 0x02056680
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldrh r0, [r4, #2]
 	cmp r0, #0
@@ -75,7 +75,7 @@ sub_020566F8: ; 0x020566F8
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldrh r0, [r4, #2]
 	cmp r0, #3
@@ -168,7 +168,7 @@ sub_020567B4: ; 0x020567B4
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r6, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetMapObject
@@ -219,7 +219,7 @@ sub_0205681C: ; 0x0205681C
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldrh r0, [r4, #2]
 	cmp r0, #5
@@ -351,7 +351,7 @@ sub_02056938: ; 0x02056938
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldrh r0, [r4, #2]
 	cmp r0, #5
@@ -807,7 +807,7 @@ sub_02056D30: ; 0x02056D30
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r6, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldrh r1, [r4]
 	cmp r1, #0
