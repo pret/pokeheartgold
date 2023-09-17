@@ -461,7 +461,7 @@ sub_0205BE28: ; 0x0205BE28
 	add r4, r0, #0
 	bl TaskManager_GetFieldSystem
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	mov r0, #2
 	lsl r0, r0, #0xe
@@ -613,7 +613,7 @@ sub_0205BF6C: ; 0x0205BF6C
 	add r4, r0, #0
 	bl TaskManager_GetFieldSystem
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldrb r1, [r4, #9]
 	ldr r0, [r4]

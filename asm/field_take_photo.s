@@ -180,7 +180,7 @@ sub_0206A8E4: ; 0x0206A8E4
 	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #8
@@ -581,7 +581,7 @@ sub_0206ABB0: ; 0x0206ABB0
 	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r7, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r0, [r4, #8]
 	ldr r1, [r4]
@@ -635,7 +635,7 @@ _0206ABF2:
 	b _0206AEA2
 _0206AC28:
 	add r0, r7, #0
-	bl sub_020552A4
+	bl CallTask_RestoreOverworld
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -1413,7 +1413,7 @@ sub_0206B270: ; 0x0206B270
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r6, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldrb r1, [r4, #0x14]
 	cmp r1, #0x14
@@ -1485,7 +1485,7 @@ _0206B2DC:
 	b _0206B824
 _0206B30A:
 	add r0, r6, #0
-	bl sub_020552A4
+	bl CallTask_RestoreOverworld
 	mov r0, #4
 	strb r0, [r4, #0x14]
 	b _0206B824
@@ -1806,7 +1806,7 @@ _0206B5A0:
 	mov r1, #4
 	bl sub_0206B8AC
 	add r0, r6, #0
-	bl sub_0205532C
+	bl CallTask_FadeFromBlack
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0xca
@@ -2043,7 +2043,7 @@ _0206B768:
 	b _0206B824
 _0206B794:
 	add r0, r6, #0
-	bl sub_020552A4
+	bl CallTask_RestoreOverworld
 	mov r0, #0x13
 	strb r0, [r4, #0x14]
 	b _0206B824

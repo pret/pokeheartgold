@@ -23,10 +23,10 @@
 .public GF_AssertFail
 .public sub_02026E18
 .public ScriptReadHalfword
-.public VarGet
+.public FieldSystem_VarGet
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public TaskManager_GetStatePtr
 .public GetIdxOfFirstAliveMonInParty_CrashIfNone
 .public GetMetatileBehaviorAt

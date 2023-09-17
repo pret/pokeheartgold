@@ -12,7 +12,7 @@
 .public TaskManager_Call
 .public CallApplicationAsTask
 .public TaskManager_GetFieldSystem
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public GetMetatileBehaviorAt
 .public sub_02054940
 .public sub_02056680

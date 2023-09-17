@@ -66,7 +66,7 @@ void StartMapSceneScript(FieldSystem *fieldSystem, u16 script, LocalMapObject *l
 }
 
 void FieldSystem_SetEngagedTrainer(FieldSystem *fieldSystem, LocalMapObject *obj, int a2, int a3, int a4, int trainerId, int encounterType, int idx) {
-    ScriptEnvironment *env = TaskManager_GetEnv(fieldSystem->taskman);
+    ScriptEnvironment *env = TaskManager_GetEnvironment(fieldSystem->taskman);
     EngagedTrainer *r0 = &env->engagedTrainers[idx];
     r0->unk0 = a2;
     r0->unk4 = a3;
@@ -95,7 +95,7 @@ BOOL Task_RunScripts(TaskManager *taskman) {
     FieldSystem *fieldSystem;
     ScriptEnvironment *env;
 
-    env = TaskManager_GetEnv(taskman);
+    env = TaskManager_GetEnvironment(taskman);
     fieldSystem = TaskManager_GetFieldSystem(taskman);
 
     switch (env->state) {
@@ -321,14 +321,14 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *environment, enum ScriptEnv
 }
 
 void* FieldSysGetAttrAddr(FieldSystem *fieldSystem, enum ScriptEnvField field) {
-    ScriptEnvironment *unk = TaskManager_GetEnv(fieldSystem->taskman);
+    ScriptEnvironment *unk = TaskManager_GetEnvironment(fieldSystem->taskman);
     GF_ASSERT(unk != NULL);
     GF_ASSERT(unk->check == Unk80_10_C_MAGIC);
     return FieldSysGetAttrAddrInternal(unk, field);
 }
 
 void sub_0204031C(FieldSystem *fieldSystem) {
-    ScriptEnvironment *unk = TaskManager_GetEnv(fieldSystem->taskman);
+    ScriptEnvironment *unk = TaskManager_GetEnvironment(fieldSystem->taskman);
     if (sub_0203BC10(fieldSystem) == TRUE) {
         unk->scrctx_end_cb = sub_0203BD64;
     }
@@ -358,7 +358,7 @@ u16 *GetVarPointer(FieldSystem *fieldSystem, u16 varIdx) {
     }
 }
 
-u16 VarGet(FieldSystem *fieldSystem, u16 varIdx) {
+u16 FieldSystem_VarGet(FieldSystem *fieldSystem, u16 varIdx) {
     u16 *ptr = GetVarPointer(fieldSystem, varIdx);
     if (ptr != NULL) {
         varIdx = *ptr;
@@ -366,7 +366,7 @@ u16 VarGet(FieldSystem *fieldSystem, u16 varIdx) {
     return varIdx;
 }
 
-BOOL VarSet(FieldSystem *fieldSystem, u16 varIdx, u16 value) {
+BOOL FieldSystem_VarSet(FieldSystem *fieldSystem, u16 varIdx, u16 value) {
     u16 *ptr = GetVarPointer(fieldSystem, varIdx);
     if (ptr == NULL) {
         return FALSE;
@@ -375,20 +375,20 @@ BOOL VarSet(FieldSystem *fieldSystem, u16 varIdx, u16 value) {
     return TRUE;
 }
 
-u16 VarGetObjectEventGraphicsId(FieldSystem *fieldSystem, u16 varobjId) {
+u16 FieldSystem_VarGetObjectEventGraphicsId(FieldSystem *fieldSystem, u16 varobjId) {
     GF_ASSERT(varobjId < NUM_OBJ_GFX_VARS);
-    return VarGet(fieldSystem, VAR_OBJ_GFX_BASE + varobjId);
+    return FieldSystem_VarGet(fieldSystem, VAR_OBJ_GFX_BASE + varobjId);
 }
 
-BOOL FlagGet(FieldSystem *fieldSystem, u16 flagId) {
+BOOL FieldSystem_FlagGet(FieldSystem *fieldSystem, u16 flagId) {
     return CheckFlagInArray(Save_VarsFlags_Get(fieldSystem->saveData), flagId);
 }
 
-void FlagSet(FieldSystem *fieldSystem, u16 flagId) {
+void FieldSystem_FlagSet(FieldSystem *fieldSystem, u16 flagId) {
     return SetFlagInArray(Save_VarsFlags_Get(fieldSystem->saveData), flagId);
 }
 
-void FlagClear(FieldSystem *fieldSystem, u16 flagId) {
+void FieldSystem_FlagClear(FieldSystem *fieldSystem, u16 flagId) {
     return ClearFlagInArray(Save_VarsFlags_Get(fieldSystem->saveData), flagId);
 }
 
@@ -551,7 +551,7 @@ HiddenItemResponse* AllocAndFetchNearbyHiddenItems(FieldSystem *fieldSystem, Hea
     // To fix, subtract 1 from num_bgs in the condition clause
     for (i = 0; i < num_bgs; i++) {
         if (bgEvents[i].type == 2
-        && !FlagGet(fieldSystem, HiddenItemScriptNoToFlagId(bgEvents[i].scr))) {
+        && !FieldSystem_FlagGet(fieldSystem, HiddenItemScriptNoToFlagId(bgEvents[i].scr))) {
             if (bgEvents[i].x >= left
                && bgEvents[i].x <= right
                && bgEvents[i].y >= top
@@ -649,7 +649,7 @@ u16 GetMapSceneScriptId(FieldSystem *fieldSystem, u8 *header, u8 type) {
             return 0xFFFF;
         }
         var2 = header[2] + (header[3] << 8);
-        if (VarGet(fieldSystem, var1) == VarGet(fieldSystem, var2)) {
+        if (FieldSystem_VarGet(fieldSystem, var1) == FieldSystem_VarGet(fieldSystem, var2)) {
             return header[4] + (header[5] << 8);
         }
         header += 6;

@@ -612,7 +612,7 @@ sub_02069498: ; 0x02069498
 	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r5, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0xa

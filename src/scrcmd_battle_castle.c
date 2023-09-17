@@ -135,7 +135,7 @@ static void sub_0204FB20(TaskManager *taskManager, u16 firstMon, u16 secondMon, 
 }
 
 static BOOL sub_0204FB60(TaskManager *taskManager) {
-    UnkStruct_0204FB20 *unk = TaskManager_GetEnv(taskManager);
+    UnkStruct_0204FB20 *unk = TaskManager_GetEnvironment(taskManager);
     switch (unk->state) {
         case 0:
             if (sub_02037030(133, unk, 16) == TRUE) {
@@ -172,7 +172,7 @@ static void sub_0204FBDC(TaskManager *taskManager, void *a1, BattleCastleChallen
 
 static BOOL sub_0204FC10(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    UnkStruct_0204FBDC *unk = TaskManager_GetEnv(taskManager);
+    UnkStruct_0204FBDC *unk = TaskManager_GetEnvironment(taskManager);
     switch (unk->state) {
         case 0:
             unk->state = sub_0204FC78(unk, fieldSystem, HEAP_ID_FIELD);

@@ -37,7 +37,7 @@ void sub_020505C0(FieldSystem *fieldSystem);
 BOOL sub_020505C8(FieldSystem *fieldSystem);
 void CallApplicationAsTask(TaskManager *taskManager, const OVY_MGR_TEMPLATE *template, void *work);
 FieldSystem *TaskManager_GetFieldSystem(TaskManager *taskManager);
-void *TaskManager_GetEnv(TaskManager *taskManager);
+void *TaskManager_GetEnvironment(TaskManager *taskManager);
 u32 *TaskManager_GetStatePtr(TaskManager *taskManager);
 u32 sub_02050658(TaskManager *taskManager);
 

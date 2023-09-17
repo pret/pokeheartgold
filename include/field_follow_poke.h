@@ -20,7 +20,7 @@ u8 sub_02069EC0(LocalMapObject *mapObject);
 u8 sub_02069ED4(LocalMapObject *mapObject);
 void FollowPokeMapObjectSetParams(LocalMapObject *mapObject, int species, u8 form, BOOL shiny);
 void sub_02069F0C(LocalMapObject *mapObject, int species, u8 form, BOOL shiny, int a4);
-void FieldSystem_SetFollowPokeParam(FieldSystem *fieldSystem, int species, u8 form, BOOL shiny, u8 gender);
+void FieldSystem_SetFollowerPokeParam(FieldSystem *fieldSystem, int species, u8 form, BOOL shiny, u8 gender);
 u8 GetFollowPokeSizeParamBySpecies(int species);
 int FollowPokeObj_GetSpecies(LocalMapObject *mapObject);
 BOOL FollowingPokemon_IsActive(FieldSystem *fieldSystem);

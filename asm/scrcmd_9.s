@@ -124,7 +124,7 @@ ScrCmd_412: ; 0x02049D04
 	add r0, r7, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl VarGet
+	bl FieldSystem_VarGet
 	add r6, r0, #0
 	add r0, r7, #0
 	bl ScriptReadHalfword
@@ -483,7 +483,7 @@ ScrCmd_413: ; 0x02049FC8
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl VarGet
+	bl FieldSystem_VarGet
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -491,7 +491,7 @@ ScrCmd_413: ; 0x02049FC8
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl VarGet
+	bl FieldSystem_VarGet
 	add r7, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -581,7 +581,7 @@ ScrCmd_416: ; 0x0204A098
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl VarGet
+	bl FieldSystem_VarGet
 	add r7, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -589,7 +589,7 @@ ScrCmd_416: ; 0x0204A098
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl VarGet
+	bl FieldSystem_VarGet
 	str r0, [sp, #4]
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -699,7 +699,7 @@ ScrCmd_417: ; 0x0204A184
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl VarGet
+	bl FieldSystem_VarGet
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -912,7 +912,7 @@ ScrCmd_555: ; 0x0204A31C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl VarGet
+	bl FieldSystem_VarGet
 	add r5, #0x80
 	add r6, r0, #0
 	ldr r0, [r5]
@@ -944,7 +944,7 @@ ScrCmd_556: ; 0x0204A360
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl VarGet
+	bl FieldSystem_VarGet
 	add r5, #0x80
 	add r6, r0, #0
 	ldr r0, [r5]
@@ -976,7 +976,7 @@ ScrCmd_CheckBattlePoints: ; 0x0204A3A4
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl VarGet
+	bl FieldSystem_VarGet
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword

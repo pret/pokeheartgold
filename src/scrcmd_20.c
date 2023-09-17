@@ -251,7 +251,7 @@ static void sub_0204F1E4(TaskManager *taskManager, u16 playerSpecies, u16 *resul
 }
 
 static BOOL sub_0204F228(TaskManager *taskManager) {
-    UnkStruct_0204F1E4 *r4 = TaskManager_GetEnv(taskManager);
+    UnkStruct_0204F1E4 *r4 = TaskManager_GetEnvironment(taskManager);
     switch (r4->state) {
         case 0:
             if (sub_02037030(0x84, r4, sizeof(UnkStruct_0204F1E4)) == 1) {
@@ -286,7 +286,7 @@ static void sub_0204F284(TaskManager *taskManager, void *a1, BattleHallChallenge
 
 static BOOL sub_0204F2B8(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    UnkStruct_0204F284 *r4 = TaskManager_GetEnv(taskManager);
+    UnkStruct_0204F284 *r4 = TaskManager_GetEnvironment(taskManager);
     switch (r4->state) {
         case 0:
             r4->state = sub_0204F320(r4, fieldSystem, HEAP_ID_FIELD);

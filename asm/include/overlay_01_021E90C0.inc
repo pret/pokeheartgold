@@ -25,7 +25,7 @@
 .public sub_0203B58C
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public sub_02054A60
 .public sub_02054AE4
 .public sub_02054B74

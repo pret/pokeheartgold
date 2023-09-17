@@ -18,7 +18,7 @@
 .public SetupNativeScript
 .public ScriptReadHalfword
 .public FieldSysGetAttrAddr
-.public VarGet
+.public FieldSystem_VarGet
 .public sub_02050AAC
 .public sub_020517E8
 .public sub_020517FC

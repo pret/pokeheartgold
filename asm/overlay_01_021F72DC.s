@@ -437,7 +437,7 @@ _021F761C:
 	ldr r3, [sp, #4]
 	add r1, r7, #0
 	lsr r2, r2, #0x18
-	bl FieldSystem_SetFollowPokeParam
+	bl FieldSystem_SetFollowerPokeParam
 	add r0, r5, #0
 	mov r1, #1
 	bl MapObject_ForceSetFacingDirection

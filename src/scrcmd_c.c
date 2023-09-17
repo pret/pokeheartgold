@@ -450,7 +450,7 @@ BOOL ScrCmd_SetFlag(ScriptContext* ctx) {
     FieldSystem* fieldSystem = ctx->fieldSystem;
     u16 flag_to_set = ScriptReadHalfword(ctx);
 
-    FlagSet(fieldSystem, flag_to_set);
+    FieldSystem_FlagSet(fieldSystem, flag_to_set);
 
     return FALSE;
 }
@@ -459,7 +459,7 @@ BOOL ScrCmd_ClearFlag(ScriptContext* ctx) {
     FieldSystem* fieldSystem = ctx->fieldSystem;
     u16 flag_to_clear = ScriptReadHalfword(ctx);
 
-    FlagClear(fieldSystem, flag_to_clear);
+    FieldSystem_FlagClear(fieldSystem, flag_to_clear);
 
     return FALSE;
 }
@@ -468,7 +468,7 @@ BOOL ScrCmd_CheckFlag(ScriptContext* ctx) {
     FieldSystem* fieldSystem = ctx->fieldSystem;
     u16 flag_to_check = ScriptReadHalfword(ctx);
 
-    ctx->comparisonResult = FlagGet(fieldSystem, flag_to_check);
+    ctx->comparisonResult = FieldSystem_FlagGet(fieldSystem, flag_to_check);
 
     return FALSE;
 }
@@ -478,7 +478,7 @@ BOOL ScrCmd_CheckFlagVar(ScriptContext* ctx) {
     u16* flag_in_var_to_check = ScriptGetVarPointer(ctx);
     u16* ret_ptr = ScriptGetVarPointer(ctx);
 
-    *ret_ptr = FlagGet(fieldSystem, *flag_in_var_to_check);
+    *ret_ptr = FieldSystem_FlagGet(fieldSystem, *flag_in_var_to_check);
 
     return FALSE;
 }
@@ -487,7 +487,7 @@ BOOL ScrCmd_SetFlagVar(ScriptContext* ctx) {
     FieldSystem* fieldSystem = ctx->fieldSystem;
     u16* flag_in_var_to_set = ScriptGetVarPointer(ctx);
 
-    FlagSet(fieldSystem, *flag_in_var_to_set);
+    FieldSystem_FlagSet(fieldSystem, *flag_in_var_to_set);
 
     return FALSE;
 }
@@ -496,7 +496,7 @@ BOOL ScrCmd_ClearFlagVar(ScriptContext* ctx) {
     FieldSystem* fieldSystem = ctx->fieldSystem;
     u16* flag_in_var_to_clear = ScriptGetVarPointer(ctx);
 
-    FlagClear(fieldSystem, *flag_in_var_to_clear);
+    FieldSystem_FlagClear(fieldSystem, *flag_in_var_to_clear);
 
     return FALSE;
 }
@@ -1781,7 +1781,7 @@ BOOL ScrNative_WaitApplication(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_150(ScriptContext *ctx) {
-    sub_020552A4(ctx->fieldSystem->taskman);
+    CallTask_RestoreOverworld(ctx->fieldSystem->taskman);
     return TRUE;
 }
 
@@ -4760,9 +4760,9 @@ BOOL ScrCmd_621(ScriptContext *ctx) {
     int n, i;
 
     int partyCount = Party_GetCount(SaveArray_Party_Get(fieldSystem->saveData));
-    if (FlagGet(fieldSystem, FLAG_GOT_TM51_FROM_FALKNER)) {
+    if (FieldSystem_FlagGet(fieldSystem, FLAG_GOT_TM51_FROM_FALKNER)) {
         n = 0;
-    } else if (FlagGet(fieldSystem, FLAG_MET_PASSERBY_BOY)) {
+    } else if (FieldSystem_FlagGet(fieldSystem, FLAG_MET_PASSERBY_BOY)) {
         n = 1;
     } else if (partyCount > 0) {
         n = 2;

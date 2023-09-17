@@ -34,7 +34,7 @@
 .public TaskManager_Call
 .public FieldSystem_ApplicationIsRunning
 .public TaskManager_GetFieldSystem
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public sub_02055624
 .public FieldSystem_GetGameClearTime
 .public sub_0205ABD8

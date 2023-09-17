@@ -48,7 +48,7 @@ static void sub_02051660(FieldSystem *fieldSystem, BattleSetup *setup);
 
 static BOOL sub_02050660(TaskManager *man) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
-    BattleSetup *battleSetup = TaskManager_GetEnv(man);
+    BattleSetup *battleSetup = TaskManager_GetEnvironment(man);
     int *state = TaskManager_GetStatePtr(man);
 
     switch (*state) {
@@ -92,7 +92,7 @@ static BOOL sub_020506F4(ENCOUNTER *work, FieldSystem *fieldSystem) {
     if (work->winFlag != NULL) {
         *(work->winFlag) = work->setup->winFlag;
     }
-    VarSet(fieldSystem, VAR_BATTLE_RESULT, work->setup->winFlag);
+    FieldSystem_VarSet(fieldSystem, VAR_BATTLE_RESULT, work->setup->winFlag);
     return IsBattleResultWin(work->setup->winFlag);
 }
 
@@ -104,7 +104,7 @@ static void sub_02050724(BattleSetup *setup, FieldSystem *fieldSystem) {
 
 static BOOL sub_02050738(TaskManager *man) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
-    ENCOUNTER *encounter = TaskManager_GetEnv(man);
+    ENCOUNTER *encounter = TaskManager_GetEnvironment(man);
     int *state = TaskManager_GetStatePtr(man);
 
     switch (*state) {
@@ -145,12 +145,12 @@ static BOOL sub_02050738(TaskManager *man) {
             }
 
             sub_02051660(fieldSystem, encounter->setup);
-            sub_020552A4(man);
+            CallTask_RestoreOverworld(man);
             (*state)++;
             break;
         case 4:
             MapObjectManager_UnpauseAllMovement(fieldSystem->mapObjectMan);
-            sub_0205532C(man);
+            CallTask_FadeFromBlack(man);
             (*state)++;
             break;
         case 5:
@@ -182,7 +182,7 @@ static void sub_0205087C(int a0, FieldSystem *fieldSystem) {
 
 static BOOL sub_020508B8(TaskManager *man) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
-    ENCOUNTER *encounter = TaskManager_GetEnv(man);
+    ENCOUNTER *encounter = TaskManager_GetEnvironment(man);
     int *state = TaskManager_GetStatePtr(man);
 
     switch (*state) {
@@ -203,7 +203,7 @@ static BOOL sub_020508B8(TaskManager *man) {
         sub_02052444(encounter->setup, fieldSystem);
         GameStats_AddSpecial(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_UNK20);
         sub_020506F4(encounter, fieldSystem);
-        sub_020552A4(man);
+        CallTask_RestoreOverworld(man);
         (*state)++;
         break;
     case 4:
@@ -216,7 +216,7 @@ static BOOL sub_020508B8(TaskManager *man) {
 
 static BOOL sub_02050960(TaskManager *man) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
-    ENCOUNTER *encounter = TaskManager_GetEnv(man);
+    ENCOUNTER *encounter = TaskManager_GetEnvironment(man);
     int *state = TaskManager_GetStatePtr(man);
 
     switch (*state) {
@@ -243,7 +243,7 @@ static BOOL sub_02050960(TaskManager *man) {
 
 static BOOL sub_020509F0(TaskManager *man) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
-    ENCOUNTER *encounter = TaskManager_GetEnv(man);
+    ENCOUNTER *encounter = TaskManager_GetEnvironment(man);
     int *state = TaskManager_GetStatePtr(man);
 
     switch (*state) {
@@ -267,12 +267,12 @@ static BOOL sub_020509F0(TaskManager *man) {
         }
 
         sub_020506F4(encounter, fieldSystem);
-        sub_020552A4(man);
+        CallTask_RestoreOverworld(man);
 
         (*state)++;
         break;
     case 4:
-        sub_0205532C(man);
+        CallTask_FadeFromBlack(man);
         (*state)++;
         break;
     case 5:
@@ -345,7 +345,7 @@ void sub_02050B90(FieldSystem *fieldSystem, TaskManager *man, BattleSetup *setup
 
 static BOOL Task_WildEncounter(TaskManager *man) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
-    WILD_ENCOUNTER *encounter = TaskManager_GetEnv(man);
+    WILD_ENCOUNTER *encounter = TaskManager_GetEnvironment(man);
 
     switch (encounter->state) {
     case 0:
@@ -378,13 +378,13 @@ static BOOL Task_WildEncounter(TaskManager *man) {
         }
 
         sub_02051660(fieldSystem, encounter->setup);
-        sub_020552A4(man);
+        CallTask_RestoreOverworld(man);
 
         encounter->state++;
         break;
     case 4:
         ov02_BattleExit_HandleRoamerAction(fieldSystem, encounter->setup);
-        sub_0205532C(man);
+        CallTask_FadeFromBlack(man);
         encounter->state++;
         break;
     case 5:
@@ -398,7 +398,7 @@ static BOOL Task_WildEncounter(TaskManager *man) {
 
 static BOOL Task_SafariEncounter(TaskManager *man) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
-    ENCOUNTER *encounter = TaskManager_GetEnv(man);
+    ENCOUNTER *encounter = TaskManager_GetEnvironment(man);
     int *state = TaskManager_GetStatePtr(man);
     u16 *safariBall = LocalFieldData_GetSafariBallsCounter(Save_LocalFieldData_Get(fieldSystem->saveData));
 
@@ -443,12 +443,12 @@ static BOOL Task_SafariEncounter(TaskManager *man) {
         (*state)++;
         break;
     case 5:
-        sub_020552A4(man);
+        CallTask_RestoreOverworld(man);
         (*state)++;
         break;
     case 6:
         MapObjectManager_UnpauseAllMovement(fieldSystem->mapObjectMan);
-        sub_0205532C(man);
+        CallTask_FadeFromBlack(man);
         (*state)++;
         break;
     case 7:
@@ -474,7 +474,7 @@ static BOOL Task_SafariEncounter(TaskManager *man) {
 
 static BOOL Task_BugContestEncounter(TaskManager *man) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
-    ENCOUNTER *encounter = TaskManager_GetEnv(man);
+    ENCOUNTER *encounter = TaskManager_GetEnvironment(man);
     BUGCONTEST *contest = FieldSystem_BugContest_Get(fieldSystem);
     int *state = TaskManager_GetStatePtr(man);
     u16 *sportBall = BugContest_GetSportBallsAddr(contest);
@@ -518,12 +518,12 @@ static BOOL Task_BugContestEncounter(TaskManager *man) {
         (*state)++;
         break;
     case 5:
-        sub_020552A4(man);
+        CallTask_RestoreOverworld(man);
         (*state)++;
         break;
     case 6:
         MapObjectManager_UnpauseAllMovement(fieldSystem->mapObjectMan);
-        sub_0205532C(man);
+        CallTask_FadeFromBlack(man);
         (*state)++;
         break;
     case 7:
@@ -579,7 +579,7 @@ void sub_02051090(TaskManager *man, u16 species, u8 level, u32 *winFlag, BOOL ca
 
 static BOOL Task_PalParkEncounter(TaskManager *man) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
-    ENCOUNTER *encounter = TaskManager_GetEnv(man);
+    ENCOUNTER *encounter = TaskManager_GetEnvironment(man);
     int *state = TaskManager_GetStatePtr(man);
 
     switch(*state) {
@@ -604,12 +604,12 @@ static BOOL Task_PalParkEncounter(TaskManager *man) {
         (*state)++;
         break;
     case 4:
-        sub_020552A4(man);
+        CallTask_RestoreOverworld(man);
         (*state)++;
         break;
     case 5:
         MapObjectManager_UnpauseAllMovement(fieldSystem->mapObjectMan);
-        sub_0205532C(man);
+        CallTask_FadeFromBlack(man);
         (*state)++;
         break;
     case 6:
@@ -647,7 +647,7 @@ void sub_02051228(TaskManager *man, u16 species, u8 level) {
 }
 
 static BOOL Task_TutorialBattle(TaskManager *man) {
-    ENCOUNTER *encounter = TaskManager_GetEnv(man);
+    ENCOUNTER *encounter = TaskManager_GetEnvironment(man);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
     int *state = TaskManager_GetStatePtr(man);
 
@@ -669,12 +669,12 @@ static BOOL Task_TutorialBattle(TaskManager *man) {
         (*state)++;
         break;
     case 4:
-        sub_020552A4(man);
+        CallTask_RestoreOverworld(man);
         (*state)++;
         break;
     case 5:
         MapObjectManager_UnpauseAllMovement(fieldSystem->mapObjectMan);
-        sub_0205532C(man);
+        CallTask_FadeFromBlack(man);
         (*state)++;
         break;
     case 6:
@@ -810,7 +810,7 @@ void sub_020514A4(TaskManager *man, int target, int maxLevel, int flag) {
 
 static BOOL sub_02051540(TaskManager *man) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
-    ENCOUNTER *encounter = TaskManager_GetEnv(man);
+    ENCOUNTER *encounter = TaskManager_GetEnvironment(man);
     int *state = TaskManager_GetStatePtr(man);
 
     switch (*state) {

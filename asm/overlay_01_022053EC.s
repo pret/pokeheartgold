@@ -23,7 +23,7 @@ ScrCmd_808: ; 0x022053EC
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl VarGet
+	bl FieldSystem_VarGet
 	ldr r6, _02205420 ; =FS_OVERLAY_ID(OVY_25)
 	add r4, r0, #0
 	add r0, r6, #0
@@ -993,7 +993,7 @@ ov01_02205B14: ; 0x02205B14
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldrb r1, [r4]
 	cmp r1, #7
@@ -1317,7 +1317,7 @@ ov01_02205DB4: ; 0x02205DB4
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r6, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetStatePtr
@@ -1468,7 +1468,7 @@ ov01_02205F00: ; 0x02205F00
 	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r6, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetStatePtr
@@ -1728,7 +1728,7 @@ ov01_0220610C: ; 0x0220610C
 	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetStatePtr

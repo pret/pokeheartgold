@@ -12,13 +12,13 @@
 .public sub_0201F988
 .public GF_AssertFail
 .public StartScriptFromMenu
-.public FlagSet
-.public FlagClear
+.public FieldSystem_FlagSet
+.public FieldSystem_FlagClear
 .public Save_VarsFlags_Get
 .public FieldSystem_CreateTask
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public sub_02054790
 .public FieldSystem_SetSavedMusicId
 .public GetMapMusic

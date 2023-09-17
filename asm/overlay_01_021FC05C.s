@@ -407,7 +407,7 @@ Task_HoneyOrSweetScent: ; 0x021FC310
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r6, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldrh r1, [r4, #8]
 	cmp r1, #9

@@ -5,7 +5,7 @@
 .public GF_SinDegNoWrap
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public CountDigits
 .public ItemIsTMOrHM
 .public sub_0205BBD0

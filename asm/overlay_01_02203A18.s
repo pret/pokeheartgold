@@ -120,7 +120,7 @@ ov01_02203AD8: ; 0x02203AD8
 	bl TaskManager_GetStatePtr
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r0, [r5]
 	cmp r0, #0

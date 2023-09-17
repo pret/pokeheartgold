@@ -204,13 +204,13 @@
 .public FieldSystem_GetSaveData
 .public StartMapSceneScript
 .public QueueScript
-.public FlagGet
+.public FieldSystem_FlagGet
 .public HiddenItemScriptNoToFlagId
 .public Save_VarsFlags_Get
 .public CheckFlagInArray
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public TaskManager_GetStatePtr
 .public sub_02050B08
 .public sub_02050B90
