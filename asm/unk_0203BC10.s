@@ -423,7 +423,7 @@ sub_0203BEF0: ; 0x0203BEF0
 	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r0, r6, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r5, r0, #0
 	ldrh r1, [r5, #0x26]
 	cmp r1, #0x14
@@ -711,7 +711,7 @@ sub_0203C14C: ; 0x0203C14C
 	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r5, r0, #0
 	add r1, r5, #0
 	add r2, r5, #0
@@ -1128,7 +1128,7 @@ sub_0203C47C: ; 0x0203C47C
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r6, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ov01_021F6B00
@@ -1634,7 +1634,7 @@ sub_0203C870: ; 0x0203C870
 	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r1, r6, #0
 	add r4, r0, #0
 	bl sub_0203C38C
@@ -1663,7 +1663,7 @@ sub_0203C8B0: ; 0x0203C8B0
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r6, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	add r0, r5, #0
 	bl FieldSystem_ApplicationIsRunning
@@ -1702,7 +1702,7 @@ sub_0203C8F0: ; 0x0203C8F0
 	thumb_func_start sub_0203C8FC
 sub_0203C8FC: ; 0x0203C8FC
 	push {r4, lr}
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	mov r0, #0
 	bl ov01_021E636C
@@ -1726,7 +1726,7 @@ sub_0203C920: ; 0x0203C920
 	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	str r0, [sp]
 	ldr r0, [r4, #0xc]
 	bl Save_LocalFieldData_Get
@@ -1839,7 +1839,7 @@ sub_0203CA14: ; 0x0203CA14
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_020505C0
@@ -1860,7 +1860,7 @@ _0203CA3C:
 	thumb_func_start sub_0203CA44
 sub_0203CA44: ; 0x0203CA44
 	push {r4, lr}
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	mov r0, #0
 	bl ov01_021E636C
@@ -1883,7 +1883,7 @@ sub_0203CA68: ; 0x0203CA68
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	mov r1, #0x37
 	add r4, r0, #0
 	lsl r1, r1, #4
@@ -1911,7 +1911,7 @@ sub_0203CA9C: ; 0x0203CA9C
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r7, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	mov r0, #0xb
 	mov r1, #0x44
@@ -2420,7 +2420,7 @@ _0203CEFE:
 	thumb_func_start sub_0203CF0C
 sub_0203CF0C: ; 0x0203CF0C
 	push {r4, lr}
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	mov r0, #0
 	bl ov01_021E636C
@@ -2443,7 +2443,7 @@ sub_0203CF30: ; 0x0203CF30
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	mov r1, #0xd6
 	add r4, r0, #0
 	lsl r1, r1, #2
@@ -2513,7 +2513,7 @@ sub_0203CFC0: ; 0x0203CFC0
 	bl TaskManager_GetFieldSystem
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	mov r0, #0xb
 	bl BagView_New
@@ -2728,7 +2728,7 @@ _0203D1A4: .word sub_0203D830
 	thumb_func_start sub_0203D1A8
 sub_0203D1A8: ; 0x0203D1A8
 	push {r4, lr}
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	mov r0, #0
 	bl ov01_021E636C
@@ -2752,7 +2752,7 @@ sub_0203D1CC: ; 0x0203D1CC
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	mov r0, #0xb
 	bl sub_020691C4
@@ -2788,7 +2788,7 @@ sub_0203D218: ; 0x0203D218
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	mov r0, #0xe
 	lsl r0, r0, #6
@@ -2807,7 +2807,7 @@ sub_0203D218: ; 0x0203D218
 sub_0203D244: ; 0x0203D244
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetFieldSystem
@@ -2827,7 +2827,7 @@ sub_0203D264: ; 0x0203D264
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ov01_021F6B00
@@ -2847,7 +2847,7 @@ sub_0203D288: ; 0x0203D288
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ov01_021F6B00
@@ -2880,7 +2880,7 @@ _0203D2C8:
 sub_0203D2CC: ; 0x0203D2CC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetFieldSystem
@@ -2897,7 +2897,7 @@ sub_0203D2CC: ; 0x0203D2CC
 sub_0203D2EC: ; 0x0203D2EC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetFieldSystem
@@ -2913,7 +2913,7 @@ sub_0203D304: ; 0x0203D304
 	add r4, r0, #0
 	bl TaskManager_GetFieldSystem
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	mov r1, #0x10
 	strh r1, [r0, #0x26]
 	pop {r4, pc}
@@ -2922,7 +2922,7 @@ sub_0203D304: ; 0x0203D304
 	thumb_func_start sub_0203D318
 sub_0203D318: ; 0x0203D318
 	push {r4, lr}
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	mov r0, #0
 	bl ov01_021E636C
@@ -2945,7 +2945,7 @@ sub_0203D33C: ; 0x0203D33C
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_0203EE24
@@ -2968,7 +2968,7 @@ sub_0203D368: ; 0x0203D368
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	mov r0, #0xe
 	lsl r0, r0, #6
@@ -2986,7 +2986,7 @@ sub_0203D368: ; 0x0203D368
 	thumb_func_start sub_0203D394
 sub_0203D394: ; 0x0203D394
 	push {r4, lr}
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	mov r0, #0
 	bl ov01_021E636C
@@ -3010,7 +3010,7 @@ sub_0203D3B8: ; 0x0203D3B8
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	mov r0, #0xb
 	str r0, [sp]
@@ -3056,7 +3056,7 @@ sub_0203D418: ; 0x0203D418
 	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r5, r0, #0
 	mov r0, #0xe
 	lsl r0, r0, #6
@@ -3108,7 +3108,7 @@ sub_0203D488: ; 0x0203D488
 	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r1, r4, #0
 	add r6, r0, #0
 	bl sub_0203C38C
@@ -3159,7 +3159,7 @@ _0203D4FC: .word 0x000028A4
 	thumb_func_start sub_0203D500
 sub_0203D500: ; 0x0203D500
 	push {r4, lr}
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	mov r0, #0
 	bl ov01_021E636C
@@ -3182,7 +3182,7 @@ sub_0203D524: ; 0x0203D524
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	add r0, r5, #0
 	bl PhoneUI_New
@@ -3205,7 +3205,7 @@ sub_0203D550: ; 0x0203D550
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	add r0, r5, #0
 	bl sub_020505C0
@@ -3230,7 +3230,7 @@ sub_0203D580: ; 0x0203D580
 	bl TaskManager_GetFieldSystem
 	str r0, [sp]
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	mov r0, #0xb
 	mov r1, #0x3c
@@ -3338,7 +3338,7 @@ sub_0203D664: ; 0x0203D664
 	bl TaskManager_GetFieldSystem
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	str r0, [sp]
 	ldr r0, [sp, #4]
 	ldr r0, [r0, #0xc]
@@ -3385,7 +3385,7 @@ sub_0203D6C8: ; 0x0203D6C8
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x94
@@ -3423,7 +3423,7 @@ sub_0203D718: ; 0x0203D718
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	mov r1, #0xe
 	add r4, r0, #0
 	lsl r1, r1, #6
@@ -3455,7 +3455,7 @@ Task_UseFlyInField: ; 0x0203D758
 	bl TaskManager_GetFieldSystem
 	add r7, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	mov r0, #0xe1
 	lsl r0, r0, #2
@@ -3558,7 +3558,7 @@ sub_0203D830: ; 0x0203D830
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	mov r0, #0xe1
 	lsl r0, r0, #2
@@ -3739,7 +3739,7 @@ sub_0203D9B4: ; 0x0203D9B4
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	mov r1, #0xd6
 	add r4, r0, #0
 	lsl r1, r1, #2
@@ -3766,7 +3766,7 @@ sub_0203D9E8: ; 0x0203D9E8
 	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r6, r0, #0
 	mov r0, #0xe
 	lsl r0, r0, #6
@@ -3877,7 +3877,7 @@ sub_0203DAE4: ; 0x0203DAE4
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	mov r0, #0xe
 	lsl r0, r0, #6

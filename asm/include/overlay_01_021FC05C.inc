@@ -14,7 +14,7 @@
 .public MapHeader_HasWildEncounters
 .public QueueScript
 .public TaskManager_GetFieldSystem
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public GetMetatileBehaviorAt
 .public GetPlayerXCoord
 .public GetPlayerYCoord

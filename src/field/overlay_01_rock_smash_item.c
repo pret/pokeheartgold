@@ -103,7 +103,7 @@ void FieldSystem_RockSmashItemCheck(FieldSystem *fieldSystem, int followMonKnows
 static BOOL Task_RockSmashItemCheck(TaskManager *taskman) {
     BattleSetup *setup;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
-    RockSmashItemCheckWork *env = TaskManager_GetEnv(taskman);
+    RockSmashItemCheckWork *env = TaskManager_GetEnvironment(taskman);
 
     if (ov02_022470A0(fieldSystem, &setup)) {
         *env->itemFound = FALSE;
@@ -175,7 +175,7 @@ static BOOL Task_GetRockSmashItem(TaskManager *taskman) {
     LocalMapObject *obj;
 
     int *state_p = TaskManager_GetStatePtr(taskman);
-    RockSmashItemCheckWork *env = TaskManager_GetEnv(taskman);
+    RockSmashItemCheckWork *env = TaskManager_GetEnvironment(taskman);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
 
     switch (*state_p) {

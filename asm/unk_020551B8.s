@@ -11,7 +11,7 @@ sub_020551B8: ; 0x020551B8
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #0

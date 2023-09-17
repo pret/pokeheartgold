@@ -3,6 +3,6 @@
 
 #include "task.h"
 
-void sub_020552A4(TaskManager *taskManager);
+void CallTask_RestoreOverworld(TaskManager *taskManager);
 
 #endif //POKEHEARTGOLD_UNK_020552A4_H

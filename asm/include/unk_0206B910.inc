@@ -21,13 +21,13 @@
 .public ScriptReadHalfword
 .public FieldSysGetAttrAddr
 .public GetVarPointer
-.public VarGet
+.public FieldSystem_VarGet
 .public TaskManager_Call
 .public CallApplicationAsTask
 .public TaskManager_GetFieldSystem
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public sub_0205525C
-.public sub_020552A4
+.public CallTask_RestoreOverworld
 .public sub_0206B910
 .public SetMonData
 .public Party_GetCount

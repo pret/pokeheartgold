@@ -4769,7 +4769,7 @@ ov03_022564A8: ; 0x022564A8
 	add r4, r0, #0
 	bl TaskManager_GetFieldSystem
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r1, [r4, #0x7c]
 	cmp r1, #0xb
@@ -5995,7 +5995,7 @@ ov03_02256E2C: ; 0x02256E2C
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r6, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	ldr r1, _02257064 ; =0x00000272
 	add r4, r0, #0
 	ldrb r2, [r4, r1]
@@ -9232,7 +9232,7 @@ ov03_02258764: ; 0x02258764
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r6, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Save_Bag_Get
@@ -9398,7 +9398,7 @@ _02258890: .word 0x000005D8
 	thumb_func_start ov03_02258894
 ov03_02258894: ; 0x02258894
 	push {r3, lr}
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	ldr r1, [r0]
 	cmp r1, #0
 	bne _022588A8
@@ -9544,7 +9544,7 @@ ScrCmd_718: ; 0x02258998
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl VarGet
+	bl FieldSystem_VarGet
 	add r2, r0, #0
 	lsl r2, r2, #0x18
 	ldr r0, [r6]
@@ -9603,7 +9603,7 @@ ScrCmd_720: ; 0x02258A18
 	add r4, #0x80
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl VarGet
+	bl FieldSystem_VarGet
 	str r0, [sp]
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetFacingDirection
@@ -9978,7 +9978,7 @@ ov03_02258D3C: ; 0x02258D3C
 	add r4, r0, #0
 	bl TaskManager_GetFieldSystem
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r1, [r4]
 	cmp r1, #0

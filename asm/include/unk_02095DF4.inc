@@ -10,5 +10,5 @@
 .public sub_020505C0
 .public sub_020505C8
 .public TaskManager_GetFieldSystem
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public sub_02095DF4

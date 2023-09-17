@@ -145,7 +145,7 @@ ov04_02253F38: ; 0x02253F38
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r1, [r4]
 	cmp r1, #0
@@ -192,7 +192,7 @@ ov04_02253F94: ; 0x02253F94
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r1, [r4]
 	cmp r1, #0
@@ -995,7 +995,7 @@ ov04_0225463C: ; 0x0225463C
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r1, [r4]
 	cmp r1, #0
@@ -2009,7 +2009,7 @@ ov04_02254E20: ; 0x02254E20
 	thumb_func_start ov04_02254E50
 ov04_02254E50: ; 0x02254E50
 	push {r4, r5, r6, lr}
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r1, [r4, #0xc]
 	ldr r0, [r1, #4]
@@ -3585,7 +3585,7 @@ ov04_022559C8: ; 0x022559C8
 	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r0, [r6, #4]
 	ldr r5, [r0, #0x24]
@@ -3705,7 +3705,7 @@ ov04_02255AC4: ; 0x02255AC4
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r0, [r5, #4]
 	ldr r6, [r0, #0x24]
@@ -4469,7 +4469,7 @@ ov04_022560D4: ; 0x022560D4
 	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r0, [r6, #0x40]
 	bl PlayerAvatar_GetMapObject
@@ -4947,7 +4947,7 @@ ov04_022564A0: ; 0x022564A0
 	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetStatePtr
@@ -6853,7 +6853,7 @@ ov04_02257308: ; 0x02257308
 	add r4, r0, #0
 	bl TaskManager_GetFieldSystem
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	mov r1, #0x23
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]

@@ -522,7 +522,7 @@ _021F1EC8: .word ov01_021F1ECC
 ov01_021F1ECC: ; 0x021F1ECC
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
 	bl PlayerAvatar_GetMapObject
@@ -641,7 +641,7 @@ _021F1F96:
 	lsl r1, r1, #0x10
 	add r0, r7, #0
 	lsr r1, r1, #0x10
-	bl FlagSet
+	bl FieldSystem_FlagSet
 	add r0, r5, #0
 	bl DeleteMapObject
 	mov r1, #0xa
@@ -651,7 +651,7 @@ _021F1F96:
 	add r0, r7, #0
 	add r1, r1, r2
 	ldrh r1, [r1, #8]
-	bl FlagClear
+	bl FieldSystem_FlagClear
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _021F1FF4:
@@ -810,7 +810,7 @@ _021F2112:
 ov01_021F2118: ; 0x021F2118
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r0, [r4]
 	cmp r0, #9
@@ -1129,7 +1129,7 @@ _021F23B4: .word ov01_021F23B8
 	thumb_func_start ov01_021F23B8
 ov01_021F23B8: ; 0x021F23B8
 	push {r4, lr}
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldrh r0, [r4]
 	cmp r0, #0
@@ -1436,7 +1436,7 @@ _021F2622:
 ov01_021F2628: ; 0x021F2628
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	ldr r7, _021F268C ; =ov01_022069D0
 	add r4, r0, #0
 _021F2634:
@@ -1850,7 +1850,7 @@ _021F2940: .word ov01_021F2944
 	thumb_func_start ov01_021F2944
 ov01_021F2944: ; 0x021F2944
 	push {r4, r5, r6, lr}
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	ldr r6, _021F2990 ; =ov01_022069BC
 	ldr r4, _021F2994 ; =ov01_022069A8
 	add r5, r0, #0
@@ -2449,7 +2449,7 @@ CallFieldTask_Whirlpool: ; 0x021F2DA4
 	thumb_func_start ov01_021F2DD0
 ov01_021F2DD0: ; 0x021F2DD0
 	push {r4, r5, r6, lr}
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	ldr r6, _021F2E04 ; =ov01_02206994
 	add r5, r0, #0
 _021F2DDA:

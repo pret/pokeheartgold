@@ -121,7 +121,7 @@ _021F31C8:
 	thumb_func_start ov01_021F31CC
 ov01_021F31CC: ; 0x021F31CC
 	push {r4, r5, r6, lr}
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
 	bl PlayerAvatar_GetMapObject

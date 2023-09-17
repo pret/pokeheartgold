@@ -149,7 +149,7 @@ LocalMapObject* CreateMapObjectFromTemplate(MapObjectManager* manager, u16 id, u
     if (event != NULL) {
         u32 flag_id = ObjectEventTemplate_GetFlagID(event);
         FieldSystem* fieldSystem = MapObjectManager_GetFieldSysPtr(manager);
-        if (FlagGet(fieldSystem, (u16)flag_id) == FALSE) {
+        if (FieldSystem_FlagGet(fieldSystem, (u16)flag_id) == FALSE) {
             ret = sub_0205E1D0(manager, event, map_no);
         }
     }
@@ -184,7 +184,7 @@ void MapObject_Remove(LocalMapObject* object) {
 void DeleteMapObject(LocalMapObject* object) {
     u32 flag_id = MapObject_GetFlagID(object);
     FieldSystem* fieldSystem = MapObject_GetFieldSysPtr(object);
-    FlagSet(fieldSystem, (u16)flag_id);
+    FieldSystem_FlagSet(fieldSystem, (u16)flag_id);
     MapObject_Remove(object);
 }
 
@@ -475,7 +475,7 @@ void sub_0205EA08(struct MapObjectInitArgs* args) {
     ObjectEvent* template = args->templates;
 
     do {
-        GF_ASSERT((ObjectEventTemplate_ScriptIdIsFFFF(template) != TRUE && FlagGet(fieldSystem, template->flag) != FALSE) ||
+        GF_ASSERT((ObjectEventTemplate_ScriptIdIsFFFF(template) != TRUE && FieldSystem_FlagGet(fieldSystem, template->flag) != FALSE) ||
                   sub_0205E1D0(args->manager, template, args->map_no) != NULL);
 
         template++;
@@ -719,7 +719,7 @@ void sub_0205EF6C(LocalMapObject* object) {
 
 u32 ResolveObjectGfxId(FieldSystem* fieldSystem, int a1) {
     if (a1 >= 101 && a1 <= 117) {
-        a1 = VarGetObjectEventGraphicsId(fieldSystem, (u16)(a1 - 101));
+        a1 = FieldSystem_VarGetObjectEventGraphicsId(fieldSystem, (u16)(a1 - 101));
     }
     return a1;
 }

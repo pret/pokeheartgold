@@ -60,7 +60,7 @@
 .public ScriptReadHalfword
 .public FieldSysGetAttrAddr
 .public GetVarPointer
-.public VarGet
+.public FieldSystem_VarGet
 .public sub_0204A5B0
 .public sub_0204A68C
 .public sub_0204A824

@@ -29,13 +29,13 @@
 .public sub_0203EDDC
 .public ScriptReadHalfword
 .public GetVarPointer
-.public VarGet
+.public FieldSystem_VarGet
 .public Save_VarsFlags_Get
 .public FieldSystem_CreateTask
 .public TaskManager_Call
 .public FieldSystem_ApplicationIsRunning
 .public TaskManager_GetFieldSystem
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public TaskManager_GetStatePtr
 .public sub_020537A8
 .public GetMetatileBehaviorAt

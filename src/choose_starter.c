@@ -25,7 +25,7 @@ void LaunchStarterChoiceScene(FieldSystem *fieldSystem) {
 
 static BOOL CreateStarter(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    struct ChooseStarterTaskData *env = TaskManager_GetEnv(taskManager);
+    struct ChooseStarterTaskData *env = TaskManager_GetEnvironment(taskManager);
     int i;
     u32 mapsec;
     Party *party;

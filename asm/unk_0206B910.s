@@ -70,7 +70,7 @@ sub_0206B984: ; 0x0206B984
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	str r0, [sp]
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r7, r0, #0
 	ldr r0, [sp]
 	ldr r6, [r7, #4]
@@ -249,7 +249,7 @@ _0206BAF2:
 	b _0206BB1C
 _0206BAF8:
 	ldr r0, [sp]
-	bl sub_020552A4
+	bl CallTask_RestoreOverworld
 	mov r0, #6
 	str r0, [r7, #0x10]
 	b _0206BB1C
@@ -286,7 +286,7 @@ ScrCmd_232: ; 0x0206BB2C
 	add r5, #0x80
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl VarGet
+	bl FieldSystem_VarGet
 	add r1, r0, #0
 	lsl r1, r1, #0x18
 	ldr r0, [r4]
@@ -310,7 +310,7 @@ ScrCmd_233: ; 0x0206BB5C
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl VarGet
+	bl FieldSystem_VarGet
 	str r0, [r4, #0x64]
 	ldr r1, _0206BB8C ; =sub_0206BB90
 	add r0, r4, #0
@@ -353,7 +353,7 @@ ScrCmd_234: ; 0x0206BBAC
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl VarGet
+	bl FieldSystem_VarGet
 	add r6, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -361,7 +361,7 @@ ScrCmd_234: ; 0x0206BBAC
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl VarGet
+	bl FieldSystem_VarGet
 	add r7, r0, #0
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -369,7 +369,7 @@ ScrCmd_234: ; 0x0206BBAC
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl VarGet
+	bl FieldSystem_VarGet
 	str r0, [sp]
 	add r0, r5, #0
 	bl ScriptReadHalfword
@@ -377,7 +377,7 @@ ScrCmd_234: ; 0x0206BBAC
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl VarGet
+	bl FieldSystem_VarGet
 	add r1, sp, #4
 	strb r7, [r1]
 	ldr r0, [sp]
@@ -410,7 +410,7 @@ ScrCmd_235: ; 0x0206BC2C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl VarGet
+	bl FieldSystem_VarGet
 	add r5, #0x80
 	ldr r0, [r5]
 	ldr r0, [r0, #0x20]

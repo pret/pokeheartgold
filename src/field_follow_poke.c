@@ -1533,7 +1533,7 @@ LocalMapObject *sub_020699F8(MapObjectManager *mapObjectMan, int x, int y, int d
             shiny = MonIsShiny(mon);
             fieldSystem->followMon.mapObject = CreateFollowingSpriteFieldObject(mapObjectMan, species, form, gender, direction, x, y, shiny);
             fieldSystem->followMon.active = TRUE;
-            FieldSystem_SetFollowPokeParam(fieldSystem, species, form, shiny, gender);
+            FieldSystem_SetFollowerPokeParam(fieldSystem, species, form, shiny, gender);
             FieldSystemUnkSub108_Set(fieldSystem->unk108, mon, species, GetMonData(mon, MON_DATA_PERSONALITY, NULL));
             player_unk = PlayerAvatar_GetState(fieldSystem->playerAvatar);
             if (player_unk == 0 || player_unk == 3) {
@@ -1588,7 +1588,7 @@ void sub_02069B74(MapObjectManager *mapObjectMan, u32 mapno) {
                 shiny = MonIsShiny(mon);
                 fieldSystem->followMon.mapObject = followPokeObj;
                 fieldSystem->followMon.active = TRUE;
-                FieldSystem_SetFollowPokeParam(fieldSystem, species, form, shiny, gender);
+                FieldSystem_SetFollowerPokeParam(fieldSystem, species, form, shiny, gender);
                 FollowPokeMapObjectSetParams(followPokeObj, species, form, shiny);
                 MapObject_SetGfxID(fieldSystem->followMon.mapObject, FollowingPokemon_GetSpriteID(species, form, gender));
                 player_unk = PlayerAvatar_GetState(fieldSystem->playerAvatar);
@@ -1617,7 +1617,7 @@ void sub_02069B74(MapObjectManager *mapObjectMan, u32 mapno) {
                 form = GetMonData(mon, MON_DATA_FORM, NULL);
                 gender = GetMonGender(mon);
                 shiny = MonIsShiny(mon);
-                FieldSystem_SetFollowPokeParam(fieldSystem, species, form, shiny, gender);
+                FieldSystem_SetFollowerPokeParam(fieldSystem, species, form, shiny, gender);
                 FollowPokeMapObjectSetParams(followPokeObj, species, form, shiny);
                 MapObject_SetGfxID(followPokeObj, FollowingPokemon_GetSpriteID(species, form, gender));
                 fieldSystem->followMon.mapObject = followPokeObj;
@@ -1755,7 +1755,7 @@ void sub_02069F0C(LocalMapObject *mapObject, int species, u8 form, BOOL shiny, i
     MapObject_SetParam(mapObject, species, 0);
 }
 
-void FieldSystem_SetFollowPokeParam(FieldSystem *fieldSystem, int species, u8 form, BOOL shiny, u8 gender) {
+void FieldSystem_SetFollowerPokeParam(FieldSystem *fieldSystem, int species, u8 form, BOOL shiny, u8 gender) {
     fieldSystem->followMon.species = species;
     fieldSystem->followMon.shiny = shiny;
     fieldSystem->followMon.form = form;

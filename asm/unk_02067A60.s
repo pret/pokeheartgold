@@ -259,7 +259,7 @@ sub_02067C30: ; 0x02067C30
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r6, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldrh r0, [r4, #4]
 	cmp r0, #6

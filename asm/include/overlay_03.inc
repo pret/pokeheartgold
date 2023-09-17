@@ -170,13 +170,13 @@
 .public ScriptReadHalfword
 .public FieldSysGetAttrAddr
 .public GetVarPointer
-.public VarGet
+.public FieldSystem_VarGet
 .public ScrNative_WaitApplication_DestroyTaskData
 .public Save_VarsFlags_Get
 .public TaskManager_Jump
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public sub_020580E4
 .public sub_02058124
 .public sub_02058164

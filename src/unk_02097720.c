@@ -15,7 +15,7 @@ void sub_02097720(TaskManager *taskManager, u16* unknownPtr) {
 
 BOOL sub_02097754(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    UnkStruct_02097720* env = TaskManager_GetEnv(taskManager);
+    UnkStruct_02097720* env = TaskManager_GetEnvironment(taskManager);
 
     switch (env->unknown_0) {
     case 0:
@@ -30,7 +30,7 @@ BOOL sub_02097754(TaskManager *taskManager) {
         }
         break;
     case 2:
-        sub_020552A4(taskManager);
+        CallTask_RestoreOverworld(taskManager);
         env->unknown_0++;
         break;
     case 3:
