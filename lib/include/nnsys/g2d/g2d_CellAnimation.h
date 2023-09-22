@@ -13,5 +13,4 @@ typedef struct NNSG2dCellAnimation{
     NNSG2dSRTControl srtCtrl;
 } NNSG2dCellAnimation;
 
-
 #endif //NNSYS_G2D_G2D_CELLANIMATION_H_

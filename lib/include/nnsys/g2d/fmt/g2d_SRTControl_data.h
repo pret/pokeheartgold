@@ -17,7 +17,6 @@ typedef union {
         u16 SRT_EnableFlag;
     };
     MtxFx32 mtx;
-
 } NNSG2dSRTData;
 
 typedef struct {

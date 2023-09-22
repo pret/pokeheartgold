@@ -5,7 +5,7 @@
 
 typedef NNSG2dAnimFrameData NNSG2dAnimFrame;
 typedef NNSG2dAnimSequenceData NNSG2dAnimSequence;
-typedef void (*NNSG2dAnmCallBackPtr)( u32 data, fx32 currentFrame );
+typedef void (*NNSG2dAnmCallBackPtr)(u32 data, fx32 currentFrame);
 
 typedef enum NNSG2dAnmCallbackType {
     NNS_G2D_ANMCALLBACKTYPE_NONE = 0,
@@ -22,7 +22,6 @@ typedef struct NNSG2dCallBackFunctor {
     u16 frameIdx;
     u16 pad16_;
 } NNSG2dCallBackFunctor, NNSG2dAnimCallBackFunctor;
-
 
 typedef struct NNSG2dAnimController {
     const NNSG2dAnimFrame* pCurrent;
