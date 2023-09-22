@@ -293,7 +293,7 @@
 .public GetItemNameIntoString
 .public Bag_AddItem
 .public Save_Bag_Get
-.public sub_0208F270
+.public BoxMonSetTrainerMemo
 .public sub_020932E0
 .public sub_02093354
 .public sub_02093440

@@ -5,7 +5,7 @@
 #include "pal_park.h"
 #include "save_arrays.h"
 #include "pokedex.h"
-#include "unk_0208E600.h"
+#include "trainer_memo.h"
 #include "update_dex_received.h"
 #include "unk_02092BE8.h"
 

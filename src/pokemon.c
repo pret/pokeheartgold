@@ -9,6 +9,7 @@
 #include "party.h"
 #include "mail.h"
 #include "trainer_data.h"
+#include "trainer_memo.h"
 #include "map_section.h"
 #include "unk_0200CF18.h"
 #include "unk_02023694.h"
@@ -3719,7 +3720,7 @@ void sub_020720FC(Pokemon *mon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 enc
 }
 
 void sub_0207213C(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 a3, u32 encounterType, HeapID heapId) {
-    sub_0208F270(boxMon, playerProfile, 0, a3, heapId);
+    BoxMonSetTrainerMemo(boxMon, playerProfile, 0, a3, heapId);
     SetBoxMonData(boxMon, MON_DATA_GAME_VERSION, (void *)&gGameVersion);
     SetBoxMonData(boxMon, MON_DATA_POKEBALL, &pokeball);
     SetBoxMonData(boxMon, MON_DATA_ENCOUNTER_TYPE, &encounterType);
