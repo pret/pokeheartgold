@@ -2962,7 +2962,7 @@ static const u16 sGravityUnusableMoves[] = {
     MOVE_FLY, 
     MOVE_BOUNCE,
     MOVE_JUMP_KICK, 
-    MOVE_HIGH_JUMP_KICK, 
+    MOVE_HI_JUMP_KICK, 
     MOVE_SPLASH, 
     MOVE_MAGNET_RISE
 };
@@ -2985,7 +2985,7 @@ BOOL BattleContext_CheckMoveUnuseableInGravity(BattleSystem *bsys, BattleContext
 
 static const u16 sHealBlockUnusableMoves[] = {
     MOVE_RECOVER, 
-    MOVE_SOFT_BOILED, 
+    MOVE_SOFTBOILED, 
     MOVE_REST, 
     MOVE_MILK_DRINK, 
     MOVE_MORNING_SUN, 

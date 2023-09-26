@@ -12,7 +12,7 @@
 #define MOVE_ICE_PUNCH        8
 #define MOVE_THUNDER_PUNCH    9
 #define MOVE_SCRATCH         10
-#define MOVE_VISE_GRIP       11
+#define MOVE_VICE_GRIP       11
 #define MOVE_GUILLOTINE      12
 #define MOVE_RAZOR_WIND      13
 #define MOVE_SWORDS_DANCE    14
@@ -109,7 +109,7 @@
 #define MOVE_RECOVER        105
 #define MOVE_HARDEN         106
 #define MOVE_MINIMIZE       107
-#define MOVE_SMOKESCREEN    108
+#define MOVE_SMOKE_SCREEN   108
 #define MOVE_CONFUSE_RAY    109
 #define MOVE_WITHDRAW       110
 #define MOVE_DEFENSE_CURL   111
@@ -121,7 +121,7 @@
 #define MOVE_BIDE           117
 #define MOVE_METRONOME      118
 #define MOVE_MIRROR_MOVE    119
-#define MOVE_SELF_DESTRUCT  120
+#define MOVE_SELFDESTRUCT   120
 #define MOVE_EGG_BOMB       121
 #define MOVE_LICK           122
 #define MOVE_SMOG           123
@@ -136,8 +136,8 @@
 #define MOVE_CONSTRICT      132
 #define MOVE_AMNESIA        133
 #define MOVE_KINESIS        134
-#define MOVE_SOFT_BOILED    135
-#define MOVE_HIGH_JUMP_KICK 136
+#define MOVE_SOFTBOILED     135
+#define MOVE_HI_JUMP_KICK   136
 #define MOVE_GLARE          137
 #define MOVE_DREAM_EATER    138
 #define MOVE_POISON_GAS     139
@@ -186,7 +186,7 @@
 #define MOVE_PROTECT        182
 #define MOVE_MACH_PUNCH     183
 #define MOVE_SCARY_FACE     184
-#define MOVE_FEINT_ATTACK   185
+#define MOVE_FAINT_ATTACK   185
 #define MOVE_SWEET_KISS     186
 #define MOVE_BELLY_DRUM     187
 #define MOVE_SLUDGE_BOMB    188
@@ -266,7 +266,7 @@
 #define MOVE_MEMENTO        262
 #define MOVE_FACADE         263
 #define MOVE_FOCUS_PUNCH    264
-#define MOVE_SMELLING_SALTS 265
+#define MOVE_SMELLING_SALT  265
 #define MOVE_FOLLOW_ME      266
 #define MOVE_NATURE_POWER   267
 #define MOVE_CHARGE         268
