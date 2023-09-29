@@ -117,6 +117,8 @@
 #define FLAVOR_SWEET     2
 #define FLAVOR_BITTER    3
 #define FLAVOR_SOUR      4
+
+#define FLAVOR_START     FLAVOR_SPICY
 #define FLAVOR_MAX       5
 
 #define PERFORMANCE_MIN       0u

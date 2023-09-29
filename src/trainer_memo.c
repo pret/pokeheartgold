@@ -25,12 +25,12 @@ static const u16 sCharactersticMsgs[6][5] = {
 };
 
 static int sub_0208F070(Pokemon *mon, BOOL isMine);
-static void ReadNatureMsg(Unk0208E600 *a0);
+static void FormatNature(Unk0208E600 *a0);
 static void FormatDateAndLocationMet(Unk0208E600 *a0, int msgNo);
 static void FormatDateAndLocation_Migrated(Unk0208E600 *a0, int msgNo);
 static void FormatCharacteristic(Unk0208E600 *a0);
 static void FormatFlavorPreference(Unk0208E600 *a0);
-static void FormatDateAndLocation_MysteriousEgg(Unk0208E600 *a0, int msgNo, BOOL hatched);
+static void FormatDateAndLocation_Egg(Unk0208E600 *a0, int msgNo, BOOL hatched);
 static void FormatEggWatch(Unk0208E600 *a0);
 static void sub_0208F5C8(BoxPokemon *boxMon, BOOL isEgg);
 static void sub_0208F550(BoxPokemon *boxMon, int mapsec, BOOL isNotEgg);
@@ -56,11 +56,11 @@ Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
     ptr->unk14.unk20 = 0;
     ptr->unk14.eggWatch = NULL;
 
-    int var2 = sub_0208F070(ptr->mon, ptr->isMine);
-    switch (var2) {
+    int var1 = sub_0208F070(ptr->mon, ptr->isMine);
+    switch (var1) {
     case 0:
         ptr->unk14.unk0 = 1;
-        ReadNatureMsg(ptr);
+        FormatNature(ptr);
         ptr->unk14.unk8 = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00049);
         ptr->unk14.unk10 = 6;
@@ -70,7 +70,7 @@ Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
         break;
     case 1:
         ptr->unk14.unk0 = 1;
-        ReadNatureMsg(ptr);
+        FormatNature(ptr);
         ptr->unk14.unk8 = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00050);
         ptr->unk14.unk10 = 6;
@@ -80,7 +80,7 @@ Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
         break;
     case 2:
         ptr->unk14.unk0 = 1;
-        ReadNatureMsg(ptr);
+        FormatNature(ptr);
         ptr->unk14.unk8 = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00051);
         ptr->unk14.unk10 = 6;
@@ -90,7 +90,7 @@ Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
         break;
     case 3:
         ptr->unk14.unk0 = 1;
-        ReadNatureMsg(ptr);
+        FormatNature(ptr);
         ptr->unk14.unk8 = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00052);
         ptr->unk14.unk10 = 8;
@@ -100,7 +100,7 @@ Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
         break;
     case 4:
         ptr->unk14.unk0 = 1;
-        ReadNatureMsg(ptr);
+        FormatNature(ptr);
         ptr->unk14.unk8 = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00053);
         ptr->unk14.unk10 = 8;
@@ -110,7 +110,7 @@ Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
         break;
     case 5:
         ptr->unk14.unk0 = 1;
-        ReadNatureMsg(ptr);
+        FormatNature(ptr);
         ptr->unk14.unk8 = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00054);
         ptr->unk14.unk10 = 8;
@@ -120,7 +120,7 @@ Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
         break;
     case 6:
         ptr->unk14.unk0 = 1;
-        ReadNatureMsg(ptr);
+        FormatNature(ptr);
         ptr->unk14.unk8 = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00055);
         ptr->unk14.unk10 = 8;
@@ -130,7 +130,7 @@ Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
         break;
     case 7:
         ptr->unk14.unk0 = 1;
-        ReadNatureMsg(ptr);
+        FormatNature(ptr);
         ptr->unk14.unk8 = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00056);
         ptr->unk14.unk10 = 7;
@@ -140,7 +140,7 @@ Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
         break;
     case 8:
         ptr->unk14.unk0 = 1;
-        ReadNatureMsg(ptr);
+        FormatNature(ptr);
         ptr->unk14.unk8 = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00057);
         ptr->unk14.unk10 = 7;
@@ -150,7 +150,7 @@ Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
         break;
     case 9:
         ptr->unk14.unk0 = 1;
-        ReadNatureMsg(ptr);
+        FormatNature(ptr);
         ptr->unk14.unk8 = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00058);
         ptr->unk14.unk10 = 9;
@@ -158,7 +158,7 @@ Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
         break;
     case 10:
         ptr->unk14.unk0 = 1;
-        ReadNatureMsg(ptr);
+        FormatNature(ptr);
         ptr->unk14.unk8 = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00059);
         ptr->unk14.unk10 = 9;
@@ -166,7 +166,7 @@ Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
         break;
     case 11:
         ptr->unk14.unk0 = 1;
-        ReadNatureMsg(ptr);
+        FormatNature(ptr);
         ptr->unk14.unk8 = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00060);
         ptr->unk14.unk10 = 9;
@@ -174,7 +174,7 @@ Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
         break;
     case 12:
         ptr->unk14.unk0 = 1;
-        ReadNatureMsg(ptr);
+        FormatNature(ptr);
         ptr->unk14.unk8 = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00061);
         ptr->unk14.unk10 = 9;
@@ -182,7 +182,7 @@ Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
         break;
     case 13:
         ptr->unk14.unk0 = 1;
-        ReadNatureMsg(ptr);
+        FormatNature(ptr);
         ptr->unk14.unk8 = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00062);
         ptr->unk14.unk10 = 9;
@@ -190,7 +190,7 @@ Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
         break;
     case 14:
         ptr->unk14.unk0 = 1;
-        ReadNatureMsg(ptr);
+        FormatNature(ptr);
         ptr->unk14.unk8 = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00063);
         ptr->unk14.unk10 = 9;
@@ -198,7 +198,7 @@ Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
         break;
     case 15:
         ptr->unk14.unk0 = 1;
-        ReadNatureMsg(ptr);
+        FormatNature(ptr);
         ptr->unk14.unk8 = 2;
         FormatDateAndLocation_Migrated(ptr, msg_0302_00064);
         ptr->unk14.unk10 = 6;
@@ -208,31 +208,31 @@ Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
         break;
     case 16:
         ptr->unk14.unk8 = 1;
-        FormatDateAndLocation_MysteriousEgg(ptr, msg_0302_00101, FALSE);
+        FormatDateAndLocation_Egg(ptr, msg_0302_00101, FALSE);
         ptr->unk14.unk20 = 6;
         FormatEggWatch(ptr);
         break;
     case 17:
         ptr->unk14.unk8 = 1;
-        FormatDateAndLocation_MysteriousEgg(ptr, msg_0302_00102, TRUE);
+        FormatDateAndLocation_Egg(ptr, msg_0302_00102, TRUE);
         ptr->unk14.unk20 = 6;
         FormatEggWatch(ptr);
         break;
     case 18:
         ptr->unk14.unk8 = 1;
-        FormatDateAndLocation_MysteriousEgg(ptr, msg_0302_00103, FALSE);
+        FormatDateAndLocation_Egg(ptr, msg_0302_00103, FALSE);
         ptr->unk14.unk20 = 6;
         FormatEggWatch(ptr);
         break;
     case 19:
         ptr->unk14.unk8 = 1;
-        FormatDateAndLocation_MysteriousEgg(ptr, msg_0302_00103, TRUE);
+        FormatDateAndLocation_Egg(ptr, msg_0302_00103, TRUE);
         ptr->unk14.unk20 = 6;
         FormatEggWatch(ptr);
         break;
     case 20:
         ptr->unk14.unk8 = 1;
-        FormatDateAndLocation_MysteriousEgg(ptr, msg_0302_00104, 0);
+        FormatDateAndLocation_Egg(ptr, msg_0302_00104, 0);
         ptr->unk14.unk20 = 6;
         FormatEggWatch(ptr);
         break;
@@ -292,7 +292,7 @@ BOOL MonMetadataMatchesEvent(u8 eventNo, Pokemon *mon, BOOL isMine) {
   return FALSE;
 }
 
-static void ReadNatureMsg(Unk0208E600 *a0) {
+static void FormatNature(Unk0208E600 *a0) {
     int nature = GetMonNature(a0->mon);
     if (nature <= NATURE_QUIRKY) {
         a0->unk14.nature = String_New(0x48, a0->heapId);
@@ -370,7 +370,7 @@ static void FormatDateAndLocation_Migrated(Unk0208E600 *a0, int msgNo) {
     String_Delete(str);
 }
 
-static void FormatDateAndLocation_MysteriousEgg(Unk0208E600 *a0, int msgNo, BOOL hatched) {
+static void FormatDateAndLocation_Egg(Unk0208E600 *a0, int msgNo, BOOL hatched) {
     String *str = String_New(0x168, a0->heapId);
     a0->unk14.dateLocationMet = String_New(0x168, a0->heapId);
 
@@ -559,7 +559,7 @@ static void FormatCharacteristic(Unk0208E600 *a0) {
 static void FormatFlavorPreference(Unk0208E600 *a0) {
     a0->unk14.flavorPreference = String_New(0x48, a0->heapId);
     int index = 0;
-    for (int flavor = FLAVOR_SPICY; flavor < FLAVOR_MAX; flavor++) {
+    for (int flavor = FLAVOR_START; flavor < FLAVOR_MAX; flavor++) {
         int preference = MonGetFlavorPreference(a0->mon, flavor);
         if (preference == 1) {
             index = flavor + 1;
