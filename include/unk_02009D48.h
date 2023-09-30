@@ -15,12 +15,12 @@ typedef struct SpriteResourcesHeader {
     u8 priority;
 } SpriteResourcesHeader;
 
-typedef struct ListOfUnkStruct_02009D48 {
+typedef struct SpriteResourceHeaderList {
     SpriteResourcesHeader *headers;
     int num;
-} ListOfUnkStruct_02009D48;
+} SpriteResourceHeaderList;
 
-struct UnkStruct_02009E84 {
+struct ResdatNarcEntry {
     u32 charId;
     u32 plttId;
     u32 cellId;
@@ -45,11 +45,11 @@ struct SpriteListParam {
 };
 
 void CreateSpriteResourcesHeader(SpriteResourcesHeader *hdr, int charId, int plttId, int cellId, int cellAnmId, int multiCellId, int multiCellAnmId, int transfer, int priority, struct _2DGfxResMan *charMan, struct _2DGfxResMan *plttMan, struct _2DGfxResMan *cellMan, struct _2DGfxResMan *cellAnmMan, struct _2DGfxResMan *multiCellMan, struct _2DGfxResMan *multiCellAnmMan);
-ListOfUnkStruct_02009D48 *sub_02009E84(const struct UnkStruct_02009E84 *a0, HeapID heapId, struct _2DGfxResMan *charMan, struct _2DGfxResMan *plttMan, struct _2DGfxResMan *cellMan, struct _2DGfxResMan *animMan, struct _2DGfxResMan *mcelMan, struct _2DGfxResMan *manmMan);
-void sub_02009F24(ListOfUnkStruct_02009D48 *list);
-SpriteList *G2dRenderer_Init(int a0, GF_G2dRenderer *a1, HeapID heapId);
-void G2dRenderer_SetMainSurfaceCoords(GF_G2dRenderer *a0, fx32 x, fx32 y);
-void G2dRenderer_SetSubSurfaceCoords(GF_G2dRenderer *a0, fx32 x, fx32 y);
+SpriteResourceHeaderList *SpriteResourceHeaderList_Create(const struct ResdatNarcEntry *resdatNarcEntry, HeapID heapId, struct _2DGfxResMan *charMan, struct _2DGfxResMan *plttMan, struct _2DGfxResMan *cellMan, struct _2DGfxResMan *animMan, struct _2DGfxResMan *mcelMan, struct _2DGfxResMan *manmMan);
+void SpriteResourceHeaderList_Destroy(SpriteResourceHeaderList *list);
+SpriteList *G2dRenderer_Init(int a0, GF_G2dRenderer *renderer, HeapID heapId);
+void G2dRenderer_SetMainSurfaceCoords(GF_G2dRenderer *renderer, fx32 x, fx32 y);
+void G2dRenderer_SetSubSurfaceCoords(GF_G2dRenderer *renderer, fx32 x, fx32 y);
 void sub_02009FE8(u32 a0, GXOBJVRamModeChar mode);
 void sub_0200A080(u32 a0);
 

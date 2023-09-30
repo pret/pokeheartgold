@@ -242,7 +242,7 @@ _0225F136:
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	add r1, sp, #0x40
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r1, #2
 	lsl r1, r1, #0xc
 	add r0, sp, #0x34
@@ -440,7 +440,7 @@ _0225F394:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	add r1, sp, #0x40
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r1, [r6, r0]
@@ -713,7 +713,7 @@ _0225F560:
 	bl sub_02024B78
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers
@@ -1120,7 +1120,7 @@ _0225F91E:
 	lsl r1, r1, #2
 	ldr r0, [r4]
 	add r1, r4, r1
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	b _0225FA98
 _0225F944:
 	mov r0, #1
@@ -1196,7 +1196,7 @@ _0225F9CC:
 	lsl r1, r1, #2
 	ldr r0, [r4]
 	add r1, r4, r1
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x5d
 	lsl r0, r0, #2
 	add r0, r4, r0

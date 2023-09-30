@@ -1,5 +1,6 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_0004.h"
+#include "msgdata/msg/msg_0191.h"
 #include "msgdata/msg/msg_0046.h"
 	.include "asm/macros/script.inc"
 
@@ -47,14 +48,20 @@ scr_seq_0004_015:
 	compare VAR_SPECIAL_x8004, 0
 	goto_if_ne _0099
 	goto _027A
-	.byte 0x16, 0x00, 0xa8, 0x00, 0x00, 0x00
+
+_0093:
+	goto _0141
+
 _0099:
 	compare VAR_SPECIAL_x8004, 1
 	goto_if_ne _00F0
 	compare VAR_TEMP_x4000, 12
 	goto_if_eq _00BF
 	goto _027A
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_00B9:
+	goto _00D2
+
 _00BF:
 	compare VAR_TEMP_x4001, 2
 	goto_if_eq _00D2
@@ -65,14 +72,20 @@ _00D2:
 	setvar VAR_TEMP_x4001, 2
 	setvar VAR_TEMP_x4002, 5
 	goto _0222
-	.byte 0x16, 0x00, 0x51, 0x00, 0x00, 0x00
+
+_00EA:
+	goto _0141
+
 _00F0:
 	compare VAR_SPECIAL_x8004, 2
 	goto_if_ne _0141
 	compare VAR_TEMP_x4000, 18
 	goto_if_eq _0116
 	goto _027A
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0110:
+	goto _0129
+
 _0116:
 	compare VAR_TEMP_x4001, 11
 	goto_if_eq _0129
@@ -96,15 +109,20 @@ scr_seq_0004_013:
 	compare VAR_SPECIAL_x8004, 0
 	goto_if_ne _0174
 	goto _027A
-	.byte 0x16, 0x00
-	.byte 0xa8, 0x00, 0x00, 0x00
+
+_016E:
+	goto _021C
+
 _0174:
 	compare VAR_SPECIAL_x8004, 1
 	goto_if_ne _01CB
 	compare VAR_TEMP_x4000, 7
 	goto_if_eq _019A
 	goto _027A
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0194:
+	goto _01AD
+
 _019A:
 	compare VAR_TEMP_x4001, 2
 	goto_if_eq _01AD
@@ -115,15 +133,20 @@ _01AD:
 	setvar VAR_TEMP_x4001, 2
 	setvar VAR_TEMP_x4002, 5
 	goto _0222
-	.byte 0x16, 0x00, 0x51, 0x00, 0x00, 0x00
+
+_01C5:
+	goto _021C
+
 _01CB:
 	compare VAR_SPECIAL_x8004, 2
 	goto_if_ne _021C
 	compare VAR_TEMP_x4000, 4
 	goto_if_eq _01F1
 	goto _027A
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00
-	.byte 0x00
+
+_01EB:
+	goto _0204
+
 _01F1:
 	compare VAR_TEMP_x4001, 11
 	goto_if_eq _0204
@@ -168,7 +191,10 @@ _0288:
 	step 70, 1
 	step 13, 2
 	step_end
-	.byte 0x0d, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
+
+_0290:
+	step 13, 1
+	step_end
 
 _02A0:
 	step 13, 2
@@ -185,15 +211,15 @@ scr_seq_0004_001:
 	goto_if_eq _0C10
 	npc_msg msg_0046_00000
 	goto _02DD
-	.byte 0x02, 0x00
+	end
 _02DD:
 	npc_msg msg_0046_00002
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 166, 255, 0
-	menu_item_add 167, 255, 1
-	menu_item_add 11, 255, 2
-	menu_item_add 12, 255, 3
+	menu_item_add msg_0191_00166, 255, 0
+	menu_item_add msg_0191_00167, 255, 1
+	menu_item_add msg_0191_00011, 255, 2
+	menu_item_add msg_0191_00012, 255, 3
 	menu_exec
 	switch VAR_SPECIAL_RESULT
 	case 0, _0364
@@ -205,7 +231,7 @@ _033F:
 	npc_msg msg_0046_00006
 	closemsg
 	goto _02DD
-	.byte 0x02, 0x00
+	end
 _034C:
 	npc_msg msg_0046_00029
 	wait_button_or_walk_away
@@ -224,11 +250,11 @@ _0359:
 _0364:
 	npc_msg msg_0046_00001
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 6, 255, 0
-	menu_item_add 7, 255, 1
-	menu_item_add 8, 255, 2
-	menu_item_add 10, 255, 3
-	menu_item_add 13, 255, 4
+	menu_item_add msg_0191_00006, 255, 0
+	menu_item_add msg_0191_00007, 255, 1
+	menu_item_add msg_0191_00008, 255, 2
+	menu_item_add msg_0191_00010, 255, 3
+	menu_item_add msg_0191_00013, 255, 4
 	menu_exec
 	copyvar VAR_TEMP_x4003, VAR_SPECIAL_RESULT
 	switch VAR_SPECIAL_RESULT
@@ -241,8 +267,8 @@ _0364:
 _03DF:
 	npc_msg msg_0046_00003
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 4, 255, 0
-	menu_item_add 5, 255, 1
+	menu_item_add msg_0046_00004, 255, 0
+	menu_item_add msg_0046_00005, 255, 1
 	menu_exec
 	switch VAR_SPECIAL_RESULT
 	case 0, _0477
@@ -251,7 +277,7 @@ _03DF:
 _0415:
 	setvar VAR_SPECIAL_x8004, 1
 	goto _04AF
-	.byte 0x02, 0x00
+	end
 _0423:
 	setvar VAR_SPECIAL_x8004, 2
 	party_count_not_egg VAR_SPECIAL_RESULT
@@ -300,28 +326,28 @@ _0494:
 _04A1:
 	setvar VAR_SPECIAL_x8004, 37
 	goto _059A
-	.byte 0x02, 0x00
+	end
 _04AF:
 	npc_msg msg_0046_00120
 	menu_init 1, 1, 0, 1, VAR_TEMP_x4000
-	menu_item_add 20, 255, 12
+	menu_item_add msg_0046_00020, 255, 12
 	buffer_ruleset_name 0
-	menu_item_add 19, 255, 0
+	menu_item_add msg_0046_00019, 255, 0
 	buffer_ruleset_name 1
-	menu_item_add 19, 255, 1
+	menu_item_add msg_0046_00019, 255, 1
 	buffer_ruleset_name 2
-	menu_item_add 19, 255, 2
+	menu_item_add msg_0046_00019, 255, 2
 	buffer_ruleset_name 3
-	menu_item_add 19, 255, 3
+	menu_item_add msg_0046_00019, 255, 3
 	buffer_ruleset_name 4
-	menu_item_add 19, 255, 4
+	menu_item_add msg_0046_00019, 255, 4
 	scrcmd_837 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _051B
 	buffer_ruleset_name 5
-	menu_item_add 19, 255, 5
+	menu_item_add msg_0046_00019, 255, 5
 _051B:
-	menu_item_add 22, 255, 255
+	menu_item_add msg_0046_00022, 255, 255
 	menu_exec
 	switch VAR_TEMP_x4000
 	case 12, _08F9
@@ -332,27 +358,27 @@ _051B:
 	case 4, _058E
 	case 5, _058E
 	goto _02DD
-	.byte 0x02, 0x00
+	end
 _058E:
 	scrcmd_800 VAR_TEMP_x4000
 	goto _0682
-	.byte 0x02, 0x00
+	end
 _059A:
 	setvar VAR_SPECIAL_x8004, 37
 	npc_msg msg_0046_00120
 	menu_init 1, 1, 0, 1, VAR_TEMP_x4000
-	menu_item_add 20, 255, 6
+	menu_item_add msg_0046_00020, 255, 6
 	buffer_ruleset_name 7
-	menu_item_add 19, 255, 7
+	menu_item_add msg_0046_00019, 255, 7
 	buffer_ruleset_name 8
-	menu_item_add 19, 255, 8
+	menu_item_add msg_0046_00019, 255, 8
 	buffer_ruleset_name 9
-	menu_item_add 19, 255, 9
+	menu_item_add msg_0046_00019, 255, 9
 	buffer_ruleset_name 10
-	menu_item_add 23, 255, 10
+	menu_item_add msg_0046_00023, 255, 10
 	buffer_ruleset_name 11
-	menu_item_add 19, 255, 11
-	menu_item_add 22, 255, 255
+	menu_item_add msg_0046_00019, 255, 11
+	menu_item_add msg_0046_00022, 255, 255
 	menu_exec
 	switch VAR_TEMP_x4000
 	case 6, _08F9
@@ -379,13 +405,13 @@ _0682:
 	scrcmd_799 VAR_TEMP_x4000
 	npc_msg msg_0046_00121
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 130, 255, 0
-	menu_item_add 131, 255, 1
+	menu_item_add msg_0046_00130, 255, 0
+	menu_item_add msg_0046_00131, 255, 1
 	compare VAR_TEMP_x4000, 11
 	goto_if_ne _06B6
-	menu_item_add 24, 255, 2
+	menu_item_add msg_0046_00024, 255, 2
 _06B6:
-	menu_item_add 22, 255, 3
+	menu_item_add msg_0046_00022, 255, 3
 	menu_exec
 	switch VAR_SPECIAL_RESULT
 	case 0, _0702
@@ -395,7 +421,7 @@ _06B6:
 	case 2, _0778
 _06FA:
 	goto _0763
-	.byte 0x02, 0x00
+	end
 _0702:
 	scrcmd_803 VAR_TEMP_x4000, VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 0
@@ -403,32 +429,31 @@ _0702:
 	compare VAR_TEMP_x4002, 1
 	goto_if_eq _072A
 	goto _0744
-	.byte 0x02, 0x00
+	end
 _072A:
 	npc_msg msg_0046_00122
 	wait_button
 	compare VAR_TEMP_x4003, 3
 	goto_if_eq _059A
 	goto _04AF
-	.byte 0x02, 0x00
+	end
 _0744:
 	npc_msg msg_0046_00136
 	wait_button
 	goto _04AF
-	.byte 0x02
-	.byte 0x00
+	end
 _0751:
 	closemsg
 	scrcmd_801 VAR_TEMP_x4000
 	wait_button
 	scrcmd_802
 	goto _0682
-	.byte 0x02, 0x00
+	end
 _0763:
 	compare VAR_TEMP_x4003, 3
 	goto_if_eq _059A
 	goto _04AF
-	.byte 0x02, 0x00
+	end
 _0778:
 	touchscreen_menu_show
 	buffer_players_name 0
@@ -507,19 +532,22 @@ _08E0:
 _08E3:
 	touchscreen_menu_hide
 	goto _0682
-	.byte 0x29, 0x00, 0x05, 0x80, 0x00
-	.byte 0x00, 0x16, 0x00, 0x0e, 0x00, 0x00, 0x00, 0x02, 0x00
+
+_08EB:
+	setvar VAR_SPECIAL_x8005, 0
+	goto _0905
+	end
 _08F9:
 	scrcmd_800 VAR_TEMP_x4000
 	goto _0905
-	.byte 0x02, 0x00
+	end
 _0905:
 	callstd std_prompt_save
 	copyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4000
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0924
 	goto _0359
-	.byte 0x02, 0x00
+	end
 _0924:
 	touchscreen_menu_hide
 _0926:
@@ -536,15 +564,15 @@ _0926:
 	compare VAR_SPECIAL_x8004, 4
 	call_if_eq _09C3
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 14, 255, 0
-	menu_item_add 15, 255, 1
-	menu_item_add 5, 255, 2
+	menu_item_add msg_0191_00014, 255, 0
+	menu_item_add msg_0191_00015, 255, 1
+	menu_item_add msg_0191_00005, 255, 2
 	menu_exec
 	switch VAR_SPECIAL_RESULT
 	case 0, _09C8
 	case 1, _0A41
 	goto _034C
-	.byte 0x02, 0x00
+	end
 _09BE:
 	npc_msg msg_0046_00036
 	return
@@ -567,12 +595,12 @@ _09C8:
 	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _0A32
 	goto _0ABA
-	.byte 0x02, 0x00
+	end
 _0A17:
 	scrcmd_283
 	touchscreen_menu_hide
 	goto _0926
-	.byte 0x02, 0x00
+	end
 _0A23:
 	scrcmd_283
 	touchscreen_menu_show
@@ -605,12 +633,12 @@ _0A41:
 	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _0AAB
 	goto _0ABA
-	.byte 0x02, 0x00
+	end
 _0A90:
 	scrcmd_283
 	touchscreen_menu_hide
 	goto _0926
-	.byte 0x02, 0x00
+	end
 _0A9C:
 	scrcmd_283
 	npc_msg msg_0046_00030
@@ -648,8 +676,10 @@ _0ABA:
 	setvar VAR_TEMP_x4001, 11
 	setvar VAR_TEMP_x4002, 14
 	goto _0B35
-	.byte 0x16, 0x00, 0x22
-	.byte 0x00, 0x00, 0x00
+
+_0B0D:
+	goto _0B35
+
 _0B13:
 	apply_movement obj_player, _0BDC
 	wait_movement
@@ -701,7 +731,7 @@ scr_seq_0004_002:
 	scrcmd_230
 	scrcmd_284
 	end
-	.byte 0x00
+	.balign 4, 0
 
 _0BDC:
 	step 15, 1
@@ -761,28 +791,28 @@ _0C7B:
 
 _0C94:
 	goto _0C9C
-	.byte 0x02, 0x00
+	end
 _0C9C:
 	npc_msg msg_0046_00071
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 42, 255, 0
-	menu_item_add 11, 255, 1
-	menu_item_add 45, 255, 2
+	menu_item_add msg_0191_00042, 255, 0
+	menu_item_add msg_0191_00011, 255, 1
+	menu_item_add msg_0191_00045, 255, 2
 	menu_exec
 	switch VAR_SPECIAL_RESULT
 	case 0, _0D14
 	case 1, _0CF8
 	case 2, _034C
 	goto _034C
-	.byte 0x02, 0x00
+	end
 _0CF8:
 	npc_msg msg_0046_00072
 	getmenuchoice VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0D14
 	goto _034C
-	.byte 0x02, 0x00
+	end
 _0D14:
 	setvar VAR_SPECIAL_x8004, 9
 	npc_msg msg_0046_00139
@@ -813,7 +843,7 @@ _0D70:
 	wait_movement
 	scrcmd_815 0
 	goto _0D99
-	.byte 0x02, 0x00
+	end
 _0D99:
 	scrcmd_446 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 300
@@ -822,13 +852,19 @@ _0D99:
 	setvar VAR_TEMP_x4001, 11
 	setvar VAR_TEMP_x4002, 14
 	goto _0DE2
-	.byte 0x16, 0x00, 0x18, 0x00, 0x00, 0x00
+
+_0DC2:
+	goto _0DE0
+
 _0DC8:
 	setvar VAR_TEMP_x4000, 7
 	setvar VAR_TEMP_x4001, 2
 	setvar VAR_TEMP_x4002, 5
 	goto _0DE2
-	.byte 0x02, 0x00
+
+_0DE0:
+	end
+
 _0DE2:
 	scrcmd_307 0, 0, VAR_TEMP_x4000, VAR_TEMP_x4002, 77
 	call _0BC2
@@ -904,24 +940,24 @@ scr_seq_0004_011:
 	setflag FLAG_UNK_066
 	npc_msg msg_0046_00116
 	goto _0E9D
-	.byte 0x02, 0x00
+	end
 _0E9D:
 	npc_msg msg_0046_00117
 	scrcmd_064 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	scrcmd_066 42, 0
-	scrcmd_066 43, 1
-	scrcmd_066 11, 2
+	scrcmd_066 msg_0046_00042, 0
+	scrcmd_066 msg_0046_00043, 1
+	scrcmd_066 msg_0046_00011, 2
 	scrcmd_067
 	switch VAR_SPECIAL_RESULT
 	case 0, _0EF6
 	case 1, _0F1C
 	case 2, _0EEB
 	goto _0F1C
-	.byte 0x02, 0x00
+	end
 _0EEB:
 	npc_msg msg_0046_00119
 	goto _0E9D
-	.byte 0x02, 0x00
+	end
 _0EF6:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -931,7 +967,7 @@ _0EF6:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0F1C
-	.byte 0x02, 0x00
+	end
 _0F1C:
 	npc_msg msg_0046_00118
 	wait_button_or_walk_away

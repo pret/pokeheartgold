@@ -577,7 +577,7 @@ _0225F49E:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	mov r2, #0x42
 	ldr r1, [r4]
 	add r0, sp, #0x1c
@@ -588,7 +588,7 @@ _0225F49E:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, sp, #0x1c
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -607,7 +607,7 @@ _0225F4EA:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, sp, #0x1c
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	cmp r6, #1
 	bne _0225F55E
 	ldr r0, [r5]
@@ -1420,7 +1420,7 @@ _0225FB06:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	ldr r0, [sp, #0x1c]
 	add r7, r7, #1
 	add r0, #0x34
@@ -1541,7 +1541,7 @@ _0225FC0E:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, sp, #0x38
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #1
 	ldr r1, [sp, #0x3c]
 	lsl r0, r0, #0xe
@@ -1555,7 +1555,7 @@ _0225FC0E:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	add r1, sp, #0x38
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x9a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1585,7 +1585,7 @@ _0225FC0E:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, sp, #0x38
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #1
 	ldr r1, [sp, #0x3c]
 	lsl r0, r0, #0xe
@@ -1599,7 +1599,7 @@ _0225FC0E:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, sp, #0x38
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x9b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1718,7 +1718,7 @@ _0225FDA6:
 	str r0, [r3]
 	ldr r0, [r4, r2]
 	add r1, sp, #0x38
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #1
 	ldr r1, [sp, #0x3c]
 	lsl r0, r0, #0xe
@@ -1732,7 +1732,7 @@ _0225FDA6:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	add r1, sp, #0x38
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r4, #0
 	add r0, #0x30
 	bl ov01_021EFF28
@@ -1754,7 +1754,7 @@ _0225FDA6:
 	str r0, [r3]
 	ldr r0, [r4, r2]
 	add r1, sp, #0x38
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #1
 	ldr r1, [sp, #0x3c]
 	lsl r0, r0, #0xe
@@ -1768,7 +1768,7 @@ _0225FDA6:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, sp, #0x38
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	cmp r7, #1
 	bne _0225FF3C
 	ldr r0, [r6]
@@ -1982,7 +1982,7 @@ _0225FFFC:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, sp, #0x38
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #1
 	ldr r1, [sp, #0x3c]
 	lsl r0, r0, #0xe
@@ -1996,7 +1996,7 @@ _0225FFFC:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	add r1, sp, #0x38
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r1, [r6, #4]
 	lsr r0, r1, #0x1f
 	add r0, r1, r0
@@ -2049,7 +2049,7 @@ _02260084:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, sp, #0x38
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #1
 	ldr r1, [sp, #0x3c]
 	lsl r0, r0, #0xe
@@ -2063,7 +2063,7 @@ _02260084:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, sp, #0x38
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	cmp r5, #0
 	bne _022600B4
 	b _0226021C
@@ -2125,7 +2125,7 @@ _02260102:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, sp, #0x38
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #1
 	ldr r1, [sp, #0x3c]
 	lsl r0, r0, #0xe
@@ -2139,7 +2139,7 @@ _02260102:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	add r1, sp, #0x38
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r2, #0xa1
 	lsl r2, r2, #2
 	ldr r3, [r4, r2]
@@ -2156,7 +2156,7 @@ _02260102:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, sp, #0x38
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #1
 	ldr r1, [sp, #0x3c]
 	lsl r0, r0, #0xe
@@ -2170,7 +2170,7 @@ _02260102:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, sp, #0x38
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _0226021C

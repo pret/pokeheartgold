@@ -177,7 +177,7 @@ _021E5A5A:
 	add r0, r4, #0
 	add r0, #0x98
 	ldr r0, [r0]
-	bl sub_02024504
+	bl SpriteList_Delete
 	mov r0, #4
 	bl FontID_Release
 	bl OamManager_Free
@@ -1077,7 +1077,7 @@ ov121_021E6194: ; 0x021E6194
 	bl Set2dSpriteAnimSeqNo
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	add r0, r5, #0
 	mov r1, #1
 	bl Set2dSpriteVisibleFlag
@@ -1637,7 +1637,7 @@ ov121_021E65D8: ; 0x021E65D8
 	lsl r0, r0, #0xc
 	str r0, [sp, #4]
 	ldr r0, [r5, r2]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x86
 	ldr r1, _021E6628 ; =ov121_021E7148
 	lsl r0, r0, #2

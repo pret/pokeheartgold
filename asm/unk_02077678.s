@@ -117,7 +117,7 @@ sub_020776B8: ; 0x020776B8
 	ldr r2, [sp, #0xc]
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_0200D4A4
+	bl SpriteRenderer_LoadCharResObjFromNarcId
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -144,7 +144,7 @@ sub_020776EC: ; 0x020776EC
 	add r0, r6, #0
 	add r1, r7, #0
 	str r4, [sp, #0xc]
-	bl sub_0200D564
+	bl SpriteRenderer_LoadPlttResObjFromNarcId
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -199,7 +199,7 @@ sub_0207775C: ; 0x0207775C
 	add r0, r5, #0
 	add r1, r4, #0
 	str r6, [sp, #4]
-	bl sub_0200D6D4
+	bl SpriteRenderer_LoadCellResObjFromNarcId
 	bl sub_020776B4
 	add r6, r0, #0
 	bl sub_02077698
@@ -210,25 +210,25 @@ sub_0207775C: ; 0x0207775C
 	add r1, r4, #0
 	add r2, r6, #0
 	str r7, [sp, #4]
-	bl sub_0200D704
+	bl SpriteRenderer_LoadAnimResObjFromNarcId
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end sub_0207775C
 
 	thumb_func_start sub_020777A4
 sub_020777A4: ; 0x020777A4
-	ldr r3, _020777A8 ; =sub_0200D958
+	ldr r3, _020777A8 ; =SpriteGfxHandler_UnloadCharObjById
 	bx r3
 	.balign 4, 0
-_020777A8: .word sub_0200D958
+_020777A8: .word SpriteGfxHandler_UnloadCharObjById
 	thumb_func_end sub_020777A4
 
 	thumb_func_start sub_020777AC
 sub_020777AC: ; 0x020777AC
-	ldr r3, _020777B0 ; =sub_0200D968
+	ldr r3, _020777B0 ; =SpriteGfxHandler_UnloadPlttObjById
 	bx r3
 	.balign 4, 0
-_020777B0: .word sub_0200D968
+_020777B0: .word SpriteGfxHandler_UnloadPlttObjById
 	thumb_func_end sub_020777AC
 
 	thumb_func_start sub_020777B4
@@ -236,10 +236,10 @@ sub_020777B4: ; 0x020777B4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r2, #0
-	bl sub_0200D978
+	bl SpriteGfxHandler_UnloadCellObjById
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0200D988
+	bl SpriteGfxHandler_UnloadAnimObjById
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_020777B4
 
@@ -265,7 +265,7 @@ _020777D6:
 	add r0, r4, #0
 	add r1, r7, #0
 	add r2, sp, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end sub_020777C8
@@ -336,7 +336,7 @@ sub_02077834: ; 0x02077834
 	ldr r2, [sp, #0xc]
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_0200D4A4
+	bl SpriteRenderer_LoadCharResObjFromNarcId
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -344,10 +344,10 @@ sub_02077834: ; 0x02077834
 
 	thumb_func_start sub_02077868
 sub_02077868: ; 0x02077868
-	ldr r3, _0207786C ; =sub_0200D958
+	ldr r3, _0207786C ; =SpriteGfxHandler_UnloadCharObjById
 	bx r3
 	.balign 4, 0
-_0207786C: .word sub_0200D958
+_0207786C: .word SpriteGfxHandler_UnloadCharObjById
 	thumb_func_end sub_02077868
 
 	thumb_func_start sub_02077870

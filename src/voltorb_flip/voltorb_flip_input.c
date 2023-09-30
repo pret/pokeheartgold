@@ -26,7 +26,7 @@ extern const u8 ov122_021E9A3C[];
 extern const u8 ov122_021E9AAC[];
 extern u8 ov122_021E9BA0[5][2];
 
-Ov122_021E8CFC *ov122_021E8CFC(HeapID heapId, struct UnkStruct_0200CF18 *a1, struct UnkStruct_0200CF18 *a2) {
+Ov122_021E8CFC *ov122_021E8CFC(HeapID heapId, struct UnkImageStruct *a1, struct UnkImageStruct *a2) {
     GF_ASSERT(a1 != NULL);
 
     Ov122_021E8CFC *ptr = AllocFromHeap(heapId, sizeof(Ov122_021E8CFC));
@@ -55,10 +55,10 @@ int ov122_021E8D74(Ov122_021E8CFC *a0) {
 
 void ov122_021E8D8C(Ov122_021E8CFC *a0, int a1) {
     if (a1 != 0) {
-        sub_0200DCE8(a0->unk0, 1);
+        UnkImageStruct_SetSpriteVisibleFlag(a0->unk0, 1);
         return;
     }
-    sub_0200DCE8(a0->unk0, 0);
+    UnkImageStruct_SetSpriteVisibleFlag(a0->unk0, 0);
     a0->unkD = 0;
 }
 
@@ -70,7 +70,7 @@ void SetMemoOpen(Ov122_021E8CFC *a0, BOOL val) {
 void SetMemoFocused(Ov122_021E8CFC *a0, BOOL val) {
     a0->memoFocused = val;
     ov122_021E9154(a0, a0->unkD);
-    sub_0200DCE8(a0->unk4, val);
+    UnkImageStruct_SetSpriteVisibleFlag(a0->unk4, val);
 }
 
 int ov122_021E8DF0(Ov122_021E8CFC *a0) {
@@ -253,12 +253,12 @@ static void ov122_021E9108(Ov122_021E8CFC *a0, int a1) {
 
     ov122_021E9154(a0, a1);
     sub_02020A0C(sub_0201A018(a0->unk8, a1), &temp1, &temp2);
-    sub_0200DDB8(a0->unk0, temp1, temp2);
+    UnkImageStruct_SetSpritePositionXY(a0->unk0, temp1, temp2);
     a0->unkD = a1;
 }
 
 static void ov122_021E9134(Ov122_021E8CFC *a0) {
-    sub_0200DDB8(a0->unk4, ov122_021E9BA0[a0->unkEx][0], ov122_021E9BA0[a0->unkEx][1]);
+    UnkImageStruct_SetSpritePositionXY(a0->unk4, ov122_021E9BA0[a0->unkEx][0], ov122_021E9BA0[a0->unkEx][1]);
 }
 
 static void ov122_021E9154(Ov122_021E8CFC *a0, int newFocus) {
@@ -281,11 +281,11 @@ static void ov122_021E9154(Ov122_021E8CFC *a0, int newFocus) {
     }
 
     if (a0->memoOpen) {
-        sub_0200DD10(a0->unk0, 4);
+        UnkImageStruct_SetSpritePalIndex(a0->unk0, 4);
     } else {
-        sub_0200DD10(a0->unk0, 2);
+        UnkImageStruct_SetSpritePalIndex(a0->unk0, 2);
     }
-    sub_0200DC58(a0->unk0, indicatorType);
+    UnkImageStruct_TryChangeSpriteAnimSeqNo(a0->unk0, indicatorType);
 }
 
 static void ov122_021E91AC(Ov122_021E8CFC *a0, u32 newFocus, int a2, int a3) {

@@ -332,7 +332,7 @@ _021E5BD8:
 	cmp r4, #4
 	blt _021E5BD8
 	ldr r0, [r6, #0x50]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
@@ -1088,7 +1088,7 @@ ov73_021E6184: ; 0x021E6184
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0x64
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	mov r7, #0x8b
 	ldr r4, _021E6298 ; =ov73_021EA560
 	mov r6, #0
@@ -5549,7 +5549,7 @@ _021E8496:
 	blt _021E8496
 	ldr r0, _021E84CC ; =0x00000BF8
 	ldr r0, [r6, r0]
-	bl sub_02024504
+	bl SpriteList_Delete
 	ldr r0, _021E84CC ; =0x00000BF8
 	mov r1, #0
 	str r1, [r6, r0]

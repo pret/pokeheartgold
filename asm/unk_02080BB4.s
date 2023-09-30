@@ -3303,7 +3303,7 @@ _02082758:
 	ldr r0, _02082854 ; =0x00000678
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	add sp, #8
 	mov r0, #4
 	pop {r4, r5, r6, pc}

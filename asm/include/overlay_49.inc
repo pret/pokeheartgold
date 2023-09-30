@@ -177,7 +177,7 @@
 .public Camera_PushLookAtToNNSGlb
 .public Camera_SetPerspectiveClippingPlane
 .public Camera_Init_FromTargetDistanceAndAngle
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_0202457C
 .public sub_02024714
 .public Sprite_Delete

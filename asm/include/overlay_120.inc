@@ -35,8 +35,8 @@
 .public sub_0202457C
 .public Sprite_Delete
 .public Set2dSpriteVisibleFlag
-.public sub_02024A04
-.public sub_02024ADC
+.public Sprite_SetPriority
+.public Sprite_SetDrawPriority
 .public GF_AssertFail
 .public NNS_G2dGetUnpackedBGCharacterData
 .public memset

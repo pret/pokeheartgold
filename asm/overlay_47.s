@@ -528,7 +528,7 @@ ov47_02258C44: ; 0x02258C44
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #4]
-	bl sub_02024504
+	bl SpriteList_Delete
 	mov r6, #0x13
 	mov r4, #0
 	lsl r6, r6, #4
@@ -1264,7 +1264,7 @@ ov47_022591F8: ; 0x022591F8
 	mul r1, r2
 	ldr r0, [r4, #0x14]
 	add r1, r3, r1
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	pop {r4, pc}
 	nop
 _02259218: .word ov47_02259E78

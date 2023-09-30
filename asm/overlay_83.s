@@ -18080,7 +18080,7 @@ _0224723A:
 	cmp r4, #4
 	blo _0224723A
 	ldr r0, [r5]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
@@ -18378,7 +18378,7 @@ ov83_02247454: ; 0x02247454
 	lsl r0, r0, #0xc
 	str r0, [sp, #0x18]
 	ldr r0, [r4, #4]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r4, #0
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
@@ -18438,7 +18438,7 @@ ov83_022474C4: ; 0x022474C4
 	str r0, [sp, #0x18]
 	ldr r0, [r4, #4]
 	add r1, sp, #0x14
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r4, #0
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
@@ -18480,7 +18480,7 @@ ov83_02247568: ; 0x02247568
 	ldr r0, [r5, #4]
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r3, r0, #0
 	add r2, sp, #0
 	ldmia r3!, {r0, r1}
@@ -18494,7 +18494,7 @@ ov83_02247568: ; 0x02247568
 	lsl r0, r6, #0xc
 	str r0, [sp, #4]
 	ldr r0, [r5, #4]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -18508,7 +18508,7 @@ ov83_0224759C: ; 0x0224759C
 	ldr r0, [r5, #4]
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r3, r0, #0
 	add r2, sp, #0
 	ldmia r3!, {r0, r1}
@@ -18525,7 +18525,7 @@ ov83_0224759C: ; 0x0224759C
 	str r0, [sp, #4]
 	ldr r0, [r5, #4]
 	add r1, r7, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov83_0224759C
@@ -18537,7 +18537,7 @@ ov83_022475D4: ; 0x022475D4
 	ldr r0, [r5, #4]
 	add r4, r1, #0
 	mov r1, #0
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	ldr r0, [r5, #4]
 	add r1, r4, #0
 	bl Set2dSpriteAnimSeqNo

@@ -6262,7 +6262,7 @@ _0225703E:
 	beq _0225704C
 	mov r1, #1
 	lsl r1, r1, #0xc
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 _0225704C:
 	add r6, r6, #1
 	add r5, r5, #4
@@ -6686,7 +6686,7 @@ _0225738A:
 	lsl r5, r5, #2
 	ldrb r1, [r1, r5]
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	ldr r1, _022573CC ; =ov03_0225949E
 	ldr r2, _022573D0 ; =ov03_0225949F
 	mov r0, #0x22
@@ -6694,7 +6694,7 @@ _0225738A:
 	ldrb r1, [r1, r5]
 	ldrb r2, [r2, r5]
 	ldr r0, [r4, r0]
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 _022573C0:
 	pop {r3, r4, r5, pc}
 	nop
@@ -7311,13 +7311,13 @@ ov03_02257874: ; 0x02257874
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r4, r1, #0
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	mov r1, #0x91
 	lsl r1, r1, #2
 	strh r0, [r5, r1]
 	sub r1, #0x48
 	ldr r0, [r5, r1]
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	ldr r1, _0225793C ; =0x00000246
 	strh r0, [r5, r1]
 	sub r1, #0x4e
@@ -7691,7 +7691,7 @@ _02257B78:
 	sub r1, #0x56
 	ldr r0, [r4, r1]
 	mov r1, #0
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	mov r0, #0x23
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -7719,7 +7719,7 @@ _02257BAC:
 	sub r1, #0x52
 	ldr r0, [r4, r1]
 	mov r1, #0
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	mov r0, #0x8d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -7748,7 +7748,7 @@ _02257BEA:
 	sub r1, #0x4e
 	ldr r0, [r4, r1]
 	mov r1, #0
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	mov r0, #0x8e
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -7777,7 +7777,7 @@ _02257C2A:
 	sub r1, #0x4a
 	ldr r0, [r4, r1]
 	mov r1, #0
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	mov r0, #0x8f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -8524,12 +8524,12 @@ _022581DA:
 	add r0, #0x34
 	ldr r0, [r7, r0]
 	mov r1, #1
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	mov r0, #9
 	lsl r0, r0, #6
 	ldr r0, [r7, r0]
 	mov r1, #1
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	mov r0, #0x22
 	lsl r0, r0, #4
 	ldr r0, [r7, r0]
@@ -8655,7 +8655,7 @@ _022582E0:
 	mov r0, #0x82
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r7, r7, #1
 	add r4, #0x28
 	add r6, r6, #4
@@ -8764,7 +8764,7 @@ _022583D0:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	mov r0, #0x8b
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -8799,7 +8799,7 @@ _022583FC:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	add r1, sp, #0xc
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldrb r0, [r4]
 	lsl r0, r0, #2
 	add r1, r5, r0
@@ -8892,7 +8892,7 @@ _022584CE:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	mov r0, #0x8b
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -8924,7 +8924,7 @@ _022584FA:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldrb r0, [r4]
 	lsl r0, r0, #2
 	add r1, r5, r0
@@ -8967,13 +8967,13 @@ ov03_02258560: ; 0x02258560
 	ldr r0, [r4, r0]
 	mov r1, #0xb1
 	mov r2, #8
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	mov r0, #0x7f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0xb1
 	mov r2, #0x84
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	pop {r4, pc}
 _02258586:
 	mov r0, #0x7e
@@ -8981,13 +8981,13 @@ _02258586:
 	ldr r0, [r4, r0]
 	mov r1, #0xa2
 	mov r2, #0x6c
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	mov r0, #0x7f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0xa2
 	mov r2, #0x84
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	pop {r4, pc}
 	thumb_func_end ov03_02258560
 
@@ -9125,11 +9125,11 @@ ov03_02258648: ; 0x02258648
 ov03_022586BC: ; 0x022586BC
 	mov r2, #2
 	lsl r2, r2, #8
-	ldr r3, _022586C8 ; =sub_0200DD08
+	ldr r3, _022586C8 ; =thunk_Sprite_SetPalIndex
 	ldr r0, [r0, r2]
 	bx r3
 	nop
-_022586C8: .word sub_0200DD08
+_022586C8: .word thunk_Sprite_SetPalIndex
 	thumb_func_end ov03_022586BC
 
 	thumb_func_start ov03_022586CC
@@ -9167,7 +9167,7 @@ _022586F8:
 	add r0, r0, r2
 	ldr r0, [r0, r1]
 	mov r1, #7
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	ldrb r0, [r4, #1]
 	add r0, r0, #1
 	strb r0, [r4, #1]
@@ -9185,7 +9185,7 @@ _02258710:
 	add r0, r0, r2
 	ldr r0, [r0, r1]
 	mov r1, #6
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	mov r0, #0
 	strb r0, [r4, #2]
 	ldrb r0, [r4, #1]

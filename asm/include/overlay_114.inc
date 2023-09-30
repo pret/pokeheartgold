@@ -7,7 +7,7 @@
 .public GX_EngineAToggleLayers
 .public sub_0202457C
 .public Sprite_Delete
-.public sub_020247D4
+.public Sprite_SetMatrix
 .public sub_020247F4
 .public Set2dSpriteVisibleFlag
 .public sub_0202487C
