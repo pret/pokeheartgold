@@ -8,6 +8,7 @@
 #include "constants/vars.h"
 #include "constants/items.h"
 #include "constants/moves.h"
+#include "constants/movements.h"
 #include "constants/sndseq.h"
 #include "constants/ribbon.h"
 #include "constants/pokemon.h"

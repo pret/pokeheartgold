@@ -97,7 +97,7 @@
       "mvt": 17,
       "type": 0,
       "flag": "FLAG_HIDE_FARFETCHD_1_LOST",
-      "scr": "_EV_scr_seq_D36R0101_001 + 1",
+      "scr": "_EV_scr_seq_D36R0101_farfetchd1 + 1",
       "dirn": 3,
       "eye": 0,
       "unk10": 0,
@@ -131,7 +131,7 @@
       "mvt": 15,
       "type": 0,
       "flag": "FLAG_HIDE_FARFETCHD_2_LOST",
-      "scr": "_EV_scr_seq_D36R0101_005 + 1",
+      "scr": "_EV_scr_seq_D36R0101_farfetchd2 + 1",
       "dirn": 1,
       "eye": 0,
       "unk10": 0,
@@ -444,64 +444,64 @@
   ],
   "coords": [
     {
-      "scr": "_EV_scr_seq_D36R0101_003 + 1",
+      "scr": "_EV_scr_seq_D36R0101_farfetchd1_sticks1 + 1",
       "x": 25,
       "y": 66,
       "w": 2,
       "h": 2,
       "z": 0,
-      "val": 1,
-      "var": "VAR_UNK_4099"
+      "val": "STICKS_ACTIVE",
+      "var": "VAR_FARFETCHD1_STICKS1"
     },
     {
-      "scr": "_EV_scr_seq_D36R0101_004 + 1",
+      "scr": "_EV_scr_seq_D36R0101_farfetchd1_sticks2 + 1",
       "x": 28,
       "y": 63,
       "w": 2,
       "h": 2,
       "z": 0,
-      "val": 1,
-      "var": "VAR_UNK_409B"
+      "val": "STICKS_ACTIVE",
+      "var": "VAR_FARFETCHD1_STICKS2"
     },
     {
-      "scr": "_EV_scr_seq_D36R0101_008 + 1",
+      "scr": "_EV_scr_seq_D36R0101_farfetchd2_sticks3 + 1",
       "x": 46,
       "y": 64,
       "w": 2,
       "h": 2,
       "z": 0,
-      "val": 1,
-      "var": "VAR_UNK_409D"
+      "val": "STICKS_ACTIVE",
+      "var": "VAR_FARFETCHD2_STICKS3"
     },
     {
-      "scr": "_EV_scr_seq_D36R0101_006 + 1",
+      "scr": "_EV_scr_seq_D36R0101_farfetchd2_sticks1 + 1",
       "x": 50,
       "y": 49,
       "w": 2,
       "h": 2,
       "z": 0,
-      "val": 1,
-      "var": "VAR_UNK_409A"
+      "val": "STICKS_ACTIVE",
+      "var": "VAR_FARFETCHD2_STICKS1"
     },
     {
-      "scr": "_EV_scr_seq_D36R0101_007 + 1",
+      "scr": "_EV_scr_seq_D36R0101_farfetchd2_sticks2 + 1",
       "x": 52,
       "y": 53,
       "w": 2,
       "h": 2,
       "z": 0,
-      "val": 1,
-      "var": "VAR_UNK_409C"
+      "val": "STICKS_ACTIVE",
+      "var": "VAR_FARFETCHD2_STICKS2"
     },
     {
-      "scr": "_EV_scr_seq_D36R0101_009 + 1",
+      "scr": "_EV_scr_seq_D36R0101_farfetchd2_sticks4 + 1",
       "x": 45,
       "y": 53,
       "w": 2,
       "h": 2,
       "z": 0,
-      "val": 1,
-      "var": "VAR_UNK_409E"
+      "val": "STICKS_ACTIVE",
+      "var": "VAR_FARFETCHD2_STICKS4"
     },
     {
       "scr": "_EV_scr_seq_D36R0101_015 + 1",

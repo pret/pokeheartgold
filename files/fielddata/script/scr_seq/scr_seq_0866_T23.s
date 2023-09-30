@@ -1,4 +1,5 @@
 #include "constants/scrcmd.h"
+#include "fielddata/script/scr_seq/event_D36R0101.h"
 #include "fielddata/script/scr_seq/event_T23.h"
 #include "msgdata/msg/msg_0564_T23.h"
 	.include "asm/macros/script.inc"
@@ -57,7 +58,7 @@ scr_seq_T23_002:
 	fade_out_bgm 0, 3
 	apply_movement obj_player, _02A4
 	wait_movement
-	setvar VAR_UNK_4099, 1
+	setvar VAR_FARFETCHD1_STICKS1, STICKS_ACTIVE
 	callstd std_play_rival_intro_music
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	compare VAR_SPECIAL_x8005, 462
