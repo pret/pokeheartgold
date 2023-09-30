@@ -99,14 +99,14 @@
 .public GX_EngineAToggleLayers
 .public GX_DisableEngineBLayers
 .public GX_EngineBToggleLayers
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
-.public sub_020247D4
+.public Sprite_SetMatrix
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public Set2dSpriteAnimSeqNo
-.public sub_02024A04
+.public Sprite_SetPriority
 .public sub_02024B68
 .public sub_02025224
 .public GF_AssertFail

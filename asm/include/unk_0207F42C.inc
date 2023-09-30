@@ -5,9 +5,9 @@
 .public BufferBoxMonNickname
 .public BufferItemName
 .public StringExpandPlaceholders
-.public sub_0200DD08
-.public sub_0200DD88
-.public sub_0200DE00
+.public thunk_Sprite_SetPalIndex
+.public Sprite_SetPositionXY
+.public Sprite_GetPositionXY
 .public sub_0200E5D4
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2

@@ -330,7 +330,7 @@ ov53_021E5BCC: ; 0x021E5BCC
 	push {r3, lr}
 	ldr r0, [r0, #0x18]
 	bl DoScheduledBgGpuUpdates
-	bl sub_0200D034
+	bl thunk_OamManager_ApplyAndResetBuffers
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov53_021E5BCC
@@ -3674,7 +3674,7 @@ _021E76A8:
 	add r0, #0xec
 	ldr r0, [r0]
 	mov r1, #5
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	add r0, r4, #0
 	add r0, #0xec
 	ldr r0, [r0]
@@ -3729,7 +3729,7 @@ _021E771C:
 	add r0, #0xec
 	ldr r0, [r0]
 	mov r1, #4
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	mov r2, #5
 	mov r1, #0x10
 	lsl r2, r2, #6
@@ -4575,7 +4575,7 @@ _021E7E2E:
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #1
 	beq _021E7E40
 	bl GF_AssertFail
@@ -4591,7 +4591,7 @@ _021E7E52:
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #0
 	beq _021E7E64
 	bl GF_AssertFail
@@ -4625,7 +4625,7 @@ ov53_021E7E94: ; 0x021E7E94
 	push {r3, lr}
 	add r0, #0xe4
 	ldr r0, [r0]
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	cmp r0, #1
 	bne _021E7EA6
 	mov r0, #1
@@ -4645,7 +4645,7 @@ ov53_021E7EAC: ; 0x021E7EAC
 _021E7EB6:
 	add r4, #0xe4
 	ldr r0, [r4]
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #1
 	bne _021E7EC6
 	mov r0, #1
@@ -4714,14 +4714,14 @@ ov53_021E7F24: ; 0x021E7F24
 	mov r1, #0x50
 	bl GF_CreateVramTransferManager
 	mov r0, #0x50
-	bl sub_0200CF18
+	bl SpriteRenderer_Create
 	add r1, r4, #0
 	add r1, #0xd0
 	str r0, [r1]
 	add r0, r4, #0
 	add r0, #0xd0
 	ldr r0, [r0]
-	bl sub_0200CF38
+	bl SpriteRenderer_CreateGfxHandler
 	add r1, r4, #0
 	add r1, #0xd4
 	add r2, sp, #0x24
@@ -4762,7 +4762,7 @@ ov53_021E7F24: ; 0x021E7F24
 	add r0, r4, #0
 	add r0, #0xd0
 	ldr r0, [r0]
-	bl sub_0200CF6C
+	bl SpriteRenderer_GetG2dRendererPtr
 	mov r2, #3
 	mov r1, #0
 	lsl r2, r2, #0x12
@@ -4801,11 +4801,11 @@ ov53_021E7FEC: ; 0x021E7FEC
 	add r1, #0xd4
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D0E4
+	bl SpriteRenderer_RemoveGfxHandler
 	add r0, r4, #0
 	add r0, #0xd0
 	ldr r0, [r0]
-	bl sub_0200D108
+	bl SpriteRenderer_Delete
 	bl GF_DestroyVramTransferManager
 	mov r0, #0
 	add r4, #0xd4
@@ -4830,7 +4830,7 @@ _021E801E:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	add r2, r6, r2
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	lsl r1, r4, #2
 	add r1, r5, r1
 	add r1, #0xd8
@@ -4869,7 +4869,7 @@ _021E801E:
 	add r0, #0xe4
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	add r0, r5, #0
 	add r0, #0xec
 	ldr r0, [r0]
@@ -5289,7 +5289,7 @@ _021E83BA:
 	ldrsh r1, [r1, r3]
 	ldrsh r2, [r2, r3]
 	ldr r0, [r5, #0x10]
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E83CC: .word ov53_021E8874
@@ -5429,7 +5429,7 @@ ov53_021E84D4: ; 0x021E84D4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	cmp r0, #3
 	beq _021E84E6
 	bl GF_AssertFail
@@ -5563,7 +5563,14 @@ ov53_021E86F0: ; 0x021E86F0
 	; file boundary
 
 ov53_021E8740: ; 0x021E8740
-	.byte 0x1A, 0x00, 0x1B, 0x00, 0x19, 0x00, 0x18, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0x4E, 0x00, 0x00, 0x00
+	.short 0x001A  // NARC_resdat_resdat_00000026
+	.short 0x001B  // NARC_resdat_resdat_00000027
+	.short 0x0019  // NARC_resdat_resdat_00000025
+	.short 0x0018  // NARC_resdat_resdat_00000024
+	.short 0xFFFF
+	.short 0xFFFF
+	.short 0x004E  // NARC_resdat_resdat_00000078
+	.balign 4, 0
 
 ov53_021E8750: ; 0x021E8750
 	.byte 0x0A, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00

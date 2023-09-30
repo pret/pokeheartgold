@@ -186,7 +186,7 @@ static void FreeOamAndObjResMgrs(CreditsAppWork *work);
 static void ov76_021E6170(CreditsAppWork *work);
 static void ov76_021E62B4(CreditsAppWork *work);
 static void InitSprites(CreditsAppWork *work);
-static void InitDancingSpriteResources(int a0, CreditsAppWork *work, int a2, int a3, SpriteTemplate *a4, SpriteResourcesHeader *a5);
+static void InitDancingSpriteResources(int idx, CreditsAppWork *work, int sprtResPriority, NNS_G2D_VRAM_TYPE whichScreen, SpriteTemplate *tmpl, SpriteResourcesHeader *header);
 static void SetPageSysTasks(CreditsAppWork *work);
 static void FreePageSysTasks(CreditsAppWork *work);
 static void HandlePageDisplay(CreditsAppWork *work);
@@ -488,7 +488,7 @@ static void FreeOamAndObjResMgrs(CreditsAppWork *work) {
     for (u8 i = GF_GFX_RES_TYPE_CHAR; i < GF_GFX_RES_TYPE_ANIM + 1; i++) {
         Destroy2DGfxResObjMan(work->_2dGfxResMan[i]);
     }
-    sub_02024504(work->spriteList);
+    SpriteList_Delete(work->spriteList);
     OamManager_Free();
     sub_0202168C();
     sub_02022608();
@@ -602,7 +602,7 @@ static void InitSprites(CreditsAppWork *work) {
     GX_EngineBToggleLayers(16, GX_LAYER_TOGGLE_ON);
 }
 
-static void InitDancingSpriteResources(int idx, CreditsAppWork *work, int sprtResPriority, int whichScreen, SpriteTemplate *tmpl, SpriteResourcesHeader *header) {
+static void InitDancingSpriteResources(int idx, CreditsAppWork *work, int sprtResPriority, NNS_G2D_VRAM_TYPE whichScreen, SpriteTemplate *tmpl, SpriteResourcesHeader *header) {
     CreateSpriteResourcesHeader(
         header, idx, idx, idx, idx, -1, -1, FALSE, sprtResPriority,
         work->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR],
@@ -625,7 +625,7 @@ static void InitDancingSpriteResources(int idx, CreditsAppWork *work, int sprtRe
     tmpl->heapId = HEAP_ID_CREDITS;
 }
 
-static void InitCutsceneSpriteResources(u8 idx, CreditsAppWork *work, u8 sprtResPriority, int whichScreen, SpriteTemplate *tmpl, SpriteResourcesHeader *header) {
+static void InitCutsceneSpriteResources(u8 idx, CreditsAppWork *work, u8 sprtResPriority, NNS_G2D_VRAM_TYPE whichScreen, SpriteTemplate *tmpl, SpriteResourcesHeader *header) {
     CutsceneSpriteGfx *ptr = &work->cutsceneWork.spriteGfx[idx];
 
     header->charData = NULL;
@@ -1012,7 +1012,7 @@ static void CreateCutsceneSprite(CreditsAppWork *work, const CutsceneSpriteParam
     SpriteResourcesHeader header;
     SpriteTemplate tmpl;
 
-    InitCutsceneSpriteResources(spriteParam->spriteIdx, work, 3, 1, &tmpl, &header);
+    InitCutsceneSpriteResources(spriteParam->spriteIdx, work, 3, NNS_G2D_VRAM_TYPE_2DMAIN, &tmpl, &header);
     CutsceneSprites *sprites = &work->cutsceneWork.sprites;
     int idx = sprites->count;
     CutsceneSprite *cutsceneSprite = &sprites->sprite[idx];

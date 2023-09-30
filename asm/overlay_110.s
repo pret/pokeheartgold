@@ -836,7 +836,7 @@ _021E5F08:
 	ldr r0, [r0]
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	mov r0, #0x57
 	lsl r0, r0, #2
 	sub r1, r6, #2
@@ -1117,7 +1117,7 @@ _021E6120:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _021E612E
-	bl sub_0200D034
+	bl thunk_OamManager_ApplyAndResetBuffers
 _021E612E:
 	bl NNS_GfdDoVramTransfer
 	ldr r0, [r4, #0x14]
@@ -1769,7 +1769,7 @@ ov110_021E6678: ; 0x021E6678
 	mov r0, #0x20
 	bl GF_CreateVramTransferManager
 	ldr r0, [r4]
-	bl sub_0200CF18
+	bl SpriteRenderer_Create
 	add r1, r4, #0
 	add r1, #0x84
 	str r0, [r1]
@@ -1787,7 +1787,7 @@ ov110_021E6678: ; 0x021E6678
 	add r0, r4, #0
 	add r0, #0x84
 	ldr r0, [r0]
-	bl sub_0200CF38
+	bl SpriteRenderer_CreateGfxHandler
 	add r1, r4, #0
 	add r1, #0x88
 	str r0, [r1]
@@ -1826,7 +1826,7 @@ ov110_021E66F8: ; 0x021E66F8
 	add r1, #0x88
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D0E4
+	bl SpriteRenderer_RemoveGfxHandler
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0x88
@@ -1834,7 +1834,7 @@ ov110_021E66F8: ; 0x021E66F8
 	add r0, r4, #0
 	add r0, #0x84
 	ldr r0, [r0]
-	bl sub_0200D108
+	bl SpriteRenderer_Delete
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0x84
@@ -1889,7 +1889,7 @@ _021E6770:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	add r2, r6, #0
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	add r1, r4, #0
 	add r1, #0x8c
 	str r0, [r1]
@@ -1928,7 +1928,7 @@ _021E6770:
 	add r0, #0x90
 	ldr r0, [r0]
 	mov r1, #2
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	add r0, r5, #0
 	add r0, #0x90
 	ldr r0, [r0]
@@ -1961,7 +1961,7 @@ _021E680A:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	ldr r2, _021E6894 ; =ov110_021E6FCC
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	add r1, r5, r4
 	add r1, #0x8c
 	str r0, [r1]
@@ -2100,7 +2100,7 @@ ov110_021E6904: ; 0x021E6904
 	add r0, r5, #0
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl sub_02024964
+	bl Sprite_ResetAnimCtrlState
 	add r0, r5, #0
 	add r0, #0x8c
 	ldr r0, [r0]
@@ -2478,7 +2478,7 @@ ov110_021E6BEC: ; 0x021E6BEC
 	add r2, r2, r3
 	lsl r2, r2, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	pop {r4, pc}
 	nop
 _021E6C10: .word ov110_021E6D94
@@ -2538,7 +2538,7 @@ ov110_021E6C58: ; 0x021E6C58
 	ldr r0, [r4, r0]
 	mov r1, #0
 	ldr r0, [r0, #4]
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	mov r0, #0x57
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -2546,7 +2546,7 @@ ov110_021E6C58: ; 0x021E6C58
 	mvn r1, r1
 	ldr r0, [r0, #4]
 	add r2, r1, #0
-	bl sub_0200DEA0
+	bl Sprite_AddPositionXY
 	add r0, r4, #0
 	add r0, #0x90
 	ldr r0, [r0]
@@ -2568,7 +2568,7 @@ ov110_021E6C58: ; 0x021E6C58
 	ldr r0, [r0]
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	add r0, r4, #0
 	mov r1, #2
 	bl ov110_021E6904
@@ -2580,7 +2580,7 @@ _021E6CCC:
 	ldr r0, [r4, r0]
 	mov r1, #2
 	ldr r0, [r0, #4]
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	mov r0, #0x57
 	lsl r0, r0, #2
 	ldr r3, [r4, r0]

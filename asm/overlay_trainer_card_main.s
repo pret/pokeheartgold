@@ -4093,7 +4093,7 @@ _021E7C3C:
 	mov r1, #2
 	ldr r0, [r5, r0]
 	sub r1, r1, r6
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	mov r0, #0x1f
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -4168,7 +4168,7 @@ _021E7CF0:
 	lsl r2, r2, #0x12
 	bl G2dRenderer_SetSubSurfaceCoords
 	ldr r0, [r5]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
@@ -4197,7 +4197,7 @@ ov51_021E7D44: ; 0x021E7D44
 	add r1, r2, #0
 	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5, r4]
-	bl sub_02024964
+	bl Sprite_ResetAnimCtrlState
 	ldr r0, [r5, r4]
 	add r1, r6, #0
 	bl Set2dSpriteVisibleFlag

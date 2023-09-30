@@ -508,7 +508,7 @@ _020859A2:
 	ldrsh r1, [r4, r1]
 	ldrsh r2, [r4, r2]
 	ldr r0, [r4, #0xc]
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 	ldrb r0, [r4, #0x18]
 	sub r0, r0, #1
 	strb r0, [r4, #0x18]
@@ -582,7 +582,7 @@ _02085A2E:
 	ldrsh r1, [r4, r1]
 	ldrsh r2, [r4, r2]
 	ldr r0, [r4, r0]
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 	mov r0, #0x76
 	lsl r0, r0, #2
 	ldrb r0, [r4, r0]
@@ -620,9 +620,9 @@ _02085A82:
 	bl sub_02086D98
 	add r1, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r4, #0xc]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [r5, r7]
 	add r6, r6, #1
 	add r4, #0x1c
@@ -647,9 +647,9 @@ _02085ABA:
 	bl sub_02086D98
 	add r1, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r4, #0xc]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [r5, r7]
 	add r6, r6, #1
 	add r4, #0x1c
@@ -1047,12 +1047,12 @@ _02085D8E:
 	add r1, r0, #0
 	add r0, r4, r7
 	ldr r0, [r0, #0xc]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	mov r0, #0x96
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #3
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	add r0, r4, r7
 	ldr r3, [r0, #4]
 	ldr r0, [sp]
@@ -1302,7 +1302,7 @@ _02085FA8:
 	bl sub_02086D98
 	add r1, r0, #0
 	ldr r0, [r5, #0xc]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 _02085FC0:
 	mov r0, #1
 	str r0, [sp]
@@ -1385,7 +1385,7 @@ _02086044:
 	add r1, r0, #0
 	add r0, r5, r4
 	ldr r0, [r0, #0xc]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	add r0, r5, r4
 	ldr r7, [r0, #4]
 	mov r0, #0x3f
@@ -1404,7 +1404,7 @@ _02086044:
 	add r1, r0, #0
 	add r0, r5, r4
 	ldr r0, [r0, #0xc]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	add r0, r5, r4
 	ldr r3, [r0, #4]
 	cmp r7, r3
@@ -1658,7 +1658,7 @@ _0208623E:
 	add r1, r0, #0
 	add r0, r4, r6
 	ldr r0, [r0, #0xc]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	mov r1, #1
 	add r0, r4, #0
 	add r2, r1, #0
@@ -1683,7 +1683,7 @@ _0208623E:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #3
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	add r0, r4, r6
 	ldr r2, [r0, #4]
 	mov r0, #0x2d

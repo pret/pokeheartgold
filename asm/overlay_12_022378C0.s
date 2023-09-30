@@ -361,10 +361,10 @@ ov12_02237B6C: ; 0x02237B6C
 	add r1, #0x94
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	add r4, #0x90
 	ldr r0, [r4]
-	bl sub_0200D108
+	bl SpriteRenderer_Delete
 	bl GF_DestroyVramTransferManager
 	mov r0, #4
 	bl FontID_Release
@@ -468,7 +468,7 @@ _02237BDE:
 	bl ov12_0223A620
 	add r5, #0x90
 	ldr r0, [r5]
-	bl sub_0200CF6C
+	bl SpriteRenderer_GetG2dRendererPtr
 	mov r2, #0x11
 	mov r1, #0
 	lsl r2, r2, #0x10
@@ -899,7 +899,7 @@ _02237FD8:
 	mov r3, #0xa
 	bl DrawFrameAndWindow2
 	mov r0, #5
-	bl sub_0200CF18
+	bl SpriteRenderer_Create
 	add r1, r4, #0
 	add r1, #0x90
 	str r0, [r1]
@@ -918,7 +918,7 @@ _02237FD8:
 	add r0, r4, #0
 	add r0, #0x90
 	ldr r0, [r0]
-	bl sub_0200CF38
+	bl SpriteRenderer_CreateGfxHandler
 	add r1, r4, #0
 	add r1, #0x94
 	str r0, [r1]
@@ -937,11 +937,11 @@ _02237FD8:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	ldr r2, _02238320 ; =ov12_0226C02C
-	bl sub_0200D3F8
+	bl SpriteRenderer_Init2DGfxResManagersFromCountsArray
 	add r0, r4, #0
 	add r0, #0x90
 	ldr r0, [r0]
-	bl sub_0200CF6C
+	bl SpriteRenderer_GetG2dRendererPtr
 	mov r2, #0x11
 	mov r1, #0
 	lsl r2, r2, #0x10
@@ -3671,7 +3671,7 @@ _02239798:
 	ldr r0, [r0]
 	bl sub_02009418
 	bl GF_RunVramTransferTasks
-	bl sub_0200D034
+	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #0x28]
 	bl sub_0200398C
 	ldr r0, [r4, #4]

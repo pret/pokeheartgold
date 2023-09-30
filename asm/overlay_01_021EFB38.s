@@ -1448,7 +1448,7 @@ ov01_021F05F4: ; 0x021F05F4
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl sub_02024504
+	bl SpriteList_Delete
 	mov r6, #0x4b
 	mov r4, #0
 	lsl r6, r6, #2

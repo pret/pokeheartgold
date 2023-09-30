@@ -423,7 +423,7 @@
     {
       "name": "scrcmd_066",
       "args": [
-        1,
+        "message",
         1
       ]
     },

@@ -2139,8 +2139,8 @@ _020244B8:
 _02024500: .word _0210F6E0
 	thumb_func_end SpriteList_Create
 
-	thumb_func_start sub_02024504
-sub_02024504: ; 0x02024504
+	thumb_func_start SpriteList_Delete
+SpriteList_Delete: ; 0x02024504
 	push {r4, lr}
 	add r4, r0, #0
 	bne _0202450E
@@ -2169,7 +2169,7 @@ _02024518:
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02024504
+	thumb_func_end SpriteList_Delete
 
 	thumb_func_start sub_02024544
 sub_02024544: ; 0x02024544
@@ -2519,8 +2519,8 @@ _020247D0:
 	.balign 4, 0
 	thumb_func_end Sprite_Delete
 
-	thumb_func_start sub_020247D4
-sub_020247D4: ; 0x020247D4
+	thumb_func_start Sprite_SetMatrix
+Sprite_SetMatrix: ; 0x020247D4
 	add r2, r1, #0
 	add r3, r0, #0
 	ldmia r2!, {r0, r1}
@@ -2529,7 +2529,7 @@ sub_020247D4: ; 0x020247D4
 	str r0, [r3]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_020247D4
+	thumb_func_end Sprite_SetMatrix
 
 	thumb_func_start sub_020247E4
 sub_020247E4: ; 0x020247E4
@@ -2667,11 +2667,11 @@ _0202489E:
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02024890
 
-	thumb_func_start sub_020248AC
-sub_020248AC: ; 0x020248AC
+	thumb_func_start Sprite_GetMatrixPtr
+Sprite_GetMatrixPtr: ; 0x020248AC
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_020248AC
+	thumb_func_end Sprite_GetMatrixPtr
 
 	thumb_func_start sub_020248B0
 sub_020248B0: ; 0x020248B0
@@ -2685,13 +2685,13 @@ sub_020248B4: ; 0x020248B4
 	bx lr
 	thumb_func_end sub_020248B4
 
-	thumb_func_start sub_020248B8
-sub_020248B8: ; 0x020248B8
+	thumb_func_start Get2dSpriteVisibleFlag
+Get2dSpriteVisibleFlag: ; 0x020248B8
 	add r0, #0x34
 	ldrb r0, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_020248B8
+	thumb_func_end Get2dSpriteVisibleFlag
 
 	thumb_func_start sub_020248C0
 sub_020248C0: ; 0x020248C0
@@ -2701,8 +2701,8 @@ sub_020248C0: ; 0x020248C0
 	.balign 4, 0
 	thumb_func_end sub_020248C0
 
-	thumb_func_start sub_020248C8
-sub_020248C8: ; 0x020248C8
+	thumb_func_start Get2dSpriteAnimSeqNo
+Get2dSpriteAnimSeqNo: ; 0x020248C8
 	push {r4, lr}
 	add r4, r0, #0
 	bne _020248D2
@@ -2725,14 +2725,14 @@ _020248E6:
 	ldrh r0, [r0]
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_020248C8
+	thumb_func_end Get2dSpriteAnimSeqNo
 
 	thumb_func_start Set2dSpriteAnimSeqNo
 Set2dSpriteAnimSeqNo: ; 0x020248F0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_020248C8
+	bl Get2dSpriteAnimSeqNo
 	cmp r0, r4
 	bhi _02024902
 	bl GF_AssertFail
@@ -2776,8 +2776,8 @@ _02024936:
 	.balign 4, 0
 	thumb_func_end Set2dSpriteAnimSeqNo
 
-	thumb_func_start sub_02024950
-sub_02024950: ; 0x02024950
+	thumb_func_start TryChange2dSpriteAnimSeqNo
+TryChange2dSpriteAnimSeqNo: ; 0x02024950
 	push {r3, lr}
 	add r2, r0, #0
 	add r2, #0xf0
@@ -2788,10 +2788,10 @@ sub_02024950: ; 0x02024950
 _02024960:
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02024950
+	thumb_func_end TryChange2dSpriteAnimSeqNo
 
-	thumb_func_start sub_02024964
-sub_02024964: ; 0x02024964
+	thumb_func_start Sprite_ResetAnimCtrlState
+Sprite_ResetAnimCtrlState: ; 0x02024964
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r0, #0xec
@@ -2810,7 +2810,7 @@ _02024974:
 	str r0, [r5, #0x14]
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	pop {r3, r4, r5, pc}
 _0202498E:
 	add r5, r4, #0
@@ -2822,20 +2822,20 @@ _0202498E:
 	str r0, [r5, #0x14]
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02024964
+	thumb_func_end Sprite_ResetAnimCtrlState
 
-	thumb_func_start sub_020249A8
-sub_020249A8: ; 0x020249A8
+	thumb_func_start Get2dSpriteCurrentAnimSeqNo
+Get2dSpriteCurrentAnimSeqNo: ; 0x020249A8
 	add r0, #0xf0
 	ldrh r0, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_020249A8
+	thumb_func_end Get2dSpriteCurrentAnimSeqNo
 
-	thumb_func_start sub_020249B0
-sub_020249B0: ; 0x020249B0
+	thumb_func_start Sprite_TickCellOrMulticellAnimation
+Sprite_TickCellOrMulticellAnimation: ; 0x020249B0
 	push {r3, lr}
 	add r2, r0, #0
 	add r2, #0xec
@@ -2854,10 +2854,10 @@ _020249CA:
 	add r0, #8
 	bl NNS_G2dTickMCAnimation
 	pop {r3, pc}
-	thumb_func_end sub_020249B0
+	thumb_func_end Sprite_TickCellOrMulticellAnimation
 
-	thumb_func_start sub_020249D4
-sub_020249D4: ; 0x020249D4
+	thumb_func_start Sprite_SetAnimCtrlCurrentFrame
+Sprite_SetAnimCtrlCurrentFrame: ; 0x020249D4
 	push {r3, lr}
 	add r2, r0, #0
 	add r2, #0xec
@@ -2876,36 +2876,36 @@ _020249EE:
 	add r0, #8
 	bl NNS_G2dSetMCAnimationCurrentFrame
 	pop {r3, pc}
-	thumb_func_end sub_020249D4
+	thumb_func_end Sprite_SetAnimCtrlCurrentFrame
 
-	thumb_func_start sub_020249F8
-sub_020249F8: ; 0x020249F8
+	thumb_func_start Sprite_GetAnimCtrlCurrentFrame
+Sprite_GetAnimCtrlCurrentFrame: ; 0x020249F8
 	ldr r3, _02024A00 ; =NNS_G2dGetAnimCtrlCurrentFrame
 	add r0, #0x40
 	add r0, #8
 	bx r3
 	.balign 4, 0
 _02024A00: .word NNS_G2dGetAnimCtrlCurrentFrame
-	thumb_func_end sub_020249F8
+	thumb_func_end Sprite_GetAnimCtrlCurrentFrame
 
-	thumb_func_start sub_02024A04
-sub_02024A04: ; 0x02024A04
+	thumb_func_start Sprite_SetPriority
+Sprite_SetPriority: ; 0x02024A04
 	add r0, #0xf2
 	strb r1, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_02024A04
+	thumb_func_end Sprite_SetPriority
 
-	thumb_func_start sub_02024A0C
-sub_02024A0C: ; 0x02024A0C
+	thumb_func_start Sprite_GetPriority
+Sprite_GetPriority: ; 0x02024A0C
 	add r0, #0xf2
 	ldrb r0, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_02024A0C
+	thumb_func_end Sprite_GetPriority
 
-	thumb_func_start sub_02024A14
-sub_02024A14: ; 0x02024A14
+	thumb_func_start Sprite_SetPalIndex
+Sprite_SetPalIndex: ; 0x02024A14
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -2932,13 +2932,13 @@ _02024A22:
 	bic r1, r0
 	strb r1, [r5]
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02024A14
+	thumb_func_end Sprite_SetPalIndex
 
 	thumb_func_start sub_02024A48
 sub_02024A48: ; 0x02024A48
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	add r1, r4, #0
 	add r1, #0xf8
 	add r0, r4, #0
@@ -2954,16 +2954,16 @@ sub_02024A48: ; 0x02024A48
 	pop {r4, pc}
 	thumb_func_end sub_02024A48
 
-	thumb_func_start sub_02024A6C
-sub_02024A6C: ; 0x02024A6C
+	thumb_func_start Sprite_GetPalIndex
+Sprite_GetPalIndex: ; 0x02024A6C
 	add r0, #0x29
 	ldrb r0, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_02024A6C
+	thumb_func_end Sprite_GetPalIndex
 
-	thumb_func_start sub_02024A74
-sub_02024A74: ; 0x02024A74
+	thumb_func_start Sprite_SetPalOffset
+Sprite_SetPalOffset: ; 0x02024A74
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -2990,13 +2990,13 @@ _02024A82:
 	bic r1, r0
 	strb r1, [r5]
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02024A74
+	thumb_func_end Sprite_SetPalOffset
 
 	thumb_func_start sub_02024AA8
 sub_02024AA8: ; 0x02024AA8
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02024A74
+	bl Sprite_SetPalOffset
 	add r1, r4, #0
 	add r1, #0xf8
 	add r0, r4, #0
@@ -3012,8 +3012,8 @@ sub_02024AA8: ; 0x02024AA8
 	pop {r4, pc}
 	thumb_func_end sub_02024AA8
 
-	thumb_func_start sub_02024ACC
-sub_02024ACC: ; 0x02024ACC
+	thumb_func_start Sprite_GetPalOffset
+Sprite_GetPalOffset: ; 0x02024ACC
 	push {r4, lr}
 	add r4, r0, #0
 	bne _02024AD6
@@ -3022,10 +3022,10 @@ _02024AD6:
 	add r4, #0x2a
 	ldrb r0, [r4]
 	pop {r4, pc}
-	thumb_func_end sub_02024ACC
+	thumb_func_end Sprite_GetPalOffset
 
-	thumb_func_start sub_02024ADC
-sub_02024ADC: ; 0x02024ADC
+	thumb_func_start Sprite_SetDrawPriority
+Sprite_SetDrawPriority: ; 0x02024ADC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r2, r5, #0
@@ -3038,15 +3038,15 @@ sub_02024ADC: ; 0x02024ADC
 	bl sub_02025024
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02024ADC
+	thumb_func_end Sprite_SetDrawPriority
 
-	thumb_func_start sub_02024AF8
-sub_02024AF8: ; 0x02024AF8
+	thumb_func_start Sprite_GetDrawPriority
+Sprite_GetDrawPriority: ; 0x02024AF8
 	add r0, #0xf4
 	ldrh r0, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_02024AF8
+	thumb_func_end Sprite_GetDrawPriority
 
 	thumb_func_start sub_02024B00
 sub_02024B00: ; 0x02024B00
@@ -3118,13 +3118,13 @@ _02024B4E:
 	.balign 4, 0
 	thumb_func_end sub_02024B38
 
-	thumb_func_start sub_02024B60
-sub_02024B60: ; 0x02024B60
+	thumb_func_start Sprite_GetVramType
+Sprite_GetVramType: ; 0x02024B60
 	add r0, #0xf8
 	ldr r0, [r0]
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_02024B60
+	thumb_func_end Sprite_GetVramType
 
 	thumb_func_start sub_02024B68
 sub_02024B68: ; 0x02024B68
@@ -3312,10 +3312,10 @@ _02024C98: .word 0x55414154
 sub_02024C9C: ; 0x02024C9C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_020249F8
+	bl Sprite_GetAnimCtrlCurrentFrame
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -3786,11 +3786,11 @@ sub_02025010: ; 0x02025010
 
 	thumb_func_start sub_02025014
 sub_02025014: ; 0x02025014
-	ldr r3, _0202501C ; =sub_020249B0
+	ldr r3, _0202501C ; =Sprite_TickCellOrMulticellAnimation
 	ldr r1, [r0, #0x38]
 	bx r3
 	nop
-_0202501C: .word sub_020249B0
+_0202501C: .word Sprite_TickCellOrMulticellAnimation
 	thumb_func_end sub_02025014
 
 	thumb_func_start sub_02025020

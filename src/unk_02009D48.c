@@ -71,26 +71,26 @@ void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, 
     hdr->priority = priority;
 }
 
-ListOfUnkStruct_02009D48 *sub_02009E84(const struct UnkStruct_02009E84 *a0, HeapID heapId, struct _2DGfxResMan *charMan, struct _2DGfxResMan *plttMan, struct _2DGfxResMan *cellMan, struct _2DGfxResMan *animMan, struct _2DGfxResMan *mcelMan, struct _2DGfxResMan *manmMan) {
+SpriteResourceHeaderList *SpriteResourceHeaderList_Create(const struct ResdatNarcEntry *resdatNarcEntry, HeapID heapId, struct _2DGfxResMan *charMan, struct _2DGfxResMan *plttMan, struct _2DGfxResMan *cellMan, struct _2DGfxResMan *animMan, struct _2DGfxResMan *mcelMan, struct _2DGfxResMan *manmMan) {
     int i;
     int num = 0;
-    ListOfUnkStruct_02009D48 *ret;
+    SpriteResourceHeaderList *ret;
 
-    while (a0[num].charId != -2) {
+    while (resdatNarcEntry[num].charId != -2) {
         num++;
     }
-    ret = AllocFromHeap(heapId, sizeof(ListOfUnkStruct_02009D48));
+    ret = AllocFromHeap(heapId, sizeof(SpriteResourceHeaderList));
     ret->headers = AllocFromHeap(heapId, sizeof(SpriteResourcesHeader) * num);
     ret->num = num;
     for (i = 0; i < ret->num; i++) {
-        CreateSpriteResourcesHeader(&ret->headers[i], a0[i].charId, a0[i].plttId, a0[i].cellId, a0[i].animId,
-                                    a0[i].mcelId, a0[i].manmId, a0[i].xferFlag, a0[i].priority, charMan, plttMan,
+        CreateSpriteResourcesHeader(&ret->headers[i], resdatNarcEntry[i].charId, resdatNarcEntry[i].plttId, resdatNarcEntry[i].cellId, resdatNarcEntry[i].animId,
+                                    resdatNarcEntry[i].mcelId, resdatNarcEntry[i].manmId, resdatNarcEntry[i].xferFlag, resdatNarcEntry[i].priority, charMan, plttMan,
                                     cellMan, animMan, mcelMan, manmMan);
     }
     return ret;
 }
 
-void sub_02009F24(ListOfUnkStruct_02009D48 *list) {
+void SpriteResourceHeaderList_Destroy(SpriteResourceHeaderList *list) {
     GF_ASSERT(list != NULL);
     if (list->headers != NULL) {
         FreeToHeap(list->headers);
@@ -98,23 +98,23 @@ void sub_02009F24(ListOfUnkStruct_02009D48 *list) {
     FreeToHeap(list);
 }
 
-SpriteList *G2dRenderer_Init(int a0, GF_G2dRenderer *a1, HeapID heapId) {
+SpriteList *G2dRenderer_Init(int a0, GF_G2dRenderer *renderer, HeapID heapId) {
     struct SpriteListParam param;
     NNSG2dViewRect rect;
 
-    sub_02025C44(&a1->rendererInstance, -FX32_ONE);
+    sub_02025C44(&renderer->rendererInstance, -FX32_ONE);
     rect.posTopLeft.x = 0;
     rect.posTopLeft.y = 0;
     rect.sizeView.x = 255 * FX32_ONE;
     rect.sizeView.y = 192 * FX32_ONE;
-    sub_0200B27C(&a1->renderSurface[0], &rect, 1, &a1->rendererInstance);
+    sub_0200B27C(&renderer->renderSurface[0], &rect, 1, &renderer->rendererInstance);
     rect.posTopLeft.x = 0;
     rect.posTopLeft.y = 192 * FX32_ONE;
     rect.sizeView.x = 255 * FX32_ONE;
     rect.sizeView.y = 192 * FX32_ONE;
-    sub_0200B27C(&a1->renderSurface[1], &rect, 2, &a1->rendererInstance);
+    sub_0200B27C(&renderer->renderSurface[1], &rect, 2, &renderer->rendererInstance);
     param.unk_0 = a0;
-    param.rendererInstance = &a1->rendererInstance;
+    param.rendererInstance = &renderer->rendererInstance;
     param.heapId = heapId;
     return SpriteList_Create(&param);
 }

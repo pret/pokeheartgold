@@ -46,10 +46,11 @@ scr_seq_0166_003:
 
 _0064:
 	return
-	.byte 0x1b, 0x00
+	return
 scr_seq_0166_004:
 	end
-	.byte 0x77, 0x01, 0xff, 0x00, 0x1b, 0x00
+	scrcmd_375 0xFF
+	return
 scr_seq_0166_005:
 	simple_npc_msg msg_0043_00000
 	end
@@ -62,7 +63,7 @@ scr_seq_0166_006:
 	setvar VAR_SPECIAL_x8007, 2
 	npc_msg msg_0043_00003
 	goto _00C1
-	.byte 0x02, 0x00
+	end
 scr_seq_0166_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -71,8 +72,7 @@ scr_seq_0166_007:
 	setvar VAR_SPECIAL_x8007, 2
 	npc_msg msg_0043_00007
 	goto _00C1
-	.byte 0x02
-	.byte 0x00
+	end
 _00C1:
 	compare VAR_TEMP_x4003, 1
 	goto_if_eq _00D7
@@ -83,15 +83,15 @@ _00D7:
 	npc_msg msg_0043_00012
 _00DA:
 	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	scrcmd_066 8, 0
-	scrcmd_066 9, 1
-	scrcmd_066 10, 2
+	scrcmd_066 msg_0043_00008, 0
+	scrcmd_066 msg_0043_00009, 1
+	scrcmd_066 msg_0043_00010, 2
 	scrcmd_067
 	switch VAR_SPECIAL_RESULT
 	case 0, _012F
 	case 1, _0137
 	goto _0118
-	.byte 0x02, 0x00
+	end
 _0118:
 	scrcmd_283
 	setvar VAR_UNK_4133, 0
@@ -104,12 +104,12 @@ _0118:
 
 _012F:
 	goto _0254
-	.byte 0x02, 0x00
+	end
 _0137:
 	compare VAR_TEMP_x4003, 1
 	goto_if_eq _014C
 	goto _0155
-	.byte 0x02, 0x00
+	end
 _014C:
 	npc_msg msg_0043_00013
 	goto _00C1
@@ -118,37 +118,37 @@ _0155:
 	npc_msg msg_0043_00005
 _0158:
 	scrcmd_064 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	scrcmd_066 96, 0
-	scrcmd_066 97, 1
-	scrcmd_066 98, 2
-	scrcmd_066 99, 3
+	scrcmd_066 msg_0043_00096, 0
+	scrcmd_066 msg_0043_00097, 1
+	scrcmd_066 msg_0043_00098, 2
+	scrcmd_066 msg_0043_00099, 3
 	scrcmd_067
 	switch VAR_SPECIAL_RESULT
 	case 0, _01A7
 	case 1, _01AF
 	case 2, _01BA
 	goto _00C1
-	.byte 0x02, 0x00
+	end
 _01A7:
 	goto _01C8
-	.byte 0x02, 0x00
+	end
 _01AF:
 	npc_msg msg_0043_00018
 	goto _0155
-	.byte 0x02, 0x00
+	end
 _01BA:
 	npc_msg msg_0043_00019
 	goto _0155
-	.byte 0x02, 0x00
+	end
 _01C5:
 	npc_msg msg_0043_00117
 _01C8:
 	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	scrcmd_066 36, 0
-	scrcmd_066 37, 1
-	scrcmd_066 38, 2
-	scrcmd_066 39, 3
-	scrcmd_066 40, 4
+	scrcmd_066 msg_0043_00036, 0
+	scrcmd_066 msg_0043_00037, 1
+	scrcmd_066 msg_0043_00038, 2
+	scrcmd_066 msg_0043_00039, 3
+	scrcmd_066 msg_0043_00040, 4
 	scrcmd_067
 	switch VAR_SPECIAL_RESULT
 	case 0, _0228
@@ -156,35 +156,35 @@ _01C8:
 	case 2, _023E
 	case 3, _0249
 	goto _0158
-	.byte 0x02, 0x00
+	end
 _0228:
 	npc_msg msg_0043_00014
 	goto _01C5
-	.byte 0x02, 0x00
+	end
 _0233:
 	npc_msg msg_0043_00015
 	goto _01C5
-	.byte 0x02, 0x00
+	end
 _023E:
 	npc_msg msg_0043_00016
 	goto _01C5
-	.byte 0x02, 0x00
+	end
 _0249:
 	npc_msg msg_0043_00017
 	goto _01C5
-	.byte 0x02, 0x00
+	end
 _0254:
 	npc_msg msg_0043_00219
 	scrcmd_064 18, 1, 0, 1, VAR_SPECIAL_RESULT
-	scrcmd_066 14, 0
-	scrcmd_066 15, 1
-	scrcmd_066 5, 2
+	scrcmd_066 msg_0043_00014, 0
+	scrcmd_066 msg_0043_00015, 1
+	scrcmd_066 msg_0043_00005, 2
 	scrcmd_067
 	switch VAR_SPECIAL_RESULT
 	case 0, _0295
 	case 1, _02E7
 	goto _0118
-	.byte 0x02, 0x00
+	end
 _0295:
 	npc_msg msg_0043_00212
 	yesno VAR_SPECIAL_RESULT
@@ -197,13 +197,13 @@ _0295:
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _02DF
 	goto _0339
-	.byte 0x02, 0x00
+	end
 _02D7:
 	goto _0254
-	.byte 0x02, 0x00
+	end
 _02DF:
 	goto _0254
-	.byte 0x02, 0x00
+	end
 _02E7:
 	npc_msg msg_0043_00212
 	yesno VAR_SPECIAL_RESULT
@@ -216,11 +216,10 @@ _02E7:
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _0331
 	goto _0339
-	.byte 0x02, 0x00
+	end
 _0329:
 	goto _0254
-	.byte 0x02
-	.byte 0x00
+	end
 _0331:
 	scrcmd_283
 	closemsg
@@ -231,6 +230,7 @@ _0339:
 	scrcmd_234 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_x8007, VAR_TEMP_x4002
 	scrcmd_232 25
 	scrcmd_233 25
+_0347:
 	compare VAR_TEMP_x4003, 0
 	goto_if_eq _038D
 	compare VAR_TEMP_x4003, 1
@@ -238,44 +238,48 @@ _0339:
 	compare VAR_TEMP_x4003, 2
 	goto_if_eq _03A7
 	end
-	.byte 0xec, 0x00, 0x0c, 0x80, 0x27, 0x00, 0x0c, 0x80, 0x01, 0x00, 0x2d, 0x00
-	.byte 0xb1, 0xec, 0x00, 0x0c, 0x80, 0x35, 0x00, 0x16, 0x00, 0xbe, 0xff, 0xff, 0xff
+	scrcmd_236 VAR_SPECIAL_RESULT
+	addvar VAR_SPECIAL_RESULT, 1
+	npc_msg msg_0043_00177
+	scrcmd_236 VAR_SPECIAL_RESULT
+	closemsg
+	goto _0347
 _038D:
 	goto _03B4
-	.byte 0x02, 0x00
+	end
 _0395:
 	setflag FLAG_UNK_966
 	setvar VAR_UNK_4133, 5
 	goto _03B4
-	.byte 0x02, 0x00
+	end
 _03A7:
 	scrcmd_048 msg_0043_00211
 	closemsg
 	goto _03B4
-	.byte 0x02, 0x00
+	end
 _03B4:
 	get_player_gender VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _03CD
 	goto _03DB
-	.byte 0x02, 0x00
+	end
 _03CD:
 	buffer_players_name 0
 	scrcmd_048 msg_0043_00066
 	goto _03E9
-	.byte 0x02, 0x00
+	end
 _03DB:
 	buffer_players_name 0
 	scrcmd_048 msg_0043_00067
 	goto _03E9
-	.byte 0x02, 0x00
+	end
 _03E9:
 	scrcmd_048 msg_0043_00068
 	scrcmd_232 26
 	scrcmd_233 26
 	closemsg
 	goto _03FE
-	.byte 0x02, 0x00
+	end
 _03FE:
 	scrcmd_232 4
 	scrcmd_233 4
@@ -296,27 +300,106 @@ _03FE:
 _0443:
 	releaseall
 	end
-	.byte 0x49, 0x00, 0x44, 0x06, 0x11, 0x00, 0x0c, 0x80, 0x01
-	.byte 0x00, 0x1d, 0x00, 0x01, 0x36, 0x00, 0x00, 0x00, 0x11, 0x00, 0x0c, 0x80, 0x02, 0x00, 0x1d, 0x00
-	.byte 0x01, 0x33, 0x00, 0x00, 0x00, 0x11, 0x00, 0x0c, 0x80, 0x03, 0x00, 0x1d, 0x00, 0x01, 0x3a, 0x00
-	.byte 0x00, 0x00, 0x11, 0x00, 0x0c, 0x80, 0x04, 0x00, 0x1d, 0x00, 0x01, 0x49, 0x00, 0x00, 0x00, 0x11
-	.byte 0x00, 0x0c, 0x80, 0x05, 0x00, 0x1d, 0x00, 0x04, 0x62, 0x00, 0x00, 0x00, 0x1b, 0x00, 0x49, 0x00
-	.byte 0x45, 0x06, 0x4b, 0x00, 0x45, 0x06, 0x1b, 0x00, 0x49, 0x00, 0x45, 0x06, 0x03, 0x00, 0x05, 0x00
-	.byte 0x0c, 0x80, 0x49, 0x00, 0x45, 0x06, 0x4b, 0x00, 0x45, 0x06, 0x1b, 0x00, 0x49, 0x00, 0x45, 0x06
-	.byte 0x4b, 0x00, 0x45, 0x06, 0x49, 0x00, 0x45, 0x06, 0x03, 0x00, 0x05, 0x00, 0x0c, 0x80, 0x49, 0x00
-	.byte 0x45, 0x06, 0x4b, 0x00, 0x45, 0x06, 0x1b, 0x00, 0x49, 0x00, 0x45, 0x06, 0x03, 0x00, 0x05, 0x00
-	.byte 0x0c, 0x80, 0x49, 0x00, 0x45, 0x06, 0x4b, 0x00, 0x45, 0x06, 0x49, 0x00, 0x45, 0x06, 0x03, 0x00
-	.byte 0x05, 0x00, 0x0c, 0x80, 0x49, 0x00, 0x45, 0x06, 0x4b, 0x00, 0x45, 0x06, 0x1b, 0x00, 0x49, 0x00
-	.byte 0x45, 0x06, 0x03, 0x00, 0x05, 0x00, 0x0c, 0x80, 0x49, 0x00, 0x45, 0x06, 0x03, 0x00, 0x05, 0x00
-	.byte 0x0c, 0x80, 0x49, 0x00, 0x45, 0x06, 0x03, 0x00, 0x0a, 0x00, 0x0c, 0x80, 0x49, 0x00, 0x45, 0x06
-	.byte 0x03, 0x00, 0x05, 0x00, 0x0c, 0x80, 0x49, 0x00, 0x45, 0x06, 0x4b, 0x00, 0x45, 0x06, 0x1b, 0x00
-	.byte 0x3e, 0x00, 0x01, 0x00, 0x03, 0x00, 0x01, 0x00, 0x3e, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x00
-	.byte 0x3d, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00, 0x3c, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00
-	.byte 0x3c, 0x00, 0x01, 0x00, 0x03, 0x00, 0x01, 0x00, 0x3c, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00, 0x3f, 0x00, 0x02, 0x00, 0x22, 0x00, 0x01, 0x00, 0x3f, 0x00, 0x01, 0x00
-	.byte 0x23, 0x00, 0x01, 0x00, 0x3f, 0x00, 0x01, 0x00, 0x25, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
-	.byte 0x22, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x20, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
-	.byte 0x23, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x21, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
+
+_0447: ; unreferenced
+    play_se SEQ_SE_DP_CON_F007
+    compare VAR_SPECIAL_RESULT, 1
+    call_if_eq _048E
+    compare VAR_SPECIAL_RESULT, 2
+    call_if_eq _0498
+    compare VAR_SPECIAL_RESULT, 3
+    call_if_eq _04AC
+    compare VAR_SPECIAL_RESULT, 4
+    call_if_eq _04C8
+    compare VAR_SPECIAL_RESULT, 5
+    call_if_ge _04EE
+    return
+
+_048E:
+    play_se SEQ_SE_DP_CON_015
+    wait_se SEQ_SE_DP_CON_015
+    return
+
+_0498:
+    play_se SEQ_SE_DP_CON_015
+    wait 5, VAR_SPECIAL_RESULT
+    play_se SEQ_SE_DP_CON_015
+    wait_se SEQ_SE_DP_CON_015
+    return
+
+_04AC:
+    play_se SEQ_SE_DP_CON_015
+    wait_se SEQ_SE_DP_CON_015
+    play_se SEQ_SE_DP_CON_015
+    wait 5, VAR_SPECIAL_RESULT
+    play_se SEQ_SE_DP_CON_015
+    wait_se SEQ_SE_DP_CON_015
+    return
+
+_04C8:
+    play_se SEQ_SE_DP_CON_015
+    wait 5, VAR_SPECIAL_RESULT
+    play_se SEQ_SE_DP_CON_015
+    wait_se SEQ_SE_DP_CON_015
+    play_se SEQ_SE_DP_CON_015
+    wait 5, VAR_SPECIAL_RESULT
+    play_se SEQ_SE_DP_CON_015
+    wait_se SEQ_SE_DP_CON_015
+    return
+
+_04EE:
+    play_se SEQ_SE_DP_CON_015
+    wait 5, VAR_SPECIAL_RESULT
+    play_se SEQ_SE_DP_CON_015
+    wait 5, VAR_SPECIAL_RESULT
+    play_se SEQ_SE_DP_CON_015
+    wait 10, VAR_SPECIAL_RESULT
+    play_se SEQ_SE_DP_CON_015
+    wait 5, VAR_SPECIAL_RESULT
+    play_se SEQ_SE_DP_CON_015
+    wait_se SEQ_SE_DP_CON_015
+    return
+
+_0520: ; unreferenced
+	step 0x003e, 0x0001
+	step 0x0003, 0x0001
+	step 0x003e, 0x0001
+	step 0x0001, 0x0001
+	step 0x003d, 0x0001
+	step 0x0002, 0x0001
+	step 0x003c, 0x0001
+	step 0x0000, 0x0001
+	step 0x003c, 0x0001
+	step 0x0003, 0x0001
+	step 0x003c, 0x0001
+	step 0x0001, 0x0001
+	step_end
+
+_0554: ; unreferenced
+	step 0x003f, 0x0002
+	step 0x0022, 0x0001
+	step 0x003f, 0x0001
+	step 0x0023, 0x0001
+	step 0x003f, 0x0001
+	step 0x0025, 0x0001
+	step_end
+
+_0570: ; unreferenced
+	step 0x0022, 0x0001
+	step_end
+
+_0578: ; unreferenced
+	step 0x0020, 0x0001
+	step_end
+
+_0580: ; unreferenced
+	step 0x0023, 0x0001
+	step_end
+
+_0588: ; unreferenced
+	step 0x0021, 0x0001
+	step_end
+
 scr_seq_0166_008:
 scr_seq_0166_009:
 scr_seq_0166_010:
@@ -328,65 +411,92 @@ scr_seq_0166_011:
 	setvar VAR_SPECIAL_x8004, 0
 	npc_msg msg_0043_00111
 	goto _05AF
-	.byte 0x02, 0x00
+	end
 _05AF:
 	npc_msg msg_0043_00112
 	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	scrcmd_066 113, 0
-	scrcmd_066 114, 1
-	scrcmd_066 115, 2
+	scrcmd_066 msg_0043_00113, 0
+	scrcmd_066 msg_0043_00114, 1
+	scrcmd_066 msg_0043_00115, 2
 	scrcmd_067
 	switch VAR_SPECIAL_RESULT
 	case 0, _05FD
 	case 1, _0872
 	case 2, _0A97
 	goto _0A97
-	.byte 0x02, 0x00
+	end
 _05FD:
 	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	scrcmd_066 155, 0
-	scrcmd_066 156, 1
-	scrcmd_066 157, 2
-	scrcmd_066 158, 3
+	scrcmd_066 msg_0043_00155, 0
+	scrcmd_066 msg_0043_00156, 1
+	scrcmd_066 msg_0043_00157, 2
+	scrcmd_066 msg_0043_00158, 3
 	scrcmd_067
 	switch VAR_SPECIAL_RESULT
 	case 0, _064C
 	case 1, _0660
 	case 2, _067A
 	goto _068E
-	.byte 0x02, 0x00
+	end
 _064C:
 	setvar VAR_TEMP_x4004, 0
 	setvar VAR_SPECIAL_x8007, 3
 	goto _0743
-	.byte 0x02, 0x00
+	end
 _0660:
 	setvar VAR_TEMP_x4004, 1
 	setvar VAR_SPECIAL_x8005, 0
 	setvar VAR_SPECIAL_x8007, 5
 	goto _0743
-	.byte 0x02, 0x00
+	end
 _067A:
 	setvar VAR_TEMP_x4004, 0
 	setvar VAR_SPECIAL_x8007, 7
 	goto _0743
-	.byte 0x02, 0x00
+	end
 _068E:
 	npc_msg msg_0043_00159
 	wait_button_or_walk_away
 	goto _0A9C
-	.byte 0x02, 0x00, 0x2d, 0x00, 0xa8, 0x41, 0x00
-	.byte 0x01, 0x01, 0x00, 0x01, 0x0c, 0x80, 0x42, 0x00, 0xa9, 0x00, 0x42, 0x00, 0xaa, 0x01, 0x42, 0x00
-	.byte 0xab, 0x02, 0x42, 0x00, 0xac, 0x03, 0x42, 0x00, 0xad, 0x04, 0x43, 0x00, 0x2a, 0x00, 0x08, 0x80
-	.byte 0x0c, 0x80, 0x11, 0x00, 0x08, 0x80, 0x00, 0x00, 0x1c, 0x00, 0x01, 0x2f, 0x00, 0x00, 0x00, 0x11
-	.byte 0x00, 0x08, 0x80, 0x01, 0x00, 0x1c, 0x00, 0x01, 0x30, 0x00, 0x00, 0x00, 0x11, 0x00, 0x08, 0x80
-	.byte 0x02, 0x00, 0x1c, 0x00, 0x01, 0x31, 0x00, 0x00, 0x00, 0x11, 0x00, 0x08, 0x80, 0x03, 0x00, 0x1c
-	.byte 0x00, 0x01, 0x32, 0x00, 0x00, 0x00, 0x16, 0x00, 0x3a, 0x00, 0x00, 0x00, 0x02, 0x00, 0x29, 0x00
-	.byte 0x04, 0x80, 0x00, 0x00, 0x16, 0x00, 0x39, 0x00, 0x00, 0x00, 0x02, 0x00, 0x29, 0x00, 0x04, 0x80
-	.byte 0x01, 0x00, 0x16, 0x00, 0x2b, 0x00, 0x00, 0x00, 0x02, 0x00, 0x29, 0x00, 0x04, 0x80, 0x02, 0x00
-	.byte 0x16, 0x00, 0x1d, 0x00, 0x00, 0x00, 0x02, 0x00, 0x29, 0x00, 0x04, 0x80, 0x03, 0x00, 0x16, 0x00
-	.byte 0x0f, 0x00, 0x00, 0x00, 0x02, 0x00, 0x2d, 0x00, 0xae, 0x32, 0x00, 0x16, 0x00, 0x5b, 0x03, 0x00
-	.byte 0x00, 0x02, 0x00
+	end
+
+_069B:
+	npc_msg msg_0043_00168
+	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
+	scrcmd_066 msg_0043_00169, 0
+	scrcmd_066 msg_0043_00170, 1
+	scrcmd_066 msg_0043_00171, 2
+	scrcmd_066 msg_0043_00172, 3
+	scrcmd_066 msg_0043_00173, 4
+	scrcmd_067
+	switch VAR_SPECIAL_RESULT
+	case 0, _06FE
+	case 1, _070C
+	case 2, _071A
+	case 3, _0728
+	goto _0736
+	end
+_06FE:
+	setvar VAR_SPECIAL_x8004, 0
+	goto _0743
+	end
+_070C:
+	setvar VAR_SPECIAL_x8004, 1
+	goto _0743
+	end
+_071A:
+	setvar VAR_SPECIAL_x8004, 2
+	goto _0743
+	end
+_0728:
+	setvar VAR_SPECIAL_x8004, 3
+	goto _0743
+	end
+_0736:
+	npc_msg msg_0043_00174
+	wait_button_or_walk_away
+	goto _0A9C
+	end
 _0743:
 	compare VAR_TEMP_x4004, 1
 	goto_if_eq _081D
@@ -395,12 +505,12 @@ _0743:
 _0756:
 	npc_msg msg_0043_00160
 	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	scrcmd_066 161, 0
-	scrcmd_066 162, 1
-	scrcmd_066 163, 2
-	scrcmd_066 164, 3
-	scrcmd_066 165, 4
-	scrcmd_066 166, 5
+	scrcmd_066 msg_0043_00161, 0
+	scrcmd_066 msg_0043_00162, 1
+	scrcmd_066 msg_0043_00163, 2
+	scrcmd_066 msg_0043_00164, 3
+	scrcmd_066 msg_0043_00165, 4
+	scrcmd_066 msg_0043_00166, 5
 	scrcmd_067
 	switch VAR_SPECIAL_RESULT
 	case 0, _07CA
@@ -409,32 +519,32 @@ _0756:
 	case 3, _07F4
 	case 4, _0802
 	goto _0810
-	.byte 0x02, 0x00
+	end
 _07CA:
 	setvar VAR_SPECIAL_x8005, 0
 	goto _081D
-	.byte 0x02, 0x00
+	end
 _07D8:
 	setvar VAR_SPECIAL_x8005, 1
 	goto _081D
-	.byte 0x02, 0x00
+	end
 _07E6:
 	setvar VAR_SPECIAL_x8005, 2
 	goto _081D
-	.byte 0x02, 0x00
+	end
 _07F4:
 	setvar VAR_SPECIAL_x8005, 3
 	goto _081D
-	.byte 0x02, 0x00
+	end
 _0802:
 	setvar VAR_SPECIAL_x8005, 4
 	goto _081D
-	.byte 0x02, 0x00
+	end
 _0810:
 	npc_msg msg_0043_00167
 	wait_button_or_walk_away
 	goto _0A9C
-	.byte 0x02, 0x00
+	end
 _081D:
 	npc_msg msg_0043_00175
 	npc_msg msg_0043_00176
@@ -455,16 +565,16 @@ _084F:
 	compare VAR_TEMP_x4002, 255
 	goto_if_eq _0810
 	goto _0339
-	.byte 0x02, 0x00
+	end
 _0872:
 	npc_msg msg_0043_00117
 _0875:
 	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	scrcmd_066 121, 0
-	scrcmd_066 118, 1
-	scrcmd_066 119, 2
-	scrcmd_066 120, 3
-	scrcmd_066 122, 4
+	scrcmd_066 msg_0043_00121, 0
+	scrcmd_066 msg_0043_00118, 1
+	scrcmd_066 msg_0043_00119, 2
+	scrcmd_066 msg_0043_00120, 3
+	scrcmd_066 msg_0043_00122, 4
 	scrcmd_067
 	switch VAR_SPECIAL_RESULT
 	case 0, _0A7E
@@ -472,46 +582,46 @@ _0875:
 	case 2, _0953
 	case 3, _09EA
 	goto _05AF
-	.byte 0x02, 0x00
+	end
 _08D5:
 	npc_msg msg_0043_00117
 _08D8:
 	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	scrcmd_066 125, 0
-	scrcmd_066 126, 1
-	scrcmd_066 127, 2
-	scrcmd_066 129, 3
+	scrcmd_066 msg_0043_00125, 0
+	scrcmd_066 msg_0043_00126, 1
+	scrcmd_066 msg_0043_00127, 2
+	scrcmd_066 msg_0043_00129, 3
 	scrcmd_067
 	switch VAR_SPECIAL_RESULT
 	case 0, _0927
 	case 1, _0932
 	case 2, _093D
 	goto _0948
-	.byte 0x02, 0x00
+	end
 _0927:
 	npc_msg msg_0043_00130
 	goto _08D5
-	.byte 0x02, 0x00
+	end
 _0932:
 	npc_msg msg_0043_00131
 	goto _08D5
-	.byte 0x02, 0x00
+	end
 _093D:
 	npc_msg msg_0043_00132
 	goto _08D5
-	.byte 0x02, 0x00
+	end
 _0948:
 	goto _0875
-	.byte 0x02, 0x00
+	end
 _0950:
 	npc_msg msg_0043_00117
 _0953:
 	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	scrcmd_066 135, 0
-	scrcmd_066 136, 1
-	scrcmd_066 137, 2
-	scrcmd_066 138, 3
-	scrcmd_066 139, 4
+	scrcmd_066 msg_0043_00135, 0
+	scrcmd_066 msg_0043_00136, 1
+	scrcmd_066 msg_0043_00137, 2
+	scrcmd_066 msg_0043_00138, 3
+	scrcmd_066 msg_0043_00139, 4
 	scrcmd_067
 	switch VAR_SPECIAL_RESULT
 	case 0, _09B3
@@ -519,35 +629,35 @@ _0953:
 	case 2, _09C9
 	case 3, _09D4
 	goto _09DF
-	.byte 0x02, 0x00
+	end
 _09B3:
 	npc_msg msg_0043_00140
 	goto _0950
-	.byte 0x02, 0x00
+	end
 _09BE:
 	npc_msg msg_0043_00141
 	goto _0950
-	.byte 0x02, 0x00
+	end
 _09C9:
 	npc_msg msg_0043_00142
 	goto _0950
-	.byte 0x02, 0x00
+	end
 _09D4:
 	npc_msg msg_0043_00143
 	goto _0950
-	.byte 0x02, 0x00
+	end
 _09DF:
 	goto _0875
-	.byte 0x02, 0x00
+	end
 _09E7:
 	npc_msg msg_0043_00117
 _09EA:
 	scrcmd_065 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	scrcmd_066 145, 0
-	scrcmd_066 146, 1
-	scrcmd_066 147, 2
-	scrcmd_066 148, 3
-	scrcmd_066 149, 4
+	scrcmd_066 msg_0043_00145, 0
+	scrcmd_066 msg_0043_00146, 1
+	scrcmd_066 msg_0043_00147, 2
+	scrcmd_066 msg_0043_00148, 3
+	scrcmd_066 msg_0043_00149, 4
 	scrcmd_067
 	switch VAR_SPECIAL_RESULT
 	case 0, _0A4A
@@ -555,32 +665,35 @@ _09EA:
 	case 2, _0A60
 	case 3, _0A6B
 	goto _0A76
-	.byte 0x02, 0x00
+	end
 _0A4A:
 	npc_msg msg_0043_00150
 	goto _09E7
-	.byte 0x02, 0x00
+	end
 _0A55:
 	npc_msg msg_0043_00151
 	goto _09E7
-	.byte 0x02, 0x00
+	end
 _0A60:
 	npc_msg msg_0043_00152
 	goto _09E7
-	.byte 0x02, 0x00
+	end
 _0A6B:
 	npc_msg msg_0043_00153
 	goto _09E7
-	.byte 0x02, 0x00
+	end
 _0A76:
 	goto _0875
-	.byte 0x02, 0x00
+	end
 _0A7E:
 	npc_msg msg_0043_00124
 	npc_msg msg_0043_00117
 	goto _0875
-	.byte 0x02, 0x00, 0x2d, 0x00, 0x7b, 0x16
-	.byte 0x00, 0x07, 0x00, 0x00, 0x00, 0x02, 0x00
+	end
+_0A8C: ; unreferenced
+	npc_msg msg_0043_00123
+	goto _0A9C
+	end
 _0A97:
 	npc_msg msg_0043_00116
 	wait_button_or_walk_away

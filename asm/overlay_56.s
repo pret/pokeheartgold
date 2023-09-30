@@ -1018,7 +1018,7 @@ _021E63CE:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _021E63DC
-	bl sub_0200D034
+	bl thunk_OamManager_ApplyAndResetBuffers
 _021E63DC:
 	bl NNS_GfdDoVramTransfer
 	ldr r0, [r4, #0x18]
@@ -1971,14 +1971,14 @@ _021E6BC6:
 	mov r0, #0x20
 	bl GF_CreateVramTransferManager
 	ldr r0, [r5]
-	bl sub_0200CF18
+	bl SpriteRenderer_Create
 	add r1, r5, #0
 	add r1, #0xb0
 	str r0, [r1]
 	add r0, r5, #0
 	add r0, #0xb0
 	ldr r0, [r0]
-	bl sub_0200CF38
+	bl SpriteRenderer_CreateGfxHandler
 	add r1, r5, #0
 	add r1, #0xb4
 	add r2, sp, #0x40
@@ -2031,7 +2031,7 @@ _021E6BC6:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	add r2, sp, #0x14
-	bl sub_0200D3F8
+	bl SpriteRenderer_Init2DGfxResManagersFromCountsArray
 	ldr r0, [r5]
 	bl sub_0200B2E0
 	bl sub_02074490
@@ -2050,7 +2050,7 @@ _021E6BC6:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	mov r2, #0x14
-	bl sub_0200D564
+	bl SpriteRenderer_LoadPlttResObjFromNarcId
 	bl sub_02074494
 	add r3, r0, #0
 	mov r0, #0
@@ -2063,7 +2063,7 @@ _021E6BC6:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	mov r2, #0x14
-	bl sub_0200D6D4
+	bl SpriteRenderer_LoadCellResObjFromNarcId
 	bl sub_020744A0
 	add r3, r0, #0
 	mov r0, #0
@@ -2076,7 +2076,7 @@ _021E6BC6:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	mov r2, #0x14
-	bl sub_0200D704
+	bl SpriteRenderer_LoadAnimResObjFromNarcId
 	mov r6, #0
 	add r4, r6, #0
 	str r6, [sp, #0x10]
@@ -2146,7 +2146,7 @@ _021E6CC4:
 	add r1, #0xb4
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r1, r7, #0
 	add r1, #0xb8
 	str r0, [r1]
@@ -2161,7 +2161,7 @@ _021E6CC4:
 	add r0, #0xb8
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 _021E6D6C:
 	ldr r0, [sp, #0x10]
 	add r6, r6, #1
@@ -2208,10 +2208,10 @@ _021E6DAC:
 	add r1, #0xb4
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	add r6, #0xb0
 	ldr r0, [r6]
-	bl sub_0200D108
+	bl SpriteRenderer_Delete
 	bl GF_DestroyVramTransferManager
 _021E6DD0:
 	pop {r4, r5, r6, pc}
