@@ -8,7 +8,7 @@
 #include "unk_02054648.h"
 #include "metatile_behavior.h"
 #include "battle/battle_setup.h"
-#include "constants/game_stat.h"
+#include "constants/game_stats.h"
 #include "constants/battle.h"
 #include "arc/ppark.naix"
 

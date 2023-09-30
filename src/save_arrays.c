@@ -262,12 +262,12 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
 };
 const int gNumSaveChunkHeaders = NELEMS(gSaveChunkHeaders);
 
-struct UnkStruct_0202E474 *sub_020270C4(SaveData *saveData) {
+struct UnkStruct_0202E474 *sub_020270C4(SaveData *saveData) { //Save_SafariZone_Get? conflicts with other one
     SaveSubstruct_AssertCRC(SAVE_UNK_23);
     return SaveArray_Get(saveData, SAVE_UNK_23);
 }
 
-PC_STORAGE *SaveArray_PCStorage_Get(SaveData *saveData) {
+PCStorage *SaveArray_PCStorage_Get(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_PCSTORAGE);
 }
 
@@ -329,21 +329,21 @@ u32 PCStorage_GetNumBoxes(void) {
 }
 
 u32 Save_GetPCBoxModifiedFlags(SaveData *saveData) {
-    PC_STORAGE *pcStorage = SaveArray_Get(saveData, SAVE_PCSTORAGE);
+    PCStorage *pcStorage = SaveArray_Get(saveData, SAVE_PCSTORAGE);
     return PCStorage_GetBoxModifiedFlags(pcStorage);
 }
 
 void Save_ResetPCBoxModifiedFlags(SaveData *saveData) {
-    PC_STORAGE *pcStorage = SaveArray_Get(saveData, SAVE_PCSTORAGE);
+    PCStorage *pcStorage = SaveArray_Get(saveData, SAVE_PCSTORAGE);
     PCStorage_ResetBoxModifiedFlags(pcStorage);
 }
 
 void Save_SetAllPCBoxesModified(SaveData *saveData) {
-    PC_STORAGE *pcStorage = SaveArray_Get(saveData, SAVE_PCSTORAGE);
+    PCStorage *pcStorage = SaveArray_Get(saveData, SAVE_PCSTORAGE);
     PCStorage_SetAllBoxesModified(pcStorage);
 }
 
 void sub_020271A0(SaveData *saveData) {
-    PC_STORAGE *pcStorage = SaveArray_Get(saveData, SAVE_PCSTORAGE);
+    PCStorage *pcStorage = SaveArray_Get(saveData, SAVE_PCSTORAGE);
     sub_02074128(pcStorage);
 }

@@ -12,7 +12,7 @@ static void FieldSystemFollowMonClear(FollowMon *followMon);
 static void FollowingPoke_SetObjectShinyFlag(LocalMapObject *mapObject, BOOL enable);
 static BOOL FollowPokePermissionDiglettCheck(int mapno);
 static void FollowingPoke_SetObjectFormParam(LocalMapObject *mapObject, int species, u8 form);
-static LocalMapObject *CreateFollowingSpriteFieldObject(MapObjectManager *mapObjectMan, int species, u16 form, int gender, int direction, int x, int y, int shiny);
+static LocalMapObject *CreateFollowingSpriteFieldObject(MapObjectManager *mapObjectManager, int species, u16 form, int gender, int direction, int x, int y, int shiny);
 
 static const u16 sModelIndexLUT[] = {
     FOLLOWER_MON_NONE,
@@ -1503,7 +1503,7 @@ static const u16 sFemaleFlagLUT[] = {
     FALSE,      // SPECIES_ARCEUS
 };
 
-LocalMapObject *sub_020699F8(MapObjectManager *mapObjectMan, int x, int y, int direction, u32 mapno) {
+LocalMapObject *sub_020699F8(MapObjectManager *mapObjectManager, int x, int y, int direction, u32 mapno) {
     FieldSystem *fieldSystem;
     Party *party;
     int partyCount;
@@ -1514,7 +1514,7 @@ LocalMapObject *sub_020699F8(MapObjectManager *mapObjectMan, int x, int y, int d
     int shiny;
     int player_unk;
 
-    fieldSystem = MapObjectManager_GetFieldSysPtr(mapObjectMan);
+    fieldSystem = MapObjectManager_GetFieldSysPtr(mapObjectManager);
     party = SaveArray_Party_Get(fieldSystem->saveData);
     partyCount = Party_GetCount(party);
     FieldSystemFollowMonClear(&fieldSystem->followMon);
@@ -1531,7 +1531,7 @@ LocalMapObject *sub_020699F8(MapObjectManager *mapObjectMan, int x, int y, int d
             form = GetMonData(mon, MON_DATA_FORM, NULL);
             gender = GetMonData(mon, MON_DATA_GENDER, NULL);
             shiny = MonIsShiny(mon);
-            fieldSystem->followMon.mapObject = CreateFollowingSpriteFieldObject(mapObjectMan, species, form, gender, direction, x, y, shiny);
+            fieldSystem->followMon.mapObject = CreateFollowingSpriteFieldObject(mapObjectManager, species, form, gender, direction, x, y, shiny);
             fieldSystem->followMon.active = TRUE;
             FieldSystem_SetFollowerPokeParam(fieldSystem, species, form, shiny, gender);
             FieldSystemUnkSub108_Set(fieldSystem->unk108, mon, species, GetMonData(mon, MON_DATA_PERSONALITY, NULL));
@@ -1558,7 +1558,7 @@ LocalMapObject *sub_020699F8(MapObjectManager *mapObjectMan, int x, int y, int d
     return fieldSystem->followMon.mapObject;
 }
 
-void sub_02069B74(MapObjectManager *mapObjectMan, u32 mapno) {
+void sub_02069B74(MapObjectManager *mapObjectManager, u32 mapno) {
     FieldSystem *fieldSystem;
     Party *party;
     int partyCount;
@@ -1570,7 +1570,7 @@ void sub_02069B74(MapObjectManager *mapObjectMan, u32 mapno) {
     int player_unk;
     LocalMapObject *followPokeObj;
 
-    fieldSystem = MapObjectManager_GetFieldSysPtr(mapObjectMan);
+    fieldSystem = MapObjectManager_GetFieldSysPtr(mapObjectManager);
     party = SaveArray_Party_Get(fieldSystem->saveData);
     partyCount = Party_GetCount(party);
     FieldSystemFollowMonClear(&fieldSystem->followMon);
@@ -1579,7 +1579,7 @@ void sub_02069B74(MapObjectManager *mapObjectMan, u32 mapno) {
         species = GetMonData(mon, MON_DATA_SPECIES, NULL);
         FieldSystemUnkSub108_Set(fieldSystem->unk108, mon, species, GetMonData(mon, MON_DATA_PERSONALITY, NULL));
         if (GetFollowPokePermissionBySpeciesAndMap(species, mapno)) {
-            followPokeObj = GetMapObjectByID(fieldSystem->mapObjectMan, obj_partner_poke);
+            followPokeObj = GetMapObjectByID(fieldSystem->mapObjectManager, obj_partner_poke);
             if (followPokeObj == NULL) {
                 fieldSystem->followMon.unk15 = 1;
             } else {
@@ -1612,7 +1612,7 @@ void sub_02069B74(MapObjectManager *mapObjectMan, u32 mapno) {
                 MapObject_ClearFlag18(fieldSystem->followMon.mapObject, FALSE);
             }
         } else {
-            followPokeObj = GetMapObjectByID(fieldSystem->mapObjectMan, obj_partner_poke);
+            followPokeObj = GetMapObjectByID(fieldSystem->mapObjectManager, obj_partner_poke);
             if (followPokeObj != NULL) {
                 form = GetMonData(mon, MON_DATA_FORM, NULL);
                 gender = GetMonGender(mon);
@@ -1904,11 +1904,11 @@ static void FollowingPoke_SetObjectFormParam(LocalMapObject *mapObject, int spec
     MapObject_SetParam(mapObject, param, 1);
 }
 
-static LocalMapObject *CreateFollowingSpriteFieldObject(MapObjectManager *mapObjectMan, int species, u16 form, int gender, int direction, int x, int y, int shiny) {
+static LocalMapObject *CreateFollowingSpriteFieldObject(MapObjectManager *mapObjectManager, int species, u16 form, int gender, int direction, int x, int y, int shiny) {
     LocalMapObject *ret;
 
     ret = CreateSpecialFieldObject(
-        mapObjectMan,
+        mapObjectManager,
         x,
         y,
         direction,

@@ -6,7 +6,7 @@
 #include "constants/pokemon.h"
 #include "constants/box_wallpaper.h"
 
-typedef struct PokemonStorageSystem PC_STORAGE;
+typedef struct PokemonStorageSystem PCStorage;
 
 typedef struct PC_Box {
     BoxPokemon mons[MONS_PER_BOX];
@@ -25,37 +25,37 @@ struct PokemonStorageSystem {
 
 #define BOX_ALL_MODIFIED_FLAG      ((u32)((1<<NUM_BOXES)-1))
 
-void PCStorage_GetBoxName(PC_STORAGE *pcStorage, u32 boxno, String *dest);
-BOOL PCStorage_PlaceMonInFirstEmptySlotInAnyBox(PC_STORAGE *storage, BoxPokemon *boxMon);
-void PCStorage_Init(PC_STORAGE *storage);
+void PCStorage_GetBoxName(PCStorage *pcStorage, u32 boxno, String *dest);
+BOOL PCStorage_PlaceMonInFirstEmptySlotInAnyBox(PCStorage *storage, BoxPokemon *boxMon);
+void PCStorage_Init(PCStorage *storage);
 u32 PCStorage_sizeof(void);
-void PCStorage_InitializeBoxes(PC_STORAGE *storage);
-BOOL PCStorage_PlaceMonInBoxFirstEmptySlot(PC_STORAGE* storage, u32 boxno, BoxPokemon *boxMon);
-BOOL PCStorage_PlaceMonInBoxByIndexPair(PC_STORAGE* storage, u32 boxno, u32 slotno, BoxPokemon *boxMon);
-void PCStorage_SwapMonsInBoxByIndexPair(PC_STORAGE* storage, u32 boxno, u32 from, u32 to);
-void PCStorage_DeleteBoxMonByIndexPair(PC_STORAGE* storage, u32 boxno, u32 slotno);
-int PCStorage_GetActiveBox(PC_STORAGE *storage);
-int PCStorage_FindFirstBoxWithEmptySlot(PC_STORAGE *storage);
-BOOL PCStorage_FindFirstEmptySlot(PC_STORAGE* storage, int* boxno_p, int* slotno_p);
-int PCStorage_CountEmptySpotsInAllBoxes(PC_STORAGE* storage);
-int PCStorage_CountEmptySpotsInBox(PC_STORAGE* storage, u32 boxno);
-void PCStorage_SetActiveBox(PC_STORAGE* storage, u32 boxno);
-u8 PCStorage_GetBoxWallpaper(PC_STORAGE* storage, u32 boxno);
+void PCStorage_InitializeBoxes(PCStorage *storage);
+BOOL PCStorage_PlaceMonInBoxFirstEmptySlot(PCStorage* storage, u32 boxno, BoxPokemon *boxMon);
+BOOL PCStorage_PlaceMonInBoxByIndexPair(PCStorage* storage, u32 boxno, u32 slotno, BoxPokemon *boxMon);
+void PCStorage_SwapMonsInBoxByIndexPair(PCStorage* storage, u32 boxno, u32 from, u32 to);
+void PCStorage_DeleteBoxMonByIndexPair(PCStorage* storage, u32 boxno, u32 slotno);
+int PCStorage_GetActiveBox(PCStorage *storage);
+int PCStorage_FindFirstBoxWithEmptySlot(PCStorage *storage);
+BOOL PCStorage_FindFirstEmptySlot(PCStorage* storage, int* boxno_p, int* slotno_p);
+int PCStorage_CountEmptySpotsInAllBoxes(PCStorage* storage);
+int PCStorage_CountEmptySpotsInBox(PCStorage* storage, u32 boxno);
+void PCStorage_SetActiveBox(PCStorage* storage, u32 boxno);
+u8 PCStorage_GetBoxWallpaper(PCStorage* storage, u32 boxno);
 BOOL PCStorage_IsValidWallpaperId(u8 wallpaperno);
-void PCStorage_SetBoxWallpaper(PC_STORAGE* storage, u32 boxno, u8 wallpaperno);
-void PCStorage_SetBoxName(PC_STORAGE* storage, u32 boxno, const String* src);
-int PCStorage_CountMonsAndEggsInBox(PC_STORAGE* storage, u32 boxno);
-int PCStorage_CountMonsInBox(PC_STORAGE* storage, u32 boxno);
-int PCStorage_CountMonsInAllBoxes(PC_STORAGE* storage);
-u32 PCStorage_GetMonDataByIndexPair(PC_STORAGE* storage, u32 boxno, u32 slotno, int attr, void *ptr);
-BoxPokemon *PCStorage_GetMonByIndexPair(PC_STORAGE* storage, u32 boxno, u32 slotno);
-void PCStorage_UnlockBonusWallpaper(PC_STORAGE* storage, u32 wallpaper);
-BOOL PCStorage_IsBonusWallpaperUnlocked(PC_STORAGE* storage, u32 wallpaper);
-void PCStorage_SetBoxModified(PC_STORAGE* storage, u8 boxno);
-void PCStorage_SetAllBoxesModified(PC_STORAGE* storage);
-void PCStorage_ResetBoxModifiedFlags(PC_STORAGE* storage);
-u32 PCStorage_GetBoxModifiedFlags(PC_STORAGE* storage);
+void PCStorage_SetBoxWallpaper(PCStorage* storage, u32 boxno, u8 wallpaperno);
+void PCStorage_SetBoxName(PCStorage* storage, u32 boxno, const String* src);
+int PCStorage_CountMonsAndEggsInBox(PCStorage* storage, u32 boxno);
+int PCStorage_CountMonsInBox(PCStorage* storage, u32 boxno);
+int PCStorage_CountMonsInAllBoxes(PCStorage* storage);
+u32 PCStorage_GetMonDataByIndexPair(PCStorage* storage, u32 boxno, u32 slotno, int attr, void *ptr);
+BoxPokemon *PCStorage_GetMonByIndexPair(PCStorage* storage, u32 boxno, u32 slotno);
+void PCStorage_UnlockBonusWallpaper(PCStorage* storage, u32 wallpaper);
+BOOL PCStorage_IsBonusWallpaperUnlocked(PCStorage* storage, u32 wallpaper);
+void PCStorage_SetBoxModified(PCStorage* storage, u8 boxno);
+void PCStorage_SetAllBoxesModified(PCStorage* storage);
+void PCStorage_ResetBoxModifiedFlags(PCStorage* storage);
+u32 PCStorage_GetBoxModifiedFlags(PCStorage* storage);
 u32 sub_02074120(void);
-void sub_02074128(PC_STORAGE* storage);
+void sub_02074128(PCStorage* storage);
 
 #endif //POKEHEARTGOLD_POKEMON_STORAGE_SYSTEM_H

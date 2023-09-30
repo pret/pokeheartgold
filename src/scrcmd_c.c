@@ -1182,12 +1182,12 @@ BOOL ScrCmd_563(ScriptContext *ctx) {
 
 LocalMapObject *sub_02041C70(FieldSystem *fieldSystem, u16 person) {
     if (person == 0xF2) {
-        return sub_0205EEB4(fieldSystem->mapObjectMan, 0x30);
+        return sub_0205EEB4(fieldSystem->mapObjectManager, 0x30);
     } else if (person == 0xF1) {
         LocalMapObject **attr = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_CAMERA_TARGET);
         return *attr;
     } else {
-        return GetMapObjectByID(fieldSystem->mapObjectMan, person);
+        return GetMapObjectByID(fieldSystem->mapObjectManager, person);
     }
 }
 
@@ -1250,7 +1250,7 @@ BOOL ScrCmd_LockAll(ScriptContext *ctx) {
 
     p_lastInteracted = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_LAST_INTERACTED);
     if (*p_lastInteracted == NULL) {
-        MapObjectManager_PauseAllMovement(fieldSystem->mapObjectMan);
+        MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
         followingPoke = FollowingPokemon_GetMapObject(fieldSystem);
         if (FollowingPokemon_IsActive(fieldSystem) && MapObject_IsSingleMovementActive(followingPoke)) {
             MapObject_UnpauseMovement(followingPoke);
@@ -1304,7 +1304,7 @@ static BOOL _WaitMovementPauseBeforeMsg(ScriptContext *ctx) {
     }
 
     if (_CheckMovementPauseWaitFlag(2)) {
-        unk = sub_0205EEB4(fieldSystem->mapObjectMan, 0x30);
+        unk = sub_0205EEB4(fieldSystem->mapObjectManager, 0x30);
         if (MapObject_IsSingleMovementActive(unk) == FALSE) {
             MapObject_PauseMovement(unk);
             _ClearMovementPauseWaitFlag(2);
@@ -1336,13 +1336,13 @@ BOOL ScrCmd_LockLastTalked(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_LAST_INTERACTED);
     LocalMapObject *playerObject = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
-    LocalMapObject *unk = sub_0205EEB4(fieldSystem->mapObjectMan, 0x30);
+    LocalMapObject *unk = sub_0205EEB4(fieldSystem->mapObjectManager, 0x30);
     LocalMapObject *unk2 = sub_020660C0(*p_lastInteracted);
-    MapObjectManager *mapObjectMan = fieldSystem->mapObjectMan;
+    MapObjectManager *mapObjectManager = fieldSystem->mapObjectManager;
 
     _ResetMovementPauseWaitFlags();
 
-    MapObjectManager_PauseAllMovement(mapObjectMan);
+    MapObjectManager_PauseAllMovement(mapObjectManager);
 
     if (MapObject_IsMovementPaused(playerObject) == FALSE) {
         _SetMovementPauseWaitFlag(1);
@@ -1369,14 +1369,14 @@ BOOL ScrCmd_LockLastTalked(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_ReleaseAll(ScriptContext *ctx) {
-    MapObjectManager_UnpauseAllMovement(ctx->fieldSystem->mapObjectMan);
+    MapObjectManager_UnpauseAllMovement(ctx->fieldSystem->mapObjectManager);
     return TRUE;
 }
 
 BOOL ScrCmd_098(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 objectId = ScriptReadHalfword(ctx);
-    LocalMapObject *object = GetMapObjectByID(fieldSystem->mapObjectMan, objectId);
+    LocalMapObject *object = GetMapObjectByID(fieldSystem->mapObjectManager, objectId);
     if (object != NULL) {
         MapObject_PauseMovement(object);
     } else {
@@ -1388,7 +1388,7 @@ BOOL ScrCmd_098(ScriptContext *ctx) {
 BOOL ScrCmd_099(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 objectId = ScriptReadHalfword(ctx);
-    LocalMapObject *object = GetMapObjectByID(fieldSystem->mapObjectMan, objectId);
+    LocalMapObject *object = GetMapObjectByID(fieldSystem->mapObjectManager, objectId);
     if (object != NULL) {
         MapObject_UnpauseMovement(object);
     } else {
@@ -1402,14 +1402,14 @@ BOOL ScrCmd_ShowPerson(ScriptContext *ctx) {
     u16 objectId = ScriptGetVar(ctx);
     u32 nobjs = Field_GetNumObjectEvents(fieldSystem);
     const ObjectEvent *objectEvents = Field_GetObjectEvents(fieldSystem);
-    GF_ASSERT(CreateMapObjectFromTemplate(fieldSystem->mapObjectMan, objectId, nobjs, fieldSystem->location->mapId, objectEvents));
+    GF_ASSERT(CreateMapObjectFromTemplate(fieldSystem->mapObjectManager, objectId, nobjs, fieldSystem->location->mapId, objectEvents));
     return FALSE;
 }
 
 BOOL ScrCmd_HidePerson(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 objectId = ScriptGetVar(ctx);
-    LocalMapObject *object = GetMapObjectByID(fieldSystem->mapObjectMan, objectId);
+    LocalMapObject *object = GetMapObjectByID(fieldSystem->mapObjectManager, objectId);
     if (object == NULL) {
         GF_ASSERT(0);
     } else {
@@ -1423,7 +1423,7 @@ BOOL ScrCmd_102(ScriptContext *ctx) {
     u16 y = ScriptGetVar(ctx);
     LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_CAMERA_TARGET);
     VecFx32 *pos;
-    *p_cameraObj = CreateSpecialFieldObject(ctx->fieldSystem->mapObjectMan, x, y, 0, SPRITE_CAMERA_FOCUS, 0, ctx->fieldSystem->location->mapId);
+    *p_cameraObj = CreateSpecialFieldObject(ctx->fieldSystem->mapObjectManager, x, y, 0, SPRITE_CAMERA_FOCUS, 0, ctx->fieldSystem->location->mapId);
     sub_02061070(*p_cameraObj);
     MapObject_SetVisible(*p_cameraObj, TRUE);
     MapObject_ClearFlag18(*p_cameraObj, FALSE);
@@ -1437,7 +1437,7 @@ BOOL ScrCmd_103(ScriptContext *ctx) {
     LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_CAMERA_TARGET);
     VecFx32 *pos;
     MapObject_Remove(*p_cameraObj);
-    pos = MapObject_GetPositionVecPtr(GetMapObjectByID(ctx->fieldSystem->mapObjectMan, obj_player));
+    pos = MapObject_GetPositionVecPtr(GetMapObjectByID(ctx->fieldSystem->mapObjectManager, obj_player));
     ov01_021F62E8(pos, ctx->fieldSystem->unk2C);
     Camera_SetFixedTarget(pos, ctx->fieldSystem->camera);
     return FALSE;
@@ -1447,7 +1447,7 @@ BOOL ScrCmd_678(ScriptContext *ctx) {
     u16 x = ScriptGetVar(ctx);
     u16 y = ScriptGetVar(ctx);
     LocalMapObject **p_cameraObj = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_CAMERA_TARGET);
-    *p_cameraObj = CreateSpecialFieldObject(ctx->fieldSystem->mapObjectMan, x, y, 0, SPRITE_CAMERA_FOCUS, 0, ctx->fieldSystem->location->mapId);
+    *p_cameraObj = CreateSpecialFieldObject(ctx->fieldSystem->mapObjectManager, x, y, 0, SPRITE_CAMERA_FOCUS, 0, ctx->fieldSystem->location->mapId);
     sub_02061070(*p_cameraObj);
     MapObject_SetVisible(*p_cameraObj, TRUE);
     MapObject_ClearFlag18(*p_cameraObj, FALSE);
@@ -1513,7 +1513,7 @@ BOOL ScrCmd_GetPlayerCoords(ScriptContext *ctx) {
 BOOL ScrCmd_GetPersonCoords(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 personId = ScriptGetVar(ctx);
-    LocalMapObject *object = GetMapObjectByID(fieldSystem->mapObjectMan, personId);
+    LocalMapObject *object = GetMapObjectByID(fieldSystem->mapObjectManager, personId);
     u16 *p_x = ScriptGetVarPointer(ctx);
     u16 *p_y = ScriptGetVarPointer(ctx);
 
@@ -1552,7 +1552,7 @@ BOOL ScrCmd_107(ScriptContext *ctx) {
 
 BOOL ScrCmd_108(ScriptContext *ctx) {
     u16 objectId = ScriptGetVar(ctx);
-    LocalMapObject *object = GetMapObjectByID(ctx->fieldSystem->mapObjectMan, objectId);
+    LocalMapObject *object = GetMapObjectByID(ctx->fieldSystem->mapObjectManager, objectId);
     u8 arg = ScriptReadByte(ctx);
     MapObject_SetFlag10(object, arg);
     return FALSE;
@@ -1560,7 +1560,7 @@ BOOL ScrCmd_108(ScriptContext *ctx) {
 
 BOOL ScrCmd_109(ScriptContext *ctx) {
     u16 objectId = ScriptGetVar(ctx);
-    LocalMapObject *object = GetMapObjectByID(ctx->fieldSystem->mapObjectMan, objectId);
+    LocalMapObject *object = GetMapObjectByID(ctx->fieldSystem->mapObjectManager, objectId);
     u16 arg = ScriptReadHalfword(ctx);
     if (object != NULL) {
         sub_0205FC94(object, arg);
@@ -1572,7 +1572,7 @@ BOOL ScrCmd_574(ScriptContext *ctx) {
     u16 *p_dest = ScriptGetVarPointer(ctx);
     *p_dest = 0;
     u16 objectId = ScriptGetVar(ctx);
-    LocalMapObject *object = GetMapObjectByID(ctx->fieldSystem->mapObjectMan, objectId);
+    LocalMapObject *object = GetMapObjectByID(ctx->fieldSystem->mapObjectManager, objectId);
     if (object != NULL) {
         *p_dest = MapObject_GetMovement(object);
     }
@@ -2099,7 +2099,7 @@ BOOL ScrCmd_NameRival(ScriptContext *ctx) {
 BOOL ScrCmd_NicknameInput(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 partyPos = ScriptGetVar(ctx);
-    BUGCONTEST *contest;
+    BugContest *contest;
     Pokemon *mon;
     u16 nickname[20];
     u16 *var_ret;
@@ -2466,7 +2466,7 @@ BOOL ScrCmd_229(ScriptContext *ctx) {
 BOOL ScrCmd_230(ScriptContext *ctx) {
     struct UnkStruct_ScrCmd230 **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     struct UnkStruct_ScrCmd230 *work = *p_work;
-    sub_02051428(ctx->fieldSystem->taskman, &work->unk_30, 5);
+    CallTask_020508B8(ctx->fieldSystem->taskman, &work->unk_30, 5);
     FreeToHeap(work);
     *p_work = NULL;
     return TRUE;
@@ -2575,14 +2575,14 @@ BOOL ScrCmd_686(ScriptContext *ctx) {
     u32 *winFlag = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_BATTLE_WIN_FLAG);
     u16 species = ScriptGetVar(ctx);
     u16 level = ScriptGetVar(ctx);
-    sub_02051090(ctx->taskman, species, level, winFlag, TRUE);
+    SetupAndStartFatefulWildBattle(ctx->taskman, species, level, winFlag, TRUE);
     return TRUE;
 }
 
 BOOL ScrCmd_250(ScriptContext *ctx) {
     u16 species = ScriptGetVar(ctx);
     u16 level = ScriptGetVar(ctx);
-    sub_02051228(ctx->taskman, species, level);
+    SetupAndStartFirstBattle(ctx->taskman, species, level);
     return TRUE;
 }
 
@@ -2777,7 +2777,7 @@ BOOL sub_02044318(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_270(ScriptContext *ctx) {
-    sub_0205B27C(ctx->fieldSystem->mapObjectMan, ctx->fieldSystem->unk84);
+    sub_0205B27C(ctx->fieldSystem->mapObjectManager, ctx->fieldSystem->unk84);
     return FALSE;
 }
 
@@ -2978,7 +2978,7 @@ BOOL ScrCmd_MovePersonFacing(ScriptContext *ctx) {
     u16 height = ScriptGetVar(ctx);
     u16 y = ScriptGetVar(ctx);
     u16 direction = ScriptGetVar(ctx);
-    LocalMapObject *object = GetMapObjectByID(ctx->fieldSystem->mapObjectMan, objectId);
+    LocalMapObject *object = GetMapObjectByID(ctx->fieldSystem->mapObjectManager, objectId);
     sub_0205FC2C(object, x, height, y, direction);
     sub_02061070(object);
     return FALSE;
@@ -3017,7 +3017,7 @@ BOOL ScrCmd_MoveBgEvent(ScriptContext *ctx) {
 BOOL ScrCmd_344(ScriptContext *ctx) {
     u16 objectId = ScriptGetVar(ctx);
     u16 dir = ScriptGetVar(ctx);
-    LocalMapObject *object = GetMapObjectByID(ctx->fieldSystem->mapObjectMan, objectId);
+    LocalMapObject *object = GetMapObjectByID(ctx->fieldSystem->mapObjectManager, objectId);
     GF_ASSERT(object != NULL);
     ov01_021F9408(object, dir);
     return FALSE;
@@ -3201,7 +3201,7 @@ BOOL ScrCmd_EggHatchAnim(ScriptContext *ctx) {
 BOOL ScrCmd_374(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 objId = ScriptGetVar(ctx);
-    LocalMapObject *object = GetMapObjectByID(fieldSystem->mapObjectMan, objId);
+    LocalMapObject *object = GetMapObjectByID(fieldSystem->mapObjectManager, objId);
     GF_ASSERT(object != NULL);
     MapObject_SetVisible(object, FALSE);
     return FALSE;
@@ -3210,7 +3210,7 @@ BOOL ScrCmd_374(ScriptContext *ctx) {
 BOOL ScrCmd_375(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 objId = ScriptGetVar(ctx);
-    LocalMapObject *object = GetMapObjectByID(fieldSystem->mapObjectMan, objId);
+    LocalMapObject *object = GetMapObjectByID(fieldSystem->mapObjectManager, objId);
     GF_ASSERT(object != NULL);
     MapObject_SetVisible(object, TRUE);
     return FALSE;
@@ -3575,7 +3575,7 @@ BOOL ScrCmd_PrimoPasswordCheck1(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem));
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    PC_STORAGE *pcStorage = SaveArray_PCStorage_Get(fieldSystem->saveData);
+    PCStorage *pcStorage = SaveArray_PCStorage_Get(fieldSystem->saveData);
     u16 a = ScriptGetVar(ctx);
     u16 b = ScriptGetVar(ctx);
     u16 c = ScriptGetVar(ctx);
@@ -3597,7 +3597,7 @@ BOOL ScrCmd_PrimoPasswordCheck2(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem));
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    PC_STORAGE *pcStorage = SaveArray_PCStorage_Get(fieldSystem->saveData);
+    PCStorage *pcStorage = SaveArray_PCStorage_Get(fieldSystem->saveData);
     u16 a = ScriptGetVar(ctx);
     u16 b = ScriptGetVar(ctx);
     u16 c = ScriptGetVar(ctx);
@@ -3764,7 +3764,7 @@ BOOL ScrCmd_523(ScriptContext *ctx) {
     u16 sp8 = ScriptGetVar(ctx);
     u16 r6 = ScriptGetVar(ctx);
     u16 r4 = ScriptGetVar(ctx);
-    LocalMapObject *object = GetMapObjectByID(ctx->fieldSystem->mapObjectMan, objectId);
+    LocalMapObject *object = GetMapObjectByID(ctx->fieldSystem->mapObjectManager, objectId);
     GF_ASSERT(object != NULL);
     sub_0205BED8(ctx->taskman, object, spC, sp8, r6, r4);
     return TRUE;
@@ -3774,7 +3774,7 @@ BOOL ScrCmd_524(ScriptContext *ctx) {
     u16 objectId = ScriptGetVar(ctx);
     u16 r7 = ScriptGetVar(ctx);
     u16 r6 = ScriptGetVar(ctx);
-    LocalMapObject *object = GetMapObjectByID(ctx->fieldSystem->mapObjectMan, objectId);
+    LocalMapObject *object = GetMapObjectByID(ctx->fieldSystem->mapObjectManager, objectId);
     GF_ASSERT(object != NULL);
     sub_0205BFB4(ctx->taskman, object, r7, r6);
     return TRUE;
@@ -4100,7 +4100,7 @@ BOOL ScrCmd_582(ScriptContext *ctx) {
 BOOL ScrCmd_583(ScriptContext *ctx) {
     u16 objectId = ScriptGetVar(ctx);
     u8 r4 = ScriptReadByte(ctx);
-    LocalMapObject *object = GetMapObjectByID(ctx->fieldSystem->mapObjectMan, objectId);
+    LocalMapObject *object = GetMapObjectByID(ctx->fieldSystem->mapObjectManager, objectId);
     GF_ASSERT(object != NULL);
     MapObject_ClearFlag18(object, r4);
     return FALSE;
@@ -4287,7 +4287,7 @@ u32 sub_020467A8(SaveData *saveData) {
         }
     }
 
-    PC_STORAGE *pcStorage = SaveArray_PCStorage_Get(saveData);
+    PCStorage *pcStorage = SaveArray_PCStorage_Get(saveData);
     for (i = 0; i < (u32)NUM_BOXES; i++) {
         for (j = 0; j < MONS_PER_BOX; j++) {
             BoxPokemon *boxMon = PCStorage_GetMonByIndexPair(pcStorage, i, j);
@@ -4413,13 +4413,13 @@ BOOL ScrCmd_FollowerPokeIsEventTrigger(ScriptContext *ctx) {
 BOOL ScrCmd_596(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = ov01_022055DC(GetMapObjectByID(fieldSystem->mapObjectMan, obj_partner_poke));
+    *p_ret = ov01_022055DC(GetMapObjectByID(fieldSystem->mapObjectManager, obj_partner_poke));
     return FALSE;
 }
 
 BOOL ScrCmd_597(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    ov01_02203AB4(fieldSystem, GetMapObjectByID(fieldSystem->mapObjectMan, obj_partner_poke), 0);
+    ov01_02203AB4(fieldSystem, GetMapObjectByID(fieldSystem->mapObjectManager, obj_partner_poke), 0);
     return TRUE;
 }
 
@@ -4503,7 +4503,7 @@ BOOL ScrCmd_WaitFollowingPokemonMovement(ScriptContext *ctx) {
 BOOL ScrCmd_FollowingPokemonMovement(ScriptContext *ctx) {
     u16 movement = ScriptReadHalfword(ctx);
     if (FollowingPokemon_IsActive(ctx->fieldSystem)) {
-        sub_0205FC94(GetMapObjectByID(ctx->fieldSystem->mapObjectMan, obj_partner_poke), movement);
+        sub_0205FC94(GetMapObjectByID(ctx->fieldSystem->mapObjectManager, obj_partner_poke), movement);
     }
     return TRUE;
 }
@@ -4521,7 +4521,7 @@ BOOL ScrCmd_605(ScriptContext *ctx) {
     u8 r4 = ScriptReadByte(ctx);
     if (FollowingPokemon_IsActive(ctx->fieldSystem)) {
         LocalMapObject *playerObj = PlayerAvatar_GetMapObject(ctx->fieldSystem->playerAvatar);
-        LocalMapObject *tsurePokeObj = GetMapObjectByID(ctx->fieldSystem->mapObjectMan, obj_partner_poke);
+        LocalMapObject *tsurePokeObj = GetMapObjectByID(ctx->fieldSystem->mapObjectManager, obj_partner_poke);
         ov01_02205720(playerObj, tsurePokeObj, r6, r4);
     }
     return FALSE;
@@ -4551,7 +4551,7 @@ BOOL ScrCmd_607(ScriptContext *ctx) {
 
 BOOL ScrCmd_608(ScriptContext *ctx) {
     if (FollowingPokemon_IsActive(ctx->fieldSystem)) {
-        LocalMapObject *object = GetMapObjectByID(ctx->fieldSystem->mapObjectMan, obj_partner_poke);
+        LocalMapObject *object = GetMapObjectByID(ctx->fieldSystem->mapObjectManager, obj_partner_poke);
         ov01_02205784(object);
     }
     return FALSE;
@@ -4559,7 +4559,7 @@ BOOL ScrCmd_608(ScriptContext *ctx) {
 
 BOOL ScrCmd_609(ScriptContext *ctx) {
     if (FollowingPokemon_IsActive(ctx->fieldSystem)) {
-        LocalMapObject *object = GetMapObjectByID(ctx->fieldSystem->mapObjectMan, obj_partner_poke);
+        LocalMapObject *object = GetMapObjectByID(ctx->fieldSystem->mapObjectManager, obj_partner_poke);
         sub_020659CC(object);
     }
     return TRUE;
@@ -4778,7 +4778,7 @@ BOOL ScrCmd_621(ScriptContext *ctx) {
 BOOL ScrCmd_622(ScriptContext *ctx) {
     u16 objectId = ScriptReadHalfword(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    LocalMapObject *object = GetMapObjectByID(ctx->fieldSystem->mapObjectMan, objectId);
+    LocalMapObject *object = GetMapObjectByID(ctx->fieldSystem->mapObjectManager, objectId);
     if (object != NULL) {
         *p_ret = MapObject_GetFacingDirection(object);
     } else {

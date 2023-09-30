@@ -70,7 +70,7 @@ _0225990E:
 	add r1, r6, #0
 	add r2, r4, #0
 	add r3, r7, #0
-	bl sub_02050AAC
+	bl CallTask_020509F0
 	add sp, #0x184
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

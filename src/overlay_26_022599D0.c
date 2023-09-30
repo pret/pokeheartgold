@@ -43,7 +43,7 @@ static LocalMapObject* ov26_02259A24(FieldSystem* fieldSystem, LocalMapObject* a
     }
 
     for (int i = 0; i < num_events; i++) {
-        LocalMapObject* object = GetMapObjectByID(fieldSystem->mapObjectMan, i);
+        LocalMapObject* object = GetMapObjectByID(fieldSystem->mapObjectManager, i);
         if (object == NULL) {
             continue;
         }
