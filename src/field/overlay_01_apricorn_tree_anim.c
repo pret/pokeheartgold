@@ -131,7 +131,7 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
         PlayerAvatar_GetCoordsInFront(fieldSystem->playerAvatar, &posX, &posZ);
         apricornType = FieldSystem_ApricornTree_TryGetApricorn(fieldSystem, env->tree) - 1;
         GF_ASSERT(apricornType >= APRICORN_NONE);
-        env->apricorn = CreateJumpingApricornObj(fieldSystem->mapObjectMan, SPRITE_BONMI_R + apricornType, posX, posZ);
+        env->apricorn = CreateJumpingApricornObj(fieldSystem->mapObjectManager, SPRITE_BONMI_R + apricornType, posX, posZ);
         MapObject_GetPositionVec(env->apricorn, &pos);
         pos.y += 12 * FX32_ONE;
         MapObject_SetPositionVec(env->apricorn, &pos);

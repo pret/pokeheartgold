@@ -90,17 +90,21 @@ typedef struct TrainerData {
     /*002*/ u8 unk_2; // unused
     /*003*/ u8 npoke;
     /*004*/ u16 items[4];
-    /*00C*/ u32 ai_flags;
+    /*00C*/ u32 aiFlags;
     /*010*/ u32 doubleBattle;
+} TrainerData;
+
+typedef struct Trainer {
+    struct TrainerData data;
     /*014*/ u16 name[PLAYER_NAME_LENGTH + 1];
     // Used in the Frontier
     /*024*/ MAIL_MESSAGE winMessage;
     /*02C*/ MAIL_MESSAGE loseMessage;
-} TRAINER; // size=0x34
+} Trainer; // size=0x34
 
 typedef struct BattleSetup BattleSetup;
 
-void TrainerData_ReadTrData(u32 trno, TRAINER *dest);
+void TrainerData_ReadTrData(u32 trno, Trainer *dest);
 TrainerGender TrainerClass_GetGenderOrTrainerCount(int trainerClass);
 int TrainerData_GetAttr(u32 tr_idx, TrainerAttr attr_no);
 void EnemyTrainerSet_Init(BattleSetup *battleSetup, SaveData *saveData, HeapID heapId);

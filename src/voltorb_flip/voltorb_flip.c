@@ -26,7 +26,7 @@
 #include "unk_02025154.h"
 #include "bg_window.h"
 #include "constants/sndseq.h"
-#include "constants/game_stat.h"
+#include "constants/game_stats.h"
 #include "msgdata/msg/msg_0039.h"
 #include "voltorb_flip/voltorb_flip.h"
 #include "voltorb_flip/voltorb_flip_data.h"

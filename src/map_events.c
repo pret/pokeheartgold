@@ -35,7 +35,7 @@ void Field_InitMapObjectsFromZoneEventData(FieldSystem *fieldSystem) {
     u32 obj_count = fieldSystem->mapEvents->num_object_events;
     GF_ASSERT(fieldSystem->mapEvents != NULL);
     if (obj_count != 0) {
-        InitMapObjectsFromEventTemplates(fieldSystem->mapObjectMan, fieldSystem->location->mapId, obj_count, fieldSystem->mapEvents->object_events);
+        InitMapObjectsFromEventTemplates(fieldSystem->mapObjectManager, fieldSystem->location->mapId, obj_count, fieldSystem->mapEvents->object_events);
     }
 }
 

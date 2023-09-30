@@ -218,7 +218,7 @@ _0207899C:
 	ldrb r3, [r4, #0xd]
 	ldr r1, [r1, #8]
 	add r0, r6, #0
-	bl sub_020514A4
+	bl CallTask_02050960
 	ldr r0, [r4, #4]
 	add r0, r0, #1
 	str r0, [r4, #4]
