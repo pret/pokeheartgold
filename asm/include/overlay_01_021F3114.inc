@@ -6,7 +6,7 @@
 .public FreeToHeapExplicit
 .public GF_AssertFail
 .public FieldSystem_CreateTask
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public sub_0205B9DC
 .public sub_0205B9E8
 .public sub_0205B9F4

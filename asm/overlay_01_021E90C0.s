@@ -1282,7 +1282,7 @@ ov01_021E9ABC: ; 0x021E9ABC
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldrb r1, [r4]
 	ldr r0, [r5, #0x58]
@@ -1486,7 +1486,7 @@ ov01_021E9C40: ; 0x021E9C40
 	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r6, r0, #0
 	ldr r0, [r6]
 	cmp r0, #8
@@ -1800,7 +1800,7 @@ ov01_021E9EEC: ; 0x021E9EEC
 	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r5, r0, #0
 	ldrb r0, [r5]
 	cmp r0, #0
@@ -1868,7 +1868,7 @@ ov01_021E9F78: ; 0x021E9F78
 	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldrb r0, [r4]
 	cmp r0, #0
@@ -1932,7 +1932,7 @@ ov01_021E9FF8: ; 0x021E9FF8
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	ldr r0, [sp, #0x10]
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldrb r0, [r4]
 	cmp r0, #3
@@ -2084,7 +2084,7 @@ ov01_021EA128: ; 0x021EA128
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r7, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldrb r0, [r4]
 	cmp r0, #3

@@ -104,7 +104,7 @@ sub_02097878: ; 0x02097878
 	bl TaskManager_GetFieldSystem
 	add r4, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r6, r0, #0
 	add r0, r5, #0
 	bl TaskManager_GetStatePtr
@@ -151,7 +151,7 @@ sub_020978D0: ; 0x020978D0
 	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldrb r1, [r4]
 	cmp r1, #5

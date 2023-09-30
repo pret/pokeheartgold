@@ -7,7 +7,7 @@
 #include "script.h"
 
 static inline u16 ScriptGetVar(ScriptContext* ctx) {
-    return VarGet(ctx->fieldSystem, ScriptReadHalfword(ctx));
+    return FieldSystem_VarGet(ctx->fieldSystem, ScriptReadHalfword(ctx));
 }
 
 static inline u16* ScriptGetVarPointer(ScriptContext* ctx) {

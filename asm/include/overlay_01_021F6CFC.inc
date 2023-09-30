@@ -35,7 +35,7 @@
 .public FieldSystem_CreateTask
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public sub_0205B514
 .public sub_0205B564
 .public sub_0205B5B4

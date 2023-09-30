@@ -21,7 +21,7 @@ Task_UseSweetScentInField: ; 0x021FCE98
 	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	ldr r0, [sp]
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r7, r0, #0
 	ldr r0, [sp]
 	bl TaskManager_GetStatePtr
@@ -203,7 +203,7 @@ _021FD010: .word ov01_021FD014
 ov01_021FD014: ; 0x021FD014
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r5, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetStatePtr

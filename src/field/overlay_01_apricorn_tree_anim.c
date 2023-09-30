@@ -66,7 +66,7 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
     int apricornType;
 
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
-    AnimApricornTreeWork *env = TaskManager_GetEnv(taskman);
+    AnimApricornTreeWork *env = TaskManager_GetEnvironment(taskman);
 
     switch (env->state) {
     case 0:
@@ -131,7 +131,7 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
         PlayerAvatar_GetCoordsInFront(fieldSystem->playerAvatar, &posX, &posZ);
         apricornType = FieldSystem_ApricornTree_TryGetApricorn(fieldSystem, env->tree) - 1;
         GF_ASSERT(apricornType >= APRICORN_NONE);
-        env->apricorn = CreateJumpingApricornObj(fieldSystem->mapObjectMan, SPRITE_BONMI_R + apricornType, posX, posZ);
+        env->apricorn = CreateJumpingApricornObj(fieldSystem->mapObjectManager, SPRITE_BONMI_R + apricornType, posX, posZ);
         MapObject_GetPositionVec(env->apricorn, &pos);
         pos.y += 12 * FX32_ONE;
         MapObject_SetPositionVec(env->apricorn, &pos);
@@ -214,7 +214,7 @@ static BOOL Task_AnimPlayerShakeTree(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     LocalMapObject *playerObj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
     int *state_p = TaskManager_GetStatePtr(taskman);
-    AnimPlayerShakeTreeWork *env = TaskManager_GetEnv(taskman);
+    AnimPlayerShakeTreeWork *env = TaskManager_GetEnvironment(taskman);
 
     switch (*state_p) {
     case 0:

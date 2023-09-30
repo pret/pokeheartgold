@@ -54,7 +54,7 @@ sub_0206D4E4: ; 0x0206D4E4
 	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r5, r0, #0
 	add r0, r4, #0
 	bl TaskManager_GetStatePtr
@@ -928,7 +928,7 @@ sub_0206DBC0: ; 0x0206DBC0
 	bl TaskManager_GetFieldSystem
 	add r7, r0, #0
 	add r0, r6, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	add r0, r7, #0
 	bl FieldSystem_BugContest_Get
@@ -1004,7 +1004,7 @@ ScrCmd_807: ; 0x0206DC50
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl VarGet
+	bl FieldSystem_VarGet
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScriptReadHalfword

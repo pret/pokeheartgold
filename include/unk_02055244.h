@@ -5,7 +5,7 @@
 
 void sub_0205525C(TaskManager *taskManager);
 void PalleteFadeUntilFinished(TaskManager *taskManager);
-void sub_0205532C(TaskManager *taskManager);
+void CallTask_FadeFromBlack(TaskManager *taskManager);
 void sub_020553B0(TaskManager *taskManager);
 void sub_02055408(TaskManager *taskManager);
 

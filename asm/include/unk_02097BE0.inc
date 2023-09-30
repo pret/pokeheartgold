@@ -7,8 +7,8 @@
 .public TaskManager_Call
 .public FieldSystem_ApplicationIsRunning
 .public TaskManager_GetFieldSystem
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public sub_0205525C
-.public sub_020552A4
+.public CallTask_RestoreOverworld
 .public Field_GetTimeOfDay
 .public sub_02097BE0

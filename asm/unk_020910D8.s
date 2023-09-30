@@ -17,7 +17,7 @@ sub_020910D8: ; 0x020910D8
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r0, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r1, [r4]
 	cmp r1, #6
@@ -162,7 +162,7 @@ _0209120C:
 	b _02091232
 _0209121A:
 	add r0, r5, #0
-	bl sub_020552A4
+	bl CallTask_RestoreOverworld
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]

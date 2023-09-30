@@ -99,7 +99,7 @@ void ov01_02204ED8(FieldSystem *fieldSystem, u16 *varPointer) {
 static BOOL ov01_02204EFC(TaskManager *taskManager) {
     UnkStruct_02204EFC *unk4;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    u16 **didHeadbuttStartBattle = TaskManager_GetEnv(taskManager);
+    u16 **didHeadbuttStartBattle = TaskManager_GetEnvironment(taskManager);
     unk4 = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_a_2_5_2, fieldSystem->location->mapId, HEAP_ID_FIELD);
     if (unk4->unk00 != 0 || unk4->unk02 != 0) {
         BattleSetup *setup;

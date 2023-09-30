@@ -22,7 +22,7 @@
 .public Save_GameStats_Get
 .public GameStats_Inc
 .public TaskManager_GetFieldSystem
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public sub_02050B90
 .public BattleSetup_Delete
 .public GetFirstAliveMonInParty_CrashIfNone

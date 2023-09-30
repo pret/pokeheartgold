@@ -221,15 +221,15 @@ static void sub_0205316C(FieldSystem *fieldSystem) {
     if (fieldSystem->unkAC) {
         gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
         playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->saveData));
-        fieldSystem->playerAvatar = sub_0205C390(fieldSystem->mapObjectMan, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, playerSaveData->unk4, gender, 2, playerSaveData);
+        fieldSystem->playerAvatar = sub_0205C390(fieldSystem->mapObjectManager, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, playerSaveData->unk4, gender, 2, playerSaveData);
     } else {
-        fieldSystem->mapObjectMan = sub_0205E0BC(fieldSystem, 64, HEAP_ID_BATTLE);
+        fieldSystem->mapObjectManager = sub_0205E0BC(fieldSystem, 64, HEAP_ID_BATTLE);
         gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
         playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->saveData));
-        fieldSystem->playerAvatar = sub_0205C390(fieldSystem->mapObjectMan, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, playerSaveData->unk4, gender, 2, playerSaveData);
-        sub_020699F8(fieldSystem->mapObjectMan, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, fieldSystem->location->mapId);
+        fieldSystem->playerAvatar = sub_0205C390(fieldSystem->mapObjectManager, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, playerSaveData->unk4, gender, 2, playerSaveData);
+        sub_020699F8(fieldSystem->mapObjectManager, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, fieldSystem->location->mapId);
         Field_InitMapObjectsFromZoneEventData(fieldSystem);
-        sub_0205F55C(fieldSystem->mapObjectMan);
+        sub_0205F55C(fieldSystem->mapObjectManager);
     }
 }
 
@@ -239,8 +239,8 @@ static void sub_02053210(FieldSystem *fieldSystem) {
     } else {
         sub_02056E38();
         PlayerAvatar_FreeToHeap(fieldSystem->playerAvatar);
-        MapObjectManager_RemoveAllActiveObjects(fieldSystem->mapObjectMan);
-        MapObjectManager_Delete(fieldSystem->mapObjectMan);
+        MapObjectManager_RemoveAllActiveObjects(fieldSystem->mapObjectManager);
+        MapObjectManager_Delete(fieldSystem->mapObjectManager);
     }
 }
 
@@ -248,13 +248,13 @@ static void sub_0205323C(FieldSystem *fieldSystem) {
     u32 gender;
     struct PlayerSaveData *playerSaveData;
 
-    fieldSystem->mapObjectMan = sub_0205E0BC(fieldSystem, 64, HEAP_ID_BATTLE);
+    fieldSystem->mapObjectManager = sub_0205E0BC(fieldSystem, 64, HEAP_ID_BATTLE);
     FieldSystem_RestoreMapObjectsFromSave(fieldSystem);
     playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->saveData));
     gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
-    fieldSystem->playerAvatar = sub_0205C408(fieldSystem->mapObjectMan, playerSaveData, gender);
-    sub_02069B74(fieldSystem->mapObjectMan, fieldSystem->location->mapId);
-    sub_0205F55C(fieldSystem->mapObjectMan);
+    fieldSystem->playerAvatar = sub_0205C408(fieldSystem->mapObjectManager, playerSaveData, gender);
+    sub_02069B74(fieldSystem->mapObjectManager, fieldSystem->location->mapId);
+    sub_0205F55C(fieldSystem->mapObjectManager);
 }
 
 static void sub_02053284(FieldSystem *fieldSystem) {
@@ -396,7 +396,7 @@ TaskManager *CallFieldTask_ContinueGame_Normal(FieldSystem *fieldSystem) {
 
 static BOOL FieldTask_ContinueGame_CommError(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    struct ErrorContinueEnv *env = TaskManager_GetEnv(taskManager);
+    struct ErrorContinueEnv *env = TaskManager_GetEnvironment(taskManager);
     SaveVarsFlags *varsFlags = Save_VarsFlags_Get(fieldSystem->saveData);
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
 
@@ -416,7 +416,7 @@ static BOOL FieldTask_ContinueGame_CommError(TaskManager *taskManager) {
     case 2:
         fieldSystem->unk80 = sub_02059DB0(fieldSystem);
         fieldSystem->unk84 = sub_0205AC88(fieldSystem->unk80);
-        sub_020552A4(taskManager);
+        CallTask_RestoreOverworld(taskManager);
         (*state_p)++;
         break;
     case 3:
@@ -458,7 +458,7 @@ TaskManager *CallFieldTask_ContinueGame_CommError(FieldSystem *fieldSystem) {
 
 static BOOL sub_02053688(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    struct UnkTaskEnv_02053688 *env = TaskManager_GetEnv(taskManager);
+    struct UnkTaskEnv_02053688 *env = TaskManager_GetEnvironment(taskManager);
 
     switch (env->unk0) {
     case 0:
@@ -496,7 +496,7 @@ static void sub_02053710(TaskManager *taskManager, Location *location) {
 
 static BOOL sub_02053740(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    struct ErrorContinueEnv *env = TaskManager_GetEnv(taskManager);
+    struct ErrorContinueEnv *env = TaskManager_GetEnvironment(taskManager);
 
     switch (env->state) {
     case 0:
@@ -545,7 +545,7 @@ void sub_020537F0(TaskManager *taskManager, u32 mapId, int warpId, int x, int y,
 
 static BOOL Task_ScriptWarp(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    struct ErrorContinueEnv *env = TaskManager_GetEnv(taskManager);
+    struct ErrorContinueEnv *env = TaskManager_GetEnvironment(taskManager);
 
     switch (env->state) {
     case 0:
@@ -562,7 +562,7 @@ static BOOL Task_ScriptWarp(TaskManager *taskManager) {
             break;
         }
         sub_02055110(fieldSystem, env->location.mapId, 0);
-        sub_020552A4(taskManager);
+        CallTask_RestoreOverworld(taskManager);
         env->state++;
         break;
     case 3:
@@ -612,7 +612,7 @@ void sub_02053908(TaskManager *taskManager, u32 mapId, int warpId, int x, int y,
 
 static BOOL sub_02053950(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    struct UnkTaskEnv_02053950 *env = TaskManager_GetEnv(taskManager);
+    struct UnkTaskEnv_02053950 *env = TaskManager_GetEnvironment(taskManager);
     Location *location = &env->location;
     switch (env->unk0) {
     case 0:
@@ -661,7 +661,7 @@ static BOOL sub_020539E8(TaskManager *taskManager) {
 }
 
 static void sub_02053A14(TaskManager *taskManager) {
-    TaskManager_Call(taskManager, sub_02053A2C, TaskManager_GetEnv(taskManager));
+    TaskManager_Call(taskManager, sub_02053A2C, TaskManager_GetEnvironment(taskManager));
 }
 
 static BOOL sub_02053A2C(TaskManager *taskManager) {
@@ -669,7 +669,7 @@ static BOOL sub_02053A2C(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     switch (*state_p) {
     case 0:
-        sub_020552A4(taskManager);
+        CallTask_RestoreOverworld(taskManager);
         (*state_p)++;
         break;
     case 1:
@@ -690,7 +690,7 @@ static BOOL sub_02053A2C(TaskManager *taskManager) {
 
 static void sub_02053AA0(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    struct UnkTaskEnv_02053950 *env = TaskManager_GetEnv(taskManager);
+    struct UnkTaskEnv_02053950 *env = TaskManager_GetEnvironment(taskManager);
     if (!sub_0203DF7C(fieldSystem)) {
         GF_ASSERT(0);
         return;
@@ -700,7 +700,7 @@ static void sub_02053AA0(TaskManager *taskManager) {
 }
 
 static BOOL sub_02053AE4(TaskManager *taskManager) {
-    struct UnkTaskEnv_02053950 *env = TaskManager_GetEnv(taskManager);
+    struct UnkTaskEnv_02053950 *env = TaskManager_GetEnvironment(taskManager);
     if (ov02_0224B43C(env->unk4) == TRUE) {
         ov02_0224B448(env->unk4);
         return TRUE;
@@ -720,7 +720,7 @@ void sub_02053B04(TaskManager *taskManager, Location *location, int a2) {
 
 static BOOL sub_02053B3C(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    struct UnkTaskEnv_02053B3C *env = TaskManager_GetEnv(taskManager);
+    struct UnkTaskEnv_02053B3C *env = TaskManager_GetEnvironment(taskManager);
     Location *location = &env->location;
 
     switch (env->unk0) {
@@ -777,18 +777,18 @@ static BOOL sub_02053BF8(TaskManager *taskManager) {
 }
 
 static void sub_02053C24(TaskManager *taskManager) {
-    struct UnkTaskEnv_02053B3C *env = TaskManager_GetEnv(taskManager);
+    struct UnkTaskEnv_02053B3C *env = TaskManager_GetEnvironment(taskManager);
     TaskManager_Call(taskManager, sub_02053C3C, env);
 }
 
 static BOOL sub_02053C3C(TaskManager *taskManager) {
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    struct UnkTaskEnv_02053B3C *env = TaskManager_GetEnv(taskManager); // unused
+    struct UnkTaskEnv_02053B3C *env = TaskManager_GetEnvironment(taskManager); // unused
 
     switch (*state_p) {
     case 0:
-        sub_020552A4(taskManager);
+        CallTask_RestoreOverworld(taskManager);
         (*state_p)++;
         break;
     case 1:
@@ -805,7 +805,7 @@ static BOOL sub_02053C3C(TaskManager *taskManager) {
 
 static void sub_02053C90(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    struct UnkTaskEnv_02053B3C *env = TaskManager_GetEnv(taskManager);
+    struct UnkTaskEnv_02053B3C *env = TaskManager_GetEnvironment(taskManager);
 
     if (!sub_0203DF7C(fieldSystem)) {
         GF_ASSERT(0);
@@ -816,7 +816,7 @@ static void sub_02053C90(TaskManager *taskManager) {
 
 static BOOL sub_02053CCC(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    struct UnkTaskEnv_02053CCC *env = TaskManager_GetEnv(taskManager);
+    struct UnkTaskEnv_02053CCC *env = TaskManager_GetEnvironment(taskManager);
     Location *location = &env->location;
     struct LocalMapObject *follow_poke_obj;
 
@@ -852,7 +852,7 @@ static BOOL sub_02053CCC(TaskManager *taskManager) {
             break;
         }
         sub_02055110(fieldSystem, location->mapId, 0);
-        sub_020552A4(taskManager);
+        CallTask_RestoreOverworld(taskManager);
         env->unk0++;
         break;
     case 5:
@@ -895,7 +895,7 @@ TaskManager *sub_02053E08(FieldSystem *fieldSystem, u32 mapId, int warpId) {
 
 static BOOL sub_02053E5C(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    struct UnkTaskEnv_02053E5C *env = TaskManager_GetEnv(taskManager);
+    struct UnkTaskEnv_02053E5C *env = TaskManager_GetEnvironment(taskManager);
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
     Location *location = &env->location;
 
@@ -920,11 +920,11 @@ static BOOL sub_02053E5C(TaskManager *taskManager) {
             break;
         }
         sub_02055110(fieldSystem, location->mapId, 0);
-        sub_020552A4(taskManager);
+        CallTask_RestoreOverworld(taskManager);
         (*state_p)++;
         break;
     case 4:
-        sub_0205532C(taskManager);
+        CallTask_FadeFromBlack(taskManager);
         (*state_p)++;
         break;
     case 5:
@@ -949,7 +949,7 @@ void sub_02053F14(FieldSystem *fieldSystem) {
 
 static BOOL sub_02053F70(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    struct UnkTaskEnv_02053E5C *env = TaskManager_GetEnv(taskManager);
+    struct UnkTaskEnv_02053E5C *env = TaskManager_GetEnvironment(taskManager);
     u32 *state_p = TaskManager_GetStatePtr(taskManager);
     Location *location = &env->location;
 
@@ -972,7 +972,7 @@ static BOOL sub_02053F70(TaskManager *taskManager) {
             break;
         }
         sub_02055110(fieldSystem, location->mapId, 0);
-        sub_020552A4(taskManager);
+        CallTask_RestoreOverworld(taskManager);
         (*state_p)++;
         break;
     case 4:
@@ -1008,7 +1008,7 @@ void sub_02054030(TaskManager *taskManager) {
 
 static BOOL sub_020540A4(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    struct UnkTaskEnv_02053688 *env = TaskManager_GetEnv(taskManager);
+    struct UnkTaskEnv_02053688 *env = TaskManager_GetEnvironment(taskManager);
 
     switch (env->unk0) {
     case 0:
@@ -1026,7 +1026,7 @@ static BOOL sub_020540A4(TaskManager *taskManager) {
             break;
         }
         sub_02055110(fieldSystem, env->location.mapId, 0);
-        sub_020552A4(taskManager);
+        CallTask_RestoreOverworld(taskManager);
         env->unk0++;
         break;
     case 3:

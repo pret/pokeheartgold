@@ -13,7 +13,7 @@
 .public TaskManager_Call
 .public FieldSystem_ApplicationIsRunning
 .public TaskManager_GetFieldSystem
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public TaskManager_GetStatePtr
 .public sub_020537F0
 .public sub_02055110

@@ -5,8 +5,8 @@
 #include "heap.h"
 #include "map_object_manager.h"
 
-LocalMapObject *sub_020699F8(MapObjectManager *mapObjectMan, int x, int y, int direction, u32 mapno);
-void sub_02069B74(MapObjectManager *mapObjectMan, u32 mapno);
+LocalMapObject *sub_020699F8(MapObjectManager *mapObjectManager, int x, int y, int direction, u32 mapno);
+void sub_02069B74(MapObjectManager *mapObjectManager, u32 mapno);
 LocalMapObject *FollowingPokemon_GetMapObject(FieldSystem *fieldSystem);
 u32 FollowingPokemon_GetSpriteID(int species, u16 form, u32 gender);
 void sub_02069DC8(LocalMapObject *mapObject, BOOL enable_bit);
@@ -20,7 +20,7 @@ u8 sub_02069EC0(LocalMapObject *mapObject);
 u8 sub_02069ED4(LocalMapObject *mapObject);
 void FollowPokeMapObjectSetParams(LocalMapObject *mapObject, int species, u8 form, BOOL shiny);
 void sub_02069F0C(LocalMapObject *mapObject, int species, u8 form, BOOL shiny, int a4);
-void FieldSystem_SetFollowPokeParam(FieldSystem *fieldSystem, int species, u8 form, BOOL shiny, u8 gender);
+void FieldSystem_SetFollowerPokeParam(FieldSystem *fieldSystem, int species, u8 form, BOOL shiny, u8 gender);
 u8 GetFollowPokeSizeParamBySpecies(int species);
 int FollowPokeObj_GetSpecies(LocalMapObject *mapObject);
 BOOL FollowingPokemon_IsActive(FieldSystem *fieldSystem);
