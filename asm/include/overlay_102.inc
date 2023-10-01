@@ -35,9 +35,9 @@
 .public MessageFormat_Delete
 .public BufferPocketName
 .public StringExpandPlaceholders
-.public sub_0200DD88
-.public sub_0200DE00
-.public sub_0200DEA0
+.public Sprite_SetPositionXY
+.public Sprite_GetPositionXY
+.public Sprite_AddPositionXY
 .public CreateSysTask
 .public sub_0200E33C
 .public DestroySysTask
@@ -121,11 +121,11 @@
 .public GX_EngineAToggleLayers
 .public GX_DisableEngineBLayers
 .public GX_EngineBToggleLayers
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_0202457C
 .public sub_02024714
 .public Sprite_Delete
-.public sub_020247D4
+.public Sprite_SetMatrix
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public sub_02024868

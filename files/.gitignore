@@ -33,6 +33,7 @@ a/1/4/1
 a/1/6/3
 a/1/6/9
 a/1/7/2
+a/1/7/5
 a/1/8/5
 a/1/9/4
 a/1/9/5
@@ -54,3 +55,4 @@ resource/eng/pms_aikotoba/pms_aikotoba.narc
 data/mmodel/mmodel.narc
 data/mushi/mushi_*.bin
 fielddata/tsurepoke/tp_param.narc
+data/resdat.narc

@@ -63,7 +63,7 @@
 .public GX_SetBanks
 .public GX_EngineAToggleLayers
 .public Camera_SetPerspectiveClippingPlane
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_02024714
 .public GF_AssertFail
 .public NNS_G3dGlbSetBaseTrans

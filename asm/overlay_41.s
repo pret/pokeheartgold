@@ -1709,7 +1709,7 @@ ov41_02246B34: ; 0x02246B34
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x44]
-	bl sub_02024504
+	bl SpriteList_Delete
 	mov r4, #0
 _02246B40:
 	ldr r0, [r5, #0x48]
@@ -9232,32 +9232,32 @@ ov41_0224A254: ; 0x0224A254
 
 	thumb_func_start ov41_0224A258
 ov41_0224A258: ; 0x0224A258
-	ldr r3, _0224A260 ; =sub_020249D4
+	ldr r3, _0224A260 ; =Sprite_SetAnimCtrlCurrentFrame
 	ldr r0, [r0]
 	mov r1, #2
 	bx r3
 	.balign 4, 0
-_0224A260: .word sub_020249D4
+_0224A260: .word Sprite_SetAnimCtrlCurrentFrame
 	thumb_func_end ov41_0224A258
 
 	thumb_func_start ov41_0224A264
 ov41_0224A264: ; 0x0224A264
-	ldr r3, _0224A26C ; =sub_020249D4
+	ldr r3, _0224A26C ; =Sprite_SetAnimCtrlCurrentFrame
 	ldr r0, [r0]
 	mov r1, #0
 	bx r3
 	.balign 4, 0
-_0224A26C: .word sub_020249D4
+_0224A26C: .word Sprite_SetAnimCtrlCurrentFrame
 	thumb_func_end ov41_0224A264
 
 	thumb_func_start ov41_0224A270
 ov41_0224A270: ; 0x0224A270
-	ldr r3, _0224A278 ; =sub_020249D4
+	ldr r3, _0224A278 ; =Sprite_SetAnimCtrlCurrentFrame
 	ldr r0, [r0]
 	mov r1, #1
 	bx r3
 	.balign 4, 0
-_0224A278: .word sub_020249D4
+_0224A278: .word Sprite_SetAnimCtrlCurrentFrame
 	thumb_func_end ov41_0224A270
 
 	thumb_func_start ov41_0224A27C
@@ -10213,7 +10213,7 @@ ov41_0224A9BC: ; 0x0224A9BC
 	ldr r0, [r5]
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r3, r0, #0
 	add r2, sp, #0
 	ldmia r3!, {r0, r1}
@@ -10231,7 +10231,7 @@ ov41_0224A9BC: ; 0x0224A9BC
 	str r0, [sp, #4]
 	ldr r0, [r5]
 	add r1, r7, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -11652,7 +11652,7 @@ ov41_0224B450: ; 0x0224B450
 	str r0, [sp, #4]
 	ldr r0, [r5, #4]
 	add r1, r2, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r6, r5, #0
 	add r6, #0x18
 	add r3, sp, #0
@@ -11667,7 +11667,7 @@ ov41_0224B450: ; 0x0224B450
 	str r0, [sp, #4]
 	ldr r0, [r5, #8]
 	add r1, r2, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	cmp r4, #0
 	beq _0224B4E2
 	mov r0, #0
@@ -12787,7 +12787,7 @@ ov41_0224BCF0: ; 0x0224BCF0
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	mov r1, #1
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	add sp, #0xc
 	pop {r3, r4, pc}
 	thumb_func_end ov41_0224BCF0
@@ -12947,7 +12947,7 @@ _0224BE9C:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, sp, #0x14
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0xc
 	mov r1, #0xd
 	bl String_New

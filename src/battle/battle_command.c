@@ -2103,35 +2103,35 @@ u32 CalcPrizeMoney(BattleSystem *bsys, BattleContext *ctx, int trainerIndex) {
     u32 prizeMoney;
     u8 level = 0;
     u8 trainerClass;
-    TRAINER trainer;
+    Trainer trainer;
 
     trPoke = AllocFromHeap(HEAP_ID_BATTLE, sizeof(TRPOKE)*6);
 
     TrainerData_ReadTrData(bsys->trainerId[trainerIndex], &trainer);
     TrainerData_ReadTrPoke(bsys->trainerId[trainerIndex], trPoke);
 
-    switch (trainer.trainerType) {
+    switch (trainer.data.trainerType) {
     default:
     case 0:
         TRPOKE_NOITEM_DFLTMOVES *pokeDef = (TRPOKE_NOITEM_DFLTMOVES *)trPoke;
-        level = pokeDef[trainer.npoke-1].level;
+        level = pokeDef[trainer.data.npoke-1].level;
         break;
     case 1:
         TRPOKE_NOITEM_CUSTMOVES *pokeCust = (TRPOKE_NOITEM_CUSTMOVES *)trPoke;
-        level = pokeCust[trainer.npoke-1].level;
+        level = pokeCust[trainer.data.npoke-1].level;
         break;
     case 2:
         TRPOKE_ITEM_DFLTMOVES *pokeItem = (TRPOKE_ITEM_DFLTMOVES *)trPoke;
-        level = pokeItem[trainer.npoke-1].level;
+        level = pokeItem[trainer.data.npoke-1].level;
         break;
     case 3:
         TRPOKE_ITEM_CUSTMOVES *pokeCustItem = (TRPOKE_ITEM_CUSTMOVES *)trPoke;
-        level = pokeCustItem[trainer.npoke-1].level;
+        level = pokeCustItem[trainer.data.npoke-1].level;
         break;
     }
 
     i = 0;
-    trainerClass = trainer.trainerClass;
+    trainerClass = trainer.data.trainerClass;
 
     do {
         if (trainerClass != sPrizeMoneyTbl[i][0]) {

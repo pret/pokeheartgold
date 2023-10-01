@@ -2279,7 +2279,7 @@ _0200F594:
 	sub r0, #0xb
 	ldr r0, [r4, r0]
 	ldr r0, [r0]
-	bl sub_020249F8
+	bl Sprite_GetAnimCtrlCurrentFrame
 	cmp r0, #6
 	bne _0200F5A8
 	ldr r0, _0200F5C0 ; =0x0000016F
@@ -2292,7 +2292,7 @@ _0200F5A8:
 	mov r1, #1
 	ldr r0, [r0]
 	lsl r1, r1, #0xc
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 	ldr r0, [r4]
 	bl sub_0202457C
 	pop {r3, r4, r5, pc}

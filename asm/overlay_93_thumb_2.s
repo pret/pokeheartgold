@@ -483,7 +483,7 @@ _0225FF2E:
 	strh r0, [r4, #0xc]
 	ldr r0, [r4, #0x10]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 _0225FF8E:
 	mov r0, #1
 	str r0, [r4]
@@ -494,7 +494,7 @@ _0225FF8E:
 	add r2, sp, #0
 	lsl r3, r3, #0x10
 	mov r5, #0
-	bl sub_0200DE94
+	bl UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 	ldrb r0, [r6, #7]
 	cmp r0, #3
 	bhi _0225FFE8
@@ -570,7 +570,7 @@ _02260004:
 	bne _02260064
 	ldr r0, [r4, #0x10]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	b _02260064
 _0226002C:
 	add r0, r5, #0
@@ -625,7 +625,7 @@ ov93_02260080: ; 0x02260080
 	add r2, sp, #4
 	lsl r3, r3, #0x10
 	mov r7, #0
-	bl sub_0200DE94
+	bl UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [r4, #0x14]
 	ldrb r0, [r0, #7]
 	cmp r0, #3
@@ -650,14 +650,14 @@ _022600B6:
 	mov r2, #5
 	ldr r0, [r4, #0x10]
 	lsl r2, r2, #0xc
-	bl sub_0200DEDC
+	bl UnkImageStruct_AddSpritePrecisePositionXY
 	add r1, sp, #8
 	mov r3, #0x16
 	ldr r0, [r4, #0x10]
 	add r1, #2
 	add r2, sp, #8
 	lsl r3, r3, #0x10
-	bl sub_0200DE94
+	bl UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 	add r1, sp, #4
 	mov r0, #4
 	ldrsh r1, [r1, r0]
@@ -675,14 +675,14 @@ _022600EC:
 	ldr r1, _02260270 ; =0xFFFFB000
 	add r2, r7, #0
 	sub r6, #0xcc
-	bl sub_0200DEDC
+	bl UnkImageStruct_AddSpritePrecisePositionXY
 	add r1, sp, #8
 	mov r3, #0x16
 	ldr r0, [r4, #0x10]
 	add r1, #2
 	add r2, sp, #8
 	lsl r3, r3, #0x10
-	bl sub_0200DE94
+	bl UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 	add r1, sp, #4
 	mov r0, #6
 	ldrsh r0, [r1, r0]
@@ -699,14 +699,14 @@ _02260120:
 	ldr r0, [r4, #0x10]
 	ldr r2, _02260270 ; =0xFFFFB000
 	sub r6, #0xa4
-	bl sub_0200DEDC
+	bl UnkImageStruct_AddSpritePrecisePositionXY
 	add r1, sp, #8
 	mov r3, #0x16
 	ldr r0, [r4, #0x10]
 	add r1, #2
 	add r2, sp, #8
 	lsl r3, r3, #0x10
-	bl sub_0200DE94
+	bl UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 	add r1, sp, #4
 	mov r0, #4
 	ldrsh r0, [r1, r0]
@@ -726,14 +726,14 @@ _02260152:
 	mov r1, #5
 	ldr r0, [r4, #0x10]
 	lsl r1, r1, #0xc
-	bl sub_0200DEDC
+	bl UnkImageStruct_AddSpritePrecisePositionXY
 	add r1, sp, #8
 	mov r3, #0x16
 	ldr r0, [r4, #0x10]
 	add r1, #2
 	add r2, sp, #8
 	lsl r3, r3, #0x10
-	bl sub_0200DE94
+	bl UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 	add r1, sp, #4
 	mov r0, #6
 	ldrsh r1, [r1, r0]
@@ -890,7 +890,7 @@ _0226028A:
 	ldr r0, [r2, #0x24]
 	ldr r1, [r2, #0x28]
 	add r2, sp, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	mov r1, #0
 	mov r2, #2
 	mov r3, #0x16
@@ -898,15 +898,15 @@ _0226028A:
 	ldrsh r2, [r5, r2]
 	lsl r3, r3, #0x10
 	add r4, r0, #0
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldrh r1, [r5, #4]
 	add r0, r4, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	add r0, r4, #0
 	mov r1, #2
 	bl sub_0200DF98
 	ldr r0, [r4]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	add r0, r4, #0
 	add sp, #0x34
 	pop {r3, r4, r5, r6, pc}
@@ -1017,19 +1017,19 @@ _02260396:
 	add r5, r0, r1
 	ldr r0, [r7, #0x24]
 	ldr r1, [r7, #0x28]
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r6, r0, #0
 	beq _02260446
 	mov r3, #0x16
 	mov r1, #0x80
 	mov r2, #0x60
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r1, [sp, #0x10]
 	add r0, r6, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r6]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x13
@@ -1117,22 +1117,22 @@ _0226046E:
 	ldr r0, [r7, #0x24]
 	ldr r1, [r7, #0x28]
 	add r2, sp, #0x34
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r5, r0, #0
 	beq _02260528
 	mov r3, #0x16
 	mov r1, #0x80
 	mov r2, #0x60
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	bl LCRandom
 	mov r1, #3
 	bl _s32_div_f
 	add r0, r5, #0
 	add r1, #0x1c
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x13
@@ -1213,19 +1213,19 @@ _02260544:
 	ldr r0, [r7, #0x24]
 	ldr r1, [r7, #0x28]
 	add r2, sp, #0x34
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r5, r0, #0
 	beq _022605F2
 	mov r3, #0x16
 	mov r1, #0x80
 	mov r2, #0x60
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	add r0, r5, #0
 	mov r1, #0xb
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x13
@@ -1445,7 +1445,7 @@ _022606B0:
 	mov r3, #0x16
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	mov r0, #0x14
 	ldrsh r0, [r5, r0]
 	add r4, r4, #1
@@ -1549,7 +1549,7 @@ _02260784:
 	mov r3, #0x16
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	mov r0, #0x14
 	ldrsh r0, [r5, r0]
 	add r4, r4, #1
@@ -1652,7 +1652,7 @@ _02260856:
 	mov r3, #0x16
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	mov r0, #0x14
 	ldrsh r0, [r5, r0]
 	add r4, r4, #1
@@ -1758,7 +1758,7 @@ _02260994:
 	str r0, [r5]
 	ldr r0, [r3, #0x24]
 	ldr r1, [r3, #0x28]
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	mov r3, #0x16
 	lsl r2, r4, #4
 	mov r1, #0x48
@@ -1768,15 +1768,15 @@ _02260994:
 	asr r1, r1, #0x10
 	mov r2, #0x20
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_0200DC78
+	bl UnkImageStruct_SetSpriteAnimActiveFlag
 	add r0, r5, #0
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
@@ -1800,7 +1800,7 @@ _022609EC:
 	bl ov93_02260A58
 	ldr r0, [r5]
 	add r1, r6, #0
-	bl sub_0200DC34
+	bl UnkImageStruct_TickSpriteAnimationNFrames
 	mov r0, #1
 	lsl r0, r0, #0xe
 	add r4, r4, #1
@@ -1897,7 +1897,7 @@ ov93_02260A8C: ; 0x02260A8C
 	ldr r0, [r5]
 	add r1, #2
 	lsl r3, r3, #0x10
-	bl sub_0200DE94
+	bl UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 	add r1, sp, #0
 	mov r0, #2
 	ldrsh r2, [r1, r0]
@@ -1918,7 +1918,7 @@ _02260AC2:
 	mov r3, #0x16
 	ldr r0, [r5]
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 _02260AD6:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov93_02260A8C
@@ -1951,14 +1951,14 @@ ov93_02260AD8: ; 0x02260AD8
 	strb r0, [r4, #5]
 	ldrb r1, [r4, #4]
 	ldr r0, [r4]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	mov r1, #7
 	mov r3, #0x16
 	ldr r0, [r4]
 	mvn r1, r1
 	mov r2, #0x20
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, _02260B68 ; =0x0000380C
 	mov r2, #0
 	add r3, r5, r0
@@ -1990,7 +1990,7 @@ _02260B44:
 	ldrb r1, [r4, #4]
 	ldr r0, [r4]
 	add r1, r1, #3
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, _02260B6C ; =0x00000596
 	bl PlaySE
 _02260B66:
@@ -2030,7 +2030,7 @@ _02260B8C:
 	strb r0, [r1, #5]
 	ldr r0, [r1]
 	mov r1, #6
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	pop {r3, pc}
 _02260BA0:
 	add r2, r2, #1
@@ -2747,7 +2747,7 @@ _022610D0:
 	ldr r0, [r7, #0x24]
 	ldr r1, [r7, #0x28]
 	add r2, sp, #4
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	mov r3, #0x16
 	str r0, [r4]
 	mov r1, #0
@@ -2755,16 +2755,16 @@ _022610D0:
 	ldrsh r1, [r5, r1]
 	ldrsh r2, [r5, r2]
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	lsr r1, r6, #0x1f
 	add r1, r6, r1
 	asr r1, r1, #1
 	ldr r0, [r4]
 	add r1, #0x1f
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	add r6, r6, #1
 	add r4, r4, #4
 	add r5, r5, #4
@@ -2783,18 +2783,18 @@ _0226111E:
 	ldr r0, [sp]
 	mov r1, #0
 	ldr r0, [r0, #8]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [sp]
 	mov r1, #0
 	ldr r0, [r0, #0xc]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 _02261136:
 	ldr r0, [sp]
 	mov r1, #0
 	ldr r0, [r0, #4]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2882,7 +2882,7 @@ _02261186:
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
 	add r2, sp, #0xc
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	ldr r2, [sp, #4]
 	lsl r1, r6, #0x10
 	sub r2, #0x18
@@ -2892,39 +2892,39 @@ _02261186:
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldrh r1, [r7, #2]
 	ldr r0, [r4]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
 	ldr r2, _022612D8 ; =ov93_02262ED0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	mov r1, #0
 	mov r3, #0x16
 	add r2, r1, #0
 	lsl r3, r3, #0x10
 	str r0, [r4, #4]
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [r4, #4]
 	mov r1, #0x21
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r4, #4]
 	ldr r0, [r0]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	ldr r0, [r4, #4]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
 	ldr r2, _022612DC ; =ov93_02262F04
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	ldr r2, [sp, #4]
 	lsl r1, r6, #0x10
 	lsl r2, r2, #0x10
@@ -2933,7 +2933,7 @@ _02261186:
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [r4, #8]
 	mov r1, #1
 	bl sub_0200E0FC
@@ -2948,13 +2948,13 @@ _02261186:
 	ldr r1, [sp, #8]
 	ldr r0, [r4, #8]
 	add r1, #0x22
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r4, #8]
 	ldr r0, [r0]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	ldr r0, [r4, #8]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r1, r4, #0
 	add r0, r5, #0
 	add r1, #0x30
@@ -2971,11 +2971,11 @@ _022612B4:
 	ldr r0, [sp]
 	mov r1, #1
 	ldr r0, [r0]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [sp]
 	mov r1, #1
 	ldr r0, [r0, #8]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add sp, #0x40
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3348,17 +3348,17 @@ ov93_02261554: ; 0x02261554
 _02261574:
 	ldr r0, [r5]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r5, #8]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r1, sp, #0
 	mov r3, #0x16
 	ldr r0, [r5]
 	add r1, #2
 	add r2, sp, #0
 	lsl r3, r3, #0x10
-	bl sub_0200DE94
+	bl UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 	add r1, sp, #0
 	mov r0, #2
 	ldrsh r0, [r1, r0]
@@ -3471,7 +3471,7 @@ _02261658:
 	ldrsh r2, [r5, r2]
 	ldr r0, [r5]
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	mov r2, #0x1e
 	ldrsh r2, [r5, r2]
 	mov r1, #0x1c
@@ -3482,7 +3482,7 @@ _02261658:
 	ldr r0, [r5, #8]
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	add r0, r5, #0
 	mov r1, #2
 	bl ov93_02261528
@@ -3528,7 +3528,7 @@ _022616A0:
 	ldr r0, [r5]
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	add r3, sp, #0
 	mov r2, #0
 	ldrsh r2, [r3, r2]
@@ -3540,7 +3540,7 @@ _022616A0:
 	ldr r0, [r5, #8]
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	neg r0, r4
 	mov r1, #3
 	bl _s32_div_f
@@ -3590,12 +3590,12 @@ ov93_02261744: ; 0x02261744
 	bl _s32_div_f
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_0200DC34
+	bl UnkImageStruct_TickSpriteAnimationNFrames
 	b _0226177C
 _02261774:
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 _0226177C:
 	add r0, r5, #0
 	add r0, #0xf3
@@ -3680,7 +3680,7 @@ _0226177C:
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r2, [sp, #4]
 	lsl r1, r6, #0x10
 	lsl r2, r2, #0x10
@@ -3689,7 +3689,7 @@ _0226177C:
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	neg r0, r7
 	mov r1, #3
 	bl _s32_div_f
@@ -3779,7 +3779,7 @@ _022618E8:
 	add r1, #2
 	add r2, sp, #8
 	lsl r3, r3, #0x10
-	bl sub_0200DE94
+	bl UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 	add r3, sp, #4
 	mov r2, #4
 	ldrsh r2, [r3, r2]
@@ -3791,20 +3791,20 @@ _022618E8:
 	ldr r0, [r4, #4]
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [r4, #4]
 	mov r1, #0x21
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r4, #4]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldrb r1, [r4, #0x14]
 	ldr r0, [r4]
 	lsl r2, r1, #1
 	ldr r1, _02261BAC ; =ov93_02262C7A
 	ldrh r1, [r1, r2]
 	add r1, r1, #2
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	add r0, r5, #0
 	add r0, #0xf4
 	ldrb r0, [r0]
@@ -3833,27 +3833,27 @@ _0226195A:
 	ldr r1, _02261BAC ; =ov93_02262C7A
 	ldrh r1, [r1, r2]
 	add r1, r1, #1
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r4, #4]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r1, #1
 	ldr r0, [r4, #4]
 	lsl r1, r1, #0xe
-	bl sub_0200DC34
+	bl UnkImageStruct_TickSpriteAnimationNFrames
 _02261984:
 	ldrb r0, [r4, #0x12]
 	cmp r0, #0
 	bne _022619A8
 	ldr r0, [r4, #4]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldrb r1, [r4, #0x14]
 	ldr r0, [r4]
 	lsl r2, r1, #1
 	ldr r1, _02261BAC ; =ov93_02262C7A
 	ldrh r1, [r1, r2]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldrb r0, [r4, #0x11]
 	add r0, r0, #1
 	strb r0, [r4, #0x11]
@@ -3937,7 +3937,7 @@ _02261A0C:
 	add r1, #2
 	add r2, sp, #4
 	lsl r3, r3, #0x10
-	bl sub_0200DE94
+	bl UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 	add r1, sp, #4
 	mov r3, #0
 	ldrsh r0, [r1, r3]
@@ -4053,14 +4053,14 @@ _02261ACA:
 	ldr r0, [r4]
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	mov r0, #0xb
 	ldr r1, [r4, #0x18]
 	lsl r0, r0, #0xe
 	bl _s32_div_f
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl sub_0200DC34
+	bl UnkImageStruct_TickSpriteAnimationNFrames
 	ldr r2, [r4, #0x28]
 	ldr r3, [r4, #0x2c]
 	asr r1, r2, #0xb
@@ -4076,7 +4076,7 @@ _02261ACA:
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldrb r0, [r4, #0x12]
 	sub r0, r0, #1
 	strb r0, [r4, #0x12]
@@ -4088,10 +4088,10 @@ _02261ACA:
 	lsl r2, r1, #1
 	ldr r1, _02261BAC ; =ov93_02262C7A
 	ldrh r1, [r1, r2]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r4]
 	add r1, r7, #0
-	bl sub_0200DCC0
+	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	add r0, r4, #0
 	mov r1, #2
 	bl ov93_02261528
@@ -4133,33 +4133,33 @@ _02261BDC:
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
 	add r2, sp, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	mov r1, #0
 	str r0, [r4]
 	add r2, r1, #0
 	add r3, r7, #0
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
 	ldr r2, _02261C38 ; =ov93_02262ED0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	mov r1, #0
 	str r0, [r4, #4]
 	add r2, r1, #0
 	add r3, r7, #0
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [r4, #4]
 	mov r1, #0x21
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r4, #4]
 	ldr r0, [r0]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	ldr r0, [r4, #4]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r6, r6, #1
 	add r4, #0x18
 	cmp r6, #3
@@ -4232,12 +4232,12 @@ _02261C8A:
 	lsl r1, r7, #1
 	add r2, r2, r3
 	ldrh r1, [r1, r2]
-	bl sub_0200DD10
+	bl UnkImageStruct_SetSpritePalIndex
 	ldr r1, _02261D0C ; =ov93_02262C7A
 	lsl r2, r5, #1
 	ldrh r1, [r1, r2]
 	ldr r0, [r4]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r6]
 	mov r3, #0x16
 	add r0, #0x30
@@ -4260,10 +4260,10 @@ _02261C8A:
 	sub r2, #0x60
 	lsl r2, r2, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	ldr r0, [sp, #0x18]
 	strb r5, [r4, #0x12]
 	sub r0, #0xc
@@ -4333,7 +4333,7 @@ _02261D60:
 	add r1, #2
 	add r2, sp, #0
 	lsl r3, r3, #0x10
-	bl sub_0200DE94
+	bl UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 	add r1, sp, #0
 	mov r0, #2
 	ldrsh r0, [r1, r0]
@@ -4357,7 +4357,7 @@ _02261D88:
 _02261D96:
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #2
 	ldr r1, [r4, #0xc]
 	lsl r0, r0, #0xe
@@ -4384,7 +4384,7 @@ _02261DC4:
 	add r1, #2
 	add r2, sp, #0
 	lsl r3, r3, #0x10
-	bl sub_0200DE94
+	bl UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 	add r3, sp, #0
 	mov r2, #0
 	ldrsh r2, [r3, r2]
@@ -4396,13 +4396,13 @@ _02261DC4:
 	ldr r0, [r4, #4]
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [r4, #4]
 	mov r1, #0x21
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r4, #4]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, _02261EB0 ; =0x00000593
 	bl PlaySE
 	ldrb r1, [r4, #0x12]
@@ -4411,7 +4411,7 @@ _02261DC4:
 	ldr r1, _02261EB4 ; =ov93_02262C7A
 	ldrh r1, [r1, r2]
 	add r1, r1, #2
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	mov r0, #8
 	strb r0, [r4, #0x14]
 	ldrb r0, [r4, #0x13]
@@ -4428,20 +4428,20 @@ _02261E20:
 	mov r1, #1
 	ldr r0, [r4, #4]
 	lsl r1, r1, #0xe
-	bl sub_0200DC34
+	bl UnkImageStruct_TickSpriteAnimationNFrames
 _02261E36:
 	ldrb r0, [r4, #0x14]
 	cmp r0, #0
 	bne _02261E88
 	ldr r0, [r4, #4]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldrb r1, [r4, #0x12]
 	ldr r0, [r4]
 	lsl r2, r1, #1
 	ldr r1, _02261EB4 ; =ov93_02262C7A
 	ldrh r1, [r1, r2]
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldrb r0, [r4, #0x13]
 	add r0, r0, #1
 	strb r0, [r4, #0x13]
@@ -4463,7 +4463,7 @@ _02261E5A:
 	bgt _02261E88
 	ldr r0, [r4]
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #0
 	strb r0, [r4, #0x13]
 	add sp, #4
@@ -4485,7 +4485,7 @@ _02261E88:
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	mov r0, #1
 	add sp, #4
 	pop {r3, r4, pc}
@@ -4974,10 +4974,10 @@ ov93_02262230: ; 0x02262230
 	ldr r0, [r1, #0x24]
 	ldr r1, [r1, #0x28]
 	ldr r2, _0226224C ; =ov93_02262F6C
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	add r0, r4, #0
 	pop {r4, pc}
 	nop
@@ -5115,12 +5115,12 @@ ov93_02262344: ; 0x02262344
 	ldr r0, [r1, #0x24]
 	ldr r1, [r1, #0x28]
 	ldr r2, _02262364 ; =ov93_02262FA0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r4, r0, #0
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -5168,10 +5168,10 @@ _022623A2:
 	mov r1, #0x80
 	mov r2, #0x10
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #4
 	ldrsh r0, [r4, r0]
 	add r0, r0, #1
@@ -5206,7 +5206,7 @@ _022623EA:
 	add r0, r0, #6
 	str r0, [r4, #0x10]
 	ldr r0, [r4]
-	bl sub_0200DED0
+	bl UnkImageStruct_AddSpritePositionXY
 	ldr r0, [r4, #0x10]
 	cmp r0, #0x60
 	ble _0226243E
@@ -5219,7 +5219,7 @@ _0226240C:
 	mov r1, #0
 	str r1, [r4, #0x14]
 	ldr r0, [r4]
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #4
 	ldrsh r0, [r4, r0]
 	add r0, r0, #1
@@ -5258,18 +5258,18 @@ _0226244C:
 	ldr r0, [r7, #0x24]
 	ldr r1, [r7, #0x28]
 	ldr r2, _02262480 ; =ov93_02262F38
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r4, r0, #0
 	mov r1, #0x1b
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_0200E0FC
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	add r6, r6, #1
 	stmia r5!, {r4}
 	cmp r6, #2
@@ -5306,7 +5306,7 @@ ov93_0226249C: ; 0x0226249C
 	add r1, #2
 	add r2, sp, #4
 	lsl r3, r3, #0x10
-	bl sub_0200DE94
+	bl UnkImageStruct_GetSpritePositionXY_CustomScreenYOffset
 	ldr r5, [sp]
 	mov r4, #0
 	add r6, sp, #4
@@ -5322,16 +5322,16 @@ _022624BA:
 	ldr r0, [r5]
 	asr r2, r2, #0x10
 	lsl r3, r3, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [r5]
 	mov r1, #0x1b
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5]
 	mov r1, #1
 	bl sub_0200E0FC
 	ldr r0, [r5]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	bl LCRandom
 	lsr r1, r0, #0x1f
 	lsl r2, r0, #0x14
@@ -5392,10 +5392,10 @@ _02262552:
 	ldr r0, [r5]
 	ldr r1, [r5, #8]
 	neg r2, r2
-	bl sub_0200DEDC
+	bl UnkImageStruct_AddSpritePrecisePositionXY
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #2
@@ -5412,7 +5412,7 @@ _02262552:
 _02262580:
 	ldr r0, [r4]
 	add r1, r7, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #2

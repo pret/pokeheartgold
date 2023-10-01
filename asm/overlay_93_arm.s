@@ -842,7 +842,7 @@ ov93_0225F9D8: ; 0x0225F9D8
 	ldr r1, [r5, #0x28]
 	mov r2, r4
 	mov r3, #0x37
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _0225FAB8 ; =0x00002713
@@ -851,7 +851,7 @@ ov93_0225F9D8: ; 0x0225F9D8
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
 	mov r3, #0x39
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _0225FAB8 ; =0x00002713
@@ -860,7 +860,7 @@ ov93_0225F9D8: ; 0x0225F9D8
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
 	mov r3, #0x38
-	bl sub_0200D71C
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
 	mov r0, r4
 	bl NARC_Delete
 	add sp, sp, #0x18
@@ -876,16 +876,16 @@ ov93_0225FABC: ; 0x0225FABC
 	mov r4, r0
 	ldr r0, [r4, #0x28]
 	ldr r1, _0225FAF8 ; =0x00002713
-	bl sub_0200D958
+	bl SpriteGfxHandler_UnloadCharObjById
 	ldr r0, [r4, #0x28]
 	ldr r1, _0225FAF8 ; =0x00002713
-	bl sub_0200D978
+	bl SpriteGfxHandler_UnloadCellObjById
 	ldr r0, [r4, #0x28]
 	ldr r1, _0225FAF8 ; =0x00002713
-	bl sub_0200D988
+	bl SpriteGfxHandler_UnloadAnimObjById
 	ldr r0, [r4, #0x28]
 	ldr r1, _0225FAFC ; =0x00002715
-	bl sub_0200D968
+	bl SpriteGfxHandler_UnloadPlttObjById
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
 _0225FAF8: .word 0x00002713
@@ -911,12 +911,12 @@ ov93_0225FB00: ; 0x0225FB00
 	str r0, [ip]
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	mov r4, r0
 	mov r1, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r4]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	mov r0, r4
 	add sp, sp, #0x34
 	ldmia sp!, {r4, r5, pc}
@@ -949,12 +949,12 @@ _0225FB94:
 	mov r1, r1, asr #0x10
 	mov r2, r2, asr #0x10
 	mov r3, #0x160000
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	mov r0, r5
 	mov r1, r4
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
 _0225FBE0: .word ov93_02262C07

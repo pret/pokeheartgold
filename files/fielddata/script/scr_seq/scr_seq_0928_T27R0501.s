@@ -201,6 +201,7 @@ _0220:
 	step 60, 1
 	step 1, 1
 	step_end
+
 scr_seq_T27R0501_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall

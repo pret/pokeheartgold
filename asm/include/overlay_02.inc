@@ -129,12 +129,12 @@
 .public Camera_SetLookAtCamTarget
 .public Camera_SetLookAtCamPos
 .public sub_02023E78
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_02024544
 .public sub_0202457C
 .public sub_02024714
 .public Sprite_Delete
-.public sub_020247D4
+.public Sprite_SetMatrix
 .public sub_020247E4
 .public sub_020247F4
 .public sub_02024818
@@ -142,10 +142,10 @@
 .public Set2dSpriteAnimActiveFlag
 .public sub_02024868
 .public sub_0202487C
-.public sub_020248AC
+.public Sprite_GetMatrixPtr
 .public sub_020248B0
 .public Set2dSpriteAnimSeqNo
-.public sub_02024ADC
+.public Sprite_SetDrawPriority
 .public GF_AssertFail
 .public String_New
 .public String_Delete

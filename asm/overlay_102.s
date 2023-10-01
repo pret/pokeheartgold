@@ -1140,7 +1140,7 @@ ov102_021E7F6C: ; 0x021E7F6C
 	add r1, #2
 	add r2, sp, #0
 	add r6, r0, #0
-	bl sub_0200DE00
+	bl Sprite_GetPositionXY
 	add r0, r5, #0
 	add r0, #0x6c
 	ldrb r0, [r0]
@@ -1192,7 +1192,7 @@ _021E7FD8:
 	ldrsh r2, [r3, r2]
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	add r0, r5, #0
 	add r0, #0x6e
 	strh r4, [r0]
@@ -3636,7 +3636,7 @@ _021E9166:
 	bl DestroySysTask
 	bl OamManager_Free
 	ldr r0, [r6, #0x24]
-	bl sub_02024504
+	bl SpriteList_Delete
 	add r0, r6, #0
 	bl ov102_021E91BC
 	ldr r0, [r6, #0x20]
@@ -6460,12 +6460,12 @@ _021EA794:
 	ldr r0, [r5, #0x60]
 	mov r1, #0
 	asr r2, r2, #0x10
-	bl sub_0200DEA0
+	bl Sprite_AddPositionXY
 	lsl r2, r4, #0x10
 	ldr r0, [r5, #0x64]
 	mov r1, #0
 	asr r2, r2, #0x10
-	bl sub_0200DEA0
+	bl Sprite_AddPositionXY
 	mov r0, #0x79
 	lsl r0, r0, #2
 	ldrb r1, [r5, r0]
@@ -7013,7 +7013,7 @@ ov102_021EAC20: ; 0x021EAC20
 	lsl r1, r1, #0x10
 	asr r1, r1, #0x10
 	mov r2, #0x40
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 _021EAC40:
 	pop {r4, pc}
 	.balign 4, 0
@@ -7565,7 +7565,7 @@ _021EB022:
 _021EB032:
 	ldr r0, [r4, #0x60]
 	add r1, sp, #4
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, _021EB084 ; =0x000001E2
 	ldrsh r1, [r4, r0]
 	mov r0, #0xc0
@@ -7592,7 +7592,7 @@ _021EB066:
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x64]
 	add r1, sp, #4
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r4, #0
 	mov r1, #1
 	bl ov102_021EB088
@@ -8233,7 +8233,7 @@ _021EB550:
 _021EB55C:
 	ldr r0, [r4, #0xc]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r4, #0xc]
 	mov r1, #2
 	bl Set2dSpriteAnimSeqNo
@@ -8853,7 +8853,7 @@ _021EBA22:
 	lsl r0, r0, #0xc
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x5c]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r4, #0x5c]
 	add r1, r5, #0
 	bl Set2dSpriteAnimSeqNo
@@ -9559,7 +9559,7 @@ ov102_021EBF38: ; 0x021EBF38
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x30]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r4, #0x30]
 	mov r1, #0x10
 	bl Set2dSpriteAnimSeqNo
@@ -9584,7 +9584,7 @@ _021EBF6A:
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x30]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r4, #0x30]
 	mov r1, #8
 	bl Set2dSpriteAnimSeqNo

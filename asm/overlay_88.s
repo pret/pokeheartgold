@@ -642,7 +642,7 @@ ov88_02258D38: ; 0x02258D38
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #4]
-	bl sub_02024504
+	bl SpriteList_Delete
 	mov r6, #0x13
 	mov r4, #0
 	lsl r6, r6, #4

@@ -62,14 +62,14 @@
 .public sub_02022638
 .public GX_SetBanks
 .public GX_EngineBToggleLayers
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
 .public Sprite_Delete
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public Set2dSpriteAnimSeqNo
-.public sub_02024A04
+.public Sprite_SetPriority
 .public GF_AssertFail
 .public String_New
 .public String_Delete

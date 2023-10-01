@@ -547,7 +547,7 @@ BOOL ChooseStarterApplication_OvyExit(OVY_MANAGER *ovy, int *state) {
     freeAll3dAnmObj(work);
     freeAll3dResHeader(work);
     freeAllMonSprite2dResObj(&work->monSpriteData);
-    sub_02024504(work->monSpriteData.spriteList);
+    SpriteList_Delete(work->monSpriteData.spriteList);
     Destroy2DGfxResObjMan(work->monSpriteData.charResMan);
     Destroy2DGfxResObjMan(work->monSpriteData.plttResMan);
     Destroy2DGfxResObjMan(work->monSpriteData.cellResMan);

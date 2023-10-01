@@ -3,9 +3,9 @@
 .public PaletteData_LoadPalette
 .public PlaySE
 .public sub_0200D020
-.public sub_0200DC18
-.public sub_0200DC4C
-.public sub_0200DED0
+.public UnkImageStruct_TickSpriteAnimation1Frame
+.public UnkImageStruct_SetSpriteAnimSeqNo
+.public UnkImageStruct_AddSpritePositionXY
 .public sub_0200E024
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished

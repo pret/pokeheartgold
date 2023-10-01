@@ -713,7 +713,7 @@ _02233C24:
 	ldr r0, [r4, #0x30]
 	ldr r7, [r0]
 	add r0, r7, #0
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r3, r0, #0
 	ldmia r3!, {r0, r1}
 	add r2, sp, #0x38
@@ -723,7 +723,7 @@ _02233C24:
 	ldr r0, [r4, #0x40]
 	ldr r5, [r0]
 	add r0, r5, #0
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r6, r0, #0
 	add r3, sp, #0x2c
 	ldmia r6!, {r0, r1}
@@ -733,14 +733,14 @@ _02233C24:
 	add r1, r2, #0
 	str r0, [r3]
 	add r0, r7, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r5, #0
 	add r1, sp, #0x38
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r4, #0x50]
 	ldr r7, [r0]
 	add r0, r7, #0
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r3, r0, #0
 	ldmia r3!, {r0, r1}
 	add r2, sp, #0x38
@@ -750,7 +750,7 @@ _02233C24:
 	ldr r0, [r4, #0x60]
 	ldr r5, [r0]
 	add r0, r5, #0
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r6, r0, #0
 	add r3, sp, #0x2c
 	ldmia r6!, {r0, r1}
@@ -760,10 +760,10 @@ _02233C24:
 	add r1, r2, #0
 	str r0, [r3]
 	add r0, r7, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r5, #0
 	add r1, sp, #0x38
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [sp, #0x10]
 	add r4, r4, #4
 	add r1, r0, #1
@@ -816,7 +816,7 @@ _02233D00:
 	ldr r0, [r4, #0x30]
 	add r1, r6, #0
 	ldr r0, [r0]
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	ldr r0, [sp, #0x14]
 	add r5, r5, #1
 	add r4, r4, #4
@@ -833,7 +833,7 @@ _02233D1E:
 	ldr r0, [r4, #0x40]
 	add r1, r6, #0
 	ldr r0, [r0]
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, r7

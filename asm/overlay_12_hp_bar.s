@@ -25,7 +25,7 @@ ov12_02264824: ; 0x02264824
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	str r4, [sp]
 	mov r0, #0x47
 	str r0, [sp, #4]
@@ -48,7 +48,7 @@ ov12_02264824: ; 0x02264824
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	ldr r3, [r7, #0x20]
 	mov r0, #1
 	str r0, [sp]
@@ -56,7 +56,7 @@ ov12_02264824: ; 0x02264824
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_0200D71C
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
 	str r4, [sp]
 	mov r0, #0x47
 	str r0, [sp, #4]
@@ -122,7 +122,7 @@ ov12_022648EC: ; 0x022648EC
 	add r0, r6, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	str r5, [sp]
 	mov r0, #0x47
 	str r0, [sp, #4]
@@ -145,7 +145,7 @@ ov12_022648EC: ; 0x022648EC
 	add r0, r6, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	ldr r3, [r4, #0x20]
 	mov r0, #1
 	str r0, [sp]
@@ -153,7 +153,7 @@ ov12_022648EC: ; 0x022648EC
 	add r1, r7, #0
 	add r2, r5, #0
 	str r3, [sp, #4]
-	bl sub_0200D71C
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
 _0226495E:
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
@@ -172,10 +172,10 @@ ov12_02264968: ; 0x02264968
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_02264968
@@ -447,13 +447,13 @@ ov12_02264B60: ; 0x02264B60
 	bl ov12_0223A8EC
 	ldr r1, [r4, #0x14]
 	add r5, r0, #0
-	bl sub_0200D958
+	bl SpriteGfxHandler_UnloadCharObjById
 	ldr r1, [r4, #0x1c]
 	add r0, r5, #0
-	bl sub_0200D978
+	bl SpriteGfxHandler_UnloadCellObjById
 	ldr r1, [r4, #0x20]
 	add r0, r5, #0
-	bl sub_0200D988
+	bl SpriteGfxHandler_UnloadAnimObjById
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_02264B60
 
@@ -472,13 +472,13 @@ ov12_02264B94: ; 0x02264B94
 	bl ov12_0223A8EC
 	ldr r1, [r4, #0x14]
 	add r5, r0, #0
-	bl sub_0200D958
+	bl SpriteGfxHandler_UnloadCharObjById
 	ldr r1, [r4, #0x1c]
 	add r0, r5, #0
-	bl sub_0200D978
+	bl SpriteGfxHandler_UnloadCellObjById
 	ldr r1, [r4, #0x20]
 	add r0, r5, #0
-	bl sub_0200D988
+	bl SpriteGfxHandler_UnloadAnimObjById
 _02264BC8:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -547,7 +547,7 @@ BattleHpBar_LoadResources: ; 0x02264BCC
 	lsl r1, r1, #0x10
 	ldrsh r2, [r4, r2]
 	asr r1, r1, #0x10
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 _02264C5A:
 	add r0, r6, #0
 	bl NARC_Delete
@@ -875,7 +875,7 @@ ov12_02264EB4: ; 0x02264EB4
 	ldr r0, [r4, #8]
 	mov r1, #0
 	ldr r0, [r0]
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	add r0, r4, #0
 	mov r1, #0
 	bl ov12_02264F00
@@ -893,12 +893,12 @@ ov12_02264EE0: ; 0x02264EE0
 	add r4, r1, #0
 	cmp r0, #0
 	beq _02264EFC
-	bl sub_0200DD54
+	bl UnkImageStruct_SetSpritePriority
 	ldr r0, [r5, #8]
 	cmp r0, #0
 	beq _02264EFC
 	add r1, r4, #0
-	bl sub_0200DD54
+	bl UnkImageStruct_SetSpritePriority
 _02264EFC:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -923,7 +923,7 @@ ov12_02264F00: ; 0x02264F00
 _02264F1E:
 	ldr r0, [r5, #8]
 	add r1, r4, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 _02264F26:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_02264F00
@@ -936,7 +936,7 @@ BattleHpBar_SetEnabled: ; 0x02264F28
 	add r4, r1, #0
 	cmp r0, #0
 	beq _02264F40
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov12_02264F00
@@ -973,7 +973,7 @@ _02264F56:
 	ldr r0, [r0]
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	ldr r0, [r5, #8]
 	cmp r0, #0
 	beq _02264FA8
@@ -993,7 +993,7 @@ _02264F56:
 	add r2, r2, r7
 	lsl r2, r2, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 _02264FA8:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -1101,7 +1101,7 @@ ov12_02265054: ; 0x02265054
 	ldr r0, [r5, #4]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE44
+	bl UnkImageStruct_GetSpritePositionXY
 	add r0, r5, #0
 	add r0, #0x25
 	ldrb r0, [r0]
@@ -1196,7 +1196,7 @@ _02265118:
 	ldrsh r1, [r2, r1]
 	ldrsh r2, [r2, r3]
 	ldr r0, [r5, #4]
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 	ldr r0, [r5, #8]
 	cmp r0, #0
 	beq _0226514C
@@ -1213,7 +1213,7 @@ _02265118:
 	sub r1, r3, r1
 	lsl r1, r1, #0x10
 	asr r1, r1, #0x10
-	bl sub_0200DDB8
+	bl UnkImageStruct_SetSpritePositionXY
 _0226514C:
 	cmp r4, #0
 	ble _02265164
@@ -2687,7 +2687,7 @@ _02265CB4:
 	ldr r0, [r4]
 	add r1, r5, #0
 	ldr r0, [r0, #4]
-	bl sub_0200DD10
+	bl UnkImageStruct_SetSpritePalIndex
 	strb r5, [r4, #9]
 	ldrb r0, [r4, #8]
 	add r0, r0, #1
@@ -2753,7 +2753,7 @@ _02265D38:
 	add r1, r0, #0
 	ldr r0, [r4]
 	ldr r0, [r0, #4]
-	bl sub_0200DD10
+	bl UnkImageStruct_SetSpritePalIndex
 	ldr r0, [r4, #4]
 	mov r1, #1
 	strb r1, [r0]

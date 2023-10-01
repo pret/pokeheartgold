@@ -221,15 +221,15 @@ static void sub_0205316C(FieldSystem *fieldSystem) {
     if (fieldSystem->unkAC) {
         gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
         playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->saveData));
-        fieldSystem->playerAvatar = sub_0205C390(fieldSystem->mapObjectMan, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, playerSaveData->unk4, gender, 2, playerSaveData);
+        fieldSystem->playerAvatar = sub_0205C390(fieldSystem->mapObjectManager, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, playerSaveData->unk4, gender, 2, playerSaveData);
     } else {
-        fieldSystem->mapObjectMan = sub_0205E0BC(fieldSystem, 64, HEAP_ID_BATTLE);
+        fieldSystem->mapObjectManager = sub_0205E0BC(fieldSystem, 64, HEAP_ID_BATTLE);
         gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
         playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->saveData));
-        fieldSystem->playerAvatar = sub_0205C390(fieldSystem->mapObjectMan, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, playerSaveData->unk4, gender, 2, playerSaveData);
-        sub_020699F8(fieldSystem->mapObjectMan, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, fieldSystem->location->mapId);
+        fieldSystem->playerAvatar = sub_0205C390(fieldSystem->mapObjectManager, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, playerSaveData->unk4, gender, 2, playerSaveData);
+        sub_020699F8(fieldSystem->mapObjectManager, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, fieldSystem->location->mapId);
         Field_InitMapObjectsFromZoneEventData(fieldSystem);
-        sub_0205F55C(fieldSystem->mapObjectMan);
+        sub_0205F55C(fieldSystem->mapObjectManager);
     }
 }
 
@@ -239,8 +239,8 @@ static void sub_02053210(FieldSystem *fieldSystem) {
     } else {
         sub_02056E38();
         PlayerAvatar_FreeToHeap(fieldSystem->playerAvatar);
-        MapObjectManager_RemoveAllActiveObjects(fieldSystem->mapObjectMan);
-        MapObjectManager_Delete(fieldSystem->mapObjectMan);
+        MapObjectManager_RemoveAllActiveObjects(fieldSystem->mapObjectManager);
+        MapObjectManager_Delete(fieldSystem->mapObjectManager);
     }
 }
 
@@ -248,13 +248,13 @@ static void sub_0205323C(FieldSystem *fieldSystem) {
     u32 gender;
     struct PlayerSaveData *playerSaveData;
 
-    fieldSystem->mapObjectMan = sub_0205E0BC(fieldSystem, 64, HEAP_ID_BATTLE);
+    fieldSystem->mapObjectManager = sub_0205E0BC(fieldSystem, 64, HEAP_ID_BATTLE);
     FieldSystem_RestoreMapObjectsFromSave(fieldSystem);
     playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->saveData));
     gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
-    fieldSystem->playerAvatar = sub_0205C408(fieldSystem->mapObjectMan, playerSaveData, gender);
-    sub_02069B74(fieldSystem->mapObjectMan, fieldSystem->location->mapId);
-    sub_0205F55C(fieldSystem->mapObjectMan);
+    fieldSystem->playerAvatar = sub_0205C408(fieldSystem->mapObjectManager, playerSaveData, gender);
+    sub_02069B74(fieldSystem->mapObjectManager, fieldSystem->location->mapId);
+    sub_0205F55C(fieldSystem->mapObjectManager);
 }
 
 static void sub_02053284(FieldSystem *fieldSystem) {

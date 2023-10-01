@@ -6,7 +6,7 @@
 #include "pokemon_mood.h"
 #include "battle/overlay_12_0224E4FC.h"
 #include "battle/overlay_12_0226BEC4.h"
-#include "constants/game_stat.h"
+#include "constants/game_stats.h"
 #include "unk_0202FBCC.h"
 #include "unk_0200FA24.h"
 #include "unk_02005D10.h"
@@ -177,7 +177,7 @@ u16 BattleSystem_GetTrainerIndex(BattleSystem *bsys, int battlerId) {
     }
 }
 
-TRAINER *BattleSystem_GetTrainer(BattleSystem *bsys, int battlerId) {
+Trainer *BattleSystem_GetTrainer(BattleSystem *bsys, int battlerId) {
     if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_INGAME_PARTNER) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
         return &bsys->trainers[battlerId];
     } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
@@ -246,7 +246,7 @@ void *BattleSystem_GetMessageIcon(BattleSystem *bsys) {
     return bsys->msgIcon;
 }
 
-PC_STORAGE *BattleSystem_GetPcStorage(BattleSystem *bsys) {
+PCStorage *BattleSystem_GetPcStorage(BattleSystem *bsys) {
     return bsys->storage;
 }
 
@@ -826,7 +826,7 @@ void BattleSystem_SetBackground(BattleSystem *bsys) {
     MIi_CpuCopy32(src, dst, 0x200);
 
     vram = (u8 *)0x6400000;
-    image = sub_02024B1C(bsys->unk17C[1].unk0->unk0);
+    image = sub_02024B1C(bsys->unk17C[1].unk0->sprite);
     vram += image->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN];
     
     for (bgY = 20; bgY < 28; bgY++) {
@@ -853,7 +853,7 @@ void BattleSystem_SetBackground(BattleSystem *bsys) {
     }
     
     vram = (u8 *)0x6400000;
-    image = sub_02024B1C(bsys->unk17C[0].unk0->unk0);
+    image = sub_02024B1C(bsys->unk17C[0].unk0->sprite);
     vram += image->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN];
     
     for (i = 0; i < 0x800; i++) {
@@ -1170,7 +1170,7 @@ int ov12_0223BFCC(BattleSystem *bsys, u16 battlerId) {
 }
 
 u16 BattleSystem_GetTrainerItem(BattleSystem *bsys, int battlerId, int index) {
-    return bsys->trainers[battlerId].items[index];
+    return bsys->trainers[battlerId].data.items[index];
 }
 
 BOOL ov12_0223BFEC(BattleSystem *bsys) {

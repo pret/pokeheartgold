@@ -4,8 +4,8 @@
 .public NARC_Delete
 .public GfGfxLoader_LoadFromOpenNarc
 .public CreateSpriteResourcesHeader
-.public sub_02009E84
-.public sub_02009F24
+.public SpriteResourceHeaderList_Create
+.public SpriteResourceHeaderList_Destroy
 .public G2dRenderer_Init
 .public Create2DGfxResObjMan
 .public Destroy2DGfxResObjMan
@@ -30,12 +30,12 @@
 .public sub_0200B12C
 .public AllocFromHeap
 .public FreeToHeap
-.public sub_02024504
+.public SpriteList_Delete
 .public CreateSprite
 .public Set2dSpriteAnimSeqNo
-.public sub_02024A14
+.public Sprite_SetPalIndex
 .public sub_02024A48
-.public sub_02024A6C
+.public Sprite_GetPalIndex
 .public GF_AssertFail
 .public _fadd
 .public _ffix

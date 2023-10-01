@@ -38,6 +38,7 @@ typedef enum GF_GraphicsResourceType {
     GF_GFX_RES_TYPE_ANIM = 3,
     GF_GFX_RES_TYPE_MCEL = 4,
     GF_GFX_RES_TYPE_MANM = 5,
+    GF_GFX_RES_TYPE_MAX  = 6,
 } GfGfxResType;
 
 typedef struct _2DGfxResObj {
@@ -68,6 +69,11 @@ struct _2DGfxResHeaderNarc {
     int extra[2];
 };
 
+typedef struct _2DGfxResHeaderNarcList {
+    GfGfxResType type;
+    struct _2DGfxResHeaderNarc internal;
+} _2DGfxResHeaderNarcList;
+
 struct _2DGfxResHeader {
     void *table;
     int num;
@@ -75,11 +81,11 @@ struct _2DGfxResHeader {
     u8 isNarc;
 };
 
-struct _2DGfxResObjList {
+typedef struct _2DGfxResObjList {
     struct _2DGfxResObj **obj;
     int max;
     int num;
-};
+} _2DGfxResObjList;
 
 struct _2DGfxResMan *Create2DGfxResObjMan(int num, GfGfxResType type, HeapID heapId);
 void Destroy2DGfxResObjMan(struct _2DGfxResMan *mgr);
@@ -115,7 +121,7 @@ int sub_0200A8B0(struct _2DGfxResObj *obj);
 int sub_0200A8DC(struct _2DGfxResObj *obj);
 u32 sub_0200A8FC(void);
 struct _2DGfxResHeader *sub_0200A900(struct _2DGfxResHeader *headers, int num);
-void sub_0200A908(const void *a0, struct _2DGfxResHeader *header, HeapID heapId);
+void sub_0200A908(const _2DGfxResHeaderNarcList *a0, struct _2DGfxResHeader *header, HeapID heapId);
 void sub_0200A954(struct _2DGfxResHeader *header);
 int sub_0200A96C(const struct _2DGfxResHeader *header);
 int sub_0200A97C(struct _2DGfxResHeader *header, int idx);

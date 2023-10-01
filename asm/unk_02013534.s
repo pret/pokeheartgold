@@ -226,7 +226,7 @@ _020136C6:
 	lsl r7, r7, #0xc
 	cmp r0, #0
 	beq _020136E8
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	ldr r2, [r0]
 	ldr r1, [sp]
 	ldr r0, [r0, #4]
@@ -257,7 +257,7 @@ _020136F4:
 	str r0, [sp, #8]
 	ldr r0, [r5]
 	ldr r0, [r0, r4]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r5, #4]
 	add r6, r6, #1
 	add r4, #0xc
@@ -285,7 +285,7 @@ _02013734:
 	str r1, [sp]
 	ldr r1, [r5, #0x10]
 	lsl r7, r1, #0xc
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	ldr r2, [r0]
 	ldr r0, [r0, #4]
 	mov r6, #0
@@ -315,7 +315,7 @@ _02013760:
 	str r0, [sp, #8]
 	ldr r0, [r5]
 	ldr r0, [r0, r4]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r5, #4]
 	add r6, r6, #1
 	add r4, #0xc
@@ -400,7 +400,7 @@ _02013808:
 	ldr r0, [r5]
 	add r1, r7, #0
 	ldr r0, [r0, r4]
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	ldr r0, [r5, #4]
 	add r6, r6, #1
 	add r4, #0xc
@@ -429,7 +429,7 @@ _02013838:
 	ldr r0, [r5]
 	add r1, r7, #0
 	ldr r0, [r0, r4]
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	ldr r0, [r5, #4]
 	add r6, r6, #1
 	add r4, #0xc
@@ -458,7 +458,7 @@ _02013868:
 	ldr r0, [r5]
 	add r1, r7, #0
 	ldr r0, [r0, r4]
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	ldr r0, [r5, #4]
 	add r6, r6, #1
 	add r4, #0xc
@@ -516,7 +516,7 @@ _020138C8:
 	ldr r0, [r5]
 	add r1, r7, #0
 	ldr r0, [r0, r4]
-	bl sub_02024A74
+	bl Sprite_SetPalOffset
 	ldr r0, [r5, #4]
 	add r6, r6, #1
 	add r4, #0xc
@@ -672,7 +672,7 @@ sub_020139D0: ; 0x020139D0
 	str r2, [sp, #4]
 	add r5, r3, #0
 	str r0, [sp, #8]
-	bl sub_02024B60
+	bl Sprite_GetVramType
 	str r0, [sp, #0xc]
 	ldr r1, [sp, #0xc]
 	add r0, r7, #0
@@ -1404,7 +1404,7 @@ sub_02013EF0: ; 0x02013EF0
 	ldr r0, [r5, #0x10]
 	cmp r0, #0
 	beq _02013F4C
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r3, r0, #0
 	ldmia r3!, {r0, r1}
 	add r2, sp, #0x2c

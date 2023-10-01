@@ -430,6 +430,7 @@ $(eval $(call arc_strip_name,files/fielddata/tsurepoke/tp_param.narc,files/a/1/4
 $(eval $(call arc_strip_name,files/data/gs_areawindow.narc,files/a/1/6/3))
 $(eval $(call arc_strip_name,files/poketool/personal/performance.narc,files/a/1/6/9))
 $(eval $(call arc_strip_name,files/application/annon/puzzle_gra.narc,files/a/1/7/2))
+$(eval $(call arc_strip_name,files/data/resdat.narc,files/a/1/7/5))
 $(eval $(call arc_strip_name,files/application/custom_ball/edit/gs_cb_data.narc,files/a/1/8/5))
 $(eval $(call arc_strip_name,files/pbr/dp_height.narc,files/a/1/9/4))
 $(eval $(call arc_strip_name,files/pbr/dp_height_o.narc,files/a/1/9/5))
@@ -480,6 +481,7 @@ include files/application/choose_starter/choose_starter.mk
 include files/arc/ppark.mk
 include files/application/record/record.mk
 include files/application/voltorb_flip.mk
+include files/data/resdat.mk
 
 $(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;
 

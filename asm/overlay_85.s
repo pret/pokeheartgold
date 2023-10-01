@@ -1999,7 +1999,7 @@ ov85_021E6764: ; 0x021E6764
 	push {r4, lr}
 	add r4, r0, #0
 	bl GF_RunVramTransferTasks
-	bl sub_0200D034
+	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r0, _021E6784 ; =0x00000D9C
 	ldr r0, [r4, r0]
 	bl sub_0200398C
@@ -2872,7 +2872,7 @@ ov85_021E6ECC: ; 0x021E6ECC
 	ldr r0, [r3]
 	str r0, [r2]
 	mov r0, #0x66
-	bl sub_0200CF18
+	bl SpriteRenderer_Create
 	ldr r1, _021E6F60 ; =0x00000D94
 	add r2, sp, #0x18
 	str r0, [r4, r1]
@@ -2890,7 +2890,7 @@ ov85_021E6ECC: ; 0x021E6ECC
 	stmia r2!, {r0, r1}
 	ldr r0, _021E6F60 ; =0x00000D94
 	ldr r0, [r4, r0]
-	bl sub_0200CF38
+	bl SpriteRenderer_CreateGfxHandler
 	ldr r1, _021E6F68 ; =0x00000D98
 	mov r2, #0xff
 	str r0, [r4, r1]
@@ -2907,7 +2907,7 @@ _021E6F3C:
 	ldr r0, [r4, r1]
 	add r1, r1, #4
 	ldr r1, [r4, r1]
-	bl sub_0200D3F8
+	bl SpriteRenderer_Init2DGfxResManagersFromCountsArray
 	cmp r0, #0
 	bne _021E6F52
 	bl GF_AssertFail
@@ -2948,7 +2948,7 @@ ov85_021E6F6C: ; 0x021E6F6C
 	add r1, r5, #0
 	add r2, r4, #0
 	mov r3, #0x10
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	str r4, [sp]
 	mov r0, #0xf
 	str r0, [sp, #4]
@@ -2972,7 +2972,7 @@ ov85_021E6F6C: ; 0x021E6F6C
 	add r1, r5, #0
 	add r2, r4, #0
 	mov r3, #0x11
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #7
@@ -2981,7 +2981,7 @@ ov85_021E6F6C: ; 0x021E6F6C
 	add r1, r5, #0
 	add r2, r4, #0
 	mov r3, #0x12
-	bl sub_0200D71C
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
 	add r0, r4, #0
 	bl NARC_Delete
 	bl sub_0203A880
@@ -3014,10 +3014,10 @@ ov85_021E7024: ; 0x021E7024
 	ldr r0, [r4, r1]
 	add r1, r1, #4
 	ldr r1, [r4, r1]
-	bl sub_0200D998
+	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 	ldr r0, _021E7040 ; =0x00000D94
 	ldr r0, [r4, r0]
-	bl sub_0200D108
+	bl SpriteRenderer_Delete
 	pop {r4, pc}
 	nop
 _021E7040: .word 0x00000D94
@@ -3031,11 +3031,11 @@ ov85_021E7044: ; 0x021E7044
 	ldr r0, [r3, r1]
 	add r1, r1, #4
 	ldr r1, [r3, r1]
-	ldr r3, _021E7058 ; =sub_0200D734
+	ldr r3, _021E7058 ; =SpriteRenderer_LoadResourcesAndCreateSprite
 	bx r3
 	.balign 4, 0
 _021E7054: .word 0x00000D94
-_021E7058: .word sub_0200D734
+_021E7058: .word SpriteRenderer_LoadResourcesAndCreateSprite
 	thumb_func_end ov85_021E7044
 
 	thumb_func_start ov85_021E705C
@@ -5414,7 +5414,7 @@ _021E81A8:
 	mov r1, #6
 	ldr r0, [r4, #0x14]
 	lsl r1, r1, #0xa
-	bl sub_0200DC34
+	bl UnkImageStruct_TickSpriteAnimationNFrames
 	ldr r0, [r4, #0x14]
 	bl sub_0200DCA0
 	cmp r0, #0
@@ -5484,7 +5484,7 @@ _021E81F6:
 	add r1, sp, #0
 	bl ov85_021E7044
 	str r0, [r4, #0x14]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, _021E8258 ; =ov85_021E815C
 	add r1, r4, #0
 	mov r2, #0
@@ -6748,7 +6748,7 @@ _021E8B34:
 	cmp r4, #4
 	blt _021E8B34
 	ldr r0, [r6, #0x60]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608

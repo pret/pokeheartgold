@@ -390,7 +390,7 @@ ov29_0225D828: ; 0x0225D828
 	add r0, r4, #0
 	bl ov29_0225D864
 	ldr r0, [r4, #0x18]
-	bl sub_02024504
+	bl SpriteList_Delete
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov29_0225D828
@@ -803,7 +803,7 @@ ov29_0225DB7C: ; 0x0225DB7C
 _0225DB8A:
 	ldr r0, [r5, r6]
 	add r1, r7, #0
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0xb
@@ -834,7 +834,7 @@ ov29_0225DB9C: ; 0x0225DB9C
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	cmp r4, #9
 	bhi _0225DBE0
 	mov r0, #0x5d
@@ -933,7 +933,7 @@ ov29_0225DC50: ; 0x0225DC50
 	str r1, [sp, #4]
 	ldr r0, [r0, r2]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
@@ -967,7 +967,7 @@ _0225DCA6:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x7f
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]

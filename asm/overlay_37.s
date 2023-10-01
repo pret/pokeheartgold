@@ -353,7 +353,7 @@ _021E5BF8:
 	cmp r4, #4
 	blt _021E5BF8
 	ldr r0, [r6, #0x34]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
@@ -1249,7 +1249,7 @@ _021E6350:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #2
-	bl sub_02024A04
+	bl Sprite_SetPriority
 _021E6392:
 	add r7, r7, #1
 	add r6, r6, #6
@@ -1290,7 +1290,7 @@ _021E63B0:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	mov r0, #0x21
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -1531,7 +1531,7 @@ _021E65D4:
 	str r0, [sp, #8]
 	add r0, r4, #0
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0

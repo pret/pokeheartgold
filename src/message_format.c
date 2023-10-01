@@ -290,10 +290,10 @@ void BufferTrainerClassNameWithArticle(MessageFormat *msgFmt, u32 fieldno, u32 t
     }
 }
 
-void BufferTrainerClassNameFromDataStruct(MessageFormat *msgFmt, u32 fieldno, TRAINER *trainer) {
+void BufferTrainerClassNameFromDataStruct(MessageFormat *msgFmt, u32 fieldno, Trainer *trainer) {
     MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0730_bin, msgFmt->heapId);
     if (msgData != NULL) {
-        ReadMsgDataIntoString(msgData, trainer->trainerClass, msgFmt->buffer);
+        ReadMsgDataIntoString(msgData, trainer->data.trainerClass, msgFmt->buffer);
         SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
         DestroyMsgData(msgData);
     }
@@ -317,7 +317,7 @@ void BufferFrontierOpponentName(MessageFormat *msgFmt, u32 fieldno, u32 opponent
     }
 }
 
-void BufferTrainerNameFromDataStruct(MessageFormat *msgFmt, u32 fieldno, TRAINER *trainer) {
+void BufferTrainerNameFromDataStruct(MessageFormat *msgFmt, u32 fieldno, Trainer *trainer) {
     CopyU16ArrayToString(msgFmt->buffer, trainer->name);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }
@@ -349,7 +349,7 @@ void BufferGenderSymbol(MessageFormat *msgFmt, u32 fieldno, u8 gender) {
     DestroyMsgData(msgData);
 }
 
-void BufferPCBoxName(MessageFormat *msgFmt, u32 fieldno, PC_STORAGE *pcStorage, u32 boxno) {
+void BufferPCBoxName(MessageFormat *msgFmt, u32 fieldno, PCStorage *pcStorage, u32 boxno) {
     PCStorage_GetBoxName(pcStorage, boxno, msgFmt->buffer);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }

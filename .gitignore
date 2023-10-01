@@ -95,3 +95,6 @@ diff.txt
 *.ml[0-9]
 *.mln
 
+# clangd
+.cache
+compile_commands.json
