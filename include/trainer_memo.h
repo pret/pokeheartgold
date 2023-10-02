@@ -4,18 +4,19 @@
 #include "heap.h"
 #include "pokemon_types_def.h"
 
-typedef struct Unk0208E614 {
-    int unk0;
+// Each string in the notepad and which line it starts on.
+typedef struct MemoNotepad {
+    int natureLine;
     String *nature;
-    int unk8;
+    int dateLocationMetLine;
     String *dateLocationMet;
-    int unk10;
+    int characteristicLine;
     String *characteristic;
-    int unk18;
+    int flavorPreferenceLine;
     String *flavorPreference;
-    int unk20;
+    int eggWatchLine;
     String *eggWatch;
-} Unk0208E614;
+} MemoNotepad;
 
 typedef struct Unk0208E600 {
     HeapID heapId;
@@ -23,7 +24,7 @@ typedef struct Unk0208E600 {
     MessageFormat *msgFmt;
     Pokemon *mon;
     BOOL isMine;
-    Unk0208E614 unk14;
+    MemoNotepad notepad;
 } Unk0208E600;
 
 void MonSetTrainerMemo(Pokemon *mon, PlayerProfile *profile, int strat, int mapsec, HeapID heapId);

@@ -7,9 +7,35 @@
 #include "string_util.h"
 #include "trainer_memo.h"
 #include "constants/events.h"
+#include "constants/map_sections.h"
 #include "constants/pokemon.h"
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0302.h"
+
+typedef enum MetCondition {
+    MET_CONDITION_WILD_ENCOUNTER,
+    MET_CONDITION_WILD_ENCOUNTER_TRADED,
+    MET_CONDITION_WILD_GIFT,
+    MET_CONDITION_EGG_HATCHED,
+    MET_CONDITION_EGG_HATCHED_TRADED,
+    MET_CONDITION_EGG_HATCHED_GIFT,
+    MET_CONDITION_EGG_HATCHED_GIFT_TRADED,
+    MET_CONDITION_FATEFUL_ENCOUNTER,
+    MET_CONDITION_FATEFUL_ENCOUNTER_TRADED,
+    MET_CONDITION_FATEFUL_EGG_HATCHED,
+    MET_CONDITION_FATEFUL_EGG_HATCHED_TRADED,
+    MET_CONDITION_FATEFUL_EGG_HATCHED_ARRIVED,
+    MET_CONDITION_FATEFUL_EGG_HATCHED_ARRIVED_TRADED,
+    MET_CONDITION_FATEFUL_EGG_HATCHED_GIFT,
+    MET_CONDITION_FATEFUL_EGG_HATCHED_GIFT_TRADED,
+    MET_CONDITION_MIGRATED,
+    MET_CONDITION_EGG,
+    MET_CONDITION_EGG_TRADED,
+    MET_CONDITION_FATEFUL_EGG,
+    MET_CONDITION_FATEFUL_EGG_TRADED,
+    MET_CONDITION_FATEFUL_EGG_ARRIVED,
+} MetCondition;
+
 
 static const u16 sFlavorMsgs[6] = {
     msg_0302_00070, msg_0302_00065, msg_0302_00066, msg_0302_00067, msg_0302_00068, msg_0302_00069,
@@ -24,7 +50,7 @@ static const u16 sCharactersticMsgs[6][5] = {
     { msg_0302_00096, msg_0302_00097, msg_0302_00098, msg_0302_00099, msg_0302_00100 },
 };
 
-static int sub_0208F070(Pokemon *mon, BOOL isMine);
+static MetCondition MonMetCondition(Pokemon *mon, BOOL isMine);
 static void FormatNature(Unk0208E600 *a0);
 static void FormatDateAndLocationMet(Unk0208E600 *a0, int msgNo);
 static void FormatDateAndLocation_Migrated(Unk0208E600 *a0, int msgNo);
@@ -45,195 +71,195 @@ Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
     ptr->msgFmt = MessageFormat_New_Custom(9, 32, ptr->heapId);
     ptr->mon = mon;
     ptr->isMine = isMine;
-    ptr->unk14.unk0 = 0;
-    ptr->unk14.nature = NULL;
-    ptr->unk14.unk8 = 0;
-    ptr->unk14.dateLocationMet = NULL;
-    ptr->unk14.unk10 = 0;
-    ptr->unk14.characteristic = NULL;
-    ptr->unk14.unk18 = 0;
-    ptr->unk14.flavorPreference = NULL;
-    ptr->unk14.unk20 = 0;
-    ptr->unk14.eggWatch = NULL;
+    ptr->notepad.natureLine = 0;
+    ptr->notepad.nature = NULL;
+    ptr->notepad.dateLocationMetLine = 0;
+    ptr->notepad.dateLocationMet = NULL;
+    ptr->notepad.characteristicLine = 0;
+    ptr->notepad.characteristic = NULL;
+    ptr->notepad.flavorPreferenceLine = 0;
+    ptr->notepad.flavorPreference = NULL;
+    ptr->notepad.eggWatchLine = 0;
+    ptr->notepad.eggWatch = NULL;
 
-    int var1 = sub_0208F070(ptr->mon, ptr->isMine);
-    switch (var1) {
-    case 0:
-        ptr->unk14.unk0 = 1;
+    int metCondition = MonMetCondition(ptr->mon, ptr->isMine);
+    switch (metCondition) {
+    case MET_CONDITION_WILD_ENCOUNTER:
+        ptr->notepad.natureLine = 1;
         FormatNature(ptr);
-        ptr->unk14.unk8 = 2;
+        ptr->notepad.dateLocationMetLine = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00049);
-        ptr->unk14.unk10 = 6;
+        ptr->notepad.characteristicLine = 6;
         FormatCharacteristic(ptr);
-        ptr->unk14.unk18 = 7;
+        ptr->notepad.flavorPreferenceLine = 7;
         FormatFlavorPreference(ptr);
         break;
-    case 1:
-        ptr->unk14.unk0 = 1;
+    case MET_CONDITION_WILD_ENCOUNTER_TRADED:
+        ptr->notepad.natureLine = 1;
         FormatNature(ptr);
-        ptr->unk14.unk8 = 2;
+        ptr->notepad.dateLocationMetLine = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00050);
-        ptr->unk14.unk10 = 6;
+        ptr->notepad.characteristicLine = 6;
         FormatCharacteristic(ptr);
-        ptr->unk14.unk18 = 7;
+        ptr->notepad.flavorPreferenceLine = 7;
         FormatFlavorPreference(ptr);
         break;
-    case 2:
-        ptr->unk14.unk0 = 1;
+    case MET_CONDITION_WILD_GIFT:
+        ptr->notepad.natureLine = 1;
         FormatNature(ptr);
-        ptr->unk14.unk8 = 2;
+        ptr->notepad.dateLocationMetLine = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00051);
-        ptr->unk14.unk10 = 6;
+        ptr->notepad.characteristicLine = 6;
         FormatCharacteristic(ptr);
-        ptr->unk14.unk18 = 7;
+        ptr->notepad.flavorPreferenceLine = 7;
         FormatFlavorPreference(ptr);
         break;
-    case 3:
-        ptr->unk14.unk0 = 1;
+    case MET_CONDITION_EGG_HATCHED:
+        ptr->notepad.natureLine = 1;
         FormatNature(ptr);
-        ptr->unk14.unk8 = 2;
+        ptr->notepad.dateLocationMetLine = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00052);
-        ptr->unk14.unk10 = 8;
+        ptr->notepad.characteristicLine = 8;
         FormatCharacteristic(ptr);
-        ptr->unk14.unk18 = 9;
+        ptr->notepad.flavorPreferenceLine = 9;
         FormatFlavorPreference(ptr);
         break;
-    case 4:
-        ptr->unk14.unk0 = 1;
+    case MET_CONDITION_EGG_HATCHED_TRADED:
+        ptr->notepad.natureLine = 1;
         FormatNature(ptr);
-        ptr->unk14.unk8 = 2;
+        ptr->notepad.dateLocationMetLine = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00053);
-        ptr->unk14.unk10 = 8;
+        ptr->notepad.characteristicLine = 8;
         FormatCharacteristic(ptr);
-        ptr->unk14.unk18 = 9;
+        ptr->notepad.flavorPreferenceLine = 9;
         FormatFlavorPreference(ptr);
         break;
-    case 5:
-        ptr->unk14.unk0 = 1;
+    case MET_CONDITION_EGG_HATCHED_GIFT:
+        ptr->notepad.natureLine = 1;
         FormatNature(ptr);
-        ptr->unk14.unk8 = 2;
+        ptr->notepad.dateLocationMetLine = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00054);
-        ptr->unk14.unk10 = 8;
+        ptr->notepad.characteristicLine = 8;
         FormatCharacteristic(ptr);
-        ptr->unk14.unk18 = 9;
+        ptr->notepad.flavorPreferenceLine = 9;
         FormatFlavorPreference(ptr);
         break;
-    case 6:
-        ptr->unk14.unk0 = 1;
+    case MET_CONDITION_EGG_HATCHED_GIFT_TRADED:
+        ptr->notepad.natureLine = 1;
         FormatNature(ptr);
-        ptr->unk14.unk8 = 2;
+        ptr->notepad.dateLocationMetLine = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00055);
-        ptr->unk14.unk10 = 8;
+        ptr->notepad.characteristicLine = 8;
         FormatCharacteristic(ptr);
-        ptr->unk14.unk18 = 9;
+        ptr->notepad.flavorPreferenceLine = 9;
         FormatFlavorPreference(ptr);
         break;
-    case 7:
-        ptr->unk14.unk0 = 1;
+    case MET_CONDITION_FATEFUL_ENCOUNTER:
+        ptr->notepad.natureLine = 1;
         FormatNature(ptr);
-        ptr->unk14.unk8 = 2;
+        ptr->notepad.dateLocationMetLine = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00056);
-        ptr->unk14.unk10 = 7;
+        ptr->notepad.characteristicLine = 7;
         FormatCharacteristic(ptr);
-        ptr->unk14.unk18 = 8;
+        ptr->notepad.flavorPreferenceLine = 8;
         FormatFlavorPreference(ptr);
         break;
-    case 8:
-        ptr->unk14.unk0 = 1;
+    case MET_CONDITION_FATEFUL_ENCOUNTER_TRADED:
+        ptr->notepad.natureLine = 1;
         FormatNature(ptr);
-        ptr->unk14.unk8 = 2;
+        ptr->notepad.dateLocationMetLine = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00057);
-        ptr->unk14.unk10 = 7;
+        ptr->notepad.characteristicLine = 7;
         FormatCharacteristic(ptr);
-        ptr->unk14.unk18 = 8;
+        ptr->notepad.flavorPreferenceLine = 8;
         FormatFlavorPreference(ptr);
         break;
-    case 9:
-        ptr->unk14.unk0 = 1;
+    case MET_CONDITION_FATEFUL_EGG_HATCHED:
+        ptr->notepad.natureLine = 1;
         FormatNature(ptr);
-        ptr->unk14.unk8 = 2;
+        ptr->notepad.dateLocationMetLine = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00058);
-        ptr->unk14.unk10 = 9;
+        ptr->notepad.characteristicLine = 9;
         FormatCharacteristic(ptr);
         break;
-    case 10:
-        ptr->unk14.unk0 = 1;
+    case MET_CONDITION_FATEFUL_EGG_HATCHED_TRADED:
+        ptr->notepad.natureLine = 1;
         FormatNature(ptr);
-        ptr->unk14.unk8 = 2;
+        ptr->notepad.dateLocationMetLine = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00059);
-        ptr->unk14.unk10 = 9;
+        ptr->notepad.characteristicLine = 9;
         FormatCharacteristic(ptr);
         break;
-    case 11:
-        ptr->unk14.unk0 = 1;
+    case MET_CONDITION_FATEFUL_EGG_HATCHED_ARRIVED:
+        ptr->notepad.natureLine = 1;
         FormatNature(ptr);
-        ptr->unk14.unk8 = 2;
+        ptr->notepad.dateLocationMetLine = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00060);
-        ptr->unk14.unk10 = 9;
+        ptr->notepad.characteristicLine = 9;
         FormatCharacteristic(ptr);
         break;
-    case 12:
-        ptr->unk14.unk0 = 1;
+    case MET_CONDITION_FATEFUL_EGG_HATCHED_ARRIVED_TRADED:
+        ptr->notepad.natureLine = 1;
         FormatNature(ptr);
-        ptr->unk14.unk8 = 2;
+        ptr->notepad.dateLocationMetLine = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00061);
-        ptr->unk14.unk10 = 9;
+        ptr->notepad.characteristicLine = 9;
         FormatCharacteristic(ptr);
         break;
-    case 13:
-        ptr->unk14.unk0 = 1;
+    case MET_CONDITION_FATEFUL_EGG_HATCHED_GIFT:
+        ptr->notepad.natureLine = 1;
         FormatNature(ptr);
-        ptr->unk14.unk8 = 2;
+        ptr->notepad.dateLocationMetLine = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00062);
-        ptr->unk14.unk10 = 9;
+        ptr->notepad.characteristicLine = 9;
         FormatCharacteristic(ptr);
         break;
-    case 14:
-        ptr->unk14.unk0 = 1;
+    case MET_CONDITION_FATEFUL_EGG_HATCHED_GIFT_TRADED:
+        ptr->notepad.natureLine = 1;
         FormatNature(ptr);
-        ptr->unk14.unk8 = 2;
+        ptr->notepad.dateLocationMetLine = 2;
         FormatDateAndLocationMet(ptr, msg_0302_00063);
-        ptr->unk14.unk10 = 9;
+        ptr->notepad.characteristicLine = 9;
         FormatCharacteristic(ptr);
         break;
-    case 15:
-        ptr->unk14.unk0 = 1;
+    case MET_CONDITION_MIGRATED:
+        ptr->notepad.natureLine = 1;
         FormatNature(ptr);
-        ptr->unk14.unk8 = 2;
+        ptr->notepad.dateLocationMetLine = 2;
         FormatDateAndLocation_Migrated(ptr, msg_0302_00064);
-        ptr->unk14.unk10 = 6;
+        ptr->notepad.characteristicLine = 6;
         FormatCharacteristic(ptr);
-        ptr->unk14.unk18 = 7;
+        ptr->notepad.flavorPreferenceLine = 7;
         FormatFlavorPreference(ptr);
         break;
-    case 16:
-        ptr->unk14.unk8 = 1;
+    case MET_CONDITION_EGG:
+        ptr->notepad.dateLocationMetLine = 1;
         FormatDateAndLocation_Egg(ptr, msg_0302_00101, FALSE);
-        ptr->unk14.unk20 = 6;
+        ptr->notepad.eggWatchLine = 6;
         FormatEggWatch(ptr);
         break;
-    case 17:
-        ptr->unk14.unk8 = 1;
+    case MET_CONDITION_EGG_TRADED:
+        ptr->notepad.dateLocationMetLine = 1;
         FormatDateAndLocation_Egg(ptr, msg_0302_00102, TRUE);
-        ptr->unk14.unk20 = 6;
+        ptr->notepad.eggWatchLine = 6;
         FormatEggWatch(ptr);
         break;
-    case 18:
-        ptr->unk14.unk8 = 1;
+    case MET_CONDITION_FATEFUL_EGG:
+        ptr->notepad.dateLocationMetLine = 1;
         FormatDateAndLocation_Egg(ptr, msg_0302_00103, FALSE);
-        ptr->unk14.unk20 = 6;
+        ptr->notepad.eggWatchLine = 6;
         FormatEggWatch(ptr);
         break;
-    case 19:
-        ptr->unk14.unk8 = 1;
+    case MET_CONDITION_FATEFUL_EGG_TRADED:
+        ptr->notepad.dateLocationMetLine = 1;
         FormatDateAndLocation_Egg(ptr, msg_0302_00103, TRUE);
-        ptr->unk14.unk20 = 6;
+        ptr->notepad.eggWatchLine = 6;
         FormatEggWatch(ptr);
         break;
-    case 20:
-        ptr->unk14.unk8 = 1;
+    case MET_CONDITION_FATEFUL_EGG_ARRIVED:
+        ptr->notepad.dateLocationMetLine = 1;
         FormatDateAndLocation_Egg(ptr, msg_0302_00104, 0);
-        ptr->unk14.unk20 = 6;
+        ptr->notepad.eggWatchLine = 6;
         FormatEggWatch(ptr);
         break;
     }
@@ -241,20 +267,20 @@ Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
 }
 
 void sub_0208E994(Unk0208E600 *a0) {
-    if (a0->unk14.nature) {
-        FreeToHeap(a0->unk14.nature);
+    if (a0->notepad.nature) {
+        FreeToHeap(a0->notepad.nature);
     }
-    if (a0->unk14.dateLocationMet) {
-        FreeToHeap(a0->unk14.dateLocationMet);
+    if (a0->notepad.dateLocationMet) {
+        FreeToHeap(a0->notepad.dateLocationMet);
     }
-    if (a0->unk14.characteristic) {
-        FreeToHeap(a0->unk14.characteristic);
+    if (a0->notepad.characteristic) {
+        FreeToHeap(a0->notepad.characteristic);
     }
-    if (a0->unk14.flavorPreference) {
-        FreeToHeap(a0->unk14.flavorPreference);
+    if (a0->notepad.flavorPreference) {
+        FreeToHeap(a0->notepad.flavorPreference);
     }
-    if (a0->unk14.eggWatch) {
-        FreeToHeap(a0->unk14.eggWatch);
+    if (a0->notepad.eggWatch) {
+        FreeToHeap(a0->notepad.eggWatch);
     }
     MessageFormat_Delete(a0->msgFmt);
     DestroyMsgData(a0->msgData);
@@ -263,29 +289,30 @@ void sub_0208E994(Unk0208E600 *a0) {
 
 // Returns true if the Pokemon has the proper metadata to trigger the event.
 BOOL MonMetadataMatchesEvent(u8 eventNo, Pokemon *mon, BOOL isMine) {
-    u8 var1 = sub_0208F070(mon, isMine);
+    u8 metCondition = MonMetCondition(mon, isMine);
     u8 version = GetMonData(mon, MON_DATA_GAME_VERSION, NULL);
 
-    if ((var1 == 7 || var1 == 8) && (eventNo != EVENT_ARCEUS_UNK1)) {
-        return TRUE;
+    if ((metCondition == MET_CONDITION_FATEFUL_ENCOUNTER || metCondition == MET_CONDITION_FATEFUL_ENCOUNTER_TRADED) &&
+        (eventNo != EVENT_ARCEUS_HALL_OF_ORIGIN)) {
+            return TRUE;
     }
 
     switch (eventNo) {
     case EVENT_SPIKY_EARED_PICHU:
         break;
-    case EVENT_ARCEUS_UNK1:
-        if (var1 == 1) {
+    case EVENT_ARCEUS_HALL_OF_ORIGIN:
+        if (metCondition == 1) {
             switch (version) {
             case VERSION_DIAMOND:
             case VERSION_PEARL:
             case VERSION_PLATINUM:
-                if (GetMonData(mon, MON_DATA_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_NORMAL, 0x56)) {
+                if (GetMonData(mon, MON_DATA_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_NORMAL, MAPSEC_HALL_OF_ORIGIN)) {
                     return TRUE;
                 }
             }
         }
         break;
-    case EVENT_ARCEUS_UNK2:
+    case EVENT_ARCEUS_MOVIE_GIFT:
     case EVENT_CELEBI:
         break;
   }
@@ -295,14 +322,14 @@ BOOL MonMetadataMatchesEvent(u8 eventNo, Pokemon *mon, BOOL isMine) {
 static void FormatNature(Unk0208E600 *a0) {
     int nature = GetMonNature(a0->mon);
     if (nature <= NATURE_QUIRKY) {
-        a0->unk14.nature = String_New(0x48, a0->heapId);
-        ReadMsgDataIntoString(a0->msgData, msg_0302_00024 + nature, a0->unk14.nature);
+        a0->notepad.nature = String_New(0x48, a0->heapId);
+        ReadMsgDataIntoString(a0->msgData, msg_0302_00024 + nature, a0->notepad.nature);
     }
 }
 
 static void FormatDateAndLocationMet(Unk0208E600 *a0, int msgNo) {
     String *str = String_New(0x240, a0->heapId);
-    a0->unk14.dateLocationMet = String_New(0x240, a0->heapId);
+    a0->notepad.dateLocationMet = String_New(0x240, a0->heapId);
 
     ReadMsgDataIntoString(a0->msgData, msgNo, str);
 
@@ -316,7 +343,7 @@ static void FormatDateAndLocationMet(Unk0208E600 *a0, int msgNo) {
     BufferIntegerAsString(a0->msgFmt, 7, GetMonData(a0->mon, MON_DATA_EGG_MET_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
     BufferLocationName(a0->msgFmt, 8, GetMonData(a0->mon, MON_DATA_EGG_MET_LOCATION, NULL));
 
-    StringExpandPlaceholders(a0->msgFmt, a0->unk14.dateLocationMet, str);
+    StringExpandPlaceholders(a0->msgFmt, a0->notepad.dateLocationMet, str);
     String_Delete(str);
 }
 
@@ -324,7 +351,7 @@ static void FormatDateAndLocation_Migrated(Unk0208E600 *a0, int msgNo) {
     int version;
 
     String *str = String_New(0x120, a0->heapId);
-    a0->unk14.dateLocationMet = String_New(0x120, a0->heapId);
+    a0->notepad.dateLocationMet = String_New(0x120, a0->heapId);
 
     ReadMsgDataIntoString(a0->msgData, msgNo, str);
 
@@ -366,13 +393,13 @@ static void FormatDateAndLocation_Migrated(Unk0208E600 *a0, int msgNo) {
         break;
     }
 
-    StringExpandPlaceholders(a0->msgFmt, a0->unk14.dateLocationMet, str);
+    StringExpandPlaceholders(a0->msgFmt, a0->notepad.dateLocationMet, str);
     String_Delete(str);
 }
 
 static void FormatDateAndLocation_Egg(Unk0208E600 *a0, int msgNo, BOOL hatched) {
     String *str = String_New(0x168, a0->heapId);
-    a0->unk14.dateLocationMet = String_New(0x168, a0->heapId);
+    a0->notepad.dateLocationMet = String_New(0x168, a0->heapId);
 
     ReadMsgDataIntoString(a0->msgData, msgNo, str);
 
@@ -388,7 +415,7 @@ static void FormatDateAndLocation_Egg(Unk0208E600 *a0, int msgNo, BOOL hatched) 
         BufferLocationName(a0->msgFmt, 8, GetMonData(a0->mon, MON_DATA_MET_LOCATION, NULL));
     }
 
-    StringExpandPlaceholders(a0->msgFmt, a0->unk14.dateLocationMet, str);
+    StringExpandPlaceholders(a0->msgFmt, a0->notepad.dateLocationMet, str);
     String_Delete(str);
 }
 
@@ -396,7 +423,7 @@ static void FormatCharacteristic(Unk0208E600 *a0) {
     int index;
     int maxIv;
 
-    a0->unk14.characteristic = String_New(0x48, a0->heapId);
+    a0->notepad.characteristic = String_New(0x48, a0->heapId);
 
     int hpIv = GetMonData(a0->mon, MON_DATA_HP_IV, NULL);
     int atkIv = GetMonData(a0->mon, MON_DATA_ATK_IV, NULL);
@@ -553,11 +580,11 @@ static void FormatCharacteristic(Unk0208E600 *a0) {
         }
         break;
     }
-    ReadMsgDataIntoString(a0->msgData, sCharactersticMsgs[index][maxIv % 5], a0->unk14.characteristic);
+    ReadMsgDataIntoString(a0->msgData, sCharactersticMsgs[index][maxIv % 5], a0->notepad.characteristic);
 }
 
 static void FormatFlavorPreference(Unk0208E600 *a0) {
-    a0->unk14.flavorPreference = String_New(0x48, a0->heapId);
+    a0->notepad.flavorPreference = String_New(0x48, a0->heapId);
     int index = 0;
     for (int flavor = FLAVOR_START; flavor < FLAVOR_MAX; flavor++) {
         int preference = MonGetFlavorPreference(a0->mon, flavor);
@@ -565,14 +592,14 @@ static void FormatFlavorPreference(Unk0208E600 *a0) {
             index = flavor + 1;
         }
     }
-    ReadMsgDataIntoString(a0->msgData, sFlavorMsgs[index], a0->unk14.flavorPreference);
+    ReadMsgDataIntoString(a0->msgData, sFlavorMsgs[index], a0->notepad.flavorPreference);
 }
 
 static void FormatEggWatch(Unk0208E600 *a0) {
     int msgNo;
 
     int eggCycles = GetMonData(a0->mon, MON_DATA_FRIENDSHIP, NULL);
-    a0->unk14.eggWatch = String_New(0x120, a0->heapId);
+    a0->notepad.eggWatch = String_New(0x120, a0->heapId);
     if (eggCycles <= 5) {
         msgNo = msg_0302_00105;
     } else if (eggCycles <= 10) {
@@ -582,50 +609,50 @@ static void FormatEggWatch(Unk0208E600 *a0) {
     } else {
         msgNo = msg_0302_00108;
     }
-    ReadMsgDataIntoString(a0->msgData, msgNo, a0->unk14.eggWatch);
+    ReadMsgDataIntoString(a0->msgData, msgNo, a0->notepad.eggWatch);
 }
 
 // decomp.me: https://decomp.me/scratch/bTdPf
 #ifdef NONMATCHING
-static int sub_0208F070(Pokemon *mon, BOOL isMine) {
+static MetCondition MonMetCondition(Pokemon *mon, BOOL isMine) {
     if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
         if (GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == 0) {
-            if (GetMonData(mon, MON_DATA_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_NORMAL, 0x37)) {
-                return 15;
+            if (GetMonData(mon, MON_DATA_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_NORMAL, MAPSEC_PAL_PARK)) {
+                return MET_CONDITION_MIGRATED;
             }
             if (GetMonData(mon, MON_DATA_FATEFUL_ENCOUNTER, NULL) == TRUE) {
                 if (isMine == TRUE) {
-                    return 7;
+                    return MET_CONDITION_FATEFUL_ENCOUNTER;
                 }
-                return 8;
+                return MET_CONDITION_FATEFUL_ENCOUNTER_TRADED;
             }
 
             if (GetMonData(mon, MON_DATA_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, 1)) {
-                return 2;
+                return MET_CONDITION_WILD_GIFT;
             }
             // This condition does not match...
             if (isMine == TRUE) {
-                return 0;
+                return MET_CONDITION_WILD_ENCOUNTER;
             }
-            return 1;
+            return MET_CONDITION_WILD_ENCOUNTER_TRADED;
         }
         if (GetMonData(mon, MON_DATA_FATEFUL_ENCOUNTER, NULL) == TRUE) {
             if (GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, 2)) {
                 if (isMine == TRUE) {
-                    return 13;
+                    return MET_CONDITION_FATEFUL_EGG_HATCHED_GIFT;
                 }
-                return 14;
+                return MET_CONDITION_FATEFUL_EGG_HATCHED_GIFT_TRADED;
             }
             if (GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_EXTERNAL, 1)) {
                 if (isMine == TRUE) {
-                    return 11;
+                    return MET_CONDITION_FATEFUL_EGG_HATCHED_ARRIVED;
                 }
-                return 12;
+                return MET_CONDITION_FATEFUL_EGG_HATCHED_ARRIVED_TRADED;
             }
             if (isMine == TRUE) {
-                return 9;
+                return MET_CONDITION_FATEFUL_EGG_HATCHED;
             }
-            return 10;
+            return MET_CONDITION_FATEFUL_EGG_HATCHED_TRADED;
         }
 
         if ((GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, 1)) ||
@@ -636,33 +663,33 @@ static int sub_0208F070(Pokemon *mon, BOOL isMine) {
             (GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, 13)) ||
             (GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, 14))) {
                 if (isMine == TRUE) {
-                    return 5;
+                    return MET_CONDITION_EGG_HATCHED_GIFT;
                 }
-                return 6;
+                return MET_CONDITION_EGG_HATCHED_GIFT_TRADED;
         }
 
         if (isMine == TRUE) {
-            return 3;
+            return MET_CONDITION_EGG_HATCHED;
         }
-        return 4;
+        return MET_CONDITION_EGG_HATCHED_TRADED;
     }
 
     if (isMine == TRUE) {
         if (GetMonData(mon, MON_DATA_FATEFUL_ENCOUNTER, NULL) == TRUE) {
             if (GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_EXTERNAL, 1)) {
-                return 20;
+                return MET_CONDITION_FATEFUL_EGG_ARRIVED;
             }
-            return 18;
+            return MET_CONDITION_FATEFUL_EGG;
         }
-        return 16;
+        return MET_CONDITION_EGG;
     }
     if (GetMonData(mon, MON_DATA_FATEFUL_ENCOUNTER, NULL) == TRUE) {
-        return 19;
+        return MET_CONDITION_FATEFUL_EGG_TRADED;
     }
-    return 17;
+    return MET_CONDITION_EGG_TRADED;
 }
 #else
-asm int sub_0208F070(Pokemon *a0, BOOL isMine) {
+asm MetCondition MonMetCondition(Pokemon *mon, BOOL isMine) {
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	mov r1, #0x4c
@@ -952,7 +979,7 @@ void BoxMonSetTrainerMemo(BoxPokemon *boxMon, PlayerProfile *profile, int strat,
         break;
     case 2:
         sub_0208F5C8(boxMon, FALSE);
-        sub_0208F550(boxMon, sub_02017FE4(MAPSECTYPE_NORMAL, 0x37), TRUE);
+        sub_0208F550(boxMon, sub_02017FE4(MAPSECTYPE_NORMAL, MAPSEC_PAL_PARK), TRUE);
         CopyLevelToMetLevel(boxMon);
         break;
     case 3:
