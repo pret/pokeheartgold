@@ -208,7 +208,7 @@ _021E811A:
 	ldr r2, [r5, r2]
 	ldr r3, [r5, r3]
 	add r1, r4, #0
-	bl sub_02009E84
+	bl SpriteResourceHeaderList_Create
 	mov r1, #0x4b
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -228,11 +228,11 @@ ov01_021E8194: ; 0x021E8194
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5]
-	bl sub_02024504
+	bl SpriteList_Delete
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02009F24
+	bl SpriteResourceHeaderList_Destroy
 	mov r0, #0x52
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -908,7 +908,7 @@ _021E86A2:
 	str r0, [r6]
 	cmp r0, #0
 	beq _021E86E6
-	bl sub_02024A6C
+	bl Sprite_GetPalIndex
 	add r5, r0, #0
 	ldrh r1, [r4, #6]
 	ldr r0, [r6]
@@ -916,7 +916,7 @@ _021E86A2:
 	ldr r1, [r4, #0xc]
 	ldr r0, [r6]
 	add r1, r5, r1
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	b _021E86EA
 _021E86E6:
 	bl GF_AssertFail
@@ -933,7 +933,7 @@ ov01_021E86F4: ; 0x021E86F4
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	ldr r0, [r6]
-	bl sub_02024504
+	bl SpriteList_Delete
 	mov r0, #0x52
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]

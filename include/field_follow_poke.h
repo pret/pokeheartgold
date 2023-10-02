@@ -5,8 +5,8 @@
 #include "heap.h"
 #include "map_object_manager.h"
 
-LocalMapObject *sub_020699F8(MapObjectManager *mapObjectMan, int x, int y, int direction, u32 mapno);
-void sub_02069B74(MapObjectManager *mapObjectMan, u32 mapno);
+LocalMapObject *sub_020699F8(MapObjectManager *mapObjectManager, int x, int y, int direction, u32 mapno);
+void sub_02069B74(MapObjectManager *mapObjectManager, u32 mapno);
 LocalMapObject *FollowingPokemon_GetMapObject(FieldSystem *fieldSystem);
 u32 FollowingPokemon_GetSpriteID(int species, u16 form, u32 gender);
 void sub_02069DC8(LocalMapObject *mapObject, BOOL enable_bit);

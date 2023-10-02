@@ -9779,7 +9779,7 @@ _02242B66:
 	cmp r4, #4
 	blo _02242B66
 	ldr r0, [r5]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
@@ -10062,7 +10062,7 @@ ov81_02242D94: ; 0x02242D94
 	str r1, [sp, #4]
 	ldr r0, [r0, #8]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {pc}
 	thumb_func_end ov81_02242D94
@@ -10080,7 +10080,7 @@ ov81_02242DAC: ; 0x02242DAC
 	str r1, [sp, #4]
 	ldr r0, [r0, #8]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
@@ -10088,11 +10088,11 @@ ov81_02242DAC: ; 0x02242DAC
 
 	thumb_func_start ov81_02242DCC
 ov81_02242DCC: ; 0x02242DCC
-	ldr r3, _02242DD4 ; =sub_020247D4
+	ldr r3, _02242DD4 ; =Sprite_SetMatrix
 	ldr r0, [r0, #8]
 	bx r3
 	nop
-_02242DD4: .word sub_020247D4
+_02242DD4: .word Sprite_SetMatrix
 	thumb_func_end ov81_02242DCC
 
 	thumb_func_start ov81_02242DD8
@@ -10111,7 +10111,7 @@ ov81_02242DE4: ; 0x02242DE4
 	ldr r0, [r5, #8]
 	add r4, r1, #0
 	mov r1, #0
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	ldr r0, [r5, #8]
 	add r1, r4, #0
 	bl Set2dSpriteAnimSeqNo
@@ -10120,11 +10120,11 @@ ov81_02242DE4: ; 0x02242DE4
 
 	thumb_func_start ov81_02242DFC
 ov81_02242DFC: ; 0x02242DFC
-	ldr r3, _02242E04 ; =sub_02024A14
+	ldr r3, _02242E04 ; =Sprite_SetPalIndex
 	ldr r0, [r0, #8]
 	bx r3
 	nop
-_02242E04: .word sub_02024A14
+_02242E04: .word Sprite_SetPalIndex
 	thumb_func_end ov81_02242DFC
 
 	thumb_func_start ov81_02242E08
@@ -10203,7 +10203,7 @@ _02242E6A:
 	bl ov81_02242F10
 	ldr r0, [r4, #0xc]
 	mov r1, #1
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	add r0, r4, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -10239,7 +10239,7 @@ ov81_02242EC4: ; 0x02242EC4
 	ldr r0, [r4, #0xc]
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r3, r0, #0
 	add r2, sp, #0
 	ldmia r3!, {r0, r1}
@@ -10257,9 +10257,9 @@ ov81_02242EC4: ; 0x02242EC4
 	str r0, [sp, #4]
 	ldr r0, [r4, #0xc]
 	mov r1, ip
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r4, #0xc]
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r2, r0, #0
 	ldmia r2!, {r0, r1}
 	stmia r5!, {r0, r1}
@@ -10282,7 +10282,7 @@ ov81_02242F10: ; 0x02242F10
 	str r1, [sp, #4]
 	ldr r0, [r0, #0xc]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
@@ -10290,11 +10290,11 @@ ov81_02242F10: ; 0x02242F10
 
 	thumb_func_start ov81_02242F30
 ov81_02242F30: ; 0x02242F30
-	ldr r3, _02242F38 ; =sub_020248AC
+	ldr r3, _02242F38 ; =Sprite_GetMatrixPtr
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_02242F38: .word sub_020248AC
+_02242F38: .word Sprite_GetMatrixPtr
 	thumb_func_end ov81_02242F30
 
 	thumb_func_start ov81_02242F3C
@@ -10347,7 +10347,7 @@ ov81_02242F60: ; 0x02242F60
 	add r1, sp, #0
 	str r0, [sp, #4]
 	ldr r0, [r4, #0xc]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -10383,11 +10383,11 @@ ov81_02242F94: ; 0x02242F94
 
 	thumb_func_start ov81_02242FB0
 ov81_02242FB0: ; 0x02242FB0
-	ldr r3, _02242FB8 ; =sub_02024A14
+	ldr r3, _02242FB8 ; =Sprite_SetPalIndex
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_02242FB8: .word sub_02024A14
+_02242FB8: .word Sprite_SetPalIndex
 	thumb_func_end ov81_02242FB0
 
 	thumb_func_start ov81_02242FBC

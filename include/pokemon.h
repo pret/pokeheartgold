@@ -147,7 +147,7 @@ u8 sub_02070848(BoxPokemon *boxMon, u8 whichFacing);
 u8 sub_02070854(BoxPokemon *boxMon, u8 whichFacing, BOOL a2);
 u8 sub_020708D8(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid);
 u8 sub_02070A64(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid);
-struct UnkStruct_0200CF18 *sub_02070C24(Unk122_021E7C9C *r6, void *sp18, void *sp1C, s32 sp20, s32 sp88, s32 trainerClass, s32 sp90, s32 sp94, s32 r5, HeapID heapId);
+struct UnkImageStruct *sub_02070C24(SpriteRenderer *r6, SpriteGfxHandler *sp18, void *sp1C, int sp20, int sp88, int trainerClass, int sp90, int sp94, int r5, HeapID heapId);
 void sub_02070D3C(s32 trainer_class, s32 a1, s32 a2, struct UnkStruct_02070D3C *a3);
 void sub_02070D84(s32 trainer_class, s32 a1, struct UnkStruct_02070D3C *a2);
 u32 sub_02070D90(void);

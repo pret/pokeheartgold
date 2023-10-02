@@ -19,7 +19,7 @@
 .public ScriptReadHalfword
 .public FieldSysGetAttrAddr
 .public FieldSystem_VarGet
-.public sub_02050AAC
+.public CallTask_020509F0
 .public sub_020517E8
 .public sub_020517FC
 .public BattleSetup_New

@@ -154,7 +154,7 @@ _02078F6A:
 	ldr r0, _0207902C ; =0x00000678
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	b _02078FE4
 _02078F76:
 	cmp r2, #2
@@ -211,7 +211,7 @@ _02078FDA:
 	add r1, #0x24
 	ldr r0, [r5, r1]
 	mov r1, #1
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 _02078FE4:
 	add r0, r5, #0
 	bl sub_0207A89C
@@ -706,7 +706,7 @@ _020793A4:
 	add r0, #0x24
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	add r0, r4, #0
 	bl sub_020807AC
 	pop {r4, pc}
@@ -730,7 +730,7 @@ _020793D0:
 	ldr r0, _020793F8 ; =0x00000678
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	add r0, r4, #0
 	bl sub_0207C288
 	pop {r4, pc}
@@ -765,7 +765,7 @@ _02079410:
 	ldr r0, _02079438 ; =0x00000678
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	add r0, r4, #0
 	bl sub_0207C400
 	pop {r4, pc}
@@ -832,7 +832,7 @@ _02079460:
 	ldr r0, _020794C4 ; =0x00000678
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	add sp, #4
 	mov r0, #1
 	pop {r3, r4, pc}
@@ -941,7 +941,7 @@ _02079560:
 	ldr r0, _020795CC ; =0x00000678
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	ldr r0, _020795D0 ; =0x00000C65
 	mov r1, #0x30
 	ldrb r0, [r4, r0]
@@ -1106,7 +1106,7 @@ sub_020796B8: ; 0x020796B8
 	ldr r0, [r4]
 	bl DoScheduledBgGpuUpdates
 	bl GF_RunVramTransferTasks
-	bl sub_0200D034
+	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r3, _020796F8 ; =OS_IRQTable
 	ldr r1, _020796FC ; =0x00003FF8
 	mov r0, #1
@@ -1931,7 +1931,7 @@ _02079D84:
 	ldr r0, [r5, r0]
 	add r1, #2
 	add r2, sp, #0
-	bl sub_0200DE00
+	bl Sprite_GetPositionXY
 	ldr r0, _02079E24 ; =0x00000684
 	add r3, sp, #0
 	mov r2, #0
@@ -1942,7 +1942,7 @@ _02079D84:
 	lsl r2, r2, #0x10
 	ldr r0, [r5, r0]
 	asr r2, r2, #0x10
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	mov r0, #1
 	eor r0, r4
 	lsl r0, r0, #0x18
@@ -3308,7 +3308,7 @@ sub_0207A89C: ; 0x0207A89C
 	ldrb r1, [r2, #1]
 	ldrb r2, [r2]
 	ldr r0, [r4, r0]
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	add sp, #0x10
 	pop {r4, pc}
 	nop
@@ -3369,7 +3369,7 @@ _0207A92C:
 	ldr r0, [r5, r0]
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 _0207A960:
 	ldr r0, _0207A984 ; =0x00000C65
 	mov r2, #0
@@ -3704,7 +3704,7 @@ _0207ABA4:
 	ldrb r1, [r2, #1]
 	ldrb r2, [r2]
 	ldr r0, [r5, r0]
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 _0207ABF0:
 	ldr r0, _0207AC14 ; =0x00000C65
 	mov r2, #0
@@ -4289,7 +4289,7 @@ _0207B07A:
 	ldr r0, _0207B0AC ; =0x00000678
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0207B0A8: .word 0x00000654
@@ -4922,7 +4922,7 @@ sub_0207B51C: ; 0x0207B51C
 	mov r0, #0x1a
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
 	cmp r6, #0
@@ -4947,7 +4947,7 @@ _0207B556:
 	bne _0207B584
 	ldr r0, _0207B5E4 ; =0x00000684
 	ldr r0, [r5, r0]
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
 	cmp r6, #0
@@ -5054,7 +5054,7 @@ sub_0207B600: ; 0x0207B600
 	ldr r0, _0207B7C8 ; =0x00000684
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	ldr r0, _0207B7C8 ; =0x00000684
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -5886,7 +5886,7 @@ _0207BC9C:
 	ldr r0, _0207BCBC ; =0x00000678
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _0207BCAA:
@@ -5945,7 +5945,7 @@ _0207BCFE:
 	ldr r0, _0207BD64 ; =0x00000678
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	ldr r0, _0207BD68 ; =0x00000C65
 	mov r1, #0x30
 	ldrb r2, [r4, r0]
@@ -6018,7 +6018,7 @@ sub_0207BD78: ; 0x0207BD78
 	ldr r0, _0207BFB4 ; =0x00000684
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	ldr r0, _0207BFB4 ; =0x00000684
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -6162,7 +6162,7 @@ _0207BEB2:
 	ldr r0, _0207BFC4 ; =0x00000678
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	add r0, r4, #0
 	mov r1, #0x25
 	mov r2, #1
@@ -6258,7 +6258,7 @@ _0207BF88:
 	ldr r0, _0207BFC4 ; =0x00000678
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	add r0, r4, #0
 	bl sub_0207FBC8
 	add sp, #8
@@ -6316,7 +6316,7 @@ _0207C010:
 	ldr r0, _0207C040 ; =0x00000678
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	add r0, r4, #0
 	mov r1, #0x78
 	mov r2, #1
@@ -7391,7 +7391,7 @@ sub_0207C8B4: ; 0x0207C8B4
 	ldr r0, _0207C904 ; =0x00000678
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	ldr r0, _0207C900 ; =0x00000654
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -7571,7 +7571,7 @@ _0207CA54:
 	ldr r0, _0207CA8C ; =0x00000678
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	add r0, r4, #0
 	mov r1, #0xb3
 	mov r2, #1
@@ -7793,7 +7793,7 @@ _021013C4:
 	.short MOVE_CHATTER
 	.short MOVE_HEADBUTT
 	.short MOVE_MILK_DRINK
-	.short MOVE_SOFT_BOILED
+	.short MOVE_SOFTBOILED
 _021013E4:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00

@@ -89,7 +89,7 @@ sub_0207CBD0: ; 0x0207CBD0
 	lsl r1, r1, #4
 	add r6, r0, r1
 	ldr r0, [r6, r4]
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	mov r1, #2
 	and r0, r1
 	strb r0, [r5, #7]
@@ -98,7 +98,7 @@ sub_0207CBD0: ; 0x0207CBD0
 	bne _0207CC1C
 	ldr r0, [r6, r4]
 	mov r1, #0
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	ldrb r1, [r5, #7]
 	ldr r0, [r6, r4]
 	bl Set2dSpriteAnimSeqNo
@@ -159,7 +159,7 @@ _0207CC76:
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	ldrb r0, [r4, #5]
 	lsl r0, r0, #2
 	add r1, r5, r0
@@ -231,7 +231,7 @@ _0207CD0A:
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	ldrb r0, [r4, #5]
 	lsl r0, r0, #2
 	add r1, r5, r0

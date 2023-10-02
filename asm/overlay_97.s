@@ -1377,7 +1377,7 @@ _0221F0BC:
 	cmp r4, #6
 	blo _0221F0BC
 	ldr r0, [r5, #4]
-	bl sub_02024504
+	bl SpriteList_Delete
 	add r0, r7, #0
 	bl FreeToHeap
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2667,7 +2667,7 @@ ov97_0221FAEC: ; 0x0221FAEC
 	bl Set2dSpriteAnimSeqNo
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	ldr r1, [sp, #0x9c]
 	add r0, r4, #0
 	bl Set2dSpriteVisibleFlag

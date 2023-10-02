@@ -27,7 +27,7 @@
 #include "unk_02078E30.h"
 #include "unk_02088288.h"
 #include "unk_02091564.h"
-#include "constants/game_stat.h"
+#include "constants/game_stats.h"
 
 typedef enum BattleHallChallengeType {
     BATTLE_HALL_CHALLENGE_TYPE_SINGLE,

@@ -3912,7 +3912,7 @@ _0223FBEA:
 	cmp r4, #4
 	blo _0223FBEA
 	ldr r0, [r5]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
@@ -3983,7 +3983,7 @@ _0223FC64:
 	lsl r0, r0, #0xc
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x10]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r4, #0
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
@@ -4023,10 +4023,10 @@ ov82_0223FCBC: ; 0x0223FCBC
 	beq _0223FCD4
 	ldrb r1, [r1]
 	ldr r0, [r5, #0x10]
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 _0223FCD4:
 	ldr r0, [r5, #0x10]
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r3, r0, #0
 	add r2, sp, #0
 	ldmia r3!, {r0, r1}
@@ -4040,7 +4040,7 @@ _0223FCD4:
 	lsl r0, r6, #0xc
 	str r0, [sp, #4]
 	ldr r0, [r5, #0x10]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov82_0223FCBC
@@ -4056,7 +4056,7 @@ ov82_0223FCFC: ; 0x0223FCFC
 	bl sub_02024868
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov82_0223FCFC

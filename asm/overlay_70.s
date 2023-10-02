@@ -2717,7 +2717,7 @@ _02238DE2:
 	str r0, [sp, #8]
 	add r0, r4, #0
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {r4, r5, pc}
 	thumb_func_end ov70_02238D8C
@@ -2849,7 +2849,7 @@ _02238ECC:
 	blt _02238ECC
 	ldr r0, _02238F00 ; =0x00000BF4
 	ldr r0, [r6, r0]
-	bl sub_02024504
+	bl SpriteList_Delete
 	ldr r0, _02238F00 ; =0x00000BF4
 	mov r1, #0
 	str r1, [r6, r0]
@@ -2964,7 +2964,7 @@ ov70_02238F9C: ; 0x02238F9C
 	lsl r1, r2, #0xc
 	str r1, [sp, #4]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
@@ -5070,7 +5070,7 @@ ov70_0223A06C: ; 0x0223A06C
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	bl sub_0203A880
 	add sp, #0x30
 	pop {r4, pc}
@@ -8132,7 +8132,7 @@ ov70_0223B9C8: ; 0x0223B9C8
 	ldr r0, _0223BAA0 ; =0x00000DCC
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	ldr r0, _0223BAA0 ; =0x00000DCC
 	mov r1, #1
 	ldr r0, [r4, r0]
@@ -10943,13 +10943,13 @@ _0223D0B0:
 	ldr r0, _0223D1F4 ; =0x00000DCC
 	mov r1, #0
 	ldr r0, [r7, r0]
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	b _0223D0C6
 _0223D0BC:
 	ldr r0, _0223D1F4 ; =0x00000DCC
 	mov r1, #1
 	ldr r0, [r7, r0]
-	bl sub_02024A04
+	bl Sprite_SetPriority
 _0223D0C6:
 	ldr r4, _0223D1EC ; =ov70_02245784
 	mov r6, #0
@@ -10974,7 +10974,7 @@ _0223D0CC:
 	ldr r0, _0223D1F8 ; =0x00000DD8
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	add r6, r6, #1
 	add r4, r4, #4
 	add r5, r5, #4
@@ -11006,7 +11006,7 @@ _0223D10A:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	add r6, r6, #1
 	add r4, r4, #4
 	add r5, r5, #4
@@ -11037,7 +11037,7 @@ _0223D14E:
 	ldr r0, _0223D1FC ; =0x00000EC8
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	add r6, r6, #1
 	add r4, r4, #4
 	add r5, r5, #4
@@ -11065,7 +11065,7 @@ _0223D190:
 	ldr r0, _0223D204 ; =0x00000F04
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	add r6, r6, #1
 	add r4, r4, #4
 	add r5, r5, #4
@@ -11950,12 +11950,12 @@ ov70_0223D8E8: ; 0x0223D8E8
 _0223D908:
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	pop {r3, r4, r5, pc}
 _0223D912:
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0223D91C: .word ov70_02245784
@@ -13004,7 +13004,7 @@ _0223E134:
 	bl GX_LoadOBJ
 	ldr r0, [r5, #8]
 	ldr r1, [r5, #4]
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 _0223E158:
 	add r4, r4, #1
 	add r5, r5, r7
@@ -18768,7 +18768,7 @@ ov70_02240D74: ; 0x02240D74
 	ldr r0, _02240EE0 ; =0x00000EE4
 	mov r1, #2
 	ldr r0, [r5, r0]
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	ldr r0, _02240EE0 ; =0x00000EE4
 	mov r1, #7
 	mul r1, r4
@@ -18809,7 +18809,7 @@ _02240DD8:
 	ldr r0, _02240EE8 ; =0x00000EE8
 	mov r1, #2
 	ldr r0, [r4, r0]
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	ldr r0, [sp]
 	add r4, r4, #4
 	add r0, r0, #1
@@ -18841,7 +18841,7 @@ _02240DD8:
 	ldr r0, _02240EEC ; =0x00000F0C
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	add r0, sp, #4
 	bl CreateSprite
 	mov r1, #0xf1
@@ -18876,7 +18876,7 @@ _02240DD8:
 _02240EAA:
 	ldr r0, _02240EE0 ; =0x00000EE4
 	ldr r0, [r5, r0]
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	ldr r1, [r0]
 	add r4, r4, #1
 	asr r2, r1, #0xb
@@ -19209,7 +19209,7 @@ _02241148:
 	str r0, [sp, #8]
 	add r0, r4, #0
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {r4, r5, pc}
 	thumb_func_end ov70_022410F0
@@ -19335,12 +19335,12 @@ ov70_02241234: ; 0x02241234
 	mov r4, #0
 _0224123C:
 	ldr r0, [r5, r7]
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #0
 	beq _0224126E
 	ldr r0, _02241278 ; =0x00000EE8
 	ldr r0, [r5, r0]
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ov70_0224122C

@@ -32,7 +32,7 @@ _02239B10:
 	add r0, r6, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	ldr r1, [r4, #0x18]
 	mov r0, #0
 	str r5, [sp]
@@ -54,7 +54,7 @@ _02239B10:
 	add r0, r6, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	ldr r3, [r4, #0x20]
 	mov r0, #1
 	str r0, [sp]
@@ -62,7 +62,7 @@ _02239B10:
 	add r1, r7, #0
 	add r2, r5, #0
 	str r3, [sp, #4]
-	bl sub_0200D71C
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -84,16 +84,16 @@ _02239B8A:
 	add r4, r1, r0
 	ldr r1, [r4, #0x14]
 	add r0, r5, #0
-	bl sub_0200D958
+	bl SpriteGfxHandler_UnloadCharObjById
 	ldr r1, [r4, #0x18]
 	add r0, r5, #0
-	bl sub_0200D968
+	bl SpriteGfxHandler_UnloadPlttObjById
 	ldr r1, [r4, #0x1c]
 	add r0, r5, #0
-	bl sub_0200D978
+	bl SpriteGfxHandler_UnloadCellObjById
 	ldr r1, [r4, #0x20]
 	add r0, r5, #0
-	bl sub_0200D988
+	bl SpriteGfxHandler_UnloadAnimObjById
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02239BB4: .word ov80_0223DA54
@@ -115,10 +115,10 @@ _02239BC8:
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r3, r2
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_0200DC0C
+	bl TickSpriteAnimation1Frame
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

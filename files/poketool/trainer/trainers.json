@@ -1667,7 +1667,7 @@
           "species": "SPECIES_KINGDRA",
           "item": "ITEM_SITRUS_BERRY",
           "moves": [
-            "MOVE_SMOKESCREEN",
+            "MOVE_SMOKE_SCREEN",
             "MOVE_HYDRO_PUMP",
             "MOVE_HYPER_BEAM",
             "MOVE_DRAGON_PULSE"
@@ -4122,7 +4122,7 @@
           "species": "SPECIES_HORSEA",
           "moves": [
             "MOVE_BUBBLE",
-            "MOVE_SMOKESCREEN",
+            "MOVE_SMOKE_SCREEN",
             "MOVE_LEER",
             "MOVE_BUBBLE_BEAM"
           ],
@@ -4136,7 +4136,7 @@
           "species": "SPECIES_HORSEA",
           "moves": [
             "MOVE_FOCUS_ENERGY",
-            "MOVE_SMOKESCREEN",
+            "MOVE_SMOKE_SCREEN",
             "MOVE_LEER",
             "MOVE_BUBBLE_BEAM"
           ],
@@ -8615,7 +8615,7 @@
           "species": "SPECIES_CHARMANDER",
           "moves": [
             "MOVE_FIRE_FANG",
-            "MOVE_SMOKESCREEN",
+            "MOVE_SMOKE_SCREEN",
             "MOVE_DRAGON_RAGE",
             "MOVE_SCARY_FACE"
           ],
@@ -8927,7 +8927,7 @@
           "moves": [
             "MOVE_BUBBLE_BEAM",
             "MOVE_LEER",
-            "MOVE_VISE_GRIP",
+            "MOVE_VICE_GRIP",
             "MOVE_HARDEN"
           ],
           "capsule": 0
@@ -8941,7 +8941,7 @@
           "moves": [
             "MOVE_BUBBLE_BEAM",
             "MOVE_MUD_SHOT",
-            "MOVE_VISE_GRIP",
+            "MOVE_VICE_GRIP",
             "MOVE_HARDEN"
           ],
           "capsule": 0
@@ -9896,7 +9896,7 @@
           "species": "SPECIES_ELECTRODE",
           "moves": [
             "MOVE_THUNDER",
-            "MOVE_SELF_DESTRUCT",
+            "MOVE_SELFDESTRUCT",
             "MOVE_SWIFT",
             "MOVE_RAIN_DANCE"
           ],
@@ -10146,7 +10146,7 @@
             "MOVE_LAVA_PLUME",
             "MOVE_FIRE_PUNCH",
             "MOVE_CONFUSE_RAY",
-            "MOVE_FEINT_ATTACK"
+            "MOVE_FAINT_ATTACK"
           ],
           "capsule": 0
         },
@@ -10441,7 +10441,7 @@
           "moves": [
             "MOVE_DOUBLE_TEAM",
             "MOVE_CONFUSE_RAY",
-            "MOVE_FEINT_ATTACK",
+            "MOVE_FAINT_ATTACK",
             "MOVE_PAYBACK"
           ],
           "capsule": 0
@@ -10487,7 +10487,7 @@
             "MOVE_PLUCK",
             "MOVE_WHIRLWIND",
             "MOVE_SUCKER_PUNCH",
-            "MOVE_FEINT_ATTACK"
+            "MOVE_FAINT_ATTACK"
           ],
           "capsule": 0
         },
@@ -11110,7 +11110,7 @@
           "moves": [
             "MOVE_SCREECH",
             "MOVE_DOUBLE_TEAM",
-            "MOVE_SELF_DESTRUCT",
+            "MOVE_SELFDESTRUCT",
             "MOVE_CHARGE_BEAM"
           ],
           "capsule": 0
@@ -11853,7 +11853,7 @@
           "moves": [
             "MOVE_QUICK_ATTACK",
             "MOVE_ICY_WIND",
-            "MOVE_FEINT_ATTACK",
+            "MOVE_FAINT_ATTACK",
             "MOVE_FURY_SWIPES"
           ],
           "capsule": 0
@@ -12077,7 +12077,7 @@
           "species": "SPECIES_QUILAVA",
           "moves": [
             "MOVE_FLAME_WHEEL",
-            "MOVE_SMOKESCREEN",
+            "MOVE_SMOKE_SCREEN",
             "MOVE_EMBER",
             "MOVE_QUICK_ATTACK"
           ],
@@ -12120,7 +12120,7 @@
           "moves": [
             "MOVE_QUICK_ATTACK",
             "MOVE_ICY_WIND",
-            "MOVE_FEINT_ATTACK",
+            "MOVE_FAINT_ATTACK",
             "MOVE_FURY_SWIPES"
           ],
           "capsule": 0
@@ -12411,7 +12411,7 @@
             "MOVE_ICY_WIND",
             "MOVE_QUICK_ATTACK",
             "MOVE_FURY_SWIPES",
-            "MOVE_FEINT_ATTACK"
+            "MOVE_FAINT_ATTACK"
           ],
           "capsule": 0
         },
@@ -12466,7 +12466,7 @@
           "moves": [
             "MOVE_QUICK_ATTACK",
             "MOVE_ICY_WIND",
-            "MOVE_FEINT_ATTACK",
+            "MOVE_FAINT_ATTACK",
             "MOVE_FURY_SWIPES"
           ],
           "capsule": 0
@@ -12970,7 +12970,7 @@
             "MOVE_TACKLE",
             "MOVE_SMOG",
             "MOVE_SLUDGE",
-            "MOVE_SMOKESCREEN"
+            "MOVE_SMOKE_SCREEN"
           ],
           "capsule": 0
         }
@@ -13063,7 +13063,7 @@
           "moves": [
             "MOVE_QUICK_ATTACK",
             "MOVE_ICY_WIND",
-            "MOVE_FEINT_ATTACK",
+            "MOVE_FAINT_ATTACK",
             "MOVE_SHADOW_CLAW"
           ],
           "capsule": 0
@@ -13175,7 +13175,7 @@
           "moves": [
             "MOVE_QUICK_ATTACK",
             "MOVE_ICY_WIND",
-            "MOVE_FEINT_ATTACK",
+            "MOVE_FAINT_ATTACK",
             "MOVE_SHADOW_CLAW"
           ],
           "capsule": 0
@@ -13287,7 +13287,7 @@
           "moves": [
             "MOVE_QUICK_ATTACK",
             "MOVE_ICY_WIND",
-            "MOVE_FEINT_ATTACK",
+            "MOVE_FAINT_ATTACK",
             "MOVE_SHADOW_CLAW"
           ],
           "capsule": 0
@@ -13442,7 +13442,7 @@
             "MOVE_ICY_WIND",
             "MOVE_QUICK_ATTACK",
             "MOVE_FURY_SWIPES",
-            "MOVE_FEINT_ATTACK"
+            "MOVE_FAINT_ATTACK"
           ],
           "capsule": 0
         },
@@ -13540,7 +13540,7 @@
             "MOVE_ICY_WIND",
             "MOVE_QUICK_ATTACK",
             "MOVE_FURY_SWIPES",
-            "MOVE_FEINT_ATTACK"
+            "MOVE_FAINT_ATTACK"
           ],
           "capsule": 0
         },
@@ -13551,7 +13551,7 @@
           "level": 34,
           "species": "SPECIES_QUILAVA",
           "moves": [
-            "MOVE_SMOKESCREEN",
+            "MOVE_SMOKE_SCREEN",
             "MOVE_SWIFT",
             "MOVE_QUICK_ATTACK",
             "MOVE_FLAME_WHEEL"
@@ -16825,7 +16825,7 @@
           "level": 45,
           "species": "SPECIES_BRONZOR",
           "moves": [
-            "MOVE_FEINT_ATTACK",
+            "MOVE_FAINT_ATTACK",
             "MOVE_SKILL_SWAP",
             "MOVE_SAFEGUARD",
             "MOVE_GYRO_BALL"
@@ -18509,7 +18509,7 @@
           "species": "SPECIES_CHARMELEON",
           "moves": [
             "MOVE_EMBER",
-            "MOVE_SMOKESCREEN",
+            "MOVE_SMOKE_SCREEN",
             "MOVE_FIRE_FANG",
             "MOVE_SCARY_FACE"
           ],
@@ -19038,7 +19038,7 @@
           "moves": [
             "MOVE_SWAGGER",
             "MOVE_FOCUS_ENERGY",
-            "MOVE_HIGH_JUMP_KICK",
+            "MOVE_HI_JUMP_KICK",
             "MOVE_BLAZE_KICK"
           ],
           "capsule": 0
@@ -21716,7 +21716,7 @@
             "MOVE_FIRE_FANG",
             "MOVE_ROAR",
             "MOVE_BITE",
-            "MOVE_FEINT_ATTACK"
+            "MOVE_FAINT_ATTACK"
           ],
           "capsule": 0
         },
@@ -21729,7 +21729,7 @@
           "moves": [
             "MOVE_TACKLE",
             "MOVE_SLUDGE",
-            "MOVE_SMOKESCREEN",
+            "MOVE_SMOKE_SCREEN",
             "MOVE_HAZE"
           ],
           "capsule": 0
@@ -21744,7 +21744,7 @@
             "MOVE_FIRE_FANG",
             "MOVE_SMOG",
             "MOVE_BITE",
-            "MOVE_FEINT_ATTACK"
+            "MOVE_FAINT_ATTACK"
           ],
           "capsule": 0
         }
@@ -21820,9 +21820,9 @@
           "species": "SPECIES_KOFFING",
           "moves": [
             "MOVE_TACKLE",
-            "MOVE_SELF_DESTRUCT",
+            "MOVE_SELFDESTRUCT",
             "MOVE_SLUDGE",
-            "MOVE_SMOKESCREEN"
+            "MOVE_SMOKE_SCREEN"
           ],
           "capsule": 0
         },
@@ -21834,9 +21834,9 @@
           "species": "SPECIES_KOFFING",
           "moves": [
             "MOVE_TACKLE",
-            "MOVE_SELF_DESTRUCT",
+            "MOVE_SELFDESTRUCT",
             "MOVE_SLUDGE",
-            "MOVE_SMOKESCREEN"
+            "MOVE_SMOKE_SCREEN"
           ],
           "capsule": 0
         },
@@ -21848,9 +21848,9 @@
           "species": "SPECIES_KOFFING",
           "moves": [
             "MOVE_TACKLE",
-            "MOVE_SELF_DESTRUCT",
+            "MOVE_SELFDESTRUCT",
             "MOVE_SLUDGE",
-            "MOVE_SMOKESCREEN"
+            "MOVE_SMOKE_SCREEN"
           ],
           "capsule": 0
         },
@@ -21864,7 +21864,7 @@
             "MOVE_TACKLE",
             "MOVE_EXPLOSION",
             "MOVE_SLUDGE",
-            "MOVE_SMOKESCREEN"
+            "MOVE_SMOKE_SCREEN"
           ],
           "capsule": 0
         },
@@ -21876,9 +21876,9 @@
           "species": "SPECIES_KOFFING",
           "moves": [
             "MOVE_TACKLE",
-            "MOVE_SELF_DESTRUCT",
+            "MOVE_SELFDESTRUCT",
             "MOVE_SLUDGE",
-            "MOVE_SMOKESCREEN"
+            "MOVE_SMOKE_SCREEN"
           ],
           "capsule": 0
         },
@@ -21892,7 +21892,7 @@
             "MOVE_TACKLE",
             "MOVE_SMOG",
             "MOVE_SLUDGE",
-            "MOVE_SMOKESCREEN"
+            "MOVE_SMOKE_SCREEN"
           ],
           "capsule": 0
         }
@@ -21980,7 +21980,7 @@
           "moves": [
             "MOVE_ICY_WIND",
             "MOVE_SHADOW_CLAW",
-            "MOVE_FEINT_ATTACK",
+            "MOVE_FAINT_ATTACK",
             "MOVE_METAL_CLAW"
           ],
           "capsule": 0
@@ -22095,7 +22095,7 @@
           "moves": [
             "MOVE_ICY_WIND",
             "MOVE_SHADOW_CLAW",
-            "MOVE_FEINT_ATTACK",
+            "MOVE_FAINT_ATTACK",
             "MOVE_METAL_CLAW"
           ],
           "capsule": 0
@@ -22211,7 +22211,7 @@
           "moves": [
             "MOVE_ICY_WIND",
             "MOVE_SHADOW_CLAW",
-            "MOVE_FEINT_ATTACK",
+            "MOVE_FAINT_ATTACK",
             "MOVE_METAL_CLAW"
           ],
           "capsule": 0
@@ -22710,7 +22710,7 @@
           "level": 33,
           "species": "SPECIES_HORSEA",
           "moves": [
-            "MOVE_SMOKESCREEN",
+            "MOVE_SMOKE_SCREEN",
             "MOVE_LEER",
             "MOVE_BRINE",
             "MOVE_TWISTER"
@@ -22724,7 +22724,7 @@
           "level": 33,
           "species": "SPECIES_HORSEA",
           "moves": [
-            "MOVE_SMOKESCREEN",
+            "MOVE_SMOKE_SCREEN",
             "MOVE_LEER",
             "MOVE_BRINE",
             "MOVE_TWISTER"
@@ -23785,7 +23785,7 @@
           "species": "SPECIES_GRAVELER",
           "moves": [
             "MOVE_MAGNITUDE",
-            "MOVE_SELF_DESTRUCT",
+            "MOVE_SELFDESTRUCT",
             "MOVE_DEFENSE_CURL",
             "MOVE_ROLLOUT"
           ],
@@ -23799,7 +23799,7 @@
           "species": "SPECIES_GOLEM",
           "moves": [
             "MOVE_MAGNITUDE",
-            "MOVE_SELF_DESTRUCT",
+            "MOVE_SELFDESTRUCT",
             "MOVE_DEFENSE_CURL",
             "MOVE_ROLLOUT"
           ],
@@ -23885,7 +23885,7 @@
           "level": 33,
           "species": "SPECIES_GRAVELER",
           "moves": [
-            "MOVE_SELF_DESTRUCT",
+            "MOVE_SELFDESTRUCT",
             "MOVE_ROCK_THROW",
             "MOVE_HARDEN",
             "MOVE_MAGNITUDE"
@@ -23899,7 +23899,7 @@
           "level": 33,
           "species": "SPECIES_GRAVELER",
           "moves": [
-            "MOVE_SELF_DESTRUCT",
+            "MOVE_SELFDESTRUCT",
             "MOVE_ROCK_THROW",
             "MOVE_HARDEN",
             "MOVE_MAGNITUDE"
@@ -24403,7 +24403,7 @@
           "level": 39,
           "species": "SPECIES_SEADRA",
           "moves": [
-            "MOVE_SMOKESCREEN",
+            "MOVE_SMOKE_SCREEN",
             "MOVE_TWISTER",
             "MOVE_SURF",
             "MOVE_WATERFALL"
@@ -28081,7 +28081,7 @@
           "moves": [
             "MOVE_SLUDGE_BOMB",
             "MOVE_DOUBLE_HIT",
-            "MOVE_SMOKESCREEN",
+            "MOVE_SMOKE_SCREEN",
             "MOVE_ASSURANCE"
           ],
           "capsule": 0
@@ -28125,7 +28125,7 @@
           "moves": [
             "MOVE_SLUDGE_BOMB",
             "MOVE_DOUBLE_HIT",
-            "MOVE_SMOKESCREEN",
+            "MOVE_SMOKE_SCREEN",
             "MOVE_ASSURANCE"
           ],
           "capsule": 0
@@ -28169,7 +28169,7 @@
           "moves": [
             "MOVE_SLUDGE_BOMB",
             "MOVE_DOUBLE_HIT",
-            "MOVE_SMOKESCREEN",
+            "MOVE_SMOKE_SCREEN",
             "MOVE_THUNDER"
           ],
           "capsule": 0
@@ -29755,7 +29755,7 @@
           "species": "SPECIES_BLISSEY",
           "item": "ITEM_SITRUS_BERRY",
           "moves": [
-            "MOVE_SOFT_BOILED",
+            "MOVE_SOFTBOILED",
             "MOVE_COUNTER",
             "MOVE_PSYCHIC",
             "MOVE_TOXIC"
@@ -30982,7 +30982,7 @@
             "MOVE_OVERHEAT",
             "MOVE_FIRE_PUNCH",
             "MOVE_CONFUSE_RAY",
-            "MOVE_FEINT_ATTACK"
+            "MOVE_FAINT_ATTACK"
           ],
           "capsule": 0
         }
@@ -31944,7 +31944,7 @@
           "moves": [
             "MOVE_DOUBLE_HIT",
             "MOVE_SLUDGE",
-            "MOVE_SMOKESCREEN",
+            "MOVE_SMOKE_SCREEN",
             "MOVE_SMOG"
           ],
           "capsule": 0
@@ -32796,7 +32796,7 @@
           "species": "SPECIES_MEDICHAM",
           "item": "ITEM_SITRUS_BERRY",
           "moves": [
-            "MOVE_HIGH_JUMP_KICK",
+            "MOVE_HI_JUMP_KICK",
             "MOVE_PSYCHO_CUT",
             "MOVE_ATTRACT",
             "MOVE_THUNDER_PUNCH"
@@ -32826,7 +32826,7 @@
           "species": "SPECIES_HITMONLEE",
           "item": "ITEM_NONE",
           "moves": [
-            "MOVE_HIGH_JUMP_KICK",
+            "MOVE_HI_JUMP_KICK",
             "MOVE_FAKE_OUT",
             "MOVE_BLAZE_KICK",
             "MOVE_BULK_UP"
@@ -34072,7 +34072,7 @@
           "moves": [
             "MOVE_FLAMETHROWER",
             "MOVE_CONFUSE_RAY",
-            "MOVE_FEINT_ATTACK",
+            "MOVE_FAINT_ATTACK",
             "MOVE_PROTECT"
           ],
           "capsule": 0

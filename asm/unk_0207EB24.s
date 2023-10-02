@@ -28,11 +28,11 @@ sub_0207EB24: ; 0x0207EB24
 	mov r1, #0xc
 	bl GF_CreateVramTransferManager
 	mov r0, #0xc
-	bl sub_0200CF18
+	bl SpriteRenderer_Create
 	ldr r1, _0207EBD0 ; =0x00000658
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
-	bl sub_0200CF38
+	bl SpriteRenderer_CreateGfxHandler
 	ldr r7, _0207EBD4 ; =0x0000065C
 	add r2, sp, #0x24
 	ldr r3, _0207EBD8 ; =_021018D8
@@ -68,7 +68,7 @@ sub_0207EB24: ; 0x0207EB24
 	bl sub_0200CFF4
 	sub r0, r7, #4
 	ldr r0, [r4, r0]
-	bl sub_0200CF6C
+	bl SpriteRenderer_GetG2dRendererPtr
 	mov r2, #1
 	mov r1, #0
 	lsl r2, r2, #0x14
@@ -176,7 +176,7 @@ sub_0207EBE4: ; 0x0207EBE4
 	add r1, r1, #4
 	ldr r1, [r5, r1]
 	add r2, sp, #0x1c
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	ldr r1, _0207ECDC ; =0x0000084C
 	add r2, r5, r4
 	str r0, [r2, r1]
@@ -201,7 +201,7 @@ sub_0207EBE4: ; 0x0207EBE4
 	ldr r0, [r5, r1]
 	add r1, r1, #4
 	ldr r1, [r5, r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	mov r1, #0x85
 	add r2, r5, r4
 	lsl r1, r1, #4
@@ -300,7 +300,7 @@ _0207ED8E:
 	add r1, r0, #0
 	ldr r0, [r6, r4]
 	add r1, r1, #3
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	ldr r0, [sp, #0xc]
 	ldr r1, [sp, #8]
 	mov r2, #0
@@ -311,7 +311,7 @@ _0207ED8E:
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	add r1, r2, #1
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	ldr r0, [sp, #0x10]
 	bl NARC_Delete
 	add sp, #0x1c
@@ -331,7 +331,7 @@ sub_0207EDD4: ; 0x0207EDD4
 	add r1, r1, #4
 	ldr r1, [r5, r1]
 	ldr r2, _0207EF20 ; =_021018F8
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	ldr r1, _0207EF24 ; =0x00000678
 	ldr r2, _0207EF28 ; =_02101920
 	str r0, [r5, r1]
@@ -340,7 +340,7 @@ sub_0207EDD4: ; 0x0207EDD4
 	sub r1, #0x1c
 	ldr r0, [r5, r0]
 	ldr r1, [r5, r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	ldr r1, _0207EF2C ; =0x0000067C
 	ldr r2, _0207EF30 ; =_02101948
 	str r0, [r5, r1]
@@ -349,7 +349,7 @@ sub_0207EDD4: ; 0x0207EDD4
 	sub r1, #0x20
 	ldr r0, [r5, r0]
 	ldr r1, [r5, r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	mov r1, #0x1a
 	lsl r1, r1, #6
 	str r0, [r5, r1]
@@ -359,7 +359,7 @@ sub_0207EDD4: ; 0x0207EDD4
 	ldr r0, [r5, r0]
 	ldr r1, [r5, r1]
 	ldr r2, _0207EF34 ; =_02101970
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	ldr r1, _0207EF38 ; =0x00000684
 	ldr r2, _0207EF3C ; =_02101C68
 	str r0, [r5, r1]
@@ -368,7 +368,7 @@ sub_0207EDD4: ; 0x0207EDD4
 	sub r1, #0x28
 	ldr r0, [r5, r0]
 	ldr r1, [r5, r1]
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	mov r1, #0x6d
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -390,7 +390,7 @@ _0207EE52:
 	ldr r0, [r5, r0]
 	ldr r1, [r5, r1]
 	add r2, r2, r3
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	ldr r1, _0207EF44 ; =0x00000688
 	str r0, [r6, r1]
 	ldr r1, [sp]
@@ -416,7 +416,7 @@ _0207EE52:
 	ldr r0, [r5, r0]
 	ldr r1, [r5, r1]
 	add r2, r2, r3
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	mov r1, #0x6a
 	lsl r1, r1, #4
 	mov r2, #0xa
@@ -430,7 +430,7 @@ _0207EE52:
 	ldr r0, [r5, r0]
 	ldr r1, [r5, r1]
 	add r2, r2, r3
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	ldr r1, _0207EF50 ; =0x000006B8
 	add r4, #0x28
 	str r0, [r6, r1]
@@ -454,7 +454,7 @@ _0207EEDE:
 	ldr r0, [r5, r0]
 	ldr r1, [r5, r1]
 	ldr r2, _0207EF54 ; =_02101C90
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	ldr r1, _0207EF58 ; =0x00000748
 	str r0, [r4, r1]
 	ldr r0, [r4, r7]
@@ -520,7 +520,7 @@ sub_0207EF5C: ; 0x0207EF5C
 	add r1, r1, #4
 	ldr r1, [r5, r1]
 	add r2, sp, #0
-	bl sub_0200D2B4
+	bl SpriteRenderer_CreateSprite
 	lsl r1, r4, #2
 	add r2, r5, r1
 	mov r1, #0x66
@@ -540,10 +540,10 @@ sub_0207EFA4: ; 0x0207EFA4
 	ldr r0, [r4, r1]
 	add r1, r1, #4
 	ldr r1, [r4, r1]
-	bl sub_0200D0E4
+	bl SpriteRenderer_RemoveGfxHandler
 	ldr r0, _0207EFC0 ; =0x00000658
 	ldr r0, [r4, r0]
-	bl sub_0200D108
+	bl SpriteRenderer_Delete
 	pop {r4, pc}
 	nop
 _0207EFC0: .word 0x00000658
@@ -656,7 +656,7 @@ sub_0207F064: ; 0x0207F064
 	ldr r0, [r1, r0]
 	ldrsh r1, [r4, r5]
 	ldrsh r2, [r2, r5]
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	pop {r4, r5, r6, pc}
 	nop
 _0207F094: .word 0x00000846
@@ -681,12 +681,12 @@ sub_0207F098: ; 0x0207F098
 	ldrsh r2, [r3, r2]
 	add r1, #8
 	lsl r1, r1, #0x10
-	ldr r3, _0207F0C4 ; =sub_0200DD88
+	ldr r3, _0207F0C4 ; =Sprite_SetPositionXY
 	asr r1, r1, #0x10
 	bx r3
 	.balign 4, 0
 _0207F0C0: .word 0x00000846
-_0207F0C4: .word sub_0200DD88
+_0207F0C4: .word Sprite_SetPositionXY
 	thumb_func_end sub_0207F098
 
 	thumb_func_start sub_0207F0C8
@@ -722,12 +722,12 @@ sub_0207F0FC: ; 0x0207F0FC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	cmp r4, r0
 	beq _0207F11A
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	add r0, r5, #0
 	add r1, r4, #0
 	bl Set2dSpriteAnimSeqNo
@@ -839,7 +839,7 @@ _0207F1BE:
 	mov r1, #1
 	ldr r0, [r4, #0x24]
 	lsl r1, r1, #0xc
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 	ldr r0, _0207F23C ; =0x00000C65
 	ldrb r0, [r6, r0]
 	cmp r0, r5
@@ -849,7 +849,7 @@ _0207F1BE:
 	cmp r7, #5
 	beq _0207F216
 	ldr r0, [r4, #0x24]
-	bl sub_020249F8
+	bl Sprite_GetAnimCtrlCurrentFrame
 	cmp r0, #0
 	ldr r0, [r4, #0x24]
 	bne _0207F202
@@ -860,7 +860,7 @@ _0207F1BE:
 	sub r2, r2, #3
 	lsl r2, r2, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	b _0207F224
 _0207F202:
 	mov r2, #0x18
@@ -870,7 +870,7 @@ _0207F202:
 	add r2, r2, #1
 	lsl r2, r2, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	b _0207F224
 _0207F216:
 	mov r1, #0x16
@@ -878,7 +878,7 @@ _0207F216:
 	ldrsh r1, [r4, r1]
 	ldrsh r2, [r4, r2]
 	ldr r0, [r4, #0x24]
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 _0207F224:
 	add r0, r5, #1
 	lsl r0, r0, #0x10
@@ -927,11 +927,11 @@ sub_0207F240: ; 0x0207F240
 	ldrb r1, [r2, #1]
 	ldrb r2, [r2]
 	ldr r0, [r5, r0]
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	ldr r0, _0207F2A4 ; =0x00000678
 	add r1, r6, #0
 	ldr r0, [r5, r0]
-	bl sub_0200DD08
+	bl thunk_Sprite_SetPalIndex
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	nop
@@ -959,7 +959,7 @@ sub_0207F2A8: ; 0x0207F2A8
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x6d
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -969,7 +969,7 @@ sub_0207F2A8: ; 0x0207F2A8
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	mov r0, #0x6d
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -987,7 +987,7 @@ sub_0207F2F8: ; 0x0207F2F8
 	mov r0, #0x6d
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #1
 	bne _0207F332
 	mov r0, #0x6d
@@ -995,11 +995,11 @@ sub_0207F2F8: ; 0x0207F2F8
 	mov r1, #1
 	ldr r0, [r4, r0]
 	lsl r1, r1, #0xc
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 	mov r0, #0x6d
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_020249F8
+	bl Sprite_GetAnimCtrlCurrentFrame
 	cmp r0, #2
 	bne _0207F332
 	mov r0, #0x6d
@@ -1045,12 +1045,12 @@ _0207F36A:
 	ldr r0, [r6, r0]
 	ldr r2, [sp, #4]
 	mov r1, #0x1e
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	ldr r0, _0207F3A0 ; =0x00000748
 	ldr r2, [sp, #8]
 	ldr r0, [r5, r0]
 	mov r1, #0x32
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	ldr r0, _0207F39C ; =0x00000654
 	add r6, #0x30
 	ldr r0, [r7, r0]
@@ -1137,7 +1137,14 @@ _0207F428: .word 0x00000836
 	.rodata
 
 _021018B4:
-	.short 0x0032, 0x0033, 0x0031, 0x0030, 0xFFFF, 0xFFFF, 0x0054, 0x0000
+	.short 0x0032  // NARC_resdat_resdat_00000050
+	.short 0x0033  // NARC_resdat_resdat_00000051
+	.short 0x0031  // NARC_resdat_resdat_00000049
+	.short 0x0030  // NARC_resdat_resdat_00000048
+	.short 0xFFFF
+	.short 0xFFFF
+	.short 0x0054  // NARC_resdat_resdat_00000084
+	.balign 4, 0
 _021018C4:
 	.byte 0x23, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00
 	.byte 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00

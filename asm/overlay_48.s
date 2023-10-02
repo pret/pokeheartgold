@@ -1936,7 +1936,7 @@ ov48_02259724: ; 0x02259724
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #4]
-	bl sub_02024504
+	bl SpriteList_Delete
 	mov r6, #0x13
 	mov r4, #0
 	lsl r6, r6, #4
@@ -5362,7 +5362,7 @@ ov48_0225B010: ; 0x0225B010
 	lsl r0, r0, #2
 	add r0, r5, r0
 	ldr r0, [r0, #0x3c]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {r4, r5, pc}
 	thumb_func_end ov48_0225B010

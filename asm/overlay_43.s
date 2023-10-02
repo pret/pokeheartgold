@@ -1192,7 +1192,7 @@ _0222A856:
 	cmp r5, #4
 	blt _0222A856
 	ldr r0, [r7, #4]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl sub_0202168C
 	bl sub_02022608
 	bl OamManager_Free
@@ -1831,7 +1831,7 @@ _0222AD52:
 	add r1, r1, r7
 	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5, r4]
-	bl sub_02024964
+	bl Sprite_ResetAnimCtrlState
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov43_0222AD40
 
@@ -1864,12 +1864,12 @@ ov43_0222AD98: ; 0x0222AD98
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r4, r2, #0
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	mov r0, #0x7f
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov43_0222AD98
@@ -2630,12 +2630,12 @@ ov43_0222B3A4: ; 0x0222B3A4
 	lsl r0, r0, #2
 	lsl r2, r2, #0x10
 	ldr r0, [r1, r0]
-	ldr r3, _0222B3C0 ; =sub_0200DD88
+	ldr r3, _0222B3C0 ; =Sprite_SetPositionXY
 	mov r1, #0x80
 	asr r2, r2, #0x10
 	bx r3
 	nop
-_0222B3C0: .word sub_0200DD88
+_0222B3C0: .word Sprite_SetPositionXY
 	thumb_func_end ov43_0222B3A4
 
 	thumb_func_start ov43_0222B3C4
@@ -5085,7 +5085,7 @@ ov43_0222C65C: ; 0x0222C65C
 	str r0, [sp, #4]
 	ldr r0, [r5]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r1, _0222C708 ; =0x0400004A
 	ldr r0, _0222C70C ; =0xFFFFC0FF
 	ldrh r2, [r1]
@@ -5136,7 +5136,7 @@ _0222C728:
 	add r0, r4, #0
 	add r0, #0xf8
 	ldr r0, [r0]
-	bl sub_020249F8
+	bl Sprite_GetAnimCtrlCurrentFrame
 	add r1, r4, #0
 	add r1, #0xfc
 	ldr r1, [r1]
@@ -5317,7 +5317,7 @@ _0222C858:
 	ldr r0, [r4, r0]
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0xff
@@ -7219,7 +7219,7 @@ ov43_0222D654: ; 0x0222D654
 	ldr r0, [r4, r0]
 	mov r1, #0xf4
 	mov r2, #0x18
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #0
@@ -7229,7 +7229,7 @@ ov43_0222D654: ; 0x0222D654
 	ldr r0, [r4, r0]
 	mov r1, #0xf4
 	mov r2, #0x88
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	add r0, r4, #0
 	mov r1, #3
 	mov r2, #0
@@ -7258,7 +7258,7 @@ ov43_0222D778: ; 0x0222D778
 	ldr r0, [r5, r0]
 	mov r1, #8
 	mov r2, #0x62
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	mov r1, #0
 	add r0, r5, #0
 	add r2, r1, #0
@@ -7268,7 +7268,7 @@ ov43_0222D778: ; 0x0222D778
 	ldr r0, [r5, r0]
 	mov r1, #0xf8
 	mov r2, #0x62
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	add r0, r5, #0
 	mov r1, #1
 	mov r2, #0
@@ -7711,7 +7711,7 @@ ov43_0222DB28: ; 0x0222DB28
 	asr r1, r1, #0x10
 	mov r2, #0xb0
 	mov r4, #2
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	b _0222DB78
 _0222DB4A:
 	cmp r2, #2
@@ -7722,7 +7722,7 @@ _0222DB4A:
 	mov r1, #0xf0
 	mov r2, #0xb0
 	mov r4, #2
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 	b _0222DB78
 _0222DB60:
 	mov r1, #0x70
@@ -7735,7 +7735,7 @@ _0222DB60:
 	asr r1, r1, #0x10
 	mov r2, #0xb0
 	mov r4, #1
-	bl sub_0200DD88
+	bl Sprite_SetPositionXY
 _0222DB78:
 	add r0, r5, #0
 	mov r1, #1

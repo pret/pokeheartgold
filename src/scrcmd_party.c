@@ -375,7 +375,7 @@ BOOL ScrCmd_CountAliveMonsAndPC(ScriptContext *ctx) {
     int partyCount, count, i;
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 *pokemonCount = ScriptGetVarPointer(ctx);
-    PC_STORAGE *pc = SaveArray_PCStorage_Get(fieldSystem->saveData);
+    PCStorage *pc = SaveArray_PCStorage_Get(fieldSystem->saveData);
 
     partyCount = Party_GetCount(SaveArray_Party_Get(fieldSystem->saveData));
     for (i = 0, count = 0; i < partyCount; i++) {

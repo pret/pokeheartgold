@@ -117,11 +117,11 @@
 .public Camera_Init_FromTargetAndPos
 .public Camera_ApplyPerspectiveType
 .public Camera_SetDistance
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_0202457C
 .public sub_02024714
 .public Sprite_Delete
-.public sub_020247D4
+.public Sprite_SetMatrix
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public sub_02024868

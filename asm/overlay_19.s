@@ -712,7 +712,7 @@ ov19_02259E20: ; 0x02259E20
 	ldrb r1, [r2, r1]
 	bl Set2dSpriteAnimSeqNo
 	ldr r0, [r5, r4]
-	bl sub_02024964
+	bl Sprite_ResetAnimCtrlState
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02259E40: .word _0225A03C

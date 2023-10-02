@@ -1625,7 +1625,7 @@ _02238592:
 	ldr r0, _0223865C ; =0x00000E08
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	ldr r0, _0223865C ; =0x00000E08
 	mov r1, #0
 	ldr r0, [r5, r0]
@@ -1754,7 +1754,7 @@ _022386DE:
 	str r0, [sp, #8]
 	add r0, r4, #0
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {r4, r5, pc}
 	thumb_func_end ov72_02238688
@@ -1932,7 +1932,7 @@ _0223882A:
 	blt _0223882A
 	ldr r0, _02238868 ; =0x00000BF8
 	ldr r0, [r6, r0]
-	bl sub_02024504
+	bl SpriteList_Delete
 	ldr r0, _02238868 ; =0x00000BF8
 	mov r1, #0
 	str r1, [r6, r0]
@@ -7474,7 +7474,7 @@ ov72_0223B2FC: ; 0x0223B2FC
 	str r1, [sp, #8]
 	ldr r0, [r0, #4]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {pc}
 	nop

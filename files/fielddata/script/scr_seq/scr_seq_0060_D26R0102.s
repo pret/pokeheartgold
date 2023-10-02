@@ -1,5 +1,6 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_D26R0102.h"
+#include "fielddata/script/scr_seq/event_D36R0101.h"
 #include "msgdata/msg/msg_0091_D26R0102.h"
 	.include "asm/macros/script.inc"
 
@@ -87,9 +88,9 @@ _0107:
 	setflag FLAG_BEAT_AZALEA_ROCKETS
 	setvar VAR_UNK_4075, 1
 	setvar VAR_UNK_4080, 2
-	setvar VAR_UNK_4099, 1
-	setvar VAR_UNK_409B, 1
-	setvar VAR_UNK_409E, 1
+	setvar VAR_FARFETCHD1_STICKS1, STICKS_ACTIVE
+	setvar VAR_FARFETCHD1_STICKS2, STICKS_ACTIVE
+	setvar VAR_FARFETCHD2_STICKS4, STICKS_ACTIVE
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK

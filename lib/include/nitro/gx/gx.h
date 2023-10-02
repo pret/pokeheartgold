@@ -3,6 +3,9 @@
 
 #include <nitro/hw/io_reg.h>
 
+#define GX_LCD_SIZE_X 256
+#define GX_LCD_SIZE_Y 192
+
 typedef enum {
     GX_DISPMODE_GRAPHICS = 0x01,
     GX_DISPMODE_VRAM_A = 0x02,

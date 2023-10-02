@@ -33,9 +33,9 @@
 .public MessagePrinter_New
 .public MessagePrinter_Delete
 .public sub_0200D020
-.public sub_0200D034
-.public sub_0200DCE0
-.public sub_0200DD08
+.public thunk_OamManager_ApplyAndResetBuffers
+.public thunk_Set2dSpriteVisibleFlag
+.public thunk_Sprite_SetPalIndex
 .public LoadUserFrameGfx2
 .public IsPaletteFadeFinished
 .public sub_02016EDC
@@ -79,9 +79,9 @@
 .public GX_DisableEngineBLayers
 .public GX_BothDispOn
 .public Set2dSpriteVisibleFlag
-.public sub_020248B8
+.public Get2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo
-.public sub_02024A04
+.public Sprite_SetPriority
 .public sub_02024B68
 .public sub_02025224
 .public sub_02025320

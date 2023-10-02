@@ -259,7 +259,7 @@ _021E82FC:
 	cmp r4, #4
 	blt _021E82FC
 	ldr r0, [r6, #0x3c]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
@@ -1017,12 +1017,12 @@ ov52_021E888C: ; 0x021E888C
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	mov r0, #0x25
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #2
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	mov r0, #0x10
 	mov r1, #1
 	bl GX_EngineAToggleLayers

@@ -123,7 +123,7 @@ struct FieldSystem {
     FieldSystemUnkSub2C *unk2C;
     MAPMATRIX *mapMatrix;
     u8 filler34[0x8];
-    MapObjectManager *mapObjectMan;
+    MapObjectManager *mapObjectManager;
     PlayerAvatar *playerAvatar;
     void *unk_44;
     u8 filler48[0xC];
@@ -165,7 +165,7 @@ struct FieldSystem {
     u8 unk_110;
     u8 unk_111[3];
     GearPhoneRingManager *unk114;
-    BUGCONTEST *bugContest;
+    BugContest *bugContest;
     u8 unk11C[0x8];
     u32 judgeStatPosition;
 }; // size: 0x128

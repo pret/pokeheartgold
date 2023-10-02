@@ -4448,7 +4448,7 @@ _0225A80E:
 	cmp r4, #4
 	blt _0225A80E
 	ldr r0, [r6, #4]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl sub_0202168C
 	bl sub_02022608
 	bl OamManager_Free

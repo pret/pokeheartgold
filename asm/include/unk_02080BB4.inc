@@ -8,7 +8,7 @@
 .public BufferMoveName
 .public BufferStatName
 .public StringExpandPlaceholders
-.public sub_0200DD08
+.public thunk_Sprite_SetPalIndex
 .public sub_0200E5D4
 .public ClearFrameAndWindow2
 .public ListMenuItems_New

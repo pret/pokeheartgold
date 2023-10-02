@@ -257,7 +257,7 @@ ov71_02246B58: ; 0x02246B58
 	ldr r0, [r4, #8]
 	bl FreeToHeap
 	ldr r0, [r4, #0x18]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl OamManager_Free
 	add r0, r5, #0
 	bl OverlayManager_FreeData
@@ -2999,7 +2999,7 @@ ov71_02247FF8: ; 0x02247FF8
 	bl ov71_02247340
 	str r0, [r4, #0x40]
 	mov r1, #1
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	ldr r0, [r4, #0x3c]
 	mov r1, #0
 	bl Set2dSpriteVisibleFlag
@@ -4435,7 +4435,7 @@ _02248BD8:
 	mov r0, #0
 	str r0, [r4, #8]
 	ldr r0, [r5, #0x1c]
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r2, r6, #0
 	add r3, r0, #0
 	ldmia r3!, {r0, r1}
@@ -4541,7 +4541,7 @@ _02248CA6:
 	add r1, r7, #0
 	add r0, r0, r4
 	ldr r0, [r0, #0x1c]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r2, r6, #0
 	add r2, #0x58
 	add r3, sp, #8
@@ -4559,7 +4559,7 @@ _02248CA6:
 	mov r1, ip
 	add r0, r0, r4
 	ldr r0, [r0, #0x20]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [sp]
 	add r6, #0xc
 	add r0, r0, #4
@@ -10090,7 +10090,7 @@ ov71_0224B848: ; 0x0224B848
 	bl ov71_02247340
 	str r0, [r4, #0x44]
 	mov r1, #1
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	ldr r0, [r4, #0x40]
 	mov r1, #0
 	bl Set2dSpriteVisibleFlag

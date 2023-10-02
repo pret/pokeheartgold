@@ -308,7 +308,7 @@ _0225A216:
 	bl AllocFromHeapAtEnd
 _0225A238:
 	ldr r0, [r6, #0x18]
-	bl sub_02024504
+	bl SpriteList_Delete
 	mov r0, #0x3f
 	lsl r0, r0, #4
 	mov r5, #0
@@ -469,7 +469,7 @@ _0225A36E:
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	mov r1, #2
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 _0225A38A:
 	ldr r0, _0225A460 ; =0x0000051C
 	ldr r0, [r5, r0]
@@ -689,12 +689,12 @@ ov27_0225A530: ; 0x0225A530
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	add r4, r1, #0
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	add r6, r0, #0
 	mov r0, #0xf
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #0
 	beq _0225A58C
 	cmp r4, #1
@@ -2181,7 +2181,7 @@ _0225B0F4:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	mov r0, #0x39
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -2259,7 +2259,7 @@ _0225B1A2:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #2
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	ldr r0, [sp, #0x30]
 	add r6, r6, #4
 	add r0, r0, #1
@@ -2333,7 +2333,7 @@ _0225B246:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	mov r0, #0xf3
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -2363,7 +2363,7 @@ _0225B298:
 	mov r1, #0x68
 	mov r2, #0x88
 	lsl r3, r3, #0x14
-	bl sub_0200DDC4
+	bl Sprite_SetPositionXY_CustomScreenYOffset
 	ldr r0, [r4, #0x10]
 	bl Pokemon_GetIconPalette
 	add r1, r0, #0
@@ -2420,7 +2420,7 @@ _0225B2E2:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	add r0, r5, #0
 	bl ov27_0225A4B8
 	add r0, r5, #0
@@ -3856,7 +3856,7 @@ _0225BE3A:
 	bl String_Delete
 	ldr r0, [r5, #8]
 	mov r1, #5
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 	mov r0, #1
 	add sp, #0x14
 	str r0, [r5, #0x1c]
@@ -3866,12 +3866,12 @@ _0225BE8A:
 	ldr r0, [r5, #8]
 	beq _0225BE9A
 	mov r1, #5
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 	add sp, #0x14
 	pop {r4, r5, pc}
 _0225BE9A:
 	mov r1, #0
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 	add r0, r5, #0
 	bl ov27_0225BEB0
 	mov r0, #0
@@ -4559,7 +4559,7 @@ _0225C3C4:
 	mov r0, #0x86
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	bl sub_02024504
+	bl SpriteList_Delete
 	mov r0, #0
 	bl sub_02002B8C
 	add r0, r7, #0
@@ -5750,7 +5750,7 @@ ov27_0225CCE0: ; 0x0225CCE0
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0
@@ -5794,7 +5794,7 @@ ov27_0225CD18: ; 0x0225CD18
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {r3, r4, pc}
 	nop

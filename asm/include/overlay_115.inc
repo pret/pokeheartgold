@@ -27,14 +27,14 @@
 .public GX_EngineAToggleLayers
 .public sub_0202457C
 .public Sprite_Delete
-.public sub_020247D4
+.public Sprite_SetMatrix
 .public sub_020247F4
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public sub_02024868
 .public sub_0202487C
 .public Set2dSpriteAnimSeqNo
-.public sub_02024A04
+.public Sprite_SetPriority
 .public sub_02024B34
 .public String_New
 .public String_Delete
