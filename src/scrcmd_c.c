@@ -4395,8 +4395,8 @@ BOOL ScrCmd_FollowerPokeIsEventTrigger(ScriptContext *ctx) {
             *r6 = 1;
         }
         break;
-    case EVENT_ARCEUS_UNK1:
-    case EVENT_ARCEUS_UNK2:
+    case EVENT_ARCEUS_HALL_OF_ORIGIN:
+    case EVENT_ARCEUS_MOVIE_GIFT:
         if (species == SPECIES_ARCEUS) {
             *r6 = 1;
         }

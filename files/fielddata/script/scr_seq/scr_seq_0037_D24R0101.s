@@ -188,13 +188,13 @@ scr_seq_D24R0101_007:
 	scrcmd_609
 	lockall
 	get_party_lead_alive VAR_TEMP_x4005
-	follower_poke_is_event_trigger EVENT_ARCEUS_UNK2, VAR_TEMP_x4005, VAR_TEMP_x4006
+	follower_poke_is_event_trigger EVENT_ARCEUS_MOVIE_GIFT, VAR_TEMP_x4005, VAR_TEMP_x4006
 	compare VAR_TEMP_x4006, 0
 	goto_if_eq _02DA
 	goto _02EE
 
 _02DA:
-	follower_poke_is_event_trigger EVENT_ARCEUS_UNK1, VAR_TEMP_x4005, VAR_TEMP_x4007
+	follower_poke_is_event_trigger EVENT_ARCEUS_HALL_OF_ORIGIN, VAR_TEMP_x4005, VAR_TEMP_x4007
 	compare VAR_TEMP_x4007, 0
 	goto_if_eq _0530
 _02EE:
