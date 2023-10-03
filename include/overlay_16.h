@@ -26,7 +26,7 @@ void BerryPots_SetPotMulch(BerryPot *berryPots, u32 idx, u32 mulch);
 u16 ov16_02201668(BerryPot *berryPots, u32 idx);
 u16 ov16_02201674(BerryPot *berryPots, u32 idx);
 void ov16_02201760(BerryPot *berryPots, UnkStruct_ov16_022014A0 *a1, s32 a2);
-void ov16_022017FC(struct GF_RTC_DateTime *dest, struct GF_RTC_DateTime src);
+void ov16_022017FC(struct GF_RTC_DateTime *dest, RTCDate srcDate, RTCTime srcTime);
 void ov16_02201820(struct GF_RTC_DateTime *datetime, RTCDate *date, RTCTime *time);
 u16 BerryIdToItemId(u16 berryId);
 u16 ItemIdToBerryId(u16 itemId);

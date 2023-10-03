@@ -277,9 +277,9 @@ void ov16_02201760(BerryPot *berryPots, UnkStruct_ov16_022014A0 *a1, s32 a2) {
     }
 }
 
-void ov16_022017FC(struct GF_RTC_DateTime *dest, struct GF_RTC_DateTime src) {
-    dest->date = src.date;
-    dest->time = src.time;
+void ov16_022017FC(struct GF_RTC_DateTime *dest, RTCDate srcDate, RTCTime srcTime) {
+    dest->date = srcDate;
+    dest->time = srcTime;
 }
 
 void ov16_02201820(struct GF_RTC_DateTime *datetime, RTCDate *date, RTCTime *time) {
