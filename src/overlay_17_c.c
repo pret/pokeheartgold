@@ -1,3 +1,4 @@
+#include <nitro/rtc/ARM9/convert.h>
 #include "global.h"
 #include "bag.h"
 #include "font.h"
@@ -90,9 +91,9 @@ typedef struct UnkData_ov17 {
     u8 unkF4[0xFC - 0xF4];
     Window unkFC[3];
     void *unk12C;
-    void *unk130;
-    void *unk134;
-    void *unk138;
+    SpriteRenderer *spriteRenderer;
+    SpriteGfxHandler *spriteGfxHandler1;
+    SpriteGfxHandler *spriteGfxHandler2;
     u8 unk13C[0x164 - 0x13C];
     Sprite *unk164[11];
     NARC *itemIconNarc;
@@ -101,17 +102,15 @@ typedef struct UnkData_ov17 {
     void *unk1A8;
 } UnkData_ov17;
 
+struct UnkStruct_ov17_02203E88 {
+    u32 unk0;
+    u8 *unk4;
+};
+
+extern struct UnkStruct_ov17_02203E88 ov17_02203E88[4];
+
 extern sub_0200B2E0();
 extern sub_0200B2E8();
-extern sub_0200D0E4();
-extern sub_0200D2A4();
-extern sub_0200DEA0();
-extern sub_0200DE00();
-extern sub_0200DED0();
-extern sub_0200E2B0();
-extern sub_0200E2B4();
-extern sub_0200E2B8();
-extern sub_0200E2EC();
 extern void* sub_0201660C(HeapID);
 extern void sub_02016624(void*);
 extern void ov17_022032AC(UnkData_ov17*);
@@ -213,7 +212,7 @@ BOOL ov17_02201C78(OVY_MANAGER *manager, int *state) {
             return TRUE;
     }
 
-    sub_0200D020(unk->unk134);
+    sub_0200D020(unk->spriteGfxHandler1);
     return FALSE;
 }
 
@@ -541,7 +540,7 @@ u32 ov17_02202184(UnkData_ov17* a0) {
         case 3:
             if (ov17_0220279C(a0)) {
                 ov17_02202944(a0, 14, a0->unk7C, FALSE);
-                PlayFanfare(0x4a9); // FIXME: constant
+                PlayFanfare(SEQ_ME_KINOMI);
                 a0->unk70++;
             }
             break;
@@ -574,7 +573,7 @@ u32 ov17_02202184(UnkData_ov17* a0) {
 u32 ov17_02202320(UnkData_ov17 *a0) {
     switch (a0->unk70) {
         case 0:
-            PlaySE(0x888); // FIXME: Constant
+            PlaySE(SEQ_SE_GS_KP01);
             a0->unk70++;
             break;
         case 1:
@@ -718,8 +717,8 @@ void ov17_02202500(UnkData_ov17 *a0) {
     ov17_02202DD0(a0);
 }
 
-extern void ov17_02203404(UnkData_ov17*, u32);
-extern void ov17_02202A84(UnkData_ov17*, u32);
+extern void ov17_02203404(UnkData_ov17*, int);
+extern void ov17_02202A84(UnkData_ov17*, int);
 void ov17_02202850(UnkData_ov17*, u32);
 
 void ov17_02202528(UnkData_ov17 *a0) {
@@ -750,8 +749,6 @@ void ov17_02202528(UnkData_ov17 *a0) {
     }
 }
 
-extern void sub_0200DD88(Sprite*, s16, s16);
-extern void sub_02024964(Sprite*);
 extern BOOL ov17_02203A54(UnkData_ov17*);
 extern void ov17_02202B58(UnkData_ov17*, u8);
 extern void ov17_0220351C(UnkData_ov17*);
@@ -761,9 +758,9 @@ BOOL ov17_022025B8(UnkData_ov17 *a0) {
         case 0:
             a0->unk80 = a0->unk7C;
             a0->unk81 = 0xFF;
-            sub_0200DD88(a0->unk164[2], (s16)(a0->unk80 * 27 + 31), 0x38);
+            Sprite_SetPositionXY(a0->unk164[2], (s16)(a0->unk80 * 27 + 31), 56);
             Set2dSpriteAnimSeqNo(a0->unk164[2], 8);
-            sub_02024964(a0->unk164[2]);
+            Sprite_ResetAnimCtrlState(a0->unk164[2]);
             Set2dSpriteAnimActiveFlag(a0->unk164[2], TRUE);
             Set2dSpriteVisibleFlag(a0->unk164[2], TRUE);
             a0->unk7F = 0;
@@ -772,8 +769,8 @@ BOOL ov17_022025B8(UnkData_ov17 *a0) {
         case 1: {
             u8 unk7F = a0->unk7F++;
             if (unk7F >= 15) {
-                PlaySE(0x889);
-                sub_02024964(a0->unk164[2]);
+                PlaySE(SEQ_SE_GS_MIZU);
+                Sprite_ResetAnimCtrlState(a0->unk164[2]);
                 Set2dSpriteAnimSeqNo(a0->unk164[2], 9);
                 Set2dSpriteAnimActiveFlag(a0->unk164[1], TRUE);
                 a0->unk7F = 0;
@@ -794,7 +791,7 @@ BOOL ov17_022025B8(UnkData_ov17 *a0) {
 
             a0->unk7F = 0;
             if (a0->unk81 == 0xFF) {
-                StopSE(0x889, 2);
+                StopSE(SEQ_SE_GS_MIZU, 2);
                 Set2dSpriteAnimSeqNo(a0->unk164[2], 8);
                 a0->unk72 = 4;
             } else {
@@ -865,11 +862,9 @@ BOOL ov17_0220279C(UnkData_ov17 *a0) {
     return FALSE;
 }
 
-// FIXME: Matches on decomp.me, but not here. https://decomp.me/scratch/YxMNT
-#ifdef NONMATCHING
 void ov17_02202850(UnkData_ov17 *a0, u32 seqNo) {
     Set2dSpriteAnimSeqNo(a0->unk164[0], seqNo);
-    sub_02024964(a0->unk164[0]);
+    Sprite_ResetAnimCtrlState(a0->unk164[0]);
     FillWindowPixelBuffer(&a0->unkFC[0], 0);
 
     u32 stringWidth = FontID_String_GetWidth(4, a0->unkA8, 0);
@@ -877,59 +872,10 @@ void ov17_02202850(UnkData_ov17 *a0, u32 seqNo) {
 
     ScheduleWindowCopyToVram(&a0->unkFC[0]);
 }
-#else
-asm void ov17_02202850(UnkData_ov17 *a0, u32 seqNo) {
-    push {r3, r4, r5, lr}
-    sub sp, #0x10
-    add r4, r0, #0
-    mov r0, #0x59
-    lsl r0, r0, #2
-    ldr r0, [r4, r0]
-    bl Set2dSpriteAnimSeqNo
-    mov r0, #0x59
-    lsl r0, r0, #2
-    ldr r0, [r4, r0]
-    bl sub_02024964
-    add r0, r4, #0
-    add r0, #0xfc
-    mov r1, #0
-    bl FillWindowPixelBuffer
-    add r1, r4, #0
-    add r1, #0xa8
-    ldr r1, [r1, #0]
-    mov r0, #4
-    mov r2, #0
-    bl FontID_String_GetWidth
-    mov r1, #0
-    add r3, r0, #0
-    add r2, r4, #0
-    mov r5, #0x30
-    sub r3, r5, r3
-    str r1, [sp]
-    mov r0, #0xff
-    str r0, [sp, #4]
-    ldr r0, [pc, #0x20] // _022028B4
-    add r2, #0xa8
-    str r0, [sp, #8]
-    str r1, [sp, #0xc]
-    add r0, r4, #0
-    ldr r2, [r2, #0]
-    add r0, #0xfc
-    mov r1, #4
-    lsr r3, r3, #1
-    bl AddTextPrinterParameterized2
-    add r4, #0xfc
-    add r0, r4, #0
-    bl ScheduleWindowCopyToVram
-    add sp, #0x10
-    pop {r3, r4, r5, pc}
-_022028B4: DCD 0x00010200
-}
-#endif
 
 void ov17_022028B8(UnkData_ov17 *a0) {
     u8 unk7C = a0->unk7C;
-    sub_0200DD88(a0->unk164[1], (unk7C + 1) * 27, 96);
+    Sprite_SetPositionXY(a0->unk164[1], (unk7C + 1) * 27, 96);
     if (a0->unk20[unk7C].growthStage > 3) {
         Set2dSpriteAnimSeqNo(a0->unk164[1], 3);
     } else {
@@ -966,9 +912,27 @@ void ov17_02202944(UnkData_ov17 *a0, u32 a1, u8 a2, BOOL a3) {
     a0->unk7A = 60;
 }
 
-extern const u8 ov17_02203D60;
-extern const u8 ov17_02203E88;
+struct UnkStruct_ov17_02203D60 {
+    u8 unk0[12];
+    Ov122_021E9282 unkC;
+};
 
+extern struct UnkStruct_ov17_02203D60 ov17_02203D60;
+
+// FIXME(tgsm): https://decomp.me/scratch/UpOrW
+#ifdef NONMATCHING
+void ov17_022029C8(UnkData_ov17 *a0, u32 a1) {
+    Ov122_021E7488 sp24;
+    MI_CpuFill8(&sp24, 0, sizeof(Ov122_021E7488));
+
+    sp24.unk0 = ov17_02203D60.unkC;
+    sp24.unkC = a0->unk198[a1];
+    sp24.unk10 = a0->bgConfig;
+    sp24.unk14 = ov17_02203E88[a1].unk0;
+
+    a0->unk1A8 = sub_020185FC(a0->unk8C, &sp24, (u8)a0->unk74, 0xf, 16 - (sp24.unk14 * 3), 0xe, 0);
+}
+#else
 asm void ov17_022029C8(UnkData_ov17 *a0, u32 a1) {
     push {r4, r5, lr}
     sub sp, #0x24
@@ -1035,6 +999,7 @@ asm void ov17_022029C8(UnkData_ov17 *a0, u32 a1) {
 _02202A48: DCD ov17_02203D60
 _02202A4C: DCD ov17_02203E88
 }
+#endif
 
 int ov17_02202A50(UnkData_ov17 *a0) {
     int r4 = sub_020186A4(a0->unk1A8);
@@ -1162,9 +1127,9 @@ void ov17_02202B58(UnkData_ov17 *a0, u8 index) {
     UnkData_ov17_sub *unk = &a0->unk20[index];
     BerryPots_ResetPotMoisture(a0->berryPots, index);
     ov17_0220387C(a0);
-    sub_020249D4(a0->unk164[index + 3], 2);
+    Sprite_SetAnimCtrlCurrentFrame(a0->unk164[index + 3], 2);
     if (unk->growthStage == 1) {
-        sub_020249D4(unk->soilSpriteMaybe, unk->soilStateMaybe);
+        Sprite_SetAnimCtrlCurrentFrame(unk->soilSpriteMaybe, unk->soilStateMaybe);
     }
 }
 
@@ -1175,13 +1140,13 @@ void ov17_02202B98(UnkData_ov17 *a0) {
     ov17_0220387C(a0);
     Sprite_Delete(unk->soilSpriteMaybe);
     unk->soilSpriteMaybe = NULL;
-    sub_020249D4(a0->unk164[a0->unk7C + 3], 2);
+    Sprite_SetAnimCtrlCurrentFrame(a0->unk164[a0->unk7C + 3], 2);
     GameStats_AddSpecial(a0->stats, 0);
 }
 
 void ov17_02202BF8(UnkData_ov17 *a0) {
-    if (a0->unk130 != NULL) {
-        sub_0200D034();
+    if (a0->spriteRenderer != NULL) {
+        thunk_OamManager_ApplyAndResetBuffers();
     }
     NNS_GfdDoVramTransfer();
     DoScheduledBgGpuUpdates(a0->bgConfig);
@@ -1316,49 +1281,14 @@ void ov17_02203004(UnkData_ov17 *a0) {
     sub_02016624(a0->unk12C);
 }
 
-asm void ov17_02203030(UnkData_ov17 *a0) {
-    push {r3, r4, r5, r6, r7, lr}
-    add r7, r0, #0
-    mov r0, #0
-    ldr r5, [pc, #0x48] // _02203080 ; =ov17_02203E88
-    str r0, [sp]
-    add r6, r7, #0
-_0220303C:
-    ldr r0, [r5, #0]
-    ldr r1, [r7, #0]
-    bl ListMenuItems_New
-    mov r1, #0x66
-    lsl r1, r1, #2
-    str r0, [r6, r1]
-    ldr r0, [r5, #0]
-    mov r4, #0
-    cmp r0, #0
-    ble _02203070
-_02203052:
-    ldr r2, [r5, #4]
-    mov r0, #0x66
-    add r1, r7, #0
-    lsl r0, r0, #2
-    add r1, #0x9c
-    ldrb r2, [r2, r4]
-    ldr r0, [r6, r0]
-    ldr r1, [r1, #0]
-    add r3, r4, #0
-    bl ListMenuItems_AppendFromMsgData
-    ldr r0, [r5, #0]
-    add r4, r4, #1
-    cmp r4, r0
-    blt _02203052
-_02203070:
-    ldr r0, [sp, #0]
-    add r5, #8
-    add r0, r0, #1
-    add r6, r6, #4
-    str r0, [sp]
-    cmp r0, #4
-    blt _0220303C
-    pop {r3, r4, r5, r6, r7, pc}
-_02203080: DCD ov17_02203E88
+void ov17_02203030(UnkData_ov17 *a0) {
+    for (int i = 0; i < 4; i++) {
+        struct UnkStruct_ov17_02203E88* unk = &ov17_02203E88[i];
+        a0->unk198[i] = ListMenuItems_New(unk->unk0, a0->heapId);
+        for (int j = 0; j < (int)unk->unk0; j++) {
+            ListMenuItems_AppendFromMsgData(a0->unk198[i], a0->msgData, unk->unk4[j], j);
+        }
+    }
 }
 
 void ov17_02203084(UnkData_ov17 *a0) {
@@ -1368,215 +1298,56 @@ void ov17_02203084(UnkData_ov17 *a0) {
     }
 }
 
-extern u8 ov17_02203E68;
-extern u8 ov17_02203D98;
-extern u8 ov17_02203D78;
-extern u8 ov17_02203DAC;
+extern const Unk122_021E92FC ov17_02203E68;
+extern const Unk122_021E92D0 ov17_02203D98;
+extern const u16 ov17_02203D78[7];
+extern const SpriteResourceCountsListUnion ov17_02203DAC;
 
 void ov17_022030A8(UnkData_ov17 *a0);
-asm void ov17_022030A8(UnkData_ov17 *a0) {
-    push {r3, r4, r5, lr}
-    sub sp, #0x28
-    add r4, r0, #0
-    ldr r1, [r4, #0]
-    mov r0, #0x20
-    bl GF_CreateVramTransferManager
-    ldr r0, [r4, #0]
-    bl sub_0200CF18
-    mov r1, #0x13
-    lsl r1, r1, #4
-    str r0, [r4, r1]
-    ldr r0, [r4, r1]
-    ldr r1, [pc, #0x144] // _0220320C ; =ov17_02203E68
-    ldr r2, [pc, #0x148] // _02203210 ; =ov17_02203D98
-    mov r3, #8
-    bl sub_0200CF70
-    ldr r0, [r4, #0]
-    bl sub_0200B2E0
-    ldr r0, [r4, #0]
-    bl sub_0200B2E8
-    mov r0, #0x13
-    lsl r0, r0, #4
-    ldr r0, [r4, r0]
-    bl sub_0200CF38
-    mov r1, #0x4d
-    lsl r1, r1, #2
-    str r0, [r4, r1]
-    sub r0, r1, #4
-    ldr r0, [r4, r0]
-    ldr r1, [r4, r1]
-    mov r2, #0x19
-    bl sub_0200CFF4
-    mov r3, #0
-    mov r1, #0x13
-    str r3, [sp]
-    lsl r1, r1, #4
-    ldr r0, [r4, r1]
-    add r1, r1, #4
-    ldr r1, [r4, r1]
-    ldr r2, [pc, #0x10c] // _02203214 ; =ov17_02203D78
-    bl sub_0200D2A4
-    ldr r1, [r4, #0]
-    mov r0, #0x12
-    bl NARC_New
-    mov r2, #0x19
-    lsl r2, r2, #4
-    str r0, [r4, r2]
-    ldr r5, [pc, #0xfc] // _02203218 ; =ov17_02203DAC
-    add r3, sp, #0x10
-    ldmia r5!, {r0, r1}
-    stmia r3!, {r0, r1}
-    ldmia r5!, {r0, r1}
-    stmia r3!, {r0, r1}
-    ldmia r5!, {r0, r1}
-    sub r2, #0x60
-    stmia r3!, {r0, r1}
-    ldr r0, [r4, r2]
-    bl sub_0200CF38
-    mov r1, #0x4e
-    lsl r1, r1, #2
-    str r0, [r4, r1]
-    add r0, r1, #0
-    sub r0, #8
-    ldr r0, [r4, r0]
-    ldr r1, [r4, r1]
-    add r2, sp, #0x10
-    bl sub_0200D3F8
-    mov r0, #0x4d
-    lsl r0, r0, #2
-    ldr r0, [r4, r0]
-    bl sub_0200E2B0
-    add r1, r0, #0
-    mov r0, #0x4e
-    lsl r0, r0, #2
-    ldr r0, [r4, r0]
-    bl sub_0200E2B4
-    mov r0, #0x95
-    mov r1, #1
-    bl GetItemIndexMapping
-    add r3, r0, #0
-    mov r0, #0
-    str r0, [sp]
-    mov r0, #1
-    mov r2, #0x13
-    str r0, [sp, #4]
-    mov r0, #0xfa
-    lsl r2, r2, #4
-    lsl r0, r0, #4
-    add r1, r2, #0
-    str r0, [sp, #8]
-    ldr r0, [r4, r2]
-    add r1, #8
-    add r2, #0x60
-    ldr r1, [r4, r1]
-    ldr r2, [r4, r2]
-    bl sub_0200D504
-    mov r0, #0x95
-    mov r1, #2
-    bl GetItemIndexMapping
-    add r3, r0, #0
-    mov r0, #0
-    str r0, [sp]
-    mov r0, #1
-    str r0, [sp, #4]
-    mov r2, #0x13
-    str r0, [sp, #8]
-    mov r0, #0xfa
-    lsl r2, r2, #4
-    lsl r0, r0, #4
-    add r1, r2, #0
-    str r0, [sp, #0xc]
-    ldr r0, [r4, r2]
-    add r1, #8
-    add r2, #0x60
-    ldr r1, [r4, r1]
-    ldr r2, [r4, r2]
-    bl sub_0200D5D4
-    bl GetItemIconCell
-    add r3, r0, #0
-    mov r0, #0
-    mov r2, #0x13
-    str r0, [sp]
-    mov r0, #0xfa
-    lsl r2, r2, #4
-    lsl r0, r0, #4
-    add r1, r2, #0
-    str r0, [sp, #4]
-    ldr r0, [r4, r2]
-    add r1, #8
-    add r2, #0x60
-    ldr r1, [r4, r1]
-    ldr r2, [r4, r2]
-    bl sub_0200D6EC
-    bl GetItemIconAnim
-    add r3, r0, #0
-    mov r0, #0
-    mov r2, #0x13
-    str r0, [sp]
-    mov r0, #0xfa
-    lsl r2, r2, #4
-    lsl r0, r0, #4
-    add r1, r2, #0
-    str r0, [sp, #4]
-    ldr r0, [r4, r2]
-    add r1, #8
-    add r2, #0x60
-    ldr r1, [r4, r1]
-    ldr r2, [r4, r2]
-    bl sub_0200D71C
-    ldr r0, [r4, #0]
-    mov r1, #0
-    bl sub_02018424
-    add r4, #0x8c
-    str r0, [r4]
-    add sp, #0x28
-    pop {r3, r4, r5, pc}
-_0220320C: DCD ov17_02203E68
-_02203210: DCD ov17_02203D98
-_02203214: DCD ov17_02203D78
-_02203218: DCD ov17_02203DAC
+void ov17_022030A8(UnkData_ov17 *a0) {
+    GF_CreateVramTransferManager(32, a0->heapId);
+
+    a0->spriteRenderer = SpriteRenderer_Create(a0->heapId);
+    sub_0200CF70(a0->spriteRenderer, (Unk122_021E92FC*)&ov17_02203E68, (Unk122_021E92D0*)&ov17_02203D98, 8);
+
+    sub_0200B2E0(a0->heapId);
+    sub_0200B2E8(a0->heapId);
+
+    a0->spriteGfxHandler1 = SpriteRenderer_CreateGfxHandler(a0->spriteRenderer);
+    sub_0200CFF4(a0->spriteRenderer, a0->spriteGfxHandler1, 25);
+    sub_0200D2A4(a0->spriteRenderer, a0->spriteGfxHandler1, ov17_02203D78, 0, 0);
+
+    a0->itemIconNarc = NARC_New(NARC_itemtool_itemdata_item_icon, a0->heapId);
+
+    SpriteResourceCountsListUnion counts = ov17_02203DAC;
+    a0->spriteGfxHandler2 = SpriteRenderer_CreateGfxHandler(a0->spriteRenderer);
+    SpriteRenderer_Init2DGfxResManagersFromCountsArray(a0->spriteRenderer, a0->spriteGfxHandler2, &counts);
+    sub_0200E2B4(a0->spriteGfxHandler2, sub_0200E2B0(a0->spriteGfxHandler1));
+
+    SpriteRenderer_LoadCharResObjFromOpenNarc(a0->spriteRenderer, a0->spriteGfxHandler2, a0->itemIconNarc, GetItemIndexMapping(ITEM_CHERI_BERRY, ITEMNARC_NCGR), FALSE, NNS_G2D_VRAM_TYPE_2DMAIN, 4000);
+    SpriteRenderer_LoadPlttResObjFromOpenNarc(a0->spriteRenderer, a0->spriteGfxHandler2, a0->itemIconNarc, GetItemIndexMapping(ITEM_CHERI_BERRY, ITEMNARC_NCLR), FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 4000);
+    SpriteRenderer_LoadCellResObjFromOpenNarc(a0->spriteRenderer, a0->spriteGfxHandler2, a0->itemIconNarc, GetItemIconCell(), FALSE, 4000);
+    SpriteRenderer_LoadAnimResObjFromOpenNarc(a0->spriteRenderer, a0->spriteGfxHandler2, a0->itemIconNarc, GetItemIconAnim(), FALSE, 4000);
+
+    a0->unk8C = sub_02018424(a0->heapId, 0);
 }
 
 void ov17_0220321C(UnkData_ov17 *a0);
-asm void ov17_0220321C(UnkData_ov17 *a0) {
-    push {r4, lr}
-    add r4, r0, #0
-    add r0, #0x8c
-    ldr r0, [r0, #0]
-    bl sub_02018474
-    mov r0, #0x19
-    lsl r0, r0, #4
-    ldr r0, [r4, r0]
-    bl NARC_Delete
-    mov r1, #0x13
-    lsl r1, r1, #4
-    ldr r0, [r4, r1]
-    add r1, #8
-    ldr r1, [r4, r1]
-    bl sub_0200D998
-    mov r1, #0x13
-    lsl r1, r1, #4
-    ldr r0, [r4, r1]
-    add r1, r1, #4
-    ldr r1, [r4, r1]
-    bl sub_0200D0E4
-    mov r1, #0x4e
-    lsl r1, r1, #2
-    mov r2, #0
-    str r2, [r4, r1]
-    sub r0, r1, #4
-    sub r1, #8
-    str r2, [r4, r0]
-    ldr r0, [r4, r1]
-    bl sub_0200D108
-    mov r0, #0x13
-    mov r1, #0
-    lsl r0, r0, #4
-    str r1, [r4, r0]
-    bl GF_DestroyVramTransferManager
-    ldr r0, [r4, #0]
-    bl sub_0200B2E0
-    pop {r4, pc}
+void ov17_0220321C(UnkData_ov17 *a0) {
+    sub_02018474(a0->unk8C);
+
+    NARC_Delete(a0->itemIconNarc);
+
+    SpriteRenderer_UnloadResourcesAndRemoveGfxHandler(a0->spriteRenderer, a0->spriteGfxHandler2);
+    SpriteRenderer_RemoveGfxHandler(a0->spriteRenderer, a0->spriteGfxHandler1);
+    a0->spriteGfxHandler2 = NULL;
+    a0->spriteGfxHandler1 = NULL;
+    SpriteRenderer_Delete(a0->spriteRenderer);
+    a0->spriteRenderer = NULL;
+
+    GF_DestroyVramTransferManager();
+
+    sub_0200B2E0(a0->heapId);
 }
 
 void ov17_02203278(UnkData_ov17 *a0) {
@@ -1591,151 +1362,36 @@ void ov17_02203290(UnkData_ov17 *a0) {
     ov17_0220321C(a0);
 }
 
-extern u8 ov17_02203EF8;
-extern u8 ov17_02203F48;
-extern u8 ov17_02203F70;
-extern u8 ov17_02203F98;
+extern const UnkStruct_0200D2B4 ov17_02203EF8[2];
+extern const UnkStruct_0200D2B4 ov17_02203F48;
+extern const UnkStruct_0200D2B4 ov17_02203F70;
+extern const UnkStruct_0200D2B4 ov17_02203F98;
 
-asm void ov17_022032AC(UnkData_ov17 *a0) {
-    push {r3, r4, r5, r6, r7, lr}
-    add r4, r0, #0
-    ldr r6, [pc, #0x120] // _022033D4 ; =ov17_02203EF8
-    mov r7, #0
-    add r5, r4, #0
-_022032B6:
-    mov r0, #0x13
-    mov r1, #0x4d
-    lsl r0, r0, #4
-    lsl r1, r1, #2
-    ldr r0, [r4, r0]
-    ldr r1, [r4, r1]
-    add r2, r6, #0
-    bl sub_0200D2B4
-    mov r1, #0x59
-    lsl r1, r1, #2
-    str r0, [r5, r1]
-    add r0, r1, #0
-    ldr r0, [r5, r0]
-    mov r1, #1
-    bl Set2dSpriteVisibleFlag
-    mov r0, #0x59
-    lsl r0, r0, #2
-    ldr r0, [r5, r0]
-    mov r1, #1
-    bl Set2dSpriteAnimActiveFlag
-    add r7, r7, #1
-    add r6, #0x28
-    add r5, r5, #4
-    cmp r7, #1
-    ble _022032B6
-    mov r1, #0x13
-    lsl r1, r1, #4
-    ldr r0, [r4, r1]
-    add r1, r1, #4
-    ldr r1, [r4, r1]
-    ldr r2, [pc, #0xdc] // _022033D8 ; =ov17_02203F48
-    bl sub_0200D2B4
-    mov r1, #0x5b
-    lsl r1, r1, #2
-    str r0, [r4, r1]
-    ldr r0, [r4, r1]
-    mov r1, #0
-    bl Set2dSpriteVisibleFlag
-    mov r0, #0x5b
-    lsl r0, r0, #2
-    ldr r0, [r4, r0]
-    mov r1, #0
-    bl Set2dSpriteAnimActiveFlag
-    mov r6, #0
-    add r7, r6, #0
-    str r4, [sp]
-_0220331E:
-    add r0, r6, #3
-    lsl r0, r0, #0x18
-    lsr r0, r0, #0x16
-    add r5, r4, r0
-    mov r0, #0x13
-    mov r1, #0x4d
-    lsl r0, r0, #4
-    lsl r1, r1, #2
-    ldr r0, [r4, r0]
-    ldr r1, [r4, r1]
-    ldr r2, [pc, #0xa8] // _022033DC ; =ov17_02203F70
-    bl sub_0200D2B4
-    mov r1, #0x59
-    lsl r1, r1, #2
-    str r0, [r5, r1]
-    add r0, r1, #0
-    add r1, r7, #0
-    add r1, #0x1b
-    lsl r1, r1, #0x10
-    ldr r0, [r5, r0]
-    asr r1, r1, #0x10
-    mov r2, #0x63
-    bl sub_0200DD88
-    ldr r1, [sp]
-    mov r0, #0x59
-    add r1, #0x2a
-    lsl r0, r0, #2
-    ldrb r1, [r1]
-    ldr r0, [r5, r0]
-    bl sub_020249D4
-    mov r0, #0x59
-    lsl r0, r0, #2
-    ldr r0, [r5, r0]
-    mov r1, #1
-    bl Set2dSpriteVisibleFlag
-    mov r0, #0x59
-    lsl r0, r0, #2
-    ldr r0, [r5, r0]
-    mov r1, #0
-    bl Set2dSpriteAnimActiveFlag
-    add r0, r6, #7
-    lsl r0, r0, #0x18
-    lsr r0, r0, #0x16
-    add r5, r4, r0
-    mov r0, #0x13
-    mov r1, #0x4d
-    lsl r0, r0, #4
-    lsl r1, r1, #2
-    ldr r0, [r4, r0]
-    ldr r1, [r4, r1]
-    ldr r2, [pc, #0x50] // _022033E0 ; =ov17_02203F98
-    bl sub_0200D2B4
-    mov r1, #0x59
-    lsl r1, r1, #2
-    str r0, [r5, r1]
-    add r0, r1, #0
-    add r1, r7, #0
-    add r1, #0x1b
-    lsl r1, r1, #0x10
-    ldr r0, [r5, r0]
-    asr r1, r1, #0x10
-    mov r2, #0x58
-    bl sub_0200DD88
-    mov r0, #0x59
-    lsl r0, r0, #2
-    ldr r0, [r5, r0]
-    mov r1, #0
-    bl Set2dSpriteVisibleFlag
-    mov r0, #0x59
-    lsl r0, r0, #2
-    ldr r0, [r5, r0]
-    mov r1, #1
-    bl Set2dSpriteAnimActiveFlag
-    ldr r0, [sp, #0]
-    add r6, r6, #1
-    add r0, #0x14
-    add r7, #0x1b
-    str r0, [sp]
-    cmp r6, #4
-    blt _0220331E
-    pop {r3, r4, r5, r6, r7, pc}
-    nop
-_022033D4: DCD ov17_02203EF8
-_022033D8: DCD ov17_02203F48
-_022033DC: DCD ov17_02203F70
-_022033E0: DCD ov17_02203F98
+void ov17_022032AC(UnkData_ov17 *a0) {
+    for (int i = 0; i <= 1; i++) {
+        a0->unk164[i] = SpriteRenderer_CreateSprite(a0->spriteRenderer, a0->spriteGfxHandler1, &ov17_02203EF8[i]);
+        Set2dSpriteVisibleFlag(a0->unk164[i], TRUE);
+        Set2dSpriteAnimActiveFlag(a0->unk164[i], TRUE);
+    }
+
+    a0->unk164[2] = SpriteRenderer_CreateSprite(a0->spriteRenderer, a0->spriteGfxHandler1, &ov17_02203F48);
+    Set2dSpriteVisibleFlag(a0->unk164[2], FALSE);
+    Set2dSpriteAnimActiveFlag(a0->unk164[2], FALSE);
+
+    for (int i = 0; i < 4; i++) {
+        u8 spriteIndex = i + 3;
+        a0->unk164[spriteIndex] = SpriteRenderer_CreateSprite(a0->spriteRenderer, a0->spriteGfxHandler1, &ov17_02203F70);
+        Sprite_SetPositionXY(a0->unk164[spriteIndex], i * 27 + 27, 99);
+        Sprite_SetAnimCtrlCurrentFrame(a0->unk164[spriteIndex], a0->unk20[i].soilStateMaybe);
+        Set2dSpriteVisibleFlag(a0->unk164[spriteIndex], TRUE);
+        Set2dSpriteAnimActiveFlag(a0->unk164[spriteIndex], FALSE);
+
+        spriteIndex = i + 7;
+        a0->unk164[spriteIndex] = SpriteRenderer_CreateSprite(a0->spriteRenderer, a0->spriteGfxHandler1, &ov17_02203F98);
+        Sprite_SetPositionXY(a0->unk164[spriteIndex], i * 27 + 27, 88);
+        Set2dSpriteVisibleFlag(a0->unk164[spriteIndex], FALSE);
+        Set2dSpriteAnimActiveFlag(a0->unk164[spriteIndex], TRUE);
+    }
 }
 
 void ov17_022033E4(UnkData_ov17 *a0) {
@@ -1746,388 +1402,145 @@ void ov17_022033E4(UnkData_ov17 *a0) {
     }
 }
 
-asm void ov17_02203404(UnkData_ov17 *a0, u32 a1) {
-    push {r4, r5, r6, lr}
-    sub sp, #8
-    add r5, r0, #0
-    add r6, r1, #0
-    mov r0, #0x14
-    mul r0, r6
-    add r0, r5, r0
-    add r0, #0x20
-    ldrb r4, [r0]
-    cmp r4, #0
-    beq _02203420
-    sub r0, r4, #1
-    lsl r0, r0, #0x18
-    lsr r4, r0, #0x18
-_02203420:
-    mov r0, #0
-    mov r2, #0x13
-    str r0, [sp]
-    add r0, r6, #1
-    lsl r2, r2, #4
-    str r0, [sp, #4]
-    add r1, r2, #4
-    ldr r0, [r5, r2]
-    add r2, #0x64
-    add r3, r4, #0
-    ldr r1, [r5, r1]
-    ldr r2, [r5, r2]
-    add r3, #0x4c
-    bl sub_0200E2B8
-    mov r0, #0
-    mov r2, #0x13
-    str r0, [sp]
-    add r0, r6, #1
-    lsl r2, r2, #4
-    str r0, [sp, #4]
-    add r1, r2, #4
-    ldr r0, [r5, r2]
-    add r2, #0x64
-    add r4, #0xc
-    ldr r1, [r5, r1]
-    ldr r2, [r5, r2]
-    add r3, r4, #0
-    bl sub_0200E2EC
-    add sp, #8
-    pop {r4, r5, r6, pc}
+void ov17_02203404(UnkData_ov17 *a0, int a1) {
+    u8 berryId = a0->unk20[a1].berryId;
+    if (berryId != BERRY_NONE) {
+        berryId--;
+    }
+
+    sub_0200E2B8(a0->spriteRenderer, a0->spriteGfxHandler1, a0->berryPotsAppNarc, berryId + 76, FALSE, a1 + 1);
+    sub_0200E2EC(a0->spriteRenderer, a0->spriteGfxHandler1, a0->berryPotsAppNarc, berryId + 12, FALSE, a1 + 1);
 }
 
-asm void ov17_02203460(UnkData_ov17 *a0, u8 a1) {
-    push {r3, r4, r5, lr}
-    sub sp, #8
-    add r5, r0, #0
-    mov r0, #0x14
-    mul r0, r1
-    add r0, r5, r0
-    add r0, #0x20
-    ldrb r0, [r0]
-    bl BerryIdToItemId
-    mov r1, #1
-    add r4, r0, #0
-    bl GetItemIndexMapping
-    add r3, r0, #0
-    mov r0, #0
-    mov r2, #0x13
-    str r0, [sp]
-    mov r0, #0xfa
-    lsl r2, r2, #4
-    lsl r0, r0, #4
-    add r1, r2, #0
-    str r0, [sp, #4]
-    ldr r0, [r5, r2]
-    add r1, #8
-    add r2, #0x60
-    ldr r1, [r5, r1]
-    ldr r2, [r5, r2]
-    bl sub_0200E2B8
-    add r0, r4, #0
-    mov r1, #2
-    bl GetItemIndexMapping
-    add r3, r0, #0
-    mov r0, #0
-    mov r2, #0x13
-    str r0, [sp]
-    mov r0, #0xfa
-    lsl r2, r2, #4
-    lsl r0, r0, #4
-    add r1, r2, #0
-    str r0, [sp, #4]
-    ldr r0, [r5, r2]
-    add r1, #8
-    add r2, #0x60
-    ldr r1, [r5, r1]
-    ldr r2, [r5, r2]
-    bl sub_0200E2EC
-    add sp, #8
-    pop {r3, r4, r5, pc}
+void ov17_02203460(UnkData_ov17 *a0, u8 a1) {
+    u16 itemId = BerryIdToItemId(a0->unk20[a1].berryId);
+
+    sub_0200E2B8(a0->spriteRenderer, a0->spriteGfxHandler2, a0->itemIconNarc, GetItemIndexMapping(itemId, ITEMNARC_NCGR), FALSE, 4000);
+    sub_0200E2EC(a0->spriteRenderer, a0->spriteGfxHandler2, a0->itemIconNarc, GetItemIndexMapping(itemId, ITEMNARC_NCLR), FALSE, 4000);
 }
 
-void ov17_022034C8(void*, u16, u16, u8);
-asm void ov17_022034C8(void*, u16, u16, u8) {
-    push {r3, r4, r5, r6, lr}
-    sub sp, #0x34
-    add r5, r0, #0
-    add r4, r1, #0
-    add r6, r2, #0
-    add r0, sp, #0
-    mov r1, #0
-    mov r2, #0x34
-    bl MI_CpuFill8
-    add r0, sp, #0
-    strh r4, [r0]
-    strh r6, [r0, #2]
-    mov r1, #0
-    strh r1, [r0, #4]
-    strh r1, [r0, #6]
-    mov r0, #2
-    str r0, [sp, #0x2c]
-    mov r0, #0xfa
-    lsl r0, r0, #4
-    str r1, [sp, #0xc]
-    str r1, [sp, #0x30]
-    mov r1, #1
-    str r1, [sp, #0x10]
-    str r0, [sp, #0x14]
-    str r0, [sp, #0x18]
-    str r0, [sp, #0x1c]
-    str r0, [sp, #0x20]
-    sub r0, r1, #2
-    mov r1, #0x13
-    lsl r1, r1, #4
-    str r0, [sp, #0x24]
-    str r0, [sp, #0x28]
-    ldr r0, [r5, r1]
-    add r1, #8
-    ldr r1, [r5, r1]
-    add r2, sp, #0
-    bl sub_0200D734
-    add sp, #0x34
-    pop {r3, r4, r5, r6, pc}
+UnkImageStruct *ov17_022034C8(UnkData_ov17 *a0, s16 x, s16 y, u8);
+UnkImageStruct *ov17_022034C8(UnkData_ov17 *a0, s16 x, s16 y, u8) {
+    UnkTemplate_0200D748 template;
+    MI_CpuFill8(&template, 0, sizeof(UnkTemplate_0200D748));
+
+    template.x = x;
+    template.y = y;
+    template.z = 0;
+    template.animation = 0;
+    template.bgPriority = 2;
+    template.pal = 0;
+    template.vramTransfer = 0;
+    template.vram = NNS_G2D_VRAM_TYPE_2DMAIN;
+    template.resIdList[GF_GFX_RES_TYPE_CHAR] = 4000;
+    template.resIdList[GF_GFX_RES_TYPE_PLTT] = 4000;
+    template.resIdList[GF_GFX_RES_TYPE_CELL] = 4000;
+    template.resIdList[GF_GFX_RES_TYPE_ANIM] = 4000;
+    template.resIdList[GF_GFX_RES_TYPE_MCEL] = -1;
+    template.resIdList[GF_GFX_RES_TYPE_MANM] = -1;
+
+    return SpriteRenderer_LoadResourcesAndCreateSprite(a0->spriteRenderer, a0->spriteGfxHandler2, &template);
 }
 
-extern void ov17_022035A4(SysTask*, void*);
+typedef struct SysTaskArgs_ov17_0220351C {
+    UnkData_ov17 *unk0;
+    u8 unk4;
+    u8 unk5;
+    u8 unk6;
+    u8 unk7;
+    u8 unk8;
+    s8 unk9;
+    u8 unkA;
+} SysTaskArgs_ov17_0220351C;
 
-asm void ov17_0220351C(UnkData_ov17 *a0) {
-    push {r3, r4, r5, lr}
-    add r5, r0, #0
-    ldr r0, [r5, #0]
-    mov r1, #0xc
-    bl AllocFromHeap
-    mov r1, #0
-    mov r2, #0xc
-    add r4, r0, #0
-    bl MI_CpuFill8
-    add r0, r5, #0
-    str r5, [r4]
-    add r0, #0x80
-    ldrb r0, [r0]
-    strb r0, [r4, #6]
-    add r0, r5, #0
-    add r0, #0x81
-    ldrb r0, [r0]
-    strb r0, [r4, #7]
-    add r0, r5, #0
-    add r0, #0x81
-    ldrb r1, [r0]
-    add r0, r5, #0
-    add r0, #0x80
-    ldrb r0, [r0]
-    sub r0, r1, r0
-    lsl r0, r0, #0x18
-    asr r1, r0, #0x18
-    cmp r1, #0
-    ble _02203560
-    mov r0, #1
-    strb r0, [r4, #9]
-    b _0220356C
-_02203560:
-    mov r0, #0
-    mvn r0, r0
-    strb r0, [r4, #9]
-    neg r0, r1
-    lsl r0, r0, #0x18
-    asr r1, r0, #0x18
-_0220356C:
-    mov r0, #0x1b
-    mul r0, r1
-    lsl r0, r0, #0x18
-    asr r1, r0, #0x18
-    asr r0, r1, #1
-    lsr r0, r0, #0x1e
-    add r0, r1, r0
-    asr r0, r0, #2
-    strb r0, [r4, #8]
-    add r0, r5, #0
-    add r0, #0x80
-    ldrb r0, [r0]
-    add r1, r4, #0
-    mov r2, #0
-    strb r0, [r4, #0xa]
-    ldr r0, [pc, #0x14] // _022035A0 ; =ov17_022035A4
-    bl CreateSysTask
-    add r0, r5, #0
-    add r0, #0x7d
-    ldrb r0, [r0]
-    add r5, #0x7d
-    add r0, r0, #1
-    strb r0, [r5]
-    pop {r3, r4, r5, pc}
-    nop
-_022035A0: DCD ov17_022035A4
+extern void ov17_022035A4(SysTask *task, SysTaskArgs_ov17_0220351C *args);
+
+void ov17_0220351C(UnkData_ov17 *a0) {
+    SysTaskArgs_ov17_0220351C *args = AllocFromHeap(a0->heapId, sizeof(SysTaskArgs_ov17_0220351C));
+    MI_CpuFill8(args, 0, sizeof(SysTaskArgs_ov17_0220351C));
+    args->unk0 = a0;
+    args->unk6 = a0->unk80;
+    args->unk7 = a0->unk81;
+    s8 diff = a0->unk81 - a0->unk80;
+    if (diff > 0) {
+        args->unk9 = 1;
+    } else {
+        args->unk9 = -1;
+        diff = -diff;
+    }
+
+    args->unk8 = (s8)(diff * 27) / 4;
+    args->unkA = a0->unk80;
+    CreateSysTask((SysTaskFunc)ov17_022035A4, args, 0);
+    a0->unk7D++;
 }
 
-extern _s32_div_f();
+void ov17_022035A4(SysTask *task, SysTaskArgs_ov17_0220351C *args) {
+    UnkData_ov17 *unk0 = args->unk0;
 
-asm void ov17_022035A4(SysTask*, void*) {
-    push {r3, r4, r5, r6, r7, lr}
-    add r5, r1, #0
-    mov r1, #9
-    ldrsb r1, [r5, r1]
-    add r7, r0, #0
-    mov r0, #0x5b
-    lsl r1, r1, #0x12
-    ldr r4, [r5, #0]
-    lsl r0, r0, #2
-    ldr r0, [r4, r0]
-    asr r1, r1, #0x10
-    mov r2, #0
-    bl sub_0200DEA0
-    mov r0, #0x5b
-    lsl r0, r0, #2
-    add r1, sp, #0
-    ldr r0, [r4, r0]
-    add r1, #2
-    add r2, sp, #0
-    bl sub_0200DE00
-    add r1, sp, #0
-    mov r0, #2
-    ldrsh r0, [r1, r0]
-    mov r1, #0x1b
-    sub r0, #0x1f
-    bl _s32_div_f
-    lsl r0, r0, #0x18
-    lsr r6, r0, #0x18
-    ldrb r0, [r5, #0xa]
-    cmp r6, r0
-    beq _022035F8
-    ldrb r0, [r5, #7]
-    cmp r6, r0
-    beq _022035F8
-    add r0, r4, #0
-    add r1, r6, #0
-    bl ov17_02202B58
-    strb r6, [r5, #0xa]
-_022035F8:
-    ldrb r0, [r5, #8]
-    sub r0, r0, #1
-    strb r0, [r5, #8]
-    ldrb r0, [r5, #8]
-    cmp r0, #0
-    bne _02203634
-    ldrb r2, [r5, #7]
-    mov r1, #0x1b
-    mov r0, #0x5b
-    mul r1, r2
-    lsl r0, r0, #2
-    add r1, #0x1f
-    lsl r1, r1, #0x10
-    ldr r0, [r4, r0]
-    asr r1, r1, #0x10
-    mov r2, #0x38
-    bl sub_0200DD88
-    add r0, r4, #0
-    add r0, #0x7d
-    ldrb r0, [r0]
-    add r4, #0x7d
-    sub r0, r0, #1
-    strb r0, [r4]
-    add r0, r5, #0
-    bl FreeToHeap
-    add r0, r7, #0
-    bl DestroySysTask
-_02203634:
-    pop {r3, r4, r5, r6, r7, pc}
+    Sprite_AddPositionXY(unk0->unk164[2], args->unk9 * 4, 0);
+    s16 x, y;
+    Sprite_GetPositionXY(unk0->unk164[2], &x, &y);
+
+    u8 potIndex = (x - 31) / 27;
+    if (potIndex != args->unkA && potIndex != args->unk7) {
+        ov17_02202B58(unk0, potIndex);
+        args->unkA = potIndex;
+    }
+
+    if (--args->unk8 != 0) {
+        return;
+    }
+
+    Sprite_SetPositionXY(unk0->unk164[2], args->unk7 * 27 + 31, 56);
+
+    unk0->unk7D--;
+    FreeToHeap(args);
+    DestroySysTask(task);
 }
 
-extern void ov17_02203674(SysTask*, void*);
+typedef struct SysTaskArgs_ov17_02203638 {
+    UnkData_ov17 *unk0;
+    u8 unk4;
+    u8 unk5;
+    u8 unk6;
+    UnkImageStruct *unk8;
+} SysTaskArgs_ov17_02203638;
 
-asm void ov17_02203638(UnkData_ov17 *a0) {
-    push {r3, r4, r5, lr}
-    add r5, r0, #0
-    ldr r0, [r5, #0]
-    mov r1, #0xc
-    bl AllocFromHeap
-    mov r1, #0
-    mov r2, #0xc
-    add r4, r0, #0
-    bl MI_CpuFill8
-    add r0, r5, #0
-    str r5, [r4]
-    add r0, #0x7c
-    ldrb r0, [r0]
-    add r1, r4, #0
-    mov r2, #0
-    strb r0, [r4, #6]
-    ldr r0, [pc, #0x10] // _02203670 ; =ov17_02203674
-    bl CreateSysTask
-    add r0, r5, #0
-    add r0, #0x7d
-    ldrb r0, [r0]
-    add r5, #0x7d
-    add r0, r0, #1
-    strb r0, [r5]
-    pop {r3, r4, r5, pc}
-_02203670: DCD ov17_02203674
+extern void ov17_02203674(SysTask*, SysTaskArgs_ov17_02203638*);
+
+void ov17_02203638(UnkData_ov17 *a0) {
+    SysTaskArgs_ov17_02203638 *args = AllocFromHeap(a0->heapId, sizeof(SysTaskArgs_ov17_02203638));
+    MI_CpuFill8(args, 0, sizeof(SysTaskArgs_ov17_02203638));
+
+    args->unk0 = a0;
+    args->unk6 = a0->unk7C;
+
+    CreateSysTask((SysTaskFunc)ov17_02203674, args, 0);
+    a0->unk7D++;
 }
 
-asm void ov17_02203674(SysTask*, void*) {
-    push {r4, r5, r6, lr}
-    add r5, r1, #0
-    add r6, r0, #0
-    ldrb r0, [r5, #4]
-    ldr r4, [r5, #0]
-    cmp r0, #0
-    beq _0220368C
-    cmp r0, #1
-    beq _022036BA
-    cmp r0, #2
-    beq _022036D6
-    pop {r4, r5, r6, pc}
-_0220368C:
-    add r0, r4, #0
-    add r4, #0x7e
-    ldrb r3, [r4]
-    ldrb r2, [r5, #6]
-    mov r1, #0x1b
-    add r3, r3, #2
-    mul r1, r2
-    add r1, #0x23
-    lsl r1, r1, #0x10
-    lsl r3, r3, #0x18
-    asr r1, r1, #0x10
-    mov r2, #0x50
-    lsr r3, r3, #0x18
-    bl ov17_022034C8
-    str r0, [r5, #8]
-    ldr r0, [pc, #0x48] // _022036F8 ; =0x000005DD
-    bl PlaySE
-    ldrb r0, [r5, #4]
-    add r0, r0, #1
-    strb r0, [r5, #4]
-    pop {r4, r5, r6, pc}
-_022036BA:
-    mov r1, #2
-    ldr r0, [r5, #8]
-    sub r2, r1, #4
-    bl sub_0200DED0
-    ldrb r1, [r5, #5]
-    add r0, r1, #1
-    strb r0, [r5, #5]
-    cmp r1, #8
-    blo _022036F4
-    ldrb r0, [r5, #4]
-    add r0, r0, #1
-    strb r0, [r5, #4]
-    pop {r4, r5, r6, pc}
-_022036D6:
-    ldr r0, [r5, #8]
-    bl sub_0200D9DC
-    add r0, r4, #0
-    add r0, #0x7d
-    ldrb r0, [r0]
-    add r4, #0x7d
-    sub r0, r0, #1
-    strb r0, [r4]
-    add r0, r5, #0
-    bl FreeToHeap
-    add r0, r6, #0
-    bl DestroySysTask
-_022036F4:
-    pop {r4, r5, r6, pc}
-    nop
-_022036F8: DCD 0x000005DD
+void ov17_02203674(SysTask *task, SysTaskArgs_ov17_02203638 *args) {
+    UnkData_ov17 *unk0 = args->unk0;
+    switch (args->unk4) {
+        case 0:
+            args->unk8 = ov17_022034C8(unk0, args->unk6 * 27 + 35, 80, unk0->unk7E + 2);
+            PlaySE(SEQ_SE_DP_DECIDE);
+            args->unk4++;
+            break;
+        case 1:
+            UnkImageStruct_AddSpritePositionXY(args->unk8, 2, -2);
+            if (args->unk5++ >= 8) {
+                args->unk4++;
+            }
+            break;
+        case 2:
+            sub_0200D9DC(args->unk8);
+            unk0->unk7D--;
+            FreeToHeap(args);
+            DestroySysTask(task);
+            break;
+    }
 }
 
 void ov17_022036FC(UnkData_ov17 *a0, u32 a1, u8 a2) {
@@ -2163,90 +1576,31 @@ void ov17_022036FC(UnkData_ov17 *a0, u32 a1, u8 a2) {
 }
 
 extern void ov17_02203928(UnkData_ov17*);
-extern _ll_sdiv();
 
-asm void ov17_022037C8(UnkData_ov17 *a0, BOOL a1) {
-    push {r3, r4, r5, r6, r7, lr}
-    sub sp, #0x48
-    add r4, r0, #0
-    add r7, r1, #0
-    add r0, sp, #0x38
-    add r1, sp, #0x1c
-    bl GF_RTC_CopyDateTime
-    add r0, sp, #0x38
-    add r1, sp, #0x1c
-    bl RTC_ConvertDateTimeToSecond
-    add r5, r0, #0
-    add r6, r1, #0
-    ldr r0, [r4, #0x18]
-    add r1, sp, #0x28
-    add r2, sp, #0x10
-    bl ov16_02201820
-    add r0, sp, #0x28
-    add r1, sp, #0x10
-    bl RTC_ConvertDateTimeToSecond
-    sub r2, r5, r0
-    mov ip, r6
-    mov r2, ip
-    sbc r2, r1
-    bge _02203828
-    add r2, sp, #0x1c
-    ldmia r2!, {r0, r1}
-    add r3, sp, #4
-    stmia r3!, {r0, r1}
-    ldr r0, [r2, #0]
-    mov r5, sp
-    sub r5, #0xc
-    str r0, [r3]
-    add r3, sp, #0x38
-    add r2, r5, #0
-    ldmia r3!, {r0, r1}
-    stmia r2!, {r0, r1}
-    ldmia r3!, {r0, r1}
-    stmia r2!, {r0, r1}
-    ldr r0, [r4, #0x18]
-    ldmia r5!, {r1, r2, r3}
-    bl ov16_022017FC
-    add sp, #0x48
-    pop {r3, r4, r5, r6, r7, pc}
-_02203828:
-    sub r0, r5, r0
-    sbc r6, r1
-    add r1, r6, #0
-    mov r2, #0x3c
-    mov r3, #0
-    bl _ll_sdiv
-    add r2, r0, #0
-    beq _02203876
-    ldr r0, [r4, #0x14]
-    ldr r1, [r4, #0x1c]
-    bl ov16_02201760
-    add r0, r4, #0
-    bl ov17_0220387C
-    add r2, sp, #0x1c
-    mov r5, sp
-    ldmia r2!, {r0, r1}
-    add r3, sp, #4
-    stmia r3!, {r0, r1}
-    ldr r0, [r2, #0]
-    sub r5, #0xc
-    str r0, [r3]
-    add r3, sp, #0x38
-    add r2, r5, #0
-    ldmia r3!, {r0, r1}
-    stmia r2!, {r0, r1}
-    ldmia r3!, {r0, r1}
-    stmia r2!, {r0, r1}
-    ldr r0, [r4, #0x18]
-    ldmia r5!, {r1, r2, r3}
-    bl ov16_022017FC
-    cmp r7, #0
-    beq _02203876
-    add r0, r4, #0
-    bl ov17_02203928
-_02203876:
-    add sp, #0x48
-    pop {r3, r4, r5, r6, r7, pc}
+void ov17_022037C8(UnkData_ov17 *a0, BOOL a1) {
+    RTCDate sp28;
+    RTCDate sp38;
+    RTCTime sp44;
+    RTCTime sp50;
+
+    GF_RTC_CopyDateTime(&sp28, &sp44);
+    s64 sVar4 = RTC_ConvertDateTimeToSecond(&sp28, &sp44);
+    ov16_02201820(a0->berryDatetime, &sp38, &sp50);
+    s64 sVar5 = RTC_ConvertDateTimeToSecond(&sp38, &sp50);
+    if (sVar4 < sVar5) {
+        ov16_022017FC(a0->berryDatetime, sp28, sp44);
+        return;
+    }
+
+    u32 minutesDelta = (sVar4 - sVar5) / 60;
+    if (minutesDelta > 0) {
+        ov16_02201760(a0->berryPots, a0->berryGrowthProperties, minutesDelta);
+        ov17_0220387C(a0);
+        ov16_022017FC(a0->berryDatetime, sp28, sp44);
+        if (a1) {
+            ov17_02203928(a0);
+        }
+    }
 }
 
 void ov17_0220387C(UnkData_ov17 *a0) {
@@ -2267,139 +1621,66 @@ void ov17_0220387C(UnkData_ov17 *a0) {
     }
 }
 
-extern void ov17_022039A0(SysTask*, void*);
+typedef struct SysTaskArgs_ov17_022039A0 {
+    UnkData_ov17 *unk0;
+    u8 unk4;
+    u8 unk5;
+    u8 unk6;
+} SysTaskArgs_ov17_022039A0;
 
-asm void ov17_02203928(UnkData_ov17*) {
-    push {r3, r4, r5, r6, r7, lr}
-    sub sp, #8
-    add r4, r0, #0
-    add r7, r0, #0
-    str r0, [sp]
-    mov r6, #0
-    add r4, #0x20
-    add r5, r0, #0
-    add r7, #0x7d
-_0220393A:
-    ldrb r1, [r4, #0xa]
-    ldrb r0, [r4, #0xd]
-    cmp r1, r0
-    beq _0220395A
-    mov r0, #0x17
-    lsl r0, r0, #4
-    ldr r0, [r5, r0]
-    bl sub_020249D4
-    ldrb r0, [r4, #1]
-    cmp r0, #1
-    bne _0220395A
-    ldrb r1, [r4, #0xa]
-    ldr r0, [r4, #0x10]
-    bl sub_020249D4
-_0220395A:
-    ldrb r1, [r4, #1]
-    ldrb r0, [r4, #0xc]
-    cmp r1, r0
-    beq _0220398E
-    ldr r0, [sp, #0]
-    mov r1, #8
-    ldr r0, [r0, #0]
-    bl AllocFromHeap
-    str r0, [sp, #4]
-    mov r1, #0
-    mov r2, #8
-    bl MI_CpuFill8
-    ldr r1, [sp, #0]
-    ldr r0, [sp, #4]
-    mov r2, #0
-    str r1, [r0]
-    strb r6, [r0, #4]
-    ldr r0, [pc, #0x18] // _0220399C ; =ov17_022039A0
-    ldr r1, [sp, #4]
-    bl CreateSysTask
-    ldrb r0, [r7]
-    add r0, r0, #1
-    strb r0, [r7]
-_0220398E:
-    add r6, r6, #1
-    add r4, #0x14
-    add r5, r5, #4
-    cmp r6, #4
-    blt _0220393A
-    add sp, #8
-    pop {r3, r4, r5, r6, r7, pc}
-_0220399C: DCD ov17_022039A0
+extern void ov17_022039A0(SysTask *task, SysTaskArgs_ov17_022039A0 *args);
+
+void ov17_02203928(UnkData_ov17 *a0) {
+    for (int i = 0; i < 4; i++) {
+        UnkData_ov17_sub *sub = &a0->unk20[i];
+
+        if (sub->soilStateMaybe != sub->unkD) {
+            Sprite_SetAnimCtrlCurrentFrame(a0->unk164[3 + i], sub->soilStateMaybe);
+            if (sub->growthStage == 1) {
+                Sprite_SetAnimCtrlCurrentFrame(sub->soilSpriteMaybe, sub->soilStateMaybe);
+            }
+        }
+
+        if (sub->growthStage == sub->unkC) {
+            continue;
+        }
+
+        SysTaskArgs_ov17_022039A0 *args = AllocFromHeap(a0->heapId, sizeof(SysTaskArgs_ov17_022039A0));
+        MI_CpuFill8(args, 0, sizeof(SysTaskArgs_ov17_022039A0));
+        args->unk0 = a0;
+        args->unk4 = i;
+        CreateSysTask((SysTaskFunc)ov17_022039A0, args, 0);
+        a0->unk7D++;
+    }
 }
 
-asm void ov17_022039A0(SysTask *task, void* a1) {
-    push {r4, r5, r6, lr}
-    add r5, r1, #0
-    add r6, r0, #0
-    ldrb r0, [r5, #6]
-    ldr r4, [r5, #0]
-    cmp r0, #0
-    beq _022039B4
-    cmp r0, #1
-    beq _022039D6
-    pop {r4, r5, r6, pc}
-_022039B4:
-    ldrb r0, [r5, #4]
-    add r0, r0, #7
-    lsl r0, r0, #2
-    add r1, r4, r0
-    mov r0, #0x59
-    lsl r0, r0, #2
-    ldr r0, [r1, r0]
-    mov r1, #1
-    bl Set2dSpriteVisibleFlag
-    ldr r0, [pc, #0x64] // _02203A30 ; =0x00000569
-    bl PlaySE
-    ldrb r0, [r5, #6]
-    add r0, r0, #1
-    strb r0, [r5, #6]
-    pop {r4, r5, r6, pc}
-_022039D6:
-    ldrb r1, [r5, #5]
-    add r0, r1, #1
-    strb r0, [r5, #5]
-    cmp r1, #0xf
-    bne _022039FA
-    ldrb r1, [r5, #4]
-    add r0, r4, #0
-    bl ov17_02202A84
-    add r0, r4, #0
-    add r0, #0x7c
-    ldrb r1, [r0]
-    ldrb r0, [r5, #4]
-    cmp r1, r0
-    bne _022039FA
-    add r0, r4, #0
-    bl ov17_022028B8
-_022039FA:
-    ldrb r0, [r5, #5]
-    cmp r0, #0x1e
-    blo _02203A2C
-    ldrb r0, [r5, #4]
-    add r0, r0, #7
-    lsl r0, r0, #2
-    add r1, r4, r0
-    mov r0, #0x59
-    lsl r0, r0, #2
-    ldr r0, [r1, r0]
-    mov r1, #0
-    bl Set2dSpriteVisibleFlag
-    add r0, r4, #0
-    add r0, #0x7d
-    ldrb r0, [r0]
-    add r4, #0x7d
-    sub r0, r0, #1
-    strb r0, [r4]
-    add r0, r5, #0
-    bl FreeToHeap
-    add r0, r6, #0
-    bl DestroySysTask
-_02203A2C:
-    pop {r4, r5, r6, pc}
-    nop
-_02203A30: DCD 0x00000569
+void ov17_022039A0(SysTask *task, SysTaskArgs_ov17_022039A0 *args) {
+    UnkData_ov17 *unk0 = args->unk0;
+
+    switch (args->unk6) {
+        case 0:
+            Set2dSpriteVisibleFlag(unk0->unk164[7 + args->unk4], TRUE);
+            PlaySE(SEQ_SE_PL_EFF05);
+            args->unk6++;
+            break;
+        case 1:
+            if (args->unk5++ == 15) {
+                ov17_02202A84(unk0, args->unk4);
+                if (unk0->unk7C == args->unk4) {
+                    ov17_022028B8(unk0);
+                }
+            }
+
+            if (args->unk5 >= 30) {
+                Set2dSpriteVisibleFlag(unk0->unk164[7 + args->unk4], FALSE);
+
+                unk0->unk7D--;
+                FreeToHeap(args);
+                DestroySysTask(task);
+            }
+
+            break;
+    }
 }
 
 extern u32 ov17_02203AD4(UnkData_ov17*);
@@ -2554,91 +1835,51 @@ BOOL ov17_02203C20(UnkData_ov17 *a0, BOOL *a1) {
 
 extern int sub_02025320(void*);
 
-asm int ov17_02203C78(UnkData_ov17 *a0) {
-    push {r3, r4, r5, r6, r7, lr}
-    add r5, r0, #0
-    mov r7, #0
-    mov r4, #0x10
-    add r6, sp, #0
-_02203C82:
-    strb r4, [r6, #2]
-    ldrb r0, [r6, #2]
-    add r0, #0x16
-    strb r0, [r6, #3]
-    add r0, r5, #0
-    add r0, #0x21
-    ldrb r0, [r0]
-    cmp r0, #3
-    bhs _02203C9E
-    mov r0, #0x58
-    strb r0, [r6]
-    ldrb r0, [r6]
-    add r0, #0x18
-    b _02203CA6
-_02203C9E:
-    mov r0, #0x48
-    strb r0, [r6]
-    ldrb r0, [r6]
-    add r0, #0x20
-_02203CA6:
-    strb r0, [r6, #1]
-    add r0, sp, #0
-    bl sub_02025320
-    cmp r0, #0
-    beq _02203CB6
-    add r0, r7, #0
-    pop {r3, r4, r5, r6, r7, pc}
-_02203CB6:
-    add r7, r7, #1
-    add r4, #0x1c
-    add r5, #0x14
-    cmp r7, #4
-    blt _02203C82
-    mov r0, #0
-    mvn r0, r0
-    pop {r3, r4, r5, r6, r7, pc}
+int ov17_02203C78(UnkData_ov17 *a0) {
+    // touch screen coordinates?
+    u8 sp18[4];
+
+    int i = 0;
+    u32 xOffsetMaybe = 16;
+    for (; i < 4; xOffsetMaybe += 28, i++) {
+        sp18[2] = xOffsetMaybe;
+        sp18[3] = sp18[2] + 22;
+        if (a0->unk20[i].growthStage < 3) {
+            sp18[0] = 88;
+            sp18[1] = sp18[0] + 24;
+        } else {
+            sp18[0] = 72;
+            sp18[1] = sp18[0] + 32;
+        }
+
+        if (sub_02025320(&sp18)) {
+            return i;
+        }
+    }
+    return -1;
 }
 
-extern u8 ov17_02203FC0;
-asm int ov17_02203CC8(UnkData_ov17 *a0) {
-    push {r4, lr}
-    add r4, r0, #0
-    ldr r0, [pc, #0x2C] // _02203CFC ; =ov17_02203FC0
-    bl sub_02025320
-    cmp r0, #0
-    beq _02203CDA
-    mov r0, #5
-    pop {r4, pc}
-_02203CDA:
-    add r0, r4, #0
-    bl ov17_02203C78
-    cmp r0, #0
-    blt _02203CF4
-    add r1, r4, #0
-    add r1, #0x7c
-    strb r0, [r1]
-    add r0, r4, #0
-    bl ov17_022028B8
-    mov r0, #4
-    pop {r4, pc}
-_02203CF4:
-    mov r0, #0
-    mvn r0, r0
-    pop {r4, pc}
-    nop
-_02203CFC: DCD ov17_02203FC0
+extern const u8 ov17_02203FC0[4];
+int ov17_02203CC8(UnkData_ov17 *a0) {
+    if (sub_02025320(&ov17_02203FC0)) {
+        return 5;
+    }
+
+    int unk = ov17_02203C78(a0);
+    if (unk >= 0) {
+        a0->unk7C = unk;
+        ov17_022028B8(a0);
+        return 4;
+    }
+
+    return -1;
 }
 
-#ifdef NONMATCHING
 u32 ov17_02203D00(UnkData_ov17 *a0) {
     UnkData_ov17_sub *unk = &a0->unk20[a0->unk7C];
     switch (unk->growthStage) {
         case 0:
-            if (unk->mulch != 0) {
-                return 4;
-            } else {
-                return 3;
-            }
+            return (unk->mulch != MULCH_NONE) ? 4 : 3;
         case 1:
         case 2:
         case 3:
@@ -2646,57 +1887,9 @@ u32 ov17_02203D00(UnkData_ov17 *a0) {
             return 5;
         case 5:
             return 6;
-    }
 
-    return 2;
+        case 0xFF:
+        default:
+            return 2;
+    }
 }
-#else
-asm u32 ov17_02203D00(UnkData_ov17 *a0) {
-    add r2, r0, #0
-    add r0, #0x7c
-    ldrb r1, [r0]
-    mov r0, #0x14
-    add r2, #0x20
-    mul r0, r1
-    add r2, r2, r0
-    ldrb r1, [r2, #1]
-    cmp r1, #5
-    bgt _02203D30
-    cmp r1, #0
-    blt _02203D4A
-    add r0, r1, r1
-    add r0, pc
-    ldrh r0, [r0, #6]
-    lsl r0, r0, #0x10
-    asr r0, r0, #0x10
-    add pc, r0
-_02203D24: // jump table
-    DCD 0x001C000E // .short _02203D34 - _02203D24 - 2 ; case 0
-                   // .short _02203D42 - _02203D24 - 2 ; case 1
-    DCD 0x001C001C // .short _02203D42 - _02203D24 - 2 ; case 2
-                   // .short _02203D42 - _02203D24 - 2 ; case 3
-    DCD 0x0020001C // .short _02203D42 - _02203D24 - 2 ; case 4
-                   // .short _02203D46 - _02203D24 - 2 ; case 5
-_02203D30:
-    cmp r1, #0xff
-    b _02203D4A
-_02203D34:
-    ldrb r0, [r2, #4]
-    cmp r0, #0
-    beq _02203D3E
-    mov r0, #4
-    bx lr
-_02203D3E:
-    mov r0, #3
-    bx lr
-_02203D42:
-    mov r0, #5
-    bx lr
-_02203D46:
-    mov r0, #6
-    bx lr
-_02203D4A:
-    mov r0, #2
-    bx lr
-}
-#endif
