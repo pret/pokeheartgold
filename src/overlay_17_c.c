@@ -1012,115 +1012,47 @@ int ov17_02202A50(UnkData_ov17 *a0) {
     return r0;
 }
 
-extern const u8 ov17_02203EA8;
-extern sub_0200D2B4();
-extern void sub_020249D4(Sprite*, u32);
+extern const UnkStruct_0200D2B4 ov17_02203EA8;
 
-asm void ov17_02202A84(UnkData_ov17 *a0, u32 index) {
-    push {r3, r4, r5, r6, r7, lr}
-    sub sp, #0x28
-    add r6, r1, #0
-    add r5, r0, #0
-    mov r0, #0x14
-    add r7, r6, #0
-    mul r7, r0
-    add r0, r5, #0
-    add r0, #0x20
-    add r4, r0, r7
-    ldrb r0, [r4, #0xc]
-    cmp r0, #0
-    beq _02202AA8
-    ldr r0, [r4, #0x10]
-    cmp r0, #0
-    beq _02202AA8
-    bl Sprite_Delete
-_02202AA8:
-    ldrb r0, [r4, #1]
-    cmp r0, #0
-    bne _02202AC8
-    mov r0, #0
-    str r0, [r4, #0x10]
-    add r0, r6, #3
-    lsl r0, r0, #2
-    add r1, r5, r0
-    mov r0, #0x59
-    lsl r0, r0, #2
-    ldr r0, [r1, r0]
-    mov r1, #2
-    bl sub_020249D4
-    add sp, #0x28
-    pop {r3, r4, r5, r6, r7, pc}
-_02202AC8:
-    ldr r0, [pc, #0x88] // _02202B54 ; =ov17_02203EA8
-    add r1, sp, #0
-    mov r2, #0x28
-    bl MI_CpuCopy8
-    add r0, r6, #1
-    mov r1, #0x1b
-    add r2, r0, #0
-    mul r2, r1
-    add r1, sp, #0
-    strh r2, [r1, #4]
-    ldrb r2, [r4, #1]
-    cmp r2, #1
-    beq _02202AEA
-    cmp r2, #2
-    beq _02202AF0
-    b _02202AF6
-_02202AEA:
-    mov r0, #5
-    strh r0, [r1, #0xa]
-    b _02202AFE
-_02202AF0:
-    mov r0, #6
-    strh r0, [r1, #0xa]
-    b _02202AFE
-_02202AF6:
-    str r0, [sp]
-    ldrb r0, [r4, #1]
-    sub r0, r0, #3
-    strh r0, [r1, #0xa]
-_02202AFE:
-    mov r1, #0x13
-    lsl r1, r1, #4
-    ldr r0, [r5, r1]
-    add r1, r1, #4
-    ldr r1, [r5, r1]
-    add r2, sp, #0
-    bl sub_0200D2B4
-    str r0, [r4, #0x10]
-    mov r1, #1
-    bl Set2dSpriteVisibleFlag
-    ldrb r0, [r4, #1]
-    cmp r0, #1
-    ldr r0, [r4, #0x10]
-    bne _02202B32
-    mov r1, #0
-    bl Set2dSpriteAnimActiveFlag
-    add r1, r5, r7
-    add r1, #0x2a
-    ldrb r1, [r1]
-    ldr r0, [r4, #0x10]
-    bl sub_020249D4
-    b _02202B38
-_02202B32:
-    mov r1, #1
-    bl Set2dSpriteAnimActiveFlag
-_02202B38:
-    add r0, r6, #3
-    lsl r0, r0, #2
-    add r1, r5, r0
-    mov r0, #0x59
-    lsl r0, r0, #2
-    ldr r0, [r1, r0]
-    add r1, r5, r7
-    add r1, #0x2a
-    ldrb r1, [r1]
-    bl sub_020249D4
-    add sp, #0x28
-    pop {r3, r4, r5, r6, r7, pc}
-    nop
-_02202B54: DCD ov17_02203EA8
+void ov17_02202A84(UnkData_ov17 *a0, int index) {
+    UnkData_ov17_sub *sub = &a0->unk20[index];
+    if (sub->unkC != 0 && sub->soilSpriteMaybe != NULL) {
+        Sprite_Delete(sub->soilSpriteMaybe);
+    }
+
+    if (sub->growthStage == 0) {
+        sub->soilSpriteMaybe = NULL;
+        Sprite_SetAnimCtrlCurrentFrame(a0->unk164[index + 3], 2);
+        return;
+    }
+
+    UnkStruct_0200D2B4 sp40;
+    MI_CpuCopy8(&ov17_02203EA8, &sp40, sizeof(UnkStruct_0200D2B4));
+    sp40.x = (index + 1) * 27;
+    switch (sub->growthStage) {
+        case 1:
+            sp40.animSeqNo = 5;
+            break;
+        case 2:
+            sp40.animSeqNo = 6;
+            break;
+        default: {
+            sp40.unk_00 = index + 1;
+            sp40.animSeqNo = sub->growthStage - 3;
+            break;
+        }
+    }
+
+    sub->soilSpriteMaybe = SpriteRenderer_CreateSprite(a0->spriteRenderer, a0->spriteGfxHandler1, &sp40);
+    Set2dSpriteVisibleFlag(sub->soilSpriteMaybe, TRUE);
+    if (sub->growthStage == 1) {
+        Set2dSpriteAnimActiveFlag(sub->soilSpriteMaybe, FALSE);
+        Sprite_SetAnimCtrlCurrentFrame(sub->soilSpriteMaybe, a0->unk20[index].soilStateMaybe);
+    } else {
+        Set2dSpriteAnimActiveFlag(sub->soilSpriteMaybe, TRUE);
+    }
+
+    Sprite_SetAnimCtrlCurrentFrame(a0->unk164[index + 3], a0->unk20[index].soilStateMaybe);
 }
 
 void ov17_02202B58(UnkData_ov17 *a0, u8 index) {
