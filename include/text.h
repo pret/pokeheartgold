@@ -13,8 +13,9 @@
 
 void sub_0201FFE0(const struct FontInfo *fontData);
 void DecompressGlyphTile(const u8 *src, u8 *dest);
+// FIXME: Are the x/y params 32bit on all three of these functions?
 u16 AddTextPrinterParameterized(Window* window, u8 font_id, String* text, u8 x, u8 y, u32 speed, void* callback);
-u8 AddTextPrinterParameterized2(Window *window, FontID fontId, String *string, u8 x, u8 y, u32 textSpeed, u32 color, PrinterCallback_t callback);
+u8 AddTextPrinterParameterized2(Window *window, FontID fontId, String *string, u32 x, u32 y, u32 textSpeed, u32 color, PrinterCallback_t callback);
 u8 AddTextPrinterParameterized3(Window *window, int fontId, String *string, u8 x, u8 y, u32 textSpeed, u32 color, u32 letterSpacing, u32 lineSpacing, PrinterCallback_t callback);
 BOOL TextPrinterCheckActive(u8 printerId);
 void ResetAllTextPrinters(void);
