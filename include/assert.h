@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_ASSERT_H
 #define POKEHEARTGOLD_ASSERT_H
 
+#include "error_handling.h"
+
 /*
  * Assert statements. If the expression evaluates false,
  * the software will terminate.
@@ -12,14 +14,5 @@
 #else
 #define GF_ASSERT(...) ((void)0)
 #endif //PM_KEEP_ASSERTS
-
-/*
- * void GF_AssertFail(void)
- *
- * Called when an assertion fails.
- * Do not use this directly.
- * Instead, use the GF_ASSERT macro defined above.
- */
-void GF_AssertFail(void);
 
 #endif //POKEHEARTGOLD_ASSERT_H
