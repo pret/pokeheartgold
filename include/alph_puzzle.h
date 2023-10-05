@@ -23,7 +23,7 @@ typedef struct AlphPuzzleTile {
     u8 y;
     u8 rotation;
     u8 isImmovable;
-    u32 unk4;
+    Sprite *sprite;
 } AlphPuzzleTile;
 
 typedef struct AlphPuzzleData {
@@ -57,10 +57,9 @@ typedef struct AlphPuzzleData {
     Window window[3];
     void *unk7C;
     PaletteData *palette;
-    Unk122_021E7C9C *unk84;
+    SpriteRenderer *unk84;
     void *unk88;
-    u32 unk8C;
-    u32 unk90;
+    Sprite *unk8C[2];
     u8 unk94[0x40];
     NNSG2dScreenData *screenData;
     void *unkD8;
@@ -96,12 +95,10 @@ void ov110_021E6BEC(AlphPuzzleTile *tile, s16 x, s16 y);
 void ov110_021E6C18(AlphPuzzleData *data, s16 a1, u8 a2, u8 a3, u8 a4);
 BOOL ov110_021E68B4(AlphPuzzleData *data);
 void ov110_021E6ABC(AlphPuzzleData *data, u8 x, u8 y);
-void sub_0200DD88(u32 a0, s16 x, s16 y);
-void sub_02024818(u32 a0, u16 a1);
+void sub_02024818(Sprite *sprite, u16 a1);
 void ov110_021E6988(AlphPuzzleData *data, int a1, int a2, u8 textFrameDelay);
 void ov110_021E6B38(AlphPuzzleData *data);
 int ov110_021E6B94(AlphPuzzleData *data);
-void sub_02003E5C(void *, u32, u32, u32, u8, u32);
 void ov110_021E6678(AlphPuzzleData *data);
 
 #endif //POKEHEARTGOLD_ALPH_PUZZLE_H

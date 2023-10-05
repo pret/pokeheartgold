@@ -401,7 +401,7 @@ static int ov110_021E5E1C(AlphPuzzleData *data) {
         x = 208;
     }
     
-    sub_0200DD88(data->unk90, x, y);
+    Sprite_SetPositionXY(data->unk8C[1], x, y);
     ov110_021E6BEC(data->selectedTile, x - 2, y - 2);
 
     u8 xOut;
@@ -429,7 +429,7 @@ static int ov110_021E5F84(AlphPuzzleData *data) {
         break;
     case 1:
         u16 temp = data->unkE++;
-        sub_02024818(data->selectedTile->unk4, (u16)(temp << 0xb) + (data->selectedTile->rotation << 0xe));
+        sub_02024818(data->selectedTile->sprite, (u16)(temp << 0xb) + (data->selectedTile->rotation << 0xe));
         if (data->unkE >= 8) {
             data->unkC++;
         }
@@ -509,7 +509,7 @@ static void ov110_021E6110(void *dat) {
         sub_0200398C(data->palette);
     }
     if (data->unk84) {
-        sub_0200D034();
+        thunk_OamManager_ApplyAndResetBuffers();
     }
 
     NNS_GfdDoVramTransfer();
@@ -546,7 +546,7 @@ static void AlphPuzzle_InitTileData(AlphPuzzleData *data) {
                 tile->y = y; 
                 tile->rotation = (*puzzle)[pos].rotation;
                 tile->isImmovable = (*puzzle)[pos].isImmovable;
-                tile->unk4 = 0;
+                tile->sprite = NULL;
             }
         }
     }
@@ -707,15 +707,15 @@ static void ov110_021E6650(AlphPuzzleData *data) {
 
 extern Unk122_021E92FC ov110_021E6EA4;
 extern Unk122_021E92D0 ov110_021E6DD0;
-extern Unk122_021E92D0 ov110_021E6DB0;
+extern const u16 ov110_021E6DB0[7];
 
 void ov110_021E6678(AlphPuzzleData *data) {
     GF_CreateVramTransferManager(32, data->heapId);
-    data->unk84 = sub_0200CF18(data->heapId);
+    data->unk84 = SpriteRenderer_Create(data->heapId);
     sub_0200CF70(data->unk84, &ov110_021E6EA4, &ov110_021E6DD0, 3);
     sub_0200B2E0(data->heapId);
     sub_0200B2E8(data->heapId);
-    data->unk88 = sub_0200CF38(data->unk84);
+    data->unk88 = SpriteRenderer_CreateGfxHandler(data->unk84);
     sub_0200CFF4(data->unk84, data->unk88, 18);
-    sub_0200D2A4(data->unk84, data->unk88, &ov110_021E6DB0, 2, 1);
+    sub_0200D2A4(data->unk84, data->unk88, ov110_021E6DB0, 2, 1);
 }

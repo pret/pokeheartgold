@@ -199,5 +199,6 @@ SpriteList* sub_0200E2B0(SpriteGfxHandler* gfxHandler);
 void sub_0200E2B4(SpriteGfxHandler* gfxHandler, SpriteList* spriteList);
 void sub_0200E2B8(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, int resId);
 void sub_0200E2EC(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, int resId);
+void sub_02003E5C(PaletteData *data, u32, u32, u32, u8, u32);
 
 #endif //POKEHEARTGOLD_UNK_0200CF18_H
