@@ -622,19 +622,19 @@ ov80_0222A3D4: ; 0x0222A3D4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	cmp r4, r0
 	beq _0222A3FC
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	add r0, r5, #0
 	add r1, r4, #0
 	bl Set2dSpriteAnimSeqNo
 	mov r1, #1
 	add r0, r5, #0
 	lsl r1, r1, #0xc
-	bl sub_020249B0
+	bl Sprite_TickCellOrMulticellAnimation
 _0222A3FC:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -654,7 +654,7 @@ ov80_0222A400: ; 0x0222A400
 	str r1, [sp, #8]
 	cmp r3, #1
 	bne _0222A42E
-	bl sub_020249F8
+	bl Sprite_GetAnimCtrlCurrentFrame
 	cmp r0, #0
 	bne _0222A428
 	sub r0, r4, #3
@@ -668,7 +668,7 @@ _0222A428:
 _0222A42E:
 	add r0, r5, #0
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0

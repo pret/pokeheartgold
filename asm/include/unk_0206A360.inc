@@ -21,7 +21,7 @@
 .public FieldSystem_GetBgConfigPtr
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
 .public MapObject_GetPositionVec

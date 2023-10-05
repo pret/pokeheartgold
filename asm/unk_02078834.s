@@ -20,7 +20,7 @@ sub_02078834: ; 0x02078834
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r6, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r1, [r4, #4]
 	cmp r1, #0x19
@@ -218,7 +218,7 @@ _0207899C:
 	ldrb r3, [r4, #0xd]
 	ldr r1, [r1, #8]
 	add r0, r6, #0
-	bl sub_020514A4
+	bl CallTask_02050960
 	ldr r0, [r4, #4]
 	add r0, r0, #1
 	str r0, [r4, #4]

@@ -192,7 +192,7 @@ ov65_0221BFBC: ; 0x0221BFBC
 	add r1, r0, #0
 	ldr r0, [sp, #0x14]
 	add r1, #0xa
-	bl sub_02024A74
+	bl Sprite_SetPalOffset
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov65_0221BFBC
 
@@ -1467,7 +1467,7 @@ ov65_0221CA64: ; 0x0221CA64
 	bl GfGfxLoader_GXLoadPal
 	ldr r0, [r6, r7]
 	mov r1, #0xb
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 _0221CAA6:
@@ -1488,7 +1488,7 @@ _0221CAA6:
 	bl GfGfxLoader_GXLoadPal
 	ldr r0, [r6, r7]
 	mov r1, #0xc
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 _0221CACE:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1753,7 +1753,7 @@ _0221CCE4:
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
@@ -3325,7 +3325,7 @@ _0221D9EC:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0x64
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	mov r0, #0xd1
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -3371,7 +3371,7 @@ _0221DA54:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #5
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	mov r0, #0xdf
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -3409,7 +3409,7 @@ _0221DABA:
 	add r0, r1, #0
 	ldr r0, [r4, r0]
 	mov r1, #3
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	mov r0, #0xeb
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -3447,7 +3447,7 @@ _0221DB0C:
 	add r0, r1, #0
 	ldr r0, [r4, r0]
 	mov r1, #3
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	mov r0, #0xf7
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -3732,7 +3732,7 @@ _0221DD46:
 	cmp r5, #0xc
 	bne _0221DD78
 	add r0, r6, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r1, #0xc
 	add r2, r4, #0
 	mul r2, r1
@@ -3744,7 +3744,7 @@ _0221DD46:
 	pop {r3, r4, r5, r6, pc}
 _0221DD78:
 	add r0, r6, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	cmp r5, #6
 	bge _0221DD96
 	mov r1, #0xc
@@ -5760,7 +5760,7 @@ ov65_0221ED94: ; 0x0221ED94
 	str r0, [sp, #0x28]
 	ldr r0, [sp]
 	add r1, sp, #0x24
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldrh r0, [r5, #2]
 	cmp r0, #0
 	beq _0221EDF2
@@ -5776,7 +5776,7 @@ ov65_0221ED94: ; 0x0221ED94
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #4]
 	add r1, sp, #0x18
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 _0221EDF2:
 	ldr r0, [r5, #0xc]
 	cmp r0, #0
@@ -5793,7 +5793,7 @@ _0221EDF2:
 	str r0, [sp, #0x10]
 	ldr r0, [sp, #8]
 	add r1, sp, #0xc
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 _0221EE14:
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
@@ -6905,7 +6905,7 @@ ov65_0221F748: ; 0x0221F748
 	lsl r1, r2, #0xc
 	str r1, [sp, #4]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {pc}
 	.balign 4, 0

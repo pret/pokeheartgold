@@ -27,36 +27,36 @@ struct HiddenItemData {
 #include "data/fieldmap.h"
 
 const struct ScriptBankMapping sScriptBankMapping[30] = {
-    {_std_scratch_card, NARC_scr_seq_scr_seq_0263_bin, NARC_msg_msg_0433_bin},
-    {_std_frontier_records, NARC_scr_seq_scr_seq_0264_bin,  NARC_msg_msg_0019_bin},
+    {_std_scratch_card,        NARC_scr_seq_scr_seq_0263_bin, NARC_msg_msg_0433_bin},
+    {_std_frontier_records,    NARC_scr_seq_scr_seq_0264_bin, NARC_msg_msg_0019_bin},
     {_std_frontier_move_tutor, NARC_scr_seq_scr_seq_0002_bin, NARC_msg_msg_0748_bin},
-    {_std_bug_contest, NARC_scr_seq_scr_seq_0151_bin, NARC_msg_msg_0246_bin},
-    {_std_trainer_house, NARC_scr_seq_scr_seq_0952_bin, NARC_msg_msg_0726_bin},
-    {10300, NARC_scr_seq_scr_seq_0734_bin, NARC_msg_msg_0444_bin},
-    {_std_mystery_gift, NARC_scr_seq_scr_seq_0144_bin, NARC_msg_msg_0209_bin},
-    {10150, NARC_scr_seq_scr_seq_0955_bin, NARC_msg_msg_0732_bin},
-    {_std_tv,               NARC_scr_seq_scr_seq_0954_bin, NARC_msg_msg_0733_bin},
-    {_std_field_move,     NARC_scr_seq_scr_seq_0146_bin, NARC_msg_msg_0211_bin},
-    {_std_dex_evaluation, NARC_scr_seq_scr_seq_0148_bin, NARC_msg_msg_0666_bin},
-    { 9900,               NARC_scr_seq_scr_seq_0136_bin, NARC_msg_msg_0040_bin},
-    { _std_pokeathlon,               NARC_scr_seq_scr_seq_0167_bin, NARC_msg_msg_0312_bin},
-    { 9800,               NARC_scr_seq_scr_seq_0166_bin, NARC_msg_msg_0043_bin},
-    { _std_following_mon,               NARC_scr_seq_scr_seq_0163_bin, NARC_msg_msg_0266_bin},
+    {_std_bug_contest,         NARC_scr_seq_scr_seq_0151_bin, NARC_msg_msg_0246_bin},
+    {_std_trainer_house,       NARC_scr_seq_scr_seq_0952_bin, NARC_msg_msg_0726_bin},
+    {10300,                    NARC_scr_seq_scr_seq_0734_bin, NARC_msg_msg_0444_bin},
+    {_std_mystery_gift,        NARC_scr_seq_scr_seq_0144_bin, NARC_msg_msg_0209_bin},
+    {10150,                    NARC_scr_seq_scr_seq_0955_bin, NARC_msg_msg_0732_bin},
+    {_std_tv,                  NARC_scr_seq_scr_seq_0954_bin, NARC_msg_msg_0733_bin},
+    {_std_field_move,          NARC_scr_seq_scr_seq_0146_bin, NARC_msg_msg_0211_bin},
+    {_std_dex_evaluation,      NARC_scr_seq_scr_seq_0148_bin, NARC_msg_msg_0666_bin},
+    { 9900,                    NARC_scr_seq_scr_seq_0136_bin, NARC_msg_msg_0040_bin},
+    { _std_pokeathlon,         NARC_scr_seq_scr_seq_0167_bin, NARC_msg_msg_0312_bin},
+    { 9800,                    NARC_scr_seq_scr_seq_0166_bin, NARC_msg_msg_0043_bin},
+    { _std_following_mon,      NARC_scr_seq_scr_seq_0163_bin, NARC_msg_msg_0266_bin},
     { _std_init,               NARC_scr_seq_scr_seq_0149_bin, NARC_msg_msg_0040_bin},
-    { _std_daycare,               NARC_scr_seq_scr_seq_0265_bin, NARC_msg_msg_0439_bin},
-    { _std_group,               NARC_scr_seq_scr_seq_0143_bin, NARC_msg_msg_0204_bin},
-    {_std_wifi_reception, NARC_scr_seq_scr_seq_0164_bin, NARC_msg_msg_0267_bin},
-    {_std_colosseum,      NARC_scr_seq_scr_seq_0000_bin, NARC_msg_msg_0014_bin},
-    {_std_comm_reception, NARC_scr_seq_scr_seq_0004_bin, NARC_msg_msg_0046_bin},
-    {_std_chatot,         NARC_scr_seq_scr_seq_0165_bin, NARC_msg_msg_0268_bin},
-    {_std_safari,         NARC_scr_seq_scr_seq_0262_bin, NARC_msg_msg_0427_bin},
-    {_std_hidden_item,    NARC_scr_seq_scr_seq_0145_bin, NARC_msg_msg_0210_bin}, // Hidden Items
-    {_std_item_ball,      NARC_scr_seq_scr_seq_0141_bin, NARC_msg_msg_0199_bin},
-    {_std_npc_trainer_2,  NARC_scr_seq_scr_seq_0953_bin, NARC_msg_msg_0040_bin},
-    {_std_npc_trainer,    NARC_scr_seq_scr_seq_0953_bin, NARC_msg_msg_0040_bin},
-    {_std_apricorn_tree,  NARC_scr_seq_scr_seq_0150_bin, NARC_msg_msg_0023_bin},
-    {_std_bookshelves,    NARC_scr_seq_scr_seq_0001_bin, NARC_msg_msg_0020_bin},
-    {_std_misc,           NARC_scr_seq_scr_seq_0003_bin, NARC_msg_msg_0040_bin},
+    { _std_daycare,            NARC_scr_seq_scr_seq_0265_bin, NARC_msg_msg_0439_bin},
+    { _std_group,              NARC_scr_seq_scr_seq_0143_bin, NARC_msg_msg_0204_bin},
+    {_std_wifi_reception,      NARC_scr_seq_scr_seq_0164_bin, NARC_msg_msg_0267_bin},
+    {_std_colosseum,           NARC_scr_seq_scr_seq_0000_bin, NARC_msg_msg_0014_bin},
+    {_std_comm_reception,      NARC_scr_seq_scr_seq_0004_bin, NARC_msg_msg_0046_bin},
+    {_std_chatot,              NARC_scr_seq_scr_seq_0165_bin, NARC_msg_msg_0268_bin},
+    {_std_safari,              NARC_scr_seq_scr_seq_0262_bin, NARC_msg_msg_0427_bin},
+    {_std_hidden_item,         NARC_scr_seq_scr_seq_0145_bin, NARC_msg_msg_0210_bin}, // Hidden Items
+    {_std_item_ball,           NARC_scr_seq_scr_seq_0141_bin, NARC_msg_msg_0199_bin},
+    {_std_npc_trainer_2,       NARC_scr_seq_scr_seq_0953_bin, NARC_msg_msg_0040_bin},
+    {_std_npc_trainer,         NARC_scr_seq_scr_seq_0953_bin, NARC_msg_msg_0040_bin},
+    {_std_apricorn_tree,       NARC_scr_seq_scr_seq_0150_bin, NARC_msg_msg_0023_bin},
+    {_std_bookshelves,         NARC_scr_seq_scr_seq_0001_bin, NARC_msg_msg_0020_bin},
+    {_std_misc,                NARC_scr_seq_scr_seq_0003_bin, NARC_msg_msg_0040_bin},
 };
 
 void StartMapSceneScript(FieldSystem *fieldSystem, u16 script, LocalMapObject *lastInteracted) {
@@ -66,7 +66,7 @@ void StartMapSceneScript(FieldSystem *fieldSystem, u16 script, LocalMapObject *l
 }
 
 void FieldSystem_SetEngagedTrainer(FieldSystem *fieldSystem, LocalMapObject *obj, int a2, int a3, int a4, int trainerId, int encounterType, int idx) {
-    ScriptEnvironment *env = TaskManager_GetEnv(fieldSystem->taskman);
+    ScriptEnvironment *env = TaskManager_GetEnvironment(fieldSystem->taskman);
     EngagedTrainer *r0 = &env->engagedTrainers[idx];
     r0->unk0 = a2;
     r0->unk4 = a3;
@@ -95,7 +95,7 @@ BOOL Task_RunScripts(TaskManager *taskman) {
     FieldSystem *fieldSystem;
     ScriptEnvironment *env;
 
-    env = TaskManager_GetEnv(taskman);
+    env = TaskManager_GetEnvironment(taskman);
     fieldSystem = TaskManager_GetFieldSystem(taskman);
 
     switch (env->state) {
@@ -321,14 +321,14 @@ void *FieldSysGetAttrAddrInternal(ScriptEnvironment *environment, enum ScriptEnv
 }
 
 void* FieldSysGetAttrAddr(FieldSystem *fieldSystem, enum ScriptEnvField field) {
-    ScriptEnvironment *unk = TaskManager_GetEnv(fieldSystem->taskman);
+    ScriptEnvironment *unk = TaskManager_GetEnvironment(fieldSystem->taskman);
     GF_ASSERT(unk != NULL);
     GF_ASSERT(unk->check == Unk80_10_C_MAGIC);
     return FieldSysGetAttrAddrInternal(unk, field);
 }
 
 void sub_0204031C(FieldSystem *fieldSystem) {
-    ScriptEnvironment *unk = TaskManager_GetEnv(fieldSystem->taskman);
+    ScriptEnvironment *unk = TaskManager_GetEnvironment(fieldSystem->taskman);
     if (sub_0203BC10(fieldSystem) == TRUE) {
         unk->scrctx_end_cb = sub_0203BD64;
     }
@@ -358,7 +358,7 @@ u16 *GetVarPointer(FieldSystem *fieldSystem, u16 varIdx) {
     }
 }
 
-u16 VarGet(FieldSystem *fieldSystem, u16 varIdx) {
+u16 FieldSystem_VarGet(FieldSystem *fieldSystem, u16 varIdx) {
     u16 *ptr = GetVarPointer(fieldSystem, varIdx);
     if (ptr != NULL) {
         varIdx = *ptr;
@@ -366,7 +366,7 @@ u16 VarGet(FieldSystem *fieldSystem, u16 varIdx) {
     return varIdx;
 }
 
-BOOL VarSet(FieldSystem *fieldSystem, u16 varIdx, u16 value) {
+BOOL FieldSystem_VarSet(FieldSystem *fieldSystem, u16 varIdx, u16 value) {
     u16 *ptr = GetVarPointer(fieldSystem, varIdx);
     if (ptr == NULL) {
         return FALSE;
@@ -375,20 +375,20 @@ BOOL VarSet(FieldSystem *fieldSystem, u16 varIdx, u16 value) {
     return TRUE;
 }
 
-u16 VarGetObjectEventGraphicsId(FieldSystem *fieldSystem, u16 varobjId) {
+u16 FieldSystem_VarGetObjectEventGraphicsId(FieldSystem *fieldSystem, u16 varobjId) {
     GF_ASSERT(varobjId < NUM_OBJ_GFX_VARS);
-    return VarGet(fieldSystem, VAR_OBJ_GFX_BASE + varobjId);
+    return FieldSystem_VarGet(fieldSystem, VAR_OBJ_GFX_BASE + varobjId);
 }
 
-BOOL FlagGet(FieldSystem *fieldSystem, u16 flagId) {
+BOOL FieldSystem_FlagGet(FieldSystem *fieldSystem, u16 flagId) {
     return CheckFlagInArray(Save_VarsFlags_Get(fieldSystem->saveData), flagId);
 }
 
-void FlagSet(FieldSystem *fieldSystem, u16 flagId) {
+void FieldSystem_FlagSet(FieldSystem *fieldSystem, u16 flagId) {
     return SetFlagInArray(Save_VarsFlags_Get(fieldSystem->saveData), flagId);
 }
 
-void FlagClear(FieldSystem *fieldSystem, u16 flagId) {
+void FieldSystem_FlagClear(FieldSystem *fieldSystem, u16 flagId) {
     return ClearFlagInArray(Save_VarsFlags_Get(fieldSystem->saveData), flagId);
 }
 
@@ -551,7 +551,7 @@ HiddenItemResponse* AllocAndFetchNearbyHiddenItems(FieldSystem *fieldSystem, Hea
     // To fix, subtract 1 from num_bgs in the condition clause
     for (i = 0; i < num_bgs; i++) {
         if (bgEvents[i].type == 2
-        && !FlagGet(fieldSystem, HiddenItemScriptNoToFlagId(bgEvents[i].scr))) {
+        && !FieldSystem_FlagGet(fieldSystem, HiddenItemScriptNoToFlagId(bgEvents[i].scr))) {
             if (bgEvents[i].x >= left
                && bgEvents[i].x <= right
                && bgEvents[i].y >= top
@@ -649,7 +649,7 @@ u16 GetMapSceneScriptId(FieldSystem *fieldSystem, u8 *header, u8 type) {
             return 0xFFFF;
         }
         var2 = header[2] + (header[3] << 8);
-        if (VarGet(fieldSystem, var1) == VarGet(fieldSystem, var2)) {
+        if (FieldSystem_VarGet(fieldSystem, var1) == FieldSystem_VarGet(fieldSystem, var2)) {
             return header[4] + (header[5] << 8);
         }
         header += 6;

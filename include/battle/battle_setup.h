@@ -27,12 +27,12 @@ struct BattleSetup { //declared in trainer_data.h
     Party* party[BATTLER_MAX]; // 4
     int winFlag; // 14
     int trainerId[BATTLER_MAX]; // 18
-    TRAINER trainer[BATTLER_MAX]; // 28
+    Trainer trainer[BATTLER_MAX]; // 28
     PlayerProfile *profile[BATTLER_MAX]; // f8
     Bag* bag; // 108
     void* unk_10C;
     Pokedex* pokedex; // 110
-    PC_STORAGE* storagePC; // 114
+    PCStorage* storagePC; // 114
     SOUND_CHATOT* chatot[BATTLER_MAX]; // 118
     void* unk_128;
     void* unk_12C;

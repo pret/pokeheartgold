@@ -542,7 +542,7 @@ _021EB5AC:
 	add r0, r6, #0
 	add r0, #0xf4
 	ldr r0, [r0]
-	bl sub_02024504
+	bl SpriteList_Delete
 	add r0, r6, #0
 	mov r1, #0
 	add r0, #0xf4
@@ -598,7 +598,7 @@ _021EB62E:
 _021EB638:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	pop {r3, r4, r5, pc}
 	nop
 _021EB644: .word 0x0013F000
@@ -2340,7 +2340,7 @@ ov01_021EC304: ; 0x021EC304
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r1, #4]
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r2, r0, #0
 	ldmia r2!, {r0, r1}
 	stmia r4!, {r0, r1}
@@ -3555,7 +3555,7 @@ _021ECBC6:
 	lsl r1, r5, #0x10
 	ldr r0, [r6, #4]
 	lsr r1, r1, #0x10
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	add r0, r7, #0
 	mov r1, #0x14
 	bl _u32_div_f
@@ -3671,7 +3671,7 @@ _021ECCC8:
 	str r0, [r5]
 	ldr r0, [r6, #4]
 	mov r1, #3
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 _021ECCD8:
 	add r4, r4, #1
 	cmp r4, #2
@@ -4072,7 +4072,7 @@ _021ECFBE:
 	lsl r1, r7, #0x10
 	ldr r0, [r4, #4]
 	lsr r1, r1, #0x10
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	add r0, r7, #1
 	neg r1, r0
 	str r1, [r5, #0x10]
@@ -4600,7 +4600,7 @@ _021ED42E:
 	ldr r0, [r4, #4]
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	ldr r0, [sp, #0xc]
 	add r1, r0, #1
 	ldr r0, [sp, #4]

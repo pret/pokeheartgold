@@ -5,7 +5,7 @@
 .public FreeToHeap
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public sub_02055218
 .public ov01_021EFB64
 .public ov01_021EFC04

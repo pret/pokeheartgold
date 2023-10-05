@@ -6,4 +6,4 @@ if [ "$1" = "" -o "$2" = "" ]; then
 	exit 0
 fi
 
-sed -i 's/\<'"$1"'\>/'"$2"'/' $(git grep -Ilwr "$1")
+sed -i 's/\<'"$1"'\>/'"$2"'/g' $(git grep -Ilwr "$1")

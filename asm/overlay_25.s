@@ -70,7 +70,7 @@ _0225990E:
 	add r1, r6, #0
 	add r2, r4, #0
 	add r3, r7, #0
-	bl sub_02050AAC
+	bl CallTask_020509F0
 	add sp, #0x184
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -196,7 +196,7 @@ ScrCmd_809: ; 0x02259A30
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl VarGet
+	bl FieldSystem_VarGet
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x80

@@ -55,13 +55,13 @@
 .public ScheduleBgTilemapBufferTransfer
 .public sub_0201F988
 .public AddTextPrinterParameterized2
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
 .public Sprite_Delete
-.public sub_020247D4
+.public Sprite_SetMatrix
 .public Set2dSpriteAnimSeqNo
-.public sub_020249B0
+.public Sprite_TickCellOrMulticellAnimation
 .public sub_02025224
 .public String_New
 .public String_Delete

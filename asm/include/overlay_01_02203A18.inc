@@ -15,7 +15,7 @@
 .public GF_AssertFail
 .public sub_02026E18
 .public TaskManager_Call
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public TaskManager_GetStatePtr
 .public sub_0205F0A8
 .public MapObject_GetID

@@ -31,7 +31,7 @@
 .public FillBgTilemapRect
 .public ScheduleBgTilemapBufferTransfer
 .public GX_EngineAToggleLayers
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
 .public Set2dSpriteAnimActiveFlag
@@ -88,7 +88,7 @@
 .public sub_020505C0
 .public sub_020505C8
 .public TaskManager_GetFieldSystem
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public sub_02055164
 .public sub_0205A904
 .public sub_0205AA6C

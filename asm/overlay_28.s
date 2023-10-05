@@ -469,7 +469,7 @@ ov28_0225D8D0: ; 0x0225D8D0
 	add r0, r4, #0
 	bl ov28_0225D910
 	ldr r0, [r4, #0x24]
-	bl sub_02024504
+	bl SpriteList_Delete
 	pop {r4, pc}
 	thumb_func_end ov28_0225D8D0
 
@@ -1984,7 +1984,7 @@ _0225E470:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	add r1, r7, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x19
 	mov r1, #0x87
 	lsl r0, r0, #4
@@ -2021,7 +2021,7 @@ _0225E4BC:
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
 	add r1, sp, #4
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x19
 	mov r1, #0x87
 	lsl r0, r0, #4
@@ -2541,7 +2541,7 @@ ov28_0225E8B8: ; 0x0225E8B8
 	bl sub_020252F4
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_020249A8
+	bl Get2dSpriteCurrentAnimSeqNo
 	add r7, r0, #0
 	cmp r4, #1
 	bne _0225E8E6

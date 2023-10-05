@@ -87,7 +87,7 @@ static BOOL Task_RunApplicationUntilComplete(TaskManager *taskManager) {
     struct UnkTaskEnv *env;
 
     fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    env = TaskManager_GetEnv(taskManager);
+    env = TaskManager_GetEnvironment(taskManager);
 
     switch (env->state) {
     case 0:
@@ -118,7 +118,7 @@ FieldSystem *TaskManager_GetFieldSystem(TaskManager *taskManager) {
     return taskManager->fieldSystem;
 }
 
-void *TaskManager_GetEnv(TaskManager *taskManager) {
+void *TaskManager_GetEnvironment(TaskManager *taskManager) {
     return taskManager->env;
 }
 

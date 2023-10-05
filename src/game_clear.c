@@ -115,7 +115,7 @@ BOOL sub_0205298C(TaskManager *taskman) {
         }
         break;
     case 3:
-        sub_020552A4(taskman);
+        CallTask_RestoreOverworld(taskman);
         *state += 1;
         break;
     case 4:
@@ -152,7 +152,7 @@ static void AddHallOfFameEntry(FieldSystem *fieldSystem, BOOL gameCleared) {
 // the game and launches the credits.
 static BOOL Task_GameClear(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
-    GameClearWork *env = TaskManager_GetEnv(taskman);
+    GameClearWork *env = TaskManager_GetEnvironment(taskman);
     int *state = TaskManager_GetStatePtr(taskman);
 
     switch (*state) {

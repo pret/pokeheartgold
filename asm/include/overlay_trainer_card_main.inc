@@ -108,14 +108,14 @@
 .public GX_EngineAToggleLayers
 .public GX_DisableEngineBLayers
 .public GX_EngineBToggleLayers
-.public sub_02024504
+.public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public Set2dSpriteAnimSeqNo
-.public sub_02024964
-.public sub_02024ADC
+.public Sprite_ResetAnimCtrlState
+.public Sprite_SetDrawPriority
 .public sub_02025320
 .public System_GetTouchNew
 .public GF_AssertFail

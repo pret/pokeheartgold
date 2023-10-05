@@ -37,14 +37,14 @@
 .public TaskManager_Call
 .public FieldSystem_ApplicationIsRunning
 .public TaskManager_GetFieldSystem
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public sub_020537A8
 .public GetFirstAliveMonInParty_CrashIfNone
 .public sub_02054EB0
 .public sub_0205525C
-.public sub_020552A4
+.public CallTask_RestoreOverworld
 .public PalleteFadeUntilFinished
-.public sub_0205532C
+.public CallTask_FadeFromBlack
 .public PlayerAvatar_GetFacingDirection
 .public GetPlayerXCoord
 .public GetPlayerYCoord

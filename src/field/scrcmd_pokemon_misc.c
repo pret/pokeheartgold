@@ -86,7 +86,7 @@ static void ov01_02201088(struct ListMenu *listMenu, s32 unused1, u8 unused2);
 static void ov01_022010CC(SysTask *sysTask, void *work);
 static void ov01_0220116C(SCR_648_STRUCT *unkPtr);
 static void GetHiddenPowerPowerType(Pokemon *mon, s32 *power, s32 *type);
-static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectMan, u8 unkA, u16 species, u16 form, u32 gender, u32 x, u32 y, u32 mapId);
+static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectManager, u8 unkA, u16 species, u16 form, u32 gender, u32 x, u32 y, u32 mapId);
 
 extern u16 ov01_02209AE0[10];
 
@@ -606,7 +606,7 @@ BOOL ScrCmd_GetPartyMonForm(ScriptContext *ctx) {
 BOOL ScrCmd_699(ScriptContext *ctx) {
     u32 unkVar;
     FieldSystem *fieldSystem;
-    MapObjectManager *mapObjectMan;
+    MapObjectManager *mapObjectManager;
     LocalMapObject *playerObj;
     LocalMapObject *curObj;
     Sprite *sprite;
@@ -616,14 +616,14 @@ BOOL ScrCmd_699(ScriptContext *ctx) {
     unkVar = 0;
 
     fieldSystem = ctx->fieldSystem;
-    mapObjectMan = fieldSystem->mapObjectMan;
+    mapObjectManager = fieldSystem->mapObjectManager;
 
     playerObj  = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
     MapObject_GetPositionVec(playerObj, &vec);
 
     height = vec.y;
 
-    while (sub_0205EEF4(mapObjectMan, &curObj, &unkVar, 1) == TRUE) {
+    while (sub_0205EEF4(mapObjectManager, &curObj, &unkVar, 1) == TRUE) {
         if (curObj == playerObj) continue;
         MapObject_SetFlagsBits(curObj, MAPOBJECTFLAG_UNK13);
         if (MapObject_TestFlagsBits(curObj, MAPOBJECTFLAG_UNK12) == TRUE) {
@@ -644,16 +644,16 @@ BOOL ScrCmd_699(ScriptContext *ctx) {
 BOOL ScrCmd_700(ScriptContext *ctx) {
     u32 index = 0;
     FieldSystem *fieldSystem;
-    MapObjectManager *mapObjectMan;
+    MapObjectManager *mapObjectManager;
     LocalMapObject *playerObj;
     LocalMapObject *curObj;
 
     fieldSystem = ctx->fieldSystem;
-    mapObjectMan = fieldSystem->mapObjectMan;
+    mapObjectManager = fieldSystem->mapObjectManager;
 
     playerObj  = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
 
-    while (sub_0205EEF4(mapObjectMan, &curObj, &index, MAPOBJECTFLAG_ACTIVE) == TRUE) {
+    while (sub_0205EEF4(mapObjectManager, &curObj, &index, MAPOBJECTFLAG_ACTIVE) == TRUE) {
         if (curObj == playerObj) continue;
         MapObject_ClearFlagsBits(curObj, MAPOBJECTFLAG_UNK13);
     }
@@ -714,8 +714,8 @@ BOOL ScrCmd_775(ScriptContext *ctx) {
     u32 objIdA = ScriptGetVar(ctx);
     u32 objIdB = ScriptGetVar(ctx);
 
-    LocalMapObject *objA = GetMapObjectByID(ctx->fieldSystem->mapObjectMan, objIdA);
-    LocalMapObject *objB = GetMapObjectByID(ctx->fieldSystem->mapObjectMan, objIdB);
+    LocalMapObject *objA = GetMapObjectByID(ctx->fieldSystem->mapObjectManager, objIdA);
+    LocalMapObject *objB = GetMapObjectByID(ctx->fieldSystem->mapObjectManager, objIdB);
 
     ov02_022469B4(ctx->fieldSystem->taskman, objA, objB);
 
@@ -929,7 +929,7 @@ BOOL ScrCmd_CreatePokeathlonFriendshipRoomStatues(ScriptContext *ctx) {
     SavePokeathlonFriendshipRecords *unkPtr = sub_02031B00(fieldSystem->saveData);
 
     for (i = 0; i < 3; i++) {
-        LocalMapObject *mapObj = GetMapObjectByID(fieldSystem->mapObjectMan, 0xf6 + i);
+        LocalMapObject *mapObj = GetMapObjectByID(fieldSystem->mapObjectManager, 0xf6 + i);
 
         if (mapObj) {
             DeleteMapObject(mapObj);
@@ -938,13 +938,13 @@ BOOL ScrCmd_CreatePokeathlonFriendshipRoomStatues(ScriptContext *ctx) {
         species = unkPtr->friendshipRoomStatues[i].species;
 
         if (species != SPECIES_NONE && species <= SPECIES_ARCEUS) {
-            ov01_02201F98(fieldSystem->mapObjectMan, (u8) i, species, unkPtr->friendshipRoomStatues[i].form, unkPtr->friendshipRoomStatues[i].gender, sFriendshipRoomStatuesPositions[i][0], sFriendshipRoomStatuesPositions[i][1], fieldSystem->location->mapId);
+            ov01_02201F98(fieldSystem->mapObjectManager, (u8) i, species, unkPtr->friendshipRoomStatues[i].form, unkPtr->friendshipRoomStatues[i].gender, sFriendshipRoomStatuesPositions[i][0], sFriendshipRoomStatuesPositions[i][1], fieldSystem->location->mapId);
         }
     }
     return TRUE;
 }
 
-static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectMan, u8 unkA, u16 species, u16 form, u32 gender, u32 x, u32 y, u32 mapId) {
+static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectManager, u8 unkA, u16 species, u16 form, u32 gender, u32 x, u32 y, u32 mapId) {
     LocalMapObject *mapObj;
     u32 spriteId;
     u32  size;
@@ -952,7 +952,7 @@ static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectMan, u8 unkA, u1
     spriteId = FollowingPokemon_GetSpriteID(species, form, gender) << 1;
     size = GetFollowPokeSizeParamBySpecies(species)*3 + unkA;
 
-    mapObj = CreateSpecialFieldObjectEx(mapObjectMan, x, y, DIR_SOUTH, size + 0x19f, 0, mapId, 0, 0, spriteId);
+    mapObj = CreateSpecialFieldObjectEx(mapObjectManager, x, y, DIR_SOUTH, size + 0x19f, 0, mapId, 0, 0, spriteId);
 
     if (!mapObj) {
         GF_AssertFail();
@@ -1442,7 +1442,7 @@ BOOL ScrCmd_BugContestAction(ScriptContext *ctx) {
 
 BOOL ScrCmd_BufferBugContestWinner(ScriptContext *ctx) {
     MessageFormat **msgfmt;
-    BUGCONTEST *bugContest;
+    BugContest *bugContest;
 
     msgfmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     bugContest = FieldSystem_BugContest_Get(ctx->fieldSystem);
@@ -1453,7 +1453,7 @@ BOOL ScrCmd_BufferBugContestWinner(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_JudgeBugContest(ScriptContext *ctx) {
-    BUGCONTEST *bugContest;
+    BugContest *bugContest;
     u16 *prize;
     u16 *placement;
     u16 *species;
@@ -1479,7 +1479,7 @@ BOOL ScrCmd_JudgeBugContest(ScriptContext *ctx) {
 
 BOOL ScrCmd_BufferBugContestMonNick(ScriptContext *ctx) {
     MessageFormat **msgfmt;
-    BUGCONTEST *bugContest;
+    BugContest *bugContest;
     u32 script_index;
 
     msgfmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
@@ -1494,7 +1494,7 @@ BOOL ScrCmd_BufferBugContestMonNick(ScriptContext *ctx) {
 
 BOOL ScrCmd_BugContestGetTimeLeft(ScriptContext *ctx) {
     MessageFormat **msgfmt;
-    BUGCONTEST *bugContest;
+    BugContest *bugContest;
     u32 script_index;
     u32 timeLeft;
 
@@ -1515,7 +1515,7 @@ BOOL ScrCmd_BugContestGetTimeLeft(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_IsBugContestantRegistered(ScriptContext *ctx) {
-    BUGCONTEST *bugContest = FieldSystem_BugContest_Get(ctx->fieldSystem);
+    BugContest *bugContest = FieldSystem_BugContest_Get(ctx->fieldSystem);
     u32 id = ScriptGetVar(ctx);
     u16 *ptr = ScriptGetVarPointer(ctx);
     *ptr = BugContest_ContestantIsRegistered(bugContest, id);

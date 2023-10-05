@@ -64,6 +64,7 @@ typedef enum Terrain {
 
 // Battle outcome
 // Used with BattleSetup::winFlag
+#define BATTLE_OUTCOME_NONE                 0
 #define BATTLE_OUTCOME_WIN                  1
 #define BATTLE_OUTCOME_LOSE                 2
 #define BATTLE_OUTCOME_DRAW                 3
@@ -72,6 +73,7 @@ typedef enum Terrain {
 #define BATTLE_OUTCOME_FOE_FLED             6
 
 //Battle Type
+#define BATTLE_TYPE_NONE                     0
 #define BATTLE_TYPE_TRAINER                 (1 << 0)
 #define BATTLE_TYPE_DOUBLES                 (1 << 1)
 #define BATTLE_TYPE_LINK                    (1 << 2)

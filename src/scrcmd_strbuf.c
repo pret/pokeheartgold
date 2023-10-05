@@ -179,7 +179,7 @@ BOOL ScrCmd_BufferPartyMonNick(ScriptContext* ctx) {
 
 BOOL ScrCmd_BufferBoxMonNick(ScriptContext* ctx) {
     FieldSystem* fieldSystem = ctx->fieldSystem;
-    PC_STORAGE* pc = SaveArray_PCStorage_Get(fieldSystem->saveData);
+    PCStorage* pc = SaveArray_PCStorage_Get(fieldSystem->saveData);
     MessageFormat** msg_fmt = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 box_mon_slot = ScriptGetVar(ctx);

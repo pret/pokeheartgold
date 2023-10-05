@@ -78,7 +78,7 @@ sub_02097C50: ; 0x02097C50
 	bl TaskManager_GetFieldSystem
 	add r6, r0, #0
 	add r0, r5, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r1, [r4, #0x50]
 	cmp r1, #3
@@ -111,7 +111,7 @@ _02097C8A:
 	b _02097CB0
 _02097C9A:
 	add r0, r5, #0
-	bl sub_020552A4
+	bl CallTask_RestoreOverworld
 	ldr r0, [r4, #0x50]
 	add r0, r0, #1
 	str r0, [r4, #0x50]
@@ -152,7 +152,7 @@ sub_02097CD8: ; 0x02097CD8
 	bl TaskManager_GetFieldSystem
 	add r5, r0, #0
 	add r0, r4, #0
-	bl TaskManager_GetEnv
+	bl TaskManager_GetEnvironment
 	add r4, r0, #0
 	ldr r0, [r4, #8]
 	ldr r1, [r4]

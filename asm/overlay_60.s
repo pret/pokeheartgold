@@ -2677,7 +2677,7 @@ _021E6EBC: .word _021EAFF8
 ov60_021E6EC0: ; 0x021E6EC0
 	push {r3, lr}
 	ldr r0, [r0, #0x10]
-	bl sub_02024504
+	bl SpriteList_Delete
 	bl OamManager_Free
 	bl sub_0202168C
 	bl sub_02022608
@@ -6294,7 +6294,7 @@ _021E8B14:
 	strb r0, [r4, #6]
 	strb r0, [r4, #7]
 	ldr r0, [r4, #0x1c]
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	ldr r2, [r0]
 	asr r1, r2, #0xb
 	lsr r1, r1, #0x14
@@ -6394,13 +6394,13 @@ _021E8BD0:
 	lsl r0, r7, #0xc
 	str r0, [sp, #8]
 	ldr r0, [r5, #0x1c]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r5, #0x20]
 	add r1, sp, #4
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r5, #0x24]
 	add r1, sp, #4
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

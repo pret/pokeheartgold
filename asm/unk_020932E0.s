@@ -109,7 +109,7 @@ _020933AA:
 	cmp r6, #6
 	blt _020933AA
 	ldr r0, [r5, #0x18]
-	bl sub_02024504
+	bl SpriteList_Delete
 	ldr r0, _02093430 ; =0x000046A4
 	ldr r0, [r5, r0]
 	bl FreeToHeap
@@ -626,7 +626,7 @@ _020937EC:
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	add r1, sp, #4
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, _02093880 ; =0x000046B8
 	mov r1, #1
 	ldr r0, [r5, r0]
@@ -1129,7 +1129,7 @@ _02093C0C:
 	ldr r0, _02093CD4 ; =0x000007E8
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	ldr r0, _02093CD4 ; =0x000007E8
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -1137,7 +1137,7 @@ _02093C0C:
 	ldr r0, _02093CD4 ; =0x000007E8
 	mov r1, #6
 	ldr r0, [r4, r0]
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	mov r0, #0x18
 	str r0, [sp]
 	ldr r0, _02093CD8 ; =0x000007E4
@@ -1487,7 +1487,7 @@ _02093EBE:
 	ldr r0, [r5, r0]
 	add r1, r7, #0
 	ldr r0, [r0, r6]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x8d
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -1640,7 +1640,7 @@ sub_02094004: ; 0x02094004
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
 	mov r1, #3
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	ldrb r0, [r5, #0x13]
 	cmp r0, #0
 	bne _02094048
@@ -1734,7 +1734,7 @@ _020940C0:
 	ldr r0, [r5, r0]
 	mov r1, #4
 	ldr r0, [r0, r4]
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	ldrb r0, [r5, #0xd]
 	add r7, r7, #1
 	add r6, #0x24
@@ -1756,12 +1756,12 @@ _0209410C:
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
 	mov r1, #1
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	mov r0, #0x23
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0209413C: .word 0x000007E4
@@ -1825,7 +1825,7 @@ sub_0209417C: ; 0x0209417C
 	bl Set2dSpriteAnimSeqNo
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	ldr r1, [sp, #0x48]
 	add r0, r4, #0
 	bl Set2dSpriteVisibleFlag
@@ -2008,7 +2008,7 @@ _0209430C:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	mov r0, #0x66
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -2018,7 +2018,7 @@ _0209430C:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #6
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	ldr r0, [sp, #0x14]
 	add r7, r7, #4
 	add r0, r0, #1
@@ -2071,7 +2071,7 @@ _0209438E:
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
 	mov r1, #1
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	mov r1, #0x7b
 	ldr r0, [sp, #4]
 	lsl r1, r1, #4
@@ -2083,7 +2083,7 @@ _0209438E:
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
 	mov r1, #8
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	mov r1, #0x7b
 	ldr r0, [sp, #4]
 	lsl r1, r1, #4
@@ -2562,12 +2562,12 @@ sub_02094794: ; 0x02094794
 	mov r0, #0x66
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r1, r0, #0
 	mov r0, #0x23
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r5, #0
 	add r1, r4, #0
 	bl sub_020947C0
@@ -2588,7 +2588,7 @@ sub_020947C0: ; 0x020947C0
 	ldr r0, [r1, r0]
 	cmp r0, #0
 	beq _020947E4
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #0
 	bne _020947E4
 	mov r0, #3
@@ -2682,12 +2682,12 @@ sub_02094860: ; 0x02094860
 	add r1, r5, r0
 	ldr r0, _02094890 ; =0x000007E8
 	ldr r0, [r1, r0]
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r1, r0, #0
 	mov r0, #0x23
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r6, #0
 _0209488E:
 	pop {r4, r5, r6, pc}
@@ -2711,7 +2711,7 @@ _020948A0:
 	ldr r0, [r1, r0]
 	cmp r0, #0
 	beq _020948BA
-	bl sub_020248B8
+	bl Get2dSpriteVisibleFlag
 	cmp r0, #0
 	bne _020948BA
 	mov r0, #3
@@ -2760,7 +2760,7 @@ _02094900:
 	mov r0, #0x34
 	mul r0, r6
 	ldr r0, [r7, r0]
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r3, r0, #0
 	ldr r0, _020949DC ; =0x00004688
 	add r2, r5, r0
@@ -2781,7 +2781,7 @@ _02094900:
 	mul r0, r1
 	ldr r0, [r2, r0]
 	mov r1, #3
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	cmp r4, #1
 	bne _020949D0
 	ldr r0, _020949E0 ; =0x000046A0
@@ -2791,7 +2791,7 @@ _02094900:
 	mov r0, #0x34
 	mul r0, r1
 	ldr r0, [r2, r0]
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r6, r0, #0
 	mov r3, #0
 	mov r1, #0x83
@@ -2838,7 +2838,7 @@ _0209495C:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	add r1, r6, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x7b
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -2905,12 +2905,12 @@ sub_020949F4: ; 0x020949F4
 	mul r0, r1
 	ldr r0, [r3, r0]
 	add r1, r2, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x23
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
 	add r1, sp, #0x14
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r1, [sp, #4]
 	ldr r0, _02094A6C ; =0x00004694
 	str r1, [r4, r0]
@@ -3061,7 +3061,7 @@ _02094B5C:
 	sub r1, #0x18
 	ldr r0, [r3, r0]
 	add r1, r4, r1
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, _02094BFC ; =0x000046A0
 	ldr r2, [r4, r0]
 	sub r0, #0x1c
@@ -3070,12 +3070,12 @@ _02094B5C:
 	mul r0, r1
 	ldr r0, [r2, r0]
 	mov r1, #6
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	mov r0, #0x23
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x23
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
@@ -3170,7 +3170,7 @@ sub_02094C08: ; 0x02094C08
 	str r0, [r4, #4]
 	ldr r1, [r4, #4]
 	add r0, r5, #0
-	bl sub_02024A14
+	bl Sprite_SetPalIndex
 	pop {r3, r4, r5, r6, r7, pc}
 _02094C64:
 	mov r0, #0
@@ -3590,11 +3590,11 @@ _02094FBA:
 	add r1, r5, r1
 	sub r0, #0xe8
 	ldr r0, [r1, r0]
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r1, r0, #0
 	ldr r0, _02095014 ; =0x000008C4
 	ldr r0, [r5, r0]
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, _02095014 ; =0x000008C4
 	mov r1, #1
 	ldr r0, [r5, r0]
@@ -4019,7 +4019,7 @@ _020952C8:
 	mul r1, r2
 	ldr r0, [r0, r1]
 	add r1, r7, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, _02095350 ; =0x00004694
 	mov r1, #0xd4
 	str r1, [r4, r0]
@@ -4043,7 +4043,7 @@ _0209532C:
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
 	add r1, sp, #0xc
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add r0, r4, #0
 	bl sub_020956B8
 _02095342:
@@ -4152,12 +4152,12 @@ _020953B4:
 	mul r1, r2
 	ldr r0, [r0, r1]
 	add r1, r7, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	mov r0, #0x23
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
 	add r1, sp, #0x18
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, _020954B8 ; =0x000046B8
 	lsl r2, r5, #0x18
 	ldr r0, [r4, r0]
@@ -4193,7 +4193,7 @@ _02095442:
 	mov r0, #0x34
 	mul r0, r1
 	ldr r0, [r2, r0]
-	bl sub_020248AC
+	bl Sprite_GetMatrixPtr
 	add r5, r0, #0
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -4214,7 +4214,7 @@ _02095442:
 	mul r0, r1
 	ldr r0, [r3, r0]
 	add r1, r2, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, _020954C4 ; =0x000046BC
 	mov r5, #1
 	str r5, [r4, r0]
@@ -4286,7 +4286,7 @@ _020954FE:
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, _0209553C ; =0x000005DC
 	bl PlaySE
 _02095532:
@@ -4353,7 +4353,7 @@ _02095550:
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {r4, r5, pc}
 _020955BE:
@@ -4435,7 +4435,7 @@ _02095604:
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	add sp, #0xc
 	pop {r4, r5, pc}
 _0209566E:

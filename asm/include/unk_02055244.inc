@@ -11,9 +11,9 @@
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetStatePtr
 .public sub_0205525C
-.public sub_020552A4
+.public CallTask_RestoreOverworld
 .public PalleteFadeUntilFinished
-.public sub_0205532C
+.public CallTask_FadeFromBlack
 .public sub_020553B0
 .public sub_02055408
 .public ov01_021EFAF8

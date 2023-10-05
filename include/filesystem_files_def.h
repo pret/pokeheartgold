@@ -180,7 +180,7 @@ typedef enum NarcId
     NARC_a_1_7_2                                            = 172,
     NARC_a_1_7_3                                            = 173,
     NARC_a_1_7_4                                            = 174,
-    NARC_a_1_7_5                                            = 175,
+    NARC_data_resdat                                        = 175,
     NARC_a_1_7_6                                            = 176,
     NARC_a_1_7_7                                            = 177,
     NARC_a_1_7_8                                            = 178,

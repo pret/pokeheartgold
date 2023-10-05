@@ -109,7 +109,7 @@ static void DrawBlackoutMessage(FieldSystem *fieldSystem, TaskManager *taskManag
 }
 
 static BOOL FieldTask_ShowPrintedMessage(TaskManager *taskManager) {
-    struct BlackoutScreenWork *work = TaskManager_GetEnv(taskManager);
+    struct BlackoutScreenWork *work = TaskManager_GetEnvironment(taskManager);
     switch (work->state) {
     case 0:
         BeginNormalPaletteFade(3, 1, 43, RGB_WHITE, 8, 1, (HeapID)32);
@@ -201,7 +201,7 @@ BOOL FieldTask_BlackOut(TaskManager *taskManager) {
         (*state)++;
         break;
     case 4:
-        sub_020552A4(taskManager);
+        CallTask_RestoreOverworld(taskManager);
         (*state)++;
         break;
     case 5:

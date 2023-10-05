@@ -48,7 +48,7 @@ BattleSetup* BattleSetup_New(HeapID heapId, u32 battleTypeFlags) {
     setup->weatherType = 0;
     for (i = 0; i < BATTLER_MAX; ++i) {
         setup->trainerId[i] = 0;
-        MI_CpuClear32(&setup->trainer[i], sizeof(TRAINER));
+        MI_CpuClear32(&setup->trainer[i], sizeof(Trainer));
         setup->party[i] = SaveArray_Party_Alloc(heapId);
         setup->profile[i] = PlayerProfile_New(heapId);
         setup->chatot[i] = Chatot_New(heapId);
@@ -384,7 +384,7 @@ void sub_020520B0(BattleSetup* setup, FieldSystem *fieldSystem, Party *party, u8
     if (sub_0203401C(sub_0203993C())) {
         int avatar = PlayerProfile_GetAvatar(profile);
         int gender = PlayerProfile_GetTrainerGender(profile);
-        setup->trainer[BATTLER_PLAYER].trainerClass = GetUnionRoomAvatarAttrBySprite(gender, avatar, 1);
+        setup->trainer[BATTLER_PLAYER].data.trainerClass = GetUnionRoomAvatarAttrBySprite(gender, avatar, 1);
         CopyU16StringArray(setup->trainer[BATTLER_PLAYER].name, PlayerProfile_GetNamePtr(setup->profile[BATTLER_PLAYER]));
         setup->trainer[BATTLER_PLAYER2] = setup->trainer[BATTLER_PLAYER];
     } else {
@@ -569,7 +569,7 @@ BOOL IsBattleResultLatiCaught(u32 result) {
 }
 
 void BattleSetup_SetAllySideBattlersToPlayer(BattleSetup* setup) {
-    setup->trainer[BATTLER_PLAYER].trainerClass = PlayerProfile_GetTrainerGender(setup->profile[BATTLER_PLAYER]);
+    setup->trainer[BATTLER_PLAYER].data.trainerClass = PlayerProfile_GetTrainerGender(setup->profile[BATTLER_PLAYER]);
     CopyU16StringArray(setup->trainer[BATTLER_PLAYER].name, PlayerProfile_GetNamePtr(setup->profile[BATTLER_PLAYER]));
     setup->trainer[BATTLER_PLAYER2] = setup->trainer[BATTLER_PLAYER];
 }

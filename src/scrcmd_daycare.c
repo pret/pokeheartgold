@@ -157,7 +157,7 @@ BOOL ScrCmd_UpdateDaycareMonObjects(ScriptContext* ctx) {
     daycare = Save_Daycare_Get(fieldSystem->saveData);
 
     for (s32 dc_mon_idx = 0, y = 5, x = 8; dc_mon_idx < 2; dc_mon_idx++, y += 4, x += 2) {
-        LocalMapObject* mon_map_object = GetMapObjectByID(fieldSystem->mapObjectMan, obj_daycare_poke_1 + dc_mon_idx);
+        LocalMapObject* mon_map_object = GetMapObjectByID(fieldSystem->mapObjectManager, obj_daycare_poke_1 + dc_mon_idx);
         if (mon_map_object) {
             DeleteMapObject(mon_map_object);
         }
@@ -172,7 +172,7 @@ BOOL ScrCmd_UpdateDaycareMonObjects(ScriptContext* ctx) {
         u32 gender = GetBoxMonData(boxMon, MON_DATA_GENDER, NULL);
         BOOL shiny = BoxMonIsShiny(boxMon);
 
-        CreateDaycareMonSpriteInternal(fieldSystem->mapObjectMan, (u8)dc_mon_idx, species, form, gender, 1, x, y, fieldSystem->location->mapId, shiny);
+        CreateDaycareMonSpriteInternal(fieldSystem->mapObjectManager, (u8)dc_mon_idx, species, form, gender, 1, x, y, fieldSystem->location->mapId, shiny);
     }
 
     return FALSE;

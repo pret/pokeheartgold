@@ -1370,10 +1370,10 @@ _0225F9EA:
 	bl Set2dSpriteVisibleFlag
 	ldr r0, [r5]
 	mov r1, #0x10
-	bl sub_02024ADC
+	bl Sprite_SetDrawPriority
 	ldr r0, [r5]
 	mov r1, #1
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

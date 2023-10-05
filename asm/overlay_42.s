@@ -395,7 +395,7 @@ _02227346:
 	ldrsh r1, [r6, r1]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	add r0, r5, r7
 	ldr r0, [r0, #0x20]
 	cmp r0, #1
@@ -473,7 +473,7 @@ _022273E2:
 	ldrsh r1, [r6, r1]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_02024A04
+	bl Sprite_SetPriority
 	b _022273FC
 _022273F8:
 	mov r0, #0
@@ -528,7 +528,7 @@ ov42_02227434: ; 0x02227434
 	str r0, [sp, #8]
 	ldr r0, [r4, #4]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	beq _02227470
@@ -544,7 +544,7 @@ ov42_02227434: ; 0x02227434
 	str r0, [sp, #4]
 	ldr r0, [r4, #8]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 _02227470:
 	add sp, #0xc
 	pop {r3, r4, pc}
@@ -552,18 +552,18 @@ _02227470:
 
 	thumb_func_start ov42_02227474
 ov42_02227474: ; 0x02227474
-	ldr r3, _0222747C ; =sub_02024ADC
+	ldr r3, _0222747C ; =Sprite_SetDrawPriority
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_0222747C: .word sub_02024ADC
+_0222747C: .word Sprite_SetDrawPriority
 	thumb_func_end ov42_02227474
 
 	thumb_func_start ov42_02227480
 ov42_02227480: ; 0x02227480
 	push {r3, lr}
 	ldr r0, [r0, #4]
-	bl sub_02024AF8
+	bl Sprite_GetDrawPriority
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	pop {r3, pc}
@@ -589,11 +589,11 @@ _022274A8:
 
 	thumb_func_start ov42_022274AC
 ov42_022274AC: ; 0x022274AC
-	ldr r3, _022274B4 ; =sub_020248B8
+	ldr r3, _022274B4 ; =Get2dSpriteVisibleFlag
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_022274B4: .word sub_020248B8
+_022274B4: .word Get2dSpriteVisibleFlag
 	thumb_func_end ov42_022274AC
 
 	thumb_func_start ov42_022274B8
@@ -612,20 +612,20 @@ ov42_022274C0: ; 0x022274C0
 
 	thumb_func_start ov42_022274C4
 ov42_022274C4: ; 0x022274C4
-	ldr r3, _022274CC ; =sub_020249D4
+	ldr r3, _022274CC ; =Sprite_SetAnimCtrlCurrentFrame
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_022274CC: .word sub_020249D4
+_022274CC: .word Sprite_SetAnimCtrlCurrentFrame
 	thumb_func_end ov42_022274C4
 
 	thumb_func_start ov42_022274D0
 ov42_022274D0: ; 0x022274D0
-	ldr r3, _022274D8 ; =sub_020249F8
+	ldr r3, _022274D8 ; =Sprite_GetAnimCtrlCurrentFrame
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_022274D8: .word sub_020249F8
+_022274D8: .word Sprite_GetAnimCtrlCurrentFrame
 	thumb_func_end ov42_022274D0
 
 	thumb_func_start ov42_022274DC
@@ -645,7 +645,7 @@ ov42_022274DC: ; 0x022274DC
 	str r1, [sp, #8]
 	ldr r0, [r0, #8]
 	add r1, sp, #0
-	bl sub_020247D4
+	bl Sprite_SetMatrix
 _022274FE:
 	add sp, #0xc
 	pop {pc}
@@ -1756,34 +1756,34 @@ _02227D44: .word ov42_02229B48
 
 	thumb_func_start ov42_02227D48
 ov42_02227D48: ; 0x02227D48
-	ldr r3, _02227D50 ; =sub_02024950
+	ldr r3, _02227D50 ; =TryChange2dSpriteAnimSeqNo
 	str r1, [r0, #0x10]
 	ldr r0, [r0, #4]
 	bx r3
 	.balign 4, 0
-_02227D50: .word sub_02024950
+_02227D50: .word TryChange2dSpriteAnimSeqNo
 	thumb_func_end ov42_02227D48
 
 	thumb_func_start ov42_02227D54
 ov42_02227D54: ; 0x02227D54
-	ldr r3, _02227D60 ; =sub_02024950
+	ldr r3, _02227D60 ; =TryChange2dSpriteAnimSeqNo
 	str r1, [r0, #0x10]
 	ldr r0, [r0, #4]
 	mov r1, #4
 	bx r3
 	nop
-_02227D60: .word sub_02024950
+_02227D60: .word TryChange2dSpriteAnimSeqNo
 	thumb_func_end ov42_02227D54
 
 	thumb_func_start ov42_02227D64
 ov42_02227D64: ; 0x02227D64
-	ldr r3, _02227D70 ; =sub_02024950
+	ldr r3, _02227D70 ; =TryChange2dSpriteAnimSeqNo
 	str r1, [r0, #0x10]
 	ldr r0, [r0, #4]
 	add r1, r1, #5
 	bx r3
 	nop
-_02227D70: .word sub_02024950
+_02227D70: .word TryChange2dSpriteAnimSeqNo
 	thumb_func_end ov42_02227D64
 
 	thumb_func_start ov42_02227D74
@@ -1794,86 +1794,86 @@ ov42_02227D74: ; 0x02227D74
 	ldr r1, [r5, #0x10]
 	ldr r0, [r5, #4]
 	add r1, r1, #5
-	bl sub_02024950
+	bl TryChange2dSpriteAnimSeqNo
 	str r4, [r5, #0x10]
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov42_02227D74
 
 	thumb_func_start ov42_02227D88
 ov42_02227D88: ; 0x02227D88
-	ldr r3, _02227D94 ; =sub_02024950
+	ldr r3, _02227D94 ; =TryChange2dSpriteAnimSeqNo
 	str r1, [r0, #0x10]
 	ldr r0, [r0, #4]
 	add r1, #9
 	bx r3
 	nop
-_02227D94: .word sub_02024950
+_02227D94: .word TryChange2dSpriteAnimSeqNo
 	thumb_func_end ov42_02227D88
 
 	thumb_func_start ov42_02227D98
 ov42_02227D98: ; 0x02227D98
-	ldr r3, _02227DA4 ; =sub_02024950
+	ldr r3, _02227DA4 ; =TryChange2dSpriteAnimSeqNo
 	str r1, [r0, #0x10]
 	ldr r0, [r0, #4]
 	add r1, r1, #5
 	bx r3
 	nop
-_02227DA4: .word sub_02024950
+_02227DA4: .word TryChange2dSpriteAnimSeqNo
 	thumb_func_end ov42_02227D98
 
 	thumb_func_start ov42_02227DA8
 ov42_02227DA8: ; 0x02227DA8
-	ldr r3, _02227DB4 ; =sub_02024950
+	ldr r3, _02227DB4 ; =TryChange2dSpriteAnimSeqNo
 	str r1, [r0, #0x10]
 	ldr r0, [r0, #4]
 	add r1, r1, #5
 	bx r3
 	nop
-_02227DB4: .word sub_02024950
+_02227DB4: .word TryChange2dSpriteAnimSeqNo
 	thumb_func_end ov42_02227DA8
 
 	thumb_func_start ov42_02227DB8
 ov42_02227DB8: ; 0x02227DB8
-	ldr r3, _02227DC4 ; =sub_02024950
+	ldr r3, _02227DC4 ; =TryChange2dSpriteAnimSeqNo
 	str r1, [r0, #0x10]
 	ldr r0, [r0, #4]
 	add r1, r1, #5
 	bx r3
 	nop
-_02227DC4: .word sub_02024950
+_02227DC4: .word TryChange2dSpriteAnimSeqNo
 	thumb_func_end ov42_02227DB8
 
 	thumb_func_start ov42_02227DC8
 ov42_02227DC8: ; 0x02227DC8
-	ldr r3, _02227DD4 ; =sub_02024950
+	ldr r3, _02227DD4 ; =TryChange2dSpriteAnimSeqNo
 	str r1, [r0, #0x10]
 	ldr r0, [r0, #4]
 	add r1, r1, #5
 	bx r3
 	nop
-_02227DD4: .word sub_02024950
+_02227DD4: .word TryChange2dSpriteAnimSeqNo
 	thumb_func_end ov42_02227DC8
 
 	thumb_func_start ov42_02227DD8
 ov42_02227DD8: ; 0x02227DD8
-	ldr r3, _02227DE4 ; =sub_020249B0
+	ldr r3, _02227DE4 ; =Sprite_TickCellOrMulticellAnimation
 	mov r1, #2
 	ldr r0, [r0, #4]
 	lsl r1, r1, #0xc
 	bx r3
 	nop
-_02227DE4: .word sub_020249B0
+_02227DE4: .word Sprite_TickCellOrMulticellAnimation
 	thumb_func_end ov42_02227DD8
 
 	thumb_func_start ov42_02227DE8
 ov42_02227DE8: ; 0x02227DE8
-	ldr r3, _02227DF4 ; =sub_020249B0
+	ldr r3, _02227DF4 ; =Sprite_TickCellOrMulticellAnimation
 	mov r1, #2
 	ldr r0, [r0, #4]
 	lsl r1, r1, #0xc
 	bx r3
 	nop
-_02227DF4: .word sub_020249B0
+_02227DF4: .word Sprite_TickCellOrMulticellAnimation
 	thumb_func_end ov42_02227DE8
 
 	thumb_func_start ov42_02227DF8
@@ -1886,7 +1886,7 @@ ov42_02227DF8: ; 0x02227DF8
 	ldr r0, [r1, #4]
 	bne _02227E0E
 	mov r1, #1
-	bl sub_020249D4
+	bl Sprite_SetAnimCtrlCurrentFrame
 	pop {r3, pc}
 _02227E0E:
 	ldr r1, [r1, #0x10]
@@ -1897,57 +1897,57 @@ _02227E0E:
 
 	thumb_func_start ov42_02227E18
 ov42_02227E18: ; 0x02227E18
-	ldr r3, _02227E24 ; =sub_020249B0
+	ldr r3, _02227E24 ; =Sprite_TickCellOrMulticellAnimation
 	mov r1, #2
 	ldr r0, [r0, #4]
 	lsl r1, r1, #0xc
 	bx r3
 	nop
-_02227E24: .word sub_020249B0
+_02227E24: .word Sprite_TickCellOrMulticellAnimation
 	thumb_func_end ov42_02227E18
 
 	thumb_func_start ov42_02227E28
 ov42_02227E28: ; 0x02227E28
-	ldr r3, _02227E34 ; =sub_020249B0
+	ldr r3, _02227E34 ; =Sprite_TickCellOrMulticellAnimation
 	mov r1, #1
 	ldr r0, [r0, #4]
 	lsl r1, r1, #0xc
 	bx r3
 	nop
-_02227E34: .word sub_020249B0
+_02227E34: .word Sprite_TickCellOrMulticellAnimation
 	thumb_func_end ov42_02227E28
 
 	thumb_func_start ov42_02227E38
 ov42_02227E38: ; 0x02227E38
-	ldr r3, _02227E44 ; =sub_020249B0
+	ldr r3, _02227E44 ; =Sprite_TickCellOrMulticellAnimation
 	mov r1, #1
 	ldr r0, [r0, #4]
 	lsl r1, r1, #0xc
 	bx r3
 	nop
-_02227E44: .word sub_020249B0
+_02227E44: .word Sprite_TickCellOrMulticellAnimation
 	thumb_func_end ov42_02227E38
 
 	thumb_func_start ov42_02227E48
 ov42_02227E48: ; 0x02227E48
-	ldr r3, _02227E54 ; =sub_020249B0
+	ldr r3, _02227E54 ; =Sprite_TickCellOrMulticellAnimation
 	mov r1, #2
 	ldr r0, [r0, #4]
 	lsl r1, r1, #0xe
 	bx r3
 	nop
-_02227E54: .word sub_020249B0
+_02227E54: .word Sprite_TickCellOrMulticellAnimation
 	thumb_func_end ov42_02227E48
 
 	thumb_func_start ov42_02227E58
 ov42_02227E58: ; 0x02227E58
-	ldr r3, _02227E64 ; =sub_020249B0
+	ldr r3, _02227E64 ; =Sprite_TickCellOrMulticellAnimation
 	mov r1, #6
 	ldr r0, [r0, #4]
 	lsl r1, r1, #0xc
 	bx r3
 	nop
-_02227E64: .word sub_020249B0
+_02227E64: .word Sprite_TickCellOrMulticellAnimation
 	thumb_func_end ov42_02227E58
 
 	thumb_func_start ov42_02227E68
@@ -4722,7 +4722,7 @@ ov42_02229248: ; 0x02229248
 	push {r3, lr}
 	ldr r0, [r0, #4]
 	bl ov42_02227430
-	bl sub_02024ACC
+	bl Sprite_GetPalOffset
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov42_02229248

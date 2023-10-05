@@ -70,7 +70,7 @@ struct GF_RTC_DateTime *Save_BerryPotRTC_Get(SaveData *saveData) {
     return &misc->berry_datetime;
 }
 
-struct Gymmick *Save_GetGymmickPtr(SaveData *saveData) {
+Gymmick *Save_GetGymmickPtr(SaveData *saveData) {
     SAVE_MISC_DATA *misc;
     misc = SaveArray_Get(saveData, SAVE_MISC);
     return &misc->gymmick;

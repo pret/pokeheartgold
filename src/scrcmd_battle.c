@@ -214,7 +214,7 @@ BOOL ScrCmd_StaticWildWonOrCaughtCheck(ScriptContext *ctx) {
 
     int val;
     if (var0 == 1) {
-        val = IsBattleResultStaticWildWin(VarGet(ctx->fieldSystem, VAR_BATTLE_RESULT));
+        val = IsBattleResultStaticWildWin(FieldSystem_VarGet(ctx->fieldSystem, VAR_BATTLE_RESULT));
     } else {
         val = IsBattleResultStaticWildWin(*(u32 *)FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_BATTLE_WIN_FLAG));
     }

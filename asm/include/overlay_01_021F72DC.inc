@@ -40,7 +40,7 @@
 .public sub_02064084
 .public FollowingPokemon_GetSpriteID
 .public FollowPokeMapObjectSetParams
-.public FieldSystem_SetFollowPokeParam
+.public FieldSystem_SetFollowerPokeParam
 .public FieldSystemUnkSub108_Set
 .public GetMonData
 .public GetMonGender

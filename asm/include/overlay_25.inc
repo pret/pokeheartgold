@@ -18,8 +18,8 @@
 .public SetupNativeScript
 .public ScriptReadHalfword
 .public FieldSysGetAttrAddr
-.public VarGet
-.public sub_02050AAC
+.public FieldSystem_VarGet
+.public CallTask_020509F0
 .public sub_020517E8
 .public sub_020517FC
 .public BattleSetup_New

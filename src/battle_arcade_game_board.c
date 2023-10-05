@@ -1260,10 +1260,10 @@ static Sprite *ov84_0223F374(GAME_BOARD_SUB_3E8 *work, u32 chara, u32 pal, u32 c
     template.heapId = HEAP_ID_GAME_BOARD;
 
     if (display == 0) {
-        template.whichScreen = 1;
+        template.whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN;
     } else {
-        template.whichScreen = 2;
-        template.position.y += (192 * FX32_ONE);
+        template.whichScreen = NNS_G2D_VRAM_TYPE_2DSUB;
+        template.position.y += (GX_LCD_SIZE_Y * FX32_ONE);
     }
 
     sprite = CreateSprite(&template);
@@ -1290,7 +1290,7 @@ static void ov84_0223F418(GAME_BOARD_SUB_3E8 *work) {
         Destroy2DGfxResObjMan(work->resourceMan[i]);
     }
 
-    sub_02024504(work->spriteList);
+    SpriteList_Delete(work->spriteList);
     OamManager_Free();
     sub_0202168C();
     sub_02022608();
@@ -1387,7 +1387,7 @@ static BATTLE_ARCADE_OBJECT *BattleArcadeObject_Create(GAME_BOARD_SUB_3E8 *work,
         vec.y += (192 * FX32_ONE);
     }
 
-    sub_020247D4(obj->sprite, &vec);
+    Sprite_SetMatrix(obj->sprite, &vec);
 
     return obj;
 }
@@ -1404,7 +1404,7 @@ static void BattleArcadeObj_SetVisible(BATTLE_ARCADE_OBJECT *obj, int flag) {
 
 static void BattleArcadeObj_SetPos(BATTLE_ARCADE_OBJECT *obj, u16 x, u16 y) {
     VecFx32 vec;
-    vec = *sub_020248AC(obj->sprite);
+    vec = *Sprite_GetMatrixPtr(obj->sprite);
     vec.x = x * FX32_ONE;
     vec.y = y * FX32_ONE;
 
@@ -1412,12 +1412,12 @@ static void BattleArcadeObj_SetPos(BATTLE_ARCADE_OBJECT *obj, u16 x, u16 y) {
         vec.y += (192 * FX32_ONE);
     }
 
-    sub_020247D4(obj->sprite, &vec);
+    Sprite_SetMatrix(obj->sprite, &vec);
 }
 
 static void BattleArcadeObj_SetAnimation(BATTLE_ARCADE_OBJECT *obj, u32 val) {
     sub_02024868(obj->sprite, FX32_ONE);
-    sub_02024950(obj->sprite, val);
+    TryChange2dSpriteAnimSeqNo(obj->sprite, val);
 }
 
 static void ov84_0223F894(BATTLE_ARCADE_OBJECT *obj, Pokemon *mon) {

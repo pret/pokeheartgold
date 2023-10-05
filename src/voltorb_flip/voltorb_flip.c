@@ -26,7 +26,7 @@
 #include "unk_02025154.h"
 #include "bg_window.h"
 #include "constants/sndseq.h"
-#include "constants/game_stat.h"
+#include "constants/game_stats.h"
 #include "msgdata/msg/msg_0039.h"
 #include "voltorb_flip/voltorb_flip.h"
 #include "voltorb_flip/voltorb_flip_data.h"
@@ -122,11 +122,11 @@ static void ov122_021E79D0(VoltorbFlipAppWork *);
 static void ov122_021E7AEC(VoltorbFlipAppWork *);
 static void ov122_021E7B94(VoltorbFlipAppWork *);
 static void ov122_021E7BD4(VoltorbFlipAppWork *);
-static UnkStruct_0200CF18 *ov122_021E7C9C(Unk122_021E7C9C *, void *, u16, u16, u16, u16);
-static UnkStruct_0200CF18 *ov122_021E7D04(Unk122_021E7C9C *, void *, u16, u16, u16, u16);
+static UnkImageStruct *ov122_021E7C9C(SpriteRenderer *, SpriteGfxHandler *, u16, u16, u16, u16);
+static UnkImageStruct *ov122_021E7D04(SpriteRenderer *, SpriteGfxHandler *, u16, u16, u16, u16);
 static void ov122_021E7D6C(VoltorbFlipAppWork *);
 static void ov122_021E7F48(VoltorbFlipAppWork *);
-static void ov122_021E7F64(void *, u32);
+static void ov122_021E7F64(Sprite *, fx32);
 static BOOL ov122_021E7F70(VoltorbFlipAppWork *);
 static CardType ov122_021E7FA8(VoltorbFlipAppWork *);
 static int MemoFlagToIdx(int);
@@ -143,11 +143,11 @@ extern const u16 ov122_021E92A0[8];
 extern const u8 ov122_021E92B0[4][4];
 extern const struct GraphicsModes sVoltorbFlipBgModeSet;
 extern const Unk122_021E92D0 ov122_021E92D0;
-extern const Unk122_021E92E4 ov122_021E92E4;
+extern const SpriteResourceCountsListUnion ov122_021E92E4;
 extern const Unk122_021E92FC ov122_021E92FC;
 extern const Ov122_021E6C2C ov122_021E9344[4];
-extern const Unk122_021E9374 ov122_021E9374;
-extern const Unk122_021E9374 ov122_021E93A8;
+extern const UnkTemplate_0200D748 ov122_021E9374;
+extern const UnkTemplate_0200D748 ov122_021E93A8;
 extern const WindowTemplate sVoltorbFlipWindowTemplates[];
 extern const BgTemplates sVoltorbFlipBgTemplates;
 extern VoltorbFlipWorkflows sVoltorbFlipWorkflows;
@@ -162,8 +162,8 @@ static void RenderCoinPayoutScreen(VoltorbFlipAppWork *work) {
     PrintCoins(work, COIN_DISPLAY_PAYOUT, payout);
     PrintCoins(work, COIN_DISPLAY_TOTAL, coins);
 
-    sub_0200DCE8(work->unk14C[11], 0);
-    sub_0200DCE8(work->unk14C[12], 0);
+    UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[11], 0);
+    UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[12], 0);
 
     RenderTopScreen(work);
 }
@@ -199,8 +199,8 @@ static void RenderAboutMemoScreen(VoltorbFlipAppWork *work) {
     // "Touch 'Open Memo' to open the Memo Window..."
     PaintMessageOnWindow(work, 0, msg_0039_00010, &work->wAboutMemoTouchOpen, 0, 0);
 
-    sub_0200DCE8(work->unk14C[11], 1);
-    sub_0200DCE8(work->unk14C[12], 1);
+    UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[11], 1);
+    UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[12], 1);
 }
 
 static BOOL PrintAndAwaitMessage(WorkflowEngine *workflow, VoltorbFlipAppWork *work, int msgNo) {
@@ -508,7 +508,7 @@ BOOL AwaitBoardInteraction(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
         break;
     case 4:
         PlaySE(SEQ_SE_DP_SELECT);
-        sub_0200DC4C(work->unk14C[2], 6);
+        UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[2], 6);
         if (ov122_021E8E70(work->unk240)) {
             EnqueueWorkflow(workflow, WORKFLOW_UNK_13); // open memo
         } else {
@@ -518,7 +518,7 @@ BOOL AwaitBoardInteraction(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     case 2:
     case 3:
         PlaySE(SEQ_SE_DP_DECIDE);
-        sub_0200DC4C(work->unk14C[3], 3);
+        UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[3], 3);
         EnqueueWorkflow(workflow, WORKFLOW_QUIT_ROUND);
         return TRUE;
     default:
@@ -604,11 +604,11 @@ BOOL AwaitCardFlipAndResult(WorkflowEngine *workflow, VoltorbFlipAppWork *work) 
         s16 var6 = ((cardId / 5) * 4 + 1);
         s16 var7 = var6 * 8 + 12;
 
-        sub_0200DCE8(work->unk14C[1], 1);
+        UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[1], 1);
         FlipCard(work->game, cardId);
         if (type == CARD_TYPE_VOLTORB) {
-            sub_0200DDB8(work->unk14C[1], var5, var7);
-            sub_0200DC4C(work->unk14C[1], 1);
+            UnkImageStruct_SetSpritePositionXY(work->unk14C[1], var5, var7);
+            UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[1], 1);
             // Plays Voltorb explosion SE
             PlaySE(SEQ_SE_GS_COIN_HAZURE);
         } else {
@@ -620,8 +620,8 @@ BOOL AwaitCardFlipAndResult(WorkflowEngine *workflow, VoltorbFlipAppWork *work) 
 
             BufferIntegerAsString(work->msgFmt, 0, type, 1, PRINTING_MODE_LEFT_ALIGN, 1);
             BufferIntegerAsString(work->msgFmt, 1, var9, 5, PRINTING_MODE_LEFT_ALIGN, 1);
-            sub_0200DDB8(work->unk14C[1], var5, var7);
-            sub_0200DC4C(work->unk14C[1], 0);
+            UnkImageStruct_SetSpritePositionXY(work->unk14C[1], var5, var7);
+            UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[1], 0);
 
             if (var8 == 0) {
                 PrintMessageToSmallWindow(work, msg_0039_00030);
@@ -798,13 +798,13 @@ BOOL ov122_021E65FC(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     case 4:
         PlaySE(SEQ_SE_DP_SELECT);
         work->unk238 = 0;
-        sub_0200DC4C(work->unk14C[2], 6);
+        UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[2], 6);
         EnqueueWorkflow(workflow, WORKFLOW_AWAIT_BOARD_INTERACT);
         return TRUE;
     case 2:
         PlaySE(SEQ_SE_DP_DECIDE);
         work->unk238 = 0;
-        sub_0200DC4C(work->unk14C[3], 3);
+        UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[3], 3);
         EnqueueWorkflow(workflow, WORKFLOW_QUIT_ROUND);
         return TRUE;
     case 5:
@@ -852,18 +852,18 @@ BOOL ov122_021E6700(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     case 4:
         PlaySE(SEQ_SE_DP_SELECT);
         work->unk238 = 0;
-        sub_0200DC4C(work->unk14C[2], 6);
+        UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[2], 6);
         EnqueueWorkflow(workflow, WORKFLOW_AWAIT_BOARD_INTERACT);
         return TRUE;
     case 3:
         PlaySE(SEQ_SE_DP_BUTTON3);
-        sub_0200DC4C(work->unk14C[9], 17);
+        UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[9], 17);
         EnqueueWorkflow(workflow, WORKFLOW_UNK_13);
         return TRUE;
     case 2:
         PlaySE(SEQ_SE_DP_DECIDE);
         work->unk238 = 0;
-        sub_0200DC4C(work->unk14C[3], 3);
+        UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[3], 3);
         EnqueueWorkflow(workflow, WORKFLOW_QUIT_ROUND);
         return TRUE;
     case 0:
@@ -906,7 +906,7 @@ BOOL ov122_021E67E0(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
         break;
     case 3:
         if (sub_0200DCA0(work->unk14C[4]) == 0) {
-            sub_0200DCE8(work->unk14C[4], 0);
+            UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[4], 0);
             return TRUE;
         }
         break;
@@ -1356,8 +1356,8 @@ static void AnimateOpenMenu(VoltorbFlipAppWork *work) {
 
     ov122_021E8E58(work->unk240);
     SetMemoOpen(work->unk240, TRUE);
-    sub_0200DCE8(work->unk14C[4], 1);
-    sub_0200DC4C(work->unk14C[4], 20);
+    UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[4], 1);
+    UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[4], 20);
     // "Close Memo" (text in button)
     PaintMessageOnWindow(work, 4, msg_0039_00007, &work->wMemo, 0, 0);
     work->unk238 = 1;
@@ -1370,17 +1370,17 @@ static void AnimateCloseMenu(VoltorbFlipAppWork *work) {
     SetMemoOpen(work->unk240, FALSE);
     ov122_021E8E58(work->unk240);
     ov122_021E7274(work, 0);
-    sub_0200DC4C(work->unk14C[4], 21);
+    UnkImageStruct_SetSpriteAnimSeqNo(work->unk14C[4], 21);
     // "Open Memo" (text in button)
     PaintMessageOnWindow(work, 4, msg_0039_00006, &work->wMemo, 0, 0);
     PlaySE(SEQ_SE_DP_CARD2);
 }
 
 static void ov122_021E7274(VoltorbFlipAppWork *work, int a1) {
-    sub_0200DCE8(work->unk14C[5], a1);
-    sub_0200DCE8(work->unk14C[6], a1);
-    sub_0200DCE8(work->unk14C[7], a1);
-    sub_0200DCE8(work->unk14C[8], a1);
+    UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[5], a1);
+    UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[6], a1);
+    UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[7], a1);
+    UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[8], a1);
 
     if (a1 != 0) {
         if (CurrentWorkflow(work->workflow) == WORKFLOW_UNK_14) {
@@ -1390,7 +1390,7 @@ static void ov122_021E7274(VoltorbFlipAppWork *work, int a1) {
         }
     }
 
-    sub_0200DCE8(work->unk14C[9], a1);
+    UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[9], a1);
 }
 
 static void ov122_021E72D0(VoltorbFlipAppWork *work) {
@@ -1403,7 +1403,7 @@ static void ov122_021E72D0(VoltorbFlipAppWork *work) {
             int var3 = ov122_021E92B0[i][2];
             void *var2 = work->unk14C[var3];
             int var4 = IsCardMemoFlagOn(work->game, var1, ov122_021E92B0[i][3]);
-            sub_0200DC4C(var2, ov122_021E92B0[i][var4]);
+            UnkImageStruct_SetSpriteAnimSeqNo(var2, ov122_021E92B0[i][var4]);
         }
         ov122_021E7274(work, 1);
         return;
@@ -1466,8 +1466,8 @@ static void ov122_021E745C(VoltorbFlipAppWork *work) {
 }
 
 void ov122_021E7488(VoltorbFlipAppWork *a0, int a1)
-{    
-    Ov122_021E7488 temp1 = {0};   
+{
+    Ov122_021E7488 temp1 = {0};
     const MsgNoList *ptr = &sMenuMsgNos[a1];
     GF_ASSERT(a0->bgConfig != 0);
 
@@ -1476,7 +1476,7 @@ void ov122_021E7488(VoltorbFlipAppWork *a0, int a1)
     temp1.unkC = a0->menuItems[a1];
     temp1.unk10 = a0->bgConfig;
     temp1.unk14 = ptr->size;
-    
+
     a0->unk20 = sub_020185FC(a0->unk1C, &temp1, a0->unk228, 17, 17 - ptr->size * 3, 13, 0);
 }
 
@@ -1670,19 +1670,19 @@ static void ov122_021E79D0(VoltorbFlipAppWork *work) {
 }
 
 static void ov122_021E7AEC(VoltorbFlipAppWork *work) {
-    Unk122_021E92E4 temp1 = ov122_021E92E4;
+    SpriteResourceCountsListUnion temp1 = ov122_021E92E4;
     Unk122_021E92FC temp2 = ov122_021E92FC;
     Unk122_021E92D0 temp3 = ov122_021E92D0;
     temp3.unk0 = 0x80;
 
-    work->unk144 = sub_0200CF18(work->heapId);
-    work->unk148 = sub_0200CF38(work->unk144);
+    work->unk144 = SpriteRenderer_Create(work->heapId);
+    work->unk148 = SpriteRenderer_CreateGfxHandler(work->unk144);
 
     sub_0200CF70(work->unk144, &temp2, &temp3, 32);
     sub_0200CFF4(work->unk144, work->unk148, 0x80);
-    sub_0200D3F8(work->unk144, work->unk148, &temp1);
+    SpriteRenderer_Init2DGfxResManagersFromCountsArray(work->unk144, work->unk148, &temp1);
 
-    G2dRenderer_SetSubSurfaceCoords(sub_0200CF6C(work->unk144), 0, 0x20c000);
+    G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(work->unk144), 0, 0x20c000);
 }
 
 static void ov122_021E7B94(VoltorbFlipAppWork *work) {
@@ -1690,8 +1690,8 @@ static void ov122_021E7B94(VoltorbFlipAppWork *work) {
     GF_ASSERT(work->unk148 != 0);
 
     ov122_021E7F48(work);
-    sub_0200D998(work->unk144, work->unk148);
-    sub_0200D108(work->unk144);
+    SpriteRenderer_UnloadResourcesAndRemoveGfxHandler(work->unk144, work->unk148);
+    SpriteRenderer_Delete(work->unk144);
 }
 
 // decomp.me: https://decomp.me/scratch/w6ui6
@@ -1699,18 +1699,18 @@ static void ov122_021E7B94(VoltorbFlipAppWork *work) {
 static void ov122_021E7BD4(VoltorbFlipAppWork *work) {
     GF_ASSERT(work->narc != 0);
 
-    Unk122_021E7C9C *var1 = work->unk144;
-    void *var2 = work->unk148;
+    SpriteRenderer *var1 = work->unk144;
+    SpriteGfxHandler *var2 = work->unk148;
 
-    sub_0200D5D4(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000010_bin, 0, 5, 1, 0);
-    sub_0200D504(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000011_bin, 1, 1, 0);
-    sub_0200D6EC(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000012_bin, 1, 0);
-    sub_0200D71C(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000013_bin, 1, 0);
+    SpriteRenderer_LoadPlttResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000010_bin, 0, 5, 1, 0);
+    SpriteRenderer_LoadCharResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000011_bin, 1, 1, 0);
+    SpriteRenderer_LoadCellResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000012_bin, 1, 0);
+    SpriteRenderer_LoadAnimResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000013_bin, 1, 0);
 
-    sub_0200D5D4(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000014_bin, 0, 1, 2, 1);
-    sub_0200D504(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000015_bin, 1, 2, 1);
-    sub_0200D6EC(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000016_bin, 1, 1);
-    sub_0200D71C(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000017_bin, 1, 1);
+    SpriteRenderer_LoadPlttResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000014_bin, 0, 1, 2, 1);
+    SpriteRenderer_LoadCharResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000015_bin, 1, 2, 1);
+    SpriteRenderer_LoadCellResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000016_bin, 1, 1);
+    SpriteRenderer_LoadAnimResObjFromOpenNarc(var1, var2, work->narc, NARC_voltorb_flip_voltorb_flip_00000017_bin, 1, 1);
 }
 #else
 asm void ov122_021E7BD4(VoltorbFlipAppWork *work) {
@@ -1738,7 +1738,7 @@ _021E7BE4:
 	add r0, r6, #0
 	add r1, r4, #0
 	mov r3, #0xa
-	bl sub_0200D5D4
+	bl SpriteRenderer_LoadPlttResObjFromOpenNarc
 	add r0, r7, #0
 	str r0, [sp]
 	str r7, [sp, #4]
@@ -1748,7 +1748,7 @@ _021E7BE4:
 	add r0, r6, #0
 	add r1, r4, #0
 	mov r3, #0xb
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	add r0, r7, #0
 	str r0, [sp]
 	mov r0, #0
@@ -1757,7 +1757,7 @@ _021E7BE4:
 	add r0, r6, #0
 	add r1, r4, #0
 	mov r3, #0xc
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	add r0, r7, #0
 	str r0, [sp]
 	mov r0, #0
@@ -1766,7 +1766,7 @@ _021E7BE4:
 	add r0, r6, #0
 	add r1, r4, #0
 	mov r3, #0xd
-	bl sub_0200D71C
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #1
@@ -1778,7 +1778,7 @@ _021E7BE4:
 	add r0, r6, #0
 	add r1, r4, #0
 	mov r3, #0xe
-	bl sub_0200D5D4
+	bl SpriteRenderer_LoadPlttResObjFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	str r7, [sp, #4]
@@ -1787,7 +1787,7 @@ _021E7BE4:
 	add r0, r6, #0
 	add r1, r4, #0
 	mov r3, #0xf
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1795,7 +1795,7 @@ _021E7BE4:
 	add r0, r6, #0
 	add r1, r4, #0
 	mov r3, #0x10
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1803,43 +1803,43 @@ _021E7BE4:
 	add r0, r6, #0
 	add r1, r4, #0
 	mov r3, #0x11
-	bl sub_0200D71C
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 }
 #endif //NONMATCHING
 
-static UnkStruct_0200CF18 *ov122_021E7C9C(Unk122_021E7C9C *a0, void *a1, u16 a2, u16 a3, u16 a4, u16 a5) {
-    Unk122_021E9374 temp1 = ov122_021E9374;
+static UnkImageStruct *ov122_021E7C9C(SpriteRenderer *a0, SpriteGfxHandler *a1, u16 a2, u16 a3, u16 a4, u16 a5) {
+    UnkTemplate_0200D748 temp1 = ov122_021E9374;
 
     GF_ASSERT(a0 != NULL);
     GF_ASSERT(a1 != NULL);
 
-    temp1.unk0 = a2;
-    temp1.unk2 = a3;
-    temp1.unk6 = a4;
-    temp1.unk8 = a5;
+    temp1.x = a2;
+    temp1.y = a3;
+    temp1.animation = a4;
+    temp1.spritePriority = a5;
 
-    UnkStruct_0200CF18 *var1 = sub_0200D740(a0, a1, &temp1, 0x20c000);
-    sub_0200DC78(var1, 1);
-    sub_0200DCE8(var1, 0);
+    UnkImageStruct *var1 = SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset(a0, a1, &temp1, 0x20c000);
+    UnkImageStruct_SetSpriteAnimActiveFlag(var1, 1);
+    UnkImageStruct_SetSpriteVisibleFlag(var1, 0);
     return var1;
 }
 
-static UnkStruct_0200CF18 *ov122_021E7D04(Unk122_021E7C9C *a0, void *a1, u16 a2, u16 a3, u16 a4, u16 a5) {
-    Unk122_021E9374 temp1 = ov122_021E93A8;
+static UnkImageStruct *ov122_021E7D04(SpriteRenderer *a0, SpriteGfxHandler *a1, u16 a2, u16 a3, u16 a4, u16 a5) {
+    UnkTemplate_0200D748 temp1 = ov122_021E93A8;
 
     GF_ASSERT(a0 != NULL);
     GF_ASSERT(a1 != NULL);
 
-    temp1.unk0 = a2;
-    temp1.unk2 = a3;
-    temp1.unk6 = a4;
-    temp1.unk8 = a5;
+    temp1.x = a2;
+    temp1.y = a3;
+    temp1.animation = a4;
+    temp1.spritePriority = a5;
 
-    UnkStruct_0200CF18 *var1 = sub_0200D740(a0, a1, &temp1, 0x20c000);
-    sub_0200DC78(var1, 1);
-    sub_0200DCE8(var1, 0);
+    UnkImageStruct *var1 = SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset(a0, a1, &temp1, 0x20c000);
+    UnkImageStruct_SetSpriteAnimActiveFlag(var1, 1);
+    UnkImageStruct_SetSpriteVisibleFlag(var1, 0);
     return var1;
 }
 
@@ -1858,12 +1858,12 @@ static void ov122_021E7D6C(VoltorbFlipAppWork *work) {
     work->unk14C[11] = ov122_021E7D04(work->unk144, work->unk148, 0x48, 0x38, 0, 0);
     work->unk14C[12] = ov122_021E7D04(work->unk144, work->unk148, 0x88, 0x28, 0, 0);
 
-    ov122_021E7F64(work->unk14C[12]->unk_00, 0x20000);
+    ov122_021E7F64(work->unk14C[12]->sprite, 0x20000);
 
-    sub_0200DCE8(work->unk14C[2], 1);
-    sub_0200DCE8(work->unk14C[3], 1);
-    sub_0200DD54(work->unk14C[1], 1);
-    sub_0200DD10(work->unk14C[10], 4);
+    UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[2], 1);
+    UnkImageStruct_SetSpriteVisibleFlag(work->unk14C[3], 1);
+    UnkImageStruct_SetSpritePriority(work->unk14C[1], 1);
+    UnkImageStruct_SetSpritePalIndex(work->unk14C[10], 4);
 }
 
 static void ov122_021E7F48(VoltorbFlipAppWork *work) {
@@ -1872,9 +1872,9 @@ static void ov122_021E7F48(VoltorbFlipAppWork *work) {
     }
 }
 
-static void ov122_021E7F64(void *a0, u32 a1) {
-    Unk122_021E7F64 *ptr = sub_02024CB8(a0);
-    ptr->unk10 = a1;
+static void ov122_021E7F64(Sprite *a0, fx32 a1) {
+    NNSG2dCellAnimation *ptr = sub_02024CB8(a0);
+    ptr->animCtrl.currentTime = a1;
 }
 
 static BOOL ov122_021E7F70(VoltorbFlipAppWork *work) {
@@ -1912,7 +1912,7 @@ static void ov122_021E8004(VoltorbFlipAppWork *work) {
     GF_ASSERT(work->unk148 != NULL);
 
     sub_0200D020(work->unk148);
-    sub_0200D034();
+    thunk_OamManager_ApplyAndResetBuffers();
     DoScheduledBgGpuUpdates(work->bgConfig);
 
     REGType32v *regBase = (REGType32v *)0x027e0000;

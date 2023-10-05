@@ -1,6 +1,11 @@
 #ifndef NNSYS_G2D_G2D_VEC_DATA_H_
 #define NNSYS_G2D_G2D_VEC_DATA_H_
 
+typedef struct NNSG2dSVec2 {
+    s16 x;
+    s16 y;
+} NNSG2dSVec2;
+
 typedef struct NNSG2dFVec2 {
     fx32 x;
     fx32 y;

@@ -373,20 +373,18 @@ struct _2DGfxResHeader *sub_0200A900(struct _2DGfxResHeader *headers, int num) {
     return &headers[num];
 }
 
-void sub_0200A908(const void *a0, struct _2DGfxResHeader *header, HeapID heapId) {
-    const int *x;
+void sub_0200A908(const _2DGfxResHeaderNarcList *a0, struct _2DGfxResHeader *header, HeapID heapId) {
     GF_ASSERT(header != NULL);
-    x = a0;
-    header->type = (GfGfxResType)x[0]; //todo sort this out while maintaining matching
+    header->type = a0->type;
     header->isNarc = TRUE;
-    header->num = sub_0200AC88((const struct _2DGfxResHeaderNarc *)(x + 1));
+    header->num = sub_0200AC88(&a0->internal);
     if (header->num > 0) {
         header->table = AllocFromHeap(heapId, header->num * sizeof(struct _2DGfxResHeaderNarc));
     } else {
         header->table = NULL;
     }
     if (header->table != NULL) {
-        memcpy(header->table, (const struct _2DGfxResHeaderNarc *)(x + 1), header->num * sizeof(struct _2DGfxResHeaderNarc));
+        memcpy(header->table, &a0->internal, header->num * sizeof(struct _2DGfxResHeaderNarc));
     }
 }
 

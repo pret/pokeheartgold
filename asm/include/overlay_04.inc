@@ -27,7 +27,7 @@
 .public FieldSystem_CreateTask
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem
-.public TaskManager_GetEnv
+.public TaskManager_GetEnvironment
 .public TaskManager_GetStatePtr
 .public sub_020548C0
 .public GetMetatileBehaviorAt

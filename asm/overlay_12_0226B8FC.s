@@ -41,7 +41,7 @@ ov12_0226B8FC: ; 0x0226B8FC
 	add r0, r5, #0
 	add r2, r6, #0
 	mov r3, #0xfa
-	bl sub_0200D504
+	bl SpriteRenderer_LoadCharResObjFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	ldr r0, [sp, #0x38]
@@ -50,7 +50,7 @@ ov12_0226B8FC: ; 0x0226B8FC
 	add r0, r5, #0
 	add r2, r6, #0
 	mov r3, #0xfb
-	bl sub_0200D6EC
+	bl SpriteRenderer_LoadCellResObjFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	ldr r0, [sp, #0x3c]
@@ -59,7 +59,7 @@ ov12_0226B8FC: ; 0x0226B8FC
 	add r0, r5, #0
 	add r2, r6, #0
 	mov r3, #0xfc
-	bl sub_0200D71C
+	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
 	add r0, r6, #0
 	bl NARC_Delete
 	add sp, #0x18
@@ -72,16 +72,16 @@ ov12_0226B97C: ; 0x0226B97C
 	add r5, r0, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_0200D958
+	bl SpriteGfxHandler_UnloadCharObjById
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0200D968
+	bl SpriteGfxHandler_UnloadPlttObjById
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_0200D978
+	bl SpriteGfxHandler_UnloadCellObjById
 	ldr r1, [sp, #0x10]
 	add r0, r5, #0
-	bl sub_0200D988
+	bl SpriteGfxHandler_UnloadAnimObjById
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov12_0226B97C
@@ -128,10 +128,10 @@ _0226B9EE:
 	add r0, r6, #0
 	add r1, r7, #0
 	add r2, sp, #4
-	bl sub_0200D734
+	bl SpriteRenderer_LoadResourcesAndCreateSprite
 	mov r1, #0
 	stmia r5!, {r0}
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r4, r4, #1
 	cmp r4, #5
 	blt _0226B9EE
@@ -182,7 +182,7 @@ ov12_0226BA4C: ; 0x0226BA4C
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	add r3, r4, #0
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r2, [sp, #0x10]
 	lsl r1, r6, #0x10
 	lsl r2, r2, #0x10
@@ -190,7 +190,7 @@ ov12_0226BA4C: ; 0x0226BA4C
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	add r3, r4, #0
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r1, [sp, #0x14]
 	ldr r2, [sp, #0x18]
 	lsl r1, r1, #0x10
@@ -199,7 +199,7 @@ ov12_0226BA4C: ; 0x0226BA4C
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	add r3, r4, #0
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r1, [sp, #0x1c]
 	ldr r2, [sp, #0x20]
 	lsl r1, r1, #0x10
@@ -208,25 +208,25 @@ ov12_0226BA4C: ; 0x0226BA4C
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
 	add r3, r4, #0
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [r5]
 	mov r1, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5, #4]
 	mov r1, #1
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5, #8]
 	mov r1, #2
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5, #0xc]
 	mov r1, #3
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	mov r4, #0
 	mov r6, #1
 _0226BAC2:
 	ldr r0, [r5]
 	add r1, r6, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -308,13 +308,13 @@ ov12_0226BB40: ; 0x0226BB40
 	ldr r3, [sp, #0x10]
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
-	bl sub_0200DDF4
+	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
-	bl sub_0200DC4C
+	bl UnkImageStruct_SetSpriteAnimSeqNo
 	ldr r0, [r5, #0x10]
 	mov r1, #1
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_0226BB40
 
@@ -327,7 +327,7 @@ ov12_0226BB68: ; 0x0226BB68
 _0226BB70:
 	ldr r0, [r5]
 	add r1, r6, #0
-	bl sub_0200DCE8
+	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #5
@@ -338,12 +338,12 @@ _0226BB70:
 
 	thumb_func_start ov12_0226BB84
 ov12_0226BB84: ; 0x0226BB84
-	ldr r3, _0226BB8C ; =sub_0200DCE8
+	ldr r3, _0226BB8C ; =UnkImageStruct_SetSpriteVisibleFlag
 	ldr r0, [r0, #0x10]
 	mov r1, #0
 	bx r3
 	.balign 4, 0
-_0226BB8C: .word sub_0200DCE8
+_0226BB8C: .word UnkImageStruct_SetSpriteVisibleFlag
 	thumb_func_end ov12_0226BB84
 
 	thumb_func_start ov12_0226BB90
@@ -351,24 +351,24 @@ ov12_0226BB90: ; 0x0226BB90
 	push {r4, r5, r6, lr}
 	add r6, r1, #0
 	ldr r0, [r6]
-	bl sub_0200DCFC
+	bl UnkImageStruct_GetSpriteVisibleFlag
 	cmp r0, #0
 	beq _0226BBC0
 	mov r4, #0
 	add r5, r6, #0
 _0226BBA2:
 	ldr r0, [r5]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
 	blt _0226BBA2
 	ldr r0, [r6, #0x10]
-	bl sub_0200DCFC
+	bl UnkImageStruct_GetSpriteVisibleFlag
 	cmp r0, #1
 	bne _0226BBC0
 	ldr r0, [r6, #0x10]
-	bl sub_0200DC18
+	bl UnkImageStruct_TickSpriteAnimation1Frame
 _0226BBC0:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
