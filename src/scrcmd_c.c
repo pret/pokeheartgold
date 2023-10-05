@@ -1153,24 +1153,24 @@ BOOL ScrCmd_563(ScriptContext *ctx) {
     now_y = MapObject_GetCurrentY(object);
     i = 0;
     if (now_x < x) {
-        cmd[i].command = MV_step_right;
+        cmd[i].command = MOVEMENT_STEP_RIGHT;
         cmd[i].length = x - now_x;
         i++;
     } else if (now_x > x) {
-        cmd[i].command = MV_step_left;
+        cmd[i].command = MOVEMENT_STEP_LEFT;
         cmd[i].length = now_x - x;
         i++;
     }
     if (now_y < y) {
-        cmd[i].command = MV_step_down;
+        cmd[i].command = MOVEMENT_STEP_UP;
         cmd[i].length = y - now_y;
         i++;
     } else if (now_y > y) {
-        cmd[i].command = MV_step_up;
+        cmd[i].command = MOVEMENT_STEP_DOWN;
         cmd[i].length = now_y - y;
         i++;
     }
-    cmd[i].command = MV_step_end;
+    cmd[i].command = MOVEMENT_STEP_END;
     cmd[i].length = 0;
 
     mvtMan = EventObjectMovementMan_Create(object, cmd);
