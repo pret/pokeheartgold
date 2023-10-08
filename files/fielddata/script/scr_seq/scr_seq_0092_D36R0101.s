@@ -6,6 +6,7 @@
 #define FARFETCHD2_BLIND_SPOT               VAR_TEMP_x4003
 #define FARFETCHD1_BOTTOM_RIGHT_FACING_UP   VAR_TEMP_x4004
 
+#include "constants/events.h"
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_D36R0101.h"
 #include "msgdata/msg/msg_0115_D36R0101.h"
@@ -1617,7 +1618,7 @@ scr_seq_D36R0101_012:
 	compare VAR_UNK_412B, 1
 	goto_if_eq _1803
 	get_party_lead_alive VAR_TEMP_x4000
-	follower_poke_is_event_trigger 0, VAR_TEMP_x4000, VAR_TEMP_x4001
+	follower_poke_is_event_trigger EVENT_SPIKY_EARED_PICHU, VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _17B7
 	goto _17C1
@@ -1631,7 +1632,7 @@ _17C1:
 	goto_if_ge _1803
 	goto_if_unset FLAG_BEAT_RADIO_TOWER_ROCKETS, _1803
 	get_party_lead_alive VAR_TEMP_x4006
-	follower_poke_is_event_trigger 3, VAR_TEMP_x4006, VAR_TEMP_x4007
+	follower_poke_is_event_trigger EVENT_CELEBI, VAR_TEMP_x4006, VAR_TEMP_x4007
 	compare VAR_TEMP_x4007, 0
 	goto_if_ne _17FD
 	goto _1803
