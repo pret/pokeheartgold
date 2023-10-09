@@ -41,7 +41,7 @@ typedef struct UnkStruct_0206D494 {
 typedef struct UnkStruct_0206DB94 {
     u8 filler00[4];
     Pokemon *unk04;
-    void *unk08;
+    UnkStruct_0203EDDC *unk08;
 } UnkStruct_0206DB94;
 
 static BOOL sub_0206D4E4(TaskManager *taskManager);
@@ -52,7 +52,7 @@ static u32 sub_0206D7B8(LocalMapObject *object, u32 x, u32 height, u32 y);
 static u32 sub_0206D81C(u32 direction);
 static void sub_0206D850(PlayerAvatar *playerAvatar);
 static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTradeNum tradeNum);
-static BOOL sub_0206DBC0(TaskManager *taskManager);
+static BOOL Task_BugContest_PromptSwapPokemon(TaskManager *taskManager);
 
 BOOL sub_0206D494(FieldSystem *fieldSystem) {
     LocalMapObject *unk1 = sub_0205C600(fieldSystem->mapObjectManager);
@@ -386,11 +386,10 @@ void FieldSystem_IncrementBugContestTimer(FieldSystem *fieldSystem, int duration
     }
 }
 
-// warps player to center of national park for judging phase of bug catching contest
-void sub_0206DB58(TaskManager *taskManager, FieldSystem *fieldSystem) {
+void BugContest_WarpToJudging(TaskManager *taskManager, FieldSystem *fieldSystem) {
     LocalFieldData *localFieldData = Save_LocalFieldData_Get(fieldSystem->saveData);
     Location warp;
-    warp.mapId = MAP_D22R0101;
+    warp.mapId = MAP_D22R0101; // national park
     warp.warpId = -1;
     warp.x = 46;
     warp.y = 50;
@@ -399,15 +398,14 @@ void sub_0206DB58(TaskManager *taskManager, FieldSystem *fieldSystem) {
     sub_020537A8(taskManager, LocalFieldData_GetDynamicWarp(localFieldData));
 }
 
-// prompts player to swap pokemon after catching in bug catching contest
-void sub_0206DB94(TaskManager *taskManager, Pokemon *mon) {
+void BugContest_PromptSwapPokemon(TaskManager *taskManager, Pokemon *mon) {
     UnkStruct_0206DB94 *unkStruct = AllocFromHeapAtEnd(HEAP_ID_3, sizeof(UnkStruct_0206DB94));
     MI_CpuFill8(unkStruct, 0, sizeof(UnkStruct_0206DB94));
     unkStruct->unk04 = mon;
-    TaskManager_Call(taskManager, sub_0206DBC0, unkStruct);
+    TaskManager_Call(taskManager, Task_BugContest_PromptSwapPokemon, unkStruct);
 }
 
-static BOOL sub_0206DBC0(TaskManager *taskManager) {
+static BOOL Task_BugContest_PromptSwapPokemon(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     UnkStruct_0206DB94 *unkStruct = TaskManager_GetEnvironment(taskManager);
     BugContest *contest = FieldSystem_BugContest_Get(fieldSystem);
@@ -420,8 +418,7 @@ static BOOL sub_0206DBC0(TaskManager *taskManager) {
             break;
         case 1:
             if (FieldSystem_ApplicationIsRunning(fieldSystem) == FALSE) {
-                //TODO: make this nicer after decompiling sub_0203EDDC
-                if ((Pokemon*)*(u32*)(unkStruct->unk08 + 0x10) != contest->mon) {
+                if (unkStruct->unk08->unk10 != contest->mon) {
                     CopyPokemonToPokemon(unkStruct->unk04, contest->mon);
                 }
                 if (!contest->caught_poke) {

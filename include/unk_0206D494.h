@@ -13,7 +13,7 @@ BugContest *FieldSystem_BugContest_Get(FieldSystem *fieldSystem);
 u16 *BugContest_GetSportBallsAddr(BugContest *contest);
 void FieldSystem_IncrementBugContestTimer(FieldSystem *fieldSystem, int duration);
 void FieldSystem_InitMystriStageGymmick(FieldSystem *fieldSystem);
-void sub_0206DB58(TaskManager *taskman, FieldSystem *fieldSystem);
-void sub_0206DB94(TaskManager *man, Pokemon* mon);
+void BugContest_WarpToJudging(TaskManager *taskman, FieldSystem *fieldSystem);
+void BugContest_PromptSwapPokemon(TaskManager *man, Pokemon* mon);
 
 #endif //POKEHEARTGOLD_UNK_0206D494_H
