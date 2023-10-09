@@ -1,11 +1,10 @@
 #ifndef POKEHEARTGOLD_NPC_TRADE_H
 #define POKEHEARTGOLD_NPC_TRADE_H
 
+#include "constants/npc_trade.h"
 #include "heap.h"
 #include "trade_anim.h"
 #include "script.h"
-
-#define TRADE_MAX          13
 
 typedef struct NPCTrade {
     int give_species;
@@ -35,15 +34,15 @@ typedef struct NPCTradeAppData {
     NPCTrade *trade_dat;
     Pokemon *mon;
     PlayerProfile *profile;
-    u32 tradeno;
+    NpcTradeNum tradeno;
     HeapID heapId;
 } NPCTradeAppData;
 
-NPCTradeAppData *NPCTradeApp_Init(HeapID heapId, u32 tradeno);
+NPCTradeAppData *NPCTradeApp_Init(HeapID heapId, NpcTradeNum tradeno);
 void NPCTradeApp_Delete(NPCTradeAppData *work);
-void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fieldSystem, u8 tradeno, u8 level, u16 mapno);
+void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, u8 level, u16 mapno);
 Mail *NPCTrade_MakeKenyaMail(void);
-int NPCTrade_CanGiveUpLoanMon(FieldSystem *fieldSystem, u8 tradeno, u8 idx);
+int NPCTrade_CanGiveUpLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, u8 idx);
 int NPCTradeApp_GetOfferedSpecies(NPCTradeAppData *work);
 int NPCTradeApp_GetRequestedSpecies(NPCTradeAppData *work);
 int NPCTradeApp_GetUnusedFlag(NPCTradeAppData *work);

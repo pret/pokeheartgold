@@ -28,6 +28,7 @@
 #include "unk_0205FD20.h"
 #include "unk_02062108.h"
 #include "unk_0206D494.h"
+#include "constants/npc_trade.h"
 #include "msgdata/msg.naix"
 
 typedef struct UnkStruct_0206D494 {
@@ -50,7 +51,7 @@ static u32 sub_0206D688(UnkStruct_0206D494 *a0);
 static u32 sub_0206D7B8(LocalMapObject *object, u32 x, u32 height, u32 y);
 static u32 sub_0206D81C(u32 direction);
 static void sub_0206D850(PlayerAvatar *playerAvatar);
-static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, u32 tradeNum);
+static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTradeNum tradeNum);
 static BOOL sub_0206DBC0(TaskManager *taskManager);
 
 BOOL sub_0206D494(FieldSystem *fieldSystem) {
@@ -265,7 +266,7 @@ static void sub_0206D850(PlayerAvatar *playerAvatar) {
     return;
 }
 
-BOOL MonIsInGameTradePoke(Pokemon *mon, u8 tradeNum) {
+BOOL MonIsInGameTradePoke(Pokemon *mon, NpcTradeNum tradeNum) {
     NPCTrade *trade = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeNum, FALSE, HEAP_ID_FIELD, TRUE);
     BOOL result = MonIsInGameTradePokeInternal(mon, trade, tradeNum);
     FreeToHeap(trade);
@@ -311,12 +312,12 @@ BOOL MonIsFromTogepiEgg(Pokemon *mon, SaveData *saveData) {
     return TRUE;
 }
 
-static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, u32 tradeNum) {
+static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTradeNum tradeNum) {
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     // The game calls this function only for Kenya the Spearow from the
     // Route 35-Goldenrod City Gate, and Shuckie the Shuckle from Cianwood City,
     // thus possible evolutions from other in game trades are not considered here.
-    if (tradeNum == 7) {
+    if (tradeNum == NPC_TRADE_KENYA_SPEAROW) {
         if (!(species == SPECIES_SPEAROW || species == SPECIES_FEAROW)) {
             return FALSE;
         }
@@ -358,7 +359,7 @@ static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, u32 trad
     }
     String *monOtName = String_New(8, HEAP_ID_FIELD);
     GetMonData(mon, MON_DATA_OT_NAME_2, monOtName);
-    String *tradeOtName = NewString_ReadMsgData(messageData, TRADE_MAX + tradeNum);
+    String *tradeOtName = NewString_ReadMsgData(messageData, NPC_TRADE_OT_NUM(tradeNum));
     BOOL differentOtName = String_Compare(monOtName, tradeOtName);
     String_Delete(tradeOtName);
     String_Delete(monOtName);

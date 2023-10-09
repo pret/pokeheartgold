@@ -1,12 +1,13 @@
 #ifndef POKEHEARTGOLD_UNK_0206D494_H
 #define POKEHEARTGOLD_UNK_0206D494_H
 
+#include "npc_trade.h"
 #include "pokemon_types_def.h"
 #include "script.h"
 #include "task.h"
 
 BOOL sub_0206D494(FieldSystem *fieldSystem);
-BOOL MonIsInGameTradePoke(Pokemon *mon, u8 tradeNum);
+BOOL MonIsInGameTradePoke(Pokemon *mon, NpcTradeNum tradeNum);
 BOOL MonIsFromTogepiEgg(Pokemon *mon, SaveData *saveData);
 BugContest *FieldSystem_BugContest_Get(FieldSystem *fieldSystem);
 u16 *BugContest_GetSportBallsAddr(BugContest *contest);

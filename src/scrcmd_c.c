@@ -3439,7 +3439,7 @@ BOOL ScrCmd_LoadNPCTrade(ScriptContext *ctx) {
     u8 tradeNo = ScriptReadByte(ctx);
 
     HandleLoadOverlay(FS_OVERLAY_ID(npc_trade), OVY_LOAD_ASYNC);
-    *p_tradeWork = NPCTradeApp_Init(HEAP_ID_FIELD, tradeNo);
+    *p_tradeWork = NPCTradeApp_Init(HEAP_ID_FIELD, (NpcTradeNum)tradeNo);
     return FALSE;
 }
 
@@ -3483,7 +3483,7 @@ BOOL ScrCmd_GiveLoanMon(ScriptContext *ctx) {
     u8 level = ScriptReadByte(ctx);
     u16 mapno = ScriptReadHalfword(ctx);
     HandleLoadOverlay(FS_OVERLAY_ID(npc_trade), OVY_LOAD_ASYNC);
-    NPCTrade_MakeAndGiveLoanMon(ctx->fieldSystem, tradeno, level, mapno);
+    NPCTrade_MakeAndGiveLoanMon(ctx->fieldSystem, (NpcTradeNum)tradeno, level, mapno);
     UnloadOverlayByID(FS_OVERLAY_ID(npc_trade));
     return FALSE;
 }
@@ -3493,7 +3493,7 @@ BOOL ScrCmd_CheckReturnLoanMon(ScriptContext *ctx) {
     u16 idx = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     HandleLoadOverlay(FS_OVERLAY_ID(npc_trade), OVY_LOAD_ASYNC);
-    *p_ret = NPCTrade_CanGiveUpLoanMon(ctx->fieldSystem, tradeno, idx);
+    *p_ret = NPCTrade_CanGiveUpLoanMon(ctx->fieldSystem, (NpcTradeNum)tradeno, idx);
     UnloadOverlayByID(FS_OVERLAY_ID(npc_trade));
     return FALSE;
 }
