@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_GYMMICK_H
 #define POKEHEARTGOLD_GYMMICK_H
 
-enum {
+typedef enum GymmickType {
     GYMMICK_NONE,
     GYMMICK_ECRUTEAK,
     GYMMICK_CIANWOOD,
@@ -12,7 +12,7 @@ enum {
     GYMMICK_FUCHSIA,
     GYMMICK_VIRIDIAN,
     GYMMICK_SINJOH,
-};
+} GymmickType;
 
 typedef union GymmickUnion {
     u8 raw[0x20];
@@ -46,13 +46,13 @@ typedef union GymmickUnion {
 } GymmickUnion;
 
 typedef struct Gymmick {
-    int kind;
+    GymmickType type;
     GymmickUnion data;
 } Gymmick;
 
 void Save_Gymmick_Clear(Gymmick *gymmick);
-GymmickUnion *Save_Gymmick_Init(Gymmick *gymmick, int kind);
-GymmickUnion *Save_Gymmick_AssertMagic_GetData(Gymmick *gymmick, int kind);
-int Save_Gymmick_GetType(Gymmick *gymmick);
+GymmickUnion *Save_Gymmick_Init(Gymmick *gymmick, GymmickType type);
+GymmickUnion *Save_Gymmick_AssertMagic_GetData(Gymmick *gymmick, GymmickType type);
+GymmickType Save_Gymmick_GetType(Gymmick *gymmick);
 
 #endif //POKEHEARTGOLD_GYMMICK_H
