@@ -6,7 +6,7 @@
 #include "gf_gfx_loader.h"
 #include "item.h"
 #include "msgdata.h"
-#include "unk_0208E600.h"
+#include "trainer_memo.h"
 #include "unk_02055418.h"
 #include "unk_02092BE8.h"
 #include "map_section.h"

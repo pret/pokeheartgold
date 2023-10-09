@@ -17747,7 +17747,7 @@ _021EE81E:
 	mov r2, #0
 	ldr r1, [r5, r1]
 	mov r3, #0xe9
-	bl sub_0208F270
+	bl BoxMonSetTrainerMemo
 	mov r7, #1
 _021EE854:
 	cmp r7, #0
@@ -18132,7 +18132,7 @@ _021EEB3A:
 	mov r2, #0
 	ldr r1, [r5, r1]
 	mov r3, #0xe9
-	bl sub_0208F270
+	bl BoxMonSetTrainerMemo
 	add r0, r4, #0
 	bl Mon_GetBoxMon
 	str r0, [sp, #0x14]
@@ -18222,7 +18222,7 @@ _021EEBA4:
 	ldrh r3, [r5, r3]
 	ldr r1, [r5, r1]
 	mov r2, #4
-	bl sub_0208F270
+	bl BoxMonSetTrainerMemo
 	ldr r2, _021EECE4 ; =0x0000AD2F
 	add r0, r6, #0
 	mov r1, #0xa

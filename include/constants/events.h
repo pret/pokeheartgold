@@ -1,0 +1,11 @@
+#ifndef POKEHEARTGOLD_CONSTANTS_EVENTS_H
+#define POKEHEARTGOLD_CONSTANTS_EVENTS_H
+
+#define EVENT_SPIKY_EARED_PICHU         0
+#define EVENT_ARCEUS_HALL_OF_ORIGIN     1
+#define EVENT_ARCEUS_MOVIE_GIFT         2
+#define EVENT_CELEBI                    3
+
+#define NUM_EVENTS                      4
+
+#endif //POKEHEARTGOLD_CONSTANTS_EVENTS_H

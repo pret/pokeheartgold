@@ -1,3 +1,4 @@
+#include "constants/events.h"
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_D24R0205.h"
 #include "msgdata/msg/msg_0076_D24R0205.h"
@@ -31,7 +32,7 @@ _003D:
 	goto _009D
 
 _0061:
-	follower_poke_is_event_trigger 1, VAR_TEMP_x4005, VAR_TEMP_x4007
+	follower_poke_is_event_trigger EVENT_ARCEUS_HALL_OF_ORIGIN, VAR_TEMP_x4005, VAR_TEMP_x4007
 	compare VAR_TEMP_x4007, 1
 	call_if_eq _009F
 	nop_var_490 VAR_TEMP_x4005
@@ -39,7 +40,7 @@ _0061:
 	end
 
 _007F:
-	follower_poke_is_event_trigger 2, VAR_TEMP_x4005, VAR_TEMP_x4006
+	follower_poke_is_event_trigger EVENT_ARCEUS_MOVIE_GIFT, VAR_TEMP_x4005, VAR_TEMP_x4006
 	compare VAR_TEMP_x4006, 1
 	call_if_eq _009F
 	nop_var_490 VAR_TEMP_x4005
