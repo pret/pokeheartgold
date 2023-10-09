@@ -5,9 +5,7 @@
 
 	.text
     
-    .public ov110_021E5D90
     .public ov110_021E6F54
-    .public ov110_021E61B0
     .public ov110_021E6DC0
     .public ov110_021E6E34
     .public ov110_021E6E6C
@@ -16,334 +14,7 @@
     .public ov110_021E6E18
     .public ov110_021E6E50
     .public ov110_021E6678
-    
-	thumb_func_start ov110_021E66F8
-ov110_021E66F8: ; 0x021E66F8
-	push {r4, lr}
-	add r4, r0, #0
-	add r1, r4, #0
-	add r0, #0x84
-	add r1, #0x88
-	ldr r0, [r0]
-	ldr r1, [r1]
-	bl SpriteRenderer_RemoveGfxHandler
-	add r0, r4, #0
-	mov r1, #0
-	add r0, #0x88
-	str r1, [r0]
-	add r0, r4, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	bl SpriteRenderer_Delete
-	add r0, r4, #0
-	mov r1, #0
-	add r0, #0x84
-	str r1, [r0]
-	bl GF_DestroyVramTransferManager
-	ldr r0, [r4]
-	bl sub_0200B2E0
-	pop {r4, pc}
-	thumb_func_end ov110_021E66F8
-
-	thumb_func_start ov110_021E6730
-ov110_021E6730: ; 0x021E6730
-	push {r4, lr}
-	add r4, r0, #0
-	bl ov110_021E6678
-	add r0, r4, #0
-	bl ov110_021E6764
-	mov r0, #0x10
-	mov r1, #1
-	bl GX_EngineAToggleLayers
-	pop {r4, pc}
-	thumb_func_end ov110_021E6730
-
-	thumb_func_start ov110_021E6748
-ov110_021E6748: ; 0x021E6748
-	push {r4, lr}
-	add r4, r0, #0
-	mov r0, #0x10
-	mov r1, #0
-	bl GX_EngineAToggleLayers
-	add r0, r4, #0
-	bl ov110_021E6898
-	add r0, r4, #0
-	bl ov110_021E66F8
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end ov110_021E6748
-
-	thumb_func_start ov110_021E6764
-ov110_021E6764: ; 0x021E6764
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #8
-	add r5, r0, #0
-	ldr r6, _021E6890 ; =ov110_021E6F7C
-	mov r7, #0
-	add r4, r5, #0
-_021E6770:
-	add r0, r5, #0
-	add r1, r5, #0
-	add r0, #0x84
-	add r1, #0x88
-	ldr r0, [r0]
-	ldr r1, [r1]
-	add r2, r6, #0
-	bl SpriteRenderer_CreateSprite
-	add r1, r4, #0
-	add r1, #0x8c
-	str r0, [r1]
-	add r0, r4, #0
-	add r0, #0x8c
-	mov r1, #1
-	ldr r0, [r0]
-	lsl r1, r1, #0xc
-	bl sub_02024868
-	add r7, r7, #1
-	add r6, #0x28
-	add r4, r4, #4
-	cmp r7, #1
-	ble _021E6770
-	add r0, r5, #0
-	add r0, #0x8c
-	ldr r0, [r0]
-	mov r1, #1
-	bl Set2dSpriteVisibleFlag
-	add r0, r5, #0
-	add r0, #0x90
-	ldr r0, [r0]
-	mov r1, #0
-	bl Set2dSpriteVisibleFlag
-	add r0, r5, #0
-	add r0, #0x8c
-	ldr r0, [r0]
-	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
-	add r0, r5, #0
-	add r0, #0x90
-	ldr r0, [r0]
-	mov r1, #0
-	bl sub_02024B78
-	add r0, r5, #0
-	add r0, #0x90
-	ldr r0, [r0]
-	mov r1, #2
-	bl Sprite_SetPriority
-	add r0, r5, #0
-	add r0, #0x90
-	ldr r0, [r0]
-	mov r1, #1
-	bl sub_02024B78
-	mov r0, #0
-	str r0, [sp]
-	mov r0, #1
-	str r0, [sp, #4]
-	add r0, r5, #0
-	add r1, r5, #0
-	ldrb r3, [r5, #0x19]
-	add r0, #0x84
-	add r1, #0x88
-	ldr r0, [r0]
-	ldr r1, [r1]
-	mov r2, #0xac
-	add r3, r3, #4
-	bl sub_0200E248
-	mov r7, #0
-	add r6, r5, #0
-_021E680A:
-	add r0, r7, #2
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x16
-	add r0, r5, #0
-	add r1, r5, #0
-	add r0, #0x84
-	add r1, #0x88
-	ldr r0, [r0]
-	ldr r1, [r1]
-	ldr r2, _021E6894 ; =ov110_021E6FCC
-	bl SpriteRenderer_CreateSprite
-	add r1, r5, r4
-	add r1, #0x8c
-	str r0, [r1]
-	add r0, r5, r4
-	add r0, #0x8c
-	ldr r0, [r0]
-	mov r1, #1
-	bl Set2dSpriteVisibleFlag
-	add r0, r5, r4
-	add r0, #0x8c
-	ldr r0, [r0]
-	add r1, r7, #0
-	bl Set2dSpriteAnimSeqNo
-	add r0, r5, r4
-	add r0, #0x8c
-	ldr r0, [r0]
-	mov r1, #0
-	bl sub_02024B78
-	add r0, r5, r4
-	add r0, #0x8c
-	ldr r0, [r0]
-	mov r1, #2
-	bl sub_0202487C
-	add r0, r5, r4
-	add r0, #0x8c
-	ldr r1, [r0]
-	add r0, r6, #0
-	add r0, #0xe0
-	str r1, [r0]
-	add r0, r6, #0
-	add r0, #0xde
-	ldrb r0, [r0]
-	add r2, r6, #0
-	add r3, r6, #0
-	str r0, [sp]
-	add r2, #0xdc
-	add r3, #0xdd
-	lsl r1, r7, #0x18
-	ldrb r2, [r2]
-	ldrb r3, [r3]
-	add r0, r5, #0
-	lsr r1, r1, #0x18
-	bl ov110_021E6C18
-	add r7, r7, #1
-	add r6, #8
-	cmp r7, #0x10
-	blt _021E680A
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_021E6890: .word ov110_021E6F7C
-_021E6894: .word ov110_021E6FCC
-	thumb_func_end ov110_021E6764
-
-	thumb_func_start ov110_021E6898
-ov110_021E6898: ; 0x021E6898
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	mov r4, #0
-_021E689E:
-	add r0, r5, #0
-	add r0, #0x8c
-	ldr r0, [r0]
-	bl Sprite_Delete
-	add r4, r4, #1
-	add r5, r5, #4
-	cmp r4, #0x12
-	blt _021E689E
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ov110_021E6898
-
-	thumb_func_start ov110_021E68B4
-ov110_021E68B4: ; 0x021E68B4
-	push {r3, r4}
-	mov r1, #0
-	mov r3, #0x1e
-_021E68BA:
-	add r2, r0, #0
-	add r2, #0xde
-	ldrb r2, [r2]
-	cmp r2, #0
-	bne _021E68EE
-	lsr r4, r1, #0x1f
-	lsl r2, r1, #0x1e
-	sub r2, r2, r4
-	ror r2, r3
-	add r2, r4, r2
-	add r4, r2, #1
-	add r2, r0, #0
-	add r2, #0xdc
-	ldrb r2, [r2]
-	cmp r4, r2
-	bne _021E68EE
-	asr r2, r1, #1
-	lsr r2, r2, #0x1e
-	add r2, r1, r2
-	asr r2, r2, #2
-	add r4, r2, #1
-	add r2, r0, #0
-	add r2, #0xdd
-	ldrb r2, [r2]
-	cmp r4, r2
-	beq _021E68F4
-_021E68EE:
-	mov r0, #0
-	pop {r3, r4}
-	bx lr
-_021E68F4:
-	add r1, r1, #1
-	add r0, #8
-	cmp r1, #0x10
-	blt _021E68BA
-	mov r0, #1
-	pop {r3, r4}
-	bx lr
-	.balign 4, 0
-	thumb_func_end ov110_021E68B4
-
-	thumb_func_start ov110_021E6904
-ov110_021E6904: ; 0x021E6904
-	push {r3, r4, r5, lr}
-	sub sp, #0x10
-	add r5, r0, #0
-	add r4, r1, #0
-	add r0, #0x4c
-	mov r1, #0
-	bl FillWindowPixelBuffer
-	add r0, r5, #0
-	add r0, #0x8c
-	ldr r0, [r0]
-	add r1, r4, #0
-	bl Set2dSpriteAnimSeqNo
-	cmp r4, #1
-	bne _021E693C
-	add r0, r5, #0
-	add r0, #0x8c
-	ldr r0, [r0]
-	bl Sprite_ResetAnimCtrlState
-	add r0, r5, #0
-	add r0, #0x8c
-	ldr r0, [r0]
-	mov r1, #1
-	bl Set2dSpriteAnimActiveFlag
-	b _021E6948
-_021E693C:
-	add r0, r5, #0
-	add r0, #0x8c
-	ldr r0, [r0]
-	mov r1, #0
-	bl Set2dSpriteAnimActiveFlag
-_021E6948:
-	ldr r1, [r5, #0x34]
-	mov r0, #4
-	mov r2, #0
-	bl FontID_String_GetWidth
-	mov r1, #4
-	add r3, r0, #0
-	lsl r2, r4, #2
-	mov r4, #0x30
-	sub r3, r4, r3
-	str r1, [sp]
-	mov r0, #0xff
-	str r0, [sp, #4]
-	ldr r0, _021E6984 ; =ov110_021E6DA4
-	lsr r3, r3, #1
-	ldr r0, [r0, r2]
-	str r0, [sp, #8]
-	mov r0, #0
-	str r0, [sp, #0xc]
-	add r0, r5, #0
-	ldr r2, [r5, #0x34]
-	add r0, #0x4c
-	bl AddTextPrinterParameterized2
-	add r5, #0x4c
-	add r0, r5, #0
-	bl ScheduleWindowCopyToVram
-	add sp, #0x10
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-_021E6984: .word ov110_021E6DA4
-	thumb_func_end ov110_021E6904
+    .public ov110_021E6904
 
 	thumb_func_start ov110_021E6988
 ov110_021E6988: ; 0x021E6988
@@ -891,6 +562,7 @@ ov110_021E6D9C: ; 0x021E6D9C
 	.byte 0x00, 0x05
 	.byte 0x05, 0x05
 
+.public ov110_021E6DA4
 ov110_021E6DA4: ; 0x021E6DA4
 	.word 0x00010200
 	.word 0x00030400
@@ -989,6 +661,7 @@ ov110_021E6F54: ; 0x021E6F54
 	.byte 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
+.public ov110_021E6F7C
 ov110_021E6F7C: ; 0x021E6F7C
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0xD0, 0x00, 0xA8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -997,6 +670,7 @@ ov110_021E6F7C: ; 0x021E6F7C
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
+.public ov110_021E6FCC
 ov110_021E6FCC: ; 0x021E6FCC
 	.byte 0x01, 0x00, 0x00, 0x00
 	.byte 0xD0, 0x00, 0xA8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

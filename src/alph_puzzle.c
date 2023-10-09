@@ -22,6 +22,7 @@
 #include "unk_0201660C.h"
 #include "vram_transfer_manager.h"
 #include "unk_0200B150.h"
+#include "unk_02023694.h"
 
 static int AlphPuzzleMainSeq_FadeIn(AlphPuzzleData *data);
 static int AlphPuzzleMainSeq_FadeOut(AlphPuzzleData *data);
@@ -32,11 +33,11 @@ static int AlphPuzzleMainSeq_RotateTile(AlphPuzzleData *data);
 static int AlphPuzzleMainSeq_5(AlphPuzzleData *data);
 static int AlphPuzzleMainSeq_Clear(AlphPuzzleData *data);
 static void ov110_021E5BE4(AlphPuzzleData *data);
-//static void ov110_021E5C18(AlphPuzzleData *data);
+static void ov110_021E5C18(AlphPuzzleData *data);
 static void ov110_021E5C3C(AlphPuzzleData *data);
 static int ov110_021E5CCC(AlphPuzzleData *data);
 static s32 ov110_021E5D30(AlphPuzzleData *data, u16 touchX, u16 touchY);
-//static int ov110_021E5D90(AlphPuzzleData *data, u8 *xOut, u8 *yOut);
+static int ov110_021E5D90(AlphPuzzleData *data, u8 *xOut, u8 *yOut);
 static int ov110_021E5E1C(AlphPuzzleData *data);
 static int ov110_021E5F84(AlphPuzzleData *data);
 static int ov110_021E6014(AlphPuzzleData *data);
@@ -52,7 +53,14 @@ static void ov110_021E6580(AlphPuzzleData *data);
 static void ov110_021E65DC(AlphPuzzleData *data);
 static void ov110_021E6618(AlphPuzzleData *data);
 static void ov110_021E6650(AlphPuzzleData *data);
-//static void ov110_021E6678(AlphPuzzleData *data);
+static void ov110_021E6678(AlphPuzzleData *data);
+static void ov110_021E66F8(AlphPuzzleData *data);
+static void ov110_021E6730(AlphPuzzleData *data);
+static void ov110_021E6748(AlphPuzzleData *data);
+static void ov110_021E6764(AlphPuzzleData *data);
+static void AlphPuzzle_DeleteSprites(AlphPuzzleData *data);
+static BOOL AlphPuzzle_CheckComplete(AlphPuzzleData *data);
+//static void ov110_021E6904(AlphPuzzleData *data, int a1);
 
 BOOL ov110_AlphPuzzle_OvyInit(OVY_MANAGER *man, int *state) {
     switch (*state) {
@@ -250,7 +258,7 @@ static void ov110_021E5BE4(AlphPuzzleData *data) {
     Main_SetVBlankIntrCB(ov110_021E6110, data);
 }
 
-void ov110_021E5C18(AlphPuzzleData *data) {
+static void ov110_021E5C18(AlphPuzzleData *data) {
     ov110_021E6748(data);
     ov110_021E6650(data);
     ov110_021E65DC(data);
@@ -329,7 +337,7 @@ s32 ov110_021E5D30(AlphPuzzleData *data, u16 touchX, u16 touchY) {
 
 extern u8 ov110_021E6D9C[4][2];
 
-int ov110_021E5D90(AlphPuzzleData *data, u8 *xOut, u8 *yOut) { 
+static int ov110_021E5D90(AlphPuzzleData *data, u8 *xOut, u8 *yOut) { 
     int i;
     
     *xOut = 0;
@@ -377,7 +385,7 @@ static int ov110_021E5E1C(AlphPuzzleData *data) {
             ov110_021E6C18(data, data->unk1B, data->unk22, data->unk23, data->selectedTile->rotation);
         }
         ov110_021E6C58(data, 0xFF, 0);
-        if (ov110_021E68B4(data)) {
+        if (AlphPuzzle_CheckComplete(data)) {
             return ALPH_PUZZLE_STATE_CLEAR;
         }
         return ALPH_PUZZLE_STATE_1;
@@ -442,7 +450,7 @@ static int ov110_021E5F84(AlphPuzzleData *data) {
         data->unkE = 0;
         data->unkC = 0;
         
-        if (ov110_021E68B4(data)) {
+        if (AlphPuzzle_CheckComplete(data)) {
             return ALPH_PUZZLE_STATE_CLEAR;
         }
         return ALPH_PUZZLE_STATE_1;
@@ -709,7 +717,7 @@ extern Unk122_021E92FC ov110_021E6EA4;
 extern Unk122_021E92D0 ov110_021E6DD0;
 extern const u16 ov110_021E6DB0[7];
 
-void ov110_021E6678(AlphPuzzleData *data) {
+static void ov110_021E6678(AlphPuzzleData *data) {
     GF_CreateVramTransferManager(32, data->heapId);
     data->unk84 = SpriteRenderer_Create(data->heapId);
     sub_0200CF70(data->unk84, &ov110_021E6EA4, &ov110_021E6DD0, 3);
@@ -718,4 +726,89 @@ void ov110_021E6678(AlphPuzzleData *data) {
     data->unk88 = SpriteRenderer_CreateGfxHandler(data->unk84);
     sub_0200CFF4(data->unk84, data->unk88, 18);
     sub_0200D2A4(data->unk84, data->unk88, ov110_021E6DB0, 2, 1);
+}
+
+static void ov110_021E66F8(AlphPuzzleData *data) {
+    SpriteRenderer_RemoveGfxHandler(data->unk84, data->unk88);
+    data->unk88 = NULL;
+    SpriteRenderer_Delete(data->unk84);
+    data->unk84 = NULL;
+    GF_DestroyVramTransferManager();
+    sub_0200B2E0(data->heapId);
+}
+
+static void ov110_021E6730(AlphPuzzleData *data) {
+    ov110_021E6678(data);
+    ov110_021E6764(data);
+    GX_EngineAToggleLayers(16, GX_LAYER_TOGGLE_ON);
+}
+
+static void ov110_021E6748(AlphPuzzleData *data) {
+    GX_EngineAToggleLayers(16, GX_LAYER_TOGGLE_OFF);
+    AlphPuzzle_DeleteSprites(data);
+    ov110_021E66F8(data);
+}
+
+extern UnkStruct_0200D2B4 ov110_021E6F7C[2];
+extern UnkStruct_0200D2B4 ov110_021E6FCC;
+
+static void ov110_021E6764(AlphPuzzleData *data) {
+    int i;
+    for (i = 0; i <= 1; i++) {
+        data->unk8C[i] = SpriteRenderer_CreateSprite(data->unk84, data->unk88, &ov110_021E6F7C[i]);
+        sub_02024868(data->unk8C[i], 1 << 12);
+    }
+    Set2dSpriteVisibleFlag(data->unk8C[0], TRUE);
+    Set2dSpriteVisibleFlag(data->unk8C[1], FALSE);
+    Set2dSpriteAnimActiveFlag(data->unk8C[0], TRUE);
+    sub_02024B78(data->unk8C[1], GX_OAM_MODE_NORMAL);
+    Sprite_SetPriority(data->unk8C[1], 2);
+    sub_02024B78(data->unk8C[1], GX_OAM_MODE_XLU);
+    sub_0200E248(data->unk84, data->unk88, NARC_a_1_7_2, data->puzzleIndex + 4, 0, 1);
+    for (i = 0; i < 16; i++) {
+        u8 index = i + 2;
+        data->unk8C[index] = SpriteRenderer_CreateSprite(data->unk84, data->unk88, &ov110_021E6FCC);
+        Set2dSpriteVisibleFlag(data->unk8C[index], 1);
+        Set2dSpriteAnimSeqNo(data->unk8C[index], i);
+        sub_02024B78(data->unk8C[index], GX_OAM_MODE_NORMAL);
+        sub_0202487C(data->unk8C[index], 2);
+        data->tileGrid[i].sprite = data->unk8C[index]; 
+        ov110_021E6C18(data, (u8) i, data->tileGrid[i].x, data->tileGrid[i].y, data->tileGrid[i].rotation);
+    }
+}
+
+static void AlphPuzzle_DeleteSprites(AlphPuzzleData *data) {
+    for (int i = 0; i < 18; i++) {
+        Sprite_Delete(data->unk8C[i]);
+    }
+}
+
+static BOOL AlphPuzzle_CheckComplete(AlphPuzzleData *data) {
+    for (int i = 0; i < 16; i++) {
+        if (data->tileGrid[i].rotation == 0) {
+            if ((i % 4) + 1 == data->tileGrid[i].x && (i / 4) + 1 == data->tileGrid[i].y) {
+                continue;
+            }
+        }
+        return FALSE;
+    }
+    return TRUE;
+}
+
+//related to text color
+extern u32 ov110_021E6DA4[3];
+
+void ov110_021E6904(AlphPuzzleData *data, int a1) {
+    FillWindowPixelBuffer(data->window, 0);
+    Set2dSpriteAnimSeqNo(data->unk8C[0], a1);
+    if (a1 == 1) {
+        Sprite_ResetAnimCtrlState(data->unk8C[0]);
+        Set2dSpriteAnimActiveFlag(data->unk8C[0], 1);
+    } else {
+        Set2dSpriteAnimActiveFlag(data->unk8C[0], 0);
+    }
+    
+    u32 width = FontID_String_GetWidth(4, data->unk34, 0);
+    AddTextPrinterParameterized2(data->window, 4, data->unk34, (48 - width) / 2, 4, 0xFF, ov110_021E6DA4[a1], NULL);
+    ScheduleWindowCopyToVram(data->window);
 }
