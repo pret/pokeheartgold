@@ -24,7 +24,7 @@ scr_seq_0952_000:
 	setvar VAR_TEMP_x4000, 0
 	setvar VAR_TEMP_x4001, 653
 _0042:
-	scrcmd_807 VAR_TEMP_x4000, VAR_TEMP_x4002
+	set_trainer_house_sprite VAR_TEMP_x4000, VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 0
 	goto_if_ne _005F
 	setflagvar VAR_TEMP_x4001

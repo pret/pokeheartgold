@@ -434,7 +434,8 @@ static BOOL Task_BugContest_PromptSwapPokemon(TaskManager *taskManager) {
 }
 
 // sets the appropriate overworld sprite for trainer in trainer house
-BOOL ScrCmd_807(ScriptContext *ctx) {
+// ScrCmd_SetTrainerHouseSprite
+BOOL ScrCmd_SetTrainerHouseSprite(ScriptContext *ctx) {
     u16 trainerNum = ScriptGetVar(ctx);
     u16 *hasTrainer = ScriptGetVarPointer(ctx);
     u16 *spriteId = GetVarPointer(ctx->fieldSystem, VAR_OBJ_1 + trainerNum);
