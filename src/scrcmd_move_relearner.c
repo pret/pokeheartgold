@@ -6,7 +6,7 @@ BOOL ScrNative_WaitApplication(ScriptContext *ctx);
 
 BOOL ScrCmd_394(ScriptContext *ctx) {
     u16 var0 = ScriptGetVar(ctx);
-    void **runningAppData = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //*could* be MoveRelearner, not sure
+    void **runningAppData = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //*could* be MoveRelearnerAppArgs, not sure
     *runningAppData = sub_0203E7F4(HEAP_ID_32, ctx->fieldSystem, var0, 0);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
@@ -14,7 +14,7 @@ BOOL ScrCmd_394(ScriptContext *ctx) {
 
 BOOL ScrCmd_395(ScriptContext *ctx) {
     u16 *retPtr = ScriptGetVarPointer(ctx);
-    void **runningAppData = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //*could* be MoveRelearner, not sure
+    void **runningAppData = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //*could* be MoveRelearnerAppArgs, not sure
     GF_ASSERT(*runningAppData != NULL);
 
     *retPtr = sub_0203E864(*runningAppData);
@@ -39,8 +39,8 @@ BOOL ScrCmd_466(ScriptContext *ctx) {
 }
 
 static void CreateMoveRelearner(ScriptContext *ctx, int a1, Pokemon *mon, u16 *eligibleMoves) {
-    MoveRelearner **moveRelearnerPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    MoveRelearner *moveRelearner = MoveRelearner_New(HEAP_ID_32);
+    MoveRelearnerAppArgs **moveRelearnerPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    MoveRelearnerAppArgs *moveRelearner = MoveRelearner_New(HEAP_ID_32);
     *moveRelearnerPtr = moveRelearner;
 
     moveRelearner->mon = mon;
@@ -75,8 +75,8 @@ BOOL ScrCmd_MoveTutorInit(ScriptContext *ctx) {
 
 BOOL ScrCmd_MoveRelearnerGetResult(ScriptContext *ctx) {
     u16 *retPtr = ScriptGetVarPointer(ctx);
-    MoveRelearner **moveRelearnerPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    MoveRelearner *moveRelearner = *moveRelearnerPtr;
+    MoveRelearnerAppArgs **moveRelearnerPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    MoveRelearnerAppArgs *moveRelearner = *moveRelearnerPtr;
     GF_ASSERT(moveRelearner != NULL);
 
     if (moveRelearner->padding_1A[0] == 0) {

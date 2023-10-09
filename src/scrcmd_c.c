@@ -37,7 +37,6 @@
 #include "fashion_case.h"
 #include "save_local_field_data.h"
 #include "unk_0206B910.h"
-#include "pokegear.h"
 #include "unk_02068FC8.h"
 #include "game_clear.h"
 #include "save_arrays.h"
@@ -1697,7 +1696,7 @@ BOOL ScrCmd_645(ScriptContext *ctx) {
 BOOL ScrCmd_GetMoveSelection(ScriptContext *ctx) {
     u8 r6 = ScriptReadByte(ctx);
     u16 *r5 = ScriptGetVarPointer(ctx);
-    void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //presumably move selection data?
+    Unk0203E600 **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //presumably move selection data?
     GF_ASSERT(*p_work != NULL);
     if (r6 == 1) {
         *r5 = sub_0203E864(*p_work);
@@ -1956,7 +1955,7 @@ BOOL ScrCmd_156(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_TownMap(ScriptContext *ctx) {
-    TownMap **p_townMap = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    Unk_PokegearSTRUCT_2C **p_townMap = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     *p_townMap = TownMap_New(ctx->fieldSystem, 1);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
@@ -1965,7 +1964,7 @@ BOOL ScrCmd_TownMap(ScriptContext *ctx) {
 BOOL ScrCmd_408(ScriptContext *ctx) {
     u16 r7 = ScriptGetVar(ctx);
     u16 sp0 = ScriptGetVar(ctx);
-    struct UnkStruct_ScrCmd408 **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    UnkStruct_ScrCmd408 **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     *p_work = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct UnkStruct_ScrCmd408));
     InitUnkStructScrCmd408(*p_work, r7, sp0, ctx);
     sub_0203F0A8(ctx->fieldSystem, *p_work);
@@ -2143,7 +2142,7 @@ BOOL ScrCmd_630(ScriptContext *ctx) {
 
 BOOL ScrCmd_492(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
-    u16 *r6 = ScriptGetVarPointer(ctx);
+    Unk0203E8C8 *r6 = (Unk0203E8C8 *)ScriptGetVarPointer(ctx);
     u16 *r3 = ScriptGetVarPointer(ctx);
 
     *r3 = 0xFFFF;
@@ -2152,7 +2151,7 @@ BOOL ScrCmd_492(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_PromptEasyChat(ScriptContext *ctx) {
-    u16 *r6 = ScriptGetVarPointer(ctx);
+    Unk0203E8C8 *r6 = (Unk0203E8C8 *)ScriptGetVarPointer(ctx);
     u16 *r4 = ScriptGetVarPointer(ctx);
     u16 *r0 = ScriptGetVarPointer(ctx);
 
@@ -3218,7 +3217,7 @@ BOOL ScrCmd_375(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_376(ScriptContext *ctx) { //todo: mail screen
-    void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //MailAppData
+    Unk0203F074 **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //MailAppData
     *p_work = sub_0203F074(ctx->fieldSystem, HEAP_ID_FIELD);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
@@ -3943,7 +3942,7 @@ BOOL ScrCmd_550(ScriptContext *ctx) {
 
 BOOL ScrCmd_551(ScriptContext *ctx) {
     u16 r6 = ScriptGetVar(ctx);
-    void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    PartyMenuAppData **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     *p_work = sub_0203E5D0(HEAP_ID_32, ctx->fieldSystem, r6);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
@@ -4816,7 +4815,7 @@ BOOL ScrCmd_712(ScriptContext *ctx) { //smth creating alph puzzle screen?
 }
 
 BOOL ScrCmd_AlphPuzzle(ScriptContext *ctx) { //this just loads a different puzzle with another ID
-    void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    Unk0203EC04 **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     u8 puzzle = ScriptReadByte(ctx);
     if (puzzle > 4) {
         puzzle = 0;

@@ -2,15 +2,12 @@
 #include "constants/items.h"
 #include "bag_cursor.h"
 #include "berry_pots_app.h"
+#include "overlay_15.h"
 #include "overlay_16.h"
 #include "unk_0203E348.h"
 
 FS_EXTERN_OVERLAY(OVY_15);
 FS_EXTERN_OVERLAY(OVY_17);
-
-extern BOOL ov15_BagApp_Init(OVY_MANAGER*, int*);
-extern BOOL ov15_BagApp_Exec(OVY_MANAGER*, int*);
-extern BOOL ov15_BagApp_Exit(OVY_MANAGER*, int*);
 
 extern BOOL BerryPotsApp_Initialize(OVY_MANAGER*, int*);
 extern BOOL BerryPotsApp_Run(OVY_MANAGER*, int*);

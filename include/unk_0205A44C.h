@@ -13,5 +13,6 @@ void sub_0205A904(int command);
 int sub_0205A9A0(struct UnkStruct_02059E1C *fieldSystem_unk80, MessageFormat *msgFmt);
 void sub_0205AA9C(MessageFormat *msgFmt, u16 a1, u16 objId, PlayerProfile *profile, SaveEasyChat *easyChat);
 void sub_0205ABB0(struct UnkStruct_02059E1C *fieldSystem_unk80);
+void sub_0205A508(int a0);
 
 #endif //POKEHEARTGOLD_UNK_0205A44C_H

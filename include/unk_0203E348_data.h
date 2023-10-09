@@ -1,0 +1,67 @@
+#ifndef POKEHEARTGOLD_UNK_0203DFA4_DATA_H
+#define POKEHEARTGOLD_UNK_0203DFA4_DATA_H
+
+#include "field_system.h"
+#include "overlay_manager.h"
+
+extern const Location _020FA17C;
+extern const Location _020FA190;
+extern const u8 _020FA1A4[];
+extern const u8 _020FA1AC[];
+extern const u8 _020FA1A8[];
+extern const u8 _020FA1B0[];
+extern const u8 _020FA1B8[];
+extern const OVY_MGR_TEMPLATE _020FA494;
+extern const OVY_MGR_TEMPLATE _020FA484;
+extern const OVY_MGR_TEMPLATE _020FA474;
+extern const OVY_MGR_TEMPLATE _020FA464;
+extern const OVY_MGR_TEMPLATE _020FA454;
+extern const OVY_MGR_TEMPLATE _020FA444;
+extern const OVY_MGR_TEMPLATE _020FA434;
+extern const OVY_MGR_TEMPLATE _020FA424;
+extern const OVY_MGR_TEMPLATE _020FA414;
+extern const OVY_MGR_TEMPLATE _020FA404;
+extern const OVY_MGR_TEMPLATE _020FA3F4;
+extern const OVY_MGR_TEMPLATE _020FA3E4;
+extern const OVY_MGR_TEMPLATE _020FA3D4;
+extern const OVY_MGR_TEMPLATE _020FA3C4;
+extern const OVY_MGR_TEMPLATE _020FA3B4;
+extern const OVY_MGR_TEMPLATE _020FA3A4;
+extern const OVY_MGR_TEMPLATE _020FA394;
+extern const OVY_MGR_TEMPLATE _020FA384;
+extern const OVY_MGR_TEMPLATE _020FA374;
+extern const OVY_MGR_TEMPLATE _020FA364;
+extern const OVY_MGR_TEMPLATE _020FA354;
+extern const OVY_MGR_TEMPLATE _020FA344;
+extern const OVY_MGR_TEMPLATE _020FA334;
+extern const OVY_MGR_TEMPLATE _020FA324;
+extern const OVY_MGR_TEMPLATE _020FA314;
+extern const OVY_MGR_TEMPLATE sAppTemplate_Certificates;
+extern const OVY_MGR_TEMPLATE _020FA2F4;
+extern const OVY_MGR_TEMPLATE _020FA2E4;
+extern const OVY_MGR_TEMPLATE _020FA2D4;
+extern const OVY_MGR_TEMPLATE _020FA2C4;
+extern const OVY_MGR_TEMPLATE _020FA2B4;
+extern const OVY_MGR_TEMPLATE _020FA2A4;
+extern const OVY_MGR_TEMPLATE _020FA294;
+extern const OVY_MGR_TEMPLATE _020FA284;
+extern const OVY_MGR_TEMPLATE sAppTemplate_ChooseStarter;
+extern const OVY_MGR_TEMPLATE _020FA264;
+extern const OVY_MGR_TEMPLATE _020FA254;
+extern const OVY_MGR_TEMPLATE _020FA244;
+extern const OVY_MGR_TEMPLATE _020FA234;
+extern const OVY_MGR_TEMPLATE _020FA224;
+extern const OVY_MGR_TEMPLATE _020FA214;
+extern const OVY_MGR_TEMPLATE _020FA204;
+extern const OVY_MGR_TEMPLATE _020FA1F4;
+extern const OVY_MGR_TEMPLATE _020FA1E4;
+extern const OVY_MGR_TEMPLATE _020FA1D4;
+extern const OVY_MGR_TEMPLATE _020FA1C4;
+extern const u8 *_0210F978;
+extern OVY_MGR_TEMPLATE _0210F97C;
+extern OVY_MGR_TEMPLATE _0210F98C;
+extern OVY_MGR_TEMPLATE _0210F99C;
+extern OVY_MGR_TEMPLATE _0210F9AC;
+extern OVY_MGR_TEMPLATE _0210F9BC;
+
+#endif //POKEHEARTGOLD_UNK_0203DFA4_DATA_H

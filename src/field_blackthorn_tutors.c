@@ -2,15 +2,15 @@
 #include "field_blackthorn_tutors.h"
 #include "pokemon.h"
 
-struct MoveRelearner *MoveRelearner_New(HeapID heapId) {
-    struct MoveRelearner *ret;
+struct MoveRelearnerAppArgs *MoveRelearner_New(HeapID heapId) {
+    struct MoveRelearnerAppArgs *ret;
 
-    ret = AllocFromHeap(heapId, sizeof(struct MoveRelearner));
-    memset(ret, 0, sizeof(struct MoveRelearner));
+    ret = AllocFromHeap(heapId, sizeof(struct MoveRelearnerAppArgs));
+    memset(ret, 0, sizeof(struct MoveRelearnerAppArgs));
     return ret;
 }
 
-void MoveRelearner_Delete(struct MoveRelearner *moveRelearner) {
+void MoveRelearner_Delete(struct MoveRelearnerAppArgs *moveRelearner) {
     FreeToHeap(moveRelearner);
 }
 

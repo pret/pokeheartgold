@@ -160,10 +160,10 @@ void sub_02090E5C(Unk02090C94 *a0, u32 a1) {
     sub_02018410(a0->unk24, a1);
 }
 
-Unk02090E68 *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 a3, HeapID heapId) {
+UseMailWork *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 a3, HeapID heapId) {
     MAILBOX *mailbox = Save_Mailbox_Get(saveData);
-    Unk02090E68 *ptr = AllocFromHeapAtEnd(heapId, sizeof(Unk02090E68));
-    MI_CpuFill8(ptr, 0, sizeof(Unk02090E68));
+    UseMailWork *ptr = AllocFromHeapAtEnd(heapId, sizeof(UseMailWork));
+    MI_CpuFill8(ptr, 0, sizeof(UseMailWork));
 
     ptr->unkF = a3;
     ptr->partyIdx = partyIdx;
@@ -181,9 +181,9 @@ Unk02090E68 *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 a3, HeapID
     return ptr;
 }
 
-Unk02090E68 *sub_02090EC0(SaveData *saveData, int n, u16 i, HeapID heapId) {
-    Unk02090E68 *ptr = AllocFromHeapAtEnd(heapId, sizeof(Unk02090E68));
-    MI_CpuFill8(ptr, 0, sizeof(Unk02090E68));
+UseMailWork *sub_02090EC0(SaveData *saveData, int n, u16 i, HeapID heapId) {
+    UseMailWork *ptr = AllocFromHeapAtEnd(heapId, sizeof(UseMailWork));
+    MI_CpuFill8(ptr, 0, sizeof(UseMailWork));
 
     ptr->unk0[0] = 0;
     ptr->unk8 = n;
@@ -197,9 +197,9 @@ Unk02090E68 *sub_02090EC0(SaveData *saveData, int n, u16 i, HeapID heapId) {
     return ptr;
 }
 
-Unk02090E68 *sub_02090F00(SaveData *saveData, Pokemon *mon, HeapID heapId) {
-    Unk02090E68 *ptr = AllocFromHeapAtEnd(heapId, sizeof(Unk02090E68));
-    MI_CpuFill8(ptr, 0, sizeof(Unk02090E68));
+UseMailWork *sub_02090F00(SaveData *saveData, Pokemon *mon, HeapID heapId) {
+    UseMailWork *ptr = AllocFromHeapAtEnd(heapId, sizeof(UseMailWork));
+    MI_CpuFill8(ptr, 0, sizeof(UseMailWork));
 
     ptr->unk0[0] = 0;
     ptr->saveData = saveData;
@@ -211,9 +211,9 @@ Unk02090E68 *sub_02090F00(SaveData *saveData, Pokemon *mon, HeapID heapId) {
     return ptr;
 }
 
-Unk02090E68 *sub_02090F38(SaveData *saveData, u8 mailType, HeapID heapId) {
-    Unk02090E68 *ptr = AllocFromHeapAtEnd(heapId, sizeof(Unk02090E68));
-    MI_CpuFill8(ptr, 0, sizeof(Unk02090E68));
+UseMailWork *sub_02090F38(SaveData *saveData, u8 mailType, HeapID heapId) {
+    UseMailWork *ptr = AllocFromHeapAtEnd(heapId, sizeof(UseMailWork));
+    MI_CpuFill8(ptr, 0, sizeof(UseMailWork));
 
     ptr->unk0[0] = 0;
     ptr->saveData = saveData;
@@ -225,11 +225,11 @@ Unk02090E68 *sub_02090F38(SaveData *saveData, u8 mailType, HeapID heapId) {
     return ptr;
 }
 
-u32 sub_02090F6C(Unk02090E68 *a0) {
+u32 sub_02090F6C(UseMailWork *a0) {
     return a0->unk4;
 }
 
-BOOL sub_02090F70(Unk02090E68 *a0, Pokemon *mon) {
+BOOL sub_02090F70(UseMailWork *a0, Pokemon *mon) {
     if (sub_02090F6C(a0) == 0) {
         return FALSE;
     }
@@ -237,7 +237,7 @@ BOOL sub_02090F70(Unk02090E68 *a0, Pokemon *mon) {
     return TRUE;
 }
 
-void sub_02090F90(Unk02090E68 *a0) {
+void sub_02090F90(UseMailWork *a0) {
     if (a0->mail != NULL) {
         FreeToHeap(a0->mail);
     }

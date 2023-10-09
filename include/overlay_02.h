@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_OVERLAY_02_H
 
 #include "battle/battle_setup.h"
+#include "heap.h"
 #include "script.h"
 #include "unk_0201F79C.h"
 #include "unk_0203BC10.h"
@@ -103,5 +104,6 @@ void ov02_02246714(TaskManager *man, u32 a1, u32 a2, u32 a3, u32 a4);
 void ov02_022469B4(TaskManager *man, LocalMapObject *obj1, LocalMapObject *obj2);
 void OpenAlphHiddenRoom(TaskManager *man, u32 a1);
 int GetRadioMusicPlayingSeq(void);
+UnkStruct_Ov02_0224E4EC *ov02_0224E4EC(FieldSystem *fieldSystem, HeapID heapId);
 
 #endif //POKEHEARTGOLD_OVERLAY_02_H

@@ -35,7 +35,7 @@ void sub_02077894(BagView *bagView, u8 a1) {
     bagView->unk65 = a1;
 }
 
-void sub_0207789C(BagView *bagView, SaveData *save, u8 a2, BagCursor *cursor, u32 a4) {
+void sub_0207789C(BagView *bagView, SaveData *save, u8 a2, BagCursor *cursor, u32 *a4) {
     sub_02077894(bagView, a2);
     bagView->saveData = save;
     bagView->unk78 = a4;

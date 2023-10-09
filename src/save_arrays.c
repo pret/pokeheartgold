@@ -262,7 +262,7 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
 };
 const int gNumSaveChunkHeaders = NELEMS(gSaveChunkHeaders);
 
-struct UnkStruct_0202E474 *sub_020270C4(SaveData *saveData) { //Save_SafariZone_Get? conflicts with other one
+UnkStruct_0202E474 *sub_020270C4(SaveData *saveData) { //Save_SafariZone_Get? conflicts with other one
     SaveSubstruct_AssertCRC(SAVE_UNK_23);
     return SaveArray_Get(saveData, SAVE_UNK_23);
 }

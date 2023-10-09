@@ -51,7 +51,7 @@ static enum ItemUseError ItemCheckUseFunc_Berry(const struct ItemCheckUseData *d
 static void ItemMenuUseFunc_Berry(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
 static void ItemMenuUseFunc_PalPad(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
 static BOOL ItemFieldUseFunc_PalPad(struct ItemFieldUseData *data);
-static struct PalPadWork *_CreatePalPadWork(FieldSystem *fieldSystem);
+static PalPadWork *_CreatePalPadWork(FieldSystem *fieldSystem);
 static void ItemMenuUseFunc_Honey(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
 static void ItemMenuUseFunc_OldRod(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
 static BOOL ItemFieldUseFunc_OldRod(struct ItemFieldUseData *data);
@@ -81,7 +81,7 @@ static BOOL Task_ActivateDowsingMchnUI(TaskManager *taskManager);
 static BOOL ItemFieldUseFunc_GbSounds(struct ItemFieldUseData *data);
 static void ItemMenuUseFunc_Gracidea(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
 static BOOL ItemFieldUseFunc_Gracidea(struct ItemFieldUseData *data);
-static struct GracideaWork *_CreateGracideaWork(FieldSystem *fieldSystem);
+static GracideaWork *_CreateGracideaWork(FieldSystem *fieldSystem);
 static void ItemMenuUseFunc_VSRecorder(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
 static BOOL ItemFieldUseFunc_VSRecorder(struct ItemFieldUseData *data);
 static void *_VsRecorderInit(FieldSystem *fieldSystem);
@@ -362,7 +362,7 @@ static void ItemMenuUseFunc_Mail(struct ItemMenuUseData *data, const struct Item
 #pragma unused(dat2)
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnvironment(data->taskManager);
-    struct UseMailWork *mailWork = CreateUseMailWork(fieldSystem, 3, ItemToMailId(data->itemId), HEAP_ID_FIELD);
+    UseMailWork *mailWork = CreateUseMailWork(fieldSystem, 3, ItemToMailId(data->itemId), HEAP_ID_FIELD);
     env->unk_0384 = sub_0203D818(data->itemId, 3, 0);
     env->atexit_TaskEnv = mailWork;
     sub_0203C8F0(env, sub_0203D830);
@@ -395,7 +395,7 @@ static BOOL ItemFieldUseFunc_PalPad(struct ItemFieldUseData *data) {
     return TRUE;
 }
 
-static struct PalPadWork *_CreatePalPadWork(FieldSystem *fieldSystem) {
+static PalPadWork *_CreatePalPadWork(FieldSystem *fieldSystem) {
     return CreatePalPadWork(fieldSystem, fieldSystem->saveData, HEAP_ID_FIELD);
 }
 
@@ -697,7 +697,7 @@ static BOOL ItemFieldUseFunc_Gracidea(struct ItemFieldUseData *data) {
     return TRUE;
 }
 
-static struct GracideaWork *_CreateGracideaWork(FieldSystem *fieldSystem) {
+static GracideaWork *_CreateGracideaWork(FieldSystem *fieldSystem) {
     return sub_0203FAE8(fieldSystem, HEAP_ID_FIELD, ITEM_GRACIDEA);
 }
 

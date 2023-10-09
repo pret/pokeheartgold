@@ -32,7 +32,7 @@ extern const int gNumSaveChunkHeaders;
 extern const struct ExtraSaveChunkHeader gExtraSaveChunkHeaders[];
 extern const int gNumExtraSaveChunkHeaders;
 
-struct UnkStruct_0202E474 *sub_020270C4(SaveData *saveData);
+UnkStruct_0202E474 *sub_020270C4(SaveData *saveData);
 PCStorage *SaveArray_PCStorage_Get(SaveData *saveData);
 MysteryGiftSave *Save_MysteryGift_Get(SaveData *saveData);
 struct MigratedPokemonSav *Save_MigratedPokemon_Get(SaveData *saveData);

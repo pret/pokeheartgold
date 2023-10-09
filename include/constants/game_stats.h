@@ -22,5 +22,6 @@
 #define GAME_STAT_UNK46               46
 #define GAME_STAT_BATTLE_POINTS       69
 #define GAME_STAT_UNK70               70
+#define GAME_STAT_UNK114              114
 
 #endif //POKEHEARTGOLD_CONSTANTS_GAME_STATS_H

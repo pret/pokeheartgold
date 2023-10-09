@@ -857,7 +857,7 @@ BOOL ScrCmd_739(ScriptContext *ctx) { //todo: rename structs and find out stuff
 
 //Related to aprijuice stand- canceling
 BOOL ScrCmd_740(ScriptContext *ctx) {
-    u32 **unkPtrA = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    ApricornBoxWork **unkPtrA = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     u32 unkVar = ScriptGetVar(ctx);
     u16 *unkPtrB = ScriptGetVarPointer(ctx);
     *unkPtrA = sub_0203ED80(ctx->fieldSystem, unkVar, unkPtrB);
@@ -1190,7 +1190,7 @@ static u32 SlotLuckiness(SaveData *saveData, u8 machineId, u8 city) {
 BOOL ScrCmd_CasinoGame(ScriptContext *ctx) {
     u8 machineId = ScriptReadByte(ctx);
     u8 city = ScriptReadByte(ctx); //1 = celadon; 0 = goldenrod
-    u32 **unkPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //VoltorbFlipAppData
+    VoltorbFlipAppArgs **unkPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //VoltorbFlipAppData
 
     *unkPtr = LaunchVoltorbFlipApp(ctx->fieldSystem, SlotLuckiness(ctx->fieldSystem->saveData, machineId, city)); //this is messy, very very messy
 
