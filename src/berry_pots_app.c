@@ -102,12 +102,40 @@ typedef struct UnkData_ov17 {
     void *unk1A8;
 } UnkData_ov17;
 
+struct UnkStruct_ov17_02203D60 {
+    u8 unk0[12];
+    Ov122_021E9282 unkC;
+};
+
 struct UnkStruct_ov17_02203E88 {
     u32 unk0;
     u8 *unk4;
 };
 
+extern const u8 ov17_02203D50[4];
+extern const u8 ov17_02203D54[4];
+extern const u8 ov17_02203D58[4];
+extern const u8 ov17_02203D5C[4];
+extern const struct UnkStruct_ov17_02203D60 ov17_02203D60;
+extern const u16 ov17_02203D78[8];
+extern const GraphicsModes ov17_02203D88;
+extern const Unk122_021E92D0 ov17_02203D98;
+extern const SpriteResourceCountsListUnion ov17_02203DAC;
+extern WindowTemplate ov17_02203DC4[3];
+extern BgTemplate ov17_02203DDC;
+extern BgTemplate ov17_02203DF8;
+extern BgTemplate ov17_02203E14;
+extern BgTemplate ov17_02203E30;
+extern BgTemplate ov17_02203E4C;
+extern const Unk122_021E92FC ov17_02203E68;
 extern struct UnkStruct_ov17_02203E88 ov17_02203E88[4];
+extern const UnkStruct_0200D2B4 ov17_02203EA8;
+extern GraphicsBanks ov17_02203ED0;
+extern const UnkStruct_0200D2B4 ov17_02203EF8[2];
+extern const UnkStruct_0200D2B4 ov17_02203F48;
+extern const UnkStruct_0200D2B4 ov17_02203F70;
+extern const UnkStruct_0200D2B4 ov17_02203F98;
+extern const u8 ov17_02203FC0[4];
 
 extern sub_0200B2E0();
 extern sub_0200B2E8();
@@ -912,20 +940,12 @@ void ov17_02202944(UnkData_ov17 *a0, u32 a1, u8 a2, BOOL a3) {
     a0->unk7A = 60;
 }
 
-struct UnkStruct_ov17_02203D60 {
-    u8 unk0[12];
-    Ov122_021E9282 unkC;
-};
-
-extern struct UnkStruct_ov17_02203D60 ov17_02203D60;
-
-// FIXME(tgsm): https://decomp.me/scratch/UpOrW
 #ifdef NONMATCHING
 void ov17_022029C8(UnkData_ov17 *a0, u32 a1) {
     Ov122_021E7488 sp24;
     MI_CpuFill8(&sp24, 0, sizeof(Ov122_021E7488));
 
-    sp24.unk0 = ov17_02203D60.unkC;
+    memcpy(&sp24.unk0, &ov17_02203D60.unkC, sizeof(Ov122_021E9282));
     sp24.unkC = a0->unk198[a1];
     sp24.unk10 = a0->bgConfig;
     sp24.unk14 = ov17_02203E88[a1].unk0;
@@ -1012,8 +1032,6 @@ int ov17_02202A50(UnkData_ov17 *a0) {
     return r0;
 }
 
-extern const UnkStruct_0200D2B4 ov17_02203EA8;
-
 void ov17_02202A84(UnkData_ov17 *a0, int index) {
     UnkData_ov17_sub *sub = &a0->unk20[index];
     if (sub->unkC != 0 && sub->soilSpriteMaybe != NULL) {
@@ -1085,20 +1103,11 @@ void ov17_02202BF8(UnkData_ov17 *a0) {
     OS_SetIrqCheckFlag(OS_IE_VBLANK);
 }
 
-extern GraphicsBanks ov17_02203ED0;
-
 void ov17_02202C2C(void);
 void ov17_02202C2C(void) {
     GraphicsBanks banks = ov17_02203ED0;
     GX_SetBanks(&banks);
 }
-
-extern GraphicsModes ov17_02203D88;
-extern BgTemplate ov17_02203DDC;
-extern BgTemplate ov17_02203DF8;
-extern BgTemplate ov17_02203E14;
-extern BgTemplate ov17_02203E30;
-extern BgTemplate ov17_02203E4C;
 
 void ov17_02202C4C(UnkData_ov17 *a0) {
     ov17_02202C2C();
@@ -1193,8 +1202,6 @@ void ov17_02202F7C(UnkData_ov17 *a0) {
     FontID_Release(4);
 }
 
-extern WindowTemplate ov17_02203DC4[3];
-
 void ov17_02202FC4(UnkData_ov17 *a0) {
     for (int i = 0; i < 3; i++) {
         AddWindow(a0->bgConfig, &a0->unkFC[i], &ov17_02203DC4[i]);
@@ -1229,11 +1236,6 @@ void ov17_02203084(UnkData_ov17 *a0) {
         a0->unk198[i] = NULL;
     }
 }
-
-extern const Unk122_021E92FC ov17_02203E68;
-extern const Unk122_021E92D0 ov17_02203D98;
-extern const u16 ov17_02203D78[7];
-extern const SpriteResourceCountsListUnion ov17_02203DAC;
 
 void ov17_022030A8(UnkData_ov17 *a0);
 void ov17_022030A8(UnkData_ov17 *a0) {
@@ -1293,11 +1295,6 @@ void ov17_02203290(UnkData_ov17 *a0) {
     ov17_022033E4(a0);
     ov17_0220321C(a0);
 }
-
-extern const UnkStruct_0200D2B4 ov17_02203EF8[2];
-extern const UnkStruct_0200D2B4 ov17_02203F48;
-extern const UnkStruct_0200D2B4 ov17_02203F70;
-extern const UnkStruct_0200D2B4 ov17_02203F98;
 
 void ov17_022032AC(UnkData_ov17 *a0) {
     for (int i = 0; i <= 1; i++) {
@@ -1791,7 +1788,6 @@ int ov17_02203C78(UnkData_ov17 *a0) {
     return -1;
 }
 
-extern const u8 ov17_02203FC0[4];
 int ov17_02203CC8(UnkData_ov17 *a0) {
     if (sub_02025320(&ov17_02203FC0)) {
         return 5;
