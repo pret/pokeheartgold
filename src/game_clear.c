@@ -90,15 +90,13 @@ static void sub_02052E70(GameClearWork *env);
 static void GameClearSave_PrintSaveStatus(FieldSystem *fieldSystem, GameClearWork *env, int a2);
 static void GameClearSave_Free(FieldSystem *fieldSystem, GameClearWork *env);
 
-// Might be called as Lance escorts player out of Champion room and into
-// Hall of Fame?
 BOOL sub_0205298C(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     int *state = TaskManager_GetStatePtr(taskman);
 
     switch (*state) {
     case 0:
-        sub_0206DB58(taskman, fieldSystem);
+        BugContest_WarpToJudging(taskman, fieldSystem);
         FieldSystem_ClearFollowingTrainer(fieldSystem);
         HealParty(SaveArray_Party_Get(fieldSystem->saveData));
         *state += 1;

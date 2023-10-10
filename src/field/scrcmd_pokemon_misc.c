@@ -1060,7 +1060,7 @@ BOOL ScrCmd_777(ScriptContext *ctx) {
 
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), partyIndex);
 
-    *unkPtr = sub_0206D8D0(mon, ctx->fieldSystem->saveData);
+    *unkPtr = MonIsFromTogepiEgg(mon, ctx->fieldSystem->saveData);
 
     return FALSE;
 }

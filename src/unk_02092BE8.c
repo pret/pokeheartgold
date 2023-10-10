@@ -306,7 +306,7 @@ BOOL sub_020930C4(FieldSystem* sys) {
 }
 
 BOOL sub_02093134(FieldSystem* sys, Pokemon *mon) {
-    if (sub_0206D8D0(mon, sys->saveData) == 0) {
+    if (MonIsFromTogepiEgg(mon, sys->saveData) == 0) {
         return FALSE;
     }
     sub_02092E14(FieldSystem_GetGearPhoneRingManager(sys), 0, 1);

@@ -245,7 +245,7 @@ Static main
 	Object asm/unk_0206B910.o
 	Object src/field_alph_checks.o
 	Object src/get_egg.o
-	Object asm/unk_0206D494.o
+	Object src/unk_0206D494.o
 	Object src/pokemon.o
 	Object src/move.o
 	Object src/trainer_data.o

@@ -896,67 +896,67 @@ _sticks4_farfetchd2_bottom_right:
 	.byte 0x00, 0x00
 
 _exclaim_face_down:
-	step MV_face_down, 1
-	step MV_emote_excalamation, 1
+	step MOVEMENT_FACE_DOWN, 1
+	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step_end
 
 _exclaim_face_up:
-	step MV_face_up, 1
-	step MV_emote_excalamation, 1
+	step MOVEMENT_FACE_UP, 1
+	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step_end
 
 _exclaim_face_left:
-	step MV_face_left, 1
-	step MV_emote_excalamation, 1
+	step MOVEMENT_FACE_LEFT, 1
+	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step_end
 
 _exclaim_face_right:
-	step MV_face_right, 1
-	step MV_emote_excalamation, 1
+	step MOVEMENT_FACE_RIGHT, 1
+	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step_end
 
 _farfetchd_run_up:
-	step MV_emote_excalamation, 1
-	step MV_run_up, 10
-	step MV_face_down, 1
+	step MOVEMENT_EMOTE_EXCLAMATION, 1
+	step MOVEMENT_RUN_UP, 10
+	step MOVEMENT_FACE_DOWN, 1
 	step_end
 
 _farfetchd_run_down:
-	step MV_emote_excalamation, 1
-	step MV_run_down, 10
-	step MV_face_up, 1
+	step MOVEMENT_EMOTE_EXCLAMATION, 1
+	step MOVEMENT_RUN_DOWN, 10
+	step MOVEMENT_FACE_UP, 1
 	step_end
 
 _farfetchd1_run_right:
-	step MV_emote_excalamation, 1
-	step MV_run_right, 7
-	step MV_face_left, 1
+	step MOVEMENT_EMOTE_EXCLAMATION, 1
+	step MOVEMENT_RUN_RIGHT, 7
+	step MOVEMENT_FACE_LEFT, 1
 	step_end
 
 _farfetchd1_run_left:
-	step MV_emote_excalamation, 1
-	step MV_run_left, 7
-	step MV_face_right, 1
+	step MOVEMENT_EMOTE_EXCLAMATION, 1
+	step MOVEMENT_RUN_LEFT, 7
+	step MOVEMENT_FACE_RIGHT, 1
 	step_end
 
 _farfetchd2_run_right:
-	step MV_emote_excalamation, 1
-	step MV_run_right, 8
-	step MV_face_left, 1
+	step MOVEMENT_EMOTE_EXCLAMATION, 1
+	step MOVEMENT_RUN_RIGHT, 8
+	step MOVEMENT_FACE_LEFT, 1
 	step_end
 
 _farfetchd2_run_left:
-	step MV_emote_excalamation, 1
-	step MV_run_left, 8
-	step MV_face_right, 1
+	step MOVEMENT_EMOTE_EXCLAMATION, 1
+	step MOVEMENT_RUN_LEFT, 8
+	step MOVEMENT_FACE_RIGHT, 1
 	step_end
 
 _walk_in_place_face_down:
-	step MV_walk_in_place_face_down, 5
+	step MOVEMENT_WALK_IN_PLACE_FACE_DOWN, 5
 	step_end
 
 _walk_in_place_face_right:
-	step MV_walk_in_place_face_right, 5
+	step MOVEMENT_WALK_IN_PLACE_FACE_RIGHT, 5
 	step_end
 
 scr_seq_D36R0101_016:
@@ -982,7 +982,7 @@ scr_seq_D36R0101_016:
 
 
 _0EC4:
-	step MV_emote_excalamation, 1
+	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step 32, 1
 	step_end
 
@@ -1184,12 +1184,12 @@ scr_seq_D36R0101_017:
 
 
 _118C:
-	step MV_emote_excalamation, 1
+	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step_end
 
 _1194:
 	step 63, 2
-	step MV_face_up, 1
+	step MOVEMENT_FACE_UP, 1
 	step_end
 scr_seq_D36R0101_011:
 	play_se SEQ_SE_DP_SELECT
@@ -1283,7 +1283,7 @@ _12EC:
 
 _12F8:
 	step 63, 12
-	step MV_face_left, 1
+	step MOVEMENT_FACE_LEFT, 1
 	step_end
 scr_seq_D36R0101_015:
 	scrcmd_609
@@ -1382,7 +1382,7 @@ _142D:
 	.byte 0x00, 0x00, 0x00
 
 _1478:
-	step MV_emote_excalamation, 1
+	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step 33, 1
 	step_end
 
@@ -1399,26 +1399,26 @@ _1494:
 	step_end
 
 _14A4:
-	step MV_face_left, 1
+	step MOVEMENT_FACE_LEFT, 1
 	step 61, 1
-	step MV_face_up, 1
+	step MOVEMENT_FACE_UP, 1
 	step 61, 1
-	step MV_face_right, 1
+	step MOVEMENT_FACE_RIGHT, 1
 	step 61, 1
-	step MV_face_down, 1
+	step MOVEMENT_FACE_DOWN, 1
 	step 61, 1
-	step MV_face_left, 1
+	step MOVEMENT_FACE_LEFT, 1
 	step 61, 1
-	step MV_face_up, 1
+	step MOVEMENT_FACE_UP, 1
 	step 61, 1
-	step MV_face_right, 1
+	step MOVEMENT_FACE_RIGHT, 1
 	step 61, 1
-	step MV_face_down, 1
+	step MOVEMENT_FACE_DOWN, 1
 	step 61, 1
 	step_end
 
 _14E8:
-	step MV_face_left, 1
+	step MOVEMENT_FACE_LEFT, 1
 	step 71, 1
 	step 15, 1
 	step 72, 1
@@ -1607,7 +1607,7 @@ _174C:
 _1758:
 	step 15, 1
 	step 12, 1
-	step MV_face_down, 1
+	step MOVEMENT_FACE_DOWN, 1
 	step_end
 scr_seq_D36R0101_012:
 	player_on_bike_check VAR_SPECIAL_RESULT
@@ -1927,25 +1927,25 @@ _1C44:
 	step_end
 
 _1C58:
-	step MV_emote_excalamation, 1
+	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step 63, 1
 	step_end
 
 _1C64:
-	step MV_run_down, 7
+	step MOVEMENT_RUN_DOWN, 7
 	step 50, 1
-	step MV_run_left, 4
-	step MV_run_up, 4
-	step MV_run_right, 4
-	step MV_run_down, 4
-	step MV_run_left, 2
-	step MV_face_up, 1
+	step MOVEMENT_RUN_LEFT, 4
+	step MOVEMENT_RUN_UP, 4
+	step MOVEMENT_RUN_RIGHT, 4
+	step MOVEMENT_RUN_DOWN, 4
+	step MOVEMENT_RUN_LEFT, 2
+	step MOVEMENT_FACE_UP, 1
 	step 48, 2
 	step_end
 
 _1C8C:
 	step 63, 3
-	step MV_face_down, 1
+	step MOVEMENT_FACE_DOWN, 1
 	step 63, 1
 	step 13, 2
 	step 35, 1
@@ -1958,7 +1958,7 @@ _1C8C:
 _1CB4:
 	step 15, 1
 	step 13, 1
-	step MV_face_down, 1
+	step MOVEMENT_FACE_DOWN, 1
 	step_end
 
 _1CC4:
@@ -1966,18 +1966,18 @@ _1CC4:
 	step 55, 1
 	step 72, 1
 	step 48, 1
-	step MV_face_right, 1
-	step MV_face_down, 1
-	step MV_face_left, 1
-	step MV_face_up, 1
-	step MV_face_right, 1
-	step MV_face_down, 1
-	step MV_face_left, 1
-	step MV_face_up, 1
+	step MOVEMENT_FACE_RIGHT, 1
+	step MOVEMENT_FACE_DOWN, 1
+	step MOVEMENT_FACE_LEFT, 1
+	step MOVEMENT_FACE_UP, 1
+	step MOVEMENT_FACE_RIGHT, 1
+	step MOVEMENT_FACE_DOWN, 1
+	step MOVEMENT_FACE_LEFT, 1
+	step MOVEMENT_FACE_UP, 1
 	step_end
 
 _1CF8:
-	step MV_emote_excalamation, 1
+	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step 63, 1
 	step 49, 2
 	step_end
@@ -1988,58 +1988,58 @@ _1D08:
 	step 72, 1
 	step 65, 1
 	step 50, 1
-	step MV_run_left, 7
-	step MV_run_up, 13
+	step MOVEMENT_RUN_LEFT, 7
+	step MOVEMENT_RUN_UP, 13
 	step 15, 1
 	step_end
 
 _1D2C:
 	step 65, 2
-	step MV_run_down, 1
-	step MV_run_left, 6
+	step MOVEMENT_RUN_DOWN, 1
+	step MOVEMENT_RUN_LEFT, 6
 	step 48, 1
-	step MV_run_up, 13
-	step MV_run_left, 1
+	step MOVEMENT_RUN_UP, 13
+	step MOVEMENT_RUN_LEFT, 1
 	step_end
 
 _1D48:
-	step MV_run_down, 12
-	step MV_run_right, 6
-	step MV_run_up, 4
-	step MV_run_left, 3
-	step MV_run_down, 4
-	step MV_run_right, 3
+	step MOVEMENT_RUN_DOWN, 12
+	step MOVEMENT_RUN_RIGHT, 6
+	step MOVEMENT_RUN_UP, 4
+	step MOVEMENT_RUN_LEFT, 3
+	step MOVEMENT_RUN_DOWN, 4
+	step MOVEMENT_RUN_RIGHT, 3
 	step 71, 1
 	step 54, 1
 	step 72, 1
-	step MV_face_down, 6
+	step MOVEMENT_FACE_DOWN, 6
 	step 71, 1
 	step 10, 1
 	step 72, 1
-	step MV_face_left, 6
-	step MV_face_up, 6
+	step MOVEMENT_FACE_LEFT, 6
+	step MOVEMENT_FACE_UP, 6
 	step 71, 1
 	step 11, 1
 	step 72, 1
-	step MV_face_right, 6
+	step MOVEMENT_FACE_RIGHT, 6
 	step 71, 1
 	step 10, 1
 	step 72, 1
 	step_end
 
 _1DA4:
-	step MV_run_down, 13
-	step MV_run_right, 7
+	step MOVEMENT_RUN_DOWN, 13
+	step MOVEMENT_RUN_RIGHT, 7
 	step 48, 1
 	step 50, 1
 	step 63, 4
 	step 71, 1
 	step 55, 1
 	step 72, 1
-	step MV_face_down, 6
-	step MV_face_right, 6
-	step MV_face_up, 6
-	step MV_face_left, 6
+	step MOVEMENT_FACE_DOWN, 6
+	step MOVEMENT_FACE_RIGHT, 6
+	step MOVEMENT_FACE_UP, 6
+	step MOVEMENT_FACE_LEFT, 6
 	step 66, 1
 	step 14, 1
 	step_end
@@ -2059,7 +2059,7 @@ _1DF4:
 _1E00:
 	step 33, 1
 	step 65, 1
-	step MV_emote_excalamation, 1
+	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step_end
 
 _1E10:
@@ -2104,7 +2104,7 @@ _1E64:
 	step_end
 
 _1E74:
-	step MV_emote_excalamation, 1
+	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step 63, 1
 	step 13, 1
 	step 34, 1
@@ -2240,7 +2240,7 @@ _200C:
 	step_end
 
 _2014:
-	step MV_emote_excalamation, 1
+	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step 63, 1
 	step 32, 1
 	step 63, 1
@@ -2251,8 +2251,8 @@ _2014:
 	step_end
 
 _2038:
-	step MV_face_down, 1
-	step MV_face_down, 1
+	step MOVEMENT_FACE_DOWN, 1
+	step MOVEMENT_FACE_DOWN, 1
 	step 57, 1
 	step 71, 1
 	step 52, 1
@@ -2336,7 +2336,7 @@ _2148:
 
 _215C:
 	step 34, 1
-	step MV_emote_excalamation, 1
+	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step 63, 1
 	step 34, 1
 	step_end

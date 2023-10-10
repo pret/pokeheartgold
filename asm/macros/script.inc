@@ -4516,7 +4516,7 @@
 	.short 806
 	.endm
 
-	.macro scrcmd_807 arg0, arg1
+	.macro set_trainer_house_sprite arg0, arg1
 	.short 807
 	.short \arg0
 	.short \arg1

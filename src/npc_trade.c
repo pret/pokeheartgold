@@ -11,17 +11,18 @@
 #include "map_header.h"
 #include "constants/maps.h"
 #include "constants/items.h"
+#include "constants/npc_trade.h"
 #include "unk_02055418.h"
 #include "msgdata/msg.naix"
 
 static String *_GetNpcTradeName(HeapID heapId, s32 msgno);
-static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, u32 tradeno, u32 mapno, u32 met_level_strat, HeapID heapId);
+static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, NpcTradeNum tradeno, u32 mapno, u32 met_level_strat, HeapID heapId);
 
-NPCTradeAppData *NPCTradeApp_Init(HeapID heapId, u32 tradeno) {
+NPCTradeAppData *NPCTradeApp_Init(HeapID heapId, NpcTradeNum tradeno) {
     NPCTradeAppData *ret;
     u16 strbuf[128];
 
-    GF_ASSERT(tradeno < TRADE_MAX);
+    GF_ASSERT((u32)tradeno < NPC_TRADE_MAX);
     ret = AllocFromHeap(heapId, sizeof(NPCTradeAppData));
     memset(ret, 0, sizeof(NPCTradeAppData));
     ret->trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeno, FALSE, heapId, FALSE);
@@ -32,7 +33,7 @@ NPCTradeAppData *NPCTradeApp_Init(HeapID heapId, u32 tradeno) {
     PlayerProfile_Init(ret->profile);
     {
         String *name;
-        name = _GetNpcTradeName(heapId, tradeno + TRADE_MAX);
+        name = _GetNpcTradeName(heapId, NPC_TRADE_OT_NUM(tradeno));
         CopyStringToU16Array(name, strbuf, 128);
         String_Delete(name);
     }
@@ -48,7 +49,7 @@ void NPCTradeApp_Delete(NPCTradeAppData *work) {
     FreeToHeap(work);
 }
 
-void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fieldSystem, u8 tradeno, u8 level, u16 mapno) {
+void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, u8 level, u16 mapno) {
     Party *party;
     Pokemon *mon;
     NPCTrade *trade_dat;
@@ -59,13 +60,13 @@ void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fieldSystem, u8 tradeno, u8 level,
 
     mon = AllocMonZeroed(HEAP_ID_FIELD);
     trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeno, FALSE, HEAP_ID_FIELD, TRUE);
-    _CreateTradeMon(mon, trade_dat, level, tradeno, mapno, 7, HEAP_ID_FIELD);
+    _CreateTradeMon(mon, trade_dat, level, (NpcTradeNum)tradeno, mapno, 7, HEAP_ID_FIELD);
     UpdatePokedexWithReceivedSpecies(fieldSystem->saveData, mon);
     party = SaveArray_Party_Get(fieldSystem->saveData);
     Party_AddMon(party, mon);
-    if (tradeno == 7) {
+    if (tradeno == NPC_TRADE_KENYA_SPEAROW) {
         kenya = Party_GetMonByIndex(party, Party_GetCount(party) - 1);
-        name = _GetNpcTradeName(HEAP_ID_FIELD, tradeno + TRADE_MAX);
+        name = _GetNpcTradeName(HEAP_ID_FIELD, NPC_TRADE_OT_NUM(tradeno));
         mailno = ItemToMailId(trade_dat->heldItem);
         mail = CreateKenyaMail(mon, mailno, trade_dat->gender, name, trade_dat->otId);
         SetMonData(kenya, MON_DATA_MAIL_STRUCT, mail);
@@ -85,8 +86,8 @@ Mail *NPCTrade_MakeKenyaMail(void) {
 
     mon = AllocMonZeroed(HEAP_ID_FIELD);
     trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, 7, FALSE, HEAP_ID_FIELD, TRUE);
-    _CreateTradeMon(mon, trade_dat, 20, 7, MAP_R35R0101, 7, HEAP_ID_FIELD);
-    name = _GetNpcTradeName(HEAP_ID_FIELD, 7 + TRADE_MAX);
+    _CreateTradeMon(mon, trade_dat, 20, NPC_TRADE_KENYA_SPEAROW, MAP_R35R0101, 7, HEAP_ID_FIELD);
+    name = _GetNpcTradeName(HEAP_ID_FIELD, NPC_TRADE_OT_NUM(NPC_TRADE_KENYA_SPEAROW));
     mailno = ItemToMailId(trade_dat->heldItem);
     mail = CreateKenyaMail(mon, mailno, trade_dat->gender, name, trade_dat->otId);
     String_Delete(name);
@@ -95,7 +96,7 @@ Mail *NPCTrade_MakeKenyaMail(void) {
     return mail;
 }
 
-int NPCTrade_CanGiveUpLoanMon(FieldSystem *fieldSystem, u8 tradeno, u8 idx) {
+int NPCTrade_CanGiveUpLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, u8 idx) {
     Party *party;
     Pokemon *mon, *cur_poke;
     u8 capsule;
@@ -183,7 +184,7 @@ static String *_GetNpcTradeName(HeapID heapId, s32 msgno) {
     return ret;
 }
 
-static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, u32 tradeno, u32 mapno, u32 met_level_strat, HeapID heapId) {
+static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, NpcTradeNum tradeno, u32 mapno, u32 met_level_strat, HeapID heapId) {
     String *name;
     u8 nickname_flag;
     u32 mapsec;
@@ -214,7 +215,7 @@ static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, u32 tr
 
     SetMonData(mon, MON_DATA_HELD_ITEM, &trade_dat->heldItem);
 
-    name = _GetNpcTradeName((HeapID)heapId_2, TRADE_MAX + tradeno);
+    name = _GetNpcTradeName((HeapID)heapId_2, NPC_TRADE_OT_NUM(tradeno));
     SetMonData(mon, MON_DATA_OT_NAME_2, name);
     String_Delete(name);
 
