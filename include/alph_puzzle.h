@@ -87,11 +87,10 @@ void ov110_021E6A04(AlphPuzzleData *data);
 void ov110_021E6C58(AlphPuzzleData *, u8, int);
 void ov110_021E6D20(AlphPuzzleData *data);
 void ov110_021E6A44(AlphPuzzleData *data, u8 a1, u8 a2, int a3);
-void ov110_021E6BEC(AlphPuzzleTile *tile, s16 x, s16 y);
 void ov110_021E6C18(AlphPuzzleData *data, s16 a1, u8 a2, u8 a3, u8 a4);
 void sub_02024818(Sprite *sprite, u16 a1);
-int ov110_021E6B94(AlphPuzzleData *data);
 void ov110_021E6764(AlphPuzzleData *data);
 void ov110_021E6A44(AlphPuzzleData *data, u8 x, u8 y, int a3);
+void ov110_021E6BEC(AlphPuzzleTile *tile, s16 x, s16 y);
 
 #endif //POKEHEARTGOLD_ALPH_PUZZLE_H

@@ -16,75 +16,8 @@
     .public ov110_021E6678
     .public ov110_021E6904
     .public ov110_021E6A44
+    .public ov110_021E6BEC
     
-	thumb_func_start ov110_021E6B94
-ov110_021E6B94: ; 0x021E6B94
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	ldr r0, [r5, #0x7c]
-	bl sub_020168F4
-	cmp r0, #1
-	beq _021E6BA8
-	cmp r0, #2
-	beq _021E6BAC
-	b _021E6BB0
-_021E6BA8:
-	mov r4, #7
-	b _021E6BB4
-_021E6BAC:
-	mov r4, #1
-	b _021E6BB4
-_021E6BB0:
-	mov r0, #5
-	pop {r3, r4, r5, pc}
-_021E6BB4:
-	ldr r0, [r5, #0x7c]
-	bl sub_020169C0
-	str r0, [r5, #4]
-	ldr r0, [r5, #0x7c]
-	bl sub_020169CC
-	add r0, r5, #0
-	add r0, #0x5c
-	mov r1, #1
-	bl ClearFrameAndWindow2
-	add r0, r5, #0
-	add r0, #0x5c
-	mov r1, #0
-	bl FillWindowPixelBuffer
-	add r0, r5, #0
-	add r0, #0x5c
-	bl ScheduleWindowCopyToVram
-	ldr r0, [r5, #0x14]
-	mov r1, #0
-	bl ScheduleBgTilemapBufferTransfer
-	add r0, r4, #0
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ov110_021E6B94
-
-	thumb_func_start ov110_021E6BEC
-ov110_021E6BEC: ; 0x021E6BEC
-	push {r4, lr}
-	ldrb r3, [r0, #2]
-	ldr r4, _021E6C10 ; =ov110_021E6D94
-	ldr r0, [r0, #4]
-	lsl r3, r3, #1
-	ldrsb r4, [r4, r3]
-	add r1, r1, r4
-	ldr r4, _021E6C14 ; =ov110_021E6D94 + 1
-	lsl r1, r1, #0x10
-	ldrsb r3, [r4, r3]
-	asr r1, r1, #0x10
-	add r2, r2, r3
-	lsl r2, r2, #0x10
-	asr r2, r2, #0x10
-	bl Sprite_SetPositionXY
-	pop {r4, pc}
-	nop
-_021E6C10: .word ov110_021E6D94
-_021E6C14: .word ov110_021E6D94 + 1
-	thumb_func_end ov110_021E6BEC
-
 	thumb_func_start ov110_021E6C18
 ov110_021E6C18: ; 0x021E6C18
 	push {r4, lr}
@@ -277,6 +210,7 @@ _021E6D8C:
 	.byte 0xA9, 0xBF, 0xD1, 0xFF
 	.byte 0xFF, 0x00, 0x00, 0x00
 
+.public ov110_021E6D94
 ov110_021E6D94: ; 0x021E6D94
 	.byte 0x00, 0x00
 	.byte 0xFF, 0x00

@@ -78,8 +78,8 @@ static void ov110_021E6A04(AlphPuzzleData *data);
 //static void ov110_021E6A44(AlphPuzzleData *data, u8 x, u8 y, int a3);
 static void ov110_021E6ABC(AlphPuzzleData *data, u8 x, u8 y);
 static void ov110_021E6B38(AlphPuzzleData *data);
-//static int ov110_021E6B94(AlphPuzzleData *data);
-//static void ov110_021E6BEC(AlphPuzzleTile *tile, u32 x, u32 y);
+static AlphPuzzleStates ov110_021E6B94(AlphPuzzleData *data);
+//static void ov110_021E6BEC(AlphPuzzleTile *tile, s16 x, s16 y);
 
 BOOL ov110_AlphPuzzle_OvyInit(OVY_MANAGER *man, int *state) {
     switch (*state) {
@@ -480,7 +480,7 @@ static int ov110_021E6014(AlphPuzzleData *data) {
         }
         break;
     case 2:
-        int ret = ov110_021E6B94(data);
+        AlphPuzzleStates ret = ov110_021E6B94(data);
         if (ret != ALPH_PUZZLE_STATE_5) {
             data->unkC = 0;
             return ret;
@@ -878,8 +878,7 @@ static void ov110_021E6B38(AlphPuzzleData *data) {
     sub_02016704(data->unk7C, &unkStruct, data->palette);
 }
 
-/*
-static int ov110_021E6B94(AlphPuzzleData *data) {
+static AlphPuzzleStates ov110_021E6B94(AlphPuzzleData *data) {
     AlphPuzzleStates ret;
     switch (sub_020168F4(data->unk7C)) {
         case 1:
@@ -897,13 +896,11 @@ static int ov110_021E6B94(AlphPuzzleData *data) {
     FillWindowPixelBuffer(&data->window[1], 0);
     ScheduleWindowCopyToVram(&data->window[1]);
     ScheduleBgTilemapBufferTransfer(data->bgConfig, 0);
-    return (int) ret;
+    return ret;
 }
-*/
-/*
+
 extern s8 ov110_021E6D94[4][2];
 
-void ov110_021E6BEC(AlphPuzzleTile *tile, u32 x, u32 y) {
+void ov110_021E6BEC(AlphPuzzleTile *tile, s16 x, s16 y) {
     Sprite_SetPositionXY(tile->sprite, ov110_021E6D94[tile->rotation][0] + x, ov110_021E6D94[tile->rotation][1] + y);
 }
-*/
