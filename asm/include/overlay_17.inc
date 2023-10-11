@@ -145,7 +145,7 @@
 .public ov16_022014A0
 .public BerryPots_GetPotGrowthStage
 .public BerryPots_GetPotBerryId
-.public ov16_022015C4
+.public BerryPots_GetSoilState
 .public BerryPots_GetPotMoisture
 .public ov16_022015EC
 .public ov16_022015F8
@@ -157,8 +157,8 @@
 .public ov16_02201668
 .public ov16_02201674
 .public ov16_02201760
-.public ov16_022017FC
-.public ov16_02201820
+.public BerryPots_SetBerryDatetime
+.public BerryPots_CopyBerryDatetime
 .public BerryIdToItemId
 .public ItemIdToBerryId
 .public MulchIdToItemId

@@ -34,7 +34,7 @@ typedef struct BerryPotsAppArgs_UnkSub4 {
 typedef struct BerryPotsAppArgs {
     u8 unk0[4];
     BerryPotsAppArgs_UnkSub4 *unk4;
-    u8 unk8[0x14 - 0x8];
+    u8 unk8[0xC];
     u8 unk14;
     u8 unk15;
     u16 itemId;

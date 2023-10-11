@@ -124,7 +124,7 @@ u8 BerryPots_GetPotBerryId(BerryPot *berryPots, u32 idx) {
     return berryPots[idx].berryId;
 }
 
-u32 ov16_022015C4(BerryPot *berryPots, u32 idx) {
+u32 BerryPots_GetSoilState(BerryPot *berryPots, u32 idx) {
     s32 moisture = berryPots[idx].moisture;
     if (moisture == 0) {
         return 0;
@@ -277,12 +277,12 @@ void ov16_02201760(BerryPot *berryPots, UnkStruct_ov16_022014A0 *a1, s32 a2) {
     }
 }
 
-void ov16_022017FC(struct GF_RTC_DateTime *dest, RTCDate srcDate, RTCTime srcTime) {
+void BerryPots_SetBerryDatetime(struct GF_RTC_DateTime *dest, RTCDate srcDate, RTCTime srcTime) {
     dest->date = srcDate;
     dest->time = srcTime;
 }
 
-void ov16_02201820(struct GF_RTC_DateTime *datetime, RTCDate *date, RTCTime *time) {
+void BerryPots_CopyBerryDatetime(struct GF_RTC_DateTime *datetime, RTCDate *date, RTCTime *time) {
     *date = datetime->date;
     *time = datetime->time;
 }
