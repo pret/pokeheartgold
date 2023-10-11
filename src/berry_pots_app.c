@@ -1215,7 +1215,7 @@ static void BerryPotsApp_SetupSpriteRendererAndGfxHandler(BerryPotsAppData *data
     GF_CreateVramTransferManager(32, data->heapId);
 
     data->spriteRenderer = SpriteRenderer_Create(data->heapId);
-    sub_0200CF70(data->spriteRenderer, (Unk122_021E92FC*)&ov17_02203E68, (Unk122_021E92D0*)&ov17_02203D98, 8);
+    sub_0200CF70(data->spriteRenderer, &ov17_02203E68, &ov17_02203D98, 8);
 
     sub_0200B2E0(data->heapId);
     sub_0200B2E8(data->heapId);
