@@ -24,6 +24,18 @@
 #include "unk_0200B150.h"
 #include "unk_02023694.h"
 
+typedef enum AlphPuzzleStates {
+    ALPH_PUZZLE_STATE_FADE_IN,
+    ALPH_PUZZLE_STATE_1,
+    ALPH_PUZZLE_STATE_2,
+    ALPH_PUZZLE_STATE_3,
+    ALPH_PUZZLE_STATE_ROTATE_TILE,
+    ALPH_PUZZLE_STATE_5,
+    ALPH_PUZZLE_STATE_CLEAR,
+    ALPH_PUZZLE_STATE_FADE_OUT,
+    ALPH_PUZZLE_STATE_END
+} AlphPuzzleStates;
+
 static int AlphPuzzleMainSeq_FadeIn(AlphPuzzleData *data);
 static int AlphPuzzleMainSeq_FadeOut(AlphPuzzleData *data);
 static int AlphPuzzleMainSeq_1(AlphPuzzleData *data);
@@ -61,6 +73,13 @@ static void ov110_021E6764(AlphPuzzleData *data);
 static void AlphPuzzle_DeleteSprites(AlphPuzzleData *data);
 static BOOL AlphPuzzle_CheckComplete(AlphPuzzleData *data);
 //static void ov110_021E6904(AlphPuzzleData *data, int a1);
+static void ov110_021E6988(AlphPuzzleData *data, int a1, int a2, u8 textFrameDelay);
+static void ov110_021E6A04(AlphPuzzleData *data);
+//static void ov110_021E6A44(AlphPuzzleData *data, u8 x, u8 y, int a3);
+static void ov110_021E6ABC(AlphPuzzleData *data, u8 x, u8 y);
+//static void ov110_021E6B38(AlphPuzzleData *data);
+//static int ov110_021E6B94(AlphPuzzleData *data);
+//static void ov110_021E6BEC(AlphPuzzleTile *tile, u32 x, u32 y);
 
 BOOL ov110_AlphPuzzle_OvyInit(OVY_MANAGER *man, int *state) {
     switch (*state) {
@@ -83,18 +102,6 @@ BOOL ov110_AlphPuzzle_OvyInit(OVY_MANAGER *man, int *state) {
     }
     return FALSE;
 }
-
-typedef enum AlphPuzzleStates {
-    ALPH_PUZZLE_STATE_FADE_IN,
-    ALPH_PUZZLE_STATE_1,
-    ALPH_PUZZLE_STATE_2,
-    ALPH_PUZZLE_STATE_3,
-    ALPH_PUZZLE_STATE_ROTATE_TILE,
-    ALPH_PUZZLE_STATE_5,
-    ALPH_PUZZLE_STATE_CLEAR,
-    ALPH_PUZZLE_STATE_FADE_OUT,
-    ALPH_PUZZLE_STATE_END
-} AlphPuzzleStates;
 
 BOOL ov110_AlphPuzzle_OvyExec(OVY_MANAGER *man, int *state) {
     AlphPuzzleData *data = OverlayManager_GetData(man);
@@ -681,11 +688,11 @@ static void ov110_021E6580(AlphPuzzleData *data) {
         data->unk38[i] = NewString_ReadMsgData(data->msgData, i + 1);
     }
     
-    data->unk48 = NewString_ReadMsgData(data->msgData, 5);
+    data->unk48[0] = NewString_ReadMsgData(data->msgData, 5);
 }
 
 static void ov110_021E65DC(AlphPuzzleData *data) {
-    String_Delete(data->unk48);
+    String_Delete(data->unk48[0]);
     for (int i = 0; i < 4; i++) {
         String_Delete(data->unk38[i]);
     }
@@ -812,3 +819,92 @@ void ov110_021E6904(AlphPuzzleData *data, int a1) {
     AddTextPrinterParameterized2(data->window, 4, data->unk34, (48 - width) / 2, 4, 0xFF, ov110_021E6DA4[a1], NULL);
     ScheduleWindowCopyToVram(data->window);
 }
+
+static void ov110_021E6988(AlphPuzzleData *data, int a1, int a2, u8 textFrameDelay) {
+    if (a2) {
+        DrawFrameAndWindow2(&data->window[1], 1, 1, 5); 
+    }
+    FillWindowPixelBuffer(&data->window[1], 15);
+    if (textFrameDelay == 0) {
+        AddTextPrinterParameterized2(&data->window[1], 1, data->unk48[a1], 0, 0, 0xFF, 0x1020F, 0);
+    } else {
+        data->textPrinterId = AddTextPrinterParameterized2(&data->window[1], 1, data->unk48[a1], 0, 0, textFrameDelay, 0x1020F, 0);
+    }
+    ScheduleWindowCopyToVram(&data->window[1]);
+}
+
+static void ov110_021E6A04(AlphPuzzleData *data) {
+    FillWindowPixelBuffer(&data->window[2], 0);
+    AddTextPrinterParameterized2(&data->window[2], 4, data->unk38[data->puzzleIndex], 0, 0, 0xFF, 0x20100, 0);
+    ScheduleWindowCopyToVram(&data->window[2]);
+}
+
+void ov110_021E6A44(AlphPuzzleData *data, u8 x, u8 y, int a3) {
+    if (a3 == 0) {
+        FillBgTilemapRect(data->bgConfig, 2, 0, 4 * x + 4, 4 * y, 4, 4, 0);
+    } else {
+        CopyToBgTilemapRect(data->bgConfig, 2, 4 * x + 4, y * 4, 4, 4, &data->screenData->rawData, 4 * (a3 - 1), 0, data->screenData->screenWidth / 8, data->screenData->screenHeight / 8);
+    }
+}
+
+static void ov110_021E6ABC(AlphPuzzleData *data, u8 x, u8 y) {
+    if (data->selectedTile->x == data->unk22 && data->selectedTile->y == data->unk23) {
+        ov110_021E6A44(data, data->unk22, data->unk23, 2);
+    } else {
+        ov110_021E6A44(data, data->unk22, data->unk23, 0);
+    }
+    ScheduleBgTilemapBufferTransfer(data->bgConfig, 2);
+    if (x != 0 || y != 0) {
+        if (data->selectedTile->x == x && data->selectedTile->y == y) {
+            ov110_021E6A44(data, x, y, 3);
+        } else {
+            ov110_021E6A44(data, x, y, 1);
+        }
+    }
+}
+
+/*
+static void ov110_021E6B38(AlphPuzzleData *data) {
+    Unk122_021E6900 unkStruct;
+    MI_CpuFill8(&unkStruct, 0, sizeof(Unk122_021E6900));
+    unkStruct.bgConfig = data->bgConfig;
+    unkStruct.unk8 = 31;
+    unkStruct.unkC = 6;
+    unkStruct.unk4 = 0;
+    unkStruct.unk10 = 25;
+    unkStruct.unk11 = 10;
+    unkStruct.unk12_0 = data->unk4;
+    unkStruct.unk12_4 = 1;
+    unkStruct.unk13 = 0;
+    sub_02016704(data->unk7C, &unkStruct, data->palette);
+}
+*/
+/*
+static int ov110_021E6B94(AlphPuzzleData *data) {
+    AlphPuzzleStates ret;
+    switch (sub_020168F4(data->unk7C)) {
+        case 1:
+            ret = ALPH_PUZZLE_STATE_FADE_OUT;
+            break;
+        case 2:
+            ret = ALPH_PUZZLE_STATE_1;
+            break;
+        default:
+            return ALPH_PUZZLE_STATE_5;
+    }
+    data->unk4 = sub_020169C0(data->unk7C);
+    sub_020169CC(data->unk7C);
+    ClearFrameAndWindow2(&data->window[1], 1);
+    FillWindowPixelBuffer(&data->window[1], 0);
+    ScheduleWindowCopyToVram(&data->window[1]);
+    ScheduleBgTilemapBufferTransfer(data->bgConfig, 0);
+    return (int) ret;
+}
+*/
+/*
+extern s8 ov110_021E6D94[4][2];
+
+void ov110_021E6BEC(AlphPuzzleTile *tile, u32 x, u32 y) {
+    Sprite_SetPositionXY(tile->sprite, ov110_021E6D94[tile->rotation][0] + x, ov110_021E6D94[tile->rotation][1] + y);
+}
+*/
