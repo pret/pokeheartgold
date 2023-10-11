@@ -77,7 +77,7 @@ static void ov110_021E6988(AlphPuzzleData *data, int a1, int a2, u8 textFrameDel
 static void ov110_021E6A04(AlphPuzzleData *data);
 //static void ov110_021E6A44(AlphPuzzleData *data, u8 x, u8 y, int a3);
 static void ov110_021E6ABC(AlphPuzzleData *data, u8 x, u8 y);
-//static void ov110_021E6B38(AlphPuzzleData *data);
+static void ov110_021E6B38(AlphPuzzleData *data);
 //static int ov110_021E6B94(AlphPuzzleData *data);
 //static void ov110_021E6BEC(AlphPuzzleTile *tile, u32 x, u32 y);
 
@@ -863,7 +863,6 @@ static void ov110_021E6ABC(AlphPuzzleData *data, u8 x, u8 y) {
     }
 }
 
-/*
 static void ov110_021E6B38(AlphPuzzleData *data) {
     Unk122_021E6900 unkStruct;
     MI_CpuFill8(&unkStruct, 0, sizeof(Unk122_021E6900));
@@ -878,7 +877,7 @@ static void ov110_021E6B38(AlphPuzzleData *data) {
     unkStruct.unk13 = 0;
     sub_02016704(data->unk7C, &unkStruct, data->palette);
 }
-*/
+
 /*
 static int ov110_021E6B94(AlphPuzzleData *data) {
     AlphPuzzleStates ret;

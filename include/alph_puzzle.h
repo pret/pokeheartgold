@@ -90,7 +90,6 @@ void ov110_021E6A44(AlphPuzzleData *data, u8 a1, u8 a2, int a3);
 void ov110_021E6BEC(AlphPuzzleTile *tile, s16 x, s16 y);
 void ov110_021E6C18(AlphPuzzleData *data, s16 a1, u8 a2, u8 a3, u8 a4);
 void sub_02024818(Sprite *sprite, u16 a1);
-void ov110_021E6B38(AlphPuzzleData *data);
 int ov110_021E6B94(AlphPuzzleData *data);
 void ov110_021E6764(AlphPuzzleData *data);
 void ov110_021E6A44(AlphPuzzleData *data, u8 x, u8 y, int a3);

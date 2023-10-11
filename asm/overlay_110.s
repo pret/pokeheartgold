@@ -17,54 +17,6 @@
     .public ov110_021E6904
     .public ov110_021E6A44
     
-	thumb_func_start ov110_021E6B38
-ov110_021E6B38: ; 0x021E6B38
-	push {r4, r5, lr}
-	sub sp, #0x14
-	add r4, r0, #0
-	add r0, sp, #0
-	mov r1, #0
-	mov r2, #0x14
-	bl MI_CpuFill8
-	ldr r0, [r4, #0x14]
-	mov r2, #0
-	str r0, [sp]
-	mov r0, #0x1f
-	str r0, [sp, #8]
-	mov r0, #6
-	str r0, [sp, #0xc]
-	str r2, [sp, #4]
-	mov r1, #0x19
-	add r0, sp, #0
-	strb r1, [r0, #0x10]
-	mov r1, #0xa
-	strb r1, [r0, #0x11]
-	ldrb r1, [r0, #0x12]
-	mov r3, #0xf
-	bic r1, r3
-	ldr r3, [r4, #4]
-	lsl r3, r3, #0x18
-	lsr r5, r3, #0x18
-	mov r3, #0xf
-	and r3, r5
-	orr r1, r3
-	strb r1, [r0, #0x12]
-	ldrb r3, [r0, #0x12]
-	mov r1, #0xf0
-	bic r3, r1
-	mov r1, #0x10
-	orr r1, r3
-	strb r1, [r0, #0x12]
-	strb r2, [r0, #0x13]
-	ldr r0, [r4, #0x7c]
-	add r4, #0x80
-	ldr r2, [r4]
-	add r1, sp, #0
-	bl sub_02016704
-	add sp, #0x14
-	pop {r4, r5, pc}
-	thumb_func_end ov110_021E6B38
-
 	thumb_func_start ov110_021E6B94
 ov110_021E6B94: ; 0x021E6B94
 	push {r3, r4, r5, lr}
