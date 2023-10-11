@@ -68,7 +68,7 @@ UnkStruct_ov16_022014A0 *ov16_022014A0(HeapID heapId) {
 
 static void BerryPot_Clear(BerryPot *berryPot) {
     berryPot->berryId = BERRY_NONE;
-    berryPot->growthStage = BERRY_POT_GROWTH_STAGE_INVALID;
+    berryPot->growthStage = BERRY_POT_GROWTH_STAGE_NONE;
     berryPot->unk_2 = 0;
     berryPot->unk_4 = 0;
     berryPot->unk_8 = 0;
@@ -186,7 +186,7 @@ u16 ov16_02201674(BerryPot *berryPots, u32 idx) {
 
 static void ov16_02201688(BerryPot *berryPot, UnkStruct_ov16_022014A0 *a1) {
     switch (berryPot->growthStage) {
-        case BERRY_POT_GROWTH_STAGE_INVALID:
+        case BERRY_POT_GROWTH_STAGE_NONE:
             GF_ASSERT(FALSE);
             return;
         case BERRY_POT_GROWTH_STAGE_PLANTED:
@@ -245,7 +245,7 @@ static void ov16_022016F4(BerryPot *berryPot, UnkStruct_ov16_022014A0 *a1, int a
 
 void ov16_02201760(BerryPot *berryPots, UnkStruct_ov16_022014A0 *a1, s32 a2) {
     for (s32 i = 0; i < MAX_BERRY_POT; i++) {
-        if (berryPots[i].berryId == BERRY_NONE || berryPots[i].growthStage == BERRY_POT_GROWTH_STAGE_INVALID) {
+        if (berryPots[i].berryId == BERRY_NONE || berryPots[i].growthStage == BERRY_POT_GROWTH_STAGE_NONE) {
             continue;
         }
 
@@ -259,7 +259,7 @@ void ov16_02201760(BerryPot *berryPots, UnkStruct_ov16_022014A0 *a1, s32 a2) {
 
         s32 a2Tmp = a2;
 
-        while (berryPots[i].growthStage != BERRY_POT_GROWTH_STAGE_INVALID && a2Tmp != 0) {
+        while (berryPots[i].growthStage != BERRY_POT_GROWTH_STAGE_NONE && a2Tmp != 0) {
             if (berryPots[i].unk_2 > a2Tmp) {
                 ov16_022016F4(&berryPots[i], a1, a2Tmp);
                 berryPots[i].unk_2 -= a2Tmp;

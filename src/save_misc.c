@@ -11,7 +11,7 @@ void Save_BerryPots_Init(BerryPot *berryPots) {
 
     MI_CpuClear8(berryPots, MAX_BERRY_POT * sizeof(BerryPot));
     for (i = 0; i < MAX_BERRY_POT; i++) {
-        berryPots[i].growthStage = BERRY_POT_GROWTH_STAGE_INVALID;
+        berryPots[i].growthStage = BERRY_POT_GROWTH_STAGE_NONE;
         berryPots[i].berryId = 0;
     }
 }

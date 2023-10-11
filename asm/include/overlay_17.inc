@@ -166,9 +166,9 @@
 .public GetTotalBerryQuantity
 .public GetTotalMulchQuantity
 .public ov17_02201BC0
-.public ov17_02201C10
-.public ov17_02201C78
-.public ov17_02201D04
+.public BerryPotsApp_Initialize
+.public BerryPotsApp_Run
+.public BerryPotsApp_Exit
 .public ov17_022023A0
 .public ov17_022028B8
 .public ov17_02202850
