@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_GAME_STATS_H
 #define POKEHEARTGOLD_GAME_STATS_H
 
+#include "constants/game_stats.h"
 #include "pokedex.h"
 #include "save.h"
 

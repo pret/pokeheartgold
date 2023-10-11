@@ -1,8 +1,10 @@
 #ifndef POKEHEARTGOLD_CONSTANTS_GAME_STATS_H
 #define POKEHEARTGOLD_CONSTANTS_GAME_STATS_H
 
+#define GAME_STAT_UNK0                 0
 #define GAME_STAT_APRICORN_GET         1
 #define GAME_STAT_UNK2                 2
+#define GAME_STAT_UNK5                 5
 #define GAME_STAT_UNK6                 6
 #define GAME_STAT_UNK8                 8 //wild battles?
 #define GAME_STAT_UNK9                 9 //trainer battles?

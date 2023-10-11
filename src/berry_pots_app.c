@@ -667,7 +667,7 @@ static void ov17_022023B0(BerryPotsAppData *data) {
         }
 
         ov16_02201610(data->berryPots, data->unk7C, data->berryGrowthProperties, ItemIdToBerryId(data->args->itemId));
-        GameStats_Inc(data->stats, 5);
+        GameStats_Inc(data->stats, GAME_STAT_UNK5);
         data->unk7B = 2;
     }
 
@@ -1066,7 +1066,7 @@ static void ov17_02202B98(BerryPotsAppData *data) {
     Sprite_Delete(unk->soilSpriteMaybe);
     unk->soilSpriteMaybe = NULL;
     Sprite_SetAnimCtrlCurrentFrame(data->sprites[data->unk7C + 3], 2);
-    GameStats_AddSpecial(data->stats, 0);
+    GameStats_AddSpecial(data->stats, GAME_STAT_UNK0);
 }
 
 static void ov17_02202BF8(BerryPotsAppData *data) {
