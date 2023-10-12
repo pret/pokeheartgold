@@ -156,7 +156,7 @@ int sub_02090E44(Unk02090C94 *a0) {
     return sub_020183F0(a0->unk24);
 }
 
-void sub_02090E5C(Unk02090C94 *a0, int a1) {
+void sub_02090E5C(Unk02090C94 *a0, u32 a1) {
     sub_02018410(a0->unk24, a1);
 }
 

@@ -1,6 +1,7 @@
 #include "global.h"
 #include "constants/items.h"
 #include "bag_cursor.h"
+#include "berry_pots_app.h"
 #include "overlay_16.h"
 #include "unk_0203E348.h"
 
@@ -11,11 +12,9 @@ extern BOOL ov15_BagApp_Init(OVY_MANAGER*, int*);
 extern BOOL ov15_BagApp_Exec(OVY_MANAGER*, int*);
 extern BOOL ov15_BagApp_Exit(OVY_MANAGER*, int*);
 
-extern BOOL ov17_02201C10(OVY_MANAGER*, int*);
-extern BOOL ov17_02201C78(OVY_MANAGER*, int*);
-extern BOOL ov17_02201D04(OVY_MANAGER*, int*);
-
-extern void ov17_02201BC0(void);
+extern BOOL BerryPotsApp_Initialize(OVY_MANAGER*, int*);
+extern BOOL BerryPotsApp_Run(OVY_MANAGER*, int*);
+extern BOOL BerryPotsApp_Exit(OVY_MANAGER*, int*);
 
 static const u8 ov16_02201B60[] = {
     POCKET_ITEMS, 0xFF
@@ -26,9 +25,9 @@ static const u8 ov16_02201B64[] = {
 };
 
 static const OVY_MGR_TEMPLATE ov16_02201B68 = {
-    .init = ov17_02201C10,
-    .exec = ov17_02201C78,
-    .exit = ov17_02201D04,
+    .init = BerryPotsApp_Initialize,
+    .exec = BerryPotsApp_Run,
+    .exit = BerryPotsApp_Exit,
     .ovy_id = FS_OVERLAY_ID_NONE,
 };
 

@@ -55,7 +55,7 @@ GF_G2dRenderer* SpriteRenderer_GetG2dRendererPtr(SpriteRenderer* renderer) {
     return &renderer->renderer;
 }
 
-BOOL sub_0200CF70(SpriteRenderer* renderer, Unk122_021E92FC* a1, Unk122_021E92D0* a2, int a3) {
+BOOL sub_0200CF70(SpriteRenderer* renderer, const Unk122_021E92FC* a1, const Unk122_021E92D0* a2, int a3) {
     GF_ASSERT(renderer != NULL);
     if (renderer == NULL) {
         return FALSE;
