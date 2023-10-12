@@ -97,7 +97,7 @@ typedef struct UnkStruct_0203EDDC {
     Pokemon *unk00;
     Pokemon *unk04;
     BOOL unk08;
-    OPTIONS *options;
+    Options *options;
     Pokemon *unk10;
 } UnkStruct_0203EDDC;
 
