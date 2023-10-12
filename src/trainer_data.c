@@ -35,7 +35,7 @@ void EnemyTrainerSet_Init(BattleSetup *battleSetup, SaveData *saveData, HeapID h
             CreateNPCTrainerParty(battleSetup, i, heapId);
         }
     }
-    battleSetup->flags |= trainer.data.doubleBattle;
+    battleSetup->battleType |= trainer.data.doubleBattle;
     DestroyMsgData(msgData);
 }
 

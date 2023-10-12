@@ -662,8 +662,8 @@ BOOL ScrCmd_700(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_BattleTowerSetUpMultiBattle(ScriptContext *ctx) {
-    sub_0202CA44(ctx->fieldSystem->saveData);
-    sub_02039F68();
+    void *data = sub_0202CA44(ctx->fieldSystem->saveData);
+    sub_02039F68(data);
     return TRUE;
 }
 

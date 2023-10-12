@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_HEAP_H
 #define POKEHEARTGOLD_HEAP_H
 
+#include "global.h"
+
 typedef enum HeapID {
     HEAP_ID_DEFAULT,
     HEAP_ID_1,
@@ -18,6 +20,7 @@ typedef enum HeapID {
     HEAP_ID_32 = 32,
     HEAP_ID_OV55 = 40,
     HEAP_ID_CHOOSE_STARTER = 46,
+    HEAP_ID_EVOLUTION = 71,
     HEAP_ID_CREDITS = 73,
     HEAP_ID_89 = 89,
     HEAP_ID_ALPH_PUZZLE = 97,

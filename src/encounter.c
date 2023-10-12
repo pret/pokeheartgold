@@ -111,7 +111,7 @@ static BOOL Encounter_GetResult(Encounter *encounter, FieldSystem *fieldSystem) 
 }
 
 static void sub_02050724(BattleSetup *setup, FieldSystem *fieldSystem) {
-    if (!(setup->flags & BATTLE_TYPE_DEBUG)) {
+    if (!(setup->battleType & BATTLE_TYPE_DEBUG)) {
         sub_0205239C(setup, fieldSystem);
     }
 }
@@ -137,7 +137,7 @@ static BOOL Task_StartEncounter(TaskManager *taskManager) { //todo: better name
             break;
         case 3:
             sub_02050724(encounter->setup, fieldSystem);
-            if (encounter->setup->flags == BATTLE_TYPE_NONE || encounter->setup->flags == BATTLE_TYPE_8 || encounter->setup->flags == (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_6)) {
+            if (encounter->setup->battleType == BATTLE_TYPE_NONE || encounter->setup->battleType == BATTLE_TYPE_8 || encounter->setup->battleType == (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_6)) {
                 sub_02093070(fieldSystem);
                 sub_020930C4(fieldSystem);
             }
@@ -146,7 +146,7 @@ static BOOL Task_StartEncounter(TaskManager *taskManager) { //todo: better name
             fieldSystem->unk7C = 0;
 
             if (Encounter_GetResult(encounter, fieldSystem) == FALSE) {
-                if (encounter->setup->flags & BATTLE_TYPE_11) {
+                if (encounter->setup->battleType & BATTLE_TYPE_11) {
                     HealParty(SaveArray_Party_Get(fieldSystem->saveData));
                 } else {
                     Encounter_Delete(encounter);
@@ -550,7 +550,7 @@ void SetupAndStartWildBattle(TaskManager *taskManager, u16 species, u8 level, u3
     ov02_02247F30(fieldSystem, species, level, shiny, setup);
 
     if (canFlee) {
-        setup->unk_18C |= 8;
+        setup->battleSpecial |= 8;
     }
 
     GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_UNK8);
@@ -570,7 +570,7 @@ void SetupAndStartFatefulWildBattle(TaskManager *taskManager, u16 species, u8 le
     SetMonData(Party_GetMonByIndex(setup->party[BATTLER_ENEMY], 0), MON_DATA_FATEFUL_ENCOUNTER, &var);
 
     if (canRun) {
-        setup->unk_18C |= 8;
+        setup->battleSpecial |= 8;
     }
 
     GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_UNK8);
@@ -640,7 +640,7 @@ void SetupAndStartFirstBattle(TaskManager *taskManager, u16 species, u8 level) {
 
     ov02_02247F30(fieldSystem, species, level, FALSE, setup);
 
-    setup->unk_18C = 1;
+    setup->battleSpecial = BATTLE_SPECIAL_FIRST_RIVAL;
 
     GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_UNK8);
 
@@ -857,7 +857,7 @@ void sub_020515FC(FieldSystem *fieldSystem, Party *party, s32 battleType) {
 
 static void sub_02051660(FieldSystem *fieldSystem, BattleSetup *setup) {
     Pokemon *mon;
-    u32 battleType = setup->flags;
+    u32 battleType = setup->battleType;
     u32 winFlag = setup->winFlag;
 
     if (battleType & BATTLE_TYPE_LINK || battleType & BATTLE_TYPE_TOWER) {

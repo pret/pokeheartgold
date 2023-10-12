@@ -15,7 +15,7 @@ BOOL sub_02039AA4(void);
 int sub_020399B8(void);
 BOOL sub_02038D90(void);
 BOOL sub_0203A05C(SaveData *saveData);
-void sub_02039F68(void);
+void sub_02039F68(void *);
 void sub_02039AD8(int);
 
 #endif //POKEHEARTGOLD_UNK_02037C94_H

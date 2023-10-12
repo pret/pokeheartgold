@@ -143,7 +143,6 @@ BOOL ov36_App_MainMenu_SelectOption_Continue_AppInit(OVY_MANAGER* man, int* stat
 }
 
 BOOL ov36_App_MainMenu_SelectOption_Continue_AppExec(OVY_MANAGER* man, int* state) {
-#pragma unused(state)
     struct UnkStruct_02111868_sub* unk_work = OverlayManager_GetArgs(man);
     SaveData* saveData = unk_work->saveData;
     SysInfo* sys_info = Save_SysInfo_Get(saveData);

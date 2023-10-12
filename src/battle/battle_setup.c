@@ -35,8 +35,8 @@ BattleSetup* BattleSetup_New(HeapID heapId, u32 battleTypeFlags) {
     int i;
     BattleSetup* setup = AllocFromHeap(heapId, sizeof(BattleSetup));
     MI_CpuClear8(setup, sizeof(BattleSetup));
-    setup->flags = battleTypeFlags;
-    setup->unk_18C = 0;
+    setup->battleType = battleTypeFlags;
+    setup->battleSpecial = 0;
     setup->winFlag = 0;
     setup->battleBg = 0;
     setup->unk_150 = 24;
@@ -229,7 +229,7 @@ void sub_02051D18(BattleSetup* setup, FieldSystem* fieldSystem, SaveData* saveDa
         setup->timeOfDay = GF_RTC_GetTimeOfDayByHour(Save_SysInfo_RTC_Get(saveData)->time.hour);
     }
     BattleSetup_SetProfile(setup, profile, BATTLER_PLAYER);
-    if (setup->flags & BATTLE_TYPE_BUG_CONTEST) {
+    if (setup->battleType & BATTLE_TYPE_BUG_CONTEST) {
         Party_InitWithMaxSize(setup->party[BATTLER_PLAYER], 1);
         BattleSetup_AddMonToParty(setup, Party_GetMonByIndex(party, 0), BATTLER_PLAYER);
     } else {

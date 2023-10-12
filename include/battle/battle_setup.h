@@ -23,7 +23,7 @@ struct BattleSetupSub_138 {
 };
 
 struct BattleSetup { //declared in trainer_data.h
-    u32 flags; // 0
+    u32 battleType; // 0
     Party* party[BATTLER_MAX]; // 4
     int winFlag; // 14
     int trainerId[BATTLER_MAX]; // 18
@@ -54,10 +54,10 @@ struct BattleSetup { //declared in trainer_data.h
     u32 weatherType; // 174
     int levelUpFlag; // 178
     u8 filler_17C[0x10];
-    u32 unk_18C;
+    u32 battleSpecial; //18C
     int safariBalls; // 190
     int unk_194;
-    u8 filler_198[4];
+    void *unk198;
     int unk_19C;
     int unk_1A0[4];
     u16 unk1B0;
