@@ -22,6 +22,7 @@ void sub_020169CC(void *);
 void *sub_0201660C(HeapID);
 void sub_02016624(void *);
 void sub_02016704(void *, Unk122_021E6900 *, PaletteData *);
+u32 sub_02016748(void *);
 int sub_020169C0(void *);
 
 #endif //POKEHEARTGOLD_UNK_0201660C_H
