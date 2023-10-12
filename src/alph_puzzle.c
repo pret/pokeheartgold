@@ -36,6 +36,11 @@ typedef enum AlphPuzzleStates {
     ALPH_PUZZLE_STATE_END
 } AlphPuzzleStates;
 
+static void ov110_021E5A24(void);
+static void ov110_021E5A74(AlphPuzzleData *data);
+static void ov110_021E5AAC(AlphPuzzleData *data);
+static BOOL ov110_021E5AD4(AlphPuzzleData *data);
+static BOOL ov110_021E5B0C(AlphPuzzleData *data);
 static int AlphPuzzleMainSeq_FadeIn(AlphPuzzleData *data);
 static int AlphPuzzleMainSeq_FadeOut(AlphPuzzleData *data);
 static int AlphPuzzleMainSeq_WaitForInput(AlphPuzzleData *data);
@@ -73,15 +78,15 @@ static void ov110_021E6748(AlphPuzzleData *data);
 static void ov110_021E6764(AlphPuzzleData *data);
 static void AlphPuzzle_DeleteSprites(AlphPuzzleData *data);
 static BOOL AlphPuzzle_CheckComplete(AlphPuzzleData *data);
-//static void ov110_021E6904(AlphPuzzleData *data, int a1);
+static void ov110_021E6904(AlphPuzzleData *data, int a1);
 static void ov110_021E6988(AlphPuzzleData *data, int a1, int a2, u8 textFrameDelay);
 static void ov110_021E6A04(AlphPuzzleData *data);
-//static void ov110_021E6A44(AlphPuzzleData *data, u8 x, u8 y, int a3);
+static void ov110_021E6A44(AlphPuzzleData *data, u8 x, u8 y, int a3);
 static void ov110_021E6ABC(AlphPuzzleData *data, u8 x, u8 y);
 static void ov110_021E6B38(AlphPuzzleData *data);
 static AlphPuzzleStates ov110_021E6B94(AlphPuzzleData *data);
-//static void ov110_021E6BEC(AlphPuzzleTile *tile, s16 x, s16 y);
-//static void ov110_021E6C18(AlphPuzzleData *data, s16 tileIndex, u8 x, u8 y, u8 rotation);
+static void ov110_021E6BEC(AlphPuzzleTile *tile, s16 x, s16 y);
+static void ov110_021E6C18(AlphPuzzleData *data, s16 tileIndex, u8 x, u8 y, u8 rotation);
 static void AlphPuzzle_UpdateSelectedTile(AlphPuzzleData *data, u8 tileIndex, BOOL isSelecting);
 static void ov110_021E6D20(AlphPuzzleData *data);
 static void ov110_021E6D54(SysTask *task, void *_data);
@@ -154,7 +159,7 @@ BOOL ov110_AlphPuzzle_OvyExit(OVY_MANAGER *man) {
     return TRUE;
 }
 
-void ov110_021E5A24(void) {
+static void ov110_021E5A24(void) {
     Main_SetVBlankIntrCB(NULL, NULL);
     HBlankInterruptDisable();
     GX_DisableEngineALayers();
@@ -167,7 +172,7 @@ void ov110_021E5A24(void) {
     sub_0200FBDC(1);
 }
 
-void ov110_021E5A74(AlphPuzzleData *data) {
+static void ov110_021E5A74(AlphPuzzleData *data) {
     data->unk4 = sub_020183F0(data->unk10->unk8);
     Options *options = Save_PlayerData_GetOptionsAddr(data->unk10->savedata);
     data->textFrameDelay = Options_GetTextFrameDelay(options);
@@ -175,14 +180,14 @@ void ov110_021E5A74(AlphPuzzleData *data) {
     data->puzzleIndex = data->unk10->unk5;
 }
 
-void ov110_021E5AAC(AlphPuzzleData *data) {
+static void ov110_021E5AAC(AlphPuzzleData *data) {
     sub_02018410(data->unk10->unk8, data->unk4);
     if (data->unk27) {
         Save_VarsFlags_SetAlphPuzzleFlag(Save_VarsFlags_Get(data->unk10->savedata), data->puzzleIndex);
     }
 }
 
-BOOL ov110_021E5AD4(AlphPuzzleData *data) {
+static BOOL ov110_021E5AD4(AlphPuzzleData *data) {
     switch (data->unkState) {
     case 0:
         ov110_021E5BE4(data);
@@ -198,7 +203,7 @@ BOOL ov110_021E5AD4(AlphPuzzleData *data) {
     return FALSE;
 }
 
-BOOL ov110_021E5B0C(AlphPuzzleData *data) {
+static BOOL ov110_021E5B0C(AlphPuzzleData *data) {
     sub_02021238();
     ov110_021E5C18(data);
     return TRUE;

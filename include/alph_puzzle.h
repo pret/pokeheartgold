@@ -71,24 +71,5 @@ typedef struct AlphPuzzleData {
 BOOL ov110_AlphPuzzle_OvyInit(OVY_MANAGER *man, int *state);
 BOOL ov110_AlphPuzzle_OvyExec(OVY_MANAGER *man, int *state);
 BOOL ov110_AlphPuzzle_OvyExit(OVY_MANAGER *man);
-void ov110_021E5A24(void);
-void ov110_021E5A74(AlphPuzzleData *data);
-void ov110_021E5AAC(AlphPuzzleData *data);
-BOOL ov110_021E5AD4(AlphPuzzleData *data);
-BOOL ov110_021E5B0C(AlphPuzzleData *data);
-
-int ov110_021E5D90(AlphPuzzleData *data, u8 *xOut, u8 *yOut);
-
-//the following functions haven't been decompiled yet
-int ov110_021E6014(AlphPuzzleData *data);
-int ov110_021E6150(AlphPuzzleData *data);
-void ov110_021E6904(AlphPuzzleData *data, int a1);
-void ov110_021E6A04(AlphPuzzleData *data);
-void ov110_021E6A44(AlphPuzzleData *data, u8 a1, u8 a2, int a3);
-void ov110_021E6C18(AlphPuzzleData *data, s16 a1, u8 a2, u8 a3, u8 a4);
-void ov110_021E6764(AlphPuzzleData *data);
-void ov110_021E6A44(AlphPuzzleData *data, u8 x, u8 y, int a3);
-void ov110_021E6BEC(AlphPuzzleTile *tile, s16 x, s16 y);
-void ov110_021E6C18(AlphPuzzleData *data, s16 tileIndex, u8 x, u8 y, u8 rotation);
 
 #endif //POKEHEARTGOLD_ALPH_PUZZLE_H
