@@ -78,7 +78,7 @@
 #include "unk_02067A80.h"
 #include "unk_020965A4.h"
 #include "unk_02056680.h"
-#include "unk_0208E600.h"
+#include "trainer_memo.h"
 #include "daycare.h"
 #include "pokewalker.h"
 #include "unk_02095DF4.h"
@@ -91,6 +91,7 @@
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0202.h"
 #include "constants/accessories.h"
+#include "constants/events.h"
 #include "constants/phone_contacts.h"
 #include "constants/trainers.h"
 #include "render_window.h"
@@ -1153,24 +1154,24 @@ BOOL ScrCmd_563(ScriptContext *ctx) {
     now_y = MapObject_GetCurrentY(object);
     i = 0;
     if (now_x < x) {
-        cmd[i].command = MV_step_right;
+        cmd[i].command = MOVEMENT_STEP_RIGHT;
         cmd[i].length = x - now_x;
         i++;
     } else if (now_x > x) {
-        cmd[i].command = MV_step_left;
+        cmd[i].command = MOVEMENT_STEP_LEFT;
         cmd[i].length = now_x - x;
         i++;
     }
     if (now_y < y) {
-        cmd[i].command = MV_step_down;
+        cmd[i].command = MOVEMENT_STEP_UP;
         cmd[i].length = y - now_y;
         i++;
     } else if (now_y > y) {
-        cmd[i].command = MV_step_up;
+        cmd[i].command = MOVEMENT_STEP_DOWN;
         cmd[i].length = now_y - y;
         i++;
     }
-    cmd[i].command = MV_step_end;
+    cmd[i].command = MOVEMENT_STEP_END;
     cmd[i].length = 0;
 
     mvtMan = EventObjectMovementMan_Create(object, cmd);
@@ -3439,7 +3440,7 @@ BOOL ScrCmd_LoadNPCTrade(ScriptContext *ctx) {
     u8 tradeNo = ScriptReadByte(ctx);
 
     HandleLoadOverlay(FS_OVERLAY_ID(npc_trade), OVY_LOAD_ASYNC);
-    *p_tradeWork = NPCTradeApp_Init(HEAP_ID_FIELD, tradeNo);
+    *p_tradeWork = NPCTradeApp_Init(HEAP_ID_FIELD, (NpcTradeNum)tradeNo);
     return FALSE;
 }
 
@@ -3483,7 +3484,7 @@ BOOL ScrCmd_GiveLoanMon(ScriptContext *ctx) {
     u8 level = ScriptReadByte(ctx);
     u16 mapno = ScriptReadHalfword(ctx);
     HandleLoadOverlay(FS_OVERLAY_ID(npc_trade), OVY_LOAD_ASYNC);
-    NPCTrade_MakeAndGiveLoanMon(ctx->fieldSystem, tradeno, level, mapno);
+    NPCTrade_MakeAndGiveLoanMon(ctx->fieldSystem, (NpcTradeNum)tradeno, level, mapno);
     UnloadOverlayByID(FS_OVERLAY_ID(npc_trade));
     return FALSE;
 }
@@ -3493,7 +3494,7 @@ BOOL ScrCmd_CheckReturnLoanMon(ScriptContext *ctx) {
     u16 idx = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     HandleLoadOverlay(FS_OVERLAY_ID(npc_trade), OVY_LOAD_ASYNC);
-    *p_ret = NPCTrade_CanGiveUpLoanMon(ctx->fieldSystem, tradeno, idx);
+    *p_ret = NPCTrade_CanGiveUpLoanMon(ctx->fieldSystem, (NpcTradeNum)tradeno, idx);
     UnloadOverlayByID(FS_OVERLAY_ID(npc_trade));
     return FALSE;
 }
@@ -4367,7 +4368,7 @@ BOOL ScrCmd_696(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_FollowerPokeIsEventTrigger(ScriptContext *ctx) {
-    u8 r4 = ScriptReadByte(ctx);
+    u8 event = ScriptReadByte(ctx);
     u16 r7 = ScriptGetVar(ctx);
     u16 *r6 = ScriptGetVarPointer(ctx);
     Pokemon *mon;
@@ -4376,31 +4377,31 @@ BOOL ScrCmd_FollowerPokeIsEventTrigger(ScriptContext *ctx) {
     *r6 = 0;
     mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), r7);
 
-    if (r4 >= 4) {
+    if (event >= NUM_EVENTS) {
         return FALSE;
     }
     if (GetMonData(mon, MON_DATA_IS_EGG, NULL) || GetMonData(mon, MON_DATA_CHECKSUM_FAILED, NULL)) {
         return FALSE;
     }
-    if (!sub_0208E9E0(r4, mon, GetMonData(mon, MON_DATA_OTID, NULL) == PlayerProfile_GetTrainerID(
+    if (!MonMetadataMatchesEvent(event, mon, GetMonData(mon, MON_DATA_OTID, NULL) == PlayerProfile_GetTrainerID(
         Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData)))) {
         return FALSE;
     }
 
     species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    switch (r4) {
-    case 0:
+    switch (event) {
+    case EVENT_SPIKY_EARED_PICHU:
         if ((species == SPECIES_PICHU || species == SPECIES_PIKACHU || species == SPECIES_RAICHU) && MonIsShiny(mon)) {
             *r6 = 1;
         }
         break;
-    case 1:
-    case 2:
+    case EVENT_ARCEUS_HALL_OF_ORIGIN:
+    case EVENT_ARCEUS_MOVIE_GIFT:
         if (species == SPECIES_ARCEUS) {
             *r6 = 1;
         }
         break;
-    case 3:
+    case EVENT_CELEBI:
         if (species == SPECIES_CELEBI) {
             *r6 = 1;
         }

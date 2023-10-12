@@ -2,6 +2,7 @@
 #include "heap.h"
 #include "unk_02037C94.h"
 #include "error_handling.h"
+#include "error_message_reset.h"
 
 struct HeapInfo {
     NNSFndHeapHandle *heapHandles;

@@ -245,7 +245,7 @@ Static main
 	Object asm/unk_0206B910.o
 	Object src/field_alph_checks.o
 	Object src/get_egg.o
-	Object asm/unk_0206D494.o
+	Object src/unk_0206D494.o
 	Object src/pokemon.o
 	Object src/move.o
 	Object src/trainer_data.o
@@ -282,7 +282,7 @@ Static main
 	Object asm/unk_0208C3E4.o
 	Object asm/unk_0208DE40.o
 	Object src/ribbon.o
-	Object asm/unk_0208E600.o
+	Object src/trainer_memo.o
 	Object asm/unk_0208F658.o
 	Object asm/unk_0208F814.o
 	Object asm/unk_0208FB64.o

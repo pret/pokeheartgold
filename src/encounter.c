@@ -510,7 +510,7 @@ static BOOL Task_BugContestEncounter(TaskManager *taskManager) {
             sub_02051660(fieldSystem, encounter->setup);
 
             if (encounter->setup->winFlag == BATTLE_OUTCOME_MON_CAUGHT) {
-                sub_0206DB94(taskManager, encounter->setup->bugContestMon);
+                BugContest_PromptSwapPokemon(taskManager, encounter->setup->bugContestMon);
                 sub_02093070(fieldSystem);
                 sub_020930C4(fieldSystem);
             }
@@ -518,7 +518,7 @@ static BOOL Task_BugContestEncounter(TaskManager *taskManager) {
             break;
         case 4:
             if (*sportBall == 0 && encounter->setup->winFlag != BATTLE_OUTCOME_MON_CAUGHT) {
-                sub_0206DB58(taskManager, fieldSystem);
+                BugContest_WarpToJudging(taskManager, fieldSystem);
             }
             (*state)++;
             break;

@@ -1,3 +1,4 @@
+#include "constants/events.h"
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_D51R0201.h"
 #include "msgdata/msg/msg_0146_D51R0201.h"
@@ -76,10 +77,10 @@ scr_seq_D51R0201_001:
 	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 8
 	goto_if_eq _0165
 	get_party_lead_alive VAR_TEMP_x4005
-	follower_poke_is_event_trigger 2, VAR_TEMP_x4005, VAR_TEMP_x4006
+	follower_poke_is_event_trigger EVENT_ARCEUS_MOVIE_GIFT, VAR_TEMP_x4005, VAR_TEMP_x4006
 	compare VAR_TEMP_x4006, 1
 	goto_if_eq _011A
-	follower_poke_is_event_trigger 1, VAR_TEMP_x4005, VAR_TEMP_x4007
+	follower_poke_is_event_trigger EVENT_ARCEUS_HALL_OF_ORIGIN, VAR_TEMP_x4005, VAR_TEMP_x4007
 	compare VAR_TEMP_x4007, 1
 	goto_if_eq _011A
 	npc_msg msg_0146_D51R0201_00024
@@ -412,10 +413,10 @@ _056D:
 	get_party_lead_alive VAR_TEMP_x4000
 	compare VAR_UNK_4102, 1
 	goto_if_ne _05B2
-	follower_poke_is_event_trigger 1, VAR_TEMP_x4000, VAR_SPECIAL_RESULT
+	follower_poke_is_event_trigger EVENT_ARCEUS_HALL_OF_ORIGIN, VAR_TEMP_x4000, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0605
-	follower_poke_is_event_trigger 2, VAR_TEMP_x4000, VAR_SPECIAL_RESULT
+	follower_poke_is_event_trigger EVENT_ARCEUS_MOVIE_GIFT, VAR_TEMP_x4000, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _060D
 	goto _0615
@@ -424,10 +425,10 @@ _056D:
 _05B2:
 	compare VAR_UNK_4102, 2
 	goto_if_ne _05F3
-	follower_poke_is_event_trigger 2, VAR_TEMP_x4000, VAR_SPECIAL_RESULT
+	follower_poke_is_event_trigger EVENT_ARCEUS_MOVIE_GIFT, VAR_TEMP_x4000, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0605
-	follower_poke_is_event_trigger 1, VAR_TEMP_x4000, VAR_SPECIAL_RESULT
+	follower_poke_is_event_trigger EVENT_ARCEUS_HALL_OF_ORIGIN, VAR_TEMP_x4000, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _060D
 	goto _0615
@@ -711,7 +712,7 @@ _0A4D:
 	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 14
 	goto_if_eq _0AAA
 	get_party_lead_alive VAR_TEMP_x4005
-	follower_poke_is_event_trigger 2, VAR_TEMP_x4005, VAR_TEMP_x4006
+	follower_poke_is_event_trigger EVENT_ARCEUS_MOVIE_GIFT, VAR_TEMP_x4005, VAR_TEMP_x4006
 	compare VAR_TEMP_x4006, 1
 	goto_if_ne _0AA0
 	setvar VAR_UNK_4102, 1

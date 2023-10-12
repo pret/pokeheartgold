@@ -93,6 +93,14 @@ typedef struct ScratchCardAppData {
     u8 filler_14[4];
 } ScratchCardAppData;
 
+typedef struct UnkStruct_0203EDDC {
+    Pokemon *unk00;
+    Pokemon *unk04;
+    BOOL unk08;
+    OPTIONS *options;
+    Pokemon *unk10;
+} UnkStruct_0203EDDC;
+
 struct UseMailWork *CreateUseMailWork(FieldSystem *fieldSystem, int kind, int mailId, HeapID heapId);
 struct ApricornBoxWork *CreateApricornBoxWork(FieldSystem *fieldSystem, int a1);
 struct PalPadWork *CreatePalPadWork(FieldSystem *fieldSystem, SaveData *saveData, HeapID heapId);
@@ -113,6 +121,7 @@ u16 sub_0203E864(void *a0);
 u16 sub_0203E600(void *a0);
 void *sub_0203E7F4(HeapID heapId, FieldSystem *fieldSystem, u8 a2, u16 a3);
 u32 *sub_0203ED80(FieldSystem *fieldSystem, u32 a1, u16 *a2);
+UnkStruct_0203EDDC *sub_0203EDDC(FieldSystem *fieldSystem, Pokemon *a1, Pokemon *a2, BOOL a3);
 void *sub_0203FB94(HeapID heapId, FieldSystem *fieldSystem, u16 a2, u16 a3);
 void sub_0203F198(TaskManager *taskManager, u16 *ret_p, SaveData *saveData, u16 a3, u16 a4);
 void sub_0203F204(FieldSystem *fieldSystem, FashionAppData *fashionData);

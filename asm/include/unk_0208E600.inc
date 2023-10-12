@@ -26,9 +26,9 @@
 .public BoxmonBelongsToPlayer
 .public sub_0208E600
 .public sub_0208E994
-.public sub_0208E9E0
+.public MonMetadataMatchesEvent
 .public MonSetTrainerMemo
-.public sub_0208F270
+.public BoxMonSetTrainerMemo
 .public _s32_div_f
 .public _u32_div_f
 .public _020FA484

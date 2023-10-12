@@ -71,7 +71,7 @@ void MoveTutorMenu_SetListItem(struct UnkStruct_ov01_021EDC28 *menu, int a1, int
 void ov01_021F7704(LocalMapObject *object);
 void ov01_021F62E8(VecFx32 *vec, FieldSystemUnkSub2C *a1);
 void ov01_021F9408(LocalMapObject *object, u32 dir);
-BOOL ov01_022055DC(LocalMapObject *object);
+u8 ov01_022055DC(LocalMapObject *object);
 void ov01_02205604(LocalMapObject *object, int *p_x, int *p_y);
 void ov01_021FF0E4(LocalMapObject *object, int a1, int x, int y, int a4);
 void ov01_021FF964(LocalMapObject *object, int a1, int x, int y, int a4);

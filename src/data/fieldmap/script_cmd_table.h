@@ -806,7 +806,7 @@ BOOL ScrCmd_803(ScriptContext *ctx);
 BOOL ScrCmd_804(ScriptContext *ctx);
 BOOL ScrCmd_805(ScriptContext *ctx);
 BOOL ScrCmd_806(ScriptContext *ctx);
-BOOL ScrCmd_807(ScriptContext *ctx);
+BOOL ScrCmd_SetTrainerHouseSprite(ScriptContext *ctx);
 BOOL ScrCmd_808(ScriptContext *ctx);
 BOOL ScrCmd_809(ScriptContext *ctx);
 BOOL ScrCmd_810(ScriptContext *ctx);
@@ -1661,7 +1661,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_804,
     ScrCmd_805,
     ScrCmd_806,
-    ScrCmd_807,
+    ScrCmd_SetTrainerHouseSprite,
     ScrCmd_808,
     ScrCmd_809,
     ScrCmd_810,
