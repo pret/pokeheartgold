@@ -92,8 +92,8 @@ void ov01_021E9C00(FieldSystem *fieldSystem, u8 a1);
 void ov01_021E9C20(FieldSystem *fieldSystem, u8 a1);
 void ov01_021E9BB8(FieldSystem *fieldSystem, u8 a1);
 void ov01_021E9BDC(FieldSystem *fieldSystem, u8 a1);
-int Field_PlayerMovementSavingSet(FieldSystem *fieldSystem);
-void Field_PlayerMovementSavingClear(int state);
+SysTask *Field_PlayerMovementSavingSet(FieldSystem *fieldSystem);
+void Field_PlayerMovementSavingClear(SysTask *task);
 
 struct SaveStatsPrinter;
 
