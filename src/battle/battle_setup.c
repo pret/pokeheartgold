@@ -39,7 +39,7 @@ BattleSetup* BattleSetup_New(HeapID heapId, u32 battleTypeFlags) {
     setup->battleSpecial = 0;
     setup->winFlag = 0;
     setup->battleBg = 0;
-    setup->unk_150 = 24;
+    setup->terrain = TERRAIN_MAX;
     setup->mapSection = 0;
     setup->timeOfDay = RTC_TIMEOFDAY_MORN;
     setup->evolutionLocation = 0;
@@ -225,7 +225,7 @@ void sub_02051D18(BattleSetup* setup, FieldSystem* fieldSystem, SaveData* saveDa
         }
     } else {
         setup->battleBg = MapHeader_GetBattleBg(mapno);
-        setup->unk_150 = 9;
+        setup->terrain = TERRAIN_BUILDING;
         setup->timeOfDay = GF_RTC_GetTimeOfDayByHour(Save_SysInfo_RTC_Get(saveData)->time.hour);
     }
     BattleSetup_SetProfile(setup, profile, BATTLER_PLAYER);
@@ -280,7 +280,7 @@ void BattleSetup_InitForFixedLevelFacility(BattleSetup* setup, FieldSystem *fiel
     options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
 
     setup->battleBg = 6;
-    setup->unk_150 = 9;
+    setup->terrain = TERRAIN_BUILDING;
     BattleSetup_SetProfile(setup, profile, BATTLER_PLAYER);
 
     Pokemon* pokemon = AllocMonZeroed(HEAP_ID_FIELD);
@@ -328,7 +328,7 @@ void sub_020520B0(BattleSetup* setup, FieldSystem *fieldSystem, Party *party, u8
     fieldSystem_unkA4 = fieldSystem->unkA4;
 
     setup->battleBg = 6;
-    setup->unk_150 = 9;
+    setup->terrain = TERRAIN_BUILDING;
     BattleSetup_SetProfile(setup, profile, BATTLER_PLAYER);
 
     if (a4 == NULL) {
@@ -466,54 +466,54 @@ void sub_02052444(BattleSetup* setup, FieldSystem* fieldSystem) {
 }
 
 static const u32 _020FC4C0[] = {
-    0,
-    7,
-    9,
-    2,
-    4,
-    6,
-    9,
-    9,
-    9,
-    5,
-    5,
-    5,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-    20,
-    21,
-    22,
+    TERRAIN_PLAIN,
+    TERRAIN_WATER,
+    TERRAIN_BUILDING,
+    TERRAIN_GRASS,
+    TERRAIN_ROCKS,
+    TERRAIN_SNOW,
+    TERRAIN_BUILDING,
+    TERRAIN_BUILDING,
+    TERRAIN_BUILDING,
+    TERRAIN_CAVE,
+    TERRAIN_CAVE,
+    TERRAIN_CAVE,
+    TERRAIN_LINK,
+    TERRAIN_END,
+    TERRAIN_ELITE_4_WILL,
+    TERRAIN_ELITE_4_KOGA,
+    TERRAIN_ELITE_4_BRUNO,
+    TERRAIN_ELITE_4_KAREN,
+    TERRAIN_CHAMPION_LANCE,
+    TERRAIN_17,
+    TERRAIN_TOWER,
+    TERRAIN_ARCADE,
+    TERRAIN_CASTLE,
 };
 
 static u32 sub_02052470(FieldSystem* fieldSystem, u32 battleBg) {
     u8 behavior = GetMetatileBehaviorAt(fieldSystem, fieldSystem->location->x, fieldSystem->location->y);
 
     if (sub_0205B828(behavior)) {
-        return 8;
+        return TERRAIN_ICE;
     }
     if (MetatileBehavior_IsEncounterGrass(behavior) || sub_0205B6F4(behavior)) {
-        return 2;
+        return TERRAIN_GRASS;
     }
     if (sub_0205B798(behavior)) {
-        return 1;
+        return TERRAIN_SAND;
     }
     if (sub_0205B8B8(behavior)) {
-        return 6;
+        return TERRAIN_SNOW;
     }
     if (sub_0205B8AC(behavior)) {
-        return 10;
+        return TERRAIN_MARSH;
     }
     if (sub_0205B8D0(behavior)) {
-        return 5;
+        return TERRAIN_CAVE;
     }
     if (MetatileBehavior_IsSurfableWater(behavior)) {
-        return 7;
+        return TERRAIN_WATER;
     }
     if (battleBg < NELEMS(_020FC4C0)) {
         return _020FC4C0[battleBg];
@@ -531,11 +531,11 @@ static void sub_02052504(BattleSetup* setup, FieldSystem* fieldSystem) {
         setup->battleBg = 1;
     }
 
-    setup->unk_150 = sub_02052470(fieldSystem, setup->battleBg);
+    setup->terrain = sub_02052470(fieldSystem, setup->battleBg);
 }
 
 void sub_02052544(BattleSetup* setup) {
-    setup->unk_150 = 7;
+    setup->terrain = TERRAIN_WATER;
     setup->unk_1D0 = TRUE;
 }
 

@@ -9,6 +9,8 @@
 FS_EXTERN_OVERLAY(OVY_5);
 FS_EXTERN_OVERLAY(OVY_6);
 FS_EXTERN_OVERLAY(OVY_7);
+FS_EXTERN_OVERLAY(OVY_8);
+FS_EXTERN_OVERLAY(OVY_10);
 
 typedef enum BattleState {
     BSTATE_INIT,
@@ -155,4 +157,19 @@ BOOL Battle_Main(OVY_MANAGER *man, int *state) {
         return TRUE;
     }
     return FALSE;
+}
+
+void ov12_02237B0C(BattleSystem *bsys) {
+    ov12_0226631C(bsys->unk19C);
+    ov12_022660A8(bsys->bgConfig);
+    bsys->unk240E_F = 1;
+    FontID_Release(4);
+    ov12_0223BBF0(bsys, 3);
+    
+    if (bsys->unk2445 == 0) {
+        UnloadOverlayByID(FS_OVERLAY_ID(OVY_7));
+    } else {
+        UnloadOverlayByID(FS_OVERLAY_ID(OVY_10));
+    }
+    HandleLoadOverlay(FS_OVERLAY_ID(OVY_8), OVY_LOAD_ASYNC);
 }

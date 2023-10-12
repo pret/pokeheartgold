@@ -7,48 +7,6 @@
 
 	.text
 
-	thumb_func_start ov12_02237B0C
-ov12_02237B0C: ; 0x02237B0C
-	push {r4, lr}
-	add r4, r0, #0
-	mov r0, #0x67
-	lsl r0, r0, #2
-	ldr r0, [r4, r0]
-	bl ov12_0226631C
-	ldr r0, [r4, #4]
-	bl ov12_022660A8
-	ldr r1, _02237B58 ; =0x000023FF
-	mov r0, #4
-	ldrb r2, [r4, r1]
-	orr r2, r0
-	strb r2, [r4, r1]
-	bl FontID_Release
-	add r0, r4, #0
-	mov r1, #3
-	bl ov12_0223BBF0
-	ldr r0, _02237B5C ; =0x00002445
-	ldrb r0, [r4, r0]
-	cmp r0, #0
-	bne _02237B46
-	ldr r0, _02237B60 ; =FS_OVERLAY_ID(OVY_7)
-	bl UnloadOverlayByID
-	b _02237B4C
-_02237B46:
-	ldr r0, _02237B64 ; =FS_OVERLAY_ID(OVY_10)
-	bl UnloadOverlayByID
-_02237B4C:
-	ldr r0, _02237B68 ; =FS_OVERLAY_ID(OVY_8)
-	mov r1, #2
-	bl HandleLoadOverlay
-	pop {r4, pc}
-	nop
-_02237B58: .word 0x000023FF
-_02237B5C: .word 0x00002445
-_02237B60: .word FS_OVERLAY_ID(OVY_7)
-_02237B64: .word FS_OVERLAY_ID(OVY_10)
-_02237B68: .word FS_OVERLAY_ID(OVY_8)
-	thumb_func_end ov12_02237B0C
-
 	thumb_func_start ov12_02237B6C
 ov12_02237B6C: ; 0x02237B6C
 	push {r4, lr}
