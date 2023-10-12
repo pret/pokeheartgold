@@ -26,7 +26,7 @@
 
 typedef enum AlphPuzzleStates {
     ALPH_PUZZLE_STATE_FADE_IN,
-    ALPH_PUZZLE_STATE_1,
+    ALPH_PUZZLE_STATE_WAIT_FOR_INPUT,
     ALPH_PUZZLE_STATE_2,
     ALPH_PUZZLE_STATE_3,
     ALPH_PUZZLE_STATE_ROTATE_TILE,
@@ -38,7 +38,7 @@ typedef enum AlphPuzzleStates {
 
 static int AlphPuzzleMainSeq_FadeIn(AlphPuzzleData *data);
 static int AlphPuzzleMainSeq_FadeOut(AlphPuzzleData *data);
-static int AlphPuzzleMainSeq_1(AlphPuzzleData *data);
+static int AlphPuzzleMainSeq_WaitForInput(AlphPuzzleData *data);
 static int AlphPuzzleMainSeq_2(AlphPuzzleData *data);
 static int AlphPuzzleMainSeq_3(AlphPuzzleData *data);
 static int AlphPuzzleMainSeq_RotateTile(AlphPuzzleData *data);
@@ -47,8 +47,9 @@ static int AlphPuzzleMainSeq_Clear(AlphPuzzleData *data);
 static void ov110_021E5BE4(AlphPuzzleData *data);
 static void ov110_021E5C18(AlphPuzzleData *data);
 static void ov110_021E5C3C(AlphPuzzleData *data);
+static int AlphPuzzle_CheckInput(AlphPuzzleData *data);
 static int ov110_021E5CCC(AlphPuzzleData *data);
-static s32 ov110_021E5D30(AlphPuzzleData *data, u16 touchX, u16 touchY);
+static s32 AlphPuzzle_TrySelectTileTouchScreen(AlphPuzzleData *data, u16 touchX, u16 touchY);
 static int ov110_021E5D90(AlphPuzzleData *data, u8 *xOut, u8 *yOut);
 static int ov110_021E5E1C(AlphPuzzleData *data);
 static int ov110_021E5F84(AlphPuzzleData *data);
@@ -80,6 +81,10 @@ static void ov110_021E6ABC(AlphPuzzleData *data, u8 x, u8 y);
 static void ov110_021E6B38(AlphPuzzleData *data);
 static AlphPuzzleStates ov110_021E6B94(AlphPuzzleData *data);
 //static void ov110_021E6BEC(AlphPuzzleTile *tile, s16 x, s16 y);
+//static void ov110_021E6C18(AlphPuzzleData *data, s16 tileIndex, u8 x, u8 y, u8 rotation);
+static void AlphPuzzle_UpdateSelectedTile(AlphPuzzleData *data, u8 tileIndex, BOOL isSelecting);
+static void ov110_021E6D20(AlphPuzzleData *data);
+static void ov110_021E6D54(SysTask *task, void *_data);
 
 BOOL ov110_AlphPuzzle_OvyInit(OVY_MANAGER *man, int *state) {
     switch (*state) {
@@ -109,8 +114,8 @@ BOOL ov110_AlphPuzzle_OvyExec(OVY_MANAGER *man, int *state) {
     case ALPH_PUZZLE_STATE_FADE_IN:
         *state = AlphPuzzleMainSeq_FadeIn(data);
         break;
-    case ALPH_PUZZLE_STATE_1:
-        *state = AlphPuzzleMainSeq_1(data);
+    case ALPH_PUZZLE_STATE_WAIT_FOR_INPUT:
+        *state = AlphPuzzleMainSeq_WaitForInput(data);
         break;
     case ALPH_PUZZLE_STATE_2:
         *state = AlphPuzzleMainSeq_2(data);
@@ -208,7 +213,7 @@ static int AlphPuzzleMainSeq_FadeIn(AlphPuzzleData *data) {
     case 1:
         if (IsPaletteFadeFinished()) {
             data->unkState = 0;
-            return ALPH_PUZZLE_STATE_1;
+            return ALPH_PUZZLE_STATE_WAIT_FOR_INPUT;
         }
         break;
     }
@@ -231,8 +236,8 @@ static int AlphPuzzleMainSeq_FadeOut(AlphPuzzleData *data) {
     return ALPH_PUZZLE_STATE_FADE_OUT;
 }
 
-static int AlphPuzzleMainSeq_1(AlphPuzzleData *data) {
-    return ov110_021E5C60(data);
+static int AlphPuzzleMainSeq_WaitForInput(AlphPuzzleData *data) {
+    return AlphPuzzle_CheckInput(data);
 }
 
 static int AlphPuzzleMainSeq_2(AlphPuzzleData *data) {
@@ -282,9 +287,9 @@ static void ov110_021E5C3C(AlphPuzzleData *data) {
 
 extern STRUCT_0223F90B _021E6D8C;
 
-static int ov110_021E5C60(AlphPuzzleData *data) {
+static int AlphPuzzle_CheckInput(AlphPuzzleData *data) {
     if (!System_GetTouchNew()) {
-        return ALPH_PUZZLE_STATE_1;
+        return ALPH_PUZZLE_STATE_WAIT_FOR_INPUT;
     }
     if (!sub_02025224(&_021E6D8C)) {
         data->unk4 = 1;
@@ -292,11 +297,11 @@ static int ov110_021E5C60(AlphPuzzleData *data) {
         PlaySE(SEQ_SE_DP_SELECT);
         return ALPH_PUZZLE_STATE_5;
     }
-    s32 unk = ov110_021E5D30(data, gSystem.touchX, gSystem.touchY);
-    if (unk < 0) {
-        return ALPH_PUZZLE_STATE_1;
+    s32 tileIndex = AlphPuzzle_TrySelectTileTouchScreen(data, gSystem.touchX, gSystem.touchY);
+    if (tileIndex < 0) {
+        return ALPH_PUZZLE_STATE_WAIT_FOR_INPUT;
     }
-    ov110_021E6C58(data, unk, 1);
+    AlphPuzzle_UpdateSelectedTile(data, tileIndex, TRUE);
     PlaySE(SEQ_SE_GS_SEKIBAN_SENTAKU);
     data->unk4 = 1;
     return ALPH_PUZZLE_STATE_2;
@@ -319,7 +324,7 @@ static int ov110_021E5CCC(AlphPuzzleData *data) {
     return ALPH_PUZZLE_STATE_2;
 }
 
-s32 ov110_021E5D30(AlphPuzzleData *data, u16 touchX, u16 touchY) {
+s32 AlphPuzzle_TrySelectTileTouchScreen(AlphPuzzleData *data, u16 touchX, u16 touchY) {
     u16 x = touchX;
     u16 y = touchY;
     
@@ -391,11 +396,11 @@ static int ov110_021E5E1C(AlphPuzzleData *data) {
             PlaySE(SEQ_SE_GS_SEKIBAN_SENTAKU); //SE Slate Select
             ov110_021E6C18(data, data->unk1B, data->unk22, data->unk23, data->selectedTile->rotation);
         }
-        ov110_021E6C58(data, 0xFF, 0);
+        AlphPuzzle_UpdateSelectedTile(data, -1, FALSE);
         if (AlphPuzzle_CheckComplete(data)) {
             return ALPH_PUZZLE_STATE_CLEAR;
         }
-        return ALPH_PUZZLE_STATE_1;
+        return ALPH_PUZZLE_STATE_WAIT_FOR_INPUT;
     }
     
     s16 x = gSystem.touchX;
@@ -444,7 +449,7 @@ static int ov110_021E5F84(AlphPuzzleData *data) {
         break;
     case 1:
         u16 temp = data->unkE++;
-        sub_02024818(data->selectedTile->sprite, (u16)(temp << 0xb) + (data->selectedTile->rotation << 0xe));
+        sub_02024818(data->selectedTile->sprite, (u16)((u16)(temp << 0xb) + (data->selectedTile->rotation << 0xe)));
         if (data->unkE >= 8) {
             data->unkC++;
         }
@@ -452,7 +457,7 @@ static int ov110_021E5F84(AlphPuzzleData *data) {
     case 2:
         data->selectedTile->rotation = (data->selectedTile->rotation + 1) % 4;
         
-        ov110_021E6C58(data, 0xFF, 0);
+        AlphPuzzle_UpdateSelectedTile(data, -1, FALSE);
         
         data->unkE = 0;
         data->unkC = 0;
@@ -460,7 +465,7 @@ static int ov110_021E5F84(AlphPuzzleData *data) {
         if (AlphPuzzle_CheckComplete(data)) {
             return ALPH_PUZZLE_STATE_CLEAR;
         }
-        return ALPH_PUZZLE_STATE_1;
+        return ALPH_PUZZLE_STATE_WAIT_FOR_INPUT;
     }
     return ALPH_PUZZLE_STATE_ROTATE_TILE;
 }
@@ -885,7 +890,7 @@ static AlphPuzzleStates ov110_021E6B94(AlphPuzzleData *data) {
             ret = ALPH_PUZZLE_STATE_FADE_OUT;
             break;
         case 2:
-            ret = ALPH_PUZZLE_STATE_1;
+            ret = ALPH_PUZZLE_STATE_WAIT_FOR_INPUT;
             break;
         default:
             return ALPH_PUZZLE_STATE_5;
@@ -903,4 +908,59 @@ extern s8 ov110_021E6D94[4][2];
 
 void ov110_021E6BEC(AlphPuzzleTile *tile, s16 x, s16 y) {
     Sprite_SetPositionXY(tile->sprite, ov110_021E6D94[tile->rotation][0] + x, ov110_021E6D94[tile->rotation][1] + y);
+}
+
+void ov110_021E6C18(AlphPuzzleData *data, s16 tileIndex, u8 x, u8 y, u8 rotation) {
+    AlphPuzzleTile *tile = &data->tileGrid[tileIndex];
+    tile->x = x;
+    tile->y = y;
+    tile->rotation = rotation;
+    ov110_021E6BEC(tile, x * 32 + 48, y * 32 + 16);
+    sub_02024818(tile->sprite, (rotation % 4u) * 0x4000);
+}
+
+static void AlphPuzzle_UpdateSelectedTile(AlphPuzzleData *data, u8 tileIndex, BOOL isSelecting) {
+    if (isSelecting) {
+        data->unk1B = tileIndex;
+        data->selectedTile = &data->tileGrid[data->unk1B];
+        Sprite_SetDrawPriority(data->selectedTile->sprite, 0);
+        Sprite_AddPositionXY(data->selectedTile->sprite, -2, -2);
+        Set2dSpriteVisibleFlag(data->unk8C[1], 1);
+        Sprite_SetPositionXY(data->unk8C[1], data->selectedTile->x * 32 + 48, data->selectedTile->y * 32 + 16);
+        ov110_021E6904(data, 2);
+    } else {
+        Sprite_SetDrawPriority(data->selectedTile->sprite, 2);
+        ov110_021E6C18(data, data->unk1B, data->selectedTile->x, data->selectedTile->y, data->selectedTile->rotation);
+        Set2dSpriteVisibleFlag(data->unk8C[1], 0);
+        ov110_021E6904(data, 0);
+        data->unk22 = 0;
+        data->unk23 = 0;
+        data->selectedTile = NULL;
+        data->unk1B = 0;
+    }
+}
+
+typedef struct UnkStruct_021E6D20 {
+    AlphPuzzleData *data;
+    u32 unk4;
+} UnkStruct_021E6D20;
+
+static void ov110_021E6D20(AlphPuzzleData *data) {
+    UnkStruct_021E6D20 *unkStruct = AllocFromHeapAtEnd(data->heapId, sizeof(UnkStruct_021E6D20));
+    MI_CpuFill8(unkStruct, 0, sizeof(AlphPuzzleTile));
+    unkStruct->data = data;
+    CreateSysTask(ov110_021E6D54, unkStruct, 0);
+    ov110_021E6904(data, 1);
+    data->unk1A = 1;
+}
+
+static void ov110_021E6D54(SysTask *task, void *_data) {
+    UnkStruct_021E6D20 *data = _data;
+    if (!sub_02024B68(data->data->unk8C[0])) {
+        ov110_021E6904(data->data, 0);
+        data->data->unk1A = 0;
+        MI_CpuFill8(data, 0, sizeof(UnkStruct_021E6D20));
+        FreeToHeap(data);
+        DestroySysTask(task);
+    }
 }
