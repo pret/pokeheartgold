@@ -24,6 +24,22 @@ typedef struct BerryPotsArgs {
     SaveData *saveData;
 } BerryPotsArgs;
 
+typedef struct BerryPotsAppArgs_UnkSub4 {
+    u8 unk0[4];
+    u32 *unk4;
+    u8 unk8[4];
+    SaveData *savedata;
+} BerryPotsAppArgs_UnkSub4;
+
+typedef struct BerryPotsAppArgs {
+    u8 unk0[4];
+    BerryPotsAppArgs_UnkSub4 *unk4;
+    u8 unk8[0xC];
+    u8 unk14;
+    u8 unk15;
+    u16 itemId;
+} BerryPotsAppArgs;
+
 typedef struct PartyMenuAppData {
     Party *party;
     Bag *bag;
