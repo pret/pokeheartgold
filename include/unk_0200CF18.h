@@ -86,7 +86,7 @@ typedef union SpriteResourceCountsListUnion {
 SpriteRenderer* SpriteRenderer_Create(HeapID);
 SpriteGfxHandler* SpriteRenderer_CreateGfxHandler(SpriteRenderer*);
 GF_G2dRenderer* SpriteRenderer_GetG2dRendererPtr(SpriteRenderer*);
-BOOL sub_0200CF70(SpriteRenderer* renderer, Unk122_021E92FC*, Unk122_021E92D0*, int);
+BOOL sub_0200CF70(SpriteRenderer* renderer, const Unk122_021E92FC*, const Unk122_021E92D0*, int);
 BOOL sub_0200CFF4(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, int);
 void thunk_Sprite_Delete(Sprite* sprite);
 void sub_0200D020(SpriteGfxHandler* gfxHandler);
