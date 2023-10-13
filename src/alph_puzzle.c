@@ -689,7 +689,7 @@ static void ov110_021E6580(AlphPuzzleData *data) {
     data->messageFormat = MessageFormat_New_Custom(6, 16, data->heapId);
     data->unk30 = String_New(0x80, data->heapId);
     
-    data->unk34 = NewString_ReadMsgData(data->msgData, 0);
+    data->unk34 = NewString_ReadMsgData(data->msgData, msg_0002_00000);
     
     for (int i = 0; i < 4; i++) {
         data->unk38[i] = NewString_ReadMsgData(data->msgData, i + 1);
