@@ -540,9 +540,7 @@ static void ov110_021E6110(void *dat) {
     NNS_GfdDoVramTransfer();
     DoScheduledBgGpuUpdates(data->bgConfig);
 
-    //This is probably an inline somewhere but I couldn't find it
-    u32 *ptr = (u32 *) 0x27E0000;
-    ptr[0xFFE] |= 1;
+    OS_SetIrqCheckFlag(OS_IE_VBLANK);
 }
 
 typedef struct AlphaPuzzleInitTileData {
