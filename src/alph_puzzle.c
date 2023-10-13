@@ -688,7 +688,7 @@ static void ov110_021E6544(AlphPuzzleData *data) {
 static void ov110_021E6580(AlphPuzzleData *data) {
     FontID_Alloc(4, data->heapId);
     
-    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 2, data->heapId);
+    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0002_bin, data->heapId);
     data->messageFormat = MessageFormat_New_Custom(6, 16, data->heapId);
     data->unk30 = String_New(0x80, data->heapId);
     
