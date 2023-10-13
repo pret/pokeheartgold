@@ -773,7 +773,7 @@ static void ov110_021E6764(AlphPuzzleData *data) {
     int i;
     for (i = 0; i <= 1; i++) {
         data->unk8C[i] = SpriteRenderer_CreateSprite(data->unk84, data->unk88, &ov110_021E6F7C[i]);
-        sub_02024868(data->unk8C[i], 1 << 12);
+        sub_02024868(data->unk8C[i], FX32_ONE);
     }
     Set2dSpriteVisibleFlag(data->unk8C[0], TRUE);
     Set2dSpriteVisibleFlag(data->unk8C[1], FALSE);
