@@ -319,8 +319,8 @@ static int ov110_021E5CCC(AlphPuzzleData *data) {
     }
     if (data->unkE++ >= 2) {
         data->unkE = 0;
-        data->unk1C = (data->selectedTile->x << 5) + 0x40;
-        data->unk1E = (data->selectedTile->y << 5) + 0x20;
+        data->unk1C = (data->selectedTile->x * 32) + 64;
+        data->unk1E = (data->selectedTile->y * 32) + 32;
         data->unk22 = data->selectedTile->x;
         data->unk23 = data->selectedTile->y;
         ov110_021E6A44(data, data->selectedTile->x, data->selectedTile->y, 3);
