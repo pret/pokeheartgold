@@ -641,8 +641,7 @@ static void ov110_021E6348(AlphPuzzleData *data) {
     FreeBgTilemapBuffer(data->bgConfig, 4);
     FreeToHeap(data->bgConfig);
     
-    u16 *unkPtr = (u16 *)(0x04000304);
-    *unkPtr |= (1 << 15);
+    GX_SetDispSelect(GX_DISP_SELECT_MAIN_SUB);
 }
 
 static void ov110_021E6394(AlphPuzzleData *data) {
