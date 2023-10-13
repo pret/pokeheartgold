@@ -695,7 +695,7 @@ static void ov110_021E6580(AlphPuzzleData *data) {
         data->unk38[i] = NewString_ReadMsgData(data->msgData, i + 1);
     }
     
-    data->unk48[0] = NewString_ReadMsgData(data->msgData, 5);
+    data->unk48[0] = NewString_ReadMsgData(data->msgData, msg_0002_00005);
 }
 
 static void ov110_021E65DC(AlphPuzzleData *data) {
