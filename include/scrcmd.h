@@ -843,7 +843,7 @@ BOOL ScrCmd_805(ScriptContext* ctx);
 BOOL ScrCmd_806(ScriptContext* ctx);
 BOOL ScrCmd_SetTrainerHouseSprite(ScriptContext* ctx);
 BOOL ScrCmd_808(ScriptContext* ctx);
-BOOL ScrCmd_809(ScriptContext* ctx);
+BOOL ScrCmd_ShowTrainerHouseIntroMessage(ScriptContext* ctx);
 BOOL ScrCmd_810(ScriptContext* ctx);
 BOOL ScrCmd_811(ScriptContext* ctx);
 BOOL ScrCmd_812(ScriptContext* ctx);
