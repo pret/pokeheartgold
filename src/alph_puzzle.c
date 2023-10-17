@@ -320,8 +320,8 @@ static int ov110_021E5CCC(AlphPuzzleData *data) {
     }
     if (data->unkE++ >= 2) {
         data->unkE = 0;
-        data->unk1C = (data->selectedTile->x << 5) + 0x40;
-        data->unk1E = (data->selectedTile->y << 5) + 0x20;
+        data->unk1C = (data->selectedTile->x * 32) + 64;
+        data->unk1E = (data->selectedTile->y * 32) + 32;
         data->unk22 = data->selectedTile->x;
         data->unk23 = data->selectedTile->y;
         ov110_021E6A44(data, data->selectedTile->x, data->selectedTile->y, 3);
@@ -541,9 +541,7 @@ static void ov110_021E6110(void *dat) {
     NNS_GfdDoVramTransfer();
     DoScheduledBgGpuUpdates(data->bgConfig);
 
-    //This is probably an inline somewhere but I couldn't find it
-    u32 *ptr = (u32 *) 0x27E0000;
-    ptr[0xFFE] |= 1;
+    OS_SetIrqCheckFlag(OS_IE_VBLANK);
 }
 
 typedef struct AlphaPuzzleInitTileData {
@@ -642,8 +640,7 @@ static void ov110_021E6348(AlphPuzzleData *data) {
     FreeBgTilemapBuffer(data->bgConfig, 4);
     FreeToHeap(data->bgConfig);
     
-    u16 *unkPtr = (u16 *)(0x04000304);
-    *unkPtr |= (1 << 15);
+    GX_SetDispSelect(GX_DISP_SELECT_MAIN_SUB);
 }
 
 static void ov110_021E6394(AlphPuzzleData *data) {
@@ -687,17 +684,17 @@ static void ov110_021E6544(AlphPuzzleData *data) {
 static void ov110_021E6580(AlphPuzzleData *data) {
     FontID_Alloc(4, data->heapId);
     
-    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 2, data->heapId);
+    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0002_bin, data->heapId);
     data->messageFormat = MessageFormat_New_Custom(6, 16, data->heapId);
     data->unk30 = String_New(0x80, data->heapId);
     
-    data->unk34 = NewString_ReadMsgData(data->msgData, 0);
+    data->unk34 = NewString_ReadMsgData(data->msgData, msg_0002_00000);
     
     for (int i = 0; i < 4; i++) {
         data->unk38[i] = NewString_ReadMsgData(data->msgData, i + 1);
     }
     
-    data->unk48[0] = NewString_ReadMsgData(data->msgData, 5);
+    data->unk48[0] = NewString_ReadMsgData(data->msgData, msg_0002_00005);
 }
 
 static void ov110_021E65DC(AlphPuzzleData *data) {
@@ -772,7 +769,7 @@ static void ov110_021E6764(AlphPuzzleData *data) {
     int i;
     for (i = 0; i <= 1; i++) {
         data->unk8C[i] = SpriteRenderer_CreateSprite(data->unk84, data->unk88, &ov110_021E6F7C[i]);
-        sub_02024868(data->unk8C[i], 1 << 12);
+        sub_02024868(data->unk8C[i], FX32_ONE);
     }
     Set2dSpriteVisibleFlag(data->unk8C[0], TRUE);
     Set2dSpriteVisibleFlag(data->unk8C[1], FALSE);
