@@ -7,39 +7,6 @@
 
 	.text
 
-	thumb_func_start ov12_02237B6C
-ov12_02237B6C: ; 0x02237B6C
-	push {r4, lr}
-	add r4, r0, #0
-	mov r0, #0
-	add r1, r0, #0
-	bl Main_SetVBlankIntrCB
-	mov r0, #0x67
-	lsl r0, r0, #2
-	ldr r0, [r4, r0]
-	bl ov12_0226631C
-	ldr r0, [r4, #8]
-	bl RemoveWindow
-	ldr r0, [r4, #4]
-	bl ov12_02238A30
-	add r0, r4, #0
-	bl ov12_02238A64
-	add r0, r4, #0
-	add r1, r4, #0
-	add r0, #0x90
-	add r1, #0x94
-	ldr r0, [r0]
-	ldr r1, [r1]
-	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
-	add r4, #0x90
-	ldr r0, [r4]
-	bl SpriteRenderer_Delete
-	bl GF_DestroyVramTransferManager
-	mov r0, #4
-	bl FontID_Release
-	pop {r4, pc}
-	thumb_func_end ov12_02237B6C
-
 	thumb_func_start ov12_02237BB8
 ov12_02237BB8: ; 0x02237BB8
 	push {r4, r5, r6, lr}

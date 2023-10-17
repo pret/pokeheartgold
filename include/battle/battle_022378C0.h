@@ -7,6 +7,7 @@
 
 BOOL Battle_Main(OVY_MANAGER *man, int *state);
 void ov12_02237B0C(BattleSystem *bsys);
+void ov12_02237B6C(BattleSystem *bsys);
 
 //the following functions are static and have yet to be decompiled
 void ov12_022399D4(OVY_MANAGER *man, BattleSetup *setup);
@@ -23,5 +24,9 @@ BOOL ov12_0223A3F0(OVY_MANAGER *man);
 BOOL ov12_0223A5E4(OVY_MANAGER *man);
 void ov12_0226631C(u32 *);
 void ov12_022660A8(BgConfig *);
+
+//the following functions aren't static/haven't been checked to their status and are yet to be decompiled
+void ov12_02238A30(BgConfig *config);
+void ov12_02238A64(BattleSystem *bsys);
 
 #endif

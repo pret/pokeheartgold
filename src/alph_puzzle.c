@@ -23,6 +23,7 @@
 #include "vram_transfer_manager.h"
 #include "unk_0200B150.h"
 #include "unk_02023694.h"
+#include "msgdata/msg/msg_0002.h"
 
 typedef enum AlphPuzzleStates {
     ALPH_PUZZLE_STATE_FADE_IN,
@@ -147,7 +148,7 @@ BOOL ov110_AlphPuzzle_OvyExec(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL ov110_AlphPuzzle_OvyExit(OVY_MANAGER *man) {
+BOOL ov110_AlphPuzzle_OvyExit(OVY_MANAGER *man, int *state) {
     AlphPuzzleData *data = OverlayManager_GetData(man);
     if (!ov110_021E5B0C(data)) {
         return FALSE;
@@ -593,7 +594,6 @@ extern BgTemplate ov110_021E6E18;
 extern BgTemplate ov110_021E6E50;
 
 static void ov110_021E61D0(AlphPuzzleData *data) {
-    u16 *unkPtr;
     ov110_021E61B0();
     data->bgConfig = BgConfig_Alloc(data->heapId);
 
@@ -601,8 +601,7 @@ static void ov110_021E61D0(AlphPuzzleData *data) {
     
     SetBothScreensModesAndDisable(&mode);
 
-    unkPtr = (u16 *)(0x04000304);
-    *unkPtr = *unkPtr & ~(1 << 15);
+    GX_SetDispSelect(GX_DISP_SELECT_SUB_MAIN);
     
     BgTemplate temp = ov110_021E6E34;
     InitBgFromTemplate(data->bgConfig, 4, &temp, 0);

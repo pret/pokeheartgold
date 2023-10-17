@@ -1,5 +1,7 @@
 #include "battle/battle_022378C0.h"
 #include "battle/battle_system.h"
+#include "system.h"
+#include "vram_transfer_manager.h"
 #include "unk_02037C94.h"
 #include "unk_02004A44.h"
 #include "unk_020379A0.h"
@@ -172,4 +174,16 @@ void ov12_02237B0C(BattleSystem *bsys) {
         UnloadOverlayByID(FS_OVERLAY_ID(OVY_10));
     }
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_8), OVY_LOAD_ASYNC);
+}
+
+void ov12_02237B6C(BattleSystem *bsys) {
+    Main_SetVBlankIntrCB(NULL, NULL);
+    ov12_0226631C(bsys->unk19C);
+    RemoveWindow(bsys->window);
+    ov12_02238A30(bsys->bgConfig);
+    ov12_02238A64(bsys);
+    SpriteRenderer_UnloadResourcesAndRemoveGfxHandler(bsys->unk90, bsys->unk94);
+    SpriteRenderer_Delete(bsys->unk90);
+    GF_DestroyVramTransferManager();
+    FontID_Release(4);
 }

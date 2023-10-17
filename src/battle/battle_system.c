@@ -75,11 +75,11 @@ u32 *ov12_0223A8DC(BattleSystem *bsys) {
     return bsys->unk8C;
 }
 
-u32 *ov12_0223A8E4(BattleSystem *bsys) {
+SpriteRenderer *ov12_0223A8E4(BattleSystem *bsys) {
     return bsys->unk90;
 }
 
-u32 *ov12_0223A8EC(BattleSystem *bsys) {
+SpriteGfxHandler *ov12_0223A8EC(BattleSystem *bsys) {
     return bsys->unk94;
 }
 
