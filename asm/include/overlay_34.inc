@@ -3,8 +3,8 @@
 .public FontID_SetAccessDirect
 .public FontID_SetAccessLazy
 .public PlaySE
-.public sub_02007200
-.public sub_02007234
+.public CreateSysTaskAndEnvironment
+.public DestroySysTaskAndEnvironment
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_LoadScrnData
 .public GfGfxLoader_GXLoadPal

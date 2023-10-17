@@ -12,8 +12,8 @@
 .public LoadFontPal1
 .public sub_02004EC4
 .public PlaySE
-.public sub_02007200
-.public sub_02007234
+.public CreateSysTaskAndEnvironment
+.public DestroySysTaskAndEnvironment
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
 .public OverlayManager_FreeData

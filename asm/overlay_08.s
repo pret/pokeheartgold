@@ -19,7 +19,7 @@ _0221BE2E:
 	ldr r1, _0221BE8C ; =0x00002090
 	ldr r3, [r5, #0xc]
 	mov r2, #0
-	bl sub_02007200
+	bl CreateSysTaskAndEnvironment
 	bl sub_0201F988
 	ldr r2, _0221BE8C ; =0x00002090
 	add r4, r0, #0
@@ -2031,7 +2031,7 @@ _0221CDA8:
 	add r0, #0x36
 	strb r1, [r0]
 	add r0, r5, #0
-	bl sub_02007234
+	bl DestroySysTaskAndEnvironment
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -12720,7 +12720,7 @@ ov08_022225D4: ; 0x022225D4
 	ldr r1, _02222668 ; =0x0000115C
 	ldr r3, [r5, #0xc]
 	mov r2, #0x64
-	bl sub_02007200
+	bl CreateSysTaskAndEnvironment
 	bl sub_0201F988
 	ldr r2, _02222668 ; =0x0000115C
 	add r4, r0, #0
@@ -13823,7 +13823,7 @@ _02222EAC:
 	add r0, #0x26
 	strb r1, [r0]
 	add r0, r7, #0
-	bl sub_02007234
+	bl DestroySysTaskAndEnvironment
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

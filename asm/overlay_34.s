@@ -334,7 +334,7 @@ ov34_0225D7A8: ; 0x0225D7A8
 	ldr r0, _0225D874 ; =ov34_0225D5A0
 	lsl r1, r1, #2
 	add r3, r2, #0
-	bl sub_02007200
+	bl CreateSysTaskAndEnvironment
 	add r6, r0, #0
 	bl sub_0201F988
 	add r4, r0, #0
@@ -467,7 +467,7 @@ _0225D8B2:
 	mov r0, #0xa9
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_02007234
+	bl DestroySysTaskAndEnvironment
 	pop {r3, r4, r5, r6, r7, pc}
 _0225D8F8:
 	bl GF_AssertFail

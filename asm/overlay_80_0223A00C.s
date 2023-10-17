@@ -17,7 +17,7 @@ ov80_0223A00C: ; 0x0223A00C
 	lsl r1, r1, #2
 	lsl r2, r2, #2
 	mov r3, #0x65
-	bl sub_02007200
+	bl CreateSysTaskAndEnvironment
 	bl sub_0201F988
 	add r4, r0, #0
 	str r5, [r4, #0x10]
@@ -104,7 +104,7 @@ ov80_0223A0C0: ; 0x0223A0C0
 	mov r0, #0x65
 	bl FreeToHeapExplicit
 	add r0, r4, #0
-	bl sub_02007234
+	bl DestroySysTaskAndEnvironment
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov80_0223A0C0
 
