@@ -7,4 +7,3 @@
 void TrainerHouse_StartBattle(FieldSystem *fieldSystem, u32 trainerNum);
 
 #endif //POKEHEARTGOLD_OVERLAY_25_H
-

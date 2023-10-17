@@ -158,7 +158,7 @@ void TrainerHouse_StartBattle(FieldSystem *fieldSystem, u32 trainerNum) {
 }
 
 static void TrainerHouse_SetNames(TrainerHouseSet *set) {
-    MIi_CpuCopy16((u16*)&ov25_02259D9C, (u16*)set, sizeof(TrainerHouseSet));
+    MI_CpuCopy16(&ov25_02259D9C, set, sizeof(TrainerHouseSet));
     MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0726_bin, HEAP_ID_FIELD);
     GF_ASSERT(messageData);
     if (messageData) {
@@ -171,8 +171,8 @@ static void TrainerHouse_SetNames(TrainerHouseSet *set) {
             if (length > PLAYER_NAME_LENGTH) {
                 length = PLAYER_NAME_LENGTH;
             }
-            MIi_CpuClear16(0xffff, set->trainer.otName, (PLAYER_NAME_LENGTH + 1) * sizeof(u16));
-            MIi_CpuCopy16(String_cstr(otName), set->trainer.otName, length * sizeof(u16));
+            MI_CpuFill16(set->trainer.otName, 0xffff, (PLAYER_NAME_LENGTH + 1) * sizeof(u16));
+            MI_CpuCopy16(String_cstr(otName), set->trainer.otName, length * sizeof(u16));
             String_Delete(otName);
         }
     }
@@ -189,8 +189,8 @@ static void TrainerHouse_SetNames(TrainerHouseSet *set) {
             if (length > POKEMON_NAME_LENGTH) {
                 length = POKEMON_NAME_LENGTH;
             }
-            MIi_CpuClear16(0xffff, trainerHouseMon->nickname, POKEMON_NAME_LENGTH * sizeof(u16));
-            MIi_CpuCopy16(String_cstr(name), trainerHouseMon->nickname, length * sizeof(u16));
+            MI_CpuFill16(trainerHouseMon->nickname, 0xffff, POKEMON_NAME_LENGTH * sizeof(u16));
+            MI_CpuCopy16(String_cstr(name), trainerHouseMon->nickname, length * sizeof(u16));
             String_Delete(name);
         }
     }
@@ -203,9 +203,9 @@ BOOL ScrCmd_ShowTrainerHouseIntroMessage(ScriptContext *ctx) {
     MAIL_MESSAGE temp;
     if (trainerNum == MAX_NUM_TRAINER_HOUSE_SETS) {
         MailMsg_Init_FromTemplate(&temp, &TrainerHouse_DefaultIntroMessage);
-        MIi_CpuCopy16((u16*)&temp, (u16*)&intro, sizeof(MAIL_MESSAGE));
+        MI_CpuCopy16(&temp, &intro, sizeof(MAIL_MESSAGE));
     } else {
-        MIi_CpuCopy16((u16*)&(trainerHouse->sets[trainerNum].trainer.introMessage), (u16*)&intro, sizeof(MAIL_MESSAGE));
+        MI_CpuCopy16(&(trainerHouse->sets[trainerNum].trainer.introMessage), &intro, sizeof(MAIL_MESSAGE));
     }
     ov01_021EF564(ctx, intro.msg_bank, intro.msg_no, intro.fields[0], intro.fields[1], TRUE);
     SetupNativeScript(ctx, ov01_021EF348);
