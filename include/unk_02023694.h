@@ -72,7 +72,7 @@ void sub_02024868(Sprite *, int);
 VecFx32 *Sprite_GetMatrixPtr(Sprite *);
 VecFx32* sub_020248B0(Sprite*);
 void sub_020247F4(Sprite*, VecFx32*);
-void sub_02024818(Sprite*, u16);
+void sub_02024818(Sprite*, u32);
 u16 sub_020248B4(Sprite*);
 void sub_02024890(Sprite*, u8);
 void sub_020247E4(Sprite*, VecFx32*);

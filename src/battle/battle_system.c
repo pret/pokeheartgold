@@ -75,11 +75,11 @@ u32 *ov12_0223A8DC(BattleSystem *bsys) {
     return bsys->unk8C;
 }
 
-u32 *ov12_0223A8E4(BattleSystem *bsys) {
+SpriteRenderer *ov12_0223A8E4(BattleSystem *bsys) {
     return bsys->unk90;
 }
 
-u32 *ov12_0223A8EC(BattleSystem *bsys) {
+SpriteGfxHandler *ov12_0223A8EC(BattleSystem *bsys) {
     return bsys->unk94;
 }
 
@@ -709,7 +709,7 @@ void BattleSystem_SetSafariBallCount(BattleSystem *bsys, int cnt) {
     bsys->safariBallCnt = cnt;
 }
 
-OPTIONS *BattleSystem_GetOptions(BattleSystem *bsys) {
+Options *BattleSystem_GetOptions(BattleSystem *bsys) {
     return bsys->options;
 }
 

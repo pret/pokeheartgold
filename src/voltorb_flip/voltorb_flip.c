@@ -949,13 +949,13 @@ BOOL PrintAreYouSureYouWantToQuit(WorkflowEngine *workflow, VoltorbFlipAppWork *
 BOOL ov122_021E6900(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     Unk122_021E6900 temp1 = {0};
 
-    temp1.unk0 = work->bgConfig;
+    temp1.bgConfig = work->bgConfig;
     temp1.unk4 = 3;
     temp1.unk8 = 31;
     temp1.unkC = 9;
     temp1.unk10 = 25;
     temp1.unk11 = 10;
-    temp1.unk12 &= ~0xf0;
+    temp1.unk12_4 = 0;
 
     sub_020166FC(work->unk13C, &temp1);
     return TRUE;
@@ -1943,7 +1943,7 @@ static void ov122_021E8094(OVY_MANAGER *man) {
     ov122_021E8068();
     SetGXBanks();
 
-    CreateHeap(3, HEAP_ID_VOLTORB_FLIP, 0x50000);
+    CreateHeap(HEAP_ID_3, HEAP_ID_VOLTORB_FLIP, 0x50000);
 
     VoltorbFlipAppWork *work = OverlayManager_CreateAndGetData(man, sizeof(VoltorbFlipAppWork), HEAP_ID_VOLTORB_FLIP);
     MI_CpuFill8(work, 0, sizeof(VoltorbFlipAppWork));

@@ -25,7 +25,7 @@ typedef struct PlayerProfile {
 } PlayerProfile;
 
 typedef struct PLAYERDATA {
-    OPTIONS options;
+    Options options;
     PlayerProfile profile;
     u16 coins;
     IGT igt;
@@ -34,7 +34,7 @@ typedef struct PLAYERDATA {
 u32 Save_PlayerData_sizeof(void);
 void Save_PlayerData_Init(PLAYERDATA* player);
 PlayerProfile* Save_PlayerData_GetProfileAddr(SaveData* saveData);
-OPTIONS* Save_PlayerData_GetOptionsAddr(SaveData* saveData);
+Options* Save_PlayerData_GetOptionsAddr(SaveData* saveData);
 u16* Save_PlayerData_GetCoinsAddr(SaveData* saveData);
 IGT* Save_PlayerData_GetIGTAddr(SaveData* saveData);
 u32 PlayerProfile_sizeof(void);

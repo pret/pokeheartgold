@@ -250,7 +250,7 @@ BOOL ChooseStarterApplication_OvyInit(OVY_MANAGER *ovy, int *state_p) {
     struct ChooseStarterAppArgs *args;
     int i;
 
-    CreateHeap(3, HEAP_ID_CHOOSE_STARTER, 0x40000);
+    CreateHeap(HEAP_ID_3, HEAP_ID_CHOOSE_STARTER, 0x40000);
     work = OverlayManager_CreateAndGetData(ovy, sizeof(struct ChooseStarterAppWork), HEAP_ID_CHOOSE_STARTER);
     MI_CpuClear8(work, sizeof(struct ChooseStarterAppWork));
     work->heapId = HEAP_ID_CHOOSE_STARTER;

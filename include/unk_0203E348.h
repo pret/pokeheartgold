@@ -44,7 +44,7 @@ typedef struct PartyMenuAppData {
     Party *party;
     Bag *bag;
     MAILBOX *mailbox;
-    OPTIONS *options;
+    Options *options;
     u8 filler_10[0xC];
     FieldSystem *fieldSystem;
     void *fieldSystem_unk_10C;
@@ -62,7 +62,7 @@ typedef struct PartyMenuAppData {
 
 struct ChooseStarterAppArgs {
     int cursorPos;
-    OPTIONS *options;
+    Options *options;
     Pokemon starters[3];
 };
 
@@ -85,7 +85,7 @@ struct UnkStruct_ScrCmd230 {
 
 struct UnkStruct_ScrCmd627 {
     void *unk_0;
-    OPTIONS *options;
+    Options *options;
     SaveData *saveData;
     void *unk_0C;
     u8 filler_10[0x8];
@@ -113,7 +113,7 @@ typedef struct UnkStruct_0203EDDC {
     Pokemon *unk00;
     Pokemon *unk04;
     BOOL unk08;
-    OPTIONS *options;
+    Options *options;
     Pokemon *unk10;
 } UnkStruct_0203EDDC;
 

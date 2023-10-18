@@ -28,7 +28,7 @@ typedef struct Ov122_021E7888 {
 
 typedef struct VoltorbFlipAppWork {
     HeapID heapId;
-    OPTIONS *options;
+    Options *options;
     u16 *coins;
     u32 *unkC;
     PlayerProfile *profile;

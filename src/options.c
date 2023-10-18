@@ -3,18 +3,18 @@
 #include "options.h"
 #include "player_data.h"
 
-OPTIONS* Options_New(HeapID heapId) {
-    OPTIONS* ret = AllocFromHeap(heapId, sizeof(OPTIONS));
+Options* Options_New(HeapID heapId) {
+    Options* ret = AllocFromHeap(heapId, sizeof(Options));
     Options_Init(ret);
     return ret;
 }
 
-void Options_Copy(OPTIONS* src, OPTIONS* dest) {
-    MI_CpuCopy8(src, dest, sizeof(OPTIONS));
+void Options_Copy(Options* src, Options* dest) {
+    MI_CpuCopy8(src, dest, sizeof(Options));
 }
 
-void Options_Init(OPTIONS* options) {
-    MI_CpuClear8(options, sizeof(OPTIONS));
+void Options_Init(Options* options) {
+    MI_CpuClear8(options, sizeof(Options));
 
     options->textSpeed = 1;   // mid speed
     options->soundMethod = 0; // stereo
@@ -40,15 +40,15 @@ void Options_SetButtonModeOnMain(SaveData* saveData, u32 buttonMode) {
     }
 }
 
-u16 Options_GetTextSpeed(OPTIONS* options) {
+u16 Options_GetTextSpeed(Options* options) {
     return options->textSpeed;
 }
 
-void Options_SetTextSpeed(OPTIONS* options, u32 textSpeed) {
+void Options_SetTextSpeed(Options* options, u32 textSpeed) {
     options->textSpeed = textSpeed;
 }
 
-u8 Options_GetTextFrameDelay(OPTIONS* options) {
+u8 Options_GetTextFrameDelay(Options* options) {
     u16 textSpeed = Options_GetTextSpeed(options);
 
     if (textSpeed == 0) {
@@ -62,42 +62,42 @@ u8 Options_GetTextFrameDelay(OPTIONS* options) {
     return 1;
 }
 
-u16 Options_GetSoundMethod(OPTIONS* options) {
+u16 Options_GetSoundMethod(Options* options) {
     return options->soundMethod;
 }
 
-void Options_SetSoundMethod(OPTIONS* options, u32 soundMethod) {
+void Options_SetSoundMethod(Options* options, u32 soundMethod) {
     options->soundMethod = soundMethod;
 }
 
-u16 Options_GetBattleScene(OPTIONS* options) {
+u16 Options_GetBattleScene(Options* options) {
     return options->battleScene;
 }
 
-void Options_SetBattleScene(OPTIONS* options, u32 battleScene) {
+void Options_SetBattleScene(Options* options, u32 battleScene) {
     options->battleScene = battleScene;
 }
 
-u16 Options_GetBattleStyle(OPTIONS* options) {
+u16 Options_GetBattleStyle(Options* options) {
     return options->battleStyle;
 }
 
-void Options_SetBattleStyle(OPTIONS* options, u32 battleStyle) {
+void Options_SetBattleStyle(Options* options, u32 battleStyle) {
     options->battleStyle = battleStyle;
 }
 
-u16 Options_GetButtonMode(OPTIONS* options) {
+u16 Options_GetButtonMode(Options* options) {
     return options->buttonMode;
 }
 
-void Options_SetButtonMode(OPTIONS* options, u32 buttonMode) {
+void Options_SetButtonMode(Options* options, u32 buttonMode) {
     options->buttonMode = buttonMode;
 }
 
-u16 Options_GetFrame(OPTIONS* options) {
+u16 Options_GetFrame(Options* options) {
     return options->frame;
 }
 
-void Options_SetFrame(OPTIONS* options, u32 frame) {
+void Options_SetFrame(Options* options, u32 frame) {
     options->frame = frame;
 }

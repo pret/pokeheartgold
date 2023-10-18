@@ -112,7 +112,7 @@ typedef struct GAME_BOARD_WORK {
     void *unk3C0;
     GAME_BOARD_SUB_3C4 unk3C4[2];
     void *unk3D4;
-    OPTIONS *options;
+    Options *options;
     SaveData *saveData;
     void *arcadeSaveData;
     void *arcadeScoreSaveData;

@@ -4,7 +4,7 @@
 #include "heap.h"
 #include "save.h"
 
-typedef struct OPTIONS {
+typedef struct Options {
     u16 textSpeed:4;
     u16 soundMethod:2;
     u16 battleStyle:1;
@@ -12,24 +12,24 @@ typedef struct OPTIONS {
     u16 buttonMode:2;
     u16 frame:5;
     u16 dummy:1;
-} OPTIONS;
+} Options;
 
-OPTIONS* Options_New(HeapID heapId);
-void Options_Copy(OPTIONS* src, OPTIONS* dest);
-void Options_Init(OPTIONS* options);
+Options* Options_New(HeapID heapId);
+void Options_Copy(Options* src, Options* dest);
+void Options_Init(Options* options);
 void Options_SetButtonModeOnMain(SaveData* saveData, u32 buttonMode);
-u16 Options_GetTextSpeed(OPTIONS* options);
-void Options_SetTextSpeed(OPTIONS* options, u32 textSpeed);
-u8 Options_GetTextFrameDelay(OPTIONS* options);
-u16 Options_GetSoundMethod(OPTIONS* options);
-void Options_SetSoundMethod(OPTIONS* options, u32 soundMethod);
-u16 Options_GetBattleScene(OPTIONS* options);
-void Options_SetBattleScene(OPTIONS* options, u32 battleScene);
-u16 Options_GetBattleStyle(OPTIONS* options);
-void Options_SetBattleStyle(OPTIONS* options, u32 battleStyle);
-u16 Options_GetButtonMode(OPTIONS* options);
-void Options_SetButtonMode(OPTIONS* options, u32 buttonMode);
-u16 Options_GetFrame(OPTIONS* options);
-void Options_SetFrame(OPTIONS* options, u32 frame);
+u16 Options_GetTextSpeed(Options* options);
+void Options_SetTextSpeed(Options* options, u32 textSpeed);
+u8 Options_GetTextFrameDelay(Options* options);
+u16 Options_GetSoundMethod(Options* options);
+void Options_SetSoundMethod(Options* options, u32 soundMethod);
+u16 Options_GetBattleScene(Options* options);
+void Options_SetBattleScene(Options* options, u32 battleScene);
+u16 Options_GetBattleStyle(Options* options);
+void Options_SetBattleStyle(Options* options, u32 battleStyle);
+u16 Options_GetButtonMode(Options* options);
+void Options_SetButtonMode(Options* options, u32 buttonMode);
+u16 Options_GetFrame(Options* options);
+void Options_SetFrame(Options* options, u32 frame);
 
 #endif //POKEHEARTGOLD_OPTIONS_H

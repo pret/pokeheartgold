@@ -77,7 +77,7 @@ void GF_SndCallback(void);
 BOOL GF_SndIsFanfarePlaying(void);
 BOOL GF_SndWorkMicCounterFull(void);
 
-void InitSoundData(SOUND_CHATOT *chatot, OPTIONS *options) {
+void InitSoundData(SOUND_CHATOT *chatot, Options *options) {
     SND_WORK *work = GetSoundDataPointer();
     NNS_SndInit();
     GF_SoundDataInit(work);

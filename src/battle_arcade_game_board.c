@@ -98,7 +98,7 @@ BOOL BattleArcadeGameBoard_InitOverlay(OVY_MANAGER *man, int *state) {
 
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_80), OVY_LOAD_ASYNC);
     BattleArcadeGameBoard_InitSub();
-    CreateHeap(3, HEAP_ID_GAME_BOARD, 0x20000);
+    CreateHeap(HEAP_ID_3, HEAP_ID_GAME_BOARD, 0x20000);
     work = OverlayManager_CreateAndGetData(man, sizeof(GAME_BOARD_WORK), HEAP_ID_GAME_BOARD);
     memset(work, 0, sizeof(GAME_BOARD_WORK));
 

@@ -181,7 +181,7 @@ sub_0203E3A8: ; 0x0203E3A8
 	thumb_func_start sub_0203E3AC
 sub_0203E3AC: ; 0x0203E3AC
 	push {r3, lr}
-	bl ov12_022378C0
+	bl Battle_Main
 	cmp r0, #0
 	beq _0203E3BA
 	mov r0, #1
