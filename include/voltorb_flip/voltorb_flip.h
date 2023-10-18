@@ -7,7 +7,7 @@
 #include "save.h"
 
 typedef struct VoltorbFlipAppArgs {
-    OPTIONS *options;
+    Options *options;
     u16 *coins;
     u32 *unk8;
     PlayerProfile *profile;

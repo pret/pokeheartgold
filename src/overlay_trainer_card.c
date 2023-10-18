@@ -34,7 +34,7 @@ static BOOL isSubprocFinished(OVY_MANAGER **man) {
 
 BOOL TrainerCardApp_OvyInit(OVY_MANAGER *man, int *state) {
     void *ptr = OverlayManager_GetArgs(man);
-    CreateHeap(3, HEAP_ID_TRAINER_CARD, 0x1000);
+    CreateHeap(HEAP_ID_3, HEAP_ID_TRAINER_CARD, 0x1000);
 
     TrainerCardAppState *data = OverlayManager_CreateAndGetData(man, sizeof(TrainerCardAppState), HEAP_ID_TRAINER_CARD);
     MI_CpuClear8(data, sizeof(TrainerCardAppState));

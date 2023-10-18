@@ -321,7 +321,7 @@ BOOL BerryPotsApp_Exit(OVY_MANAGER *manager, int *state) {
 
 static void BerryPotsApp_InitData(BerryPotsAppData *data) {
     data->unk74 = sub_020183F0(data->args->unk4->unk4);
-    OPTIONS *options = Save_PlayerData_GetOptionsAddr(data->args->unk4->savedata);
+    Options *options = Save_PlayerData_GetOptionsAddr(data->args->unk4->savedata);
     data->textFrameDelay = Options_GetTextFrameDelay(options);
     data->frame = Options_GetFrame(options);
     data->bag = Save_Bag_Get(data->args->unk4->savedata);

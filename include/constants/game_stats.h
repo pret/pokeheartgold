@@ -13,8 +13,9 @@
 #define GAME_STAT_UNK12               12
 #define GAME_STAT_UNK17               17
 #define GAME_STAT_UNK20               20
-#define GAME_STAT_UNK21               21
+#define GAME_STAT_UNK21               21 //link battles?
 #define GAME_STAT_BADGE_GET           22
+#define GAME_STAT_UNK26               26
 #define GAME_STAT_UNK46               46
 #define GAME_STAT_BATTLE_POINTS       69
 

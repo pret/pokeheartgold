@@ -3,6 +3,7 @@
 
 #include "filesystem.h"
 #include "unk_02009D48.h"
+#include "save.h"
 #include "unk_02023694.h"
 #include "palette.h"
 

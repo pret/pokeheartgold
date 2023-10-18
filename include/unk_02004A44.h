@@ -2,5 +2,6 @@
 #define POKEHEARTGOLD_UNK_02004A44_H
 
 void sub_02004AD8(int a0);
+void sub_02005BEC(BOOL);
 
 #endif //POKEHEARTGOLD_UNK_02004A44_H

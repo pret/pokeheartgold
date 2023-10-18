@@ -86,7 +86,7 @@ static const MAIL_MSG_TEMPLATE sMailMsgTemplates[2] = {
 
 BOOL ov36_TitleScreen_NewGame_AppInit(OVY_MANAGER* man, int* state) {
 #pragma unused(man, state)
-    CreateHeap(3, HEAPID_OV36, 0x20000);
+    CreateHeap(HEAP_ID_3, HEAPID_OV36, 0x20000);
     InitializeMainRNG();
 
     return TRUE;
@@ -110,7 +110,7 @@ BOOL ov36_TitleScreen_NewGame_AppExit(OVY_MANAGER* man, int* state) {
 
 BOOL ov36_App_InitGameState_AfterOakSpeech_AppInit(OVY_MANAGER* man, int* state) {
 #pragma unused(man, state)
-    CreateHeap(3, HEAPID_OV36, 0x20000);
+    CreateHeap(HEAP_ID_3, HEAPID_OV36, 0x20000);
     InitializeMainRNG();
 
     return TRUE;
@@ -136,14 +136,13 @@ BOOL ov36_App_InitGameState_AfterOakSpeech_AppExit(OVY_MANAGER* man, int* state)
 
 BOOL ov36_App_MainMenu_SelectOption_Continue_AppInit(OVY_MANAGER* man, int* state) {
 #pragma unused(man, state)
-    CreateHeap(3, HEAPID_OV36, 0x20000);
+    CreateHeap(HEAP_ID_3, HEAPID_OV36, 0x20000);
     InitializeMainRNG();
 
     return TRUE;
 }
 
 BOOL ov36_App_MainMenu_SelectOption_Continue_AppExec(OVY_MANAGER* man, int* state) {
-#pragma unused(state)
     struct UnkStruct_02111868_sub* unk_work = OverlayManager_GetArgs(man);
     SaveData* saveData = unk_work->saveData;
     SysInfo* sys_info = Save_SysInfo_Get(saveData);

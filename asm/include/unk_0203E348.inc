@@ -216,7 +216,7 @@
 .public _02102830
 .public _02103A1C
 .public ov02_0224E4EC
-.public ov12_022378C0
+.public Battle_Main
 .public ov14_021E5900
 .public ov14_021E596C
 .public ov14_021E5988

@@ -24,7 +24,7 @@ typedef struct MemoryBlock {
 
 static struct HeapInfo sHeapInfo;
 
-static BOOL CreateHeapInternal(u32 parent, u32 child, u32 size, s32 alignment);
+static BOOL CreateHeapInternal(HeapID parent, HeapID child, u32 size, s32 alignment);
 BOOL GF_heap_c_dummy_return_true(HeapID heapId);
 
 void InitHeapSystem(const HEAP_PARAM *templates, u32 nTemplates, u32 totalNumHeaps, u32 pre_size) {
@@ -111,15 +111,15 @@ static s32 FindFirstAvailableHeapHandle() {
     return -1;
 }
 
-BOOL CreateHeap(u32 parent, u32 child, u32 size) {
+BOOL CreateHeap(HeapID parent, HeapID child, u32 size) {
     return CreateHeapInternal(parent, child, size, 4);
 }
 
-BOOL CreateHeapAtEnd(u32 parent, u32 child, u32 size) {
+BOOL CreateHeapAtEnd(HeapID parent, HeapID child, u32 size) {
     return CreateHeapInternal(parent, child, size, -4);
 }
 
-static BOOL CreateHeapInternal(u32 parent, u32 child, u32 size, s32 alignment) {
+static BOOL CreateHeapInternal(HeapID parent, HeapID child, u32 size, s32 alignment) {
     GF_ASSERT(OS_GetProcMode() != OS_PROCMODE_IRQ);
 
     u8 *ptr = sHeapInfo.heapIdxs;

@@ -18,6 +18,7 @@
 #include "filesystem.h"
 #include "unk_02023694.h"
 #include "unk_0200E320.h"
+#include "unk_0200CF18.h"
 #include "constants/battle.h"
 #include "constants/moves.h"
 
@@ -536,8 +537,8 @@ struct BattleSystem {
     SOUND_CHATOT *chatotVoice[4];
     u32 *unk88;
     u32 *unk8C;
-    u32 *unk90;
-    u32 *unk94;
+    SpriteRenderer *unk90;
+    SpriteGfxHandler *unk94;
     u32 *unk98;
     u32 *unk9C;
     u16 trainerId[4];
@@ -549,7 +550,7 @@ struct BattleSystem {
     FontID *hpFont;
     FontID *levelFont;
     void *msgIcon;
-    OPTIONS *options;
+    Options *options;
     u32 *unk1B8;
     void *unk1BC;
     u32 *unk1C0;

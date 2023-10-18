@@ -6,7 +6,7 @@
 typedef struct MoveRelearner { //todo: move to unk_0203E348? rename to MoveRelearnerAppData?
     Pokemon *mon;
     PlayerProfile *profile;
-    OPTIONS *options;
+    Options *options;
     u8 filler_0C[4];
     u16 *eligibleMoves;
     u8 filler_14[5];

@@ -52,7 +52,7 @@
 .public ov12_0223C0C4
 .public RunBattleScript
 .public BattleContext_New
-.public BattleMain
+.public BattleContext_Main
 .public BattleContext_Delete
 .public BattleSystem_CheckMoveHitEffect
 .public BattleSystem_GetBattleMon

@@ -189,7 +189,7 @@
 .public ov06_0221BAF0
 .public ov07_0221BEDC
 .public ov07_0221BFE0
-.public ov12_022378C0
+.public Battle_Main
 .public ov12_02237B0C
 .public ov12_02237B6C
 .public ov12_02237BB8
@@ -227,7 +227,7 @@
 .public ov12_0223BFCC
 .public ov12_0223BFEC
 .public BattleContext_New
-.public BattleMain
+.public BattleContext_Main
 .public BattleContext_Delete
 .public ov12_02256F28
 .public ov12_022581D4

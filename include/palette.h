@@ -45,8 +45,10 @@ void sub_020032A4(PaletteData *data, u32 bufferID, u16 pos, u32 size);
 void PaletteData_CopyPalette(PaletteData *data, u32 srcBufferID, u16 srcPos, u32 destBufferID, u16 destPos, u16 size);
 u16 *PaletteData_GetUnfadedBuf(PaletteData *data, u32 bufferID);
 u8 sub_02003370(PaletteData *data, u16 bufferID, u16 opaqueBit, s8 wait, u8 cur, u8 end, u16 nextRGB);
-
-void sub_0200398C(void*);
+void sub_02003E5C(PaletteData *data, u32, u32, u32, u8, u32);
+void sub_0200398C(PaletteData *data);
 void PaletteData_LoadPalette(PaletteData *data, const u16 *a1, u32 a2, u32 a3, u32 a4);
+void sub_02003B50(PaletteData *data, int a1);
+void sub_0200398C(PaletteData *data);
 
 #endif //POKEHEARTGOLD_PALETTE_H

@@ -57,7 +57,7 @@ struct UseItemInPartyTaskEnv {
     Party *party;
     Bag *bag;
     MAILBOX *mailbox;
-    OPTIONS *options;
+    Options *options;
     struct UnkStruct_0202E474 *unk10;
     u32 unk14;
     void *unk18;

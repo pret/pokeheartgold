@@ -23,7 +23,7 @@ struct BattleSetupSub_138 {
 };
 
 struct BattleSetup { //declared in trainer_data.h
-    u32 flags; // 0
+    u32 battleType; // 0
     Party* party[BATTLER_MAX]; // 4
     int winFlag; // 14
     int trainerId[BATTLER_MAX]; // 18
@@ -36,13 +36,13 @@ struct BattleSetup { //declared in trainer_data.h
     SOUND_CHATOT* chatot[BATTLER_MAX]; // 118
     void* unk_128;
     void* unk_12C;
-    OPTIONS* options; // 130
+    Options* options; // 130
     struct UnkStruct_02067A60* unk_134;
     struct BattleSetupSub_138 unk138;
     GAME_STATS* gameStats; // 144
     SavePalPad* palPad; // 148
     u32 battleBg; // 14C
-    u32 unk_150;
+    u32 terrain;
     u32 mapSection; // 154
     u32 mapNumber; // 158
     TIMEOFDAY timeOfDay; // 15C
@@ -54,10 +54,10 @@ struct BattleSetup { //declared in trainer_data.h
     u32 weatherType; // 174
     int levelUpFlag; // 178
     u8 filler_17C[0x10];
-    u32 unk_18C;
+    u32 battleSpecial; //18C
     int safariBalls; // 190
     int unk_194;
-    u8 filler_198[4];
+    void *unk198;
     int unk_19C;
     int unk_1A0[4];
     u16 unk1B0;

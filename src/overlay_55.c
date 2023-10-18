@@ -50,7 +50,7 @@ BOOL ov55_UnkApp_Init(OVY_MANAGER *manager, int *state) {
     UnkArgs_ov55 *args;
 
     args = OverlayManager_GetArgs(manager);
-    CreateHeap(3, HEAP_ID_OV55, 0x1000);
+    CreateHeap(HEAP_ID_3, HEAP_ID_OV55, 0x1000);
     overlayData = OverlayManager_CreateAndGetData(manager, sizeof(UnkStruct_ov55_021E5924), HEAP_ID_OV55);
     MI_CpuFill8(overlayData, 0, sizeof(UnkStruct_ov55_021E5924));
 

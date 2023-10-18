@@ -37,7 +37,7 @@ void GF_SndStopPlayerField(void);
 void PlayBGM(u16 seqno);
 void GF_SndStartFadeInBGM(u32, u32, u32);
 u32 GF_SndPlayerCountPlayingSeqByPlayerNo(u32 playerno);
-void InitSoundData(SOUND_CHATOT *chatot, OPTIONS *options);
+void InitSoundData(SOUND_CHATOT *chatot, Options *options);
 void GF_SndCallback(void);
 BOOL GF_SndIsFanfarePlaying(void);
 int GF_Snd_SaveState(int *level_p);
