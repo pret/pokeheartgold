@@ -9,6 +9,14 @@
 #include "msgdata.h"
 #include "task.h"
 
+typedef enum AlphPuzzles {
+    ALPH_PUZZLE_KABUTO,
+    ALPH_PUZZLE_AEROACTYL,
+    ALPH_PUZZLE_OMANYTE,
+    ALPH_PUZZLE_HO_OH,
+    ALPH_PUZZLE_MAX
+} AlphPuzzles;
+
 typedef struct UnkAlphSub_10 {
     void *unk_00;
     u8 unk4;
@@ -52,9 +60,9 @@ typedef struct AlphPuzzleData {
     MsgData *msgData;
     MessageFormat *messageFormat;
     String *unk30;
-    String *unk34;
-    String *unk38[4];
-    String *unk48[1];
+    String *quitText;
+    String *hintText[ALPH_PUZZLE_MAX];
+    String *confirmQuitText[1];
     Window window[3];
     void *unk7C;
     PaletteData *palette;

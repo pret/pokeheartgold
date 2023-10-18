@@ -24,6 +24,7 @@
 #include "unk_0200B150.h"
 #include "unk_02023694.h"
 #include "msgdata/msg/msg_0002.h"
+#include "msgdata/msg.naix"
 
 typedef enum AlphPuzzleStates {
     ALPH_PUZZLE_STATE_FADE_IN,
@@ -68,8 +69,8 @@ static void ov110_021E61D0(AlphPuzzleData *data);
 static void ov110_021E6348(AlphPuzzleData *data);
 static void ov110_021E6394(AlphPuzzleData *data);
 static void ov110_021E6544(AlphPuzzleData *data);
-static void ov110_021E6580(AlphPuzzleData *data);
-static void ov110_021E65DC(AlphPuzzleData *data);
+static void AlphPuzzle_InitText(AlphPuzzleData *data);
+static void AlphPuzzle_DeleteText(AlphPuzzleData *data);
 static void ov110_021E6618(AlphPuzzleData *data);
 static void ov110_021E6650(AlphPuzzleData *data);
 static void ov110_021E6678(AlphPuzzleData *data);
@@ -270,7 +271,7 @@ static void ov110_021E5BE4(AlphPuzzleData *data) {
     AlphPuzzle_InitTileData(data);
     ov110_021E61D0(data);
     ov110_021E6394(data);
-    ov110_021E6580(data);
+    AlphPuzzle_InitText(data);
     ov110_021E6618(data);
     ov110_021E6730(data);
     Main_SetVBlankIntrCB(ov110_021E6110, data);
@@ -279,7 +280,7 @@ static void ov110_021E5BE4(AlphPuzzleData *data) {
 static void ov110_021E5C18(AlphPuzzleData *data) {
     ov110_021E6748(data);
     ov110_021E6650(data);
-    ov110_021E65DC(data);
+    AlphPuzzle_DeleteText(data);
     ov110_021E6544(data);
     ov110_021E6348(data);
 }
@@ -544,15 +545,15 @@ static void ov110_021E6110(void *dat) {
     OS_SetIrqCheckFlag(OS_IE_VBLANK);
 }
 
-typedef struct AlphaPuzzleInitTileData {
+typedef struct AlphPuzzleInitTileData {
     u8 index:5;
     u8 rotation:2;
     u8 isImmovable:1;
-} AlphaPuzzleInitTileData;
+} AlphPuzzleInitTileData;
 
-typedef AlphaPuzzleInitTileData AlphPuzzle[6];
+typedef AlphPuzzleInitTileData AlphPuzzle[6];
 
-extern AlphPuzzle *dAlphPuzzles[4];
+extern AlphPuzzle *dAlphPuzzles[ALPH_PUZZLE_MAX];
 
 static void AlphPuzzle_InitTileData(AlphPuzzleData *data) {
     int y;
@@ -647,11 +648,11 @@ static void ov110_021E6394(AlphPuzzleData *data) {
     NARC *narc = NARC_New(NARC_a_1_7_2, data->heapId);
     data->palette = PaletteData_Init(data->heapId);
     
-    PaletteData_AllocBuffers(data->palette, 0, (1 << 8), data->heapId);
+    PaletteData_AllocBuffers(data->palette, 0, 256, data->heapId);
     PaletteData_AllocBuffers(data->palette, 1, 256, data->heapId);
     PaletteData_AllocBuffers(data->palette, 2, 256, data->heapId);
     
-    sub_02003220(data->palette, narc, 10, data->heapId, 0, (1 << 8), 0, 0);
+    sub_02003220(data->palette, narc, 10, data->heapId, 0, 256, 0, 0);
     sub_02003220(data->palette, narc, 10, data->heapId, 1, 256, 0, 0);
     sub_02003220(data->palette, narc, 0, data->heapId, 2, 256, 0, 0);
     
@@ -681,28 +682,28 @@ static void ov110_021E6544(AlphPuzzleData *data) {
     PaletteData_Free(data->palette);
 }
 
-static void ov110_021E6580(AlphPuzzleData *data) {
+static void AlphPuzzle_InitText(AlphPuzzleData *data) {
     FontID_Alloc(4, data->heapId);
     
-    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 2, data->heapId);
+    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0002_bin, data->heapId);
     data->messageFormat = MessageFormat_New_Custom(6, 16, data->heapId);
     data->unk30 = String_New(0x80, data->heapId);
     
-    data->unk34 = NewString_ReadMsgData(data->msgData, msg_0002_00000);
+    data->quitText = NewString_ReadMsgData(data->msgData, msg_0002_00000);
     
     for (int i = 0; i < 4; i++) {
-        data->unk38[i] = NewString_ReadMsgData(data->msgData, i + 1);
+        data->hintText[i] = NewString_ReadMsgData(data->msgData, i + msg_0002_00001);
     }
     
-    data->unk48[0] = NewString_ReadMsgData(data->msgData, msg_0002_00005);
+    data->confirmQuitText[0] = NewString_ReadMsgData(data->msgData, msg_0002_00005);
 }
 
-static void ov110_021E65DC(AlphPuzzleData *data) {
-    String_Delete(data->unk48[0]);
+static void AlphPuzzle_DeleteText(AlphPuzzleData *data) {
+    String_Delete(data->confirmQuitText[0]);
     for (int i = 0; i < 4; i++) {
-        String_Delete(data->unk38[i]);
+        String_Delete(data->hintText[i]);
     }
-    String_Delete(data->unk34);
+    String_Delete(data->quitText);
     String_Delete(data->unk30);
     MessageFormat_Delete(data->messageFormat);
     DestroyMsgData(data->msgData);
@@ -821,8 +822,8 @@ void ov110_021E6904(AlphPuzzleData *data, int a1) {
         Set2dSpriteAnimActiveFlag(data->unk8C[0], 0);
     }
     
-    u32 width = FontID_String_GetWidth(4, data->unk34, 0);
-    AddTextPrinterParameterized2(data->window, 4, data->unk34, (48 - width) / 2, 4, 0xFF, ov110_021E6DA4[a1], NULL);
+    u32 width = FontID_String_GetWidth(4, data->quitText, 0);
+    AddTextPrinterParameterized2(data->window, 4, data->quitText, (48 - width) / 2, 4, 0xFF, ov110_021E6DA4[a1], NULL);
     ScheduleWindowCopyToVram(data->window);
 }
 
@@ -832,16 +833,16 @@ static void ov110_021E6988(AlphPuzzleData *data, int a1, int a2, u8 textFrameDel
     }
     FillWindowPixelBuffer(&data->window[1], 15);
     if (textFrameDelay == 0) {
-        AddTextPrinterParameterized2(&data->window[1], 1, data->unk48[a1], 0, 0, 0xFF, 0x1020F, 0);
+        AddTextPrinterParameterized2(&data->window[1], 1, data->confirmQuitText[a1], 0, 0, 0xFF, 0x1020F, 0);
     } else {
-        data->textPrinterId = AddTextPrinterParameterized2(&data->window[1], 1, data->unk48[a1], 0, 0, textFrameDelay, 0x1020F, 0);
+        data->textPrinterId = AddTextPrinterParameterized2(&data->window[1], 1, data->confirmQuitText[a1], 0, 0, textFrameDelay, 0x1020F, 0);
     }
     ScheduleWindowCopyToVram(&data->window[1]);
 }
 
 static void ov110_021E6A04(AlphPuzzleData *data) {
     FillWindowPixelBuffer(&data->window[2], 0);
-    AddTextPrinterParameterized2(&data->window[2], 4, data->unk38[data->puzzleIndex], 0, 0, 0xFF, 0x20100, 0);
+    AddTextPrinterParameterized2(&data->window[2], 4, data->hintText[data->puzzleIndex], 0, 0, 0xFF, 0x20100, 0);
     ScheduleWindowCopyToVram(&data->window[2]);
 }
 
