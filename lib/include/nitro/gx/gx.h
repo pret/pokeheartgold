@@ -26,6 +26,15 @@ typedef enum {
 } GXBGMode;
 
 typedef enum {
+    GX_PLANEMASK_NONE = 0,
+    GX_PLANEMASK_BG0 = (1 << 0),
+    GX_PLANEMASK_BG1 = (1 << 1),
+    GX_PLANEMASK_BG2 = (1 << 2),
+    GX_PLANEMASK_BG3 = (1 << 3),
+    GX_PLANEMASK_OBJ = (1 << 4)
+} GXPlaneMask;
+
+typedef enum {
     GX_BG0_AS_2D = 0,
     GX_BG0_AS_3D = 1
 } GXBG0As;
