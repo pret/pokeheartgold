@@ -32,30 +32,30 @@
 static const MailMessageTemplate TrainerHouse_DefaultLoseMessage = {
     .msg_bank = MAILMSG_BANK_0292_GMM,
     .msg_no = msg_0292_00000,
-    .ec_groups = { EC_GROUP_GREETINGS, 0xFF },
+    .ec_groups = { EC_GROUP_GREETINGS, EC_GROUP_NONE },
     .ec_words = { msg_0287_thanks, 0 },
 };
 
 static const MailMessageTemplate TrainerHouse_DefaultWinMessage = {
     .msg_bank = MAILMSG_BANK_0296_GMM,
     .msg_no = msg_0296_00007,
-    .ec_groups = { EC_GROUP_TRAINER, 0xFF },
+    .ec_groups = { EC_GROUP_TRAINER, EC_GROUP_NONE },
     .ec_words = { msg_0285_victory, 0 },
 };
 
 static const MailMessageTemplate TrainerHouse_DefaultIntroMessage = {
     .msg_bank = MAILMSG_BANK_0294_GMM,
     .msg_no = msg_0294_00003,
-    .ec_groups = { EC_GROUP_TRAINER, 0xFF },
+    .ec_groups = { EC_GROUP_TRAINER, EC_GROUP_NONE },
     .ec_words = { msg_0285_match, 0 }, 
 };
 
-#define DUMMY_TRAINER_HOUSE_MON {               \
-    .language = GAME_LANGUAGE,                  \
-    .nickname = {                               \
-        0xffff, 0xffff, 0xffff, 0xffff, 0xffff, \
-        0xffff, 0xffff, 0xffff, 0xffff, 0xffff, \
-    },                                          \
+#define DUMMY_TRAINER_HOUSE_MON { \
+    .language = GAME_LANGUAGE,    \
+    .nickname = {                 \
+        EOS, EOS, EOS, EOS, EOS,  \
+        EOS, EOS, EOS, EOS, EOS,  \
+    },                            \
 }
 
 static const TrainerHouseSet ov25_02259D9C = {
@@ -65,7 +65,10 @@ static const TrainerHouseSet ov25_02259D9C = {
         .language = GAME_LANGUAGE,
         .version = GAME_VERSION,
         .gender = PLAYER_GENDER_MALE,
-        .otName = { 0x33, 0x0c, 0x4c, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff }, // "ひかる"
+        .otName = {
+            CHAR_JP_HIRA_HI, CHAR_JP_HIRA_KA, CHAR_JP_HIRA_RU,
+            EOS, EOS, EOS, EOS, EOS,
+        }, // "ひかる"
     },
     .party = {
         {
@@ -85,7 +88,10 @@ static const TrainerHouseSet ov25_02259D9C = {
             .language = GAME_LANGUAGE,
             .ability = ABILITY_OVERGROW,
             .level = 50,
-            .nickname = { 0x92, 0x5d, 0x7c, 0x57, 0x91, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff }, // "メガニウム"
+            .nickname = {
+                CHAR_JP_KATA_ME, CHAR_JP_KATA_GA, CHAR_JP_KATA_NI, CHAR_JP_KATA_U, CHAR_JP_KATA_MU,
+                EOS, EOS, EOS, EOS, EOS,
+            }, // "メガニウム"
         },
         {
             .species = SPECIES_TYPHLOSION,
@@ -104,7 +110,10 @@ static const TrainerHouseSet ov25_02259D9C = {
             .language = GAME_LANGUAGE,
             .ability = ABILITY_BLAZE,
             .level = 50,
-            .nickname = { 0x81, 0x60, 0x86, 0xf1, 0xa1, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff }, // "バクフーン"
+            .nickname = {
+                CHAR_JP_KATA_BA, CHAR_JP_KATA_KU, CHAR_JP_KATA_HU, CHAR_JP_HYPHEN, CHAR_JP_KATA_N_,
+                EOS, EOS, EOS, EOS, EOS,
+            }, // "バクフーン"
         },
         {
             .species = SPECIES_FERALIGATR,
@@ -123,7 +132,10 @@ static const TrainerHouseSet ov25_02259D9C = {
             .language = GAME_LANGUAGE,
             .ability = ABILITY_TORRENT,
             .level = 50,
-            .nickname = { 0x5b, 0xf1, 0x71, 0x55, 0x9c, 0xffff, 0xffff, 0xffff, 0xffff, 0xffff }, // "オーダイル"
+            .nickname = {
+                CHAR_JP_KATA_O, CHAR_JP_HYPHEN, CHAR_JP_KATA_DA, CHAR_JP_KATA_I, CHAR_JP_KATA_RU,
+                EOS, EOS, EOS, EOS, EOS,
+            }, // "オーダイル"
         },
         DUMMY_TRAINER_HOUSE_MON,
         DUMMY_TRAINER_HOUSE_MON,
@@ -171,7 +183,7 @@ static void TrainerHouse_SetNames(TrainerHouseSet *set) {
             if (length > PLAYER_NAME_LENGTH) {
                 length = PLAYER_NAME_LENGTH;
             }
-            MI_CpuFill16(set->trainer.otName, 0xffff, (PLAYER_NAME_LENGTH + 1) * sizeof(u16));
+            MI_CpuFill16(set->trainer.otName, EOS, (PLAYER_NAME_LENGTH + 1) * sizeof(u16));
             MI_CpuCopy16(String_cstr(otName), set->trainer.otName, length * sizeof(u16));
             String_Delete(otName);
         }
@@ -189,7 +201,7 @@ static void TrainerHouse_SetNames(TrainerHouseSet *set) {
             if (length > POKEMON_NAME_LENGTH) {
                 length = POKEMON_NAME_LENGTH;
             }
-            MI_CpuFill16(trainerHouseMon->nickname, 0xffff, POKEMON_NAME_LENGTH * sizeof(u16));
+            MI_CpuFill16(trainerHouseMon->nickname, EOS, POKEMON_NAME_LENGTH * sizeof(u16));
             MI_CpuCopy16(String_cstr(name), trainerHouseMon->nickname, length * sizeof(u16));
             String_Delete(name);
         }
