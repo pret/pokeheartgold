@@ -231,7 +231,7 @@ static BattleSetup *TrainerHouse_NewBattleSetup(FieldSystem *fieldSystem, Traine
     Party *party = SaveArray_Party_Get(saveData);
     sub_02051D18(setup, fieldSystem, saveData, fieldSystem->location->mapId, fieldSystem->unk94, fieldSystem->unkB0);
     setup->battleBg = 6;
-    setup->unk_150 = 9;
+    setup->terrain = TERRAIN_BUILDING;
     Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD);
     s32 partyCount = Party_GetCount(party);
     Party_InitWithMaxSize(setup->party[BATTLER_PLAYER], PARTY_SIZE);
