@@ -32,7 +32,7 @@ ScrCmd_808: ; 0x022053EC
 	add r5, #0x80
 	ldr r0, [r5]
 	add r1, r4, #0
-	bl ov25_022598C0
+	bl TrainerHouse_StartBattle
 	add r0, r6, #0
 	bl UnloadOverlayByID
 	mov r0, #1

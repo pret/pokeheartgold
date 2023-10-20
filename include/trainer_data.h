@@ -87,7 +87,7 @@ typedef union TrainerMon {
 typedef struct TrainerData {
     /*000*/ u8 trainerType;
     /*001*/ u8 trainerClass;
-    /*002*/ u8 unk_2; // unused
+    /*002*/ u8 unk_2;
     /*003*/ u8 npoke;
     /*004*/ u16 items[4];
     /*00C*/ u32 aiFlags;

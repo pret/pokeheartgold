@@ -2,57 +2,69 @@
 #define POKEHEARTGOLD_SAVE_TRAINER_HOUSE_H
 
 #include "save.h"
+#include "pokemon_types_def.h"
 #include "constants/pokemon.h"
 #include "global.h"
 
-#define TRAINER_HALL_SET_MAX           10
+#define MAX_NUM_TRAINER_HOUSE_SETS  10
 
 typedef struct TrainerHouseTrainer {
     u32 id;
-    u8 unk_04;
+    u8 sprite;
     u8 language;
     u8 version;
-    u8 unk7;
+    u8 gender;
     u16 otName[PLAYER_NAME_LENGTH + 1];
-    u8 filler_18[0x18];
-} TrainerHouseTrainer; // size=0x30
+    MAIL_MESSAGE introMessage;
+    MAIL_MESSAGE winMessage;
+    MAIL_MESSAGE loseMessage;
+} TrainerHouseTrainer;
 
 typedef struct TrainerHouseMon {
     u16 species:11;
     u16 form:5;
     u16 item;
     u16 moves[MAX_MON_MOVES];
-    u32 pid;
     u32 otid;
-    u32 hpIv:5;
-    u32 atkIv:5;
-    u32 defIv:5;
-    u32 spdIv:5;
-    u32 spAtkIv:5;
-    u32 spDefIv:5;
-    u32 dummy:2;
+    u32 pid;
+    union {
+        struct {
+            u32 hpIv:5;
+            u32 atkIv:5;
+            u32 defIv:5;
+            u32 spdIv:5;
+            u32 spAtkIv:5;
+            u32 spDefIv:5;
+            u32 dummy:2;
+        };
+        u32 ivsWord;
+    };
     u8 hpEv;
     u8 atkEv;
     u8 defEv;
     u8 spdEv;
     u8 spAtkEv;
     u8 spDefEv;
-    u8 unk_1E[6];
+    u8 ppUp;
+    u8 language;
+    u8 ability;
+    u8 friendship;
+    u8 level;
     u16 nickname[POKEMON_NAME_LENGTH];
-} TrainerHouseMon; // size=0x38
+} TrainerHouseMon;
 
 typedef struct TrainerHouseSet {
     TrainerHouseTrainer trainer;
     TrainerHouseMon party[PARTY_SIZE];
 } TrainerHouseSet;
 
-typedef struct TrainerHouseSave {
-    TrainerHouseSet sets[TRAINER_HALL_SET_MAX];
-} TrainerHouseSave; // size=0xF00
+typedef struct TrainerHouse {
+    TrainerHouseSet sets[MAX_NUM_TRAINER_HOUSE_SETS];
+} TrainerHouse;
 
 u32 Save_TrainerHouse_sizeof(void);
-TrainerHouseSave *Save_TrainerHouse_Get(SaveData *saveData);
-void Save_TrainerHouse_Init(TrainerHouseSave *th);
+TrainerHouse *Save_TrainerHouse_Get(SaveData *saveData);
+void Save_TrainerHouse_Init(TrainerHouse *th);
 void TrainerHouseMon_SetZero(TrainerHouseMon *mon);
 void TrainerHouseTrainer_SetZero(TrainerHouseTrainer *trainer);
 void TrainerHouseSet_SetZero(TrainerHouseSet *set);

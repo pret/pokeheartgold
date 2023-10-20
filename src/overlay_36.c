@@ -67,7 +67,7 @@ const OVY_MGR_TEMPLATE ov36_App_MainMenu_SelectOption_Continue = {
     .ovy_id = FS_OVERLAY_ID_NONE,
 };
 
-static const MAIL_MSG_TEMPLATE sMailMsgTemplates[2] = {
+static const MailMessageTemplate sMailMsgTemplates[2] = {
     {
         // ADVENTURE! EXCITED!
         .msg_bank = MAILMSG_BANK_0292_GMM,
