@@ -230,7 +230,7 @@ static BattleSetup *TrainerHouse_NewBattleSetup(FieldSystem *fieldSystem, Traine
     SaveData *saveData = fieldSystem->saveData;
     Party *party = SaveArray_Party_Get(saveData);
     sub_02051D18(setup, fieldSystem, saveData, fieldSystem->location->mapId, fieldSystem->unk94, fieldSystem->unkB0);
-    setup->battleBg = 6;
+    setup->battleBg = BATTLE_BG_BUILDING_1;
     setup->terrain = TERRAIN_BUILDING;
     Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD);
     s32 partyCount = Party_GetCount(party);

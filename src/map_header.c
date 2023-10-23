@@ -1,6 +1,7 @@
 #define _IN_MAP_HEADER_C
 
 #include "global.h"
+#include "constants/battle.h"
 #include "constants/map_sections.h"
 #include "constants/maps.h"
 #include "constants/sndseq.h"
@@ -135,9 +136,9 @@ u32 MapHeader_GetCameraType(u32 map_no) {
     return sMapHeaders[map_no].camera_type;
 }
 
-u32 MapHeader_GetBattleBg(u32 map_no) {
+BattleBg MapHeader_GetBattleBg(u32 map_no) {
     map_no = MapNumberBoundsCheck(map_no);
-    return sMapHeaders[map_no].battle_bg;
+    return (BattleBg)sMapHeaders[map_no].battle_bg;
 }
 
 BOOL MapHeader_IsEscapeRopeAllowed(u32 map_no) {

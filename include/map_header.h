@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_MAP_HEADER_H
 #define POKEHEARTGOLD_MAP_HEADER_H
 
+#include "constants/battle.h"
+
 #define MAP_FOLLOWMODE_PREVENT          0
 #define MAP_FOLLOWMODE_HEIGHT_RESTRICT  1
 #define MAP_FOLLOWMODE_ALLOW            2
@@ -53,7 +55,7 @@ u8 MapHeader_GetMomCallIntroParam(u32 map_no);
 BOOL MapHeader_IsKanto(u32 map_no);
 u32 MapHeader_GetWeatherType(u32 map_no);
 u32 MapHeader_GetCameraType(u32 map_no);
-u32 MapHeader_GetBattleBg(u32 map_no);
+BattleBg MapHeader_GetBattleBg(u32 map_no);
 BOOL MapHeader_IsEscapeRopeAllowed(u32 map_no);
 BOOL MapHeader_IsFlyAllowed(u32 map_no);
 BOOL MapHeader_IsBikeAllowed(u32 map_no);
