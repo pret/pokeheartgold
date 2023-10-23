@@ -47,7 +47,7 @@ void MailMsg_Init_Default(MAIL_MESSAGE *mailMessage) {
     mailMessage->msg_no = msg_0295_00005;
 }
 
-void MailMsg_Init_FromTemplate(MAIL_MESSAGE *mailMessage, const MAIL_MSG_TEMPLATE *template) {
+void MailMsg_Init_FromTemplate(MAIL_MESSAGE *mailMessage, const MailMessageTemplate *template) {
     MailMsg_Init_WithBank(mailMessage, template->msg_bank);
     mailMessage->msg_no = template->msg_no;
     if (template->ec_groups[0] > 0) {

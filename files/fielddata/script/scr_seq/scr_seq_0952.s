@@ -100,7 +100,7 @@ _0118:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0186
 	script_overlay_cmd 4, 0
-	scrcmd_809 VAR_TEMP_x4000
+	show_trainer_house_intro_message VAR_TEMP_x4000
 	wait_button
 	closemsg
 	script_overlay_cmd 4, 1

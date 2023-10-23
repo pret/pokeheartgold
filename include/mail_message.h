@@ -19,7 +19,7 @@ typedef struct MailMessageTemplate {
     u8 msg_no;
     s8 ec_groups[MAILMSG_FIELDS_MAX];
     u16 ec_words[MAILMSG_FIELDS_MAX];
-} MAIL_MSG_TEMPLATE;
+} MailMessageTemplate;
 
 void MailMsg_Init(MAIL_MESSAGE *msg);
 BOOL MailMsg_Compare(const MAIL_MESSAGE *a, const MAIL_MESSAGE *b);
@@ -28,7 +28,7 @@ void MailMsg_SetFieldI(MAIL_MESSAGE *mailMessage, u16 field_no, u16 ec_word);
 void MailMsg_Copy(MAIL_MESSAGE *dst, const MAIL_MESSAGE *src);
 void MailMsg_Init_WithBank(MAIL_MESSAGE *mailMessage, u16 msgBank);
 void MailMsg_Init_Default(MAIL_MESSAGE *mailMessage);
-void MailMsg_Init_FromTemplate(MAIL_MESSAGE *mailMessage, const MAIL_MSG_TEMPLATE *template);
+void MailMsg_Init_FromTemplate(MAIL_MESSAGE *mailMessage, const MailMessageTemplate *template);
 String *MailMsg_GetExpandedString(const MAIL_MESSAGE *mailMessage, HeapID heapId);
 String *MailMsg_GetRawString(MAIL_MESSAGE *mailMessage, HeapID heapId);
 BOOL MailMsg_IsInit(MAIL_MESSAGE *mailMessage);

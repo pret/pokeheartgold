@@ -41,8 +41,8 @@ struct BattleSetup { //declared in trainer_data.h
     struct BattleSetupSub_138 unk138;
     GAME_STATS* gameStats; // 144
     SavePalPad* palPad; // 148
-    u32 battleBg; // 14C
-    u32 terrain;
+    BattleBg battleBg; // 14C
+    Terrain terrain;
     u32 mapSection; // 154
     u32 mapNumber; // 158
     TIMEOFDAY timeOfDay; // 15C

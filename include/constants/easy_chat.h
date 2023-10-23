@@ -17,6 +17,7 @@
 #define EC_GROUP_FEELINGS (8)
 #define EC_GROUP_TOUGH_WORDS (9)
 #define EC_GROUP_UNION (10)
+#define EC_GROUP_NONE (0xFF)
 
 #define EC_WORDS_POKEMON_MIN (0)
 #define EC_WORDS_POKEMON_MAX (496)

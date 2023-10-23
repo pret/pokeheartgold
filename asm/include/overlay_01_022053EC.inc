@@ -115,4 +115,4 @@
 .public ov01_022060B8
 .public ov01_02206268
 .public ov01_022062CC
-.public ov25_022598C0
+.public TrainerHouse_StartBattle
