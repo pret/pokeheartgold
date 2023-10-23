@@ -28,7 +28,7 @@ static void BattleSetup_SetParty(BattleSetup* setup, Party* party, int battlerId
 static void BattleSetup_SetProfile(BattleSetup* setup, PlayerProfile* profile, int battlerId);
 static void BattleSetup_SetChatotVoiceClip(BattleSetup* setup, SOUND_CHATOT* chatot, int battlerId);
 static void sub_0205230C(FieldSystem* fieldSystem, PlayerProfile* profile1, PlayerProfile* profile2);
-static u32 sub_02052470(FieldSystem* fieldSystem, u32 battleBg);
+static Terrain sub_02052470(FieldSystem* fieldSystem, BattleBg battleBg);
 static void sub_02052504(BattleSetup* setup, FieldSystem* fieldSystem);
 
 BattleSetup* BattleSetup_New(HeapID heapId, u32 battleTypeFlags) {
@@ -465,14 +465,14 @@ void sub_02052444(BattleSetup* setup, FieldSystem* fieldSystem) {
     Pokedex_Copy(setup->pokedex, pokedex);
 }
 
-static const u32 _020FC4C0[] = {
+static const Terrain _020FC4C0[] = {
     [BATTLE_BG_GENERAL]          = TERRAIN_PLAIN,
     [BATTLE_BG_OCEAN]            = TERRAIN_WATER,
     [BATTLE_BG_CITY]             = TERRAIN_BUILDING,
     [BATTLE_BG_FOREST]           = TERRAIN_GRASS,
     [BATTLE_BG_MOUNTAIN]         = TERRAIN_MOUNTAIN,
     [BATTLE_BG_SNOW]             = TERRAIN_SNOW,
-    [BATTLE_BG_BUILDING_1]         = TERRAIN_BUILDING,
+    [BATTLE_BG_BUILDING_1]       = TERRAIN_BUILDING,
     [BATTLE_BG_BUILDING_2]       = TERRAIN_BUILDING,
     [BATTLE_BG_BUILDING_3]       = TERRAIN_BUILDING,
     [BATTLE_BG_CAVE_1]           = TERRAIN_CAVE,
@@ -491,7 +491,7 @@ static const u32 _020FC4C0[] = {
     [BATTLE_BG_BATTLE_HALL]      = TERRAIN_BATTLE_HALL,
 };
 
-static u32 sub_02052470(FieldSystem* fieldSystem, u32 battleBg) {
+static Terrain sub_02052470(FieldSystem* fieldSystem, BattleBg battleBg) {
     u8 behavior = GetMetatileBehaviorAt(fieldSystem, fieldSystem->location->x, fieldSystem->location->y);
 
     if (sub_0205B828(behavior)) {
@@ -519,8 +519,8 @@ static u32 sub_02052470(FieldSystem* fieldSystem, u32 battleBg) {
         return _020FC4C0[battleBg];
     }
 
-    GF_ASSERT(0);
-    return NELEMS(_020FC4C0) + 1;
+    GF_ASSERT(FALSE);
+    return TERRAIN_MAX;
 }
 
 static void sub_02052504(BattleSetup* setup, FieldSystem* fieldSystem) {
