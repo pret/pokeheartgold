@@ -21,7 +21,7 @@ ov31_0225D520: ; 0x0225D520
 	lsl r1, r1, #4
 	mov r2, #0xa
 	mov r3, #8
-	bl sub_02007200
+	bl CreateSysTaskAndEnvironment
 	add r5, r0, #0
 	bl sub_0201F988
 	add r4, r0, #0
@@ -245,7 +245,7 @@ ov31_0225D710: ; 0x0225D710
 	add r0, r4, #0
 	bl ov31_0225D654
 	add r0, r6, #0
-	bl sub_02007234
+	bl DestroySysTaskAndEnvironment
 	add r0, r5, #0
 	mov r1, #6
 	bl FreeBgTilemapBuffer

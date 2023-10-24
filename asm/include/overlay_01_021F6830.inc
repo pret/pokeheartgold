@@ -2,8 +2,8 @@
 #pragma once
 .public UnloadOverlayByID
 .public HandleLoadOverlay
-.public sub_02007200
-.public sub_02007234
+.public CreateSysTaskAndEnvironment
+.public DestroySysTaskAndEnvironment
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_0201F988

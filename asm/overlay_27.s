@@ -44,7 +44,7 @@ ov27_02259F80: ; 0x02259F80
 	lsl r1, r1, #6
 	mov r2, #0xa
 	mov r3, #8
-	bl sub_02007200
+	bl CreateSysTaskAndEnvironment
 	add r7, r0, #0
 	bl sub_0201F988
 	add r4, r0, #0
@@ -333,7 +333,7 @@ _0225A246:
 	mov r0, #4
 	bl FontID_Release
 	ldr r0, [sp, #4]
-	bl sub_02007234
+	bl DestroySysTaskAndEnvironment
 	ldr r0, [sp]
 	mov r1, #5
 	bl FreeBgTilemapBuffer
@@ -4457,7 +4457,7 @@ ov27_0225C250: ; 0x0225C250
 	lsl r1, r1, #2
 	mov r2, #0xa
 	mov r3, #8
-	bl sub_02007200
+	bl CreateSysTaskAndEnvironment
 	add r6, r0, #0
 	bl sub_0201F988
 	add r4, r0, #0
@@ -4567,7 +4567,7 @@ _0225C3C4:
 	mov r0, #4
 	bl FontID_Release
 	ldr r0, [sp, #4]
-	bl sub_02007234
+	bl DestroySysTaskAndEnvironment
 	ldr r0, [sp]
 	mov r1, #6
 	bl FreeBgTilemapBuffer

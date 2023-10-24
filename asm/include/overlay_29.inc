@@ -4,8 +4,8 @@
 .public FontID_Release
 .public FontID_String_GetWidth
 .public PlaySE
-.public sub_02007200
-.public sub_02007234
+.public CreateSysTaskAndEnvironment
+.public DestroySysTaskAndEnvironment
 .public NARC_New
 .public NARC_Delete
 .public GfGfxLoader_LoadCharDataFromOpenNarc

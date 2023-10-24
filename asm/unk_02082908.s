@@ -820,7 +820,7 @@ _02082F86:
 	lsl r7, r7, #2
 _02082F98:
 	ldr r0, [r5, r7]
-	bl sub_02007234
+	bl DestroySysTaskAndEnvironment
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #7
@@ -2197,7 +2197,7 @@ _02083AFE:
 	mov r1, #0x10
 	mov r2, #5
 	mov r3, #0x12
-	bl sub_02007200
+	bl CreateSysTaskAndEnvironment
 	mov r1, #0xe7
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -2467,7 +2467,7 @@ _02083D18:
 	ldr r0, [r4]
 	bl Sprite_SetMatrix
 	add r0, r5, #0
-	bl sub_02007234
+	bl DestroySysTaskAndEnvironment
 _02083D2A:
 	ldr r0, [r4, #4]
 	add r0, r0, #1
@@ -2582,7 +2582,7 @@ _02083DE6:
 	mov r1, #0x10
 	mov r2, #0
 	mov r3, #0x12
-	bl sub_02007200
+	bl CreateSysTaskAndEnvironment
 	bl sub_0201F988
 	add r7, r0, #0
 	ldr r0, [sp, #0x48]

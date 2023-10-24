@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_02007200
-.public sub_02007234
+.public CreateSysTaskAndEnvironment
+.public DestroySysTaskAndEnvironment
 .public sub_0200E374
 .public DestroySysTask
 .public sub_0201F988

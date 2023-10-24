@@ -689,7 +689,7 @@ ov106_021E5E0C: ; 0x021E5E0C
 	ldr r3, [r5, #0x28]
 	mov r1, #0x38
 	mov r2, #5
-	bl sub_02007200
+	bl CreateSysTaskAndEnvironment
 	add r6, r0, #0
 	bl sub_0201F988
 	add r4, r0, #0
@@ -780,7 +780,7 @@ _021E5EC8:
 	bl GX_SetBankForLCDC
 _021E5ECE:
 	ldr r0, [r4, #0x34]
-	bl sub_02007234
+	bl DestroySysTaskAndEnvironment
 	pop {r4, pc}
 	nop
 _021E5ED8: .word 0x06820000

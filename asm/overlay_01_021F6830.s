@@ -128,7 +128,7 @@ ov01_021F68DC: ; 0x021F68DC
 	mov r1, #0x10
 	mov r2, #0xa
 	mov r3, #4
-	bl sub_02007200
+	bl CreateSysTaskAndEnvironment
 	add r4, r0, #0
 	bl sub_0201F988
 	ldr r1, [r5, #0x1c]
@@ -185,7 +185,7 @@ ov01_021F6930: ; 0x021F6930
 	bl ov01_021F69A4
 	add r5, #0xd8
 	ldr r0, [r5]
-	bl sub_02007234
+	bl DestroySysTaskAndEnvironment
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021F6960:

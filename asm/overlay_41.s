@@ -3188,7 +3188,7 @@ ov41_022476B8: ; 0x022476B8
 	mov r1, #0x10
 	mov r2, #0xa
 	mov r3, #0xd
-	bl sub_02007200
+	bl CreateSysTaskAndEnvironment
 	bl sub_0201F988
 	str r5, [r0]
 	str r4, [r0, #4]
@@ -3362,7 +3362,7 @@ _02247818:
 	ldr r1, [r4, #4]
 	mov r2, #1
 	str r2, [r1]
-	bl sub_02007234
+	bl DestroySysTaskAndEnvironment
 _02247822:
 	add sp, #4
 	pop {r3, r4, pc}
@@ -3378,7 +3378,7 @@ ov41_02247828: ; 0x02247828
 	mov r1, #0x10
 	mov r2, #0xa
 	mov r3, #0xd
-	bl sub_02007200
+	bl CreateSysTaskAndEnvironment
 	bl sub_0201F988
 	str r5, [r0]
 	str r4, [r0, #4]
@@ -3558,7 +3558,7 @@ _02247998:
 	ldr r1, [r4, #4]
 	mov r2, #1
 	str r2, [r1]
-	bl sub_02007234
+	bl DestroySysTaskAndEnvironment
 _022479A2:
 	add sp, #4
 	pop {r3, r4, pc}
@@ -6098,7 +6098,7 @@ ov41_02248B84: ; 0x02248B84
 	mov r1, #0x30
 	mov r2, #0
 	mov r3, #0xd
-	bl sub_02007200
+	bl CreateSysTaskAndEnvironment
 	bl sub_0201F988
 	add r4, r0, #0
 	str r5, [r4]
@@ -6316,7 +6316,7 @@ _02248D20:
 	ldr r0, [r4, #0x28]
 	bl FreeToHeap
 	add r0, r5, #0
-	bl sub_02007234
+	bl DestroySysTaskAndEnvironment
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 _02248D54:
@@ -7308,7 +7308,7 @@ ov41_02249480: ; 0x02249480
 	mov r1, #0x2c
 	mov r2, #0
 	mov r3, #0xd
-	bl sub_02007200
+	bl CreateSysTaskAndEnvironment
 	bl sub_0201F988
 	add r4, r0, #0
 	ldr r0, [r5, #8]
@@ -7404,7 +7404,7 @@ _02249532:
 	bl ov41_022463FC
 _0224955A:
 	add r0, r5, #0
-	bl sub_02007234
+	bl DestroySysTaskAndEnvironment
 	add sp, #8
 	pop {r3, r4, r5, pc}
 _02249564:
@@ -8613,7 +8613,7 @@ ov41_02249DB4: ; 0x02249DB4
 	mov r1, #0x4c
 	mov r2, #0
 	mov r3, #0xd
-	bl sub_02007200
+	bl CreateSysTaskAndEnvironment
 	bl sub_0201F988
 	add r4, r0, #0
 	str r6, [r4]
@@ -8831,7 +8831,7 @@ _02249F40:
 	str r0, [r1]
 _02249F74:
 	add r0, r5, #0
-	bl sub_02007234
+	bl DestroySysTaskAndEnvironment
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov41_02249F0C
 

@@ -9,8 +9,8 @@
 .public sub_02006118
 .public StopSE
 .public PlayCry
-.public sub_02007200
-.public sub_02007234
+.public CreateSysTaskAndEnvironment
+.public DestroySysTaskAndEnvironment
 .public AllocAndReadWholeNarcMemberByIdPair
 .public NARC_New
 .public NARC_Delete
