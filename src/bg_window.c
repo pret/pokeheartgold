@@ -127,21 +127,21 @@ void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *templat
 
     switch (bgId) {
         case GF_BG_LYR_MAIN_0:
-            GX_EngineAToggleLayers(GF_BG_LYR_MAIN_0_F, enable);
+            GX_EngineAToggleLayers(GX_PLANEMASK_BG0, enable);
             G2_SetBG0Control((GXBGScrSizeText)screenSize, (GXBGColorMode)template->colorMode, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase, (GXBGExtPltt)template->bgExtPltt);
             G2_SetBG0Priority(template->priority);
             G2_BG0Mosaic(template->mosaic);
             break;
 
         case GF_BG_LYR_MAIN_1:
-            GX_EngineAToggleLayers(GF_BG_LYR_MAIN_1_F, enable);
+            GX_EngineAToggleLayers(GX_PLANEMASK_BG1, enable);
             G2_SetBG1Control((GXBGScrSizeText)screenSize, (GXBGColorMode)template->colorMode, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase, (GXBGExtPltt)template->bgExtPltt);
             G2_SetBG1Priority(template->priority);
             G2_BG1Mosaic(template->mosaic);
             break;
 
         case GF_BG_LYR_MAIN_2:
-            GX_EngineAToggleLayers(GF_BG_LYR_MAIN_2_F, enable);
+            GX_EngineAToggleLayers(GX_PLANEMASK_BG2, enable);
             switch (bgMode) {
                 default:
                 case GF_BG_TYPE_TEXT:
@@ -159,7 +159,7 @@ void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *templat
             break;
 
         case GF_BG_LYR_MAIN_3:
-            GX_EngineAToggleLayers(GF_BG_LYR_MAIN_3_F, enable);
+            GX_EngineAToggleLayers(GX_PLANEMASK_BG3, enable);
             switch (bgMode) {
                 default:
                 case GF_BG_TYPE_TEXT:
@@ -177,21 +177,21 @@ void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *templat
             break;
 
         case GF_BG_LYR_SUB_0:
-            GX_EngineBToggleLayers(GF_BG_LYR_SUB_0_F, enable);
+            GX_EngineBToggleLayers(GX_PLANEMASK_BG0, enable);
             G2S_SetBG0Control((GXBGScrSizeText)screenSize, (GXBGColorMode)template->colorMode, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase, (GXBGExtPltt)template->bgExtPltt);
             G2S_SetBG0Priority(template->priority);
             G2S_BG0Mosaic(template->mosaic);
             break;
 
         case GF_BG_LYR_SUB_1:
-            GX_EngineBToggleLayers(GF_BG_LYR_SUB_1_F, enable);
+            GX_EngineBToggleLayers(GX_PLANEMASK_BG1, enable);
             G2S_SetBG1Control((GXBGScrSizeText)screenSize, (GXBGColorMode)template->colorMode, (GXBGScrBase)template->screenBase, (GXBGCharBase)template->charBase, (GXBGExtPltt)template->bgExtPltt);
             G2S_SetBG1Priority(template->priority);
             G2S_BG1Mosaic(template->mosaic);
             break;
 
         case GF_BG_LYR_SUB_2:
-            GX_EngineBToggleLayers(GF_BG_LYR_SUB_2_F, enable);
+            GX_EngineBToggleLayers(GX_PLANEMASK_BG2, enable);
             switch (bgMode) {
                 default:
                 case GF_BG_TYPE_TEXT:
@@ -209,7 +209,7 @@ void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *templat
             break;
 
         case GF_BG_LYR_SUB_3:
-            GX_EngineBToggleLayers(GF_BG_LYR_SUB_3_F, enable);
+            GX_EngineBToggleLayers(GX_PLANEMASK_BG3, enable);
             switch (bgMode) {
                 default:
                 case GF_BG_TYPE_TEXT:
@@ -609,28 +609,28 @@ void SetBgPriority(u8 bgId, u16 priority) {
 void ToggleBgLayer(u8 bgId, GXLayerToggle toggle) {
     switch (bgId) {
         case GF_BG_LYR_MAIN_0:
-            GX_EngineAToggleLayers(GF_BG_LYR_MAIN_0_F, toggle);
+            GX_EngineAToggleLayers(GX_PLANEMASK_BG0, toggle);
             break;
         case GF_BG_LYR_MAIN_1:
-            GX_EngineAToggleLayers(GF_BG_LYR_MAIN_1_F, toggle);
+            GX_EngineAToggleLayers(GX_PLANEMASK_BG1, toggle);
             break;
         case GF_BG_LYR_MAIN_2:
-            GX_EngineAToggleLayers(GF_BG_LYR_MAIN_2_F, toggle);
+            GX_EngineAToggleLayers(GX_PLANEMASK_BG2, toggle);
             break;
         case GF_BG_LYR_MAIN_3:
-            GX_EngineAToggleLayers(GF_BG_LYR_MAIN_3_F, toggle);
+            GX_EngineAToggleLayers(GX_PLANEMASK_BG3, toggle);
             break;
         case GF_BG_LYR_SUB_0:
-            GX_EngineBToggleLayers(GF_BG_LYR_SUB_0_F, toggle);
+            GX_EngineBToggleLayers(GX_PLANEMASK_BG0, toggle);
             break;
         case GF_BG_LYR_SUB_1:
-            GX_EngineBToggleLayers(GF_BG_LYR_SUB_1_F, toggle);
+            GX_EngineBToggleLayers(GX_PLANEMASK_BG1, toggle);
             break;
         case GF_BG_LYR_SUB_2:
-            GX_EngineBToggleLayers(GF_BG_LYR_SUB_2_F, toggle);
+            GX_EngineBToggleLayers(GX_PLANEMASK_BG2, toggle);
             break;
         case GF_BG_LYR_SUB_3:
-            GX_EngineBToggleLayers(GF_BG_LYR_SUB_3_F, toggle);
+            GX_EngineBToggleLayers(GX_PLANEMASK_BG3, toggle);
             break;
     }
 }

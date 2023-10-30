@@ -754,11 +754,11 @@ static void ov110_021E66F8(AlphPuzzleData *data) {
 static void ov110_021E6730(AlphPuzzleData *data) {
     ov110_021E6678(data);
     ov110_021E6764(data);
-    GX_EngineAToggleLayers(16, GX_LAYER_TOGGLE_ON);
+    GX_EngineAToggleLayers(GX_PLANEMASK_OBJ, GX_LAYER_TOGGLE_ON);
 }
 
 static void ov110_021E6748(AlphPuzzleData *data) {
-    GX_EngineAToggleLayers(16, GX_LAYER_TOGGLE_OFF);
+    GX_EngineAToggleLayers(GX_PLANEMASK_OBJ, GX_LAYER_TOGGLE_OFF);
     AlphPuzzle_DeleteSprites(data);
     ov110_021E66F8(data);
 }

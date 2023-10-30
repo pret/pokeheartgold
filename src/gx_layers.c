@@ -34,17 +34,17 @@ void GX_DisableEngineALayers(void) {
     sEngineALayers = 0;
 }
 
-void GX_EngineAToggleLayers(u32 layer_mask, GXLayerToggle enable) {
+void GX_EngineAToggleLayers(GXPlaneMask planeMask, GXLayerToggle enable) {
     if (enable == GX_LAYER_TOGGLE_ON) {
-        if (sEngineALayers & layer_mask) {
+        if (sEngineALayers & planeMask) {
             return;
         }
     } else {
-        if (!(sEngineALayers & layer_mask)) {
+        if (!(sEngineALayers & planeMask)) {
             return;
         }
     }
-    sEngineALayers ^= layer_mask;
+    sEngineALayers ^= planeMask;
     GX_SetVisiblePlane(sEngineALayers);
 }
 
@@ -57,17 +57,17 @@ void GX_DisableEngineBLayers(void) {
     sEngineBLayers = 0;
 }
 
-void GX_EngineBToggleLayers(u32 layer_mask, GXLayerToggle enable) {
+void GX_EngineBToggleLayers(GXPlaneMask planeMask, GXLayerToggle enable) {
     if (enable == GX_LAYER_TOGGLE_ON) {
-        if (sEngineBLayers & layer_mask) {
+        if (sEngineBLayers & planeMask) {
             return;
         }
     } else {
-        if (!(sEngineBLayers & layer_mask)) {
+        if (!(sEngineBLayers & planeMask)) {
             return;
         }
     }
-    sEngineBLayers ^= layer_mask;
+    sEngineBLayers ^= planeMask;
     GXS_SetVisiblePlane(sEngineBLayers);
 }
 

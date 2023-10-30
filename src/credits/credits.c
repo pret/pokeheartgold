@@ -339,11 +339,11 @@ BOOL CreditsApp_OvyExec(OVY_MANAGER *man, int *state) {
             GfGfxLoader_LoadCharData(NARC_a_2_6_3, 6, work->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, TRUE, HEAP_ID_CREDITS);
             GfGfxLoader_LoadScrnData(NARC_a_2_6_3, 19, work->bgConfig, GF_BG_LYR_MAIN_1, 0, 0x600, TRUE, HEAP_ID_CREDITS);
             BgCommitTilemapBufferToVram(work->bgConfig, 1);
-            GX_EngineAToggleLayers(GF_BG_LYR_MAIN_0_F, GX_LAYER_TOGGLE_OFF);
-            GX_EngineAToggleLayers(GF_BG_LYR_MAIN_2_F, GX_LAYER_TOGGLE_OFF);
-            GX_EngineAToggleLayers(GF_BG_LYR_MAIN_3_F, GX_LAYER_TOGGLE_OFF);
-            GX_EngineAToggleLayers(16, GX_LAYER_TOGGLE_OFF);
-            GX_EngineAToggleLayers(GF_BG_LYR_MAIN_1_F, GX_LAYER_TOGGLE_ON);
+            GX_EngineAToggleLayers(GX_PLANEMASK_BG0, GX_LAYER_TOGGLE_OFF);
+            GX_EngineAToggleLayers(GX_PLANEMASK_BG2, GX_LAYER_TOGGLE_OFF);
+            GX_EngineAToggleLayers(GX_PLANEMASK_BG3, GX_LAYER_TOGGLE_OFF);
+            GX_EngineAToggleLayers(GX_PLANEMASK_OBJ, GX_LAYER_TOGGLE_OFF);
+            GX_EngineAToggleLayers(GX_PLANEMASK_BG1, GX_LAYER_TOGGLE_ON);
             gSystem.screensFlipped = FALSE;
             GX_SwapDisplay();
 
@@ -458,7 +458,7 @@ static void LoadBgGraphics(CreditsAppWork *work) {
     ScheduleBgTilemapBufferTransfer(bgConfig, 3);
     ScheduleBgTilemapBufferTransfer(bgConfig, 6);
     ScheduleBgTilemapBufferTransfer(bgConfig, 7);
-    GX_EngineAToggleLayers(GF_BG_LYR_MAIN_2, GX_LAYER_TOGGLE_OFF);
+    GX_EngineAToggleLayers(GX_PLANEMASK_BG1, GX_LAYER_TOGGLE_OFF);
 }
 
 static void CreateOamAndObjResMgrs(CreditsAppWork *work) {
@@ -524,8 +524,8 @@ static void ov76_021E6170(CreditsAppWork *work) {
         sub_0200AF94(work->cutsceneRsrs[i].plttResObj);
     }
 
-    GX_EngineAToggleLayers(16, GX_LAYER_TOGGLE_ON);
-    GX_EngineBToggleLayers(16, GX_LAYER_TOGGLE_ON);
+    GX_EngineAToggleLayers(GX_PLANEMASK_OBJ, GX_LAYER_TOGGLE_ON);
+    GX_EngineBToggleLayers(GX_PLANEMASK_OBJ, GX_LAYER_TOGGLE_ON);
 }
 
 static void ov76_021E62B4(CreditsAppWork *work) {
@@ -598,8 +598,8 @@ static void InitSprites(CreditsAppWork *work) {
     }
 
     InitCutsceneSprites(work);
-    GX_EngineAToggleLayers(16, GX_LAYER_TOGGLE_ON);
-    GX_EngineBToggleLayers(16, GX_LAYER_TOGGLE_ON);
+    GX_EngineAToggleLayers(GX_PLANEMASK_OBJ, GX_LAYER_TOGGLE_ON);
+    GX_EngineBToggleLayers(GX_PLANEMASK_OBJ, GX_LAYER_TOGGLE_ON);
 }
 
 static void InitDancingSpriteResources(int idx, CreditsAppWork *work, int sprtResPriority, NNS_G2D_VRAM_TYPE whichScreen, SpriteTemplate *tmpl, SpriteResourcesHeader *header) {
@@ -841,7 +841,7 @@ static void DisplayWindow(CreditsAppWork *work) {
     AddWindow(work->bgConfig, &work->pageWork.window, &ov76_021E6E98);
     BG_FillCharDataRange(work->bgConfig, GF_BG_LYR_SUB_1, 0, 1, 0);
     LoadFontPal0(GF_BG_LYR_SUB_0, 0x1e0, HEAP_ID_CREDITS);
-    GX_EngineBToggleLayers(GF_BG_LYR_MAIN_2, GX_LAYER_TOGGLE_ON);
+    GX_EngineBToggleLayers(GX_PLANEMASK_BG1, GX_LAYER_TOGGLE_ON);
 }
 
 static void ov76_021E6944(PageDisplayWork *a0, BgConfig *bgConfig, BOOL hidden) {
@@ -860,7 +860,7 @@ static void ov76_021E6944(PageDisplayWork *a0, BgConfig *bgConfig, BOOL hidden) 
     a0->hidden = hidden;
     a0->bgConfig = bgConfig;
 
-    GX_EngineBToggleLayers(GF_BG_LYR_MAIN_2, GX_LAYER_TOGGLE_ON);
+    GX_EngineBToggleLayers(GX_PLANEMASK_BG1, GX_LAYER_TOGGLE_ON);
 }
 
 static BOOL PageWindowRendering(PageDisplayWork *a0) {
@@ -889,9 +889,9 @@ static void TogglePageDisplayCB(int a0, PageDisplayWork *a1, int a2) {
     if (a1->unk0 >= 1) {
         a1->rendering = FALSE;
         if (a1->hidden == FALSE) {
-            GX_EngineBToggleLayers(GF_BG_LYR_MAIN_2, GX_LAYER_TOGGLE_ON);
+            GX_EngineBToggleLayers(GX_PLANEMASK_BG1, GX_LAYER_TOGGLE_ON);
         } else {
-            GX_EngineBToggleLayers(GF_BG_LYR_MAIN_2, GX_LAYER_TOGGLE_OFF);
+            GX_EngineBToggleLayers(GX_PLANEMASK_BG1, GX_LAYER_TOGGLE_OFF);
         }
     }
     ov76_021E6A34(temp, 0, temp2, 0xc0);

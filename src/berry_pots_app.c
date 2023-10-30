@@ -1197,11 +1197,11 @@ static void BerryPotsApp_FreeSpriteRendererAndGfxHandler(BerryPotsAppData *data)
 static void BerryPotsApp_SetupSpriteSystem(BerryPotsAppData *data) {
     BerryPotsApp_SetupSpriteRendererAndGfxHandler(data);
     BerryPotsApp_SetupSprites(data);
-    GX_EngineAToggleLayers(16, GX_LAYER_TOGGLE_ON);
+    GX_EngineAToggleLayers(GX_PLANEMASK_OBJ, GX_LAYER_TOGGLE_ON);
 }
 
 static void BerryPotsApp_FreeSpriteSystem(BerryPotsAppData *data) {
-    GX_EngineAToggleLayers(16, GX_LAYER_TOGGLE_OFF);
+    GX_EngineAToggleLayers(GX_PLANEMASK_OBJ, GX_LAYER_TOGGLE_OFF);
     BerryPotsApp_FreeSprites(data);
     BerryPotsApp_FreeSpriteRendererAndGfxHandler(data);
 }

@@ -47,7 +47,7 @@ void GF_3DVramMan_Delete(struct GF3DVramMan *vramMan) {
 }
 
 void GF_3DVramMan_DefaultInitializer(void) {
-    GX_EngineAToggleLayers(GF_BG_LYR_MAIN_0_F, GX_LAYER_TOGGLE_ON);
+    GX_EngineAToggleLayers(GX_PLANEMASK_BG0, GX_LAYER_TOGGLE_ON);
     G2_SetBG0Priority(0);
     G3X_SetShading(GX_SHADING_TOON);
     G3X_AntiAlias(FALSE);

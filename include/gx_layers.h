@@ -48,10 +48,10 @@ typedef struct GraphicsBanks {
 
 void GX_SetBanks(const GraphicsBanks *banks);
 void GX_DisableEngineALayers(void);
-void GX_EngineAToggleLayers(u32 layer_mask, GXLayerToggle enable);
+void GX_EngineAToggleLayers(GXPlaneMask planeMask, GXLayerToggle enable);
 void GX_EngineASetLayers(u32 layers);
 void GX_DisableEngineBLayers(void);
-void GX_EngineBToggleLayers(u32 layer_mask, GXLayerToggle enable);
+void GX_EngineBToggleLayers(GXPlaneMask planeMask, GXLayerToggle enable);
 void GX_EngineBSetLayers(u32 layers);
 void GX_BothDispOn(void);
 void GX_SwapDisplay(void);

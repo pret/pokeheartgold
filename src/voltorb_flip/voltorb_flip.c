@@ -1979,8 +1979,8 @@ static void ov122_021E8094(OVY_MANAGER *man) {
     PrintBoardVoltorbsAndPoints(work);
 
     sub_02004EC4(0x46, 0, 0);
-    GX_EngineAToggleLayers(16, GX_LAYER_TOGGLE_ON);
-    GX_EngineBToggleLayers(16, GX_LAYER_TOGGLE_ON);
+    GX_EngineAToggleLayers(GX_PLANEMASK_OBJ, GX_LAYER_TOGGLE_ON);
+    GX_EngineBToggleLayers(GX_PLANEMASK_OBJ, GX_LAYER_TOGGLE_ON);
     sub_0200FBDC(0);
     sub_0200FBDC(1);
     TextFlags_SetCanABSpeedUpPrint(TRUE);
