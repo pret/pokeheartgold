@@ -437,10 +437,10 @@ BOOL ScrCmd_SetTrainerHouseSprite(ScriptContext *ctx) {
     u16 trainerNum = ScriptGetVar(ctx);
     u16 *hasTrainer = ScriptGetVarPointer(ctx);
     u16 *spriteId = GetVarPointer(ctx->fieldSystem, VAR_OBJ_1 + trainerNum);
-    TrainerHouseSave *trainerHouse = Save_TrainerHouse_Get(ctx->fieldSystem->saveData);
+    TrainerHouse *trainerHouse = Save_TrainerHouse_Get(ctx->fieldSystem->saveData);
     *hasTrainer = TrainerHouseSet_CheckHasData(&trainerHouse->sets[trainerNum]);
     if (*hasTrainer) {
-        *spriteId = trainerHouse->sets[trainerNum].trainer.unk_04;
+        *spriteId = trainerHouse->sets[trainerNum].trainer.sprite;
     } else {
         *spriteId = 0;
     }

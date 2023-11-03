@@ -194,7 +194,7 @@ ov01_021EFC94: ; 0x021EFC94
 	mov r1, #0x24
 	mov r2, #5
 	mov r3, #4
-	bl sub_02007200
+	bl CreateSysTaskAndEnvironment
 	bl sub_0201F988
 	add r4, r0, #0
 	str r5, [r4, #0x10]
@@ -228,7 +228,7 @@ ov01_021EFCDC: ; 0x021EFCDC
 	mov r0, #4
 	bl FreeToHeapExplicit
 	add r0, r4, #0
-	bl sub_02007234
+	bl DestroySysTaskAndEnvironment
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021EFCDC
 

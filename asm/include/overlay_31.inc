@@ -6,8 +6,8 @@
 .public LoadFontPal0
 .public LoadFontPal1
 .public PlaySE
-.public sub_02007200
-.public sub_02007234
+.public CreateSysTaskAndEnvironment
+.public DestroySysTaskAndEnvironment
 .public GfGfxLoader_LoadCharData
 .public GfGfxLoader_GXLoadPal
 .public GfGfxLoader_GetScrnData

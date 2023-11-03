@@ -18915,7 +18915,7 @@ ov70_02240EF4: ; 0x02240EF4
 	mov r1, #0x10
 	mov r2, #5
 	mov r3, #0x3d
-	bl sub_02007200
+	bl CreateSysTaskAndEnvironment
 	ldr r1, _02240F34 ; =0x000011D8
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
@@ -19034,7 +19034,7 @@ _02240FE2:
 	mov r2, #1
 	strh r2, [r1, r0]
 	add r0, r6, #0
-	bl sub_02007234
+	bl DestroySysTaskAndEnvironment
 _02240FF6:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -19052,7 +19052,7 @@ ov70_02241004: ; 0x02241004
 	mov r1, #0x10
 	mov r2, #5
 	mov r3, #0x3d
-	bl sub_02007200
+	bl CreateSysTaskAndEnvironment
 	ldr r1, _02241040 ; =0x000011D8
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
@@ -19150,7 +19150,7 @@ _022410D6:
 	ldr r1, _022410EC ; =0x000011DC
 	mov r2, #1
 	strh r2, [r5, r1]
-	bl sub_02007234
+	bl DestroySysTaskAndEnvironment
 _022410E0:
 	pop {r3, r4, r5, pc}
 	nop

@@ -4527,7 +4527,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_809 arg0
+	.macro show_trainer_house_intro_message arg0
 	.short 809
 	.short \arg0
 	.endm

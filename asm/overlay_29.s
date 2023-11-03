@@ -24,7 +24,7 @@ ov29_0225D520: ; 0x0225D520
 	lsl r1, r1, #2
 	mov r2, #0xa
 	mov r3, #8
-	bl sub_02007200
+	bl CreateSysTaskAndEnvironment
 	str r0, [sp, #4]
 	bl sub_0201F988
 	add r4, r0, #0
@@ -114,7 +114,7 @@ ov29_0225D5EC: ; 0x0225D5EC
 	ldr r0, [r4]
 	bl ov29_0225D6B4
 	add r0, r5, #0
-	bl sub_02007234
+	bl DestroySysTaskAndEnvironment
 	mov r0, #8
 	bl DestroyHeap
 	pop {r3, r4, r5, pc}

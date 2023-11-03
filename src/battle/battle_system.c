@@ -769,30 +769,30 @@ void BattleSystem_TryChangeForm(BattleSystem *bsys) {
             case TERRAIN_SNOW:
             case TERRAIN_WATER:
             case TERRAIN_ICE:
-            case TERRAIN_MARSH:
+            case TERRAIN_GREAT_MARSH:
             default:
                 form = BURMY_PLANT;
                 break;
             case TERRAIN_PLAIN:
             case TERRAIN_SAND:
             case TERRAIN_CAVE:
-            case TERRAIN_ROCKS:
-            case TERRAIN_ELITE_4_KAREN:
-            case TERRAIN_22:
+            case TERRAIN_MOUNTAIN:
+            case TERRAIN_DISTORTION_WORLD:
+            case TERRAIN_GIRATINA:
                 form = BURMY_SANDY;
                 break;
             case TERRAIN_BUILDING:
-            case TERRAIN_BRIDGE:
-            case TERRAIN_LINK:
-            case TERRAIN_END:
-            case TERRAIN_ELITE_4_WILL:
-            case TERRAIN_ELITE_4_KOGA:
-            case TERRAIN_ELITE_4_BRUNO:
-            case TERRAIN_CHAMPION_LANCE:
-            case TERRAIN_17:
-            case TERRAIN_TOWER:
-            case TERRAIN_ARCADE:
-            case TERRAIN_CASTLE:
+            case TERRAIN_UNKNOWN:
+            case TERRAIN_WILL:
+            case TERRAIN_KOGA:
+            case TERRAIN_BRUNO:
+            case TERRAIN_KAREN:
+            case TERRAIN_LANCE:
+            case TERRAIN_BATTLE_TOWER:
+            case TERRAIN_BATTLE_FACTORY:
+            case TERRAIN_BATTLE_ARCADE:
+            case TERRAIN_BATTLE_CASTLE:
+            case TERRAIN_BATTLE_HALL:
                 form = BURMY_TRASH;
                 break;
             }

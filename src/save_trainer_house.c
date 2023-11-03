@@ -4,18 +4,18 @@
 #include "constants/species.h"
 
 u32 Save_TrainerHouse_sizeof(void) {
-    return sizeof(TrainerHouseSave);
+    return sizeof(TrainerHouse);
 }
 
-TrainerHouseSave *Save_TrainerHouse_Get(SaveData *saveData) {
+TrainerHouse *Save_TrainerHouse_Get(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_TRAINER_HOUSE);
 }
 
-void Save_TrainerHouse_Init(TrainerHouseSave *th) {
+void Save_TrainerHouse_Init(TrainerHouse *th) {
     int i;
 
-    MI_CpuClear8(th, sizeof(TrainerHouseSave));
-    for (i = 0; i < TRAINER_HALL_SET_MAX; i++) {
+    MI_CpuClear8(th, sizeof(TrainerHouse));
+    for (i = 0; i < MAX_NUM_TRAINER_HOUSE_SETS; i++) {
         TrainerHouseSet_SetZero(&th->sets[i]);
     }
 }
@@ -44,7 +44,7 @@ BOOL TrainerHouseSet_CheckHasData(const TrainerHouseSet *set) {
 }
 
 BOOL TrainerHouseTrainer_Compare(const TrainerHouseTrainer *a, const TrainerHouseTrainer *b) {
-    if (a->id != b->id || a->version != b->version || a->language != b->language || a->unk7 != b->unk7) {
+    if (a->id != b->id || a->version != b->version || a->language != b->language || a->gender != b->gender) {
         return FALSE;
     }
     return !StringNotEqual(a->otName, b->otName);

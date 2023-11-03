@@ -75,7 +75,7 @@ ov30_0225D520: ; 0x0225D520
 	mov r1, #0x6c
 	mov r2, #0xa
 	mov r3, #8
-	bl sub_02007200
+	bl CreateSysTaskAndEnvironment
 	add r6, r0, #0
 	bl sub_0201F988
 	add r4, r0, #0
@@ -169,7 +169,7 @@ _0225D69E:
 	add r0, r4, #0
 	bl ov30_0225D86C
 	add r0, r6, #0
-	bl sub_02007234
+	bl DestroySysTaskAndEnvironment
 	add r0, r5, #0
 	mov r1, #6
 	bl FreeBgTilemapBuffer

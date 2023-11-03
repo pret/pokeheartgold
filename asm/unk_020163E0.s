@@ -14,7 +14,7 @@ sub_020163E0: ; 0x020163E0
 	ldr r0, _02016488 ; =sub_020164D0
 	mov r1, #0x50
 	mov r2, #0
-	bl sub_02007200
+	bl CreateSysTaskAndEnvironment
 	str r0, [sp, #4]
 	bl sub_0201F988
 	add r4, r0, #0
@@ -123,11 +123,11 @@ _020164BA:
 
 	thumb_func_start sub_020164C4
 sub_020164C4: ; 0x020164C4
-	ldr r3, _020164CC ; =sub_02007234
+	ldr r3, _020164CC ; =DestroySysTaskAndEnvironment
 	ldr r0, [r0]
 	bx r3
 	nop
-_020164CC: .word sub_02007234
+_020164CC: .word DestroySysTaskAndEnvironment
 	thumb_func_end sub_020164C4
 
 	thumb_func_start sub_020164D0
@@ -193,7 +193,7 @@ _02016538:
 	add r1, #0xc
 	blx r2
 	add r0, r5, #0
-	bl sub_02007234
+	bl DestroySysTaskAndEnvironment
 _02016546:
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_020164D0

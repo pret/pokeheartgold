@@ -11,8 +11,8 @@
 .public sub_02004EC4
 .public PlaySE
 .public StopSE
-.public sub_02007200
-.public sub_02007234
+.public CreateSysTaskAndEnvironment
+.public DestroySysTaskAndEnvironment
 .public OverlayManager_New
 .public OverlayManager_Delete
 .public OverlayManager_CreateAndGetData

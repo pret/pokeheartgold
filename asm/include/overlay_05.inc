@@ -13,8 +13,8 @@
 .public sub_0200398C
 .public sub_02003B74
 .public PlaySE
-.public sub_02007200
-.public sub_02007234
+.public CreateSysTaskAndEnvironment
+.public DestroySysTaskAndEnvironment
 .public NARC_New
 .public NARC_Delete
 .public NARC_AllocAndReadWholeMember

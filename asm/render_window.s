@@ -2264,7 +2264,7 @@ _0200F564:
 	add r0, r4, #0
 	bl ov01_021E86F4
 	add r0, r5, #0
-	bl sub_02007234
+	bl DestroySysTaskAndEnvironment
 	pop {r3, r4, r5, pc}
 _0200F582:
 	mov r1, #3
@@ -2312,7 +2312,7 @@ sub_0200F5C4: ; 0x0200F5C4
 	ldr r3, [sp, #0x18]
 	lsl r1, r1, #4
 	mov r2, #0
-	bl sub_02007200
+	bl CreateSysTaskAndEnvironment
 	bl sub_0201F988
 	ldr r1, _0200F5FC ; =0x0000016F
 	mov r2, #0

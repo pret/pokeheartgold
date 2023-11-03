@@ -12,7 +12,7 @@ ov05_0221BA00: ; 0x0221BA00
 	ldr r1, _0221BA60 ; =0x00000BD4
 	ldr r3, [r5, #0x24]
 	mov r2, #0x64
-	bl sub_02007200
+	bl CreateSysTaskAndEnvironment
 	bl sub_0201F988
 	ldr r2, _0221BA60 ; =0x00000BD4
 	mov r1, #0
@@ -2337,7 +2337,7 @@ _0221CCCA:
 	add r0, #0x2b
 	strb r1, [r0]
 	add r0, r5, #0
-	bl sub_02007234
+	bl DestroySysTaskAndEnvironment
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov05_0221CC74

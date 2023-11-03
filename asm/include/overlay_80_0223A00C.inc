@@ -5,8 +5,8 @@
 .public PaletteData_LoadNarc
 .public sub_02003E5C
 .public sub_02003EA4
-.public sub_02007200
-.public sub_02007234
+.public CreateSysTaskAndEnvironment
+.public DestroySysTaskAndEnvironment
 .public NARC_New
 .public NARC_Delete
 .public GfGfxLoader_GetPlttData

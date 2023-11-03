@@ -2,8 +2,8 @@
 #pragma once
 .public PaletteData_LoadPalette
 .public PaletteData_GetUnfadedBuf
-.public sub_02007200
-.public sub_02007234
+.public CreateSysTaskAndEnvironment
+.public DestroySysTaskAndEnvironment
 .public sub_020163E0
 .public sub_0201649C
 .public sub_020164C4
