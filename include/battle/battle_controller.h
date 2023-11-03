@@ -73,5 +73,10 @@ void ov12_02262FFC(BattleSystem *bsys, BattleContext *ctx, int a2, int battlerId
 void ov12_02263138(BattleSystem *bsys, BattleContext *ctx, int battlerId);
 void ov12_02263E18(BattleSystem *bsys, int battlerId);
 void ov12_0224E414(BattleSystem *bsys, BattleContext *ctx);
+void ov12_02263564(BattleSystem *bsys, BattleContext *ctx, int battlerId, u32 a3);
+void ov12_0226399C(BattleSystem *bsys, int battlerId);
+void ov12_02263A1C(BattleSystem *bsys, BattleContext *ctx, int battlerId);
+void ov12_0223C4E8(BattleSystem *bsys, Window *window, u32 *msgLoader, BattleMessage *msg, int a4, int a5, int a6, int a7, int a8);
+void ov12_02263D14(BattleSystem *bsys, int battlerId, u32 a2, int slot);
 
 #endif

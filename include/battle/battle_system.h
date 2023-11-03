@@ -149,5 +149,6 @@ void ov12_02263A1C(BattleSystem *bsys, BattleContext *ctx, int battlerId);
 void ov12_02266008(UnkBattleSystemSub17C *a0);
 BattleHpBar *OpponentData_GetHpBar(OpponentData *opponentData);
 void ov12_0226AA8C(u32 *a1, u32 flag);
+u32 ov12_0223C494(BattleSystem *bsys, void *msgLoader, BattleMessage *msg, u8 textFrameDelay);
 
 #endif

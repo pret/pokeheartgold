@@ -7,33 +7,6 @@
 
 	.text
 
-	thumb_func_start ov12_02237CC4
-ov12_02237CC4: ; 0x02237CC4
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, [r4, #8]
-	bl RemoveWindow
-	mov r0, #1
-	mov r1, #0
-	bl GX_EngineAToggleLayers
-	mov r0, #2
-	mov r1, #0
-	bl GX_EngineAToggleLayers
-	ldr r0, [r4, #4]
-	mov r1, #1
-	bl FreeBgTilemapBuffer
-	ldr r0, [r4, #4]
-	mov r1, #2
-	bl FreeBgTilemapBuffer
-	ldr r0, [r4, #4]
-	mov r1, #3
-	bl FreeBgTilemapBuffer
-	add r0, r4, #0
-	bl BattleSystem_SetHpBarDisabled
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end ov12_02237CC4
-
 	thumb_func_start ov12_02237D00
 ov12_02237D00: ; 0x02237D00
 	push {r4, r5, r6, lr}

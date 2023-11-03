@@ -260,6 +260,10 @@ typedef struct BattleMon {
     UnkBattlemonSub unk88;
 } BattleMon;
 
+typedef struct StatStruct {
+    u32 stats[6];
+} StatStruct;
+
 typedef struct BattleContext {
     u8 unk_0[4];
     u8 unk_4[4];
@@ -630,7 +634,7 @@ struct GetterWork {
     u32 unk14;
     u32 unk18[3];
     int unk24;
-    int unk28;
+    int state;
     int unk2C;
     int unk30[8];
     void *unk50[2];

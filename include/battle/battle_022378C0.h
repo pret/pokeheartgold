@@ -9,6 +9,7 @@ BOOL Battle_Main(OVY_MANAGER *man, int *state);
 void ov12_02237B0C(BattleSystem *bsys);
 void ov12_02237B6C(BattleSystem *bsys);
 void ov12_02237BB8(BattleSystem *bsys);
+void ov12_02237CC4(BattleSystem *bsys);
 
 //the following functions are static and have yet to be decompiled
 void ov12_022399D4(OVY_MANAGER *man, BattleSetup *setup);

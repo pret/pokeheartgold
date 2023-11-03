@@ -232,3 +232,16 @@ void ov12_02237BB8(BattleSystem *bsys) {
     
     G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(bsys->unk90), 0, 17 << 16);
 }
+
+void ov12_02237CC4(BattleSystem *bsys) {
+    RemoveWindow(bsys->window);
+    
+    GX_EngineAToggleLayers(GX_PLANEMASK_BG0, GX_LAYER_TOGGLE_OFF);
+    GX_EngineAToggleLayers(GX_PLANEMASK_BG1, GX_LAYER_TOGGLE_OFF);
+    FreeBgTilemapBuffer(bsys->bgConfig, 1);
+    FreeBgTilemapBuffer(bsys->bgConfig, 2);
+    FreeBgTilemapBuffer(bsys->bgConfig, 3);
+    BattleSystem_SetHpBarDisabled(bsys);
+}
+
+
