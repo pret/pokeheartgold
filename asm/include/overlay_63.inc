@@ -99,10 +99,10 @@
 .public SetLCRNGSeed
 .public LCRandom
 .public AddTextPrinterParameterized2
-.public GX_SetBanks
-.public GX_EngineAToggleLayers
-.public GX_EngineASetLayers
-.public GX_EngineBSetLayers
+.public GfGfx_SetBanks
+.public GfGfx_EngineATogglePlanes
+.public GfGfx_EngineASetPlanes
+.public GfGfx_EngineBSetPlanes
 .public Camera_New
 .public Camera_Delete
 .public Camera_SetStaticPtr

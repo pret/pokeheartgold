@@ -149,7 +149,7 @@ sub_0201F5B8: ; 0x0201F5B8
 	push {r3, lr}
 	mov r0, #1
 	add r1, r0, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r0, _0201F624 ; =0x04000008
 	mov r1, #3
 	ldrh r2, [r0]

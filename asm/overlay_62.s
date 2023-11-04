@@ -438,8 +438,8 @@ ov62_021E5C34: ; 0x021E5C34
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -471,8 +471,8 @@ ov62_021E5C80: ; 0x021E5C80
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -491,11 +491,11 @@ _021E5CB4: .word 0x04001000
 
 	thumb_func_start ov62_021E5CB8
 ov62_021E5CB8: ; 0x021E5CB8
-	ldr r3, _021E5CC0 ; =GX_SetBanks
+	ldr r3, _021E5CC0 ; =GfGfx_SetBanks
 	ldr r0, _021E5CC4 ; =ov62_021E66D0
 	bx r3
 	nop
-_021E5CC0: .word GX_SetBanks
+_021E5CC0: .word GfGfx_SetBanks
 _021E5CC4: .word ov62_021E66D0
 	thumb_func_end ov62_021E5CB8
 
@@ -550,10 +550,10 @@ ov62_021E5CF4: ; 0x021E5CF4
 	bl SpriteRenderer_Init2DGfxResManagersFromCountsArray
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	pop {r3, r4, r5, pc}
 	nop
 _021E5D48: .word ov62_021E66B0

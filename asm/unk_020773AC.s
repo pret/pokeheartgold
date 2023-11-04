@@ -9,8 +9,8 @@
 	thumb_func_start sub_020773AC
 sub_020773AC: ; 0x020773AC
 	push {r3, lr}
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -72,7 +72,7 @@ sub_0207741C: ; 0x0207741C
 	push {r3, lr}
 	mov r0, #1
 	add r1, r0, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r0, _02077488 ; =0x04000008
 	mov r1, #3
 	ldrh r2, [r0]

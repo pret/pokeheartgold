@@ -20,10 +20,10 @@ sub_0207EB24: ; 0x0207EB24
 	add r4, r0, #0
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #0x20
 	mov r1, #0xc
 	bl GF_CreateVramTransferManager

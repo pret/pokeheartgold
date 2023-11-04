@@ -94,11 +94,11 @@
 .public SetMTRNGSeed
 .public MTRandom
 .public AddTextPrinterParameterized
-.public GX_SetBanks
-.public GX_DisableEngineALayers
-.public GX_EngineAToggleLayers
-.public GX_DisableEngineBLayers
-.public GX_EngineBToggleLayers
+.public GfGfx_SetBanks
+.public GfGfx_DisableEngineAPlanes
+.public GfGfx_EngineATogglePlanes
+.public GfGfx_DisableEngineBPlanes
+.public GfGfx_EngineBTogglePlanes
 .public Camera_New
 .public Camera_Delete
 .public Camera_SetStaticPtr

@@ -179,7 +179,7 @@ _02087F9E:
 	ldr r0, _02087FD0 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl GX_SwapDisplay
+	bl GfGfx_SwapDisplay
 	bl sub_0203E354
 	mov r0, #1
 	pop {r3, r4, r5, pc}

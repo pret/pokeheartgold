@@ -196,11 +196,11 @@
 .public sub_02021238
 .public sub_020215C0
 .public sub_0202168C
-.public GX_SetBanks
-.public GX_EngineAToggleLayers
-.public GX_EngineASetLayers
-.public GX_EngineBToggleLayers
-.public GX_EngineBSetLayers
+.public GfGfx_SetBanks
+.public GfGfx_EngineATogglePlanes
+.public GfGfx_EngineASetPlanes
+.public GfGfx_EngineBTogglePlanes
+.public GfGfx_EngineBSetPlanes
 .public SpriteList_Delete
 .public sub_0202457C
 .public sub_02024714

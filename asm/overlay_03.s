@@ -6538,7 +6538,7 @@ _02257258: .word 0x00000283
 ov03_0225725C: ; 0x0225725C
 	push {r4, lr}
 	add r4, r0, #0
-	bl GX_EngineAGetLayers
+	bl GfGfx_EngineBGetPlanes
 	mov r1, #0x9f
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -6577,16 +6577,16 @@ ov03_0225725C: ; 0x0225725C
 	bl SetBgPriority
 	mov r0, #1
 	add r1, r0, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #2
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #4
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #8
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	pop {r4, pc}
 	nop
 _022572E0: .word 0x00000279
@@ -6618,7 +6618,7 @@ ov03_022572EC: ; 0x022572EC
 	mov r0, #0x9f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl GX_EngineASetLayers
+	bl GfGfx_EngineASetPlanes
 	pop {r4, pc}
 	nop
 _02257328: .word 0x00000279
@@ -8557,10 +8557,10 @@ _022581DA:
 	bl Set2dSpriteVisibleFlag
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	add r0, r7, #0
 	mov r1, #0
 	bl ov03_022582C0

@@ -60,8 +60,8 @@
 .public FillWindowPixelRect
 .public ScheduleBgTilemapBufferTransfer
 .public sub_0201F988
-.public GX_SetBanks
-.public GX_EngineAToggleLayers
+.public GfGfx_SetBanks
+.public GfGfx_EngineATogglePlanes
 .public Camera_SetPerspectiveClippingPlane
 .public SpriteList_Delete
 .public sub_02024714

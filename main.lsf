@@ -76,7 +76,7 @@ Static main
 	Object asm/unk_020210A0.o
 	Object asm/unk_020215A0.o
 	Object asm/unk_02022588.o
-	Object src/gx_layers.o
+	Object src/gf_gfx_planes.o
 	Object src/camera.o
 	Object asm/unk_02023694.o
 	Object asm/unk_02025154.o

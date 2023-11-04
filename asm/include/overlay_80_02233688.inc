@@ -8,7 +8,7 @@
 .public sub_02015538
 .public AllocFromHeap
 .public FreeToHeap
-.public GX_EngineAToggleLayers
+.public GfGfx_EngineATogglePlanes
 .public Sprite_SetMatrix
 .public Sprite_GetMatrixPtr
 .public Sprite_SetPriority

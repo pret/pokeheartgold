@@ -14,8 +14,8 @@ ov65_0221BE20: ; 0x0221BE20
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -142,7 +142,7 @@ ov65_0221BE20: ; 0x0221BE20
 	bl ToggleBgLayer
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r1, #6
 	lsl r1, r1, #6
 	ldr r1, [r4, r1]
@@ -332,7 +332,7 @@ ov65_0221C08C: ; 0x0221C08C
 	bl ToggleBgLayer
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #0
 	mov r1, #1
 	bl ToggleBgLayer
@@ -347,7 +347,7 @@ ov65_0221C08C: ; 0x0221C08C
 	bl ToggleBgLayer
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	bl ov65_0221D3B8
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1209,7 +1209,7 @@ _0221C84C:
 	str r0, [r4, #0x58]
 	mov r0, #0x10
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r0, _0221C9AC ; =0x00002224
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -1254,7 +1254,7 @@ _0221C890:
 	bl ToggleBgLayer
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r0, [r4, #0x58]
 	add r0, r0, #1
 	str r0, [r4, #0x58]
@@ -1309,7 +1309,7 @@ _0221C90C:
 	bl ToggleBgLayer
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	ldr r0, [r4, #0x58]
 	add r0, r0, #1
 	str r0, [r4, #0x58]
@@ -1951,7 +1951,7 @@ _0221CEA2:
 	sub r2, r2, #1
 	bne _0221CEA2
 	add r0, sp, #0
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0

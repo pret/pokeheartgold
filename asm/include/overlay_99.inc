@@ -64,10 +64,10 @@
 .public DoScheduledBgGpuUpdates
 .public ScheduleSetBgPosText
 .public sub_02020A0C
-.public GX_DisableEngineALayers
-.public GX_EngineAToggleLayers
-.public GX_DisableEngineBLayers
-.public GX_EngineBToggleLayers
+.public GfGfx_DisableEngineAPlanes
+.public GfGfx_EngineATogglePlanes
+.public GfGfx_DisableEngineBPlanes
+.public GfGfx_EngineBTogglePlanes
 .public sub_0202529C
 .public GF_AssertFail
 .public String_New

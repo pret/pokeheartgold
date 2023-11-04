@@ -3,7 +3,7 @@
 
 #include "global.h"
 #include "heap.h"
-#include "gx_layers.h"
+#include "gf_gfx_planes.h"
 
 typedef struct BgTemplate {
     u32 x;
@@ -190,12 +190,12 @@ BgConfig *BgConfig_Alloc(HeapID heapId);
 HeapID BgConfig_GetHeapId(BgConfig *bgConfig);
 void SetBothScreensModesAndDisable(const GraphicsModes *modes);
 void SetScreenModeAndDisable(const struct GraphicsModes *gfxModes, enum GFScreen screen);
-void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *template, u8 bgMode, GXLayerToggle enable);
+void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *template, u8 bgMode, GFPlaneToggle enable);
 void InitBgFromTemplate(BgConfig *bgConfig, u8 bgId, const BgTemplate *template, u8 bgMode);
 void SetBgControlParam(BgConfig *config, u8 bgId, enum GFBgCntSet attr, u8 value);
 void FreeBgTilemapBuffer(BgConfig *bgConfig, u8 bgId);
 void SetBgPriority(u8 bgId, u16 priority);
-void ToggleBgLayer(u8 bgId, GXLayerToggle toggle);
+void ToggleBgLayer(u8 bgId, GFPlaneToggle toggle);
 void BgSetPosTextAndCommit(BgConfig *bgConfig, u8 bgId, enum BgPosAdjustOp op, fx32 val);
 fx32 Bg_GetXpos(const BgConfig *bgConfig, enum GFBgLayer bgId);
 fx32 Bg_GetYpos(const BgConfig *bgConfig, enum GFBgLayer bgId);

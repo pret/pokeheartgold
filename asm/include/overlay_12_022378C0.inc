@@ -103,11 +103,11 @@
 .public sub_020210BC
 .public sub_02021148
 .public sub_02021238
-.public GX_SetBanks
-.public GX_DisableEngineALayers
-.public GX_EngineAToggleLayers
-.public GX_EngineBToggleLayers
-.public GX_BothDispOn
+.public GfGfx_SetBanks
+.public GfGfx_DisableEngineAPlanes
+.public GfGfx_EngineATogglePlanes
+.public GfGfx_EngineBTogglePlanes
+.public GfGfx_BothDispOn
 .public GF_AssertFail
 .public String_New
 .public String_Delete

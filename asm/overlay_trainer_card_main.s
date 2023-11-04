@@ -16,8 +16,8 @@ TrainerCardMainApp_OvyInit: ; 0x021E5AC0
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetHBlankIntrCB
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -293,7 +293,7 @@ _021E5CC4:
 	beq _021E5D3C
 	mov r0, #4
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 _021E5D3C:
 	mov r0, #1
 	add sp, #0xc
@@ -705,7 +705,7 @@ _021E60DE:
 	sub r2, r2, #1
 	bne _021E60DE
 	add r0, sp, #0
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -1357,10 +1357,10 @@ ov51_021E6644: ; 0x021E6644
 	add r4, r0, #0
 	mov r0, #0x1f
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x1f
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r2, #0
 	add r0, r4, #0
 	mov r1, #5
@@ -3881,10 +3881,10 @@ _021E7AB2:
 	bl NARC_Delete
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	add sp, #0x6c
 	pop {r4, r5, r6, r7, pc}
 	nop

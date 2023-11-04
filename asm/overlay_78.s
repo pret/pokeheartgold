@@ -64,8 +64,8 @@ _021E5946:
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetHBlankIntrCB
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -94,7 +94,7 @@ _021E5946:
 	add r0, r4, #0
 	bl ov78_021E636C
 _021E59D6:
-	bl GX_BothDispOn
+	bl GfGfx_BothDispOn
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -337,7 +337,7 @@ _021E5BB8:
 	sub r2, r2, #1
 	bne _021E5BB8
 	add r0, sp, #0x2c
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	ldr r0, [r4]
 	bl BgConfig_Alloc
 	add r3, sp, #0x1c
@@ -1459,10 +1459,10 @@ ov78_021E636C: ; 0x021E636C
 	bl ov78_021E66D4
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop

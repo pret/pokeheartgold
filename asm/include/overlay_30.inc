@@ -38,7 +38,7 @@
 .public sub_0201F988
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized
-.public GX_EngineBToggleLayers
+.public GfGfx_EngineBTogglePlanes
 .public String_Delete
 .public Save_FileExists
 .public Save_FileDoesNotBelongToPlayer

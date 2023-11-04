@@ -29,7 +29,7 @@
 .public FillWindowPixelBuffer
 .public ScheduleSetBgPosText
 .public AddTextPrinterParameterized2
-.public GX_EngineAToggleLayers
+.public GfGfx_EngineATogglePlanes
 .public sub_0202457C
 .public Sprite_Delete
 .public Sprite_SetMatrix

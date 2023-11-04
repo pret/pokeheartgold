@@ -4219,11 +4219,11 @@ ov49_0225A5EC: ; 0x0225A5EC
 	add r1, r6, #0
 	bl GF_CreateVramTransferManager
 	ldr r0, _0225A7A0 ; =ov49_022697CC
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	ldr r0, _0225A7A4 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl GX_SwapDisplay
+	bl GfGfx_SwapDisplay
 	mov r0, #0
 	add r1, r0, #0
 	bl BG_SetMaskColor
@@ -4369,10 +4369,10 @@ _0225A742:
 	str r0, [r5, r1]
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #4
 	str r0, [sp]
 	ldr r0, _0225A7BC ; =ov49_0225A854
@@ -4478,7 +4478,7 @@ ov49_0225A854: ; 0x0225A854
 	sub sp, #0xc
 	mov r0, #1
 	add r1, r0, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r0, _0225A964 ; =0x04000008
 	mov r1, #3
 	ldrh r2, [r0]
@@ -6146,16 +6146,16 @@ ov49_0225B450: ; 0x0225B450
 	bl BG_SetMaskColor
 	mov r0, #1
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #2
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #4
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #8
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 _0225B4DC:
@@ -6268,16 +6268,16 @@ _0225B586:
 	strb r0, [r4, #1]
 	mov r0, #1
 	add r1, r0, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #2
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #4
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	ldrb r0, [r4]
 	add sp, #0x50
 	add r0, r0, #1

@@ -8,7 +8,7 @@
 .public sub_020087A4
 .public sub_02016F2C
 .public sub_02017088
-.public GX_EngineAToggleLayers
+.public GfGfx_EngineATogglePlanes
 .public Camera_New
 .public Camera_Delete
 .public Camera_SetStaticPtr
