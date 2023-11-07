@@ -17,7 +17,7 @@ static const u16 _020FE4A8[] = {
 };
 
 BOOL SetScriptVar(SaveVarsFlags* state, u16 var_id, u16 value) {
-    u16* var_ptr = GetVarAddr(state, var_id);
+    u16* var_ptr = Save_VarsFlags_GetVarAddr(state, var_id);
     if (var_id < VAR_BASE || var_id > SPECIAL_VAR_BASE) {
         GF_ASSERT(FALSE);
         return FALSE;
@@ -32,7 +32,7 @@ BOOL SetScriptVar(SaveVarsFlags* state, u16 var_id, u16 value) {
 }
 
 u16 GetScriptVar(SaveVarsFlags* state, u16 var_id) {
-    u16* var_ptr = GetVarAddr(state, var_id);
+    u16* var_ptr = Save_VarsFlags_GetVarAddr(state, var_id);
     if (var_ptr == NULL) {
         return 0;
     }

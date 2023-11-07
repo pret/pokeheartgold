@@ -145,7 +145,7 @@
 .public sub_02037BEC
 .public sub_02037D78
 .public Save_VarsFlags_Get
-.public GetVarAddr
+.public Save_VarsFlags_GetVarAddr
 .public sub_02058284
 .public sub_0205C298
 .public GetMonData

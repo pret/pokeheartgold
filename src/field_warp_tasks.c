@@ -2,7 +2,7 @@
 #include "save_local_field_data.h"
 #include "map_events.h"
 #include "system.h"
-#include "event_data.h"
+#include "save_vars_flags.h"
 #include "sys_vars.h"
 #include "sys_flags.h"
 #include "save_follow_poke.h"

@@ -27718,7 +27718,7 @@ ov112_021F3608: ; 0x021F3608
 _021F3616:
 	ldrh r1, [r5]
 	add r0, r7, #0
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	strb r0, [r6, r4]
 	add r4, r4, #1
 	add r5, r5, #2
@@ -27743,12 +27743,12 @@ _021F363E:
 	beq _021F364E
 	ldrh r1, [r5]
 	add r0, r6, #0
-	bl SetFlagInArray
+	bl Save_VarsFlags_SetFlagInArray
 	b _021F3656
 _021F364E:
 	ldrh r1, [r5]
 	add r0, r6, #0
-	bl ClearFlagInArray
+	bl Save_VarsFlags_ClearFlagInArray
 _021F3656:
 	add r4, r4, #1
 	add r5, r5, #2

@@ -275,7 +275,7 @@ BOOL sub_02093070(FieldSystem* sys) {
     if (GSPlayerMisc_IsGearNumberRegistered(SaveData_GSPlayerMisc_Get(sys->saveData), PHONE_CONTACT_BILL) == 0xff) {
         return FALSE;
     }
-    if (CheckFlagInArray(Save_VarsFlags_Get(sys->saveData), FLAG_UNK_985)) {
+    if (Save_VarsFlags_CheckFlagInArray(Save_VarsFlags_Get(sys->saveData), FLAG_UNK_985)) {
         return FALSE;
     }
     if (PCStorage_CountEmptySpotsInAllBoxes(SaveArray_PCStorage_Get(sys->saveData)) != 0) {
@@ -298,7 +298,7 @@ BOOL sub_020930C4(FieldSystem* sys) {
     if (var > 9) {
         var = 9; // unreachable
     }
-    if (!CheckFlagInArray(state, var + FLAG_UNK_988)) {
+    if (!Save_VarsFlags_CheckFlagInArray(state, var + FLAG_UNK_988)) {
         sub_02092E14(FieldSystem_GetGearPhoneRingManager(sys), 4, FALSE);
         return TRUE;
     }
@@ -310,7 +310,7 @@ BOOL sub_02093134(FieldSystem* sys, Pokemon *mon) {
         return FALSE;
     }
     sub_02092E14(FieldSystem_GetGearPhoneRingManager(sys), 0, 1);
-    SetFlagInArray(Save_VarsFlags_Get(sys->saveData), FLAG_UNK_983);
+    Save_VarsFlags_SetFlagInArray(Save_VarsFlags_Get(sys->saveData), FLAG_UNK_983);
     return TRUE;
 }
 
@@ -319,7 +319,7 @@ BOOL sub_0209316C(FieldSystem* sys) {
     if (GSPlayerMisc_IsGearNumberRegistered(SaveData_GSPlayerMisc_Get(sys->saveData), PHONE_CONTACT_DAY_C_MAN) == 0xff) {
         return FALSE;
     }
-    if (CheckFlagInArray(state, FLAG_UNK_992) && !CheckFlagInArray(state, FLAG_UNK_99E)) {
+    if (Save_VarsFlags_CheckFlagInArray(state, FLAG_UNK_992) && !Save_VarsFlags_CheckFlagInArray(state, FLAG_UNK_99E)) {
         return FALSE;
     }
     sub_02092E14(FieldSystem_GetGearPhoneRingManager(sys), 5, 1);

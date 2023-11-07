@@ -1,5 +1,5 @@
 #include "global.h"
-#include "event_data.h"
+#include "save_vars_flags.h"
 #include "item.h"
 #include "mail.h"
 #include "mail_misc.h"

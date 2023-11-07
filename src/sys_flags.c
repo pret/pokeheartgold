@@ -27,15 +27,15 @@ static const struct MusicOverride sMusicOverrideMap[] = {
 };
 
 void SetScriptFlag(SaveVarsFlags* state, u16 flag_id) {
-    SetFlagInArray(state, flag_id);
+    Save_VarsFlags_SetFlagInArray(state, flag_id);
 }
 
 void ClearScriptFlag(SaveVarsFlags* state, u16 flag_id) {
-    ClearFlagInArray(state, flag_id);
+    Save_VarsFlags_ClearFlagInArray(state, flag_id);
 }
 
 BOOL CheckScriptFlag(SaveVarsFlags* state, u16 flag_id) {
-    return CheckFlagInArray(state, flag_id);
+    return Save_VarsFlags_CheckFlagInArray(state, flag_id);
 }
 
 BOOL FlagAction(SaveVarsFlags* state, u32 action, u32 flag_id) {

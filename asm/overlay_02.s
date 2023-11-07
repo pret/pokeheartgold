@@ -19826,7 +19826,7 @@ _0224F124:
 	ldr r0, [r6, #0xc]
 	bl Save_VarsFlags_Get
 	add r1, r7, #0
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _0224F13E
 	mov r0, #0

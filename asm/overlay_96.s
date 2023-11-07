@@ -4093,7 +4093,7 @@ ov96_021E7718: ; 0x021E7718
 	bl ov96_021E7FA8
 	ldr r0, [sp]
 	mov r1, #0xf0
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021E7772
 	add r0, r5, #0
@@ -4102,7 +4102,7 @@ ov96_021E7718: ; 0x021E7718
 	beq _021E7772
 	ldr r0, [sp]
 	mov r1, #0xf0
-	bl SetFlagInArray
+	bl Save_VarsFlags_SetFlagInArray
 _021E7772:
 	ldr r0, _021E7868 ; =0x000001D2
 	ldrh r7, [r4, r0]
@@ -4152,7 +4152,7 @@ _021E77A8:
 	bl ov96_021E786C
 	ldr r0, [sp]
 	mov r1, #0xef
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021E77FC
 	add r0, r6, #0
@@ -4162,7 +4162,7 @@ _021E77A8:
 	beq _021E77FC
 	ldr r0, [sp]
 	mov r1, #0xef
-	bl SetFlagInArray
+	bl Save_VarsFlags_SetFlagInArray
 _021E77FC:
 	add r0, r6, #0
 	bl sub_020319DC
@@ -4183,7 +4183,7 @@ _021E780A:
 	bne _021E7842
 	ldr r0, [sp]
 	mov r1, #0xf1
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021E7842
 	add r0, r5, #0
@@ -4192,7 +4192,7 @@ _021E780A:
 	beq _021E7842
 	ldr r0, [sp]
 	mov r1, #0xf1
-	bl SetFlagInArray
+	bl Save_VarsFlags_SetFlagInArray
 _021E7842:
 	ldr r1, _021E7868 ; =0x000001D2
 	add r0, r1, #0
@@ -20438,7 +20438,7 @@ ov96_021EF2AC: ; 0x021EF2AC
 	bl ov96_021E5D60
 	bl Save_VarsFlags_Get
 	mov r1, #0xef
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov96_021EF2AC

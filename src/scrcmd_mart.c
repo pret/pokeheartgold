@@ -1,6 +1,6 @@
 #include "scrcmd.h"
 #include "mart.h"
-#include "event_data.h"
+#include "save_vars_flags.h"
 #include "pokedex.h"
 #include "unk_02031904.h"
 #include "constants/items.h"

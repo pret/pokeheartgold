@@ -313,7 +313,7 @@ _02069270:
 _02069276:
 	add r0, r6, #0
 	mov r1, #0xf1
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	beq _02069288
 	add r0, r4, #1
@@ -323,7 +323,7 @@ _02069288:
 	mov r1, #0x61
 	add r0, r6, #0
 	lsl r1, r1, #2
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	beq _0206929C
 	add r0, r4, #1

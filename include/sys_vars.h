@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_SYS_VARS_H
 #define POKEHEARTGOLD_SYS_VARS_H
 
-#include "event_data.h"
+#include "save_vars_flags.h"
 #include "save.h"
 
 BOOL SetScriptVar(SaveVarsFlags* state, u16 var_id, u16 value);

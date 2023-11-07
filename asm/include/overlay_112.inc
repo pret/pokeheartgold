@@ -244,9 +244,9 @@
 .public LocalFieldData_GetCurrentPosition
 .public Save_LocalFieldData_Get
 .public Save_VarsFlags_Get
-.public CheckFlagInArray
-.public SetFlagInArray
-.public ClearFlagInArray
+.public Save_VarsFlags_CheckFlagInArray
+.public Save_VarsFlags_SetFlagInArray
+.public Save_VarsFlags_ClearFlagInArray
 .public SpeciesToOverworldModelIndexOffset
 .public OverworldModelLookupFormCount
 .public OverworldModelLookupHasFemaleForm

@@ -1,5 +1,5 @@
 #include "global.h"
-#include "event_data.h"
+#include "save_vars_flags.h"
 #include "game_stats.h"
 #include "party.h"
 #include "game_clear.h"

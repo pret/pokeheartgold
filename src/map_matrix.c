@@ -6,7 +6,7 @@
 #include "map_header.h"
 #include "map_matrix.h"
 #include "safari_zone.h"
-#include "event_data.h"
+#include "save_vars_flags.h"
 #include "sys_vars.h"
 
 static void MapMatrix_MapMatrixData_Load(MAPMATRIXDATA* map_matrix_data, u16 matrix_id, u32 map_no) {
@@ -163,7 +163,7 @@ BOOL ShouldUseAlternateLakeOfRage(SaveData* saveData, u32 map_no) {
 
     GF_RTC_CopyDate(&date);
 
-    if (CheckFlagInArray(state, FLAG_RED_GYARADOS_MEET) == FALSE) {
+    if (Save_VarsFlags_CheckFlagInArray(state, FLAG_RED_GYARADOS_MEET) == FALSE) {
         // The player hasn't battled the Red Gyarados yet.
         sub_02066C4C(state, 1);
         return FALSE;

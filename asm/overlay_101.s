@@ -22110,12 +22110,12 @@ _021F22BC:
 	ldr r0, [r4, #0x28]
 	beq _021F22CE
 	ldrh r1, [r5, #4]
-	bl SetFlagInArray
+	bl Save_VarsFlags_SetFlagInArray
 	add sp, #8
 	pop {r4, r5, r6, pc}
 _021F22CE:
 	ldrh r1, [r5, #4]
-	bl ClearFlagInArray
+	bl Save_VarsFlags_ClearFlagInArray
 	add sp, #8
 	pop {r4, r5, r6, pc}
 _021F22D8:
@@ -22820,7 +22820,7 @@ ov101_021F27E4: ; 0x021F27E4
 	bne _021F2804
 	ldr r0, [r5, #0x28]
 	mov r1, #0xa7
-	bl SetFlagInArray
+	bl Save_VarsFlags_SetFlagInArray
 	mov r0, #4
 	strh r0, [r4, #0x20]
 	mov r0, #0
@@ -22843,7 +22843,7 @@ _021F2812:
 _021F281E:
 	ldr r0, [r5, #0x28]
 	mov r1, #0x79
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021F282E
 	mov r0, #0x19
@@ -22851,7 +22851,7 @@ _021F281E:
 _021F282E:
 	ldr r0, [r5, #0x28]
 	mov r1, #0xa7
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021F283E
 	mov r0, #0x1a
@@ -23158,7 +23158,7 @@ _021F2A56:
 _021F2A72:
 	ldr r0, [r5, #0x28]
 	mov r1, #0xee
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021F2A82
 	mov r0, #8
@@ -23166,7 +23166,7 @@ _021F2A72:
 _021F2A82:
 	ldr r0, [r5, #0x28]
 	mov r1, #0x79
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021F2A92
 	mov r0, #9
@@ -23174,7 +23174,7 @@ _021F2A82:
 _021F2A92:
 	ldr r0, [r5, #0x28]
 	mov r1, #0x9f
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021F2AA2
 	mov r0, #0xa
@@ -23182,7 +23182,7 @@ _021F2A92:
 _021F2AA2:
 	ldr r0, [r5, #0x28]
 	mov r1, #0x70
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021F2AB2
 	mov r0, #0xb
@@ -23190,12 +23190,12 @@ _021F2AA2:
 _021F2AB2:
 	ldr r0, [r5, #0x28]
 	ldr r1, _021F2B78 ; =0x00000983
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	ldr r0, [r5, #0x28]
 	ldr r1, _021F2B7C ; =0x0000011A
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	cmp r7, #7
@@ -23243,7 +23243,7 @@ _021F2B0C:
 _021F2B1A:
 	ldr r0, [r5, #0x28]
 	mov r1, #0xf2
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021F2B2A
 	mov r0, #0x13
@@ -23261,7 +23261,7 @@ _021F2B36:
 _021F2B3A:
 	ldr r0, [r5, #0x28]
 	mov r1, #0x65
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	beq _021F2B58
 	bl LCRandom
@@ -23490,7 +23490,7 @@ _021F2CD2:
 _021F2CE2:
 	ldr r0, [r5, #0x28]
 	mov r1, #0xc6
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021F2D08
 	ldrh r0, [r4, #2]
@@ -23519,7 +23519,7 @@ ov101_021F2D10: ; 0x021F2D10
 	ldr r0, [r0, #0x28]
 	mov r1, #0xc6
 	add r4, #0x88
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021F2D28
 	mov r0, #0
@@ -23553,7 +23553,7 @@ ov101_021F2D48: ; 0x021F2D48
 	add r4, r5, #0
 	mov r1, #0xc6
 	add r4, #0x88
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021F2D62
 	mov r0, #0
@@ -24051,7 +24051,7 @@ _021F30F4:
 _021F3102:
 	ldr r0, [r5, #0x28]
 	ldr r1, _021F3134 ; =FLAG_UNK_988
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	beq _021F3112
 	mov r0, #0x51
@@ -24063,7 +24063,7 @@ _021F3112:
 	bne _021F312C
 	ldr r0, [r5, #0x28]
 	ldr r1, _021F3138 ; =FLAG_OAK_ACKNOWLEDGED_JOHTO_DEX_COMPLETION
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	beq _021F312C
 	mov r0, #0x50
@@ -24188,7 +24188,7 @@ _021F3208:
 	beq _021F3234
 	ldr r0, [r5, #0x28]
 	ldr r1, _021F3424 ; =FLAG_OAK_ACKNOWLEDGED_JOHTO_DEX_COMPLETION
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	beq _021F322A
 	add r0, r4, #0
@@ -24357,7 +24357,7 @@ _021F333C:
 	beq _021F339E
 	ldr r0, [r5, #0x28]
 	ldr r1, _021F3424 ; =FLAG_OAK_ACKNOWLEDGED_JOHTO_DEX_COMPLETION
-	bl SetFlagInArray
+	bl Save_VarsFlags_SetFlagInArray
 	mov r6, #1
 	b _021F339E
 _021F3376:
@@ -24376,7 +24376,7 @@ _021F3376:
 	beq _021F339E
 	ldr r0, [r5, #0x28]
 	ldr r1, _021F3428 ; =FLAG_UNK_988
-	bl SetFlagInArray
+	bl Save_VarsFlags_SetFlagInArray
 	mov r6, #1
 _021F339E:
 	add r0, sp, #8
@@ -24486,7 +24486,7 @@ _021F345E:
 	bl ov101_021F2110
 	ldr r0, [r5, #0x28]
 	ldr r1, _021F3510 ; =0x00000127
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	beq _021F347A
 	ldr r1, [r5, #0x4c]
@@ -24519,7 +24519,7 @@ _021F3494:
 _021F34A8:
 	ldr r0, [r5, #0x28]
 	ldr r1, _021F3514 ; =0x00000AA2
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	beq _021F34B8
 	mov r2, #4
@@ -24837,7 +24837,7 @@ ov101_021F36F4: ; 0x021F36F4
 	beq _021F3720
 	ldr r0, [r7, #0x28]
 	ldr r1, _021F3794 ; =0x00000992
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	beq _021F371A
 	add sp, #8
@@ -26426,7 +26426,7 @@ ov101_021F42E4: ; 0x021F42E4
 	ldr r1, _021F445C ; =0x00000998
 	add r4, r2, #0
 	add r6, r3, #0
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021F42FC
 	ldr r0, _021F4460 ; =0x0000FFFF
@@ -26434,17 +26434,17 @@ ov101_021F42E4: ; 0x021F42E4
 _021F42FC:
 	ldr r0, [r5, #0x28]
 	ldr r1, _021F445C ; =0x00000998
-	bl ClearFlagInArray
+	bl Save_VarsFlags_ClearFlagInArray
 	cmp r4, #0x10
 	blo _021F4324
 	ldr r0, [r5, #0x28]
 	ldr r1, _021F4464 ; =0x000009A4
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021F4320
 	ldr r0, [r5, #0x28]
 	ldr r1, _021F4464 ; =0x000009A4
-	bl SetFlagInArray
+	bl Save_VarsFlags_SetFlagInArray
 	mov r0, #0xa8
 	pop {r4, r5, r6, pc}
 _021F4320:
@@ -26458,12 +26458,12 @@ _021F4324:
 	ldr r0, [r5, #0x28]
 	beq _021F434C
 	ldr r1, _021F4468 ; =0x000009A3
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021F4348
 	ldr r0, [r5, #0x28]
 	ldr r1, _021F4468 ; =0x000009A3
-	bl SetFlagInArray
+	bl Save_VarsFlags_SetFlagInArray
 	mov r0, #0xa7
 	pop {r4, r5, r6, pc}
 _021F4348:
@@ -26471,17 +26471,17 @@ _021F4348:
 	pop {r4, r5, r6, pc}
 _021F434C:
 	mov r1, #0xf9
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	ldr r0, [r5, #0x28]
 	beq _021F4372
 	ldr r1, _021F446C ; =0x000009A2
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021F436E
 	ldr r0, [r5, #0x28]
 	ldr r1, _021F446C ; =0x000009A2
-	bl SetFlagInArray
+	bl Save_VarsFlags_SetFlagInArray
 	mov r0, #0xa6
 	pop {r4, r5, r6, pc}
 _021F436E:
@@ -26489,17 +26489,17 @@ _021F436E:
 	pop {r4, r5, r6, pc}
 _021F4372:
 	mov r1, #0x87
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	ldr r0, [r5, #0x28]
 	beq _021F4398
 	ldr r1, _021F4470 ; =0x000009A1
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021F4394
 	ldr r0, [r5, #0x28]
 	ldr r1, _021F4470 ; =0x000009A1
-	bl SetFlagInArray
+	bl Save_VarsFlags_SetFlagInArray
 	mov r0, #0xa5
 	pop {r4, r5, r6, pc}
 _021F4394:
@@ -26520,12 +26520,12 @@ _021F43A8:
 	beq _021F43CE
 	ldr r0, [r5, #0x28]
 	ldr r1, _021F4474 ; =0x000009A5
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021F43CA
 	ldr r0, [r5, #0x28]
 	ldr r1, _021F4474 ; =0x000009A5
-	bl SetFlagInArray
+	bl Save_VarsFlags_SetFlagInArray
 	mov r0, #0xa3
 	pop {r4, r5, r6, pc}
 _021F43CA:
@@ -26542,7 +26542,7 @@ _021F43CE:
 _021F43DE:
 	ldr r0, [r5, #0x28]
 	mov r1, #0xc6
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	beq _021F43EE
 	mov r0, #0xa1
@@ -26550,19 +26550,19 @@ _021F43DE:
 _021F43EE:
 	ldr r0, [r5, #0x28]
 	mov r1, #0xca
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	ldr r0, [r5, #0x28]
 	beq _021F441A
 	mov r1, #0x9a
 	lsl r1, r1, #4
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021F4416
 	mov r1, #0x9a
 	ldr r0, [r5, #0x28]
 	lsl r1, r1, #4
-	bl SetFlagInArray
+	bl Save_VarsFlags_SetFlagInArray
 	mov r0, #0xa0
 	pop {r4, r5, r6, pc}
 _021F4416:
@@ -26570,17 +26570,17 @@ _021F4416:
 	pop {r4, r5, r6, pc}
 _021F441A:
 	ldr r1, _021F4478 ; =0x0000096A
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	beq _021F4440
 	ldr r0, [r5, #0x28]
 	ldr r1, _021F447C ; =0x0000099F
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021F443C
 	ldr r0, [r5, #0x28]
 	ldr r1, _021F447C ; =0x0000099F
-	bl SetFlagInArray
+	bl Save_VarsFlags_SetFlagInArray
 	mov r0, #0x9f
 	pop {r4, r5, r6, pc}
 _021F443C:
@@ -26874,7 +26874,7 @@ _021F465C:
 	mov r1, #0x46
 	ldr r0, [r0, #0x2c]
 	lsl r1, r1, #2
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021F467A
 	mov r0, #3
@@ -26883,7 +26883,7 @@ _021F467A:
 	ldr r0, [r4, #0xc]
 	ldr r1, _021F46C4 ; =0x0000011F
 	ldr r0, [r0, #0x2c]
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	beq _021F468C
 	mov r0, #2
@@ -26900,7 +26900,7 @@ _021F4690:
 	ldr r0, [r4, #0xc]
 	mov r1, #0xca
 	ldr r0, [r0, #0x2c]
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021F46AE
 	mov r0, #6
@@ -30956,7 +30956,7 @@ RadioShow_Commercials_Init: ; 0x021F6514
 	strb r1, [r4, #8]
 	add r7, r0, #0
 	mov r1, #0x6b
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	strb r0, [r4, #9]
 	add r0, r7, #0
 	mov r1, #2
@@ -30980,12 +30980,12 @@ RadioShow_Commercials_Init: ; 0x021F6514
 	strb r0, [r4, #0xe]
 	ldr r1, _021F660C ; =0x00000964
 	add r0, r7, #0
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	mov r1, #0x46
 	strb r0, [r4, #0xd]
 	add r0, r7, #0
 	lsl r1, r1, #2
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	ldr r7, _021F6610 ; =ov101_021F8AD0
 	strb r0, [r4, #0xf]
 	add r1, r6, #0
@@ -31211,7 +31211,7 @@ RadioShow_PokemonSearchParty_Init: ; 0x021F6710
 	strb r0, [r5, #8]
 	add r0, r7, #0
 	mov r1, #FLAG_BEAT_AZALEA_ROCKETS
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	strb r0, [r5, #9]
 	ldr r0, [sp]
 	mov r1, #2
@@ -31219,7 +31219,7 @@ RadioShow_PokemonSearchParty_Init: ; 0x021F6710
 	strb r0, [r5, #0xa]
 	add r0, r7, #0
 	mov r1, #FLAG_BEAT_RADIO_TOWER_ROCKETS
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	strb r0, [r5, #0xb]
 	ldr r0, [sp]
 	bl PlayerProfile_CountBadges
@@ -31376,7 +31376,7 @@ _021F6890:
 	ldr r0, [r5, #4]
 	bl Save_VarsFlags_Get
 	ldr r1, _021F6900 ; =FLAG_DAILY_HEARD_BUENAS_PASSWORD
-	bl SetFlagInArray
+	bl Save_VarsFlags_SetFlagInArray
 _021F68B2:
 	ldrh r0, [r4, #4]
 	add r0, r0, #1
