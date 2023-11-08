@@ -127,7 +127,7 @@ _020933AA:
 	ldr r0, _02093438 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl GX_SwapDisplay
+	bl GfGfx_SwapDisplay
 	ldr r0, _0209343C ; =0x04000050
 	mov r1, #0
 	strh r1, [r0]
@@ -203,7 +203,7 @@ sub_02093440: ; 0x02093440
 	bl sub_02094004
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r1, [r5, #4]
 	mov r0, #4
 	bl FontID_Alloc
@@ -1915,7 +1915,7 @@ sub_020941CC: ; 0x020941CC
 	str r0, [r5, r1]
 	mov r0, #8
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -3330,7 +3330,7 @@ sub_02094D9C: ; 0x02094D9C
 	ldr r0, _02094DF4 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
-	bl GX_SwapDisplay
+	bl GfGfx_SwapDisplay
 	mov r1, #0
 	mov r0, #0xc0
 	str r0, [sp]
@@ -3692,7 +3692,7 @@ sub_0209501C: ; 0x0209501C
 	bl CopyWindowToVram
 	mov r0, #8
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3748,7 +3748,7 @@ sub_020950F8: ; 0x020950F8
 	beq _0209510E
 	mov r0, #8
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 _0209510E:
 	add r0, r4, #0
 	bl ClearWindowTilemapAndCopyToVram

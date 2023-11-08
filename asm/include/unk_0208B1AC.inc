@@ -17,8 +17,8 @@
 .public sub_0200E27C
 .public FreeToHeap
 .public GF_CreateVramTransferManager
-.public GX_EngineAToggleLayers
-.public GX_EngineBToggleLayers
+.public GfGfx_EngineATogglePlanes
+.public GfGfx_EngineBTogglePlanes
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public sub_02024890

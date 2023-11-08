@@ -60,9 +60,9 @@
 .public sub_020200A0
 .public AddTextPrinterParameterized
 .public AddTextPrinterParameterized2
-.public GX_SetBanks
-.public GX_EngineAToggleLayers
-.public GX_SwapDisplay
+.public GfGfx_SetBanks
+.public GfGfx_EngineATogglePlanes
+.public GfGfx_SwapDisplay
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New

@@ -1155,7 +1155,7 @@ ov80_02234968: ; 0x02234968
 	bl FreeToHeap
 	mov r0, #4
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r0, [r4]
 	mov r1, #2
 	bl ScheduleBgTilemapBufferTransfer
@@ -1166,7 +1166,7 @@ ov80_02234968: ; 0x02234968
 _02234A1E:
 	mov r0, #4
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	nop

@@ -4,7 +4,7 @@
 .public IsPaletteFadeFinished
 .public sub_0200FBF4
 .public AllocFromHeap
-.public GX_EngineAToggleLayers
+.public GfGfx_EngineATogglePlanes
 .public sub_0202457C
 .public Sprite_Delete
 .public Sprite_SetMatrix

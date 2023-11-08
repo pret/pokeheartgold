@@ -57,11 +57,11 @@
 .public GetWindowWidth
 .public SetWindowY
 .public AddTextPrinterParameterized2
-.public GX_SetBanks
-.public GX_DisableEngineALayers
-.public GX_EngineAToggleLayers
-.public GX_DisableEngineBLayers
-.public GX_EngineBToggleLayers
+.public GfGfx_SetBanks
+.public GfGfx_DisableEngineAPlanes
+.public GfGfx_EngineATogglePlanes
+.public GfGfx_DisableEngineBPlanes
+.public GfGfx_EngineBTogglePlanes
 .public sub_02024B1C
 .public sub_02024B34
 .public Sprite_GetVramType

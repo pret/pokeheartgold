@@ -97,7 +97,7 @@
 .public sub_02020A0C
 .public sub_02020A18
 .public sub_02020A24
-.public GX_EngineBToggleLayers
+.public GfGfx_EngineBTogglePlanes
 .public sub_02025224
 .public System_GetTouchNew
 .public String_New

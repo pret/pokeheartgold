@@ -19,8 +19,8 @@ ov80_02238648: ; 0x02238648
 	ldrb r5, [r4]
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r1, #1
 	lsl r1, r1, #0x1a
 	ldr r0, [r1]
@@ -155,13 +155,13 @@ _022386D4:
 	add r1, r4, #0
 	add r1, #0x9c
 	str r0, [r1]
-	bl GX_BothDispOn
+	bl GfGfx_BothDispOn
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	add r0, r5, #0
 	mov r1, #3
 	bl ov80_0222ACA0
@@ -235,10 +235,10 @@ ov80_0223885C: ; 0x0223885C
 	bl ov80_0223927C
 	mov r0, #1
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #2
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r0, [r4]
 	mov r1, #1
 	bl FreeBgTilemapBuffer
@@ -758,7 +758,7 @@ ov80_02238CD8: ; 0x02238CD8
 	mov r1, #0
 	bl ov80_0222ACA0
 	add r4, r0, #0
-	bl GX_DisableEngineALayers
+	bl GfGfx_DisableEngineAPlanes
 	ldr r6, _02238EF8 ; =ov80_0223D5D8
 	add r3, sp, #0x2c
 	mov r2, #5
@@ -768,7 +768,7 @@ _02238CF4:
 	sub r2, r2, #1
 	bne _02238CF4
 	add r0, sp, #0x2c
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	mov r1, #6
 	mov r2, #2
 	mov r0, #0
@@ -958,7 +958,7 @@ _02238EA2:
 	mov r0, #1
 	strh r2, [r1]
 	add r1, r0, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r4, _02238F0C ; =ov80_0223D59C
 	add r3, sp, #0
 	ldmia r4!, {r0, r1}
@@ -1457,7 +1457,7 @@ ov80_022392F8: ; 0x022392F8
 	push {r3, lr}
 	mov r0, #1
 	add r1, r0, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r0, _02239364 ; =0x04000008
 	mov r1, #3
 	ldrh r2, [r0]
@@ -2419,4 +2419,3 @@ ov80_0223D654: ; 0x0223D654
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
-

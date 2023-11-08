@@ -112,7 +112,7 @@ ov121_021E59BC: ; 0x021E59BC
 	ldr r0, _021E5AE0 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl GX_SwapDisplay
+	bl GfGfx_SwapDisplay
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -299,7 +299,7 @@ ov121_021E5AEC: ; 0x021E5AEC
 	bl ov121_021E6194
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	add r0, r5, #0
 	mov r1, #0x9e
 	bl ov121_021E62A0
@@ -554,7 +554,7 @@ _021E5D8E:
 	sub r2, r2, #1
 	bne _021E5D8E
 	add r0, sp, #0
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -569,7 +569,7 @@ ov121_021E5DA4: ; 0x021E5DA4
 	ldr r0, _021E5EC0 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
-	bl GX_SwapDisplay
+	bl GfGfx_SwapDisplay
 	ldr r5, _021E5EC4 ; =ov121_021E701C
 	add r3, sp, #0x90
 	add r2, r3, #0

@@ -15,9 +15,9 @@ ov106_021E5900: ; 0x021E5900
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
 	mov r0, #0
-	bl GX_EngineASetLayers
+	bl GfGfx_EngineASetPlanes
 	mov r0, #0
-	bl GX_EngineBSetLayers
+	bl GfGfx_EngineBSetPlanes
 	ldr r0, _021E5940 ; =0x04000050
 	mov r1, #0
 	strh r1, [r0]
@@ -579,11 +579,11 @@ _021E5D34:
 
 	thumb_func_start ov106_021E5D38
 ov106_021E5D38: ; 0x021E5D38
-	ldr r3, _021E5D40 ; =GX_SetBanks
+	ldr r3, _021E5D40 ; =GfGfx_SetBanks
 	ldr r0, _021E5D44 ; =ov106_021E6DB0
 	bx r3
 	nop
-_021E5D40: .word GX_SetBanks
+_021E5D40: .word GfGfx_SetBanks
 _021E5D44: .word ov106_021E6DB0
 	thumb_func_end ov106_021E5D38
 
@@ -662,7 +662,7 @@ ov106_021E5D70: ; 0x021E5D70
 	bl SetBgPriority
 	mov r0, #1
 	add r1, r0, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	add sp, #8
 	pop {r4, pc}
 	nop
@@ -964,13 +964,13 @@ ov106_021E601C: ; 0x021E601C
 	add r4, r1, #0
 	mov r0, #2
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #4
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #8
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	bl GX_ResetBankForBG
 	ldr r6, _021E6060 ; =ov106_021E6DD8
 	add r3, sp, #0
@@ -1003,7 +1003,7 @@ ov106_021E6064: ; 0x021E6064
 	bl GX_SetBankForBG
 	mov r0, #0xe
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	pop {r3, pc}
 	thumb_func_end ov106_021E6064
 
@@ -1465,11 +1465,11 @@ _021E6404: .word 0x00003FF8
 
 	thumb_func_start ov106_021E6408
 ov106_021E6408: ; 0x021E6408
-	ldr r3, _021E6410 ; =GX_SetBanks
+	ldr r3, _021E6410 ; =GfGfx_SetBanks
 	ldr r0, _021E6414 ; =ov106_021E6FE8
 	bx r3
 	nop
-_021E6410: .word GX_SetBanks
+_021E6410: .word GfGfx_SetBanks
 _021E6414: .word ov106_021E6FE8
 	thumb_func_end ov106_021E6408
 
@@ -1701,7 +1701,7 @@ ov106_021E6520: ; 0x021E6520
 	bl ov106_021E66FC
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	add sp, #0x5c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -1966,9 +1966,9 @@ ov106_021E6814: ; 0x021E6814
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
 	mov r0, #0
-	bl GX_EngineASetLayers
+	bl GfGfx_EngineASetPlanes
 	mov r0, #0
-	bl GX_EngineBSetLayers
+	bl GfGfx_EngineBSetPlanes
 	ldr r0, _021E688C ; =0x04000050
 	mov r1, #0
 	strh r1, [r0]

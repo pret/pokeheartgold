@@ -128,7 +128,7 @@ ov46_02258800: ; 0x02258800
 	ldr r0, _02258928 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
-	bl GX_SwapDisplay
+	bl GfGfx_SwapDisplay
 	mov r0, #1
 	add sp, #0x1c
 	pop {r4, r5, pc}
@@ -556,7 +556,7 @@ _02258C68:
 	ldr r0, _02258CB0 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl GX_SwapDisplay
+	bl GfGfx_SwapDisplay
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -661,7 +661,7 @@ ov46_02258CB4: ; 0x02258CB4
 	ldr r0, _02258DA4 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
-	bl GX_SwapDisplay
+	bl GfGfx_SwapDisplay
 	mov r0, #1
 	add sp, #0x1c
 	pop {r4, r5, pc}
@@ -889,7 +889,7 @@ _02258F2C:
 	ldr r0, _02258F6C ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl GX_SwapDisplay
+	bl GfGfx_SwapDisplay
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -916,7 +916,7 @@ ov46_02258F78: ; 0x02258F78
 	ldr r0, _022591F8 ; =0x04001050
 	strh r1, [r0]
 	ldr r0, _022591FC ; =ov46_022595B4
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	mov r0, #0
 	add r1, r0, #0
 	bl BG_SetMaskColor
@@ -1051,7 +1051,7 @@ _02258FAE:
 	bl GfGfxLoader_LoadScrnData
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x58
 	add r1, r6, #0
 	bl NARC_New

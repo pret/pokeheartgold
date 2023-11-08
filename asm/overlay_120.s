@@ -1053,7 +1053,7 @@ _0225F73E:
 	bl ov120_0225F9D4
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r0, [r5, #0x10]
 	ldr r1, _0225F8A4 ; =ov120_0225F8B0
 	ldr r0, [r0, #4]
@@ -2042,10 +2042,10 @@ _0225FF2E:
 	mov r0, #2
 	mov r1, #1
 	ldr r5, [r4, #0xc]
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #8
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -2090,7 +2090,7 @@ _0225FF2E:
 	mov r1, #0
 	bl SetBgPriority
 	mov r0, #0x15
-	bl GX_EngineASetLayers
+	bl GfGfx_EngineASetPlanes
 	add r0, r5, #0
 	add r0, #0x50
 	add r1, r4, #0
@@ -2212,7 +2212,7 @@ _0226008C:
 	add r0, #0x4d
 	strb r1, [r0]
 	mov r0, #8
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #4
 	str r0, [r4]
 _022600C4:
@@ -2230,7 +2230,7 @@ _022600D4:
 	add r0, #0x4c
 	strb r1, [r0]
 	mov r0, #2
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #6
 	str r0, [r4]
 	b _0226011A

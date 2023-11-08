@@ -90,11 +90,11 @@
 .public ScheduleSetBgPosText
 .public AddTextPrinterParameterized2
 .public sub_02020A0C
-.public GX_SetBanks
-.public GX_DisableEngineALayers
-.public GX_EngineAToggleLayers
-.public GX_DisableEngineBLayers
-.public GX_EngineBToggleLayers
+.public GfGfx_SetBanks
+.public GfGfx_DisableEngineAPlanes
+.public GfGfx_EngineATogglePlanes
+.public GfGfx_DisableEngineBPlanes
+.public GfGfx_EngineBTogglePlanes
 .public sub_02025224
 .public sub_02025320
 .public String_New

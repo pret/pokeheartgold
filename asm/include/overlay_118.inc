@@ -9,8 +9,8 @@
 .public BG_SetMaskColor
 .public BgClearTilemapBufferAndCommit
 .public ScheduleSetBgPosText
-.public GX_EngineAToggleLayers
-.public GX_EngineASetLayers
+.public GfGfx_EngineATogglePlanes
+.public GfGfx_EngineASetPlanes
 .public memset
 .public ov01_021EFCDC
 .public ov01_021EFCF8

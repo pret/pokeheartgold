@@ -5,7 +5,7 @@
 .public UnloadOverlayByID
 .public CreateHeap
 .public DestroyHeap
-.public GX_SwapDisplay
+.public GfGfx_SwapDisplay
 .public Save_Misc_Get
 .public sub_0202AC0C
 .public sub_0203E354

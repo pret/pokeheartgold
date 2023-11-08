@@ -1,5 +1,5 @@
 #include "global.h"
-#include "gx_layers.h"
+#include "gf_gfx_planes.h"
 #include "main.h"
 #include "msgdata.h"
 #include "msgdata/msg.naix"
@@ -71,8 +71,8 @@ void ShowWFCUserInfoWarning(HeapID heapId, int a1) {
     Main_SetVBlankIntrCB(NULL, NULL);
     Main_SetHBlankIntrCB(NULL, NULL);
 
-    GX_DisableEngineALayers();
-    GX_DisableEngineBLayers();
+    GfGfx_DisableEngineAPlanes();
+    GfGfx_DisableEngineBPlanes();
     GX_SetVisiblePlane(0);
     GXS_SetVisiblePlane(0);
 
@@ -80,12 +80,12 @@ void ShowWFCUserInfoWarning(HeapID heapId, int a1) {
 
     gSystem.screensFlipped = FALSE;
 
-    GX_SwapDisplay();
+    GfGfx_SwapDisplay();
     G2_BlendNone();
     G2S_BlendNone();
     GX_SetVisibleWnd(0);
     GXS_SetVisibleWnd(0);
-    GX_SetBanks(&sWFCWarningMsgBanksConfig);
+    GfGfx_SetBanks(&sWFCWarningMsgBanksConfig);
 
     BgConfig* bg_config = BgConfig_Alloc(heapId);
     SetBothScreensModesAndDisable(&sWFCWarningMsgBgModeSet);
@@ -110,7 +110,7 @@ void ShowWFCUserInfoWarning(HeapID heapId, int a1) {
     AddTextPrinterParameterized(&window, 0, warning_string, 0, 0, 0, NULL);
     String_Delete(warning_string);
 
-    GX_BothDispOn();
+    GfGfx_BothDispOn();
     SetMasterBrightnessNeutral(0);
     SetMasterBrightnessNeutral(1);
     SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN | SCREEN_MASK_SUB);
@@ -129,14 +129,14 @@ void ShowWFCUserInfoWarning(HeapID heapId, int a1) {
 
     RemoveWindow(&window);
     DestroyMsgData(warnings_msgdata);
-    ToggleBgLayer(GF_BG_LYR_MAIN_0, GX_LAYER_TOGGLE_OFF);
-    ToggleBgLayer(GF_BG_LYR_MAIN_1, GX_LAYER_TOGGLE_OFF);
-    ToggleBgLayer(GF_BG_LYR_MAIN_2, GX_LAYER_TOGGLE_OFF);
-    ToggleBgLayer(GF_BG_LYR_MAIN_3, GX_LAYER_TOGGLE_OFF);
-    ToggleBgLayer(GF_BG_LYR_SUB_0, GX_LAYER_TOGGLE_OFF);
-    ToggleBgLayer(GF_BG_LYR_SUB_1, GX_LAYER_TOGGLE_OFF);
-    ToggleBgLayer(GF_BG_LYR_SUB_2, GX_LAYER_TOGGLE_OFF);
-    ToggleBgLayer(GF_BG_LYR_SUB_3, GX_LAYER_TOGGLE_OFF);
+    ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_OFF);
+    ToggleBgLayer(GF_BG_LYR_MAIN_1, GF_PLANE_TOGGLE_OFF);
+    ToggleBgLayer(GF_BG_LYR_MAIN_2, GF_PLANE_TOGGLE_OFF);
+    ToggleBgLayer(GF_BG_LYR_MAIN_3, GF_PLANE_TOGGLE_OFF);
+    ToggleBgLayer(GF_BG_LYR_SUB_0, GF_PLANE_TOGGLE_OFF);
+    ToggleBgLayer(GF_BG_LYR_SUB_1, GF_PLANE_TOGGLE_OFF);
+    ToggleBgLayer(GF_BG_LYR_SUB_2, GF_PLANE_TOGGLE_OFF);
+    ToggleBgLayer(GF_BG_LYR_SUB_3, GF_PLANE_TOGGLE_OFF);
     FreeBgTilemapBuffer(bg_config, GF_BG_LYR_MAIN_0);
     FreeToHeap(bg_config);
 }

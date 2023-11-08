@@ -1014,7 +1014,7 @@ _02233E92:
 _02233E9C:
 	mov r0, #4
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	b _02233F12
 _02233EA6:
 	ldrb r0, [r4, #0x1f]

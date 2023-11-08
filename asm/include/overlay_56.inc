@@ -90,10 +90,10 @@
 .public AddTextPrinterParameterized2
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
-.public GX_SetBanks
-.public GX_DisableEngineALayers
-.public GX_EngineAToggleLayers
-.public GX_DisableEngineBLayers
+.public GfGfx_SetBanks
+.public GfGfx_DisableEngineAPlanes
+.public GfGfx_EngineATogglePlanes
+.public GfGfx_DisableEngineBPlanes
 .public sub_02025224
 .public System_GetTouchHeld
 .public System_GetTouchNew

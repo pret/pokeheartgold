@@ -207,7 +207,7 @@ ov80_0222ADE8: ; 0x0222ADE8
 	bl SetBgPriority
 	mov r0, #4
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov80_0222ADE8
@@ -253,7 +253,7 @@ ov80_0222AE30: ; 0x0222AE30
 	bl G2x_SetBlendAlpha_
 	mov r0, #4
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	pop {r3, pc}
 	nop
 _0222AE64: .word 0x04000050

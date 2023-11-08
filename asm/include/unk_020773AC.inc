@@ -16,9 +16,9 @@
 .public sub_02015528
 .public AllocFromHeap
 .public FreeToHeap
-.public GX_DisableEngineALayers
-.public GX_EngineAToggleLayers
-.public GX_DisableEngineBLayers
+.public GfGfx_DisableEngineAPlanes
+.public GfGfx_EngineATogglePlanes
+.public GfGfx_DisableEngineBPlanes
 .public Camera_SetPerspectiveClippingPlane
 .public GF_AssertFail
 .public Thunk_G3X_Reset

@@ -15,8 +15,8 @@
 .public DestroyHeap
 .public AllocFromHeap
 .public FreeToHeap
-.public GX_DisableEngineALayers
-.public GX_DisableEngineBLayers
+.public GfGfx_DisableEngineAPlanes
+.public GfGfx_DisableEngineBPlanes
 .public Save_PlayerData_GetOptionsAddr
 .public Save_Mailbox_Get
 .public sub_02031DA0

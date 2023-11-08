@@ -1638,7 +1638,7 @@ static void ov122_021E7928(VoltorbFlipAppWork *work) {
         InitBgFromTemplate(work->bgConfig, ov122_021E9270[i], &temp2.unk0[i], 0);
         BgClearTilemapBufferAndCommit(work->bgConfig, ov122_021E9270[i]);
         BG_FillCharDataRange(work->bgConfig, (enum GFBgLayer)ov122_021E9270[i], 0, 1, 0);
-        ToggleBgLayer(ov122_021E9270[i], GX_LAYER_TOGGLE_ON);
+        ToggleBgLayer(ov122_021E9270[i], GF_PLANE_TOGGLE_ON);
     }
 }
 
@@ -1921,13 +1921,13 @@ static void ov122_021E8004(VoltorbFlipAppWork *work) {
 
 static void SetGXBanks(void) {
     GraphicsBanks banks = sVoltorbFlipGraphicsBanks;
-    GX_SetBanks(&banks);
+    GfGfx_SetBanks(&banks);
 }
 
 static void ov122_021E8068(void) {
     HBlankInterruptDisable();
-    GX_DisableEngineALayers();
-    GX_DisableEngineBLayers();
+    GfGfx_DisableEngineAPlanes();
+    GfGfx_DisableEngineBPlanes();
 
     reg_GX_DISPCNT &= 0xffffe0ff;
     reg_GXS_DB_DISPCNT &= 0xffffe0ff;
@@ -1979,8 +1979,8 @@ static void ov122_021E8094(OVY_MANAGER *man) {
     PrintBoardVoltorbsAndPoints(work);
 
     sub_02004EC4(0x46, 0, 0);
-    GX_EngineAToggleLayers(16, GX_LAYER_TOGGLE_ON);
-    GX_EngineBToggleLayers(16, GX_LAYER_TOGGLE_ON);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     sub_0200FBDC(0);
     sub_0200FBDC(1);
     TextFlags_SetCanABSpeedUpPrint(TRUE);

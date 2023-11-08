@@ -1,5 +1,5 @@
 #include "global.h"
-#include "gx_layers.h"
+#include "gf_gfx_planes.h"
 #include "bg_window.h"
 #include "voltorb_flip/voltorb_flip.h"
 #include "voltorb_flip/voltorb_flip_data.h"

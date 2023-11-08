@@ -1,6 +1,6 @@
 #include "global.h"
 #include "communication_error.h"
-#include "gx_layers.h"
+#include "gf_gfx_planes.h"
 #include "msgdata.h"
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0041.h"
@@ -133,8 +133,8 @@ void ShowCommunicationError(HeapID heapId, u32 error, u32 errorCode) {
     Main_SetVBlankIntrCB(NULL, NULL);
     Main_SetHBlankIntrCB(NULL, NULL);
 
-    GX_DisableEngineALayers();
-    GX_DisableEngineBLayers();
+    GfGfx_DisableEngineAPlanes();
+    GfGfx_DisableEngineBPlanes();
     GX_SetVisiblePlane(0);
     GXS_SetVisiblePlane(0);
 
@@ -142,12 +142,12 @@ void ShowCommunicationError(HeapID heapId, u32 error, u32 errorCode) {
 
     gSystem.screensFlipped = FALSE;
 
-    GX_SwapDisplay();
+    GfGfx_SwapDisplay();
     G2_BlendNone();
     G2S_BlendNone();
     GX_SetVisibleWnd(0);
     GXS_SetVisibleWnd(0);
-    GX_SetBanks(&sCommunicationErrorGraphicsBanks);
+    GfGfx_SetBanks(&sCommunicationErrorGraphicsBanks);
 
     BgConfig* bgConfig = BgConfig_Alloc(heapId);
     SetBothScreensModesAndDisable(&sCommunicationErrorGraphicsModes);
@@ -176,7 +176,7 @@ void ShowCommunicationError(HeapID heapId, u32 error, u32 errorCode) {
     String_Delete(errorMessageStr);
     // BUG: tmp_str is never destroyed.
 
-    GX_BothDispOn();
+    GfGfx_BothDispOn();
     SetMasterBrightnessNeutral(PM_LCD_TOP);
     SetMasterBrightnessNeutral(PM_LCD_BOTTOM);
     SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN | SCREEN_MASK_SUB);

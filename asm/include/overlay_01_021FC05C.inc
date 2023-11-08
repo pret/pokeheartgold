@@ -9,7 +9,7 @@
 .public BG_LoadPlttData
 .public BG_SetMaskColor
 .public BgFillTilemapBufferAndCommit
-.public GX_EngineAToggleLayers
+.public GfGfx_EngineATogglePlanes
 .public GF_AssertFail
 .public MapHeader_HasWildEncounters
 .public QueueScript

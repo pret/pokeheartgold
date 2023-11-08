@@ -30,8 +30,8 @@
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
 .public LCRandom
-.public GX_EngineAToggleLayers
-.public GX_EngineASetLayers
+.public GfGfx_EngineATogglePlanes
+.public GfGfx_EngineASetPlanes
 .public sub_0202457C
 .public Sprite_Delete
 .public Set2dSpriteVisibleFlag

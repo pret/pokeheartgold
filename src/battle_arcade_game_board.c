@@ -3,7 +3,7 @@
 #include "filesystem.h"
 #include "font.h"
 #include "gf_gfx_loader.h"
-#include "gx_layers.h"
+#include "gf_gfx_planes.h"
 #include "math_util.h"
 #include "overlay_80.h"
 #include "palette.h"
@@ -544,8 +544,8 @@ static void BattleArcadeGameBoard_Delete(GAME_BOARD_WORK *work) {
 static void BattleArcadeGameBoard_InitSub() {
     Main_SetVBlankIntrCB(NULL, NULL);
     Main_SetHBlankIntrCB(NULL, NULL);
-    GX_DisableEngineALayers();
-    GX_DisableEngineBLayers();
+    GfGfx_DisableEngineAPlanes();
+    GfGfx_DisableEngineBPlanes();
     GX_SetVisiblePlane(0);
     GXS_SetVisiblePlane(0);
 }
@@ -632,8 +632,8 @@ static void ov84_0223E934(GAME_BOARD_WORK *work) {
 }
 
 static void ov84_0223E958(BgConfig *config) {
-    GX_EngineAToggleLayers(31, GX_LAYER_TOGGLE_OFF);
-    GX_EngineBToggleLayers(31, GX_LAYER_TOGGLE_OFF);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_ALL, GF_PLANE_TOGGLE_OFF);
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_ALL, GF_PLANE_TOGGLE_OFF);
     FreeBgTilemapBuffer(config, 3);
     FreeBgTilemapBuffer(config, 1);
     FreeBgTilemapBuffer(config, 4);
@@ -657,7 +657,7 @@ extern GraphicsBanks ov84_0223F9BC;
 
 static void BattleArcade_SetVramBanks() {
     GraphicsBanks config = ov84_0223F9BC;
-    GX_SetBanks(&config);
+    GfGfx_SetBanks(&config);
 }
 
 extern GraphicsModes ov84_0223F924;
@@ -684,7 +684,7 @@ static void ov84_0223E9E4(BgConfig *config) {
 
     G2_SetBG0Priority(0);
 
-    GX_EngineAToggleLayers(1, GX_LAYER_TOGGLE_OFF);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_OFF);
 }
 
 static void ov84_0223EAAC(GAME_BOARD_WORK *work, enum GFBgLayer layer) {
@@ -1235,8 +1235,8 @@ static void ov84_0223F2B4(GAME_BOARD_SUB_3E8 *work, Party *playerParty, Party *o
         sub_0200AF94(work->resourceObj[i][1]);
     }
 
-    GX_EngineBToggleLayers(16, GX_LAYER_TOGGLE_ON);
-    GX_EngineAToggleLayers(16, GX_LAYER_TOGGLE_ON);
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
 static Sprite *ov84_0223F374(GAME_BOARD_SUB_3E8 *work, u32 chara, u32 pal, u32 cell, u32 anim, u32 prio, int bgPrio, u8 display) {

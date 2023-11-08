@@ -115,8 +115,8 @@ _021E59C2:
 	add r0, r6, #0
 	add r1, r0, #0
 	bl Main_SetHBlankIntrCB
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -158,7 +158,7 @@ _021E59C2:
 	ldr r0, _021E5B44 ; =ov53_021E5BCC
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
-	bl GX_BothDispOn
+	bl GfGfx_BothDispOn
 	mov r0, #1
 	str r0, [r5]
 	b _021E5B22
@@ -349,7 +349,7 @@ _021E5BE8:
 	sub r2, r2, #1
 	bne _021E5BE8
 	add r0, sp, #0x50
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	ldr r0, [r4]
 	bl BgConfig_Alloc
 	add r3, sp, #0x40
@@ -790,14 +790,14 @@ _021E5FA0:
 	bne _021E5FAE
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	b _021E60BE
 _021E5FAE:
 	cmp r4, #0x66
 	bne _021E5FBC
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	b _021E60BE
 _021E5FBC:
 	lsl r0, r4, #0x18
@@ -908,14 +908,14 @@ _021E6084:
 	bne _021E6096
 	mov r0, #0x10
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	b _021E60BE
 _021E6096:
 	cmp r4, #0x66
 	bne _021E60A4
 	mov r0, #0x10
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	b _021E60BE
 _021E60A4:
 	lsl r0, r4, #0x18
@@ -4706,10 +4706,10 @@ ov53_021E7F24: ; 0x021E7F24
 	add r4, r0, #0
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #0x20
 	mov r1, #0x50
 	bl GF_CreateVramTransferManager
