@@ -2422,7 +2422,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_425 arg0
+	.macro show_certificate arg0
 	.short 425
 	.short \arg0
 	.endm

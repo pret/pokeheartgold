@@ -128,7 +128,7 @@
 .public sub_0203F9C4
 .public HatchEggInParty
 .public LaunchVoltorbFlipApp
-.public sub_0203FA8C
+.public LaunchCertificatesApp
 .public sub_0203FAB4
 .public sub_0203FAE8
 .public ScratchOffCards_Create

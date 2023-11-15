@@ -3145,8 +3145,8 @@ LaunchVoltorbFlipApp: ; 0x0203FA38
 _0203FA88: .word _020FA234
 	thumb_func_end LaunchVoltorbFlipApp
 
-	thumb_func_start sub_0203FA8C
-sub_0203FA8C: ; 0x0203FA8C
+	thumb_func_start LaunchCertificatesApp
+LaunchCertificatesApp: ; 0x0203FA8C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, r1, #0
@@ -3165,7 +3165,7 @@ sub_0203FA8C: ; 0x0203FA8C
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0203FAB0: .word _020FA304
-	thumb_func_end sub_0203FA8C
+	thumb_func_end LaunchCertificatesApp
 
 	thumb_func_start sub_0203FAB4
 sub_0203FAB4: ; 0x0203FAB4

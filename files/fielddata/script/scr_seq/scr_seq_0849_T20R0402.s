@@ -91,7 +91,7 @@ _00FC:
 _010D:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_425 2
+	show_certificate 2
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade

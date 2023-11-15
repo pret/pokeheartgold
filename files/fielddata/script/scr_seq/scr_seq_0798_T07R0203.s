@@ -135,7 +135,7 @@ scr_seq_T07R0203_000:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_425 0
+	show_certificate 0
 	scrcmd_150
 	setflag FLAG_UNK_143
 	add_special_game_stat 25
@@ -152,7 +152,7 @@ _01ED:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_425 1
+	show_certificate 1
 	scrcmd_150
 	setflag FLAG_UNK_144
 	add_special_game_stat 26
