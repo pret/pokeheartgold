@@ -295,9 +295,9 @@
 .public CreditsApp_OvyInit
 .public CreditsApp_OvyExit
 .public CreditsApp_OvyExec
-.public ov78_021E5900
-.public ov78_021E59EC
-.public ov78_021E5B24
+.public CertificatesApp_Init
+.public CertificatesApp_Run
+.public CertificatesApp_Exit
 .public ov86_021E5900
 .public ov86_021E5A40
 .public ov86_021E5AA4
