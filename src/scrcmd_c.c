@@ -3656,14 +3656,14 @@ BOOL ScrCmd_CountPCEmptySpace(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_PlayerMovementSavingSet(ScriptContext *ctx) {
-    s32 *r4 = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_FIELD_B8);
+    SysTask **r4 = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_FIELD_B8);
     *r4 = PLAYER_STATE_WALKING;
     *r4 = Field_PlayerMovementSavingSet(ctx->fieldSystem);
     return TRUE;
 }
 
 BOOL ScrCmd_PlayerMovementSavingClear(ScriptContext *ctx) {
-    s32 *r4 = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_FIELD_B8);
+    SysTask **r4 = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_FIELD_B8);
     Field_PlayerMovementSavingClear(*r4);
     return TRUE;
 }
