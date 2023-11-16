@@ -23,6 +23,10 @@ struct UnkStruct_Ov01_021EF4C4 {
 
 struct UnkStruct_ov01_021EDC28;
 
+typedef struct UnkStruct_field_021F4360 {
+    // TODO: Fill this in
+} UnkStruct_field_021F4360;
+
 void ov01_021E636C(int a0);
 void ov01_021EFAF8(FieldSystem *fieldSystem);
 void Field_PlayerAvatar_OrrTransitionFlags(PlayerAvatar *avatar, int a1);
@@ -92,8 +96,8 @@ void ov01_021E9C00(FieldSystem *fieldSystem, u8 a1);
 void ov01_021E9C20(FieldSystem *fieldSystem, u8 a1);
 void ov01_021E9BB8(FieldSystem *fieldSystem, u8 a1);
 void ov01_021E9BDC(FieldSystem *fieldSystem, u8 a1);
-int Field_PlayerMovementSavingSet(FieldSystem *fieldSystem);
-void Field_PlayerMovementSavingClear(int state);
+SysTask *Field_PlayerMovementSavingSet(FieldSystem *fieldSystem);
+void Field_PlayerMovementSavingClear(SysTask *task);
 
 struct SaveStatsPrinter;
 
@@ -132,5 +136,10 @@ struct BankTransactionWork {
 Window *ov01_021EEF68(FieldSystem *fieldSystem, u16 a1);
 void ov01_021EEF88(Window *window);
 BOOL ov01_02206268(FieldSystem *fieldSystem);
+
+void ov01_021F42F8(UnkStruct_field_021F4360 *a0);
+void ov01_021F434C(UnkStruct_field_021F4360 *a0);
+UnkStruct_field_021F4360 *ov01_021F4360(FieldSystem *fieldSystem, HeapID heapId, u8 a2);
+void ov01_021F43D0(UnkStruct_field_021F4360 *a0);
 
 #endif //POKEHEARTGOLD_OVERLAY_01_H

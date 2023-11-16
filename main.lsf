@@ -677,10 +677,10 @@ Overlay OVY_29
     After OVY_27
     Object asm/overlay_29.o
 }
-Overlay OVY_30
+Overlay touch_save_app
 {
     After OVY_27
-    Object asm/overlay_30.o
+    Object src/touch_save_app.o
 }
 Overlay OVY_31
 {
