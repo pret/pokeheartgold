@@ -451,37 +451,35 @@ static void ov78_021E5E54(CertificatesApp_Data *data) {
     }
 }
 
-// https://decomp.me/scratch/52sOK
-#ifdef NONMATCHING
 static void ov78_021E5EA4(CertificatesApp_Data *data) {
+    u32 nscrFileNum;
     u32 ncgrFileNum;
     u32 nclrFileNum;
-    u32 nscrFileNum;
+    u32 nscrFileNum2;
     u32 ncgrFileNum2;
     u32 nclrFileNum2;
-    u32 nscrFileNum2;
 
     if (data->certificateId == CERTIFICATE_JOHTO_DEX) {
+        nscrFileNum = 15;
         ncgrFileNum = 3;
         nclrFileNum = 9;
-        nscrFileNum = 15;
-        ncgrFileNum2 = 12;
-        nclrFileNum2 = 0;
-        nscrFileNum2 = 6;
+        nscrFileNum2 = 12;
+        ncgrFileNum2 = 0;
+        nclrFileNum2 = 6;
     } else if (data->certificateId == CERTIFICATE_NATIONAL_DEX) {
+        nscrFileNum = 16;
         ncgrFileNum = 4;
         nclrFileNum = 10;
-        nscrFileNum = 16;
-        ncgrFileNum2 = 13;
-        nclrFileNum2 = 1;
-        nscrFileNum2 = 7;
+        nscrFileNum2 = 13;
+        ncgrFileNum2 = 1;
+        nclrFileNum2 = 7;
     } else { // CERTIFICATE_SHINY_LEAVES
+        nscrFileNum = 17;
         ncgrFileNum = 5;
         nclrFileNum = 11;
-        nscrFileNum = 17;
-        ncgrFileNum2 = 14;
-        nclrFileNum2 = 2;
-        nscrFileNum2 = 8;
+        nscrFileNum2 = 14;
+        ncgrFileNum2 = 2;
+        nclrFileNum2 = 8;
     }
 
     GfGfxLoader_LoadScrnData(NARC_a_1_2_6, nscrFileNum, data->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, FALSE, data->heapId);
@@ -507,219 +505,6 @@ static void ov78_021E5EA4(CertificatesApp_Data *data) {
     LoadFontPal0(GF_BG_LYR_MAIN_0, GF_PAL_SLOT_OFFSET_2, data->heapId);
     LoadFontPal0(GF_BG_LYR_SUB_0, GF_PAL_SLOT_OFFSET_2, data->heapId);
 }
-#else
-static asm void ov78_021E5EA4(CertificatesApp_Data *data) {
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0x1c
-	add r5, r0, #0
-	ldr r0, [r5, #4]
-	cmp r0, #0
-	bne _021E5EC4
-	mov r0, #3
-	str r0, [sp, #0x18]
-	mov r0, #9
-	str r0, [sp, #0x14]
-	mov r0, #0xc
-	mov r7, #0xf
-	str r0, [sp, #0x10]
-	mov r6, #0
-	mov r4, #6
-	b _021E5EEE
-_021E5EC4:
-	cmp r0, #1
-	bne _021E5EDC
-	mov r0, #4
-	str r0, [sp, #0x18]
-	mov r0, #0xa
-	str r0, [sp, #0x14]
-	mov r0, #0xd
-	mov r7, #0x10
-	str r0, [sp, #0x10]
-	mov r6, #1
-	mov r4, #7
-	b _021E5EEE
-_021E5EDC:
-	mov r0, #5
-	str r0, [sp, #0x18]
-	mov r0, #0xb
-	str r0, [sp, #0x14]
-	mov r0, #0xe
-	mov r7, #0x11
-	str r0, [sp, #0x10]
-	mov r6, #2
-	mov r4, #8
-_021E5EEE:
-	mov r0, #0
-	str r0, [sp]
-	str r0, [sp, #4]
-	str r0, [sp, #8]
-	ldr r0, [r5, #0]
-	add r1, r7, #0
-	str r0, [sp, #0xc]
-	ldr r2, [r5, #0x14]
-	mov r0, #0x7e
-	mov r3, #3
-	bl GfGfxLoader_LoadScrnData
-	mov r0, #0
-	str r0, [sp]
-	str r0, [sp, #4]
-	str r0, [sp, #8]
-	ldr r0, [r5, #0]
-	ldr r1, [sp, #0x18]
-	str r0, [sp, #0xc]
-	ldr r2, [r5, #0x14]
-	mov r0, #0x7e
-	mov r3, #3
-	bl GfGfxLoader_LoadCharData
-	mov r0, #0x20
-	str r0, [sp]
-	ldr r0, [r5, #0]
-	mov r2, #0
-	str r0, [sp, #4]
-	ldr r1, [sp, #0x14]
-	mov r0, #0x7e
-	add r3, r2, #0
-	bl GfGfxLoader_GXLoadPal
-	mov r0, #0
-	str r0, [sp]
-	str r0, [sp, #4]
-	str r0, [sp, #8]
-	ldr r0, [r5, #0]
-	add r1, r7, #0
-	str r0, [sp, #0xc]
-	ldr r2, [r5, #0x14]
-	mov r0, #0x7e
-	mov r3, #7
-	bl GfGfxLoader_LoadScrnData
-	mov r0, #0
-	str r0, [sp]
-	str r0, [sp, #4]
-	str r0, [sp, #8]
-	ldr r0, [r5, #0]
-	ldr r1, [sp, #0x18]
-	str r0, [sp, #0xc]
-	ldr r2, [r5, #0x14]
-	mov r0, #0x7e
-	mov r3, #7
-	bl GfGfxLoader_LoadCharData
-	mov r0, #0x20
-	str r0, [sp]
-	ldr r0, [r5, #0]
-	ldr r1, [sp, #0x14]
-	str r0, [sp, #4]
-	mov r0, #0x7e
-	mov r2, #4
-	mov r3, #0
-	bl GfGfxLoader_GXLoadPal
-	mov r0, #0
-	str r0, [sp]
-	str r0, [sp, #4]
-	str r0, [sp, #8]
-	ldr r0, [r5, #0]
-	ldr r1, [sp, #0x10]
-	str r0, [sp, #0xc]
-	ldr r2, [r5, #0x14]
-	mov r0, #0x7e
-	mov r3, #1
-	bl GfGfxLoader_LoadScrnData
-	mov r0, #0x20
-	str r0, [sp]
-	mov r0, #0x18
-	str r0, [sp, #4]
-	mov r1, #1
-	str r1, [sp, #8]
-	mov r2, #0
-	ldr r0, [r5, #0x14]
-	add r3, r2, #0
-	bl BgTilemapRectChangePalette
-	ldr r0, [r5, #0x14]
-	mov r1, #1
-	bl BgCommitTilemapBufferToVram
-	mov r0, #0
-	str r0, [sp]
-	str r0, [sp, #4]
-	str r0, [sp, #8]
-	ldr r0, [r5, #0]
-	add r1, r6, #0
-	str r0, [sp, #0xc]
-	ldr r2, [r5, #0x14]
-	mov r0, #0x7e
-	mov r3, #1
-	bl GfGfxLoader_LoadCharData
-	mov r3, #0x20
-	str r3, [sp]
-	ldr r0, [r5, #0]
-	add r1, r4, #0
-	str r0, [sp, #4]
-	mov r0, #0x7e
-	mov r2, #0
-	bl GfGfxLoader_GXLoadPal
-	mov r0, #0
-	str r0, [sp]
-	str r0, [sp, #4]
-	str r0, [sp, #8]
-	ldr r0, [r5, #0]
-	ldr r1, [sp, #0x10]
-	str r0, [sp, #0xc]
-	ldr r2, [r5, #0x14]
-	mov r0, #0x7e
-	mov r3, #5
-	bl GfGfxLoader_LoadScrnData
-	mov r0, #0x20
-	str r0, [sp]
-	mov r0, #0x18
-	str r0, [sp, #4]
-	mov r0, #1
-	str r0, [sp, #8]
-	mov r2, #0
-	ldr r0, [r5, #0x14]
-	mov r1, #5
-	add r3, r2, #0
-	bl BgTilemapRectChangePalette
-	ldr r0, [r5, #0x14]
-	mov r1, #5
-	bl BgCommitTilemapBufferToVram
-	mov r0, #0
-	str r0, [sp]
-	str r0, [sp, #4]
-	str r0, [sp, #8]
-	ldr r0, [r5, #0]
-	add r1, r6, #0
-	str r0, [sp, #0xc]
-	ldr r2, [r5, #0x14]
-	mov r0, #0x7e
-	mov r3, #5
-	bl GfGfxLoader_LoadCharData
-	mov r3, #0x20
-	str r3, [sp]
-	ldr r0, [r5, #0]
-	add r1, r4, #0
-	str r0, [sp, #4]
-	mov r0, #0x7e
-	mov r2, #4
-	bl GfGfxLoader_GXLoadPal
-	mov r0, #0
-	ldr r3, [r5, #0]
-	mov r1, #0x20
-	add r2, r0, #0
-	bl BG_ClearCharDataRange
-	ldr r3, [r5, #0]
-	mov r0, #4
-	mov r1, #0x20
-	mov r2, #0
-	bl BG_ClearCharDataRange
-	ldr r2, [r5, #0]
-	mov r0, #0
-	mov r1, #0x40
-	bl LoadFontPal0
-	ldr r2, [r5, #0]
-	mov r0, #4
-	mov r1, #0x40
-	bl LoadFontPal0
-	add sp, #0x1c
-	pop {r4, r5, r6, r7, pc}
-}
-#endif
 
 static void ov78_021E6068(CertificatesApp_Data *data) {
     String *string = String_New(512, data->heapId);
