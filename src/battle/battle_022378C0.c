@@ -219,7 +219,7 @@ void ov12_02237BB8(BattleSystem *bsys) {
     bsys->unk240F_1 = 1;
     
     ov12_0226604C(bsys->bgConfig);
-    GX_EngineBToggleLayers((int) GX_PLANEMASK_OBJ, GX_LAYER_TOGGLE_ON);
+    GfGfx_EngineBTogglePlanes((int) GX_PLANEMASK_OBJ, GX_LAYER_TOGGLE_ON);
     ov12_02266390(bsys->unk19C);
     ov12_02266508(unkNarcA, unkNarcB, bsys->unk19C, 0, TRUE, NULL);
     ov12_02266644(unkNarcB, bsys->unk19C);
@@ -236,8 +236,8 @@ void ov12_02237BB8(BattleSystem *bsys) {
 void ov12_02237CC4(BattleSystem *bsys) {
     RemoveWindow(bsys->window);
     
-    GX_EngineAToggleLayers(GX_PLANEMASK_BG0, GX_LAYER_TOGGLE_OFF);
-    GX_EngineAToggleLayers(GX_PLANEMASK_BG1, GX_LAYER_TOGGLE_OFF);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GX_LAYER_TOGGLE_OFF);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GX_LAYER_TOGGLE_OFF);
     FreeBgTilemapBuffer(bsys->bgConfig, 1);
     FreeBgTilemapBuffer(bsys->bgConfig, 2);
     FreeBgTilemapBuffer(bsys->bgConfig, 3);
