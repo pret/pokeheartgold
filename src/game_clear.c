@@ -299,7 +299,7 @@ static void GameClearSave_InitGraphics(FieldSystem *fieldSystem, GameClearWork *
     env->windowText = NULL;
     env->waitingIcon = NULL;
     InitWindow(&env->window);
-    GX_SetBanks(&sGameClearSaveBanksConfig);
+    GfGfx_SetBanks(&sGameClearSaveBanksConfig);
     GX_SetDispSelect(GX_DISP_SELECT_MAIN_SUB);
     SetBothScreensModesAndDisable(&sGameClearSaveBgModeSet);
     BG_SetMaskColor(3, RGB_BLACK);

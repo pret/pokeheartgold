@@ -19,8 +19,8 @@
 .public FreeToHeap
 .public GF_CreateVramTransferManager
 .public sub_02020A0C
-.public GX_EngineAToggleLayers
-.public GX_EngineBToggleLayers
+.public GfGfx_EngineATogglePlanes
+.public GfGfx_EngineBTogglePlanes
 .public Sprite_SetMatrix
 .public Set2dSpriteVisibleFlag
 .public Get2dSpriteVisibleFlag

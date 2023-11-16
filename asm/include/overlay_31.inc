@@ -55,7 +55,7 @@
 .public sub_0201F988
 .public AddTextPrinterParameterized
 .public AddTextPrinterParameterized2
-.public GX_EngineBToggleLayers
+.public GfGfx_EngineBTogglePlanes
 .public sub_02025224
 .public GF_AssertFail
 .public String_New

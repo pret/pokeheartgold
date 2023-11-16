@@ -733,7 +733,7 @@ ov43_0222A48C: ; 0x0222A48C
 	mov r1, #1
 	add r4, r2, #0
 	strb r1, [r0, #9]
-	bl GX_SwapDisplay
+	bl GfGfx_SwapDisplay
 	mov r0, #0x55
 	add r1, r4, #0
 	bl NARC_New
@@ -760,7 +760,7 @@ ov43_0222A48C: ; 0x0222A48C
 	bl ov43_0222A998
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
@@ -826,7 +826,7 @@ _0222A55A:
 	sub r2, r2, #1
 	bne _0222A55A
 	add r0, sp, #0
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0

@@ -15,7 +15,7 @@
 .public ScheduleWindowCopyToVram
 .public ClearWindowTilemapAndCopyToVram
 .public FillWindowPixelBuffer
-.public GX_EngineAToggleLayers
+.public GfGfx_EngineATogglePlanes
 .public Camera_SetDistance
 .public Camera_GetDistance
 .public sub_0202457C

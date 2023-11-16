@@ -280,11 +280,11 @@ BOOL ChooseStarterApplication_OvyInit(OVY_MANAGER *ovy, int *state_p) {
     }
 
     initBgLayers(work->bgConfig, work->heapId);
-    GX_EngineAToggleLayers(1, GX_LAYER_TOGGLE_ON);
-    GX_EngineAToggleLayers(2, GX_LAYER_TOGGLE_OFF);
-    GX_EngineAToggleLayers(4, GX_LAYER_TOGGLE_OFF);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
     gSystem.screensFlipped = TRUE;
-    GX_SwapDisplay();
+    GfGfx_SwapDisplay();
     ResetAllTextPrinters();
     makeAndDrawWindows(work);
     loadBgGraphics(work->bgConfig, work->heapId);
@@ -314,8 +314,8 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
     switch (*state) {
     case CHOOSE_STARTER_STATE_INIT:
         printMsgOnBottom(work, msg_0190_00007);
-        GX_EngineAToggleLayers(2, GX_LAYER_TOGGLE_OFF);
-        GX_EngineAToggleLayers(4, GX_LAYER_TOGGLE_OFF);
+        GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
+        GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
         BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, work->heapId);
         *state = CHOOSE_STARTER_STATE_WAIT_FADE_IN;
         break;
@@ -330,15 +330,15 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
             break;
         }
         work->subPrinterId = printMsgOnWinEx(work->winTop, work->heapId, TRUE, NARC_msg_msg_0190_bin, msg_0190_00000, MakeTextColor(1, 2, 15), work->textSpeed, &work->strbuf);
-        GX_EngineAToggleLayers(2, GX_LAYER_TOGGLE_OFF);
-        GX_EngineAToggleLayers(4, GX_LAYER_TOGGLE_OFF);
+        GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
+        GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
         *state = CHOOSE_STARTER_STATE_WAIT_INIT_MSG;
         break;
     case CHOOSE_STARTER_STATE_CONFIRM_MSG:
         work->subPrinterId = printMsgOnWinEx(work->winTop, work->heapId, TRUE, NARC_msg_msg_0190_bin, msg_0190_00001 + work->curSelection, MakeTextColor(1, 2, 15), work->textSpeed, &work->strbuf);
         printMsgOnBottom(work, msg_0190_00008);
-        GX_EngineAToggleLayers(2, GX_LAYER_TOGGLE_ON);
-        GX_EngineAToggleLayers(4, GX_LAYER_TOGGLE_ON);
+        GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_ON);
+        GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_ON);
         *state = CHOOSE_STARTER_STATE_WAIT_INIT_MSG;
         break;
     case CHOOSE_STARTER_STATE_WAIT_INIT_MSG:
@@ -373,8 +373,8 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
             }
             PlayCry(sSpecies[work->curSelection], FALSE);
             printMsgOnBottom(work, msg_0190_00007);
-            GX_EngineAToggleLayers(2, GX_LAYER_TOGGLE_ON);
-            GX_EngineAToggleLayers(4, GX_LAYER_TOGGLE_ON);
+            GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_ON);
+            GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_ON);
             setAllButSelectedMonSpritesInvisible(work);
             *state = CHOOSE_STARTER_STATE_HANDLE_INPUT;
             break;
@@ -391,8 +391,8 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
             PlaySE_SetPitch(0x607, -0x200);
             break;
         case CHOOSE_STARTER_INPUT_CONFIRM_CHOICE:
-            GX_EngineAToggleLayers(2, GX_LAYER_TOGGLE_OFF);
-            GX_EngineAToggleLayers(4, GX_LAYER_TOGGLE_OFF);
+            GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
+            GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
             *state = CHOOSE_STARTER_STATE_ZOOM_IN;
             break;
         case CHOOSE_STARTER_INPUT_CHOSE_STARTER:
@@ -406,8 +406,8 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
             if (work->state == SELECT_STATE_CONFIRM) {
                 work->modelAnimState = MODEL_ANM_STATE_IDLE;
                 printMsgOnBottom(work, msg_0190_00007);
-                GX_EngineAToggleLayers(2, GX_LAYER_TOGGLE_OFF);
-                GX_EngineAToggleLayers(4, GX_LAYER_TOGGLE_OFF);
+                GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
+                GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
                 setAllMonSpritesInvisible(&work->monSpriteData);
                 work->state = SELECT_STATE_NULL;
                 *state = CHOOSE_STARTER_STATE_BACK_OUT;
@@ -427,8 +427,8 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         }
         PlayCry(sSpecies[work->curSelection], 0);
         if (work->state != SELECT_STATE_INSPECT) {
-            GX_EngineAToggleLayers(2, GX_LAYER_TOGGLE_ON);
-            GX_EngineAToggleLayers(4, GX_LAYER_TOGGLE_ON);
+            GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_ON);
+            GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_ON);
         }
         setAllButSelectedMonSpritesInvisible(work);
         work->state = SELECT_STATE_INSPECT;
@@ -602,7 +602,7 @@ static void setGxBanks(void) {
         GX_VRAM_TEX_01_AB,
         GX_VRAM_TEXPLTT_0_G,
     };
-    GX_SetBanks(&cfg);
+    GfGfx_SetBanks(&cfg);
 }
 
 static void createOamManager(HeapID heapId) {
@@ -778,7 +778,7 @@ static void createObjResMans(struct ChooseStarterAppWork *work) {
     pMonSpriteData->plttResMan = Create2DGfxResObjMan(3, GF_GFX_RES_TYPE_PLTT, work->heapId);
     pMonSpriteData->cellResMan = Create2DGfxResObjMan(3, GF_GFX_RES_TYPE_CELL, work->heapId);
     pMonSpriteData->animResMan = Create2DGfxResObjMan(3, GF_GFX_RES_TYPE_ANIM, work->heapId);
-    GX_EngineBToggleLayers(0x10, GX_LAYER_TOGGLE_ON);
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
 static void initObjRenderers(struct ChooseStarterAppWork *work) {

@@ -472,11 +472,11 @@ _021E5C70: .word 0x00003FF8
 
 	thumb_func_start ov18_021E5C74
 ov18_021E5C74: ; 0x021E5C74
-	ldr r3, _021E5C7C ; =GX_SetBanks
+	ldr r3, _021E5C7C ; =GfGfx_SetBanks
 	ldr r0, _021E5C80 ; =_021F98B0
 	bx r3
 	nop
-_021E5C7C: .word GX_SetBanks
+_021E5C7C: .word GfGfx_SetBanks
 _021E5C80: .word _021F98B0
 	thumb_func_end ov18_021E5C74
 
@@ -777,19 +777,19 @@ _021E5ED0:
 _021E5F1A:
 	mov r0, #1
 	add r1, r0, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #2
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #4
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #8
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	add sp, #0x58
 	pop {r3, r4, r5, pc}
 	nop
@@ -6401,9 +6401,9 @@ ov18_021E8C30: ; 0x021E8C30
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
 	mov r0, #0
-	bl GX_EngineASetLayers
+	bl GfGfx_EngineASetPlanes
 	mov r0, #0
-	bl GX_EngineBSetLayers
+	bl GfGfx_EngineBSetPlanes
 	ldr r0, _021E8D18 ; =0x04000050
 	mov r1, #0
 	strh r1, [r0]
@@ -6528,9 +6528,9 @@ ov18_021E8D38: ; 0x021E8D38
 	strh r0, [r1]
 	ldr r1, _021E8DA8 ; =0x04001050
 	strh r0, [r1]
-	bl GX_EngineASetLayers
+	bl GfGfx_EngineASetPlanes
 	mov r0, #0
-	bl GX_EngineBSetLayers
+	bl GfGfx_EngineBSetPlanes
 	ldr r0, _021E8DAC ; =0x0000085C
 	ldr r0, [r4, r0]
 	pop {r4, pc}
@@ -22523,10 +22523,10 @@ ov18_021F0FC8: ; 0x021F0FC8
 	add r4, r0, #0
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	add r0, r4, #0
 	bl ov18_021F12FC
 	add r0, r4, #0
@@ -38169,7 +38169,7 @@ ov18_021F8B10: ; 0x021F8B10
 	bl SetBgPriority
 	mov r0, #1
 	add r1, r0, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r5, _021F8BE0 ; =_021FBD7C
 	add r3, sp, #0x48
 	ldmia r5!, {r0, r1}
@@ -38756,7 +38756,7 @@ ov18_021F8FA0: ; 0x021F8FA0
 	bl ov18_021F9518
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov18_021F8FA0

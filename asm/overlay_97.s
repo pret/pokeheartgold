@@ -287,7 +287,7 @@ _0221E7FE:
 	sub r2, r2, #1
 	bne _0221E7FE
 	add r0, sp, #0
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -1251,10 +1251,10 @@ ov97_0221EEA4: ; 0x0221EEA4
 	bl ov97_0221F294
 	mov r0, #2
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #4
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov97_0221EEA4
@@ -1273,19 +1273,19 @@ ov97_0221EFD0: ; 0x0221EFD0
 	bl ov97_0221F428
 	mov r0, #2
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #4
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	pop {r3, r4, r5, pc}
 _0221EFFA:
 	bl ov97_0221F74C
 	mov r0, #2
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #4
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov97_0221EFD0
 
@@ -2251,7 +2251,7 @@ ov97_0221F7DC: ; 0x0221F7DC
 	bl G2dRenderer_SetSubSurfaceCoords
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r7, #0x13
 	mov r6, #0
 	add r4, r5, #0

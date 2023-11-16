@@ -7,8 +7,8 @@
 	thumb_func_start ov95_021E5900
 ov95_021E5900: ; 0x021E5900
 	push {r3, lr}
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -71,7 +71,7 @@ ov95_021E5974: ; 0x021E5974
 	push {r3, lr}
 	mov r0, #1
 	add r1, r0, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r0, _021E59E0 ; =0x04000008
 	mov r1, #3
 	ldrh r2, [r0]
@@ -166,7 +166,7 @@ ov95_021E5A38: ; 0x021E5A38
 	push {r4, r5, lr}
 	sub sp, #0x8c
 	add r4, r0, #0
-	bl GX_DisableEngineALayers
+	bl GfGfx_DisableEngineAPlanes
 	ldr r5, _021E5B14 ; =ov95_021E75B4
 	add r3, sp, #0x10
 	mov r2, #5
@@ -176,7 +176,7 @@ _021E5A48:
 	sub r2, r2, #1
 	bne _021E5A48
 	add r0, sp, #0x10
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	mov r1, #6
 	mov r2, #2
 	mov r0, #0
@@ -252,11 +252,11 @@ _021E5AA8:
 	orr r2, r0
 	strh r2, [r1]
 	add r1, r0, #0
-	bl GX_EngineAToggleLayers
-	bl GX_BothDispOn
+	bl GfGfx_EngineATogglePlanes
+	bl GfGfx_BothDispOn
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	add sp, #0x8c
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -2124,7 +2124,7 @@ _021E698A:
 	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	mov r0, #2
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r0, [r4, #0x68]
 	add r0, r0, #1
 	str r0, [r4, #0x68]
@@ -2258,7 +2258,7 @@ _021E6AA0:
 	bne _021E6B64
 	mov r0, #2
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	add r0, r4, #0
 	mov r1, #0
 	bl ov95_021E62F0
@@ -2380,7 +2380,7 @@ _021E6B98:
 	bl ov95_021E5EC0
 	mov r0, #2
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r0, [r4, #0x68]
 	add r0, r0, #1
 	str r0, [r4, #0x68]
@@ -2507,7 +2507,7 @@ _021E6CA0:
 	bl ov95_021E62F0
 	mov r0, #2
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r0, [r4, #0x74]
 	mov r1, #0
 	bl UnkImageStruct_SetSpriteVisibleFlag
@@ -2783,16 +2783,16 @@ ov95_021E6F0C: ; 0x021E6F0C
 	bl GF_3DVramMan_Delete
 	mov r0, #1
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #2
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #3
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #4
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	ldr r0, [r4, #8]
 	mov r1, #0
 	bl PaletteData_FreeBuffers
@@ -3105,7 +3105,7 @@ _021E70E2:
 	bl ToggleBgLayer
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	add r0, r4, #0
 	bl NARC_Delete
 	add sp, #0x1c
@@ -3141,7 +3141,7 @@ ov95_021E7208: ; 0x021E7208
 	bl ToggleBgLayer
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	ldr r0, [r4, #0x10]
 	mov r1, #1
 	bl UnkImageStruct_SetSpriteVisibleFlag
@@ -3187,7 +3187,7 @@ _021E728A:
 	bl UnkImageStruct_SetSpriteVisibleFlag
 	mov r0, #0x10
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	ldrb r0, [r4, #0x19]
 	pop {r4, pc}
 _021E72AE:

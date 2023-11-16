@@ -47,7 +47,7 @@ static void _InitDisplays(BgConfig *bgConfig) {
             GX_VRAM_TEX_0_A,
             GX_VRAM_TEXPLTT_01_FG,
         };
-        GX_SetBanks(&_020FC550);
+        GfGfx_SetBanks(&_020FC550);
     }
     {
         static const struct GraphicsModes _020FC524 = {

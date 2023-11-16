@@ -13,9 +13,9 @@ ov64_021E5900: ; 0x021E5900
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
 	mov r0, #0
-	bl GX_EngineASetLayers
+	bl GfGfx_EngineASetPlanes
 	mov r0, #0
-	bl GX_EngineBSetLayers
+	bl GfGfx_EngineBSetPlanes
 	ldr r0, _021E59B4 ; =0x04000050
 	mov r1, #0
 	strh r1, [r0]
@@ -244,11 +244,11 @@ ov64_021E5AE4: ; 0x021E5AE4
 
 	thumb_func_start ov64_021E5B00
 ov64_021E5B00: ; 0x021E5B00
-	ldr r3, _021E5B08 ; =GX_SetBanks
+	ldr r3, _021E5B08 ; =GfGfx_SetBanks
 	ldr r0, _021E5B0C ; =ov64_021E6FAC
 	bx r3
 	nop
-_021E5B08: .word GX_SetBanks
+_021E5B08: .word GfGfx_SetBanks
 _021E5B0C: .word ov64_021E6FAC
 	thumb_func_end ov64_021E5B00
 
@@ -800,10 +800,10 @@ _021E5EF0:
 	str r0, [r5, r1]
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	add sp, #0x5c
 	pop {r4, r5, r6, r7, pc}
 	nop

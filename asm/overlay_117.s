@@ -92,7 +92,7 @@ _0225F0A2:
 	blt _0225F0A2
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r0, [sp, #0x18]
 	ldr r0, [r0]
 	add r1, r0, #1
@@ -716,7 +716,7 @@ _0225F560:
 	bl Sprite_SetPriority
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #5
 	mov r1, #0x6a
 	lsl r0, r0, #0x12

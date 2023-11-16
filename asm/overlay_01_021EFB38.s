@@ -2566,13 +2566,13 @@ _021F0DFC:
 	ldr r0, [r0]
 	str r4, [r0, #4]
 	mov r0, #2
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #4
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #8
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	bl GX_ResetBankForBG
 	mov r2, #2
 	ldr r1, _021F0E60 ; =0x06840000
@@ -2994,10 +2994,10 @@ _021F1154:
 	sub r2, r2, #1
 	bne _021F1154
 	add r0, sp, #0x44
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	mov r0, #1
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r5, _021F11FC ; =ov01_022067FC
 	add r3, sp, #0x34
 	add r2, r3, #0
@@ -3021,7 +3021,7 @@ _021F1154:
 	bl SetBgPriority
 	mov r0, #8
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	add r0, sp, #0x24
 	bl MTX_Identity22_
 	mov r2, #0
@@ -3056,7 +3056,7 @@ _021F1154:
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	add sp, #0x6c
 	pop {r4, r5, pc}
 	.balign 4, 0

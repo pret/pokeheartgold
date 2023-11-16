@@ -3,7 +3,7 @@
 .public AllocFromHeap
 .public FreeToHeap
 .public SetBgPriority
-.public GX_EngineAToggleLayers
+.public GfGfx_EngineATogglePlanes
 .public GF_AssertFail
 .public G2x_SetBlendAlpha_
 .public ov80_0222ACA0

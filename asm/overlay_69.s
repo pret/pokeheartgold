@@ -14,8 +14,8 @@ ov69_021E5900: ; 0x021E5900
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetHBlankIntrCB
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -81,7 +81,7 @@ _021E5960:
 	bl BgConfig_Alloc
 	ldr r1, _021E5A24 ; =0x0000C010
 	str r0, [r5, r1]
-	bl GX_BothDispOn
+	bl GfGfx_BothDispOn
 	bl ResetAllTextPrinters
 	ldr r2, [r5]
 	mov r0, #8
@@ -99,7 +99,7 @@ _021E5960:
 	ldr r0, _021E5A30 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
-	bl GX_SwapDisplay
+	bl GfGfx_SwapDisplay
 	mov r0, #4
 	mov r1, #8
 	bl SetKeyRepeatTimers
@@ -215,16 +215,16 @@ _021E5A9A:
 	bl BeginNormalPaletteFade
 	mov r0, #4
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #4
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #8
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #8
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #1
 	str r0, [r5]
 	b _021E6028
@@ -888,16 +888,16 @@ ov69_021E6080: ; 0x021E6080
 	mov r0, #4
 	mov r1, #0
 	ldr r5, [r4]
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #4
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #8
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #8
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	ldr r0, _021E60E8 ; =0x0000C2DC
 	ldr r0, [r4, r0]
 	bl Camera_Delete
@@ -940,7 +940,7 @@ _021E6102:
 	sub r2, r2, #1
 	bne _021E6102
 	add r0, sp, #0
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0

@@ -44,7 +44,7 @@
 .public BgTilemapRectChangePalette
 .public MTRandom
 .public sub_02020E10
-.public GX_EngineAToggleLayers
+.public GfGfx_EngineATogglePlanes
 .public Camera_GetPerspectiveAngle
 .public Camera_GetDistance
 .public SpriteList_Create

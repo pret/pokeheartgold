@@ -22,13 +22,13 @@ ov01_021F467C: ; 0x021F467C
 	add r4, r1, #0
 	mov r0, #2
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #4
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #8
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	bl GX_ResetBankForBG
 	mov r0, #4
 	add r1, r0, #0
@@ -73,7 +73,7 @@ ov01_021F46DC: ; 0x021F46DC
 	bl GX_SetBankForBG
 	mov r0, #0xe
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r1, [r4]
 	mov r0, #4
 	bl FreeToHeapExplicit

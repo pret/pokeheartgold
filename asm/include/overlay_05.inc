@@ -116,10 +116,10 @@
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks
-.public GX_SetBanks
-.public GX_DisableEngineALayers
-.public GX_EngineAToggleLayers
-.public GX_DisableEngineBLayers
+.public GfGfx_SetBanks
+.public GfGfx_DisableEngineAPlanes
+.public GfGfx_EngineATogglePlanes
+.public GfGfx_DisableEngineBPlanes
 .public Camera_SetPerspectiveClippingPlane
 .public Sprite_TickCellOrMulticellAnimation
 .public GF_AssertFail

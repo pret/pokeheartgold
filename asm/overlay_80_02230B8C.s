@@ -450,12 +450,12 @@ _02230F06:
 	bne _02230F14
 	mov r0, #4
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	b _02230FB6
 _02230F14:
 	mov r0, #4
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	b _02230FB6
 _02230F1E:
 	ldrb r1, [r4, #5]

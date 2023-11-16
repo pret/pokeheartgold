@@ -70,10 +70,10 @@
 .public sub_020200A0
 .public AddTextPrinterParameterized
 .public AddTextPrinterParameterized2
-.public GX_EngineAToggleLayers
-.public GX_EngineASetLayers
-.public GX_EngineBToggleLayers
-.public GX_EngineAGetLayers
+.public GfGfx_EngineATogglePlanes
+.public GfGfx_EngineASetPlanes
+.public GfGfx_EngineBTogglePlanes
+.public GfGfx_EngineBGetPlanes
 .public Camera_New
 .public Camera_Delete
 .public Camera_Copy

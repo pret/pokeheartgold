@@ -88,10 +88,10 @@
 .public sub_020210BC
 .public sub_02021148
 .public sub_02021238
-.public GX_SetBanks
-.public GX_DisableEngineALayers
-.public GX_EngineAToggleLayers
-.public GX_DisableEngineBLayers
+.public GfGfx_SetBanks
+.public GfGfx_DisableEngineAPlanes
+.public GfGfx_EngineATogglePlanes
+.public GfGfx_DisableEngineBPlanes
 .public Sprite_Delete
 .public sub_02024818
 .public Set2dSpriteVisibleFlag

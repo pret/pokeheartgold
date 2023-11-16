@@ -1,7 +1,7 @@
 #include <nitro/gx/g2.h>
 #include <nitro/gx/gx_bgcnt.h>
 #include "global.h"
-#include "gx_layers.h"
+#include "gf_gfx_planes.h"
 #include "main.h"
 #include "msgdata.h"
 #include "msgdata/msg.naix"
@@ -80,8 +80,8 @@ void ShowSaveDataWriteError(HeapID heapId, int code) {
     Main_SetVBlankIntrCB(NULL, NULL);
     Main_SetHBlankIntrCB(NULL, NULL);
 
-    GX_DisableEngineALayers();
-    GX_DisableEngineBLayers();
+    GfGfx_DisableEngineAPlanes();
+    GfGfx_DisableEngineBPlanes();
     GX_SetVisiblePlane(0);
     GXS_SetVisiblePlane(0);
 
@@ -89,12 +89,12 @@ void ShowSaveDataWriteError(HeapID heapId, int code) {
 
     gSystem.screensFlipped = FALSE;
 
-    GX_SwapDisplay();
+    GfGfx_SwapDisplay();
     G2_BlendNone();
     G2S_BlendNone();
     GX_SetVisibleWnd(0);
     GXS_SetVisibleWnd(0);
-    GX_SetBanks(&sDataWriteErrorBanksConfig);
+    GfGfx_SetBanks(&sDataWriteErrorBanksConfig);
 
     BgConfig* bg_config = BgConfig_Alloc(heapId);
     SetBothScreensModesAndDisable(&sDataWriteErrorBgModeSet);
@@ -119,7 +119,7 @@ void ShowSaveDataWriteError(HeapID heapId, int code) {
     AddTextPrinterParameterized(&window, 0, error_str, 0, 0, 0, NULL);
     String_Delete(error_str);
 
-    GX_BothDispOn();
+    GfGfx_BothDispOn();
     SetMasterBrightnessNeutral(PM_LCD_TOP);
     SetMasterBrightnessNeutral(PM_LCD_BOTTOM);
     SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN | SCREEN_MASK_SUB);

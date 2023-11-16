@@ -321,8 +321,8 @@ ov104_021E5B88: ; 0x021E5B88
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -345,7 +345,7 @@ ov104_021E5B88: ; 0x021E5B88
 	strh r0, [r2]
 	ldr r0, _021E5BE8 ; =ov104_021E5F14
 	bl G3X_SetEdgeColorTable
-	bl GX_SwapDisplay
+	bl GfGfx_SwapDisplay
 	pop {r3, pc}
 	nop
 _021E5BD8: .word 0xFFFFE0FF
@@ -457,7 +457,7 @@ _021E5CB2:
 	sub r2, r2, #1
 	bne _021E5CB2
 	add r0, sp, #0
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0

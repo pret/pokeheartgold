@@ -30,7 +30,7 @@
 .public FreeToHeapExplicit
 .public FillBgTilemapRect
 .public ScheduleBgTilemapBufferTransfer
-.public GX_EngineAToggleLayers
+.public GfGfx_EngineATogglePlanes
 .public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite

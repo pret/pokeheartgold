@@ -1621,7 +1621,7 @@ ov48_02259464: ; 0x02259464
 	add r1, r4, #0
 	bl GF_CreateVramTransferManager
 	ldr r0, _022594A4 ; =ov48_0225B210
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0
@@ -1691,7 +1691,7 @@ ov48_022594F0: ; 0x022594F0
 	ldr r0, _02259640 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
-	bl GX_SwapDisplay
+	bl GfGfx_SwapDisplay
 	mov r0, #0
 	ldr r6, _02259644 ; =ov48_0225B2A4
 	ldr r4, _02259648 ; =ov48_0225B1B0
@@ -1855,7 +1855,7 @@ _02259658:
 	ldr r0, _02259684 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl GX_SwapDisplay
+	bl GfGfx_SwapDisplay
 	pop {r4, r5, r6, pc}
 	nop
 _02259680: .word ov48_0225B1B0
@@ -1921,10 +1921,10 @@ _022596F4:
 	bl sub_0203A880
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1998,7 +1998,7 @@ ov48_02259798: ; 0x02259798
 	push {r3, lr}
 	mov r0, #1
 	add r1, r0, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r0, _02259808 ; =0x04000008
 	mov r1, #3
 	ldrh r2, [r0]
