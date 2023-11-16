@@ -485,7 +485,7 @@ typedef struct OpponentData {
     u8 unk195;
     u8 unk196;
     u8 unk197;
-    u32 unk198;
+    SysTask *unk198;
     u16 unk19C;
     int unk1A0;
     u32 *unk1A4;
