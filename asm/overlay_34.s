@@ -393,19 +393,19 @@ ov34_0225D7A8: ; 0x0225D7A8
 	bl ov34_0225D520
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #1
 	add r1, r0, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #2
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #4
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #8
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	add r0, r4, #0
 	bl ov34_0225E560
 	add r0, r4, #0
@@ -519,7 +519,7 @@ ov34_0225D924: ; 0x0225D924
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #1
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	ldr r5, _0225DA44 ; =ov34_0225E6F8
 	add r3, sp, #0x48
 	ldmia r5!, {r0, r1}
@@ -540,7 +540,7 @@ ov34_0225D924: ; 0x0225D924
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #2
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	ldr r5, _0225DA48 ; =ov34_0225E6C0
 	add r3, sp, #0x2c
 	ldmia r5!, {r0, r1}
@@ -561,7 +561,7 @@ ov34_0225D924: ; 0x0225D924
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #4
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	ldr r5, _0225DA4C ; =ov34_0225E6DC
 	add r3, sp, #0x10
 	ldmia r5!, {r0, r1}
@@ -579,7 +579,7 @@ ov34_0225D924: ; 0x0225D924
 	bl InitBgFromTemplate
 	mov r0, #8
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #0x60
 	mov r1, #0
 	str r0, [sp]

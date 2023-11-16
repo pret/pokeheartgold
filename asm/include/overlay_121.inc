@@ -71,9 +71,9 @@
 .public sub_02022588
 .public sub_02022608
 .public sub_02022638
-.public GX_SetBanks
-.public GX_EngineAToggleLayers
-.public GX_SwapDisplay
+.public GfGfx_SetBanks
+.public GfGfx_EngineATogglePlanes
+.public GfGfx_SwapDisplay
 .public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite

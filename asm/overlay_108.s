@@ -380,10 +380,10 @@ _021E5BAA:
 	bl BeginNormalPaletteFade
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	ldr r0, [r4, #4]
 	add r0, r0, #1
 	str r0, [r4, #4]
@@ -471,8 +471,8 @@ _021E5C68:
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -575,8 +575,8 @@ _021E5D54:
 	ldr r1, [r2]
 	and r0, r1
 	str r0, [r2]
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r0, #0
 	str r0, [r4, #8]
 	mov r0, #1
@@ -1030,7 +1030,7 @@ _021E60B2:
 	bl UnkImageStruct_SetSpritePriority
 	mov r0, #0x10
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -1124,7 +1124,7 @@ _021E6174:
 	bl UnkImageStruct_SetSpritePriority
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -2452,7 +2452,7 @@ _021E6C52:
 	sub r2, r2, #1
 	bne _021E6C52
 	add r0, sp, #0
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -6278,8 +6278,8 @@ ov108_021E8AD4: ; 0x021E8AD4
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -6420,10 +6420,10 @@ _021E8BD2:
 	bl BeginNormalPaletteFade
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	ldr r0, [r4, #4]
 	add r0, r0, #1
 	str r0, [r4, #4]
@@ -6661,7 +6661,7 @@ ov108_021E8CD4: ; 0x021E8CD4
 	bl ov108_021E9230
 	mov r0, #1
 	add r1, r0, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r1, _021E8E0C ; =0x04000008
 	mov r0, #3
 	ldrh r2, [r1]
@@ -7355,8 +7355,8 @@ _021E934C:
 	ldr r1, [r2]
 	and r0, r1
 	str r0, [r2]
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r0, #0
 	str r0, [r4, #8]
 	mov r0, #1
@@ -7991,7 +7991,7 @@ _021E983A:
 	sub r2, r2, #1
 	bne _021E983A
 	add r0, sp, #0
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0

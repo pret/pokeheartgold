@@ -60,8 +60,8 @@
 .public sub_02022588
 .public sub_02022608
 .public sub_02022638
-.public GX_SetBanks
-.public GX_EngineBToggleLayers
+.public GfGfx_SetBanks
+.public GfGfx_EngineBTogglePlanes
 .public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite

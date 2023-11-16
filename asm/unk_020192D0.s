@@ -24,8 +24,8 @@ sub_020192D0: ; 0x020192D0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r1, #1
 	lsl r1, r1, #0x1a
 	ldr r0, [r1]

@@ -748,8 +748,8 @@ _02237E36:
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -1080,7 +1080,7 @@ _0223812E:
 	sub r2, r2, #1
 	bne _0223812E
 	add r0, sp, #0
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -1663,10 +1663,10 @@ _02238592:
 	bl Set2dSpriteVisibleFlag
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	bl sub_0203A880
 	add sp, #0x5c
 	pop {r4, r5, r6, r7, pc}
@@ -1973,16 +1973,16 @@ ov72_0223886C: ; 0x0223886C
 	bl ov72_02238EE4
 	mov r0, #1
 	add r1, r0, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #2
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #1
 	add r1, r0, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #2
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	ldr r0, [r4]
 	mov r1, #0
 	ldr r0, [r0]
@@ -2136,7 +2136,7 @@ ov72_022389C8: ; 0x022389C8
 	bl InitBgFromTemplate
 	mov r0, #1
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	add r0, r4, #0
 	mov r1, #0
 	bl BgClearTilemapBufferAndCommit
@@ -2157,7 +2157,7 @@ ov72_022389C8: ; 0x022389C8
 	bl InitBgFromTemplate
 	mov r0, #2
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r5, _02238AE0 ; =ov72_0223B448
 	add r3, sp, #0x38
 	ldmia r5!, {r0, r1}
@@ -2175,7 +2175,7 @@ ov72_022389C8: ; 0x022389C8
 	bl InitBgFromTemplate
 	mov r0, #1
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	add r0, r4, #0
 	mov r1, #4
 	bl BgClearTilemapBufferAndCommit
@@ -2196,7 +2196,7 @@ ov72_022389C8: ; 0x022389C8
 	bl InitBgFromTemplate
 	mov r0, #2
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	ldr r5, _02238AE8 ; =ov72_0223B3F4
 	add r3, sp, #0
 	ldmia r5!, {r0, r1}
@@ -2214,7 +2214,7 @@ ov72_022389C8: ; 0x022389C8
 	bl InitBgFromTemplate
 	mov r0, #4
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	add r0, r4, #0
 	mov r1, #6
 	bl BgClearTilemapBufferAndCommit

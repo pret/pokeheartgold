@@ -4075,8 +4075,8 @@ ov102_021E94A4: ; 0x021E94A4
 ov102_021E94CC: ; 0x021E94CC
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r1, #1
 	lsl r1, r1, #0x1a
 	ldr r0, [r1]
@@ -4172,10 +4172,10 @@ ov102_021E94CC: ; 0x021E94CC
 	bl ov102_021EC248
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	bl GX_DispOn
 	add r0, r5, #0
 	bl NARC_Delete
@@ -4407,7 +4407,7 @@ ov102_021E978C: ; 0x021E978C
 	add r2, r0, #0
 	bl GX_SetGraphicsMode
 	ldr r0, _021E981C ; =ov102_021EC760
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	ldr r0, _021E9820 ; =ov102_021EC6A8
 	bl SetBothScreensModesAndDisable
 	mov r1, #0

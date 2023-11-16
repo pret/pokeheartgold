@@ -742,10 +742,10 @@ _021E5EC6:
 _021E5ECA:
 	mov r0, #4
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #2
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -785,10 +785,10 @@ _021E5ECA:
 	bl BgSetPosTextAndCommit
 	mov r0, #4
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #2
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	neg r0, r6
 	lsl r0, r0, #0x10
 	ldr r7, _021E5F70 ; =ov99_021E9690
@@ -3949,7 +3949,7 @@ _021E77A6:
 	lsl r1, r1, #0x18
 	mov r0, #4
 	lsr r1, r1, #0x18
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E77D4: .word 0x000001ED
@@ -3979,7 +3979,7 @@ _021E77F4:
 	blt _021E77F4
 	mov r0, #4
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E7810: .word 0x00000414
@@ -3996,8 +3996,8 @@ ov99_021E7818: ; 0x021E7818
 	add r0, r4, #0
 	bl OverlayManager_GetArgs
 	add r5, r0, #0
-	bl GX_DisableEngineBLayers
-	bl GX_DisableEngineALayers
+	bl GfGfx_DisableEngineBPlanes
+	bl GfGfx_DisableEngineAPlanes
 	cmp r5, #0
 	bne _021E783C
 	bl GF_AssertFail

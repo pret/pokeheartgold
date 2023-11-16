@@ -3915,8 +3915,8 @@ ov112_021E76CC: ; 0x021E76CC
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r0, #1
 	lsl r0, r0, #0x1a
 	ldr r2, [r0]
@@ -4260,7 +4260,7 @@ _021E79DA:
 	sub r2, r2, #1
 	bne _021E79DA
 	add r0, sp, #0
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -4362,10 +4362,10 @@ ov112_021E7AC8: ; 0x021E7AC8
 	add r4, r0, #0
 	mov r0, #0x1f
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x1b
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	add r0, r4, #0
 	mov r1, #6
 	bl FreeBgTilemapBuffer
@@ -8770,10 +8770,10 @@ ov112_021EA1AC: ; 0x021EA1AC
 	add r4, r0, #0
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #0x40
 	mov r1, #0x9a
 	bl GF_CreateVramTransferManager
@@ -18882,7 +18882,7 @@ _021EF166:
 	sub r2, r2, #1
 	bne _021EF166
 	add r0, sp, #0
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -21365,10 +21365,10 @@ ov112_021F03BC: ; 0x021F03BC
 	bl ov112_021F0B28
 	mov r0, #2
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #4
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	add sp, #0x14
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -21388,13 +21388,13 @@ ov112_021F04DC: ; 0x021F04DC
 	bl ov112_021F06CC
 	mov r0, #2
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	pop {r3, r4, r5, pc}
 _021F04FE:
 	bl ov112_021F0980
 	mov r0, #2
 	mov r1, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov112_021F04DC
 
@@ -21969,7 +21969,7 @@ ov112_021F09B4: ; 0x021F09B4
 	bl G2dRenderer_SetSubSurfaceCoords
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r7, #0x13
 	mov r6, #0
 	add r4, r5, #0
@@ -22469,8 +22469,8 @@ ov112_021F0DC0: ; 0x021F0DC0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -22500,7 +22500,7 @@ _021F0DFE:
 	sub r2, r2, #1
 	bne _021F0DFE
 	add r0, sp, #0
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -24058,10 +24058,10 @@ ov112_021F196C: ; 0x021F196C
 	bl G2dRenderer_SetSubSurfaceCoords
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	add sp, #0x4c
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -26705,7 +26705,7 @@ _021F2DF4:
 	ldr r0, _021F2E68 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
-	bl GX_SwapDisplay
+	bl GfGfx_SwapDisplay
 	ldr r1, [r4, #4]
 	mov r0, #0xfb
 	bl NARC_New
@@ -26745,7 +26745,7 @@ ov112_021F2E70: ; 0x021F2E70
 	ldr r0, _021F2EAC ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl GX_SwapDisplay
+	bl GfGfx_SwapDisplay
 	bl ov112_021F0DC0
 	add r0, r4, #0
 	bl OverlayManager_FreeData

@@ -840,8 +840,8 @@ _021E624E:
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -876,7 +876,7 @@ _021E62A2:
 	bl Main_SetVBlankIntrCB
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0
 	bl SetMasterBrightnessNeutral
 	mov r1, #4
@@ -964,8 +964,8 @@ _021E6350:
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -1182,7 +1182,7 @@ _021E64FE:
 	sub r2, r2, #1
 	bne _021E64FE
 	add r0, sp, #0
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0

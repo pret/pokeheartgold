@@ -43,10 +43,10 @@ _0225F050:
 	mov r0, #2
 	mov r1, #1
 	ldr r5, [r4, #0xc]
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #8
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -122,7 +122,7 @@ _0225F050:
 	add r3, #0xfd
 	bl BgSetPosTextAndCommit
 	mov r0, #0x15
-	bl GX_EngineASetLayers
+	bl GfGfx_EngineASetPlanes
 	mov r0, #1
 	str r0, [r4]
 	b _0225F218
@@ -157,10 +157,10 @@ _0225F150:
 	bl ov01_021EFEC8
 	mov r0, #2
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #8
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #1
 	str r0, [r5, #0x1c]
 	mov r0, #4
@@ -195,7 +195,7 @@ _0225F18E:
 	cmp r2, #5
 	bls _0225F218
 	mov r0, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #1
 	str r0, [r5, #0x1c]
 	mov r0, #0

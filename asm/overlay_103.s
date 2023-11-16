@@ -86,11 +86,11 @@ _021EC9D4: .word 0x00003FF8
 
 	thumb_func_start ov103_021EC9D8
 ov103_021EC9D8: ; 0x021EC9D8
-	ldr r3, _021EC9E0 ; =GX_SetBanks
+	ldr r3, _021EC9E0 ; =GfGfx_SetBanks
 	ldr r0, _021EC9E4 ; =ov103_021EEC30
 	bx r3
 	nop
-_021EC9E0: .word GX_SetBanks
+_021EC9E0: .word GfGfx_SetBanks
 _021EC9E4: .word ov103_021EEC30
 	thumb_func_end ov103_021EC9D8
 
@@ -1281,9 +1281,9 @@ ov103_021ED314: ; 0x021ED314
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
 	mov r0, #0
-	bl GX_EngineASetLayers
+	bl GfGfx_EngineASetPlanes
 	mov r0, #0
-	bl GX_EngineBSetLayers
+	bl GfGfx_EngineBSetPlanes
 	ldr r0, _021ED3D4 ; =0x04000050
 	mov r1, #0
 	strh r1, [r0]
@@ -1383,9 +1383,9 @@ ov103_021ED3E8: ; 0x021ED3E8
 	strh r0, [r1]
 	ldr r1, _021ED45C ; =0x04001050
 	strh r0, [r1]
-	bl GX_EngineASetLayers
+	bl GfGfx_EngineASetPlanes
 	mov r0, #0
-	bl GX_EngineBSetLayers
+	bl GfGfx_EngineBSetPlanes
 	ldr r0, [r4, #0xc]
 	bl FreeToHeap
 	mov r0, #0
@@ -2788,10 +2788,10 @@ ov103_021EDEA8: ; 0x021EDEA8
 	add r5, r0, #0
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	ldr r0, [r5, #0xc]
 	bl ov103_021EE13C
 	ldr r0, [r5, #0xc]

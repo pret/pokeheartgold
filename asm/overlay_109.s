@@ -158,8 +158,8 @@ ov109_021E5A20: ; 0x021E5A20
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -2162,7 +2162,7 @@ _021E6936:
 	sub r2, r2, #1
 	bne _021E6936
 	add r0, sp, #0
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -2814,7 +2814,7 @@ ov109_021E6E9C: ; 0x021E6E9C
 	str r0, [r4]
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	pop {r4, pc}
 	thumb_func_end ov109_021E6E9C
 
@@ -2824,7 +2824,7 @@ ov109_021E6EC0: ; 0x021E6EC0
 	add r4, r0, #0
 	mov r0, #0x10
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	add r0, r4, #0
 	bl ov109_021E6F60
 	add r0, r4, #0

@@ -142,10 +142,10 @@
 .public sub_02021238
 .public sub_02021AC8
 .public sub_02021B5C
-.public GX_DisableEngineALayers
-.public GX_EngineAToggleLayers
-.public GX_DisableEngineBLayers
-.public GX_EngineBToggleLayers
+.public GfGfx_DisableEngineAPlanes
+.public GfGfx_EngineATogglePlanes
+.public GfGfx_DisableEngineBPlanes
+.public GfGfx_EngineBTogglePlanes
 .public sub_020247F4
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag

@@ -27,7 +27,7 @@ void ov12_0226604C(BgConfig *config) {
 
 void ov12_022660A8(BgConfig *config) {
     for (int i = 0; i < NELEMS(ov12_0226E5DC); i++) {
-        ToggleBgLayer(i + GF_BG_LYR_SUB_0, GX_LAYER_TOGGLE_OFF);
+        ToggleBgLayer(i + GF_BG_LYR_SUB_0, GF_PLANE_TOGGLE_OFF);
         FreeBgTilemapBuffer(config, i + GF_BG_LYR_SUB_0);
     }
 }

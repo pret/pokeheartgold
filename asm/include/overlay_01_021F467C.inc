@@ -2,7 +2,7 @@
 #pragma once
 .public AllocFromHeap
 .public FreeToHeapExplicit
-.public GX_EngineAToggleLayers
+.public GfGfx_EngineATogglePlanes
 .public GX_SetBankForBG
 .public GX_ResetBankForBG
 .public MIi_CpuClear32

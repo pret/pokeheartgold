@@ -1149,7 +1149,7 @@ ov90_02258FF0: ; 0x02258FF0
 	ldr r0, _02259080 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl GX_SwapDisplay
+	bl GfGfx_SwapDisplay
 	ldr r0, [sp]
 	mov r7, #0
 	cmp r0, #0
@@ -1294,10 +1294,10 @@ ov90_022590CC: ; 0x022590CC
 	bl sub_0203A880
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -1931,7 +1931,7 @@ _022595B4:
 	and r1, r2
 	str r1, [r0]
 	ldr r0, _022596B0 ; =ov90_0225C2CC
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	add r0, r4, #0
 	strh r5, [r4, #2]
 	bl ov90_0225C178
@@ -3628,7 +3628,7 @@ ov90_0225A2B0: ; 0x0225A2B0
 	mov r0, #1
 	mov r1, #0
 	str r6, [r5, #0x10]
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -3721,7 +3721,7 @@ ov90_0225A350: ; 0x0225A350
 	bl FontID_Release
 	mov r0, #1
 	add r1, r0, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3942,7 +3942,7 @@ _0225A586:
 	bl ClearWindowTilemapAndCopyToVram
 	mov r0, #1
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	add r0, r5, #0
 	add r1, r4, #0
 	mov r2, #0
@@ -3955,7 +3955,7 @@ _0225A586:
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #1
 	add r1, r0, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _0225A5B8:
@@ -4152,7 +4152,7 @@ _0225A6EA:
 	and r1, r2
 	str r1, [r0]
 	ldr r0, _0225A830 ; =ov90_0225C2F4
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	add r0, r4, #0
 	add r1, r4, #0
 	add r0, #0x34

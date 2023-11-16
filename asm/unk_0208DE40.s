@@ -63,7 +63,7 @@ sub_0208DE40: ; 0x0208DE40
 	str r0, [r1, #0x40]
 	mov r0, #1
 	add r1, r0, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r1, _0208DED8 ; =0x04000008
 	mov r0, #3
 	ldrh r2, [r1]

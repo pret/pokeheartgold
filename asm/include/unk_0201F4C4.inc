@@ -9,7 +9,7 @@
 .public AllocAndLoad3dTexResources
 .public Call_NNS_G3dTexLoad
 .public Call_NNS_G3dPlttLoad
-.public GX_EngineAToggleLayers
+.public GfGfx_EngineATogglePlanes
 .public GF_AssertFail
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete

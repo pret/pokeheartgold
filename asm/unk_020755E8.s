@@ -651,7 +651,7 @@ sub_02075A7C: ; 0x02075A7C
 	str r2, [sp, #0x14]
 	str r3, [sp, #0x18]
 	strb r1, [r0, #9]
-	bl GX_SwapDisplay
+	bl GfGfx_SwapDisplay
 	mov r0, #4
 	add r1, r5, #0
 	bl FontID_Alloc
@@ -1028,7 +1028,7 @@ sub_02075D4C: ; 0x02075D4C
 	ldr r0, _02075E10 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
-	bl GX_SwapDisplay
+	bl GfGfx_SwapDisplay
 	pop {r4, pc}
 	nop
 _02075E10: .word gSystem + 0x60
@@ -2976,7 +2976,7 @@ sub_02076E64: ; 0x02076E64
 	sub sp, #0xf0
 	add r5, r0, #0
 	add r4, r1, #0
-	bl GX_DisableEngineALayers
+	bl GfGfx_DisableEngineAPlanes
 	ldr r6, _02077180 ; =_020FFF34
 	add r3, sp, #0x20
 	mov r2, #5
@@ -2986,7 +2986,7 @@ _02076E76:
 	sub r2, r2, #1
 	bne _02076E76
 	add r0, sp, #0x20
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	mov r1, #6
 	mov r2, #2
 	mov r0, #0
@@ -3062,7 +3062,7 @@ _02076ED6:
 	orr r2, r0
 	strh r2, [r1]
 	add r1, r0, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r6, _02077190 ; =_020FFFE4
 	add r3, sp, #0x48
 	mov r2, #0xa
@@ -3314,13 +3314,13 @@ _02076F38:
 	mov r1, #0xa0
 	add r0, #0x75
 	strb r1, [r0]
-	bl GX_BothDispOn
+	bl GfGfx_BothDispOn
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	ldr r0, _0207719C ; =sub_02077270
 	add r1, r5, #0
 	bl Main_SetVBlankIntrCB
@@ -3343,10 +3343,10 @@ sub_020771A0: ; 0x020771A0
 	add r4, r0, #0
 	mov r0, #1
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #2
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	add r0, r4, #0
 	mov r1, #1
 	bl FreeBgTilemapBuffer

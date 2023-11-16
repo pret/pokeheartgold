@@ -1,10 +1,10 @@
-#ifndef POKEHEARTGOLD_GX_LAYERS_H
-#define POKEHEARTGOLD_GX_LAYERS_H
+#ifndef POKEHEARTGOLD_GF_GFX_PLANES_H
+#define POKEHEARTGOLD_GF_GFX_PLANES_H
 
 typedef enum {
-    GX_LAYER_TOGGLE_OFF,
-    GX_LAYER_TOGGLE_ON,
-} GXLayerToggle;
+    GF_PLANE_TOGGLE_OFF,
+    GF_PLANE_TOGGLE_ON,
+} GFPlaneToggle;
 
 enum GFBgLayer {
     GF_BG_LYR_MAIN_0 = 0,
@@ -46,15 +46,15 @@ typedef struct GraphicsBanks {
     GXVRamTexPltt texpltt;
 } GraphicsBanks;
 
-void GX_SetBanks(const GraphicsBanks *banks);
-void GX_DisableEngineALayers(void);
-void GX_EngineAToggleLayers(u32 layer_mask, GXLayerToggle enable);
-void GX_EngineASetLayers(u32 layers);
-void GX_DisableEngineBLayers(void);
-void GX_EngineBToggleLayers(u32 layer_mask, GXLayerToggle enable);
-void GX_EngineBSetLayers(u32 layers);
-void GX_BothDispOn(void);
-void GX_SwapDisplay(void);
-u32 GX_EngineAGetLayers(void);
+void GfGfx_SetBanks(const GraphicsBanks *banks);
+void GfGfx_DisableEngineAPlanes(void);
+void GfGfx_EngineATogglePlanes(GXPlaneMask planeMask, GFPlaneToggle enable);
+void GfGfx_EngineASetPlanes(u32 planes);
+void GfGfx_DisableEngineBPlanes(void);
+void GfGfx_EngineBTogglePlanes(GXPlaneMask planeMask, GFPlaneToggle enable);
+void GfGfx_EngineBSetPlanes(u32 planes);
+void GfGfx_BothDispOn(void);
+void GfGfx_SwapDisplay(void);
+u32 GfGfx_EngineBGetPlanes(void);
 
-#endif //POKEHEARTGOLD_GX_LAYERS_H
+#endif //POKEHEARTGOLD_GF_GFX_PLANES_H

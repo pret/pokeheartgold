@@ -106,7 +106,7 @@
 .public LCRandom
 .public MTRandom
 .public AddTextPrinterParameterized2
-.public GX_EngineAToggleLayers
+.public GfGfx_EngineATogglePlanes
 .public Camera_New
 .public Camera_Delete
 .public Camera_Copy

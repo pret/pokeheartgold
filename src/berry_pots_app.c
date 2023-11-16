@@ -5,7 +5,7 @@
 #include "font.h"
 #include "game_stats.h"
 #include "gf_gfx_loader.h"
-#include "gx_layers.h"
+#include "gf_gfx_planes.h"
 #include "gf_rtc.h"
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0248.h"
@@ -225,8 +225,8 @@ void ov17_02201BC0(void) {
     Main_SetVBlankIntrCB(NULL, NULL);
     HBlankInterruptDisable();
 
-    GX_DisableEngineALayers();
-    GX_DisableEngineBLayers();
+    GfGfx_DisableEngineAPlanes();
+    GfGfx_DisableEngineBPlanes();
 
     GX_SetVisiblePlane(0);
     GXS_SetVisiblePlane(0);
@@ -1018,7 +1018,7 @@ static void ov17_02202BF8(BerryPotsAppData *data) {
 
 static void ov17_02202C2C(void) {
     GraphicsBanks banks = ov17_02203ED0;
-    GX_SetBanks(&banks);
+    GfGfx_SetBanks(&banks);
 }
 
 static void BerryPotsApp_SetupBgConfig(BerryPotsAppData *data) {
@@ -1197,11 +1197,11 @@ static void BerryPotsApp_FreeSpriteRendererAndGfxHandler(BerryPotsAppData *data)
 static void BerryPotsApp_SetupSpriteSystem(BerryPotsAppData *data) {
     BerryPotsApp_SetupSpriteRendererAndGfxHandler(data);
     BerryPotsApp_SetupSprites(data);
-    GX_EngineAToggleLayers(16, GX_LAYER_TOGGLE_ON);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
 static void BerryPotsApp_FreeSpriteSystem(BerryPotsAppData *data) {
-    GX_EngineAToggleLayers(16, GX_LAYER_TOGGLE_OFF);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
     BerryPotsApp_FreeSprites(data);
     BerryPotsApp_FreeSpriteRendererAndGfxHandler(data);
 }

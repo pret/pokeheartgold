@@ -1116,7 +1116,7 @@ ov02_02246398: ; 0x02246398
 	bl SetBgPriority
 	mov r0, #2
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	add r0, r4, #0
 	bl NARC_Delete
 	add sp, #0x10
@@ -1132,7 +1132,7 @@ ov02_02246444: ; 0x02246444
 	add r4, r0, #0
 	mov r0, #2
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldrb r1, [r4, #0xe]
 	mov r0, #0
 	bl SetBgPriority
@@ -1711,7 +1711,7 @@ ov02_0224686C: ; 0x0224686C
 	bl SetBgPriority
 	mov r0, #2
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	add r0, r4, #0
 	bl NARC_Delete
 	ldr r0, [r5, #4]
@@ -1776,7 +1776,7 @@ ov02_02246964: ; 0x02246964
 	add r4, r0, #0
 	mov r0, #2
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldrb r1, [r4, #0x1a]
 	mov r0, #1
 	bl SetBgPriority
@@ -8965,7 +8965,7 @@ ov02_02249EC0: ; 0x02249EC0
 	strh r0, [r2, #4]
 	mov r0, #8
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	add r2, r5, #0
 	add r0, r4, #0
 #ifdef HEARTGOLD
@@ -9010,7 +9010,7 @@ ov02_02249EC0: ; 0x02249EC0
 	str r0, [r5, r1]
 	mov r0, #8
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02249F68: .word 0x0400000A
@@ -9044,7 +9044,7 @@ ov02_02249F6C: ; 0x02249F6C
 	strh r0, [r2, #4]
 	mov r0, #8
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov02_0224A080
@@ -9058,7 +9058,7 @@ ov02_02249F6C: ; 0x02249F6C
 	str r0, [r5, r1]
 	mov r0, #8
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02249FD0: .word 0x0400000A
@@ -9070,7 +9070,7 @@ ov02_02249FD4: ; 0x02249FD4
 	add r4, r0, #0
 	mov r0, #8
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x1e
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -9097,7 +9097,7 @@ ov02_02249FD4: ; 0x02249FD4
 	bl sub_0205B4EC
 	mov r0, #8
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	pop {r4, pc}
 	nop
 _0224A024: .word 0x04000008
@@ -9109,7 +9109,7 @@ ov02_0224A028: ; 0x0224A028
 	add r4, r0, #0
 	mov r0, #8
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x1e
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -9133,7 +9133,7 @@ ov02_0224A028: ; 0x0224A028
 	bl sub_0205B4EC
 	mov r0, #8
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	pop {r4, pc}
 	nop
 _0224A070: .word 0x04000008
@@ -25225,10 +25225,10 @@ _022519D4:
 	bl ScheduleBgTilemapBufferTransfer
 	mov r0, #4
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #8
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	add r0, r6, #0
 	mov r1, #0
 	add r0, #0x63
@@ -25315,10 +25315,10 @@ ov02_02251B70: ; 0x02251B70
 	add r6, r0, r1
 	mov r0, #4
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #8
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r4, #0
 _02251B88:
 	lsl r0, r4, #2

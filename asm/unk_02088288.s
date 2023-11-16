@@ -35,8 +35,8 @@ sub_02088298: ; 0x02088298
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r1, #1
 	lsl r1, r1, #0x1a
 	ldr r0, [r1]
@@ -160,7 +160,7 @@ sub_02088298: ; 0x02088298
 	lsr r0, r2, #0xb
 	orr r0, r1
 	strh r0, [r2]
-	bl GX_BothDispOn
+	bl GfGfx_BothDispOn
 	mov r1, #0
 	mov r0, #0x3d
 	add r2, r1, #0
@@ -428,7 +428,7 @@ _0208861A:
 	sub r2, r2, #1
 	bne _0208861A
 	add r0, sp, #0
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -587,8 +587,8 @@ _02088778: .word _02103974
 sub_0208877C: ; 0x0208877C
 	push {r4, lr}
 	add r4, r0, #0
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	add r0, r4, #0
 	mov r1, #6
 	bl FreeBgTilemapBuffer

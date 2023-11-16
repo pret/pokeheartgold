@@ -47,7 +47,7 @@
 .public FillWindowPixelBuffer
 .public sub_0201F988
 .public AddTextPrinterParameterized2
-.public GX_EngineBToggleLayers
+.public GfGfx_EngineBTogglePlanes
 .public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite

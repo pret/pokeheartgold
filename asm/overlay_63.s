@@ -13,9 +13,9 @@ ov63_0221BE20: ; 0x0221BE20
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
 	mov r0, #0
-	bl GX_EngineASetLayers
+	bl GfGfx_EngineASetPlanes
 	mov r0, #0
-	bl GX_EngineBSetLayers
+	bl GfGfx_EngineBSetPlanes
 	ldr r2, _0221BF10 ; =0x04000050
 	mov r1, #0
 	strh r1, [r2]
@@ -185,11 +185,11 @@ _0221BFB8: .word ov63_0221FD18
 
 	thumb_func_start ov63_0221BFBC
 ov63_0221BFBC: ; 0x0221BFBC
-	ldr r3, _0221BFC4 ; =GX_SetBanks
+	ldr r3, _0221BFC4 ; =GfGfx_SetBanks
 	ldr r0, _0221BFC8 ; =ov63_0221FD58
 	bx r3
 	nop
-_0221BFC4: .word GX_SetBanks
+_0221BFC4: .word GfGfx_SetBanks
 _0221BFC8: .word ov63_0221FD58
 	thumb_func_end ov63_0221BFBC
 
@@ -830,13 +830,13 @@ _0221C40A:
 	bl ov63_0221F7DC
 	mov r0, #2
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #4
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #8
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	add r0, r5, #0
 	add r0, #0xd4
 	ldr r0, [r0]
@@ -2473,7 +2473,7 @@ ov63_0221D20C: ; 0x0221D20C
 	bl ov63_0221D240
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	pop {r3, pc}
 	thumb_func_end ov63_0221D20C
 
@@ -5350,13 +5350,13 @@ ov63_0221E940: ; 0x0221E940
 	bl InitBgFromTemplate
 	mov r0, #2
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #4
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #8
 	mov r1, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	add sp, #0x64
 	pop {r4, r5, pc}
 	nop
@@ -6037,7 +6037,7 @@ _0221EF06:
 	bl ov63_0221C954
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	add sp, #0x44
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -6181,7 +6181,7 @@ ov63_0221F088: ; 0x0221F088
 	bl GF_3DVramMan_InitFramePlttVramManager
 	mov r0, #1
 	add r1, r0, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r0, _0221F12C ; =0x04000008
 	mov r1, #3
 	ldrh r2, [r0]

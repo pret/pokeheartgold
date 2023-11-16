@@ -392,7 +392,7 @@ ov41_02246130: ; 0x02246130
 	ldr r0, _0224614C ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
-	bl GX_SwapDisplay
+	bl GfGfx_SwapDisplay
 	pop {r3, pc}
 	nop
 _0224614C: .word gSystem + 0x60
@@ -404,7 +404,7 @@ ov41_02246150: ; 0x02246150
 	ldr r0, _0224616C ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl GX_SwapDisplay
+	bl GfGfx_SwapDisplay
 	bl ov41_022467D4
 	bl ov41_022467C8
 	bl GX_ResetBankForTex
@@ -1159,7 +1159,7 @@ _022466DA:
 	sub r2, r2, #1
 	bne _022466DA
 	add r0, sp, #0
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	add sp, #0x28
 	pop {r4, pc}
 	.balign 4, 0
@@ -1173,7 +1173,7 @@ ov41_022466F0: ; 0x022466F0
 	bl G3X_InitMtxStack
 	mov r0, #1
 	add r1, r0, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r0, _02246764 ; =0x04000008
 	mov r1, #3
 	ldrh r2, [r0]
@@ -1250,14 +1250,14 @@ ov41_02246778: ; 0x02246778
 	orr r0, r1
 	str r0, [r2]
 	bl NNS_G2dInitOamManagerModule
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r0, #0x1f
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x13
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -1276,8 +1276,8 @@ ov41_022467C8: ; 0x022467C8
 	thumb_func_start ov41_022467D4
 ov41_022467D4: ; 0x022467D4
 	push {r3, lr}
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	bl NNS_G2dInitOamManagerModule
 	pop {r3, pc}
 	thumb_func_end ov41_022467D4
@@ -12414,7 +12414,7 @@ ov41_0224BA10: ; 0x0224BA10
 	ldr r0, _0224BAC8 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
-	bl GX_SwapDisplay
+	bl GfGfx_SwapDisplay
 	add r0, r5, #0
 	add r0, #0x14
 	mov r1, #0xe

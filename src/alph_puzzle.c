@@ -1,7 +1,7 @@
 #include "global.h"
 #include "alph_puzzle.h"
 #include "unk_0200FA24.h"
-#include "gx_layers.h"
+#include "gf_gfx_planes.h"
 #include "sound_02004A44.h"
 #include "system.h"
 #include "options.h"
@@ -164,8 +164,8 @@ BOOL ov110_AlphPuzzle_OvyExit(OVY_MANAGER *man, int *state) {
 static void ov110_021E5A24(void) {
     Main_SetVBlankIntrCB(NULL, NULL);
     HBlankInterruptDisable();
-    GX_DisableEngineALayers();
-    GX_DisableEngineBLayers();
+    GfGfx_DisableEngineAPlanes();
+    GfGfx_DisableEngineBPlanes();
     GX_SetVisiblePlane(0);
     GXS_SetVisiblePlane(0);
     sub_0200FBF4(0, 0);
@@ -581,7 +581,7 @@ extern const GraphicsBanks ov110_021E6F54;
 
 static void ov110_021E61B0() {
     GraphicsBanks banks = ov110_021E6F54;
-    GX_SetBanks(&banks);
+    GfGfx_SetBanks(&banks);
 }
 
 extern GraphicsModes ov110_021E6DC0;
@@ -754,11 +754,11 @@ static void ov110_021E66F8(AlphPuzzleData *data) {
 static void ov110_021E6730(AlphPuzzleData *data) {
     ov110_021E6678(data);
     ov110_021E6764(data);
-    GX_EngineAToggleLayers(16, GX_LAYER_TOGGLE_ON);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
 static void ov110_021E6748(AlphPuzzleData *data) {
-    GX_EngineAToggleLayers(16, GX_LAYER_TOGGLE_OFF);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
     AlphPuzzle_DeleteSprites(data);
     ov110_021E66F8(data);
 }

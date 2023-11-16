@@ -55,8 +55,8 @@
 .public ScheduleBgTilemapBufferTransfer
 .public AddTextPrinterParameterized2
 .public GF_RunVramTransferTasks
-.public GX_EngineAToggleLayers
-.public GX_SwapDisplay
+.public GfGfx_EngineATogglePlanes
+.public GfGfx_SwapDisplay
 .public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite

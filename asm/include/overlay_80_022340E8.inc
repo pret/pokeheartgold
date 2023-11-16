@@ -10,7 +10,7 @@
 .public FreeToHeap
 .public ScheduleBgTilemapBufferTransfer
 .public LCRandom
-.public GX_EngineAToggleLayers
+.public GfGfx_EngineATogglePlanes
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public GF_AssertFail

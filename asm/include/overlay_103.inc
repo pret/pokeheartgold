@@ -118,11 +118,11 @@
 .public sub_020210BC
 .public sub_02021148
 .public sub_02021238
-.public GX_SetBanks
-.public GX_EngineAToggleLayers
-.public GX_EngineASetLayers
-.public GX_EngineBToggleLayers
-.public GX_EngineBSetLayers
+.public GfGfx_SetBanks
+.public GfGfx_EngineATogglePlanes
+.public GfGfx_EngineASetPlanes
+.public GfGfx_EngineBTogglePlanes
+.public GfGfx_EngineBSetPlanes
 .public sub_02024B1C
 .public sub_02025224
 .public System_GetTouchNew

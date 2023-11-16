@@ -3,7 +3,7 @@
 .public sub_02004EC4
 .public AllocFromHeap
 .public FreeToHeap
-.public GX_EngineAToggleLayers
+.public GfGfx_EngineATogglePlanes
 .public sub_02030B14
 .public sub_02030BD0
 .public sub_02030BF4

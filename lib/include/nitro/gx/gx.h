@@ -84,6 +84,18 @@ typedef enum {
     GX_DISP_SELECT_MAIN_SUB = 1
 } GXDispSelect;
 
+typedef enum {
+    GX_PLANEMASK_NONE = 0,
+
+    GX_PLANEMASK_BG0 = (1 << 0),
+    GX_PLANEMASK_BG1 = (1 << 1),
+    GX_PLANEMASK_BG2 = (1 << 2),
+    GX_PLANEMASK_BG3 = (1 << 3),
+    GX_PLANEMASK_OBJ = (1 << 4),
+
+    GX_PLANEMASK_ALL = GX_PLANEMASK_BG0 | GX_PLANEMASK_BG1 | GX_PLANEMASK_BG2 | GX_PLANEMASK_BG3 | GX_PLANEMASK_OBJ,
+} GXPlaneMask;
+
 void GX_SetGraphicsMode(GXDispMode dispMode, GXBGMode bgMode, GXBG0As bg0_2d3d);
 void GXS_SetGraphicsMode(GXBGMode bgMode);
 

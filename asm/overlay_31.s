@@ -79,16 +79,16 @@ ov31_0225D520: ; 0x0225D520
 	str r0, [r2]
 	mov r0, #1
 	add r1, r0, #0
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #2
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #4
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #1
 	bl sub_02002B8C
 	ldr r0, _0225D608 ; =_0225EE40
@@ -603,7 +603,7 @@ _0225D9EA:
 	bl FreeToHeap
 	mov r0, #2
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	add sp, #8
 	pop {r3, r4, r5, pc}
 _0225DA26:

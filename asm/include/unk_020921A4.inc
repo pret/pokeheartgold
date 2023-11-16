@@ -36,10 +36,10 @@
 .public ResetAllTextPrinters
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized
-.public GX_SetBanks
-.public GX_DisableEngineALayers
-.public GX_DisableEngineBLayers
-.public GX_BothDispOn
+.public GfGfx_SetBanks
+.public GfGfx_DisableEngineAPlanes
+.public GfGfx_DisableEngineBPlanes
+.public GfGfx_BothDispOn
 .public String_New
 .public String_Delete
 .public Save_GetStatusFlags

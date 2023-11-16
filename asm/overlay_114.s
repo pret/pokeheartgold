@@ -91,7 +91,7 @@ _0225F04E:
 	bl sub_02024B78
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -378,7 +378,7 @@ _0225F2F6:
 	blt _0225F2F6
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r0, [r6]
 	add r0, r0, #1
 	str r0, [r6]

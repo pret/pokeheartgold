@@ -4,7 +4,7 @@
 .public IsPaletteFadeFinished
 .public sub_0200FBF4
 .public AllocFromHeap
-.public GX_EngineAToggleLayers
+.public GfGfx_EngineATogglePlanes
 .public Camera_SetPerspectiveAngle
 .public Camera_SetAnglePos
 .public Camera_SetDistance

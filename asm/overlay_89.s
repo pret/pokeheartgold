@@ -13,8 +13,8 @@ ov89_02258800: ; 0x02258800
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	mov r1, #1
 	lsl r1, r1, #0x1a
 	ldr r0, [r1]
@@ -246,33 +246,33 @@ ov89_02258800: ; 0x02258800
 _02258A4A:
 	mov r0, #1
 	add r1, r0, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #2
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #4
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #8
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #2
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #4
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	ldr r0, _02258AF4 ; =gSystem + 0x60
 	mov r1, #1
 	strb r1, [r0, #9]
-	bl GX_SwapDisplay
-	bl GX_BothDispOn
+	bl GfGfx_SwapDisplay
+	bl GfGfx_BothDispOn
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	mov r0, #0x10
 	mov r1, #1
-	bl GX_EngineBToggleLayers
+	bl GfGfx_EngineBTogglePlanes
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
@@ -936,8 +936,8 @@ ov89_0225905C: ; 0x0225905C
 	push {r3, r4, r5, lr}
 	sub sp, #0xe0
 	add r4, r0, #0
-	bl GX_DisableEngineALayers
-	bl GX_DisableEngineBLayers
+	bl GfGfx_DisableEngineAPlanes
+	bl GfGfx_DisableEngineBPlanes
 	ldr r5, _0225921C ; =ov89_0225CA78
 	add r3, sp, #0x10
 	mov r2, #5
@@ -947,7 +947,7 @@ _02259070:
 	sub r2, r2, #1
 	bne _02259070
 	add r0, sp, #0x10
-	bl GX_SetBanks
+	bl GfGfx_SetBanks
 	mov r1, #6
 	mov r2, #2
 	mov r0, #0
@@ -1054,7 +1054,7 @@ _022590D0:
 	strh r0, [r1]
 	mov r0, #1
 	add r1, r0, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r5, _0225922C ; =ov89_0225CC6C
 	add r3, sp, #0x38
 	mov r2, #0xa
@@ -2529,7 +2529,7 @@ ov89_02259D8C: ; 0x02259D8C
 	push {r3, lr}
 	mov r0, #1
 	add r1, r0, #0
-	bl GX_EngineAToggleLayers
+	bl GfGfx_EngineATogglePlanes
 	ldr r0, _02259DF8 ; =0x04000008
 	mov r1, #3
 	ldrh r2, [r0]

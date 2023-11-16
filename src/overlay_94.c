@@ -77,7 +77,7 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenuStruct* unkPtr) {
         work->state++;
         break;
     case 4:
-        GX_EngineAToggleLayers(1, GX_LAYER_TOGGLE_ON);
+        GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
         _EmitParticles(work);
         work->state++;
         break;
