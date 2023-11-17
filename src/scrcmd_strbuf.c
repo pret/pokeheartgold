@@ -1,5 +1,5 @@
 #include "scrcmd.h"
-#include "event_data.h"
+#include "save_vars_flags.h"
 #include "filesystem.h"
 #include "item.h"
 #include "msgdata/msg.naix"

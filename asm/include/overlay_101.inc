@@ -249,9 +249,9 @@
 .public Save_LocalFieldData_Get
 .public sub_0203E354
 .public Save_VarsFlags_Get
-.public CheckFlagInArray
-.public SetFlagInArray
-.public ClearFlagInArray
+.public Save_VarsFlags_CheckFlagInArray
+.public Save_VarsFlags_SetFlagInArray
+.public Save_VarsFlags_ClearFlagInArray
 .public sub_0205BBD0
 .public sub_0205BC78
 .public sub_0205C7EC

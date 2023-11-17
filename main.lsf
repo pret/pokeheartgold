@@ -183,7 +183,7 @@ Static main
 	Object src/scrcmd_20.o
 	Object src/scrcmd_battle_castle.o
 	Object src/scrcmd_battle_arcade.o
-	Object src/event_data.o
+	Object src/save_vars_flags.o
 	Object src/task.o
 	Object src/encounter.o
 	Object asm/unk_020517A4.o

@@ -3,7 +3,7 @@
 
 #include "save.h"
 #include "save_local_field_data.h"
-#include "event_data.h"
+#include "save_vars_flags.h"
 #include "script.h"
 #include "gear_phone.h"
 #include "unk_0200E320.h"

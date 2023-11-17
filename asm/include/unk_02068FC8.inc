@@ -30,7 +30,7 @@
 .public FieldSystem_GetSaveData
 .public sub_0203F7B0
 .public Save_VarsFlags_Get
-.public CheckFlagInArray
+.public Save_VarsFlags_CheckFlagInArray
 .public TaskManager_Call
 .public FieldSystem_ApplicationIsRunning
 .public TaskManager_GetFieldSystem

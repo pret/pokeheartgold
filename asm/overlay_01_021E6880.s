@@ -2193,7 +2193,7 @@ ov01_021E7A08: ; 0x021E7A08
 	ldr r0, [r4, #0xc]
 	bl Save_VarsFlags_Get
 	ldr r1, _021E7A5C ; =0x00000984
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021E7A56
 	add r0, r5, #0

@@ -1,6 +1,6 @@
 #include "global.h"
 #include "assert.h"
-#include "event_data.h"
+#include "save_vars_flags.h"
 #include "field_map_object.h"
 #include "field_player_avatar.h"
 #include "field_system.h"

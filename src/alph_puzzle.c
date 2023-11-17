@@ -7,7 +7,7 @@
 #include "options.h"
 #include "unk_020183F0.h"
 #include "player_data.h"
-#include "event_data.h"
+#include "save_vars_flags.h"
 #include "sys_flags.h"
 #include "unk_020210A0.h"
 #include "unk_02025154.h"

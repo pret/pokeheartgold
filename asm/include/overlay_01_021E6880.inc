@@ -55,7 +55,7 @@
 .public StartMapSceneScript
 .public TryStartMapScriptByType
 .public Save_VarsFlags_Get
-.public CheckFlagInArray
+.public Save_VarsFlags_CheckFlagInArray
 .public sub_020511F8
 .public sub_02053E08
 .public sub_02053F14
