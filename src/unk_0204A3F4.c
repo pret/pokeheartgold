@@ -431,62 +431,64 @@ static void sub_0204ACA0(UnkStruct_Fsys_A0 *a0, SaveData *saveData, BOOL a2, u16
 void sub_0204AD04(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     GAME_STATS *gameStats = Save_GameStats_Get(saveData);
     void *unk00 = sub_0203107C(saveData);
-    if (a0->unk0f != 5) {
-        u32 unk4 = a0->unk0f == 6 ? 112 : a0->unk0f * 2;
-        sub_020310BC(unk00, unk4, sub_0205C268(unk4));
-        sub_0203126C(unk00, unk4, sub_0205C268(unk4), a0->unk1a + a0->unk0d);
-        if (a0->unk0f == 6) {
-            sub_020310BC(sub_0203107C(saveData), 100, sub_0205C268(100));
-        } else {
-            sub_0202D5DC(a0->unk74, a0->unk0f + 8, 0);
-        }
-        u32 unk = sub_02031108(unk00, unk4 + 1, sub_0205C268(unk4 + 1), a0->unk1a + a0->unk0d);
-        if (a0->unk0f == 6) {
-            sub_02031108(sub_0203107C(saveData), 100, sub_0205C268(100), 0);
-        } else {
-            sub_0202D5DC(a0->unk74, a0->unk0f + 8, 2);
-        }
-        GameStats_Add(gameStats, GAME_STAT_UNK30, a0->unk0d);
-        sub_0202D57C(a0->unk74, a0->unk0f, 2);
-        if (a0->unk0f != 6) {
-            GameStats_Add(Save_GameStats_Get(saveData), GAME_STAT_UNK16, 1);
-        }
-        sub_0204B318(a0);
-        unk++;
-        if (unk > 9999) {
-            unk = 9999;
-        }
-        sub_0204ACA0(a0, saveData, 0, unk);
+    if (a0->unk0f == 5) {
+        return;
     }
+    u32 unk4 = a0->unk0f == 6 ? 112 : a0->unk0f * 2;
+    sub_020310BC(unk00, unk4, sub_0205C268(unk4));
+    sub_0203126C(unk00, unk4, sub_0205C268(unk4), a0->unk1a + a0->unk0d);
+    if (a0->unk0f == 6) {
+        sub_020310BC(sub_0203107C(saveData), 100, sub_0205C268(100));
+    } else {
+        sub_0202D5DC(a0->unk74, a0->unk0f + 8, 0);
+    }
+    u32 unk = sub_02031108(unk00, unk4 + 1, sub_0205C268(unk4 + 1), a0->unk1a + a0->unk0d);
+    if (a0->unk0f == 6) {
+        sub_02031108(sub_0203107C(saveData), 100, sub_0205C268(100), 0);
+    } else {
+        sub_0202D5DC(a0->unk74, a0->unk0f + 8, 2);
+    }
+    GameStats_Add(gameStats, GAME_STAT_UNK30, a0->unk0d);
+    sub_0202D57C(a0->unk74, a0->unk0f, 2);
+    if (a0->unk0f != 6) {
+        GameStats_Add(Save_GameStats_Get(saveData), GAME_STAT_UNK16, 1);
+    }
+    sub_0204B318(a0);
+    unk++;
+    if (unk > 9999) {
+        unk = 9999;
+    }
+    sub_0204ACA0(a0, saveData, 0, unk);
 }
 
 void sub_0204AE20(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
-    if (a0->unk0f != 5) {
-        GAME_STATS *gameStats = Save_GameStats_Get(saveData);
-        void *unk00 = sub_0203107C(saveData);
-        u32 unk4 = a0->unk0f == 6 ? 112 : a0->unk0f * 2;
-        if (a0->unk0f == 6) {
-            sub_020310BC(sub_0203107C(saveData), 100, sub_0205C268(100));
-        } else {
-            sub_0202D5DC(a0->unk74, a0->unk0f + 8, 0);
-        }
-        u32 unk6 = sub_02031108(unk00, unk4 + 1, sub_0205C268(unk4 + 1), a0->unk1a + a0->unk0d);
-        if (a0->unk0f == 6) {
-            sub_02031108(sub_0203107C(saveData), 100, sub_0205C268(100), 1);
-        } else {
-            sub_0202D5DC(a0->unk74, a0->unk0f + 8, 1);
-        }
-        sub_020310BC(unk00, unk4, sub_0205C268(unk4));
-        sub_0203126C(unk00, unk4, sub_0205C268(unk4), unk6);
-        GameStats_Add(gameStats, GAME_STAT_UNK30, 7);
-        sub_0202D57C(a0->unk74, a0->unk0f, 3);
-        if (a0->unk0f != 6) {
-            GameStats_Add(gameStats, GAME_STAT_UNK16, 1);
-        }
-        GameStats_AddSpecial(gameStats, GAME_STAT_UNK14);
-        sub_0204B318(a0);
-        sub_0204ACA0(a0, saveData, 1, unk6);
+    if (a0->unk0f == 5) {
+        return;
     }
+    GAME_STATS *gameStats = Save_GameStats_Get(saveData);
+    void *unk00 = sub_0203107C(saveData);
+    u32 unk4 = a0->unk0f == 6 ? 112 : a0->unk0f * 2;
+    if (a0->unk0f == 6) {
+        sub_020310BC(sub_0203107C(saveData), 100, sub_0205C268(100));
+    } else {
+        sub_0202D5DC(a0->unk74, a0->unk0f + 8, 0);
+    }
+    u32 unk6 = sub_02031108(unk00, unk4 + 1, sub_0205C268(unk4 + 1), a0->unk1a + a0->unk0d);
+    if (a0->unk0f == 6) {
+        sub_02031108(sub_0203107C(saveData), 100, sub_0205C268(100), 1);
+    } else {
+        sub_0202D5DC(a0->unk74, a0->unk0f + 8, 1);
+    }
+    sub_020310BC(unk00, unk4, sub_0205C268(unk4));
+    sub_0203126C(unk00, unk4, sub_0205C268(unk4), unk6);
+    GameStats_Add(gameStats, GAME_STAT_UNK30, 7);
+    sub_0202D57C(a0->unk74, a0->unk0f, 3);
+    if (a0->unk0f != 6) {
+        GameStats_Add(gameStats, GAME_STAT_UNK16, 1);
+    }
+    GameStats_AddSpecial(gameStats, GAME_STAT_UNK14);
+    sub_0204B318(a0);
+    sub_0204ACA0(a0, saveData, 1, unk6);
 }
 
 void sub_0204AF2C(UnkStruct_Fsys_A0 *a0) {
@@ -559,13 +561,11 @@ BOOL sub_0204B0E0(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     u32 unk = sub_0204A6F8(saveData, a0->unk0f);
     if (unk < 50) {
         return FALSE;
-    }
-    else if (unk >= 100) {
+    } else if (unk >= 100) {
         if (sub_0202D5DC(a0->unk74, 1, 0)) {
             return FALSE;
         }
-    }
-    else if (sub_0202D5DC(a0->unk74, 0, 0)) {
+    } else if (sub_0202D5DC(a0->unk74, 0, 0)) {
         return FALSE;
     }
     return TRUE;

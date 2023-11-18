@@ -285,7 +285,7 @@ BOOL ScrCmd_418(ScriptContext *ctx) {
     u8 unk[2];
     sub_0202D8D0(sub_0202D928(ctx->fieldSystem->saveData), unk);
     *unk4 = unk[0];
-    *unk6 = unk[1];    
+    *unk6 = unk[1];
     return FALSE;
 }
 
