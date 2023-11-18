@@ -4045,7 +4045,7 @@ int LowestFlagNo(u32 mask) {
     return i;
 }
 
-static const u16 sBattleFrontierBanlist[18] = {
+static const u16 sBattleFrontierBanlist[NUM_BANNED_BATTLE_FRONTIER] = {
     SPECIES_MEWTWO,
     SPECIES_MEW,
     SPECIES_LUGIA,
@@ -4067,8 +4067,7 @@ static const u16 sBattleFrontierBanlist[18] = {
 };
 
 BOOL IsPokemonBannedFromBattleFrontier(u16 species, u16 form) {
-    int i;
-    for (i = 0; i < NELEMS(sBattleFrontierBanlist); i++) {
+    for (u32 i = 0; i < NUM_BANNED_BATTLE_FRONTIER; i++) {
         if (species == sBattleFrontierBanlist[i]) {
             return TRUE;
         }
@@ -4080,7 +4079,7 @@ BOOL IsPokemonBannedFromBattleFrontier(u16 species, u16 form) {
 }
 
 u16 GetBannedBattleFrontierPokemon(u32 idx) {
-    if (idx >= NELEMS(sBattleFrontierBanlist)) {
+    if (idx >= NUM_BANNED_BATTLE_FRONTIER) {
         idx = 0;
     }
     return sBattleFrontierBanlist[idx];
