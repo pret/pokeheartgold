@@ -230,7 +230,7 @@ void ov12_02237BB8(BattleSystem *bsys) {
     sub_020027F0(1);
     ov12_0223A620(bsys);
     
-    G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(bsys->unk90), 0, 17 << 16);
+    G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(bsys->unk90), 0, FX32_CONST(272));
 }
 
 void ov12_02237CC4(BattleSystem *bsys) {
@@ -243,5 +243,3 @@ void ov12_02237CC4(BattleSystem *bsys) {
     FreeBgTilemapBuffer(bsys->bgConfig, 3);
     BattleSystem_SetHpBarDisabled(bsys);
 }
-
-
