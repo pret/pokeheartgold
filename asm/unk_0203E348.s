@@ -1597,19 +1597,19 @@ sub_0203EE54: ; 0x0203EE54
 	add r4, r0, #0
 	bl Save_VarsFlags_Get
 	mov r1, #0xef
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	beq _0203EE8A
 	add r0, r4, #0
 	bl Save_VarsFlags_Get
 	mov r1, #0xf0
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	beq _0203EE8A
 	add r0, r4, #0
 	bl Save_VarsFlags_Get
 	mov r1, #0xf1
-	bl CheckFlagInArray
+	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	beq _0203EE8A
 	mov r0, #1

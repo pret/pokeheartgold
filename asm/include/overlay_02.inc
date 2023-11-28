@@ -207,7 +207,7 @@
 .public FieldSystem_FlagGet
 .public HiddenItemScriptNoToFlagId
 .public Save_VarsFlags_Get
-.public CheckFlagInArray
+.public Save_VarsFlags_CheckFlagInArray
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnvironment

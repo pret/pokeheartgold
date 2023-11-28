@@ -325,8 +325,8 @@
 .public sub_0203A994
 .public sub_0203A9C8
 .public Save_VarsFlags_Get
-.public CheckFlagInArray
-.public SetFlagInArray
+.public Save_VarsFlags_CheckFlagInArray
+.public Save_VarsFlags_SetFlagInArray
 .public SpeciesToOverworldModelIndexOffset
 .public OverworldModelLookupFormCount
 .public OverworldModelLookupHasFemaleForm

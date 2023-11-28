@@ -140,7 +140,7 @@
 .public sub_0203FCB8
 .public sub_0203FD08
 .public Save_VarsFlags_Get
-.public CheckFlagInArray
+.public Save_VarsFlags_CheckFlagInArray
 .public TaskManager_Call
 .public FieldSystem_ApplicationIsRunning
 .public CallApplicationAsTask

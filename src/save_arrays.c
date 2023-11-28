@@ -11,7 +11,7 @@
 #include "daycare.h"
 #include "sav_system_info.h"
 #include "bag.h"
-#include "event_data.h"
+#include "save_vars_flags.h"
 #include "save_misc_data.h"
 #include "pokedex.h"
 #include "sav_chatot.h"

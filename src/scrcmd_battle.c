@@ -1,7 +1,7 @@
 #include "scrcmd.h"
 #include "unk_020632B0.h"
 #include "encounter.h"
-#include "event_data.h"
+#include "save_vars_flags.h"
 #include "sys_flags.h"
 #include "sys_vars.h"
 #include "map_header.h"

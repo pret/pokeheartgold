@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_SYS_FLAGS_H
 #define POKEHEARTGOLD_SYS_FLAGS_H
 
-#include "event_data.h"
+#include "save_vars_flags.h"
 
 void SetScriptFlag(SaveVarsFlags* state, u16 flag_id);
 void ClearScriptFlag(SaveVarsFlags* state, u16 flag_id);

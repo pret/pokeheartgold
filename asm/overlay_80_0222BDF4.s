@@ -2924,7 +2924,7 @@ ov80_0222D334: ; 0x0222D334
 	ldr r0, [r0, #8]
 	bl Save_VarsFlags_Get
 	add r1, r6, #0
-	bl GetVarAddr
+	bl Save_VarsFlags_GetVarAddr
 	strh r4, [r0]
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -2945,7 +2945,7 @@ ov80_0222D360: ; 0x0222D360
 	ldr r0, [r0, #8]
 	bl Save_VarsFlags_Get
 	add r1, r6, #0
-	bl GetVarAddr
+	bl Save_VarsFlags_GetVarAddr
 	ldrh r0, [r0]
 	strh r0, [r4]
 	mov r0, #0

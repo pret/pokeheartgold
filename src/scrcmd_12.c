@@ -1,6 +1,6 @@
 #include "scrcmd.h"
 #include "save_pokegear.h"
-#include "event_data.h"
+#include "save_vars_flags.h"
 #include "sys_flags.h"
 #include "pal_park.h"
 #include "save_arrays.h"
