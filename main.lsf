@@ -169,7 +169,9 @@ Static main
 	Object src/scrcmd_sound.o
 	Object src/scrcmd_battle.o
 	Object src/scrcmd_8.o
-	Object asm/scrcmd_9.o
+	Object src/scrcmd_9.o
+	Object src/unk_0204A3F4.o
+	Object src/unk_0204B538.o
 	Object src/scrcmd_apricorn.o
 	Object asm/scrcmd_11.o
 	Object src/scrcmd_12.o
