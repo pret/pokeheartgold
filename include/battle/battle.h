@@ -128,8 +128,8 @@ typedef struct TrainerAIData {
     u32 unk78[8];
     u8 unk98;
     u8 unk99[2];
-    u8 unk9B;
-    u8 unk9C;
+    u8 battlerIdAttacker;
+    u8 battlerIdTarget;
     u8 unk9D[2];
     u8 unk9F[2];
     u16 unkA0[2];

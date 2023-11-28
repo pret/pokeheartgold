@@ -42,3 +42,23 @@ void ov10_0221BE20(BattleSystem *bsys, BattleContext *ctx, u8 battlerId, u8 a3) 
         ctx->trainerAIData.aiFlags |= AI_DOUBLES;
     }
 }
+
+u8 ov10_0221BEF4(BattleSystem *bsys, u8 battlerId) {
+    u8 ret;
+    BattleContext *ctx = bsys->ctx;
+    
+    if (!(ctx->trainerAIData.unk10 & 0x10)) {
+        ctx->trainerAIData.battlerIdAttacker = battlerId;
+        ctx->trainerAIData.battlerIdTarget = ov12_02253DA0(bsys, ctx, battlerId);
+        
+        ov10_0221BE20(bsys, ctx, ctx->trainerAIData.battlerIdAttacker, 15);
+    }
+    
+    if ((bsys->battleType & BATTLE_TYPE_DOUBLES) == 0) {
+        ret = ov10_0221BF44(bsys, ctx);
+    } else {
+        ret = ov10_0221C038(bsys, ctx);
+    }
+    
+    return ret;
+}

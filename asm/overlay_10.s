@@ -4,48 +4,6 @@
 
 	.text
 
-	thumb_func_start ov10_0221BEF4
-ov10_0221BEF4: ; 0x0221BEF4
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	add r2, r1, #0
-	mov r1, #0xd9
-	ldr r4, [r5, #0x30]
-	lsl r1, r1, #2
-	ldrb r6, [r4, r1]
-	mov r3, #0x10
-	tst r3, r6
-	bne _0221BF26
-	add r1, #0x6b
-	strb r2, [r4, r1]
-	add r1, r4, #0
-	bl ov12_02253DA0
-	mov r2, #0x3d
-	lsl r2, r2, #4
-	strb r0, [r4, r2]
-	sub r2, r2, #1
-	ldrb r2, [r4, r2]
-	add r0, r5, #0
-	add r1, r4, #0
-	mov r3, #0xf
-	bl ov10_0221BE20
-_0221BF26:
-	ldr r1, [r5, #0x2c]
-	mov r0, #2
-	tst r0, r1
-	bne _0221BF38
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov10_0221BF44
-	pop {r4, r5, r6, pc}
-_0221BF38:
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov10_0221C038
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end ov10_0221BEF4
-
 	thumb_func_start ov10_0221BF44
 ov10_0221BF44: ; 0x0221BF44
 	push {r4, r5, r6, r7, lr}

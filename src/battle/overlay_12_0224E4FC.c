@@ -6410,7 +6410,7 @@ int ov12_022581D4(BattleSystem *bsys, BattleContext *ctx, int var, int battlerId
     case 8:
         return ctx->unk_21A8[battlerId][0];
     case 9:
-        return ctx->trainerAIData.unk9C;
+        return ctx->trainerAIData.battlerIdTarget;
     case 10:
         return ctx->unk_3108;
     case 11:
@@ -6442,7 +6442,7 @@ void ov12_022582B8(BattleSystem *bsys, BattleContext *ctx, int var, int battlerI
         ctx->totalTurns = data;
         break;
     case 9:
-        ctx->trainerAIData.unk9C = data;
+        ctx->trainerAIData.battlerIdTarget = data;
         break;
     case 11:
         ctx->trainerAIData.unkA4[battlerId] = data;
