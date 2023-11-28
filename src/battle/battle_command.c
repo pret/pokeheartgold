@@ -5978,7 +5978,7 @@ static void Task_GetExp(SysTask *task, void *inData)
     GetterWork *data = inData;
     Pokemon *mon;
     BattleMessage msg;
-    int battler;
+    int side;
     int expBattler;
     u32 *msgLoader;
     u32 battleType;
@@ -5987,7 +5987,7 @@ static void Task_GetExp(SysTask *task, void *inData)
 
     msgLoader = ov12_0223A930(data->bsys);
     battleType = BattleSystem_GetBattleType(data->bsys);
-    battler = data->ctx->battlerIdFainted >> 1 & 1; // init to the side with the fainted mon
+    side = (data->ctx->battlerIdFainted >> 1) & 1; //Get side of fainted mon (left or right)
     expBattler = 0;
 
     // Figure out which mon we're working on
@@ -5996,7 +5996,7 @@ static void Task_GetExp(SysTask *task, void *inData)
         item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
         itemEffect = GetItemAttr(item, ITEM_VAR_HOLD_EFFECT, HEAP_ID_BATTLE);
 
-        if (itemEffect == HOLD_EFFECT_EXP_SHARE || (data->ctx->unk_A4[battler] & MaskOfFlagNo(slot))) {
+        if (itemEffect == HOLD_EFFECT_EXP_SHARE || (data->ctx->unk_A4[side] & MaskOfFlagNo(slot))) {
             break;
         }
     }
@@ -6010,433 +6010,136 @@ static void Task_GetExp(SysTask *task, void *inData)
     }
 
     switch (data->state) {
-        case STATE_GET_EXP_START: {
-            item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
-            itemEffect = GetItemAttr(item, ITEM_VAR_HOLD_EFFECT, HEAP_ID_BATTLE);
+    case STATE_GET_EXP_START: 
+        item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+        itemEffect = GetItemAttr(item, ITEM_VAR_HOLD_EFFECT, HEAP_ID_BATTLE);
 
-            // Declare victory if all wild mons have been defeated
-            if (!(battleType & BATTLE_TYPE_TRAINER)
-                    && data->ctx->battleMons[BATTLER_ENEMY].hp
-                        + data->ctx->battleMons[BATTLER_ENEMY2].hp == 0
-                    && GetMonData(mon, MON_DATA_HP, NULL)
-                    && !data->ctx->unk_3144) {
-                PlayBGM(SEQ_GS_WIN2);
-                data->ctx->unk_3144 = TRUE;
-                BattleSystem_SetCriticalHpMusicFlag(data->bsys, 2); // turn off
-            }
-
-            u32 totalExp = 0;
-            msg.id = msg_0197_00001; // "{0} gained {1} Exp. Points!"
-
-            if (GetMonData(mon, MON_DATA_HP, NULL) && GetMonData(mon, MON_DATA_LEVEL, NULL) != 100) {
-                if (data->ctx->unk_A4[battler] & MaskOfFlagNo(slot)) {
-                    totalExp = data->ctx->gainedExp;
-                }
-
-                if (itemEffect == HOLD_EFFECT_EXP_SHARE) {
-                    totalExp += data->ctx->partyGainedExp;
-                }
-
-                if (itemEffect == HOLD_EFFECT_EXP_UP) {
-                    totalExp = totalExp * 150 / 100;
-                }
-
-                if (battleType & BATTLE_TYPE_TRAINER) {
-                    totalExp = totalExp * 150 / 100;
-                }
-
-                if (!ov12_022568B0(data->bsys, mon)) {
-                    if (GetMonData(mon, MON_DATA_GAME_LANGUAGE, NULL) != gGameLanguage) {
-                        totalExp = totalExp * 170 / 100;
-                    } else {
-                        totalExp = totalExp * 150 / 100;
-                    }
-
-                    msg.id = msg_0197_00002; // "{0} gained a boosted {1} Exp. Points!"
-                }
-
-                u32 newExp = GetMonData(mon, MON_DATA_EXPERIENCE, NULL);
-                data->unk30[3] = newExp - GetMonBaseExperienceAtCurrentLevel(mon);
-                newExp += totalExp;
-
-                if (slot == data->ctx->selectedMonIndex[expBattler]) {
-                    data->ctx->battleMons[expBattler].exp = newExp;
-                }
-
-                SetMonData(mon, MON_DATA_EXPERIENCE, &newExp);
-                ov12_022463E8(BattleSystem_GetParty(data->bsys, expBattler),
-                        slot,
-                        data->ctx->battleMons[data->ctx->battlerIdFainted].species,
-                        data->ctx->battleMons[data->ctx->battlerIdFainted].form);
-            }
-
-            if (totalExp) {
-                msg.tag = 17;
-                msg.param[0] = expBattler | (slot << 8);
-                msg.param[1] = totalExp;
-                data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
-                data->unk30[1] = 30 / 4;
-                data->state++;
-            } else {
-                data->state = STATE_GET_EXP_CHECK_DONE;
-            }
-
-            break;
+        // Declare victory if all wild mons have been defeated
+        if (!(battleType & BATTLE_TYPE_TRAINER)
+                && data->ctx->battleMons[BATTLER_ENEMY].hp
+                    + data->ctx->battleMons[BATTLER_ENEMY2].hp == 0
+                && GetMonData(mon, MON_DATA_HP, NULL)
+                && !data->ctx->unk_3144) {
+            PlayBGM(SEQ_GS_WIN2);
+            data->ctx->unk_3144 = TRUE;
+            BattleSystem_SetCriticalHpMusicFlag(data->bsys, 2); // turn off
         }
 
-        case STATE_GET_EXP_WAIT_MESSAGE_PRINT:
-            if (!TextPrinterCheckActive(data->unk30[0])) {
-                data->state++;
-            }
-            break;
+        u32 totalExp = 0;
+        msg.id = msg_0197_00001; // "{0} gained {1} Exp. Points!"
 
-        case STATE_GET_EXP_WAIT_MESSAGE_DELAY:
-            if (--data->unk30[1] == 0) {
-                data->state++;
+        if (GetMonData(mon, MON_DATA_HP, NULL) && GetMonData(mon, MON_DATA_LEVEL, NULL) != 100) {
+            if (data->ctx->unk_A4[side] & MaskOfFlagNo(slot)) {
+                totalExp = data->ctx->gainedExp;
             }
-            break;
 
-        case STATE_GET_EXP_GAUGE:
-            // Only animate the gauge for an active battler
+            if (itemEffect == HOLD_EFFECT_EXP_SHARE) {
+                totalExp += data->ctx->partyGainedExp;
+            }
+
+            if (itemEffect == HOLD_EFFECT_EXP_UP) {
+                totalExp = totalExp * 150 / 100;
+            }
+
+            if (battleType & BATTLE_TYPE_TRAINER) {
+                totalExp = totalExp * 150 / 100;
+            }
+
+            if (!ov12_022568B0(data->bsys, mon)) {
+                if (GetMonData(mon, MON_DATA_GAME_LANGUAGE, NULL) != gGameLanguage) {
+                    totalExp = totalExp * 170 / 100;
+                } else {
+                    totalExp = totalExp * 150 / 100;
+                }
+
+                msg.id = msg_0197_00002; // "{0} gained a boosted {1} Exp. Points!"
+            }
+
+            u32 newExp = GetMonData(mon, MON_DATA_EXPERIENCE, NULL);
+            data->unk30[3] = newExp - GetMonBaseExperienceAtCurrentLevel(mon);
+            newExp += totalExp;
+
             if (slot == data->ctx->selectedMonIndex[expBattler]) {
-                ov12_02263564(data->bsys, data->ctx, expBattler, data->unk30[3]);
-                data->unk30[3] = 0;
-                data->state++;
-            } else {
-                data->state = STATE_GET_EXP_CHECK_LEVEL_UP;
-            }
-            break;
-
-        case STATE_GET_EXP_WAIT_GAUGE:
-            if (Link_QueueNotEmpty(data->ctx)) {
-                data->state++;
-            }
-            break;
-
-        case STATE_GET_EXP_CHECK_LEVEL_UP:
-            if (Pokemon_TryLevelUp(mon)) {
-                // Only play the special level-up animation for an active battler
-                if (data->ctx->selectedMonIndex[expBattler] == slot) {
-                    BattleController_EmitSetStatus2Effect(data->bsys, data->ctx, expBattler, 8);
-                    ov12_0226399C(data->bsys, expBattler);
-                }
-
-                data->state = STATE_GET_EXP_WAIT_LEVEL_UP_EFFECT;
-            } else {
-                data->state = STATE_GET_EXP_CHECK_DONE;
-            }
-            break;
-
-        case STATE_GET_EXP_WAIT_LEVEL_UP_EFFECT:
-            if (Link_QueueNotEmpty(data->ctx)) {
-                TempStatsStruct stats = ov12_0226C354;
-                int level = GetMonData(mon, MON_DATA_LEVEL, NULL);
-                // Cache the stats from the previous level for later
-                data->ctx->unk_17C = AllocFromHeap(HEAP_ID_BATTLE, sizeof(StatStruct));
-                StatStruct *oldStats = data->ctx->unk_17C;
-                for (i = 0; i < 6; i++) {
-                    oldStats->stats[i] = GetMonData(mon, stats.stats[i], NULL);
-                }
-
-                MonApplyFriendshipMod(mon, 0, BattleSystem_GetLocation(data->bsys));
-                ApplyMonMoodModifier(mon, 0);
-                CalcMonStats(mon);
-
-                if (data->ctx->selectedMonIndex[expBattler] == slot) {
-                    BattleSystem_ReloadMonData(data->bsys,
-                        data->ctx,
-                        expBattler,
-                        data->ctx->selectedMonIndex[expBattler]);
-                }
-
-                data->ctx->levelUpMons |= MaskOfFlagNo(slot);
-                ov12_02263A1C(data->bsys, data->ctx, expBattler);
-
-                msg.id = msg_0197_00003; // "{0} grew to Lv. {1}!"
-                msg.tag = 17;
-                msg.param[0] = expBattler | (slot << 8);
-                msg.param[1] = level;
-                data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
-                data->state = STATE_GET_EXP_WAIT_LEVEL_UP_MESSAGE_PRINT;
-            }
-            break;
-
-        case STATE_GET_EXP_WAIT_LEVEL_UP_MESSAGE_PRINT:
-            if (TextPrinterCheckActive(data->unk30[0]) == 0) {
-                data->state = STATE_GET_EXP_LEVEL_UP_SUMMARY_LOAD_ICON;
-                data->unk30[2] = 0;
-            }
-            break;
-
-        case STATE_GET_EXP_LEVEL_UP_SUMMARY_LOAD_ICON:
-            // Load the Pokemon's Party icon if they are not the active battler
-            if (data->ctx->selectedMonIndex[expBattler] != slot) {
-                ov12_02248228(data->bsys, data, mon);
+                data->ctx->battleMons[expBattler].exp = newExp;
             }
 
-            data->state = STATE_GET_EXP_LEVEL_UP_SUMMARY_INIT;
-            break;
-
-        case STATE_GET_EXP_LEVEL_UP_SUMMARY_INIT: {
-            BgConfig *bgConfig = BattleSystem_GetBgConfig(data->bsys);
-            Window *window = BattleSystem_GetWindow(data->bsys, 1);
-            PaletteData *palette = BattleSystem_GetPaletteData(data->bsys);
-
-            G2_SetBG0Priority(1 + 1); // this is the background + 1; could do with a constant
-            SetBgPriority(1, 1);
-            SetBgPriority(2, 0);
-
-            ov12_0223C224(data->bsys, 0 + 1); // gauge's default is 0
-
-            sub_0200E398(bgConfig, 2, 1, 0, HEAP_ID_BATTLE);
-            PaletteData_LoadNarc(palette, NARC_a_0_3_8, sub_0200E3D8(), HEAP_ID_BATTLE, 0, 0x20, 8 * 0x10);
-            AddWindowParameterized(bgConfig, window, 2, 0x11, 0x7, 14, 12, 11, (9 + 1));
-            FillWindowPixelBuffer(window, 0xFF);
-            DrawFrameAndWindow1(window, 0, 1, 8);
-
-            data->state = STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF;
-            break;
+            SetMonData(mon, MON_DATA_EXPERIENCE, &newExp);
+            ov12_022463E8(BattleSystem_GetParty(data->bsys, expBattler),
+                    slot,
+                    data->ctx->battleMons[data->ctx->battlerIdFainted].species,
+                    data->ctx->battleMons[data->ctx->battlerIdFainted].form);
         }
 
-        case STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF: {
-            
-            TempStatsStruct stats = ov12_0226C36C;
-            TempStatsStruct monData = ov12_0226C384;
-            
-            Window *window = BattleSystem_GetWindow(data->bsys, 1);
+        if (totalExp) {
+            msg.tag = 17;
+            msg.param[0] = expBattler | (slot << 8);
+            msg.param[1] = totalExp;
+            data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
+            data->unk30[1] = 7;
+            data->state++;
+        } else {
+            data->state = STATE_GET_EXP_CHECK_DONE;
+        }
+
+        break;
+    
+    case STATE_GET_EXP_WAIT_MESSAGE_PRINT:
+        if (!TextPrinterCheckActive(data->unk30[0])) {
+            data->state++;
+        }
+        break;
+
+    case STATE_GET_EXP_WAIT_MESSAGE_DELAY:
+        if (--data->unk30[1] == 0) {
+            data->state++;
+        }
+        break;
+
+    case STATE_GET_EXP_GAUGE:
+        // Only animate the gauge for an active battler
+        if (slot == data->ctx->selectedMonIndex[expBattler]) {
+            ov12_02263564(data->bsys, data->ctx, expBattler, data->unk30[3]);
+            data->unk30[3] = 0;
+            data->state++;
+        } else {
+            data->state = STATE_GET_EXP_CHECK_LEVEL_UP;
+        }
+        break;
+
+    case STATE_GET_EXP_WAIT_GAUGE:
+        if (Link_QueueNotEmpty(data->ctx)) {
+            data->state++;
+        }
+        break;
+
+    case STATE_GET_EXP_CHECK_LEVEL_UP:
+        if (Pokemon_TryLevelUp(mon)) {
+            // Only play the special level-up animation for an active battler
+            if (data->ctx->selectedMonIndex[expBattler] == slot) {
+                BattleController_EmitSetStatus2Effect(data->bsys, data->ctx, expBattler, 8);
+                ov12_0226399C(data->bsys, expBattler);
+            }
+
+            data->state = STATE_GET_EXP_WAIT_LEVEL_UP_EFFECT;
+        } else {
+            data->state = STATE_GET_EXP_CHECK_DONE;
+        }
+        break;
+
+    case STATE_GET_EXP_WAIT_LEVEL_UP_EFFECT:
+        if (Link_QueueNotEmpty(data->ctx)) {
+            TempStatsStruct stats = ov12_0226C354;
+            int level = GetMonData(mon, MON_DATA_LEVEL, NULL);
+            // Cache the stats from the previous level for later
+            data->ctx->unk_17C = AllocFromHeap(HEAP_ID_BATTLE, sizeof(StatStruct));
             StatStruct *oldStats = data->ctx->unk_17C;
-
             for (i = 0; i < 6; i++) {
-                msg.id = msg_0197_00947; // stat name
-                msg.tag = 4;
-                msg.param[0] = stats.stats[i];
-
-                ov12_0223C4E8(data->bsys, window, msgLoader, &msg, 0, 16 * i, 0, 0, 0);
-
-                msg.id = msg_0197_00948; // "+{0}"
-                msg.tag = 7;
-                msg.param[0] = GetMonData(mon, monData.stats[i], NULL) - oldStats->stats[i];
-                msg.unk1C = 2;
-
-                ov12_0223C4E8(data->bsys, window, msgLoader, &msg, 80, 16 * i, 0, 0, 0);
+                oldStats->stats[i] = GetMonData(mon, stats.stats[i], NULL);
             }
 
-            data->state = STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF_WAIT;
-            break;
-        }
-
-        case STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_TRUE: {
-            TempStatsStruct monData = ov12_0226C33C;
-            Window *window = BattleSystem_GetWindow(data->bsys, 1);
-
-            FillWindowPixelRect(window, 0xF, 80, 0, 36, 96); // clear out the diff section (keep the printed stat names)
-
-            for (i = 0; i < 6; i++) {
-                msg.id = msg_0197_00949; // just a number
-                msg.tag = 7;
-                msg.param[0] = GetMonData(mon, monData.stats[i], NULL);
-                msg.unk1C = 3;
-
-                ov12_0223C4E8(data->bsys, window, msgLoader, &msg, 72, 16 * i, 0x2, 36, 0);
-            }
-
-            data->state = STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_TRUE_WAIT;
-            break;
-        }
-        
-        case STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF_WAIT:
-        case STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_TRUE_WAIT:
-            if ((gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B | PAD_BUTTON_X | PAD_BUTTON_Y)) || System_GetTouchNew()) {
-                PlaySE(SEQ_SE_DP_SELECT);
-                data->state++;
-            }
-            break;
-
-        case STATE_GET_EXP_LEVEL_UP_CLEAR: {
-            Window *window = BattleSystem_GetWindow(data->bsys, 1);
-
-            sub_0200E5D4(window, 0);
-            RemoveWindow(window);
-
-            G2_SetBG0Priority(1);
-            SetBgPriority(1, 0);
-            SetBgPriority(2, 1);
-
-            ov12_0223C224(data->bsys, 0);
-
-            if (data->ctx->selectedMonIndex[expBattler] != slot) {
-                ov12_022484D4(data->bsys, data);
-            }
-
-            FreeToHeap(data->ctx->unk_17C);
-            data->state = 15;
-            break;
-        }
-
-        case STATE_GET_EXP_CHECK_LEARN_MOVE: {
-            u16 move;
-            BgConfig *bgConfig = BattleSystem_GetBgConfig(data->bsys); // unused, but must be kept to match
-
-            switch (MonTryLearnMoveOnLevelUp(mon, &data->unk30[2], &move)) {
-            case 0:
-                data->state = STATE_GET_EXP_GAUGE;
-                break;
-            case 0xFFFE:
-                break;
-            case 0xFFFF:
-                data->unk30[4] = move;
-                data->state = STATE_GET_EXP_WANTS_TO_LEARN_MOVE_PRINT;
-                break;
-            default:
-                if (data->ctx->selectedMonIndex[expBattler] == slot) {
-                    BattleSystem_ReloadMonData(data->bsys,
-                        data->ctx,
-                        expBattler,
-                        data->ctx->selectedMonIndex[expBattler]);
-                }
-
-                msg.id = msg_0197_00004; // "{0} learned {1}!"
-                msg.tag = 10;
-                msg.param[0] = expBattler | (slot << 8);
-                msg.param[1] = move;
-                data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
-                data->state = STATE_GET_EXP_LEARNED_MOVE_WAIT;
-                break;
-            }
-            break;
-        }
-
-        case STATE_GET_EXP_WANTS_TO_LEARN_MOVE_PRINT:
-            msg.id = msg_0197_01178; // "{0} wants to learn the move {1}."
-            msg.tag = 10;
-            msg.param[0] = expBattler | (slot << 8);
-            msg.param[1] = data->unk30[4];
-            data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
-            data->state++;
-            break;
-
-        case STATE_GET_EXP_CANT_LEARN_MORE_MOVES_PRINT:
-            msg.id = msg_0197_01179; // "But {0} can't learn more than four moves."
-            msg.tag = 2;
-            msg.param[0] = expBattler | (slot << 8);
-            data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
-            data->state++;
-            break;
-
-        case STATE_GET_EXP_WANTS_TO_LEARN_MOVE_PRINT_WAIT:
-        case STATE_GET_EXP_CANT_LEARN_MORE_MOVES_PRINT_WAIT:
-        case STATE_GET_EXP_ONE_TWO_POOF_WAIT:
-        case STATE_GET_EXP_FORGOT_HOW_TO_USE_WAIT:
-        case STATE_GET_EXP_AND_DOTDOTDOT_WAIT:
-        case STATE_GET_EXP_MAKE_IT_FORGET_CANCELLED_WAIT:
-            if (!TextPrinterCheckActive(data->unk30[0])) {
-                data->state++;
-            }
-            break;
-
-        case STATE_GET_EXP_MAKE_IT_FORGET_PROMPT:
-            // "Make it forget another move?"
-            BattleController_EmitDrawYesNoBox(data->bsys, data->ctx, expBattler, 1180, 1, 0, 0);
-            data->state++;
-            break;
-
-        case STATE_GET_EXP_MAKE_IT_FORGET_ANSWER:
-            if (ov12_0225682C(data->ctx, expBattler)) {
-                if (ov12_0225682C(data->ctx, expBattler) == 0xFF) { // TODO: could use a const
-                    data->state = STATE_GET_EXP_MAKE_IT_FORGET_CANCELLED;
-                } else {
-                    msg.id = msg_0197_01183; // "Which move should be forgotten?"
-                    msg.tag = 0;
-                    data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
-                    data->state = 22;
-                }
-            }
-            break;
-
-        case STATE_GET_EXP_MAKE_IT_FORGET_WAIT:
-            if (!TextPrinterCheckActive(data->unk30[0])) {
-                ov12_02263D14(data->bsys, expBattler, data->unk30[4], slot);
-                data->state++;
-            }
-            break;
-
-        case STATE_GET_EXP_MAKE_IT_FORGET_INPUT_TAKEN:
-            if (ov12_0225682C(data->ctx, expBattler) == 0xFF) {
-                data->state = STATE_GET_EXP_MAKE_IT_FORGET_CANCELLED;
-            } else if (ov12_0225682C(data->ctx, expBattler)) {
-                data->unk30[5] = data->ctx->unk_2300[expBattler][0] - 1;
-                data->state = 24;
-            }
-            break;
-
-        case STATE_GET_EXP_MAKE_IT_FORGET_CANCELLED:
-            msg.id = msg_0197_01184; // "Well, then..."
-            msg.tag = 0;
-            data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
-            data->state++;
-            break;
-
-        case STATE_GET_EXP_GIVE_UP_LEARNING_PROMPT:
-            // "Should this Pokémon give up on learning this new move?"
-            BattleController_EmitDrawYesNoBox(data->bsys, data->ctx, expBattler, 1185, 2, data->unk30[4], 0);
-            data->state++;
-            break;
-
-        case STATE_GET_EXP_GIVE_UP_LEARNING_ANSWER:
-            if (ov12_0225682C(data->ctx, expBattler)) {
-                if (ov12_0225682C(data->ctx, expBattler) == 0xFF) {
-                    data->state = STATE_GET_EXP_WANTS_TO_LEARN_MOVE_PRINT;
-                } else {
-                    msg.id = msg_0197_01188; // "{0} did not learn {1}."
-                    msg.tag = 10;
-                    msg.param[0] = expBattler | (slot << 8);
-                    msg.param[1] = data->unk30[4];
-                    data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
-                    data->state = 35;
-                }
-            }
-            break;
-
-        case STATE_GET_EXP_GIVE_UP_LEARNING_WAIT:
-            if (!TextPrinterCheckActive(data->unk30[0])) {
-                // Check for another move to learn
-                data->state = STATE_GET_EXP_CHECK_LEARN_MOVE;
-            }
-            break;
-
-        case STATE_GET_EXP_ONE_TWO_POOF:
-            msg.id = msg_0197_01189; // "1, 2, and... ... Poof!"
-            msg.tag = 0;
-            data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
-            data->state++;
-            break;
-        
-        case STATE_GET_EXP_FORGOT_HOW_TO_USE:
-            msg.id = msg_0197_01190; // "{0} forgot how to use {1}."
-            msg.tag = 10;
-            msg.param[0] = expBattler | (slot << 8);
-            msg.param[1] = GetMonData(mon, 54 + data->unk30[5], NULL);
-            data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
-            data->state++;
-            break;
-
-        case STATE_GET_EXP_AND_DOTDOTDOT:
-            msg.id = msg_0197_01191; // "And..."
-            msg.tag = 0;
-            data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
-            data->state++;
-            break;
-        
-        case STATE_GET_EXP_LEARNED_MOVE:
-            msg.id = msg_0197_01192; // "{0} learned {1}!"
-            msg.tag = 10;
-            msg.param[0] = expBattler | (slot << 8);
-            msg.param[1] = data->unk30[4];
-            data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
-        
-            i = 0;
-            SetMonData(mon, MON_DATA_MOVE1PPUP + data->unk30[5], &i);
-            MonSetMoveInSlot(mon, data->unk30[4], data->unk30[5]);
+            MonApplyFriendshipMod(mon, 0, BattleSystem_GetLocation(data->bsys));
+            ApplyMonMoodModifier(mon, 0);
+            CalcMonStats(mon);
 
             if (data->ctx->selectedMonIndex[expBattler] == slot) {
                 BattleSystem_ReloadMonData(data->bsys,
@@ -6445,26 +6148,312 @@ static void Task_GetExp(SysTask *task, void *inData)
                     data->ctx->selectedMonIndex[expBattler]);
             }
 
+            data->ctx->levelUpMons |= MaskOfFlagNo(slot);
+            ov12_02263A1C(data->bsys, data->ctx, expBattler);
+
+            msg.id = msg_0197_00003; // "{0} grew to Lv. {1}!"
+            msg.tag = 17;
+            msg.param[0] = expBattler | (slot << 8);
+            msg.param[1] = level;
+            data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
+            data->state = STATE_GET_EXP_WAIT_LEVEL_UP_MESSAGE_PRINT;
+        }
+        break;
+
+    case STATE_GET_EXP_WAIT_LEVEL_UP_MESSAGE_PRINT:
+        if (TextPrinterCheckActive(data->unk30[0]) == 0) {
+            data->state = STATE_GET_EXP_LEVEL_UP_SUMMARY_LOAD_ICON;
+            data->unk30[2] = 0;
+        }
+        break;
+
+    case STATE_GET_EXP_LEVEL_UP_SUMMARY_LOAD_ICON:
+        // Load the Pokemon's Party icon if they are not the active battler
+        if (data->ctx->selectedMonIndex[expBattler] != slot) {
+            ov12_02248228(data->bsys, data, mon);
+        }
+
+        data->state = STATE_GET_EXP_LEVEL_UP_SUMMARY_INIT;
+        break;
+
+    case STATE_GET_EXP_LEVEL_UP_SUMMARY_INIT: {
+        BgConfig *bgConfig = BattleSystem_GetBgConfig(data->bsys);
+        Window *window = BattleSystem_GetWindow(data->bsys, 1);
+        PaletteData *palette = BattleSystem_GetPaletteData(data->bsys);
+
+        G2_SetBG0Priority(2); 
+        SetBgPriority(GF_BG_LYR_MAIN_1, 1);
+        SetBgPriority(GF_BG_LYR_MAIN_2, 0);
+
+        ov12_0223C224(data->bsys, 1); 
+
+        sub_0200E398(bgConfig, 2, 1, 0, HEAP_ID_BATTLE);
+        PaletteData_LoadNarc(palette, NARC_a_0_3_8, sub_0200E3D8(), HEAP_ID_BATTLE, 0, 0x20, 8 * 0x10);
+        AddWindowParameterized(bgConfig, window, GF_BG_LYR_MAIN_2, 0x11, 0x7, 14, 12, 11, (9 + 1));
+        FillWindowPixelBuffer(window, 0xFF);
+        DrawFrameAndWindow1(window, FALSE, 1, 8);
+
+        data->state = STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF;
+        break;
+    }
+    case STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF: {
+        
+        TempStatsStruct stats = ov12_0226C36C;
+        TempStatsStruct monData = ov12_0226C384;
+        
+        Window *window = BattleSystem_GetWindow(data->bsys, 1);
+        StatStruct *oldStats = data->ctx->unk_17C;
+
+        for (i = 0; i < NUM_STATS; i++) {
+            msg.id = msg_0197_00947; // stat name
+            msg.tag = 4;
+            msg.param[0] = stats.stats[i];
+
+            ov12_0223C4E8(data->bsys, window, msgLoader, &msg, 0, 16 * i, 0, 0, 0);
+
+            msg.id = msg_0197_00948; // "+{0}"
+            msg.tag = 7;
+            msg.param[0] = GetMonData(mon, monData.stats[i], NULL) - oldStats->stats[i];
+            msg.unk1C = 2;
+
+            ov12_0223C4E8(data->bsys, window, msgLoader, &msg, 80, 16 * i, 0, 0, 0);
+        }
+
+        data->state = STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF_WAIT;
+        break;
+    }
+    case STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_TRUE: {
+        TempStatsStruct monData = ov12_0226C33C;
+        Window *window = BattleSystem_GetWindow(data->bsys, 1);
+
+        FillWindowPixelRect(window, 0xF, 80, 0, 36, 96); // clear out the diff section (keep the printed stat names)
+
+        for (i = 0; i < NUM_STATS; i++) {
+            msg.id = msg_0197_00949; // just a number
+            msg.tag = 7;
+            msg.param[0] = GetMonData(mon, monData.stats[i], NULL);
+            msg.unk1C = 3;
+
+            ov12_0223C4E8(data->bsys, window, msgLoader, &msg, 72, 16 * i, 0x2, 36, 0);
+        }
+
+        data->state = STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_TRUE_WAIT;
+        break;
+    }
+    case STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF_WAIT:
+    case STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_TRUE_WAIT:
+        if ((gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B | PAD_BUTTON_X | PAD_BUTTON_Y)) || System_GetTouchNew()) {
+            PlaySE(SEQ_SE_DP_SELECT);
+            data->state++;
+        }
+        break;
+
+    case STATE_GET_EXP_LEVEL_UP_CLEAR: 
+        Window *window = BattleSystem_GetWindow(data->bsys, 1);
+
+        sub_0200E5D4(window, 0);
+        RemoveWindow(window);
+
+        G2_SetBG0Priority(1);
+        SetBgPriority(GF_BG_LYR_MAIN_1, 0);
+        SetBgPriority(GF_BG_LYR_MAIN_2, 1);
+
+        ov12_0223C224(data->bsys, 0);
+
+        if (data->ctx->selectedMonIndex[expBattler] != slot) {
+            ov12_022484D4(data->bsys, data);
+        }
+
+        FreeToHeap(data->ctx->unk_17C);
+        data->state = STATE_GET_EXP_CHECK_LEARN_MOVE;
+        break;
+
+    case STATE_GET_EXP_CHECK_LEARN_MOVE: 
+        u16 move;
+        BgConfig *bgConfig = BattleSystem_GetBgConfig(data->bsys); // unused, but must be kept to match
+
+        switch (MonTryLearnMoveOnLevelUp(mon, &data->unk30[2], &move)) {
+        case 0:
+            data->state = STATE_GET_EXP_GAUGE;
+            break;
+        case 0xFFFE:
+            break;
+        case 0xFFFF:
+            data->unk30[4] = move;
+            data->state = STATE_GET_EXP_WANTS_TO_LEARN_MOVE_PRINT;
+            break;
+        default:
+            if (data->ctx->selectedMonIndex[expBattler] == slot) {
+                BattleSystem_ReloadMonData(data->bsys, data->ctx, expBattler, data->ctx->selectedMonIndex[expBattler]);
+            }
+
+            msg.id = msg_0197_00004; // "{0} learned {1}!"
+            msg.tag = 10;
+            msg.param[0] = expBattler | (slot << 8);
+            msg.param[1] = move;
+            data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
             data->state = STATE_GET_EXP_LEARNED_MOVE_WAIT;
             break;
+        }
+        break;
+        
 
-        case STATE_GET_EXP_LEARNED_MOVE_WAIT:
-            if (!TextPrinterCheckActive(data->unk30[0])) {
-                // Check for another move to learn
-                data->state = STATE_GET_EXP_CHECK_LEARN_MOVE;
+    case STATE_GET_EXP_WANTS_TO_LEARN_MOVE_PRINT:
+        msg.id = msg_0197_01178; // "{0} wants to learn the move {1}."
+        msg.tag = 10;
+        msg.param[0] = expBattler | (slot << 8);
+        msg.param[1] = data->unk30[4];
+        data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
+        data->state++;
+        break;
+
+    case STATE_GET_EXP_CANT_LEARN_MORE_MOVES_PRINT:
+        msg.id = msg_0197_01179; // "But {0} can't learn more than four moves."
+        msg.tag = 2;
+        msg.param[0] = expBattler | (slot << 8);
+        data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
+        data->state++;
+        break;
+
+    case STATE_GET_EXP_WANTS_TO_LEARN_MOVE_PRINT_WAIT:
+    case STATE_GET_EXP_CANT_LEARN_MORE_MOVES_PRINT_WAIT:
+    case STATE_GET_EXP_ONE_TWO_POOF_WAIT:
+    case STATE_GET_EXP_FORGOT_HOW_TO_USE_WAIT:
+    case STATE_GET_EXP_AND_DOTDOTDOT_WAIT:
+    case STATE_GET_EXP_MAKE_IT_FORGET_CANCELLED_WAIT:
+        if (!TextPrinterCheckActive(data->unk30[0])) {
+            data->state++;
+        }
+        break;
+
+    case STATE_GET_EXP_MAKE_IT_FORGET_PROMPT:
+        // "Make it forget another move?"
+        BattleController_EmitDrawYesNoBox(data->bsys, data->ctx, expBattler, 1180, 1, 0, 0);
+        data->state++;
+        break;
+
+    case STATE_GET_EXP_MAKE_IT_FORGET_ANSWER:
+        if (ov12_0225682C(data->ctx, expBattler)) {
+            if (ov12_0225682C(data->ctx, expBattler) == 0xFF) { // TODO: could use a const
+                data->state = STATE_GET_EXP_MAKE_IT_FORGET_CANCELLED;
+            } else {
+                msg.id = msg_0197_01183; // "Which move should be forgotten?"
+                msg.tag = 0;
+                data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
+                data->state = STATE_GET_EXP_MAKE_IT_FORGET_WAIT;
             }
-            break;
+        }
+        break;
 
-        case STATE_GET_EXP_CHECK_DONE:
-            data->ctx->unk_A4[battler] &= (MaskOfFlagNo(slot) ^ 0xFFFFFFFF); // this mon is done
-            data->unk30[6] = slot + 1;
-            data->state = STATE_GET_EXP_START; // go back to the top and get the next mon
-            break;
+    case STATE_GET_EXP_MAKE_IT_FORGET_WAIT:
+        if (!TextPrinterCheckActive(data->unk30[0])) {
+            ov12_02263D14(data->bsys, expBattler, data->unk30[4], slot);
+            data->state++;
+        }
+        break;
 
-        case STATE_GET_EXP_DONE:
-            data->ctx->getterWork = NULL;
-            FreeToHeap(inData);
-            DestroySysTask(task);
-            break;
+    case STATE_GET_EXP_MAKE_IT_FORGET_INPUT_TAKEN:
+        if (ov12_0225682C(data->ctx, expBattler) == 0xFF) {
+            data->state = STATE_GET_EXP_MAKE_IT_FORGET_CANCELLED;
+        } else if (ov12_0225682C(data->ctx, expBattler)) {
+            data->unk30[5] = data->ctx->unk_2300[expBattler][0] - 1;
+            data->state = STATE_GET_EXP_ONE_TWO_POOF;
+        }
+        break;
+
+    case STATE_GET_EXP_MAKE_IT_FORGET_CANCELLED:
+        msg.id = msg_0197_01184; // "Well, then..."
+        msg.tag = 0;
+        data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
+        data->state++;
+        break;
+
+    case STATE_GET_EXP_GIVE_UP_LEARNING_PROMPT:
+        // "Should this Pokémon give up on learning this new move?"
+        BattleController_EmitDrawYesNoBox(data->bsys, data->ctx, expBattler, 1185, 2, data->unk30[4], 0);
+        data->state++;
+        break;
+
+    case STATE_GET_EXP_GIVE_UP_LEARNING_ANSWER:
+        if (ov12_0225682C(data->ctx, expBattler)) {
+            if (ov12_0225682C(data->ctx, expBattler) == 0xFF) {
+                data->state = STATE_GET_EXP_WANTS_TO_LEARN_MOVE_PRINT;
+            } else {
+                msg.id = msg_0197_01188; // "{0} did not learn {1}."
+                msg.tag = 10;
+                msg.param[0] = expBattler | (slot << 8);
+                msg.param[1] = data->unk30[4];
+                data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
+                data->state = 35;
+            }
+        }
+        break;
+
+    case STATE_GET_EXP_GIVE_UP_LEARNING_WAIT:
+        if (!TextPrinterCheckActive(data->unk30[0])) {
+            // Check for another move to learn
+            data->state = STATE_GET_EXP_CHECK_LEARN_MOVE;
+        }
+        break;
+
+    case STATE_GET_EXP_ONE_TWO_POOF:
+        msg.id = msg_0197_01189; // "1, 2, and... ... Poof!"
+        msg.tag = 0;
+        data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
+        data->state++;
+        break;
+        
+    case STATE_GET_EXP_FORGOT_HOW_TO_USE:
+        msg.id = msg_0197_01190; // "{0} forgot how to use {1}."
+        msg.tag = 10;
+        msg.param[0] = expBattler | (slot << 8);
+        msg.param[1] = GetMonData(mon, MON_DATA_MOVE1 + data->unk30[5], NULL);
+        data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
+        data->state++;
+        break;
+
+    case STATE_GET_EXP_AND_DOTDOTDOT:
+        msg.id = msg_0197_01191; // "And..."
+        msg.tag = 0;
+        data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
+        data->state++;
+        break;
+        
+    case STATE_GET_EXP_LEARNED_MOVE:
+        msg.id = msg_0197_01192; // "{0} learned {1}!"
+        msg.tag = 10;
+        msg.param[0] = expBattler | (slot << 8);
+        msg.param[1] = data->unk30[4];
+        data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
+    
+        i = 0;
+        SetMonData(mon, MON_DATA_MOVE1PPUP + data->unk30[5], &i);
+        MonSetMoveInSlot(mon, data->unk30[4], data->unk30[5]);
+
+        if (data->ctx->selectedMonIndex[expBattler] == slot) {
+            BattleSystem_ReloadMonData(data->bsys, data->ctx, expBattler, data->ctx->selectedMonIndex[expBattler]);
+        }
+
+        data->state = STATE_GET_EXP_LEARNED_MOVE_WAIT;
+        break;
+
+    case STATE_GET_EXP_LEARNED_MOVE_WAIT:
+        if (!TextPrinterCheckActive(data->unk30[0])) {
+            // Check for another move to learn
+            data->state = STATE_GET_EXP_CHECK_LEARN_MOVE;
+        }
+        break;
+
+    case STATE_GET_EXP_CHECK_DONE:
+        data->ctx->unk_A4[side] &= (MaskOfFlagNo(slot) ^ 0xFFFFFFFF); // this mon is done
+        data->unk30[6] = slot + 1;
+        data->state = STATE_GET_EXP_START; // go back to the top and get the next mon
+        break;
+
+    case STATE_GET_EXP_DONE:
+        data->ctx->getterWork = NULL;
+        FreeToHeap(inData);
+        DestroySysTask(task);
+        break;
     }
 }
