@@ -10,6 +10,7 @@
 #include "unk_0200E320.h"
 #include "camera.h"
 #include "bg_window.h"
+#include "scrcmd_9.h"
 
 typedef struct FieldSystem FieldSystem;
 typedef struct TaskManager TaskManager;
@@ -145,7 +146,7 @@ struct FieldSystem {
     void *unk94;
     u8 filler_98[0x4];
     void *unk9C;
-    void *unkA0;
+    UnkStruct_Fsys_A0 *unkA0;
     void * unkA4;
     u32 *unkA8;
     u32 unkAC;
