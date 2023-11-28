@@ -555,6 +555,7 @@ Overlay OVY_9
 Overlay OVY_10
 {
     After OVY_6
+    Object src/battle/trainer_ai.o
     Object asm/overlay_10.o
 }
 Overlay OVY_11
