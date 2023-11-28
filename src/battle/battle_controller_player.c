@@ -18,8 +18,8 @@ BattleContext *BattleContext_New(BattleSystem *bsys) {
     BattleContext_Init(ctx);
     ov12_02251038(bsys, ctx);
     ov12_0224E384(bsys, ctx);
-    LoadMoveTbl(ctx->unk_334.moveData);
-    ctx->unk_334.itemData = LoadAllItemData(HEAP_ID_BATTLE);
+    LoadMoveTbl(ctx->trainerAIData.moveData);
+    ctx->trainerAIData.itemData = LoadAllItemData(HEAP_ID_BATTLE);
     
     return ctx;
 }
@@ -39,7 +39,7 @@ BOOL BattleContext_Main(BattleSystem *bsys, BattleContext *ctx) {
 }
 
 void BattleContext_Delete(BattleContext *ctx) {
-    FreeToHeap(ctx->unk_334.itemData);
+    FreeToHeap(ctx->trainerAIData.itemData);
     FreeToHeap(ctx);
 }
 
@@ -1593,7 +1593,7 @@ void BattleControllerPlayer_ItemInput(BattleSystem *bsys, BattleContext *ctx) {
     item = (BattleItem *)&ctx->unk_21A8[ctx->battlerIdAttacker][2];
     
     if (BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker)) {
-        switch (ctx->unk_334.unk9D[ctx->battlerIdAttacker >> 1]) {
+        switch (ctx->trainerAIData.unk9D[ctx->battlerIdAttacker >> 1]) {
         case 0:
             script = 289;
             break;
@@ -1601,22 +1601,22 @@ void BattleControllerPlayer_ItemInput(BattleSystem *bsys, BattleContext *ctx) {
             script = 267;
             break;
         case 2:
-            if ((ctx->unk_334.unk9F[ctx->battlerIdAttacker >> 1] & 1) && (ctx->unk_334.unk9F[ctx->battlerIdAttacker >> 1] & 0x3e)) {
+            if ((ctx->trainerAIData.unk9F[ctx->battlerIdAttacker >> 1] & 1) && (ctx->trainerAIData.unk9F[ctx->battlerIdAttacker >> 1] & 0x3e)) {
                 ctx->msgTemp = 6;
             } else {
-                ctx->msgTemp = LowestFlagNo(ctx->unk_334.unk9F[ctx->battlerIdAttacker >> 1]);
+                ctx->msgTemp = LowestFlagNo(ctx->trainerAIData.unk9F[ctx->battlerIdAttacker >> 1]);
             }
             script = 268;
             break;
         case 3:
-            ctx->msgTemp = ctx->unk_334.unk9F[ctx->battlerIdAttacker >> 1];
+            ctx->msgTemp = ctx->trainerAIData.unk9F[ctx->battlerIdAttacker >> 1];
             script = 269;
             break;
         case 4:
             script = 270;
             break;
         }
-        ctx->itemTemp = ctx->unk_334.unkA0[ctx->battlerIdAttacker >> 1];
+        ctx->itemTemp = ctx->trainerAIData.unkA0[ctx->battlerIdAttacker >> 1];
     } else {
         switch (item->page) {
         case BTLPOCKETLIST_HP_PP_RESTORE:

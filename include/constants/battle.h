@@ -469,6 +469,11 @@ typedef enum Terrain {
 #define STAT_UP_5           11
 #define STAT_UP_6           12
 
+//Trainer AI Flags
+
+#define AI_DOUBLES      (1 << 7)
+#define AI_29           (1 << 29)
+
 //Battle Controller Commands
 #ifndef PM_ASM
 typedef enum ControllerCommand {

@@ -108,13 +108,13 @@ typedef struct SelfTurnData {
     int shellBellDamage;
 } SelfTurnData;
 
-typedef struct UnkBtlCtxSub_76 {
+typedef struct TrainerAIData {
     u8 unk0;
     u8 unk1;
     u16 unk2;
-    s8 unk4[4];
+    s8 movePoints[4]; //higher points = more priority for selection
     int unk8;
-    u32 unkC;
+    u32 aiFlags;
     u8 unk10;
     u8 unk11;
     u8 unk12;
@@ -138,7 +138,7 @@ typedef struct UnkBtlCtxSub_76 {
     ItemData *itemData;
     u16 unk280[4];
     u16 unk288[4];
-} UnkBtlCtxSub_76;
+} TrainerAIData;
 
 typedef struct MoveFailFlags {
     u32 paralysis:1;
@@ -341,7 +341,7 @@ typedef struct BattleContext {
     TurnData turnData[4];
     SelfTurnData selfTurnData[4];
     MoveFailFlags moveFail[4]; 
-    UnkBtlCtxSub_76 unk_334;
+    TrainerAIData trainerAIData;
     u32 * unk_2134;
     u32 unk_2138;
     u32 battleStatus;
