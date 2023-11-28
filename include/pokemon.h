@@ -27,6 +27,8 @@
 #define MOVE_APPEND_FULL    0xFFFFu
 #define MOVE_APPEND_KNOWN   0xFFFEu
 
+#define NUM_BANNED_BATTLE_FRONTIER 18
+
 extern const s8 gNatureStatMods[NATURE_NUM][NUM_EV_STATS];
 
 void ZeroMonData(Pokemon *mon);
