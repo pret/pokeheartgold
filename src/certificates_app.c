@@ -16,6 +16,7 @@
 #include "system.h"
 #include "text.h"
 #include "unk_0200FA24.h"
+#include "unk_02013FDC.h"
 #include "unk_0203E348.h"
 #include "unk_0205BB1C.h"
 
@@ -156,9 +157,6 @@ static s16 ov78_021E6920[3][2] = {
     { 140, 180 },
 };
 
-// FIXME: Types are probably wrong.
-extern void sub_020145B4(void *a0, u32 a1, u32 a2, u32 a3, u32 a4, u32 a5, void *a6);
-
 static void CertificatesApp_OnVBlank(CertificatesApp_Data *data);
 static void CertificatesApp_SetupBgConfig(CertificatesApp_Data *data);
 static void CertificatesApp_FreeBgConfig(CertificatesApp_Data *data);
@@ -178,7 +176,7 @@ static void ov78_021E652C(CertificatesApp_Data *data);
 static void ov78_021E656C(Sprite *sprite, void *unkBuffer, u32 unkBufferSize, u32 srcOffset);
 static void ov78_021E65BC(Sprite *sprite, u32 narcMemberNum, u32 a2, HeapID heapId);
 static void ov78_021E6664(Sprite *sprite, PlayerProfile *profile, HeapID heapId);
-static u32 ov78_021E6688(int species, int forme, int gender);
+static u32 ov78_021E6688(int species, int form, int gender);
 static void ov78_021E66D4(Sprite *sprite, Pokemon *pokemon, HeapID heapId, u32 a3);
 
 BOOL CertificatesApp_Init(OVY_MANAGER *manager, int *state) {
@@ -234,7 +232,7 @@ BOOL CertificatesApp_Run(OVY_MANAGER *manager, int *state) {
     BOOL ret = FALSE;
 
     switch (*state) {
-        case 0:
+        case CERTIFICATES_EXECSTATE_SETUP:
             ov78_021E5E44(data);
             ov78_021E5EA4(data);
             ov78_021E6068(data);
@@ -248,40 +246,40 @@ BOOL CertificatesApp_Run(OVY_MANAGER *manager, int *state) {
 
             BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapId);
 
-            *state = 1;
+            *state = CERTIFICATES_EXECSTATE_FADE_IN;
             break;
-        case 1:
+        case CERTIFICATES_EXECSTATE_FADE_IN:
             if (IsPaletteFadeFinished() != TRUE) {
                 break;
             }
 
             data->waitFrames = 0;
-            *state = 2;
+            *state = CERTIFICATES_EXECSTATE_WAIT_ONE_SECOND;
             break;
-        case 2:
+        case CERTIFICATES_EXECSTATE_WAIT_ONE_SECOND:
             if (data->waitFrames < 60) {
                 data->waitFrames++;
             } else {
-                *state = 3;
+                *state = CERTIFICATES_EXECSTATE_MOVE_TO_BOTTOM_SCREEN;
             }
             break;
-        case 3:
+        case CERTIFICATES_EXECSTATE_MOVE_TO_BOTTOM_SCREEN:
             if (data->unk40 > -192) {
                 data->unk40 -= 4;
                 ov78_021E5E54(data);
             } else {
                 data->unk40 = -192;
                 ov78_021E5E54(data);
-                *state = 4;
+                *state = CERTIFICATES_EXECSTATE_WAIT_FOR_INPUT;
             }
             break;
-        case 4:
+        case CERTIFICATES_EXECSTATE_WAIT_FOR_INPUT:
             if ((gSystem.newKeys & PAD_BUTTON_A) == PAD_BUTTON_A || (gSystem.newKeys & PAD_BUTTON_B) == PAD_BUTTON_B || gSystem.touchNew != 0) {
                 BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapId);
-                *state = 5;
+                *state = CERTIFICATES_EXECSTATE_FADE_OUT;
             }
             break;
-        case 5:
+        case CERTIFICATES_EXECSTATE_FADE_OUT:
             if (IsPaletteFadeFinished() == TRUE) {
                 ret = TRUE;
             }
@@ -786,7 +784,7 @@ static void ov78_021E6664(Sprite *sprite, PlayerProfile *profile, HeapID heapId)
     ov78_021E65BC(sprite, narcMemberNum, 21, heapId);
 }
 
-static u32 ov78_021E6688(int species, int forme, int gender) {
+static u32 ov78_021E6688(int species, int form, int gender) {
     u32 ret;
     if (species <= SPECIES_NONE || species > MAX_SPECIES) {
         ret = 1;
@@ -797,10 +795,10 @@ static u32 ov78_021E6688(int species, int forme, int gender) {
                 ret++;
             }
         } else {
-            if (forme > OverworldModelLookupFormCount(species)) {
-                forme = 0;
+            if (form > OverworldModelLookupFormCount(species)) {
+                form = 0;
             }
-            ret += forme;
+            ret += form;
         }
     }
     return ret;
@@ -808,7 +806,7 @@ static u32 ov78_021E6688(int species, int forme, int gender) {
 
 static void ov78_021E66D4(Sprite *sprite, Pokemon *pokemon, HeapID heapId, u32 a3) {
     u32 species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
-    u32 forme = GetMonData(pokemon, MON_DATA_FORM, NULL);
+    u32 form = GetMonData(pokemon, MON_DATA_FORM, NULL);
     u32 gender = GetMonGender(pokemon);
     BOOL shiny = MonIsShiny(pokemon);
 
@@ -823,11 +821,11 @@ static void ov78_021E66D4(Sprite *sprite, Pokemon *pokemon, HeapID heapId, u32 a
 
     NARC *narc = NARC_New(NARC_data_mmodel_mmodel, heapId);
 
-    if (sub_02070438(species, forme) == 0) {
-        forme = 0;
+    if (sub_02070438(species, form) == 0) {
+        form = 0;
     }
 
-    u32 member = ov78_021E6688(species, (u16)forme, gender);
+    u32 member = ov78_021E6688(species, (u16)form, gender);
     NNSG3dResFileHeader *header = NARC_AllocAndReadWholeMember(narc, member, heapId);
     NNSG3dResTex *tex = NNS_G3dGetTex(header);
     void *address = (void*)tex + tex->texInfo.ofsTex;
