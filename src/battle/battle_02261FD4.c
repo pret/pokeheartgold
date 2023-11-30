@@ -28,8 +28,7 @@ static void ov12_0226203C(SysTask *task, void *_data) {
 
     data->unk19C += 20;
 
-    if (data->unk19C >= 360)
-    {
+    if (data->unk19C >= 360) {
         data->unk19C -= 360;
     }
 
