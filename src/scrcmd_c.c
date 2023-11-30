@@ -60,7 +60,7 @@
 #include "unk_0205AC88.h"
 #include "unk_02058AEC.h"
 #include "unk_0205B3DC.h"
-#include "field_black_out.h"
+#include "blackout.h"
 #include "use_item_on_mon.h"
 #include "unk_02058034.h"
 #include "unk_02056D7C.h"
@@ -2901,7 +2901,7 @@ BOOL ScrCmd_289(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_OverworldWhiteOut(ScriptContext *ctx) {
-    CallFieldTask_BlackOut(ctx->taskman);
+    CallTask_BlackOut(ctx->taskman);
     return TRUE;
 }
 

@@ -1,7 +1,7 @@
 #include "scrcmd.h"
 #include "gf_gfx_loader.h"
 #include "unk_0200FA24.h"
-#include "field_black_out.h"
+#include "blackout.h"
 #include "system.h"
 #include "render_window.h"
 #include "font.h"
@@ -19,62 +19,71 @@
 #include "msgdata/msg/msg_0203.h"
 #include "msgdata/msg.naix"
 
-struct BlackoutScreenWork {
-    int state;
-    FieldSystem *fieldSystem;
-    BgConfig *bgConfig;
-    Window window;
-    MsgData *msgData;
-    MessageFormat *msgFmt;
-};
-
-void _InitDisplays(BgConfig *bgConfig);
+static void Blackout_InitDisplays(BgConfig *bgConfig);
 void DrawBlackoutMessage(FieldSystem *fieldSystem, TaskManager *taskManager);
 BOOL FieldTask_ShowPrintedMessage(TaskManager *taskManager);
-void _PrintMessage(struct BlackoutScreenWork *work, int msgno, u8 x, u8 y);
+void _PrintMessage(BlackoutScreenEnvironment *environment, int msgno, u8 x, u8 y);
 
-static void _InitDisplays(BgConfig *bgConfig) {
-    {
-        static const struct GraphicsBanks _020FC550 = {
-            GX_VRAM_BG_128_B,
-            GX_VRAM_BGEXTPLTT_NONE,
-            GX_VRAM_SUB_BG_128_C,
-            GX_VRAM_SUB_BGEXTPLTT_NONE,
-            GX_VRAM_OBJ_64_E,
-            GX_VRAM_OBJEXTPLTT_NONE,
-            GX_VRAM_SUB_OBJ_16_I,
-            GX_VRAM_SUB_OBJEXTPLTT_NONE,
-            GX_VRAM_TEX_0_A,
-            GX_VRAM_TEXPLTT_01_FG,
-        };
-        GfGfx_SetBanks(&_020FC550);
-    }
-    {
-        static const struct GraphicsModes _020FC524 = {
-            GX_DISPMODE_GRAPHICS,
-            GX_BGMODE_0,
-            GX_BGMODE_0,
-            GX_BG0_AS_2D,
-        };
-        SetBothScreensModesAndDisable(&_020FC524);
-    }
-    {
-        static const BgTemplate _020FC534 = {
-            0, 0, 0x800, 0,
-            GF_BG_SCR_SIZE_256x256, GF_BG_CLR_4BPP, 31, 0, 0, 1, 0, 0, 0
-        };
-        InitBgFromTemplate(bgConfig, 3, &_020FC534, GF_BG_TYPE_TEXT);
-    }
-    GfGfxLoader_GXLoadPal(NARC_graphic_font, 7, GF_BG_LYR_MAIN_0, 0x1A0, 0x20, (HeapID)11);
+static const struct GraphicsBanks Blackout_GraphicsBanks = {
+    .bg = GX_VRAM_BG_128_B,
+    .bgextpltt = GX_VRAM_BGEXTPLTT_NONE,
+    .subbg = GX_VRAM_SUB_BG_128_C,
+    .subbgextpltt = GX_VRAM_SUB_BGEXTPLTT_NONE,
+    .obj = GX_VRAM_OBJ_64_E,
+    .objextpltt = GX_VRAM_OBJEXTPLTT_NONE,
+    .subobj = GX_VRAM_SUB_OBJ_16_I,
+    .subobjextpltt = GX_VRAM_SUB_OBJEXTPLTT_NONE,
+    .tex = GX_VRAM_TEX_0_A,
+    .texpltt = GX_VRAM_TEXPLTT_01_FG,
+};
+
+static const struct GraphicsModes Blackout_GraphicsModes = {
+    .dispMode = GX_DISPMODE_GRAPHICS,
+    .bgMode = GX_BGMODE_0,
+    .subMode = GX_BGMODE_0,
+    ._2d3dMode = GX_BG0_AS_2D,
+};
+
+static const BgTemplate Blackout_BgTemplate = {
+    .x = 0,
+    .y = 0,
+    .bufferSize = 0x800,
+    .baseTile = 0,
+    .size = GF_BG_SCR_SIZE_256x256,
+    .colorMode = GX_BG_COLORMODE_16,
+    .screenBase = GX_BG_SCRBASE_0xf800,
+    .charBase = GX_BG_CHARBASE_0x00000,
+    .bgExtPltt = GX_BG_EXTPLTT_01,
+    .priority = 1,
+    .areaOver = GX_BG_AREAOVER_XLU,
+    .dummy = 0,
+    .mosaic = FALSE
+};
+
+static const WindowTemplate Blackout_WindowTemplate = {
+    .bgId = GF_BG_LYR_MAIN_3,
+    .left = 4,
+    .top = 5,
+    .width = 25,
+    .height = 15,
+    .palette = 13,
+    .baseTile = 0x01
+};
+
+static void Blackout_InitDisplays(BgConfig *bgConfig) {
+    GfGfx_SetBanks(&Blackout_GraphicsBanks);
+    SetBothScreensModesAndDisable(&Blackout_GraphicsModes);
+    InitBgFromTemplate(bgConfig, 3, &Blackout_BgTemplate, GF_BG_TYPE_TEXT);
+    GfGfxLoader_GXLoadPal(NARC_graphic_font, 7, GF_BG_LYR_MAIN_0, 0x1A0, 0x20, (HeapID)11); //TODO: update these enums
     BG_SetMaskColor(3, RGB_WHITE);
 }
 
 static void DrawBlackoutMessage(FieldSystem *fieldSystem, TaskManager *taskManager) {
-    struct BlackoutScreenWork *env;
+    BlackoutScreenEnvironment *env;
 
-    env = AllocFromHeap((HeapID)11, sizeof(struct BlackoutScreenWork));
+    env = AllocFromHeap((HeapID)11, sizeof(BlackoutScreenEnvironment));
     GF_ASSERT(env != NULL);
-    memset(env, 0, sizeof(struct BlackoutScreenWork));
+    memset(env, 0, sizeof(BlackoutScreenEnvironment));
     env->state = 0;
     env->fieldSystem = fieldSystem;
     env->bgConfig = BgConfig_Alloc((HeapID)11);
@@ -82,22 +91,12 @@ static void DrawBlackoutMessage(FieldSystem *fieldSystem, TaskManager *taskManag
     sub_0200FBF4(1, RGB_WHITE);
     sub_0200FBDC(0);
     sub_0200FBDC(1);
-    _InitDisplays(env->bgConfig);
+    Blackout_InitDisplays(env->bgConfig);
     env->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0203_bin, (HeapID)11);
     env->msgFmt = MessageFormat_New((HeapID)11);
-    {
-        static const WindowTemplate _020FC51C = {
-            3,
-            4,
-            5,
-            25,
-            15,
-            13,
-            0x001
-        };
 
-        AddWindow(env->bgConfig, &env->window, &_020FC51C);
-    }
+    AddWindow(env->bgConfig, &env->window, &Blackout_WindowTemplate);
+
     BufferPlayersName(env->msgFmt, 0, Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem)));
     if (fieldSystem->location->mapId == MAP_T20R0201) {
         _PrintMessage(env, msg_0203_00004, 0, 0);
@@ -109,7 +108,7 @@ static void DrawBlackoutMessage(FieldSystem *fieldSystem, TaskManager *taskManag
 }
 
 static BOOL FieldTask_ShowPrintedMessage(TaskManager *taskManager) {
-    struct BlackoutScreenWork *work = TaskManager_GetEnvironment(taskManager);
+    BlackoutScreenEnvironment *work = TaskManager_GetEnvironment(taskManager);
     switch (work->state) {
     case 0:
         BeginNormalPaletteFade(3, 1, 43, RGB_WHITE, 8, 1, (HeapID)32);
@@ -147,7 +146,7 @@ static BOOL FieldTask_ShowPrintedMessage(TaskManager *taskManager) {
     return FALSE;
 }
 
-static void _PrintMessage(struct BlackoutScreenWork *work, int msgno, u8 x, u8 y) {
+static void _PrintMessage(BlackoutScreenEnvironment *work, int msgno, u8 x, u8 y) {
     String *str0 = String_New(1024, (HeapID)11);
     String *str1 = String_New(1024, (HeapID)11);
 
@@ -166,7 +165,7 @@ static void _PrintMessage(struct BlackoutScreenWork *work, int msgno, u8 x, u8 y
     String_Delete(str1);
 }
 
-BOOL FieldTask_BlackOut(TaskManager *taskManager) {
+BOOL Task_BlackOut(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     u32 *state = TaskManager_GetStatePtr(taskManager);
     LocalFieldData *localFieldData;
@@ -220,6 +219,6 @@ BOOL FieldTask_BlackOut(TaskManager *taskManager) {
     return FALSE;
 }
 
-void CallFieldTask_BlackOut(TaskManager *taskManager) {
-    TaskManager_Call(taskManager, FieldTask_BlackOut, NULL);
+void CallTask_BlackOut(TaskManager *taskManager) {
+    TaskManager_Call(taskManager, Task_BlackOut, NULL);
 }
