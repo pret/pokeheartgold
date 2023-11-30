@@ -62,25 +62,29 @@ _00D8:
 	apply_movement obj_player, _0188
 	wait_movement
 	goto _0068
-	.byte 0x02, 0x00
+	end
+
 _00F2:
 	apply_movement 0, _019C
 	apply_movement obj_player, _01AC
 	wait_movement
 	goto _0068
-	.byte 0x02, 0x00
+	end
+
 _010C:
 	apply_movement 0, _01C0
 	apply_movement obj_player, _01D0
 	wait_movement
 	goto _0068
-	.byte 0x02, 0x00
+	end
+
 _0126:
 	apply_movement 0, _01E4
 	apply_movement obj_player, _01F4
 	wait_movement
 	goto _0068
-	.byte 0x02, 0x00
+	end
+
 
 _0140:
 	step 13, 3

@@ -221,7 +221,8 @@ _038B:
 	npc_msg msg_0603_T25SP0101_00010
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0234
-	.byte 0x02, 0x00
+	end
+
 _03CD:
 	goto_if_no_item_space ITEM_TM75, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
@@ -246,7 +247,8 @@ _0416:
 	npc_msg msg_0603_T25SP0101_00010
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0234
-	.byte 0x02, 0x00
+	end
+
 _0458:
 	goto_if_no_item_space ITEM_TM44, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
@@ -271,7 +273,8 @@ _04A1:
 	npc_msg msg_0603_T25SP0101_00010
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0234
-	.byte 0x02, 0x00
+	end
+
 _04E3:
 	goto_if_no_item_space ITEM_TM35, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
@@ -296,7 +299,8 @@ _052C:
 	npc_msg msg_0603_T25SP0101_00010
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0234
-	.byte 0x02, 0x00
+	end
+
 _056E:
 	goto_if_no_item_space ITEM_TM13, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
@@ -321,7 +325,8 @@ _05B7:
 	npc_msg msg_0603_T25SP0101_00010
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0234
-	.byte 0x02, 0x00
+	end
+
 _05F9:
 	goto_if_no_item_space ITEM_TM24, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
@@ -346,7 +351,8 @@ _0642:
 	npc_msg msg_0603_T25SP0101_00010
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0234
-	.byte 0x02, 0x00
+	end
+
 _0684:
 	goto_if_no_item_space ITEM_SILK_SCARF, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
@@ -371,7 +377,8 @@ _06CD:
 	npc_msg msg_0603_T25SP0101_00010
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _02D0
-	.byte 0x02, 0x00
+	end
+
 _070F:
 	goto_if_no_item_space ITEM_WIDE_LENS, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
@@ -396,7 +403,8 @@ _0758:
 	npc_msg msg_0603_T25SP0101_00010
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _02D0
-	.byte 0x02, 0x00
+	end
+
 _079A:
 	goto_if_no_item_space ITEM_ZOOM_LENS, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
@@ -421,7 +429,8 @@ _07E3:
 	npc_msg msg_0603_T25SP0101_00010
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _02D0
-	.byte 0x02, 0x00
+	end
+
 _0825:
 	goto_if_no_item_space ITEM_METRONOME, 1, _0B45
 	buffer_item_name 0, VAR_SPECIAL_x8004
@@ -446,7 +455,8 @@ _086E:
 	npc_msg msg_0603_T25SP0101_00010
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _02D0
-	.byte 0x02, 0x00
+	end
+
 scr_seq_T25SP0101_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -593,7 +603,8 @@ _0B1D:
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
 _0B3D:
 	goto _0948
-	.byte 0x02, 0x00
+	end
+
 _0B45:
 	npc_msg msg_0603_T25SP0101_00005
 	closemsg
@@ -635,8 +646,8 @@ _0BE0:
 _0BE6:
 	npc_msg msg_0603_T25SP0101_00002
 	goto _0B4A
-	.byte 0x02
-	.byte 0x00
+	end
+
 _0BF1:
 	npc_msg msg_0603_T25SP0101_00002
 	get_game_version VAR_TEMP_x4000
@@ -653,7 +664,8 @@ _0C17:
 	wait_button_or_walk_away
 	closemsg
 	goto _0C26
-	.byte 0x02, 0x00
+	end
+
 _0C26:
 	scrcmd_117
 	touchscreen_menu_show

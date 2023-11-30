@@ -316,49 +316,56 @@ _0499:
 	setvar VAR_SPECIAL_x8004, 4
 	setvar VAR_SPECIAL_x8005, 1
 	goto _03F5
-	.byte 0x02, 0x00
+	end
+
 _04AD:
 	setvar VAR_SPECIAL_x8004, 23
 	setvar VAR_SPECIAL_x8005, 1
 	goto _03F5
-	.byte 0x02
-	.byte 0x00
+	end
+
 _04C1:
 	setvar VAR_SPECIAL_x8004, 46
 	setvar VAR_SPECIAL_x8005, 1
 	goto _03F5
-	.byte 0x02, 0x00
+	end
+
 _04D5:
 	setvar VAR_SPECIAL_x8004, 47
 	setvar VAR_SPECIAL_x8005, 1
 	goto _03F5
-	.byte 0x02, 0x00
+	end
+
 _04E9:
 	setvar VAR_SPECIAL_x8004, 48
 	setvar VAR_SPECIAL_x8005, 1
 	goto _03F5
-	.byte 0x02, 0x00
+	end
+
 _04FD:
 	setvar VAR_SPECIAL_x8004, 92
 	setvar VAR_SPECIAL_x8005, 1
 	goto _03F5
-	.byte 0x02
-	.byte 0x00
+	end
+
 _0511:
 	setvar VAR_SPECIAL_x8004, 50
 	setvar VAR_SPECIAL_x8005, 1
 	goto _03F5
-	.byte 0x02, 0x00
+	end
+
 _0525:
 	setvar VAR_SPECIAL_x8004, 45
 	setvar VAR_SPECIAL_x8005, 1
 	goto _03F5
-	.byte 0x02, 0x00
+	end
+
 _0539:
 	callstd std_bag_is_full
 	closemsg
 	goto _0450
-	.byte 0x02, 0x00
+	end
+
 _0547:
 	npc_msg msg_0066_D23R0102_00029
 	wait_button_or_walk_away

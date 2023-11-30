@@ -79,7 +79,8 @@ scr_seq_T25R1202_011:
 	lockall
 	setvar VAR_SPECIAL_x8005, 6
 	goto _0117
-	.byte 0x02, 0x00
+	end
+
 _0117:
 	npc_msg msg_0601_T25R1202_00013
 	touchscreen_menu_hide
@@ -92,7 +93,8 @@ _0117:
 	case 0, _016E
 	case 1, _0193
 	goto _0166
-	.byte 0x02, 0x00
+	end
+
 _0166:
 	touchscreen_menu_show
 _0168:
@@ -114,13 +116,15 @@ _016E:
 _0193:
 	npc_msg msg_0601_T25R1202_00014
 	goto _0117
-	.byte 0x02, 0x00
+	end
+
 scr_seq_T25R1202_012:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	setvar VAR_SPECIAL_x8005, 5
 	goto _01B2
-	.byte 0x02, 0x00
+	end
+
 _01B2:
 	npc_msg msg_0601_T25R1202_00011
 	touchscreen_menu_hide
@@ -133,8 +137,8 @@ _01B2:
 	case 0, _0209
 	case 1, _022E
 	goto _0201
-	.byte 0x02
-	.byte 0x00
+	end
+
 _0201:
 	touchscreen_menu_show
 _0203:
@@ -156,5 +160,6 @@ _0209:
 _022E:
 	npc_msg msg_0601_T25R1202_00012
 	goto _01B2
-	.byte 0x02, 0x00, 0x00, 0x00, 0x00
+	end
+
 	.balign 4, 0

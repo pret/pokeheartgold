@@ -31,7 +31,8 @@ scr_seq_T08GYM0101_000:
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
 _006D:
 	goto _0075
-	.byte 0x02, 0x00
+	end
+
 _0075:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 16

@@ -571,7 +571,8 @@ scr_seq_D02R0104_003:
 	setvar VAR_SPECIAL_x8008, 81
 	setvar VAR_SPECIAL_x8009, 1
 	goto _07E9
-	.byte 0x02, 0x00
+	end
+
 _07E9:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -612,7 +613,8 @@ _0866:
 	wait_button_or_walk_away
 	setvar VAR_SPECIAL_RESULT, 0
 	goto _0860
-	.byte 0x02, 0x00
+	end
+
 scr_seq_D02R0104_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall

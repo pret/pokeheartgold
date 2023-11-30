@@ -372,7 +372,8 @@ scr_seq_T08R0201_009:
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _0610
 	goto _0506
-	.byte 0x02, 0x00
+	end
+
 _0506:
 	npc_msg msg_0516_T08R0201_00034
 	wait_button_or_walk_away
@@ -398,7 +399,8 @@ _051C:
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00035
 	goto _0649
-	.byte 0x02, 0x00
+	end
+
 _055D:
 	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
@@ -410,7 +412,8 @@ _055D:
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00036
 	goto _0649
-	.byte 0x02, 0x00
+	end
+
 _059E:
 	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
@@ -421,7 +424,8 @@ _059E:
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00037
 	goto _0659
-	.byte 0x02, 0x00
+	end
+
 _05D7:
 	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
@@ -432,7 +436,8 @@ _05D7:
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00038
 	goto _0659
-	.byte 0x02, 0x00
+	end
+
 _0610:
 	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
@@ -443,7 +448,8 @@ _0610:
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00039
 	goto _0659
-	.byte 0x02, 0x00
+	end
+
 _0649:
 	callstd std_receive_accessory
 	setvar VAR_TEMP_x4009, 1

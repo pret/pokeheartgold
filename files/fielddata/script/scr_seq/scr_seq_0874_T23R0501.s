@@ -37,7 +37,8 @@ scr_seq_T23R0501_005:
 	setflag FLAG_UNK_07C
 	releaseall
 	goto _011A
-	.byte 0x02, 0x00
+	end
+
 scr_seq_T23R0501_001:
 	goto_if_set FLAG_UNK_07C, _011A
 	play_se SEQ_SE_DP_SELECT
@@ -149,7 +150,8 @@ _01F9:
 _0204:
 	npc_msg msg_0571_T23R0501_00007
 	goto _021F
-	.byte 0x02, 0x00
+	end
+
 _020F:
 	npc_msg msg_0571_T23R0501_00003
 	compare VAR_UNK_4080, 3
@@ -209,32 +211,38 @@ _0294:
 _02A2:
 	npc_msg msg_0571_T23R0501_00019
 	goto _024A
-	.byte 0x02, 0x00, 0x00, 0x00, 0x00
+	end
 
+	.balign 4, 0
 _02B0:
 	step 65, 1
 	step 37, 1
 	step_end
 
+	.balign 4, 0
 _02BC:
 	step 75, 1
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _02C8:
 	step 18, 1
 	step 65, 1
 	step_end
 
+	.balign 4, 0
 _02D4:
 	step 39, 1
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _02E0:
 	step 17, 5
 	step_end
 
+	.balign 4, 0
 _02E8:
 	step 18, 1
 	step 17, 2
@@ -242,10 +250,12 @@ _02E8:
 	step 17, 3
 	step_end
 
+	.balign 4, 0
 _02FC:
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _0304:
 	step 39, 1
 	step 15, 1

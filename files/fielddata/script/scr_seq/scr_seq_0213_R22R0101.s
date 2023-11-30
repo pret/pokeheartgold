@@ -42,7 +42,8 @@ _006B:
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
 _009D:
 	goto _00A5
-	.byte 0x02, 0x00
+	end
+
 _00A5:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 16
@@ -423,7 +424,8 @@ _0537:
 _0548:
 	npc_msg msg_0361_R22R0101_00011
 	goto _04D0
-	.byte 0x02, 0x00
+	end
+
 _0553:
 	npc_msg msg_0361_R22R0101_00012
 	touchscreen_menu_hide

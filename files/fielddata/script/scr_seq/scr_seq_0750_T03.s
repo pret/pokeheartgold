@@ -242,7 +242,8 @@ _030E:
 	compare VAR_UNK_4083, 3
 	goto_if_eq _033D
 	goto _0051
-	.byte 0x02, 0x00
+	end
+
 _033D:
 	clearflag FLAG_HIDE_PEWTER_CITY_STEVEN
 _0341:
@@ -406,18 +407,21 @@ _0543:
 	compare VAR_UNK_4083, 4
 	goto_if_eq _0649
 	goto _0585
-	.byte 0x02, 0x00
+	end
+
 _055A:
 	copyvar VAR_TEMP_x4009, VAR_UNK_4083
 	setvar VAR_UNK_4083, 5
 	compare VAR_TEMP_x4009, 4
 	goto_if_eq _0649
 	goto _0585
-	.byte 0x02, 0x00
+	end
+
 _057B:
 	white_out
 	goto _0649
-	.byte 0x02, 0x00
+	end
+
 _0585:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
@@ -447,18 +451,21 @@ _05EF:
 	closemsg
 	setvar VAR_UNK_4083, 4
 	goto _061F
-	.byte 0x02, 0x00
+	end
+
 _05FF:
 	npc_msg msg_0460_T03_00014
 	closemsg
 	goto _061F
-	.byte 0x02, 0x00
+	end
+
 _060C:
 	npc_msg msg_0460_T03_00018
 	closemsg
 	setvar VAR_UNK_4083, 4
 	goto _061F
-	.byte 0x02, 0x00
+	end
+
 _061F:
 	apply_movement obj_T03_daigo, _0478
 	wait_movement

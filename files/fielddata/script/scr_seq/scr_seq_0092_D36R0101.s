@@ -1137,7 +1137,8 @@ _10E1:
 	npc_msg msg_0115_D36R0101_00023
 	closemsg
 	goto _0F0B
-	.byte 0x02, 0x00
+	end
+
 scr_seq_D36R0101_010:
 	goto_if_set FLAG_FOUND_FIRST_FARFETCHD, _1104
 	goto _1115

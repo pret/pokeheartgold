@@ -56,5 +56,8 @@ _0094:
 _00A0:
 	step 13, 2
 	step_end
-	.byte 0x02, 0x00, 0x00, 0x00
+
+_00A8:
+	end
+
 	.balign 4, 0

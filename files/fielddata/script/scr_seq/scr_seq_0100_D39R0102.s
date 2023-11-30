@@ -15,22 +15,26 @@ scr_seq_D39R0102_000:
 	setvar VAR_TEMP_x4000, 12
 	setvar VAR_TEMP_x4001, 12
 	goto _0062
-	.byte 0x02, 0x00
+	end
+
 scr_seq_D39R0102_001:
 	setvar VAR_TEMP_x4000, 10
 	setvar VAR_TEMP_x4001, 21
 	goto _0062
-	.byte 0x02, 0x00
+	end
+
 scr_seq_D39R0102_002:
 	setvar VAR_TEMP_x4000, 20
 	setvar VAR_TEMP_x4001, 10
 	goto _0062
-	.byte 0x02, 0x00
+	end
+
 scr_seq_D39R0102_003:
 	setvar VAR_TEMP_x4000, 21
 	setvar VAR_TEMP_x4001, 23
 	goto _0062
-	.byte 0x02, 0x00
+	end
+
 _0062:
 	scrcmd_609
 	lockall

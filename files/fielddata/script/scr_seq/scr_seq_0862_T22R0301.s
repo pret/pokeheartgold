@@ -159,7 +159,8 @@ scr_seq_T22R0301_001:
 	faceplayer
 	npc_msg msg_0560_T22R0301_00012
 	goto _0207
-	.byte 0x02, 0x00
+	end
+
 _0207:
 	npc_msg msg_0560_T22R0301_00013
 	touchscreen_menu_hide

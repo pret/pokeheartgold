@@ -106,7 +106,8 @@ _015C:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01F2
 	goto _0205
-	.byte 0x02, 0x00
+	end
+
 _0179:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -203,7 +204,8 @@ _0275:
 	case 1, _0335
 	case 2, _0398
 	goto _03D1
-	.byte 0x02, 0x00
+	end
+
 _02DF:
 	bank_or_wallet_is_full 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1

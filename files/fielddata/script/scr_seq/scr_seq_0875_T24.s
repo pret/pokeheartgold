@@ -216,62 +216,77 @@ _02D8:
 _02E9:
 	npc_msg msg_0572_T24_00011
 	goto _0299
-	.byte 0x02, 0x00
+	end
 
+	.balign 4, 0
 _02F4:
 	step 111, 1
 	step_end
-	.byte 0x02, 0x00, 0x00, 0x00
+	end
 
+	.balign 4, 0
 _0300:
 	step 112, 1
 	step 69, 1
 	step_end
-	.byte 0x02, 0x00, 0x00, 0x00
+	end
 
+	.balign 4, 0
 _0310:
 	step 0, 1
 	step 75, 1
 	step_end
-	.byte 0x02, 0x00, 0x00, 0x00
+	end
 
+	.balign 4, 0
 _0320:
 	step 0, 1
 	step_end
-	.byte 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x01, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
+	end
+
+	.balign 4, 0
+	.byte 0x03, 0x00, 0x01, 0x00
+	.byte 0xfe, 0x00, 0x00, 0x00
+	end
+
+	.balign 4, 0
 
 _0338:
 	step 1, 1
 	step_end
-	.byte 0x02, 0x00, 0x00, 0x00
+	end
 
+	.balign 4, 0
 _0344:
 	step 3, 1
 	step 63, 1
 	step 15, 2
 	step_end
-	.byte 0x02, 0x00, 0x00, 0x00
+	end
 
+	.balign 4, 0
 _0358:
 	step 12, 5
 	step 15, 2
 	step 12, 2
 	step_end
-	.byte 0x02, 0x00, 0x00, 0x00
+	end
 
+	.balign 4, 0
 _036C:
 	step 63, 6
 	step 1, 1
 	step_end
-	.byte 0x02, 0x00, 0x00, 0x00
+	end
 
+	.balign 4, 0
 _037C:
 	step 13, 2
 	step 14, 2
 	step 13, 5
 	step_end
-	.byte 0x02, 0x00
+	end
+
 scr_seq_T24_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall

@@ -255,7 +255,8 @@ _035A:
 	apply_movement obj_T01R0301_ookido, _0500
 	wait_movement
 	goto _03DE
-	.byte 0x02, 0x00
+	end
+
 _037B:
 	apply_movement obj_T01R0301_ookido, _052C
 	wait_movement
@@ -264,7 +265,8 @@ _037B:
 	apply_movement obj_T01R0301_ookido, _052C
 	wait_movement
 	goto _03DE
-	.byte 0x02, 0x00
+	end
+
 _039C:
 	apply_movement obj_T01R0301_ookido, _0558
 	wait_movement
@@ -273,7 +275,8 @@ _039C:
 	apply_movement obj_T01R0301_ookido, _0558
 	wait_movement
 	goto _03DE
-	.byte 0x02, 0x00
+	end
+
 _03BD:
 	apply_movement obj_T01R0301_ookido, _0584
 	wait_movement
@@ -282,7 +285,8 @@ _03BD:
 	apply_movement obj_T01R0301_ookido, _0584
 	wait_movement
 	goto _03DE
-	.byte 0x02, 0x00
+	end
+
 _03DE:
 	get_game_version VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 8

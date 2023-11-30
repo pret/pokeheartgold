@@ -228,7 +228,8 @@ _02CD:
 	case 0, _0317
 	case 1, _0456
 	goto _058C
-	.byte 0x02, 0x00
+	end
+
 _0317:
 	compare VAR_UNK_40E6, 0
 	goto_if_eq _037A
@@ -242,8 +243,8 @@ _0317:
 	case 0, _037A
 	case 1, _03F1
 	goto _0371
-	.byte 0x02
-	.byte 0x00
+	end
+
 _0371:
 	npc_msg msg_0522_T10R0101_00007
 	goto _02CD
@@ -306,7 +307,8 @@ _0456:
 	case 0, _04B0
 	case 1, _0527
 	goto _02CD
-	.byte 0x02, 0x00
+	end
+
 _04B0:
 	npc_msg msg_0522_T10R0101_00015
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT

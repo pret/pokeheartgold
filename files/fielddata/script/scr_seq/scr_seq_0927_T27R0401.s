@@ -9,7 +9,9 @@
 	scrdef scr_seq_T27R0401_001
 	scrdef_end
 
-	.byte 0x02, 0x00
+_000A:
+	end
+
 scr_seq_T27R0401_000:
 	simple_npc_msg msg_0617_T27R0401_00000
 	end

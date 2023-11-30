@@ -57,7 +57,8 @@ _009D:
 	compare VAR_TEMP_x4002, 1
 	goto_if_eq _00CB
 	goto _015A
-	.byte 0x02, 0x00
+	end
+
 _00CB:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 6
@@ -72,7 +73,8 @@ _00E8:
 	.byte 0x00
 _0101:
 	goto _015A
-	.byte 0x02, 0x00
+	end
+
 _0109:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 14

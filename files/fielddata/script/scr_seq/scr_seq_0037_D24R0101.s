@@ -74,7 +74,8 @@ _0112:
 	compare VAR_UNOWN_REPORT_LEVEL, 6
 	goto_if_eq _0080
 	goto _003C
-	.byte 0x02, 0x00
+	end
+
 scr_seq_D24R0101_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall

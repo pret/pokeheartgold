@@ -141,7 +141,8 @@ scr_seq_D37R0102_001:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01F5
 	goto _030C
-	.byte 0x02, 0x00
+	end
+
 _01F5:
 	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 500
 	compare VAR_SPECIAL_RESULT, 0
@@ -257,7 +258,8 @@ scr_seq_D37R0102_002:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0375
 	goto _0498
-	.byte 0x02, 0x00
+	end
+
 _0375:
 	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 300
 	compare VAR_SPECIAL_RESULT, 0
@@ -1435,36 +1437,41 @@ _14EB:
 	npc_msg msg_0117_D37R0102_00062
 	callstd std_receive_background
 	goto _1530
-	.byte 0x02
-	.byte 0x00
+	end
+
 _1521:
 	npc_msg msg_0117_D37R0102_00058
 	wait_button_or_walk_away
 	closemsg
 	goto _1568
-	.byte 0x02, 0x00
+	end
+
 _1530:
 	npc_msg msg_0117_D37R0102_00059
 	wait_button_or_walk_away
 	closemsg
 	goto _1568
-	.byte 0x02, 0x00
+	end
+
 _153F:
 	npc_msg msg_0117_D37R0102_00060
 	wait_button_or_walk_away
 	closemsg
 	goto _1568
-	.byte 0x02, 0x00
+	end
+
 _154E:
 	npc_msg msg_0117_D37R0102_00064
 	closemsg
 	goto _1530
-	.byte 0x02, 0x00
+	end
+
 _155B:
 	npc_msg msg_0117_D37R0102_00064
 	closemsg
 	goto _14EB
-	.byte 0x02, 0x00
+	end
+
 _1568:
 	releaseall
 	end

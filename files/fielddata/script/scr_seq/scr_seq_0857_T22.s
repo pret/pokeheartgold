@@ -183,7 +183,8 @@ _0256:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02E7
 	goto _0315
-	.byte 0x02, 0x00
+	end
+
 _028B:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
@@ -195,7 +196,8 @@ _028B:
 	toggle_following_pokemon_movement 1
 	following_pokemon_movement 48
 	goto _0343
-	.byte 0x02, 0x00
+	end
+
 _02B9:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
@@ -207,7 +209,8 @@ _02B9:
 	toggle_following_pokemon_movement 1
 	following_pokemon_movement 48
 	goto _0343
-	.byte 0x02, 0x00
+	end
+
 _02E7:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
@@ -219,7 +222,8 @@ _02E7:
 	toggle_following_pokemon_movement 1
 	following_pokemon_movement 48
 	goto _0343
-	.byte 0x02, 0x00
+	end
+
 _0315:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
@@ -231,7 +235,8 @@ _0315:
 	toggle_following_pokemon_movement 1
 	following_pokemon_movement 48
 	goto _0343
-	.byte 0x02, 0x00
+	end
+
 _0343:
 	npc_msg msg_0556_T22_00004
 	closemsg

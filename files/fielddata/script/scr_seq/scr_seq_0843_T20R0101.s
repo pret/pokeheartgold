@@ -747,7 +747,9 @@ _0A59:
 	npc_msg msg_0543_T20R0101_00029
 	closemsg
 	goto _0904
-	.byte 0x02, 0x00, 0x00, 0x00
+	end
+
+	.byte 0x00, 0x00
 
 _0A68:
 	step 76, 8
@@ -1184,7 +1186,8 @@ _0FE4:
 	compare VAR_SPECIAL_RESULT, 220
 	goto_if_ge _0FFF
 	goto _03F5
-	.byte 0x02, 0x00
+	end
+
 _0FFF:
 	call _0DE3
 	gender_msgbox msg_0543_T20R0101_00086, msg_0543_T20R0101_00087

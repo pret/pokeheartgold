@@ -21,7 +21,8 @@ scr_seq_T07GYM0101_002:
 	compare VAR_TEMP_x4002, 1
 	goto_if_eq _004F
 	goto _0101
-	.byte 0x02, 0x00
+	end
+
 _004F:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 6
@@ -36,7 +37,8 @@ _006C:
 	.byte 0x00, 0x06, 0x00, 0x00, 0x00
 _0085:
 	goto _0101
-	.byte 0x02, 0x00
+	end
+
 _008D:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 14

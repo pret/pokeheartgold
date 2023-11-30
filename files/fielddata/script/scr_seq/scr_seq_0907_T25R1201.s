@@ -114,11 +114,13 @@ _014D:
 	case 1, _01A4
 	case 2, _0330
 	goto _0330
-	.byte 0x02, 0x00
+	end
+
 _01A4:
 	npc_msg msg_0600_T25R1201_00002
 	goto _01AF
-	.byte 0x02, 0x00
+	end
+
 _01AF:
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 133, 255, 0
@@ -130,26 +132,30 @@ _01AF:
 	case 1, _0211
 	case 2, _021C
 	goto _021C
-	.byte 0x02, 0x00
+	end
+
 _0206:
 	npc_msg msg_0600_T25R1201_00003
 	goto _01AF
-	.byte 0x02
-	.byte 0x00
+	end
+
 _0211:
 	npc_msg msg_0600_T25R1201_00004
 	goto _01AF
-	.byte 0x02, 0x00
+	end
+
 _021C:
 	npc_msg msg_0600_T25R1201_00005
 	goto _014D
-	.byte 0x02, 0x00
+	end
+
 _0227:
 	party_count_not_egg VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 2
 	goto_if_lt _0240
 	goto _035F
-	.byte 0x02, 0x00
+	end
+
 _0240:
 	npc_msg msg_0600_T25R1201_00009
 	wait_button_or_walk_away
@@ -205,7 +211,8 @@ _0314:
 	wait_fade
 	call _00A7
 	goto _0343
-	.byte 0x02, 0x00
+	end
+
 _0330:
 	setvar VAR_UNK_4133, 0
 	touchscreen_menu_show
@@ -226,20 +233,22 @@ _0343:
 _0354:
 	npc_msg msg_0600_T25R1201_00001
 	goto _014B
-	.byte 0x02, 0x00
+	end
+
 _035F:
 	get_party_count VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _0378
 	goto _024D
-	.byte 0x02, 0x00
+	end
+
 _0378:
 	count_pc_empty_space VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0391
 	goto _024D
-	.byte 0x02
-	.byte 0x00
+	end
+
 _0391:
 	touchscreen_menu_show
 	npc_msg msg_0600_T25R1201_00008
@@ -309,7 +318,8 @@ scr_seq_T25R1201_011:
 	lockall
 	setvar VAR_SPECIAL_x8005, 3
 	goto _047C
-	.byte 0x02, 0x00
+	end
+
 _047C:
 	npc_msg msg_0600_T25R1201_00031
 	touchscreen_menu_hide
@@ -322,7 +332,8 @@ _047C:
 	case 0, _04D3
 	case 1, _04F8
 	goto _04CB
-	.byte 0x02, 0x00
+	end
+
 _04CB:
 	touchscreen_menu_show
 _04CD:
@@ -344,13 +355,15 @@ _04D3:
 _04F8:
 	npc_msg msg_0600_T25R1201_00032
 	goto _047C
-	.byte 0x02, 0x00
+	end
+
 scr_seq_T25R1201_012:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	setvar VAR_SPECIAL_x8005, 4
 	goto _0517
-	.byte 0x02, 0x00
+	end
+
 _0517:
 	npc_msg msg_0600_T25R1201_00029
 	touchscreen_menu_hide
@@ -363,7 +376,8 @@ _0517:
 	case 0, _056E
 	case 1, _0593
 	goto _0566
-	.byte 0x02, 0x00
+	end
+
 _0566:
 	touchscreen_menu_show
 _0568:
@@ -385,7 +399,8 @@ _056E:
 _0593:
 	npc_msg msg_0600_T25R1201_00030
 	goto _0517
-	.byte 0x02, 0x00
+	end
+
 scr_seq_T25R1201_013:
 	simple_npc_msg msg_0600_T25R1201_00027
 	end
@@ -419,12 +434,14 @@ scr_seq_T25R1201_015:
 _0622:
 	npc_msg msg_0600_T25R1201_00023
 	goto _067F
-	.byte 0x02, 0x00
+	end
+
 _062D:
 	set_favorite_mon
 	npc_msg msg_0600_T25R1201_00020
 	goto _067F
-	.byte 0x02, 0x00
+	end
+
 _063A:
 	buffer_mon_species_name 0, 0
 	npc_msg msg_0600_T25R1201_00021
@@ -447,7 +464,8 @@ _064D:
 _0674:
 	npc_msg msg_0600_T25R1201_00022
 	goto _067F
-	.byte 0x02, 0x00
+	end
+
 _067F:
 	wait_button_or_walk_away
 	closemsg

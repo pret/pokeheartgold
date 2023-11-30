@@ -181,7 +181,8 @@ _026A:
 	wait_fanfare
 	mon_give_mail VAR_TEMP_x4000
 	goto _0195
-	.byte 0x02, 0x00
+	end
+
 _0295:
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
@@ -195,7 +196,8 @@ _0295:
 _02AE:
 	setvar VAR_LOAN_SPEAROW, 1
 	goto _0098
-	.byte 0x02, 0x00
+	end
+
 
 _02BC:
 	step 32, 1

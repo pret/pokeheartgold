@@ -57,5 +57,8 @@ _00C5:
 
 _00CB:
 	end
-	.byte 0x02, 0x00, 0x00
+
+_00CD:
+	end
+
 	.balign 4, 0

@@ -583,7 +583,8 @@ scr_seq_T27R0501_007:
 	compare VAR_SPECIAL_RESULT, 0
 	call_if_ne _07BA
 	goto _0944
-	.byte 0x02, 0x00
+	end
+
 _07BA:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement

@@ -20,7 +20,8 @@ scr_seq_D52R0101_001:
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
 _0038:
 	goto _004A
-	.byte 0x02, 0x00
+	end
+
 _0040:
 	setflag FLAG_HIDE_EMBEDDED_TOWER_GROUDON
 	setflag FLAG_HIDE_EMBEDDED_TOWER_GROUDON_HIKER
@@ -32,7 +33,8 @@ _004A:
 	compare VAR_TEMP_x4000, 1
 	goto_if_ge _0072
 	goto _0040
-	.byte 0x02, 0x00
+	end
+
 _0072:
 	setflag FLAG_HIDE_EMBEDDED_TOWER_GROUDON_HIKER
 	clearflag FLAG_HIDE_EMBEDDED_TOWER_GROUDON

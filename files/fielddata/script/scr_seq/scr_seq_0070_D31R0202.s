@@ -92,21 +92,24 @@ scr_seq_D31R0202_001:
 	setvar VAR_TEMP_x4000, 0
 	call _0132
 	goto _00A6
-	.byte 0x02, 0x00
+	end
+
 scr_seq_D31R0202_002:
 	scrcmd_609
 	lockall
 	setvar VAR_TEMP_x4000, 0
 	call _0132
 	goto _00E9
-	.byte 0x02, 0x00
+	end
+
 scr_seq_D31R0202_003:
 	scrcmd_609
 	lockall
 	setvar VAR_TEMP_x4000, 1
 	call _0132
 	goto _010A
-	.byte 0x02, 0x00
+	end
+
 _018E:
 	apply_movement obj_player, _01C4
 	wait_movement

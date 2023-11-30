@@ -607,7 +607,8 @@ _07E1:
 	wait_button_or_walk_away
 	closemsg
 	goto _0908
-	.byte 0x02, 0x00
+	end
+
 _087D:
 	apply_movement obj_R34_gswoman3, _0918
 	stop_bgm 0
@@ -721,7 +722,8 @@ _09EE:
 	callstd std_bag_is_full
 	closemsg
 	goto _09D5
-	.byte 0x02, 0x00
+	end
+
 scr_seq_R34_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall

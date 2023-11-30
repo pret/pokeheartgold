@@ -26,5 +26,8 @@ _0038:
 	step 15, 7
 	step 12, 2
 	step_end
-	.byte 0x02, 0x00, 0x00, 0x00
+
+_0044:
+	end
+
 	.balign 4, 0

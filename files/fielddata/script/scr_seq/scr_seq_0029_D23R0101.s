@@ -720,7 +720,8 @@ _09AF:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _09E5
 	goto _09DA
-	.byte 0x02, 0x00
+	end
+
 _09CF:
 	npc_msg msg_0065_D23R0101_00029
 	wait_button_or_walk_away
@@ -777,7 +778,8 @@ _0A4B:
 _0A94:
 	npc_msg msg_0065_D23R0101_00036
 	goto _0AC3
-	.byte 0x02, 0x00
+	end
+
 _0A9F:
 	npc_msg msg_0065_D23R0101_00038
 	goto _0AC3
@@ -806,7 +808,8 @@ _0AC3:
 _0B0C:
 	setvar VAR_SPECIAL_x8003, 2
 	goto _0B4A
-	.byte 0x02, 0x00
+	end
+
 _0B1A:
 	setvar VAR_SPECIAL_x8003, 51
 	goto _0B4A

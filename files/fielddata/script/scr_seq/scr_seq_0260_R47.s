@@ -41,7 +41,8 @@ _0067:
 _009F:
 	goto_if_set FLAG_GAME_CLEAR, _00B2
 	goto _00E6
-	.byte 0x02, 0x00
+	end
+
 _00B2:
 	get_phone_book_rematch PHONE_CONTACT_CHUCK, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
@@ -66,7 +67,8 @@ _00EC:
 	move_warp 5, 87, 385
 	move_warp 6, 87, 389
 	goto _00E6
-	.byte 0x02, 0x00
+	end
+
 scr_seq_R47_002:
 	compare VAR_SCENE_EMBEDDED_TOWER, 5
 	goto_if_ge _0162

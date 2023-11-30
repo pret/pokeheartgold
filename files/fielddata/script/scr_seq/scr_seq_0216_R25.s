@@ -319,7 +319,8 @@ _043A:
 _044B:
 	npc_msg msg_0363_R25_00005
 	goto _03D3
-	.byte 0x02, 0x00
+	end
+
 _0456:
 	player_on_bike_check VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1

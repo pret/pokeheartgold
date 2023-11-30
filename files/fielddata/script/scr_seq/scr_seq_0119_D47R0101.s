@@ -323,7 +323,8 @@ scr_seq_D47R0101_010:
 	goto_if_eq _058F
 	npc_msg msg_0135_D47R0101_00042
 	goto _0587
-	.byte 0x02, 0x00
+	end
+
 _048B:
 	npc_msg msg_0135_D47R0101_00042
 	goto _0587
@@ -345,7 +346,8 @@ _04B8:
 	scrcmd_792
 _04C3:
 	goto _0587
-	.byte 0x02, 0x00
+	end
+
 _04CB:
 	scrcmd_791 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
@@ -427,7 +429,8 @@ _05AF:
 	case 4, _0671
 	case 5, _067A
 	goto _0683
-	.byte 0x02, 0x00
+	end
+
 _064D:
 	npc_msg msg_0135_D47R0101_00047
 	goto _05AF
@@ -666,7 +669,8 @@ _0919:
 	case 3, _09BD
 	case 4, _09C6
 	goto _09CF
-	.byte 0x02, 0x00
+	end
+
 _09A2:
 	npc_msg msg_0135_D47R0101_00020
 	goto _0919
@@ -731,7 +735,8 @@ _0A29:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0A5D
 	goto _0C16
-	.byte 0x02, 0x00
+	end
+
 _0A5D:
 	touchscreen_menu_hide
 	npc_msg msg_0135_D47R0101_00071
@@ -744,7 +749,8 @@ _0A5D:
 	case 0, _0AAC
 	case 1, _0B2F
 	goto _0BFC
-	.byte 0x02, 0x00
+	end
+
 _0AAC:
 	npc_msg msg_0135_D47R0101_00086
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -760,13 +766,14 @@ _0AAC:
 	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _0B20
 	goto _0BB2
-	.byte 0x02, 0x00
+	end
+
 _0B05:
 	scrcmd_283
 	touchscreen_menu_hide
 	goto _0A5D
-	.byte 0x02
-	.byte 0x00
+	end
+
 _0B11:
 	scrcmd_283
 	touchscreen_menu_show
@@ -800,12 +807,14 @@ _0B2F:
 	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _0BA3
 	goto _0BB2
-	.byte 0x02, 0x00
+	end
+
 _0B88:
 	scrcmd_283
 	touchscreen_menu_hide
 	goto _0A5D
-	.byte 0x02, 0x00
+	end
+
 _0B94:
 	scrcmd_283
 	npc_msg msg_0135_D47R0101_00087

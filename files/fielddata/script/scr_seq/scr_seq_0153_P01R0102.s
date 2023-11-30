@@ -250,7 +250,8 @@ _0306:
 _0317:
 	npc_msg msg_0256_P01R0102_00008
 	goto _029F
-	.byte 0x02, 0x00
+	end
+
 _0322:
 	npc_msg msg_0256_P01R0102_00009
 	touchscreen_menu_hide

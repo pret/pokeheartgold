@@ -59,16 +59,19 @@ _00D8:
 	setflag FLAG_HIDE_STEVEN_IN_HOUSE_BEFORE_LATIS
 	setflag FLAG_HIDE_STEVEN_IN_HOUSE_AFTER_LATIS
 	goto _0104
-	.byte 0x02, 0x00
+	end
+
 _00E8:
 	setflag FLAG_HIDE_STEVEN_IN_HOUSE_BEFORE_LATIS
 	goto _0104
-	.byte 0x02, 0x00
+	end
+
 _00F4:
 	nop_var_490 VAR_TEMP_x4006
 	setflag FLAG_HIDE_STEVEN_IN_HOUSE_BEFORE_LATIS
 	goto _0104
-	.byte 0x02, 0x00
+	end
+
 _0104:
 	goto_if_unset FLAG_UNK_189, _0115
 	clearflag FLAG_UNK_189
@@ -330,12 +333,14 @@ _0530:
 	setflag FLAG_MAPTEMP_001
 	npc_msg msg_0464_T03R0101_00003
 	goto _05FC
-	.byte 0x02, 0x00
+	end
+
 _053F:
 	setvar VAR_UNK_407F, 0
 	npc_msg msg_0464_T03R0101_00002
 	goto _05FC
-	.byte 0x02, 0x00
+	end
+
 _0550:
 	buffer_species_name 0, VAR_UNK_407F, 0, 0
 	npc_msg msg_0464_T03R0101_00004
@@ -519,7 +524,8 @@ _07C1:
 	scrcmd_344 0, 0
 	move_person_facing obj_T03R0101_daigo, 26, 0, 7, DIR_SOUTH
 	goto _07BF
-	.byte 0x02, 0x00
+	end
+
 scr_seq_T03R0101_016:
 	scrcmd_609
 	lockall

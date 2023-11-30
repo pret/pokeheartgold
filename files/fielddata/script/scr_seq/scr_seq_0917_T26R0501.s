@@ -72,5 +72,6 @@ _00E3:
 _00EB:
 	npc_msg msg_0609_T26R0501_00010
 	goto _00E3
-	.byte 0x02, 0x00, 0x00, 0x00
+	end
+
 	.balign 4, 0

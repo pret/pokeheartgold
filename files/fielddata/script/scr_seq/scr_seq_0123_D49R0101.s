@@ -278,12 +278,14 @@ _03C7:
 	scrcmd_815 0
 	scrcmd_771
 	goto _03E4
-	.byte 0x02, 0x00
+	end
+
 _03D7:
 	touchscreen_menu_show
 	npc_msg msg_0138_D49R0101_00052
 	goto _0377
-	.byte 0x02, 0x00
+	end
+
 _03E4:
 	touchscreen_menu_show
 	npc_msg msg_0138_D49R0101_00051
@@ -296,7 +298,8 @@ _03F1:
 	npc_msg msg_0138_D49R0101_00048
 	setflag FLAG_UNK_114
 	goto _0377
-	.byte 0x02, 0x00
+	end
+
 _0400:
 	npc_msg msg_0138_D49R0101_00050
 	wait_button_or_walk_away
@@ -349,7 +352,8 @@ _0493:
 	compare VAR_SPECIAL_x8005, 27
 	goto_if_eq _0595
 	goto _051C
-	.byte 0x02, 0x00
+	end
+
 _04E8:
 	touchscreen_menu_show
 	npc_msg msg_0138_D49R0101_00055
@@ -365,7 +369,8 @@ _0509:
 _0511:
 	npc_msg msg_0138_D49R0101_00058
 	goto _0443
-	.byte 0x02, 0x00
+	end
+
 _051C:
 	touchscreen_menu_show
 	npc_msg msg_0138_D49R0101_00051
@@ -378,7 +383,8 @@ _0529:
 	npc_msg msg_0138_D49R0101_00053
 	setflag FLAG_UNK_115
 	goto _0443
-	.byte 0x02, 0x00
+	end
+
 _0538:
 	compare VAR_UNK_4139, 0
 	goto_if_eq _0584
@@ -679,7 +685,8 @@ _09E6:
 	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
 _09FF:
 	goto _0A7F
-	.byte 0x02, 0x00
+	end
+
 _0A07:
 	touchscreen_menu_show
 	compare VAR_TEMP_x4005, 0
@@ -741,7 +748,8 @@ _0A7F:
 	touchscreen_menu_show
 	npc_msg msg_0138_D49R0101_00091
 	goto _0A5C
-	.byte 0x02, 0x00
+	end
+
 scr_seq_D49R0101_020:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -761,20 +769,23 @@ _0AF3:
 	case 1, _0B65
 	case 2, _0B73
 	goto _0BA5
-	.byte 0x02, 0x00
+	end
+
 _0B57:
 	setvar VAR_TEMP_x4007, 0
 	goto _0B81
-	.byte 0x02, 0x00
+	end
+
 _0B65:
 	setvar VAR_TEMP_x4007, 1
 	goto _0B81
-	.byte 0x02, 0x00
+	end
+
 _0B73:
 	setvar VAR_TEMP_x4007, 2
 	goto _0B81
-	.byte 0x02
-	.byte 0x00
+	end
+
 _0B81:
 	npc_msg msg_0138_D49R0101_00098
 	wait 4, VAR_SPECIAL_RESULT
@@ -784,7 +795,8 @@ _0B81:
 	play_se SEQ_SE_DP_DECIDE
 	scrcmd_743 VAR_TEMP_x4007
 	goto _0AF3
-	.byte 0x02, 0x00
+	end
+
 _0BA5:
 	touchscreen_menu_show
 	npc_msg msg_0138_D49R0101_00101
@@ -828,7 +840,8 @@ _0C09:
 	scrcmd_725 0, 100
 	setflag FLAG_UNK_152
 	goto _0C4C
-	.byte 0x02, 0x00
+	end
+
 _0C42:
 	callstd std_bag_is_full
 	closemsg
@@ -877,7 +890,8 @@ _0CB7:
 	scrcmd_725 0, 100
 	setflag FLAG_UNK_153
 	goto _0CF0
-	.byte 0x02, 0x00
+	end
+
 _0CF0:
 	npc_msg msg_0138_D49R0101_00114
 	wait_button_or_walk_away

@@ -25,32 +25,36 @@ _0059:
 	apply_movement obj_HIROBA_wifisf, _01F4
 	wait_movement
 	goto _00DB
-	.byte 0x02, 0x00
+	end
+
 _0073:
 	apply_movement obj_player, _0158
 	apply_movement obj_HIROBA_wifisf, _0204
 	wait_movement
 	goto _00DB
-	.byte 0x02, 0x00
+	end
+
 _008D:
 	apply_movement obj_player, _0164
 	apply_movement obj_HIROBA_wifisf, _0214
 	wait_movement
 	goto _00DB
-	.byte 0x02, 0x00
+	end
+
 _00A7:
 	apply_movement obj_player, _0170
 	apply_movement obj_HIROBA_wifisf, _0224
 	wait_movement
 	goto _00DB
-	.byte 0x02
-	.byte 0x00
+	end
+
 _00C1:
 	apply_movement obj_player, _017C
 	apply_movement obj_HIROBA_wifisf, _0234
 	wait_movement
 	goto _00DB
-	.byte 0x02, 0x00
+	end
+
 _00DB:
 	npc_msg msg_0212_HIROBA_00000
 	wait_button

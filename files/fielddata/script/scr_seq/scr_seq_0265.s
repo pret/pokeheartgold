@@ -133,7 +133,8 @@ _015E:
 	compare VAR_SPECIAL_RESULT, 2
 	goto_if_eq _01E4
 	goto _020B
-	.byte 0x02, 0x00
+	end
+
 _0196:
 	compare VAR_UNK_408E, 4
 	goto_if_ne _01B2
@@ -315,7 +316,8 @@ _03DB:
 	goto_if_eq _0290
 	touchscreen_menu_show
 	goto _03CE
-	.byte 0x02, 0x00
+	end
+
 _03FB:
 	touchscreen_menu_show
 	npc_msg msg_0439_00036

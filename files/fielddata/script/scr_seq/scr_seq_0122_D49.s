@@ -700,11 +700,13 @@ _0917:
 _091D:
 	npc_msg msg_0137_D49_00030
 	goto _08D1
-	.byte 0x02, 0x00
+	end
+
 _0928:
 	npc_msg msg_0137_D49_00031
 	goto _08D1
-	.byte 0x02, 0x00
+	end
+
 _0933:
 	npc_msg msg_0137_D49_00032
 	wait_button_or_walk_away
@@ -722,7 +724,8 @@ _093E:
 	setflag FLAG_UNK_997
 	npc_msg msg_0137_D49_00029
 	goto _08D1
-	.byte 0x02, 0x00
+	end
+
 _095F:
 	apply_movement obj_D49_shopm1_2, _09D4
 	wait_movement
@@ -752,7 +755,8 @@ _09B6:
 	apply_movement obj_D49_shopm1_2, _0BF4
 	wait_movement
 	goto _093E
-	.byte 0x02, 0x00
+	end
+
 
 _09D4:
 	step 2, 1
@@ -831,7 +835,8 @@ _0AD9:
 _0AEB:
 	npc_msg msg_0137_D49_00037
 	goto _0AD9
-	.byte 0x02, 0x00
+	end
+
 _0AF6:
 	compare VAR_SPECIAL_x8002, 2000
 	goto_if_ge _0B80
@@ -879,7 +884,8 @@ _0B89:
 	npc_msg msg_0137_D49_00040
 	npc_msg msg_0137_D49_00038
 	goto _0A3A
-	.byte 0x02, 0x00
+	end
+
 scr_seq_D49_020:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -887,7 +893,8 @@ scr_seq_D49_020:
 	setvar VAR_TEMP_x4007, 1
 	goto_if_unset FLAG_UNK_997, _095F
 	goto _0A1D
-	.byte 0x02, 0x00
+	end
+
 scr_seq_D49_021:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -895,7 +902,8 @@ scr_seq_D49_021:
 	setvar VAR_TEMP_x4007, 2
 	goto_if_unset FLAG_UNK_997, _095F
 	goto _0A1D
-	.byte 0x02, 0x00
+	end
+
 scr_seq_D49_022:
 	simple_npc_msg msg_0137_D49_00048
 	end

@@ -264,7 +264,8 @@ _036E:
 _037F:
 	npc_msg msg_0611_T26R0701_00008
 	goto _0307
-	.byte 0x02, 0x00
+	end
+
 _038A:
 	npc_msg msg_0611_T26R0701_00009
 	touchscreen_menu_hide

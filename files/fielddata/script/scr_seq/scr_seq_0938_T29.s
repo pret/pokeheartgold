@@ -121,11 +121,13 @@ _0199:
 
 _019F:
 	goto _0085
-	.byte 0x02, 0x00
+	end
+
 _01A7:
 	setflag FLAG_HIDE_LAKE_OF_RAGE_PRYCE
 	goto _0085
-	.byte 0x02, 0x00
+	end
+
 scr_seq_T29_002:
 	goto_if_set FLAG_ENGAGING_STATIC_POKEMON, _01C0
 	end
@@ -187,7 +189,8 @@ _0259:
 _026A:
 	npc_msg msg_0626_T29_00017
 	goto _01F2
-	.byte 0x02, 0x00
+	end
+
 scr_seq_T29_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -407,7 +410,8 @@ _056A:
 	closemsg
 	releaseall
 	end
-	.byte 0x02, 0x00
+	end
+
 scr_seq_T29_006:
 	goto_if_set FLAG_UNK_139, _0597
 	scrcmd_055 2, 0
@@ -440,20 +444,22 @@ scr_seq_T29_014:
 	setvar VAR_SPECIAL_x8008, 27
 	setvar VAR_SPECIAL_x8009, 1
 	goto _061B
-	.byte 0x02, 0x00
+	end
+
 scr_seq_T29_015:
 	setvar VAR_TEMP_x4001, 2
 	setvar VAR_SPECIAL_x8008, 29
 	setvar VAR_SPECIAL_x8009, 1
 	goto _061B
-	.byte 0x02
-	.byte 0x00
+	end
+
 scr_seq_T29_016:
 	setvar VAR_TEMP_x4001, 3
 	setvar VAR_SPECIAL_x8008, 23
 	setvar VAR_SPECIAL_x8009, 1
 	goto _061B
-	.byte 0x02, 0x00
+	end
+
 _061B:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -508,7 +514,8 @@ _06CA:
 	wait_button_or_walk_away
 	setvar VAR_SPECIAL_RESULT, 0
 	goto _06C4
-	.byte 0x02, 0x00
+	end
+
 scr_seq_T29_018:
 	play_se SEQ_SE_DP_SELECT
 	lockall

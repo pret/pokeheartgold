@@ -180,12 +180,14 @@ _0284:
 _028C:
 	npc_msg msg_0380_R32_00003
 	goto _0284
-	.byte 0x02, 0x00
+	end
+
 _0297:
 	buffer_players_name 0
 	npc_msg msg_0380_R32_00001
 	goto _0284
-	.byte 0x02, 0x00
+	end
+
 _02A5:
 	setvar VAR_TEMP_x4002, 0
 	call _02B5

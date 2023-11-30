@@ -500,5 +500,8 @@ scr_seq_D22R0101_010:
 	closemsg
 	releaseall
 	end
-	.byte 0x02, 0x00, 0x00, 0x00
+
+_0760:
+	end
+
 	.balign 4, 0

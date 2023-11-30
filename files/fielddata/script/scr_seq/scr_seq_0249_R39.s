@@ -149,7 +149,9 @@ _01E3:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01E3
 	goto _0173
-	.byte 0x02, 0x00, 0x00, 0x00
+	end
+
+	.byte 0x00, 0x00
 
 _0208:
 	step 75, 1

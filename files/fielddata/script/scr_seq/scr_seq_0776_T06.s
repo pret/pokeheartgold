@@ -78,7 +78,8 @@ scr_seq_T06_013:
 	npc_msg msg_0483_T06_00021
 	closemsg
 	goto _013F
-	.byte 0x02, 0x00
+	end
+
 _0109:
 	scrcmd_452 SPECIES_LATIOS, 0
 	npc_msg msg_0483_T06_00018
@@ -94,7 +95,8 @@ _0109:
 	npc_msg msg_0483_T06_00022
 	closemsg
 	goto _013F
-	.byte 0x02, 0x00
+	end
+
 _013F:
 	apply_movement obj_T06_daigo, _0180
 	wait_movement

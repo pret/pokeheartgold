@@ -102,7 +102,8 @@ _011A:
 	npc_msg msg_0146_D51R0201_00006
 	closemsg
 	goto _0170
-	.byte 0x02, 0x00
+	end
+
 _0154:
 	npc_msg msg_0146_D51R0201_00002
 	wait_button_or_walk_away
@@ -328,7 +329,8 @@ _0433:
 	scrcmd_820 1
 	setvar VAR_TEMP_x4009, 483
 	goto _0514
-	.byte 0x02, 0x00
+	end
+
 scr_seq_D51R0201_003:
 	scrcmd_609
 	lockall
@@ -352,7 +354,8 @@ _049B:
 	scrcmd_820 2
 	setvar VAR_TEMP_x4009, 484
 	goto _0514
-	.byte 0x02, 0x00
+	end
+
 scr_seq_D51R0201_005:
 	scrcmd_609
 	lockall
@@ -376,7 +379,8 @@ _0503:
 	scrcmd_820 3
 	setvar VAR_TEMP_x4009, 487
 	goto _0514
-	.byte 0x02, 0x00
+	end
+
 _0514:
 	nop_var_490 VAR_TEMP_x4009
 	touchscreen_menu_hide

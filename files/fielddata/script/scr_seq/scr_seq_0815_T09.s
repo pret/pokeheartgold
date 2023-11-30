@@ -45,7 +45,8 @@ _007B:
 	compare VAR_TEMP_x4002, 1
 	goto_if_eq _00A9
 	goto _0102
-	.byte 0x02, 0x00
+	end
+
 _00A9:
 	get_weekday VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 2
@@ -317,7 +318,8 @@ _040D:
 _041E:
 	npc_msg msg_0519_T09_00014
 	goto _03A6
-	.byte 0x02, 0x00
+	end
+
 _0429:
 	npc_msg msg_0519_T09_00015
 	touchscreen_menu_hide

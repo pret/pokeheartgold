@@ -56,7 +56,8 @@ scr_seq_R30R0201_001:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _02E8
-	.byte 0x02, 0x00
+	end
+
 scr_seq_R30R0201_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
