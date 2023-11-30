@@ -14,8 +14,7 @@ void ov12_02261FD4(OpponentData *data, BattleSystem *bsys) {
 }
 
 void ov12_02262014(OpponentData *data) {
-    if (data->unk198 != NULL)
-    {
+    if (data->unk198 != NULL) {
         DestroySysTask(data->unk198);
         data->unk198 = NULL;
         data->unk19C = 0;
