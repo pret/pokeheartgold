@@ -396,7 +396,11 @@ _0574:
 _057A:
 	play_fanfare SEQ_ME_HYOUKA2
 	return
-	.byte 0x15, 0x00, 0x02, 0x00
+
+_0580:
+	endstd
+	end
+
 scr_seq_0003_003:
 	scrcmd_609
 	lockall
@@ -814,8 +818,11 @@ _0B17:
 	menu_item_add 70, 79, 3
 	menu_item_add 72, 81, 5
 	return
-	.byte 0x46, 0x00, 0x47, 0x00, 0x50, 0x00, 0x04
-	.byte 0x00, 0x1b, 0x00
+
+_0B49:
+	scrcmd_070 71, 80, 4
+	return
+
 _0B53:
 	menu_exec
 	switch VAR_SPECIAL_RESULT
@@ -1040,8 +1047,15 @@ scr_seq_0003_012:
 	closemsg
 	releaseall
 	end
-	.byte 0x2d
-	.byte 0x00, 0x2a, 0x1b, 0x00, 0x2d, 0x00, 0x2b, 0x1b, 0x00
+
+_0E9F:
+	npc_msg msg_0040_00042
+	return
+
+_0EA4:
+	npc_msg msg_0040_00043
+	return
+
 scr_seq_0003_013:
 	scrcmd_609
 	lockall
@@ -1343,8 +1357,19 @@ scr_seq_0003_028:
 	lockall
 	releaseall
 	end
-	.byte 0x2d
-	.byte 0x00, 0x58, 0x32, 0x00, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00
+
+_129F:
+	npc_msg msg_0040_00088
+	wait_button_or_walk_away
+	closemsg
+	releaseall
+	end
+
+_12AA:
+	closemsg
+	releaseall
+	end
+
 scr_seq_0003_029:
 	stop_bgm 0
 	get_player_gender VAR_SPECIAL_RESULT

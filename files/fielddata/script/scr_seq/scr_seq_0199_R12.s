@@ -209,7 +209,11 @@ _02AE:
 _02B4:
 	setflag FLAG_CAUGHT_SNORLAX
 	return
-	.byte 0x61, 0x00, 0x02, 0x00
+
+_02BA:
+	releaseall
+	end
+
 scr_seq_R12_002:
 	direction_signpost msg_0348_R12_00000, 1, 3, VAR_SPECIAL_RESULT
 	scrcmd_057 3

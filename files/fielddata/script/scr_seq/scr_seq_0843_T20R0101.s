@@ -459,7 +459,11 @@ _0637:
 	gender_msgbox msg_0543_T20R0101_00053, msg_0543_T20R0101_00054
 	setvar VAR_TEMP_x400F, 1
 	goto _04A1
-	.byte 0x61, 0x00, 0x02, 0x00
+
+_064A:
+	releaseall
+	end
+
 _064E:
 	callstd std_bag_is_full
 	closemsg

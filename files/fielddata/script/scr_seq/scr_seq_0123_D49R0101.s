@@ -267,7 +267,12 @@ _0377:
 	case 0, _03C7
 	case 1, _03D7
 	goto _03E4
-	.byte 0x35, 0x00, 0x61, 0x00, 0x02, 0x00
+
+_03C1:
+	closemsg
+	releaseall
+	end
+
 _03C7:
 	holdmsg
 	scrcmd_815 0
@@ -322,8 +327,12 @@ _0443:
 	case 0, _0493
 	case 1, _04E8
 	goto _051C
-	.byte 0x35, 0x00, 0x61
-	.byte 0x00, 0x02, 0x00
+
+_048D:
+	closemsg
+	releaseall
+	end
+
 _0493:
 	holdmsg
 	scrcmd_815 0

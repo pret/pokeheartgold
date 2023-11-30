@@ -139,8 +139,13 @@ _01A5:
 _01EE:
 	npc_msg msg_0571_T23R0501_00010
 	goto _021F
-	.byte 0x02, 0x00, 0x2d, 0x00, 0x09, 0x16, 0x00, 0x1d, 0x00
-	.byte 0x00, 0x00, 0x02, 0x00
+	end
+
+_01F9:
+	npc_msg msg_0571_T23R0501_00009
+	goto _021F
+	end
+
 _0204:
 	npc_msg msg_0571_T23R0501_00007
 	goto _021F
@@ -194,8 +199,13 @@ _0289:
 	closemsg
 	releaseall
 	end
-	.byte 0x5e, 0x00, 0x01, 0x00, 0x68, 0x00, 0x00, 0x00, 0x5f, 0x00, 0x61, 0x00
-	.byte 0x02, 0x00
+
+_0294:
+	apply_movement 1, _0304
+	wait_movement
+	releaseall
+	end
+
 _02A2:
 	npc_msg msg_0571_T23R0501_00019
 	goto _024A
@@ -235,8 +245,13 @@ _02E8:
 _02FC:
 	step 14, 1
 	step_end
-	.byte 0x27, 0x00, 0x01, 0x00, 0x0f, 0x00, 0x01, 0x00, 0x26, 0x00, 0x01, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00
+
+_0304:
+	step 39, 1
+	step 15, 1
+	step 38, 1
+	step_end
+
 scr_seq_T23R0501_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall

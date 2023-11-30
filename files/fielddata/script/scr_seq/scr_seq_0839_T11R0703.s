@@ -30,8 +30,10 @@ scr_seq_T11R0703_000:
 	npc_msg msg_0539_T11R0703_00000
 	closemsg
 	goto _0066
-	.byte 0x5e, 0x00, 0xff, 0x00
-	.byte 0xf0, 0x00, 0x00, 0x00, 0x5f, 0x00
+
+_005C:
+	apply_movement obj_player, _0154
+	wait_movement
 _0066:
 	get_dynamic_warp_floor_no VAR_ELEVATOR_LAST_FLOOR
 	switch VAR_ELEVATOR_LAST_FLOOR

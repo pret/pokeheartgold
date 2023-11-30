@@ -259,8 +259,11 @@ _0435:
 _0478:
 	releaseall
 	end
-	.byte 0x0f, 0x01, 0x00, 0x00
-	.byte 0x01, 0x00, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00
+_047C:
+	scrcmd_271 0, 1
+	closemsg
+	releaseall
+	end
 _0488:
 	npc_msg msg_0738_UNION_00038
 	wait 30, VAR_SPECIAL_RESULT
@@ -428,9 +431,15 @@ _06F6:
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	goto _07BC
-	.byte 0x02, 0x00, 0x0b, 0x01
-	.byte 0x07, 0x00, 0x0c, 0x80, 0x2e, 0x00, 0x0c, 0x80, 0x03, 0x00, 0x1e, 0x00, 0x0c, 0x80, 0x16, 0x00
-	.byte 0x98, 0x00, 0x00, 0x00, 0x02, 0x00
+	end
+
+_071E:
+	scrcmd_267 7, VAR_SPECIAL_RESULT
+	non_npc_msg_var VAR_SPECIAL_RESULT
+	wait 30, VAR_SPECIAL_RESULT
+	goto _07BC
+	end
+
 _0726:
 	scrcmd_267 8, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
@@ -738,8 +747,13 @@ _0BC2:
 	scrcmd_266
 	releaseall
 	end
-	.byte 0x0f, 0x01
-	.byte 0x01, 0x00, 0x01, 0x00, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00
+
+_0BCE:
+	scrcmd_271 1, 1
+	closemsg
+	releaseall
+	end
+
 _0BDA:
 	scrcmd_265
 	fade_screen 6, 1, 1, RGB_BLACK
@@ -857,6 +871,9 @@ _0D9B:
 	npc_msg msg_0738_UNION_00163
 	touchscreen_menu_hide
 	goto _0CAF
-	.byte 0x02, 0x00, 0x16, 0x00, 0x7e, 0xfe, 0xff, 0xff
-	.byte 0x02, 0x00, 0x00, 0x00
+	end
+
+_0DAA:
+	goto _0C2E
+	end
 	.balign 4, 0

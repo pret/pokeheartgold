@@ -36,7 +36,10 @@ scr_seq_T02R0302_002:
 _0063:
 	npc_msg msg_0458_T02R0302_00012
 	goto _0091
-	.byte 0x61, 0x00, 0x02, 0x00
+
+_006C:
+	releaseall
+	end
 
 _0070:
 	step 14, 2

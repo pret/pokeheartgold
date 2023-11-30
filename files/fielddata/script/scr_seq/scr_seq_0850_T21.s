@@ -574,8 +574,13 @@ _07E4:
 	setvar VAR_SCENE_CHERRYGROVE_CITY_OW, 4
 	setflag FLAG_MET_PASSERBY_BOY
 	end
-	.byte 0xdb, 0x00, 0x61, 0x00, 0x02, 0x00, 0x00, 0x00
 
+_0800:
+	white_out
+	releaseall
+	end
+
+	.balign 4, 0
 _0808:
 	step 14, 7
 	step_end

@@ -89,7 +89,11 @@ _0139:
 
 scr_seq_T03R0101_017:
 	end
-	.byte 0xea, 0x01, 0x06, 0x40, 0x02, 0x00
+
+_0141:
+	nop_var_490 VAR_TEMP_x4006
+	end
+
 scr_seq_T03R0101_000:
 	simple_npc_msg msg_0464_T03R0101_00000
 	end

@@ -64,8 +64,14 @@ _0071:
 	setvar VAR_UNK_40FF, 1
 	releaseall
 	end
-	.byte 0x14, 0x00, 0xd9, 0x07, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00, 0x00
 
+_00F5:
+	callstd std_bag_is_full
+	closemsg
+	releaseall
+	end
+
+	.balign 4, 0
 _0100:
 	step 1, 1
 	step_end

@@ -244,7 +244,9 @@ _0339:
 	.byte 0x00, 0x00
 _0352:
 	goto _03BD
-	.byte 0x5f, 0x00
+
+_0358:
+	wait_movement
 _035A:
 	apply_movement obj_T01R0301_ookido, _0500
 	wait_movement

@@ -24,8 +24,8 @@
 	scrdef scr_seq_T25R1201_016
 	scrdef scr_seq_T25R1201_017
 	scrdef_end
+	scrdef_end ; not sure why there are two of these...
 
-	.byte 0x13, 0xfd
 scr_seq_T25R1201_001:
 	compare VAR_UNK_4133, 6
 	call_if_eq _005B
@@ -429,7 +429,10 @@ _063A:
 	buffer_mon_species_name 0, 0
 	npc_msg msg_0600_T25R1201_00021
 	goto _067F
-	.byte 0x02, 0x00, 0x2d, 0x00, 0x12
+	end
+
+_064A:
+	npc_msg msg_0600_T25R1201_00018
 _064D:
 	npc_msg msg_0600_T25R1201_00019
 	touchscreen_menu_hide

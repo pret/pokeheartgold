@@ -691,7 +691,12 @@ _08D1:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0928
 	goto _0933
-	.byte 0x35, 0x00, 0x61, 0x00, 0x02, 0x00
+
+_0917:
+	closemsg
+	releaseall
+	end
+
 _091D:
 	npc_msg msg_0137_D49_00030
 	goto _08D1

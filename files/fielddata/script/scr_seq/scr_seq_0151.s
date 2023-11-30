@@ -230,8 +230,12 @@ _02F3:
 _02F8:
 	closemsg
 	return
-	.byte 0x2d, 0x00, 0x12, 0x16
-	.byte 0x00, 0x5b, 0xff, 0xff, 0xff, 0x02, 0x00
+
+_02FC:
+	npc_msg msg_0246_00018
+	goto _0260
+	end
+
 scr_seq_0151_006:
 	scrcmd_789 0
 	npc_msg msg_0246_00023

@@ -856,8 +856,15 @@ _0BFC:
 	touchscreen_menu_show
 	releaseall
 	end
-	.byte 0x2d, 0x00, 0x55, 0x32, 0x00, 0x35, 0x00
-	.byte 0xeb, 0x02, 0x61, 0x00, 0x02, 0x00
+
+_0C09:
+	npc_msg msg_0135_D47R0101_00085
+	wait_button_or_walk_away
+	closemsg
+	touchscreen_menu_show
+	releaseall
+	end
+
 _0C16:
 	npc_msg msg_0135_D47R0101_00085
 	wait_button_or_walk_away
