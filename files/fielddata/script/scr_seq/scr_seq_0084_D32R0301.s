@@ -335,8 +335,8 @@ _04BD:
 	apply_movement VAR_SPECIAL_LAST_TALKED, _0568
 	wait_movement
 	return
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _04D4:
 	step 12, 3
 	step 15, 1
@@ -344,6 +344,7 @@ _04D4:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _04E8:
 	step 12, 3
 	step 14, 1
@@ -351,6 +352,7 @@ _04E8:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _04FC:
 	step 12, 2
 	step 15, 1
@@ -358,6 +360,7 @@ _04FC:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0510:
 	step 12, 2
 	step 14, 1
@@ -365,6 +368,7 @@ _0510:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0524:
 	step 21, 3
 	step 22, 1
@@ -373,6 +377,7 @@ _0524:
 	step 70, 1
 	step_end
 
+	.balign 4, 0
 _053C:
 	step 21, 3
 	step 23, 1
@@ -381,6 +386,7 @@ _053C:
 	step 70, 1
 	step_end
 
+	.balign 4, 0
 _0554:
 	step 21, 2
 	step 22, 1
@@ -388,12 +394,14 @@ _0554:
 	step 70, 1
 	step_end
 
+	.balign 4, 0
 _0568:
 	step 21, 2
 	step 23, 1
 	step 21, 4
 	step 70, 1
 	step_end
+
 _057C:
 	npc_msg msg_0107_D32R0301_00000
 	return
@@ -503,9 +511,19 @@ scr_seq_D32R0301_004:
 	end
 
 	.balign 4, 0
-	.byte 0x0c, 0x00, 0x02, 0x00
-	.byte 0x3f, 0x00, 0x01, 0x00, 0x0c, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x02, 0x00
-	.byte 0x3f, 0x00, 0x01, 0x00, 0x0c, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
+_06BC:
+	step 12, 2
+	step 63, 1
+	step 12, 1
+	step_end
+
+	.balign 4, 0
+_06CC:
+	step 12, 2
+	step 63, 1
+	step 12, 1
+	step_end
+
 scr_seq_D32R0301_006:
 	simple_npc_msg msg_0107_D32R0301_00027
 	end

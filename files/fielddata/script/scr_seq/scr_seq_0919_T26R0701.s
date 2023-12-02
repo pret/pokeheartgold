@@ -181,8 +181,8 @@ _0272:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0288:
 	step 15, 1
 	step 12, 2
@@ -191,11 +191,13 @@ _0288:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _02A0:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _02AC:
 	step 12, 1
 	step 14, 1
@@ -203,16 +205,19 @@ _02AC:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _02C0:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _02CC:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
+
 scr_seq_T26R0701_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall

@@ -150,8 +150,8 @@ _021D:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0234:
 	step 15, 1
 	step 12, 2
@@ -160,11 +160,13 @@ _0234:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _024C:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0258:
 	step 12, 1
 	step 14, 1
@@ -172,6 +174,7 @@ _0258:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _026C:
 	step 12, 1
 	step 15, 1
@@ -179,16 +182,19 @@ _026C:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0280:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _028C:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
+
 scr_seq_D32_001:
 	simple_npc_msg msg_0100_D32_00000
 	end
@@ -926,11 +932,12 @@ scr_seq_D32_033:
 	wait_fade
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _10B0:
 	step 18, 5
 	step_end
+
 scr_seq_D32_034:
 	scrcmd_609
 	lockall
@@ -946,10 +953,11 @@ scr_seq_D32_034:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _10F4:
 	step 18, 6
 	step_end
+
 scr_seq_D32_035:
 	scrcmd_609
 	lockall
@@ -965,10 +973,11 @@ scr_seq_D32_035:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _1138:
 	step 19, 5
 	step_end
+
 scr_seq_D32_036:
 	scrcmd_609
 	lockall
@@ -984,10 +993,11 @@ scr_seq_D32_036:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _117C:
 	step 19, 6
 	step_end
+
 scr_seq_D32_000:
 	end
 	.balign 4, 0

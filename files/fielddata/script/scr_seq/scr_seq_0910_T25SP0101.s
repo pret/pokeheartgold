@@ -40,18 +40,21 @@ _006A:
 	npc_msg msg_0603_T25SP0101_00039
 	goto _00E8
 
-
+	.balign 4, 0
 _0080:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0088:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _0090:
 	step 3, 1
 	step_end
+
 scr_seq_T25SP0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall

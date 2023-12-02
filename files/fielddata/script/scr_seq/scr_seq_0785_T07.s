@@ -331,9 +331,11 @@ _045C:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0464:
 	step 34, 1
 	step_end
+
 _046C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -472,8 +474,8 @@ _064F:
 	closemsg
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0664:
 	step 15, 1
 	step 12, 2
@@ -482,11 +484,13 @@ _0664:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _067C:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0688:
 	step 12, 1
 	step 14, 1
@@ -494,6 +498,7 @@ _0688:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _069C:
 	step 12, 1
 	step 15, 1
@@ -501,11 +506,13 @@ _069C:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _06B0:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _06BC:
 	step 15, 1
 	step 12, 1

@@ -210,16 +210,18 @@ scr_seq_D37R0103_002:
 	closemsg
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0504:
 	step 9, 2
 	step_end
 
+	.balign 4, 0
 _050C:
 	step 10, 2
 	step_end
 
+	.balign 4, 0
 _0514:
 	step 11, 2
 	step_end

@@ -108,8 +108,8 @@ _0157:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0164:
 	step 1, 1
 	step 2, 1
@@ -121,6 +121,7 @@ _0164:
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _0188:
 	step 0, 1
 	step 3, 1
@@ -132,6 +133,7 @@ _0188:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _01AC:
 	step 2, 1
 	step 0, 1
@@ -143,6 +145,7 @@ _01AC:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _01D0:
 	step 3, 1
 	step 1, 1
@@ -153,6 +156,7 @@ _01D0:
 	step 2, 1
 	step 0, 1
 	step_end
+
 scr_seq_T22R0301_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -248,11 +252,12 @@ _0353:
 	touchscreen_menu_show
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _035C:
 	step 32, 1
 	step_end
+
 scr_seq_T22R0301_004:
 	simple_npc_msg msg_0560_T22R0301_00007
 	end

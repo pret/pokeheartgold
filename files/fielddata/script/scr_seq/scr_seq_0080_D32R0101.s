@@ -290,24 +290,28 @@ _0333:
 	toggle_following_pokemon_movement 1
 	following_pokemon_movement 48
 	return
-	.byte 0x00
 
+	.balign 4, 0
 _0384:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _038C:
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _0394:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _039C:
 	step 12, 3
 	step 34, 1
 	step_end
+
 scr_seq_D32R0101_007:
 	simple_npc_msg msg_0103_D32R0101_00032
 	end

@@ -76,16 +76,18 @@ scr_seq_P01R0102_002:
 	clearflag FLAG_UNK_092
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0104:
 	step 13, 3
 	step_end
 
+	.balign 4, 0
 _010C:
 	step 14, 1
 	step 33, 1
 	step_end
+
 scr_seq_P01R0102_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -106,10 +108,11 @@ scr_seq_P01R0102_004:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _0144:
 	step 32, 1
 	step_end
+
 scr_seq_P01R0102_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -165,40 +168,46 @@ _0211:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _021C:
 	step 2, 1
 	step 14, 1
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _022C:
 	step 3, 1
 	step 15, 1
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _023C:
 	step 3, 1
 	step 15, 1
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _024C:
 	step 14, 1
 	step 0, 1
 	step 12, 2
 	step_end
 
+	.balign 4, 0
 _025C:
 	step 15, 1
 	step 0, 1
 	step 12, 2
 	step_end
 
+	.balign 4, 0
 _026C:
 	step 12, 2
 	step_end
+
 scr_seq_P01R0102_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall

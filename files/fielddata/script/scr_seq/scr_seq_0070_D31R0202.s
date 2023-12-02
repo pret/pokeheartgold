@@ -120,15 +120,22 @@ _019A:
 	apply_movement obj_player, _01EC
 	wait_movement
 	return
-	.byte 0x00, 0x00
-	.byte 0x0c, 0x00, 0x02, 0x00, 0x03, 0x00, 0x01, 0x00, 0x0f, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_01B0:
+	step 12, 2
+	step 3, 1
+	step 15, 1
+	step 1, 1
+	step_end
+
+	.balign 4, 0
 _01C4:
 	step 12, 2
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _01D0:
 	step 13, 1
 	step 2, 1
@@ -138,12 +145,14 @@ _01D0:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _01EC:
 	step 63, 2
 	step 61, 1
 	step 13, 2
 	step 69, 1
 	step_end
+
 _0200:
 	scrcmd_436
 	scrcmd_627 5

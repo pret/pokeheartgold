@@ -146,23 +146,27 @@ _0210:
 	setflag FLAG_UNK_157
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _022C:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0234:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _023C:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0244:
 	step 35, 1
 	step_end
+
 scr_seq_R47_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall

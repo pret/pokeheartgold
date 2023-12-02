@@ -166,8 +166,8 @@ _024B:
 	clearflag FLAG_HIDE_VIRIDIAN_CITY_OLD_MAN_OUTSIDE_GYM_UNLOCKED
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0268:
 	step 35, 1
 	step 63, 2
@@ -176,6 +176,7 @@ _0268:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0280:
 	step 32, 1
 	step 63, 2
@@ -184,22 +185,26 @@ _0280:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0298:
 	step 14, 1
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _02A4:
 	step 13, 1
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _02B0:
 	step 13, 2
 	step 14, 2
 	step 13, 8
 	step_end
 
+	.balign 4, 0
 _02C0:
 	step 13, 1
 	step 13, 2
@@ -207,25 +212,30 @@ _02C0:
 	step 13, 7
 	step_end
 
+	.balign 4, 0
 _02D4:
 	step 13, 1
 	step 15, 1
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _02E4:
 	step 14, 1
 	step 12, 1
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _02F4:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _02FC:
 	step 60, 1
 	step_end
+
 _0304:
 	npc_msg msg_0519_T09_00005
 	touchscreen_menu_hide

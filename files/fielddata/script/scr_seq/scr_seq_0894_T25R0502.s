@@ -42,18 +42,20 @@ scr_seq_T25R0502_000:
 	following_pokemon_movement 48
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _008C:
 	step 13, 3
 	step 14, 8
 	step_end
 
+	.balign 4, 0
 _0098:
 	step 15, 3
 	step 13, 3
 	step_end
 
+	.balign 4, 0
 _00A4:
 	step 13, 2
 	step_end

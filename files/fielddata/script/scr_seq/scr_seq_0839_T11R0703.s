@@ -91,29 +91,33 @@ _0142:
 _014C:
 	play_se SEQ_SE_DP_KAIDAN2
 	return
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0154:
 	step 12, 2
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0160:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0170:
 	step 1, 1
 	step 13, 1
 	step 45, 3
 	step_end
 
+	.balign 4, 0
 _0180:
 	step 13, 2
 	step 33, 1
 	step_end
+
 _018C:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement

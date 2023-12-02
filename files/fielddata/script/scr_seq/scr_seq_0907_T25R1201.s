@@ -82,15 +82,21 @@ _00FD:
 	scrcmd_309 77
 	return
 
-
+	.balign 4, 0
 _0108:
 	step 13, 1
 	step_end
-	.byte 0x0d, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_0110:
+	step 13, 1
+	step_end
+
+	.balign 4, 0
 _0118:
 	step 13, 2
 	step_end
+
 scr_seq_T25R1201_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -256,24 +262,28 @@ _0391:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _03A0:
 	step 15, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _03AC:
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _03B4:
 	step 12, 2
 	step_end
 
+	.balign 4, 0
 _03BC:
 	step 1, 1
 	step_end
+
 _03C4:
 	callstd std_party_illegal
 	wait_button_or_walk_away

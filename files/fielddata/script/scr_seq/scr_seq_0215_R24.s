@@ -42,28 +42,32 @@ _0078:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _0084:
 	step 75, 1
 	step 18, 3
 	step_end
 
+	.balign 4, 0
 _0090:
 	step 0, 1
 	step 75, 1
 	step 18, 3
 	step_end
 
+	.balign 4, 0
 _00A0:
 	step 65, 3
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _00AC:
 	step 65, 3
 	step 17, 1
 	step 0, 1
 	step_end
+
 scr_seq_R24_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -105,12 +109,13 @@ _014A:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _0150:
 	step 19, 1
 	step 17, 10
 	step_end
 
+	.balign 4, 0
 _015C:
 	step 71, 1
 	step 19, 1
@@ -118,11 +123,13 @@ _015C:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0170:
 	step 62, 12
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _017C:
 	step 62, 1
 	step 1, 1
@@ -130,6 +137,7 @@ _017C:
 	step 12, 1
 	step 2, 1
 	step_end
+
 scr_seq_R24_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall

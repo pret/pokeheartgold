@@ -403,8 +403,8 @@ _06DE:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _06F8:
 	step 33, 1
 	step_end

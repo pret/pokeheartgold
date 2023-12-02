@@ -62,29 +62,33 @@ scr_seq_T22_004:
 	setvar VAR_SCENE_VIOLET_CITY_OW, 4
 	end
 
-
+	.balign 4, 0
 _00CC:
 	step 75, 1
 	step 14, 5
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _00DC:
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _00E4:
 	step 71, 1
 	step 9, 1
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _00F4:
 	step 13, 2
 	step 14, 1
 	step 13, 7
 	step_end
 
+	.balign 4, 0
 _0104:
 	step 3, 1
 	step 61, 1
@@ -103,6 +107,7 @@ _0104:
 	step 0, 1
 	step 61, 1
 	step_end
+
 scr_seq_T22_005:
 	simple_npc_msg msg_0556_T22_00026
 	end
@@ -255,8 +260,8 @@ _0343:
 	clearflag FLAG_HIDE_EARL_IN_SCHOOL
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0388:
 	step 1, 1
 	step 2, 1
@@ -268,6 +273,7 @@ _0388:
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _03AC:
 	step 0, 1
 	step 3, 1
@@ -279,6 +285,7 @@ _03AC:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _03D0:
 	step 2, 1
 	step 0, 1
@@ -290,6 +297,7 @@ _03D0:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _03F4:
 	step 3, 1
 	step 1, 1
@@ -301,6 +309,7 @@ _03F4:
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _0418:
 	step 1, 1
 	step 2, 1
@@ -313,6 +322,7 @@ _0418:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0440:
 	step 0, 1
 	step 3, 1
@@ -323,6 +333,7 @@ _0440:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0460:
 	step 2, 1
 	step 0, 1
@@ -334,6 +345,7 @@ _0460:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0484:
 	step 3, 1
 	step 1, 1
@@ -347,6 +359,7 @@ _0484:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _04B0:
 	step 17, 8
 	step 2, 1
@@ -368,6 +381,7 @@ _04B0:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _04FC:
 	step 18, 2
 	step 1, 1
@@ -430,14 +444,17 @@ _04FC:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _05EC:
 	step 12, 2
 	step_end
 
+	.balign 4, 0
 _05F4:
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _05FC:
 	step 63, 1
 	step 90, 1
@@ -448,6 +465,7 @@ _05FC:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _061C:
 	step 63, 1
 	step 91, 1
@@ -458,6 +476,7 @@ _061C:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _063C:
 	step 17, 1
 	step 19, 1
@@ -473,6 +492,7 @@ _063C:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0670:
 	step 63, 1
 	step 89, 9
@@ -481,6 +501,7 @@ _0670:
 	step 91, 21
 	step 32, 1
 	step_end
+
 scr_seq_T22_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -646,8 +667,8 @@ _0B1B:
 	wait_movement
 _0B25:
 	return
-	.byte 0x00
 
+	.balign 4, 0
 _0B28:
 	step 3, 1
 	step 0, 1
@@ -667,6 +688,7 @@ _0B28:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0B6C:
 	step 0, 1
 	step 2, 1
@@ -686,6 +708,7 @@ _0B6C:
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _0BB0:
 	step 1, 1
 	step 3, 1
@@ -704,6 +727,7 @@ _0BB0:
 	step 0, 1
 	step 2, 1
 	step_end
+
 scr_seq_T22_002:
 	end
 

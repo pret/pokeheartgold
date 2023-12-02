@@ -1700,11 +1700,12 @@ _0EAB:
 _0EB3:
 	scrcmd_109 VAR_SPECIAL_LAST_TALKED, 16
 	return
-	.byte 0x00
 
+	.balign 4, 0
 _0EBC:
 	step 101, 1
 	step_end
+
 scr_seq_0953_739:
 	wait_following_pokemon_movement
 	lockall

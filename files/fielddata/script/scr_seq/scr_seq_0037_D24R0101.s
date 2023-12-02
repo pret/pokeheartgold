@@ -153,8 +153,8 @@ _024D:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0264:
 	step 15, 1
 	step 12, 2
@@ -163,11 +163,13 @@ _0264:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _027C:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0288:
 	step 12, 1
 	step 14, 1
@@ -175,16 +177,19 @@ _0288:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _029C:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _02A8:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
+
 scr_seq_D24R0101_007:
 	scrcmd_609
 	lockall
@@ -324,7 +329,7 @@ _0530:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _0534:
 	step 62, 1
 	step 17, 3
@@ -333,10 +338,12 @@ _0534:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _054C:
 	step 17, 1
 	step_end
 
+	.balign 4, 0
 _0554:
 	step 38, 1
 	step 75, 1
@@ -346,6 +353,7 @@ _0554:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _0570:
 	step 75, 1
 	step 63, 1
@@ -353,6 +361,7 @@ _0570:
 	step 37, 1
 	step_end
 
+	.balign 4, 0
 _0584:
 	step 15, 1
 	step 14, 2
@@ -363,18 +372,21 @@ _0584:
 	step 37, 1
 	step_end
 
+	.balign 4, 0
 _05A4:
 	step 75, 1
 	step 63, 1
 	step 37, 1
 	step_end
 
+	.balign 4, 0
 _05B4:
 	step 14, 1
 	step 13, 1
 	step 37, 1
 	step_end
 
+	.balign 4, 0
 _05C4:
 	step 71, 1
 	step 57, 1
@@ -383,6 +395,7 @@ _05C4:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _05DC:
 	step 71, 1
 	step 18, 1
@@ -391,35 +404,41 @@ _05DC:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _05F4:
 	step 50, 1
 	step 63, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0604:
 	step 71, 1
 	step 17, 5
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _0614:
 	step 13, 3
 	step 15, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0624:
 	step 13, 4
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0630:
 	step 63, 2
 	step 12, 1
 	step 15, 1
 	step 12, 1
 	step_end
+
 scr_seq_D24R0101_000:
 	scrcmd_055 2, 0
 	scrcmd_057 3

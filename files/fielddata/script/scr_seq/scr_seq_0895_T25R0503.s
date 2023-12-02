@@ -20,8 +20,8 @@ scr_seq_T25R0503_000:
 	setvar VAR_UNK_411F, 0
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0038:
 	step 15, 7
 	step 12, 2

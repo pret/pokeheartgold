@@ -893,68 +893,79 @@ _sticks4_farfetchd2_bottom_right:
 	wait_movement
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _exclaim_face_down:
 	step MOVEMENT_FACE_DOWN, 1
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step_end
 
+	.balign 4, 0
 _exclaim_face_up:
 	step MOVEMENT_FACE_UP, 1
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step_end
 
+	.balign 4, 0
 _exclaim_face_left:
 	step MOVEMENT_FACE_LEFT, 1
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step_end
 
+	.balign 4, 0
 _exclaim_face_right:
 	step MOVEMENT_FACE_RIGHT, 1
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step_end
 
+	.balign 4, 0
 _farfetchd_run_up:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step MOVEMENT_RUN_UP, 10
 	step MOVEMENT_FACE_DOWN, 1
 	step_end
 
+	.balign 4, 0
 _farfetchd_run_down:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step MOVEMENT_RUN_DOWN, 10
 	step MOVEMENT_FACE_UP, 1
 	step_end
 
+	.balign 4, 0
 _farfetchd1_run_right:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step MOVEMENT_RUN_RIGHT, 7
 	step MOVEMENT_FACE_LEFT, 1
 	step_end
 
+	.balign 4, 0
 _farfetchd1_run_left:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step MOVEMENT_RUN_LEFT, 7
 	step MOVEMENT_FACE_RIGHT, 1
 	step_end
 
+	.balign 4, 0
 _farfetchd2_run_right:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step MOVEMENT_RUN_RIGHT, 8
 	step MOVEMENT_FACE_LEFT, 1
 	step_end
 
+	.balign 4, 0
 _farfetchd2_run_left:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step MOVEMENT_RUN_LEFT, 8
 	step MOVEMENT_FACE_RIGHT, 1
 	step_end
 
+	.balign 4, 0
 _walk_in_place_face_down:
 	step MOVEMENT_WALK_IN_PLACE_FACE_DOWN, 5
 	step_end
 
+	.balign 4, 0
 _walk_in_place_face_right:
 	step MOVEMENT_WALK_IN_PLACE_FACE_RIGHT, 5
 	step_end
@@ -980,21 +991,24 @@ scr_seq_D36R0101_016:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _0EC4:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0ED0:
 	step 52, 1
 	step_end
 
+	.balign 4, 0
 _0ED8:
 	step 71, 1
 	step 9, 1
 	step 72, 1
 	step_end
+
 scr_seq_D36R0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -1183,15 +1197,17 @@ scr_seq_D36R0101_017:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _118C:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step_end
 
+	.balign 4, 0
 _1194:
 	step 63, 2
 	step MOVEMENT_FACE_UP, 1
 	step_end
+
 scr_seq_D36R0101_011:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -1276,16 +1292,18 @@ scr_seq_D36R0101_014:
 	simple_npc_msg msg_0115_D36R0101_00004
 	end
 
-
+	.balign 4, 0
 _12EC:
 	step 12, 10
 	step 15, 3
 	step_end
 
+	.balign 4, 0
 _12F8:
 	step 63, 12
 	step MOVEMENT_FACE_LEFT, 1
 	step_end
+
 scr_seq_D36R0101_015:
 	scrcmd_609
 	lockall
@@ -1380,25 +1398,28 @@ _142D:
 	releaseall
 	setvar VAR_UNK_40E9, 1
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _1478:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _1484:
 	step 13, 1
 	step 15, 2
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _1494:
 	step 13, 1
 	step 15, 3
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _14A4:
 	step MOVEMENT_FACE_LEFT, 1
 	step 61, 1
@@ -1418,6 +1439,7 @@ _14A4:
 	step 61, 1
 	step_end
 
+	.balign 4, 0
 _14E8:
 	step MOVEMENT_FACE_LEFT, 1
 	step 71, 1
@@ -1425,6 +1447,7 @@ _14E8:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _14FC:
 	step 12, 2
 	step 14, 1
@@ -1434,6 +1457,7 @@ _14FC:
 	step 51, 3
 	step_end
 
+	.balign 4, 0
 _1518:
 	step 14, 1
 	step 12, 2
@@ -1444,6 +1468,7 @@ _1518:
 	step 51, 3
 	step_end
 
+	.balign 4, 0
 _1538:
 	step 12, 2
 	step 14, 1
@@ -1452,6 +1477,7 @@ _1538:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _1550:
 	step 14, 1
 	step 12, 2
@@ -1461,18 +1487,22 @@ _1550:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _156C:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _1574:
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _157C:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _1584:
 	step 15, 3
 	step 13, 2
@@ -1481,11 +1511,13 @@ _1584:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _159C:
 	step 14, 2
 	step 12, 2
 	step 14, 6
 	step_end
+
 scr_seq_D36R0101_018:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -1572,7 +1604,7 @@ _16EC:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _1700:
 	step 15, 1
 	step 12, 2
@@ -1581,11 +1613,13 @@ _1700:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _1718:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _1724:
 	step 12, 1
 	step 14, 1
@@ -1593,6 +1627,7 @@ _1724:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _1738:
 	step 12, 1
 	step 15, 1
@@ -1600,16 +1635,19 @@ _1738:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _174C:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _1758:
 	step 15, 1
 	step 12, 1
 	step MOVEMENT_FACE_DOWN, 1
 	step_end
+
 scr_seq_D36R0101_012:
 	player_on_bike_check VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
@@ -1918,8 +1956,8 @@ _1C36:
 _1C3D:
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _1C44:
 	step 71, 1
 	step 59, 1
@@ -1927,11 +1965,13 @@ _1C44:
 	step 49, 2
 	step_end
 
+	.balign 4, 0
 _1C58:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _1C64:
 	step MOVEMENT_RUN_DOWN, 7
 	step 50, 1
@@ -1944,6 +1984,7 @@ _1C64:
 	step 48, 2
 	step_end
 
+	.balign 4, 0
 _1C8C:
 	step 63, 3
 	step MOVEMENT_FACE_DOWN, 1
@@ -1956,12 +1997,14 @@ _1C8C:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _1CB4:
 	step 15, 1
 	step 13, 1
 	step MOVEMENT_FACE_DOWN, 1
 	step_end
 
+	.balign 4, 0
 _1CC4:
 	step 71, 1
 	step 55, 1
@@ -1977,12 +2020,14 @@ _1CC4:
 	step MOVEMENT_FACE_UP, 1
 	step_end
 
+	.balign 4, 0
 _1CF8:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step 63, 1
 	step 49, 2
 	step_end
 
+	.balign 4, 0
 _1D08:
 	step 71, 1
 	step 53, 1
@@ -1994,6 +2039,7 @@ _1D08:
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _1D2C:
 	step 65, 2
 	step MOVEMENT_RUN_DOWN, 1
@@ -2003,6 +2049,7 @@ _1D2C:
 	step MOVEMENT_RUN_LEFT, 1
 	step_end
 
+	.balign 4, 0
 _1D48:
 	step MOVEMENT_RUN_DOWN, 12
 	step MOVEMENT_RUN_RIGHT, 6
@@ -2028,6 +2075,7 @@ _1D48:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _1DA4:
 	step MOVEMENT_RUN_DOWN, 13
 	step MOVEMENT_RUN_RIGHT, 7
@@ -2045,6 +2093,7 @@ _1DA4:
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _1DE0:
 	step 65, 5
 	step 9, 10
@@ -2052,45 +2101,54 @@ _1DE0:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _1DF4:
 	step 32, 1
 	step 65, 1
 	step_end
 
+	.balign 4, 0
 _1E00:
 	step 33, 1
 	step 65, 1
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step_end
 
+	.balign 4, 0
 _1E10:
 	step 65, 1
 	step 32, 1
 	step 65, 1
 	step_end
 
+	.balign 4, 0
 _1E20:
 	step 48, 1
 	step 51, 1
 	step_end
 
+	.balign 4, 0
 _1E2C:
 	step 54, 1
 	step 50, 2
 	step_end
 
+	.balign 4, 0
 _1E38:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _1E40:
 	step 51, 2
 	step_end
 
+	.balign 4, 0
 _1E48:
 	step 48, 2
 	step_end
 
+	.balign 4, 0
 _1E50:
 	step 35, 1
 	step 65, 1
@@ -2098,12 +2156,14 @@ _1E50:
 	step 8, 10
 	step_end
 
+	.balign 4, 0
 _1E64:
 	step 9, 2
 	step 10, 4
 	step 8, 12
 	step_end
 
+	.balign 4, 0
 _1E74:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step 63, 1
@@ -2111,63 +2171,77 @@ _1E74:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _1E88:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _1E90:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _1E98:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _1EA0:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _1EA8:
 	step 12, 1
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _1EB4:
 	step 12, 1
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _1EC0:
 	step 15, 1
 	step 12, 2
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _1ED0:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _1ED8:
 	step 13, 1
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _1EE4:
 	step 13, 1
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _1EF0:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _1EF8:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _1F00:
 	step 33, 1
 	step_end
+
 scr_seq_D36R0101_020:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -2234,12 +2308,13 @@ _1F48:
 	wait_fade
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _200C:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _2014:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step 63, 1
@@ -2251,6 +2326,7 @@ _2014:
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _2038:
 	step MOVEMENT_FACE_DOWN, 1
 	step MOVEMENT_FACE_DOWN, 1
@@ -2260,11 +2336,13 @@ _2038:
 	step 71, 1
 	step_end
 
+	.balign 4, 0
 _2054:
 	step 13, 11
 	step 15, 2
 	step_end
 
+	.balign 4, 0
 _2060:
 	step 13, 8
 	step 35, 1
@@ -2278,12 +2356,14 @@ _2060:
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _208C:
 	step 65, 1
 	step 15, 2
 	step 12, 2
 	step 35, 1
 	step_end
+
 scr_seq_D36R0101_022:
 	scrcmd_609
 	lockall
@@ -2326,8 +2406,8 @@ scr_seq_D36R0101_022:
 	setflag FLAG_HIDE_ILEX_FOREST_FRIEND
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _2148:
 	step 34, 1
 	step 63, 1
@@ -2335,6 +2415,7 @@ _2148:
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _215C:
 	step 34, 1
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
@@ -2342,6 +2423,7 @@ _215C:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _2170:
 	step 63, 1
 	step 51, 2
@@ -2351,20 +2433,24 @@ _2170:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _218C:
 	step 14, 3
 	step 65, 1
 	step 50, 2
 	step_end
 
+	.balign 4, 0
 _219C:
 	step 15, 3
 	step_end
 
+	.balign 4, 0
 _21A4:
 	step 15, 3
 	step_end
 
+	.balign 4, 0
 _21AC:
 	step 14, 4
 	step 12, 6
@@ -2373,6 +2459,7 @@ _21AC:
 	step 12, 5
 	step_end
 
+	.balign 4, 0
 _21C4:
 	step 71, 1
 	step 53, 1
@@ -2387,10 +2474,12 @@ _21C4:
 	step 12, 10
 	step_end
 
+	.balign 4, 0
 _21F4:
 	step 13, 1
 	step 63, 1
 	step_end
+
 scr_seq_D36R0101_013:
 	scrcmd_055 3, 0
 	scrcmd_057 3

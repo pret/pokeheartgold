@@ -264,23 +264,27 @@ _041E:
 	closemsg
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0434:
 	step 48, 2
 	step_end
 
+	.balign 4, 0
 _043C:
 	step 49, 2
 	step_end
 
+	.balign 4, 0
 _0444:
 	step 50, 2
 	step_end
 
+	.balign 4, 0
 _044C:
 	step 51, 2
 	step_end
+
 scr_seq_D49R0106_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall

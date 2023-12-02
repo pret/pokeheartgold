@@ -62,17 +62,19 @@ scr_seq_T01R0301_006:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _00C8:
 	step 12, 5
 	step_end
 
+	.balign 4, 0
 _00D0:
 	step 63, 2
 	step 12, 3
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _00E0:
 	step 0, 1
 	step 63, 4
@@ -80,11 +82,13 @@ _00E0:
 	step 63, 3
 	step_end
 
+	.balign 4, 0
 _00F4:
 	step 12, 1
 	step 14, 3
 	step 3, 1
 	step_end
+
 scr_seq_T01R0301_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -354,43 +358,81 @@ _04C2:
 	gender_msgbox msg_0451_T01R0301_00024, msg_0451_T01R0301_00025
 	closemsg
 	goto _0421
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _04D4:
 	step 75, 1
 	step 63, 1
 	step_end
-	.byte 0x20, 0x00, 0x01, 0x00, 0x08, 0x00, 0x02, 0x00, 0x3f, 0x00, 0x04, 0x00, 0x21, 0x00, 0x01, 0x00
-	.byte 0x3f, 0x00, 0x04, 0x00, 0x09, 0x00, 0x02, 0x00, 0x21, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_04E0:
+	step 32, 1
+	step 8, 2
+	step 63, 4
+	step 33, 1
+	step 63, 4
+	step 9, 2
+	step 33, 1
+	step_end
+
+	.balign 4, 0
 _0500:
 	step 33, 1
 	step 63, 1
 	step_end
-	.byte 0x23, 0x00, 0x01, 0x00
-	.byte 0x0b, 0x00, 0x02, 0x00, 0x3f, 0x00, 0x04, 0x00, 0x22, 0x00, 0x01, 0x00, 0x3f, 0x00, 0x04, 0x00
-	.byte 0x0a, 0x00, 0x02, 0x00, 0x22, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_050C:
+	step 35, 1
+	step 11, 2
+	step 63, 4
+	step 34, 1
+	step 63, 4
+	step 10, 2
+	step 34, 1
+	step_end
+
+	.balign 4, 0
 _052C:
 	step 34, 1
 	step 63, 1
 	step_end
-	.byte 0x22, 0x00, 0x01, 0x00, 0x0a, 0x00, 0x02, 0x00
-	.byte 0x3f, 0x00, 0x04, 0x00, 0x23, 0x00, 0x01, 0x00, 0x3f, 0x00, 0x04, 0x00, 0x0b, 0x00, 0x02, 0x00
-	.byte 0x23, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_0538:
+	step 34, 1
+	step 10, 2
+	step 63, 4
+	step 35, 1
+	step 63, 4
+	step 11, 2
+	step 35, 1
+	step_end
+
+	.balign 4, 0
 _0558:
 	step 35, 1
 	step 63, 1
 	step_end
-	.byte 0x21, 0x00, 0x01, 0x00, 0x09, 0x00, 0x02, 0x00, 0x3f, 0x00, 0x04, 0x00
-	.byte 0x20, 0x00, 0x01, 0x00, 0x3f, 0x00, 0x04, 0x00, 0x08, 0x00, 0x02, 0x00, 0x20, 0x00, 0x01, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_0564:
+	step 33, 1
+	step 9, 2
+	step 63, 4
+	step 32, 1
+	step 63, 4
+	step 8, 2
+	step 32, 1
+	step_end
+
+	.balign 4, 0
 _0584:
 	step 32, 1
 	step 63, 1
 	step_end
+
 scr_seq_T01R0301_001:
 	simple_npc_msg msg_0451_T01R0301_00033
 	end
@@ -668,30 +710,35 @@ _098B:
 	releaseall
 	return
 
-
+	.balign 4, 0
 _0998:
 	step 13, 1
 	step 14, 3
 	step_end
 
+	.balign 4, 0
 _09A4:
 	step 13, 1
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _09B0:
 	step 13, 1
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _09BC:
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _09C4:
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _09CC:
 	step 1, 1
 	step_end

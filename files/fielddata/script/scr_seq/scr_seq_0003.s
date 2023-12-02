@@ -313,20 +313,23 @@ _041D:
 _0445:
 	setvar VAR_SPECIAL_x8004, 1
 	goto _01AA
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0454:
 	step 100, 1
 	step 62, 1
 	step_end
 
+	.balign 4, 0
 _0460:
 	step 102, 1
 	step_end
 
+	.balign 4, 0
 _0468:
 	step 104, 1
 	step_end
+
 scr_seq_0003_069:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -1183,25 +1186,37 @@ _1042:
 _104A:
 	setvar VAR_SPECIAL_x8007, 3
 	return
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _1054:
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _105C:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _1064:
 	step 2, 1
 	step_end
-	.byte 0x00, 0x00, 0x01, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00, 0x03, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_106C:
+	step 0, 1
+	step_end
+
+	.balign 4, 0
+_1074:
+	step 3, 1
+	step_end
+
+	.balign 4, 0
 _107C:
 	step 1, 1
 	step_end
+
 scr_seq_0003_015:
 	play_se SEQ_SE_DP_SELECT
 	lockall

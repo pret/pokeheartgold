@@ -20,8 +20,8 @@ scr_seq_T11R0603_000:
 	setvar VAR_UNK_411E, 0
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0038:
 	step 14, 7
 	step 12, 2

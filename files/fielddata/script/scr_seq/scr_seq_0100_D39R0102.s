@@ -73,46 +73,53 @@ _00E9:
 	wait_fade
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0118:
 	step 40, 4
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0124:
 	step 62, 3
 	step 20, 1
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0134:
 	step 41, 4
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0140:
 	step 62, 3
 	step 21, 1
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0150:
 	step 42, 4
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _015C:
 	step 62, 3
 	step 22, 1
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _016C:
 	step 43, 4
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0178:
 	step 62, 3
 	step 23, 1

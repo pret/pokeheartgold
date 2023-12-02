@@ -50,29 +50,33 @@ scr_seq_T20R0201_000:
 	setvar VAR_SCENE_PLAYERS_HOUSE_1F, 1
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _00A4:
 	step 62, 1
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _00B0:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _00B8:
 	step 12, 2
 	step 14, 3
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _00C8:
 	step 33, 1
 	step 13, 3
 	step 15, 3
 	step 32, 1
 	step_end
+
 scr_seq_T20R0201_006:
 	scrcmd_609
 	lockall

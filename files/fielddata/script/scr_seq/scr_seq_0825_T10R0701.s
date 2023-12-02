@@ -85,12 +85,13 @@ _0133:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _0188:
 	step 12, 14
 	step 3, 2
 	step_end
 
+	.balign 4, 0
 _0194:
 	step 12, 12
 	step 3, 2
@@ -98,10 +99,12 @@ _0194:
 	step 2, 2
 	step_end
 
+	.balign 4, 0
 _01A8:
 	step 0, 2
 	step 12, 4
 	step_end
+
 _01B4:
 	goto_if_set FLAG_GAME_CLEAR, _01C3
 	setflag FLAG_UNK_998

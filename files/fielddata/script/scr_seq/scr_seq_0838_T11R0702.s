@@ -447,11 +447,12 @@ _06EA:
 	hide_person obj_T11R0702_rotomg
 	return
 
-
+	.balign 4, 0
 _06F0:
 	step 45, 2
 	step 69, 1
 	step_end
+
 _06FC:
 	setvar VAR_SPECIAL_x8001, 315
 	return
@@ -540,11 +541,12 @@ _07BA:
 	wait_movement
 	lock obj_partner_poke
 	return
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _07D0:
 	step 70, 1
 	step_end
+
 _07D8:
 	compare VAR_SPECIAL_x8004, 1
 	call_if_eq _0821

@@ -73,11 +73,12 @@ _00DE:
 	clearflag FLAG_HIDE_POKEATHLON_SUPREME_CUP_RECEPTIONIST
 	return
 
-
+	.balign 4, 0
 _00E4:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _00EC:
 	step 63, 1
 	step 14, 3
@@ -85,27 +86,32 @@ _00EC:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0100:
 	step 63, 3
 	step 13, 3
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0110:
 	step 34, 1
 	step 63, 2
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0120:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0128:
 	step 12, 2
 	step 14, 1
 	step 12, 1
 	step_end
+
 scr_seq_P01R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -262,12 +268,13 @@ _0361:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _036C:
 	step 35, 1
 	step 1, 2
 	step_end
 
+	.balign 4, 0
 _0378:
 	step 50, 1
 	step 51, 1
@@ -275,6 +282,7 @@ _0378:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _038C:
 	step 71, 1
 	step 13, 1
@@ -285,10 +293,12 @@ _038C:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _03AC:
 	step 13, 2
 	step_end
 
+	.balign 4, 0
 _03B4:
 	step 71, 1
 	step 12, 1
@@ -299,11 +309,13 @@ _03B4:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _03D4:
 	step 63, 1
 	step 12, 4
 	step_end
 
+	.balign 4, 0
 _03E0:
 	step 14, 1
 	step 1, 2
@@ -311,9 +323,11 @@ _03E0:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _03F4:
 	step 32, 1
 	step_end
+
 scr_seq_P01R0101_003:
 	simple_npc_msg msg_0255_P01R0101_00014
 	end

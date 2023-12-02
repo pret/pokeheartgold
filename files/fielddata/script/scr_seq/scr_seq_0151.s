@@ -392,15 +392,17 @@ _050F:
 	compare VAR_SPECIAL_x8004, 10
 	goto_if_lt _050F
 	return
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _053C:
 	step 15, 5
 	step_end
 
+	.balign 4, 0
 _0544:
 	step 14, 5
 	step_end
+
 scr_seq_0151_008:
 	simple_npc_msg msg_0246_00048
 	end

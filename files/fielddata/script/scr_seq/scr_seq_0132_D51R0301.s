@@ -112,80 +112,95 @@ _0167:
 	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 7
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0188:
 	step 75, 1
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _0194:
 	step 32, 1
 	step 8, 2
 	step_end
 
+	.balign 4, 0
 _01A0:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _01A8:
 	step 13, 2
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _01B4:
 	step 13, 2
 	step 14, 4
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _01C4:
 	step 33, 1
 	step 9, 1
 	step_end
 
+	.balign 4, 0
 _01D0:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _01D8:
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _01E0:
 	step 13, 2
 	step 14, 4
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _01F0:
 	step 32, 1
 	step 8, 2
 	step_end
 
+	.balign 4, 0
 _01FC:
 	step 8, 1
 	step_end
 
+	.balign 4, 0
 _0204:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _020C:
 	step 15, 1
 	step 13, 2
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _021C:
 	step 13, 2
 	step 14, 5
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _022C:
 	step 35, 1
 	step_end
+
 scr_seq_D51R0301_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -257,8 +272,8 @@ _030C:
 	closemsg
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0318:
 	step 3, 1
 	step 62, 1
@@ -289,6 +304,7 @@ _0318:
 	step 2, 1
 	step 0, 1
 	step_end
+
 scr_seq_D51R0301_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall

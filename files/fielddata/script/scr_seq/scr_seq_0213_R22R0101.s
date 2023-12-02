@@ -102,15 +102,17 @@ scr_seq_R22R0101_000:
 	setvar VAR_UNK_4110, 1
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _015C:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0164:
 	step 34, 1
 	step_end
+
 scr_seq_R22R0101_003:
 	simple_npc_msg msg_0361_R22R0101_00000
 	end
@@ -172,60 +174,70 @@ _025D:
 	wait_movement
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0264:
 	step 32, 1
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0270:
 	step 33, 1
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _027C:
 	step 19, 1
 	step 16, 1
 	step 38, 1
 	step_end
 
+	.balign 4, 0
 _028C:
 	step 19, 1
 	step 17, 1
 	step 38, 1
 	step_end
 
+	.balign 4, 0
 _029C:
 	step 19, 1
 	step 17, 2
 	step 38, 1
 	step_end
 
+	.balign 4, 0
 _02AC:
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _02B4:
 	step 71, 1
 	step 14, 1
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _02C4:
 	step 13, 1
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _02D0:
 	step 12, 1
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _02DC:
 	step 12, 2
 	step 34, 1
 	step_end
+
 scr_seq_R22R0101_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -301,60 +313,70 @@ _03EF:
 	wait_movement
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _03F8:
 	step 32, 1
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0404:
 	step 33, 1
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0410:
 	step 18, 1
 	step 16, 1
 	step 39, 1
 	step_end
 
+	.balign 4, 0
 _0420:
 	step 18, 1
 	step 17, 1
 	step 39, 1
 	step_end
 
+	.balign 4, 0
 _0430:
 	step 18, 1
 	step 17, 2
 	step 39, 1
 	step_end
 
+	.balign 4, 0
 _0440:
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _0448:
 	step 71, 1
 	step 15, 1
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _0458:
 	step 13, 1
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0464:
 	step 12, 1
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0470:
 	step 12, 2
 	step 35, 1
 	step_end
+
 scr_seq_R22R0101_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall

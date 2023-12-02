@@ -402,13 +402,14 @@ _05FB:
 	setvar VAR_UNK_4147, 0
 	callstd std_bag_is_full_griseous_orb
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _060C:
 	step 14, 6
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0618:
 	step 14, 3
 	step 12, 1
@@ -416,11 +417,13 @@ _0618:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _062C:
 	step 14, 5
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0638:
 	step 14, 2
 	step 12, 1
@@ -428,12 +431,14 @@ _0638:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _064C:
 	step 23, 6
 	step 70, 1
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _065C:
 	step 23, 6
 	step 21, 1
@@ -441,16 +446,19 @@ _065C:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _0670:
 	step 23, 5
 	step 70, 1
 	step_end
 
+	.balign 4, 0
 _067C:
 	step 21, 1
 	step 23, 5
 	step 70, 1
 	step_end
+
 _068C:
 	npc_msg msg_0109_D32R0501_00000
 	return
@@ -559,9 +567,20 @@ scr_seq_D32R0501_004:
 	goto _0126
 	end
 
-	.byte 0x0c, 0x00, 0x02, 0x00, 0x3f, 0x00, 0x01, 0x00
-	.byte 0x0c, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x02, 0x00, 0x3f, 0x00, 0x01, 0x00
-	.byte 0x0c, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
+	.balign 4, 0
+_07C8:
+	step 12, 2
+	step 63, 1
+	step 12, 1
+	step_end
+
+	.balign 4, 0
+_07D8:
+	step 12, 2
+	step 63, 1
+	step 12, 1
+	step_end
+
 scr_seq_D32R0501_006:
 	simple_npc_msg msg_0109_D32R0501_00046
 	end

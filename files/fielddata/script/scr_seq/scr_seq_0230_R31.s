@@ -199,21 +199,26 @@ _02AE:
 	end
 
 
+	.balign 4, 0
 _02BC:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _02C4:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _02CC:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _02D4:
 	step 35, 1
 	step_end
+
 scr_seq_R31_002:
 	direction_signpost msg_0378_R31_00013, 1, 2, VAR_SPECIAL_RESULT
 	scrcmd_057 3

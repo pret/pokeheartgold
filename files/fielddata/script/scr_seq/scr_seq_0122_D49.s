@@ -236,69 +236,81 @@ _033E:
 	setflag FLAG_UNK_225
 	setflag FLAG_UNK_982
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0400:
 	step 12, 10
 	step_end
 
+	.balign 4, 0
 _0408:
 	step 66, 1
 	step 77, 10
 	step_end
 
+	.balign 4, 0
 _0414:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _041C:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0424:
 	step 17, 1
 	step_end
 
+	.balign 4, 0
 _042C:
 	step 77, 2
 	step 78, 3
 	step 77, 1
 	step_end
 
+	.balign 4, 0
 _043C:
 	step 77, 2
 	step 78, 2
 	step 77, 1
 	step_end
 
+	.balign 4, 0
 _044C:
 	step 77, 2
 	step 78, 1
 	step 77, 1
 	step_end
 
+	.balign 4, 0
 _045C:
 	step 77, 3
 	step_end
 
+	.balign 4, 0
 _0464:
 	step 77, 2
 	step 79, 1
 	step 77, 1
 	step_end
 
+	.balign 4, 0
 _0474:
 	step 77, 2
 	step 79, 2
 	step 77, 1
 	step_end
 
+	.balign 4, 0
 _0484:
 	step 77, 2
 	step 79, 3
 	step 77, 1
 	step_end
 
+	.balign 4, 0
 _0494:
 	step 79, 1
 	step 77, 2
@@ -306,6 +318,7 @@ _0494:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _04A8:
 	step 79, 1
 	step 77, 2
@@ -313,6 +326,7 @@ _04A8:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _04BC:
 	step 79, 1
 	step 77, 2
@@ -320,11 +334,13 @@ _04BC:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _04D0:
 	step 79, 1
 	step 77, 2
 	step_end
 
+	.balign 4, 0
 _04DC:
 	step 79, 1
 	step 77, 2
@@ -332,6 +348,7 @@ _04DC:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _04F0:
 	step 79, 1
 	step 77, 2
@@ -339,6 +356,7 @@ _04F0:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0504:
 	step 79, 1
 	step 77, 2
@@ -346,47 +364,55 @@ _0504:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0518:
 	step 15, 3
 	step 12, 21
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0528:
 	step 15, 2
 	step 12, 21
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0538:
 	step 15, 1
 	step 12, 21
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0548:
 	step 12, 21
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0554:
 	step 14, 1
 	step 12, 21
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0564:
 	step 14, 2
 	step 12, 21
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0574:
 	step 14, 3
 	step 12, 21
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0584:
 	step 13, 1
 	step 15, 3
@@ -396,6 +422,7 @@ _0584:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _05A0:
 	step 13, 1
 	step 15, 2
@@ -405,6 +432,7 @@ _05A0:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _05BC:
 	step 13, 1
 	step 15, 1
@@ -414,6 +442,7 @@ _05BC:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _05D8:
 	step 13, 1
 	step 12, 20
@@ -422,6 +451,7 @@ _05D8:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _05F0:
 	step 13, 1
 	step 14, 1
@@ -431,6 +461,7 @@ _05F0:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _060C:
 	step 13, 1
 	step 14, 2
@@ -440,6 +471,7 @@ _060C:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0628:
 	step 13, 1
 	step 14, 3
@@ -449,6 +481,7 @@ _0628:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0644:
 	step 63, 2
 	step 12, 1
@@ -456,6 +489,7 @@ _0644:
 	step 12, 19
 	step_end
 
+	.balign 4, 0
 _0658:
 	step 63, 2
 	step 12, 1
@@ -463,6 +497,7 @@ _0658:
 	step 12, 19
 	step_end
 
+	.balign 4, 0
 _066C:
 	step 63, 2
 	step 12, 1
@@ -470,11 +505,13 @@ _066C:
 	step 12, 19
 	step_end
 
+	.balign 4, 0
 _0680:
 	step 63, 2
 	step 12, 20
 	step_end
 
+	.balign 4, 0
 _068C:
 	step 63, 2
 	step 12, 1
@@ -482,6 +519,7 @@ _068C:
 	step 12, 19
 	step_end
 
+	.balign 4, 0
 _06A0:
 	step 63, 2
 	step 12, 1
@@ -489,6 +527,7 @@ _06A0:
 	step 12, 19
 	step_end
 
+	.balign 4, 0
 _06B4:
 	step 63, 2
 	step 12, 1
@@ -496,22 +535,27 @@ _06B4:
 	step 12, 19
 	step_end
 
+	.balign 4, 0
 _06C8:
 	step 12, 2
 	step_end
 
+	.balign 4, 0
 _06D0:
 	step 15, 1
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _06DC:
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _06E4:
 	step 12, 1
 	step_end
+
 scr_seq_D49_001:
 	simple_npc_msg msg_0137_D49_00007
 	end
@@ -757,26 +801,30 @@ _09B6:
 	goto _093E
 	end
 
-
+	.balign 4, 0
 _09D4:
 	step 2, 1
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _09E0:
 	step 15, 3
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _09EC:
 	step 15, 2
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _09F8:
 	step 15, 1
 	step 32, 1
 	step_end
+
 scr_seq_D49_019:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -908,14 +956,16 @@ scr_seq_D49_022:
 	simple_npc_msg msg_0137_D49_00048
 	end
 
-
+	.balign 4, 0
 _0BEC:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0BF4:
 	step 33, 1
 	step_end
+
 scr_seq_D49_016:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -1068,7 +1118,7 @@ _0E58:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _0E6C:
 	step 15, 1
 	step 12, 2
@@ -1077,11 +1127,13 @@ _0E6C:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0E84:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0E90:
 	step 12, 1
 	step 14, 1
@@ -1089,6 +1141,7 @@ _0E90:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0EA4:
 	step 12, 1
 	step 15, 1
@@ -1096,16 +1149,19 @@ _0EA4:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0EB8:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0EC4:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
+
 scr_seq_D49_023:
 	scrcmd_055 2, 0
 	scrcmd_057 3

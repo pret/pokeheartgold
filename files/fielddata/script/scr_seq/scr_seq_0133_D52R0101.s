@@ -128,38 +128,44 @@ _019D:
 	white_out
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _01A4:
 	step 12, 8
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _01B0:
 	step 33, 1
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _01BC:
 	step 12, 10
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _01C8:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _01D0:
 	step 33, 1
 	step 9, 2
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _01E0:
 	step 12, 2
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _01EC:
 	step 13, 8
 	step_end

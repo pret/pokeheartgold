@@ -233,8 +233,8 @@ _0402:
 	wait_movement
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0428:
 	step 75, 1
 	step 63, 2
@@ -248,47 +248,57 @@ _0428:
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _0454:
 	step 75, 1
 	step 63, 2
 	step_end
 
+	.balign 4, 0
 _0460:
 	step 23, 11
 	step 0, 2
 	step_end
 
+	.balign 4, 0
 _046C:
 	step 23, 11
 	step 1, 2
 	step_end
 
+	.balign 4, 0
 _0478:
 	step 1, 2
 	step 63, 2
 	step_end
 
+	.balign 4, 0
 _0484:
 	step 0, 2
 	step 63, 2
 	step_end
 
+	.balign 4, 0
 _0490:
 	step 2, 2
 	step 22, 10
 	step_end
 
+	.balign 4, 0
 _049C:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _04A4:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _04AC:
 	step 0, 1
 	step_end
+
 scr_seq_D35R0102_005:
 	scrcmd_609
 	lockall
@@ -378,67 +388,79 @@ _0649:
 	wait_movement
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0668:
 	step 22, 9
 	step 0, 2
 	step_end
 
+	.balign 4, 0
 _0674:
 	step 22, 9
 	step 1, 2
 	step_end
 
+	.balign 4, 0
 _0680:
 	step 23, 11
 	step 0, 2
 	step_end
 
+	.balign 4, 0
 _068C:
 	step 23, 11
 	step 1, 2
 	step_end
 
+	.balign 4, 0
 _0698:
 	step 23, 11
 	step 0, 2
 	step_end
 
+	.balign 4, 0
 _06A4:
 	step 23, 11
 	step 1, 2
 	step_end
 
+	.balign 4, 0
 _06B0:
 	step 22, 9
 	step 0, 2
 	step_end
 
+	.balign 4, 0
 _06BC:
 	step 22, 9
 	step 1, 2
 	step_end
 
+	.balign 4, 0
 _06C8:
 	step 3, 2
 	step 23, 10
 	step_end
 
+	.balign 4, 0
 _06D4:
 	step 2, 2
 	step 22, 10
 	step_end
 
+	.balign 4, 0
 _06E0:
 	step 2, 2
 	step 22, 10
 	step_end
 
+	.balign 4, 0
 _06EC:
 	step 3, 2
 	step 23, 10
 	step_end
+
 scr_seq_D35R0102_006:
 	scrcmd_609
 	lockall

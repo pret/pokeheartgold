@@ -25,8 +25,8 @@ scr_seq_D43R0102_001:
 	scrcmd_375 obj_player
 _0043:
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0048:
 	step 68, 1
 	step_end

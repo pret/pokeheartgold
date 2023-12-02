@@ -517,19 +517,33 @@ _07E6:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x0c, 0x00, 0x03, 0x00, 0x0e, 0x00, 0x01, 0x00, 0x03, 0x00, 0x01, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00, 0x3f, 0x00, 0x02, 0x00, 0x0f, 0x00, 0x01, 0x00, 0x0d, 0x00, 0x03, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_07F4:
+	step 12, 3
+	step 14, 1
+	step 3, 1
+	step_end
+
+	.balign 4, 0
+_0804:
+	step 63, 2
+	step 15, 1
+	step 13, 3
+	step_end
+
+	.balign 4, 0
 _0814:
 	step 14, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0820:
 	step 12, 2
 	step_end
 
+	.balign 4, 0
 _0828:
 	step 32, 1
 	step 12, 1
@@ -537,11 +551,13 @@ _0828:
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _083C:
 	step 15, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0848:
 	step 0, 1
 	step 60, 1
@@ -581,45 +597,57 @@ _0848:
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _08DC:
 	step 13, 1
 	step 14, 1
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _08EC:
 	step 13, 2
 	step 15, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _08FC:
 	step 13, 2
 	step 14, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _090C:
 	step 13, 3
 	step_end
 
+	.balign 4, 0
 _0914:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _091C:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0924:
 	step 33, 1
 	step_end
-	.byte 0x20, 0x00, 0x01, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_092C:
+	step 32, 1
+	step_end
+
+	.balign 4, 0
 _0934:
 	step 1, 1
 	step_end
+
 scr_seq_0167_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -1010,15 +1038,17 @@ _0FBD:
 	scrcmd_725 1, 5
 _0FCF:
 	return
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0FD4:
 	step 12, 2
 	step_end
 
+	.balign 4, 0
 _0FDC:
 	step 13, 2
 	step_end
+
 _0FE4:
 	npc_msg msg_0312_00038
 	wait_button_or_walk_away

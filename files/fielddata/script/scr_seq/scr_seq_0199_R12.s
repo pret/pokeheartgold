@@ -132,8 +132,8 @@ _01C5:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _01DC:
 	step 15, 1
 	step 12, 2
@@ -142,11 +142,13 @@ _01DC:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _01F4:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0200:
 	step 12, 1
 	step 14, 1
@@ -154,6 +156,7 @@ _0200:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0214:
 	step 12, 1
 	step 15, 1
@@ -161,16 +164,19 @@ _0214:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0228:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0234:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
+
 scr_seq_R12_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall

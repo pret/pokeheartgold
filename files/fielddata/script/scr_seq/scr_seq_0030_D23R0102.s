@@ -424,8 +424,8 @@ _05C0:
 	closemsg
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _05CC:
 	step 1, 1
 	step 13, 2
@@ -433,55 +433,66 @@ _05CC:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _05E0:
 	step 13, 2
 	step 14, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _05F0:
 	step 1, 1
 	step 13, 1
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0600:
 	step 13, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _060C:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0614:
 	step 13, 1
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _0620:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0628:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0630:
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _0638:
 	step 0, 1
 	step 12, 1
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0648:
 	step 13, 2
 	step 15, 3
 	step_end
 
+	.balign 4, 0
 _0654:
 	step 14, 3
 	step 12, 2

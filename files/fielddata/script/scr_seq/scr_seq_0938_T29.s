@@ -384,15 +384,17 @@ _0509:
 	goto_if_eq _04FA
 	end
 
-
+	.balign 4, 0
 _0538:
 	step 34, 1
 	step 50, 2
 	step_end
 
+	.balign 4, 0
 _0544:
 	step 33, 1
 	step_end
+
 scr_seq_T29_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall

@@ -86,8 +86,8 @@ _00F4:
 	closemsg
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0100:
 	step 75, 1
 	step_end

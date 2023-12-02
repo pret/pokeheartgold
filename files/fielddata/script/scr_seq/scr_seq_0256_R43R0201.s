@@ -78,8 +78,8 @@ scr_seq_R43R0201_002:
 
 _0110:
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0114:
 	step 75, 1
 	step 21, 3
@@ -87,6 +87,7 @@ _0114:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0128:
 	step 63, 6
 	step 1, 1
@@ -96,6 +97,7 @@ _0128:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0144:
 	step 62, 3
 	step 22, 2
@@ -103,11 +105,13 @@ _0144:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0158:
 	step 23, 1
 	step 20, 3
 	step_end
 
+	.balign 4, 0
 _0164:
 	step 63, 6
 	step 0, 1
@@ -117,6 +121,7 @@ _0164:
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _0180:
 	step 75, 1
 	step 20, 4
@@ -124,17 +129,20 @@ _0180:
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _0194:
 	step 62, 3
 	step 22, 1
 	step 21, 4
 	step_end
 
+	.balign 4, 0
 _01A4:
 	step 23, 2
 	step 21, 4
 	step 0, 1
 	step_end
+
 scr_seq_R43R0201_000:
 	simple_npc_msg msg_0403_R43R0201_00003
 	end

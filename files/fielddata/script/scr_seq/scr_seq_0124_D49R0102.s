@@ -433,15 +433,17 @@ _05FF:
 	wait_movement
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0610:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0618:
 	step 32, 1
 	step_end
+
 scr_seq_D49R0102_011:
 	play_se SEQ_SE_DP_SELECT
 	lockall

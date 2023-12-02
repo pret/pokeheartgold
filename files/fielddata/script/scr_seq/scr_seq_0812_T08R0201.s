@@ -181,8 +181,8 @@ _0274:
 	closemsg
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0280:
 	step 36, 1
 	step 12, 2
@@ -190,14 +190,17 @@ _0280:
 	step 38, 1
 	step_end
 
+	.balign 4, 0
 _0294:
 	step 12, 5
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _02A0:
 	step 0, 1
 	step_end
+
 scr_seq_T08R0201_002:
 	scrcmd_609
 	lockall
@@ -275,27 +278,31 @@ _03A1:
 	scrcmd_606
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _03BC:
 	step 14, 1
 	step 13, 2
 	step_end
 
+	.balign 4, 0
 _03C8:
 	step 63, 2
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _03D4:
 	step 13, 5
 	step_end
 
+	.balign 4, 0
 _03DC:
 	step 13, 2
 	step 39, 1
 	step_end
 
+	.balign 4, 0
 _03E8:
 	step 13, 4
 	step_end
