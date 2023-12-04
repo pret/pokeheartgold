@@ -28,15 +28,22 @@ _004F:
 	compare VAR_TEMP_x4000, 6
 	goto_if_ne _006C
 	goto _008D
-	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
+
+_0066:
+	goto _008B
+
 _006C:
 	compare VAR_TEMP_x4000, 0
 	goto_if_ne _0085
 	goto _008D
-	.byte 0x16
-	.byte 0x00, 0x06, 0x00, 0x00, 0x00
+
+_007F:
+	goto _008B
+
 _0085:
 	goto _0101
+
+_008B:
 	end
 
 _008D:

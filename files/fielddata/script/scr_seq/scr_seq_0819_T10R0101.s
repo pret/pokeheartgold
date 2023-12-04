@@ -283,7 +283,10 @@ _03CF:
 	goto_if_ne _03EB
 	npc_msg msg_0522_T10R0101_00007
 	goto _02CD
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_03E5:
+	goto _03F1
+
 _03EB:
 	goto _0317
 
@@ -343,8 +346,10 @@ _0505:
 	goto_if_ne _0521
 	npc_msg msg_0522_T10R0101_00007
 	goto _02CD
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00
-	.byte 0x00
+
+_051B:
+	goto _0527
+
 _0521:
 	goto _0456
 

@@ -17,9 +17,14 @@ scr_seq_D52R0102_001:
 	compare VAR_TEMP_x4000, 7
 	goto_if_ne _0038
 	goto _004A
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_0032:
+	goto _003E
+
 _0038:
 	goto _0040
+
+_003E:
 	end
 
 _0040:

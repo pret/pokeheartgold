@@ -161,8 +161,10 @@ scr_seq_D35R0102_000:
 	goto_if_ne _02C4
 	addvar VAR_TEMP_x4001, 1
 	goto _02D0
-	.byte 0x16, 0x00
-	.byte 0x0c, 0x00, 0x00, 0x00
+
+_02BE:
+	goto _02D0
+
 _02C4:
 	subvar VAR_TEMP_x4001, 1
 	goto _036C
@@ -313,7 +315,10 @@ scr_seq_D35R0102_005:
 	goto_if_ne _04F7
 	addvar VAR_TEMP_x4001, 1
 	goto _0503
-	.byte 0x16, 0x00, 0x0c, 0x00, 0x00, 0x00
+
+_04F1:
+	goto _0503
+
 _04F7:
 	subvar VAR_TEMP_x4001, 1
 	goto _05A9
@@ -475,7 +480,10 @@ scr_seq_D35R0102_006:
 	goto_if_ne _073B
 	addvar VAR_TEMP_x4001, 1
 	goto _0747
-	.byte 0x16, 0x00, 0x0c, 0x00, 0x00, 0x00
+
+_0735:
+	goto _0747
+
 _073B:
 	subvar VAR_TEMP_x4001, 1
 	goto _07ED
@@ -565,7 +573,10 @@ scr_seq_D35R0102_007:
 	goto_if_ne _08EC
 	addvar VAR_TEMP_x4001, 1
 	goto _08F8
-	.byte 0x16, 0x00, 0x0c, 0x00, 0x00, 0x00
+
+_08E6:
+	goto _08F8
+
 _08EC:
 	subvar VAR_TEMP_x4001, 1
 	goto _099E
@@ -654,7 +665,10 @@ scr_seq_D35R0102_008:
 	goto_if_ne _0A99
 	addvar VAR_TEMP_x4001, 1
 	goto _0AA5
-	.byte 0x16, 0x00, 0x0c, 0x00, 0x00, 0x00
+
+_0A93:
+	goto _0AA5
+
 _0A99:
 	subvar VAR_TEMP_x4001, 1
 	goto _0B4B
@@ -741,13 +755,19 @@ scr_seq_D35R0102_001:
 	goto_if_ne _0C2B
 	npc_msg msg_0112_D35R0102_00002
 	goto _0C4A
-	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
+
+_0C25:
+	goto _0C4A
+
 _0C2B:
 	compare VAR_UNK_40AD, 1
 	goto_if_ne _0C47
 	npc_msg msg_0112_D35R0102_00003
 	goto _0C4A
-	.byte 0x16, 0x00, 0x03, 0x00, 0x00, 0x00
+
+_0C41:
+	goto _0C4A
+
 _0C47:
 	npc_msg msg_0112_D35R0102_00004
 _0C4A:
@@ -763,16 +783,22 @@ scr_seq_D35R0102_009:
 	goto_if_ne _0C74
 	npc_msg msg_0112_D35R0102_00002
 	goto _0C4A
-	.byte 0x16, 0x00
-	.byte 0x1f, 0x00, 0x00, 0x00
+
+_0C6E:
+	goto _0C93
+
 _0C74:
 	compare VAR_UNK_40AE, 1
 	goto_if_ne _0C90
 	npc_msg msg_0112_D35R0102_00003
 	goto _0C4A
-	.byte 0x16, 0x00, 0x03, 0x00, 0x00, 0x00
+
+_0C8A:
+	goto _0C93
+
 _0C90:
 	npc_msg msg_0112_D35R0102_00004
+_0C93:
 	goto _0C4A
 
 scr_seq_D35R0102_010:
@@ -782,15 +808,22 @@ scr_seq_D35R0102_010:
 	goto_if_ne _0CBB
 	npc_msg msg_0112_D35R0102_00002
 	goto _0C4A
-	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
+
+_0CB5:
+	goto _0CDA
+
 _0CBB:
 	compare VAR_UNK_40AF, 1
 	goto_if_ne _0CD7
 	npc_msg msg_0112_D35R0102_00003
 	goto _0C4A
-	.byte 0x16, 0x00, 0x03, 0x00, 0x00, 0x00
+
+_0CD1:
+	goto _0CDA
+
 _0CD7:
 	npc_msg msg_0112_D35R0102_00004
+_0CDA:
 	goto _0C4A
 
 scr_seq_D35R0102_011:
@@ -800,16 +833,22 @@ scr_seq_D35R0102_011:
 	goto_if_ne _0D02
 	npc_msg msg_0112_D35R0102_00002
 	goto _0C4A
-	.byte 0x16, 0x00, 0x1f, 0x00
-	.byte 0x00, 0x00
+
+_0CFC:
+	goto _0D21
+
 _0D02:
 	compare VAR_UNK_40B0, 1
 	goto_if_ne _0D1E
 	npc_msg msg_0112_D35R0102_00003
 	goto _0C4A
-	.byte 0x16, 0x00, 0x03, 0x00, 0x00, 0x00
+
+_0D08:
+	goto _0D21
+
 _0D1E:
 	npc_msg msg_0112_D35R0102_00004
+_0D21:
 	goto _0C4A
 
 scr_seq_D35R0102_012:
@@ -819,16 +858,22 @@ scr_seq_D35R0102_012:
 	goto_if_ne _0D49
 	npc_msg msg_0112_D35R0102_00002
 	goto _0C4A
-	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
+
+_0D43:
+	goto _0D68
+
 _0D49:
 	compare VAR_UNK_40B1, 1
 	goto_if_ne _0D65
 	npc_msg msg_0112_D35R0102_00003
 	goto _0C4A
-	.byte 0x16
-	.byte 0x00, 0x03, 0x00, 0x00, 0x00
+
+_0D5F:
+	goto _0D68
+
 _0D65:
 	npc_msg msg_0112_D35R0102_00004
+_0D68:
 	goto _0C4A
 
 scr_seq_D35R0102_002:

@@ -611,7 +611,10 @@ scr_seq_R34_004:
 	compare VAR_TEMP_x4003, 1
 	goto_if_ne _07DB
 	goto _07E1
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_07D5:
+	goto _07E1
+
 _07DB:
 	goto _087D
 

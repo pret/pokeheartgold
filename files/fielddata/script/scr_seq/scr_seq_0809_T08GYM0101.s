@@ -28,9 +28,14 @@ scr_seq_T08GYM0101_000:
 	compare VAR_TEMP_x4002, 0
 	goto_if_ne _006D
 	goto _00E9
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_0067:
+	goto _0073
+
 _006D:
 	goto _0075
+
+_0073:
 	end
 
 _0075:

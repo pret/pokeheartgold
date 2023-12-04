@@ -115,7 +115,10 @@ scr_seq_D39R0101_002:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0157
 	goto _0169
-	.byte 0x16, 0x00, 0x00, 0x00, 0x00, 0x00
+
+_0151:
+	goto _0157
+
 _0157:
 	buffer_players_name 0
 	npc_msg msg_0122_D39R0101_00003

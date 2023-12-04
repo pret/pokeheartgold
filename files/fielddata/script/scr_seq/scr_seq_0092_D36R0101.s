@@ -118,8 +118,10 @@ scr_seq_D36R0101_farfetchd1:
 	compare FARFETCHD_X_COORD, 25
 	goto_if_ne _01C4
 	goto _farfetchd1_left
-	.byte 0x16, 0x00
-	.byte 0x13, 0x00, 0x00, 0x00
+
+_01BE:
+	goto _farfetchd1_left
+
 _01C4:
 	compare FARFETCHD_X_COORD, 32
 	goto_if_ne _farfetchd1_left
@@ -130,7 +132,10 @@ _farfetchd1_left:
 	compare FARFETCHD_Z_COORD, 52
 	goto_if_ne _01F8
 	goto _farfetchd1_top_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_01F2:
+	goto _farfetchd1_right
+
 _01F8:
 	compare FARFETCHD_Z_COORD, 62
 	goto_if_ne _farfetchd1_right
@@ -142,7 +147,10 @@ _farfetchd1_right:
 	compare FARFETCHD_Z_COORD, 52
 	goto_if_ne _0232
 	goto _farfetchd1_top_right
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_022C:
+	goto _farfetchd1_top_left
+
 _0232:
 	compare FARFETCHD_Z_COORD, 62
 	goto_if_ne _farfetchd1_top_left
@@ -175,7 +183,10 @@ _farfetchd1_bottom_left:
 	compare VAR_SPECIAL_RESULT, DIR_WEST
 	goto_if_ne _02B6
 	goto _farfetchd1_bottom_left_flee_up
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_02B0:
+	goto _farfetchd1_bottom_left_flee_up
+
 _02B6:
 	compare VAR_SPECIAL_RESULT, DIR_SOUTH
 	goto_if_ne _farfetchd1_bottom_left_flee_up
@@ -308,7 +319,10 @@ scr_seq_D36R0101_farfetchd1_sticks1:
 	compare FARFETCHD_X_COORD, 25
 	goto_if_ne _04CE
 	goto _sticks1_farfetchd1_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_04B8:
+	goto _sticks1_farfetchd1_left
+
 _04CE:
 	compare FARFETCHD_X_COORD, 32
 	goto_if_ne _sticks1_farfetchd1_left
@@ -319,7 +333,10 @@ _sticks1_farfetchd1_left:
 	compare FARFETCHD_Z_COORD, 52
 	goto_if_ne _0502
 	goto _sticks1_farfetchd1_top_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_04FC:
+	goto _sticks1_farfetchd1_right
+
 _0502:
 	compare FARFETCHD_Z_COORD, 62
 	goto_if_ne _sticks1_farfetchd1_right
@@ -330,7 +347,10 @@ _sticks1_farfetchd1_right:
 	compare FARFETCHD_Z_COORD, 52
 	goto_if_ne _0536
 	goto _sticks1_farfetchd1_top_right
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0530:
+	goto _sticks1_farfetchd1_top_left
+
 _0536:
 	compare FARFETCHD_Z_COORD, 62
 	goto_if_ne _sticks1_farfetchd1_top_left
@@ -378,7 +398,10 @@ scr_seq_D36R0101_farfetchd1_sticks2:
 	compare FARFETCHD_X_COORD, 25
 	goto_if_ne _05DB
 	goto _sticks2_farfetchd1_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_05D5:
+	goto _sticks2_farfetchd1_left
+
 _05DB:
 	compare FARFETCHD_X_COORD, 32
 	goto_if_ne _sticks2_farfetchd1_left
@@ -389,7 +412,10 @@ _sticks2_farfetchd1_left:
 	compare FARFETCHD_Z_COORD, 52
 	goto_if_ne _060F
 	goto _sticks2_farfetchd1_top_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0609:
+	goto _sticks2_farfetchd1_right
+
 _060F:
 	compare FARFETCHD_Z_COORD, 62
 	goto_if_ne _sticks2_farfetchd1_right
@@ -400,8 +426,10 @@ _sticks2_farfetchd1_right:
 	compare FARFETCHD_Z_COORD, 52
 	goto_if_ne _0643
 	goto _sticks2_farfetchd1_top_right
-	.byte 0x16, 0x00, 0x13
-	.byte 0x00, 0x00, 0x00
+
+_063D:
+	goto _sticks2_farfetchd1_top_left
+
 _0643:
 	compare FARFETCHD_Z_COORD, 62
 	goto_if_ne _sticks2_farfetchd1_top_left
@@ -444,7 +472,10 @@ scr_seq_D36R0101_farfetchd2:
 	compare FARFETCHD_X_COORD, 41
 	goto_if_ne _06C9
 	goto _farfetchd2_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_06C3:
+	goto _farfetchd2_left
+
 _06C9:
 	compare FARFETCHD_X_COORD, 49
 	goto_if_ne _farfetchd2_left
@@ -456,7 +487,10 @@ _farfetchd2_left:
 	compare FARFETCHD_Z_COORD, 54
 	goto_if_ne _0703
 	goto _farfetchd_top_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_06FD:
+	goto _farfetchd2_right
+
 _0703:
 	compare FARFETCHD_Z_COORD, 64
 	goto_if_ne _farfetchd2_right
@@ -467,7 +501,10 @@ _farfetchd2_right:
 	compare FARFETCHD_Z_COORD, 54
 	goto_if_ne _0737
 	goto _farfetchd2_top_right
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0731:
+	goto _farfetchd_top_left
+
 _0737:
 	compare FARFETCHD_Z_COORD, 64
 	goto_if_ne _farfetchd_top_left
@@ -539,7 +576,10 @@ _farfetchd2_top_right:
 	compare VAR_SPECIAL_RESULT, DIR_NORTH
 	goto_if_ne _0863
 	goto _farfetchd2_top_right_flee_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_085D:
+	goto _farfetchd2_top_right_flee_left
+
 _0863:
 	compare VAR_SPECIAL_RESULT, DIR_EAST
 	goto_if_ne _farfetchd2_top_right_flee_left
@@ -647,8 +687,10 @@ scr_seq_D36R0101_farfetchd2_sticks1:
 	compare FARFETCHD_X_COORD, 41
 	goto_if_ne _0A25
 	goto _sticks1_farfetchd2_left
-	.byte 0x16
-	.byte 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0A1F:
+	goto _sticks1_farfetchd2_left
+
 _0A25:
 	compare FARFETCHD_X_COORD, 49
 	goto_if_ne _sticks1_farfetchd2_left
@@ -659,7 +701,10 @@ _sticks1_farfetchd2_left:
 	compare FARFETCHD_Z_COORD, 54
 	goto_if_ne _0A59
 	goto _sticks1_farfetchd2_top_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0A53:
+	goto _sticks1_farfetchd2_right
+
 _0A59:
 	compare FARFETCHD_Z_COORD, 64
 	goto_if_ne _sticks1_farfetchd2_right
@@ -670,7 +715,10 @@ _sticks1_farfetchd2_right:
 	compare FARFETCHD_Z_COORD, 54
 	goto_if_ne _0A8D
 	goto _sticks1_farfetchd2_top_right
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0A87:
+	goto _sticks1_farfetchd2_top_left
+
 _0A8D:
 	compare FARFETCHD_Z_COORD, 64
 	goto_if_ne _sticks1_farfetchd2_top_left
@@ -712,7 +760,10 @@ scr_seq_D36R0101_farfetchd2_sticks2:
 	compare FARFETCHD_X_COORD, 41
 	goto_if_ne _0B1B
 	goto _sticks2_farfetchd2_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0B15:
+	goto _sticks2_farfetchd2_left
+
 _0B1B:
 	compare FARFETCHD_X_COORD, 49
 	goto_if_ne _sticks2_farfetchd2_left
@@ -723,7 +774,10 @@ _sticks2_farfetchd2_left:
 	compare FARFETCHD_Z_COORD, 54
 	goto_if_ne _0B4F
 	goto _sticks2_farfetchd2_top_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0B49:
+	goto _sticks2_farfetchd2_right
+
 _0B4F:
 	compare FARFETCHD_Z_COORD, 64
 	goto_if_ne _sticks2_farfetchd2_right
@@ -734,7 +788,10 @@ _sticks2_farfetchd2_right:
 	compare FARFETCHD_Z_COORD, 54
 	goto_if_ne _0B83
 	goto _sticks2_farfetchd2_top_right
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0B7D:
+	goto _sticks2_farfetchd2_top_left
+
 _0B83:
 	compare FARFETCHD_Z_COORD, 64
 	goto_if_ne _sticks2_farfetchd2_top_left
@@ -776,7 +833,10 @@ scr_seq_D36R0101_farfetchd2_sticks3:
 	compare FARFETCHD_X_COORD, 41
 	goto_if_ne _0C11
 	goto _sticks3_farfetchd2_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0C0B:
+	goto _sticks3_farfetchd2_left
+
 _0C11:
 	compare FARFETCHD_X_COORD, 49
 	goto_if_ne _sticks3_farfetchd2_left
@@ -787,7 +847,10 @@ _sticks3_farfetchd2_left:
 	compare FARFETCHD_Z_COORD, 54
 	goto_if_ne _0C45
 	goto _sticks3_farfetchd2_top_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0C3F:
+	goto _sticks3_farfetchd2_right
+
 _0C45:
 	compare FARFETCHD_Z_COORD, 64
 	goto_if_ne _sticks3_farfetchd2_right
@@ -798,7 +861,10 @@ _sticks3_farfetchd2_right:
 	compare FARFETCHD_Z_COORD, 54
 	goto_if_ne _0C79
 	goto _sticks3_farfetchd2_top_right
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0C73:
+	goto _sticks3_farfetchd2_top_left
+
 _0C79:
 	compare FARFETCHD_Z_COORD, 64
 	goto_if_ne _sticks3_farfetchd2_top_left
@@ -838,7 +904,10 @@ scr_seq_D36R0101_farfetchd2_sticks4:
 	compare FARFETCHD_X_COORD, 41
 	goto_if_ne _0CFB
 	goto _sticks4_farfetchd2_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0CF5:
+	goto _sticks4_farfetchd2_left
+
 _0CFB:
 	compare FARFETCHD_X_COORD, 49
 	goto_if_ne _sticks4_farfetchd2_left
@@ -849,7 +918,10 @@ _sticks4_farfetchd2_left:
 	compare FARFETCHD_Z_COORD, 54
 	goto_if_ne _0D2F
 	goto _sticks4_farfetchd2_top_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0D29:
+	goto _sticks4_farfetchd2_right
+
 _0D2F:
 	compare FARFETCHD_Z_COORD, 64
 	goto_if_ne _sticks4_farfetchd2_right
@@ -860,7 +932,10 @@ _sticks4_farfetchd2_right:
 	compare FARFETCHD_Z_COORD, 54
 	goto_if_ne _0D63
 	goto _sticks4_farfetchd2_top_right
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0D5D:
+	goto _sticks4_farfetchd2_top_left
+
 _0D63:
 	compare FARFETCHD_Z_COORD, 64
 	goto_if_ne _sticks4_farfetchd2_top_left
@@ -1661,7 +1736,10 @@ scr_seq_D36R0101_012:
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _17B7
 	goto _17C1
-	.byte 0x16, 0x00, 0x0a, 0x00, 0x00, 0x00
+
+_17B1:
+	goto _17C1
+
 _17B7:
 	clearflag FLAG_HIDE_ILEX_FOREST_SPIKY_EAR_PICHU
 	goto _1816
@@ -1675,7 +1753,10 @@ _17C1:
 	compare VAR_TEMP_x4007, 0
 	goto_if_ne _17FD
 	goto _1803
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_17F7:
+	goto _1803
+
 _17FD:
 	goto _1F48
 

@@ -100,7 +100,10 @@ _013D:
 	goto_if_lt _013D
 	setvar VAR_SPECIAL_x8004, 0
 	goto _013D
-	.byte 0x16, 0x00, 0x41, 0x00, 0x00, 0x00
+
+_0189:
+	goto _01D0
+
 _018F:
 	compare VAR_SPECIAL_x8003, 65534
 	goto_if_ne _01D0

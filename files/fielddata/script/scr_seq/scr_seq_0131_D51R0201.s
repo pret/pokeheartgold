@@ -447,8 +447,10 @@ _056D:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _060D
 	goto _0615
-	.byte 0x16, 0x00, 0x47, 0x00
-	.byte 0x00, 0x00
+
+_05A6:
+	goto _05F9
+
 _05B2:
 	compare VAR_UNK_4102, 2
 	goto_if_ne _05F3
@@ -459,8 +461,10 @@ _05B2:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _060D
 	goto _0615
-	.byte 0x16, 0x00, 0x06
-	.byte 0x00, 0x00, 0x00
+
+_05ED:
+	goto _05F9
+
 _05F3:
 	goto _0615
 
@@ -520,13 +524,18 @@ _065F:
 	compare VAR_TEMP_x4009, 483
 	goto_if_ne _0691
 	goto _06B0
-	.byte 0x16, 0x00, 0x1f, 0x00, 0x00
-	.byte 0x00
+
+_068B:
+	goto _06B0
+
 _0691:
 	compare VAR_TEMP_x4009, 484
 	goto_if_ne _06AA
 	goto _0731
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_06A4:
+	goto _06B0
+
 _06AA:
 	goto _07B2
 

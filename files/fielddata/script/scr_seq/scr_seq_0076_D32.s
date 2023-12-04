@@ -594,18 +594,26 @@ _0AB1:
 	compare VAR_SPECIAL_x8007, 0
 	goto_if_ne _0ACA
 	goto _04D1
-	.byte 0x16, 0x00, 0x38, 0x00, 0x00, 0x00
+
+_0AC4:
+	goto _0B02
+
 _0ACA:
 	compare VAR_SPECIAL_x8007, 1
 	goto_if_ne _0AE3
 	goto _0630
-	.byte 0x16, 0x00, 0x1f
-	.byte 0x00, 0x00, 0x00
+
+_0ADD:
+	goto _0B02
+
 _0AE3:
 	compare VAR_SPECIAL_x8007, 2
 	goto_if_ne _0AFC
 	goto _0762
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_0AF6:
+	goto _0B02
+
 _0AFC:
 	goto _08C1
 
@@ -829,12 +837,18 @@ _0F76:
 	compare VAR_SPECIAL_x8007, 0
 	goto_if_ne _0F8F
 	goto _0BA4
-	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
+
+_0F89:
+	goto scr_seq_D32_023
+
 _0F8F:
 	compare VAR_SPECIAL_x8007, 1
 	goto_if_ne _0FA8
 	goto _0CFA
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_0FA2:
+	goto scr_seq_D32_023
+
 _0FA8:
 	goto _0DEA
 

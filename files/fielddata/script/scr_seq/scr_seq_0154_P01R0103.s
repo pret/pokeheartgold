@@ -33,33 +33,50 @@ scr_seq_P01R0103_000:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _006C
 	goto _00EF
-	.byte 0x16, 0x00, 0x83, 0x00, 0x00, 0x00
+
+_0066:
+	goto _00EF
+
 _006C:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0085
 	goto _0142
-	.byte 0x16
-	.byte 0x00, 0x6a, 0x00, 0x00, 0x00
+
+_007F:
+	goto _00EF
+
 _0085:
 	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _009E
 	goto _0142
-	.byte 0x16, 0x00, 0x51, 0x00, 0x00, 0x00
+
+_0098:
+	goto _00EF
+
 _009E:
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _00B7
 	goto _00EF
-	.byte 0x16, 0x00, 0x38, 0x00, 0x00, 0x00
+
+_00B1:
+	goto _00EF
+
 _00B7:
 	compare VAR_SPECIAL_RESULT, 4
 	goto_if_ne _00D0
 	goto _0142
-	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
+
+_00CA:
+	goto _00EF
+
 _00D0:
 	compare VAR_SPECIAL_RESULT, 5
 	goto_if_ne _00E9
 	goto _0142
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_00E3:
+	goto _00EF
+
 _00E9:
 	goto _0142
 

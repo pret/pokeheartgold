@@ -16,7 +16,10 @@ scr_seq_T24R0801_000:
 	compare VAR_SPECIAL_RESULT, 7
 	goto_if_ne _002B
 	goto _0031
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_0025:
+	goto _0031
+
 _002B:
 	goto _0073
 

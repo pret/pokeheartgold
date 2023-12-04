@@ -144,16 +144,20 @@ scr_seq_R24_000:
 	compare VAR_SCENE_ROUTE_24_ROCKET, 2
 	goto_if_ne _01B3
 	goto _01DC
-	.byte 0x16, 0x00, 0x29
-	.byte 0x00, 0x00, 0x00
+
+_01AD:
+	goto _01DC
+
 _01B3:
 	compare VAR_SCENE_ROUTE_24_ROCKET, 3
 	goto_if_ne _01D1
 	faceplayer
 	npc_msg msg_0362_R24_00005
 	goto _01DF
-	.byte 0x16, 0x00, 0x0b, 0x00, 0x00
-	.byte 0x00
+
+_01CB:
+	goto _01DC
+
 _01D1:
 	faceplayer
 	npc_msg msg_0362_R24_00006
@@ -173,15 +177,20 @@ scr_seq_R24_001:
 	compare VAR_SCENE_ROUTE_24_ROCKET, 2
 	goto_if_ne _0206
 	goto _022F
-	.byte 0x16, 0x00, 0x29, 0x00, 0x00, 0x00
+
+_0200:
+	goto _022F
+
 _0206:
 	compare VAR_SCENE_ROUTE_24_ROCKET, 3
 	goto_if_ne _0224
 	faceplayer
 	npc_msg msg_0362_R24_00008
 	goto _0232
-	.byte 0x16, 0x00
-	.byte 0x0b, 0x00, 0x00, 0x00
+
+_021E:
+	goto _022F
+
 _0224:
 	faceplayer
 	npc_msg msg_0362_R24_00009

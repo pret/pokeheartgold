@@ -64,7 +64,10 @@ _0105:
 	compare VAR_TEMP_x4000, 7
 	goto_if_ne _012D
 	goto _023A
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_0127:
+	goto _0133
+
 _012D:
 	goto _024F
 

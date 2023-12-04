@@ -39,9 +39,14 @@ _006B:
 	compare VAR_TEMP_x4002, 0
 	goto_if_ne _009D
 	goto _012C
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_0097:
+	goto _00A3
+
 _009D:
 	goto _00A5
+
+_00A3:
 	end
 
 _00A5:

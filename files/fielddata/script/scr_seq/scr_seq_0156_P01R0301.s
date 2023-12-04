@@ -78,8 +78,10 @@ scr_seq_P01R0301_000:
 	compare VAR_BOAT_DIRECTION, 1
 	goto_if_gt _00E5
 	goto _00EB
-	.byte 0x16
-	.byte 0x00, 0x06, 0x00, 0x00, 0x00
+
+_00DF:
+	goto _00EB
+
 _00E5:
 	goto _0138
 

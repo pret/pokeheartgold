@@ -505,33 +505,50 @@ _0995:
 	compare VAR_SPECIAL_x8004, 385
 	goto_if_ne _09AE
 	goto _0180
-	.byte 0x16, 0x00, 0x83, 0x00, 0x00, 0x00
+
+_09A8:
+	goto _0A31
+
 _09AE:
 	compare VAR_SPECIAL_x8004, 359
 	goto_if_ne _09C7
 	goto _0180
-	.byte 0x16, 0x00, 0x6a, 0x00, 0x00, 0x00
+
+_09C1:
+	goto _0A31
+
 _09C7:
 	compare VAR_SPECIAL_x8004, 337
 	goto_if_ne _09E0
 	goto _0180
-	.byte 0x16, 0x00, 0x51, 0x00, 0x00, 0x00
+
+_09DA:
+	goto _0A31
+
 _09E0:
 	compare VAR_SPECIAL_x8004, 356
 	goto_if_ne _09F9
 	goto _0180
-	.byte 0x16, 0x00, 0x38, 0x00, 0x00, 0x00
+
+_09F3:
+	goto _0A31
+
 _09F9:
 	compare VAR_SPECIAL_x8004, 401
 	goto_if_ne _0A12
 	goto _0180
-	.byte 0x16, 0x00, 0x1f, 0x00
-	.byte 0x00, 0x00
+
+_0A0C:
+	goto _0A31
+
 _0A12:
 	compare VAR_SPECIAL_x8004, 395
 	goto_if_ne _0A2B
 	goto _0180
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_0A25:
+	goto _0A31
+
 _0A2B:
 	goto _021C
 

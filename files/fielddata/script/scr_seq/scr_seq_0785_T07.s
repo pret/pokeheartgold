@@ -61,14 +61,22 @@ _00C3:
 	compare VAR_TEMP_x4000, 6
 	goto_if_ne _00E0
 	goto _0101
-	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
+
+_00DA:
+	goto _00FF
+
 _00E0:
 	compare VAR_TEMP_x4000, 0
 	goto_if_ne _00F9
 	goto _0101
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_00F3:
+	goto _00FF
+
 _00F9:
 	goto _0198
+
+_00FF:
 	end
 
 _0101:

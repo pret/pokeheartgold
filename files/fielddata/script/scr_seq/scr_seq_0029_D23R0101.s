@@ -30,7 +30,10 @@ _004D:
 	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_ne _0066
 	goto _008B
-	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
+
+_0060:
+	goto _0085
+
 _0066:
 	compare VAR_SCENE_ROCKET_TAKEOVER, 3
 	goto_if_ne _0081

@@ -174,7 +174,10 @@ scr_seq_R14_002:
 	apply_movement obj_player, _0450
 	wait_movement
 	goto _027C
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_0249:
+	goto _0255
+
 _024F:
 	goto _0255
 
@@ -197,13 +200,18 @@ _027C:
 	compare VAR_TEMP_x4000, 1358
 	goto_if_ne _02B1
 	goto _02D0
-	.byte 0x16, 0x00, 0x1f, 0x00, 0x00
-	.byte 0x00
+
+_02AB:
+	goto _02D0
+
 _02B1:
 	compare VAR_TEMP_x4000, 1359
 	goto_if_ne _02CA
 	goto _0382
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_02C4:
+	goto _02D0
+
 _02CA:
 	goto _03AD
 

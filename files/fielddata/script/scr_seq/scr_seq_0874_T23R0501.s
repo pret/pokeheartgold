@@ -52,9 +52,13 @@ scr_seq_T23R0501_001:
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00A7
 	goto _00C7
-	.byte 0x16, 0x00, 0x08, 0x00, 0x00, 0x00
+
+_00A1:
+	goto _00AF
+
 _00A7:
 	apply_movement obj_T23R0501_gantetsu, _02E0
+_00AF:
 	wait_movement
 _00B1:
 	releaseall

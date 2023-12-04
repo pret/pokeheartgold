@@ -533,7 +533,10 @@ scr_seq_D49R0101_014:
 	goto_if_ne _072E
 	show_money_box 20, 2
 	goto _0759
-	.byte 0x16, 0x00, 0x1a, 0x00, 0x00, 0x00
+
+_0728:
+	goto _0748
+
 _072E:
 	compare VAR_TEMP_x4005, 1
 	goto_if_ne _0748
@@ -703,9 +706,14 @@ _09E6:
 	compare VAR_TEMP_x4005, 0
 	goto_if_ne _09FF
 	goto _0759
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_09F9:
+	goto _0A05
+
 _09FF:
 	goto _0A7F
+
+_0A05:
 	end
 
 _0A07:

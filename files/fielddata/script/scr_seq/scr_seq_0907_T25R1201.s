@@ -42,8 +42,10 @@ scr_seq_T25R1201_002:
 	compare VAR_TEMP_x4000, 8
 	goto_if_eq _0084
 	goto _009D
-	.byte 0x16, 0x00
-	.byte 0x13, 0x00, 0x00, 0x00
+
+_007E:
+	goto _0097
+
 _0084:
 	compare VAR_TEMP_x4001, 2
 	goto_if_eq _0097

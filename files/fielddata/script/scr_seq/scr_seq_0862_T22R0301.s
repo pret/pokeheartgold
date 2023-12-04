@@ -181,36 +181,51 @@ _0207:
 	goto_if_ne _0264
 	npc_msg msg_0560_T22R0301_00014
 	goto _0207
-	.byte 0x16, 0x00
-	.byte 0x74, 0x00, 0x00, 0x00
+
+_025E:
+	goto _02D8
+
 _0264:
 	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _0280
 	npc_msg msg_0560_T22R0301_00015
 	goto _0207
-	.byte 0x16, 0x00, 0x58, 0x00, 0x00, 0x00
+
+_027A:
+	goto _02D8
+
 _0280:
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _029C
 	npc_msg msg_0560_T22R0301_00016
 	goto _0207
-	.byte 0x16, 0x00, 0x3c, 0x00, 0x00, 0x00
+
+_0296:
+	goto _02D8
+
 _029C:
 	compare VAR_SPECIAL_RESULT, 4
 	goto_if_ne _02B8
 	npc_msg msg_0560_T22R0301_00017
 	goto _0207
-	.byte 0x16, 0x00, 0x20, 0x00, 0x00, 0x00
+
+_02B2:
+	goto _02D8
+
 _02B8:
 	compare VAR_SPECIAL_RESULT, 5
 	goto_if_ne _02D4
 	npc_msg msg_0560_T22R0301_00018
 	goto _0207
-	.byte 0x16, 0x00
-	.byte 0x04, 0x00, 0x00, 0x00
+
+_02CE:
+	goto _02D8
+
 _02D4:
 	closemsg
 	releaseall
+
+_02D8:
 	end
 
 scr_seq_T22R0301_003:

@@ -140,10 +140,13 @@ _0196:
 	goto_if_ne _01B2
 	npc_msg msg_0439_00047
 	goto _0057
-	.byte 0x16, 0x00, 0x03, 0x00
-	.byte 0x00, 0x00
+
+_01AC:
+	goto _01B5
+
 _01B2:
 	npc_msg msg_0439_00017
+_01B5:
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -154,9 +157,13 @@ _01BD:
 	goto_if_ne _01D9
 	npc_msg msg_0439_00048
 	goto _0057
-	.byte 0x16, 0x00, 0x03, 0x00, 0x00, 0x00
+
+_01D3:
+	goto _01DC
+
 _01D9:
 	npc_msg msg_0439_00018
+_01DC:
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -167,9 +174,13 @@ _01E4:
 	goto_if_ne _0200
 	npc_msg msg_0439_00049
 	goto _0057
-	.byte 0x16, 0x00, 0x03, 0x00, 0x00, 0x00
+
+_01FA:
+	goto _0203
+
 _0200:
 	npc_msg msg_0439_00019
+_0203:
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -180,9 +191,13 @@ _020B:
 	goto_if_ne _0227
 	npc_msg msg_0439_00050
 	goto _0057
-	.byte 0x16, 0x00, 0x03, 0x00, 0x00, 0x00
+
+_0221:
+	goto _022A
+
 _0227:
 	npc_msg msg_0439_00020
+_022A:
 	wait_button_or_walk_away
 	closemsg
 	releaseall

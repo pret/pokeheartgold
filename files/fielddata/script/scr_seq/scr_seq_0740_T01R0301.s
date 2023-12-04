@@ -234,18 +234,26 @@ _02CB:
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _0320
 	goto _035A
-	.byte 0x16, 0x00, 0x38, 0x00, 0x00, 0x00
+
+_031A:
+	goto _0358
+
 _0320:
 	compare VAR_TEMP_x4001, 3
 	goto_if_ne _0339
 	goto _037B
-	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
+
+_0333:
+	goto _0358
+
 _0339:
 	compare VAR_TEMP_x4001, 2
 	goto_if_ne _0352
 	goto _039C
-	.byte 0x16, 0x00, 0x06, 0x00
-	.byte 0x00, 0x00
+
+_034C:
+	goto _0358
+
 _0352:
 	goto _03BD
 

@@ -23,17 +23,26 @@ scr_seq_R31_001:
 	compare VAR_LOAN_SPEAROW, 1
 	goto_if_ne _003D
 	goto _0098
-	.byte 0x16, 0x00, 0x50, 0x00, 0x00, 0x00
+
+_0037:
+	goto _008D
+
 _003D:
 	compare VAR_LOAN_SPEAROW, 2
 	goto_if_ne _0056
 	goto _01AD
-	.byte 0x16, 0x00, 0x37, 0x00, 0x00, 0x00
+
+_0050:
+	goto _008D
+
 _0056:
 	compare VAR_LOAN_SPEAROW, 4
 	goto_if_ne _006F
 	goto _01AD
-	.byte 0x16, 0x00, 0x1e, 0x00, 0x00, 0x00
+
+_0069:
+	goto _008D
+
 _006F:
 	compare VAR_LOAN_SPEAROW, 6
 	goto_if_ne _008D

@@ -19,16 +19,22 @@ scr_seq_D02R0104_000:
 	compare VAR_TEMP_x4000, 1
 	goto_if_ne _003B
 	goto _0060
-	.byte 0x16, 0x00, 0x23, 0x00, 0x00, 0x00
+
+_0035:
+	goto _005E
+
 _003B:
 	compare VAR_TEMP_x4000, 2
 	goto_if_ne _0054
 	goto _007D
-	.byte 0x16, 0x00
-	.byte 0x0a, 0x00, 0x00, 0x00
+
+_004E:
+	goto _005E
+
 _0054:
 	setvar VAR_UNK_40F6, 1
 	setflag FLAG_UNK_26E
+_005E:
 	end
 
 _0060:
@@ -57,13 +63,18 @@ scr_seq_D02R0104_005:
 	compare VAR_TEMP_x4000, 1
 	goto_if_ne _00C3
 	goto _0113
-	.byte 0x16, 0x00, 0x1f
-	.byte 0x00, 0x00, 0x00
+
+_00BD:
+	goto _00E2
+
 _00C3:
 	compare VAR_TEMP_x4000, 2
 	goto_if_ne _00DC
 	goto _012A
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_00D6:
+	goto _00E2
+
 _00DC:
 	goto _00E2
 

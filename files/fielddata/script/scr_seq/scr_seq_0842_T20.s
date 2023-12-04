@@ -90,8 +90,10 @@ _0128:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0153
 	goto _01BA
-	.byte 0x16, 0x00, 0x13
-	.byte 0x00, 0x00, 0x00
+
+_014D:
+	goto _0166
+
 _0153:
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _0166
@@ -101,7 +103,10 @@ _0166:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _017F
 	goto _0202
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0179:
+	goto _0192
+
 _017F:
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _0192
