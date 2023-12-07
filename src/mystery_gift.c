@@ -7,10 +7,10 @@
 BOOL MysteryGiftTagIsValid(u32 tag);
 MysteryGift* SaveMysteryGift_GetByIdx(MYSTERY_GIFT_SAVE* mg, int index);
 BOOL SaveMysteryGiftI_SetReceived(MYSTERY_GIFT_SAVE* mg, int index);
-void sub_0202DFDC(MYSTERY_GIFT_SAVE* mg, int index);
-void sub_0202DF38(MYSTERY_GIFT_SAVE* mg, int index);
+void SaveMysteryGift_ReceivedFlagClear(MYSTERY_GIFT_SAVE* mg, int index);
+void SaveMysteryGift_SetReceivedByCardId(MYSTERY_GIFT_SAVE* mg, int index);
 BOOL SaveMysteryGiftI_TagIsValid(MYSTERY_GIFT_SAVE* mg, int index);
-void sub_0202DFDC(MYSTERY_GIFT_SAVE* mg, int a1);
+void SaveMysteryGift_ReceivedFlagClear(MYSTERY_GIFT_SAVE* mg, int a1);
 
 u32 Save_MysteryGift_sizeof(void) {
     return sizeof(MYSTERY_GIFT_SAVE);
@@ -42,13 +42,13 @@ WonderCard* SaveMysteryGift_CardGetByIdx(MYSTERY_GIFT_SAVE* mg, int index) {
             return ret;
         }
     } else if (index == RECEIVED_WONDER_CARD_IDX) {
-        return &mg->receivedCard;
+        return &mg->specialWonderCard;
     }
 
     return NULL;
 }
 
-BOOL sub_0202DC2C(MYSTERY_GIFT_SAVE* mg, const MysteryGift* src, int flag) {
+BOOL SaveMysteryGift_TryInsertGift(MYSTERY_GIFT_SAVE* mg, const MysteryGift* src, int flag) {
     BOOL ret = FALSE;
     int i;
     
@@ -69,7 +69,7 @@ BOOL sub_0202DC2C(MYSTERY_GIFT_SAVE* mg, const MysteryGift* src, int flag) {
     return ret;
 }
 
-BOOL sub_0202DCAC(MYSTERY_GIFT_SAVE* mg, const WonderCard* src) {
+BOOL SaveMysteryGift_TryInsertCard(MYSTERY_GIFT_SAVE* mg, const WonderCard* src) {
     BOOL ret = FALSE;
     int i;
 
@@ -85,7 +85,7 @@ BOOL sub_0202DCAC(MYSTERY_GIFT_SAVE* mg, const WonderCard* src) {
         if (!MysteryGiftTagIsValid(mg->cards[i].tag)) {
             MI_CpuCopy8(src, &mg->cards[i], sizeof(WonderCard));
             if (src->unk104.unk8E_3 == 1) {
-                sub_0202DC2C(mg, (const MysteryGift*)src, i);
+                SaveMysteryGift_TryInsertGift(mg, (const MysteryGift*)src, i);
             }
             ret = TRUE;
             break;
@@ -96,12 +96,12 @@ BOOL sub_0202DCAC(MYSTERY_GIFT_SAVE* mg, const WonderCard* src) {
     return ret;
 }
 
-BOOL sub_0202DD48(MYSTERY_GIFT_SAVE* mg, const WonderCard* src) {
-    if (MysteryGiftTagIsValid(mg->receivedCard.tag) == TRUE) {
+BOOL SaveMysteryGift_TrySetSpecialCard(MYSTERY_GIFT_SAVE* mg, const WonderCard* src) {
+    if (MysteryGiftTagIsValid(mg->specialWonderCard.tag) == TRUE) {
         return FALSE;
     }
 
-    MI_CpuCopy8(src, &mg->receivedCard, sizeof(WonderCard));
+    MI_CpuCopy8(src, &mg->specialWonderCard, sizeof(WonderCard));
     SaveSubstruct_UpdateCRC(SAVE_MYSTERY_GIFT);
     return FALSE;
 }
@@ -114,16 +114,16 @@ BOOL SaveMysteryGiftI_SetReceived(MYSTERY_GIFT_SAVE* mg, int index) {
     return TRUE;
 }
 
-BOOL sub_0202DDB0(MYSTERY_GIFT_SAVE* mg, int index) {
+BOOL SaveMysteryGift_ReceiveGiftAndClearCardByIndex(MYSTERY_GIFT_SAVE* mg, int index) {
     GF_ASSERT(index < NUM_SAVED_WONDER_CARDS);
     mg->cards[index].tag = MG_TAG_invalid;
-    sub_0202DFDC(mg, mg->cards[index].unk104.id);
-    sub_0202DF38(mg, index);
+    SaveMysteryGift_ReceivedFlagClear(mg, mg->cards[index].unk104.id);
+    SaveMysteryGift_SetReceivedByCardId(mg, index);
     SaveSubstruct_UpdateCRC(SAVE_MYSTERY_GIFT);
     return TRUE;
 }
 
-BOOL sub_0202DDEC(MYSTERY_GIFT_SAVE* mg, int index) {
+BOOL SaveMysteryGift_DeleteWonderCardByIndex(MYSTERY_GIFT_SAVE* mg, int index) {
     GF_ASSERT(index < NUM_SAVED_WONDER_CARDS);
     mg->cards[index].tag = MG_TAG_invalid;
     SaveSubstruct_UpdateCRC(SAVE_MYSTERY_GIFT);
@@ -164,7 +164,7 @@ BOOL SaveMysteryGiftI_TagIsValid(MYSTERY_GIFT_SAVE* mg, int index) {
     }
 }
 
-BOOL sub_0202DE90(MYSTERY_GIFT_SAVE* mg, int index) {
+BOOL SaveMysteryGift_CardTagIsValid(MYSTERY_GIFT_SAVE* mg, int index) {
     GF_ASSERT(index < NUM_SAVED_WONDER_CARDS);
     
     if (MysteryGiftTagIsValid(mg->cards[index].tag)) {
@@ -174,19 +174,19 @@ BOOL sub_0202DE90(MYSTERY_GIFT_SAVE* mg, int index) {
     }
 }
 
-BOOL sub_0202DEBC(MYSTERY_GIFT_SAVE* mg) {
-    if (MysteryGiftTagIsValid(mg->receivedCard.tag)) {
+BOOL SaveMysteryGift_SpecialCardTagIsValid(MYSTERY_GIFT_SAVE* mg) {
+    if (MysteryGiftTagIsValid(mg->specialWonderCard.tag)) {
         return TRUE;
     } else {
         return FALSE;
     }
 }
 
-BOOL sub_0202DED8(MYSTERY_GIFT_SAVE* mg) {
+BOOL SaveMysteryGift_HasAnyCard(MYSTERY_GIFT_SAVE* mg) {
     int i;
 
     for (i = 0; i < NUM_SAVED_WONDER_CARDS; ++i) {
-        if (sub_0202DE90(mg, i) == TRUE) {
+        if (SaveMysteryGift_CardTagIsValid(mg, i) == TRUE) {
             return TRUE;
         }
     }
@@ -194,7 +194,7 @@ BOOL sub_0202DED8(MYSTERY_GIFT_SAVE* mg) {
     return FALSE;
 }
 
-BOOL sub_0202DEF8(MYSTERY_GIFT_SAVE* mg, int a1) {
+BOOL SaveMysteryGift_HasAnyGift(MYSTERY_GIFT_SAVE* mg, int a1) {
     int i;
 
     for (i = 0; i < NUM_SAVED_MYSTERY_GIFTS; ++i) {
@@ -206,7 +206,7 @@ BOOL sub_0202DEF8(MYSTERY_GIFT_SAVE* mg, int a1) {
     return FALSE;
 }
 
-void sub_0202DF38(MYSTERY_GIFT_SAVE* mg, int a1) {
+void SaveMysteryGift_SetReceivedByCardId(MYSTERY_GIFT_SAVE* mg, int a1) {
     int i;
 
     for (i = 0; i < NUM_SAVED_MYSTERY_GIFTS; ++i) {
@@ -217,30 +217,30 @@ void sub_0202DF38(MYSTERY_GIFT_SAVE* mg, int a1) {
     }
 }
 
-BOOL sub_0202DF7C(MYSTERY_GIFT_SAVE* mg, int a1) {
+BOOL SaveMysteryGift_ReceivedFlagTest(MYSTERY_GIFT_SAVE* mg, int a1) {
     GF_ASSERT(a1 < 2048);
     return mg->filler_000[a1 / 8] & (1 << (a1 & 7)) ? TRUE : FALSE;
 }
 
-void sub_0202DFAC(MYSTERY_GIFT_SAVE* mg, int a1) {
+void SaveMysteryGift_ReceivedFlagSet(MYSTERY_GIFT_SAVE* mg, int a1) {
     GF_ASSERT(a1 < 2048);
     mg->filler_000[a1 / 8] |= (1 << (a1 & 7));
     SaveSubstruct_UpdateCRC(SAVE_MYSTERY_GIFT);
 }
 
-void sub_0202DFDC(MYSTERY_GIFT_SAVE* mg, int a1) {
+void SaveMysteryGift_ReceivedFlagClear(MYSTERY_GIFT_SAVE* mg, int a1) {
     u8 mask = ~(1 << (a1 & 7));
     GF_ASSERT(a1 < 2048);
     mg->filler_000[a1 / 8] &= mask;
     SaveSubstruct_UpdateCRC(SAVE_MYSTERY_GIFT);
 }
 
-BOOL sub_0202E014(MYSTERY_GIFT_SAVE* mg) {
-    return sub_0202DF7C(mg, 0x7FF);
+BOOL SaveMysteryGift_TestFlagx7FF(MYSTERY_GIFT_SAVE* mg) {
+    return SaveMysteryGift_ReceivedFlagTest(mg, 0x7FF);
 }
 
-void sub_0202E024(MYSTERY_GIFT_SAVE* mg) {
-    sub_0202DFAC(mg, 0x7FF);
+void SaveMysteryGift_SetFlagx7FF(MYSTERY_GIFT_SAVE* mg) {
+    SaveMysteryGift_ReceivedFlagSet(mg, 0x7FF);
 }
 
 static MYSTERY_GIFT_SAVE* sMysteryGiftData;

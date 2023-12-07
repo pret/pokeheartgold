@@ -85,27 +85,27 @@ typedef struct {
     u8 filler_000[0x100]; // 0000
     MysteryGift gifts[NUM_SAVED_MYSTERY_GIFTS]; // 0100
     WonderCard cards[NUM_SAVED_WONDER_CARDS];  // 920
-    WonderCard receivedCard; // 1328
+    WonderCard specialWonderCard; // 1328
 } MYSTERY_GIFT_SAVE; // size = 0x1680
 
 u32 Save_MysteryGift_sizeof(void);
 void Save_MysteryGift_Init(MYSTERY_GIFT_SAVE *mg);
 WonderCard* SaveMysteryGift_CardGetByIdx(MYSTERY_GIFT_SAVE* mg, int index);
 BOOL SaveMysteryGift_FindAvailable(MYSTERY_GIFT_SAVE* mg);
-BOOL sub_0202DC2C(MYSTERY_GIFT_SAVE* mg, const MysteryGift* src, int flag);
-BOOL sub_0202DCAC(MYSTERY_GIFT_SAVE* mg, const WonderCard* src);
-BOOL sub_0202DD48(MYSTERY_GIFT_SAVE* mg, const WonderCard* src);
-BOOL sub_0202DDB0(MYSTERY_GIFT_SAVE* mg, int index);
-BOOL sub_0202DDEC(MYSTERY_GIFT_SAVE* mg, int index);
+BOOL SaveMysteryGift_TryInsertGift(MYSTERY_GIFT_SAVE* mg, const MysteryGift* src, int flag);
+BOOL SaveMysteryGift_TryInsertCard(MYSTERY_GIFT_SAVE* mg, const WonderCard* src);
+BOOL SaveMysteryGift_TrySetSpecialCard(MYSTERY_GIFT_SAVE* mg, const WonderCard* src);
+BOOL SaveMysteryGift_ReceiveGiftAndClearCardByIndex(MYSTERY_GIFT_SAVE* mg, int index);
+BOOL SaveMysteryGift_DeleteWonderCardByIndex(MYSTERY_GIFT_SAVE* mg, int index);
 BOOL SaveMysteryGift_CardFindAvailable(MYSTERY_GIFT_SAVE* mg);
-BOOL sub_0202DE90(MYSTERY_GIFT_SAVE* mg, int index);
-BOOL sub_0202DEBC(MYSTERY_GIFT_SAVE* mg);
-BOOL sub_0202DED8(MYSTERY_GIFT_SAVE* mg);
-BOOL sub_0202DEF8(MYSTERY_GIFT_SAVE* mg, int a1);
-BOOL sub_0202DF7C(MYSTERY_GIFT_SAVE* mg, int a1);
-void sub_0202DFAC(MYSTERY_GIFT_SAVE* mg, int a1);
-BOOL sub_0202E014(MYSTERY_GIFT_SAVE* mg);
-void sub_0202E024(MYSTERY_GIFT_SAVE* mg);
+BOOL SaveMysteryGift_CardTagIsValid(MYSTERY_GIFT_SAVE* mg, int index);
+BOOL SaveMysteryGift_SpecialCardTagIsValid(MYSTERY_GIFT_SAVE* mg);
+BOOL SaveMysteryGift_HasAnyCard(MYSTERY_GIFT_SAVE* mg);
+BOOL SaveMysteryGift_HasAnyGift(MYSTERY_GIFT_SAVE* mg, int a1);
+BOOL SaveMysteryGift_ReceivedFlagTest(MYSTERY_GIFT_SAVE* mg, int a1);
+void SaveMysteryGift_ReceivedFlagSet(MYSTERY_GIFT_SAVE* mg, int a1);
+BOOL SaveMysteryGift_TestFlagx7FF(MYSTERY_GIFT_SAVE* mg);
+void SaveMysteryGift_SetFlagx7FF(MYSTERY_GIFT_SAVE* mg);
 void GetStaticPointerToSaveMysteryGift(SaveData* saveData);
 void DeleteStaticPointerToMysteryGift(void);
 int GetFirstQueuedMysteryGiftIdx(void);
