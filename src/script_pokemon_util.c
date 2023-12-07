@@ -4,6 +4,7 @@
 #include "unk_0206979C.h"
 #include "pokemon_mood.h"
 #include "script_pokemon_util.h"
+#include "get_egg.h"
 #include "constants/items.h"
 #include "constants/battle.h"
 

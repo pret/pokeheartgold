@@ -2,6 +2,7 @@
 #include "fielddata/script/scr_seq/event_T22PC0101.h"
 #include "msgdata/msg/msg_0559_T22PC0101.h"
 #include "msgdata/msg/msg_0191.h"
+#include "constants/map_sections.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -75,7 +76,7 @@ _011D:
 	npc_msg msg_0559_T22PC0101_00018
 	buffer_players_name 0
 	buffer_species_name 1, SPECIES_MAREEP, 0, 0
-	give_egg SPECIES_MAREEP, 14
+	give_egg SPECIES_MAREEP, MAPLOC(METLOC_PRIMO)
 	goto _01CB
 
 _0157:
@@ -87,7 +88,7 @@ _0157:
 	npc_msg msg_0559_T22PC0101_00018
 	buffer_players_name 0
 	buffer_species_name 1, SPECIES_WOOPER, 0, 0
-	give_egg SPECIES_WOOPER, 14
+	give_egg SPECIES_WOOPER, MAPLOC(METLOC_PRIMO)
 	goto _01CB
 
 _0191:
@@ -99,7 +100,7 @@ _0191:
 	npc_msg msg_0559_T22PC0101_00018
 	buffer_players_name 0
 	buffer_species_name 1, SPECIES_SLUGMA, 0, 0
-	give_egg SPECIES_SLUGMA, 14
+	give_egg SPECIES_SLUGMA, MAPLOC(METLOC_PRIMO)
 	goto _01CB
 
 _01CB:
