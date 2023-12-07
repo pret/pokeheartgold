@@ -4,23 +4,23 @@
 #include "pokemon_types_def.h"
 #include "photo_album.h"
 
-#define MG_TAG_invalid             0
-#define MG_TAG_pokemon             1
-#define MG_TAG_egg                 2
-#define MG_TAG_item                3
-#define MG_TAG_battle_rules        4
-#define MG_TAG_secret_base_deco    5 // disabled in hgss
-#define MG_TAG_mon_deco            6
-#define MG_TAG_manaphy_egg         7
-#define MG_TAG_member_card         8 // disabled in hgss
-#define MG_TAG_oaks_letter         9 // disabled in hgss
-#define MG_TAG_azure_flute        10 // disabled in hgss
-#define MG_TAG_poketch_app        11 // disabled in hgss
-#define MG_TAG_secret_key         12 // disabled in hgss
-#define MG_TAG_pokemon_movie      13
-#define MG_TAG_pokewalker_course  14
-#define MG_TAG_memorial_photo     15
-#define MG_TAG_max                16
+#define MG_TAG_INVALID             0
+#define MG_TAG_POKEMON             1
+#define MG_TAG_EGG                 2
+#define MG_TAG_ITEM                3
+#define MG_TAG_BATTLE_RULES        4
+#define MG_TAG_SECRET_BASE_DECO    5 // disabled in hgss
+#define MG_TAG_MON_DECO            6
+#define MG_TAG_MANAPHY_EGG         7
+#define MG_TAG_MEMBER_CARD         8 // disabled in hgss
+#define MG_TAG_OAKS_LETTER         9 // disabled in hgss
+#define MG_TAG_AZURE_FLUTE        10 // disabled in hgss
+#define MG_TAG_POKETCH_APP        11 // disabled in hgss
+#define MG_TAG_SECRET_KEY         12 // disabled in hgss
+#define MG_TAG_POKEMON_MOVIE      13
+#define MG_TAG_POKEWALKER_COURSE  14
+#define MG_TAG_MEMORIAL_PHOTO     15
+#define MG_TAG_MAX                16
 
 #define NUM_SAVED_MYSTERY_GIFTS         8
 #define NUM_SAVED_WONDER_CARDS          3

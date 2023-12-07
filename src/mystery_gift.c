@@ -21,7 +21,7 @@ void Save_MysteryGift_Init(MysteryGiftSave* mg) {
 }
 
 BOOL MysteryGiftTagIsValid(u32 tag) {
-    return tag != MG_TAG_invalid && tag < MG_TAG_max;
+    return tag != MG_TAG_INVALID && tag < MG_TAG_MAX;
 }
 
 MysteryGift* SaveMysteryGift_GetByIdx(MysteryGiftSave* mg, int index) {
@@ -108,7 +108,7 @@ BOOL SaveMysteryGift_TrySetSpecialCard(MysteryGiftSave* mg, const WonderCard* sr
 
 BOOL SaveMysteryGift_SetReceivedByIdx(MysteryGiftSave* mg, int index) {
     GF_ASSERT(index < NUM_SAVED_MYSTERY_GIFTS);
-    mg->gifts[index].tag = MG_TAG_invalid;
+    mg->gifts[index].tag = MG_TAG_INVALID;
     mg->gifts[index].flag = 0;
     SaveSubstruct_UpdateCRC(SAVE_MYSTERY_GIFT);
     return TRUE;
@@ -116,7 +116,7 @@ BOOL SaveMysteryGift_SetReceivedByIdx(MysteryGiftSave* mg, int index) {
 
 BOOL SaveMysteryGift_ReceiveGiftAndClearCardByIndex(MysteryGiftSave* mg, int index) {
     GF_ASSERT(index < NUM_SAVED_WONDER_CARDS);
-    mg->cards[index].tag = MG_TAG_invalid;
+    mg->cards[index].tag = MG_TAG_INVALID;
     SaveMysteryGift_ReceivedFlagClear(mg, mg->cards[index].unk104.id);
     SaveMysteryGift_SetReceivedByCardId(mg, index);
     SaveSubstruct_UpdateCRC(SAVE_MYSTERY_GIFT);
@@ -125,7 +125,7 @@ BOOL SaveMysteryGift_ReceiveGiftAndClearCardByIndex(MysteryGiftSave* mg, int ind
 
 BOOL SaveMysteryGift_DeleteWonderCardByIndex(MysteryGiftSave* mg, int index) {
     GF_ASSERT(index < NUM_SAVED_WONDER_CARDS);
-    mg->cards[index].tag = MG_TAG_invalid;
+    mg->cards[index].tag = MG_TAG_INVALID;
     SaveSubstruct_UpdateCRC(SAVE_MYSTERY_GIFT);
     return TRUE;
 }
@@ -276,7 +276,7 @@ u16 GetMysteryGiftTagByIdx(int index) {
         return gift->tag;
     }
 
-    return MG_TAG_invalid;
+    return MG_TAG_INVALID;
 }
 
 MysteryGiftData* GetMysteryGiftDataByIdx(int index) {
