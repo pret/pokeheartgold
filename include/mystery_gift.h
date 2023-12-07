@@ -37,30 +37,49 @@ typedef struct MG_MON_DECO_TAG {
     int id;
 } MG_MON_DECO_TAG;
 
+typedef union {
+    MG_POKEMON_TAG pokemon;
+    Pokemon egg;
+    u32 item;
+    u16 ruleset[24];
+    int base_decoration;
+    MG_MON_DECO_TAG mon_decoration;
+    u8 pokewalkerCourse;
+    PHOTO photo;
+    u8 raw[256];
+} MysteryGiftTag;
+
+typedef struct {
+    u16 name[36];
+    u32 version;  // 88
+    u16 id;       // 8C
+    u8 unique:1;  // 8E
+    u8 unk8E_1:1;
+    u8 unk8E_2:1;
+    u8 unk8E_3:1;
+    u8 unk8E_4:1;
+    u8 unk8E_5:1;
+    u8 unk8E_6:2;
+} UnkWonderCardSubstruct_104;
+
 typedef struct {
     u16 tag;
     u16 flag : 2;
     u16 dummy : 14;
-    union {
-        MG_POKEMON_TAG pokemon;
-        Pokemon egg;
-        u32 item;
-        u16 ruleset[24];
-        int base_decoration;
-        MG_MON_DECO_TAG mon_decoration;
-        u8 pokewalkerCourse;
-        PHOTO photo;
-        u8 raw[256];
-    };
+    MysteryGiftTag data;
 } MysteryGift;
 
 typedef struct {
     u16 tag;
     u16 flag;
-    union {
-        u8 raw[852];
-    };
-} WonderCard;
+    MysteryGiftTag data;
+    UnkWonderCardSubstruct_104 unk104;
+    u16 text[250];
+    u8 shareMax;
+    u16 monIcon[3];
+    u8 shareCount;
+    s32 receiveDate;
+} WonderCard; // size: 0x358
 
 typedef struct {
     u8 filler_000[0x100]; // 0000
@@ -74,5 +93,25 @@ void Save_MysteryGift_Init(MYSTERY_GIFT_SAVE *mg);
 WonderCard* SaveMysteryGift_CardGetByIdx(MYSTERY_GIFT_SAVE* mg, int index);
 BOOL SaveMysteryGift_FindAvailable(MYSTERY_GIFT_SAVE* mg);
 BOOL sub_0202DC2C(MYSTERY_GIFT_SAVE* mg, const MysteryGift* src, int flag);
+BOOL sub_0202DCAC(MYSTERY_GIFT_SAVE* mg, const WonderCard* src);
+BOOL sub_0202DD48(MYSTERY_GIFT_SAVE* mg, const WonderCard* src);
+BOOL sub_0202DDB0(MYSTERY_GIFT_SAVE* mg, int index);
+BOOL sub_0202DDEC(MYSTERY_GIFT_SAVE* mg, int index);
+BOOL SaveMysteryGift_CardFindAvailable(MYSTERY_GIFT_SAVE* mg);
+BOOL sub_0202DE90(MYSTERY_GIFT_SAVE* mg, int index);
+BOOL sub_0202DEBC(MYSTERY_GIFT_SAVE* mg);
+BOOL sub_0202DED8(MYSTERY_GIFT_SAVE* mg);
+BOOL sub_0202DEF8(MYSTERY_GIFT_SAVE* mg, int a1);
+BOOL sub_0202DF7C(MYSTERY_GIFT_SAVE* mg, int a1);
+void sub_0202DFAC(MYSTERY_GIFT_SAVE* mg, int a1);
+BOOL sub_0202E014(MYSTERY_GIFT_SAVE* mg);
+void sub_0202E024(MYSTERY_GIFT_SAVE* mg);
+void GetStaticPointerToSaveMysteryGift(SaveData* saveData);
+void DeleteStaticPointerToMysteryGift(void);
+int GetFirstQueuedMysteryGiftIdx(void);
+u16 GetMysteryGiftTagByIdx(int index);
+MysteryGiftTag* GetMysteryGiftDataByIdx(int index);
+MysteryGiftTag* GetMysteryGiftDataByIdx(int index);
+void SetMysteryGiftReceivedByIdx(int index);
 
 #endif //POKEHEARTGOLD_MYSTERY_GIFT_H

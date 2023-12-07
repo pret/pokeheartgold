@@ -121,7 +121,6 @@ Static main
 	Object src/roamer.o
 	Object asm/unk_0202DB34.o
 	Object src/mystery_gift.o
-	Object asm/unk_0202DBA8.o
 	Object src/hall_of_fame.o
 	Object asm/unk_0202E41C.o
 	Object asm/unk_0202E4B0.o
