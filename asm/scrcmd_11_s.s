@@ -12,58 +12,6 @@
 	.public FieldSystem_GetDataOfNextMG
 	.public FieldSystem_SetQueuedMGReceived
 
-	thumb_func_start MGCheck_PartySpace
-MGCheck_PartySpace: ; 0x0204BF98
-	push {r3, lr}
-	ldr r0, [r0, #0xc]
-	bl SaveArray_Party_Get
-	bl Party_GetCount
-	cmp r0, #6
-	bge _0204BFAC
-	mov r0, #1
-	pop {r3, pc}
-_0204BFAC:
-	mov r0, #0
-	pop {r3, pc}
-	thumb_func_end MGCheck_PartySpace
-
-	thumb_func_start MGGive_ManaphyEgg
-MGGive_ManaphyEgg: ; 0x0204BFB0
-	push {r3, lr}
-	sub sp, #8
-	add r1, r0, #0
-	mov r0, #2
-	str r0, [sp]
-	mov r3, #1
-	str r3, [sp, #4]
-	ldr r1, [r1, #0xc]
-	ldr r2, _0204BFCC ; =SPECIES_MANAPHY
-	mov r0, #0x20
-	bl GiveEgg
-	add sp, #8
-	pop {r3, pc}
-	.balign 4, 0
-_0204BFCC: .word SPECIES_MANAPHY
-	thumb_func_end MGGive_ManaphyEgg
-
-	thumb_func_start MGMessageSuccess_ManaphyEgg
-MGMessageSuccess_ManaphyEgg: ; 0x0204BFD0
-	push {r4, lr}
-	add r4, r0, #0
-	mov r0, #0xd1
-	strh r0, [r1]
-	mov r0, #0xd
-	strh r0, [r2]
-	ldr r0, [r4]
-	ldr r0, [r0, #0xc]
-	bl Save_PlayerData_GetProfileAddr
-	add r2, r0, #0
-	ldr r0, [r4, #4]
-	mov r1, #0
-	bl BufferPlayersName
-	pop {r4, pc}
-	thumb_func_end MGMessageSuccess_ManaphyEgg
-
 	thumb_func_start MGGive_Mon
 MGGive_Mon: ; 0x0204BFF0
 	push {r4, r5, r6, r7, lr}

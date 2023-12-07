@@ -1,10 +1,14 @@
 #include "global.h"
 #include "mystery_gift.h"
 #include "scrcmd.h"
+#include "script_pokemon_util.h"
+#include "constants/map_sections.h"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0209.h"
 
 struct GetMysteryGiftGmmState {
     FieldSystem* fieldSys;
-    MessageFormat* lastInteracted;
+    MessageFormat* msgFormat;
     MysteryGiftData* mgData;
 };
 
@@ -15,7 +19,7 @@ struct ScriptMysteryGiftFuncs {
     void (*messageFailure)(struct GetMysteryGiftGmmState*, u16*, u16*);
 };
 
-void FieldSystem_InitGetMysteryGiftGmmState(struct GetMysteryGiftGmmState* state, FieldSystem* fieldSys, MessageFormat* lastInteracted, MysteryGiftData* mgData);
+void FieldSystem_InitGetMysteryGiftGmmState(struct GetMysteryGiftGmmState* state, FieldSystem* fieldSys, MessageFormat* msgFormat, MysteryGiftData* mgData);
 int FieldSystem_GetTagOfNextMG(FieldSystem* fieldSys);
 MysteryGiftData* FieldSystem_GetDataOfNextMG(FieldSystem* fieldSys);
 void FieldSystem_SetQueuedMGReceived(FieldSystem* fieldSys);
@@ -90,9 +94,9 @@ static const struct ScriptMysteryGiftFuncs sScriptMysteryGiftActionTable[MG_TAG_
     { MGCheck_MemorialPhoto, MGGive_MemorialPhoto, MGMessageSuccess_MemorialPhoto, MGMessageFailure_MemorialPhoto },
 };
 
-void FieldSystem_InitGetMysteryGiftGmmState(struct GetMysteryGiftGmmState* state, FieldSystem* fieldSys, MessageFormat* lastInteracted, MysteryGiftData* mgData) {
+void FieldSystem_InitGetMysteryGiftGmmState(struct GetMysteryGiftGmmState* state, FieldSystem* fieldSys, MessageFormat* msgFormat, MysteryGiftData* mgData) {
     state->fieldSys = fieldSys;
-    state->lastInteracted = lastInteracted;
+    state->msgFormat = msgFormat;
     state->mgData = mgData;
 }
 
@@ -171,4 +175,18 @@ BOOL ScrCmd_MysteryGift(ScriptContext* ctx) {
     }
     }
     return FALSE;
+}
+
+BOOL MGCheck_PartySpace(FieldSystem* fieldSystem, MysteryGiftData* mgData) {
+    return Party_GetCount(SaveArray_Party_Get(fieldSystem->saveData)) < PARTY_SIZE;
+}
+
+void MGGive_ManaphyEgg(FieldSystem* fieldSystem, MysteryGiftData* mgData) {
+    GiveEgg(HEAP_ID_32, fieldSystem->saveData, SPECIES_MANAPHY, MAPSEC_TWINLEAF_TOWN, MAPSECTYPE_EXTERNAL, MAPLOC(METLOC_POKEMON_RANGER));
+}
+
+void MGMessageSuccess_ManaphyEgg(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    *pMsgBank = NARC_msg_msg_0209_bin;
+    *pMsgNum = msg_0209_00013;
+    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
 }
