@@ -166,10 +166,19 @@ void SaveMysteryGift_SetFlagx7FF(MysteryGiftSave* mg);
 // commands.
 
 // Loads the internal MysteryGiftSave pointer.
-void GetStaticPointerToSaveMysteryGift(SaveData* saveData);
+// An alternate implementation cloned the save data,
+// effectively beginning a transaction.
+// To use this implementation, define
+// MYSTERY_GIFT_SAVE_TRANSACTION_IMPL.
+void GetStaticPointerToSaveMysteryGift(SaveData* saveData, HeapID heapId);
 
 // Unloads the internal MysteryGiftSave pointer.
-void DeleteStaticPointerToMysteryGift(void);
+// In the alternate implementation that clones the save
+// data, a boolean parameter dictates whether to
+// commit or rollback the transaction.
+// To use this implementation, define
+// MYSTERY_GIFT_SAVE_TRANSACTION_IMPL.
+void DeleteStaticPointerToMysteryGift(SaveData* saveData, BOOL commit);
 
 // Gets the index of the first occupied
 // Mystery Gift slot.

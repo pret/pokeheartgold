@@ -245,15 +245,30 @@ void SaveMysteryGift_SetFlagx7FF(MysteryGiftSave* mg) {
 
 static MysteryGiftSave* sMysteryGiftData;
 
-void GetStaticPointerToSaveMysteryGift(SaveData* saveData) {
+void GetStaticPointerToSaveMysteryGift(SaveData* saveData, HeapID heapId) {
     if (sMysteryGiftData == NULL) {
+        #ifdef MYSTERY_GIFT_SAVE_TRANSACTION_IMPL
+        u32 size = Save_MysteryGift_sizeof();
+        sMysteryGiftData = AllocFromHeap(heapId, size);
+        GF_ASSERT(sMysteryGiftData != NULL);
+        MI_CpuCopy32(Save_MysteryGift_Get(saveData), sMysteryGiftData, size);
+        #else
         sMysteryGiftData = Save_MysteryGift_Get(saveData);
+        #endif
     }
     SaveSubstruct_UpdateCRC(SAVE_MYSTERY_GIFT);
 }
 
-void DeleteStaticPointerToMysteryGift(void) {
+void DeleteStaticPointerToMysteryGift(SaveData* saveData, BOOL commit) {
     if (sMysteryGiftData != NULL) {
+        #ifdef MYSTERY_GIFT_SAVE_TRANSACTION_IMPL
+        if (commit) {
+            u32 size = Save_MysteryGift_sizeof();
+            MI_CpuCopy32(sMysteryGiftData, Save_MysteryGift_Get(saveData), size);
+            SaveSubstruct_UpdateCRC(SAVE_MYSTERY_GIFT);
+        }
+        FreeToHeap(sMysteryGiftData);
+        #endif
         sMysteryGiftData = NULL;
     }
 }
