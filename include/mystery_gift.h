@@ -22,9 +22,10 @@
 #define MG_TAG_memorial_photo     15
 #define MG_TAG_max                16
 
-#define NUM_SAVED_MYSTERY_GIFTS    8
-#define NUM_SAVED_WONDER_CARDS     3
-#define RECEIVED_WONDER_CARD_IDX   4
+#define NUM_SAVED_MYSTERY_GIFTS         8
+#define NUM_SAVED_WONDER_CARDS          3
+#define RECEIVED_WONDER_CARD_IDX        4
+#define NUM_MYSTERY_GIFT_RECV_FLAGS  2048
 
 typedef struct MG_POKEMON_TAG {
     BOOL fixedOT;
@@ -47,7 +48,7 @@ typedef union {
     u8 pokewalkerCourse;
     PHOTO photo;
     u8 raw[256];
-} MysteryGiftTag;
+} MysteryGiftData;
 
 typedef struct {
     u16 name[36];
@@ -66,13 +67,13 @@ typedef struct {
     u16 tag;
     u16 flag : 2;
     u16 dummy : 14;
-    MysteryGiftTag data;
+    MysteryGiftData data;
 } MysteryGift;
 
 typedef struct {
     u16 tag;
     u16 flag;
-    MysteryGiftTag data;
+    MysteryGiftData data;
     UnkWonderCardSubstruct_104 unk104;
     u16 text[250];
     u8 shareMax;
@@ -82,36 +83,108 @@ typedef struct {
 } WonderCard; // size: 0x358
 
 typedef struct {
-    u8 filler_000[0x100]; // 0000
+    u8 receivedFlags[NUM_MYSTERY_GIFT_RECV_FLAGS / 8]; // 0000
     MysteryGift gifts[NUM_SAVED_MYSTERY_GIFTS]; // 0100
     WonderCard cards[NUM_SAVED_WONDER_CARDS];  // 920
     WonderCard specialWonderCard; // 1328
-} MYSTERY_GIFT_SAVE; // size = 0x1680
+} MysteryGiftSave; // size = 0x1680
 
+// Save block API
 u32 Save_MysteryGift_sizeof(void);
-void Save_MysteryGift_Init(MYSTERY_GIFT_SAVE *mg);
-WonderCard* SaveMysteryGift_CardGetByIdx(MYSTERY_GIFT_SAVE* mg, int index);
-BOOL SaveMysteryGift_FindAvailable(MYSTERY_GIFT_SAVE* mg);
-BOOL SaveMysteryGift_TryInsertGift(MYSTERY_GIFT_SAVE* mg, const MysteryGift* src, int flag);
-BOOL SaveMysteryGift_TryInsertCard(MYSTERY_GIFT_SAVE* mg, const WonderCard* src);
-BOOL SaveMysteryGift_TrySetSpecialCard(MYSTERY_GIFT_SAVE* mg, const WonderCard* src);
-BOOL SaveMysteryGift_ReceiveGiftAndClearCardByIndex(MYSTERY_GIFT_SAVE* mg, int index);
-BOOL SaveMysteryGift_DeleteWonderCardByIndex(MYSTERY_GIFT_SAVE* mg, int index);
-BOOL SaveMysteryGift_CardFindAvailable(MYSTERY_GIFT_SAVE* mg);
-BOOL SaveMysteryGift_CardTagIsValid(MYSTERY_GIFT_SAVE* mg, int index);
-BOOL SaveMysteryGift_SpecialCardTagIsValid(MYSTERY_GIFT_SAVE* mg);
-BOOL SaveMysteryGift_HasAnyCard(MYSTERY_GIFT_SAVE* mg);
-BOOL SaveMysteryGift_HasAnyGift(MYSTERY_GIFT_SAVE* mg, int a1);
-BOOL SaveMysteryGift_ReceivedFlagTest(MYSTERY_GIFT_SAVE* mg, int a1);
-void SaveMysteryGift_ReceivedFlagSet(MYSTERY_GIFT_SAVE* mg, int a1);
-BOOL SaveMysteryGift_TestFlagx7FF(MYSTERY_GIFT_SAVE* mg);
-void SaveMysteryGift_SetFlagx7FF(MYSTERY_GIFT_SAVE* mg);
+void Save_MysteryGift_Init(MysteryGiftSave *mg);
+
+// Returns a pointer to the requested Wonder Card.
+// If the index is 0, 1, or 2, will return a
+// pointer to the corresponding Wonder Card slot,
+// or NULL if that card slot is unoccupied or
+// corrupted. Otherwise, if the index is 4,
+// will return a non-nullable pointer to a
+// special Wonder Card slot that's exclusive
+// to HGSS. Otherwise, returns NULL.
+WonderCard* SaveMysteryGift_CardGetByIdx(MysteryGiftSave* mg, int index);
+
+// Returns TRUE if there is an open slot
+// to receive a gift. The capacity is 8.
+BOOL SaveMysteryGift_FindAvailable(const MysteryGiftSave* mg);
+
+// Attempts to insert a Mystery Gift into an
+// open slot. Returns TRUE on success.
+BOOL SaveMysteryGift_TryInsertGift(MysteryGiftSave* mg, const MysteryGift* src, int cardIdx);
+
+// Attempts to insert a Wonder Card into an
+// open slot. Returns TRUE on success.
+BOOL SaveMysteryGift_TryInsertCard(MysteryGiftSave* mg, const WonderCard* src);
+
+// Attempts to set the special Wonder Card slot
+// with the given data. Returns TRUE on success.
+BOOL SaveMysteryGift_TrySetSpecialCard(MysteryGiftSave* mg, const WonderCard* src);
+
+// Deletes the Wonder Card at the given slot,
+// clears the corresponding event flag, and
+// removes the corresponding gift. Returns TRUE.
+BOOL SaveMysteryGift_ReceiveGiftAndClearCardByIndex(MysteryGiftSave* mg, int index);
+
+// Deletes the Wonder Card at the given slot.
+// Returns TRUE.
+BOOL SaveMysteryGift_DeleteWonderCardByIndex(MysteryGiftSave* mg, int index);
+
+// Returns TRUE if there is an open slot to add a
+// new Wonder Card
+BOOL SaveMysteryGift_CardFindAvailable(const MysteryGiftSave* mg);
+
+// Returns TRUE if the given Wonder Card slot is
+// occupied.
+BOOL SaveMysteryGift_CardTagIsValid(const MysteryGiftSave* mg, int index);
+
+// Returns TRUE if the special Wonder Card slot
+// is occupied.
+BOOL SaveMysteryGift_SpecialCardTagIsValid(const MysteryGiftSave* mg);
+
+// Returns TRUE if any Wonder Card slot is
+// occupied, excluding the special slot.
+BOOL SaveMysteryGift_HasAnyCard(const MysteryGiftSave* mg);
+
+// Returns TRUE if any Mystery Gift slot is
+// occupied.
+BOOL SaveMysteryGift_HasAnyGift(const MysteryGiftSave* mg, int index);
+
+// Checks the event flag by index. Returns
+// TRUE if set.
+BOOL SaveMysteryGift_ReceivedFlagTest(const MysteryGiftSave* mg, int index);
+
+// Sets the event flag by index.
+void SaveMysteryGift_ReceivedFlagSet(MysteryGiftSave* mg, int index);
+
+// Checks whether flag 0x7FF (2047) is set.
+// Returns TRUE if so.
+BOOL SaveMysteryGift_TestFlagx7FF(const MysteryGiftSave* mg);
+
+// Sets flag 0x7FF (2047).
+void SaveMysteryGift_SetFlagx7FF(MysteryGiftSave* mg);
+
+// The following functions are used by script
+// commands.
+
+// Loads the internal MysteryGiftSave pointer.
 void GetStaticPointerToSaveMysteryGift(SaveData* saveData);
+
+// Unloads the internal MysteryGiftSave pointer.
 void DeleteStaticPointerToMysteryGift(void);
+
+// Gets the index of the first occupied
+// Mystery Gift slot.
 int GetFirstQueuedMysteryGiftIdx(void);
+
+// Returns the Mystery Gift type at the
+// given slot index.
 u16 GetMysteryGiftTagByIdx(int index);
-MysteryGiftTag* GetMysteryGiftDataByIdx(int index);
-MysteryGiftTag* GetMysteryGiftDataByIdx(int index);
+
+// Retrieves a pointer to the Mystery Gift data
+// at the given slot index.
+MysteryGiftData* GetMysteryGiftDataByIdx(int index);
+
+// Flag the Mystery Gift at the given slot index
+// as received.
 void SetMysteryGiftReceivedByIdx(int index);
 
 #endif //POKEHEARTGOLD_MYSTERY_GIFT_H
