@@ -923,10 +923,10 @@ Overlay OVY_77
 {
     After main
 }
-Overlay OVY_78
+Overlay certificates_app
 {
     After main
-    Object asm/overlay_78.o
+    Object src/certificates_app.o
 }
 Overlay OVY_79
 {

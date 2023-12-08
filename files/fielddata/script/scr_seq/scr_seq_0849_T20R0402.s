@@ -44,7 +44,7 @@ _005C:
 _006D:
 	get_party_lead_alive VAR_SPECIAL_x8006
 	get_shiny_leaf_count VAR_SPECIAL_x8006, VAR_SPECIAL_RESULT
-	goto_if_set FLAG_UNK_161, _00B1
+	goto_if_set FLAG_SHOWED_FRIEND_A_SHINY_LEAF, _00B1
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ge _009E
 _008F:
@@ -56,7 +56,7 @@ _008F:
 	end
 
 _009E:
-	setflag FLAG_UNK_161
+	setflag FLAG_SHOWED_FRIEND_A_SHINY_LEAF
 	buffer_players_name 0
 	gender_msgbox msg_0549_T20R0402_00007, msg_0549_T20R0402_00008
 	wait_button_or_walk_away
@@ -91,7 +91,7 @@ _00FC:
 _010D:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_425 2
+	show_certificate 2
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
