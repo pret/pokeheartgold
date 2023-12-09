@@ -3261,7 +3261,7 @@ BOOL ScrCmd_381(ScriptContext *ctx) {
 BOOL ScrCmd_403(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
     u16 r6 = ScriptGetVar(ctx);
-    sub_0202BB08(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->saveData)), r4, r6);
+    GiveFashionItem(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->saveData)), r4, r6);
     return FALSE;
 }
 
@@ -3283,7 +3283,7 @@ BOOL ScrCmd_405(ScriptContext *ctx) {
 
 BOOL ScrCmd_406(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
-    sub_0202BBD8(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->saveData)), r4);
+    GiveContestBackground(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->saveData)), r4);
     return FALSE;
 }
 

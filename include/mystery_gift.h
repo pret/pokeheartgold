@@ -42,7 +42,7 @@ typedef union {
     MG_POKEMON_TAG pokemon;
     Pokemon egg;
     u32 item;
-    u16 ruleset[24];
+    u16 ruleset[16];
     int base_decoration;
     MG_MON_DECO_TAG mon_decoration;
     u8 pokewalkerCourse;

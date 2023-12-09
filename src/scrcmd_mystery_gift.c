@@ -1,4 +1,5 @@
 #include "global.h"
+#include "bag.h"
 #include "mystery_gift.h"
 #include "scrcmd.h"
 #include "math_util.h"
@@ -7,6 +8,9 @@
 #include "ribbon.h"
 #include "pokedex.h"
 #include "sys_vars.h"
+#include "fashion_case.h"
+#include "unk_020290B4.h"
+#include "pokewalker.h"
 #include "trainer_memo.h"
 #include "constants/map_sections.h"
 #include "msgdata/msg.naix"
@@ -107,14 +111,17 @@ void FieldSystem_InitGetMysteryGiftGmmState(struct GetMysteryGiftGmmState* state
 }
 
 int FieldSystem_GetTagOfNextMG(FieldSystem* fieldSys) {
+    (void)fieldSys;
     return GetMysteryGiftTagByIdx(GetFirstQueuedMysteryGiftIdx());
 }
 
 MysteryGiftData* FieldSystem_GetDataOfNextMG(FieldSystem* fieldSys) {
+    (void)fieldSys;
     return GetMysteryGiftDataByIdx(GetFirstQueuedMysteryGiftIdx());
 }
 
 void FieldSystem_SetQueuedMGReceived(FieldSystem* fieldSys) {
+    (void)fieldSys;
     SetMysteryGiftReceivedByIdx(GetFirstQueuedMysteryGiftIdx());
 }
 
@@ -310,4 +317,373 @@ void MGGive_Mon(FieldSystem* fieldSys, MysteryGiftData* unused) {
     if (tmpPokemon != NULL) {
         FreeToHeap(tmpPokemon);
     }
+}
+
+void MGMessageSuccess_GiveMon(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    MG_POKEMON_TAG* mgData = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->pokemon;
+    *pMsgBank = NARC_msg_msg_0209_bin;
+    *pMsgNum = msg_0209_00007;
+    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
+    BufferBoxMonSpeciesNameWithArticle(gmmState->msgFormat, 1, Mon_GetBoxMon(&mgData->mon));
+}
+
+void MGMessageFailure_GiveMon(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    (void)gmmState;
+    *pMsgBank = NARC_msg_msg_0209_bin;
+    *pMsgNum = msg_0209_00004;
+}
+
+void MGGive_Egg(FieldSystem* fieldSys, MysteryGiftData* mgData) {
+    MGGive_Mon(fieldSys, mgData);
+}
+
+void MGMessageSuccess_Egg(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    MG_POKEMON_TAG* mgData = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->pokemon;
+    *pMsgBank = NARC_msg_msg_0209_bin;
+    *pMsgNum = msg_0209_00008;
+    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
+    BufferBoxMonSpeciesName(gmmState->msgFormat, 1, Mon_GetBoxMon(&mgData->mon));
+}
+
+BOOL MGCheck_Item(FieldSystem* fieldSys, MysteryGiftData* unused) {
+    (void)unused;
+    Bag* bag = Save_Bag_Get(fieldSys->saveData);
+    u32* pItem = &FieldSystem_GetDataOfNextMG(fieldSys)->item;
+    return Bag_HasSpaceForItem(bag, *pItem, 1, HEAP_ID_32);
+}
+
+void MGGive_Item(FieldSystem* fieldSys, MysteryGiftData* unused) {
+    (void)unused;
+    Bag* bag = Save_Bag_Get(fieldSys->saveData);
+    u16 item = FieldSystem_GetDataOfNextMG(fieldSys)->item;
+    if (item == ITEM_ENIGMA_STONE) {
+        sub_02066B9C(Save_VarsFlags_Get(fieldSys->saveData), 0);
+    }
+    Bag_AddItem(bag, item, 1, HEAP_ID_32);
+}
+
+void MGMessageSuccess_Item(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    u16 item = FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->item;
+    *pMsgBank = NARC_msg_msg_0209_bin;
+    *pMsgNum = msg_0209_00009;
+    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
+    BufferItemName(gmmState->msgFormat, 1, item);
+}
+
+void MGMessageFailure_Item(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    Bag* bag = Save_Bag_Get(gmmState->fieldSys->saveData);
+    u16 item = FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->item;
+    *pMsgBank = NARC_msg_msg_0209_bin;
+    *pMsgNum = msg_0209_00005;
+    BufferItemName(gmmState->msgFormat, 0, item);
+}
+
+BOOL MGCheck_BattleRules(FieldSystem* fieldSys, MysteryGiftData* mgData) {
+    (void)fieldSys;
+    (void)mgData;
+    return TRUE;
+}
+
+void MGGive_BattleRules(FieldSystem* fieldSys, MysteryGiftData* mgData) {
+    (void)mgData;
+    sub_020291D4(fieldSys->saveData, FieldSystem_GetDataOfNextMG(fieldSys)->ruleset);
+}
+
+void MGMessageSuccess_BattleRules(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    u16* mgData = FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->ruleset;
+    *pMsgBank = NARC_msg_msg_0209_bin;
+    *pMsgNum = msg_0209_00010;
+    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
+    String* rulesetName = sub_020290E4(mgData, HEAP_ID_32);
+    BufferString(gmmState->msgFormat, 1, rulesetName, 0, 1, 2);
+    String_Delete(rulesetName);
+}
+
+// Unreachable
+void MGMessageFailure_BattleRules(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    (void)gmmState;
+    *pMsgBank = NARC_msg_msg_0209_bin;
+    *pMsgNum = msg_0209_00006;
+}
+
+BOOL MGCheck_Decoration(FieldSystem* fieldSys, MysteryGiftData* mgData) {
+    (void)fieldSys;
+    (void)mgData;
+    return FALSE;
+}
+
+void MGGive_Decoration(FieldSystem* fieldSys, MysteryGiftData* mgData) {
+    (void)fieldSys;
+    (void)mgData;
+}
+
+// Unreachable
+void MGMessageSuccess_Decoration(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    int decoration = FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->base_decoration;
+    *pMsgBank = NARC_msg_msg_0209_bin;
+    *pMsgNum = msg_0209_00011;
+    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
+    BufferDecorationName(gmmState->msgFormat, 1, decoration);
+}
+
+void MGMessageFailure_Decoration(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    *pMsgBank = NARC_msg_msg_0209_bin;
+    *pMsgNum = msg_0209_00031;
+}
+
+BOOL MGCheck_MonDeco(FieldSystem* fieldSys, MysteryGiftData* unused) {
+    (void)unused;
+    MG_MON_DECO_TAG* mgData = &FieldSystem_GetDataOfNextMG(fieldSys)->mon_decoration;
+    int id = mgData->id;
+    switch (mgData->kind) {
+    case 1:
+        return SealCase_CheckSealQuantity(Save_SealCase_Get(fieldSys->saveData), id, 1);
+    case 2:
+        return TRUE;
+    case 3:
+        return TRUE;
+    default:
+        return FALSE;
+    }
+}
+
+void MGGive_MonDeco(FieldSystem* fieldSys, MysteryGiftData* unused) {
+    (void)unused;
+    MG_MON_DECO_TAG* mgData = &FieldSystem_GetDataOfNextMG(fieldSys)->mon_decoration;
+    int id = mgData->id;
+    switch (mgData->kind) {
+    case 1:
+        GiveOrTakeSeal(Save_SealCase_Get(fieldSys->saveData), id, 1);
+        break;
+    case 2:
+        GiveFashionItem(Save_FashionData_GetFashionCase(Save_FashionData_Get(fieldSys->saveData)), id, 1);
+        break;
+    case 3:
+        GiveContestBackground(Save_FashionData_GetFashionCase(Save_FashionData_Get(fieldSys->saveData)), id);
+        break;
+    default:
+        break;
+    }
+}
+
+void MGMessageSuccess_MonDeco(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    MG_MON_DECO_TAG* mgData = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->mon_decoration;
+    int id = mgData->id;
+    switch (mgData->kind) {
+    case 1:
+        BufferSealName(gmmState->msgFormat, 1, id);
+        break;
+    case 2:
+        BufferFashionName(gmmState->msgFormat, 1, id);
+        break;
+    case 3:
+        BufferContestBackgroundName(gmmState->msgFormat, 1, id);
+        break;
+    default:
+        break;
+    }
+    *pMsgBank = NARC_msg_msg_0209_bin;
+    *pMsgNum = msg_0209_00012;
+    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
+}
+
+
+void MGMessageFailure_MonDeco(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    *pMsgBank = NARC_msg_msg_0209_bin;
+    *pMsgNum = msg_0209_00006;
+}
+
+BOOL MGCheck_MemberCard(FieldSystem* fieldSys, MysteryGiftData* mgData) {
+    (void)fieldSys;
+    (void)mgData;
+    return FALSE;
+}
+
+void MGGive_MemberCard(FieldSystem* fieldSys, MysteryGiftData* mgData) {
+    (void)fieldSys;
+    (void)mgData;
+}
+
+// Unreachable
+void MGMessageSuccess_MemberCard(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    (void)gmmState;
+    (void)pMsgBank;
+    (void)pMsgNum;
+}
+
+void MGMessageFailure_MemberCard(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    (void)gmmState;
+    *pMsgBank = NARC_msg_msg_0209_bin;
+    *pMsgNum = msg_0209_00031;
+}
+
+BOOL MGCheck_OaksLetter(FieldSystem* fieldSys, MysteryGiftData* mgData) {
+    (void)fieldSys;
+    (void)mgData;
+    return FALSE;
+}
+
+void MGGive_OaksLetter(FieldSystem* fieldSys, MysteryGiftData* mgData) {
+    (void)fieldSys;
+    (void)mgData;
+}
+
+// Unreachable
+void MGMessageSuccess_OaksLetter(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    (void)gmmState;
+    (void)pMsgBank;
+    (void)pMsgNum;
+}
+
+void MGMessageFailure_OaksLetter(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    (void)gmmState;
+    *pMsgBank = NARC_msg_msg_0209_bin;
+    *pMsgNum = msg_0209_00031;
+}
+
+BOOL MGCheck_SecretKey(FieldSystem* fieldSys, MysteryGiftData* mgData) {
+    (void)fieldSys;
+    (void)mgData;
+    return FALSE;
+}
+
+void MGGive_SecretKey(FieldSystem* fieldSys, MysteryGiftData* mgData) {
+    (void)fieldSys;
+    (void)mgData;
+}
+
+// Unreachable
+void MGMessageSuccess_SecretKey(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    (void)gmmState;
+    (void)pMsgBank;
+    (void)pMsgNum;
+}
+
+void MGMessageFailure_SecretKey(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    (void)gmmState;
+    *pMsgBank = NARC_msg_msg_0209_bin;
+    *pMsgNum = msg_0209_00031;
+}
+
+BOOL MGCheck_AzureFlute(FieldSystem* fieldSys, MysteryGiftData* mgData) {
+    (void)fieldSys;
+    (void)mgData;
+    return FALSE;
+}
+
+void MGGive_AzureFlute(FieldSystem* fieldSys, MysteryGiftData* mgData) {
+    (void)fieldSys;
+    (void)mgData;
+}
+
+// Unreachable
+void MGMessageSuccess_AzureFlute(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    (void)gmmState;
+    (void)pMsgBank;
+    (void)pMsgNum;
+}
+
+void MGMessageFailure_AzureFlute(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    (void)gmmState;
+    *pMsgBank = NARC_msg_msg_0209_bin;
+    *pMsgNum = msg_0209_00031;
+}
+
+BOOL MGCheck_PoketchApp(FieldSystem* fieldSys, MysteryGiftData* mgData) {
+    (void)fieldSys;
+    (void)mgData;
+    return FALSE;
+}
+
+void MGGive_PoketchApp(FieldSystem* fieldSys, MysteryGiftData* mgData) {
+    (void)fieldSys;
+    (void)mgData;
+}
+
+// Unreachable
+void MGMessageSuccess_PoketchApp(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    (void)gmmState;
+    (void)pMsgBank;
+    (void)pMsgNum;
+}
+
+void MGMessageFailure_PoketchApp(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    (void)gmmState;
+    *pMsgBank = NARC_msg_msg_0209_bin;
+    *pMsgNum = msg_0209_00031;
+}
+
+BOOL MGCheck_PokewalkerCourse(FieldSystem* fieldSys, MysteryGiftData* unused) {
+    (void)unused;
+    u8* mgData = &FieldSystem_GetDataOfNextMG(fieldSys)->pokewalkerCourse;
+    POKEWALKER* pokeWalker = Save_Pokewalker_Get(fieldSys->saveData);
+    u8 courseNo = WALKER_COURSE_REFRESHING_FIELD;
+    if (*mgData < WALKER_COURSE_MAX) {
+        courseNo = *mgData;
+    }
+    return !Pokewalker_CourseIsUnlocked(pokeWalker, courseNo);
+}
+
+void MGGive_PokewalkerCourse(FieldSystem* fieldSys, MysteryGiftData* unused) {
+    (void)unused;
+    POKEWALKER* pokeWalker = Save_Pokewalker_Get(fieldSys->saveData);
+    u8 courseNo = FieldSystem_GetDataOfNextMG(fieldSys)->pokewalkerCourse;
+    if (courseNo < WALKER_COURSE_MAX) {
+        Pokewalker_UnlockCourse(pokeWalker, courseNo);
+    }
+}
+
+void MGMesageSuccess_PokewalkerCourse(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    u8* mgData = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->pokewalkerCourse;
+    *pMsgBank = NARC_msg_msg_0209_bin;
+    *pMsgNum = msg_0209_00019;
+    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
+    BufferPokewalkerCourseName(gmmState->msgFormat, 1, *mgData);
+}
+
+void MGMesageFailure_PokewalkerCourse(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    u8* mgData = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->pokewalkerCourse;
+    POKEWALKER* pokeWalker = Save_Pokewalker_Get(gmmState->fieldSys->saveData);
+    *pMsgBank = NARC_msg_msg_0209_bin;
+    *pMsgNum = msg_0209_00026;
+    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
+    BufferPokewalkerCourseName(gmmState->msgFormat, 1, *mgData);
+}
+
+BOOL MGCheck_MemorialPhoto(FieldSystem* fieldSys, MysteryGiftData* mgData) {
+    (void)mgData;
+    Bag* bag = Save_Bag_Get(fieldSys->saveData);
+    PHOTO_ALBUM* album = Save_PhotoAlbum_Get(fieldSys->saveData);
+    return PhotoAlbum_GetNumSaved(album) < PHOTO_ALBUM_MAX;
+}
+
+void MGGive_MemorialPhoto(FieldSystem* fieldSys, MysteryGiftData* unused) {
+    (void)unused;
+    PHOTO* mgData = &FieldSystem_GetDataOfNextMG(fieldSys)->photo;
+    PHOTO_ALBUM* album = Save_PhotoAlbum_Get(FieldSystem_GetSaveData(fieldSys));
+    u8 slot = PhotoAlbum_GetIndexOfFirstEmptySlot(album);
+    if (slot == 0xFF) {
+        GF_ASSERT(FALSE);
+    } else {
+        PhotoAlbum_SetPhotoAtIndex(album, mgData, slot);
+    }
+}
+
+void MGMessageSuccess_MemorialPhoto(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    PHOTO* photo = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->photo;
+    *pMsgBank = NARC_msg_msg_0209_bin;
+    *pMsgNum = msg_0209_00018;
+    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
+}
+
+void MGMessageFailure_MemorialPhoto(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+    PHOTO* photo = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->photo;
+    Bag* bag = Save_Bag_Get(gmmState->fieldSys->saveData);
+    *pMsgBank = NARC_msg_msg_0209_bin;
+    if (!Bag_HasItem(bag, ITEM_PHOTO_ALBUM, 1, HEAP_ID_FIELD)) {
+        *pMsgNum = msg_0209_00024;
+    } else {
+        *pMsgNum = msg_0209_00025;
+    }
+    BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
 }
