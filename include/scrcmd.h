@@ -459,7 +459,7 @@ BOOL ScrCmd_421(ScriptContext* ctx);
 BOOL ScrCmd_422(ScriptContext* ctx);
 BOOL ScrCmd_CheckJohtoDexComplete(ScriptContext* ctx);
 BOOL ScrCmd_CheckNationalDexComplete(ScriptContext* ctx);
-BOOL ScrCmd_425(ScriptContext* ctx);
+BOOL ScrCmd_ShowCertificate(ScriptContext* ctx);
 BOOL ScrCmd_KenyaCheck(ScriptContext* ctx);
 BOOL ScrCmd_427(ScriptContext* ctx);
 BOOL ScrCmd_MonGiveMail(ScriptContext* ctx);

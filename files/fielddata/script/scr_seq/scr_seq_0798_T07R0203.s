@@ -128,16 +128,16 @@ scr_seq_T07R0203_000:
 	check_johto_dex_complete VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0245
-	goto_if_set FLAG_UNK_143, _01ED
+	goto_if_set FLAG_SAW_JOHTO_DEX_CERTIFICATE, _01ED
 	npc_msg msg_0503_T07R0203_00001
 	play_fanfare SEQ_ME_HYOUKA2
 	wait_fanfare
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_425 0
+	show_certificate 0
 	scrcmd_150
-	setflag FLAG_UNK_143
+	setflag FLAG_SAW_JOHTO_DEX_CERTIFICATE
 	add_special_game_stat 25
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
@@ -145,16 +145,16 @@ _01ED:
 	check_national_dex_complete VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0245
-	goto_if_set FLAG_UNK_144, _023A
+	goto_if_set FLAG_SAW_NATIONAL_DEX_CERTIFICATE, _023A
 	npc_msg msg_0503_T07R0203_00002
 	play_fanfare SEQ_ME_HYOUKA2
 	wait_fanfare
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_425 1
+	show_certificate 1
 	scrcmd_150
-	setflag FLAG_UNK_144
+	setflag FLAG_SAW_NATIONAL_DEX_CERTIFICATE
 	add_special_game_stat 26
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade

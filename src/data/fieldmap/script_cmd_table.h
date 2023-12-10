@@ -424,7 +424,7 @@ BOOL ScrCmd_421(ScriptContext *ctx);
 BOOL ScrCmd_422(ScriptContext *ctx);
 BOOL ScrCmd_CheckJohtoDexComplete(ScriptContext *ctx);
 BOOL ScrCmd_CheckNationalDexComplete(ScriptContext *ctx);
-BOOL ScrCmd_425(ScriptContext *ctx);
+BOOL ScrCmd_ShowCertificate(ScriptContext *ctx);
 BOOL ScrCmd_KenyaCheck(ScriptContext *ctx);
 BOOL ScrCmd_427(ScriptContext *ctx);
 BOOL ScrCmd_MonGiveMail(ScriptContext *ctx);
@@ -1279,7 +1279,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_422,
     ScrCmd_CheckJohtoDexComplete,
     ScrCmd_CheckNationalDexComplete,
-    ScrCmd_425,
+    ScrCmd_ShowCertificate,
     ScrCmd_KenyaCheck,
     ScrCmd_427,
     ScrCmd_MonGiveMail,

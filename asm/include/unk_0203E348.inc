@@ -128,7 +128,7 @@
 .public sub_0203F9C4
 .public HatchEggInParty
 .public LaunchVoltorbFlipApp
-.public sub_0203FA8C
+.public LaunchCertificatesApp
 .public sub_0203FAB4
 .public sub_0203FAE8
 .public ScratchOffCards_Create
@@ -295,9 +295,9 @@
 .public CreditsApp_OvyInit
 .public CreditsApp_OvyExit
 .public CreditsApp_OvyExec
-.public ov78_021E5900
-.public ov78_021E59EC
-.public ov78_021E5B24
+.public CertificatesApp_Init
+.public CertificatesApp_Run
+.public CertificatesApp_Exit
 .public ov86_021E5900
 .public ov86_021E5A40
 .public ov86_021E5AA4
