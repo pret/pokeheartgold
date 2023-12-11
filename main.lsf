@@ -57,7 +57,7 @@ Static main
 	Object asm/unk_02016EDC.o
 	Object asm/unk_02017FAC.o
 	Object asm/unk_02018000.o
-	Object asm/unk_02018380.o
+	Object src/unk_02018380.o
 	Object asm/unk_020183F0.o
 	Object src/camera_translation.o
 	Object asm/unk_020192D0.o
@@ -923,10 +923,10 @@ Overlay OVY_77
 {
     After main
 }
-Overlay OVY_78
+Overlay certificates_app
 {
     After main
-    Object asm/overlay_78.o
+    Object src/certificates_app.o
 }
 Overlay OVY_79
 {

@@ -3314,10 +3314,10 @@ BOOL ScrCmd_CheckNationalDexComplete(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_425(ScriptContext *ctx) { //todo: pokedex screen
-    void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //PokedexAppData
-    u16 r2 = ScriptGetVar(ctx);
-    *p_work = sub_0203FA8C(ctx->fieldSystem, HEAP_ID_32, r2);
+BOOL ScrCmd_ShowCertificate(ScriptContext *ctx) {
+    CertificatesApp_Args **args = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    u16 certificateId = ScriptGetVar(ctx);
+    *args = LaunchCertificatesApp(ctx->fieldSystem, HEAP_ID_32, certificateId);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }

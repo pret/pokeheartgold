@@ -340,8 +340,8 @@
 #define FLAG_UNK_140                                               0x140
 #define FLAG_WON_THIS_BUG_CONTEST                                  0x141
 #define FLAG_UNK_142                                               0x142
-#define FLAG_UNK_143                                               0x143
-#define FLAG_UNK_144                                               0x144
+#define FLAG_SAW_JOHTO_DEX_CERTIFICATE                             0x143
+#define FLAG_SAW_NATIONAL_DEX_CERTIFICATE                          0x144
 #define FLAG_UNK_145                                               0x145
 #define FLAG_UNK_146                                               0x146
 #define FLAG_UNK_147                                               0x147
@@ -370,7 +370,7 @@
 #define FLAG_MET_MOVE_MANIAC                                       0x15E
 #define FLAG_BUG_CONTEST_OTHER_POKES_HELD                          0x15F
 #define FLAG_ELMS_LAB_PREVENT_PLAYER_ESCAPE                        0x160
-#define FLAG_UNK_161                                               0x161
+#define FLAG_SHOWED_FRIEND_A_SHINY_LEAF                            0x161
 #define FLAG_TRADE_LT_SURGE_PIKACHU                                0x162
 #define FLAG_GOT_RAGECANDYBAR                                      0x163
 #define FLAG_UNK_164                                               0x164
