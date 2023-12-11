@@ -173,7 +173,7 @@ Static main
 	Object src/unk_0204A3F4.o
 	Object src/unk_0204B538.o
 	Object src/scrcmd_apricorn.o
-	Object src/scrcmd_mystery_gift.o
+	Object src/field/scrcmd_mystery_gift.o
 	Object src/scrcmd_12.o
 	Object src/scrcmd_money.o
 	Object src/scrcmd_daycare.o
