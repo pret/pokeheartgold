@@ -79,8 +79,8 @@ void MGMessageSuccess_SecretKey(struct GetMysteryGiftGmmState* fsysUnk80, u16* p
 void MGMessageFailure_SecretKey(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
 BOOL MGCheck_PokewalkerCourse(FieldSystem* fieldSys, MysteryGiftData* mgData);
 void MGGive_PokewalkerCourse(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGMesageSuccess_PokewalkerCourse(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-void MGMesageFailure_PokewalkerCourse(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
+void MGMessageSuccess_PokewalkerCourse(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
+void MGMessageFailure_PokewalkerCourse(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
 BOOL MGCheck_MemorialPhoto(FieldSystem* fieldSys, MysteryGiftData* mgData);
 void MGGive_MemorialPhoto(FieldSystem* fieldSys, MysteryGiftData* mgData);
 void MGMessageSuccess_MemorialPhoto(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
@@ -100,7 +100,7 @@ static const struct ScriptMysteryGiftFuncs sScriptMysteryGiftActionTable[MG_TAG_
     { MGCheck_PoketchApp, MGGive_PoketchApp, MGMessageSuccess_PoketchApp, MGMessageFailure_PoketchApp },
     { MGCheck_SecretKey, MGGive_SecretKey, MGMessageSuccess_SecretKey, MGMessageFailure_SecretKey },
     { MGCheck_PartySpace, MGGive_Mon, MGMessageSuccess_GiveMon, MGMessageFailure_GiveMon },
-    { MGCheck_PokewalkerCourse, MGGive_PokewalkerCourse, MGMesageSuccess_PokewalkerCourse, MGMesageFailure_PokewalkerCourse },
+    { MGCheck_PokewalkerCourse, MGGive_PokewalkerCourse, MGMessageSuccess_PokewalkerCourse, MGMessageFailure_PokewalkerCourse },
     { MGCheck_MemorialPhoto, MGGive_MemorialPhoto, MGMessageSuccess_MemorialPhoto, MGMessageFailure_MemorialPhoto },
 };
 
@@ -136,8 +136,7 @@ BOOL ScrCmd_MysteryGift(ScriptContext* ctx) {
     case 8:
         DeleteStaticPointerToMysteryGift(ctx->fieldSystem->saveData, TRUE);
         break;
-    case 1:
-    {
+    case 1: {
         u16* ptr = ScriptGetVarPointer(ctx);
         if (FieldSystem_GetTagOfNextMG(ctx->fieldSystem) != MG_TAG_INVALID) {
             *ptr = TRUE;
@@ -146,14 +145,12 @@ BOOL ScrCmd_MysteryGift(ScriptContext* ctx) {
         }
         break;
     }
-    case 2:
-    {
+    case 2: {
         u16* ptr = ScriptGetVarPointer(ctx);
         *ptr = FieldSystem_GetTagOfNextMG(ctx->fieldSystem);
         break;
     }
-    case 3:
-    {
+    case 3: {
         u16* ptr = ScriptGetVarPointer(ctx);
         const struct ScriptMysteryGiftFuncs* pFunc = &sScriptMysteryGiftActionTable[FieldSystem_GetTagOfNextMG(ctx->fieldSystem) - 1];
         *ptr = pFunc->check(ctx->fieldSystem, FieldSystem_GetDataOfNextMG(ctx->fieldSystem));
@@ -164,8 +161,7 @@ BOOL ScrCmd_MysteryGift(ScriptContext* ctx) {
         pFunc->give(ctx->fieldSystem, FieldSystem_GetDataOfNextMG(ctx->fieldSystem));
         FieldSystem_SetQueuedMGReceived(ctx->fieldSystem);
         break;
-    case 5:
-    {
+    case 5: {
         struct GetMysteryGiftGmmState gmmState;
         const struct ScriptMysteryGiftFuncs* pFunc = &sScriptMysteryGiftActionTable[FieldSystem_GetTagOfNextMG(ctx->fieldSystem) - 1];
         MessageFormat** pMsgFormat = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
@@ -175,8 +171,7 @@ BOOL ScrCmd_MysteryGift(ScriptContext* ctx) {
         pFunc->messageSuccess(&gmmState, pMsgBank, pMsgNum);
         break;
     }
-    case 6:
-    {
+    case 6: {
         struct GetMysteryGiftGmmState gmmState;
         const struct ScriptMysteryGiftFuncs* pFunc = &sScriptMysteryGiftActionTable[FieldSystem_GetTagOfNextMG(ctx->fieldSystem) - 1];
         MessageFormat** pMsgFormat = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
@@ -295,9 +290,9 @@ void MGGive_Mon(FieldSystem* fieldSys, MysteryGiftData* unused) {
         BOOL gender = PlayerProfile_GetTrainerGender(profile);
 
         tmpPokemon = AllocMonZeroed(HEAP_ID_32);
-        #ifdef UBFIX
+#ifdef UBFIX
         GF_ASSERT(pokemon != NULL);
-        #endif
+#endif
         CopyPokemonToPokemon(pokemon, tmpPokemon);
         SetMonData(tmpPokemon, MON_DATA_OT_NAME_2, playerName);
         SetMonData(tmpPokemon, MON_DATA_OTID, &trainerId);
@@ -633,7 +628,7 @@ void MGGive_PokewalkerCourse(FieldSystem* fieldSys, MysteryGiftData* unused) {
     }
 }
 
-void MGMesageSuccess_PokewalkerCourse(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+void MGMessageSuccess_PokewalkerCourse(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
     u8* mgData = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->pokewalkerCourse;
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00019;
@@ -641,7 +636,7 @@ void MGMesageSuccess_PokewalkerCourse(struct GetMysteryGiftGmmState* gmmState, u
     BufferPokewalkerCourseName(gmmState->msgFormat, 1, *mgData);
 }
 
-void MGMesageFailure_PokewalkerCourse(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+void MGMessageFailure_PokewalkerCourse(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
     u8* mgData = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->pokewalkerCourse;
     POKEWALKER* pokeWalker = Save_Pokewalker_Get(gmmState->fieldSys->saveData);
     *pMsgBank = NARC_msg_msg_0209_bin;
