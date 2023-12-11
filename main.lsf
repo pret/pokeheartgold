@@ -501,7 +501,6 @@ Overlay field
     Object asm/overlay_01_022001E4.o
     Object asm/overlay_01_022006A8.o
     Object asm/overlay_01_02200858.o
-    Object asm/scrcmd_pokemon_misc_data.o
     Object src/field/scrcmd_pokemon_misc.o
     Object src/scrcmd_move_tutor.o
     Object src/field/scrcmd_moneybox.o
