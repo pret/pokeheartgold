@@ -2805,7 +2805,7 @@ ov48_02259D00: ; 0x02259D00
 	str r1, [sp, #0xc]
 	add r0, #0x1c
 	mov r1, #2
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #2
 	bl FontID_Release
 	add r5, #0x1c
@@ -4237,7 +4237,7 @@ _0225A7A4:
 	str r0, [sp, #8]
 	str r3, [sp, #0xc]
 	add r0, r5, r4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r1, [r6, #4]
 	add r0, r7, #0
 	bl ov48_0225B0E0
@@ -4252,7 +4252,7 @@ _0225A7A4:
 	str r3, [sp, #0xc]
 	add r0, r5, r4
 	mov r1, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r1, [r6, #4]
 	ldr r2, [r6, #8]
 	add r0, r7, #0
@@ -4268,7 +4268,7 @@ _0225A7A4:
 	add r0, r5, r4
 	mov r1, #1
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

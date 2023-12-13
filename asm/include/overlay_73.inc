@@ -98,7 +98,7 @@
 .public TextPrinterCheckActive
 .public sub_020200A0
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GF_RunVramTransferTasks
 .public sub_020210BC
 .public sub_02021148

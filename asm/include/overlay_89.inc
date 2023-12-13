@@ -129,7 +129,7 @@
 .public GF_SinDegFX32
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public AddTextPrinterParameterized3
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager

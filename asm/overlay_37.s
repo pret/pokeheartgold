@@ -1401,7 +1401,7 @@ ov37_021E6418: ; 0x021E6418
 	add r0, r7, r0
 	mov r1, #1
 	add r3, r3, #2
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0
 	str r0, [sp, #0x14]
 	mov r0, #0x9e
@@ -3493,7 +3493,7 @@ _021E74F0:
 	ldr r2, [r4, #0x14]
 	add r0, r5, #0
 	mov r3, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	b _021E7540
 _021E7524:
 	mov r0, #0
@@ -3508,7 +3508,7 @@ _021E7524:
 	ldr r2, [r4, #0x14]
 	add r0, r5, #0
 	mov r3, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _021E7540:
 	add r0, r5, #0
 	bl CopyWindowToVram

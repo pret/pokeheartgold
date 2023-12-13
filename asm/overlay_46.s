@@ -1615,7 +1615,7 @@ ov46_022594E0: ; 0x022594E0
 	ldr r2, [r4, #0x18]
 	add r0, #8
 	mov r1, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop

@@ -1533,7 +1533,7 @@ static void PrintMessageOnWindow(VoltorbFlipAppWork *work, FontID fontId, u8 msg
     FillWindowPixelBuffer(window, 0);
 
     String *str = ReadMsgData_ExpandPlaceholders(work->msgFmt, work->msgData, msgNo, work->heapId);
-    AddTextPrinterParameterized2(window, fontId, str, x, y, 0xff, textSpeed, 0);
+    AddTextPrinterParameterizedWithColor(window, fontId, str, x, y, 0xff, textSpeed, 0);
 
     ScheduleWindowCopyToVram(window);
     String_Delete(str);

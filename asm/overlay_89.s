@@ -8193,7 +8193,7 @@ _0225C7D8:
 	add r2, r7, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, r5
 	bl CopyWindowToVram
 	ldr r0, [sp, #0x1c]

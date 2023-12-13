@@ -558,7 +558,7 @@ _0225D912:
 	mov r0, #0
 	str r0, [sp, #0xc]
 	add r0, r4, r6
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, r6
 	bl CopyWindowPixelsToVram_TextMode
 	add r0, r4, r6

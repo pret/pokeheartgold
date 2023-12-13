@@ -15,7 +15,7 @@
 .public TextPrinterCheckActive
 .public sub_020200A0
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public AddTextPrinterParameterized3
 .public AddTextPrinter
 .public sub_0202036C

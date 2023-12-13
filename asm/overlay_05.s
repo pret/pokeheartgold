@@ -3404,7 +3404,7 @@ ov05_0221D530: ; 0x0221D530
 	add r2, r7, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, _0221D5D0 ; =0x00000B44
 	ldr r0, [r4, r0]
 	str r0, [sp, #0x10]
@@ -5550,7 +5550,7 @@ _0221E656:
 	add r3, r1, #0
 	add r0, r7, r0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0x18
 	mul r0, r4
 	add r2, r5, r0
@@ -5578,7 +5578,7 @@ _0221E656:
 	add r0, r7, r0
 	mov r3, #0x40
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 _0221E6DC:
@@ -5599,7 +5599,7 @@ _0221E6DC:
 	mov r3, #0x40
 	add r0, r7, r0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _0221E704:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}

@@ -168,7 +168,7 @@ static void Blackout_PrintMessage(BlackoutScreenEnvironment *environment, s32 ms
     x /= 2;
     x -= 4;
 
-    AddTextPrinterParameterized2(&environment->window, 0, finStr, x, y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&environment->window, 0, finStr, x, y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 
     String_Delete(tmpStr);
     String_Delete(finStr);

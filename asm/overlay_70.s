@@ -3616,7 +3616,7 @@ ov70_022394B8: ; 0x022394B8
 	ldr r2, [r7, r2]
 	add r0, r7, r0
 	mov r1, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0
 	str r0, [sp, #0x14]
 	ldr r0, _022395B8 ; =0x00000F58
@@ -4542,7 +4542,7 @@ ov70_02239C34: ; 0x02239C34
 	add r1, r6, #0
 	add r2, r4, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add sp, #0x10
@@ -15158,7 +15158,7 @@ ov70_0223F20C: ; 0x0223F20C
 	add r0, r6, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 _0223F240:
@@ -15314,7 +15314,7 @@ _0223F334:
 	add r0, r6, #0
 	add r2, r4, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 _0223F368:
@@ -23121,7 +23121,7 @@ ov70_02242FC4: ; 0x02242FC4
 	str r0, [sp, #8]
 	add r0, r4, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl CopyWindowPixelsToVram_TextMode
 	add r0, r5, #0
@@ -25053,7 +25053,7 @@ ov70_02243EB8: ; 0x02243EB8
 	add r0, r5, #0
 	add r2, r4, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl CopyWindowPixelsToVram_TextMode
 	add r0, r6, #0
@@ -27312,7 +27312,7 @@ ov70_02245050: ; 0x02245050
 	add r0, r5, #0
 	mov r1, #1
 	add r2, r6, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov70_02245050
@@ -27339,7 +27339,7 @@ ov70_02245084: ; 0x02245084
 	add r0, r5, #0
 	add r2, r6, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -27368,7 +27368,7 @@ ov70_022450B8: ; 0x022450B8
 	add r0, r5, #0
 	mov r1, #4
 	add r2, r6, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov70_022450B8

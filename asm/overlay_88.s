@@ -2034,7 +2034,7 @@ _02259766:
 	ldr r0, [sp, #0x14]
 	mov r1, #0
 	add r2, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x30]
 	add r7, r7, #1
 	add r6, #0x10

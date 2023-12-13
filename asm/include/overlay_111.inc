@@ -88,7 +88,7 @@
 .public ResetAllTextPrinters
 .public TextPrinterCheckActive
 .public sub_020200A0
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GfGfx_SetBanks
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_EngineATogglePlanes

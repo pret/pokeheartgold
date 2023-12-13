@@ -69,7 +69,7 @@
 .public ScheduleBgTilemapBufferTransfer
 .public sub_020200A0
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_EngineASetPlanes
 .public GfGfx_EngineBTogglePlanes
