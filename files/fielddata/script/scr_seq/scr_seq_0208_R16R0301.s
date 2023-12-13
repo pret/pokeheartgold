@@ -11,5 +11,8 @@
 scr_seq_R16R0301_000:
 	clearflag FLAG_UNK_149
 	end
-	.byte 0x02, 0x00, 0x00, 0x00
+
+_000C:
+	end
+
 	.balign 4, 0

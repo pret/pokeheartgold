@@ -25,7 +25,8 @@ scr_seq_T07R0501_002:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _00F2
 	goto _006D
-	.byte 0x02, 0x00
+	end
+
 _004D:
 	npc_msg msg_0509_T07R0501_00003
 	touchscreen_menu_hide
@@ -34,7 +35,8 @@ _004D:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _00F2
 	goto _006D
-	.byte 0x02, 0x00
+	end
+
 _006D:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -58,24 +60,29 @@ _006D:
 	buffer_type_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0509_T07R0501_00005
 	goto _0118
-	.byte 0x02, 0x00
+	end
+
 _00E7:
 	npc_msg msg_0509_T07R0501_00008
 	goto _0118
-	.byte 0x02, 0x00
+	end
+
 _00F2:
 	npc_msg msg_0509_T07R0501_00006
 	goto _0118
-	.byte 0x02, 0x00
+	end
+
 _00FD:
 	npc_msg msg_0509_T07R0501_00007
 	goto _0118
-	.byte 0x02, 0x00
+	end
+
 _0108:
 	buffer_type_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0509_T07R0501_00004
 	goto _0118
-	.byte 0x02, 0x00
+	end
+
 _0118:
 	wait_button_or_walk_away
 	closemsg
@@ -159,7 +166,8 @@ _02D7:
 	npc_msg msg_0509_T07R0501_00019
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0180
-	.byte 0x02, 0x00
+	end
+
 _0319:
 	goto_if_no_item_space ITEM_TM32, 1, _0990
 	buffer_item_name 0, VAR_SPECIAL_x8004
@@ -184,7 +192,8 @@ _0362:
 	npc_msg msg_0509_T07R0501_00019
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0180
-	.byte 0x02, 0x00
+	end
+
 _03A4:
 	goto_if_no_item_space ITEM_TM10, 1, _0990
 	buffer_item_name 0, VAR_SPECIAL_x8004
@@ -209,7 +218,8 @@ _03ED:
 	npc_msg msg_0509_T07R0501_00019
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0180
-	.byte 0x02, 0x00
+	end
+
 _042F:
 	goto_if_no_item_space ITEM_TM29, 1, _0990
 	buffer_item_name 0, VAR_SPECIAL_x8004
@@ -234,7 +244,8 @@ _0478:
 	npc_msg msg_0509_T07R0501_00019
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0180
-	.byte 0x02, 0x00
+	end
+
 _04BA:
 	goto_if_no_item_space ITEM_TM74, 1, _0990
 	buffer_item_name 0, VAR_SPECIAL_x8004
@@ -259,7 +270,8 @@ _0503:
 	npc_msg msg_0509_T07R0501_00019
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0180
-	.byte 0x02, 0x00
+	end
+
 _0545:
 	goto_if_no_item_space ITEM_TM68, 1, _0990
 	buffer_item_name 0, VAR_SPECIAL_x8004
@@ -284,7 +296,8 @@ _058E:
 	npc_msg msg_0509_T07R0501_00019
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _0180
-	.byte 0x02, 0x00
+	end
+
 _05D0:
 	goto_if_no_item_space ITEM_SILK_SCARF, 1, _0990
 	buffer_item_name 0, VAR_SPECIAL_x8004
@@ -309,7 +322,8 @@ _0619:
 	npc_msg msg_0509_T07R0501_00019
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _021C
-	.byte 0x02, 0x00
+	end
+
 _065B:
 	goto_if_no_item_space ITEM_WIDE_LENS, 1, _0990
 	buffer_item_name 0, VAR_SPECIAL_x8004
@@ -334,7 +348,8 @@ _06A4:
 	npc_msg msg_0509_T07R0501_00019
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _021C
-	.byte 0x02, 0x00
+	end
+
 _06E6:
 	goto_if_no_item_space ITEM_ZOOM_LENS, 1, _0990
 	buffer_item_name 0, VAR_SPECIAL_x8004
@@ -359,8 +374,8 @@ _072F:
 	npc_msg msg_0509_T07R0501_00019
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _021C
-	.byte 0x02
-	.byte 0x00
+	end
+
 _0771:
 	goto_if_no_item_space ITEM_METRONOME, 1, _0990
 	buffer_item_name 0, VAR_SPECIAL_x8004
@@ -385,7 +400,8 @@ _07BA:
 	npc_msg msg_0509_T07R0501_00019
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	goto _021C
-	.byte 0x02, 0x00
+	end
+
 scr_seq_T07R0501_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -480,7 +496,8 @@ _0981:
 _0985:
 	scrcmd_118 0
 	goto _0814
-	.byte 0x02, 0x00
+	end
+
 _0990:
 	npc_msg msg_0509_T07R0501_00014
 	closemsg
@@ -488,33 +505,50 @@ _0995:
 	compare VAR_SPECIAL_x8004, 385
 	goto_if_ne _09AE
 	goto _0180
-	.byte 0x16, 0x00, 0x83, 0x00, 0x00, 0x00
+
+_09A8:
+	goto _0A31
+
 _09AE:
 	compare VAR_SPECIAL_x8004, 359
 	goto_if_ne _09C7
 	goto _0180
-	.byte 0x16, 0x00, 0x6a, 0x00, 0x00, 0x00
+
+_09C1:
+	goto _0A31
+
 _09C7:
 	compare VAR_SPECIAL_x8004, 337
 	goto_if_ne _09E0
 	goto _0180
-	.byte 0x16, 0x00, 0x51, 0x00, 0x00, 0x00
+
+_09DA:
+	goto _0A31
+
 _09E0:
 	compare VAR_SPECIAL_x8004, 356
 	goto_if_ne _09F9
 	goto _0180
-	.byte 0x16, 0x00, 0x38, 0x00, 0x00, 0x00
+
+_09F3:
+	goto _0A31
+
 _09F9:
 	compare VAR_SPECIAL_x8004, 401
 	goto_if_ne _0A12
 	goto _0180
-	.byte 0x16, 0x00, 0x1f, 0x00
-	.byte 0x00, 0x00
+
+_0A0C:
+	goto _0A31
+
 _0A12:
 	compare VAR_SPECIAL_x8004, 395
 	goto_if_ne _0A2B
 	goto _0180
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_0A25:
+	goto _0A31
+
 _0A2B:
 	goto _021C
 
@@ -531,7 +565,8 @@ _0A43:
 	wait_button_or_walk_away
 	closemsg
 	goto _0A52
-	.byte 0x02, 0x00
+	end
+
 _0A52:
 	scrcmd_117
 	touchscreen_menu_show

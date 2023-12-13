@@ -133,27 +133,37 @@ _01CE:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _01DC:
 	step 75, 1
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _01E8:
 	step 63, 2
 	step 13, 1
 	step_end
-	.byte 0x3f, 0x00, 0x02, 0x00, 0x0f, 0x00, 0x01, 0x00, 0x0c, 0x00, 0x01, 0x00
-	.byte 0x21, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_01F4:
+	step 63, 2
+	step 15, 1
+	step 12, 1
+	step 33, 1
+	step_end
+
+	.balign 4, 0
 _0208:
 	step 12, 7
 	step_end
 
+	.balign 4, 0
 _0210:
 	step 33, 1
 	step 13, 7
 	step_end
+
 scr_seq_T10R0101_000:
 	setvar VAR_SPECIAL_x8007, 0
 	callstd std_nurse_joy
@@ -199,19 +209,21 @@ _0293:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _02A0:
 	step 71, 1
 	step 14, 1
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _02B0:
 	step 71, 1
 	step 15, 1
 	step 72, 1
 	step_end
+
 scr_seq_T10R0101_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -228,7 +240,8 @@ _02CD:
 	case 0, _0317
 	case 1, _0456
 	goto _058C
-	.byte 0x02, 0x00
+	end
+
 _0317:
 	compare VAR_UNK_40E6, 0
 	goto_if_eq _037A
@@ -242,8 +255,8 @@ _0317:
 	case 0, _037A
 	case 1, _03F1
 	goto _0371
-	.byte 0x02
-	.byte 0x00
+	end
+
 _0371:
 	npc_msg msg_0522_T10R0101_00007
 	goto _02CD
@@ -270,7 +283,10 @@ _03CF:
 	goto_if_ne _03EB
 	npc_msg msg_0522_T10R0101_00007
 	goto _02CD
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_03E5:
+	goto _03F1
+
 _03EB:
 	goto _0317
 
@@ -306,7 +322,8 @@ _0456:
 	case 0, _04B0
 	case 1, _0527
 	goto _02CD
-	.byte 0x02, 0x00
+	end
+
 _04B0:
 	npc_msg msg_0522_T10R0101_00015
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
@@ -329,8 +346,10 @@ _0505:
 	goto_if_ne _0521
 	npc_msg msg_0522_T10R0101_00007
 	goto _02CD
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00
-	.byte 0x00
+
+_051B:
+	goto _0527
+
 _0521:
 	goto _0456
 

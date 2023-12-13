@@ -83,19 +83,22 @@ _010C:
 _011A:
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0120:
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _0128:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0130:
 	step 2, 1
 	step_end
+
 scr_seq_R36R0201_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -161,25 +164,29 @@ _0223:
 _0231:
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0238:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _0240:
 	step 13, 1
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _024C:
 	step 15, 1
 	step 13, 2
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _025C:
 	step 13, 1
 	step 14, 4
 	step_end
+
 	.balign 4, 0

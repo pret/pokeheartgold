@@ -63,23 +63,28 @@ _00E8:
 _00EA:
 	setflag FLAG_UNK_2AD
 	goto _0050
-	.byte 0x02, 0x00
+	end
+
 _00F6:
 	setflag FLAG_UNK_2AE
 	goto _0076
-	.byte 0x02, 0x00
+	end
+
 _0102:
 	setflag FLAG_UNK_2AF
 	goto _009C
-	.byte 0x02, 0x00
+	end
+
 _010E:
 	setflag FLAG_UNK_2B0
 	goto _00C2
-	.byte 0x02, 0x00
+	end
+
 _011A:
 	setflag FLAG_UNK_2B1
 	goto _00E8
-	.byte 0x02, 0x00
+	end
+
 scr_seq_D31R0207_007:
 	compare VAR_UNK_4151, 1
 	call_if_eq _0142
@@ -192,7 +197,8 @@ _02B2:
 	releaseall
 	lock obj_D31R0207_seven1
 	goto _0541
-	.byte 0x02, 0x00
+	end
+
 scr_seq_D31R0207_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -224,7 +230,8 @@ _031A:
 	releaseall
 	lock obj_D31R0207_seven5
 	goto _0586
-	.byte 0x02, 0x00
+	end
+
 scr_seq_D31R0207_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -254,7 +261,8 @@ _0382:
 	releaseall
 	lock obj_D31R0207_seven2
 	goto _05CB
-	.byte 0x02, 0x00
+	end
+
 scr_seq_D31R0207_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -284,7 +292,8 @@ _03E7:
 	releaseall
 	lock obj_D31R0207_seven3
 	goto _0610
-	.byte 0x02, 0x00
+	end
+
 scr_seq_D31R0207_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -314,7 +323,8 @@ _044C:
 	releaseall
 	lock obj_D31R0207_seven4
 	goto _0655
-	.byte 0x02, 0x00
+	end
+
 _046D:
 	scrcmd_307 0, 0, 8, 2, 77
 	scrcmd_310 77
@@ -374,136 +384,160 @@ _0541:
 	compare VAR_SPECIAL_x8000, 12
 	goto_if_eq _0562
 	goto _0574
-	.byte 0x02, 0x00
+	end
+
 _0562:
 	apply_movement obj_D31R0207_seven1, _0710
 	wait_movement
 	goto _04E5
-	.byte 0x02, 0x00
+	end
+
 _0574:
 	apply_movement obj_D31R0207_seven1, _0724
 	wait_movement
 	goto _04E5
-	.byte 0x02, 0x00
+	end
+
 _0586:
 	setvar VAR_TEMP_x4000, 2
 	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	compare VAR_SPECIAL_x8000, 4
 	goto_if_eq _05A7
 	goto _05B9
-	.byte 0x02, 0x00
+	end
+
 _05A7:
 	apply_movement obj_D31R0207_seven5, _073C
 	wait_movement
 	goto _04E5
-	.byte 0x02, 0x00
+	end
+
 _05B9:
 	apply_movement obj_D31R0207_seven5, _074C
 	wait_movement
 	goto _04E5
-	.byte 0x02, 0x00
+	end
+
 _05CB:
 	setvar VAR_TEMP_x4000, 3
 	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	compare VAR_SPECIAL_x8001, 7
 	goto_if_eq _05EC
 	goto _05FE
-	.byte 0x02, 0x00
+	end
+
 _05EC:
 	apply_movement obj_D31R0207_seven2, _0758
 	wait_movement
 	goto _04E5
-	.byte 0x02, 0x00
+	end
+
 _05FE:
 	apply_movement obj_D31R0207_seven2, _0768
 	wait_movement
 	goto _04E5
-	.byte 0x02, 0x00
+	end
+
 _0610:
 	setvar VAR_TEMP_x4000, 4
 	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	compare VAR_SPECIAL_x8001, 9
 	goto_if_eq _0631
 	goto _0643
-	.byte 0x02
-	.byte 0x00
+	end
+
 _0631:
 	apply_movement obj_D31R0207_seven3, _0774
 	wait_movement
 	goto _04E5
-	.byte 0x02, 0x00
+	end
+
 _0643:
 	apply_movement obj_D31R0207_seven3, _0788
 	wait_movement
 	goto _04E5
-	.byte 0x02, 0x00
+	end
+
 _0655:
 	setvar VAR_TEMP_x4000, 5
 	get_player_coords VAR_SPECIAL_x8000, VAR_SPECIAL_x8001
 	compare VAR_SPECIAL_x8000, 8
 	goto_if_eq _0676
 	goto _0688
-	.byte 0x02, 0x00
+	end
+
 _0676:
 	apply_movement obj_D31R0207_seven4, _079C
 	wait_movement
 	goto _04E5
-	.byte 0x02, 0x00
+	end
+
 _0688:
 	apply_movement obj_D31R0207_seven4, _07AC
 	wait_movement
 	goto _04E5
-	.byte 0x02, 0x00, 0x00, 0x00
+	end
 
+	.balign 4, 0
 _069C:
 	step 13, 2
 	step_end
 
+	.balign 4, 0
 _06A4:
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _06AC:
 	step 13, 2
 	step 14, 1
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _06BC:
 	step 15, 1
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _06C8:
 	step 1, 1
 	step 18, 1
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _06D8:
 	step 19, 1
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _06E4:
 	step 12, 2
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _06F0:
 	step 12, 1
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _06FC:
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _0704:
 	step 16, 2
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0710:
 	step 17, 1
 	step 18, 3
@@ -511,6 +545,7 @@ _0710:
 	step 18, 2
 	step_end
 
+	.balign 4, 0
 _0724:
 	step 18, 1
 	step 16, 1
@@ -519,28 +554,33 @@ _0724:
 	step 18, 2
 	step_end
 
+	.balign 4, 0
 _073C:
 	step 19, 1
 	step 16, 2
 	step 19, 3
 	step_end
 
+	.balign 4, 0
 _074C:
 	step 16, 2
 	step 19, 4
 	step_end
 
+	.balign 4, 0
 _0758:
 	step 18, 1
 	step 16, 4
 	step 18, 2
 	step_end
 
+	.balign 4, 0
 _0768:
 	step 16, 4
 	step 18, 3
 	step_end
 
+	.balign 4, 0
 _0774:
 	step 17, 1
 	step 19, 4
@@ -548,6 +588,7 @@ _0774:
 	step 19, 2
 	step_end
 
+	.balign 4, 0
 _0788:
 	step 16, 1
 	step 19, 4
@@ -555,12 +596,14 @@ _0788:
 	step 19, 2
 	step_end
 
+	.balign 4, 0
 _079C:
 	step 18, 1
 	step 16, 5
 	step 19, 2
 	step_end
 
+	.balign 4, 0
 _07AC:
 	step 19, 3
 	step 16, 5

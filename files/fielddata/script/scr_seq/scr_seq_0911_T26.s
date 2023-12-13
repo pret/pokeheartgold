@@ -68,8 +68,12 @@ _00E4:
 	setflag FLAG_HIDE_CAMERON
 _00E8:
 	end
-	.byte 0x00, 0x00, 0x4b, 0x00, 0x01, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00
+
+	.balign 4, 0
+_00EC:
+	step 75, 1
+	step_end
+
 scr_seq_T26_000:
 	end
 
@@ -169,23 +173,26 @@ _029C:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _02B4:
 	step 13, 1
 	step 64, 1
 	step_end
 
+	.balign 4, 0
 _02C0:
 	step 75, 1
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _02CC:
 	step 1, 2
 	step 15, 2
 	step 64, 1
 	step_end
 
+	.balign 4, 0
 _02DC:
 	step 13, 1
 	step 1, 2
@@ -193,6 +200,7 @@ _02DC:
 	step 64, 1
 	step_end
 
+	.balign 4, 0
 _02F0:
 	step 13, 2
 	step 1, 2
@@ -200,6 +208,7 @@ _02F0:
 	step 64, 1
 	step_end
 
+	.balign 4, 0
 _0304:
 	step 13, 3
 	step 1, 2
@@ -207,6 +216,7 @@ _0304:
 	step 64, 1
 	step_end
 
+	.balign 4, 0
 _0318:
 	step 13, 4
 	step 1, 2
@@ -214,36 +224,42 @@ _0318:
 	step 64, 1
 	step_end
 
+	.balign 4, 0
 _032C:
 	step 15, 6
 	step 0, 2
 	step 12, 10
 	step_end
 
+	.balign 4, 0
 _033C:
 	step 15, 6
 	step 0, 2
 	step 12, 11
 	step_end
 
+	.balign 4, 0
 _034C:
 	step 15, 6
 	step 0, 2
 	step 12, 12
 	step_end
 
+	.balign 4, 0
 _035C:
 	step 15, 6
 	step 0, 2
 	step 12, 13
 	step_end
 
+	.balign 4, 0
 _036C:
 	step 15, 6
 	step 0, 2
 	step 12, 14
 	step_end
 
+	.balign 4, 0
 _037C:
 	step 0, 2
 	step 71, 1
@@ -255,6 +271,7 @@ _037C:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _03A0:
 	step 1, 2
 	step 71, 1
@@ -266,6 +283,7 @@ _03A0:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _03C4:
 	step 0, 2
 	step 71, 1
@@ -275,12 +293,14 @@ _03C4:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _03E0:
 	step 1, 2
 	step 71, 1
 	step 76, 1
 	step 72, 1
 	step_end
+
 scr_seq_T26_011:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -366,7 +386,7 @@ _0530:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _0544:
 	step 15, 1
 	step 12, 2
@@ -375,11 +395,13 @@ _0544:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _055C:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0568:
 	step 12, 1
 	step 14, 1
@@ -387,6 +409,7 @@ _0568:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _057C:
 	step 12, 1
 	step 15, 1
@@ -394,16 +417,19 @@ _057C:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0590:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _059C:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
+
 scr_seq_T26_004:
 	scrcmd_055 2, 0
 	scrcmd_057 3

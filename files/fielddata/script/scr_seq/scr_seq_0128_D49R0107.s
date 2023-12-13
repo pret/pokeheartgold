@@ -97,39 +97,46 @@ scr_seq_D49R0107_005:
 _0154:
 	clearflag FLAG_HIDE_POKEATHLON_SUPREME_CUP_RECEPTIONIST
 	return
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _015C:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0164:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _016C:
 	step 13, 3
 	step_end
 
+	.balign 4, 0
 _0174:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0180:
 	step 12, 3
 	step_end
 
+	.balign 4, 0
 _0188:
 	step 8, 1
 	step_end
 
+	.balign 4, 0
 _0190:
 	step 34, 1
 	step 71, 1
 	step 11, 2
 	step 72, 1
 	step_end
+
 scr_seq_D49R0107_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall

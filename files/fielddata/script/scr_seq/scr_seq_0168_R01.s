@@ -107,14 +107,23 @@ _016F:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x0f, 0x00, 0x01, 0x00, 0x0c, 0x00, 0x02, 0x00, 0x0e, 0x00, 0x01, 0x00
-	.byte 0x0c, 0x00, 0x03, 0x00, 0x21, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_0184:
+	step 15, 1
+	step 12, 2
+	step 14, 1
+	step 12, 3
+	step 33, 1
+	step_end
+
+	.balign 4, 0
 _019C:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _01A8:
 	step 12, 1
 	step 14, 1
@@ -122,6 +131,7 @@ _01A8:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _01BC:
 	step 12, 1
 	step 15, 1
@@ -129,16 +139,19 @@ _01BC:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _01D0:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _01DC:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
+
 scr_seq_R01_002:
 	direction_signpost msg_0319_R01_00000, 1, 4, VAR_SPECIAL_RESULT
 	scrcmd_057 3

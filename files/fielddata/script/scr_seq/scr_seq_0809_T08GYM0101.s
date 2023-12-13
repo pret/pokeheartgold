@@ -28,10 +28,16 @@ scr_seq_T08GYM0101_000:
 	compare VAR_TEMP_x4002, 0
 	goto_if_ne _006D
 	goto _00E9
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_0067:
+	goto _0073
+
 _006D:
 	goto _0075
-	.byte 0x02, 0x00
+
+_0073:
+	end
+
 _0075:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 16
@@ -411,8 +417,8 @@ _05D4:
 	setflag FLAG_HIDE_FUCHSIA_GYM_PICNICKER_CINDY_REVEALED
 	clearflag FLAG_HIDE_FUCHSIA_GYM_PICNICKER_CINDY_DISGUISED
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _05E4:
 	step 3, 1
 	step 1, 1
@@ -423,6 +429,7 @@ _05E4:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _0604:
 	step 1, 1
 	step 2, 1
@@ -432,6 +439,7 @@ _0604:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _0620:
 	step 2, 1
 	step 0, 1
@@ -440,6 +448,7 @@ _0620:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _0638:
 	step 0, 1
 	step 3, 1
@@ -451,6 +460,7 @@ _0638:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _065C:
 	step 3, 1
 	step 1, 1
@@ -462,6 +472,7 @@ _065C:
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _0680:
 	step 3, 1
 	step 1, 1
@@ -470,6 +481,7 @@ _0680:
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _0698:
 	step 3, 1
 	step 1, 1
@@ -479,6 +491,7 @@ _0698:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _06B4:
 	step 3, 1
 	step 1, 1
@@ -488,6 +501,7 @@ _06B4:
 	step 1, 1
 	step 2, 1
 	step_end
+
 scr_seq_T08GYM0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall

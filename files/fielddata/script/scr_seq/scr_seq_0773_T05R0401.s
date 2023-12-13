@@ -19,7 +19,8 @@ scr_seq_T05R0401_000:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _002E
 	goto _00B3
-	.byte 0x02, 0x00
+	end
+
 _002E:
 	npc_msg msg_0480_T05R0401_00001
 	wait_button
@@ -48,7 +49,8 @@ _002E:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _00D9
 	goto _00B3
-	.byte 0x02, 0x00
+	end
+
 _00B3:
 	npc_msg msg_0480_T05R0401_00005
 	wait_button_or_walk_away

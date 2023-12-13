@@ -315,7 +315,8 @@ _043E:
 	case 1, _04D7
 	npc_msg msg_0508_T07R0401_00006
 	goto _0531
-	.byte 0x02, 0x00
+	end
+
 _048B:
 	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 1000
 	compare VAR_SPECIAL_RESULT, 0
@@ -332,7 +333,8 @@ _048B:
 	wait_se SEQ_SE_DP_REGI
 	npc_msg msg_0508_T07R0401_00003
 	goto _043E
-	.byte 0x02, 0x00
+	end
+
 _04D7:
 	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 10000
 	compare VAR_SPECIAL_RESULT, 0
@@ -349,11 +351,13 @@ _04D7:
 	wait_se SEQ_SE_DP_REGI
 	npc_msg msg_0508_T07R0401_00003
 	goto _043E
-	.byte 0x02, 0x00
+	end
+
 _0523:
 	npc_msg msg_0508_T07R0401_00005
 	goto _0531
-	.byte 0x02, 0x00
+	end
+
 _052E:
 	npc_msg msg_0508_T07R0401_00004
 _0531:

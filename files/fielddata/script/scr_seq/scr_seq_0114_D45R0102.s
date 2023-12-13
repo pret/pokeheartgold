@@ -195,8 +195,8 @@ _02C0:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	return
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0304:
 	step 35, 1
 	step 75, 1
@@ -205,17 +205,24 @@ _0304:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _031C:
 	step 75, 1
 	step 63, 1
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _032C:
 	step 13, 1
 	step_end
-	.byte 0x21, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_0334:
+	step 33, 1
+	step_end
+
+	.balign 4, 0
 _033C:
 	step 71, 1
 	step 8, 1
@@ -223,12 +230,14 @@ _033C:
 	step 11, 2
 	step_end
 
+	.balign 4, 0
 _0350:
 	step 13, 4
 	step 14, 2
 	step 13, 2
 	step_end
 
+	.balign 4, 0
 _0360:
 	step 11, 2
 	step 9, 3
@@ -236,39 +245,47 @@ _0360:
 	step 9, 2
 	step_end
 
+	.balign 4, 0
 _0374:
 	step 32, 1
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _0380:
 	step 63, 3
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _038C:
 	step 75, 1
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _0398:
 	step 15, 1
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _03A4:
 	step 49, 1
 	step_end
 
+	.balign 4, 0
 _03AC:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _03B4:
 	step 12, 1
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _03C0:
 	step 34, 1
 	step 63, 1
@@ -276,13 +293,16 @@ _03C0:
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _03D4:
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _03DC:
 	step 39, 4
 	step_end
+
 scr_seq_D45R0102_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall

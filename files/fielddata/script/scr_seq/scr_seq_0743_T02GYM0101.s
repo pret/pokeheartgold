@@ -242,101 +242,119 @@ _037D:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _0394:
 	step 2, 1
 	step 75, 1
 	step 14, 5
 	step_end
 
+	.balign 4, 0
 _03A4:
 	step 2, 1
 	step 75, 1
 	step 14, 4
 	step_end
 
+	.balign 4, 0
 _03B4:
 	step 2, 1
 	step 75, 1
 	step 14, 3
 	step_end
 
+	.balign 4, 0
 _03C4:
 	step 2, 1
 	step 75, 1
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _03D4:
 	step 2, 1
 	step 75, 1
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _03E4:
 	step 2, 1
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _03F0:
 	step 3, 1
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _03FC:
 	step 3, 1
 	step 75, 1
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _040C:
 	step 65, 2
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _0418:
 	step 63, 2
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _0424:
 	step 63, 2
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _0430:
 	step 15, 5
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _043C:
 	step 15, 4
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0448:
 	step 15, 3
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0454:
 	step 15, 2
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0460:
 	step 15, 1
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _046C:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0474:
 	step 14, 1
 	step 1, 1
 	step_end
+
 scr_seq_T02GYM0101_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall

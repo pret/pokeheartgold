@@ -54,8 +54,8 @@ _00B8:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _00C4:
 	step 36, 1
 	step 75, 1
@@ -63,15 +63,18 @@ _00C4:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _00D8:
 	step 13, 2
 	step 36, 1
 	step_end
 
+	.balign 4, 0
 _00E4:
 	step 65, 3
 	step 3, 1
 	step_end
+
 _00F0:
 	setvar VAR_SCENE_ROCKET_TAKEOVER, 2
 	setflag FLAG_UNK_0C5
@@ -87,7 +90,12 @@ _0111:
 	setvar VAR_UNK_4134, 5
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00, 0x4b, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
+
+	.balign 4, 0
+_0134:
+	step 75, 1
+	step_end
+
 scr_seq_T24_001:
 	end
 
@@ -216,62 +224,77 @@ _02D8:
 _02E9:
 	npc_msg msg_0572_T24_00011
 	goto _0299
-	.byte 0x02, 0x00
+	end
 
+	.balign 4, 0
 _02F4:
 	step 111, 1
 	step_end
-	.byte 0x02, 0x00, 0x00, 0x00
+	end
 
+	.balign 4, 0
 _0300:
 	step 112, 1
 	step 69, 1
 	step_end
-	.byte 0x02, 0x00, 0x00, 0x00
+	end
 
+	.balign 4, 0
 _0310:
 	step 0, 1
 	step 75, 1
 	step_end
-	.byte 0x02, 0x00, 0x00, 0x00
+	end
 
+	.balign 4, 0
 _0320:
 	step 0, 1
 	step_end
-	.byte 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x01, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
+	end
 
+	.balign 4, 0
+_032C:
+	step 3, 1
+	step_end
+	end
+
+	.balign 4, 0
 _0338:
 	step 1, 1
 	step_end
-	.byte 0x02, 0x00, 0x00, 0x00
+	end
 
+	.balign 4, 0
 _0344:
 	step 3, 1
 	step 63, 1
 	step 15, 2
 	step_end
-	.byte 0x02, 0x00, 0x00, 0x00
+	end
 
+	.balign 4, 0
 _0358:
 	step 12, 5
 	step 15, 2
 	step 12, 2
 	step_end
-	.byte 0x02, 0x00, 0x00, 0x00
+	end
 
+	.balign 4, 0
 _036C:
 	step 63, 6
 	step 1, 1
 	step_end
-	.byte 0x02, 0x00, 0x00, 0x00
+	end
 
+	.balign 4, 0
 _037C:
 	step 13, 2
 	step 14, 2
 	step 13, 5
 	step_end
-	.byte 0x02, 0x00
+	end
+
 scr_seq_T24_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -342,8 +365,8 @@ _0481:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0498:
 	step 15, 1
 	step 12, 2
@@ -352,11 +375,13 @@ _0498:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _04B0:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _04BC:
 	step 12, 1
 	step 14, 1
@@ -364,11 +389,13 @@ _04BC:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _04D0:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
+
 scr_seq_T24_008:
 	direction_signpost msg_0572_T24_00018, 0, 15, VAR_SPECIAL_RESULT
 	scrcmd_057 3

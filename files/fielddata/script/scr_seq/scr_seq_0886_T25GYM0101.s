@@ -176,22 +176,25 @@ scr_seq_T25GYM0101_001:
 	setflag FLAG_UNK_0B7
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0260:
 	step 75, 1
 	step 12, 3
 	step_end
 
+	.balign 4, 0
 _026C:
 	step 13, 3
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0278:
 	step 63, 1
 	step 12, 1
 	step_end
+
 scr_seq_T25GYM0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall

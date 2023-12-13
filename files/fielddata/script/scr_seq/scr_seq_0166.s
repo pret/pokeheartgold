@@ -360,44 +360,50 @@ _04EE:
     wait_se SEQ_SE_DP_CON_015
     return
 
+	.balign 4, 0
 _0520: ; unreferenced
-	step 0x003e, 0x0001
-	step 0x0003, 0x0001
-	step 0x003e, 0x0001
-	step 0x0001, 0x0001
-	step 0x003d, 0x0001
-	step 0x0002, 0x0001
-	step 0x003c, 0x0001
-	step 0x0000, 0x0001
-	step 0x003c, 0x0001
-	step 0x0003, 0x0001
-	step 0x003c, 0x0001
-	step 0x0001, 0x0001
+	step 62, 1
+	step 3, 1
+	step 62, 1
+	step 1, 1
+	step 61, 1
+	step 2, 1
+	step 60, 1
+	step 0, 1
+	step 60, 1
+	step 3, 1
+	step 60, 1
+	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0554: ; unreferenced
-	step 0x003f, 0x0002
-	step 0x0022, 0x0001
-	step 0x003f, 0x0001
-	step 0x0023, 0x0001
-	step 0x003f, 0x0001
-	step 0x0025, 0x0001
+	step 63, 2
+	step 34, 1
+	step 63, 1
+	step 35, 1
+	step 63, 1
+	step 37, 1
 	step_end
 
+	.balign 4, 0
 _0570: ; unreferenced
-	step 0x0022, 0x0001
+	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0578: ; unreferenced
-	step 0x0020, 0x0001
+	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0580: ; unreferenced
-	step 0x0023, 0x0001
+	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0588: ; unreferenced
-	step 0x0021, 0x0001
+	step 33, 1
 	step_end
 
 scr_seq_0166_008:

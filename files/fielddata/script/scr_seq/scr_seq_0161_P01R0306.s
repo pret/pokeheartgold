@@ -53,11 +53,12 @@ _0087:
 	closemsg
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0090:
 	step 49, 2
 	step_end
+
 scr_seq_P01R0306_003:
 	scrcmd_609
 	lockall
@@ -87,15 +88,17 @@ _0103:
 	callstd std_bag_is_full
 	closemsg
 	goto _00E2
-	.byte 0x00
 
+	.balign 4, 0
 _0110:
 	step 51, 3
 	step_end
 
+	.balign 4, 0
 _0118:
 	step 9, 1
 	step_end
+
 scr_seq_P01R0306_002:
 	simple_npc_msg msg_0262_P01R0306_00008
 	end

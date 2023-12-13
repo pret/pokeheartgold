@@ -353,27 +353,33 @@ _0627:
 _067D:
 	npc_msg msg_0500_T07R0107_00010
 	goto _06BF
-	.byte 0x02, 0x00
+	end
+
 _0688:
 	npc_msg msg_0500_T07R0107_00009
 	goto _06BF
-	.byte 0x02, 0x00
+	end
+
 _0693:
 	npc_msg msg_0500_T07R0107_00008
 	goto _06BF
-	.byte 0x02, 0x00
+	end
+
 _069E:
 	npc_msg msg_0500_T07R0107_00007
 	goto _06BF
-	.byte 0x02, 0x00
+	end
+
 _06A9:
 	npc_msg msg_0500_T07R0107_00006
 	goto _06BF
-	.byte 0x02, 0x00
+	end
+
 _06B4:
 	npc_msg msg_0500_T07R0107_00005
 	goto _06BF
-	.byte 0x02, 0x00
+	end
+
 _06BF:
 	wait_button_or_walk_away
 	closemsg
@@ -397,8 +403,8 @@ _06DE:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _06F8:
 	step 33, 1
 	step_end

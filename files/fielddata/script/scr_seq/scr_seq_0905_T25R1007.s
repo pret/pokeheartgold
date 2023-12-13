@@ -445,31 +445,38 @@ _07C9:
 _082C:
 	npc_msg msg_0598_T25R1007_00010
 	goto _0879
-	.byte 0x02, 0x00
+	end
+
 _0837:
 	npc_msg msg_0598_T25R1007_00009
 	goto _0879
-	.byte 0x02, 0x00
+	end
+
 _0842:
 	npc_msg msg_0598_T25R1007_00008
 	goto _0879
-	.byte 0x02, 0x00
+	end
+
 _084D:
 	npc_msg msg_0598_T25R1007_00007
 	goto _0879
-	.byte 0x02, 0x00
+	end
+
 _0858:
 	npc_msg msg_0598_T25R1007_00006
 	goto _0879
-	.byte 0x02, 0x00
+	end
+
 _0863:
 	npc_msg msg_0598_T25R1007_00005
 	goto _0879
-	.byte 0x02, 0x00
+	end
+
 _086E:
 	npc_msg msg_0598_T25R1007_00011
 	goto _0879
-	.byte 0x02, 0x00
+	end
+
 _0879:
 	wait_button_or_walk_away
 	closemsg
@@ -493,8 +500,8 @@ _0898:
 	closemsg
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _08B0:
 	step 33, 1
 	step_end
