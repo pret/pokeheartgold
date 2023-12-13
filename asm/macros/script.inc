@@ -590,10 +590,10 @@
 	.short 93
 	.endm
 
-	.macro apply_movement arg0, arg1
+	.macro apply_movement overworld, sub
 	.short 94
-	.short \arg0
-	.word \arg1-.-4
+	.short \overworld
+	.word \sub-.-4
 	.endm
 
 	.macro wait_movement
@@ -608,24 +608,24 @@
 	.short 97
 	.endm
 
-	.macro lock arg0
+	.macro lock overworld
 	.short 98
-	.short \arg0
+	.short \overworld
 	.endm
 
-	.macro release arg0
+	.macro release overworld
 	.short 99
-	.short \arg0
+	.short \overworld
 	.endm
 
-	.macro show_person arg0
+	.macro show_person overworld
 	.short 100
-	.short \arg0
+	.short \overworld
 	.endm
 
-	.macro hide_person arg0
+	.macro hide_person overworld
 	.short 101
-	.short \arg0
+	.short \overworld
 	.endm
 
 	.macro scrcmd_102 arg0, arg1
@@ -648,9 +648,9 @@
 	.short \arg1
 	.endm
 
-	.macro get_person_coords arg0, arg1, arg2
+	.macro get_person_coords overworld, arg1, arg2
 	.short 106
-	.short \arg0
+	.short \overworld
 	.short \arg1
 	.short \arg2
 	.endm
@@ -1335,9 +1335,9 @@
 	.short 224
 	.endm
 
-	.macro goto_if_trainer_defeated arg0
+	.macro goto_if_trainer_defeated dest
 	.short 225
-	.word \arg0-.-4
+	.word \dest-.-4
 	.endm
 
 	.macro scrcmd_226 arg0, arg1, arg2, arg3
