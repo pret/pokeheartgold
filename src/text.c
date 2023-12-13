@@ -127,7 +127,7 @@ u8 AddTextPrinterParameterizedWithColor(Window *window, FontID fontId, String *s
     return AddTextPrinter(&template, textSpeed, callback);
 }
 
-u8 AddTextPrinterParameterized3(Window *window, int fontId, String *string, u32 x, u32 y, u32 textSpeed, u32 color, u32 letterSpacing, u32 lineSpacing, PrinterCallback_t callback) {
+u8 AddTextPrinterParameterizedWithColorAndSpacing(Window *window, int fontId, String *string, u32 x, u32 y, u32 textSpeed, u32 color, u32 letterSpacing, u32 lineSpacing, PrinterCallback_t callback) {
     TextPrinterTemplate template;
 
     template.currentChar.wrapped = string;

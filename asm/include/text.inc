@@ -16,7 +16,7 @@
 .public sub_020200A0
 .public AddTextPrinterParameterized
 .public AddTextPrinterParameterizedWithColor
-.public AddTextPrinterParameterized3
+.public AddTextPrinterParameterizedWithColorAndSpacing
 .public AddTextPrinter
 .public sub_0202036C
 .public DecompressGlyphTile

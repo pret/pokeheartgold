@@ -40026,7 +40026,7 @@ ov96_021F8DF4: ; 0x021F8DF4
 	str r1, [sp, #0x14]
 	add r0, r4, #0
 	add r2, r7, #0
-	bl AddTextPrinterParameterized3
+	bl AddTextPrinterParameterizedWithColorAndSpacing
 	mov r1, #1
 	ldr r0, [r4, #0x14]
 	add r2, r1, #0
@@ -40428,7 +40428,7 @@ ov96_021F9134: ; 0x021F9134
 	str r1, [sp, #0x14]
 	add r0, r4, #0
 	add r2, r7, #0
-	bl AddTextPrinterParameterized3
+	bl AddTextPrinterParameterizedWithColorAndSpacing
 	ldr r0, [r4, #0x14]
 	mov r1, #1
 	mov r2, #2

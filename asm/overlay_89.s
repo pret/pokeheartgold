@@ -3205,7 +3205,7 @@ _0225A278:
 	ldr r2, [sp, #0x18]
 	add r0, sp, #0x38
 	str r3, [sp, #0x14]
-	bl AddTextPrinterParameterized3
+	bl AddTextPrinterParameterizedWithColorAndSpacing
 	add r0, sp, #0x38
 	mov r1, #1
 	mov r2, #0x7d
