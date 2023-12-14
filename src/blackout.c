@@ -20,8 +20,8 @@
 #include "msgdata/msg.naix"
 
 static void Blackout_InitDisplays(BgConfig *bgConfig);
-void DrawBlackoutMessage(FieldSystem *fieldSystem, TaskManager *taskManager);
-BOOL FieldTask_ShowPrintedMessage(TaskManager *taskManager);
+void Blackout_DrawMessage(FieldSystem *fieldSystem, TaskManager *taskManager);
+BOOL Task_ShowPrintedBlackoutMessage(TaskManager *taskManager);
 void _PrintMessage(BlackoutScreenEnvironment *environment, int msgno, u8 x, u8 y);
 
 static const struct GraphicsBanks Blackout_GraphicsBanks = {
@@ -74,40 +74,41 @@ static void Blackout_InitDisplays(BgConfig *bgConfig) {
     GfGfx_SetBanks(&Blackout_GraphicsBanks);
     SetBothScreensModesAndDisable(&Blackout_GraphicsModes);
     InitBgFromTemplate(bgConfig, 3, &Blackout_BgTemplate, GF_BG_TYPE_TEXT);
-    GfGfxLoader_GXLoadPal(NARC_graphic_font, 7, GF_BG_LYR_MAIN_0, 0x1A0, 0x20, (HeapID)11); //TODO: update these enums
+    GfGfxLoader_GXLoadPal(NARC_graphic_font, 7, GF_BG_LYR_MAIN_0, 0x1A0, 0x20, HEAP_ID_FIELD); //TODO: update these enums
     BG_SetMaskColor(3, RGB_WHITE);
 }
 
-static void DrawBlackoutMessage(FieldSystem *fieldSystem, TaskManager *taskManager) {
-    BlackoutScreenEnvironment *env;
+static void Blackout_DrawMessage(FieldSystem *fieldSystem, TaskManager *taskManager) {
+    BlackoutScreenEnvironment *env = AllocFromHeap(HEAP_ID_FIELD, sizeof(BlackoutScreenEnvironment));
 
-    env = AllocFromHeap((HeapID)11, sizeof(BlackoutScreenEnvironment));
     GF_ASSERT(env != NULL);
     memset(env, 0, sizeof(BlackoutScreenEnvironment));
     env->state = 0;
     env->fieldSystem = fieldSystem;
-    env->bgConfig = BgConfig_Alloc((HeapID)11);
-    sub_0200FBF4(0, RGB_WHITE);
-    sub_0200FBF4(1, RGB_WHITE);
-    sub_0200FBDC(0);
-    sub_0200FBDC(1);
+    env->bgConfig = BgConfig_Alloc(HEAP_ID_FIELD);
+    sub_0200FBF4(PM_LCD_TOP, RGB_WHITE); //are RGBs correct here?
+    sub_0200FBF4(PM_LCD_BOTTOM, RGB_WHITE);
+    sub_0200FBDC(0); //PM_LCD_TOP?
+    sub_0200FBDC(1); //PM_LCD_TOP?
     Blackout_InitDisplays(env->bgConfig);
-    env->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0203_bin, (HeapID)11);
-    env->msgFmt = MessageFormat_New((HeapID)11);
+    env->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0203_bin, HEAP_ID_FIELD);
+    env->msgFmt = MessageFormat_New(HEAP_ID_FIELD);
 
     AddWindow(env->bgConfig, &env->window, &Blackout_WindowTemplate);
 
     BufferPlayersName(env->msgFmt, 0, Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem)));
     if (fieldSystem->location->mapId == MAP_T20R0201) {
+        // {STRVAR_1 3, 0, 0} scurried back\nhome, protecting the exhausted\nand fainted Pokémon from further\nharm...
         _PrintMessage(env, msg_0203_00004, 0, 0);
     } else {
+        // {STRVAR_1 3, 0, 0} scurried to\na Pokémon Center, protecting\nthe exhausted and fainted\nPokémon from further harm...
         _PrintMessage(env, msg_0203_00003, 0, 0);
     }
     CopyWindowToVram(&env->window);
-    TaskManager_Call(taskManager, FieldTask_ShowPrintedMessage, env);
+    TaskManager_Call(taskManager, Task_ShowPrintedBlackoutMessage, env);
 }
 
-static BOOL FieldTask_ShowPrintedMessage(TaskManager *taskManager) {
+static BOOL Task_ShowPrintedBlackoutMessage(TaskManager *taskManager) {
     BlackoutScreenEnvironment *work = TaskManager_GetEnvironment(taskManager);
     switch (work->state) {
     case 0:
@@ -196,7 +197,7 @@ BOOL Task_BlackOut(TaskManager *taskManager) {
     case 3:
         SetBlendBrightness(-16, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN);
         SetBlendBrightness(-16, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_SUB);
-        DrawBlackoutMessage(fieldSystem, taskManager);
+        Blackout_DrawMessage(fieldSystem, taskManager);
         (*state)++;
         break;
     case 4:

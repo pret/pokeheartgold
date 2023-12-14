@@ -6538,7 +6538,7 @@ _02257258: .word 0x00000283
 ov03_0225725C: ; 0x0225725C
 	push {r4, lr}
 	add r4, r0, #0
-	bl GfGfx_EngineBGetPlanes
+	bl GfGfx_EngineAGetPlanes
 	mov r1, #0x9f
 	lsl r1, r1, #2
 	str r0, [r4, r1]

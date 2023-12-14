@@ -55,6 +55,6 @@ void GfGfx_EngineBTogglePlanes(GXPlaneMask planeMask, GFPlaneToggle enable);
 void GfGfx_EngineBSetPlanes(u32 planes);
 void GfGfx_BothDispOn(void);
 void GfGfx_SwapDisplay(void);
-u32 GfGfx_EngineBGetPlanes(void);
+u32 GfGfx_EngineAGetPlanes(void);
 
 #endif //POKEHEARTGOLD_GF_GFX_PLANES_H
