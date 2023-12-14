@@ -88,24 +88,27 @@ scr_seq_R34_001:
 	setvar VAR_UNK_408E, 3
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0130:
 	step 75, 1
 	step 13, 1
 	step 15, 2
 	step_end
 
+	.balign 4, 0
 _0140:
 	step 63, 3
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _014C:
 	step 14, 2
 	step 12, 1
 	step 33, 1
 	step_end
+
 scr_seq_R34_003:
 	scrcmd_609
 	lockall
@@ -288,12 +291,13 @@ _0455:
 	wait_fade
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0494:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _049C:
 	step 13, 6
 	step 15, 3
@@ -301,139 +305,172 @@ _049C:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _04B0:
 	step 13, 7
 	step 15, 3
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _04C0:
 	step 13, 1
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _04CC:
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _04D4:
 	step 15, 1
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _04E0:
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _04E8:
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _04F0:
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _04F8:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0500:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0508:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0510:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0518:
 	step 33, 1
 	step_end
-	.byte 0x45, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_0520:
+	step 69, 1
+	step_end
+
+	.balign 4, 0
 _0528:
 	step 15, 1
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _0534:
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _053C:
 	step 14, 1
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _0548:
 	step 14, 2
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _0554:
 	step 14, 3
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _0560:
 	step 14, 3
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _056C:
 	step 14, 4
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _0578:
 	step 15, 3
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0584:
 	step 15, 4
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0590:
 	step 15, 3
 	step_end
 
+	.balign 4, 0
 _0598:
 	step 13, 1
 	step 15, 3
 	step_end
 
+	.balign 4, 0
 _05A4:
 	step 63, 1
 	step 15, 3
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _05B4:
 	step 63, 1
 	step 15, 4
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _05C4:
 	step 12, 1
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _05D0:
 	step 15, 1
 	step 12, 1
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _05E0:
 	step 12, 2
 	step 69, 1
 	step_end
+
 scr_seq_R34_002:
 	simple_npc_msg msg_0384_R34_00018
 	end
@@ -522,8 +559,8 @@ _073B:
 	closemsg
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0750:
 	step 15, 1
 	step 12, 2
@@ -532,11 +569,13 @@ _0750:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0768:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0774:
 	step 12, 1
 	step 14, 1
@@ -544,6 +583,7 @@ _0774:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0788:
 	step 12, 1
 	step 15, 1
@@ -551,16 +591,19 @@ _0788:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _079C:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _07A8:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
+
 scr_seq_R34_004:
 	scrcmd_609
 	lockall
@@ -568,7 +611,10 @@ scr_seq_R34_004:
 	compare VAR_TEMP_x4003, 1
 	goto_if_ne _07DB
 	goto _07E1
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_07D5:
+	goto _07E1
+
 _07DB:
 	goto _087D
 
@@ -607,7 +653,8 @@ _07E1:
 	wait_button_or_walk_away
 	closemsg
 	goto _0908
-	.byte 0x02, 0x00
+	end
+
 _087D:
 	apply_movement obj_R34_gswoman3, _0918
 	stop_bgm 0
@@ -651,37 +698,44 @@ _0912:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _0918:
 	step 75, 1
 	step 14, 4
 	step_end
 
+	.balign 4, 0
 _0924:
 	step 75, 1
 	step 15, 4
 	step_end
 
+	.balign 4, 0
 _0930:
 	step 75, 1
 	step 12, 2
 	step_end
 
+	.balign 4, 0
 _093C:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _0944:
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _094C:
 	step 50, 2
 	step_end
 
+	.balign 4, 0
 _0954:
 	step 51, 2
 	step_end
+
 scr_seq_R34_005:
 	scrcmd_609
 	lockall
@@ -721,7 +775,8 @@ _09EE:
 	callstd std_bag_is_full
 	closemsg
 	goto _09D5
-	.byte 0x02, 0x00
+	end
+
 scr_seq_R34_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall

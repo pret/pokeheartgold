@@ -60,12 +60,13 @@ scr_seq_D52R0103_001:
 	setvar VAR_SCENE_EMBEDDED_TOWER, 6
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _00B4:
 	step 12, 8
 	step 63, 2
 	step_end
+
 scr_seq_D52R0103_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall

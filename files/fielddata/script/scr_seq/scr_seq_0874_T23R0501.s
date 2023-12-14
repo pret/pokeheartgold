@@ -37,7 +37,8 @@ scr_seq_T23R0501_005:
 	setflag FLAG_UNK_07C
 	releaseall
 	goto _011A
-	.byte 0x02, 0x00
+	end
+
 scr_seq_T23R0501_001:
 	goto_if_set FLAG_UNK_07C, _011A
 	play_se SEQ_SE_DP_SELECT
@@ -51,9 +52,13 @@ scr_seq_T23R0501_001:
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00A7
 	goto _00C7
-	.byte 0x16, 0x00, 0x08, 0x00, 0x00, 0x00
+
+_00A1:
+	goto _00AF
+
 _00A7:
 	apply_movement obj_T23R0501_gantetsu, _02E0
+_00AF:
 	wait_movement
 _00B1:
 	releaseall
@@ -139,12 +144,18 @@ _01A5:
 _01EE:
 	npc_msg msg_0571_T23R0501_00010
 	goto _021F
-	.byte 0x02, 0x00, 0x2d, 0x00, 0x09, 0x16, 0x00, 0x1d, 0x00
-	.byte 0x00, 0x00, 0x02, 0x00
+	end
+
+_01F9:
+	npc_msg msg_0571_T23R0501_00009
+	goto _021F
+	end
+
 _0204:
 	npc_msg msg_0571_T23R0501_00007
 	goto _021F
-	.byte 0x02, 0x00
+	end
+
 _020F:
 	npc_msg msg_0571_T23R0501_00003
 	compare VAR_UNK_4080, 3
@@ -194,37 +205,48 @@ _0289:
 	closemsg
 	releaseall
 	end
-	.byte 0x5e, 0x00, 0x01, 0x00, 0x68, 0x00, 0x00, 0x00, 0x5f, 0x00, 0x61, 0x00
-	.byte 0x02, 0x00
+
+_0294:
+	apply_movement 1, _0304
+	wait_movement
+	releaseall
+	end
+
 _02A2:
 	npc_msg msg_0571_T23R0501_00019
 	goto _024A
-	.byte 0x02, 0x00, 0x00, 0x00, 0x00
+	end
 
+	.balign 4, 0
 _02B0:
 	step 65, 1
 	step 37, 1
 	step_end
 
+	.balign 4, 0
 _02BC:
 	step 75, 1
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _02C8:
 	step 18, 1
 	step 65, 1
 	step_end
 
+	.balign 4, 0
 _02D4:
 	step 39, 1
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _02E0:
 	step 17, 5
 	step_end
 
+	.balign 4, 0
 _02E8:
 	step 18, 1
 	step 17, 2
@@ -232,11 +254,18 @@ _02E8:
 	step 17, 3
 	step_end
 
+	.balign 4, 0
 _02FC:
 	step 14, 1
 	step_end
-	.byte 0x27, 0x00, 0x01, 0x00, 0x0f, 0x00, 0x01, 0x00, 0x26, 0x00, 0x01, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00
+
+	.balign 4, 0
+_0304:
+	step 39, 1
+	step 15, 1
+	step 38, 1
+	step_end
+
 scr_seq_T23R0501_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall

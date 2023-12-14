@@ -43,8 +43,8 @@ scr_seq_T27PC0101_001:
 	setvar VAR_UNK_410D, 1
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0084:
 	step 13, 4
 	step 15, 6
@@ -54,11 +54,13 @@ _0084:
 	step 62, 4
 	step_end
 
+	.balign 4, 0
 _00A0:
 	step 62, 20
 	step 12, 4
 	step_end
 
+	.balign 4, 0
 _00AC:
 	step 15, 1
 	step 13, 4
@@ -66,10 +68,12 @@ _00AC:
 	step 13, 2
 	step_end
 
+	.balign 4, 0
 _00C0:
 	step 62, 6
 	step 1, 1
 	step_end
+
 scr_seq_T27PC0101_002:
 	simple_npc_msg msg_0615_T27PC0101_00002
 	end

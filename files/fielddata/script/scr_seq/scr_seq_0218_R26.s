@@ -106,8 +106,8 @@ _0166:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _017C:
 	step 15, 1
 	step 12, 2
@@ -116,11 +116,13 @@ _017C:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0194:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _01A0:
 	step 12, 1
 	step 14, 1
@@ -128,16 +130,19 @@ _01A0:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _01B4:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _01C0:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
+
 scr_seq_R26_002:
 	scrcmd_055 2, 0
 	scrcmd_057 3

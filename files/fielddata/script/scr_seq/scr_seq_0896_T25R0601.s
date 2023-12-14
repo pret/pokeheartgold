@@ -68,46 +68,55 @@ _00EA:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _00FC:
 	step 12, 1
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _0108:
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _0110:
 	step 63, 1
 	step 2, 1
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0120:
 	step 13, 1
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _012C:
 	step 38, 4
 	step_end
 
+	.balign 4, 0
 _0134:
 	step 37, 4
 	step_end
 
+	.balign 4, 0
 _013C:
 	step 36, 4
 	step_end
 
+	.balign 4, 0
 _0144:
 	step 39, 4
 	step_end
 
+	.balign 4, 0
 _014C:
 	step 3, 1
 	step_end
+
 scr_seq_T25R0601_000:
 	goto_if_set FLAG_UNK_0B5, _01E5
 	check_badge BADGE_PLAIN, VAR_TEMP_x4000
@@ -343,8 +352,8 @@ _04DD:
 	setvar VAR_UNK_4082, 0
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _04F0:
 	step 75, 1
 	step_end

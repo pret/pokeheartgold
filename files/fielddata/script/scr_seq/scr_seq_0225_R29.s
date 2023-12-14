@@ -345,11 +345,12 @@ _0559:
 	following_pokemon_movement 48
 	return
 
-
+	.balign 4, 0
 _05BC:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _05C4:
 	step 17, 1
 	step 19, 2
@@ -357,11 +358,13 @@ _05C4:
 	step 50, 2
 	step_end
 
+	.balign 4, 0
 _05D8:
 	step 35, 1
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _05E4:
 	step 50, 3
 	step 65, 1
@@ -371,6 +374,7 @@ _05E4:
 	step 63, 3
 	step_end
 
+	.balign 4, 0
 _0600:
 	step 63, 3
 	step 58, 1
@@ -380,37 +384,45 @@ _0600:
 	step 50, 3
 	step_end
 
+	.balign 4, 0
 _061C:
 	step 15, 3
 	step_end
 
+	.balign 4, 0
 _0624:
 	step 15, 3
 	step_end
 
+	.balign 4, 0
 _062C:
 	step 14, 3
 	step_end
 
+	.balign 4, 0
 _0634:
 	step 15, 1
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _0640:
 	step 63, 1
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _064C:
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _0654:
 	step 14, 1
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0660:
 	step 16, 4
 	step 19, 2
@@ -420,40 +432,47 @@ _0660:
 	step 19, 4
 	step_end
 
+	.balign 4, 0
 _067C:
 	step 15, 2
 	step 12, 3
 	step 15, 2
 	step_end
 
+	.balign 4, 0
 _068C:
 	step 15, 2
 	step 12, 2
 	step 15, 2
 	step_end
 
+	.balign 4, 0
 _069C:
 	step 15, 2
 	step 12, 1
 	step 15, 2
 	step_end
 
+	.balign 4, 0
 _06AC:
 	step 15, 4
 	step_end
 
+	.balign 4, 0
 _06B4:
 	step 15, 2
 	step 13, 1
 	step 15, 2
 	step_end
 
+	.balign 4, 0
 _06C4:
 	step 15, 2
 	step 13, 2
 	step 15, 2
 	step_end
 
+	.balign 4, 0
 _06D4:
 	step 18, 1
 	step 16, 4
@@ -464,6 +483,7 @@ _06D4:
 	step 19, 3
 	step_end
 
+	.balign 4, 0
 _06F4:
 	step 14, 1
 	step 15, 2
@@ -471,6 +491,7 @@ _06F4:
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _0708:
 	step 14, 1
 	step 15, 2
@@ -478,6 +499,7 @@ _0708:
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _071C:
 	step 14, 1
 	step 15, 2
@@ -485,11 +507,13 @@ _071C:
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _0730:
 	step 14, 1
 	step 15, 3
 	step_end
 
+	.balign 4, 0
 _073C:
 	step 14, 1
 	step 15, 2
@@ -497,6 +521,7 @@ _073C:
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _0750:
 	step 14, 1
 	step 15, 2
@@ -504,81 +529,96 @@ _0750:
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _0764:
 	step 13, 6
 	step 14, 9
 	step_end
 
+	.balign 4, 0
 _0770:
 	step 13, 5
 	step 14, 9
 	step_end
 
+	.balign 4, 0
 _077C:
 	step 13, 4
 	step 14, 9
 	step_end
 
+	.balign 4, 0
 _0788:
 	step 13, 3
 	step 14, 9
 	step_end
 
+	.balign 4, 0
 _0794:
 	step 13, 2
 	step 14, 9
 	step_end
 
+	.balign 4, 0
 _07A0:
 	step 13, 1
 	step 14, 9
 	step_end
 
+	.balign 4, 0
 _07AC:
 	step 14, 9
 	step_end
 
+	.balign 4, 0
 _07B4:
 	step 15, 1
 	step 13, 6
 	step 14, 8
 	step_end
 
+	.balign 4, 0
 _07C4:
 	step 15, 1
 	step 13, 5
 	step 14, 8
 	step_end
 
+	.balign 4, 0
 _07D4:
 	step 15, 1
 	step 13, 4
 	step 14, 8
 	step_end
 
+	.balign 4, 0
 _07E4:
 	step 15, 1
 	step 13, 3
 	step 14, 8
 	step_end
 
+	.balign 4, 0
 _07F4:
 	step 15, 1
 	step 13, 2
 	step 14, 8
 	step_end
 
+	.balign 4, 0
 _0804:
 	step 15, 1
 	step 13, 1
 	step 14, 8
 	step_end
 
+	.balign 4, 0
 _0814:
 	step 15, 1
 	step 14, 8
 	step_end
 
+	.balign 4, 0
 _0820:
 	step 63, 1
 	step 14, 1
@@ -586,6 +626,7 @@ _0820:
 	step 14, 5
 	step_end
 
+	.balign 4, 0
 _0834:
 	step 63, 1
 	step 14, 1
@@ -593,6 +634,7 @@ _0834:
 	step 14, 5
 	step_end
 
+	.balign 4, 0
 _0848:
 	step 63, 1
 	step 14, 1
@@ -600,6 +642,7 @@ _0848:
 	step 14, 5
 	step_end
 
+	.balign 4, 0
 _085C:
 	step 63, 1
 	step 14, 1
@@ -607,6 +650,7 @@ _085C:
 	step 14, 5
 	step_end
 
+	.balign 4, 0
 _0870:
 	step 63, 1
 	step 14, 1
@@ -614,6 +658,7 @@ _0870:
 	step 14, 5
 	step_end
 
+	.balign 4, 0
 _0884:
 	step 63, 1
 	step 14, 1
@@ -621,11 +666,13 @@ _0884:
 	step 14, 5
 	step_end
 
+	.balign 4, 0
 _0898:
 	step 63, 1
 	step 14, 6
 	step_end
 
+	.balign 4, 0
 _08A4:
 	step 63, 1
 	step 14, 1
@@ -633,6 +680,7 @@ _08A4:
 	step 14, 7
 	step_end
 
+	.balign 4, 0
 _08B8:
 	step 63, 1
 	step 14, 1
@@ -640,6 +688,7 @@ _08B8:
 	step 14, 7
 	step_end
 
+	.balign 4, 0
 _08CC:
 	step 63, 1
 	step 14, 1
@@ -647,6 +696,7 @@ _08CC:
 	step 14, 7
 	step_end
 
+	.balign 4, 0
 _08E0:
 	step 63, 1
 	step 14, 1
@@ -654,6 +704,7 @@ _08E0:
 	step 14, 7
 	step_end
 
+	.balign 4, 0
 _08F4:
 	step 63, 1
 	step 14, 1
@@ -661,6 +712,7 @@ _08F4:
 	step 14, 7
 	step_end
 
+	.balign 4, 0
 _0908:
 	step 63, 1
 	step 14, 1
@@ -668,11 +720,13 @@ _0908:
 	step 14, 7
 	step_end
 
+	.balign 4, 0
 _091C:
 	step 63, 1
 	step 14, 8
 	step_end
 
+	.balign 4, 0
 _0928:
 	step 13, 2
 	step 14, 4
@@ -680,6 +734,7 @@ _0928:
 	step 14, 3
 	step_end
 
+	.balign 4, 0
 _093C:
 	step 15, 1
 	step 13, 2
@@ -687,6 +742,7 @@ _093C:
 	step 13, 4
 	step 14, 2
 	step_end
+
 scr_seq_R29_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall

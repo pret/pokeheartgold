@@ -243,8 +243,8 @@ _031B:
 	closemsg
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0330:
 	step 15, 1
 	step 12, 2
@@ -253,11 +253,13 @@ _0330:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0348:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0354:
 	step 12, 1
 	step 14, 1
@@ -265,6 +267,7 @@ _0354:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0368:
 	step 12, 1
 	step 15, 1
@@ -272,16 +275,19 @@ _0368:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _037C:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0388:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
+
 scr_seq_D47_015:
 	simple_npc_msg msg_0133_D47_00015
 	end

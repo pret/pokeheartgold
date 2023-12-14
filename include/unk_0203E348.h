@@ -117,6 +117,11 @@ typedef struct UnkStruct_0203EDDC {
     Pokemon *unk10;
 } UnkStruct_0203EDDC;
 
+typedef struct CertificatesApp_Args {
+    SaveData *saveData;
+    u32 certificateId;
+} CertificatesApp_Args;
+
 struct UseMailWork *CreateUseMailWork(FieldSystem *fieldSystem, int kind, int mailId, HeapID heapId);
 struct ApricornBoxWork *CreateApricornBoxWork(FieldSystem *fieldSystem, int a1);
 struct PalPadWork *CreatePalPadWork(FieldSystem *fieldSystem, SaveData *saveData, HeapID heapId);
@@ -179,7 +184,7 @@ void sub_0203E960(TaskManager *taskManager, int a1, u16 *a2, u16 *a3, u16 *a4);
 void sub_0203F818(FieldSystem *fieldSystem);
 void HatchEggInParty(FieldSystem *fieldSystem);
 void *sub_0203F074(FieldSystem *fieldSystem, HeapID heapId);
-void *sub_0203FA8C(FieldSystem *fieldSystem, HeapID heapId, u16 a2);
+void *LaunchCertificatesApp(FieldSystem *fieldSystem, HeapID heapId, u16 certificateId);
 void *sub_0203E5D0(HeapID heapId, FieldSystem *fieldSystem, u16 a2);
 void *sub_0203FAB4(FieldSystem *fieldSystem, u8 a1, u8 a2, u16 a3, HeapID heapId);
 ScratchCardAppData *ScratchOffCards_Create(FieldSystem *fieldSystem, HeapID heapId);

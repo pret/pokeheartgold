@@ -64,12 +64,19 @@ _0071:
 	setvar VAR_UNK_40FF, 1
 	releaseall
 	end
-	.byte 0x14, 0x00, 0xd9, 0x07, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00, 0x00
 
+_00F5:
+	callstd std_bag_is_full
+	closemsg
+	releaseall
+	end
+
+	.balign 4, 0
 _0100:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0108:
 	step 34, 1
 	step 61, 1
@@ -78,9 +85,11 @@ _0108:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0120:
 	step 0, 1
 	step_end
+
 scr_seq_R10R0202_007:
 	scrcmd_609
 	lockall
@@ -110,7 +119,7 @@ scr_seq_R10R0202_007:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _0198:
 	step 75, 1
 	step 13, 1
@@ -120,6 +129,7 @@ _0198:
 	step 12, 2
 	step_end
 
+	.balign 4, 0
 _01B4:
 	step 66, 2
 	step 12, 1
@@ -128,17 +138,20 @@ _01B4:
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _01CC:
 	step 66, 4
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _01D8:
 	step 13, 2
 	step 14, 5
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _01E8:
 	step 13, 3
 	step 14, 2
@@ -146,10 +159,12 @@ _01E8:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _01FC:
 	step 63, 7
 	step 1, 1
 	step_end
+
 scr_seq_R10R0202_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall

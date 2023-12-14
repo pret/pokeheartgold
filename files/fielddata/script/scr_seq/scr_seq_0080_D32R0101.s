@@ -56,7 +56,8 @@ scr_seq_D32R0101_001:
 	npc_msg msg_0103_D32R0101_00004
 	call _00A6
 	goto _012B
-	.byte 0x02, 0x00
+	end
+
 _00A6:
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
@@ -87,27 +88,32 @@ _0138:
 	npc_msg msg_0103_D32R0101_00005
 	npc_msg msg_0103_D32R0101_00004
 	goto _00A6
-	.byte 0x02, 0x00
+	end
+
 _0146:
 	npc_msg msg_0103_D32R0101_00007
 	npc_msg msg_0103_D32R0101_00004
 	goto _00A6
-	.byte 0x02, 0x00
+	end
+
 _0154:
 	npc_msg msg_0103_D32R0101_00008
 	npc_msg msg_0103_D32R0101_00004
 	goto _00A6
-	.byte 0x02, 0x00
+	end
+
 _0162:
 	npc_msg msg_0103_D32R0101_00009
 	npc_msg msg_0103_D32R0101_00004
 	goto _00A6
-	.byte 0x02, 0x00
+	end
+
 _0170:
 	npc_msg msg_0103_D32R0101_00006
 	npc_msg msg_0103_D32R0101_00004
 	goto _00A6
-	.byte 0x02, 0x00
+	end
+
 scr_seq_D32R0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -125,11 +131,13 @@ scr_seq_D32R0101_002:
 _01AD:
 	npc_msg msg_0103_D32R0101_00018
 	goto _01B8
-	.byte 0x02, 0x00
+	end
+
 _01B8:
 	npc_msg msg_0103_D32R0101_00019
 	goto _01C3
-	.byte 0x02, 0x00
+	end
+
 _01C3:
 	wait_button_or_walk_away
 	closemsg
@@ -153,11 +161,13 @@ scr_seq_D32R0101_003:
 _01FA:
 	npc_msg msg_0103_D32R0101_00021
 	goto _0205
-	.byte 0x02, 0x00
+	end
+
 _0205:
 	npc_msg msg_0103_D32R0101_00022
 	goto _0210
-	.byte 0x02, 0x00
+	end
+
 _0210:
 	wait_button_or_walk_away
 	closemsg
@@ -181,11 +191,13 @@ scr_seq_D32R0101_004:
 _0247:
 	npc_msg msg_0103_D32R0101_00024
 	goto _0252
-	.byte 0x02, 0x00
+	end
+
 _0252:
 	npc_msg msg_0103_D32R0101_00025
 	goto _025D
-	.byte 0x02, 0x00
+	end
+
 _025D:
 	wait_button_or_walk_away
 	closemsg
@@ -209,11 +221,13 @@ scr_seq_D32R0101_005:
 _0294:
 	npc_msg msg_0103_D32R0101_00027
 	goto _029F
-	.byte 0x02, 0x00
+	end
+
 _029F:
 	npc_msg msg_0103_D32R0101_00028
 	goto _02AA
-	.byte 0x02, 0x00
+	end
+
 _02AA:
 	wait_button_or_walk_away
 	closemsg
@@ -237,11 +251,13 @@ scr_seq_D32R0101_006:
 _02E1:
 	npc_msg msg_0103_D32R0101_00030
 	goto _02EC
-	.byte 0x02, 0x00
+	end
+
 _02EC:
 	npc_msg msg_0103_D32R0101_00031
 	goto _02F7
-	.byte 0x02, 0x00
+	end
+
 _02F7:
 	wait_button_or_walk_away
 	closemsg
@@ -274,24 +290,28 @@ _0333:
 	toggle_following_pokemon_movement 1
 	following_pokemon_movement 48
 	return
-	.byte 0x00
 
+	.balign 4, 0
 _0384:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _038C:
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _0394:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _039C:
 	step 12, 3
 	step 34, 1
 	step_end
+
 scr_seq_D32R0101_007:
 	simple_npc_msg msg_0103_D32R0101_00032
 	end

@@ -50,29 +50,33 @@ scr_seq_T20R0201_000:
 	setvar VAR_SCENE_PLAYERS_HOUSE_1F, 1
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _00A4:
 	step 62, 1
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _00B0:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _00B8:
 	step 12, 2
 	step 14, 3
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _00C8:
 	step 33, 1
 	step 13, 3
 	step 15, 3
 	step 32, 1
 	step_end
+
 scr_seq_T20R0201_006:
 	scrcmd_609
 	lockall
@@ -106,7 +110,8 @@ _015C:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01F2
 	goto _0205
-	.byte 0x02, 0x00
+	end
+
 _0179:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -144,9 +149,11 @@ _01D4:
 	closemsg
 	releaseall
 	end
-	.byte 0x49
-	.byte 0x00, 0xdc, 0x05, 0x60, 0x00, 0x68, 0x00, 0x2d, 0x00, 0x07, 0x32, 0x00, 0x35, 0x00, 0x61, 0x00
-	.byte 0x02, 0x00
+
+_01DF:
+	simple_npc_msg msg_0545_T20R0201_00007
+	end
+
 _01F2:
 	simple_npc_msg msg_0545_T20R0201_00034
 	end
@@ -201,7 +208,8 @@ _0275:
 	case 1, _0335
 	case 2, _0398
 	goto _03D1
-	.byte 0x02, 0x00
+	end
+
 _02DF:
 	bank_or_wallet_is_full 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1

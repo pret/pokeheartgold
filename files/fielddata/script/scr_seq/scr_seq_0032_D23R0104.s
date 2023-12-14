@@ -161,13 +161,14 @@ _0209:
 	white_out
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0210:
 	step 75, 1
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _021C:
 	step 75, 1
 	step 33, 1

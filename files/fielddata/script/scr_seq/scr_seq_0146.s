@@ -44,13 +44,15 @@ scr_seq_0146_000:
 	goto_if_eq _00AD
 	closemsg
 	goto _093D
-	.byte 0x02, 0x00
+	end
+
 _009E:
 	npc_msg msg_0211_00002
 	wait_button_or_walk_away
 	closemsg
 	goto _093D
-	.byte 0x02, 0x00
+	end
+
 _00AD:
 	get_party_slot_with_move VAR_SPECIAL_RESULT, MOVE_CUT
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
@@ -103,7 +105,8 @@ _016F:
 	compare VAR_SPECIAL_x8005, 0
 	goto_if_eq _016F
 	goto _093D
-	.byte 0x02, 0x00
+	end
+
 scr_seq_0146_007:
 	scrcmd_609
 	lockall
@@ -191,13 +194,15 @@ scr_seq_0146_001:
 	goto_if_eq _02E6
 	closemsg
 	goto _093D
-	.byte 0x02, 0x00
+	end
+
 _02D7:
 	npc_msg msg_0211_00004
 	wait_button_or_walk_away
 	closemsg
 	goto _093D
-	.byte 0x02, 0x00
+	end
+
 _02E6:
 	bufferpartymonnick 0, VAR_SPECIAL_x8004
 	npc_msg msg_0211_00005
@@ -254,7 +259,8 @@ _03B4:
 	releaseall
 	scrcmd_rock_smash_item_check VAR_SPECIAL_x8007, VAR_SPECIAL_RESULT, VAR_SPECIAL_x8006
 	goto _0CEB
-	.byte 0x02, 0x00
+	end
+
 scr_seq_0146_008:
 	scrcmd_609
 	lockall
@@ -313,7 +319,8 @@ _04AB:
 	releaseall
 	scrcmd_rock_smash_item_check VAR_SPECIAL_x8007, VAR_SPECIAL_RESULT, VAR_SPECIAL_x8006
 	goto _0CEB
-	.byte 0x02, 0x00
+	end
+
 _04D0:
 	scrcmd_732 20
 	scrcmd_733 1, VAR_SPECIAL_RESULT
@@ -353,13 +360,15 @@ _051C:
 	goto_if_eq _0573
 	closemsg
 	goto _093D
-	.byte 0x02, 0x00
+	end
+
 _0564:
 	npc_msg msg_0211_00009
 	wait_button_or_walk_away
 	closemsg
 	goto _093D
-	.byte 0x02, 0x00
+	end
+
 _0573:
 	strength_flag_action 1
 	get_party_slot_with_move VAR_SPECIAL_RESULT, MOVE_STRENGTH
@@ -405,7 +414,8 @@ _060E:
 	wait_button_or_walk_away
 	closemsg
 	goto _093D
-	.byte 0x02, 0x00
+	end
+
 _061D:
 	npc_msg msg_0211_00010
 	wait_button_or_walk_away
@@ -464,7 +474,8 @@ _06D7:
 	wait_button_or_walk_away
 	closemsg
 	goto _0945
-	.byte 0x02, 0x00
+	end
+
 scr_seq_0146_015:
 	play_se SEQ_SE_GS_IWAOTOSHI01
 	wait 12, VAR_SPECIAL_RESULT
@@ -510,19 +521,22 @@ scr_seq_0146_003:
 	goto_if_eq _07B5
 	closemsg
 	goto _0941
-	.byte 0x02, 0x00
+	end
+
 _0797:
 	npc_msg msg_0211_00022
 	wait_button_or_walk_away
 	closemsg
 	goto _0941
-	.byte 0x02, 0x00
+	end
+
 _07A6:
 	npc_msg msg_0211_00023
 	wait_button_or_walk_away
 	closemsg
 	goto _0941
-	.byte 0x02, 0x00
+	end
+
 _07B5:
 	get_party_slot_with_move VAR_SPECIAL_RESULT, MOVE_ROCK_CLIMB
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
@@ -531,7 +545,8 @@ _07B5:
 	closemsg
 	rock_climb VAR_SPECIAL_x8004
 	goto _0941
-	.byte 0x02, 0x00
+	end
+
 scr_seq_0146_010:
 	scrcmd_609
 	lockall
@@ -556,7 +571,8 @@ scr_seq_0146_004:
 	goto_if_eq _0833
 	closemsg
 	goto _0941
-	.byte 0x02, 0x00
+	end
+
 _0826:
 	npc_msg msg_0211_00016
 	wait_button_or_walk_away
@@ -571,7 +587,8 @@ _0833:
 	closemsg
 	surf VAR_SPECIAL_x8004
 	goto _0941
-	.byte 0x02, 0x00
+	end
+
 scr_seq_0146_011:
 	scrcmd_609
 	lockall
@@ -672,13 +689,15 @@ scr_seq_0146_005:
 	goto_if_eq _09A6
 	closemsg
 	goto _0941
-	.byte 0x02, 0x00
+	end
+
 _0997:
 	npc_msg msg_0211_00026
 	wait_button_or_walk_away
 	closemsg
 	goto _0941
-	.byte 0x02, 0x00
+	end
+
 _09A6:
 	get_party_slot_with_move VAR_SPECIAL_RESULT, MOVE_WATERFALL
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
@@ -687,7 +706,8 @@ _09A6:
 	closemsg
 	waterfall VAR_SPECIAL_x8004
 	goto _0941
-	.byte 0x02, 0x00
+	end
+
 scr_seq_0146_012:
 	scrcmd_609
 	lockall
@@ -717,13 +737,15 @@ scr_seq_0146_016:
 	goto_if_eq _0A43
 	closemsg
 	goto _0941
-	.byte 0x02, 0x00
+	end
+
 _0A34:
 	npc_msg msg_0211_00031
 	wait_button_or_walk_away
 	closemsg
 	goto _0941
-	.byte 0x02, 0x00
+	end
+
 _0A43:
 	get_party_slot_with_move VAR_SPECIAL_RESULT, MOVE_WHIRLPOOL
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
@@ -732,7 +754,8 @@ _0A43:
 	closemsg
 	whirlpool VAR_SPECIAL_x8004
 	goto _0941
-	.byte 0x02, 0x00
+	end
+
 scr_seq_0146_017:
 	scrcmd_609
 	lockall
@@ -763,14 +786,15 @@ scr_seq_0146_014:
 	goto_if_eq _0AD1
 	closemsg
 	goto _093D
-	.byte 0x02, 0x00
+	end
+
 _0AC2:
 	npc_msg msg_0211_00034
 	wait_button_or_walk_away
 	closemsg
 	goto _093D
-	.byte 0x02
-	.byte 0x00
+	end
+
 _0AD1:
 	get_party_slot_with_move VAR_SPECIAL_RESULT, MOVE_HEADBUTT
 	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT

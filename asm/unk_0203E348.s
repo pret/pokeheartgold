@@ -62,8 +62,8 @@ _020FA2E4:
 	.word ov67_021E5900, ov67_021E5984, ov67_021E5968, FS_OVERLAY_ID(OVY_67)
 _020FA2F4:
 	.word ov103_021EC940, ov103_021EC988, ov103_021EC9A4, FS_OVERLAY_ID(OVY_103)
-_020FA304:
-	.word ov78_021E5900, ov78_021E59EC, ov78_021E5B24, FS_OVERLAY_ID(OVY_78)
+sAppTemplate_Certificates:
+	.word CertificatesApp_Init, CertificatesApp_Run, CertificatesApp_Exit, FS_OVERLAY_ID(certificates_app)
 _020FA314:
 	.word ov99_021E7818, ov99_021E794C, ov99_021E78F0, FS_OVERLAY_ID(OVY_99)
 _020FA324:
@@ -3145,8 +3145,8 @@ LaunchVoltorbFlipApp: ; 0x0203FA38
 _0203FA88: .word _020FA234
 	thumb_func_end LaunchVoltorbFlipApp
 
-	thumb_func_start sub_0203FA8C
-sub_0203FA8C: ; 0x0203FA8C
+	thumb_func_start LaunchCertificatesApp
+LaunchCertificatesApp: ; 0x0203FA8C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r0, r1, #0
@@ -3156,7 +3156,7 @@ sub_0203FA8C: ; 0x0203FA8C
 	add r4, r0, #0
 	str r6, [r4, #4]
 	ldr r0, [r5, #0xc]
-	ldr r1, _0203FAB0 ; =_020FA304
+	ldr r1, _0203FAB0 ; =sAppTemplate_Certificates
 	str r0, [r4]
 	add r0, r5, #0
 	add r2, r4, #0
@@ -3164,8 +3164,8 @@ sub_0203FA8C: ; 0x0203FA8C
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_0203FAB0: .word _020FA304
-	thumb_func_end sub_0203FA8C
+_0203FAB0: .word sAppTemplate_Certificates
+	thumb_func_end LaunchCertificatesApp
 
 	thumb_func_start sub_0203FAB4
 sub_0203FAB4: ; 0x0203FAB4

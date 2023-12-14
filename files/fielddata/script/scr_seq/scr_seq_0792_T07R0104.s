@@ -138,7 +138,8 @@ scr_seq_T07R0104_005:
 	faceplayer
 	npc_msg msg_0497_T07R0104_00009
 	goto _011B
-	.byte 0x02, 0x00
+	end
+
 _01CD:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -189,18 +190,21 @@ scr_seq_T07R0104_006:
 	simple_npc_msg msg_0497_T07R0104_00015
 	end
 
-
+	.balign 4, 0
 _026C:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0274:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _027C:
 	step 33, 1
 	step_end
+
 scr_seq_T07R0104_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall

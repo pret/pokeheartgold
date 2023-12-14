@@ -181,8 +181,8 @@ _0274:
 	closemsg
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0280:
 	step 36, 1
 	step 12, 2
@@ -190,14 +190,17 @@ _0280:
 	step 38, 1
 	step_end
 
+	.balign 4, 0
 _0294:
 	step 12, 5
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _02A0:
 	step 0, 1
 	step_end
+
 scr_seq_T08R0201_002:
 	scrcmd_609
 	lockall
@@ -275,32 +278,39 @@ _03A1:
 	scrcmd_606
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _03BC:
 	step 14, 1
 	step 13, 2
 	step_end
 
+	.balign 4, 0
 _03C8:
 	step 63, 2
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _03D4:
 	step 13, 5
 	step_end
 
+	.balign 4, 0
 _03DC:
 	step 13, 2
 	step 39, 1
 	step_end
 
+	.balign 4, 0
 _03E8:
 	step 13, 4
 	step_end
-	.byte 0x49, 0x00, 0xdc, 0x05, 0x60, 0x00, 0x68, 0x00, 0x2d, 0x00, 0x19, 0x32, 0x00, 0x35, 0x00, 0x61
-	.byte 0x00, 0x02, 0x00
+
+_03F0:
+	simple_npc_msg msg_0516_T08R0201_00025
+	end
+
 scr_seq_T08R0201_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -369,7 +379,8 @@ scr_seq_T08R0201_009:
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _0610
 	goto _0506
-	.byte 0x02, 0x00
+	end
+
 _0506:
 	npc_msg msg_0516_T08R0201_00034
 	wait_button_or_walk_away
@@ -395,7 +406,8 @@ _051C:
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00035
 	goto _0649
-	.byte 0x02, 0x00
+	end
+
 _055D:
 	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
@@ -407,7 +419,8 @@ _055D:
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00036
 	goto _0649
-	.byte 0x02, 0x00
+	end
+
 _059E:
 	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
@@ -418,7 +431,8 @@ _059E:
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00037
 	goto _0659
-	.byte 0x02, 0x00
+	end
+
 _05D7:
 	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
@@ -429,7 +443,8 @@ _05D7:
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00038
 	goto _0659
-	.byte 0x02, 0x00
+	end
+
 _0610:
 	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
@@ -440,7 +455,8 @@ _0610:
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00039
 	goto _0659
-	.byte 0x02, 0x00
+	end
+
 _0649:
 	callstd std_receive_accessory
 	setvar VAR_TEMP_x4009, 1

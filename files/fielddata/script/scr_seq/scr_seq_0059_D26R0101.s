@@ -123,12 +123,13 @@ _0198:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _01AC:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _01B8:
 	step 12, 1
 	step 14, 1
@@ -136,6 +137,7 @@ _01B8:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _01CC:
 	step 12, 1
 	step 15, 1
@@ -143,11 +145,13 @@ _01CC:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _01E0:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _01EC:
 	step 15, 1
 	step 12, 1
