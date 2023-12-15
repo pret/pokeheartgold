@@ -20,9 +20,9 @@
 #include "msgdata/msg.naix"
 
 static void Blackout_InitDisplays(BgConfig *bgConfig);
-void Blackout_DrawMessage(FieldSystem *fieldSystem, TaskManager *taskManager);
-BOOL Task_ShowPrintedBlackoutMessage(TaskManager *taskManager);
-void _PrintMessage(BlackoutScreenEnvironment *environment, int msgno, u8 x, u8 y);
+static void Blackout_DrawMessage(FieldSystem *fieldSystem, TaskManager *taskManager);
+static BOOL Task_ShowPrintedBlackoutMessage(TaskManager *taskManager);
+static void Blackout_PrintMessage(BlackoutScreenEnvironment *environment, s32 msgNo, u8 x, u8 y);
 
 static const struct GraphicsBanks Blackout_GraphicsBanks = {
     .bg = GX_VRAM_BG_128_B,
@@ -99,10 +99,10 @@ static void Blackout_DrawMessage(FieldSystem *fieldSystem, TaskManager *taskMana
     BufferPlayersName(env->msgFmt, 0, Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem)));
     if (fieldSystem->location->mapId == MAP_T20R0201) {
         // {STRVAR_1 3, 0, 0} scurried back\nhome, protecting the exhausted\nand fainted Pokémon from further\nharm...
-        _PrintMessage(env, msg_0203_00004, 0, 0);
+        Blackout_PrintMessage(env, msg_0203_00004, 0, 0);
     } else {
         // {STRVAR_1 3, 0, 0} scurried to\na Pokémon Center, protecting\nthe exhausted and fainted\nPokémon from further harm...
-        _PrintMessage(env, msg_0203_00003, 0, 0);
+        Blackout_PrintMessage(env, msg_0203_00003, 0, 0);
     }
     CopyWindowToVram(&env->window);
     TaskManager_Call(taskManager, Task_ShowPrintedBlackoutMessage, env);
@@ -147,23 +147,23 @@ static BOOL Task_ShowPrintedBlackoutMessage(TaskManager *taskManager) {
     return FALSE;
 }
 
-static void _PrintMessage(BlackoutScreenEnvironment *work, int msgno, u8 x, u8 y) {
-    String *str0 = String_New(1024, (HeapID)11);
-    String *str1 = String_New(1024, (HeapID)11);
+static void Blackout_PrintMessage(BlackoutScreenEnvironment *environment, s32 msgNo, u8 x, u8 y) {
+    String *tmpStr = String_New(1024, HEAP_ID_FIELD);
+    String *finStr = String_New(1024, HEAP_ID_FIELD);
 
-    FillWindowPixelBuffer(&work->window, 0);
-    ReadMsgDataIntoString(work->msgData, msgno, str0);
-    StringExpandPlaceholders(work->msgFmt, str1, str0);
-    {
-        u32 width = FontID_String_GetWidthMultiline(0, str1, 0);
-        x = (work->window.width * 8 - width);
-        x /= 2;
-        x -= 4;
-        AddTextPrinterParameterized2(&work->window, 0, str1, x, y, TEXT_SPEED_NOTRANSFER, MakeTextColor(1, 2, 0), NULL);
-    }
+    FillWindowPixelBuffer(&environment->window, 0);
+    ReadMsgDataIntoString(environment->msgData, msgNo, tmpStr);
+    StringExpandPlaceholders(environment->msgFmt, finStr, tmpStr);
+        
+    u32 width = FontID_String_GetWidthMultiline(0, finStr, 0);
+    x = (environment->window.width * 8 - width);
+    x /= 2;
+    x -= 4;
 
-    String_Delete(str0);
-    String_Delete(str1);
+    AddTextPrinterParameterized2(&environment->window, 0, finStr, x, y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+
+    String_Delete(tmpStr);
+    String_Delete(finStr);
 }
 
 BOOL Task_BlackOut(TaskManager *taskManager) {

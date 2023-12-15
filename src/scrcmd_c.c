@@ -787,7 +787,7 @@ BOOL ScrCmd_DirectionSignpost(ScriptContext* ctx) {
     ReadMsgDataIntoString(ctx->msgdata, msg_no, *tmp_str);
     StringExpandPlaceholders(*msg_fmt, *unk1, *tmp_str);
     Window* window = ov01_021F3D80(fieldSystem->unk68);
-    AddTextPrinterParameterized2(window, 1, *unk1, 0, 0, 0, MakeTextColor(2, 10, 15), NULL);
+    AddTextPrinterParameterized2(window, 1, *unk1, 0, 0, 0, MAKE_TEXT_COLOR(2, 10, 15), NULL);
 
     return TRUE;
 }
@@ -846,7 +846,7 @@ BOOL ScrCmd_TrainerTips(ScriptContext* ctx) {
 
     Window* window = ov01_021F3D80(fieldSystem->unk68);
     u8 text_speed = Options_GetTextFrameDelay(Save_PlayerData_GetOptionsAddr(fieldSystem->saveData));
-    *printer_id_ptr = AddTextPrinterParameterized2(window, 1, *unk, 0, 0, text_speed, MakeTextColor(2, 10, 15), NULL);
+    *printer_id_ptr = AddTextPrinterParameterized2(window, 1, *unk, 0, 0, text_speed, MAKE_TEXT_COLOR(2, 10, 15), NULL);
 
     ctx->data[0] = result_var_id;
     SetupNativeScript(ctx, sub_02041520);
