@@ -16,7 +16,7 @@ typedef struct BlackoutScreenEnvironment {
     MessageFormat *msgFmt;
 } BlackoutScreenEnvironment;
 
-BOOL Task_BlackOut(TaskManager *taskManager);
-void CallTask_BlackOut(TaskManager *taskManager);
+BOOL Task_Blackout(TaskManager *taskManager);
+void CallTask_Blackout(TaskManager *taskManager);
 
 #endif //POKEHEARTGOLD_BLACKOUT_H

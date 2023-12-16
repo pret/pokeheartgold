@@ -2901,7 +2901,7 @@ BOOL ScrCmd_289(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_OverworldWhiteOut(ScriptContext *ctx) {
-    CallTask_BlackOut(ctx->taskman);
+    CallTask_Blackout(ctx->taskman);
     return TRUE;
 }
 

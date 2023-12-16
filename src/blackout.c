@@ -24,7 +24,7 @@ static void Blackout_DrawMessage(FieldSystem *fieldSystem, TaskManager *taskMana
 static BOOL Task_ShowPrintedBlackoutMessage(TaskManager *taskManager);
 static void Blackout_PrintMessage(BlackoutScreenEnvironment *environment, s32 msgNo, u8 x, u8 y);
 
-static const struct GraphicsBanks Blackout_GraphicsBanks = {
+static const struct GraphicsBanks sBlackoutGraphicsBanks = {
     .bg = GX_VRAM_BG_128_B,
     .bgextpltt = GX_VRAM_BGEXTPLTT_NONE,
     .subbg = GX_VRAM_SUB_BG_128_C,
@@ -37,14 +37,14 @@ static const struct GraphicsBanks Blackout_GraphicsBanks = {
     .texpltt = GX_VRAM_TEXPLTT_01_FG,
 };
 
-static const struct GraphicsModes Blackout_GraphicsModes = {
+static const struct GraphicsModes sBlackoutGraphicsModes = {
     .dispMode = GX_DISPMODE_GRAPHICS,
     .bgMode = GX_BGMODE_0,
     .subMode = GX_BGMODE_0,
     ._2d3dMode = GX_BG0_AS_2D,
 };
 
-static const BgTemplate Blackout_BgTemplate = {
+static const BgTemplate sBlackoutBgTemplate = {
     .x = 0,
     .y = 0,
     .bufferSize = 0x800,
@@ -60,7 +60,7 @@ static const BgTemplate Blackout_BgTemplate = {
     .mosaic = FALSE
 };
 
-static const WindowTemplate Blackout_WindowTemplate = {
+static const WindowTemplate sBlackoutWindowTemplate = {
     .bgId = GF_BG_LYR_MAIN_3,
     .left = 4,
     .top = 5,
@@ -71,10 +71,10 @@ static const WindowTemplate Blackout_WindowTemplate = {
 };
 
 static void Blackout_InitDisplays(BgConfig *bgConfig) {
-    GfGfx_SetBanks(&Blackout_GraphicsBanks);
-    SetBothScreensModesAndDisable(&Blackout_GraphicsModes);
-    InitBgFromTemplate(bgConfig, 3, &Blackout_BgTemplate, GF_BG_TYPE_TEXT);
-    GfGfxLoader_GXLoadPal(NARC_graphic_font, 7, GF_BG_LYR_MAIN_0, 0x1A0, 0x20, HEAP_ID_FIELD); //TODO: update these enums
+    GfGfx_SetBanks(&sBlackoutGraphicsBanks);
+    SetBothScreensModesAndDisable(&sBlackoutGraphicsModes);
+    InitBgFromTemplate(bgConfig, 3, &sBlackoutBgTemplate, GF_BG_TYPE_TEXT);
+    GfGfxLoader_GXLoadPal(NARC_graphic_font, 7, GF_BG_LYR_MAIN_0, 0x1A0, 0x20, HEAP_ID_FIELD);
     BG_SetMaskColor(3, RGB_WHITE);
 }
 
@@ -94,14 +94,14 @@ static void Blackout_DrawMessage(FieldSystem *fieldSystem, TaskManager *taskMana
     env->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0203_bin, HEAP_ID_FIELD);
     env->msgFmt = MessageFormat_New(HEAP_ID_FIELD);
 
-    AddWindow(env->bgConfig, &env->window, &Blackout_WindowTemplate);
+    AddWindow(env->bgConfig, &env->window, &sBlackoutWindowTemplate);
 
     BufferPlayersName(env->msgFmt, 0, Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem)));
     if (fieldSystem->location->mapId == MAP_T20R0201) {
-        // {STRVAR_1 3, 0, 0} scurried back\nhome, protecting the exhausted\nand fainted Pokémon from further\nharm...
+        // {STRVAR_1 3, 0, 0} scurried back home, protecting the exhausted and fainted Pokémon from further harm...
         Blackout_PrintMessage(env, msg_0203_00004, 0, 0);
     } else {
-        // {STRVAR_1 3, 0, 0} scurried to\na Pokémon Center, protecting\nthe exhausted and fainted\nPokémon from further harm...
+        // {STRVAR_1 3, 0, 0} scurried to a Pokémon Center, protecting the exhausted and fainted Pokémon from further harm...
         Blackout_PrintMessage(env, msg_0203_00003, 0, 0);
     }
     CopyWindowToVram(&env->window);
@@ -166,7 +166,7 @@ static void Blackout_PrintMessage(BlackoutScreenEnvironment *environment, s32 ms
     String_Delete(finStr);
 }
 
-BOOL Task_BlackOut(TaskManager *taskManager) {
+BOOL Task_Blackout(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     u32 *state = TaskManager_GetStatePtr(taskManager);
     LocalFieldData *localFieldData;
@@ -220,6 +220,6 @@ BOOL Task_BlackOut(TaskManager *taskManager) {
     return FALSE;
 }
 
-void CallTask_BlackOut(TaskManager *taskManager) {
-    TaskManager_Call(taskManager, Task_BlackOut, NULL);
+void CallTask_Blackout(TaskManager *taskManager) {
+    TaskManager_Call(taskManager, Task_Blackout, NULL);
 }
