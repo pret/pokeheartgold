@@ -92,7 +92,7 @@ void ShowSaveDataReadError(HeapID heapId) {
     InitBgFromTemplate(bg_config, 0, &sDataReadErrorBgTemplate, GX_BGMODE_0);
     BgClearTilemapBufferAndCommit(bg_config, GF_BG_LYR_MAIN_0);
     LoadUserFrameGfx1(bg_config, GF_BG_LYR_MAIN_0, 0x1F7, 2, 0, heapId);
-    LoadFontPal0(GF_BG_LYR_MAIN_0, 0x20, heapId);
+    LoadFontPal0(GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_1_OFFSET, heapId);
     BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 0x20, 0, heapId);
     BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB(1, 1, 27));
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB(1, 1, 27));
@@ -151,7 +151,7 @@ void ShowGBACartRemovedError(HeapID heapId) {
     InitBgFromTemplate(bg_config, 0, &sDataReadErrorBgTemplate, GX_BGMODE_0);
     BgClearTilemapBufferAndCommit(bg_config, GF_BG_LYR_MAIN_0);
     LoadUserFrameGfx1(bg_config, GF_BG_LYR_MAIN_0, 0x1F7, 2, 0, heapId);
-    LoadFontPal0(GF_BG_LYR_MAIN_0, 0x20, heapId);
+    LoadFontPal0(GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_1_OFFSET, heapId);
     BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 0x20, 0, heapId);
     BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB(1, 1, 27));
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB(1, 1, 27));
