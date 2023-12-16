@@ -6,59 +6,6 @@
 
 	.text
 
-	thumb_func_start PokedexSetBattlerSeen
-PokedexSetBattlerSeen: ; 0x0223C288
-	push {r4, r5, r6, lr}
-	add r6, r1, #0
-	add r5, r0, #0
-	lsl r0, r6, #2
-	add r0, r5, r0
-	ldr r0, [r0, #0x34]
-	bl ov12_02261258
-	add r4, r0, #0
-	ldr r1, [r5, #0x30]
-	add r0, r5, #0
-	mov r2, #2
-	add r3, r6, #0
-	bl ov12_022581D4
-	add r2, r0, #0
-	add r0, r5, #0
-	add r1, r6, #0
-	bl BattleSystem_GetPartyMon
-	add r6, r0, #0
-	ldr r0, [r5, #0x2c]
-	mov r1, #0x84
-	tst r1, r0
-	bne _0223C2CE
-	mov r1, #1
-	tst r1, r4
-	bne _0223C2C6
-	sub r0, #0x4a
-	cmp r0, #1
-	bhi _0223C2CE
-_0223C2C6:
-	ldr r0, [r5, #0x60]
-	add r1, r6, #0
-	bl Pokedex_SetMonSeenFlag
-_0223C2CE:
-	mov r0, #1
-	tst r0, r4
-	bne _0223C2EE
-	add r0, r6, #0
-	mov r1, #0xae
-	mov r2, #0
-	bl GetMonData
-	mov r1, #0x67
-	lsl r1, r1, #2
-	cmp r0, r1
-	bne _0223C2EE
-	ldr r0, [r5, #0x60]
-	add r1, r6, #0
-	bl Pokedex_SetMonCaughtFlag
-_0223C2EE:
-	pop {r4, r5, r6, pc}
-	thumb_func_end PokedexSetBattlerSeen
-
 	thumb_func_start ov12_0223C2F0
 ov12_0223C2F0: ; 0x0223C2F0
 	push {r3, r4, r5, lr}

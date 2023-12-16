@@ -12,7 +12,7 @@ void ov10_0221BE20(BattleSystem *bsys, BattleContext *ctx, u8 battlerId, u8 a3) 
         aiData[i] = 0;
     }
     
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < MAX_MON_MOVES; i++) {
         if (a3 & 1) {
             ctx->trainerAIData.movePoints[i] = 100;
         } else {
@@ -23,7 +23,7 @@ void ov10_0221BE20(BattleSystem *bsys, BattleContext *ctx, u8 battlerId, u8 a3) 
     
     struggleFlags = StruggleCheck(bsys, ctx, battlerId, 0, -1);
     
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < MAX_MON_MOVES; i++) {
         if (struggleFlags & MaskOfFlagNo(i)) {
             ctx->trainerAIData.movePoints[i] = 0;
         }

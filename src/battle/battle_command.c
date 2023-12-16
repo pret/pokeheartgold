@@ -1579,7 +1579,7 @@ BOOL BtlCmd_BufferStatChangeMsg(BattleSystem *bsys, BattleContext *ctx) {
                 ctx->buffMsg.param[1] = ctx->itemTemp;
                 ctx->buffMsg.param[2] = stat + 1;
             } else {
-                ctx->buffMsg.id = (change == 1) ? msg_0197_00750:msg_0197_00753; //{0}'s {1} (sharply) rose!
+                ctx->buffMsg.id = (change == 1) ? msg_0197_00750 : msg_0197_00753; //{0}'s {1} (sharply) rose!
                 ctx->buffMsg.tag = 12;
                 ctx->buffMsg.param[0] = CreateNicknameTag(ctx, ctx->battlerIdStatChange);
                 ctx->buffMsg.param[1] = stat + 1;
@@ -2306,7 +2306,7 @@ BOOL BtlCmd_TryConversion(BattleSystem *bsys, BattleContext *ctx) {
         return FALSE;
     }
 
-    for (cnt = 0; cnt < 4; cnt++) {
+    for (cnt = 0; cnt < MAX_MON_MOVES; cnt++) {
         if (ctx->battleMons[ctx->battlerIdAttacker].moves[cnt] == 0) {
             break;
         }
@@ -2696,13 +2696,13 @@ BOOL BtlCmd_Metronome(BattleSystem *bsys, BattleContext *ctx) {
     while (TRUE) {
         moveNo = (BattleSystem_Random(bsys) % 0x1d3) + 1;
 
-        for (metronomeIndex = 0; metronomeIndex < 4; metronomeIndex++) {
+        for (metronomeIndex = 0; metronomeIndex < MAX_MON_MOVES; metronomeIndex++) {
             if (ctx->battleMons[ctx->battlerIdAttacker].moves[metronomeIndex] == moveNo) {
                 break;
             }
         }
 
-        if (metronomeIndex != 4) {
+        if (metronomeIndex != MAX_MON_MOVES) {
             continue;
         }
 
@@ -6142,10 +6142,7 @@ static void Task_GetExp(SysTask *task, void *inData)
             CalcMonStats(mon);
 
             if (data->ctx->selectedMonIndex[expBattler] == slot) {
-                BattleSystem_ReloadMonData(data->bsys,
-                    data->ctx,
-                    expBattler,
-                    data->ctx->selectedMonIndex[expBattler]);
+                BattleSystem_ReloadMonData(data->bsys, data->ctx, expBattler, data->ctx->selectedMonIndex[expBattler]);
             }
 
             data->ctx->levelUpMons |= MaskOfFlagNo(slot);
@@ -6197,7 +6194,6 @@ static void Task_GetExp(SysTask *task, void *inData)
         break;
     }
     case STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF: {
-        
         TempStatsStruct stats = ov12_0226C36C;
         TempStatsStruct monData = ov12_0226C384;
         
@@ -6328,7 +6324,7 @@ static void Task_GetExp(SysTask *task, void *inData)
 
     case STATE_GET_EXP_MAKE_IT_FORGET_PROMPT:
         // "Make it forget another move?"
-        BattleController_EmitDrawYesNoBox(data->bsys, data->ctx, expBattler, 1180, 1, 0, 0);
+        BattleController_EmitDrawYesNoBox(data->bsys, data->ctx, expBattler, msg_0197_01180, 1, 0, 0);
         data->state++;
         break;
 
@@ -6370,7 +6366,7 @@ static void Task_GetExp(SysTask *task, void *inData)
 
     case STATE_GET_EXP_GIVE_UP_LEARNING_PROMPT:
         // "Should this Pokémon give up on learning this new move?"
-        BattleController_EmitDrawYesNoBox(data->bsys, data->ctx, expBattler, 1185, 2, data->unk30[4], 0);
+        BattleController_EmitDrawYesNoBox(data->bsys, data->ctx, expBattler, msg_0197_01185, 2, data->unk30[4], 0);
         data->state++;
         break;
 

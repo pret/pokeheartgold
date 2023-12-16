@@ -1303,3 +1303,17 @@ u32 CalcMoneyLoss(Party *party, PlayerProfile *profile) {
     
     return loss;
 }
+
+void PokedexSetBattlerSeen(BattleSystem *bsys, int battlerId) {
+    u32 flag = ov12_02261258(bsys->opponentData[battlerId]);
+    Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, ov12_022581D4(bsys, bsys->ctx, 2, battlerId));
+
+    if (!(bsys->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_TOWER))) {
+        if ((flag & 1) || bsys->battleType == (BATTLE_TYPE_6 | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI) || bsys->battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_6 | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI)) {
+            Pokedex_SetMonSeenFlag(bsys->pokedex, mon);
+        }
+    }
+    if (!(flag & 1) && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_BURMY) {
+        Pokedex_SetMonCaughtFlag(bsys->pokedex, mon);
+    }
+}
