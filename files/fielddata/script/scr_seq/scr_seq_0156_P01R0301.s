@@ -54,12 +54,13 @@ scr_seq_P01R0301_005:
 	setvar VAR_UNK_40DC, 1
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _009C:
 	step 12, 4
 	step_end
 
+	.balign 4, 0
 _00A4:
 	step 71, 1
 	step 10, 1
@@ -69,6 +70,7 @@ _00A4:
 	step 11, 1
 	step 0, 2
 	step_end
+
 scr_seq_P01R0301_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -76,8 +78,10 @@ scr_seq_P01R0301_000:
 	compare VAR_BOAT_DIRECTION, 1
 	goto_if_gt _00E5
 	goto _00EB
-	.byte 0x16
-	.byte 0x00, 0x06, 0x00, 0x00, 0x00
+
+_00DF:
+	goto _00EB
+
 _00E5:
 	goto _0138
 
@@ -133,8 +137,8 @@ _0174:
 	closemsg
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0180:
 	step 71, 1
 	step 13, 1
@@ -144,6 +148,7 @@ _0180:
 	step 15, 1
 	step 72, 1
 	step_end
+
 scr_seq_P01R0301_004:
 	scrcmd_609
 	lockall
@@ -191,12 +196,13 @@ _023C:
 	stop_se SEQ_SE_GS_N_UMIBE
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0280:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0288:
 	step 18, 9
 	step 71, 1
@@ -205,6 +211,7 @@ _0288:
 	step 65, 1
 	step_end
 
+	.balign 4, 0
 _02A0:
 	step 61, 5
 	step 3, 2
@@ -213,10 +220,12 @@ _02A0:
 	step 65, 1
 	step_end
 
+	.balign 4, 0
 _02B8:
 	step 50, 4
 	step_end
 
+	.balign 4, 0
 _02C0:
 	step 38, 2
 	step 0, 2
@@ -224,6 +233,7 @@ _02C0:
 	step 2, 2
 	step 18, 10
 	step_end
+
 scr_seq_P01R0301_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall

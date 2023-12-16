@@ -32,13 +32,14 @@ _0043:
 	wait_fade
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0070:
 	step 19, 1
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _007C:
 	step 19, 1
 	step 69, 1

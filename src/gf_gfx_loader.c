@@ -5,7 +5,7 @@
 
 static u32 GfGfxLoader_LoadCharDataInternal(void *data, BgConfig *bgConfig, enum GFBgLayer layer, u32 tileStart, u32 szByte);
 static void GfGfxLoader_LoadScrnDataInternal(void *data, BgConfig *bgConfig, enum GFBgLayer layer, u32 tileStart, u32 szByte);
-static void GfGfxLoader_GXLoadPalWithSrcOffsetInternal(void *data, enum GFBgLayer layer, u32 srcOffset, u32 baseAddr, u32 szByte);
+static void GfGfxLoader_GXLoadPalWithSrcOffsetInternal(void *data, enum GFPalLoadLocation location, u32 srcOffset, enum GFPalSlotOffset palSlotOffset, u32 szByte);
 static void GfGfxLoader_PartiallyLoadPaletteInternal(void *data, NNS_G2D_VRAM_TYPE type, u32 baseAddr, NNSG2dImagePaletteProxy *pPltProxy);
 static u32 GfGfxLoader_LoadImageMappingInternal(void *data, int layout, u32 size, NNS_G2D_VRAM_TYPE type, u32 baseAddr, NNSG2dImageProxy *pImgProxy);
 static void *GfGfxLoader_GetCharDataInternal(void *data, NNSG2dCharacterData **ppCharData);
@@ -26,14 +26,14 @@ void GfGfxLoader_LoadScrnData(NarcId narcId, s32 memberNo, BgConfig *bgConfig, e
     GfGfxLoader_LoadScrnDataInternal(data, bgConfig, layer, tileStart, szByte);
 }
 
-void GfGfxLoader_GXLoadPal(NarcId narcId, s32 memberNo, enum GFBgLayer layer, u32 baseAddr, u32 szByte, HeapID heapId) {
-    GfGfxLoader_GXLoadPalWithSrcOffset(narcId, memberNo, layer, 0, baseAddr, szByte, heapId);
+void GfGfxLoader_GXLoadPal(NarcId narcId, s32 memberNo, enum GFPalLoadLocation location, enum GFPalSlotOffset palSlotOffset, u32 szByte, HeapID heapId) {
+    GfGfxLoader_GXLoadPalWithSrcOffset(narcId, memberNo, location, 0, palSlotOffset, szByte, heapId);
 }
 
-void GfGfxLoader_GXLoadPalWithSrcOffset(NarcId narcId, s32 memberNo, enum GFBgLayer layer, u32 srcOffset, u32 baseAddr, u32 szByte, HeapID heapId) {
+void GfGfxLoader_GXLoadPalWithSrcOffset(NarcId narcId, s32 memberNo, enum GFPalLoadLocation location, u32 srcOffset, enum GFPalSlotOffset palSlotOffset, u32 szByte, HeapID heapId) {
     void *data;
     data = GfGfxLoader_LoadFromNarc(narcId, memberNo, FALSE, heapId, TRUE);
-    GfGfxLoader_GXLoadPalWithSrcOffsetInternal(data, layer, srcOffset, baseAddr, szByte);
+    GfGfxLoader_GXLoadPalWithSrcOffsetInternal(data, location, srcOffset, palSlotOffset, szByte);
 }
 
 void GfGfxLoader_PartiallyLoadPalette(NarcId narcId, s32 memberNo, NNS_G2D_VRAM_TYPE type, u32 baseAddr, HeapID heapId, NNSG2dImagePaletteProxy *pPltProxy) {
@@ -146,14 +146,14 @@ void GfGfxLoader_LoadScrnDataFromOpenNarc(NARC *narc, s32 memberNo, BgConfig *bg
     GfGfxLoader_LoadScrnDataInternal(data, bgConfig, layer, tileStart, szByte);
 }
 
-void GfGfxLoader_GXLoadPalFromOpenNarc(NARC *narc, s32 memberNo, enum GFBgLayer layer, u32 baseAddr, u32 szByte, HeapID heapId) {
-    GfGfxLoader_GXLoadPalWithSrcOffsetFromOpenNarc(narc, memberNo, layer, 0, baseAddr, szByte, heapId);
+void GfGfxLoader_GXLoadPalFromOpenNarc(NARC *narc, s32 memberNo, enum GFPalLoadLocation location, enum GFPalSlotOffset palSlotOffset, u32 szByte, HeapID heapId) {
+    GfGfxLoader_GXLoadPalWithSrcOffsetFromOpenNarc(narc, memberNo, location, 0, palSlotOffset, szByte, heapId);
 }
 
-void GfGfxLoader_GXLoadPalWithSrcOffsetFromOpenNarc(NARC *narc, s32 memberNo, enum GFBgLayer layer, u32 srcOffset, u32 baseAddr, u32 szByte, HeapID heapId) {
+void GfGfxLoader_GXLoadPalWithSrcOffsetFromOpenNarc(NARC *narc, s32 memberNo, enum GFPalLoadLocation location, u32 srcOffset, enum GFPalSlotOffset palSlotOffset, u32 szByte, HeapID heapId) {
     void *data;
     data = GfGfxLoader_LoadFromOpenNarc(narc, memberNo, FALSE, heapId, TRUE);
-    GfGfxLoader_GXLoadPalWithSrcOffsetInternal(data, layer, srcOffset, baseAddr, szByte);
+    GfGfxLoader_GXLoadPalWithSrcOffsetInternal(data, location, srcOffset, palSlotOffset, szByte);
 }
 
 void GfGfxLoader_PartiallyLoadPaletteFromOpenNarc(NARC *narc, s32 memberNo, NNS_G2D_VRAM_TYPE type, u32 baseAddr, HeapID heapId, struct NNSG2dImagePaletteProxy *pPltProxy) {
@@ -267,7 +267,7 @@ static void GfGfxLoader_LoadScrnDataInternal(void *data, BgConfig *bgConfig, enu
     }
 }
 
-static void GfGfxLoader_GXLoadPalWithSrcOffsetInternal(void *data, enum GFBgLayer layer, u32 srcOffset, u32 baseAddr, u32 szByte) {
+static void GfGfxLoader_GXLoadPalWithSrcOffsetInternal(void *data, enum GFPalLoadLocation location, u32 srcOffset, enum GFPalSlotOffset palSlotOffset, u32 szByte) {
     static void (*const _020F5968[])(const void *pSrc, u32 offset, u32 szByte) = {
         GX_LoadBGPltt,
         GX_LoadOBJPltt,
@@ -277,7 +277,7 @@ static void GfGfxLoader_GXLoadPalWithSrcOffsetInternal(void *data, enum GFBgLaye
         GXS_LoadOBJPltt,
         GXS_LoadBGExtPltt,
         GXS_LoadOBJExtPltt,
-    };
+    }; //todo: make these funcs use the pal slot offset
     NNSG2dPaletteData *pPlttData;
     if (data != NULL) {
         if (NNS_G2dGetUnpackedPaletteData(data, &pPlttData)) {
@@ -286,29 +286,29 @@ static void GfGfxLoader_GXLoadPalWithSrcOffsetInternal(void *data, enum GFBgLaye
                 szByte = pPlttData->szByte - srcOffset;
             }
             DC_FlushRange(pPlttData->pRawData, szByte);
-            switch (layer) {
-            case 2:
+            switch (location) {
+            case GF_PAL_LOCATION_MAIN_BGEXT:
                 GX_BeginLoadBGExtPltt();
-                _020F5968[layer](pPlttData->pRawData, baseAddr, szByte);
+                _020F5968[location](pPlttData->pRawData, palSlotOffset, szByte);
                 GX_EndLoadBGExtPltt();
                 break;
-            case 6:
+            case GF_PAL_LOCATION_SUB_BGEXT:
                 GXS_BeginLoadBGExtPltt();
-                _020F5968[layer](pPlttData->pRawData, baseAddr, szByte);
+                _020F5968[location](pPlttData->pRawData, palSlotOffset, szByte);
                 GXS_EndLoadBGExtPltt();
                 break;
-            case 3:
+            case GF_PAL_LOCATION_MAIN_OBJEXT:
                 GX_BeginLoadOBJExtPltt();
-                _020F5968[layer](pPlttData->pRawData, baseAddr, szByte);
+                _020F5968[location](pPlttData->pRawData, palSlotOffset, szByte);
                 GX_EndLoadOBJExtPltt();
                 break;
-            case 7:
+            case GF_PAL_LOCATION_SUB_OBJEXT:
                 GXS_BeginLoadOBJExtPltt();
-                _020F5968[layer](pPlttData->pRawData, baseAddr, szByte);
+                _020F5968[location](pPlttData->pRawData, palSlotOffset, szByte);
                 GXS_EndLoadOBJExtPltt();
                 break;
             default:
-                _020F5968[layer](pPlttData->pRawData, baseAddr, szByte);
+                _020F5968[location](pPlttData->pRawData, palSlotOffset, szByte);
                 break;
             }
         }

@@ -124,20 +124,23 @@ _017F:
 	wait_cry
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _01A0:
 	step 30, 1
 	step_end
 
+	.balign 4, 0
 _01A8:
 	step 50, 3
 	step_end
 
+	.balign 4, 0
 _01B0:
 	step 31, 1
 	step_end
 
+	.balign 4, 0
 _01B8:
 	step 63, 1
 	step 13, 3
@@ -146,6 +149,7 @@ _01B8:
 	step 65, 1
 	step_end
 
+	.balign 4, 0
 _01D0:
 	step 2, 1
 	step 71, 1
@@ -156,12 +160,14 @@ _01D0:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _01F0:
 	step 14, 1
 	step 12, 3
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0200:
 	step 63, 1
 	step 13, 1
@@ -170,6 +176,7 @@ _0200:
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _0218:
 	step 0, 1
 	step 71, 1
@@ -179,7 +186,12 @@ _0218:
 	step 62, 1
 	step 35, 1
 	step_end
-	.byte 0x0a, 0x00, 0x02, 0x00, 0xfe, 0x00, 0x00, 0x00
+
+	.balign 4, 0
+_0238:
+	step 10, 2
+	step_end
+
 scr_seq_D27R0107_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall

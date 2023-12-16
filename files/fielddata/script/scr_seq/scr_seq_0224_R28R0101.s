@@ -16,11 +16,12 @@ scr_seq_R28R0101_002:
 	setvar VAR_UNK_4126, 1
 	end
 
-
+	.balign 4, 0
 _0020:
 	step 1, 1
 	step 75, 1
 	step_end
+
 scr_seq_R28R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -87,27 +88,31 @@ _0135:
 	closemsg
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0140:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _014C:
 	step 63, 1
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0158:
 	step 63, 1
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0164:
 	step 63, 1
 	step 33, 1
 	step_end
+
 scr_seq_R28R0101_001:
 	play_cry SPECIES_FEAROW, 0
 	simple_npc_msg msg_0372_R28R0101_00003

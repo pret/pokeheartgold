@@ -51,20 +51,23 @@ scr_seq_UNION_003:
 	case 3, _07CC
 	case 2, _0488
 	goto _00BC
-	.byte 0x02, 0x00
+	end
+
 _00BC:
 	scrcmd_257 100
 	scrcmd_267 2, VAR_SPECIAL_RESULT
 	scrcmd_592 VAR_SPECIAL_RESULT
 	goto _00EC
-	.byte 0x02, 0x00
+	end
+
 _00D2:
 	scrcmd_257 100
 	scrcmd_261 11
 	scrcmd_267 22, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	goto _00EC
-	.byte 0x02, 0x00
+	end
+
 _00EC:
 	scrcmd_064 31, 3, 0, 1, VAR_SPECIAL_RESULT
 	scrcmd_841 1
@@ -86,7 +89,8 @@ _00EC:
 	case 7, _07A0
 	scrcmd_271 0, 7
 	goto _0784
-	.byte 0x02, 0x00
+	end
+
 _0184:
 	scrcmd_271 0, 1
 	scrcmd_267 9, VAR_SPECIAL_RESULT
@@ -110,7 +114,8 @@ _01A1:
 	call _0BDA
 	non_npc_msg msg_0738_UNION_00016
 	goto _00D2
-	.byte 0x02, 0x00
+	end
+
 _01ED:
 	party_count_not_egg VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 2
@@ -136,12 +141,14 @@ _021B:
 	scrcmd_150
 	call _0BDA
 	goto _00D2
-	.byte 0x02, 0x00
+	end
+
 _0264:
 	scrcmd_267 20, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	goto _00D2
-	.byte 0x02, 0x00
+	end
+
 _0276:
 	party_count_mons_at_or_below_level VAR_SPECIAL_RESULT, 30
 	compare VAR_SPECIAL_RESULT, 2
@@ -178,12 +185,14 @@ _02A6:
 	scrcmd_230
 	call _0BDA
 	goto _00D2
-	.byte 0x02, 0x00
+	end
+
 _0324:
 	scrcmd_267 19, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	goto _00D2
-	.byte 0x02, 0x00
+	end
+
 _0336:
 	scrcmd_271 0, 4
 	scrcmd_267 9, VAR_SPECIAL_RESULT
@@ -205,7 +214,8 @@ _0353:
 	scrcmd_150
 	call _0BDA
 	goto _0478
-	.byte 0x02, 0x00
+	end
+
 _0396:
 	scrcmd_271 0, 5
 	scrcmd_267 9, VAR_SPECIAL_RESULT
@@ -227,7 +237,8 @@ _03B3:
 	scrcmd_150
 	call _0BDA
 	goto _0478
-	.byte 0x02, 0x00
+	end
+
 _03F6:
 	party_count_egg VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
@@ -255,12 +266,16 @@ _0435:
 	scrcmd_150
 	call _0BDA
 	goto _0478
-	.byte 0x02, 0x00
+	end
+
 _0478:
 	releaseall
 	end
-	.byte 0x0f, 0x01, 0x00, 0x00
-	.byte 0x01, 0x00, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00
+_047C:
+	scrcmd_271 0, 1
+	closemsg
+	releaseall
+	end
 _0488:
 	npc_msg msg_0738_UNION_00038
 	wait 30, VAR_SPECIAL_RESULT
@@ -304,7 +319,8 @@ _04AF:
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	goto _0478
-	.byte 0x02, 0x00
+	end
+
 _0528:
 	scrcmd_262
 	scrcmd_267 12, VAR_SPECIAL_RESULT
@@ -336,7 +352,8 @@ _0528:
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	goto _0478
-	.byte 0x02, 0x00
+	end
+
 _05C3:
 	scrcmd_267 16, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
@@ -371,7 +388,8 @@ _05DB:
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
 	goto _0478
-	.byte 0x02, 0x00
+	end
+
 _0654:
 	scrcmd_267 17, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
@@ -410,54 +428,67 @@ _06AE:
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	goto _07BC
-	.byte 0x02, 0x00
+	end
+
 _06C6:
 	scrcmd_267 4, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	goto _07BC
-	.byte 0x02, 0x00
+	end
+
 _06DE:
 	scrcmd_267 5, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	goto _07BC
-	.byte 0x02, 0x00
+	end
+
 _06F6:
 	scrcmd_267 6, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	goto _07BC
-	.byte 0x02, 0x00, 0x0b, 0x01
-	.byte 0x07, 0x00, 0x0c, 0x80, 0x2e, 0x00, 0x0c, 0x80, 0x03, 0x00, 0x1e, 0x00, 0x0c, 0x80, 0x16, 0x00
-	.byte 0x98, 0x00, 0x00, 0x00, 0x02, 0x00
+	end
+
+_071E:
+	scrcmd_267 7, VAR_SPECIAL_RESULT
+	non_npc_msg_var VAR_SPECIAL_RESULT
+	wait 30, VAR_SPECIAL_RESULT
+	goto _07BC
+	end
+
 _0726:
 	scrcmd_267 8, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	goto _07BC
-	.byte 0x02, 0x00
+	end
+
 _073E:
 	scrcmd_271 1, 1
 	npc_msg msg_0738_UNION_00036
 	goto _0BC2
-	.byte 0x02, 0x00
+	end
+
 _074F:
 	scrcmd_267 21, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	goto _00D2
-	.byte 0x02
-	.byte 0x00
+	end
+
 _0761:
 	npc_msg msg_0738_UNION_00218
 	goto _00D2
-	.byte 0x02, 0x00
+	end
+
 _076C:
 	scrcmd_267 8, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	wait 30, VAR_SPECIAL_RESULT
 	goto _07BC
-	.byte 0x02, 0x00
+	end
+
 _0784:
 	scrcmd_267 23, VAR_SPECIAL_RESULT
 	non_npc_msg_var VAR_SPECIAL_RESULT
@@ -494,7 +525,8 @@ _07CC:
 	scrcmd_592 7
 	wait_button_or_delay 30
 	goto _07E4
-	.byte 0x02, 0x00
+	end
+
 _07E4:
 	npc_msg msg_0738_UNION_00009
 	scrcmd_257 100
@@ -535,12 +567,14 @@ _0863:
 	scrcmd_150
 	call _0BDA
 	goto _07E4
-	.byte 0x02, 0x00
+	end
+
 _08CA:
 	scrcmd_271 1, 1
 	npc_msg msg_0738_UNION_00017
 	goto _0BC2
-	.byte 0x02, 0x00
+	end
+
 _08DB:
 	npc_msg msg_0738_UNION_00026
 	touchscreen_menu_hide
@@ -568,17 +602,20 @@ _08DB:
 	scrcmd_261 11
 	call _0BDA
 	goto _07E4
-	.byte 0x02, 0x00
+	end
+
 _0952:
 	scrcmd_271 1, 1
 	npc_msg msg_0738_UNION_00020
 	goto _0BC2
-	.byte 0x02, 0x00
+	end
+
 _0963:
 	scrcmd_271 1, 1
 	npc_msg msg_0738_UNION_00029
 	goto _0BC2
-	.byte 0x02, 0x00
+	end
+
 _0974:
 	npc_msg msg_0738_UNION_00021
 	touchscreen_menu_hide
@@ -617,17 +654,20 @@ _0974:
 	scrcmd_261 11
 	call _0BDA
 	goto _07E4
-	.byte 0x02, 0x00
+	end
+
 _0A22:
 	scrcmd_271 1, 1
 	npc_msg msg_0738_UNION_00023
 	goto _0BC2
-	.byte 0x02, 0x00
+	end
+
 _0A33:
 	scrcmd_271 1, 1
 	npc_msg msg_0738_UNION_00024
 	goto _0BC2
-	.byte 0x02, 0x00
+	end
+
 _0A44:
 	npc_msg msg_0738_UNION_00030
 	touchscreen_menu_hide
@@ -710,36 +750,45 @@ _0B6F:
 	scrcmd_271 1, 1
 	npc_msg msg_0738_UNION_00028
 	goto _0BC2
-	.byte 0x02, 0x00
+	end
+
 _0B80:
 	npc_msg msg_0738_UNION_00035
 	goto _0BC2
-	.byte 0x02, 0x00
+	end
+
 _0B8B:
 	scrcmd_261 11
 	npc_msg msg_0738_UNION_00025
 	wait 30, VAR_SPECIAL_RESULT
 	goto _0BC2
-	.byte 0x02, 0x00
+	end
+
 _0BA0:
 	npc_msg msg_0738_UNION_00008
 	wait 30, VAR_SPECIAL_RESULT
 	goto _0BC2
-	.byte 0x02
-	.byte 0x00
+	end
+
 _0BB1:
 	npc_msg msg_0738_UNION_00010
 	wait 30, VAR_SPECIAL_RESULT
 	goto _0BC2
-	.byte 0x02, 0x00
+	end
+
 _0BC2:
 	scrcmd_257 101
 	closemsg
 	scrcmd_266
 	releaseall
 	end
-	.byte 0x0f, 0x01
-	.byte 0x01, 0x00, 0x01, 0x00, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00
+
+_0BCE:
+	scrcmd_271 1, 1
+	closemsg
+	releaseall
+	end
+
 _0BDA:
 	scrcmd_265
 	fade_screen 6, 1, 1, RGB_BLACK
@@ -755,14 +804,16 @@ scr_seq_UNION_006:
 	lockall
 	faceplayer
 	goto _0499
-	.byte 0x02, 0x00
+	end
+
 scr_seq_UNION_007:
 	play_se SEQ_SE_DP_SELECT
 	scrcmd_609
 	lockall
 	faceplayer
 	goto _0C1F
-	.byte 0x02, 0x00
+	end
+
 _0C1F:
 	scrcmd_262
 	call_if_set FLAG_UNK_069, _0C87
@@ -779,7 +830,8 @@ _0C2E:
 	case 0, _0CAF
 	case 1, _0C91
 	goto _0CA5
-	.byte 0x02, 0x00
+	end
+
 _0C87:
 	npc_msg msg_0738_UNION_00158
 	return
@@ -794,7 +846,8 @@ _0C91:
 	non_npc_msg_var VAR_SPECIAL_RESULT
 	touchscreen_menu_hide
 	goto _0C2E
-	.byte 0x02, 0x00
+	end
+
 _0CA5:
 	touchscreen_menu_show
 	scrcmd_263
@@ -821,42 +874,51 @@ _0CAF:
 	case 4, _0D8C
 	case 5, _0D9B
 	goto _0C2E
-	.byte 0x02, 0x00
+	end
+
 _0D50:
 	touchscreen_menu_show
 	npc_msg msg_0738_UNION_00160
 	touchscreen_menu_hide
 	goto _0CAF
-	.byte 0x02, 0x00
+	end
+
 _0D5F:
 	touchscreen_menu_show
 	npc_msg msg_0738_UNION_00161
 	touchscreen_menu_hide
 	goto _0CAF
-	.byte 0x02, 0x00
+	end
+
 _0D6E:
 	touchscreen_menu_show
 	npc_msg msg_0738_UNION_00162
 	touchscreen_menu_hide
 	goto _0CAF
-	.byte 0x02, 0x00
+	end
+
 _0D7D:
 	touchscreen_menu_show
 	npc_msg msg_0738_UNION_00164
 	touchscreen_menu_hide
 	goto _0CAF
-	.byte 0x02, 0x00
+	end
+
 _0D8C:
 	touchscreen_menu_show
 	npc_msg msg_0738_UNION_00165
 	touchscreen_menu_hide
 	goto _0CAF
-	.byte 0x02, 0x00
+	end
+
 _0D9B:
 	touchscreen_menu_show
 	npc_msg msg_0738_UNION_00163
 	touchscreen_menu_hide
 	goto _0CAF
-	.byte 0x02, 0x00, 0x16, 0x00, 0x7e, 0xfe, 0xff, 0xff
-	.byte 0x02, 0x00, 0x00, 0x00
+	end
+
+_0DAA:
+	goto _0C2E
+	end
 	.balign 4, 0

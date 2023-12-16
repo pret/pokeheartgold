@@ -28,7 +28,8 @@ scr_seq_T25R0301_000:
 	compare VAR_SPECIAL_RESULT, 50
 	goto_if_ge _0098
 	goto _00A3
-	.byte 0x02, 0x00
+	end
+
 _006C:
 	npc_msg msg_0585_T25R0301_00001
 	wait_button_or_walk_away

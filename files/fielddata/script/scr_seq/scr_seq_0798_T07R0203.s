@@ -75,36 +75,42 @@ scr_seq_T07R0203_010:
 	move_person_facing obj_T07R0203_tsure_poke_static_marill, 29, 0, 29, DIR_WEST
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _012C:
 	step 14, 4
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0138:
 	step 14, 4
 	step_end
 
+	.balign 4, 0
 _0140:
 	step 14, 4
 	step_end
 
+	.balign 4, 0
 _0148:
 	step 14, 4
 	step_end
 
+	.balign 4, 0
 _0150:
 	step 13, 3
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _015C:
 	step 12, 2
 	step 14, 1
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _016C:
 	step 14, 1
 	step 12, 2
@@ -112,15 +118,18 @@ _016C:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0180:
 	step 12, 1
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _018C:
 	step 12, 2
 	step 69, 1
 	step_end
+
 scr_seq_T07R0203_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -128,16 +137,16 @@ scr_seq_T07R0203_000:
 	check_johto_dex_complete VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0245
-	goto_if_set FLAG_UNK_143, _01ED
+	goto_if_set FLAG_SAW_JOHTO_DEX_CERTIFICATE, _01ED
 	npc_msg msg_0503_T07R0203_00001
 	play_fanfare SEQ_ME_HYOUKA2
 	wait_fanfare
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_425 0
+	show_certificate 0
 	scrcmd_150
-	setflag FLAG_UNK_143
+	setflag FLAG_SAW_JOHTO_DEX_CERTIFICATE
 	add_special_game_stat 25
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
@@ -145,16 +154,16 @@ _01ED:
 	check_national_dex_complete VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0245
-	goto_if_set FLAG_UNK_144, _023A
+	goto_if_set FLAG_SAW_NATIONAL_DEX_CERTIFICATE, _023A
 	npc_msg msg_0503_T07R0203_00002
 	play_fanfare SEQ_ME_HYOUKA2
 	wait_fanfare
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_425 1
+	show_certificate 1
 	scrcmd_150
-	setflag FLAG_UNK_144
+	setflag FLAG_SAW_NATIONAL_DEX_CERTIFICATE
 	add_special_game_stat 26
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade

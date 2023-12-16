@@ -133,16 +133,20 @@ _015E:
 	compare VAR_SPECIAL_RESULT, 2
 	goto_if_eq _01E4
 	goto _020B
-	.byte 0x02, 0x00
+	end
+
 _0196:
 	compare VAR_UNK_408E, 4
 	goto_if_ne _01B2
 	npc_msg msg_0439_00047
 	goto _0057
-	.byte 0x16, 0x00, 0x03, 0x00
-	.byte 0x00, 0x00
+
+_01AC:
+	goto _01B5
+
 _01B2:
 	npc_msg msg_0439_00017
+_01B5:
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -153,9 +157,13 @@ _01BD:
 	goto_if_ne _01D9
 	npc_msg msg_0439_00048
 	goto _0057
-	.byte 0x16, 0x00, 0x03, 0x00, 0x00, 0x00
+
+_01D3:
+	goto _01DC
+
 _01D9:
 	npc_msg msg_0439_00018
+_01DC:
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -166,9 +174,13 @@ _01E4:
 	goto_if_ne _0200
 	npc_msg msg_0439_00049
 	goto _0057
-	.byte 0x16, 0x00, 0x03, 0x00, 0x00, 0x00
+
+_01FA:
+	goto _0203
+
 _0200:
 	npc_msg msg_0439_00019
+_0203:
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -179,9 +191,13 @@ _020B:
 	goto_if_ne _0227
 	npc_msg msg_0439_00050
 	goto _0057
-	.byte 0x16, 0x00, 0x03, 0x00, 0x00, 0x00
+
+_0221:
+	goto _022A
+
 _0227:
 	npc_msg msg_0439_00020
+_022A:
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -315,7 +331,8 @@ _03DB:
 	goto_if_eq _0290
 	touchscreen_menu_show
 	goto _03CE
-	.byte 0x02, 0x00
+	end
+
 _03FB:
 	touchscreen_menu_show
 	npc_msg msg_0439_00036
@@ -462,10 +479,23 @@ _05DC:
 	hide_money_box
 	releaseall
 	end
-	.byte 0x00, 0x3e, 0x00, 0x03, 0x00
-	.byte 0x02, 0x00, 0x01, 0x00, 0x3e, 0x00, 0x03, 0x00, 0x03, 0x00, 0x01, 0x00, 0x3e, 0x00, 0x03, 0x00
-	.byte 0x00, 0x00, 0x01, 0x00, 0x0c, 0x00, 0x02, 0x00, 0x45, 0x00, 0x01, 0x00, 0x3f, 0x00, 0x03, 0x00
-	.byte 0x01, 0x00, 0x01, 0x00, 0x46, 0x00, 0x01, 0x00, 0x0d, 0x00, 0x02, 0x00, 0xfe, 0x00, 0x00, 0x00
+
+	.balign 4, 0
+_05EC:
+	step 62, 3
+	step 2, 1
+	step 62, 3
+	step 3, 1
+	step 62, 3
+	step 0, 1
+	step 12, 2
+	step 69, 1
+	step 63, 3
+	step 1, 1
+	step 70, 1
+	step 13, 2
+	step_end
+
 _0620:
 	npc_msg msg_0439_00030
 	setvar VAR_SPECIAL_x8000, 0
@@ -484,6 +514,14 @@ _0620:
 	hide_money_box
 	releaseall
 	end
-	.byte 0x49, 0x00, 0xdc, 0x05, 0x60, 0x00, 0x2d, 0x00, 0x2a, 0x71, 0x01, 0x35, 0x00, 0x72, 0x00, 0x61
-	.byte 0x00, 0x02, 0x00, 0x00
+
+_0660:
+	play_se SEQ_SE_DP_SELECT
+	lockall
+	npc_msg msg_0439_00042
+	egg_hatch_anim
+	closemsg
+	hide_money_box
+	releaseall
+	end
 	.balign 4, 0

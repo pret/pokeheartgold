@@ -108,8 +108,8 @@ _0157:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0164:
 	step 1, 1
 	step 2, 1
@@ -121,6 +121,7 @@ _0164:
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _0188:
 	step 0, 1
 	step 3, 1
@@ -132,6 +133,7 @@ _0188:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _01AC:
 	step 2, 1
 	step 0, 1
@@ -143,6 +145,7 @@ _01AC:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _01D0:
 	step 3, 1
 	step 1, 1
@@ -153,13 +156,15 @@ _01D0:
 	step 2, 1
 	step 0, 1
 	step_end
+
 scr_seq_T22R0301_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
 	npc_msg msg_0560_T22R0301_00012
 	goto _0207
-	.byte 0x02, 0x00
+	end
+
 _0207:
 	npc_msg msg_0560_T22R0301_00013
 	touchscreen_menu_hide
@@ -176,36 +181,51 @@ _0207:
 	goto_if_ne _0264
 	npc_msg msg_0560_T22R0301_00014
 	goto _0207
-	.byte 0x16, 0x00
-	.byte 0x74, 0x00, 0x00, 0x00
+
+_025E:
+	goto _02D8
+
 _0264:
 	compare VAR_SPECIAL_RESULT, 2
 	goto_if_ne _0280
 	npc_msg msg_0560_T22R0301_00015
 	goto _0207
-	.byte 0x16, 0x00, 0x58, 0x00, 0x00, 0x00
+
+_027A:
+	goto _02D8
+
 _0280:
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _029C
 	npc_msg msg_0560_T22R0301_00016
 	goto _0207
-	.byte 0x16, 0x00, 0x3c, 0x00, 0x00, 0x00
+
+_0296:
+	goto _02D8
+
 _029C:
 	compare VAR_SPECIAL_RESULT, 4
 	goto_if_ne _02B8
 	npc_msg msg_0560_T22R0301_00017
 	goto _0207
-	.byte 0x16, 0x00, 0x20, 0x00, 0x00, 0x00
+
+_02B2:
+	goto _02D8
+
 _02B8:
 	compare VAR_SPECIAL_RESULT, 5
 	goto_if_ne _02D4
 	npc_msg msg_0560_T22R0301_00018
 	goto _0207
-	.byte 0x16, 0x00
-	.byte 0x04, 0x00, 0x00, 0x00
+
+_02CE:
+	goto _02D8
+
 _02D4:
 	closemsg
 	releaseall
+
+_02D8:
 	end
 
 scr_seq_T22R0301_003:
@@ -247,11 +267,12 @@ _0353:
 	touchscreen_menu_show
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _035C:
 	step 32, 1
 	step_end
+
 scr_seq_T22R0301_004:
 	simple_npc_msg msg_0560_T22R0301_00007
 	end

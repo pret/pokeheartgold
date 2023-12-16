@@ -186,45 +186,60 @@ _02A7:
 	npc_msg msg_0129_D44R0102_00004
 	closemsg
 	goto _0236
-	.byte 0x02, 0x00, 0x4b, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
+	end
 
+	.balign 4, 0
+_02B4:
+	step 75, 1
+	step 2, 1
+	step_end
+
+	.balign 4, 0
 _02C0:
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _02C8:
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _02D0:
 	step 15, 2
 	step_end
 
+	.balign 4, 0
 _02D8:
 	step 15, 3
 	step_end
 
+	.balign 4, 0
 _02E0:
 	step 12, 1
 	step 15, 3
 	step 12, 7
 	step_end
 
+	.balign 4, 0
 _02F0:
 	step 12, 1
 	step 15, 2
 	step 12, 7
 	step_end
 
+	.balign 4, 0
 _0300:
 	step 12, 1
 	step 15, 1
 	step 12, 7
 	step_end
 
+	.balign 4, 0
 _0310:
 	step 0, 1
 	step_end
+
 scr_seq_D44R0102_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -298,7 +313,8 @@ _03E0:
 _03F1:
 	npc_msg msg_0129_D44R0102_00013
 	goto _0379
-	.byte 0x02, 0x00
+	end
+
 _03FC:
 	npc_msg msg_0129_D44R0102_00029
 	touchscreen_menu_hide
@@ -456,22 +472,25 @@ _066C:
 	white_out
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0674:
 	step 0, 1
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0680:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0688:
 	step 65, 2
 	step 13, 2
 	step_end
 
+	.balign 4, 0
 _0694:
 	step 65, 1
 	step 13, 1
@@ -479,6 +498,7 @@ _0694:
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _06A8:
 	step 65, 1
 	step 0, 1
@@ -489,6 +509,7 @@ _06A8:
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _06C8:
 	step 65, 4
 	step 19, 1
@@ -496,22 +517,26 @@ _06C8:
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _06DC:
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _06E4:
 	step 13, 7
 	step 14, 3
 	step 13, 3
 	step_end
 
+	.balign 4, 0
 _06F4:
 	step 12, 4
 	step 15, 3
 	step 12, 7
 	step_end
 
+	.balign 4, 0
 _0704:
 	step 63, 1
 	step 13, 7
@@ -519,10 +544,12 @@ _0704:
 	step 13, 4
 	step_end
 
+	.balign 4, 0
 _0718:
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _0720:
 	step 71, 1
 	step 8, 1
@@ -532,10 +559,12 @@ _0720:
 	step 16, 7
 	step_end
 
+	.balign 4, 0
 _073C:
 	step 36, 2
 	step_end
 
+	.balign 4, 0
 _0744:
 	step 20, 1
 	step 63, 1
@@ -543,27 +572,33 @@ _0744:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0758:
 	step 71, 1
 	step 20, 2
 	step_end
 
+	.balign 4, 0
 _0764:
 	step 65, 2
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0770:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0778:
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _0780:
 	step 2, 1
 	step_end
+
 scr_seq_D44R0102_005:
 	scrcmd_055 2, 0
 	scrcmd_057 3

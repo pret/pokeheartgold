@@ -65,8 +65,10 @@ _00B1:
 	buffer_record_size 2, 3, SPECIES_MAGIKARP
 	npc_msg msg_0628_T29R0201_00007
 	goto _0146
-	.byte 0x16, 0x00, 0x1e
-	.byte 0x00, 0x00, 0x00
+
+_00DD:
+	goto _0101
+
 _00E3:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0101

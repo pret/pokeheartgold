@@ -29,7 +29,8 @@ scr_seq_0164_000:
 	npc_msg msg_0267_00001
 	giveitem_no_check ITEM_PAL_PAD, 1
 	goto _005C
-	.byte 0x02, 0x00
+	end
+
 _005C:
 	npc_msg msg_0267_00002
 	touchscreen_menu_hide
@@ -42,7 +43,8 @@ _005C:
 	case 0, _00A5
 	case 1, _00EE
 	goto _00EE
-	.byte 0x02, 0x00
+	end
+
 _00A5:
 	npc_msg msg_0267_00003
 	touchscreen_menu_hide
@@ -55,7 +57,8 @@ _00A5:
 	case 0, _00A5
 	case 1, _00EE
 	goto _00EE
-	.byte 0x02, 0x00
+	end
+
 _00EE:
 	setvar VAR_SCENE_POKECENTER_WIFI_BASEMENT, 1
 	npc_msg msg_0267_00004
@@ -63,8 +66,8 @@ _00EE:
 	closemsg
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0100:
 	step 32, 1
 	step 63, 2
@@ -73,6 +76,7 @@ _0100:
 	step 0, 1
 	step 63, 2
 	step_end
+
 scr_seq_0164_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -84,7 +88,8 @@ scr_seq_0164_001:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _014F
 	goto _0144
-	.byte 0x02, 0x00
+	end
+
 _0144:
 	npc_msg msg_0267_00004
 	wait_button_or_walk_away
@@ -104,7 +109,8 @@ _014F:
 	case 0, _0198
 	case 1, _0144
 	goto _0144
-	.byte 0x02, 0x00
+	end
+
 _0198:
 	npc_msg msg_0267_00003
 	touchscreen_menu_hide
@@ -117,8 +123,8 @@ _0198:
 	case 0, _0198
 	case 1, _0144
 	goto _0144
-	.byte 0x02
-	.byte 0x00
+	end
+
 scr_seq_0164_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -148,7 +154,8 @@ _0241:
 
 _025A:
 	goto _0262
-	.byte 0x02, 0x00
+	end
+
 _0262:
 	npc_msg msg_0267_00007
 _0265:
@@ -163,23 +170,27 @@ _0265:
 	case 0, _02BE
 	case 1, _02B3
 	goto _0326
-	.byte 0x02, 0x00
+	end
+
 _02B3:
 	npc_msg msg_0267_00013
 	goto _0265
-	.byte 0x02, 0x00
+	end
+
 _02BE:
 	scrcmd_565 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02D7
 	goto _0331
-	.byte 0x02, 0x00
+	end
+
 _02D7:
 	scrcmd_564 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0310
 	goto _02F0
-	.byte 0x02, 0x00
+	end
+
 _02F0:
 	npc_msg msg_0267_00011
 	touchscreen_menu_hide
@@ -188,7 +199,8 @@ _02F0:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0331
 	goto _0326
-	.byte 0x02, 0x00
+	end
+
 _0310:
 	npc_msg msg_0267_00012
 	wait_button_or_walk_away
@@ -216,7 +228,8 @@ _0331:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0356
 	goto _0326
-	.byte 0x02, 0x00
+	end
+
 _0350:
 	callstd std_bag_is_full_griseous_orb
 	end
@@ -234,7 +247,8 @@ _0356:
 	apply_movement obj_player, _0474
 	wait_movement
 	goto _038C
-	.byte 0x02, 0x00
+	end
+
 _038C:
 	scrcmd_307 0, 0, 9, 5, 77
 	call _03E0
@@ -249,7 +263,8 @@ _038C:
 	wait_movement
 	call _03E8
 	goto _03F3
-	.byte 0x02, 0x00
+	end
+
 _03E0:
 	scrcmd_310 77
 	scrcmd_308 77
@@ -290,56 +305,70 @@ _041C:
 	scrcmd_606
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0474:
 	step 15, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0480:
 	step 12, 2
 	step_end
 
+	.balign 4, 0
 _0488:
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _0490:
 	step 12, 1
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _049C:
 	step 12, 2
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _04A8:
 	step 1, 1
 	step 70, 1
 	step 13, 2
 	step_end
-	.byte 0x0d, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_04B8:
+	step 13, 1
+	step_end
+
+	.balign 4, 0
 _04C0:
 	step 13, 2
 	step_end
 
+	.balign 4, 0
 _04C8:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _04D0:
 	step 12, 1
 	step 15, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _04E0:
 	step 12, 1
 	step 69, 1
 	step_end
+
 _04EC:
 	callstd std_party_illegal
 	wait_button_or_walk_away
@@ -377,11 +406,13 @@ scr_seq_0164_003:
 	copyvar VAR_UNK_4055, VAR_SPECIAL_LAST_TALKED
 	npc_msg msg_0267_00018
 	goto _056B
-	.byte 0x02, 0x00
+	end
+
 _0560:
 	npc_msg msg_0267_00026
 	goto _05C4
-	.byte 0x02, 0x00
+	end
+
 _056B:
 	touchscreen_menu_hide
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
@@ -394,11 +425,13 @@ _056B:
 	case 0, _05D7
 	case 1, _05CC
 	goto _05B9
-	.byte 0x02, 0x00
+	end
+
 _05B9:
 	npc_msg msg_0267_00021
 	goto _05C4
-	.byte 0x02, 0x00
+	end
+
 _05C4:
 	wait_button_or_walk_away
 	closemsg
@@ -408,7 +441,8 @@ _05C4:
 _05CC:
 	npc_msg msg_0267_00022
 	goto _056B
-	.byte 0x02, 0x00
+	end
+
 _05D7:
 	callstd std_prompt_save
 	copyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4000
@@ -443,15 +477,32 @@ _05D7:
 	wait_fade
 	releaseall
 	end
-	.byte 0xae
-	.byte 0x00, 0x06, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0xaf, 0x00, 0xb4, 0x01, 0xa6, 0x00, 0x0c
-	.byte 0x80, 0x2a, 0x00, 0x04, 0x80, 0x0c, 0x80, 0x97, 0x02, 0x04, 0x80, 0x96, 0x00, 0xae, 0x00, 0x06
-	.byte 0x00, 0x01, 0x00, 0x01, 0x00, 0x00, 0x00, 0xaf, 0x00, 0x33, 0x01, 0x00, 0x00, 0x00, 0x00, 0x05
-	.byte 0x00, 0x02, 0x00, 0x4d, 0x1a, 0x00, 0x16, 0xfd, 0xff, 0xff, 0x5e, 0x00, 0xff, 0x00, 0xd6, 0xfd
-	.byte 0xff, 0xff, 0x5f, 0x00, 0x1a, 0x00, 0x0e, 0xfd, 0xff, 0xff, 0x5e, 0x00, 0xff, 0x00, 0xd6, 0xfd
-	.byte 0xff, 0xff, 0x5f, 0x00, 0x33, 0x01, 0x00, 0x00, 0x00, 0x00, 0x05, 0x00, 0x05, 0x00, 0x4d, 0x1a
-	.byte 0x00, 0xeb, 0xfc, 0xff, 0xff, 0x5e, 0x00, 0xff, 0x00, 0xc3, 0xfd, 0xff, 0xff, 0x5f, 0x00, 0x1a
-	.byte 0x00, 0xe3, 0xfc, 0xff, 0xff, 0x61, 0x00, 0x02, 0x00
+
+_06AD:
+	fade_screen 6, 1, 0, RGB_BLACK
+	wait_fade
+	scrcmd_436
+	scrcmd_166 VAR_SPECIAL_RESULT
+	copyvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	scrcmd_663 VAR_SPECIAL_x8004
+	scrcmd_150
+	fade_screen 6, 1, 1, RGB_BLACK
+	wait_fade
+	scrcmd_307 0, 0, 5, 2, 77
+	call _03E0
+	apply_movement obj_player, _04A8
+	wait_movement
+	call _03E8
+	apply_movement obj_player, _04B8
+	wait_movement
+	scrcmd_307 0, 0, 5, 5, 77
+	call _03E0
+	apply_movement obj_player, _04C0
+	wait_movement
+	call _03E8
+	releaseall
+	end
+
 _0709:
 	npc_msg msg_0267_00027
 	wait_button_or_walk_away

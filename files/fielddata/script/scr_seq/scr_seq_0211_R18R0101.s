@@ -47,15 +47,17 @@ _006A:
 	setflag FLAG_UNK_149
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0084:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _008C:
 	step 15, 1
 	step_end
+
 scr_seq_R18R0101_003:
 	scrcmd_186 0
 	setvar VAR_UNK_4129, 0

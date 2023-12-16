@@ -54,22 +54,31 @@ _0095:
 	compare VAR_TEMP_x4002, 1
 	goto_if_eq _00C3
 	goto _0198
-	.byte 0x02, 0x00
+	end
+
 _00C3:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 6
 	goto_if_ne _00E0
 	goto _0101
-	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
+
+_00DA:
+	goto _00FF
+
 _00E0:
 	compare VAR_TEMP_x4000, 0
 	goto_if_ne _00F9
 	goto _0101
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_00F3:
+	goto _00FF
+
 _00F9:
 	goto _0198
-	.byte 0x02
-	.byte 0x00
+
+_00FF:
+	end
+
 _0101:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 14
@@ -319,16 +328,22 @@ _0434:
 	faceplayer
 	npc_msg msg_0491_T07_00023
 	goto _03BE
-	.byte 0x02, 0x00, 0x49, 0x00, 0xdc, 0x05, 0x60, 0x00, 0x68, 0x00, 0x2d
-	.byte 0x00, 0x15, 0x32, 0x00, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00, 0x00, 0x00
+	end
 
+_0447:
+	simple_npc_msg msg_0491_T07_00021
+	end
+
+	.balign 4, 0
 _045C:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0464:
 	step 34, 1
 	step_end
+
 _046C:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -377,7 +392,8 @@ scr_seq_T07_017:
 	compare VAR_TEMP_x4002, 1
 	goto_if_ge _0500
 	goto _0302
-	.byte 0x02, 0x00
+	end
+
 _0500:
 	simple_npc_msg msg_0491_T07_00029
 	end
@@ -466,8 +482,8 @@ _064F:
 	closemsg
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0664:
 	step 15, 1
 	step 12, 2
@@ -476,11 +492,13 @@ _0664:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _067C:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0688:
 	step 12, 1
 	step 14, 1
@@ -488,6 +506,7 @@ _0688:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _069C:
 	step 12, 1
 	step 15, 1
@@ -495,11 +514,13 @@ _069C:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _06B0:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _06BC:
 	step 15, 1
 	step 12, 1

@@ -31,11 +31,12 @@ scr_seq_D24R0203_001:
 	scrcmd_375 obj_player
 _0060:
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0064:
 	step 68, 1
 	step_end
+
 scr_seq_D24R0203_002:
 	scrcmd_609
 	lockall
@@ -131,45 +132,52 @@ _01EE:
 	wait_fade
 	goto _01C0
 
-
+	.balign 4, 0
 _0218:
 	step 40, 4
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0224:
 	step 62, 3
 	step 20, 1
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0234:
 	step 41, 4
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0240:
 	step 62, 3
 	step 21, 1
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0250:
 	step 42, 4
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _025C:
 	step 62, 3
 	step 22, 1
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _026C:
 	step 43, 4
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0278:
 	step 62, 3
 	step 23, 1

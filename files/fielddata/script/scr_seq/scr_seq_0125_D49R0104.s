@@ -79,11 +79,12 @@ scr_seq_D49R0104_003:
 	closemsg
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _00F0:
 	step 48, 2
 	step_end
+
 scr_seq_D49R0104_004:
 	simple_npc_msg msg_0140_D49R0104_00005
 	end

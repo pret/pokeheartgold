@@ -51,7 +51,8 @@ _0071:
 	case 1, _00D5
 	case 2, _03D0
 	goto _03DB
-	.byte 0x02, 0x00
+	end
+
 _00D5:
 	npc_msg msg_0139_D49R0102_00003
 	touchscreen_menu_hide
@@ -71,7 +72,8 @@ _00D5:
 	case 2, _01DA
 	case 3, _0214
 	goto _024E
-	.byte 0x02, 0x00
+	end
+
 _0166:
 	setvar VAR_TEMP_x4007, 0
 	touchscreen_menu_hide
@@ -82,7 +84,8 @@ _0166:
 	menu_item_add 13, 255, 10
 	menu_exec
 	goto _0288
-	.byte 0x02, 0x00
+	end
+
 _01A0:
 	setvar VAR_TEMP_x4007, 1
 	touchscreen_menu_hide
@@ -93,7 +96,8 @@ _01A0:
 	menu_item_add 13, 255, 10
 	menu_exec
 	goto _0288
-	.byte 0x02, 0x00
+	end
+
 _01DA:
 	setvar VAR_TEMP_x4007, 2
 	touchscreen_menu_hide
@@ -104,7 +108,8 @@ _01DA:
 	menu_item_add 13, 255, 10
 	menu_exec
 	goto _0288
-	.byte 0x02, 0x00
+	end
+
 _0214:
 	setvar VAR_TEMP_x4007, 3
 	touchscreen_menu_hide
@@ -115,7 +120,8 @@ _0214:
 	menu_item_add 13, 255, 10
 	menu_exec
 	goto _0288
-	.byte 0x02, 0x00
+	end
+
 _024E:
 	setvar VAR_TEMP_x4007, 4
 	touchscreen_menu_hide
@@ -126,7 +132,8 @@ _024E:
 	menu_item_add 13, 255, 10
 	menu_exec
 	goto _0288
-	.byte 0x02, 0x00
+	end
+
 _0288:
 	switch VAR_SPECIAL_RESULT
 	case 0, _0318
@@ -140,47 +147,58 @@ _0288:
 	case 8, _0370
 	case 9, _037B
 	goto _00D5
-	.byte 0x02, 0x00
+	end
+
 _0318:
 	npc_msg msg_0139_D49R0102_00006
 	goto _0386
-	.byte 0x02, 0x00
+	end
+
 _0323:
 	npc_msg msg_0139_D49R0102_00007
 	goto _0386
-	.byte 0x02, 0x00
+	end
+
 _032E:
 	npc_msg msg_0139_D49R0102_00008
 	goto _0386
-	.byte 0x02, 0x00
+	end
+
 _0339:
 	npc_msg msg_0139_D49R0102_00009
 	goto _0386
-	.byte 0x02, 0x00
+	end
+
 _0344:
 	npc_msg msg_0139_D49R0102_00010
 	goto _0386
-	.byte 0x02, 0x00
+	end
+
 _034F:
 	npc_msg msg_0139_D49R0102_00011
 	goto _0386
-	.byte 0x02, 0x00
+	end
+
 _035A:
 	npc_msg msg_0139_D49R0102_00012
 	goto _0386
-	.byte 0x02, 0x00
+	end
+
 _0365:
 	npc_msg msg_0139_D49R0102_00013
 	goto _0386
-	.byte 0x02, 0x00
+	end
+
 _0370:
 	npc_msg msg_0139_D49R0102_00014
 	goto _0386
-	.byte 0x02, 0x00
+	end
+
 _037B:
 	npc_msg msg_0139_D49R0102_00015
 	goto _0386
-	.byte 0x02, 0x00
+	end
+
 _0386:
 	npc_msg msg_0139_D49R0102_00004
 	compare VAR_TEMP_x4007, 0
@@ -192,15 +210,18 @@ _0386:
 	compare VAR_TEMP_x4007, 3
 	goto_if_eq _0214
 	goto _024E
-	.byte 0x02, 0x00
+	end
+
 _03C5:
 	npc_msg msg_0139_D49R0102_00005
 	goto _0071
-	.byte 0x02, 0x00
+	end
+
 _03D0:
 	npc_msg msg_0139_D49R0102_00017
 	goto _0071
-	.byte 0x02, 0x00
+	end
+
 _03DB:
 	npc_msg msg_0139_D49R0102_00016
 	wait_button_or_walk_away
@@ -412,15 +433,17 @@ _05FF:
 	wait_movement
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0610:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0618:
 	step 32, 1
 	step_end
+
 scr_seq_D49R0102_011:
 	play_se SEQ_SE_DP_SELECT
 	lockall

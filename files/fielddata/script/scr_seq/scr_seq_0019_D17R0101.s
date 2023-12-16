@@ -208,65 +208,76 @@ _02CA:
 	wait_button_or_walk_away
 	closemsg
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _02D8:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _02E0:
 	step 3, 1
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _02EC:
 	step 13, 2
 	step 14, 1
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _02FC:
 	step 13, 3
 	step_end
 
+	.balign 4, 0
 _0304:
 	step 13, 2
 	step 15, 1
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _0314:
 	step 12, 1
 	step 15, 2
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _0324:
 	step 15, 3
 	step_end
 
+	.balign 4, 0
 _032C:
 	step 13, 1
 	step 15, 3
 	step_end
 
+	.balign 4, 0
 _0338:
 	step 13, 2
 	step 15, 3
 	step_end
 
+	.balign 4, 0
 _0344:
 	step 71, 1
 	step 13, 1
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _0354:
 	step 71, 1
 	step 15, 1
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _0364:
 	step 12, 1
 	step 15, 1
@@ -274,11 +285,13 @@ _0364:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0378:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0384:
 	step 12, 1
 	step 14, 1
@@ -286,34 +299,40 @@ _0384:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0398:
 	step 14, 4
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _03A4:
 	step 14, 4
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _03B0:
 	step 14, 4
 	step 12, 1
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _03C0:
 	step 14, 4
 	step 12, 2
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _03D0:
 	step 71, 1
 	step 4, 1
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _03E0:
 	step 71, 1
 	step 6, 1

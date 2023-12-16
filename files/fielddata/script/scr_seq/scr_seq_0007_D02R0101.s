@@ -60,21 +60,26 @@ _007D:
 _00C9:
 	white_out
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _00D0:
 	step 75, 1
 	step 14, 4
 	step_end
 
+	.balign 4, 0
 _00DC:
 	step 63, 4
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _00E8:
 	step 19, 5
 	step 17, 9
 	step_end
-	.byte 0x02, 0x00, 0x00, 0x00
+
+_00F4:
+	end
+
 	.balign 4, 0

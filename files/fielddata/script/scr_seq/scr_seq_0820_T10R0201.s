@@ -36,11 +36,12 @@ scr_seq_T10R0201_000:
 	setvar VAR_TEMP_x4001, 1
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0060:
 	step 12, 6
 	step_end
+
 scr_seq_T10R0201_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall

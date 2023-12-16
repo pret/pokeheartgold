@@ -39,18 +39,21 @@ _0066:
 	npc_msg msg_0511_T07SP0101_00011
 	goto _00E4
 
-
+	.balign 4, 0
 _007C:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0084:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _008C:
 	step 3, 1
 	step_end
+
 scr_seq_T07SP0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall

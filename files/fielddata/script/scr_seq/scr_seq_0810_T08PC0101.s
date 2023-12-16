@@ -50,7 +50,7 @@ _0091:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _009C:
 	step 3, 1
 	step 0, 1
@@ -62,6 +62,7 @@ _009C:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _00C0:
 	step 0, 1
 	step 2, 1
@@ -73,6 +74,7 @@ _00C0:
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _00E4:
 	step 1, 1
 	step 3, 1

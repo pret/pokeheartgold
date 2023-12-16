@@ -31,7 +31,8 @@ scr_seq_D32R0501_000:
 	setvar VAR_TEMP_x4003, 0
 	setvar VAR_TEMP_x4004, 0
 	goto _0074
-	.byte 0x02, 0x00
+	end
+
 scr_seq_D32R0501_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -39,7 +40,8 @@ scr_seq_D32R0501_005:
 	setvar VAR_TEMP_x4003, 0
 	setvar VAR_TEMP_x4004, 1
 	goto _0074
-	.byte 0x02, 0x00
+	end
+
 _0074:
 	scrcmd_682 0
 	compare VAR_TEMP_x4004, 0
@@ -47,7 +49,8 @@ _0074:
 	compare VAR_TEMP_x4004, 1
 	call_if_eq _0691
 	goto _009A
-	.byte 0x02, 0x00
+	end
+
 _009A:
 	compare VAR_TEMP_x4004, 0
 	call_if_eq _0696
@@ -66,17 +69,20 @@ _009A:
 	goto_if_eq _0199
 	touchscreen_menu_show
 	goto _0126
-	.byte 0x02, 0x00
+	end
+
 _0104:
 	compare VAR_TEMP_x4004, 0
 	call_if_eq _06CC
 	compare VAR_TEMP_x4004, 1
 	call_if_eq _06D1
 	goto _009A
-	.byte 0x02, 0x00
+	end
+
 _0126:
 	goto _012E
-	.byte 0x02, 0x00
+	end
+
 _012E:
 	setvar VAR_UNK_4147, 0
 	npc_msg msg_0109_D32R0501_00006
@@ -93,7 +99,8 @@ _013F:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01C6
 	goto _01F0
-	.byte 0x02, 0x00
+	end
+
 _016C:
 	setvar VAR_UNK_4148, 1
 	scrcmd_637 0, 3, VAR_SPECIAL_RESULT
@@ -102,7 +109,8 @@ _016C:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01C6
 	goto _01F0
-	.byte 0x02, 0x00
+	end
+
 _0199:
 	setvar VAR_UNK_4148, 2
 	scrcmd_637 0, 2, VAR_SPECIAL_RESULT
@@ -111,19 +119,22 @@ _0199:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01DB
 	goto _01F0
-	.byte 0x02, 0x00
+	end
+
 _01C6:
 	npc_msg msg_0109_D32R0501_00008
 	scrcmd_444 9, 3, 0, 0
 	touchscreen_menu_show
 	goto _0126
-	.byte 0x02, 0x00
+	end
+
 _01DB:
 	npc_msg msg_0109_D32R0501_00008
 	scrcmd_444 9, 2, 0, 0
 	touchscreen_menu_show
 	goto _0126
-	.byte 0x02, 0x00
+	end
+
 _01F0:
 	npc_msg msg_0109_D32R0501_00007
 	closemsg
@@ -160,10 +171,12 @@ _0283:
 
 _029E:
 	goto _02A6
-	.byte 0x02, 0x00
+	end
+
 _02A6:
 	goto _02AE
-	.byte 0x02, 0x00
+	end
+
 _02AE:
 	compare VAR_UNK_4148, 0
 	call_if_eq _046A
@@ -179,7 +192,8 @@ _02AE:
 	compare VAR_UNK_4148, 2
 	goto_if_eq _02FE
 	goto _04CB
-	.byte 0x02, 0x00
+	end
+
 _02FE:
 	npc_msg msg_0109_D32R0501_00043
 	touchscreen_menu_hide
@@ -193,7 +207,8 @@ _02FE:
 	case 1, _03A7
 	touchscreen_menu_show
 	goto _0126
-	.byte 0x02, 0x00
+	end
+
 _034F:
 	npc_msg msg_0109_D32R0501_00044
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -208,14 +223,17 @@ _034F:
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _039D
 	goto _03FF
-	.byte 0x02, 0x00
+	end
+
 _0395:
 	goto _02FE
-	.byte 0x02, 0x00
+	end
+
 _039D:
 	scrcmd_283
 	goto _02FE
-	.byte 0x02, 0x00
+	end
+
 _03A7:
 	npc_msg msg_0109_D32R0501_00044
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -230,14 +248,17 @@ _03A7:
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _03F5
 	goto _03FF
-	.byte 0x02, 0x00
+	end
+
 _03ED:
 	goto _02FE
-	.byte 0x02, 0x00
+	end
+
 _03F5:
 	scrcmd_283
 	goto _02FE
-	.byte 0x02, 0x00
+	end
+
 _03FF:
 	scrcmd_258
 	scrcmd_257 136
@@ -255,7 +276,8 @@ _03FF:
 	call_if_eq _046A
 	call _06FD
 	goto _04CB
-	.byte 0x02, 0x00
+	end
+
 _046A:
 	setvar VAR_UNK_4147, 255
 	return
@@ -265,24 +287,27 @@ _0472:
 	buffer_mon_species_name 0, VAR_TEMP_x4002
 	npc_msg msg_0109_D32R0501_00029
 	goto _04B9
-	.byte 0x02, 0x00
+	end
+
 _0488:
 	call _04C1
 	buffer_mon_species_name 0, VAR_TEMP_x4005
 	npc_msg msg_0109_D32R0501_00029
 	goto _04B9
-	.byte 0x02, 0x00
+	end
+
 _049E:
 	call _04C1
 	buffer_mon_species_name 0, VAR_TEMP_x4002
 	buffer_mon_species_name 1, VAR_TEMP_x4005
 	npc_msg msg_0109_D32R0501_00030
 	goto _04B9
-	.byte 0x02, 0x00
+	end
+
 _04B9:
 	goto _0126
-	.byte 0x02
-	.byte 0x00
+	end
+
 _04C1:
 	scrcmd_258
 	scrcmd_257 139
@@ -298,7 +323,8 @@ _04CB:
 	call_if_eq _0599
 	play_se SEQ_SE_DP_KAIDAN2
 	goto _04FE
-	.byte 0x02, 0x00
+	end
+
 _04FE:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -376,13 +402,14 @@ _05FB:
 	setvar VAR_UNK_4147, 0
 	callstd std_bag_is_full_griseous_orb
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _060C:
 	step 14, 6
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0618:
 	step 14, 3
 	step 12, 1
@@ -390,11 +417,13 @@ _0618:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _062C:
 	step 14, 5
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0638:
 	step 14, 2
 	step 12, 1
@@ -402,12 +431,14 @@ _0638:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _064C:
 	step 23, 6
 	step 70, 1
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _065C:
 	step 23, 6
 	step 21, 1
@@ -415,16 +446,19 @@ _065C:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _0670:
 	step 23, 5
 	step 70, 1
 	step_end
 
+	.balign 4, 0
 _067C:
 	step 21, 1
 	step 23, 5
 	step 70, 1
 	step_end
+
 _068C:
 	npc_msg msg_0109_D32R0501_00000
 	return
@@ -464,7 +498,8 @@ scr_seq_D32R0501_001:
 	call _046A
 	call _06FD
 	goto _04CB
-	.byte 0x02, 0x00
+	end
+
 _06FD:
 	add_waiting_icon
 	save_game_normal VAR_SPECIAL_RESULT
@@ -483,7 +518,8 @@ scr_seq_D32R0501_002:
 	compare VAR_BATTLE_CASTLE_PRINT_PROGRESS, 3
 	call_if_eq _0744
 	goto _0126
-	.byte 0x02, 0x00
+	end
+
 _073C:
 	setvar VAR_BATTLE_CASTLE_PRINT_PROGRESS, 0
 	return
@@ -502,7 +538,8 @@ scr_seq_D32R0501_003:
 	compare VAR_BATTLE_CASTLE_PRINT_PROGRESS, 3
 	call_if_eq _07A5
 	goto _0126
-	.byte 0x02, 0x00
+	end
+
 _0788:
 	add_special_game_stat_2 28
 	return
@@ -528,9 +565,22 @@ _07A5:
 
 scr_seq_D32R0501_004:
 	goto _0126
-	.byte 0x02, 0x00, 0x0c, 0x00, 0x02, 0x00, 0x3f, 0x00, 0x01, 0x00
-	.byte 0x0c, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x02, 0x00, 0x3f, 0x00, 0x01, 0x00
-	.byte 0x0c, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
+	end
+
+	.balign 4, 0
+_07C8:
+	step 12, 2
+	step 63, 1
+	step 12, 1
+	step_end
+
+	.balign 4, 0
+_07D8:
+	step 12, 2
+	step 63, 1
+	step 12, 1
+	step_end
+
 scr_seq_D32R0501_006:
 	simple_npc_msg msg_0109_D32R0501_00046
 	end
