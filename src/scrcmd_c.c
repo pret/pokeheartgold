@@ -878,7 +878,7 @@ static BOOL sub_02041520(ScriptContext* ctx) {
     }
 
     if (direction != 0xFFFF) {
-        sub_020200A0(*printer_id_ptr);
+        RemoveTextPrinter(*printer_id_ptr);
         PlayerAvatar_SetFacingDirection(ctx->fieldSystem->playerAvatar, direction);
         *ret_ptr = 0;
         ctx->fieldSystem->unkD2_6 = 0;

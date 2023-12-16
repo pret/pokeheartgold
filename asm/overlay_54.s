@@ -380,7 +380,7 @@ _021E5C14:
 	mov r0, #0xca
 	lsl r0, r0, #2
 	ldrb r0, [r4, r0]
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _021E5C2C:
 	mov r0, #0xb5
 	lsl r0, r0, #2
@@ -1064,7 +1064,7 @@ ov54_021E61A8: ; 0x021E61A8
 	mov r0, #0xca
 	lsl r0, r0, #2
 	ldrb r0, [r5, r0]
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _021E61D2:
 	ldr r1, _021E6230 ; =0x0000022A
 	ldr r0, [r5, #0x28]

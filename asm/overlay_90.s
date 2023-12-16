@@ -1771,7 +1771,7 @@ _0225948A:
 	ldrh r0, [r1, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _022594B4:
 	add r0, r5, #0
 	add r1, r6, #0
@@ -1823,7 +1823,7 @@ ov90_022594FC: ; 0x022594FC
 	ldrh r0, [r6, r7]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _02259524:
 	lsl r4, r4, #4
 	add r0, r5, r4

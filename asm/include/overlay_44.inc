@@ -143,7 +143,7 @@
 .public GF_SinDegNoWrap
 .public MTRandom
 .public TextPrinterCheckActive
-.public sub_020200A0
+.public RemoveTextPrinter
 .public AddTextPrinterParameterized
 .public AddTextPrinterParameterizedWithColor
 .public GF_CreateVramTransferManager

@@ -4818,7 +4818,7 @@ ov49_0225AB14: ; 0x0225AB14
 	ldr r0, [r4, #0x10]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _0225AB30:
 	add r0, r4, #0
 	bl ov49_0225AC38
@@ -4844,7 +4844,7 @@ ov49_0225AB44: ; 0x0225AB44
 	ldr r0, [r5, #0x10]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _0225AB64:
 	add r0, r5, #0
 	mov r1, #0xf
@@ -4890,7 +4890,7 @@ ov49_0225ABA4: ; 0x0225ABA4
 	ldr r0, [r5, #0x10]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _0225ABC4:
 	add r0, r5, #0
 	mov r1, #0xf
@@ -5009,7 +5009,7 @@ ov49_0225AC74: ; 0x0225AC74
 	ldr r0, [r4, #0x10]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _0225AC90:
 	add r0, r4, #0
 	bl ov49_0225AC38
@@ -5057,7 +5057,7 @@ ov49_0225ACC4: ; 0x0225ACC4
 	ldr r0, [r5, #0x10]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _0225ACE4:
 	add r0, r5, #0
 	mov r1, #0xf

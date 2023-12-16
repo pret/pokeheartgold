@@ -1333,7 +1333,7 @@ ov47_02259278: ; 0x02259278
 	ldr r0, [r5]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _02259296:
 	add r0, r5, #0
 	bl ov47_022593A0
@@ -1363,7 +1363,7 @@ ov47_022592B4: ; 0x022592B4
 	ldr r0, [r5]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _022592D4:
 	add r0, r5, #0
 	add r0, #8
@@ -1412,7 +1412,7 @@ ov47_02259318: ; 0x02259318
 	ldr r0, [r5]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _02259338:
 	add r0, r5, #0
 	add r0, #8
@@ -1508,7 +1508,7 @@ ov47_022593CC: ; 0x022593CC
 	ldr r0, [r4]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _022593E8:
 	add r0, r4, #0
 	bl ov47_022593A0

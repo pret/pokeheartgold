@@ -14,14 +14,14 @@
 
 #define MAX_TEXT_PRINTERS 8
 
-void sub_0201FFE0(const struct FontInfo *fontData);
-void sub_020200A0(u8 printerId);
+void SetFontsPointer(const struct FontInfo *fonts);
+void RemoveTextPrinter(u8 printerId);
 void ResetAllTextPrinters(void);
 u8 TextPrinterCheckActive(u8 printerId); // FIXME: bool8
 u8 AddTextPrinterParameterized(Window* window, FontID fontId, String* text, u32 x, u32 y, u32 textSpeed, PrinterCallback_t callback);
 u8 AddTextPrinterParameterizedWithColor(Window *window, FontID fontId, String *string, u32 x, u32 y, u32 textSpeed, u32 color, PrinterCallback_t callback);
 u8 AddTextPrinterParameterizedWithColorAndSpacing(Window *window, int fontId, String *string, u32 x, u32 y, u32 textSpeed, u32 color, u32 letterSpacing, u32 lineSpacing, PrinterCallback_t callback);
-void sub_0202036C(u8 fgColor, u8 bgColor, u8 shadowColor);
+void GenerateFontHalfRowLookupTable(u8 fgColor, u8 bgColor, u8 shadowColor);
 void DecompressGlyphTile(const u8 *src, u8 *dest);
 void sub_020204FC(TextPrinter *printer, u32 x, u32 y, u16 fieldNum);
 

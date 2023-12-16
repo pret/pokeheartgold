@@ -20,7 +20,7 @@ ov03_02253E20: ; 0x02253E20
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _02253E42:
 	cmp r4, #0
 	beq _02253E64
@@ -1108,7 +1108,7 @@ _02254714:
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _02254730:
 	ldr r0, _022547D0 ; =ov03_022598A0
 	mov r1, #2
@@ -1271,7 +1271,7 @@ _0225486A:
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _022548A6:
 	add r0, r6, #0
 	add r1, r4, #0
@@ -3314,7 +3314,7 @@ _02255932:
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _02255960:
 	bl sub_02037454
 	add r1, r4, #0

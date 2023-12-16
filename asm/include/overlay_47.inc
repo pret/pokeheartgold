@@ -75,7 +75,7 @@
 .public SetWindowPaletteNum
 .public DoScheduledBgGpuUpdates
 .public TextPrinterCheckActive
-.public sub_020200A0
+.public RemoveTextPrinter
 .public AddTextPrinterParameterizedWithColor
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager

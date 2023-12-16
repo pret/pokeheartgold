@@ -19235,7 +19235,7 @@ ov96_021EE944: ; 0x021EE944
 	beq _021EE95A
 	lsl r0, r1, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _021EE95A:
 	ldr r0, [r4, #0x18]
 	cmp r0, #0

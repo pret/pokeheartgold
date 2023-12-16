@@ -1408,7 +1408,7 @@ ov43_0222A9F4: ; 0x0222A9F4
 	ldr r0, [r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _0222AA22:
 	add r0, r4, #0
 	mov r1, #0
@@ -1463,7 +1463,7 @@ ov43_0222AA70: ; 0x0222AA70
 	ldr r0, [r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _0222AA98:
 	add r4, #0x64
 	add r0, r4, #0

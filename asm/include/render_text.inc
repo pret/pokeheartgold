@@ -34,7 +34,7 @@
 .public MsgArray_SkipControlCode
 .public MsgArray_GetControlCode
 .public MsgArray_ControlCodeGetField
-.public sub_0202036C
+.public GenerateFontHalfRowLookupTable
 .public sub_020204FC
 .public sub_020252F4
 .public sub_02025320

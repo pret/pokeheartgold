@@ -2763,7 +2763,7 @@ _021E6F34:
 	ldr r0, [r5, #0x4c]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _021E6F66:
 	add r0, r5, #0
 	mov r1, #0xf
@@ -2929,7 +2929,7 @@ _021E7098:
 	ldr r0, [r5, #0x4c]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _021E70AC:
 	add r0, r5, #0
 	mov r1, #1

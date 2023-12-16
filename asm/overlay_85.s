@@ -8796,7 +8796,7 @@ ov85_021E9B40: ; 0x021E9B40
 	ldr r0, [r5, #0x5c]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _021E9B5E:
 	add r0, r5, #0
 	mov r1, #0xf
@@ -9002,7 +9002,7 @@ _021E9CDA:
 	ldr r0, [r5, #0x5c]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _021E9CEE:
 	add r0, r5, #0
 	mov r1, #0xc
@@ -9064,7 +9064,7 @@ _021E9D60:
 	ldr r0, [r5, #0x5c]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _021E9D74:
 	mov r0, #0x33
 	lsl r0, r0, #4

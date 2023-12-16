@@ -3045,7 +3045,7 @@ ov48_02259F14: ; 0x02259F14
 	ldr r0, [r4, #4]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _02259F30:
 	ldr r0, [r4, #0xc]
 	bl String_Delete

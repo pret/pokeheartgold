@@ -2640,7 +2640,7 @@ ov37_021E6EB4: ; 0x021E6EB4
 	ldr r0, [r5, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _021E6ED2:
 	add r0, r5, #0
 	mov r1, #2

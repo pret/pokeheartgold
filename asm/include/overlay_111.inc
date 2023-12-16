@@ -87,7 +87,7 @@
 .public ScheduleSetBgPosText
 .public ResetAllTextPrinters
 .public TextPrinterCheckActive
-.public sub_020200A0
+.public RemoveTextPrinter
 .public AddTextPrinterParameterizedWithColor
 .public GfGfx_SetBanks
 .public GfGfx_DisableEngineAPlanes

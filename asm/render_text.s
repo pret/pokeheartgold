@@ -403,7 +403,7 @@ _0200245A:
 	ldrb r0, [r4, #0x15]
 	ldrb r1, [r4, #0x16]
 	ldrb r2, [r4, #0x17]
-	bl sub_0202036C
+	bl GenerateFontHalfRowLookupTable
 	b _02002622
 _02002470:
 	ldr r0, [r4]

@@ -67,7 +67,7 @@
 .public FillWindowPixelRect
 .public GetWindowWidth
 .public ScheduleBgTilemapBufferTransfer
-.public sub_020200A0
+.public RemoveTextPrinter
 .public AddTextPrinterParameterized
 .public AddTextPrinterParameterizedWithColor
 .public GfGfx_EngineATogglePlanes

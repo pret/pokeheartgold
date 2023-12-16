@@ -2209,7 +2209,7 @@ ov111_021E69F4: ; 0x021E69F4
 	beq _021E6A0A
 	lsl r0, r1, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _021E6A0A:
 	ldr r0, [r4, #0x1c]
 	cmp r0, #0

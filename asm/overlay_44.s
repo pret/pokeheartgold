@@ -10899,7 +10899,7 @@ _0222F580:
 	ldr r0, [r5, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 	mov r0, #6
 	mov r1, #8
 	lsl r0, r0, #6
@@ -11048,7 +11048,7 @@ _0222F6C0:
 	ldr r0, [r5, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 	mov r0, #6
 	mov r1, #8
 	lsl r0, r0, #6
@@ -11172,7 +11172,7 @@ ov44_0222F7BC: ; 0x0222F7BC
 	ldr r0, [r4, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 	mov r0, #6
 	mov r1, #8
 	lsl r0, r0, #6
@@ -19434,7 +19434,7 @@ ov44_0223386C: ; 0x0223386C
 	cmp r0, #0
 	beq _02233890
 	ldrb r0, [r5, #0x14]
-	bl sub_020200A0
+	bl RemoveTextPrinter
 	mov r0, #0xff
 	strb r0, [r5, #0x14]
 _02233890:
@@ -19545,7 +19545,7 @@ ov44_02233954: ; 0x02233954
 	cmp r0, #0
 	beq _0223396C
 	ldrb r0, [r4, #0x14]
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _0223396C:
 	mov r0, #0xff
 	strb r0, [r4, #0x14]

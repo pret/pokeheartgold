@@ -57,7 +57,7 @@
 .public FillWindowPixelBuffer
 .public DoScheduledBgGpuUpdates
 .public TextPrinterCheckActive
-.public sub_020200A0
+.public RemoveTextPrinter
 .public AddTextPrinterParameterized
 .public AddTextPrinterParameterizedWithColor
 .public GfGfx_SetBanks
