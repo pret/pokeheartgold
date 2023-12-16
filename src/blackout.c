@@ -174,47 +174,47 @@ BOOL Task_BlackOut(TaskManager *taskManager) {
     u16 deathSpawn;
 
     switch (*state) {
-    case 0:
-        localFieldData = Save_LocalFieldData_Get(fieldSystem->saveData);
-        deathSpawn = LocalFieldData_GetBlackoutSpawn(localFieldData);
-        GetDeathWarpData(deathSpawn, &deathWarp);
-        GetSpecialSpawnWarpData(deathSpawn, LocalFieldData_GetSpecialSpawnWarpPtr(localFieldData));
-        sub_020537A8(taskManager, &deathWarp);
-        FieldSystem_ClearFollowingTrainer(fieldSystem);
-        HealParty(SaveArray_Party_Get(fieldSystem->saveData));
-        (*state)++;
-        break;
-    case 1:
-        GF_SndStartFadeOutBGM(0, 20);
-        (*state)++;
-        break;
-    case 2:
-        if (GF_SndGetFadeTimer() == 0) {
-            sub_02054F14();
+        case 0:
+            localFieldData = Save_LocalFieldData_Get(fieldSystem->saveData);
+            deathSpawn = LocalFieldData_GetBlackoutSpawn(localFieldData);
+            GetDeathWarpData(deathSpawn, &deathWarp);
+            GetSpecialSpawnWarpData(deathSpawn, LocalFieldData_GetSpecialSpawnWarpPtr(localFieldData));
+            sub_020537A8(taskManager, &deathWarp);
+            FieldSystem_ClearFollowingTrainer(fieldSystem);
+            HealParty(SaveArray_Party_Get(fieldSystem->saveData));
             (*state)++;
-        }
-        break;
-    case 3:
-        SetBlendBrightness(-16, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN);
-        SetBlendBrightness(-16, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_SUB);
-        Blackout_DrawMessage(fieldSystem, taskManager);
-        (*state)++;
-        break;
-    case 4:
-        CallTask_RestoreOverworld(taskManager);
-        (*state)++;
-        break;
-    case 5:
-        SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN | SCREEN_MASK_SUB);
-        if (GetMomSpawnId() == LocalFieldData_GetBlackoutSpawn(Save_LocalFieldData_Get(fieldSystem->saveData))) {
-            QueueScript(taskManager, std_whited_out_to_mom, NULL, NULL);
-        } else {
-            QueueScript(taskManager, std_whited_out_to_pokecenter, NULL, NULL);
-        }
-        (*state)++;
-        break;
-    case 6:
-        return TRUE;
+            break;
+        case 1:
+            GF_SndStartFadeOutBGM(0, 20);
+            (*state)++;
+            break;
+        case 2:
+            if (GF_SndGetFadeTimer() == 0) {
+                sub_02054F14();
+                (*state)++;
+            }
+            break;
+        case 3:
+            SetBlendBrightness(-16, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN);
+            SetBlendBrightness(-16, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_SUB);
+            Blackout_DrawMessage(fieldSystem, taskManager);
+            (*state)++;
+            break;
+        case 4:
+            CallTask_RestoreOverworld(taskManager);
+            (*state)++;
+            break;
+        case 5:
+            SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN | SCREEN_MASK_SUB);
+            if (GetMomSpawnId() == LocalFieldData_GetBlackoutSpawn(Save_LocalFieldData_Get(fieldSystem->saveData))) {
+                QueueScript(taskManager, std_whited_out_to_mom, NULL, NULL);
+            } else {
+                QueueScript(taskManager, std_whited_out_to_pokecenter, NULL, NULL);
+            }
+            (*state)++;
+            break;
+        case 6:
+            return TRUE;
     }
 
     return FALSE;
