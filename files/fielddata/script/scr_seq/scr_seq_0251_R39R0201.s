@@ -48,12 +48,14 @@ _007E:
 	closemsg
 	setflag FLAG_UNK_100
 	goto _0070
-	.byte 0x02, 0x00
+	end
+
 _00A2:
 	npc_msg msg_0398_R39R0201_00008
 	closemsg
 	goto _0070
-	.byte 0x02, 0x00
+	end
+
 scr_seq_R39R0201_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -72,12 +74,14 @@ _00E0:
 	npc_msg msg_0398_R39R0201_00004
 	closemsg
 	goto _00D2
-	.byte 0x02, 0x00
+	end
+
 _00ED:
 	npc_msg msg_0398_R39R0201_00002
 	closemsg
 	goto _00D2
-	.byte 0x02, 0x00
+	end
+
 _00FA:
 	goto_if_unset FLAG_UNK_100, _00ED
 	npc_msg msg_0398_R39R0201_00001
@@ -130,20 +134,24 @@ _01C2:
 	closemsg
 	setflag FLAG_UNK_101
 	goto _00D2
-	.byte 0x02, 0x00
+	end
+
 _020C:
 	npc_msg msg_0398_R39R0201_00003
 	closemsg
 	goto _00D2
-	.byte 0x02, 0x00, 0x00, 0x00, 0x00
+	end
 
+	.balign 4, 0
 _021C:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0224:
 	step 34, 1
 	step_end
+
 scr_seq_R39R0201_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall

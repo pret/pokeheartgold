@@ -107,17 +107,19 @@ _0115:
 	goto_if_eq _00F7
 	end
 
-
+	.balign 4, 0
 _0140:
 	step 14, 2
 	step 13, 3
 	step_end
 
+	.balign 4, 0
 _014C:
 	step 13, 2
 	step 14, 2
 	step 13, 1
 	step_end
+
 scr_seq_T22FS0101_003:
 	simple_npc_msg msg_0557_T22FS0101_00000
 	end

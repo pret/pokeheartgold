@@ -112,7 +112,7 @@ _014A:
 	wait 30, VAR_SPECIAL_RESULT
 	end
 
-
+	.balign 4, 0
 _0154:
 	step 1, 1
 	step 71, 1
@@ -120,6 +120,7 @@ _0154:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _0168:
 	step 3, 1
 	step 71, 1

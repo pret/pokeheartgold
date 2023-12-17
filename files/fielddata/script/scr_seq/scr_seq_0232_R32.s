@@ -180,12 +180,14 @@ _0284:
 _028C:
 	npc_msg msg_0380_R32_00003
 	goto _0284
-	.byte 0x02, 0x00
+	end
+
 _0297:
 	buffer_players_name 0
 	npc_msg msg_0380_R32_00001
 	goto _0284
-	.byte 0x02, 0x00
+	end
+
 _02A5:
 	setvar VAR_TEMP_x4002, 0
 	call _02B5
@@ -308,68 +310,80 @@ _0468:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _046C:
 	step 2, 1
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0478:
 	step 14, 2
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _0484:
 	step 62, 1
 	step 14, 1
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _0494:
 	step 63, 1
 	step 12, 2
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _04A4:
 	step 62, 1
 	step 12, 2
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _04B4:
 	step 13, 1
 	step 15, 2
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _04C4:
 	step 13, 1
 	step 15, 1
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _04D4:
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _04DC:
 	step 62, 1
 	step_end
 
+	.balign 4, 0
 _04E4:
 	step 63, 1
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _04F0:
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _04F8:
 	step 15, 1
 	step 2, 1
 	step_end
+
 scr_seq_R32_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -476,7 +490,7 @@ _0674:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _0688:
 	step 15, 1
 	step 12, 2
@@ -485,11 +499,13 @@ _0688:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _06A0:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _06AC:
 	step 12, 1
 	step 14, 1
@@ -497,6 +513,7 @@ _06AC:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _06C0:
 	step 12, 1
 	step 15, 1
@@ -504,16 +521,19 @@ _06C0:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _06D4:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _06E0:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
+
 scr_seq_R32_006:
 	direction_signpost msg_0380_R32_00018, 1, 2, VAR_SPECIAL_RESULT
 	scrcmd_057 3

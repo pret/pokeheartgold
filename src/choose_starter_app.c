@@ -1023,8 +1023,8 @@ static void makeAndDrawWindows(struct ChooseStarterAppWork *work) {
     FillWindowPixelBuffer(work->winTop, 15);
     FillWindowPixelBuffer(work->winBottom, 0);
     LoadUserFrameGfx2(work->bgConfig, GF_BG_LYR_SUB_0, 0x200, 0, work->frame, work->heapId);
-    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_08_window_NCLR, GF_BG_LYR_SUB_0, 0x040, 0x20, work->heapId);
-    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_08_window_NCLR, GF_BG_LYR_MAIN_0, 0x040, 0x20, work->heapId);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_08_window_NCLR, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_2_OFFSET, 0x20, work->heapId);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_08_window_NCLR, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_2_OFFSET, 0x20, work->heapId);
     DrawFrameAndWindow2(work->winTop, FALSE, 0x200, 0);
 }
 
@@ -1035,9 +1035,9 @@ static void loadBgGraphics(BgConfig *bgConfig, HeapID heapId) {
     GfGfxLoader_LoadScrnData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_14_bgl2_NSCR, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, FALSE, heapId);
     GfGfxLoader_LoadScrnData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_11_bgl5_NSCR, bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, heapId);
     GfGfxLoader_LoadScrnData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_17_bgl6_NSCR, bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, heapId);
-    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_12_bgl2_NCLR, GF_BG_LYR_MAIN_0, 0x60, 0x20, heapId);
-    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_09_bgl5_NCLR, GF_BG_LYR_SUB_0, 0x60, 0x20, heapId);
-    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_15_bgl6_NCLR, GF_BG_LYR_SUB_0, 0x80, 0x20, heapId);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_12_bgl2_NCLR, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_3_OFFSET, 0x20, heapId);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_09_bgl5_NCLR, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_3_OFFSET, 0x20, heapId);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_15_bgl6_NCLR, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_4_OFFSET, 0x20, heapId);
     BgTilemapRectChangePalette(bgConfig, 2, 0, 0, 0x20, 0x18, 3);
     BgTilemapRectChangePalette(bgConfig, 5, 0, 0, 0x20, 0x18, 3);
     BgTilemapRectChangePalette(bgConfig, 6, 0, 0, 0x20, 0x18, 4);

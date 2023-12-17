@@ -170,12 +170,13 @@ _025D:
 _0265:
 	wait_movement
 	return
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _026C:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0274:
 	step 3, 1
 	step 1, 1
@@ -186,6 +187,7 @@ _0274:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _0294:
 	step 1, 1
 	step 2, 1
@@ -195,6 +197,7 @@ _0294:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _02B0:
 	step 2, 1
 	step 0, 1
@@ -203,6 +206,7 @@ _02B0:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _02C8:
 	step 3, 1
 	step 1, 1
@@ -214,6 +218,7 @@ _02C8:
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _02EC:
 	step 3, 1
 	step 1, 1
@@ -222,6 +227,7 @@ _02EC:
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _0304:
 	step 3, 1
 	step 1, 1
@@ -230,6 +236,7 @@ _0304:
 	step 3, 1
 	step 1, 1
 	step_end
+
 scr_seq_T11R0802_003:
 	compare VAR_TEMP_x400A, 0
 	goto_if_ne _03A3
@@ -275,23 +282,27 @@ _03A3:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _03C0:
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _03C8:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _03D0:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _03D8:
 	step 3, 1
 	step_end
+
 scr_seq_T11R0802_001:
 	simple_npc_msg msg_0541_T11R0802_00015
 	end

@@ -273,8 +273,8 @@ static void TouchSaveApp_SetupGraphics(TouchSaveAppData *data) {
 
     GfGfxLoader_LoadCharData(NARC_a_0_1_4, 76, data->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, HEAP_ID_8);
     GfGfxLoader_LoadScrnData(NARC_a_0_1_4, 77, data->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, HEAP_ID_8);
-    GfGfxLoader_GXLoadPal(NARC_a_0_1_4, 75, GF_BG_LYR_SUB_0, 0, 0x200, HEAP_ID_8);
-    LoadFontPal0(GF_BG_LYR_SUB_0, GF_PAL_SLOT_OFFSET_4, HEAP_ID_8);
+    GfGfxLoader_GXLoadPal(NARC_a_0_1_4, 75, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_0_OFFSET, 0x200, HEAP_ID_8);
+    LoadFontPal0(GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_4_OFFSET, HEAP_ID_8);
 
     AddWindowParameterized(data->bgConfig, &data->window, GF_BG_LYR_SUB_1, 2, 19, 27, 4, 4, 0x80);
     FillWindowPixelBuffer(&data->window, 0xFF);

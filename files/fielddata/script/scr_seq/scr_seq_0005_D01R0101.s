@@ -23,7 +23,8 @@ _001F:
 	compare VAR_TEMP_x4002, 1
 	goto_if_eq _004D
 	goto _0102
-	.byte 0x02, 0x00
+	end
+
 _004D:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 12
@@ -132,7 +133,8 @@ _019A:
 _01AB:
 	npc_msg msg_0047_D01R0101_00005
 	goto _0133
-	.byte 0x02, 0x00
+	end
+
 _01B6:
 	get_weekday VAR_SPECIAL_x8004
 	compare VAR_SPECIAL_x8004, 1

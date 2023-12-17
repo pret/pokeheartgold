@@ -185,20 +185,23 @@ _027A:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _0288:
 	step 1, 1
 	step 70, 1
 	step 13, 2
 	step_end
 
+	.balign 4, 0
 _0290:
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _02A0:
 	step 13, 2
 	step_end
+
 scr_seq_0004_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -731,30 +734,35 @@ scr_seq_0004_002:
 	scrcmd_230
 	scrcmd_284
 	end
-	.balign 4, 0
 
+	.balign 4, 0
 _0BDC:
 	step 15, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0BE8:
 	step 14, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0BF4:
 	step 12, 2
 	step_end
 
+	.balign 4, 0
 _0BFC:
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _0C04:
 	step 12, 1
 	step 69, 1
 	step_end
+
 _0C10:
 	npc_msg msg_0046_00144
 	wait_button_or_walk_away

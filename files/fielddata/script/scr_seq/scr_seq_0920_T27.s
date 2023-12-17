@@ -69,12 +69,13 @@ _00B8:
 	scrcmd_309 1
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _00D0:
 	step 17, 2
 	step 63, 1
 	step_end
+
 scr_seq_T27_005:
 	scrcmd_609
 	lockall
@@ -122,8 +123,13 @@ scr_seq_T27_005:
 	clearflag FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS
 	setflag FLAG_UNK_241
 	end
-	.byte 0x4b, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_0194:
+	step 75, 1
+	step_end
+
+	.balign 4, 0
 _019C:
 	step 71, 1
 	step 17, 1
@@ -131,6 +137,7 @@ _019C:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _01B0:
 	step 0, 1
 	step 71, 1
@@ -138,27 +145,32 @@ _01B0:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _01C4:
 	step 75, 1
 	step 63, 1
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _01D4:
 	step 17, 1
 	step 37, 1
 	step_end
 
+	.balign 4, 0
 _01E0:
 	step 10, 3
 	step 63, 3
 	step 18, 6
 	step_end
 
+	.balign 4, 0
 _01F0:
 	step 63, 3
 	step 34, 1
 	step_end
+
 scr_seq_T27_013:
 	simple_npc_msg msg_0612_T27_00019
 	end
@@ -241,7 +253,7 @@ _0328:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _033C:
 	step 15, 1
 	step 12, 2
@@ -250,11 +262,13 @@ _033C:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0354:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0360:
 	step 12, 1
 	step 14, 1
@@ -262,16 +276,19 @@ _0360:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0374:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0380:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
+
 scr_seq_T27_001:
 	direction_signpost msg_0612_T27_00011, 0, 18, VAR_SPECIAL_RESULT
 	scrcmd_057 3

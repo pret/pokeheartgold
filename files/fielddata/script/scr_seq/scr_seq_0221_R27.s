@@ -53,25 +53,29 @@ _0092:
 	releaseall
 	setvar VAR_UNK_408A, 1
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _00A8:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _00B0:
 	step 14, 4
 	step_end
 
+	.balign 4, 0
 _00B8:
 	step 13, 1
 	step 14, 4
 	step_end
 
+	.balign 4, 0
 _00C4:
 	step 12, 1
 	step 14, 4
 	step_end
+
 scr_seq_R27_002:
 	scrcmd_055 2, 0
 	scrcmd_057 3

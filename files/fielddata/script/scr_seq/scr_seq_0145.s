@@ -564,68 +564,79 @@ _04EE:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	buffer_pocket_name 2, VAR_SPECIAL_RESULT
 	goto _0586
-	.byte 0x02
-	.byte 0x00
+	end
+
 _0501:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	buffer_pocket_name 2, VAR_SPECIAL_RESULT
 	goto _0586
-	.byte 0x02, 0x00
+	end
+
 _0514:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	buffer_pocket_name 2, VAR_SPECIAL_RESULT
 	goto _0586
-	.byte 0x02, 0x00
+	end
+
 _0527:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	buffer_pocket_name 2, VAR_SPECIAL_RESULT
 	goto _0586
-	.byte 0x02, 0x00
+	end
+
 _053A:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	buffer_pocket_name 2, VAR_SPECIAL_RESULT
 	goto _0586
-	.byte 0x02, 0x00
+	end
+
 _054D:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	buffer_pocket_name 2, VAR_SPECIAL_RESULT
 	goto _0586
-	.byte 0x02, 0x00
+	end
+
 _0560:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	buffer_pocket_name 2, VAR_SPECIAL_RESULT
 	goto _0586
-	.byte 0x02, 0x00
+	end
+
 _0573:
 	getitempocket VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	buffer_pocket_name 2, VAR_SPECIAL_RESULT
 	goto _0586
-	.byte 0x02, 0x00
+	end
+
 _0586:
 	setflagvar VAR_SPECIAL_x8006
 	npc_msg msg_0210_00009
 	wait_button_or_walk_away
 	setvar VAR_SPECIAL_RESULT, 1
 	goto _043C
-	.byte 0x02, 0x00
+	end
+
 _059D:
 	buffer_players_name 0
 	buffer_item_name_indef 1, VAR_SPECIAL_x8004
 	buffer_tmhm_move_name 2, VAR_SPECIAL_x8004
 	npc_msg msg_0210_00006
 	goto _046E
-	.byte 0x02, 0x00
+	end
+
 _05B5:
 	buffer_players_name 0
 	buffer_item_name_indef 1, VAR_SPECIAL_x8004
 	npc_msg msg_0210_00003
 	goto _046E
-	.byte 0x02, 0x00
+	end
+
 _05C8:
 	buffer_item_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0210_00004
 	wait_button_or_walk_away
 	setvar VAR_SPECIAL_RESULT, 0
 	goto _043C
-	.byte 0x02, 0x00
+	end
+
 	.balign 4, 0

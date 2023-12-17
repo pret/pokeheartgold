@@ -75,36 +75,42 @@ scr_seq_T07R0203_010:
 	move_person_facing obj_T07R0203_tsure_poke_static_marill, 29, 0, 29, DIR_WEST
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _012C:
 	step 14, 4
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0138:
 	step 14, 4
 	step_end
 
+	.balign 4, 0
 _0140:
 	step 14, 4
 	step_end
 
+	.balign 4, 0
 _0148:
 	step 14, 4
 	step_end
 
+	.balign 4, 0
 _0150:
 	step 13, 3
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _015C:
 	step 12, 2
 	step 14, 1
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _016C:
 	step 14, 1
 	step 12, 2
@@ -112,15 +118,18 @@ _016C:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0180:
 	step 12, 1
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _018C:
 	step 12, 2
 	step 69, 1
 	step_end
+
 scr_seq_T07R0203_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall

@@ -158,7 +158,7 @@ scr_seq_T30GYM0101_002:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _0218:
 	step 1, 2
 	step 2, 2
@@ -178,6 +178,7 @@ _0218:
 	step 3, 1
 	step 69, 0
 	step_end
+
 scr_seq_T30GYM0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -251,53 +252,62 @@ _0352:
 	setvar VAR_UNK_4120, 1
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0370:
 	step 2, 1
 	step 75, 1
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _0380:
 	step 2, 1
 	step 75, 1
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _0390:
 	step 2, 1
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _039C:
 	step 63, 5
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _03A8:
 	step 63, 4
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _03B4:
 	step 63, 2
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _03C0:
 	step 15, 2
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _03CC:
 	step 15, 1
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _03D8:
 	step 1, 1
 	step_end
+
 scr_seq_T30GYM0101_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall

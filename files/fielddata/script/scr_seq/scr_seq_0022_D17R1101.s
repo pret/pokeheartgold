@@ -106,7 +106,8 @@ _013D:
 _014E:
 	npc_msg msg_0059_D17R1101_00004
 	goto _00D6
-	.byte 0x02, 0x00
+	end
+
 _0159:
 	npc_msg msg_0059_D17R1101_00005
 	touchscreen_menu_hide

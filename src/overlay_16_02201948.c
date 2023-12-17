@@ -16,12 +16,12 @@ extern BOOL BerryPotsApp_Initialize(OVY_MANAGER*, int*);
 extern BOOL BerryPotsApp_Run(OVY_MANAGER*, int*);
 extern BOOL BerryPotsApp_Exit(OVY_MANAGER*, int*);
 
-static const u8 ov16_02201B60[] = {
-    POCKET_ITEMS, 0xFF
-};
-
 static const u8 ov16_02201B64[] = {
     POCKET_BERRIES, 0xFF
+};
+
+static const u8 ov16_02201B60[] = {
+    POCKET_ITEMS, 0xFF
 };
 
 static const OVY_MGR_TEMPLATE ov16_02201B68 = {
@@ -38,7 +38,7 @@ static const OVY_MGR_TEMPLATE ov16_02201B78 = {
     .ovy_id = FS_OVERLAY_ID(OVY_15),
 };
 
-extern u8* unused_02201BA0;
+static const u8 *unused_02201BA0;
 
 typedef struct UnkStruct_ov16_0220196C {
     HeapID heapId;

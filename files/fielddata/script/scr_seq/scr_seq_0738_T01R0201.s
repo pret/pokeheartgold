@@ -30,7 +30,8 @@ _003B:
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _001F
 	goto _015D
-	.byte 0x02, 0x00
+	end
+
 _0056:
 	goto_if_set FLAG_UNK_AA8, _0152
 	npc_msg msg_0449_T01R0201_00001
@@ -49,7 +50,8 @@ _0056:
 _0099:
 	setvar VAR_SPECIAL_x8004, 0
 	goto _00F0
-	.byte 0x02, 0x00
+	end
+
 _00A7:
 	npc_msg msg_0449_T01R0201_00002
 	closemsg
@@ -139,5 +141,6 @@ _019D:
 _01AE:
 	npc_msg msg_0449_T01R0201_00012
 	goto _016D
-	.byte 0x02, 0x00, 0x00, 0x00, 0x00
+	end
+
 	.balign 4, 0

@@ -62,11 +62,12 @@ scr_seq_D51R0201_006:
 	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 4
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _00C4:
 	step 13, 2
 	step_end
+
 scr_seq_D51R0201_000:
 	end
 
@@ -102,7 +103,8 @@ _011A:
 	npc_msg msg_0146_D51R0201_00006
 	closemsg
 	goto _0170
-	.byte 0x02, 0x00
+	end
+
 _0154:
 	npc_msg msg_0146_D51R0201_00002
 	wait_button_or_walk_away
@@ -199,33 +201,39 @@ _024A:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _02B4:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _02BC:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _02C4:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _02CC:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _02D4:
 	step 14, 1
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _02E0:
 	step 15, 1
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _02EC:
 	step 65, 1
 	step 15, 1
@@ -235,6 +243,7 @@ _02EC:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0308:
 	step 65, 1
 	step 14, 1
@@ -244,12 +253,14 @@ _0308:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0324:
 	step 15, 3
 	step 13, 1
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0334:
 	step 13, 1
 	step 14, 8
@@ -257,6 +268,7 @@ _0334:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0348:
 	step 12, 3
 	step 15, 2
@@ -266,25 +278,34 @@ _0348:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0364:
 	step 13, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0370:
 	step 15, 1
 	step 13, 6
 	step 14, 1
 	step 32, 1
 	step_end
-	.byte 0x21, 0x00, 0x01, 0x00, 0x0d, 0x00, 0x02, 0x00, 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_0384:
+	step 33, 1
+	step 13, 2
+	step_end
+
+	.balign 4, 0
 _0390:
 	step 12, 6
 	step 65, 1
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _03A0:
 	step 15, 1
 	step 12, 5
@@ -292,6 +313,7 @@ _03A0:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _03B4:
 	step 14, 1
 	step 12, 5
@@ -299,12 +321,14 @@ _03B4:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _03C8:
 	step 63, 2
 	step 35, 1
 	step 63, 3
 	step 35, 1
 	step_end
+
 scr_seq_D51R0201_004:
 	scrcmd_609
 	lockall
@@ -328,7 +352,8 @@ _0433:
 	scrcmd_820 1
 	setvar VAR_TEMP_x4009, 483
 	goto _0514
-	.byte 0x02, 0x00
+	end
+
 scr_seq_D51R0201_003:
 	scrcmd_609
 	lockall
@@ -352,7 +377,8 @@ _049B:
 	scrcmd_820 2
 	setvar VAR_TEMP_x4009, 484
 	goto _0514
-	.byte 0x02, 0x00
+	end
+
 scr_seq_D51R0201_005:
 	scrcmd_609
 	lockall
@@ -376,7 +402,8 @@ _0503:
 	scrcmd_820 3
 	setvar VAR_TEMP_x4009, 487
 	goto _0514
-	.byte 0x02, 0x00
+	end
+
 _0514:
 	nop_var_490 VAR_TEMP_x4009
 	touchscreen_menu_hide
@@ -420,8 +447,10 @@ _056D:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _060D
 	goto _0615
-	.byte 0x16, 0x00, 0x47, 0x00
-	.byte 0x00, 0x00
+
+_05A6:
+	goto _05F9
+
 _05B2:
 	compare VAR_UNK_4102, 2
 	goto_if_ne _05F3
@@ -432,12 +461,18 @@ _05B2:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _060D
 	goto _0615
-	.byte 0x16, 0x00, 0x06
-	.byte 0x00, 0x00, 0x00
+
+_05ED:
+	goto _05F9
+
 _05F3:
 	goto _0615
-	.byte 0xea, 0x01, 0x07, 0x40, 0x29, 0x00, 0x0a
-	.byte 0x40, 0x02, 0x00, 0x1b, 0x00
+
+_05F9:
+	nop_var_490 VAR_TEMP_x4007
+	setvar VAR_TEMP_x400A, 2
+	return
+
 _0605:
 	setvar VAR_TEMP_x400A, 1
 	return
@@ -489,13 +524,18 @@ _065F:
 	compare VAR_TEMP_x4009, 483
 	goto_if_ne _0691
 	goto _06B0
-	.byte 0x16, 0x00, 0x1f, 0x00, 0x00
-	.byte 0x00
+
+_068B:
+	goto _06B0
+
 _0691:
 	compare VAR_TEMP_x4009, 484
 	goto_if_ne _06AA
 	goto _0731
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_06A4:
+	goto _06B0
+
 _06AA:
 	goto _07B2
 
@@ -785,13 +825,14 @@ _0BB2:
 	wait_fade
 	return
 
-
+	.balign 4, 0
 _0BE4:
 	step 11, 4
 	step 8, 4
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0BF4:
 	step 8, 2
 	step 11, 5
@@ -799,35 +840,41 @@ _0BF4:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0C08:
 	step 11, 3
 	step 8, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0C18:
 	step 11, 4
 	step 8, 2
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0C28:
 	step 11, 4
 	step 8, 3
 	step_end
 
+	.balign 4, 0
 _0C34:
 	step 10, 4
 	step 8, 4
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0C44:
 	step 10, 3
 	step 8, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0C54:
 	step 8, 2
 	step 10, 5
@@ -835,34 +882,40 @@ _0C54:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0C68:
 	step 10, 4
 	step 8, 2
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0C78:
 	step 10, 4
 	step 8, 3
 	step_end
 
+	.balign 4, 0
 _0C84:
 	step 9, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0C90:
 	step 9, 4
 	step 11, 1
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0CA0:
 	step 9, 4
 	step 10, 1
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0CB0:
 	step 11, 1
 	step 9, 5
@@ -870,53 +923,64 @@ _0CB0:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0CC4:
 	step 9, 4
 	step_end
 
+	.balign 4, 0
 _0CCC:
 	step 23, 4
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _0CD8:
 	step 22, 4
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _0CE4:
 	step 13, 7
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _0CF0:
 	step 12, 3
 	step_end
 
+	.balign 4, 0
 _0CF8:
 	step 13, 3
 	step_end
 
+	.balign 4, 0
 _0D00:
 	step 65, 2
 	step 13, 2
 	step_end
 
+	.balign 4, 0
 _0D0C:
 	step 63, 1
 	step 75, 1
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _0D1C:
 	step 65, 2
 	step 13, 4
 	step_end
 
+	.balign 4, 0
 _0D28:
 	step 12, 9
 	step_end
 
+	.balign 4, 0
 _0D30:
 	step 3, 1
 	step 63, 3
@@ -924,10 +988,12 @@ _0D30:
 	step 63, 3
 	step_end
 
+	.balign 4, 0
 _0D44:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0D4C:
 	step 63, 1
 	step 33, 1

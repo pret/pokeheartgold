@@ -221,14 +221,15 @@ _0305:
 	wait_fade
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0340:
 	step 75, 1
 	step 63, 1
 	step 0, 2
 	step_end
 
+	.balign 4, 0
 _0350:
 	step 75, 1
 	step 63, 1

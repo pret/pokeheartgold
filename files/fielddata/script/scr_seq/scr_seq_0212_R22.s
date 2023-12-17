@@ -179,8 +179,8 @@ scr_seq_R22_003:
 	wait_fade
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _02CC:
 	step 75, 1
 	step 63, 1
@@ -188,6 +188,7 @@ _02CC:
 	step 65, 1
 	step_end
 
+	.balign 4, 0
 _02E0:
 	step 16, 2
 	step 63, 1
@@ -197,21 +198,25 @@ _02E0:
 	step 65, 1
 	step_end
 
+	.balign 4, 0
 _02FC:
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _0304:
 	step 13, 1
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0310:
 	step 12, 2
 	step 14, 2
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _0320:
 	step 34, 1
 	step 65, 1
@@ -220,6 +225,7 @@ _0320:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0338:
 	step 75, 1
 	step 63, 1
@@ -228,6 +234,7 @@ _0338:
 	step 12, 2
 	step_end
 
+	.balign 4, 0
 _0350:
 	step 1, 1
 	step 57, 1
@@ -235,9 +242,16 @@ _0350:
 	step 52, 1
 	step 71, 1
 	step_end
-	.byte 0x47, 0x00, 0x01, 0x00, 0x13, 0x00, 0x02, 0x00
-	.byte 0x48, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_0368:
+	step 71, 1
+	step 19, 2
+	step 72, 1
+	step 2, 1
+	step_end
+
+	.balign 4, 0
 _037C:
 	step 32, 1
 	step 12, 1
@@ -249,12 +263,14 @@ _037C:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _03A0:
 	step 12, 5
 	step 14, 2
 	step 12, 2
 	step_end
 
+	.balign 4, 0
 _03B0:
 	step 62, 1
 	step 71, 1
@@ -262,34 +278,41 @@ _03B0:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _03C4:
 	step 75, 1
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _03D0:
 	step 65, 1
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _03DC:
 	step 12, 5
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _03E8:
 	step 19, 2
 	step 17, 4
 	step_end
 
+	.balign 4, 0
 _03F4:
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _03FC:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0404:
 	step 66, 1
 	step 19, 6
@@ -299,32 +322,39 @@ _0404:
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _0420:
 	step 17, 2
 	step 65, 1
 	step_end
 
+	.balign 4, 0
 _042C:
 	step 19, 1
 	step 17, 8
 	step_end
 
+	.balign 4, 0
 _0438:
 	step 35, 1
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _0444:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _044C:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0454:
 	step 14, 6
 	step_end
+
 scr_seq_R22_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -410,7 +440,7 @@ _0598:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _05AC:
 	step 15, 1
 	step 12, 2
@@ -419,11 +449,13 @@ _05AC:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _05C4:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _05D0:
 	step 12, 1
 	step 14, 1
@@ -431,6 +463,7 @@ _05D0:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _05E4:
 	step 12, 1
 	step 15, 1
@@ -438,16 +471,19 @@ _05E4:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _05F8:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0604:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
+
 scr_seq_R22_002:
 	scrcmd_055 2, 0
 	scrcmd_057 3
