@@ -58,43 +58,49 @@ _00A5:
 	wait_movement
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _00C4:
 	step 0, 2
 	step 12, 1
 	step 2, 2
 	step_end
 
+	.balign 4, 0
 _00D4:
 	step 1, 2
 	step 13, 1
 	step 2, 2
 	step_end
 
+	.balign 4, 0
 _00E4:
 	step 1, 2
 	step 13, 1
 	step 2, 2
 	step_end
 
+	.balign 4, 0
 _00F4:
 	step 0, 2
 	step 12, 1
 	step 2, 2
 	step_end
 
+	.balign 4, 0
 _0104:
 	step 71, 1
 	step 14, 1
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _0114:
 	step 71, 1
 	step 14, 1
 	step 72, 1
 	step_end
+
 scr_seq_P01R0307_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -158,30 +164,34 @@ _01D0:
 	wait_fade
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _020C:
 	step 75, 1
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _0218:
 	step 71, 1
 	step 8, 1
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _0228:
 	step 71, 1
 	step 11, 2
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _0238:
 	step 0, 2
 	step 8, 1
 	step_end
 
+	.balign 4, 0
 _0244:
 	step 3, 2
 	step 11, 2

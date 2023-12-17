@@ -112,29 +112,29 @@ void FieldSystem_InitGetMysteryGiftGmmState(struct GetMysteryGiftGmmState* state
 
 int FieldSystem_GetTagOfNextMG(FieldSystem* fieldSys) {
     (void)fieldSys;
-    return GetMysteryGiftTagByIdx(GetFirstQueuedMysteryGiftIdx());
+    return SaveMGDataPtr_GetTagByIndex(SaveMGDataPtr_GetFirstGiftIndex());
 }
 
 MysteryGiftData* FieldSystem_GetDataOfNextMG(FieldSystem* fieldSys) {
     (void)fieldSys;
-    return GetMysteryGiftDataByIdx(GetFirstQueuedMysteryGiftIdx());
+    return SaveMGDataPtr_GetDataByIndex(SaveMGDataPtr_GetFirstGiftIndex());
 }
 
 void FieldSystem_SetQueuedMGReceived(FieldSystem* fieldSys) {
     (void)fieldSys;
-    SetMysteryGiftReceivedByIdx(GetFirstQueuedMysteryGiftIdx());
+    SaveMGDataPtr_SetReceivedByIndex(SaveMGDataPtr_GetFirstGiftIndex());
 }
 
 BOOL ScrCmd_MysteryGift(ScriptContext* ctx) {
     switch (ScriptReadHalfword(ctx)) {
     case 0:
-        GetStaticPointerToSaveMysteryGift(ctx->fieldSystem->saveData, HEAP_ID_32);
+        SaveMGDataPtr_Begin(ctx->fieldSystem->saveData, HEAP_ID_32);
         break;
     case 7:
-        DeleteStaticPointerToMysteryGift(ctx->fieldSystem->saveData, FALSE);
+        SaveMGDataPtr_End(ctx->fieldSystem->saveData, FALSE);
         break;
     case 8:
-        DeleteStaticPointerToMysteryGift(ctx->fieldSystem->saveData, TRUE);
+        SaveMGDataPtr_End(ctx->fieldSystem->saveData, TRUE);
         break;
     case 1: {
         u16* ptr = ScriptGetVarPointer(ctx);
@@ -204,7 +204,7 @@ void MGMessageSuccess_ManaphyEgg(struct GetMysteryGiftGmmState* gmmState, u16* p
 void MGGive_Mon(FieldSystem* fieldSys, MysteryGiftData* unused) {
     (void)unused;
 
-    MG_POKEMON_TAG* mgData = &FieldSystem_GetDataOfNextMG(fieldSys)->pokemon;
+    MysteryGiftPokemonTag* mgData = &FieldSystem_GetDataOfNextMG(fieldSys)->pokemon;
     PlayerProfile* profile = Save_PlayerData_GetProfileAddr(fieldSys->saveData);
     SaveVarsFlags* vars_flags = Save_VarsFlags_Get(fieldSys->saveData);
     Pokemon* tmpPokemon = NULL;
@@ -315,7 +315,7 @@ void MGGive_Mon(FieldSystem* fieldSys, MysteryGiftData* unused) {
 }
 
 void MGMessageSuccess_GiveMon(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
-    MG_POKEMON_TAG* mgData = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->pokemon;
+    MysteryGiftPokemonTag* mgData = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->pokemon;
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00007;
     BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
@@ -333,7 +333,7 @@ void MGGive_Egg(FieldSystem* fieldSys, MysteryGiftData* mgData) {
 }
 
 void MGMessageSuccess_Egg(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
-    MG_POKEMON_TAG* mgData = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->pokemon;
+    MysteryGiftPokemonTag* mgData = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->pokemon;
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00008;
     BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
@@ -414,7 +414,7 @@ void MGGive_Decoration(FieldSystem* fieldSys, MysteryGiftData* mgData) {
 
 // Unreachable
 void MGMessageSuccess_Decoration(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
-    int decoration = FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->base_decoration;
+    int decoration = FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->baseDecoration;
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00011;
     BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
@@ -428,7 +428,7 @@ void MGMessageFailure_Decoration(struct GetMysteryGiftGmmState* gmmState, u16* p
 
 BOOL MGCheck_MonDeco(FieldSystem* fieldSys, MysteryGiftData* unused) {
     (void)unused;
-    MG_MON_DECO_TAG* mgData = &FieldSystem_GetDataOfNextMG(fieldSys)->mon_decoration;
+    MysteryGiftMonDecorationTag* mgData = &FieldSystem_GetDataOfNextMG(fieldSys)->monDecoration;
     int id = mgData->id;
     switch (mgData->kind) {
     case 1:
@@ -444,7 +444,7 @@ BOOL MGCheck_MonDeco(FieldSystem* fieldSys, MysteryGiftData* unused) {
 
 void MGGive_MonDeco(FieldSystem* fieldSys, MysteryGiftData* unused) {
     (void)unused;
-    MG_MON_DECO_TAG* mgData = &FieldSystem_GetDataOfNextMG(fieldSys)->mon_decoration;
+    MysteryGiftMonDecorationTag* mgData = &FieldSystem_GetDataOfNextMG(fieldSys)->monDecoration;
     int id = mgData->id;
     switch (mgData->kind) {
     case 1:
@@ -462,7 +462,7 @@ void MGGive_MonDeco(FieldSystem* fieldSys, MysteryGiftData* unused) {
 }
 
 void MGMessageSuccess_MonDeco(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
-    MG_MON_DECO_TAG* mgData = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->mon_decoration;
+    MysteryGiftMonDecorationTag* mgData = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->monDecoration;
     int id = mgData->id;
     switch (mgData->kind) {
     case 1:

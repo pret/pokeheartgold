@@ -154,7 +154,7 @@ void ShowCommunicationError(HeapID heapId, u32 error, u32 errorCode) {
     InitBgFromTemplate(bgConfig, 0, &sCommunicationErrorBgTemplate, GX_BGMODE_0);
     BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_0);
     LoadUserFrameGfx1(bgConfig, GF_BG_LYR_MAIN_0, 0x1F7, 2, 0, heapId);
-    LoadFontPal0(GF_BG_LYR_MAIN_0, GF_PAL_SLOT_OFFSET_1, heapId);
+    LoadFontPal0(GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_1_OFFSET, heapId);
     BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 0x20, 0, heapId);
     BG_SetMaskColor(GF_BG_LYR_MAIN_0, GX_RGB(1, 1, 27));
     BG_SetMaskColor(GF_BG_LYR_SUB_0, GX_RGB(1, 1, 27));

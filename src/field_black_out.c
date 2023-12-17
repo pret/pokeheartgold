@@ -65,7 +65,7 @@ static void _InitDisplays(BgConfig *bgConfig) {
         };
         InitBgFromTemplate(bgConfig, 3, &_020FC534, GF_BG_TYPE_TEXT);
     }
-    GfGfxLoader_GXLoadPal(NARC_graphic_font, 7, GF_BG_LYR_MAIN_0, 0x1A0, 0x20, (HeapID)11);
+    GfGfxLoader_GXLoadPal(NARC_graphic_font, 7, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_13_OFFSET, 0x20, HEAP_ID_FIELD);
     BG_SetMaskColor(3, RGB_WHITE);
 }
 

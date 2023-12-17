@@ -190,7 +190,7 @@ _0298:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _02AC:
 	step 15, 1
 	step 12, 2
@@ -199,11 +199,13 @@ _02AC:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _02C4:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _02D0:
 	step 12, 1
 	step 14, 1
@@ -211,6 +213,7 @@ _02D0:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _02E4:
 	step 12, 1
 	step 15, 1
@@ -218,16 +221,19 @@ _02E4:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _02F8:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0304:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
+
 scr_seq_T02_003:
 	simple_npc_msg msg_0452_T02_00007
 	end

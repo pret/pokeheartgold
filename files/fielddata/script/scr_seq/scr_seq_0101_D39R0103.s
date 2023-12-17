@@ -27,11 +27,12 @@ scr_seq_D39R0103_001:
 	scrcmd_375 obj_player
 _004D:
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0050:
 	step 68, 1
 	step_end
+
 scr_seq_D39R0103_002:
 	simple_npc_msg msg_0123_D39R0103_00000
 	end

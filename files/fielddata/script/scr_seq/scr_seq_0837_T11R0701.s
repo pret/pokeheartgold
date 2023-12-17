@@ -240,33 +240,39 @@ _039B:
 	npc_msg msg_0537_T11R0701_00024
 	goto _022C
 
-
+	.balign 4, 0
 _03AC:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _03B4:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _03BC:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _03C4:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _03CC:
 	step 14, 2
 	step 13, 3
 	step 14, 8
 	step_end
 
+	.balign 4, 0
 _03DC:
 	step 13, 3
 	step 14, 10
 	step_end
+
 _03E8:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -348,8 +354,8 @@ _04F5:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0504:
 	step 14, 2
 	step 13, 5
@@ -358,12 +364,14 @@ _0504:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _051C:
 	step 13, 5
 	step 14, 3
 	step 13, 1
 	step 69, 1
 	step_end
+
 scr_seq_T11R0701_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall

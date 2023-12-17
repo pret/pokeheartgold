@@ -78,7 +78,8 @@ scr_seq_T06_013:
 	npc_msg msg_0483_T06_00021
 	closemsg
 	goto _013F
-	.byte 0x02, 0x00
+	end
+
 _0109:
 	scrcmd_452 SPECIES_LATIOS, 0
 	npc_msg msg_0483_T06_00018
@@ -94,7 +95,8 @@ _0109:
 	npc_msg msg_0483_T06_00022
 	closemsg
 	goto _013F
-	.byte 0x02, 0x00
+	end
+
 _013F:
 	apply_movement obj_T06_daigo, _0180
 	wait_movement
@@ -107,8 +109,8 @@ _013F:
 	setflag FLAG_HIDE_VERMILION_CITY_STEVEN
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _016C:
 	step 75, 1
 	step 63, 1
@@ -116,19 +118,23 @@ _016C:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0180:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0188:
 	step 15, 10
 	step_end
 
+	.balign 4, 0
 _0190:
 	step 65, 4
 	step 13, 1
 	step 35, 1
 	step_end
+
 scr_seq_T06_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -283,27 +289,31 @@ _037F:
 	apply_movement obj_player, _04F0
 	wait_movement
 	goto _034D
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _040C:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0414:
 	step 62, 9
 	step 112, 1
 	step_end
 
+	.balign 4, 0
 _0420:
 	step 62, 11
 	step 112, 1
 	step_end
 
+	.balign 4, 0
 _042C:
 	step 62, 13
 	step 112, 1
 	step_end
 
+	.balign 4, 0
 _0438:
 	step 62, 4
 	step 21, 2
@@ -314,80 +324,96 @@ _0438:
 	step 57, 2
 	step_end
 
+	.balign 4, 0
 _0458:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0460:
 	step 15, 2
 	step 12, 2
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _0470:
 	step 15, 2
 	step 12, 3
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _0480:
 	step 15, 2
 	step 12, 4
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _0490:
 	step 63, 1
 	step 17, 6
 	step 19, 1
 	step_end
 
+	.balign 4, 0
 _04A0:
 	step 62, 3
 	step 17, 6
 	step 19, 1
 	step_end
 
+	.balign 4, 0
 _04B0:
 	step 62, 5
 	step 17, 6
 	step 19, 1
 	step_end
 
+	.balign 4, 0
 _04C0:
 	step 62, 2
 	step 19, 1
 	step 17, 2
 	step_end
 
+	.balign 4, 0
 _04D0:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _04D8:
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _04E0:
 	step 49, 3
 	step_end
 
+	.balign 4, 0
 _04E8:
 	step 12, 8
 	step_end
 
+	.balign 4, 0
 _04F0:
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _04F8:
 	step 62, 4
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0504:
 	step 2, 1
 	step_end
+
 scr_seq_T06_012:
 	scrcmd_609
 	lockall
@@ -452,23 +478,26 @@ _05C0:
 	setvar VAR_UNK_4086, 1
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0630:
 	step 13, 4
 	step 15, 2
 	step_end
 
+	.balign 4, 0
 _063C:
 	step 13, 4
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _0648:
 	step 13, 4
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _0654:
 	step 63, 1
 	step 19, 7
@@ -476,6 +505,7 @@ _0654:
 	step 19, 1
 	step_end
 
+	.balign 4, 0
 _0668:
 	step 63, 2
 	step 19, 7
@@ -483,6 +513,7 @@ _0668:
 	step 19, 1
 	step_end
 
+	.balign 4, 0
 _067C:
 	step 63, 3
 	step 19, 7
@@ -490,25 +521,30 @@ _067C:
 	step 19, 1
 	step_end
 
+	.balign 4, 0
 _0690:
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _0698:
 	step 14, 2
 	step 12, 13
 	step_end
 
+	.balign 4, 0
 _06A4:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _06AC:
 	step 63, 2
 	step 2, 1
 	step 63, 1
 	step 0, 1
 	step_end
+
 scr_seq_T06_001:
 	simple_npc_msg msg_0483_T06_00000
 	end
@@ -642,13 +678,14 @@ _0883:
 	closemsg
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0898:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _08A4:
 	step 12, 1
 	step 14, 1
@@ -656,6 +693,7 @@ _08A4:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _08B8:
 	step 12, 1
 	step 15, 1
@@ -663,11 +701,13 @@ _08B8:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _08CC:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _08D8:
 	step 15, 1
 	step 12, 1

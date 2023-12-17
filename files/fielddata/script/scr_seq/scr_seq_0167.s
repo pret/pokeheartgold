@@ -17,7 +17,8 @@ scr_seq_0167_000:
 	setvar VAR_TEMP_x400A, 0
 	npc_msg msg_0312_00000
 	goto _0040
-	.byte 0x02, 0x00
+	end
+
 scr_seq_0167_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -25,7 +26,8 @@ scr_seq_0167_001:
 	setvar VAR_TEMP_x400A, 1
 	npc_msg msg_0312_00001
 	goto _0040
-	.byte 0x02, 0x00
+	end
+
 _0040:
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
@@ -37,7 +39,8 @@ _0040:
 	case 0, _01A7
 	case 1, _008C
 	goto _07D9
-	.byte 0x02, 0x00
+	end
+
 _008C:
 	npc_msg msg_0312_00011
 	touchscreen_menu_hide
@@ -67,36 +70,43 @@ _00BC:
 	case 7, _019C
 	npc_msg msg_0312_00002
 	goto _0040
-	.byte 0x02, 0x00
+	end
+
 _015A:
 	npc_msg msg_0312_00012
 	goto _008C
-	.byte 0x02, 0x00
+	end
+
 _0165:
 	npc_msg msg_0312_00014
 	goto _008C
-	.byte 0x02, 0x00
+	end
+
 _0170:
 	npc_msg msg_0312_00015
 	goto _008C
-	.byte 0x02, 0x00
+	end
+
 _017B:
 	npc_msg msg_0312_00018
 	goto _008C
-	.byte 0x02, 0x00
+	end
+
 _0186:
 	npc_msg msg_0312_00016
 	goto _008C
-	.byte 0x02
-	.byte 0x00
+	end
+
 _0191:
 	npc_msg msg_0312_00017
 	goto _008C
-	.byte 0x02, 0x00
+	end
+
 _019C:
 	npc_msg msg_0312_00013
 	goto _008C
-	.byte 0x02, 0x00
+	end
+
 _01A7:
 	count_alive_mons_and_pc VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 3
@@ -119,28 +129,33 @@ _01A7:
 	case 4, _0281
 	npc_msg msg_0312_00002
 	goto _0040
-	.byte 0x02, 0x00
+	end
+
 _0249:
 	setvar VAR_SPECIAL_x8000, 0
 	goto _028F
-	.byte 0x02, 0x00
+	end
+
 _0257:
 	setvar VAR_SPECIAL_x8000, 1
 	goto _028F
-	.byte 0x02, 0x00
+	end
+
 _0265:
 	setvar VAR_SPECIAL_x8000, 3
 	goto _028F
-	.byte 0x02, 0x00
+	end
+
 _0273:
 	setvar VAR_SPECIAL_x8000, 4
 	goto _028F
-	.byte 0x02
-	.byte 0x00
+	end
+
 _0281:
 	setvar VAR_SPECIAL_x8000, 2
 	goto _028F
-	.byte 0x02, 0x00
+	end
+
 _028F:
 	buffer_pokeathlon_course_name 3, VAR_SPECIAL_x8000
 	npc_msg msg_0312_00004
@@ -502,19 +517,33 @@ _07E6:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x0c, 0x00, 0x03, 0x00, 0x0e, 0x00, 0x01, 0x00, 0x03, 0x00, 0x01, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00, 0x3f, 0x00, 0x02, 0x00, 0x0f, 0x00, 0x01, 0x00, 0x0d, 0x00, 0x03, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_07F4:
+	step 12, 3
+	step 14, 1
+	step 3, 1
+	step_end
+
+	.balign 4, 0
+_0804:
+	step 63, 2
+	step 15, 1
+	step 13, 3
+	step_end
+
+	.balign 4, 0
 _0814:
 	step 14, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0820:
 	step 12, 2
 	step_end
 
+	.balign 4, 0
 _0828:
 	step 32, 1
 	step 12, 1
@@ -522,11 +551,13 @@ _0828:
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _083C:
 	step 15, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0848:
 	step 0, 1
 	step 60, 1
@@ -566,45 +597,57 @@ _0848:
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _08DC:
 	step 13, 1
 	step 14, 1
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _08EC:
 	step 13, 2
 	step 15, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _08FC:
 	step 13, 2
 	step 14, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _090C:
 	step 13, 3
 	step_end
 
+	.balign 4, 0
 _0914:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _091C:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0924:
 	step 33, 1
 	step_end
-	.byte 0x20, 0x00, 0x01, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_092C:
+	step 32, 1
+	step_end
+
+	.balign 4, 0
 _0934:
 	step 1, 1
 	step_end
+
 scr_seq_0167_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -624,7 +667,8 @@ _095A:
 	case 0, _0AB1
 	case 1, _09A6
 	goto _07D9
-	.byte 0x02, 0x00
+	end
+
 _09A6:
 	npc_msg msg_0312_00011
 	touchscreen_menu_hide
@@ -648,36 +692,43 @@ _09A6:
 	case 5, _0AA6
 	npc_msg msg_0312_00002
 	goto _095A
-	.byte 0x02, 0x00
+	end
+
 _0A64:
 	npc_msg msg_0312_00039
 	goto _09A6
-	.byte 0x02, 0x00
+	end
+
 _0A6F:
 	npc_msg msg_0312_00040
 	goto _09A6
-	.byte 0x02, 0x00
+	end
+
 _0A7A:
 	npc_msg msg_0312_00041
 	goto _09A6
-	.byte 0x02, 0x00
+	end
+
 _0A85:
 	npc_msg msg_0312_00042
 	goto _09A6
-	.byte 0x02, 0x00
+	end
+
 _0A90:
 	npc_msg msg_0312_00043
 	goto _09A6
-	.byte 0x02, 0x00
+	end
+
 _0A9B:
 	npc_msg msg_0312_00044
 	goto _09A6
-	.byte 0x02, 0x00
+	end
+
 _0AA6:
 	npc_msg msg_0312_00045
 	goto _09A6
-	.byte 0x02
-	.byte 0x00
+	end
+
 _0AB1:
 	count_alive_mons_and_pc VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 3
@@ -687,8 +738,8 @@ _0AB1:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0AE1
 	goto _07DB
-	.byte 0x02
-	.byte 0x00
+	end
+
 _0AE1:
 	setvar VAR_TEMP_x400A, 2
 	npc_msg msg_0312_00003
@@ -711,7 +762,8 @@ _0AE1:
 	case 4, _0BD5
 	case 5, _0BE3
 	goto _07D9
-	.byte 0x02, 0x00
+	end
+
 _0B93:
 	menu_item_add 279, 255, 5
 	return
@@ -719,28 +771,34 @@ _0B93:
 _0B9D:
 	setvar VAR_SPECIAL_x8000, 5
 	goto _0BF7
-	.byte 0x02, 0x00
+	end
+
 _0BAB:
 	setvar VAR_SPECIAL_x8000, 6
 	goto _0BF7
-	.byte 0x02, 0x00
+	end
+
 _0BB9:
 	setvar VAR_SPECIAL_x8000, 7
 	goto _0BF7
-	.byte 0x02, 0x00
+	end
+
 _0BC7:
 	setvar VAR_SPECIAL_x8000, 8
 	goto _0BF7
-	.byte 0x02, 0x00
+	end
+
 _0BD5:
 	setvar VAR_SPECIAL_x8000, 9
 	goto _0BF7
-	.byte 0x02, 0x00
+	end
+
 _0BE3:
 	setvar VAR_SPECIAL_x8000, 10
 	setvar VAR_TEMP_x400A, 3
 	goto _0BF7
-	.byte 0x02, 0x00
+	end
+
 _0BF7:
 	touchscreen_menu_hide
 	npc_msg msg_0312_00027
@@ -753,7 +811,11 @@ _0BF7:
 	case 0, _0C48
 	case 1, _0C88
 	goto _0AE1
-	.byte 0x02, 0x00, 0x02, 0x00
+	end
+
+_0C46:
+	end
+
 _0C48:
 	npc_msg msg_0312_00028
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -765,7 +827,8 @@ _0C48:
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _0CD2
 	goto _0CE3
-	.byte 0x02, 0x00
+	end
+
 _0C88:
 	npc_msg msg_0312_00028
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -777,11 +840,13 @@ _0C88:
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_eq _0CD2
 	goto _0CE3
-	.byte 0x02, 0x00
+	end
+
 _0CC8:
 	scrcmd_283
 	goto _0BF7
-	.byte 0x02, 0x00
+	end
+
 _0CD2:
 	scrcmd_283
 	touchscreen_menu_show
@@ -973,15 +1038,17 @@ _0FBD:
 	scrcmd_725 1, 5
 _0FCF:
 	return
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0FD4:
 	step 12, 2
 	step_end
 
+	.balign 4, 0
 _0FDC:
 	step 13, 2
 	step_end
+
 _0FE4:
 	npc_msg msg_0312_00038
 	wait_button_or_walk_away

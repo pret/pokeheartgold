@@ -36,13 +36,18 @@ scr_seq_T02R0302_002:
 _0063:
 	npc_msg msg_0458_T02R0302_00012
 	goto _0091
-	.byte 0x61, 0x00, 0x02, 0x00
 
+_006C:
+	releaseall
+	end
+
+	.balign 4, 0
 _0070:
 	step 14, 2
 	step 13, 1
 	step 14, 2
 	step_end
+
 scr_seq_T02R0302_000:
 scr_seq_T02R0302_003:
 	scrcmd_609
@@ -90,11 +95,12 @@ _00ED:
 	setvar VAR_UNK_412E, 3
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0120:
 	step 34, 1
 	step_end
+
 scr_seq_T02R0302_001:
 	scrcmd_609
 	lockall
@@ -122,12 +128,13 @@ _0168:
 	wait_movement
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _017C:
 	step 13, 3
 	step_end
 
+	.balign 4, 0
 _0184:
 	step 15, 1
 	step_end

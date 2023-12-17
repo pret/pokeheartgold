@@ -24,11 +24,12 @@ scr_seq_T07R0701_005:
 	wait_movement
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _003C:
 	step 35, 1
 	step_end
+
 scr_seq_T07R0701_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -84,14 +85,16 @@ scr_seq_T07R0701_003:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _00D8:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _00E0:
 	step 32, 1
 	step_end
+
 scr_seq_T07R0701_000:
 	simple_npc_msg msg_0510_T07R0701_00000
 	end

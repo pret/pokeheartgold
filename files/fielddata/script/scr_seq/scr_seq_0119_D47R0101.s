@@ -110,40 +110,52 @@ _017E:
 	scrcmd_606
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _01B4:
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _01BC:
 	step 13, 2
 	step 14, 1
 	step 32, 1
 	step_end
-	.byte 0x0d, 0x00, 0x04, 0x00
-	.byte 0x0e, 0x00, 0x01, 0x00, 0x20, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_01CC:
+	step 13, 4
+	step 14, 1
+	step 32, 1
+	step_end
+
+	.balign 4, 0
 _01DC:
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _01E4:
 	step 13, 2
 	step_end
 
+	.balign 4, 0
 _01EC:
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _01F4:
 	step 63, 1
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0200:
 	step 0, 1
 	step_end
+
 scr_seq_D47R0101_008:
 	scrcmd_609
 	lockall
@@ -220,8 +232,8 @@ scr_seq_D47R0101_009:
 	clearflag FLAG_HIDE_SAFARI_ZONE_WORKERS
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0310:
 	step 1, 1
 	step 75, 1
@@ -229,12 +241,14 @@ _0310:
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _0324:
 	step 12, 2
 	step 15, 3
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _0334:
 	step 13, 2
 	step 14, 2
@@ -243,6 +257,7 @@ _0334:
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _034C:
 	step 14, 2
 	step 12, 4
@@ -250,39 +265,66 @@ _034C:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0360:
 	step 12, 4
 	step 15, 2
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0370:
 	step 13, 2
 	step 15, 1
 	step 13, 2
 	step 2, 1
 	step_end
-	.byte 0x0f, 0x00, 0x01, 0x00, 0x41, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00, 0x0e, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00
-	.byte 0x41, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00
-	.byte 0x4b, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_0384:
+	step 15, 1
+	step 65, 1
+	step 2, 1
+	step_end
+
+	.balign 4, 0
+_0394:
+	step 14, 1
+	step_end
+
+	.balign 4, 0
+_039C:
+	step 1, 1
+	step 65, 1
+	step 2, 1
+	step_end
+
+	.balign 4, 0
+_03AC:
+	step 1, 1
+	step 75, 1
+	step_end
+
+	.balign 4, 0
 _03B8:
 	step 65, 1
 	step 12, 3
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _03C8:
 	step 12, 2
 	step 15, 4
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _03D8:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _03E0:
 	step 65, 1
 	step 0, 1
@@ -291,21 +333,34 @@ _03E0:
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _03F8:
 	step 15, 1
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _0404:
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _040C:
 	step 65, 3
 	step 3, 1
 	step_end
-	.byte 0x00, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
-	.byte 0x0c, 0x00, 0x03, 0x00, 0x03, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
+
+	.balign 4, 0
+_0418:
+	step 0, 1
+	step_end
+
+	.balign 4, 0
+_0420:
+	step 12, 3
+	step 3, 1
+	step_end
+
 scr_seq_D47R0101_010:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -323,7 +378,8 @@ scr_seq_D47R0101_010:
 	goto_if_eq _058F
 	npc_msg msg_0135_D47R0101_00042
 	goto _0587
-	.byte 0x02, 0x00
+	end
+
 _048B:
 	npc_msg msg_0135_D47R0101_00042
 	goto _0587
@@ -345,7 +401,8 @@ _04B8:
 	scrcmd_792
 _04C3:
 	goto _0587
-	.byte 0x02, 0x00
+	end
+
 _04CB:
 	scrcmd_791 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
@@ -427,7 +484,8 @@ _05AF:
 	case 4, _0671
 	case 5, _067A
 	goto _0683
-	.byte 0x02, 0x00
+	end
+
 _064D:
 	npc_msg msg_0135_D47R0101_00047
 	goto _05AF
@@ -626,16 +684,18 @@ _08B7:
 	scrcmd_308 77
 	scrcmd_309 77
 	return
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _08C4:
 	step 15, 1
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _08D0:
 	step 12, 4
 	step_end
+
 scr_seq_D47R0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -666,7 +726,8 @@ _0919:
 	case 3, _09BD
 	case 4, _09C6
 	goto _09CF
-	.byte 0x02, 0x00
+	end
+
 _09A2:
 	npc_msg msg_0135_D47R0101_00020
 	goto _0919
@@ -731,7 +792,8 @@ _0A29:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0A5D
 	goto _0C16
-	.byte 0x02, 0x00
+	end
+
 _0A5D:
 	touchscreen_menu_hide
 	npc_msg msg_0135_D47R0101_00071
@@ -744,7 +806,8 @@ _0A5D:
 	case 0, _0AAC
 	case 1, _0B2F
 	goto _0BFC
-	.byte 0x02, 0x00
+	end
+
 _0AAC:
 	npc_msg msg_0135_D47R0101_00086
 	getmenuchoice VAR_SPECIAL_RESULT
@@ -760,13 +823,14 @@ _0AAC:
 	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _0B20
 	goto _0BB2
-	.byte 0x02, 0x00
+	end
+
 _0B05:
 	scrcmd_283
 	touchscreen_menu_hide
 	goto _0A5D
-	.byte 0x02
-	.byte 0x00
+	end
+
 _0B11:
 	scrcmd_283
 	touchscreen_menu_show
@@ -800,12 +864,14 @@ _0B2F:
 	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _0BA3
 	goto _0BB2
-	.byte 0x02, 0x00
+	end
+
 _0B88:
 	scrcmd_283
 	touchscreen_menu_hide
 	goto _0A5D
-	.byte 0x02, 0x00
+	end
+
 _0B94:
 	scrcmd_283
 	npc_msg msg_0135_D47R0101_00087
@@ -856,8 +922,15 @@ _0BFC:
 	touchscreen_menu_show
 	releaseall
 	end
-	.byte 0x2d, 0x00, 0x55, 0x32, 0x00, 0x35, 0x00
-	.byte 0xeb, 0x02, 0x61, 0x00, 0x02, 0x00
+
+_0C09:
+	npc_msg msg_0135_D47R0101_00085
+	wait_button_or_walk_away
+	closemsg
+	touchscreen_menu_show
+	releaseall
+	end
+
 _0C16:
 	npc_msg msg_0135_D47R0101_00085
 	wait_button_or_walk_away

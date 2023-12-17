@@ -77,25 +77,28 @@ scr_seq_T27GYM0101_004:
 	wait_fade
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0108:
 	step 75, 1
 	step 13, 3
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _0118:
 	step 9, 1
 	step 71, 1
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _0128:
 	step 63, 1
 	step 13, 1
 	step 63, 1
 	step_end
+
 scr_seq_T27GYM0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -163,8 +166,8 @@ scr_seq_T27GYM0101_002:
 	wait_fade
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0230:
 	step 1, 2
 	step 2, 2
@@ -184,6 +187,7 @@ _0230:
 	step 3, 1
 	step 69, 0
 	step_end
+
 scr_seq_T27GYM0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall

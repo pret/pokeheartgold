@@ -51,7 +51,7 @@ WonderCard* SaveMysteryGift_CardGetByIdx(MysteryGiftSave* mg, int index) {
 BOOL SaveMysteryGift_TryInsertGift(MysteryGiftSave* mg, const MysteryGift* src, int cardIdx) {
     BOOL ret = FALSE;
     int i;
-    
+
     if (!SaveMysteryGift_FindAvailable(mg)) {
         return FALSE;
     }
@@ -156,30 +156,18 @@ BOOL SaveMysteryGift_CardFindAvailable(const MysteryGiftSave* mg) {
 
 BOOL SaveMysteryGift_TagAtIndexIsValid(const MysteryGiftSave* mg, int index) {
     GF_ASSERT(index < NUM_SAVED_MYSTERY_GIFTS);
-    
-    if (MysteryGiftTagIsValid(mg->gifts[index].tag)) {
-        return TRUE;
-    } else {
-        return FALSE;
-    }
+
+    return MysteryGiftTagIsValid(mg->gifts[index].tag) != FALSE;
 }
 
 BOOL SaveMysteryGift_CardTagIsValid(const MysteryGiftSave* mg, int index) {
     GF_ASSERT(index < NUM_SAVED_WONDER_CARDS);
-    
-    if (MysteryGiftTagIsValid(mg->cards[index].tag)) {
-        return TRUE;
-    } else {
-        return FALSE;
-    }
+
+    return MysteryGiftTagIsValid(mg->cards[index].tag) != FALSE;
 }
 
 BOOL SaveMysteryGift_SpecialCardTagIsValid(const MysteryGiftSave* mg) {
-    if (MysteryGiftTagIsValid(mg->specialWonderCard.tag)) {
-        return TRUE;
-    } else {
-        return FALSE;
-    }
+    return MysteryGiftTagIsValid(mg->specialWonderCard.tag) != FALSE;
 }
 
 BOOL SaveMysteryGift_HasAnyCard(const MysteryGiftSave* mg) {
@@ -243,41 +231,42 @@ void SaveMysteryGift_SetFlagx7FF(MysteryGiftSave* mg) {
     SaveMysteryGift_ReceivedFlagSet(mg, 0x7FF);
 }
 
-static MysteryGiftSave* sMysteryGiftData;
+// ======================================
+static MysteryGiftSave* sMysteryGiftSaveData;
 
-void GetStaticPointerToSaveMysteryGift(SaveData* saveData, HeapID heapId) {
-    if (sMysteryGiftData == NULL) {
+void SaveMGDataPtr_Begin(SaveData* saveData, HeapID heapId) {
+    if (sMysteryGiftSaveData == NULL) {
         #ifdef MYSTERY_GIFT_SAVE_TRANSACTION_IMPL
         u32 size = Save_MysteryGift_sizeof();
-        sMysteryGiftData = AllocFromHeap(heapId, size);
-        GF_ASSERT(sMysteryGiftData != NULL);
-        MI_CpuCopy32(Save_MysteryGift_Get(saveData), sMysteryGiftData, size);
+        sMysteryGiftSaveData = AllocFromHeap(heapId, size);
+        GF_ASSERT(sMysteryGiftSaveData != NULL);
+        MI_CpuCopy32(Save_MysteryGift_Get(saveData), sMysteryGiftSaveData, size);
         #else
-        sMysteryGiftData = Save_MysteryGift_Get(saveData);
+        sMysteryGiftSaveData = Save_MysteryGift_Get(saveData);
         #endif
     }
     SaveSubstruct_UpdateCRC(SAVE_MYSTERY_GIFT);
 }
 
-void DeleteStaticPointerToMysteryGift(SaveData* saveData, BOOL commit) {
-    if (sMysteryGiftData != NULL) {
+void SaveMGDataPtr_End(SaveData* saveData, BOOL commit) {
+    if (sMysteryGiftSaveData != NULL) {
         #ifdef MYSTERY_GIFT_SAVE_TRANSACTION_IMPL
         if (commit) {
             u32 size = Save_MysteryGift_sizeof();
-            MI_CpuCopy32(sMysteryGiftData, Save_MysteryGift_Get(saveData), size);
+            MI_CpuCopy32(sMysteryGiftSaveData, Save_MysteryGift_Get(saveData), size);
             SaveSubstruct_UpdateCRC(SAVE_MYSTERY_GIFT);
         }
-        FreeToHeap(sMysteryGiftData);
+        FreeToHeap(sMysteryGiftSaveData);
         #endif
-        sMysteryGiftData = NULL;
+        sMysteryGiftSaveData = NULL;
     }
 }
 
-int GetFirstQueuedMysteryGiftIdx(void) {
+int SaveMGDataPtr_GetFirstGiftIndex(void) {
     int i;
 
     for (i = 0; i < NUM_SAVED_MYSTERY_GIFTS; ++i) {
-        if (SaveMysteryGift_TagAtIndexIsValid(sMysteryGiftData, i) == TRUE) {
+        if (SaveMysteryGift_TagAtIndexIsValid(sMysteryGiftSaveData, i) == TRUE) {
             return i;
         }
     }
@@ -285,8 +274,8 @@ int GetFirstQueuedMysteryGiftIdx(void) {
     return -1;
 }
 
-u16 GetMysteryGiftTagByIdx(int index) {
-    MysteryGift* gift = SaveMysteryGift_GetByIdx(sMysteryGiftData, index);
+u16 SaveMGDataPtr_GetTagByIndex(int index) {
+    MysteryGift* gift = SaveMysteryGift_GetByIdx(sMysteryGiftSaveData, index);
     if (gift != NULL) {
         return gift->tag;
     }
@@ -294,8 +283,8 @@ u16 GetMysteryGiftTagByIdx(int index) {
     return MG_TAG_INVALID;
 }
 
-MysteryGiftData* GetMysteryGiftDataByIdx(int index) {
-    MysteryGift* gift = SaveMysteryGift_GetByIdx(sMysteryGiftData, index);
+MysteryGiftData* SaveMGDataPtr_GetDataByIndex(int index) {
+    MysteryGift* gift = SaveMysteryGift_GetByIdx(sMysteryGiftSaveData, index);
     if (gift != NULL) {
         return &gift->data;
     }
@@ -303,6 +292,6 @@ MysteryGiftData* GetMysteryGiftDataByIdx(int index) {
     return NULL;
 }
 
-void SetMysteryGiftReceivedByIdx(int index) {
-    SaveMysteryGift_SetReceivedByIdx(sMysteryGiftData, index);
+void SaveMGDataPtr_SetReceivedByIndex(int index) {
+    SaveMysteryGift_SetReceivedByIdx(sMysteryGiftSaveData, index);
 }

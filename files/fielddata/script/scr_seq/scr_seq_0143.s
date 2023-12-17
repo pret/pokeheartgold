@@ -31,7 +31,8 @@ _0055:
 	scrcmd_465 2, 1, 1
 	npc_msg msg_0204_00001
 	goto _008C
-	.byte 0x02, 0x00
+	end
+
 _0070:
 	npc_msg msg_0204_00002
 _0073:

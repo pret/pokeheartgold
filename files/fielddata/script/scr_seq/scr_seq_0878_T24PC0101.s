@@ -28,7 +28,10 @@ scr_seq_T24PC0101_002:
 	compare VAR_SPECIAL_RESULT, 540
 	goto_if_ne _0056
 	goto _005C
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_0050:
+	goto _005C
+
 _0056:
 	goto _00E4
 
@@ -37,7 +40,10 @@ _005C:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0079
 	goto _007F
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_0073:
+	goto _007F
+
 _0079:
 	goto _00E4
 

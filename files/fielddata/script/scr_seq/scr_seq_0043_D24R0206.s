@@ -130,18 +130,20 @@ _01FF:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _01D1
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _022C:
 	step 40, 4
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0238:
 	step 62, 3
 	step 20, 1
 	step 69, 1
 	step_end
+
 scr_seq_D24R0206_001:
 	scrcmd_609
 	lockall
@@ -171,8 +173,8 @@ _0292:
 	closemsg
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _02A4:
 	step 75, 1
 	step_end

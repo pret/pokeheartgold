@@ -23,17 +23,26 @@ scr_seq_R31_001:
 	compare VAR_LOAN_SPEAROW, 1
 	goto_if_ne _003D
 	goto _0098
-	.byte 0x16, 0x00, 0x50, 0x00, 0x00, 0x00
+
+_0037:
+	goto _008D
+
 _003D:
 	compare VAR_LOAN_SPEAROW, 2
 	goto_if_ne _0056
 	goto _01AD
-	.byte 0x16, 0x00, 0x37, 0x00, 0x00, 0x00
+
+_0050:
+	goto _008D
+
 _0056:
 	compare VAR_LOAN_SPEAROW, 4
 	goto_if_ne _006F
 	goto _01AD
-	.byte 0x16, 0x00, 0x1e, 0x00, 0x00, 0x00
+
+_0069:
+	goto _008D
+
 _006F:
 	compare VAR_LOAN_SPEAROW, 6
 	goto_if_ne _008D
@@ -181,7 +190,8 @@ _026A:
 	wait_fanfare
 	mon_give_mail VAR_TEMP_x4000
 	goto _0195
-	.byte 0x02, 0x00
+	end
+
 _0295:
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
@@ -195,23 +205,29 @@ _0295:
 _02AE:
 	setvar VAR_LOAN_SPEAROW, 1
 	goto _0098
-	.byte 0x02, 0x00
+	end
 
+
+	.balign 4, 0
 _02BC:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _02C4:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _02CC:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _02D4:
 	step 35, 1
 	step_end
+
 scr_seq_R31_002:
 	direction_signpost msg_0378_R31_00013, 1, 2, VAR_SPECIAL_RESULT
 	scrcmd_057 3
@@ -231,8 +247,11 @@ scr_seq_R31_003:
 scr_seq_R31_004:
 	simple_npc_msg msg_0378_R31_00012
 	end
-	.byte 0x49, 0x00, 0xdc, 0x05, 0x60
-	.byte 0x00, 0x68, 0x00, 0x2d, 0x00, 0x01, 0x32, 0x00, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00
+
+_0308:
+	simple_npc_msg msg_0378_R31_00001
+	end
+
 scr_seq_R31_005:
 	simple_npc_msg msg_0378_R31_00011
 	end

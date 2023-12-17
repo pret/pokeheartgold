@@ -22,7 +22,8 @@ scr_seq_T03GYM0101_003:
 	compare VAR_TEMP_x4002, 1
 	goto_if_eq _0053
 	goto _00F5
-	.byte 0x02, 0x00
+	end
+
 _0053:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 12
