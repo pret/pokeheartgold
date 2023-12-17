@@ -33,10 +33,10 @@ BOOL sub_0202B9EC(SaveFashionData *fashionData, int a1);
 BOOL sub_0202BA08(SaveFashionData *fashionData, int a1);
 SaveFashionDataSub *sub_0202B9B8(SaveFashionData *fashionData, int a1);
 void sub_0202BD7C(SaveFashionDataSub *fashionDataSub, int a1);
-void GiveFashionItem(FashionCase *fashionCase, int id, int quantity);
+void FashionCase_GiveFashionItem(FashionCase *fashionCase, int id, int quantity);
 int sub_0202BA2C(FashionCase *fashionCase, int a1, int a2);
 u32 sub_0202BA70(FashionCase *fashionCase, int a1);
-void GiveContestBackground(FashionCase *fashionCase, int id);
+void FashionCase_GiveContestBackground(FashionCase *fashionCase, int id);
 int sub_0202BA5C(FashionCase *fashionCase, int a1);
 void sub_0202BB7C(FashionCase *fashionCase, int a1, int a2);
 

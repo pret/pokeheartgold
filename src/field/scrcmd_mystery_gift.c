@@ -451,10 +451,10 @@ void MGGive_MonDeco(FieldSystem* fieldSys, MysteryGiftData* unused) {
         GiveOrTakeSeal(Save_SealCase_Get(fieldSys->saveData), id, 1);
         break;
     case 2:
-        GiveFashionItem(Save_FashionData_GetFashionCase(Save_FashionData_Get(fieldSys->saveData)), id, 1);
+        FashionCase_GiveFashionItem(Save_FashionData_GetFashionCase(Save_FashionData_Get(fieldSys->saveData)), id, 1);
         break;
     case 3:
-        GiveContestBackground(Save_FashionData_GetFashionCase(Save_FashionData_Get(fieldSys->saveData)), id);
+        FashionCase_GiveContestBackground(Save_FashionData_GetFashionCase(Save_FashionData_Get(fieldSys->saveData)), id);
         break;
     default:
         break;

@@ -23,8 +23,8 @@
 .public sub_020290E4
 .public sub_020291D4
 .public Save_FashionData_GetFashionCase
-.public GiveFashionItem
-.public GiveContestBackground
+.public FashionCase_GiveFashionItem
+.public FashionCase_GiveContestBackground
 .public Save_FashionData_Get
 .public Save_SealCase_Get
 .public GiveOrTakeSeal

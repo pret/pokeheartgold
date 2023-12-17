@@ -22261,7 +22261,7 @@ _02250336:
 	add r0, r7, #0
 	add r1, r5, #0
 	mov r2, #1
-	bl GiveFashionItem
+	bl FashionCase_GiveFashionItem
 	mov r1, #0x12
 	lsl r1, r1, #4
 	ldr r1, [r4, r1]
