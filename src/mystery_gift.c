@@ -235,20 +235,20 @@ void SaveMysteryGift_SetFlagx7FF(MysteryGiftSave* mg) {
 
 static MysteryGiftSave* sMysteryGiftSaveData;
 
-void GetStaticPointerToSaveMysteryGift(SaveData* saveData) {
+void SaveMGDataPtr_Begin(SaveData* saveData) {
     if (sMysteryGiftSaveData == NULL) {
         sMysteryGiftSaveData = Save_MysteryGift_Get(saveData);
     }
     SaveSubstruct_UpdateCRC(SAVE_MYSTERY_GIFT);
 }
 
-void DeleteStaticPointerToMysteryGift(void) {
+void SaveMGDataPtr_End(void) {
     if (sMysteryGiftSaveData != NULL) {
         sMysteryGiftSaveData = NULL;
     }
 }
 
-int GetFirstQueuedMysteryGiftIdx(void) {
+int SaveMGDataPtr_GetFirstGiftIndex(void) {
     int i;
 
     for (i = 0; i < NUM_SAVED_MYSTERY_GIFTS; ++i) {
@@ -260,7 +260,7 @@ int GetFirstQueuedMysteryGiftIdx(void) {
     return -1;
 }
 
-u16 GetMysteryGiftTagByIdx(int index) {
+u16 SaveMGDataPtr_GetTagByIndex(int index) {
     MysteryGift* gift = SaveMysteryGift_GetByIdx(sMysteryGiftSaveData, index);
     if (gift != NULL) {
         return gift->tag;
@@ -269,7 +269,7 @@ u16 GetMysteryGiftTagByIdx(int index) {
     return MG_TAG_INVALID;
 }
 
-MysteryGiftData* GetMysteryGiftDataByIdx(int index) {
+MysteryGiftData* SaveMGDataPtr_GetDataByIndex(int index) {
     MysteryGift* gift = SaveMysteryGift_GetByIdx(sMysteryGiftSaveData, index);
     if (gift != NULL) {
         return &gift->data;
@@ -278,6 +278,6 @@ MysteryGiftData* GetMysteryGiftDataByIdx(int index) {
     return NULL;
 }
 
-void SetMysteryGiftReceivedByIdx(int index) {
+void SaveMGDataPtr_SetReceivedByIndex(int index) {
     SaveMysteryGift_SetReceivedByIdx(sMysteryGiftSaveData, index);
 }

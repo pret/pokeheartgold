@@ -27,30 +27,30 @@
 #define RECEIVED_WONDER_CARD_IDX        4
 #define NUM_MYSTERY_GIFT_RECV_FLAGS  2048
 
-typedef struct MG_POKEMON_TAG {
+typedef struct MysteryGiftPokemonTag {
     BOOL fixedOT;
     Pokemon mon;
     u8 ribbons[10];
-} MG_POKEMON_TAG;
+} MysteryGiftPokemonTag;
 
-typedef struct MG_MON_DECO_TAG {
+typedef struct MysteryGiftMonDecorationTag {
     int kind; // 1 = seal, 2 = fashion, 3 = background
     int id;
-} MG_MON_DECO_TAG;
+} MysteryGiftMonDecorationTag;
 
 typedef union {
-    MG_POKEMON_TAG pokemon;
+    MysteryGiftPokemonTag pokemon;
     Pokemon egg;
     u32 item;
     u16 ruleset[24];
-    int base_decoration;
-    MG_MON_DECO_TAG mon_decoration;
+    int baseDecoration;
+    MysteryGiftMonDecorationTag monDecoration;
     u8 pokewalkerCourse;
     PHOTO photo;
     u8 raw[256];
 } MysteryGiftData;
 
-typedef struct {
+typedef struct UnkWonderCardSubstruct_104 {
     u16 name[36];
     u32 version;  // 88
     u16 id;       // 8C
@@ -166,25 +166,25 @@ void SaveMysteryGift_SetFlagx7FF(MysteryGiftSave* mg);
 // commands.
 
 // Loads the internal MysteryGiftSave pointer.
-void GetStaticPointerToSaveMysteryGift(SaveData* saveData);
+void SaveMGDataPtr_Begin(SaveData* saveData);
 
 // Unloads the internal MysteryGiftSave pointer.
-void DeleteStaticPointerToMysteryGift(void);
+void SaveMGDataPtr_End(void);
 
 // Gets the index of the first occupied
 // Mystery Gift slot.
-int GetFirstQueuedMysteryGiftIdx(void);
+int SaveMGDataPtr_GetFirstGiftIndex(void);
 
 // Returns the Mystery Gift type at the
 // given slot index.
-u16 GetMysteryGiftTagByIdx(int index);
+u16 SaveMGDataPtr_GetTagByIndex(int index);
 
 // Retrieves a pointer to the Mystery Gift data
 // at the given slot index.
-MysteryGiftData* GetMysteryGiftDataByIdx(int index);
+MysteryGiftData* SaveMGDataPtr_GetDataByIndex(int index);
 
 // Flag the Mystery Gift at the given slot index
 // as received.
-void SetMysteryGiftReceivedByIdx(int index);
+void SaveMGDataPtr_SetReceivedByIndex(int index);
 
 #endif //POKEHEARTGOLD_MYSTERY_GIFT_H
