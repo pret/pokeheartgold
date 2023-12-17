@@ -30,7 +30,7 @@ static void ov12_0226203C(SysTask *task, void *_data) {
         data->unk19C -= 360;
     }
 
-    int dy = FX_Mul(GF_SinDegNoWrap(data->unk19C), 0x1800) / FX32_ONE;
+    int dy = FX_Mul(GF_SinDegNoWrap(data->unk19C), FX32_CONST(1.5)) / FX32_ONE;
     
     sub_020087A4(data->unk20, 4, dy);
 }
