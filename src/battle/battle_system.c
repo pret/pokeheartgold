@@ -2,8 +2,10 @@
 #include "battle/battle_hp_bar.h"
 #include "battle/battle_controller_opponent.h"
 #include "battle/battle_system.h"
+#include "msgdata.h"
 #include "party.h"
 #include "pokemon_mood.h"
+#include "text.h"
 #include "battle/overlay_12_0224E4FC.h"
 #include "battle/overlay_12_0226BEC4.h"
 #include "constants/game_stats.h"
@@ -107,8 +109,8 @@ FontID *BattleSystem_GetLevelFont(BattleSystem *bsys) {
     return bsys->levelFont;
 }
 
-u32 *ov12_0223A930(BattleSystem *bsys) {
-    return bsys->unkC;
+MsgData *BattleSystem_GetMessageData(BattleSystem *bsys) {
+    return bsys->msgData;
 }
 
 u32 *ov12_0223A934(BattleSystem *bsys) {
@@ -1330,4 +1332,75 @@ void BattleSystem_SetPokedexCaught(BattleSystem *bsys, int battlerId) {
 
 BOOL BattleSystem_CheckMonCaught(BattleSystem *bsys, int battlerId) {
     return Pokedex_CheckMonCaughtFlag(bsys->pokedex, battlerId);
+}
+
+void BattleSystem_SetDefaultBlend() {
+    G2_BlendNone();
+}
+
+u8 BattleSystem_PrintTrainerMessage(BattleSystem *bsys, int trainerId, int battlerId, int a2, int delay) {
+    Window *window = BattleSystem_GetWindow(bsys, 0);
+    int index;
+    
+    if (bsys->battleType & BATTLE_TYPE_TOWER) {
+        if (trainerId == 0x2710 || bsys->battleType & BATTLE_TYPE_13) {
+            String *msg;
+
+            if (a2 == 0x64) {
+                msg = MailMsg_GetExpandedString(&bsys->trainers[battlerId].winMessage, HEAP_ID_BATTLE);
+            } else {
+                msg = MailMsg_GetExpandedString(&bsys->trainers[battlerId].loseMessage, HEAP_ID_BATTLE);
+            }
+            FillWindowPixelBuffer(window, 0xFF);
+            String_Copy(bsys->msgBuffer, msg);
+            index = AddTextPrinterParameterized(window, 1, bsys->msgBuffer, 0, 0, delay, ov12_0223CF14);
+            String_Delete(msg);
+        } else {
+            MsgData *data;
+            String *msg;
+            int stringId;
+            u32 msgId;
+            int i;
+    
+            if (a2 == 0x64) {
+                stringId = trainerId*3 + 1;
+            } else {
+                stringId = trainerId*3 + 2;
+            }
+            
+            for (i = 0; i < 4; i++) {
+                if (PlayerProfile_GetVersion(bsys->playerProfile[i]) == 0) {
+                    break;
+                }
+            }
+    
+            if (i == 4) {
+                msgId = 724;
+            } else {
+                msgId = 723;
+            }
+    
+            data = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msgId, HEAP_ID_BATTLE);
+            msg = NewString_ReadMsgData(data, stringId);
+            FillWindowPixelBuffer(window, 0xFF);
+            String_Copy(bsys->msgBuffer, msg);
+            index = AddTextPrinterParameterized(window, 1, bsys->msgBuffer, 0, 0, delay, ov12_0223CF14);
+            String_Delete(msg);
+            DestroyMsgData(data);
+        }
+    } else {
+        GetTrainerMessageByIdPair(trainerId, a2, bsys->msgBuffer, HEAP_ID_BATTLE);
+        FillWindowPixelBuffer(window, 0xFF);
+        index = AddTextPrinterParameterized(window, 1, bsys->msgBuffer, 0, 0, delay, ov12_0223CF14);
+    }
+    return index;
+}
+
+u32 BattleSystem_PrintBattleMessage(BattleSystem *bsys, MsgData *data, BattleMessage *msg, u8 delay) {
+    Window *window = BattleSystem_GetWindow(bsys, 0);
+    ov12_0223C558(bsys, msg);
+    ov12_0223C754(bsys, msg);
+    ov12_0223CEF4(bsys, data, msg);
+    FillWindowPixelBuffer(window, 0xFF);
+    return AddTextPrinterParameterized(window, 1, bsys->msgBuffer, 0, 0, delay, ov12_0223CF14);
 }

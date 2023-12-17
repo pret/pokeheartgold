@@ -7,6 +7,7 @@
 #include "item.h"
 #include "font.h"
 #include "game_stats.h"
+#include "msgdata.h"
 #include "move.h"
 #include "options.h"
 #include "palette.h"
@@ -520,7 +521,7 @@ struct BattleSystem {
     u32 *unk0;
     BgConfig *bgConfig;
     Window *window;
-    u32 *unkC;
+    MsgData *msgData;
     u32 *unk10;
     u32 *unk14;
     String *msgBuffer;

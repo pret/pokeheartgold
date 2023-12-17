@@ -84,7 +84,7 @@
 .public ov12_0223A914
 .public BattleSystem_GetHpFont
 .public BattleSystem_GetLevelFont
-.public ov12_0223A930
+.public BattleSystem_GetMessageData
 .public ov12_0223A934
 .public BattleSystem_GetPaletteData
 .public BattleSystem_GetPokedex
@@ -200,9 +200,9 @@
 .public BattleSystem_SetPokedexSeen
 .public BattleSystem_SetPokedexCaught
 .public BattleSystem_CheckMonCaught
-.public ov12_0223C340
-.public ov12_0223C34C
-.public ov12_0223C494
+.public BattleSystem_SetDefaultBlend
+.public BattleSystem_PrintTrainerMessage
+.public BattleSystem_PrintBattleMessage
 .public ov12_0223C4E8
 .public GetBattlerVar
 .public SetBattlerVar

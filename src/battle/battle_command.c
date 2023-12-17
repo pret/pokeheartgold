@@ -5980,12 +5980,12 @@ static void Task_GetExp(SysTask *task, void *inData)
     BattleMessage msg;
     int side;
     int expBattler;
-    u32 *msgLoader;
+    MsgData *msgLoader;
     u32 battleType;
     u16 item;
     int itemEffect;
 
-    msgLoader = ov12_0223A930(data->bsys);
+    msgLoader = BattleSystem_GetMessageData(data->bsys);
     battleType = BattleSystem_GetBattleType(data->bsys);
     side = (data->ctx->battlerIdFainted >> 1) & 1; //Get side of fainted mon (left or right)
     expBattler = 0;
@@ -6074,7 +6074,7 @@ static void Task_GetExp(SysTask *task, void *inData)
             msg.tag = 17;
             msg.param[0] = expBattler | (slot << 8);
             msg.param[1] = totalExp;
-            data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
+            data->unk30[0] = BattleSystem_PrintBattleMessage(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
             data->unk30[1] = 7;
             data->state++;
         } else {
@@ -6152,7 +6152,7 @@ static void Task_GetExp(SysTask *task, void *inData)
             msg.tag = 17;
             msg.param[0] = expBattler | (slot << 8);
             msg.param[1] = level;
-            data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
+            data->unk30[0] = BattleSystem_PrintBattleMessage(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
             data->state = STATE_GET_EXP_WAIT_LEVEL_UP_MESSAGE_PRINT;
         }
         break;
@@ -6287,7 +6287,7 @@ static void Task_GetExp(SysTask *task, void *inData)
             msg.tag = 10;
             msg.param[0] = expBattler | (slot << 8);
             msg.param[1] = move;
-            data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
+            data->unk30[0] = BattleSystem_PrintBattleMessage(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
             data->state = STATE_GET_EXP_LEARNED_MOVE_WAIT;
             break;
         }
@@ -6299,7 +6299,7 @@ static void Task_GetExp(SysTask *task, void *inData)
         msg.tag = 10;
         msg.param[0] = expBattler | (slot << 8);
         msg.param[1] = data->unk30[4];
-        data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
+        data->unk30[0] = BattleSystem_PrintBattleMessage(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
         data->state++;
         break;
 
@@ -6307,7 +6307,7 @@ static void Task_GetExp(SysTask *task, void *inData)
         msg.id = msg_0197_01179; // "But {0} can't learn more than four moves."
         msg.tag = 2;
         msg.param[0] = expBattler | (slot << 8);
-        data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
+        data->unk30[0] = BattleSystem_PrintBattleMessage(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
         data->state++;
         break;
 
@@ -6335,7 +6335,7 @@ static void Task_GetExp(SysTask *task, void *inData)
             } else {
                 msg.id = msg_0197_01183; // "Which move should be forgotten?"
                 msg.tag = 0;
-                data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
+                data->unk30[0] = BattleSystem_PrintBattleMessage(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
                 data->state = STATE_GET_EXP_MAKE_IT_FORGET_WAIT;
             }
         }
@@ -6360,7 +6360,7 @@ static void Task_GetExp(SysTask *task, void *inData)
     case STATE_GET_EXP_MAKE_IT_FORGET_CANCELLED:
         msg.id = msg_0197_01184; // "Well, then..."
         msg.tag = 0;
-        data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
+        data->unk30[0] = BattleSystem_PrintBattleMessage(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
         data->state++;
         break;
 
@@ -6379,7 +6379,7 @@ static void Task_GetExp(SysTask *task, void *inData)
                 msg.tag = 10;
                 msg.param[0] = expBattler | (slot << 8);
                 msg.param[1] = data->unk30[4];
-                data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
+                data->unk30[0] = BattleSystem_PrintBattleMessage(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
                 data->state = 35;
             }
         }
@@ -6395,7 +6395,7 @@ static void Task_GetExp(SysTask *task, void *inData)
     case STATE_GET_EXP_ONE_TWO_POOF:
         msg.id = msg_0197_01189; // "1, 2, and... ... Poof!"
         msg.tag = 0;
-        data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
+        data->unk30[0] = BattleSystem_PrintBattleMessage(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
         data->state++;
         break;
         
@@ -6404,14 +6404,14 @@ static void Task_GetExp(SysTask *task, void *inData)
         msg.tag = 10;
         msg.param[0] = expBattler | (slot << 8);
         msg.param[1] = GetMonData(mon, MON_DATA_MOVE1 + data->unk30[5], NULL);
-        data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
+        data->unk30[0] = BattleSystem_PrintBattleMessage(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
         data->state++;
         break;
 
     case STATE_GET_EXP_AND_DOTDOTDOT:
         msg.id = msg_0197_01191; // "And..."
         msg.tag = 0;
-        data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
+        data->unk30[0] = BattleSystem_PrintBattleMessage(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
         data->state++;
         break;
         
@@ -6420,7 +6420,7 @@ static void Task_GetExp(SysTask *task, void *inData)
         msg.tag = 10;
         msg.param[0] = expBattler | (slot << 8);
         msg.param[1] = data->unk30[4];
-        data->unk30[0] = ov12_0223C494(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
+        data->unk30[0] = BattleSystem_PrintBattleMessage(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
     
         i = 0;
         SetMonData(mon, MON_DATA_MOVE1PPUP + data->unk30[5], &i);

@@ -126,7 +126,7 @@
 .public ov12_0223A8E4
 .public ov12_0223A8EC
 .public ov12_0223A8F4
-.public ov12_0223A930
+.public BattleSystem_GetMessageData
 .public BattleSystem_GetPaletteData
 .public BattleSystem_GetPokedex
 .public ov12_0223A9A4
@@ -154,7 +154,7 @@
 .public ov12_0223C224
 .public BattleSystem_SetPokedexCaught
 .public BattleSystem_CheckMonCaught
-.public ov12_0223C494
+.public BattleSystem_PrintBattleMessage
 .public ov12_0223C4E8
 .public BtlCmd_PlayEncounterAnimation
 .public BtlCmd_PokemonEncounter

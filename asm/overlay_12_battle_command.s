@@ -245,7 +245,7 @@ Task_GetPokemon: ; 0x022465A8
 	add r4, r1, #0
 	str r0, [sp, #0x10]
 	ldr r0, [r4]
-	bl ov12_0223A930
+	bl BattleSystem_GetMessageData
 	str r0, [sp, #0x20]
 	ldr r0, [r4]
 	bl BattleSystem_GetPaletteData
@@ -568,7 +568,7 @@ _02246826:
 	ldr r0, [r4]
 	ldr r1, [sp, #0x20]
 	add r2, sp, #0x10c
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	str r0, [r4, #0x30]
 	mov r0, #0x1e
 	str r0, [r4, #0x34]
@@ -755,7 +755,7 @@ _022469E6:
 	ldr r0, [r4]
 	ldr r1, [sp, #0x20]
 	add r2, sp, #0xe8
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	str r0, [r4, #0x30]
 	mov r0, #0x1e
 	str r0, [r4, #0x34]
@@ -1445,7 +1445,7 @@ _02247006:
 	ldr r0, [r4]
 	ldr r1, [sp, #0x20]
 	add r2, sp, #0x9c
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	str r0, [r4, #0x30]
 	mov r0, #0x1e
 	str r0, [r4, #0x34]
@@ -1520,7 +1520,7 @@ _02247094:
 	ldr r0, [r4]
 	ldr r1, [sp, #0x20]
 	add r2, sp, #0x78
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	str r0, [r4, #0x30]
 	mov r0, #0x1e
 	str r0, [r4, #0x34]
@@ -1555,7 +1555,7 @@ _022470E8:
 	ldr r0, [r4]
 	ldr r1, [sp, #0x20]
 	add r2, sp, #0x54
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	str r0, [r4, #0x30]
 	mov r0, #0x1e
 	str r0, [r4, #0x34]
@@ -1626,7 +1626,7 @@ _02247174:
 	ldr r0, [r4]
 	ldr r1, [sp, #0x20]
 	add r2, sp, #0x30
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	str r0, [r4, #0x30]
 	mov r0, #0x1e
 	str r0, [r4, #0x34]
@@ -3787,7 +3787,7 @@ ov12_02248228: ; 0x02248228
 	add r7, r0, #0
 	add r5, r1, #0
 	str r2, [sp, #0x18]
-	bl ov12_0223A930
+	bl BattleSystem_GetMessageData
 	str r0, [sp, #0x28]
 	add r0, r7, #0
 	bl BattleSystem_GetMessageBuffer

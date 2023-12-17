@@ -135,7 +135,7 @@
 .public BattleSystem_GetPartyMon
 .public ov12_0223A8E4
 .public ov12_0223A8EC
-.public ov12_0223A930
+.public BattleSystem_GetMessageData
 .public BattleSystem_GetPaletteData
 .public ov12_0223A9A4
 .public ov12_0223AAD8

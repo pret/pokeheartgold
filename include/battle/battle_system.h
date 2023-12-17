@@ -5,6 +5,7 @@
 #include "battle/battle.h"
 #include "battle/battle_setup.h"
 #include "pokemon.h"
+#include "text.h"
 
 BgConfig *BattleSystem_GetBgConfig(BattleSystem *bsys);
 Window *BattleSystem_GetWindow(BattleSystem *bsys, int index);
@@ -25,7 +26,7 @@ u32 *ov12_0223A908(BattleSystem *bsys, int index);
 void ov12_0223A914(BattleSystem *bsys, int index, u32 *a2);
 FontID *BattleSystem_GetHpFont(BattleSystem *bsys);
 FontID *BattleSystem_GetLevelFont(BattleSystem *bsys);
-u32 *ov12_0223A930(BattleSystem *bsys);
+MsgData *BattleSystem_GetMessageData(BattleSystem *bsys);
 u32 *ov12_0223A934(BattleSystem *bsys);
 PaletteData *BattleSystem_GetPaletteData(BattleSystem *bsys);
 Pokedex *BattleSystem_GetPokedex(BattleSystem *bsys);
@@ -141,6 +142,9 @@ u32 CalcMoneyLoss(Party *party, PlayerProfile *profile);
 void BattleSystem_SetPokedexSeen(BattleSystem *bsys, int battlerId);
 void BattleSystem_SetPokedexCaught(BattleSystem *bsys, int battlerId);
 BOOL BattleSystem_CheckMonCaught(BattleSystem *bsys, int battlerId);
+void BattleSystem_SetDefaultBlend(void);
+u8 BattleSystem_PrintTrainerMessage(BattleSystem *bsys, int trainerId, int battlerId, int a2, int delay);
+u32 BattleSystem_PrintBattleMessage(BattleSystem *bsys, MsgData *data, BattleMessage *msg, u8 delay);
 
 //These functions haven't been decompiled
 BOOL Link_QueueNotEmpty(BattleContext *ctx);
@@ -151,6 +155,11 @@ void ov12_02263A1C(BattleSystem *bsys, BattleContext *ctx, int battlerId);
 void ov12_02266008(UnkBattleSystemSub17C *a0);
 BattleHpBar *OpponentData_GetHpBar(OpponentData *opponentData);
 void ov12_0226AA8C(u32 *a1, u32 flag);
-u32 ov12_0223C494(BattleSystem *bsys, void *msgLoader, BattleMessage *msg, u8 textFrameDelay);
+BOOL ov12_0223CF14(struct TextPrinterTemplate *template, u16 glyphId);
+
+//These functions haven't been decompiled AND are confirmed to be static
+void ov12_0223C558(BattleSystem *bsys, BattleMessage *msg);
+void ov12_0223C754(BattleSystem *bsys, BattleMessage *msg);
+void ov12_0223CEF4(BattleSystem *bsys, MsgData *data, BattleMessage *msg);
 
 #endif
