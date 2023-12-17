@@ -90,8 +90,10 @@ _0128:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0153
 	goto _01BA
-	.byte 0x16, 0x00, 0x13
-	.byte 0x00, 0x00, 0x00
+
+_014D:
+	goto _0166
+
 _0153:
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _0166
@@ -101,7 +103,10 @@ _0166:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _017F
 	goto _0202
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0179:
+	goto _0192
+
 _017F:
 	compare VAR_SPECIAL_RESULT, 3
 	goto_if_ne _0192
@@ -144,40 +149,49 @@ _0202:
 	wait_movement
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0224:
 	step 71, 1
 	step 77, 4
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _0234:
 	step 71, 1
 	step 77, 6
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _0244:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _024C:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0254:
 	step 34, 1
 	step_end
-	.byte 0x23, 0x00, 0x01, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_025C:
+	step 35, 1
+	step_end
+
+	.balign 4, 0
 _0264:
 	step 78, 1
 	step 1, 1
 	step 77, 2
 	step_end
 
+	.balign 4, 0
 _0274:
 	step 0, 1
 	step 12, 2
@@ -185,6 +199,7 @@ _0274:
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _0288:
 	step 0, 1
 	step 71, 1
@@ -193,6 +208,7 @@ _0288:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _02A0:
 	step 76, 1
 	step 2, 1
@@ -201,6 +217,7 @@ _02A0:
 	step 77, 3
 	step_end
 
+	.balign 4, 0
 _02B8:
 	step 3, 1
 	step 71, 1
@@ -212,6 +229,7 @@ _02B8:
 	step 57, 1
 	step 72, 1
 	step_end
+
 scr_seq_T20_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -601,104 +619,122 @@ _0981:
 	setvar VAR_SCENE_NEW_BARK_WEST_EXIT, 1
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _09B8:
 	step 34, 1
 	step 75, 1
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _09C8:
 	step 75, 1
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _09D4:
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _09DC:
 	step 66, 2
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _09E8:
 	step 66, 2
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _09F4:
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _09FC:
 	step 3, 1
 	step 66, 2
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0A0C:
 	step 3, 1
 	step 66, 2
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _0A1C:
 	step 14, 3
 	step 12, 3
 	step 14, 3
 	step_end
 
+	.balign 4, 0
 _0A2C:
 	step 14, 3
 	step 12, 2
 	step 14, 3
 	step_end
 
+	.balign 4, 0
 _0A3C:
 	step 14, 3
 	step 12, 1
 	step 14, 3
 	step_end
 
+	.balign 4, 0
 _0A4C:
 	step 14, 6
 	step_end
 
+	.balign 4, 0
 _0A54:
 	step 14, 3
 	step 13, 1
 	step 14, 3
 	step_end
 
+	.balign 4, 0
 _0A64:
 	step 14, 6
 	step 13, 2
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _0A74:
 	step 14, 6
 	step 13, 3
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _0A84:
 	step 14, 7
 	step 12, 2
 	step_end
 
+	.balign 4, 0
 _0A90:
 	step 14, 7
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _0A9C:
 	step 14, 7
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0AA8:
 	step 14, 3
 	step 12, 1
@@ -706,22 +742,31 @@ _0AA8:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0ABC:
 	step 14, 7
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0AC8:
 	step 14, 7
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _0AD4:
 	step 14, 7
 	step 13, 2
 	step_end
-	.byte 0x0f, 0x00, 0x06, 0x00, 0x22, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_0AE0:
+	step 15, 6
+	step 34, 1
+	step_end
+
+	.balign 4, 0
 _0AEC:
 	step 15, 3
 	step 13, 3
@@ -729,6 +774,7 @@ _0AEC:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0B00:
 	step 15, 3
 	step 13, 2
@@ -736,6 +782,7 @@ _0B00:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0B14:
 	step 15, 3
 	step 13, 1
@@ -743,11 +790,13 @@ _0B14:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0B28:
 	step 15, 6
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0B34:
 	step 15, 3
 	step 12, 1
@@ -755,35 +804,41 @@ _0B34:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0B48:
 	step 12, 2
 	step 15, 6
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0B58:
 	step 12, 3
 	step 15, 6
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0B68:
 	step 13, 2
 	step 15, 7
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0B78:
 	step 13, 1
 	step 15, 7
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0B88:
 	step 15, 7
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0B94:
 	step 15, 3
 	step 13, 1
@@ -791,78 +846,92 @@ _0B94:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0BA8:
 	step 15, 7
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0BB4:
 	step 12, 1
 	step 15, 7
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0BC4:
 	step 12, 2
 	step 15, 7
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0BD4:
 	step 15, 4
 	step 13, 3
 	step 15, 2
 	step_end
 
+	.balign 4, 0
 _0BE4:
 	step 15, 4
 	step 13, 2
 	step 15, 2
 	step_end
 
+	.balign 4, 0
 _0BF4:
 	step 15, 4
 	step 13, 1
 	step 15, 2
 	step_end
 
+	.balign 4, 0
 _0C04:
 	step 15, 6
 	step_end
 
+	.balign 4, 0
 _0C0C:
 	step 15, 4
 	step 12, 1
 	step 15, 2
 	step_end
 
+	.balign 4, 0
 _0C1C:
 	step 15, 1
 	step 12, 2
 	step 15, 5
 	step_end
 
+	.balign 4, 0
 _0C2C:
 	step 15, 1
 	step 12, 3
 	step 15, 5
 	step_end
 
+	.balign 4, 0
 _0C3C:
 	step 13, 3
 	step 15, 6
 	step_end
 
+	.balign 4, 0
 _0C48:
 	step 13, 2
 	step 15, 6
 	step_end
 
+	.balign 4, 0
 _0C54:
 	step 13, 1
 	step 15, 6
 	step_end
 
+	.balign 4, 0
 _0C60:
 	step 12, 1
 	step 15, 3
@@ -870,110 +939,130 @@ _0C60:
 	step 15, 3
 	step_end
 
+	.balign 4, 0
 _0C74:
 	step 12, 1
 	step 15, 6
 	step_end
 
+	.balign 4, 0
 _0C80:
 	step 12, 2
 	step 15, 6
 	step_end
 
+	.balign 4, 0
 _0C8C:
 	step 12, 3
 	step 15, 6
 	step_end
 
+	.balign 4, 0
 _0C98:
 	step 13, 3
 	step 14, 8
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0CA8:
 	step 13, 2
 	step 14, 8
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0CB8:
 	step 13, 2
 	step 14, 8
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _0CC8:
 	step 13, 2
 	step 14, 8
 	step 13, 2
 	step_end
 
+	.balign 4, 0
 _0CD8:
 	step 13, 2
 	step 14, 8
 	step 13, 3
 	step_end
 
+	.balign 4, 0
 _0CE8:
 	step 13, 2
 	step 14, 8
 	step 13, 4
 	step_end
 
+	.balign 4, 0
 _0CF8:
 	step 13, 2
 	step 14, 8
 	step 13, 5
 	step_end
 
+	.balign 4, 0
 _0D08:
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _0D10:
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _0D18:
 	step 15, 8
 	step 12, 3
 	step_end
 
+	.balign 4, 0
 _0D24:
 	step 15, 8
 	step 12, 2
 	step_end
 
+	.balign 4, 0
 _0D30:
 	step 12, 1
 	step 15, 8
 	step 12, 2
 	step_end
 
+	.balign 4, 0
 _0D40:
 	step 12, 2
 	step 15, 8
 	step 12, 2
 	step_end
 
+	.balign 4, 0
 _0D50:
 	step 12, 2
 	step 15, 8
 	step 12, 3
 	step_end
 
+	.balign 4, 0
 _0D60:
 	step 12, 2
 	step 15, 8
 	step 12, 4
 	step_end
 
+	.balign 4, 0
 _0D70:
 	step 12, 5
 	step 15, 8
 	step 12, 2
 	step_end
+
 scr_seq_T20_003:
 	scrcmd_609
 	lockall
@@ -1005,8 +1094,8 @@ scr_seq_T20_003:
 	setflag FLAG_HIDE_NEW_BARK_FRIEND
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0E08:
 	step 66, 1
 	step 16, 8
@@ -1021,6 +1110,7 @@ _0E08:
 	step 66, 1
 	step_end
 
+	.balign 4, 0
 _0E38:
 	step 2, 1
 	step 75, 1
@@ -1033,10 +1123,12 @@ _0E38:
 	step 18, 6
 	step_end
 
+	.balign 4, 0
 _0E60:
 	step 50, 4
 	step_end
 
+	.balign 4, 0
 _0E68:
 	step 2, 1
 	step 14, 1
@@ -1045,13 +1137,22 @@ _0E68:
 	step 2, 1
 	step 14, 2
 	step_end
-	.byte 0x01, 0x00, 0x02, 0x00, 0x4b, 0x00, 0x01, 0x00, 0x0d, 0x00, 0x01, 0x00
-	.byte 0x02, 0x00, 0x01, 0x00, 0x0e, 0x00, 0x06, 0x00, 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_0E84:
+	step 1, 2
+	step 75, 1
+	step 13, 1
+	step 2, 1
+	step 14, 6
+	step_end
+
+	.balign 4, 0
 _0E9C:
 	step 2, 4
 	step_end
 
+	.balign 4, 0
 _0EA4:
 	step 65, 1
 	step 13, 6
@@ -1059,16 +1160,19 @@ _0EA4:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0EB8:
 	step 39, 4
 	step_end
 
+	.balign 4, 0
 _0EC0:
 	step 1, 1
 	step 13, 4
 	step 2, 1
 	step 14, 2
 	step_end
+
 scr_seq_T20_007:
 	buffer_players_name 0
 	scrcmd_055 2, 0
@@ -1114,7 +1218,7 @@ scr_seq_T20_008:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _0F84:
 	step 62, 4
 	step 62, 2
@@ -1131,6 +1235,7 @@ _0F84:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0FBC:
 	step 51, 3
 	step 17, 1
@@ -1144,16 +1249,19 @@ _0FBC:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0FE8:
 	step 13, 2
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _0FF4:
 	step 63, 1
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _1000:
 	step 13, 1
 	step 14, 2
@@ -1161,6 +1269,7 @@ _1000:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _1014:
 	step 14, 1
 	step 13, 1
@@ -1172,18 +1281,22 @@ _1014:
 	step 49, 2
 	step_end
 
+	.balign 4, 0
 _1038:
 	step 63, 2
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _1044:
 	step 13, 3
 	step_end
 
+	.balign 4, 0
 _104C:
 	step 13, 4
 	step_end
+
 scr_seq_T20_010:
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
@@ -1203,7 +1316,12 @@ _1078:
 	scrcmd_582 MAP_T20, 688, 393
 	setvar VAR_UNK_407C, 1
 	end
-	.byte 0x0d, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
+
+	.balign 4, 0
+_10B4:
+	step 13, 1
+	step_end
+
 scr_seq_T20_016:
 	buffer_friends_name 0
 	scrcmd_055 2, 0
@@ -1289,8 +1407,15 @@ _11FC:
 	closemsg
 	releaseall
 	end
-	.byte 0xb6, 0x01, 0x02, 0x00, 0x0c, 0x80, 0xb8, 0x01, 0x0c, 0x80, 0x04, 0x00, 0x32, 0x00, 0x35, 0x00
-	.byte 0x61, 0x00, 0x02, 0x00
+
+_1210:
+	get_std_msg_naix 2, VAR_SPECIAL_RESULT
+	msgbox_extern VAR_SPECIAL_RESULT, 4
+	wait_button_or_walk_away
+	closemsg
+	releaseall
+	end
+
 _1224:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 3
@@ -1299,7 +1424,7 @@ _1224:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _1238:
 	step 15, 1
 	step 12, 2
@@ -1308,11 +1433,13 @@ _1238:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _1250:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _125C:
 	step 12, 1
 	step 14, 1
@@ -1320,6 +1447,7 @@ _125C:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _1270:
 	step 12, 1
 	step 15, 1
@@ -1327,16 +1455,19 @@ _1270:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _1284:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _1290:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
+
 scr_seq_T20_011:
 	scrcmd_609
 	lockall
@@ -1454,73 +1585,87 @@ _144F:
 	following_pokemon_movement 48
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _1478:
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _1480:
 	step 13, 1
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _148C:
 	step 13, 2
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _1498:
 	step 13, 3
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _14A4:
 	step 34, 1
 	step 14, 4
 	step_end
 
+	.balign 4, 0
 _14B0:
 	step 34, 1
 	step 14, 4
 	step_end
 
+	.balign 4, 0
 _14BC:
 	step 34, 1
 	step 14, 4
 	step_end
 
+	.balign 4, 0
 _14C8:
 	step 14, 2
 	step 12, 1
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _14D8:
 	step 14, 2
 	step 12, 2
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _14E8:
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _14F0:
 	step 12, 2
 	step_end
 
+	.balign 4, 0
 _14F8:
 	step 12, 3
 	step_end
 
+	.balign 4, 0
 _1500:
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _1508:
 	step 14, 1
 	step_end
+
 scr_seq_T20_012:
 	scrcmd_609
 	lockall
@@ -1596,56 +1741,68 @@ _163C:
 	wait_movement
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _1644:
 	step 3, 1
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _1650:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _1658:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _1660:
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _1668:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _1670:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _1678:
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _1680:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _1688:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _1690:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _1698:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _16A0:
 	step 34, 1
 	step_end
+
 scr_seq_T20_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -1673,16 +1830,18 @@ scr_seq_T20_005:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _16F4:
 	step 47, 1
 	step 47, 1
 	step_end
 
+	.balign 4, 0
 _1700:
 	step 34, 1
 	step_end
+
 scr_seq_T20_013:
 	scrcmd_055 2, 0
 	scrcmd_057 3

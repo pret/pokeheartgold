@@ -57,22 +57,31 @@ _009D:
 	compare VAR_TEMP_x4002, 1
 	goto_if_eq _00CB
 	goto _015A
-	.byte 0x02, 0x00
+	end
+
 _00CB:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 6
 	goto_if_ne _00E8
 	goto _0109
-	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
+
+_00E2:
+	goto _0107
+
 _00E8:
 	compare VAR_TEMP_x4000, 0
 	goto_if_ne _0101
 	goto _0109
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00
-	.byte 0x00
+
+_00FB:
+	goto _0107
+
 _0101:
 	goto _015A
-	.byte 0x02, 0x00
+
+_0107:
+	end
+
 _0109:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 14
@@ -294,31 +303,37 @@ _03E2:
 	setvar VAR_UNK_410E, 2
 _0408:
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _040C:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0414:
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _041C:
 	step 15, 2
 	step_end
 
+	.balign 4, 0
 _0424:
 	step 15, 3
 	step_end
 
+	.balign 4, 0
 _042C:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0434:
 	step 35, 1
 	step_end
+
 scr_seq_T26GYM0101_002:
 	scrcmd_609
 	lockall
@@ -350,19 +365,22 @@ _048E:
 	setvar VAR_UNK_410E, 3
 _04B4:
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _04B8:
 	step 14, 3
 	step_end
 
+	.balign 4, 0
 _04C0:
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _04C8:
 	step 14, 1
 	step_end
+
 scr_seq_T26GYM0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall

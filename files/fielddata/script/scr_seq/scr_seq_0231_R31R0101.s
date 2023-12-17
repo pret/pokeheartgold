@@ -139,60 +139,71 @@ _0253:
 	releaseall
 	setvar VAR_UNK_4132, 1
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0284:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _028C:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0294:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _029C:
 	step 38, 1
 	step_end
 
+	.balign 4, 0
 _02A4:
 	step 50, 2
 	step_end
 
+	.balign 4, 0
 _02AC:
 	step 14, 2
 	step 12, 1
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _02BC:
 	step 14, 3
 	step_end
 
+	.balign 4, 0
 _02C4:
 	step 14, 2
 	step 13, 1
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _02D4:
 	step 14, 2
 	step 12, 1
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _02E4:
 	step 14, 4
 	step_end
 
+	.balign 4, 0
 _02EC:
 	step 14, 2
 	step 13, 1
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _02FC:
 	step 63, 1
 	step 70, 1
@@ -201,12 +212,14 @@ _02FC:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0314:
 	step 63, 1
 	step 70, 1
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _0324:
 	step 63, 1
 	step 70, 1
@@ -215,6 +228,7 @@ _0324:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _033C:
 	step 63, 1
 	step 70, 1
@@ -223,12 +237,14 @@ _033C:
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _0354:
 	step 63, 1
 	step 70, 1
 	step 14, 3
 	step_end
 
+	.balign 4, 0
 _0364:
 	step 63, 1
 	step 70, 1
@@ -237,12 +253,14 @@ _0364:
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _037C:
 	step 89, 1
 	step 90, 6
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _038C:
 	step 89, 1
 	step 90, 4
@@ -251,18 +269,21 @@ _038C:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _03A4:
 	step 88, 1
 	step 90, 6
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _03B4:
 	step 89, 1
 	step 90, 5
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _03C4:
 	step 89, 1
 	step 90, 3
@@ -271,12 +292,14 @@ _03C4:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _03DC:
 	step 88, 1
 	step 90, 5
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _03EC:
 	step 61, 1
 	step 18, 1
@@ -285,6 +308,7 @@ _03EC:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0404:
 	step 61, 1
 	step 18, 1
@@ -295,6 +319,7 @@ _0404:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0424:
 	step 61, 1
 	step 18, 1
@@ -303,6 +328,7 @@ _0424:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _043C:
 	step 61, 1
 	step 18, 1
@@ -311,6 +337,7 @@ _043C:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0454:
 	step 61, 1
 	step 18, 1
@@ -321,6 +348,7 @@ _0454:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0474:
 	step 61, 1
 	step 18, 1
@@ -328,6 +356,7 @@ _0474:
 	step 18, 5
 	step 69, 1
 	step_end
+
 scr_seq_R31R0101_002:
 	simple_npc_msg msg_0379_R31R0101_00000
 	end

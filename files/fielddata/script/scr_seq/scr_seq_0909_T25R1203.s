@@ -78,7 +78,8 @@ scr_seq_T25R1203_011:
 	lockall
 	setvar VAR_SPECIAL_x8005, 2
 	goto _0113
-	.byte 0x02, 0x00
+	end
+
 _0113:
 	npc_msg msg_0602_T25R1203_00011
 	touchscreen_menu_hide
@@ -91,7 +92,8 @@ _0113:
 	case 0, _016A
 	case 1, _018F
 	goto _0162
-	.byte 0x02, 0x00
+	end
+
 _0162:
 	touchscreen_menu_show
 _0164:
@@ -113,5 +115,6 @@ _016A:
 _018F:
 	npc_msg msg_0602_T25R1203_00012
 	goto _0113
-	.byte 0x02, 0x00, 0x00, 0x00
+	end
+
 	.balign 4, 0

@@ -161,7 +161,7 @@ _0263:
 _0286:
 	return
 
-
+	.balign 4, 0
 _0288:
 	step 13, 1
 	step 14, 4
@@ -171,6 +171,7 @@ _0288:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _02A4:
 	step 13, 1
 	step 14, 4
@@ -180,6 +181,7 @@ _02A4:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _02C0:
 	step 13, 1
 	step 14, 4
@@ -189,38 +191,45 @@ _02C0:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _02DC:
 	step 12, 1
 	step 15, 1
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _02EC:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _02F4:
 	step 13, 3
 	step 14, 4
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0304:
 	step 13, 2
 	step 14, 3
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0314:
 	step 13, 3
 	step 14, 4
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0324:
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _032C:
 	step 14, 1
 	step 13, 1
@@ -229,6 +238,7 @@ _032C:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0344:
 	step 13, 6
 	step 15, 4

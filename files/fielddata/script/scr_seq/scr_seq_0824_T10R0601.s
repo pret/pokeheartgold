@@ -27,11 +27,12 @@ scr_seq_T10R0601_001:
 	setvar VAR_UNK_40C8, 1
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0048:
 	step 12, 6
 	step_end
+
 scr_seq_T10R0601_002:
 	setflag FLAG_UNK_210
 	setvar VAR_UNK_40C8, 0
@@ -169,28 +170,32 @@ _0290:
 	white_out
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0298:
 	step 12, 2
 	step 15, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _02A8:
 	step 12, 2
 	step_end
 
+	.balign 4, 0
 _02B0:
 	step 12, 2
 	step 14, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _02C0:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _02C8:
 	step 1, 1
 	step 75, 0
@@ -199,6 +204,7 @@ _02C8:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _02E0:
 	step 1, 1
 	step 63, 4
@@ -207,12 +213,14 @@ _02E0:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _02F8:
 	step 16, 3
 	step 19, 1
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0308:
 	step 16, 2
 	step 18, 1
@@ -221,6 +229,7 @@ _0308:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0320:
 	step 16, 1
 	step 19, 1
@@ -229,59 +238,70 @@ _0320:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0338:
 	step 16, 12
 	step 1, 1
 	step 37, 3
 	step_end
 
+	.balign 4, 0
 _0348:
 	step 12, 8
 	step_end
 
+	.balign 4, 0
 _0350:
 	step 63, 6
 	step 14, 1
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _0360:
 	step 36, 4
 	step_end
 
+	.balign 4, 0
 _0368:
 	step 12, 2
 	step 14, 1
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0378:
 	step 63, 3
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _0384:
 	step 62, 1
 	step 12, 2
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0394:
 	step 12, 2
 	step 12, 2
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _03A4:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _03AC:
 	step 16, 4
 	step 75, 0
 	step 63, 2
 	step_end
 
+	.balign 4, 0
 _03BC:
 	step 19, 1
 	step 18, 2

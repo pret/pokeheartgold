@@ -128,7 +128,8 @@ _016E:
 	goto_if_eq _018E
 	npc_msg msg_0246_00017
 	goto _0260
-	.byte 0x02, 0x00
+	end
+
 _018E:
 	count_pc_empty_space VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
@@ -154,7 +155,8 @@ _01D4:
 	goto_if_eq _0200
 	npc_msg msg_0246_00028
 	goto _0260
-	.byte 0x02, 0x00
+	end
+
 _0200:
 	fade_out_bgm 0, 10
 	play_bgm SEQ_GS_TAIKAIMAE
@@ -180,7 +182,8 @@ _0224:
 	script_overlay_cmd 1, 1
 	setflag FLAG_UNK_996
 	goto _0262
-	.byte 0x02, 0x00
+	end
+
 _0260:
 	wait_button_or_walk_away
 _0262:
@@ -206,12 +209,13 @@ _028B:
 _02A6:
 	npc_msg msg_0246_00018
 	goto _0260
-	.byte 0x02
-	.byte 0x00
+	end
+
 _02B1:
 	npc_msg msg_0246_00016
 	goto _0260
-	.byte 0x02, 0x00
+	end
+
 _02BC:
 	buffer_players_name 0
 	npc_msg msg_0246_00020
@@ -230,8 +234,12 @@ _02F3:
 _02F8:
 	closemsg
 	return
-	.byte 0x2d, 0x00, 0x12, 0x16
-	.byte 0x00, 0x5b, 0xff, 0xff, 0xff, 0x02, 0x00
+
+_02FC:
+	npc_msg msg_0246_00018
+	goto _0260
+	end
+
 scr_seq_0151_006:
 	scrcmd_789 0
 	npc_msg msg_0246_00023
@@ -384,15 +392,17 @@ _050F:
 	compare VAR_SPECIAL_x8004, 10
 	goto_if_lt _050F
 	return
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _053C:
 	step 15, 5
 	step_end
 
+	.balign 4, 0
 _0544:
 	step 14, 5
 	step_end
+
 scr_seq_0151_008:
 	simple_npc_msg msg_0246_00048
 	end

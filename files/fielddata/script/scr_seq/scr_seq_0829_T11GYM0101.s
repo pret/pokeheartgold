@@ -157,8 +157,8 @@ scr_seq_T11GYM0101_003:
 	wait_fade
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _01FC:
 	step 1, 2
 	step 2, 2

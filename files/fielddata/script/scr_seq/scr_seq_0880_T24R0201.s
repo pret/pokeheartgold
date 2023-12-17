@@ -16,7 +16,8 @@ scr_seq_T24R0201_000:
 	goto_if_unset FLAG_GOT_LOAN_SHUCKLE, _0042
 	goto_if_set FLAG_DAILY_GOT_LOAN_SHUCKLE_TODAY, _00A2
 	goto _00AD
-	.byte 0x02, 0x00
+	end
+
 _0037:
 	npc_msg msg_0576_T24R0201_00011
 _003A:
@@ -52,11 +53,13 @@ _007D:
 	setflag FLAG_GOT_LOAN_SHUCKLE
 	setflag FLAG_DAILY_GOT_LOAN_SHUCKLE_TODAY
 	goto _003A
-	.byte 0x02, 0x00
+	end
+
 _00A2:
 	npc_msg msg_0576_T24R0201_00006
 	goto _003A
-	.byte 0x02, 0x00
+	end
+
 _00AD:
 	npc_msg msg_0576_T24R0201_00005
 	touchscreen_menu_hide
@@ -116,7 +119,8 @@ _0181:
 	setflag FLAG_RETURNED_OR_INHERITED_LOAN_SHUCKLE
 _0192:
 	goto _003A
-	.byte 0x02, 0x00
+	end
+
 _019A:
 	scrcmd_150
 	fade_screen 6, 1, 1, RGB_BLACK
@@ -126,10 +130,12 @@ _019A:
 _01AA:
 	npc_msg msg_0576_T24R0201_00010
 	goto _003A
-	.byte 0x02, 0x00
+	end
+
 _01B5:
 	npc_msg msg_0576_T24R0201_00009
 	setflag FLAG_RETURNED_OR_INHERITED_LOAN_SHUCKLE
 	goto _003A
-	.byte 0x02, 0x00
+	end
+
 	.balign 4, 0

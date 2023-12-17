@@ -141,12 +141,18 @@ scr_seq_D37R0103_001:
 	compare VAR_TEMP_x4001, 15
 	goto_if_ne _03FD
 	goto _041C
-	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
+
+_03F7:
+	goto _041C
+
 _03FD:
 	compare VAR_TEMP_x4001, 16
 	goto_if_ne _0416
 	goto _0483
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_0410:
+	goto _041C
+
 _0416:
 	goto _03C9
 
@@ -210,16 +216,18 @@ scr_seq_D37R0103_002:
 	closemsg
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0504:
 	step 9, 2
 	step_end
 
+	.balign 4, 0
 _050C:
 	step 10, 2
 	step_end
 
+	.balign 4, 0
 _0514:
 	step 11, 2
 	step_end

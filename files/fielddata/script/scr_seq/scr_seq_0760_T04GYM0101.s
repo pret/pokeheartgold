@@ -127,12 +127,13 @@ _018B:
 	setvar VAR_UNK_4088, 1
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _01C8:
 	step 21, 5
 	step_end
 
+	.balign 4, 0
 _01D0:
 	step 71, 1
 	step 56, 1
@@ -140,28 +141,34 @@ _01D0:
 	step 17, 2
 	step_end
 
+	.balign 4, 0
 _01E4:
 	step 75, 1
 	step 71, 1
 	step 12, 2
 	step_end
 
+	.balign 4, 0
 _01F4:
 	step 13, 2
 	step_end
 
+	.balign 4, 0
 _01FC:
 	step 17, 1
 	step_end
 
+	.balign 4, 0
 _0204:
 	step 18, 1
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _0210:
 	step 18, 1
 	step_end
+
 scr_seq_T04GYM0101_006:
 	scrcmd_814
 	goto_if_set FLAG_HIDE_CERULEAN_GYM_MACHINE_PART, _022F

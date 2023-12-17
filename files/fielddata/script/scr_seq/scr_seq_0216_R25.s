@@ -170,8 +170,8 @@ _0271:
 	setvar VAR_UNK_4088, 2
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _029C:
 	step 63, 1
 	step 2, 1
@@ -179,6 +179,7 @@ _029C:
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _02B0:
 	step 66, 1
 	step 0, 1
@@ -188,6 +189,7 @@ _02B0:
 	step 17, 8
 	step_end
 
+	.balign 4, 0
 _02CC:
 	step 66, 1
 	step 0, 1
@@ -197,6 +199,7 @@ _02CC:
 	step 17, 8
 	step_end
 
+	.balign 4, 0
 _02E8:
 	step 66, 1
 	step 0, 1
@@ -206,11 +209,13 @@ _02E8:
 	step 17, 9
 	step_end
 
+	.balign 4, 0
 _0304:
 	step 65, 6
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0310:
 	step 65, 6
 	step 0, 1
@@ -220,41 +225,49 @@ _0310:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _032C:
 	step 12, 7
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _0338:
 	step 12, 6
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _0344:
 	step 12, 5
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _0350:
 	step 65, 3
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _035C:
 	step 13, 1
 	step 14, 11
 	step_end
 
+	.balign 4, 0
 _0368:
 	step 13, 1
 	step 14, 11
 	step_end
 
+	.balign 4, 0
 _0374:
 	step 12, 1
 	step 14, 11
 	step_end
 
+	.balign 4, 0
 _0380:
 	step 63, 1
 	step 1, 1
@@ -262,12 +275,14 @@ _0380:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _0394:
 	step 63, 1
 	step 0, 1
 	step 62, 1
 	step 2, 1
 	step_end
+
 scr_seq_R25_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -319,7 +334,8 @@ _043A:
 _044B:
 	npc_msg msg_0363_R25_00005
 	goto _03D3
-	.byte 0x02, 0x00
+	end
+
 _0456:
 	player_on_bike_check VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
@@ -458,17 +474,19 @@ _05F7:
 	setvar VAR_SCENE_ROUTE_25, 2
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0648:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0650:
 	step 15, 3
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _065C:
 	step 15, 1
 	step 12, 1
@@ -476,6 +494,7 @@ _065C:
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _0670:
 	step 15, 1
 	step 12, 2
@@ -483,16 +502,19 @@ _0670:
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _0684:
 	step 65, 1
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _0690:
 	step 63, 2
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _069C:
 	step 19, 8
 	step 15, 3
@@ -500,10 +522,12 @@ _069C:
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _06B0:
 	step 15, 1
 	step 12, 2
 	step_end
+
 scr_seq_R25_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -588,21 +612,29 @@ _07B6:
 	closemsg
 	goto_if_set FLAG_HIDE_ROUTE_25_EUSINE_2, _0766
 	goto _0786
-	.byte 0x00
-	.byte 0x01, 0x00, 0x01, 0x00, 0x3f, 0x00, 0x02, 0x00, 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_07E0:
+	step 1, 1
+	step 63, 2
+	step_end
+
+	.balign 4, 0
 _07EC:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _07F4:
 	step 63, 2
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _0800:
 	step 14, 11
 	step_end
+
 scr_seq_R25_002:
 	scrcmd_055 2, 0
 	scrcmd_057 3

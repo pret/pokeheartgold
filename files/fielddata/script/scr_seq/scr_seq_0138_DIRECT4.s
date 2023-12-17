@@ -11,5 +11,8 @@
 scr_seq_DIRECT4_000:
 	scrcmd_284
 	end
-	.byte 0x02, 0x00
+
+_000A:
+	end
+
 	.balign 4, 0

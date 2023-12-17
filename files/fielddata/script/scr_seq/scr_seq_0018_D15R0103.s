@@ -57,28 +57,33 @@ scr_seq_D15R0103_001:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _00B4:
 	step 75, 1
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _00C0:
 	step 12, 5
 	step_end
 
+	.balign 4, 0
 _00C8:
 	step 13, 5
 	step_end
 
+	.balign 4, 0
 _00D0:
 	step 33, 2
 	step_end
 
+	.balign 4, 0
 _00D8:
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _00E0:
 	step 2, 4
 	step 0, 4
@@ -103,6 +108,7 @@ _00E0:
 	step 2, 1
 	step 0, 1
 	step_end
+
 scr_seq_D15R0103_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall

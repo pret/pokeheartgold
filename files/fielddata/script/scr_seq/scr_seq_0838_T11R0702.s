@@ -59,31 +59,36 @@ scr_seq_T11R0702_001:
 	lockall
 	setvar VAR_SPECIAL_x8004, 1
 	goto _0107
-	.byte 0x02, 0x00
+	end
+
 scr_seq_T11R0702_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	setvar VAR_SPECIAL_x8004, 4
 	goto _0107
-	.byte 0x02, 0x00
+	end
+
 scr_seq_T11R0702_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	setvar VAR_SPECIAL_x8004, 3
 	goto _0107
-	.byte 0x02, 0x00
+	end
+
 scr_seq_T11R0702_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	setvar VAR_SPECIAL_x8004, 2
 	goto _0107
-	.byte 0x02, 0x00
+	end
+
 scr_seq_T11R0702_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	setvar VAR_SPECIAL_x8004, 5
 	goto _0107
-	.byte 0x02, 0x00
+	end
+
 _0107:
 	player_has_species VAR_SPECIAL_RESULT, SPECIES_ROTOM
 	compare VAR_SPECIAL_RESULT, 0
@@ -106,7 +111,8 @@ _0107:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _073D
 	goto _0189
-	.byte 0x02, 0x00
+	end
+
 _0189:
 	compare VAR_SPECIAL_x8004, 1
 	call_if_eq _06FC
@@ -122,7 +128,8 @@ _0189:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _03B2
 	goto _03C0
-	.byte 0x02, 0x00
+	end
+
 _01E5:
 	touchscreen_menu_hide
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
@@ -134,15 +141,16 @@ _01E5:
 	case 0, _0189
 	case 1, _0231
 	goto _073D
-	.byte 0x02
-	.byte 0x00
+	end
+
 _0231:
 	count_transformed_rotoms_in_party VAR_SPECIAL_x8003, VAR_SPECIAL_RESULT
 	copyvar VAR_SPECIAL_x8000, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_x8003, 2
 	goto_if_ge _0332
 	goto _0252
-	.byte 0x02, 0x00
+	end
+
 _0252:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	npc_msg msg_0538_T11R0702_00011
@@ -162,8 +170,8 @@ _0252:
 	compare VAR_SPECIAL_x8004, 5
 	call_if_eq _0328
 	goto _02C1
-	.byte 0x02
-	.byte 0x00
+	end
+
 _02C1:
 	scrcmd_815 0
 	get_player_coords VAR_SPECIAL_x8006, VAR_SPECIAL_x8007
@@ -175,7 +183,8 @@ _02C1:
 	compare VAR_TEMP_x400A, 1
 	call_if_eq _07BA
 	goto _08A4
-	.byte 0x02, 0x00
+	end
+
 _0300:
 	clearflag FLAG_HIDE_SILPH_ROTOM_HEAT
 	show_person obj_T11R0702_rotomf
@@ -222,12 +231,14 @@ _0332:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _039F
 	goto _0252
-	.byte 0x02, 0x00
+	end
+
 _039F:
 	npc_msg msg_0538_T11R0702_00017
 	wait_button_or_walk_away
 	goto _089C
-	.byte 0x02, 0x00
+	end
+
 _03AC:
 	touchscreen_menu_show
 	releaseall
@@ -236,7 +247,8 @@ _03AC:
 _03B2:
 	get_party_slot_with_species VAR_SPECIAL_x8000, SPECIES_ROTOM
 	goto _0434
-	.byte 0x02, 0x00
+	end
+
 _03C0:
 	npc_msg msg_0538_T11R0702_00007
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -255,17 +267,20 @@ _03C0:
 	compare VAR_SPECIAL_RESULT, 479
 	goto_if_ne _0427
 	goto _0434
-	.byte 0x02, 0x00
+	end
+
 _041A:
 	npc_msg msg_0538_T11R0702_00008
 	wait_button_or_walk_away
 	goto _089C
-	.byte 0x02, 0x00
+	end
+
 _0427:
 	npc_msg msg_0538_T11R0702_00009
 	wait_button_or_walk_away
 	goto _089C
-	.byte 0x02, 0x00
+	end
+
 _0434:
 	mon_has_move VAR_SPECIAL_RESULT, MOVE_OVERHEAT, VAR_SPECIAL_x8000
 	compare VAR_SPECIAL_RESULT, 1
@@ -287,11 +302,13 @@ _0434:
 	compare VAR_SPECIAL_RESULT, 4
 	goto_if_eq _051C
 	goto _04CC
-	.byte 0x02, 0x00
+	end
+
 _04BE:
 	setvar VAR_SPECIAL_x8002, 0
 	goto _04CC
-	.byte 0x02, 0x00
+	end
+
 _04CC:
 	nop_var_490 VAR_TEMP_x4005
 	get_party_lead_alive VAR_TEMP_x4000
@@ -310,7 +327,8 @@ _050C:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	npc_msg msg_0538_T11R0702_00010
 	goto _0671
-	.byte 0x02, 0x00
+	end
+
 _051C:
 	nop_var_490 VAR_TEMP_x4007
 	get_party_lead_alive VAR_TEMP_x4000
@@ -335,7 +353,8 @@ _0564:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0649
 	goto _058A
-	.byte 0x02, 0x00
+	end
+
 _058A:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -368,7 +387,8 @@ _058A:
 	wait_fanfare
 	wait 16, VAR_SPECIAL_RESULT
 	goto _0671
-	.byte 0x02, 0x00
+	end
+
 _0628:
 	buffer_move_name 1, VAR_SPECIAL_x8001
 	npc_msg msg_0538_T11R0702_00001
@@ -376,7 +396,8 @@ _0628:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _058A
 	goto _0649
-	.byte 0x02, 0x00
+	end
+
 _0649:
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	buffer_move_name 1, VAR_SPECIAL_x8001
@@ -386,8 +407,8 @@ _0649:
 	call_if_eq _07BA
 	nop_var_490 VAR_TEMP_x400D
 	goto _089C
-	.byte 0x02
-	.byte 0x00
+	end
+
 _0671:
 	update_rotom_form VAR_SPECIAL_x8000, VAR_SPECIAL_x8002, VAR_SPECIAL_x8001, VAR_SPECIAL_x8004
 	fade_screen 6, 1, 0, RGB_BLACK
@@ -404,7 +425,8 @@ _0671:
 	compare VAR_SPECIAL_x8004, 5
 	call_if_eq _06EA
 	goto _02C1
-	.byte 0x02, 0x00
+	end
+
 _06D2:
 	hide_person obj_T11R0702_rotomf
 	return
@@ -425,11 +447,12 @@ _06EA:
 	hide_person obj_T11R0702_rotomg
 	return
 
-
+	.balign 4, 0
 _06F0:
 	step 45, 2
 	step 69, 1
 	step_end
+
 _06FC:
 	setvar VAR_SPECIAL_x8001, 315
 	return
@@ -485,7 +508,8 @@ _073D:
 	call_if_eq _07BA
 	nop_var_490 VAR_TEMP_x4006
 	goto _089C
-	.byte 0x02, 0x00
+	end
+
 _0797:
 	npc_msg msg_0538_T11R0702_00022
 	wait_button_or_walk_away
@@ -517,11 +541,12 @@ _07BA:
 	wait_movement
 	lock obj_partner_poke
 	return
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _07D0:
 	step 70, 1
 	step_end
+
 _07D8:
 	compare VAR_SPECIAL_x8004, 1
 	call_if_eq _0821
@@ -534,8 +559,8 @@ _07D8:
 	compare VAR_SPECIAL_x8004, 5
 	call_if_eq _0835
 	goto _089C
-	.byte 0x02
-	.byte 0x00
+	end
+
 _0821:
 	npc_msg msg_0538_T11R0702_00020
 	return
@@ -571,13 +596,15 @@ scr_seq_T11R0702_007:
 	switch VAR_SPECIAL_RESULT
 	case 0, _0231
 	goto _089C
-	.byte 0x02, 0x00
+	end
+
 _088D:
 	npc_msg msg_0538_T11R0702_00018
 	wait_button_or_walk_away
 	closemsg
 	goto _08A4
-	.byte 0x02, 0x00
+	end
+
 _089C:
 	touchscreen_menu_show
 	closemsg

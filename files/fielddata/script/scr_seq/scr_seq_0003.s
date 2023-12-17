@@ -313,20 +313,23 @@ _041D:
 _0445:
 	setvar VAR_SPECIAL_x8004, 1
 	goto _01AA
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0454:
 	step 100, 1
 	step 62, 1
 	step_end
 
+	.balign 4, 0
 _0460:
 	step 102, 1
 	step_end
 
+	.balign 4, 0
 _0468:
 	step 104, 1
 	step_end
+
 scr_seq_0003_069:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -396,7 +399,11 @@ _0574:
 _057A:
 	play_fanfare SEQ_ME_HYOUKA2
 	return
-	.byte 0x15, 0x00, 0x02, 0x00
+
+_0580:
+	endstd
+	end
+
 scr_seq_0003_003:
 	scrcmd_609
 	lockall
@@ -544,7 +551,8 @@ _074C:
 _0757:
 	npc_msg msg_0040_00021
 	goto _06F2
-	.byte 0x02, 0x00
+	end
+
 _0762:
 	save_wipe_extra_chunks
 	clearflag FLAG_MAPTEMP_020
@@ -553,13 +561,15 @@ _0762:
 _076A:
 	npc_msg msg_0040_00015
 	goto _06F2
-	.byte 0x02, 0x00
+	end
+
 _0775:
 	scrcmd_642 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0757
 	goto _076A
-	.byte 0x02, 0x00
+	end
+
 scr_seq_0003_007:
 	call _07AA
 	npc_msg msg_0040_00032
@@ -772,7 +782,8 @@ _0A2E:
 	goto_if_set FLAG_GAME_CLEAR, _0A8C
 	goto_if_unset FLAG_GAME_CLEAR, _0AD1
 	goto _0AD1
-	.byte 0x02, 0x00
+	end
+
 _0A78:
 	menu_item_add 61, 255, 0
 	return
@@ -814,8 +825,11 @@ _0B17:
 	menu_item_add 70, 79, 3
 	menu_item_add 72, 81, 5
 	return
-	.byte 0x46, 0x00, 0x47, 0x00, 0x50, 0x00, 0x04
-	.byte 0x00, 0x1b, 0x00
+
+_0B49:
+	scrcmd_070 71, 80, 4
+	return
+
 _0B53:
 	menu_exec
 	switch VAR_SPECIAL_RESULT
@@ -1040,8 +1054,15 @@ scr_seq_0003_012:
 	closemsg
 	releaseall
 	end
-	.byte 0x2d
-	.byte 0x00, 0x2a, 0x1b, 0x00, 0x2d, 0x00, 0x2b, 0x1b, 0x00
+
+_0E9F:
+	npc_msg msg_0040_00042
+	return
+
+_0EA4:
+	npc_msg msg_0040_00043
+	return
+
 scr_seq_0003_013:
 	scrcmd_609
 	lockall
@@ -1165,25 +1186,37 @@ _1042:
 _104A:
 	setvar VAR_SPECIAL_x8007, 3
 	return
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _1054:
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _105C:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _1064:
 	step 2, 1
 	step_end
-	.byte 0x00, 0x00, 0x01, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00, 0x03, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_106C:
+	step 0, 1
+	step_end
+
+	.balign 4, 0
+_1074:
+	step 3, 1
+	step_end
+
+	.balign 4, 0
 _107C:
 	step 1, 1
 	step_end
+
 scr_seq_0003_015:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -1330,7 +1363,8 @@ _126D:
 _1277:
 	npc_msg msg_0040_00108
 	goto _126D
-	.byte 0x02, 0x00
+	end
+
 scr_seq_0003_025:
 	simple_npc_msg msg_0040_00068
 	end
@@ -1343,8 +1377,19 @@ scr_seq_0003_028:
 	lockall
 	releaseall
 	end
-	.byte 0x2d
-	.byte 0x00, 0x58, 0x32, 0x00, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00, 0x35, 0x00, 0x61, 0x00, 0x02, 0x00
+
+_129F:
+	npc_msg msg_0040_00088
+	wait_button_or_walk_away
+	closemsg
+	releaseall
+	end
+
+_12AA:
+	closemsg
+	releaseall
+	end
+
 scr_seq_0003_029:
 	stop_bgm 0
 	get_player_gender VAR_SPECIAL_RESULT
@@ -1463,7 +1508,8 @@ scr_seq_0003_040:
 	setflag FLAG_GOT_ALL_FOUR_FRONTIER_PRINTS
 	add_special_game_stat_2 31
 	goto _13F6
-	.byte 0x02, 0x00
+	end
+
 _13F6:
 	endstd
 	end
@@ -1499,7 +1545,8 @@ _1444:
 
 scr_seq_0003_048:
 	goto _145E
-	.byte 0x02, 0x00
+	end
+
 _145E:
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
@@ -1516,11 +1563,13 @@ _145E:
 scr_seq_0003_049:
 	mart_buy VAR_SPECIAL_x8004
 	goto _14DD
-	.byte 0x02, 0x00
+	end
+
 scr_seq_0003_050:
 	mart_sell
 	goto _14DD
-	.byte 0x02, 0x00
+	end
+
 scr_seq_0003_051:
 	touchscreen_menu_show
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
@@ -1535,10 +1584,12 @@ _14DD:
 	msgbox_extern VAR_SPECIAL_RESULT, 6
 	holdmsg
 	goto _145E
-	.byte 0x02, 0x00
+	end
+
 scr_seq_0003_052:
 	goto _14FB
-	.byte 0x02, 0x00
+	end
+
 _14FB:
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
@@ -1555,11 +1606,13 @@ _14FB:
 scr_seq_0003_053:
 	special_mart_buy VAR_SPECIAL_x8004
 	goto _15A6
-	.byte 0x02, 0x00
+	end
+
 scr_seq_0003_054:
 	mart_sell
 	goto _15A6
-	.byte 0x02, 0x00
+	end
+
 scr_seq_0003_055:
 	touchscreen_menu_show
 	goto_if_set FLAG_SPECIAL_MART_PHARMACY, _15E8
@@ -1584,7 +1637,8 @@ _15A6:
 _15DE:
 	holdmsg
 	goto _14FB
-	.byte 0x02, 0x00
+	end
+
 _15E8:
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
