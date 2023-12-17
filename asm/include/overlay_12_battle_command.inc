@@ -152,8 +152,8 @@
 .public BattleSystem_Random
 .public ov12_0223C134
 .public ov12_0223C224
-.public ov12_0223C2F0
-.public ov12_0223C330
+.public BattleSystem_SetPokedexCaught
+.public BattleSystem_CheckMonCaught
 .public ov12_0223C494
 .public ov12_0223C4E8
 .public BtlCmd_PlayEncounterAnimation

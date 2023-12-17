@@ -197,9 +197,9 @@
 .public ov12_0223C1F4
 .public ov12_0223C224
 .public CalcMoneyLoss
-.public PokedexSetBattlerSeen
-.public ov12_0223C2F0
-.public ov12_0223C330
+.public BattleSystem_SetPokedexSeen
+.public BattleSystem_SetPokedexCaught
+.public BattleSystem_CheckMonCaught
 .public ov12_0223C340
 .public ov12_0223C34C
 .public ov12_0223C494

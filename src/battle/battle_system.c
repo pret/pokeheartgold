@@ -1304,7 +1304,7 @@ u32 CalcMoneyLoss(Party *party, PlayerProfile *profile) {
     return loss;
 }
 
-void PokedexSetBattlerSeen(BattleSystem *bsys, int battlerId) {
+void BattleSystem_SetPokedexSeen(BattleSystem *bsys, int battlerId) {
     u32 flag = ov12_02261258(bsys->opponentData[battlerId]);
     Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, ov12_022581D4(bsys, bsys->ctx, 2, battlerId));
 
@@ -1316,4 +1316,18 @@ void PokedexSetBattlerSeen(BattleSystem *bsys, int battlerId) {
     if (!(flag & 1) && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_BURMY) {
         Pokedex_SetMonCaughtFlag(bsys->pokedex, mon);
     }
+}
+
+void BattleSystem_SetPokedexCaught(BattleSystem *bsys, int battlerId) {
+    u32 flag = ov12_02261258(bsys->opponentData[battlerId]);
+    
+    if (!(bsys->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_TOWER)) && (flag & 1)) {
+        int selectedMonIndex = ov12_022581D4(bsys, bsys->ctx, 2, battlerId);
+        Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, selectedMonIndex);
+        Pokedex_SetMonCaughtFlag(bsys->pokedex, mon);
+    }
+}
+
+BOOL BattleSystem_CheckMonCaught(BattleSystem *bsys, int battlerId) {
+    return Pokedex_CheckMonCaughtFlag(bsys->pokedex, battlerId);
 }

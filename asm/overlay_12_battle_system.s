@@ -6,50 +6,6 @@
 
 	.text
 
-	thumb_func_start ov12_0223C2F0
-ov12_0223C2F0: ; 0x0223C2F0
-	push {r3, r4, r5, lr}
-	add r4, r1, #0
-	add r5, r0, #0
-	lsl r0, r4, #2
-	add r0, r5, r0
-	ldr r0, [r0, #0x34]
-	bl ov12_02261258
-	ldr r2, [r5, #0x2c]
-	mov r1, #0x84
-	tst r1, r2
-	bne _0223C32C
-	mov r1, #1
-	tst r0, r1
-	beq _0223C32C
-	ldr r1, [r5, #0x30]
-	add r0, r5, #0
-	mov r2, #2
-	add r3, r4, #0
-	bl ov12_022581D4
-	add r2, r0, #0
-	add r0, r5, #0
-	add r1, r4, #0
-	bl BattleSystem_GetPartyMon
-	add r1, r0, #0
-	ldr r0, [r5, #0x60]
-	bl Pokedex_SetMonCaughtFlag
-_0223C32C:
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ov12_0223C2F0
-
-	thumb_func_start ov12_0223C330
-ov12_0223C330: ; 0x0223C330
-	ldr r3, _0223C33C ; =Pokedex_CheckMonCaughtFlag
-	lsl r1, r1, #0x10
-	ldr r0, [r0, #0x60]
-	lsr r1, r1, #0x10
-	bx r3
-	nop
-_0223C33C: .word Pokedex_CheckMonCaughtFlag
-	thumb_func_end ov12_0223C330
-
 	thumb_func_start ov12_0223C340
 ov12_0223C340: ; 0x0223C340
 	ldr r0, _0223C348 ; =0x04000050

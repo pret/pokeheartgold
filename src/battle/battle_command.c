@@ -64,7 +64,7 @@ BOOL BtlCmd_PokemonEncounter(BattleSystem *bsys, BattleContext *ctx) {
     case B_SIDE_ALL:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             BattleController_EmitPokemonEncounter(bsys, battlerId);
-            PokedexSetBattlerSeen(bsys, battlerId);
+            BattleSystem_SetPokedexSeen(bsys, battlerId);
         }
         break;
     case B_SIDE_PLAYER:
@@ -75,7 +75,7 @@ BOOL BtlCmd_PokemonEncounter(BattleSystem *bsys, BattleContext *ctx) {
             opponentData = BattleSystem_GetOpponentData(bsys, battlerId);
             if (opponentData->unk195 & 1) {
                 BattleController_EmitPokemonEncounter(bsys, battlerId);
-                PokedexSetBattlerSeen(bsys, battlerId);
+                BattleSystem_SetPokedexSeen(bsys, battlerId);
             }
         }
         break;
@@ -96,7 +96,7 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BattleContext *ctx) {
     default:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             BattleController_EmitPokemonSlideIn(bsys, battlerId);
-            PokedexSetBattlerSeen(bsys, battlerId);
+            BattleSystem_SetPokedexSeen(bsys, battlerId);
         }
         break;
     case B_SIDE_PLAYER:
@@ -104,7 +104,7 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BattleContext *ctx) {
             opponentData = BattleSystem_GetOpponentData(bsys, battlerId);
             if (!(opponentData->unk195 & 1)) {
                 BattleController_EmitPokemonSlideIn(bsys, battlerId);
-                PokedexSetBattlerSeen(bsys, battlerId);
+                BattleSystem_SetPokedexSeen(bsys, battlerId);
             }
         }
         BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY);
@@ -117,7 +117,7 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BattleContext *ctx) {
                 BattleSystem_ClearExperienceEarnFlags(ctx, battlerId);
                 BattleSystem_SetExperienceEarnFlags(bsys, ctx, battlerId);
                 BattleController_EmitPokemonSlideIn(bsys, battlerId);
-                PokedexSetBattlerSeen(bsys, battlerId);
+                BattleSystem_SetPokedexSeen(bsys, battlerId);
             }
         }
         break;
@@ -130,7 +130,7 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BattleContext *ctx) {
             BattleSystem_ClearExperienceEarnFlags(ctx, ctx->battlerIdAttacker);
             BattleSystem_SetExperienceEarnFlags(bsys, ctx, ctx->battlerIdAttacker);
         }
-        PokedexSetBattlerSeen(bsys, ctx->battlerIdAttacker);
+        BattleSystem_SetPokedexSeen(bsys, ctx->battlerIdAttacker);
         BattleController_EmitPokemonSlideIn(bsys, ctx->battlerIdAttacker);
         break;
     case B_SIDE_2:
@@ -142,7 +142,7 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BattleContext *ctx) {
             BattleSystem_ClearExperienceEarnFlags(ctx, ctx->battlerIdTarget);
             BattleSystem_SetExperienceEarnFlags(bsys, ctx, ctx->battlerIdTarget);
         }
-        PokedexSetBattlerSeen(bsys, ctx->battlerIdTarget);
+        BattleSystem_SetPokedexSeen(bsys, ctx->battlerIdTarget);
         BattleController_EmitPokemonSlideIn(bsys, ctx->battlerIdTarget);
         break;
     case B_SIDE_6:
@@ -154,7 +154,7 @@ BOOL BtlCmd_PokemonSlideIn(BattleSystem *bsys, BattleContext *ctx) {
             BattleSystem_ClearExperienceEarnFlags(ctx, ctx->battlerIdSwitch);
             BattleSystem_SetExperienceEarnFlags(bsys, ctx, ctx->battlerIdSwitch);
         }
-        PokedexSetBattlerSeen(bsys, ctx->battlerIdSwitch);
+        BattleSystem_SetPokedexSeen(bsys, ctx->battlerIdSwitch);
         BattleController_EmitPokemonSlideIn(bsys, ctx->battlerIdSwitch);
         break;
     }
@@ -174,7 +174,7 @@ BOOL BtlCmd_PokemonSendOut(BattleSystem *bsys, BattleContext *ctx) {
     default:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             BattleController_EmitPokemonSendOut(bsys, battlerId, 0, 0);
-            PokedexSetBattlerSeen(bsys, battlerId);
+            BattleSystem_SetPokedexSeen(bsys, battlerId);
         }
         break;
     case 3:
@@ -182,7 +182,7 @@ BOOL BtlCmd_PokemonSendOut(BattleSystem *bsys, BattleContext *ctx) {
             opponentData = BattleSystem_GetOpponentData(bsys, battlerId);
             if (!(opponentData->unk195 & 1)) {
                 BattleController_EmitPokemonSendOut(bsys, battlerId, 0, 0);
-                PokedexSetBattlerSeen(bsys, battlerId);
+                BattleSystem_SetPokedexSeen(bsys, battlerId);
             }
         }
         BattleSystem_SetExperienceEarnFlags(bsys, ctx, BATTLER_ENEMY);
@@ -195,7 +195,7 @@ BOOL BtlCmd_PokemonSendOut(BattleSystem *bsys, BattleContext *ctx) {
                 BattleSystem_ClearExperienceEarnFlags(ctx, battlerId);
                 BattleSystem_SetExperienceEarnFlags(bsys, ctx, battlerId);
                 BattleController_EmitPokemonSendOut(bsys, battlerId, 0, 0);
-                PokedexSetBattlerSeen(bsys, battlerId);
+                BattleSystem_SetPokedexSeen(bsys, battlerId);
             }
         }
         break;
@@ -208,7 +208,7 @@ BOOL BtlCmd_PokemonSendOut(BattleSystem *bsys, BattleContext *ctx) {
             BattleSystem_ClearExperienceEarnFlags(ctx, ctx->battlerIdAttacker);
             BattleSystem_SetExperienceEarnFlags(bsys, ctx, ctx->battlerIdAttacker);
         }
-        PokedexSetBattlerSeen(bsys, ctx->battlerIdAttacker);
+        BattleSystem_SetPokedexSeen(bsys, ctx->battlerIdAttacker);
         BattleController_EmitPokemonSendOut(bsys, ctx->battlerIdAttacker, 0, 0);
         break;
     case 2:
@@ -220,7 +220,7 @@ BOOL BtlCmd_PokemonSendOut(BattleSystem *bsys, BattleContext *ctx) {
             BattleSystem_ClearExperienceEarnFlags(ctx, ctx->battlerIdTarget);
             BattleSystem_SetExperienceEarnFlags(bsys, ctx, ctx->battlerIdTarget);
         }
-        PokedexSetBattlerSeen(bsys, ctx->battlerIdTarget);
+        BattleSystem_SetPokedexSeen(bsys, ctx->battlerIdTarget);
         BattleController_EmitPokemonSendOut(bsys, ctx->battlerIdTarget, 0, 0);
         break;
     case 6:
@@ -232,7 +232,7 @@ BOOL BtlCmd_PokemonSendOut(BattleSystem *bsys, BattleContext *ctx) {
             BattleSystem_ClearExperienceEarnFlags(ctx, ctx->battlerIdSwitch);
             BattleSystem_SetExperienceEarnFlags(bsys, ctx, ctx->battlerIdSwitch);
         }
-        PokedexSetBattlerSeen(bsys, ctx->battlerIdSwitch);
+        BattleSystem_SetPokedexSeen(bsys, ctx->battlerIdSwitch);
         BattleController_EmitPokemonSendOut(bsys, ctx->battlerIdSwitch, 0, 0);
         break;
     }

@@ -138,7 +138,9 @@ void ov12_0223C1C4(BattleSystem *bsys, u8 *buffer);
 void ov12_0223C1F4(BattleSystem *bsys, void **a1);
 void ov12_0223C224(BattleSystem *bsys, int a1);
 u32 CalcMoneyLoss(Party *party, PlayerProfile *profile);
-void PokedexSetBattlerSeen(BattleSystem *bsys, int battlerId);
+void BattleSystem_SetPokedexSeen(BattleSystem *bsys, int battlerId);
+void BattleSystem_SetPokedexCaught(BattleSystem *bsys, int battlerId);
+BOOL BattleSystem_CheckMonCaught(BattleSystem *bsys, int battlerId);
 
 //These functions haven't been decompiled
 BOOL Link_QueueNotEmpty(BattleContext *ctx);

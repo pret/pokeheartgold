@@ -1371,7 +1371,7 @@ _02262AE2:
 	str r0, [sp, #0x20]
 	ldrh r1, [r7, r6]
 	ldr r0, [sp, #4]
-	bl ov12_0223C330
+	bl BattleSystem_CheckMonCaught
 	add r3, sp, #0x14
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
@@ -3468,7 +3468,7 @@ _02263AD0:
 	str r0, [sp, #0x1c]
 	ldrh r1, [r7, r6]
 	ldr r0, [sp, #4]
-	bl ov12_0223C330
+	bl BattleSystem_CheckMonCaught
 	add r3, sp, #0x10
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18

@@ -683,7 +683,7 @@ _02246950:
 	bl GetMonData
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223C330
+	bl BattleSystem_CheckMonCaught
 	cmp r0, #0
 	beq _022469E6
 	ldr r0, [r4]
@@ -1282,7 +1282,7 @@ _02246E84:
 	add r6, r0, #0
 	ldr r0, [r4]
 	add r1, r7, #0
-	bl ov12_0223C2F0
+	bl BattleSystem_SetPokedexCaught
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
 	add r2, r6, #0
@@ -1398,7 +1398,7 @@ _02246F7E:
 	beq _02246FB4
 	ldr r0, [r4]
 	add r1, r7, #0
-	bl ov12_0223C2F0
+	bl BattleSystem_SetPokedexCaught
 _02246FB4:
 	add r0, r6, #0
 	bl Mon_GetBoxMon
@@ -1908,7 +1908,7 @@ _022473AA:
 	lsl r1, r1, #6
 	ldrh r1, [r2, r1]
 	add r0, r7, #0
-	bl ov12_0223C330
+	bl BattleSystem_CheckMonCaught
 	cmp r0, #1
 	bne _022473FA
 	mov r0, #0x1e
