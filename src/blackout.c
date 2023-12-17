@@ -73,9 +73,9 @@ static const WindowTemplate sBlackoutWindowTemplate = {
 static void Blackout_InitDisplays(BgConfig *bgConfig) {
     GfGfx_SetBanks(&sBlackoutGraphicsBanks);
     SetBothScreensModesAndDisable(&sBlackoutGraphicsModes);
-    InitBgFromTemplate(bgConfig, 3, &sBlackoutBgTemplate, GF_BG_TYPE_TEXT);
+    InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_3, &sBlackoutBgTemplate, GF_BG_TYPE_TEXT);
     GfGfxLoader_GXLoadPal(NARC_graphic_font, 7, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_13_OFFSET, 0x20, HEAP_ID_FIELD);
-    BG_SetMaskColor(3, RGB_WHITE);
+    BG_SetMaskColor(GF_BG_LYR_MAIN_3, RGB_WHITE);
 }
 
 static void Blackout_DrawMessage(FieldSystem *fieldSystem, TaskManager *taskManager) {
@@ -108,32 +108,40 @@ static void Blackout_DrawMessage(FieldSystem *fieldSystem, TaskManager *taskMana
     TaskManager_Call(taskManager, Task_ShowPrintedBlackoutMessage, env);
 }
 
+enum {
+    STATE_SHOW_PRINTED_BLACKOUT_FADE_IN,
+    STATE_SHOW_PRINTED_BLACKOUT_FADE_IN_WAIT,
+    STATE_SHOW_PRINTED_BLACKOUT_FADE_OUT_INPUT,
+    STATE_SHOW_PRINTED_BLACKOUT_FADE_OUT_WAIT,
+    STATE_SHOW_PRINTED_BLACKOUT_CLEANUP,
+};
+
 static BOOL Task_ShowPrintedBlackoutMessage(TaskManager *taskManager) {
     BlackoutScreenEnvironment *env = TaskManager_GetEnvironment(taskManager);
     switch (env->state) {
-        case 0:
+        case STATE_SHOW_PRINTED_BLACKOUT_FADE_IN:
             BeginNormalPaletteFade(3, 1, 43, RGB_WHITE, 8, 1, HEAP_ID_32);
             G2_BlendNone();
             env->state++;
             break;
-        case 1:
+        case STATE_SHOW_PRINTED_BLACKOUT_FADE_IN_WAIT:
             if (IsPaletteFadeFinished()) {
                 env->state++;
             }
             break;
-        case 2:
+        case STATE_SHOW_PRINTED_BLACKOUT_FADE_OUT_INPUT:
             if (gSystem.newKeys & PAD_BUTTON_A || gSystem.newKeys & PAD_BUTTON_B || gSystem.touchNew != 0) {
                 BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 8, 1, HEAP_ID_32);
                 env->state++;
             }
             break;
-        case 3:
+        case STATE_SHOW_PRINTED_BLACKOUT_FADE_OUT_WAIT:
             if (IsPaletteFadeFinished()) {
                 FillWindowPixelBuffer(&env->window, 0);
                 env->state++;
             }
             break;
-        case 4:
+        case STATE_SHOW_PRINTED_BLACKOUT_CLEANUP:
             ClearFrameAndWindow2(&env->window, FALSE);
             RemoveWindow(&env->window);
             MessageFormat_Delete(env->msgFmt);
@@ -166,6 +174,16 @@ static void Blackout_PrintMessage(BlackoutScreenEnvironment *environment, s32 ms
     String_Delete(finStr);
 }
 
+enum {
+    STATE_BLACKOUT_TASK_INIT,
+    STATE_BLACKOUT_TASK_SOUND_FADE,
+    STATE_BLACKOUT_TASK_SOUND_FADE_WAIT,
+    STATE_BLACKOUT_TASK_DRAW,
+    STATE_BLACKOUT_TASK_RESTORE_OVERWORLD,
+    STATE_BLACKOUT_TASK_QUEUE_SCRIPT,
+    STATE_BLACKOUT_TASK_EXIT
+};
+
 BOOL Task_Blackout(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     u32 *state = TaskManager_GetStatePtr(taskManager);
@@ -174,7 +192,7 @@ BOOL Task_Blackout(TaskManager *taskManager) {
     u16 deathSpawn;
 
     switch (*state) {
-        case 0:
+        case STATE_BLACKOUT_TASK_INIT:
             localFieldData = Save_LocalFieldData_Get(fieldSystem->saveData);
             deathSpawn = LocalFieldData_GetBlackoutSpawn(localFieldData);
             GetDeathWarpData(deathSpawn, &deathWarp);
@@ -184,27 +202,27 @@ BOOL Task_Blackout(TaskManager *taskManager) {
             HealParty(SaveArray_Party_Get(fieldSystem->saveData));
             (*state)++;
             break;
-        case 1:
+        case STATE_BLACKOUT_TASK_SOUND_FADE:
             GF_SndStartFadeOutBGM(0, 20);
             (*state)++;
             break;
-        case 2:
+        case STATE_BLACKOUT_TASK_SOUND_FADE_WAIT:
             if (GF_SndGetFadeTimer() == 0) {
                 sub_02054F14();
                 (*state)++;
             }
             break;
-        case 3:
+        case STATE_BLACKOUT_TASK_DRAW:
             SetBlendBrightness(-16, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN);
             SetBlendBrightness(-16, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_SUB);
             Blackout_DrawMessage(fieldSystem, taskManager);
             (*state)++;
             break;
-        case 4:
+        case STATE_BLACKOUT_TASK_RESTORE_OVERWORLD:
             CallTask_RestoreOverworld(taskManager);
             (*state)++;
             break;
-        case 5:
+        case STATE_BLACKOUT_TASK_QUEUE_SCRIPT:
             SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BD | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG0), SCREEN_MASK_MAIN | SCREEN_MASK_SUB);
             if (GetMomSpawnId() == LocalFieldData_GetBlackoutSpawn(Save_LocalFieldData_Get(fieldSystem->saveData))) {
                 QueueScript(taskManager, std_whited_out_to_mom, NULL, NULL);
@@ -213,7 +231,7 @@ BOOL Task_Blackout(TaskManager *taskManager) {
             }
             (*state)++;
             break;
-        case 6:
+        case STATE_BLACKOUT_TASK_EXIT:
             return TRUE;
     }
 
