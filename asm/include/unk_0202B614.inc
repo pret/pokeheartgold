@@ -24,9 +24,9 @@
 .public sub_0202BAB0
 .public FashionCase_CountAccessories
 .public FashionCase_CountWallpapers
-.public GiveFashionItem
+.public FashionCase_GiveFashionItem
 .public sub_0202BB7C
-.public GiveContestBackground
+.public FashionCase_GiveContestBackground
 .public sub_0202BC10
 .public sub_0202BC38
 .public sub_0202BC60

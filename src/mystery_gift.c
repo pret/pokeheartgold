@@ -236,28 +236,28 @@ static MysteryGiftSave* sMysteryGiftSaveData;
 
 void SaveMGDataPtr_Begin(SaveData* saveData, HeapID heapId) {
     if (sMysteryGiftSaveData == NULL) {
-        #ifdef MYSTERY_GIFT_SAVE_TRANSACTION_IMPL
+#ifdef MYSTERY_GIFT_SAVE_TRANSACTION_IMPL
         u32 size = Save_MysteryGift_sizeof();
         sMysteryGiftSaveData = AllocFromHeap(heapId, size);
         GF_ASSERT(sMysteryGiftSaveData != NULL);
         MI_CpuCopy32(Save_MysteryGift_Get(saveData), sMysteryGiftSaveData, size);
-        #else
+#else
         sMysteryGiftSaveData = Save_MysteryGift_Get(saveData);
-        #endif
+#endif
     }
     SaveSubstruct_UpdateCRC(SAVE_MYSTERY_GIFT);
 }
 
 void SaveMGDataPtr_End(SaveData* saveData, BOOL commit) {
     if (sMysteryGiftSaveData != NULL) {
-        #ifdef MYSTERY_GIFT_SAVE_TRANSACTION_IMPL
+#ifdef MYSTERY_GIFT_SAVE_TRANSACTION_IMPL
         if (commit) {
             u32 size = Save_MysteryGift_sizeof();
             MI_CpuCopy32(sMysteryGiftSaveData, Save_MysteryGift_Get(saveData), size);
             SaveSubstruct_UpdateCRC(SAVE_MYSTERY_GIFT);
         }
         FreeToHeap(sMysteryGiftSaveData);
-        #endif
+#endif
         sMysteryGiftSaveData = NULL;
     }
 }
