@@ -482,26 +482,26 @@ static void ov78_021E5EA4(CertificatesApp_Data *data) {
 
     GfGfxLoader_LoadScrnData(NARC_a_1_2_6, nscrFileNum, data->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, FALSE, data->heapId);
     GfGfxLoader_LoadCharData(NARC_a_1_2_6, ncgrFileNum, data->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, FALSE, data->heapId);
-    GfGfxLoader_GXLoadPal(NARC_a_1_2_6, nclrFileNum, GF_BG_LYR_MAIN_0, 0, 0x20, data->heapId);
+    GfGfxLoader_GXLoadPal(NARC_a_1_2_6, nclrFileNum, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_0_OFFSET, 0x20, data->heapId);
     GfGfxLoader_LoadScrnData(NARC_a_1_2_6, nscrFileNum, data->bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, data->heapId);
     GfGfxLoader_LoadCharData(NARC_a_1_2_6, ncgrFileNum, data->bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, data->heapId);
-    GfGfxLoader_GXLoadPal(NARC_a_1_2_6, nclrFileNum, GF_BG_LYR_SUB_0, 0, 0x20, data->heapId);
+    GfGfxLoader_GXLoadPal(NARC_a_1_2_6, nclrFileNum, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_0_OFFSET, 0x20, data->heapId);
     GfGfxLoader_LoadScrnData(NARC_a_1_2_6, nscrFileNum2, data->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, FALSE, data->heapId);
     BgTilemapRectChangePalette(data->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, 32, 24, 1);
     BgCommitTilemapBufferToVram(data->bgConfig, GF_BG_LYR_MAIN_1);
 
     GfGfxLoader_LoadCharData(NARC_a_1_2_6, ncgrFileNum2, data->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, FALSE, data->heapId);
-    GfGfxLoader_GXLoadPal(NARC_a_1_2_6, nclrFileNum2, GF_BG_LYR_MAIN_0, 0x20, 0x20, data->heapId);
+    GfGfxLoader_GXLoadPal(NARC_a_1_2_6, nclrFileNum2, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_1_OFFSET, 0x20, data->heapId);
     GfGfxLoader_LoadScrnData(NARC_a_1_2_6, nscrFileNum2, data->bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, data->heapId);
     BgTilemapRectChangePalette(data->bgConfig, GF_BG_LYR_SUB_1, 0, 0, 32, 24, 1);
     BgCommitTilemapBufferToVram(data->bgConfig, GF_BG_LYR_SUB_1);
 
     GfGfxLoader_LoadCharData(NARC_a_1_2_6, ncgrFileNum2, data->bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, data->heapId);
-    GfGfxLoader_GXLoadPal(NARC_a_1_2_6, nclrFileNum2, GF_BG_LYR_SUB_0, 0x20, 0x20, data->heapId);
+    GfGfxLoader_GXLoadPal(NARC_a_1_2_6, nclrFileNum2, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_1_OFFSET, 0x20, data->heapId);
     BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 0x20, 0, data->heapId);
     BG_ClearCharDataRange(GF_BG_LYR_SUB_0, 0x20, 0, data->heapId);
-    LoadFontPal0(GF_BG_LYR_MAIN_0, GF_PAL_SLOT_OFFSET_2, data->heapId);
-    LoadFontPal0(GF_BG_LYR_SUB_0, GF_PAL_SLOT_OFFSET_2, data->heapId);
+    LoadFontPal0(GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_2_OFFSET, data->heapId);
+    LoadFontPal0(GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_2_OFFSET, data->heapId);
 }
 
 static void ov78_021E6068(CertificatesApp_Data *data) {

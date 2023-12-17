@@ -568,8 +568,8 @@ static void BattleArcadeGameBoard_InitObjects(GAME_BOARD_WORK *work) {
         work->unk78[i] = String_New(32, HEAP_ID_GAME_BOARD);
     }
 
-    LoadFontPal0(GF_BG_LYR_MAIN_0, 416, HEAP_ID_GAME_BOARD);
-    LoadFontPal1(GF_BG_LYR_MAIN_0, 384, HEAP_ID_GAME_BOARD);
+    LoadFontPal0(GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_13_OFFSET, HEAP_ID_GAME_BOARD);
+    LoadFontPal1(GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_12_OFFSET, HEAP_ID_GAME_BOARD);
     ov84_0223F8B4(work->bgConfig, work->window);
     work->cursor = BattleArcadeObject_Create(&work->unk3E8, 1, 1, 1, 35, 68, 36, 0, 2, 0);
     BattleArcadeObj_SetVisible(work->cursor, 0);
@@ -727,7 +727,7 @@ static void ov84_0223EB44(void) {
 
 static void ov84_0223EB78(GAME_BOARD_WORK *work, enum GFBgLayer layer) {
     GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, 126, work->bgConfig, layer, 0, 0, TRUE, HEAP_ID_GAME_BOARD);
-    GfGfxLoader_GXLoadPalFromOpenNarc(work->narc, 187, GF_BG_LYR_SUB_0, 0, 64, HEAP_ID_GAME_BOARD);
+    GfGfxLoader_GXLoadPalFromOpenNarc(work->narc, 187, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_0_OFFSET, 0x40, HEAP_ID_GAME_BOARD);
     GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, 125, work->bgConfig, layer, 0, 0, TRUE, HEAP_ID_GAME_BOARD);
 }
 

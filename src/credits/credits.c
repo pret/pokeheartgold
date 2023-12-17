@@ -443,8 +443,8 @@ static void LoadBgGraphics(CreditsAppWork *work) {
 
     GfGfxLoader_LoadCharData(NARC_a_2_6_3, 5, bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_CREDITS);
     GfGfxLoader_LoadCharData(NARC_a_2_6_3, 5, bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_CREDITS);
-    GfGfxLoader_GXLoadPal(NARC_a_2_6_3, 4, GF_BG_LYR_SUB_0, 0, 0xe0, HEAP_ID_CREDITS);
-    GfGfxLoader_GXLoadPal(NARC_a_2_6_3, 4, GF_BG_LYR_MAIN_0, 0, 0xe0, HEAP_ID_CREDITS);
+    GfGfxLoader_GXLoadPal(NARC_a_2_6_3, 4, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_0_OFFSET, 0xe0, HEAP_ID_CREDITS);
+    GfGfxLoader_GXLoadPal(NARC_a_2_6_3, 4, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_0_OFFSET, 0xe0, HEAP_ID_CREDITS);
     for (u8 i = 0; i < 6; i++) {
         work->unk468[i] = GfGfxLoader_GetScrnData(NARC_a_2_6_3, temp1.ids[i], 1, &work->unk498[i], HEAP_ID_CREDITS);
         work->unk480[i] = GfGfxLoader_GetScrnData(NARC_a_2_6_3, temp2.ids[i], 1, &work->unk4B0[i], HEAP_ID_CREDITS);
@@ -840,7 +840,7 @@ static void FlipScreensCB(int a0, ScreenFlipWork *a1, int a2) {
 static void DisplayWindow(CreditsAppWork *work) {
     AddWindow(work->bgConfig, &work->pageWork.window, &ov76_021E6E98);
     BG_FillCharDataRange(work->bgConfig, GF_BG_LYR_SUB_1, 0, 1, 0);
-    LoadFontPal0(GF_BG_LYR_SUB_0, 0x1e0, HEAP_ID_CREDITS);
+    LoadFontPal0(GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_15_OFFSET, HEAP_ID_CREDITS);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_ON);
 }
 

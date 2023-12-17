@@ -1071,17 +1071,17 @@ static void BerryPotsApp_FreeBgConfig(BerryPotsAppData *data) {
 static void BerryPotsApp_SetupNarc(BerryPotsAppData *data) {
     NARC *narc = NARC_New(NARC_a_2_1_6, data->heapId);
 
-    GfGfxLoader_GXLoadPalFromOpenNarc(narc, 3, GF_BG_LYR_MAIN_0, 0x0, 0, data->heapId);
+    GfGfxLoader_GXLoadPalFromOpenNarc(narc, 3, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_0_OFFSET, 0, data->heapId);
     GfGfxLoader_LoadCharDataFromOpenNarc(narc, 4, data->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, FALSE, data->heapId);
     GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 5, data->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, FALSE, data->heapId);
-    GfGfxLoader_GXLoadPalFromOpenNarc(narc, 0, GF_BG_LYR_SUB_0, 0x0, 0, data->heapId);
+    GfGfxLoader_GXLoadPalFromOpenNarc(narc, 0, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_0_OFFSET, 0, data->heapId);
     GfGfxLoader_LoadCharDataFromOpenNarc(narc, 1, data->bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, data->heapId);
     GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 2, data->bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, data->heapId);
 
     data->berryPotsAppNarc = narc;
 
     LoadUserFrameGfx2(data->bgConfig, GF_BG_LYR_MAIN_0, 1, 13, data->frame, data->heapId);
-    LoadFontPal1(GF_BG_LYR_MAIN_0, 0x180, data->heapId);
+    LoadFontPal1(GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_12_OFFSET, data->heapId);
 }
 
 void BerryPotsApp_FreeNarc(BerryPotsAppData *data) {
@@ -1258,7 +1258,7 @@ static void ov17_02203460(BerryPotsAppData *data, u8 index) {
     sub_0200E2EC(data->spriteRenderer, data->spriteGfxHandler2, data->itemIconNarc, GetItemIndexMapping(itemId, ITEMNARC_NCLR), FALSE, 4000);
 }
 
-static UnkImageStruct *ov17_022034C8(BerryPotsAppData *data, s16 x, s16 y, u8) {
+static UnkImageStruct *ov17_022034C8(BerryPotsAppData *data, s16 x, s16 y, u8 unused) {
     UnkTemplate_0200D748 template;
     MI_CpuFill8(&template, 0, sizeof(UnkTemplate_0200D748));
 
