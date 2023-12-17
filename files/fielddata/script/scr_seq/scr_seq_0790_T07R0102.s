@@ -140,8 +140,8 @@ _01DA:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _01E8:
 	step 14, 1
 	step 32, 1
@@ -150,6 +150,7 @@ _01E8:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0200:
 	step 15, 1
 	step 32, 1
@@ -158,22 +159,27 @@ _0200:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0218:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0220:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0228:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0230:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0238:
 	step 14, 2
 	step 13, 1
@@ -182,6 +188,7 @@ _0238:
 	step 14, 4
 	step_end
 
+	.balign 4, 0
 _0250:
 	step 13, 1
 	step 14, 6
@@ -189,11 +196,13 @@ _0250:
 	step 14, 4
 	step_end
 
+	.balign 4, 0
 _0264:
 	step 78, 1
 	step 76, 1
 	step 1, 1
 	step_end
+
 scr_seq_T07R0102_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -279,7 +288,7 @@ _03B0:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _03C4:
 	step 15, 1
 	step 12, 2
@@ -288,11 +297,13 @@ _03C4:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _03DC:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _03E8:
 	step 12, 1
 	step 14, 1
@@ -300,6 +311,7 @@ _03E8:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _03FC:
 	step 12, 1
 	step 15, 1
@@ -307,16 +319,19 @@ _03FC:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0410:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _041C:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
+
 scr_seq_T07R0102_002:
 	simple_npc_msg msg_0495_T07R0102_00000
 	end

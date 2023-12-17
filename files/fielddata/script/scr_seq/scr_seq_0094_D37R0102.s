@@ -141,7 +141,8 @@ scr_seq_D37R0102_001:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01F5
 	goto _030C
-	.byte 0x02, 0x00
+	end
+
 _01F5:
 	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 500
 	compare VAR_SPECIAL_RESULT, 0
@@ -257,7 +258,8 @@ scr_seq_D37R0102_002:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0375
 	goto _0498
-	.byte 0x02, 0x00
+	end
+
 _0375:
 	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 300
 	compare VAR_SPECIAL_RESULT, 0
@@ -697,115 +699,137 @@ _0A71:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0AC4:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0ACC:
 	step 61, 1
 	step_end
 
+	.balign 4, 0
 _0AD4:
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _0ADC:
 	step 13, 2
 	step_end
 
+	.balign 4, 0
 _0AE4:
 	step 13, 3
 	step_end
 
+	.balign 4, 0
 _0AEC:
 	step 13, 4
 	step_end
 
+	.balign 4, 0
 _0AF4:
 	step 13, 5
 	step_end
 
+	.balign 4, 0
 _0AFC:
 	step 13, 6
 	step_end
 
+	.balign 4, 0
 _0B04:
 	step 15, 1
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0B10:
 	step 12, 1
 	step 15, 1
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0B20:
 	step 12, 2
 	step 15, 1
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0B30:
 	step 12, 3
 	step 15, 1
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0B40:
 	step 12, 4
 	step 15, 1
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0B50:
 	step 12, 5
 	step 15, 1
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0B60:
 	step 12, 6
 	step 15, 1
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0B70:
 	step 12, 1
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0B7C:
 	step 12, 2
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0B88:
 	step 12, 3
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0B94:
 	step 12, 4
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0BA0:
 	step 12, 5
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0BAC:
 	step 12, 6
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0BB8:
 	step 12, 7
 	step 35, 1
 	step_end
+
 scr_seq_D37R0102_009:
 	simple_npc_msg msg_0117_D37R0102_00037
 	end
@@ -993,16 +1017,84 @@ _0E40:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x08, 0x00, 0x02, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00, 0x0a, 0x00, 0x01, 0x00, 0x08, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
-	.byte 0x0b, 0x00, 0x01, 0x00, 0x08, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00, 0x09, 0x00, 0x02, 0x00, 0x00, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
-	.byte 0x0e, 0x00, 0x01, 0x00, 0x03, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x0e, 0x00, 0x01, 0x00
-	.byte 0x03, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x0f, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00, 0x0f, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
-	.byte 0x0f, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x0e, 0x00, 0x01, 0x00
-	.byte 0x01, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x03, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
-	.byte 0x01, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x02, 0x00
+
+	.balign 4, 0
+_0E4C:
+	step 8, 2
+	step_end
+
+	.balign 4, 0
+_0E54:
+	step 10, 1
+	step 8, 1
+	step_end
+
+	.balign 4, 0
+_0E60:
+	step 11, 1
+	step 8, 1
+	step_end
+
+	.balign 4, 0
+_0E6C:
+	step 1, 1
+	step_end
+
+	.balign 4, 0
+_0E74:
+	step 9, 2
+	step 0, 1
+	step_end
+
+	.balign 4, 0
+_0E80:
+	step 14, 1
+	step 3, 1
+	step_end
+
+	.balign 4, 0
+_0E8C:
+	step 14, 1
+	step 3, 1
+	step_end
+
+	.balign 4, 0
+_0E98:
+	step 15, 1
+	step 2, 1
+	step_end
+
+	.balign 4, 0
+_0EA4:
+	step 15, 1
+	step 1, 1
+	step_end
+
+	.balign 4, 0
+_0EB0:
+	step 15, 1
+	step 1, 1
+	step_end
+
+	.balign 4, 0
+_0EBC:
+	step 14, 1
+	step 1, 1
+	step_end
+
+	.balign 4, 0
+_0EC8:
+	step 3, 1
+	step_end
+
+	.balign 4, 0
+_0ED0:
+	step 1, 1
+	step_end
+
+_0ED8:
+	end
+
 scr_seq_D37R0102_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -1080,30 +1172,39 @@ _0FDA:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0FE8:
 	step 20, 3
 	step 22, 2
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0FF8:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _1000:
 	step 21, 2
 	step 22, 4
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _1010:
 	step 21, 3
 	step 23, 2
 	step_end
-	.byte 0x14, 0x00, 0x02, 0x00
-	.byte 0x17, 0x00, 0x04, 0x00, 0x02, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
+
+	.balign 4, 0
+_101C:
+	step 20, 2
+	step 23, 4
+	step 2, 1
+	step_end
+
 scr_seq_D37R0102_011:
 	scrcmd_609
 	lockall
@@ -1141,7 +1242,7 @@ _109C:
 	setvar VAR_UNK_40E7, 3
 	end
 
-
+	.balign 4, 0
 _10B4:
 	step 75, 1
 	step 34, 1
@@ -1149,6 +1250,7 @@ _10B4:
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _10C8:
 	step 75, 1
 	step 34, 1
@@ -1158,11 +1260,13 @@ _10C8:
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _10E4:
 	step 75, 1
 	step 65, 1
 	step_end
 
+	.balign 4, 0
 _10F0:
 	step 13, 1
 	step 14, 3
@@ -1177,6 +1281,7 @@ _10F0:
 	step 14, 7
 	step_end
 
+	.balign 4, 0
 _1120:
 	step 12, 1
 	step 14, 3
@@ -1190,6 +1295,7 @@ _1120:
 	step 61, 1
 	step 14, 7
 	step_end
+
 scr_seq_D37R0102_007:
 	simple_npc_msg msg_0117_D37R0102_00027
 	end
@@ -1216,11 +1322,12 @@ _1189:
 	releaseall
 	setflag FLAG_UNK_1C0
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _11A4:
 	step 15, 2
 	step_end
+
 scr_seq_D37R0102_012:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -1435,36 +1542,41 @@ _14EB:
 	npc_msg msg_0117_D37R0102_00062
 	callstd std_receive_background
 	goto _1530
-	.byte 0x02
-	.byte 0x00
+	end
+
 _1521:
 	npc_msg msg_0117_D37R0102_00058
 	wait_button_or_walk_away
 	closemsg
 	goto _1568
-	.byte 0x02, 0x00
+	end
+
 _1530:
 	npc_msg msg_0117_D37R0102_00059
 	wait_button_or_walk_away
 	closemsg
 	goto _1568
-	.byte 0x02, 0x00
+	end
+
 _153F:
 	npc_msg msg_0117_D37R0102_00060
 	wait_button_or_walk_away
 	closemsg
 	goto _1568
-	.byte 0x02, 0x00
+	end
+
 _154E:
 	npc_msg msg_0117_D37R0102_00064
 	closemsg
 	goto _1530
-	.byte 0x02, 0x00
+	end
+
 _155B:
 	npc_msg msg_0117_D37R0102_00064
 	closemsg
 	goto _14EB
-	.byte 0x02, 0x00
+	end
+
 _1568:
 	releaseall
 	end

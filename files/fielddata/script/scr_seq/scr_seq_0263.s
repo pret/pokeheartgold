@@ -19,12 +19,14 @@ scr_seq_0263_000:
 	buffer_int 0, 1
 	npc_msg msg_0433_00015
 	goto _0048
-	.byte 0x02, 0x00
+	end
+
 _0038:
 	buffer_int 0, 1
 	npc_msg msg_0433_00000
 	goto _0048
-	.byte 0x02, 0x00
+	end
+
 _0048:
 	npc_msg msg_0433_00001
 	touchscreen_menu_hide
@@ -37,7 +39,8 @@ _0048:
 	case 0, _0097
 	case 1, _0178
 	goto _016B
-	.byte 0x02, 0x00
+	end
+
 _0097:
 	buffer_int 2, 1
 	npc_msg msg_0433_00007
@@ -77,21 +80,25 @@ _0097:
 	call_if_ne _0271
 	npc_msg msg_0433_00005
 	goto _0191
-	.byte 0x02, 0x00
+	end
+
 _015E:
 	touchscreen_menu_show
 	npc_msg msg_0433_00014
 	goto _0183
-	.byte 0x02, 0x00
+	end
+
 _016B:
 	touchscreen_menu_show
 	npc_msg msg_0433_00005
 	goto _0183
-	.byte 0x02, 0x00
+	end
+
 _0178:
 	npc_msg msg_0433_00006
 	goto _0048
-	.byte 0x02, 0x00
+	end
+
 _0183:
 	wait_button_or_walk_away
 	closemsg
@@ -123,7 +130,8 @@ _01C6:
 _01CE:
 	npc_msg msg_0433_00005
 	goto _0191
-	.byte 0x02, 0x00
+	end
+
 _01D9:
 	compare VAR_TEMP_x4001, 1
 	goto_if_gt _01F1

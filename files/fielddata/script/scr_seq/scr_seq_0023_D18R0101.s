@@ -62,8 +62,8 @@ _00C7:
 	white_out
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _00D0:
 	step 1, 1
 	step 75, 1
@@ -72,12 +72,14 @@ _00D0:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _00E8:
 	step 13, 2
 	step 15, 1
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _00F8:
 	step 13, 3
 	step 14, 1
@@ -87,6 +89,7 @@ _00F8:
 	step 14, 4
 	step 13, 3
 	step_end
+
 scr_seq_D18R0101_000:
 	scrcmd_609
 	lockall
@@ -105,13 +108,14 @@ scr_seq_D18R0101_000:
 scr_seq_D18R0101_001:
 	simple_npc_msg msg_0060_D18R0101_00003
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0158:
 	step 2, 1
 	step 75, 1
 	step 14, 3
 	step_end
+
 scr_seq_D18R0101_002:
 	simple_npc_msg msg_0060_D18R0101_00004
 	end

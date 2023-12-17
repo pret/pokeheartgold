@@ -118,8 +118,10 @@ scr_seq_D36R0101_farfetchd1:
 	compare FARFETCHD_X_COORD, 25
 	goto_if_ne _01C4
 	goto _farfetchd1_left
-	.byte 0x16, 0x00
-	.byte 0x13, 0x00, 0x00, 0x00
+
+_01BE:
+	goto _farfetchd1_left
+
 _01C4:
 	compare FARFETCHD_X_COORD, 32
 	goto_if_ne _farfetchd1_left
@@ -130,7 +132,10 @@ _farfetchd1_left:
 	compare FARFETCHD_Z_COORD, 52
 	goto_if_ne _01F8
 	goto _farfetchd1_top_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_01F2:
+	goto _farfetchd1_right
+
 _01F8:
 	compare FARFETCHD_Z_COORD, 62
 	goto_if_ne _farfetchd1_right
@@ -142,7 +147,10 @@ _farfetchd1_right:
 	compare FARFETCHD_Z_COORD, 52
 	goto_if_ne _0232
 	goto _farfetchd1_top_right
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_022C:
+	goto _farfetchd1_top_left
+
 _0232:
 	compare FARFETCHD_Z_COORD, 62
 	goto_if_ne _farfetchd1_top_left
@@ -175,7 +183,10 @@ _farfetchd1_bottom_left:
 	compare VAR_SPECIAL_RESULT, DIR_WEST
 	goto_if_ne _02B6
 	goto _farfetchd1_bottom_left_flee_up
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_02B0:
+	goto _farfetchd1_bottom_left_flee_up
+
 _02B6:
 	compare VAR_SPECIAL_RESULT, DIR_SOUTH
 	goto_if_ne _farfetchd1_bottom_left_flee_up
@@ -308,7 +319,10 @@ scr_seq_D36R0101_farfetchd1_sticks1:
 	compare FARFETCHD_X_COORD, 25
 	goto_if_ne _04CE
 	goto _sticks1_farfetchd1_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_04B8:
+	goto _sticks1_farfetchd1_left
+
 _04CE:
 	compare FARFETCHD_X_COORD, 32
 	goto_if_ne _sticks1_farfetchd1_left
@@ -319,7 +333,10 @@ _sticks1_farfetchd1_left:
 	compare FARFETCHD_Z_COORD, 52
 	goto_if_ne _0502
 	goto _sticks1_farfetchd1_top_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_04FC:
+	goto _sticks1_farfetchd1_right
+
 _0502:
 	compare FARFETCHD_Z_COORD, 62
 	goto_if_ne _sticks1_farfetchd1_right
@@ -330,7 +347,10 @@ _sticks1_farfetchd1_right:
 	compare FARFETCHD_Z_COORD, 52
 	goto_if_ne _0536
 	goto _sticks1_farfetchd1_top_right
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0530:
+	goto _sticks1_farfetchd1_top_left
+
 _0536:
 	compare FARFETCHD_Z_COORD, 62
 	goto_if_ne _sticks1_farfetchd1_top_left
@@ -378,7 +398,10 @@ scr_seq_D36R0101_farfetchd1_sticks2:
 	compare FARFETCHD_X_COORD, 25
 	goto_if_ne _05DB
 	goto _sticks2_farfetchd1_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_05D5:
+	goto _sticks2_farfetchd1_left
+
 _05DB:
 	compare FARFETCHD_X_COORD, 32
 	goto_if_ne _sticks2_farfetchd1_left
@@ -389,7 +412,10 @@ _sticks2_farfetchd1_left:
 	compare FARFETCHD_Z_COORD, 52
 	goto_if_ne _060F
 	goto _sticks2_farfetchd1_top_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0609:
+	goto _sticks2_farfetchd1_right
+
 _060F:
 	compare FARFETCHD_Z_COORD, 62
 	goto_if_ne _sticks2_farfetchd1_right
@@ -400,8 +426,10 @@ _sticks2_farfetchd1_right:
 	compare FARFETCHD_Z_COORD, 52
 	goto_if_ne _0643
 	goto _sticks2_farfetchd1_top_right
-	.byte 0x16, 0x00, 0x13
-	.byte 0x00, 0x00, 0x00
+
+_063D:
+	goto _sticks2_farfetchd1_top_left
+
 _0643:
 	compare FARFETCHD_Z_COORD, 62
 	goto_if_ne _sticks2_farfetchd1_top_left
@@ -444,7 +472,10 @@ scr_seq_D36R0101_farfetchd2:
 	compare FARFETCHD_X_COORD, 41
 	goto_if_ne _06C9
 	goto _farfetchd2_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_06C3:
+	goto _farfetchd2_left
+
 _06C9:
 	compare FARFETCHD_X_COORD, 49
 	goto_if_ne _farfetchd2_left
@@ -456,7 +487,10 @@ _farfetchd2_left:
 	compare FARFETCHD_Z_COORD, 54
 	goto_if_ne _0703
 	goto _farfetchd_top_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_06FD:
+	goto _farfetchd2_right
+
 _0703:
 	compare FARFETCHD_Z_COORD, 64
 	goto_if_ne _farfetchd2_right
@@ -467,7 +501,10 @@ _farfetchd2_right:
 	compare FARFETCHD_Z_COORD, 54
 	goto_if_ne _0737
 	goto _farfetchd2_top_right
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0731:
+	goto _farfetchd_top_left
+
 _0737:
 	compare FARFETCHD_Z_COORD, 64
 	goto_if_ne _farfetchd_top_left
@@ -539,7 +576,10 @@ _farfetchd2_top_right:
 	compare VAR_SPECIAL_RESULT, DIR_NORTH
 	goto_if_ne _0863
 	goto _farfetchd2_top_right_flee_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_085D:
+	goto _farfetchd2_top_right_flee_left
+
 _0863:
 	compare VAR_SPECIAL_RESULT, DIR_EAST
 	goto_if_ne _farfetchd2_top_right_flee_left
@@ -647,8 +687,10 @@ scr_seq_D36R0101_farfetchd2_sticks1:
 	compare FARFETCHD_X_COORD, 41
 	goto_if_ne _0A25
 	goto _sticks1_farfetchd2_left
-	.byte 0x16
-	.byte 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0A1F:
+	goto _sticks1_farfetchd2_left
+
 _0A25:
 	compare FARFETCHD_X_COORD, 49
 	goto_if_ne _sticks1_farfetchd2_left
@@ -659,7 +701,10 @@ _sticks1_farfetchd2_left:
 	compare FARFETCHD_Z_COORD, 54
 	goto_if_ne _0A59
 	goto _sticks1_farfetchd2_top_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0A53:
+	goto _sticks1_farfetchd2_right
+
 _0A59:
 	compare FARFETCHD_Z_COORD, 64
 	goto_if_ne _sticks1_farfetchd2_right
@@ -670,7 +715,10 @@ _sticks1_farfetchd2_right:
 	compare FARFETCHD_Z_COORD, 54
 	goto_if_ne _0A8D
 	goto _sticks1_farfetchd2_top_right
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0A87:
+	goto _sticks1_farfetchd2_top_left
+
 _0A8D:
 	compare FARFETCHD_Z_COORD, 64
 	goto_if_ne _sticks1_farfetchd2_top_left
@@ -712,7 +760,10 @@ scr_seq_D36R0101_farfetchd2_sticks2:
 	compare FARFETCHD_X_COORD, 41
 	goto_if_ne _0B1B
 	goto _sticks2_farfetchd2_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0B15:
+	goto _sticks2_farfetchd2_left
+
 _0B1B:
 	compare FARFETCHD_X_COORD, 49
 	goto_if_ne _sticks2_farfetchd2_left
@@ -723,7 +774,10 @@ _sticks2_farfetchd2_left:
 	compare FARFETCHD_Z_COORD, 54
 	goto_if_ne _0B4F
 	goto _sticks2_farfetchd2_top_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0B49:
+	goto _sticks2_farfetchd2_right
+
 _0B4F:
 	compare FARFETCHD_Z_COORD, 64
 	goto_if_ne _sticks2_farfetchd2_right
@@ -734,7 +788,10 @@ _sticks2_farfetchd2_right:
 	compare FARFETCHD_Z_COORD, 54
 	goto_if_ne _0B83
 	goto _sticks2_farfetchd2_top_right
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0B7D:
+	goto _sticks2_farfetchd2_top_left
+
 _0B83:
 	compare FARFETCHD_Z_COORD, 64
 	goto_if_ne _sticks2_farfetchd2_top_left
@@ -776,7 +833,10 @@ scr_seq_D36R0101_farfetchd2_sticks3:
 	compare FARFETCHD_X_COORD, 41
 	goto_if_ne _0C11
 	goto _sticks3_farfetchd2_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0C0B:
+	goto _sticks3_farfetchd2_left
+
 _0C11:
 	compare FARFETCHD_X_COORD, 49
 	goto_if_ne _sticks3_farfetchd2_left
@@ -787,7 +847,10 @@ _sticks3_farfetchd2_left:
 	compare FARFETCHD_Z_COORD, 54
 	goto_if_ne _0C45
 	goto _sticks3_farfetchd2_top_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0C3F:
+	goto _sticks3_farfetchd2_right
+
 _0C45:
 	compare FARFETCHD_Z_COORD, 64
 	goto_if_ne _sticks3_farfetchd2_right
@@ -798,7 +861,10 @@ _sticks3_farfetchd2_right:
 	compare FARFETCHD_Z_COORD, 54
 	goto_if_ne _0C79
 	goto _sticks3_farfetchd2_top_right
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0C73:
+	goto _sticks3_farfetchd2_top_left
+
 _0C79:
 	compare FARFETCHD_Z_COORD, 64
 	goto_if_ne _sticks3_farfetchd2_top_left
@@ -838,7 +904,10 @@ scr_seq_D36R0101_farfetchd2_sticks4:
 	compare FARFETCHD_X_COORD, 41
 	goto_if_ne _0CFB
 	goto _sticks4_farfetchd2_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0CF5:
+	goto _sticks4_farfetchd2_left
+
 _0CFB:
 	compare FARFETCHD_X_COORD, 49
 	goto_if_ne _sticks4_farfetchd2_left
@@ -849,7 +918,10 @@ _sticks4_farfetchd2_left:
 	compare FARFETCHD_Z_COORD, 54
 	goto_if_ne _0D2F
 	goto _sticks4_farfetchd2_top_left
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0D29:
+	goto _sticks4_farfetchd2_right
+
 _0D2F:
 	compare FARFETCHD_Z_COORD, 64
 	goto_if_ne _sticks4_farfetchd2_right
@@ -860,7 +932,10 @@ _sticks4_farfetchd2_right:
 	compare FARFETCHD_Z_COORD, 54
 	goto_if_ne _0D63
 	goto _sticks4_farfetchd2_top_right
-	.byte 0x16, 0x00, 0x13, 0x00, 0x00, 0x00
+
+_0D5D:
+	goto _sticks4_farfetchd2_top_left
+
 _0D63:
 	compare FARFETCHD_Z_COORD, 64
 	goto_if_ne _sticks4_farfetchd2_top_left
@@ -893,68 +968,79 @@ _sticks4_farfetchd2_bottom_right:
 	wait_movement
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _exclaim_face_down:
 	step MOVEMENT_FACE_DOWN, 1
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step_end
 
+	.balign 4, 0
 _exclaim_face_up:
 	step MOVEMENT_FACE_UP, 1
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step_end
 
+	.balign 4, 0
 _exclaim_face_left:
 	step MOVEMENT_FACE_LEFT, 1
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step_end
 
+	.balign 4, 0
 _exclaim_face_right:
 	step MOVEMENT_FACE_RIGHT, 1
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step_end
 
+	.balign 4, 0
 _farfetchd_run_up:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step MOVEMENT_RUN_UP, 10
 	step MOVEMENT_FACE_DOWN, 1
 	step_end
 
+	.balign 4, 0
 _farfetchd_run_down:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step MOVEMENT_RUN_DOWN, 10
 	step MOVEMENT_FACE_UP, 1
 	step_end
 
+	.balign 4, 0
 _farfetchd1_run_right:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step MOVEMENT_RUN_RIGHT, 7
 	step MOVEMENT_FACE_LEFT, 1
 	step_end
 
+	.balign 4, 0
 _farfetchd1_run_left:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step MOVEMENT_RUN_LEFT, 7
 	step MOVEMENT_FACE_RIGHT, 1
 	step_end
 
+	.balign 4, 0
 _farfetchd2_run_right:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step MOVEMENT_RUN_RIGHT, 8
 	step MOVEMENT_FACE_LEFT, 1
 	step_end
 
+	.balign 4, 0
 _farfetchd2_run_left:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step MOVEMENT_RUN_LEFT, 8
 	step MOVEMENT_FACE_RIGHT, 1
 	step_end
 
+	.balign 4, 0
 _walk_in_place_face_down:
 	step MOVEMENT_WALK_IN_PLACE_FACE_DOWN, 5
 	step_end
 
+	.balign 4, 0
 _walk_in_place_face_right:
 	step MOVEMENT_WALK_IN_PLACE_FACE_RIGHT, 5
 	step_end
@@ -980,21 +1066,24 @@ scr_seq_D36R0101_016:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _0EC4:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0ED0:
 	step 52, 1
 	step_end
 
+	.balign 4, 0
 _0ED8:
 	step 71, 1
 	step 9, 1
 	step 72, 1
 	step_end
+
 scr_seq_D36R0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -1137,7 +1226,8 @@ _10E1:
 	npc_msg msg_0115_D36R0101_00023
 	closemsg
 	goto _0F0B
-	.byte 0x02, 0x00
+	end
+
 scr_seq_D36R0101_010:
 	goto_if_set FLAG_FOUND_FIRST_FARFETCHD, _1104
 	goto _1115
@@ -1182,15 +1272,17 @@ scr_seq_D36R0101_017:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _118C:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step_end
 
+	.balign 4, 0
 _1194:
 	step 63, 2
 	step MOVEMENT_FACE_UP, 1
 	step_end
+
 scr_seq_D36R0101_011:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -1275,16 +1367,18 @@ scr_seq_D36R0101_014:
 	simple_npc_msg msg_0115_D36R0101_00004
 	end
 
-
+	.balign 4, 0
 _12EC:
 	step 12, 10
 	step 15, 3
 	step_end
 
+	.balign 4, 0
 _12F8:
 	step 63, 12
 	step MOVEMENT_FACE_LEFT, 1
 	step_end
+
 scr_seq_D36R0101_015:
 	scrcmd_609
 	lockall
@@ -1379,25 +1473,28 @@ _142D:
 	releaseall
 	setvar VAR_UNK_40E9, 1
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _1478:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _1484:
 	step 13, 1
 	step 15, 2
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _1494:
 	step 13, 1
 	step 15, 3
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _14A4:
 	step MOVEMENT_FACE_LEFT, 1
 	step 61, 1
@@ -1417,6 +1514,7 @@ _14A4:
 	step 61, 1
 	step_end
 
+	.balign 4, 0
 _14E8:
 	step MOVEMENT_FACE_LEFT, 1
 	step 71, 1
@@ -1424,6 +1522,7 @@ _14E8:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _14FC:
 	step 12, 2
 	step 14, 1
@@ -1433,6 +1532,7 @@ _14FC:
 	step 51, 3
 	step_end
 
+	.balign 4, 0
 _1518:
 	step 14, 1
 	step 12, 2
@@ -1443,6 +1543,7 @@ _1518:
 	step 51, 3
 	step_end
 
+	.balign 4, 0
 _1538:
 	step 12, 2
 	step 14, 1
@@ -1451,6 +1552,7 @@ _1538:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _1550:
 	step 14, 1
 	step 12, 2
@@ -1460,18 +1562,22 @@ _1550:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _156C:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _1574:
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _157C:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _1584:
 	step 15, 3
 	step 13, 2
@@ -1480,11 +1586,13 @@ _1584:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _159C:
 	step 14, 2
 	step 12, 2
 	step 14, 6
 	step_end
+
 scr_seq_D36R0101_018:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -1571,7 +1679,7 @@ _16EC:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _1700:
 	step 15, 1
 	step 12, 2
@@ -1580,11 +1688,13 @@ _1700:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _1718:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _1724:
 	step 12, 1
 	step 14, 1
@@ -1592,6 +1702,7 @@ _1724:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _1738:
 	step 12, 1
 	step 15, 1
@@ -1599,16 +1710,19 @@ _1738:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _174C:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _1758:
 	step 15, 1
 	step 12, 1
 	step MOVEMENT_FACE_DOWN, 1
 	step_end
+
 scr_seq_D36R0101_012:
 	player_on_bike_check VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
@@ -1622,7 +1736,10 @@ scr_seq_D36R0101_012:
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _17B7
 	goto _17C1
-	.byte 0x16, 0x00, 0x0a, 0x00, 0x00, 0x00
+
+_17B1:
+	goto _17C1
+
 _17B7:
 	clearflag FLAG_HIDE_ILEX_FOREST_SPIKY_EAR_PICHU
 	goto _1816
@@ -1636,7 +1753,10 @@ _17C1:
 	compare VAR_TEMP_x4007, 0
 	goto_if_ne _17FD
 	goto _1803
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_17F7:
+	goto _1803
+
 _17FD:
 	goto _1F48
 
@@ -1917,8 +2037,8 @@ _1C36:
 _1C3D:
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _1C44:
 	step 71, 1
 	step 59, 1
@@ -1926,11 +2046,13 @@ _1C44:
 	step 49, 2
 	step_end
 
+	.balign 4, 0
 _1C58:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _1C64:
 	step MOVEMENT_RUN_DOWN, 7
 	step 50, 1
@@ -1943,6 +2065,7 @@ _1C64:
 	step 48, 2
 	step_end
 
+	.balign 4, 0
 _1C8C:
 	step 63, 3
 	step MOVEMENT_FACE_DOWN, 1
@@ -1955,12 +2078,14 @@ _1C8C:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _1CB4:
 	step 15, 1
 	step 13, 1
 	step MOVEMENT_FACE_DOWN, 1
 	step_end
 
+	.balign 4, 0
 _1CC4:
 	step 71, 1
 	step 55, 1
@@ -1976,12 +2101,14 @@ _1CC4:
 	step MOVEMENT_FACE_UP, 1
 	step_end
 
+	.balign 4, 0
 _1CF8:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step 63, 1
 	step 49, 2
 	step_end
 
+	.balign 4, 0
 _1D08:
 	step 71, 1
 	step 53, 1
@@ -1993,6 +2120,7 @@ _1D08:
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _1D2C:
 	step 65, 2
 	step MOVEMENT_RUN_DOWN, 1
@@ -2002,6 +2130,7 @@ _1D2C:
 	step MOVEMENT_RUN_LEFT, 1
 	step_end
 
+	.balign 4, 0
 _1D48:
 	step MOVEMENT_RUN_DOWN, 12
 	step MOVEMENT_RUN_RIGHT, 6
@@ -2027,6 +2156,7 @@ _1D48:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _1DA4:
 	step MOVEMENT_RUN_DOWN, 13
 	step MOVEMENT_RUN_RIGHT, 7
@@ -2044,6 +2174,7 @@ _1DA4:
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _1DE0:
 	step 65, 5
 	step 9, 10
@@ -2051,45 +2182,54 @@ _1DE0:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _1DF4:
 	step 32, 1
 	step 65, 1
 	step_end
 
+	.balign 4, 0
 _1E00:
 	step 33, 1
 	step 65, 1
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step_end
 
+	.balign 4, 0
 _1E10:
 	step 65, 1
 	step 32, 1
 	step 65, 1
 	step_end
 
+	.balign 4, 0
 _1E20:
 	step 48, 1
 	step 51, 1
 	step_end
 
+	.balign 4, 0
 _1E2C:
 	step 54, 1
 	step 50, 2
 	step_end
 
+	.balign 4, 0
 _1E38:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _1E40:
 	step 51, 2
 	step_end
 
+	.balign 4, 0
 _1E48:
 	step 48, 2
 	step_end
 
+	.balign 4, 0
 _1E50:
 	step 35, 1
 	step 65, 1
@@ -2097,12 +2237,14 @@ _1E50:
 	step 8, 10
 	step_end
 
+	.balign 4, 0
 _1E64:
 	step 9, 2
 	step 10, 4
 	step 8, 12
 	step_end
 
+	.balign 4, 0
 _1E74:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step 63, 1
@@ -2110,63 +2252,77 @@ _1E74:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _1E88:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _1E90:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _1E98:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _1EA0:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _1EA8:
 	step 12, 1
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _1EB4:
 	step 12, 1
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _1EC0:
 	step 15, 1
 	step 12, 2
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _1ED0:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _1ED8:
 	step 13, 1
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _1EE4:
 	step 13, 1
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _1EF0:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _1EF8:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _1F00:
 	step 33, 1
 	step_end
+
 scr_seq_D36R0101_020:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -2233,12 +2389,13 @@ _1F48:
 	wait_fade
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _200C:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _2014:
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
 	step 63, 1
@@ -2250,6 +2407,7 @@ _2014:
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _2038:
 	step MOVEMENT_FACE_DOWN, 1
 	step MOVEMENT_FACE_DOWN, 1
@@ -2259,11 +2417,13 @@ _2038:
 	step 71, 1
 	step_end
 
+	.balign 4, 0
 _2054:
 	step 13, 11
 	step 15, 2
 	step_end
 
+	.balign 4, 0
 _2060:
 	step 13, 8
 	step 35, 1
@@ -2277,12 +2437,14 @@ _2060:
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _208C:
 	step 65, 1
 	step 15, 2
 	step 12, 2
 	step 35, 1
 	step_end
+
 scr_seq_D36R0101_022:
 	scrcmd_609
 	lockall
@@ -2325,8 +2487,8 @@ scr_seq_D36R0101_022:
 	setflag FLAG_HIDE_ILEX_FOREST_FRIEND
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _2148:
 	step 34, 1
 	step 63, 1
@@ -2334,6 +2496,7 @@ _2148:
 	step 63, 1
 	step_end
 
+	.balign 4, 0
 _215C:
 	step 34, 1
 	step MOVEMENT_EMOTE_EXCLAMATION, 1
@@ -2341,6 +2504,7 @@ _215C:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _2170:
 	step 63, 1
 	step 51, 2
@@ -2350,20 +2514,24 @@ _2170:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _218C:
 	step 14, 3
 	step 65, 1
 	step 50, 2
 	step_end
 
+	.balign 4, 0
 _219C:
 	step 15, 3
 	step_end
 
+	.balign 4, 0
 _21A4:
 	step 15, 3
 	step_end
 
+	.balign 4, 0
 _21AC:
 	step 14, 4
 	step 12, 6
@@ -2372,6 +2540,7 @@ _21AC:
 	step 12, 5
 	step_end
 
+	.balign 4, 0
 _21C4:
 	step 71, 1
 	step 53, 1
@@ -2386,10 +2555,12 @@ _21C4:
 	step 12, 10
 	step_end
 
+	.balign 4, 0
 _21F4:
 	step 13, 1
 	step 63, 1
 	step_end
+
 scr_seq_D36R0101_013:
 	scrcmd_055 3, 0
 	scrcmd_057 3

@@ -33,5 +33,8 @@ _005A:
 	closemsg
 	releaseall
 	end
-	.byte 0x02, 0x00, 0x00, 0x00
+
+_0064:
+	end
+
 	.balign 4, 0

@@ -146,11 +146,26 @@ _01DE:
 	closemsg
 	releaseall
 	end
-	.byte 0x82, 0x01, 0x0c, 0x80, 0x11, 0x00, 0x0c, 0x80
-	.byte 0x00, 0x00, 0x1c, 0x00, 0x05, 0x0e, 0x00, 0x00, 0x00, 0x5e, 0x00, 0xff, 0x00, 0x57, 0x00, 0x00
-	.byte 0x00, 0x16, 0x00, 0x23, 0x00, 0x00, 0x00, 0x11, 0x00, 0x0c, 0x80, 0x01, 0x00, 0x1c, 0x00, 0x05
-	.byte 0x0e, 0x00, 0x00, 0x00, 0x5e, 0x00, 0xff, 0x00, 0x54, 0x00, 0x00, 0x00, 0x16, 0x00, 0x08, 0x00
-	.byte 0x00, 0x00, 0x5e, 0x00, 0xff, 0x00, 0x52, 0x00, 0x00, 0x00, 0x5f, 0x00, 0x1b, 0x00
+
+_0218:
+	get_player_facing VAR_SPECIAL_RESULT
+	compare_var_to_value VAR_SPECIAL_RESULT, 0
+	goto_if_ne _0237
+	apply_movement obj_player, _0288
+	goto _025A
+
+_0237:
+	compare_var_to_value VAR_SPECIAL_RESULT, 1
+	goto_if_ne _0252
+	apply_movement obj_player, _02A0
+	goto _025A
+
+_0252:
+	apply_movement obj_player, _02AC
+_025A:
+	wait_movement
+	return
+
 _025E:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 5
@@ -166,8 +181,8 @@ _0272:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0288:
 	step 15, 1
 	step 12, 2
@@ -176,11 +191,13 @@ _0288:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _02A0:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _02AC:
 	step 12, 1
 	step 14, 1
@@ -188,16 +205,19 @@ _02AC:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _02C0:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _02CC:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
+
 scr_seq_T26R0701_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -249,7 +269,8 @@ _036E:
 _037F:
 	npc_msg msg_0611_T26R0701_00008
 	goto _0307
-	.byte 0x02, 0x00
+	end
+
 _038A:
 	npc_msg msg_0611_T26R0701_00009
 	touchscreen_menu_hide

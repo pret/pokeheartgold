@@ -145,43 +145,50 @@ _021D:
 _022B:
 	simple_npc_msg msg_0069_D23R0105_00005
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0240:
 	step 2, 1
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _024C:
 	step 3, 1
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0258:
 	step 1, 1
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0264:
 	step 71, 1
 	step 19, 1
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _0274:
 	step 71, 1
 	step 18, 1
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _0284:
 	step 18, 1
 	step_end
 
+	.balign 4, 0
 _028C:
 	step 19, 1
 	step_end
 
+	.balign 4, 0
 _0294:
 	step 1, 1
 	step 2, 1
@@ -191,6 +198,7 @@ _0294:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _02B0:
 	step 2, 1
 	step 0, 1
@@ -199,6 +207,7 @@ _02B0:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _02C8:
 	step 0, 1
 	step 3, 1
@@ -209,10 +218,20 @@ _02C8:
 	step 1, 1
 	step 2, 1
 	step_end
-	.byte 0x03, 0x00, 0x01, 0x00
-	.byte 0x01, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x03, 0x00, 0x01, 0x00
-	.byte 0x01, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_02EC:
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step 3, 1
+	step 1, 1
+	step 2, 1
+	step 0, 1
+	step_end
+
+	.balign 4, 0
 _0310:
 	step 3, 1
 	step 1, 1
@@ -221,6 +240,7 @@ _0310:
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _0328:
 	step 3, 1
 	step 1, 1
@@ -230,6 +250,7 @@ _0328:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0344:
 	step 3, 1
 	step 1, 1

@@ -63,22 +63,25 @@ scr_seq_D35R0104_001:
 	releaseall
 	setvar VAR_UNK_40AC, 1
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _00EC:
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _00F4:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _00FC:
 	step 33, 1
 	step 13, 3
 	step 15, 3
 	step_end
 
+	.balign 4, 0
 _010C:
 	step 63, 1
 	step 61, 1
@@ -87,15 +90,18 @@ _010C:
 	step 15, 2
 	step_end
 
+	.balign 4, 0
 _0124:
 	step 14, 9
 	step_end
 
+	.balign 4, 0
 _012C:
 	step 61, 1
 	step 15, 1
 	step 14, 9
 	step_end
+
 scr_seq_D35R0104_007:
 	scrcmd_609
 	lockall
@@ -118,22 +124,25 @@ scr_seq_D35R0104_007:
 	clearflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_2
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _018C:
 	step 51, 2
 	step_end
 
+	.balign 4, 0
 _0194:
 	step 1, 1
 	step 49, 1
 	step 17, 10
 	step_end
 
+	.balign 4, 0
 _01A4:
 	step 63, 1
 	step 33, 1
 	step_end
+
 scr_seq_D35R0104_000:
 	simple_npc_msg msg_0114_D35R0104_00002
 	end
@@ -189,31 +198,36 @@ _0221:
 	releaseall
 	setvar VAR_UNK_40AC, 3
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0290:
 	step 13, 9
 	step 15, 2
 	step_end
 
+	.balign 4, 0
 _029C:
 	step 13, 10
 	step 15, 2
 	step_end
 
+	.balign 4, 0
 _02A8:
 	step 13, 11
 	step 15, 2
 	step_end
 
+	.balign 4, 0
 _02B4:
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _02BC:
 	step 19, 1
 	step_end
 
+	.balign 4, 0
 _02C4:
 	step 71, 1
 	step 19, 1
@@ -221,6 +235,7 @@ _02C4:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _02D8:
 	step 40, 1
 	step 42, 1
@@ -228,6 +243,7 @@ _02D8:
 	step 14, 2
 	step 12, 9
 	step_end
+
 scr_seq_D35R0104_003:
 	scrcmd_609
 	lockall
@@ -303,20 +319,22 @@ _0405:
 	white_out
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _040C:
 	step 12, 5
 	step 14, 1
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _041C:
 	step 12, 5
 	step 14, 2
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _042C:
 	step 63, 3
 	step 1, 1
@@ -324,16 +342,19 @@ _042C:
 	step 13, 3
 	step_end
 
+	.balign 4, 0
 _0440:
 	step 63, 4
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _044C:
 	step 75, 1
 	step 63, 2
 	step_end
 
+	.balign 4, 0
 _0458:
 	step 1, 1
 	step 2, 1
@@ -345,6 +366,7 @@ _0458:
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _047C:
 	step 1, 1
 	step 2, 1
@@ -355,8 +377,13 @@ _047C:
 	step 0, 1
 	step 3, 1
 	step_end
-	.byte 0x0f, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_04A0:
+	step 15, 1
+	step_end
+
+	.balign 4, 0
 _04A8:
 	step 71, 1
 	step 10, 1
@@ -374,12 +401,14 @@ _04A8:
 	step 18, 4
 	step_end
 
+	.balign 4, 0
 _04E4:
 	step 13, 3
 	step 15, 2
 	step 51, 2
 	step_end
 
+	.balign 4, 0
 _04F4:
 	step 1, 1
 	step 17, 1
@@ -389,6 +418,7 @@ _04F4:
 	step 16, 13
 	step 18, 5
 	step_end
+
 scr_seq_D35R0104_004:
 	compare VAR_UNK_40AC, 4
 	goto_if_ge _055F
@@ -415,10 +445,11 @@ _0561:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _056C:
 	step 14, 3
 	step_end
+
 scr_seq_D35R0104_005:
 	simple_npc_msg msg_0114_D35R0104_00008
 	setflag FLAG_UNK_0D3

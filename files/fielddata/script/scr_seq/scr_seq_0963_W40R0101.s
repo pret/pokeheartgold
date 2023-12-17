@@ -65,23 +65,27 @@ _00BE:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _00CC:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _00D4:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _00DC:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _00E4:
 	step 34, 1
 	step_end
+
 scr_seq_W40R0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall

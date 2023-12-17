@@ -18,7 +18,8 @@ scr_seq_0264_000:
 	lockall
 	setvar VAR_SPECIAL_x8000, 1
 	goto _002E
-	.byte 0x02, 0x00
+	end
+
 _002E:
 	call _01EE
 	call _01F5
@@ -27,13 +28,15 @@ _002E:
 	case -2, _0221
 	call _0229
 	goto _002E
-	.byte 0x02, 0x00
+	end
+
 scr_seq_0264_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	setvar VAR_SPECIAL_x8000, 1
 	goto _007C
-	.byte 0x02, 0x00
+	end
+
 _007C:
 	call _01EE
 	call _01F5
@@ -42,13 +45,15 @@ _007C:
 	case -2, _0221
 	call _0229
 	goto _007C
-	.byte 0x02, 0x00
+	end
+
 scr_seq_0264_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	setvar VAR_SPECIAL_x8000, 2
 	goto _00CA
-	.byte 0x02, 0x00
+	end
+
 _00CA:
 	call _01EE
 	call _01F5
@@ -57,13 +62,15 @@ _00CA:
 	case -2, _0221
 	call _0229
 	goto _00CA
-	.byte 0x02, 0x00
+	end
+
 scr_seq_0264_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	setvar VAR_SPECIAL_x8000, 5
 	goto _0118
-	.byte 0x02, 0x00
+	end
+
 _0118:
 	call _01EE
 	call _01F5
@@ -72,13 +79,15 @@ _0118:
 	case -2, _0221
 	call _0229
 	goto _0118
-	.byte 0x02, 0x00
+	end
+
 scr_seq_0264_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	setvar VAR_SPECIAL_x8000, 4
 	goto _0166
-	.byte 0x02, 0x00
+	end
+
 _0166:
 	call _01EE
 	call _01F5
@@ -87,13 +96,15 @@ _0166:
 	case -2, _0221
 	call _0229
 	goto _0166
-	.byte 0x02, 0x00
+	end
+
 scr_seq_0264_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	setvar VAR_SPECIAL_x8000, 6
 	goto _01B4
-	.byte 0x02, 0x00
+	end
+
 _01B4:
 	call _01EE
 	call _01F5
@@ -102,7 +113,8 @@ _01B4:
 	case -2, _0221
 	call _0229
 	goto _01B4
-	.byte 0x02, 0x00
+	end
+
 _01EE:
 	npc_msg msg_0019_00000
 	touchscreen_menu_hide

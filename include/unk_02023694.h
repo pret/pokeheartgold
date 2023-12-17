@@ -65,6 +65,7 @@ void SpriteList_Delete(SpriteList *);
 void sub_0202457C(SpriteList *);
 void Sprite_Delete(Sprite *);
 void Sprite_SetMatrix(Sprite *, VecFx32 *);
+NNSG2dImagePaletteProxy *sub_02024B34(Sprite *);
 NNS_G2D_VRAM_TYPE Sprite_GetVramType(Sprite*);
 void sub_0202487C(Sprite*, u8);
 void Set2dSpriteVisibleFlag(Sprite *, int);

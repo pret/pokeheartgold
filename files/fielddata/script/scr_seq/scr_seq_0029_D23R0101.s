@@ -30,7 +30,10 @@ _004D:
 	compare VAR_SCENE_ROCKET_TAKEOVER, 4
 	goto_if_ne _0066
 	goto _008B
-	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
+
+_0060:
+	goto _0085
+
 _0066:
 	compare VAR_SCENE_ROCKET_TAKEOVER, 3
 	goto_if_ne _0081
@@ -179,8 +182,8 @@ _0243:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0250:
 	step 75, 1
 	step 50, 2
@@ -188,16 +191,19 @@ _0250:
 	step 78, 1
 	step_end
 
+	.balign 4, 0
 _0264:
 	step 76, 1
 	step 78, 10
 	step_end
 
+	.balign 4, 0
 _0270:
 	step 63, 6
 	step 76, 1
 	step 3, 1
 	step_end
+
 scr_seq_D23R0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -266,23 +272,34 @@ _0346:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0354:
 	step 13, 1
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0360:
 	step 14, 1
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _036C:
 	step 34, 1
 	step_end
-	.byte 0x23, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x21, 0x00, 0x01, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00
+
+	.balign 4, 0
+_0374:
+	step 35, 1
+	step_end
+
+	.balign 4, 0
+_037C:
+	step 33, 1
+	step_end
+
 scr_seq_D23R0101_009:
 	scrcmd_609
 	lockall
@@ -448,42 +465,49 @@ _0655:
 	white_out
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0664:
 	step 65, 1
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0670:
 	step 19, 9
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _067C:
 	step 19, 9
 	step_end
 
+	.balign 4, 0
 _0684:
 	step 12, 1
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0690:
 	step 15, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _069C:
 	step 62, 9
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _06A8:
 	step 62, 9
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _06B4:
 	step 3, 1
 	step 71, 1
@@ -491,6 +515,7 @@ _06B4:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _06C8:
 	step 0, 1
 	step 71, 1
@@ -498,22 +523,27 @@ _06C8:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _06DC:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _06E4:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _06EC:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _06F4:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _06FC:
 	step 62, 1
 	step 3, 1
@@ -564,6 +594,7 @@ _06FC:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _07BC:
 	step 62, 1
 	step 2, 1
@@ -612,6 +643,7 @@ _07BC:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _0874:
 	step 65, 1
 	step 3, 1
@@ -621,6 +653,7 @@ _0874:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0890:
 	step 65, 1
 	step 0, 1
@@ -630,14 +663,17 @@ _0890:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _08AC:
 	step 19, 3
 	step_end
 
+	.balign 4, 0
 _08B4:
 	step 16, 3
 	step_end
 
+	.balign 4, 0
 _08BC:
 	step 62, 1
 	step 0, 1
@@ -646,6 +682,7 @@ _08BC:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _08D4:
 	step 62, 1
 	step 3, 1
@@ -654,15 +691,18 @@ _08D4:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _08EC:
 	step 15, 2
 	step_end
 
+	.balign 4, 0
 _08F4:
 	step 12, 1
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _0900:
 	step 0, 1
 	step 71, 1
@@ -670,6 +710,7 @@ _0900:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _0914:
 	step 3, 1
 	step 71, 1
@@ -677,17 +718,21 @@ _0914:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _0928:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0930:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0938:
 	step 14, 9
 	step_end
+
 scr_seq_D23R0101_006:
 	simple_npc_msg msg_0065_D23R0101_00026
 	end
@@ -720,7 +765,8 @@ _09AF:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _09E5
 	goto _09DA
-	.byte 0x02, 0x00
+	end
+
 _09CF:
 	npc_msg msg_0065_D23R0101_00029
 	wait_button_or_walk_away
@@ -777,7 +823,8 @@ _0A4B:
 _0A94:
 	npc_msg msg_0065_D23R0101_00036
 	goto _0AC3
-	.byte 0x02, 0x00
+	end
+
 _0A9F:
 	npc_msg msg_0065_D23R0101_00038
 	goto _0AC3
@@ -806,7 +853,8 @@ _0AC3:
 _0B0C:
 	setvar VAR_SPECIAL_x8003, 2
 	goto _0B4A
-	.byte 0x02, 0x00
+	end
+
 _0B1A:
 	setvar VAR_SPECIAL_x8003, 51
 	goto _0B4A

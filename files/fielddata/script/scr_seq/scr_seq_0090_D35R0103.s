@@ -116,21 +116,24 @@ scr_seq_D35R0103_000:
 	releaseall
 	setvar VAR_UNK_40A9, 1
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _01AC:
 	step 15, 5
 	step 12, 4
 	step_end
 
+	.balign 4, 0
 _01B8:
 	step 15, 11
 	step_end
 
+	.balign 4, 0
 _01C0:
 	step 61, 1
 	step 15, 11
 	step_end
+
 scr_seq_D35R0103_013:
 	scrcmd_609
 	lockall
@@ -152,19 +155,25 @@ scr_seq_D35R0103_013:
 	clearflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_2
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0214:
 	step 50, 2
 	step_end
 
+	.balign 4, 0
 _021C:
 	step 3, 1
 	step 51, 1
 	step 19, 5
 	step_end
-	.byte 0x3f, 0x00, 0x01, 0x00
-	.byte 0x0f, 0x00, 0x03, 0x00, 0xfe, 0x00, 0x00, 0x00
+
+	.balign 4, 0
+_022C:
+	step 63, 1
+	step 15, 3
+	step_end
+
 scr_seq_D35R0103_014:
 	scrcmd_609
 	lockall
@@ -181,17 +190,19 @@ scr_seq_D35R0103_014:
 	show_person obj_D35R0103_tsure_poke_static_murkrow_3
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0270:
 	step 51, 2
 	step_end
 
+	.balign 4, 0
 _0278:
 	step 2, 1
 	step 50, 1
 	step 18, 10
 	step_end
+
 scr_seq_D35R0103_011:
 	scrcmd_609
 	lockall
@@ -224,12 +235,13 @@ _02DF:
 	setflag FLAG_UNK_0D3
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0308:
 	step 48, 2
 	step_end
 
+	.balign 4, 0
 _0310:
 	step 48, 2
 	step 2, 1
@@ -237,6 +249,7 @@ _0310:
 	step 18, 12
 	step_end
 
+	.balign 4, 0
 _0324:
 	step 48, 2
 	step 2, 1
@@ -246,10 +259,22 @@ _0324:
 	step 17, 1
 	step 18, 10
 	step_end
+
 scr_seq_D35R0103_012:
 	goto scr_seq_D35R0103_011
-	.byte 0x02, 0x00, 0x4b, 0x00, 0x01, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00, 0x12, 0x00, 0x09, 0x00, 0x10, 0x00, 0x05, 0x00, 0xfe, 0x00, 0x00, 0x00
+	end
+
+	.balign 4, 0
+_034C:
+	step 75, 1
+	step_end
+
+	.balign 4, 0
+_0354:
+	step 18, 9
+	step 16, 5
+	step_end
+
 scr_seq_D35R0103_001:
 	compare VAR_UNK_40AC, 8
 	goto_if_ge _03A0
@@ -274,16 +299,18 @@ _03A2:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _03B0:
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _03B8:
 	step 63, 1
 	step 14, 1
 	step_end
+
 scr_seq_D35R0103_003:
 	scrcmd_609
 	lockall
@@ -416,32 +443,37 @@ _0620:
 	setflag FLAG_UNK_1E5
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0630:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0638:
 	step 63, 1
 	step 16, 6
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0648:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0650:
 	step 63, 2
 	step 16, 3
 	step_end
 
+	.balign 4, 0
 _065C:
 	step 13, 5
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0668:
 	step 13, 2
 	step 14, 1
@@ -449,27 +481,33 @@ _0668:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _067C:
 	step 19, 10
 	step_end
 
+	.balign 4, 0
 _0684:
 	step 62, 1
 	step 19, 10
 	step_end
 
+	.balign 4, 0
 _0690:
 	step 51, 1
 	step_end
 
+	.balign 4, 0
 _0698:
 	step 18, 1
 	step_end
 
+	.balign 4, 0
 _06A0:
 	step 16, 1
 	step_end
 
+	.balign 4, 0
 _06A8:
 	step 16, 2
 	step 19, 1
@@ -477,15 +515,18 @@ _06A8:
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _06BC:
 	step 15, 2
 	step_end
 
+	.balign 4, 0
 _06C4:
 	step 61, 1
 	step 15, 2
 	step_end
 
+	.balign 4, 0
 _06D0:
 	step 12, 6
 	step 63, 2
@@ -499,12 +540,14 @@ _06D0:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _06FC:
 	step 14, 2
 	step 33, 1
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _070C:
 	step 61, 1
 	step 15, 1
@@ -515,16 +558,19 @@ _070C:
 	step 14, 4
 	step_end
 
+	.balign 4, 0
 _072C:
 	step 62, 1
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _0738:
 	step 63, 4
 	step 12, 5
 	step_end
 
+	.balign 4, 0
 _0744:
 	step 61, 1
 	step 63, 1
@@ -532,15 +578,18 @@ _0744:
 	step 14, 5
 	step_end
 
+	.balign 4, 0
 _0758:
 	step 15, 6
 	step_end
 
+	.balign 4, 0
 _0760:
 	step 61, 1
 	step 14, 1
 	step 15, 5
 	step_end
+
 scr_seq_D35R0103_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -683,46 +732,54 @@ _08F0:
 	setvar VAR_ROCKET_TRAP_GEODUDE_5, 1
 	end
 
-
+	.balign 4, 0
 _09E0:
 	step 13, 2
 	step 15, 10
 	step_end
 
+	.balign 4, 0
 _09EC:
 	step 13, 4
 	step 15, 10
 	step_end
 
+	.balign 4, 0
 _09F8:
 	step 13, 6
 	step 15, 10
 	step_end
 
+	.balign 4, 0
 _0A04:
 	step 14, 8
 	step_end
 
+	.balign 4, 0
 _0A0C:
 	step 61, 1
 	step 14, 8
 	step_end
 
+	.balign 4, 0
 _0A18:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0A20:
 	step 17, 6
 	step 18, 12
 	step_end
 
+	.balign 4, 0
 _0A2C:
 	step 62, 1
 	step 18, 1
 	step 17, 6
 	step 18, 12
 	step_end
+
 scr_seq_D35R0103_008:
 	scrcmd_609
 	lockall
@@ -738,11 +795,12 @@ scr_seq_D35R0103_008:
 	following_pokemon_movement 48
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0A6C:
 	step 14, 1
 	step_end
+
 scr_seq_D35R0103_009:
 	scrcmd_609
 	lockall
@@ -760,12 +818,13 @@ scr_seq_D35R0103_009:
 	following_pokemon_movement 48
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0AAC:
 	step 75, 1
 	step 34, 1
 	step_end
+
 scr_seq_D35R0103_010:
 	releaseall
 	goto_if_unset FLAG_REMOVED_ROCKET_HIDEOUT_B3F_ELECTRODE_1, _0AE4

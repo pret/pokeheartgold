@@ -96,12 +96,13 @@ _0166:
 	setvar VAR_UNK_4091, 1
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _017C:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0184:
 	step 3, 1
 	step 71, 1
@@ -109,35 +110,42 @@ _0184:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _0198:
 	step 17, 1
 	step 18, 1
 	step_end
 
+	.balign 4, 0
 _01A4:
 	step 17, 2
 	step 18, 1
 	step_end
 
+	.balign 4, 0
 _01B0:
 	step 17, 3
 	step 18, 1
 	step_end
 
+	.balign 4, 0
 _01BC:
 	step 17, 4
 	step 18, 1
 	step_end
 
+	.balign 4, 0
 _01C8:
 	step 17, 5
 	step 18, 1
 	step_end
 
+	.balign 4, 0
 _01D4:
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _01DC:
 	step 13, 1
 	step 14, 5
@@ -145,6 +153,7 @@ _01DC:
 	step 14, 5
 	step_end
 
+	.balign 4, 0
 _01F0:
 	step 13, 1
 	step 14, 5
@@ -152,11 +161,13 @@ _01F0:
 	step 14, 5
 	step_end
 
+	.balign 4, 0
 _0204:
 	step 13, 1
 	step 14, 10
 	step_end
 
+	.balign 4, 0
 _0210:
 	step 13, 1
 	step 14, 4
@@ -164,10 +175,12 @@ _0210:
 	step 14, 5
 	step_end
 
+	.balign 4, 0
 _0224:
 	step 12, 1
 	step 14, 10
 	step_end
+
 scr_seq_R42_001:
 	scrcmd_609
 	lockall
@@ -214,8 +227,8 @@ scr_seq_R42_001:
 	clearflag FLAG_HIDE_VERMILION_SUICUNE
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _02EC:
 	step 62, 3
 	step 22, 2
@@ -225,6 +238,7 @@ _02EC:
 	step 112, 1
 	step_end
 
+	.balign 4, 0
 _0308:
 	step 75, 1
 	step 71, 1
@@ -234,24 +248,29 @@ _0308:
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _0324:
 	step 15, 4
 	step 12, 3
 	step 15, 6
 	step_end
 
+	.balign 4, 0
 _0334:
 	step 12, 1
 	step 2, 1
 	step_end
 
+	.balign 4, 0
 _0340:
 	step 15, 9
 	step_end
 
+	.balign 4, 0
 _0348:
 	step 15, 1
 	step_end
+
 scr_seq_R42_002:
 	direction_signpost msg_0399_R42_00000, 1, 1, VAR_SPECIAL_RESULT
 	scrcmd_057 3

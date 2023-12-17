@@ -55,51 +55,75 @@ _0090:
 	scrcmd_308 77
 	scrcmd_309 77
 	return
-	.byte 0x5e, 0x00, 0x00, 0x00, 0x88, 0x00, 0x00, 0x00, 0x5e, 0x00, 0xff, 0x00
-	.byte 0x90, 0x00, 0x00, 0x00, 0x5f, 0x00, 0x1b, 0x00
+
+_00C4:
+	apply_movement 0, _0154
+	apply_movement obj_player, _0164
+	wait_movement
+	return
+
 _00D8:
 	apply_movement 0, _0178
 	apply_movement obj_player, _0188
 	wait_movement
 	goto _0068
-	.byte 0x02, 0x00
+	end
+
 _00F2:
 	apply_movement 0, _019C
 	apply_movement obj_player, _01AC
 	wait_movement
 	goto _0068
-	.byte 0x02, 0x00
+	end
+
 _010C:
 	apply_movement 0, _01C0
 	apply_movement obj_player, _01D0
 	wait_movement
 	goto _0068
-	.byte 0x02, 0x00
+	end
+
 _0126:
 	apply_movement 0, _01E4
 	apply_movement obj_player, _01F4
 	wait_movement
 	goto _0068
-	.byte 0x02, 0x00
+	end
 
+	.balign 4, 0
 _0140:
 	step 13, 3
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _014C:
 	step 13, 2
 	step_end
-	.byte 0x00, 0x00, 0x01, 0x00, 0x0c, 0x00, 0x02, 0x00, 0x45, 0x00, 0x01, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00, 0x0f, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x14, 0x00, 0x01, 0x00
-	.byte 0x45, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_0154:
+	step 0, 1
+	step 12, 2
+	step 69, 1
+	step_end
+
+	.balign 4, 0
+_0164:
+	step 15, 1
+	step 0, 1
+	step 20, 1
+	step 69, 1
+	step_end
+
+	.balign 4, 0
 _0178:
 	step 15, 4
 	step 12, 2
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0188:
 	step 13, 1
 	step 15, 4
@@ -107,12 +131,14 @@ _0188:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _019C:
 	step 15, 8
 	step 12, 2
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _01AC:
 	step 13, 1
 	step 15, 8
@@ -120,12 +146,14 @@ _01AC:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _01C0:
 	step 15, 12
 	step 12, 2
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _01D0:
 	step 13, 1
 	step 15, 12
@@ -133,12 +161,14 @@ _01D0:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _01E4:
 	step 15, 16
 	step 12, 2
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _01F4:
 	step 13, 1
 	step 15, 16

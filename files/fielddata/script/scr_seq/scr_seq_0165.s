@@ -19,7 +19,8 @@ scr_seq_0165_000:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0037
 	goto _005E
-	.byte 0x02, 0x00
+	end
+
 _0037:
 	npc_msg msg_0268_00000
 	touchscreen_menu_hide
@@ -56,7 +57,8 @@ _005E:
 	play_cry SPECIES_CHATOT, 0
 	wait_cry
 	goto _00C9
-	.byte 0x02, 0x00
+	end
+
 _00C9:
 	scrcmd_453
 	closemsg
