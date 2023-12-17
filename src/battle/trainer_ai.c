@@ -2,13 +2,14 @@
 #include "battle/battle_system.h"
 #include "battle/trainer_ai.h"
 #include "battle/overlay_12_0224E4FC.h"
+#include "system.h"
 
 void ov10_0221BE20(BattleSystem *bsys, BattleContext *ctx, u8 battlerId, u8 a3) {
     int i;
     u8 struggleFlags;
     u8 *aiData = (u8 *) &ctx->trainerAIData;
     
-    for (i = 0; i < (u32) 28; i++) {
+    for (i = 0; i < OFFSET_OF(TrainerAIData *, unk1C); i++) {
         aiData[i] = 0;
     }
     
