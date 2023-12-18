@@ -23,6 +23,6 @@ u8 AddTextPrinterParameterizedWithColor(Window *window, FontID fontId, String *s
 u8 AddTextPrinterParameterizedWithColorAndSpacing(Window *window, int fontId, String *string, u32 x, u32 y, u32 textSpeed, u32 color, u32 letterSpacing, u32 lineSpacing, PrinterCallback_t callback);
 void GenerateFontHalfRowLookupTable(u8 fgColor, u8 bgColor, u8 shadowColor);
 void DecompressGlyphTile(const u8 *src, u8 *dest);
-void sub_020204FC(TextPrinter *printer, u32 x, u32 y, u16 fieldNum);
+void RenderScreenFocusIndicatorTile(TextPrinter *printer, u32 unusedX, u32 unusedY, u16 fieldNum);
 
 #endif //POKEHEARTGOLD_TEXT_H

@@ -63,4 +63,11 @@ typedef struct TextPrinter {
     u16 *unk30;
 } TextPrinter;
 
+enum RenderResult {
+    RENDER_PRINT,
+    RENDER_FINISH,
+    RENDER_REPEAT, // Run render function again, if e.g. a control code is encountered.
+    RENDER_UPDATE,
+};
+
 #endif //POKEHEARTGOLD_FONT_TYPES_DEF_H

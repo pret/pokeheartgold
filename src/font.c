@@ -102,7 +102,7 @@ struct GlyphInfo *FontID_TryLoadGlyph(FontID fontId, u16 glyphId) {
     return &sFontWork->glyph_buffer;
 }
 
-BOOL FontID_RenderText(int fontId, struct TextPrinter *printer) {
+enum RenderResult FontID_RenderText(int fontId, struct TextPrinter *printer) {
     struct TextPrinterSubStruct *sub;
 
     sub = (struct TextPrinterSubStruct *)printer->subStructFields;

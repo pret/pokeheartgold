@@ -4,20 +4,20 @@
 #include "text.h"
 #include "unk_0201F79C.h"
 
-const struct FontInfo *gFonts;
+static const struct FontInfo *gFonts;
 
-u8 _021D1F6C;
-u16 sFgColor, sShadowColor, sBgColor;
-SysTask *sTextPrinterTasks[MAX_TEXT_PRINTERS];
-u16 sFontHalfRowLookupTable[4 * 4 * 4 * 4];
+static u8 _021D1F6C;
+static u16 sFgColor, sShadowColor, sBgColor;
+static SysTask *sTextPrinterTasks[MAX_TEXT_PRINTERS];
+static u16 sFontHalfRowLookupTable[4 * 4 * 4 * 4];
 
 static u8 CreateTextPrinterSysTask(SysTaskFunc taskFunc, TextPrinter *printer, u32 priority);
 static BOOL TextPrinterSysTaskIsActive(u8 printerId);
 static u8 AddTextPrinter(TextPrinterTemplate *template, u32 speed, PrinterCallback_t callback);
 static void RunTextPrinter(SysTask *task, TextPrinter *printer);
-static u32 sub_02020358(TextPrinter *printer);
+static enum RenderResult RenderFont(TextPrinter *printer);
 static void sub_020204B8(TextPrinter *printer);
-static u16 *sub_020204C0(void);
+static u16 *LoadScreenFocusIndicatorGraphics(void);
 static void sub_02020548(TextPrinter *printer);
 
 void SetFontsPointer(const struct FontInfo *fonts) {
@@ -181,7 +181,7 @@ static u8 AddTextPrinter(TextPrinterTemplate *template, u32 speed, PrinterCallba
     GenerateFontHalfRowLookupTable(template->fgColor, template->bgColor, template->shadowColor);
 
     for (; i < 0x400; i++) {
-        if (sub_02020358(printer) == 1) {
+        if (RenderFont(printer) == RENDER_FINISH) {
             break;
         }
     }
@@ -206,16 +206,16 @@ static void RunTextPrinter(SysTask *task, TextPrinter *printer) {
 
         GenerateFontHalfRowLookupTable(printer->template.fgColor, printer->template.bgColor, printer->template.shadowColor);
 
-        switch (sub_02020358(printer)) {
-            case 0:
+        switch (RenderFont(printer)) {
+            case RENDER_PRINT:
                 CopyWindowToVram(printer->template.window);
                 // fallthrough
-            case 3:
+            case RENDER_UPDATE:
                 if (printer->callback != NULL) {
                     printer->unk2D = printer->callback(&printer->template, printer->unk2E);
                 }
                 return;
-            case 1:
+            case RENDER_FINISH:
                 DestroyTextPrinterSysTask(printer->id);
                 return;
         }
@@ -224,12 +224,12 @@ static void RunTextPrinter(SysTask *task, TextPrinter *printer) {
     }
 }
 
-static u32 sub_02020358(TextPrinter *printer) {
-    u32 ret;
+static enum RenderResult RenderFont(TextPrinter *printer) {
+    enum RenderResult result;
     do {
-        ret = FontID_RenderText(printer->template.fontId, printer);
-    } while (ret == 2);
-    return ret;
+        result = FontID_RenderText(printer->template.fontId, printer);
+    } while (result == RENDER_REPEAT);
+    return result;
 }
 
 void GenerateFontHalfRowLookupTable(u8 fgColor, u8 bgColor, u8 shadowColor) {
@@ -280,7 +280,7 @@ static void sub_020204B8(TextPrinter *printer) {
     printer->unk30 = NULL;
 }
 
-static u16 *sub_020204C0(void) {
+static u16 *LoadScreenFocusIndicatorGraphics(void) {
     u16 *ret = AllocFromHeap(HEAP_ID_DEFAULT, 32 * 24 * sizeof(u16));
 
     NNSG2dCharacterData *g2dCharData;
@@ -291,14 +291,14 @@ static u16 *sub_020204C0(void) {
     return ret;
 }
 
-void sub_020204FC(TextPrinter *printer, u32 x, u32 y, u16 fieldNum) {
-    (void)x;
-    (void)y;
+void RenderScreenFocusIndicatorTile(TextPrinter *printer, u32 unusedX, u32 unusedY, u16 fieldNum) {
+    (void)unusedX;
+    (void)unusedY;
 
     Window *window = printer->template.window;
 
     if (printer->unk30 == NULL) {
-        printer->unk30 = sub_020204C0();
+        printer->unk30 = LoadScreenFocusIndicatorGraphics();
     }
 
     u16 *startAddr = (void*)printer->unk30 + (fieldNum * (24 * 8 * sizeof(u16)));
