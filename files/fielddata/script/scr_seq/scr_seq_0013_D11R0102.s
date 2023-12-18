@@ -104,8 +104,8 @@ _015E:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0174:
 	step 15, 1
 	step 12, 2
@@ -114,11 +114,13 @@ _0174:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _018C:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0198:
 	step 12, 1
 	step 14, 1
@@ -126,11 +128,13 @@ _0198:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _01AC:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _01B8:
 	step 15, 1
 	step 12, 1

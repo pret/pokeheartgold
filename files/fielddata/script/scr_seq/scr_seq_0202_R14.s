@@ -115,8 +115,8 @@ _0191:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _01A8:
 	step 15, 1
 	step 12, 2
@@ -125,11 +125,13 @@ _01A8:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _01C0:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _01CC:
 	step 12, 1
 	step 14, 1
@@ -137,6 +139,7 @@ _01CC:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _01E0:
 	step 12, 1
 	step 15, 1
@@ -144,16 +147,19 @@ _01E0:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _01F4:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0200:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
+
 scr_seq_R14_002:
 	scrcmd_609
 	lockall
@@ -168,7 +174,10 @@ scr_seq_R14_002:
 	apply_movement obj_player, _0450
 	wait_movement
 	goto _027C
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_0249:
+	goto _0255
+
 _024F:
 	goto _0255
 
@@ -191,13 +200,18 @@ _027C:
 	compare VAR_TEMP_x4000, 1358
 	goto_if_ne _02B1
 	goto _02D0
-	.byte 0x16, 0x00, 0x1f, 0x00, 0x00
-	.byte 0x00
+
+_02AB:
+	goto _02D0
+
 _02B1:
 	compare VAR_TEMP_x4000, 1359
 	goto_if_ne _02CA
 	goto _0382
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_02C4:
+	goto _02D0
+
 _02CA:
 	goto _03AD
 
@@ -295,16 +309,37 @@ _03D2:
 _0449:
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0450:
 	step 75, 1
 	step_end
-	.byte 0x3e, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01, 0x00
-	.byte 0xfe, 0x00, 0x00, 0x00, 0x3e, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
-	.byte 0x3e, 0x00, 0x01, 0x00, 0x01, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00, 0x5f, 0x00, 0x01, 0x00
-	.byte 0x02, 0x00, 0x01, 0x00, 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_0458:
+	step 62, 1
+	step 2, 1
+	step_end
+
+	.balign 4, 0
+_0464:
+	step 62, 1
+	step 0, 1
+	step_end
+
+	.balign 4, 0
+_0470:
+	step 62, 1
+	step 1, 1
+	step_end
+
+	.balign 4, 0
+_047C:
+	step 95, 1
+	step 2, 1
+	step_end
+
+	.balign 4, 0
 _0488:
 	step 20, 2
 	step 52, 1
@@ -316,6 +351,7 @@ _0488:
 	step 52, 1
 	step_end
 
+	.balign 4, 0
 _04AC:
 	step 13, 1
 	step 15, 3
@@ -323,34 +359,40 @@ _04AC:
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _04C0:
 	step 15, 3
 	step 13, 2
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _04D0:
 	step 15, 3
 	step 13, 1
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _04E0:
 	step 15, 3
 	step_end
 
+	.balign 4, 0
 _04E8:
 	step 15, 3
 	step 12, 1
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _04F8:
 	step 15, 3
 	step 12, 2
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _0508:
 	step 12, 1
 	step 15, 3
@@ -358,6 +400,7 @@ _0508:
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _051C:
 	step 13, 1
 	step 15, 2
@@ -365,6 +408,7 @@ _051C:
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _0530:
 	step 12, 1
 	step 15, 2
@@ -372,28 +416,36 @@ _0530:
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _0544:
 	step 13, 3
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _0550:
 	step 12, 3
 	step 3, 1
 	step_end
 
+	.balign 4, 0
 _055C:
 	step 63, 1
 	step 0, 1
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _056C:
 	step 65, 5
 	step 2, 1
 	step_end
-	.byte 0xfe, 0x00, 0x00, 0x00
 
+	.balign 4, 0
+_0578:
+	step_end
+
+	.balign 4, 0
 _057C:
 	step 16, 11
 	step 12, 2
@@ -402,6 +454,7 @@ _057C:
 	step 9, 1
 	step 3, 1
 	step_end
+
 scr_seq_R14_003:
 	buffer_players_name 0
 	simple_npc_msg msg_0351_R14_00007
@@ -472,8 +525,8 @@ _068B:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0698:
 	step 75, 1
 	step 62, 1

@@ -71,13 +71,14 @@ _00E5:
 	setvar VAR_UNK_4125, 1
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _00F4:
 	step 12, 2
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0100:
 	step 15, 1
 	step 12, 1

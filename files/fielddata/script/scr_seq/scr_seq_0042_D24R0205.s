@@ -104,11 +104,12 @@ scr_seq_D24R0205_001:
 _018A:
 	end
 
-
+	.balign 4, 0
 _018C:
 	step 68, 1
 	step_end
 
+	.balign 4, 0
 _0194:
 	step 3, 1
 	step 75, 1
@@ -116,14 +117,17 @@ _0194:
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _01A8:
 	step 14, 10
 	step_end
 
+	.balign 4, 0
 _01B0:
 	step 12, 10
 	step_end
 
+	.balign 4, 0
 _01B8:
 	step 2, 1
 	step 75, 1
@@ -131,9 +135,11 @@ _01B8:
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _01CC:
 	step 15, 10
 	step_end
+
 scr_seq_D24R0205_006:
 	scrcmd_609
 	lockall
@@ -182,13 +188,14 @@ scr_seq_D24R0205_006:
 	wait_fade
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _02B0:
 	step 14, 4
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _02BC:
 	step 75, 1
 	step 63, 1
@@ -201,6 +208,7 @@ _02BC:
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _02E4:
 	step 35, 1
 	step 63, 1
@@ -209,9 +217,11 @@ _02E4:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _02FC:
 	step 14, 4
 	step_end
+
 scr_seq_D24R0205_007:
 	scrcmd_609
 	lockall
@@ -240,7 +250,7 @@ scr_seq_D24R0205_007:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _0368:
 	step 63, 1
 	step 34, 1
@@ -249,21 +259,26 @@ _0368:
 	step 18, 3
 	step_end
 
+	.balign 4, 0
 _0380:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0388:
 	step 15, 10
 	step_end
 
+	.balign 4, 0
 _0390:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0398:
 	step 15, 1
 	step_end
+
 scr_seq_D24R0205_009:
 	scrcmd_609
 	lockall
@@ -305,12 +320,13 @@ scr_seq_D24R0205_009:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _045C:
 	step 14, 1
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _0468:
 	step 35, 1
 	step 63, 1
@@ -318,6 +334,7 @@ _0468:
 	step 63, 1
 	step 33, 1
 	step_end
+
 scr_seq_D24R0205_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall

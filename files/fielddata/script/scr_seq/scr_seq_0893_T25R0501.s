@@ -60,11 +60,12 @@ _0096:
 _00A5:
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _00AC:
 	step 3, 1
 	step_end
+
 scr_seq_T25R0501_001:
 	scrcmd_609
 	lockall
@@ -105,15 +106,17 @@ _0123:
 	setvar VAR_UNK_411E, 1
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _013C:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0144:
 	step 13, 2
 	step_end
+
 scr_seq_T25R0501_007:
 	play_se SEQ_SE_DP_SELECT
 	lockall

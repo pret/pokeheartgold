@@ -14,12 +14,18 @@ scr_seq_D02R0102_000:
 	compare VAR_TEMP_x4000, 1
 	goto_if_ne _002E
 	goto _004F
-	.byte 0x16, 0x00, 0x1f, 0x00, 0x00, 0x00
+
+_0028:
+	goto _004D
+
 _002E:
 	compare VAR_TEMP_x4000, 2
 	goto_if_ne _0047
 	goto _008E
-	.byte 0x16, 0x00, 0x06, 0x00, 0x00, 0x00
+
+_0041:
+	goto _004D
+
 _0047:
 	goto _004D
 
@@ -57,5 +63,8 @@ _00C5:
 
 _00CB:
 	end
-	.byte 0x02, 0x00, 0x00
+
+_00CD:
+	end
+
 	.balign 4, 0

@@ -248,23 +248,27 @@ _02D1:
 _02EA:
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _02F0:
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _02F8:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0300:
 	step 34, 1
 	step_end
 
+	.balign 4, 0
 _0308:
 	step 35, 1
 	step_end
+
 scr_seq_T25_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
@@ -551,120 +555,143 @@ _06DB:
 	wait_movement
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _06E4:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _06EC:
 	step 14, 5
 	step_end
 
+	.balign 4, 0
 _06F4:
 	step 14, 4
 	step_end
 
+	.balign 4, 0
 _06FC:
 	step 14, 3
 	step_end
 
+	.balign 4, 0
 _0704:
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _070C:
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _0714:
 	step 60, 1
 	step_end
 
+	.balign 4, 0
 _071C:
 	step 15, 1
 	step_end
 
+	.balign 4, 0
 _0724:
 	step 15, 2
 	step_end
 
+	.balign 4, 0
 _072C:
 	step 15, 3
 	step_end
 
+	.balign 4, 0
 _0734:
 	step 15, 4
 	step_end
 
+	.balign 4, 0
 _073C:
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _0744:
 	step 71, 1
 	step 12, 1
 	step 72, 1
 	step_end
 
+	.balign 4, 0
 _0754:
 	step 13, 1
 	step 15, 5
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0764:
 	step 13, 1
 	step 15, 4
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0774:
 	step 13, 1
 	step 15, 3
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0784:
 	step 13, 1
 	step 15, 2
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _0794:
 	step 13, 1
 	step 15, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _07A4:
 	step 13, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _07B0:
 	step 13, 1
 	step 14, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _07C0:
 	step 13, 1
 	step 14, 2
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _07D0:
 	step 13, 1
 	step 14, 3
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _07E0:
 	step 13, 1
 	step 14, 4
 	step 32, 1
 	step_end
+
 scr_seq_T25_019:
 	scrcmd_055 2, 0
 	scrcmd_057 3

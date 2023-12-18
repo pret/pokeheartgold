@@ -161,22 +161,25 @@ _0285:
 	white_out
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _028C:
 	step 14, 9
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _0298:
 	step 14, 9
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _02A4:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _02AC:
 	step 3, 1
 	step 62, 6
@@ -184,6 +187,7 @@ _02AC:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _02C0:
 	step 3, 1
 	step 62, 6
@@ -191,21 +195,25 @@ _02C0:
 	step 0, 1
 	step_end
 
+	.balign 4, 0
 _02D4:
 	step 14, 3
 	step_end
 
+	.balign 4, 0
 _02DC:
 	step 14, 1
 	step 12, 1
 	step 14, 2
 	step_end
 
+	.balign 4, 0
 _02EC:
 	step 14, 1
 	step 12, 2
 	step 14, 2
 	step_end
+
 scr_seq_T23_003:
 	scrcmd_609
 	lockall
@@ -228,11 +236,12 @@ scr_seq_T23_003:
 	releaseall
 	end
 
-
+	.balign 4, 0
 _0350:
 	step 34, 2
 	step_end
 
+	.balign 4, 0
 _0358:
 	step 71, 1
 	step 22, 1
@@ -242,10 +251,12 @@ _0358:
 	step 18, 9
 	step_end
 
+	.balign 4, 0
 _0374:
 	step 12, 2
 	step 33, 1
 	step_end
+
 scr_seq_T23_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall

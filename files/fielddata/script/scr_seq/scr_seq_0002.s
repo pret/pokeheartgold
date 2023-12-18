@@ -15,19 +15,22 @@ scr_seq_0002_000:
 	setvar VAR_TEMP_x400F, 0
 	setvar VAR_SPECIAL_x8007, 0
 	goto _005C
-	.byte 0x02, 0x00
+	end
+
 scr_seq_0002_001:
 	setvar VAR_SPECIAL_x8000, MOVE_TUTOR_NPC_FRONTIER_TOP_RIGHT
 	setvar VAR_TEMP_x400F, 12
 	setvar VAR_SPECIAL_x8007, 1
 	goto _005C
-	.byte 0x02, 0x00
+	end
+
 scr_seq_0002_002:
 	setvar VAR_SPECIAL_x8000, MOVE_TUTOR_NPC_FRONTIER_BOTTOM_RIGHT
 	setvar VAR_TEMP_x400F, 24
 	setvar VAR_SPECIAL_x8007, 2
 	goto _005C
-	.byte 0x02, 0x00
+	end
+
 _005C:
 	script_overlay_cmd 3, 0
 	scrcmd_116 1, 21, 1
@@ -97,7 +100,10 @@ _013D:
 	goto_if_lt _013D
 	setvar VAR_SPECIAL_x8004, 0
 	goto _013D
-	.byte 0x16, 0x00, 0x41, 0x00, 0x00, 0x00
+
+_0189:
+	goto _01D0
+
 _018F:
 	compare VAR_SPECIAL_x8003, 65534
 	goto_if_ne _01D0
@@ -249,6 +255,6 @@ _03A4:
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F
 	non_npc_msg_var VAR_SPECIAL_x8004
 	goto _0352
-	.byte 0x02
-	.byte 0x00, 0x00, 0x00, 0x00
+	end
+
 	.balign 4, 0

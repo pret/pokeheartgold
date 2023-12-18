@@ -120,7 +120,8 @@ _017B:
 _018C:
 	npc_msg msg_0341_R10_00004
 	goto _0114
-	.byte 0x02, 0x00
+	end
+
 _0197:
 	npc_msg msg_0341_R10_00005
 	wait_button_or_walk_away

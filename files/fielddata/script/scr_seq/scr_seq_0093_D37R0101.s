@@ -89,8 +89,8 @@ _0100:
 	setflag FLAG_UNK_14C
 	releaseall
 	end
-	.byte 0x00
 
+	.balign 4, 0
 _0174:
 	step 78, 1
 	step 39, 1
@@ -111,27 +111,32 @@ _0174:
 	step 1, 1
 	step_end
 
+	.balign 4, 0
 _01BC:
 	step 12, 3
 	step_end
 
+	.balign 4, 0
 _01C4:
 	step 14, 1
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _01D0:
 	step 14, 1
 	step 13, 2
 	step 14, 1
 	step_end
 
+	.balign 4, 0
 _01E0:
 	step 63, 3
 	step 15, 1
 	step 13, 1
 	step_end
 
+	.balign 4, 0
 _01F0:
 	step 13, 2
 	step 14, 1
@@ -139,6 +144,7 @@ _01F0:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0204:
 	step 13, 3
 	step 14, 1
@@ -146,13 +152,16 @@ _0204:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _0218:
 	step 35, 1
 	step_end
 
+	.balign 4, 0
 _0220:
 	step 33, 1
 	step_end
+
 _0228:
 	clearflag FLAG_HIDE_GOLDENROD_UNDERGROUND_FRIEND
 	show_person obj_D37R0101_var_1
@@ -198,24 +207,28 @@ _0228:
 	setflag FLAG_UNK_14C
 	releaseall
 	end
-	.byte 0x00, 0x00, 0x00
 
+	.balign 4, 0
 _0308:
 	step 75, 1
 	step_end
 
+	.balign 4, 0
 _0310:
 	step 13, 2
 	step_end
 
+	.balign 4, 0
 _0318:
 	step 12, 2
 	step_end
 
+	.balign 4, 0
 _0320:
 	step 12, 1
 	step_end
 
+	.balign 4, 0
 _0328:
 	step 15, 1
 	step 12, 4
@@ -223,6 +236,7 @@ _0328:
 	step 69, 1
 	step_end
 
+	.balign 4, 0
 _033C:
 	step 12, 1
 	step 15, 1
@@ -230,6 +244,7 @@ _033C:
 	step 14, 2
 	step 69, 1
 	step_end
+
 _0354:
 	call _03A8
 	call _03A8

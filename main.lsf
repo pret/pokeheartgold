@@ -610,7 +610,6 @@ Overlay OVY_16
     After OVY_15
     Object src/overlay_16_022014A0.o
     Object src/overlay_16_02201948.o
-    Object asm/overlay_16_data.o
 }
 Overlay OVY_17
 {

@@ -105,8 +105,8 @@ _0162:
 	closemsg
 	releaseall
 	end
-	.byte 0x00, 0x00
 
+	.balign 4, 0
 _0178:
 	step 15, 1
 	step 12, 2
@@ -115,11 +115,13 @@ _0178:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _0190:
 	step 12, 3
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _019C:
 	step 12, 1
 	step 14, 1
@@ -127,16 +129,19 @@ _019C:
 	step 33, 1
 	step_end
 
+	.balign 4, 0
 _01B0:
 	step 63, 1
 	step 32, 1
 	step_end
 
+	.balign 4, 0
 _01BC:
 	step 15, 1
 	step 12, 1
 	step 1, 1
 	step_end
+
 scr_seq_R48_002:
 	direction_signpost msg_0408_R48_00000, 1, 13, VAR_SPECIAL_RESULT
 	scrcmd_057 3

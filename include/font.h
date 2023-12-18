@@ -17,8 +17,8 @@ u32 FontID_FlatArray_GetWidthFirstLine(FontID fontId, const u16 *string, u32 let
 u32 FontID_String_GetWidth(FontID fontId, String *string, u32 letterSpacing);
 BOOL FontID_String_AllCharsValid(FontID fontId, String *str0, String *str1);
 u8 GetFontAttribute(FontID fontId, int attr);
-void LoadFontPal0(enum GFBgLayer layer, u32 baseAddr, HeapID heapId);
-void LoadFontPal1(enum GFBgLayer layer, u32 baseAddr, HeapID heapId);
+void LoadFontPal0(enum GFPalLoadLocation location, enum GFPalSlotOffset palSlotOffset, HeapID heapId);
+void LoadFontPal1(enum GFPalLoadLocation location, enum GFPalSlotOffset palSlotOffset, HeapID heapId);
 u32 FontID_String_GetWidthMultiline(FontID fontId, String *string, u32 letterSpacing);
 u32 FontID_String_GetCenterAlignmentX(FontID fontId, String *string, u32 letterSpacing, u32 windowWidth);
 u32 FontID_GetGlyphWidth(FontID fontId, u16 glyph);
