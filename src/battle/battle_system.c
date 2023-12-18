@@ -1404,3 +1404,23 @@ u32 BattleSystem_PrintBattleMessage(BattleSystem *bsys, MsgData *data, BattleMes
     FillWindowPixelBuffer(window, 0xFF);
     return AddTextPrinterParameterized(window, 1, bsys->msgBuffer, 0, 0, delay, ov12_0223CF14);
 }
+
+u32 ov12_0223C4E8(BattleSystem *bsys, Window *window, MsgData *data, BattleMessage *msg, int x, int y, int flag, int width, int delay) {
+    int dx;
+    
+    ov12_0223C558(bsys, msg);
+    ov12_0223C754(bsys, msg);
+    ov12_0223CEF4(bsys, data, msg);
+    
+    if (flag & 1) {
+        FillWindowPixelBuffer(window, 0xFF);
+    }
+    
+    if (flag & 2) {
+        dx = width - FontID_String_GetWidth(0, bsys->msgBuffer, 0);  
+    } else {
+        dx = 0;
+    }
+    
+    return AddTextPrinterParameterized(window, 0, bsys->msgBuffer, x + dx, y, delay, ov12_0223CF14);
+}

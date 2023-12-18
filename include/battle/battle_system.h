@@ -145,6 +145,7 @@ BOOL BattleSystem_CheckMonCaught(BattleSystem *bsys, int battlerId);
 void BattleSystem_SetDefaultBlend(void);
 u8 BattleSystem_PrintTrainerMessage(BattleSystem *bsys, int trainerId, int battlerId, int a2, int delay);
 u32 BattleSystem_PrintBattleMessage(BattleSystem *bsys, MsgData *data, BattleMessage *msg, u8 delay);
+u32 ov12_0223C4E8(BattleSystem *bsys, Window *window, MsgData *data, BattleMessage *msg, int x, int y, int flag, int width, int delay);
 
 //These functions haven't been decompiled
 BOOL Link_QueueNotEmpty(BattleContext *ctx);

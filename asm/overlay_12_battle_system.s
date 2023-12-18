@@ -6,63 +6,6 @@
 
 	.text
 
-	thumb_func_start ov12_0223C4E8
-ov12_0223C4E8: ; 0x0223C4E8
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0xc
-	add r7, r3, #0
-	add r4, r1, #0
-	add r5, r0, #0
-	add r1, r7, #0
-	add r6, r2, #0
-	bl ov12_0223C558
-	add r0, r5, #0
-	add r1, r7, #0
-	bl ov12_0223C754
-	add r0, r5, #0
-	add r1, r6, #0
-	add r2, r7, #0
-	bl ov12_0223CEF4
-	ldr r1, [sp, #0x28]
-	mov r0, #1
-	tst r0, r1
-	beq _0223C51C
-	add r0, r4, #0
-	mov r1, #0xff
-	bl FillWindowPixelBuffer
-_0223C51C:
-	ldr r1, [sp, #0x28]
-	mov r0, #2
-	tst r0, r1
-	beq _0223C534
-	mov r0, #0
-	ldr r1, [r5, #0x18]
-	add r2, r0, #0
-	bl FontID_String_GetWidth
-	ldr r1, [sp, #0x2c]
-	sub r3, r1, r0
-	b _0223C536
-_0223C534:
-	mov r3, #0
-_0223C536:
-	ldr r0, [sp, #0x24]
-	mov r1, #0
-	str r0, [sp]
-	ldr r0, [sp, #0x30]
-	str r0, [sp, #4]
-	ldr r0, _0223C554 ; =ov12_0223CF14
-	str r0, [sp, #8]
-	add r0, r4, #0
-	ldr r4, [sp, #0x20]
-	ldr r2, [r5, #0x18]
-	add r3, r4, r3
-	bl AddTextPrinterParameterized
-	add sp, #0xc
-	pop {r4, r5, r6, r7, pc}
-	.balign 4, 0
-_0223C554: .word ov12_0223CF14
-	thumb_func_end ov12_0223C4E8
-
 	thumb_func_start ov12_0223C558
 ov12_0223C558: ; 0x0223C558
 	push {r4, r5, r6, lr}
