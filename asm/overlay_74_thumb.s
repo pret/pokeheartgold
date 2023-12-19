@@ -892,7 +892,7 @@ _022276D8:
 	mov r0, #0
 	str r0, [r4, #0x40]
 	ldr r0, [r4, #0x14]
-	bl sub_0202E014
+	bl SaveMysteryGift_TestFlagx7FF
 	cmp r0, #1
 	bne _0222779A
 	ldr r1, [r4, #0x40]
@@ -2120,7 +2120,7 @@ ov74_MainMenu_PrintMysteryGiftButton: ; 0x022280B4
 	cmp r0, #0
 	bne _022280FC
 	ldr r0, [r5, #0x14]
-	bl sub_0202E014
+	bl SaveMysteryGift_TestFlagx7FF
 	cmp r0, #1
 	bne _022280D4
 	mov r0, #1
@@ -2179,7 +2179,7 @@ _0222810C:
 	orr r0, r1
 	str r0, [r5, #0x38]
 	ldr r0, [r5, #0x14]
-	bl sub_0202E024
+	bl SaveMysteryGift_SetFlagx7FF
 	add sp, #8
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -4656,7 +4656,7 @@ ov74_0222947C: ; 0x0222947C
 	add r1, r4, #0
 	ldr r0, [r5, r0]
 	mov r2, #3
-	bl sub_0202DC2C
+	bl SaveMysteryGift_TryInsertGift
 	mov r0, #1
 	mov r1, #0
 	bl GfGfx_EngineBTogglePlanes
@@ -6258,7 +6258,7 @@ _0222A1CE:
 	add r1, #0x4c
 	ldrh r1, [r1]
 	add r7, r0, #0
-	bl sub_0202DFAC
+	bl SaveMysteryGift_ReceivedFlagSet
 	add r4, #0x4e
 	ldrb r0, [r4]
 	lsl r0, r0, #0x1d
@@ -6274,7 +6274,7 @@ _0222A1CE:
 	bne _0222A204
 	add r0, r7, #0
 	add r1, r5, #0
-	bl sub_0202DD48
+	bl SaveMysteryGift_TrySetSpecialCard
 	b _0222A21C
 _0222A204:
 	cmp r6, #0
@@ -6282,12 +6282,12 @@ _0222A204:
 	add r0, r7, #0
 	add r1, r5, #0
 	mov r2, #3
-	bl sub_0202DC2C
+	bl SaveMysteryGift_TryInsertGift
 	b _0222A21C
 _0222A214:
 	add r0, r7, #0
 	add r1, r5, #0
-	bl sub_0202DCAC
+	bl SaveMysteryGift_TryInsertCard
 _0222A21C:
 	ldr r0, [sp]
 	bl ov74_022360A0
@@ -7229,7 +7229,7 @@ ov74_0222A94C: ; 0x0222A94C
 	add r5, r5, #1
 	str r2, [sp, #0x24]
 	str r1, [sp, #0x28]
-	bl sub_0202DED8
+	bl SaveMysteryGift_HasAnyCard
 	cmp r0, #0
 	beq _0222A992
 	lsl r6, r5, #3
@@ -7244,7 +7244,7 @@ ov74_0222A94C: ; 0x0222A94C
 	str r2, [r1, #4]
 _0222A992:
 	ldr r0, [sp, #0x18]
-	bl sub_0202DEBC
+	bl SaveMysteryGift_SpecialCardTagIsValid
 	cmp r0, #0
 	beq _0222A9B0
 	lsl r6, r5, #3
@@ -12330,7 +12330,7 @@ ov74_0222D308: ; 0x0222D308
 	ldr r0, [r4, r1]
 	add r1, #0x20
 	ldr r1, [r4, r1]
-	bl sub_0202DEF8
+	bl SaveMysteryGift_HasAnyGift
 	cmp r0, #1
 	ldr r0, _0222D350 ; =0x00002BD0
 	bne _0222D330
@@ -12378,20 +12378,20 @@ ov74_0222D358: ; 0x0222D358
 	ldr r0, [r4, r1]
 	add r1, #0x20
 	ldr r1, [r4, r1]
-	bl sub_0202DEF8
+	bl SaveMysteryGift_HasAnyGift
 	cmp r0, #1
 	ldr r1, _0222D408 ; =0x00002BA0
 	bne _0222D39A
 	ldr r0, [r4, r1]
 	add r1, #0x20
 	ldr r1, [r4, r1]
-	bl sub_0202DDB0
+	bl SaveMysteryGift_ReceiveGiftAndClearCardByIndex
 	b _0222D3A4
 _0222D39A:
 	ldr r0, [r4, r1]
 	add r1, #0x20
 	ldr r1, [r4, r1]
-	bl sub_0202DDEC
+	bl SaveMysteryGift_DeleteWonderCardByIndex
 _0222D3A4:
 	ldr r0, _0222D40C ; =0x00002BA4
 	ldr r0, [r4, r0]
@@ -12401,7 +12401,7 @@ _0222D3A4:
 	bl sub_0200F450
 	ldr r0, _0222D408 ; =0x00002BA0
 	ldr r0, [r4, r0]
-	bl sub_0202DED8
+	bl SaveMysteryGift_HasAnyCard
 	cmp r0, #0
 	bne _0222D3C4
 	mov r0, #0x1b
@@ -12571,7 +12571,7 @@ _0222D50C:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0222D51C
-	bl sub_0202DEF8
+	bl SaveMysteryGift_HasAnyGift
 	cmp r0, #1
 	bne _0222D520
 _0222D51C:
@@ -13346,7 +13346,7 @@ _0222DB14:
 	ldr r0, _0222DB2C ; =0x00002BA0
 	add r1, r4, #0
 	ldr r0, [r5, r0]
-	bl sub_0202DE90
+	bl SaveMysteryGift_CardTagIsValid
 	cmp r0, #0
 	beq _0222DB02
 _0222DB26:
@@ -17618,7 +17618,7 @@ _0222FDF2:
 	cmp r0, #1
 	bne _0222FE0E
 	add r0, r6, #0
-	bl sub_0202DF7C
+	bl SaveMysteryGift_ReceivedFlagTest
 	cmp r0, #1
 	bne _0222FE0E
 	mov r0, #2
