@@ -3793,7 +3793,7 @@ ov12_02248228: ; 0x02248228
 	bl BattleSystem_GetMessageBuffer
 	str r0, [sp, #0x20]
 	add r0, r7, #0
-	bl ov12_0223A9A4
+	bl BattleSystem_GetMessageFormat
 	str r0, [sp, #0x24]
 	add r0, r7, #0
 	bl BattleSystem_GetBgConfig

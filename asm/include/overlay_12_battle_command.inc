@@ -129,7 +129,7 @@
 .public BattleSystem_GetMessageData
 .public BattleSystem_GetPaletteData
 .public BattleSystem_GetPokedex
-.public ov12_0223A9A4
+.public BattleSystem_GetMessageFormat
 .public BattleSystem_GetMessageBuffer
 .public ov12_0223AAB8
 .public ov12_0223AAD8

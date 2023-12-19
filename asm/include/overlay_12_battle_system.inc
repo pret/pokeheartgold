@@ -97,7 +97,7 @@
 .public ov12_0223A984
 .public ov12_0223A990
 .public ov12_0223A99C
-.public ov12_0223A9A4
+.public BattleSystem_GetMessageFormat
 .public BattleSystem_GetMessageBuffer
 .public BattleSystem_GetTrainerIndex
 .public BattleSystem_GetTrainer

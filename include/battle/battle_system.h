@@ -39,7 +39,7 @@ u16 *ov12_0223A978(BattleSystem *bsys);
 u16 *ov12_0223A984(BattleSystem *bsys);
 u16 *ov12_0223A990(BattleSystem *bsys);
 UnkBattleSystemSub1D0 *ov12_0223A99C(BattleSystem *bsys);
-u32 *ov12_0223A9A4(BattleSystem *bsys);
+MessageFormat *BattleSystem_GetMessageFormat(BattleSystem *bsys);
 String *BattleSystem_GetMessageBuffer(BattleSystem *bsys);
 u16 BattleSystem_GetTrainerIndex(BattleSystem *bsys, int battlerId);
 Trainer *BattleSystem_GetTrainer(BattleSystem *bsys, int battlerId);
@@ -159,8 +159,18 @@ void ov12_0226AA8C(u32 *a1, u32 flag);
 BOOL ov12_0223CF14(struct TextPrinterTemplate *template, u16 glyphId);
 
 //These functions haven't been decompiled AND are confirmed to be static
-void ov12_0223C558(BattleSystem *bsys, BattleMessage *msg);
-void ov12_0223C754(BattleSystem *bsys, BattleMessage *msg);
 void ov12_0223CEF4(BattleSystem *bsys, MsgData *data, BattleMessage *msg);
+void BattleMessage_BufferStat(BattleSystem *bsys, int a1, int param);
+void BattleMessage_BufferNumber(BattleSystem *bsys, int a1, int param);
+void BattleMessage_BufferNumbers(BattleSystem *bsys, int a1, int param, int a3);
+void BattleMessage_BufferTrainerName(BattleSystem *bsys, int a1, int param);
+void BattleMessage_BufferAbility(BattleSystem *bsys, int a1, int param);
+void BattleMessage_BufferType(BattleSystem *bsys, int a1, int param);
+void BattleMessage_BufferPokemon(BattleSystem *bsys, int a1, int param);
+void BattleMessage_BufferPoffin(BattleSystem *bsys, int a1, int param);
+void BattleMessage_BufferTrainerClass(BattleSystem *bsys, int a1, int param);
+void BattleMessage_BufferBoxName(BattleSystem *bsys, int a1, int param);
+void BattleMessage_BufferStatus(BattleSystem *bsys, int a1, int param);
+void BattleMessage_BufferFlavorPreference(BattleSystem *bsys, int a1, int param);
 
 #endif

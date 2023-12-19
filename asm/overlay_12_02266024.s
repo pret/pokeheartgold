@@ -2099,7 +2099,7 @@ _022671C2:
 _022671C4:
 	ldr r0, [r5]
 	mov r6, #0
-	bl ov12_0223A9A4
+	bl BattleSystem_GetMessageFormat
 	str r0, [sp, #0x1c]
 	mov r0, #0x20
 	mov r1, #5
@@ -2889,7 +2889,7 @@ ov12_0226789C: ; 0x0226789C
 	bl BattleSystem_GetMessageData
 	add r6, r0, #0
 	ldr r0, [r5]
-	bl ov12_0223A9A4
+	bl BattleSystem_GetMessageFormat
 	add r4, r0, #0
 	ldr r1, _0226796C ; =0x000004A2
 	add r0, r6, #0
@@ -3080,7 +3080,7 @@ ov12_02267A58: ; 0x02267A58
 	bl BattleSystem_GetMessageData
 	add r6, r0, #0
 	ldr r0, [r5]
-	bl ov12_0223A9A4
+	bl BattleSystem_GetMessageFormat
 	add r4, r0, #0
 	ldr r1, _02267B28 ; =0x000004C1
 	add r0, r6, #0
@@ -3179,7 +3179,7 @@ ov12_02267B40: ; 0x02267B40
 	bl BattleSystem_GetMessageData
 	add r6, r0, #0
 	ldr r0, [r5]
-	bl ov12_0223A9A4
+	bl BattleSystem_GetMessageFormat
 	add r4, r0, #0
 	ldr r1, _02267C10 ; =0x000004BF
 	add r0, r6, #0
@@ -3290,7 +3290,7 @@ ov12_02267C24: ; 0x02267C24
 	bl BattleSystem_GetMessageData
 	str r0, [sp, #0x2c]
 	ldr r0, [r5]
-	bl ov12_0223A9A4
+	bl BattleSystem_GetMessageFormat
 	str r0, [sp, #0x1c]
 	add r0, r5, #0
 	add r1, sp, #0x40
@@ -4865,7 +4865,7 @@ ov12_0226885C: ; 0x0226885C
 	bl NewString_ReadMsgData
 	str r0, [sp, #0x28]
 	ldr r0, [r7]
-	bl ov12_0223A9A4
+	bl BattleSystem_GetMessageFormat
 	str r0, [sp, #0x24]
 	mov r0, #0x10
 	mov r1, #5

@@ -523,7 +523,7 @@ struct BattleSystem {
     Window *window;
     MsgData *msgData;
     u32 *unk10;
-    u32 *unk14;
+    MessageFormat *msgFormat;
     String *msgBuffer;
     u32 unk1C;
     u32 unk20;
