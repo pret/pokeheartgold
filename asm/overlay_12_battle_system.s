@@ -6,270 +6,6 @@
 
 	.text
 
-	thumb_func_start ov12_0223C558
-ov12_0223C558: ; 0x0223C558
-	push {r4, r5, r6, lr}
-	add r4, r1, #0
-	add r6, r0, #0
-	bl BattleSystem_GetBattleType
-	add r5, r0, #0
-	ldrb r0, [r4, #1]
-	mov r1, #0x80
-	tst r1, r0
-	bne _0223C57E
-	mov r1, #0x40
-	tst r1, r0
-	beq _0223C588
-	ldr r1, [r4, #0x20]
-	add r0, r6, #0
-	bl BattleSystem_GetFieldSide
-	cmp r0, #0
-	bne _0223C580
-_0223C57E:
-	b _0223C752
-_0223C580:
-	ldrh r0, [r4, #2]
-	add r0, r0, #1
-	strh r0, [r4, #2]
-	pop {r4, r5, r6, pc}
-_0223C588:
-	mov r1, #0x3f
-	and r0, r1
-	cmp r0, #0x3c
-	bls _0223C592
-	b _0223C74E
-_0223C592:
-	add r0, r0, r0
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_0223C59E: ; jump table
-	.short _0223C752 - _0223C59E - 2 ; case 0
-	.short _0223C618 - _0223C59E - 2 ; case 1
-	.short _0223C630 - _0223C59E - 2 ; case 2
-	.short _0223C752 - _0223C59E - 2 ; case 3
-	.short _0223C752 - _0223C59E - 2 ; case 4
-	.short _0223C752 - _0223C59E - 2 ; case 5
-	.short _0223C752 - _0223C59E - 2 ; case 6
-	.short _0223C752 - _0223C59E - 2 ; case 7
-	.short _0223C752 - _0223C59E - 2 ; case 8
-	.short _0223C692 - _0223C59E - 2 ; case 9
-	.short _0223C630 - _0223C59E - 2 ; case 10
-	.short _0223C630 - _0223C59E - 2 ; case 11
-	.short _0223C630 - _0223C59E - 2 ; case 12
-	.short _0223C630 - _0223C59E - 2 ; case 13
-	.short _0223C630 - _0223C59E - 2 ; case 14
-	.short _0223C630 - _0223C59E - 2 ; case 15
-	.short _0223C630 - _0223C59E - 2 ; case 16
-	.short _0223C630 - _0223C59E - 2 ; case 17
-	.short _0223C630 - _0223C59E - 2 ; case 18
-	.short _0223C630 - _0223C59E - 2 ; case 19
-	.short _0223C656 - _0223C59E - 2 ; case 20
-	.short _0223C66E - _0223C59E - 2 ; case 21
-	.short _0223C752 - _0223C59E - 2 ; case 22
-	.short _0223C66E - _0223C59E - 2 ; case 23
-	.short _0223C752 - _0223C59E - 2 ; case 24
-	.short _0223C752 - _0223C59E - 2 ; case 25
-	.short _0223C752 - _0223C59E - 2 ; case 26
-	.short _0223C752 - _0223C59E - 2 ; case 27
-	.short _0223C752 - _0223C59E - 2 ; case 28
-	.short _0223C752 - _0223C59E - 2 ; case 29
-	.short _0223C752 - _0223C59E - 2 ; case 30
-	.short _0223C692 - _0223C59E - 2 ; case 31
-	.short _0223C692 - _0223C59E - 2 ; case 32
-	.short _0223C692 - _0223C59E - 2 ; case 33
-	.short _0223C630 - _0223C59E - 2 ; case 34
-	.short _0223C630 - _0223C59E - 2 ; case 35
-	.short _0223C6F0 - _0223C59E - 2 ; case 36
-	.short _0223C630 - _0223C59E - 2 ; case 37
-	.short _0223C630 - _0223C59E - 2 ; case 38
-	.short _0223C630 - _0223C59E - 2 ; case 39
-	.short _0223C630 - _0223C59E - 2 ; case 40
-	.short _0223C630 - _0223C59E - 2 ; case 41
-	.short _0223C630 - _0223C59E - 2 ; case 42
-	.short _0223C6F0 - _0223C59E - 2 ; case 43
-	.short _0223C630 - _0223C59E - 2 ; case 44
-	.short _0223C630 - _0223C59E - 2 ; case 45
-	.short _0223C630 - _0223C59E - 2 ; case 46
-	.short _0223C630 - _0223C59E - 2 ; case 47
-	.short _0223C66E - _0223C59E - 2 ; case 48
-	.short _0223C752 - _0223C59E - 2 ; case 49
-	.short _0223C752 - _0223C59E - 2 ; case 50
-	.short _0223C752 - _0223C59E - 2 ; case 51
-	.short _0223C6F0 - _0223C59E - 2 ; case 52
-	.short _0223C6F0 - _0223C59E - 2 ; case 53
-	.short _0223C6F0 - _0223C59E - 2 ; case 54
-	.short _0223C6F0 - _0223C59E - 2 ; case 55
-	.short _0223C752 - _0223C59E - 2 ; case 56
-	.short _0223C752 - _0223C59E - 2 ; case 57
-	.short _0223C752 - _0223C59E - 2 ; case 58
-	.short _0223C752 - _0223C59E - 2 ; case 59
-	.short _0223C752 - _0223C59E - 2 ; case 60
-_0223C618:
-	ldr r1, [r4, #4]
-	add r0, r6, #0
-	lsl r1, r1, #0x18
-	lsr r1, r1, #0x18
-	bl BattleSystem_GetFieldSide
-	cmp r0, #0
-	beq _0223C64C
-	ldrh r0, [r4, #2]
-	add r0, r0, #1
-	strh r0, [r4, #2]
-	pop {r4, r5, r6, pc}
-_0223C630:
-	ldr r1, [r4, #4]
-	add r0, r6, #0
-	lsl r1, r1, #0x18
-	lsr r1, r1, #0x18
-	bl BattleSystem_GetFieldSide
-	cmp r0, #0
-	beq _0223C64C
-	ldrh r0, [r4, #2]
-	add r0, r0, #1
-	strh r0, [r4, #2]
-	mov r0, #1
-	tst r0, r5
-	bne _0223C64E
-_0223C64C:
-	b _0223C752
-_0223C64E:
-	ldrh r0, [r4, #2]
-	add r0, r0, #1
-	strh r0, [r4, #2]
-	pop {r4, r5, r6, pc}
-_0223C656:
-	ldr r1, [r4, #8]
-	add r0, r6, #0
-	lsl r1, r1, #0x18
-	lsr r1, r1, #0x18
-	bl BattleSystem_GetFieldSide
-	cmp r0, #0
-	beq _0223C752
-	ldrh r0, [r4, #2]
-	add r0, r0, #1
-	strh r0, [r4, #2]
-	pop {r4, r5, r6, pc}
-_0223C66E:
-	ldr r1, [r4, #8]
-	add r0, r6, #0
-	lsl r1, r1, #0x18
-	lsr r1, r1, #0x18
-	bl BattleSystem_GetFieldSide
-	cmp r0, #0
-	beq _0223C752
-	ldrh r0, [r4, #2]
-	add r0, r0, #1
-	strh r0, [r4, #2]
-	mov r0, #1
-	tst r0, r5
-	beq _0223C752
-	ldrh r0, [r4, #2]
-	add r0, r0, #1
-	strh r0, [r4, #2]
-	pop {r4, r5, r6, pc}
-_0223C692:
-	ldr r1, [r4, #4]
-	add r0, r6, #0
-	lsl r1, r1, #0x18
-	lsr r1, r1, #0x18
-	bl BattleSystem_GetFieldSide
-	cmp r0, #0
-	beq _0223C6CC
-	ldrh r0, [r4, #2]
-	add r0, r0, #3
-	strh r0, [r4, #2]
-	mov r0, #1
-	tst r0, r5
-	beq _0223C6B4
-	ldrh r0, [r4, #2]
-	add r0, r0, #2
-	strh r0, [r4, #2]
-_0223C6B4:
-	ldr r1, [r4, #8]
-	add r0, r6, #0
-	lsl r1, r1, #0x18
-	lsr r1, r1, #0x18
-	bl BattleSystem_GetFieldSide
-	cmp r0, #0
-	beq _0223C752
-	ldrh r0, [r4, #2]
-	add r0, r0, #1
-	strh r0, [r4, #2]
-	pop {r4, r5, r6, pc}
-_0223C6CC:
-	ldr r1, [r4, #8]
-	add r0, r6, #0
-	lsl r1, r1, #0x18
-	lsr r1, r1, #0x18
-	bl BattleSystem_GetFieldSide
-	cmp r0, #0
-	beq _0223C752
-	ldrh r0, [r4, #2]
-	add r0, r0, #1
-	strh r0, [r4, #2]
-	mov r0, #1
-	tst r0, r5
-	beq _0223C752
-	ldrh r0, [r4, #2]
-	add r0, r0, #1
-	strh r0, [r4, #2]
-	pop {r4, r5, r6, pc}
-_0223C6F0:
-	ldr r1, [r4, #4]
-	add r0, r6, #0
-	lsl r1, r1, #0x18
-	lsr r1, r1, #0x18
-	bl BattleSystem_GetFieldSide
-	cmp r0, #0
-	beq _0223C72A
-	ldrh r0, [r4, #2]
-	add r0, r0, #3
-	strh r0, [r4, #2]
-	mov r0, #1
-	tst r0, r5
-	beq _0223C712
-	ldrh r0, [r4, #2]
-	add r0, r0, #2
-	strh r0, [r4, #2]
-_0223C712:
-	ldr r1, [r4, #0xc]
-	add r0, r6, #0
-	lsl r1, r1, #0x18
-	lsr r1, r1, #0x18
-	bl BattleSystem_GetFieldSide
-	cmp r0, #0
-	beq _0223C752
-	ldrh r0, [r4, #2]
-	add r0, r0, #1
-	strh r0, [r4, #2]
-	pop {r4, r5, r6, pc}
-_0223C72A:
-	ldr r1, [r4, #0xc]
-	add r0, r6, #0
-	lsl r1, r1, #0x18
-	lsr r1, r1, #0x18
-	bl BattleSystem_GetFieldSide
-	cmp r0, #0
-	beq _0223C752
-	ldrh r0, [r4, #2]
-	add r0, r0, #1
-	strh r0, [r4, #2]
-	mov r0, #1
-	tst r0, r5
-	beq _0223C752
-	ldrh r0, [r4, #2]
-	add r0, r0, #1
-	strh r0, [r4, #2]
-	pop {r4, r5, r6, pc}
-_0223C74E:
-	bl GF_AssertFail
-_0223C752:
-	pop {r4, r5, r6, pc}
-	thumb_func_end ov12_0223C558
-
 	thumb_func_start ov12_0223C754
 ov12_0223C754: ; 0x0223C754
 	push {r3, r4, r5, lr}
@@ -353,218 +89,218 @@ _0223C772: ; jump table
 _0223C7EC:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	pop {r3, r4, r5, pc}
 _0223C7F6:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDF4
+	bl BattleMessage_BufferMove
 	pop {r3, r4, r5, pc}
 _0223C800:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CE68
+	bl BattleMessage_BufferStat
 	pop {r3, r4, r5, pc}
 _0223C80A:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CE00
+	bl BattleMessage_BufferItem
 	pop {r3, r4, r5, pc}
 _0223C814:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CE0C
+	bl BattleMessage_BufferNumber
 	pop {r3, r4, r5, pc}
 _0223C81E:
 	ldr r2, [r4, #4]
 	ldr r3, [r4, #0x1c]
 	mov r1, #0
-	bl ov12_0223CE24
+	bl BattleMessage_BufferNumbers
 	pop {r3, r4, r5, pc}
 _0223C82A:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CECC
+	bl BattleMessage_BufferTrainerName
 	pop {r3, r4, r5, pc}
 _0223C834:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	pop {r3, r4, r5, pc}
 _0223C848:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CDF4
+	bl BattleMessage_BufferMove
 	pop {r3, r4, r5, pc}
 _0223C85C:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CE5C
+	bl BattleMessage_BufferAbility
 	pop {r3, r4, r5, pc}
 _0223C870:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CE68
+	bl BattleMessage_BufferStat
 	pop {r3, r4, r5, pc}
 _0223C884:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CE50
+	bl BattleMessage_BufferType
 	pop {r3, r4, r5, pc}
 _0223C898:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CE80
+	bl BattleMessage_BufferPokemon
 	pop {r3, r4, r5, pc}
 _0223C8AC:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CE00
+	bl BattleMessage_BufferItem
 	pop {r3, r4, r5, pc}
 _0223C8C0:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CEA4
+	bl BattleMessage_BufferPoffin
 	pop {r3, r4, r5, pc}
 _0223C8D4:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CE0C
+	bl BattleMessage_BufferNumber
 	pop {r3, r4, r5, pc}
 _0223C8E8:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CECC
+	bl BattleMessage_BufferTrainerName
 	pop {r3, r4, r5, pc}
 _0223C8FC:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CEE4
+	bl BattleMessage_BufferBoxName
 	pop {r3, r4, r5, pc}
 _0223C910:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDF4
+	bl BattleMessage_BufferMove
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	pop {r3, r4, r5, pc}
 _0223C924:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDF4
+	bl BattleMessage_BufferMove
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CDF4
+	bl BattleMessage_BufferMove
 	pop {r3, r4, r5, pc}
 _0223C938:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CE5C
+	bl BattleMessage_BufferAbility
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	pop {r3, r4, r5, pc}
 _0223C94C:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CE00
+	bl BattleMessage_BufferItem
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CDF4
+	bl BattleMessage_BufferMove
 	pop {r3, r4, r5, pc}
 _0223C960:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CE0C
+	bl BattleMessage_BufferNumber
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CE0C
+	bl BattleMessage_BufferNumber
 	pop {r3, r4, r5, pc}
 _0223C974:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CECC
+	bl BattleMessage_BufferTrainerName
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CECC
+	bl BattleMessage_BufferTrainerName
 	pop {r3, r4, r5, pc}
 _0223C988:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CECC
+	bl BattleMessage_BufferTrainerName
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	pop {r3, r4, r5, pc}
 _0223C99C:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CECC
+	bl BattleMessage_BufferTrainerName
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CE00
+	bl BattleMessage_BufferItem
 	pop {r3, r4, r5, pc}
 _0223C9B0:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CECC
+	bl BattleMessage_BufferTrainerName
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CE0C
+	bl BattleMessage_BufferNumber
 	pop {r3, r4, r5, pc}
 _0223C9C4:
 	ldr r2, [r4, #4]
@@ -573,254 +309,254 @@ _0223C9C4:
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CECC
+	bl BattleMessage_BufferTrainerName
 	pop {r3, r4, r5, pc}
 _0223C9D8:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CDF4
+	bl BattleMessage_BufferMove
 	pop {r3, r4, r5, pc}
 _0223C9F6:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CE5C
+	bl BattleMessage_BufferAbility
 	pop {r3, r4, r5, pc}
 _0223CA14:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CE00
+	bl BattleMessage_BufferItem
 	pop {r3, r4, r5, pc}
 _0223CA32:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CDF4
+	bl BattleMessage_BufferMove
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CDF4
+	bl BattleMessage_BufferMove
 	pop {r3, r4, r5, pc}
 _0223CA50:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CDF4
+	bl BattleMessage_BufferMove
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CE0C
+	bl BattleMessage_BufferNumber
 	pop {r3, r4, r5, pc}
 _0223CA6E:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CE5C
+	bl BattleMessage_BufferAbility
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	pop {r3, r4, r5, pc}
 _0223CA8C:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CE5C
+	bl BattleMessage_BufferAbility
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CDF4
+	bl BattleMessage_BufferMove
 	pop {r3, r4, r5, pc}
 _0223CAAA:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CE5C
+	bl BattleMessage_BufferAbility
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CE00
+	bl BattleMessage_BufferItem
 	pop {r3, r4, r5, pc}
 _0223CAC8:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CE5C
+	bl BattleMessage_BufferAbility
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CE68
+	bl BattleMessage_BufferStat
 	pop {r3, r4, r5, pc}
 _0223CAE6:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CE5C
+	bl BattleMessage_BufferAbility
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CE50
+	bl BattleMessage_BufferType
 	pop {r3, r4, r5, pc}
 _0223CB04:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CE5C
+	bl BattleMessage_BufferAbility
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CE74
+	bl BattleMessage_BufferStatus
 	pop {r3, r4, r5, pc}
 _0223CB22:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CE5C
+	bl BattleMessage_BufferAbility
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CE0C
+	bl BattleMessage_BufferNumber
 	pop {r3, r4, r5, pc}
 _0223CB40:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CE00
+	bl BattleMessage_BufferItem
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	pop {r3, r4, r5, pc}
 _0223CB5E:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CE00
+	bl BattleMessage_BufferItem
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CDF4
+	bl BattleMessage_BufferMove
 	pop {r3, r4, r5, pc}
 _0223CB7C:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CE00
+	bl BattleMessage_BufferItem
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CE68
+	bl BattleMessage_BufferStat
 	pop {r3, r4, r5, pc}
 _0223CB9A:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CE00
+	bl BattleMessage_BufferItem
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CE74
+	bl BattleMessage_BufferStatus
 	pop {r3, r4, r5, pc}
 _0223CBB8:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CEE4
+	bl BattleMessage_BufferBoxName
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CEE4
+	bl BattleMessage_BufferBoxName
 	pop {r3, r4, r5, pc}
 _0223CBD6:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CE00
+	bl BattleMessage_BufferItem
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CEA8
+	bl BattleMessage_BufferFlavorPreference
 	pop {r3, r4, r5, pc}
 _0223CBF4:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CECC
+	bl BattleMessage_BufferTrainerName
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	pop {r3, r4, r5, pc}
 _0223CC12:
 	ldr r2, [r4, #4]
@@ -829,11 +565,11 @@ _0223CC12:
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CECC
+	bl BattleMessage_BufferTrainerName
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	pop {r3, r4, r5, pc}
 _0223CC30:
 	ldr r2, [r4, #4]
@@ -842,96 +578,96 @@ _0223CC30:
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CECC
+	bl BattleMessage_BufferTrainerName
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CE00
+	bl BattleMessage_BufferItem
 	pop {r3, r4, r5, pc}
 _0223CC4E:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CE5C
+	bl BattleMessage_BufferAbility
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #0x10]
 	add r0, r5, #0
 	mov r1, #3
-	bl ov12_0223CDF4
+	bl BattleMessage_BufferMove
 	pop {r3, r4, r5, pc}
 _0223CC76:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CE5C
+	bl BattleMessage_BufferAbility
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #0x10]
 	add r0, r5, #0
 	mov r1, #3
-	bl ov12_0223CE5C
+	bl BattleMessage_BufferAbility
 	pop {r3, r4, r5, pc}
 _0223CC9E:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CE5C
+	bl BattleMessage_BufferAbility
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #0x10]
 	add r0, r5, #0
 	mov r1, #3
-	bl ov12_0223CE68
+	bl BattleMessage_BufferStat
 	pop {r3, r4, r5, pc}
 _0223CCC6:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CE00
+	bl BattleMessage_BufferItem
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #0x10]
 	add r0, r5, #0
 	mov r1, #3
-	bl ov12_0223CE00
+	bl BattleMessage_BufferItem
 	pop {r3, r4, r5, pc}
 _0223CCEE:
 	ldr r2, [r4, #4]
 	mov r1, #0
-	bl ov12_0223CECC
+	bl BattleMessage_BufferTrainerName
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CECC
+	bl BattleMessage_BufferTrainerName
 	ldr r2, [r4, #0x10]
 	add r0, r5, #0
 	mov r1, #3
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	pop {r3, r4, r5, pc}
 _0223CD16:
 	ldr r2, [r4, #4]
@@ -940,15 +676,15 @@ _0223CD16:
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CECC
+	bl BattleMessage_BufferTrainerName
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #0x10]
 	add r0, r5, #0
 	mov r1, #3
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	pop {r3, r4, r5, pc}
 _0223CD3E:
 	ldr r2, [r4, #4]
@@ -957,15 +693,15 @@ _0223CD3E:
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CECC
+	bl BattleMessage_BufferTrainerName
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #0x10]
 	add r0, r5, #0
 	mov r1, #3
-	bl ov12_0223CECC
+	bl BattleMessage_BufferTrainerName
 	pop {r3, r4, r5, pc}
 _0223CD66:
 	ldr r2, [r4, #4]
@@ -974,7 +710,7 @@ _0223CD66:
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CECC
+	bl BattleMessage_BufferTrainerName
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
@@ -982,7 +718,7 @@ _0223CD66:
 	ldr r2, [r4, #0x10]
 	add r0, r5, #0
 	mov r1, #3
-	bl ov12_0223CECC
+	bl BattleMessage_BufferTrainerName
 	pop {r3, r4, r5, pc}
 _0223CD8E:
 	ldr r2, [r4, #4]
@@ -991,11 +727,11 @@ _0223CD8E:
 	ldr r2, [r4, #8]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223CECC
+	bl BattleMessage_BufferTrainerName
 	ldr r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	ldr r2, [r4, #0x10]
 	add r0, r5, #0
 	mov r1, #3
@@ -1003,11 +739,11 @@ _0223CD8E:
 	ldr r2, [r4, #0x14]
 	add r0, r5, #0
 	mov r1, #4
-	bl ov12_0223CECC
+	bl BattleMessage_BufferTrainerName
 	ldr r2, [r4, #0x18]
 	add r0, r5, #0
 	mov r1, #5
-	bl ov12_0223CDD0
+	bl BattleMessage_BufferNickname
 	pop {r3, r4, r5, pc}
 _0223CDCA:
 	bl GF_AssertFail
@@ -1015,8 +751,8 @@ _0223CDCE:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_0223C754
 
-	thumb_func_start ov12_0223CDD0
-ov12_0223CDD0: ; 0x0223CDD0
+	thumb_func_start BattleMessage_BufferNickname
+BattleMessage_BufferNickname: ; 0x0223CDD0
 	push {r3, r4, r5, lr}
 	mov r3, #0xff
 	lsl r3, r3, #8
@@ -1033,28 +769,28 @@ ov12_0223CDD0: ; 0x0223CDD0
 	bl BufferBoxMonNickname
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0223CDD0
+	thumb_func_end BattleMessage_BufferNickname
 
-	thumb_func_start ov12_0223CDF4
-ov12_0223CDF4: ; 0x0223CDF4
+	thumb_func_start BattleMessage_BufferMove
+BattleMessage_BufferMove: ; 0x0223CDF4
 	ldr r3, _0223CDFC ; =BufferMoveName
 	ldr r0, [r0, #0x14]
 	bx r3
 	nop
 _0223CDFC: .word BufferMoveName
-	thumb_func_end ov12_0223CDF4
+	thumb_func_end BattleMessage_BufferMove
 
-	thumb_func_start ov12_0223CE00
-ov12_0223CE00: ; 0x0223CE00
+	thumb_func_start BattleMessage_BufferItem
+BattleMessage_BufferItem: ; 0x0223CE00
 	ldr r3, _0223CE08 ; =BufferItemName
 	ldr r0, [r0, #0x14]
 	bx r3
 	nop
 _0223CE08: .word BufferItemName
-	thumb_func_end ov12_0223CE00
+	thumb_func_end BattleMessage_BufferItem
 
-	thumb_func_start ov12_0223CE0C
-ov12_0223CE0C: ; 0x0223CE0C
+	thumb_func_start BattleMessage_BufferNumber
+BattleMessage_BufferNumber: ; 0x0223CE0C
 	push {r3, lr}
 	sub sp, #8
 	mov r3, #0
@@ -1066,10 +802,10 @@ ov12_0223CE0C: ; 0x0223CE0C
 	bl BufferIntegerAsString
 	add sp, #8
 	pop {r3, pc}
-	thumb_func_end ov12_0223CE0C
+	thumb_func_end BattleMessage_BufferNumber
 
-	thumb_func_start ov12_0223CE24
-ov12_0223CE24: ; 0x0223CE24
+	thumb_func_start BattleMessage_BufferNumbers
+BattleMessage_BufferNumbers: ; 0x0223CE24
 	push {r4, lr}
 	sub sp, #8
 	cmp r3, #0
@@ -1091,46 +827,46 @@ _0223CE3C:
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0223CE24
+	thumb_func_end BattleMessage_BufferNumbers
 
-	thumb_func_start ov12_0223CE50
-ov12_0223CE50: ; 0x0223CE50
+	thumb_func_start BattleMessage_BufferType
+BattleMessage_BufferType: ; 0x0223CE50
 	ldr r3, _0223CE58 ; =BufferTypeName
 	ldr r0, [r0, #0x14]
 	bx r3
 	nop
 _0223CE58: .word BufferTypeName
-	thumb_func_end ov12_0223CE50
+	thumb_func_end BattleMessage_BufferType
 
-	thumb_func_start ov12_0223CE5C
-ov12_0223CE5C: ; 0x0223CE5C
+	thumb_func_start BattleMessage_BufferAbility
+BattleMessage_BufferAbility: ; 0x0223CE5C
 	ldr r3, _0223CE64 ; =BufferAbilityName
 	ldr r0, [r0, #0x14]
 	bx r3
 	nop
 _0223CE64: .word BufferAbilityName
-	thumb_func_end ov12_0223CE5C
+	thumb_func_end BattleMessage_BufferAbility
 
-	thumb_func_start ov12_0223CE68
-ov12_0223CE68: ; 0x0223CE68
+	thumb_func_start BattleMessage_BufferStat
+BattleMessage_BufferStat: ; 0x0223CE68
 	ldr r3, _0223CE70 ; =BufferStatName
 	ldr r0, [r0, #0x14]
 	bx r3
 	nop
 _0223CE70: .word BufferStatName
-	thumb_func_end ov12_0223CE68
+	thumb_func_end BattleMessage_BufferStat
 
-	thumb_func_start ov12_0223CE74
-ov12_0223CE74: ; 0x0223CE74
+	thumb_func_start BattleMessage_BufferStatus
+BattleMessage_BufferStatus: ; 0x0223CE74
 	ldr r3, _0223CE7C ; =BufferStatusName
 	ldr r0, [r0, #0x14]
 	bx r3
 	nop
 _0223CE7C: .word BufferStatusName
-	thumb_func_end ov12_0223CE74
+	thumb_func_end BattleMessage_BufferStatus
 
-	thumb_func_start ov12_0223CE80
-ov12_0223CE80: ; 0x0223CE80
+	thumb_func_start BattleMessage_BufferPokemon
+BattleMessage_BufferPokemon: ; 0x0223CE80
 	push {r3, r4, r5, lr}
 	mov r3, #0xff
 	lsl r3, r3, #8
@@ -1147,22 +883,22 @@ ov12_0223CE80: ; 0x0223CE80
 	bl BufferBoxMonSpeciesName
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov12_0223CE80
+	thumb_func_end BattleMessage_BufferPokemon
 
-	thumb_func_start ov12_0223CEA4
-ov12_0223CEA4: ; 0x0223CEA4
+	thumb_func_start BattleMessage_BufferPoffin
+BattleMessage_BufferPoffin: ; 0x0223CEA4
 	bx lr
 	.balign 4, 0
-	thumb_func_end ov12_0223CEA4
+	thumb_func_end BattleMessage_BufferPoffin
 
-	thumb_func_start ov12_0223CEA8
-ov12_0223CEA8: ; 0x0223CEA8
+	thumb_func_start BattleMessage_BufferFlavorPreference
+BattleMessage_BufferFlavorPreference: ; 0x0223CEA8
 	ldr r3, _0223CEB0 ; =BufferFlavorDislikeText
 	ldr r0, [r0, #0x14]
 	bx r3
 	nop
 _0223CEB0: .word BufferFlavorDislikeText
-	thumb_func_end ov12_0223CEA8
+	thumb_func_end BattleMessage_BufferFlavorPreference
 
 	thumb_func_start ov12_0223CEB4
 ov12_0223CEB4: ; 0x0223CEB4
@@ -1178,8 +914,8 @@ ov12_0223CEB4: ; 0x0223CEB4
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov12_0223CEB4
 
-	thumb_func_start ov12_0223CECC
-ov12_0223CECC: ; 0x0223CECC
+	thumb_func_start BattleMessage_BufferTrainerName
+BattleMessage_BufferTrainerName: ; 0x0223CECC
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -1190,10 +926,10 @@ ov12_0223CECC: ; 0x0223CECC
 	add r1, r4, #0
 	bl BufferTrainerNameFromDataStruct
 	pop {r3, r4, r5, pc}
-	thumb_func_end ov12_0223CECC
+	thumb_func_end BattleMessage_BufferTrainerName
 
-	thumb_func_start ov12_0223CEE4
-ov12_0223CEE4: ; 0x0223CEE4
+	thumb_func_start BattleMessage_BufferBoxName
+BattleMessage_BufferBoxName: ; 0x0223CEE4
 	push {r4, lr}
 	add r4, r0, #0
 	add r3, r2, #0
@@ -1201,7 +937,7 @@ ov12_0223CEE4: ; 0x0223CEE4
 	ldr r2, [r4, #0x64]
 	bl BufferPCBoxName
 	pop {r4, pc}
-	thumb_func_end ov12_0223CEE4
+	thumb_func_end BattleMessage_BufferBoxName
 
 	thumb_func_start ov12_0223CEF4
 ov12_0223CEF4: ; 0x0223CEF4

@@ -9,6 +9,7 @@
 #include "battle/overlay_12_0224E4FC.h"
 #include "battle/overlay_12_0226BEC4.h"
 #include "constants/game_stats.h"
+#include "constants/message_tags.h"
 #include "unk_0202FBCC.h"
 #include "unk_0200FA24.h"
 #include "unk_02005D10.h"
@@ -1423,4 +1424,138 @@ u32 ov12_0223C4E8(BattleSystem *bsys, Window *window, MsgData *data, BattleMessa
     }
     
     return AddTextPrinterParameterized(window, 0, bsys->msgBuffer, x + dx, y, delay, ov12_0223CF14);
+}
+
+static void ov12_0223C558(BattleSystem *bsys, BattleMessage *msg) {
+    u32 battleType = BattleSystem_GetBattleType(bsys);
+    
+    if (msg->tag & 0x80) {
+        return;
+    }
+    
+    if (msg->tag & 0x40) {
+        if (BattleSystem_GetFieldSide(bsys, msg->battlerId)) {
+            msg->id++;
+        }
+        return;
+    }
+    
+    switch (msg->tag & 0x3F) {
+    case TAG_NONE:
+    case TAG_MOVE:
+    case TAG_STAT:
+    case TAG_ITEM:
+    case TAG_NUMBER:
+    case TAG_NUMBERS:
+    case TAG_TRNAME:
+    case TAG_MOVE_MOVE:
+    case TAG_ITEM_MOVE:
+    case TAG_NUMBER_NUMBER:
+    case TAG_TRNAME_TRNAME:
+    case TAG_TRNAME_NICKNAME:
+    case TAG_TRNAME_ITEM:
+    case TAG_TRNAME_NUM:
+    case TAG_TRCLASS_TRNAME:
+    case TAG_TRNAME_NICKNAME_NICKNAME:
+    case TAG_TRCLASS_TRNAME_NICKNAME:
+    case TAG_TRCLASS_TRNAME_ITEM:
+    case TAG_TRNAME_NICKNAME_TRNAME_NICKNAME:
+    case TAG_TRCLASS_TRNAME_NICKNAME_NICKNAME:
+    case TAG_TRCLASS_TRNAME_NICKNAME_TRNAME:
+    case TAG_TRCLASS_TRNAME_TRCLASS_TRNAME:
+    case TAG_TRCLASS_TRNAME_NICKNAME_TRCLASS_TRNAME_NICKNAME:
+        break;
+    case TAG_NONE_SIDE:
+        if (BattleSystem_GetFieldSide(bsys, msg->param[0] & 0xFF)) {
+            msg->id++;
+        }
+        break;
+    case TAG_NICKNAME:
+    case TAG_NICKNAME_MOVE:
+    case TAG_NICKNAME_ABILITY:
+    case TAG_NICKNAME_STAT:
+    case TAG_NICKNAME_TYPE:
+    case TAG_NICKNAME_POKE:
+    case TAG_NICKNAME_ITEM:
+    case TAG_NICKNAME_POFFIN:
+    case TAG_NICKNAME_NUM:
+    case TAG_NICKNAME_TRNAME:
+    case TAG_NICKNAME_BOX:
+    case TAG_NICKNAME_MOVE_MOVE:
+    case TAG_NICKNAME_MOVE_NUMBER:
+    case TAG_NICKNAME_ABILITY_MOVE:
+    case TAG_NICKNAME_ABILITY_ITEM:
+    case TAG_NICKNAME_ABILITY_STAT:
+    case TAG_NICKNAME_ABILITY_TYPE:
+    case TAG_NICKNAME_ABILITY_STATUS:
+    case TAG_NICKNAME_ABILITY_NUMBER:
+    case TAG_NICKNAME_ITEM_MOVE:
+    case TAG_NICKNAME_ITEM_STAT:
+    case TAG_NICKNAME_ITEM_STATUS:
+    case TAG_NICKNAME_BOX_BOX:
+        if (BattleSystem_GetFieldSide(bsys, msg->param[0] & 0xFF)) {
+            msg->id++;
+            if (battleType & BATTLE_TYPE_TRAINER) {
+                msg->id++;
+            }
+        }
+        break;
+    case TAG_MOVE_SIDE:
+        if (BattleSystem_GetFieldSide(bsys, msg->param[1] & 0xFF)) {
+            msg->id++;
+        }
+        break;
+    case TAG_MOVE_NICKNAME:
+    case TAG_ABILITY_NICKNAME:
+    case TAG_ITEM_NICKNAME_FLAVOR:
+        if (BattleSystem_GetFieldSide(bsys, msg->param[1] & 0xFF)) {
+            msg->id++;
+            if (battleType & BATTLE_TYPE_TRAINER) {
+                msg->id++;
+            }
+        }
+        break;
+    case TAG_NICKNAME_NICKNAME:
+    case TAG_NICKNAME_NICKNAME_MOVE:
+    case TAG_NICKNAME_NICKNAME_ABILITY:
+    case TAG_NICKNAME_NICKNAME_ITEM:
+        if (BattleSystem_GetFieldSide(bsys, msg->param[0] & 0xFF)) {
+            msg->id += 3;
+            if (battleType & BATTLE_TYPE_TRAINER) {
+                msg->id += 2;
+            }
+            if (BattleSystem_GetFieldSide(bsys, msg->param[1] & 0xFF)) {
+                msg->id++;
+            }
+        } else if (BattleSystem_GetFieldSide(bsys, msg->param[1] & 0xFF)) {
+            msg->id++;
+            if (battleType & BATTLE_TYPE_TRAINER) {
+                msg->id++;
+            }
+        }
+        break;
+    case TAG_NICKNAME_ABILITY_NICKNAME:
+    case TAG_NICKNAME_ITEM_NICKNAME:
+    case TAG_NICKNAME_ABILITY_NICKNAME_MOVE:
+    case TAG_NICKNAME_ABILITY_NICKNAME_ABILITY:
+    case TAG_NICKNAME_ABILITY_NICKNAME_STAT:
+    case TAG_NICKNAME_ITEM_NICKNAME_ITEM:
+        if (BattleSystem_GetFieldSide(bsys, msg->param[0] & 0xFF)) {
+            msg->id += 3;
+            if (battleType & BATTLE_TYPE_TRAINER) {
+                msg->id += 2;
+            }
+            if (BattleSystem_GetFieldSide(bsys, msg->param[2] & 0xFF)) {
+                msg->id++;
+            }
+        } else if (BattleSystem_GetFieldSide(bsys, msg->param[2] & 0xFF)) {
+            msg->id++;
+            if (battleType & BATTLE_TYPE_TRAINER) {
+                msg->id++;
+            }
+        }
+        break;
+    default:
+        GF_ASSERT(0);
+    }
 }
