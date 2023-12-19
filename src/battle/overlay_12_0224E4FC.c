@@ -16,6 +16,7 @@
 #include "constants/items.h"
 #include "constants/moves.h"
 #include "constants/species.h"
+#include "constants/message_tags.h"
 #include "constants/move_effects.h"
 #include "msgdata/msg/msg_0197.h"
 
@@ -2040,49 +2041,49 @@ BOOL ov12_02251A28(BattleSystem *bsys, BattleContext *ctx, int battlerId, int mo
     BOOL ret = TRUE;
     
     if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_DISABLED) & MaskOfFlagNo(movePos)) {
-        msg->tag = 10;
+        msg->tag = TAG_NICKNAME_MOVE;
         msg->id = msg_0197_00609;
         msg->param[0] = CreateNicknameTag(ctx, battlerId);
         msg->param[1] = ctx->battleMons[battlerId].moves[movePos];
         ret = FALSE;
     } else if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_TORMENT) & MaskOfFlagNo(movePos)) {
-        msg->tag = 2;
+        msg->tag = TAG_NICKNAME;
         msg->id = msg_0197_00612;
         msg->param[0] = CreateNicknameTag(ctx, battlerId);
         ret = FALSE;
     } else if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_TAUNT) & MaskOfFlagNo(movePos)) {
-        msg->tag = 10;
+        msg->tag = TAG_NICKNAME_MOVE;
         msg->id = msg_0197_00613;
         msg->param[0] = CreateNicknameTag(ctx, battlerId);
         msg->param[1] = ctx->battleMons[battlerId].moves[movePos];
         ret = FALSE;
     } else if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_IMPRISON) & MaskOfFlagNo(movePos)) {
-        msg->tag = 10;
+        msg->tag = TAG_NICKNAME_MOVE;
         msg->id = msg_0197_00616;
         msg->param[0] = CreateNicknameTag(ctx, battlerId);
         msg->param[1] = ctx->battleMons[battlerId].moves[movePos];
         ret = FALSE;
     } else if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_GRAVITY) & MaskOfFlagNo(movePos)) {
-        msg->tag = 10;
+        msg->tag = TAG_NICKNAME_MOVE;
         msg->id = msg_0197_01001;
         msg->param[0] = CreateNicknameTag(ctx, battlerId);
         msg->param[1] = ctx->battleMons[battlerId].moves[movePos];
         ret = FALSE;
     } else if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_HEAL_BLOCK) & MaskOfFlagNo(movePos)) {
-        msg->tag = 34;
+        msg->tag = TAG_NICKNAME_MOVE_MOVE;
         msg->id = msg_0197_01057;
         msg->param[0] = CreateNicknameTag(ctx, battlerId);
         msg->param[1] = MOVE_HEAL_BLOCK;
         msg->param[2] = ctx->battleMons[battlerId].moves[movePos];
         ret = FALSE;
     } else if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_CHOICED) & MaskOfFlagNo(movePos)) {
-        msg->tag = 24;
+        msg->tag = TAG_ITEM_MOVE;
         msg->id = msg_0197_00911;
         msg->param[0] = ctx->battleMons[battlerId].item;
         msg->param[1] = ctx->battleMons[battlerId].unk88.moveNoChoice;
         ret = FALSE;
     } else if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_NO_PP) & MaskOfFlagNo(movePos)) {
-        msg->tag = 0;
+        msg->tag = TAG_NONE;
         msg->id = msg_0197_00823;
         ret = FALSE;
     } 
@@ -2781,7 +2782,7 @@ BOOL CantEscape(BattleSystem *bsys, BattleContext *ctx, int battlerId, BattleMes
         if (msg == NULL) {
             return TRUE;
         }
-        msg->tag = 11;
+        msg->tag = TAG_NICKNAME_ABILITY;
         msg->id = msg_0197_00039;
         msg->param[0] = CreateNicknameTag(ctx, battlerIdAbility);
         msg->param[1] = ABILITY_SHADOW_TAG;
@@ -2796,7 +2797,7 @@ BOOL CantEscape(BattleSystem *bsys, BattleContext *ctx, int battlerId, BattleMes
                if (msg == NULL) {
                     return TRUE;
                 }
-                msg->tag = 11;
+                msg->tag = TAG_NICKNAME_ABILITY;
                 msg->id = msg_0197_00039;
                 msg->param[0] = CreateNicknameTag(ctx, battlerIdAbility);
                 msg->param[1] = ABILITY_ARENA_TRAP;
@@ -2806,7 +2807,7 @@ BOOL CantEscape(BattleSystem *bsys, BattleContext *ctx, int battlerId, BattleMes
             if (msg == NULL) {
                 return TRUE;
             }
-            msg->tag = 11;
+            msg->tag = TAG_NICKNAME_ABILITY;
             msg->id = msg_0197_00039;
             msg->param[0] = CreateNicknameTag(ctx, battlerIdAbility);
             msg->param[1] = ABILITY_ARENA_TRAP;
@@ -2819,7 +2820,7 @@ BOOL CantEscape(BattleSystem *bsys, BattleContext *ctx, int battlerId, BattleMes
         if (msg == NULL) {
             return TRUE;
         }
-        msg->tag = 11;
+        msg->tag = TAG_NICKNAME_ABILITY;
         msg->id = msg_0197_00039;
         msg->param[0] = CreateNicknameTag(ctx, battlerIdAbility);
         msg->param[1] = ABILITY_MAGNET_PULL;
@@ -2830,7 +2831,7 @@ BOOL CantEscape(BattleSystem *bsys, BattleContext *ctx, int battlerId, BattleMes
         if (msg == NULL) {
             return TRUE;
         }
-        msg->tag = 0;
+        msg->tag = TAG_NONE;
         msg->id = msg_0197_00794;
         return TRUE;
     }

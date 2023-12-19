@@ -7,6 +7,7 @@
 #include "heap.h"
 #include "constants/abilities.h"
 #include "constants/items.h"
+#include "constants/message_tags.h"
 #include "msgdata/msg/msg_0197.h"
 
 extern ControllerFunction sPlayerBattleCommands[];
@@ -280,7 +281,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BattleConte
                             ctx->unk_21A8[battlerId][0] = 21;
                         } else if (BattleSystem_GetBattleType(bsys) & (BATTLE_TYPE_LINK | BATTLE_TYPE_TOWER)) {
                             msg.id = msg_0197_00593; //Items can't be used here
-                            msg.tag = 0;
+                            msg.tag = TAG_NONE;
                             ov12_022639B8(bsys, battlerId, msg);
                             ctx->unk_0[battlerId] = SSI_STATE_15;
                             ctx->unk_4[battlerId] = SSI_STATE_0;
@@ -412,7 +413,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BattleConte
                     ov12_0223BFFC(bsys, 1);
                     ov12_022581BC(bsys, BattleSystem_GetBattleContext(bsys));
                 } else {
-                    msg.tag = 0;
+                    msg.tag = TAG_NONE;
                     msg.id = msg_0197_00793; //There's no running from a Trainer battle!
                     ov12_022639B8(bsys, battlerId, msg);
                     ctx->unk_0[battlerId] = SSI_STATE_15;
@@ -474,7 +475,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BattleConte
             }
             break;
         case SSI_STATE_NO_MOVES:
-            msg.tag = 2;
+            msg.tag = TAG_NICKNAME;
             msg.id = msg_0197_00608; //Spheal has no moves left!
             msg.param[0] = CreateNicknameTag(ctx, battlerId);
             ov12_022639B8(bsys, battlerId, msg);
@@ -853,7 +854,7 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
                 if (ctx->fieldConditionData.wishTurns[side]) {
                     if (--ctx->fieldConditionData.wishTurns[side] == 0 && ctx->battleMons[side].hp) {
                         ctx->battlerIdTemp = side;
-                        ctx->buffMsg.tag = 2;
+                        ctx->buffMsg.tag = TAG_NICKNAME;
                         ctx->buffMsg.id = msg_0197_00533; //Spheal's wish came true!
                         ctx->buffMsg.param[0] = side | (ctx->fieldConditionData.wishTarget[side] << 8);
                         ctx->hpCalc = DamageDivide(ctx->battleMons[side].maxHp, 2);
@@ -877,7 +878,7 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
             if (ctx->fieldCondition & FIELD_CONDITION_RAIN_ALL) {
                 if (ctx->fieldCondition & FIELD_CONDITION_RAIN_PERMANENT) {
                     ctx->buffMsg.id = msg_0197_00801; //Rain continues to fall.
-                    ctx->buffMsg.tag = 0;
+                    ctx->buffMsg.tag = TAG_NONE;
                     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
@@ -887,7 +888,7 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 } else {
                     ctx->buffMsg.id = msg_0197_00801; //Rain continues to fall.
-                    ctx->buffMsg.tag = 0;
+                    ctx->buffMsg.tag = TAG_NONE;
                     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
@@ -901,7 +902,7 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
             if (ctx->fieldCondition & FIELD_CONDITION_SANDSTORM_ALL) {
                 if (ctx->fieldCondition & FIELD_CONDITION_SANDSTORM_PERMANENT) {
                     ctx->buffMsg.id = msg_0197_00805; //The sandstorm rages.
-                    ctx->buffMsg.tag = 0;
+                    ctx->buffMsg.tag = TAG_NONE;
                     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
@@ -911,7 +912,7 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 } else {
                     ctx->buffMsg.id = msg_0197_00805; //The sandstorm rages.
-                    ctx->buffMsg.tag = 0;
+                    ctx->buffMsg.tag = TAG_NONE;
                     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
@@ -925,7 +926,7 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
             if (ctx->fieldCondition & FIELD_CONDITION_SUN_ALL) {
                 if (ctx->fieldCondition & FIELD_CONDITION_SUN_PERMANENT) {
                     ctx->buffMsg.id = msg_0197_00808; //The sunlight is strong.
-                    ctx->buffMsg.tag = 0;
+                    ctx->buffMsg.tag = TAG_NONE;
                     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
@@ -935,7 +936,7 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 } else {
                     ctx->buffMsg.id = msg_0197_00808; //The sunlight is strong.
-                    ctx->buffMsg.tag = 0;
+                    ctx->buffMsg.tag = TAG_NONE;
                     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
@@ -949,7 +950,7 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
             if (ctx->fieldCondition & FIELD_CONDITION_HAIL_ALL) {
                 if (ctx->fieldCondition & FIELD_CONDITION_HAIL_PERMANENT) {
                     ctx->buffMsg.id = msg_0197_00811; //Hail continues to fall.
-                    ctx->buffMsg.tag = 0;
+                    ctx->buffMsg.tag = TAG_NONE;
                     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
@@ -959,7 +960,7 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 } else {
                     ctx->buffMsg.id = msg_0197_00811; //Hail continues to fall.
-                    ctx->buffMsg.tag = 0;
+                    ctx->buffMsg.tag = TAG_NONE;
                     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
@@ -972,7 +973,7 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
         case UFC_STATE_FOG:
             if (ctx->fieldCondition & FIELD_CONDITION_FOG) {
                 ctx->buffMsg.id = msg_0197_00813; //The fog is deep...
-                ctx->buffMsg.tag = 0;
+                ctx->buffMsg.tag = TAG_NONE;
                 ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
                 ctx->commandNext = ctx->command;
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
@@ -1463,7 +1464,7 @@ void BattleControllerPlayer_UpdateFieldConditionExtra(BattleSystem *bsys, Battle
                 if (!(--ctx->fieldConditionData.futureSightTurns[battlerId]) && ctx->battleMons[battlerId].hp) {
                     ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(bsys, battlerId)] &= ~SIDE_CONDITION_FUTURE_SIGHT;
                     ctx->buffMsg.id = msg_0197_00475; //Seadra took the Doom Desire attack!
-                    ctx->buffMsg.tag = 10;
+                    ctx->buffMsg.tag = TAG_NICKNAME_MOVE;
                     ctx->buffMsg.param[0] = CreateNicknameTag(ctx, battlerId);
                     ctx->buffMsg.param[1] = ctx->fieldConditionData.futureSightMoveNo[battlerId];
                     ctx->battlerIdTemp = battlerId;
