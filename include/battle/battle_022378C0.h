@@ -31,5 +31,6 @@ void ov12_0223A620(BattleSystem *bsys);
 //the following functions aren't static/haven't been checked to their status and are yet to be decompiled
 void ov12_02238A30(BgConfig *config);
 void ov12_02238A64(BattleSystem *bsys);
+void ov12_02237ED0(BattleSystem *bsys, int a1);
 
 #endif

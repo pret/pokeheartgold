@@ -4,6 +4,7 @@
 #include "battle/battle_controller_opponent.h"
 #include "battle/battle_system.h"
 #include "battle/overlay_12_0224E4FC.h"
+#include "battle/battle_022378C0.h"
 #include "heap.h"
 #include "constants/abilities.h"
 #include "constants/items.h"

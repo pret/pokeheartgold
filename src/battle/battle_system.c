@@ -1,15 +1,20 @@
 #include "global.h"
 #include "battle/battle_hp_bar.h"
+#include "battle/battle_controller.h"
 #include "battle/battle_controller_opponent.h"
 #include "battle/battle_system.h"
+#include "battle/battle_022378C0.h"
+#include "battle/battle_02265E28.h"
 #include "msgdata.h"
 #include "party.h"
 #include "pokemon_mood.h"
 #include "text.h"
 #include "battle/overlay_12_0224E4FC.h"
 #include "battle/overlay_12_0226BEC4.h"
+#include "battle/overlay_12_02266024.h"
 #include "constants/game_stats.h"
 #include "constants/message_tags.h"
+#include "constants/sndseq.h"
 #include "unk_0202FBCC.h"
 #include "unk_0200FA24.h"
 #include "unk_02005D10.h"
@@ -20,6 +25,20 @@ static void BattleSystem_BufferMessage(BattleSystem *bsys, BattleMessage *msg);
 static void BattleMessage_BufferNickname(BattleSystem *bsys, int bufferIndex, int param);
 static void BattleMessage_BufferMove(BattleSystem *bsys, int bufferIndex, int param);
 static void BattleMessage_BufferItem(BattleSystem *bsys, int bufferIndex, int param);
+static void BattleMessage_BufferNumber(BattleSystem *bsys, int bufferIndex, int param);
+static void BattleMessage_BufferNumbers(BattleSystem *bsys, int bufferIndex, int param, int a3);
+static void BattleMessage_BufferType(BattleSystem *bsys, int bufferIndex, int param);
+static void BattleMessage_BufferAbility(BattleSystem *bsys, int bufferIndex, int param);
+static void BattleMessage_BufferStat(BattleSystem *bsys, int bufferIndex, int param);
+static void BattleMessage_BufferStatus(BattleSystem *bsys, int bufferIndex, int param);
+static void BattleMessage_BufferPokemon(BattleSystem *bsys, int bufferIndex, int param);
+static void BattleMessage_BufferPoffin(BattleSystem *bsys, int bufferIndex, int param);
+static void BattleMessage_BufferFlavorPreference(BattleSystem *bsys, int bufferIndex, int param);
+static void BattleMessage_BufferTrainerClass(BattleSystem *bsys, int bufferIndex, int param);
+static void BattleMessage_BufferTrainerName(BattleSystem *bsys, int bufferIndex, int param);
+static void BattleMessage_BufferBoxName(BattleSystem *bsys, int bufferIndex, int param);
+static void BattleMessage_ExpandPlaceholders(BattleSystem *bsys, MsgData *data, BattleMessage *msg);
+static BOOL ov12_0223CF14(struct TextPrinterTemplate *template, u16 glyphId);
 
 BgConfig *BattleSystem_GetBgConfig(BattleSystem *bsys) {
     return bsys->bgConfig;
@@ -1406,7 +1425,7 @@ u32 BattleSystem_PrintBattleMessage(BattleSystem *bsys, MsgData *data, BattleMes
     Window *window = BattleSystem_GetWindow(bsys, 0);
     BattleSystem_AdjustMessageForSide(bsys, msg);
     BattleSystem_BufferMessage(bsys, msg);
-    ov12_0223CEF4(bsys, data, msg);
+    BattleMessage_ExpandPlaceholders(bsys, data, msg);
     FillWindowPixelBuffer(window, 0xFF);
     return AddTextPrinterParameterized(window, 1, bsys->msgBuffer, 0, 0, delay, ov12_0223CF14);
 }
@@ -1416,7 +1435,7 @@ u32 ov12_0223C4E8(BattleSystem *bsys, Window *window, MsgData *data, BattleMessa
     
     BattleSystem_AdjustMessageForSide(bsys, msg);
     BattleSystem_BufferMessage(bsys, msg);
-    ov12_0223CEF4(bsys, data, msg);
+    BattleMessage_ExpandPlaceholders(bsys, data, msg);
     
     if (flag & 1) {
         FillWindowPixelBuffer(window, 0xFF);
@@ -1853,4 +1872,92 @@ static void BattleMessage_BufferMove(BattleSystem *bsys, int bufferIndex, int pa
 
 static void BattleMessage_BufferItem(BattleSystem *bsys, int bufferIndex, int param) {
     BufferItemName(bsys->msgFormat, bufferIndex, param);
+}
+
+static void BattleMessage_BufferNumber(BattleSystem *bsys, int bufferIndex, int param) {
+    BufferIntegerAsString(bsys->msgFormat, bufferIndex, param, 5, PRINTING_MODE_LEFT_ALIGN, TRUE);
+}
+
+static void BattleMessage_BufferNumbers(BattleSystem *bsys, int bufferIndex, int param, int a3) {
+    if (a3) {
+        BufferIntegerAsString(bsys->msgFormat, bufferIndex, param, a3, PRINTING_MODE_RIGHT_ALIGN, TRUE);
+    } else {
+        BufferIntegerAsString(bsys->msgFormat, bufferIndex, param, 5, PRINTING_MODE_RIGHT_ALIGN, TRUE);
+    }
+    
+}
+
+static void BattleMessage_BufferType(BattleSystem *bsys, int bufferIndex, int param) {
+    BufferTypeName(bsys->msgFormat, bufferIndex, param);
+}
+
+static void BattleMessage_BufferAbility(BattleSystem *bsys, int bufferIndex, int param) {
+    BufferAbilityName(bsys->msgFormat, bufferIndex, param);
+}
+
+static void BattleMessage_BufferStat(BattleSystem *bsys, int bufferIndex, int param) {
+    BufferStatName(bsys->msgFormat, bufferIndex, param);
+}
+
+static void BattleMessage_BufferStatus(BattleSystem *bsys, int bufferIndex, int param) {
+    BufferStatusName(bsys->msgFormat, bufferIndex, param);
+}
+
+static void BattleMessage_BufferPokemon(BattleSystem *bsys, int bufferIndex, int param) {
+    Pokemon *mon = BattleSystem_GetPartyMon(bsys, param & 0xFF, (param & 0xFF00) >> 8);
+    BufferBoxMonSpeciesName(bsys->msgFormat, bufferIndex, &mon->box);
+}
+
+static void BattleMessage_BufferPoffin(BattleSystem *bsys, int bufferIndex, int param) {
+    //poffins don't exist in HGSS
+}
+
+static void BattleMessage_BufferFlavorPreference(BattleSystem *bsys, int bufferIndex, int param) {
+    BufferFlavorDislikeText(bsys->msgFormat, bufferIndex, param);
+}
+
+static void BattleMessage_BufferTrainerClass(BattleSystem *bsys, int bufferIndex, int param) {
+    Trainer *trainer = BattleSystem_GetTrainer(bsys, param);
+    BufferTrainerClassNameFromDataStruct(bsys->msgFormat, bufferIndex, trainer);
+}
+
+static void BattleMessage_BufferTrainerName(BattleSystem *bsys, int bufferIndex, int param) {
+    Trainer *trainer = BattleSystem_GetTrainer(bsys, param);
+    BufferTrainerNameFromDataStruct(bsys->msgFormat, bufferIndex, trainer);
+}
+
+static void BattleMessage_BufferBoxName(BattleSystem *bsys, int bufferIndex, int param) {
+    BufferPCBoxName(bsys->msgFormat, bufferIndex, bsys->storage, param);
+}
+
+static void BattleMessage_ExpandPlaceholders(BattleSystem *bsys, MsgData *data, BattleMessage *msg) {
+    String *str = NewString_ReadMsgData(data, msg->id);
+    StringExpandPlaceholders(bsys->msgFormat, bsys->msgBuffer, str);
+    String_Delete(str);
+}
+
+static BOOL ov12_0223CF14(struct TextPrinterTemplate *template, u16 glyphId) {
+    BOOL ret = FALSE;
+    
+    switch (glyphId) {
+    case 1:
+        ret = GF_IsAnySEPlaying();
+        break;
+    case 2:
+        ret = IsFanfarePlaying();
+        break;
+    case 3:
+        PlayFanfare(0x4A3);
+        break;
+    case 4:
+        PlaySE(SEQ_SE_DP_KON);
+        break;
+    case 5:
+        PlayFanfare(0x4A0);
+        break;
+    default:
+        break;
+    }
+    
+    return ret;
 }

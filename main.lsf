@@ -570,7 +570,6 @@ Overlay OVY_12
     Object src/battle/battle_022378C0.o
     Object asm/overlay_12_022378C0.o
     Object src/battle/battle_system.o
-    Object asm/overlay_12_battle_system.o
     Object src/battle/battle_command.o
     Object asm/overlay_12_battle_command.o
     Object src/battle/battle_controller_player.o
