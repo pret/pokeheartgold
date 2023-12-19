@@ -533,8 +533,8 @@ static void ov78_021E6068(CertificatesApp_Data *data) {
 
     BufferPlayersName(data->msgFmt, 0, data->profile);
     StringExpandPlaceholders(data->msgFmt, string, tempString);
-    AddTextPrinterParameterized2(&data->window1, 0, string, x1, y1, TEXT_SPEED_INSTANT, MakeTextColor(1, 2, 0), NULL);
-    AddTextPrinterParameterized2(&data->window2, 0, string, x1, y1, TEXT_SPEED_INSTANT, MakeTextColor(1, 2, 0), NULL);
+    AddTextPrinterParameterized2(&data->window1, 0, string, x1, y1, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterized2(&data->window2, 0, string, x1, y1, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     String_Delete(tempString);
 
     u32 msgNum;
@@ -546,13 +546,13 @@ static void ov78_021E6068(CertificatesApp_Data *data) {
         msgNum = msg_0004_00005;
     }
     ReadMsgDataIntoString(data->msgData, msgNum, string);
-    AddTextPrinterParameterized2(&data->window1, 0, string, x2, y2, TEXT_SPEED_INSTANT, MakeTextColor(1, 2, 0), NULL);
-    AddTextPrinterParameterized2(&data->window2, 0, string, x2, y2, TEXT_SPEED_INSTANT, MakeTextColor(1, 2, 0), NULL);
+    AddTextPrinterParameterized2(&data->window1, 0, string, x2, y2, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterized2(&data->window2, 0, string, x2, y2, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 
     if (data->certificateId != CERTIFICATE_SHINY_LEAVES) {
         ReadMsgDataIntoString(data->msgData, msg_0004_00003, string);
-        AddTextPrinterParameterized2(&data->window1, 0, string, 138, 144, TEXT_SPEED_INSTANT, MakeTextColor(1, 2, 0), NULL);
-        AddTextPrinterParameterized2(&data->window2, 0, string, 138, 144, TEXT_SPEED_INSTANT, MakeTextColor(1, 2, 0), NULL);
+        AddTextPrinterParameterized2(&data->window1, 0, string, 138, 144, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        AddTextPrinterParameterized2(&data->window2, 0, string, 138, 144, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     }
 
     String_Delete(string);

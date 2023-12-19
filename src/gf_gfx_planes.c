@@ -89,6 +89,6 @@ void GfGfx_SwapDisplay(void) {
     }
 }
 
-u32 GfGfx_EngineBGetPlanes(void) {
+u32 GfGfx_EngineAGetPlanes(void) {
     return sEngineAPlanes;
 }
