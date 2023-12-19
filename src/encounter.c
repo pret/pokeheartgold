@@ -1,7 +1,7 @@
 #include "global.h"
 #include "battle/battle_setup.h"
 #include "encounter.h"
-#include "field_black_out.h"
+#include "blackout.h"
 #include "field_map_object.h"
 #include "field_system.h"
 #include "field_warp_tasks.h"
@@ -375,7 +375,7 @@ static BOOL Task_WildEncounter(TaskManager *taskManager) {
 
             if (IsBattleResultWin(encounter->setup->winFlag) == FALSE) {
                 WildEncounter_Delete(encounter);
-                TaskManager_Jump(taskManager, FieldTask_BlackOut, NULL);
+                TaskManager_Jump(taskManager, Task_Blackout, NULL);
                 return FALSE;
             }
 

@@ -6,7 +6,7 @@
 #include "sys_vars.h"
 #include "map_header.h"
 #include "unk_02054E00.h"
-#include "field_black_out.h"
+#include "blackout.h"
 #include "battle/battle_setup.h"
 #include "script_pokemon_util.h"
 #include "field_map_object.h"
@@ -197,7 +197,7 @@ BOOL ScrCmd_EncounterMusic(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_WhiteOut(ScriptContext *ctx) {
-    CallFieldTask_BlackOut(ctx->taskman);
+    CallTask_Blackout(ctx->taskman);
     return TRUE;
 }
 

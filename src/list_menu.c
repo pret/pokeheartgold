@@ -30,7 +30,7 @@ struct ListMenu *ListMenuInit(const struct ListMenuTemplate *template, u16 curso
     }
     ListMenuCursorSetColor(
         list->cursor,
-        MakeTextColor(list->template.cursorPal, list->template.cursorShadowPal, list->template.fillValue)
+        MAKE_TEXT_COLOR(list->template.cursorPal, list->template.cursorShadowPal, list->template.fillValue)
     );
     FillWindowPixelBuffer(list->template.window, list->template.fillValue);
     ListMenuPrintEntries(list, list->cursorPos, 0, list->template.maxShowed);
@@ -178,9 +178,9 @@ s32 ListMenuGetTemplateField(struct ListMenu *list, enum ListMenuAttr attr) {
 static void ListMenuPrint(struct ListMenu *list, String *str, u8 x, u8 y) {
     if (str != NULL) {
         if (list->overrideEnabled) {
-            AddTextPrinterParameterized3(list->template.window, list->fontId, str, x, y, 0xFF, MakeTextColor(list->cursorPal, list->cursorShadowPal, list->fillValue), list->lettersSpacing, 0, NULL);
+            AddTextPrinterParameterized3(list->template.window, list->fontId, str, x, y, 0xFF, MAKE_TEXT_COLOR(list->cursorPal, list->cursorShadowPal, list->fillValue), list->lettersSpacing, 0, NULL);
         } else {
-            AddTextPrinterParameterized3(list->template.window, list->template.fontId, str, x, y, 0xFF, MakeTextColor(list->template.cursorPal, list->template.cursorShadowPal, list->template.fillValue), list->template.lettersSpacing, 0, NULL);
+            AddTextPrinterParameterized3(list->template.window, list->template.fontId, str, x, y, 0xFF, MAKE_TEXT_COLOR(list->template.cursorPal, list->template.cursorShadowPal, list->template.fillValue), list->template.lettersSpacing, 0, NULL);
         }
     }
 }

@@ -2,8 +2,8 @@
 #include "field_alph_checks.h"
 #include "save_local_field_data.h"
 
-BOOL CheckUseEscapeRopeInAlphChamber(FieldSystem* fieldSystem) {
-    Location* position = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(fieldSystem->saveData));
+BOOL CheckUseEscapeRopeInAlphChamber(FieldSystem *fieldSystem) {
+    Location *position = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(fieldSystem->saveData));
 
     if (position->mapId != MAP_D24R0202) {
         return FALSE;
@@ -16,8 +16,8 @@ BOOL CheckUseEscapeRopeInAlphChamber(FieldSystem* fieldSystem) {
     return TRUE;
 }
 
-BOOL CheckUseFlashInAlphChamber(FieldSystem* fieldSystem) {
-    Location* position = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(fieldSystem->saveData));
+BOOL CheckUseFlashInAlphChamber(FieldSystem *fieldSystem) {
+    Location *position = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(fieldSystem->saveData));
 
     if (position->mapId != MAP_D24R0204) {
         return FALSE;
@@ -30,8 +30,8 @@ BOOL CheckUseFlashInAlphChamber(FieldSystem* fieldSystem) {
     return TRUE;
 }
 
-BOOL CheckUseWaterStoneInAlphChamber(FieldSystem* fieldSystem) {
-    Location* position = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(fieldSystem->saveData));
+BOOL CheckUseWaterStoneInAlphChamber(FieldSystem *fieldSystem) {
+    Location *position = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(fieldSystem->saveData));
 
     if (position->mapId != MAP_D24R0206) {
         return FALSE;
