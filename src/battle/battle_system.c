@@ -18,6 +18,7 @@
 #include "unk_0202FBCC.h"
 #include "unk_0200FA24.h"
 #include "unk_02005D10.h"
+#include "msgdata/msg/msg_0197.h"
 
 static u8 ov12_0223BFB0(u8 *buffer, u8 *index, u16 *size);
 static void BattleSystem_AdjustMessageForSide(BattleSystem *bsys, BattleMessage *msg);
@@ -1388,9 +1389,9 @@ u8 BattleSystem_PrintTrainerMessage(BattleSystem *bsys, int trainerId, int battl
             int i;
     
             if (a2 == 0x64) {
-                stringId = trainerId*3 + 1;
+                stringId = trainerId * 3 + 1;
             } else {
-                stringId = trainerId*3 + 2;
+                stringId = trainerId * 3 + 2;
             }
             
             for (i = 0; i < 4; i++) {
@@ -1400,9 +1401,9 @@ u8 BattleSystem_PrintTrainerMessage(BattleSystem *bsys, int trainerId, int battl
             }
     
             if (i == 4) {
-                msgId = 724;
+                msgId = msg_0197_00724;
             } else {
-                msgId = 723;
+                msgId = msg_0197_00723;
             }
     
             data = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msgId, HEAP_ID_BATTLE);

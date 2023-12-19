@@ -175,7 +175,7 @@ static u8 Get2dMenuMaxItemWidth(struct ListMenu2D *listMenu) {
 static void Print2dMenuItemTexts(struct ListMenu2D *listMenu) {
     u8 i, j;
     u8 dx;
-    u8 x; 
+    u8 x;
     FillWindowPixelBuffer(listMenu->template.window, GetFontAttribute(listMenu->template.fontId, 6));
     x = listMenu->x;
     dx = listMenu->maxItemWidth + listMenu->maxGlyphWidth * 2;

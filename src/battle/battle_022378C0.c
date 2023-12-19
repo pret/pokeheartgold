@@ -238,8 +238,8 @@ void ov12_02237CC4(BattleSystem *bsys) {
     
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_OFF);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
-    FreeBgTilemapBuffer(bsys->bgConfig, 1);
-    FreeBgTilemapBuffer(bsys->bgConfig, 2);
-    FreeBgTilemapBuffer(bsys->bgConfig, 3);
+    FreeBgTilemapBuffer(bsys->bgConfig, GF_BG_LYR_MAIN_1);
+    FreeBgTilemapBuffer(bsys->bgConfig, GF_BG_LYR_MAIN_2);
+    FreeBgTilemapBuffer(bsys->bgConfig, GF_BG_LYR_MAIN_3);
     BattleSystem_SetHpBarDisabled(bsys);
 }
