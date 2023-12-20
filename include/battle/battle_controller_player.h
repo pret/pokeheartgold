@@ -27,6 +27,8 @@ void BattleControllerPlayer_ItemInput(BattleSystem *bsys, BattleContext *ctx);
 void BattleControllerPlayer_PokemonInput(BattleSystem *bsys, BattleContext *ctx);
 void BattleControllerPlayer_RunInput(BattleSystem *bsys, BattleContext *ctx);
 void BattleControllerPlayer_SafariBallInput(BattleSystem *bsys, BattleContext *ctx);
+void BattleControllerPlayer_SafariThrowMud(BattleSystem *bsys, BattleContext *ctx);
+void BattleControllerPlayer_SafariRun(BattleSystem *bsys, BattleContext *ctx);
 
 //The following functions haven't been decompiled yet
 void ov12_0224E384(BattleSystem *bsys, BattleContext *ctx);

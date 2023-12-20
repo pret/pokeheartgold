@@ -1703,3 +1703,38 @@ void BattleControllerPlayer_SafariBallInput(BattleSystem *bsys, BattleContext *c
     BattleSystem_SetSafariBallCount(bsys, cnt);
     ov12_02263A1C(bsys, ctx, BATTLER_PLAYER);
 }
+
+//static
+void BattleControllerPlayer_SafariThrowMud(BattleSystem *bsys, BattleContext *ctx) {
+    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 227);
+    ctx->battlerIdAttacker = 0;
+    ctx->battlerIdTarget = 1;
+    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+    ctx->commandNext = CONTROLLER_COMMAND_40;
+    ctx->tempData = BattleSystem_Random(bsys) % 10;
+    if (ctx->safariRunAttempts > 0) {
+        ctx->safariRunAttempts--;
+    }
+    if (ctx->tempData != 0) {
+        ctx->msgTemp = 1;
+        if (ctx->unk_311C > 0) {
+            ctx->unk_311C--;
+        }
+    }
+}
+
+//static
+void BattleControllerPlayer_SafariRun(BattleSystem *bsys, BattleContext *ctx) {
+    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 228);
+    ctx->battlerIdAttacker = 0;
+    ctx->battlerIdTarget = 1;
+    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+    ctx->commandNext = CONTROLLER_COMMAND_40;
+    ctx->tempData = BattleSystem_Random(bsys) % 10;
+    if (ctx->unk_311C < 12) {
+        ctx->unk_311C++;
+    }
+    if (ctx->tempData != 0 && ctx->safariRunAttempts < 12) {
+        ctx->safariRunAttempts++;
+    }
+}
