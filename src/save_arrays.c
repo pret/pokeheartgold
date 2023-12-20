@@ -271,7 +271,7 @@ PCStorage *SaveArray_PCStorage_Get(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_PCSTORAGE);
 }
 
-MYSTERY_GIFT_SAVE *Save_MysteryGift_Get(SaveData *saveData) {
+MysteryGiftSave *Save_MysteryGift_Get(SaveData *saveData) {
     SaveSubstruct_AssertCRC(SAVE_MYSTERY_GIFT);
     return SaveArray_Get(saveData, SAVE_MYSTERY_GIFT);
 }

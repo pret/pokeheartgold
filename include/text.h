@@ -6,7 +6,7 @@
 #include "options.h"
 #include "text_0205B4EC.h"
 
-#define MakeTextColor(fg, sh, bg) ((((fg) & 0xFF) << 16) | (((sh) & 0xFF) << 8) | (((bg) & 0xFF) << 0))
+#define MAKE_TEXT_COLOR(fg, sh, bg) ((((fg) & 0xFF) << 16) | (((sh) & 0xFF) << 8) | (((bg) & 0xFF) << 0))
 
 #define TEXT_SPEED_INSTANT           0 // Transfers to VRAM
 #define TEXT_SPEED_NOTRANSFER     0xFF // Defers VRAM transfer

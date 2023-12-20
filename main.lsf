@@ -120,7 +120,7 @@ Static main
 	Object src/save_special_ribbons.o
 	Object src/roamer.o
 	Object asm/unk_0202DB34.o
-	Object asm/unk_0202DBA8.o
+	Object src/mystery_gift.o
 	Object src/hall_of_fame.o
 	Object asm/unk_0202E41C.o
 	Object asm/unk_0202E4B0.o
@@ -190,7 +190,7 @@ Static main
 	Object src/encounter.o
 	Object asm/unk_020517A4.o
 	Object src/battle/battle_setup.o
-	Object src/field_black_out.o
+	Object src/blackout.o
 	Object src/game_clear.o
 	Object src/field_warp_tasks.o
 	Object src/script_pokemon_util.o
