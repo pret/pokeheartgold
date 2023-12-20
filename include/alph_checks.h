@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_FIELD_ALPH_CHECKS_H
-#define POKEHEARTGOLD_FIELD_ALPH_CHECKS_H
+#ifndef POKEHEARTGOLD_ALPH_CHECKS_H
+#define POKEHEARTGOLD_ALPH_CHECKS_H
 
 #include "script.h"
 
@@ -7,4 +7,4 @@ BOOL CheckUseEscapeRopeInAlphChamber(FieldSystem *fieldSystem);
 BOOL CheckUseFlashInAlphChamber(FieldSystem *fieldSystem);
 BOOL CheckUseWaterStoneInAlphChamber(FieldSystem *fieldSystem);
 
-#endif //POKEHEARTGOLD_FIELD_ALPH_CHECKS_H
+#endif //POKEHEARTGOLD_ALPH_CHECKS_H
