@@ -881,7 +881,7 @@ static void ov17_02202850(BerryPotsAppData *data, u32 seqNo) {
     FillWindowPixelBuffer(&data->windows[0], 0);
 
     u32 stringWidth = FontID_String_GetWidth(4, data->cancelString, 0);
-    AddTextPrinterParameterized2(&data->windows[0], 4, data->cancelString, (48 - stringWidth) / 2, 0, 0xFF, MakeTextColor(1, 2, 0), NULL);
+    AddTextPrinterParameterized2(&data->windows[0], 4, data->cancelString, (48 - stringWidth) / 2, 0, 0xFF, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 
     ScheduleWindowCopyToVram(&data->windows[0]);
 }
