@@ -18,7 +18,7 @@
 #include "render_window.h"
 #include "unk_0200FA24.h"
 #include "text.h"
-#include "field_alph_checks.h"
+#include "alph_checks.h"
 #include "map_header.h"
 #include "system.h"
 #include "unk_02066EDC.h"
