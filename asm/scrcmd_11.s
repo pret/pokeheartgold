@@ -37,24 +37,24 @@ FieldSystem_InitGetMysteryGiftGmmState: ; 0x0204BD78
 	thumb_func_start FieldSystem_GetTagOfNextMG
 FieldSystem_GetTagOfNextMG: ; 0x0204BD80
 	push {r3, lr}
-	bl GetFirstQueuedMysteryGiftIdx
-	bl GetMysteryGiftTagByIdx
+	bl SaveMGDataPtr_GetFirstGiftIndex
+	bl SaveMGDataPtr_GetTagByIndex
 	pop {r3, pc}
 	thumb_func_end FieldSystem_GetTagOfNextMG
 
 	thumb_func_start FieldSystem_GetDataOfNextMG
 FieldSystem_GetDataOfNextMG: ; 0x0204BD8C
 	push {r3, lr}
-	bl GetFirstQueuedMysteryGiftIdx
-	bl GetMysteryGiftDataByIdx
+	bl SaveMGDataPtr_GetFirstGiftIndex
+	bl SaveMGDataPtr_GetDataByIndex
 	pop {r3, pc}
 	thumb_func_end FieldSystem_GetDataOfNextMG
 
 	thumb_func_start FieldSystem_SetQueuedMGReceived
 FieldSystem_SetQueuedMGReceived: ; 0x0204BD98
 	push {r3, lr}
-	bl GetFirstQueuedMysteryGiftIdx
-	bl SetMysteryGiftReceivedByIdx
+	bl SaveMGDataPtr_GetFirstGiftIndex
+	bl SaveMGDataPtr_SetReceivedByIndex
 	pop {r3, pc}
 	thumb_func_end FieldSystem_SetQueuedMGReceived
 
@@ -90,7 +90,7 @@ _0204BDD2:
 	ldr r0, [r4]
 	mov r1, #0x20
 	ldr r0, [r0, #0xc]
-	bl GetStaticPointerToSaveMysteryGift
+	bl SaveMGDataPtr_Begin
 	b _0204BF8C
 _0204BDE0:
 	; End
@@ -98,7 +98,7 @@ _0204BDE0:
 	ldr r0, [r4]
 	mov r1, #0
 	ldr r0, [r0, #0xc]
-	bl DeleteStaticPointerToMysteryGift
+	bl SaveMGDataPtr_End
 	b _0204BF8C
 _0204BDEE:
 	; End.2
@@ -106,7 +106,7 @@ _0204BDEE:
 	ldr r0, [r4]
 	mov r1, #1
 	ldr r0, [r0, #0xc]
-	bl DeleteStaticPointerToMysteryGift
+	bl SaveMGDataPtr_End
 	b _0204BF8C
 _0204BDFC:
 	; Check bool

@@ -329,13 +329,13 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         if (!IsCameraTranslationFinished(work->cameraTranslation)) {
             break;
         }
-        work->subPrinterId = printMsgOnWinEx(work->winTop, work->heapId, TRUE, NARC_msg_msg_0190_bin, msg_0190_00000, MakeTextColor(1, 2, 15), work->textSpeed, &work->strbuf);
+        work->subPrinterId = printMsgOnWinEx(work->winTop, work->heapId, TRUE, NARC_msg_msg_0190_bin, msg_0190_00000, MAKE_TEXT_COLOR(1, 2, 15), work->textSpeed, &work->strbuf);
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
         *state = CHOOSE_STARTER_STATE_WAIT_INIT_MSG;
         break;
     case CHOOSE_STARTER_STATE_CONFIRM_MSG:
-        work->subPrinterId = printMsgOnWinEx(work->winTop, work->heapId, TRUE, NARC_msg_msg_0190_bin, msg_0190_00001 + work->curSelection, MakeTextColor(1, 2, 15), work->textSpeed, &work->strbuf);
+        work->subPrinterId = printMsgOnWinEx(work->winTop, work->heapId, TRUE, NARC_msg_msg_0190_bin, msg_0190_00001 + work->curSelection, MAKE_TEXT_COLOR(1, 2, 15), work->textSpeed, &work->strbuf);
         printMsgOnBottom(work, msg_0190_00008);
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_ON);
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_ON);
@@ -368,7 +368,7 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
             {
                 String *baseTrans = NULL;
                 printMsgOnWinEx(work->winTop, work->heapId, FALSE, NARC_msg_msg_0190_bin, msg_0190_00004 + work->curSelection,
-                              MakeTextColor(1, 2, 15), 0, &baseTrans);
+                              MAKE_TEXT_COLOR(1, 2, 15), 0, &baseTrans);
                 String_Delete(baseTrans);
             }
             PlayCry(sSpecies[work->curSelection], FALSE);
@@ -422,7 +422,7 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
         work->modelAnimState = MODEL_ANM_STATE_BALL_ROCK;
         {
             String *sp10 = NULL;
-            printMsgOnWinEx(work->winTop, work->heapId, FALSE, NARC_msg_msg_0190_bin, msg_0190_00004 + work->curSelection, MakeTextColor(1, 2, 15), 0, &sp10);
+            printMsgOnWinEx(work->winTop, work->heapId, FALSE, NARC_msg_msg_0190_bin, msg_0190_00004 + work->curSelection, MAKE_TEXT_COLOR(1, 2, 15), 0, &sp10);
             String_Delete(sp10);
         }
         PlayCry(sSpecies[work->curSelection], 0);
@@ -1023,8 +1023,8 @@ static void makeAndDrawWindows(struct ChooseStarterAppWork *work) {
     FillWindowPixelBuffer(work->winTop, 15);
     FillWindowPixelBuffer(work->winBottom, 0);
     LoadUserFrameGfx2(work->bgConfig, GF_BG_LYR_SUB_0, 0x200, 0, work->frame, work->heapId);
-    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_08_window_NCLR, GF_BG_LYR_SUB_0, 0x040, 0x20, work->heapId);
-    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_08_window_NCLR, GF_BG_LYR_MAIN_0, 0x040, 0x20, work->heapId);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_08_window_NCLR, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_2_OFFSET, 0x20, work->heapId);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_08_window_NCLR, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_2_OFFSET, 0x20, work->heapId);
     DrawFrameAndWindow2(work->winTop, FALSE, 0x200, 0);
 }
 
@@ -1035,9 +1035,9 @@ static void loadBgGraphics(BgConfig *bgConfig, HeapID heapId) {
     GfGfxLoader_LoadScrnData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_14_bgl2_NSCR, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, FALSE, heapId);
     GfGfxLoader_LoadScrnData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_11_bgl5_NSCR, bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, heapId);
     GfGfxLoader_LoadScrnData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_17_bgl6_NSCR, bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, heapId);
-    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_12_bgl2_NCLR, GF_BG_LYR_MAIN_0, 0x60, 0x20, heapId);
-    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_09_bgl5_NCLR, GF_BG_LYR_SUB_0, 0x60, 0x20, heapId);
-    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_15_bgl6_NCLR, GF_BG_LYR_SUB_0, 0x80, 0x20, heapId);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_12_bgl2_NCLR, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_3_OFFSET, 0x20, heapId);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_09_bgl5_NCLR, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_3_OFFSET, 0x20, heapId);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_15_bgl6_NCLR, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_4_OFFSET, 0x20, heapId);
     BgTilemapRectChangePalette(bgConfig, 2, 0, 0, 0x20, 0x18, 3);
     BgTilemapRectChangePalette(bgConfig, 5, 0, 0, 0x20, 0x18, 3);
     BgTilemapRectChangePalette(bgConfig, 6, 0, 0, 0x20, 0x18, 4);
@@ -1067,7 +1067,7 @@ static u8 printMsgOnWinEx(Window *window, HeapID heapId, BOOL makeFrame, s32 msg
 
 static void printMsgOnBottom(struct ChooseStarterAppWork *work, int msgId) {
     String *string = NULL;
-    printMsgOnWinEx(work->winBottom, work->heapId, FALSE, NARC_msg_msg_0190_bin, msgId, MakeTextColor(1, 2, 0), 0, &string);
+    printMsgOnWinEx(work->winBottom, work->heapId, FALSE, NARC_msg_msg_0190_bin, msgId, MAKE_TEXT_COLOR(1, 2, 0), 0, &string);
     String_Delete(string);
 }
 

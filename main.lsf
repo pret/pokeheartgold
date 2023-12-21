@@ -120,7 +120,7 @@ Static main
 	Object src/save_special_ribbons.o
 	Object src/roamer.o
 	Object asm/unk_0202DB34.o
-	Object asm/unk_0202DBA8.o
+	Object src/mystery_gift.o
 	Object src/hall_of_fame.o
 	Object asm/unk_0202E41C.o
 	Object asm/unk_0202E4B0.o
@@ -190,7 +190,7 @@ Static main
 	Object src/encounter.o
 	Object asm/unk_020517A4.o
 	Object src/battle/battle_setup.o
-	Object src/field_black_out.o
+	Object src/blackout.o
 	Object src/game_clear.o
 	Object src/field_warp_tasks.o
 	Object src/script_pokemon_util.o
@@ -245,7 +245,7 @@ Static main
 	Object asm/unk_0206A360.o
 	Object asm/field_take_photo.o
 	Object asm/unk_0206B910.o
-	Object src/field_alph_checks.o
+	Object src/alph_checks.o
 	Object src/get_egg.o
 	Object src/unk_0206D494.o
 	Object src/pokemon.o
@@ -610,7 +610,6 @@ Overlay OVY_16
     After OVY_15
     Object src/overlay_16_022014A0.o
     Object src/overlay_16_02201948.o
-    Object asm/overlay_16_data.o
 }
 Overlay OVY_17
 {

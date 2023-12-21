@@ -73,7 +73,7 @@
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_EngineASetPlanes
 .public GfGfx_EngineBTogglePlanes
-.public GfGfx_EngineBGetPlanes
+.public GfGfx_EngineAGetPlanes
 .public Camera_New
 .public Camera_Delete
 .public Camera_Copy
