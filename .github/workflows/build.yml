@@ -35,7 +35,7 @@ jobs:
           sudo apt -y --allow-downgrades install --install-recommends winehq-stable
 
       - name: Checkout Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Repo
         run: |
@@ -80,19 +80,19 @@ jobs:
 
       - name: Post error upload
         if: failure()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: pokeheartgold-failure-${{ github.run_id }}
           path: failure.tar.gz
           retention-days: 1
-      
+
       - name: Checkout xMAP
         if: ${{ github.event_name == 'push' }}
-        uses: actions/checkout@master
+        uses: actions/checkout@v4
         with:
           path: 'xmap'
           ref: 'xmap'
-      
+
       - name: Move xMAP
         if: ${{ github.event_name == 'push' }}
         run: |
@@ -103,10 +103,9 @@ jobs:
 
       - name: Update xMAP
         if: ${{ github.event_name == 'push' }}
-        uses: EndBug/add-and-commit@v7
+        uses: EndBug/add-and-commit@v9
         with:
-          branch: xmap
           cwd: "./xmap"
           add: "*.xMAP"
           message: ${{ env.XMAP_COMMIT_MSG }}
-          
+
