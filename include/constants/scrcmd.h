@@ -40,4 +40,15 @@
 #define MOVE_TUTOR_NPC_FRONTIER_BOTTOM_RIGHT 2
 #define MOVE_TUTOR_NPC_HEADBUTT              3
 
+// mystery_gift
+#define SCR_MG_BEGIN               0
+#define SCR_MG_HAS_GIFT            1
+#define SCR_MG_GET_TYPE            2
+#define SCR_MG_CAN_RECEIVE         3
+#define SCR_MG_RECEIVE             4
+#define SCR_MG_MESSAGE_RECEIVED    5
+#define SCR_MG_MESSAGE_FAILED      6
+#define SCR_MG_END                 7
+#define SCR_MG_END2                8
+
 #endif //POKEHEARTGOLD_CONSTANTS_SCRCMD_H

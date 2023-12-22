@@ -127,16 +127,16 @@ void FieldSystem_SetQueuedMGReceived(FieldSystem* fieldSys) {
 
 BOOL ScrCmd_MysteryGift(ScriptContext* ctx) {
     switch (ScriptReadHalfword(ctx)) {
-    case 0:
+    case SCR_MG_BEGIN:
         SaveMGDataPtr_Begin(ctx->fieldSystem->saveData, HEAP_ID_32);
         break;
-    case 7:
+    case SCR_MG_END:
         SaveMGDataPtr_End(ctx->fieldSystem->saveData, FALSE);
         break;
-    case 8:
+    case SCR_MG_END2:
         SaveMGDataPtr_End(ctx->fieldSystem->saveData, TRUE);
         break;
-    case 1: {
+    case SCR_MG_HAS_GIFT: {
         u16* ptr = ScriptGetVarPointer(ctx);
         if (FieldSystem_GetTagOfNextMG(ctx->fieldSystem) != MG_TAG_INVALID) {
             *ptr = TRUE;
@@ -145,23 +145,23 @@ BOOL ScrCmd_MysteryGift(ScriptContext* ctx) {
         }
         break;
     }
-    case 2: {
+    case SCR_MG_GET_TYPE: {
         u16* ptr = ScriptGetVarPointer(ctx);
         *ptr = FieldSystem_GetTagOfNextMG(ctx->fieldSystem);
         break;
     }
-    case 3: {
+    case SCR_MG_CAN_RECEIVE: {
         u16* ptr = ScriptGetVarPointer(ctx);
         const struct ScriptMysteryGiftFuncs* pFunc = &sScriptMysteryGiftActionTable[FieldSystem_GetTagOfNextMG(ctx->fieldSystem) - 1];
         *ptr = pFunc->check(ctx->fieldSystem, FieldSystem_GetDataOfNextMG(ctx->fieldSystem));
         break;
     }
-    case 4:
+    case SCR_MG_RECEIVE:
         const struct ScriptMysteryGiftFuncs* pFunc = &sScriptMysteryGiftActionTable[FieldSystem_GetTagOfNextMG(ctx->fieldSystem) - 1];
         pFunc->give(ctx->fieldSystem, FieldSystem_GetDataOfNextMG(ctx->fieldSystem));
         FieldSystem_SetQueuedMGReceived(ctx->fieldSystem);
         break;
-    case 5: {
+    case SCR_MG_MESSAGE_RECEIVED: {
         struct GetMysteryGiftGmmState gmmState;
         const struct ScriptMysteryGiftFuncs* pFunc = &sScriptMysteryGiftActionTable[FieldSystem_GetTagOfNextMG(ctx->fieldSystem) - 1];
         MessageFormat** pMsgFormat = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
@@ -171,7 +171,7 @@ BOOL ScrCmd_MysteryGift(ScriptContext* ctx) {
         pFunc->messageSuccess(&gmmState, pMsgBank, pMsgNum);
         break;
     }
-    case 6: {
+    case SCR_MG_MESSAGE_FAILED: {
         struct GetMysteryGiftGmmState gmmState;
         const struct ScriptMysteryGiftFuncs* pFunc = &sScriptMysteryGiftActionTable[FieldSystem_GetTagOfNextMG(ctx->fieldSystem) - 1];
         MessageFormat** pMsgFormat = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);

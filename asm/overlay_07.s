@@ -1872,7 +1872,7 @@ _0221CADE:
 	add r0, r5, r0
 	mov r1, #5
 	bl ov07_0221DD14
-	bl ov12_0223C340
+	bl BattleSystem_SetDefaultBlend
 	add r0, r5, #0
 	mov r1, #1
 	bl ov07_0221FAEC
@@ -5004,7 +5004,7 @@ _0221E224:
 	strb r0, [r4, #5]
 	b _0221E272
 _0221E250:
-	bl ov12_0223C340
+	bl BattleSystem_SetDefaultBlend
 	mov r0, #2
 	mov r1, #0
 	bl ToggleBgLayer

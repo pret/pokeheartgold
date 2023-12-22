@@ -54,9 +54,9 @@
 .public ov12_0223A8EC
 .public BattleSystem_GetHpFont
 .public BattleSystem_GetLevelFont
-.public ov12_0223A930
+.public BattleSystem_GetMessageData
 .public BattleSystem_GetPaletteData
-.public ov12_0223A9A4
+.public BattleSystem_GetMessageFormat
 .public ov12_0226498C
 .public BattleHpBar_LoadResources
 .public BattleHpBar_FreeResources

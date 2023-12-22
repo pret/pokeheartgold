@@ -1241,10 +1241,10 @@ ov12_0226516C: ; 0x0226516C
 	bl BattleSystem_GetBgConfig
 	add r6, r0, #0
 	ldr r0, [r5, #0xc]
-	bl ov12_0223A930
+	bl BattleSystem_GetMessageData
 	add r7, r0, #0
 	ldr r0, [r5, #0xc]
-	bl ov12_0223A9A4
+	bl BattleSystem_GetMessageFormat
 	add r4, r0, #0
 	mov r0, #0x16
 	mov r1, #5
@@ -1773,7 +1773,7 @@ ov12_022655F0: ; 0x022655F0
 	bl BattleSystem_GetBgConfig
 	add r6, r0, #0
 	ldr r0, [r4, #0xc]
-	bl ov12_0223A930
+	bl BattleSystem_GetMessageData
 	mov r1, #1
 	lsl r1, r1, #0xa
 	add r2, r5, #0
@@ -1875,10 +1875,10 @@ ov12_022656CC: ; 0x022656CC
 	bl BattleSystem_GetBgConfig
 	str r0, [sp, #0x1c]
 	ldr r0, [r4, #0xc]
-	bl ov12_0223A930
+	bl BattleSystem_GetMessageData
 	str r0, [sp, #0x20]
 	ldr r0, [r4, #0xc]
-	bl ov12_0223A9A4
+	bl BattleSystem_GetMessageFormat
 	add r7, r0, #0
 	mov r0, #0x1e
 	mov r1, #5

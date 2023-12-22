@@ -4255,7 +4255,7 @@ ov12_0225A85C: ; 0x0225A85C
 	ldr r1, [sp]
 	add r0, r6, #0
 	add r2, sp, #4
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	strb r0, [r4, #6]
 	ldr r0, _0225A8C0 ; =ov12_022605D0
 	add r1, r4, #0
@@ -4273,7 +4273,7 @@ ov12_0225A8C4: ; 0x0225A8C4
 	add r5, r0, #0
 	add r6, r1, #0
 	add r7, r2, #0
-	bl ov12_0223A930
+	bl BattleSystem_GetMessageData
 	str r0, [sp]
 	mov r0, #5
 	mov r1, #8
@@ -4294,7 +4294,7 @@ ov12_0225A8C4: ; 0x0225A8C4
 	ldr r1, [sp]
 	add r0, r5, #0
 	add r2, r7, #0
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	strb r0, [r4, #6]
 	ldr r0, _0225A910 ; =ov12_022605D0
 	add r1, r4, #0
@@ -4845,7 +4845,7 @@ ov12_0225ACE8: ; 0x0225ACE8
 	ldrb r3, [r7, #1]
 	ldr r1, [sp, #4]
 	add r0, r6, #0
-	bl ov12_0223C34C
+	bl BattleSystem_PrintTrainerMessage
 	strb r0, [r4, #6]
 	ldr r0, _0225AD40 ; =ov12_022605D0
 	add r1, r4, #0
@@ -4867,7 +4867,7 @@ ov12_0225AD44: ; 0x0225AD44
 	add r7, r2, #0
 	bl ov12_02261390
 	add r0, r5, #0
-	bl ov12_0223A930
+	bl BattleSystem_GetMessageData
 	str r0, [sp]
 	mov r0, #5
 	mov r1, #8
@@ -4886,7 +4886,7 @@ ov12_0225AD44: ; 0x0225AD44
 	ldr r1, [sp]
 	add r0, r5, #0
 	add r2, sp, #4
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	strb r0, [r4, #6]
 	ldr r0, _0225AD98 ; =ov12_022605D0
 	add r1, r4, #0
@@ -4908,7 +4908,7 @@ ov12_0225AD9C: ; 0x0225AD9C
 	add r7, r2, #0
 	bl ov12_02261464
 	add r0, r5, #0
-	bl ov12_0223A930
+	bl BattleSystem_GetMessageData
 	str r0, [sp]
 	mov r0, #5
 	mov r1, #8
@@ -4927,7 +4927,7 @@ ov12_0225AD9C: ; 0x0225AD9C
 	ldr r1, [sp]
 	add r0, r5, #0
 	add r2, sp, #4
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	strb r0, [r4, #6]
 	ldr r0, _0225ADF0 ; =ov12_022605D0
 	add r1, r4, #0
@@ -4948,7 +4948,7 @@ ov12_0225ADF4: ; 0x0225ADF4
 	add r6, r1, #0
 	bl ov12_02261544
 	add r0, r5, #0
-	bl ov12_0223A930
+	bl BattleSystem_GetMessageData
 	add r7, r0, #0
 	mov r0, #5
 	mov r1, #8
@@ -4967,7 +4967,7 @@ ov12_0225ADF4: ; 0x0225ADF4
 	add r0, r5, #0
 	add r1, r7, #0
 	add r2, sp, #0
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	strb r0, [r4, #6]
 	ldr r0, _0225AE44 ; =ov12_022605D0
 	add r1, r4, #0
@@ -4989,7 +4989,7 @@ ov12_0225AE48: ; 0x0225AE48
 	add r7, r2, #0
 	bl ov12_022615F0
 	add r0, r5, #0
-	bl ov12_0223A930
+	bl BattleSystem_GetMessageData
 	str r0, [sp]
 	mov r0, #5
 	mov r1, #8
@@ -5008,7 +5008,7 @@ ov12_0225AE48: ; 0x0225AE48
 	ldr r1, [sp]
 	add r0, r5, #0
 	add r2, sp, #4
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	strb r0, [r4, #6]
 	ldr r0, _0225AE9C ; =ov12_022605D0
 	add r1, r4, #0
@@ -5059,7 +5059,7 @@ ov12_0225AED8: ; 0x0225AED8
 	add r6, r0, #0
 	cmp r2, #0
 	bne _0225AF2A
-	bl ov12_0223A930
+	bl BattleSystem_GetMessageData
 	str r0, [sp]
 	mov r0, #5
 	mov r1, #0xc
@@ -5080,7 +5080,7 @@ ov12_0225AED8: ; 0x0225AED8
 	ldr r1, [sp]
 	add r0, r6, #0
 	add r2, r4, #4
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	strb r0, [r7, #6]
 	ldr r0, _0225AF70 ; =ov12_02260614
 	add r1, r7, #0
@@ -5425,7 +5425,7 @@ ov12_0225B1A8: ; 0x0225B1A8
 	ldrb r1, [r4, r1]
 	cmp r1, #0
 	bne _0225B1E6
-	bl ov12_0223A930
+	bl BattleSystem_GetMessageData
 	add r1, r0, #0
 	ldr r2, _0225B1FC ; =0x0000039B
 	add r0, sp, #0
@@ -5434,7 +5434,7 @@ ov12_0225B1A8: ; 0x0225B1A8
 	strb r3, [r0, #1]
 	add r0, r5, #0
 	add r2, sp, #0
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	add r0, r5, #0
 	mov r1, #0
 	bl BattleSystem_GetWindow
@@ -5553,7 +5553,7 @@ ov12_0225B2A4: ; 0x0225B2A4
 	add r6, r1, #0
 	bl ov12_02261928
 	add r0, r5, #0
-	bl ov12_0223A930
+	bl BattleSystem_GetMessageData
 	add r7, r0, #0
 	mov r0, #5
 	mov r1, #8
@@ -5572,7 +5572,7 @@ ov12_0225B2A4: ; 0x0225B2A4
 	add r0, r5, #0
 	add r1, r7, #0
 	add r2, sp, #0
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	strb r0, [r4, #6]
 	ldr r0, _0225B2F4 ; =ov12_022605D0
 	add r1, r4, #0
@@ -5593,7 +5593,7 @@ ov12_0225B2F8: ; 0x0225B2F8
 	add r6, r1, #0
 	bl ov12_022619E4
 	add r0, r5, #0
-	bl ov12_0223A930
+	bl BattleSystem_GetMessageData
 	add r7, r0, #0
 	mov r0, #5
 	mov r1, #8
@@ -5612,7 +5612,7 @@ ov12_0225B2F8: ; 0x0225B2F8
 	add r0, r5, #0
 	add r1, r7, #0
 	add r2, sp, #0
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	strb r0, [r4, #6]
 	ldr r0, _0225B348 ; =ov12_022605D0
 	add r1, r4, #0
@@ -5633,7 +5633,7 @@ ov12_0225B34C: ; 0x0225B34C
 	add r6, r1, #0
 	bl ov12_02261AD4
 	add r0, r5, #0
-	bl ov12_0223A930
+	bl BattleSystem_GetMessageData
 	add r7, r0, #0
 	mov r0, #5
 	mov r1, #8
@@ -5652,7 +5652,7 @@ ov12_0225B34C: ; 0x0225B34C
 	add r0, r5, #0
 	add r1, r7, #0
 	add r2, sp, #0
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	strb r0, [r4, #6]
 	ldr r0, _0225B39C ; =ov12_022605D0
 	add r1, r4, #0
@@ -10588,7 +10588,7 @@ _0225DB46:
 	strb r0, [r4, #0xa]
 _0225DB7C:
 	ldr r0, [r4]
-	bl ov12_0223A930
+	bl BattleSystem_GetMessageData
 	add r6, r0, #0
 	mov r0, #1
 	lsl r0, r0, #0xa
@@ -10620,7 +10620,7 @@ _0225DBA0:
 	strh r0, [r1, #0xe]
 	ldr r0, [r4]
 	add r1, r6, #0
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	mov r0, #3
 	add sp, #0x58
 	strb r0, [r4, #0xa]
@@ -10641,7 +10641,7 @@ _0225DBCC:
 	ldr r0, [r4]
 	add r1, r6, #0
 	add r2, sp, #0x1c
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	add r1, r4, #0
 	add r1, #0x35
 	strb r0, [r1]
@@ -10698,7 +10698,7 @@ _0225DC56:
 	add r1, r6, #0
 	add r2, sp, #0x1c
 	mov r3, #0
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	mov r0, #3
 	add sp, #0x58
 	strb r0, [r4, #0xa]
@@ -11455,7 +11455,7 @@ _0225E2AC:
 	b _0225E3F8
 _0225E2B8:
 	ldr r0, [r4]
-	bl ov12_0223A930
+	bl BattleSystem_GetMessageData
 	add r1, r0, #0
 	mov r2, #2
 	add r0, sp, #0x14
@@ -11470,7 +11470,7 @@ _0225E2B8:
 	strh r2, [r0, #0x16]
 	ldr r0, [r4]
 	add r2, sp, #0x28
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	add r0, r7, #0
 	bl ov12_02266AC0
 	mov r0, #7
@@ -12862,7 +12862,7 @@ _0225EDE0:
 	ldrh r0, [r0, #0x1c]
 	str r0, [sp, #0x90]
 	ldr r0, [r4]
-	bl ov12_0223A930
+	bl BattleSystem_GetMessageData
 	add r5, r0, #0
 	ldr r0, [r4]
 	bl BattleSystem_GetTextFrameDelay
@@ -12870,7 +12870,7 @@ _0225EDE0:
 	ldr r0, [r4]
 	add r1, r5, #0
 	add r2, sp, #0x8c
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	strb r0, [r4, #0x11]
 	mov r0, #0x1e
 	strb r0, [r4, #0x17]
@@ -13119,7 +13119,7 @@ _0225EFF6:
 	strb r1, [r0, #1]
 _0225EFFE:
 	ldr r0, [r4]
-	bl ov12_0223A930
+	bl BattleSystem_GetMessageData
 	add r5, r0, #0
 	ldr r0, [r4]
 	bl BattleSystem_GetTextFrameDelay
@@ -13127,7 +13127,7 @@ _0225EFFE:
 	ldr r0, [r4]
 	add r1, r5, #0
 	add r2, sp, #0x68
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	strb r0, [r4, #0x11]
 	mov r0, #0x1e
 	strb r0, [r4, #0x17]
@@ -13266,7 +13266,7 @@ _0225F128:
 	pop {r3, r4, r5, r6, r7, pc}
 _0225F140:
 	ldr r0, [r4]
-	bl ov12_0223A930
+	bl BattleSystem_GetMessageData
 	add r5, r0, #0
 	ldr r0, [r4, #8]
 	ldr r1, [r0, #4]
@@ -13311,7 +13311,7 @@ _0225F18E:
 	ldr r0, [r4]
 	add r1, r5, #0
 	add r2, sp, #0x44
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	strb r0, [r4, #0x11]
 	mov r0, #0x1e
 	strb r0, [r4, #0x17]
@@ -13494,7 +13494,7 @@ _0225F2F4:
 	strh r1, [r0, #6]
 _0225F2FA:
 	ldr r0, [r4]
-	bl ov12_0223A930
+	bl BattleSystem_GetMessageData
 	add r5, r0, #0
 	ldr r0, [r4]
 	bl BattleSystem_GetTextFrameDelay
@@ -13502,7 +13502,7 @@ _0225F2FA:
 	ldr r0, [r4]
 	add r1, r5, #0
 	add r2, sp, #0x20
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	strb r0, [r4, #0x11]
 	mov r0, #0x1e
 	strb r0, [r4, #0x17]
@@ -14418,7 +14418,7 @@ _0225FA9C:
 	cmp r0, #0
 	beq _0225FAE4
 	ldr r0, [r4]
-	bl ov12_0223A930
+	bl BattleSystem_GetMessageData
 	add r5, r0, #0
 	ldrb r0, [r4, #0xf]
 	cmp r0, #5
@@ -14442,7 +14442,7 @@ _0225FACA:
 	ldr r0, [r4]
 	add r1, r5, #0
 	add r2, sp, #0x14
-	bl ov12_0223C494
+	bl BattleSystem_PrintBattleMessage
 	strh r0, [r4, #0x1a]
 _0225FAE4:
 	mov r0, #1
