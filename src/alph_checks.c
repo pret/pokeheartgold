@@ -1,5 +1,5 @@
 #include "constants/maps.h"
-#include "field_alph_checks.h"
+#include "alph_checks.h"
 #include "save_local_field_data.h"
 
 BOOL CheckUseEscapeRopeInAlphChamber(FieldSystem *fieldSystem) {
