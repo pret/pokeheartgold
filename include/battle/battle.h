@@ -334,7 +334,7 @@ typedef struct BattleContext {
     int totalDamage[4];
     int meFirstTotal;
     GetterWork *getterWork;
-    void * unk_17C;
+    StatStruct *prevLevelStats;
     u32 fieldCondition;
     FieldConditionData fieldConditionData;
     u32 fieldSideConditionFlags[2];

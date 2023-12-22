@@ -525,5 +525,9 @@ typedef enum ControllerCommand {
     CONTROLLER_COMMAND_45,
     CONTROLLER_COMMAND_MAX
 } ControllerCommand;
+
+//Critical Music Flags
+#define CRITICAL_MUSIC_OFF  2
+
 #endif //PM_ASM
 #endif //POKEHEARTGOLD_CONSTANTS_BATTLE_H

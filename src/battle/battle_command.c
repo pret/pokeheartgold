@@ -6023,7 +6023,7 @@ static void Task_GetExp(SysTask *task, void *inData)
                 && !data->ctx->unk_3144) {
             PlayBGM(SEQ_GS_WIN2);
             data->ctx->unk_3144 = TRUE;
-            BattleSystem_SetCriticalHpMusicFlag(data->bsys, 2); // turn off
+            BattleSystem_SetCriticalHpMusicFlag(data->bsys, CRITICAL_MUSIC_OFF);
         }
 
         u32 totalExp = 0;
@@ -6132,8 +6132,8 @@ static void Task_GetExp(SysTask *task, void *inData)
             TempStatsStruct stats = ov12_0226C354;
             int level = GetMonData(mon, MON_DATA_LEVEL, NULL);
             // Cache the stats from the previous level for later
-            data->ctx->unk_17C = AllocFromHeap(HEAP_ID_BATTLE, sizeof(StatStruct));
-            StatStruct *oldStats = data->ctx->unk_17C;
+            data->ctx->prevLevelStats = AllocFromHeap(HEAP_ID_BATTLE, sizeof(StatStruct));
+            StatStruct *oldStats = data->ctx->prevLevelStats;
             for (i = 0; i < 6; i++) {
                 oldStats->stats[i] = GetMonData(mon, stats.stats[i], NULL);
             }
@@ -6199,7 +6199,7 @@ static void Task_GetExp(SysTask *task, void *inData)
         TempStatsStruct monData = ov12_0226C384;
         
         Window *window = BattleSystem_GetWindow(data->bsys, 1);
-        StatStruct *oldStats = data->ctx->unk_17C;
+        StatStruct *oldStats = data->ctx->prevLevelStats;
 
         for (i = 0; i < NUM_STATS; i++) {
             msg.id = msg_0197_00947; // stat name
@@ -6261,7 +6261,7 @@ static void Task_GetExp(SysTask *task, void *inData)
             ov12_022484D4(data->bsys, data);
         }
 
-        FreeToHeap(data->ctx->unk_17C);
+        FreeToHeap(data->ctx->prevLevelStats);
         data->state = STATE_GET_EXP_CHECK_LEARN_MOVE;
         break;
 
