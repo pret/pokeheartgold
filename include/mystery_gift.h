@@ -27,6 +27,11 @@
 #define RECEIVED_WONDER_CARD_IDX        4
 #define NUM_MYSTERY_GIFT_RECV_FLAGS  2048
 
+#define MGMONDECOTYPE_NOTSET      0
+#define MGMONDECOTYPE_SEAL        1
+#define MGMONDECOTYPE_FASHION     2
+#define MGMONDECOTYPE_BACKGROUND  3
+
 typedef struct MysteryGiftPokemonTag {
     BOOL fixedOT;
     Pokemon mon;

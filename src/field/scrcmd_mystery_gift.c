@@ -29,62 +29,62 @@ struct ScriptMysteryGiftFuncs {
     void (*messageFailure)(struct GetMysteryGiftGmmState*, u16*, u16*);
 };
 
-void FieldSystem_InitGetMysteryGiftGmmState(struct GetMysteryGiftGmmState* state, FieldSystem* fieldSys, MessageFormat* msgFormat, MysteryGiftData* mgData);
-int FieldSystem_GetTagOfNextMG(FieldSystem* fieldSys);
-MysteryGiftData* FieldSystem_GetDataOfNextMG(FieldSystem* fieldSys);
-void FieldSystem_SetQueuedMGReceived(FieldSystem* fieldSys);
-BOOL MGCheck_PartySpace(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGGive_Mon(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGMessageSuccess_GiveMon(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-void MGMessageFailure_GiveMon(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-void MGGive_Egg(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGMessageSuccess_Egg(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-BOOL MGCheck_Item(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGGive_Item(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGMessageSuccess_Item(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-void MGMessageFailure_Item(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-BOOL MGCheck_BattleRules(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGGive_BattleRules(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGMessageSuccess_BattleRules(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-void MGMessageFailure_BattleRules(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-BOOL MGCheck_Decoration(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGGive_Decoration(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGMessageSuccess_Decoration(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-void MGMessageFailure_Decoration(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-BOOL MGCheck_MonDeco(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGGive_MonDeco(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGMessageSuccess_MonDeco(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-void MGMessageFailure_MonDeco(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-void MGGive_ManaphyEgg(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGMessageSuccess_ManaphyEgg(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-BOOL MGCheck_MemberCard(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGGive_MemberCard(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGMessageSuccess_MemberCard(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-void MGMessageFailure_MemberCard(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-BOOL MGCheck_OaksLetter(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGGive_OaksLetter(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGMessageSuccess_OaksLetter(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-void MGMessageFailure_OaksLetter(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-BOOL MGCheck_AzureFlute(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGGive_AzureFlute(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGMessageSuccess_AzureFlute(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-void MGMessageFailure_AzureFlute(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-BOOL MGCheck_PoketchApp(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGGive_PoketchApp(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGMessageSuccess_PoketchApp(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-void MGMessageFailure_PoketchApp(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-BOOL MGCheck_SecretKey(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGGive_SecretKey(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGMessageSuccess_SecretKey(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-void MGMessageFailure_SecretKey(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-BOOL MGCheck_PokewalkerCourse(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGGive_PokewalkerCourse(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGMessageSuccess_PokewalkerCourse(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-void MGMessageFailure_PokewalkerCourse(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-BOOL MGCheck_MemorialPhoto(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGGive_MemorialPhoto(FieldSystem* fieldSys, MysteryGiftData* mgData);
-void MGMessageSuccess_MemorialPhoto(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
-void MGMessageFailure_MemorialPhoto(struct GetMysteryGiftGmmState* fsysUnk80, u16* pMsgBank, u16* pMsgNum);
+static void FieldSystem_InitGetMysteryGiftGmmState(struct GetMysteryGiftGmmState* state, FieldSystem* fieldSys, MessageFormat* msgFormat, MysteryGiftData* mgData);
+static int FieldSystem_GetTagOfNextMG(FieldSystem* fieldSys);
+static MysteryGiftData* FieldSystem_GetDataOfNextMG(FieldSystem* fieldSys);
+static void FieldSystem_SetQueuedMGReceived(FieldSystem* fieldSys);
+static BOOL MGCheck_PartySpace(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGGive_Mon(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGMessageSuccess_GiveMon(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static void MGMessageFailure_GiveMon(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static void MGGive_Egg(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGMessageSuccess_Egg(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static BOOL MGCheck_Item(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGGive_Item(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGMessageSuccess_Item(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static void MGMessageFailure_Item(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static BOOL MGCheck_BattleRules(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGGive_BattleRules(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGMessageSuccess_BattleRules(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static void MGMessageFailure_BattleRules(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static BOOL MGCheck_Decoration(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGGive_Decoration(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGMessageSuccess_Decoration(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static void MGMessageFailure_Decoration(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static BOOL MGCheck_MonDeco(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGGive_MonDeco(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGMessageSuccess_MonDeco(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static void MGMessageFailure_MonDeco(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static void MGGive_ManaphyEgg(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGMessageSuccess_ManaphyEgg(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static BOOL MGCheck_MemberCard(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGGive_MemberCard(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGMessageSuccess_MemberCard(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static void MGMessageFailure_MemberCard(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static BOOL MGCheck_OaksLetter(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGGive_OaksLetter(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGMessageSuccess_OaksLetter(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static void MGMessageFailure_OaksLetter(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static BOOL MGCheck_AzureFlute(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGGive_AzureFlute(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGMessageSuccess_AzureFlute(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static void MGMessageFailure_AzureFlute(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static BOOL MGCheck_PoketchApp(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGGive_PoketchApp(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGMessageSuccess_PoketchApp(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static void MGMessageFailure_PoketchApp(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static BOOL MGCheck_SecretKey(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGGive_SecretKey(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGMessageSuccess_SecretKey(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static void MGMessageFailure_SecretKey(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static BOOL MGCheck_PokewalkerCourse(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGGive_PokewalkerCourse(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGMessageSuccess_PokewalkerCourse(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static void MGMessageFailure_PokewalkerCourse(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static BOOL MGCheck_MemorialPhoto(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGGive_MemorialPhoto(FieldSystem* fieldSys, MysteryGiftData* mgData);
+static void MGMessageSuccess_MemorialPhoto(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
+static void MGMessageFailure_MemorialPhoto(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum);
 
 static const struct ScriptMysteryGiftFuncs sScriptMysteryGiftActionTable[MG_TAG_MAX - 1] = {
     { MGCheck_PartySpace, MGGive_Mon, MGMessageSuccess_GiveMon, MGMessageFailure_GiveMon },
@@ -104,24 +104,21 @@ static const struct ScriptMysteryGiftFuncs sScriptMysteryGiftActionTable[MG_TAG_
     { MGCheck_MemorialPhoto, MGGive_MemorialPhoto, MGMessageSuccess_MemorialPhoto, MGMessageFailure_MemorialPhoto },
 };
 
-void FieldSystem_InitGetMysteryGiftGmmState(struct GetMysteryGiftGmmState* state, FieldSystem* fieldSys, MessageFormat* msgFormat, MysteryGiftData* mgData) {
+static void FieldSystem_InitGetMysteryGiftGmmState(struct GetMysteryGiftGmmState* state, FieldSystem* fieldSys, MessageFormat* msgFormat, MysteryGiftData* mgData) {
     state->fieldSys = fieldSys;
     state->msgFormat = msgFormat;
     state->mgData = mgData;
 }
 
-int FieldSystem_GetTagOfNextMG(FieldSystem* fieldSys) {
-    (void)fieldSys;
+static int FieldSystem_GetTagOfNextMG(FieldSystem* fieldSys) {
     return SaveMGDataPtr_GetTagByIndex(SaveMGDataPtr_GetFirstGiftIndex());
 }
 
 MysteryGiftData* FieldSystem_GetDataOfNextMG(FieldSystem* fieldSys) {
-    (void)fieldSys;
     return SaveMGDataPtr_GetDataByIndex(SaveMGDataPtr_GetFirstGiftIndex());
 }
 
-void FieldSystem_SetQueuedMGReceived(FieldSystem* fieldSys) {
-    (void)fieldSys;
+static void FieldSystem_SetQueuedMGReceived(FieldSystem* fieldSys) {
     SaveMGDataPtr_SetReceivedByIndex(SaveMGDataPtr_GetFirstGiftIndex());
 }
 
@@ -185,24 +182,21 @@ BOOL ScrCmd_MysteryGift(ScriptContext* ctx) {
     return FALSE;
 }
 
-BOOL MGCheck_PartySpace(FieldSystem* fieldSys, MysteryGiftData* unused) {
-    (void)unused;
+static BOOL MGCheck_PartySpace(FieldSystem* fieldSys, MysteryGiftData* unused) {
     return Party_GetCount(SaveArray_Party_Get(fieldSys->saveData)) < PARTY_SIZE;
 }
 
-void MGGive_ManaphyEgg(FieldSystem* fieldSys, MysteryGiftData* unused) {
-    (void)unused;
+static void MGGive_ManaphyEgg(FieldSystem* fieldSys, MysteryGiftData* unused) {
     GiveEgg(HEAP_ID_32, fieldSys->saveData, SPECIES_MANAPHY, MAPSEC_TWINLEAF_TOWN, MAPSECTYPE_EXTERNAL, MAPLOC(METLOC_POKEMON_RANGER));
 }
 
-void MGMessageSuccess_ManaphyEgg(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+static void MGMessageSuccess_ManaphyEgg(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00013;
     BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
 }
 
-void MGGive_Mon(FieldSystem* fieldSys, MysteryGiftData* unused) {
-    (void)unused;
+static void MGGive_Mon(FieldSystem* fieldSys, MysteryGiftData* unused) {
 
     MysteryGiftPokemonTag* mgData = &FieldSystem_GetDataOfNextMG(fieldSys)->pokemon;
     PlayerProfile* profile = Save_PlayerData_GetProfileAddr(fieldSys->saveData);
@@ -291,7 +285,7 @@ void MGGive_Mon(FieldSystem* fieldSys, MysteryGiftData* unused) {
 
         tmpPokemon = AllocMonZeroed(HEAP_ID_32);
 #ifdef UBFIX
-        GF_ASSERT(pokemon != NULL);
+        GF_ASSERT(tmpPokemon != NULL);
 #endif
         CopyPokemonToPokemon(pokemon, tmpPokemon);
         SetMonData(tmpPokemon, MON_DATA_OT_NAME_2, playerName);
@@ -314,7 +308,7 @@ void MGGive_Mon(FieldSystem* fieldSys, MysteryGiftData* unused) {
     }
 }
 
-void MGMessageSuccess_GiveMon(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+static void MGMessageSuccess_GiveMon(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
     MysteryGiftPokemonTag* mgData = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->pokemon;
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00007;
@@ -322,17 +316,16 @@ void MGMessageSuccess_GiveMon(struct GetMysteryGiftGmmState* gmmState, u16* pMsg
     BufferBoxMonSpeciesNameWithArticle(gmmState->msgFormat, 1, Mon_GetBoxMon(&mgData->mon));
 }
 
-void MGMessageFailure_GiveMon(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
-    (void)gmmState;
+static void MGMessageFailure_GiveMon(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00004;
 }
 
-void MGGive_Egg(FieldSystem* fieldSys, MysteryGiftData* mgData) {
+static void MGGive_Egg(FieldSystem* fieldSys, MysteryGiftData* mgData) {
     MGGive_Mon(fieldSys, mgData);
 }
 
-void MGMessageSuccess_Egg(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+static void MGMessageSuccess_Egg(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
     MysteryGiftPokemonTag* mgData = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->pokemon;
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00008;
@@ -340,15 +333,13 @@ void MGMessageSuccess_Egg(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank
     BufferBoxMonSpeciesName(gmmState->msgFormat, 1, Mon_GetBoxMon(&mgData->mon));
 }
 
-BOOL MGCheck_Item(FieldSystem* fieldSys, MysteryGiftData* unused) {
-    (void)unused;
+static BOOL MGCheck_Item(FieldSystem* fieldSys, MysteryGiftData* unused) {
     Bag* bag = Save_Bag_Get(fieldSys->saveData);
     u32* pItem = &FieldSystem_GetDataOfNextMG(fieldSys)->item;
     return Bag_HasSpaceForItem(bag, *pItem, 1, HEAP_ID_32);
 }
 
-void MGGive_Item(FieldSystem* fieldSys, MysteryGiftData* unused) {
-    (void)unused;
+static void MGGive_Item(FieldSystem* fieldSys, MysteryGiftData* unused) {
     Bag* bag = Save_Bag_Get(fieldSys->saveData);
     u16 item = FieldSystem_GetDataOfNextMG(fieldSys)->item;
     if (item == ITEM_ENIGMA_STONE) {
@@ -357,7 +348,7 @@ void MGGive_Item(FieldSystem* fieldSys, MysteryGiftData* unused) {
     Bag_AddItem(bag, item, 1, HEAP_ID_32);
 }
 
-void MGMessageSuccess_Item(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+static void MGMessageSuccess_Item(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
     u16 item = FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->item;
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00009;
@@ -365,7 +356,7 @@ void MGMessageSuccess_Item(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBan
     BufferItemName(gmmState->msgFormat, 1, item);
 }
 
-void MGMessageFailure_Item(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+static void MGMessageFailure_Item(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
     Bag* bag = Save_Bag_Get(gmmState->fieldSys->saveData);
     u16 item = FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->item;
     *pMsgBank = NARC_msg_msg_0209_bin;
@@ -373,18 +364,15 @@ void MGMessageFailure_Item(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBan
     BufferItemName(gmmState->msgFormat, 0, item);
 }
 
-BOOL MGCheck_BattleRules(FieldSystem* fieldSys, MysteryGiftData* mgData) {
-    (void)fieldSys;
-    (void)mgData;
+static BOOL MGCheck_BattleRules(FieldSystem* fieldSys, MysteryGiftData* mgData) {
     return TRUE;
 }
 
-void MGGive_BattleRules(FieldSystem* fieldSys, MysteryGiftData* mgData) {
-    (void)mgData;
+static void MGGive_BattleRules(FieldSystem* fieldSys, MysteryGiftData* mgData) {
     sub_020291D4(fieldSys->saveData, FieldSystem_GetDataOfNextMG(fieldSys)->ruleset);
 }
 
-void MGMessageSuccess_BattleRules(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+static void MGMessageSuccess_BattleRules(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
     u16* mgData = FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->ruleset;
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00010;
@@ -395,25 +383,20 @@ void MGMessageSuccess_BattleRules(struct GetMysteryGiftGmmState* gmmState, u16* 
 }
 
 // Unreachable
-void MGMessageFailure_BattleRules(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
-    (void)gmmState;
+static void MGMessageFailure_BattleRules(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00006;
 }
 
-BOOL MGCheck_Decoration(FieldSystem* fieldSys, MysteryGiftData* mgData) {
-    (void)fieldSys;
-    (void)mgData;
+static BOOL MGCheck_Decoration(FieldSystem* fieldSys, MysteryGiftData* mgData) {
     return FALSE;
 }
 
-void MGGive_Decoration(FieldSystem* fieldSys, MysteryGiftData* mgData) {
-    (void)fieldSys;
-    (void)mgData;
+static void MGGive_Decoration(FieldSystem* fieldSys, MysteryGiftData* mgData) {
 }
 
 // Unreachable
-void MGMessageSuccess_Decoration(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+static void MGMessageSuccess_Decoration(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
     int decoration = FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->baseDecoration;
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00011;
@@ -421,39 +404,37 @@ void MGMessageSuccess_Decoration(struct GetMysteryGiftGmmState* gmmState, u16* p
     BufferDecorationName(gmmState->msgFormat, 1, decoration);
 }
 
-void MGMessageFailure_Decoration(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+static void MGMessageFailure_Decoration(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00031;
 }
 
-BOOL MGCheck_MonDeco(FieldSystem* fieldSys, MysteryGiftData* unused) {
-    (void)unused;
+static BOOL MGCheck_MonDeco(FieldSystem* fieldSys, MysteryGiftData* unused) {
     MysteryGiftMonDecorationTag* mgData = &FieldSystem_GetDataOfNextMG(fieldSys)->monDecoration;
     int id = mgData->id;
     switch (mgData->kind) {
-    case 1:
+    case MGMONDECOTYPE_SEAL:
         return SealCase_CheckSealQuantity(Save_SealCase_Get(fieldSys->saveData), id, 1);
-    case 2:
+    case MGMONDECOTYPE_FASHION:
         return TRUE;
-    case 3:
+    case MGMONDECOTYPE_BACKGROUND:
         return TRUE;
     default:
         return FALSE;
     }
 }
 
-void MGGive_MonDeco(FieldSystem* fieldSys, MysteryGiftData* unused) {
-    (void)unused;
+static void MGGive_MonDeco(FieldSystem* fieldSys, MysteryGiftData* unused) {
     MysteryGiftMonDecorationTag* mgData = &FieldSystem_GetDataOfNextMG(fieldSys)->monDecoration;
     int id = mgData->id;
     switch (mgData->kind) {
-    case 1:
+    case MGMONDECOTYPE_SEAL:
         GiveOrTakeSeal(Save_SealCase_Get(fieldSys->saveData), id, 1);
         break;
-    case 2:
+    case MGMONDECOTYPE_FASHION:
         FashionCase_GiveFashionItem(Save_FashionData_GetFashionCase(Save_FashionData_Get(fieldSys->saveData)), id, 1);
         break;
-    case 3:
+    case MGMONDECOTYPE_BACKGROUND:
         FashionCase_GiveContestBackground(Save_FashionData_GetFashionCase(Save_FashionData_Get(fieldSys->saveData)), id);
         break;
     default:
@@ -461,17 +442,17 @@ void MGGive_MonDeco(FieldSystem* fieldSys, MysteryGiftData* unused) {
     }
 }
 
-void MGMessageSuccess_MonDeco(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+static void MGMessageSuccess_MonDeco(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
     MysteryGiftMonDecorationTag* mgData = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->monDecoration;
     int id = mgData->id;
     switch (mgData->kind) {
-    case 1:
+    case MGMONDECOTYPE_SEAL:
         BufferSealName(gmmState->msgFormat, 1, id);
         break;
-    case 2:
+    case MGMONDECOTYPE_FASHION:
         BufferFashionName(gmmState->msgFormat, 1, id);
         break;
-    case 3:
+    case MGMONDECOTYPE_BACKGROUND:
         BufferContestBackgroundName(gmmState->msgFormat, 1, id);
         break;
     default:
@@ -483,133 +464,92 @@ void MGMessageSuccess_MonDeco(struct GetMysteryGiftGmmState* gmmState, u16* pMsg
 }
 
 
-void MGMessageFailure_MonDeco(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+static void MGMessageFailure_MonDeco(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00006;
 }
 
-BOOL MGCheck_MemberCard(FieldSystem* fieldSys, MysteryGiftData* mgData) {
-    (void)fieldSys;
-    (void)mgData;
+static BOOL MGCheck_MemberCard(FieldSystem* fieldSys, MysteryGiftData* mgData) {
     return FALSE;
 }
 
-void MGGive_MemberCard(FieldSystem* fieldSys, MysteryGiftData* mgData) {
-    (void)fieldSys;
-    (void)mgData;
+static void MGGive_MemberCard(FieldSystem* fieldSys, MysteryGiftData* mgData) {
 }
 
 // Unreachable
-void MGMessageSuccess_MemberCard(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
-    (void)gmmState;
-    (void)pMsgBank;
-    (void)pMsgNum;
+static void MGMessageSuccess_MemberCard(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
 }
 
-void MGMessageFailure_MemberCard(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
-    (void)gmmState;
+static void MGMessageFailure_MemberCard(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00031;
 }
 
-BOOL MGCheck_OaksLetter(FieldSystem* fieldSys, MysteryGiftData* mgData) {
-    (void)fieldSys;
-    (void)mgData;
+static BOOL MGCheck_OaksLetter(FieldSystem* fieldSys, MysteryGiftData* mgData) {
     return FALSE;
 }
 
-void MGGive_OaksLetter(FieldSystem* fieldSys, MysteryGiftData* mgData) {
-    (void)fieldSys;
-    (void)mgData;
+static void MGGive_OaksLetter(FieldSystem* fieldSys, MysteryGiftData* mgData) {
 }
 
 // Unreachable
-void MGMessageSuccess_OaksLetter(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
-    (void)gmmState;
-    (void)pMsgBank;
-    (void)pMsgNum;
+static void MGMessageSuccess_OaksLetter(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
 }
 
-void MGMessageFailure_OaksLetter(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
-    (void)gmmState;
+static void MGMessageFailure_OaksLetter(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00031;
 }
 
-BOOL MGCheck_SecretKey(FieldSystem* fieldSys, MysteryGiftData* mgData) {
-    (void)fieldSys;
-    (void)mgData;
+static BOOL MGCheck_SecretKey(FieldSystem* fieldSys, MysteryGiftData* mgData) {
     return FALSE;
 }
 
-void MGGive_SecretKey(FieldSystem* fieldSys, MysteryGiftData* mgData) {
-    (void)fieldSys;
-    (void)mgData;
+static void MGGive_SecretKey(FieldSystem* fieldSys, MysteryGiftData* mgData) {
 }
 
 // Unreachable
-void MGMessageSuccess_SecretKey(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
-    (void)gmmState;
-    (void)pMsgBank;
-    (void)pMsgNum;
+static void MGMessageSuccess_SecretKey(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
 }
 
-void MGMessageFailure_SecretKey(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
-    (void)gmmState;
+static void MGMessageFailure_SecretKey(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00031;
 }
 
-BOOL MGCheck_AzureFlute(FieldSystem* fieldSys, MysteryGiftData* mgData) {
-    (void)fieldSys;
-    (void)mgData;
+static BOOL MGCheck_AzureFlute(FieldSystem* fieldSys, MysteryGiftData* mgData) {
     return FALSE;
 }
 
-void MGGive_AzureFlute(FieldSystem* fieldSys, MysteryGiftData* mgData) {
-    (void)fieldSys;
-    (void)mgData;
+static void MGGive_AzureFlute(FieldSystem* fieldSys, MysteryGiftData* mgData) {
 }
 
 // Unreachable
-void MGMessageSuccess_AzureFlute(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
-    (void)gmmState;
-    (void)pMsgBank;
-    (void)pMsgNum;
+static void MGMessageSuccess_AzureFlute(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
 }
 
-void MGMessageFailure_AzureFlute(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
-    (void)gmmState;
+static void MGMessageFailure_AzureFlute(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00031;
 }
 
-BOOL MGCheck_PoketchApp(FieldSystem* fieldSys, MysteryGiftData* mgData) {
-    (void)fieldSys;
-    (void)mgData;
+static BOOL MGCheck_PoketchApp(FieldSystem* fieldSys, MysteryGiftData* mgData) {
     return FALSE;
 }
 
-void MGGive_PoketchApp(FieldSystem* fieldSys, MysteryGiftData* mgData) {
-    (void)fieldSys;
-    (void)mgData;
+static void MGGive_PoketchApp(FieldSystem* fieldSys, MysteryGiftData* mgData) {
 }
 
 // Unreachable
-void MGMessageSuccess_PoketchApp(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
-    (void)gmmState;
-    (void)pMsgBank;
-    (void)pMsgNum;
+static void MGMessageSuccess_PoketchApp(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
 }
 
-void MGMessageFailure_PoketchApp(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
-    (void)gmmState;
+static void MGMessageFailure_PoketchApp(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00031;
 }
 
-BOOL MGCheck_PokewalkerCourse(FieldSystem* fieldSys, MysteryGiftData* unused) {
-    (void)unused;
+static BOOL MGCheck_PokewalkerCourse(FieldSystem* fieldSys, MysteryGiftData* unused) {
     u8* mgData = &FieldSystem_GetDataOfNextMG(fieldSys)->pokewalkerCourse;
     POKEWALKER* pokeWalker = Save_Pokewalker_Get(fieldSys->saveData);
     u8 courseNo = WALKER_COURSE_REFRESHING_FIELD;
@@ -619,8 +559,7 @@ BOOL MGCheck_PokewalkerCourse(FieldSystem* fieldSys, MysteryGiftData* unused) {
     return !Pokewalker_CourseIsUnlocked(pokeWalker, courseNo);
 }
 
-void MGGive_PokewalkerCourse(FieldSystem* fieldSys, MysteryGiftData* unused) {
-    (void)unused;
+static void MGGive_PokewalkerCourse(FieldSystem* fieldSys, MysteryGiftData* unused) {
     POKEWALKER* pokeWalker = Save_Pokewalker_Get(fieldSys->saveData);
     u8 courseNo = FieldSystem_GetDataOfNextMG(fieldSys)->pokewalkerCourse;
     if (courseNo < WALKER_COURSE_MAX) {
@@ -628,7 +567,7 @@ void MGGive_PokewalkerCourse(FieldSystem* fieldSys, MysteryGiftData* unused) {
     }
 }
 
-void MGMessageSuccess_PokewalkerCourse(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+static void MGMessageSuccess_PokewalkerCourse(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
     u8* mgData = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->pokewalkerCourse;
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00019;
@@ -636,7 +575,7 @@ void MGMessageSuccess_PokewalkerCourse(struct GetMysteryGiftGmmState* gmmState, 
     BufferPokewalkerCourseName(gmmState->msgFormat, 1, *mgData);
 }
 
-void MGMessageFailure_PokewalkerCourse(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+static void MGMessageFailure_PokewalkerCourse(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
     u8* mgData = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->pokewalkerCourse;
     POKEWALKER* pokeWalker = Save_Pokewalker_Get(gmmState->fieldSys->saveData);
     *pMsgBank = NARC_msg_msg_0209_bin;
@@ -645,15 +584,13 @@ void MGMessageFailure_PokewalkerCourse(struct GetMysteryGiftGmmState* gmmState, 
     BufferPokewalkerCourseName(gmmState->msgFormat, 1, *mgData);
 }
 
-BOOL MGCheck_MemorialPhoto(FieldSystem* fieldSys, MysteryGiftData* mgData) {
-    (void)mgData;
+static BOOL MGCheck_MemorialPhoto(FieldSystem* fieldSys, MysteryGiftData* mgData) {
     Bag* bag = Save_Bag_Get(fieldSys->saveData);
     PHOTO_ALBUM* album = Save_PhotoAlbum_Get(fieldSys->saveData);
     return PhotoAlbum_GetNumSaved(album) < PHOTO_ALBUM_MAX;
 }
 
-void MGGive_MemorialPhoto(FieldSystem* fieldSys, MysteryGiftData* unused) {
-    (void)unused;
+static void MGGive_MemorialPhoto(FieldSystem* fieldSys, MysteryGiftData* unused) {
     PHOTO* mgData = &FieldSystem_GetDataOfNextMG(fieldSys)->photo;
     PHOTO_ALBUM* album = Save_PhotoAlbum_Get(FieldSystem_GetSaveData(fieldSys));
     u8 slot = PhotoAlbum_GetIndexOfFirstEmptySlot(album);
@@ -664,14 +601,14 @@ void MGGive_MemorialPhoto(FieldSystem* fieldSys, MysteryGiftData* unused) {
     }
 }
 
-void MGMessageSuccess_MemorialPhoto(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+static void MGMessageSuccess_MemorialPhoto(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
     PHOTO* photo = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->photo;
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00018;
     BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
 }
 
-void MGMessageFailure_MemorialPhoto(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
+static void MGMessageFailure_MemorialPhoto(struct GetMysteryGiftGmmState* gmmState, u16* pMsgBank, u16* pMsgNum) {
     PHOTO* photo = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->photo;
     Bag* bag = Save_Bag_Get(gmmState->fieldSys->saveData);
     *pMsgBank = NARC_msg_msg_0209_bin;
