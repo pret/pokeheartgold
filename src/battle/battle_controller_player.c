@@ -1690,7 +1690,7 @@ void BattleControllerPlayer_RunInput(BattleSystem *bsys, BattleContext *ctx) {
 }
 
 //static
-void BattleControllerPlayer_SafariBallInput(BattleSystem *bsys, BattleContext *ctx) {
+void BattleControllerPlayer_SafariThrowBall(BattleSystem *bsys, BattleContext *ctx) {
     int cnt;
     
     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 275);
@@ -1737,4 +1737,165 @@ void BattleControllerPlayer_SafariRun(BattleSystem *bsys, BattleContext *ctx) {
     if (ctx->tempData != 0 && ctx->safariRunAttempts < 12) {
         ctx->safariRunAttempts++;
     }
+}
+
+//static
+void BattleControllerPlayer_SafariWatching(BattleSystem *bsys, BattleContext *ctx) {
+    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 229);
+    ctx->battlerIdAttacker = 0;
+    ctx->battlerIdTarget = 1;
+    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+    ctx->commandNext = CONTROLLER_COMMAND_40;
+}
+
+//static
+void BattleControllerPlayer_CatchingContestThrowBall(BattleSystem *bsys, BattleContext *ctx) {
+    int cnt;
+    
+    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 11);
+    ctx->battlerIdAttacker = BATTLER_PLAYER;
+    ctx->battlerIdTarget = BATTLER_ENEMY;
+    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+    ctx->commandNext = CONTROLLER_COMMAND_40;
+    ctx->itemTemp = ITEM_SPORT_BALL;
+    cnt = BattleSystem_GetSafariBallCount(bsys) - 1;
+    BattleSystem_SetSafariBallCount(bsys, cnt);
+    ctx->moveStatusFlag |= 1 << 0x1F;
+}
+
+//static
+u32 TryDisobedience(BattleSystem *bsys, BattleContext *ctx, int *script) {
+    int rnd, struggleRnd;
+    u32 battleType;
+    u8 level;
+    PlayerProfile *profile;
+    
+    battleType = BattleSystem_GetBattleType(bsys);
+    profile = BattleSystem_GetPlayerProfile(bsys, 0);
+
+    if (battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_TOWER)) {
+        return 0;
+    }
+
+    if (BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker)) {
+        return 0;
+    }
+
+    if ((battleType & BATTLE_TYPE_6) && ov12_0223AB0C(bsys, ctx->battlerIdAttacker) == 4) {
+        return 0;
+    }
+
+    if (ov12_02256854(bsys, ctx) == TRUE) {
+        return 0;
+    }
+
+    if (!Battler_CanSelectAction(ctx, ctx->battlerIdAttacker)) {
+        return 0;
+    }
+
+    if (ctx->moveNoCur == MOVE_BIDE && (ctx->battleStatus & BATTLE_STATUS_CHARGE_MOVE_HIT)) {
+        return 0;
+    }
+    
+    if (PlayerProfile_CountBadges(profile) >= 8) {
+        return 0;
+    }
+
+    level = 10;
+    
+    if (PlayerProfile_CountBadges(profile) >= 1) {
+        level = 20;
+    }
+
+    if (PlayerProfile_CountBadges(profile) >= 2) {
+        level = 30;
+    }
+
+    if (PlayerProfile_TestBadgeFlag(profile, 3)) {
+        level = 50;
+    }
+
+    if (PlayerProfile_TestBadgeFlag(profile, 5)) {
+        level = 70;
+    }
+    
+    if (ctx->battleMons[ctx->battlerIdAttacker].level <= level) {
+        return 0;
+    }
+
+    rnd = ((BattleSystem_Random(bsys) & 0xff) * (ctx->battleMons[ctx->battlerIdAttacker].level + level)) >> 8;
+
+    if (rnd < level) {
+        return 0;
+    }
+
+    if (ctx->moveNoCur == MOVE_RAGE) {
+        ctx->battleMons[ctx->battlerIdAttacker].status2 &= ~STATUS2_23;
+    }
+
+    if (ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_SLEEP && (ctx->moveNoCur == MOVE_SNORE || ctx->moveNoCur == MOVE_SLEEP_TALK)) {
+        *script = 254;
+        return 1;
+    }
+    
+    rnd = ((BattleSystem_Random(bsys) & 0xff) * (ctx->battleMons[ctx->battlerIdAttacker].level + level)) >> 8;
+
+    //use a random (useable) move
+    if (rnd < level) {
+        rnd = StruggleCheck(bsys, ctx, ctx->battlerIdAttacker, MaskOfFlagNo(ctx->movePos[ctx->battlerIdAttacker]), -1);
+    
+        if (rnd == 0xF) {
+            *script = 255;
+            return 1;
+        }
+        do {
+            struggleRnd = BattleSystem_Random(bsys) & 3;
+        } while (MaskOfFlagNo(struggleRnd) & rnd);
+    
+        ctx->movePos[ctx->battlerIdAttacker] = struggleRnd;
+        ctx->moveNoTemp = ctx->battleMons[ctx->battlerIdAttacker].moves[ctx->movePos[ctx->battlerIdAttacker]];
+        ctx->moveNoCur = ctx->moveNoTemp;
+        ctx->battlerIdTarget = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, ctx->moveNoTemp, 1, 0);
+
+        if (ctx->battlerIdTarget == BATTLER_NONE) {
+            ctx->unk_21A8[ctx->battlerIdAttacker][1] = ov12_02253DA0(bsys, ctx, ctx->battlerIdAttacker);
+        } else {
+            ctx->unk_21A8[ctx->battlerIdAttacker][1] = ctx->battlerIdTarget;
+        }
+
+        *script = 256;
+        ctx->unk_2184 |= 1;
+        
+        return 2; // ???
+    }
+
+    level = ctx->battleMons[ctx->battlerIdAttacker].level - level;
+    rnd = BattleSystem_Random(bsys) & 0xFF;
+
+    //take a nap
+    if (rnd < level && !(ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_ALL) &&
+        GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_VITAL_SPIRIT &&
+        GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_INSOMNIA &&
+        !(ctx->fieldCondition & (0xF << 8))) {
+        *script = 257;
+        return 1;
+    }
+
+    rnd -= level;
+
+    //hitting itself
+    if (rnd < level) {
+        ctx->battlerIdTarget = ctx->battlerIdAttacker;
+        ctx->battlerIdTemp = ctx->battlerIdTarget;
+        ctx->hpCalc = CalcMoveDamage(bsys, ctx, MOVE_POUND, 0, 0, 40, 0, ctx->battlerIdAttacker, ctx->battlerIdAttacker, 1);
+        ctx->hpCalc = ApplyDamageRange(bsys, ctx, ctx->hpCalc);
+        ctx->hpCalc *= -1;
+        *script = 258;
+        ctx->battleStatus |= 2;
+        return 3;
+    }
+
+    *script = 255;
+    
+    return 1;
 }
