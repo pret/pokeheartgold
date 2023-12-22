@@ -37,6 +37,7 @@ all:
 	$(MAKE) $(ROM)
 
 tidy:
+	@$(MAKE) -C lib/syscall tidy
 	@$(MAKE) -C sub tidy
 	$(RM) -r $(BUILD_DIR)
 	$(RM) -r $(PROJECT_CLEAN_TARGETS)
