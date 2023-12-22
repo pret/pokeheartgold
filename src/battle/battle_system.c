@@ -1948,7 +1948,7 @@ static BOOL ov12_0223CF14(struct TextPrinterTemplate *template, u16 glyphId) {
         ret = IsFanfarePlaying();
         break;
     case 3:
-        PlayFanfare(0x4A3);
+        PlayFanfare(SEQ_ME_POKEGET);
         break;
     case 4:
         PlaySE(SEQ_SE_DP_KON);
