@@ -28,7 +28,7 @@ typedef struct BattleMessage {
     u8 tag;
     u16 id;
     int param[6];
-    int unk1C;
+    int numDigits;
     int battlerId;
 } BattleMessage;
 

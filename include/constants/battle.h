@@ -205,6 +205,7 @@ typedef enum Terrain {
 #define FIELD_CONDITION_HAIL                (1 << 6)
 #define FIELD_CONDITION_HAIL_PERMANENT      (1 << 7)
 #define FIELD_CONDITION_HAIL_ALL            (FIELD_CONDITION_HAIL | FIELD_CONDITION_HAIL_PERMANENT)
+#define FIELD_CONDITION_UPROAR              (15 << 8)
 #define FIELD_CONDITION_GRAVITY             (7 << 12)
 #define FIELD_CONDITION_FOG                 (1 << 15)
 #define FIELD_CONDITION_TRICK_ROOM          (7 << 16)

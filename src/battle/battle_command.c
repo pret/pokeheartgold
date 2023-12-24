@@ -6134,7 +6134,7 @@ static void Task_GetExp(SysTask *task, void *inData)
             // Cache the stats from the previous level for later
             data->ctx->prevLevelStats = AllocFromHeap(HEAP_ID_BATTLE, sizeof(StatStruct));
             StatStruct *oldStats = data->ctx->prevLevelStats;
-            for (i = 0; i < 6; i++) {
+            for (i = 0; i < NUM_STATS; i++) {
                 oldStats->stats[i] = GetMonData(mon, stats.stats[i], NULL);
             }
 
@@ -6211,7 +6211,7 @@ static void Task_GetExp(SysTask *task, void *inData)
             msg.id = msg_0197_00948; // "+{0}"
             msg.tag = TAG_NUMBERS;
             msg.param[0] = GetMonData(mon, monData.stats[i], NULL) - oldStats->stats[i];
-            msg.unk1C = 2;
+            msg.numDigits = 2;
 
             ov12_0223C4E8(data->bsys, window, msgLoader, &msg, 80, 16 * i, 0, 0, 0);
         }
@@ -6229,7 +6229,7 @@ static void Task_GetExp(SysTask *task, void *inData)
             msg.id = msg_0197_00949; // just a number
             msg.tag = TAG_NUMBERS;
             msg.param[0] = GetMonData(mon, monData.stats[i], NULL);
-            msg.unk1C = 3;
+            msg.numDigits = 3;
 
             ov12_0223C4E8(data->bsys, window, msgLoader, &msg, 72, 16 * i, 0x2, 36, 0);
         }

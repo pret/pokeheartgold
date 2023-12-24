@@ -27,7 +27,7 @@ static void BattleMessage_BufferNickname(BattleSystem *bsys, int bufferIndex, in
 static void BattleMessage_BufferMove(BattleSystem *bsys, int bufferIndex, int param);
 static void BattleMessage_BufferItem(BattleSystem *bsys, int bufferIndex, int param);
 static void BattleMessage_BufferNumber(BattleSystem *bsys, int bufferIndex, int param);
-static void BattleMessage_BufferNumbers(BattleSystem *bsys, int bufferIndex, int param, int a3);
+static void BattleMessage_BufferNumbers(BattleSystem *bsys, int bufferIndex, int param, int numDigits);
 static void BattleMessage_BufferType(BattleSystem *bsys, int bufferIndex, int param);
 static void BattleMessage_BufferAbility(BattleSystem *bsys, int bufferIndex, int param);
 static void BattleMessage_BufferStat(BattleSystem *bsys, int bufferIndex, int param);
@@ -1581,7 +1581,7 @@ static void BattleSystem_AdjustMessageForSide(BattleSystem *bsys, BattleMessage 
         }
         break;
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     }
 }
 
@@ -1607,7 +1607,7 @@ static void BattleSystem_BufferMessage(BattleSystem *bsys, BattleMessage *msg) {
         BattleMessage_BufferNumber(bsys, 0, msg->param[0]);
         break;
     case TAG_NUMBERS:
-        BattleMessage_BufferNumbers(bsys, 0, msg->param[0], msg->unk1C);
+        BattleMessage_BufferNumbers(bsys, 0, msg->param[0], msg->numDigits);
         break;
     case TAG_TRNAME:
         BattleMessage_BufferTrainerName(bsys, 0, msg->param[0]);
@@ -1858,7 +1858,7 @@ static void BattleSystem_BufferMessage(BattleSystem *bsys, BattleMessage *msg) {
         BattleMessage_BufferNickname(bsys, 5, msg->param[5]);
         break;
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     }
 }
 
@@ -1879,9 +1879,9 @@ static void BattleMessage_BufferNumber(BattleSystem *bsys, int bufferIndex, int 
     BufferIntegerAsString(bsys->msgFormat, bufferIndex, param, 5, PRINTING_MODE_LEFT_ALIGN, TRUE);
 }
 
-static void BattleMessage_BufferNumbers(BattleSystem *bsys, int bufferIndex, int param, int a3) {
-    if (a3) {
-        BufferIntegerAsString(bsys->msgFormat, bufferIndex, param, a3, PRINTING_MODE_RIGHT_ALIGN, TRUE);
+static void BattleMessage_BufferNumbers(BattleSystem *bsys, int bufferIndex, int param, int numDigits) {
+    if (numDigits) {
+        BufferIntegerAsString(bsys->msgFormat, bufferIndex, param, numDigits, PRINTING_MODE_RIGHT_ALIGN, TRUE);
     } else {
         BufferIntegerAsString(bsys->msgFormat, bufferIndex, param, 5, PRINTING_MODE_RIGHT_ALIGN, TRUE);
     }

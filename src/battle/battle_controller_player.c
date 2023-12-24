@@ -1866,7 +1866,7 @@ u32 TryDisobedience(BattleSystem *bsys, BattleContext *ctx, int *script) {
         *script = 256;
         ctx->unk_2184 |= 1;
         
-        return 2; // ???
+        return 2;
     }
 
     level = ctx->battleMons[ctx->battlerIdAttacker].level - level;
@@ -1876,7 +1876,7 @@ u32 TryDisobedience(BattleSystem *bsys, BattleContext *ctx, int *script) {
     if (rnd < level && !(ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_ALL) &&
         GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_VITAL_SPIRIT &&
         GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_INSOMNIA &&
-        !(ctx->fieldCondition & (0xF << 8))) {
+        !(ctx->fieldCondition & FIELD_CONDITION_UPROAR)) {
         *script = 257;
         return 1;
     }
