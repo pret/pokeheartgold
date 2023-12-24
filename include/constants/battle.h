@@ -205,6 +205,7 @@ typedef enum Terrain {
 #define FIELD_CONDITION_HAIL                (1 << 6)
 #define FIELD_CONDITION_HAIL_PERMANENT      (1 << 7)
 #define FIELD_CONDITION_HAIL_ALL            (FIELD_CONDITION_HAIL | FIELD_CONDITION_HAIL_PERMANENT)
+#define FIELD_CONDITION_UPROAR              (15 << 8)
 #define FIELD_CONDITION_GRAVITY             (7 << 12)
 #define FIELD_CONDITION_FOG                 (1 << 15)
 #define FIELD_CONDITION_TRICK_ROOM          (7 << 16)
@@ -469,6 +470,11 @@ typedef enum Terrain {
 #define STAT_UP_5           11
 #define STAT_UP_6           12
 
+//Trainer AI Flags
+
+#define AI_DOUBLES      (1 << 7)
+#define AI_29           (1 << 29)
+
 //Battle Controller Commands
 #ifndef PM_ASM
 typedef enum ControllerCommand {
@@ -520,5 +526,9 @@ typedef enum ControllerCommand {
     CONTROLLER_COMMAND_45,
     CONTROLLER_COMMAND_MAX
 } ControllerCommand;
+
+//Critical Music Flags
+#define CRITICAL_MUSIC_OFF  2
+
 #endif //PM_ASM
 #endif //POKEHEARTGOLD_CONSTANTS_BATTLE_H

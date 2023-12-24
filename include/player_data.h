@@ -54,7 +54,7 @@ void PlayerProfile_SetTrainerGender(PlayerProfile* profile, int gender);
 u32 PlayerProfile_GetTrainerGender(PlayerProfile* profile);
 BOOL PlayerProfile_TestBadgeFlag(PlayerProfile* profile, s32 badge_no);
 void PlayerProfile_SetBadgeFlag(PlayerProfile* profile, s32 badge_no);
-u32 PlayerProfile_CountBadges(PlayerProfile* profile);
+s32 PlayerProfile_CountBadges(PlayerProfile* profile);
 u32 PlayerProfile_GetMoney(PlayerProfile* profile);
 u32 PlayerProfile_SetMoney(PlayerProfile* profile, u32 amount);
 u8 PlayerProfile_GetAvatar(PlayerProfile* profile);

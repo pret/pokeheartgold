@@ -612,7 +612,7 @@ _0226B264:
 	strh r1, [r0]
 	pop {r3, r4, r5, pc}
 _0226B27A:
-	bl ov12_0223C340
+	bl BattleSystem_SetDefaultBlend
 	add r0, r5, #0
 	bl DestroySysTask
 	mov r0, #0

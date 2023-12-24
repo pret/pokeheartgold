@@ -43,7 +43,7 @@
 .public BattleSystem_GetRandTemp
 .public ov12_0223BE68
 .public ov12_0223C140
-.public ov12_0223C330
+.public BattleSystem_CheckMonCaught
 .public ov12_0224ECC4
 .public ov12_0224ED00
 .public ov12_0224EDC0
