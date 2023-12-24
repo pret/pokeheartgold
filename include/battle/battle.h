@@ -261,9 +261,9 @@ typedef struct BattleMon {
     UnkBattlemonSub unk88;
 } BattleMon;
 
-typedef struct StatStruct {
+typedef struct PokemonStats {
     u32 stats[6];
-} StatStruct;
+} PokemonStats;
 
 typedef struct BattleContext {
     u8 unk_0[4];
@@ -334,7 +334,7 @@ typedef struct BattleContext {
     int totalDamage[4];
     int meFirstTotal;
     GetterWork *getterWork;
-    StatStruct *prevLevelStats;
+    PokemonStats *prevLevelStats;
     u32 fieldCondition;
     FieldConditionData fieldConditionData;
     u32 fieldSideConditionFlags[2];
