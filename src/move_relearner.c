@@ -12,7 +12,6 @@ void MoveRelearner_Delete(MoveRelearner *moveRelearner) {
     FreeToHeap(moveRelearner);
 }
 
-//BUILD FAILS - JUST NOT GONNA DO THIS SHIT RN
 u16 *MoveRelearner_GetEligibleLevelUpMoves(Pokemon *mon, HeapID heapId) {
     u16 species = (u16)GetMonData(mon, MON_DATA_SPECIES, NULL);
     u8 form = (u8)GetMonData(mon, MON_DATA_FORM, NULL);
