@@ -298,7 +298,7 @@ Static main
 	Object asm/unk_02091564.o
 	Object asm/unk_020915B0.o
 	Object asm/unk_02091664.o
-	Object src/field_blackthorn_tutors.o
+	Object src/move_relearner.o
 	Object asm/unk_02091880.o
 	Object asm/unk_02091CDC.o
 	Object asm/unk_020921A4.o
