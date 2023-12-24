@@ -181,15 +181,9 @@ static void Print2dMenuItemTexts(struct ListMenu2D *listMenu) {
     dx = listMenu->maxItemWidth + listMenu->maxGlyphWidth * 2;
     for (i = 0; i < listMenu->template.itemsWide; i++) {
         for (j = 0; j < listMenu->template.itemsHigh; j++) {
-            AddTextPrinterParameterized(
-                listMenu->template.window,
-                listMenu->template.fontId,
-                listMenu->template.items[j + i * listMenu->template.itemsHigh].text,
-                x,
-                listMenu->y + (listMenu->maxGlyphHeight + listMenu->template.yTop) * j,
-                TEXT_SPEED_NOTRANSFER,
-                NULL
-            );
+            u8 y = listMenu->y + (listMenu->maxGlyphHeight + listMenu->template.yTop) * j;
+            AddTextPrinterParameterized(listMenu->template.window, listMenu->template.fontId, listMenu->template.items[j + i * listMenu->template.itemsHigh].text,
+                x, y, TEXT_SPEED_NOTRANSFER, NULL);
         }
         x += dx;
     }

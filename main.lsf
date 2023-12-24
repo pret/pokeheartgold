@@ -557,7 +557,8 @@ Overlay OVY_9
 Overlay OVY_10
 {
     After OVY_6
-    Object asm/overlay_10.o
+    Object src/battle/trainer_ai.o
+    Object asm/overlay_10_trainer_ai.o
 }
 Overlay OVY_11
 {
@@ -569,14 +570,13 @@ Overlay OVY_12
     Object src/battle/battle_022378C0.o
     Object asm/overlay_12_022378C0.o
     Object src/battle/battle_system.o
-    Object asm/overlay_12_battle_system.o
     Object src/battle/battle_command.o
     Object asm/overlay_12_battle_command.o
     Object src/battle/battle_controller_player.o
     Object asm/overlay_12_battle_controller_player.o
     Object src/battle/overlay_12_0224E4FC.o
     Object asm/overlay_12_battle_controller_opponent.o
-    Object asm/overlay_12_02261FD4.o
+    Object src/battle/battle_02261FD4.o
     Object asm/overlay_12_battle_controller.o
     Object asm/overlay_12_hp_bar.o
     Object asm/overlay_12_02265E28.o
