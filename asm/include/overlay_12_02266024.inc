@@ -135,9 +135,9 @@
 .public BattleSystem_GetPartyMon
 .public ov12_0223A8E4
 .public ov12_0223A8EC
-.public ov12_0223A930
+.public BattleSystem_GetMessageData
 .public BattleSystem_GetPaletteData
-.public ov12_0223A9A4
+.public BattleSystem_GetMessageFormat
 .public ov12_0223AAD8
 .public ov12_0223AB54
 .public BattleSystem_GetSafariBallCount

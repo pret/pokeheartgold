@@ -7,6 +7,7 @@
 #include "item.h"
 #include "font.h"
 #include "game_stats.h"
+#include "msgdata.h"
 #include "move.h"
 #include "options.h"
 #include "palette.h"
@@ -27,7 +28,7 @@ typedef struct BattleMessage {
     u8 tag;
     u16 id;
     int param[6];
-    int unk1C;
+    int numDigits;
     int battlerId;
 } BattleMessage;
 
@@ -108,13 +109,13 @@ typedef struct SelfTurnData {
     int shellBellDamage;
 } SelfTurnData;
 
-typedef struct UnkBtlCtxSub_76 {
+typedef struct TrainerAIData {
     u8 unk0;
     u8 unk1;
     u16 unk2;
-    s8 unk4[4];
+    s8 movePoints[4]; //higher points = more priority for selection
     int unk8;
-    u32 unkC;
+    u32 aiFlags;
     u8 unk10;
     u8 unk11;
     u8 unk12;
@@ -128,8 +129,8 @@ typedef struct UnkBtlCtxSub_76 {
     u32 unk78[8];
     u8 unk98;
     u8 unk99[2];
-    u8 unk9B;
-    u8 unk9C;
+    u8 battlerIdAttacker;
+    u8 battlerIdTarget;
     u8 unk9D[2];
     u8 unk9F[2];
     u16 unkA0[2];
@@ -138,7 +139,7 @@ typedef struct UnkBtlCtxSub_76 {
     ItemData *itemData;
     u16 unk280[4];
     u16 unk288[4];
-} UnkBtlCtxSub_76;
+} TrainerAIData;
 
 typedef struct MoveFailFlags {
     u32 paralysis:1;
@@ -260,6 +261,10 @@ typedef struct BattleMon {
     UnkBattlemonSub unk88;
 } BattleMon;
 
+typedef struct PokemonStats {
+    u32 stats[6];
+} PokemonStats;
+
 typedef struct BattleContext {
     u8 unk_0[4];
     u8 unk_4[4];
@@ -329,7 +334,7 @@ typedef struct BattleContext {
     int totalDamage[4];
     int meFirstTotal;
     GetterWork *getterWork;
-    void * unk_17C;
+    PokemonStats *prevLevelStats;
     u32 fieldCondition;
     FieldConditionData fieldConditionData;
     u32 fieldSideConditionFlags[2];
@@ -337,7 +342,7 @@ typedef struct BattleContext {
     TurnData turnData[4];
     SelfTurnData selfTurnData[4];
     MoveFailFlags moveFail[4]; 
-    UnkBtlCtxSub_76 unk_334;
+    TrainerAIData trainerAIData;
     u32 * unk_2134;
     u32 unk_2138;
     u32 battleStatus;
@@ -481,7 +486,7 @@ typedef struct OpponentData {
     u8 unk195;
     u8 unk196;
     u8 unk197;
-    u32 unk198;
+    SysTask *unk198;
     u16 unk19C;
     int unk1A0;
     u32 *unk1A4;
@@ -516,9 +521,9 @@ struct BattleSystem {
     u32 *unk0;
     BgConfig *bgConfig;
     Window *window;
-    u32 *unkC;
+    MsgData *msgData;
     u32 *unk10;
-    u32 *unk14;
+    MessageFormat *msgFormat;
     String *msgBuffer;
     u32 unk1C;
     u32 unk20;
@@ -630,7 +635,7 @@ struct GetterWork {
     u32 unk14;
     u32 unk18[3];
     int unk24;
-    int unk28;
+    int state;
     int unk2C;
     int unk30[8];
     void *unk50[2];

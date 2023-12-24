@@ -28,7 +28,7 @@
 .public GF_AssertFail
 .public G2x_SetBlendAlpha_
 .public MI_CpuFill8
-.public ov12_0223C340
+.public BattleSystem_SetDefaultBlend
 .public ov12_0226ADE0
 .public ov12_0226AE78
 .public ov12_0226AEE0

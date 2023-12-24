@@ -163,7 +163,7 @@
 .public ov12_0223A900
 .public ov12_0223A908
 .public ov12_0223A914
-.public ov12_0223A930
+.public BattleSystem_GetMessageData
 .public ov12_0223A934
 .public BattleSystem_GetPaletteData
 .public ov12_0223A99C
@@ -222,8 +222,8 @@
 .public ov12_0223C1A0
 .public ov12_0223C1C4
 .public ov12_0223C1F4
-.public ov12_0223C34C
-.public ov12_0223C494
+.public BattleSystem_PrintTrainerMessage
+.public BattleSystem_PrintBattleMessage
 .public GetBattlerVar
 .public ov12_022506D4
 .public ov12_02251D28

@@ -140,7 +140,7 @@ void PlayerProfile_SetBadgeFlag(PlayerProfile* profile, s32 badge_no) {
     }
 }
 
-u32 PlayerProfile_CountBadges(PlayerProfile* profile) {
+s32 PlayerProfile_CountBadges(PlayerProfile* profile) {
     u32 badges = 0;
 
     for (u32 i = profile->johtoBadges; i != 0; i >>= 1) {
