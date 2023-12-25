@@ -16,8 +16,8 @@ typedef union TouchscreenHitbox {
     } circle;
 } TouchscreenHitbox;
 
-#define TOUCHSCREEN_CIRCLE_SENTINEL   0xFE
-#define TOUCHSCREEN_RECTLIST_END      0xFF
+#define TOUCHSCREEN_CIRCLE_SENTINEL 0xFE
+#define TOUCHSCREEN_RECTLIST_END    0xFF
 
 int TouchscreenHitbox_FindRectAtTouchHeld(const TouchscreenHitbox *hitboxes);
 int TouchscreenHitbox_FindHitboxAtTouchNew(const TouchscreenHitbox *hitboxes);
@@ -33,4 +33,4 @@ BOOL System_GetTouchNewCoords(u32 *x, u32 *y);
 int TouchscreenHitbox_FindHitboxAtPoint(const TouchscreenHitbox *hitbox, u32 x, u32 y);
 BOOL TouchscreenHitbox_PointIsIn(const TouchscreenHitbox *hitbox, u32 x, u32 y);
 
-#endif //POKEHEARTGOLD_TOUCHSCREEN_H
+#endif // POKEHEARTGOLD_TOUCHSCREEN_H

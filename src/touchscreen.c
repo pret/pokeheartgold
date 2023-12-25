@@ -25,8 +25,7 @@ static BOOL TouchscreenHitbox_PointIsInCircle(const TouchscreenHitbox *hitbox, u
 }
 
 static BOOL TouchscreenHitbox_PointIsInRect(const TouchscreenHitbox *hitbox, u32 x, u32 y) {
-    return ((x - hitbox->rect.left < hitbox->rect.right - hitbox->rect.left) & (y - hitbox->rect.top < hitbox->rect.bottom - hitbox->rect.top))
-        ? TRUE : FALSE;
+    return ((x - hitbox->rect.left < hitbox->rect.right - hitbox->rect.left) & (y - hitbox->rect.top < hitbox->rect.bottom - hitbox->rect.top)) ? TRUE : FALSE;
 }
 
 int TouchscreenHitbox_FindRectAtTouchHeld(const TouchscreenHitbox *hitboxes) {
