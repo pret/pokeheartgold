@@ -292,9 +292,6 @@ static u16 *LoadScreenFocusIndicatorGraphics(void) {
 }
 
 void RenderScreenFocusIndicatorTile(TextPrinter *printer, u32 unusedX, u32 unusedY, u16 fieldNum) {
-    (void)unusedX;
-    (void)unusedY;
-
     Window *window = printer->template.window;
 
     if (printer->unk30 == NULL) {
