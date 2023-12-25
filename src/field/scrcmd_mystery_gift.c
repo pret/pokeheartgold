@@ -87,21 +87,21 @@ static void MGMessageSuccess_MemorialPhoto(struct GetMysteryGiftGmmState *gmmSta
 static void MGMessageFailure_MemorialPhoto(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum);
 
 static const struct ScriptMysteryGiftFuncs sScriptMysteryGiftActionTable[MG_TAG_MAX - 1] = {
-    { MGCheck_PartySpace, MGGive_Mon, MGMessageSuccess_GiveMon, MGMessageFailure_GiveMon },
-    { MGCheck_PartySpace, MGGive_Egg, MGMessageSuccess_Egg, MGMessageFailure_GiveMon },
-    { MGCheck_Item, MGGive_Item, MGMessageSuccess_Item, MGMessageFailure_Item },
-    { MGCheck_BattleRules, MGGive_BattleRules, MGMessageSuccess_BattleRules, MGMessageFailure_BattleRules },
-    { MGCheck_Decoration, MGGive_Decoration, MGMessageSuccess_Decoration, MGMessageFailure_Decoration },
-    { MGCheck_MonDeco, MGGive_MonDeco, MGMessageSuccess_MonDeco, MGMessageFailure_MonDeco },
-    { MGCheck_PartySpace, MGGive_ManaphyEgg, MGMessageSuccess_ManaphyEgg, MGMessageFailure_GiveMon },
-    { MGCheck_MemberCard, MGGive_MemberCard, MGMessageSuccess_MemberCard, MGMessageFailure_MemberCard },
-    { MGCheck_OaksLetter, MGGive_OaksLetter, MGMessageSuccess_OaksLetter, MGMessageFailure_OaksLetter },
-    { MGCheck_AzureFlute, MGGive_AzureFlute, MGMessageSuccess_AzureFlute, MGMessageFailure_AzureFlute },
-    { MGCheck_PoketchApp, MGGive_PoketchApp, MGMessageSuccess_PoketchApp, MGMessageFailure_PoketchApp },
-    { MGCheck_SecretKey, MGGive_SecretKey, MGMessageSuccess_SecretKey, MGMessageFailure_SecretKey },
-    { MGCheck_PartySpace, MGGive_Mon, MGMessageSuccess_GiveMon, MGMessageFailure_GiveMon },
-    { MGCheck_PokewalkerCourse, MGGive_PokewalkerCourse, MGMessageSuccess_PokewalkerCourse, MGMessageFailure_PokewalkerCourse },
-    { MGCheck_MemorialPhoto, MGGive_MemorialPhoto, MGMessageSuccess_MemorialPhoto, MGMessageFailure_MemorialPhoto },
+    {MGCheck_PartySpace,       MGGive_Mon,              MGMessageSuccess_GiveMon,          MGMessageFailure_GiveMon         },
+    {MGCheck_PartySpace,       MGGive_Egg,              MGMessageSuccess_Egg,              MGMessageFailure_GiveMon         },
+    {MGCheck_Item,             MGGive_Item,             MGMessageSuccess_Item,             MGMessageFailure_Item            },
+    {MGCheck_BattleRules,      MGGive_BattleRules,      MGMessageSuccess_BattleRules,      MGMessageFailure_BattleRules     },
+    {MGCheck_Decoration,       MGGive_Decoration,       MGMessageSuccess_Decoration,       MGMessageFailure_Decoration      },
+    {MGCheck_MonDeco,          MGGive_MonDeco,          MGMessageSuccess_MonDeco,          MGMessageFailure_MonDeco         },
+    {MGCheck_PartySpace,       MGGive_ManaphyEgg,       MGMessageSuccess_ManaphyEgg,       MGMessageFailure_GiveMon         },
+    {MGCheck_MemberCard,       MGGive_MemberCard,       MGMessageSuccess_MemberCard,       MGMessageFailure_MemberCard      },
+    {MGCheck_OaksLetter,       MGGive_OaksLetter,       MGMessageSuccess_OaksLetter,       MGMessageFailure_OaksLetter      },
+    {MGCheck_AzureFlute,       MGGive_AzureFlute,       MGMessageSuccess_AzureFlute,       MGMessageFailure_AzureFlute      },
+    {MGCheck_PoketchApp,       MGGive_PoketchApp,       MGMessageSuccess_PoketchApp,       MGMessageFailure_PoketchApp      },
+    {MGCheck_SecretKey,        MGGive_SecretKey,        MGMessageSuccess_SecretKey,        MGMessageFailure_SecretKey       },
+    {MGCheck_PartySpace,       MGGive_Mon,              MGMessageSuccess_GiveMon,          MGMessageFailure_GiveMon         },
+    {MGCheck_PokewalkerCourse, MGGive_PokewalkerCourse, MGMessageSuccess_PokewalkerCourse, MGMessageFailure_PokewalkerCourse},
+    {MGCheck_MemorialPhoto,    MGGive_MemorialPhoto,    MGMessageSuccess_MemorialPhoto,    MGMessageFailure_MemorialPhoto   },
 };
 
 static void FieldSystem_InitGetMysteryGiftGmmState(struct GetMysteryGiftGmmState *state, FieldSystem *fieldSys, MessageFormat *msgFormat, MysteryGiftData *mgData) {
@@ -197,7 +197,6 @@ static void MGMessageSuccess_ManaphyEgg(struct GetMysteryGiftGmmState *gmmState,
 }
 
 static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
-
     MysteryGiftPokemonTag *mgData = &FieldSystem_GetDataOfNextMG(fieldSys)->pokemon;
     PlayerProfile *profile = Save_PlayerData_GetProfileAddr(fieldSys->saveData);
     SaveVarsFlags *vars_flags = Save_VarsFlags_Get(fieldSys->saveData);
@@ -224,11 +223,11 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
     SetMonData(pokemon, MON_DATA_GENDER, &gender);
 
     gender = GetMonData(pokemon, MON_DATA_HP_IV, NULL)
-        + GetMonData(pokemon, MON_DATA_ATK_IV, NULL)
-        + GetMonData(pokemon, MON_DATA_DEF_IV, NULL)
-        + GetMonData(pokemon, MON_DATA_SPEED_IV, NULL)
-        + GetMonData(pokemon, MON_DATA_SPATK_IV, NULL)
-        + GetMonData(pokemon, MON_DATA_SPDEF_IV, NULL);
+           + GetMonData(pokemon, MON_DATA_ATK_IV, NULL)
+           + GetMonData(pokemon, MON_DATA_DEF_IV, NULL)
+           + GetMonData(pokemon, MON_DATA_SPEED_IV, NULL)
+           + GetMonData(pokemon, MON_DATA_SPATK_IV, NULL)
+           + GetMonData(pokemon, MON_DATA_SPDEF_IV, NULL);
     if (gender == 0) {
         u16 ivRand = LCRandom();
         rand = ivRand & 0x1Fu;
@@ -392,8 +391,7 @@ static BOOL MGCheck_Decoration(FieldSystem *fieldSys, MysteryGiftData *mgData) {
     return FALSE;
 }
 
-static void MGGive_Decoration(FieldSystem *fieldSys, MysteryGiftData *mgData) {
-}
+static void MGGive_Decoration(FieldSystem *fieldSys, MysteryGiftData *mgData) { }
 
 // Unreachable
 static void MGMessageSuccess_Decoration(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
@@ -463,7 +461,6 @@ static void MGMessageSuccess_MonDeco(struct GetMysteryGiftGmmState *gmmState, u1
     BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfileAddr(gmmState->fieldSys->saveData));
 }
 
-
 static void MGMessageFailure_MonDeco(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00006;
@@ -473,12 +470,10 @@ static BOOL MGCheck_MemberCard(FieldSystem *fieldSys, MysteryGiftData *mgData) {
     return FALSE;
 }
 
-static void MGGive_MemberCard(FieldSystem *fieldSys, MysteryGiftData *mgData) {
-}
+static void MGGive_MemberCard(FieldSystem *fieldSys, MysteryGiftData *mgData) { }
 
 // Unreachable
-static void MGMessageSuccess_MemberCard(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
-}
+static void MGMessageSuccess_MemberCard(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) { }
 
 static void MGMessageFailure_MemberCard(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
     *pMsgBank = NARC_msg_msg_0209_bin;
@@ -489,12 +484,10 @@ static BOOL MGCheck_OaksLetter(FieldSystem *fieldSys, MysteryGiftData *mgData) {
     return FALSE;
 }
 
-static void MGGive_OaksLetter(FieldSystem *fieldSys, MysteryGiftData *mgData) {
-}
+static void MGGive_OaksLetter(FieldSystem *fieldSys, MysteryGiftData *mgData) { }
 
 // Unreachable
-static void MGMessageSuccess_OaksLetter(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
-}
+static void MGMessageSuccess_OaksLetter(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) { }
 
 static void MGMessageFailure_OaksLetter(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
     *pMsgBank = NARC_msg_msg_0209_bin;
@@ -505,12 +498,10 @@ static BOOL MGCheck_SecretKey(FieldSystem *fieldSys, MysteryGiftData *mgData) {
     return FALSE;
 }
 
-static void MGGive_SecretKey(FieldSystem *fieldSys, MysteryGiftData *mgData) {
-}
+static void MGGive_SecretKey(FieldSystem *fieldSys, MysteryGiftData *mgData) { }
 
 // Unreachable
-static void MGMessageSuccess_SecretKey(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
-}
+static void MGMessageSuccess_SecretKey(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) { }
 
 static void MGMessageFailure_SecretKey(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
     *pMsgBank = NARC_msg_msg_0209_bin;
@@ -521,12 +512,10 @@ static BOOL MGCheck_AzureFlute(FieldSystem *fieldSys, MysteryGiftData *mgData) {
     return FALSE;
 }
 
-static void MGGive_AzureFlute(FieldSystem *fieldSys, MysteryGiftData *mgData) {
-}
+static void MGGive_AzureFlute(FieldSystem *fieldSys, MysteryGiftData *mgData) { }
 
 // Unreachable
-static void MGMessageSuccess_AzureFlute(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
-}
+static void MGMessageSuccess_AzureFlute(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) { }
 
 static void MGMessageFailure_AzureFlute(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
     *pMsgBank = NARC_msg_msg_0209_bin;
@@ -537,12 +526,10 @@ static BOOL MGCheck_PoketchApp(FieldSystem *fieldSys, MysteryGiftData *mgData) {
     return FALSE;
 }
 
-static void MGGive_PoketchApp(FieldSystem *fieldSys, MysteryGiftData *mgData) {
-}
+static void MGGive_PoketchApp(FieldSystem *fieldSys, MysteryGiftData *mgData) { }
 
 // Unreachable
-static void MGMessageSuccess_PoketchApp(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
-}
+static void MGMessageSuccess_PoketchApp(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) { }
 
 static void MGMessageFailure_PoketchApp(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
     *pMsgBank = NARC_msg_msg_0209_bin;
