@@ -72,11 +72,12 @@ def main():
             palette = entry['palette']
             cell = entry['cell']
             anim = entry['anim']
-            multicell = entry['multicell']
-            multianim = entry['multianim']
+            multicell = entry.get('multicell', -1)
+            multianim = entry.get('multianim', -1)
             transfer = entry['transfer']
             priority = entry['priority']
             bindat += struct.pack('<llllllll', graphics, palette, cell, anim, multicell, multianim, transfer, priority)
+        bindat += struct.pack('<llllllll', -2, -2, -2, -2, -2, -2, -2, -2)
     args.outfile.write(bindat)
 
 

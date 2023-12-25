@@ -6,8 +6,6 @@
       "palette": 1,
       "cell": 1,
       "anim": 1,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 0
     },
@@ -16,8 +14,6 @@
       "palette": 2,
       "cell": 2,
       "anim": 2,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 0
     },
@@ -26,8 +22,6 @@
       "palette": 1,
       "cell": 2,
       "anim": 2,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 0
     },
@@ -36,8 +30,6 @@
       "palette": 5,
       "cell": 3,
       "anim": 3,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 0
     },
@@ -46,8 +38,6 @@
       "palette": 6,
       "cell": 4,
       "anim": 4,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 0
     },
@@ -56,20 +46,8 @@
       "palette": 7,
       "cell": 5,
       "anim": 5,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 0
-    },
-    {
-      "graphics": -2,
-      "palette": -2,
-      "cell": -2,
-      "anim": -2,
-      "multicell": -2,
-      "multianim": -2,
-      "transfer": -2,
-      "priority": -2
     }
   ]
 }
