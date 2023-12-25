@@ -1,0 +1,35 @@
+{
+  "kind": "cell",
+  "graphics": [
+    {
+      "narc": 144,
+      "file": 5,
+      "compressed": false,
+      "id": 0,
+      "extra": [
+        144,
+        144
+      ]
+    },
+    {
+      "narc": 144,
+      "file": 2,
+      "compressed": false,
+      "id": 1,
+      "extra": [
+        144,
+        144
+      ]
+    },
+    {
+      "narc": 144,
+      "file": 8,
+      "compressed": false,
+      "id": 2,
+      "extra": [
+        144,
+        144
+      ]
+    }
+  ]
+}
