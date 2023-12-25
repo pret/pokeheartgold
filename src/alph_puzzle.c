@@ -823,7 +823,7 @@ void ov110_021E6904(AlphPuzzleData *data, int a1) {
     }
     
     u32 width = FontID_String_GetWidth(4, data->quitText, 0);
-    AddTextPrinterParameterizedWithColor(data->window, 4, data->quitText, (48 - width) / 2, 4, 0xFF, ov110_021E6DA4[a1], NULL);
+    AddTextPrinterParameterizedWithColor(data->window, 4, data->quitText, (48 - width) / 2, 4, TEXT_SPEED_NOTRANSFER, ov110_021E6DA4[a1], NULL);
     ScheduleWindowCopyToVram(data->window);
 }
 

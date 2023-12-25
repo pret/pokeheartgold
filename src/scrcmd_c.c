@@ -787,7 +787,7 @@ BOOL ScrCmd_DirectionSignpost(ScriptContext* ctx) {
     ReadMsgDataIntoString(ctx->msgdata, msg_no, *tmp_str);
     StringExpandPlaceholders(*msg_fmt, *unk1, *tmp_str);
     Window* window = ov01_021F3D80(fieldSystem->unk68);
-    AddTextPrinterParameterizedWithColor(window, 1, *unk1, 0, 0, 0, MAKE_TEXT_COLOR(2, 10, 15), NULL);
+    AddTextPrinterParameterizedWithColor(window, 1, *unk1, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(2, 10, 15), NULL);
 
     return TRUE;
 }

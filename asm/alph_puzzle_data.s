@@ -28,9 +28,9 @@ ov110_021E6D9C: ; 0x021E6D9C
 
 .public ov110_021E6DA4
 ov110_021E6DA4: ; 0x021E6DA4
-	.word 0x00010200
-	.word 0x00030400
-	.word 0x00050600
+	.word (1 << 16) | (2 << 8) | 0
+	.word (3 << 16) | (4 << 8) | 0
+	.word (5 << 16) | (6 << 8) | 0
 
 .public ov110_021E6DB0
 ov110_021E6DB0: ; 0x021E6DB0

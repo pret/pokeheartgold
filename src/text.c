@@ -4,7 +4,7 @@
 #include "text.h"
 #include "unk_0201F79C.h"
 
-static const struct FontInfo *gFonts;
+static const struct FontInfo *sFonts;
 
 static u8 _021D1F6C;
 static u16 sFgColor, sShadowColor, sBgColor;
@@ -15,13 +15,13 @@ static u8 CreateTextPrinterSysTask(SysTaskFunc taskFunc, TextPrinter *printer, u
 static BOOL TextPrinterSysTaskIsActive(u8 printerId);
 static u8 AddTextPrinter(TextPrinterTemplate *template, u32 speed, PrinterCallback_t callback);
 static void RunTextPrinter(SysTask *task, TextPrinter *printer);
-static enum RenderResult RenderFont(TextPrinter *printer);
+static RenderResult RenderFont(TextPrinter *printer);
 static void sub_020204B8(TextPrinter *printer);
 static u16 *LoadScreenFocusIndicatorGraphics(void);
 static void sub_02020548(TextPrinter *printer);
 
 void SetFontsPointer(const struct FontInfo *fonts) {
-    gFonts = fonts;
+    sFonts = fonts;
 }
 
 static u8 CreateTextPrinterSysTask(SysTaskFunc taskFunc, TextPrinter *printer, u32 priority) {
@@ -85,12 +85,12 @@ u8 AddTextPrinterParameterized(Window *window, FontID fontId, String *string, u3
     template.y = y;
     template.currentX = x;
     template.currentY = y;
-    template.letterSpacing = gFonts[fontId].letterSpacing;
-    template.lineSpacing = gFonts[fontId].lineSpacing;
-    template.unk14 = gFonts[fontId].unk;
-    template.fgColor = gFonts[fontId].fgColor;
-    template.bgColor = gFonts[fontId].bgColor;
-    template.shadowColor = gFonts[fontId].shadowColor;
+    template.letterSpacing = sFonts[fontId].letterSpacing;
+    template.lineSpacing = sFonts[fontId].lineSpacing;
+    template.unk14 = sFonts[fontId].unk;
+    template.fgColor = sFonts[fontId].fgColor;
+    template.bgColor = sFonts[fontId].bgColor;
+    template.shadowColor = sFonts[fontId].shadowColor;
     template.unk18 = 0;
     template.unk1A = 0;
     template.unk1B = 0xFF;
@@ -108,9 +108,9 @@ u8 AddTextPrinterParameterizedWithColor(Window *window, FontID fontId, String *s
     template.y = y;
     template.currentX = x;
     template.currentY = y;
-    template.letterSpacing = gFonts[fontId].letterSpacing;
-    template.lineSpacing = gFonts[fontId].lineSpacing;
-    template.unk14 = gFonts[fontId].unk;
+    template.letterSpacing = sFonts[fontId].letterSpacing;
+    template.lineSpacing = sFonts[fontId].lineSpacing;
+    template.unk14 = sFonts[fontId].unk;
     template.fgColor = (color >> 16) & 0xFF;
     template.shadowColor = (color >> 8) & 0xFF;
     template.bgColor = (color >> 0) & 0xFF;
@@ -133,7 +133,7 @@ u8 AddTextPrinterParameterizedWithColorAndSpacing(Window *window, int fontId, St
     template.currentY = y;
     template.letterSpacing = letterSpacing;
     template.lineSpacing = lineSpacing;
-    template.unk14 = gFonts[fontId].unk;
+    template.unk14 = sFonts[fontId].unk;
     template.fgColor = (color >> 16) & 0xFF;
     template.shadowColor = (color >> 8) & 0xFF;
     template.bgColor = (color >> 0) & 0xFF;
@@ -145,12 +145,12 @@ u8 AddTextPrinterParameterizedWithColorAndSpacing(Window *window, int fontId, St
 }
 
 static u8 AddTextPrinter(TextPrinterTemplate *template, u32 speed, PrinterCallback_t callback) {
-    if (gFonts == NULL) {
+    if (sFonts == NULL) {
         return 0xFF;
     }
 
     TextPrinter *printer = AllocFromHeap(HEAP_ID_DEFAULT, sizeof(TextPrinter));
-    printer->active = 1;
+    printer->active = TRUE;
     printer->state = 0;
     printer->textSpeedBottom = speed;
     printer->delayCounter = 0;
@@ -224,8 +224,8 @@ static void RunTextPrinter(SysTask *task, TextPrinter *printer) {
     }
 }
 
-static enum RenderResult RenderFont(TextPrinter *printer) {
-    enum RenderResult result;
+static RenderResult RenderFont(TextPrinter *printer) {
+    RenderResult result;
     do {
         result = FontID_RenderText(printer->template.fontId, printer);
     } while (result == RENDER_REPEAT);
