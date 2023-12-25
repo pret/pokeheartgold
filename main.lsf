@@ -1118,7 +1118,6 @@ Overlay OVY_110
 {
     After main
     Object src/alph_puzzle.o
-    Object asm/alph_puzzle_data.o
 }
 Overlay OVY_111
 {
