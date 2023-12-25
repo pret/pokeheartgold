@@ -19,7 +19,7 @@
 #include "unk_0200CF18.h"
 #include "unk_0200FA24.h"
 #include "unk_020183F0.h"
-#include "unk_02025154.h"
+#include "touchscreen.h"
 #include "unk_02023694.h"
 #include "unk_0203E348.h"
 #include "vram_transfer_manager.h"
@@ -141,7 +141,7 @@ extern const UnkStruct_0200D2B4 ov17_02203EF8[2];
 extern const UnkStruct_0200D2B4 ov17_02203F48;
 extern const UnkStruct_0200D2B4 ov17_02203F70;
 extern const UnkStruct_0200D2B4 ov17_02203F98;
-extern const u8 ov17_02203FC0[4];
+extern const TouchscreenHitbox ov17_02203FC0;
 
 extern void sub_0200B2E0(HeapID);
 extern void sub_0200B2E8(HeapID);
@@ -150,7 +150,6 @@ extern void sub_02016624(void*);
 extern void sub_020210BC(void);
 extern u32 sub_02021148(u32);
 extern void sub_02021238(void);
-extern int sub_02025320(void*);
 
 static void BerryPotsApp_InitData(BerryPotsAppData *data);
 static void ov17_02201DD8(BerryPotsAppData *data);
@@ -1658,17 +1657,17 @@ static BOOL ov17_02203C20(BerryPotsAppData *data, BOOL *a1) {
 
 static int ov17_02203C78(BerryPotsAppData *data) {
     // touch screen coordinates?
-    u8 unkArray[4];
+    TouchscreenHitbox unkArray;
 
     for (int i = 0, xOffsetMaybe = 16; i < MAX_BERRY_POT; xOffsetMaybe += 28, i++) {
-        unkArray[2] = xOffsetMaybe;
-        unkArray[3] = unkArray[2] + 22;
+        unkArray.rect.left = xOffsetMaybe;
+        unkArray.rect.right = unkArray.rect.left + 22;
         if (data->unk20[i].growthStage < BERRY_POT_GROWTH_STAGE_GROWING) {
-            unkArray[0] = 88;
-            unkArray[1] = unkArray[0] + 24;
+            unkArray.rect.top = 88;
+            unkArray.rect.bottom = unkArray.rect.top + 24;
         } else {
-            unkArray[0] = 72;
-            unkArray[1] = unkArray[0] + 32;
+            unkArray.rect.top = 72;
+            unkArray.rect.bottom = unkArray.rect.top + 32;
         }
 
         if (sub_02025320(&unkArray)) {

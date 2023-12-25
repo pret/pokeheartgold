@@ -5,7 +5,7 @@
 #include "unk_0200CF18.h"
 #include "unk_020192D0.h"
 #include "unk_02020654.h"
-#include "unk_02025154.h"
+#include "touchscreen.h"
 #include "constants/sndseq.h"
 #include "voltorb_flip/voltorb_flip.h"
 #include "voltorb_flip/voltorb_flip_data.h"
@@ -21,7 +21,7 @@ static void ov122_021E9154(Ov122_021E8CFC *, int);
 static void ov122_021E91AC(struct Ov122_021E8CFC *, u32, int, int);
 
 extern const Ov122UnkCB ov122_021E9A0C[];
-extern const u8 ov122_021E9A1C[];
+extern const TouchscreenHitbox ov122_021E9A1C[];
 extern const u8 ov122_021E9A3C[];
 extern const u8 ov122_021E9AAC[];
 extern u8 ov122_021E9BA0[5][2];
