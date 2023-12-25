@@ -270,7 +270,7 @@ _02259AB8: .word gSystem
 ov19_02259ABC: ; 0x02259ABC
 	push {r3, lr}
 	ldr r0, _02259AD4 ; =ov19_0225A05E
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1

@@ -91,7 +91,7 @@
 .public Set2dSpriteAnimSeqNo
 .public sub_02024AA8
 .public sub_02024B1C
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public String_New
 .public String_Delete

@@ -30,7 +30,7 @@
 .public FillWindowPixelBuffer
 .public ScheduleBgTilemapBufferTransfer
 .public AddTextPrinterParameterized2
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public NNS_G2dGetUnpackedBGCharacterData
 .public NNS_G2dGetUnpackedPaletteData

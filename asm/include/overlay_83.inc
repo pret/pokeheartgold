@@ -157,7 +157,7 @@
 .public sub_02024B34
 .public sub_02024B68
 .public sub_02024B78
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New

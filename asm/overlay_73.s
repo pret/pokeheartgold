@@ -1455,7 +1455,7 @@ ov73_021E6508: ; 0x021E6508
 	mov r4, #0
 	bl ov73_021E64B0
 	ldr r0, _021E66C8 ; =ov73_021EA534
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r6, r0, #0
 	ldr r1, _021E66CC ; =0x0000FFD5
 	add r0, sp, #4

@@ -130,10 +130,10 @@
 .public Set2dSpriteAnimActiveFlag
 .public sub_02024868
 .public Set2dSpriteAnimSeqNo
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchHeld
 .public System_GetTouchNew
-.public sub_020253F0
+.public TouchscreenHitbox_PointIsIn
 .public GF_AssertFail
 .public String_New
 .public String_Delete

@@ -19,18 +19,18 @@ typedef union TouchscreenHitbox {
 #define TOUCHSCREEN_CIRCLE_SENTINEL   0xFE
 #define TOUCHSCREEN_RECTLIST_END      0xFF
 
-int sub_02025204(const TouchscreenHitbox *hitboxes);
-int sub_0202529C(const TouchscreenHitbox *hitboxes);
-int sub_02025224(const TouchscreenHitbox *hitboxes);
-int sub_02025244(const TouchscreenHitbox *hitboxes);
-int sub_0202529C(const TouchscreenHitbox *hitboxes);
-BOOL sub_020252F4(const TouchscreenHitbox *hitbox);
-BOOL sub_02025320(const TouchscreenHitbox *hitbox);
+int TouchscreenHitbox_FindRectAtTouchHeld(const TouchscreenHitbox *hitboxes);
+int TouchscreenHitbox_FindHitboxAtTouchNew(const TouchscreenHitbox *hitboxes);
+int TouchscreenHitbox_FindRectAtTouchNew(const TouchscreenHitbox *hitboxes);
+int TouchscreenHitbox_FindHitboxAtTouchHeld(const TouchscreenHitbox *hitboxes);
+int TouchscreenHitbox_FindHitboxAtTouchNew(const TouchscreenHitbox *hitboxes);
+BOOL TouchscreenHitbox_TouchHeldIsIn(const TouchscreenHitbox *hitbox);
+BOOL TouchscreenHitbox_TouchNewIsIn(const TouchscreenHitbox *hitbox);
 BOOL System_GetTouchHeld(void);
 BOOL System_GetTouchNew(void);
-BOOL sub_02025364(u32 *x, u32 *y);
-BOOL sub_02025380(u32 *x, u32 *y);
-int sub_0202539C(const TouchscreenHitbox *hitbox, u32 x, u32 y);
-BOOL sub_020253F0(const TouchscreenHitbox *hitbox, u32 x, u32 y);
+BOOL System_GetTouchHeldCoords(u32 *x, u32 *y);
+BOOL System_GetTouchNewCoords(u32 *x, u32 *y);
+int TouchscreenHitbox_FindHitboxAtPoint(const TouchscreenHitbox *hitbox, u32 x, u32 y);
+BOOL TouchscreenHitbox_PointIsIn(const TouchscreenHitbox *hitbox, u32 x, u32 y);
 
 #endif //POKEHEARTGOLD_TOUCHSCREEN_H

@@ -71,10 +71,10 @@
 .public Sprite_SetPalIndex
 .public Sprite_SetDrawPriority
 .public sub_02024B78
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchHeld
 .public System_GetTouchNew
-.public sub_02025364
+.public System_GetTouchHeldCoords
 .public GF_AssertFail
 .public String_New
 .public String_Delete

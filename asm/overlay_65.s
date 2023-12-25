@@ -3582,7 +3582,7 @@ ov65_0221DC34: ; 0x0221DC34
 	cmp r0, #6
 	bge _0221DCAA
 	ldr r0, _0221DCAC ; =ov65_0221FE6C
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -4048,7 +4048,7 @@ ov65_0221DFB8: ; 0x0221DFB8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, _0221E034 ; =ov65_0221FE6C
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1

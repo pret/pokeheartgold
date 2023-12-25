@@ -1222,7 +1222,7 @@ _021E62E2: ; jump table
 	.short _021E64D4 - _021E62E2 - 2 ; case 4
 _021E62EC:
 	ldr r0, _021E64E8 ; =_021E6E7C
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	cmp r0, #0
 	bne _021E6324
 	mov r1, #0x6d

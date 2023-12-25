@@ -171,7 +171,7 @@
 .public Set2dSpriteAnimActiveFlag
 .public Set2dSpriteAnimSeqNo
 .public Sprite_ResetAnimCtrlState
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchHeld
 .public System_GetTouchNew
 .public GF_AssertFail

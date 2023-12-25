@@ -57,7 +57,7 @@
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo
 .public Sprite_TickCellOrMulticellAnimation
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public String_Delete
 .public GXS_SetGraphicsMode
 .public GX_SetBankForSubBG

@@ -91,7 +91,7 @@
 .public GfGfx_EngineBSetPlanes
 .public sub_02024B1C
 .public sub_02024B34
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public String_New
 .public String_Delete
 .public Save_HOF_GetNumRecords

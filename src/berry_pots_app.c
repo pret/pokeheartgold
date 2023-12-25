@@ -1670,7 +1670,7 @@ static int ov17_02203C78(BerryPotsAppData *data) {
             unkArray.rect.bottom = unkArray.rect.top + 32;
         }
 
-        if (sub_02025320(&unkArray)) {
+        if (TouchscreenHitbox_TouchNewIsIn(&unkArray)) {
             return i;
         }
     }
@@ -1678,7 +1678,7 @@ static int ov17_02203C78(BerryPotsAppData *data) {
 }
 
 static int ov17_02203CC8(BerryPotsAppData *data) {
-    if (sub_02025320(&ov17_02203FC0)) {
+    if (TouchscreenHitbox_TouchNewIsIn(&ov17_02203FC0)) {
         return 5;
     }
 

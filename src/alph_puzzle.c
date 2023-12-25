@@ -298,7 +298,7 @@ static int AlphPuzzle_CheckInput(AlphPuzzleData *data) {
     if (!System_GetTouchNew()) {
         return ALPH_PUZZLE_STATE_WAIT_FOR_INPUT;
     }
-    if (!sub_02025224(&_021E6D8C)) {
+    if (!TouchscreenHitbox_FindRectAtTouchNew(&_021E6D8C)) {
         data->unk4 = 1;
         ov110_021E6D20(data);
         PlaySE(SEQ_SE_DP_SELECT);

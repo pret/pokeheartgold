@@ -1322,7 +1322,7 @@ ov52_021E8BDC: ; 0x021E8BDC
 	sub sp, #0x44
 	add r4, r0, #0
 	ldr r0, _021E8CA4 ; =ov52_021E94BA
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r1, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -1358,7 +1358,7 @@ _021E8C22:
 	bl ov52_021E8CBC
 _021E8C30:
 	ldr r0, _021E8CB0 ; =ov52_021E94B2
-	bl sub_02025204
+	bl TouchscreenHitbox_FindRectAtTouchHeld
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1

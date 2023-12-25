@@ -298,7 +298,7 @@ _0222725E:
 	cmp r0, #0
 	bne _02227276
 	ldr r0, _0222741C ; =_0223B2C0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r6, r0, #0
 _02227276:
 	cmp r6, #0
@@ -565,7 +565,7 @@ ov74_0222746C: ; 0x0222746C
 	pop {r4, r5, r6, pc}
 _02227482:
 	ldr r0, _022274C8 ; =_0223B2CC
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r6, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -24950,7 +24950,7 @@ _022335C8:
 	mov r0, #0x31
 	lsl r0, r0, #4
 	add r0, r4, r0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r6, r0, #0
 	mov r0, #0
 	mvn r0, r0

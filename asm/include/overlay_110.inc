@@ -104,7 +104,7 @@
 .public Sprite_SetDrawPriority
 .public sub_02024B68
 .public sub_02024B78
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchHeld
 .public System_GetTouchNew
 .public String_New

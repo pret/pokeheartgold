@@ -955,7 +955,7 @@ ov109_021E5FFC: ; 0x021E5FFC
 	add r5, r0, #0
 	ldr r0, _021E6050 ; =ov109_021E7A18
 	add r6, r1, #0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r4, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -1420,7 +1420,7 @@ ov109_021E638C: ; 0x021E638C
 	add r5, r0, #0
 	ldr r0, _021E63E0 ; =ov109_021E7A18
 	add r6, r1, #0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r4, r0, #0
 	mov r0, #0
 	mvn r0, r0

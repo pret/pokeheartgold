@@ -1711,11 +1711,11 @@ _021E6614:
 
 	thumb_func_start ov62_021E6620
 ov62_021E6620: ; 0x021E6620
-	ldr r3, _021E6628 ; =sub_02025224
+	ldr r3, _021E6628 ; =TouchscreenHitbox_FindRectAtTouchNew
 	ldr r0, _021E662C ; =_021E6650
 	bx r3
 	nop
-_021E6628: .word sub_02025224
+_021E6628: .word TouchscreenHitbox_FindRectAtTouchNew
 _021E662C: .word _021E6650
 	thumb_func_end ov62_021E6620
 

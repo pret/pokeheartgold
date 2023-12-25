@@ -137,7 +137,7 @@ _0225D61A: ; jump table
 	.short _0225D6D2 - _0225D61A - 2 ; case 5
 _0225D626:
 	ldr r0, [r0, #4]
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0x6f
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -160,7 +160,7 @@ _0225D626:
 	pop {r4, pc}
 _0225D656:
 	ldr r0, [r0, #4]
-	bl sub_02025204
+	bl TouchscreenHitbox_FindRectAtTouchHeld
 	ldr r2, _0225D6EC ; =0x0000FFFF
 	ldr r1, [r4, #0x10]
 	strh r2, [r1, #6]

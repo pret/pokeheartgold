@@ -3172,12 +3172,12 @@ _021FAC28: .word 0x00000619
 ov15_021FAC2C: ; 0x021FAC2C
 	ldr r0, _021FAC38 ; =ov15_02201314
 	lsl r1, r1, #2
-	ldr r3, _021FAC3C ; =sub_02025224
+	ldr r3, _021FAC3C ; =TouchscreenHitbox_FindRectAtTouchNew
 	ldr r0, [r0, r1]
 	bx r3
 	nop
 _021FAC38: .word ov15_02201314
-_021FAC3C: .word sub_02025224
+_021FAC3C: .word TouchscreenHitbox_FindRectAtTouchNew
 	thumb_func_end ov15_021FAC2C
 
 	thumb_func_start ov15_021FAC40

@@ -1343,7 +1343,7 @@ _02266BB6:
 	b _02266BE8
 _02266BCE:
 	ldr r0, [r4, #0x14]
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r7, r0, #0
 	mov r0, #0
 	mvn r0, r0

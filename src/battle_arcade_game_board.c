@@ -1189,7 +1189,7 @@ static void ov84_0223F1BC(GAME_BOARD_WORK *work) {
 extern TouchscreenHitbox ov84_0223F90B[2];
 
 static BOOL BattleArcadeGameBoard_CheckButtonPress(GAME_BOARD_WORK *work) {
-    int var = sub_0202529C(ov84_0223F90B);
+    int var = TouchscreenHitbox_FindHitboxAtTouchNew(ov84_0223F90B);
 
     if (var == 0) {
         ov84_0223F28C(work);

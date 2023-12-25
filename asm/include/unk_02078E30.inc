@@ -90,7 +90,7 @@
 .public Set2dSpriteAnimSeqNo
 .public Get2dSpriteCurrentAnimSeqNo
 .public Sprite_SetAnimCtrlCurrentFrame
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public String_New
 .public String_Delete
 .public GF_3DVramMan_Create

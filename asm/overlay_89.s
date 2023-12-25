@@ -8251,7 +8251,7 @@ ov89_0225C84C: ; 0x0225C84C
 	ldr r0, _0225C888 ; =ov89_0225CE50
 	add r6, r1, #0
 	mov r4, #0xff
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	cmp r0, #6
 	bge _0225C87A
 	cmp r6, r0

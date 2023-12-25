@@ -113,7 +113,7 @@
 .public Set2dSpriteAnimSeqNo
 .public Sprite_ResetAnimCtrlState
 .public Sprite_SetAnimCtrlCurrentFrame
-.public sub_02025320
+.public TouchscreenHitbox_TouchNewIsIn
 .public System_GetTouchNew
 .public String_New
 .public String_Delete

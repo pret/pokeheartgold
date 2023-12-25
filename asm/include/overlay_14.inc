@@ -195,11 +195,11 @@
 .public sub_02024B00
 .public sub_02024B1C
 .public sub_02024B34
-.public sub_02025224
-.public sub_02025320
+.public TouchscreenHitbox_FindRectAtTouchNew
+.public TouchscreenHitbox_TouchNewIsIn
 .public System_GetTouchNew
-.public sub_02025364
-.public sub_02025380
+.public System_GetTouchHeldCoords
+.public System_GetTouchNewCoords
 .public String_New
 .public String_Delete
 .public SaveArray_PCStorage_Get

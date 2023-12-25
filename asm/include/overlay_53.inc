@@ -115,8 +115,8 @@
 .public Sprite_SetPriority
 .public Sprite_SetPalIndex
 .public sub_02024B68
-.public sub_02025204
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchHeld
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New

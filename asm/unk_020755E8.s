@@ -426,7 +426,7 @@ sub_020758D0: ; 0x020758D0
 	add r5, r0, #0
 	ldr r0, _020759C0 ; =_020FFECC
 	mov r4, #0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0xb8

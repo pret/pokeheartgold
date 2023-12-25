@@ -172,10 +172,10 @@
 .public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_SetPriority
 .public sub_02024A48
-.public sub_020252F4
+.public TouchscreenHitbox_TouchHeldIsIn
 .public System_GetTouchHeld
 .public System_GetTouchNew
-.public sub_020253F0
+.public TouchscreenHitbox_PointIsIn
 .public GF_AssertFail
 .public Create2DGfxResMan
 .public Destroy2DGfxResMan

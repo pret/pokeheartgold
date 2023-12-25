@@ -102,7 +102,7 @@
 .public Set2dSpriteAnimSeqNo
 .public Sprite_ResetAnimCtrlState
 .public Sprite_SetPalIndex
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public Save_PlayerData_GetProfileAddr
 .public Save_PlayerData_GetOptionsAddr

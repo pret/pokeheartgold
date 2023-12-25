@@ -1856,7 +1856,7 @@ ov54_021E681C: ; 0x021E681C
 	b _021E6998
 _021E682A:
 	ldr r0, _021E69BC ; =ov54_021E6D68
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r3, #0
 	mvn r3, r3
 	cmp r0, r3

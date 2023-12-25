@@ -117,7 +117,7 @@
 .public GfGfx_EngineBTogglePlanes
 .public GfGfx_BothDispOn
 .public GfGfx_SwapDisplay
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public String_New
 .public String_Delete

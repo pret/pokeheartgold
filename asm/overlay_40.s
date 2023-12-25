@@ -7516,7 +7516,7 @@ _0222F3AA:
 	ldr r0, [r5, #0x28]
 	ldr r0, [r0, #0x28]
 	add r0, r0, r4
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _0222F3D0
 	add r0, r7, #0
@@ -8432,7 +8432,7 @@ ov40_0222FA88: ; 0x0222FA88
 	add r0, sp, #4
 	add r1, sp, #0
 	mov r4, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	add r6, r0, #0
 	ldr r0, [r5, #0x14]
 	cmp r0, #0
@@ -8457,11 +8457,11 @@ _0222FAAC:
 	pop {r4, r5, r6, pc}
 _0222FAC6:
 	ldr r0, _0222FB20 ; =ov40_02244E08
-	bl sub_020252F4
+	bl TouchscreenHitbox_TouchHeldIsIn
 	cmp r0, #0
 	bne _0222FADA
 	ldr r0, _0222FB24 ; =ov40_02244E0C
-	bl sub_020252F4
+	bl TouchscreenHitbox_TouchHeldIsIn
 	cmp r0, #0
 	beq _0222FADC
 _0222FADA:
@@ -10229,7 +10229,7 @@ _02230894:
 	str r1, [r4, r0]
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	ldr r0, _0223093C ; =0x00004164
 	ldr r0, [r4, r0]
 	bl sub_02087A30
@@ -12121,14 +12121,14 @@ _022316FC: .word 0x0000057B
 ov40_02231700: ; 0x02231700
 	push {r3, lr}
 	ldr r0, _02231724 ; =ov40_02245100
-	bl sub_020252F4
+	bl TouchscreenHitbox_TouchHeldIsIn
 	cmp r0, #0
 	beq _02231710
 	mov r0, #1
 	pop {r3, pc}
 _02231710:
 	ldr r0, _02231728 ; =ov40_02245104
-	bl sub_020252F4
+	bl TouchscreenHitbox_TouchHeldIsIn
 	cmp r0, #0
 	beq _0223171E
 	mov r0, #2
@@ -14406,7 +14406,7 @@ _0223293A:
 	b _02232A30
 _02232954:
 	ldr r0, _02232A38 ; =ov40_0224512C
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _02232994
 	mov r0, #0x66
@@ -14436,7 +14436,7 @@ _0223298C:
 	b _02232A30
 _02232994:
 	ldr r0, _02232A44 ; =ov40_02245130
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _02232A30
 	mov r0, #0x66
@@ -17037,7 +17037,7 @@ ov40_02233EE8: ; 0x02233EE8
 	add r4, r0, #0
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	cmp r0, #0
 	beq _02233F1C
 	ldr r0, [sp, #4]
@@ -17691,7 +17691,7 @@ ov40_02234470: ; 0x02234470
 	lsl r0, r0, #4
 	ldr r4, [r5, r0]
 	ldr r0, _022344D0 ; =ov40_022451C8
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _02234492
 	add r0, r5, #0
@@ -17701,7 +17701,7 @@ ov40_02234470: ; 0x02234470
 	bl ov40_0222BF80
 _02234492:
 	ldr r0, _022344D4 ; =ov40_022451CC
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _022344AA
 	add r0, r5, #0
@@ -18427,7 +18427,7 @@ _02234AEE:
 	ldr r0, [r5, r0]
 	bl sub_02026CC4
 	ldr r0, _02234BB8 ; =ov40_022451C4
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	bne _02234B0C
 	mov r0, #0x79
@@ -18657,7 +18657,7 @@ _02234CA0:
 	str r0, [r4, #8]
 _02234CD4:
 	ldr r0, _02234D90 ; =ov40_022451C4
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _02234D7C
 	add r0, r4, #0
@@ -19314,7 +19314,7 @@ ov40_0223527C: ; 0x0223527C
 	lsl r0, r0, #4
 	ldr r4, [r5, r0]
 	ldr r0, _0223533C ; =ov40_022451C4
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _0223529E
 	add r0, r5, #0
@@ -19324,7 +19324,7 @@ ov40_0223527C: ; 0x0223527C
 	bl ov40_0222BF80
 _0223529E:
 	ldr r0, _02235340 ; =ov40_022451D0
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _022352B6
 	add r0, r5, #0
@@ -19334,7 +19334,7 @@ _0223529E:
 	bl ov40_0222BF80
 _022352B6:
 	ldr r0, _02235344 ; =ov40_022451D4
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _022352E4
 	mov r1, #0x8d
@@ -19357,7 +19357,7 @@ _022352D2:
 	bl ov40_0222BF80
 _022352E4:
 	ldr r0, _02235348 ; =ov40_022451D8
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _02235316
 	mov r1, #0x8d
@@ -32314,7 +32314,7 @@ _0223BDB4:
 	add r0, r5, #0
 	bl ov40_0223D244
 	ldr r0, _0223BF70 ; =ov40_02245494
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _0223BE22
 	add r0, r5, #0
@@ -32337,7 +32337,7 @@ _0223BDB4:
 	str r0, [r5, #8]
 _0223BE22:
 	ldr r0, _0223BF80 ; =ov40_02245498
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	bne _0223BE2E
 	b _0223BF5E
@@ -37296,7 +37296,7 @@ _0223E60C:
 	str r0, [r4, #8]
 _0223E63E:
 	ldr r0, _0223E6E8 ; =ov40_02245650
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _0223E6D0
 	add r0, r4, #0
@@ -37628,7 +37628,7 @@ _0223E8E6:
 	ldr r0, [r5, r0]
 	bl sub_02026CC4
 	ldr r0, _0223E99C ; =ov40_02245650
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	bne _0223E900
 	ldr r0, _0223E9A0 ; =0x000004D8
@@ -37852,7 +37852,7 @@ _0223EA88:
 	str r0, [r4, #8]
 _0223EABC:
 	ldr r0, _0223EBB0 ; =ov40_02245650
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _0223EB96
 	mov r0, #0x13
@@ -38380,7 +38380,7 @@ _0223EEB6:
 	str r0, [r4, #8]
 _0223EF02:
 	ldr r0, _0223EFA0 ; =ov40_02245650
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _0223EF84
 	add r0, r4, #0
@@ -39002,7 +39002,7 @@ _0223F3FE:
 	add r0, r5, #0
 	bl ov40_0223D8D4
 	ldr r0, _0223F590 ; =ov40_0224564C
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _0223F456
 	add r0, r5, #0
@@ -39014,7 +39014,7 @@ _0223F3FE:
 	str r0, [r5, #8]
 _0223F456:
 	ldr r0, _0223F594 ; =ov40_02245650
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	bne _0223F462
 	b _0223F57E
@@ -49151,7 +49151,7 @@ _022446E2:
 	b _0224481E
 _022446FC:
 	ldr r0, _0224482C ; =ov40_02245CA0
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _0224471E
 	add r0, r4, #0
@@ -49166,7 +49166,7 @@ _022446FC:
 	b _0224481E
 _0224471E:
 	ldr r0, _02244834 ; =ov40_02245CA4
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _0224481E
 	add r0, r4, #0
@@ -49180,7 +49180,7 @@ _0224471E:
 	b _0224481E
 _0224473E:
 	ldr r0, _0224482C ; =ov40_02245CA0
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _02244760
 	add r0, r4, #0
@@ -49195,7 +49195,7 @@ _0224473E:
 	b _0224481E
 _02244760:
 	ldr r0, _02244834 ; =ov40_02245CA4
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _0224481E
 	add r0, r4, #0

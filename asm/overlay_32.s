@@ -1154,7 +1154,7 @@ ov32_0225DE34: ; 0x0225DE34
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, _0225DF6C ; =_0225E15C
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	cmp r0, #0
 	bne _0225DE56
 	mov r0, #0x5e

@@ -3910,7 +3910,7 @@ sub_0207AD6C: ; 0x0207AD6C
 	bhi _0207AD94
 _0207AD8C:
 	ldr r0, _0207ADB0 ; =_02110104
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	pop {r3, pc}
 _0207AD94:
 	add r2, #0x25
@@ -3922,7 +3922,7 @@ _0207AD9E:
 	ldr r2, _0207ADB4 ; =_02110128
 	lsl r0, r1, #5
 	add r0, r2, r0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	pop {r3, pc}
 	nop
 _0207ADAC: .word 0x00000654

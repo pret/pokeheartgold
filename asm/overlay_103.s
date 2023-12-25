@@ -4275,7 +4275,7 @@ ov103_021EEA24: ; 0x021EEA24
 	pop {r3, pc}
 _021EEA36:
 	ldr r0, _021EEA44 ; =ov103_021EEFBC
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	pop {r3, pc}
 	nop
 _021EEA40: .word 0x000002E2
@@ -4402,7 +4402,7 @@ _021EEAF8:
 ov103_021EEB04: ; 0x021EEB04
 	push {r3, lr}
 	ldr r0, _021EEB2C ; =ov103_021EEFB4
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1

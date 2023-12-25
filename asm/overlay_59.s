@@ -4371,7 +4371,7 @@ ov59_02239F38: ; 0x02239F38
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	ldr r0, _0223A028 ; =ov59_0223C940
-	bl sub_020253F0
+	bl TouchscreenHitbox_PointIsIn
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	bl System_GetTouchHeld
@@ -4599,7 +4599,7 @@ ov59_0223A120: ; 0x0223A120
 	add r4, r0, #0
 	ldr r0, _0223A190 ; =ov59_0223C924
 	add r5, r1, #0
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	add r1, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -4817,7 +4817,7 @@ ov59_0223A2D0: ; 0x0223A2D0
 	add r4, r0, #0
 	ldr r0, _0223A34C ; =ov59_0223C924
 	add r5, r1, #0
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	add r1, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -4990,7 +4990,7 @@ ov59_0223A418: ; 0x0223A418
 	add r4, r0, #0
 	ldr r0, _0223A488 ; =ov59_0223C924
 	add r5, r1, #0
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	add r1, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -5263,7 +5263,7 @@ ov59_0223A614: ; 0x0223A614
 	add r5, r0, #0
 	ldr r0, _0223A674 ; =ov59_0223C908
 	str r1, [sp]
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	add r4, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -7089,7 +7089,7 @@ ov59_0223B3B0: ; 0x0223B3B0
 	add r5, r0, #0
 	ldr r0, _0223B3D8 ; =ov59_0223C95C
 	add r4, r1, #0
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	add r1, r0, #0
 	mov r0, #0
 	mvn r0, r0

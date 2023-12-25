@@ -62,7 +62,7 @@
 .public Sprite_SetMatrix
 .public Set2dSpriteAnimSeqNo
 .public Sprite_TickCellOrMulticellAnimation
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public String_New
 .public String_Delete
 .public PlayerProfile_New

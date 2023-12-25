@@ -54,7 +54,7 @@ _020021D8:
 	lsr r0, r0, #0x1f
 	beq _020021FE
 	ldr r0, _0200221C ; =_02111888
-	bl sub_020252F4
+	bl TouchscreenHitbox_TouchHeldIsIn
 	cmp r0, #0
 	beq _020021FA
 	ldr r1, _02002214 ; =_02111884
@@ -118,7 +118,7 @@ _02002250:
 	lsr r0, r0, #0x1f
 	beq _02002276
 	ldr r0, _02002294 ; =_02111888
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _02002272
 	ldr r1, _0200228C ; =_02111884

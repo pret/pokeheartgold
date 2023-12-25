@@ -1322,7 +1322,7 @@ _021E63A2:
 	mov r0, #0x8b
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1

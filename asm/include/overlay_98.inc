@@ -65,7 +65,7 @@
 .public sub_02024B1C
 .public sub_02024B34
 .public Sprite_GetVramType
-.public sub_02025320
+.public TouchscreenHitbox_TouchNewIsIn
 .public GF_AssertFail
 .public String_New
 .public String_Delete

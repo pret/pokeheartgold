@@ -149,10 +149,10 @@
 .public Sprite_SetDrawPriority
 .public sub_02024B68
 .public sub_02024B78
-.public sub_0202529C
+.public TouchscreenHitbox_FindHitboxAtTouchNew
 .public System_GetTouchHeld
 .public System_GetTouchNew
-.public sub_020253F0
+.public TouchscreenHitbox_PointIsIn
 .public GF_AssertFail
 .public String_New
 .public String_Delete

@@ -1004,7 +1004,7 @@ _0225DCEA:
 	lsl r1, r0, #2
 	ldr r0, _0225DEA8 ; =ov29_0225E1AC
 	ldr r0, [r0, r1]
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	add r5, r0, #0
 	mvn r1, r1

@@ -98,7 +98,7 @@
 .public sub_02020A18
 .public sub_02020A24
 .public GfGfx_EngineBTogglePlanes
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchNew
 .public String_New
 .public String_Delete
