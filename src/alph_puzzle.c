@@ -32,11 +32,24 @@ typedef enum AlphPuzzleStates {
     ALPH_PUZZLE_STATE_2,
     ALPH_PUZZLE_STATE_3,
     ALPH_PUZZLE_STATE_ROTATE_TILE,
-    ALPH_PUZZLE_STATE_5,
+    ALPH_PUZZLE_STATE_QUIT,
     ALPH_PUZZLE_STATE_CLEAR,
     ALPH_PUZZLE_STATE_FADE_OUT,
     ALPH_PUZZLE_STATE_END
 } AlphPuzzleStates;
+
+#define TS_HITBOX_ALPH_QUIT 0
+
+#define ALPH_PUZZLE_TILES_HIGH 6
+#define ALPH_PUZZLE_TILES_WIDE 6
+
+typedef struct AlphPuzzleInitTileData {
+    u8 index:5;
+    u8 rotation:2;
+    u8 isImmovable:1;
+} AlphPuzzleInitTileData;
+
+typedef AlphPuzzleInitTileData AlphPuzzle[ALPH_PUZZLE_TILES_WIDE];
 
 static void ov110_021E5A24(void);
 static void ov110_021E5A74(AlphPuzzleData *data);
@@ -93,6 +106,325 @@ static void AlphPuzzle_UpdateSelectedTile(AlphPuzzleData *data, u8 tileIndex, BO
 static void ov110_021E6D20(AlphPuzzleData *data);
 static void ov110_021E6D54(SysTask *task, void *_data);
 
+static const u8 ov110_021E6D9C[4][2] = {
+    { 0, 0 },
+    { 5, 0 },
+    { 0, 5 },
+    { 5, 5 },
+};
+
+static const TouchscreenHitbox _021E6D8C[] = {
+    { .rect = { 169, 191, 209, 255 }},
+    { .rect = { TOUCHSCREEN_RECTLIST_END }},
+};
+
+static const s8 ov110_021E6D94[4][2] = {
+    {  0,  0 },
+    { -1,  0 },
+    { -1, -1 },
+    {  0, -1 },
+};
+
+static const AlphPuzzle sAlphKabutoPuzzle[ALPH_PUZZLE_TILES_HIGH] = {
+    {
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+    },
+    {
+        { 6, 1, FALSE },
+        { 1, 0, TRUE },
+        { 0, 0, FALSE },
+        { 3, 0, TRUE },
+        { 4, 0, TRUE },
+        { 0, 0, FALSE },
+    },
+    {
+        { 0, 0, FALSE },
+        { 5, 0, TRUE },
+        { 0, 0, FALSE },
+        { 7, 0, TRUE },
+        { 8, 0, TRUE },
+        { 11, 2, FALSE },
+    },
+    {
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 10, 0, TRUE },
+        { 0, 0, FALSE },
+        { 12, 0, TRUE },
+        { 0, 0, FALSE },
+    },
+    {
+        { 2, 3, FALSE },
+        { 13, 0, TRUE },
+        { 14, 0, TRUE },
+        { 15, 0, TRUE },
+        { 16, 0, TRUE },
+        { 0, 0, FALSE },
+    },
+    {
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 9, 1, FALSE },
+        { 0, 0, FALSE },
+    },
+};
+
+static const AlphPuzzle sAlphAerodactylPuzzle[ALPH_PUZZLE_TILES_HIGH] = {
+    {
+        { 0, 0, FALSE },
+        { 10, 3, FALSE },
+        { 0, 0, FALSE },
+        { 14, 2, FALSE },
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+    },
+    {
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 3, 0, TRUE },
+        { 4, 0, TRUE },
+        { 0, 0, FALSE },
+    },
+    {
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 7, 0, TRUE },
+        { 8, 0, TRUE },
+        { 16, 3, FALSE },
+    },
+    {
+        { 2, 3, FALSE },
+        { 9, 0, TRUE },
+        { 0, 0, FALSE },
+        { 11, 0, TRUE },
+        { 12, 0, TRUE },
+        { 0, 0, FALSE },
+    },
+    {
+        { 0, 0, FALSE },
+        { 13, 0, TRUE },
+        { 0, 0, FALSE },
+        { 15, 0, TRUE },
+        { 0, 0, FALSE },
+        { 6, 2, FALSE },
+    },
+    {
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 1, 2, FALSE },
+        { 0, 0, FALSE },
+        { 5, 1, FALSE },
+        { 0, 0, FALSE },
+    },
+};
+
+static const AlphPuzzle sAlphOmanytePuzzle[ALPH_PUZZLE_TILES_HIGH] = {
+    {
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 11, 1, FALSE },
+        { 0, 0, FALSE },
+        { 10, 0, FALSE },
+        { 0, 0, FALSE },
+    },
+    {
+        { 9, 0, FALSE },
+        { 0, 0, FALSE },
+        { 2, 0, TRUE },
+        { 3, 0, TRUE },
+        { 4, 0, TRUE },
+        { 0, 0, FALSE },
+    },
+    {
+        { 0, 0, FALSE },
+        { 5, 0, TRUE },
+        { 6, 0, TRUE },
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 14, 2, FALSE },
+    },
+    {
+        { 8, 0, FALSE },
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 13, 3, FALSE },
+    },
+    {
+        { 1, 3, FALSE },
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 15, 0, TRUE },
+        { 16, 0, TRUE },
+        { 0, 0, FALSE },
+    },
+    {
+        { 0, 0, FALSE },
+        { 7, 2, FALSE },
+        { 12, 1, FALSE },
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+    },
+};
+
+static const AlphPuzzle sAlphHoOhPuzzle[ALPH_PUZZLE_TILES_HIGH] = {
+    {
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 9, 0, FALSE },
+        { 14, 3, FALSE },
+        { 1, 3, FALSE },
+        { 0, 0, FALSE },
+    },
+    {
+        { 15, 2, FALSE },
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 3, 0, TRUE },
+        { 4, 0, TRUE },
+        { 0, 0, FALSE },
+    },
+    {
+        { 13, 2, FALSE },
+        { 5, 0, TRUE },
+        { 6, 0, TRUE },
+        { 7, 0, TRUE },
+        { 0, 0, FALSE },
+        { 10, 3, FALSE },
+    },
+    {
+        { 2, 3, FALSE },
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 12, 0, TRUE },
+        { 0, 0, FALSE },
+    },
+    {
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 16, 0, TRUE },
+        { 11, 3, FALSE },
+    },
+    {
+        { 0, 0, FALSE },
+        { 5, 2, FALSE },
+        { 8, 1, FALSE },
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+        { 0, 0, FALSE },
+    },
+};
+
+static const AlphPuzzle *dAlphPuzzles[ALPH_PUZZLE_MAX] = {
+    sAlphKabutoPuzzle,
+    sAlphAerodactylPuzzle,
+    sAlphOmanytePuzzle,
+    sAlphHoOhPuzzle,
+};
+
+static const GraphicsBanks ov110_021E6F54 = {
+    GX_VRAM_BG_128_A,
+    GX_VRAM_BGEXTPLTT_NONE,
+    GX_VRAM_SUB_BG_128_C,
+    GX_VRAM_SUB_BGEXTPLTT_NONE,
+    GX_VRAM_OBJ_64_E,
+    GX_VRAM_OBJEXTPLTT_NONE,
+    GX_VRAM_SUB_OBJ_16_I,
+    GX_VRAM_SUB_OBJEXTPLTT_NONE,
+    GX_VRAM_TEX_NONE,
+    GX_VRAM_TEXPLTT_NONE,
+};
+
+static const GraphicsModes ov110_021E6DC0 = {
+    GX_DISPMODE_GRAPHICS,
+    GX_BGMODE_0,
+    GX_BGMODE_0,
+    GX_BG0_AS_2D,
+};
+
+static const BgTemplate ov110_021E6E18 = {
+    0, 0, 0x00800, 0x0000, 1, 0, 30, 0, 0, 2, 0, 0, 0
+};
+
+static const BgTemplate ov110_021E6E34 = {
+    0, 0, 0x00800, 0x0000, 1, 0, 31, 4, 0, 1, 0, 0, 0
+};
+
+static const BgTemplate ov110_021E6E50 = {
+    0, 0, 0x00800, 0x0000, 1, 0, 29, 0, 0, 3, 0, 0, 0
+};
+
+static const BgTemplate ov110_021E6E6C = {
+    0, 0, 0x00800, 0x0000, 1, 0, 30, 0, 0, 2, 0, 0, 0
+};
+
+static const BgTemplate ov110_021E6E88 = {
+    0, 0, 0x00800, 0x0000, 1, 0, 29, 0, 0, 3, 0, 0, 0
+};
+
+static const BgTemplate ov110_021E6DFC = {
+    0, 0, 0x00800, 0x0000, 1, 0, 31, 4,0, 0, 0, 0, 0
+};
+
+static const WindowTemplate ov110_021E6DE4[3] = {
+    { 2, 26, 21, 6, 3, 3, 0x3EE },
+    { 0, 2, 19, 27, 4, 4, 0x05B },
+    { 4, 4, 15, 24, 6, 3, 0x001 },
+};
+
+static const Unk122_021E92FC ov110_021E6EA4 = {
+    0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20
+};
+
+static const Unk122_021E92D0 ov110_021E6DD0 = {
+    5,
+    0,
+    0,
+    16,
+    16
+};
+
+static const u16 ov110_021E6DB0[7] = {
+    10,
+    11,
+    9,
+    8,
+    0xFFFF,
+    0xFFFF,
+    74,
+};
+
+static const UnkStruct_0200D2B4 ov110_021E6F7C[3] = {
+    {
+        0, 208, 168, 0, 0, 3, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0
+    }, {
+        0, 208, 168, 0, 3, 1, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0
+    }, {
+        1, 208, 168, 0, 0, 2, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0
+    }
+};
+
+//related to text color
+static const u32 ov110_021E6DA4[3] = {
+    MAKE_TEXT_COLOR(1, 2, 0),
+    MAKE_TEXT_COLOR(3, 4, 0),
+    MAKE_TEXT_COLOR(5, 6, 0),
+};
+
 BOOL ov110_AlphPuzzle_OvyInit(OVY_MANAGER *man, int *state) {
     switch (*state) {
     case 0:
@@ -133,7 +465,7 @@ BOOL ov110_AlphPuzzle_OvyExec(OVY_MANAGER *man, int *state) {
     case ALPH_PUZZLE_STATE_ROTATE_TILE:
         *state = AlphPuzzleMainSeq_RotateTile(data);
         break;
-    case ALPH_PUZZLE_STATE_5:
+    case ALPH_PUZZLE_STATE_QUIT:
         *state = AlphPuzzleMainSeq_5(data);
         break;
     case ALPH_PUZZLE_STATE_CLEAR:
@@ -292,17 +624,15 @@ static void ov110_021E5C3C(AlphPuzzleData *data) {
     ScheduleBgTilemapBufferTransfer(data->bgConfig, 4);
 }
 
-extern TouchscreenHitbox _021E6D8C;
-
 static int AlphPuzzle_CheckInput(AlphPuzzleData *data) {
     if (!System_GetTouchNew()) {
         return ALPH_PUZZLE_STATE_WAIT_FOR_INPUT;
     }
-    if (!TouchscreenHitbox_FindRectAtTouchNew(&_021E6D8C)) {
+    if (TouchscreenHitbox_FindRectAtTouchNew(_021E6D8C) == TS_HITBOX_ALPH_QUIT) {
         data->unk4 = 1;
         ov110_021E6D20(data);
         PlaySE(SEQ_SE_DP_SELECT);
-        return ALPH_PUZZLE_STATE_5;
+        return ALPH_PUZZLE_STATE_QUIT;
     }
     s32 tileIndex = AlphPuzzle_TrySelectTileTouchScreen(data, gSystem.touchX, gSystem.touchY);
     if (tileIndex < 0) {
@@ -353,8 +683,6 @@ s32 AlphPuzzle_TrySelectTileTouchScreen(AlphPuzzleData *data, u16 touchX, u16 to
 
     return -1;
 }
-
-extern u8 ov110_021E6D9C[4][2];
 
 static int ov110_021E5D90(AlphPuzzleData *data, u8 *xOut, u8 *yOut) { 
     int i;
@@ -493,13 +821,13 @@ static int ov110_021E6014(AlphPuzzleData *data) {
         break;
     case 2:
         AlphPuzzleStates ret = ov110_021E6B94(data);
-        if (ret != ALPH_PUZZLE_STATE_5) {
+        if (ret != ALPH_PUZZLE_STATE_QUIT) {
             data->unkC = 0;
             return ret;
         }
         break;
     }
-    return ALPH_PUZZLE_STATE_5;
+    return ALPH_PUZZLE_STATE_QUIT;
 }
 
 static int ov110_021E6070(AlphPuzzleData *data) {
@@ -545,26 +873,16 @@ static void ov110_021E6110(void *dat) {
     OS_SetIrqCheckFlag(OS_IE_VBLANK);
 }
 
-typedef struct AlphPuzzleInitTileData {
-    u8 index:5;
-    u8 rotation:2;
-    u8 isImmovable:1;
-} AlphPuzzleInitTileData;
-
-typedef AlphPuzzleInitTileData AlphPuzzle[6];
-
-extern AlphPuzzle *dAlphPuzzles[ALPH_PUZZLE_MAX];
-
 static void AlphPuzzle_InitTileData(AlphPuzzleData *data) {
     int y;
     int x;
     
     AlphPuzzleTile* tile;
-    AlphPuzzle *puzzle = dAlphPuzzles[data->puzzleIndex];
+    const AlphPuzzle *puzzle = dAlphPuzzles[data->puzzleIndex];
     
-    for (y = 0; y < 6; y++) {
-        for (x = 0; x < 6; x++) {
-            u32 pos = y * 6 + x;
+    for (y = 0; y < ALPH_PUZZLE_TILES_HIGH; y++) {
+        for (x = 0; x < ALPH_PUZZLE_TILES_WIDE; x++) {
+            u32 pos = y * ALPH_PUZZLE_TILES_WIDE + x;
             if ((*puzzle)[pos].index != 0 && (*puzzle)[pos].index <= 16) {
                 tile = &data->tileGrid[(*puzzle)[pos].index - 1];
                 tile->x = x;
@@ -577,20 +895,10 @@ static void AlphPuzzle_InitTileData(AlphPuzzleData *data) {
     }
 }
 
-extern const GraphicsBanks ov110_021E6F54;
-
 static void ov110_021E61B0() {
     GraphicsBanks banks = ov110_021E6F54;
     GfGfx_SetBanks(&banks);
 }
-
-extern GraphicsModes ov110_021E6DC0;
-extern BgTemplate ov110_021E6E34;
-extern BgTemplate ov110_021E6E6C;
-extern BgTemplate ov110_021E6E88;
-extern BgTemplate ov110_021E6DFC;
-extern BgTemplate ov110_021E6E18;
-extern BgTemplate ov110_021E6E50;
 
 static void ov110_021E61D0(AlphPuzzleData *data) {
     ov110_021E61B0();
@@ -710,7 +1018,6 @@ static void AlphPuzzle_DeleteText(AlphPuzzleData *data) {
     FontID_Release(4);
 }
 
-extern WindowTemplate ov110_021E6DE4[3];
 static void ov110_021E6618(AlphPuzzleData *data) {
     for (int i = 0; i < 3; i++) {
         AddWindow(data->bgConfig, &data->window[i], &ov110_021E6DE4[i]);
@@ -726,10 +1033,6 @@ static void ov110_021E6650(AlphPuzzleData *data) {
     }
     sub_02016624(data->unk7C);
 }
-
-extern Unk122_021E92FC ov110_021E6EA4;
-extern Unk122_021E92D0 ov110_021E6DD0;
-extern const u16 ov110_021E6DB0[7];
 
 static void ov110_021E6678(AlphPuzzleData *data) {
     GF_CreateVramTransferManager(32, data->heapId);
@@ -763,9 +1066,6 @@ static void ov110_021E6748(AlphPuzzleData *data) {
     ov110_021E66F8(data);
 }
 
-extern UnkStruct_0200D2B4 ov110_021E6F7C[2];
-extern UnkStruct_0200D2B4 ov110_021E6FCC;
-
 static void ov110_021E6764(AlphPuzzleData *data) {
     int i;
     for (i = 0; i <= 1; i++) {
@@ -781,7 +1081,7 @@ static void ov110_021E6764(AlphPuzzleData *data) {
     sub_0200E248(data->unk84, data->unk88, NARC_a_1_7_2, data->puzzleIndex + 4, 0, 1);
     for (i = 0; i < 16; i++) {
         u8 index = i + 2;
-        data->unk8C[index] = SpriteRenderer_CreateSprite(data->unk84, data->unk88, &ov110_021E6FCC);
+        data->unk8C[index] = SpriteRenderer_CreateSprite(data->unk84, data->unk88, &ov110_021E6F7C[2]);
         Set2dSpriteVisibleFlag(data->unk8C[index], 1);
         Set2dSpriteAnimSeqNo(data->unk8C[index], i);
         sub_02024B78(data->unk8C[index], GX_OAM_MODE_NORMAL);
@@ -808,9 +1108,6 @@ static BOOL AlphPuzzle_CheckComplete(AlphPuzzleData *data) {
     }
     return TRUE;
 }
-
-//related to text color
-extern u32 ov110_021E6DA4[3];
 
 void ov110_021E6904(AlphPuzzleData *data, int a1) {
     FillWindowPixelBuffer(data->window, 0);
@@ -895,7 +1192,7 @@ static AlphPuzzleStates ov110_021E6B94(AlphPuzzleData *data) {
             ret = ALPH_PUZZLE_STATE_WAIT_FOR_INPUT;
             break;
         default:
-            return ALPH_PUZZLE_STATE_5;
+            return ALPH_PUZZLE_STATE_QUIT;
     }
     data->unk4 = sub_020169C0(data->unk7C);
     sub_020169CC(data->unk7C);
@@ -905,8 +1202,6 @@ static AlphPuzzleStates ov110_021E6B94(AlphPuzzleData *data) {
     ScheduleBgTilemapBufferTransfer(data->bgConfig, 0);
     return ret;
 }
-
-extern s8 ov110_021E6D94[4][2];
 
 void ov110_021E6BEC(AlphPuzzleTile *tile, s16 x, s16 y) {
     Sprite_SetPositionXY(tile->sprite, ov110_021E6D94[tile->rotation][0] + x, ov110_021E6D94[tile->rotation][1] + y);
