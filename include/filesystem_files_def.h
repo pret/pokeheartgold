@@ -177,7 +177,7 @@ typedef enum NarcId
     NARC_poketool_personal_performance                      = 169,
     NARC_a_1_7_0                                            = 170,
     NARC_a_1_7_1                                            = 171,
-    NARC_a_1_7_2                                            = 172,
+    NARC_files_application_annon_puzzle_gra                                            = 172,
     NARC_a_1_7_3                                            = 173,
     NARC_a_1_7_4                                            = 174,
     NARC_data_resdat                                        = 175,

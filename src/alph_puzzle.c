@@ -25,6 +25,8 @@
 #include "unk_02023694.h"
 #include "msgdata/msg/msg_0002.h"
 #include "msgdata/msg.naix"
+#include "application/annon/puzzle_gra.naix"
+#include "data/resdat.naix"
 
 typedef enum AlphPuzzleStates {
     ALPH_PUZZLE_STATE_FADE_IN,
@@ -370,7 +372,13 @@ static const Unk122_021E92FC ov110_021E6EA4 = {0, 0x80, 0, 0x20, 0, 0x80, 0, 0x2
 static const Unk122_021E92D0 ov110_021E6DD0 = {5, 0, 0, 16, 16};
 
 static const u16 ov110_021E6DB0[7] = {
-    10, 11, 9, 8, 0xFFFF, 0xFFFF, 74,
+    NARC_resdat_resdat_00000010_bin, // GF_GFX_RES_TYPE_CHAR
+    NARC_resdat_resdat_00000011_bin, // GF_GFX_RES_TYPE_PLTT
+    NARC_resdat_resdat_00000009_bin, // GF_GFX_RES_TYPE_CELL
+    NARC_resdat_resdat_00000008_bin, // GF_GFX_RES_TYPE_ANIM
+    0xFFFF,                          // GF_GFX_RES_TYPE_MCEL
+    0xFFFF,                          // GF_GFX_RES_TYPE_MANM
+    NARC_resdat_resdat_00000074_bin,
 };
 
 static const UnkStruct_0200D2B4 ov110_021E6F7C[3] = {
@@ -914,24 +922,24 @@ static void ov110_021E6348(AlphPuzzleData *data) {
 }
 
 static void ov110_021E6394(AlphPuzzleData *data) {
-    NARC *narc = NARC_New(NARC_a_1_7_2, data->heapId);
+    NARC *narc = NARC_New(NARC_files_application_annon_puzzle_gra, data->heapId);
     data->palette = PaletteData_Init(data->heapId);
 
     PaletteData_AllocBuffers(data->palette, 0, 256, data->heapId);
     PaletteData_AllocBuffers(data->palette, 1, 256, data->heapId);
     PaletteData_AllocBuffers(data->palette, 2, 256, data->heapId);
 
-    sub_02003220(data->palette, narc, 10, data->heapId, 0, 256, 0, 0);
-    sub_02003220(data->palette, narc, 10, data->heapId, 1, 256, 0, 0);
-    sub_02003220(data->palette, narc, 0, data->heapId, 2, 256, 0, 0);
+    sub_02003220(data->palette, narc, NARC_puzzle_gra_puzzle_gra_00000010_NCLR, data->heapId, 0, 256, 0, 0);
+    sub_02003220(data->palette, narc, NARC_puzzle_gra_puzzle_gra_00000010_NCLR, data->heapId, 1, 256, 0, 0);
+    sub_02003220(data->palette, narc, NARC_puzzle_gra_puzzle_gra_00000000_NCLR, data->heapId, 2, 256, 0, 0);
 
-    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 11, data->bgConfig, GF_BG_LYR_SUB_3, 0, 0, 0, data->heapId);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 14, data->bgConfig, GF_BG_LYR_SUB_3, 0, 0, 0, data->heapId);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 15, data->bgConfig, GF_BG_LYR_SUB_2, 0, 0, 0, data->heapId);
-    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 11, data->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 0, data->heapId);
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, NARC_puzzle_gra_puzzle_gra_00000011_NCGR, data->bgConfig, GF_BG_LYR_SUB_3, 0, 0, 0, data->heapId);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, NARC_puzzle_gra_puzzle_gra_00000014_NSCR, data->bgConfig, GF_BG_LYR_SUB_3, 0, 0, 0, data->heapId);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, NARC_puzzle_gra_puzzle_gra_00000015_NSCR, data->bgConfig, GF_BG_LYR_SUB_2, 0, 0, 0, data->heapId);
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, NARC_puzzle_gra_puzzle_gra_00000011_NCGR, data->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 0, data->heapId);
 
-    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 12, data->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 0, data->heapId);
-    data->unkD8 = GfGfxLoader_GetScrnDataFromOpenNarc(narc, 13, 0, &data->screenData, data->heapId);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, NARC_puzzle_gra_puzzle_gra_00000012_NSCR, data->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 0, data->heapId);
+    data->unkD8 = GfGfxLoader_GetScrnDataFromOpenNarc(narc, NARC_puzzle_gra_puzzle_gra_00000013_NSCR, 0, &data->screenData, data->heapId);
 
     NARC_Delete(narc);
 
@@ -1039,7 +1047,7 @@ static void ov110_021E6764(AlphPuzzleData *data) {
     sub_02024B78(data->unk8C[1], GX_OAM_MODE_NORMAL);
     Sprite_SetPriority(data->unk8C[1], 2);
     sub_02024B78(data->unk8C[1], GX_OAM_MODE_XLU);
-    sub_0200E248(data->unk84, data->unk88, NARC_a_1_7_2, data->puzzleIndex + 4, 0, 1);
+    sub_0200E248(data->unk84, data->unk88, NARC_files_application_annon_puzzle_gra, data->puzzleIndex + NARC_puzzle_gra_puzzle_gra_00000004_NCGR, 0, 1);
     for (i = 0; i < 16; i++) {
         u8 index = i + 2;
         data->unk8C[index] = SpriteRenderer_CreateSprite(data->unk84, data->unk88, &ov110_021E6F7C[2]);

@@ -1,0 +1,25 @@
+{
+  "kind": null,
+  "entries": [
+    {
+      "graphics": 0,
+      "palette": 0,
+      "cell": 0,
+      "anim": 0,
+      "multicell": -1,
+      "multianim": -1,
+      "transfer": 0,
+      "priority": 1
+    },
+    {
+      "graphics": -2,
+      "palette": -2,
+      "cell": -2,
+      "anim": -2,
+      "multicell": -2,
+      "multianim": -2,
+      "transfer": -2,
+      "priority": -2
+    }
+  ]
+}
