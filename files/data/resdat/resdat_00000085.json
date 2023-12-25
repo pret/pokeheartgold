@@ -6,8 +6,6 @@
       "palette": 6,
       "cell": 0,
       "anim": 0,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 0
     },
@@ -16,8 +14,6 @@
       "palette": 0,
       "cell": 1,
       "anim": 1,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 0
     },
@@ -26,8 +22,6 @@
       "palette": 0,
       "cell": 2,
       "anim": 2,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 0
     },
@@ -36,8 +30,6 @@
       "palette": 1,
       "cell": 3,
       "anim": 3,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 0
     },
@@ -46,8 +38,6 @@
       "palette": 1,
       "cell": 3,
       "anim": 3,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 0
     },
@@ -56,8 +46,6 @@
       "palette": 1,
       "cell": 3,
       "anim": 3,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 0
     },
@@ -66,8 +54,6 @@
       "palette": 1,
       "cell": 3,
       "anim": 3,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 0
     },
@@ -76,8 +62,6 @@
       "palette": 1,
       "cell": 3,
       "anim": 3,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 0
     },
@@ -86,8 +70,6 @@
       "palette": 1,
       "cell": 3,
       "anim": 3,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 0
     },
@@ -96,8 +78,6 @@
       "palette": 1,
       "cell": 3,
       "anim": 3,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 0
     },
@@ -106,8 +86,6 @@
       "palette": 1,
       "cell": 3,
       "anim": 3,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 0
     },
@@ -116,8 +94,6 @@
       "palette": 8,
       "cell": 4,
       "anim": 4,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 0
     },
@@ -126,8 +102,6 @@
       "palette": 3,
       "cell": 5,
       "anim": 5,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -136,8 +110,6 @@
       "palette": 0,
       "cell": 6,
       "anim": 6,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -146,8 +118,6 @@
       "palette": 0,
       "cell": 7,
       "anim": 7,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -156,8 +126,6 @@
       "palette": 0,
       "cell": 10,
       "anim": 10,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 0
     },
@@ -166,8 +134,6 @@
       "palette": 0,
       "cell": 10,
       "anim": 10,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 0
     },
@@ -176,8 +142,6 @@
       "palette": 0,
       "cell": 8,
       "anim": 8,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -186,8 +150,6 @@
       "palette": 0,
       "cell": 8,
       "anim": 8,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -196,8 +158,6 @@
       "palette": 0,
       "cell": 8,
       "anim": 8,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -206,8 +166,6 @@
       "palette": 0,
       "cell": 8,
       "anim": 8,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -216,8 +174,6 @@
       "palette": 0,
       "cell": 8,
       "anim": 8,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -226,8 +182,6 @@
       "palette": 0,
       "cell": 8,
       "anim": 8,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -236,8 +190,6 @@
       "palette": 0,
       "cell": 8,
       "anim": 8,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -246,8 +198,6 @@
       "palette": 0,
       "cell": 11,
       "anim": 11,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 0
     },
@@ -256,8 +206,6 @@
       "palette": 5,
       "cell": 12,
       "anim": 12,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -266,8 +214,6 @@
       "palette": 5,
       "cell": 12,
       "anim": 12,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -276,8 +222,6 @@
       "palette": 5,
       "cell": 12,
       "anim": 12,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -286,8 +230,6 @@
       "palette": 5,
       "cell": 12,
       "anim": 12,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -296,8 +238,6 @@
       "palette": 5,
       "cell": 12,
       "anim": 12,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -306,8 +246,6 @@
       "palette": 5,
       "cell": 12,
       "anim": 12,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -316,8 +254,6 @@
       "palette": 5,
       "cell": 12,
       "anim": 12,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -326,8 +262,6 @@
       "palette": 5,
       "cell": 12,
       "anim": 12,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -336,8 +270,6 @@
       "palette": 5,
       "cell": 12,
       "anim": 12,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -346,8 +278,6 @@
       "palette": 9,
       "cell": 15,
       "anim": 15,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 2
     },
@@ -356,8 +286,6 @@
       "palette": 0,
       "cell": 13,
       "anim": 13,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 0
     },
@@ -366,8 +294,6 @@
       "palette": 0,
       "cell": 0,
       "anim": 0,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 0
     },
@@ -376,8 +302,6 @@
       "palette": 0,
       "cell": 16,
       "anim": 16,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -386,8 +310,6 @@
       "palette": 8,
       "cell": 4,
       "anim": 4,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -396,8 +318,6 @@
       "palette": 8,
       "cell": 4,
       "anim": 4,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -406,8 +326,6 @@
       "palette": 8,
       "cell": 4,
       "anim": 4,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -416,8 +334,6 @@
       "palette": 8,
       "cell": 4,
       "anim": 4,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -426,8 +342,6 @@
       "palette": 8,
       "cell": 4,
       "anim": 4,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -436,8 +350,6 @@
       "palette": 8,
       "cell": 4,
       "anim": 4,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -446,20 +358,8 @@
       "palette": 7,
       "cell": 17,
       "anim": 17,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 1
-    },
-    {
-      "graphics": -2,
-      "palette": -2,
-      "cell": -2,
-      "anim": -2,
-      "multicell": -2,
-      "multianim": -2,
-      "transfer": -2,
-      "priority": -2
     }
   ]
 }

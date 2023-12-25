@@ -6,8 +6,6 @@
       "palette": 0,
       "cell": 0,
       "anim": 0,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -16,8 +14,6 @@
       "palette": 1,
       "cell": 1,
       "anim": 1,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -26,8 +22,6 @@
       "palette": 2,
       "cell": 1,
       "anim": 1,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -36,8 +30,6 @@
       "palette": 3,
       "cell": 1,
       "anim": 1,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
     },
@@ -46,20 +38,8 @@
       "palette": 4,
       "cell": 1,
       "anim": 1,
-      "multicell": -1,
-      "multianim": -1,
       "transfer": 0,
       "priority": 3
-    },
-    {
-      "graphics": -2,
-      "palette": -2,
-      "cell": -2,
-      "anim": -2,
-      "multicell": -2,
-      "multianim": -2,
-      "transfer": -2,
-      "priority": -2
     }
   ]
 }
