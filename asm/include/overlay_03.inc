@@ -88,7 +88,7 @@
 .public Sprite_TickCellOrMulticellAnimation
 .public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_SetPriority
-.public sub_02024B68
+.public Sprite_IsCellAnimationFinished
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New

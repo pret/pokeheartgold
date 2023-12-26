@@ -24,8 +24,8 @@
 .public DrawFrameAndWindow2
 .public ListMenuItems_New
 .public ListMenuItems_AddItem
-.public sub_0201660C
-.public sub_020166FC
+.public YesNoPrompt_Create
+.public YesNoPrompt_InitFromTemplate
 .public AllocFromHeap
 .public FreeToHeap
 .public BgCommitTilemapBufferToVram

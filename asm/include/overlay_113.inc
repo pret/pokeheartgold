@@ -53,8 +53,8 @@
 .public IsPaletteFadeFinished
 .public sub_0200FBDC
 .public sub_0200FBF4
-.public sub_0201660C
-.public sub_02016624
+.public YesNoPrompt_Create
+.public YesNoPrompt_Destroy
 .public sub_020183F0
 .public sub_02018410
 .public Main_SetVBlankIntrCB
@@ -94,7 +94,7 @@
 .public Set2dSpriteAnimSeqNo
 .public Sprite_ResetAnimCtrlState
 .public Sprite_SetPriority
-.public sub_02024B68
+.public Sprite_IsCellAnimationFinished
 .public TouchscreenHitbox_FindHitboxAtTouchNew
 .public String_New
 .public String_Delete

@@ -2685,7 +2685,7 @@ _021E6D90:
 	cmp r6, #3
 	blt _021E6D90
 	ldr r0, [r7]
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	add r7, #0x8c
 	str r0, [r7]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2711,7 +2711,7 @@ _021E6DC6:
 	blt _021E6DC6
 	add r6, #0x8c
 	ldr r0, [r6]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov109_021E6DBC
 
@@ -3921,7 +3921,7 @@ ov109_021E76F0: ; 0x021E76F0
 	strb r1, [r0, #0x12]
 	ldr r0, [r4]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add sp, #0x14
 	pop {r4, r5, pc}
 	thumb_func_end ov109_021E76F0
@@ -3932,7 +3932,7 @@ ov109_021E7748: ; 0x021E7748
 	add r5, r0, #0
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	add r4, r0, #0
 	cmp r4, #1
 	beq _021E7760
@@ -4033,7 +4033,7 @@ ov109_021E7810: ; 0x021E7810
 	ldr r0, [r4]
 	add r0, #0xa8
 	ldr r0, [r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _021E784C
 	ldr r0, [r4]

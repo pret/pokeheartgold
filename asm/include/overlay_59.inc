@@ -78,10 +78,10 @@
 .public sub_020154B8
 .public sub_02015524
 .public sub_02015528
-.public sub_0201660C
-.public sub_02016624
-.public sub_020166FC
-.public sub_020168F4
+.public YesNoPrompt_Create
+.public YesNoPrompt_Destroy
+.public YesNoPrompt_InitFromTemplate
+.public YesNoPrompt_HandleInput
 .public sub_020169C0
 .public sub_020169CC
 .public sub_020183F0
@@ -147,7 +147,7 @@
 .public Sprite_SetPriority
 .public Sprite_SetPalIndex
 .public Sprite_SetDrawPriority
-.public sub_02024B68
+.public Sprite_IsCellAnimationFinished
 .public sub_02024B78
 .public TouchscreenHitbox_FindHitboxAtTouchNew
 .public System_GetTouchHeld

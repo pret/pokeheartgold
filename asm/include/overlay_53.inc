@@ -114,7 +114,7 @@
 .public Get2dSpriteCurrentAnimSeqNo
 .public Sprite_SetPriority
 .public Sprite_SetPalIndex
-.public sub_02024B68
+.public Sprite_IsCellAnimationFinished
 .public TouchscreenHitbox_FindRectAtTouchHeld
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchNew

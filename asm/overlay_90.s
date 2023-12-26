@@ -5750,7 +5750,7 @@ ov90_0225B340: ; 0x0225B340
 	mov r0, #0
 	strb r0, [r5, #0x1b]
 	add r0, r7, #0
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	str r0, [r5, #4]
 	strb r6, [r5, #1]
 	mov r0, #1
@@ -5761,11 +5761,11 @@ ov90_0225B340: ; 0x0225B340
 
 	thumb_func_start ov90_0225B380
 ov90_0225B380: ; 0x0225B380
-	ldr r3, _0225B388 ; =sub_02016624
+	ldr r3, _0225B388 ; =YesNoPrompt_Destroy
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_0225B388: .word sub_02016624
+_0225B388: .word YesNoPrompt_Destroy
 	thumb_func_end ov90_0225B380
 
 	thumb_func_start ov90_0225B38C
@@ -5860,14 +5860,14 @@ _0225B436:
 	add r1, r4, #0
 	ldr r0, [r4, #4]
 	add r1, #8
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
 	b _0225B530
 _0225B448:
 	ldr r0, [r4, #4]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	sub r1, r0, #1
 	cmp r1, #1
 	bhi _0225B530
@@ -7442,7 +7442,7 @@ _0225BFEA:
 	strh r0, [r4, #6]
 _0225BFFC:
 	ldr r0, [r4, #0x30]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _0225C05E
 	ldrh r0, [r4, #4]

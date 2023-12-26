@@ -5998,7 +5998,7 @@ _021EA3E0:
 	mov r0, #0x7a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -6163,7 +6163,7 @@ ov102_021EA41C: ; 0x021EA41C
 	add r1, #0xa2
 	strh r1, [r5, r0]
 	mov r0, #0x23
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	mov r1, #0x7a
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -7683,7 +7683,7 @@ ov102_021EB0C0: ; 0x021EB0C0
 	sub r0, r2, #6
 	ldr r0, [r5, r0]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -7697,7 +7697,7 @@ ov102_021EB130: ; 0x021EB130
 	mov r0, #0x7a
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _021EB148
 	cmp r0, #2

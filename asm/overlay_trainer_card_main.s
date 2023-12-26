@@ -2430,7 +2430,7 @@ _021E6E6C:
 	mov r2, #0x19
 	bl LoadFontPal0
 	mov r0, #0x19
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	mov r1, #0xcf
 	lsl r1, r1, #6
 	str r0, [r5, r1]
@@ -2455,7 +2455,7 @@ ov51_021E6EF0: ; 0x021E6EF0
 	mov r0, #0xcf
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r5, #0
 	add r4, r4, #4
 _021E6F02:
@@ -3575,7 +3575,7 @@ ov51_021E7804: ; 0x021E7804
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	ldr r0, [r4]
 	mov r1, #4
 	bl ScheduleBgTilemapBufferTransfer
@@ -3594,7 +3594,7 @@ ov51_021E786C: ; 0x021E786C
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	add r6, r1, #0
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _021E7886
 	cmp r0, #2

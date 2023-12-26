@@ -8,6 +8,7 @@
 #include "message_format.h"
 #include "msgdata.h"
 #include "task.h"
+#include "unk_0201660C.h"
 
 typedef enum AlphPuzzles {
     ALPH_PUZZLE_KABUTO,
@@ -39,24 +40,24 @@ typedef struct AlphPuzzleData {
     HeapID heapId;
     int unk4;
     int unkState;
-    u16 unkC;
+    u16 subState;
     u16 unkE;
-    UnkAlphSub_10 *unk10;
+    UnkAlphSub_10 *args;
     BgConfig *bgConfig;
     u8 unk18;
     u8 puzzleIndex;
-    u8 unk1A;
-    u8 unk1B;
-    s16 unk1C;
-    s16 unk1E;
+    u8 quitTaskActive;
+    u8 selectedTileIndex;
+    s16 tileHoverPixelX;
+    s16 tileHoverPixelY;
     u8 unk20;
     u8 unk21;
-    u8 unk22;
-    u8 unk23;
+    u8 tileHoverTileX;
+    u8 tileHoverTileY;
     u8 textPrinterId;
     u8 textFrameDelay;
     u8 frame;
-    u8 unk27;
+    u8 puzzleSolved;
     MsgData *msgData;
     MessageFormat *messageFormat;
     String *unk30;
@@ -64,12 +65,11 @@ typedef struct AlphPuzzleData {
     String *hintText[ALPH_PUZZLE_MAX];
     String *confirmQuitText[1];
     Window window[3];
-    void *unk7C;
+    YesNoPromptState *yesNoPrompt;
     PaletteData *palette;
-    SpriteRenderer *unk84;
-    void *unk88;
-    Sprite *unk8C[2];
-    u8 unk94[0x40];
+    SpriteRenderer *spriteRenderer;
+    void *spriteGfxHandler;
+    Sprite *sprites[18];
     NNSG2dScreenData *screenData;
     void *unkD8;
     AlphPuzzleTile tileGrid[16];

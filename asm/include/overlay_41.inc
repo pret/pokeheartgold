@@ -95,10 +95,10 @@
 .public sub_02015FCC
 .public sub_02015FE8
 .public sub_02015FF4
-.public sub_0201660C
-.public sub_02016624
-.public sub_020166FC
-.public sub_020168F4
+.public YesNoPrompt_Create
+.public YesNoPrompt_Destroy
+.public YesNoPrompt_InitFromTemplate
+.public YesNoPrompt_HandleInput
 .public sub_020169C0
 .public sub_020169CC
 .public sub_020183F0

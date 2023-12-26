@@ -2532,7 +2532,7 @@ _0223F214:
 _0223F244:
 	ldr r0, _0223F310 ; =0x0000046C
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _0223F256
 	cmp r0, #2
@@ -3088,7 +3088,7 @@ _0223F6BC:
 _0223F6DE:
 	ldr r0, _0223F750 ; =0x0000046C
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _0223F6F0
 	cmp r0, #2
@@ -3491,7 +3491,7 @@ _0223FA28:
 _0223FA4A:
 	ldr r0, _0223FB20 ; =0x0000046C
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _0223FA5C
 	cmp r0, #2
@@ -3690,7 +3690,7 @@ _0223FBC0:
 _0223FBE2:
 	ldr r0, _0223FC5C ; =0x0000046C
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _0223FBF4
 	cmp r0, #2
@@ -7676,7 +7676,7 @@ ov81_02241BB8: ; 0x02241BB8
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x64
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	str r0, [r4]
 	pop {r4, pc}
 	.balign 4, 0
@@ -7684,10 +7684,10 @@ ov81_02241BB8: ; 0x02241BB8
 
 	thumb_func_start ov81_02241BC8
 ov81_02241BC8: ; 0x02241BC8
-	ldr r3, _02241BCC ; =sub_02016624
+	ldr r3, _02241BCC ; =YesNoPrompt_Destroy
 	bx r3
 	.balign 4, 0
-_02241BCC: .word sub_02016624
+_02241BCC: .word YesNoPrompt_Destroy
 	thumb_func_end ov81_02241BC8
 
 	thumb_func_start ov81_02241BD0
@@ -7718,7 +7718,7 @@ ov81_02241BD0: ; 0x02241BD0
 	mov r1, #0
 	strb r1, [r2, #0x13]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add sp, #0x14
 	pop {pc}
 	thumb_func_end ov81_02241BD0
@@ -10097,11 +10097,11 @@ _02242DD4: .word Sprite_SetMatrix
 
 	thumb_func_start ov81_02242DD8
 ov81_02242DD8: ; 0x02242DD8
-	ldr r3, _02242DE0 ; =sub_02024B68
+	ldr r3, _02242DE0 ; =Sprite_IsCellAnimationFinished
 	ldr r0, [r0, #8]
 	bx r3
 	nop
-_02242DE0: .word sub_02024B68
+_02242DE0: .word Sprite_IsCellAnimationFinished
 	thumb_func_end ov81_02242DD8
 
 	thumb_func_start ov81_02242DE4

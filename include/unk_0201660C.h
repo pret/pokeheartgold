@@ -3,8 +3,9 @@
 
 #include "heap.h"
 #include "bg_window.h"
+#include "palette.h"
 
-typedef struct Unk122_021E6900 {
+typedef struct YesNoPromptTemplate {
     BgConfig *bgConfig;
     int unk4;
     int unk8;
@@ -14,15 +15,40 @@ typedef struct Unk122_021E6900 {
     u8 unk12_0 : 4;
     u8 unk12_4 : 4;
     u8 unk13;
-} Unk122_021E6900;
+} YesNoPromptTemplate;
 
-void sub_020166FC(void *, Unk122_021E6900 *);
-int sub_020168F4(void *);
-void sub_020169CC(void *);
-void *sub_0201660C(HeapID);
-void sub_02016624(void *);
-void sub_02016704(void *, Unk122_021E6900 *, PaletteData *);
-u32 sub_02016748(void *);
-int sub_020169C0(void *);
+typedef struct YesNoPromptSubstruct00 {
+    u8 filler_00[40];
+} YesNoPromptSubstruct00;
+
+typedef struct YesNoPromptState {
+    u8 filler_00[12];
+    YesNoPromptSubstruct00 unk_0C[2];
+    int unk5C;
+    int unk60;
+    int unk64;
+    u8 filler_68[8];
+    u8 unk70;
+    u8 unk71;
+    u8 unk72;
+    u8 unk73;
+    u8 unk74_0 : 1;
+    u8 unk74_1 : 1;
+    u8 unk74_2 : 6;
+    u8 unk75;
+    u8 unk76_0 : 4;
+    u8 unk76_4 : 4;
+    u8 unk77_0 : 4;
+    u8 unk77_4 : 4;
+} YesNoPromptState;
+
+YesNoPromptState *YesNoPrompt_Create(HeapID);
+void YesNoPrompt_Destroy(YesNoPromptState *);
+void sub_020169CC(YesNoPromptState *);
+void YesNoPrompt_InitFromTemplate(YesNoPromptState *, const YesNoPromptTemplate *);
+void YesNoPrompt_InitFromTemplateWithPalette(YesNoPromptState *, const YesNoPromptTemplate *, PaletteData *);
+u32 sub_02016748(YesNoPromptState *);
+int YesNoPrompt_HandleInput(YesNoPromptState *);
+int sub_020169C0(YesNoPromptState *);
 
 #endif //POKEHEARTGOLD_UNK_0201660C_H
