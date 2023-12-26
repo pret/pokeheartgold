@@ -8,7 +8,7 @@
 #include "palette.h"
 
 typedef struct UnkStruct_0200D2B4 {
-    int unk_00;
+    int resourceSet;
     s16 x;
     s16 y;
     s16 z;
