@@ -2712,13 +2712,13 @@ ov44_0222B3A8: ; 0x0222B3A8
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r4, r1, #0
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	bne _0222B408
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -2755,7 +2755,7 @@ _0222B408:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0xd2
 	mov r1, #0x22
 	lsl r0, r0, #2
@@ -2829,13 +2829,13 @@ ov44_0222B494: ; 0x0222B494
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r4, r1, #0
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	bne _0222B4EE
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #3
 	lsl r0, r0, #8
 	add r0, r5, r0
@@ -2868,7 +2868,7 @@ _0222B4EE:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #3
 	lsl r0, r0, #8
 	add r0, r5, r0
@@ -2901,13 +2901,13 @@ ov44_0222B528: ; 0x0222B528
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r4, r1, #0
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	bne _0222B5EA
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #3
 	mov r1, #0
 	bl SetBgPriority
@@ -2982,7 +2982,7 @@ _0222B5EA:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #3
 	mov r1, #0
 	bl SetBgPriority
@@ -3030,13 +3030,13 @@ ov44_0222B64C: ; 0x0222B64C
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r4, r1, #0
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	bne _0222B6EA
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0
 	mov r1, #3
 	bl SetBgPriority
@@ -3098,7 +3098,7 @@ _0222B6EA:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0
 	mov r1, #3
 	bl SetBgPriority
@@ -3764,13 +3764,13 @@ _0222BC0A:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	bne _0222BC38
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	bl sub_02039330
 	add r0, r5, #0
 	mov r1, #0x10
@@ -3786,7 +3786,7 @@ _0222BC38:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	add r0, r5, #0
 	mov r1, #0x10
 	bl ov44_0222F818
@@ -6071,13 +6071,13 @@ _0222CF0C:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	bne _0222CF5A
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	bl sub_020393C8
 	cmp r0, #0
 	bne _0222CF52
@@ -6108,7 +6108,7 @@ _0222CF5A:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0xd2
 	mov r1, #0x18
 	lsl r0, r0, #2
@@ -6134,7 +6134,7 @@ _0222CF8C:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0
 	mov r1, #0x37
 	mvn r0, r0
@@ -6615,7 +6615,7 @@ _0222D34A:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	add r5, r0, #0
 	mov r0, #0xe3
 	lsl r0, r0, #2
@@ -6644,7 +6644,7 @@ _0222D386:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	add r0, r4, #0
 	mov r1, #0x10
 	bl ov44_0222F818
@@ -6658,7 +6658,7 @@ _0222D3A8:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	add r0, r4, #0
 	bl ov44_022319EC
 	add r0, r4, #0
@@ -9860,7 +9860,7 @@ _0222ED32:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	add r5, r0, #0
 	mov r0, #6
 	lsl r0, r0, #6
@@ -9884,7 +9884,7 @@ _0222ED60:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	add r0, r4, #0
 	mov r1, #0x1a
 	mov r2, #1
@@ -9903,7 +9903,7 @@ _0222ED88:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	add r0, r4, #0
 	bl ov44_0222F7BC
 	mov r0, #0xd2
@@ -10115,7 +10115,7 @@ _0222EF24:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 _0222EF2E:
 	add r0, r5, #0
 	mov r1, #0x65
@@ -10147,7 +10147,7 @@ _0222EF66:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 _0222EF70:
 	add r0, r5, #0
 	bl ov44_0222B9A0
@@ -10221,13 +10221,13 @@ _0222F000:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	bne _0222F05A
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	add r0, r5, #0
 	mov r1, #0x8a
 	mov r2, #0
@@ -10265,7 +10265,7 @@ _0222F05A:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	add r0, r5, #0
 	bl ov44_0222F7BC
 	bl sub_020343E4
@@ -10445,7 +10445,7 @@ _0222F1CE:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 _0222F1D8:
 	add r0, r5, #0
 	sub r1, r6, #1
@@ -10496,7 +10496,7 @@ _0222F238:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 _0222F242:
 	add r0, r5, #0
 	sub r1, r6, #1
@@ -10532,7 +10532,7 @@ _0222F284:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 _0222F28E:
 	add r0, r5, #0
 	bl ov44_0222B9A0
@@ -10558,7 +10558,7 @@ _0222F2BA:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 _0222F2C4:
 	add r0, r5, #0
 	mov r1, #0x12
@@ -10687,13 +10687,13 @@ _0222F3D4:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	bne _0222F494
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	ldr r0, _0222F4D4 ; =0x0000037E
 	ldrh r0, [r5, r0]
 	bl ov44_0222A0B4
@@ -10775,7 +10775,7 @@ _0222F494:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	add r0, r5, #0
 	bl ov44_0222F7BC
 	add r0, r5, #0
@@ -15445,7 +15445,7 @@ ov44_02231A28: ; 0x02231A28
 	mov r0, #0x35
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	str r5, [sp]
 	ldrb r1, [r4]
 	add r7, r0, #0
@@ -15475,7 +15475,7 @@ ov44_02231A28: ; 0x02231A28
 	mov r2, #0
 	strb r2, [r1, #0x13]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add r0, r7, #0
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}

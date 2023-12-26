@@ -4151,18 +4151,18 @@ _0223FDB4: .word 0x000003D9
 
 	thumb_func_start ov82_0223FDB8
 ov82_0223FDB8: ; 0x0223FDB8
-	ldr r3, _0223FDBC ; =sub_0201660C
+	ldr r3, _0223FDBC ; =YesNoPrompt_Create
 	bx r3
 	.balign 4, 0
-_0223FDBC: .word sub_0201660C
+_0223FDBC: .word YesNoPrompt_Create
 	thumb_func_end ov82_0223FDB8
 
 	thumb_func_start ov82_0223FDC0
 ov82_0223FDC0: ; 0x0223FDC0
-	ldr r3, _0223FDC4 ; =sub_02016624
+	ldr r3, _0223FDC4 ; =YesNoPrompt_Destroy
 	bx r3
 	.balign 4, 0
-_0223FDC4: .word sub_02016624
+_0223FDC4: .word YesNoPrompt_Destroy
 	thumb_func_end ov82_0223FDC0
 
 	thumb_func_start ov82_0223FDC8
@@ -4202,17 +4202,17 @@ ov82_0223FDC8: ; 0x0223FDC8
 	strb r2, [r0, #0x13]
 	add r0, r6, #0
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov82_0223FDC8
 
 	thumb_func_start ov82_0223FE18
 ov82_0223FE18: ; 0x0223FE18
-	ldr r3, _0223FE1C ; =sub_020168F4
+	ldr r3, _0223FE1C ; =YesNoPrompt_HandleInput
 	bx r3
 	.balign 4, 0
-_0223FE1C: .word sub_020168F4
+_0223FE1C: .word YesNoPrompt_HandleInput
 	thumb_func_end ov82_0223FE18
 
 	.rodata

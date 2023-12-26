@@ -4803,7 +4803,7 @@ _021FB90C:
 _021FB926:
 	ldr r0, _021FB9D4 ; =0x00000804
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _021FB938
 	cmp r0, #2
@@ -5679,7 +5679,7 @@ ov15_021FC01C: ; 0x021FC01C
 	add r5, r0, #0
 	ldr r0, _021FC134 ; =0x00000804
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _021FC03A
 	cmp r0, #2
@@ -7738,7 +7738,7 @@ ov15_021FD10C: ; 0x021FD10C
 	add r4, r0, #0
 	ldr r0, _021FD23C ; =0x00000804
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _021FD12A
 	cmp r0, #2
@@ -11610,12 +11610,12 @@ ov15_021FF004: ; 0x021FF004
 	strb r3, [r2, #0x12]
 	mov r1, #0
 	strb r1, [r2, #0x13]
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	ldr r1, _021FF054 ; =0x00000804
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add sp, #0x14
 	pop {r3, r4, pc}
 	nop
@@ -11625,12 +11625,12 @@ _021FF054: .word 0x00000804
 	thumb_func_start ov15_021FF058
 ov15_021FF058: ; 0x021FF058
 	ldr r1, _021FF060 ; =0x00000804
-	ldr r3, _021FF064 ; =sub_02016624
+	ldr r3, _021FF064 ; =YesNoPrompt_Destroy
 	ldr r0, [r0, r1]
 	bx r3
 	.balign 4, 0
 _021FF060: .word 0x00000804
-_021FF064: .word sub_02016624
+_021FF064: .word YesNoPrompt_Destroy
 	thumb_func_end ov15_021FF058
 
 	thumb_func_start ov15_021FF068

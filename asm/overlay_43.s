@@ -1301,7 +1301,7 @@ ov43_0222A8C0: ; 0x0222A8C0
 	bl sub_02018424
 	str r0, [r5, #0x5c]
 	add r0, r4, #0
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	str r0, [r5, #0x60]
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
@@ -1313,7 +1313,7 @@ ov43_0222A960: ; 0x0222A960
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x60]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	ldr r0, [r4, #0x5c]
 	bl sub_02018474
 	ldr r0, [r4, #0x7c]
@@ -1921,7 +1921,7 @@ ov43_0222ADB8: ; 0x0222ADB8
 	strb r1, [r0, #0x13]
 	ldr r0, [r4, #0x60]
 	add r1, sp, #4
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #4
@@ -1939,7 +1939,7 @@ ov43_0222AE2C: ; 0x0222AE2C
 	add r4, r1, #0
 	add r5, r0, #0
 	ldr r0, [r4, #0x60]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	add r6, r0, #0
 	sub r0, r6, #1
 	cmp r0, #1
@@ -5127,7 +5127,7 @@ ov43_0222C714: ; 0x0222C714
 	add r4, r0, #0
 	add r0, #0xf8
 	ldr r0, [r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _0222C728
 	mov r0, #1

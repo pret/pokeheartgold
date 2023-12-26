@@ -2153,7 +2153,7 @@ _02246E42:
 	add r3, r4, #0
 	bl ov41_02248F18
 	mov r0, #0xd
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	ldr r1, _02246F00 ; =0x000006B8
 	str r0, [r4, r1]
 	mov r0, #0xd
@@ -2512,7 +2512,7 @@ _0224719C:
 _022471AA:
 	ldr r0, _02247234 ; =0x000006B8
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	ldr r0, _02247238 ; =0x000006BC
 	mov r1, #1
 	ldr r0, [r4, r0]
@@ -3751,7 +3751,7 @@ ov41_02247AB4: ; 0x02247AB4
 	strb r0, [r3, #0x12]
 	ldr r0, [r4, r2]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add r0, r4, #0
 	mov r1, #1
 	bl ov41_02247D1C
@@ -3805,7 +3805,7 @@ ov41_02247B7C: ; 0x02247B7C
 	add r5, r0, #0
 	ldr r0, _02247BB0 ; =0x000006B8
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	add r4, r0, #0
 	beq _02247B96
 	cmp r4, #1
@@ -4080,7 +4080,7 @@ ov41_02247D64: ; 0x02247D64
 	ldr r0, _02247DF0 ; =0x000006B8
 	add r1, sp, #0
 	ldr r0, [r4, r0]
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add r0, r4, #0
 	mov r1, #2
 	bl ov41_02247D34
@@ -4118,7 +4118,7 @@ ov41_02247DF8: ; 0x02247DF8
 	add r5, r0, #0
 	ldr r0, _02247E2C ; =0x000006B8
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	add r4, r0, #0
 	beq _02247E12
 	cmp r4, #1

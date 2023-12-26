@@ -2236,13 +2236,13 @@ ov31_0225E700: ; 0x0225E700
 	mov r1, #5
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #8
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	mov r1, #0x17
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add sp, #0x14
 	pop {r3, r4, pc}
 	thumb_func_end ov31_0225E700
@@ -2269,7 +2269,7 @@ _0225E794:
 	mov r0, #0x17
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0x17
 	mov r2, #0
 	lsl r0, r0, #4
@@ -2284,7 +2284,7 @@ _0225E7B2:
 	mov r0, #0x17
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0x17
 	mov r1, #0
 	lsl r0, r0, #4

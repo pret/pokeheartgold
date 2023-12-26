@@ -4877,7 +4877,7 @@ sub_02084FCC: ; 0x02084FCC
 	mov r0, #0xd3
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _02085038
 	mov r0, #0x56

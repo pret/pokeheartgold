@@ -62,9 +62,9 @@
 .public IsPaletteFadeFinished
 .public sub_020163E0
 .public sub_020164C4
-.public sub_0201660C
-.public sub_02016624
-.public sub_020166FC
+.public YesNoPrompt_Create
+.public YesNoPrompt_Destroy
+.public YesNoPrompt_InitFromTemplate
 .public sub_02016748
 .public Main_SetVBlankIntrCB
 .public Main_SetHBlankIntrCB
@@ -127,7 +127,7 @@
 .public sub_02024A48
 .public Sprite_SetDrawPriority
 .public sub_02024B38
-.public sub_02024B68
+.public Sprite_IsCellAnimationFinished
 .public TouchscreenHitbox_FindRectAtTouchHeld
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchHeld

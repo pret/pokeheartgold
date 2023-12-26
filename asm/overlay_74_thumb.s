@@ -24135,7 +24135,7 @@ _02232EEE:
 	bl sub_02022608
 	ldr r0, _02232F54 ; =0x0000E88C
 	ldr r0, [r6, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	ldr r0, _02232F58 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
@@ -24189,7 +24189,7 @@ ov74_02232F5C: ; 0x02232F5C
 	ldr r1, _02232F98 ; =0x0000E88C
 	ldr r0, [r0, r1]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add sp, #0x14
 	pop {pc}
 	.balign 4, 0
@@ -24538,7 +24538,7 @@ ov74_02233230: ; 0x02233230
 	bl BgConfig_Alloc
 	str r0, [r4, #0x20]
 	mov r0, #0x4c
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	ldr r1, _022332DC ; =0x0000E88C
 	str r0, [r4, r1]
 	mov r0, #0
@@ -24735,7 +24735,7 @@ _02233400:
 _02233414:
 	ldr r0, _02233630 ; =0x0000E88C
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _02233426
 	cmp r0, #2
@@ -24779,7 +24779,7 @@ _0223344E:
 _02233466:
 	ldr r0, _02233630 ; =0x0000E88C
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _02233478
 	cmp r0, #2
@@ -24857,7 +24857,7 @@ _022334EC:
 _022334FE:
 	ldr r0, _02233630 ; =0x0000E88C
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _02233510
 	cmp r0, #2
@@ -25131,7 +25131,7 @@ _0223372C:
 _02233746:
 	ldr r0, _022338B4 ; =0x0000E88C
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _02233758
 	cmp r0, #2
@@ -25175,7 +25175,7 @@ _0223377C:
 _022337A2:
 	ldr r0, _022338B4 ; =0x0000E88C
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _022337B4
 	cmp r0, #2

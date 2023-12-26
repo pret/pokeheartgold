@@ -145,8 +145,8 @@ extern const TouchscreenHitbox ov17_02203FC0;
 
 extern void sub_0200B2E0(HeapID);
 extern void sub_0200B2E8(HeapID);
-extern void *sub_0201660C(HeapID);
-extern void sub_02016624(void*);
+extern void *YesNoPrompt_Create(HeapID);
+extern void YesNoPrompt_Destroy(void*);
 extern void sub_020210BC(void);
 extern u32 sub_02021148(u32);
 extern void sub_02021238(void);
@@ -1119,7 +1119,7 @@ static void BerryPotsApp_SetupWindows(BerryPotsAppData *data) {
         FillWindowPixelBuffer(&data->windows[i], 0x0);
     }
 
-    data->unk12C = sub_0201660C(data->heapId);
+    data->unk12C = YesNoPrompt_Create(data->heapId);
 }
 
 static void BerryPotsApp_FreeWindows(BerryPotsAppData *data) {
@@ -1128,7 +1128,7 @@ static void BerryPotsApp_FreeWindows(BerryPotsAppData *data) {
         RemoveWindow(&data->windows[i]);
     }
 
-    sub_02016624(data->unk12C);
+    YesNoPrompt_Destroy(data->unk12C);
 }
 
 static void BerryPotsApp_SetupListMenuItems(BerryPotsAppData *data) {

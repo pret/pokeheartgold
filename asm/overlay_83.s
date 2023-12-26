@@ -814,7 +814,7 @@ _0223E418:
 _0223E42C:
 	ldr r0, _0223E518 ; =0x0000084C
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _0223E442
 	cmp r0, #2
@@ -1013,7 +1013,7 @@ _0223E5F2:
 _0223E608:
 	ldr r0, _0223E8DC ; =0x0000084C
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _0223E61C
 	cmp r0, #2
@@ -1487,7 +1487,7 @@ _0223EA14:
 _0223EA26:
 	ldr r0, _0223EC90 ; =0x0000084C
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _0223EA3A
 	cmp r0, #2
@@ -1644,7 +1644,7 @@ _0223EB7E:
 _0223EB92:
 	ldr r0, _0223EC90 ; =0x0000084C
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _0223EBA4
 	cmp r0, #2
@@ -1800,7 +1800,7 @@ _0223ECDA:
 _0223ED00:
 	ldr r0, _0223EE90 ; =0x0000084C
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _0223ED12
 	cmp r0, #2
@@ -10718,7 +10718,7 @@ _0224360C:
 _0224361E:
 	ldr r0, _02243800 ; =0x00000604
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _02243630
 	cmp r0, #2
@@ -10911,7 +10911,7 @@ _022437CA:
 _022437D8:
 	ldr r0, _02243800 ; =0x00000604
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _022437EA
 	cmp r0, #2
@@ -11176,7 +11176,7 @@ _022439EC:
 _02243A36:
 	ldr r0, _02243BA8 ; =0x00000604
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _02243A48
 	cmp r0, #2
@@ -11206,7 +11206,7 @@ _02243A62:
 _02243A76:
 	ldr r0, _02243BA8 ; =0x00000604
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _02243A88
 	cmp r0, #2
@@ -11237,7 +11237,7 @@ _02243AA2:
 _02243AB6:
 	ldr r0, _02243BA8 ; =0x00000604
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _02243AC8
 	cmp r0, #2
@@ -18582,11 +18582,11 @@ ov83_0224760C: ; 0x0224760C
 
 	thumb_func_start ov83_02247624
 ov83_02247624: ; 0x02247624
-	ldr r3, _0224762C ; =sub_02024B68
+	ldr r3, _0224762C ; =Sprite_IsCellAnimationFinished
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_0224762C: .word sub_02024B68
+_0224762C: .word Sprite_IsCellAnimationFinished
 	thumb_func_end ov83_02247624
 
 	thumb_func_start ov83_02247630
@@ -18881,7 +18881,7 @@ ov83_02247844: ; 0x02247844
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x6b
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	str r0, [r4]
 	mov r0, #0
 	str r0, [r4, #4]
@@ -18891,11 +18891,11 @@ ov83_02247844: ; 0x02247844
 
 	thumb_func_start ov83_02247858
 ov83_02247858: ; 0x02247858
-	ldr r3, _02247860 ; =sub_02016624
+	ldr r3, _02247860 ; =YesNoPrompt_Destroy
 	ldr r0, [r0]
 	bx r3
 	nop
-_02247860: .word sub_02016624
+_02247860: .word YesNoPrompt_Destroy
 	thumb_func_end ov83_02247858
 
 	thumb_func_start ov83_02247864
@@ -18932,7 +18932,7 @@ ov83_02247864: ; 0x02247864
 	strb r0, [r2, #0x17]
 	ldr r0, [r4]
 	add r1, sp, #4
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	mov r0, #1
 	str r0, [r4, #4]
 	add sp, #0x18

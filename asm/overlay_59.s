@@ -968,7 +968,7 @@ _0223845A:
 	mov r0, #0x9f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _022384DA
 	ldr r0, _022384E0 ; =0x000008E6
@@ -2377,7 +2377,7 @@ ov59_02238F58: ; 0x02238F58
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add sp, #0x14
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -2390,7 +2390,7 @@ ov59_02238FB4: ; 0x02238FB4
 	mov r0, #0x92
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _02238FCC
 	cmp r0, #2
@@ -3478,7 +3478,7 @@ _02239826:
 	blt _02239826
 	ldr r0, [sp, #0x14]
 	ldr r0, [r0]
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	mov r2, #0x92
 	ldr r1, [sp, #0x14]
 	lsl r2, r2, #2
@@ -3509,7 +3509,7 @@ _022398AC:
 	mov r0, #0x92
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov59_022398A0
 
@@ -6578,7 +6578,7 @@ _0223AFC4:
 	mov r0, #0x26
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	beq _0223AFD8
 	add sp, #0xc
@@ -6620,7 +6620,7 @@ _0223B024:
 	mov r0, #0x9a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	beq _0223B038
 	add sp, #0xc
@@ -6647,7 +6647,7 @@ _0223B05C:
 	mov r0, #0x9a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	beq _0223B070
 	add sp, #0xc
@@ -7579,7 +7579,7 @@ _0223B780:
 	blt _0223B780
 	ldr r0, [sp, #0x14]
 	ldr r0, [r0]
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	mov r2, #0x95
 	ldr r1, [sp, #0x14]
 	lsl r2, r2, #2
@@ -7610,7 +7610,7 @@ _0223B7E4:
 	mov r0, #0x95
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov59_0223B7D8
 

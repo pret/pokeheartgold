@@ -7,12 +7,12 @@
 .public GfGfxLoader_GetPlttData
 .public sub_0200E374
 .public DestroySysTask
-.public sub_0201660C
-.public sub_02016624
-.public sub_020166FC
-.public sub_02016704
+.public YesNoPrompt_Create
+.public YesNoPrompt_Destroy
+.public YesNoPrompt_InitFromTemplate
+.public YesNoPrompt_InitFromTemplateWithPalette
 .public sub_02016748
-.public sub_020168F4
+.public YesNoPrompt_HandleInput
 .public sub_020169C0
 .public sub_020169CC
 .public sub_020169F4

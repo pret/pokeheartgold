@@ -1,3 +1,4 @@
+#include "constants/sndseq.h"
 	.include "asm/macros.inc"
 	.include "unk_0201660C.inc"
 	.include "global.inc"
@@ -5,14 +6,13 @@
 	.rodata
 
 _020F61B8:
-	.byte 0x06
-_020F61B9:
-	.byte 0x04, 0x10, 0x06
+	.byte 0x06, 0x04
+	.byte 0x10, 0x06
 
 	.text
 
-	thumb_func_start sub_0201660C
-sub_0201660C: ; 0x0201660C
+	thumb_func_start YesNoPrompt_Create
+YesNoPrompt_Create: ; 0x0201660C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r1, #0x78
@@ -23,10 +23,10 @@ sub_0201660C: ; 0x0201660C
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0201660C
+	thumb_func_end YesNoPrompt_Create
 
-	thumb_func_start sub_02016624
-sub_02016624: ; 0x02016624
+	thumb_func_start YesNoPrompt_Destroy
+YesNoPrompt_Destroy: ; 0x02016624
 	push {r4, lr}
 	add r4, r0, #0
 	add r1, r4, #0
@@ -42,7 +42,7 @@ _0201663A:
 	bl FreeToHeap
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02016624
+	thumb_func_end YesNoPrompt_Destroy
 
 	thumb_func_start sub_02016644
 sub_02016644: ; 0x02016644
@@ -90,7 +90,7 @@ _02016680:
 	strb r1, [r0]
 	ldrb r0, [r4, #0x13]
 	lsl r1, r0, #1
-	ldr r0, _020166F8 ; =_020F61B9
+	ldr r0, _020166F8 ; =_020F61B8 + 1
 	ldrb r1, [r0, r1]
 	add r0, r5, #0
 	add r0, #0x73
@@ -132,19 +132,19 @@ _02016680:
 	pop {r3, r4, r5, pc}
 	nop
 _020166F4: .word _020F61B8
-_020166F8: .word _020F61B9
+_020166F8: .word _020F61B8 + 1
 	thumb_func_end sub_02016644
 
-	thumb_func_start sub_020166FC
-sub_020166FC: ; 0x020166FC
+	thumb_func_start YesNoPrompt_InitFromTemplate
+YesNoPrompt_InitFromTemplate: ; 0x020166FC
 	ldr r3, _02016700 ; =sub_02016644
 	bx r3
 	.balign 4, 0
 _02016700: .word sub_02016644
-	thumb_func_end sub_020166FC
+	thumb_func_end YesNoPrompt_InitFromTemplate
 
-	thumb_func_start sub_02016704
-sub_02016704: ; 0x02016704
+	thumb_func_start YesNoPrompt_InitFromTemplateWithPalette
+YesNoPrompt_InitFromTemplateWithPalette: ; 0x02016704
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -176,7 +176,7 @@ _02016742:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02016704
+	thumb_func_end YesNoPrompt_InitFromTemplateWithPalette
 
 	thumb_func_start sub_02016748
 sub_02016748: ; 0x02016748
@@ -192,7 +192,7 @@ sub_02016748: ; 0x02016748
 	add r1, r4, #0
 	add r1, #0x77
 	strb r2, [r1]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #0
 	bne _02016784
 	add r1, r4, #0
@@ -301,7 +301,7 @@ sub_02016804: ; 0x02016804
 	and r1, r2
 	orr r1, r3
 	strb r1, [r0]
-	ldr r0, _0201687C ; =0x000005E4
+	ldr r0, _0201687C ; =SEQ_SE_DP_BUTTON9
 	bl PlaySE
 	mov r0, #1
 	pop {r3, pc}
@@ -318,7 +318,7 @@ _02016832:
 	add r1, r3, #0
 	orr r1, r2
 	strb r1, [r0]
-	ldr r0, _0201687C ; =0x000005E4
+	ldr r0, _0201687C ; =SEQ_SE_DP_BUTTON9
 	bl PlaySE
 	mov r0, #1
 	pop {r3, pc}
@@ -334,7 +334,7 @@ _02016854:
 	add r1, #0x75
 	strb r2, [r1]
 	bl sub_020167C4
-	ldr r0, _02016880 ; =0x000005DC
+	ldr r0, _02016880 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	mov r0, #0
 	pop {r3, pc}
@@ -342,8 +342,8 @@ _02016876:
 	mov r0, #0
 	pop {r3, pc}
 	nop
-_0201687C: .word 0x000005E4
-_02016880: .word 0x000005DC
+_0201687C: .word SEQ_SE_DP_BUTTON9
+_02016880: .word SEQ_SE_DP_SELECT
 	thumb_func_end sub_02016804
 
 	thumb_func_start sub_02016884
@@ -404,8 +404,8 @@ _020168E2:
 _020168F0: .word gSystem
 	thumb_func_end sub_02016884
 
-	thumb_func_start sub_020168F4
-sub_020168F4: ; 0x020168F4
+	thumb_func_start YesNoPrompt_HandleInput
+YesNoPrompt_HandleInput: ; 0x020168F4
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	add r0, #0x77
@@ -509,7 +509,7 @@ _0201699A:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_020168F4
+	thumb_func_end YesNoPrompt_HandleInput
 
 	thumb_func_start sub_020169C0
 sub_020169C0: ; 0x020169C0
@@ -844,13 +844,13 @@ sub_02016BC0: ; 0x02016BC0
 	add r3, #0x24
 	ldrb r3, [r3]
 	bl sub_02016E40
-	ldr r0, _02016C24 ; =0x000005E4
+	ldr r0, _02016C24 ; =SEQ_SE_DP_BUTTON9
 	bl PlaySE
 _02016C20:
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
-_02016C24: .word 0x000005E4
+_02016C24: .word SEQ_SE_DP_BUTTON9
 	thumb_func_end sub_02016BC0
 
 	thumb_func_start sub_02016C28

@@ -1905,7 +1905,7 @@ ov75_02247890: ; 0x02247890
 	mov r0, #0x74
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	mov r3, #0
 	mov r1, #0xe
 	str r1, [sp, #0xc]
@@ -1933,7 +1933,7 @@ ov75_02247890: ; 0x02247890
 	strb r2, [r1, #0x12]
 	strb r3, [r1, #0x13]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add r0, r7, #0
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
@@ -2216,13 +2216,13 @@ _02247B0A:
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	bne _02247B4C
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	ldr r0, _02247B94 ; =0x00000F0F
 	mov r2, #0x1a
 	str r0, [sp]
@@ -2248,7 +2248,7 @@ _02247B4C:
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	ldr r0, _02247B94 ; =0x00000F0F
 	mov r2, #0x1b
 	str r0, [sp]
@@ -2345,13 +2345,13 @@ _02247C0A:
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	bne _02247C48
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	ldr r0, _02247C6C ; =0x00000F0F
 	mov r2, #0x1d
 	str r0, [sp]
@@ -2375,7 +2375,7 @@ _02247C48:
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0
 	str r0, [r4, #8]
 	b _02247C66
@@ -3358,13 +3358,13 @@ _02248438:
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	bne _02248468
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	ldr r0, _02248528 ; =0x00000F0F
 	mov r2, #9
 	str r0, [sp]
@@ -3382,7 +3382,7 @@ _02248468:
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	add r0, r4, #0
 	add r0, #0x94
 	ldr r0, [r0]
@@ -3437,13 +3437,13 @@ _022484DC:
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	bne _022484FA
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #5
 	str r0, [r4, #8]
 	b _02248522
@@ -3453,7 +3453,7 @@ _022484FA:
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	ldr r0, _02248528 ; =0x00000F0F
 	mov r2, #0xa
 	str r0, [sp]
@@ -3599,13 +3599,13 @@ _02248606:
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	bne _0224862C
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	add r0, r4, #0
 	add r0, #0x94
 	ldr r0, [r0]
@@ -3619,7 +3619,7 @@ _0224862C:
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	add r0, r4, #0
 	mov r1, #0x22
 	mov r2, #0
@@ -3663,13 +3663,13 @@ ov75_02248684: ; 0x02248684
 	add r4, r0, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	bne _022486C2
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	ldr r0, _022486E8 ; =0x00000F0F
 	mov r2, #1
 	str r0, [sp]
@@ -3690,7 +3690,7 @@ _022486C2:
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	bl sub_0203957C
 	ldr r0, [r4]
 	mov r1, #6
@@ -4369,13 +4369,13 @@ _02248C04:
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	bne _02248C2A
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	add r0, r4, #0
 	add r0, #0x94
 	ldr r0, [r0]
@@ -4389,7 +4389,7 @@ _02248C2A:
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0x15
 	str r0, [r4, #8]
 	b _02248C58
@@ -4489,13 +4489,13 @@ _02248CEC:
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	bne _02248D10
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	add r0, r4, #0
 	mov r1, #0x1a
 	mov r2, #0
@@ -4507,7 +4507,7 @@ _02248D10:
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0x13
 	str r0, [r4, #8]
 _02248D22:

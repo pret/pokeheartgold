@@ -1689,11 +1689,11 @@ _02238664: .word 0x00000E14
 ov72_02238668: ; 0x02238668
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	add r4, r0, #0
 	beq _0223867A
 	add r0, r5, #0
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 _0223867A:
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
@@ -7161,7 +7161,7 @@ ov72_0223B088: ; 0x0223B088
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	beq _0223B09A
 	mov r0, #0

@@ -7536,10 +7536,10 @@ ov65_0221FC08: ; 0x0221FC08
 	mov r1, #0xf0
 	bic r3, r1
 	strb r3, [r2, #0x12]
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	add r1, sp, #0
 	add r4, r0, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add r0, r4, #0
 	add sp, #0x14
 	pop {r3, r4, pc}
@@ -7572,11 +7572,11 @@ _0221FC7A:
 	b _0221FC9A
 _0221FC82:
 	ldr r0, [r4]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	add r6, r0, #0
 	beq _0221FC9A
 	ldr r0, [r4]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	bl ov65_0221F8B4
 	mov r0, #0
 	str r0, [r5]

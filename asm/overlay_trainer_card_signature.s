@@ -513,7 +513,7 @@ _021E84DC:
 	mov r1, #msg_0252_00009 ; Sign your autograph!
 	bl ReadMsgDataIntoString
 	mov r0, #0x27
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	ldr r1, _021E8564 ; =0x00005C9C
 	mov r2, #5
 	str r0, [r7, r1]
@@ -535,7 +535,7 @@ ov52_021E8568: ; 0x021E8568
 	add r6, r0, #0
 	ldr r0, _021E859C ; =0x00005C9C
 	ldr r0, [r6, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r4, #0
 	add r5, r6, #0
 _021E8578:
@@ -1531,7 +1531,7 @@ ov52_021E8D64: ; 0x021E8D64
 	strb r2, [r0, #0x11]
 	add r0, r1, #0
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add sp, #0x14
 	pop {pc}
 	thumb_func_end ov52_021E8D64
@@ -1573,7 +1573,7 @@ ov52_021E8DC4: ; 0x021E8DC4
 	ldr r0, _021E8E5C ; =0x00005C9C
 	add r4, r1, #0
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _021E8DDE
 	cmp r0, #2
@@ -1648,7 +1648,7 @@ ov52_021E8E64: ; 0x021E8E64
 	ldr r0, _021E8ED8 ; =0x00005C9C
 	add r4, r1, #0
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _021E8E7C
 	cmp r0, #2

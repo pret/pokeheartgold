@@ -815,7 +815,7 @@ ov108_021E5F38: ; 0x021E5F38
 	mov r0, #0x13
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _021E5F50
 	cmp r0, #2
@@ -2328,7 +2328,7 @@ ov108_021E6B00: ; 0x021E6B00
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	ldr r2, _021E6B98 ; =0x000184E0
 	mov r1, #1
 	ldrb r2, [r4, r2]
@@ -3115,7 +3115,7 @@ _021E70C2:
 	add r0, r7, r0
 	bl FillWindowPixelBufferText_AssumeTileSize32
 	ldr r0, [r7]
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	mov r1, #0x13
 	lsl r1, r1, #6
 	str r0, [r7, r1]
@@ -3136,7 +3136,7 @@ ov108_021E71EC: ; 0x021E71EC
 	mov r0, #0x13
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	ldr r0, _021E7220 ; =0x000004A4
 	add r0, r5, r0
 	bl RemoveWindow
@@ -7537,7 +7537,7 @@ ov108_021E9488: ; 0x021E9488
 	strb r2, [r1, #0x13]
 	ldr r0, [r4, r0]
 	add r1, sp, #0
-	bl sub_02016704
+	bl YesNoPrompt_InitFromTemplateWithPalette
 	add sp, #0x14
 	pop {r4, r5, pc}
 	nop
@@ -7550,7 +7550,7 @@ ov108_021E94E8: ; 0x021E94E8
 	add r5, r0, #0
 	ldr r0, _021E9524 ; =0x00000514
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _021E94FE
 	cmp r0, #2
@@ -8642,7 +8642,7 @@ _021E9D66:
 	cmp r4, #6
 	blt _021E9D66
 	ldr r0, [r7]
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	ldr r1, _021E9DDC ; =0x00000514
 	str r0, [r7, r1]
 	add sp, #0x1c
@@ -8661,7 +8661,7 @@ ov108_021E9DE0: ; 0x021E9DE0
 	add r5, r0, #0
 	ldr r0, _021E9E08 ; =0x00000514
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	ldr r0, _021E9E0C ; =0x00000454
 	mov r4, #0
 	add r5, r5, r0

@@ -3518,7 +3518,7 @@ ov39_02228AC0: ; 0x02228AC0
 	add r5, r0, #0
 	mov r0, #0x7c
 	add r4, r1, #0
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	mov r1, #0
 	mov r2, #0xe
 	str r2, [sp, #0xc]
@@ -3541,7 +3541,7 @@ ov39_02228AC0: ; 0x02228AC0
 	strb r4, [r3, #0x12]
 	strb r1, [r3, #0x13]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add r0, r6, #0
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
@@ -3715,13 +3715,13 @@ _02228C30:
 	add r0, r4, #0
 	add r0, #0x84
 	ldr r0, [r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	bne _02228C56
 	add r0, r4, #0
 	add r0, #0x84
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	add r0, r4, #0
 	add r0, #0x94
 	ldr r0, [r0]
@@ -3735,7 +3735,7 @@ _02228C56:
 	add r0, r4, #0
 	add r0, #0x84
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #8
 	str r0, [r4, #8]
 	b _02228C6E

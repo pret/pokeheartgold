@@ -82,7 +82,7 @@
 .public Get2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo
 .public Sprite_SetPriority
-.public sub_02024B68
+.public Sprite_IsCellAnimationFinished
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public TouchscreenHitbox_TouchNewIsIn
 .public String_New
