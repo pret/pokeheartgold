@@ -968,7 +968,7 @@ static void ov17_02202A84(BerryPotsAppData *data, int index) {
             unkStruct.animSeqNo = 6;
             break;
         default:
-            unkStruct.unk_00 = index + 1;
+            unkStruct.resourceSet = index + 1;
             unkStruct.animSeqNo = sub->growthStage - 3;
             break;
     }
