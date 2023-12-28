@@ -2410,12 +2410,12 @@ _02238FDA:
 	mov r0, #0x92
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020169C0
+	bl YesNoPrompt_GetUnk74_0
 	str r0, [r5, #0x40]
 	mov r0, #0x92
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov59_02238FB4

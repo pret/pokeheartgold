@@ -1008,13 +1008,13 @@ _021E6124:
 	mov r0, #0x46
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020169C0
+	bl YesNoPrompt_GetUnk74_0
 	mov r1, #0x6d
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	sub r1, #0x9c
 	ldr r0, [r5, r1]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

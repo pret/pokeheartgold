@@ -464,7 +464,7 @@ _0208595A:
 	mov r0, #3
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	add r0, r4, #0
 	bl sub_02085C20
 _0208596E:
@@ -1518,7 +1518,7 @@ _0208614A:
 	ldr r2, _0208617C ; =sub_02086180
 	ldr r3, [sp, #4]
 	mov r1, #0x1c
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r2, #3
 	ldr r1, [sp, #4]
 	lsl r2, r2, #8

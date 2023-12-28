@@ -8,14 +8,14 @@
 
 typedef struct YesNoPromptTemplate {
     BgConfig *bgConfig;
-    int unk4;
+    int bgId;
     int tileStart;
     u32 plttSlot;
-    u8 unk10;
-    u8 unk11;
-    u8 unk12_0 : 4;
-    u8 unk12_4 : 4;
-    u8 unk13;
+    u8 x;
+    u8 y;
+    u8 dummy : 4;
+    u8 initialCursorPos : 4;
+    u8 shapeParam;
 } YesNoPromptTemplate;
 
 struct YesNoPromptSubstruct00_18 {
@@ -24,21 +24,21 @@ struct YesNoPromptSubstruct00_18 {
     int unk8;
 };
 
-typedef struct YesNoPromptSubstruct00 {
+typedef struct YesNoPromptButton {
     BgConfig *bgConfig;
     int bgId;
-    void *unk08[2];
+    void *scrnDataRaw[2];
     NNSG2dScreenData *screenDataPtrs[2];
     struct YesNoPromptSubstruct00_18 unk18;
     u8 x;
     u8 y;
     u8 unk26;
-} YesNoPromptSubstruct00;
+} YesNoPromptButton;
 
 typedef struct YesNoPromptState {
-    UnkStruct_02026C44 *unk00;
-    TouchscreenHitbox unk04[2];
-    YesNoPromptSubstruct00 unk0C[2];
+    UnkStruct_02026C44 *touchHitboxController;
+    TouchscreenHitbox hitboxes[2];
+    YesNoPromptButton buttons[2];
     BgConfig *bgConfig;
     u32 bgId;
     HeapID heapId;
@@ -59,12 +59,12 @@ typedef struct YesNoPromptState {
 
 YesNoPromptState *YesNoPrompt_Create(HeapID);
 void YesNoPrompt_Destroy(YesNoPromptState *);
-void sub_020169CC(YesNoPromptState *);
+void YesNoPrompt_Reset(YesNoPromptState *);
 void YesNoPrompt_InitFromTemplate(YesNoPromptState *, const YesNoPromptTemplate *);
 void YesNoPrompt_InitFromTemplateWithPalette(YesNoPromptState *, const YesNoPromptTemplate *, PaletteData *);
-u32 sub_02016748(YesNoPromptState *);
+u32 YesNoPrompt_HandleInputForSave(YesNoPromptState *);
 int YesNoPrompt_HandleInput(YesNoPromptState *);
-int sub_020169C0(YesNoPromptState *);
-void sub_020169F4(YesNoPromptState *yesno, int a1);
+int YesNoPrompt_GetUnk74_0(YesNoPromptState *);
+void YesNoPrompt_SetUnk76_4(YesNoPromptState *yesno, int a1);
 
 #endif //POKEHEARTGOLD_YES_NO_PROMPT_H

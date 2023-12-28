@@ -99,8 +99,8 @@
 .public YesNoPrompt_Destroy
 .public YesNoPrompt_InitFromTemplate
 .public YesNoPrompt_HandleInput
-.public sub_020169C0
-.public sub_020169CC
+.public YesNoPrompt_GetUnk74_0
+.public YesNoPrompt_Reset
 .public sub_020183F0
 .public sub_02018410
 .public Main_SetVBlankIntrCB
@@ -183,9 +183,9 @@
 .public sub_020255C4
 .public String_New
 .public String_Delete
-.public sub_02026C44
-.public sub_02026CAC
-.public sub_02026CC4
+.public TouchHitboxController_Create
+.public TouchHitboxController_Destroy
+.public TouchHitboxController_IsTriggered
 .public Thunk_G3X_Reset
 .public sub_02026E50
 .public GF_3DVramMan_InitFrameTexVramManager

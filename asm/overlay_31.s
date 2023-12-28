@@ -2259,7 +2259,7 @@ ov31_0225E774: ; 0x0225E774
 	mov r0, #0
 	pop {r4, pc}
 _0225E786:
-	bl sub_02016748
+	bl YesNoPrompt_HandleInputForSave
 	cmp r0, #1
 	beq _0225E794
 	cmp r0, #2

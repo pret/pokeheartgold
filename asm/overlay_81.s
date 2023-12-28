@@ -2542,7 +2542,7 @@ _0223F254:
 _0223F256:
 	ldr r0, _0223F310 ; =0x0000046C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	bl ov81_02242694
@@ -2553,7 +2553,7 @@ _0223F256:
 _0223F26E:
 	ldr r0, _0223F310 ; =0x0000046C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	bl ov81_02242694
@@ -3097,7 +3097,7 @@ _0223F6DE:
 _0223F6F0:
 	ldr r0, _0223F750 ; =0x0000046C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	bl ov81_02242694
@@ -3117,7 +3117,7 @@ _0223F714:
 _0223F71C:
 	ldr r0, _0223F750 ; =0x0000046C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	bl ov81_02242694
@@ -3501,7 +3501,7 @@ _0223FA5A:
 _0223FA5C:
 	ldr r0, _0223FB20 ; =0x0000046C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	bl ov81_02242694
@@ -3523,7 +3523,7 @@ _0223FA86:
 _0223FA8E:
 	ldr r0, _0223FB20 ; =0x0000046C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	bl ov81_02242694
@@ -3699,7 +3699,7 @@ _0223FBE2:
 _0223FBF4:
 	ldr r0, _0223FC5C ; =0x0000046C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	bl ov81_02242694
@@ -3723,7 +3723,7 @@ _0223FC20:
 _0223FC28:
 	ldr r0, _0223FC5C ; =0x0000046C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	bl ov81_02242694

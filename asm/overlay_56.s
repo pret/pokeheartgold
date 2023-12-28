@@ -679,7 +679,7 @@ _021E6118:
 	add r0, r5, #0
 	add r0, #0xac
 	ldr r0, [r0]
-	bl sub_020169C0
+	bl YesNoPrompt_GetUnk74_0
 	add r6, r0, #0
 	ldrb r0, [r5, #0xa]
 	cmp r6, r0
@@ -699,7 +699,7 @@ _021E613C:
 _021E613E:
 	add r5, #0xac
 	ldr r0, [r5]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

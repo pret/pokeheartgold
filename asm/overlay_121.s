@@ -494,7 +494,7 @@ _021E5D1E:
 	add r0, r4, #0
 	add r0, #0x94
 	ldr r0, [r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	bl ov121_021E6F6C
 	ldr r0, _021E5D58 ; =0x00000233
 	mov r1, #4
@@ -506,7 +506,7 @@ _021E5D3A:
 	add r0, r4, #0
 	add r0, #0x94
 	ldr r0, [r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	bl ov121_021E6F6C
 	ldr r0, _021E5D58 ; =0x00000233
 	mov r1, #1

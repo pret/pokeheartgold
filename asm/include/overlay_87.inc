@@ -65,7 +65,7 @@
 .public YesNoPrompt_Create
 .public YesNoPrompt_Destroy
 .public YesNoPrompt_InitFromTemplate
-.public sub_02016748
+.public YesNoPrompt_HandleInputForSave
 .public Main_SetVBlankIntrCB
 .public Main_SetHBlankIntrCB
 .public CreateHeap

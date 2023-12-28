@@ -173,9 +173,9 @@
 .public CopyU16ArrayToString
 .public CopyStringToU16Array
 .public String_Cat
-.public sub_02026C44
-.public sub_02026CAC
-.public sub_02026CC4
+.public TouchHitboxController_Create
+.public TouchHitboxController_Destroy
+.public TouchHitboxController_IsTriggered
 .public Thunk_G3X_Reset
 .public sub_02026E50
 .public GF_3DVramMan_Create

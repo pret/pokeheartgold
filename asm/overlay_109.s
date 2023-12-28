@@ -3951,7 +3951,7 @@ _021E776E:
 	add r0, r5, #0
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl sub_020169C0
+	bl YesNoPrompt_GetUnk74_0
 	ldr r1, [r5, #0xc]
 	cmp r0, r1
 	beq _021E7780
@@ -3960,7 +3960,7 @@ _021E7780:
 	add r0, r5, #0
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r5, #0
 	mov r1, #0
 	bl ov109_021E74D4

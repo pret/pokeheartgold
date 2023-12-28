@@ -3788,7 +3788,7 @@ ov41_02247B5C: ; 0x02247B5C
 	add r4, r0, #0
 	ldr r0, _02247B78 ; =0x000006B8
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	bl ov41_02247D3C
 	ldr r0, [r4, #0x40]
@@ -3824,7 +3824,7 @@ _02247B9E:
 _02247BA0:
 	ldr r0, _02247BB0 ; =0x000006B8
 	ldr r0, [r5, r0]
-	bl sub_020169C0
+	bl YesNoPrompt_GetUnk74_0
 	ldr r1, _02247BB4 ; =0x000006EC
 	str r0, [r5, r1]
 	add r0, r4, #0
@@ -4076,7 +4076,7 @@ ov41_02247D64: ; 0x02247D64
 	orr r0, r1
 	strb r0, [r3, #0x12]
 	ldr r0, [r4, r2]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	ldr r0, _02247DF0 ; =0x000006B8
 	add r1, sp, #0
 	ldr r0, [r4, r0]
@@ -4137,7 +4137,7 @@ _02247E1A:
 _02247E1C:
 	ldr r0, _02247E2C ; =0x000006B8
 	ldr r0, [r5, r0]
-	bl sub_020169C0
+	bl YesNoPrompt_GetUnk74_0
 	ldr r1, _02247E30 ; =0x000006EC
 	str r0, [r5, r1]
 	add r0, r4, #0
@@ -9417,7 +9417,7 @@ ov41_0224A27C: ; 0x0224A27C
 	add r0, #0x6c
 	mov r1, #5
 	add r3, r5, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	str r0, [r5, #0x68]
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
@@ -9465,7 +9465,7 @@ _0224A418:
 	ldr r0, [r6, #0x64]
 	bl sub_020135AC
 	ldr r0, [r6, #0x68]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0
 	str r0, [r6, #0x68]
 	pop {r4, r5, r6, pc}
@@ -9639,7 +9639,7 @@ _0224A55A:
 	pop {r4, pc}
 _0224A578:
 	ldr r0, [r4, #0x68]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 _0224A57E:
 	pop {r4, pc}
 	thumb_func_end ov41_0224A54C

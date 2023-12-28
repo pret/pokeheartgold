@@ -1240,12 +1240,12 @@ static void AlphPuzzle_Quit_CreateYesNoPrompt(AlphPuzzleData *data) {
     unkStruct.bgConfig = data->bgConfig;
     unkStruct.tileStart = 31;
     unkStruct.plttSlot = 6;
-    unkStruct.unk4 = 0;
-    unkStruct.unk10 = 25;
-    unkStruct.unk11 = 10;
-    unkStruct.unk12_0 = data->fieldSystemUnk10Cflag;
-    unkStruct.unk12_4 = 1;
-    unkStruct.unk13 = 0;
+    unkStruct.bgId = 0;
+    unkStruct.x = 25;
+    unkStruct.y = 10;
+    unkStruct.dummy = data->fieldSystemUnk10Cflag;
+    unkStruct.initialCursorPos = 1;
+    unkStruct.shapeParam = 0;
     YesNoPrompt_InitFromTemplateWithPalette(data->yesNoPrompt, &unkStruct, data->palette);
 }
 
@@ -1261,8 +1261,8 @@ static AlphPuzzleStates AlphPuzzle_Quit_HandleYesNoPrompt(AlphPuzzleData *data) 
     default:
         return ALPH_PUZZLE_STATE_QUIT;
     }
-    data->fieldSystemUnk10Cflag = sub_020169C0(data->yesNoPrompt);
-    sub_020169CC(data->yesNoPrompt);
+    data->fieldSystemUnk10Cflag = YesNoPrompt_GetUnk74_0(data->yesNoPrompt);
+    YesNoPrompt_Reset(data->yesNoPrompt);
     ClearFrameAndWindow2(&data->window[ALPH_WINDOW_CONFIRM_QUIT], 1);
     FillWindowPixelBuffer(&data->window[ALPH_WINDOW_CONFIRM_QUIT], 0);
     ScheduleWindowCopyToVram(&data->window[ALPH_WINDOW_CONFIRM_QUIT]);

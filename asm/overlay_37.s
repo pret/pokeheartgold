@@ -3987,7 +3987,7 @@ ov37_021E78A4: ; 0x021E78A4
 	beq _021E78BE
 	sub r0, #8
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	ldr r0, _021E78C0 ; =0x000093F8
 	mov r1, #0
 	str r1, [r4, r0]

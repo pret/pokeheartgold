@@ -18948,7 +18948,7 @@ ov83_022478B4: ; 0x022478B4
 	cmp r0, #0
 	beq _022478D0
 	ldr r0, [r4]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	ldr r0, [r4, #8]
 	mov r1, #0
 	bl BgCommitTilemapBufferToVram

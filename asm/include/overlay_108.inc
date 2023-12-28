@@ -96,8 +96,8 @@
 .public YesNoPrompt_InitFromTemplate
 .public YesNoPrompt_InitFromTemplateWithPalette
 .public YesNoPrompt_HandleInput
-.public sub_020169C0
-.public sub_020169CC
+.public YesNoPrompt_GetUnk74_0
+.public YesNoPrompt_Reset
 .public sub_020183F0
 .public sub_02018410
 .public sub_02018424

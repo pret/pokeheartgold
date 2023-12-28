@@ -950,12 +950,12 @@ BOOL ov122_021E6900(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     YesNoPromptTemplate temp1 = {0};
 
     temp1.bgConfig = work->bgConfig;
-    temp1.unk4 = 3;
+    temp1.bgId = 3;
     temp1.tileStart = 31;
     temp1.plttSlot = 9;
-    temp1.unk10 = 25;
-    temp1.unk11 = 10;
-    temp1.unk12_4 = 0;
+    temp1.x = 25;
+    temp1.y = 10;
+    temp1.initialCursorPos = 0;
 
     YesNoPrompt_InitFromTemplate(work->unk13C, &temp1);
     return TRUE;
@@ -990,7 +990,7 @@ BOOL AwaitQuitYesNoSelection(WorkflowEngine *workflow, VoltorbFlipAppWork *work)
 }
 
 BOOL ov122_021E69DC(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
-    sub_020169CC(work->unk13C);
+    YesNoPrompt_Reset(work->unk13C);
     return TRUE;
 }
 

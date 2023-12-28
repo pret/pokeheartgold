@@ -5895,7 +5895,7 @@ _0225B472:
 	mov r1, #1
 	bl ov90_02259554
 	ldr r0, [r4, #4]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]

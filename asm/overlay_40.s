@@ -345,7 +345,7 @@ _0222B9FE:
 	bl sub_0203A914
 	bl sub_02021238
 	ldr r0, [r5, #0x2c]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0
 	bl sub_02002B8C
 	ldr r7, _0222BA88 ; =0x0000087C
@@ -1492,7 +1492,7 @@ _0222C370:
 	add r0, #0x30
 	mov r1, #5
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	str r0, [r4, #0x2c]
 	add sp, #4
 	pop {r3, r4, pc}
@@ -1619,11 +1619,11 @@ _0222C470: .word 0x000005FC
 
 	thumb_func_start ov40_0222C474
 ov40_0222C474: ; 0x0222C474
-	ldr r3, _0222C47C ; =sub_02026CC4
+	ldr r3, _0222C47C ; =TouchHitboxController_IsTriggered
 	ldr r0, [r0, #0x2c]
 	bx r3
 	nop
-_0222C47C: .word sub_02026CC4
+_0222C47C: .word TouchHitboxController_IsTriggered
 	thumb_func_end ov40_0222C474
 
 	thumb_func_start ov40_0222C480
@@ -13854,7 +13854,7 @@ _022324AC:
 	ldr r2, _02232594 ; =ov40_02232ED4
 	mov r1, #3
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x5d
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -13960,7 +13960,7 @@ ov40_02232598: ; 0x02232598
 	mov r0, #0x5d
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -14270,7 +14270,7 @@ _02232820:
 	mov r0, #0x5d
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #4
 	mov r1, #0
 	bl GfGfx_EngineBTogglePlanes
@@ -14673,7 +14673,7 @@ _02232B70:
 	mov r0, #0x5d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r0, r5, #0
 	bl ov40_02232FCC
 	add r0, r5, #0
@@ -14733,7 +14733,7 @@ _02232BF2:
 	mov r0, #0x5d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #4
 	mov r1, #0
 	bl GfGfx_EngineBTogglePlanes
@@ -14929,7 +14929,7 @@ _02232D90:
 	ldr r2, _02232ECC ; =ov40_02232ED4
 	mov r1, #3
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x5d
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -18380,7 +18380,7 @@ _02234A60:
 	ldr r2, _02234BB4 ; =ov40_02235FD0
 	mov r1, #9
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x1d
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -18425,7 +18425,7 @@ _02234AEE:
 	mov r0, #0x1d
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	ldr r0, _02234BB8 ; =ov40_022451C4
 	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
@@ -18447,7 +18447,7 @@ _02234B1A:
 	mov r0, #0x1d
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r0, r4, #0
 	bl ov40_0222DFB0
 	ldr r0, [r4, #8]
@@ -21767,7 +21767,7 @@ ov40_022365A0: ; 0x022365A0
 	ldr r2, _022366AC ; =ov40_02236230
 	mov r1, #4
 	add r3, r5, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x33
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -21777,7 +21777,7 @@ ov40_022365A0: ; 0x022365A0
 	ldr r2, _022366B4 ; =ov40_022362E4
 	mov r1, #7
 	add r3, r5, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0xcd
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -21787,7 +21787,7 @@ ov40_022365A0: ; 0x022365A0
 	ldr r2, _022366B8 ; =ov40_02236320
 	mov r1, #7
 	add r3, r5, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0xce
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -21797,7 +21797,7 @@ ov40_022365A0: ; 0x022365A0
 	ldr r2, _022366C0 ; =ov40_0223635C
 	mov r1, #3
 	add r3, r5, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0xcf
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -21807,7 +21807,7 @@ ov40_022365A0: ; 0x022365A0
 	ldr r2, _022366C8 ; =ov40_022363BC
 	mov r1, #2
 	add r3, r5, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0xd
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -22278,7 +22278,7 @@ ov40_02236A58: ; 0x02236A58
 	mov r0, #0xcd
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -23994,7 +23994,7 @@ ov40_02237820: ; 0x02237820
 	mov r0, #0xd1
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -24046,7 +24046,7 @@ _02237894:
 	mov r0, #0x33
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #5
@@ -24293,7 +24293,7 @@ ov40_02237AA8: ; 0x02237AA8
 	mov r0, #0xce
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -25369,7 +25369,7 @@ _022383A6:
 	mov r0, #0xcf
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -25882,7 +25882,7 @@ ov40_02238820: ; 0x02238820
 	mov r0, #0xd
 	lsl r0, r0, #6
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -26536,7 +26536,7 @@ _02238DD4:
 	mov r0, #0x33
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #5
@@ -28059,7 +28059,7 @@ _022399EE:
 	ldr r2, _02239A54 ; =ov40_02239954
 	mov r1, #3
 	add r3, r5, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	add r4, #0xdc
 	str r0, [r4]
 	add r0, r5, #0
@@ -28488,7 +28488,7 @@ _02239DBA:
 	add r0, r5, #0
 	add r0, #0xdc
 	ldr r0, [r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r5, #8
 	add r0, r5, #0
 	bl ov40_0222DAA8
@@ -28781,7 +28781,7 @@ ov40_0223A034: ; 0x0223A034
 	bl ov40_0222F09C
 	add r4, #0xdc
 	ldr r0, [r4]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
@@ -28918,7 +28918,7 @@ _0223A16E:
 	bl ov40_02230964
 	add r4, #0xdc
 	ldr r0, [r4]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -29742,7 +29742,7 @@ ov40_0223A85C: ; 0x0223A85C
 	mov r0, #0x19
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -30052,15 +30052,15 @@ _0223AAF0:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0x63
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0x19
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r0, r4, #0
 	bl ov40_0223A83C
 	add r5, #8
@@ -30552,7 +30552,7 @@ ov40_0223AF24: ; 0x0223AF24
 	mov r0, #0x63
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -30856,15 +30856,15 @@ _0223B1A6:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0x63
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0x19
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #4
 	mov r1, #0
 	bl GfGfx_EngineBTogglePlanes
@@ -32683,7 +32683,7 @@ _0223C10E:
 	ldr r2, _0223C22C ; =ov40_0223CE64
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x62
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -32693,7 +32693,7 @@ _0223C10E:
 	ldr r2, _0223C234 ; =ov40_0223CF00
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -32703,7 +32703,7 @@ _0223C10E:
 	ldr r2, _0223C23C ; =ov40_0223CF70
 	mov r1, #2
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x19
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -32817,7 +32817,7 @@ ov40_0223C240: ; 0x0223C240
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -33047,15 +33047,15 @@ _0223C416:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0x63
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0x19
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r0, r5, #0
 	bl ov40_0223A83C
 	add r0, r5, #0
@@ -33229,7 +33229,7 @@ _0223C592:
 	ldr r2, _0223C6F8 ; =ov40_0223CE64
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x62
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -33239,7 +33239,7 @@ _0223C592:
 	ldr r2, _0223C700 ; =ov40_0223CF00
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -33249,7 +33249,7 @@ _0223C592:
 	ldr r2, _0223C708 ; =ov40_0223CF70
 	mov r1, #2
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x19
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -36812,7 +36812,7 @@ _0223E1A8:
 	ldr r2, _0223E304 ; =ov40_02241D10
 	mov r1, #5
 	add r3, r5, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, _0223E308 ; =0x00000608
 	ldr r2, _0223E30C ; =ov40_02241E14
 	str r0, [r4, r1]
@@ -36821,7 +36821,7 @@ _0223E1A8:
 	ldr r0, _0223E310 ; =ov40_02245708
 	mov r1, #9
 	add r3, r5, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, _0223E314 ; =0x0000060C
 	add r5, #8
 	str r0, [r4, r1]
@@ -36926,7 +36926,7 @@ ov40_0223E324: ; 0x0223E324
 	ldr r1, [r0, r1]
 	ldr r0, _0223E338 ; =0x00000608
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -36956,10 +36956,10 @@ _0223E356:
 	bl ov40_0222DFB0
 	ldr r0, _0223E48C ; =0x00000608
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	ldr r0, _0223E490 ; =0x0000060C
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -37626,7 +37626,7 @@ _0223E8CC:
 _0223E8E6:
 	ldr r0, _0223E998 ; =0x0000060C
 	ldr r0, [r5, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	ldr r0, _0223E99C ; =ov40_02245650
 	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
@@ -38695,10 +38695,10 @@ _0223F182:
 	bl ov40_0222DFB0
 	ldr r0, _0223F1F8 ; =0x00000608
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	ldr r0, _0223F1FC ; =0x0000060C
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -39186,7 +39186,7 @@ _0223F5B2:
 	ldr r2, _0223F6A0 ; =ov40_02241D10
 	mov r1, #5
 	add r3, r5, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, _0223F6A4 ; =0x00000608
 	ldr r2, _0223F6A8 ; =ov40_02241E14
 	str r0, [r4, r1]
@@ -39195,7 +39195,7 @@ _0223F5B2:
 	ldr r0, _0223F6AC ; =ov40_02245708
 	mov r1, #9
 	add r3, r5, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, _0223F6B0 ; =0x0000060C
 	str r0, [r4, r1]
 	add r0, r5, #0
@@ -39322,7 +39322,7 @@ _0223F6F2:
 	ldr r2, _0223F814 ; =ov40_02241E40
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, _0223F818 ; =0x00000608
 	ldr r2, _0223F81C ; =ov40_02241ED4
 	str r0, [r5, r1]
@@ -39331,7 +39331,7 @@ _0223F6F2:
 	ldr r0, _0223F820 ; =ov40_02245674
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, _0223F824 ; =0x0000060C
 	ldr r2, _0223F828 ; =ov40_02241F3C
 	str r0, [r5, r1]
@@ -39340,7 +39340,7 @@ _0223F6F2:
 	ldr r0, _0223F82C ; =ov40_02245654
 	mov r1, #2
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x61
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -39459,7 +39459,7 @@ ov40_0223F830: ; 0x0223F830
 	ldr r1, [r0, r1]
 	ldr r0, _0223F844 ; =0x00000608
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -39516,14 +39516,14 @@ ov40_0223F880: ; 0x0223F880
 _0223F896:
 	ldr r0, _0223F97C ; =0x00000608
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	ldr r0, _0223F980 ; =0x0000060C
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0x61
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #4
 	mov r1, #0
 	bl GfGfx_EngineBTogglePlanes
@@ -39994,7 +39994,7 @@ ov40_0223FCA0: ; 0x0223FCA0
 	ldr r1, [r0, r1]
 	ldr r0, _0223FCB4 ; =0x0000060C
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -40099,7 +40099,7 @@ ov40_0223FD50: ; 0x0223FD50
 	mov r0, #0x61
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -40515,7 +40515,7 @@ _022400AE:
 	ldr r2, _02240218 ; =ov40_02241E40
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, _0224021C ; =0x00000608
 	ldr r2, _02240220 ; =ov40_02241ED4
 	str r0, [r5, r1]
@@ -40524,7 +40524,7 @@ _022400AE:
 	ldr r0, _02240224 ; =ov40_02245674
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, _02240228 ; =0x0000060C
 	ldr r2, _0224022C ; =ov40_02241F3C
 	str r0, [r5, r1]
@@ -40533,7 +40533,7 @@ _022400AE:
 	ldr r0, _02240230 ; =ov40_02245654
 	mov r1, #2
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x61
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -41633,7 +41633,7 @@ _0224096C:
 	ldr r2, _02240B24 ; =ov40_02241C10
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, _02240B28 ; =0x00000608
 	ldr r2, _02240B2C ; =ov40_02241C70
 	str r0, [r5, r1]
@@ -41642,7 +41642,7 @@ _0224096C:
 	ldr r0, _02240B30 ; =ov40_02245674
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, _02240B34 ; =0x0000060C
 	ldr r2, _02240B38 ; =ov40_02241CD8
 	str r0, [r5, r1]
@@ -41651,7 +41651,7 @@ _0224096C:
 	ldr r0, _02240B3C ; =ov40_02245654
 	mov r1, #2
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x61
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -41770,7 +41770,7 @@ ov40_02240B40: ; 0x02240B40
 	ldr r1, [r0, r1]
 	ldr r0, _02240B54 ; =0x00000608
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -41837,14 +41837,14 @@ _02240BAE: ; jump table
 _02240BB6:
 	ldr r0, _02240D48 ; =0x00000608
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	ldr r0, _02240D4C ; =0x0000060C
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0x61
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #4
 	mov r1, #0
 	bl GfGfx_EngineBTogglePlanes
@@ -42650,14 +42650,14 @@ _022412AE:
 _022412C8:
 	ldr r0, _022413E4 ; =0x00000608
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	ldr r0, _022413E8 ; =0x0000060C
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0x61
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r5, #8
 	add r0, r5, #0
 	bl ov40_0222DAA8
@@ -42779,7 +42779,7 @@ ov40_022413EC: ; 0x022413EC
 	ldr r1, [r0, r1]
 	ldr r0, _02241400 ; =0x0000060C
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -42840,7 +42840,7 @@ ov40_0224144C: ; 0x0224144C
 	mov r0, #0x61
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -43004,7 +43004,7 @@ _02241562:
 	ldr r2, _02241784 ; =ov40_02241C10
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, _02241788 ; =0x00000608
 	ldr r2, _0224178C ; =ov40_02241C70
 	str r0, [r5, r1]
@@ -43013,7 +43013,7 @@ _02241562:
 	ldr r0, _02241790 ; =ov40_02245674
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, _02241794 ; =0x0000060C
 	ldr r2, _02241798 ; =ov40_02241CD8
 	str r0, [r5, r1]
@@ -43022,7 +43022,7 @@ _02241562:
 	ldr r0, _0224179C ; =ov40_02245654
 	mov r1, #2
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x61
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -45189,14 +45189,14 @@ _02242764:
 _022427A6:
 	ldr r0, _022428CC ; =0x00000608
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	ldr r0, _022428D0 ; =0x0000060C
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0x61
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r5, #8
 	add r0, r5, #0
 	bl ov40_0222DAA8
@@ -45875,14 +45875,14 @@ _02242D6E:
 	bl ov40_02230964
 	ldr r0, _02242DE4 ; =0x00000608
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	ldr r0, _02242DE8 ; =0x0000060C
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0x61
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r0, r5, #0
 	mov r1, #1
 	bl ov40_02230964
@@ -46503,7 +46503,7 @@ ov40_0224326C: ; 0x0224326C
 	mov r0, #0x8d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r0, r4, #0
 	bl ov40_02243B94
 	mov r0, #1
@@ -46527,7 +46527,7 @@ _02243298:
 	mov r0, #0x8d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 _022432A6:
 	mov r0, #0
 	pop {r4, pc}
@@ -47181,7 +47181,7 @@ _02243764:
 	add r0, r4, r0
 	mov r1, #0x18
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x8d
 	lsl r1, r1, #2
 	str r0, [r4, r1]
