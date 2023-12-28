@@ -6920,12 +6920,12 @@ ov49_0225BA40: ; 0x0225BA40
 	strh r2, [r1, r0]
 	add r0, r0, #2
 	strh r3, [r1, r0]
-	ldr r3, _0225BA54 ; =sub_0200E374
+	ldr r3, _0225BA54 ; =CreateVWaitSysTask
 	ldr r0, _0225BA58 ; =ov49_0225BA5C
 	mov r2, #0
 	bx r3
 	.balign 4, 0
-_0225BA54: .word sub_0200E374
+_0225BA54: .word CreateVWaitSysTask
 _0225BA58: .word ov49_0225BA5C
 	thumb_func_end ov49_0225BA40
 

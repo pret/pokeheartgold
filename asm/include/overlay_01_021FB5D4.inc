@@ -2,7 +2,7 @@
 #pragma once
 .public PlaySE
 .public CreateSysTask
-.public sub_0200E33C
+.public CreateVBlankSysTask
 .public DestroySysTask
 .public sub_02014A08
 .public sub_02014A38

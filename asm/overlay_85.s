@@ -6569,7 +6569,7 @@ _021E89C6:
 	ldr r0, _021E8A04 ; =ov85_021E8BB0
 	add r1, r4, #0
 	mov r2, #5
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	str r0, [r4, #0x30]
 	add r0, r7, #0
 	bl NARC_Delete

@@ -2,7 +2,7 @@
 #pragma once
 .public CreateSysTaskAndEnvironment
 .public DestroySysTaskAndEnvironment
-.public sub_0200E374
+.public CreateVWaitSysTask
 .public DestroySysTask
 .public SysTask_GetData
 .public GX_SetGraphicsMode

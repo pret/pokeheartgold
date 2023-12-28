@@ -3120,7 +3120,7 @@ _022287A2:
 	ldr r0, _022287F4 ; =ov39_022287F8
 	add r1, #0xa8
 	mov r2, #0x14
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	ldr r1, [sp, #0x10]
 	add r1, #0xa8
 	str r0, [r1]

@@ -25,13 +25,13 @@ struct System {
     void *hBlankIntrArg;
     void (*unk10)(void);
     void (*unk14)(void);
-    SysTaskQueue *unk18;
-    SysTaskQueue *unk1C;
-    SysTaskQueue *unk20;
-    SysTaskQueue *unk24;
+    SysTaskQueue *mainTaskQueue;
+    SysTaskQueue *vblankTaskQueue;
+    SysTaskQueue *vwaitTaskQueue;
+    SysTaskQueue *printTaskQueue;
     u32 *unk28;
     u32 vblankCounter;
-    u32 unk30;
+    u32 frameCounter;
     int buttonMode;
     int heldKeysRaw;
     int newKeysRaw;

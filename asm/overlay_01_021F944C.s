@@ -2949,12 +2949,12 @@ _021FA882:
 	ldr r0, _021FA8F0 ; =ov01_021FA6E0
 	add r1, r5, #0
 	mov r2, #0xff
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	str r0, [r4, #0x20]
 	ldr r0, _021FA8F4 ; =ov01_021FA71C
 	add r1, r5, #0
 	mov r2, #0xff
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	str r0, [r4, #0x24]
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -3249,7 +3249,7 @@ _021FAB4A:
 	ldr r0, _021FAB98 ; =ov01_021FAB9C
 	add r1, r5, #0
 	mov r2, #0xff
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	add r4, r0, #0
 	bne _021FAB82
 	bl GF_AssertFail

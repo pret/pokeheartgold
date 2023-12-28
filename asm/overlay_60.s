@@ -2991,7 +2991,7 @@ _021E70DE:
 	mov r0, #1
 	str r0, [r4, #4]
 	ldr r0, _021E711C ; =ov60_021E71CC
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	str r0, [r4, #0x10]
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -3403,7 +3403,7 @@ _021E73E2:
 	ldr r0, _021E7430 ; =ov60_021E7454
 	add r1, r5, #0
 	mov r2, #0
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	str r0, [r5, #0xc]
 	add r0, r5, #0
 	add sp, #8
@@ -9936,7 +9936,7 @@ ov60_021EA990: ; 0x021EA990
 	ldr r0, _021EA9A4 ; =ov60_021EA9A8
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	str r0, [r4, #0x6c]
 	pop {r4, pc}
 	.balign 4, 0

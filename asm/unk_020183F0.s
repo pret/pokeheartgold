@@ -487,7 +487,7 @@ sub_02018744: ; 0x02018744
 	ldrb r0, [r5, #3]
 	strb r0, [r4, #5]
 	ldr r0, _020187BC ; =sub_020187C0
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	cmp r7, #0
 	beq _020187B8
 	ldrb r0, [r5, #2]

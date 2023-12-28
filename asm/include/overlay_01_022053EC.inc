@@ -6,7 +6,7 @@
 .public UnloadOverlayByID
 .public HandleLoadOverlay
 .public NARC_AllocAndReadWholeMember
-.public sub_0200E374
+.public CreateVWaitSysTask
 .public DestroySysTask
 .public AllocFromHeapAtEnd
 .public FreeToHeap

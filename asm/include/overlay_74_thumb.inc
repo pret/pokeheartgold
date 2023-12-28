@@ -61,7 +61,7 @@
 .public BufferMonthNameAbbr
 .public StringExpandPlaceholders
 .public CreateSysTask
-.public sub_0200E33C
+.public CreateVBlankSysTask
 .public DestroySysTask
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1

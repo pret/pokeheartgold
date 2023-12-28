@@ -759,7 +759,7 @@ ov01_0220589C: ; 0x0220589C
 	ldr r0, _02205968 ; =ov01_0220596C
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02205964: .word 0x7FFF0000

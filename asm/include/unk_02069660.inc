@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public GfGfxLoader_LoadFromOpenNarc
-.public sub_0200E33C
+.public CreateVBlankSysTask
 .public DestroySysTask
 .public FreeToHeap
 .public AllocAndLoad3dTexResources

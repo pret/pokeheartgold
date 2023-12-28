@@ -13,7 +13,7 @@
 #include "text.h"
 #include "touch_save_app.h"
 #include "unk_02005D10.h"
-#include "unk_0200E320.h"
+#include "sys_task_api.h"
 #include "yes_no_prompt.h"
 #include "sys_task.h"
 #include "unk_020183F0.h"

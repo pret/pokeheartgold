@@ -91,14 +91,14 @@ _021FB63E:
 	ldr r0, _021FB6B8 ; =ov01_021FB7CC
 	add r1, r4, #0
 	add r2, #0xe4
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	mov r2, #0x32
 	lsl r2, r2, #4
 	str r0, [r4, r2]
 	ldr r0, _021FB6BC ; =ov01_021FB800
 	add r1, r4, #0
 	add r2, #0xe0
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	mov r1, #0xc9
 	lsl r1, r1, #2
 	str r0, [r4, r1]

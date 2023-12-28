@@ -979,11 +979,11 @@ ov01_021F197C: ; 0x021F197C
 	add r1, r4, #0
 	mov r2, #0xff
 	str r6, [r4, #8]
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	ldr r0, _021F19B0 ; =ov01_021F19D0
 	add r1, r4, #0
 	mov r2, #0xff
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	pop {r4, r5, r6, pc}
 	nop
 _021F19AC: .word ov01_021F19B4

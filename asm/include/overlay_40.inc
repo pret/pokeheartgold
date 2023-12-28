@@ -98,7 +98,7 @@
 .public sub_0200E1E8
 .public sub_0200E2B0
 .public CreateSysTask
-.public sub_0200E33C
+.public CreateVBlankSysTask
 .public DestroySysTask
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished

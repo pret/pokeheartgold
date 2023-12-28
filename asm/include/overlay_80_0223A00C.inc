@@ -28,7 +28,7 @@
 .public UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 .public sub_0200E2B0
 .public CreateSysTask
-.public sub_0200E374
+.public CreateVWaitSysTask
 .public DestroySysTask
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished

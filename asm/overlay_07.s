@@ -15001,12 +15001,12 @@ _02222B42:
 	ldr r0, _02222B68 ; =ov07_02222AF8
 	str r7, [r5, #0x14]
 	add r1, r5, #0
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	str r0, [r5, #4]
 	ldr r0, _02222B6C ; =ov07_02222B14
 	add r1, r5, #0
 	mov r2, #0
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	str r0, [r5]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

@@ -56,8 +56,8 @@
 .public BufferFashionNameWithArticle
 .public StringExpandPlaceholders
 .public CreateSysTask
-.public sub_0200E33C
-.public sub_0200E374
+.public CreateVBlankSysTask
+.public CreateVWaitSysTask
 .public DestroySysTask
 .public ClearFrameAndWindow2
 .public BeginNormalPaletteFade

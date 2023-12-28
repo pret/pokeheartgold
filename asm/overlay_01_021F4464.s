@@ -45,7 +45,7 @@ _021F4480:
 	ldr r0, _021F44B0 ; =ov01_021F4584
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

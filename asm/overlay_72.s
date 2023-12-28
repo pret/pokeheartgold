@@ -2623,7 +2623,7 @@ _02238DDE:
 	ldr r0, _02238E38 ; =ov72_02238E3C
 	add r1, r1, r2
 	mov r2, #0x14
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	ldr r2, _02238E28 ; =0x00000FD8
 	ldr r1, [sp, #0x10]
 	str r0, [r1, r2]

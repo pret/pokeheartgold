@@ -544,7 +544,7 @@ ov63_0221C228: ; 0x0221C228
 	strh r2, [r4, r0]
 	ldr r0, _0221C260 ; =ov63_0221BFCC
 	add r1, r4, #0
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	str r0, [r4, #4]
 	add r0, r4, #0
 	mov r1, #3
@@ -724,7 +724,7 @@ ov63_0221C384: ; 0x0221C384
 	ldr r0, _0221C3C8 ; =ov63_0221E8FC
 	add r1, r4, #0
 	mov r2, #4
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	str r0, [r4, #4]
 	add r0, r4, #0
 	mov r1, #6
@@ -6358,7 +6358,7 @@ ov63_0221F238: ; 0x0221F238
 	ldr r0, _0221F288 ; =ov63_0221F2E8
 	add r1, r4, #0
 	mov r2, #3
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	ldr r1, _0221F28C ; =0x00000838
 	mov r2, #1
 	str r0, [r4, r1]
@@ -6366,7 +6366,7 @@ ov63_0221F238: ; 0x0221F238
 	str r5, [r4, r1]
 	ldr r0, _0221F290 ; =ov63_0221F294
 	add r1, r4, #0
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	pop {r3, r4, r5, pc}
 	nop
 _0221F278: .word 0x00000844
@@ -6538,7 +6538,7 @@ ov63_0221F368: ; 0x0221F368
 	strh r3, [r1, r0]
 	ldr r0, _0221F3F0 ; =ov63_0221F3F4
 	mov r2, #2
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0221F3DC: .word 0x00000838

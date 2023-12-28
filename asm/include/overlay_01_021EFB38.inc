@@ -24,8 +24,8 @@
 .public sub_0200B00C
 .public sub_0200B0A8
 .public CreateSysTask
-.public sub_0200E33C
-.public sub_0200E374
+.public CreateVBlankSysTask
+.public CreateVWaitSysTask
 .public DestroySysTask
 .public sub_02014AD8
 .public sub_02014B08

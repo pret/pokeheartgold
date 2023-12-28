@@ -636,7 +636,7 @@ _0226661A:
 	ldr r0, _02266640 ; =ov12_02269830
 	add r1, r7, #0
 	mov r2, #0xa
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1800,7 +1800,7 @@ _02266F32:
 	ldr r0, _02266F6C ; =ov12_02269668
 	add r1, r4, #0
 	mov r2, #0xa
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	str r0, [r4, #4]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -5505,7 +5505,7 @@ _02268D96:
 	ldr r0, _02268DA8 ; =ov12_0226989C
 	add r1, r5, #0
 	mov r2, #0xa
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 _02268DA4:
 	pop {r3, r4, r5, pc}
 	nop

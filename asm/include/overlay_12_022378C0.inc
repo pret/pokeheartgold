@@ -58,7 +58,7 @@
 .public SpriteRenderer_Init2DGfxResManagersFromCountsArray
 .public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 .public CreateSysTask
-.public sub_0200E33C
+.public CreateVBlankSysTask
 .public DestroySysTask
 .public sub_0200E640
 .public DrawFrameAndWindow2

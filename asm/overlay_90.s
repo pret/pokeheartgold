@@ -1992,7 +1992,7 @@ _022595B4:
 	str r0, [r4, r1]
 	ldr r0, _022596C4 ; =ov90_02259B18
 	add r1, r4, #0
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	mov r1, #0x5f
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -4255,7 +4255,7 @@ _0225A800:
 	ldr r0, _0225A848 ; =ov90_0225B230
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	ldr r1, _0225A84C ; =0x00000648
 	str r0, [r4, r1]
 	ldrb r0, [r4, #0x16]
@@ -7149,7 +7149,7 @@ _0225BDC0:
 	ldr r0, _0225BDE0 ; =ov90_0225BDE4
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r4, r1]

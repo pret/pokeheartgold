@@ -116,7 +116,7 @@ sub_02069714: ; 0x02069714
 	add r1, r0, #0
 	ldr r0, _0206972C ; =sub_02069700
 	ldr r2, _02069730 ; =0x0000FFFF
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	cmp r0, #0
 	bne _02069728
 	bl GF_AssertFail

@@ -212,7 +212,7 @@ _02035A86:
 	mov r1, #0
 	ldr r0, _02035AD4 ; =sub_020360EC
 	add r2, r1, #0
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	ldr r1, _02035AB8 ; =_021D4140
 	ldr r2, [r1, #8]
 	ldr r1, _02035AD8 ; =0x0000057C

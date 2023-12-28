@@ -707,7 +707,7 @@ _0222A37A:
 	ldr r0, _0222A400 ; =ov44_0222A40C
 	add r1, r1, r2
 	mov r2, #0x14
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	ldr r2, _0222A3F4 ; =0x00000D68
 	ldr r1, [sp, #4]
 	str r0, [r1, r2]

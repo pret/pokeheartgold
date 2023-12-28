@@ -8934,7 +8934,7 @@ _0224A018:
 	ldr r0, _0224A048 ; =ov41_0224A094
 	add r1, r4, #0
 	mov r2, #0x80
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -8973,7 +8973,7 @@ _0224A066:
 	ldr r0, _0224A090 ; =ov41_0224A0D0
 	add r1, r4, #0
 	mov r2, #0x80
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0224A090: .word ov41_0224A0D0

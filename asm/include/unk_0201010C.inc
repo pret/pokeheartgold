@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_0200E374
+.public CreateVWaitSysTask
 .public DestroySysTask
 .public sub_0200FCDC
 .public SetMasterBrightness

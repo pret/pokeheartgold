@@ -39,7 +39,7 @@
 .public Sprite_GetPositionXY
 .public Sprite_AddPositionXY
 .public CreateSysTask
-.public sub_0200E33C
+.public CreateVBlankSysTask
 .public DestroySysTask
 .public LoadUserFrameGfx2
 .public sub_0200E948

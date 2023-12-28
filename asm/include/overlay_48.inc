@@ -46,7 +46,7 @@
 .public BufferCityName
 .public StringExpandPlaceholders
 .public MessageFormat_ResetBuffers
-.public sub_0200E374
+.public CreateVWaitSysTask
 .public DestroySysTask
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1

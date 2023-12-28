@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_0200E33C
+.public CreateVBlankSysTask
 .public DestroySysTask
 .public GF_RTC_CopyDateTime
 .public AllocFromHeap

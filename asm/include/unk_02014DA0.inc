@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public AllocAndReadWholeNarcMemberByIdPair
-.public sub_0200E374
+.public CreateVWaitSysTask
 .public DestroySysTask
 .public sub_02014DA0
 .public sub_02014DB4

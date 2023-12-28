@@ -1923,7 +1923,7 @@ _0225FE2C:
 	ldr r0, _0225FEC8 ; =ov120_0225FDA0
 	strh r2, [r5, #0x1e]
 	add r1, r5, #0
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	str r0, [r5, #0x18]
 	ldrh r0, [r5, #0x1c]
 	add sp, #8

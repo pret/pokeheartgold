@@ -88,8 +88,8 @@
 .public sub_0200E0E8
 .public sub_0200E0FC
 .public CreateSysTask
-.public sub_0200E33C
-.public sub_0200E374
+.public CreateVBlankSysTask
+.public CreateVWaitSysTask
 .public DestroySysTask
 .public sub_02014400
 .public sub_02014540

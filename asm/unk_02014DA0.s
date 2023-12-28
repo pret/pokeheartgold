@@ -827,7 +827,7 @@ _020152EE:
 	ldr r0, _020152FC ; =sub_02015340
 	add r1, r5, #0
 	mov r2, #5
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _020152FC: .word sub_02015340

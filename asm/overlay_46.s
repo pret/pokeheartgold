@@ -1190,7 +1190,7 @@ _022591A6:
 	ldr r0, _0225920C ; =ov46_02259210
 	add r1, #0xd4
 	mov r2, #0x14
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	ldr r1, [sp, #0x10]
 	add r1, #0xd4
 	str r0, [r1]

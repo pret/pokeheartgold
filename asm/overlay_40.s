@@ -2322,7 +2322,7 @@ _0222C9E2:
 	ldr r0, _0222CA88 ; =ov40_0222D048
 	ldr r1, [sp, #4]
 	mov r2, #5
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	mov r1, #7
 	lsl r1, r1, #8
 	str r0, [r4, r1]
@@ -8573,13 +8573,13 @@ ov40_0222FB90: ; 0x0222FB90
 	add r0, r2, #4
 	str r1, [r3, r0]
 	add r1, r3, r2
-	ldr r3, _0222FBAC ; =sub_0200E33C
+	ldr r3, _0222FBAC ; =CreateVBlankSysTask
 	ldr r0, _0222FBB0 ; =ov40_0222FB74
 	mov r2, #4
 	bx r3
 	nop
 _0222FBA8: .word 0x0000052C
-_0222FBAC: .word sub_0200E33C
+_0222FBAC: .word CreateVBlankSysTask
 _0222FBB0: .word ov40_0222FB74
 	thumb_func_end ov40_0222FB90
 
@@ -8629,7 +8629,7 @@ ov40_0222FBF8: ; 0x0222FBF8
 	ldr r0, _0222FC0C ; =ov40_0222FBBC
 	add r1, r4, #0
 	mov r2, #5
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	ldr r1, _0222FC10 ; =0x0000416C
 	str r0, [r4, r1]
 	pop {r4, pc}

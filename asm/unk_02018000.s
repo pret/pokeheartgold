@@ -508,7 +508,7 @@ _02018360:
 	ldr r0, _0201837C ; =sub_0201804C
 	add r1, r4, #0
 	lsl r2, r2, #0xa
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 _0201837A:
 	pop {r4, pc}
 	.balign 4, 0

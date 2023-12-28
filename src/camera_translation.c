@@ -1,5 +1,5 @@
 #include "camera_translation.h"
-#include "unk_0200E320.h"
+#include "sys_task_api.h"
 
 static void sysTask_MoveCameraAlongTrack(SysTask *unk, GFCameraTranslationWrapper *wrapper);
 static void stepCamera(Camera *camera, struct CameraTranslationPathTemplate *first, struct CameraTranslationPathTemplate *last, u8 step, u8 duration);

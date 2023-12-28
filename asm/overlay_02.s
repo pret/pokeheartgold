@@ -8684,7 +8684,7 @@ ov02_02249CF0: ; 0x02249CF0
 	ldr r0, _02249D14 ; =ov02_02249D5C
 	add r1, r4, #0
 	mov r2, #0x80
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	mov r1, #0x22
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -8706,7 +8706,7 @@ ov02_02249D18: ; 0x02249D18
 	ldr r0, _02249D3C ; =ov02_02249E58
 	add r1, r4, #0
 	mov r2, #0x80
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	mov r1, #0x22
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -8794,7 +8794,7 @@ _02249DBE:
 	str r1, [r6, r0]
 	ldr r0, _02249DD4 ; =ov02_02249DD8
 	add r1, r6, #0
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 _02249DD2:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -8889,7 +8889,7 @@ ov02_02249E58: ; 0x02249E58
 	ldr r0, _02249E8C ; =ov02_02249E90
 	add r1, r4, #0
 	mov r2, #0x80
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	mov r0, #0x21
 	lsl r0, r0, #4
 	ldr r1, [r4, r0]
@@ -9969,7 +9969,7 @@ _0224A6BA:
 	ldr r0, _0224A6CC ; =ov02_0224A700
 	add r1, r4, #0
 	mov r2, #0x81
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	mov r1, #0x89
 	lsl r1, r1, #2
 	str r0, [r4, r1]

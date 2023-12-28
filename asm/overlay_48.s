@@ -3993,7 +3993,7 @@ ov48_0225A5C4: ; 0x0225A5C4
 	ldr r0, _0225A630 ; =ov48_0225A680
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	str r0, [r4, #0xc]
 	pop {r4, r5, r6, pc}
 	nop

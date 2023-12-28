@@ -185,7 +185,7 @@ _02246A44:
 	ldr r0, _02246B24 ; =ov71_02246C48
 	add r1, r4, #0
 	mov r2, #1
-	bl sub_0200E358
+	bl CreatePrintSysTask
 	mov r1, #0x51
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -442,7 +442,7 @@ _02246CD6:
 	ldr r0, _02246D3C ; =ov71_02246D9C
 	add r1, r4, #0
 	mov r2, #0x14
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	add r1, r4, #0
 	add r1, #0xc0
 	str r0, [r1]
@@ -866,7 +866,7 @@ _02247034:
 	ldr r0, _02247064 ; =ov71_02247068
 	add r1, r4, #0
 	str r2, [r5]
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	str r0, [r4, #0x20]
 	cmp r0, #0
 	bne _02247058
@@ -3059,7 +3059,7 @@ ov71_022480C0: ; 0x022480C0
 	str r7, [r4, #0x10]
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	str r0, [r5, #0x78]
 	ldr r0, _0224810C ; =0x04000050
 	mov r1, #1
@@ -3378,7 +3378,7 @@ ov71_022482EC: ; 0x022482EC
 	str r2, [r4, r0]
 	ldr r0, _02248354 ; =ov71_02248B60
 	add r1, r4, #0
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 _0224834E:
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
@@ -4636,7 +4636,7 @@ ov71_02248D0C: ; 0x02248D0C
 	str r2, [r4, r1]
 	ldr r0, _02248D7C ; =ov71_02248D80
 	add r1, r4, #0
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	str r0, [r5]
 	cmp r0, #0
 	bne _02248D78
@@ -5691,7 +5691,7 @@ ov71_02249558: ; 0x02249558
 	ldr r0, _02249598 ; =ov71_02249C98
 	add r1, r4, #0
 	str r2, [r4, #0xc]
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	mov r0, #3
 	str r0, [sp]
 	mov r1, #1
@@ -6749,7 +6749,7 @@ _02249D98:
 	str r0, [r5, #8]
 	ldr r0, _02249E18 ; =ov71_02249E24
 	str r2, [r5, #0x20]
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -8906,7 +8906,7 @@ ov71_0224AF08: ; 0x0224AF08
 	str r0, [r4, #8]
 	ldr r0, _0224AF54 ; =ov71_0224AF58
 	str r5, [r4, #0x1c]
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	str r0, [r5]
 	cmp r0, #0
 	bne _0224AF48
@@ -10150,7 +10150,7 @@ ov71_0224B910: ; 0x0224B910
 	str r7, [r4, #0x10]
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	str r0, [r5, #0x7c]
 	ldr r0, _0224B95C ; =0x04000050
 	mov r1, #1

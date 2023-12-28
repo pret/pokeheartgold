@@ -57,7 +57,7 @@ _02229F18:
 	ldr r0, _02229F6C ; =ov45_02229FE0
 	add r1, r5, #0
 	mov r2, #0
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	str r0, [r5, #0xc]
 	ldr r0, [r5, #8]
 	bl ov45_0222CD84

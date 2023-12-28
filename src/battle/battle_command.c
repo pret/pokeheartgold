@@ -12,7 +12,7 @@
 #include "sound.h"
 #include "system.h"
 #include "text.h"
-#include "unk_0200E320.h"
+#include "sys_task_api.h"
 #include "unk_0208805C.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"

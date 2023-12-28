@@ -47,9 +47,9 @@
 .public BufferBoxMonNickname
 .public StringExpandPlaceholders
 .public CreateSysTask
-.public sub_0200E33C
-.public sub_0200E358
-.public sub_0200E374
+.public CreateVBlankSysTask
+.public CreatePrintSysTask
+.public CreateVWaitSysTask
 .public DestroySysTask
 .public LoadUserFrameGfx2
 .public sub_0200E948

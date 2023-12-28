@@ -13805,7 +13805,7 @@ _0222DEBE:
 	ldr r0, _0222DEEC ; =ov74_0222DE68
 	add r1, r4, #0
 	lsl r2, r2, #0xa
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	ldr r1, _0222DEE8 ; =0x00000C04
 	str r0, [r4, r1]
 _0222DED6:
@@ -16703,7 +16703,7 @@ _0222F656:
 	ldr r0, _0222F684 ; =ov74_0222F600
 	add r1, r4, #0
 	lsl r2, r2, #0xa
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	ldr r1, _0222F680 ; =0x00000C04
 	str r0, [r4, r1]
 _0222F66E:

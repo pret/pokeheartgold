@@ -5,7 +5,7 @@
 #include "bg_window.h"
 #include "options.h"
 #include "text_0205B4EC.h"
-#include "unk_0200E320.h"
+#include "sys_task_api.h"
 
 #define MAKE_TEXT_COLOR(fg, sh, bg) ((((fg) & 0xFF) << 16) | (((sh) & 0xFF) << 8) | (((bg) & 0xFF) << 0))
 

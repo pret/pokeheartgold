@@ -3,7 +3,7 @@
 #include "field_map_object.h"
 #include "filesystem.h"
 #include "heap.h"
-#include "unk_0200E320.h"
+#include "sys_task_api.h"
 #include "unk_0205FD20.h"
 
 static void sub_0205E934(LocalMapObject* object);

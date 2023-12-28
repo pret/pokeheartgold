@@ -11490,7 +11490,7 @@ _021EB08C:
 	ldr r0, _021EB0E0 ; =ov14_021E59AC
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	ldr r1, [r4, #0x34]
 	str r0, [r1]
 	mov r0, #1

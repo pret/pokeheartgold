@@ -188,7 +188,7 @@ _022386D4:
 	ldr r0, _02238858 ; =ov80_02238AAC
 	add r1, r4, #0
 	mov r2, #0xa
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	add r1, r4, #0
 	add r1, #0xa0
 	str r0, [r1]

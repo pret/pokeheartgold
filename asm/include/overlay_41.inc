@@ -68,7 +68,7 @@
 .public MessageFormat_Delete
 .public BufferECWord
 .public StringExpandPlaceholders
-.public sub_0200E374
+.public CreateVWaitSysTask
 .public DestroySysTask
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2

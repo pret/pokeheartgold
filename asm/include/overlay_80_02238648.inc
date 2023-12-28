@@ -49,7 +49,7 @@
 .public UnkImageStruct_GetSpritePositionXY
 .public sub_0200E2B0
 .public CreateSysTask
-.public sub_0200E33C
+.public CreateVBlankSysTask
 .public DestroySysTask
 .public LoadUserFrameGfx1
 .public LoadUserFrameGfx2

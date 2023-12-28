@@ -630,7 +630,7 @@ ov01_021EFFBC: ; 0x021EFFBC
 	ldr r0, _021EFFD4 ; =ov01_021EFFD8
 	add r1, r5, #0
 	mov r2, #0xa
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -766,7 +766,7 @@ _021F00C4:
 	ldr r0, _021F00D8 ; =ov01_021F00DC
 	add r1, r5, #0
 	lsl r2, r2, #0xa
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -782,7 +782,7 @@ ov01_021F00DC: ; 0x021F00DC
 	ldr r0, _021F0104 ; =ov01_021F010C
 	add r4, r1, #0
 	lsl r2, r2, #0xa
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	str r0, [r4, #0x28]
 	ldr r0, [r4, #0x20]
 	ldr r1, _021F0108 ; =ov01_021F01D0
@@ -1074,7 +1074,7 @@ _021F02D8:
 	ldr r0, _021F032C ; =ov01_021F0330
 	add r1, r4, #0
 	lsr r2, r2, #0x10
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021F0328: .word 0x04000040
@@ -1089,7 +1089,7 @@ ov01_021F0330: ; 0x021F0330
 	ldr r0, _021F0358 ; =ov01_021F0360
 	add r4, r1, #0
 	lsl r2, r2, #0xa
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	str r0, [r4, #0x40]
 	ldr r0, [r4, #0x38]
 	ldr r1, _021F035C ; =ov01_021F03C8
@@ -2296,7 +2296,7 @@ _021F0BEA:
 	ldr r0, _021F0C3C ; =ov01_021F0C40
 	add r1, r7, #0
 	lsl r2, r2, #5
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021F0C34: .word 0x04000048
@@ -2322,7 +2322,7 @@ ov01_021F0C40: ; 0x021F0C40
 	ldr r0, _021F0C78 ; =ov01_021F0C7C
 	add r1, r4, #0
 	lsl r2, r2, #0xa
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	add r4, #0xe0
 	str r0, [r4]
 	add r0, r5, #0
@@ -2524,14 +2524,14 @@ _021F0DC4: .word 0x0400006C
 
 	thumb_func_start ov01_021F0DC8
 ov01_021F0DC8: ; 0x021F0DC8
-	ldr r3, _021F0DD4 ; =sub_0200E374
+	ldr r3, _021F0DD4 ; =CreateVWaitSysTask
 	mov r2, #1
 	add r1, r0, #0
 	ldr r0, _021F0DD8 ; =ov01_021F0DB0
 	lsl r2, r2, #0xa
 	bx r3
 	.balign 4, 0
-_021F0DD4: .word sub_0200E374
+_021F0DD4: .word CreateVWaitSysTask
 _021F0DD8: .word ov01_021F0DB0
 	thumb_func_end ov01_021F0DC8
 
@@ -2586,7 +2586,7 @@ _021F0DFC:
 	ldr r0, _021F0E6C ; =ov01_021F1094
 	ldr r1, [r1]
 	lsr r2, r2, #0x10
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	ldr r1, _021F0E5C ; =ov01_02209B64
 	mov r2, #1
 	ldr r0, _021F0E70 ; =ov01_021F10C8
@@ -3132,14 +3132,14 @@ _021F1278: .word ov01_02209B64
 
 	thumb_func_start ov01_021F127C
 ov01_021F127C: ; 0x021F127C
-	ldr r3, _021F1288 ; =sub_0200E33C
+	ldr r3, _021F1288 ; =CreateVBlankSysTask
 	mov r2, #1
 	add r1, r0, #0
 	ldr r0, _021F128C ; =ov01_021F1290
 	lsl r2, r2, #0xa
 	bx r3
 	.balign 4, 0
-_021F1288: .word sub_0200E33C
+_021F1288: .word CreateVBlankSysTask
 _021F128C: .word ov01_021F1290
 	thumb_func_end ov01_021F127C
 

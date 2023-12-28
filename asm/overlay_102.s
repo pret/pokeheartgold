@@ -3924,10 +3924,10 @@ _021E938C:
 
 	thumb_func_start ov102_021E93D4
 ov102_021E93D4: ; 0x021E93D4
-	ldr r3, _021E93D8 ; =sub_0200E33C
+	ldr r3, _021E93D8 ; =CreateVBlankSysTask
 	bx r3
 	.balign 4, 0
-_021E93D8: .word sub_0200E33C
+_021E93D8: .word CreateVBlankSysTask
 	thumb_func_end ov102_021E93D4
 
 	thumb_func_start ov102_021E93DC

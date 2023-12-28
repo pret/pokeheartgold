@@ -78,7 +78,7 @@ _0223A05E:
 	ldr r0, _0223A0BC ; =ov80_0223A0EC
 	add r1, r4, #0
 	mov r2, #1
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	str r0, [r4, #0x34]
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

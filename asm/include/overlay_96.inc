@@ -135,7 +135,7 @@
 .public sub_0200E024
 .public sub_0200E2B0
 .public CreateSysTask
-.public sub_0200E374
+.public CreateVWaitSysTask
 .public DestroySysTask
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2

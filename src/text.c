@@ -31,7 +31,7 @@ static u8 CreateTextPrinterSysTask(SysTaskFunc taskFunc, TextPrinter *printer, u
             continue;
         }
 
-        sTextPrinterTasks[i] = sub_0200E358(taskFunc, printer, priority);
+        sTextPrinterTasks[i] = CreatePrintSysTask(taskFunc, printer, priority);
         if (sTextPrinterTasks[i] == NULL) {
             i = MAX_TEXT_PRINTERS;
         }

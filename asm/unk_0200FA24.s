@@ -831,7 +831,7 @@ sub_0200FF88: ; 0x0200FF88
 	ldr r0, _0200FFB0 ; =sub_0200FFD8
 	lsl r2, r2, #0xa
 	str r7, [r1, #0xc]
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0200FFB0: .word sub_0200FFD8
@@ -851,7 +851,7 @@ sub_0200FFB4: ; 0x0200FFB4
 	ldr r0, _0200FFD4 ; =sub_0200FFF8
 	lsl r2, r2, #0xa
 	str r4, [r1, #4]
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0200FFD4: .word sub_0200FFF8
@@ -967,7 +967,7 @@ _0201007A:
 	mov r2, #1
 	ldr r0, _02010090 ; =sub_02010050
 	lsl r2, r2, #0xa
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 _0201008A:
 	pop {r3, pc}
 	.balign 4, 0

@@ -52,7 +52,7 @@
 .public StringExpandPlaceholders
 .public MessageFormat_ResetBuffers
 .public CreateSysTask
-.public sub_0200E374
+.public CreateVWaitSysTask
 .public DestroySysTask
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2

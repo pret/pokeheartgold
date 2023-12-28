@@ -203,7 +203,7 @@ ov80_0223AD88: ; 0x0223AD88
 	ldr r0, _0223ADA0 ; =ov80_0223ADA4
 	add r1, r5, #0
 	mov r2, #0xa
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1059,14 +1059,14 @@ _0223B3E8: .word 0x00000187
 
 	thumb_func_start ov80_0223B3EC
 ov80_0223B3EC: ; 0x0223B3EC
-	ldr r3, _0223B3F8 ; =sub_0200E33C
+	ldr r3, _0223B3F8 ; =CreateVBlankSysTask
 	mov r2, #1
 	add r1, r0, #0
 	ldr r0, _0223B3FC ; =ov80_0223B400
 	lsl r2, r2, #0xa
 	bx r3
 	.balign 4, 0
-_0223B3F8: .word sub_0200E33C
+_0223B3F8: .word CreateVBlankSysTask
 _0223B3FC: .word ov80_0223B400
 	thumb_func_end ov80_0223B3EC
 
@@ -1187,12 +1187,12 @@ _0223B4B2:
 	ldr r0, gApp_MainMenu_SelectOption_MigrateFromAgb ; =ov80_0223B468
 	str r7, [r5, #0x14]
 	add r1, r5, #0
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	str r0, [r5, #4]
 	ldr r0, _0223B4DC ; =ov80_0223B484
 	add r1, r5, #0
 	mov r2, #0
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	str r0, [r5]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

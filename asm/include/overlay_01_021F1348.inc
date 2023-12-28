@@ -4,8 +4,8 @@
 .public NARC_Delete
 .public NARC_ReadWholeMember
 .public NARC_GetMemberSize
-.public sub_0200E33C
-.public sub_0200E374
+.public CreateVBlankSysTask
+.public CreateVWaitSysTask
 .public DestroySysTask
 .public AllocFromHeap
 .public AllocFromHeapAtEnd

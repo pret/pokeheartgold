@@ -6378,7 +6378,7 @@ ov96_021E883C: ; 0x021E883C
 	ldr r0, _021E887C ; =ov96_021E8884
 	ldr r2, _021E8880 ; =0x00001388
 	add r1, r4, #0
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	mov r1, #0x73
 	lsl r1, r1, #2
 	str r0, [r4, r1]

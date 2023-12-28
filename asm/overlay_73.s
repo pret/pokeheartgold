@@ -154,7 +154,7 @@ _021E5A54:
 	ldr r0, _021E5AB4 ; =ov73_021E5C74
 	add r1, r4, #0
 	mov r2, #5
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	str r0, [r4, #0x20]
 	add r0, r6, #0
 	bl NARC_Delete
@@ -6092,7 +6092,7 @@ _021E8902:
 	ldr r0, _021E895C ; =ov73_021E8960
 	add r1, r1, r2
 	mov r2, #0x14
-	bl sub_0200E33C
+	bl CreateVBlankSysTask
 	ldr r2, _021E894C ; =0x00000F98
 	ldr r1, [sp, #0x10]
 	str r0, [r1, r2]

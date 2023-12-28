@@ -11,7 +11,7 @@
 #include "unk_0200A090.h"
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
-#include "unk_0200E320.h"
+#include "sys_task_api.h"
 #include "unk_0200FA24.h"
 #include "unk_020215A0.h"
 #include "unk_02022588.h"
@@ -654,8 +654,8 @@ static void InitCutsceneSpriteResources(u8 idx, CreditsAppWork *work, u8 sprtRes
 
 static void SetPageSysTasks(CreditsAppWork *work) {
     PageWork *ptr = &work->pageWork;
-    ptr->pageDisplayWork.sysTask = sub_0200E33C(TogglePageDisplayCB, &ptr->pageDisplayWork, 0);
-    work->pageWork.scrFlipWork.sysTask = sub_0200E33C(FlipScreensCB, &work->pageWork.scrFlipWork, 1);
+    ptr->pageDisplayWork.sysTask = CreateVBlankSysTask(TogglePageDisplayCB, &ptr->pageDisplayWork, 0);
+    work->pageWork.scrFlipWork.sysTask = CreateVBlankSysTask(FlipScreensCB, &work->pageWork.scrFlipWork, 1);
 }
 
 static void FreePageSysTasks(CreditsAppWork *work) {

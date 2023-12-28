@@ -49,7 +49,7 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public CreateSysTask
-.public sub_0200E33C
+.public CreateVBlankSysTask
 .public DestroySysTask
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished

@@ -86,7 +86,7 @@ void NitroMain(void) {
         }
     }
     gSystem.unk70 = 1;
-    gSystem.unk30 = 0;
+    gSystem.frameCounter = 0;
     InitializeMainRNG();
     ScreenBrightnessData_InitAll();
     sub_02018380();
@@ -106,9 +106,9 @@ void NitroMain(void) {
             OS_GetTick();
             Main_RunOverlayManager();
             OS_GetTick();
-            SysTaskQueue_RunTasks(gSystem.unk18);
-            SysTaskQueue_RunTasks(gSystem.unk24);
-            if (!gSystem.unk30) {
+            SysTaskQueue_RunTasks(gSystem.mainTaskQueue);
+            SysTaskQueue_RunTasks(gSystem.printTaskQueue);
+            if (!gSystem.frameCounter) {
                 OS_WaitIrq(TRUE, OS_IE_VBLANK);
                 gSystem.vblankCounter++;
             }
@@ -116,17 +116,17 @@ void NitroMain(void) {
         GF_RTC_UpdateOnFrame();
         sub_020183B0();
         sub_02026E60();
-        SysTaskQueue_RunTasks(gSystem.unk24);
+        SysTaskQueue_RunTasks(gSystem.printTaskQueue);
         OS_WaitIrq(TRUE, OS_IE_VBLANK);
         gSystem.vblankCounter++;
-        gSystem.unk30 = 0;
+        gSystem.frameCounter = 0;
         DoAllScreenBrightnessTransitionStep();
         HandleFadeUpdateFrame();
         if (gSystem.vBlankIntr != NULL) {
             gSystem.vBlankIntr(gSystem.vBlankIntrArg);
         }
         DoSoundUpdateFrame();
-        SysTaskQueue_RunTasks(gSystem.unk20);
+        SysTaskQueue_RunTasks(gSystem.vwaitTaskQueue);
     }
 }
 
@@ -169,7 +169,7 @@ static void sub_02000F14(void) {
     sub_02036144();
     OS_WaitIrq(TRUE, OS_IE_VBLANK);
     gSystem.vblankCounter++;
-    gSystem.unk30 = 0;
+    gSystem.frameCounter = 0;
     if (gSystem.vBlankIntr != NULL) {
         gSystem.vBlankIntr(gSystem.vBlankIntrArg);
     }

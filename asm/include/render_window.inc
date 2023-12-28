@@ -13,8 +13,8 @@
 .public sub_0200AF00
 .public sub_0200B0F8
 .public sub_0200D9DC
-.public sub_0200E33C
-.public sub_0200E374
+.public CreateVBlankSysTask
+.public CreateVWaitSysTask
 .public DestroySysTask
 .public sub_0200E398
 .public sub_0200E3D8

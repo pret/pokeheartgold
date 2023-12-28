@@ -712,7 +712,7 @@ _021E5E28:
 	ldr r0, _021E5E58 ; =ov106_021E5F24
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E374
+	bl CreateVWaitSysTask
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
