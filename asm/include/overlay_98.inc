@@ -56,7 +56,7 @@
 .public FillWindowPixelBuffer
 .public GetWindowWidth
 .public SetWindowY
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GfGfx_SetBanks
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_EngineATogglePlanes

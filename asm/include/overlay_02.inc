@@ -105,7 +105,7 @@
 .public GF_SinDegFX32
 .public LCRandom
 .public MTRandom
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GfGfx_EngineATogglePlanes
 .public Camera_New
 .public Camera_Delete

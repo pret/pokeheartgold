@@ -380,7 +380,7 @@ _021E5C14:
 	mov r0, #0xca
 	lsl r0, r0, #2
 	ldrb r0, [r4, r0]
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _021E5C2C:
 	mov r0, #0xb5
 	lsl r0, r0, #2
@@ -1064,7 +1064,7 @@ ov54_021E61A8: ; 0x021E61A8
 	mov r0, #0xca
 	lsl r0, r0, #2
 	ldrb r0, [r5, r0]
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _021E61D2:
 	ldr r1, _021E6230 ; =0x0000022A
 	ldr r0, [r5, #0x28]
@@ -1089,7 +1089,7 @@ _021E61D2:
 	mov r1, #1
 	add r2, r4, #0
 	mov r3, #4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 _021E620C:
@@ -1103,7 +1103,7 @@ _021E620C:
 	mov r1, #1
 	add r2, r4, #0
 	mov r3, #4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r1, #0xca
 	lsl r1, r1, #2
 	strb r0, [r5, r1]
@@ -1138,7 +1138,7 @@ ov54_021E6238: ; 0x021E6238
 	add r2, r5, #0
 	mov r3, #2
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_SetEmpty
 	add r0, r6, #0
@@ -1169,7 +1169,7 @@ _021E6282:
 	add r0, r7, #0
 	add r2, r5, #0
 	mov r3, #4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
@@ -1193,7 +1193,7 @@ _021E6282:
 	add r2, r5, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_SetEmpty
 	ldr r0, [r6, #0x28]
@@ -1212,7 +1212,7 @@ _021E6282:
 	add r2, r5, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r4, #0
 _021E6316:
 	add r0, r6, #0
@@ -1419,7 +1419,7 @@ _021E6466:
 	lsl r2, r2, #2
 	ldr r2, [r5, r2]
 	add r0, #0x44
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x10]
 	add r0, #0x44
 	bl CopyWindowToVram
@@ -1537,7 +1537,7 @@ _021E6568:
 	ldr r0, [sp, #0x1c]
 	ldr r2, [r2]
 	mov r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #1
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10

@@ -2795,7 +2795,7 @@ ov87_021E6F38: ; 0x021E6F38
 	ldrb r1, [r1]
 	ldr r2, [r5, #0x40]
 	add r0, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov87_021E6F38
@@ -2850,7 +2850,7 @@ ov87_021E6F98: ; 0x021E6F98
 	ldrb r1, [r1]
 	ldr r2, [r5, #0x40]
 	add r0, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov87_021E6F98

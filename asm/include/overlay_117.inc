@@ -28,7 +28,7 @@
 .public RemoveWindow
 .public FillWindowPixelBuffer
 .public ScheduleSetBgPosText
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GfGfx_EngineATogglePlanes
 .public sub_0202457C
 .public Sprite_Delete

@@ -93,7 +93,7 @@
 .public sub_0201F988
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public sub_02020A0C
 .public sub_02020A18
 .public sub_02020A24

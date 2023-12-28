@@ -2771,7 +2771,7 @@ _02083F70:
 	add r2, r7, #0
 	add r3, r4, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl CopyWindowToVram
 	add sp, #0x10
@@ -3598,7 +3598,7 @@ _020845CE:
 	ldr r2, [sp, #0x28]
 	mov r1, #0
 	add r3, r5, r3
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _0208461A:
 	add r4, r4, #1
 _0208461C:
@@ -3634,7 +3634,7 @@ sub_02084640: ; 0x02084640
 	add r3, r5, #0
 	add r4, r0, #0
 	str r5, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r4, #0xc]
 	add sp, #0x10
 	pop {r4, r5, r6, pc}

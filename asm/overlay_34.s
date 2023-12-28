@@ -24,7 +24,7 @@ ov34_0225D520: ; 0x0225D520
 	add r2, r4, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add sp, #0x10
@@ -928,7 +928,7 @@ ov34_0225DC18: ; 0x0225DC18
 	str r3, [sp, #0xc]
 	ldr r2, [r6]
 	add r0, r7, r4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff
@@ -940,7 +940,7 @@ ov34_0225DC18: ; 0x0225DC18
 	ldr r0, [sp, #0x1c]
 	ldr r2, [r6, #4]
 	add r0, r0, r4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, r4
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x1c]
@@ -958,7 +958,7 @@ ov34_0225DC18: ; 0x0225DC18
 	str r0, [sp, #8]
 	add r0, r5, r4
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _0225DCF0:
 	add r0, r5, r4
 	bl ScheduleWindowCopyToVram

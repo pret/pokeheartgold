@@ -34,8 +34,8 @@
 .public MsgArray_SkipControlCode
 .public MsgArray_GetControlCode
 .public MsgArray_ControlCodeGetField
-.public sub_0202036C
-.public sub_020204FC
+.public GenerateFontHalfRowLookupTable
+.public RenderScreenFocusIndicatorTile
 .public sub_020252F4
 .public sub_02025320
 .public GF_AssertFail

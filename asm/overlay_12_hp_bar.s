@@ -1293,7 +1293,7 @@ ov12_0226516C: ; 0x0226516C
 	str r1, [sp, #0x14]
 	add r0, sp, #0x24
 	add r3, r1, #0
-	bl AddTextPrinterParameterized3
+	bl AddTextPrinterParameterizedWithColorAndSpacing
 	ldr r0, [r5, #4]
 	ldr r6, [sp, #0x30]
 	ldr r0, [r0]
@@ -1808,7 +1808,7 @@ _0226561E:
 	str r1, [sp, #0x14]
 	add r0, sp, #0x18
 	add r3, r1, #0
-	bl AddTextPrinterParameterized3
+	bl AddTextPrinterParameterizedWithColorAndSpacing
 	ldr r0, [r4, #4]
 	ldr r5, [sp, #0x24]
 	ldr r0, [r0]
@@ -1935,7 +1935,7 @@ _02265716:
 	str r1, [sp, #0x14]
 	add r0, sp, #0x24
 	add r3, r1, #0
-	bl AddTextPrinterParameterized3
+	bl AddTextPrinterParameterizedWithColorAndSpacing
 	ldr r0, [r4, #4]
 	ldr r5, [sp, #0x30]
 	ldr r0, [r0]

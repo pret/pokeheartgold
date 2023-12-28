@@ -3205,7 +3205,7 @@ _0225A278:
 	ldr r2, [sp, #0x18]
 	add r0, sp, #0x38
 	str r3, [sp, #0x14]
-	bl AddTextPrinterParameterized3
+	bl AddTextPrinterParameterizedWithColorAndSpacing
 	add r0, sp, #0x38
 	mov r1, #1
 	mov r2, #0x7d
@@ -8193,7 +8193,7 @@ _0225C7D8:
 	add r2, r7, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, r5
 	bl CopyWindowToVram
 	ldr r0, [sp, #0x1c]

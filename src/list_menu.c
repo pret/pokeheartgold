@@ -178,9 +178,9 @@ s32 ListMenuGetTemplateField(struct ListMenu *list, enum ListMenuAttr attr) {
 static void ListMenuPrint(struct ListMenu *list, String *str, u8 x, u8 y) {
     if (str != NULL) {
         if (list->overrideEnabled) {
-            AddTextPrinterParameterized3(list->template.window, list->fontId, str, x, y, 0xFF, MAKE_TEXT_COLOR(list->cursorPal, list->cursorShadowPal, list->fillValue), list->lettersSpacing, 0, NULL);
+            AddTextPrinterParameterizedWithColorAndSpacing(list->template.window, list->fontId, str, x, y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(list->cursorPal, list->cursorShadowPal, list->fillValue), list->lettersSpacing, 0, NULL);
         } else {
-            AddTextPrinterParameterized3(list->template.window, list->template.fontId, str, x, y, 0xFF, MAKE_TEXT_COLOR(list->template.cursorPal, list->template.cursorShadowPal, list->template.fillValue), list->template.lettersSpacing, 0, NULL);
+            AddTextPrinterParameterizedWithColorAndSpacing(list->template.window, list->template.fontId, str, x, y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(list->template.cursorPal, list->template.cursorShadowPal, list->template.fillValue), list->template.lettersSpacing, 0, NULL);
         }
     }
 }

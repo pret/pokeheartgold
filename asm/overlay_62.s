@@ -1061,7 +1061,7 @@ _021E6102:
 	ldrb r1, [r4, #8]
 	add r0, r5, #0
 	mov r3, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r5, #0
