@@ -195,11 +195,11 @@ static void HandleSceneFlip(CreditsAppWork *work);
 static void HandleCutscenes(CreditsAppWork *work);
 static void ActivateSprite(Sprite *a0);
 static void ov76_021E68C8(CreditsAppWork *work);
-static void FlipScreensCB(int a0, ScreenFlipWork *a1, int a2);
+static void FlipScreensCB(SysTask *a0, void *a1);
 static void DisplayWindow(CreditsAppWork *work);
 static void ov76_021E6944(PageDisplayWork *a0, BgConfig *a1, BOOL a2);
 static BOOL PageWindowRendering(PageDisplayWork *a0);
-static void TogglePageDisplayCB(int a0, PageDisplayWork *a1, int a2);
+static void TogglePageDisplayCB(SysTask *a0, void *a1);
 static void ov76_021E6A34(int a0, int a1, int a2, int a3);
 static void LoadPage(PageWork *a0);
 static void LoadCutsceneSpriteResources(CreditsAppWork *work);
@@ -654,8 +654,8 @@ static void InitCutsceneSpriteResources(u8 idx, CreditsAppWork *work, u8 sprtRes
 
 static void SetPageSysTasks(CreditsAppWork *work) {
     PageWork *ptr = &work->pageWork;
-    ptr->pageDisplayWork.sysTask = sub_0200E33C((UnkSysTaskFunc)TogglePageDisplayCB, &ptr->pageDisplayWork, 0);
-    work->pageWork.scrFlipWork.sysTask = sub_0200E33C((UnkSysTaskFunc)FlipScreensCB, &work->pageWork.scrFlipWork, 1);
+    ptr->pageDisplayWork.sysTask = sub_0200E33C(TogglePageDisplayCB, &ptr->pageDisplayWork, 0);
+    work->pageWork.scrFlipWork.sysTask = sub_0200E33C(FlipScreensCB, &work->pageWork.scrFlipWork, 1);
 }
 
 static void FreePageSysTasks(CreditsAppWork *work) {
@@ -825,7 +825,8 @@ static void ov76_021E68C8(CreditsAppWork *work) {
     ptr->count++;
 }
 
-static void FlipScreensCB(int a0, ScreenFlipWork *a1, int a2) {
+static void FlipScreensCB(SysTask *a0, void *a1v) {
+    ScreenFlipWork *a1 = (ScreenFlipWork *)a1v;
     if (a1->transitionFrame) {
         a1->transitionFrame = FALSE;
         if (gSystem.screensFlipped == TRUE) {
@@ -867,7 +868,8 @@ static BOOL PageWindowRendering(PageDisplayWork *a0) {
     return a0->rendering;
 }
 
-static void TogglePageDisplayCB(int a0, PageDisplayWork *a1, int a2) {
+static void TogglePageDisplayCB(SysTask *a0, void *a1v) {
+    PageDisplayWork *a1 = (PageDisplayWork *)a1v;
     int temp;
     int temp2;
     fx32 xPos;

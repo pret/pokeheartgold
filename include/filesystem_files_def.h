@@ -157,7 +157,7 @@ typedef enum NarcId
     NARC_a_1_4_9                                            = 149,
     NARC_a_1_5_0                                            = 150,
     NARC_a_1_5_1                                            = 151,
-    NARC_a_1_5_2                                            = 152,
+    NARC_system_touch_subwindow                                            = 152,
     NARC_a_1_5_3                                            = 153,
     NARC_a_1_5_4                                            = 154,
     NARC_a_1_5_5                                            = 155,

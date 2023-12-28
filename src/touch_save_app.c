@@ -14,7 +14,7 @@
 #include "touch_save_app.h"
 #include "unk_02005D10.h"
 #include "unk_0200E320.h"
-#include "unk_0201660C.h"
+#include "yes_no_prompt.h"
 #include "unk_0201F79C.h"
 #include "unk_020183F0.h"
 
@@ -301,8 +301,8 @@ static void ov30_0225D880(TouchSaveAppData *data) {
     YesNoPromptTemplate template;
     MI_CpuFill8(&template, 0, sizeof(YesNoPromptTemplate));
     template.bgConfig = data->bgConfig;
-    template.unk8 = 1;
-    template.unkC = 12;
+    template.tileStart = 1;
+    template.plttSlot = 12;
     template.unk4 = 6;
     template.unk10 = 26;
     template.unk11 = 10;

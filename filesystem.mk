@@ -384,6 +384,7 @@ NITROFS_FILES := \
 	files/pbr/zukan.narc \
 	files/dwc/utility.bin
 
+FILES_NEEDED_FOR_COMPILE = $(NITROFS_FILES)
 # TODO: file rules
 # Some filenames are stripped and replaced with a serial number
 # such that the XYZth file is mapped to a/X/Y/Z.
@@ -392,7 +393,7 @@ define arc_strip_name
 $(2): $(1)
 SRC_ARCS  += $(1)
 DIFF_ARCS += $(2)
-.PHONY: $(2)
+FILES_NEEDED_FOR_COMPILE = $(subst $(2),$(1),$(FILES_NEEDED_FOR_COMPILE))
 endef
 
 $(eval $(call arc_strip_name,files/poketool/personal/personal.narc,files/a/0/0/2))
@@ -427,6 +428,7 @@ $(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_enc_$(
 $(eval $(call arc_strip_name,files/fielddata/encountdata/s_enc_data.narc,files/a/1/3/6))
 $(eval $(call arc_strip_name,files/poketool/johtozukan.narc,files/a/1/3/8))
 $(eval $(call arc_strip_name,files/fielddata/tsurepoke/tp_param.narc,files/a/1/4/1))
+$(eval $(call arc_strip_name,files/system/touch_subwindow.narc,files/a/1/5/2))
 $(eval $(call arc_strip_name,files/data/gs_areawindow.narc,files/a/1/6/3))
 $(eval $(call arc_strip_name,files/poketool/personal/performance.narc,files/a/1/6/9))
 $(eval $(call arc_strip_name,files/application/annon/puzzle_gra.narc,files/a/1/7/2))
@@ -442,6 +444,8 @@ $(eval $(call arc_strip_name,files/application/voltorb_flip.narc,files/a/2/6/4))
 
 $(DIFF_ARCS):
 	cp $< $@
+
+.PHONY: files/a/0/7/5 files/a/2/5/2
 
 NARCS := $(filter %.narc,$(NITROFS_FILES) $(SRC_ARCS))
 NAIXS := $(NARCS:%.narc=%.naix)
@@ -498,6 +502,7 @@ NTR_FILE_EXT := bin NCGR NCLR NCER NSCR NSBMD NSBCA NSBTA
 %.naix: %.narc ;
 
 .PHONY: filesystem clean-filesystem clean-fs
+files_for_compile: $(FILES_NEEDED_FOR_COMPILE)
 filesystem: $(NITROFS_FILES)
 ifeq ($(COMPARE),1)
 	$(SHA1SUM) --quiet -c $(WORK_DIR)/$(buildname)/filesystem.sha1

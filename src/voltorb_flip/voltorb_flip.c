@@ -20,7 +20,7 @@
 #include "unk_0200CF18.h"
 #include "render_window.h"
 #include "unk_0200FA24.h"
-#include "unk_0201660C.h"
+#include "yes_no_prompt.h"
 #include "unk_020183F0.h"
 #include "unk_02023694.h"
 #include "touchscreen.h"
@@ -951,8 +951,8 @@ BOOL ov122_021E6900(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
 
     temp1.bgConfig = work->bgConfig;
     temp1.unk4 = 3;
-    temp1.unk8 = 31;
-    temp1.unkC = 9;
+    temp1.tileStart = 31;
+    temp1.plttSlot = 9;
     temp1.unk10 = 25;
     temp1.unk11 = 10;
     temp1.unk12_4 = 0;

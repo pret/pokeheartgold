@@ -53,7 +53,7 @@ Static main
 	Object src/easy_chat.o
 	Object asm/unk_02015DD8.o
 	Object asm/unk_020163E0.o
-	Object asm/unk_0201660C.o
+	Object src/yes_no_prompt.o
 	Object asm/unk_02016EDC.o
 	Object asm/unk_02017FAC.o
 	Object asm/unk_02018000.o
