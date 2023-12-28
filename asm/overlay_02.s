@@ -7577,7 +7577,7 @@ _02249538: .word ov02_022499B8
 	thumb_func_start ov02_0224953C
 ov02_0224953C: ; 0x0224953C
 	push {r3, lr}
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r0, [r0, #4]
 	pop {r3, pc}
 	.balign 4, 0
@@ -7587,7 +7587,7 @@ ov02_0224953C: ; 0x0224953C
 ov02_02249548: ; 0x02249548
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	bl ov02_0224957C
 	add r0, r4, #0
 	bl DestroySysTask
@@ -11774,7 +11774,7 @@ _0224B438: .word ov02_0224B45C
 	thumb_func_start ov02_0224B43C
 ov02_0224B43C: ; 0x0224B43C
 	push {r3, lr}
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r0, [r0, #4]
 	pop {r3, pc}
 	.balign 4, 0
@@ -11784,7 +11784,7 @@ ov02_0224B43C: ; 0x0224B43C
 ov02_0224B448: ; 0x0224B448
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	bl FreeToHeap
 	add r0, r4, #0
 	bl DestroySysTask

@@ -38,7 +38,7 @@
 .public ClearWindowTilemapAndCopyToVram
 .public FillWindowPixelBuffer
 .public ScheduleBgTilemapBufferTransfer
-.public sub_0201F988
+.public SysTask_GetData
 .public AddTextPrinterParameterizedWithColor
 .public GfGfx_EngineBTogglePlanes
 .public sub_0202457C

@@ -2728,7 +2728,7 @@ Field_PlayerMovementSavingClear: ; 0x021F2FF0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	beq _021F302E
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r6, r0, #0
 	ldr r0, [r6, #4]
 	ldr r4, [r6, #0xc]

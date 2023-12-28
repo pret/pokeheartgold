@@ -14,7 +14,7 @@
 .public sub_0201F53C
 .public Draw3dModel
 .public Bind3dModelSet
-.public sub_0201F988
+.public SysTask_GetData
 .public GF_AssertFail
 .public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetTrainerGender

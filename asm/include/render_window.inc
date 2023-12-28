@@ -56,7 +56,7 @@
 .public GetWindowX
 .public GetWindowY
 .public ScheduleBgTilemapBufferTransfer
-.public sub_0201F988
+.public SysTask_GetData
 .public GfGfx_EngineBTogglePlanes
 .public sub_0202457C
 .public Set2dSpriteAnimSeqNo

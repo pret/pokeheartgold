@@ -59,7 +59,7 @@
 .public GetBgTilemapBuffer
 .public FillWindowPixelRect
 .public ScheduleBgTilemapBufferTransfer
-.public sub_0201F988
+.public SysTask_GetData
 .public GfGfx_SetBanks
 .public GfGfx_EngineATogglePlanes
 .public Camera_SetPerspectiveClippingPlane

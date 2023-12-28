@@ -93,7 +93,7 @@
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
-.public sub_0201F988
+.public SysTask_GetData
 .public GF_SinDegNoWrap
 .public GF_CosDegNoWrap
 .public SetLCRNGSeed

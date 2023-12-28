@@ -1,6 +1,6 @@
 #include "global.h"
 #include "systask_environment.h"
-#include "unk_0201F79C.h"
+#include "sys_task.h"
 
 SysTask *CreateSysTaskAndEnvironment(SysTaskFunc function, u32 environmentSize, u32 priority, HeapID heapId) {
     void *environment;
@@ -19,7 +19,7 @@ SysTask *CreateSysTaskAndEnvironment(SysTaskFunc function, u32 environmentSize, 
 }
 
 void DestroySysTaskAndEnvironment(SysTask *task) {
-    void *environment = sub_0201F988(task);
+    void *environment = SysTask_GetData(task);
     if (environment != NULL) {
         FreeToHeap(environment);
     }

@@ -3189,7 +3189,7 @@ ov41_022476B8: ; 0x022476B8
 	mov r2, #0xa
 	mov r3, #0xd
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	str r5, [r0]
 	str r4, [r0, #4]
 	mov r1, #0
@@ -3379,7 +3379,7 @@ ov41_02247828: ; 0x02247828
 	mov r2, #0xa
 	mov r3, #0xd
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	str r5, [r0]
 	str r4, [r0, #4]
 	mov r1, #0
@@ -6099,7 +6099,7 @@ ov41_02248B84: ; 0x02248B84
 	mov r2, #0
 	mov r3, #0xd
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	str r5, [r4]
 	str r6, [r4, #4]
@@ -7309,7 +7309,7 @@ ov41_02249480: ; 0x02249480
 	mov r2, #0
 	mov r3, #0xd
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	ldr r0, [r5, #8]
 	add r1, sp, #8
@@ -8614,7 +8614,7 @@ ov41_02249DB4: ; 0x02249DB4
 	mov r2, #0
 	mov r3, #0xd
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	str r6, [r4]
 	add r7, r5, #0

@@ -6,7 +6,7 @@
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
 .public FreeToHeap
-.public sub_0201F988
+.public SysTask_GetData
 .public GF_AssertFail
 .public MIi_CpuClear32
 .public ov01_021FB254

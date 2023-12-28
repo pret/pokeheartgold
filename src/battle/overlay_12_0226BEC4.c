@@ -3,7 +3,7 @@
 #include "battle/battle_system.h"
 #include "battle/overlay_12_02266024.h"
 #include "heap.h"
-#include "unk_0201F79C.h"
+#include "sys_task.h"
 #include "unk_02005D10.h"
 
 static void ov12_0226BF04(SysTask *task, void *data);
@@ -17,7 +17,7 @@ SysTask *ov12_0226BEC4(BattleSystem *bsys) {
 }
 
 void ov12_0226BEF0(SysTask *task) {
-    FreeToHeap(sub_0201F988(task));
+    FreeToHeap(SysTask_GetData(task));
     DestroySysTask(task);
 }
 

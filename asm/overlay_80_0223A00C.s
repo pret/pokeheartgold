@@ -18,7 +18,7 @@ ov80_0223A00C: ; 0x0223A00C
 	lsl r2, r2, #2
 	mov r3, #0x65
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	str r5, [r4, #0x10]
 	ldr r0, [sp]

@@ -13,7 +13,7 @@
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public RemoveWindow
-.public sub_0201F988
+.public SysTask_GetData
 .public LCRandom
 .public GF_AssertFail
 .public String_New

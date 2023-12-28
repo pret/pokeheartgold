@@ -336,7 +336,7 @@ ov34_0225D7A8: ; 0x0225D7A8
 	add r3, r2, #0
 	bl CreateSysTaskAndEnvironment
 	add r6, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	str r5, [r4, #0xc]
 	ldr r0, [r5, #8]

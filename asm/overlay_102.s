@@ -4034,7 +4034,7 @@ _021E9484:
 	ldr r0, [r5, #8]
 	cmp r0, #0
 	beq _021E9498
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r0, [r0, #0xc]
 	cmp r0, r6
 	bne _021E9498

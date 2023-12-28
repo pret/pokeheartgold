@@ -6,7 +6,7 @@
 .public DestroySysTaskAndEnvironment
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public sub_0201F988
+.public SysTask_GetData
 .public GF_AssertFail
 .public ov01_021F6830
 .public ov01_021F6840

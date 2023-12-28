@@ -195,7 +195,7 @@ ov01_021EFC94: ; 0x021EFC94
 	mov r2, #5
 	mov r3, #4
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	str r5, [r4, #0x10]
 	str r6, [r4, #0x14]

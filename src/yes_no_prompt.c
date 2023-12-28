@@ -4,6 +4,7 @@
 #include "gf_gfx_loader.h"
 #include "system.h"
 #include "unk_02005D10.h"
+#include "unk_0200E320.h"
 
 struct UnkStruct_02016C28 {
     BgConfig *bgConfig;

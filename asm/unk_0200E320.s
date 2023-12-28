@@ -14,7 +14,7 @@ CreateSysTask: ; 0x0200E320
 	ldr r0, [r0, #0x18]
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_0201F8C0
+	bl SysTaskQueue_InsertTask
 	pop {r3, r4, r5, pc}
 	nop
 _0200E338: .word gSystem
@@ -30,7 +30,7 @@ sub_0200E33C: ; 0x0200E33C
 	ldr r0, [r0, #0x1c]
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_0201F8C0
+	bl SysTaskQueue_InsertTask
 	pop {r3, r4, r5, pc}
 	nop
 _0200E354: .word gSystem
@@ -46,7 +46,7 @@ sub_0200E358: ; 0x0200E358
 	ldr r0, [r0, #0x24]
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_0201F8C0
+	bl SysTaskQueue_InsertTask
 	pop {r3, r4, r5, pc}
 	nop
 _0200E370: .word gSystem
@@ -62,7 +62,7 @@ sub_0200E374: ; 0x0200E374
 	ldr r0, [r0, #0x20]
 	add r1, r5, #0
 	add r2, r4, #0
-	bl sub_0201F8C0
+	bl SysTaskQueue_InsertTask
 	pop {r3, r4, r5, pc}
 	nop
 _0200E38C: .word gSystem
@@ -70,8 +70,8 @@ _0200E38C: .word gSystem
 
 	thumb_func_start DestroySysTask
 DestroySysTask: ; 0x0200E390
-	ldr r3, _0200E394 ; =sub_0201F954
+	ldr r3, _0200E394 ; =SysTask_Delete
 	bx r3
 	.balign 4, 0
-_0200E394: .word sub_0201F954
+_0200E394: .word SysTask_Delete
 	thumb_func_end DestroySysTask

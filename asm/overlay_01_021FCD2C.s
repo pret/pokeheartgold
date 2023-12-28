@@ -48,7 +48,7 @@ _021FCD68: .word 0x0000FFFF
 	thumb_func_start ov01_021FCD6C
 ov01_021FCD6C: ; 0x021FCD6C
 	push {r3, lr}
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r0, [r0, #8]
 	pop {r3, pc}
 	.balign 4, 0
@@ -58,7 +58,7 @@ ov01_021FCD6C: ; 0x021FCD6C
 ov01_021FCD78: ; 0x021FCD78
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	bl FreeToHeap
 	add r0, r4, #0
 	bl DestroySysTask
@@ -71,7 +71,7 @@ ov01_021FCD8C: ; 0x021FCD8C
 	add r5, r1, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	mov r1, #0
 	str r1, [r0, #4]
 	str r1, [r0, #8]

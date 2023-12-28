@@ -18919,7 +18919,7 @@ ov70_02240EF4: ; 0x02240EF4
 	ldr r1, _02240F34 ; =0x000011D8
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
-	bl sub_0201F988
+	bl SysTask_GetData
 	mov r1, #0
 	add r2, r1, #0
 	str r1, [r0]
@@ -19056,7 +19056,7 @@ ov70_02241004: ; 0x02241004
 	ldr r1, _02241040 ; =0x000011D8
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
-	bl sub_0201F988
+	bl SysTask_GetData
 	mov r1, #0
 	str r1, [r0]
 	mov r1, #0x8a

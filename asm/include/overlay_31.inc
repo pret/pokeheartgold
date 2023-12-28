@@ -52,7 +52,7 @@
 .public ClearWindowTilemapAndScheduleTransfer
 .public FillWindowPixelBuffer
 .public ScheduleBgTilemapBufferTransfer
-.public sub_0201F988
+.public SysTask_GetData
 .public AddTextPrinterParameterized
 .public AddTextPrinterParameterizedWithColor
 .public GfGfx_EngineBTogglePlanes

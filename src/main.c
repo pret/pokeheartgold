@@ -15,7 +15,7 @@
 #include "unk_0200B150.h"
 #include "unk_02018380.h"
 #include "unk_02035900.h"
-#include "unk_0201F79C.h"
+#include "sys_task.h"
 #include "communication_error.h"
 #include "math_util.h"
 #include "unk_020210A0.h"
@@ -106,8 +106,8 @@ void NitroMain(void) {
             OS_GetTick();
             Main_RunOverlayManager();
             OS_GetTick();
-            sub_0201F880(gSystem.unk18);
-            sub_0201F880(gSystem.unk24);
+            SysTaskQueue_RunTasks(gSystem.unk18);
+            SysTaskQueue_RunTasks(gSystem.unk24);
             if (!gSystem.unk30) {
                 OS_WaitIrq(TRUE, OS_IE_VBLANK);
                 gSystem.vblankCounter++;
@@ -116,7 +116,7 @@ void NitroMain(void) {
         GF_RTC_UpdateOnFrame();
         sub_020183B0();
         sub_02026E60();
-        sub_0201F880(gSystem.unk24);
+        SysTaskQueue_RunTasks(gSystem.unk24);
         OS_WaitIrq(TRUE, OS_IE_VBLANK);
         gSystem.vblankCounter++;
         gSystem.unk30 = 0;
@@ -126,7 +126,7 @@ void NitroMain(void) {
             gSystem.vBlankIntr(gSystem.vBlankIntrArg);
         }
         DoSoundUpdateFrame();
-        sub_0201F880(gSystem.unk20);
+        SysTaskQueue_RunTasks(gSystem.unk20);
     }
 }
 

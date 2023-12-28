@@ -2313,7 +2313,7 @@ sub_0200F5C4: ; 0x0200F5C4
 	lsl r1, r1, #4
 	mov r2, #0
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r1, _0200F5FC ; =0x0000016F
 	mov r2, #0
 	strb r2, [r0, r1]

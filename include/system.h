@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_SYSTEM_H
 #define POKEHEARTGOLD_SYSTEM_H
 
-#include "unk_0201F79C.h"
+#include "sys_task.h"
 #include "heap.h"
 
 #define BUTTONMODE_NORMAL         0

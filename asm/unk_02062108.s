@@ -208,7 +208,7 @@ _0206225C: .word MovementScriptMachine
 	thumb_func_start EventObjectMovementMan_IsFinish
 EventObjectMovementMan_IsFinish: ; 0x02062260
 	push {r3, lr}
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r0, [r0, #4]
 	pop {r3, pc}
 	.balign 4, 0
@@ -218,7 +218,7 @@ EventObjectMovementMan_IsFinish: ; 0x02062260
 EventObjectMovementMan_Delete: ; 0x0206226C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
 	bl MapObject_IsMovementPaused

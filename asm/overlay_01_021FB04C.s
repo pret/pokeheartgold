@@ -436,7 +436,7 @@ _021FB350: .word ov01_021FB174
 	thumb_func_start ov01_021FB354
 ov01_021FB354: ; 0x021FB354
 	push {r3, lr}
-	bl sub_0201F988
+	bl SysTask_GetData
 	mov r1, #1
 	str r1, [r0, #0x74]
 	pop {r3, pc}

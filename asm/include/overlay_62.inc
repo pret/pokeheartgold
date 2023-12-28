@@ -68,7 +68,7 @@
 .public ClearWindowTilemapAndCopyToVram
 .public FillWindowPixelBuffer
 .public DoScheduledBgGpuUpdates
-.public sub_0201F988
+.public SysTask_GetData
 .public GF_SinDegNoWrap
 .public LCRandom
 .public AddTextPrinterParameterizedWithColor

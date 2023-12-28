@@ -18,7 +18,7 @@ void sub_0201A5E8(void);
 void sub_0201A08C(void) {
     OS_SetIrqCheckFlag(OS_IE_VBLANK);
     MI_WaitDma(GX_DEFAULT_DMAID);
-    sub_0201F880(gSystem.unk1C);
+    SysTaskQueue_RunTasks(gSystem.unk1C);
     gSystem.unk30++;
 }
 
@@ -118,10 +118,10 @@ void InitSystemForTheGame(void) {
     GX_Init();
     OS_InitTick();
     sub_0201A1B4();
-    gSystem.unk18 = sub_0201F834(160, OS_AllocFromArenaLo(OS_ARENA_MAIN, sub_0201F82C(160), 4));
-    gSystem.unk1C = sub_0201F834(32, OS_AllocFromArenaLo(OS_ARENA_MAIN, sub_0201F82C(32), 4));
-    gSystem.unk20 = sub_0201F834(32, OS_AllocFromArenaLo(OS_ARENA_MAIN, sub_0201F82C(32), 4));
-    gSystem.unk24 = sub_0201F834(4, OS_AllocFromArenaLo(OS_ARENA_MAIN, sub_0201F82C(4), 4));
+    gSystem.unk18 = SysTaskQueue_PlacementNew(160, OS_AllocFromArenaLo(OS_ARENA_MAIN, SysTaskQueue_GetArenaSize(160), 4));
+    gSystem.unk1C = SysTaskQueue_PlacementNew(32, OS_AllocFromArenaLo(OS_ARENA_MAIN, SysTaskQueue_GetArenaSize(32), 4));
+    gSystem.unk20 = SysTaskQueue_PlacementNew(32, OS_AllocFromArenaLo(OS_ARENA_MAIN, SysTaskQueue_GetArenaSize(32), 4));
+    gSystem.unk24 = SysTaskQueue_PlacementNew(4, OS_AllocFromArenaLo(OS_ARENA_MAIN, SysTaskQueue_GetArenaSize(4), 4));
     GX_DispOff();
     GXS_DispOff();
     GX_SetDispSelect(GX_DISP_SELECT_MAIN_SUB);

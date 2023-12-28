@@ -5,6 +5,6 @@
 .public sub_0200E358
 .public sub_0200E374
 .public DestroySysTask
-.public sub_0201F8C0
-.public sub_0201F954
+.public SysTaskQueue_InsertTask
+.public SysTask_Delete
 .public gSystem

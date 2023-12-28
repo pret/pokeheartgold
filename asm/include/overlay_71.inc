@@ -86,8 +86,8 @@
 .public Draw3dModel
 .public Bind3dModelSet
 .public AllocAndLoad3dTexResources
-.public sub_0201F984
-.public sub_0201F988
+.public SysTask_SetFunc
+.public SysTask_GetData
 .public sub_0201F990
 .public GF_SinDegNoWrap
 .public GF_CosDegNoWrap

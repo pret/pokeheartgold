@@ -4,10 +4,10 @@
 .public DestroySysTask
 .public AllocFromHeap
 .public FreeToHeap
-.public sub_0201F82C
-.public sub_0201F834
-.public sub_0201F880
-.public sub_0201F8C0
+.public SysTaskQueue_GetArenaSize
+.public SysTaskQueue_PlacementNew
+.public SysTaskQueue_RunTasks
+.public SysTaskQueue_InsertTask
 .public GF_AssertFail
 .public sub_0203DF8C
 .public MIi_CpuClear32

@@ -4,7 +4,7 @@
 .public DestroySysTask
 .public AllocFromHeapAtEnd
 .public FreeToHeap
-.public sub_0201F988
+.public SysTask_GetData
 .public Camera_SetDistance
 .public Camera_GetDistance
 .public memset

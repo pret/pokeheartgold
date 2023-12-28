@@ -6452,7 +6452,7 @@ ov63_0221F324: ; 0x0221F324
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	add r6, r2, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r1, _0221F360 ; =0x0000083C
 	add r4, r0, #0
 	ldr r3, [r4, r1]
@@ -6740,7 +6740,7 @@ ov63_0221F580: ; 0x0221F580
 	push {r3, lr}
 	cmp r0, #0
 	beq _0221F5A6
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r3, r0, #0
 	ldr r0, _0221F5A8 ; =0x04000444
 	mov r1, #0
@@ -6770,7 +6770,7 @@ ov63_0221F5B4: ; 0x0221F5B4
 	str r2, [r1]
 	cmp r0, #0
 	beq _0221F5F0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r6, r0, #0
 	ldr r0, _0221F5F8 ; =0x0000083C
 	mov r4, #0
@@ -6782,7 +6782,7 @@ ov63_0221F5B4: ; 0x0221F5B4
 _0221F5D4:
 	ldr r0, _0221F5FC ; =0x00000818
 	ldr r0, [r5, r0]
-	bl sub_0201F988
+	bl SysTask_GetData
 	bl FreeToHeap
 	ldr r0, [r6, r7]
 	add r4, r4, #1
@@ -7025,7 +7025,7 @@ ov63_0221F7C4: ; 0x0221F7C4
 	push {r4, lr}
 	add r4, r0, #0
 	beq _0221F7D8
-	bl sub_0201F988
+	bl SysTask_GetData
 	bl FreeToHeap
 	add r0, r4, #0
 	bl DestroySysTask
@@ -7039,7 +7039,7 @@ ov63_0221F7DC: ; 0x0221F7DC
 	push {r3, lr}
 	cmp r0, #0
 	beq _0221F7EA
-	bl sub_0201F988
+	bl SysTask_GetData
 	mov r1, #1
 	str r1, [r0]
 _0221F7EA:
@@ -7365,7 +7365,7 @@ ov63_0221FAA0: ; 0x0221FAA0
 	push {r4, lr}
 	cmp r0, #0
 	beq _0221FAD0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	cmp r0, #0

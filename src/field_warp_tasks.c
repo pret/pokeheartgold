@@ -29,7 +29,7 @@
 #include "overlay_01.h"
 #include "overlay_02.h"
 #include "constants/maps.h"
-#include "unk_0201F79C.h"
+#include "sys_task.h"
 #include "unk_02055418.h"
 
 struct UnkTaskEnv_02053688 {
@@ -40,7 +40,7 @@ struct UnkTaskEnv_02053688 {
 
 struct UnkTaskEnv_02053950 {
     int unk0;
-    UNK_0201F79C_Sub *unk4;
+    SysTask *unk4;
     Location location;
     u8 padding[4];
 };
@@ -48,7 +48,7 @@ struct UnkTaskEnv_02053950 {
 struct UnkTaskEnv_02053B3C {
     int unk0;
     int unk4;
-    UNK_0201F79C_Sub *unk8;
+    SysTask *unk8;
     Location location;
 };
 

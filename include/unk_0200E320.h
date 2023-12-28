@@ -1,9 +1,7 @@
 #ifndef POKEHEARTGOLD_UNK_0200E320_H
 #define POKEHEARTGOLD_UNK_0200E320_H
 
-typedef struct SysTask SysTask;
-typedef void (*SysTaskFunc)(SysTask *task, void *data);
-typedef void (*UnkSysTaskFunc)(int a0, void *data, int a2);
+#include "sys_task.h"
 
 SysTask *CreateSysTask(SysTaskFunc func, void *data, int priority);
 SysTask *sub_0200E33C(SysTaskFunc func, void *data, int priority);

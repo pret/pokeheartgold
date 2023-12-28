@@ -30,7 +30,7 @@ _0226BEEC: .word ov12_0226BF04
 ov12_0226BEF0: ; 0x0226BEF0
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	bl FreeToHeap
 	add r0, r4, #0
 	bl DestroySysTask

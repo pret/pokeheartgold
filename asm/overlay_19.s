@@ -53,7 +53,7 @@ ov19_02259918: ; 0x02259918
 	add r5, r0, #0
 	add r0, #0xd8
 	ldr r0, [r0]
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	mov r0, #0x43
 	lsl r0, r0, #2

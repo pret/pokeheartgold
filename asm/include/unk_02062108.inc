@@ -5,7 +5,7 @@
 .public DestroySysTask
 .public AllocFromHeapAtEnd
 .public FreeToHeapExplicit
-.public sub_0201F988
+.public SysTask_GetData
 .public GF_AssertFail
 .public MapObjectManager_GetHeapID
 .public MapObject_SetFlagsBits

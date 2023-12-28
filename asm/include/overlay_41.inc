@@ -135,7 +135,7 @@
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
-.public sub_0201F988
+.public SysTask_GetData
 .public MTRandom
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterizedWithColor

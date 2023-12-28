@@ -34837,7 +34837,7 @@ _0222CB34:
 	bl ov07_0221FAF8
 	add r7, r0, #0
 	ldr r0, [sp, #0x14]
-	bl sub_0201F98C
+	bl SysTask_GetPriority
 	str r0, [sp, #0x18]
 	ldrh r0, [r4, #0x10]
 	ldrh r1, [r4, #0x12]

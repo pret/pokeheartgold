@@ -9,7 +9,7 @@
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public FreeToHeapExplicit
-.public sub_0201F988
+.public SysTask_GetData
 .public GF_AssertFail
 .public StartScriptFromMenu
 .public FieldSystem_FlagSet

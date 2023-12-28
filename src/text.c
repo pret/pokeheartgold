@@ -2,7 +2,7 @@
 #include "font.h"
 #include "gf_gfx_loader.h"
 #include "text.h"
-#include "unk_0201F79C.h"
+#include "sys_task.h"
 
 static const struct FontInfo *sFonts;
 
@@ -47,7 +47,7 @@ static void DestroyTextPrinterSysTask(u8 printerId) {
         return;
     }
 
-    TextPrinter *printer = sub_0201F988(sTextPrinterTasks[printerId]);
+    TextPrinter *printer = SysTask_GetData(sTextPrinterTasks[printerId]);
     if (printer != NULL) {
         sub_02020548(printer);
         FreeToHeap(printer);

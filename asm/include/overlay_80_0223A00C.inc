@@ -51,7 +51,7 @@
 .public RemoveWindow
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
-.public sub_0201F988
+.public SysTask_GetData
 .public AddTextPrinterParameterizedWithColorAndSpacing
 .public sub_02021AC8
 .public sub_02021B5C

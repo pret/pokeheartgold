@@ -1491,7 +1491,7 @@ sub_020068F8: ; 0x020068F8
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _0200691A
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r5, r0, #0
 	ldr r0, [r4]
 	bl DestroySysTask

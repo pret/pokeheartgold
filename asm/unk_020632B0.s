@@ -2620,7 +2620,7 @@ _02064608: .word sub_02064630
 	thumb_func_start sub_0206460C
 sub_0206460C: ; 0x0206460C
 	push {r3, lr}
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r0, [r0, #4]
 	pop {r3, pc}
 	.balign 4, 0
@@ -2630,7 +2630,7 @@ sub_0206460C: ; 0x0206460C
 sub_02064618: ; 0x02064618
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r1, r0, #0
 	mov r0, #4
 	bl FreeToHeapExplicit

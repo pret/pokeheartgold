@@ -108,7 +108,7 @@
 .public FillWindowPixelRect
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
-.public sub_0201F988
+.public SysTask_GetData
 .public MsgArray_SkipControlCode
 .public AddTextPrinterParameterizedWithColor
 .public sub_020215A0

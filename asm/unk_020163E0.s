@@ -16,7 +16,7 @@ sub_020163E0: ; 0x020163E0
 	mov r2, #0
 	bl CreateSysTaskAndEnvironment
 	str r0, [sp, #4]
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	cmp r5, #0
 	beq _02016424

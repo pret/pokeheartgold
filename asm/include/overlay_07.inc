@@ -142,7 +142,7 @@
 .public BgClearTilemapBufferAndCommit
 .public BgGetCharPtr
 .public GetBgPriority
-.public sub_0201F98C
+.public SysTask_GetPriority
 .public GF_SinDeg
 .public LCRandom
 .public GF_CreateNewVramTransferTask

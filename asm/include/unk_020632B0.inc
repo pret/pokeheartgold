@@ -6,7 +6,7 @@
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public FreeToHeapExplicit
-.public sub_0201F988
+.public SysTask_GetData
 .public GF_SinDegNoWrap
 .public sub_02023EE0
 .public sub_02023EF4

@@ -134,7 +134,7 @@
 .public FillWindowPixelBuffer
 .public FillWindowPixelRect
 .public DoScheduledBgGpuUpdates
-.public sub_0201F988
+.public SysTask_GetData
 .public LCRandom
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized

@@ -691,7 +691,7 @@ ov106_021E5E0C: ; 0x021E5E0C
 	mov r2, #5
 	bl CreateSysTaskAndEnvironment
 	add r6, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	add r2, r4, #4
 	mov r3, #5

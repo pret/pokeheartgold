@@ -87,7 +87,7 @@
 .public DestroySysTask
 .public AllocFromHeap
 .public FreeToHeap
-.public sub_0201F988
+.public SysTask_GetData
 .public GF_AssertFail
 .public NNS_SndPlayerStopSeq
 .public NNS_SndPlayerStopSeqBySeqNo

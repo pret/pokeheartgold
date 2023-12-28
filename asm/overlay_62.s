@@ -1514,7 +1514,7 @@ ov62_021E6480: ; 0x021E6480
 	add r6, r3, #0
 	bl CreateSysTask
 	str r0, [r4, #0x2c]
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	ldr r0, [sp, #0x24]
 	str r7, [r4]

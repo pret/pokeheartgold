@@ -757,7 +757,7 @@ ov71_02246F60: ; 0x02246F60
 	ldr r0, [r6, r4]
 	cmp r0, #0
 	beq _02246F8E
-	bl sub_0201F988
+	bl SysTask_GetData
 	bl FreeToHeap
 	ldr r0, [r6, r4]
 	bl DestroySysTask
@@ -3092,7 +3092,7 @@ ov71_02248120: ; 0x02248120
 	ldr r0, [r4, #0x78]
 	cmp r0, #0
 	beq _0224813C
-	bl sub_0201F988
+	bl SysTask_GetData
 	bl ov71_02247424
 	ldr r0, [r4, #0x78]
 	bl DestroySysTask
@@ -3190,7 +3190,7 @@ ov71_022481D8: ; 0x022481D8
 	ldr r0, [r0, #0x7c]
 	cmp r0, #0
 	beq _022481E8
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r0, [r0, #0x20]
 	pop {r3, pc}
 _022481E8:
@@ -3205,7 +3205,7 @@ ov71_022481EC: ; 0x022481EC
 	ldr r0, [r4, #0x7c]
 	cmp r0, #0
 	beq _02248208
-	bl sub_0201F988
+	bl SysTask_GetData
 	bl FreeToHeap
 	ldr r0, [r4, #0x7c]
 	bl DestroySysTask
@@ -4581,7 +4581,7 @@ ov71_02248CF4: ; 0x02248CF4
 	push {r4, lr}
 	add r4, r0, #0
 	beq _02248D0A
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r0, [r0]
 	mov r1, #0
 	str r1, [r0]
@@ -4721,7 +4721,7 @@ ov71_02248E04: ; 0x02248E04
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	beq _02248E2E
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	mov r0, #0x5a
 	lsl r0, r0, #2
@@ -5227,7 +5227,7 @@ ov71_02249184: ; 0x02249184
 	str r0, [r4, #0x7c]
 	ldr r1, _02249204 ; =ov71_02249208
 	add r0, r5, #0
-	bl sub_0201F984
+	bl SysTask_SetFunc
 _022491E4:
 	add r0, r4, #0
 	bl ov71_0224903C
@@ -5286,7 +5286,7 @@ _02249252:
 	thumb_func_start ov71_02249254
 ov71_02249254: ; 0x02249254
 	push {r3, lr}
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r0, [r0, #0x78]
 	pop {r3, pc}
 	.balign 4, 0
@@ -5295,7 +5295,7 @@ ov71_02249254: ; 0x02249254
 	thumb_func_start ov71_02249260
 ov71_02249260: ; 0x02249260
 	push {r3, lr}
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r0, [r0, #0x7c]
 	pop {r3, pc}
 	.balign 4, 0
@@ -5306,7 +5306,7 @@ ov71_0224926C: ; 0x0224926C
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r5, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	mov r1, #0
 	str r1, [r4, #0x78]
@@ -5359,7 +5359,7 @@ ov71_0224926C: ; 0x0224926C
 	bl ov71_02247704
 	ldr r1, _022492F8 ; =ov71_022492FC
 	add r0, r5, #0
-	bl sub_0201F984
+	bl SysTask_SetFunc
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -5398,7 +5398,7 @@ ov71_022492FC: ; 0x022492FC
 	bne _0224933C
 	ldr r1, _02249354 ; =ov71_02249358
 	add r0, r5, #0
-	bl sub_0201F984
+	bl SysTask_SetFunc
 _0224933C:
 	add r1, r4, #0
 	ldr r0, [r4]
@@ -5444,7 +5444,7 @@ ov71_02249358: ; 0x02249358
 	str r1, [r0]
 	ldr r1, _022493B4 ; =ov71_022493B8
 	add r0, r5, #0
-	bl sub_0201F984
+	bl SysTask_SetFunc
 _0224939A:
 	add r1, r4, #0
 	ldr r0, [r4]
@@ -5491,7 +5491,7 @@ ov71_022493B8: ; 0x022493B8
 	bne _022493F8
 	ldr r1, _02249410 ; =ov71_02249414
 	add r0, r5, #0
-	bl sub_0201F984
+	bl SysTask_SetFunc
 _022493F8:
 	add r1, r4, #0
 	ldr r0, [r4]
@@ -5530,7 +5530,7 @@ ov71_02249414: ; 0x02249414
 	str r0, [r4, #0x2c]
 	ldr r1, _0224945C ; =ov71_02249460
 	add r0, r5, #0
-	bl sub_0201F984
+	bl SysTask_SetFunc
 _02249446:
 	add r1, r4, #0
 	ldr r0, [r4]
@@ -8973,7 +8973,7 @@ ov71_0224AFB8: ; 0x0224AFB8
 	push {r4, lr}
 	add r4, r0, #0
 	beq _0224AFD2
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r1, [r0, #0x1c]
 	mov r2, #0
 	str r2, [r1]
@@ -9065,7 +9065,7 @@ ov71_0224B068: ; 0x0224B068
 	push {r4, lr}
 	add r4, r0, #0
 	beq _0224B082
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r1, [r0]
 	mov r2, #0
 	str r2, [r1]
@@ -9160,7 +9160,7 @@ ov71_0224B11C: ; 0x0224B11C
 	push {r4, lr}
 	add r4, r0, #0
 	beq _0224B136
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r1, [r0]
 	mov r2, #0
 	str r2, [r1]
@@ -10183,7 +10183,7 @@ ov71_0224B970: ; 0x0224B970
 	ldr r0, [r4, #0x7c]
 	cmp r0, #0
 	beq _0224B98C
-	bl sub_0201F988
+	bl SysTask_GetData
 	bl ov71_02247424
 	ldr r0, [r4, #0x7c]
 	bl DestroySysTask
@@ -10290,7 +10290,7 @@ ov71_0224BA48: ; 0x0224BA48
 	push {r4, lr}
 	add r4, r0, #0
 	beq _0224BA62
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r1, [r0]
 	mov r2, #0
 	str r2, [r1]
