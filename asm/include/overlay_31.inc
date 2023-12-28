@@ -54,7 +54,7 @@
 .public ScheduleBgTilemapBufferTransfer
 .public sub_0201F988
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GfGfx_EngineBTogglePlanes
 .public sub_02025224
 .public GF_AssertFail

@@ -823,7 +823,7 @@ void ov110_021E6904(AlphPuzzleData *data, int a1) {
     }
     
     u32 width = FontID_String_GetWidth(4, data->quitText, 0);
-    AddTextPrinterParameterized2(data->window, 4, data->quitText, (48 - width) / 2, 4, 0xFF, ov110_021E6DA4[a1], NULL);
+    AddTextPrinterParameterizedWithColor(data->window, 4, data->quitText, (48 - width) / 2, 4, TEXT_SPEED_NOTRANSFER, ov110_021E6DA4[a1], NULL);
     ScheduleWindowCopyToVram(data->window);
 }
 
@@ -833,16 +833,16 @@ static void ov110_021E6988(AlphPuzzleData *data, int a1, int a2, u8 textFrameDel
     }
     FillWindowPixelBuffer(&data->window[1], 15);
     if (textFrameDelay == 0) {
-        AddTextPrinterParameterized2(&data->window[1], 1, data->confirmQuitText[a1], 0, 0, 0xFF, 0x1020F, 0);
+        AddTextPrinterParameterizedWithColor(&data->window[1], 1, data->confirmQuitText[a1], 0, 0, 0xFF, 0x1020F, 0);
     } else {
-        data->textPrinterId = AddTextPrinterParameterized2(&data->window[1], 1, data->confirmQuitText[a1], 0, 0, textFrameDelay, 0x1020F, 0);
+        data->textPrinterId = AddTextPrinterParameterizedWithColor(&data->window[1], 1, data->confirmQuitText[a1], 0, 0, textFrameDelay, 0x1020F, 0);
     }
     ScheduleWindowCopyToVram(&data->window[1]);
 }
 
 static void ov110_021E6A04(AlphPuzzleData *data) {
     FillWindowPixelBuffer(&data->window[2], 0);
-    AddTextPrinterParameterized2(&data->window[2], 4, data->hintText[data->puzzleIndex], 0, 0, 0xFF, 0x20100, 0);
+    AddTextPrinterParameterizedWithColor(&data->window[2], 4, data->hintText[data->puzzleIndex], 0, 0, 0xFF, 0x20100, 0);
     ScheduleWindowCopyToVram(&data->window[2]);
 }
 

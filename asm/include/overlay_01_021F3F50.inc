@@ -24,7 +24,7 @@
 .public CopyWindowToVram
 .public FillWindowPixelBuffer
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GF_AssertFail
 .public String_Delete
 .public SaveGameNormal

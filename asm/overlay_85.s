@@ -3448,7 +3448,7 @@ ov85_021E7380: ; 0x021E7380
 	add r0, r5, r4
 	add r2, r6, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, r4
 	bl ScheduleWindowCopyToVram
 	add sp, #0x10
@@ -7630,7 +7630,7 @@ ov85_021E9244: ; 0x021E9244
 	add r0, r5, #0
 	add r2, r7, #0
 	asr r3, r3, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -8796,7 +8796,7 @@ ov85_021E9B40: ; 0x021E9B40
 	ldr r0, [r5, #0x5c]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _021E9B5E:
 	add r0, r5, #0
 	mov r1, #0xf
@@ -9002,7 +9002,7 @@ _021E9CDA:
 	ldr r0, [r5, #0x5c]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _021E9CEE:
 	add r0, r5, #0
 	mov r1, #0xc
@@ -9064,7 +9064,7 @@ _021E9D60:
 	ldr r0, [r5, #0x5c]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _021E9D74:
 	mov r0, #0x33
 	lsl r0, r0, #4
@@ -9310,7 +9310,7 @@ _021E9EF2:
 	ldr r2, [r4, #0x3c]
 	add r0, r6, #0
 	mov r3, #5
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	str r5, [sp]
 	mov r0, #0xff
 	str r0, [sp, #4]
@@ -9322,7 +9322,7 @@ _021E9EF2:
 	add r0, r6, #0
 	mov r1, #0
 	mov r3, #0x46
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	b _021E9FA6
 _021E9F74:
 	mov r0, #0xff
@@ -9335,7 +9335,7 @@ _021E9F74:
 	ldr r2, [r4, #0x3c]
 	add r0, r6, #0
 	mov r3, #5
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	str r5, [sp]
 	mov r0, #0xff
 	str r0, [sp, #4]
@@ -9347,7 +9347,7 @@ _021E9F74:
 	add r0, r6, #0
 	mov r1, #0
 	mov r3, #0x46
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _021E9FA6:
 	ldr r0, [sp, #0x18]
 	bl String_Delete

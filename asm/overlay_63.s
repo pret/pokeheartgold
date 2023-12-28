@@ -2019,7 +2019,7 @@ _0221CE06:
 	ldr r2, [r2]
 	add r0, #0x14
 	sub r3, r3, r4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r7, #0x14
 	add r0, r7, #0
 	bl CopyWindowPixelsToVram_TextMode
@@ -2104,7 +2104,7 @@ ov63_0221CE94: ; 0x0221CE94
 	ldr r2, [r2]
 	add r0, r5, r6
 	mov r3, #2
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, r6
 	bl CopyWindowPixelsToVram_TextMode
 	add r0, r5, r6
@@ -2190,7 +2190,7 @@ _0221CF84:
 	ldr r2, [r2]
 	add r0, #0x10
 	mov r3, #2
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	add r2, r4, #0
 	add r0, #0x84
@@ -2233,7 +2233,7 @@ _0221CF84:
 	ldr r2, [r2]
 	add r0, #0x10
 	mov r3, #2
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, r6
 	add r0, #0x10
 	bl CopyWindowPixelsToVram_TextMode
@@ -2278,7 +2278,7 @@ _0221CF84:
 	ldr r2, [r2]
 	add r0, #0x20
 	mov r3, #2
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r2, [r4]
 	ldr r1, [sp, #0x14]
 	ldr r2, [r2]
@@ -2456,7 +2456,7 @@ _0221D1DA:
 	ldr r2, [r4]
 	add r0, #0x20
 	mov r3, #2
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, r6
 	add r0, #0x20
 	bl CopyWindowPixelsToVram_TextMode
@@ -5504,7 +5504,7 @@ _0221EAB6:
 	ldr r2, [r2]
 	add r0, #0x14
 	sub r3, r3, r4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	add r0, #0x14
 	bl CopyWindowToVram
@@ -5599,7 +5599,7 @@ _0221EAB6:
 	ldr r2, [r2]
 	add r0, #0x24
 	sub r3, r3, r4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r5, #0x24
 	add r0, r5, #0
 	bl CopyWindowToVram
