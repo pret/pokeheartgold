@@ -445,7 +445,7 @@ $(eval $(call arc_strip_name,files/application/voltorb_flip.narc,files/a/2/6/4))
 $(DIFF_ARCS):
 	cp $< $@
 
-.PHONY: files/a/0/7/5 files/a/2/5/2
+.PHONY: files/a/0/7/5 files/a/2/5/2 files/a/1/3/3
 
 NARCS := $(filter %.narc,$(NITROFS_FILES) $(SRC_ARCS))
 NAIXS := $(NARCS:%.narc=%.naix)

@@ -6,6 +6,14 @@
 #include "palette.h"
 #include "unk_02026C44.h"
 
+typedef enum YesNoResponse {
+    YESNORESPONSE_WAIT = 0,
+    YESNORESPONSE_YES,
+    YESNOREPSONSE_NO,
+    YESNORESPONSE_YES_TOUCH,
+    YESNORESPONSE_NO_TOUCH,
+} YesNoResponse;
+
 typedef struct YesNoPromptTemplate {
     BgConfig *bgConfig;
     int bgId;
@@ -36,7 +44,7 @@ typedef struct YesNoPromptButton {
 } YesNoPromptButton;
 
 typedef struct YesNoPromptState {
-    UnkStruct_02026C44 *touchHitboxController;
+    TouchHitboxController *touchHitboxController;
     TouchscreenHitbox hitboxes[2];
     YesNoPromptButton buttons[2];
     BgConfig *bgConfig;
@@ -47,14 +55,14 @@ typedef struct YesNoPromptState {
     u8 y;
     u8 width;
     u8 height;
-    u8 unk74_0 : 1;
-    u8 unk74_1 : 1;
-    u8 unk74_2 : 6;
+    u8 inTouchMode : 1;
+    u8 unused_74_1 : 1;
+    u8 confirmSelectionTimer : 6;
     u8 cursorPos;
     u8 result : 4;
-    u8 unk76_4 : 4;
-    u8 unk77_0 : 4;
-    u8 unk77_4 : 4;
+    u8 ignoreTouch : 4;
+    u8 buttonsAreInit : 4;
+    u8 lastTouchEvent : 4;
 } YesNoPromptState;
 
 YesNoPromptState *YesNoPrompt_Create(HeapID);
@@ -62,8 +70,8 @@ void YesNoPrompt_Destroy(YesNoPromptState *);
 void YesNoPrompt_Reset(YesNoPromptState *);
 void YesNoPrompt_InitFromTemplate(YesNoPromptState *, const YesNoPromptTemplate *);
 void YesNoPrompt_InitFromTemplateWithPalette(YesNoPromptState *, const YesNoPromptTemplate *, PaletteData *);
-u32 YesNoPrompt_HandleInputForSave(YesNoPromptState *);
-int YesNoPrompt_HandleInput(YesNoPromptState *);
+YesNoResponse YesNoPrompt_HandleInputForSave(YesNoPromptState *);
+YesNoResponse YesNoPrompt_HandleInput(YesNoPromptState *);
 int YesNoPrompt_GetUnk74_0(YesNoPromptState *);
 void YesNoPrompt_SetUnk76_4(YesNoPromptState *yesno, int a1);
 
