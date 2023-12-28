@@ -70,8 +70,8 @@ void YesNoPrompt_Destroy(YesNoPromptState *yesno) {
 
 void YesNoPrompt_InitFromTemplate_Internal(YesNoPromptState *yesno, const YesNoPromptTemplate *template) {
     static const u8 _020F61B8[2][2] = {
-        {  6, 4 },
-        { 16, 6 },
+        {6,  4},
+        {16, 6},
     };
 
     yesno->bgConfig = template->bgConfig;
@@ -271,7 +271,7 @@ void sub_02016B4C(YesNoPromptState *yesno, const YesNoPromptTemplate *template) 
         yesno->unk04[i].rect.top = (yesno->y * 8) + (i * yesno->height * 8);
         yesno->unk04[i].rect.left = (yesno->x * 8);
         yesno->unk04[i].rect.bottom = (yesno->y * 8) + (i * yesno->height * 8) + (yesno->height * 8);
-        yesno->unk04[i].rect.right = (yesno->x  * 8) + (yesno->width * 8);
+        yesno->unk04[i].rect.right = (yesno->x * 8) + (yesno->width * 8);
     }
     yesno->unk00 = sub_02026C44(yesno->unk04, 2, sub_02016BC0, yesno, yesno->heapId);
 }
@@ -373,7 +373,7 @@ void sub_02016E8C(NNSG2dScreenData *scrnData, int a1) {
 }
 
 void sub_02016EAC(NNSG2dScreenData *scrnData, int a1) {
-        int i;
+    int i;
     u16 *data;
     int ntiles = scrnData->szByte / 2;
 
