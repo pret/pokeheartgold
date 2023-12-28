@@ -2410,7 +2410,7 @@ _02238FDA:
 	mov r0, #0x92
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl YesNoPrompt_GetUnk74_0
+	bl YesNoPrompt_IsInTouchMode
 	str r0, [r5, #0x40]
 	mov r0, #0x92
 	lsl r0, r0, #2

@@ -3824,7 +3824,7 @@ _02247B9E:
 _02247BA0:
 	ldr r0, _02247BB0 ; =0x000006B8
 	ldr r0, [r5, r0]
-	bl YesNoPrompt_GetUnk74_0
+	bl YesNoPrompt_IsInTouchMode
 	ldr r1, _02247BB4 ; =0x000006EC
 	str r0, [r5, r1]
 	add r0, r4, #0
@@ -4137,7 +4137,7 @@ _02247E1A:
 _02247E1C:
 	ldr r0, _02247E2C ; =0x000006B8
 	ldr r0, [r5, r0]
-	bl YesNoPrompt_GetUnk74_0
+	bl YesNoPrompt_IsInTouchMode
 	ldr r1, _02247E30 ; =0x000006EC
 	str r0, [r5, r1]
 	add r0, r4, #0

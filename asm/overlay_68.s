@@ -1008,7 +1008,7 @@ _021E6124:
 	mov r0, #0x46
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl YesNoPrompt_GetUnk74_0
+	bl YesNoPrompt_IsInTouchMode
 	mov r1, #0x6d
 	lsl r1, r1, #2
 	str r0, [r5, r1]

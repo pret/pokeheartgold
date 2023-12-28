@@ -107,7 +107,7 @@
 .public YesNoPrompt_Destroy
 .public YesNoPrompt_InitFromTemplate
 .public YesNoPrompt_HandleInput
-.public YesNoPrompt_SetUnk76_4
+.public YesNoPrompt_SetIgnoreTouch
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
 .public SetKeyRepeatTimers

@@ -679,7 +679,7 @@ _021E6118:
 	add r0, r5, #0
 	add r0, #0xac
 	ldr r0, [r0]
-	bl YesNoPrompt_GetUnk74_0
+	bl YesNoPrompt_IsInTouchMode
 	add r6, r0, #0
 	ldrb r0, [r5, #0xa]
 	cmp r6, r0

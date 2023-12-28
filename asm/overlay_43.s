@@ -1945,7 +1945,7 @@ ov43_0222AE2C: ; 0x0222AE2C
 	cmp r0, #1
 	bhi _0222AE58
 	ldr r0, [r4, #0x60]
-	bl YesNoPrompt_GetUnk74_0
+	bl YesNoPrompt_IsInTouchMode
 	str r0, [r5]
 	ldr r0, [r4, #0x60]
 	bl YesNoPrompt_Reset

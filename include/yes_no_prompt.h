@@ -9,7 +9,7 @@
 typedef enum YesNoResponse {
     YESNORESPONSE_WAIT = 0,
     YESNORESPONSE_YES,
-    YESNOREPSONSE_NO,
+    YESNORESPONSE_NO,
     YESNORESPONSE_YES_TOUCH,
     YESNORESPONSE_NO_TOUCH,
 } YesNoResponse;
@@ -21,7 +21,7 @@ typedef struct YesNoPromptTemplate {
     u32 plttSlot;
     u8 x;
     u8 y;
-    u8 dummy : 4;
+    u8 ignoreTouchFlag : 4;
     u8 initialCursorPos : 4;
     u8 shapeParam;
 } YesNoPromptTemplate;
@@ -72,7 +72,7 @@ void YesNoPrompt_InitFromTemplate(YesNoPromptState *, const YesNoPromptTemplate 
 void YesNoPrompt_InitFromTemplateWithPalette(YesNoPromptState *, const YesNoPromptTemplate *, PaletteData *);
 YesNoResponse YesNoPrompt_HandleInputForSave(YesNoPromptState *);
 YesNoResponse YesNoPrompt_HandleInput(YesNoPromptState *);
-int YesNoPrompt_GetUnk74_0(YesNoPromptState *);
-void YesNoPrompt_SetUnk76_4(YesNoPromptState *yesno, int a1);
+int YesNoPrompt_IsInTouchMode(YesNoPromptState *);
+void YesNoPrompt_SetIgnoreTouch(YesNoPromptState *yesno, int a1);
 
 #endif //POKEHEARTGOLD_YES_NO_PROMPT_H

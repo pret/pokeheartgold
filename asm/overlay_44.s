@@ -15431,7 +15431,7 @@ ov44_02231A14: ; 0x02231A14
 	bl ov44_02231A28
 	mov r1, #1
 	add r4, r0, #0
-	bl YesNoPrompt_SetUnk76_4
+	bl YesNoPrompt_SetIgnoreTouch
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0

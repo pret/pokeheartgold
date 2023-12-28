@@ -867,7 +867,7 @@ _021E5FA2:
 	mov r0, #0x13
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl YesNoPrompt_GetUnk74_0
+	bl YesNoPrompt_IsInTouchMode
 	add r6, r0, #0
 	ldr r0, [r5, #0x10]
 	cmp r6, r0
@@ -7569,7 +7569,7 @@ _021E9506:
 _021E950C:
 	ldr r0, _021E9524 ; =0x00000514
 	ldr r0, [r5, r0]
-	bl YesNoPrompt_GetUnk74_0
+	bl YesNoPrompt_IsInTouchMode
 	str r0, [r5, #0x10]
 	ldr r0, _021E9524 ; =0x00000514
 	ldr r0, [r5, r0]

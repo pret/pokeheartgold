@@ -184,7 +184,7 @@ YesNoResponse YesNoPrompt_HandleInput(YesNoPromptState *yesno) {
         if (yesno->result == 0) {
             return YESNORESPONSE_YES;
         }
-        return YESNOREPSONSE_NO;
+        return YESNORESPONSE_NO;
     }
     if (!(yesno->confirmSelectionTimer % 2)) {
         if (!((yesno->confirmSelectionTimer / 2) % 2)) {
@@ -197,7 +197,7 @@ YesNoResponse YesNoPrompt_HandleInput(YesNoPromptState *yesno) {
     return YESNORESPONSE_WAIT;
 }
 
-BOOL YesNoPrompt_GetUnk74_0(YesNoPromptState *yesno) {
+BOOL YesNoPrompt_IsInTouchMode(YesNoPromptState *yesno) {
     return yesno->inTouchMode;
 }
 
@@ -209,7 +209,7 @@ void YesNoPrompt_Reset(YesNoPromptState *yesno) {
     YesNoPrompt_Init(yesno, yesno->heapId);
 }
 
-void YesNoPrompt_SetUnk76_4(YesNoPromptState *yesno, int a1) {
+void YesNoPrompt_SetIgnoreTouch(YesNoPromptState *yesno, int a1) {
     GF_ASSERT(yesno != NULL);
     yesno->ignoreTouch = a1;
 }

@@ -6237,7 +6237,7 @@ _0223AA46:
 	mov r0, #0x91
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl YesNoPrompt_GetUnk74_0
+	bl YesNoPrompt_IsInTouchMode
 	ldr r1, _0223AB50 ; =0x0000040C
 	str r0, [r4, r1]
 	sub r0, r1, #4

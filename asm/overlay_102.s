@@ -7717,7 +7717,7 @@ _021EB156:
 	mov r0, #0x7a
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl YesNoPrompt_GetUnk74_0
+	bl YesNoPrompt_IsInTouchMode
 	mov r0, #0x7a
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]

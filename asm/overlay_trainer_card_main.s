@@ -3614,7 +3614,7 @@ _021E7894:
 	mov r0, #0xcf
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl YesNoPrompt_GetUnk74_0
+	bl YesNoPrompt_IsInTouchMode
 	ldr r1, _021E78CC ; =0x0000310C
 	str r0, [r5, r1]
 	mov r0, #0xcf
