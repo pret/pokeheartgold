@@ -32,6 +32,10 @@ void BattleControllerPlayer_SafariRun(BattleSystem *bsys, BattleContext *ctx);
 void BattleControllerPlayer_SafariWatching(BattleSystem *bsys, BattleContext *ctx);
 void BattleControllerPlayer_CatchingContestThrowBall(BattleSystem *bsys, BattleContext *ctx);
 u32 TryDisobedience(BattleSystem *bsys, BattleContext *ctx, int *script);
+BOOL ov12_0224B1FC(BattleSystem *bsys, BattleContext *ctx);
+BOOL ov12_0224B398(BattleSystem *bsys, BattleContext *ctx);
+BOOL ov12_0224B498(BattleSystem *bsys, BattleContext *ctx);
+BOOL ov12_0224B528(BattleSystem *bsys, BattleContext *ctx);
 
 //The following functions haven't been decompiled yet
 void ov12_0224E384(BattleSystem *bsys, BattleContext *ctx);
