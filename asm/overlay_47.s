@@ -1208,7 +1208,7 @@ ov47_0225916C: ; 0x0225916C
 	str r0, [sp, #8]
 	add r0, r5, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	add r0, #0x2c
 	add r1, r4, #0
@@ -1225,7 +1225,7 @@ ov47_0225916C: ; 0x0225916C
 	add r0, r5, #0
 	mov r1, #1
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	add r0, #0x2c
 	add r1, r4, #0
@@ -1242,7 +1242,7 @@ ov47_0225916C: ; 0x0225916C
 	add r0, r5, #0
 	mov r1, #1
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add sp, #0x10
@@ -1333,7 +1333,7 @@ ov47_02259278: ; 0x02259278
 	ldr r0, [r5]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _02259296:
 	add r0, r5, #0
 	bl ov47_022593A0
@@ -1363,7 +1363,7 @@ ov47_022592B4: ; 0x022592B4
 	ldr r0, [r5]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _022592D4:
 	add r0, r5, #0
 	add r0, #8
@@ -1383,7 +1383,7 @@ _022592D4:
 	add r0, r5, #0
 	ldr r2, [r5, #0x18]
 	add r0, #8
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	str r0, [r5]
 	add r5, #8
 	mov r1, #1
@@ -1412,7 +1412,7 @@ ov47_02259318: ; 0x02259318
 	ldr r0, [r5]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _02259338:
 	add r0, r5, #0
 	add r0, #8
@@ -1432,7 +1432,7 @@ _02259338:
 	add r0, r5, #0
 	ldr r2, [r5, #0x18]
 	add r0, #8
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	mov r1, #1
 	add r0, #8
@@ -1508,7 +1508,7 @@ ov47_022593CC: ; 0x022593CC
 	ldr r0, [r4]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _022593E8:
 	add r0, r4, #0
 	bl ov47_022593A0
@@ -2278,7 +2278,7 @@ ov47_0225999C: ; 0x0225999C
 	mov r1, #1
 	add r2, r6, #0
 	lsr r3, r3, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add sp, #0x10
@@ -2316,7 +2316,7 @@ ov47_022599F0: ; 0x022599F0
 	add r0, #0x10
 	mov r1, #1
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x20]
 	ldr r1, [sp, #0x10]
 	mov r2, #1
@@ -2332,7 +2332,7 @@ ov47_022599F0: ; 0x022599F0
 	add r0, #0x10
 	mov r1, #1
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x20]
 	ldr r1, [sp, #0x10]
 	mov r2, #2
@@ -2348,7 +2348,7 @@ ov47_022599F0: ; 0x022599F0
 	add r0, #0x10
 	mov r1, #1
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x20]
 	ldr r1, [r7]
 	ldr r0, [r0, #4]
@@ -2397,7 +2397,7 @@ _02259A98:
 	add r0, #0x50
 	mov r1, #1
 	asr r3, r3, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x20]
 	ldr r1, [sp, #0x10]
 	ldr r2, [r7, #4]
@@ -2424,7 +2424,7 @@ _02259A98:
 	mov r1, #1
 	add r2, r5, #0
 	add r3, #0x60
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _02259B1C:
 	add r0, r6, #0
 	add r0, #0x50

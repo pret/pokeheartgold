@@ -1806,7 +1806,7 @@ ov74_02227E10: ; 0x02227E10
 	add r0, r6, #0
 	add r2, r5, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	add sp, #0x10
@@ -1913,7 +1913,7 @@ _02227EF8:
 	add r2, r7, #0
 	ldr r0, [r0, #0x10]
 	mov r3, #0x20
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 _02227F28:
@@ -7351,7 +7351,7 @@ _0222AA60:
 	str r0, [sp, #8]
 	str r3, [sp, #0xc]
 	add r0, r5, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	str r0, [r4, #0x6c]
 	ldr r0, [r4, #0x14]
 	cmp r0, #0
@@ -7406,7 +7406,7 @@ ov74_0222AAAC: ; 0x0222AAAC
 	add r0, r5, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	mov r1, #0
 	mov r2, #0x1f
@@ -12213,7 +12213,7 @@ ov74_0222D1D4: ; 0x0222D1D4
 	add r0, r5, #0
 	add r2, r7, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl CopyWindowToVram
 	add r0, r7, #0
@@ -12536,7 +12536,7 @@ ov74_0222D494: ; 0x0222D494
 	mov r1, #1
 	add r2, r6, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl String_Delete
 	mov r0, #1
@@ -12597,7 +12597,7 @@ _0222D522:
 	mov r1, #1
 	add r2, r4, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	mov r0, #1
@@ -12691,7 +12691,7 @@ ov74_0222D5C4: ; 0x0222D5C4
 	mov r1, #1
 	add r2, r6, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl String_Delete
 	mov r0, #0
@@ -12736,7 +12736,7 @@ ov74_0222D614: ; 0x0222D614
 	mov r1, #1
 	add r2, r4, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add sp, #0x10
@@ -13138,7 +13138,7 @@ _0222D956:
 	str r0, [sp, #0xc]
 	ldr r1, [r4, #0x14]
 	add r0, r6, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 _0222D976:
@@ -13279,7 +13279,7 @@ _0222DA58:
 	str r3, [sp, #0xc]
 	ldr r1, [r4, #0x14]
 	add r0, r6, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x14]
 	bl String_Delete
 	ldr r0, _0222DAE8 ; =0x00002A04
@@ -15147,7 +15147,7 @@ _0222E98C:
 	ldr r0, [sp, #0x10]
 	ldr r2, [sp, #0x20]
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	b _0222E9F0
 _0222E9D6:
 	mov r0, #0xff
@@ -15161,7 +15161,7 @@ _0222E9D6:
 	ldr r0, [sp, #0x10]
 	ldr r2, [sp, #0x20]
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _0222E9F0:
 	ldr r0, [sp, #0x20]
 	bl String_Delete
@@ -15195,7 +15195,7 @@ _0222E9F0:
 	ldr r0, [sp, #0x10]
 	add r2, r7, #0
 	mov r3, #0x50
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 	add r5, #0x18
@@ -15282,7 +15282,7 @@ ov74_0222EA88: ; 0x0222EA88
 	add r0, r4, #0
 	add r2, r6, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl CopyWindowToVram
 	add r0, r6, #0
@@ -15689,7 +15689,7 @@ ov74_0222EE0C: ; 0x0222EE0C
 	mov r1, #1
 	add r2, r6, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl String_Delete
 	mov r0, #1
@@ -15735,7 +15735,7 @@ _0222EE76:
 	mov r1, #1
 	add r2, r4, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	mov r0, #1
@@ -15824,7 +15824,7 @@ ov74_0222EF18: ; 0x0222EF18
 	mov r1, #1
 	add r2, r6, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl String_Delete
 	mov r0, #0
@@ -16081,7 +16081,7 @@ _0222F0F4:
 	ldr r1, [r4, #0x14]
 	ldr r3, [r4, #0x28]
 	add r0, r6, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x30]
 	bl String_Delete
 _0222F158:
@@ -16219,7 +16219,7 @@ _0222F234:
 	str r3, [sp, #0xc]
 	ldr r1, [r4, #0x14]
 	add r0, r6, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x14]
 	bl String_Delete
 	ldr r0, _0222F2C4 ; =0x00002A04
@@ -21595,7 +21595,7 @@ _02231AA6:
 	str r0, [sp, #0xc]
 	ldr r0, [r5]
 	ldr r1, [r5, #0x28]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	str r0, [r5, #0x48]
 	ldr r0, [r5, #0x40]
 	cmp r0, #0
@@ -21632,7 +21632,7 @@ _02231B0E:
 	str r0, [sp, #0xc]
 	ldr r0, [r5]
 	ldr r1, [r5, #0x28]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	str r0, [r5, #0x48]
 	mov r0, #0
 	str r0, [r5, #0x38]
@@ -21654,7 +21654,7 @@ _02231B4A:
 	ldr r0, [r5]
 	ldr r1, [r5, #0x28]
 	ldr r2, [r5, #0x3c]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	str r0, [r5, #0x48]
 	mov r0, #0
 	str r0, [r5, #0x3c]
@@ -29183,7 +29183,7 @@ _022354CC:
 	ldr r0, [r5, #0x10]
 	ldr r1, [r5, #0x40]
 	ldr r3, [r5, #0x20]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r7, r0, #0
 	b _02235542
 _02235500:
@@ -29212,7 +29212,7 @@ _02235500:
 	str r0, [sp, #0xc]
 	ldr r0, [r5, #0x10]
 	ldr r1, [r5, #0x40]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [r5, #0xc]

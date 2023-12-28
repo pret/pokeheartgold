@@ -314,7 +314,7 @@ _0225D73A:
 	mov r0, #0
 	str r0, [sp, #0xc]
 	add r0, r5, r4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r5, r4

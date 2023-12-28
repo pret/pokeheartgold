@@ -31100,7 +31100,7 @@ _021F4F66:
 	add r0, r7, #0
 	add r1, r4, #0
 	add r3, r5, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov14_021F4F24
@@ -34530,7 +34530,7 @@ _021F6996:
 	add r0, #0x30
 	ldr r2, [r2, #0x28]
 	add r0, r0, r4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl DestroyMsgData
 	add sp, #0x10

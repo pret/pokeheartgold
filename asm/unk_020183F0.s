@@ -1197,7 +1197,7 @@ _02018CC8:
 	ldr r0, [r5, #0x1c]
 	ldr r2, [r2, r6]
 	add r0, r0, r4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r5, #0x1c]
 	add r0, r0, r4
 	bl ScheduleWindowCopyToVram
@@ -1274,7 +1274,7 @@ _02018D50:
 	ldr r3, [sp, #0x10]
 	add r0, r0, r6
 	mov r1, #4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r5, #0x1c]
 	add r0, r0, r6
 	bl ScheduleWindowCopyToVram

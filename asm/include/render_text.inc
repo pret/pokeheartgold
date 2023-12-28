@@ -34,8 +34,8 @@
 .public MsgArray_SkipControlCode
 .public MsgArray_GetControlCode
 .public MsgArray_ControlCodeGetField
-.public sub_0202036C
-.public sub_020204FC
+.public GenerateFontHalfRowLookupTable
+.public RenderScreenFocusIndicatorTile
 .public TouchscreenHitbox_TouchHeldIsIn
 .public TouchscreenHitbox_TouchNewIsIn
 .public GF_AssertFail

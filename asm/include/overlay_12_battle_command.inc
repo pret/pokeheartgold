@@ -58,7 +58,7 @@
 .public FillWindowPixelBuffer
 .public FillWindowPixelRect
 .public TextPrinterCheckActive
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public sub_02021AC8
 .public sub_02021B5C
 .public sub_02021BD0

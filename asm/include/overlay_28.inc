@@ -48,7 +48,7 @@
 .public GF_SinDeg
 .public GF_CosDeg
 .public GF_DegreeToSinCosIdx
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite

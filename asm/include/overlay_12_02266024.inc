@@ -85,7 +85,7 @@
 .public RemoveWindow
 .public ScheduleBgTilemapBufferTransfer
 .public LCRandom
-.public AddTextPrinterParameterized3
+.public AddTextPrinterParameterizedWithColorAndSpacing
 .public sub_02021AC8
 .public sub_02021B5C
 .public Set2dSpriteAnimSeqNo

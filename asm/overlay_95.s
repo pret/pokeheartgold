@@ -3291,7 +3291,7 @@ ov95_021E7328: ; 0x021E7328
 	mov r1, #4
 	add r2, r5, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl CopyWindowToVram
 	add r0, r7, #0

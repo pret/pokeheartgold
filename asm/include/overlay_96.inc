@@ -205,9 +205,9 @@
 .public MTRandom
 .public ResetAllTextPrinters
 .public TextPrinterCheckActive
-.public sub_020200A0
-.public AddTextPrinterParameterized2
-.public AddTextPrinterParameterized3
+.public RemoveTextPrinter
+.public AddTextPrinterParameterizedWithColor
+.public AddTextPrinterParameterizedWithColorAndSpacing
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks

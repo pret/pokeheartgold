@@ -4007,7 +4007,7 @@ _022483C6:
 	add r0, sp, #0x68
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, sp, #0x68
 	mov r1, #1
 	mov r2, #5

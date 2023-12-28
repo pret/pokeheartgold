@@ -7443,7 +7443,7 @@ _0221FB70:
 	add r0, r5, #0
 	add r2, r6, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -7491,7 +7491,7 @@ _0221FBC6:
 	add r0, r5, #0
 	add r2, r6, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram

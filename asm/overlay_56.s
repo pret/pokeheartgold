@@ -554,7 +554,7 @@ _021E5FF2:
 	mov r1, #1
 	add r2, r4, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	b _021E6088
@@ -748,7 +748,7 @@ _021E6162:
 	add r0, r5, #0
 	str r3, [sp, #0xc]
 	add r0, #0x9c
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	strb r0, [r5, #0xf]
 	add r0, r4, #0
 	bl String_Delete
@@ -1861,7 +1861,7 @@ _021E6AB2:
 	add r0, r6, #0
 	mov r1, #1
 	mov r3, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x10]
 	bl String_Delete
 	add r0, r6, #0
@@ -1922,7 +1922,7 @@ _021E6B26:
 	add r0, r0, r1
 	mov r1, #1
 	asr r3, r3, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r1, [sp, #0x14]
 	ldr r0, [sp, #0x18]
 	add r0, r0, r1
@@ -1946,7 +1946,7 @@ _021E6B88:
 	add r0, r4, #0
 	ldr r2, [r2, #0x14]
 	add r0, #0x8c
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r4, #0x8c
 	add r0, r4, #0
 	bl CopyWindowToVram

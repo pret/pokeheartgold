@@ -3411,7 +3411,7 @@ _021E7342:
 	add r0, r5, #0
 	ldr r2, [r5, #0x2c]
 	add r0, #0x70
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	add r0, #0x70
 	bl ScheduleWindowCopyToVram
@@ -3473,7 +3473,7 @@ _021E73B2:
 	ldr r2, [r4, #0x30]
 	add r0, #0x50
 	mov r1, #4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	add r0, #0x50
 	bl ScheduleWindowCopyToVram
@@ -3520,7 +3520,7 @@ _021E7412:
 	ldr r2, [r2, #0x34]
 	add r0, #0x60
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	b _021E7462
 _021E7440:
 	mov r1, #0
@@ -3535,7 +3535,7 @@ _021E7440:
 	ldr r2, [r2, #0x34]
 	add r0, #0x60
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r1, r5, #0
 	add r1, #0x21
 	strb r0, [r1]

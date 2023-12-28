@@ -701,7 +701,7 @@ _021E5DF6:
 	add r0, r4, #0
 	ldr r2, [r4, #0x50]
 	add r0, #0x98
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	add r0, #0x78
 	bl ScheduleWindowCopyToVram
@@ -754,7 +754,7 @@ ov113_021E5E64: ; 0x021E5E64
 	ldr r2, [r4, #0x54]
 	add r0, #0x68
 	mov r1, #4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r4, #0x68
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
@@ -1262,7 +1262,7 @@ ov113_021E6274: ; 0x021E6274
 	str r1, [sp, #0xc]
 	add r1, r2, #0
 	add r2, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0

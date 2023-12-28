@@ -98,7 +98,7 @@
 .public GF_CosDegNoWrap
 .public SetLCRNGSeed
 .public LCRandom
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GfGfx_SetBanks
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_EngineASetPlanes

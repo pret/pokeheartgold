@@ -3637,7 +3637,7 @@ _0225E246:
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	add r2, r7, #0
-	bl AddTextPrinterParameterized3
+	bl AddTextPrinterParameterizedWithColorAndSpacing
 	b _0225E32E
 _0225E312:
 	mov r0, #0
@@ -3652,7 +3652,7 @@ _0225E312:
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	add r2, r7, #0
-	bl AddTextPrinterParameterized3
+	bl AddTextPrinterParameterizedWithColorAndSpacing
 _0225E32E:
 	add r0, r7, #0
 	bl String_Delete

@@ -31,7 +31,7 @@
 .public GetWindowWidth
 .public ScheduleBgTilemapBufferTransfer
 .public sub_0201F988
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public TouchscreenHitbox_FindRectAtTouchHeld
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public String_Delete

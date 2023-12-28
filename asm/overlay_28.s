@@ -379,7 +379,7 @@ _0225D7FC:
 	add r0, r4, #0
 	mov r1, #4
 	mov r3, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl CopyWindowPixelsToVram_TextMode
 	ldr r0, [sp, #0x10]

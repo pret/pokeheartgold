@@ -110,7 +110,7 @@
 .public ScheduleBgTilemapBufferTransfer
 .public sub_0201F988
 .public MsgArray_SkipControlCode
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public sub_020215A0
 .public sub_0202168C
 .public sub_020216C8

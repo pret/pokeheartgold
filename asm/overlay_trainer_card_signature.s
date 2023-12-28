@@ -1062,7 +1062,7 @@ ov52_021E8994: ; 0x021E8994
 	lsr r3, r4, #0x1f
 	add r3, r4, r3
 	asr r3, r3, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r5, #0xc]
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1223,7 +1223,7 @@ _021E8A8A:
 	add r0, r5, r0
 	mov r1, #1
 	asr r3, r3, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0
 	str r0, [sp, #0x14]
 	mov r0, #0x9d

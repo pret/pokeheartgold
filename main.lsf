@@ -68,7 +68,7 @@ Static main
 	Object asm/unk_0201F79C.o
 	Object src/string_control_code.o
 	Object src/math_util.o
-	Object asm/text.o
+	Object src/text.o
 	Object src/vram_transfer_manager.o
 	Object asm/unk_02020654.o
 	Object src/ascii_util.o

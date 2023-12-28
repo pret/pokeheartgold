@@ -43,7 +43,7 @@
 .public FillWindowPixelRect
 .public GetWindowWidth
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo
 .public Get2dSpriteCurrentAnimSeqNo
