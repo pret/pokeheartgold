@@ -52,7 +52,7 @@
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
 .public sub_0201F988
-.public AddTextPrinterParameterized3
+.public AddTextPrinterParameterizedWithColorAndSpacing
 .public sub_02021AC8
 .public sub_02021B5C
 .public sub_020247F4

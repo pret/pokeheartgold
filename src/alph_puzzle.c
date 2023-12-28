@@ -1187,7 +1187,7 @@ void AlphPuzzle_ToggleDropCursorSprite(AlphPuzzleData *data, int a1) {
     }
 
     u32 width = FontID_String_GetWidth(4, data->quitText, 0);
-    AddTextPrinterParameterized2(data->window, 4, data->quitText, (48 - width) / 2, 4, 0xFF, sQuitButtonTextColors[a1], NULL);
+    AddTextPrinterParameterizedWithColor(data->window, 4, data->quitText, (48 - width) / 2, 4, 0xFF, sQuitButtonTextColors[a1], NULL);
     ScheduleWindowCopyToVram(data->window);
 }
 
@@ -1197,16 +1197,16 @@ static void AlphPuzzle_PrintConfirmQuitText(AlphPuzzleData *data, int a1, int a2
     }
     FillWindowPixelBuffer(&data->window[ALPH_WINDOW_CONFIRM_QUIT], 15);
     if (textFrameDelay == 0) {
-        AddTextPrinterParameterized2(&data->window[ALPH_WINDOW_CONFIRM_QUIT], 1, data->confirmQuitText[a1], 0, 0, 0xFF, 0x1020F, 0);
+        AddTextPrinterParameterizedWithColor(&data->window[ALPH_WINDOW_CONFIRM_QUIT], 1, data->confirmQuitText[a1], 0, 0, 0xFF, 0x1020F, 0);
     } else {
-        data->textPrinterId = AddTextPrinterParameterized2(&data->window[ALPH_WINDOW_CONFIRM_QUIT], 1, data->confirmQuitText[a1], 0, 0, textFrameDelay, MAKE_TEXT_COLOR(1, 2, 15), NULL);
+        data->textPrinterId = AddTextPrinterParameterizedWithColor(&data->window[ALPH_WINDOW_CONFIRM_QUIT], 1, data->confirmQuitText[a1], 0, 0, textFrameDelay, MAKE_TEXT_COLOR(1, 2, 15), NULL);
     }
     ScheduleWindowCopyToVram(&data->window[ALPH_WINDOW_CONFIRM_QUIT]);
 }
 
 static void AlphPuzzle_PrintHintText(AlphPuzzleData *data) {
     FillWindowPixelBuffer(&data->window[ALPH_WINDOW_FLAVOR_TEXT], 0);
-    AddTextPrinterParameterized2(&data->window[ALPH_WINDOW_FLAVOR_TEXT], 4, data->hintText[data->puzzleIndex], 0, 0, 0xFF, MAKE_TEXT_COLOR(2, 1, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&data->window[ALPH_WINDOW_FLAVOR_TEXT], 4, data->hintText[data->puzzleIndex], 0, 0, 0xFF, MAKE_TEXT_COLOR(2, 1, 0), NULL);
     ScheduleWindowCopyToVram(&data->window[ALPH_WINDOW_FLAVOR_TEXT]);
 }
 

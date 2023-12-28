@@ -117,7 +117,7 @@
 .public SetLCRNGSeed
 .public LCRandom
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized3
+.public AddTextPrinterParameterizedWithColorAndSpacing
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks

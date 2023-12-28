@@ -46,7 +46,7 @@
 .public ScheduleWindowCopyToVram
 .public FillWindowPixelBuffer
 .public sub_0201F988
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GfGfx_EngineBTogglePlanes
 .public SpriteList_Delete
 .public sub_0202457C

@@ -5502,7 +5502,7 @@ ov72_0223A3E0: ; 0x0223A3E0
 	add r0, r5, #0
 	mov r1, #1
 	add r2, r6, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov72_0223A3E0
@@ -6736,7 +6736,7 @@ ov72_0223AD20: ; 0x0223AD20
 	mov r1, #4
 	add r2, r4, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl CopyWindowToVram
 	add r0, r4, #0
@@ -7393,7 +7393,7 @@ ov72_0223B1C8: ; 0x0223B1C8
 	mov r1, #4
 	add r2, r6, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, _0223B2BC ; =0x000F0100
@@ -7404,7 +7404,7 @@ ov72_0223B1C8: ; 0x0223B1C8
 	mov r1, #4
 	add r2, r7, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	add r0, #8
 	bl CopyWindowToVram

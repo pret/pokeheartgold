@@ -3819,7 +3819,7 @@ _021E92CA:
 	lsl r0, r0, #2
 	add r0, r7, r0
 	add r2, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x1c]
 	add r6, r6, #1
 	add r5, #0x10
@@ -6932,7 +6932,7 @@ _021EAB84:
 	ldr r0, [sp, #0x14]
 	mov r1, #1
 	add r3, r5, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r1, [sp, #0x20]
 	mov r0, #1
 	mov r2, #0
@@ -7257,7 +7257,7 @@ ov102_021EAD98: ; 0x021EAD98
 	ldrsh r3, [r3, r6]
 	ldr r2, [r5, #0x7c]
 	add r0, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _021EADE2:
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
@@ -7367,7 +7367,7 @@ _021EAE68:
 	str r3, [sp, #0xc]
 	ldr r0, [r4, #0x5c]
 	add r2, r6, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl String_Delete
 	add r0, r5, #0
@@ -7388,7 +7388,7 @@ _021EAECA:
 	str r3, [sp, #0xc]
 	ldr r0, [r4, #0x5c]
 	ldr r2, [r4, #0x7c]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	b _021EAF34
 _021EAEEE:
 	ldr r0, [r4, #0x78]
@@ -7405,7 +7405,7 @@ _021EAEEE:
 	str r3, [sp, #0xc]
 	ldr r0, [r4, #0x5c]
 	ldr r2, [r4, #0x7c]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	b _021EAF34
 _021EAF12:
 	ldr r0, [r4, #0x78]
@@ -7422,7 +7422,7 @@ _021EAF12:
 	str r3, [sp, #0xc]
 	ldr r0, [r4, #0x5c]
 	ldr r2, [r4, #0x7c]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _021EAF34:
 	ldr r0, [r4, #0x5c]
 	bl CopyWindowToVram
@@ -7994,7 +7994,7 @@ _021EB366:
 	add r0, r4, #0
 	mov r1, #4
 	asr r3, r7, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r6, r6, #1
 	add r4, #0x10
 	add r5, r5, #4
@@ -8087,7 +8087,7 @@ _021EB3F6:
 	add r0, #0x44
 	mov r1, #4
 	asr r3, r4, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	mov r1, #0
 	bl ScheduleBgTilemapBufferTransfer
@@ -8611,7 +8611,7 @@ _021EB7EC:
 	str r0, [sp, #0xc]
 	add r0, sp, #0x28
 	add r2, r5, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, sp, #0x28
 	bl PutWindowTilemap
 	add r0, sp, #0x28
@@ -8708,7 +8708,7 @@ _021EB8FC:
 	add r0, sp, #0x20
 	mov r1, #0
 	add r3, r3, #3
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r5, r5, #1
 	cmp r5, r7
 	blo _021EB8D8
@@ -9837,7 +9837,7 @@ ov102_021EC13C: ; 0x021EC13C
 	ldr r2, [r5, #0x3c]
 	add r0, #0x10
 	mul r3, r4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 _021EC178:
@@ -9859,7 +9859,7 @@ _021EC178:
 	add r0, r5, #0
 	ldr r2, [r5, #0x3c]
 	add r0, #0x20
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r2, #0
 	mov r0, #1
 	add r1, r7, #0

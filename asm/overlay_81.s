@@ -5264,7 +5264,7 @@ ov81_0224080C: ; 0x0224080C
 	ldrb r1, [r1]
 	ldr r2, [r5, #0x24]
 	add r0, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov81_0224080C
@@ -5366,7 +5366,7 @@ _0224090C:
 	ldr r3, [sp, #0x10]
 	add r0, r5, #0
 	add r2, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add r0, r5, #0
@@ -5420,7 +5420,7 @@ _02240980:
 	ldr r3, [sp, #0x10]
 	add r0, r5, #0
 	add r2, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add r0, r5, #0
@@ -5488,7 +5488,7 @@ ov81_022409B0: ; 0x022409B0
 	ldr r3, [sp, #0x10]
 	add r0, r4, #0
 	add r1, r6, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x1c]
 	bl String_Delete
 	ldr r0, [sp, #0x18]
@@ -5528,7 +5528,7 @@ ov81_022409B0: ; 0x022409B0
 	str r0, [sp, #0xc]
 	ldr r3, [sp, #0x14]
 	add r0, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	b _02240AC8
@@ -5552,7 +5552,7 @@ _02240A96:
 	ldr r3, [sp, #0x14]
 	add r0, r4, #0
 	add r2, r5, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 _02240AC8:
@@ -5610,7 +5610,7 @@ ov81_02240AD8: ; 0x02240AD8
 	ldr r1, [sp, #0x1c]
 	add r0, r5, #0
 	add r2, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl GetWindowWidth
 	sub r0, r0, #1
@@ -5660,7 +5660,7 @@ _02240B6C:
 	add r0, r5, #0
 	add r2, r4, #0
 	lsl r3, r3, #3
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _02240BA0:
 	add r0, r4, #0
 	bl String_Delete
@@ -10523,7 +10523,7 @@ _02243096:
 	add r0, r6, #0
 	add r2, r7, #0
 	add r3, r5, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov81_02243068

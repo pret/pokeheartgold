@@ -142,7 +142,7 @@
 .public Draw3dModel
 .public Bind3dModelSet
 .public AllocAndLoad3dTexResources
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks

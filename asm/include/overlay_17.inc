@@ -97,7 +97,7 @@
 .public FillWindowPixelBuffer
 .public DoScheduledBgGpuUpdates
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public sub_020210BC

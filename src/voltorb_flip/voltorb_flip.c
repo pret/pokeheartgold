@@ -1529,11 +1529,11 @@ static void PaintMessageOnWindow(VoltorbFlipAppWork *work, FontID fontId, u8 msg
     PrintMessageOnWindow(work, fontId, msgNo, window, x, y, 0x00010200);
 }
 
-static void PrintMessageOnWindow(VoltorbFlipAppWork *work, FontID fontId, u8 msgNo, Window *window, u8 x, u8 y, u32 textSpeed) {
+static void PrintMessageOnWindow(VoltorbFlipAppWork *work, FontID fontId, u8 msgNo, Window *window, u8 x, u8 y, u32 textColor) {
     FillWindowPixelBuffer(window, 0);
 
     String *str = ReadMsgData_ExpandPlaceholders(work->msgFmt, work->msgData, msgNo, work->heapId);
-    AddTextPrinterParameterized2(window, fontId, str, x, y, 0xff, textSpeed, 0);
+    AddTextPrinterParameterizedWithColor(window, fontId, str, x, y, TEXT_SPEED_NOTRANSFER, textColor, 0);
 
     ScheduleWindowCopyToVram(window);
     String_Delete(str);

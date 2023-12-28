@@ -1778,7 +1778,7 @@ ov93_0225D468: ; 0x0225D468
 	add r2, r4, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add r5, #0x70
@@ -1893,7 +1893,7 @@ _0225D560:
 	ldr r0, [sp, #0x18]
 	add r0, r0, r1
 	mov r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl FreeToHeap
 _0225D58E:

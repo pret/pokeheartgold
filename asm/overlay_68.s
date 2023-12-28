@@ -1224,7 +1224,7 @@ _021E62AA:
 	add r0, r1, r0
 	ldr r2, [r5, r2]
 	add r1, r7, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1495,7 +1495,7 @@ _021E64C4:
 	ldr r2, [r5, r2]
 	mov r1, #0
 	mov r3, #0x10
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r1, r4, #0
 	ldr r0, [sp, #0x18]
 	add r1, #0x3a
@@ -1550,7 +1550,7 @@ _021E64C4:
 	ldr r2, [r5, r2]
 	mov r1, #0
 	mov r3, #0x2d
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _021E659C:
 	ldr r0, [sp, #0x10]
 	add r4, r4, #1
@@ -1597,7 +1597,7 @@ _021E65AE:
 	ldr r2, [r5, r2]
 	add r0, #0xe8
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	add r0, #0xf8
 	ldr r0, [r0]
@@ -1757,7 +1757,7 @@ _021E6720:
 	add r0, #0xa8
 	ldr r2, [r2, r6]
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	add r0, #0x10
 	str r0, [sp]
@@ -1772,7 +1772,7 @@ _021E6720:
 	ldr r2, [r5, r2]
 	add r0, #0xa8
 	mov r3, #0x10
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0x11
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -1825,7 +1825,7 @@ _021E6720:
 	ldr r2, [r5, r2]
 	add r0, #0xa8
 	mov r3, #0x2d
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

@@ -813,7 +813,7 @@ _0223A668:
 	ldr r2, [sp, #0x18]
 	add r0, sp, #0x3c
 	str r3, [sp, #0x14]
-	bl AddTextPrinterParameterized3
+	bl AddTextPrinterParameterizedWithColorAndSpacing
 	b _0223A6B2
 _0223A6A6:
 	add r3, r4, #0

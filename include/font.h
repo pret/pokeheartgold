@@ -11,7 +11,7 @@ void FontID_SetAccessDirect(FontID fontId, HeapID heapId);
 void FontID_SetAccessLazy(FontID fontId);
 void FontID_Release(FontID fontId);
 struct GlyphInfo *FontID_TryLoadGlyph(FontID fontId, u16 glyphId);
-BOOL FontID_RenderText(int fontId, struct TextPrinter *printer);
+RenderResult FontID_RenderText(int fontId, TextPrinter *printer);
 u32 FontID_FlatArray_GetWidth(FontID fontId, const u16 *string, u32 letterSpacing);
 u32 FontID_FlatArray_GetWidthFirstLine(FontID fontId, const u16 *string, u32 letterSpacing);
 u32 FontID_String_GetWidth(FontID fontId, String *string, u32 letterSpacing);

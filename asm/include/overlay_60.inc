@@ -100,7 +100,7 @@
 .public Draw3dModel
 .public GetLCRNGSeed
 .public SetLCRNGSeed
-.public AddTextPrinterParameterized3
+.public AddTextPrinterParameterizedWithColorAndSpacing
 .public sub_02020D2C
 .public sub_020215A0
 .public sub_0202168C

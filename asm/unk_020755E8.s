@@ -347,7 +347,7 @@ sub_02075804: ; 0x02075804
 	mov r1, #4
 	add r2, r4, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl CopyWindowToVram
 	add r0, r4, #0

@@ -2226,7 +2226,7 @@ ov82_0223EF1C: ; 0x0223EF1C
 	ldrb r1, [r1]
 	ldr r2, [r5, #0x28]
 	add r0, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov82_0223EF1C
@@ -2320,7 +2320,7 @@ ov82_0223EFCC: ; 0x0223EFCC
 	add r0, r5, #0
 	add r2, r6, #0
 	add r3, r7, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl String_Delete
 	add r0, r5, #0
@@ -2399,7 +2399,7 @@ _0223F090:
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x10]
 	add r3, r6, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _0223F0D4:
 	add r4, r4, #1
 	add r6, #0x40
@@ -2556,7 +2556,7 @@ ov82_0223F1AC: ; 0x0223F1AC
 	add r0, r5, #0
 	add r2, r6, #0
 	add r3, r7, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl String_Delete
 	ldr r0, [sp, #0x10]

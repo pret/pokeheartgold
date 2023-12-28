@@ -1282,7 +1282,7 @@ _021E632E:
 	ldr r2, [r4, r2]
 	add r0, #0x1c
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	b _021E63E2
 _021E6384:
 	ldr r1, _021E649C ; =ov53_021E84F8
@@ -1329,7 +1329,7 @@ _021E63A6:
 	ldr r2, [r4, r2]
 	add r0, #0x1c
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _021E63E2:
 	mov r0, #0x11
 	lsl r0, r0, #4
@@ -1533,7 +1533,7 @@ _021E650C:
 	lsr r3, r5, #0x1f
 	add r3, r5, r3
 	asr r3, r3, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl CopyWindowToVram
 	add r0, r6, #0
@@ -4514,7 +4514,7 @@ ov53_021E7D70: ; 0x021E7D70
 	mov r1, #4
 	add r2, r6, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl CopyWindowToVram
 	add r0, r4, #0
@@ -5244,7 +5244,7 @@ ov53_021E8330: ; 0x021E8330
 	mov r1, #4
 	add r2, r5, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl CopyWindowToVram
 	add r0, r7, #0

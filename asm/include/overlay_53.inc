@@ -97,7 +97,7 @@
 .public ResetAllTextPrinters
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GfGfx_SetBanks

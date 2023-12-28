@@ -82,7 +82,7 @@
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public TextPrinterCheckActive
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public sub_020210BC

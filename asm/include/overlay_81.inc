@@ -124,7 +124,7 @@
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public TextPrinterCheckActive
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GF_RunVramTransferTasks
 .public sub_020215C0
 .public sub_0202168C

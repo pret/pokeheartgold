@@ -1305,7 +1305,7 @@ ov73_021E63BC: ; 0x021E63BC
 	add r0, r5, #0
 	add r2, r7, #0
 	asr r3, r3, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2763,7 +2763,7 @@ _021E6F34:
 	ldr r0, [r5, #0x4c]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _021E6F66:
 	add r0, r5, #0
 	mov r1, #0xf
@@ -2929,7 +2929,7 @@ _021E7098:
 	ldr r0, [r5, #0x4c]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _021E70AC:
 	add r0, r5, #0
 	mov r1, #1
@@ -3151,7 +3151,7 @@ ov73_021E7230: ; 0x021E7230
 	mov r1, #4
 	add r2, r5, #0
 	asr r3, r6, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 _021E7286:
@@ -3187,7 +3187,7 @@ _021E7286:
 	mov r1, #4
 	add r2, r5, #0
 	asr r3, r6, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	ldr r0, [r4]
@@ -3333,7 +3333,7 @@ _021E738E:
 	ldr r2, [r4, #0x2c]
 	add r0, r6, #0
 	mov r3, #5
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	str r5, [sp]
 	mov r0, #0xff
 	str r0, [sp, #4]
@@ -3345,7 +3345,7 @@ _021E738E:
 	add r0, r6, #0
 	mov r1, #0
 	mov r3, #0x46
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	b _021E7442
 _021E7410:
 	mov r0, #0xff
@@ -3358,7 +3358,7 @@ _021E7410:
 	ldr r2, [r4, #0x2c]
 	add r0, r6, #0
 	mov r3, #5
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	str r5, [sp]
 	mov r0, #0xff
 	str r0, [sp, #4]
@@ -3370,7 +3370,7 @@ _021E7410:
 	add r0, r6, #0
 	mov r1, #0
 	mov r3, #0x46
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _021E7442:
 	ldr r0, [sp, #0x18]
 	bl String_Delete
@@ -9144,7 +9144,7 @@ ov73_021EA088: ; 0x021EA088
 	add r0, r5, #0
 	mov r1, #1
 	add r2, r6, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov73_021EA088
@@ -9171,7 +9171,7 @@ ov73_021EA0BC: ; 0x021EA0BC
 	add r0, r5, #0
 	add r2, r6, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

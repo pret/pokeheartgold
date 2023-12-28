@@ -889,7 +889,7 @@ ov19_02259F64: ; 0x02259F64
 	ldr r2, [r4, #0x30]
 	add r0, #0x3c
 	mov r1, #4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	add r0, #0x3c
 	bl ScheduleWindowCopyToVram
@@ -929,7 +929,7 @@ _02259FD4:
 	add r0, r4, #0
 	ldr r2, [r4, #0x2c]
 	add r0, #0x4c
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	add r0, #0x4c
 	bl ScheduleWindowCopyToVram

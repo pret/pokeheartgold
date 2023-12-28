@@ -48,7 +48,7 @@
 .public AllocFromHeap
 .public FreeToHeap
 .public CopyWindowPixelsToVram_TextMode
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public Camera_New
 .public Camera_Delete
 .public Camera_SetStaticPtr
