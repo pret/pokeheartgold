@@ -615,7 +615,7 @@ Overlay OVY_17
 {
     After OVY_16
     Object src/berry_pots_app.o
-    Object asm/berry_pots_app_rodata.o
+	Object src/berry_pots_app_tasks.o
 }
 Overlay OVY_18
 {
