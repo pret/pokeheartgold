@@ -36,11 +36,13 @@ BOOL ov12_0224B1FC(BattleSystem *bsys, BattleContext *ctx);
 BOOL ov12_0224B398(BattleSystem *bsys, BattleContext *ctx);
 BOOL ov12_0224B498(BattleSystem *bsys, BattleContext *ctx);
 BOOL ov12_0224B528(BattleSystem *bsys, BattleContext *ctx);
+BOOL ov12_0224BC2C(BattleSystem *bsys, BattleContext *ctx);
+BOOL ov12_0224BCA4(BattleSystem *bsys, BattleContext *ctx);
+BOOL BattleSystem_CheckMoveHit(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int move);
+BOOL BattleSystem_CheckMoveEffect(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int move);
 
 //The following functions haven't been decompiled yet
 void ov12_0224E384(BattleSystem *bsys, BattleContext *ctx);
-void BattleSystem_CheckMoveHit(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int moveNo);
-void BattleSystem_CheckMoveEffect(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int moveNo);
 BOOL ov12_0224DC74(BattleContext *ctx, ControllerCommand a1, ControllerCommand a2, int a3);
 BOOL ov12_0224DD18(BattleContext *ctx, ControllerCommand a1, ControllerCommand a2);
 BOOL ov12_0224D7EC(BattleSystem *bsys, BattleContext *ctx);

@@ -2456,9 +2456,230 @@ BOOL ov12_0224B528(BattleSystem *bsys, BattleContext *ctx) {
     CopyBattleMonToPartyMon(bsys, ctx, ctx->battlerIdAttacker);
     
     if (ret == 1) {
-        ctx->battleStatus |= 2;
-        ctx->moveStatusFlag |= (1 << 31);
+        ctx->battleStatus |= BATTLE_STATUS_NO_DOUBLE_CHECK;
+        ctx->moveStatusFlag |= MOVE_STATUS_31;
     }
     
     return (ret != 3);
+}
+
+//static
+BOOL ov12_0224BC2C(BattleSystem *bsys, BattleContext *ctx) {
+    int ret = 0;
+    int script;
+    
+    do {
+        switch (ctx->unk_54) {
+        case 0:
+            script = ov12_02252EC8(ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget);
+            if ((script && !(ctx->moveStatusFlag & 0x1FD849)) || script == 181) {
+                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
+                ctx->commandNext = ctx->command;
+                ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                ctx->moveStatusFlag |= MOVE_STATUS_31;
+                ret = 1;
+            }
+            ctx->unk_54++;
+            break;
+        case 1:
+            ctx->unk_54 = 0;
+            ret = 2;
+            break;
+        }
+    } while (ret == 0);
+    
+    return (ret != 2);
+}
+
+//static
+BOOL ov12_0224BCA4(BattleSystem *bsys, BattleContext *ctx) {
+    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 278);
+    ctx->commandNext = ctx->command;
+    ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+    return TRUE;
+}
+
+extern const u8 sHitChanceTable[13][2];
+
+//static
+BOOL BattleSystem_CheckMoveHit(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int move) {
+    u16 hitChance;
+    s8 var;
+    s8 attackerAccuracy;
+    s8 targetEvasion;
+    int item;
+    int itemMod;
+    u8 moveType;
+    u8 moveCategory;
+    
+    if (BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_TUTORIAL) {
+        return FALSE;
+    }
+    
+    if (GetBattlerAbility(ctx, battlerIdAttacker) == ABILITY_NORMALIZE) {
+        moveType = TYPE_NORMAL;
+    } else if (ctx->moveType) {
+        moveType = ctx->moveType;
+    } else {
+        moveType = ctx->trainerAIData.moveData[move].type;
+    }
+    
+    moveCategory = ctx->trainerAIData.moveData[move].category;
+    attackerAccuracy = ctx->battleMons[battlerIdAttacker].statChanges[STAT_ACC] - 6;
+    targetEvasion = 6 - ctx->battleMons[battlerIdTarget].statChanges[STAT_EVASION];
+    
+    if (GetBattlerAbility(ctx, battlerIdAttacker) == ABILITY_SIMPLE) {
+        attackerAccuracy *= 2;
+    }
+    
+    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_SIMPLE) == TRUE) {
+        targetEvasion *= 2;
+    }
+    
+    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_UNAWARE) == TRUE) {
+        attackerAccuracy = 0;
+    }
+
+    if (GetBattlerAbility(ctx, battlerIdAttacker) == ABILITY_UNAWARE) {
+        targetEvasion = 0;
+    }
+    
+    if (((ctx->battleMons[battlerIdTarget].status2 & STATUS2_FORESIGHT) || (ctx->battleMons[battlerIdTarget].moveEffectFlags & MOVE_EFFECT_FLAG_MIRACLE_EYE)) && targetEvasion < 0) {
+        targetEvasion = 0;
+    }
+    
+    var = 6 + targetEvasion + attackerAccuracy;
+    
+    if (var < 0) {
+        var = 0;
+    }
+    if (var > 12) {
+        var = 12;
+    }
+    
+    hitChance = ctx->trainerAIData.moveData[move].accuracy;
+    
+    if (!hitChance) {
+        return FALSE;
+    }
+    
+    if (ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) {
+        return FALSE;
+    }
+    
+    if (ctx->battleStatus & BATTLE_STATUS_FLAT_HIT_RATE) {
+        return FALSE;
+    }
+    
+    if (!CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) && !CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)) {
+        if ((ctx->fieldCondition & FIELD_CONDITION_SUN_ALL) && ctx->trainerAIData.moveData[move].effect == 152) {
+            hitChance = 50;
+        }
+    }
+    
+    hitChance *= sHitChanceTable[var][0];
+    hitChance /= sHitChanceTable[var][1];
+    
+    if (GetBattlerAbility(ctx, battlerIdAttacker) == ABILITY_COMPOUNDEYES) {
+        hitChance = hitChance * 130 / 100;
+    }
+    
+    if (!CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) && !CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)) {
+        if ((ctx->fieldCondition & FIELD_CONDITION_SANDSTORM_ALL) && CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_SAND_VEIL) == TRUE) {
+            hitChance = hitChance * 80 / 100;
+        }
+        
+        if (ctx->fieldCondition & FIELD_CONDITION_HAIL_ALL && CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_SNOW_CLOAK) == TRUE) {
+            hitChance = hitChance * 80 / 100;
+        }
+        
+        if (ctx->fieldCondition & FIELD_CONDITION_FOG) {
+            hitChance = hitChance * 6 / 10;
+        }
+    }
+    
+    if (GetBattlerAbility(ctx, battlerIdAttacker) == ABILITY_HUSTLE && (moveCategory == CATEGORY_PHYSICAL)) {
+        hitChance = hitChance * 80 / 100;
+    }
+    
+    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_TANGLED_FEET) == TRUE && ctx->battleMons[battlerIdTarget].status2 & STATUS2_CONFUSION) {
+        hitChance = hitChance * 50 / 100;
+    }
+    
+    item = GetBattlerHeldItemEffect(ctx, battlerIdTarget);
+    itemMod = GetHeldItemModifier(ctx, battlerIdTarget, 0);
+    
+    if (item == HOLD_EFFECT_ACC_REDUCE) {
+        hitChance = hitChance * (100 - itemMod) / 100;
+    }
+    
+    item = GetBattlerHeldItemEffect(ctx, battlerIdAttacker);
+    itemMod = GetHeldItemModifier(ctx, battlerIdAttacker, 0);
+    
+    if (item == HOLD_EFFECT_ACCURACY_UP) {
+        hitChance = hitChance * (100 + itemMod) / 100;
+    }
+    
+    if (item == HOLD_EFFECT_CRITRATE_UP_SLOWER && ov12_0225561C(ctx, battlerIdTarget) == TRUE) { //TODO: hold effect const is mislabeled
+        hitChance = hitChance * (100 + itemMod) / 100;
+    }
+    
+    if (ctx->battleMons[battlerIdAttacker].unk88.unk4_2B) {
+        ctx->battleMons[battlerIdAttacker].unk88.unk4_2B = 0; //TODO: micle berry
+        hitChance = hitChance * 120 / 100;
+    }
+    
+    if (ctx->fieldCondition & FIELD_CONDITION_GRAVITY) {
+        hitChance = hitChance * 10 / 6;
+    }
+    
+    if ((BattleSystem_Random(bsys) % 100) + 1 > hitChance) {
+        ctx->moveStatusFlag |= MOVE_STATUS_MISS;
+    }
+    
+    return FALSE;
+}
+
+//static
+BOOL BattleSystem_CheckMoveEffect(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int move) {
+    if (ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) {
+        return FALSE;
+    }
+    
+    if (ctx->turnData[battlerIdTarget].protectFlag 
+        && ctx->trainerAIData.moveData[move].unkB & (1 << 1)
+        && (move != MOVE_CURSE || CurseUserIsGhost(ctx, move, battlerIdAttacker) == TRUE)
+        && (!BattleCtx_IsIdenticalToCurrentMove(ctx, move) || ctx->battleStatus & BATTLE_STATUS_CHARGE_MOVE_HIT)) {
+        UnlockBattlerOutOfCurrentMove(bsys, ctx, battlerIdAttacker);
+        ctx->moveStatusFlag |= MOVE_STATUS_15; //TODO: MOVE_STATUS_PROTECTED
+        return FALSE;
+    }
+    
+    if (!(ctx->battleStatus & BATTLE_STATUS_FLAT_HIT_RATE) //TODO: Is this flag a debug flag to ignore hit rates..?
+        && ((ctx->battleMons[battlerIdTarget].moveEffectFlags & MOVE_EFFECT_FLAG_LOCK_ON
+            && ctx->battleMons[battlerIdTarget].unk88.battlerIdLockOn == battlerIdAttacker)
+          || GetBattlerAbility(ctx, battlerIdAttacker) == ABILITY_NO_GUARD
+          || GetBattlerAbility(ctx, battlerIdTarget) == ABILITY_NO_GUARD)) {
+        ctx->moveStatusFlag &= ~MOVE_STATUS_MISS;
+        return FALSE;
+    }
+    
+    if (!CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) && !CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)) {
+        if (ctx->fieldCondition & FIELD_CONDITION_RAIN_ALL && ctx->trainerAIData.moveData[move].effect == 152) {
+            ctx->moveStatusFlag &= ~MOVE_STATUS_MISS;
+        }
+        if (ctx->fieldCondition & FIELD_CONDITION_HAIL_ALL && ctx->trainerAIData.moveData[move].effect == 260) {
+            ctx->moveStatusFlag &= ~MOVE_STATUS_MISS;
+        }
+    }
+    
+    if (!(ctx->moveStatusFlag & MOVE_STATUS_10) 
+        && ctx->trainerAIData.moveData[ctx->moveNoCur].range != RANGE_OPPONENT_SIDE
+        && ((!(ctx->battleStatus & BATTLE_STATUS_HIT_FLY) && ctx->battleMons[battlerIdTarget].moveEffectFlags & MOVE_EFFECT_FLAG_6) //TODO: MOVE_EFFECT_FLAG_6 -> MOVE_EFFECT_FLAG_FLY?
+            || (!(ctx->battleStatus & BATTLE_STATUS_SHADOW_FORCE) && ctx->battleMons[battlerIdTarget].moveEffectFlags & MOVE_EFFECT_FLAG_PHANTOM_FORCE)
+            || (!(ctx->battleStatus & BATTLE_STATUS_HIT_DIG) && ctx->battleMons[battlerIdTarget].moveEffectFlags & MOVE_EFFECT_FLAG_7)
+            || (!(ctx->battleStatus & BATTLE_STATUS_HIT_DIVE) && ctx->battleMons[battlerIdTarget].moveEffectFlags & MOVE_EFFECT_FLAG_DIVE))) {
+        ctx->moveStatusFlag |= MOVE_STATUS_16;
+    }
+    return FALSE;
 }
