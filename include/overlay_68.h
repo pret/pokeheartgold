@@ -3,8 +3,8 @@
 
 #include "overlay_manager.h"
 
-BOOL ov68_021E5900(OVY_MANAGER *man, int *state);
-BOOL ov68_021E5968(OVY_MANAGER *man, int *state);
-BOOL ov68_021E5A3C(OVY_MANAGER *man, int *state);
+BOOL MoveRelearner_OvyInit(OVY_MANAGER *man, int *state);
+BOOL MoveRelearner_OvyExec(OVY_MANAGER *man, int *state);
+BOOL MoveRelearner_OvyExit(OVY_MANAGER *man, int *state);
 
 #endif //POKEHEARTGOLD_OVY_68_H

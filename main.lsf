@@ -159,11 +159,11 @@ Static main
 	Object asm/unk_0203BC10.o
 	Object asm/unk_0203DB6C.o
 	Object src/field_system.o
-	Object src/unk_0203E348.o
-	Object src/unk_0203E348_data1.o
-	Object src/unk_0203E348_data2.o
-	Object src/unk_0203E348_data3.o
-	Object asm/unk_0203E348_data.o
+	Object src/field/launch_application.o
+	Object src/field/launch_application_data1.o
+	Object src/field/launch_application_data2.o
+	Object src/field/launch_application_data3.o
+	Object asm/launch_application_data.o
 	Object src/script.o
 	Object src/fieldmap.o
 	Object src/scrcmd_c.o

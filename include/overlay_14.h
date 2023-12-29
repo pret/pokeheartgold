@@ -3,8 +3,8 @@
 
 #include "overlay_manager.h"
 
-BOOL ov14_021E5900(OVY_MANAGER *man, int *state);
-BOOL ov14_021E596C(OVY_MANAGER *man, int *state);
-BOOL ov14_021E5988(OVY_MANAGER *man, int *state);
+BOOL PCBox_OvyInit(OVY_MANAGER *man, int *state);
+BOOL PCBox_OvyExec(OVY_MANAGER *man, int *state);
+BOOL PCBox_OvyExit(OVY_MANAGER *man, int *state);
 
 #endif //POKEHEARTGOLD_OVY_14_H

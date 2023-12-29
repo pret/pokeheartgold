@@ -1,8 +1,8 @@
 #include "scrcmd.h"
 #include "fieldmap.h"
+#include "field/launch_application.h"
 #include "friend_group.h"
 #include "unk_0202C730.h"
-#include "unk_0203E348.h"
 #include "math_util.h"
 
 BOOL ScrCmd_GetStaticEncounterOutcomeFlag(ScriptContext *ctx) {
@@ -46,7 +46,7 @@ BOOL ScrCmd_465(ScriptContext *ctx) {
     case 4: {
         u16 *r5 = sub_0202C7E0(group, 0, 0);
         u16 *retPtr = ScriptGetVarPointer(ctx);
-        CreateNamingScreen(ctx->taskman, NAMINGSCREEN_GROUP, 0, PLAYER_NAME_LENGTH, 0, r5, retPtr);
+        Task_NamingScreen(ctx->taskman, NAME_SCREEN_GROUP, 0, PLAYER_NAME_LENGTH, 0, r5, retPtr);
         return TRUE;
     }
     case 5: {

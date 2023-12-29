@@ -19,12 +19,12 @@
 #include "unk_02062108.h"
 #include "field_map_object.h"
 #include "field_follow_poke.h"
+#include "field/launch_application.h"
 #include "save_follow_poke.h"
 #include "map_events.h"
 #include "unk_0205FD20.h"
 #include "unk_02054648.h"
 #include "metatile_behavior.h"
-#include "unk_0203E348.h"
 #include "unk_02055418.h"
 #include "unk_020932A4.h"
 #include "unk_02092BE8.h"
@@ -1587,28 +1587,28 @@ BOOL ScrCmd_136(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_PartySelectUI(ScriptContext *ctx) {
-    PartyMenuAppData **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *partyMenu = sub_0203E580(HEAP_ID_32, ctx->fieldSystem);
+    PartyMenuArgs **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    *partyMenu = LaunchPartyMenuApp_Unk2(HEAP_ID_32, ctx->fieldSystem);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
 
 BOOL ScrCmd_566(ScriptContext *ctx) { //todo: trade screen
-    PartyMenuAppData **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *partyMenu = sub_0203E5A4(HEAP_ID_32, ctx->fieldSystem);
+    PartyMenuArgs **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    *partyMenu = LaunchPartyMenuApp_Unk3(HEAP_ID_32, ctx->fieldSystem);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
 
 BOOL ScrCmd_350(ScriptContext *ctx) { //todo: union pokemon selection
-    PartyMenuAppData **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *partyMenu = sub_0203E6D4(ctx->fieldSystem->taskman, HEAP_ID_32);
+    PartyMenuArgs **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    *partyMenu = SelectPartyMonAndLearnMove(ctx->fieldSystem->taskman, HEAP_ID_32);
     return TRUE;
 }
 
 BOOL ScrCmd_PartySelect(ScriptContext *ctx) { //todo: get selected pokemon slot
     u16 *dest_p = ScriptGetVarPointer(ctx);
-    PartyMenuAppData **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    PartyMenuArgs **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     GF_ASSERT(*partyMenu != NULL);
     *dest_p = sub_0203E5C8(*partyMenu);
     if (*dest_p == 7) {
@@ -1622,8 +1622,8 @@ BOOL ScrCmd_PartySelect(ScriptContext *ctx) { //todo: get selected pokemon slot
 BOOL ScrCmd_635(ScriptContext *ctx) {
     u16 *r5 = ScriptGetVarPointer(ctx);
     u16 *r6 = ScriptGetVarPointer(ctx);
-    PartyMenuAppData **partyMenuPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    PartyMenuAppData *partyMenu;
+    PartyMenuArgs **partyMenuPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    PartyMenuArgs *partyMenu;
     int r0;
     partyMenu = *partyMenuPtr;
     GF_ASSERT(*partyMenuPtr != NULL);
@@ -1647,8 +1647,8 @@ BOOL ScrCmd_639(ScriptContext *ctx) {
     u16 *r5 = ScriptGetVarPointer(ctx);
     u16 *sp0 = ScriptGetVarPointer(ctx);
     u16 *r7 = ScriptGetVarPointer(ctx);
-    struct PartyMenuAppData **partyMenuPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    struct PartyMenuAppData *partyMenu = *partyMenuPtr;
+    struct PartyMenuArgs **partyMenuPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    struct PartyMenuArgs *partyMenu = *partyMenuPtr;
     GF_ASSERT(partyMenu != NULL);
     int r0 = sub_0203E5C8(*partyMenuPtr);
     if (r0 == 7) {
@@ -1672,8 +1672,8 @@ BOOL ScrCmd_645(ScriptContext *ctx) {
     u16 *r5 = ScriptGetVarPointer(ctx);
     u16 *sp0 = ScriptGetVarPointer(ctx);
     u16 *r7 = ScriptGetVarPointer(ctx);
-    struct PartyMenuAppData **partyMenuPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    struct PartyMenuAppData *partyMenu = *partyMenuPtr;
+    struct PartyMenuArgs **partyMenuPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    struct PartyMenuArgs *partyMenu = *partyMenuPtr;
     GF_ASSERT(partyMenu != NULL);
     int r0 = sub_0203E5C8(*partyMenuPtr);
     if (r0 == 7) {
@@ -1708,15 +1708,15 @@ BOOL ScrCmd_GetMoveSelection(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_ChooseMoveUI(ScriptContext *ctx) {
+BOOL ScrCmd_PokemonSummaryScreen(ScriptContext *ctx) {
     void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    u8 r6 = ScriptReadByte(ctx);
+    u8 onlySkillsPanel = ScriptReadByte(ctx);
     u16 r7 = ScriptGetVar(ctx);
     u16 r3 = ScriptGetVar(ctx);
-    if (r6 == 1) {
-        *p_work = sub_0203E7F4(HEAP_ID_32, ctx->fieldSystem, r7, r3);
+    if (onlySkillsPanel == 1) {
+        *p_work = LaunchLearnForgetMoveApp(HEAP_ID_32, ctx->fieldSystem, r7, r3);
     } else {
-        *p_work = sub_0203FB94(HEAP_ID_32, ctx->fieldSystem, r7, r3);
+        *p_work = LaunchPokemonSummaryApp(HEAP_ID_32, ctx->fieldSystem, r7, r3);
     }
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
@@ -1919,7 +1919,7 @@ BOOL ScrCmd_155(ScriptContext *ctx) {
         return TRUE;
     } else {
         *r6 = 0;
-        sub_0203F204(ctx->fieldSystem, *fashionAppData);
+        LaunchAccessoryPortraitApp(ctx->fieldSystem, *fashionAppData);
         SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
         return TRUE;
     }
@@ -1944,7 +1944,7 @@ BOOL ScrCmd_256(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_450(ScriptContext *ctx) {
-    sub_0203F964(ctx->fieldSystem);
+    LaunchGeonetGlobeApp(ctx->fieldSystem);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
@@ -1955,8 +1955,8 @@ BOOL ScrCmd_156(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_TownMap(ScriptContext *ctx) {
-    Unk_PokegearSTRUCT_2C **p_townMap = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *p_townMap = TownMap_New(ctx->fieldSystem, 1);
+    PokegearArgs **p_townMap = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    *p_townMap = LaunchPokegearTownMapApp(ctx->fieldSystem, 1);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
@@ -1973,11 +1973,11 @@ BOOL ScrCmd_408(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_158(ScriptContext *ctx) { //todo: PC box screen
-    struct PCBoxAppData **p_work;
+    PCBoxArgs **p_work;
 
     p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     *p_work = PCBoxAppData_New(ctx);
-    sub_0203E868(ctx->fieldSystem, *p_work);
+    LaunchPCBoxApp(ctx->fieldSystem, *p_work);
     SetupNativeScript(ctx, sub_020429A0);
     return TRUE;
 }
@@ -1994,7 +1994,7 @@ BOOL ScrCmd_160(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_161(ScriptContext *ctx) {
-    sub_0203F4A8(ctx->fieldSystem->taskman);
+    Task_WirelessTrade(ctx->fieldSystem->taskman);
     return TRUE;
 }
 
@@ -2012,8 +2012,8 @@ BOOL ScrCmd_HOF_Credits(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_164(ScriptContext *ctx) {
-    void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //todo: hall of fame data
-    *p_work = sub_0203F984(ctx->fieldSystem);
+    HALL_OF_FAME **hof = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //todo: hall of fame data
+    *hof = LaunchHallOfFameCongratsApp(ctx->fieldSystem);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
@@ -2059,7 +2059,7 @@ BOOL ScrCmd_333(ScriptContext *ctx) { //todo: bag select screen
     u8 r4 = ScriptReadByte(ctx) != 0 ? 1 : 0;
     p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     GF_ASSERT(*p_work == NULL);
-    *p_work = sub_0203E460(ctx->fieldSystem, r4);
+    *p_work = LaunchBagApp_WithPocket(ctx->fieldSystem, r4);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
@@ -2068,7 +2068,7 @@ BOOL ScrCmd_334(ScriptContext *ctx) { //todo: bag select screen result
     u16 *r5 = ScriptGetVarPointer(ctx);
     void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     GF_ASSERT(*p_work != NULL);
-    *r5 = sub_0203E4CC(*p_work);
+    *r5 = BagSelectResult(*p_work);
     FreeToHeap(*p_work);
     *p_work = NULL;
     return FALSE;
@@ -2079,20 +2079,20 @@ BOOL ScrCmd_370(ScriptContext *ctx) { //unknown? possibly daycare select screen?
     u8 r4 = ScriptReadByte(ctx) != 0 ? 1 : 0;
     p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     GF_ASSERT(*p_work == NULL);
-    *p_work = sub_0203E460(ctx->fieldSystem, r4);
+    *p_work = LaunchBagApp_WithPocket(ctx->fieldSystem, r4);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
 
 BOOL ScrCmd_NamePlayer(ScriptContext *ctx) {
     u16 *p_var = ScriptGetVarPointer(ctx);
-    CreateNamingScreen(ctx->taskman, NAMINGSCREEN_PLAYER, 0, PLAYER_NAME_LENGTH, 0, NULL, p_var);
+    Task_NamingScreen(ctx->taskman, NAME_SCREEN_PLAYER, 0, PLAYER_NAME_LENGTH, 0, NULL, p_var);
     return TRUE;
 }
 
 BOOL ScrCmd_NameRival(ScriptContext *ctx) {
     u16 *p_var = ScriptGetVarPointer(ctx);
-    CreateNamingScreen(ctx->taskman, NAMINGSCREEN_RIVAL, 0, PLAYER_NAME_LENGTH, 0, NULL, p_var);
+    Task_NamingScreen(ctx->taskman, NAME_SCREEN_RIVAL, 0, PLAYER_NAME_LENGTH, 0, NULL, p_var);
     return TRUE;
 }
 
@@ -2117,7 +2117,7 @@ BOOL ScrCmd_NicknameInput(ScriptContext *ctx) {
     GetMonData(mon, MON_DATA_NICKNAME, nickname);
     var_ret = ScriptGetVarPointer(ctx);
     species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    CreateNamingScreen(ctx->taskman, NAMINGSCREEN_POKEMON, species, POKEMON_NAME_LENGTH, partyPos, nickname, var_ret);
+    Task_NamingScreen(ctx->taskman, NAME_SCREEN_POKEMON, species, POKEMON_NAME_LENGTH, partyPos, nickname, var_ret);
     return TRUE;
 }
 
@@ -2592,7 +2592,7 @@ BOOL ScrCmd_CatchingTutorial(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_252(ScriptContext *ctx) {
-    sub_0203F818(ctx->fieldSystem);
+    LaunchTrainerCardSignatureApp(ctx->fieldSystem);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
@@ -3314,7 +3314,7 @@ BOOL ScrCmd_CheckNationalDexComplete(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_ShowCertificate(ScriptContext *ctx) {
-    CertificatesApp_Args **args = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    CertificatesArgs **args = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     u16 certificateId = ScriptGetVar(ctx);
     *args = LaunchCertificatesApp(ctx->fieldSystem, HEAP_ID_32, certificateId);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
@@ -3942,8 +3942,8 @@ BOOL ScrCmd_550(ScriptContext *ctx) {
 
 BOOL ScrCmd_551(ScriptContext *ctx) {
     u16 r6 = ScriptGetVar(ctx);
-    PartyMenuAppData **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *p_work = sub_0203E5D0(HEAP_ID_32, ctx->fieldSystem, r6);
+    PartyMenuArgs **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    *p_work = LaunchPartyMenuApp_Unk4(HEAP_ID_32, ctx->fieldSystem, r6);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
@@ -3951,7 +3951,7 @@ BOOL ScrCmd_551(ScriptContext *ctx) {
 BOOL ScrCmd_552(ScriptContext *ctx) {
     u16 *r6 = ScriptGetVarPointer(ctx);
     u16 *r5 = ScriptGetVarPointer(ctx);
-    struct PartyMenuAppData **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    struct PartyMenuArgs **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     GF_ASSERT(*partyMenu != NULL);
     *r6 = sub_0203E5C8(*partyMenu);
     if (*r6 == 7) {
@@ -4172,14 +4172,14 @@ BOOL ScrCmd_631(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_ScratchOffCard(ScriptContext *ctx) {
-    ScratchCardAppData **scratchCardData = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *scratchCardData = ScratchOffCards_Create(ctx->fieldSystem, HEAP_ID_32);
+    ScratchOffCardsArgs **scratchCardData = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    *scratchCardData = LaunchScratchOffCardsApp(ctx->fieldSystem, HEAP_ID_32);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
 
 BOOL ScrCmd_ScratchOffCardEnd(ScriptContext *ctx) {
-    ScratchCardAppData **scratchCardData = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    ScratchOffCardsArgs **scratchCardData = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     FreeToHeap(*scratchCardData);
     *scratchCardData = NULL;
     return TRUE;
@@ -4189,8 +4189,8 @@ BOOL ScrCmd_GetScratchOffPrize(ScriptContext *ctx) {
     u16 cardno = ScriptGetVar(ctx);
     u16 *p_ret1 = ScriptGetVarPointer(ctx);
     u16 *p_ret2 = ScriptGetVarPointer(ctx);
-    ScratchCardAppData **scratchCardDataPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    ScratchCardAppData *scratchCardData = *scratchCardDataPtr;
+    ScratchOffCardsArgs **scratchCardDataPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    ScratchOffCardsArgs *scratchCardData = *scratchCardDataPtr;
     *p_ret1 = scratchCardData->unk_08[cardno];
     *p_ret2 = scratchCardData->unk_0E[cardno];
     return FALSE;
@@ -4655,7 +4655,7 @@ BOOL ScrCmd_SetPhoneCall(ScriptContext *ctx) {
 
 BOOL ScrCmd_RunPhoneCall(ScriptContext *ctx) {
     void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *p_work = PhoneUI_New(ctx->fieldSystem);
+    *p_work = LaunchPokegearPhoneApp(ctx->fieldSystem);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
@@ -4792,22 +4792,22 @@ BOOL ScrCmd_FollowPokeInteract(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_712(ScriptContext *ctx) { //smth creating alph puzzle screen?
+BOOL ScrCmd_712(ScriptContext *ctx) {
     void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     u8 action = ScriptReadByte(ctx);
     switch (action) {
     case 1:
-        *p_work = sub_0203EEE4(ctx->fieldSystem);
+        *p_work = LaunchPokeathlonMedalsApp(ctx->fieldSystem);
         break;
     case 2:
-        *p_work = sub_0203EF40(ctx->fieldSystem);
+        *p_work = LaunchPokeathlonEventRecordApp(ctx->fieldSystem);
         break;
     case 3:
-        *p_work = sub_0203EFA0(ctx->fieldSystem);
+        *p_work = LaunchPokeathlonUnkApp(ctx->fieldSystem);
         break;
     default:
     case 0:
-        *p_work = sub_0203EEA0(ctx->fieldSystem);
+        *p_work = LaunchPokeathlonCourseRecordApp(ctx->fieldSystem);
         break;
     }
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
@@ -4815,7 +4815,7 @@ BOOL ScrCmd_712(ScriptContext *ctx) { //smth creating alph puzzle screen?
 }
 
 BOOL ScrCmd_AlphPuzzle(ScriptContext *ctx) { //this just loads a different puzzle with another ID
-    Unk0203EC04 **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    AlphPuzzleArgs **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     u8 puzzle = ScriptReadByte(ctx);
     if (puzzle > 4) {
         puzzle = 0;

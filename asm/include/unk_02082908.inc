@@ -131,7 +131,7 @@
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx
 .public sub_02074490
-.public sub_020830D8
+.public CreateNamingScreenArgs
 .public sub_0208311C
 .public NNS_G2dInitOamManagerModule
 .public G2x_SetBlendAlpha_
@@ -142,7 +142,7 @@
 .public MIi_CpuClear16
 .public memset
 .public _s32_div_f
-.public _020FA484
+.public gOvyTemplate_Battle
 .public gNatureStatMods
 .public _02102610
 .public gSystem

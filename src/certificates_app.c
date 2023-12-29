@@ -4,6 +4,7 @@
 #include "constants/mmodel.h"
 #include "certificates_app.h"
 #include "field_follow_poke.h"
+#include "field/launch_application.h"
 #include "font.h"
 #include "gf_gfx_loader.h"
 #include "msgdata.h"
@@ -17,7 +18,6 @@
 #include "text.h"
 #include "unk_0200FA24.h"
 #include "unk_02013FDC.h"
-#include "unk_0203E348.h"
 #include "unk_0205BB1C.h"
 
 typedef struct CertificatesApp_Data {
@@ -179,12 +179,12 @@ static void ov78_021E6664(Sprite *sprite, PlayerProfile *profile, HeapID heapId)
 static u32 ov78_021E6688(int species, int form, int gender);
 static void ov78_021E66D4(Sprite *sprite, Pokemon *pokemon, HeapID heapId, u32 a3);
 
-BOOL CertificatesApp_Init(OVY_MANAGER *manager, int *state) {
+BOOL Certificates_OvyInit(OVY_MANAGER *manager, int *state) {
     CreateHeap(HEAP_ID_3, HEAP_ID_CERTIFICATES, 0x20000);
 
     CertificatesApp_Data *data = OverlayManager_CreateAndGetData(manager, sizeof(CertificatesApp_Data), HEAP_ID_CERTIFICATES);
     memset(data, 0, sizeof(CertificatesApp_Data));
-    CertificatesApp_Args *args = OverlayManager_GetArgs(manager);
+    CertificatesArgs *args = OverlayManager_GetArgs(manager);
 
     int slot = Save_GetPartyLeadAlive(args->saveData);
 
@@ -227,7 +227,7 @@ BOOL CertificatesApp_Init(OVY_MANAGER *manager, int *state) {
     return TRUE;
 }
 
-BOOL CertificatesApp_Run(OVY_MANAGER *manager, int *state) {
+BOOL Certificates_OvyExec(OVY_MANAGER *manager, int *state) {
     CertificatesApp_Data *data = OverlayManager_GetData(manager);
     BOOL ret = FALSE;
 
@@ -289,7 +289,7 @@ BOOL CertificatesApp_Run(OVY_MANAGER *manager, int *state) {
     return ret;
 }
 
-BOOL CertificatesApp_Exit(OVY_MANAGER *manager, int *state) {
+BOOL Certificates_OvyExit(OVY_MANAGER *manager, int *state) {
     CertificatesApp_Data *data = OverlayManager_GetData(manager);
     HeapID heapId = data->heapId;
 

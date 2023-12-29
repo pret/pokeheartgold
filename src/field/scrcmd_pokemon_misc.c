@@ -3,6 +3,7 @@
 #include "bug_contest.h"
 #include "fieldmap.h"
 #include "field_map_object.h"
+#include "field/launch_application.h"
 #include "friend_group.h"
 #include "gf_gfx_loader.h"
 #include "photo_album.h"
@@ -18,7 +19,6 @@
 #include "unk_0206D494.h"
 #include "unk_02031AF0.h"
 #include "unk_02031B0C.h"
-#include "unk_0203E348.h"
 #include "unk_02031904.h"
 #include "unk_02030A98.h"
 #include "unk_0205BFF0.h"
@@ -849,15 +849,15 @@ BOOL ScrCmd_GetTotalApricornCount(ScriptContext *ctx) {
 
 //Related to Kurt- canceling
 BOOL ScrCmd_739(ScriptContext *ctx) { //todo: rename structs and find out stuff
-    struct ApricornBoxWork **unkPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *unkPtr = CreateApricornBoxWork(ctx->fieldSystem, 2);
+    struct ApricornBoxArgs **unkPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    *unkPtr = LaunchApricornBoxApp(ctx->fieldSystem, 2);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
 
 //Related to aprijuice stand- canceling
 BOOL ScrCmd_740(ScriptContext *ctx) {
-    ApricornBoxWork **unkPtrA = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    ApricornBoxArgs **unkPtrA = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     u32 unkVar = ScriptGetVar(ctx);
     u16 *unkPtrB = ScriptGetVarPointer(ctx);
     *unkPtrA = sub_0203ED80(ctx->fieldSystem, unkVar, unkPtrB);
@@ -1190,7 +1190,7 @@ static u32 SlotLuckiness(SaveData *saveData, u8 machineId, u8 city) {
 BOOL ScrCmd_CasinoGame(ScriptContext *ctx) {
     u8 machineId = ScriptReadByte(ctx);
     u8 city = ScriptReadByte(ctx); //1 = celadon; 0 = goldenrod
-    VoltorbFlipAppArgs **unkPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //VoltorbFlipAppData
+    VoltorbFlipArgs **unkPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //VoltorbFlipAppData
 
     *unkPtr = LaunchVoltorbFlipApp(ctx->fieldSystem, SlotLuckiness(ctx->fieldSystem->saveData, machineId, city)); //this is messy, very very messy
 

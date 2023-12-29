@@ -13,9 +13,9 @@ extern BOOL ov56_021E5C20(OVY_MANAGER*, int*);
 extern BOOL ov56_021E5C9C(OVY_MANAGER*, int*);
 extern BOOL ov56_021E5CB4(OVY_MANAGER*, int*);
 
-extern BOOL ov102_021E7740(OVY_MANAGER*, int*);
-extern BOOL ov102_021E77B8(OVY_MANAGER*, int*);
-extern BOOL ov102_021E7868(OVY_MANAGER*, int*);
+extern BOOL EasyChat_OvyInit(OVY_MANAGER*, int*);
+extern BOOL EasyChat_OvyExec(OVY_MANAGER*, int*);
+extern BOOL EasyChat_OvyExit(OVY_MANAGER*, int*);
 
 static const OVY_MGR_TEMPLATE ov55_021E5BF4 = {
     .init = ov56_021E5C20,
@@ -25,9 +25,9 @@ static const OVY_MGR_TEMPLATE ov55_021E5BF4 = {
 };
 
 static const OVY_MGR_TEMPLATE ov55_021E5C04 = {
-    .init = ov102_021E7740,
-    .exec = ov102_021E77B8,
-    .exit = ov102_021E7868,
+    .init = EasyChat_OvyInit,
+    .exec = EasyChat_OvyExec,
+    .exit = EasyChat_OvyExit,
     .ovy_id = FS_OVERLAY_ID(OVY_102),
 };
 
@@ -113,7 +113,7 @@ BOOL ov55_UnkApp_Main(OVY_MANAGER *manager, int *state) {
             return TRUE;
 
         case 3:
-            overlayData->unk8 = sub_02090C94(2, 0, args->saveData, args->unk1C, overlayData->heapId);
+            overlayData->unk8 = CreateEasyChatArgs(2, 0, args->saveData, args->unk1C, overlayData->heapId);
             if (MailMsg_IsInit(&overlayData->unk10->mailMessages[overlayData->unk10->mailMessageIdx])) {
                 MailMsg_Copy(&overlayData->unk14, &overlayData->unk10->mailMessages[overlayData->unk10->mailMessageIdx]);
             } else {
@@ -129,7 +129,7 @@ BOOL ov55_UnkApp_Main(OVY_MANAGER *manager, int *state) {
                 if (sub_02090D48(overlayData->unk8) == 0) {
                     sub_02090D60(overlayData->unk8, &overlayData->unk10->mailMessages[overlayData->unk10->mailMessageIdx]);
                 }
-                sub_02090D0C(overlayData->unk8);
+                FreeEasyChatArgs(overlayData->unk8);
                 *state = 0;
             }
 

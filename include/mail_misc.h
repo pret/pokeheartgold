@@ -9,6 +9,11 @@
 #include "pokemon.h"
 #include "save.h"
 
+typedef struct MsgBankMsgNo {
+    u16 msg_bank;
+    u16 msg_no;
+} MsgBankMsgNo;
+
 typedef struct {
     u8 unk0;
     u8 unk1;
@@ -23,7 +28,7 @@ typedef struct {
     MAIL_MESSAGE mailMessage;
     u16 unk1C[0x4];
     u32 *unk24;
-} Unk02090C94;
+} EasyChatArgs;
 
 typedef struct UseMailWork {
     u16 unk0[0x2];
@@ -38,30 +43,30 @@ typedef struct UseMailWork {
     u32 *unk1C;
 } UseMailWork;
 
-Unk02090C94 *sub_02090C94(u8 a0, u8 a1, SaveData *saveData, u32 *a3, HeapID heapId);
-void sub_02090D0C(Unk02090C94 *a0);
-void sub_02090D14(Unk02090C94 *a0, u16 a1);
-void sub_02090D18(Unk02090C94 *a0, u16 a1, u16 a2);
-void sub_02090D20(Unk02090C94 *a0, MAIL_MESSAGE *mailMessage);
-void sub_02090D34(Unk02090C94 *a0);
-void sub_02090D40(Unk02090C94 *a0);
-BOOL sub_02090D48(Unk02090C94 *a0);
-BOOL sub_02090D4C(Unk02090C94 *a0);
-u16 sub_02090D50(Unk02090C94 *a0);
-void sub_02090D54(Unk02090C94 *a0, MAIL_MESSAGE *mailMessage);
-void sub_02090D60(Unk02090C94 *a0, MAIL_MESSAGE *mailMessage);
-u8 sub_02090D70(Unk02090C94 *a0);
-u8 sub_02090D74(Unk02090C94 *a0);
-u32 sub_02090D78(Unk02090C94 *a0);
-Pokedex *sub_02090D7C(Unk02090C94 *a0);
-SaveEasyChat *sub_02090D80(Unk02090C94 *a0);
-u8 sub_02090D84(Unk02090C94 *a0);
-u8 sub_02090D88(Unk02090C94 *a0);
-void sub_02090D8C(Unk02090C94 *a0, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2);
-BOOL sub_02090DC0(Unk02090C94 *a0, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2);
-void sub_02090E04(Unk02090C94 *a0, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2);
-int sub_02090E44(Unk02090C94 *a0);
-void sub_02090E5C(Unk02090C94 *a0, u32 a1);
+EasyChatArgs *CreateEasyChatArgs(u8 a0, u8 a1, SaveData *saveData, u32 *a3, HeapID heapId);
+void FreeEasyChatArgs(EasyChatArgs *a0);
+void sub_02090D14(EasyChatArgs *a0, u16 a1);
+void sub_02090D18(EasyChatArgs *a0, u16 a1, u16 a2);
+void sub_02090D20(EasyChatArgs *a0, MAIL_MESSAGE *mailMessage);
+void sub_02090D34(EasyChatArgs *a0);
+void sub_02090D40(EasyChatArgs *a0);
+BOOL sub_02090D48(EasyChatArgs *a0);
+BOOL sub_02090D4C(EasyChatArgs *a0);
+u16 sub_02090D50(EasyChatArgs *a0);
+void sub_02090D54(EasyChatArgs *a0, MsgBankMsgNo *mailMessage);
+void sub_02090D60(EasyChatArgs *a0, MAIL_MESSAGE *mailMessage);
+u8 sub_02090D70(EasyChatArgs *a0);
+u8 sub_02090D74(EasyChatArgs *a0);
+u32 sub_02090D78(EasyChatArgs *a0);
+Pokedex *sub_02090D7C(EasyChatArgs *a0);
+SaveEasyChat *sub_02090D80(EasyChatArgs *a0);
+u8 sub_02090D84(EasyChatArgs *a0);
+u8 sub_02090D88(EasyChatArgs *a0);
+void sub_02090D8C(EasyChatArgs *a0, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2);
+BOOL sub_02090DC0(EasyChatArgs *a0, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2);
+void sub_02090E04(EasyChatArgs *a0, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2);
+int sub_02090E44(EasyChatArgs *a0);
+void sub_02090E5C(EasyChatArgs *a0, u32 a1);
 UseMailWork *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 a3, HeapID heapId);
 UseMailWork *sub_02090EC0(SaveData *saveData, int n, u16 i, HeapID heapId);
 UseMailWork *sub_02090F00(SaveData *saveData, Pokemon *mon, HeapID heapId);

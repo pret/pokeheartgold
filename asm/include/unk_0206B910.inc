@@ -37,7 +37,7 @@
 .public sub_0209106C
 .public MI_CpuFill8
 .public memset
-.public _0210159C
+.public gOvyTemplate_PartyMenu
 .public NNS_G3dGlb
 .public ov57_022378DC
 .public ov57_02237AF8

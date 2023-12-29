@@ -1,5 +1,5 @@
+#include "field/launch_application.h"
 #include "unk_02097720.h"
-#include "unk_0203E348.h"
 #include "unk_020552A4.h"
 
 static BOOL sub_02097754(TaskManager *taskManager);
@@ -19,7 +19,7 @@ BOOL sub_02097754(TaskManager *taskManager) {
 
     switch (env->unknown_0) {
     case 0:
-        env->unknown_8 = sub_0203EB64(fieldSystem);
+        env->unknown_8 = LaunchSafariDecorationApp(fieldSystem);
         env->unknown_0++;
         break;
     case 1:

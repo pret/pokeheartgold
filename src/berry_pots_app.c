@@ -2,6 +2,7 @@
 #include "global.h"
 #include "berry_pots_app.h"
 #include "bag.h"
+#include "field/launch_application.h"
 #include "font.h"
 #include "game_stats.h"
 #include "gf_gfx_loader.h"
@@ -21,7 +22,6 @@
 #include "unk_020183F0.h"
 #include "unk_02025154.h"
 #include "unk_02023694.h"
-#include "unk_0203E348.h"
 #include "vram_transfer_manager.h"
 
 enum BerryPotsApp_022036FC_Action {

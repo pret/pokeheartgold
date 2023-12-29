@@ -56,5 +56,5 @@
 .public GetRibbonDescGmm
 .public sub_0208E600
 .public sub_0208E994
-.public _020FA484
+.public gOvyTemplate_Battle
 .public gNatureStatMods

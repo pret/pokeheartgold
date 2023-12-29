@@ -411,9 +411,9 @@
 .public _ddiv
 .public FX_SinCosTable_
 .public gSystem
-.public PokeathlonCourseApplication_OvyInit
-.public PokeathlonCourseApplication_OvyExec
-.public PokeathlonCourseApplication_OvyExit
+.public PokeathlonCourse_OvyInit
+.public PokeathlonCourse_OvyExec
+.public PokeathlonCourse_OvyExit
 .public ov97_0221E5C0
 .public ov97_0221E5D4
 .public ov97_0221E69C

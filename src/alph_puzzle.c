@@ -93,7 +93,7 @@ static void AlphPuzzle_UpdateSelectedTile(AlphPuzzleData *data, u8 tileIndex, BO
 static void ov110_021E6D20(AlphPuzzleData *data);
 static void ov110_021E6D54(SysTask *task, void *_data);
 
-BOOL ov110_AlphPuzzle_OvyInit(OVY_MANAGER *man, int *state) {
+BOOL AlphPuzzle_OvyInit(OVY_MANAGER *man, int *state) {
     switch (*state) {
     case 0:
         ov110_021E5A24();
@@ -115,7 +115,7 @@ BOOL ov110_AlphPuzzle_OvyInit(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL ov110_AlphPuzzle_OvyExec(OVY_MANAGER *man, int *state) {
+BOOL AlphPuzzle_OvyExec(OVY_MANAGER *man, int *state) {
     AlphPuzzleData *data = OverlayManager_GetData(man);
     switch (*state) {
     case ALPH_PUZZLE_STATE_FADE_IN:
@@ -149,7 +149,7 @@ BOOL ov110_AlphPuzzle_OvyExec(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL ov110_AlphPuzzle_OvyExit(OVY_MANAGER *man, int *state) {
+BOOL AlphPuzzle_OvyExit(OVY_MANAGER *man, int *state) {
     AlphPuzzleData *data = OverlayManager_GetData(man);
     if (!ov110_021E5B0C(data)) {
         return FALSE;

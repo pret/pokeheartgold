@@ -4,8 +4,8 @@
 
 	.text
 
-	thumb_func_start ov54_021E5900
-ov54_021E5900: ; 0x021E5900
+	thumb_func_start OptionsMenu_OvyInit
+OptionsMenu_OvyInit: ; 0x021E5900
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl OverlayManager_GetArgs
@@ -124,10 +124,10 @@ ov54_021E5900: ; 0x021E5900
 	nop
 _021E5A08: .word 0xFFFFFCFF
 _021E5A0C: .word 0xFFFF83FF
-	thumb_func_end ov54_021E5900
+	thumb_func_end OptionsMenu_OvyInit
 
-	thumb_func_start ov54_021E5A10
-ov54_021E5A10: ; 0x021E5A10
+	thumb_func_start OptionsMenu_OvyExit
+OptionsMenu_OvyExit: ; 0x021E5A10
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -262,10 +262,10 @@ _021E5B08:
 _021E5B30: .word 0x0000012E
 _021E5B34: .word 0xFFFFFCFF
 _021E5B38: .word 0xFFFF83FF
-	thumb_func_end ov54_021E5A10
+	thumb_func_end OptionsMenu_OvyExit
 
-	thumb_func_start ov54_021E5B3C
-ov54_021E5B3C: ; 0x021E5B3C
+	thumb_func_start OptionsMenu_OvyExec
+OptionsMenu_OvyExec: ; 0x021E5B3C
 	push {r3, r4, lr}
 	sub sp, #0xc
 	bl OverlayManager_GetData
@@ -410,7 +410,7 @@ _021E5C58:
 	mov r0, #0
 	add sp, #0xc
 	pop {r3, r4, pc}
-	thumb_func_end ov54_021E5B3C
+	thumb_func_end OptionsMenu_OvyExec
 
 	thumb_func_start ov54_021E5C64
 ov54_021E5C64: ; 0x021E5C64

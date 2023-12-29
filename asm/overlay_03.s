@@ -9253,7 +9253,7 @@ ov03_02258764: ; 0x02258764
 	bl sub_0207789C
 	ldr r1, [r4, #4]
 	add r0, r5, #0
-	bl sub_0203E3D4
+	bl LaunchBagApp
 	ldr r1, _022587CC ; =sub_02092B04
 	add r0, r6, #0
 	add r2, r4, #0
@@ -9498,7 +9498,7 @@ ScrCmd_716: ; 0x0225894C
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl sub_0203EB08
+	bl LaunchSafariAreaCustomizerApp
 	str r0, [r4]
 	ldr r1, _02258974 ; =ScrNative_WaitApplication_DestroyTaskData
 	add r0, r5, #0

@@ -2,6 +2,7 @@
 #include "save_vars_flags.h"
 #include "game_stats.h"
 #include "party.h"
+#include "field/launch_application.h"
 #include "game_clear.h"
 #include "hall_of_fame.h"
 #include "overlay_63.h"
@@ -15,7 +16,6 @@
 #include "sound_02004A44.h"
 #include "unk_02005D10.h"
 #include "unk_0200FA24.h"
-#include "unk_0203E348.h"
 #include "unk_02054E00.h"
 #include "unk_020552A4.h"
 #include "unk_02055418.h"
@@ -34,8 +34,8 @@
 
 typedef struct {
     BOOL gameCleared;
-    HOFCongratsAppArgs hofCongratsArgs;
-    CreditsAppArgs creditsArgs;
+    HOFCongratsArgs hofCongratsArgs;
+    CreditsArgs creditsArgs;
     BgConfig *bgConfig;
     Window window;
     String *windowText;

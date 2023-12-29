@@ -2134,7 +2134,7 @@
       ]
     },
     {
-      "name": "choose_move_ui",
+      "name": "pokemon_summary_screen",
       "args": [
         1,
         "var",

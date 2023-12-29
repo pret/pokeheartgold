@@ -117,6 +117,6 @@
 .public NNS_GfdDoVramTransfer
 .public MI_CpuFill8
 .public gSystem
-.public ov110_AlphPuzzle_OvyInit
-.public ov110_AlphPuzzle_OvyExec
-.public ov110_AlphPuzzle_OvyExit
+.public AlphPuzzle_OvyInit
+.public AlphPuzzle_OvyExec
+.public AlphPuzzle_OvyExit

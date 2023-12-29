@@ -7,8 +7,8 @@
 
 	.text
 
-	thumb_func_start ov15_BagApp_Init
-ov15_BagApp_Init: ; 0x021F9380
+	thumb_func_start Bag_OvyInit
+Bag_OvyInit: ; 0x021F9380
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -277,10 +277,10 @@ _021F95F8: .word 0x00000615
 _021F95FC: .word 0x00000644
 _021F9600: .word ov15_021F995C
 _021F9604: .word 0x04000304
-	thumb_func_end ov15_BagApp_Init
+	thumb_func_end Bag_OvyInit
 
-	thumb_func_start ov15_BagApp_Exec
-ov15_BagApp_Exec: ; 0x021F9608
+	thumb_func_start Bag_OvyExec
+Bag_OvyExec: ; 0x021F9608
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -562,10 +562,10 @@ _021F9810:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov15_BagApp_Exec
+	thumb_func_end Bag_OvyExec
 
-	thumb_func_start ov15_BagApp_Exit
-ov15_BagApp_Exit: ; 0x021F982C
+	thumb_func_start Bag_OvyExit
+Bag_OvyExit: ; 0x021F982C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -638,7 +638,7 @@ ov15_BagApp_Exit: ; 0x021F982C
 	nop
 _021F98EC: .word 0x0000068C
 _021F98F0: .word 0x000005E4
-	thumb_func_end ov15_BagApp_Exit
+	thumb_func_end Bag_OvyExit
 
 	thumb_func_start BagApp_GetSaveStructPtrs
 BagApp_GetSaveStructPtrs: ; 0x021F98F4
@@ -14400,7 +14400,7 @@ ov15_022008B0: ; 0x022008B0
 
 	.public ov15_022008B8
 ov15_022008B8:
-	.word ov15_BagApp_Init, ov15_BagApp_Exec, ov15_BagApp_Exit, 0xFFFFFFFF
+	.word Bag_OvyInit, Bag_OvyExec, Bag_OvyExit, 0xFFFFFFFF
 
 ov15_022008C8: ; 0x022008C8
 	.byte 0xA5, 0x28, 0x18, 0x65, 0x40, 0x0C, 0x1E, 0x32

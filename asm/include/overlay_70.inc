@@ -303,7 +303,7 @@
 .public _s32_div_f
 .public _u32_div_f
 .public gGameLanguage
-.public _02103A1C
+.public gOvyTemplate_PokemonSummary
 .public gSystem
 .public ov00_021E6A70
 .public ov00_021EC0FC
@@ -342,6 +342,6 @@
 .public ov70_022385C0
 .public ov70_022386F4
 .public _0223DD40
-.public ov71_02246960
-.public ov71_02246B58
-.public ov71_02246BB8
+.public TradeSequence_OvyInit
+.public TradeSequence_OvyExit
+.public TradeSequence_OvyExec

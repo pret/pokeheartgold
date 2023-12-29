@@ -25,7 +25,7 @@ typedef struct UnkStruct_ov55_021E5B08 {
 typedef struct UnkStruct_ov55_021E5924 {
     HeapID heapId;
     u8 unk4[0x4];
-    Unk02090C94 *unk8;
+    EasyChatArgs *unk8;
     OVY_MANAGER *unkC;
     UnkStruct_ov55_021E5B08 *unk10;
     MAIL_MESSAGE unk14;

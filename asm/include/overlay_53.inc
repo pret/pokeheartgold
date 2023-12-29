@@ -130,7 +130,7 @@
 .public Save_Misc_Get
 .public Save_Misc_RivalName_Set
 .public Options_GetTextFrameDelay
-.public sub_020830D8
+.public CreateNamingScreenArgs
 .public sub_0208311C
 .public G2x_SetBlendAlpha_
 .public G2x_SetBlendBrightness_

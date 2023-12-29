@@ -51,5 +51,5 @@
 .public _fmul
 .public _fsub
 .public _s32_div_f
-.public _020FA484
+.public gOvyTemplate_Battle
 .public gNatureStatMods

@@ -500,7 +500,7 @@
 .public ov02_0224E35C
 .public ov02_0224E4CC
 .public ov02_0224E4DC
-.public ov02_0224E4EC
+.public CreateSafariDecorationArgs
 .public ov02_0224E698
 .public ov02_0224E754
 .public FieldSystem_FollowPokeInteract

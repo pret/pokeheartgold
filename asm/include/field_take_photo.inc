@@ -33,7 +33,7 @@
 .public Photo_Init
 .public sub_0203E33C
 .public FieldSystem_GetSaveData
-.public sub_0203EBA4
+.public LaunchPhotoAlbumApp
 .public TaskManager_Call
 .public FieldSystem_ApplicationIsRunning
 .public TaskManager_GetFieldSystem

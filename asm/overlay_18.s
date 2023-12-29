@@ -245,8 +245,8 @@ _021E5A98:
 _021E5A9C: .word 0x000001ED
 	thumb_func_end ov18_021E5A50
 
-	thumb_func_start ov18_021E5AA0
-ov18_021E5AA0: ; 0x021E5AA0
+	thumb_func_start Pokedex_OvyInit
+Pokedex_OvyInit: ; 0x021E5AA0
 	push {r3, r4, r5, lr}
 	mov r2, #0x61
 	add r5, r0, #0
@@ -332,10 +332,10 @@ _021E5B54: .word 0x00001858
 _021E5B58: .word 0x00001860
 _021E5B5C: .word 0x000001E7
 _021E5B60: .word 0x0000185C
-	thumb_func_end ov18_021E5AA0
+	thumb_func_end Pokedex_OvyInit
 
-	thumb_func_start ov18_021E5B64
-ov18_021E5B64: ; 0x021E5B64
+	thumb_func_start Pokedex_OvyExec
+Pokedex_OvyExec: ; 0x021E5B64
 	push {r4, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -349,10 +349,10 @@ _021E5B7A:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov18_021E5B64
+	thumb_func_end Pokedex_OvyExec
 
-	thumb_func_start ov18_021E5B80
-ov18_021E5B80: ; 0x021E5B80
+	thumb_func_start Pokedex_OvyExit
+Pokedex_OvyExit: ; 0x021E5B80
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -415,7 +415,7 @@ _021E5C0C: .word ov18_021E5C1C
 _021E5C10: .word 0x00001858
 _021E5C14: .word ov18_021E5C2C
 _021E5C18: .word ov18_021E5C3C
-	thumb_func_end ov18_021E5B80
+	thumb_func_end Pokedex_OvyExit
 
 	thumb_func_start ov18_021E5C1C
 ov18_021E5C1C: ; 0x021E5C1C

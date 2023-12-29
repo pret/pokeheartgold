@@ -1,6 +1,6 @@
 #include "global.h"
 #include "field_system.h"
-#include "unk_0203E348_data.h"
+#include "field/launch_application_data.h"
 
 const Location _020FA17C = {
     .mapId     = 0x00000040,

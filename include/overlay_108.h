@@ -3,12 +3,12 @@
 
 #include "overlay_manager.h"
 
-BOOL ov108_021E8850(OVY_MANAGER *man, int *state);
-BOOL ov108_021E8904(OVY_MANAGER *man, int *state);
-BOOL ov108_021E88C4(OVY_MANAGER *man, int *state);
+BOOL SafariDecoration_OvyInit(OVY_MANAGER *man, int *state);
+BOOL SafariDecoration_OvyExec(OVY_MANAGER *man, int *state);
+BOOL SafariDecoration_OvyExit(OVY_MANAGER *man, int *state);
 
-BOOL ov108_021E5900(OVY_MANAGER *man, int *state);
-BOOL ov108_021E5978(OVY_MANAGER *man, int *state);
-BOOL ov108_021E5948(OVY_MANAGER *man, int *state);
+BOOL SafariAreaCustomizer_OvyInit(OVY_MANAGER *man, int *state);
+BOOL SafariAreaCustomizer_OvyExec(OVY_MANAGER *man, int *state);
+BOOL SafariAreaCustomizer_OvyExit(OVY_MANAGER *man, int *state);
 
 #endif //POKEHEARTGOLD_OVY_108_H

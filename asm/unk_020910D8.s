@@ -122,7 +122,7 @@ _0209119A:
 	mov r1, #1
 	add r2, r7, #0
 	mov r3, #0xa
-	bl sub_020830D8
+	bl CreateNamingScreenArgs
 	str r0, [r4, #8]
 	ldr r0, [r4, #0xc]
 	mov r1, #MON_DATA_GENDER
@@ -181,8 +181,8 @@ _02091238: .word _02106048
 _0209123C: .word _02102610
 	thumb_func_end sub_020910D8
 
-	thumb_func_start sub_02091240
-sub_02091240: ; 0x02091240
+	thumb_func_start Task_HatchEggInParty
+Task_HatchEggInParty: ; 0x02091240
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -210,7 +210,7 @@ _02091256:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02091274: .word sub_020910D8
-	thumb_func_end sub_02091240
+	thumb_func_end Task_HatchEggInParty
 
 	.rodata
 

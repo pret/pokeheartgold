@@ -10,7 +10,7 @@ typedef struct {
     PlayerProfile *profile;
     Party *party;
     IGT *igt;
-} HOFCongratsAppArgs;
+} HOFCongratsArgs;
 
 BOOL ov63_0221BE20(OVY_MANAGER *man, int *state);
 BOOL ov63_0221BF88(OVY_MANAGER *man, int *state);

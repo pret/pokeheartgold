@@ -4,8 +4,8 @@
 
 	.text
 
-	thumb_func_start ov69_021E5900
-ov69_021E5900: ; 0x021E5900
+	thumb_func_start GeonetGlobe_OvyInit
+GeonetGlobe_OvyInit: ; 0x021E5900
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	mov r0, #0
@@ -125,10 +125,10 @@ _021E5A24: .word 0x0000C010
 _021E5A28: .word 0x0000C080
 _021E5A2C: .word 0x0000C2DC
 _021E5A30: .word gSystem + 0x60
-	thumb_func_end ov69_021E5900
+	thumb_func_end GeonetGlobe_OvyInit
 
-	thumb_func_start ov69_021E5A34
-ov69_021E5A34: ; 0x021E5A34
+	thumb_func_start GeonetGlobe_OvyExec
+GeonetGlobe_OvyExec: ; 0x021E5A34
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	add r5, r1, #0
@@ -877,10 +877,10 @@ _021E6070: .word 0x000005D9
 _021E6074: .word 0x0000C2FC
 _021E6078: .word 0x0000C2F8
 _021E607C: .word 0x0000C070
-	thumb_func_end ov69_021E5A34
+	thumb_func_end GeonetGlobe_OvyExec
 
-	thumb_func_start ov69_021E6080
-ov69_021E6080: ; 0x021E6080
+	thumb_func_start GeonetGlobe_OvyExit
+GeonetGlobe_OvyExit: ; 0x021E6080
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	bl OverlayManager_GetData
@@ -925,7 +925,7 @@ _021E60E8: .word 0x0000C2DC
 _021E60EC: .word 0x0000C080
 _021E60F0: .word 0x0000C010
 _021E60F4: .word gSystem + 0x60
-	thumb_func_end ov69_021E6080
+	thumb_func_end GeonetGlobe_OvyExit
 
 	thumb_func_start ov69_021E60F8
 ov69_021E60F8: ; 0x021E60F8

@@ -7,12 +7,12 @@
 #include "task.h"
 
 typedef struct Unk02091240 {
-    Pokemon *unk0;
-    Options *unk4;
-    PlayerProfile *unk8;
+    Pokemon *mon;
+    Options *options;
+    PlayerProfile *profile;
     u16 unkC;
 } Unk02091240;
 
-void sub_02091240(TaskManager *taskman, Unk02091240 *a1);
+void Task_HatchEggInParty(TaskManager *taskman, Unk02091240 *a1);
 
 #endif //POKEHEARTGOLD_UNK_020910D8_H

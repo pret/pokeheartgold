@@ -3,8 +3,8 @@
 
 #include "overlay_manager.h"
 
-BOOL ov87_021E5900(OVY_MANAGER *man, int *state);
-BOOL ov87_021E59B4(OVY_MANAGER *man, int *state);
-BOOL ov87_021E5AC0(OVY_MANAGER *man, int *state);
+BOOL ScratchOffCards_OvyInit(OVY_MANAGER *man, int *state);
+BOOL ScratchOffCards_OvyExec(OVY_MANAGER *man, int *state);
+BOOL ScratchOffCards_OvyExit(OVY_MANAGER *man, int *state);
 
 #endif //POKEHEARTGOLD_OVY_87_H

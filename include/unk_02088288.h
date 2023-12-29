@@ -3,7 +3,7 @@
 
 #include "save_special_ribbons.h"
 
-extern struct OVY_MGR_TEMPLATE _02103A1C;
+extern struct OVY_MGR_TEMPLATE gOvyTemplate_PokemonSummary;
 
 typedef struct UnkStruct_0204F448 {
     Party *party;

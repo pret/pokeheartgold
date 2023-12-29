@@ -199,6 +199,6 @@
 .public ov72_02237C30
 .public ov72_02237CB0
 .public ov72_02237CF4
-.public ov72_02237E20
-.public ov72_02237F9C
-.public ov72_02238070
+.public NintendoWifiConnect_OvyInit
+.public NintendoWifiConnect_OvyExec
+.public NintendoWifiConnect_OvyExit

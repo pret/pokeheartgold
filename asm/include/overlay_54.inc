@@ -102,6 +102,6 @@
 .public _s32_div_f
 .public _u32_div_f
 .public gSystem
-.public ov54_021E5900
-.public ov54_021E5A10
-.public ov54_021E5B3C
+.public OptionsMenu_OvyInit
+.public OptionsMenu_OvyExit
+.public OptionsMenu_OvyExec

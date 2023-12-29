@@ -45,7 +45,7 @@ ov53_OakSpeech_OvyInit: ; 0x021E5900
 	mov r0, #0x50
 	mov r3, #7
 	str r1, [sp, #4]
-	bl sub_020830D8
+	bl CreateNamingScreenArgs
 	mov r1, #0x12
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -56,7 +56,7 @@ ov53_OakSpeech_OvyInit: ; 0x021E5900
 	mov r1, #3
 	mov r3, #7
 	str r2, [sp, #4]
-	bl sub_020830D8
+	bl CreateNamingScreenArgs
 	mov r2, #0x49
 	lsl r2, r2, #2
 	add r1, r2, #0

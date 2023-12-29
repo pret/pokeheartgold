@@ -76,8 +76,8 @@ typedef struct AlphPuzzleData {
     AlphPuzzleTile *selectedTile;
 } AlphPuzzleData;
 
-BOOL ov110_AlphPuzzle_OvyInit(OVY_MANAGER *man, int *state);
-BOOL ov110_AlphPuzzle_OvyExec(OVY_MANAGER *man, int *state);
-BOOL ov110_AlphPuzzle_OvyExit(OVY_MANAGER *man, int *state);
+BOOL AlphPuzzle_OvyInit(OVY_MANAGER *man, int *state);
+BOOL AlphPuzzle_OvyExec(OVY_MANAGER *man, int *state);
+BOOL AlphPuzzle_OvyExit(OVY_MANAGER *man, int *state);
 
 #endif //POKEHEARTGOLD_ALPH_PUZZLE_H

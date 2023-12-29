@@ -3,8 +3,8 @@
 
 #include "overlay_manager.h"
 
-BOOL ov18_021E5AA0(OVY_MANAGER *man, int *state);
-BOOL ov18_021E5B64(OVY_MANAGER *man, int *state);
-BOOL ov18_021E5B80(OVY_MANAGER *man, int *state);
+BOOL Pokedex_OvyInit(OVY_MANAGER *man, int *state);
+BOOL Pokedex_OvyExec(OVY_MANAGER *man, int *state);
+BOOL Pokedex_OvyExit(OVY_MANAGER *man, int *state);
 
 #endif //POKEHEARTGOLD_OVY_18_H

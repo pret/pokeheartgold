@@ -3,8 +3,8 @@
 
 #include "overlay_manager.h"
 
-BOOL ov72_02237E20(OVY_MANAGER *man, int *state);
-BOOL ov72_02237F9C(OVY_MANAGER *man, int *state);
-BOOL ov72_02238070(OVY_MANAGER *man, int *state);
+BOOL NintendoWifiConnect_OvyInit(OVY_MANAGER *man, int *state);
+BOOL NintendoWifiConnect_OvyExec(OVY_MANAGER *man, int *state);
+BOOL NintendoWifiConnect_OvyExit(OVY_MANAGER *man, int *state);
 
 #endif //POKEHEARTGOLD_OVY_72_H

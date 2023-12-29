@@ -183,6 +183,6 @@
 .public _s32_div_f
 .public _u32_div_f
 .public gSystem
-.public ov102_021E7740
-.public ov102_021E77B8
-.public ov102_021E7868
+.public EasyChat_OvyInit
+.public EasyChat_OvyExec
+.public EasyChat_OvyExit

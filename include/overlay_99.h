@@ -3,17 +3,17 @@
 
 #include "overlay_manager.h"
 
-BOOL ov99_021E7818(OVY_MANAGER *man, int *state);
-BOOL ov99_021E794C(OVY_MANAGER *man, int *state);
-BOOL ov99_021E78F0(OVY_MANAGER *man, int *state);
+BOOL PokeathlonMedals_OvyInit(OVY_MANAGER *man, int *state);
+BOOL PokeathlonMedals_OvyExec(OVY_MANAGER *man, int *state);
+BOOL PokeathlonMedals_OvyExit(OVY_MANAGER *man, int *state);
 
-BOOL ov99_021E8304(OVY_MANAGER *man, int *state);
-BOOL ov99_021E83F4(OVY_MANAGER *man, int *state);
-BOOL ov99_021E83AC(OVY_MANAGER *man, int *state);
+BOOL PokeathlonEventRecord_OvyInit(OVY_MANAGER *man, int *state);
+BOOL PokeathlonEventRecord_OvyExec(OVY_MANAGER *man, int *state);
+BOOL PokeathlonEventRecord_OvyExit(OVY_MANAGER *man, int *state);
 
-BOOL ov99_021E5900(OVY_MANAGER *man, int *state);
-BOOL ov99_021E5A38(OVY_MANAGER *man, int *state);
-BOOL ov99_021E5A04(OVY_MANAGER *man, int *state);
+BOOL PokeathlonCourseRecord_OvyInit(OVY_MANAGER *man, int *state);
+BOOL PokeathlonCourseRecord_OvyExec(OVY_MANAGER *man, int *state);
+BOOL PokeathlonCourseRecord_OvyExit(OVY_MANAGER *man, int *state);
 
 BOOL ov99_021E677C(OVY_MANAGER *man, int *state);
 BOOL ov99_021E6888(OVY_MANAGER *man, int *state);

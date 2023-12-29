@@ -4,8 +4,8 @@
 
 	.text
 
-	thumb_func_start ov71_02246960
-ov71_02246960: ; 0x02246960
+	thumb_func_start TradeSequence_OvyInit
+TradeSequence_OvyInit: ; 0x02246960
 	push {r4, r5, lr}
 	sub sp, #0x14
 	add r5, r0, #0
@@ -206,7 +206,7 @@ _02246B18: .word 0x00000152
 _02246B1C: .word 0xFFFFE0FF
 _02246B20: .word 0x04001000
 _02246B24: .word ov71_02246C48
-	thumb_func_end ov71_02246960
+	thumb_func_end TradeSequence_OvyInit
 
 	thumb_func_start ov71_02246B28
 ov71_02246B28: ; 0x02246B28
@@ -234,8 +234,8 @@ _02246B52:
 	.balign 4, 0
 	thumb_func_end ov71_02246B28
 
-	thumb_func_start ov71_02246B58
-ov71_02246B58: ; 0x02246B58
+	thumb_func_start TradeSequence_OvyExit
+TradeSequence_OvyExit: ; 0x02246B58
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl OS_DisableInterrupts
@@ -270,10 +270,10 @@ ov71_02246B58: ; 0x02246B58
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov71_02246B58
+	thumb_func_end TradeSequence_OvyExit
 
-	thumb_func_start ov71_02246BB8
-ov71_02246BB8: ; 0x02246BB8
+	thumb_func_start TradeSequence_OvyExec
+TradeSequence_OvyExec: ; 0x02246BB8
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	bl OverlayManager_GetData
@@ -345,7 +345,7 @@ _02246C38: .word ov71_0224BBF8
 _02246C3C: .word ov71_0224BBEC
 _02246C40: .word ov71_0224BBF0
 _02246C44: .word ov71_0224BBF4
-	thumb_func_end ov71_02246BB8
+	thumb_func_end TradeSequence_OvyExec
 
 	thumb_func_start ov71_02246C48
 ov71_02246C48: ; 0x02246C48

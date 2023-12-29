@@ -15,13 +15,13 @@
 #include "constants/maps.h"
 #include "constants/phone_contacts.h"
 
-static void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL a2);
+static void sub_02092BE8(FieldSystem* sys, PokegearArgs* ptr, BOOL a2);
 static void sub_02092E54(GearPhoneRingManager* ptr);
 static void gearRingingManagerReset(GearPhoneRingManager* ptr);
 static void sub_02092FA0(GearPhoneRingManager* ptr);
 static void SysTask_RingGearPhone(SysTask *task, GearPhoneRingManager* ptr);
 
-static void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL a2) {
+static void sub_02092BE8(FieldSystem* sys, PokegearArgs* ptr, BOOL a2) {
     Unk_PokegearSTRUCT_14 Unk_struct;
     SaveVarsFlags *state = Save_VarsFlags_Get(sys->saveData);
     LocalFieldData *points = Save_LocalFieldData_Get(sys->saveData);
@@ -64,7 +64,7 @@ static void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL a2) 
     if (sub_02092E08(phoneRingMgr)) {
         ptr->unk04 = ov02_02251EE8(phoneRingMgr, &Unk_struct.unk04);
         if (ptr->unk04 >= 75) {
-            ptr->unk00 = 0;
+            ptr->kind = 0;
         } else {
             ptr->unk06 = Unk_struct.unk08;
             ptr->unk05 = Unk_struct.unk07;
@@ -75,18 +75,18 @@ static void sub_02092BE8(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr, BOOL a2) 
                 sub_0202AB18(Save_Misc_Get(sys->saveData), Unk_struct.unk04, Unk_struct.unk05, ptr->unk04);
             }
             gearRingingManagerReset(phoneRingMgr);
-            ptr->unk00 = 1;
+            ptr->kind = 1;
         }
     } else {
-        ptr->unk00 = 0;
+        ptr->kind = 0;
     }
 }
 
-void sub_02092D80(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr) {
+void sub_02092D80(FieldSystem* sys, PokegearArgs* ptr) {
     sub_02092BE8(sys, ptr, FALSE);
 }
 
-void sub_02092D8C(FieldSystem* sys, Unk_PokegearSTRUCT_2C* ptr) {
+void sub_02092D8C(FieldSystem* sys, PokegearArgs* ptr) {
     sub_02092BE8(sys, ptr, TRUE);
 }
 

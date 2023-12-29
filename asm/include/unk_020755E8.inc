@@ -168,6 +168,6 @@
 .public MIi_CpuClear16
 .public MIi_CpuClear32
 .public MIi_CpuClearFast
-.public _02103A1C
+.public gOvyTemplate_PokemonSummary
 .public gSystem
 .public OS_IRQTable

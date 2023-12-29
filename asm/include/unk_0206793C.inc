@@ -15,6 +15,6 @@
 .public memset
 .public NPCTrade_ReceiveMonToSlot
 .public NPCTrade_CreateTradeAnim
-.public ov71_02246960
-.public ov71_02246B58
-.public ov71_02246BB8
+.public TradeSequence_OvyInit
+.public TradeSequence_OvyExit
+.public TradeSequence_OvyExec

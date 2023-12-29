@@ -3,6 +3,7 @@
 #include "bag.h"
 #include "field_player_avatar.h"
 #include "field_system.h"
+#include "field/launch_application.h"
 #include "fieldmap.h"
 #include "frontier_data.h"
 #include "game_stats.h"
@@ -21,7 +22,6 @@
 #include "unk_02030A98.h"
 #include "unk_02035900.h"
 #include "unk_0203DFA4.h"
-#include "unk_0203E348.h"
 #include "unk_0205BB1C.h"
 #include "unk_0205BFF0.h"
 #include "unk_02078E30.h"
@@ -308,8 +308,8 @@ static BOOL sub_0204F2B8(TaskManager *taskManager) {
 }
 
 static u32 sub_0204F320(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem, HeapID unused) {
-    PartyMenuAppData *partyMenu = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuAppData));
-    MIi_CpuClearFast(0, (u32*)partyMenu, sizeof(PartyMenuAppData));
+    PartyMenuArgs *partyMenu = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
+    MIi_CpuClearFast(0, (u32*)partyMenu, sizeof(PartyMenuArgs));
     partyMenu->party = SaveArray_Party_Get(fieldSystem->saveData);
     partyMenu->bag = Save_Bag_Get(fieldSystem->saveData);
     partyMenu->mailbox = Save_Mailbox_Get(fieldSystem->saveData);
@@ -324,12 +324,12 @@ static u32 sub_0204F320(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem, HeapID
     partyMenu->unk_37 = 30;
     partyMenu->unk_36_0 = 1;
     partyMenu->unk_36_4 = 1;
-    partyMenu->fieldSystem_unk_10C = &fieldSystem->unk_10C;
+    partyMenu->unk20 = &fieldSystem->unk_10C;
     if (a0->challengeType == 1) { // doubles
         partyMenu->unk_36_0 = 2;
         partyMenu->unk_36_4 = 2;
     }
-    FieldSystem_LaunchApplication(fieldSystem, &_0210159C, partyMenu);
+    FieldSystem_LaunchApplication(fieldSystem, &gOvyTemplate_PartyMenu, partyMenu);
     *(a0->unk08) = partyMenu;
     return 1;
 }
@@ -338,7 +338,7 @@ static u32 sub_0204F3F8(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem) {
     if (FieldSystem_ApplicationIsRunning(fieldSystem)) {
         return 1;
     }
-    PartyMenuAppData *partyMenu = *(a0->unk08);
+    PartyMenuArgs *partyMenu = *(a0->unk08);
     switch (partyMenu->unk_26) {
         case 7:
             return 4;
@@ -370,7 +370,7 @@ static u32 sub_0204F448(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem, HeapID
     r4->isFlag982Set = sub_0208828C(saveData);
     sub_02089D40(r4, unk_020FC224);
     sub_0208AD34(r4, Save_PlayerData_GetProfileAddr(saveData));
-    FieldSystem_LaunchApplication(fieldSystem, &_02103A1C, r4);
+    FieldSystem_LaunchApplication(fieldSystem, &gOvyTemplate_PokemonSummary, r4);
     *(a0->unk08) = r4;
     return 3;
 }

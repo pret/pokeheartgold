@@ -729,8 +729,8 @@ _02237E1C:
 	pop {r4, pc}
 	thumb_func_end ov72_02237D88
 
-	thumb_func_start ov72_02237E20
-ov72_02237E20: ; 0x02237E20
+	thumb_func_start NintendoWifiConnect_OvyInit
+NintendoWifiConnect_OvyInit: ; 0x02237E20
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r5, r1, #0
@@ -886,10 +886,10 @@ _02237F8C: .word 0x00000BDC
 _02237F90: .word 0x00020020
 _02237F94: .word 0x0000047D
 _02237F98: .word 0x04000304
-	thumb_func_end ov72_02237E20
+	thumb_func_end NintendoWifiConnect_OvyInit
 
-	thumb_func_start ov72_02237F9C
-ov72_02237F9C: ; 0x02237F9C
+	thumb_func_start NintendoWifiConnect_OvyExec
+NintendoWifiConnect_OvyExec: ; 0x02237F9C
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -990,10 +990,10 @@ _02238060: .word ov72_0223B654
 _02238064: .word ov72_0223B658
 _02238068: .word ov72_0223B65C
 _0223806C: .word 0x00000BF8
-	thumb_func_end ov72_02237F9C
+	thumb_func_end NintendoWifiConnect_OvyExec
 
-	thumb_func_start ov72_02238070
-ov72_02238070: ; 0x02238070
+	thumb_func_start NintendoWifiConnect_OvyExit
+NintendoWifiConnect_OvyExit: ; 0x02238070
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -1045,7 +1045,7 @@ _02238086:
 _022380F0: .word 0x00000BDC
 _022380F4: .word 0x00000BD8
 _022380F8: .word 0x00000BD4
-	thumb_func_end ov72_02238070
+	thumb_func_end NintendoWifiConnect_OvyExit
 
 	thumb_func_start ov72_022380FC
 ov72_022380FC: ; 0x022380FC

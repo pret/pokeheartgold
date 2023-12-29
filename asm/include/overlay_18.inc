@@ -284,9 +284,9 @@
 .public _u32_div_f
 .public FX_SinCosTable_
 .public gSystem
-.public ov18_021E5AA0
-.public ov18_021E5B64
-.public ov18_021E5B80
+.public Pokedex_OvyInit
+.public Pokedex_OvyExec
+.public Pokedex_OvyExit
 .public ov18_021F8974
 .public ov18_021F89C8
 .public ov18_021F89D0

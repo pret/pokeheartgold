@@ -5,8 +5,8 @@
 
 	.text
 
-	thumb_func_start ov65_0221BE20
-ov65_0221BE20: ; 0x0221BE20
+	thumb_func_start WirelessTradeSelectMon_OvyInit
+WirelessTradeSelectMon_OvyInit: ; 0x0221BE20
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r6, r0, #0
@@ -169,7 +169,7 @@ _0221BFAC: .word ov65_0221CE1C
 _0221BFB0: .word 0x00000444
 _0221BFB4: .word 0x000005B4
 _0221BFB8: .word 0x00000427
-	thumb_func_end ov65_0221BE20
+	thumb_func_end WirelessTradeSelectMon_OvyInit
 
 	thumb_func_start ov65_0221BFBC
 ov65_0221BFBC: ; 0x0221BFBC
@@ -453,8 +453,8 @@ _0221C248: .word 0x000004B4
 _0221C24C: .word 0x00000514
 	thumb_func_end ov65_0221C1C4
 
-	thumb_func_start ov65_0221C250
-ov65_0221C250: ; 0x0221C250
+	thumb_func_start WirelessTradeSelectMon_OvyExec
+WirelessTradeSelectMon_OvyExec: ; 0x0221C250
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
 	add r5, r1, #0
@@ -645,7 +645,7 @@ _0221C3CA:
 	add r0, r6, #0
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
-	thumb_func_end ov65_0221C250
+	thumb_func_end WirelessTradeSelectMon_OvyExec
 
 	thumb_func_start ov65_0221C3DC
 ov65_0221C3DC: ; 0x0221C3DC
@@ -1811,8 +1811,8 @@ _0221CD6C: .word 0x00002228
 _0221CD70: .word 0x000007B4
 	thumb_func_end ov65_0221CD0C
 
-	thumb_func_start ov65_0221CD74
-ov65_0221CD74: ; 0x0221CD74
+	thumb_func_start WirelessTradeSelectMon_OvyExit
+WirelessTradeSelectMon_OvyExit: ; 0x0221CD74
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -1878,7 +1878,7 @@ ov65_0221CD74: ; 0x0221CD74
 	.balign 4, 0
 _0221CE14: .word 0x00002228
 _0221CE18: .word 0x00000444
-	thumb_func_end ov65_0221CD74
+	thumb_func_end WirelessTradeSelectMon_OvyExit
 
 	thumb_func_start ov65_0221CE1C
 ov65_0221CE1C: ; 0x0221CE1C
@@ -4214,7 +4214,7 @@ _0221E0D6:
 	add r0, #0xc
 	bl sub_02089D40
 	add r1, r5, #0
-	ldr r0, _0221E140 ; =_02103A1C
+	ldr r0, _0221E140 ; =gOvyTemplate_PokemonSummary
 	add r1, #0xc
 	mov r2, #0x1a
 	bl OverlayManager_New
@@ -4226,7 +4226,7 @@ _0221E130: .word 0x00002224
 _0221E134: .word 0x00002228
 _0221E138: .word 0x00002E20
 _0221E13C: .word _0221FD34
-_0221E140: .word _02103A1C
+_0221E140: .word gOvyTemplate_PokemonSummary
 	thumb_func_end ov65_0221E06C
 
 	thumb_func_start ov65_0221E144

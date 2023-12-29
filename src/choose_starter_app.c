@@ -1,7 +1,7 @@
 #include "global.h"
-#include "unk_0203E348.h"
 #include "camera.h"
 #include "camera_translation.h"
+#include "field/launch_application.h"
 #include "unk_0200FA24.h"
 #include "system.h"
 #include "text.h"
@@ -245,7 +245,7 @@ static void setAllMonSpritesInvisible(struct StarterChooseMonSpriteData *a0);
 static BOOL yRotateSelectedBall(struct ChooseStarterAppWork *work, fx32 from, fx32 to);
 static u16 calcBallTranslationArcStep(const fx32 *from, const fx32 *to, int step, int max);
 
-BOOL ChooseStarterApplication_OvyInit(OVY_MANAGER *ovy, int *state_p) {
+BOOL ChooseStarter_OvyInit(OVY_MANAGER *ovy, int *state_p) {
     struct ChooseStarterAppWork *work;
     struct ChooseStarterAppArgs *args;
     int i;
@@ -307,7 +307,7 @@ static const int sSpecies[] = {
     SPECIES_TOTODILE,
 };
 
-BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
+BOOL ChooseStarter_OvyExec(OVY_MANAGER *ovy, int *state) {
     struct ChooseStarterAppWork *work = OverlayManager_GetData(ovy);
     int cameraPathSel = CAMERA_PATH_NULL;
     int input;
@@ -533,7 +533,7 @@ BOOL ChooseStarterApplication_OvyExec(OVY_MANAGER *ovy, int *state) {
     return FALSE;
 }
 
-BOOL ChooseStarterApplication_OvyExit(OVY_MANAGER *ovy, int *state) {
+BOOL ChooseStarter_OvyExit(OVY_MANAGER *ovy, int *state) {
     struct ChooseStarterAppWork *work = OverlayManager_GetData(ovy);
     struct ChooseStarterAppArgs *args = OverlayManager_GetArgs(ovy);
 

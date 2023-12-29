@@ -3,9 +3,9 @@
 
 #include "overlay_manager.h"
 
-BOOL ov41_0224BA10(OVY_MANAGER *man, int *state);
-BOOL ov41_0224BACC(OVY_MANAGER *man, int *state);
-BOOL ov41_0224BBA4(OVY_MANAGER *man, int *state);
+BOOL AccessoryPortrait_OvyInit(OVY_MANAGER *man, int *state);
+BOOL AccessoryPortrait_OvyExec(OVY_MANAGER *man, int *state);
+BOOL AccessoryPortrait_OvyExit(OVY_MANAGER *man, int *state);
 
 BOOL ov41_02246DE0(OVY_MANAGER *man, int *state);
 BOOL ov41_02246F08(OVY_MANAGER *man, int *state);

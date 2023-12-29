@@ -18,8 +18,8 @@ typedef enum CertificatesExecStates {
     CERTIFICATES_EXECSTATE_COUNT,
 } CertificatesExecStates;
 
-BOOL CertificatesApp_Init(OVY_MANAGER *manager, int *state);
-BOOL CertificatesApp_Run(OVY_MANAGER *manager, int *state);
-BOOL CertificatesApp_Exit(OVY_MANAGER *manager, int *state);
+BOOL Certificates_OvyInit(OVY_MANAGER *manager, int *state);
+BOOL Certificates_OvyExec(OVY_MANAGER *manager, int *state);
+BOOL Certificates_OvyExit(OVY_MANAGER *manager, int *state);
 
 #endif

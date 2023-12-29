@@ -4,8 +4,8 @@
 
 	.text
 
-	thumb_func_start ov108_021E5900
-ov108_021E5900: ; 0x021E5900
+	thumb_func_start SafariAreaCustomizer_OvyInit
+SafariAreaCustomizer_OvyInit: ; 0x021E5900
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	bl OverlayManager_GetArgs
@@ -36,10 +36,10 @@ ov108_021E5900: ; 0x021E5900
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E5944: .word 0x000184EC
-	thumb_func_end ov108_021E5900
+	thumb_func_end SafariAreaCustomizer_OvyInit
 
-	thumb_func_start ov108_021E5948
-ov108_021E5948: ; 0x021E5948
+	thumb_func_start SafariAreaCustomizer_OvyExit
+SafariAreaCustomizer_OvyExit: ; 0x021E5948
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -58,10 +58,10 @@ ov108_021E5948: ; 0x021E5948
 	pop {r4, r5, r6, pc}
 	nop
 _021E5974: .word 0x000184EC
-	thumb_func_end ov108_021E5948
+	thumb_func_end SafariAreaCustomizer_OvyExit
 
-	thumb_func_start ov108_021E5978
-ov108_021E5978: ; 0x021E5978
+	thumb_func_start SafariAreaCustomizer_OvyExec
+SafariAreaCustomizer_OvyExec: ; 0x021E5978
 	push {r4, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -118,7 +118,7 @@ _021E59DE:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end ov108_021E5978
+	thumb_func_end SafariAreaCustomizer_OvyExec
 
 	thumb_func_start ov108_021E59E4
 ov108_021E59E4: ; 0x021E59E4
@@ -5961,8 +5961,8 @@ _021E8844:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov108_021E8758
 
-	thumb_func_start ov108_021E8850
-ov108_021E8850: ; 0x021E8850
+	thumb_func_start SafariDecoration_OvyInit
+SafariDecoration_OvyInit: ; 0x021E8850
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	ldr r1, [r5]
@@ -6015,10 +6015,10 @@ _021E88B0:
 _021E88C0:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov108_021E8850
+	thumb_func_end SafariDecoration_OvyInit
 
-	thumb_func_start ov108_021E88C4
-ov108_021E88C4: ; 0x021E88C4
+	thumb_func_start SafariDecoration_OvyExit
+SafariDecoration_OvyExit: ; 0x021E88C4
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	bl OverlayManager_GetData
@@ -6045,10 +6045,10 @@ _021E88DA:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end ov108_021E88C4
+	thumb_func_end SafariDecoration_OvyExit
 
-	thumb_func_start ov108_021E8904
-ov108_021E8904: ; 0x021E8904
+	thumb_func_start SafariDecoration_OvyExec
+SafariDecoration_OvyExec: ; 0x021E8904
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	bl OverlayManager_GetData
@@ -6099,7 +6099,7 @@ _021E894E:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov108_021E8904
+	thumb_func_end SafariDecoration_OvyExec
 
 	thumb_func_start ov108_021E8968
 ov108_021E8968: ; 0x021E8968

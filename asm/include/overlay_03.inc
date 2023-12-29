@@ -164,8 +164,8 @@
 .public sub_020398D4
 .public MapHeader_GetMapSec
 .public FieldSystem_GetSaveData
-.public sub_0203E3D4
-.public sub_0203EB08
+.public LaunchBagApp
+.public LaunchSafariAreaCustomizerApp
 .public SetupNativeScript
 .public ScriptReadHalfword
 .public FieldSysGetAttrAddr

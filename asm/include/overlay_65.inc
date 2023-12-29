@@ -228,10 +228,10 @@
 .public MI_CpuFill8
 .public memset
 .public _s32_div_f
-.public _02103A1C
+.public gOvyTemplate_PokemonSummary
 .public gSystem
-.public ov65_0221BE20
-.public ov65_0221C250
-.public ov65_0221CD74
+.public WirelessTradeSelectMon_OvyInit
+.public WirelessTradeSelectMon_OvyExec
+.public WirelessTradeSelectMon_OvyExit
 .public ov65_0221DE24
 .public ov65_0221DE64

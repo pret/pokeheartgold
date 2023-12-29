@@ -70,6 +70,6 @@
 .public sub_02090FA8
 .public memcpy
 .public _s32_div_f
-.public _020FA484
+.public gOvyTemplate_Battle
 .public gNatureStatMods
 .public PartyMenu_AnimateIconFormChange

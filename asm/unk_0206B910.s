@@ -198,7 +198,7 @@ _0206BA4E:
 	str r5, [r4, #0x1c]
 	str r0, [r4, #0x20]
 	ldr r0, [sp]
-	ldr r1, _0206BB28 ; =_0210159C
+	ldr r1, _0206BB28 ; =gOvyTemplate_PartyMenu
 	add r2, r4, #0
 	bl CallApplicationAsTask
 	mov r0, #4
@@ -269,7 +269,7 @@ _0206BB1C:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _0206BB24: .word _020FF480
-_0206BB28: .word _0210159C
+_0206BB28: .word gOvyTemplate_PartyMenu
 	thumb_func_end sub_0206B984
 
 	thumb_func_start ScrCmd_232

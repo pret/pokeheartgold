@@ -35,8 +35,8 @@ u32 ItemIdToMulchId(u16 itemId);
 u16 GetTotalBerryQuantity(Bag *bag, HeapID heapId);
 u16 GetTotalMulchQuantity(Bag *bag, HeapID heapId);
 
-BOOL ov16_0220196C(OVY_MANAGER *manager, int *state);
-BOOL ov16_022019B8(OVY_MANAGER *manager, int *state);
-BOOL ov16_02201A04(OVY_MANAGER *manager, int *state);
+BOOL BerryPots_OvyInit(OVY_MANAGER *manager, int *state);
+BOOL BerryPots_OvyExec(OVY_MANAGER *manager, int *state);
+BOOL BerryPots_OvyExit(OVY_MANAGER *manager, int *state);
 
 #endif
