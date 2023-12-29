@@ -893,7 +893,7 @@ _021E6006:
 	add r0, r6, #0
 	add r2, r7, #0
 	add r3, r5, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov86_021E5FD8

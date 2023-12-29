@@ -31,7 +31,7 @@
 .public GetWindowWidth
 .public ScheduleBgTilemapBufferTransfer
 .public sub_0201F988
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public sub_02025204
 .public sub_02025224
 .public String_Delete

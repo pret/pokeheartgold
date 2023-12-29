@@ -137,7 +137,7 @@
 .public LCRandom
 .public ResetAllTextPrinters
 .public TextPrinterCheckActive
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GF_RunVramTransferTasks
 .public sub_020215A0
 .public sub_020215C0

@@ -25,7 +25,7 @@
 .public FillWindowPixelBuffer
 .public GetWindowWidth
 .public ScheduleBgTilemapBufferTransfer
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public String_Delete
 .public String_Compare
 .public AllocMonZeroed

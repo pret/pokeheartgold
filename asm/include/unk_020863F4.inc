@@ -49,7 +49,7 @@
 .public CopyWindowToVram
 .public FillWindowPixelBuffer
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public sub_02021AC8
 .public sub_02021B5C
 .public GF_AssertFail

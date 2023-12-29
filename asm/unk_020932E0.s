@@ -3247,7 +3247,7 @@ _02094CC8:
 	ldr r0, _02094D14 ; =0x00004650
 	str r1, [sp, #0xc]
 	add r0, r5, r0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, _02094D14 ; =0x00004650
 	add r0, r5, r0
 	bl CopyWindowToVram
@@ -3303,7 +3303,7 @@ sub_02094D1C: ; 0x02094D1C
 	str r1, [sp, #0xc]
 	add r0, r5, r0
 	mov r1, #4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _02094D78:
 	ldr r0, _02094D94 ; =0x00004670
 	add r0, r5, r0
@@ -3682,7 +3682,7 @@ sub_0209501C: ; 0x0209501C
 	add r2, r5, #0
 	add r0, r4, r0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	add r0, r7, #0

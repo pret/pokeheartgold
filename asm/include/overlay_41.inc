@@ -138,7 +138,7 @@
 .public sub_0201F988
 .public MTRandom
 .public TextPrinterCheckActive
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public sub_020210BC
 .public sub_02021148
 .public sub_02021238

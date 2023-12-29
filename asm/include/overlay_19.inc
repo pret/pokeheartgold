@@ -39,7 +39,7 @@
 .public FillWindowPixelBuffer
 .public ScheduleBgTilemapBufferTransfer
 .public sub_0201F988
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GfGfx_EngineBTogglePlanes
 .public sub_0202457C
 .public Sprite_Delete

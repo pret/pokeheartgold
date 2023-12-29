@@ -248,7 +248,7 @@ BOOL CreditsApp_OvyInit(OVY_MANAGER *man, int *state) {
         // Print game title
         ReadMsgDataIntoString(work->pageWork.msgData, GAME_TITLE_MSG_NO, work->pageWork.string);
         FillWindowPixelBuffer(&work->pageWork.window, 0);
-        AddTextPrinterParameterized2(&work->pageWork.window, 0, work->pageWork.string, 0, 70, TEXT_SPEED_NOTRANSFER, 0x00010200, NULL);
+        AddTextPrinterParameterizedWithColor(&work->pageWork.window, 0, work->pageWork.string, 0, 70, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
         CopyWindowToVram(&work->pageWork.window);
 
         // Initialize to first line of the credits
@@ -930,7 +930,7 @@ static void LoadPage(PageWork *ptr) {
             u8 xPos = sCreditMsgLines[ptr->pageState.line].x;
             u8 yPos = sCreditMsgLines[ptr->pageState.line].y;
             ReadMsgDataIntoString(ptr->msgData, msgno, ptr->string);
-            AddTextPrinterParameterized2(&ptr->window, 0, ptr->string, xPos, yPos, TEXT_SPEED_NOTRANSFER, 0x00010200, NULL);
+            AddTextPrinterParameterizedWithColor(&ptr->window, 0, ptr->string, xPos, yPos, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
             if (++ptr->pageState.line >= NELEMS(sCreditMsgLines)) {
                 break;
             }

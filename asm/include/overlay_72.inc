@@ -86,7 +86,7 @@
 .public ScheduleBgTilemapBufferTransfer
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GF_RunVramTransferTasks
 .public sub_020215A0
 .public sub_0202168C
