@@ -1634,7 +1634,7 @@ ListMenuUpdateCursorObj: ; 0x020157F0
 	ldr r2, [r6, #4]
 	add r0, r5, #0
 	add r3, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl CopyWindowPixelsToVram_TextMode
 	add sp, #0x10

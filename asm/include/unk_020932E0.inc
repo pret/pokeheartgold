@@ -53,7 +53,7 @@
 .public GetWindowWidth
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GF_RunVramTransferTasks
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_SwapDisplay

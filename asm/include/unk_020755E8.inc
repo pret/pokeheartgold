@@ -109,7 +109,7 @@
 .public DoScheduledBgGpuUpdates
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GF_RunVramTransferTasks
 .public GfGfx_SetBanks
 .public GfGfx_DisableEngineAPlanes

@@ -2542,7 +2542,7 @@ ov101_021E8AE4: ; 0x021E8AE4
 	ldr r2, [r2]
 	add r0, r5, r0
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r5, #0x3c]
 	str r0, [sp, #0x18]
 	mov r0, #0x81
@@ -6591,7 +6591,7 @@ _021EAA40:
 	add r2, #0x9c
 	ldr r2, [r2]
 	mov r3, #2
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldrb r0, [r5, #0xd]
 	cmp r0, #0
 	bne _021EAA9C
@@ -6643,7 +6643,7 @@ _021EAABE:
 	add r2, #0xa4
 	ldr r2, [r2]
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x1c]
 	cmp r0, #0
 	beq _021EAB48
@@ -6795,7 +6795,7 @@ _021EAB5A:
 	add r2, #0x90
 	ldr r2, [r2]
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r1, [sp, #0x2c]
 	add r0, r5, #0
 	ldrh r1, [r1]
@@ -6920,7 +6920,7 @@ _021EACC2:
 	ldr r2, [r2]
 	mov r1, #0
 	mov r3, #4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _021EAD1E:
 	add r6, r6, #1
 	add r4, #0x28
@@ -7055,7 +7055,7 @@ _021EADDE:
 	ldr r2, [r2]
 	add r0, r5, r0
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r4, r5, #0
 	mov r2, #0x81
 	lsl r2, r2, #2
@@ -7120,7 +7120,7 @@ ov101_021EAE54: ; 0x021EAE54
 	ldr r2, [r2]
 	add r0, r7, r0
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r7, #0x10]
 	mov r1, #1
 	ldr r0, [r0, #0x74]
@@ -7944,7 +7944,7 @@ ov101_021EB4C4: ; 0x021EB4C4
 	add r5, #0xa8
 	ldr r2, [r5]
 	mov r3, #8
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 _021EB4FC:
@@ -7989,7 +7989,7 @@ _021EB4FC:
 	add r5, #0x90
 	ldr r2, [r5]
 	mov r3, #8
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -14482,7 +14482,7 @@ _021EE82A:
 	ldr r2, [r2]
 	add r0, r5, r0
 	mov r1, #4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x1c]
 	mov r1, #1
 	add r0, #0xe8
@@ -17652,7 +17652,7 @@ ov101_021F0080: ; 0x021F0080
 	ldr r2, [r4, #0x20]
 	add r0, #0x48
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, _021F00B8 ; =0x000005F3
 	bl PlaySE
 	add sp, #0x10
@@ -17696,7 +17696,7 @@ _021F00DC:
 	ldr r2, [r4, #0x20]
 	add r0, #0x48
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, _021F0174 ; =0x000005DC
 	bl PlaySE
 	b _021F0162
@@ -18184,7 +18184,7 @@ ov101_021F0464: ; 0x021F0464
 	add r0, #0x58
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	b _021F0552
 _021F0508:
 	mov r1, #0
@@ -18994,7 +18994,7 @@ ov101_021F0ACC: ; 0x021F0ACC
 	add r0, r5, #0
 	ldr r2, [r4, r6]
 	add r0, #0x78
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	b _021F0B6C
 _021F0B48:
 	add r0, #0x78
@@ -21052,7 +21052,7 @@ _021F1A88:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r3, #0x10
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0xff
 	lsl r0, r0, #2
 	ldrb r1, [r4, #8]
@@ -21070,7 +21070,7 @@ _021F1A88:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r3, #0x5e
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	b _021F1B32
 _021F1ADE:
 	mov r0, #0xff
@@ -21092,7 +21092,7 @@ _021F1ADE:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r3, #0x10
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0xff
 	lsl r0, r0, #2
 	ldrb r1, [r4, #8]
@@ -21110,7 +21110,7 @@ _021F1ADE:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r3, #0x5e
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _021F1B32:
 	ldr r0, [sp, #0x30]
 	cmp r0, #0
@@ -21983,7 +21983,7 @@ PhoneCallMessagePrint: ; 0x021F21A0
 	str r1, [sp, #0xc]
 	ldr r0, [r4, #0xc]
 	ldr r2, [r4, #0x54]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r4, #0x35
 	strb r0, [r4]
 	add sp, #0x10
@@ -22324,7 +22324,7 @@ _021F2450:
 	ldr r0, [r5, #0xc]
 	ldr r2, [r2, #0x68]
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 _021F2472:
@@ -22338,7 +22338,7 @@ _021F2472:
 	ldr r0, [r5, #0xc]
 	ldr r2, [r2, #0x74]
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -29756,7 +29756,7 @@ ov101_021F5C44: ; 0x021F5C44
 	str r1, [sp, #0xc]
 	ldr r0, [r4, #0x10]
 	ldr r2, [r4, #0x4c]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -29767,7 +29767,7 @@ ov101_021F5C44: ; 0x021F5C44
 	str r1, [sp, #0xc]
 	ldr r0, [r4, #0x14]
 	ldr r2, [r4, #0x50]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r4, #0x10]
 	bl ScheduleWindowCopyToVram
 	ldr r0, [r4, #0x14]
@@ -29806,7 +29806,7 @@ _021F5CBE:
 	ldr r0, [r5, #0xc]
 	add r2, r4, #0
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end PrintRadioLine

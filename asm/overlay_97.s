@@ -1626,7 +1626,7 @@ ov97_0221F294: ; 0x0221F294
 	add r0, #8
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	add r0, #8
 	bl CopyWindowToVram
@@ -1656,7 +1656,7 @@ ov97_0221F294: ; 0x0221F294
 	add r0, #0x18
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 _0221F32A:
@@ -1682,7 +1682,7 @@ _0221F32A:
 	add r0, #0x48
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	ldr r0, [r4, #0x6c]
@@ -1701,7 +1701,7 @@ _0221F32A:
 	add r2, r5, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	ldr r0, [r4, #0x6c]
@@ -1720,7 +1720,7 @@ _0221F32A:
 	add r2, r5, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	ldr r0, [r4, #0x6c]
@@ -1739,7 +1739,7 @@ _0221F32A:
 	add r2, r5, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	ldr r0, [r4, #0x6c]
@@ -1758,7 +1758,7 @@ _0221F32A:
 	add r2, r5, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	add r4, #0x48
@@ -1794,7 +1794,7 @@ ov97_0221F428: ; 0x0221F428
 	add r0, r5, #0
 	ldr r2, [r5, #0x74]
 	add r0, #0x28
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	add r0, #0x28
 	bl CopyWindowToVram
@@ -1820,7 +1820,7 @@ ov97_0221F428: ; 0x0221F428
 	add r0, #0x38
 	mov r3, #4
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	add r0, #0x38
 	bl CopyWindowToVram
@@ -1850,7 +1850,7 @@ _0221F4A8:
 	add r2, r6, #0
 	mov r3, #4
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	add r0, #0x38
 	bl CopyWindowToVram
@@ -1901,7 +1901,7 @@ _0221F4FE:
 	add r0, #0x58
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r5, #0x58
 	add r0, r5, #0
 	bl CopyWindowToVram

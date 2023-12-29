@@ -1411,7 +1411,7 @@ ov46_02259374: ; 0x02259374
 	ldr r0, [r5, #0x2c]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _02259394:
 	add r0, r5, #0
 	add r0, #8
@@ -1473,7 +1473,7 @@ ov46_022593F8: ; 0x022593F8
 	ldr r0, [r4, #0x2c]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _02259414:
 	ldr r0, [r4, #0x20]
 	cmp r0, #0
@@ -1559,7 +1559,7 @@ ov46_02259494: ; 0x02259494
 	ldr r0, [r4, #0x2c]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _022594B0:
 	ldr r0, [r4, #0x24]
 	cmp r0, #0
@@ -1615,7 +1615,7 @@ ov46_022594E0: ; 0x022594E0
 	ldr r2, [r4, #0x18]
 	add r0, #8
 	mov r1, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop

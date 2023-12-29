@@ -13,7 +13,7 @@ struct TextPrinterSubStruct {
     u8 autoScrollDelay : 8;
 };
 
-BOOL RenderText(struct TextPrinter *printer);
+RenderResult RenderText(TextPrinter *printer);
 void TextFlags_SetCanABSpeedUpPrint(BOOL enable);
 void sub_02002B50(BOOL enable);
 void sub_02002B8C(BOOL enable);
