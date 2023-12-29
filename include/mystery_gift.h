@@ -42,7 +42,7 @@ typedef union {
     MysteryGiftPokemonTag pokemon;
     Pokemon egg;
     u32 item;
-    u16 ruleset[24];
+    u16 ruleset[16];
     int baseDecoration;
     MysteryGiftMonDecorationTag monDecoration;
     u8 pokewalkerCourse;
@@ -166,10 +166,19 @@ void SaveMysteryGift_SetFlagx7FF(MysteryGiftSave* mg);
 // commands.
 
 // Loads the internal MysteryGiftSave pointer.
-void SaveMGDataPtr_Begin(SaveData* saveData);
+// An alternate implementation may have cloned the save data,
+// effectively beginning a transaction.
+// To use this implementation, define
+// MYSTERY_GIFT_SAVE_TRANSACTION_IMPL.
+void SaveMGDataPtr_Begin(SaveData* saveData, HeapID heapId);
 
 // Unloads the internal MysteryGiftSave pointer.
-void SaveMGDataPtr_End(void);
+// In the alternate implementation that clones the save
+// data, a boolean parameter dictates whether to
+// commit or rollback the transaction.
+// To use this implementation, define
+// MYSTERY_GIFT_SAVE_TRANSACTION_IMPL.
+void SaveMGDataPtr_End(SaveData* saveData, BOOL commit);
 
 // Gets the index of the first occupied
 // Mystery Gift slot.
