@@ -1552,7 +1552,7 @@ _022592F0:
 	str r1, [sp, #0xc]
 	ldr r2, [r5, #8]
 	add r0, r6, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -1583,7 +1583,7 @@ ov90_02259314: ; 0x02259314
 	add r0, r6, #0
 	add r2, r4, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -1616,7 +1616,7 @@ ov90_02259350: ; 0x02259350
 	str r1, [sp, #0xc]
 	ldr r2, [r5, #8]
 	add r0, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov90_02259350
@@ -1771,7 +1771,7 @@ _0225948A:
 	ldrh r0, [r1, r0]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _022594B4:
 	add r0, r5, #0
 	add r1, r6, #0
@@ -1823,7 +1823,7 @@ ov90_022594FC: ; 0x022594FC
 	ldrh r0, [r6, r7]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _02259524:
 	lsl r4, r4, #4
 	add r0, r5, r4
@@ -3716,7 +3716,7 @@ ov90_0225A350: ; 0x0225A350
 	ldr r2, [r5, #0x14]
 	add r0, r5, #0
 	sub r3, r3, r4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #2
 	bl FontID_Release
 	mov r0, #1

@@ -29,7 +29,7 @@
 .public ClearWindowTilemapAndScheduleTransfer
 .public FillWindowPixelBuffer
 .public ScheduleBgTilemapBufferTransfer
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public sub_02025224
 .public GF_AssertFail
 .public NNS_G2dGetUnpackedBGCharacterData

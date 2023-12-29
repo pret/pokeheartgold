@@ -403,7 +403,7 @@ _0200245A:
 	ldrb r0, [r4, #0x15]
 	ldrb r1, [r4, #0x16]
 	ldrb r2, [r4, #0x17]
-	bl sub_0202036C
+	bl GenerateFontHalfRowLookupTable
 	b _02002622
 _02002470:
 	ldr r0, [r4]
@@ -414,7 +414,7 @@ _02002470:
 	ldrh r1, [r4, #0xc]
 	ldrh r2, [r4, #0xe]
 	add r0, r4, #0
-	bl sub_020204FC
+	bl RenderScreenFocusIndicatorTile
 	add r0, r4, #0
 	add r0, #0x29
 	ldrb r0, [r0]

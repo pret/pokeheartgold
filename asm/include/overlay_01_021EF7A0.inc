@@ -16,7 +16,7 @@
 .public ClearWindowTilemapAndCopyToVram
 .public FillWindowPixelBuffer
 .public BlitBitmapRectToWindow
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GF_AssertFail
 .public String_New
 .public String_Delete
