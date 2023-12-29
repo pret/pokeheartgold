@@ -156,11 +156,12 @@ BOOL ScrCmd_MysteryGift(ScriptContext* ctx) {
         *ptr = pFunc->check(ctx->fieldSystem, FieldSystem_GetDataOfNextMG(ctx->fieldSystem));
         break;
     }
-    case SCR_MG_RECEIVE:
+    case SCR_MG_RECEIVE: {
         const struct ScriptMysteryGiftFuncs* pFunc = &sScriptMysteryGiftActionTable[FieldSystem_GetTagOfNextMG(ctx->fieldSystem) - 1];
         pFunc->give(ctx->fieldSystem, FieldSystem_GetDataOfNextMG(ctx->fieldSystem));
         FieldSystem_SetQueuedMGReceived(ctx->fieldSystem);
         break;
+    }
     case SCR_MG_MESSAGE_RECEIVED: {
         struct GetMysteryGiftGmmState gmmState;
         const struct ScriptMysteryGiftFuncs* pFunc = &sScriptMysteryGiftActionTable[FieldSystem_GetTagOfNextMG(ctx->fieldSystem) - 1];

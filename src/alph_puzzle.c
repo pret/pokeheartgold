@@ -850,12 +850,14 @@ static int AlphPuzzleMainSeq_RotateTile_impl(AlphPuzzleData *data) {
         data->subState++;
         break;
     case 1:
+    {
         u16 temp = data->sceneTImer++;
         sub_02024818(data->selectedTile->sprite, (u16)((u16)(temp << 0xb) + (data->selectedTile->rotation << 0xe)));
         if (data->sceneTImer >= 8) {
             data->subState++;
         }
         break;
+    }
     case 2:
         data->selectedTile->rotation = (data->selectedTile->rotation + 1) % 4;
 
@@ -887,12 +889,14 @@ static int AlphPuzzleMainSeq_Quit_impl(AlphPuzzleData *data) {
         }
         break;
     case 2:
+    {
         AlphPuzzleStates ret = AlphPuzzle_Quit_HandleYesNoPrompt(data);
         if (ret != ALPH_PUZZLE_STATE_QUIT) {
             data->subState = 0;
             return ret;
         }
         break;
+    }
     }
     return ALPH_PUZZLE_STATE_QUIT;
 }

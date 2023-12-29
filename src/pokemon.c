@@ -956,7 +956,7 @@ static void SetMonDataInternal(Pokemon *mon, int attr, const void * value) {
 #undef VALUE
 }
 
-void SetBoxMonData(BoxPokemon *boxMon, int attr, void * value) {
+void SetBoxMonData(BoxPokemon *boxMon, int attr, const void * value) {
     u32 checksum;
     if (!boxMon->box_lock) {
         DECRYPT_BOX(boxMon);
