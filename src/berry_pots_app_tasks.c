@@ -75,7 +75,7 @@ typedef struct SysTaskArgs_ov17_02203674 {
     UnkImageStruct *berrySprite;
 } SysTaskArgs_ov17_02203674;
 
-void ov17_02203674(SysTask*, SysTaskArgs_ov17_02203674*);
+void ov17_02203674(SysTask *, SysTaskArgs_ov17_02203674 *);
 
 void ov17_02203638(BerryPotsAppData *data) {
     SysTaskArgs_ov17_02203674 *args = AllocFromHeap(data->heapId, sizeof(SysTaskArgs_ov17_02203674));
@@ -91,24 +91,24 @@ void ov17_02203638(BerryPotsAppData *data) {
 void ov17_02203674(SysTask *task, SysTaskArgs_ov17_02203674 *args) {
     BerryPotsAppData *data = args->data;
     switch (args->state) {
-        case 0:
-            args->berrySprite = ov17_022034C8(data, args->potIndex * 27 + 35, 80, data->unk7E + 2);
-            PlaySE(SEQ_SE_DP_DECIDE);
+    case 0:
+        args->berrySprite = ov17_022034C8(data, args->potIndex * 27 + 35, 80, data->unk7E + 2);
+        PlaySE(SEQ_SE_DP_DECIDE);
+        args->state++;
+        break;
+    case 1:
+        UnkImageStruct_AddSpritePositionXY(args->berrySprite, 2, -2);
+        if (args->framesOnScreen++ >= 8) {
             args->state++;
-            break;
-        case 1:
-            UnkImageStruct_AddSpritePositionXY(args->berrySprite, 2, -2);
-            if (args->framesOnScreen++ >= 8) {
-                args->state++;
-            }
-            break;
-        case 2:
-            sub_0200D9DC(args->berrySprite);
+        }
+        break;
+    case 2:
+        sub_0200D9DC(args->berrySprite);
 
-            data->runningTasks--;
-            FreeToHeap(args);
-            DestroySysTask(task);
-            break;
+        data->runningTasks--;
+        FreeToHeap(args);
+        DestroySysTask(task);
+        break;
     }
 }
 
@@ -116,30 +116,29 @@ void ov17_022036FC(BerryPotsAppData *data, enum BerryPotsApp_022036FC_Action act
     BerryPotsAppData_UnkSub20 *unk = &data->unk20[potIndex];
 
     switch (action) {
-        case BERRY_POTS_APP_022036FC_ACTION_5:
-        case BERRY_POTS_APP_022036FC_ACTION_11:
-            BufferItemName(data->msgFmt, 2, MulchIdToItemId(unk->mulch));
-            break;
-        case BERRY_POTS_APP_022036FC_ACTION_10:
-        case BERRY_POTS_APP_022036FC_ACTION_14:
-            BufferIntegerAsString(data->msgFmt, 1, unk->quantityOrYieldMaybe, 2, PRINTING_MODE_LEFT_ALIGN, 0);
+    case BERRY_POTS_APP_022036FC_ACTION_5:
+    case BERRY_POTS_APP_022036FC_ACTION_11:
+        BufferItemName(data->msgFmt, 2, MulchIdToItemId(unk->mulch));
+        break;
+    case BERRY_POTS_APP_022036FC_ACTION_10:
+    case BERRY_POTS_APP_022036FC_ACTION_14:
+        BufferIntegerAsString(data->msgFmt, 1, unk->quantityOrYieldMaybe, 2, PRINTING_MODE_LEFT_ALIGN, 0);
             // fallthrough
-        case BERRY_POTS_APP_022036FC_ACTION_6:
-        case BERRY_POTS_APP_022036FC_ACTION_7:
-        case BERRY_POTS_APP_022036FC_ACTION_8:
-        case BERRY_POTS_APP_022036FC_ACTION_9:
-        case BERRY_POTS_APP_022036FC_ACTION_12:
-        case BERRY_POTS_APP_022036FC_ACTION_15:
-        case BERRY_POTS_APP_022036FC_ACTION_16:
-        {
-            String *berryName = GetNutName(unk->berryId, data->heapId);
-            BufferString(data->msgFmt, 0, berryName, 0, 0, 2);
-            String_Delete(berryName);
-            break;
-        }
-        default:
-            String_Copy(data->currentStatusString, data->statusStrings[action]);
-            return;
+    case BERRY_POTS_APP_022036FC_ACTION_6:
+    case BERRY_POTS_APP_022036FC_ACTION_7:
+    case BERRY_POTS_APP_022036FC_ACTION_8:
+    case BERRY_POTS_APP_022036FC_ACTION_9:
+    case BERRY_POTS_APP_022036FC_ACTION_12:
+    case BERRY_POTS_APP_022036FC_ACTION_15:
+    case BERRY_POTS_APP_022036FC_ACTION_16: {
+        String *berryName = GetNutName(unk->berryId, data->heapId);
+        BufferString(data->msgFmt, 0, berryName, 0, 0, 2);
+        String_Delete(berryName);
+        break;
+    }
+    default:
+        String_Copy(data->currentStatusString, data->statusStrings[action]);
+        return;
     }
 
     StringExpandPlaceholders(data->msgFmt, data->currentStatusString, data->statusStrings[action]);
@@ -226,28 +225,28 @@ void ov17_022039A0(SysTask *task, SysTaskArgs_ov17_022039A0 *args) {
     BerryPotsAppData *data = args->data;
 
     switch (args->state) {
-        case 0:
-            Set2dSpriteVisibleFlag(data->sprites[7 + args->potIndex], TRUE);
-            PlaySE(SEQ_SE_PL_EFF05);
-            args->state++;
-            break;
-        case 1:
-            if (args->unk5++ == 15) {
-                ov17_02202A84(data, args->potIndex);
-                if (data->unk7C == args->potIndex) {
-                    ov17_022028B8(data);
-                }
+    case 0:
+        Set2dSpriteVisibleFlag(data->sprites[7 + args->potIndex], TRUE);
+        PlaySE(SEQ_SE_PL_EFF05);
+        args->state++;
+        break;
+    case 1:
+        if (args->unk5++ == 15) {
+            ov17_02202A84(data, args->potIndex);
+            if (data->unk7C == args->potIndex) {
+                ov17_022028B8(data);
             }
+        }
 
-            if (args->unk5 >= 30) {
-                Set2dSpriteVisibleFlag(data->sprites[7 + args->potIndex], FALSE);
+        if (args->unk5 >= 30) {
+            Set2dSpriteVisibleFlag(data->sprites[7 + args->potIndex], FALSE);
 
-                data->runningTasks--;
-                FreeToHeap(args);
-                DestroySysTask(task);
-            }
+            data->runningTasks--;
+            FreeToHeap(args);
+            DestroySysTask(task);
+        }
 
-            break;
+        break;
     }
 }
 
@@ -271,26 +270,26 @@ BOOL ov17_02203A54(BerryPotsAppData *data) {
 
 u32 ov17_02203A74(BerryPotsAppData *data, u32 a1) {
     switch (a1) {
-        case 0:
-        case 1:
-        case 2:
-        case 3:
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+        PlaySE(SEQ_SE_DP_SELECT);
+        ov17_022028B8(data);
+        break;
+    case 4:
+        if (data->runningTasks == 0) {
+            return ov17_02203D00(data);
+        }
+        break;
+    case 5:
+    default:
+        if (data->runningTasks == 0) {
             PlaySE(SEQ_SE_DP_SELECT);
-            ov17_022028B8(data);
-            break;
-        case 4:
-            if (data->runningTasks == 0) {
-                return ov17_02203D00(data);
-            }
-            break;
-        case 5:
-        default:
-            if (data->runningTasks == 0) {
-                PlaySE(SEQ_SE_DP_SELECT);
-                ov17_02202850(data, 1);
-                return 1;
-            }
-            break;
+            ov17_02202850(data, 1);
+            return 1;
+        }
+        break;
     }
 
     return 2;
@@ -428,18 +427,18 @@ int ov17_02203CC8(BerryPotsAppData *data) {
 u32 ov17_02203D00(BerryPotsAppData *data) {
     BerryPotsAppData_UnkSub20 *unk = &data->unk20[data->unk7C];
     switch (unk->growthStage) {
-        case BERRY_POT_GROWTH_STAGE_NONE:
-            return (unk->mulch != MULCH_NONE) ? 4 : 3;
-        case BERRY_POT_GROWTH_STAGE_PLANTED:
-        case BERRY_POT_GROWTH_STAGE_SPROUTED:
-        case BERRY_POT_GROWTH_STAGE_GROWING:
-        case BERRY_POT_GROWTH_STAGE_BLOOM:
-            return 5;
-        case BERRY_POT_GROWTH_STAGE_BERRIES:
-            return 6;
+    case BERRY_POT_GROWTH_STAGE_NONE:
+        return (unk->mulch != MULCH_NONE) ? 4 : 3;
+    case BERRY_POT_GROWTH_STAGE_PLANTED:
+    case BERRY_POT_GROWTH_STAGE_SPROUTED:
+    case BERRY_POT_GROWTH_STAGE_GROWING:
+    case BERRY_POT_GROWTH_STAGE_BLOOM:
+        return 5;
+    case BERRY_POT_GROWTH_STAGE_BERRIES:
+        return 6;
 
-        case 0xFF:
-        default:
-            return 2;
+    case 0xFF:
+    default:
+        return 2;
     }
 }

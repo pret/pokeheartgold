@@ -83,26 +83,22 @@ static void ov17_02203404(BerryPotsAppData *data, int index);
 static void ov17_02203460(BerryPotsAppData *data, u8 index);
 
 static const u8 ov17_02203D60[3][4] = {
-    {0, 2, 1, 0,},
-    {0, 4, 3, 0,},
-    {0, 6, 5, 0,},
+    {
+     0, 2,
+     1, 0,
+     },
+    {
+     0, 4,
+     3, 0,
+     },
+    {
+     0, 6,
+     5, 0,
+     },
 };
-static const Ov122_021E9282 ov17_02203D6C = {
-    0x403,
-    0xB00,
-    0,
-    58,
-    31,
-    84
-};
+static const Ov122_021E9282 ov17_02203D6C = {0x403, 0xB00, 0, 58, 31, 84};
 static const u16 ov17_02203D78[7] = {
-    NARC_resdat_resdat_00000030_bin,
-    NARC_resdat_resdat_00000031_bin,
-    NARC_resdat_resdat_00000029_bin,
-    NARC_resdat_resdat_00000028_bin,
-    0xFFFF,
-    0xFFFF,
-    NARC_resdat_resdat_00000079_bin,
+    NARC_resdat_resdat_00000030_bin, NARC_resdat_resdat_00000031_bin, NARC_resdat_resdat_00000029_bin, NARC_resdat_resdat_00000028_bin, 0xFFFF, 0xFFFF, NARC_resdat_resdat_00000079_bin,
 };
 static const GraphicsModes ov17_02203D88 = {
     GX_DISPMODE_GRAPHICS,
@@ -111,93 +107,32 @@ static const GraphicsModes ov17_02203D88 = {
     GX_BG0_AS_2D,
 };
 static const Unk122_021E92D0 ov17_02203D98 = {
-    0x8,
-    0x10000,
-    0x4000,
-    0x10,
-    0x10,
+    0x8, 0x10000, 0x4000, 0x10, 0x10,
 };
 static const WindowTemplate ov17_02203DC4[3] = {
-    {2, 25, 21, 6, 2, 9, 0x1A2},
-    {0, 2, 19, 19, 4, 12, 0x0CA},
-    {0, 2, 19, 27, 4, 12, 0x136},
+    {2, 25, 21, 6,  2, 9,  0x1A2},
+    {0, 2,  19, 19, 4, 12, 0x0CA},
+    {0, 2,  19, 27, 4, 12, 0x136},
 };
 static const SpriteResourceCountsListUnion ov17_02203DAC = {
     {1, 1, 1, 1, 0, 0}
 };
 static const BgTemplate ov17_02203DDC = {
-    0, 0,
-    GF_BG_BUF_SIZE_256x256_4BPP,
-    0x000,
-    GF_BG_SCR_SIZE_256x256,
-    GX_BG_COLORMODE_16,
-    GX_BG_SCRBASE_0xf000,
-    GX_BG_CHARBASE_0x00000,
-    GX_BG_EXTPLTT_01,
-    3,
-    GX_BG_AREAOVER_XLU,
-    0,
-    FALSE,
+    0, 0, GF_BG_BUF_SIZE_256x256_4BPP, 0x000, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, GX_BG_SCRBASE_0xf000, GX_BG_CHARBASE_0x00000, GX_BG_EXTPLTT_01, 3, GX_BG_AREAOVER_XLU, 0, FALSE,
 };
 static const BgTemplate ov17_02203DF8 = {
-    0, 0,
-    GF_BG_BUF_SIZE_256x256_4BPP,
-    0x000,
-    GF_BG_SCR_SIZE_256x256,
-    GX_BG_COLORMODE_16,
-    GX_BG_SCRBASE_0xf800,
-    GX_BG_CHARBASE_0x10000,
-    GX_BG_EXTPLTT_01,
-    0,
-    GX_BG_AREAOVER_XLU,
-    0,
-    FALSE,
+    0, 0, GF_BG_BUF_SIZE_256x256_4BPP, 0x000, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, GX_BG_SCRBASE_0xf800, GX_BG_CHARBASE_0x10000, GX_BG_EXTPLTT_01, 0, GX_BG_AREAOVER_XLU, 0, FALSE,
 };
 static const BgTemplate ov17_02203E14 = {
-    0, 0,
-    GF_BG_BUF_SIZE_256x256_4BPP,
-    0,
-    GF_BG_SCR_SIZE_256x256,
-    GX_BG_COLORMODE_16,
-    GX_BG_SCRBASE_0xf000,
-    GX_BG_CHARBASE_0x10000,
-    GX_BG_EXTPLTT_01,
-    2,
-    GX_BG_AREAOVER_XLU,
-    0,
-    FALSE,
+    0, 0, GF_BG_BUF_SIZE_256x256_4BPP, 0, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, GX_BG_SCRBASE_0xf000, GX_BG_CHARBASE_0x10000, GX_BG_EXTPLTT_01, 2, GX_BG_AREAOVER_XLU, 0, FALSE,
 };
 static const BgTemplate ov17_02203E30 = {
-    0, 0,
-    GF_BG_BUF_SIZE_256x256_4BPP,
-    0,
-    GF_BG_SCR_SIZE_256x256,
-    GX_BG_COLORMODE_16,
-    GX_BG_SCRBASE_0xf800,
-    GX_BG_CHARBASE_0x10000,
-    GX_BG_EXTPLTT_01,
-    0,
-    GX_BG_AREAOVER_XLU,
-    0,
-    FALSE,
+    0, 0, GF_BG_BUF_SIZE_256x256_4BPP, 0, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, GX_BG_SCRBASE_0xf800, GX_BG_CHARBASE_0x10000, GX_BG_EXTPLTT_01, 0, GX_BG_AREAOVER_XLU, 0, FALSE,
 };
 static const BgTemplate ov17_02203E4C = {
-    0, 0,
-    GF_BG_BUF_SIZE_256x256_4BPP,
-    0,
-    GF_BG_SCR_SIZE_256x256,
-    GX_BG_COLORMODE_16,
-    GX_BG_SCRBASE_0xe800,
-    GX_BG_CHARBASE_0x00000,
-    GX_BG_EXTPLTT_01,
-    3,
-    GX_BG_AREAOVER_XLU,
-    0,
-    FALSE,
+    0, 0, GF_BG_BUF_SIZE_256x256_4BPP, 0, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, GX_BG_SCRBASE_0xe800, GX_BG_CHARBASE_0x00000, GX_BG_EXTPLTT_01, 3, GX_BG_AREAOVER_XLU, 0, FALSE,
 };
-static const Unk122_021E92FC ov17_02203E68 = {
-    0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20
-};
+static const Unk122_021E92FC ov17_02203E68 = {0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20};
 
 static const u8 ov17_02203D5C[] = {4, 3, 1};
 static const u8 ov17_02203D58[] = {3, 1};
@@ -210,51 +145,16 @@ static const struct UnkStruct_ov17_02203E88 ov17_02203E88[4] = {
     {2, ov17_02203D50},
     {2, ov17_02203D54},
 };
-static const UnkStruct_0200D2B4 ov17_02203EA8 = {
-    0,
-    27, 96, 0, 5, 13, 0,
-    NNS_G2D_VRAM_TYPE_2DMAIN,
-    1, 0, 0, 0
-};
+static const UnkStruct_0200D2B4 ov17_02203EA8 = {0, 27, 96, 0, 5, 13, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0};
 static const GraphicsBanks ov17_02203ED0 = {
-    GX_VRAM_BG_128_A,
-    GX_VRAM_BGEXTPLTT_NONE,
-    GX_VRAM_SUB_BG_128_C,
-    GX_VRAM_SUB_BGEXTPLTT_NONE,
-    GX_VRAM_OBJ_64_E,
-    GX_VRAM_OBJEXTPLTT_NONE,
-    GX_VRAM_SUB_OBJ_16_I,
-    GX_VRAM_SUB_OBJEXTPLTT_NONE,
-    GX_VRAM_TEX_NONE,
-    GX_VRAM_TEXPLTT_NONE,
+    GX_VRAM_BG_128_A, GX_VRAM_BGEXTPLTT_NONE, GX_VRAM_SUB_BG_128_C, GX_VRAM_SUB_BGEXTPLTT_NONE, GX_VRAM_OBJ_64_E, GX_VRAM_OBJEXTPLTT_NONE, GX_VRAM_SUB_OBJ_16_I, GX_VRAM_SUB_OBJEXTPLTT_NONE, GX_VRAM_TEX_NONE, GX_VRAM_TEXPLTT_NONE,
 };
 static const UnkStruct_0200D2B4 ov17_02203EF8[5] = {
-    {
-        0,
-        224, 176, 0, 0, 15, 0,
-        NNS_G2D_VRAM_TYPE_2DMAIN,
-        1, 0, 0, 0
-    }, {
-        0,
-        27, 96, 0, 2, 0, 0,
-        NNS_G2D_VRAM_TYPE_2DMAIN,
-        1, 0, 0, 0
-    }, {
-        0,
-        31, 56, 0, 8, 1, 0,
-        NNS_G2D_VRAM_TYPE_2DMAIN,
-        1, 0, 0, 0
-    }, {
-        0,
-        27, 99, 0, 4, 14, 0,
-        NNS_G2D_VRAM_TYPE_2DMAIN,
-        1, 0, 0, 0
-    }, {
-        0,
-        27, 88, 0, 7, 12, 0,
-        NNS_G2D_VRAM_TYPE_2DMAIN,
-        1, 0, 0, 0
-    }
+    {0, 224, 176, 0, 0, 15, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0},
+    {0, 27,  96,  0, 2, 0,  0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0},
+    {0, 31,  56,  0, 8, 1,  0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0},
+    {0, 27,  99,  0, 4, 14, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0},
+    {0, 27,  88,  0, 7, 12, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0}
 };
 
 void ov17_02201BC0(void) {
@@ -277,26 +177,26 @@ BOOL BerryPotsApp_Initialize(OVY_MANAGER *manager, int *state) {
     BerryPotsAppData *data;
 
     switch (*state) {
-        case 0:
-            ov17_02201BC0();
-            CreateHeap(HEAP_ID_3, HEAP_ID_BERRY_POTS_APP, 0x20000);
+    case 0:
+        ov17_02201BC0();
+        CreateHeap(HEAP_ID_3, HEAP_ID_BERRY_POTS_APP, 0x20000);
 
-            data = OverlayManager_CreateAndGetData(manager, sizeof(BerryPotsAppData), HEAP_ID_BERRY_POTS_APP);
-            MI_CpuFill8(data, 0, sizeof(BerryPotsAppData));
-            data->heapId = HEAP_ID_BERRY_POTS_APP;
-            data->args = OverlayManager_GetArgs(manager);
-            BerryPotsApp_InitData(data);
+        data = OverlayManager_CreateAndGetData(manager, sizeof(BerryPotsAppData), HEAP_ID_BERRY_POTS_APP);
+        MI_CpuFill8(data, 0, sizeof(BerryPotsAppData));
+        data->heapId = HEAP_ID_BERRY_POTS_APP;
+        data->args = OverlayManager_GetArgs(manager);
+        BerryPotsApp_InitData(data);
 
-            (*state)++;
-            break;
+        (*state)++;
+        break;
 
-        case 1:
-            data = OverlayManager_GetData(manager);
-            if (ov17_02201DF0(data)) {
-                return TRUE;
-            }
+    case 1:
+        data = OverlayManager_GetData(manager);
+        if (ov17_02201DF0(data)) {
+            return TRUE;
+        }
 
-            break;
+        break;
     }
 
     return FALSE;
@@ -306,35 +206,35 @@ BOOL BerryPotsApp_Run(OVY_MANAGER *manager, int *state) {
     BerryPotsAppData *data = OverlayManager_GetData(manager);
 
     switch (*state) {
-        case 0:
-            *state = ov17_02201E50(data);
-            break;
-        case 1:
-            *state = ov17_02201EA8(data);
-            break;
-        case 2:
-            *state = ov17_02201EFC(data);
-            break;
-        case 3:
-            *state = ov17_02201F18(data);
-            break;
-        case 4:
-            *state = ov17_02201FE8(data);
-            break;
-        case 5:
-            *state = ov17_02202094(data);
-            break;
-        case 6:
-            *state = ov17_02202184(data);
-            break;
-        case 7:
-            *state = ov17_02202320(data);
-            break;
-        case 8:
-            *state = ov17_02202378(data);
-            break;
-        case 9:
-            return TRUE;
+    case 0:
+        *state = ov17_02201E50(data);
+        break;
+    case 1:
+        *state = ov17_02201EA8(data);
+        break;
+    case 2:
+        *state = ov17_02201EFC(data);
+        break;
+    case 3:
+        *state = ov17_02201F18(data);
+        break;
+    case 4:
+        *state = ov17_02201FE8(data);
+        break;
+    case 5:
+        *state = ov17_02202094(data);
+        break;
+    case 6:
+        *state = ov17_02202184(data);
+        break;
+    case 7:
+        *state = ov17_02202320(data);
+        break;
+    case 8:
+        *state = ov17_02202378(data);
+        break;
+    case 9:
+        return TRUE;
     }
 
     sub_0200D020(data->spriteGfxHandler1);
@@ -379,23 +279,22 @@ static void ov17_02201DD8(BerryPotsAppData *data) {
 
 static BOOL ov17_02201DF0(BerryPotsAppData *data) {
     switch (data->state70) {
-        case 0:
-            BerryPotsApp_SetupResources(data);
-            data->state70++;
-            break;
-        case 1:
-            ov17_02202528(data);
-            sub_020210BC();
-            sub_02021148(1);
-            sub_02004EC4(0x45, 0, 0);
+    case 0:
+        BerryPotsApp_SetupResources(data);
+        data->state70++;
+        break;
+    case 1:
+        ov17_02202528(data);
+        sub_020210BC();
+        sub_02021148(1);
+        sub_02004EC4(0x45, 0, 0);
 
-            data->state70 = 0;
-            return TRUE;
+        data->state70 = 0;
+        return TRUE;
     }
 
     return FALSE;
 }
-
 
 static BOOL ov17_02201E3C(BerryPotsAppData *data) {
     sub_02021238();
@@ -405,17 +304,17 @@ static BOOL ov17_02201E3C(BerryPotsAppData *data) {
 
 static u32 ov17_02201E50(BerryPotsAppData *data) {
     switch (data->state70) {
-        case 0:
-            BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapId);
-            data->state70++;
+    case 0:
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapId);
+        data->state70++;
+        break;
+    case 1:
+        if (!IsPaletteFadeFinished()) {
             break;
-        case 1:
-            if (!IsPaletteFadeFinished()) {
-                break;
-            }
+        }
 
-            data->state70 = 0;
-            return ov17_02202440(data);
+        data->state70 = 0;
+        return ov17_02202440(data);
     }
 
     return 0;
@@ -423,17 +322,17 @@ static u32 ov17_02201E50(BerryPotsAppData *data) {
 
 static u32 ov17_02201EA8(BerryPotsAppData *data) {
     switch (data->state70) {
-        case 0:
-            BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapId);
-            data->state70++;
+    case 0:
+        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapId);
+        data->state70++;
+        break;
+    case 1:
+        if (!IsPaletteFadeFinished()) {
             break;
-        case 1:
-            if (!IsPaletteFadeFinished()) {
-                break;
-            }
+        }
 
-            data->state70 = 0;
-            return 9;
+        data->state70 = 0;
+        return 9;
     }
 
     return 1;
@@ -449,46 +348,45 @@ static u32 ov17_02201EFC(BerryPotsAppData *data) {
 
 static u32 ov17_02201F18(BerryPotsAppData *data) {
     switch (data->state70) {
-        case 0:
-            ov17_022029C8(data, 0);
-            ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_4, data->unk7C, TRUE);
-            ov17_02202910(data, FALSE);
-            data->state70++;
+    case 0:
+        ov17_022029C8(data, 0);
+        ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_4, data->unk7C, TRUE);
+        ov17_02202910(data, FALSE);
+        data->state70++;
+        break;
+    case 1: {
+        int unk = ov17_02202A50(data);
+        if (unk == -1) {
             break;
-        case 1:
-        {
-            int unk = ov17_02202A50(data);
-            if (unk == -1) {
-                break;
-            }
+        }
 
-            data->state70 = 0;
+        data->state70 = 0;
 
-            if (unk == 2 || unk == -2) {
-                ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_0, 4, TRUE);
-                ov17_02202910(data, TRUE);
-                return 2;
-            }
+        if (unk == 2 || unk == -2) {
+            ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_0, 4, TRUE);
+            ov17_02202910(data, TRUE);
+            return 2;
+        }
 
-            data->args->unk15 = data->unk7C;
-            data->args->itemId = 0xFFFF;
+        data->args->unk15 = data->unk7C;
+        data->args->itemId = 0xFFFF;
 
-            if (unk == 0) {
-                if (data->totalMulchQuantity == 0) {
-                    ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_2, 4, FALSE);
-                    return 8;
-                } else {
-                    data->args->unk14 = 1;
-                }
-            } else if (data->totalBerryQuantity == 0) {
-                ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_1, 4, FALSE);
+        if (unk == 0) {
+            if (data->totalMulchQuantity == 0) {
+                ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_2, 4, FALSE);
                 return 8;
             } else {
-                data->args->unk14 = 2;
+                data->args->unk14 = 1;
             }
-
-            return 1;
+        } else if (data->totalBerryQuantity == 0) {
+            ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_1, 4, FALSE);
+            return 8;
+        } else {
+            data->args->unk14 = 2;
         }
+
+        return 1;
+    }
     }
 
     return 3;
@@ -496,37 +394,36 @@ static u32 ov17_02201F18(BerryPotsAppData *data) {
 
 static u32 ov17_02201FE8(BerryPotsAppData *data) {
     switch (data->state70) {
-        case 0:
-            ov17_022029C8(data, 1);
-            ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_5, data->unk7C, 1);
-            ov17_02202910(data, 0);
-            data->state70++;
+    case 0:
+        ov17_022029C8(data, 1);
+        ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_5, data->unk7C, 1);
+        ov17_02202910(data, 0);
+        data->state70++;
+        break;
+    case 1: {
+        int unk = ov17_02202A50(data);
+        if (unk == -1) {
             break;
-        case 1:
-        {
-            int unk = ov17_02202A50(data);
-            if (unk == -1) {
-                break;
-            }
-
-            data->state70 = 0;
-
-            if (unk == 1 || unk == -2) {
-                ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_0, 4, 1);
-                ov17_02202910(data, 1);
-                return 2;
-            }
-
-            if (data->totalBerryQuantity == 0) {
-                ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_1, 4, 0);
-                return 8;
-            } else {
-                data->args->unk15 = data->unk7C;
-                data->args->itemId = 0xFFFF;
-                data->args->unk14 = 2;
-                return 1;
-            }
         }
+
+        data->state70 = 0;
+
+        if (unk == 1 || unk == -2) {
+            ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_0, 4, 1);
+            ov17_02202910(data, 1);
+            return 2;
+        }
+
+        if (data->totalBerryQuantity == 0) {
+            ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_1, 4, 0);
+            return 8;
+        } else {
+            data->args->unk15 = data->unk7C;
+            data->args->itemId = 0xFFFF;
+            data->args->unk14 = 2;
+            return 1;
+        }
+    }
     }
 
     return 4;
@@ -534,127 +431,125 @@ static u32 ov17_02201FE8(BerryPotsAppData *data) {
 
 static u32 ov17_02202094(BerryPotsAppData *data) {
     switch (data->state70) {
-        case 0:
-            ov17_022029C8(data, 2);
-            ov17_02202910(data, FALSE);
-            ov17_02202944(data, (enum BerryPotsApp_022036FC_Action)(BERRY_POTS_APP_022036FC_ACTION_5 + data->unk20[data->unk7C].growthStage), data->unk7C, TRUE);
-            data->state70++;
-            break;
-        case 1:
-        {
-            int unk = ov17_02202A50(data);
-            if (unk == -1) {
-                break;
-            }
-
-            if (unk == 1 || unk == -2) {
-                data->state70 = 0;
-                ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_0, 4, TRUE);
-                ov17_02202910(data, TRUE);
-                return 2;
-            }
-
-            ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_3, 4, FALSE);
-            data->state70++;
+    case 0:
+        ov17_022029C8(data, 2);
+        ov17_02202910(data, FALSE);
+        ov17_02202944(data, (enum BerryPotsApp_022036FC_Action)(BERRY_POTS_APP_022036FC_ACTION_5 + data->unk20[data->unk7C].growthStage), data->unk7C, TRUE);
+        data->state70++;
+        break;
+    case 1: {
+        int unk = ov17_02202A50(data);
+        if (unk == -1) {
             break;
         }
-        case 2:
-            if (!ov17_022025B8(data)) {
-                break;
-            }
 
-            ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_13, 4, FALSE);
-            data->state70++;
+        if (unk == 1 || unk == -2) {
+            data->state70 = 0;
+            ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_0, 4, TRUE);
+            ov17_02202910(data, TRUE);
+            return 2;
+        }
+
+        ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_3, 4, FALSE);
+        data->state70++;
+        break;
+    }
+    case 2:
+        if (!ov17_022025B8(data)) {
+            break;
+        }
+
+        ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_13, 4, FALSE);
+        data->state70++;
 
             // fallthrough
 
-        default:
-            if (!ov17_02202460(data)) {
-                break;
-            }
+    default:
+        if (!ov17_02202460(data)) {
+            break;
+        }
 
-            ov17_022028B8(data);
-            ov17_02202910(data, TRUE);
-            ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_0, 4, TRUE);
+        ov17_022028B8(data);
+        ov17_02202910(data, TRUE);
+        ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_0, 4, TRUE);
 
-            data->state70 = 0;
-            return 2;
+        data->state70 = 0;
+        return 2;
     }
 
     return 5;
 }
 
-static u32 ov17_02202184(BerryPotsAppData* data) {
+static u32 ov17_02202184(BerryPotsAppData *data) {
     switch (data->state70) {
-        case 0:
-            ov17_022029C8(data, 3);
-            ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_10, data->unk7C, TRUE);
-            ov17_02202910(data, FALSE);
-            data->state70++;
-            break;
+    case 0:
+        ov17_022029C8(data, 3);
+        ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_10, data->unk7C, TRUE);
+        ov17_02202910(data, FALSE);
+        data->state70++;
+        break;
 
-        case 1:
-        {
-            int unk = ov17_02202A50(data);
-            if (unk == -1) {
-                break;
-            }
-
-            if (unk == 1 || unk == -2) {
-                data->state70 = 0;
-                ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_0, 4, TRUE);
-                ov17_02202910(data, TRUE);
-                return 2;
-            }
-
-            BerryPotsAppData_UnkSub20 *unkStruct = &data->unk20[data->unk7C];
-            if (Bag_HasSpaceForItem(data->bag, BerryIdToItemId(unkStruct->berryId), unkStruct->quantityOrYieldMaybe, data->heapId)) {
-                data->state70 = 3;
-                ov17_02202900(data, FALSE);
-            } else {
-                ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_16, data->unk7C, FALSE);
-                data->state70++;
-            }
-
+    case 1: {
+        int unk = ov17_02202A50(data);
+        if (unk == -1) {
             break;
         }
-        case 2:
-            if (ov17_02202460(data)) {
-                data->state70 = 0;
-                ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_0, 4, TRUE);
-                ov17_02202910(data, TRUE);
-                return 2;
-            }
-            break;
 
-        case 3:
-            if (ov17_0220279C(data)) {
-                ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_14, data->unk7C, FALSE);
-                PlayFanfare(SEQ_ME_KINOMI);
-                data->state70++;
-            }
-            break;
+        if (unk == 1 || unk == -2) {
+            data->state70 = 0;
+            ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_0, 4, TRUE);
+            ov17_02202910(data, TRUE);
+            return 2;
+        }
 
-        case 4:
-            if (IsFanfarePlaying()) {
-                break;
-            }
-
-            ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_15, data->unk7C, FALSE);
+        BerryPotsAppData_UnkSub20 *unkStruct = &data->unk20[data->unk7C];
+        if (Bag_HasSpaceForItem(data->bag, BerryIdToItemId(unkStruct->berryId), unkStruct->quantityOrYieldMaybe, data->heapId)) {
+            data->state70 = 3;
+            ov17_02202900(data, FALSE);
+        } else {
+            ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_16, data->unk7C, FALSE);
             data->state70++;
+        }
+
+        break;
+    }
+    case 2:
+        if (ov17_02202460(data)) {
+            data->state70 = 0;
+            ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_0, 4, TRUE);
+            ov17_02202910(data, TRUE);
+            return 2;
+        }
+        break;
+
+    case 3:
+        if (ov17_0220279C(data)) {
+            ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_14, data->unk7C, FALSE);
+            PlayFanfare(SEQ_ME_KINOMI);
+            data->state70++;
+        }
+        break;
+
+    case 4:
+        if (IsFanfarePlaying()) {
+            break;
+        }
+
+        ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_15, data->unk7C, FALSE);
+        data->state70++;
 
             // fallthrough
-        case 5:
-            if (ov17_02202460(data)) {
-                ov17_02202B98(data);
-                ov17_022028B8(data);
-                ov17_02202910(data, TRUE);
-                ov17_02202900(data, TRUE);
-                ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_0, 4, TRUE);
-                data->state70 = 0;
-                return 2;
-            }
-            break;
+    case 5:
+        if (ov17_02202460(data)) {
+            ov17_02202B98(data);
+            ov17_022028B8(data);
+            ov17_02202910(data, TRUE);
+            ov17_02202900(data, TRUE);
+            ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_0, 4, TRUE);
+            data->state70 = 0;
+            return 2;
+        }
+        break;
     }
 
     return 6;
@@ -662,18 +557,18 @@ static u32 ov17_02202184(BerryPotsAppData* data) {
 
 static u32 ov17_02202320(BerryPotsAppData *data) {
     switch (data->state70) {
-        case 0:
-            PlaySE(SEQ_SE_GS_KP01);
-            data->state70++;
-            break;
-        case 1:
-            if (ov17_02202460(data)) {
-                ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_0, 4, TRUE);
-                ov17_02202910(data, TRUE);
-                data->state70 = 0;
-                return 2;
-            }
-            break;
+    case 0:
+        PlaySE(SEQ_SE_GS_KP01);
+        data->state70++;
+        break;
+    case 1:
+        if (ov17_02202460(data)) {
+            ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_0, 4, TRUE);
+            ov17_02202910(data, TRUE);
+            data->state70 = 0;
+            return 2;
+        }
+        break;
     }
 
     return 7;
@@ -795,19 +690,19 @@ static void ov17_02202528(BerryPotsAppData *data) {
     ov17_022028B8(data);
 
     switch (data->unk7B) {
-        case 1:
-            ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_11, data->unk7C, TRUE);
-            ov17_02202910(data, FALSE);
-            break;
-        case 2:
-            ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_12, data->unk7C, TRUE);
-            ov17_02202910(data, FALSE);
-            break;
-        case 0:
-        default:
-            ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_0, 4, TRUE);
-            ov17_02202910(data, TRUE);
-            break;
+    case 1:
+        ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_11, data->unk7C, TRUE);
+        ov17_02202910(data, FALSE);
+        break;
+    case 2:
+        ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_12, data->unk7C, TRUE);
+        ov17_02202910(data, FALSE);
+        break;
+    case 0:
+    default:
+        ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_0, 4, TRUE);
+        ov17_02202910(data, TRUE);
+        break;
     }
 
     ov17_022037C8(data, FALSE);
@@ -820,67 +715,67 @@ static void ov17_02202528(BerryPotsAppData *data) {
 
 static BOOL ov17_022025B8(BerryPotsAppData *data) {
     switch (data->state72) {
-        case 0:
-            data->unk80 = data->unk7C;
-            data->unk81 = 0xFF;
-            Sprite_SetPositionXY(data->sprites[2], (s16)(data->unk80 * 27 + 31), 56);
-            Set2dSpriteAnimSeqNo(data->sprites[2], 8);
+    case 0:
+        data->unk80 = data->unk7C;
+        data->unk81 = 0xFF;
+        Sprite_SetPositionXY(data->sprites[2], (s16)(data->unk80 * 27 + 31), 56);
+        Set2dSpriteAnimSeqNo(data->sprites[2], 8);
+        Sprite_ResetAnimCtrlState(data->sprites[2]);
+        Set2dSpriteAnimActiveFlag(data->sprites[2], TRUE);
+        Set2dSpriteVisibleFlag(data->sprites[2], TRUE);
+        data->waitFrames = 0;
+        data->state72++;
+        break;
+    case 1:
+        if (data->waitFrames++ >= 15) {
+            PlaySE(SEQ_SE_GS_MIZU);
             Sprite_ResetAnimCtrlState(data->sprites[2]);
-            Set2dSpriteAnimActiveFlag(data->sprites[2], TRUE);
-            Set2dSpriteVisibleFlag(data->sprites[2], TRUE);
+            Set2dSpriteAnimSeqNo(data->sprites[2], 9);
+            Set2dSpriteAnimActiveFlag(data->sprites[1], TRUE);
             data->waitFrames = 0;
             data->state72++;
-            break;
-        case 1:
-            if (data->waitFrames++ >= 15) {
-                PlaySE(SEQ_SE_GS_MIZU);
-                Sprite_ResetAnimCtrlState(data->sprites[2]);
-                Set2dSpriteAnimSeqNo(data->sprites[2], 9);
-                Set2dSpriteAnimActiveFlag(data->sprites[1], TRUE);
-                data->waitFrames = 0;
-                data->state72++;
-            }
-            break;
-        case 2:
-            if (data->waitFrames++ == 0) {
-                ov17_02202B58(data, data->unk80);
-            }
+        }
+        break;
+    case 2:
+        if (data->waitFrames++ == 0) {
+            ov17_02202B58(data, data->unk80);
+        }
 
-            if (data->waitFrames < 30) {
-                ov17_02203A54(data);
-                break;
-            }
+        if (data->waitFrames < 30) {
+            ov17_02203A54(data);
+            break;
+        }
 
+        data->waitFrames = 0;
+        if (data->unk81 == 0xFF) {
+            StopSE(SEQ_SE_GS_MIZU, 2);
+            Set2dSpriteAnimSeqNo(data->sprites[2], 8);
+            data->state72 = 4;
+        } else {
+            ov17_0220351C(data);
+            data->state72++;
+        }
+
+        break;
+    case 3:
+        if (data->runningTasks == 0) {
             data->waitFrames = 0;
-            if (data->unk81 == 0xFF) {
-                StopSE(SEQ_SE_GS_MIZU, 2);
-                Set2dSpriteAnimSeqNo(data->sprites[2], 8);
-                data->state72 = 4;
-            } else {
-                ov17_0220351C(data);
-                data->state72++;
-            }
-
-            break;
-        case 3:
-            if (data->runningTasks == 0) {
-                data->waitFrames = 0;
-                data->unk80 = data->unk81;
-                data->unk81 = 0xFF;
-                Set2dSpriteAnimActiveFlag(data->sprites[1], TRUE);
-                data->state72 = 2;
-            }
-            break;
-        case 4:
-            if (data->waitFrames++ >= 15) {
-                ov17_0220387C(data);
-                Set2dSpriteVisibleFlag(data->sprites[2], FALSE);
-                Set2dSpriteAnimActiveFlag(data->sprites[1], FALSE);
-                data->waitFrames = 0;
-                data->state72 = 0;
-                return TRUE;
-            }
-            break;
+            data->unk80 = data->unk81;
+            data->unk81 = 0xFF;
+            Set2dSpriteAnimActiveFlag(data->sprites[1], TRUE);
+            data->state72 = 2;
+        }
+        break;
+    case 4:
+        if (data->waitFrames++ >= 15) {
+            ov17_0220387C(data);
+            Set2dSpriteVisibleFlag(data->sprites[2], FALSE);
+            Set2dSpriteAnimActiveFlag(data->sprites[1], FALSE);
+            data->waitFrames = 0;
+            data->state72 = 0;
+            return TRUE;
+        }
+        break;
     }
 
     return FALSE;
@@ -888,31 +783,31 @@ static BOOL ov17_022025B8(BerryPotsAppData *data) {
 
 static BOOL ov17_0220279C(BerryPotsAppData *data) {
     switch (data->state72) {
-        case 0:
-            ov17_02203460(data, data->unk7C);
-            data->unk7E = data->unk20[data->unk7C].quantityOrYieldMaybe;
-            data->waitFrames = 0;
+    case 0:
+        ov17_02203460(data, data->unk7C);
+        data->unk7E = data->unk20[data->unk7C].quantityOrYieldMaybe;
+        data->waitFrames = 0;
+        data->state72++;
+        break;
+    case 1:
+        if (data->waitFrames == 0) {
+            ov17_02203638(data);
+            data->unk7E--;
+            data->waitFrames = 8;
+        }
+        data->waitFrames--;
+        if (data->unk7E == 0) {
             data->state72++;
+        }
+        break;
+    case 2:
+        if (data->runningTasks != 0) {
             break;
-        case 1:
-            if (data->waitFrames == 0) {
-                ov17_02203638(data);
-                data->unk7E--;
-                data->waitFrames = 8;
-            }
-            data->waitFrames--;
-            if (data->unk7E == 0) {
-                data->state72++;
-            }
-            break;
-        case 2:
-            if (data->runningTasks != 0) {
-                break;
-            }
+        }
 
-            data->waitFrames = 0;
-            data->state72 = 0;
-            return TRUE;
+        data->waitFrames = 0;
+        data->state72 = 0;
+        return TRUE;
     }
 
     return FALSE;
@@ -1005,16 +900,16 @@ void ov17_02202A84(BerryPotsAppData *data, int index) {
     MI_CpuCopy8(&ov17_02203EA8, &unkStruct, sizeof(UnkStruct_0200D2B4));
     unkStruct.x = (index + 1) * 27;
     switch (sub->growthStage) {
-        case BERRY_POT_GROWTH_STAGE_PLANTED:
-            unkStruct.animSeqNo = 5;
-            break;
-        case BERRY_POT_GROWTH_STAGE_SPROUTED:
-            unkStruct.animSeqNo = 6;
-            break;
-        default:
-            unkStruct.resourceSet = index + 1;
-            unkStruct.animSeqNo = sub->growthStage - 3;
-            break;
+    case BERRY_POT_GROWTH_STAGE_PLANTED:
+        unkStruct.animSeqNo = 5;
+        break;
+    case BERRY_POT_GROWTH_STAGE_SPROUTED:
+        unkStruct.animSeqNo = 6;
+        break;
+    default:
+        unkStruct.resourceSet = index + 1;
+        unkStruct.animSeqNo = sub->growthStage - 3;
+        break;
     }
 
     sub->soilSpriteMaybe = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler1, &unkStruct);
@@ -1176,8 +1071,8 @@ static void BerryPotsApp_FreeWindows(BerryPotsAppData *data) {
 }
 
 static void BerryPotsApp_SetupListMenuItems(BerryPotsAppData *data) {
-    for (int i = 0; i < (int)NELEMS(data->listMenuItems ); i++) {
-        const struct UnkStruct_ov17_02203E88* unk = &ov17_02203E88[i];
+    for (int i = 0; i < (int)NELEMS(data->listMenuItems); i++) {
+        const struct UnkStruct_ov17_02203E88 *unk = &ov17_02203E88[i];
         data->listMenuItems[i] = ListMenuItems_New(unk->unk0, data->heapId);
         for (int j = 0; j < (int)unk->unk0; j++) {
             ListMenuItems_AppendFromMsgData(data->listMenuItems[i], data->msgData, unk->unk4[j], j);

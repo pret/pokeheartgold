@@ -111,4 +111,4 @@ int ov17_02203C78(BerryPotsAppData *data);
 int ov17_02203CC8(BerryPotsAppData *data);
 u32 ov17_02203D00(BerryPotsAppData *data);
 
-#endif //POKEHEARTGOLD_BERRY_POTS_APP_INTERNAL_H
+#endif // POKEHEARTGOLD_BERRY_POTS_APP_INTERNAL_H
