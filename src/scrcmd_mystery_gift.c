@@ -222,12 +222,7 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
     int gender = GetMonGender(pokemon);
     SetMonData(pokemon, MON_DATA_GENDER, &gender);
 
-    gender = GetMonData(pokemon, MON_DATA_HP_IV, NULL)
-           + GetMonData(pokemon, MON_DATA_ATK_IV, NULL)
-           + GetMonData(pokemon, MON_DATA_DEF_IV, NULL)
-           + GetMonData(pokemon, MON_DATA_SPEED_IV, NULL)
-           + GetMonData(pokemon, MON_DATA_SPATK_IV, NULL)
-           + GetMonData(pokemon, MON_DATA_SPDEF_IV, NULL);
+    gender = GetMonData(pokemon, MON_DATA_HP_IV, NULL) + GetMonData(pokemon, MON_DATA_ATK_IV, NULL) + GetMonData(pokemon, MON_DATA_DEF_IV, NULL) + GetMonData(pokemon, MON_DATA_SPEED_IV, NULL) + GetMonData(pokemon, MON_DATA_SPATK_IV, NULL) + GetMonData(pokemon, MON_DATA_SPDEF_IV, NULL);
     if (gender == 0) {
         u16 ivRand = LCRandom();
         rand = ivRand & 0x1Fu;
