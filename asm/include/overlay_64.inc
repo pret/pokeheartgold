@@ -80,7 +80,7 @@
 .public CopyWindowPixelsToVram_TextMode
 .public FillWindowPixelBuffer
 .public DoScheduledBgGpuUpdates
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public sub_020210BC
 .public sub_02021148
 .public sub_02021238

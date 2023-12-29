@@ -3510,7 +3510,7 @@ _021EE412:
 	add r0, r6, #0
 	add r2, r7, #0
 	add r3, r5, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov103_021EE3E4
@@ -3991,7 +3991,7 @@ ov103_021EE7DC: ; 0x021EE7DC
 	add r2, #0x68
 	ldr r2, [r4, r2]
 	mov r1, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r1, r6, #0
 	ldr r2, [r5, #0xc]
 	add r1, #0x6c

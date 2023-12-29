@@ -305,7 +305,7 @@ ov01_021EF9A8: ; 0x021EF9A8
 	add r3, #0x30
 	ldrb r3, [r3]
 	add r0, #0x20
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, pc}
 	nop

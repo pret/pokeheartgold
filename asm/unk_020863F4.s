@@ -1686,7 +1686,7 @@ sub_02087090: ; 0x02087090
 	str r1, [sp, #0xc]
 	add r0, sp, #0x1c
 	mov r1, #2
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, sp, #0x1c
 	mov r1, #1
 	mov r2, #0x6c

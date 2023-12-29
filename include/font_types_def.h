@@ -29,7 +29,7 @@ union StrbufForPrint {
     const u16 *raw;
 };
 
-struct TextPrinterTemplate {
+typedef struct TextPrinterTemplate {
     union StrbufForPrint currentChar;
     Window *window;
     u8 padding[1];
@@ -42,13 +42,13 @@ struct TextPrinterTemplate {
     u16 unk18;
     u8 unk1A;
     u8 unk1B;
-};
+} TextPrinterTemplate;
 
-typedef BOOL (*PrinterCallback_t)(struct TextPrinterTemplate *template, u16 glyphId);
+typedef BOOL (*PrinterCallback_t)(TextPrinterTemplate *template, u16 glyphId);
 
-struct TextPrinter {
-    struct TextPrinterTemplate template;
-    PrinterCallback_t calback;
+typedef struct TextPrinter {
+    TextPrinterTemplate template;
+    PrinterCallback_t callback;
 
     u8 subStructFields[7]; // x20
     u8 active;
@@ -57,10 +57,17 @@ struct TextPrinter {
     u8 textSpeedTop:1;
     u8 delayCounter;
     u8 scrollDistance;
-    u8 minLetterSpacing;
-    u8 Unk2D;
-    u16 Unk2E;
-    u16 *Unk30;
-};
+    u8 id;
+    u8 unk2D;
+    u16 unk2E;
+    u16 *unk30;
+} TextPrinter;
+
+typedef enum RenderResult {
+    RENDER_PRINT,
+    RENDER_FINISH,
+    RENDER_REPEAT, // Run render function again, if e.g. a control code is encountered.
+    RENDER_UPDATE,
+} RenderResult;
 
 #endif //POKEHEARTGOLD_FONT_TYPES_DEF_H

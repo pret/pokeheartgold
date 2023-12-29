@@ -32,7 +32,7 @@
 .public AddTextWindowTopLeftCorner
 .public RemoveWindow
 .public GF_SinDegNoWrap
-.public AddTextPrinterParameterized3
+.public AddTextPrinterParameterizedWithColorAndSpacing
 .public Set2dSpriteAnimActiveFlag
 .public Sprite_SetAnimCtrlCurrentFrame
 .public sub_02024B1C

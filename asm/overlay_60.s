@@ -1754,7 +1754,7 @@ _021E667C:
 	add r2, r5, #0
 	add r3, r1, #0
 	str r1, [sp, #0x14]
-	bl AddTextPrinterParameterized3
+	bl AddTextPrinterParameterizedWithColorAndSpacing
 	b _021E679A
 _021E677C:
 	mov r1, #0
@@ -1770,7 +1770,7 @@ _021E677C:
 	add r2, r5, #0
 	add r3, r1, #0
 	str r1, [sp, #0x14]
-	bl AddTextPrinterParameterized3
+	bl AddTextPrinterParameterizedWithColorAndSpacing
 _021E679A:
 	add r0, r5, #0
 	bl String_Delete

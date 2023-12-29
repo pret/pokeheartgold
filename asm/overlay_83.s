@@ -3633,7 +3633,7 @@ ov83_0223FC48: ; 0x0223FC48
 	ldrb r1, [r1]
 	ldr r2, [r5, #0x28]
 	add r0, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
@@ -3681,7 +3681,7 @@ ov83_0223FCB4: ; 0x0223FCB4
 	ldrb r1, [r1]
 	ldr r2, [r5, #0x28]
 	add r0, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
@@ -4889,7 +4889,7 @@ _02240682:
 	add r0, r4, r0
 	mov r1, #0
 	mov r3, #4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r1, _02240744 ; =0x000004DC
 	add r0, r5, #0
 	ldr r2, [r5, r1]
@@ -5617,7 +5617,7 @@ _02240CCA:
 	ldr r3, [sp, #0x10]
 	add r0, r5, #0
 	add r2, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
@@ -9127,7 +9127,7 @@ _022428E2:
 	lsl r0, r0, #4
 	ldr r2, [r2, r4]
 	add r0, r6, r0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r1, _022429DC ; =0x000004DC
 	ldrb r2, [r6, #0x13]
 	ldr r1, [r6, r1]
@@ -12851,7 +12851,7 @@ ov83_022447E0: ; 0x022447E0
 	ldrb r1, [r1]
 	ldr r2, [r5, #0x28]
 	add r0, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
@@ -12899,7 +12899,7 @@ ov83_0224484C: ; 0x0224484C
 	ldrb r1, [r1]
 	ldr r2, [r5, #0x28]
 	add r0, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
@@ -13246,7 +13246,7 @@ _02244B18:
 	ldr r3, [sp, #0x10]
 	add r0, r7, #0
 	add r2, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add sp, #0x14
@@ -19103,7 +19103,7 @@ _022479C6:
 	add r0, r6, #0
 	add r2, r7, #0
 	add r3, r5, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov83_02247998

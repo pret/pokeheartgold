@@ -44,7 +44,7 @@ void FontWork_Init(void) {
         sFontWork->fontDataMan[i] = NULL;
         sFontWork->fontDataRefCount[i] = 0;
     }
-    sub_0201FFE0(sFontInfos);
+    SetFontsPointer(sFontInfos);
 }
 
 void FontID_Alloc(FontID fontId, HeapID heapId) {
@@ -102,7 +102,7 @@ struct GlyphInfo *FontID_TryLoadGlyph(FontID fontId, u16 glyphId) {
     return &sFontWork->glyph_buffer;
 }
 
-BOOL FontID_RenderText(int fontId, struct TextPrinter *printer) {
+RenderResult FontID_RenderText(int fontId, TextPrinter *printer) {
     struct TextPrinterSubStruct *sub;
 
     sub = (struct TextPrinterSubStruct *)printer->subStructFields;
@@ -195,4 +195,3 @@ u32 FontID_GetGlyphWidth(FontID fontId, u16 glyph) {
     GF_ASSERT(sFontWork->fontDataMan[fontId] != NULL);
     return GetGlyphWidth(sFontWork->fontDataMan[fontId], glyph);
 }
-

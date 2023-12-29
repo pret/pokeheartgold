@@ -1755,7 +1755,7 @@ ov02_0224686C: ; 0x0224686C
 	add r0, #8
 	mov r1, #3
 	asr r3, r3, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r5, #8
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
