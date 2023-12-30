@@ -11,7 +11,7 @@ int DaycareMon_CalcLevelGrowth(DaycareMon *daycareMon);
 u16 Save_Daycare_BufferMonNickAndRetrievalPrice(Daycare *dayCare, u8 slot, MessageFormat *msgFmt);
 u8 Save_Daycare_BufferGrowthAndNick(Daycare *dayCare, u32 slot, MessageFormat *msgFmt);
 void Save_Daycare_ResetEggStats(Daycare *dayCare);
-void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profile, int a4, int a5);
+void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profile, int trainerMemoStrat, int eggLocation);
 void GiveEggToPlayer(Daycare *dayCare, Party *party, PlayerProfile* profile);
 BOOL HandleDaycareStep(Daycare *dayCare, Party *party, FieldSystem *fieldSystem);
 Pokemon *sub_0206CE44(Party *party);

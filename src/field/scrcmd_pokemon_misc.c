@@ -40,6 +40,7 @@
 #include "unk_02092BE8.h"
 #include "unk_02037C94.h"
 #include "sound_02004A44.h"
+#include "constants/map_sections.h"
 
 typedef struct UnkStructScr_648 {
     FieldSystem *fieldSystem;
@@ -1026,7 +1027,7 @@ BOOL ScrCmd_GiveTogepiEgg(ScriptContext *ctx) {
     mon = AllocMonZeroed(HEAP_ID_FIELD);
     ZeroMonData(mon);
 
-    SetEggStats(mon, SPECIES_TOGEPI, 1, profile, 3, sub_02017FE4(MAPSECTYPE_GIFT, 0xd));
+    SetEggStats(mon, SPECIES_TOGEPI, 1, profile, 3, sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_MR_POKEMON)));
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
         if (GetMonData(mon, MON_DATA_MOVE1 + i, 0) == MOVE_NONE) {

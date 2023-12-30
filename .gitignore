@@ -18,6 +18,9 @@ cmake-build-debug/
 # VSCode folder
 .vscode/
 
+# "cmake.buildDirectory": "${workspaceFolder}/build-cmake-${buildType}"
+build-cmake-*
+
 # ROM
 *.srl
 
