@@ -463,7 +463,7 @@ _021F429C:
 	mov r0, #0
 	str r0, [sp, #0xc]
 	ldr r0, [r5, #0x10]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl String_Delete
 _021F42E2:

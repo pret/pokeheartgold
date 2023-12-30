@@ -16,5 +16,7 @@ WaitingIcon *WaitingIcon_New(Window *window, u16 tileNum);
 void sub_0200F450(WaitingIcon *waitingIcon);
 struct PokepicManager *DrawPokemonPicFromSpecies(BgConfig *bgConfig, enum GFBgLayer layer, int x, int y, u8 paletteNum, u16 baseTile, u16 species, u8 gender, HeapID heapId);
 struct PokepicManager *DrawPokemonPicFromMon(BgConfig *bgConfig, enum GFBgLayer layer, int x, int y, u8 paletteNum, u16 baseTile, Pokemon *mon, HeapID heapId);
+void sub_0200E398(BgConfig *bgConfig, u32 a1, u32 a2, u32 a3, HeapID heapId);
+u32 sub_0200E3D8(void);
 
 #endif //POKEHEARTGOLD_RENDER_WINDOW_H

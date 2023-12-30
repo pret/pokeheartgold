@@ -622,7 +622,7 @@ static u16 Daycare_GetEggSpecies(Daycare *dayCare, u8 *gender_idx) {
     return pms;
 }
 
-void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profile, int a4, int a5) {
+void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profile, int trainerMemoStrat, int eggLocation) {
     u32 otId;
     u32 gender;
     u16 pokeball;
@@ -649,7 +649,7 @@ void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profi
     name = GetSpeciesName(SPECIES_EGG, HEAP_ID_4);
     SetMonData(mon, MON_DATA_NICKNAME_3, name);
     String_Delete(name);
-    if (a4 == 4) {
+    if (trainerMemoStrat == 4) {
         otId = PlayerProfile_GetTrainerID(profile);
         gender = PlayerProfile_GetTrainerGender(profile);
         name = PlayerProfile_GetPlayerName_NewString(profile, HEAP_ID_32);
@@ -658,7 +658,7 @@ void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profi
         SetMonData(mon, MON_DATA_MET_GENDER, &gender);
         String_Delete(name);
     }
-    MonSetTrainerMemo(mon, profile, a4, a5, HEAP_ID_DEFAULT);
+    MonSetTrainerMemo(mon, profile, trainerMemoStrat, eggLocation, HEAP_ID_DEFAULT);
 }
 
 static void SetBreedEggStats(Pokemon *mon, u16 species, Daycare *dayCare, u32 otId, u8 form) {

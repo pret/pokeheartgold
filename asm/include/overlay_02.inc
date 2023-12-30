@@ -105,7 +105,7 @@
 .public GF_SinDegFX32
 .public LCRandom
 .public MTRandom
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GfGfx_EngineATogglePlanes
 .public Camera_New
 .public Camera_Delete
@@ -165,7 +165,7 @@
 .public Save_FashionData_GetFashionCase
 .public sub_0202BA2C
 .public sub_0202BA5C
-.public sub_0202BB08
+.public FashionCase_GiveFashionItem
 .public Save_FashionData_Get
 .public Roamers_GetRand
 .public Save_Roamers_Get

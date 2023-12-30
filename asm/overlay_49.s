@@ -4818,7 +4818,7 @@ ov49_0225AB14: ; 0x0225AB14
 	ldr r0, [r4, #0x10]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _0225AB30:
 	add r0, r4, #0
 	bl ov49_0225AC38
@@ -4844,7 +4844,7 @@ ov49_0225AB44: ; 0x0225AB44
 	ldr r0, [r5, #0x10]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _0225AB64:
 	add r0, r5, #0
 	mov r1, #0xf
@@ -4862,7 +4862,7 @@ _0225AB64:
 	str r3, [sp, #0xc]
 	ldr r2, [r5, #0x18]
 	add r0, r5, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r1, #1
 	str r0, [r5, #0x10]
 	add r0, r5, #0
@@ -4890,7 +4890,7 @@ ov49_0225ABA4: ; 0x0225ABA4
 	ldr r0, [r5, #0x10]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _0225ABC4:
 	add r0, r5, #0
 	mov r1, #0xf
@@ -4908,7 +4908,7 @@ _0225ABC4:
 	str r3, [sp, #0xc]
 	ldr r2, [r5, #0x18]
 	add r0, r5, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r1, #1
 	add r0, r5, #0
 	add r2, r1, #0
@@ -5009,7 +5009,7 @@ ov49_0225AC74: ; 0x0225AC74
 	ldr r0, [r4, #0x10]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _0225AC90:
 	add r0, r4, #0
 	bl ov49_0225AC38
@@ -5057,7 +5057,7 @@ ov49_0225ACC4: ; 0x0225ACC4
 	ldr r0, [r5, #0x10]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _0225ACE4:
 	add r0, r5, #0
 	mov r1, #0xf
@@ -5671,7 +5671,7 @@ ov49_0225B148: ; 0x0225B148
 	add r2, r6, #0
 	add r3, r5, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	add sp, #0x10
@@ -5811,7 +5811,7 @@ ov49_0225B24C: ; 0x0225B24C
 	str r3, [sp, #8]
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x55
@@ -8143,7 +8143,7 @@ ov49_0225C3DC: ; 0x0225C3DC
 	lsl r0, r4, #4
 	ldrb r3, [r3, #0x10]
 	add r0, r5, r0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -8183,7 +8183,7 @@ _0225C43C:
 	add r0, r2, r0
 	add r2, r6, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -8915,7 +8915,7 @@ ov49_0225C970: ; 0x0225C970
 	str r1, [sp, #0xc]
 	add r0, #0xc
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldrb r0, [r5, #2]
 	cmp r0, #0
 	str r4, [sp]

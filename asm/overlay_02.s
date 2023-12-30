@@ -1755,7 +1755,7 @@ ov02_0224686C: ; 0x0224686C
 	add r0, #8
 	mov r1, #3
 	asr r3, r3, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r5, #8
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
@@ -22261,7 +22261,7 @@ _02250336:
 	add r0, r7, #0
 	add r1, r5, #0
 	mov r2, #1
-	bl sub_0202BB08
+	bl FashionCase_GiveFashionItem
 	mov r1, #0x12
 	lsl r1, r1, #4
 	ldr r1, [r4, r1]

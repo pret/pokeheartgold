@@ -49,7 +49,7 @@ void CalcMonLevelAndStats(Pokemon *mon);
 void CalcMonStats(Pokemon *mon);
 u32 GetMonData(Pokemon *mon, int attr, void * ptr);
 u32 GetBoxMonData(BoxPokemon *boxMon, int attr, void * ptr);
-void SetMonData(Pokemon *mon, int attr, void * ptr);
+void SetMonData(Pokemon *mon, int attr, const void * ptr);
 void SetBoxMonData(BoxPokemon *boxMon, int attr, void * ptr);
 void AddMonData(Pokemon *mon, int attr, int amount);
 //void AddBoxMonData(BoxPokemon *boxMon, int attr, int amount);
