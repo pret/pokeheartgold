@@ -889,7 +889,7 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void * dest) {
     return ret;
 }
 
-void SetMonData(Pokemon *mon, int attr, void * value) {
+void SetMonData(Pokemon *mon, int attr, const void * value) {
     u32 checksum;
     if (!mon->box.party_lock) {
         DECRYPT_PTY(mon);
