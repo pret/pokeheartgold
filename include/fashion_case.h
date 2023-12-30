@@ -27,17 +27,17 @@ typedef struct SaveFashionData { //todo: rename to SaveFashionData
 
 SaveFashionData *Save_FashionData_Get(SaveData *saveData);
 FashionCase *Save_FashionData_GetFashionCase(SaveFashionData *unk);
-u32 FashionCase_CountAccessories(FashionCase *unksub);
-u32 FashionCase_CountWallpapers(FashionCase *unksub);
+u32 FashionCase_CountAccessories(FashionCase *fashionCase);
+u32 FashionCase_CountWallpapers(FashionCase *fashionCase);
 BOOL sub_0202B9EC(SaveFashionData *fashionData, int a1);
 BOOL sub_0202BA08(SaveFashionData *fashionData, int a1);
 SaveFashionDataSub *sub_0202B9B8(SaveFashionData *fashionData, int a1);
 void sub_0202BD7C(SaveFashionDataSub *fashionDataSub, int a1);
-void sub_0202BB08(FashionCase *a0, int a1, int a2);
-int sub_0202BA2C(FashionCase *a0, int a1, int a2);
-u32 sub_0202BA70(FashionCase *a0, int a1);
-void sub_0202BBD8(FashionCase *a0, int a1);
-int sub_0202BA5C(FashionCase *a0, int a1);
-void sub_0202BB7C(FashionCase *a0, int a1, int a2);
+void FashionCase_GiveFashionItem(FashionCase *fashionCase, int id, int quantity);
+int sub_0202BA2C(FashionCase *fashionCase, int a1, int a2);
+u32 sub_0202BA70(FashionCase *fashionCase, int a1);
+void FashionCase_GiveContestBackground(FashionCase *fashionCase, int id);
+int sub_0202BA5C(FashionCase *fashionCase, int a1);
+void sub_0202BB7C(FashionCase *fashionCase, int a1, int a2);
 
 #endif //POKEHEARTGOLD_FASHION_CASE_H
