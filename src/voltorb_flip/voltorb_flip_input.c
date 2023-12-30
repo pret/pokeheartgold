@@ -230,9 +230,9 @@ static int ov122_021E9020(Ov122_021E8CFC *a0) {
     }
 
     if (a0->memoOpen && a0->unkD != 25 && a0->unkD != 26) {
-        u32 var3 = TouchscreenHitbox_FindRectAtTouchNew(ov122_021E9A1C);
-        if (var3 < 8) {
-            switch (var3) {
+        u32 whichButton = TouchscreenHitbox_FindRectAtTouchNew(ov122_021E9A1C);
+        if (whichButton < 8) {
+            switch (whichButton) {
             case 0:
                 return 5;
             case 1:
