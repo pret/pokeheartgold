@@ -3,6 +3,7 @@
 #include "game_stats.h"
 #include "party.h"
 #include "field/launch_application.h"
+#include "field/location_backup.h"
 #include "game_clear.h"
 #include "hall_of_fame.h"
 #include "overlay_63.h"

@@ -4,8 +4,6 @@
 #include "field_system.h"
 #include "overlay_manager.h"
 
-extern const Location _020FA17C;
-extern const Location _020FA190;
 extern const u8 sItemPocket[];
 extern const u8 sBerryPocket[];
 extern const u8 _020FA1A8[];

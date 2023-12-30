@@ -162,21 +162,6 @@ static BOOL _Task_WirelessTrade(TaskManager *taskman);
 static BOOL _Task_NamingScreen(TaskManager *taskman);
 static void SetName(TaskManager *taskman);
 
-void LocationData_BackUp(Location *location) {
-    const Location *src = &_020FA17C;
-    *location = *src;
-}
-
-void LocationData_Restore(Location *location) {
-    const Location *src = &_020FA190;
-    *location = *src;
-}
-
-void Save_CurrentLocation_BackUp(SaveData *saveData) {
-    Location *position = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(saveData));
-    LocationData_BackUp(position);
-}
-
 BOOL Battle_OvyInit(OVY_MANAGER *man, int *state) {
     return TRUE;
 }
@@ -1062,105 +1047,38 @@ static BOOL _Task_NamingScreen(TaskManager *taskman) {
     return FALSE;
 }
 
-#ifdef NONMATCHING
-// https://decomp.me/scratch/v7YMG
 static void SetName(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     NamingScreenData *data = TaskManager_GetEnvironment(taskman);
-    switch (data->unkC->unk0) {
+    switch (data->args->unk0) {
     case 0:
-        Save_Profile_PlayerName_Set(Save_PlayerData_GetProfileAddr(fieldSystem->saveData), data->unkC->unk1C);
-        return;
+        PlayerProfile *profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
+        Save_Profile_PlayerName_Set(profile, data->args->unk1C);
+        break;
     case 3:
-        Save_Misc_RivalName_Set(Save_Misc_Get(fieldSystem->saveData), data->unkC->unk18);
-        return;
+        SAVE_MISC_DATA *miscData = Save_Misc_Get(fieldSystem->saveData);
+        Save_Misc_RivalName_Set(miscData, data->args->unk18);
+        break;
     case 1:
         Pokemon *mon;
-        if (data->unk4 == 0xff) {
+        if (data->partyIdx == 0xff) {
             BugContest *contest = FieldSystem_BugContest_Get(fieldSystem);
             mon = contest->mon;
         } else {
-            mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), data->unk4);
+            mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), data->partyIdx);
         }
-        SetMonData(mon, MON_DATA_NICKNAME_2, data->unkC->unk1C);
-        return;
+        SetMonData(mon, MON_DATA_NICKNAME_2, data->args->unk1C);
+        break;
     case 5:
-        sub_0202C7F8(Save_FriendGroup_Get(fieldSystem->saveData), 0, 0, data->unkC->unk18);
-        return;
-    case 4:
+        SAV_FRIEND_GRP *friendGroup = Save_FriendGroup_Get(fieldSystem->saveData);
+        sub_0202C7F8(friendGroup, 0, 0, data->args->unk18);
+        break;
     case 2:
+    case 4:
     default:
-        return;
+        break;
     }
 }
-#else
-static asm void SetName(TaskManager *a0) {
-	push {r4, r5, r6, lr}
-	add r4, r0, #0
-	bl TaskManager_GetFieldSystem
-	add r5, r0, #0
-	add r0, r4, #0
-	bl TaskManager_GetEnvironment
-	add r4, r0, #0
-	ldr r0, [r4, #0xc]
-	ldr r0, [r0, #0]
-	cmp r0, #5
-	bhi _0203F6DC
-	add r0, r0, r0
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_0203F676:
-    DCD 0x002a000a
-    DCD 0x001a0064
-    DCD 0x00520064
-_0203F682:
-	ldr r0, [r5, #0xc]
-	bl Save_PlayerData_GetProfileAddr
-	ldr r1, [r4, #0xc]
-	add r1, #0x1c
-	bl Save_Profile_PlayerName_Set
-	pop {r4, r5, r6, pc}
-_0203F692:
-	ldr r0, [r5, #0xc]
-	bl Save_Misc_Get
-	ldr r1, [r4, #0xc]
-	ldr r1, [r1, #0x18]
-	bl Save_Misc_RivalName_Set
-	pop {r4, r5, r6, pc}
-_0203F6A2:
-	ldr r6, [r4, #4]
-	cmp r6, #0xff
-	bne _0203F6B2
-	add r0, r5, #0
-	bl FieldSystem_BugContest_Get
-	ldr r0, [r0, #0x10]
-	b _0203F6BE
-_0203F6B2:
-	ldr r0, [r5, #0xc]
-	bl SaveArray_Party_Get
-	add r1, r6, #0
-	bl Party_GetMonByIndex
-_0203F6BE:
-	ldr r2, [r4, #0xc]
-	mov r1, #0x76
-	add r2, #0x1c
-	bl SetMonData
-	pop {r4, r5, r6, pc}
-_0203F6CA:
-	ldr r0, [r5, #0xc]
-	bl Save_FriendGroup_Get
-	ldr r3, [r4, #0xc]
-	mov r1, #0
-	ldr r3, [r3, #0x18]
-	add r2, r1, #0
-	bl sub_0202C7F8
-_0203F6DC:
-	pop {r4, r5, r6, pc}
-}
-#endif //NONMATCHING
 
 void Task_NamingScreen(TaskManager *taskman, NameScreenType type, int species, int maxLen, int partyIdx, const u16 *defaultStr, u16 *retVar) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);

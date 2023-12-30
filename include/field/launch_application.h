@@ -344,7 +344,6 @@ void sub_0203F570(FieldSystem *fieldSystem, SaveData *saveData);
 SafariDecorationArgs* LaunchSafariDecorationApp(FieldSystem *fieldSystem);
 void LaunchGeonetGlobeApp(FieldSystem *fieldSystem);
 void LaunchChooseStarterApp(FieldSystem *fieldSystem, ChooseStarterAppArgs *args);
-void Save_CurrentLocation_BackUp(SaveData *saveData);
 u16 sub_0203E864(Unk0203E600 *a0);
 u16 sub_0203E600(Unk0203E600 *a0);
 PokemonSummaryArgs *LaunchLearnForgetMoveApp(HeapID heapId, FieldSystem *fieldSystem, u8 a2, u16 a3);
@@ -427,8 +426,6 @@ PokeathlonCourseRecordArgs *LaunchPokeathlonCourseRecordApp(FieldSystem *fieldSy
 AlphPuzzleArgs *FieldSystem_CreateApplication_AlphPuzzle(FieldSystem *fieldSystem, u8 puzzle);
 void LaunchHOFCongratsApp(FieldSystem *fieldSystem, HOFCongratsArgs *args);
 void LaunchCreditsApp(FieldSystem *fieldSystem, CreditsArgs *args);
-void LocationData_BackUp(Location *data);
-void LocationData_Restore(Location *data);
 void LaunchBattleApp(FieldSystem *fieldSystem, BattleSetup *battleSetup);
 VoltorbFlipArgs *LaunchVoltorbFlipApp(FieldSystem *fieldSystem, u32 luck);
 
