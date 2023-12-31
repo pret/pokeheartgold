@@ -2,13 +2,14 @@
 #pragma once
 .public PaletteData_Init
 .public PaletteData_Free
+.public PaletteData_SetBuffers
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
 .public PaletteData_LoadPalette
 .public PaletteData_LoadFromNarc
 .public PaletteData_LoadNarc
-.public sub_02003220
-.public sub_02003284
+.public PaletteData_LoadFromOpenNarc
+.public PaletteData_LoadOpenNarc
 .public sub_020032A4
 .public PaletteData_CopyPalette
 .public PaletteData_GetUnfadedBuf

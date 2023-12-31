@@ -2143,7 +2143,7 @@ ov101_021E8790: ; 0x021E8790
 	ldr r0, [r0, #0x78]
 	add r1, r4, #0
 	add r2, #0x14
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #6
@@ -2158,7 +2158,7 @@ ov101_021E8790: ; 0x021E8790
 	ldr r3, [r5]
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #2
 	str r0, [sp]
 	mov r0, #0x16
@@ -2172,7 +2172,7 @@ ov101_021E8790: ; 0x021E8790
 	ldr r3, [r5]
 	ldr r0, [r0, #0x78]
 	add r1, r4, #0
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #3
 	str r0, [sp]
 	mov r0, #0x16
@@ -2186,7 +2186,7 @@ ov101_021E8790: ; 0x021E8790
 	ldr r3, [r5]
 	ldr r0, [r0, #0x78]
 	add r1, r4, #0
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	ldr r0, [r5, #0x10]
 	mov r1, #1
 	ldr r0, [r0, #0x78]
@@ -15823,7 +15823,7 @@ ov101_021EF26C: ; 0x021EF26C
 	ldr r0, [r0, #0x78]
 	add r1, r4, #0
 	add r2, r2, #4
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #6
@@ -15840,7 +15840,7 @@ ov101_021EF26C: ; 0x021EF26C
 	ldr r0, [r0, #0x78]
 	add r1, r4, #0
 	add r2, r2, #4
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	cmp r6, #0
 	beq _021EF304
 	mov r0, #2
@@ -15856,7 +15856,7 @@ ov101_021EF26C: ; 0x021EF26C
 	ldr r3, [r5]
 	ldr r0, [r0, #0x78]
 	add r1, r4, #0
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #3
 	str r0, [sp]
 	mov r0, #0x16
@@ -15870,7 +15870,7 @@ ov101_021EF26C: ; 0x021EF26C
 	ldr r3, [r5]
 	ldr r0, [r0, #0x78]
 	add r1, r4, #0
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 _021EF304:
 	ldr r0, [r5, #0xc]
 	mov r1, #1
@@ -18030,7 +18030,7 @@ ov101_021F0388: ; 0x021F0388
 	ldr r3, [r5]
 	add r1, r4, #0
 	add r2, #0xa
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #6
@@ -18045,7 +18045,7 @@ ov101_021F0388: ; 0x021F0388
 	ldr r3, [r5]
 	add r1, r4, #0
 	add r2, r2, #4
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #2
 	str r0, [sp]
 	mov r0, #0x16
@@ -18059,7 +18059,7 @@ ov101_021F0388: ; 0x021F0388
 	ldr r3, [r5]
 	ldr r0, [r0, #0x78]
 	add r1, r4, #0
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #3
 	str r0, [sp]
 	mov r0, #0x16
@@ -18073,7 +18073,7 @@ ov101_021F0388: ; 0x021F0388
 	ldr r3, [r5]
 	ldr r0, [r0, #0x78]
 	add r1, r4, #0
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	ldr r0, [r5, #0xc]
 	mov r1, #1
 	ldr r0, [r0, #0x78]
@@ -27732,7 +27732,7 @@ ov101_021F4CE8: ; 0x021F4CE8
 	ldr r3, [r5]
 	add r1, r4, #0
 	add r2, #0xa
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #6
@@ -27749,7 +27749,7 @@ ov101_021F4CE8: ; 0x021F4CE8
 	ldr r3, [r5]
 	add r1, r4, #0
 	add r2, r2, #4
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #2
 	str r0, [sp]
 	mov r0, #6
@@ -27763,7 +27763,7 @@ ov101_021F4CE8: ; 0x021F4CE8
 	ldr r3, [r5]
 	ldr r0, [r0, #0x78]
 	add r1, r4, #0
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #3
 	str r0, [sp]
 	lsl r0, r0, #7
@@ -27776,7 +27776,7 @@ ov101_021F4CE8: ; 0x021F4CE8
 	ldr r3, [r5]
 	ldr r0, [r0, #0x78]
 	add r1, r4, #0
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	ldr r0, [r5, #0xc]
 	mov r1, #1
 	ldr r0, [r0, #0x78]

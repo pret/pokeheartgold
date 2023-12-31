@@ -9,7 +9,7 @@
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
 .public PaletteData_LoadNarc
-.public sub_02003284
+.public PaletteData_LoadOpenNarc
 .public sub_020032A4
 .public sub_02003370
 .public sub_0200398C

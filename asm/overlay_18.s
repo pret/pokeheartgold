@@ -2020,7 +2020,7 @@ ov18_021E6868: ; 0x021E6868
 	ldr r1, [r4, r1]
 	mov r2, #2
 	mov r3, #0x25
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2105,7 +2105,7 @@ _021E69C6:
 	ldr r1, [r4, r1]
 	mov r2, #0x12
 	mov r3, #0x25
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	ldr r0, _021E6A6C ; =0x00001860
 	ldr r0, [r4, r0]
 	cmp r0, #0
@@ -2995,7 +2995,7 @@ ov18_021E7048: ; 0x021E7048
 	ldr r1, [r4, r1]
 	mov r2, #2
 	mov r3, #0x25
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3060,7 +3060,7 @@ ov18_021E7048: ; 0x021E7048
 	ldr r1, [r4, r1]
 	mov r2, #0x12
 	mov r3, #0x25
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	ldr r0, [r4, #4]
 	mov r1, #0
 	bl ScheduleBgTilemapBufferTransfer
@@ -4418,7 +4418,7 @@ _021E7C4E:
 	ldr r1, [r4, r1]
 	mov r2, #2
 	mov r3, #0x25
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4483,7 +4483,7 @@ _021E7C4E:
 	ldr r1, [r4, r1]
 	mov r2, #0x12
 	mov r3, #0x25
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	ldr r0, [r4, #4]
 	mov r1, #0
 	bl ScheduleBgTilemapBufferTransfer
@@ -4586,7 +4586,7 @@ ov18_021E7D90: ; 0x021E7D90
 	ldr r1, [r4, r1]
 	mov r2, #2
 	mov r3, #0x25
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4625,7 +4625,7 @@ ov18_021E7D90: ; 0x021E7D90
 	ldr r1, [r4, r1]
 	mov r2, #0x12
 	mov r3, #0x25
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	ldr r0, [r4, #8]
 	mov r1, #0x10
 	mov r2, #0
@@ -4729,7 +4729,7 @@ ov18_021E7ED8: ; 0x021E7ED8
 	ldr r1, [r4, r1]
 	mov r2, #2
 	mov r3, #0x25
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4768,7 +4768,7 @@ ov18_021E7ED8: ; 0x021E7ED8
 	ldr r1, [r4, r1]
 	mov r2, #0x12
 	mov r3, #0x25
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	ldr r0, [r4, #4]
 	mov r1, #0
 	bl ScheduleBgTilemapBufferTransfer
@@ -4888,7 +4888,7 @@ ov18_021E800C: ; 0x021E800C
 	ldr r1, [r5, r1]
 	mov r2, #2
 	mov r3, #0x25
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4927,7 +4927,7 @@ ov18_021E800C: ; 0x021E800C
 	ldr r1, [r5, r1]
 	mov r2, #0x12
 	mov r3, #0x25
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	ldr r0, _021E81A4 ; =0x000018C4
 	ldrsb r0, [r5, r0]
 	cmp r0, #1
@@ -38252,7 +38252,7 @@ ov18_021F8B10: ; 0x021F8B10
 	ldr r1, [r4, #0x1c]
 	ldr r3, [r4, #0x14]
 	mov r2, #0x12
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	add sp, #0x64
 	pop {r4, r5, pc}
 	nop

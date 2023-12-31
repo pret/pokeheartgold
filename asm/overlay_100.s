@@ -804,7 +804,7 @@ ov100_021E5EB4: ; 0x021E5EB4
 	ldr r3, [r5]
 	add r1, r6, #0
 	add r2, #0x1e
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0x80
@@ -817,7 +817,7 @@ ov100_021E5EB4: ; 0x021E5EB4
 	ldr r3, [r5]
 	add r1, r6, #0
 	add r2, #0x18
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #2
 	str r0, [sp]
 	mov r0, #0x80
@@ -829,7 +829,7 @@ ov100_021E5EB4: ; 0x021E5EB4
 	ldr r3, [r5]
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #3
 	str r0, [sp]
 	mov r0, #0x80
@@ -841,7 +841,7 @@ ov100_021E5EB4: ; 0x021E5EB4
 	ldr r3, [r5]
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	add r2, r5, #0
 	add r2, #0xc4
 	add r1, r4, #0

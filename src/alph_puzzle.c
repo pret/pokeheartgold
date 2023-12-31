@@ -1109,9 +1109,9 @@ static void AlphPuzzle_LoadBackgroundGraphics(AlphPuzzleData *data) {
     PaletteData_AllocBuffers(data->palette, 1, 256, data->heapId);
     PaletteData_AllocBuffers(data->palette, 2, 256, data->heapId);
 
-    sub_02003220(data->palette, narc, NARC_puzzle_gra_puzzle_gra_00000010_NCLR, data->heapId, 0, 256, 0, 0);
-    sub_02003220(data->palette, narc, NARC_puzzle_gra_puzzle_gra_00000010_NCLR, data->heapId, 1, 256, 0, 0);
-    sub_02003220(data->palette, narc, NARC_puzzle_gra_puzzle_gra_00000000_NCLR, data->heapId, 2, 256, 0, 0);
+    PaletteData_LoadFromOpenNarc(data->palette, narc, NARC_puzzle_gra_puzzle_gra_00000010_NCLR, data->heapId, 0, 256, 0, 0);
+    PaletteData_LoadFromOpenNarc(data->palette, narc, NARC_puzzle_gra_puzzle_gra_00000010_NCLR, data->heapId, 1, 256, 0, 0);
+    PaletteData_LoadFromOpenNarc(data->palette, narc, NARC_puzzle_gra_puzzle_gra_00000000_NCLR, data->heapId, 2, 256, 0, 0);
 
     GfGfxLoader_LoadCharDataFromOpenNarc(narc, NARC_puzzle_gra_puzzle_gra_00000011_NCGR, data->bgConfig, GF_BG_LYR_SUB_3, 0, 0, 0, data->heapId);
     GfGfxLoader_LoadScrnDataFromOpenNarc(narc, NARC_puzzle_gra_puzzle_gra_00000014_NSCR, data->bgConfig, GF_BG_LYR_SUB_3, 0, 0, 0, data->heapId);

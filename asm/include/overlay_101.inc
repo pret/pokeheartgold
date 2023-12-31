@@ -10,7 +10,7 @@
 .public FontID_Alloc
 .public FontID_Release
 .public FontID_String_GetWidth
-.public sub_02003220
+.public PaletteData_LoadFromOpenNarc
 .public sub_0200398C
 .public sub_02003B50
 .public sub_02003E5C
