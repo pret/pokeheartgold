@@ -128,10 +128,10 @@
 .public Sprite_SetDrawPriority
 .public sub_02024B38
 .public sub_02024B68
-.public sub_02025204
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchHeld
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchHeld
-.public sub_02025364
+.public System_GetTouchHeldCoords
 .public GF_AssertFail
 .public String_New
 .public String_Delete

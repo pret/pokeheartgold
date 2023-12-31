@@ -6833,7 +6833,7 @@ ov92_0225FC9C: ; 0x0225FC9C
 	add r5, r0, #0
 	add r0, sp, #0x10
 	add r1, sp, #0xc
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	ldr r0, _0225FE78 ; =0x00002B84
 	mov r1, #0
 	str r1, [r5, r0]
@@ -6844,13 +6844,13 @@ ov92_0225FC9C: ; 0x0225FC9C
 	ldr r0, _0225FE7C ; =ov92_02263C3C
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0xc]
-	bl sub_0202539C
+	bl TouchscreenHitbox_FindHitboxAtPoint
 	b _0225FCCE
 _0225FCC4:
 	ldr r0, _0225FE80 ; =ov92_02263C34
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0xc]
-	bl sub_0202539C
+	bl TouchscreenHitbox_FindHitboxAtPoint
 _0225FCCE:
 	mov r1, #0
 	mvn r1, r1

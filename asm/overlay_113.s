@@ -884,7 +884,7 @@ ov113_021E5F94: ; 0x021E5F94
 	add r5, r0, #0
 	ldr r0, _021E5FBC ; =ov113_021E6B82
 	add r4, r1, #0
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	add r1, r0, #0
 	mov r0, #0
 	mvn r0, r0

@@ -7669,7 +7669,7 @@ _021E9894:
 	ldr r0, _021E98A0 ; =ov112_021FF514
 	lsl r1, r4, #2
 	ldr r0, [r0, r1]
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	pop {r4, pc}
 	.balign 4, 0
 _021E98A0: .word ov112_021FF514
@@ -22565,7 +22565,7 @@ ov112_021F0E60: ; 0x021F0E60
 	ldrb r2, [r2, #0xe]
 	strb r3, [r1, #2]
 	strb r2, [r1, #3]
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	bne _021F0E8E
 	ldr r0, _021F0EAC ; =gSystem
@@ -22609,7 +22609,7 @@ ov112_021F0EB4: ; 0x021F0EB4
 	ldrb r2, [r2, #6]
 	strb r3, [r1, #2]
 	strb r2, [r1, #3]
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	bne _021F0EE6
 	ldr r0, _021F0EF8 ; =gSystem
@@ -22650,7 +22650,7 @@ ov112_021F0EFC: ; 0x021F0EFC
 	ldrb r2, [r2, #0xa]
 	strb r3, [r1, #2]
 	strb r2, [r1, #3]
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	bne _021F0F34
 	ldr r0, _021F0F44 ; =gSystem

@@ -5,7 +5,7 @@
 #include "unk_0200CF18.h"
 #include "unk_020192D0.h"
 #include "unk_02020654.h"
-#include "unk_02025154.h"
+#include "touchscreen.h"
 #include "constants/sndseq.h"
 #include "voltorb_flip/voltorb_flip.h"
 #include "voltorb_flip/voltorb_flip_data.h"
@@ -21,7 +21,7 @@ static void ov122_021E9154(Ov122_021E8CFC *, int);
 static void ov122_021E91AC(struct Ov122_021E8CFC *, u32, int, int);
 
 extern const Ov122UnkCB ov122_021E9A0C[];
-extern const u8 ov122_021E9A1C[];
+extern const TouchscreenHitbox ov122_021E9A1C[];
 extern const u8 ov122_021E9A3C[];
 extern const u8 ov122_021E9AAC[];
 extern u8 ov122_021E9BA0[5][2];
@@ -174,7 +174,7 @@ static int ov122_021E8F6C(Ov122_021E8CFC *a0) {
     ov122_021E8E78(a0);
     a0->unkFz = TRUE;
 
-    u8 var1 = sub_02025224(ov122_021E9A1C);
+    u8 var1 = TouchscreenHitbox_FindRectAtTouchNew(ov122_021E9A1C);
     if (var1 < 8) {
         switch (var1) {
         case 4:
@@ -230,9 +230,9 @@ static int ov122_021E9020(Ov122_021E8CFC *a0) {
     }
 
     if (a0->memoOpen && a0->unkD != 25 && a0->unkD != 26) {
-        u32 var3 = sub_02025224(ov122_021E9A1C);
-        if (var3 < 8) {
-            switch (var3) {
+        u32 whichButton = TouchscreenHitbox_FindRectAtTouchNew(ov122_021E9A1C);
+        if (whichButton < 8) {
+            switch (whichButton) {
             case 0:
                 return 5;
             case 1:

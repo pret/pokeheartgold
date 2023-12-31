@@ -32,8 +32,8 @@
 .public ScheduleBgTilemapBufferTransfer
 .public sub_0201F988
 .public AddTextPrinterParameterizedWithColor
-.public sub_02025204
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchHeld
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public String_Delete
 .public GXS_SetGraphicsMode
 .public GX_SetBankForSubBG

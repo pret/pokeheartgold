@@ -19428,7 +19428,7 @@ _02247C28:
 	pop {r4, pc}
 _02247C30:
 	ldr r0, _02247C54 ; =ov83_022484F4
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	cmp r0, #0
 	bne _02247C3E
 	mov r0, #6

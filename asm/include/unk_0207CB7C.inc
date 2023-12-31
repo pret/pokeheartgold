@@ -48,7 +48,7 @@
 .public Set2dSpriteAnimSeqNo
 .public Get2dSpriteCurrentAnimSeqNo
 .public Sprite_SetAnimCtrlCurrentFrame
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public String_Delete
 .public Options_GetTextFrameDelay

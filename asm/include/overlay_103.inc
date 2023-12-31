@@ -124,7 +124,7 @@
 .public GfGfx_EngineBTogglePlanes
 .public GfGfx_EngineBSetPlanes
 .public sub_02024B1C
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchNew
 .public String_New
 .public String_Delete

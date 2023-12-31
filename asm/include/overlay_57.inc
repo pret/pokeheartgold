@@ -158,11 +158,11 @@
 .public GfGfx_EngineBTogglePlanes
 .public GfGfx_BothDispOn
 .public sub_02024AA8
-.public sub_02025224
-.public sub_02025320
+.public TouchscreenHitbox_FindRectAtTouchNew
+.public TouchscreenHitbox_TouchNewIsIn
 .public System_GetTouchHeld
 .public System_GetTouchNew
-.public sub_02025364
+.public System_GetTouchHeldCoords
 .public GF_AssertFail
 .public String_New
 .public String_Delete

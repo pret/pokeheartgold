@@ -19,7 +19,7 @@
 #include "unk_0203A3B0.h"
 #include "unk_02035900.h"
 #include "unk_02005D10.h"
-#include "unk_02025154.h"
+#include "touchscreen.h"
 #include "unk_02022588.h"
 #include "unk_020215A0.h"
 #include "unk_0200A090.h"
@@ -1186,10 +1186,10 @@ static void ov84_0223F1BC(GAME_BOARD_WORK *work) {
     }
 }
 
-extern STRUCT_0223F90B ov84_0223F90B[2];
+extern TouchscreenHitbox ov84_0223F90B[2];
 
 static BOOL BattleArcadeGameBoard_CheckButtonPress(GAME_BOARD_WORK *work) {
-    int var = sub_0202529C(ov84_0223F90B);
+    int var = TouchscreenHitbox_FindHitboxAtTouchNew(ov84_0223F90B);
 
     if (var == 0) {
         ov84_0223F28C(work);

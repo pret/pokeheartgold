@@ -3899,11 +3899,11 @@ _0223972C: .word 0x00000DCC
 
 	thumb_func_start ov70_02239730
 ov70_02239730: ; 0x02239730
-	ldr r3, _02239738 ; =sub_02025224
+	ldr r3, _02239738 ; =TouchscreenHitbox_FindRectAtTouchNew
 	ldr r0, _0223973C ; =ov70_0224524C
 	bx r3
 	nop
-_02239738: .word sub_02025224
+_02239738: .word TouchscreenHitbox_FindRectAtTouchNew
 _0223973C: .word ov70_0224524C
 	thumb_func_end ov70_02239730
 
@@ -7008,7 +7008,7 @@ _0223B0A0:
 	bl ov70_0223AFA8
 _0223B0BA:
 	ldr r0, _0223B128 ; =ov70_02245498
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	cmp r0, #0
 	bne _0223B0E6
 	ldr r0, _0223B118 ; =0x00000F0F
@@ -8542,11 +8542,11 @@ _0223BD7C: .word 0x0400006C
 
 	thumb_func_start ov70_0223BD80
 ov70_0223BD80: ; 0x0223BD80
-	ldr r3, _0223BD88 ; =sub_02025224
+	ldr r3, _0223BD88 ; =TouchscreenHitbox_FindRectAtTouchNew
 	ldr r0, _0223BD8C ; =ov70_022456C8
 	bx r3
 	nop
-_0223BD88: .word sub_02025224
+_0223BD88: .word TouchscreenHitbox_FindRectAtTouchNew
 _0223BD8C: .word ov70_022456C8
 	thumb_func_end ov70_0223BD80
 
@@ -11631,11 +11631,11 @@ _0223D67C: .word 0x000005DC
 
 	thumb_func_start ov70_0223D680
 ov70_0223D680: ; 0x0223D680
-	ldr r3, _0223D688 ; =sub_02025224
+	ldr r3, _0223D688 ; =TouchscreenHitbox_FindRectAtTouchNew
 	ldr r0, _0223D68C ; =ov70_02245884
 	bx r3
 	nop
-_0223D688: .word sub_02025224
+_0223D688: .word TouchscreenHitbox_FindRectAtTouchNew
 _0223D68C: .word ov70_02245884
 	thumb_func_end ov70_0223D680
 
@@ -19219,7 +19219,7 @@ ov70_02241164: ; 0x02241164
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, _02241180 ; =ov70_02245D26
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -21268,27 +21268,27 @@ _02242176: ; jump table
 	.short _022421AE - _02242176 - 2 ; case 7
 _02242186:
 	ldr r0, _022421B8 ; =ov70_02245ED0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	pop {r3, pc}
 _0224218E:
 	ldr r0, _022421BC ; =ov70_02245F28
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	pop {r3, pc}
 _02242196:
 	ldr r0, _022421C0 ; =ov70_02245E3E
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	pop {r3, pc}
 _0224219E:
 	ldr r0, _022421C4 ; =ov70_02245DD0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	pop {r3, pc}
 _022421A6:
 	ldr r0, _022421C8 ; =ov70_02245E5E
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	pop {r3, pc}
 _022421AE:
 	ldr r0, _022421CC ; =ov70_02245DE4
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 _022421B4:
 	pop {r3, pc}
 	nop

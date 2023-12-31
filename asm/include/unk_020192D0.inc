@@ -61,7 +61,7 @@
 .public sub_02020A24
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_DisableEngineBPlanes
-.public sub_02025320
+.public TouchscreenHitbox_TouchNewIsIn
 .public sub_02034D8C
 .public sub_02034DB8
 .public sub_02034DE0

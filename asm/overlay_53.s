@@ -2091,7 +2091,7 @@ _021E69C2:
 	add r1, sp, #0
 	lsl r0, r4, #4
 	add r0, r1, r0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r6, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -2503,7 +2503,7 @@ _021E6CEE:
 	cmp r0, #0
 	beq _021E6D38
 	add r0, sp, #0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r6, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -4664,7 +4664,7 @@ ov53_021E7ECC: ; 0x021E7ECC
 	cmp r0, #0
 	beq _021E7F18
 	ldr r0, _021E7F1C ; =ov53_021E8510
-	bl sub_02025204
+	bl TouchscreenHitbox_FindRectAtTouchHeld
 	add r5, r0, #0
 	bne _021E7EFA
 	bl System_GetTouchNew
@@ -5302,7 +5302,7 @@ ov53_021E83D4: ; 0x021E83D4
 	add r5, r0, #0
 	ldr r0, _021E84C8 ; =ov53_021E887C
 	mov r4, #0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r6, r0, #0
 	sub r0, r4, #1
 	cmp r6, r0

@@ -173,7 +173,7 @@
 .public Sprite_SetDrawPriority
 .public sub_02024B1C
 .public sub_02024B34
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New

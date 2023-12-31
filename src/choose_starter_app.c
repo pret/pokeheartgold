@@ -21,7 +21,7 @@
 #include "unk_0201F4C4.h"
 #include "unk_02009D48.h"
 #include "render_window.h"
-#include "unk_02025154.h"
+#include "touchscreen.h"
 #include "unk_02020B8C.h"
 #include "unk_02013FDC.h"
 #include "gf_gfx_loader.h"

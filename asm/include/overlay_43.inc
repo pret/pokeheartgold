@@ -141,7 +141,7 @@
 .public Sprite_SetPriority
 .public Sprite_SetDrawPriority
 .public sub_02024B68
-.public sub_0202529C
+.public TouchscreenHitbox_FindHitboxAtTouchNew
 .public System_GetTouchNew
 .public GF_AssertFail
 .public sub_02025C88

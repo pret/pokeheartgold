@@ -2562,7 +2562,7 @@ ov43_0222B324: ; 0x0222B324
 	add r6, r1, #0
 	add r4, r2, #0
 	add r7, r3, #0
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -4074,7 +4074,7 @@ ov43_0222BEEC: ; 0x0222BEEC
 	add r7, r1, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -6061,7 +6061,7 @@ ov43_0222CE14: ; 0x0222CE14
 	push {r4, lr}
 	ldr r0, _0222CE40 ; =ov43_0222ED7A
 	add r4, r1, #0
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	cmp r0, #0
 	bne _0222CE28
 	mov r0, #1
@@ -6782,11 +6782,11 @@ ov43_0222D3B8: ; 0x0222D3B8
 	cmp r0, #0
 	beq _0222D3D0
 	ldr r0, _0222D474 ; =ov43_0222EE84
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	b _0222D3D6
 _0222D3D0:
 	ldr r0, _0222D478 ; =ov43_0222EE42
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 _0222D3D6:
 	add r4, r0, #0
 	mov r0, #0

@@ -98,8 +98,8 @@
 .public Set2dSpriteAnimSeqNo
 .public Sprite_SetPriority
 .public Sprite_SetPalIndex
-.public sub_02025204
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchHeld
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public String_New
 .public String_Delete

@@ -5918,11 +5918,11 @@ ov72_0223A738: ; 0x0223A738
 	cmp r0, #0x64
 	bne _0223A74A
 	ldr r0, _0223A758 ; =ov72_0223B774
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	pop {r3, pc}
 _0223A74A:
 	ldr r0, _0223A75C ; =ov72_0223B7B8
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	pop {r3, pc}
 	nop
 _0223A754: .word 0x0000130D
@@ -7030,7 +7030,7 @@ ov72_0223AF7C: ; 0x0223AF7C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, _0223B078 ; =ov72_0223B4C8
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r5, r0, #0
 	mov r0, #0
 	mvn r0, r0

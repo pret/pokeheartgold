@@ -3587,7 +3587,7 @@ _0207E79C:
 	pop {r3, r4, r5, r6, r7, pc}
 _0207E7A2:
 	ldr r0, _0207E930 ; =_02110180
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r7, r0, #0
 	sub r0, r4, #1
 	cmp r7, r0
@@ -3805,7 +3805,7 @@ _0207E960:
 	pop {r3, r4, r5, r6, r7, pc}
 _0207E966:
 	ldr r0, _0207EB18 ; =_02110168
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r7, r0, #0
 	sub r0, r6, #1
 	cmp r7, r0

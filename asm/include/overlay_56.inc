@@ -94,7 +94,7 @@
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_DisableEngineBPlanes
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchHeld
 .public System_GetTouchNew
 .public String_New

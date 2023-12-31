@@ -1921,7 +1921,7 @@ ov51_021E6AAC: ; 0x021E6AAC
 	pop {r3, r4, r5, pc}
 _021E6ABE:
 	ldr r0, _021E6B28 ; =_021E7DB8
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _021E6AD8
 	mov r0, #1
@@ -1942,7 +1942,7 @@ _021E6AD8:
 	lsr r0, r0, #0x1f
 	bne _021E6B02
 	ldr r0, _021E6B34 ; =ov51_021E7DBC
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _021E6B02
 	mov r0, #1
@@ -1953,7 +1953,7 @@ _021E6AD8:
 	pop {r3, r4, r5, pc}
 _021E6B02:
 	ldr r0, _021E6B3C ; =ov51_021E7DC0
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _021E6B24
 	ldr r1, _021E6B40 ; =gSystem + 0x40

@@ -675,7 +675,7 @@ _0225DAB2:
 	ldr r0, _0225DAC0 ; =_0225EF40
 	lsl r1, r4, #2
 	ldr r0, [r0, r1]
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	pop {r4, pc}
 	nop
 _0225DAC0: .word _0225EF40

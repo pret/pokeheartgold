@@ -3419,7 +3419,7 @@ ov95_021E7450: ; 0x021E7450
 	add r5, r0, #0
 	ldr r0, _021E7508 ; =ov95_021E7820
 	mov r4, #0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r6, r0, #0
 	sub r0, r4, #1
 	cmp r6, r0

@@ -83,7 +83,7 @@
 .public Set2dSpriteAnimActiveFlag
 .public Set2dSpriteAnimSeqNo
 .public Sprite_SetPriority
-.public sub_0202529C
+.public TouchscreenHitbox_FindHitboxAtTouchNew
 .public System_GetTouchHeld
 .public System_GetTouchNew
 .public GF_AssertFail

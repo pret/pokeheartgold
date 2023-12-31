@@ -1545,7 +1545,7 @@ ov37_021E65EC: ; 0x021E65EC
 	mov r0, #0
 	str r0, [sp, #4]
 	ldr r0, _021E67E8 ; =ov37_021E7A4C
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	str r0, [sp, #8]
@@ -1712,7 +1712,7 @@ _021E672A:
 	bl PlaySE
 _021E6752:
 	ldr r0, _021E6808 ; =ov37_021E7970
-	bl sub_02025204
+	bl TouchscreenHitbox_FindRectAtTouchHeld
 	add r4, r0, #0
 	bl sub_0203769C
 	lsl r1, r0, #2
@@ -4001,7 +4001,7 @@ _021E78C0: .word 0x000093F8
 ov37_021E78C4: ; 0x021E78C4
 	push {r3, lr}
 	ldr r0, _021E78DC ; =_021E7968
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1

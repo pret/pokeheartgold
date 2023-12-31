@@ -116,7 +116,7 @@
 .public Set2dSpriteAnimSeqNo
 .public Sprite_ResetAnimCtrlState
 .public Sprite_SetDrawPriority
-.public sub_02025320
+.public TouchscreenHitbox_TouchNewIsIn
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New

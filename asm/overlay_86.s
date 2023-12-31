@@ -346,7 +346,7 @@ _021E5BDA:
 	b _021E5C82
 _021E5BE0:
 	ldr r0, _021E5C88 ; =_021E7E98
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #1
 	beq _021E5BF4
 	ldr r0, _021E5C8C ; =gSystem
@@ -396,7 +396,7 @@ _021E5C3A:
 	b _021E5C82
 _021E5C46:
 	ldr r0, _021E5C88 ; =_021E7E98
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #1
 	beq _021E5C5A
 	ldr r0, _021E5C8C ; =gSystem
@@ -4191,7 +4191,7 @@ _021E7A9A:
 	pop {r3, r4, r5, pc}
 _021E7AB4:
 	ldr r0, _021E7B50 ; =ov86_021E7E9C
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	cmp r0, #0
 	beq _021E7AC4
 	cmp r0, #1

@@ -270,11 +270,11 @@
 .public sub_02024B68
 .public sub_02024B78
 .public sub_02024CB8
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchHeld
 .public System_GetTouchNew
-.public sub_02025364
-.public sub_02025380
+.public System_GetTouchHeldCoords
+.public System_GetTouchNewCoords
 .public GF_AssertFail
 .public String_New
 .public String_Delete

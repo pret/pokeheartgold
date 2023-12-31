@@ -166,7 +166,7 @@
 .public Sprite_SetPalIndex
 .public sub_02024B68
 .public sub_02024B78
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public String_New
 .public String_Delete

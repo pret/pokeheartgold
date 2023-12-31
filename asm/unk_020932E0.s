@@ -529,7 +529,7 @@ _0209372C:
 	str r1, [r5, r0]
 	ldr r0, _02093890 ; =0x000007E4
 	ldr r0, [r5, r0]
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r4, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -2876,7 +2876,7 @@ sub_020949F4: ; 0x020949F4
 	beq _02094A5E
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	ldr r0, [sp, #4]
 	add r5, sp, #0x14
 	lsl r0, r0, #0xc

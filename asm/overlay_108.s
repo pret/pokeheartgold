@@ -1397,7 +1397,7 @@ ov108_021E63B8: ; 0x021E63B8
 	sub sp, #8
 	add r4, r0, #0
 	ldr r0, _021E643C ; =ov108_021EA760
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -1762,7 +1762,7 @@ ov108_021E66AC: ; 0x021E66AC
 	sub sp, #8
 	add r4, r0, #0
 	ldr r0, _021E67E8 ; =ov108_021EA7D0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -2128,7 +2128,7 @@ ov108_021E69A0: ; 0x021E69A0
 	sub sp, #8
 	add r4, r0, #0
 	ldr r0, _021E6A3C ; =ov108_021EA760
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -7828,7 +7828,7 @@ ov108_021E96FC: ; 0x021E96FC
 	add r5, r0, #0
 	ldr r0, _021E9794 ; =ov108_021EABF0
 	add r4, r1, #0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1

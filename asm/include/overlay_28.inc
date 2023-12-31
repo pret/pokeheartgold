@@ -59,12 +59,12 @@
 .public Set2dSpriteAnimSeqNo
 .public Get2dSpriteCurrentAnimSeqNo
 .public sub_02024A48
-.public sub_02025244
-.public sub_0202529C
-.public sub_020252F4
-.public sub_02025320
+.public TouchscreenHitbox_FindHitboxAtTouchHeld
+.public TouchscreenHitbox_FindHitboxAtTouchNew
+.public TouchscreenHitbox_TouchHeldIsIn
+.public TouchscreenHitbox_TouchNewIsIn
 .public System_GetTouchNew
-.public sub_02025364
+.public System_GetTouchHeldCoords
 .public String_Delete
 .public FieldSystem_GetFacingObject
 .public sub_0203DF8C

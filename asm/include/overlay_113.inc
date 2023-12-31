@@ -95,7 +95,7 @@
 .public Sprite_ResetAnimCtrlState
 .public Sprite_SetPriority
 .public sub_02024B68
-.public sub_0202529C
+.public TouchscreenHitbox_FindHitboxAtTouchNew
 .public String_New
 .public String_Delete
 .public Save_PlayerData_GetProfileAddr

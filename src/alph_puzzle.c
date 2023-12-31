@@ -10,7 +10,7 @@
 #include "save_vars_flags.h"
 #include "sys_flags.h"
 #include "unk_020210A0.h"
-#include "unk_02025154.h"
+#include "touchscreen.h"
 #include "unk_02005D10.h"
 #include "unk_0200CF18.h"
 #include "palette.h"
@@ -292,13 +292,13 @@ static void ov110_021E5C3C(AlphPuzzleData *data) {
     ScheduleBgTilemapBufferTransfer(data->bgConfig, 4);
 }
 
-extern STRUCT_0223F90B _021E6D8C;
+extern TouchscreenHitbox _021E6D8C;
 
 static int AlphPuzzle_CheckInput(AlphPuzzleData *data) {
     if (!System_GetTouchNew()) {
         return ALPH_PUZZLE_STATE_WAIT_FOR_INPUT;
     }
-    if (!sub_02025224(&_021E6D8C)) {
+    if (!TouchscreenHitbox_FindRectAtTouchNew(&_021E6D8C)) {
         data->unk4 = 1;
         ov110_021E6D20(data);
         PlaySE(SEQ_SE_DP_SELECT);

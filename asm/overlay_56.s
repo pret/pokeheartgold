@@ -405,7 +405,7 @@ ov56_021E5EFC: ; 0x021E5EFC
 	sub sp, #8
 	add r5, r0, #0
 	ldr r0, _021E5FA4 ; =ov56_021E6E20
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r4, r0, #0
 	mov r0, #0
 	mvn r0, r0

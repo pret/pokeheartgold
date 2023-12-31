@@ -6779,7 +6779,7 @@ _021E8F74:
 	add r5, r4, r0
 	add r0, r5, #0
 	add r1, r5, #4
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	add r0, r4, #0
 	bl ov18_021F2B9C
 	strh r0, [r5, #8]
@@ -6791,7 +6791,7 @@ _021E8F74:
 _021E8F94:
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r4, #0
@@ -6820,7 +6820,7 @@ ov18_021E8FCC: ; 0x021E8FCC
 	add r4, r0, #0
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	cmp r0, #0
 	bne _021E8FEA
 	add r0, r4, #0
@@ -6914,7 +6914,7 @@ ov18_021E9070: ; 0x021E9070
 _021E9086:
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	cmp r0, #0
 	bne _021E90B8
 	ldr r0, [r5, #4]
@@ -7508,7 +7508,7 @@ _021E9550:
 _021E9580:
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	ldr r2, [sp, #4]
 	ldr r3, [sp]
 	add r0, r4, #0
@@ -7533,7 +7533,7 @@ _021E95B0:
 	ldr r0, _021E95F8 ; =0x00000868
 	add r0, r4, r0
 	add r1, r0, #4
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	ldr r0, [r4, #8]
 	mov r1, #4
 	bl sub_0201980C
@@ -7952,7 +7952,7 @@ ov18_021E9940: ; 0x021E9940
 	add r5, r0, #0
 	add r0, sp, #8
 	add r1, sp, #4
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	cmp r0, #0
 	bne _021E9958
 	add sp, #0xc
@@ -8081,7 +8081,7 @@ ov18_021E9A4C: ; 0x021E9A4C
 _021E9A62:
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	cmp r0, #0
 	bne _021E9A94
 	ldr r0, [r5, #4]
@@ -11709,7 +11709,7 @@ _021EB7BE:
 _021EB7EE:
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	ldr r2, [sp, #4]
 	ldr r3, [sp]
 	add r0, r4, #0
@@ -12048,7 +12048,7 @@ ov18_021EBAC4: ; 0x021EBAC4
 	add r5, r0, #0
 	add r0, sp, #8
 	add r1, sp, #4
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	cmp r0, #0
 	bne _021EBADC
 	add sp, #0xc
@@ -13426,7 +13426,7 @@ _021EC674:
 _021EC67A:
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r4, #0
@@ -13889,7 +13889,7 @@ ov18_021ECA2C: ; 0x021ECA2C
 	bl ov18_021EE26C
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	cmp r0, #0
 	bne _021ECA48
 	add sp, #8
@@ -14704,7 +14704,7 @@ _021ED0C4:
 _021ED0CA:
 	add r0, sp, #0x10
 	add r1, sp, #0xc
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0xc]
 	add r0, r4, #0
@@ -15091,7 +15091,7 @@ ov18_021ED3E8: ; 0x021ED3E8
 	add r4, r0, #0
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	cmp r0, #0
 	bne _021ED400
 	add sp, #8
@@ -33959,7 +33959,7 @@ ov18_021F6B00: ; 0x021F6B00
 	cmp r0, #1
 	bne _021F6B3A
 	ldr r0, _021F6BAC ; =_021FB72C
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -34060,11 +34060,11 @@ ov18_021F6BBC: ; 0x021F6BBC
 	str r1, [r5, r0]
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	cmp r0, #1
 	bne _021F6C5C
 	ldr r0, _021F6DC0 ; =_021FB8A4
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -35111,7 +35111,7 @@ _021F73EE:
 	pop {r4, r5, r6, pc}
 _021F73F8:
 	ldr r0, _021F7440 ; =_021FB718
-	bl sub_02025204
+	bl TouchscreenHitbox_FindRectAtTouchHeld
 	add r6, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -35303,7 +35303,7 @@ _021F7572:
 	pop {r4, r5, r6, pc}
 _021F757C:
 	ldr r0, _021F75C4 ; =_021FB718
-	bl sub_02025204
+	bl TouchscreenHitbox_FindRectAtTouchHeld
 	add r6, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -35413,7 +35413,7 @@ ov18_021F7648: ; 0x021F7648
 ov18_021F765C: ; 0x021F765C
 	push {r3, lr}
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov18_021F765C
@@ -35811,11 +35811,11 @@ ov18_021F7974: ; 0x021F7974
 	add r4, r1, #0
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	cmp r0, #1
 	bne _021F7A1A
 	ldr r0, _021F7B58 ; =_021FB8A4
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -36100,7 +36100,7 @@ ov18_021F7B94: ; 0x021F7B94
 	cmp r0, #1
 	bne _021F7BE8
 	ldr r0, _021F7C04 ; =_021FB704
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r6, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -36108,7 +36108,7 @@ ov18_021F7B94: ; 0x021F7B94
 	beq _021F7BFE
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	ldr r0, _021F7C08 ; =_021FB698
 	lsl r1, r6, #2
 	ldr r6, [r0, r1]
@@ -36168,7 +36168,7 @@ ov18_021F7C14: ; 0x021F7C14
 	cmp r0, #1
 	bne _021F7C4C
 	ldr r0, _021F7CE8 ; =_021FB934
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -36324,7 +36324,7 @@ ov18_021F7D30: ; 0x021F7D30
 	cmp r0, #1
 	bne _021F7D68
 	ldr r0, _021F7DBC ; =_021FB804
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -36403,7 +36403,7 @@ ov18_021F7DCC: ; 0x021F7DCC
 	cmp r0, #1
 	bne _021F7DF8
 	ldr r0, _021F7E60 ; =_021FB7E0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -36497,7 +36497,7 @@ ov18_021F7E70: ; 0x021F7E70
 	cmp r0, #1
 	bne _021F7EA2
 	ldr r0, _021F7ECC ; =_021FB630
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
