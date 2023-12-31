@@ -101,7 +101,7 @@ typedef struct AlphPuzzleData {
     int unk4;
     int unkState;
     u16 subState;
-    u16 unkE;
+    u16 subStateTimer;
     UnkAlphSub_10 *args;
     BgConfig *bgConfig;
     u8 unk18;
@@ -110,8 +110,8 @@ typedef struct AlphPuzzleData {
     u8 selectedTileIndex;
     s16 tileHoverPixelX;
     s16 tileHoverPixelY;
-    u8 unk20;
-    u8 unk21;
+    u8 tileLastHoverPixelX;
+    u8 tileLastHoverPixelY;
     u8 tileHoverTileX;
     u8 tileHoverTileY;
     u8 textPrinterId;
@@ -712,11 +712,11 @@ static int AlphPuzzle_CheckInput(AlphPuzzleData *data) {
 
 static int AlphPuzzleMainSeq_PickupTile_impl(AlphPuzzleData *data) {
     if (!System_GetTouchHeld()) {
-        data->unkE = 0;
+        data->subStateTimer = 0;
         return ALPH_PUZZLE_STATE_ROTATE_TILE;
     }
-    if (data->unkE++ >= 2) {
-        data->unkE = 0;
+    if (data->subStateTimer++ >= 2) {
+        data->subStateTimer = 0;
         data->tileHoverPixelX = (data->selectedTile->x * 32) + 64;
         data->tileHoverPixelY = (data->selectedTile->y * 32) + 32;
         data->tileHoverTileX = data->selectedTile->x;
@@ -817,8 +817,8 @@ static int AlphPuzzleMainSeq_HoldingTile_impl(AlphPuzzleData *data) {
     s16 x = gSystem.touchX;
     s16 y = gSystem.touchY;
 
-    data->unk20 = data->tileHoverPixelX;
-    data->unk21 = data->tileHoverPixelY;
+    data->tileLastHoverPixelX = data->tileHoverPixelX;
+    data->tileLastHoverPixelY = data->tileHoverPixelY;
 
     if (y < 16) {
         y = 16;
@@ -859,9 +859,9 @@ static int AlphPuzzleMainSeq_RotateTile_impl(AlphPuzzleData *data) {
         data->subState++;
         break;
     case 1:
-        u16 temp = data->unkE++;
+        u16 temp = data->subStateTimer++;
         sub_02024818(data->selectedTile->sprite, (u16)((u16)(temp << 0xb) + (data->selectedTile->rotation << 0xe)));
-        if (data->unkE >= 8) {
+        if (data->subStateTimer >= 8) {
             data->subState++;
         }
         break;
@@ -870,7 +870,7 @@ static int AlphPuzzleMainSeq_RotateTile_impl(AlphPuzzleData *data) {
 
         AlphPuzzle_UpdateSelectedTile(data, -1, FALSE);
 
-        data->unkE = 0;
+        data->subStateTimer = 0;
         data->subState = 0;
 
         if (AlphPuzzle_CheckComplete(data)) {
@@ -913,20 +913,20 @@ static int AlphPuzzleMainSeq_Clear_impl(AlphPuzzleData *data) {
         data->subState++;
         break;
     case 1:
-        sub_02003E5C(data->palette, 2, 0x2b, 5, data->unkE, 0x7FFF);
-        if (data->unkE++ >= 15) {
+        sub_02003E5C(data->palette, 2, 0x2b, 5, data->subStateTimer, 0x7FFF);
+        if (data->subStateTimer++ >= 15) {
             data->subState++;
         }
         break;
     case 2:
-        sub_02003E5C(data->palette, 2, 0x2b, 5, data->unkE, 0x7FFF);
-        if (data->unkE-- == 0) {
+        sub_02003E5C(data->palette, 2, 0x2b, 5, data->subStateTimer, 0x7FFF);
+        if (data->subStateTimer-- == 0) {
             data->subState++;
         }
         break;
     default:
         data->subState = 0;
-        data->unkE = 0;
+        data->subStateTimer = 0;
         data->puzzleSolved = 1;
         return ALPH_PUZZLE_STATE_FADE_OUT;
     }
