@@ -40,15 +40,15 @@ typedef struct YesNoPromptState {
     u8 unk76_4 : 4;
     u8 unk77_0 : 4;
     u8 unk77_4 : 4;
-} YesNoPromptState;
+} YesNoPrompt;
 
-YesNoPromptState *YesNoPrompt_Create(HeapID);
-void YesNoPrompt_Destroy(YesNoPromptState *);
-void sub_020169CC(YesNoPromptState *);
-void YesNoPrompt_InitFromTemplate(YesNoPromptState *, const YesNoPromptTemplate *);
-void YesNoPrompt_InitFromTemplateWithPalette(YesNoPromptState *, const YesNoPromptTemplate *, PaletteData *);
-u32 sub_02016748(YesNoPromptState *);
-int YesNoPrompt_HandleInput(YesNoPromptState *);
-int sub_020169C0(YesNoPromptState *);
+YesNoPrompt *YesNoPrompt_Create(HeapID);
+void YesNoPrompt_Destroy(YesNoPrompt *);
+void sub_020169CC(YesNoPrompt *);
+void YesNoPrompt_InitFromTemplate(YesNoPrompt *, const YesNoPromptTemplate *);
+void YesNoPrompt_InitFromTemplateWithPalette(YesNoPrompt *, const YesNoPromptTemplate *, PaletteData *);
+u32 sub_02016748(YesNoPrompt *);
+int YesNoPrompt_HandleInput(YesNoPrompt *);
+int sub_020169C0(YesNoPrompt *);
 
 #endif //POKEHEARTGOLD_UNK_0201660C_H
