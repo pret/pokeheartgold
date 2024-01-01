@@ -5,13 +5,15 @@
 #include "heap.h"
 
 typedef struct SelectedPaletteData {
-    u16 unkC;
+    u16 opaqueBit;
     u16 wait:6;
     u16 cur:5;
     u16 end:5;
     u16 nextRGB:15;
     u16 sign:1; //0 - increase, 1 - decrease
-    u16 unk12;
+    u16 unk6_0:4;
+    u16 unk6_4:6;
+    u16 unk6_10:6;
 } SelectedPaletteData;
 
 typedef struct PaletteBuffer {
@@ -49,6 +51,7 @@ u16 *PaletteData_GetFadedBuf(PaletteData *data, int bufferID);
 u8 sub_02003370(PaletteData *data, u16 toSelect, u16 opaqueBit, s8 wait, u8 cur, u8 end, u16 nextRGB);
 u8 sub_02003474(PaletteData *data, u16 toSelect, u16 opaqueBit, s8 wait, u8 cur, u8 end, u16 nextRGB);
 void sub_02003E5C(PaletteData *data, u32, u32, u32, u8, u32);
+void sub_0200374C(PaletteData *data);
 void sub_0200398C(PaletteData *data);
 void sub_02003B50(PaletteData *data, int a1);
 void sub_0200398C(PaletteData *data);

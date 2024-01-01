@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "global.h"
 #include "palette.h"
 #include "gf_gfx_loader.h"
@@ -8,7 +9,10 @@ u8 IsPaletteSelected(u16 toSelect, u16 bufferID);
 void sub_02003574(PaletteData *data, u16 bufferID);
 void sub_020035B4(int bufferID, PaletteBuffer *buffer, u16 *opaqueBit);
 void sub_020035F0(SelectedPaletteData *selectedBit, u16 opaqueBit, s8 wait, u8 cur, u8 end, u16 nextRGB);
-void sub_020036B0(SysTask *task, void *data);
+void sub_020036B0(SysTask *task, void *taskData);
+void sub_02003760(PaletteData *data);
+void sub_02003780(PaletteData *data);
+void sub_020037A0(PaletteData *data, u16 bufferID, u16 flags);
 void sub_020037FC(PaletteData *data, u16 bufferID, u16 flags);
 
 PaletteData *PaletteData_Init(HeapID heapId) {
@@ -204,4 +208,77 @@ void sub_020035B4(int bufferID, PaletteBuffer *buffer, u16 *opaqueBit) {
         bits += (1 << i);
     }
     *opaqueBit &= bits;
+}
+
+void sub_020035F0(SelectedPaletteData *selectedBit, u16 opaqueBit, s8 wait, u8 cur, u8 end, u16 nextRGB) {
+    if (wait < 0) {
+        selectedBit->unk6_0 = abs(wait) + 2;
+        selectedBit->wait = 0;
+    } else {
+        selectedBit->unk6_0 = 2;
+        selectedBit->wait = wait;
+    }
+    selectedBit->opaqueBit = opaqueBit;
+    selectedBit->cur = cur;
+    selectedBit->end = end;
+    selectedBit->nextRGB = nextRGB;
+    selectedBit->unk6_4 = selectedBit->wait;
+    if (cur < end) {
+        selectedBit->sign = 0;
+    } else {
+        selectedBit->sign = 1;
+    }
+}
+
+void sub_020036B0(SysTask *task, void *taskData) {
+    PaletteData *data = (PaletteData *)taskData;
+
+    if (data->forceExit == 1) {
+        data->forceExit = 0;
+        data->transparentBit = 0;
+        data->selectedBuffer = 0;
+        data->callbackFlag = 0;
+        DestroySysTask(task);
+        return;
+    }
+
+    if (data->selectedFlag == 1) {
+        data->transparentBit = data->selectedBuffer;
+        sub_02003760(data);
+        sub_02003780(data);
+        if (data->selectedBuffer == 0) {
+            data->callbackFlag = 0;
+            DestroySysTask(task);
+            return;
+        }
+    }
+}
+
+void sub_0200374C(PaletteData *data) {
+    if (data->selectedBuffer != 0) {
+        data->forceExit = 1;
+    }
+}
+
+void sub_02003760(PaletteData *data) {
+    for (u8 i = 0; i < 4; ++i) {
+        sub_020037A0(data, i, 0x10);
+    }
+}
+
+void sub_02003780(PaletteData *data) {
+    for (u8 i = 4; i < 14; ++i) {
+        sub_020037A0(data, i, 0x100);
+    }
+}
+
+void sub_020037A0(PaletteData *data, u16 bufferID, u16 flags) {
+    if (IsPaletteSelected(data->selectedBuffer, bufferID)) {
+        if (data->buffers[bufferID].selected.unk6_4 < data->buffers[bufferID].selected.wait) {
+            ++data->buffers[bufferID].selected.unk6_4;
+        } else {
+            data->buffers[bufferID].selected.unk6_4 = 0;
+            sub_020037FC(data, bufferID, flags);
+        }
+    }
 }
