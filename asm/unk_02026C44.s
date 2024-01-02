@@ -109,14 +109,14 @@ _02026CE8:
 	ldr r0, [r5]
 	beq _02026D02
 	add r0, r0, r4
-	bl sub_020252F4
+	bl TouchscreenHitbox_TouchHeldIsIn
 	ldr r1, [r5, #0x10]
 	add r1, r1, r4
 	strb r0, [r1, #1]
 	b _02026D1C
 _02026D02:
 	add r0, r0, r4
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	ldr r1, [r5, #0x10]
 	add r1, r1, r4
 	strb r0, [r1, #1]

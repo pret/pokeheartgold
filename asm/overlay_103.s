@@ -649,7 +649,7 @@ ov103_021ECE80: ; 0x021ECE80
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x9d
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	mov r1, #0x8e
 	ldr r2, [r4, #0xc]
 	lsl r1, r1, #2
@@ -662,11 +662,11 @@ ov103_021ECE94: ; 0x021ECE94
 	ldr r1, [r0, #0xc]
 	mov r0, #0x8e
 	lsl r0, r0, #2
-	ldr r3, _021ECEA0 ; =sub_02016624
+	ldr r3, _021ECEA0 ; =YesNoPrompt_Destroy
 	ldr r0, [r1, r0]
 	bx r3
 	.balign 4, 0
-_021ECEA0: .word sub_02016624
+_021ECEA0: .word YesNoPrompt_Destroy
 	thumb_func_end ov103_021ECE94
 
 	thumb_func_start ov103_021ECEA4
@@ -700,7 +700,7 @@ ov103_021ECEA4: ; 0x021ECEA4
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add sp, #0x14
 	pop {r3, r4, pc}
 	nop
@@ -1470,7 +1470,7 @@ ov103_021ED4D4: ; 0x021ED4D4
 	ldr r1, [r4, #0xc]
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _021ED4EE
 	cmp r0, #2
@@ -4275,7 +4275,7 @@ ov103_021EEA24: ; 0x021EEA24
 	pop {r3, pc}
 _021EEA36:
 	ldr r0, _021EEA44 ; =ov103_021EEFBC
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	pop {r3, pc}
 	nop
 _021EEA40: .word 0x000002E2
@@ -4402,7 +4402,7 @@ _021EEAF8:
 ov103_021EEB04: ; 0x021EEB04
 	push {r3, lr}
 	ldr r0, _021EEB2C ; =ov103_021EEFB4
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1

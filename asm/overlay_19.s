@@ -270,7 +270,7 @@ _02259AB8: .word gSystem
 ov19_02259ABC: ; 0x02259ABC
 	push {r3, lr}
 	ldr r0, _02259AD4 ; =ov19_0225A05E
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -728,7 +728,7 @@ ov19_02259E44: ; 0x02259E44
 	lsl r2, r2, #2
 	add r0, r0, r2
 	ldr r0, [r0, r1]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _02259E60
 	mov r0, #1

@@ -1,0 +1,45 @@
+{
+  "kind": null,
+  "entries": [
+    {
+      "graphics": 0,
+      "palette": 0,
+      "cell": 0,
+      "anim": 0,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 1,
+      "palette": 1,
+      "cell": 1,
+      "anim": 1,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 2,
+      "palette": 2,
+      "cell": 1,
+      "anim": 1,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 3,
+      "palette": 3,
+      "cell": 1,
+      "anim": 1,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 4,
+      "palette": 4,
+      "cell": 1,
+      "anim": 1,
+      "transfer": 0,
+      "priority": 3
+    }
+  ]
+}

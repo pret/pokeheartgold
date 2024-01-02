@@ -68,7 +68,7 @@
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_DisableEngineBPlanes
 .public GfGfx_EngineBTogglePlanes
-.public sub_0202529C
+.public TouchscreenHitbox_FindHitboxAtTouchNew
 .public GF_AssertFail
 .public String_New
 .public String_Delete

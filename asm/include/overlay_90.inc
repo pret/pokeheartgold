@@ -67,10 +67,10 @@
 .public sub_02014A60
 .public sub_02014A78
 .public sub_02014A8C
-.public sub_0201660C
-.public sub_02016624
-.public sub_020166FC
-.public sub_020168F4
+.public YesNoPrompt_Create
+.public YesNoPrompt_Destroy
+.public YesNoPrompt_InitFromTemplate
+.public YesNoPrompt_HandleInput
 .public sub_020169CC
 .public HBlankInterruptDisable
 .public Main_SetHBlankIntrCB
@@ -129,7 +129,7 @@
 .public Sprite_SetPriority
 .public Sprite_SetPalOffset
 .public sub_02024AA8
-.public sub_02024B68
+.public Sprite_IsCellAnimationFinished
 .public GF_AssertFail
 .public String_New
 .public String_Delete

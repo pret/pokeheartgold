@@ -1921,7 +1921,7 @@ ov51_021E6AAC: ; 0x021E6AAC
 	pop {r3, r4, r5, pc}
 _021E6ABE:
 	ldr r0, _021E6B28 ; =_021E7DB8
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _021E6AD8
 	mov r0, #1
@@ -1942,7 +1942,7 @@ _021E6AD8:
 	lsr r0, r0, #0x1f
 	bne _021E6B02
 	ldr r0, _021E6B34 ; =ov51_021E7DBC
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _021E6B02
 	mov r0, #1
@@ -1953,7 +1953,7 @@ _021E6AD8:
 	pop {r3, r4, r5, pc}
 _021E6B02:
 	ldr r0, _021E6B3C ; =ov51_021E7DC0
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _021E6B24
 	ldr r1, _021E6B40 ; =gSystem + 0x40
@@ -2430,7 +2430,7 @@ _021E6E6C:
 	mov r2, #0x19
 	bl LoadFontPal0
 	mov r0, #0x19
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	mov r1, #0xcf
 	lsl r1, r1, #6
 	str r0, [r5, r1]
@@ -2455,7 +2455,7 @@ ov51_021E6EF0: ; 0x021E6EF0
 	mov r0, #0xcf
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r5, #0
 	add r4, r4, #4
 _021E6F02:
@@ -3575,7 +3575,7 @@ ov51_021E7804: ; 0x021E7804
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	ldr r0, [r4]
 	mov r1, #4
 	bl ScheduleBgTilemapBufferTransfer
@@ -3594,7 +3594,7 @@ ov51_021E786C: ; 0x021E786C
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	add r6, r1, #0
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _021E7886
 	cmp r0, #2

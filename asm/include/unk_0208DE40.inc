@@ -15,7 +15,7 @@
 .public Camera_ClearFixedTarget
 .public Camera_SetPerspectiveClippingPlane
 .public Camera_Init_FromPosDistanceAndAngle
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public GetBoxmonSpriteCharAndPlttNarcIds
 .public sub_02072914

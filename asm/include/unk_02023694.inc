@@ -88,7 +88,7 @@
 .public sub_02024B34
 .public sub_02024B38
 .public Sprite_GetVramType
-.public sub_02024B68
+.public Sprite_IsCellAnimationFinished
 .public sub_02024B78
 .public sub_02024BAC
 .public sub_02024BBC

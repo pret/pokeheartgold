@@ -893,7 +893,7 @@ sub_020794FC: ; 0x020794FC
 	add r4, r0, #0
 	ldr r0, _02079544 ; =0x00000C88
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _02079512
 	cmp r0, #2
@@ -902,7 +902,7 @@ sub_020794FC: ; 0x020794FC
 _02079512:
 	ldr r0, _02079544 ; =0x00000C88
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	bl sub_0207CB90
 	ldr r1, _02079548 ; =0x00000C58
 	add r0, r4, #0
@@ -912,7 +912,7 @@ _02079512:
 _02079528:
 	ldr r0, _02079544 ; =0x00000C88
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	bl sub_0207CB90
 	ldr r1, _0207954C ; =0x00000C5C
 	add r0, r4, #0
@@ -3910,7 +3910,7 @@ sub_0207AD6C: ; 0x0207AD6C
 	bhi _0207AD94
 _0207AD8C:
 	ldr r0, _0207ADB0 ; =_02110104
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	pop {r3, pc}
 _0207AD94:
 	add r2, #0x25
@@ -3922,7 +3922,7 @@ _0207AD9E:
 	ldr r2, _0207ADB4 ; =_02110128
 	lsl r0, r1, #5
 	add r0, r2, r0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	pop {r3, pc}
 	nop
 _0207ADAC: .word 0x00000654
@@ -7208,7 +7208,7 @@ sub_0207C74C: ; 0x0207C74C
 	add r5, r0, #0
 	ldr r0, _0207C8A0 ; =0x00000C88
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _0207C766
 	cmp r0, #2
@@ -7219,7 +7219,7 @@ _0207C764:
 _0207C766:
 	ldr r0, _0207C8A0 ; =0x00000C88
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	bl sub_0207CB90
 	ldr r0, _0207C8A4 ; =0x00000654
 	ldr r1, _0207C8A8 ; =0x00000C65
@@ -7350,7 +7350,7 @@ _0207C86A:
 _0207C882:
 	ldr r0, _0207C8A0 ; =0x00000C88
 	ldr r0, [r5, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	bl sub_0207CB90
 	add r0, r5, #0
 	bl sub_0207C8B4

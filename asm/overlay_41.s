@@ -65,7 +65,7 @@ ov41_02245F04: ; 0x02245F04
 	add r1, sp, #0
 	bl ov41_022460DC
 	add r0, sp, #0
-	bl sub_020252F4
+	bl TouchscreenHitbox_TouchHeldIsIn
 	pop {r3, pc}
 	thumb_func_end ov41_02245F04
 
@@ -2153,7 +2153,7 @@ _02246E42:
 	add r3, r4, #0
 	bl ov41_02248F18
 	mov r0, #0xd
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	ldr r1, _02246F00 ; =0x000006B8
 	str r0, [r4, r1]
 	mov r0, #0xd
@@ -2512,7 +2512,7 @@ _0224719C:
 _022471AA:
 	ldr r0, _02247234 ; =0x000006B8
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	ldr r0, _02247238 ; =0x000006BC
 	mov r1, #1
 	ldr r0, [r4, r0]
@@ -3751,7 +3751,7 @@ ov41_02247AB4: ; 0x02247AB4
 	strb r0, [r3, #0x12]
 	ldr r0, [r4, r2]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add r0, r4, #0
 	mov r1, #1
 	bl ov41_02247D1C
@@ -3805,7 +3805,7 @@ ov41_02247B7C: ; 0x02247B7C
 	add r5, r0, #0
 	ldr r0, _02247BB0 ; =0x000006B8
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	add r4, r0, #0
 	beq _02247B96
 	cmp r4, #1
@@ -4080,7 +4080,7 @@ ov41_02247D64: ; 0x02247D64
 	ldr r0, _02247DF0 ; =0x000006B8
 	add r1, sp, #0
 	ldr r0, [r4, r0]
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add r0, r4, #0
 	mov r1, #2
 	bl ov41_02247D34
@@ -4118,7 +4118,7 @@ ov41_02247DF8: ; 0x02247DF8
 	add r5, r0, #0
 	ldr r0, _02247E2C ; =0x000006B8
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	add r4, r0, #0
 	beq _02247E12
 	cmp r4, #1
@@ -4679,7 +4679,7 @@ ov41_022481BC: ; 0x022481BC
 	mov r1, #0xf6
 	strb r1, [r0, #3]
 	add r0, sp, #0
-	bl sub_020252F4
+	bl TouchscreenHitbox_TouchHeldIsIn
 	pop {r3, pc}
 	thumb_func_end ov41_022481BC
 
@@ -4696,7 +4696,7 @@ ov41_022481D8: ; 0x022481D8
 	mov r3, #0xf6
 	strb r3, [r0, #3]
 	add r0, sp, #0
-	bl sub_020253F0
+	bl TouchscreenHitbox_PointIsIn
 	pop {r3, pc}
 	thumb_func_end ov41_022481D8
 
@@ -5588,7 +5588,7 @@ ov41_02248820: ; 0x02248820
 	mov r1, #0x76
 	strb r1, [r0, #3]
 	add r0, sp, #0
-	bl sub_020252F4
+	bl TouchscreenHitbox_TouchHeldIsIn
 	pop {r3, pc}
 	thumb_func_end ov41_02248820
 
@@ -5605,7 +5605,7 @@ ov41_0224883C: ; 0x0224883C
 	mov r3, #0x76
 	strb r3, [r0, #3]
 	add r0, sp, #0
-	bl sub_020253F0
+	bl TouchscreenHitbox_PointIsIn
 	pop {r3, pc}
 	thumb_func_end ov41_0224883C
 
@@ -7685,20 +7685,20 @@ ov41_0224971C: ; 0x0224971C
 
 	thumb_func_start ov41_02249768
 ov41_02249768: ; 0x02249768
-	ldr r3, _02249770 ; =sub_020252F4
+	ldr r3, _02249770 ; =TouchscreenHitbox_TouchHeldIsIn
 	add r0, r0, #4
 	bx r3
 	nop
-_02249770: .word sub_020252F4
+_02249770: .word TouchscreenHitbox_TouchHeldIsIn
 	thumb_func_end ov41_02249768
 
 	thumb_func_start ov41_02249774
 ov41_02249774: ; 0x02249774
-	ldr r3, _0224977C ; =sub_020253F0
+	ldr r3, _0224977C ; =TouchscreenHitbox_PointIsIn
 	add r0, r0, #4
 	bx r3
 	nop
-_0224977C: .word sub_020253F0
+_0224977C: .word TouchscreenHitbox_PointIsIn
 	thumb_func_end ov41_02249774
 
 	thumb_func_start ov41_02249780

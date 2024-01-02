@@ -658,7 +658,7 @@ _021E5E5C:
 	add r0, #0x88
 	bl ClearWindowTilemapAndScheduleTransfer
 	mov r0, #0x42
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	mov r1, #0x46
 	lsl r1, r1, #2
 	str r0, [r7, r1]
@@ -674,7 +674,7 @@ ov68_021E5E94: ; 0x021E5E94
 	mov r0, #0x46
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r5, #0
 	add r4, #8
 _021E5EA6:
@@ -956,7 +956,7 @@ ov68_021E6078: ; 0x021E6078
 	strb r2, [r0, #0x12]
 	ldr r0, [r4, r3]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	mov r0, #1
 	bl ov68_021E7BC8
 	mov r0, #4
@@ -971,7 +971,7 @@ ov68_021E60D8: ; 0x021E60D8
 	mov r0, #0x46
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _021E60F0
 	cmp r0, #2

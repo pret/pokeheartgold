@@ -95,10 +95,10 @@
 .public sub_02015FCC
 .public sub_02015FE8
 .public sub_02015FF4
-.public sub_0201660C
-.public sub_02016624
-.public sub_020166FC
-.public sub_020168F4
+.public YesNoPrompt_Create
+.public YesNoPrompt_Destroy
+.public YesNoPrompt_InitFromTemplate
+.public YesNoPrompt_HandleInput
 .public sub_020169C0
 .public sub_020169CC
 .public sub_020183F0
@@ -172,10 +172,10 @@
 .public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_SetPriority
 .public sub_02024A48
-.public sub_020252F4
+.public TouchscreenHitbox_TouchHeldIsIn
 .public System_GetTouchHeld
 .public System_GetTouchNew
-.public sub_020253F0
+.public TouchscreenHitbox_PointIsIn
 .public GF_AssertFail
 .public Create2DGfxResMan
 .public Destroy2DGfxResMan

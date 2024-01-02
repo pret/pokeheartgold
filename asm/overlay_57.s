@@ -858,7 +858,7 @@ _02237FBA:
 	str r0, [sp]
 	add r0, sp, #8
 	add r1, sp, #4
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	ldr r0, [sp, #8]
 	strb r0, [r7, r5]
 	ldr r1, [sp, #4]
@@ -5511,7 +5511,7 @@ _0223A414:
 _0223A42A:
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	mov r1, #0xff
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
@@ -6195,13 +6195,13 @@ _0223A988:
 	orr r0, r1
 	strb r0, [r2, #0x12]
 	mov r0, #0x34
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	mov r1, #0x91
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	add r1, sp, #0x10
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -6226,7 +6226,7 @@ _0223AA30:
 	mov r0, #0x91
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	add r5, r0, #0
 	beq _0223AB3C
 	cmp r5, #1
@@ -6254,7 +6254,7 @@ _0223AA46:
 	mov r0, #0x91
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -7649,7 +7649,7 @@ _0223B5A2:
 _0223B5AA:
 	add r0, r7, #0
 	strb r5, [r6, #3]
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _0223B5C0
 	ldr r0, [sp, #0xc]
@@ -7671,7 +7671,7 @@ _0223B5C0:
 	cmp r0, #3
 	blt _0223B5A2
 	ldr r0, _0223B618 ; =ov57_0223BEB0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r4, r0, #0
 	mov r0, #0
 	mvn r0, r0

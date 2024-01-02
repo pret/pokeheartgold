@@ -39,10 +39,10 @@
 .public ClearFrameAndWindow2
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public sub_0201660C
-.public sub_02016624
-.public sub_020166FC
-.public sub_020168F4
+.public YesNoPrompt_Create
+.public YesNoPrompt_Destroy
+.public YesNoPrompt_InitFromTemplate
+.public YesNoPrompt_HandleInput
 .public sub_020169CC
 .public Main_SetVBlankIntrCB
 .public CreateHeap
@@ -83,7 +83,7 @@
 .public Set2dSpriteAnimActiveFlag
 .public Set2dSpriteAnimSeqNo
 .public Sprite_SetPriority
-.public sub_0202529C
+.public TouchscreenHitbox_FindHitboxAtTouchNew
 .public System_GetTouchHeld
 .public System_GetTouchNew
 .public GF_AssertFail

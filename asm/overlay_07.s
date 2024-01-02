@@ -33989,7 +33989,7 @@ _0222C418:
 	bl UnkImageStruct_TickSpriteAnimation1Frame
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _0222C4AC
 	ldr r0, [r4, #0xc]

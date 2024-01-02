@@ -28,9 +28,9 @@
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
 .public IsPaletteFadeFinished
-.public sub_0201660C
-.public sub_02016624
-.public sub_020166FC
+.public YesNoPrompt_Create
+.public YesNoPrompt_Destroy
+.public YesNoPrompt_InitFromTemplate
 .public sub_02016748
 .public sub_020183F0
 .public CreateHeap
@@ -56,7 +56,7 @@
 .public AddTextPrinterParameterized
 .public AddTextPrinterParameterizedWithColor
 .public GfGfx_EngineBTogglePlanes
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public String_New
 .public String_Delete

@@ -792,7 +792,7 @@ _0208E4F0:
 	cmp r0, #2
 	beq _0208E512
 	ldr r0, _0208E53C ; =_02104FFC
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -803,7 +803,7 @@ _0208E4F0:
 	pop {r3, pc}
 _0208E512:
 	ldr r0, _0208E53C ; =_02104FFC
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	cmp r0, #4
 	blt _0208E526
 	cmp r0, #9

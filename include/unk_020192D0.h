@@ -4,7 +4,7 @@
 #include "heap.h"
 #include "overlay_manager.h"
 
-void *sub_02019BA4(void *, void *, void *, void *, int, u8, HeapID);
+void *sub_02019BA4(const void *, const void *, const void *, void *, int, u8, HeapID);
 void sub_02019BDC(void *);
 int sub_02019F74(void *);
 void sub_02019F7C(void *, int);

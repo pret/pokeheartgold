@@ -46,8 +46,8 @@
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public ListMenuItems_Delete
-.public sub_02016624
-.public sub_020168F4
+.public YesNoPrompt_Destroy
+.public YesNoPrompt_HandleInput
 .public sub_02018410
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
@@ -90,7 +90,7 @@
 .public Set2dSpriteAnimSeqNo
 .public Get2dSpriteCurrentAnimSeqNo
 .public Sprite_SetAnimCtrlCurrentFrame
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public String_New
 .public String_Delete
 .public GF_3DVramMan_Create

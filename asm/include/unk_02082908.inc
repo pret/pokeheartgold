@@ -114,7 +114,7 @@
 .public Set2dSpriteAnimSeqNo
 .public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_SetDrawPriority
-.public sub_02024B68
+.public Sprite_IsCellAnimationFinished
 .public sub_02024B78
 .public GF_AssertFail
 .public String_New

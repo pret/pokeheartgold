@@ -84,10 +84,10 @@
 .public sub_020136B4
 .public sub_020137C0
 .public sub_020138E0
-.public sub_0201660C
-.public sub_02016624
-.public sub_020166FC
-.public sub_020168F4
+.public YesNoPrompt_Create
+.public YesNoPrompt_Destroy
+.public YesNoPrompt_InitFromTemplate
+.public YesNoPrompt_HandleInput
 .public sub_020169CC
 .public sub_02018030
 .public sub_02018068
@@ -169,7 +169,7 @@
 .public Camera_SetLookAtCamTarget
 .public Camera_SetLookAtCamPos
 .public sub_02024B1C
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public String_New
 .public String_Delete

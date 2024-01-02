@@ -47,10 +47,10 @@
 .public IsPaletteFadeFinished
 .public sub_0200FBF4
 .public sub_02013A50
-.public sub_0201660C
-.public sub_02016624
-.public sub_020166FC
-.public sub_020168F4
+.public YesNoPrompt_Create
+.public YesNoPrompt_Destroy
+.public YesNoPrompt_InitFromTemplate
+.public YesNoPrompt_HandleInput
 .public sub_020169CC
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
@@ -98,8 +98,8 @@
 .public Set2dSpriteAnimSeqNo
 .public Sprite_SetPriority
 .public Sprite_SetPalIndex
-.public sub_02025204
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchHeld
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public String_New
 .public String_Delete

@@ -20,7 +20,7 @@
 #include "unk_0200CF18.h"
 #include "unk_0200FA24.h"
 #include "unk_020183F0.h"
-#include "unk_02025154.h"
+#include "touchscreen.h"
 #include "unk_02023694.h"
 #include "vram_transfer_manager.h"
 
@@ -141,16 +141,15 @@ extern const UnkStruct_0200D2B4 ov17_02203EF8[2];
 extern const UnkStruct_0200D2B4 ov17_02203F48;
 extern const UnkStruct_0200D2B4 ov17_02203F70;
 extern const UnkStruct_0200D2B4 ov17_02203F98;
-extern const u8 ov17_02203FC0[4];
+extern const TouchscreenHitbox ov17_02203FC0;
 
 extern void sub_0200B2E0(HeapID);
 extern void sub_0200B2E8(HeapID);
-extern void *sub_0201660C(HeapID);
-extern void sub_02016624(void*);
+extern void *YesNoPrompt_Create(HeapID);
+extern void YesNoPrompt_Destroy(void*);
 extern void sub_020210BC(void);
 extern u32 sub_02021148(u32);
 extern void sub_02021238(void);
-extern int sub_02025320(void*);
 
 static void BerryPotsApp_InitData(BerryPotsAppData *data);
 static void ov17_02201DD8(BerryPotsAppData *data);
@@ -969,7 +968,7 @@ static void ov17_02202A84(BerryPotsAppData *data, int index) {
             unkStruct.animSeqNo = 6;
             break;
         default:
-            unkStruct.unk_00 = index + 1;
+            unkStruct.resourceSet = index + 1;
             unkStruct.animSeqNo = sub->growthStage - 3;
             break;
     }
@@ -1120,7 +1119,7 @@ static void BerryPotsApp_SetupWindows(BerryPotsAppData *data) {
         FillWindowPixelBuffer(&data->windows[i], 0x0);
     }
 
-    data->unk12C = sub_0201660C(data->heapId);
+    data->unk12C = YesNoPrompt_Create(data->heapId);
 }
 
 static void BerryPotsApp_FreeWindows(BerryPotsAppData *data) {
@@ -1129,7 +1128,7 @@ static void BerryPotsApp_FreeWindows(BerryPotsAppData *data) {
         RemoveWindow(&data->windows[i]);
     }
 
-    sub_02016624(data->unk12C);
+    YesNoPrompt_Destroy(data->unk12C);
 }
 
 static void BerryPotsApp_SetupListMenuItems(BerryPotsAppData *data) {
@@ -1657,21 +1656,20 @@ static BOOL ov17_02203C20(BerryPotsAppData *data, BOOL *a1) {
 }
 
 static int ov17_02203C78(BerryPotsAppData *data) {
-    // touch screen coordinates?
-    u8 unkArray[4];
+    TouchscreenHitbox touchHitbox;
 
     for (int i = 0, xOffsetMaybe = 16; i < MAX_BERRY_POT; xOffsetMaybe += 28, i++) {
-        unkArray[2] = xOffsetMaybe;
-        unkArray[3] = unkArray[2] + 22;
+        touchHitbox.rect.left = xOffsetMaybe;
+        touchHitbox.rect.right = touchHitbox.rect.left + 22;
         if (data->unk20[i].growthStage < BERRY_POT_GROWTH_STAGE_GROWING) {
-            unkArray[0] = 88;
-            unkArray[1] = unkArray[0] + 24;
+            touchHitbox.rect.top = 88;
+            touchHitbox.rect.bottom = touchHitbox.rect.top + 24;
         } else {
-            unkArray[0] = 72;
-            unkArray[1] = unkArray[0] + 32;
+            touchHitbox.rect.top = 72;
+            touchHitbox.rect.bottom = touchHitbox.rect.top + 32;
         }
 
-        if (sub_02025320(&unkArray)) {
+        if (TouchscreenHitbox_TouchNewIsIn(&touchHitbox)) {
             return i;
         }
     }
@@ -1679,7 +1677,7 @@ static int ov17_02203C78(BerryPotsAppData *data) {
 }
 
 static int ov17_02203CC8(BerryPotsAppData *data) {
-    if (sub_02025320(&ov17_02203FC0)) {
+    if (TouchscreenHitbox_TouchNewIsIn(&ov17_02203FC0)) {
         return 5;
     }
 

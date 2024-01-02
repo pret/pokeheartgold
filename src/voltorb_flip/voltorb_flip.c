@@ -23,7 +23,7 @@
 #include "unk_0201660C.h"
 #include "unk_020183F0.h"
 #include "unk_02023694.h"
-#include "unk_02025154.h"
+#include "touchscreen.h"
 #include "bg_window.h"
 #include "constants/sndseq.h"
 #include "constants/game_stats.h"
@@ -947,7 +947,7 @@ BOOL PrintAreYouSureYouWantToQuit(WorkflowEngine *workflow, VoltorbFlipAppWork *
 }
 
 BOOL ov122_021E6900(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
-    Unk122_021E6900 temp1 = {0};
+    YesNoPromptTemplate temp1 = {0};
 
     temp1.bgConfig = work->bgConfig;
     temp1.unk4 = 3;
@@ -957,12 +957,12 @@ BOOL ov122_021E6900(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     temp1.unk11 = 10;
     temp1.unk12_4 = 0;
 
-    sub_020166FC(work->unk13C, &temp1);
+    YesNoPrompt_InitFromTemplate(work->unk13C, &temp1);
     return TRUE;
 }
 
 BOOL AwaitQuitYesNoSelection(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
-    int var1 = sub_020168F4(work->unk13C);
+    int var1 = YesNoPrompt_HandleInput(work->unk13C);
     switch (var1) {
     case 1: // YES
         int payout = GamePayout(work->game);
@@ -1959,7 +1959,7 @@ static void ov122_021E8094(OVY_MANAGER *man) {
     work->narc = NARC_New(NARC_application_voltorb_flip, work->heapId);
     work->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0039_bin, work->heapId);
     work->msgFmt = MessageFormat_New(work->heapId);
-    work->unk13C = sub_0201660C(work->heapId);
+    work->unk13C = YesNoPrompt_Create(work->heapId);
 
     ov122_021E7928(work);
     ov122_021E79D0(work);
@@ -1998,7 +1998,7 @@ static void FreeOverlayData(OVY_MANAGER *man) {
     FreeWorkflowEngine(work->workflow);
     ov122_021E7B94(work);
 
-    sub_02016624(work->unk13C);
+    YesNoPrompt_Destroy(work->unk13C);
     ov122_021E745C(work);
     ov122_021E765C(work);
     ov122_021E79A4(work);

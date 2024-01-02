@@ -155,12 +155,12 @@
 .public Sprite_TickCellOrMulticellAnimation
 .public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_SetPriority
-.public sub_02025224
-.public sub_02025320
+.public TouchscreenHitbox_FindRectAtTouchNew
+.public TouchscreenHitbox_TouchNewIsIn
 .public System_GetTouchHeld
 .public System_GetTouchNew
-.public sub_0202539C
-.public sub_020253F0
+.public TouchscreenHitbox_FindHitboxAtPoint
+.public TouchscreenHitbox_PointIsIn
 .public GF_AssertFail
 .public String_New
 .public String_Delete

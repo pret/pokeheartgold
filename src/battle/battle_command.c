@@ -14,7 +14,7 @@
 #include "text.h"
 #include "unk_0200E320.h"
 #include "unk_0208805C.h"
-#include "unk_02025154.h"
+#include "touchscreen.h"
 #include "unk_02005D10.h"
 #include "sound_chatot.h"
 #include "battle/overlay_12_0224E4FC.h"

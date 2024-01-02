@@ -1678,7 +1678,7 @@ _021E6656:
 	cmp r3, #0
 	beq _021E669E
 	ldr r0, _021E676C ; =ov99_021E95BC
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	add r7, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -4453,7 +4453,7 @@ ov99_021E7BC8: ; 0x021E7BC8
 	bl sub_02019F74
 	add r4, r0, #0
 	ldr r0, _021E7C50 ; =ov99_021E9F54
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -7148,7 +7148,7 @@ ov99_021E90F4: ; 0x021E90F4
 	cmp r0, #0
 	beq _021E9154
 	ldr r0, _021E92E0 ; =ov99_021EA3C4
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
