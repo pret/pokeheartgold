@@ -2130,7 +2130,7 @@ sub_0208942C: ; 0x0208942C
 	add r4, r0, #0
 	ldr r0, _02089450 ; =0x00000504
 	ldr r0, [r4, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _0208944A
 	mov r1, #8
@@ -2152,7 +2152,7 @@ sub_02089454: ; 0x02089454
 	add r4, r0, #0
 	ldr r0, _02089474 ; =0x00000508
 	ldr r0, [r4, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _02089470
 	add r0, r4, #0

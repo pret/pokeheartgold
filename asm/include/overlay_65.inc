@@ -70,10 +70,10 @@
 .public ListMenuItems_Delete
 .public ListMenuItems_AppendFromMsgData
 .public ListMenuItems_AddItem
-.public sub_0201660C
-.public sub_02016624
-.public sub_020166FC
-.public sub_020168F4
+.public YesNoPrompt_Create
+.public YesNoPrompt_Destroy
+.public YesNoPrompt_InitFromTemplate
+.public YesNoPrompt_HandleInput
 .public sub_02018424
 .public sub_02018474
 .public sub_020185FC

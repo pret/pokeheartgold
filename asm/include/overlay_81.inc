@@ -75,10 +75,10 @@
 .public ClearFrameAndWindow2
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public sub_0201660C
-.public sub_02016624
-.public sub_020166FC
-.public sub_020168F4
+.public YesNoPrompt_Create
+.public YesNoPrompt_Destroy
+.public YesNoPrompt_InitFromTemplate
+.public YesNoPrompt_HandleInput
 .public sub_020169CC
 .public sub_0201956C
 .public sub_020195C0
@@ -152,7 +152,7 @@
 .public Sprite_SetPalIndex
 .public sub_02024A48
 .public sub_02024B1C
-.public sub_02024B68
+.public Sprite_IsCellAnimationFinished
 .public sub_02024B78
 .public GF_AssertFail
 .public String_New

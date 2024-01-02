@@ -228,12 +228,12 @@ _022589D0:
 	add r0, r5, #0
 	add r0, #0xd0
 	ldr r0, [r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	bne _022589EC
 	add r5, #0xd0
 	ldr r0, [r5]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #4
 	str r0, [r4]
 	b _02258C28
@@ -246,7 +246,7 @@ _022589F2:
 	add r0, r5, #0
 	add r0, #0xd0
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	add r5, #0x40
 	add r0, r5, #0
 	bl ov46_022593F8
@@ -420,12 +420,12 @@ _02258B74:
 	add r0, r5, #0
 	add r0, #0xd0
 	ldr r0, [r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	bne _02258B94
 	add r5, #0xd0
 	ldr r0, [r5]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	bl sub_020397C8
 	mov r0, #0xd
 	str r0, [r4]
@@ -435,7 +435,7 @@ _02258B94:
 	bne _02258C28
 	add r5, #0xd0
 	ldr r0, [r5]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0xe
 	str r0, [r4]
 	b _02258C28
@@ -1646,7 +1646,7 @@ ov46_02259550: ; 0x02259550
 	add r5, r0, #0
 	mov r0, #0x77
 	add r4, r1, #0
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	mov r1, #1
 	str r1, [sp, #4]
 	mov r1, #0xd
@@ -1670,7 +1670,7 @@ ov46_02259550: ; 0x02259550
 	mov r1, #0
 	strb r1, [r2, #0x13]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add r0, r6, #0
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}

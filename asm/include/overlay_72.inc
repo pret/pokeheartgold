@@ -55,8 +55,8 @@
 .public sub_0200F450
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public sub_02016624
-.public sub_020168F4
+.public YesNoPrompt_Destroy
+.public YesNoPrompt_HandleInput
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
 .public Sys_SetSleepDisableFlag
@@ -107,7 +107,7 @@
 .public Set2dSpriteAnimActiveFlag
 .public Set2dSpriteAnimSeqNo
 .public Sprite_SetPriority
-.public sub_02024B68
+.public Sprite_IsCellAnimationFinished
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public String_New

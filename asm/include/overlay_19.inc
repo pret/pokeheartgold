@@ -47,7 +47,7 @@
 .public Set2dSpriteAnimActiveFlag
 .public Set2dSpriteAnimSeqNo
 .public Sprite_ResetAnimCtrlState
-.public sub_02024B68
+.public Sprite_IsCellAnimationFinished
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public String_New
 .public String_Delete

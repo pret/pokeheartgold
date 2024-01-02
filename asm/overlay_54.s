@@ -2339,13 +2339,13 @@ ov54_021E6C08: ; 0x021E6C08
 	mov r0, #0xbd
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _021E6C2C
 	mov r0, #0xbe
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _021E6C2C
 	mov r0, #0

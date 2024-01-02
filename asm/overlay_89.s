@@ -225,7 +225,7 @@ ov89_02258800: ; 0x02258800
 	add r0, r5, #0
 	bl ov89_022598D0
 	mov r0, #0x7d
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	str r0, [r5, #0x24]
 	mov r0, #6
 	str r0, [sp]
@@ -537,7 +537,7 @@ _02258CAC:
 	strb r1, [r0, #0x13]
 	ldr r0, [r4, #0x24]
 	add r1, sp, #0xc
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add r0, r4, #0
 	mov r1, #1
 	add r0, #0x28
@@ -553,7 +553,7 @@ _02258CF0:
 	mov r3, #0x40
 	bl sub_020032A4
 	ldr r0, [r4, #0x24]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _02258D0C
 	cmp r0, #2
@@ -806,7 +806,7 @@ ov89_02258F00: ; 0x02258F00
 	add r0, r4, #0
 	bl ov89_022598A8
 	ldr r0, [r4, #0x24]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0x65
 	lsl r0, r0, #2
 	add r0, r4, r0

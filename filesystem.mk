@@ -481,6 +481,7 @@ include files/application/choose_starter/choose_starter.mk
 include files/arc/ppark.mk
 include files/application/record/record.mk
 include files/application/voltorb_flip.mk
+include files/application/annon/puzzle_gra.mk
 include files/data/resdat.mk
 
 $(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;

@@ -1,0 +1,95 @@
+{
+  "kind": "pltt",
+  "graphics": [
+    {
+      "narc": 60,
+      "file": 10,
+      "compressed": false,
+      "id": 0,
+      "extra": [
+        1,
+        2
+      ]
+    },
+    {
+      "narc": 18,
+      "file": 3,
+      "compressed": false,
+      "id": 1,
+      "extra": [
+        1,
+        1
+      ]
+    },
+    {
+      "narc": 18,
+      "file": 3,
+      "compressed": false,
+      "id": 2,
+      "extra": [
+        2,
+        1
+      ]
+    },
+    {
+      "narc": 18,
+      "file": 3,
+      "compressed": false,
+      "id": 3,
+      "extra": [
+        2,
+        1
+      ]
+    },
+    {
+      "narc": 18,
+      "file": 3,
+      "compressed": false,
+      "id": 4,
+      "extra": [
+        2,
+        1
+      ]
+    },
+    {
+      "narc": 18,
+      "file": 3,
+      "compressed": false,
+      "id": 5,
+      "extra": [
+        2,
+        1
+      ]
+    },
+    {
+      "narc": 18,
+      "file": 3,
+      "compressed": false,
+      "id": 6,
+      "extra": [
+        2,
+        1
+      ]
+    },
+    {
+      "narc": 18,
+      "file": 3,
+      "compressed": false,
+      "id": 7,
+      "extra": [
+        2,
+        1
+      ]
+    },
+    {
+      "narc": 60,
+      "file": 22,
+      "compressed": false,
+      "id": 8,
+      "extra": [
+        2,
+        2
+      ]
+    }
+  ]
+}
