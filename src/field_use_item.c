@@ -13,6 +13,9 @@
 #include "sound_02004A44.h"
 #include "overlay_01.h"
 #include "overlay_02.h"
+#include "overlay_43.h"
+#include "overlay_58.h"
+#include "overlay_113.h"
 #include "unk_02054E00.h"
 #include "metatile_behavior.h"
 #include "render_window.h"
@@ -68,13 +71,13 @@ static enum ItemUseError ItemCheckUseFunc_EscapeRope(const struct ItemCheckUseDa
 static BOOL Task_JumpToFieldEscapeRope(TaskManager *taskManager);
 static void ItemMenuUseFunc_ApricornBox(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
 static BOOL ItemFieldUseFunc_ApricornBox(struct ItemFieldUseData *data);
-static struct ApricornBoxArgs *_CreateApricornBoxWork(FieldSystem *fieldSystem);
+static ApricornBoxArgs *_CreateApricornBoxWork(FieldSystem *fieldSystem);
 static void ItemMenuUseFunc_BerryPots(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
 static BOOL ItemFieldUseFunc_BerryPots(struct ItemFieldUseData *data);
 static struct BerryPotsArgs *_BerryPotsArgs_New(FieldSystem *fieldSystem);
 static void ItemMenuUseFunc_UnownReport(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
 static BOOL ItemFieldUseFunc_UnownReport(struct ItemFieldUseData *data);
-static struct UnownReportArgs *_CreateUnownReportWork(FieldSystem *fieldSystem);
+static UnownReportArgs *_CreateUnownReportWork(FieldSystem *fieldSystem);
 static void ItemMenuUseFunc_DowsingMchn(struct ItemMenuUseData *data, const struct ItemCheckUseData *dat2);
 static BOOL ItemFieldUseFunc_DowsingMchn(struct ItemFieldUseData *data);
 static BOOL Task_ActivateDowsingMchnUI(TaskManager *taskManager);
@@ -362,7 +365,7 @@ static void ItemMenuUseFunc_Mail(struct ItemMenuUseData *data, const struct Item
 #pragma unused(dat2)
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     struct BagViewAppWork *env = TaskManager_GetEnvironment(data->taskManager);
-    UseMailWork *mailWork = CreateUseMailWork(fieldSystem, 3, ItemToMailId(data->itemId), HEAP_ID_FIELD);
+    UseMailArgs *mailWork = CreateUseMailWork(fieldSystem, 3, ItemToMailId(data->itemId), HEAP_ID_FIELD);
     env->unk_0384 = sub_0203D818(data->itemId, 3, 0);
     env->atexit_TaskEnv = mailWork;
     sub_0203C8F0(env, sub_0203D830);
@@ -599,7 +602,7 @@ static BOOL ItemFieldUseFunc_ApricornBox(struct ItemFieldUseData *data) {
     return TRUE;
 }
 
-static struct ApricornBoxArgs *_CreateApricornBoxWork(FieldSystem *fieldSystem) {
+static ApricornBoxArgs *_CreateApricornBoxWork(FieldSystem *fieldSystem) {
     return LaunchApricornBoxApp(fieldSystem, 1);
 }
 
@@ -631,7 +634,7 @@ static BOOL ItemFieldUseFunc_UnownReport(struct ItemFieldUseData *data) {
     return TRUE;
 }
 
-static struct UnownReportArgs *_CreateUnownReportWork(FieldSystem *fieldSystem) {
+static UnownReportArgs *_CreateUnownReportWork(FieldSystem *fieldSystem) {
     return LaunchUnownReportApp(fieldSystem);
 }
 

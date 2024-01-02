@@ -236,11 +236,11 @@ static u32 sub_02050290(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
 
 static u32 sub_020502E0(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID heapId) {
     SaveData *saveData = fieldSystem->saveData;
-    UnkStruct_0204F448 *unk = AllocFromHeapAtEnd(heapId, sizeof(UnkStruct_0204F448));
-    MI_CpuFill8(unk, 0, sizeof(UnkStruct_0204F448));
+    PokemonSummaryArgs *unk = AllocFromHeapAtEnd(heapId, sizeof(PokemonSummaryArgs));
+    MI_CpuFill8(unk, 0, sizeof(PokemonSummaryArgs));
     unk->options = Save_PlayerData_GetOptionsAddr(saveData);
     unk->party = SaveArray_Party_Get(saveData);
-    unk->isNatDexEnabled = SaveArray_IsNatDexEnabled(saveData);
+    unk->natDexEnabled = SaveArray_IsNatDexEnabled(saveData);
     unk->unk2C = sub_02088288(saveData);
     unk->unk11 = 1;
     unk->unk14 = a0->unk05;
@@ -260,7 +260,7 @@ static u32 sub_02050370(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
     if (FieldSystem_ApplicationIsRunning(fieldSystem)) {
         return 3;
     }
-    UnkStruct_0204F448 *unk = *(a0->unk0c);
+    PokemonSummaryArgs *unk = *(a0->unk0c);
     a0->unk05 = unk->unk14;
     FreeToHeap(unk);
     *(a0->unk0c) = NULL;

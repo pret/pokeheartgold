@@ -294,11 +294,11 @@ const struct ExtraSaveChunkHeader gExtraSaveChunkHeaders[] = {
 
 const int gNumExtraSaveChunkHeaders = NELEMS(gExtraSaveChunkHeaders);
 
-HALL_OF_FAME *LoadHallOfFame(SaveData *saveData, HeapID heapId, int *ret_p) {
+HallOfFame *LoadHallOfFame(SaveData *saveData, HeapID heapId, int *ret_p) {
     return ReadExtraSaveChunk(saveData, heapId, 0, ret_p);
 }
 
-int SaveHallOfFame(SaveData *saveData, HALL_OF_FAME *hallOfFame) {
+int SaveHallOfFame(SaveData *saveData, HallOfFame *hallOfFame) {
     return WriteExtraSaveChunk(saveData, 0, hallOfFame);
 }
 

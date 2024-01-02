@@ -69,7 +69,7 @@
 .public LaunchBagApp
 .public sub_0203E3FC
 .public LaunchBagApp_WithPocket
-.public BagSelectResult
+.public BagView_SelectResult
 .public _LaunchLearnForgetMoveApp
 .public LaunchPartyMenuApp_Unk1
 .public LaunchPartyMenuApp_Unk2
@@ -352,9 +352,9 @@
 .public BugContestSwapMon_OvyInit
 .public BugContestSwapMon_OvyExec
 .public BugContestSwapMon_OvyExit
-.public ov113_021E5900
-.public ov113_021E5968
-.public ov113_021E59C8
+.public UnownReport_OvyInit
+.public UnownReport_OvyExec
+.public UnownReport_OvyExit
 .public ov121_021E5900
 .public ov121_021E590C
 .public ov121_021E59BC

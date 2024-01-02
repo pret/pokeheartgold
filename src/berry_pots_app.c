@@ -19,6 +19,7 @@
 #include "unk_02005D10.h"
 #include "unk_0200CF18.h"
 #include "unk_0200FA24.h"
+#include "unk_0201660C.h"
 #include "unk_020183F0.h"
 #include "touchscreen.h"
 #include "unk_02023694.h"
@@ -59,6 +60,22 @@ typedef struct BerryPotsAppData_UnkSub20 {
     u8 unkD;
     Sprite *soilSpriteMaybe;
 } BerryPotsAppData_UnkSub20;
+
+typedef struct BerryPotsAppArgs_UnkSub4 {
+    u8 unk0[4];
+    u32 *unk4;
+    u8 unk8[4];
+    SaveData *savedata;
+} BerryPotsAppArgs_UnkSub4;
+
+typedef struct BerryPotsAppArgs {
+    u8 unk0[4];
+    BerryPotsAppArgs_UnkSub4 *unk4;
+    u8 unk8[0xC];
+    u8 unk14;
+    u8 unk15;
+    u16 itemId;
+} BerryPotsAppArgs;
 
 typedef struct BerryPotsAppData {
     HeapID heapId;
@@ -145,8 +162,6 @@ extern const TouchscreenHitbox ov17_02203FC0;
 
 extern void sub_0200B2E0(HeapID);
 extern void sub_0200B2E8(HeapID);
-extern void *YesNoPrompt_Create(HeapID);
-extern void YesNoPrompt_Destroy(void*);
 extern void sub_020210BC(void);
 extern u32 sub_02021148(u32);
 extern void sub_02021238(void);

@@ -247,7 +247,7 @@ static u16 calcBallTranslationArcStep(const fx32 *from, const fx32 *to, int step
 
 BOOL ChooseStarter_OvyInit(OVY_MANAGER *ovy, int *state_p) {
     struct ChooseStarterAppWork *work;
-    struct ChooseStarterAppArgs *args;
+    struct ChooseStarterArgs *args;
     int i;
 
     CreateHeap(HEAP_ID_3, HEAP_ID_CHOOSE_STARTER, 0x40000);
@@ -535,7 +535,7 @@ BOOL ChooseStarter_OvyExec(OVY_MANAGER *ovy, int *state) {
 
 BOOL ChooseStarter_OvyExit(OVY_MANAGER *ovy, int *state) {
     struct ChooseStarterAppWork *work = OverlayManager_GetData(ovy);
-    struct ChooseStarterAppArgs *args = OverlayManager_GetArgs(ovy);
+    struct ChooseStarterArgs *args = OverlayManager_GetArgs(ovy);
 
     TextFlags_SetCanABSpeedUpPrint(FALSE);
     sub_02002B50(FALSE);

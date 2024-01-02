@@ -25,7 +25,7 @@ extern const OVY_MGR_TEMPLATE sOvyTemplate_SafariAreaCustomizer;
 extern const OVY_MGR_TEMPLATE sOvyTemplate_SafariDecoration;
 extern const OVY_MGR_TEMPLATE sOvyTemplate_PhotoAlbum;
 extern const OVY_MGR_TEMPLATE sOvyTemplate_AlphPuzzle;
-extern const OVY_MGR_TEMPLATE _020FA394;
+extern const OVY_MGR_TEMPLATE gOvyTemplate_UnownReport;
 extern const OVY_MGR_TEMPLATE sOvyTemplate_BerryPots;
 extern const OVY_MGR_TEMPLATE sOvyTemplate_ApricornBox;
 extern const OVY_MGR_TEMPLATE sOvyTemplate_BugContestSwapMon;

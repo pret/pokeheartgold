@@ -355,23 +355,23 @@ static u32 sub_0204F3F8(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem) {
 
 static u32 sub_0204F448(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem, HeapID heapId) {
     SaveData *saveData = fieldSystem->saveData;
-    UnkStruct_0204F448 *r4 = AllocFromHeapAtEnd(heapId, sizeof(UnkStruct_0204F448));
-    MI_CpuFill8(r4, 0, sizeof(UnkStruct_0204F448));
-    r4->options = Save_PlayerData_GetOptionsAddr(saveData);
-    r4->party = SaveArray_Party_Get(saveData);
-    r4->isNatDexEnabled = SaveArray_IsNatDexEnabled(saveData);
-    r4->unk2C = sub_02088288(saveData);
-    r4->unk11 = 1;
-    r4->unk14 = a0->unk05;
-    r4->partyCount = Party_GetCount(r4->party);
-    r4->unk18 = 0;
-    r4->unk12 = 0;
-    r4->ribbons = Save_SpecialRibbons_Get(saveData);
-    r4->isFlag982Set = sub_0208828C(saveData);
-    sub_02089D40(r4, unk_020FC224);
-    sub_0208AD34(r4, Save_PlayerData_GetProfileAddr(saveData));
-    FieldSystem_LaunchApplication(fieldSystem, &gOvyTemplate_PokemonSummary, r4);
-    *(a0->unk08) = r4;
+    PokemonSummaryArgs *args = AllocFromHeapAtEnd(heapId, sizeof(PokemonSummaryArgs));
+    MI_CpuFill8(args, 0, sizeof(PokemonSummaryArgs));
+    args->options = Save_PlayerData_GetOptionsAddr(saveData);
+    args->party = SaveArray_Party_Get(saveData);
+    args->natDexEnabled = SaveArray_IsNatDexEnabled(saveData);
+    args->unk2C = sub_02088288(saveData);
+    args->unk11 = 1;
+    args->unk14 = a0->unk05;
+    args->partyCount = Party_GetCount(args->party);
+    args->unk18 = 0;
+    args->unk12 = 0;
+    args->ribbons = Save_SpecialRibbons_Get(saveData);
+    args->isFlag982Set = sub_0208828C(saveData);
+    sub_02089D40(args, unk_020FC224);
+    sub_0208AD34(args, Save_PlayerData_GetProfileAddr(saveData));
+    FieldSystem_LaunchApplication(fieldSystem, &gOvyTemplate_PokemonSummary, args);
+    *(a0->unk08) = args;
     return 3;
 }
 
@@ -379,7 +379,7 @@ static u32 sub_0204F4D8(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem) {
     if (FieldSystem_ApplicationIsRunning(fieldSystem)) {
         return 3;
     }
-    UnkStruct_0204F448 *r0 = *(a0->unk08);
+    PokemonSummaryArgs *r0 = *(a0->unk08);
     a0->unk05 = r0->unk14;
     FreeToHeap(r0);
     *(a0->unk08) = NULL;

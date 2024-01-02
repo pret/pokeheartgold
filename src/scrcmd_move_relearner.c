@@ -1,6 +1,7 @@
 #include "scrcmd.h"
 #include "field_blackthorn_tutors.h"
 #include "field/launch_application.h"
+#include "unk_02088288.h"
 
 BOOL ScrNative_WaitApplication(ScriptContext *ctx);
 

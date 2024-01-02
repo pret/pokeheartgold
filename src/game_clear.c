@@ -135,7 +135,7 @@ static void AddHallOfFameEntry(FieldSystem *fieldSystem, BOOL gameCleared) {
     int val;
     RTCDate date;
 
-    HALL_OF_FAME *hof = LoadHallOfFame(fieldSystem->saveData, HEAP_ID_FIELD, &val);
+    HallOfFame *hof = LoadHallOfFame(fieldSystem->saveData, HEAP_ID_FIELD, &val);
     if (val != 1 || !gameCleared) {
         Save_HOF_Init(hof);
     }

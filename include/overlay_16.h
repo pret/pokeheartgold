@@ -5,6 +5,13 @@
 #include "save_misc_data.h"
 #include "overlay_manager.h"
 
+typedef struct BerryPotsArgs {
+    void *unk0;
+    u32 *unk4;
+    BagCursor *cursor;
+    SaveData *saveData;
+} BerryPotsArgs;
+
 typedef struct UnkStruct_ov16_022014A0 {
     u8 defaultGrowthTimeInHours;
     u8 defaultDrainRate;

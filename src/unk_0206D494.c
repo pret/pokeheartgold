@@ -12,6 +12,7 @@
 #include "heap.h"
 #include "metatile_behavior.h"
 #include "msgdata.h"
+#include "overlay_111.h"
 #include "npc_trade.h"
 #include "player_data.h"
 #include "pm_string.h"

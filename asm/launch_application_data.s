@@ -25,7 +25,7 @@
 	.public sOvyTemplate_SafariDecoration
 	.public sOvyTemplate_PhotoAlbum
 	.public sOvyTemplate_AlphPuzzle
-	.public _020FA394
+	.public gOvyTemplate_UnownReport
 	.public sOvyTemplate_BerryPots
 	.public sOvyTemplate_ApricornBox
 	.public sOvyTemplate_BugContestSwapMon
@@ -127,8 +127,8 @@ sOvyTemplate_ApricornBox:
 	.word ApricornBox_OvyInit, ApricornBox_OvyExec, ApricornBox_OvyExit, FS_OVERLAY_ID(OVY_58)
 sOvyTemplate_BerryPots:
 	.word BerryPots_OvyInit, BerryPots_OvyExec, BerryPots_OvyExit, FS_OVERLAY_ID(OVY_16)
-_020FA394:
-	.word ov113_021E5900, ov113_021E5968, ov113_021E59C8, FS_OVERLAY_ID(OVY_113)
+gOvyTemplate_UnownReport:
+	.word UnownReport_OvyInit, UnownReport_OvyExec, UnownReport_OvyExit, FS_OVERLAY_ID(OVY_113)
 sOvyTemplate_AlphPuzzle:
 	.word AlphPuzzle_OvyInit, AlphPuzzle_OvyExec, AlphPuzzle_OvyExit, FS_OVERLAY_ID(OVY_110)
 sOvyTemplate_PhotoAlbum:

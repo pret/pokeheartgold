@@ -47,7 +47,7 @@ static BOOL ov55_021E5900(OVY_MANAGER **manager) {
 
 BOOL ov55_UnkApp_Init(OVY_MANAGER *manager, int *state) {
     UnkStruct_ov55_021E5924 *overlayData;
-    UnkArgs_ov55 *args;
+    UseMailArgs *args;
 
     args = OverlayManager_GetArgs(manager);
     CreateHeap(HEAP_ID_3, HEAP_ID_OV55, 0x1000);
@@ -70,7 +70,7 @@ BOOL ov55_UnkApp_Init(OVY_MANAGER *manager, int *state) {
 
 BOOL ov55_UnkApp_Main(OVY_MANAGER *manager, int *state) {
     UnkStruct_ov55_021E5924 *overlayData = OverlayManager_GetData(manager);
-    UnkArgs_ov55 *args = OverlayManager_GetArgs(manager);
+    UseMailArgs *args = OverlayManager_GetArgs(manager);
 
     switch (*state) {
         case 0:

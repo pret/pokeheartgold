@@ -93,6 +93,7 @@ FS_EXTERN_OVERLAY(OVY_113);
 FS_EXTERN_OVERLAY(OVY_121);
 
 // _020FA444 is not referenced so the linker deadstrips it.
+// HACK: We can force the linker to include this symbol with -force-active.
 #ifdef NONMATCHING
 const OVY_MGR_TEMPLATE _020FA1C4 =
     { sub_020192D0, sub_0201935C, sub_02019490, FS_OVERLAY_ID(OVY_39) };
@@ -152,8 +153,8 @@ const OVY_MGR_TEMPLATE sOvyTemplate_ApricornBox =
     { ApricornBox_OvyInit, ApricornBox_OvyExec, ApricornBox_OvyExit, FS_OVERLAY_ID(OVY_58) };
 const OVY_MGR_TEMPLATE sOvyTemplate_BerryPots =
     { BerryPots_OvyInit, BerryPots_OvyExec, BerryPots_OvyExit, FS_OVERLAY_ID(OVY_16) };
-const OVY_MGR_TEMPLATE _020FA394 =
-    { ov113_021E5900, ov113_021E5968, ov113_021E59C8, FS_OVERLAY_ID(OVY_113) };
+const OVY_MGR_TEMPLATE gOvyTemplate_UnownReport =
+    { UnownReport_OvyInit, UnownReport_OvyExec, UnownReport_OvyExit, FS_OVERLAY_ID(OVY_113) };
 const OVY_MGR_TEMPLATE sOvyTemplate_AlphPuzzle =
     { AlphPuzzle_OvyInit, AlphPuzzle_OvyExec, AlphPuzzle_OvyExit, FS_OVERLAY_ID(OVY_110) };
 const OVY_MGR_TEMPLATE sOvyTemplate_PhotoAlbum =

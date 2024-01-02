@@ -10,8 +10,8 @@
 #include "save.h"
 
 typedef struct MsgBankMsgNo {
-    u16 msg_bank;
-    u16 msg_no;
+    u16 msgBank;
+    u16 msgNo;
 } MsgBankMsgNo;
 
 typedef struct {
@@ -30,18 +30,18 @@ typedef struct {
     u32 *unk24;
 } EasyChatArgs;
 
-typedef struct UseMailWork {
-    u16 unk0[0x2];
+typedef struct UseMailArgs {
+    u16 unk0;
     u32 unk4;
     u32 unk8;
     u16 unkC;
     u8 partyIdx;
-    u8 unkF;
+    u8 mailType;
     SaveData *saveData;
     Mail *mail;
     MAILBOX *mailbox;
     u32 *unk1C;
-} UseMailWork;
+} UseMailArgs;
 
 EasyChatArgs *CreateEasyChatArgs(u8 a0, u8 a1, SaveData *saveData, u32 *a3, HeapID heapId);
 void FreeEasyChatArgs(EasyChatArgs *a0);
@@ -67,13 +67,13 @@ BOOL sub_02090DC0(EasyChatArgs *a0, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2);
 void sub_02090E04(EasyChatArgs *a0, MAIL_MESSAGE *msg1, MAIL_MESSAGE *msg2);
 int sub_02090E44(EasyChatArgs *a0);
 void sub_02090E5C(EasyChatArgs *a0, u32 a1);
-UseMailWork *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 a3, HeapID heapId);
-UseMailWork *sub_02090EC0(SaveData *saveData, int n, u16 i, HeapID heapId);
-UseMailWork *sub_02090F00(SaveData *saveData, Pokemon *mon, HeapID heapId);
-UseMailWork *sub_02090F38(SaveData *saveData, u8 mailType, HeapID heapId);
-u32 sub_02090F6C(UseMailWork *a0);
-BOOL sub_02090F70(UseMailWork *a0, Pokemon *mon);
-void sub_02090F90(UseMailWork *a0);
+UseMailArgs *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 a3, HeapID heapId);
+UseMailArgs *sub_02090EC0(SaveData *saveData, int n, u16 i, HeapID heapId);
+UseMailArgs *sub_02090F00(SaveData *saveData, Pokemon *mon, HeapID heapId);
+UseMailArgs *sub_02090F38(SaveData *saveData, u8 mailType, HeapID heapId);
+u32 sub_02090F6C(UseMailArgs *a0);
+BOOL sub_02090F70(UseMailArgs *a0, Pokemon *mon);
+void sub_02090F90(UseMailArgs *a0);
 int sub_02090FA8(MAILBOX *mailbox, Pokemon *mon, HeapID heapId);
 int sub_02091004(Mail *msgs, int i, Pokemon *mon, HeapID heapId);
 

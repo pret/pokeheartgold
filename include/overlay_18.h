@@ -3,6 +3,8 @@
 
 #include "overlay_manager.h"
 
+typedef struct PokedexArgs PokedexArgs;
+
 BOOL Pokedex_OvyInit(OVY_MANAGER *man, int *state);
 BOOL Pokedex_OvyExec(OVY_MANAGER *man, int *state);
 BOOL Pokedex_OvyExit(OVY_MANAGER *man, int *state);

@@ -1,12 +1,17 @@
 #define _IN_SCRCMD_C
 
 #include "scrcmd.h"
+#include "alph_puzzle.h"
 #include "bg_window.h"
+#include "certificates_app.h"
 #include "overlay_01.h"
 #include "overlay_01_02204ED8.h"
 #include "overlay_26.h"
 #include "overlay_03.h"
 #include "overlay_04.h"
+#include "overlay_67.h"
+#include "overlay_87.h"
+#include "overlay_103.h"
 #include "system.h"
 #include "task.h"
 #include "text.h"
@@ -26,6 +31,7 @@
 #include "unk_02054648.h"
 #include "metatile_behavior.h"
 #include "unk_02055418.h"
+#include "unk_02078E30.h"
 #include "unk_020932A4.h"
 #include "unk_02092BE8.h"
 #include "unk_02097024.h"
@@ -2012,7 +2018,7 @@ BOOL ScrCmd_HOF_Credits(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_164(ScriptContext *ctx) {
-    HALL_OF_FAME **hof = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //todo: hall of fame data
+    HallOfFame **hof = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); //todo: hall of fame data
     *hof = LaunchHallOfFameCongratsApp(ctx->fieldSystem);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
@@ -2020,7 +2026,7 @@ BOOL ScrCmd_164(ScriptContext *ctx) {
 
 BOOL ScrCmd_706(ScriptContext *ctx) {
     int saveOk;
-    HALL_OF_FAME *hof = LoadHallOfFame(ctx->fieldSystem->saveData, HEAP_ID_4, &saveOk);
+    HallOfFame *hof = LoadHallOfFame(ctx->fieldSystem->saveData, HEAP_ID_4, &saveOk);
     u16 *p_var = ScriptGetVarPointer(ctx);
     *p_var = 0;
     if (saveOk == 2) {
@@ -2068,7 +2074,7 @@ BOOL ScrCmd_334(ScriptContext *ctx) { //todo: bag select screen result
     u16 *r5 = ScriptGetVarPointer(ctx);
     void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     GF_ASSERT(*p_work != NULL);
-    *r5 = BagSelectResult(*p_work);
+    *r5 = BagView_SelectResult(*p_work);
     FreeToHeap(*p_work);
     *p_work = NULL;
     return FALSE;
@@ -3921,7 +3927,7 @@ BOOL ScrCmd_546(ScriptContext *ctx) {
 BOOL ScrCmd_550(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     int loadResult;
-    HALL_OF_FAME *hof = LoadHallOfFame(ctx->fieldSystem->saveData, HEAP_ID_32, &loadResult);
+    HallOfFame *hof = LoadHallOfFame(ctx->fieldSystem->saveData, HEAP_ID_32, &loadResult);
     if (loadResult == 0) {
         *p_ret = 0;
         FreeToHeap(hof);

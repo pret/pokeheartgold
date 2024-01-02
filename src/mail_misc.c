@@ -73,8 +73,8 @@ u16 sub_02090D50(EasyChatArgs *a0) {
 }
 
 void sub_02090D54(EasyChatArgs *a0, MsgBankMsgNo *msgBankMsgNo) {
-    msgBankMsgNo->msg_bank = a0->unk1C[0];
-    msgBankMsgNo->msg_no = a0->unk1C[1];
+    msgBankMsgNo->msgBank = a0->unk1C[0];
+    msgBankMsgNo->msgNo = a0->unk1C[1];
 }
 
 void sub_02090D60(EasyChatArgs *a0, MAIL_MESSAGE *mailMessage) {
@@ -160,15 +160,15 @@ void sub_02090E5C(EasyChatArgs *a0, u32 a1) {
     sub_02018410(a0->unk24, a1);
 }
 
-UseMailWork *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 a3, HeapID heapId) {
+UseMailArgs *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 a3, HeapID heapId) {
     MAILBOX *mailbox = Save_Mailbox_Get(saveData);
-    UseMailWork *ptr = AllocFromHeapAtEnd(heapId, sizeof(UseMailWork));
-    MI_CpuFill8(ptr, 0, sizeof(UseMailWork));
+    UseMailArgs *ptr = AllocFromHeapAtEnd(heapId, sizeof(UseMailArgs));
+    MI_CpuFill8(ptr, 0, sizeof(UseMailArgs));
 
-    ptr->unkF = a3;
+    ptr->mailType = a3;
     ptr->partyIdx = partyIdx;
     ptr->mailbox = mailbox;
-    ptr->unk0[0] = 1;
+    ptr->unk0 = 1;
     ptr->unk8 = a1;
     ptr->unkC = 0;
     ptr->saveData = saveData;
@@ -181,11 +181,11 @@ UseMailWork *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 a3, HeapID
     return ptr;
 }
 
-UseMailWork *sub_02090EC0(SaveData *saveData, int n, u16 i, HeapID heapId) {
-    UseMailWork *ptr = AllocFromHeapAtEnd(heapId, sizeof(UseMailWork));
-    MI_CpuFill8(ptr, 0, sizeof(UseMailWork));
+UseMailArgs *sub_02090EC0(SaveData *saveData, int n, u16 i, HeapID heapId) {
+    UseMailArgs *ptr = AllocFromHeapAtEnd(heapId, sizeof(UseMailArgs));
+    MI_CpuFill8(ptr, 0, sizeof(UseMailArgs));
 
-    ptr->unk0[0] = 0;
+    ptr->unk0 = 0;
     ptr->unk8 = n;
     ptr->unkC = i;
     ptr->saveData = saveData;
@@ -197,11 +197,11 @@ UseMailWork *sub_02090EC0(SaveData *saveData, int n, u16 i, HeapID heapId) {
     return ptr;
 }
 
-UseMailWork *sub_02090F00(SaveData *saveData, Pokemon *mon, HeapID heapId) {
-    UseMailWork *ptr = AllocFromHeapAtEnd(heapId, sizeof(UseMailWork));
-    MI_CpuFill8(ptr, 0, sizeof(UseMailWork));
+UseMailArgs *sub_02090F00(SaveData *saveData, Pokemon *mon, HeapID heapId) {
+    UseMailArgs *ptr = AllocFromHeapAtEnd(heapId, sizeof(UseMailArgs));
+    MI_CpuFill8(ptr, 0, sizeof(UseMailArgs));
 
-    ptr->unk0[0] = 0;
+    ptr->unk0 = 0;
     ptr->saveData = saveData;
 
     Mail *mail = Mail_New(heapId);
@@ -211,11 +211,11 @@ UseMailWork *sub_02090F00(SaveData *saveData, Pokemon *mon, HeapID heapId) {
     return ptr;
 }
 
-UseMailWork *sub_02090F38(SaveData *saveData, u8 mailType, HeapID heapId) {
-    UseMailWork *ptr = AllocFromHeapAtEnd(heapId, sizeof(UseMailWork));
-    MI_CpuFill8(ptr, 0, sizeof(UseMailWork));
+UseMailArgs *sub_02090F38(SaveData *saveData, u8 mailType, HeapID heapId) {
+    UseMailArgs *ptr = AllocFromHeapAtEnd(heapId, sizeof(UseMailArgs));
+    MI_CpuFill8(ptr, 0, sizeof(UseMailArgs));
 
-    ptr->unk0[0] = 0;
+    ptr->unk0 = 0;
     ptr->saveData = saveData;
 
     Mail *mail = Mail_New(heapId);
@@ -225,11 +225,11 @@ UseMailWork *sub_02090F38(SaveData *saveData, u8 mailType, HeapID heapId) {
     return ptr;
 }
 
-u32 sub_02090F6C(UseMailWork *a0) {
+u32 sub_02090F6C(UseMailArgs *a0) {
     return a0->unk4;
 }
 
-BOOL sub_02090F70(UseMailWork *a0, Pokemon *mon) {
+BOOL sub_02090F70(UseMailArgs *a0, Pokemon *mon) {
     if (sub_02090F6C(a0) == 0) {
         return FALSE;
     }
@@ -237,7 +237,7 @@ BOOL sub_02090F70(UseMailWork *a0, Pokemon *mon) {
     return TRUE;
 }
 
-void sub_02090F90(UseMailWork *a0) {
+void sub_02090F90(UseMailArgs *a0) {
     if (a0->mail != NULL) {
         FreeToHeap(a0->mail);
     }

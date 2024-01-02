@@ -12,7 +12,7 @@
 
 struct ChooseStarterTaskData {
     int state;
-    struct ChooseStarterAppArgs *args;
+    struct ChooseStarterArgs *args;
 };
 
 static BOOL CreateStarter(TaskManager *taskManager);
@@ -47,7 +47,7 @@ static BOOL CreateStarter(TaskManager *taskManager) {
             };
             mapsec = MapHeader_GetMapSec(fieldSystem->location->mapId); //sp14
 
-            env->args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct ChooseStarterAppArgs));
+            env->args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct ChooseStarterArgs));
             env->args->cursorPos = 0;
             env->args->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
             for (i = 0; i < (int)NELEMS(species); i++) {

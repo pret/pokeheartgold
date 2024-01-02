@@ -14,6 +14,7 @@
 #include "overlay_01_021E6880.h"
 #include "overlay_02.h"
 #include "overlay_03.h"
+#include "overlay_58.h"
 #include "unk_02031904.h"
 #include "scrcmd.h"
 #include "unk_0206D494.h"
@@ -869,7 +870,7 @@ BOOL ScrCmd_GetTotalApricornCount(ScriptContext *ctx) {
 
 //Related to Kurt- canceling
 BOOL ScrCmd_739(ScriptContext *ctx) { //todo: rename structs and find out stuff
-    struct ApricornBoxArgs **unkPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    ApricornBoxArgs **unkPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     *unkPtr = LaunchApricornBoxApp(ctx->fieldSystem, 2);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;

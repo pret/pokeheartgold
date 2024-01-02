@@ -2,7 +2,16 @@
 #define POKEHEARTGOLD_UNK_020192D0_H
 
 #include "heap.h"
+#include "field_system.h"
 #include "overlay_manager.h"
+#include "save.h"
+
+typedef struct Unk0203FC14 {
+    FieldSystem *fieldSystem;
+    SaveData *saveData;
+    int unk8;
+    u8 unkC;
+} Unk0203FC14;
 
 void *sub_02019BA4(const void *, const void *, const void *, void *, int, u8, HeapID);
 void sub_02019BDC(void *);

@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_CERTIFICATES_APP_H
 
 #include "overlay_manager.h"
+#include "save.h"
 
 #define CERTIFICATE_JOHTO_DEX    0
 #define CERTIFICATE_NATIONAL_DEX 1
@@ -17,6 +18,11 @@ typedef enum CertificatesExecStates {
 
     CERTIFICATES_EXECSTATE_COUNT,
 } CertificatesExecStates;
+
+typedef struct CertificatesArgs {
+    SaveData *saveData;
+    u32 certificateId;
+} CertificatesArgs;
 
 BOOL Certificates_OvyInit(OVY_MANAGER *manager, int *state);
 BOOL Certificates_OvyExec(OVY_MANAGER *manager, int *state);
