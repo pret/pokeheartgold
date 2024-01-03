@@ -71,7 +71,7 @@ struct _2DGfxResHeaderNarc {
 
 typedef struct _2DGfxResHeaderNarcList {
     GfGfxResType type;
-    struct _2DGfxResHeaderNarc internal[1];  // arbitrary length
+    struct _2DGfxResHeaderNarc internal[];  // arbitrary length
 } _2DGfxResHeaderNarcList;
 
 struct _2DGfxResHeader {

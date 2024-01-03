@@ -1656,21 +1656,20 @@ static BOOL ov17_02203C20(BerryPotsAppData *data, BOOL *a1) {
 }
 
 static int ov17_02203C78(BerryPotsAppData *data) {
-    // touch screen coordinates?
-    TouchscreenHitbox unkArray;
+    TouchscreenHitbox touchHitbox;
 
     for (int i = 0, xOffsetMaybe = 16; i < MAX_BERRY_POT; xOffsetMaybe += 28, i++) {
-        unkArray.rect.left = xOffsetMaybe;
-        unkArray.rect.right = unkArray.rect.left + 22;
+        touchHitbox.rect.left = xOffsetMaybe;
+        touchHitbox.rect.right = touchHitbox.rect.left + 22;
         if (data->unk20[i].growthStage < BERRY_POT_GROWTH_STAGE_GROWING) {
-            unkArray.rect.top = 88;
-            unkArray.rect.bottom = unkArray.rect.top + 24;
+            touchHitbox.rect.top = 88;
+            touchHitbox.rect.bottom = touchHitbox.rect.top + 24;
         } else {
-            unkArray.rect.top = 72;
-            unkArray.rect.bottom = unkArray.rect.top + 32;
+            touchHitbox.rect.top = 72;
+            touchHitbox.rect.bottom = touchHitbox.rect.top + 32;
         }
 
-        if (TouchscreenHitbox_TouchNewIsIn(&unkArray)) {
+        if (TouchscreenHitbox_TouchNewIsIn(&touchHitbox)) {
             return i;
         }
     }
