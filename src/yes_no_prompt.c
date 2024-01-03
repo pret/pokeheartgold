@@ -34,16 +34,16 @@ struct SysTaskState_02016DF8 {
     u16 size;
 };
 
-static void YesNoPrompt_InitFromTemplate_Internal(YesNoPromptState *yesno, const YesNoPromptTemplate *template);
-static void YesNoPrompt_UpdateButtonGraphicalState(YesNoPromptState *yesno, u8 a1, int a2);
-static void YesNoPrompt_HighlightSelectedButton(YesNoPromptState *yesno);
-static BOOL YesNoPrompt_HandleButtonInput(YesNoPromptState *yesno, int joyInput);
-static BOOL YesNoPrompt_HandleInput_Internal(YesNoPromptState *yesno);
-static void YesNoPrompt_Init(YesNoPromptState *yesno, HeapID heapId);
-static void YesNoPrompt_InitPixelDataFromTemplate(YesNoPromptState *yesno, const YesNoPromptTemplate *template);
-static void YesNoPrompt_InitPlttFromTemplate(YesNoPromptState *yesno, const YesNoPromptTemplate *template);
-static void YesNoPrompt_InitButtonsFromTemplate(YesNoPromptState *yesno, const YesNoPromptTemplate *template);
-static void SetupTouchHitboxesController(YesNoPromptState *yesno, const YesNoPromptTemplate *template);
+static void YesNoPrompt_InitFromTemplate_Internal(YesNoPrompt *yesno, const YesNoPromptTemplate *template);
+static void YesNoPrompt_UpdateButtonGraphicalState(YesNoPrompt *yesno, u8 a1, int a2);
+static void YesNoPrompt_HighlightSelectedButton(YesNoPrompt *yesno);
+static BOOL YesNoPrompt_HandleButtonInput(YesNoPrompt *yesno, int joyInput);
+static BOOL YesNoPrompt_HandleInput_Internal(YesNoPrompt *yesno);
+static void YesNoPrompt_Init(YesNoPrompt *yesno, HeapID heapId);
+static void YesNoPrompt_InitPixelDataFromTemplate(YesNoPrompt *yesno, const YesNoPromptTemplate *template);
+static void YesNoPrompt_InitPlttFromTemplate(YesNoPrompt *yesno, const YesNoPromptTemplate *template);
+static void YesNoPrompt_InitButtonsFromTemplate(YesNoPrompt *yesno, const YesNoPromptTemplate *template);
+static void SetupTouchHitboxesController(YesNoPrompt *yesno, const YesNoPromptTemplate *template);
 static void YesNoButton_TouchHitboxCB(u32 index, u32 event, void *arg);
 static void YesNoPromptButton_Draw(YesNoPromptButton *button, const struct UnkStruct_02016C28 *arg, HeapID heapId);
 static void YesNoPromptButton_Clear(YesNoPromptButton *button);
@@ -55,20 +55,20 @@ static void ScreenPushGraphicsRect(BgConfig *bgConfig, int bgId, NNSG2dScreenDat
 static void ScreenSetBaseTile(NNSG2dScreenData *scrnData, int baseTile);
 static void ScreenSetPalette(NNSG2dScreenData *scrnData, int plttNum);
 
-YesNoPromptState *YesNoPrompt_Create(HeapID heapId) {
-    YesNoPromptState *out = (YesNoPromptState *)AllocFromHeap(heapId, sizeof(YesNoPromptState));
+YesNoPrompt *YesNoPrompt_Create(HeapID heapId) {
+    YesNoPrompt *out = (YesNoPrompt *)AllocFromHeap(heapId, sizeof(YesNoPrompt));
     YesNoPrompt_Init(out, heapId);
     return out;
 }
 
-void YesNoPrompt_Destroy(YesNoPromptState *yesno) {
+void YesNoPrompt_Destroy(YesNoPrompt *yesno) {
     if (yesno->buttonsAreInit == 1) {
         YesNoPrompt_Reset(yesno);
     }
     FreeToHeap(yesno);
 }
 
-static void YesNoPrompt_InitFromTemplate_Internal(YesNoPromptState *yesno, const YesNoPromptTemplate *template) {
+static void YesNoPrompt_InitFromTemplate_Internal(YesNoPrompt *yesno, const YesNoPromptTemplate *template) {
     static const u8 dimensions[2][2] = {
         {6,  4},
         {16, 6},
@@ -95,11 +95,11 @@ static void YesNoPrompt_InitFromTemplate_Internal(YesNoPromptState *yesno, const
     YesNoPrompt_HighlightSelectedButton(yesno);
 }
 
-void YesNoPrompt_InitFromTemplate(YesNoPromptState *yesno, const YesNoPromptTemplate *template) {
+void YesNoPrompt_InitFromTemplate(YesNoPrompt *yesno, const YesNoPromptTemplate *template) {
     YesNoPrompt_InitFromTemplate_Internal(yesno, template);
 }
 
-void YesNoPrompt_InitFromTemplateWithPalette(YesNoPromptState *yesno, const YesNoPromptTemplate *template, PaletteData *plttData) {
+void YesNoPrompt_InitFromTemplateWithPalette(YesNoPrompt *yesno, const YesNoPromptTemplate *template, PaletteData *plttData) {
     YesNoPrompt_InitFromTemplate_Internal(yesno, template);
     if (plttData != NULL) {
         NNSG2dPaletteData *plttDataOut;
@@ -109,7 +109,7 @@ void YesNoPrompt_InitFromTemplateWithPalette(YesNoPromptState *yesno, const YesN
     }
 }
 
-YesNoResponse YesNoPrompt_HandleInputForSave(YesNoPromptState *yesno) {
+YesNoResponse YesNoPrompt_HandleInputForSave(YesNoPrompt *yesno) {
     yesno->lastTouchEvent = 8;
     YesNoResponse result = YesNoPrompt_HandleInput(yesno);
     if (result == YESNORESPONSE_WAIT && yesno->lastTouchEvent == 0) {
@@ -122,13 +122,13 @@ YesNoResponse YesNoPrompt_HandleInputForSave(YesNoPromptState *yesno) {
     return result;
 }
 
-static void YesNoPrompt_UpdateButtonGraphicalState(YesNoPromptState *yesno, u8 whichButton, int whichScreen) {
+static void YesNoPrompt_UpdateButtonGraphicalState(YesNoPrompt *yesno, u8 whichButton, int whichScreen) {
     YesNoPromptButton *button = &yesno->buttons[whichButton];
     ScreenPushGraphicsRect(button->bgConfig, button->bgId, button->screenDataPtrs[whichScreen], button->x, button->y);
     ScheduleBgTilemapBufferTransfer(button->bgConfig, button->bgId);
 }
 
-static void YesNoPrompt_HighlightSelectedButton(YesNoPromptState *yesno) {
+static void YesNoPrompt_HighlightSelectedButton(YesNoPrompt *yesno) {
     if (!yesno->inTouchMode) {
         YesNoPrompt_UpdateButtonGraphicalState(yesno, yesno->cursorPos, 1);
         YesNoPrompt_UpdateButtonGraphicalState(yesno, yesno->cursorPos ^ 1, 0);
@@ -137,7 +137,7 @@ static void YesNoPrompt_HighlightSelectedButton(YesNoPromptState *yesno) {
     }
 }
 
-static BOOL YesNoPrompt_HandleButtonInput(YesNoPromptState *yesno, int joyInput) {
+static BOOL YesNoPrompt_HandleButtonInput(YesNoPrompt *yesno, int joyInput) {
     if (joyInput & PAD_BUTTON_A) {
         yesno->result = yesno->cursorPos;
         PlaySE(SEQ_SE_DP_BUTTON9);
@@ -157,7 +157,7 @@ static BOOL YesNoPrompt_HandleButtonInput(YesNoPromptState *yesno, int joyInput)
     return FALSE;
 }
 
-static BOOL YesNoPrompt_HandleInput_Internal(YesNoPromptState *yesno) {
+static BOOL YesNoPrompt_HandleInput_Internal(YesNoPrompt *yesno) {
     if (yesno->ignoreTouch == 0 && TouchHitboxController_IsTriggered(yesno->touchHitboxController)) {
         yesno->inTouchMode = TRUE;
         return TRUE;
@@ -170,7 +170,7 @@ static BOOL YesNoPrompt_HandleInput_Internal(YesNoPromptState *yesno) {
     return YesNoPrompt_HandleButtonInput(yesno, gSystem.newKeys);
 }
 
-YesNoResponse YesNoPrompt_HandleInput(YesNoPromptState *yesno) {
+YesNoResponse YesNoPrompt_HandleInput(YesNoPrompt *yesno) {
     GF_ASSERT(yesno->buttonsAreInit == 1);
     if (yesno->result == 3) {
         if (!YesNoPrompt_HandleInput_Internal(yesno)) {
@@ -197,11 +197,11 @@ YesNoResponse YesNoPrompt_HandleInput(YesNoPromptState *yesno) {
     return YESNORESPONSE_WAIT;
 }
 
-BOOL YesNoPrompt_IsInTouchMode(YesNoPromptState *yesno) {
+BOOL YesNoPrompt_IsInTouchMode(YesNoPrompt *yesno) {
     return yesno->inTouchMode;
 }
 
-void YesNoPrompt_Reset(YesNoPromptState *yesno) {
+void YesNoPrompt_Reset(YesNoPrompt *yesno) {
     TouchHitboxController_Destroy(yesno->touchHitboxController);
     for (int i = 0; i < 2; ++i) {
         YesNoPromptButton_Clear(&yesno->buttons[i]);
@@ -209,28 +209,28 @@ void YesNoPrompt_Reset(YesNoPromptState *yesno) {
     YesNoPrompt_Init(yesno, yesno->heapId);
 }
 
-void YesNoPrompt_SetIgnoreTouch(YesNoPromptState *yesno, int a1) {
+void YesNoPrompt_SetIgnoreTouch(YesNoPrompt *yesno, int a1) {
     GF_ASSERT(yesno != NULL);
     yesno->ignoreTouch = a1;
 }
 
-static void YesNoPrompt_Init(YesNoPromptState *yesno, HeapID heapId) {
-    memset(yesno, 0, sizeof(YesNoPromptState));
+static void YesNoPrompt_Init(YesNoPrompt *yesno, HeapID heapId) {
+    memset(yesno, 0, sizeof(YesNoPrompt));
     yesno->buttonsAreInit = 0;
     yesno->heapId = heapId;
     yesno->result = 3;
     yesno->lastTouchEvent = 8;
 }
 
-static void YesNoPrompt_InitPixelDataFromTemplate(YesNoPromptState *yesno, const YesNoPromptTemplate *template) {
+static void YesNoPrompt_InitPixelDataFromTemplate(YesNoPrompt *yesno, const YesNoPromptTemplate *template) {
     LoadPixelDataFromNarcAndScheduleTransfer(NARC_system_touch_subwindow, 1, yesno->bgConfig, yesno->bgId, template->tileStart, yesno->heapId);
 }
 
-static void YesNoPrompt_InitPlttFromTemplate(YesNoPromptState *yesno, const YesNoPromptTemplate *template) {
+static void YesNoPrompt_InitPlttFromTemplate(YesNoPrompt *yesno, const YesNoPromptTemplate *template) {
     LoadPlttFromNarcAndScheduleTransfer(NARC_system_touch_subwindow, 0, yesno->bgId < 4 ? 0 : 4, template->plttSlot * 32, 64, yesno->heapId);
 }
 
-static void YesNoPrompt_InitButtonsFromTemplate(YesNoPromptState *yesno, const YesNoPromptTemplate *template) {
+static void YesNoPrompt_InitButtonsFromTemplate(YesNoPrompt *yesno, const YesNoPromptTemplate *template) {
     int i;
     int j;
     struct UnkStruct_02016C28 sp4;
@@ -265,7 +265,7 @@ static void YesNoPrompt_InitButtonsFromTemplate(YesNoPromptState *yesno, const Y
     }
 }
 
-static void SetupTouchHitboxesController(YesNoPromptState *yesno, const YesNoPromptTemplate *template) {
+static void SetupTouchHitboxesController(YesNoPrompt *yesno, const YesNoPromptTemplate *template) {
     int i;
     for (i = 0; i < 2; ++i) {
         yesno->hitboxes[i].rect.top = (yesno->y * 8) + (i * yesno->height * 8);
@@ -277,7 +277,7 @@ static void SetupTouchHitboxesController(YesNoPromptState *yesno, const YesNoPro
 }
 
 static void YesNoButton_TouchHitboxCB(u32 index, u32 event, void *arg) {
-    YesNoPromptState *yesno = (YesNoPromptState *)arg;
+    YesNoPrompt *yesno = (YesNoPrompt *)arg;
     yesno->lastTouchEvent = event;
     if (event == 0) {
         yesno->result = index;
