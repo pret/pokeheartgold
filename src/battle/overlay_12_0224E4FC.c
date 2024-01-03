@@ -450,8 +450,8 @@ int GetBattlerVar(BattleContext *ctx, int battlerId, u32 id, void *data) {
         return mon->unk88.knockOffFlag;
     case BMON_DATA_METRONOME: //refers to the actual item, not the move
         return mon->unk88.metronomeTurns;
-    case BMON_DATA_84:
-        return mon->unk88.unk4_2B;
+    case BMON_DATA_MICLE_BERRY_FLAG:
+        return mon->unk88.micleBerry;
     case BMON_DATA_CUSTAP_FLAG:
         return mon->unk88.custapBerryFlag;
     case BMON_DATA_QUICK_CLAW_FLAG:
@@ -728,8 +728,8 @@ void SetBattlerVar(BattleContext *ctx, int battlerId, u32 id, void *data) {
     case BMON_DATA_METRONOME: //refers to the actual item, not the move
         mon->unk88.metronomeTurns = *data8;
         break;
-    case BMON_DATA_84:
-        mon->unk88.unk4_2B = *data8;
+    case BMON_DATA_MICLE_BERRY_FLAG:
+        mon->unk88.micleBerry = *data8;
         break;
     case BMON_DATA_CUSTAP_FLAG:
         mon->unk88.custapBerryFlag = *data8;
@@ -2451,7 +2451,7 @@ BOOL ov12_02252218(BattleContext *ctx, int battlerId) {
         ctx->moveFail[battlerId].noEffect ||
         ctx->moveFail[battlerId].imprison ||
         ctx->moveFail[battlerId].infatuation ||
-        ctx->moveFail[battlerId].asleep ||
+        ctx->moveFail[battlerId].disabled ||
         ctx->moveFail[battlerId].unk0_5 ||
         ctx->moveFail[battlerId].flinch ||
         ctx->moveFail[battlerId].unk0_8 ||

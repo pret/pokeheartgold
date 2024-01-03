@@ -133,8 +133,8 @@ typedef enum Terrain {
 #define MOVE_EFFECT_FLAG_LOCK_ON                 (3 << 3)
 #define MOVE_EFFECT_FLAG_LOCK_ON_SET             (1 << 4)
 #define MOVE_EFFECT_FLAG_PERISH_SONG             (1 << 5)
-#define MOVE_EFFECT_FLAG_6                       (1 << 6)
-#define MOVE_EFFECT_FLAG_7                       (1 << 7)
+#define MOVE_EFFECT_FLAG_FLY                     (1 << 6)
+#define MOVE_EFFECT_FLAG_DIG                     (1 << 7)
 #define MOVE_EFFECT_FLAG_8                       (1 << 8)
 #define MOVE_EFFECT_FLAG_CHARGE                  (1 << 9)
 #define MOVE_EFFECT_FLAG_INGRAIN                 (1 << 10)
@@ -159,7 +159,7 @@ typedef enum Terrain {
 #define MOVE_EFFECT_FLAG_IMPRISON                (1 << 30)
 
 #define MOVE_EFFECT_FLAG_BATON_PASSABLE          (MOVE_EFFECT_FLAG_LEECH_SEED_BATTLER | MOVE_EFFECT_FLAG_LEECH_SEED | MOVE_EFFECT_FLAG_LOCK_ON | MOVE_EFFECT_FLAG_PERISH_SONG | MOVE_EFFECT_FLAG_INGRAIN | MOVE_EFFECT_FLAG_LUCKY_CHANT | MOVE_EFFECT_FLAG_MUD_SPORT | MOVE_EFFECT_FLAG_WATER_SPORT | MOVE_EFFECT_FLAG_GASTRO_ACID | MOVE_EFFECT_FLAG_POWER_TRICK | MOVE_EFFECT_FLAG_AQUA_RING | MOVE_EFFECT_FLAG_HEAL_BLOCK | MOVE_EFFECT_FLAG_EMBARGO | MOVE_EFFECT_FLAG_MAGNET_RISE)    
-#define MOVE_EFFECT_FLAG_HIDE_SUBSTITUTE         (MOVE_EFFECT_FLAG_6 | MOVE_EFFECT_FLAG_7 | MOVE_EFFECT_FLAG_DIVE | MOVE_EFFECT_FLAG_PHANTOM_FORCE)
+#define MOVE_EFFECT_FLAG_HIDE_SUBSTITUTE         (MOVE_EFFECT_FLAG_FLY | MOVE_EFFECT_FLAG_DIG | MOVE_EFFECT_FLAG_DIVE | MOVE_EFFECT_FLAG_PHANTOM_FORCE)
 
 #define MOVE_EFFECT_FLAG_LOCK_ON_SHIFT          3
 #define MOVE_EFFECT_FLAG_YAWN_SHIFT             11
@@ -174,13 +174,13 @@ typedef enum Terrain {
 #define MOVE_STATUS_6                       (1 << 6)
 #define MOVE_STATUS_7                       (1 << 7)
 #define MOVE_STATUS_8                       (1 << 8)
-#define MOVE_STATUS_9                       (1 << 9)
+#define MOVE_STATUS_NO_PP                   (1 << 9)
 #define MOVE_STATUS_10                      (1 << 10)
 #define MOVE_STATUS_LEVITATE_IMMUNE         (1 << 11)
 #define MOVE_STATUS_12                      (1 << 12)
 #define MOVE_STATUS_13                      (1 << 13)
 #define MOVE_STATUS_14                      (1 << 14)
-#define MOVE_STATUS_15                      (1 << 15)
+#define MOVE_STATUS_PROTECTED               (1 << 15)
 #define MOVE_STATUS_16                      (1 << 16)
 #define MOVE_STATUS_17                      (1 << 17)
 #define MOVE_STATUS_WONDER_GUARD_IMMUNE     (1 << 18) 
@@ -190,7 +190,7 @@ typedef enum Terrain {
 
 #define MOVE_STATUS_ANY_EFFECTIVE           (MOVE_STATUS_SUPER_EFFECTIVE | MOVE_STATUS_NOT_VERY_EFFECTIVE)
 
-#define MOVE_STATUS_FAIL                    (MOVE_STATUS_MISS | MOVE_STATUS_NO_EFFECT | MOVE_STATUS_6 | MOVE_STATUS_9 | MOVE_STATUS_LEVITATE_IMMUNE | MOVE_STATUS_12 | MOVE_STATUS_14 | MOVE_STATUS_15 | MOVE_STATUS_16 | MOVE_STATUS_17 | MOVE_STATUS_WONDER_GUARD_IMMUNE | MOVE_STATUS_19 | MOVE_STATUS_MAGNET_RISE_IMMUNE | MOVE_STATUS_31)
+#define MOVE_STATUS_FAIL                    (MOVE_STATUS_MISS | MOVE_STATUS_NO_EFFECT | MOVE_STATUS_6 | MOVE_STATUS_NO_PP | MOVE_STATUS_LEVITATE_IMMUNE | MOVE_STATUS_12 | MOVE_STATUS_14 | MOVE_STATUS_PROTECTED | MOVE_STATUS_16 | MOVE_STATUS_17 | MOVE_STATUS_WONDER_GUARD_IMMUNE | MOVE_STATUS_19 | MOVE_STATUS_MAGNET_RISE_IMMUNE | MOVE_STATUS_31)
 
 //Field Conditions
 #define FIELD_CONDITION_RAIN                (1 << 0)
@@ -400,7 +400,7 @@ typedef enum Terrain {
 #define BMON_DATA_81                        81
 #define BMON_DATA_ITEM_KNOCKED_OFF          82
 #define BMON_DATA_METRONOME                 83
-#define BMON_DATA_84                        84
+#define BMON_DATA_MICLE_BERRY_FLAG          84
 #define BMON_DATA_CUSTAP_FLAG               85
 #define BMON_DATA_QUICK_CLAW_FLAG           86
 #define BMON_DATA_RECHARGE                  87
@@ -453,6 +453,7 @@ typedef enum Terrain {
 #define BATTLE_STATUS2_MAGIC_COAT                   (1 << 3)
 #define BATTLE_STATUS2_4                            (1 << 4)
 #define BATTLE_STATUS2_5                            (1 << 5)
+#define BATTLE_STATUS2_6                            (1 << 6)
 #define BATTLE_STATUS2_26                           (1 << 26)
 
 #define BATTLE_STATUS2_EXP_GAIN_SHIFT               28
@@ -508,7 +509,7 @@ typedef enum ControllerCommand {
     CONTROLLER_COMMAND_25,
     CONTROLLER_COMMAND_26,
     CONTROLLER_COMMAND_27,
-    CONTROLLER_COMMAND_28,
+    CONTROLLER_COMMAND_HP_CALC,
     CONTROLLER_COMMAND_29,
     CONTROLLER_COMMAND_30,
     CONTROLLER_COMMAND_31,

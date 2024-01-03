@@ -146,7 +146,7 @@ typedef struct MoveFailFlags {
     u32 noEffect:1;
     u32 imprison:1;
     u32 infatuation:1;
-    u32 asleep:1;
+    u32 disabled:1;
     u32 unk0_5:1;
     u32 flinch:1;
     u32 confusion:1;
@@ -179,7 +179,7 @@ typedef struct UnkBattlemonSub {
     u32 embargoFlag:3;
     u32 knockOffFlag:1; //unclear whether true mean knocked off or not knocked off based on current information on its usage
     u32 metronomeTurns:4; //refers to the item, not the move
-    u32 unk4_2B:1; //might be related to choice band/specs
+    u32 micleBerry:1; 
     u32 custapBerryFlag:1;
     u32 quickClawFlag:1; 
     u32 meFirstFlag:1;
