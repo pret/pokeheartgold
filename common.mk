@@ -53,7 +53,6 @@ ASPATCH      := $(TOOLSDIR)/mwasmarm_patcher/mwasmarm_patcher$(EXE)
 CSV2BIN      := $(TOOLSDIR)/csv2bin/csv2bin$(EXE)
 MKFXCONST    := $(TOOLSDIR)/gen_fx_consts/gen_fx_consts$(EXE)
 MOD123ENCRY  := $(TOOLSDIR)/mod123encry/mod123encry$(EXE)
-RESDAT       := $(TOOLSDIR)/resdat/resdat.py
 
 # Decompiled NitroSDK tools
 COMPSTATIC   := $(TOOLSDIR)/compstatic/compstatic$(EXE)

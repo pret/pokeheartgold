@@ -87,7 +87,7 @@ $(BANNER): $(BANNER_SPEC) $(ICON_PNG:%.png=%.nbfp) $(ICON_PNG:%.png=%.nbfc)
 # TODO: move to NitroSDK makefile
 FX_CONST_H := $(WORK_DIR)/lib/include/nitro/fx/fx_const.h
 PROJECT_CLEAN_TARGETS += $(FX_CONST_H)
-$(FX_CONST_H): $(TOOLSDIR)/gen_fx_consts/fx_const.csv
+$(FX_CONST_H): $(MKFXCONST) $(TOOLSDIR)/gen_fx_consts/fx_const.csv
 	$(MKFXCONST) $@
 sdk: $(FX_CONST_H)
 $(WORK_DIR)/include/global.h: $(FX_CONST_H) ;
