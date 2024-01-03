@@ -53,10 +53,10 @@
 .public sub_0200FBF4
 .public MailMsg_GetExpandedString
 .public MailMsg_IsInit
-.public sub_0201660C
-.public sub_02016624
-.public sub_02016704
-.public sub_020168F4
+.public YesNoPrompt_Create
+.public YesNoPrompt_Destroy
+.public YesNoPrompt_InitFromTemplateWithPalette
+.public YesNoPrompt_HandleInput
 .public sub_020169C0
 .public sub_020169CC
 .public sub_020183F0
@@ -94,7 +94,7 @@
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_DisableEngineBPlanes
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchHeld
 .public System_GetTouchNew
 .public String_New

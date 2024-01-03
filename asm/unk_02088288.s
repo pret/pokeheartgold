@@ -2130,7 +2130,7 @@ sub_0208942C: ; 0x0208942C
 	add r4, r0, #0
 	ldr r0, _02089450 ; =0x00000504
 	ldr r0, [r4, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _0208944A
 	mov r1, #8
@@ -2152,7 +2152,7 @@ sub_02089454: ; 0x02089454
 	add r4, r0, #0
 	ldr r0, _02089474 ; =0x00000508
 	ldr r0, [r4, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _02089470
 	add r0, r4, #0
@@ -5421,11 +5421,11 @@ _0208ADCA:
 
 	thumb_func_start sub_0208ADCC
 sub_0208ADCC: ; 0x0208ADCC
-	ldr r3, _0208ADD4 ; =sub_02025224
+	ldr r3, _0208ADD4 ; =TouchscreenHitbox_FindRectAtTouchNew
 	ldr r0, _0208ADD8 ; =_021038D4
 	bx r3
 	nop
-_0208ADD4: .word sub_02025224
+_0208ADD4: .word TouchscreenHitbox_FindRectAtTouchNew
 _0208ADD8: .word _021038D4
 	thumb_func_end sub_0208ADCC
 
@@ -5433,13 +5433,13 @@ _0208ADD8: .word _021038D4
 sub_0208ADDC: ; 0x0208ADDC
 	push {r3, lr}
 	ldr r0, _0208AE00 ; =_021038D4
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
 	bne _0208ADFE
 	ldr r0, _0208AE04 ; =_021038AC
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #1
 	bne _0208ADFA
 	mov r0, #4
@@ -5458,20 +5458,20 @@ _0208AE04: .word _021038AC
 sub_0208AE08: ; 0x0208AE08
 	push {r3, lr}
 	ldr r0, _0208AE3C ; =_021038D4
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
 	bne _0208AE38
 	ldr r0, _0208AE40 ; =_021038B0
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #1
 	bne _0208AE26
 	mov r0, #4
 	pop {r3, pc}
 _0208AE26:
 	ldr r0, _0208AE44 ; =_021038AC
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #1
 	bne _0208AE34
 	mov r0, #5
@@ -5491,20 +5491,20 @@ _0208AE44: .word _021038AC
 sub_0208AE48: ; 0x0208AE48
 	push {r3, lr}
 	ldr r0, _0208AE7C ; =_021038D4
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
 	bne _0208AE78
 	ldr r0, _0208AE80 ; =_021038B4
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #1
 	bne _0208AE66
 	mov r0, #4
 	pop {r3, pc}
 _0208AE66:
 	ldr r0, _0208AE84 ; =_021038AC
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #1
 	bne _0208AE74
 	mov r0, #5
@@ -5524,14 +5524,14 @@ _0208AE84: .word _021038AC
 sub_0208AE88: ; 0x0208AE88
 	push {r3, lr}
 	ldr r0, _0208AEAC ; =_021038B4
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #1
 	bne _0208AE98
 	mov r0, #0
 	pop {r3, pc}
 _0208AE98:
 	ldr r0, _0208AEB0 ; =_021038AC
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #1
 	bne _0208AEA6
 	mov r0, #1
@@ -5547,21 +5547,21 @@ _0208AEB0: .word _021038AC
 
 	thumb_func_start sub_0208AEB4
 sub_0208AEB4: ; 0x0208AEB4
-	ldr r3, _0208AEBC ; =sub_02025224
+	ldr r3, _0208AEBC ; =TouchscreenHitbox_FindRectAtTouchNew
 	ldr r0, _0208AEC0 ; =_021038B8
 	bx r3
 	nop
-_0208AEBC: .word sub_02025224
+_0208AEBC: .word TouchscreenHitbox_FindRectAtTouchNew
 _0208AEC0: .word _021038B8
 	thumb_func_end sub_0208AEB4
 
 	thumb_func_start sub_0208AEC4
 sub_0208AEC4: ; 0x0208AEC4
-	ldr r3, _0208AECC ; =sub_02025224
+	ldr r3, _0208AECC ; =TouchscreenHitbox_FindRectAtTouchNew
 	ldr r0, _0208AED0 ; =_021039E8
 	bx r3
 	nop
-_0208AECC: .word sub_02025224
+_0208AECC: .word TouchscreenHitbox_FindRectAtTouchNew
 _0208AED0: .word _021039E8
 	thumb_func_end sub_0208AEC4
 

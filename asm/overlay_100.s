@@ -31,7 +31,7 @@ ov100_021E5924: ; 0x021E5924
 	sub sp, #8
 	add r5, r0, #0
 	ldr r0, _021E59C0 ; =ov100_021E74C4
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r4, r0, #0
 	mov r0, #0
 	mvn r0, r0

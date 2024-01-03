@@ -1249,7 +1249,7 @@ ov98_0221EF24: ; 0x0221EF24
 	ldrb r2, [r2, #3]
 	strb r3, [r1, #2]
 	strb r2, [r1, #3]
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	bne _0221EF52
 	ldr r0, _0221EF60 ; =gSystem

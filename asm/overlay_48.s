@@ -3026,7 +3026,7 @@ ov48_02259EAC: ; 0x02259EAC
 	mov r1, #5
 	bl ov48_0225B0D4
 	ldr r0, [sp, #0x28]
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	str r0, [r5, #0x20]
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
@@ -3050,7 +3050,7 @@ _02259F30:
 	ldr r0, [r4, #0xc]
 	bl String_Delete
 	ldr r0, [r4, #0x20]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	add r4, #0x10
 	add r0, r4, #0
 	bl RemoveWindow
@@ -3125,14 +3125,14 @@ _02259F9E:
 	str r0, [sp]
 	ldr r0, [r5, #0x20]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
 	b _02259FE0
 _02259FD8:
 	ldr r0, [r5, #0x20]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	add r4, r0, #0
 _02259FE0:
 	add r0, r4, #0

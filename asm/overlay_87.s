@@ -444,7 +444,7 @@ _021E5C7C:
 	strb r0, [r5, #0xf]
 _021E5C80:
 	ldr r0, _021E5CE4 ; =ov87_021E81C0
-	bl sub_02025204
+	bl TouchscreenHitbox_FindRectAtTouchHeld
 	add r4, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -468,7 +468,7 @@ _021E5C80:
 	add r0, r0, #1
 	strb r0, [r5, #0xe]
 	add r0, sp, #4
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	mov r0, #0x53
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -1075,7 +1075,7 @@ _021E6184:
 	mov r2, #2
 	bl sub_02021280
 	ldr r0, _021E63F8 ; =ov87_021E8308
-	bl sub_02025204
+	bl TouchscreenHitbox_FindRectAtTouchHeld
 	add r5, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -1212,7 +1212,7 @@ _021E62AC:
 	cmp r0, #2
 	bne _021E62F6
 	ldr r0, _021E6408 ; =ov87_021E8184
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -1240,7 +1240,7 @@ _021E62AC:
 	b _021E64F4
 _021E62F6:
 	ldr r0, _021E6410 ; =ov87_021E818C
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -2211,7 +2211,7 @@ ov87_021E6AE0: ; 0x021E6AE0
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x7a
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	mov r1, #0x39
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -2242,7 +2242,7 @@ ov87_021E6AF4: ; 0x021E6AF4
 	add r3, #0x10
 	ldr r0, [r0, r3]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add sp, #0x14
 	pop {pc}
 	.balign 4, 0
@@ -2252,11 +2252,11 @@ ov87_021E6AF4: ; 0x021E6AF4
 ov87_021E6B28: ; 0x021E6B28
 	mov r1, #0x39
 	lsl r1, r1, #4
-	ldr r3, _021E6B34 ; =sub_02016624
+	ldr r3, _021E6B34 ; =YesNoPrompt_Destroy
 	ldr r0, [r0, r1]
 	bx r3
 	nop
-_021E6B34: .word sub_02016624
+_021E6B34: .word YesNoPrompt_Destroy
 	thumb_func_end ov87_021E6B28
 
 	thumb_func_start ov87_021E6B38
@@ -5138,11 +5138,11 @@ _021E80B0: .word sub_02024B38
 
 	thumb_func_start ov87_021E80B4
 ov87_021E80B4: ; 0x021E80B4
-	ldr r3, _021E80BC ; =sub_02024B68
+	ldr r3, _021E80BC ; =Sprite_IsCellAnimationFinished
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_021E80BC: .word sub_02024B68
+_021E80BC: .word Sprite_IsCellAnimationFinished
 	thumb_func_end ov87_021E80B4
 
 	thumb_func_start ov87_021E80C0

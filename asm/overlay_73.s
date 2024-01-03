@@ -1265,7 +1265,7 @@ ov73_021E629C: ; 0x021E629C
 	add r3, r4, #0
 	bl ov73_021E735C
 	mov r0, #0x32
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	mov r1, #0xba
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -1318,7 +1318,7 @@ ov73_021E6400: ; 0x021E6400
 	mov r0, #0xba
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0xa6
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -1455,7 +1455,7 @@ ov73_021E6508: ; 0x021E6508
 	mov r4, #0
 	bl ov73_021E64B0
 	ldr r0, _021E66C8 ; =ov73_021EA534
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r6, r0, #0
 	ldr r1, _021E66CC ; =0x0000FFD5
 	add r0, sp, #4
@@ -1810,7 +1810,7 @@ ov73_021E67A8: ; 0x021E67A8
 	strb r2, [r0, #0x12]
 	ldr r0, [r4, r3]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	ldr r0, _021E682C ; =0x00004A15
 	mov r1, #1
 	strb r1, [r4, r0]
@@ -1957,7 +1957,7 @@ _021E691E:
 	mov r0, #0xba
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #0
 	beq _021E69B0
 	cmp r0, #2
@@ -2180,7 +2180,7 @@ _021E6AE4:
 	mov r0, #0xba
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	add r6, r0, #0
 	beq _021E6B4E
 	add r0, r5, #0
@@ -2526,7 +2526,7 @@ _021E6D88:
 	mov r0, #0xba
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #0
 	beq _021E6DE0
 	cmp r0, #2
@@ -5401,7 +5401,7 @@ ov73_021E8390: ; 0x021E8390
 	mov r0, #0x96
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	mov r1, #0
 	mov r2, #8
 	str r2, [sp, #0xc]
@@ -5423,7 +5423,7 @@ ov73_021E8390: ; 0x021E8390
 	strb r4, [r3, #0x12]
 	strb r1, [r3, #0x13]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add r0, r7, #0
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
@@ -5433,11 +5433,11 @@ ov73_021E8390: ; 0x021E8390
 ov73_021E83D4: ; 0x021E83D4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	add r4, r0, #0
 	beq _021E83E6
 	add r0, r5, #0
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 _021E83E6:
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}

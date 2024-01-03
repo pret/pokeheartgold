@@ -165,7 +165,7 @@
 .public Save_FashionData_GetFashionCase
 .public sub_0202BA2C
 .public sub_0202BA5C
-.public sub_0202BB08
+.public FashionCase_GiveFashionItem
 .public Save_FashionData_Get
 .public Roamers_GetRand
 .public Save_Roamers_Get

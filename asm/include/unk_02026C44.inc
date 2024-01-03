@@ -2,8 +2,8 @@
 #pragma once
 .public AllocFromHeap
 .public FreeToHeap
-.public sub_020252F4
-.public sub_02025320
+.public TouchscreenHitbox_TouchHeldIsIn
+.public TouchscreenHitbox_TouchNewIsIn
 .public System_GetTouchHeld
 .public System_GetTouchNew
 .public GF_AssertFail

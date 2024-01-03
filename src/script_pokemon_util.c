@@ -4,6 +4,7 @@
 #include "unk_0206979C.h"
 #include "pokemon_mood.h"
 #include "script_pokemon_util.h"
+#include "get_egg.h"
 #include "constants/items.h"
 #include "constants/battle.h"
 
@@ -43,7 +44,7 @@ BOOL GiveMon(HeapID heapId, SaveData *saveData, int species, int level, int form
     return result;
 }
 
-BOOL GiveEgg(HeapID heapId, SaveData *saveData, int species, u8 metLocation, MapsecType sp20, int sp24) {
+BOOL GiveEgg(HeapID heapId, SaveData *saveData, int species, u8 metLocation, MapsecType mapsecType, int maploc) {
 #pragma unused(heapId)
     PlayerProfile *profile;
     Party *party;
@@ -54,7 +55,7 @@ BOOL GiveEgg(HeapID heapId, SaveData *saveData, int species, u8 metLocation, Map
     party = SaveArray_Party_Get(saveData);
     mon = AllocMonZeroed(HEAP_ID_32);
     ZeroMonData(mon);
-    SetEggStats(mon, species, metLocation, profile, 4, sub_02017FE4(sp20, sp24));
+    SetEggStats(mon, species, metLocation, profile, 4, sub_02017FE4(mapsecType, maploc));
     result = Party_AddMon(party, mon);
     FreeToHeap(mon);
     return result;

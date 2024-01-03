@@ -186,7 +186,7 @@ _021E5A5A:
 	add r0, r4, #0
 	add r0, #0x94
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0x8b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -264,7 +264,7 @@ ov121_021E5AEC: ; 0x021E5AEC
 	add r0, r5, #0
 	bl ov121_021E60D4
 	mov r0, #0x9e
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	add r1, r5, #0
 	add r1, #0x94
 	str r0, [r1]
@@ -484,7 +484,7 @@ ov121_021E5D08: ; 0x021E5D08
 	add r4, r0, #0
 	add r0, #0x94
 	ldr r0, [r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _021E5D1E
 	cmp r0, #2
@@ -1322,7 +1322,7 @@ _021E63A2:
 	mov r0, #0x8b
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -2794,7 +2794,7 @@ _021E6F0C:
 	add r0, #0x94
 	ldr r0, [r0]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add r0, r4, #0
 	bl ov121_021E6CEC
 	bl ov121_021E6F58

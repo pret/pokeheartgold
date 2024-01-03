@@ -52,10 +52,10 @@
 .public IsPaletteFadeFinished
 .public sub_0200FBDC
 .public sub_0200FBF4
-.public sub_0201660C
-.public sub_02016624
-.public sub_02016704
-.public sub_020168F4
+.public YesNoPrompt_Create
+.public YesNoPrompt_Destroy
+.public YesNoPrompt_InitFromTemplateWithPalette
+.public YesNoPrompt_HandleInput
 .public sub_020169C0
 .public sub_020169CC
 .public sub_020183F0
@@ -102,9 +102,9 @@
 .public Sprite_ResetAnimCtrlState
 .public Sprite_SetPriority
 .public Sprite_SetDrawPriority
-.public sub_02024B68
+.public Sprite_IsCellAnimationFinished
 .public sub_02024B78
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchHeld
 .public System_GetTouchNew
 .public String_New

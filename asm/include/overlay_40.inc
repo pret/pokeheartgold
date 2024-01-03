@@ -156,12 +156,12 @@
 .public GfGfx_DisableEngineBPlanes
 .public GfGfx_EngineBTogglePlanes
 .public GfGfx_SwapDisplay
-.public sub_020252F4
-.public sub_02025320
+.public TouchscreenHitbox_TouchHeldIsIn
+.public TouchscreenHitbox_TouchNewIsIn
 .public System_GetTouchHeld
 .public System_GetTouchNew
-.public sub_02025364
-.public sub_02025380
+.public System_GetTouchHeldCoords
+.public System_GetTouchNewCoords
 .public GF_AssertFail
 .public String_New
 .public String_Delete

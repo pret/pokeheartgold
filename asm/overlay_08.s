@@ -2992,11 +2992,11 @@ _0221D5CC: .word 0x00002088
 
 	thumb_func_start ov08_0221D5D0
 ov08_0221D5D0: ; 0x0221D5D0
-	ldr r3, _0221D5D8 ; =sub_02025224
+	ldr r3, _0221D5D8 ; =TouchscreenHitbox_FindRectAtTouchNew
 	add r0, r1, #0
 	bx r3
 	nop
-_0221D5D8: .word sub_02025224
+_0221D5D8: .word TouchscreenHitbox_FindRectAtTouchNew
 	thumb_func_end ov08_0221D5D0
 
 	thumb_func_start ov08_0221D5DC
@@ -14399,11 +14399,11 @@ _02223364: .word 0x0000114C
 
 	thumb_func_start ov08_02223368
 ov08_02223368: ; 0x02223368
-	ldr r3, _02223370 ; =sub_02025224
+	ldr r3, _02223370 ; =TouchscreenHitbox_FindRectAtTouchNew
 	add r0, r1, #0
 	bx r3
 	nop
-_02223370: .word sub_02025224
+_02223370: .word TouchscreenHitbox_FindRectAtTouchNew
 	thumb_func_end ov08_02223368
 
 	thumb_func_start ov08_02223374

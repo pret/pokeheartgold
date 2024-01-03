@@ -135,8 +135,8 @@
 .public Camera_PushLookAtToNNSGlb
 .public Camera_SetPerspectiveClippingPlane
 .public Camera_Init_FromTargetAndPos
-.public sub_02025364
-.public sub_0202539C
+.public System_GetTouchHeldCoords
+.public TouchscreenHitbox_FindHitboxAtPoint
 .public GF_AssertFail
 .public String_Delete
 .public Thunk_G3X_Reset

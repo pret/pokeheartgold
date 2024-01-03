@@ -67,8 +67,8 @@
 .public ListMenuItems_New
 .public ListMenuItems_Delete
 .public ListMenuItems_AppendFromMsgData
-.public sub_0201660C
-.public sub_02016624
+.public YesNoPrompt_Create
+.public YesNoPrompt_Destroy
 .public sub_020183F0
 .public sub_02018410
 .public sub_02018424
@@ -113,7 +113,7 @@
 .public Set2dSpriteAnimSeqNo
 .public Sprite_ResetAnimCtrlState
 .public Sprite_SetAnimCtrlCurrentFrame
-.public sub_02025320
+.public TouchscreenHitbox_TouchNewIsIn
 .public System_GetTouchNew
 .public String_New
 .public String_Delete

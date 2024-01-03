@@ -539,10 +539,10 @@ _0225A408:
 	bl ov27_0225B4D8
 _0225A412:
 	ldr r0, _0225A464 ; =ov27_0225CECC
-	bl sub_02025204
+	bl TouchscreenHitbox_FindRectAtTouchHeld
 	add r6, r0, #0
 	ldr r0, _0225A464 ; =ov27_0225CECC
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
@@ -2708,7 +2708,7 @@ _0225B54A:
 	pop {r4, r5, r6, pc}
 _0225B55A:
 	ldr r0, _0225B62C ; =ov27_0225CF68
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r4, r0, #0
 	cmp r4, #0
 	ble _0225B57E
@@ -5298,7 +5298,7 @@ ov27_0225C994: ; 0x0225C994
 	mov r0, #0xe2
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _0225C9C6
 	mov r0, #0xe2
@@ -5453,7 +5453,7 @@ ov27_0225CA98: ; 0x0225CA98
 	lsl r1, r0, #2
 	ldr r0, _0225CC84 ; =ov27_0225D49C
 	ldr r0, [r0, r1]
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -5690,7 +5690,7 @@ ov27_0225CC90: ; 0x0225CC90
 	mov r0, #0xe2
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _0225CCB8
 	mov r0, #0xe2
@@ -5827,7 +5827,7 @@ ov27_0225CD94: ; 0x0225CD94
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, _0225CEA0 ; =ov27_0225D120
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1

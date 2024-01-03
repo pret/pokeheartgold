@@ -79,7 +79,7 @@ Static main
 	Object src/gf_gfx_planes.o
 	Object src/camera.o
 	Object asm/unk_02023694.o
-	Object asm/unk_02025154.o
+	Object src/touchscreen.o
 	Object src/timer3.o
 	Object src/error_handling.o
 	Object src/unk_02025534.o
@@ -173,7 +173,7 @@ Static main
 	Object src/unk_0204A3F4.o
 	Object src/unk_0204B538.o
 	Object src/scrcmd_apricorn.o
-	Object asm/scrcmd_11.o
+	Object src/scrcmd_mystery_gift.o
 	Object src/scrcmd_12.o
 	Object src/scrcmd_money.o
 	Object src/scrcmd_daycare.o
@@ -501,7 +501,6 @@ Overlay field
     Object asm/overlay_01_022001E4.o
     Object asm/overlay_01_022006A8.o
     Object asm/overlay_01_02200858.o
-    Object asm/scrcmd_pokemon_misc_data.o
     Object src/field/scrcmd_pokemon_misc.o
     Object src/scrcmd_move_tutor.o
     Object src/field/scrcmd_moneybox.o
@@ -1118,7 +1117,6 @@ Overlay OVY_110
 {
     After main
     Object src/alph_puzzle.o
-    Object asm/alph_puzzle_data.o
 }
 Overlay OVY_111
 {

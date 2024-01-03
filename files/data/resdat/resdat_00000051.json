@@ -1,0 +1,55 @@
+{
+  "kind": "pltt",
+  "graphics": [
+    {
+      "narc": 21,
+      "file": 8,
+      "compressed": false,
+      "id": 0,
+      "extra": [
+        1,
+        2
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 65,
+      "compressed": false,
+      "id": 1,
+      "extra": [
+        3,
+        1
+      ]
+    },
+    {
+      "narc": 20,
+      "file": 0,
+      "compressed": false,
+      "id": 2,
+      "extra": [
+        3,
+        3
+      ]
+    },
+    {
+      "narc": 21,
+      "file": 21,
+      "compressed": false,
+      "id": 3,
+      "extra": [
+        1,
+        1
+      ]
+    },
+    {
+      "narc": 21,
+      "file": 23,
+      "compressed": false,
+      "id": 4,
+      "extra": [
+        2,
+        1
+      ]
+    }
+  ]
+}

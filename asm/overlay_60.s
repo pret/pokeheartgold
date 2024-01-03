@@ -9012,7 +9012,7 @@ _021EA1D4:
 	b _021EA1FA
 _021EA1EA:
 	ldr r0, [r4, #0x4c]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _021EA1FA
 	add sp, #0xc0

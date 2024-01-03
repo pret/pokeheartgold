@@ -36,7 +36,7 @@
 .public MsgArray_ControlCodeGetField
 .public GenerateFontHalfRowLookupTable
 .public RenderScreenFocusIndicatorTile
-.public sub_020252F4
-.public sub_02025320
+.public TouchscreenHitbox_TouchHeldIsIn
+.public TouchscreenHitbox_TouchNewIsIn
 .public GF_AssertFail
 .public gSystem

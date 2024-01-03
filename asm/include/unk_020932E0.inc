@@ -29,10 +29,10 @@
 .public DestroyMsgData
 .public NewString_ReadMsgData
 .public LoadUserFrameGfx2
-.public sub_0201660C
-.public sub_02016624
-.public sub_020166FC
-.public sub_020168F4
+.public YesNoPrompt_Create
+.public YesNoPrompt_Destroy
+.public YesNoPrompt_InitFromTemplate
+.public YesNoPrompt_HandleInput
 .public sub_020169CC
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
@@ -71,10 +71,10 @@
 .public Sprite_SetPalIndex
 .public Sprite_SetDrawPriority
 .public sub_02024B78
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchHeld
 .public System_GetTouchNew
-.public sub_02025364
+.public System_GetTouchHeldCoords
 .public GF_AssertFail
 .public String_New
 .public String_Delete

@@ -1856,7 +1856,7 @@ ov54_021E681C: ; 0x021E681C
 	b _021E6998
 _021E682A:
 	ldr r0, _021E69BC ; =ov54_021E6D68
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r3, #0
 	mvn r3, r3
 	cmp r0, r3
@@ -2339,13 +2339,13 @@ ov54_021E6C08: ; 0x021E6C08
 	mov r0, #0xbd
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _021E6C2C
 	mov r0, #0xbe
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _021E6C2C
 	mov r0, #0

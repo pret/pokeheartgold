@@ -2072,7 +2072,7 @@ sub_0207DBCC: ; 0x0207DBCC
 	sub sp, #0x14
 	add r4, r0, #0
 	mov r0, #0xc
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	ldr r2, _0207DC1C ; =0x00000C88
 	mov r1, #0x26
 	str r0, [r4, r2]
@@ -2100,7 +2100,7 @@ sub_0207DBCC: ; 0x0207DBCC
 	strb r0, [r3, #0x13]
 	ldr r0, [r4, r2]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	bl sub_0207CB7C
 	add sp, #0x14
 	pop {r4, r5, pc}
@@ -3587,7 +3587,7 @@ _0207E79C:
 	pop {r3, r4, r5, r6, r7, pc}
 _0207E7A2:
 	ldr r0, _0207E930 ; =_02110180
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r7, r0, #0
 	sub r0, r4, #1
 	cmp r7, r0
@@ -3805,7 +3805,7 @@ _0207E960:
 	pop {r3, r4, r5, r6, r7, pc}
 _0207E966:
 	ldr r0, _0207EB18 ; =_02110168
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r7, r0, #0
 	sub r0, r6, #1
 	cmp r7, r0

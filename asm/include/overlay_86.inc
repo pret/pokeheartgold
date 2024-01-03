@@ -95,8 +95,8 @@
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_DisableEngineBPlanes
 .public GfGfx_EngineBTogglePlanes
-.public sub_02025224
-.public sub_02025320
+.public TouchscreenHitbox_FindRectAtTouchNew
+.public TouchscreenHitbox_TouchNewIsIn
 .public String_New
 .public String_Delete
 .public Save_PlayerData_GetOptionsAddr

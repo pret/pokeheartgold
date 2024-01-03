@@ -1880,7 +1880,7 @@ ov96_021E661C: ; 0x021E661C
 _021E662C:
 	sub r0, #0xc
 	ldr r0, [r5, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _021E6664
 	ldr r0, _021E6668 ; =0x00000728
@@ -11362,7 +11362,7 @@ ov96_021EAD78: ; 0x021EAD78
 	push {r3, lr}
 	ldr r0, [r0]
 	bl ov96_021E8BAC
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov96_021EAD78
@@ -12477,11 +12477,11 @@ _021EB578: .word TryChange2dSpriteAnimSeqNo
 
 	thumb_func_start ov96_021EB57C
 ov96_021EB57C: ; 0x021EB57C
-	ldr r3, _021EB584 ; =sub_02024B68
+	ldr r3, _021EB584 ; =Sprite_IsCellAnimationFinished
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_021EB584: .word sub_02024B68
+_021EB584: .word Sprite_IsCellAnimationFinished
 	thumb_func_end ov96_021EB57C
 
 	thumb_func_start ov96_021EB588
@@ -21937,7 +21937,7 @@ _021EFED2:
 	cmp r0, #0
 	beq _021EFF2E
 	ldr r0, _021EFF34 ; =ov96_0221BA20
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -22020,7 +22020,7 @@ _021EFF7A:
 	cmp r0, #0
 	beq _021EFFD2
 	ldr r0, _021EFFDC ; =ov96_0221BA2C
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	cmp r0, #0
 	bne _021EFFA2
 	ldr r0, _021EFFE0 ; =0x000005DC
@@ -22100,7 +22100,7 @@ _021F0022:
 	cmp r0, #0
 	beq _021F007A
 	ldr r0, _021F0084 ; =ov96_0221BA38
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	cmp r0, #0
 	bne _021F004A
 	ldr r0, _021F0088 ; =0x000005DC
@@ -74596,7 +74596,7 @@ ov96_0220A298: ; 0x0220A298
 	beq _0220A322
 	add r0, sp, #0xc
 	add r1, sp, #8
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	mov r1, #0
 	ldr r0, [sp, #0xc]
 	add r2, r1, #0
@@ -74688,7 +74688,7 @@ _0220A35C:
 	beq _0220A3A2
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	ldr r1, [r5, r4]
 	ldr r0, _0220A410 ; =0xFF00FFFF
 	and r1, r0
@@ -74725,7 +74725,7 @@ _0220A3A2:
 	bgt _0220A408
 _0220A3B2:
 	ldr r0, _0220A418 ; =ov96_0221CC04
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -75431,7 +75431,7 @@ _0220A93A:
 	bl ov96_0220B148
 	add r0, sp, #0x18
 	add r1, sp, #0x14
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	add r1, sp, #0x10
 	mov r0, #0
 	ldrsh r0, [r1, r0]
@@ -75650,7 +75650,7 @@ _0220AB04:
 _0220AB16:
 	add r0, sp, #0x20
 	add r1, sp, #0x1c
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	ldr r1, [sp, #0x20]
 	ldr r2, [sp, #0x1c]
 	lsl r1, r1, #0x10
@@ -76424,7 +76424,7 @@ _0220B11E:
 	lsl r1, r5, #2
 	add r0, sp, #4
 	strb r2, [r0, r1]
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1

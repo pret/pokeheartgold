@@ -40,6 +40,9 @@
 #include "unk_02092BE8.h"
 #include "unk_02037C94.h"
 #include "sound_02004A44.h"
+#include "constants/map_sections.h"
+#include "msgdata/msg.naix"
+// #include "application/zukanlist/zukan_data/zukan_data.naix"
 
 typedef struct UnkStructScr_648 {
     FieldSystem *fieldSystem;
@@ -73,10 +76,10 @@ typedef struct UnkStructScr_648 {
 } SCR_648_STRUCT;
 
 static BOOL ov01_02200C6C(ScriptContext *ctx);
-static void *ov01_02200C94(HeapID heapId, s32 fileId, u32 *unkPtr);
+static void *ov01_02200C94(HeapID heapId, s32 fileId, int *unkPtr);
 static void ov01_02200CB4(SCR_648_STRUCT *unkPtr, MsgData *msgdata);
-static void ov01_02200CBC(FieldSystem *fieldSystem, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, s16 *input, MessageFormat *msgfmt, Window *window, MsgData *msgdata, u16 *cursorPos, u16 *itemsAbove);
-static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fieldSystem, u8 x, u8 y, u8 a3, u8 a4, s16* input, MessageFormat *msgfmt, Window *window, MsgData *msgdata, u16 *cursorPos, u16 *itemsAbove);
+static void ov01_02200CBC(FieldSystem *fieldSystem, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, u16 *input, MessageFormat *msgfmt, Window *window, MsgData *msgdata, u16 *cursorPos, u16 *itemsAbove);
+static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fieldSystem, u8 x, u8 y, u8 a3, u8 a4, u16* input, MessageFormat *msgfmt, Window *window, MsgData *msgdata, u16 *cursorPos, u16 *itemsAbove);
 static void ov01_02200DF8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3);
 static void ov01_02200E00(SCR_648_STRUCT *unkPtr);
 static void ov01_02200EC8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3);
@@ -88,13 +91,24 @@ static void ov01_0220116C(SCR_648_STRUCT *unkPtr);
 static void GetHiddenPowerPowerType(Pokemon *mon, s32 *power, s32 *type);
 static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectManager, u8 unkA, u16 species, u16 form, u32 gender, u32 x, u32 y, u32 mapId);
 
-extern u16 ov01_02209AE0[10];
+// zukan_data_XXXXX
+static u16 ov01_02209AE0[9] = {
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+};
 
 BOOL ScrCmd_648(ScriptContext *ctx) {
     int i;
     u32 out_1;
     int out_2;
-    s16 *input;
+    u16 *input;
     u32 unkPtr_2;
 
     MsgData *msgdata2;
@@ -145,7 +159,7 @@ BOOL ScrCmd_648(ScriptContext *ctx) {
         FreeToHeap(unkG);
     }
 
-    msgdata2 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, 0xbf, HEAP_ID_32);
+    msgdata2 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0191_bin, HEAP_ID_32);
 
     ov01_02200CB4(unkPtr, msgdata2);
     ov01_02200DF8(unkPtr, 0xd, 0xff, 0xfffe);
@@ -165,7 +179,7 @@ static BOOL ov01_02200C6C(ScriptContext *ctx) {
     return (*GetVarPointer(ctx->fieldSystem, ctx->data[0]) != 0xEEEE);
 }
 
-static void *ov01_02200C94(HeapID heapId, s32 fileId, u32 *unkPtr) {
+static void *ov01_02200C94(HeapID heapId, s32 fileId, int *unkPtr) {
     u32 size;
     void *data = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_application_zukanlist_zukan_data_zukan_data, fileId, FALSE, heapId, FALSE, &size);
     *unkPtr = size/2;
@@ -176,7 +190,7 @@ static void ov01_02200CB4(SCR_648_STRUCT *unkPtr, MsgData *msgdata) {
     unkPtr->msgdata = msgdata;
 }
 
-static void ov01_02200CBC(FieldSystem *fieldSystem, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, s16 *input, MessageFormat *msgfmt, Window *window, MsgData *msgdata, u16 *cursorPos, u16 *itemsAbove) {
+static void ov01_02200CBC(FieldSystem *fieldSystem, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, u16 *input, MessageFormat *msgfmt, Window *window, MsgData *msgdata, u16 *cursorPos, u16 *itemsAbove) {
     int i;
     unkPtr->msgdata = msgdata;
     unkPtr->unk_207 = unkPtr->unk_207 & ~0x2;
@@ -209,7 +223,7 @@ static void ov01_02200CBC(FieldSystem *fieldSystem, SCR_648_STRUCT *unkPtr, u8 x
     *unkPtr->input = 0xEEEE;
 }
 
-static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fieldSystem, u8 x, u8 y, u8 a3, u8 a4, s16* input, MessageFormat *msgfmt, Window *window, MsgData *msgdata, u16 *cursorPos, u16 *itemsAbove) {
+static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fieldSystem, u8 x, u8 y, u8 a3, u8 a4, u16* input, MessageFormat *msgfmt, Window *window, MsgData *msgdata, u16 *cursorPos, u16 *itemsAbove) {
     SCR_648_STRUCT *unkPtr = AllocFromHeap(HEAP_ID_4, sizeof(SCR_648_STRUCT));
     if (!unkPtr) {
         return NULL;
@@ -267,7 +281,7 @@ static void ov01_02200F54(SCR_648_STRUCT *unkPtr) {
     unkPtr->listMenuTemplate.fillValue = 15;
     unkPtr->listMenuTemplate.cursorShadowPal = 2;
     unkPtr->listMenuTemplate.lettersSpacing = 0;
-    unkPtr->listMenuTemplate.itemVerticalPadding = 16;
+    unkPtr->listMenuTemplate.itemVerticalPadding = 0;
     unkPtr->listMenuTemplate.scrollMultiple = 1;
     unkPtr->listMenuTemplate.fontId = 0;
     unkPtr->listMenuTemplate.cursorKind = 0;
@@ -345,11 +359,18 @@ static void ov01_0220116C(SCR_648_STRUCT *unkPtr) {
     FreeToHeap(unkPtr);
 }
 
-extern u16 sStatJudgeBestStatMsgIdxs[6];
+static const u16 sStatJudgeBestStatMsgIdxs[6] = {
+    msg_0096_D31R0201_00122,
+    msg_0096_D31R0201_00123,
+    msg_0096_D31R0201_00124,
+    msg_0096_D31R0201_00127,
+    msg_0096_D31R0201_00125,
+    msg_0096_D31R0201_00126,
+};
 
 BOOL ScrCmd_StatJudge(ScriptContext *ctx) {
     u32 ivList[6];
-    u32 i;
+    u8 i;
     u8 offset;
     u8 highestIvValue;
     FieldSystem *fieldSystem = ctx->fieldSystem;
@@ -368,7 +389,7 @@ BOOL ScrCmd_StatJudge(ScriptContext *ctx) {
     highestIvValue = 0;
     *ivTotal = 0;
 
-    for (i = 0; i < 6; i = (u8)++i) {
+    for (i = 0; i < 6; ++i) {
         *ivTotal += ivList[i];
         if (highestIvValue < ivList[i]) {
             highestIvValue = ivList[i];
@@ -378,7 +399,7 @@ BOOL ScrCmd_StatJudge(ScriptContext *ctx) {
     offset = fieldSystem->judgeStatPosition;
     *highestIvIndex = offset;
 
-    for (i = 0; i < 6; i = (u8)++i) {
+    for (i = 0; i < 6; ++i) {
         if (highestIvValue == ivList[offset]) {
             *highestIvIndex = offset;
             fieldSystem->judgeStatPosition = (offset + 1) % 6;
@@ -501,7 +522,7 @@ BOOL ScrCmd_UpdateRotomForm(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_GetHiddenPowerType(ScriptContext *ctx) {
-    int power, type;
+    s32 power, type;
     FieldSystem *fieldSystem = ctx->fieldSystem;
     int partyIndex = ScriptGetVar(ctx);
     u16 *typePtr = ScriptGetVarPointer(ctx);
@@ -582,7 +603,7 @@ BOOL ScrCmd_SetFavoriteMon(ScriptContext *ctx) {
 
 BOOL ScrCmd_GetFavoriteMon(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    u32 sp, form, egg;
+    int sp, form, egg;
     u16 *species = ScriptGetVarPointer(ctx);
     u16 *formPtr = ScriptGetVarPointer(ctx);
     u16 *isEgg = ScriptGetVarPointer(ctx);
@@ -604,7 +625,7 @@ BOOL ScrCmd_GetPartyMonForm(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_699(ScriptContext *ctx) {
-    u32 unkVar;
+    int unkVar;
     FieldSystem *fieldSystem;
     MapObjectManager *mapObjectManager;
     LocalMapObject *playerObj;
@@ -642,7 +663,7 @@ BOOL ScrCmd_699(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_700(ScriptContext *ctx) {
-    u32 index = 0;
+    int index = 0;
     FieldSystem *fieldSystem;
     MapObjectManager *mapObjectManager;
     LocalMapObject *playerObj;
@@ -919,7 +940,11 @@ BOOL ScrCmd_743(ScriptContext *ctx) {
     return TRUE;
 }
 
-extern u8 sFriendshipRoomStatuesPositions[3][2];
+static const u8 sFriendshipRoomStatuesPositions[3][2] = {
+    {  4, 10 },
+    {  7,  5 },
+    { 10, 10 },
+};
 
 BOOL ScrCmd_CreatePokeathlonFriendshipRoomStatues(ScriptContext *ctx) {
     s32 i;
@@ -1026,7 +1051,7 @@ BOOL ScrCmd_GiveTogepiEgg(ScriptContext *ctx) {
     mon = AllocMonZeroed(HEAP_ID_FIELD);
     ZeroMonData(mon);
 
-    SetEggStats(mon, SPECIES_TOGEPI, 1, profile, 3, sub_02017FE4(MAPSECTYPE_GIFT, 0xd));
+    SetEggStats(mon, SPECIES_TOGEPI, 1, profile, 3, sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_MR_POKEMON)));
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
         if (GetMonData(mon, MON_DATA_MOVE1 + i, 0) == MOVE_NONE) {
@@ -1065,7 +1090,12 @@ BOOL ScrCmd_777(ScriptContext *ctx) {
     return FALSE;
 }
 
-extern u16 sSpikyEarPichuMoveset[4];
+static const u16 sSpikyEarPichuMoveset[4] = {
+    MOVE_HELPING_HAND,
+    MOVE_VOLT_TACKLE,
+    MOVE_SWAGGER,
+    MOVE_PAIN_SPLIT,
+};
 
 BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx) {
     s32 i;
@@ -1134,19 +1164,21 @@ BOOL ScrCmd_RadioMusicIsPlaying(ScriptContext *ctx) {
     return FALSE;
 }
 
-extern s32 sSlotLuckDistribution[2][2];
+static const int sSlotLuckDistribution[2][2] = {
+    { 7, 3 },
+    { 5, 2 },
+};
 
 // Return value is unused outside of Japanese copies.
 static u32 SlotLuckiness(SaveData *saveData, u8 machineId, u8 city) {
     SAV_FRIEND_GRP *friendGroup;
     u8 *luckValues;
-    s32 *dist;
     u32 numMachines;
     s32 rngSeed;
     u8 luckiness;
     u8 randIdx;
-    u32 i;
-    s32 j;
+    u8 i;
+    u8 j;
 
     friendGroup = Save_FriendGroup_Get(saveData);
 
@@ -1166,13 +1198,10 @@ static u32 SlotLuckiness(SaveData *saveData, u8 machineId, u8 city) {
     luckValues = AllocFromHeapAtEnd(HEAP_ID_32, numMachines);
     MI_CpuFill8(luckValues, 0, numMachines);
 
-    i = 0;
-    dist = sSlotLuckDistribution[city];
-
-    for (; i < 2; i = (u8) ++i) { //I swear I couldn't get it to match otherwise
-        for (j = 0; j < dist[i]; j = (u8) ++j) {
+    for (i = 0; i < NELEMS(sSlotLuckDistribution[city]); ++i) {
+        for (j = 0; j < sSlotLuckDistribution[city][i]; ++j) {
             do {
-                randIdx = LCRandom() % (s32) numMachines;
+                randIdx = LCRandom() % (s32)numMachines;  // this cast appears necessary
             } while (luckValues[randIdx] != 0);
             luckValues[randIdx] = i + 1;
         }

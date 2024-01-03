@@ -1,0 +1,175 @@
+{
+  "kind": "anim",
+  "graphics": [
+    {
+      "narc": 39,
+      "file": 47,
+      "compressed": false,
+      "id": 0,
+      "extra": [
+        39,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 127,
+      "compressed": false,
+      "id": 1,
+      "extra": [
+        39,
+        39
+      ]
+    },
+    {
+      "narc": 162,
+      "file": 62,
+      "compressed": false,
+      "id": 2,
+      "extra": [
+        162,
+        162
+      ]
+    },
+    {
+      "narc": 8,
+      "file": 243,
+      "compressed": true,
+      "id": 3,
+      "extra": [
+        8,
+        8
+      ]
+    },
+    {
+      "narc": 20,
+      "file": 1,
+      "compressed": false,
+      "id": 4,
+      "extra": [
+        20,
+        20
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 62,
+      "compressed": false,
+      "id": 5,
+      "extra": [
+        39,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 66,
+      "compressed": false,
+      "id": 6,
+      "extra": [
+        39,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 59,
+      "compressed": false,
+      "id": 7,
+      "extra": [
+        39,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 50,
+      "compressed": false,
+      "id": 8,
+      "extra": [
+        39,
+        39
+      ]
+    },
+    {
+      "narc": 15,
+      "file": 27,
+      "compressed": false,
+      "id": 9,
+      "extra": [
+        15,
+        15
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 17,
+      "compressed": false,
+      "id": 10,
+      "extra": [
+        39,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 44,
+      "compressed": false,
+      "id": 11,
+      "extra": [
+        39,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 70,
+      "compressed": false,
+      "id": 12,
+      "extra": [
+        39,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 122,
+      "compressed": false,
+      "id": 13,
+      "extra": [
+        39,
+        39
+      ]
+    },
+    {
+      "narc": 162,
+      "file": 7,
+      "compressed": false,
+      "id": 15,
+      "extra": [
+        162,
+        162
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 133,
+      "compressed": false,
+      "id": 16,
+      "extra": [
+        39,
+        39
+      ]
+    },
+    {
+      "narc": 162,
+      "file": 68,
+      "compressed": false,
+      "id": 17,
+      "extra": [
+        162,
+        162
+      ]
+    }
+  ]
+}

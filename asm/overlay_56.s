@@ -405,7 +405,7 @@ ov56_021E5EFC: ; 0x021E5EFC
 	sub sp, #8
 	add r5, r0, #0
 	ldr r0, _021E5FA4 ; =ov56_021E6E20
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r4, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -646,7 +646,7 @@ ov56_021E609C: ; 0x021E609C
 	ldr r0, [r0]
 	ldr r2, [r4, #0x30]
 	add r1, sp, #0
-	bl sub_02016704
+	bl YesNoPrompt_InitFromTemplateWithPalette
 	add sp, #0x14
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -659,7 +659,7 @@ ov56_021E60F4: ; 0x021E60F4
 	add r5, r0, #0
 	add r0, #0xac
 	ldr r0, [r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _021E610A
 	cmp r0, #2
@@ -1792,7 +1792,7 @@ _021E6A4C:
 	cmp r4, #6
 	blt _021E6A3A
 	ldr r0, [r6]
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	add r6, #0xac
 	str r0, [r6]
 	add sp, #0x14
@@ -1812,7 +1812,7 @@ ov56_021E6A7C: ; 0x021E6A7C
 	add r4, r0, #0
 	add r0, #0xac
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r5, #0
 	add r4, #0x4c
 _021E6A8C:
