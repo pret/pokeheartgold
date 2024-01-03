@@ -93,7 +93,7 @@ FS_EXTERN_OVERLAY(OVY_113);
 FS_EXTERN_OVERLAY(OVY_121);
 
 // _020FA444 is not referenced so the linker deadstrips it.
-// HACK: We can force the linker to include this symbol with -force-active.
+// TODO: We can force the linker to include this symbol with -force_active.
 #ifdef NONMATCHING
 const OVY_MGR_TEMPLATE _020FA1C4 =
     { sub_020192D0, sub_0201935C, sub_02019490, FS_OVERLAY_ID(OVY_39) };
