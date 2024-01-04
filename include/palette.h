@@ -11,7 +11,7 @@ typedef struct SelectedPaletteData {
     u16 end:5;
     u16 nextRGB:15;
     u16 sign:1; //0 - increase, 1 - decrease
-    u16 unk6_0:4;
+    u16 step:4;
     u16 unk6_4:6;
     u16 unk6_10:6;
 } SelectedPaletteData;

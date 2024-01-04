@@ -12,8 +12,10 @@ void sub_020035F0(SelectedPaletteData *selectedBit, u16 opaqueBit, s8 wait, u8 c
 void sub_020036B0(SysTask *task, void *taskData);
 void sub_02003760(PaletteData *data);
 void sub_02003780(PaletteData *data);
-void sub_020037A0(PaletteData *data, u16 bufferID, u16 flags);
-void sub_020037FC(PaletteData *data, u16 bufferID, u16 flags);
+void sub_020037A0(PaletteData *data, u16 bufferID, u16 size);
+void sub_020037FC(PaletteData *data, u16 bufferID, u16 size);
+void sub_02003858(u16 *opaque, u16 *transparent, SelectedPaletteData *selectedBit, u16 size);
+void sub_020038E4(PaletteData *data, u8 bufferID, SelectedPaletteData *selectedBit);
 
 PaletteData *PaletteData_Init(HeapID heapId) {
     PaletteData *ret = AllocFromHeap(heapId, sizeof(PaletteData));
@@ -212,10 +214,10 @@ void sub_020035B4(int bufferID, PaletteBuffer *buffer, u16 *opaqueBit) {
 
 void sub_020035F0(SelectedPaletteData *selectedBit, u16 opaqueBit, s8 wait, u8 cur, u8 end, u16 nextRGB) {
     if (wait < 0) {
-        selectedBit->unk6_0 = abs(wait) + 2;
+        selectedBit->step = abs(wait) + 2;
         selectedBit->wait = 0;
     } else {
-        selectedBit->unk6_0 = 2;
+        selectedBit->step = 2;
         selectedBit->wait = wait;
     }
     selectedBit->opaqueBit = opaqueBit;
@@ -272,13 +274,57 @@ void sub_02003780(PaletteData *data) {
     }
 }
 
-void sub_020037A0(PaletteData *data, u16 bufferID, u16 flags) {
+void sub_020037A0(PaletteData *data, u16 bufferID, u16 size) {
     if (IsPaletteSelected(data->selectedBuffer, bufferID)) {
         if (data->buffers[bufferID].selected.unk6_4 < data->buffers[bufferID].selected.wait) {
             ++data->buffers[bufferID].selected.unk6_4;
         } else {
             data->buffers[bufferID].selected.unk6_4 = 0;
-            sub_020037FC(data, bufferID, flags);
+            sub_020037FC(data, bufferID, size);
         }
+    }
+}
+
+void sub_020037FC(PaletteData *data, u16 bufferID, u16 size) {
+    for (u32 i = 0; i < 16; ++i) {
+        if (IsPaletteSelected(data->buffers[bufferID].selected.opaqueBit, i)) {
+            sub_02003858(&data->buffers[bufferID].opaque[i * size], &data->buffers[bufferID].transparent[i * size], &data->buffers[bufferID].selected, size);
+        }
+    }
+    sub_020038E4(data, bufferID, &data->buffers[bufferID].selected);
+}
+
+void sub_02003858(u16 *opaque, u16 *transparent, SelectedPaletteData *selectedBit, u16 size) {
+    u32 i;
+    u8 r, g, b;
+    for (i = 0; i < size; ++i) {
+        r = (opaque[i] & 0x1F) + (((selectedBit->nextRGB & 0x1F) - (opaque[i] & 0x1F)) * selectedBit->cur >> 4);
+        g = ((opaque[i] >> 5) & 0x1F) + ((((selectedBit->nextRGB >> 5) & 0x1F) - ((opaque[i] >> 5) & 0x1F)) * selectedBit->cur >> 4);
+        b = ((opaque[i] >> 10) & 0x1F) + ((((selectedBit->nextRGB >> 10) & 0x1F) - ((opaque[i] >> 10) & 0x1F)) * selectedBit->cur >> 4);
+        transparent[i] = (b << 10) | (g << 5) | r;
+    }
+}
+
+void sub_020038E4(PaletteData *data, u8 bufferID, SelectedPaletteData *selectedBit) {
+    s16 r4;
+
+    if (selectedBit->cur == selectedBit->end) {
+        if (data->selectedBuffer & (1 << bufferID)) {
+            data->selectedBuffer ^= (1 << bufferID);
+        }
+    } else if (!selectedBit->sign) {
+        r4 = selectedBit->cur;
+        r4 += selectedBit->step;
+        if (r4 > selectedBit->end) {
+            r4 = selectedBit->end;
+        }
+        selectedBit->cur = r4;
+    } else {
+        r4 = selectedBit->cur;
+        r4 -= selectedBit->step;
+        if (r4 < selectedBit->end) {
+            r4 = selectedBit->end;
+        }
+        selectedBit->cur = r4;
     }
 }
