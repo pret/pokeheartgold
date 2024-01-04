@@ -91,7 +91,7 @@ typedef struct AlphPuzzleData {
     int menuIgnoreTouchFlag;
     int unkState;
     u16 subState;
-    u16 sceneTImer;
+    u16 sceneTimer;
     UnkAlphSub_10 *args;
     BgConfig *bgConfig;
     u8 unk18;
@@ -702,11 +702,11 @@ static int AlphPuzzle_CheckInput(AlphPuzzleData *data) {
 
 static int AlphPuzzleMainSeq_PickupTile_impl(AlphPuzzleData *data) {
     if (!System_GetTouchHeld()) {
-        data->sceneTImer = 0;
+        data->sceneTimer = 0;
         return ALPH_PUZZLE_STATE_ROTATE_TILE;
     }
-    if (data->sceneTImer++ >= 2) {
-        data->sceneTImer = 0;
+    if (data->sceneTimer++ >= 2) {
+        data->sceneTimer = 0;
         data->tileHoverPixelX = (data->selectedTile->x * 32) + 64;
         data->tileHoverPixelY = (data->selectedTile->y * 32) + 32;
         data->tileHoverTileX = data->selectedTile->x;
@@ -849,9 +849,9 @@ static int AlphPuzzleMainSeq_RotateTile_impl(AlphPuzzleData *data) {
         data->subState++;
         break;
     case 1:
-        u16 temp = data->sceneTImer++;
+        u16 temp = data->sceneTimer++;
         sub_02024818(data->selectedTile->sprite, (u16)((u16)(temp << 0xb) + (data->selectedTile->rotation << 0xe)));
-        if (data->sceneTImer >= 8) {
+        if (data->sceneTimer >= 8) {
             data->subState++;
         }
         break;
@@ -860,7 +860,7 @@ static int AlphPuzzleMainSeq_RotateTile_impl(AlphPuzzleData *data) {
 
         AlphPuzzle_UpdateSelectedTile(data, -1, FALSE);
 
-        data->sceneTImer = 0;
+        data->sceneTimer = 0;
         data->subState = 0;
 
         if (AlphPuzzle_CheckComplete(data)) {
@@ -903,20 +903,20 @@ static int AlphPuzzleMainSeq_Clear_impl(AlphPuzzleData *data) {
         data->subState++;
         break;
     case 1:
-        sub_02003E5C(data->palette, 2, 0x2b, 5, data->sceneTImer, 0x7FFF);
-        if (data->sceneTImer++ >= 15) {
+        sub_02003E5C(data->palette, 2, 0x2b, 5, data->sceneTimer, 0x7FFF);
+        if (data->sceneTimer++ >= 15) {
             data->subState++;
         }
         break;
     case 2:
-        sub_02003E5C(data->palette, 2, 0x2b, 5, data->sceneTImer, 0x7FFF);
-        if (data->sceneTImer-- == 0) {
+        sub_02003E5C(data->palette, 2, 0x2b, 5, data->sceneTimer, 0x7FFF);
+        if (data->sceneTimer-- == 0) {
             data->subState++;
         }
         break;
     default:
         data->subState = 0;
-        data->sceneTImer = 0;
+        data->sceneTimer = 0;
         data->puzzleSolved = 1;
         return ALPH_PUZZLE_STATE_FADE_OUT;
     }

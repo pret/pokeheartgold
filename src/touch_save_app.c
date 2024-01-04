@@ -400,12 +400,12 @@ static BOOL TouchSaveApp_GetOverwriteConfirmation(TouchSaveAppData *data) {
 
 static BOOL TouchSaveApp_HandleOverwriteConfirmation(TouchSaveAppData *data) {
     switch (YesNoPrompt_HandleInputForSave(data->yesNoPrompt)) {
-        case YESNORESPONSE_YES: // Yes
+        case YESNORESPONSE_YES:
             ov30_0225DC00(&data->fieldSystem->unk_10C, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
             YesNoPrompt_Destroy(data->yesNoPrompt);
             data->state = TOUCHSAVEAPP_STATE_PRINT_SAVING_MESSAGE;
             break;
-        case YESNORESPONSE_NO: // No
+        case YESNORESPONSE_NO:
             ov30_0225DC00(&data->fieldSystem->unk_10C, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
             YesNoPrompt_Destroy(data->yesNoPrompt);
             return TRUE;
