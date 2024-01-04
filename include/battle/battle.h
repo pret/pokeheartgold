@@ -241,7 +241,7 @@ typedef struct BattleMon {
     u8 level;
     u8 friendship;
     u16 nickname[POKEMON_NAME_LENGTH + 1];
-    int hp;
+    s32 hp;
     u32 maxHp;
     u16 otName[PLAYER_NAME_LENGTH + 1];
     u32 exp;
@@ -348,7 +348,7 @@ typedef struct BattleContext {
     u32 battleStatus;
     u32 battleStatus2;
     int damage;
-    int hitDamage;
+    int hitDamage; //amount of damage dealt on hit, ie ignoring overkill damage
     int criticalCnt;
     int criticalMultiplier;
     int movePower;

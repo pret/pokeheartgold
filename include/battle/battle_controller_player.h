@@ -47,6 +47,12 @@ void ov12_0224C4D8(BattleSystem *bsys, BattleContext *ctx);
 void ov12_0224C5C8(BattleSystem *bsys, BattleContext *ctx);
 void ov12_0224C5F8(BattleSystem *bsys, BattleContext *ctx);
 void ov12_0224C678(BattleSystem *bsys, BattleContext *ctx);
+void ov12_0224C690(BattleSystem *bsys, BattleContext *ctx);
+void ov12_0224CAA4(BattleSystem *bsys, BattleContext *ctx);
+void ov12_0224CC84(BattleSystem *bsys, BattleContext *ctx);
+void ov12_0224CC88(BattleSystem *bsys, BattleContext *ctx);
+void ov12_0224CF10(BattleSystem *bsys, BattleContext *ctx);
+void ov12_0224CF14(BattleSystem *bsys, BattleContext *ctx);
 
 //The following functions haven't been decompiled yet
 void ov12_0224E384(BattleSystem *bsys, BattleContext *ctx);
@@ -54,5 +60,9 @@ BOOL ov12_0224DC74(BattleContext *ctx, ControllerCommand a1, ControllerCommand a
 BOOL ov12_0224DD18(BattleContext *ctx, ControllerCommand a1, ControllerCommand a2);
 BOOL ov12_0224D7EC(BattleSystem *bsys, BattleContext *ctx);
 BOOL ov12_0224D540(BattleSystem *bsys, BattleContext *ctx);
+BOOL ov12_0224DF7C(BattleSystem *bsys, BattleContext *ctx);
+BOOL ov12_0224DF98(BattleSystem *bsys, BattleContext *ctx);
+BOOL ov12_0224DFEC(BattleSystem *bsys, BattleContext *ctx);
+BOOL ov12_0224E078(BattleSystem *bsys, BattleContext *ctx);
 
 #endif
