@@ -3308,3 +3308,80 @@ void ov12_0224CF14(BattleSystem *bsys, BattleContext *ctx) {
         ctx->command = CONTROLLER_COMMAND_34;
     }
 }
+
+//static
+void ov12_0224D014(BattleSystem *bsys, BattleContext *ctx) {
+    if (ctx->battleStatus & BATTLE_STATUS_24) {
+        ov12_0224DC74(ctx, CONTROLLER_COMMAND_34, CONTROLLER_COMMAND_34, 0);
+    } else {
+        ctx->command = CONTROLLER_COMMAND_35;
+    }
+}
+
+//static
+void ov12_0224D03C(BattleSystem *bsys, BattleContext *ctx) {
+    if (ctx->battleStatus2 & BATTLE_STATUS2_MAGIC_COAT) {
+        ctx->battleStatus2 &= ~BATTLE_STATUS2_MAGIC_COAT;
+        ctx->battlerIdTarget = ctx->battlerIdAttacker;
+        ctx->battlerIdAttacker = ctx->battlerIdMagicCoat;
+    }
+    
+    ov12_0224DD74(bsys, ctx);
+    
+    if (ctx->trainerAIData.moveData[ctx->moveNoCur].range == RANGE_ADJACENT_OPPONENTS && !(ctx->battleStatus & BATTLE_STATUS_NO_DOUBLE_CHECK) && ctx->unk_217E < BattleSystem_GetMaxBattlers(bsys)) {
+        ctx->unk_2184 = 13;
+        int battlerId;
+        int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+        OpponentData *opponent = BattleSystem_GetOpponentData(bsys, ctx->battlerIdAttacker);
+        u8 flag = ov12_02261258(opponent);
+        
+        do {
+            battlerId = ctx->turnOrder[ctx->unk_217E++];
+            if (!(ctx->unk_3108 & MaskOfFlagNo(battlerId)) && ctx->battleMons[battlerId].hp) {
+                opponent = BattleSystem_GetOpponentData(bsys, battlerId);
+                if (((flag & 1) && !(ov12_02261258(opponent) & 1)) || (!(flag & 1) && ov12_02261258(opponent) & 1)) {
+                    ov12_02252D14(bsys, ctx);
+                    ctx->battlerIdTarget = battlerId;
+                    ctx->command = CONTROLLER_COMMAND_23;
+                    break;
+                }
+            }
+        } while (ctx->unk_217E < BattleSystem_GetMaxBattlers(bsys));
+        
+        ov12_022642F0(bsys);
+    } else if (ctx->trainerAIData.moveData[ctx->moveNoCur].range == RANGE_ALL_ADJACENT && !(ctx->battleStatus & BATTLE_STATUS_NO_DOUBLE_CHECK) && ctx->unk_217E < BattleSystem_GetMaxBattlers(bsys)) {
+        ctx->unk_2184 = 13;
+        
+        int battlerId;
+        int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+        
+        do {
+            battlerId = ctx->turnOrder[ctx->unk_217E++];
+            if (!(ctx->unk_3108 & MaskOfFlagNo(battlerId)) && ctx->battleMons[battlerId].hp) {
+                if (battlerId != ctx->battlerIdAttacker) {
+                    ov12_02252D14(bsys, ctx);
+                    ctx->battlerIdTarget = battlerId;
+                    ctx->command = CONTROLLER_COMMAND_23;
+                    break;
+                }
+            }
+        } while (ctx->unk_217E < BattleSystem_GetMaxBattlers(bsys));
+        
+        ov12_022642F0(bsys);
+    } else {
+        ctx->command = CONTROLLER_COMMAND_36;
+    }
+}
+
+//static
+void ov12_0224D1DC(BattleSystem *bsys, BattleContext *ctx) {
+    if (ctx->battleStatus & (0xF << 0x1C)) {
+        ctx->battlerIdFainted = LowestFlagNo((ctx->battleStatus & (0xF << 0x1C)) >> 0x1C);
+        ctx->battleStatus &= ~(0xF << 0x1C);
+        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 0x115);
+        ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+        ctx->commandNext = CONTROLLER_COMMAND_37;
+    } else {
+        ctx->command = CONTROLLER_COMMAND_37;
+    }
+}
