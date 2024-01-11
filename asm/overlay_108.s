@@ -867,7 +867,7 @@ _021E5FA2:
 	mov r0, #0x13
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_020169C0
+	bl YesNoPrompt_IsInTouchMode
 	add r6, r0, #0
 	ldr r0, [r5, #0x10]
 	cmp r6, r0
@@ -885,7 +885,7 @@ _021E5FC6:
 	str r6, [r5, #0x10]
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	mov r0, #0xf1
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -7569,11 +7569,11 @@ _021E9506:
 _021E950C:
 	ldr r0, _021E9524 ; =0x00000514
 	ldr r0, [r5, r0]
-	bl sub_020169C0
+	bl YesNoPrompt_IsInTouchMode
 	str r0, [r5, #0x10]
 	ldr r0, _021E9524 ; =0x00000514
 	ldr r0, [r5, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	nop

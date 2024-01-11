@@ -24745,7 +24745,7 @@ _02233424:
 _02233426:
 	ldr r0, _02233630 ; =0x0000E88C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 #ifdef HEARTGOLD
 	mov r0, #0x22
 #else
@@ -24758,7 +24758,7 @@ _02233426:
 _02233438:
 	ldr r0, _02233630 ; =0x0000E88C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x18
@@ -24789,7 +24789,7 @@ _02233476:
 _02233478:
 	ldr r0, _02233630 ; =0x0000E88C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	bl ov74_02233060
 	str r0, [r4, #4]
@@ -24813,7 +24813,7 @@ _0223349E:
 _022334A6:
 	ldr r0, _02233630 ; =0x0000E88C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x18
@@ -24867,7 +24867,7 @@ _0223350E:
 _02233510:
 	ldr r0, _02233630 ; =0x0000E88C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	mov r1, #0x47
 	lsl r1, r1, #4
 	mov r2, #0
@@ -24892,7 +24892,7 @@ _02233510:
 _02233546:
 	ldr r0, _02233630 ; =0x0000E88C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x18
@@ -25141,14 +25141,14 @@ _02233756:
 _02233758:
 	ldr r0, _022338B4 ; =0x0000E88C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	mov r0, #0x12
 	str r0, [r5]
 	b _02233896
 _02233766:
 	ldr r0, _022338B4 ; =0x0000E88C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x14
@@ -25196,7 +25196,7 @@ _022337B4:
 	bl ov74_02231A1C
 	ldr r0, _022338B4 ; =0x0000E88C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	ldr r0, _022338BC ; =0x0000E890
 	mov r1, #0
 	str r1, [r4, r0]
@@ -25214,7 +25214,7 @@ _022337B4:
 _022337F6:
 	ldr r0, _022338B4 ; =0x0000E88C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x14

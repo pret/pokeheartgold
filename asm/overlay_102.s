@@ -78,7 +78,7 @@ ov102_021E77B8: ; 0x021E77B8
 	ldr r0, [r0, #0x4c]
 	strh r0, [r4, #0x34]
 	ldr r0, [r4, #0x40]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	ldr r2, [r4, #0x2c]
 	cmp r2, #0
 	beq _021E77E6
@@ -230,7 +230,7 @@ _021E78D4:
 	ldr r2, _021E7928 ; =ov102_021E77F8
 	mov r1, #5
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	str r0, [r4, #0x40]
 	mov r1, #0
 	str r1, [r4, #0x44]
@@ -406,7 +406,7 @@ ov102_021E7A24: ; 0x021E7A24
 	ldr r1, [r5, #0x74]
 	bl sub_02090E5C
 	ldr r0, [r5, #0x40]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	ldr r0, [r5, #0x14]
 	bl ov102_021E9144
 	ldr r0, [r5, #0x18]
@@ -7717,11 +7717,11 @@ _021EB156:
 	mov r0, #0x7a
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020169C0
+	bl YesNoPrompt_IsInTouchMode
 	mov r0, #0x7a
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

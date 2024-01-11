@@ -25,10 +25,10 @@ struct System {
     void *hBlankIntrArg;
     void (*unk10)(void);
     void (*unk14)(void);
-    UNK_0201F79C *unk18;
-    UNK_0201F79C *unk1C;
-    UNK_0201F79C *unk20;
-    UNK_0201F79C *unk24;
+    SysTaskQueue *unk18;
+    SysTaskQueue *unk1C;
+    SysTaskQueue *unk20;
+    SysTaskQueue *unk24;
     u32 *unk28;
     u32 vblankCounter;
     u32 unk30;

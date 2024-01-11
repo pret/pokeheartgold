@@ -91,7 +91,7 @@
 .public YesNoPrompt_Destroy
 .public YesNoPrompt_InitFromTemplate
 .public YesNoPrompt_HandleInput
-.public sub_020169CC
+.public YesNoPrompt_Reset
 .public Main_SetVBlankIntrCB
 .public sub_0201A4B0
 .public Sys_SetSleepDisableFlag

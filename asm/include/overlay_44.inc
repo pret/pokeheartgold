@@ -107,7 +107,7 @@
 .public YesNoPrompt_Destroy
 .public YesNoPrompt_InitFromTemplate
 .public YesNoPrompt_HandleInput
-.public sub_020169F4
+.public YesNoPrompt_SetIgnoreTouch
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
 .public SetKeyRepeatTimers
@@ -184,9 +184,9 @@
 .public String_New
 .public String_Delete
 .public CopyU16ArrayToString
-.public sub_02026C44
-.public sub_02026CAC
-.public sub_02026CC4
+.public TouchHitboxController_Create
+.public TouchHitboxController_Destroy
+.public TouchHitboxController_IsTriggered
 .public SaveArray_Get
 .public Save_ClearStatusFlags
 .public Save_PrepareForAsyncWrite

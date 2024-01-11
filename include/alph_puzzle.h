@@ -8,7 +8,7 @@
 #include "message_format.h"
 #include "msgdata.h"
 #include "task.h"
-#include "unk_0201660C.h"
+#include "yes_no_prompt.h"
 
 typedef enum AlphPuzzles {
     ALPH_PUZZLE_KABUTO,
@@ -17,6 +17,16 @@ typedef enum AlphPuzzles {
     ALPH_PUZZLE_HO_OH,
     ALPH_PUZZLE_MAX
 } AlphPuzzles;
+
+typedef struct UnkAlphSub_10 {
+    void *unk_00; // unused
+    u8 unk4; // unused
+    u8 puzzleIndex;
+    u8 unk6; // unused
+    u8 unk7; // unused
+    u32 *fieldSystemUnk10Cpointer;
+    SaveData *savedata;
+} UnkAlphSub_10;
 
 BOOL ov110_AlphPuzzle_OvyInit(OVY_MANAGER *man, int *state);
 BOOL ov110_AlphPuzzle_OvyExec(OVY_MANAGER *man, int *state);

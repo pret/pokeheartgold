@@ -11679,7 +11679,7 @@ _021EB230:
 	ldr r1, [r4, #0x34]
 	ldr r0, _021EB26C ; =0x00000434
 	ldr r0, [r1, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	ldr r2, [r4, #0x34]
 	ldr r1, _021EB270 ; =0x00000438
 	add r0, r4, #0
@@ -11693,7 +11693,7 @@ _021EB24C:
 	ldr r1, [r4, #0x34]
 	ldr r0, _021EB26C ; =0x00000434
 	ldr r0, [r1, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	ldr r2, [r4, #0x34]
 	ldr r1, _021EB270 ; =0x00000438
 	add r0, r4, #0

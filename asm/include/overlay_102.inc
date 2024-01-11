@@ -71,8 +71,8 @@
 .public YesNoPrompt_Destroy
 .public YesNoPrompt_InitFromTemplate
 .public YesNoPrompt_HandleInput
-.public sub_020169C0
-.public sub_020169CC
+.public YesNoPrompt_IsInTouchMode
+.public YesNoPrompt_Reset
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
 .public Main_SetHBlankIntrCB
@@ -141,9 +141,9 @@
 .public String_GetLineN
 .public CopyU16ArrayToStringN
 .public String_cstr
-.public sub_02026C44
-.public sub_02026CAC
-.public sub_02026CC4
+.public TouchHitboxController_Create
+.public TouchHitboxController_Destroy
+.public TouchHitboxController_IsTriggered
 .public sub_0203A964
 .public sub_02090D70
 .public sub_02090D74

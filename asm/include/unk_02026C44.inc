@@ -7,6 +7,6 @@
 .public System_GetTouchHeld
 .public System_GetTouchNew
 .public GF_AssertFail
-.public sub_02026C44
-.public sub_02026CAC
-.public sub_02026CC4
+.public TouchHitboxController_Create
+.public TouchHitboxController_Destroy
+.public TouchHitboxController_IsTriggered
