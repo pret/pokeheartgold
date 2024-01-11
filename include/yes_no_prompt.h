@@ -43,7 +43,7 @@ typedef struct YesNoPromptButton {
     u8 unk26;
 } YesNoPromptButton;
 
-typedef struct YesNoPromptState {
+typedef struct YesNoPrompt {
     TouchHitboxController *touchHitboxController;
     TouchscreenHitbox hitboxes[2];
     YesNoPromptButton buttons[2];
@@ -63,16 +63,16 @@ typedef struct YesNoPromptState {
     u8 ignoreTouch : 4;
     u8 buttonsAreInit : 4;
     u8 lastTouchEvent : 4;
-} YesNoPromptState;
+} YesNoPrompt;
 
-YesNoPromptState *YesNoPrompt_Create(HeapID);
-void YesNoPrompt_Destroy(YesNoPromptState *);
-void YesNoPrompt_Reset(YesNoPromptState *);
-void YesNoPrompt_InitFromTemplate(YesNoPromptState *, const YesNoPromptTemplate *);
-void YesNoPrompt_InitFromTemplateWithPalette(YesNoPromptState *, const YesNoPromptTemplate *, PaletteData *);
-YesNoResponse YesNoPrompt_HandleInputForSave(YesNoPromptState *);
-YesNoResponse YesNoPrompt_HandleInput(YesNoPromptState *);
-int YesNoPrompt_IsInTouchMode(YesNoPromptState *);
-void YesNoPrompt_SetIgnoreTouch(YesNoPromptState *yesno, int a1);
+YesNoPrompt *YesNoPrompt_Create(HeapID);
+void YesNoPrompt_Destroy(YesNoPrompt *);
+void YesNoPrompt_Reset(YesNoPrompt *);
+void YesNoPrompt_InitFromTemplate(YesNoPrompt *, const YesNoPromptTemplate *);
+void YesNoPrompt_InitFromTemplateWithPalette(YesNoPrompt *, const YesNoPromptTemplate *, PaletteData *);
+YesNoResponse YesNoPrompt_HandleInputForSave(YesNoPrompt *);
+YesNoResponse YesNoPrompt_HandleInput(YesNoPrompt *);
+int YesNoPrompt_IsInTouchMode(YesNoPrompt *);
+void YesNoPrompt_SetIgnoreTouch(YesNoPrompt *yesno, int a1);
 
 #endif //POKEHEARTGOLD_YES_NO_PROMPT_H

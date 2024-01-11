@@ -193,13 +193,13 @@ static void HandlePageDisplay(CreditsAppWork *work);
 static void HandleSceneTransition(CreditsAppWork *work);
 static void HandleSceneFlip(CreditsAppWork *work);
 static void HandleCutscenes(CreditsAppWork *work);
-static void ActivateSprite(Sprite *a0);
+static void ActivateSprite(Sprite *sprite);
 static void ov76_021E68C8(CreditsAppWork *work);
-static void FlipScreensCB(SysTask *a0, void *a1);
+static void FlipScreensCB(SysTask *task, void *taskData);
 static void DisplayWindow(CreditsAppWork *work);
-static void ov76_021E6944(PageDisplayWork *a0, BgConfig *a1, BOOL a2);
-static BOOL PageWindowRendering(PageDisplayWork *a0);
-static void TogglePageDisplayCB(SysTask *a0, void *a1);
+static void ov76_021E6944(PageDisplayWork *pageDisplay, BgConfig *bgConfig, BOOL hidden);
+static BOOL PageWindowRendering(PageDisplayWork *pageDisplay);
+static void TogglePageDisplayCB(SysTask *task, void *taskData);
 static void ov76_021E6A34(int a0, int a1, int a2, int a3);
 static void LoadPage(PageWork *a0);
 static void LoadCutsceneSpriteResources(CreditsAppWork *work);
@@ -825,10 +825,10 @@ static void ov76_021E68C8(CreditsAppWork *work) {
     ptr->count++;
 }
 
-static void FlipScreensCB(SysTask *a0, void *a1v) {
-    ScreenFlipWork *a1 = (ScreenFlipWork *)a1v;
-    if (a1->transitionFrame) {
-        a1->transitionFrame = FALSE;
+static void FlipScreensCB(SysTask *task, void *taskData) {
+    ScreenFlipWork *screenFlip = (ScreenFlipWork *)taskData;
+    if (screenFlip->transitionFrame) {
+        screenFlip->transitionFrame = FALSE;
         if (gSystem.screensFlipped == TRUE) {
             gSystem.screensFlipped = FALSE;
         } else {
@@ -845,10 +845,10 @@ static void DisplayWindow(CreditsAppWork *work) {
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_ON);
 }
 
-static void ov76_021E6944(PageDisplayWork *a0, BgConfig *bgConfig, BOOL hidden) {
+static void ov76_021E6944(PageDisplayWork *pageDisplay, BgConfig *bgConfig, BOOL hidden) {
     u32 val;
 
-    GF_ASSERT(a0->rendering == FALSE);
+    GF_ASSERT(pageDisplay->rendering == FALSE);
     GXS_SetVisibleWnd(3);
     val = ((reg_G2S_DB_WININ & ~0x3f) | 0x1e);
     reg_G2S_DB_WININ = val | 0x20;
@@ -856,10 +856,10 @@ static void ov76_021E6944(PageDisplayWork *a0, BgConfig *bgConfig, BOOL hidden) 
     reg_G2S_DB_WININ = val | 0x2000;
     val = ((reg_G2S_DB_WINOUT & ~0x3f) | 0x1c);
     reg_G2S_DB_WINOUT = val | 0x20;
-    a0->unk0 = 0;
-    a0->rendering = TRUE;
-    a0->hidden = hidden;
-    a0->bgConfig = bgConfig;
+    pageDisplay->unk0 = 0;
+    pageDisplay->rendering = TRUE;
+    pageDisplay->hidden = hidden;
+    pageDisplay->bgConfig = bgConfig;
 
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_ON);
 }
@@ -868,36 +868,36 @@ static BOOL PageWindowRendering(PageDisplayWork *a0) {
     return a0->rendering;
 }
 
-static void TogglePageDisplayCB(SysTask *a0, void *a1v) {
-    PageDisplayWork *a1 = (PageDisplayWork *)a1v;
+static void TogglePageDisplayCB(SysTask *task, void *taskData) {
+    PageDisplayWork *pageDisplay = (PageDisplayWork *)taskData;
     int temp;
     int temp2;
     fx32 xPos;
 
-    if (a1->rendering == FALSE) {
+    if (pageDisplay->rendering == FALSE) {
         return;
     }
 
-    a1->unk0++;
-    if (a1->hidden == FALSE) {
+    pageDisplay->unk0++;
+    if (pageDisplay->hidden == FALSE) {
         temp2 = 0xff;
-        temp = (1 - a1->unk0) * temp2;
+        temp = (1 - pageDisplay->unk0) * temp2;
     } else {
         temp = 0;
-        temp2 = (1 - a1->unk0) * 0xff;
+        temp2 = (1 - pageDisplay->unk0) * 0xff;
     }
 
-    xPos = a1->unk0 * 0xff;
-    if (a1->unk0 >= 1) {
-        a1->rendering = FALSE;
-        if (a1->hidden == FALSE) {
+    xPos = pageDisplay->unk0 * 0xff;
+    if (pageDisplay->unk0 >= 1) {
+        pageDisplay->rendering = FALSE;
+        if (pageDisplay->hidden == FALSE) {
             GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_ON);
         } else {
             GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
         }
     }
     ov76_021E6A34(temp, 0, temp2, 0xc0);
-    BgSetPosTextAndCommit(a1->bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_SET_X, xPos);
+    BgSetPosTextAndCommit(pageDisplay->bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_SET_X, xPos);
 }
 
 static void ov76_021E6A34(int a0, int a1, int a2, int a3) {
