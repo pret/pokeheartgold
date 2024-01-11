@@ -33,7 +33,7 @@
 .public YesNoPrompt_Destroy
 .public YesNoPrompt_InitFromTemplate
 .public YesNoPrompt_HandleInput
-.public sub_020169CC
+.public YesNoPrompt_Reset
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
 .public FreeToHeap

@@ -15,8 +15,8 @@
 .public String_Delete
 .public String16_FormatInteger
 .public String_Cat
-.public sub_02026C44
-.public sub_02026CC4
+.public TouchHitboxController_Create
+.public TouchHitboxController_IsTriggered
 .public sub_0203A4AC
 .public sub_02085688
 .public sub_02085BEC

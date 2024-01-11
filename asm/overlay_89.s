@@ -562,7 +562,7 @@ _02258D0A:
 	b _02258E4A
 _02258D0C:
 	ldr r0, [r4, #0x24]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0x28
@@ -582,7 +582,7 @@ _02258D0C:
 	b _02258E4A
 _02258D36:
 	ldr r0, [r4, #0x24]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0x28
@@ -759,7 +759,7 @@ _02258EA8:
 	cmp r0, #1
 	bne _02258EBE
 	ldr r0, [r4, #0x24]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 _02258EBE:
 	mov r0, #0x5a
 	mov r1, #0

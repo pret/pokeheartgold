@@ -83,6 +83,37 @@ int main(int argc, char *argv[])
         return "";
     });
 
+    env.add_void_callback("setVarArr", [=](Arguments& args) {
+        string key = args.at(0)->get<string>();
+        string value;
+        string sep = "";
+        for (auto arg_i = args.begin() + 1; arg_i != args.end(); ++arg_i) {
+            value += sep += (*arg_i)->get<string>();
+            sep = "|";
+        }
+        set_custom_var(key, value);
+    });
+
+    env.add_callback("getIndexInArr", 2, [=](Arguments& args) {
+        string key = args.at(0)->get<string>();
+        string element = args.at(1)->get<string>();
+        string var = get_custom_var(key);
+        size_t pos = 0;
+        int i = 0;
+        size_t rpos;
+        string result = "-1";
+        do {
+            rpos = var.find('|', pos);
+            size_t length = (rpos == string::npos ? element.length() : rpos) - pos;
+            if (var.substr(pos, length) == element) {
+                return to_string(i);
+            }
+            pos = rpos + 1;
+            ++i;
+        } while (rpos != string::npos);
+        FATAL_ERROR("%s not found in %s=[%s]\n", element.c_str(), key.c_str(), var.c_str());
+    });
+
     env.add_callback("getVar", 1, [=](Arguments& args) {
         string key = args.at(0)->get<string>();
         return get_custom_var(key);

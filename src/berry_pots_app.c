@@ -19,7 +19,6 @@
 #include "unk_02005D10.h"
 #include "unk_0200CF18.h"
 #include "unk_0200FA24.h"
-#include "unk_0201660C.h"
 #include "unk_020183F0.h"
 #include "touchscreen.h"
 #include "unk_02023694.h"

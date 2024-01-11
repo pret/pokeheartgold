@@ -31,7 +31,7 @@ endforeach()
 add_executable(PokeHeartGold ${SOURCES})
 target_include_directories(PokeHeartGold PRIVATE include files lib/include lib/include/cw lib/include/nitro lib/include/nnsys lib/include/nitro/os include/library)
 target_compile_definitions(PokeHeartGold PUBLIC __CLION_IDE__ SDK_ARM9)
-target_compile_options(PokeHeartGold PRIVATE -include ${CMAKE_CURRENT_SOURCE_DIR}/include/global.h -Wimplicit -Werror -fms-extensions)
+target_compile_options(PokeHeartGold PRIVATE -Wimplicit -Werror -fms-extensions)
 target_compile_features(PokeHeartGold PRIVATE c_std_99 cxx_std_98)
 
 add_subdirectory(tools)

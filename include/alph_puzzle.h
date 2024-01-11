@@ -9,7 +9,7 @@
 #include "msgdata.h"
 #include "save.h"
 #include "task.h"
-#include "unk_0201660C.h"
+#include "yes_no_prompt.h"
 
 typedef enum AlphPuzzles {
     ALPH_PUZZLE_KABUTO,
@@ -20,10 +20,12 @@ typedef enum AlphPuzzles {
 } AlphPuzzles;
 
 typedef struct AlphPuzzleArgs {
-    u8 unk0[0x5];
+    void *unk_00; // unused
+    u8 unk4; // unused
     u8 puzzle;
-    u8 unk6[0x2];
-    u32 *unk8;
+    u8 unk6; // unused
+    u8 unk7; // unused
+    u32 *fieldSystemUnk10Cpointer;
     SaveData *saveData;
 } AlphPuzzleArgs;
 

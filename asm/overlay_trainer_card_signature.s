@@ -1593,7 +1593,7 @@ _021E8DDE:
 	bl ClearFrameAndWindow2
 	ldr r0, _021E8E5C ; =0x00005C9C
 	ldr r0, [r5, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #1
@@ -1624,7 +1624,7 @@ _021E8E20:
 	bl ClearFrameAndWindow2
 	ldr r0, _021E8E5C ; =0x00005C9C
 	ldr r0, [r5, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 _021E8E46:
 	ldr r1, _021E8E60 ; =0x0000432C
 	mov r0, #0xf0
@@ -1664,7 +1664,7 @@ _021E8E7C:
 	bl ClearFrameAndWindow2
 	ldr r0, _021E8ED8 ; =0x00005C9C
 	ldr r0, [r5, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r5, #0
 	mov r1, #0
 	bl ov52_021E9488
@@ -1688,7 +1688,7 @@ _021E8EB4:
 	bl ClearFrameAndWindow2
 	ldr r0, _021E8ED8 ; =0x00005C9C
 	ldr r0, [r5, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r5, #0
 	mov r1, #0
 	bl ov52_021E9488

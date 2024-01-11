@@ -385,7 +385,7 @@ ov57_02237B20: ; 0x02237B20
 	mov r0, #0x7b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0x71
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -5506,7 +5506,7 @@ _0223A414:
 	mov r0, #0x7b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	b _0223A4DE
 _0223A42A:
 	add r0, sp, #4
@@ -6237,7 +6237,7 @@ _0223AA46:
 	mov r0, #0x91
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_020169C0
+	bl YesNoPrompt_IsInTouchMode
 	ldr r1, _0223AB50 ; =0x0000040C
 	str r0, [r4, r1]
 	sub r0, r1, #4
@@ -6250,7 +6250,7 @@ _0223AA46:
 	mov r0, #0x91
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	mov r0, #0x91
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -8539,7 +8539,7 @@ _0223BC1E:
 	ldr r2, _0223BC48 ; =ov57_0223AEA8
 	ldr r3, [sp, #4]
 	mov r1, #0x15
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r2, #0x7b
 	ldr r1, [sp, #4]
 	lsl r2, r2, #2

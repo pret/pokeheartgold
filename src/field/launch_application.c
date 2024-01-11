@@ -608,7 +608,7 @@ AlphPuzzleArgs *FieldSystem_CreateApplication_AlphPuzzle(FieldSystem *fieldSyste
     AlphPuzzleArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(AlphPuzzleArgs));
     MI_CpuFill8(args, 0, sizeof(AlphPuzzleArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
-    args->unk8 = &fieldSystem->unk_10C;
+    args->fieldSystemUnk10Cpointer = &fieldSystem->unk_10C;
     args->puzzle = puzzle;
     FieldSystem_LaunchApplication_AlphPuzzle(fieldSystem, args);
     return args;

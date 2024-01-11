@@ -1374,7 +1374,7 @@ _021E6414:
 	mov r0, #0x39
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02016748
+	bl YesNoPrompt_HandleInputForSave
 	cmp r0, #1
 	bne _021E6450
 	mov r0, #0xcf
@@ -1419,7 +1419,7 @@ _021E647E:
 	mov r0, #0x39
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02016748
+	bl YesNoPrompt_HandleInputForSave
 	cmp r0, #1
 	bne _021E64BA
 	mov r0, #0xcf

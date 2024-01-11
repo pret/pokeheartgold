@@ -280,7 +280,7 @@ _021E5AF6:
 	b _021E5BC6
 _021E5B06:
 	ldr r0, [r4, #0x18]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	ldr r0, [r4, #0x14]
 	mov r1, #0
 	bl UnkImageStruct_SetSpriteVisibleFlag
@@ -302,7 +302,7 @@ _021E5B06:
 	b _021E5BC6
 _021E5B3A:
 	ldr r0, [r4, #0x18]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	ldr r0, [r4, #0x14]
 	mov r1, #0
 	bl UnkImageStruct_SetSpriteVisibleFlag

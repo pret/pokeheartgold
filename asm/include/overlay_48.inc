@@ -60,7 +60,7 @@
 .public YesNoPrompt_Destroy
 .public YesNoPrompt_InitFromTemplate
 .public YesNoPrompt_HandleInput
-.public sub_020169CC
+.public YesNoPrompt_Reset
 .public sub_02018030
 .public sub_02018068
 .public sub_020181B0

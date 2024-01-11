@@ -760,7 +760,7 @@ _0209391C:
 	add r0, r4, r0
 	bl sub_020950F8
 	ldr r0, [r4, #8]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	mov r0, #6
 	str r0, [r4, #0x14]
 	pop {r4, pc}
@@ -770,7 +770,7 @@ _02093932:
 	add r0, r4, r0
 	bl sub_020950F8
 	ldr r0, [r4, #8]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	ldr r1, _02093968 ; =0x000046B0
 	add r0, r4, #0
 	ldr r1, [r4, r1]
@@ -843,7 +843,7 @@ _020939CC:
 	add r0, r4, r0
 	bl sub_020950F8
 	ldr r0, [r4, #8]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	ldr r1, _02093A38 ; =0x00004684
 	add r0, r4, #0
 	ldr r1, [r4, r1]
@@ -871,7 +871,7 @@ _02093A10:
 	add r0, r4, r0
 	bl sub_020950F8
 	ldr r0, [r4, #8]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_02094A90

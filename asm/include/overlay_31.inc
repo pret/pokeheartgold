@@ -31,7 +31,7 @@
 .public YesNoPrompt_Create
 .public YesNoPrompt_Destroy
 .public YesNoPrompt_InitFromTemplate
-.public sub_02016748
+.public YesNoPrompt_HandleInputForSave
 .public sub_020183F0
 .public CreateHeap
 .public DestroyHeap

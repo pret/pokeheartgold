@@ -1481,7 +1481,7 @@ _021ED4EE:
 	ldr r1, [r4, #0xc]
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	mov r1, #0x8f
 	ldr r2, [r4, #0xc]
 	lsl r1, r1, #2
@@ -1497,7 +1497,7 @@ _021ED50E:
 	ldr r1, [r4, #0xc]
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	mov r1, #0x8f
 	ldr r2, [r4, #0xc]
 	lsl r1, r1, #2
