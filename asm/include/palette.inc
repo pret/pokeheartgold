@@ -17,9 +17,9 @@
 .public sub_02003370
 .public sub_02003474
 .public sub_0200374C
-.public sub_0200398C
+.public PaletteData_PushTransparentBuffers
 .public sub_02003B44
-.public sub_02003B50
+.public PaletteData_SetAutoTransparent
 .public sub_02003B74
 .public sub_02003BA8
 .public sub_02003D5C

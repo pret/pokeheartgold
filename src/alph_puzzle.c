@@ -1010,7 +1010,7 @@ static int AlphPuzzleMainSeq_Clear_impl(AlphPuzzleData *data) {
 static void AlphPuzzle_VBlankCB(void *dat) {
     AlphPuzzleData *data = dat;
     if (data->palette) {
-        sub_0200398C(data->palette);
+        PaletteData_PushTransparentBuffers(data->palette);
     }
     if (data->spriteRenderer) {
         thunk_OamManager_ApplyAndResetBuffers();
@@ -1127,8 +1127,8 @@ static void AlphPuzzle_LoadBackgroundGraphics(AlphPuzzleData *data) {
     PaletteData_LoadNarc(data->palette, NARC_graphic_font, 8, data->heapId, 0, 32, 64);
 
     LoadUserFrameGfx2(data->bgConfig, GF_BG_LYR_MAIN_0, 1, 5, data->frame, data->heapId);
-    sub_02003B50(data->palette, 1);
-    sub_0200398C(data->palette);
+    PaletteData_SetAutoTransparent(data->palette, TRUE);
+    PaletteData_PushTransparentBuffers(data->palette);
 }
 
 static void AlphPuzzle_FreeBackgroundGraphics(AlphPuzzleData *data) {

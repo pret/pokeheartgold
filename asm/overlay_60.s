@@ -543,7 +543,7 @@ _021E5D66:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E5D74
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 _021E5D74:
 	ldr r0, [r4, #4]
 	bl DoScheduledBgGpuUpdates

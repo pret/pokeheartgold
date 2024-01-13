@@ -1669,7 +1669,7 @@ _021E6602:
 	ldr r0, [r4, #0x78]
 	cmp r0, #0
 	beq _021E660C
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 _021E660C:
 	add r0, r4, #0
 	add r0, #0x8c

@@ -10,9 +10,9 @@
 .public PaletteData_FreeBuffers
 .public PaletteData_LoadNarc
 .public sub_02003370
-.public sub_0200398C
+.public PaletteData_PushTransparentBuffers
 .public sub_02003B44
-.public sub_02003B50
+.public PaletteData_SetAutoTransparent
 .public sub_02005D10
 .public StopBGM
 .public PlaySE

@@ -52,8 +52,10 @@ u8 sub_02003370(PaletteData *data, u16 toSelect, u16 opaqueBit, s8 wait, u8 cur,
 u8 sub_02003474(PaletteData *data, u16 toSelect, u16 opaqueBit, s8 wait, u8 cur, u8 end, u16 nextRGB);
 void sub_02003E5C(PaletteData *data, u32, u32, u32, u8, u32);
 void sub_0200374C(PaletteData *data);
-void sub_0200398C(PaletteData *data);
-void sub_02003B50(PaletteData *data, int a1);
-void sub_0200398C(PaletteData *data);
+void PaletteData_PushTransparentBuffers(PaletteData *data);
+u16 sub_02003B44(PaletteData *data);
+void PaletteData_SetAutoTransparent(PaletteData *data, BOOL autoTransparent);
+void sub_02003B74(PaletteData *plttData, BOOL a1);
+void sub_02003BA8(u16 selectedBuffer, HeapID heapId);
 
 #endif //POKEHEARTGOLD_PALETTE_H

@@ -1011,7 +1011,7 @@ ov56_021E63C0: ; 0x021E63C0
 	ldr r0, [r4, #0x30]
 	cmp r0, #0
 	beq _021E63CE
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 _021E63CE:
 	add r0, r4, #0
 	add r0, #0xb0
@@ -1523,9 +1523,9 @@ _021E6768:
 	bl sub_02003E5C
 	ldr r0, [r5, #0x30]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	ldr r0, [r5, #0x30]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	add r0, r6, #0
 	bl FreeToHeap
 	ldr r1, [sp, #0x20]

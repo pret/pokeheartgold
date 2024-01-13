@@ -3,7 +3,7 @@
 .public PaletteData_LoadNarc
 .public sub_02003370
 .public sub_02003B44
-.public sub_02003B50
+.public PaletteData_SetAutoTransparent
 .public PlayBGM
 .public sub_0200602C
 .public PlaySE

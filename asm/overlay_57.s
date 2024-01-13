@@ -165,7 +165,7 @@ _022379D6:
 	add r0, #0xe8
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	add r0, r4, #0
 	add r0, #0xe8
 	mov r2, #2
@@ -625,7 +625,7 @@ ov57_02237E38: ; 0x02237E38
 	add r0, r4, #0
 	add r0, #0xe8
 	ldr r0, [r0]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	add r4, #0xe4
 	ldr r0, [r4]
 	bl DoScheduledBgGpuUpdates
@@ -6148,7 +6148,7 @@ _0223A988:
 	add r0, #0xe8
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0x1b
@@ -6246,7 +6246,7 @@ _0223AA46:
 	add r0, #0xe8
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r0, #0x91
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]

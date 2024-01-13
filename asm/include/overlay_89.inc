@@ -15,8 +15,8 @@
 .public PaletteData_CopyPalette
 .public PaletteData_GetUnfadedBuf
 .public PaletteData_GetFadedBuf
-.public sub_0200398C
-.public sub_02003B50
+.public PaletteData_PushTransparentBuffers
+.public PaletteData_SetAutoTransparent
 .public sub_02003D5C
 .public sub_02003DE8
 .public sub_02003E5C

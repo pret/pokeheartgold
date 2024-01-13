@@ -82,7 +82,7 @@ _022386D4:
 	bl PaletteData_Init
 	str r0, [r4, #4]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r2, #2
 	ldr r0, [r4, #4]
 	mov r1, #0
@@ -456,7 +456,7 @@ ov80_02238A7C: ; 0x02238A7C
 	bl GF_RunVramTransferTasks
 	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #4]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r4]
 	bl DoScheduledBgGpuUpdates
 	ldr r3, _02238AA4 ; =0x027E0000

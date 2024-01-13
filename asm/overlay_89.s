@@ -83,7 +83,7 @@ ov89_02258800: ; 0x02258800
 	bl PaletteData_Init
 	str r0, [r5, #0xc]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r2, #2
 	ldr r0, [r5, #0xc]
 	mov r1, #0
@@ -109,7 +109,7 @@ ov89_02258800: ; 0x02258800
 	bl PaletteData_AllocBuffers
 	ldr r0, [r5, #0xc]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r0, #0x7d
 	bl BgConfig_Alloc
 	str r0, [r5, #8]
@@ -915,7 +915,7 @@ ov89_0225901C: ; 0x0225901C
 	bl GF_RunVramTransferTasks
 	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #0xc]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r4, #8]
 	bl DoScheduledBgGpuUpdates
 	ldr r3, _02259054 ; =0x027E0000

@@ -13,7 +13,7 @@
 .public PaletteData_LoadNarc
 .public sub_020032A4
 .public sub_02003370
-.public sub_0200398C
+.public PaletteData_PushTransparentBuffers
 .public sub_02003B44
 .public PlaySE
 .public UnloadOverlayByID

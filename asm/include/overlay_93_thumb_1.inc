@@ -11,8 +11,8 @@
 .public PaletteData_LoadFromNarc
 .public PaletteData_LoadNarc
 .public sub_020032A4
-.public sub_0200398C
-.public sub_02003B50
+.public PaletteData_PushTransparentBuffers
+.public PaletteData_SetAutoTransparent
 .public sub_02003D5C
 .public sub_02003DE8
 .public PlaySE

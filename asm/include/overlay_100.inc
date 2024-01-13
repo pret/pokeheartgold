@@ -5,7 +5,7 @@
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
 .public PaletteData_LoadFromOpenNarc
-.public sub_0200398C
+.public PaletteData_PushTransparentBuffers
 .public sub_02003E5C
 .public sub_02004B10
 .public sub_02004EC4

@@ -362,7 +362,7 @@ ov93_0225C768: ; 0x0225C768
 	add r0, #0x8c
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	add r0, r5, #0
 	add r0, #0x8c
 	mov r2, #2
@@ -1100,7 +1100,7 @@ ov93_0225CEA0: ; 0x0225CEA0
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, _0225CF04 ; =0x00001454
 	ldrb r1, [r4, r0]
 	cmp r1, #1

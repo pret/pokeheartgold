@@ -644,7 +644,7 @@ static void BattleArcade_VBlank(void *_work) {
     GAME_BOARD_WORK *work = _work;
 
     if (work->unk3D4 != NULL) {
-        sub_0200398C(work->unk3D4);
+        PaletteData_PushTransparentBuffers(work->unk3D4);
     }
 
     DoScheduledBgGpuUpdates(work->bgConfig);

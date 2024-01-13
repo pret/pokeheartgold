@@ -730,7 +730,7 @@ sub_02075A7C: ; 0x02075A7C
 	bl PaletteData_Init
 	str r0, [r4, #0x14]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r2, #2
 	ldr r0, [r4, #0x14]
 	mov r1, #0
@@ -3479,7 +3479,7 @@ _020772C0:
 _020772CE:
 	bl GF_RunVramTransferTasks
 	ldr r0, [r4, #0x14]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r4]
 	bl DoScheduledBgGpuUpdates
 	ldr r3, _020772F0 ; =OS_IRQTable

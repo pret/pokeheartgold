@@ -10,7 +10,7 @@
 .public PaletteData_FreeBuffers
 .public sub_020032A4
 .public PaletteData_CopyPalette
-.public sub_0200398C
+.public PaletteData_PushTransparentBuffers
 .public sub_02003B74
 .public PlaySE
 .public CreateSysTaskAndEnvironment

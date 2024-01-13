@@ -452,7 +452,7 @@ ov18_021E5C40: ; 0x021E5C40
 	mov r0, #0x85
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	add r0, r4, #0
 	bl ov18_021E7A3C
 	ldr r0, [r4, #4]
@@ -38301,7 +38301,7 @@ ov18_021F8C0C: ; 0x021F8C0C
 	bl sub_020090B4
 	ldr r0, [r4, #4]
 	mov r1, #0
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	add sp, #0xc
 	pop {r3, r4, pc}
 	nop

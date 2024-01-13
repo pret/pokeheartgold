@@ -109,7 +109,7 @@ _021E59C6:
 	bl ov14_021E5A14
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x18]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x14]
 	bl DoScheduledBgGpuUpdates

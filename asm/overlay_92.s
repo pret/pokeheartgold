@@ -1801,7 +1801,7 @@ ov92_0225D3CC: ; 0x0225D3CC
 	bl ov92_0225DD88
 	ldr r0, [r4, #0x5c]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r2, #2
 	ldr r0, [r4, #0x5c]
 	mov r1, #0
@@ -2302,7 +2302,7 @@ ov92_0225D894: ; 0x0225D894
 	bl GF_RunVramTransferTasks
 	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #0x5c]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r4, #0x58]
 	bl DoScheduledBgGpuUpdates
 	ldr r3, _0225D8BC ; =0x027E0000

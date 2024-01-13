@@ -7,7 +7,7 @@
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
 .public sub_020032A4
-.public sub_0200398C
+.public PaletteData_PushTransparentBuffers
 .public sub_020040AC
 .public sub_02004AD8
 .public sub_02004EC4

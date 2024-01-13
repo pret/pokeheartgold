@@ -328,3 +328,182 @@ void sub_020038E4(PaletteData *data, u8 bufferID, SelectedPaletteData *selectedB
         selectedBit->cur = r4;
     }
 }
+
+void PaletteData_PushTransparentBuffers(PaletteData *plttData) {
+    int i;
+    if (plttData->autoTransparent || plttData->selectedFlag == 1) {
+        for (i = 0; i < 14; ++i) {
+            if (!plttData->autoTransparent) {
+                if (plttData->buffers[i].transparent == NULL) {
+                    continue;
+                }
+                if (!IsPaletteSelected(plttData->transparentBit, i)) {
+                    continue;
+                }
+            }
+            DC_FlushRange(plttData->buffers[i].transparent, plttData->buffers[i].size);
+            switch (i) {
+            case 0:
+                GX_LoadBGPltt(plttData->buffers[i].transparent, 0, plttData->buffers[i].size);
+                break;
+            case 1:
+                GXS_LoadBGPltt(plttData->buffers[i].transparent, 0, plttData->buffers[i].size);
+                break;
+            case 2:
+                GX_LoadOBJPltt(plttData->buffers[i].transparent, 0, plttData->buffers[i].size);
+                break;
+            case 3:
+                GXS_LoadOBJPltt(plttData->buffers[i].transparent, 0, plttData->buffers[i].size);
+                break;
+            case 4:
+                GX_BeginLoadBGExtPltt();
+                GX_LoadBGExtPltt(plttData->buffers[i].transparent, 0, plttData->buffers[i].size);
+                GX_EndLoadBGExtPltt();
+                break;
+            case 5:
+                GX_BeginLoadBGExtPltt();
+                GX_LoadBGExtPltt(plttData->buffers[i].transparent, 0x2000, plttData->buffers[i].size);
+                GX_EndLoadBGExtPltt();
+                break;
+            case 6:
+                GX_BeginLoadBGExtPltt();
+                GX_LoadBGExtPltt(plttData->buffers[i].transparent, 0x4000, plttData->buffers[i].size);
+                GX_EndLoadBGExtPltt();
+                break;
+            case 7:
+                GX_BeginLoadBGExtPltt();
+                GX_LoadBGExtPltt(plttData->buffers[i].transparent, 0x6000, plttData->buffers[i].size);
+                GX_EndLoadBGExtPltt();
+                break;
+            case 8:
+                GXS_BeginLoadBGExtPltt();
+                GXS_LoadBGExtPltt(plttData->buffers[i].transparent, 0, plttData->buffers[i].size);
+                GXS_EndLoadBGExtPltt();
+                break;
+            case 9:
+                GXS_BeginLoadBGExtPltt();
+                GXS_LoadBGExtPltt(plttData->buffers[i].transparent, 0x2000, plttData->buffers[i].size);
+                GXS_EndLoadBGExtPltt();
+                break;
+            case 10:
+                GXS_BeginLoadBGExtPltt();
+                GXS_LoadBGExtPltt(plttData->buffers[i].transparent, 0x4000, plttData->buffers[i].size);
+                GXS_EndLoadBGExtPltt();
+                break;
+            case 11:
+                GXS_BeginLoadBGExtPltt();
+                GXS_LoadBGExtPltt(plttData->buffers[i].transparent, 0x6000, plttData->buffers[i].size);
+                GXS_EndLoadBGExtPltt();
+                break;
+            case 12:
+                GX_BeginLoadOBJExtPltt();
+                GX_LoadOBJExtPltt(plttData->buffers[i].transparent, 0, plttData->buffers[i].size);
+                GX_EndLoadOBJExtPltt();
+                break;
+            case 13:
+                GXS_BeginLoadOBJExtPltt();
+                GXS_LoadOBJExtPltt(plttData->buffers[i].transparent, 0, plttData->buffers[i].size);
+                GXS_EndLoadOBJExtPltt();
+                break;
+            }
+        }
+        plttData->transparentBit = plttData->selectedBuffer;
+        if (plttData->transparentBit == 0) {
+            plttData->selectedFlag = 0;
+        }
+    }
+}
+
+
+u16 sub_02003B44(PaletteData *plttData) {
+    return plttData->selectedBuffer;
+}
+
+void PaletteData_SetAutoTransparent(PaletteData *plttData, BOOL autoTransparent) {
+    plttData->autoTransparent = autoTransparent;
+}
+
+void sub_02003B74(PaletteData *plttData, BOOL a1) {
+    plttData->selectedFlag = a1 & 1;
+    plttData->selectedBuffer = 0x3FFF;
+}
+
+void sub_02003BA8(u16 selectedBuffer, HeapID heapId) {
+    void *tmp;
+
+    tmp = AllocFromHeap(heapId, 0x200);
+    memset(tmp, 0, 0x200);
+    DC_FlushRange(tmp, 0x200);
+
+    if (selectedBuffer & (1 << 0)) {
+        GX_LoadBGPltt(tmp, 0, 0x200);
+    }
+    if (selectedBuffer & (1 << 1)) {
+        GXS_LoadBGPltt(tmp, 0, 0x200);
+    }
+    if (selectedBuffer & (1 << 2)) {
+        GX_LoadOBJPltt(tmp, 0, 0x200);
+    }
+    if (selectedBuffer & (1 << 3)) {
+        GXS_LoadOBJPltt(tmp, 0, 0x200);
+    }
+
+    FreeToHeapExplicit(heapId, tmp);
+
+    tmp = AllocFromHeap(heapId, 0x2000);
+    memset(tmp, 0, 0x2000);
+    DC_FlushRange(tmp, 0x2000);
+
+    if (selectedBuffer & (1 << 4)) {
+        GX_BeginLoadBGExtPltt();
+        GX_LoadBGExtPltt(tmp, 0, 0x2000);
+        GX_EndLoadBGExtPltt();
+    }
+    if (selectedBuffer & (1 << 5)) {
+        GX_BeginLoadBGExtPltt();
+        GX_LoadBGExtPltt(tmp, 0x2000, 0x2000);
+        GX_EndLoadBGExtPltt();
+    }
+    if (selectedBuffer & (1 << 6)) {
+        GX_BeginLoadBGExtPltt();
+        GX_LoadBGExtPltt(tmp, 0x4000, 0x2000);
+        GX_EndLoadBGExtPltt();
+    }
+    if (selectedBuffer & (1 << 7)) {
+        GX_BeginLoadBGExtPltt();
+        GX_LoadBGExtPltt(tmp, 0x6000, 0x2000);
+        GX_EndLoadBGExtPltt();
+    }
+    if (selectedBuffer & (1 << 8)) {
+        GXS_BeginLoadBGExtPltt();
+        GXS_LoadBGExtPltt(tmp, 0, 0x2000);
+        GXS_EndLoadBGExtPltt();
+    }
+    if (selectedBuffer & (1 << 9)) {
+        GXS_BeginLoadBGExtPltt();
+        GXS_LoadBGExtPltt(tmp, 0x2000, 0x2000);
+        GXS_EndLoadBGExtPltt();
+    }
+    if (selectedBuffer & (1 << 10)) {
+        GXS_BeginLoadBGExtPltt();
+        GXS_LoadBGExtPltt(tmp, 0x4000, 0x2000);
+        GXS_EndLoadBGExtPltt();
+    }
+    if (selectedBuffer & (1 << 11)) {
+        GXS_BeginLoadBGExtPltt();
+        GXS_LoadBGExtPltt(tmp, 0x6000, 0x2000);
+        GXS_EndLoadBGExtPltt();
+    }
+    if (selectedBuffer & (1 << 12)) {
+        GX_BeginLoadOBJExtPltt();
+        GX_LoadOBJExtPltt(tmp, 0, 0x2000);
+        GX_EndLoadOBJExtPltt();
+    }
+    if (selectedBuffer & (1 << 13)) {
+        GXS_BeginLoadOBJExtPltt();
+        GXS_LoadOBJExtPltt(tmp, 0, 0x2000);
+        GXS_EndLoadOBJExtPltt();
+    }
+
+    FreeToHeapExplicit(heapId, tmp);
+}

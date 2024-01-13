@@ -12,8 +12,8 @@
 .public PaletteData_FreeBuffers
 .public PaletteData_LoadPalette
 .public PaletteData_LoadNarc
-.public sub_0200398C
-.public sub_02003B50
+.public PaletteData_PushTransparentBuffers
+.public PaletteData_SetAutoTransparent
 .public sub_02003EA4
 .public GF_GetCurrentPlayingBGM
 .public sub_02004EC4

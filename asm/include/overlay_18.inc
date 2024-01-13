@@ -12,9 +12,9 @@
 .public PaletteData_LoadOpenNarc
 .public sub_020032A4
 .public sub_02003370
-.public sub_0200398C
+.public PaletteData_PushTransparentBuffers
 .public sub_02003B44
-.public sub_02003B50
+.public PaletteData_SetAutoTransparent
 .public sub_02003BA8
 .public sub_02003D5C
 .public sub_02004B10

@@ -53,7 +53,7 @@ ov40_0222B6E0: ; 0x0222B6E0
 	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r4, #0x28]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r2, #2
 	ldr r0, [r4, #0x28]
 	mov r1, #0
@@ -669,7 +669,7 @@ ov40_0222BD04: ; 0x0222BD04
 	add r4, r0, #0
 	bl GF_RunVramTransferTasks
 	ldr r0, [r4, #0x28]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r4, #0x24]
 	bl DoScheduledBgGpuUpdates
 	ldr r3, _0222BD28 ; =0x027E0000
@@ -15954,7 +15954,7 @@ _022335D8:
 	blt _022335A4
 	ldr r0, [sp, #4]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	add sp, #0x44
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -20110,7 +20110,7 @@ ov40_02235900: ; 0x02235900
 _02235918:
 	bl GF_RunVramTransferTasks
 	ldr r0, [r4, #0x28]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r4, #0x24]
 	bl DoScheduledBgGpuUpdates
 	ldr r3, _02235938 ; =0x027E0000

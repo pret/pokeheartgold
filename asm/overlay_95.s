@@ -275,7 +275,7 @@ ov95_021E5B24: ; 0x021E5B24
 	bl GF_RunVramTransferTasks
 	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #8]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r4, #4]
 	bl DoScheduledBgGpuUpdates
 	ldr r3, _021E5B50 ; =0x027E0000
@@ -2643,7 +2643,7 @@ ov95_021E6D70: ; 0x021E6D70
 	bl PaletteData_Init
 	mov r1, #1
 	str r0, [r4, #8]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r2, #2
 	ldr r0, [r4, #8]
 	mov r1, #0

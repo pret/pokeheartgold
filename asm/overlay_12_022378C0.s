@@ -292,7 +292,7 @@ ov12_02237F18: ; 0x02237F18
 	bl PaletteData_Init
 	str r0, [r4, #0x28]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r2, #2
 	ldr r0, [r4, #0x28]
 	mov r1, #0
@@ -3170,7 +3170,7 @@ _02239798:
 	bl GF_RunVramTransferTasks
 	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #0x28]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r4, #4]
 	bl DoScheduledBgGpuUpdates
 	ldr r3, _022397DC ; =0x027E0000
@@ -3196,7 +3196,7 @@ ov12_022397E4: ; 0x022397E4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	bl GF_RunVramTransferTasks
 	ldr r0, [r4, #4]
 	bl DoScheduledBgGpuUpdates
@@ -3453,7 +3453,7 @@ ov12_022399D4: ; 0x022399D4
 	bl PaletteData_Init
 	str r0, [r5, #0xc]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r2, #2
 	ldr r0, [r5, #0xc]
 	mov r1, #0

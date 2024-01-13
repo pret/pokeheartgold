@@ -4436,7 +4436,7 @@ ov81_022401C8: ; 0x022401C8
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _022401EA
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 _022401EA:
 	ldr r0, [r4, #0x4c]
 	bl DoScheduledBgGpuUpdates

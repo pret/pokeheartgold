@@ -1051,7 +1051,7 @@ _02246C84:
 	bl sub_0201649C
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	add sp, #0x158
 	pop {r3, r4, r5, r6, r7, pc}
 _02246CAA:

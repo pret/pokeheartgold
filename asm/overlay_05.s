@@ -2563,7 +2563,7 @@ ov05_0221CE88: ; 0x0221CE88
 	ldr r0, [r4, #0xc]
 	bl DoScheduledBgGpuUpdates
 	ldr r0, [r4, #8]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	bl GF_RunVramTransferTasks
 	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r3, _0221CEB0 ; =0x027E0000
