@@ -928,8 +928,9 @@ static int AlphPuzzleMainSeq_RotateTile_impl(AlphPuzzleData *data) {
         break;
     case 1:
     {
-        u16 temp = data->sceneTimer++;
-        sub_02024818(data->selectedTile->sprite, (u16)((u16)(temp << 0xb) + (data->selectedTile->rotation << 0xe)));
+        u16 rotationOffset = (data->sceneTimer++) * 0x800;
+        u16 rotation = data->selectedTile->rotation * 0x4000 + rotationOffset;
+        sub_02024818(data->selectedTile->sprite, rotation);
         if (data->sceneTimer >= 8) {
             data->subState++;
         }
