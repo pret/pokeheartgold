@@ -519,8 +519,8 @@ static void BattleArcadeGameBoard_Delete(GAME_BOARD_WORK *work) {
 
     sub_0203A914();
 
-    PaletteData_FreeBuffers(work->unk3D4, 2);
-    PaletteData_FreeBuffers(work->unk3D4, 0);
+    PaletteData_FreeBuffers(work->unk3D4, PLTTBUF_MAIN_OBJ);
+    PaletteData_FreeBuffers(work->unk3D4, PLTTBUF_MAIN_BG);
 
     PaletteData_Free(work->unk3D4);
     work->unk3D4 = NULL;
@@ -619,8 +619,8 @@ static void ov84_0223E8DC(GAME_BOARD_WORK *work) {
 
     work->unk3D4 = PaletteData_Init(HEAP_ID_GAME_BOARD);
 
-    PaletteData_AllocBuffers(work->unk3D4, 2, 0x200, HEAP_ID_GAME_BOARD);
-    PaletteData_AllocBuffers(work->unk3D4, 0, 0x200, HEAP_ID_GAME_BOARD);
+    PaletteData_AllocBuffers(work->unk3D4, PLTTBUF_MAIN_OBJ, 0x200, HEAP_ID_GAME_BOARD);
+    PaletteData_AllocBuffers(work->unk3D4, PLTTBUF_MAIN_BG, 0x200, HEAP_ID_GAME_BOARD);
 
     ov84_0223EAAC(work, GF_BG_LYR_MAIN_3);
     ov84_0223EB44();

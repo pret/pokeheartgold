@@ -2690,7 +2690,7 @@ static const int _020FF50C[] = {
     0, 1, 1, 2, 0, 3
 };
 
-struct UnkImageStruct *sub_02070C24(SpriteRenderer *r6, SpriteGfxHandler *sp18, void *sp1C, int sp20, int sp88, int trainerClass, int sp90, int sp94, int r5, HeapID heapId) {
+struct UnkImageStruct *sub_02070C24(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, PaletteData *plttData, int sp20, int sp88, int trainerClass, int sp90, int sp94, int r5, HeapID heapId) {
     struct UnkTemplate_0200D748 sp3C;
     struct UnkImageStruct *ret_r4;
     NARC *narc_r4;
@@ -2703,10 +2703,10 @@ struct UnkImageStruct *sub_02070C24(SpriteRenderer *r6, SpriteGfxHandler *sp18, 
         r7 = 2;
     }
     narc_r4 = NARC_New(sp24.narcId, heapId);
-    SpriteRenderer_LoadCharResObjFromOpenNarc(r6, sp18, narc_r4, sp24.ncgr_id, FALSE, 1, r5 + 0x4E2F);
-    sub_0200D68C(sp1C, 2, r6, sp18, narc_r4, sp24.nclr_id, FALSE, r7, 1, r5 + 0x4E2A);
-    SpriteRenderer_LoadCellResObjFromOpenNarc(r6, sp18, narc_r4, sp24.ncer_id, FALSE, r5 + 0x4E27);
-    SpriteRenderer_LoadAnimResObjFromOpenNarc(r6, sp18, narc_r4, sp24.nanr_id, FALSE, r5 + 0x4E27);
+    SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc_r4, sp24.ncgr_id, FALSE, 1, r5 + 0x4E2F);
+    sub_0200D68C(plttData, PLTTBUF_MAIN_OBJ, renderer, gfxHandler, narc_r4, sp24.nclr_id, FALSE, r7, 1, r5 + 0x4E2A);
+    SpriteRenderer_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc_r4, sp24.ncer_id, FALSE, r5 + 0x4E27);
+    SpriteRenderer_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, narc_r4, sp24.nanr_id, FALSE, r5 + 0x4E27);
     NARC_Delete(narc_r4);
     sp3C = _020FF588;
     sp3C.resIdList[GF_GFX_RES_TYPE_CHAR] = r5 + 0x4E2F;
@@ -2714,7 +2714,7 @@ struct UnkImageStruct *sub_02070C24(SpriteRenderer *r6, SpriteGfxHandler *sp18, 
     sp3C.resIdList[GF_GFX_RES_TYPE_CELL] = r5 + 0x4E27;
     sp3C.resIdList[GF_GFX_RES_TYPE_ANIM] = r5 + 0x4E27;
     sp3C.spritePriority = _020FF50C[r5];
-    ret_r4 = SpriteRenderer_LoadResourcesAndCreateSprite(r6, sp18, &sp3C);
+    ret_r4 = SpriteRenderer_LoadResourcesAndCreateSprite(renderer, gfxHandler, &sp3C);
     sub_02024AA8(ret_r4->sprite, 0);
     UnkImageStruct_SetSpritePositionXY(ret_r4, sp20, sp88);
     UnkImageStruct_TickSpriteAnimation1Frame(ret_r4);

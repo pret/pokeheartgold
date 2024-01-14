@@ -105,7 +105,7 @@ void YesNoPrompt_InitFromTemplateWithPalette(YesNoPrompt *yesno, const YesNoProm
     if (plttData != NULL) {
         NNSG2dPaletteData *plttDataOut;
         void *raw = GfGfxLoader_GetPlttData(NARC_system_touch_subwindow, 0, &plttDataOut, yesno->heapId);
-        PaletteData_LoadPalette(plttData, plttDataOut->pRawData, yesno->bgId / 4, template->plttSlot * 16, 64);
+        PaletteData_LoadPalette(plttData, plttDataOut->pRawData, (PaletteBufferId)(yesno->bgId / 4), template->plttSlot * 16, 64);
         FreeToHeap(raw);
     }
 }

@@ -7,7 +7,7 @@
 
 u8 IsPaletteSelected(u16 toSelect, u16 bufferID);
 void sub_02003574(PaletteData *data, u16 bufferID);
-void sub_020035B4(int bufferID, PaletteBuffer *buffer, u16 *opaqueBit);
+void sub_020035B4(PaletteBufferId bufferID, PaletteBuffer *buffer, u16 *opaqueBit);
 void sub_020035F0(SelectedPaletteData *selectedBit, u16 opaqueBit, s8 wait, u8 cur, u8 end, u16 nextRGB);
 void sub_020036B0(SysTask *task, void *taskData);
 void sub_02003760(PaletteData *data);
@@ -27,27 +27,27 @@ void PaletteData_Free(PaletteData *plttData) {
     FreeToHeap(plttData);
 }
 
-void PaletteData_SetBuffers(PaletteData *data, int bufferID, u16 *opaque, u16 *transparent, u32 size) {
+void PaletteData_SetBuffers(PaletteData *data, PaletteBufferId bufferID, u16 *opaque, u16 *transparent, u32 size) {
     data->buffers[bufferID].opaque = opaque;
     data->buffers[bufferID].transparent = transparent;
     data->buffers[bufferID].size = size;
 }
 
-void PaletteData_AllocBuffers(PaletteData *data, int bufferID, u32 size, HeapID heapID) {
+void PaletteData_AllocBuffers(PaletteData *data, PaletteBufferId bufferID, u32 size, HeapID heapID) {
     PaletteData_SetBuffers(data, bufferID, AllocFromHeap(heapID, size), AllocFromHeap(heapID, size), size);
 }
 
-void PaletteData_FreeBuffers(PaletteData *data, int bufferID) {
+void PaletteData_FreeBuffers(PaletteData *data, PaletteBufferId bufferID) {
     FreeToHeap(data->buffers[bufferID].opaque);
     FreeToHeap(data->buffers[bufferID].transparent);
 }
 
-void PaletteData_LoadPalette(PaletteData *data, const u16 *src, int bufferID, u16 pos, u16 size) {
+void PaletteData_LoadPalette(PaletteData *data, const u16 *src, PaletteBufferId bufferID, u16 pos, u16 size) {
     MI_CpuCopy16(src, data->buffers[bufferID].opaque + pos, size);
     MI_CpuCopy16(src, data->buffers[bufferID].transparent + pos, size);
 }
 
-void PaletteData_LoadFromNarc(PaletteData *data, NarcId narcID, s32 memberNo, HeapID heapID, int bufferID, u32 size, u16 pos, u16 readPos) {
+void PaletteData_LoadFromNarc(PaletteData *data, NarcId narcID, s32 memberNo, HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos, u16 readPos) {
     void *rawPtr;
     NNSG2dPaletteData *plttData;
 
@@ -61,11 +61,11 @@ void PaletteData_LoadFromNarc(PaletteData *data, NarcId narcID, s32 memberNo, He
     FreeToHeap(rawPtr);
 }
 
-void PaletteData_LoadNarc(PaletteData *data, NarcId narcID, s32 memberNo, HeapID heapID, int bufferID, u32 size, u16 pos) {
+void PaletteData_LoadNarc(PaletteData *data, NarcId narcID, s32 memberNo, HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos) {
     PaletteData_LoadFromNarc(data, narcID, memberNo, heapID, bufferID, size, pos, 0);
 }
 
-void PaletteData_LoadFromOpenNarc(PaletteData *data, NARC *narc, s32 memberNo, HeapID heapID, int bufferID, u32 size, u16 pos, u16 readPos) {
+void PaletteData_LoadFromOpenNarc(PaletteData *data, NARC *narc, s32 memberNo, HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos, u16 readPos) {
     void *rawPtr;
     NNSG2dPaletteData *plttData;
 
@@ -79,11 +79,11 @@ void PaletteData_LoadFromOpenNarc(PaletteData *data, NARC *narc, s32 memberNo, H
     FreeToHeap(rawPtr);
 }
 
-void PaletteData_LoadOpenNarc(PaletteData *data, NARC *narc, s32 memberNo, HeapID heapID, int bufferID, u32 size, u16 pos) {
+void PaletteData_LoadOpenNarc(PaletteData *data, NARC *narc, s32 memberNo, HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos) {
     PaletteData_LoadFromOpenNarc(data, narc, memberNo, heapID, bufferID, size, pos, 0);
 }
 
-void sub_020032A4(PaletteData *data, int bufferID, u16 pos, u32 size) {
+void sub_020032A4(PaletteData *data, PaletteBufferId bufferID, u16 pos, u32 size) {
     GF_ASSERT(pos * sizeof(pos) + size <= data->buffers[bufferID].size);
 
     const u16 *src;
@@ -113,11 +113,11 @@ void PaletteData_CopyPalette(PaletteData *data, u32 srcBufferID, u16 srcPos, u32
     MI_CpuCopy16(data->buffers[srcBufferID].opaque + srcPos, data->buffers[destBufferID].transparent + destPos, size);
 }
 
-u16 *PaletteData_GetUnfadedBuf(PaletteData *data, int bufferID) {
+u16 *PaletteData_GetUnfadedBuf(PaletteData *data, PaletteBufferId bufferID) {
     return data->buffers[bufferID].opaque;
 }
 
-u16 *PaletteData_GetFadedBuf(PaletteData *data, int bufferID) {
+u16 *PaletteData_GetFadedBuf(PaletteData *data, PaletteBufferId bufferID) {
     return data->buffers[bufferID].transparent;
 }
 
@@ -126,13 +126,13 @@ u8 sub_02003370(PaletteData *data, u16 toSelect, u16 opaqueBit, s8 wait, u8 cur,
     u8 r6 = FALSE;
     u8 i;
 
-    for (i = 0; i < 14; ++i) {
+    for (i = 0; i < PLTTBUF_MAX; ++i) {
         if (IsPaletteSelected(toSelect, i) == TRUE
          && IsPaletteSelected(data->selectedBuffer, i) == FALSE) {
-            sub_020035B4(i, &data->buffers[i], &opaqueBit);
+            sub_020035B4((PaletteBufferId)i, &data->buffers[i], &opaqueBit);
             sub_020035F0(&data->buffers[i].selected, opaqueBit, wait, cur, end, nextRGB);
             sub_02003574(data, i);
-            if (i >= 4) {
+            if (i >= PLTTBUF_EX_BEGIN) {
                 sub_020037FC(data, i, 0x100);
             } else {
                 sub_020037FC(data, i, 0x10);
@@ -160,12 +160,12 @@ u8 sub_02003474(PaletteData *data, u16 toSelect, u16 opaqueBit, s8 wait, u8 cur,
     u8 r6 = FALSE;
     u8 i;
 
-    for (i = 0; i < 14; ++i) {
+    for (i = 0; i < PLTTBUF_MAX; ++i) {
         if (IsPaletteSelected(toSelect, i) == TRUE) {
-            sub_020035B4(i, &data->buffers[i], &opaqueBit);
+            sub_020035B4((PaletteBufferId)i, &data->buffers[i], &opaqueBit);
             sub_020035F0(&data->buffers[i].selected, opaqueBit, wait, cur, end, nextRGB);
             sub_02003574(data, i);
-            if (i >= 4) {
+            if (i >= PLTTBUF_EX_BEGIN) {
                 sub_020037FC(data, i, 0x100);
             } else {
                 sub_020037FC(data, i, 0x10);
@@ -198,9 +198,9 @@ void sub_02003574(PaletteData *data, u16 bufferID) {
     }
 }
 
-void sub_020035B4(int bufferID, PaletteBuffer *buffer, u16 *opaqueBit) {
+void sub_020035B4(PaletteBufferId bufferID, PaletteBuffer *buffer, u16 *opaqueBit) {
     u8 limit;
-    if (bufferID < 4) {
+    if (bufferID < PLTTBUF_EX_BEGIN) {
         limit = buffer->size >> 5;
     } else {
         limit = buffer->size >> 9;
@@ -263,13 +263,13 @@ void sub_0200374C(PaletteData *data) {
 }
 
 void sub_02003760(PaletteData *data) {
-    for (u8 i = 0; i < 4; ++i) {
+    for (u8 i = 0; i < PLTTBUF_EX_BEGIN; ++i) {
         sub_020037A0(data, i, 0x10);
     }
 }
 
 void sub_02003780(PaletteData *data) {
-    for (u8 i = 4; i < 14; ++i) {
+    for (u8 i = PLTTBUF_EX_BEGIN; i < PLTTBUF_MAX; ++i) {
         sub_020037A0(data, i, 0x100);
     }
 }
@@ -332,7 +332,7 @@ void sub_020038E4(PaletteData *data, u8 bufferID, SelectedPaletteData *selectedB
 void PaletteData_PushTransparentBuffers(PaletteData *plttData) {
     int i;
     if (plttData->autoTransparent || plttData->selectedFlag == 1) {
-        for (i = 0; i < 14; ++i) {
+        for (i = 0; i < PLTTBUF_MAX; ++i) {
             if (!plttData->autoTransparent) {
                 if (plttData->buffers[i].transparent == NULL) {
                     continue;
@@ -343,64 +343,64 @@ void PaletteData_PushTransparentBuffers(PaletteData *plttData) {
             }
             DC_FlushRange(plttData->buffers[i].transparent, plttData->buffers[i].size);
             switch (i) {
-            case 0:
+            case PLTTBUF_MAIN_BG:
                 GX_LoadBGPltt(plttData->buffers[i].transparent, 0, plttData->buffers[i].size);
                 break;
-            case 1:
+            case PLTTBUF_SUB_BG:
                 GXS_LoadBGPltt(plttData->buffers[i].transparent, 0, plttData->buffers[i].size);
                 break;
-            case 2:
+            case PLTTBUF_MAIN_OBJ:
                 GX_LoadOBJPltt(plttData->buffers[i].transparent, 0, plttData->buffers[i].size);
                 break;
-            case 3:
+            case PLTTBUF_SUB_OBJ:
                 GXS_LoadOBJPltt(plttData->buffers[i].transparent, 0, plttData->buffers[i].size);
                 break;
-            case 4:
+            case PLTTBUF_MAIN_EX_BG_0:
                 GX_BeginLoadBGExtPltt();
                 GX_LoadBGExtPltt(plttData->buffers[i].transparent, 0, plttData->buffers[i].size);
                 GX_EndLoadBGExtPltt();
                 break;
-            case 5:
+            case PLTTBUF_MAIN_EX_BG_1:
                 GX_BeginLoadBGExtPltt();
                 GX_LoadBGExtPltt(plttData->buffers[i].transparent, 0x2000, plttData->buffers[i].size);
                 GX_EndLoadBGExtPltt();
                 break;
-            case 6:
+            case PLTTBUF_MAIN_EX_BG_2:
                 GX_BeginLoadBGExtPltt();
                 GX_LoadBGExtPltt(plttData->buffers[i].transparent, 0x4000, plttData->buffers[i].size);
                 GX_EndLoadBGExtPltt();
                 break;
-            case 7:
+            case PLTTBUF_MAIN_EX_BG_3:
                 GX_BeginLoadBGExtPltt();
                 GX_LoadBGExtPltt(plttData->buffers[i].transparent, 0x6000, plttData->buffers[i].size);
                 GX_EndLoadBGExtPltt();
                 break;
-            case 8:
+            case PLTTBUF_SUB_EX_BG_0:
                 GXS_BeginLoadBGExtPltt();
                 GXS_LoadBGExtPltt(plttData->buffers[i].transparent, 0, plttData->buffers[i].size);
                 GXS_EndLoadBGExtPltt();
                 break;
-            case 9:
+            case PLTTBUF_SUB_EX_BG_1:
                 GXS_BeginLoadBGExtPltt();
                 GXS_LoadBGExtPltt(plttData->buffers[i].transparent, 0x2000, plttData->buffers[i].size);
                 GXS_EndLoadBGExtPltt();
                 break;
-            case 10:
+            case PLTTBUF_SUB_EX_BG_2:
                 GXS_BeginLoadBGExtPltt();
                 GXS_LoadBGExtPltt(plttData->buffers[i].transparent, 0x4000, plttData->buffers[i].size);
                 GXS_EndLoadBGExtPltt();
                 break;
-            case 11:
+            case PLTTBUF_SUB_EX_BG_3:
                 GXS_BeginLoadBGExtPltt();
                 GXS_LoadBGExtPltt(plttData->buffers[i].transparent, 0x6000, plttData->buffers[i].size);
                 GXS_EndLoadBGExtPltt();
                 break;
-            case 12:
+            case PLTTBUF_MAIN_EX_OBJ:
                 GX_BeginLoadOBJExtPltt();
                 GX_LoadOBJExtPltt(plttData->buffers[i].transparent, 0, plttData->buffers[i].size);
                 GX_EndLoadOBJExtPltt();
                 break;
-            case 13:
+            case PLTTBUF_SUB_EX_OBJ:
                 GXS_BeginLoadOBJExtPltt();
                 GXS_LoadOBJExtPltt(plttData->buffers[i].transparent, 0, plttData->buffers[i].size);
                 GXS_EndLoadOBJExtPltt();
@@ -435,16 +435,16 @@ void sub_02003BA8(u16 selectedBuffer, HeapID heapId) {
     memset(tmp, 0, 0x200);
     DC_FlushRange(tmp, 0x200);
 
-    if (selectedBuffer & (1 << 0)) {
+    if (selectedBuffer & (1 << PLTTBUF_MAIN_BG)) {
         GX_LoadBGPltt(tmp, 0, 0x200);
     }
-    if (selectedBuffer & (1 << 1)) {
+    if (selectedBuffer & (1 << PLTTBUF_SUB_BG)) {
         GXS_LoadBGPltt(tmp, 0, 0x200);
     }
-    if (selectedBuffer & (1 << 2)) {
+    if (selectedBuffer & (1 << PLTTBUF_MAIN_OBJ)) {
         GX_LoadOBJPltt(tmp, 0, 0x200);
     }
-    if (selectedBuffer & (1 << 3)) {
+    if (selectedBuffer & (1 << PLTTBUF_SUB_OBJ)) {
         GXS_LoadOBJPltt(tmp, 0, 0x200);
     }
 
@@ -454,52 +454,52 @@ void sub_02003BA8(u16 selectedBuffer, HeapID heapId) {
     memset(tmp, 0, 0x2000);
     DC_FlushRange(tmp, 0x2000);
 
-    if (selectedBuffer & (1 << 4)) {
+    if (selectedBuffer & (1 << PLTTBUF_MAIN_EX_BG_0)) {
         GX_BeginLoadBGExtPltt();
         GX_LoadBGExtPltt(tmp, 0, 0x2000);
         GX_EndLoadBGExtPltt();
     }
-    if (selectedBuffer & (1 << 5)) {
+    if (selectedBuffer & (1 << PLTTBUF_MAIN_EX_BG_1)) {
         GX_BeginLoadBGExtPltt();
         GX_LoadBGExtPltt(tmp, 0x2000, 0x2000);
         GX_EndLoadBGExtPltt();
     }
-    if (selectedBuffer & (1 << 6)) {
+    if (selectedBuffer & (1 << PLTTBUF_MAIN_EX_BG_2)) {
         GX_BeginLoadBGExtPltt();
         GX_LoadBGExtPltt(tmp, 0x4000, 0x2000);
         GX_EndLoadBGExtPltt();
     }
-    if (selectedBuffer & (1 << 7)) {
+    if (selectedBuffer & (1 << PLTTBUF_MAIN_EX_BG_3)) {
         GX_BeginLoadBGExtPltt();
         GX_LoadBGExtPltt(tmp, 0x6000, 0x2000);
         GX_EndLoadBGExtPltt();
     }
-    if (selectedBuffer & (1 << 8)) {
+    if (selectedBuffer & (1 << PLTTBUF_SUB_EX_BG_0)) {
         GXS_BeginLoadBGExtPltt();
         GXS_LoadBGExtPltt(tmp, 0, 0x2000);
         GXS_EndLoadBGExtPltt();
     }
-    if (selectedBuffer & (1 << 9)) {
+    if (selectedBuffer & (1 << PLTTBUF_SUB_EX_BG_1)) {
         GXS_BeginLoadBGExtPltt();
         GXS_LoadBGExtPltt(tmp, 0x2000, 0x2000);
         GXS_EndLoadBGExtPltt();
     }
-    if (selectedBuffer & (1 << 10)) {
+    if (selectedBuffer & (1 << PLTTBUF_SUB_EX_BG_2)) {
         GXS_BeginLoadBGExtPltt();
         GXS_LoadBGExtPltt(tmp, 0x4000, 0x2000);
         GXS_EndLoadBGExtPltt();
     }
-    if (selectedBuffer & (1 << 11)) {
+    if (selectedBuffer & (1 << PLTTBUF_SUB_EX_BG_3)) {
         GXS_BeginLoadBGExtPltt();
         GXS_LoadBGExtPltt(tmp, 0x6000, 0x2000);
         GXS_EndLoadBGExtPltt();
     }
-    if (selectedBuffer & (1 << 12)) {
+    if (selectedBuffer & (1 << PLTTBUF_MAIN_EX_OBJ)) {
         GX_BeginLoadOBJExtPltt();
         GX_LoadOBJExtPltt(tmp, 0, 0x2000);
         GX_EndLoadOBJExtPltt();
     }
-    if (selectedBuffer & (1 << 13)) {
+    if (selectedBuffer & (1 << PLTTBUF_SUB_EX_OBJ)) {
         GXS_BeginLoadOBJExtPltt();
         GXS_LoadOBJExtPltt(tmp, 0, 0x2000);
         GXS_EndLoadOBJExtPltt();
@@ -508,21 +508,21 @@ void sub_02003BA8(u16 selectedBuffer, HeapID heapId) {
     FreeToHeapExplicit(heapId, tmp);
 }
 
-void sub_02003D5C(PaletteData *plttData, int a1, int a2, u16 a3, u16 a4, u16 a5) {
-    GF_ASSERT(a5 * sizeof(u16) <= plttData->buffers[a1].size);
-    if (a2 == 1 || a2 == 2) {
-        MI_CpuFill16(&plttData->buffers[a1].opaque[a4], a3, (a5 - a4) * sizeof(u16));
+void sub_02003D5C(PaletteData *plttData, PaletteBufferId bufferID, int which, u16 value, u16 begin, u16 end) {
+    GF_ASSERT(end * sizeof(u16) <= plttData->buffers[bufferID].size);
+    if (which == 1 || which == 2) {
+        MI_CpuFill16(&plttData->buffers[bufferID].opaque[begin], value, (end - begin) * sizeof(u16));
     }
-    if (a2 == 0 || a2 == 2) {
-        MI_CpuFill16(&plttData->buffers[a1].transparent[a4], a3, (a5 - a4) * sizeof(u16));
+    if (which == 0 || which == 2) {
+        MI_CpuFill16(&plttData->buffers[bufferID].transparent[begin], value, (end - begin) * sizeof(u16));
     }
 }
 
-u16 sub_02003DBC(PaletteData *plttData, int a1, int a2, u16 a3) {
-    if (a2 == 1) {
-        return plttData->buffers[a1].opaque[a3];
-    } else if (a2 == 0) {
-        return plttData->buffers[a1].transparent[a3];
+u16 sub_02003DBC(PaletteData *plttData, PaletteBufferId bufferID, int which, u16 palIdx) {
+    if (which == 1) {
+        return plttData->buffers[bufferID].opaque[palIdx];
+    } else if (which == 0) {
+        return plttData->buffers[bufferID].transparent[palIdx];
     } else {
         GF_ASSERT(0);
         return 0;
@@ -546,12 +546,12 @@ void sub_02003DE8(const u16 *src, u16 *dest, u16 size, u8 cur, u16 target) {
     }
 }
 
-void sub_02003E5C(PaletteData *data, int bufferID, u16 offset, u16 size, u8 cur, u16 target) {
+void sub_02003E5C(PaletteData *data, PaletteBufferId bufferID, u16 offset, u16 size, u8 cur, u16 target) {
     GF_ASSERT(data->buffers[bufferID].opaque != NULL && data->buffers[bufferID].transparent != NULL);
     sub_02003DE8(&data->buffers[bufferID].opaque[offset], &data->buffers[bufferID].transparent[offset], size, cur, target);
 }
 
-void sub_02003EA4(PaletteData *data, int bufferID, u16 selectedBuffer, u8 cur, u16 target) {
+void sub_02003EA4(PaletteData *data, PaletteBufferId bufferID, u16 selectedBuffer, u8 cur, u16 target) {
     int i = 0;
 
     GF_ASSERT(data->buffers[bufferID].opaque != NULL && data->buffers[bufferID].transparent != NULL);
@@ -604,7 +604,7 @@ void TintPalette_CustomTone(u16 *palette, int count, int rTone, int gTone, int b
     }
 }
 
-void sub_02003FC8(PaletteData *data, NarcId narcId, s32 memberNo, HeapID heapId, u32 bufferID, u32 size, u16 pos, int rTone, int gTone, int bTone) {
+void sub_02003FC8(PaletteData *data, NarcId narcId, s32 memberNo, HeapID heapId, PaletteBufferId bufferID, u32 size, u16 pos, int rTone, int gTone, int bTone) {
     NNSG2dPaletteData *pPlttData;
     void *rawBuf = GfGfxLoader_GetPlttData(narcId, memberNo, &pPlttData, heapId);
     GF_ASSERT(rawBuf != NULL);
