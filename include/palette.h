@@ -4,6 +4,15 @@
 #include "filesystem.h"
 #include "heap.h"
 
+typedef struct RgbColor {
+    u16 r : 5;
+    u16 g : 5;
+    u16 b : 5;
+    u16 dummy : 1;
+} RgbColor;
+
+#define PaletteBlend(source, target, frac) ((source) + (((target) - (source)) * (frac) >> 4))
+
 typedef struct SelectedPaletteData {
     u16 opaqueBit;
     u16 wait:6;
@@ -57,5 +66,8 @@ u16 sub_02003B44(PaletteData *data);
 void PaletteData_SetAutoTransparent(PaletteData *data, BOOL autoTransparent);
 void sub_02003B74(PaletteData *plttData, BOOL a1);
 void sub_02003BA8(u16 selectedBuffer, HeapID heapId);
+void sub_02003D5C(PaletteData *plttData, int a1, int a2, u16 a3, u16 a4, u16 a5);
+u16 sub_02003DBC(PaletteData *plttData, int a1, int a2, u16 a3);
+void sub_02003DE8(const u16 *src, u16 *dest, u16 size, u8 cur, u16 target);
 
 #endif //POKEHEARTGOLD_PALETTE_H

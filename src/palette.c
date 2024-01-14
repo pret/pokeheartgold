@@ -298,9 +298,9 @@ void sub_02003858(u16 *opaque, u16 *transparent, SelectedPaletteData *selectedBi
     u32 i;
     u8 r, g, b;
     for (i = 0; i < size; ++i) {
-        r = (opaque[i] & 0x1F) + (((selectedBit->nextRGB & 0x1F) - (opaque[i] & 0x1F)) * selectedBit->cur >> 4);
-        g = ((opaque[i] >> 5) & 0x1F) + ((((selectedBit->nextRGB >> 5) & 0x1F) - ((opaque[i] >> 5) & 0x1F)) * selectedBit->cur >> 4);
-        b = ((opaque[i] >> 10) & 0x1F) + ((((selectedBit->nextRGB >> 10) & 0x1F) - ((opaque[i] >> 10) & 0x1F)) * selectedBit->cur >> 4);
+        r = PaletteBlend(opaque[i] & 0x1F, selectedBit->nextRGB & 0x1F, selectedBit->cur);
+        g = PaletteBlend((opaque[i] >> 5) & 0x1F, (selectedBit->nextRGB >> 5) & 0x1F, selectedBit->cur);
+        b = PaletteBlend((opaque[i] >> 10) & 0x1F, (selectedBit->nextRGB >> 10) & 0x1F, selectedBit->cur);
         transparent[i] = (b << 10) | (g << 5) | r;
     }
 }
@@ -506,4 +506,42 @@ void sub_02003BA8(u16 selectedBuffer, HeapID heapId) {
     }
 
     FreeToHeapExplicit(heapId, tmp);
+}
+
+void sub_02003D5C(PaletteData *plttData, int a1, int a2, u16 a3, u16 a4, u16 a5) {
+    GF_ASSERT(a5 * sizeof(u16) <= plttData->buffers[a1].size);
+    if (a2 == 1 || a2 == 2) {
+        MI_CpuFill16(&plttData->buffers[a1].opaque[a4], a3, (a5 - a4) * sizeof(u16));
+    }
+    if (a2 == 0 || a2 == 2) {
+        MI_CpuFill16(&plttData->buffers[a1].transparent[a4], a3, (a5 - a4) * sizeof(u16));
+    }
+}
+
+u16 sub_02003DBC(PaletteData *plttData, int a1, int a2, u16 a3) {
+    if (a2 == 1) {
+        return plttData->buffers[a1].opaque[a3];
+    } else if (a2 == 0) {
+        return plttData->buffers[a1].transparent[a3];
+    } else {
+        GF_ASSERT(0);
+        return 0;
+    }
+}
+
+void sub_02003DE8(const u16 *src, u16 *dest, u16 size, u8 cur, u16 target) {
+    u16 i;
+    int r1, g1, b1;
+    int r2, g2, b2;
+
+    r2 = ((RgbColor *)&target)->r;
+    g2 = ((RgbColor *)&target)->g;
+    b2 = ((RgbColor *)&target)->b;
+
+    for (i = 0; i < size; ++i) {
+        r1 = ((RgbColor *)&src[i])->r;
+        g1 = ((RgbColor *)&src[i])->g;
+        b1 = ((RgbColor *)&src[i])->b;
+        dest[i] = PaletteBlend(r1, r2, cur) | (PaletteBlend(g1, g2, cur) << 5) | (PaletteBlend(b1, b2, cur) << 10);
+    }
 }
