@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public sub_02003DE8
-.public sub_02003F04
+.public TintPalette_GrayScale
 .public TintPalette_CustomTone
 .public UnloadOverlayByID
 .public HandleLoadOverlay

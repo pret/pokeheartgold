@@ -545,3 +545,73 @@ void sub_02003DE8(const u16 *src, u16 *dest, u16 size, u8 cur, u16 target) {
         dest[i] = PaletteBlend(r1, r2, cur) | (PaletteBlend(g1, g2, cur) << 5) | (PaletteBlend(b1, b2, cur) << 10);
     }
 }
+
+void sub_02003E5C(PaletteData *data, int bufferID, u16 offset, u16 size, u8 cur, u16 target) {
+    GF_ASSERT(data->buffers[bufferID].opaque != NULL && data->buffers[bufferID].transparent != NULL);
+    sub_02003DE8(&data->buffers[bufferID].opaque[offset], &data->buffers[bufferID].transparent[offset], size, cur, target);
+}
+
+void sub_02003EA4(PaletteData *data, int bufferID, u16 selectedBuffer, u8 cur, u16 target) {
+    int i = 0;
+
+    GF_ASSERT(data->buffers[bufferID].opaque != NULL && data->buffers[bufferID].transparent != NULL);
+    while (selectedBuffer) {
+        if (selectedBuffer & 1) {
+            sub_02003E5C(data, bufferID, i, 0x10, cur, target);
+        }
+        selectedBuffer >>= 1;
+        i += 0x10;
+    }
+}
+
+void TintPalette_GrayScale(u16 *palette, int count) {
+    int i, r, g, b;
+    u32 gray;
+    for (i = 0; i < count; ++i) {
+        r = *palette & 0x1F;
+        g = (*palette >> 5) & 0x1F;
+        b = (*palette >> 10) & 0x1F;
+        // 0.3 * red + 0.59 * g + 0.1133 * b
+        gray = (76 * r + 151 * g + 29 * b) >> 8;
+        *palette++ = (gray << 10) | (gray << 5) | gray;
+    }
+}
+
+void TintPalette_CustomTone(u16 *palette, int count, int rTone, int gTone, int bTone) {
+    int i, r, g, b;
+    u32 gray;
+    for (i = 0; i < count; ++i) {
+        r = *palette & 0x1F;
+        g = (*palette >> 5) & 0x1F;
+        b = (*palette >> 10) & 0x1F;
+        // 0.3 * red + 0.59 * g + 0.1133 * b
+        gray = (76 * r + 151 * g + 29 * b) >> 8;
+        r = (u16)(rTone * gray) >> 8;
+        g = (u16)(gTone * gray) >> 8;
+        b = (u16)(bTone * gray) >> 8;
+
+        if (r > 31) {
+            r = 31;
+        }
+        if (g > 31) {
+            g = 31;
+        }
+        if (b > 31) {
+            b = 31;
+        }
+
+        *palette++ = (b << 10) | (g << 5) | r;
+    }
+}
+
+void sub_02003FC8(PaletteData *data, NarcId narcId, s32 memberNo, HeapID heapId, u32 bufferID, u32 size, u16 pos, int rTone, int gTone, int bTone) {
+    NNSG2dPaletteData *pPlttData;
+    void *rawBuf = GfGfxLoader_GetPlttData(narcId, memberNo, &pPlttData, heapId);
+    GF_ASSERT(rawBuf != NULL);
+    if (size == 0) {
+        size = pPlttData->szByte;
+    }
+    TintPalette_CustomTone(pPlttData->pRawData, 0x10, rTone, gTone, bTone);
+    PaletteData_LoadPalette(data, pPlttData->pRawData, bufferID, pos, size);
+    FreeToHeap(rawBuf);
+}

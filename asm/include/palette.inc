@@ -27,7 +27,7 @@
 .public sub_02003DE8
 .public sub_02003E5C
 .public sub_02003EA4
-.public sub_02003F04
+.public TintPalette_GrayScale
 .public TintPalette_CustomTone
 .public sub_02003FC8
 .public sub_020040AC

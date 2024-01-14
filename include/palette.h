@@ -59,7 +59,6 @@ u16 *PaletteData_GetUnfadedBuf(PaletteData *data, int bufferID);
 u16 *PaletteData_GetFadedBuf(PaletteData *data, int bufferID);
 u8 sub_02003370(PaletteData *data, u16 toSelect, u16 opaqueBit, s8 wait, u8 cur, u8 end, u16 nextRGB);
 u8 sub_02003474(PaletteData *data, u16 toSelect, u16 opaqueBit, s8 wait, u8 cur, u8 end, u16 nextRGB);
-void sub_02003E5C(PaletteData *data, u32, u32, u32, u8, u32);
 void sub_0200374C(PaletteData *data);
 void PaletteData_PushTransparentBuffers(PaletteData *data);
 u16 sub_02003B44(PaletteData *data);
@@ -69,5 +68,10 @@ void sub_02003BA8(u16 selectedBuffer, HeapID heapId);
 void sub_02003D5C(PaletteData *plttData, int a1, int a2, u16 a3, u16 a4, u16 a5);
 u16 sub_02003DBC(PaletteData *plttData, int a1, int a2, u16 a3);
 void sub_02003DE8(const u16 *src, u16 *dest, u16 size, u8 cur, u16 target);
+void sub_02003E5C(PaletteData *data, int bufferID, u16 offset, u16 size, u8 cur, u16 target);
+void sub_02003EA4(PaletteData *data, int bufferID, u16 selectedBuffer, u8 cur, u16 target);
+void TintPalette_GrayScale(u16 *palette, int count);
+void TintPalette_CustomTone(u16 *palette, int count, int rTone, int gTone, int bTone);
+void sub_02003FC8(PaletteData *data, NarcId narcId, s32 memberNo, HeapID heapId, u32 bufferID, u32 size, u16 pos, int rTone, int gTone, int bTone);
 
 #endif //POKEHEARTGOLD_PALETTE_H
