@@ -92,5 +92,6 @@ void sub_02003EA4(PaletteData *data, PaletteBufferId bufferID, u16 selectedBuffe
 void TintPalette_GrayScale(u16 *palette, int count);
 void TintPalette_CustomTone(u16 *palette, int count, int rTone, int gTone, int bTone);
 void sub_02003FC8(PaletteData *data, NarcId narcId, s32 memberNo, HeapID heapId, PaletteBufferId bufferID, u32 size, u16 pos, int rTone, int gTone, int bTone);
+void sub_020040AC(PaletteData *plttData, int transparentBit, int opaqueBit, int denom, int numer, u16 target);
 
 #endif //POKEHEARTGOLD_PALETTE_H

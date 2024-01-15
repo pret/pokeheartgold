@@ -16,6 +16,7 @@ void sub_020037A0(PaletteData *data, u16 bufferID, u16 size);
 void sub_020037FC(PaletteData *data, u16 bufferID, u16 size);
 void sub_02003858(u16 *opaque, u16 *transparent, SelectedPaletteData *selectedBit, u16 size);
 void sub_020038E4(PaletteData *data, u8 bufferID, SelectedPaletteData *selectedBit);
+void sub_02004020(const u16 *src, u16 *dest, int denom, int numer, int rTarget, int gTarget, int bTarget);
 
 PaletteData *PaletteData_Init(HeapID heapId) {
     PaletteData *ret = AllocFromHeap(heapId, sizeof(PaletteData));
@@ -614,4 +615,48 @@ void sub_02003FC8(PaletteData *data, NarcId narcId, s32 memberNo, HeapID heapId,
     TintPalette_CustomTone(pPlttData->pRawData, 0x10, rTone, gTone, bTone);
     PaletteData_LoadPalette(data, pPlttData->pRawData, bufferID, pos, size);
     FreeToHeap(rawBuf);
+}
+
+void sub_02004020(const u16 *src, u16 *dest, int denom, int numer, int rTarget, int gTarget, int bTarget) {
+    int i, r, g, b;
+
+    for (i = 0; i < 16; ++i) {
+        r = *src & 0x1F;
+        g = (*src >> 5) & 0x1F;
+        b = (*src >> 10) & 0x1F;
+
+        r += (rTarget - r) * numer / denom;
+        g += (gTarget - g) * numer / denom;
+        b += (bTarget - b) * numer / denom;
+
+        *dest = (b << 10) | (g << 5) | r;
+
+        ++src;
+        ++dest;
+    }
+}
+
+void sub_020040AC(PaletteData *plttData, int transparentBit, int opaqueBit, int denom, int numer, u16 target) {
+    int i, j, r, g, b;
+
+    plttData->selectedFlag = 1;
+    plttData->transparentBit = transparentBit;
+
+    r = target & 0x1F;
+    g = (target >> 5) & 0x1F;
+    b = (target >> 10) & 0x1F;
+
+    for (i = 0; i < PLTTBUF_MAX; ++i) {
+        if (plttData->buffers[i].transparent != NULL && (transparentBit >> i) & 1) {
+            plttData->buffers[i].selected.opaqueBit = opaqueBit;
+            plttData->buffers[i].size = 0x200;
+            for (j = 0; j < 16; ++j) {
+                if ((opaqueBit >> j) & 1) {
+                    sub_02004020(&plttData->buffers[i].opaque[j * 16], &plttData->buffers[i].transparent[j * 16], denom, numer, r, g, b);
+                } else {
+                    MI_CpuCopyFast(&plttData->buffers[i].opaque[j * 16], &plttData->buffers[i].transparent[j * 16], 0x20);
+                }
+            }
+        }
+    }
 }
