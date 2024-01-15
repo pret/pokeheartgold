@@ -6974,7 +6974,7 @@ ov12_022698C4: ; 0x022698C4
 	ldr r0, [r5]
 	bl BattleSystem_GetPaletteData
 	add r4, r0, #0
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _02269944
 	ldr r0, _02269948 ; =0x00000696
@@ -6989,7 +6989,7 @@ ov12_022698C4: ; 0x022698C4
 	ldr r0, _0226994C ; =0x00007E37
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	ldr r1, _02269950 ; =0x00000694
 	ldrb r0, [r5, r1]
 	cmp r0, #0
@@ -7054,7 +7054,7 @@ ov12_02269954: ; 0x02269954
 	ldr r0, [r5]
 	bl BattleSystem_GetPaletteData
 	add r4, r0, #0
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _02269A1C
 	add r0, r4, #0
@@ -9397,7 +9397,7 @@ _0226AAB4:
 	mov r1, #1
 	mov r2, #0x10
 	mov r3, #0x20
-	bl sub_020032A4
+	bl PalleteData_LoadPaletteSlotFromHardware
 	mov r0, #6
 	str r0, [sp]
 	mov r3, #1

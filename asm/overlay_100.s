@@ -592,7 +592,7 @@ _021E5D4E:
 	ldr r0, [r4, #0x78]
 	add r2, r1, #0
 	mov r3, #0xe0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	ldrb r1, [r4, #9]
 	mov r0, #0x10
 	mov r2, #0x40
@@ -605,7 +605,7 @@ _021E5D4E:
 	ldr r0, [r4, #0x78]
 	mov r1, #2
 	mov r3, #0xc0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	b _021E5DAC
 _021E5D88:
 	str r2, [sp]
@@ -614,7 +614,7 @@ _021E5D88:
 	ldr r0, [r4, #0x78]
 	add r2, r1, #0
 	mov r3, #0xe0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	ldrb r0, [r4, #9]
 	mov r1, #2
 	mov r2, #0x40
@@ -623,7 +623,7 @@ _021E5D88:
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x78]
 	mov r3, #0xc0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 _021E5DAC:
 	ldrb r0, [r4, #9]
 	cmp r0, #0x10

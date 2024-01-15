@@ -1445,7 +1445,7 @@ ov63_0221C99C: ; 0x0221C99C
 	mov r1, #1
 	bl NNS_G2dGetImagePaletteLocation
 	add r6, r0, #0
-	bl sub_02026EA4
+	bl GetMainObjPlttAddr
 	mov r1, #1
 	bic r6, r1
 	mov r1, #1

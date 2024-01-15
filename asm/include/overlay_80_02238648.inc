@@ -8,10 +8,10 @@
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
 .public PaletteData_LoadNarc
-.public sub_020032A4
+.public PalleteData_LoadPaletteSlotFromHardware
 .public PaletteData_PushTransparentBuffers
 .public PaletteData_SetAutoTransparent
-.public sub_02003D5C
+.public PaletteData_FillPaletteInBuffer
 .public sub_02004AC8
 .public NARC_New
 .public NARC_Delete

@@ -1,8 +1,8 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public PaletteData_LoadNarc
-.public sub_02003370
-.public sub_02003B44
+.public PaletteData_BeginPaletteFade
+.public PaletteData_GetSelectedBuffersBitmask
 .public PaletteData_SetAutoTransparent
 .public PlayBGM
 .public sub_0200602C

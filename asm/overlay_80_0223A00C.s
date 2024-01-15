@@ -362,7 +362,7 @@ _0223A1BA:
 	mov r1, #2
 	lsr r2, r2, #0x10
 	mov r3, #0x10
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	ldr r0, [r4, #0x24]
 	mov r1, #2
 	str r0, [sp]
@@ -640,7 +640,7 @@ _0223A534:
 	mov r1, #2
 	lsr r2, r2, #0x10
 	mov r3, #0xe
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r0, #0
 	str r0, [sp]
 	mov r2, #0x16
@@ -652,7 +652,7 @@ _0223A534:
 	mov r1, #2
 	lsr r2, r2, #0x10
 	mov r3, #0x10
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #0xd
 	mvn r0, r0
 	mov r1, #0x2c

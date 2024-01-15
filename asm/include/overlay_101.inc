@@ -13,7 +13,7 @@
 .public PaletteData_LoadFromOpenNarc
 .public PaletteData_PushTransparentBuffers
 .public PaletteData_SetAutoTransparent
-.public sub_02003E5C
+.public PaletteData_BlendPalette
 .public SndRadio_StartSeq
 .public SndRadio_StopSeq
 .public SndRadio_CountPlayingSeq

@@ -1912,7 +1912,7 @@ _0222C680:
 	add r0, r5, #0
 	mov r2, #2
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov40_0222C4F8
@@ -2890,7 +2890,7 @@ _0222CE4C:
 	ldr r0, [sp, #4]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add sp, #0x50
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4759,7 +4759,7 @@ ov40_0222DD08: ; 0x0222DD08
 	ldr r0, [r4, #0x28]
 	mov r1, #2
 	mov r3, #0
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #0
 	lsl r0, r0, #0x10
@@ -4768,7 +4768,7 @@ ov40_0222DD08: ; 0x0222DD08
 	ldr r0, [r4, #0x28]
 	ldr r2, _0222DD64 ; =0x0000FFFF
 	add r3, r1, #0
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _0222DD64 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -4777,7 +4777,7 @@ ov40_0222DD08: ; 0x0222DD08
 	ldr r0, [r4, #0x28]
 	mov r1, #3
 	mov r3, #0
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _0222DD64 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -4786,7 +4786,7 @@ ov40_0222DD08: ; 0x0222DD08
 	ldr r0, [r4, #0x28]
 	mov r1, #1
 	mov r3, #0
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add sp, #4
 	pop {r3, r4, pc}
 	nop
@@ -11169,7 +11169,7 @@ _02230F12:
 	ldr r2, _022310E8 ; =0x0000FFFE
 	mov r1, #2
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add r0, r4, #0
 	bl ov40_0222DAF0
 	lsl r0, r0, #0x10
@@ -11179,7 +11179,7 @@ _02230F12:
 	ldr r2, _022310EC ; =0x0000BFFF
 	mov r1, #0
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add r0, r4, #0
 	bl ov40_0222DAF0
 	lsl r0, r0, #0x10
@@ -11189,7 +11189,7 @@ _02230F12:
 	ldr r2, _022310F0 ; =0x00003FFE
 	mov r1, #3
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add r0, r4, #0
 	bl ov40_0222DAF0
 	lsl r0, r0, #0x10
@@ -11199,7 +11199,7 @@ _02230F12:
 	ldr r2, _022310F4 ; =0x0000FFFF
 	mov r1, #1
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, _022310F8 ; =0x000006F4
 	ldr r0, [r4, r0]
 	bl sub_02087A30
@@ -11308,7 +11308,7 @@ _02231056:
 	mov r1, #0
 	lsl r2, r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _022310E2
 _02231078:
 	add r0, r1, #1
@@ -11329,7 +11329,7 @@ _0223107E:
 	mov r1, #0
 	lsl r2, r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _022310E2
 _022310A0:
 	add r0, r1, #1
@@ -11509,7 +11509,7 @@ _02231202:
 	ldr r2, _0223130C ; =0x0000FFFE
 	mov r1, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add r0, r4, #0
 	bl ov40_0222DAF0
 	lsl r0, r0, #0x10
@@ -11521,7 +11521,7 @@ _02231202:
 	ldr r2, _02231310 ; =0x0000FFFF
 	mov r1, #0
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add r0, r4, #0
 	bl ov40_0222DAF0
 	lsl r0, r0, #0x10
@@ -11533,7 +11533,7 @@ _02231202:
 	ldr r2, _02231314 ; =0x00003FFE
 	mov r1, #3
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add r0, r4, #0
 	bl ov40_0222DAF0
 	lsl r0, r0, #0x10
@@ -11545,7 +11545,7 @@ _02231202:
 	ldr r2, _02231310 ; =0x0000FFFF
 	mov r1, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _022312FC
 _0223127E:
 	ldr r0, [r4, #0x58]
@@ -11556,7 +11556,7 @@ _0223127E:
 	ldr r0, [r4, #0x28]
 	mov r2, #2
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #2
 	lsl r0, r0, #0x10
@@ -11565,7 +11565,7 @@ _0223127E:
 	ldr r0, [r4, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -11673,7 +11673,7 @@ _02231330:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0xc]
 	cmp r0, #2
 	bne _022313EA
@@ -11694,7 +11694,7 @@ _02231398:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -11713,7 +11713,7 @@ _022313B8:
 	ldr r0, [r4, #0x28]
 	lsl r3, r3, #0x18
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0xc]
 	cmp r0, #0
 	bne _022313EA
@@ -11796,7 +11796,7 @@ _0223143E:
 	ldr r0, [r5, #0x28]
 	mov r1, #2
 	mov r2, #0xc
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r0, #0
 	str r0, [sp, #0x14]
 	mov r0, #0x6e
@@ -11910,7 +11910,7 @@ _0223152A:
 	ldrb r3, [r3]
 	ldr r0, [r5, #0x28]
 	mov r2, #0xc
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02231560:
 	mov r0, #0
 	str r0, [sp, #0xc]
@@ -12204,7 +12204,7 @@ _02231788:
 	ldr r2, _0223185C ; =0x0000FFFE
 	mov r1, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add r0, r4, #0
 	bl ov40_0222DAF0
 	lsl r0, r0, #0x10
@@ -12216,7 +12216,7 @@ _02231788:
 	ldr r2, _02231860 ; =0x0000FFFF
 	mov r1, #0
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add r0, r4, #0
 	bl ov40_0222DAF0
 	lsl r0, r0, #0x10
@@ -12228,7 +12228,7 @@ _02231788:
 	ldr r2, _02231864 ; =0x00003FFE
 	mov r1, #3
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add r0, r4, #0
 	bl ov40_0222DAF0
 	lsl r0, r0, #0x10
@@ -12240,7 +12240,7 @@ _02231788:
 	ldr r2, _02231860 ; =0x0000FFFF
 	mov r1, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02231850
 _02231802:
 	mov r0, #0x10
@@ -12606,7 +12606,7 @@ _02231A9A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02231AC8:
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0xc]
@@ -13066,7 +13066,7 @@ _02231E38:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02231E60:
 	ldr r0, [r4, #4]
 	cmp r0, #0
@@ -13168,7 +13168,7 @@ _02231F0C:
 	lsl r3, r3, #0x18
 	mov r1, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232090 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13179,7 +13179,7 @@ _02231F0C:
 	lsl r3, r3, #0x18
 	mov r1, #0
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232090 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13190,7 +13190,7 @@ _02231F0C:
 	lsl r3, r3, #0x18
 	mov r1, #3
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232090 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13201,7 +13201,7 @@ _02231F0C:
 	lsl r3, r3, #0x18
 	mov r1, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02232088
 _02231F6E:
 	mov r0, #0x10
@@ -13225,7 +13225,7 @@ _02231F6E:
 	lsl r3, r3, #0x18
 	mov r1, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232090 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13236,7 +13236,7 @@ _02231F6E:
 	lsl r3, r3, #0x18
 	mov r1, #0
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232090 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13247,7 +13247,7 @@ _02231F6E:
 	lsl r3, r3, #0x18
 	mov r1, #3
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232090 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13258,7 +13258,7 @@ _02231F6E:
 	lsl r3, r3, #0x18
 	mov r1, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -13295,7 +13295,7 @@ _0223201E:
 	lsl r3, r3, #0x18
 	mov r1, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232090 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13306,7 +13306,7 @@ _0223201E:
 	lsl r3, r3, #0x18
 	mov r1, #0
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232090 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13317,7 +13317,7 @@ _0223201E:
 	lsl r3, r3, #0x18
 	mov r1, #3
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232090 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13328,7 +13328,7 @@ _0223201E:
 	lsl r3, r3, #0x18
 	mov r1, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02232088
 _02232080:
 	add r0, r4, #0
@@ -13410,7 +13410,7 @@ _02232100:
 	lsl r3, r3, #0x18
 	mov r1, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232284 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13421,7 +13421,7 @@ _02232100:
 	lsl r3, r3, #0x18
 	mov r1, #0
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232284 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13432,7 +13432,7 @@ _02232100:
 	lsl r3, r3, #0x18
 	mov r1, #3
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232284 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13443,7 +13443,7 @@ _02232100:
 	lsl r3, r3, #0x18
 	mov r1, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223227E
 _02232162:
 	mov r0, #0x10
@@ -13467,7 +13467,7 @@ _02232162:
 	lsl r3, r3, #0x18
 	mov r1, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232284 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13478,7 +13478,7 @@ _02232162:
 	lsl r3, r3, #0x18
 	mov r1, #0
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232284 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13489,7 +13489,7 @@ _02232162:
 	lsl r3, r3, #0x18
 	mov r1, #3
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232284 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13500,7 +13500,7 @@ _02232162:
 	lsl r3, r3, #0x18
 	mov r1, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -13537,7 +13537,7 @@ _02232212:
 	lsl r3, r3, #0x18
 	mov r1, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232284 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13548,7 +13548,7 @@ _02232212:
 	lsl r3, r3, #0x18
 	mov r1, #0
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232284 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13559,7 +13559,7 @@ _02232212:
 	lsl r3, r3, #0x18
 	mov r1, #3
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232284 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13570,7 +13570,7 @@ _02232212:
 	lsl r3, r3, #0x18
 	mov r1, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223227E
 _02232274:
 	mov r1, #0
@@ -13660,7 +13660,7 @@ _0223230C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -13671,7 +13671,7 @@ _0223230C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #1
 	lsl r0, r0, #0x10
@@ -13682,7 +13682,7 @@ _0223230C:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02232460
 _02232356:
 	mov r1, #1
@@ -13937,7 +13937,7 @@ _0223256A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223258C
 _02232584:
 	add r0, r4, #0
@@ -14341,7 +14341,7 @@ _022328B2:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02232A30
 _022328CC:
 	bl ov40_022326DC
@@ -14402,7 +14402,7 @@ _0223293A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02232A30
 _02232954:
 	ldr r0, _02232A38 ; =ov40_0224512C
@@ -14490,7 +14490,7 @@ _022329F4:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02232A30
 _02232A0E:
 	mov r0, #0x66
@@ -14788,7 +14788,7 @@ _02232C5C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02232D3E
 _02232C76:
 	mov r1, #1
@@ -14840,7 +14840,7 @@ _02232CBA:
 	ldr r0, [r5, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r5, #0x10]
 	add r0, r5, #0
@@ -14863,7 +14863,7 @@ _02232D0E:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #1
 	lsl r0, r0, #0x10
@@ -14874,7 +14874,7 @@ _02232D0E:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02232D3E:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -15025,7 +15025,7 @@ _02232E64:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02232EC2
 _02232E7E:
 	mov r0, #6
@@ -16894,7 +16894,7 @@ _02233D9C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -16905,7 +16905,7 @@ _02233D9C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #1
 	lsl r0, r0, #0x10
@@ -16916,7 +16916,7 @@ _02233D9C:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02233ED8
 _02233DE6:
 	add r0, r4, #0
@@ -16951,7 +16951,7 @@ _02233DE6:
 	lsl r3, r3, #0x18
 	mov r2, #0x1c
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -17015,7 +17015,7 @@ _02233EB6:
 	lsl r3, r3, #0x18
 	mov r2, #0x1c
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02233ED8
 _02233ED0:
 	add r0, r4, #0
@@ -17110,7 +17110,7 @@ _02233F66:
 	lsl r3, r3, #0x18
 	mov r2, #0x1c
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02234140 ; =0x00004018
 	lsl r0, r0, #0x10
@@ -17121,7 +17121,7 @@ _02233F66:
 	lsl r3, r3, #0x18
 	mov r1, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add r0, r4, #0
 	bl ov40_02233AEC
 	cmp r0, #0
@@ -17215,7 +17215,7 @@ _0223404A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -17226,7 +17226,7 @@ _0223404A:
 	lsl r3, r3, #0x18
 	mov r2, #0x1c
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #1
 	lsl r0, r0, #0x10
@@ -17237,7 +17237,7 @@ _0223404A:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02234136
 _0223409E:
 	add r0, r5, #0
@@ -17273,7 +17273,7 @@ _0223409E:
 	ldr r0, [r4, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r4, #0x10]
 	add r0, r4, #0
@@ -17294,7 +17294,7 @@ _02234106:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #1
 	lsl r0, r0, #0x10
@@ -17305,7 +17305,7 @@ _02234106:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02234136:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -17420,7 +17420,7 @@ _02234210:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -17431,7 +17431,7 @@ _02234210:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #1
 	lsl r0, r0, #0x10
@@ -17442,7 +17442,7 @@ _02234210:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02234328
 _0223425A:
 	mov r0, #0
@@ -17618,7 +17618,7 @@ _022343DA:
 	ldr r0, [r5, #0x28]
 	add r2, r1, #0
 	lsl r3, r3, #8
-	bl sub_020032A4
+	bl PalleteData_LoadPaletteSlotFromHardware
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -17657,7 +17657,7 @@ _02234426:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02234446
 _02234440:
 	mov r1, #3
@@ -17858,7 +17858,7 @@ _022345E0:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _022347F2
 _022345FA:
 	mov r1, #0x6f
@@ -18037,7 +18037,7 @@ _02234776:
 	ldr r0, [r4, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r4, #0x10]
 	add r0, r4, #0
@@ -18065,7 +18065,7 @@ _022347C2:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -18076,7 +18076,7 @@ _022347C2:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _022347F2:
 	mov r0, #0
 	add sp, #8
@@ -18189,7 +18189,7 @@ _022348DE:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02234A08
 _022348F8:
 	add r4, #8
@@ -18264,7 +18264,7 @@ _02234984:
 	ldr r0, [r5, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r5, #0x10]
 	add r0, r5, #0
@@ -18292,7 +18292,7 @@ _022349D8:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -18303,7 +18303,7 @@ _022349D8:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02234A08:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -18419,7 +18419,7 @@ _02234AD4:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02234BAC
 _02234AEE:
 	mov r0, #0x1d
@@ -18496,7 +18496,7 @@ _02234B76:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02234BAC
 _02234B90:
 	mov r0, #0x79
@@ -18713,7 +18713,7 @@ _02234D40:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02234D7C
 _02234D5A:
 	add r0, r4, #0
@@ -18840,7 +18840,7 @@ _02234E60:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02234F8A
 _02234E7A:
 	add r4, #8
@@ -18915,7 +18915,7 @@ _02234F06:
 	ldr r0, [r5, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r5, #0x10]
 	add r0, r5, #0
@@ -18943,7 +18943,7 @@ _02234F5A:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -18954,7 +18954,7 @@ _02234F5A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02234F8A:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -19231,7 +19231,7 @@ _022351D0:
 	ldr r0, [r5, #0x28]
 	add r2, r1, #0
 	lsl r3, r3, #8
-	bl sub_020032A4
+	bl PalleteData_LoadPaletteSlotFromHardware
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -19280,7 +19280,7 @@ _02235234:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02235254
 _0223524E:
 	mov r1, #8
@@ -19500,7 +19500,7 @@ _02235410:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02235430
 _0223542A:
 	mov r1, #3
@@ -19694,7 +19694,7 @@ _022355AE:
 	ldr r0, [r5, #0x28]
 	add r2, r1, #0
 	lsl r3, r3, #8
-	bl sub_020032A4
+	bl PalleteData_LoadPaletteSlotFromHardware
 _022355C2:
 	ldr r0, [r5, #8]
 	add r0, r0, #1
@@ -19946,7 +19946,7 @@ _022357C6:
 	ldr r0, [r5, #0x28]
 	add r2, r1, #0
 	lsl r3, r3, #8
-	bl sub_020032A4
+	bl PalleteData_LoadPaletteSlotFromHardware
 _022357DA:
 	ldr r0, [r5, #8]
 	add r0, r0, #1
@@ -21878,7 +21878,7 @@ _022366FC:
 	mov r1, #2
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r3, #0x6b
 	lsl r0, r0, #0x10
@@ -21891,7 +21891,7 @@ _022366FC:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r3, #0x6b
 	lsl r0, r0, #0x10
@@ -21904,7 +21904,7 @@ _022366FC:
 	mov r1, #1
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _022367B2
 _02236752:
 	mov r1, #1
@@ -22219,7 +22219,7 @@ _022369D8:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02236A4E
 _022369F6:
 	mov r0, #0x6b
@@ -22260,7 +22260,7 @@ _02236A32:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02236A4E:
 	mov r0, #0
 	add sp, #0x10
@@ -22396,7 +22396,7 @@ _02236B40:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02236C50
 _02236B5E:
 	add r0, r0, #1
@@ -22592,7 +22592,7 @@ _02236CE6:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02236D52
 _02236D04:
 	mov r0, #0x6b
@@ -22629,7 +22629,7 @@ _02236D36:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02236D52:
 	mov r0, #0
 	add sp, #0x10
@@ -22718,7 +22718,7 @@ _02236DEE:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02236E12
 _02236E0C:
 	mov r1, #0xa
@@ -22797,7 +22797,7 @@ _02236E88:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02236EAC
 _02236EA6:
 	mov r1, #0xd
@@ -23976,7 +23976,7 @@ _022377F8:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02237814:
 	mov r0, #0
 	add sp, #0x10
@@ -24095,7 +24095,7 @@ _022378DE:
 	ldr r0, [r5, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r5, #0x10]
 	add r0, r5, #0
@@ -24124,7 +24124,7 @@ _02237938:
 	mov r1, #1
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r3, #0x6b
 	lsl r0, r0, #0x10
@@ -24137,7 +24137,7 @@ _02237938:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02237970:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -24274,7 +24274,7 @@ _02237A7C:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02237A98:
 	mov r0, #0
 	add sp, #0x10
@@ -24785,7 +24785,7 @@ _02237E8A:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02238272
 _02237EA8:
 	mov r1, #0x6f
@@ -25066,7 +25066,7 @@ _02238104:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02238272
 	nop
 _02238124: .word 0x000006F4
@@ -25197,7 +25197,7 @@ _0223823A:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r3, #0x6b
 	lsl r0, r0, #0x10
@@ -25210,7 +25210,7 @@ _0223823A:
 	mov r1, #2
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02238272:
 	mov r0, #0
 	add sp, #0x14
@@ -25856,7 +25856,7 @@ _022387D8:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _022387F4:
 	mov r0, #0
 	add sp, #0x10
@@ -26585,7 +26585,7 @@ _02238E1E:
 	ldr r0, [r5, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r5, #0x10]
 	add r0, r5, #0
@@ -26614,7 +26614,7 @@ _02238E78:
 	mov r1, #1
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r3, #0x6b
 	lsl r0, r0, #0x10
@@ -26627,7 +26627,7 @@ _02238E78:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02238EB0:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -28108,7 +28108,7 @@ _02239A82:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -28119,7 +28119,7 @@ _02239A82:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #1
 	lsl r0, r0, #0x10
@@ -28130,7 +28130,7 @@ _02239A82:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02239B52
 _02239ACC:
 	mov r1, #1
@@ -28540,7 +28540,7 @@ _02239E18:
 	ldr r0, [r4, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r4, #0x10]
 	add r0, r4, #0
@@ -28563,7 +28563,7 @@ _02239E6E:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -28574,7 +28574,7 @@ _02239E6E:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02239EC8
 _02239EA0:
 	add r0, r4, #0
@@ -28731,7 +28731,7 @@ _02239FF0:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #2
 	lsl r0, r0, #0x10
@@ -28742,7 +28742,7 @@ _02239FF0:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223A028
 _0223A022:
 	mov r1, #6
@@ -28865,7 +28865,7 @@ _0223A10C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #2
 	lsl r0, r0, #0x10
@@ -28876,7 +28876,7 @@ _0223A10C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223A144
 _0223A13E:
 	mov r1, #8
@@ -28976,7 +28976,7 @@ _0223A1EA:
 	ldr r0, [r5, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r5, #0x10]
 	add r0, r5, #0
@@ -28999,7 +28999,7 @@ _0223A23E:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -29010,7 +29010,7 @@ _0223A23E:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _0223A26E:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -29561,7 +29561,7 @@ _0223A6CE:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223A812
 _0223A6E8:
 	add r0, r4, #0
@@ -29824,7 +29824,7 @@ _0223A8FE:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223A91E
 _0223A918:
 	mov r1, #0xc
@@ -29906,7 +29906,7 @@ _0223A99C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223ABFC
 _0223A9B6:
 	ldr r2, _0223AC08 ; =0x000004D4
@@ -30108,7 +30108,7 @@ _0223AB4A:
 	ldr r0, [r4, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r4, #0x10]
 	add r0, r4, #0
@@ -30147,7 +30147,7 @@ _0223ABCC:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -30158,7 +30158,7 @@ _0223ABCC:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _0223ABFC:
 	mov r0, #0
 	add sp, #8
@@ -30230,7 +30230,7 @@ _0223AC80:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223ACC6
 _0223AC9A:
 	add r0, r4, #0
@@ -30327,7 +30327,7 @@ _0223AD40:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223AF18
 _0223AD5A:
 	add r0, #0xc
@@ -30509,7 +30509,7 @@ _0223AED2:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223AF18
 _0223AEEC:
 	ldr r1, _0223AF20 ; =0x00004138
@@ -30633,7 +30633,7 @@ _0223AFC2:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223B180
 _0223AFDC:
 	bl ov40_0223A430
@@ -30804,7 +30804,7 @@ _0223B13A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223B180
 _0223B154:
 	ldr r1, _0223B18C ; =0x00004138
@@ -30954,7 +30954,7 @@ _0223B278:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223B298
 _0223B292:
 	mov r1, #3
@@ -31442,7 +31442,7 @@ _0223B65A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -31453,7 +31453,7 @@ _0223B65A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #1
 	lsl r0, r0, #0x10
@@ -31464,7 +31464,7 @@ _0223B65A:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223B756
 _0223B6A4:
 	mov r0, #0
@@ -31790,7 +31790,7 @@ _0223B940:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223BA58
 _0223B95A:
 	add r0, r4, #0
@@ -31837,7 +31837,7 @@ _0223B98E:
 	ldr r0, [r4, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r4, #0x10]
 	add r0, r4, #0
@@ -31872,7 +31872,7 @@ _0223BA04:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -31883,7 +31883,7 @@ _0223BA04:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223BA58
 _0223BA36:
 	mov r0, #0x6f
@@ -32239,7 +32239,7 @@ _0223BD3C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #2
 	lsl r0, r0, #0x10
@@ -32250,7 +32250,7 @@ _0223BD3C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223BD74
 _0223BD6E:
 	mov r1, #4
@@ -32460,7 +32460,7 @@ _0223BF24:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #2
 	lsl r0, r0, #0x10
@@ -32471,7 +32471,7 @@ _0223BF24:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223BF5E
 _0223BF56:
 	ldr r1, _0223BF7C ; =0x00002034
@@ -32551,7 +32551,7 @@ _0223BFF0:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223C0D4
 _0223C00A:
 	add r4, #8
@@ -32592,7 +32592,7 @@ _0223C030:
 	ldr r0, [r5, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r5, #0x10]
 	add r0, r5, #0
@@ -32627,7 +32627,7 @@ _0223C0A4:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -32638,7 +32638,7 @@ _0223C0A4:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _0223C0D4:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -32790,7 +32790,7 @@ _0223C200:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223C222
 _0223C21A:
 	add r0, r4, #0
@@ -33336,7 +33336,7 @@ _0223C684:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223C6E2
 _0223C69E:
 	mov r0, #6
@@ -33623,7 +33623,7 @@ _0223C902:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223CC98
 _0223C91C:
 	ldr r1, _0223CC40 ; =0x00000115
@@ -33691,7 +33691,7 @@ _0223C99A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223CC98
 _0223C9B4:
 	add r0, r4, #0
@@ -33869,7 +33869,7 @@ _0223CB24:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223CC98
 _0223CB3E:
 	ldr r1, _0223CC48 ; =0x00004138
@@ -33987,7 +33987,7 @@ _0223CC24:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223CC98
 	nop
 _0223CC40: .word 0x00000115
@@ -34023,7 +34023,7 @@ _0223CC76:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223CC98
 _0223CC90:
 	add r0, r4, #0
@@ -36896,7 +36896,7 @@ _0223E2D4:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223E2F4
 _0223E2EE:
 	mov r1, #3
@@ -36990,7 +36990,7 @@ _0223E39E:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223E486
 _0223E3B8:
 	mov r1, #1
@@ -37032,7 +37032,7 @@ _0223E3E2:
 	ldr r0, [r5, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r5, #0x10]
 	add r0, r5, #0
@@ -37067,7 +37067,7 @@ _0223E456:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -37078,7 +37078,7 @@ _0223E456:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _0223E486:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -37131,7 +37131,7 @@ _0223E4D4:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223E516
 _0223E4EE:
 	ldr r1, _0223E51C ; =0x000004C5
@@ -37270,7 +37270,7 @@ _0223E5F2:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223E6D0
 _0223E60C:
 	ldr r0, _0223E6D8 ; =0x0000047C
@@ -37354,7 +37354,7 @@ _0223E6AE:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223E6D0
 _0223E6C8:
 	add r0, r4, #0
@@ -37621,7 +37621,7 @@ _0223E8CC:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223E994
 _0223E8E6:
 	ldr r0, _0223E998 ; =0x0000060C
@@ -37692,7 +37692,7 @@ _0223E960:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223E994
 _0223E97A:
 	ldr r0, _0223E9A0 ; =0x000004D8
@@ -37920,7 +37920,7 @@ _0223EB40:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223EB96
 _0223EB5A:
 	add r0, r5, #0
@@ -38343,7 +38343,7 @@ _0223EE9C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223EF84
 _0223EEB6:
 	ldr r0, _0223EF8C ; =0x0000047C
@@ -38432,7 +38432,7 @@ _0223EF62:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223EF84
 _0223EF7C:
 	add r0, r4, #0
@@ -38508,7 +38508,7 @@ _0223F004:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223F024
 _0223F01E:
 	mov r1, #3
@@ -38732,7 +38732,7 @@ _0223F1D2:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223F1F2
 _0223F1EC:
 	mov r1, #0xe
@@ -38929,7 +38929,7 @@ _0223F38A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #2
 	lsl r0, r0, #0x10
@@ -38940,7 +38940,7 @@ _0223F38A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223F3C2
 _0223F3BC:
 	mov r1, #0xf
@@ -39128,7 +39128,7 @@ _0223F546:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #2
 	lsl r0, r0, #0x10
@@ -39139,7 +39139,7 @@ _0223F546:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223F57E
 _0223F578:
 	ldr r1, [r4, #0xc]
@@ -39264,7 +39264,7 @@ _0223F678:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223F698
 _0223F692:
 	mov r1, #3
@@ -39431,7 +39431,7 @@ _0223F7E8:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223F80A
 _0223F802:
 	add r0, r4, #0
@@ -39607,7 +39607,7 @@ _0223F958:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223F978
 _0223F972:
 	mov r1, #0xe
@@ -39736,7 +39736,7 @@ _0223FA68:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223FC8C
 _0223FA82:
 	ldr r1, _0223FC94 ; =0x00000115
@@ -39941,7 +39941,7 @@ _0223FC32:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223FC8C
 _0223FC4C:
 	ldr r1, _0223FC9C ; =0x00004138
@@ -40213,7 +40213,7 @@ _0223FE1A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223FF68
 _0223FE34:
 	add r0, r4, #0
@@ -40620,7 +40620,7 @@ _0224019C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _022401FA
 _022401B6:
 	mov r0, #6
@@ -40750,7 +40750,7 @@ _022402BA:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -40761,7 +40761,7 @@ _022402BA:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #1
 	lsl r0, r0, #0x10
@@ -40772,7 +40772,7 @@ _022402BA:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02240414
 _02240304:
 	mov r1, #1
@@ -41016,7 +41016,7 @@ _022404F6:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02240516
 _02240510:
 	mov r1, #3
@@ -41115,7 +41115,7 @@ _022405B6:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _022405E6
 _022405D0:
 	add r1, #0xf4
@@ -41181,7 +41181,7 @@ _02240626:
 	ldr r0, [r5, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r5, #0x10]
 	add r0, r5, #0
@@ -41216,7 +41216,7 @@ _02240692:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #1
 	lsl r0, r0, #0x10
@@ -41227,7 +41227,7 @@ _02240692:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _022406C2:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -41741,7 +41741,7 @@ _02240AF6:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02240B18
 _02240B10:
 	add r0, r4, #0
@@ -41909,7 +41909,7 @@ _02240C4A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02240D42
 _02240C64:
 	add r5, #8
@@ -41953,7 +41953,7 @@ _02240C92:
 	ldr r0, [r4, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r4, #0x10]
 	add r0, r4, #0
@@ -41992,7 +41992,7 @@ _02240D12:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -42003,7 +42003,7 @@ _02240D12:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02240D42:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -42583,7 +42583,7 @@ _02241226:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _022413DC
 _02241240:
 	ldr r1, _022413E0 ; =0x00000115
@@ -42645,7 +42645,7 @@ _022412AE:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _022413DC
 _022412C8:
 	ldr r0, _022413E4 ; =0x00000608
@@ -42702,7 +42702,7 @@ _02241316:
 	ldr r0, [r4, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r4, #0x10]
 	add r0, r4, #0
@@ -42741,7 +42741,7 @@ _02241398:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -42752,7 +42752,7 @@ _02241398:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _022413DC
 _022413CA:
 	add r0, r4, #0
@@ -43172,7 +43172,7 @@ _0224170C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0224176A
 _02241726:
 	mov r0, #6
@@ -43476,7 +43476,7 @@ _0224198C:
 	ldr r0, [r5, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r5, #0x10]
 	add r0, r5, #0
@@ -43511,7 +43511,7 @@ _02241A00:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -43522,7 +43522,7 @@ _02241A00:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02241A30:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -44763,7 +44763,7 @@ _0224242A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0224248C
 _02242444:
 	add r0, r4, #0
@@ -44795,7 +44795,7 @@ _0224246E:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0224248C
 _02242488:
 	mov r0, #1
@@ -44862,7 +44862,7 @@ _022424EE:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02242534
 _02242508:
 	add r0, r4, #0
@@ -44968,7 +44968,7 @@ _022425C6:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _022425E4
 _022425E0:
 	mov r0, #1
@@ -45049,7 +45049,7 @@ _02242660:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _022428AE
 _0224267A:
 	mov r1, #0x72
@@ -45244,7 +45244,7 @@ _022427FC:
 	ldr r0, [r4, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r4, #0x10]
 	add r0, r4, #0
@@ -45283,7 +45283,7 @@ _0224287E:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -45294,7 +45294,7 @@ _0224287E:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _022428AE:
 	mov r0, #0
 	add sp, #8
@@ -45377,7 +45377,7 @@ _02242944:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02242AE6
 _0224295E:
 	add r0, #0xc
@@ -45551,7 +45551,7 @@ _02242AC6:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02242AE6
 _02242AE0:
 	add sp, #0x10
@@ -45633,7 +45633,7 @@ _02242B66:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02242CF0
 _02242B80:
 	bl ov40_02242110
@@ -45797,7 +45797,7 @@ _02242CD0:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02242CF0
 _02242CEA:
 	add sp, #0x10
@@ -48956,7 +48956,7 @@ _02244540:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -48967,7 +48967,7 @@ _02244540:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #1
 	lsl r0, r0, #0x10
@@ -48978,7 +48978,7 @@ _02244540:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02244626
 _0224458A:
 	mov r0, #0
@@ -49147,7 +49147,7 @@ _022446E2:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0224481E
 _022446FC:
 	ldr r0, _0224482C ; =ov40_02245CA0
@@ -49248,7 +49248,7 @@ _022447BE:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0224481E
 _022447D8:
 	bl ov40_022306F0
@@ -49360,7 +49360,7 @@ _02244896:
 	ldr r0, [r5, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r5, #0x10]
 	add r0, r5, #0
@@ -49383,7 +49383,7 @@ _022448EA:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -49394,7 +49394,7 @@ _022448EA:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _0224491A:
 	mov r0, #0
 	pop {r3, r4, r5, pc}

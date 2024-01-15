@@ -2176,7 +2176,7 @@ _021E69FA:
 	str r2, [sp, #8]
 	ldr r0, [r4, #8]
 	mov r1, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, [r4, #0x78]
 	ldr r0, [r0]
 	bl sub_02024B34
@@ -2196,7 +2196,7 @@ _021E69FA:
 	ldr r0, [r4, #8]
 	mov r1, #4
 	lsr r2, r2, #0x10
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, _021E6B70 ; =0x0000FFFF
 	mov r1, #0
 	str r0, [sp]
@@ -2247,7 +2247,7 @@ _021E6A9E:
 	add r5, r5, #1
 _021E6AA0:
 	ldr r0, [r4, #8]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _021E6B64
 	cmp r5, #2
@@ -2297,7 +2297,7 @@ _021E6AE8:
 	str r2, [sp, #8]
 	ldr r0, [r4, #8]
 	mov r1, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x10
 	str r0, [sp]
 	mov r3, #0
@@ -2306,14 +2306,14 @@ _021E6AE8:
 	str r2, [sp, #8]
 	ldr r0, [r4, #8]
 	mov r1, #4
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, [r4, #0x68]
 	add r0, r0, #1
 	str r0, [r4, #0x68]
 	b _021E6B64
 _021E6B34:
 	ldr r0, [r4, #8]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _021E6B64
 	ldr r0, [r4, #0x70]
@@ -2422,7 +2422,7 @@ _021E6BFA:
 	str r2, [sp, #8]
 	ldr r0, [r4, #8]
 	mov r1, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, [r4, #0x78]
 	ldr r0, [r0]
 	bl sub_02024B34
@@ -2442,7 +2442,7 @@ _021E6BFA:
 	ldr r0, [r4, #8]
 	mov r1, #4
 	lsr r2, r2, #0x10
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, _021E6D6C ; =0x0000FFFF
 	mov r1, #0
 	str r0, [sp]
@@ -2493,7 +2493,7 @@ _021E6C9E:
 	add r5, r5, #1
 _021E6CA0:
 	ldr r0, [r4, #8]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _021E6D5A
 	cmp r5, #2
@@ -2543,7 +2543,7 @@ _021E6CE8:
 	str r2, [sp, #8]
 	ldr r0, [r4, #8]
 	mov r1, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x10
 	str r0, [sp]
 	mov r3, #0
@@ -2552,14 +2552,14 @@ _021E6CE8:
 	str r2, [sp, #8]
 	ldr r0, [r4, #8]
 	mov r1, #4
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, [r4, #0x68]
 	add r0, r0, #1
 	str r0, [r4, #0x68]
 	b _021E6D5A
 _021E6D34:
 	ldr r0, [r4, #8]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _021E6D5A
 	ldr r0, [r4, #0x70]

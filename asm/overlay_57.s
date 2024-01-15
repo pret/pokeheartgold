@@ -6112,7 +6112,7 @@ _0223A930:
 	ldr r0, [r0]
 	ldr r2, _0223AB48 ; =0x0000080B
 	mov r1, #2
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xa
@@ -6123,7 +6123,7 @@ _0223A930:
 	ldr r0, [r0]
 	ldr r2, _0223AB4C ; =0x0000FFFF
 	mov r1, #8
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	add r0, r4, #0
 	mov r1, #0
 	bl ov57_0223B948
@@ -6138,7 +6138,7 @@ _0223A930:
 _0223A97A:
 	add r0, #0xe8
 	ldr r0, [r0]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	beq _0223A988
 _0223A986:
@@ -6280,7 +6280,7 @@ _0223AA98:
 	ldr r0, [r0]
 	ldr r2, _0223AB48 ; =0x0000080B
 	mov r1, #2
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0xa
 	str r0, [sp]
 	mov r3, #0
@@ -6291,7 +6291,7 @@ _0223AA98:
 	ldr r0, [r0]
 	ldr r2, _0223AB4C ; =0x0000FFFF
 	mov r1, #8
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, _0223AB44 ; =0x00000404
 	ldr r1, [r4, r0]
 	add r1, r1, #1
@@ -6300,7 +6300,7 @@ _0223AA98:
 _0223AAD2:
 	add r0, #0xe8
 	ldr r0, [r0]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _0223AB3C
 	ldr r0, _0223AB54 ; =0x00000408
@@ -6399,7 +6399,7 @@ _0223AB84:
 	ldr r0, [r0]
 	ldr r2, _0223AE94 ; =0x0000080B
 	mov r1, #2
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xa
@@ -6410,7 +6410,7 @@ _0223AB84:
 	ldr r0, [r0]
 	ldr r2, _0223AE98 ; =0x0000FFFF
 	mov r1, #8
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	add r0, r4, #0
 	mov r1, #0
 	bl ov57_0223B948
@@ -6438,7 +6438,7 @@ _0223AB84:
 _0223ABF6:
 	add r0, #0xe8
 	ldr r0, [r0]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	beq _0223AC04
 	b _0223AE88
@@ -6683,7 +6683,7 @@ _0223ADE2:
 	ldr r0, [r0]
 	ldr r2, _0223AE94 ; =0x0000080B
 	mov r1, #2
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0xa
 	str r0, [sp]
 	mov r3, #0
@@ -6694,7 +6694,7 @@ _0223ADE2:
 	ldr r0, [r0]
 	ldr r2, _0223AE98 ; =0x0000FFFF
 	mov r1, #8
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	add r0, r4, #0
 	mov r1, #1
 	bl ov57_0223BB38
@@ -6713,7 +6713,7 @@ _0223AE4C:
 	add r0, r4, #0
 	add r0, #0xe8
 	ldr r0, [r0]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _0223AE88
 	mov r0, #0x10

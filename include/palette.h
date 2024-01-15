@@ -23,6 +23,12 @@ typedef enum PaletteBufferId {
     PLTTBUF_MAX,
 } PaletteBufferId;
 
+typedef enum PaletteSelector {
+    PLTTSEL_TRANSPARENT,
+    PLTTSEL_OPAQUE,
+    PLTTSEL_BOTH,
+} PaletteSelector;
+
 typedef struct RgbColor {
     u16 r : 5;
     u16 g : 5;
@@ -30,7 +36,7 @@ typedef struct RgbColor {
     u16 dummy : 1;
 } RgbColor;
 
-#define PaletteBlend(source, target, frac) ((source) + (((target) - (source)) * (frac) >> 4))
+#define BlendColor(source, target, frac) ((source) + (((target) - (source)) * (frac) >> 4))
 
 typedef struct SelectedPaletteData {
     u16 opaqueBit;
@@ -40,7 +46,7 @@ typedef struct SelectedPaletteData {
     u16 nextRGB:15;
     u16 sign:1; //0 - increase, 1 - decrease
     u16 step:4;
-    u16 unk6_4:6;
+    u16 waitStep:6;
     u16 unk6_10:6;
 } SelectedPaletteData;
 
@@ -72,26 +78,26 @@ void PaletteData_LoadFromNarc(PaletteData *data, NarcId narcID, s32 memberNo, He
 void PaletteData_LoadNarc(PaletteData *data, NarcId narcID, s32 memberNo, HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos);
 void PaletteData_LoadFromOpenNarc(PaletteData *data, NARC *narc, s32 memberNo, HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos, u16 readPos);
 void PaletteData_LoadOpenNarc(PaletteData *data, NARC *narc, s32 memberNo, HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos);
-void sub_020032A4(PaletteData *data, PaletteBufferId bufferID, u16 pos, u32 size);
+void PalleteData_LoadPaletteSlotFromHardware(PaletteData *data, PaletteBufferId bufferID, u16 pos, u32 size);
 void PaletteData_CopyPalette(PaletteData *data, u32 srcBufferID, u16 srcPos, u32 destBufferID, u16 destPos, u16 size);
 u16 *PaletteData_GetUnfadedBuf(PaletteData *data, PaletteBufferId bufferID);
 u16 *PaletteData_GetFadedBuf(PaletteData *data, PaletteBufferId bufferID);
-u8 sub_02003370(PaletteData *data, u16 toSelect, u16 opaqueBit, s8 wait, u8 cur, u8 end, u16 nextRGB);
-u8 sub_02003474(PaletteData *data, u16 toSelect, u16 opaqueBit, s8 wait, u8 cur, u8 end, u16 nextRGB);
-void sub_0200374C(PaletteData *data);
+u8 PaletteData_BeginPaletteFade(PaletteData *data, u16 toSelect, u16 opaqueBit, s8 wait, u8 cur, u8 end, u16 nextRGB);
+u8 PaletteData_ForceBeginPaletteFade(PaletteData *data, u16 toSelect, u16 opaqueBit, s8 wait, u8 cur, u8 end, u16 nextRGB);
+void PaletteData_ScheduleFadeTaskEndIfNoSelectedBuffers(PaletteData *data);
 void PaletteData_PushTransparentBuffers(PaletteData *data);
-u16 sub_02003B44(PaletteData *data);
+u16 PaletteData_GetSelectedBuffersBitmask(PaletteData *data);
 void PaletteData_SetAutoTransparent(PaletteData *data, BOOL autoTransparent);
-void sub_02003B74(PaletteData *plttData, BOOL a1);
-void sub_02003BA8(u16 selectedBuffer, HeapID heapId);
-void sub_02003D5C(PaletteData *plttData, PaletteBufferId bufferID, int which, u16 value, u16 begin, u16 end);
-u16 sub_02003DBC(PaletteData *plttData, PaletteBufferId bufferID, int which, u16 palIdx);
-void sub_02003DE8(const u16 *src, u16 *dest, u16 size, u8 cur, u16 target);
-void sub_02003E5C(PaletteData *data, PaletteBufferId bufferID, u16 offset, u16 size, u8 cur, u16 target);
-void sub_02003EA4(PaletteData *data, PaletteBufferId bufferID, u16 selectedBuffer, u8 cur, u16 target);
+void PaletteData_SetSelectedBufferAll(PaletteData *plttData, BOOL a1);
+void ZeroPalettesByBitmask(u16 selectedBuffer, HeapID heapId);
+void PaletteData_FillPaletteInBuffer(PaletteData *plttData, PaletteBufferId bufferID, PaletteSelector which, u16 value, u16 begin, u16 end);
+u16 PaletteData_GetBufferColorAtIndex(PaletteData *plttData, PaletteBufferId bufferID, PaletteSelector which, u16 palIdx);
+void BlendPalette(const u16 *src, u16 *dest, u16 size, u8 cur, u16 target);
+void PaletteData_BlendPalette(PaletteData *data, PaletteBufferId bufferID, u16 offset, u16 size, u8 cur, u16 target);
+void PaletteData_BlendPalettes(PaletteData *data, PaletteBufferId bufferID, u16 selectedBuffer, u8 cur, u16 target);
 void TintPalette_GrayScale(u16 *palette, int count);
 void TintPalette_CustomTone(u16 *palette, int count, int rTone, int gTone, int bTone);
-void sub_02003FC8(PaletteData *data, NarcId narcId, s32 memberNo, HeapID heapId, PaletteBufferId bufferID, u32 size, u16 pos, int rTone, int gTone, int bTone);
-void sub_020040AC(PaletteData *plttData, int transparentBit, int opaqueBit, int denom, int numer, u16 target);
+void PaletteData_LoadNarc_CustomTint(PaletteData *data, NarcId narcId, s32 memberNo, HeapID heapId, PaletteBufferId bufferID, u32 size, u16 pos, int rTone, int gTone, int bTone);
+void PaletteData_FadePalettesTowardsColorStep(PaletteData *plttData, int transparentBit, int opaqueBit, int duration, int step, u16 target);
 
 #endif //POKEHEARTGOLD_PALETTE_H

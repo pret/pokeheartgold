@@ -1340,7 +1340,7 @@ _021E62C0:
 	ldr r0, [r5, r0]
 	mov r2, #0
 	lsl r3, r1, #9
-	bl sub_020032A4
+	bl PalleteData_LoadPaletteSlotFromHardware
 	mov r0, #0x82
 	mov r1, #0
 	lsl r0, r0, #2
@@ -1896,7 +1896,7 @@ _021E687A:
 	mov r2, #0xff
 	mov r1, #2
 	lsl r2, r2, #8
-	bl sub_020040AC
+	bl PaletteData_FadePalettesTowardsColorStep
 	add sp, #8
 	pop {r3, pc}
 	nop

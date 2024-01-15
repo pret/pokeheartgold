@@ -14,7 +14,7 @@
 .public PaletteData_LoadNarc
 .public PaletteData_PushTransparentBuffers
 .public PaletteData_SetAutoTransparent
-.public sub_02003EA4
+.public PaletteData_BlendPalettes
 .public GF_GetCurrentPlayingBGM
 .public sub_02004EC4
 .public PlaySE

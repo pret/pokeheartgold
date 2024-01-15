@@ -1043,7 +1043,7 @@ ov80_02238F10: ; 0x02238F10
 	mov r1, #0
 	mov r2, #0xb0
 	mov r3, #0x20
-	bl sub_020032A4
+	bl PalleteData_LoadPaletteSlotFromHardware
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0x65
@@ -1057,7 +1057,7 @@ ov80_02238F10: ; 0x02238F10
 	mov r1, #0
 	mov r2, #0xc0
 	mov r3, #0x20
-	bl sub_020032A4
+	bl PalleteData_LoadPaletteSlotFromHardware
 	add sp, #0xc
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -1298,7 +1298,7 @@ _02239198:
 	ldr r0, [r5, #4]
 	mov r2, #2
 	add r3, r1, #0
-	bl sub_02003D5C
+	bl PaletteData_FillPaletteInBuffer
 	add r0, r4, #0
 	mov r1, #6
 	bl ov80_0222ACA0

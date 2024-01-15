@@ -8,10 +8,10 @@
 .public PaletteData_Free
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
-.public sub_020032A4
+.public PalleteData_LoadPaletteSlotFromHardware
 .public PaletteData_CopyPalette
 .public PaletteData_PushTransparentBuffers
-.public sub_02003B74
+.public PaletteData_SetSelectedBufferAll
 .public PlaySE
 .public CreateSysTaskAndEnvironment
 .public DestroySysTaskAndEnvironment

@@ -8,11 +8,11 @@
 .public PaletteData_FreeBuffers
 .public PaletteData_LoadPalette
 .public PaletteData_LoadNarc
-.public sub_02003370
+.public PaletteData_BeginPaletteFade
 .public PaletteData_PushTransparentBuffers
-.public sub_02003B44
+.public PaletteData_GetSelectedBuffersBitmask
 .public PaletteData_SetAutoTransparent
-.public sub_02003E5C
+.public PaletteData_BlendPalette
 .public PlaySE
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData

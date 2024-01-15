@@ -5,7 +5,7 @@
 .public sub_02002B8C
 .public FontID_String_GetWidth
 .public LoadFontPal1
-.public sub_02003DE8
+.public BlendPalette
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
 .public OverlayManager_FreeData

@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_02003E5C
+.public PaletteData_BlendPalette
 .public NARC_New
 .public NARC_Delete
 .public NewString_ReadMsgData

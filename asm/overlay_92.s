@@ -652,7 +652,7 @@ _0225CA6C:
 	ldr r0, [r5, #0x5c]
 	mov r2, #0
 	lsl r3, r1, #8
-	bl sub_020032A4
+	bl PalleteData_LoadPaletteSlotFromHardware
 	add r5, #0x88
 	ldr r0, [r5]
 	ldr r0, [r0, #0x3c]
@@ -9390,7 +9390,7 @@ _0226115A:
 	lsl r3, r3, #0x18
 	mov r2, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #1
@@ -9401,7 +9401,7 @@ _0226115A:
 	lsl r3, r3, #0x18
 	add r2, r1, #0
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	pop {r3, r4, r5, r6, r7, pc}
 _0226118A:
 	mov r1, #1
@@ -9448,7 +9448,7 @@ _022611CA:
 	lsl r3, r3, #0x18
 	mov r2, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #1
@@ -9459,7 +9459,7 @@ _022611CA:
 	lsl r3, r3, #0x18
 	add r2, r1, #0
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	pop {r3, r4, r5, r6, r7, pc}
 _022611FA:
 	mov r1, #0
@@ -10276,7 +10276,7 @@ _02261802:
 	ldr r0, [r0, #0x14]
 	mov r2, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r0, #0
 	str r0, [sp]
 	ldr r3, [sp, #8]
@@ -10292,7 +10292,7 @@ _02261802:
 	ldr r0, [r0, #0x14]
 	add r2, r1, #0
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -10462,7 +10462,7 @@ _02261978:
 	ldr r0, [r0, #0x14]
 	mov r2, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r0, #0
 	str r0, [sp]
 	ldr r3, [sp, #8]
@@ -10478,7 +10478,7 @@ _02261978:
 	ldr r0, [r0, #0x14]
 	add r2, r1, #0
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

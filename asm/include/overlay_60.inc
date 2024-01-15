@@ -6,9 +6,9 @@
 .public PaletteData_Free
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
-.public sub_020032A4
+.public PalleteData_LoadPaletteSlotFromHardware
 .public PaletteData_PushTransparentBuffers
-.public sub_020040AC
+.public PaletteData_FadePalettesTowardsColorStep
 .public sub_02004AD8
 .public sub_02004EC4
 .public GF_SetVolumeBySeqNo

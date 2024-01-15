@@ -10,11 +10,11 @@
 .public PaletteData_FreeBuffers
 .public PaletteData_LoadFromNarc
 .public PaletteData_LoadNarc
-.public sub_020032A4
+.public PalleteData_LoadPaletteSlotFromHardware
 .public PaletteData_PushTransparentBuffers
 .public PaletteData_SetAutoTransparent
-.public sub_02003D5C
-.public sub_02003DE8
+.public PaletteData_FillPaletteInBuffer
+.public BlendPalette
 .public PlaySE
 .public OverlayManager_New
 .public OverlayManager_Delete

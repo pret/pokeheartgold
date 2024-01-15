@@ -210,7 +210,7 @@ void ov12_02237BB8(BattleSystem *bsys) {
     ov12_0223BBF0(bsys, 0);
 
     int size = sub_02026E9C();
-    void *data = sub_02026E94();
+    void *data = GetSubBgPlttAddr();
     MIi_CpuClear16(0, data, size);
 
     NARC *unkNarcA = NARC_New(NARC_a_0_0_7, HEAP_ID_BATTLE);

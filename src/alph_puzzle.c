@@ -986,13 +986,13 @@ static int AlphPuzzleMainSeq_Clear_impl(AlphPuzzleData *data) {
         data->subState++;
         break;
     case 1:
-        sub_02003E5C(data->palette, PLTTBUF_MAIN_OBJ, 0x2b, 5, data->sceneTimer, 0x7FFF);
+        PaletteData_BlendPalette(data->palette, PLTTBUF_MAIN_OBJ, 0x2b, 5, data->sceneTimer, 0x7FFF);
         if (data->sceneTimer++ >= 15) {
             data->subState++;
         }
         break;
     case 2:
-        sub_02003E5C(data->palette, PLTTBUF_MAIN_OBJ, 0x2b, 5, data->sceneTimer, 0x7FFF);
+        PaletteData_BlendPalette(data->palette, PLTTBUF_MAIN_OBJ, 0x2b, 5, data->sceneTimer, 0x7FFF);
         if (data->sceneTimer-- == 0) {
             data->subState++;
         }

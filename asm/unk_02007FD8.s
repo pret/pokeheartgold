@@ -3759,7 +3759,7 @@ _02009A3A:
 	add r1, r2, r1
 	ldrb r3, [r3]
 	mov r2, #0x10
-	bl sub_02003DE8
+	bl BlendPalette
 	add r0, r4, #0
 	add r0, #0x6c
 	ldrh r0, [r0]
@@ -3783,7 +3783,7 @@ _02009A3A:
 	add r1, r2, r1
 	ldrb r3, [r3]
 	mov r2, #0x10
-	bl sub_02003DE8
+	bl BlendPalette
 _02009ABC:
 	add r0, r4, #0
 	add r0, #0x49

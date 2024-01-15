@@ -582,7 +582,7 @@ ov93_0225C768: ; 0x0225C768
 	mov r1, #2
 	lsr r2, r2, #0x10
 	mov r3, #0x60
-	bl sub_020032A4
+	bl PalleteData_LoadPaletteSlotFromHardware
 	ldr r0, _0225CA88 ; =ov93_0225CEA0
 	add r1, r5, #0
 	bl Main_SetVBlankIntrCB
@@ -2645,7 +2645,7 @@ ov93_0225DB2C: ; 0x0225DB2C
 	ldr r0, [r5]
 	mov r2, #2
 	add r3, r1, #0
-	bl sub_02003D5C
+	bl PaletteData_FillPaletteInBuffer
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2813,7 +2813,7 @@ _0225DCB0:
 	mov r1, #1
 	mov r2, #0x60
 	mov r3, #0x20
-	bl sub_020032A4
+	bl PalleteData_LoadPaletteSlotFromHardware
 	mov r3, #0
 	str r3, [sp]
 	mov r1, #1
@@ -2821,7 +2821,7 @@ _0225DCB0:
 	add r5, #0x8c
 	ldr r0, [r5]
 	mov r2, #2
-	bl sub_02003D5C
+	bl PaletteData_FillPaletteInBuffer
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov93_0225DBC8
@@ -5035,7 +5035,7 @@ _0225ED7E:
 	ldr r1, [r4, r1]
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
-	bl sub_02003DE8
+	bl BlendPalette
 	mov r1, #0x25
 	lsl r1, r1, #4
 	ldr r0, [r4, r1]

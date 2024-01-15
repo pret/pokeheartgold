@@ -6,7 +6,7 @@
 .public PaletteData_FreeBuffers
 .public PaletteData_LoadFromOpenNarc
 .public PaletteData_PushTransparentBuffers
-.public sub_02003E5C
+.public PaletteData_BlendPalette
 .public sub_02004B10
 .public sub_02004EC4
 .public PlaySE

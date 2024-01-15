@@ -116,7 +116,7 @@
 .public String_New
 .public String_Delete
 .public String_Compare
-.public sub_02026EA4
+.public GetMainObjPlttAddr
 .public GF_3DVramMan_InitFrameTexVramManager
 .public GF_3DVramMan_InitFramePlttVramManager
 .public PlayerName_FlatToString
