@@ -40,14 +40,14 @@ typedef struct RgbColor {
 
 typedef struct SelectedPaletteData {
     u16 opaqueBit;
-    u16 wait:6;
-    u16 cur:5;
-    u16 end:5;
-    u16 nextRGB:15;
-    u16 sign:1; //0 - increase, 1 - decrease
-    u16 step:4;
-    u16 waitStep:6;
-    u16 unk6_10:6;
+    u16 wait : 6;
+    u16 cur : 5;
+    u16 end : 5;
+    u16 nextRGB : 15;
+    u16 sign : 1; // 0 - increase, 1 - decrease
+    u16 step : 4;
+    u16 waitStep : 6;
+    u16 unk6_10 : 6;
 } SelectedPaletteData;
 
 typedef struct PaletteBuffer {
@@ -59,11 +59,11 @@ typedef struct PaletteBuffer {
 
 typedef struct PaletteData {
     PaletteBuffer buffers[PLTTBUF_MAX];
-    u16 selectedFlag:2;
-    u16 selectedBuffer:PLTTBUF_MAX;
-    u16 transparentBit:PLTTBUF_MAX;
-    u16 callbackFlag:1;
-    u16 autoTransparent:1;
+    u16 selectedFlag : 2;
+    u16 selectedBuffer : PLTTBUF_MAX;
+    u16 transparentBit : PLTTBUF_MAX;
+    u16 callbackFlag : 1;
+    u16 autoTransparent : 1;
     u8 forceExit;
     u8 unused[3];
 } PaletteData;
@@ -100,4 +100,4 @@ void TintPalette_CustomTone(u16 *palette, int count, int rTone, int gTone, int b
 void PaletteData_LoadNarc_CustomTint(PaletteData *data, NarcId narcId, s32 memberNo, HeapID heapId, PaletteBufferId bufferID, u32 size, u16 pos, int rTone, int gTone, int bTone);
 void PaletteData_FadePalettesTowardsColorStep(PaletteData *plttData, int transparentBit, int opaqueBit, int duration, int step, u16 target);
 
-#endif //POKEHEARTGOLD_PALETTE_H
+#endif // POKEHEARTGOLD_PALETTE_H

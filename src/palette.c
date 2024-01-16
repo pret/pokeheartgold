@@ -128,8 +128,7 @@ u8 PaletteData_BeginPaletteFade(PaletteData *data, u16 toSelect, u16 opaqueBit, 
     u8 i;
 
     for (i = 0; i < PLTTBUF_MAX; ++i) {
-        if (IsPaletteSelected(toSelect, i) == TRUE
-         && IsPaletteSelected(data->selectedBuffer, i) == FALSE) {
+        if (IsPaletteSelected(toSelect, i) == TRUE && IsPaletteSelected(data->selectedBuffer, i) == FALSE) {
             MaskOpaqueBit((PaletteBufferId)i, &data->buffers[i], &opaqueBit);
             SelectedPaletteData_SetTimedFadeParams(&data->buffers[i].selected, opaqueBit, wait, cur, end, nextRGB);
             PaletteData_SetTransparentBit(data, i);
@@ -414,7 +413,6 @@ void PaletteData_PushTransparentBuffers(PaletteData *plttData) {
         }
     }
 }
-
 
 u16 PaletteData_GetSelectedBuffersBitmask(PaletteData *plttData) {
     return plttData->selectedBuffer;
