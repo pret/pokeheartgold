@@ -47,7 +47,7 @@ void ov12_0224C4D8(BattleSystem *bsys, BattleContext *ctx);
 void ov12_0224C5C8(BattleSystem *bsys, BattleContext *ctx);
 void ov12_0224C5F8(BattleSystem *bsys, BattleContext *ctx);
 void ov12_0224C678(BattleSystem *bsys, BattleContext *ctx);
-void ov12_0224C690(BattleSystem *bsys, BattleContext *ctx);
+void BattleControllerPlayer_HpCalc(BattleSystem *bsys, BattleContext *ctx);
 void ov12_0224CAA4(BattleSystem *bsys, BattleContext *ctx);
 void ov12_0224CC84(BattleSystem *bsys, BattleContext *ctx);
 void ov12_0224CC88(BattleSystem *bsys, BattleContext *ctx);

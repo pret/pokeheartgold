@@ -1175,12 +1175,12 @@ u8 CheckSortSpeed(BattleSystem *bsys, BattleContext *ctx, int battlerId1, int ba
         loweredPriority2 = 1;
     }
     
-    ctx->unk_21F0[battlerId1] = speed1;
-    ctx->unk_21F0[battlerId2] = speed2;
+    ctx->effectiveSpeed[battlerId1] = speed1;
+    ctx->effectiveSpeed[battlerId2] = speed2;
     
     if (!flag) {
-        action1 = ctx->unk_21A8[battlerId1][3];
-        action2 = ctx->unk_21A8[battlerId2][3];
+        action1 = ctx->playerActions[battlerId1].inputSelection;
+        action2 = ctx->playerActions[battlerId2].inputSelection;
         movePos1 = ctx->movePos[battlerId1];
         movePos2 = ctx->movePos[battlerId2];
         if (action1 == 1) { //fight button
@@ -1453,7 +1453,7 @@ int ov12_022506D4(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker,
         int battleType = BattleSystem_GetBattleType(bsys);
         
         if (battleType & BATTLE_TYPE_DOUBLES) {
-            battlerIdTarget = ctx->unk_21A8[battlerIdAttacker][1];
+            battlerIdTarget = ctx->playerActions[battlerIdAttacker].unk4;
             if (!ctx->battleMons[battlerIdTarget].hp) {
                 battlerIdTarget = battlerIdAttacker;
             }
@@ -1484,7 +1484,7 @@ int ov12_022506D4(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker,
         }
     } else {
         int side = BattleSystem_GetFieldSide(bsys, battlerIdAttacker)^1;
-        int battlerIdTargetTemp = ctx->unk_21A8[battlerIdAttacker][1];
+        int battlerIdTargetTemp = ctx->playerActions[battlerIdAttacker].unk4;
         BattleSystem_GetMaxBattlers(bsys);
         
         if (ctx->fieldSideConditionData[side].followMeFlag && ctx->battleMons[ctx->fieldSideConditionData[side].battlerIdFollowMe].hp) {
@@ -1808,7 +1808,7 @@ void InitSwitchWork(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
     
     maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     BattleSystem_GetBattleType(bsys);
-    ctx->unk_21A8[battlerId][0] = 40;
+    ctx->playerActions[battlerId].unk0 = 40;
     
     if (!(ctx->battleStatus & BATTLE_STATUS_BATON_PASS)) {
         for (i = 0; i < maxBattlers; i++) {
@@ -2492,8 +2492,8 @@ int CreateNicknameTag(BattleContext *ctx, int battlerId) {
 u16 GetBattlerSelectedMove(BattleContext *ctx, int battlerId) {
     u16 moveNo = 0;
     
-    if (ctx->unk_21A8[battlerId][3] == 1 && ctx->unk_21A8[battlerId][2]) {
-        moveNo = ctx->battleMons[battlerId].moves[ctx->unk_21A8[battlerId][2] - 1];
+    if (ctx->playerActions[battlerId].inputSelection == BATTLE_INPUT_FIGHT && ctx->playerActions[battlerId].unk8) {
+        moveNo = ctx->battleMons[battlerId].moves[ctx->playerActions[battlerId].unk8 - 1];
     }
     
     return moveNo;
@@ -4619,7 +4619,7 @@ u16 GetBattlerHeldItem(BattleContext *ctx, int battlerId) {
 }
 
 BOOL ov12_0225561C(BattleContext *ctx, int battlerId) {
-    return (ctx->unk_21A8[battlerId][0] == 40);
+    return (ctx->playerActions[battlerId].unk0 == 40);
 }
 
 BOOL CheckItemEffectOnHit(BattleSystem *bsys, BattleContext *ctx, int *script) {
@@ -5523,7 +5523,7 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BattleContext *ctx, int 
                     mon2 = AllocMonZeroed(HEAP_ID_BATTLE);
                     
                     if (BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_DOUBLES) {
-                        battlerIdTarget = ctx->unk_21A8[ctx->battlerIdTemp][1];
+                        battlerIdTarget = ctx->playerActions[ctx->battlerIdTemp].unk4;
                     } else {
                         battlerIdTarget = ctx->battlerIdTemp ^ 1;
                     }
@@ -6284,17 +6284,17 @@ void ov12_02257EC0(BattleSystem *bsys, BattleContext *ctx) {
     
     for (i = 0; i < maxBattlers - 1; i++) {
         for (j = i + 1; j < maxBattlers; j++) {
-            battlerId1 = ctx->unk_21E8[i];
-            battlerId2 = ctx->unk_21E8[j];
-            if (ctx->unk_21A8[battlerId1][3] == ctx->unk_21A8[battlerId2][3]) {
-                if (ctx->unk_21A8[battlerId1][3] != 1) {
+            battlerId1 = ctx->executionOrder[i];
+            battlerId2 = ctx->executionOrder[j];
+            if (ctx->playerActions[battlerId1].inputSelection == ctx->playerActions[battlerId2].inputSelection) {
+                if (ctx->playerActions[battlerId1].inputSelection != BATTLE_INPUT_FIGHT) {
                     flag = 1;
                 } else {
                     flag = 0;
                 }
                 if (CheckSortSpeed(bsys, ctx, battlerId1, battlerId2, flag)) {
-                    ctx->unk_21E8[i] = battlerId2;
-                    ctx->unk_21E8[j] = battlerId1;
+                    ctx->executionOrder[i] = battlerId2;
+                    ctx->executionOrder[j] = battlerId1;
                 }
             }
         }
@@ -6409,7 +6409,7 @@ int ov12_022581D4(BattleSystem *bsys, BattleContext *ctx, int var, int battlerId
     case 7:
         return ctx->totalDamage[battlerId];
     case 8:
-        return ctx->unk_21A8[battlerId][0];
+        return ctx->playerActions[battlerId].unk0;
     case 9:
         return ctx->trainerAIData.battlerIdTarget;
     case 10:
@@ -6417,7 +6417,7 @@ int ov12_022581D4(BattleSystem *bsys, BattleContext *ctx, int var, int battlerId
     case 11:
         return ctx->trainerAIData.unkA4[battlerId];
     case 12:
-        return ctx->unk_21A8[battlerId][2];
+        return ctx->playerActions[battlerId].unk8;
     case 13:
         return (int) ctx->command;
     case 14:

@@ -43,7 +43,7 @@
     .public ov12_0224C5C8
     .public ov12_0224C5F8
     .public ov12_0224C678
-    .public ov12_0224C690
+    .public BattleControllerPlayer_HpCalc
     .public ov12_0224CAA4
     .public ov12_0224CC84
     .public ov12_0224CC88

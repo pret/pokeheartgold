@@ -265,6 +265,13 @@ typedef struct PokemonStats {
     u32 stats[6];
 } PokemonStats;
 
+typedef struct PlayerActions {
+    u32 unk0;
+    u32 unk4;
+    u32 unk8;
+    u32 inputSelection;
+} PlayerActions;
+
 typedef struct BattleContext {
     u8 unk_0[4];
     u8 unk_4[4];
@@ -372,10 +379,10 @@ typedef struct BattleContext {
     u8 selectedMonIndex[4];
     u8 unk_21A0[4];
     u8 unk_21A4[4];
-    u32 unk_21A8[4][4];
-    u8 unk_21E8[4];
-    u8 turnOrder[4];
-    u32 unk_21F0[4];
+    PlayerActions playerActions[4];
+    u8 executionOrder[4]; //accounts for running, items, etc used in battler slots
+    u8 turnOrder[4]; //by pokemon speed, accounting for trick room
+    u32 effectiveSpeed[4];
     u8 unk_2200[4][4][16];
     u8 unk_2300[4][256];
     int battleScriptBuffer[400];

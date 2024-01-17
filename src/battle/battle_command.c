@@ -966,7 +966,7 @@ BOOL BtlCmd_PlayFaintAnimation(BattleSystem *bsys, BattleContext *ctx) {
 
     ctx->battleStatus &= (MaskOfFlagNo(ctx->battlerIdFainted) << BATTLE_STATUS_FAINTED_SHIFT) ^ -1;
     ctx->battleStatus2 |= MaskOfFlagNo(ctx->battlerIdFainted) << BATTLE_STATUS2_EXP_GAIN_SHIFT;
-    ctx->unk_21A8[ctx->battlerIdFainted][0] = 40;
+    ctx->playerActions[ctx->battlerIdFainted].unk0 = 40;
 
     InitFaintedWork(bsys, ctx, ctx->battlerIdFainted);
 
@@ -1163,7 +1163,7 @@ BOOL BtlCmd_JumpToEffectScript(BattleSystem *bsys, BattleContext *ctx) {
     if (unkA == 0) {
         ctx->battlerIdTarget = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, (u16)ctx->moveTemp, 1, 0);
         ov12_02250A18(bsys, ctx, ctx->battlerIdAttacker, ctx->moveTemp);
-        ctx->unk_21A8[ctx->battlerIdAttacker][1] = ctx->battlerIdTarget;
+        ctx->playerActions[ctx->battlerIdAttacker].unk4 = ctx->battlerIdTarget;
     }
 
     if (ctx->battlerIdTarget == 255) {
@@ -2039,7 +2039,7 @@ BOOL BtlCmd_SetMoveToMirrorMove(BattleSystem *bsys, BattleContext *ctx) {
             ctx->commandNext = CONTROLLER_COMMAND_39;
             BattleScriptJump(ctx, NARC_a_0_0_1, 281);
         } else {
-            ctx->unk_21A8[ctx->battlerIdAttacker][1] = ctx->battlerIdTarget;
+            ctx->playerActions[ctx->battlerIdAttacker].unk4 = ctx->battlerIdTarget;
             BattleScriptJump(ctx, NARC_a_0_0_0, move);
         }
     } else {
@@ -3829,7 +3829,7 @@ BOOL BtlCmd_TryHelpingHand(BattleSystem *bsys, BattleContext *ctx) {
 
     if (battleType & BATTLE_TYPE_DOUBLES) {
         battlerId = GetBattlerIDBySide(bsys, ctx, 16);
-        if ((ctx->unk_3108 & MaskOfFlagNo(battlerId)) == 0 && ctx->unk_21A8[battlerId][0] != 40 &&
+        if ((ctx->unk_3108 & MaskOfFlagNo(battlerId)) == 0 && ctx->playerActions[battlerId].unk0 != 40 &&
             ctx->battleMons[battlerId].hp && !ctx->turnData[ctx->battlerIdAttacker].helpingHandFlag && !ctx->turnData[battlerId].helpingHandFlag) {
             ctx->battlerIdTemp = battlerId;
             ctx->turnData[battlerId].helpingHandFlag = TRUE;
@@ -4199,7 +4199,7 @@ BOOL BtlCmd_TryPursuit(BattleSystem *bsys, BattleContext *ctx) {
     maxBattlers = BattleSystem_GetMaxBattlers(bsys);
 
     for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
-        if (ctx->unk_21A8[battlerId][0] != 40 && ctx->battleMons[battlerId].hp && !(ctx->battleMons[battlerId].status & 39) &&
+        if (ctx->playerActions[battlerId].unk0 != 40 && ctx->battleMons[battlerId].hp && !(ctx->battleMons[battlerId].status & 39) &&
             !CheckTruant(ctx, battlerId) && BattleSystem_GetFieldSide(bsys, battlerId) != BattleSystem_GetFieldSide(bsys, ctx->battlerIdSwitch)) {
             if (ctx->battleMons[battlerId].unk88.encoredMove && ctx->battleMons[battlerId].unk88.encoredMove == ctx->battleMons[battlerId].moves[ctx->battleMons[battlerId].unk88.encoredMoveIndex]) {
                 moveNo = ctx->battleMons[battlerId].unk88.encoredMove;
@@ -4219,7 +4219,7 @@ BOOL BtlCmd_TryPursuit(BattleSystem *bsys, BattleContext *ctx) {
                     ctx->unk_2158 = 20;
                     ctx->moveNoCur = moveNo;
                     ctx->moveNoBattlerPrev[battlerId] = moveNo;
-                    ctx->unk_21A8[battlerId][0] = 40;
+                    ctx->playerActions[battlerId].unk0 = 40;
                     CopyBattleMonToPartyMon(bsys, ctx, battlerId);
                     break;
                 }
@@ -4347,7 +4347,7 @@ BOOL BtlCmd_PokemonEncounter45(BattleSystem *bsys, BattleContext *ctx) {
 BOOL BtlCmd_GyroBallDamageCalc(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    ctx->movePower = 1 + 25*ctx->unk_21F0[ctx->battlerIdTarget]/ctx->unk_21F0[ctx->battlerIdAttacker];
+    ctx->movePower = 1 + 25 * ctx->effectiveSpeed[ctx->battlerIdTarget] / ctx->effectiveSpeed[ctx->battlerIdAttacker];
 
     if (ctx->movePower > 150) {
         ctx->movePower = 150;
@@ -4389,7 +4389,7 @@ BOOL BtlCmd_MetalBurstDamageCalc(BattleSystem *bsys, BattleContext *ctx) {
 BOOL BtlCmd_PaybackDamageCalc(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    if (ctx->unk_21A8[ctx->battlerIdTarget][0] == 40) {
+    if (ctx->playerActions[ctx->battlerIdTarget].unk0 == 40) {
         ctx->movePower = ctx->trainerAIData.moveData[ctx->moveNoCur].power*2;
     } else {
         ctx->movePower = ctx->trainerAIData.moveData[ctx->moveNoCur].power;
@@ -4436,7 +4436,7 @@ BOOL BtlCmd_TryMeFirst(BattleSystem *bsys, BattleContext *ctx) {
         move = GetBattlerSelectedMove(ctx, ctx->battlerIdTarget);
     }
 
-    if (ctx->unk_21A8[ctx->battlerIdTarget][0] != 40 && ctx->turnData[ctx->battlerIdTarget].struggleFlag == 0 &&
+    if (ctx->playerActions[ctx->battlerIdTarget].unk0 != 40 && ctx->turnData[ctx->battlerIdTarget].struggleFlag == 0 &&
         CheckLegalMeFirstMove(ctx, move) == TRUE && ctx->trainerAIData.moveData[move].power) {
         ctx->battleMons[ctx->battlerIdAttacker].unk88.meFirstFlag = TRUE;
         ctx->battleMons[ctx->battlerIdAttacker].unk88.meFirstCount = ctx->meFirstTotal;
@@ -4497,7 +4497,7 @@ BOOL BtlCmd_TrySuckerPunch(BattleSystem *bsys, BattleContext *ctx) {
         move = GetBattlerSelectedMove(ctx, ctx->battlerIdTarget);
     }
 
-    if (ctx->unk_21A8[ctx->battlerIdTarget][0] == 40 ||
+    if (ctx->playerActions[ctx->battlerIdTarget].unk0 == 40 ||
         (ctx->trainerAIData.moveData[move].power == 0 && !ctx->turnData[ctx->battlerIdTarget].struggleFlag)) {
         BattleScriptIncrementPointer(ctx, adrs);
     }
