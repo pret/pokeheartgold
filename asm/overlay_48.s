@@ -3147,7 +3147,7 @@ ov48_02259FEC: ; 0x02259FEC
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x20]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	add r0, #0x10
 	mov r1, #1

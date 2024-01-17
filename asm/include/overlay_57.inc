@@ -105,8 +105,8 @@
 .public YesNoPrompt_Destroy
 .public YesNoPrompt_InitFromTemplate
 .public YesNoPrompt_HandleInput
-.public sub_020169C0
-.public sub_020169CC
+.public YesNoPrompt_IsInTouchMode
+.public YesNoPrompt_Reset
 .public sub_02016EDC
 .public sub_02016F2C
 .public sub_02017068
@@ -167,9 +167,9 @@
 .public String_New
 .public String_Delete
 .public String16_FormatInteger
-.public sub_02026C44
-.public sub_02026CAC
-.public sub_02026CC4
+.public TouchHitboxController_Create
+.public TouchHitboxController_Destroy
+.public TouchHitboxController_IsTriggered
 .public Thunk_G3X_Reset
 .public sub_02026E50
 .public GF_3DVramMan_Create

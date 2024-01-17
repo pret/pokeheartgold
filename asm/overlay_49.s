@@ -8726,7 +8726,7 @@ _0225C862:
 	ldr r3, [sp, #4]
 	mov r1, #1
 	str r7, [sp]
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, [sp, #4]
 	str r0, [r1, #0x1c]
 	ldr r0, [sp, #4]
@@ -8745,7 +8745,7 @@ ov49_0225C8A8: ; 0x0225C8A8
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	ldr r0, [r6, #0x1c]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r0, r6, #0
 	add r0, #0xc
 	bl RemoveWindow
@@ -8778,7 +8778,7 @@ ov49_0225C8D4: ; 0x0225C8D4
 	cmp r0, #0
 	bne _0225C8F2
 	ldr r0, [r5, #0x1c]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	b _0225C8F6
 _0225C8F2:
 	mov r0, #1

@@ -19,7 +19,7 @@
 #include "constants/sndseq.h"
 #include "text.h"
 #include "font.h"
-#include "unk_0201660C.h"
+#include "yes_no_prompt.h"
 #include "vram_transfer_manager.h"
 #include "unk_0200B150.h"
 #include "unk_02023694.h"
@@ -78,16 +78,6 @@ typedef enum AlphPuzzleStates {
 #define ALPH_WINDOW_CONFIRM_QUIT 1
 #define ALPH_WINDOW_FLAVOR_TEXT  2
 
-typedef struct UnkAlphSub_10 {
-    void *unk_00;
-    u8 unk4;
-    u8 unk5;
-    u8 unk6;
-    u8 unk7;
-    u32 *unk8;
-    SaveData *savedata;
-} UnkAlphSub_10;
-
 typedef struct AlphPuzzleTile {
     u8 x;
     u8 y;
@@ -98,10 +88,10 @@ typedef struct AlphPuzzleTile {
 
 typedef struct AlphPuzzleData {
     HeapID heapId;
-    int unk4;
+    int menuIgnoreTouchFlag;
     int unkState;
     u16 subState;
-    u16 subStateTimer;
+    u16 sceneTimer;
     UnkAlphSub_10 *args;
     BgConfig *bgConfig;
     u8 unk18;
@@ -573,15 +563,15 @@ static void AlphPuzzle_ScreenOff(void) {
 }
 
 static void AlphPuzzle_InitTextOptionsAndPuzzleIndex(AlphPuzzleData *data) {
-    data->unk4 = sub_020183F0(data->args->unk8);
+    data->menuIgnoreTouchFlag = sub_020183F0(data->args->fieldSystemUnk10Cpointer);
     Options *options = Save_PlayerData_GetOptionsAddr(data->args->savedata);
     data->textFrameDelay = Options_GetTextFrameDelay(options);
     data->frame = Options_GetFrame(options);
-    data->puzzleIndex = data->args->unk5;
+    data->puzzleIndex = data->args->puzzleIndex;
 }
 
 static void AlphPuzzle_Finish(AlphPuzzleData *data) {
-    sub_02018410(data->args->unk8, data->unk4);
+    sub_02018410(data->args->fieldSystemUnk10Cpointer, data->menuIgnoreTouchFlag);
     if (data->puzzleSolved) {
         Save_VarsFlags_SetAlphPuzzleFlag(Save_VarsFlags_Get(data->args->savedata), data->puzzleIndex);
     }
@@ -695,7 +685,7 @@ static int AlphPuzzle_CheckInput(AlphPuzzleData *data) {
         return ALPH_PUZZLE_STATE_WAIT_FOR_INPUT;
     }
     if (TouchscreenHitbox_FindRectAtTouchNew(sButtonHitboxes) == TS_HITBOX_ALPH_QUIT) {
-        data->unk4 = 1;
+        data->menuIgnoreTouchFlag = 1;
         AlphPuzzle_CreateQuitTask(data);
         PlaySE(SEQ_SE_DP_SELECT);
         return ALPH_PUZZLE_STATE_QUIT;
@@ -706,17 +696,17 @@ static int AlphPuzzle_CheckInput(AlphPuzzleData *data) {
     }
     AlphPuzzle_UpdateSelectedTile(data, tileIndex, TRUE);
     PlaySE(SEQ_SE_GS_SEKIBAN_SENTAKU);
-    data->unk4 = 1;
+    data->menuIgnoreTouchFlag = 1;
     return ALPH_PUZZLE_STATE_PICKUP_TILE;
 }
 
 static int AlphPuzzleMainSeq_PickupTile_impl(AlphPuzzleData *data) {
     if (!System_GetTouchHeld()) {
-        data->subStateTimer = 0;
+        data->sceneTimer = 0;
         return ALPH_PUZZLE_STATE_ROTATE_TILE;
     }
-    if (data->subStateTimer++ >= 2) {
-        data->subStateTimer = 0;
+    if (data->sceneTimer++ >= 2) {
+        data->sceneTimer = 0;
         data->tileHoverPixelX = (data->selectedTile->x * 32) + 64;
         data->tileHoverPixelY = (data->selectedTile->y * 32) + 32;
         data->tileHoverTileX = data->selectedTile->x;
@@ -859,9 +849,9 @@ static int AlphPuzzleMainSeq_RotateTile_impl(AlphPuzzleData *data) {
         data->subState++;
         break;
     case 1:
-        u16 temp = data->subStateTimer++;
+        u16 temp = data->sceneTimer++;
         sub_02024818(data->selectedTile->sprite, (u16)((u16)(temp << 0xb) + (data->selectedTile->rotation << 0xe)));
-        if (data->subStateTimer >= 8) {
+        if (data->sceneTimer >= 8) {
             data->subState++;
         }
         break;
@@ -870,7 +860,7 @@ static int AlphPuzzleMainSeq_RotateTile_impl(AlphPuzzleData *data) {
 
         AlphPuzzle_UpdateSelectedTile(data, -1, FALSE);
 
-        data->subStateTimer = 0;
+        data->sceneTimer = 0;
         data->subState = 0;
 
         if (AlphPuzzle_CheckComplete(data)) {
@@ -913,20 +903,20 @@ static int AlphPuzzleMainSeq_Clear_impl(AlphPuzzleData *data) {
         data->subState++;
         break;
     case 1:
-        sub_02003E5C(data->palette, 2, 0x2b, 5, data->subStateTimer, 0x7FFF);
-        if (data->subStateTimer++ >= 15) {
+        sub_02003E5C(data->palette, 2, 0x2b, 5, data->sceneTimer, 0x7FFF);
+        if (data->sceneTimer++ >= 15) {
             data->subState++;
         }
         break;
     case 2:
-        sub_02003E5C(data->palette, 2, 0x2b, 5, data->subStateTimer, 0x7FFF);
-        if (data->subStateTimer-- == 0) {
+        sub_02003E5C(data->palette, 2, 0x2b, 5, data->sceneTimer, 0x7FFF);
+        if (data->sceneTimer-- == 0) {
             data->subState++;
         }
         break;
     default:
         data->subState = 0;
-        data->subStateTimer = 0;
+        data->sceneTimer = 0;
         data->puzzleSolved = 1;
         return ALPH_PUZZLE_STATE_FADE_OUT;
     }
@@ -1247,31 +1237,31 @@ static void AlphPuzzle_Quit_CreateYesNoPrompt(AlphPuzzleData *data) {
     YesNoPromptTemplate unkStruct;
     MI_CpuFill8(&unkStruct, 0, sizeof(YesNoPromptTemplate));
     unkStruct.bgConfig = data->bgConfig;
-    unkStruct.unk8 = 31;
-    unkStruct.unkC = 6;
-    unkStruct.unk4 = 0;
-    unkStruct.unk10 = 25;
-    unkStruct.unk11 = 10;
-    unkStruct.unk12_0 = data->unk4;
-    unkStruct.unk12_4 = 1;
-    unkStruct.unk13 = 0;
+    unkStruct.tileStart = 31;
+    unkStruct.plttSlot = 6;
+    unkStruct.bgId = 0;
+    unkStruct.x = 25;
+    unkStruct.y = 10;
+    unkStruct.ignoreTouchFlag = data->menuIgnoreTouchFlag;
+    unkStruct.initialCursorPos = 1;
+    unkStruct.shapeParam = 0;
     YesNoPrompt_InitFromTemplateWithPalette(data->yesNoPrompt, &unkStruct, data->palette);
 }
 
 static AlphPuzzleStates AlphPuzzle_Quit_HandleYesNoPrompt(AlphPuzzleData *data) {
     AlphPuzzleStates ret;
     switch (YesNoPrompt_HandleInput(data->yesNoPrompt)) {
-    case 1:
+    case YESNORESPONSE_YES:
         ret = ALPH_PUZZLE_STATE_FADE_OUT;
         break;
-    case 2:
+    case YESNORESPONSE_NO:
         ret = ALPH_PUZZLE_STATE_WAIT_FOR_INPUT;
         break;
     default:
         return ALPH_PUZZLE_STATE_QUIT;
     }
-    data->unk4 = sub_020169C0(data->yesNoPrompt);
-    sub_020169CC(data->yesNoPrompt);
+    data->menuIgnoreTouchFlag = YesNoPrompt_IsInTouchMode(data->yesNoPrompt);
+    YesNoPrompt_Reset(data->yesNoPrompt);
     ClearFrameAndWindow2(&data->window[ALPH_WINDOW_CONFIRM_QUIT], 1);
     FillWindowPixelBuffer(&data->window[ALPH_WINDOW_CONFIRM_QUIT], 0);
     ScheduleWindowCopyToVram(&data->window[ALPH_WINDOW_CONFIRM_QUIT]);

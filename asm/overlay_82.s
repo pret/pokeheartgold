@@ -3449,7 +3449,7 @@ ov82_0223F834: ; 0x0223F834
 	strb r1, [r0, #0xf]
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 _0223F848:
 	pop {r3, pc}
 	.balign 4, 0

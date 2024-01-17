@@ -51,7 +51,7 @@ SBIN_LZ        := $(SBIN)_LZ
 .PHONY: main_lz
 
 sdk9 sdk7: sdk
-main filesystem: | sdk9
+main files_for_compile: | sdk9
 sub: | sdk7
 
 main: $(SBIN) $(ELF)
@@ -61,10 +61,10 @@ sub: ; @$(MAKE) -C sub
 ROMSPEC        := rom.rsf
 MAKEROM_FLAGS  := $(DEFINES)
 
-$(ALL_OBJS): filesystem
-$(ELF): filesystem libsyscall
+$(ALL_OBJS): files_for_compile
+$(ELF): files_for_compile libsyscall
 
-libsyscall: filesystem
+libsyscall: files_for_compile
 	$(MAKE) -C lib/syscall all install INSTALL_PREFIX=$(abspath $(WORK_DIR)/$(BUILD_DIR)) GAME_CODE=$(GAME_CODE)
 
 $(SBIN_LZ): $(BUILD_DIR)/component.files

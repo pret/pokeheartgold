@@ -305,7 +305,7 @@ _02085294:
 	mov r0, #3
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x6c

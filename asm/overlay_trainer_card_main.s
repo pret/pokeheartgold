@@ -3614,13 +3614,13 @@ _021E7894:
 	mov r0, #0xcf
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_020169C0
+	bl YesNoPrompt_IsInTouchMode
 	ldr r1, _021E78CC ; =0x0000310C
 	str r0, [r5, r1]
 	mov r0, #0xcf
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	cmp r4, #0
 	beq _021E78B4
 	cmp r6, #0

@@ -10,8 +10,8 @@ _020F6450:
 
 	.text
 
-	thumb_func_start sub_02026C44
-sub_02026C44: ; 0x02026C44
+	thumb_func_start TouchHitboxController_Create
+TouchHitboxController_Create: ; 0x02026C44
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r1, #0
 	add r5, r0, #0
@@ -57,7 +57,7 @@ _02026C94:
 _02026C9C:
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_02026C44
+	thumb_func_end TouchHitboxController_Create
 
 	thumb_func_start sub_02026CA0
 sub_02026CA0: ; 0x02026CA0
@@ -69,8 +69,8 @@ sub_02026CA0: ; 0x02026CA0
 	.balign 4, 0
 	thumb_func_end sub_02026CA0
 
-	thumb_func_start sub_02026CAC
-sub_02026CAC: ; 0x02026CAC
+	thumb_func_start TouchHitboxController_Destroy
+TouchHitboxController_Destroy: ; 0x02026CAC
 	push {r4, lr}
 	add r4, r0, #0
 	bne _02026CB6
@@ -81,10 +81,10 @@ _02026CB6:
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
-	thumb_func_end sub_02026CAC
+	thumb_func_end TouchHitboxController_Destroy
 
-	thumb_func_start sub_02026CC4
-sub_02026CC4: ; 0x02026CC4
+	thumb_func_start TouchHitboxController_IsTriggered
+TouchHitboxController_IsTriggered: ; 0x02026CC4
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -187,7 +187,7 @@ _02026D7C:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _02026D84: .word _020F6450
-	thumb_func_end sub_02026CC4
+	thumb_func_end TouchHitboxController_IsTriggered
 
 	thumb_func_start sub_02026D88
 sub_02026D88: ; 0x02026D88

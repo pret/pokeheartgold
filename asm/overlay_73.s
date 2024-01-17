@@ -1846,13 +1846,13 @@ ov73_021E6830: ; 0x021E6830
 	mov r0, #0xba
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_020169C0
+	bl YesNoPrompt_IsInTouchMode
 	mov r1, #0xc5
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	sub r1, #0x2c
 	ldr r0, [r4, r1]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	ldr r0, _021E6888 ; =0x00004A15
 	mov r1, #0
 	strb r1, [r4, r0]
