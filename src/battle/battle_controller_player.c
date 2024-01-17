@@ -7,6 +7,9 @@
 #include "battle/overlay_12_0224E4FC.h"
 #include "battle/battle_022378C0.h"
 #include "heap.h"
+#include "unk_0200FA24.h"
+#include "unk_02035900.h"
+#include "sound.h"
 #include "constants/abilities.h"
 #include "constants/items.h"
 #include "constants/message_tags.h"
@@ -3385,3 +3388,367 @@ void ov12_0224D1DC(BattleSystem *bsys, BattleContext *ctx) {
         ctx->command = CONTROLLER_COMMAND_37;
     }
 }
+
+//static
+void ov12_0224D224(BattleSystem *bsys, BattleContext *ctx) {
+    if (!(ov12_0224E1BC(bsys, ctx) == TRUE)) {
+        ctx->command = CONTROLLER_COMMAND_39;
+    }
+}
+
+//static
+void ov12_0224D238(BattleSystem *bsys, BattleContext *ctx) {
+    
+}
+
+//static
+void ov12_0224D23C(BattleSystem *bsys, BattleContext *ctx) {
+    u8 item = GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker);
+    if (ctx->battleStatus & 0x20 || ctx->battleStatus2 & 4) {
+        if (item == 0x37 || item == 0x73 || item == 0x7d) {
+            if (!(ctx->moveNoTemp == MOVE_STRUGGLE || (ctx->moveNoTemp == MOVE_U_TURN && ctx->battleStatus2 & 0x10) || (ctx->moveNoTemp == MOVE_BATON_PASS && ctx->battleStatus2 & 0x40))) {
+                ctx->battleMons[ctx->battlerIdAttacker].unk88.moveNoChoice = ctx->moveNoTemp;
+            }
+        } else {
+            ctx->battleMons[ctx->battlerIdAttacker].unk88.moveNoChoice = 0;
+        }
+    }
+    
+    if (!(ctx->battleStatus & (1 << 20))) {
+        if (ctx->battleStatus2 & 4) {
+            ctx->moveNoProtect[ctx->battlerIdAttacker] = ctx->moveNoCur;
+            ctx->moveNoPrev = ctx->moveNoTemp;
+        } else {
+            ctx->moveNoProtect[ctx->battlerIdAttacker] = 0;
+            ctx->moveNoPrev = 0;
+        }
+        if (ctx->battleStatus2 & 0x40) {
+            ctx->moveNoBattlerPrev[ctx->battlerIdAttacker] = ctx->moveNoTemp;
+        } else {
+            ctx->moveNoBattlerPrev[ctx->battlerIdAttacker] = 0;
+        }
+    }
+    
+    if (ctx->battleStatus2 & 4) {
+        ctx->moveNoSketch[ctx->battlerIdAttacker] = ctx->moveNoTemp;
+    }
+
+    ov12_0224DD74(bsys, ctx);
+    ov12_02256694(bsys, ctx);
+    ctx->command = CONTROLLER_COMMAND_40;
+}
+
+//static
+void ov12_0224D368(BattleSystem *bsys, BattleContext *ctx) {
+    int script;
+    u32 battleType = BattleSystem_GetBattleType(bsys);
+    
+    if (!(battleType & (0x220))) {
+        if (CheckStatusHealAbility(bsys, ctx, ctx->battlerIdAttacker, 0) == TRUE) {
+            return;
+        }
+        if (ctx->battlerIdTarget != BATTLER_NONE && CheckStatusHealAbility(bsys, ctx, ctx->battlerIdTarget, 0) == TRUE) {
+            return;
+        }
+        if (ov12_0224DD18(ctx, ctx->command, ctx->command) == TRUE) {
+            return;
+        }
+        if (ov12_0224D7EC(bsys, ctx) == TRUE) {
+            return;
+        }
+        
+        script = TryAbilityOnEntry(bsys, ctx);
+        if (script) {
+            ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
+            ctx->commandNext = ctx->command;
+            ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+            return;
+        }
+        if (ov12_0224E130(bsys, ctx) == TRUE) {
+            return;
+        }
+        ov12_0224DC0C(bsys, ctx);
+    }
+    
+    ctx->unk_21A8[ctx->unk_21E8[ctx->unk_EC]][0] = 40;
+    
+    if (ctx->selfTurnData[ctx->battlerIdAttacker].trickRoomFlag) {
+        ov12_02257EC0(bsys, ctx);
+        SortMonsBySpeed(bsys, ctx);
+        ctx->unk_EC = 0;
+    } else {
+        ctx->unk_EC++;
+    }
+    
+    BattleContext_Init(ctx);
+    
+    ctx->command = CONTROLLER_COMMAND_8;
+}
+
+//static
+void ov12_0224D448(BattleSystem *bsys, BattleContext *ctx) {
+    if (ov12_0224DC74(ctx, ctx->command, ctx->command, 1) != TRUE) {
+        ctx->command = CONTROLLER_COMMAND_40;
+    }
+}
+
+//static
+void ov12_0224D464(BattleSystem *bsys, BattleContext *ctx) {
+    if (BattleSystem_GetBattleOutcomeFlags(bsys) & 0x80) {
+        ctx->command = CONTROLLER_COMMAND_44;
+    } else if (BattleSystem_GetBattleOutcomeFlags(bsys) == BATTLE_OUTCOME_LOSE || BattleSystem_GetBattleOutcomeFlags(bsys) == BATTLE_OUTCOME_DRAW) {
+        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 5);
+        ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+        ctx->commandNext = CONTROLLER_COMMAND_44;
+    } else if (BattleSystem_GetBattleOutcomeFlags(bsys) == BATTLE_OUTCOME_WIN) {
+        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 4);
+        ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+        ctx->commandNext = CONTROLLER_COMMAND_44;
+    } else if (BattleSystem_GetBattleOutcomeFlags(bsys) == BATTLE_OUTCOME_MON_CAUGHT) {
+        ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+        ctx->commandNext = CONTROLLER_COMMAND_44;
+    } else if (BattleSystem_GetBattleOutcomeFlags(bsys) == BATTLE_OUTCOME_PLAYER_FLED) {
+        ctx->command = CONTROLLER_COMMAND_44;
+    }
+    ctx->battleEndFlag = TRUE;
+}
+
+//static
+void ov12_0224D4F0(BattleSystem *bsys, BattleContext *ctx) {
+    if (IsPaletteFadeFinished() == TRUE) {
+        ctx->command = CONTROLLER_COMMAND_44;
+    }
+}
+
+//static
+void ov12_0224D504(BattleSystem *bsys, BattleContext *ctx) {
+    Party *party;
+    u32 battleType = BattleSystem_GetBattleType(bsys);
+    
+    if (!(battleType & BATTLE_TYPE_LINK)) {
+        party = BattleSystem_GetParty(bsys, BATTLER_PLAYER);
+        Party_GivePokerusAtRandom(party);
+        Party_SpreadPokerus(party);
+    }
+    
+    if (battleType & BATTLE_TYPE_LINK) {
+        sub_020376EC(22);
+    }
+    
+    ctx->command = CONTROLLER_COMMAND_45;
+}
+
+//static
+void ov12_0224D53C(BattleSystem *bsys, BattleContext *ctx) {
+    
+}
+
+//static
+BOOL ov12_0224D540(BattleSystem *bsys, BattleContext *ctx) {
+    u8 flag = FALSE;
+    int battlerId;
+    int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+    u32 battleType = BattleSystem_GetBattleType(bsys);
+    ControllerCommand cmd = ctx->command;
+    
+    for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
+        ctx->unk_13C[battlerId] &= ~1;
+        if (((battleType & BATTLE_TYPE_DOUBLES) && !(battleType & 0x18)) || ((battleType & 0x10) && BattleSystem_GetFieldSide(bsys, battlerId) == 0)) {
+            if (ctx->battleMons[battlerId].hp != 0 || ctx->battleMons[battlerId ^ 2].hp != 0 || !(battlerId & 2)) {
+                if (ctx->battleMons[battlerId].hp == 0) {
+                    int i;
+                    int hp = 0;
+                    Party *party = BattleSystem_GetParty(bsys, battlerId);
+                    BattleSystem_GetOpponentData(bsys, battlerId); //called but unused
+        
+                    for (i = 0; i < Party_GetCount(party); i++) {
+                        Pokemon *mon = Party_GetMonByIndex(party, i);
+                        if (GetMonData(mon, 0xae, 0) != 0 && GetMonData(mon, 0xae, 0) != SPECIES_EGG) {
+                            u32 hpTemp = GetMonData(mon, MON_DATA_HP, NULL);
+                            if (hpTemp && ctx->selectedMonIndex[battlerId ^ 2] != i) {
+                                hp += hpTemp;
+                            }
+                        }
+                    }
+                    
+                    if (hp == 0) {
+                        ctx->unk_3108 |= MaskOfFlagNo(battlerId);
+                        ctx->selectedMonIndex[battlerId] = 6;
+                    } else {
+                        ctx->commandNext = cmd;
+                        ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                        ctx->unk_13C[battlerId] |= 1;
+                    }
+                }
+            }
+        } else if (ctx->battleMons[battlerId].hp == 0) {
+            int i;
+            int hp = 0;
+            Party *party = BattleSystem_GetParty(bsys, battlerId);
+            BattleSystem_GetOpponentData(bsys, battlerId);
+
+            for (i = 0; i < Party_GetCount(party); i++) {
+                Pokemon *mon = Party_GetMonByIndex(party, i);
+                if (GetMonData(mon, 0xae, 0) != 0 && GetMonData(mon, 0xae, 0) != SPECIES_EGG) {
+                    hp += GetMonData(mon, MON_DATA_HP, NULL);
+                }
+            }
+
+            if (hp == 0) {
+                ctx->unk_3108 |= MaskOfFlagNo(battlerId);
+                ctx->selectedMonIndex[battlerId] = 6;
+            } else {
+                ctx->commandNext = cmd;
+                ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
+                ctx->unk_13C[battlerId] |= 1;
+            }
+        }
+    }
+
+    if (ctx->command == CONTROLLER_COMMAND_RUN_SCRIPT) {
+        if ((!(battleType & 0x86) && BattleSystem_GetBattleStyle(bsys) == 0) && (!(ctx->unk_13C[0] & 1) || !(ctx->unk_13C[1] & 1)) && CanSwitchMon(bsys, ctx, 0)) {
+            if (ctx->unk_13C[0] & 1) {
+                ctx->tempData = 0;
+            } else {
+                ctx->tempData = 1;
+            }
+            ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 0xe7);
+        } else {
+            ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 10);
+        }
+        
+        flag = TRUE;
+    }
+    
+    return flag;
+}
+
+//static
+BOOL ov12_0224D7EC(BattleSystem *bsys, BattleContext *ctx) {
+    int battlerId;
+    int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
+    u32 battleType = BattleSystem_GetBattleType(bsys);
+    u8 battleOutcome = 0;
+    
+    for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
+        if ((battleType == 0x4A || battleType == 0x4B) && BattleSystem_GetFieldSide(bsys, battlerId) == 0) {
+            if (ov12_0223AB0C(bsys, battlerId) == 2 && ctx->battleMons[battlerId].hp == 0) {
+                int hp = 0;
+                Party *party = BattleSystem_GetParty(bsys, battlerId);
+                BattleSystem_GetOpponentData(bsys, battlerId);
+                
+                for (int i = 0; i < Party_GetCount(party); i++) {
+                    Pokemon *mon = Party_GetMonByIndex(party, i);
+                    if (GetMonData(mon, 0xae, NULL) != SPECIES_NONE && GetMonData(mon, 0xae, NULL) != SPECIES_EGG) {
+                        hp += GetMonData(mon, 0xa3, NULL);
+                    }
+                }
+    
+                if (hp == 0) {
+                    battleOutcome |= 2;
+                }
+            }
+        } else if ((battleType & BATTLE_TYPE_MULTI) || ((battleType & 0x10) && BattleSystem_GetFieldSide(bsys, battlerId))) {
+            if (ctx->battleMons[battlerId].hp == 0) {
+                int i;
+                int hp = 0;
+                Party *party = BattleSystem_GetParty(bsys, battlerId);
+                Party *partnerParty = BattleSystem_GetParty(bsys, BattleSystem_GetBattlerIdPartner(bsys, battlerId));
+                OpponentData *opponent = BattleSystem_GetOpponentData(bsys, battlerId);
+                
+                for (i = 0; i < Party_GetCount(party); i++) {
+                    Pokemon *mon = Party_GetMonByIndex(party, i);
+                    if (GetMonData(mon, 0xae, NULL) != SPECIES_NONE && GetMonData(mon, 0xae, NULL) != SPECIES_EGG) {
+                        hp += GetMonData(mon, 0xa3, NULL);
+                    }
+                }
+
+                for (i = 0; i < Party_GetCount(partnerParty); i++) {
+                    Pokemon *mon = Party_GetMonByIndex(partnerParty, i);
+                    if (GetMonData(mon, 0xae, NULL) != SPECIES_NONE && GetMonData(mon, 0xae, NULL) != SPECIES_EGG) {
+                        hp += GetMonData(mon, 0xa3, NULL);
+                    }
+                }
+    
+                if (hp == 0) {
+                    if (ov12_02261258(opponent) & 1) {
+                        battleOutcome |= 1;
+                    } else {
+                        battleOutcome |= 2;
+                    }
+                }
+            }
+        } else {
+            if (ctx->battleMons[battlerId].hp == 0) {
+                int hp = 0;
+                Party *party = BattleSystem_GetParty(bsys, battlerId);
+                OpponentData *opponent = BattleSystem_GetOpponentData(bsys, battlerId);
+                
+                for (int i = 0; i < Party_GetCount(party); i++) {
+                    Pokemon *mon = Party_GetMonByIndex(party, i);
+                    if (GetMonData(mon, 0xae, NULL) != SPECIES_NONE && GetMonData(mon, 0xae, NULL) != SPECIES_EGG) {
+                        hp += GetMonData(mon, 0xa3, NULL);
+                    }
+                }
+    
+                if (hp == 0) {
+                    if (ov12_02261258(opponent) & 1) {
+                        battleOutcome |= 1;
+                    } else {
+                        battleOutcome |= 2;
+                    }
+                }
+            }
+        }
+    } 
+
+    if ((battleOutcome == BATTLE_OUTCOME_WIN && battleType & BATTLE_TYPE_TRAINER && !(battleType & BATTLE_TYPE_LINK)) ||
+         (battleOutcome == BATTLE_OUTCOME_WIN && battleType & BATTLE_TYPE_TOWER && !(battleType & BATTLE_TYPE_LINK))) {
+        Trainer *trainer = BattleSystem_GetTrainer(bsys, BATTLER_ENEMY);
+        
+        switch (trainer->data.trainerClass) {
+            case TRAINERCLASS_LEADER_FALKNER:
+            case TRAINERCLASS_LEADER_BUGSY:
+            case TRAINERCLASS_LEADER_WHITNEY:
+            case TRAINERCLASS_LEADER_MORTY:
+            case TRAINERCLASS_LEADER_PRYCE:
+            case TRAINERCLASS_LEADER_JASMINE:
+            case TRAINERCLASS_LEADER_CHUCK:
+            case TRAINERCLASS_LEADER_CLAIR:
+            case TRAINERCLASS_CHAMPION:
+            case TRAINERCLASS_ELITE_FOUR_WILL:
+            case TRAINERCLASS_ELITE_FOUR_KAREN:
+            case TRAINERCLASS_ELITE_FOUR_KOGA:
+            case TRAINERCLASS_ELITE_FOUR_BRUNO:
+            case TRAINERCLASS_LEADER_BROCK:
+            case TRAINERCLASS_LEADER_MISTY:
+            case TRAINERCLASS_LEADER_LT_SURGE:
+            case TRAINERCLASS_LEADER_ERIKA:
+            case TRAINERCLASS_LEADER_JANINE:
+            case TRAINERCLASS_LEADER_SABRINA:
+            case TRAINERCLASS_LEADER_BLAINE:
+            case TRAINERCLASS_LEADER_BLUE:
+                PlayBGM(SEQ_GS_WIN3);
+                break;
+            case TRAINERCLASS_TOWER_TYCOON:
+            case TRAINERCLASS_HALL_MATRON:
+            case TRAINERCLASS_FACTORY_HEAD:
+            case TRAINERCLASS_ARCADE_STAR:
+            case TRAINERCLASS_CASTLE_VALET:
+                PlayBGM(SEQ_GS_WINBRAIN);
+                break;
+            default:
+                PlayBGM(SEQ_GS_WIN1);
+                break;
+        }
+
+        BattleSystem_SetCriticalHpMusicFlag(bsys, 2);
+    }
+    
+    if (battleOutcome) {
+        BattleSystem_SetBattleOutcomeFlags(bsys, battleOutcome);
+    }
+
+    return (battleOutcome != 0);
+}
+
