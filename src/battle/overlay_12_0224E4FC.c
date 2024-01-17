@@ -206,8 +206,8 @@ void ov12_0224ECC4(BattleContext *ctx, int id, int battlerId, int index) {
     int i;
     
     for (i = 0; i < 16; i++) {
-        if (!ctx->unk_2200[id][battlerId][i]) {
-            ctx->unk_2200[id][battlerId][i] = index;
+        if (!ctx->linkBuffer[id][battlerId][i]) {
+            ctx->linkBuffer[id][battlerId][i] = index;
             break;
         }
     }
@@ -222,8 +222,8 @@ void ov12_0224ED00(BattleContext *ctx, int id, int battlerId, int index) {
     GF_ASSERT(index != 0);
     
     for (i = 0; i < 16; i++) {
-        if (ctx->unk_2200[id][battlerId][i] == index) {
-            ctx->unk_2200[id][battlerId][i] = 0;
+        if (ctx->linkBuffer[id][battlerId][i] == index) {
+            ctx->linkBuffer[id][battlerId][i] = 0;
             break;
         }
     }
@@ -240,7 +240,7 @@ BOOL Link_QueueNotEmpty(BattleContext *ctx) {
     for (i = 0; i < 4; i++) {
         for (battlerId = 0; battlerId < 4; battlerId++) {
             for (j = 0; j < 16; j++) {
-                cnt += ctx->unk_2200[i][battlerId][j];
+                cnt += ctx->linkBuffer[i][battlerId][j];
             }
         }
     }
@@ -258,10 +258,9 @@ void Link_CheckTimeout(BattleContext *ctx) {
     }
 }
 
-//Link_ClearServerBuffer..?
-void ov12_0224EDC0(BattleContext *ctx, int battlerId) {
+void BattleBuffer_Clear(BattleContext *ctx, int battlerId) {
     for (int i = 0; i < 256; i++) {
-        ctx->unk_2300[battlerId][i] = 0;
+        ctx->battleBuffer[battlerId][i] = 0;
     }
 }
 
@@ -1264,8 +1263,8 @@ void BattleSystem_SetExperienceEarnFlags(BattleSystem *bsys, BattleContext *ctx,
     u32 battleType = BattleSystem_GetBattleType(bsys);
     
     while (i <= 2) {
-        if (!(ctx->unk_3108 & MaskOfFlagNo(i)) &&
-            !(ctx->unk_3108 & MaskOfFlagNo(battlerId)) &&
+        if (!(ctx->switchInFlag & MaskOfFlagNo(i)) &&
+            !(ctx->switchInFlag & MaskOfFlagNo(battlerId)) &&
             ctx->battleMons[battlerId].hp) {
                 ctx->unk_A4[(battlerId >> 1) & 1] |= MaskOfFlagNo(ctx->selectedMonIndex[i]);
             }
@@ -1756,7 +1755,7 @@ void BattleContext_Init(BattleContext *ctx) {
     ctx->stateFieldConditionUpdate = 0;
     ctx->stateUpdateMonCondition = 0;
     ctx->stateUpdateFieldConditionExtra = 0;
-    ctx->unk_28 = 0;
+    ctx->stateBeforeTurn = 0;
     ctx->unk_30 = 0;
     ctx->unk_3C = 0;
     ctx->unk_40 = 0;
@@ -1792,8 +1791,8 @@ void ov12_02251038(BattleSystem *bsys, BattleContext *ctx) {
     battleType = BattleSystem_GetBattleType(bsys);
     
     if (!(battleType & BATTLE_TYPE_DOUBLES)) {
-        ctx->unk_3108 |= MaskOfFlagNo(2);
-        ctx->unk_3108 |= MaskOfFlagNo(3);
+        ctx->switchInFlag |= MaskOfFlagNo(2);
+        ctx->switchInFlag |= MaskOfFlagNo(3);
     }
     
     ctx->unk_311C = 6;
@@ -1808,7 +1807,7 @@ void InitSwitchWork(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
     
     maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     BattleSystem_GetBattleType(bsys);
-    ctx->playerActions[battlerId].unk0 = 40;
+    ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_40;
     
     if (!(ctx->battleStatus & BATTLE_STATUS_BATON_PASS)) {
         for (i = 0; i < maxBattlers; i++) {
@@ -4619,7 +4618,7 @@ u16 GetBattlerHeldItem(BattleContext *ctx, int battlerId) {
 }
 
 BOOL ov12_0225561C(BattleContext *ctx, int battlerId) {
-    return (ctx->playerActions[battlerId].unk0 == 40);
+    return (ctx->playerActions[battlerId].command == CONTROLLER_COMMAND_40);
 }
 
 BOOL CheckItemEffectOnHit(BattleSystem *bsys, BattleContext *ctx, int *script) {
@@ -5366,8 +5365,8 @@ void ov12_022567D4(BattleSystem *bsys, BattleContext *ctx, Pokemon *mon) {
     sub_020720FC(mon, profile, ballId, location, terrain, HEAP_ID_BATTLE);
 }
 
-u8 ov12_0225682C(BattleContext *ctx, int battlerId) {
-    return ctx->unk_2300[battlerId][0];
+u8 BattleBuffer_GetNext(BattleContext *ctx, int battlerId) {
+    return ctx->battleBuffer[battlerId][0];
 }
 
 BOOL BattlerCheckSubstitute(BattleContext *ctx, int battlerId) {
@@ -6275,7 +6274,7 @@ int ov12_02257E98(BattleSystem *bsys, BattleContext *ctx, int side) {
     return battlerId;
 }
 
-void ov12_02257EC0(BattleSystem *bsys, BattleContext *ctx) {
+void SortExecutionOrderBySpeed(BattleSystem *bsys, BattleContext *ctx) {
     int i, j;
     int battlerId1;
     int battlerId2;
@@ -6382,8 +6381,8 @@ void CheckIgnorePressure(BattleContext *ctx, int battlerIdAttacker, int battlerI
     }
 }
 
-BOOL ov12_022581BC(BattleSystem *bsys, BattleContext *ctx) {
-    if (ov12_0223BFEC(bsys)) {
+BOOL BattleController_TryEmitExitRecording(BattleSystem *bsys, BattleContext *ctx) {
+    if (BattleSystem_IsRecordingPaused(bsys)) {
         ctx->command = CONTROLLER_COMMAND_43;
         return TRUE;
     }
@@ -6409,11 +6408,11 @@ int ov12_022581D4(BattleSystem *bsys, BattleContext *ctx, int var, int battlerId
     case 7:
         return ctx->totalDamage[battlerId];
     case 8:
-        return ctx->playerActions[battlerId].unk0;
+        return (int) ctx->playerActions[battlerId].command;
     case 9:
         return ctx->trainerAIData.battlerIdTarget;
     case 10:
-        return ctx->unk_3108;
+        return ctx->switchInFlag;
     case 11:
         return ctx->trainerAIData.unkA4[battlerId];
     case 12:

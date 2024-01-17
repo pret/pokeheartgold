@@ -127,7 +127,7 @@ void ov12_0223BF14(BattleSystem *bsys, u16 size, u8 *buffer);
 u16 ov12_0223BFC0(BattleSystem *bsys);
 int ov12_0223BFCC(BattleSystem *bsys, u16 battlerId);
 u16 BattleSystem_GetTrainerItem(BattleSystem *bsys, int battlerId, int index);
-BOOL ov12_0223BFEC(BattleSystem *bsys);
+BOOL BattleSystem_IsRecordingPaused(BattleSystem *bsys);
 void ov12_0223BFFC(BattleSystem *bsys, u32 flag);
 BOOL ov12_0223C080(BattleSystem *bsys);
 void ov12_0223C0C4(BattleSystem *bsys);

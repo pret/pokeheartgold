@@ -15,8 +15,8 @@ void BattleControllerPlayer_TrainerMessage(BattleSystem *bsys, BattleContext *ct
 void BattleControllerPlayer_PokemonAppear(BattleSystem *bsys, BattleContext *ctx);
 void BattleControllerPlayer_SelectionScreenInit(BattleSystem *bsys, BattleContext *ctx);
 void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BattleContext *ctx);
-void ov12_02249190(BattleSystem *bsys, BattleContext *ctx);
-void ov12_0224930C(BattleSystem *bsys, BattleContext *ctx);
+void BattleControllerPlayer_CalcExecutionOrder(BattleSystem *bsys, BattleContext *ctx);
+void BattleControllerPlayer_BeforeTurn(BattleSystem *bsys, BattleContext *ctx);
 void ov12_02249460(BattleSystem *bsys, BattleContext *ctx);
 void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleContext *ctx);
 void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext *ctx);

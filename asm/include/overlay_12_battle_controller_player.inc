@@ -57,7 +57,7 @@
 .public BattleSystem_CheckMoveHitEffect
 .public BattleSystem_GetBattleMon
 .public ReadBattleScriptFromNarc
-.public ov12_0224EDC0
+.public BattleBuffer_Clear
 .public CheckSortSpeed
 .public ov12_022503EC
 .public ov12_02250490
@@ -112,15 +112,15 @@
 .public ov12_022565E0
 .public ov12_02256694
 .public Battler_CanSelectAction
-.public ov12_0225682C
+.public BattleBuffer_GetNext
 .public ov12_02256854
 .public ov12_02256F78
 .public CalcMoveDamage
 .public ApplyDamageRange
 .public ov12_02257E98
-.public ov12_02257EC0
+.public SortExecutionOrderBySpeed
 .public CheckIgnorePressure
-.public ov12_022581BC
+.public BattleController_TryEmitExitRecording
 .public ov12_02261258
 .public ov12_02261264
 .public ov12_02262B80
@@ -135,4 +135,4 @@
 .public ov12_02263E18
 .public BattleController_EmitIncrementGameStat
 .public BattleController_EmitShowWaitMessage
-.public ov12_022642F0
+.public BattleController_EmitBlankMessage

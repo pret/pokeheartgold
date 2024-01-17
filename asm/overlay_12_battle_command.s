@@ -1085,12 +1085,12 @@ _02246CCC:
 _02246CEA:
 	add r0, r6, #0
 	mov r1, #0
-	bl ov12_0225682C
+	bl BattleBuffer_GetNext
 	cmp r0, #0
 	beq _02246D4C
 	ldr r0, [r4, #4]
 	mov r1, #0
-	bl ov12_0225682C
+	bl BattleBuffer_GetNext
 	cmp r0, #0xff
 	bne _02246D0A
 	mov r0, #0x16

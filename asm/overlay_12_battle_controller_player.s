@@ -11,8 +11,8 @@
     .public BattleControllerPlayer_PokemonAppear
     .public BattleControllerPlayer_SelectionScreenInit
     .public BattleControllerPlayer_SelectionScreenInput
-    .public ov12_02249190
-    .public ov12_0224930C
+    .public BattleControllerPlayer_CalcExecutionOrder
+    .public BattleControllerPlayer_BeforeTurn
     .public ov12_02249460
     .public BattleControllerPlayer_UpdateFieldCondition
     .public BattleControllerPlayer_UpdateMonCondition

@@ -1201,13 +1201,13 @@ u16 BattleSystem_GetTrainerItem(BattleSystem *bsys, int battlerId, int index) {
     return bsys->trainers[battlerId].data.items[index];
 }
 
-BOOL ov12_0223BFEC(BattleSystem *bsys) {
-    return bsys->unk2474_0;
+BOOL BattleSystem_IsRecordingPaused(BattleSystem *bsys) {
+    return bsys->isRecordingPaused;
 }
 
 void ov12_0223BFFC(BattleSystem *bsys, u32 flag) {
     if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) || 
-        bsys->unk2474_0 ||
+        bsys->isRecordingPaused ||
         ov12_022581D4(bsys, bsys->ctx, 13, 0) == 44 ||
         ov12_022581D4(bsys, bsys->ctx, 14, 0) == 44) {
         return;
@@ -1217,12 +1217,12 @@ void ov12_0223BFFC(BattleSystem *bsys, u32 flag) {
     BeginNormalPaletteFade(3, 0, 0, 0, 16, 2, HEAP_ID_BATTLE);
     Sound_Stop();
     Sound_SetMasterVolume(0);
-    bsys->unk2474_0 = TRUE;
+    bsys->isRecordingPaused = TRUE;
 }
 
 BOOL ov12_0223C080(BattleSystem *bsys) {
     if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) || 
-        bsys->unk2474_0 ||
+        bsys->isRecordingPaused ||
         ov12_022581D4(bsys, bsys->ctx, 13, 0) == 44 ||
         ov12_022581D4(bsys, bsys->ctx, 14, 0) == 44) {
         return FALSE;

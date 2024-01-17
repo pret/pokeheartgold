@@ -394,7 +394,7 @@
 .public Link_QueueNotEmpty
 .public GetBattlerVar
 .public ov12_022567D4
-.public ov12_0225682C
+.public BattleBuffer_GetNext
 .public ov12_022568B0
 .public ov12_02261294
 .public BattleController_EmitPokemonSendOut

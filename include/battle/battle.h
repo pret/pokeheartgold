@@ -266,7 +266,7 @@ typedef struct PokemonStats {
 } PokemonStats;
 
 typedef struct PlayerActions {
-    u32 unk0;
+    ControllerCommand command;
     u32 unk4;
     u32 unk8;
     u32 inputSelection;
@@ -283,8 +283,8 @@ typedef struct BattleContext {
     int updateMonConditionData;
     int stateUpdateFieldConditionExtra;
     int updateFieldConditionExtraData;
-    int unk_28;
-    int unk_2C;
+    int stateBeforeTurn;
+    int beforeTurnData;
     int unk_30;
     int unk_34;
     int unk_38;
@@ -322,7 +322,7 @@ typedef struct BattleContext {
     NarcId unk_BC[4];
     int unk_CC[4];
     int unk_DC[4];
-    int unk_EC;
+    int executionIndex;
     int unk_F0;
     BattleMessage buffMsg;
     int battlerIdTemp;
@@ -383,8 +383,8 @@ typedef struct BattleContext {
     u8 executionOrder[4]; //accounts for running, items, etc used in battler slots
     u8 turnOrder[4]; //by pokemon speed, accounting for trick room
     u32 effectiveSpeed[4];
-    u8 unk_2200[4][4][16];
-    u8 unk_2300[4][256];
+    u8 linkBuffer[4][4][16];
+    u8 battleBuffer[4][256];
     int battleScriptBuffer[400];
     BattleMon battleMons[4];
     u32 moveNoTemp;
@@ -408,7 +408,7 @@ typedef struct BattleContext {
     int unk_30E4[4];
     int unk_30F4[4];
     int unk_3104;
-    u8 unk_3108;
+    u8 switchInFlag;
     u8 levelUpMons;
     u16 unk_310A;
     u16 unk_310C[4];
@@ -622,7 +622,7 @@ struct BattleSystem {
     u16 unk2454[4];
     u16 unk245C[4];
     int unk2464[4];
-    u32 unk2474_0:1, 
+    u32 isRecordingPaused:1, 
         unk2474_1:1, 
         unk2474_2:1, 
         unk2474_3:1,

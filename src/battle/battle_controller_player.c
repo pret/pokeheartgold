@@ -22,8 +22,8 @@ const ControllerFunction sPlayerBattleCommands[CONTROLLER_COMMAND_MAX] = {
     [CONTROLLER_COMMAND_SEND_OUT]                       = BattleControllerPlayer_PokemonAppear,
     [CONTROLLER_COMMAND_SELECTION_SCREEN_INIT]          = BattleControllerPlayer_SelectionScreenInit,
     [CONTROLLER_COMMAND_SELECTION_SCREEN_INPUT]         = BattleControllerPlayer_SelectionScreenInput,
-    [CONTROLLER_COMMAND_6]                              = ov12_02249190,
-    [CONTROLLER_COMMAND_7]                              = ov12_0224930C,
+    [CONTROLLER_COMMAND_CALC_EXECUTION_ORDER]           = BattleControllerPlayer_CalcExecutionOrder,
+    [CONTROLLER_COMMAND_BEFORE_TURN]                    = BattleControllerPlayer_BeforeTurn,
     [CONTROLLER_COMMAND_8]                              = ov12_02249460,
     [CONTROLLER_COMMAND_UPDATE_FIELD_CONDITION]         = BattleControllerPlayer_UpdateFieldCondition,
     [CONTROLLER_COMMAND_UPDATE_MON_CONDITION]           = BattleControllerPlayer_UpdateMonCondition,
@@ -167,7 +167,7 @@ void BattleControllerPlayer_SelectionScreenInit(BattleSystem *bsys, BattleContex
 }
 
 typedef enum BattleSelectState {
-    SSI_STATE_0,
+    SSI_STATE_SELECT_COMMAND_INIT,
     SSI_STATE_1,
     SSI_STATE_2,
     SSI_STATE_3,
@@ -202,18 +202,18 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BattleConte
     
     for (battlerId = 0; battlerId < battlersMax; battlerId++) {
         switch (ctx->unk_0[battlerId]) {
-        case SSI_STATE_0:
-            if ((battleType & BATTLE_TYPE_DOUBLES) && !(battleType & BATTLE_TYPE_MULTI) && ((battlerId == BATTLER_PLAYER2) && (ctx->unk_0[0] != 14) || (battlerId == BATTLER_ENEMY2) && (ctx->unk_0[1] != 14))) {
+        case SSI_STATE_SELECT_COMMAND_INIT:
+            if ((battleType & BATTLE_TYPE_DOUBLES) && !(battleType & BATTLE_TYPE_MULTI) && ((battlerId == BATTLER_PLAYER2) && (ctx->unk_0[0] != SSI_STATE_14) || (battlerId == BATTLER_ENEMY2) && (ctx->unk_0[1] != SSI_STATE_14))) {
                 break;
             }
-            if (ctx->unk_3108 & MaskOfFlagNo(battlerId)) {
+            if (ctx->switchInFlag & MaskOfFlagNo(battlerId)) {
                 ctx->unk_0[battlerId] = SSI_STATE_13;
-                ctx->playerActions[battlerId].unk0 = 40;
+                ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_40;
                 break;
             } else if (Battler_CanSelectAction(ctx, battlerId) == 0) {
                 ctx->turnData[battlerId].unk0_1 = 1;
                 ctx->unk_0[battlerId] = SSI_STATE_13;
-                ctx->playerActions[battlerId].unk0 = 13;
+                ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_FIGHT_INPUT;
                 break;
             }
 
@@ -249,57 +249,57 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BattleConte
             }
         //fallthrough
         case SSI_STATE_1:
-            if (ov12_0225682C(ctx, battlerId)) {
-                ctx->playerActions[battlerId].inputSelection = ctx->unk_2300[battlerId][0];
+            if (BattleBuffer_GetNext(ctx, battlerId)) {
+                ctx->playerActions[battlerId].inputSelection = ctx->battleBuffer[battlerId][0];
 
                 if (battleType & BATTLE_TYPE_PAL_PARK) {
-                    switch (ov12_0225682C(ctx, battlerId)) {
+                    switch (BattleBuffer_GetNext(ctx, battlerId)) {
                     case 1:
                         ctx->unk_0[battlerId] = SSI_STATE_END;
                         ctx->unk_4[battlerId] = SSI_STATE_13;
-                        ctx->playerActions[battlerId].unk0 = 17;
+                        ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_SAFARI_THROW_BALL;
                         break;
                     case 4:
                         ctx->unk_0[battlerId] = SSI_STATE_END;
                         ctx->unk_4[battlerId] = SSI_STATE_13;
-                        ctx->playerActions[battlerId].unk0 = 16;
+                        ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_RUN_INPUT;
                         break;
                     }
                 } else if (battleType & BATTLE_TYPE_SAFARI) {
-                    switch (ov12_0225682C(ctx, battlerId)) {
+                    switch (BattleBuffer_GetNext(ctx, battlerId)) {
                     case 1:
                         ctx->unk_0[battlerId] = SSI_STATE_END;
                         ctx->unk_4[battlerId] = SSI_STATE_13;
-                        ctx->playerActions[battlerId].unk0 = 17;
+                        ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_SAFARI_THROW_BALL;
                         break;
                     case 2:
                         ctx->unk_0[battlerId] = SSI_STATE_END;
                         ctx->unk_4[battlerId] = SSI_STATE_13;
-                        ctx->playerActions[battlerId].unk0 = 18;
+                        ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_SAFARI_THROW_MUD;
                         break;
                     case 3:
                         ctx->unk_0[battlerId] = SSI_STATE_END;
                         ctx->unk_4[battlerId] = SSI_STATE_13;
-                        ctx->playerActions[battlerId].unk0 = 19;
+                        ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_SAFARI_RUN;
                         break;
                     case 4:
                         ctx->unk_0[battlerId] = SSI_STATE_END;
                         ctx->unk_4[battlerId] = SSI_STATE_13;
-                        ctx->playerActions[battlerId].unk0 = 16;
+                        ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_RUN_INPUT;
                         break;
                     case 5:
                         ctx->unk_0[battlerId] = SSI_STATE_END;
                         ctx->unk_0[battlerId] = SSI_STATE_13;
-                        ctx->playerActions[battlerId].unk0 = 20;
+                        ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_SAFARI_WATCHING;
                         break;
                     }
                 } else {
-                    if (ov12_0225682C(ctx, battlerId) != 0xff) {
+                    if (BattleBuffer_GetNext(ctx, battlerId) != 0xff) {
                         ctx->unk_314C[battlerId] |= 0x1;
                     }
 
-                    switch (ov12_0225682C(ctx, battlerId)) {
-                    case 1: //Fight
+                    switch (BattleBuffer_GetNext(ctx, battlerId)) {
+                    case BATTLE_INPUT_FIGHT: 
                         if (StruggleCheck(bsys, ctx, battlerId, 0, 0xffffffff) == 15) {
                             ctx->turnData[battlerId].struggleFlag = 1;
 
@@ -324,41 +324,41 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BattleConte
                             ctx->unk_0[battlerId] = SSI_STATE_3;
                         }
 
-                        ctx->playerActions[battlerId].unk0 = 13;
+                        ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_FIGHT_INPUT;
                         break;
-                    case 2: //Item
+                    case BATTLE_INPUT_ITEM:
                         if (BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_BUG_CONTEST) {
                             ctx->unk_0[battlerId] = SSI_STATE_END;
                             ctx->unk_4[battlerId] = SSI_STATE_13;
-                            ctx->playerActions[battlerId].unk0 = 21;
+                            ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_CATCHING_CONSTEST_THROW_BALL;
                         } else if (BattleSystem_GetBattleType(bsys) & (BATTLE_TYPE_LINK | BATTLE_TYPE_TOWER)) {
                             msg.id = msg_0197_00593; //Items can't be used here
                             msg.tag = TAG_NONE;
                             ov12_022639B8(bsys, battlerId, msg);
                             ctx->unk_0[battlerId] = SSI_STATE_15;
-                            ctx->unk_4[battlerId] = SSI_STATE_0;
+                            ctx->unk_4[battlerId] = SSI_STATE_SELECT_COMMAND_INIT;
                         } else {
-                            ctx->playerActions[battlerId].unk0 = 14;
+                            ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_ITEM_INPUT;
                             ctx->unk_0[battlerId] = 7;
                         }
                         break;
-                    case 3: //Pokemon
-                        ctx->playerActions[battlerId].unk0 = 15;
+                    case BATTLE_INPUT_POKEMON:
+                        ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_POKEMON_INPUT;
                         ctx->unk_0[battlerId] = SSI_STATE_9;
                         break;
-                    case 4: //Run
-                        ctx->playerActions[battlerId].unk0 = 16;
+                    case BATTLE_INPUT_RUN:
+                        ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_RUN_INPUT;
                         ctx->unk_0[battlerId] = SSI_STATE_11;
                         break;
-                    case 0xff: //Cancel
+                    case BATTLE_INPUT_CANCEL:
                         if (battleType & BATTLE_TYPE_LINK) {
                             ov12_02263CCC(bsys, battlerId);
-                            ctx->unk_0[battlerId] = SSI_STATE_0;
+                            ctx->unk_0[battlerId] = SSI_STATE_SELECT_COMMAND_INIT;
                             ctx->unk_0[BattleSystem_GetBattlerIdPartner(bsys, battlerId)] = 0;
                         } else if ((battleType & BATTLE_TYPE_DOUBLES) && (battlerId == BATTLER_PLAYER2)) {
                             ov12_02263CCC(bsys, battlerId);
-                            ctx->unk_0[0] = SSI_STATE_0;
-                            ctx->unk_0[2] = SSI_STATE_0;
+                            ctx->unk_0[0] = SSI_STATE_SELECT_COMMAND_INIT;
+                            ctx->unk_0[2] = SSI_STATE_SELECT_COMMAND_INIT;
                         }
                         break;
                     }
@@ -370,25 +370,25 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BattleConte
             ctx->unk_0[battlerId] = SSI_STATE_4;
             //fallthrough
         case SSI_STATE_4:
-            if (ov12_0225682C(ctx, battlerId) == 0xff) {
-                ctx->unk_0[battlerId] = SSI_STATE_0;
-            } else if (ov12_0225682C(ctx, battlerId)) {
-                if ((ctx->unk_2300[battlerId][0] - 1) == 4) {
-                    ctx->playerActions[battlerId].unk0 = 16;
+            if (BattleBuffer_GetNext(ctx, battlerId) == 0xff) {
+                ctx->unk_0[battlerId] = SSI_STATE_SELECT_COMMAND_INIT;
+            } else if (BattleBuffer_GetNext(ctx, battlerId)) {
+                if ((ctx->battleBuffer[battlerId][0] - 1) == BATTLE_INPUT_RUN) {
+                    ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_RUN_INPUT;
                     ctx->unk_0[battlerId] = SSI_STATE_11;
                     break;
-                } else if (ov12_02251A28(bsys, ctx, battlerId, ctx->unk_2300[battlerId][0] - 1, &msg) == 0) {
+                } else if (ov12_02251A28(bsys, ctx, battlerId, ctx->battleBuffer[battlerId][0] - 1, &msg) == 0) {
                     if (BattleSystem_GetBattleSpecial(bsys) & BATTLE_SPECIAL_RECORDED) {
                         ov12_0223BFFC(bsys, 1);
-                        ov12_022581BC(bsys, BattleSystem_GetBattleContext(bsys));
+                        BattleController_TryEmitExitRecording(bsys, BattleSystem_GetBattleContext(bsys));
                     } else {
                         ov12_022639B8(bsys, battlerId, msg);
                         ctx->unk_0[battlerId] = SSI_STATE_15;
                         ctx->unk_4[battlerId] = SSI_STATE_3;
                     }
                 } else {
-                    ctx->playerActions[battlerId].unk8 = ctx->unk_2300[battlerId][0];
-                    ctx->movePos[battlerId] = ctx->unk_2300[battlerId][0] - 1;
+                    ctx->playerActions[battlerId].unk8 = ctx->battleBuffer[battlerId][0];
+                    ctx->movePos[battlerId] = ctx->battleBuffer[battlerId][0] - 1;
                     ctx->unk_30B4[battlerId] = ctx->battleMons[battlerId].moves[ctx->movePos[battlerId]];
                     ctx->unk_0[battlerId] = SSI_STATE_5;
                     ctx->unk_314C[battlerId] |= 0x2;
@@ -406,10 +406,10 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BattleConte
             }
             break;
         case SSI_STATE_6:
-            if (ov12_0225682C(ctx, battlerId) == 0xff) {
+            if (BattleBuffer_GetNext(ctx, battlerId) == 0xff) {
                 ctx->unk_0[battlerId] = SSI_STATE_3;
-            } else if (ov12_0225682C(ctx, battlerId)) {
-                ctx->playerActions[battlerId].unk4 = ctx->unk_2300[battlerId][0] - 1;
+            } else if (BattleBuffer_GetNext(ctx, battlerId)) {
+                ctx->playerActions[battlerId].unk4 = ctx->battleBuffer[battlerId][0] - 1;
                 ctx->unk_0[battlerId] = SSI_STATE_13;
 
                 ctx->unk_314C[battlerId] |= 0x4;
@@ -419,12 +419,12 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BattleConte
             ov12_02263138(bsys, ctx, battlerId);
             ctx->unk_0[battlerId] = SSI_STATE_8;
         case SSI_STATE_8:
-            if (ov12_0225682C(ctx, battlerId) == 0xff) {
-                ctx->unk_0[battlerId] = SSI_STATE_0;
-            } else if (ov12_0225682C(ctx, battlerId)) {
+            if (BattleBuffer_GetNext(ctx, battlerId) == 0xff) {
+                ctx->unk_0[battlerId] = SSI_STATE_SELECT_COMMAND_INIT;
+            } else if (BattleBuffer_GetNext(ctx, battlerId)) {
                 u32 *unkPtr;
 
-                unkPtr = (u32 *)&ctx->unk_2300[battlerId][0];
+                unkPtr = (u32 *)&ctx->battleBuffer[battlerId][0];
                 ctx->playerActions[battlerId].unk8 = unkPtr[0];
                 ctx->unk_0[battlerId] = SSI_STATE_13;
             }
@@ -439,7 +439,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BattleConte
             if (((ov12_0223AB0C(bsys, battlerId) == 4) || (ov12_0223AB0C(bsys, battlerId) == 5)) && ((battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES)) || (battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_LINK)) || (battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TOWER)) || ((battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_INGAME_PARTNER)) && (ov12_0223AB0C(bsys, battlerId) == 4)))) {
                 partnerId = BattleSystem_GetBattlerIdPartner(bsys, battlerId);
 
-                if (ctx->playerActions[partnerId].unk0 == 15) {
+                if (ctx->playerActions[partnerId].command == CONTROLLER_COMMAND_POKEMON_INPUT) {
                     v9 = ctx->playerActions[partnerId].unk8;
                 }
             }
@@ -448,11 +448,11 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BattleConte
             ctx->unk_0[battlerId] = SSI_STATE_10;
         //fallthrough
         case SSI_STATE_10:
-            if (ov12_0225682C(ctx, battlerId) == 0xff) {
-                ctx->unk_0[battlerId] = SSI_STATE_0;
-            } else if (ov12_0225682C(ctx, battlerId)) {
-                ctx->playerActions[battlerId].unk8 = ctx->unk_2300[battlerId][0] - 1;
-                ctx->unk_21A0[battlerId] = ctx->unk_2300[battlerId][0] - 1;
+            if (BattleBuffer_GetNext(ctx, battlerId) == 0xff) {
+                ctx->unk_0[battlerId] = SSI_STATE_SELECT_COMMAND_INIT;
+            } else if (BattleBuffer_GetNext(ctx, battlerId)) {
+                ctx->playerActions[battlerId].unk8 = ctx->battleBuffer[battlerId][0] - 1;
+                ctx->unk_21A0[battlerId] = ctx->battleBuffer[battlerId][0] - 1;
                 ctx->unk_0[battlerId] = SSI_STATE_13;
             }
             break;
@@ -463,22 +463,22 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BattleConte
             } else if ((battleType & BATTLE_TYPE_TRAINER) && !(battleType & BATTLE_TYPE_LINK)) {
                 if (BattleSystem_GetBattleSpecial(bsys) & BATTLE_SPECIAL_RECORDED) {
                     ov12_0223BFFC(bsys, 1);
-                    ov12_022581BC(bsys, BattleSystem_GetBattleContext(bsys));
+                    BattleController_TryEmitExitRecording(bsys, BattleSystem_GetBattleContext(bsys));
                 } else {
                     msg.tag = TAG_NONE;
                     msg.id = msg_0197_00793; //There's no running from a Trainer battle!
                     ov12_022639B8(bsys, battlerId, msg);
                     ctx->unk_0[battlerId] = SSI_STATE_15;
-                    ctx->unk_4[battlerId] = SSI_STATE_0;
+                    ctx->unk_4[battlerId] = SSI_STATE_SELECT_COMMAND_INIT;
                 }
             } else if (CantEscape(bsys, ctx, battlerId, &msg)) {
                 if (BattleSystem_GetBattleSpecial(bsys) & BATTLE_SPECIAL_RECORDED) {
                     ov12_0223BFFC(bsys, 1);
-                    ov12_022581BC(bsys, BattleSystem_GetBattleContext(bsys));
+                    BattleController_TryEmitExitRecording(bsys, BattleSystem_GetBattleContext(bsys));
                 } else {
                     ov12_022639B8(bsys, battlerId, msg);
                     ctx->unk_0[battlerId] = SSI_STATE_15;
-                    ctx->unk_4[battlerId] = SSI_STATE_0;
+                    ctx->unk_4[battlerId] = SSI_STATE_SELECT_COMMAND_INIT;
                 }
             } else {
                 ctx->unk_0[battlerId] = SSI_STATE_12;
@@ -486,9 +486,9 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BattleConte
             break;
         case SSI_STATE_12:
             if (battleType & BATTLE_TYPE_TOWER) {
-                if (ov12_0225682C(ctx, battlerId)) {
-                    if (ov12_0225682C(ctx, battlerId) == 0xff) {
-                        ctx->unk_0[battlerId] = SSI_STATE_0;
+                if (BattleBuffer_GetNext(ctx, battlerId)) {
+                    if (BattleBuffer_GetNext(ctx, battlerId) == 0xff) {
+                        ctx->unk_0[battlerId] = SSI_STATE_SELECT_COMMAND_INIT;
                     } else {
                         ctx->unk_0[battlerId] = SSI_STATE_13;
                     }
@@ -521,8 +521,8 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BattleConte
             var++; //this might be counting the number of players who have selected their final action?
             break;
         case SSI_STATE_15:
-            if (ov12_0225682C(ctx, battlerId)) {
-                ov12_0224EDC0(ctx, battlerId);
+            if (BattleBuffer_GetNext(ctx, battlerId)) {
+                BattleBuffer_Clear(ctx, battlerId);
                 ctx->unk_0[battlerId] = ctx->unk_4[battlerId];
             }
             break;
@@ -545,10 +545,10 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BattleConte
         ov12_0224E414(bsys, ctx);
         ov12_02237ED0(bsys, 0);
 
-        ctx->command = CONTROLLER_COMMAND_6;
+        ctx->command = CONTROLLER_COMMAND_CALC_EXECUTION_ORDER;
 
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
-            if (ctx->playerActions[battlerId].unk0 == 15) {
+            if (ctx->playerActions[battlerId].command == CONTROLLER_COMMAND_POKEMON_INPUT) {
                 ov12_02256F78(bsys, ctx, battlerId, ctx->unk_21A0[battlerId]);
             }
         }
@@ -556,7 +556,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BattleConte
 }
 
 //static
-void ov12_02249190(BattleSystem *bsys, BattleContext *ctx) {
+void BattleControllerPlayer_CalcExecutionOrder(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
     int maxBattlers;
     u32 battleType;
@@ -637,29 +637,29 @@ void ov12_02249190(BattleSystem *bsys, BattleContext *ctx) {
         }
     }
     
-    ctx->command = CONTROLLER_COMMAND_7;
+    ctx->command = CONTROLLER_COMMAND_BEFORE_TURN;
 }
 
 //static
-void ov12_0224930C(BattleSystem *bsys, BattleContext *ctx) {
+void BattleControllerPlayer_BeforeTurn(BattleSystem *bsys, BattleContext *ctx) {
     int flag = 0;
     int battlerId;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     
     do {
-        switch (ctx->unk_28) {
+        switch (ctx->stateBeforeTurn) {
         case 0: //Focus Punch
-            while (ctx->unk_2C < maxBattlers) {
-                battlerId = ctx->executionOrder[ctx->unk_2C];
-                if (ctx->unk_3108 & MaskOfFlagNo(battlerId)) {
-                    ctx->unk_2C++;
+            while (ctx->beforeTurnData < maxBattlers) {
+                battlerId = ctx->executionOrder[ctx->beforeTurnData];
+                if (ctx->switchInFlag & MaskOfFlagNo(battlerId)) {
+                    ctx->beforeTurnData++;
                     continue;
                 }
-                ctx->unk_2C++;
+                ctx->beforeTurnData++;
                 if (!(ctx->battleMons[battlerId].status & STATUS_SLEEP) &&
                     (GetBattlerSelectedMove(ctx, battlerId) == MOVE_FOCUS_PUNCH) &&
                     !CheckTruant(ctx, battlerId) && !ctx->turnData[battlerId].struggleFlag) {
-                    ov12_022642F0(bsys);
+                    BattleController_EmitBlankMessage(bsys);
                     ctx->battlerIdTemp = battlerId;
                     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 232);
                     ctx->commandNext = ctx->command;
@@ -667,8 +667,8 @@ void ov12_0224930C(BattleSystem *bsys, BattleContext *ctx) {
                     return;
                 }
             }
-            ctx->unk_2C = 0;
-            ctx->unk_28++;
+            ctx->beforeTurnData = 0;
+            ctx->stateBeforeTurn++;
             break;
         case 1: //Rage
             for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
@@ -676,16 +676,16 @@ void ov12_0224930C(BattleSystem *bsys, BattleContext *ctx) {
                     ctx->battleMons[battlerId].status2 &= STATUS2_RAGE;
                 }
             }
-            ctx->unk_28++;
+            ctx->stateBeforeTurn++;
             break;
-        case 2: //???
+        case 2: //Quick Claw..?
             for (battlerId = 0; battlerId < 4; battlerId++) {
                 ctx->unk_310C[battlerId] = BattleSystem_Random(bsys);
             }
-            ctx->unk_28++;
+            ctx->stateBeforeTurn++;
             break;
         case 3: //end
-            ctx->unk_28 = 0;
+            ctx->stateBeforeTurn = 0;
             flag = 2;
             break;
         } 
@@ -702,24 +702,24 @@ void ov12_02249460(BattleSystem *bsys, BattleContext *ctx) {
     
     maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     
-    if (ov12_022581BC(bsys, ctx)) {
+    if (BattleController_TryEmitExitRecording(bsys, ctx)) {
         return;
     }
     
     ctx->battlersOnField = 0;
     for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
-        if (ctx->playerActions[battlerId].unk0 != 40) {
+        if (ctx->playerActions[battlerId].command != CONTROLLER_COMMAND_40) {
             ctx->battlersOnField++;
         }
     }
     
     SortMonsBySpeed(bsys, ctx);
     
-    if (ctx->unk_EC == maxBattlers) {
-        ctx->unk_EC = 0;
+    if (ctx->executionIndex == maxBattlers) {
+        ctx->executionIndex = 0;
         ctx->command = CONTROLLER_COMMAND_UPDATE_FIELD_CONDITION;
     } else {
-        ctx->command = (ControllerCommand) ctx->playerActions[ctx->executionOrder[ctx->unk_EC]].unk0;
+        ctx->command = ctx->playerActions[ctx->executionOrder[ctx->executionIndex]].command;
     }
 }
 
@@ -1053,7 +1053,7 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
     } while (!flag);
     
     if (flag == 1) {
-        ov12_022642F0(bsys);
+        BattleController_EmitBlankMessage(bsys);
     }
     
     if (flag == 2) {
@@ -1115,7 +1115,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext
     
     while (ctx->updateMonConditionData < maxBattlers) {
         battlerId = ctx->turnOrder[ctx->updateMonConditionData];
-        if (ctx->unk_3108 & MaskOfFlagNo(battlerId)) {
+        if (ctx->switchInFlag & MaskOfFlagNo(battlerId)) {
             ctx->updateMonConditionData++;
             continue;
         }
@@ -1474,7 +1474,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext
             break;
         }
         if (flag) {
-            ov12_022642F0(bsys);
+            BattleController_EmitBlankMessage(bsys);
             return;
         }
     }
@@ -1501,13 +1501,13 @@ void BattleControllerPlayer_UpdateFieldConditionExtra(BattleSystem *bsys, Battle
         return;
     }
     
-    ov12_022642F0(bsys);
+    BattleController_EmitBlankMessage(bsys);
     
     switch (ctx->stateUpdateFieldConditionExtra) {
     case UFCE_STATE_FUTURE_SIGHT:
         while (ctx->updateFieldConditionExtraData < maxBattlers) {
             battlerId = ctx->turnOrder[ctx->updateFieldConditionExtraData];
-            if (ctx->unk_3108 & MaskOfFlagNo(battlerId)) {
+            if (ctx->switchInFlag & MaskOfFlagNo(battlerId)) {
                 ctx->updateFieldConditionExtraData++;
                 continue;
             }
@@ -1535,7 +1535,7 @@ void BattleControllerPlayer_UpdateFieldConditionExtra(BattleSystem *bsys, Battle
     case UFCE_STATE_PERISH_SONG:
         while (ctx->updateFieldConditionExtraData < maxBattlers) {
             battlerId = ctx->turnOrder[ctx->updateFieldConditionExtraData];
-            if (ctx->unk_3108 & MaskOfFlagNo(battlerId)) {
+            if (ctx->switchInFlag & MaskOfFlagNo(battlerId)) {
                 ctx->updateFieldConditionExtraData++;
                 continue;
             }
@@ -1606,7 +1606,7 @@ void BattleControllerPlayer_TurnEnd(BattleSystem *bsys, BattleContext *ctx) {
 void BattleControllerPlayer_FightInput(BattleSystem *bsys, BattleContext *ctx) {
     int flag = 0;
     
-    ctx->battlerIdAttacker = ctx->executionOrder[ctx->unk_EC];
+    ctx->battlerIdAttacker = ctx->executionOrder[ctx->executionIndex];
     
     if (ctx->turnData[ctx->battlerIdAttacker].struggleFlag) {
         ctx->moveNoTemp = MOVE_STRUGGLE;
@@ -1633,7 +1633,7 @@ void BattleControllerPlayer_FightInput(BattleSystem *bsys, BattleContext *ctx) {
    ctx->moveNoCur = ctx->moveNoTemp;
    ctx->command = CONTROLLER_COMMAND_23;
    ctx->battlerIdTarget = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, ctx->moveNoTemp, flag, 0);
-   ov12_022642F0(bsys);
+   BattleController_EmitBlankMessage(bsys);
 }
 
 //static
@@ -1641,7 +1641,7 @@ void BattleControllerPlayer_ItemInput(BattleSystem *bsys, BattleContext *ctx) {
     BattleItem *item;
     int script;
     
-    ctx->battlerIdAttacker = ctx->executionOrder[ctx->unk_EC];
+    ctx->battlerIdAttacker = ctx->executionOrder[ctx->executionIndex];
     ctx->battlerIdTarget = ov12_02253DA0(bsys, ctx, ctx->battlerIdAttacker);
     item = (BattleItem *)&ctx->playerActions[ctx->battlerIdAttacker].unk8;
     
@@ -1701,7 +1701,7 @@ void BattleControllerPlayer_ItemInput(BattleSystem *bsys, BattleContext *ctx) {
 //static
 void BattleControllerPlayer_PokemonInput(BattleSystem *bsys, BattleContext *ctx) {
     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 9);
-    ctx->battlerIdAttacker = ctx->executionOrder[ctx->unk_EC];
+    ctx->battlerIdAttacker = ctx->executionOrder[ctx->executionIndex];
     ctx->battlerIdSwitch = ctx->battlerIdAttacker;
     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
     ctx->commandNext = CONTROLLER_COMMAND_41;
@@ -1711,7 +1711,7 @@ void BattleControllerPlayer_PokemonInput(BattleSystem *bsys, BattleContext *ctx)
 
 //static
 void BattleControllerPlayer_RunInput(BattleSystem *bsys, BattleContext *ctx) {
-    ctx->battlerIdAttacker = ctx->executionOrder[ctx->unk_EC];
+    ctx->battlerIdAttacker = ctx->executionOrder[ctx->executionIndex];
     
     if (BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker) && !(BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_LINK)) {
         if (ctx->battleMons[ctx->battlerIdAttacker].status2 & (STATUS2_BINDING_TURNS | STATUS2_MEAN_LOOK)) {
@@ -3306,7 +3306,7 @@ void ov12_0224CC88(BattleSystem *bsys, BattleContext *ctx) {
             
             while (ctx->unk_44 < BattleSystem_GetMaxBattlers(bsys)) {
                 battlerId = ctx->turnOrder[ctx->unk_44];
-                if (ctx->unk_3108 & MaskOfFlagNo(battlerId)) {
+                if (ctx->switchInFlag & MaskOfFlagNo(battlerId)) {
                     ctx->unk_44++;
                     continue;
                 }
@@ -3367,7 +3367,7 @@ void ov12_0224CF14(BattleSystem *bsys, BattleContext *ctx) {
             ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
             ctx->commandNext = CONTROLLER_COMMAND_34; 
         }
-        ov12_022642F0(bsys);
+        BattleController_EmitBlankMessage(bsys);
     } else {
         ctx->command = CONTROLLER_COMMAND_34;
     }
@@ -3401,7 +3401,7 @@ void ov12_0224D03C(BattleSystem *bsys, BattleContext *ctx) {
         
         do {
             battlerId = ctx->turnOrder[ctx->unk_217E++];
-            if (!(ctx->unk_3108 & MaskOfFlagNo(battlerId)) && ctx->battleMons[battlerId].hp) {
+            if (!(ctx->switchInFlag & MaskOfFlagNo(battlerId)) && ctx->battleMons[battlerId].hp) {
                 opponent = BattleSystem_GetOpponentData(bsys, battlerId);
                 if (((flag & 1) && !(ov12_02261258(opponent) & 1)) || (!(flag & 1) && ov12_02261258(opponent) & 1)) {
                     ov12_02252D14(bsys, ctx);
@@ -3412,7 +3412,7 @@ void ov12_0224D03C(BattleSystem *bsys, BattleContext *ctx) {
             }
         } while (ctx->unk_217E < BattleSystem_GetMaxBattlers(bsys));
         
-        ov12_022642F0(bsys);
+        BattleController_EmitBlankMessage(bsys);
     } else if (ctx->trainerAIData.moveData[ctx->moveNoCur].range == RANGE_ALL_ADJACENT && !(ctx->battleStatus & BATTLE_STATUS_NO_DOUBLE_CHECK) && ctx->unk_217E < BattleSystem_GetMaxBattlers(bsys)) {
         ctx->unk_2184 = 13;
         
@@ -3421,7 +3421,7 @@ void ov12_0224D03C(BattleSystem *bsys, BattleContext *ctx) {
         
         do {
             battlerId = ctx->turnOrder[ctx->unk_217E++];
-            if (!(ctx->unk_3108 & MaskOfFlagNo(battlerId)) && ctx->battleMons[battlerId].hp) {
+            if (!(ctx->switchInFlag & MaskOfFlagNo(battlerId)) && ctx->battleMons[battlerId].hp) {
                 if (battlerId != ctx->battlerIdAttacker) {
                     ov12_02252D14(bsys, ctx);
                     ctx->battlerIdTarget = battlerId;
@@ -3431,7 +3431,7 @@ void ov12_0224D03C(BattleSystem *bsys, BattleContext *ctx) {
             }
         } while (ctx->unk_217E < BattleSystem_GetMaxBattlers(bsys));
         
-        ov12_022642F0(bsys);
+        BattleController_EmitBlankMessage(bsys);
     } else {
         ctx->command = CONTROLLER_COMMAND_36;
     }
@@ -3465,9 +3465,9 @@ void ov12_0224D238(BattleSystem *bsys, BattleContext *ctx) {
 //static
 void ov12_0224D23C(BattleSystem *bsys, BattleContext *ctx) {
     u8 item = GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker);
-    if (ctx->battleStatus & 0x20 || ctx->battleStatus2 & 4) {
-        if (item == 0x37 || item == 0x73 || item == 0x7d) {
-            if (!(ctx->moveNoTemp == MOVE_STRUGGLE || (ctx->moveNoTemp == MOVE_U_TURN && ctx->battleStatus2 & 0x10) || (ctx->moveNoTemp == MOVE_BATON_PASS && ctx->battleStatus2 & 0x40))) {
+    if (ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN || ctx->battleStatus2 & BATTLE_STATUS2_DISPLAY_ATTACK_MESSAGE) {
+        if (item == HOLD_EFFECT_CHOICE_ATK || item == HOLD_EFFECT_CHOICE_SPEED || item == HOLD_EFFECT_CHOICE_SPATK) {
+            if (!(ctx->moveNoTemp == MOVE_STRUGGLE || (ctx->moveNoTemp == MOVE_U_TURN && ctx->battleStatus2 & BATTLE_STATUS2_4) || (ctx->moveNoTemp == MOVE_BATON_PASS && ctx->battleStatus2 & BATTLE_STATUS2_6))) {
                 ctx->battleMons[ctx->battlerIdAttacker].unk88.moveNoChoice = ctx->moveNoTemp;
             }
         } else {
@@ -3475,22 +3475,22 @@ void ov12_0224D23C(BattleSystem *bsys, BattleContext *ctx) {
         }
     }
     
-    if (!(ctx->battleStatus & (1 << 20))) {
-        if (ctx->battleStatus2 & 4) {
+    if (!(ctx->battleStatus & BATTLE_STATUS_NO_MOVE_SET)) {
+        if (ctx->battleStatus2 & BATTLE_STATUS2_DISPLAY_ATTACK_MESSAGE) {
             ctx->moveNoProtect[ctx->battlerIdAttacker] = ctx->moveNoCur;
             ctx->moveNoPrev = ctx->moveNoTemp;
         } else {
             ctx->moveNoProtect[ctx->battlerIdAttacker] = 0;
             ctx->moveNoPrev = 0;
         }
-        if (ctx->battleStatus2 & 0x40) {
+        if (ctx->battleStatus2 & BATTLE_STATUS2_6) {
             ctx->moveNoBattlerPrev[ctx->battlerIdAttacker] = ctx->moveNoTemp;
         } else {
             ctx->moveNoBattlerPrev[ctx->battlerIdAttacker] = 0;
         }
     }
     
-    if (ctx->battleStatus2 & 4) {
+    if (ctx->battleStatus2 & BATTLE_STATUS2_DISPLAY_ATTACK_MESSAGE) {
         ctx->moveNoSketch[ctx->battlerIdAttacker] = ctx->moveNoTemp;
     }
 
@@ -3504,7 +3504,7 @@ void ov12_0224D368(BattleSystem *bsys, BattleContext *ctx) {
     int script;
     u32 battleType = BattleSystem_GetBattleType(bsys);
     
-    if (!(battleType & (0x220))) {
+    if (!(battleType & (BATTLE_TYPE_SAFARI | BATTLE_TYPE_PAL_PARK))) {
         if (CheckStatusHealAbility(bsys, ctx, ctx->battlerIdAttacker, 0) == TRUE) {
             return;
         }
@@ -3531,14 +3531,14 @@ void ov12_0224D368(BattleSystem *bsys, BattleContext *ctx) {
         ov12_0224DC0C(bsys, ctx);
     }
     
-    ctx->playerActions[ctx->executionOrder[ctx->unk_EC]].unk0 = 40;
+    ctx->playerActions[ctx->executionOrder[ctx->executionIndex]].command = CONTROLLER_COMMAND_40;
     
     if (ctx->selfTurnData[ctx->battlerIdAttacker].trickRoomFlag) {
-        ov12_02257EC0(bsys, ctx);
+        SortExecutionOrderBySpeed(bsys, ctx);
         SortMonsBySpeed(bsys, ctx);
-        ctx->unk_EC = 0;
+        ctx->executionIndex = 0;
     } else {
-        ctx->unk_EC++;
+        ctx->executionIndex++;
     }
     
     BattleContext_Init(ctx);
@@ -3633,7 +3633,7 @@ BOOL ov12_0224D540(BattleSystem *bsys, BattleContext *ctx) {
                     }
                     
                     if (hp == 0) {
-                        ctx->unk_3108 |= MaskOfFlagNo(battlerId);
+                        ctx->switchInFlag |= MaskOfFlagNo(battlerId);
                         ctx->selectedMonIndex[battlerId] = 6;
                     } else {
                         ctx->commandNext = cmd;
@@ -3656,7 +3656,7 @@ BOOL ov12_0224D540(BattleSystem *bsys, BattleContext *ctx) {
             }
 
             if (hp == 0) {
-                ctx->unk_3108 |= MaskOfFlagNo(battlerId);
+                ctx->switchInFlag |= MaskOfFlagNo(battlerId);
                 ctx->selectedMonIndex[battlerId] = 6;
             } else {
                 ctx->commandNext = cmd;

@@ -266,7 +266,7 @@ BOOL BtlCmd_RecallPokemon(BattleSystem *bsys, BattleContext *ctx) {
     case B_SIDE_OPPONENT:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSystem_GetOpponentData(bsys, battlerId);
-            if (opponentData->unk195 & 1 && !(ctx->unk_3108 & MaskOfFlagNo(battlerId))) {
+            if (opponentData->unk195 & 1 && !(ctx->switchInFlag & MaskOfFlagNo(battlerId))) {
                 BattleController_EmitRecallPokemon(bsys, ctx, battlerId);
             }
         }
@@ -680,7 +680,7 @@ BOOL BtlCmd_HealthbarSlideOut(BattleSystem *bsys, BattleContext *ctx) {
     case B_SIDE_PLAYER:
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSystem_GetOpponentData(bsys, battlerId);
-            if ((opponentData->unk195 & 1) == 0 && (ctx->unk_3108 & MaskOfFlagNo(battlerId)) == 0) {
+            if ((opponentData->unk195 & 1) == 0 && (ctx->switchInFlag & MaskOfFlagNo(battlerId)) == 0) {
                 BattleController_EmitHealthbarSlideOut(bsys, battlerId);
             }
         }
@@ -966,7 +966,7 @@ BOOL BtlCmd_PlayFaintAnimation(BattleSystem *bsys, BattleContext *ctx) {
 
     ctx->battleStatus &= (MaskOfFlagNo(ctx->battlerIdFainted) << BATTLE_STATUS_FAINTED_SHIFT) ^ -1;
     ctx->battleStatus2 |= MaskOfFlagNo(ctx->battlerIdFainted) << BATTLE_STATUS2_EXP_GAIN_SHIFT;
-    ctx->playerActions[ctx->battlerIdFainted].unk0 = 40;
+    ctx->playerActions[ctx->battlerIdFainted].command = CONTROLLER_COMMAND_40;
 
     InitFaintedWork(bsys, ctx, ctx->battlerIdFainted);
 
@@ -1327,8 +1327,8 @@ BOOL BtlCmd_WaitForMonSelection(BattleSystem *bsys, BattleContext *ctx) {
     }
 
     for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
-        if ((ctx->unk_13C[battlerId] & 1) && ov12_0225682C(ctx, battlerId)) {
-            ctx->unk_21A0[battlerId] = ctx->unk_2300[battlerId][0] - 1;
+        if ((ctx->unk_13C[battlerId] & 1) && BattleBuffer_GetNext(ctx, battlerId)) {
+            ctx->unk_21A0[battlerId] = ctx->battleBuffer[battlerId][0] - 1;
             switchCnt--;
             if (!(ctx->battleStatus2 & (MaskOfFlagNo(battlerId) << BATTLE_STATUS_FAINTED_SHIFT))) {
                 ctx->battleStatus2 |= (MaskOfFlagNo(battlerId) << BATTLE_STATUS_FAINTED_SHIFT);
@@ -1339,8 +1339,8 @@ BOOL BtlCmd_WaitForMonSelection(BattleSystem *bsys, BattleContext *ctx) {
 
     if (switchCnt == 0) {
         for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
-            if ((ctx->unk_13C[battlerId] & 1) && ov12_0225682C(ctx, battlerId)) {
-                ov12_0223BDDC(bsys, battlerId, ctx->unk_2300[battlerId][0]);
+            if ((ctx->unk_13C[battlerId] & 1) && BattleBuffer_GetNext(ctx, battlerId)) {
+                ov12_0223BDDC(bsys, battlerId, ctx->battleBuffer[battlerId][0]);
             }
         }
         ctx->battleStatus2 &= 0xf0ffffff;
@@ -1372,7 +1372,7 @@ BOOL BtlCmd_SwitchInDataUpdate(BattleSystem *bsys, BattleContext *ctx) {
     }
 
     ctx->unk_13C[battlerId] &= ~1;
-    ctx->unk_3108 &= (MaskOfFlagNo(battlerId)^~0);
+    ctx->switchInFlag &= (MaskOfFlagNo(battlerId)^~0);
     ctx->selectedMonIndex[battlerId] = ctx->unk_21A0[battlerId];
     ctx->unk_21A0[battlerId] = 6;
 
@@ -3009,7 +3009,7 @@ BOOL BtlCmd_HealBell(BattleSystem *bsys, BattleContext *ctx) {
 
         if (battleType & BATTLE_TYPE_DOUBLES) {
             battlerId = GetBattlerIDBySide(bsys, ctx, B_SIDE_16);
-            if (!(ctx->unk_3108 & MaskOfFlagNo(battlerId))) {
+            if (!(ctx->switchInFlag & MaskOfFlagNo(battlerId))) {
                 if (!CheckBattlerAbilityIfNotIgnored(ctx, ctx->battlerIdAttacker, battlerId, ABILITY_SOUNDPROOF)) {
                     ctx->battleMons[battlerId].status = STATUS_NONE;
                     ctx->battleMons[battlerId].status2 &= ~STATUS2_NIGHTMARE;
@@ -3026,7 +3026,7 @@ BOOL BtlCmd_HealBell(BattleSystem *bsys, BattleContext *ctx) {
         ctx->battleMons[ctx->battlerIdAttacker].status2 &= ~STATUS2_NIGHTMARE;
         if (battleType & BATTLE_TYPE_DOUBLES) {
             battlerId = GetBattlerIDBySide(bsys, ctx, B_SIDE_16);
-            if (!(ctx->unk_3108 & MaskOfFlagNo(battlerId))) {
+            if (!(ctx->switchInFlag & MaskOfFlagNo(battlerId))) {
                 ctx->battleMons[battlerId].status = STATUS_NONE;
                 ctx->battleMons[battlerId].status2 &= ~STATUS2_NIGHTMARE;
             }
@@ -3829,7 +3829,7 @@ BOOL BtlCmd_TryHelpingHand(BattleSystem *bsys, BattleContext *ctx) {
 
     if (battleType & BATTLE_TYPE_DOUBLES) {
         battlerId = GetBattlerIDBySide(bsys, ctx, 16);
-        if ((ctx->unk_3108 & MaskOfFlagNo(battlerId)) == 0 && ctx->playerActions[battlerId].unk0 != 40 &&
+        if ((ctx->switchInFlag & MaskOfFlagNo(battlerId)) == 0 && ctx->playerActions[battlerId].command != CONTROLLER_COMMAND_40 &&
             ctx->battleMons[battlerId].hp && !ctx->turnData[ctx->battlerIdAttacker].helpingHandFlag && !ctx->turnData[battlerId].helpingHandFlag) {
             ctx->battlerIdTemp = battlerId;
             ctx->turnData[battlerId].helpingHandFlag = TRUE;
@@ -4199,7 +4199,7 @@ BOOL BtlCmd_TryPursuit(BattleSystem *bsys, BattleContext *ctx) {
     maxBattlers = BattleSystem_GetMaxBattlers(bsys);
 
     for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
-        if (ctx->playerActions[battlerId].unk0 != 40 && ctx->battleMons[battlerId].hp && !(ctx->battleMons[battlerId].status & 39) &&
+        if (ctx->playerActions[battlerId].command != CONTROLLER_COMMAND_40 && ctx->battleMons[battlerId].hp && !(ctx->battleMons[battlerId].status & 39) &&
             !CheckTruant(ctx, battlerId) && BattleSystem_GetFieldSide(bsys, battlerId) != BattleSystem_GetFieldSide(bsys, ctx->battlerIdSwitch)) {
             if (ctx->battleMons[battlerId].unk88.encoredMove && ctx->battleMons[battlerId].unk88.encoredMove == ctx->battleMons[battlerId].moves[ctx->battleMons[battlerId].unk88.encoredMoveIndex]) {
                 moveNo = ctx->battleMons[battlerId].unk88.encoredMove;
@@ -4219,7 +4219,7 @@ BOOL BtlCmd_TryPursuit(BattleSystem *bsys, BattleContext *ctx) {
                     ctx->unk_2158 = 20;
                     ctx->moveNoCur = moveNo;
                     ctx->moveNoBattlerPrev[battlerId] = moveNo;
-                    ctx->playerActions[battlerId].unk0 = 40;
+                    ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_40;
                     CopyBattleMonToPartyMon(bsys, ctx, battlerId);
                     break;
                 }
@@ -4389,7 +4389,7 @@ BOOL BtlCmd_MetalBurstDamageCalc(BattleSystem *bsys, BattleContext *ctx) {
 BOOL BtlCmd_PaybackDamageCalc(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    if (ctx->playerActions[ctx->battlerIdTarget].unk0 == 40) {
+    if (ctx->playerActions[ctx->battlerIdTarget].command == CONTROLLER_COMMAND_40) {
         ctx->movePower = ctx->trainerAIData.moveData[ctx->moveNoCur].power*2;
     } else {
         ctx->movePower = ctx->trainerAIData.moveData[ctx->moveNoCur].power;
@@ -4436,7 +4436,7 @@ BOOL BtlCmd_TryMeFirst(BattleSystem *bsys, BattleContext *ctx) {
         move = GetBattlerSelectedMove(ctx, ctx->battlerIdTarget);
     }
 
-    if (ctx->playerActions[ctx->battlerIdTarget].unk0 != 40 && ctx->turnData[ctx->battlerIdTarget].struggleFlag == 0 &&
+    if (ctx->playerActions[ctx->battlerIdTarget].command != CONTROLLER_COMMAND_40 && ctx->turnData[ctx->battlerIdTarget].struggleFlag == 0 &&
         CheckLegalMeFirstMove(ctx, move) == TRUE && ctx->trainerAIData.moveData[move].power) {
         ctx->battleMons[ctx->battlerIdAttacker].unk88.meFirstFlag = TRUE;
         ctx->battleMons[ctx->battlerIdAttacker].unk88.meFirstCount = ctx->meFirstTotal;
@@ -4497,7 +4497,7 @@ BOOL BtlCmd_TrySuckerPunch(BattleSystem *bsys, BattleContext *ctx) {
         move = GetBattlerSelectedMove(ctx, ctx->battlerIdTarget);
     }
 
-    if (ctx->playerActions[ctx->battlerIdTarget].unk0 == 40 ||
+    if (ctx->playerActions[ctx->battlerIdTarget].command == CONTROLLER_COMMAND_40 ||
         (ctx->trainerAIData.moveData[move].power == 0 && !ctx->turnData[ctx->battlerIdTarget].struggleFlag)) {
         BattleScriptIncrementPointer(ctx, adrs);
     }
@@ -4962,7 +4962,7 @@ BOOL BtlCmd_YesNoBox(BattleSystem *bsys, BattleContext *ctx) {
 }
 
 BOOL BtlCmd_YesNoBoxWait(BattleSystem *bsys, BattleContext *ctx) {
-    u8 selection = ov12_0225682C(ctx, 0);
+    u8 selection = BattleBuffer_GetNext(ctx, 0);
 
     if (selection) {
         BattleScriptIncrementPointer(ctx, 1);
@@ -4994,7 +4994,7 @@ BOOL BtlCmd_MonList(BattleSystem *bsys, BattleContext *ctx) {
 }
 
 BOOL BtlCmd_MonListWait(BattleSystem *bsys, BattleContext *ctx) {
-    u8 selection = ov12_0225682C(ctx, 0);
+    u8 selection = BattleBuffer_GetNext(ctx, 0);
 
     if (selection) {
         BattleScriptIncrementPointer(ctx, 1);
@@ -5895,7 +5895,7 @@ static void *BattleScriptGetVarPointer(BattleSystem *bsys, BattleContext *ctx, i
     case BSCRIPT_VAR_BATTLE_STATUS_2:
         return &ctx->battleStatus2;
     case BSCRIPT_VAR_61:
-        return &ctx->unk_EC;
+        return &ctx->executionIndex;
     case BSCRIPT_VAR_MAX_BATTLERS:
         return &bsys->maxBattlers;
     case BSCRIPT_VAR_BATTLER_ATTACKER_TEMP:
@@ -6330,8 +6330,8 @@ static void Task_GetExp(SysTask *task, void *inData)
         break;
 
     case STATE_GET_EXP_MAKE_IT_FORGET_ANSWER:
-        if (ov12_0225682C(data->ctx, expBattler)) {
-            if (ov12_0225682C(data->ctx, expBattler) == 0xFF) { // TODO: could use a const
+        if (BattleBuffer_GetNext(data->ctx, expBattler)) {
+            if (BattleBuffer_GetNext(data->ctx, expBattler) == 0xFF) { // TODO: could use a const
                 data->state = STATE_GET_EXP_MAKE_IT_FORGET_CANCELLED;
             } else {
                 msg.id = msg_0197_01183; // "Which move should be forgotten?"
@@ -6350,10 +6350,10 @@ static void Task_GetExp(SysTask *task, void *inData)
         break;
 
     case STATE_GET_EXP_MAKE_IT_FORGET_INPUT_TAKEN:
-        if (ov12_0225682C(data->ctx, expBattler) == 0xFF) {
+        if (BattleBuffer_GetNext(data->ctx, expBattler) == 0xFF) {
             data->state = STATE_GET_EXP_MAKE_IT_FORGET_CANCELLED;
-        } else if (ov12_0225682C(data->ctx, expBattler)) {
-            data->unk30[5] = data->ctx->unk_2300[expBattler][0] - 1;
+        } else if (BattleBuffer_GetNext(data->ctx, expBattler)) {
+            data->unk30[5] = data->ctx->battleBuffer[expBattler][0] - 1;
             data->state = STATE_GET_EXP_ONE_TWO_POOF;
         }
         break;
@@ -6372,8 +6372,8 @@ static void Task_GetExp(SysTask *task, void *inData)
         break;
 
     case STATE_GET_EXP_GIVE_UP_LEARNING_ANSWER:
-        if (ov12_0225682C(data->ctx, expBattler)) {
-            if (ov12_0225682C(data->ctx, expBattler) == 0xFF) {
+        if (BattleBuffer_GetNext(data->ctx, expBattler)) {
+            if (BattleBuffer_GetNext(data->ctx, expBattler) == 0xFF) {
                 data->state = STATE_GET_EXP_WANTS_TO_LEARN_MOVE_PRINT;
             } else {
                 msg.id = msg_0197_01188; // "{0} did not learn {1}."
