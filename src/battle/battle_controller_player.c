@@ -15,7 +15,54 @@
 #include "constants/message_tags.h"
 #include "msgdata/msg/msg_0197.h"
 
-extern ControllerFunction sPlayerBattleCommands[];
+const ControllerFunction sPlayerBattleCommands[CONTROLLER_COMMAND_MAX] = {
+    [CONTROLLER_COMMAND_GET_BATTLE_MON]                 = BattleControllerPlayer_GetBattleMon,
+    [CONTROLLER_COMMAND_START_ENCOUNTER]                = BattleControllerPlayer_StartEncounter,
+    [CONTROLLER_COMMAND_TRAINER_MESSAGE]                = BattleControllerPlayer_TrainerMessage,
+    [CONTROLLER_COMMAND_SEND_OUT]                       = BattleControllerPlayer_PokemonAppear,
+    [CONTROLLER_COMMAND_SELECTION_SCREEN_INIT]          = BattleControllerPlayer_SelectionScreenInit,
+    [CONTROLLER_COMMAND_SELECTION_SCREEN_INPUT]         = BattleControllerPlayer_SelectionScreenInput,
+    [CONTROLLER_COMMAND_6]                              = ov12_02249190,
+    [CONTROLLER_COMMAND_7]                              = ov12_0224930C,
+    [CONTROLLER_COMMAND_8]                              = ov12_02249460,
+    [CONTROLLER_COMMAND_UPDATE_FIELD_CONDITION]         = BattleControllerPlayer_UpdateFieldCondition,
+    [CONTROLLER_COMMAND_10]                             = BattleControllerPlayer_UpdateMonCondition,
+    [CONTROLLER_COMMAND_11]                             = BattleControllerPlayer_UpdateFieldConditionExtra,
+    [CONTROLLER_COMMAND_12]                             = BattleControllerPlayer_TurnEnd,
+    [CONTROLLER_COMMAND_13]                             = BattleControllerPlayer_FightInput,
+    [CONTROLLER_COMMAND_14]                             = BattleControllerPlayer_ItemInput,
+    [CONTROLLER_COMMAND_15]                             = BattleControllerPlayer_PokemonInput,
+    [CONTROLLER_COMMAND_16]                             = BattleControllerPlayer_RunInput,
+    [CONTROLLER_COMMAND_17]                             = BattleControllerPlayer_SafariThrowBall,
+    [CONTROLLER_COMMAND_18]                             = BattleControllerPlayer_SafariThrowMud,
+    [CONTROLLER_COMMAND_19]                             = BattleControllerPlayer_SafariRun,
+    [CONTROLLER_COMMAND_20]                             = BattleControllerPlayer_SafariWatching,
+    [CONTROLLER_COMMAND_21]                             = BattleControllerPlayer_CatchingContestThrowBall,
+    [CONTROLLER_COMMAND_RUN_SCRIPT]                     = BattleControllerPlayer_RunScript,
+    [CONTROLLER_COMMAND_23]                             = ov12_0224C38C,
+    [CONTROLLER_COMMAND_24]                             = ov12_0224C4D8,
+    [CONTROLLER_COMMAND_25]                             = ov12_0224C5C8,
+    [CONTROLLER_COMMAND_26]                             = ov12_0224C5F8,
+    [CONTROLLER_COMMAND_27]                             = ov12_0224C678,
+    [CONTROLLER_COMMAND_HP_CALC]                        = ov12_0224C690,
+    [CONTROLLER_COMMAND_29]                             = ov12_0224CAA4,
+    [CONTROLLER_COMMAND_30]                             = ov12_0224CC84,
+    [CONTROLLER_COMMAND_31]                             = ov12_0224CC88,
+    [CONTROLLER_COMMAND_32]                             = ov12_0224CF14,
+    [CONTROLLER_COMMAND_33]                             = ov12_0224CF10,
+    [CONTROLLER_COMMAND_34]                             = ov12_0224D014,
+    [CONTROLLER_COMMAND_35]                             = ov12_0224D03C,
+    [CONTROLLER_COMMAND_36]                             = ov12_0224D1DC,
+    [CONTROLLER_COMMAND_37]                             = ov12_0224D224,
+    [CONTROLLER_COMMAND_38]                             = ov12_0224D238,
+    [CONTROLLER_COMMAND_39]                             = ov12_0224D23C,
+    [CONTROLLER_COMMAND_40]                             = ov12_0224D368,
+    [CONTROLLER_COMMAND_41]                             = ov12_0224D448,
+    [CONTROLLER_COMMAND_42]                             = ov12_0224D464,
+    [CONTROLLER_COMMAND_43]                             = ov12_0224D4F0,
+    [CONTROLLER_COMMAND_44]                             = ov12_0224D504,
+    [CONTROLLER_COMMAND_45]                             = ov12_0224D53C
+};
 
 BattleContext *BattleContext_New(BattleSystem *bsys) {
     BattleContext *ctx = (BattleContext *) AllocFromHeap(HEAP_ID_BATTLE, sizeof(BattleContext));
@@ -2503,7 +2550,21 @@ BOOL ov12_0224BCA4(BattleSystem *bsys, BattleContext *ctx) {
     return TRUE;
 }
 
-extern const u8 sHitChanceTable[13][2];
+const u8 sHitChanceTable[13][2] = {
+    {33, 100},
+    {36, 100},
+    {43, 100},
+    {50, 100},
+    {60, 100},
+    {75, 100},
+    {1, 1},
+    {133, 100},
+    {166, 100},
+    {2, 1},
+    {233, 100},
+    {133, 50},
+    {3, 1}
+};
 
 //static
 BOOL BattleSystem_CheckMoveHit(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int move) {
