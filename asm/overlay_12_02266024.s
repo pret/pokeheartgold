@@ -9397,7 +9397,7 @@ _0226AAB4:
 	mov r1, #1
 	mov r2, #0x10
 	mov r3, #0x20
-	bl PalleteData_LoadPaletteSlotFromHardware
+	bl PaletteData_LoadPaletteSlotFromHardware
 	mov r0, #6
 	str r0, [sp]
 	mov r3, #1

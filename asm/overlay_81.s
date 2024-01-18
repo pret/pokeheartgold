@@ -8942,7 +8942,7 @@ ov81_02242500: ; 0x02242500
 	mov r1, #2
 	mov r2, #0
 	lsl r3, r1, #8
-	bl PalleteData_LoadPaletteSlotFromHardware
+	bl PaletteData_LoadPaletteSlotFromHardware
 	pop {r3, pc}
 	thumb_func_end ov81_02242500
 

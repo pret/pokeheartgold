@@ -84,7 +84,7 @@ void PaletteData_LoadOpenNarc(PaletteData *data, NARC *narc, s32 memberNo, HeapI
     PaletteData_LoadFromOpenNarc(data, narc, memberNo, heapID, bufferID, size, pos, 0);
 }
 
-void PalleteData_LoadPaletteSlotFromHardware(PaletteData *data, PaletteBufferId bufferID, u16 pos, u32 size) {
+void PaletteData_LoadPaletteSlotFromHardware(PaletteData *data, PaletteBufferId bufferID, u16 pos, u32 size) {
     GF_ASSERT(pos * sizeof(pos) + size <= data->buffers[bufferID].size);
 
     const u16 *src;

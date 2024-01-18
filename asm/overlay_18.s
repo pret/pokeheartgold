@@ -23999,7 +23999,7 @@ _021F1AC8:
 	mov r1, #3
 	lsr r2, r2, #0x10
 	mov r3, #0x20
-	bl PalleteData_LoadPaletteSlotFromHardware
+	bl PaletteData_LoadPaletteSlotFromHardware
 	b _021F1BB4
 _021F1B6E:
 	cmp r0, #1
@@ -38800,7 +38800,7 @@ ov18_021F8FF8: ; 0x021F8FF8
 	mov r1, #2
 	lsr r2, r2, #0x10
 	mov r3, #0x40
-	bl PalleteData_LoadPaletteSlotFromHardware
+	bl PaletteData_LoadPaletteSlotFromHardware
 	add sp, #0x24
 	pop {r3, r4, pc}
 	nop
@@ -38890,7 +38890,7 @@ ov18_021F9068: ; 0x021F9068
 	mov r1, #2
 	lsr r2, r2, #0x10
 	mov r3, #0x80
-	bl PalleteData_LoadPaletteSlotFromHardware
+	bl PaletteData_LoadPaletteSlotFromHardware
 	add sp, #0x24
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -38989,7 +38989,7 @@ ov18_021F9150: ; 0x021F9150
 	mov r1, #2
 	lsr r2, r2, #0x10
 	mov r3, #0x20
-	bl PalleteData_LoadPaletteSlotFromHardware
+	bl PaletteData_LoadPaletteSlotFromHardware
 	add r0, r4, #0
 	bl NARC_Delete
 	add sp, #0x24

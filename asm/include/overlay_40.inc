@@ -11,7 +11,7 @@
 .public PaletteData_LoadPalette
 .public PaletteData_LoadFromNarc
 .public PaletteData_LoadNarc
-.public PalleteData_LoadPaletteSlotFromHardware
+.public PaletteData_LoadPaletteSlotFromHardware
 .public PaletteData_GetFadedBuf
 .public PaletteData_PushTransparentBuffers
 .public PaletteData_SetAutoTransparent

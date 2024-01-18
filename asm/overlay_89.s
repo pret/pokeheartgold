@@ -551,7 +551,7 @@ _02258CF0:
 	mov r1, #0
 	mov r2, #0xb0
 	mov r3, #0x40
-	bl PalleteData_LoadPaletteSlotFromHardware
+	bl PaletteData_LoadPaletteSlotFromHardware
 	ldr r0, [r4, #0x24]
 	bl YesNoPrompt_HandleInput
 	cmp r0, #1

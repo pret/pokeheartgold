@@ -6,7 +6,7 @@
 .public PaletteData_Free
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
-.public PalleteData_LoadPaletteSlotFromHardware
+.public PaletteData_LoadPaletteSlotFromHardware
 .public PaletteData_PushTransparentBuffers
 .public PaletteData_FadePalettesTowardsColorStep
 .public sub_02004AD8

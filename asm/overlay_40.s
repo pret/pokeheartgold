@@ -17618,7 +17618,7 @@ _022343DA:
 	ldr r0, [r5, #0x28]
 	add r2, r1, #0
 	lsl r3, r3, #8
-	bl PalleteData_LoadPaletteSlotFromHardware
+	bl PaletteData_LoadPaletteSlotFromHardware
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -19231,7 +19231,7 @@ _022351D0:
 	ldr r0, [r5, #0x28]
 	add r2, r1, #0
 	lsl r3, r3, #8
-	bl PalleteData_LoadPaletteSlotFromHardware
+	bl PaletteData_LoadPaletteSlotFromHardware
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -19694,7 +19694,7 @@ _022355AE:
 	ldr r0, [r5, #0x28]
 	add r2, r1, #0
 	lsl r3, r3, #8
-	bl PalleteData_LoadPaletteSlotFromHardware
+	bl PaletteData_LoadPaletteSlotFromHardware
 _022355C2:
 	ldr r0, [r5, #8]
 	add r0, r0, #1
@@ -19946,7 +19946,7 @@ _022357C6:
 	ldr r0, [r5, #0x28]
 	add r2, r1, #0
 	lsl r3, r3, #8
-	bl PalleteData_LoadPaletteSlotFromHardware
+	bl PaletteData_LoadPaletteSlotFromHardware
 _022357DA:
 	ldr r0, [r5, #8]
 	add r0, r0, #1

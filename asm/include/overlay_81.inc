@@ -11,7 +11,7 @@
 .public PaletteData_Free
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
-.public PalleteData_LoadPaletteSlotFromHardware
+.public PaletteData_LoadPaletteSlotFromHardware
 .public PaletteData_BeginPaletteFade
 .public PaletteData_ScheduleFadeTaskEndIfNoSelectedBuffers
 .public PaletteData_PushTransparentBuffers

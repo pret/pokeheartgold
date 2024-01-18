@@ -582,7 +582,7 @@ ov93_0225C768: ; 0x0225C768
 	mov r1, #2
 	lsr r2, r2, #0x10
 	mov r3, #0x60
-	bl PalleteData_LoadPaletteSlotFromHardware
+	bl PaletteData_LoadPaletteSlotFromHardware
 	ldr r0, _0225CA88 ; =ov93_0225CEA0
 	add r1, r5, #0
 	bl Main_SetVBlankIntrCB
@@ -2813,7 +2813,7 @@ _0225DCB0:
 	mov r1, #1
 	mov r2, #0x60
 	mov r3, #0x20
-	bl PalleteData_LoadPaletteSlotFromHardware
+	bl PaletteData_LoadPaletteSlotFromHardware
 	mov r3, #0
 	str r3, [sp]
 	mov r1, #1

@@ -7,7 +7,7 @@
 .public FontID_String_GetWidth
 .public PaletteData_LoadPalette
 .public PaletteData_LoadNarc
-.public PalleteData_LoadPaletteSlotFromHardware
+.public PaletteData_LoadPaletteSlotFromHardware
 .public PaletteData_GetUnfadedBuf
 .public PaletteData_GetFadedBuf
 .public PaletteData_GetSelectedBuffersBitmask

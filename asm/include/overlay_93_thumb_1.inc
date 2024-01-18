@@ -10,7 +10,7 @@
 .public PaletteData_FreeBuffers
 .public PaletteData_LoadFromNarc
 .public PaletteData_LoadNarc
-.public PalleteData_LoadPaletteSlotFromHardware
+.public PaletteData_LoadPaletteSlotFromHardware
 .public PaletteData_PushTransparentBuffers
 .public PaletteData_SetAutoTransparent
 .public PaletteData_FillPaletteInBuffer

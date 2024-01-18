@@ -16490,7 +16490,7 @@ ov14_021ED9AC: ; 0x021ED9AC
 	ldr r0, [r0, #0x18]
 	add r2, r1, #0
 	lsl r3, r3, #8
-	bl PalleteData_LoadPaletteSlotFromHardware
+	bl PaletteData_LoadPaletteSlotFromHardware
 	mov r3, #0
 	mov r2, #3
 	str r3, [sp]

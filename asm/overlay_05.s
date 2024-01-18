@@ -2875,7 +2875,7 @@ ov05_0221D094: ; 0x0221D094
 	ldr r0, [r5, #8]
 	add r2, r1, #0
 	mov r3, #0xa0
-	bl PalleteData_LoadPaletteSlotFromHardware
+	bl PaletteData_LoadPaletteSlotFromHardware
 	ldr r1, _0221D13C ; =0x000018C6
 	mov r0, #1
 	bl BG_SetMaskColor
@@ -2931,7 +2931,7 @@ _0221D168:
 	mov r1, #0
 	mov r2, #0xf0
 	mov r3, #0x20
-	bl PalleteData_LoadPaletteSlotFromHardware
+	bl PaletteData_LoadPaletteSlotFromHardware
 	mov r1, #0
 	str r1, [sp]
 	ldr r0, [r4]
@@ -2945,7 +2945,7 @@ _0221D168:
 	mov r1, #0
 	mov r2, #0xe0
 	mov r3, #0x20
-	bl PalleteData_LoadPaletteSlotFromHardware
+	bl PaletteData_LoadPaletteSlotFromHardware
 	ldr r2, [r4]
 	mov r1, #0x1a
 	ldr r2, [r2, #0x24]
@@ -2956,7 +2956,7 @@ _0221D168:
 	mov r1, #0
 	mov r2, #0xd0
 	mov r3, #0x20
-	bl PalleteData_LoadPaletteSlotFromHardware
+	bl PaletteData_LoadPaletteSlotFromHardware
 	mov r0, #0x13
 	str r0, [sp]
 	mov r0, #0x1b

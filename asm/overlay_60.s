@@ -1340,7 +1340,7 @@ _021E62C0:
 	ldr r0, [r5, r0]
 	mov r2, #0
 	lsl r3, r1, #9
-	bl PalleteData_LoadPaletteSlotFromHardware
+	bl PaletteData_LoadPaletteSlotFromHardware
 	mov r0, #0x82
 	mov r1, #0
 	lsl r0, r0, #2

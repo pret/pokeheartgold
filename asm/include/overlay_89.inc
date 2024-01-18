@@ -11,7 +11,7 @@
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
 .public PaletteData_LoadNarc
-.public PalleteData_LoadPaletteSlotFromHardware
+.public PaletteData_LoadPaletteSlotFromHardware
 .public PaletteData_CopyPalette
 .public PaletteData_GetUnfadedBuf
 .public PaletteData_GetFadedBuf

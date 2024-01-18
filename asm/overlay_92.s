@@ -652,7 +652,7 @@ _0225CA6C:
 	ldr r0, [r5, #0x5c]
 	mov r2, #0
 	lsl r3, r1, #8
-	bl PalleteData_LoadPaletteSlotFromHardware
+	bl PaletteData_LoadPaletteSlotFromHardware
 	add r5, #0x88
 	ldr r0, [r5]
 	ldr r0, [r0, #0x3c]
