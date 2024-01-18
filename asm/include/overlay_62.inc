@@ -92,5 +92,5 @@
 .public _ll_mul
 .public _s32_div_f
 .public gSystem
-.public ov60_021EAFE0
+.public gApplication_TitleScreen
 .public ov62_021E68CC

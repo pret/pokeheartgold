@@ -8,11 +8,11 @@
 #define GF_3D_PLTT_SLOT_SIZE             0x2000
 
 
-struct GF3DVramMan *GF_3DVramMan_Create(HeapID heapId, int texMode, int numTex, int plttMode, int numPltt, GF3DVramManInitFunc initializer) {
-    struct GF3DVramMan *ret;
+GF3DVramMan *GF_3DVramMan_Create(HeapID heapId, int texMode, int numTex, int plttMode, int numPltt, GF3DVramManInitFunc initializer) {
+    GF3DVramMan *ret;
     u32 texWorkSz, pltWorkSz;
 
-    ret = AllocFromHeap(heapId, sizeof(struct GF3DVramMan));
+    ret = AllocFromHeap(heapId, sizeof(GF3DVramMan));
     ret->heapId = heapId;
 
     NNS_G3dInit();
@@ -40,7 +40,7 @@ struct GF3DVramMan *GF_3DVramMan_Create(HeapID heapId, int texMode, int numTex, 
     return ret;
 }
 
-void GF_3DVramMan_Delete(struct GF3DVramMan *vramMan) {
+void GF_3DVramMan_Delete(GF3DVramMan *vramMan) {
     FreeToHeap(vramMan->plttWork);
     FreeToHeap(vramMan->texWork);
     FreeToHeap(vramMan);

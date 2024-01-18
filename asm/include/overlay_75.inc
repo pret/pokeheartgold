@@ -185,7 +185,7 @@
 .public ov44_0222A4B4
 .public ov44_0222A60C
 .public ov44_0222A758
-.public ov60_021EAFE0
+.public gApplication_TitleScreen
 .public ov70_022378C0
 .public ov70_022378DC
 .public ov70_02237F2C

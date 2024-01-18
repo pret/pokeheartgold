@@ -2,7 +2,7 @@
 	.include "asm/macros.inc"
 	.include "overlay_112.inc"
 	.include "global.inc"
-	.public ov60_021EAFE0
+	.public gApplication_TitleScreen
 
 	.text
 
@@ -4186,13 +4186,13 @@ ov112_021E7910: ; 0x021E7910
 	mov r0, #0x10
 	bl sub_0201A738
 	ldr r0, _021E7954 ; =FS_OVERLAY_ID(OVY_60)
-	ldr r1, _021E7958 ; =ov60_021EAFE0
+	ldr r1, _021E7958 ; =gApplication_TitleScreen
 	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
 _021E7954: .word FS_OVERLAY_ID(OVY_60)
-_021E7958: .word ov60_021EAFE0
+_021E7958: .word gApplication_TitleScreen
 	thumb_func_end ov112_021E7910
 
 	thumb_func_start ov112_021E795C

@@ -175,6 +175,6 @@
 .public NNS_GfdDefaultFuncAllocTexVram
 .public NNS_GfdDefaultFuncAllocPlttVram
 .public gSystem
-.public ov60_021EAFE0
+.public gApplication_TitleScreen
 .public ov60_021EB030
 .public ov62_021E68CC
