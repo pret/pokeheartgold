@@ -14,9 +14,16 @@
 #include "unk_02026E30.h"
 #include "camera.h"
 #include "unk_02020B8C.h"
+#include "brightness.h"
+#include "gf_gfx_loader.h"
+#include "font.h"
+#include "msgdata.h"
 #include "overlay_62.h"
+#include "text.h"
 #include "constants/species.h"
 #include "constants/sndseq.h"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0719.h"
 
 #ifdef HEARTGOLD
 #define TITLE_SCREEN_SPECIES SPECIES_HO_OH
@@ -46,16 +53,18 @@ void ov60_021E5D44(void *pVoid);
 void ov60_021E5D7C(void);
 void ov60_021E5D9C(TitleScreenOverlayData *data);
 void ov60_021E5DCC(TitleScreenOverlayData *data);
-void ov60_021E5DD8(TitleScreenAnimDataSub *animData, int texFileId, int anim1Id, int anim2Id, int anim3Id, int anim4Id, HeapID heapID);
-void ov60_021E5F4C(TitleScreenAnimDataSub *animData);
+void ov60_021E5DD8(TitleScreenAnimObject *animObj, int texFileId, int anim1Id, int anim2Id, int anim3Id, int anim4Id, HeapID heapID);
+void ov60_021E5F4C(TitleScreenAnimObject *animObj);
 void ov60_021E5F7C(NNSG3dAnmObj **ppAnmObj, fx32 a1);
-void ov60_021E5FC8(TitleScreenAnimDataSub *animData);
+void ov60_021E5FC8(TitleScreenAnimObject *animObj);
 void ov60_021E6074(TitleScreenOverlayData *data);
 void ov60_021E61C8(TitleScreenOverlayData *data);
 BOOL ov60_021E6244(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID);
-void ov60_021E641C(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID);
+BOOL ov60_021E641C(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID);
 BOOL ov60_021E6544(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID);
 void ov60_021E65B4(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData *animData);
+void ov60_021E67E8(TitleScreenAnimData *animData);
+void ov60_021E68A0(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData *animData);
 void ov60_021E68B0(TitleScreenAnimData *animData);
 void ov60_021E69D4(TitleScreenAnimData *animData);
 void ov60_021E6B08(TitleScreenAnimData *animData);
@@ -250,67 +259,67 @@ void ov60_021E5DCC(TitleScreenOverlayData *data) {
     GF_3DVramMan_Delete(data->_3dVramMan);
 }
 
-void ov60_021E5DD8(TitleScreenAnimDataSub *animData, int texFileId, int anim1Id, int anim2Id, int anim3Id, int anim4Id, HeapID heapID) {
+void ov60_021E5DD8(TitleScreenAnimObject *animObj, int texFileId, int anim1Id, int anim2Id, int anim3Id, int anim4Id, HeapID heapID) {
     extern const VecFx32 _021EAE30;
     extern const VecFx32 _021EAE24;
 
     for (int i = 0; i < 4; ++i) {
-        animData->unk_60[i] = animData->unk_70[i] = NULL;
+        animObj->unk_60[i] = animObj->unk_70[i] = NULL;
     }
 
-    GF_ExpHeap_FndInitAllocator(&animData->allocator, heapID, 4);
+    GF_ExpHeap_FndInitAllocator(&animObj->allocator, heapID, 4);
     void *pAnim;
-    animData->resFileHeader = AllocAndReadWholeNarcMemberByIdPair(NARC_a_0_4_6, texFileId, heapID);
-    sub_0201F51C(&animData->renderObj, &animData->resModel, &animData->resFileHeader);
-    NNSG3dResTex *tex = NNS_G3dGetTex(animData->resFileHeader);
+    animObj->resFileHeader = AllocAndReadWholeNarcMemberByIdPair(NARC_a_0_4_6, texFileId, heapID);
+    sub_0201F51C(&animObj->renderObj, &animObj->resModel, &animObj->resFileHeader);
+    NNSG3dResTex *tex = NNS_G3dGetTex(animObj->resFileHeader);
 
     if (anim1Id > 0) {
-        animData->unk_60[0] = AllocAndReadWholeNarcMemberByIdPair(NARC_a_0_4_6, anim1Id, heapID);
-        pAnim = NNS_G3dGetAnmByIdx(animData->unk_60[0], 0);
-        animData->unk_70[0] = NNS_G3dAllocAnmObj(&animData->allocator, pAnim, animData->resModel);
-        NNS_G3dAnmObjInit(animData->unk_70[0], pAnim, animData->resModel, tex);
-        NNS_G3dRenderObjAddAnmObj(&animData->renderObj, animData->unk_70[0]);
+        animObj->unk_60[0] = AllocAndReadWholeNarcMemberByIdPair(NARC_a_0_4_6, anim1Id, heapID);
+        pAnim = NNS_G3dGetAnmByIdx(animObj->unk_60[0], 0);
+        animObj->unk_70[0] = NNS_G3dAllocAnmObj(&animObj->allocator, pAnim, animObj->resModel);
+        NNS_G3dAnmObjInit(animObj->unk_70[0], pAnim, animObj->resModel, tex);
+        NNS_G3dRenderObjAddAnmObj(&animObj->renderObj, animObj->unk_70[0]);
     }
 
     if (anim2Id > 0) {
-        animData->unk_60[1] = AllocAndReadWholeNarcMemberByIdPair(NARC_a_0_4_6, anim2Id, heapID);
-        pAnim = NNS_G3dGetAnmByIdx(animData->unk_60[1], 0);
-        animData->unk_70[1] = NNS_G3dAllocAnmObj(&animData->allocator, pAnim, animData->resModel);
-        NNS_G3dAnmObjInit(animData->unk_70[1], pAnim, animData->resModel, tex);
-        NNS_G3dRenderObjAddAnmObj(&animData->renderObj, animData->unk_70[1]);
+        animObj->unk_60[1] = AllocAndReadWholeNarcMemberByIdPair(NARC_a_0_4_6, anim2Id, heapID);
+        pAnim = NNS_G3dGetAnmByIdx(animObj->unk_60[1], 0);
+        animObj->unk_70[1] = NNS_G3dAllocAnmObj(&animObj->allocator, pAnim, animObj->resModel);
+        NNS_G3dAnmObjInit(animObj->unk_70[1], pAnim, animObj->resModel, tex);
+        NNS_G3dRenderObjAddAnmObj(&animObj->renderObj, animObj->unk_70[1]);
     }
 
     if (anim3Id > 0) {
-        animData->unk_60[2] = AllocAndReadWholeNarcMemberByIdPair(NARC_a_0_4_6, anim3Id, heapID);
-        pAnim = NNS_G3dGetAnmByIdx(animData->unk_60[2], 0);
-        animData->unk_70[2] = NNS_G3dAllocAnmObj(&animData->allocator, pAnim, animData->resModel);
-        NNS_G3dAnmObjInit(animData->unk_70[2], pAnim, animData->resModel, tex);
-        NNS_G3dRenderObjAddAnmObj(&animData->renderObj, animData->unk_70[2]);
+        animObj->unk_60[2] = AllocAndReadWholeNarcMemberByIdPair(NARC_a_0_4_6, anim3Id, heapID);
+        pAnim = NNS_G3dGetAnmByIdx(animObj->unk_60[2], 0);
+        animObj->unk_70[2] = NNS_G3dAllocAnmObj(&animObj->allocator, pAnim, animObj->resModel);
+        NNS_G3dAnmObjInit(animObj->unk_70[2], pAnim, animObj->resModel, tex);
+        NNS_G3dRenderObjAddAnmObj(&animObj->renderObj, animObj->unk_70[2]);
     }
 
     if (anim4Id > 0) {
-        animData->unk_60[3] = AllocAndReadWholeNarcMemberByIdPair(NARC_a_0_4_6, anim4Id, heapID);
-        pAnim = NNS_G3dGetAnmByIdx(animData->unk_60[3], 0);
-        animData->unk_70[3] = NNS_G3dAllocAnmObj(&animData->allocator, pAnim, animData->resModel);
-        NNS_G3dAnmObjInit(animData->unk_70[3], pAnim, animData->resModel, tex);
-        NNS_G3dRenderObjAddAnmObj(&animData->renderObj, animData->unk_70[3]);
+        animObj->unk_60[3] = AllocAndReadWholeNarcMemberByIdPair(NARC_a_0_4_6, anim4Id, heapID);
+        pAnim = NNS_G3dGetAnmByIdx(animObj->unk_60[3], 0);
+        animObj->unk_70[3] = NNS_G3dAllocAnmObj(&animObj->allocator, pAnim, animObj->resModel);
+        NNS_G3dAnmObjInit(animObj->unk_70[3], pAnim, animObj->resModel, tex);
+        NNS_G3dRenderObjAddAnmObj(&animObj->renderObj, animObj->unk_70[3]);
     }
 
     VecFx32 zero = {0, 0, 0};
-    animData->translation = _021EAE30;
-    animData->scale = _021EAE24;
-    animData->unk_A8 = zero;
-    animData->unk_B8 = 0;
+    animObj->translation = _021EAE30;
+    animObj->scale = _021EAE24;
+    animObj->unk_A8 = zero;
+    animObj->unk_B8 = 0;
 }
 
-void ov60_021E5F4C(TitleScreenAnimDataSub *animData) {
+void ov60_021E5F4C(TitleScreenAnimObject *animObj) {
     for (int i = 0; i < 4; ++i) {
-        if (animData->unk_70[i] != NULL) {
-            NNS_G3dFreeAnmObj(&animData->allocator, animData->unk_70[i]);
-            FreeToHeap(animData->unk_60[i]);
+        if (animObj->unk_70[i] != NULL) {
+            NNS_G3dFreeAnmObj(&animObj->allocator, animObj->unk_70[i]);
+            FreeToHeap(animObj->unk_60[i]);
         }
     }
-    FreeToHeap(animData->resFileHeader);
+    FreeToHeap(animObj->resFileHeader);
 }
 
 void ov60_021E5F7C(NNSG3dAnmObj **ppAnmObj, fx32 a1) {
@@ -332,36 +341,36 @@ void ov60_021E5F7C(NNSG3dAnmObj **ppAnmObj, fx32 a1) {
     }
 }
 
-void ov60_021E5FC8(TitleScreenAnimDataSub *animData) {
+void ov60_021E5FC8(TitleScreenAnimObject *animObj) {
     extern const MtxFx33 _021EAEF4;
 
     MtxFx33 mtx = _021EAEF4;
 
-    switch (animData->unk_00) {
+    switch (animObj->unk_00) {
     case 0:
         break;
     case 1:
         Thunk_G3X_Reset();
         sub_02026E50(0, 1);
-        animData->unk_00 = 0;
+        animObj->unk_00 = 0;
         break;
     case 2:
         Thunk_G3X_Reset();
         Camera_PushLookAtToNNSGlb();
-        sub_02020D2C(&mtx, &animData->unk_A8);
-        Draw3dModel(&animData->renderObj, &animData->translation, &mtx, &animData->scale);
-        switch (animData->unk_B8) {
+        sub_02020D2C(&mtx, &animObj->unk_A8);
+        Draw3dModel(&animObj->renderObj, &animObj->translation, &mtx, &animObj->scale);
+        switch (animObj->unk_B8) {
         case 0:
-            ov60_021E5F7C(animData->unk_70, 0);
+            ov60_021E5F7C(animObj->unk_70, 0);
             break;
         case 1:
-            if (animData->unk_70[0]->frame == 0) {
-                animData->unk_B8 = 0;
+            if (animObj->unk_70[0]->frame == 0) {
+                animObj->unk_B8 = 0;
                 break;
             }
             // fallthrough
         case 2:
-            ov60_021E5F7C(animData->unk_70, FX32_ONE);
+            ov60_021E5F7C(animObj->unk_70, FX32_ONE);
         }
     }
 }
@@ -453,11 +462,11 @@ BOOL ov60_021E6244(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID hea
     animData->unk_19C.x = animData->unk_1AC.x;
     animData->unk_19C.y = animData->unk_1AC.y;
     animData->unk_19C.z = animData->unk_1AC.z;
-    animData->unk_004.unk_B4 = Camera_New(heapID);
-    Camera_Init_FromTargetAndPos(&animData->unk_190, &animData->unk_19C, 0xB60, 0, FALSE, animData->unk_004.unk_B4);
-    Camera_SetPerspectiveClippingPlane(0, FX32_CONST(0.5), animData->unk_004.unk_B4);
-    Camera_ApplyPerspectiveType(0, animData->unk_004.unk_B4);
-    Camera_SetStaticPtr(animData->unk_004.unk_B4);
+    animData->unk_004.camera = Camera_New(heapID);
+    Camera_Init_FromTargetAndPos(&animData->unk_190, &animData->unk_19C, 0xB60, 0, FALSE, animData->unk_004.camera);
+    Camera_SetPerspectiveClippingPlane(0, FX32_CONST(0.5), animData->unk_004.camera);
+    Camera_ApplyPerspectiveType(0, animData->unk_004.camera);
+    Camera_SetStaticPtr(animData->unk_004.camera);
     NNS_G3dGlbLightVector(GX_LIGHTID_0, animData->unk_1DC.x, animData->unk_1DC.y, animData->unk_1DC.z);
     NNS_G3dGlbLightColor(GX_LIGHTID_0, RGB_WHITE);
     NNS_G3dGlbLightVector(GX_LIGHTID_1, animData->unk_1E2.x, animData->unk_1E2.y, animData->unk_1E2.z);
@@ -474,4 +483,165 @@ BOOL ov60_021E6244(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID hea
     PaletteData_LoadPaletteSlotFromHardware(animData->plttData, PLTTBUF_SUB_BG, 0, 0x200);
     animData->unk_208 = 0;
     return TRUE;
+}
+
+BOOL ov60_021E641C(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID) {
+    BOOL ret = FALSE;
+
+    switch (animData->unk_000) {
+    case 0:
+        Camera_SetLookAtCamTarget(&animData->unk_1D0, animData->unk_004.camera);
+        Camera_SetLookAtCamPos(&animData->unk_1B8, animData->unk_004.camera);
+        GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
+        GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_ON);
+        GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_ON);
+        GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_ON);
+        GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_ON);
+        GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_ON);
+        SetMasterBrightnessNeutral(0);
+        SetMasterBrightnessNeutral(1);
+        SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2), SCREEN_MASK_MAIN);
+        SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BG0 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2), SCREEN_MASK_SUB);
+        G2S_SetBlendAlpha(4, 0x39, 0, 0x1F);
+        animData->unk_004.unk_B8 = 2;
+        animData->unk_0C0.unk_B8 = 2;
+        NNS_G3dGlbLightColor(GX_LIGHTID_1, RGB_WHITE);
+        animData->unk_17C = 0;
+        animData->unk_000 = 1;
+        break;
+    case 1:
+        if (animData->unk_1A8 == 1) {
+            if (animData->unk_17C == 0) {
+                GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_ON);
+            } else if (animData->unk_17C == 30) {
+                GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_OFF);
+            }
+        } else {
+            GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_OFF);
+        }
+        ++animData->unk_17C;
+        if (animData->unk_17C >= 45) {
+            animData->unk_17C = 0;
+        }
+        ret = TRUE;
+        break;
+    }
+    ov60_021E5FC8(&animData->unk_004);
+    ov60_021E5FC8(&animData->unk_0C0);
+    sub_02026E50(0, 1);
+    ov60_021E67E8(animData);
+    return ret;
+}
+
+BOOL ov60_021E6544(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID) {
+    PaletteData_FreeBuffers(animData->plttData, PLTTBUF_SUB_BG);
+    PaletteData_Free(animData->plttData);
+    animData->plttData = NULL;
+    Camera_Delete(animData->unk_004.camera);
+    ov60_021E5F4C(&animData->unk_004);
+    ov60_021E5F4C(&animData->unk_0C0);
+    ov60_021E68A0(bgConfig, heapID, animData);
+    G2_BlendNone();
+    G3X_EdgeMarking(FALSE);
+    gSystem.screensFlipped = FALSE;
+    GfGfx_SwapDisplay();
+    return TRUE;
+}
+
+void ov60_021E65B4(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData *animData) {
+    s32 res1, res2;
+    extern const WindowTemplate _021EAE1C;
+
+    if (animData->gameVersion == VERSION_HEARTGOLD) {
+        GfGfxLoader_LoadCharData(NARC_a_0_4_6, 34, bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, heapID);
+        GfGfxLoader_LoadScrnData(NARC_a_0_4_6, 35, bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, heapID);
+    } else {
+        GfGfxLoader_LoadCharData(NARC_a_0_4_6, 36, bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, heapID);
+        GfGfxLoader_LoadScrnData(NARC_a_0_4_6, 37, bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, heapID);
+    }
+    BG_ClearCharDataRange(3, 0x20, 0, heapID);
+    BgClearTilemapBufferAndCommit(bgConfig, 3);
+
+    if (animData->gameVersion == VERSION_HEARTGOLD) {
+        res1 = 4;
+        res2 = 13;
+    } else {
+        res1 = 2;
+        res2 = 14;
+    }
+    GfGfxLoader_GXLoadPal(NARC_a_0_4_6, res1, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_0_OFFSET, 0, heapID);
+    GfGfxLoader_GXLoadPal(NARC_a_0_4_6, res2, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_0_OFFSET, 0, heapID);
+
+    if (animData->gameVersion == VERSION_HEARTGOLD) {
+        res1 = 3;
+        res2 = 4;
+    } else {
+        res1 = 1;
+        res2 = 2;
+    }
+    GfGfxLoader_LoadCharData(NARC_a_0_4_6, res1, bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, heapID);
+    GfGfxLoader_GXLoadPal(NARC_a_0_4_6, res2, GF_PAL_LOCATION_SUB_BGEXT, (enum GFPalSlotOffset)0x4000, 0, heapID);
+    GfGfxLoader_LoadScrnData(NARC_a_0_4_6, 0, bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, heapID);
+
+    GfGfxLoader_LoadCharData(NARC_a_0_4_6, 15, bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, heapID);
+    GfGfxLoader_LoadScrnData(NARC_a_0_4_6, 17, bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, heapID);
+
+    BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB_BLACK);
+    BG_SetMaskColor(GF_BG_LYR_SUB_1, RGB_BLACK);
+    BG_ClearCharDataRange(GF_BG_LYR_MAIN_3, 0x20, 0, heapID);
+
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0719_bin, heapID);
+    String *string = String_New(64, heapID);
+    AddWindow(bgConfig, &animData->window, &_021EAE1C);
+    FillWindowPixelRect(&animData->window, 0, 0, 0, 0x100, 0x10);
+    ReadMsgDataIntoString(msgData, msg_0719_00000, string);
+    FontID_String_GetWidth(0, string, 0);
+    if (animData->gameVersion == VERSION_HEARTGOLD) {
+        AddTextPrinterParameterizedWithColorAndSpacing(&animData->window, 0, string, 0, 0, 0, MAKE_TEXT_COLOR(1, 1, 0), 1, 0, NULL);
+    } else {
+        AddTextPrinterParameterizedWithColorAndSpacing(&animData->window, 0, string, 0, 0, 0, MAKE_TEXT_COLOR(2, 2, 0), 1, 0, NULL);
+    }
+    String_Delete(string);
+    DestroyMsgData(msgData);
+
+    u16 color1 = RGB(27, 8, 0);
+    u16 color2 = RGB(0, 28, 31);
+    BG_LoadPlttData(3, &color1, sizeof(u16), 0x42);
+    BG_LoadPlttData(3, &color2, sizeof(u16), 0x44);
+}
+
+void ov60_021E67E8(TitleScreenAnimData *animData) {
+    switch (animData->unk_208) {
+    case 0:
+        animData->unk_208 = 1;
+        animData->unk_20C = 0;
+        animData->unk_210 = 0;
+        break;
+    case 1:
+        ++animData->unk_210;
+        if (animData->unk_210 > 60) {
+            animData->unk_20C = 0;
+            animData->unk_208 = 2;
+        }
+        break;
+    case 2:
+        --animData->unk_210;
+        if (animData->unk_210 == 0) {
+            animData->unk_208 = 3;
+            animData->unk_20C = 0;
+        }
+        break;
+    case 3:
+        ++animData->unk_20C;
+        if (animData->unk_20C > 20) {
+            animData->unk_208 = 0;
+            animData->unk_20C = 0;
+        }
+        break;
+    }
+    PaletteData_FadePalettesTowardsColorStep(animData->plttData, 2, 0xFF00, 160, animData->unk_210, RGB(12, 12, 12));
+}
+
+void ov60_021E68A0(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData *animData) {
+    RemoveWindow(&animData->window);
 }

@@ -18,7 +18,7 @@ typedef enum TitleScreenExitMode {
     TITLESCREEN_EXIT_MIC_TEST,
 } TitleScreenExitMode;
 
-typedef struct TitleScreenAnimDataSub {
+typedef struct TitleScreenAnimObject {
     int unk_00;
     NNSG3dRenderObj renderObj;
     NNSG3dResMdl *resModel;
@@ -29,22 +29,24 @@ typedef struct TitleScreenAnimDataSub {
     VecFx32 translation;
     VecFx32 scale;
     VecFx32 unk_A8;
-    Camera *unk_B4;
+    Camera *camera;
     int unk_B8;
-} TitleScreenAnimDataSub; // size: 0xBC
+} TitleScreenAnimObject; // size: 0xBC
 
 typedef struct TitleScreenAnimData {
     u32 unk_000;
-    TitleScreenAnimDataSub unk_004;
-    TitleScreenAnimDataSub unk_0C0;
-    u8 filler_17C[0x14];
+    TitleScreenAnimObject unk_004;
+    TitleScreenAnimObject unk_0C0;
+    u16 unk_17C;
+    u8 filler_17E[0x2];
+    Window window;
     VecFx32 unk_190;
     VecFx32 unk_19C;
     u32 unk_1A8;
     VecFx32 unk_1AC;
     VecFx32 unk_1B8;
     VecFx32 unk_1C4;
-    u8 filler_1D0[0xC];
+    VecFx32 unk_1D0;
     VecFx16 unk_1DC;
     VecFx16 unk_1E2;
     u8 filler_1E8[0x10];
@@ -52,7 +54,9 @@ typedef struct TitleScreenAnimData {
     u32 unk_1FC;
     u32 gameVersion;
     PaletteData *plttData;
-    u32 unk_208;
+    int unk_208;
+    int unk_20C;
+    int unk_210;
 } TitleScreenAnimData;
 
 typedef struct TitleScreenOverlayData {
@@ -61,7 +65,6 @@ typedef struct TitleScreenOverlayData {
     GF3DVramMan *_3dVramMan;
     u8 filler_0C[0xC0];
     TitleScreenAnimData unk_0CC;
-    u8 filler_2D8[0x8];
     u16 exitMode;
     u8 filler_2E2[0x2];
     u32 unk_2E4;
