@@ -67,18 +67,19 @@ void ov12_0224D504(BattleSystem *bsys, BattleContext *ctx);
 void ov12_0224D53C(BattleSystem *bsys, BattleContext *ctx);
 BOOL ov12_0224D540(BattleSystem *bsys, BattleContext *ctx);
 BOOL ov12_0224D7EC(BattleSystem *bsys, BattleContext *ctx);
-
-//The following functions haven't been decompiled yet
-void ov12_0224E384(BattleSystem *bsys, BattleContext *ctx);
+BOOL ov12_0224DB64(BattleSystem *bsys, BattleContext *ctx, u8 battlerId, u32 battleType, int *out, int movePos, u32 *a6);
+void ov12_0224DC0C(BattleSystem *bsys, BattleContext *ctx);
 BOOL ov12_0224DC74(BattleContext *ctx, ControllerCommand a1, ControllerCommand a2, int a3);
 BOOL ov12_0224DD18(BattleContext *ctx, ControllerCommand a1, ControllerCommand a2);
+void ov12_0224DD74(BattleSystem *bsys, BattleContext *ctx);
 BOOL ov12_0224DF7C(BattleSystem *bsys, BattleContext *ctx);
 BOOL ov12_0224DF98(BattleSystem *bsys, BattleContext *ctx);
 BOOL ov12_0224DFEC(BattleSystem *bsys, BattleContext *ctx);
 BOOL ov12_0224E078(BattleSystem *bsys, BattleContext *ctx);
-void ov12_0224DD74(BattleSystem *bsys, BattleContext *ctx);
-BOOL ov12_0224E1BC(BattleSystem *bsys, BattleContext *ctx);
 BOOL ov12_0224E130(BattleSystem *bsys, BattleContext *ctx);
-void ov12_0224DC0C(BattleSystem *bsys, BattleContext *ctx);
+
+//The following functions haven't been decompiled yet
+void ov12_0224E384(BattleSystem *bsys, BattleContext *ctx);
+BOOL ov12_0224E1BC(BattleSystem *bsys, BattleContext *ctx);
 
 #endif

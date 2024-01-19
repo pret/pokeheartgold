@@ -68,7 +68,6 @@ void ov12_02262B80(BattleSystem *bsys, BattleContext *ctx, int battlerId, int in
 void ov12_022639B8(BattleSystem *bsys, int battlerId, BattleMessage msg);
 void ov12_02263CCC(BattleSystem *bsys, int battlerId);
 void ov12_02262F40(BattleSystem *bsys, BattleContext *ctx, int battlerId);
-BOOL ov12_0224DB64(BattleSystem *bsys, BattleContext *ctx, u8 battlerId, u32 battleType, int *out, int movePos, u32 *a6);
 void ov12_02262FFC(BattleSystem *bsys, BattleContext *ctx, int a2, int battlerId);
 void ov12_02263138(BattleSystem *bsys, BattleContext *ctx, int battlerId);
 void ov12_02263E18(BattleSystem *bsys, int battlerId);

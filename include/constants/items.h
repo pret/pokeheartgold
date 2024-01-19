@@ -171,7 +171,7 @@
 #define HOLD_EFFECT_FRIENDSHIP_UP          53
 #define HOLD_EFFECT_HEAL_INFATUATION       54
 #define HOLD_EFFECT_CHOICE_ATK             55
-#define HOLD_EFFECT_CRIT_UP                56
+#define HOLD_EFFECT_FLINCH_CHANCE          56
 #define HOLD_EFFECT_STRENGTHEN_BUG         57
 #define HOLD_EFFECT_MONEY_UP               58
 #define HOLD_EFFECT_ENCOUNTERS_DOWN        59

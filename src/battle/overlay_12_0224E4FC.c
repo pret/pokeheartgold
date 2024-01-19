@@ -13,6 +13,7 @@
 #include "battle/overlay_12_0224E4FC.h"
 #include "constants/abilities.h"
 #include "constants/battle.h"
+#include "constants/battle_subscript.h"
 #include "constants/items.h"
 #include "constants/moves.h"
 #include "constants/species.h"
@@ -3238,10 +3239,10 @@ int TryAbilityOnEntry(BattleSystem *bsys, BattleContext *ctx) {
                     battlerId = ctx->turnOrder[i];
                     battlerIdTargetR = ov12_0223ABB8(bsys, battlerId, 0);
                     battlerIdTargetL = ov12_0223ABB8(bsys, battlerId, 2);
-                    ctx->unk_120 = ov12_022585B8(bsys, ctx, battlerIdTargetR, battlerIdTargetL);
-                    if (!ctx->battleMons[battlerId].traceFlag && ctx->unk_120 != 0xFF && 
+                    ctx->battlerIdLeechSeeded = ov12_022585B8(bsys, ctx, battlerIdTargetR, battlerIdTargetL);
+                    if (!ctx->battleMons[battlerId].traceFlag && ctx->battlerIdLeechSeeded != 0xFF && 
                         ctx->battleMons[battlerId].hp && ctx->battleMons[battlerId].item != ITEM_GRISEOUS_ORB &&
-                        ctx->battleMons[ctx->unk_120].hp && GetBattlerAbility(ctx, battlerId) == ABILITY_TRACE) {
+                        ctx->battleMons[ctx->battlerIdLeechSeeded].hp && GetBattlerAbility(ctx, battlerId) == ABILITY_TRACE) {
                         ctx->battleMons[battlerId].traceFlag = TRUE;
                         ctx->battlerIdTemp = battlerId;
                         script = 187;
@@ -4420,9 +4421,9 @@ BOOL CheckUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId, u32
                 ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp, boost);
                 ctx->msgTemp = 0;
                 if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, FLAVOR_SPICY) == -1) {
-                    *script = 207;
+                    *script = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
                 } else {
-                    *script = 198;
+                    *script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
                 }
                 ret = TRUE;
             }
@@ -4432,9 +4433,9 @@ BOOL CheckUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId, u32
                 ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp, boost);
                 ctx->msgTemp = 1;
                 if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, FLAVOR_DRY) == -1) {
-                    *script = 207;
+                    *script = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
                 } else {
-                    *script = 198;
+                    *script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
                 }
                 ret = TRUE;
             }

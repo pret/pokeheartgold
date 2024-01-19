@@ -443,7 +443,7 @@ typedef enum Terrain {
 #define BATTLE_STATUS_MESSAGES_OFF                  (1 << 21)
 #define BATTLE_STATUS_22                            (1 << 22)
 #define BATTLE_STATUS_MOLD_BREAKER                  (1 << 23)
-#define BATTLE_STATUS_24                            (15 << 24)
+#define BATTLE_STATUS_FAINTED                       (15 << 24)
 
 #define BATTLE_STATUS_FAINTED_SHIFT                 24
 
@@ -456,6 +456,7 @@ typedef enum Terrain {
 #define BATTLE_STATUS2_5                            (1 << 5)
 #define BATTLE_STATUS2_6                            (1 << 6)
 #define BATTLE_STATUS2_26                           (1 << 26)
+#define BATTLE_STATUS2_EXP_GAIN                     (15 << 28)
 
 #define BATTLE_STATUS2_EXP_GAIN_SHIFT               28
 

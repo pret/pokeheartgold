@@ -5825,9 +5825,9 @@ static void *BattleScriptGetVarPointer(BattleSystem *bsys, BattleContext *ctx, i
     case BSCRIPT_VAR_TOTAL_TURNS:
         return &ctx->totalTurns;
     case BSCRIPT_VAR_26:
-        return &ctx->unk_11C;
+        return &ctx->battlerIdLeechSeedRecv;
     case BSCRIPT_VAR_27:
-        return &ctx->unk_120;
+        return &ctx->battlerIdLeechSeeded;
     case BSCRIPT_VAR_MOVE_NO_TEMP:
         return &ctx->moveNoTemp;
     case BSCRIPT_VAR_29:

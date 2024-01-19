@@ -326,8 +326,8 @@ typedef struct BattleContext {
     int unk_F0;
     BattleMessage buffMsg;
     int battlerIdTemp;
-    int unk_11C;
-    int unk_120;
+    int battlerIdLeechSeedRecv;
+    int battlerIdLeechSeeded;
     int moveTemp;
     int itemTemp;
     int abilityTemp;
