@@ -20,6 +20,7 @@
 #include "msgdata.h"
 #include "overlay_62.h"
 #include "text.h"
+#include "math_util.h"
 #include "constants/species.h"
 #include "constants/sndseq.h"
 #include "msgdata/msg.naix"
@@ -66,6 +67,7 @@ void ov60_021E65B4(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData *animD
 void ov60_021E67E8(TitleScreenAnimData *animData);
 void ov60_021E68A0(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData *animData);
 void ov60_021E68B0(TitleScreenAnimData *animData);
+fx32 ov60_021E69CC(fx32 x);
 void ov60_021E69D4(TitleScreenAnimData *animData);
 void ov60_021E6B08(TitleScreenAnimData *animData);
 
@@ -644,4 +646,242 @@ void ov60_021E67E8(TitleScreenAnimData *animData) {
 
 void ov60_021E68A0(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData *animData) {
     RemoveWindow(&animData->window);
+}
+
+// FIXME: https://decomp.me/scratch/5q3oT
+#ifdef NONMATCHING
+void ov60_021E68B0(TitleScreenAnimData *animData) {
+    VecFx32 spC;
+    VecFx32 sp0;
+
+    if (animData->gameVersion == VERSION_HEARTGOLD) {
+        animData->unk_1AC.x = FX32_CONST(0);
+        animData->unk_1AC.y = FX32_CONST(65);
+        animData->unk_1AC.z = FX32_CONST(72);
+        animData->unk_1B8.x = FX32_CONST(625);
+        animData->unk_1B8.y = FX32_CONST(152);
+        animData->unk_1B8.z = FX32_CONST(256);
+    } else {
+        animData->unk_1AC.x = FX32_CONST(0);
+        animData->unk_1AC.y = FX32_CONST(65);
+        animData->unk_1AC.z = FX32_CONST(72);
+        animData->unk_1B8.x = FX32_CONST(420);
+        animData->unk_1B8.y = FX32_CONST(87);
+        animData->unk_1B8.z = FX32_CONST(331);
+    }
+    animData->unk_1C4.x = FX32_CONST(0);
+    animData->unk_1C4.y = FX32_CONST(90);
+    animData->unk_1C4.z = FX32_CONST(0);
+    animData->unk_1D0.x = FX32_CONST(-2);
+    animData->unk_1D0.y = FX32_CONST(124);
+    animData->unk_1D0.z = FX32_CONST(-38);
+    animData->unk_1DC.x = FX16_CONST(0);
+    animData->unk_1DC.y = FX16_CONST(0.635498);
+    animData->unk_1DC.z = FX16_CONST(0);
+    animData->unk_1E2.x = FX16_CONST(0);
+    animData->unk_1E2.y = FX16_CONST(0.476807);
+    animData->unk_1E2.z = FX16_CONST(0);
+    animData->unk_1EC = FX32_CONST(3);
+
+    spC.x = FX32_CONST(0);
+    spC.y = FX32_CONST(0.635498);
+    spC.z = FX32_CONST(0);
+    VEC_Normalize(&spC, &sp0);
+    animData->unk_1DC.x = sp0.x;
+    animData->unk_1DC.y = sp0.y;
+    animData->unk_1DC.z = sp0.z;
+}
+#else
+asm void ov60_021E68B0(TitleScreenAnimData *animData) {
+    push {r4, lr}
+	sub sp, #0x18
+	add r4, r0, #0
+	mov r0, #2
+	lsl r0, r0, #8
+	ldr r1, [r4, r0]
+	cmp r1, #7
+	bne @_021E68F2
+	add r2, r0, #0
+	mov r1, #0
+	sub r2, #0x54
+	str r1, [r4, r2]
+	mov r3, #0x41
+	add r2, r0, #0
+	lsl r3, r3, #0xc
+	sub r2, #0x50
+	str r3, [r4, r2]
+	mov r3, #0x12
+	add r2, r0, #0
+	lsl r3, r3, #0xe
+	sub r2, #0x4c
+	str r3, [r4, r2]
+	add r2, r0, #0
+	ldr r3, =0x00271000
+	sub r2, #0x48
+	str r3, [r4, r2]
+	mov r3, #0x26
+	add r2, r0, #0
+	lsl r3, r3, #0xe
+	sub r2, #0x44
+	str r3, [r4, r2]
+	lsl r3, r0, #0xb
+	b @_021E6924
+@_021E68F2:
+	add r2, r0, #0
+	mov r1, #0
+	sub r2, #0x54
+	str r1, [r4, r2]
+	mov r3, #0x41
+	add r2, r0, #0
+	lsl r3, r3, #0xc
+	sub r2, #0x50
+	str r3, [r4, r2]
+	mov r3, #0x12
+	add r2, r0, #0
+	lsl r3, r3, #0xe
+	sub r2, #0x4c
+	str r3, [r4, r2]
+	mov r3, #0x69
+	add r2, r0, #0
+	lsl r3, r3, #0xe
+	sub r2, #0x48
+	str r3, [r4, r2]
+	mov r3, #0x57
+	add r2, r0, #0
+	lsl r3, r3, #0xc
+	sub r2, #0x44
+	str r3, [r4, r2]
+	ldr r3, =0x0014B000
+@_021E6924:
+	add r2, r0, #0
+	sub r2, #0x40
+	str r3, [r4, r2]
+	add r2, r0, #0
+	sub r2, #0x3c
+	str r1, [r4, r2]
+	mov r3, #0x5a
+	add r2, r0, #0
+	lsl r3, r3, #0xc
+	sub r2, #0x38
+	str r3, [r4, r2]
+	add r2, r0, #0
+	sub r2, #0x34
+	str r1, [r4, r2]
+	add r2, r0, #0
+	ldr r3, =0xFFFFE000
+	sub r2, #0x30
+	str r3, [r4, r2]
+	mov r3, #0x1f
+	add r2, r0, #0
+	lsl r3, r3, #0xe
+	sub r2, #0x2c
+	str r3, [r4, r2]
+	add r2, r0, #0
+	ldr r3, =0xFFFDA000
+	sub r2, #0x28
+	str r3, [r4, r2]
+	add r2, r0, #0
+	sub r2, #0x24
+	strh r1, [r4, r2]
+	add r2, r0, #0
+	ldr r3, =0x00000A2B
+	sub r2, #0x22
+	strh r3, [r4, r2]
+	add r2, r0, #0
+	sub r2, #0x20
+	strh r1, [r4, r2]
+	add r2, r0, #0
+	sub r2, #0x1e
+	strh r1, [r4, r2]
+	add r2, r0, #0
+	ldr r3, =0x000007A1
+	sub r2, #0x1c
+	strh r3, [r4, r2]
+	add r2, r0, #0
+	sub r2, #0x1a
+	strh r1, [r4, r2]
+	mov r1, #3
+	lsl r1, r1, #0xc
+	sub r0, #0x14
+	str r1, [r4, r0]
+	mov r1, #0
+	ldr r0, =0x00000A2B
+	str r1, [sp, #0xc]
+	str r0, [sp, #0x10]
+	str r1, [sp, #0x14]
+	add r0, sp, #0xc
+	add r1, sp, #0
+	bl VEC_Normalize
+	mov r0, #0x77
+	ldr r1, [sp]
+	lsl r0, r0, #2
+	strh r1, [r4, r0]
+	add r1, r0, #2
+	ldr r2, [sp, #4]
+	add r0, r0, #4
+	strh r2, [r4, r1]
+	ldr r1, [sp, #8]
+	strh r1, [r4, r0]
+	add sp, #0x18
+	pop {r4, pc}
+}
+#endif //NONMATCHING
+
+fx32 ov60_021E69CC(fx32 x) {
+    return x < 0 ? -x : x;
+}
+
+struct UnkTitleScreenStruct_021EAF90 {
+    VecFx32 unk_00;
+    int unk_0C;
+};
+
+void ov60_021E69D4(TitleScreenAnimData *animData) {
+    extern const struct UnkTitleScreenStruct_021EAF90 _021EAF40[5];
+    extern const struct UnkTitleScreenStruct_021EAF90 _021EAF90[5];
+
+    const struct UnkTitleScreenStruct_021EAF90 *r4 = animData->gameVersion == VERSION_HEARTGOLD ? _021EAF40 : _021EAF90;
+    ++animData->unk_1F4;
+    if (animData->unk_1F4 > r4[animData->unk_1F0].unk_0C * 30) {
+        VecFx32 sp0;
+        VEC_Subtract(&r4[animData->unk_1F0].unk_00, &animData->unk_1B8, &sp0);
+        if (sp0.x > FX32_ONE) {
+            animData->unk_1B8.x += 5 * FX32_ONE;
+        }
+        if (sp0.x < -FX32_ONE) {
+            animData->unk_1B8.x -= 5 * FX32_ONE;
+        }
+        if (sp0.y > FX32_ONE) {
+            animData->unk_1B8.y += 5 * FX32_ONE;
+        }
+        if (sp0.y < -FX32_ONE) {
+            animData->unk_1B8.y -= 5 * FX32_ONE;
+        }
+        if (sp0.z > FX32_ONE) {
+            animData->unk_1B8.z += 5 * FX32_ONE;
+        }
+        if (sp0.z < -FX32_ONE) {
+            animData->unk_1B8.z -= 5 * FX32_ONE;
+        }
+        Camera_SetLookAtCamPos(&animData->unk_1B8, animData->unk_004.camera);
+        if (ov60_021E69CC(sp0.x) <= FX32_ONE && ov60_021E69CC(sp0.y) <= FX32_ONE && ov60_021E69CC(sp0.z) <= FX32_ONE) {
+            animData->unk_1F4 = 0;
+            ++animData->unk_1F0;
+            if (r4[animData->unk_1F0].unk_00.x == 0) {
+                animData->unk_1F0 = 0;
+            }
+        }
+    }
+}
+
+void ov60_021E6B08(TitleScreenAnimData *animData) {
+    ++animData->unk_1FC;
+    if (animData->unk_1FC > 3) {
+        G2S_SetBG2Offset(0, animData->unk_1F8 / 2);
+        ++animData->unk_1F8;
+        if (animData->unk_1F8 > 31) {
+            animData->unk_1F8 = 31;
+        }
+        G2S_SetBlendAlpha(4, 0x39, animData->unk_1F8, 31 - animData->unk_1F8);
+    }
 }

@@ -49,10 +49,13 @@ typedef struct TitleScreenAnimData {
     VecFx32 unk_1D0;
     VecFx16 unk_1DC;
     VecFx16 unk_1E2;
-    u8 filler_1E8[0x10];
-    u32 unk_1F8;
-    u32 unk_1FC;
-    u32 gameVersion;
+    int unk_1E8;
+    fx32 unk_1EC;
+    int unk_1F0;
+    int unk_1F4;
+    int unk_1F8;
+    int unk_1FC;
+    int gameVersion;
     PaletteData *plttData;
     int unk_208;
     int unk_20C;

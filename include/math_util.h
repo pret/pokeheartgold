@@ -36,6 +36,12 @@ static inline u16 LCRandRange(const u16 maximum) {
     }
 }
 
+static inline void SetVecFx16(VecFx16 *dest, fx16 x, fx16 y, fx16 z) {
+    dest->x = x;
+    dest->y = y;
+    dest->z = z;
+}
+
 static inline void SetVecFx32(VecFx32 *dest, fx32 x, fx32 y, fx32 z) {
     dest->x = x;
     dest->y = y;
