@@ -79,4 +79,4 @@ typedef struct TitleScreenOverlayData {
 
 extern const OVY_MGR_TEMPLATE gApplication_TitleScreen;
 
-#endif //POKEHEARTGOLD_TITLE_SCREEN_H
+#endif // POKEHEARTGOLD_TITLE_SCREEN_H

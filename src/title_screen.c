@@ -29,7 +29,7 @@
 
 #ifdef HEARTGOLD
 #define TITLE_SCREEN_SPECIES SPECIES_HO_OH
-#else //SOULSILVER
+#else // SOULSILVER
 #define TITLE_SCREEN_SPECIES SPECIES_LUGIA
 #endif
 
@@ -102,12 +102,7 @@ static void TitleScreenAnim_FadeInGameTitleLayer(TitleScreenAnimData *animData);
 
 extern const OVY_MGR_TEMPLATE gApplication_IntroMovie;
 
-const OVY_MGR_TEMPLATE gApplication_TitleScreen = {
-    TitleScreen_Init,
-    TitleScreen_Exec,
-    TitleScreen_Exit,
-    (FSOverlayID)-1
-};
+const OVY_MGR_TEMPLATE gApplication_TitleScreen = {TitleScreen_Init, TitleScreen_Exec, TitleScreen_Exit, (FSOverlayID)-1};
 
 static BOOL TitleScreen_Init(OVY_MANAGER *man, int *state) {
     sub_0200FBF4(PM_LCD_TOP, RGB_WHITE);
@@ -283,16 +278,7 @@ static void TitleScreen_VBlankCB(void *pVoid) {
 
 static void TitleScreen_SetGfxBanks(void) {
     GraphicsBanks graphicsBanks = {
-        GX_VRAM_BG_128_B,
-        GX_VRAM_BGEXTPLTT_NONE,
-        GX_VRAM_SUB_BG_128_C,
-        GX_VRAM_SUB_BGEXTPLTT_NONE,
-        GX_VRAM_OBJ_NONE,
-        GX_VRAM_OBJEXTPLTT_NONE,
-        GX_VRAM_SUB_OBJ_NONE,
-        GX_VRAM_SUB_OBJEXTPLTT_NONE,
-        GX_VRAM_TEX_0_A,
-        GX_VRAM_TEXPLTT_0_G,
+        GX_VRAM_BG_128_B, GX_VRAM_BGEXTPLTT_NONE, GX_VRAM_SUB_BG_128_C, GX_VRAM_SUB_BGEXTPLTT_NONE, GX_VRAM_OBJ_NONE, GX_VRAM_OBJEXTPLTT_NONE, GX_VRAM_SUB_OBJ_NONE, GX_VRAM_SUB_OBJEXTPLTT_NONE, GX_VRAM_TEX_0_A, GX_VRAM_TEXPLTT_0_G,
     };
     GfGfx_SetBanks(&graphicsBanks);
 }
@@ -387,9 +373,7 @@ static void TitleScreen_AdvanceAnimObjsFrame(NNSG3dAnmObj **ppAnmObj, fx32 frame
 
 static void TitleScreenAnimObjs_Run(TitleScreenAnimObject *animObj) {
     MtxFx33 mtx = {
-        FX32_ONE, 0, 0,
-        0, FX32_ONE, 0,
-        0, 0, FX32_ONE,
+        FX32_ONE, 0, 0, 0, FX32_ONE, 0, 0, 0, FX32_ONE,
     };
 
     switch (animObj->state) {
@@ -426,91 +410,32 @@ static void TitleScreen_InitBgs(TitleScreenOverlayData *data) {
     data->bgConfig = BgConfig_Alloc(data->heapID);
 
     {
-        GraphicsModes stack_data = {
-            GX_DISPMODE_GRAPHICS,
-            GX_BGMODE_0,
-            GX_BGMODE_0,
-            GX_BG0_AS_3D
-        };
+        GraphicsModes stack_data = {GX_DISPMODE_GRAPHICS, GX_BGMODE_0, GX_BGMODE_0, GX_BG0_AS_3D};
         SetBothScreensModesAndDisable(&stack_data);
     }
     {
-        BgTemplate stack_data = {
-            0, 0,
-            0x800,
-            0,
-            GF_BG_SCR_SIZE_256x256,
-            GX_BG_COLORMODE_16,
-            18,
-            3,
-            0, 0, 0, 0, 0
-        };
+        BgTemplate stack_data = {0, 0, 0x800, 0, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, 18, 3, 0, 0, 0, 0, 0};
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_SUB_1, &stack_data, 0);
     }
     {
-        BgTemplate stack_data = {
-            0, 0,
-            0x800,
-            0,
-            GF_BG_SCR_SIZE_256x256,
-            GX_BG_COLORMODE_256,
-            16,
-            0,
-            0, 0, 0, 0, 0
-        };
+        BgTemplate stack_data = {0, 0, 0x800, 0, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_256, 16, 0, 0, 0, 0, 0, 0};
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_SUB_2, &stack_data, 0);
     }
     {
-        BgTemplate stack_data = {
-            0, 0,
-            0x800,
-            0,
-            GF_BG_SCR_SIZE_256x256,
-            GX_BG_COLORMODE_256,
-            20,
-            4,
-            0, 3, 0, 0, 0
-        };
+        BgTemplate stack_data = {0, 0, 0x800, 0, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_256, 20, 4, 0, 3, 0, 0, 0};
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_SUB_3, &stack_data, 0);
     }
     {
-        BgTemplate stack_data = {
-            0, 0,
-            0x800,
-            0,
-            GF_BG_SCR_SIZE_256x256,
-            GX_BG_COLORMODE_16,
-            7,
-            1,
-            0, 1, 0, 0, 0
-        };
+        BgTemplate stack_data = {0, 0, 0x800, 0, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, 7, 1, 0, 1, 0, 0, 0};
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_MAIN_1, &stack_data, 0);
     }
     {
-        BgTemplate stack_data = {
-            0, 0,
-            0x800,
-            0,
-            GF_BG_SCR_SIZE_256x256,
-            GX_BG_COLORMODE_16,
-            5,
-            4,
-            0, 3, 0, 0, 0
-        };
+        BgTemplate stack_data = {0, 0, 0x800, 0, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, 5, 4, 0, 3, 0, 0, 0};
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_MAIN_2, &stack_data, 0);
     }
     {
         // TOUCH TO START
-        BgTemplate stack_data = {
-            0, 0,
-            0x800,
-            0,
-            GF_BG_SCR_SIZE_256x256,
-            GX_BG_COLORMODE_16,
-            4,
-            0,
-            0, 0, 0, 0, 0
-        };
+        BgTemplate stack_data = {0, 0, 0x800, 0, GF_BG_SCR_SIZE_256x256, GX_BG_COLORMODE_16, 4, 0, 0, 0, 0, 0, 0};
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_MAIN_3, &stack_data, 0);
     }
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_OFF);
@@ -543,10 +468,7 @@ static void TitleScreen_DeinitBgs(TitleScreenOverlayData *data) {
     FreeToHeap(data->bgConfig);
 }
 
-static const WindowTemplate sTouchToStartWindow = {
-    GF_BG_LYR_MAIN_3,
-    0, 18, 32, 2, 2, 0x001
-};
+static const WindowTemplate sTouchToStartWindow = {GF_BG_LYR_MAIN_3, 0, 18, 32, 2, 2, 0x001};
 
 static BOOL TitleScreenAnim_InitObjectsAndCamera(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID) {
     TitleScreenAnim_SetCameraInitialPos(animData);
@@ -766,35 +688,34 @@ static void TitleScreenAnim_SetCameraInitialPos(TitleScreenAnimData *animData) {
         SetVec(animData->light0vec, FX16_CONST(0), FX16_CONST(0.635498), FX16_CONST(0));
         SetVec(animData->light1vec, FX16_CONST(0), FX16_CONST(0.476807), FX16_CONST(0));
         animData->cameraSpeed = FX32_CONST(3);
-
     }
 
     {
-    VecFx32 light0vec;
-    VecFx32 light0vecNorm;
+        VecFx32 light0vec;
+        VecFx32 light0vecNorm;
 
-    SetVec(light0vec, FX32_CONST(0), FX32_CONST(0.635498), FX32_CONST(0));
-    VEC_Normalize(&light0vec, &light0vecNorm);
-    animData->light0vec.x = light0vecNorm.x;
-    animData->light0vec.y = light0vecNorm.y;
-    animData->light0vec.z = light0vecNorm.z;
+        SetVec(light0vec, FX32_CONST(0), FX32_CONST(0.635498), FX32_CONST(0));
+        VEC_Normalize(&light0vec, &light0vecNorm);
+        animData->light0vec.x = light0vecNorm.x;
+        animData->light0vec.y = light0vecNorm.y;
+        animData->light0vec.z = light0vecNorm.z;
     }
 }
 
 static const struct CameraScript sCameraScript_HG[5] = {
-    {{FX32_CONST(180), FX32_CONST(177), FX32_CONST(301)}, 10},
-    {{FX32_CONST(335), FX32_CONST(-293), FX32_CONST(296)}, 5},
-    {{FX32_CONST(180), FX32_CONST(177), FX32_CONST(301)}, 5},
-    {{FX32_CONST(625), FX32_CONST(152), FX32_CONST(256)}, 10},
-    {{FX32_CONST(0), FX32_CONST(0), FX32_CONST(0)}, 0},
+    {{FX32_CONST(180), FX32_CONST(177), FX32_CONST(301)},  10},
+    {{FX32_CONST(335), FX32_CONST(-293), FX32_CONST(296)}, 5 },
+    {{FX32_CONST(180), FX32_CONST(177), FX32_CONST(301)},  5 },
+    {{FX32_CONST(625), FX32_CONST(152), FX32_CONST(256)},  10},
+    {{FX32_CONST(0), FX32_CONST(0), FX32_CONST(0)},        0 },
 };
 
 static const struct CameraScript sCameraScript_SS[5] = {
     {{FX32_CONST(105), FX32_CONST(162), FX32_CONST(291)}, 10},
-    {{FX32_CONST(395), FX32_CONST(432), FX32_CONST(191)}, 5},
-    {{FX32_CONST(105), FX32_CONST(162), FX32_CONST(291)}, 5},
-    {{FX32_CONST(420), FX32_CONST(87), FX32_CONST(331)}, 10},
-    {{FX32_CONST(0), FX32_CONST(0), FX32_CONST(0)}, 0},
+    {{FX32_CONST(395), FX32_CONST(432), FX32_CONST(191)}, 5 },
+    {{FX32_CONST(105), FX32_CONST(162), FX32_CONST(291)}, 5 },
+    {{FX32_CONST(420), FX32_CONST(87), FX32_CONST(331)},  10},
+    {{FX32_CONST(0), FX32_CONST(0), FX32_CONST(0)},       0 },
 };
 
 static fx32 fx32_abs(fx32 x) {
@@ -805,7 +726,7 @@ static fx32 fx32_abs(fx32 x) {
 // Maybe originally intended, but never used
 #define CAMERA_SPEED (animData->cameraSpeed)
 #else
-#define CAMERA_SPEED (5*FX32_ONE)
+#define CAMERA_SPEED (5 * FX32_ONE)
 #endif
 
 static void TitleScreenAnim_GetCameraNextPosition(TitleScreenAnimData *animData) {
