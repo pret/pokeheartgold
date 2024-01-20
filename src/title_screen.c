@@ -46,6 +46,11 @@ enum TitleScreenMainState {
     TITLEPM_LCD_TOP_6,
 };
 
+struct UnkTitleScreenStruct_021EAF90 {
+    VecFx32 unk_00;
+    int unk_0C;
+};
+
 BOOL ov60_021E5900(OVY_MANAGER *man, int *state);
 BOOL ov60_021E59C8(OVY_MANAGER *man, int *state);
 BOOL ov60_021E5CA4(OVY_MANAGER *man, int *state);
@@ -72,6 +77,13 @@ void ov60_021E69D4(TitleScreenAnimData *animData);
 void ov60_021E6B08(TitleScreenAnimData *animData);
 
 extern const OVY_MGR_TEMPLATE ov60_021EB030;
+
+const OVY_MGR_TEMPLATE gApplication_TitleScreen = {
+    ov60_021E5900,
+    ov60_021E59C8,
+    ov60_021E5CA4,
+    (FSOverlayID)-1
+};
 
 BOOL ov60_021E5900(OVY_MANAGER *man, int *state) {
     sub_0200FBF4(PM_LCD_TOP, RGB_WHITE);
@@ -246,9 +258,18 @@ void ov60_021E5D44(void *pVoid) {
 }
 
 void ov60_021E5D7C(void) {
-    extern const GraphicsBanks _021EAF18;
-
-    GraphicsBanks graphicsBanks = _021EAF18;
+    GraphicsBanks graphicsBanks = {
+        GX_VRAM_BG_128_B,
+        GX_VRAM_BGEXTPLTT_NONE,
+        GX_VRAM_SUB_BG_128_C,
+        GX_VRAM_SUB_BGEXTPLTT_NONE,
+        GX_VRAM_OBJ_NONE,
+        GX_VRAM_OBJEXTPLTT_NONE,
+        GX_VRAM_SUB_OBJ_NONE,
+        GX_VRAM_SUB_OBJEXTPLTT_NONE,
+        GX_VRAM_TEX_0_A,
+        GX_VRAM_TEXPLTT_0_G,
+    };
     GfGfx_SetBanks(&graphicsBanks);
 }
 
@@ -262,9 +283,6 @@ void ov60_021E5DCC(TitleScreenOverlayData *data) {
 }
 
 void ov60_021E5DD8(TitleScreenAnimObject *animObj, int texFileId, int anim1Id, int anim2Id, int anim3Id, int anim4Id, HeapID heapID) {
-    extern const VecFx32 _021EAE30;
-    extern const VecFx32 _021EAE24;
-
     for (int i = 0; i < 4; ++i) {
         animObj->unk_60[i] = animObj->unk_70[i] = NULL;
     }
@@ -308,8 +326,8 @@ void ov60_021E5DD8(TitleScreenAnimObject *animObj, int texFileId, int anim1Id, i
     }
 
     VecFx32 zero = {0, 0, 0};
-    animObj->translation = _021EAE30;
-    animObj->scale = _021EAE24;
+    animObj->translation = (VecFx32){30 * FX32_ONE, 95 * FX32_ONE, 0};
+    animObj->scale = (VecFx32){FX32_ONE, FX32_ONE, FX32_ONE};
     animObj->unk_A8 = zero;
     animObj->unk_B8 = 0;
 }
@@ -344,9 +362,11 @@ void ov60_021E5F7C(NNSG3dAnmObj **ppAnmObj, fx32 a1) {
 }
 
 void ov60_021E5FC8(TitleScreenAnimObject *animObj) {
-    extern const MtxFx33 _021EAEF4;
-
-    MtxFx33 mtx = _021EAEF4;
+    MtxFx33 mtx = {
+        FX32_ONE, 0, 0,
+        0, FX32_ONE, 0,
+        0, 0, FX32_ONE,
+    };
 
     switch (animObj->unk_00) {
     case 0:
@@ -378,42 +398,93 @@ void ov60_021E5FC8(TitleScreenAnimObject *animObj) {
 }
 
 void ov60_021E6074(TitleScreenOverlayData *data) {
-    extern const GraphicsModes _021EAE3C;
-    extern const BgTemplate _021EAEA0;
-    extern const BgTemplate _021EAEBC;
-    extern const BgTemplate _021EAE4C;
-    extern const BgTemplate _021EAE68;
-    extern const BgTemplate _021EAE84;
-    extern const BgTemplate _021EAED8;
-
     data->bgConfig = BgConfig_Alloc(data->heapID);
 
     {
-        GraphicsModes stack_data = _021EAE3C;
+        GraphicsModes stack_data = {
+            GX_DISPMODE_GRAPHICS,
+            GX_BGMODE_0,
+            GX_BGMODE_0,
+            GX_BG0_AS_3D
+        };
         SetBothScreensModesAndDisable(&stack_data);
     }
     {
-        BgTemplate stack_data = _021EAEA0;
+        BgTemplate stack_data = {
+            0, 0,
+            0x800,
+            0,
+            GF_BG_SCR_SIZE_256x256,
+            GX_BG_COLORMODE_16,
+            18,
+            3,
+            0, 0, 0, 0, 0
+        };
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_SUB_1, &stack_data, 0);
     }
     {
-        BgTemplate stack_data = _021EAEBC;
+        BgTemplate stack_data = {
+            0, 0,
+            0x800,
+            0,
+            GF_BG_SCR_SIZE_256x256,
+            GX_BG_COLORMODE_256,
+            16,
+            0,
+            0, 0, 0, 0, 0
+        };
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_SUB_2, &stack_data, 0);
     }
     {
-        BgTemplate stack_data = _021EAE4C;
+        BgTemplate stack_data = {
+            0, 0,
+            0x800,
+            0,
+            GF_BG_SCR_SIZE_256x256,
+            GX_BG_COLORMODE_256,
+            20,
+            4,
+            0, 3, 0, 0, 0
+        };
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_SUB_3, &stack_data, 0);
     }
     {
-        BgTemplate stack_data = _021EAE68;
+        BgTemplate stack_data = {
+            0, 0,
+            0x800,
+            0,
+            GF_BG_SCR_SIZE_256x256,
+            GX_BG_COLORMODE_16,
+            7,
+            1,
+            0, 1, 0, 0, 0
+        };
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_MAIN_1, &stack_data, 0);
     }
     {
-        BgTemplate stack_data = _021EAE84;
+        BgTemplate stack_data = {
+            0, 0,
+            0x800,
+            0,
+            GF_BG_SCR_SIZE_256x256,
+            GX_BG_COLORMODE_16,
+            5,
+            4,
+            0, 3, 0, 0, 0
+        };
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_MAIN_2, &stack_data, 0);
     }
     {
-        BgTemplate stack_data = _021EAED8;
+        BgTemplate stack_data = {
+            0, 0,
+            0x800,
+            0,
+            GF_BG_SCR_SIZE_256x256,
+            GX_BG_COLORMODE_16,
+            4,
+            0,
+            0, 0, 0, 0, 0
+        };
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_MAIN_3, &stack_data, 0);
     }
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_OFF);
@@ -445,6 +516,11 @@ void ov60_021E61C8(TitleScreenOverlayData *data) {
     FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_SUB_3);
     FreeToHeap(data->bgConfig);
 }
+
+static const WindowTemplate _021EAE1C = {
+    GF_BG_LYR_MAIN_3,
+    0, 18, 32, 2, 2, 0x001
+};
 
 BOOL ov60_021E6244(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID) {
     ov60_021E68B0(animData);
@@ -552,7 +628,6 @@ BOOL ov60_021E6544(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID hea
 
 void ov60_021E65B4(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData *animData) {
     s32 res1, res2;
-    extern const WindowTemplate _021EAE1C;
 
     if (animData->gameVersion == VERSION_HEARTGOLD) {
         GfGfxLoader_LoadCharData(NARC_a_0_4_6, 34, bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, heapID);
@@ -648,198 +723,59 @@ void ov60_021E68A0(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData *animD
     RemoveWindow(&animData->window);
 }
 
-// FIXME: https://decomp.me/scratch/5q3oT
-#ifdef NONMATCHING
 void ov60_021E68B0(TitleScreenAnimData *animData) {
+    if (animData->gameVersion == VERSION_HEARTGOLD) {
+        SetVec(animData->unk_1AC, FX32_CONST(0), FX32_CONST(65), FX32_CONST(72));
+        SetVec(animData->unk_1B8, FX32_CONST(625), FX32_CONST(152), FX32_CONST(256));
+        SetVec(animData->unk_1C4, FX32_CONST(0), FX32_CONST(90), FX32_CONST(0));
+        SetVec(animData->unk_1D0, FX32_CONST(-2), FX32_CONST(124), FX32_CONST(-38));
+        SetVec(animData->unk_1DC, FX16_CONST(0), FX16_CONST(0.635498), FX16_CONST(0));
+        SetVec(animData->unk_1E2, FX16_CONST(0), FX16_CONST(0.476807), FX16_CONST(0));
+        animData->unk_1EC = FX32_CONST(3);
+    } else {
+        SetVec(animData->unk_1AC, FX32_CONST(0), FX32_CONST(65), FX32_CONST(72));
+        SetVec(animData->unk_1B8, FX32_CONST(420), FX32_CONST(87), FX32_CONST(331));
+        SetVec(animData->unk_1C4, FX32_CONST(0), FX32_CONST(90), FX32_CONST(0));
+        SetVec(animData->unk_1D0, FX32_CONST(-2), FX32_CONST(124), FX32_CONST(-38));
+        SetVec(animData->unk_1DC, FX16_CONST(0), FX16_CONST(0.635498), FX16_CONST(0));
+        SetVec(animData->unk_1E2, FX16_CONST(0), FX16_CONST(0.476807), FX16_CONST(0));
+        animData->unk_1EC = FX32_CONST(3);
+
+    }
+
+    {
     VecFx32 spC;
     VecFx32 sp0;
 
-    if (animData->gameVersion == VERSION_HEARTGOLD) {
-        animData->unk_1AC.x = FX32_CONST(0);
-        animData->unk_1AC.y = FX32_CONST(65);
-        animData->unk_1AC.z = FX32_CONST(72);
-        animData->unk_1B8.x = FX32_CONST(625);
-        animData->unk_1B8.y = FX32_CONST(152);
-        animData->unk_1B8.z = FX32_CONST(256);
-    } else {
-        animData->unk_1AC.x = FX32_CONST(0);
-        animData->unk_1AC.y = FX32_CONST(65);
-        animData->unk_1AC.z = FX32_CONST(72);
-        animData->unk_1B8.x = FX32_CONST(420);
-        animData->unk_1B8.y = FX32_CONST(87);
-        animData->unk_1B8.z = FX32_CONST(331);
-    }
-    animData->unk_1C4.x = FX32_CONST(0);
-    animData->unk_1C4.y = FX32_CONST(90);
-    animData->unk_1C4.z = FX32_CONST(0);
-    animData->unk_1D0.x = FX32_CONST(-2);
-    animData->unk_1D0.y = FX32_CONST(124);
-    animData->unk_1D0.z = FX32_CONST(-38);
-    animData->unk_1DC.x = FX16_CONST(0);
-    animData->unk_1DC.y = FX16_CONST(0.635498);
-    animData->unk_1DC.z = FX16_CONST(0);
-    animData->unk_1E2.x = FX16_CONST(0);
-    animData->unk_1E2.y = FX16_CONST(0.476807);
-    animData->unk_1E2.z = FX16_CONST(0);
-    animData->unk_1EC = FX32_CONST(3);
-
-    spC.x = FX32_CONST(0);
-    spC.y = FX32_CONST(0.635498);
-    spC.z = FX32_CONST(0);
+    SetVec(spC, FX32_CONST(0), FX32_CONST(0.635498), FX32_CONST(0));
     VEC_Normalize(&spC, &sp0);
     animData->unk_1DC.x = sp0.x;
     animData->unk_1DC.y = sp0.y;
     animData->unk_1DC.z = sp0.z;
+    }
 }
-#else
-asm void ov60_021E68B0(TitleScreenAnimData *animData) {
-    push {r4, lr}
-	sub sp, #0x18
-	add r4, r0, #0
-	mov r0, #2
-	lsl r0, r0, #8
-	ldr r1, [r4, r0]
-	cmp r1, #7
-	bne @_021E68F2
-	add r2, r0, #0
-	mov r1, #0
-	sub r2, #0x54
-	str r1, [r4, r2]
-	mov r3, #0x41
-	add r2, r0, #0
-	lsl r3, r3, #0xc
-	sub r2, #0x50
-	str r3, [r4, r2]
-	mov r3, #0x12
-	add r2, r0, #0
-	lsl r3, r3, #0xe
-	sub r2, #0x4c
-	str r3, [r4, r2]
-	add r2, r0, #0
-	ldr r3, =0x00271000
-	sub r2, #0x48
-	str r3, [r4, r2]
-	mov r3, #0x26
-	add r2, r0, #0
-	lsl r3, r3, #0xe
-	sub r2, #0x44
-	str r3, [r4, r2]
-	lsl r3, r0, #0xb
-	b @_021E6924
-@_021E68F2:
-	add r2, r0, #0
-	mov r1, #0
-	sub r2, #0x54
-	str r1, [r4, r2]
-	mov r3, #0x41
-	add r2, r0, #0
-	lsl r3, r3, #0xc
-	sub r2, #0x50
-	str r3, [r4, r2]
-	mov r3, #0x12
-	add r2, r0, #0
-	lsl r3, r3, #0xe
-	sub r2, #0x4c
-	str r3, [r4, r2]
-	mov r3, #0x69
-	add r2, r0, #0
-	lsl r3, r3, #0xe
-	sub r2, #0x48
-	str r3, [r4, r2]
-	mov r3, #0x57
-	add r2, r0, #0
-	lsl r3, r3, #0xc
-	sub r2, #0x44
-	str r3, [r4, r2]
-	ldr r3, =0x0014B000
-@_021E6924:
-	add r2, r0, #0
-	sub r2, #0x40
-	str r3, [r4, r2]
-	add r2, r0, #0
-	sub r2, #0x3c
-	str r1, [r4, r2]
-	mov r3, #0x5a
-	add r2, r0, #0
-	lsl r3, r3, #0xc
-	sub r2, #0x38
-	str r3, [r4, r2]
-	add r2, r0, #0
-	sub r2, #0x34
-	str r1, [r4, r2]
-	add r2, r0, #0
-	ldr r3, =0xFFFFE000
-	sub r2, #0x30
-	str r3, [r4, r2]
-	mov r3, #0x1f
-	add r2, r0, #0
-	lsl r3, r3, #0xe
-	sub r2, #0x2c
-	str r3, [r4, r2]
-	add r2, r0, #0
-	ldr r3, =0xFFFDA000
-	sub r2, #0x28
-	str r3, [r4, r2]
-	add r2, r0, #0
-	sub r2, #0x24
-	strh r1, [r4, r2]
-	add r2, r0, #0
-	ldr r3, =0x00000A2B
-	sub r2, #0x22
-	strh r3, [r4, r2]
-	add r2, r0, #0
-	sub r2, #0x20
-	strh r1, [r4, r2]
-	add r2, r0, #0
-	sub r2, #0x1e
-	strh r1, [r4, r2]
-	add r2, r0, #0
-	ldr r3, =0x000007A1
-	sub r2, #0x1c
-	strh r3, [r4, r2]
-	add r2, r0, #0
-	sub r2, #0x1a
-	strh r1, [r4, r2]
-	mov r1, #3
-	lsl r1, r1, #0xc
-	sub r0, #0x14
-	str r1, [r4, r0]
-	mov r1, #0
-	ldr r0, =0x00000A2B
-	str r1, [sp, #0xc]
-	str r0, [sp, #0x10]
-	str r1, [sp, #0x14]
-	add r0, sp, #0xc
-	add r1, sp, #0
-	bl VEC_Normalize
-	mov r0, #0x77
-	ldr r1, [sp]
-	lsl r0, r0, #2
-	strh r1, [r4, r0]
-	add r1, r0, #2
-	ldr r2, [sp, #4]
-	add r0, r0, #4
-	strh r2, [r4, r1]
-	ldr r1, [sp, #8]
-	strh r1, [r4, r0]
-	add sp, #0x18
-	pop {r4, pc}
-}
-#endif //NONMATCHING
 
 fx32 ov60_021E69CC(fx32 x) {
     return x < 0 ? -x : x;
 }
 
-struct UnkTitleScreenStruct_021EAF90 {
-    VecFx32 unk_00;
-    int unk_0C;
+static const struct UnkTitleScreenStruct_021EAF90 _021EAF40[5] = {
+    {{FX32_CONST(180), FX32_CONST(177), FX32_CONST(301)}, 10},
+    {{FX32_CONST(335), FX32_CONST(-293), FX32_CONST(296)}, 5},
+    {{FX32_CONST(180), FX32_CONST(177), FX32_CONST(301)}, 5},
+    {{FX32_CONST(625), FX32_CONST(152), FX32_CONST(256)}, 10},
+    {{FX32_CONST(0), FX32_CONST(0), FX32_CONST(0)}, 0},
+};
+
+static const struct UnkTitleScreenStruct_021EAF90 _021EAF90[5] = {
+    {{FX32_CONST(105), FX32_CONST(162), FX32_CONST(291)}, 10},
+    {{FX32_CONST(395), FX32_CONST(432), FX32_CONST(191)}, 5},
+    {{FX32_CONST(105), FX32_CONST(162), FX32_CONST(291)}, 5},
+    {{FX32_CONST(420), FX32_CONST(87), FX32_CONST(331)}, 10},
+    {{FX32_CONST(0), FX32_CONST(0), FX32_CONST(0)}, 0},
 };
 
 void ov60_021E69D4(TitleScreenAnimData *animData) {
-    extern const struct UnkTitleScreenStruct_021EAF90 _021EAF40[5];
-    extern const struct UnkTitleScreenStruct_021EAF90 _021EAF90[5];
-
     const struct UnkTitleScreenStruct_021EAF90 *r4 = animData->gameVersion == VERSION_HEARTGOLD ? _021EAF40 : _021EAF90;
     ++animData->unk_1F4;
     if (animData->unk_1F4 > r4[animData->unk_1F0].unk_0C * 30) {
