@@ -117,7 +117,7 @@ void BattleControllerPlayer_GetBattleMon(BattleSystem *bsys, BattleContext *ctx)
 
 //static
 void BattleControllerPlayer_StartEncounter(BattleSystem *bsys, BattleContext *ctx) {
-    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 0);
+    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_START_ENCOUNTER);
     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
     ctx->commandNext = CONTROLLER_COMMAND_TRAINER_MESSAGE;
 }
@@ -125,7 +125,7 @@ void BattleControllerPlayer_StartEncounter(BattleSystem *bsys, BattleContext *ct
 //static
 void BattleControllerPlayer_TrainerMessage(BattleSystem *bsys, BattleContext *ctx) {
     if (CheckTrainerMessage(bsys, ctx)) {
-        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 41);
+        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_TRAINER_MESSAGE);
         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
         ctx->commandNext = CONTROLLER_COMMAND_SEND_OUT;
     } else {
@@ -662,7 +662,7 @@ void BattleControllerPlayer_BeforeTurn(BattleSystem *bsys, BattleContext *ctx) {
                     !CheckTruant(ctx, battlerId) && !ctx->turnData[battlerId].struggleFlag) {
                     BattleController_EmitBlankMessage(bsys);
                     ctx->battlerIdTemp = battlerId;
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 232);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_TIGHTEN_FOCUS);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                     return;
@@ -748,7 +748,7 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     
     do {
-        if (ov12_0224DC74(ctx, ctx->command, ctx->command, 1) == TRUE) {
+        if (TryFaintMon(ctx, ctx->command, ctx->command, 1) == TRUE) {
             return;
         }
         if (ov12_0224DD18(ctx, ctx->command, ctx->command) == TRUE) {
@@ -766,7 +766,7 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
                     if (--ctx->fieldSideConditionData[side].reflectTurns == 0) {
                         ctx->fieldSideConditionFlags[side] &= ~SIDE_CONDITION_REFLECT;
                         ctx->moveTemp = MOVE_REFLECT;
-                        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 50);
+                        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_MOVE_EFFECT_END);
                         ctx->commandNext = ctx->command;
                         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                         ctx->battlerIdTemp = ov12_02257E98(bsys, ctx, side);
@@ -790,7 +790,7 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
                     if (--ctx->fieldSideConditionData[side].lightScreenTurns == 0) {
                         ctx->fieldSideConditionFlags[side] &= ~SIDE_CONDITION_LIGHT_SCREEN;
                         ctx->moveTemp = MOVE_LIGHT_SCREEN;
-                        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 50);
+                        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_MOVE_EFFECT_END);
                         ctx->commandNext = ctx->command;
                         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                         ctx->battlerIdTemp = ov12_02257E98(bsys, ctx, side);
@@ -814,7 +814,7 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
                     if (--ctx->fieldSideConditionData[side].mistTurns == 0) {
                         ctx->fieldSideConditionFlags[side] &= ~SIDE_CONDITION_MIST;
                         ctx->moveTemp = MOVE_MIST;
-                        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 50);
+                        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_MOVE_EFFECT_END);
                         ctx->commandNext = ctx->command;
                         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                         ctx->battlerIdTemp = ov12_02257E98(bsys, ctx, side);
@@ -838,7 +838,7 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
                     if (--ctx->fieldSideConditionData[side].safeguardTurns == 0) {
                         ctx->fieldSideConditionFlags[side] &= ~SIDE_CONDITION_SAFEGUARD;
                         ctx->battlerIdTemp = ctx->fieldSideConditionData[side].safeguardBattler;
-                        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 110);
+                        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_SAFEGUARD_END);
                         ctx->commandNext = ctx->command;
                         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                         ctx->battlerIdTemp = ov12_02257E98(bsys, ctx, side);
@@ -861,7 +861,7 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
                 if (ctx->fieldSideConditionFlags[side] & SIDE_CONDITION_TAILWIND) {
                     ctx->fieldSideConditionFlags[side] -= 1 << SIDE_CONDITION_TAILWIND_SHIFT;
                     if ((ctx->fieldSideConditionFlags[side] & SIDE_CONDITION_TAILWIND) == 0) {
-                        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 233);
+                        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_TAILWIND_END);
                         ctx->commandNext = ctx->command;
                         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                         ctx->battlerIdTemp = ov12_02257E98(bsys, ctx, side);
@@ -884,7 +884,7 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
                 if (ctx->fieldSideConditionFlags[side] & SIDE_CONDITION_LUCKY_CHANT) {
                     ctx->fieldSideConditionFlags[side] -= 1 << SIDE_CONDITION_LUCKY_CHANT_SHIFT;
                     if ((ctx->fieldSideConditionFlags[side] & SIDE_CONDITION_LUCKY_CHANT) == 0) {
-                        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 250);
+                        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_LUCKY_CHANT_END);
                         ctx->commandNext = ctx->command;
                         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                         ctx->battlerIdTemp = ov12_02257E98(bsys, ctx, side);
@@ -911,7 +911,7 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
                         ctx->buffMsg.id = msg_0197_00533; //Spheal's wish came true!
                         ctx->buffMsg.param[0] = side | (ctx->fieldConditionData.wishTarget[side] << 8);
                         ctx->hpCalc = DamageDivide(ctx->battleMons[side].maxHp, 2);
-                        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 136);
+                        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_WISH_HEAL);
                         ctx->commandNext = ctx->command;
                         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                         flag = 1;
@@ -932,17 +932,17 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
                 if (ctx->fieldCondition & FIELD_CONDITION_RAIN_PERMANENT) {
                     ctx->buffMsg.id = msg_0197_00801; //Rain continues to fall.
                     ctx->buffMsg.tag = TAG_NONE;
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_WEATHER_CONTINUES);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 } else if (--ctx->fieldConditionData.weatherTurns == 0) {
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 234);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_RAINING_END);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 } else {
                     ctx->buffMsg.id = msg_0197_00801; //Rain continues to fall.
                     ctx->buffMsg.tag = TAG_NONE;
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_WEATHER_CONTINUES);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 }
@@ -956,17 +956,17 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
                 if (ctx->fieldCondition & FIELD_CONDITION_SANDSTORM_PERMANENT) {
                     ctx->buffMsg.id = msg_0197_00805; //The sandstorm rages.
                     ctx->buffMsg.tag = TAG_NONE;
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_WEATHER_CONTINUES);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 } else if (--ctx->fieldConditionData.weatherTurns == 0) {
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 235);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_SANDSTORM_END);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 } else {
                     ctx->buffMsg.id = msg_0197_00805; //The sandstorm rages.
                     ctx->buffMsg.tag = TAG_NONE;
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_WEATHER_CONTINUES);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 }
@@ -980,17 +980,17 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
                 if (ctx->fieldCondition & FIELD_CONDITION_SUN_PERMANENT) {
                     ctx->buffMsg.id = msg_0197_00808; //The sunlight is strong.
                     ctx->buffMsg.tag = TAG_NONE;
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_WEATHER_CONTINUES);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 } else if (--ctx->fieldConditionData.weatherTurns == 0) {
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 236);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_SUNNY_END);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 } else {
                     ctx->buffMsg.id = msg_0197_00808; //The sunlight is strong.
                     ctx->buffMsg.tag = TAG_NONE;
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_WEATHER_CONTINUES);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 }
@@ -1004,17 +1004,17 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
                 if (ctx->fieldCondition & FIELD_CONDITION_HAIL_PERMANENT) {
                     ctx->buffMsg.id = msg_0197_00811; //Hail continues to fall.
                     ctx->buffMsg.tag = TAG_NONE;
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_WEATHER_CONTINUES);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 } else if (--ctx->fieldConditionData.weatherTurns == 0) {
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 237);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_HAILING_END);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 } else {
                     ctx->buffMsg.id = msg_0197_00811; //Hail continues to fall.
                     ctx->buffMsg.tag = TAG_NONE;
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_WEATHER_CONTINUES);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 }
@@ -1027,7 +1027,7 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
             if (ctx->fieldCondition & FIELD_CONDITION_FOG) {
                 ctx->buffMsg.id = msg_0197_00813; //The fog is deep...
                 ctx->buffMsg.tag = TAG_NONE;
-                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 104);
+                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_WEATHER_CONTINUES);
                 ctx->commandNext = ctx->command;
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 ctx->tempData = 18;
@@ -1039,7 +1039,7 @@ void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleConte
             if (ctx->fieldCondition & FIELD_CONDITION_GRAVITY) {
                 ctx->fieldCondition -= (1 << FIELD_CONDITION_GRAVITY_SHIFT);
                 if ((ctx->fieldCondition & FIELD_CONDITION_GRAVITY) == 0) {
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 238);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_GRAVITY_END);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                     flag = 1;
@@ -1102,7 +1102,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext
     
     maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     
-    if (ov12_0224DC74(ctx, ctx->command, ctx->command, 1) == TRUE) {
+    if (TryFaintMon(ctx, ctx->command, ctx->command, 1) == TRUE) {
         return;
     }
     
@@ -1125,10 +1125,10 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext
             if ((ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_INGRAIN) && ctx->battleMons[battlerId].hp != ctx->battleMons[battlerId].maxHp && ctx->battleMons[battlerId].hp) {
                 if (ctx->battleMons[battlerId].unk88.healBlockTurns) {
                     ctx->battlerIdTemp = battlerId;
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 239);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_CANNOT_HEAL);
                 } else {
                     ctx->battlerIdTemp = battlerId;
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 137);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_INGRAIN_HEAL);
                 }
                 ctx->commandNext = ctx->command;
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
@@ -1140,12 +1140,12 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext
             if ((ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_AQUA_RING) && ctx->battleMons[battlerId].hp != ctx->battleMons[battlerId].maxHp && ctx->battleMons[battlerId].hp) {
                 if (ctx->battleMons[battlerId].unk88.healBlockTurns) {
                     ctx->battlerIdTemp = battlerId;
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 239);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_CANNOT_HEAL);
                 } else {
                     ctx->battlerIdTemp = battlerId;
                     ctx->moveTemp = MOVE_AQUA_RING;
                     ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp, 16);
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 169);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_AQUA_RING_HEAL);
                 }
                 ctx->commandNext = ctx->command;
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
@@ -1176,7 +1176,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext
                 GetBattlerAbility(ctx, battlerId) != ABILITY_MAGIC_GUARD && ctx->battleMons[battlerId].hp) {
                 ctx->battlerIdLeechSeedRecv = ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_LEECH_SEED_BATTLER;
                 ctx->battlerIdLeechSeeded = battlerId;
-                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 69);
+                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_LEECH_SEED_EFFECT);
                 ctx->commandNext = ctx->command;
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 flag = 1;
@@ -1187,7 +1187,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext
             if ((ctx->battleMons[battlerId].status & STATUS_POISON) && ctx->battleMons[battlerId].hp) {
                 ctx->battlerIdTemp = battlerId;
                 ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp * -1, 8);
-                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 23);
+                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_POISON_DAMAGE);
                 ctx->commandNext = ctx->command;
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 flag = 1;
@@ -1203,7 +1203,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext
                 }
                 ctx->hpCalc *= ((ctx->battleMons[battlerId].status & STATUS_POISON_COUNT) >> STATUS_POISON_COUNT_SHIFT);
                 ctx->hpCalc *= -1;
-                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 23);
+                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_POISON_DAMAGE);
                 ctx->commandNext = ctx->command;
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 flag = 1;
@@ -1213,7 +1213,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext
         case UMC_STATE_BURN:
             if ((ctx->battleMons[battlerId].status & STATUS_BURN) && ctx->battleMons[battlerId].hp) {
                 ctx->battlerIdTemp = battlerId;
-                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 26);
+                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_BURN_DAMAGE);
                 ctx->commandNext = ctx->command;
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 flag = 1;
@@ -1224,7 +1224,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext
             if ((ctx->battleMons[battlerId].status2 & STATUS2_NIGHTMARE) && ctx->battleMons[battlerId].hp) {
                 if (ctx->battleMons[battlerId].status & STATUS_SLEEP) {
                    ctx->battlerIdTemp = battlerId;
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 94);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_NIGHTMARE_EFFECT);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                     flag = 1; 
@@ -1237,7 +1237,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext
         case UMC_STATE_CURSE:
             if ((ctx->battleMons[battlerId].status2 & STATUS2_CURSE) && ctx->battleMons[battlerId].hp) {
                 ctx->battlerIdTemp = battlerId;
-                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 98);
+                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_CURSE_DAMAGE);
                 ctx->commandNext = ctx->command;
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                 flag = 1;
@@ -1249,9 +1249,9 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext
                 ctx->battleMons[battlerId].status2 -= 1 << STATUS2_BINDING_SHIFT;
                 if (ctx->battleMons[battlerId].status2 & STATUS2_BINDING_TURNS) {
                     ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp * -1, 16);
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 59);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_BIND_EFFECT);
                 } else {
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 60);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_BIND_END);
                 }
                 ctx->moveTemp = ctx->battleMons[battlerId].unk88.bindingMove;
                 ctx->battlerIdTemp = battlerId;
@@ -1266,7 +1266,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext
             if ((ctx->battleMons[battlerId].status & STATUS_SLEEP) && GetBattlerAbility(ctx, battlerId) != ABILITY_MAGIC_GUARD &&
                 ctx->battleMons[battlerId].hp && ctx->tempData) {
                 ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp * -1, 8);
-                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 263);
+                ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_BAD_DREAMS);
                 ctx->battleStatus |= BATTLE_STATUS_NO_BLINK;
                 ctx->battlerIdTemp = battlerId;
                 ctx->commandNext = ctx->command;
@@ -1281,7 +1281,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext
                 for (battlerIdSleep = 0; battlerIdSleep < maxBattlers; battlerIdSleep++) {
                     if ((ctx->battleMons[battlerIdSleep].status & STATUS_SLEEP) && ctx->battleMons[battlerIdSleep].hp && GetBattlerAbility(ctx, battlerIdSleep) != ABILITY_SOUNDPROOF) {
                         ctx->battlerIdTemp = battlerIdSleep;
-                        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 19);
+                        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_WAKE_UP);
                         ctx->commandNext = ctx->command;
                         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                         break;
@@ -1293,13 +1293,13 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext
                 }
                 ctx->battleMons[battlerId].status2 -= 1 << STATUS2_UPROAR_SHIFT;
                 if (ov12_02252218(ctx, battlerId)) {
-                    i = 241;
+                    i = BATTLE_SUBSCRIPT_UPROAR_END;
                     ctx->battleMons[battlerId].status2 &= ~STATUS2_UPROAR;
                     ctx->fieldCondition &= (MaskOfFlagNo(battlerId) << 8) ^ 0xFFFFFFFF;
                 } else if (ctx->battleMons[battlerId].status2 & STATUS2_UPROAR) {
-                    i = 240;
+                    i = BATTLE_SUBSCRIPT_UPROAR_CONTINUES;
                 } else {
-                    i = 241;
+                    i = BATTLE_SUBSCRIPT_UPROAR_END;
                     ctx->battleMons[battlerId].status2 &= ~STATUS2_UPROAR;
                     ctx->fieldCondition &= (MaskOfFlagNo(battlerId) << 8) ^ 0xFFFFFFFF;
                 }
@@ -1320,7 +1320,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext
                     ctx->battleMons[battlerId].status2 &= ~STATUS2_RAMPAGE_TURNS;
                 } else if (!(ctx->battleMons[battlerId].status2 & STATUS2_RAMPAGE_TURNS) && !(ctx->battleMons[battlerId].status2 & STATUS2_CONFUSION)) {
                     ctx->battlerIdStatChange = battlerId;
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 51);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_THRASH_END);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                     flag = 1;
@@ -1343,7 +1343,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext
                 } else {
                     ctx->battleMons[battlerId].unk88.disabledMove = 0;
                     ctx->battlerIdTemp = battlerId;
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 72);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_DISABLE_END);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                     flag = 1;
@@ -1366,7 +1366,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext
                 } else {
                     ctx->battleMons[battlerId].unk88.encoredMove = 0;
                     ctx->battlerIdTemp = battlerId;
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 74);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_ENCORE_END);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                     flag = 1;
@@ -1393,7 +1393,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext
                 ctx->battleMons[battlerId].unk88.tauntTurns--;
                 if (ctx->battleMons[battlerId].unk88.tauntTurns == 0) {
                     ctx->battlerIdTemp = battlerId;
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 288);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_TAUNT_END);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                     flag = 1;
@@ -1405,7 +1405,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext
             if (ctx->battleMons[battlerId].unk88.magnetRiseTurns) {
                 if (--ctx->battleMons[battlerId].unk88.magnetRiseTurns == 0) {
                     ctx->battlerIdTemp = battlerId;
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 242);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_MAGNET_RISE_END);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                     flag = 1;
@@ -1417,7 +1417,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext
             if (ctx->battleMons[battlerId].unk88.healBlockTurns) {
                 if (--ctx->battleMons[battlerId].unk88.healBlockTurns == 0) {
                     ctx->battlerIdTemp = battlerId;
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 243);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_HEAL_BLOCK_END);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                     flag = 1;
@@ -1429,7 +1429,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext
             if (ctx->battleMons[battlerId].unk88.embargoFlag) {
                 if (--ctx->battleMons[battlerId].unk88.embargoFlag == 0) {
                     ctx->battlerIdTemp = battlerId;
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 244);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_EMBARGO_END);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                     flag = 1;
@@ -1443,7 +1443,7 @@ void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext
                 if ((ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_YAWN) == 0) {
                     ctx->battlerIdStatChange = battlerId;
                     ctx->statChangeType = 4;
-                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 18);
+                    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_FALL_ASLEEP);
                     ctx->commandNext = ctx->command;
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                     flag = 1;
@@ -1498,7 +1498,7 @@ void BattleControllerPlayer_UpdateFieldConditionExtra(BattleSystem *bsys, Battle
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     int battlerId;
     
-    if (ov12_0224DC74(ctx, ctx->command, ctx->command, 1) == TRUE) {
+    if (TryFaintMon(ctx, ctx->command, ctx->command, 1) == TRUE) {
         return;
     }
     
@@ -1643,16 +1643,16 @@ void BattleControllerPlayer_ItemInput(BattleSystem *bsys, BattleContext *ctx) {
     int script;
     
     ctx->battlerIdAttacker = ctx->executionOrder[ctx->executionIndex];
-    ctx->battlerIdTarget = ov12_02253DA0(bsys, ctx, ctx->battlerIdAttacker);
+    ctx->battlerIdTarget = Battler_GetRandomOpposingBattlerId(bsys, ctx, ctx->battlerIdAttacker);
     item = (BattleItem *)&ctx->playerActions[ctx->battlerIdAttacker].unk8;
     
     if (BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker)) {
-        switch (ctx->trainerAIData.unk9D[ctx->battlerIdAttacker >> 1]) {
+        switch (ctx->trainerAIData.useItem[ctx->battlerIdAttacker >> 1]) {
         case 0:
-            script = 289;
+            script = BATTLE_SUBSCRIPT_USE_FULL_RESTORE;
             break;
         case 1:
-            script = 267;
+            script = BATTLE_SUBSCRIPT_USE_POTION;
             break;
         case 2:
             if ((ctx->trainerAIData.unk9F[ctx->battlerIdAttacker >> 1] & 1) && (ctx->trainerAIData.unk9F[ctx->battlerIdAttacker >> 1] & 0x3e)) {
@@ -1660,14 +1660,14 @@ void BattleControllerPlayer_ItemInput(BattleSystem *bsys, BattleContext *ctx) {
             } else {
                 ctx->msgTemp = LowestFlagNo(ctx->trainerAIData.unk9F[ctx->battlerIdAttacker >> 1]);
             }
-            script = 268;
+            script = BATTLE_SUBSCRIPT_USE_STATUS_RECOVERY;
             break;
         case 3:
             ctx->msgTemp = ctx->trainerAIData.unk9F[ctx->battlerIdAttacker >> 1];
-            script = 269;
+            script = BATTLE_SUBSCRIPT_USE_STAT_BOOSTER;
             break;
         case 4:
-            script = 270;
+            script = BATTLE_SUBSCRIPT_USE_GUARD_SPEC;
             break;
         }
         ctx->itemTemp = ctx->trainerAIData.unkA0[ctx->battlerIdAttacker >> 1];
@@ -1677,13 +1677,13 @@ void BattleControllerPlayer_ItemInput(BattleSystem *bsys, BattleContext *ctx) {
         case BTLPOCKETLIST_STATUS_RESTORE:
         case BTLPOCKETLIST_BATTLE_ITEMS:
             if (item->id == ITEM_POKE_DOLL || item->id == ITEM_FLUFFY_TAIL) {
-                script = 222;
+                script = BATTLE_SUBSCRIPT_ESCAPE_ITEM;
             } else {
-                script = 223;
+                script = BATTLE_SUBSCRIPT_BATTLE_ITEM;
             }
             break;
         case BTLPOCKETLIST_BALLS:
-            script = 11;
+            script = BATTLE_SUBSCRIPT_THROW_POKEBALL;
             if (!(BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_TRAINER) && !(BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_TUTORIAL)) {
                 Bag_TakeItem(BattleSystem_GetBag(bsys), item->id, 1, HEAP_ID_BATTLE);
                 BagCursor_Battle_SetLastUsedItem(BattleSystem_GetBagCursor(bsys), item->id, item->page);
@@ -1886,7 +1886,7 @@ u32 TryDisobedience(BattleSystem *bsys, BattleContext *ctx, int *script) {
     }
 
     if (ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_SLEEP && (ctx->moveNoCur == MOVE_SNORE || ctx->moveNoCur == MOVE_SLEEP_TALK)) {
-        *script = 254;
+        *script = BATTLE_SUBSCRIPT_DISOBEY_WHILE_ASLEEP;
         return 1;
     }
     
@@ -1897,7 +1897,7 @@ u32 TryDisobedience(BattleSystem *bsys, BattleContext *ctx, int *script) {
         rnd = StruggleCheck(bsys, ctx, ctx->battlerIdAttacker, MaskOfFlagNo(ctx->movePos[ctx->battlerIdAttacker]), -1);
     
         if (rnd == 0xF) {
-            *script = 255;
+            *script = BATTLE_SUBSCRIPT_DISOBEY_DO_NOTHING;
             return 1;
         }
         do {
@@ -1910,12 +1910,12 @@ u32 TryDisobedience(BattleSystem *bsys, BattleContext *ctx, int *script) {
         ctx->battlerIdTarget = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, ctx->moveNoTemp, 1, 0);
 
         if (ctx->battlerIdTarget == BATTLER_NONE) {
-            ctx->playerActions[ctx->battlerIdAttacker].unk4 = ov12_02253DA0(bsys, ctx, ctx->battlerIdAttacker);
+            ctx->playerActions[ctx->battlerIdAttacker].unk4 = Battler_GetRandomOpposingBattlerId(bsys, ctx, ctx->battlerIdAttacker);
         } else {
             ctx->playerActions[ctx->battlerIdAttacker].unk4 = ctx->battlerIdTarget;
         }
 
-        *script = 256;
+        *script = BATTLE_SUBSCRIPT_DISOBEY_ORDERS;
         ctx->unk_2184 |= 1;
         
         return 2;
@@ -1929,7 +1929,7 @@ u32 TryDisobedience(BattleSystem *bsys, BattleContext *ctx, int *script) {
         GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_VITAL_SPIRIT &&
         GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_INSOMNIA &&
         !(ctx->fieldCondition & FIELD_CONDITION_UPROAR)) {
-        *script = 257;
+        *script = BATTLE_SUBSCRIPT_DISOBEY_SLEEP;
         return 1;
     }
 
@@ -1942,12 +1942,12 @@ u32 TryDisobedience(BattleSystem *bsys, BattleContext *ctx, int *script) {
         ctx->hpCalc = CalcMoveDamage(bsys, ctx, MOVE_POUND, 0, 0, 40, 0, ctx->battlerIdAttacker, ctx->battlerIdAttacker, 1);
         ctx->hpCalc = ApplyDamageRange(bsys, ctx, ctx->hpCalc);
         ctx->hpCalc *= -1;
-        *script = 258;
+        *script = BATTLE_SUBSCRIPT_DISOBEY_HIT_SELF;
         ctx->battleStatus |= 2;
         return 3;
     }
 
-    *script = 255;
+    *script = BATTLE_SUBSCRIPT_DISOBEY_DO_NOTHING;
     
     return 1;
 }
@@ -2471,7 +2471,7 @@ BOOL ov12_0224B528(BattleSystem *bsys, BattleContext *ctx) {
                     if (ctx->battleMons[ctx->unk_30F4[ctx->battlerIdAttacker]].hp) {
                         ctx->battlerIdTarget = ctx->unk_30F4[ctx->battlerIdAttacker];
                     } else {
-                        ctx->battlerIdTarget = ov12_02253DA0(bsys, ctx, ctx->battlerIdAttacker);
+                        ctx->battlerIdTarget = Battler_GetRandomOpposingBattlerId(bsys, ctx, ctx->battlerIdAttacker);
                         if (ctx->battleMons[ctx->battlerIdTarget].hp == 0) {
                             ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 282);
                             ctx->commandNext = CONTROLLER_COMMAND_39;
@@ -2523,8 +2523,8 @@ BOOL ov12_0224BC2C(BattleSystem *bsys, BattleContext *ctx) {
     do {
         switch (ctx->unk_54) {
         case 0:
-            script = ov12_02252EC8(ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget);
-            if ((script && !(ctx->moveStatusFlag & 0x1FD849)) || script == 181) {
+            script = BattleContext_CheckMoveImmunityFromAbility(ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget);
+            if ((script && !(ctx->moveStatusFlag & 0x1FD849)) || script == BATTLE_SUBSCRIPT_BLOCKED_BY_SOUNDPROOF) {
                 ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
                 ctx->commandNext = ctx->command;
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
@@ -3104,7 +3104,7 @@ void ov12_0224CAA4(BattleSystem *bsys, BattleContext *ctx) {
             return;
         case 4:
             ctx->unk_3C++;
-            if (ov12_0224DFEC(bsys, ctx) == TRUE) {
+            if (TryBuildRage(bsys, ctx) == TRUE) {
                 return;
             }
             //fallthrough
@@ -3122,7 +3122,7 @@ void ov12_0224CAA4(BattleSystem *bsys, BattleContext *ctx) {
             }
         case 6:
             ctx->unk_3C++;
-            if (ov12_0224E078(bsys, ctx) == TRUE) {
+            if (TryItemFlinch(bsys, ctx) == TRUE) {
                 return;
             }
         default:
@@ -3158,7 +3158,7 @@ void ov12_0224CAA4(BattleSystem *bsys, BattleContext *ctx) {
             return;
         case 3:
             ctx->unk_3C++;
-            if (ov12_0224DFEC(bsys, ctx) == TRUE) {
+            if (TryBuildRage(bsys, ctx) == TRUE) {
                 return;
             }
             //fallthrough
@@ -3183,7 +3183,7 @@ void ov12_0224CAA4(BattleSystem *bsys, BattleContext *ctx) {
             //fallthrough
         case 6:
             ctx->unk_3C++;
-            if (ov12_0224E078(bsys, ctx) == TRUE) {
+            if (TryItemFlinch(bsys, ctx) == TRUE) {
                 return;
             }
             //fallthrough
@@ -3377,7 +3377,7 @@ void ov12_0224CF14(BattleSystem *bsys, BattleContext *ctx) {
 //static
 void ov12_0224D014(BattleSystem *bsys, BattleContext *ctx) {
     if (ctx->battleStatus & BATTLE_STATUS_FAINTED) {
-        ov12_0224DC74(ctx, CONTROLLER_COMMAND_34, CONTROLLER_COMMAND_34, 0);
+        TryFaintMon(ctx, CONTROLLER_COMMAND_34, CONTROLLER_COMMAND_34, 0);
     } else {
         ctx->command = CONTROLLER_COMMAND_35;
     }
@@ -3549,7 +3549,7 @@ void ov12_0224D368(BattleSystem *bsys, BattleContext *ctx) {
 
 //static
 void ov12_0224D448(BattleSystem *bsys, BattleContext *ctx) {
-    if (ov12_0224DC74(ctx, ctx->command, ctx->command, 1) != TRUE) {
+    if (TryFaintMon(ctx, ctx->command, ctx->command, 1) != TRUE) {
         ctx->command = CONTROLLER_COMMAND_40;
     }
 }
@@ -3559,11 +3559,11 @@ void ov12_0224D464(BattleSystem *bsys, BattleContext *ctx) {
     if (BattleSystem_GetBattleOutcomeFlags(bsys) & 0x80) {
         ctx->command = CONTROLLER_COMMAND_44;
     } else if (BattleSystem_GetBattleOutcomeFlags(bsys) == BATTLE_OUTCOME_LOSE || BattleSystem_GetBattleOutcomeFlags(bsys) == BATTLE_OUTCOME_DRAW) {
-        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 5);
+        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_BATTLE_LOST);
         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
         ctx->commandNext = CONTROLLER_COMMAND_44;
     } else if (BattleSystem_GetBattleOutcomeFlags(bsys) == BATTLE_OUTCOME_WIN) {
-        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 4);
+        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_BATTLE_WON);
         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
         ctx->commandNext = CONTROLLER_COMMAND_44;
     } else if (BattleSystem_GetBattleOutcomeFlags(bsys) == BATTLE_OUTCOME_MON_CAUGHT) {
@@ -3674,9 +3674,9 @@ BOOL ov12_0224D540(BattleSystem *bsys, BattleContext *ctx) {
             } else {
                 ctx->tempData = 1;
             }
-            ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 0xe7);
+            ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_REPLACE_FAINTED);
         } else {
-            ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 10);
+            ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_SHOW_PARTY_LIST);
         }
         
         flag = TRUE;
@@ -3853,7 +3853,7 @@ void ov12_0224DC0C(BattleSystem *bsys, BattleContext *ctx) {
 }
 
 //static
-BOOL ov12_0224DC74(BattleContext *ctx, ControllerCommand commandNext, ControllerCommand command, int flag) {
+BOOL TryFaintMon(BattleContext *ctx, ControllerCommand commandNext, ControllerCommand command, int flag) {
     int turn = 0;
     int faintedFlag = MaskOfFlagNo(ctx->turnOrder[turn]) << BATTLE_STATUS_FAINTED_SHIFT;
     
@@ -3866,9 +3866,9 @@ BOOL ov12_0224DC74(BattleContext *ctx, ControllerCommand commandNext, Controller
         ctx->battlerIdFainted = LowestFlagNo(faintedFlag >> BATTLE_STATUS_FAINTED_SHIFT);
         
         if (flag == 1) {
-            ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 6);
+            ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_FAINT_MON);
         } else {
-            ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 0x53);
+            ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_FAINT_CHECK_DESTINY_BOND);
         }
         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
         ctx->commandNext = commandNext;
@@ -3891,7 +3891,7 @@ BOOL ov12_0224DD18(BattleContext *ctx, ControllerCommand commandNext, Controller
         
         ctx->battleStatus2 &= flag ^ 0xFFFFFFFF;
         ctx->battlerIdFainted = LowestFlagNo(flag >> BATTLE_STATUS2_EXP_GAIN_SHIFT);
-        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 276);
+        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_GRANT_EXP);
         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
         ctx->commandNext = commandNext;
         return TRUE;
@@ -3972,7 +3972,7 @@ void ov12_0224DD74(BattleSystem *bsys, BattleContext *ctx) {
 
 //static
 BOOL ov12_0224DF7C(BattleSystem *bsys, BattleContext *ctx) {
-    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 16);
+    ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_CRITICAL_HIT);
     ctx->commandNext = ctx->command;
     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
     
@@ -4002,7 +4002,7 @@ BOOL ov12_0224DF98(BattleSystem *bsys, BattleContext *ctx) {
 }
 
 //static
-BOOL ov12_0224DFEC(BattleSystem *bsys, BattleContext *ctx) {
+BOOL TryBuildRage(BattleSystem *bsys, BattleContext *ctx) {
     BOOL ret = FALSE;
     
     if (ctx->battlerIdTarget == BATTLER_NONE) {
@@ -4016,7 +4016,7 @@ BOOL ov12_0224DFEC(BattleSystem *bsys, BattleContext *ctx) {
         && (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage)
         && ctx->battleMons[ctx->battlerIdTarget].statChanges[STAT_ATK] < 12) {
         ctx->battleMons[ctx->battlerIdTarget].statChanges[STAT_ATK]++;
-        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 245);
+        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_RAGE_IS_BUILDING);
         ctx->commandNext = ctx->command;
         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
         ret = TRUE;
@@ -4026,7 +4026,7 @@ BOOL ov12_0224DFEC(BattleSystem *bsys, BattleContext *ctx) {
 }
 
 //static
-BOOL ov12_0224E078(BattleSystem *bsys, BattleContext *ctx) {
+BOOL TryItemFlinch(BattleSystem *bsys, BattleContext *ctx) {
     BOOL ret = FALSE;
     int item = GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker);
     int itemMod = GetHeldItemModifier(ctx, ctx->battlerIdAttacker, 0);
@@ -4055,7 +4055,7 @@ BOOL ov12_0224E130(BattleSystem *bsys, BattleContext *ctx) {
     while (ctx->unk_5C < BattleSystem_GetMaxBattlers(bsys)) {
         if (!(ctx->battleMons[ctx->unk_5C].moveEffectFlags & MOVE_EFFECT_FLAG_HIDE_SUBSTITUTE) && ctx->battleMons[ctx->unk_5C].moveEffectFlagsTemp & MOVE_EFFECT_FLAG_HIDE_SUBSTITUTE) {
             ctx->battleMons[ctx->unk_5C].moveEffectFlagsTemp &= ~MOVE_EFFECT_FLAG_HIDE_SUBSTITUTE;
-            ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_287);
+            ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_VANISH_OFF);
             ctx->battlerIdTemp = ctx->unk_5C;
             ctx->commandNext = ctx->command;
             ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;

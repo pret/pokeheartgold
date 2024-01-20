@@ -231,7 +231,7 @@
 .public CheckAbilityActive
 .public CalculateTypeEffectiveness
 .public GetBattlerAbility
-.public ov12_02253DA0
+.public Battler_GetRandomOpposingBattlerId
 .public GetBattlerHeldItemEffect
 .public CalcMoveDamage
 .public GetItemVar

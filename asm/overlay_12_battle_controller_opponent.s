@@ -41,7 +41,7 @@ _0225883E:
 	ldr r2, [sp, #0x18]
 	add r0, r7, #0
 	add r1, r5, #0
-	bl ov12_02253DA0
+	bl Battler_GetRandomOpposingBattlerId
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	ldr r1, [sp, #0x18]

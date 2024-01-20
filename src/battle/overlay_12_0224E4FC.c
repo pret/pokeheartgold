@@ -25,7 +25,7 @@ static const u8 sStatChangeTable[][2];
 
 static BOOL CheckFlyingImmunity(BattleContext *ctx, int item, int index);
 static void ApplyEffectivenessFlags(int effectiveness, u32 *moveStatusFlag);
-static int ov12_02258348(BattleContext *ctx, int statChangeType, u32 flag);
+static int GetMoveStatusChangeScript(BattleContext *ctx, int statChangeType, u32 flag);
 static int ov12_022583B4(BattleContext *ctx, int battlerId, int typeEffectiveness, int damage, int moveDamage, u32 *flag);
 static int ov12_02258440(BattleContext *ctx, int moveNo);
 static u8 Battler_GetType(BattleContext *ctx, int battlerId, int var);
@@ -832,8 +832,8 @@ void BattleMon_AddVar(BattleMon *mon, u32 varId, int data) {
             int index = varId - BMON_DATA_STAT_CHANGE_HP;
             if (mon->statChanges[index] + data < 0) {
                 mon->statChanges[index] = 0;
-            } else if (mon->statChanges[index] + data > 12) {
-                mon->statChanges[index] = 12;
+            } else if (mon->statChanges[index] + data > BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
+                mon->statChanges[index] = BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE;
             } else {
                 mon->statChanges[index] += data;
             }
@@ -1026,8 +1026,8 @@ u8 CheckSortSpeed(BattleSystem *bsys, BattleContext *ctx, int battlerId1, int ba
     
     if (GetBattlerAbility(ctx, battlerId1) == ABILITY_SIMPLE) {
         speedStatChange1 = 6 + (speedStatChange1-6)*2;
-        if (speedStatChange1 > 12) {
-            speedStatChange1 = 12;
+        if (speedStatChange1 > BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
+            speedStatChange1 = BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE;
         } 
         if (speedStatChange1 < 0) {
             speedStatChange1 = 0;
@@ -1035,8 +1035,8 @@ u8 CheckSortSpeed(BattleSystem *bsys, BattleContext *ctx, int battlerId1, int ba
     }
     if (GetBattlerAbility(ctx, battlerId2) == ABILITY_SIMPLE) {
         speedStatChange2 = 6 + (speedStatChange2-6)*2;
-        if (speedStatChange2 > 12) {
-            speedStatChange2 = 12;
+        if (speedStatChange2 > BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
+            speedStatChange2 = BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE;
         } 
         if (speedStatChange2 < 0) {
             speedStatChange2 = 0;
@@ -1280,13 +1280,13 @@ BOOL ov12_022503EC(BattleSystem *bsys, BattleContext *ctx, int *out) {
     BOOL ret = FALSE;
     
     if (ctx->unk_2170 & (1 << 29)) {
-        *out = ov12_02258348(ctx, 1, ctx->unk_2170);
+        *out = GetMoveStatusChangeScript(ctx, 1, ctx->unk_2170);
         ctx->unk_2170 = 0;
         if (!(ctx->moveStatusFlag & MOVE_STATUS_FAIL)) {
             ret = TRUE;
         }
     } else if (ctx->unk_2170) {
-        *out = ov12_02258348(ctx, 1, ctx->unk_2170);
+        *out = GetMoveStatusChangeScript(ctx, 1, ctx->unk_2170);
         if (ctx->battleMons[ctx->battlerIdStatChange].hp && 
             (!(ctx->moveStatusFlag & MOVE_STATUS_FAIL) || 
             ((ctx->unk_2170 & (1 << 23)) && (ctx->moveStatusFlag & 0x40008)) ||
@@ -1304,25 +1304,25 @@ BOOL ov12_02250490(BattleSystem *bsys, BattleContext *ctx, int *out) {
     u16 effectChance;
     
     if (ctx->unk_2174 & (1 << 29)) {
-        *out = ov12_02258348(ctx, 2, ctx->unk_2174);
+        *out = GetMoveStatusChangeScript(ctx, 2, ctx->unk_2174);
         ctx->unk_2174 = 0;
         if (!(ctx->moveStatusFlag & MOVE_STATUS_FAIL)) {
             ret = TRUE;
         }
     } else if (ctx->unk_2174 & (1 << 24)) {
-        *out = ov12_02258348(ctx, 2, ctx->unk_2174);
+        *out = GetMoveStatusChangeScript(ctx, 2, ctx->unk_2174);
         ctx->unk_2174 = 0;
         if (!BattlerCheckSubstitute(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL)) {
             ret = TRUE;
         }
     } else if (ctx->unk_2174 & (1 << 25)) {
-        *out = ov12_02258348(ctx, 2, ctx->unk_2174);
+        *out = GetMoveStatusChangeScript(ctx, 2, ctx->unk_2174);
         ctx->unk_2174 = 0;
         if (ctx->battleMons[ctx->battlerIdStatChange].hp && !BattlerCheckSubstitute(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL)) {
             ret = TRUE;
         }
     } else if (ctx->unk_2174 & (1 << 28)) {
-        *out = ov12_02258348(ctx, 2, ctx->unk_2174);
+        *out = GetMoveStatusChangeScript(ctx, 2, ctx->unk_2174);
         ctx->unk_2174 = 0; 
         if (ctx->battleMons[ctx->battlerIdStatChange].hp) {
             ret = TRUE;
@@ -1341,7 +1341,7 @@ BOOL ov12_02250490(BattleSystem *bsys, BattleContext *ctx, int *out) {
             ctx->battleStatus |= BATTLE_STATUS_22;
         }
         
-        *out = ov12_02258348(ctx, 2, ctx->unk_2174);
+        *out = GetMoveStatusChangeScript(ctx, 2, ctx->unk_2174);
         ctx->unk_2174 = 0; 
         if (!ctx->battleMons[ctx->battlerIdStatChange].hp) {
             ctx->battleStatus &= ~BATTLE_STATUS_22;
@@ -1359,14 +1359,14 @@ BOOL ov12_02250490(BattleSystem *bsys, BattleContext *ctx, int *out) {
         GF_ASSERT(effectChance);
         
         if ((BattleSystem_Random(bsys) % 100) < effectChance) {
-            *out = ov12_02258348(ctx, 2, ctx->unk_2174);
+            *out = GetMoveStatusChangeScript(ctx, 2, ctx->unk_2174);
             ctx->unk_2174 = 0; 
             if (ctx->battleMons[ctx->battlerIdStatChange].hp && !BattlerCheckSubstitute(ctx, ctx->battlerIdStatChange) && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL)) {
                 ret = TRUE;
             }
         }
     } else if (ctx->unk_2178) {
-        *out = ov12_02258348(ctx, 3, ctx->unk_2178);
+        *out = GetMoveStatusChangeScript(ctx, 3, ctx->unk_2178);
         ctx->unk_2178 = 0; 
         if (ctx->battleMons[ctx->battlerIdStatChange].hp) {
             ret = TRUE;
@@ -1436,9 +1436,9 @@ int ov12_022506D4(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker,
             battlerIdTarget = battlerIdAttacker;
         }
     } else if (moveRange == RANGE_FRONT && (a4 == 1)) {
-        battlerIdTarget = ov12_02253DA0(bsys, ctx, battlerIdAttacker);
+        battlerIdTarget = Battler_GetRandomOpposingBattlerId(bsys, ctx, battlerIdAttacker);
     } else if (moveRange == RANGE_OPPONENT_SIDE) {
-        battlerIdTarget = ov12_02253DA0(bsys, ctx, battlerIdAttacker);
+        battlerIdTarget = Battler_GetRandomOpposingBattlerId(bsys, ctx, battlerIdAttacker);
     } else if (moveRange == RANGE_USER || moveRange == RANGE_USER_SIDE || moveRange == RANGE_SINGLE_TARGET_SPECIAL || moveRange == RANGE_FIELD) {
         battlerIdTarget = battlerIdAttacker;
     } else if (moveRange == RANGE_ALLY) {
@@ -1492,7 +1492,7 @@ int ov12_022506D4(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker,
         } else if (ctx->battleMons[battlerIdTargetTemp].hp) {
             battlerIdTarget = battlerIdTargetTemp;
         } else {
-            battlerIdTargetTemp = ov12_02253DA0(bsys, ctx, battlerIdAttacker);
+            battlerIdTargetTemp = Battler_GetRandomOpposingBattlerId(bsys, ctx, battlerIdAttacker);
             if (ctx->battleMons[battlerIdTargetTemp].hp) {
                 battlerIdTarget = battlerIdTargetTemp;
             }
@@ -3062,11 +3062,11 @@ static u16 sSoundMoves[] = {
     MOVE_CHATTER
 };
 
-int ov12_02252EC8(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget) {
-    int state;
+int BattleContext_CheckMoveImmunityFromAbility(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget) {
+    int script;
     int moveType;
 
-    state = 0;
+    script = BATTLE_SUBSCRIPT_NONE;
     
     if (GetBattlerAbility(ctx, battlerIdAttacker) == ABILITY_NORMALIZE) {
         moveType = TYPE_NORMAL;
@@ -3078,48 +3078,48 @@ int ov12_02252EC8(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget
     
     if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_VOLT_ABSORB) == TRUE && moveType == TYPE_ELECTRIC && battlerIdAttacker != battlerIdTarget) {
         ctx->hpCalc = DamageDivide(ctx->battleMons[battlerIdTarget].maxHp, 4);
-        state = 178;
+        script = BATTLE_SUBSCRIPT_ABILITY_RESTORES_HP;
     }    
     if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_WATER_ABSORB) == TRUE && moveType == TYPE_WATER && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) && ctx->trainerAIData.moveData[ctx->moveNoCur].power) {
         ctx->hpCalc = DamageDivide(ctx->battleMons[battlerIdTarget].maxHp, 4);
-        state = 178;
+        script = BATTLE_SUBSCRIPT_ABILITY_RESTORES_HP;
     }
     int moveNoCur = ctx->moveNoCur;
     if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_FLASH_FIRE) == TRUE && moveType == TYPE_FIRE && !(ctx->battleMons[battlerIdTarget].status & STATUS_FREEZE) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN)) {
         if (ctx->trainerAIData.moveData[ctx->moveNoCur].power || ctx->moveNoCur == MOVE_WILL_O_WISP) {
-            state = 179;
+            script = BATTLE_SUBSCRIPT_ABSORB_AND_BOOST_FIRE_TYPE_MOVES;
         }
     }
     if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_SOUNDPROOF) == TRUE) {
         for (int i = 0; i < NELEMS(sSoundMoves); i++) {
             if (sSoundMoves[i] == ctx->moveNoCur) {
-                state = 181;
+                script = BATTLE_SUBSCRIPT_BLOCKED_BY_SOUNDPROOF;
                 break;
             }
         }
     }
     if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_MOTOR_DRIVE) == TRUE && moveType == TYPE_ELECTRIC && battlerIdAttacker != battlerIdTarget) {
-        state = 182;
+        script = BATTLE_SUBSCRIPT_ABSORB_AND_SPEED_UP_1_STAGE;
     }
     if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_DRY_SKIN) == TRUE && moveType == TYPE_WATER && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) && ctx->trainerAIData.moveData[ctx->moveNoCur].power) {
         ctx->hpCalc = DamageDivide(ctx->battleMons[battlerIdTarget].maxHp, 4);
-        state = 178;
+        script = BATTLE_SUBSCRIPT_ABILITY_RESTORES_HP;
     }
     
-    return state;
+    return script;
 }
 
 BOOL ov12_02253068(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
     BOOL ret = FALSE;
-    int state;
+    int script;
     
     switch (GetBattlerAbility(ctx, battlerId)) {
     case ABILITY_SPEED_BOOST:
-        if (ctx->battleMons[battlerId].hp && ctx->battleMons[battlerId].statChanges[3] < 12 && ctx->battleMons[battlerId].unk88.fakeOutCount != ctx->totalTurns + 1) {
+        if (ctx->battleMons[battlerId].hp && ctx->battleMons[battlerId].statChanges[3] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE && ctx->battleMons[battlerId].unk88.fakeOutCount != ctx->totalTurns + 1) {
             ctx->statChangeParam = 17;
             ctx->statChangeType = 3;
             ctx->battlerIdStatChange = battlerId;
-            state = 12;
+            script = BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE;
             ret = TRUE;
         } 
         break;
@@ -3137,7 +3137,7 @@ BOOL ov12_02253068(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
                 ctx->msgTemp = 4;
             }
             ctx->battlerIdTemp = battlerId;
-            state = 190;
+            script = BATTLE_SUBSCRIPT_ABILITY_RESTORE_STATUS;
             ret = TRUE;
         }
         break;
@@ -3146,7 +3146,7 @@ BOOL ov12_02253068(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
     }
 
     if (ret == TRUE) {
-        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, state);
+        ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
         ctx->commandNext = ctx->command;
         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
     }
@@ -3184,7 +3184,7 @@ int TryAbilityOnEntry(BattleSystem *bsys, BattleContext *ctx) {
     int battlerId;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     
-    script = 0;
+    script = BATTLE_SUBSCRIPT_NONE;
     flag = FALSE;
     
     do {
@@ -3195,30 +3195,30 @@ int TryAbilityOnEntry(BattleSystem *bsys, BattleContext *ctx) {
                 case 1:
                 case 2:
                 case 3:
-                    script = 271;
+                    script = BATTLE_SUBSCRIPT_OVERWORLD_RAIN;
                     flag = TRUE;
                     break;
                 case 4:
                 case 5:
                 case 6:
-                    script = 272;
+                    script = BATTLE_SUBSCRIPT_OVERWORLD_HAIL;
                     flag = TRUE;
                     break;
                 case 7:
-                    script = 273;
+                    script = BATTLE_SUBSCRIPT_OVERWORLD_SAND;
                     flag = TRUE;
                     break;
                 case 9:
                 case 10:
-                    script = 274;
+                    script = BATTLE_SUBSCRIPT_OVERWORLD_FOG;
                     flag = TRUE;
                     break;
                 case 1001:
-                    script = 294;
+                    script = BATTLE_SUBSCRIPT_OVERWORLD_SUN;
                     flag = TRUE;
                     break;
                 case 1002:
-                    script = 295;
+                    script = BATTLE_SUBSCRIPT_OVERWORLD_TRICK_ROOM;
                     flag = TRUE;
                     break;
                 default:
@@ -3245,7 +3245,7 @@ int TryAbilityOnEntry(BattleSystem *bsys, BattleContext *ctx) {
                         ctx->battleMons[ctx->battlerIdLeechSeeded].hp && GetBattlerAbility(ctx, battlerId) == ABILITY_TRACE) {
                         ctx->battleMons[battlerId].traceFlag = TRUE;
                         ctx->battlerIdTemp = battlerId;
-                        script = 187;
+                        script = BATTLE_SUBSCRIPT_TRACE;
                         flag = TRUE;
                         break;
                     }
@@ -3263,28 +3263,28 @@ int TryAbilityOnEntry(BattleSystem *bsys, BattleContext *ctx) {
                     case ABILITY_DRIZZLE:
                         ctx->battleMons[battlerId].sendOutFlag = TRUE;
                         if (!(ctx->fieldCondition & FIELD_CONDITION_RAIN_PERMANENT)) {
-                            script = 183;
+                            script = BATTLE_SUBSCRIPT_DRIZZLE;
                             flag = TRUE;
                         }
                         break;
                     case ABILITY_SAND_STREAM:
                         ctx->battleMons[battlerId].sendOutFlag = TRUE;
                         if (!(ctx->fieldCondition & FIELD_CONDITION_SANDSTORM_PERMANENT)) {
-                            script = 184;
+                            script = BATTLE_SUBSCRIPT_SAND_STREAM;
                             flag = TRUE;
                         }
                         break;
                     case ABILITY_DROUGHT:
                         ctx->battleMons[battlerId].sendOutFlag = TRUE;
                         if (!(ctx->fieldCondition & FIELD_CONDITION_SUN_PERMANENT)) {
-                            script = 185;
+                            script = BATTLE_SUBSCRIPT_DROUGHT;
                             flag = TRUE;
                         }
                         break;
                     case ABILITY_SNOW_WARNING:
                         ctx->battleMons[battlerId].sendOutFlag = TRUE;
                         if (!(ctx->fieldCondition & FIELD_CONDITION_HAIL_PERMANENT)) {
-                            script = 252;
+                            script = BATTLE_SUBSCRIPT_SNOW_WARNING;
                             flag = TRUE;
                         }
                         break;
@@ -3305,7 +3305,7 @@ int TryAbilityOnEntry(BattleSystem *bsys, BattleContext *ctx) {
                 if (!ctx->battleMons[battlerId].intimidateFlag && ctx->battleMons[battlerId].hp && GetBattlerAbility(ctx, battlerId) == ABILITY_INTIMIDATE) {
                     ctx->battleMons[battlerId].intimidateFlag = TRUE;
                     ctx->battlerIdTemp = battlerId;
-                    script = 186;
+                    script = BATTLE_SUBSCRIPT_INTIMIDATE;
                     flag = TRUE;
                     break;
                 }
@@ -3337,7 +3337,7 @@ int TryAbilityOnEntry(BattleSystem *bsys, BattleContext *ctx) {
                         }
                         ctx->statChangeType = 3;
                         ctx->battlerIdStatChange = battlerId;
-                        script = 12;
+                        script = BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE;
                         flag = TRUE;
                         break;
                     }
@@ -3376,7 +3376,7 @@ int TryAbilityOnEntry(BattleSystem *bsys, BattleContext *ctx) {
                     }
                     if (flag == TRUE) {
                         ctx->battlerIdTemp = battlerId;
-                        script = 194;
+                        script = BATTLE_SUBSCRIPT_ANTICIPATION;
                     }
                     break;
                 }
@@ -3444,14 +3444,14 @@ int TryAbilityOnEntry(BattleSystem *bsys, BattleContext *ctx) {
                     }
                     if (powerTemp) {
                         ctx->battlerIdTemp = battlerId;
-                        script = 195;
+                        script = BATTLE_SUBSCRIPT_FOREWARN;
                         flag = TRUE;
                     } else if (hp) {
-                        j = ov12_02253DA0(bsys, ctx, battlerId);
+                        j = Battler_GetRandomOpposingBattlerId(bsys, ctx, battlerId);
                         index = GetBattlerLearnedMoveCount(bsys, ctx, j);
                         ctx->moveTemp = ctx->battleMons[j].moves[BattleSystem_Random(bsys) % index];
                         ctx->battlerIdTemp = battlerId;
-                        script = 195;
+                        script = BATTLE_SUBSCRIPT_FOREWARN;
                         flag = TRUE;
                     }
                     break;
@@ -3489,7 +3489,7 @@ int TryAbilityOnEntry(BattleSystem *bsys, BattleContext *ctx) {
                 } 
                 if (flag == TRUE) {
                     ctx->battlerIdTemp = battlerId;
-                    script = 253;
+                    script = BATTLE_SUBSCRIPT_FRISK;
                     break;
                 }
             }
@@ -3503,14 +3503,14 @@ int TryAbilityOnEntry(BattleSystem *bsys, BattleContext *ctx) {
                 if (!ctx->battleMons[battlerId].slowStartFlag && ctx->battleMons[battlerId].hp && GetBattlerAbility(ctx, battlerId) == ABILITY_SLOW_START && ctx->totalTurns <= ctx->battleMons[battlerId].unk88.slowStartTurns) {
                     ctx->battleMons[battlerId].slowStartFlag = TRUE;
                     ctx->battlerIdTemp = battlerId;
-                    script = 196;
+                    script = BATTLE_SUBSCRIPT_SLOW_START;
                     flag = TRUE;
                     break;
                 }
                 if (!ctx->battleMons[battlerId].slowStartEnded && ctx->battleMons[battlerId].hp && GetBattlerAbility(ctx, battlerId) == ABILITY_SLOW_START && (ctx->totalTurns - ctx->battleMons[battlerId].unk88.slowStartTurns) == 5) {
                     ctx->battleMons[battlerId].slowStartEnded = TRUE;
                     ctx->battlerIdTemp = battlerId;
-                    script = 197;
+                    script = BATTLE_SUBSCRIPT_SLOW_START_END;
                     flag = TRUE;
                     break;
                 }
@@ -3525,7 +3525,7 @@ int TryAbilityOnEntry(BattleSystem *bsys, BattleContext *ctx) {
                 if (!ctx->battleMons[battlerId].moldBreakerFlag && ctx->battleMons[battlerId].hp && GetBattlerAbility(ctx, battlerId) == ABILITY_MOLD_BREAKER) {
                     ctx->battleMons[battlerId].moldBreakerFlag = TRUE;
                     ctx->battlerIdTemp = battlerId;
-                    script = 177;
+                    script = BATTLE_SUBSCRIPT_MOLD_BREAKER;
                     flag = TRUE;
                     break;
                 }
@@ -3540,7 +3540,7 @@ int TryAbilityOnEntry(BattleSystem *bsys, BattleContext *ctx) {
                 if (!ctx->battleMons[battlerId].pressureFlag && ctx->battleMons[battlerId].hp && GetBattlerAbility(ctx, battlerId) == ABILITY_PRESSURE) {
                     ctx->battleMons[battlerId].pressureFlag = TRUE;
                     ctx->battlerIdTemp = battlerId;
-                    script = 285;
+                    script = BATTLE_SUBSCRIPT_PRESSURE;
                     flag = TRUE;
                     break;
                 }
@@ -3556,7 +3556,7 @@ int TryAbilityOnEntry(BattleSystem *bsys, BattleContext *ctx) {
                 ctx->sendOutState++;
             }
             break;
-        case 12: //Amulet coin
+        case BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE: //Amulet coin
             for (i = 0; i < maxBattlers; i++) {
                 battlerId = ctx->turnOrder[i];
                 if (GetItemVar(ctx, ctx->battleMons[battlerId].item, ITEM_VAR_HOLD_EFFECT) == HOLD_EFFECT_MONEY_UP) {
@@ -3569,7 +3569,7 @@ int TryAbilityOnEntry(BattleSystem *bsys, BattleContext *ctx) {
             for (i = 0; i < maxBattlers; i++) {
                 battlerId = ctx->turnOrder[i];
                 if (CheckStatusHealAbility(bsys, ctx, battlerId, 1) == TRUE) {
-                    script = 221;
+                    script = BATTLE_SUBSCRIPT_ABILITY_FORBIDS_STATUS;
                     flag = TRUE;
                     break;
                 }
@@ -3601,7 +3601,7 @@ int TryAbilityOnEntry(BattleSystem *bsys, BattleContext *ctx) {
     return script;
 }
 
-int ov12_02253DA0(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
+int Battler_GetRandomOpposingBattlerId(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
     u32 battleType;
     int battlerIdTarget;
     int battlerIdTargets[2];
@@ -3648,7 +3648,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BattleContext *ctx, int *script
             ctx->statChangeType = 3;
             ctx->battlerIdStatChange = ctx->battlerIdAttacker;
             ctx->battlerIdTemp = ctx->battlerIdTarget;
-            *script = 31;
+            *script = BATTLE_SUBSCRIPT_PARALYZE;
             ret = TRUE;
         }
         break;
@@ -3671,7 +3671,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BattleContext *ctx, int *script
             ctx->trainerAIData.moveData[ctx->moveNoCur].power &&
             GetBattlerVar(ctx, ctx->battlerIdTarget, BMON_DATA_TYPE_1, NULL) != moveType &&
             GetBattlerVar(ctx, ctx->battlerIdTarget, BMON_DATA_TYPE_2, NULL) != moveType) {
-            *script = 188;
+            *script = BATTLE_SUBSCRIPT_COLOR_CHANGE;
             ctx->msgTemp = moveType;
             ret = TRUE;
         }
@@ -3686,7 +3686,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BattleContext *ctx, int *script
             (ctx->trainerAIData.moveData[ctx->moveNoCur].unkB & 1)) {
             ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp * -1, 8);
             ctx->battlerIdTemp = ctx->battlerIdAttacker;
-            *script = 189;
+            *script = BATTLE_SUBSCRIPT_ROUGH_SKIN;
             ret = TRUE;
         }
         break;
@@ -3702,13 +3702,13 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BattleContext *ctx, int *script
             switch (BattleSystem_Random(bsys) % 3) {
             case 0:
             default:
-                *script = 22;
+                *script = BATTLE_SUBSCRIPT_POISON;
                 break;
             case 1:
-                *script = 31;
+                *script = BATTLE_SUBSCRIPT_PARALYZE;
                 break;
             case 2:
-                *script = 18;
+                *script = BATTLE_SUBSCRIPT_FALL_ASLEEP;
                 break;
             }
             ctx->statChangeType = 3;
@@ -3729,7 +3729,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BattleContext *ctx, int *script
             ctx->statChangeType = 3;
             ctx->battlerIdStatChange = ctx->battlerIdAttacker;
             ctx->battlerIdTemp = ctx->battlerIdTarget;
-            *script = 22;
+            *script = BATTLE_SUBSCRIPT_POISON;
             ret = TRUE;
         }
         break;
@@ -3745,7 +3745,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BattleContext *ctx, int *script
             ctx->statChangeType = 3;
             ctx->battlerIdStatChange = ctx->battlerIdAttacker;
             ctx->battlerIdTemp = ctx->battlerIdTarget;
-            *script = 25;
+            *script = BATTLE_SUBSCRIPT_BURN;
             ret = TRUE;
         }
         break;
@@ -3762,7 +3762,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BattleContext *ctx, int *script
             ctx->statChangeType = 3;
             ctx->battlerIdStatChange = ctx->battlerIdAttacker;
             ctx->battlerIdTemp = ctx->battlerIdTarget;
-            *script = 106;
+            *script = BATTLE_SUBSCRIPT_INFATUATE;
             ret = TRUE;
         }
         break;
@@ -3776,7 +3776,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BattleContext *ctx, int *script
             (ctx->trainerAIData.moveData[ctx->moveNoCur].unkB & 1)) {
             ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp * -1, 4);
             ctx->battlerIdTemp = ctx->battlerIdAttacker;
-            *script = 193;
+            *script = BATTLE_SUBSCRIPT_AFTERMATH;
             ret = TRUE;
         }
         break;
@@ -3890,7 +3890,7 @@ BOOL CheckStatusHealSwitch(BattleContext *ctx, int ability, int status) {
 
 BOOL TrySyncronizeStatus(BattleSystem *bsys, BattleContext *ctx, ControllerCommand command) {
     BOOL ret = FALSE;
-    int script = 0;
+    int script = BATTLE_SUBSCRIPT_NONE;
     
     if (ctx->battlerIdTarget != BATTLER_NONE &&
         GetBattlerAbility(ctx, ctx->battlerIdTarget) == ABILITY_SYNCHRONIZE &&
@@ -3909,11 +3909,11 @@ BOOL TrySyncronizeStatus(BattleSystem *bsys, BattleContext *ctx, ControllerComma
     
     if (ret == TRUE) {
         if (ctx->battleMons[ctx->battlerIdTemp].status & STATUS_POISON_ALL) {
-            script = 22;
+            script = BATTLE_SUBSCRIPT_POISON;
         } else if (ctx->battleMons[ctx->battlerIdTemp].status & STATUS_BURN) {
-            script = 25;
+            script = BATTLE_SUBSCRIPT_BURN;
         } else if (ctx->battleMons[ctx->battlerIdTemp].status & STATUS_PARALYSIS) {
-            script = 31;
+            script = BATTLE_SUBSCRIPT_PARALYZE;
         }
         if (script) {
             ctx->statChangeType = 3;
@@ -3948,7 +3948,7 @@ BOOL TrySyncronizeStatus(BattleSystem *bsys, BattleContext *ctx, ControllerComma
     }
     
     if (ret == TRUE) {
-        script = 106;
+        script = BATTLE_SUBSCRIPT_INFATUATE;
         ctx->statChangeType = 5;
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
         ctx->commandNext = command;
@@ -3973,44 +3973,44 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
         case HOLD_EFFECT_HP_RESTORE: //oran berry, berry juice
             if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / 2) {
                 ctx->hpCalc = boost;
-                script = 198;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
                 ret = TRUE;
             }
             break;
         case HOLD_EFFECT_HP_PCT_RESTORE: //sitrus berry
             if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / 2) {
                 ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp * boost, 100);
-                script = 198;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
                 ret = TRUE;
             }
             break;
         case HOLD_EFFECT_PRZ_RESTORE: //cheri berry
             if (ctx->battleMons[battlerId].status & STATUS_PARALYSIS) {
-                script = 199;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_PRZ_RESTORE;
                 ret = TRUE;
             }
             break;
         case HOLD_EFFECT_SLP_RESTORE: //chesto berry
             if (ctx->battleMons[battlerId].status & STATUS_SLEEP) {
-                script = 200;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_SLP_RESTORE;
                 ret = TRUE;
             }
             break;
         case HOLD_EFFECT_PSN_RESTORE: //pecha berry
             if (ctx->battleMons[battlerId].status & STATUS_POISON_ALL) {
-                script = 201;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_PSN_RESTORE;
                 ret = TRUE;
             }
             break;
         case HOLD_EFFECT_BRN_RESTORE: //rawst berry
             if (ctx->battleMons[battlerId].status & STATUS_BURN) {
-                script = 202;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_BRN_RESTORE;
                 ret = TRUE;
             }
             break;
         case HOLD_EFFECT_FRZ_RESTORE: //aspear berry
             if (ctx->battleMons[battlerId].status & STATUS_FREEZE) {
-                script = 203;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_FRZ_RESTORE;
                 ret = TRUE;
             }
             break;
@@ -4025,38 +4025,38 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
                 BattleMon_AddVar(&ctx->battleMons[battlerId], BMON_DATA_MOVE1PP + index, boost);
                 CopyBattleMonToPartyMon(bsys, ctx, battlerId);
                 ctx->moveTemp = ctx->battleMons[battlerId].moves[index];
-                script = 204;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_PP_RESTORE;
                 ret = TRUE;
             }
             break;
         case HOLD_EFFECT_CONFUSE_RESTORE: //persim berry
             if (ctx->battleMons[battlerId].status2 & STATUS2_CONFUSION) {
-                script = 205;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_CNF_RESTORE;
                 ret = TRUE;
             }
             break;
         case HOLD_EFFECT_STATUS_RESTORE: //lum berry
             if ((ctx->battleMons[battlerId].status & STATUS_ALL) || (ctx->battleMons[battlerId].status2 & STATUS2_CONFUSION)) {
                 if (ctx->battleMons[battlerId].status & STATUS_PARALYSIS) {
-                    script = 199;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_PRZ_RESTORE;
                 }
                 if (ctx->battleMons[battlerId].status & STATUS_SLEEP) {
-                    script = 200;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_SLP_RESTORE;
                 }
                 if (ctx->battleMons[battlerId].status & STATUS_POISON_ALL) {
-                    script = 201;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_PSN_RESTORE;
                 }
                 if (ctx->battleMons[battlerId].status & STATUS_BURN) {
-                    script = 202;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_BRN_RESTORE;
                 }
                 if (ctx->battleMons[battlerId].status & STATUS_FREEZE) {
-                    script = 203;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_FRZ_RESTORE;
                 }
                 if (ctx->battleMons[battlerId].status2 & STATUS2_CONFUSION) {
-                    script = 205;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_CNF_RESTORE;
                 }
                 if ((ctx->battleMons[battlerId].status & STATUS_ALL) && (ctx->battleMons[battlerId].status2 & STATUS2_CONFUSION)) {
-                    script = 206;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_MULTI_RESTORE;
                 }
                 ret = TRUE;
             }
@@ -4066,9 +4066,9 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
                 ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp, boost);
                 ctx->msgTemp = 0;
                 if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, FLAVOR_SPICY) == -1) {
-                    script = 207;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
                 } else {
-                    script = 198;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
                 }
                 ret = TRUE;
             }
@@ -4078,9 +4078,9 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
                 ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp, boost);
                 ctx->msgTemp = 1;
                 if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, FLAVOR_DRY) == -1) {
-                    script = 207;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
                 } else {
-                    script = 198;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
                 }
                 ret = TRUE;
             }
@@ -4090,9 +4090,9 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
                 ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp, boost);
                 ctx->msgTemp = 2;
                 if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, FLAVOR_SWEET) == -1) {
-                    script = 207;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
                 } else {
-                    script = 198;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
                 }
                 ret = TRUE;
             }
@@ -4102,9 +4102,9 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
                 ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp, boost);
                 ctx->msgTemp = 3;
                 if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, FLAVOR_BITTER) == -1) {
-                    script = 207;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
                 } else {
-                    script = 198;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
                 }
                 ret = TRUE;
             }
@@ -4114,9 +4114,9 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
                 ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp, boost);
                 ctx->msgTemp = 4;
                 if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, FLAVOR_SOUR) == -1) {
-                    script = 207;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
                 } else {
-                    script = 198;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
                 }
                 ret = TRUE;
             }
@@ -4125,9 +4125,9 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
             if (GetBattlerAbility(ctx, battlerId) == ABILITY_GLUTTONY) {
                 boost /= 2;
             }
-            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[1] < 12) {
+            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[1] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
                 ctx->msgTemp = 1;
-                script = 208;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_STAT;
                 ret = TRUE;
             }
             break;
@@ -4135,9 +4135,9 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
             if (GetBattlerAbility(ctx, battlerId) == ABILITY_GLUTTONY) {
                 boost /= 2;
             }
-            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[2] < 12) {
+            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[2] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
                 ctx->msgTemp = 2;
-                script = 208;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_STAT;
                 ret = TRUE;
             }
             break;
@@ -4145,9 +4145,9 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
             if (GetBattlerAbility(ctx, battlerId) == ABILITY_GLUTTONY) {
                 boost /= 2;
             }
-            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[3] < 12) {
+            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[3] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
                 ctx->msgTemp = 3;
-                script = 208;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_STAT;
                 ret = TRUE;
             }
             break;
@@ -4155,9 +4155,9 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
             if (GetBattlerAbility(ctx, battlerId) == ABILITY_GLUTTONY) {
                 boost /= 2;
             }
-            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[4] < 12) {
+            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[4] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
                 ctx->msgTemp = 4;
-                script = 208;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_STAT;
                 ret = TRUE;
             }
             break;
@@ -4165,9 +4165,9 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
             if (GetBattlerAbility(ctx, battlerId) == ABILITY_GLUTTONY) {
                 boost /= 2;
             }
-            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[5] < 12) {
+            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[5] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
                 ctx->msgTemp = 5;
-                script = 208;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_STAT;
                 ret = TRUE;
             }
             break;
@@ -4176,7 +4176,7 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
                 boost /= 2;
             }
             if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && !(ctx->battleMons[battlerId].status2 & STATUS2_FOCUS_ENERGY)) {
-                script = 209;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_CRIT;
                 ret = TRUE;
             }
             break;
@@ -4187,16 +4187,16 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
             if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost) {
                 int stat;
                 for (stat = 0; stat < 5; stat++) {
-                    if (ctx->battleMons[battlerId].statChanges[1 + stat] < 12) {
+                    if (ctx->battleMons[battlerId].statChanges[1 + stat] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
                         break;
                     }
                 }
                 if (stat != 5) {
                     do {
                         stat = BattleSystem_Random(bsys) % 5;
-                    } while (ctx->battleMons[battlerId].statChanges[1 + stat] == 12);
+                    } while (ctx->battleMons[battlerId].statChanges[1 + stat] == BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE);
                     ctx->msgTemp = stat + 1;
-                    script = 210;
+                    script = BATTLE_SUBSCRIPT_HELD_ITEM_SHARPLY_RAISE_STAT;
                     ret = TRUE;
                 }
             }
@@ -4210,13 +4210,13 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
                 }
             }
             if (ret == TRUE) {
-                script = 211;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_STATDOWN_RESTORE;
             }
             break;
         case HOLD_EFFECT_HEAL_INFATUATION: //mental herb
             if (ctx->battleMons[battlerId].status2 & STATUS2_ATTRACT_ALL) {
                 ctx->msgTemp = 6;
-                script = 212;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_HEAL_INFATUATION;
                 ret = TRUE;
             }
             break;
@@ -4225,7 +4225,7 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
                 boost /= 2;
             }
             if (ctx->battleMons[battlerId].hp <= (ctx->battleMons[battlerId].maxHp / boost)) {
-                script = 265;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_TEMP_ACC_UP;
                 ret = TRUE;
             }
             break;
@@ -4256,7 +4256,7 @@ BOOL CheckItemGradualHPRestore(BattleSystem *bsys, BattleContext *ctx, int battl
         case HOLD_EFFECT_HP_RESTORE_GRADUAL: //leftovers
             if (ctx->battleMons[battlerId].hp < ctx->battleMons[battlerId].maxHp) {
                 ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp, 16);
-                script = 213;
+                script = BATTLE_SUBSCRIPT_RESTORE_A_LITTLE_HP;
                 ret = TRUE;
             }
             break;
@@ -4264,12 +4264,12 @@ BOOL CheckItemGradualHPRestore(BattleSystem *bsys, BattleContext *ctx, int battl
             if ((GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL) == TYPE_POISON || GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL) == TYPE_POISON)) {
                 if (ctx->battleMons[battlerId].hp < ctx->battleMons[battlerId].maxHp) {
                     ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp, 16);
-                    script = 213;
+                    script = BATTLE_SUBSCRIPT_RESTORE_A_LITTLE_HP;
                     ret = TRUE;
                 }
             } else if (GetBattlerAbility(ctx, battlerId) != ABILITY_MAGIC_GUARD) {
                 ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp * -1, 8);
-                script = 215;
+                script = BATTLE_SUBSCRIPT_LOSE_HP_FROM_ITEM_WITH_MESSAGE;
                 ret = TRUE;
             }
             break;
@@ -4300,44 +4300,44 @@ BOOL CheckUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId, u32
         case HOLD_EFFECT_HP_RESTORE: //oran berry, berry juice
             if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / 2) {
                 ctx->hpCalc = boost;
-                *script = 198;
+                *script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
                 ret = TRUE;
             }
             break;
         case HOLD_EFFECT_HP_PCT_RESTORE: //sitrus berry
             if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / 2) {
                 ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp * boost, 100);
-                *script = 198;
+                *script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
                 ret = TRUE;
             }
             break;
         case HOLD_EFFECT_PRZ_RESTORE: //cheri berry
             if (ctx->battleMons[battlerId].status & STATUS_PARALYSIS) {
-                *script = 199;
+                *script = BATTLE_SUBSCRIPT_HELD_ITEM_PRZ_RESTORE;
                 ret = TRUE;
             }
             break;
         case HOLD_EFFECT_SLP_RESTORE: //chesto berry
             if (ctx->battleMons[battlerId].status & STATUS_SLEEP) {
-                *script = 200;
+                *script = BATTLE_SUBSCRIPT_HELD_ITEM_SLP_RESTORE;
                 ret = TRUE;
             }
             break;
         case HOLD_EFFECT_PSN_RESTORE: //pecha berry
             if (ctx->battleMons[battlerId].status & STATUS_POISON_ALL) {
-                *script = 201;
+                *script = BATTLE_SUBSCRIPT_HELD_ITEM_PSN_RESTORE;
                 ret = TRUE;
             }
             break;
         case HOLD_EFFECT_BRN_RESTORE: //rawst berry
             if (ctx->battleMons[battlerId].status & STATUS_BURN) {
-                *script = 202;
+                *script = BATTLE_SUBSCRIPT_HELD_ITEM_BRN_RESTORE;
                 ret = TRUE;
             }
             break;
         case HOLD_EFFECT_FRZ_RESTORE: //aspear berry
             if (ctx->battleMons[battlerId].status & STATUS_FREEZE) {
-                *script = 203;
+                *script = BATTLE_SUBSCRIPT_HELD_ITEM_FRZ_RESTORE;
                 ret = TRUE;
             }
             break;
@@ -4352,38 +4352,38 @@ BOOL CheckUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId, u32
                 BattleMon_AddVar(&ctx->battleMons[battlerId], BMON_DATA_MOVE1PP + index, boost);
                 CopyBattleMonToPartyMon(bsys, ctx, battlerId);
                 ctx->moveTemp = ctx->battleMons[battlerId].moves[index];
-                *script = 204;
+                *script = BATTLE_SUBSCRIPT_HELD_ITEM_PP_RESTORE;
                 ret = TRUE;
             }
             break;
         case HOLD_EFFECT_CONFUSE_RESTORE: //persim berry
             if (ctx->battleMons[battlerId].status2 & STATUS2_CONFUSION) {
-                *script = 205;
+                *script = BATTLE_SUBSCRIPT_HELD_ITEM_CNF_RESTORE;
                 ret = TRUE;
             }
             break;
         case HOLD_EFFECT_STATUS_RESTORE: //lum berry
             if ((ctx->battleMons[battlerId].status & STATUS_ALL) || (ctx->battleMons[battlerId].status2 & STATUS2_CONFUSION)) {
                 if (ctx->battleMons[battlerId].status & STATUS_PARALYSIS) {
-                    *script = 199;
+                    *script = BATTLE_SUBSCRIPT_HELD_ITEM_PRZ_RESTORE;
                 }
                 if (ctx->battleMons[battlerId].status & STATUS_SLEEP) {
-                    *script = 200;
+                    *script = BATTLE_SUBSCRIPT_HELD_ITEM_SLP_RESTORE;
                 }
                 if (ctx->battleMons[battlerId].status & STATUS_POISON_ALL) {
-                    *script = 201;
+                    *script = BATTLE_SUBSCRIPT_HELD_ITEM_PSN_RESTORE;
                 }
                 if (ctx->battleMons[battlerId].status & STATUS_BURN) {
-                    *script = 202;
+                    *script = BATTLE_SUBSCRIPT_HELD_ITEM_BRN_RESTORE;
                 }
                 if (ctx->battleMons[battlerId].status & STATUS_FREEZE) {
-                    *script = 203;
+                    *script = BATTLE_SUBSCRIPT_HELD_ITEM_FRZ_RESTORE;
                 }
                 if (ctx->battleMons[battlerId].status2 & STATUS2_CONFUSION) {
-                    *script = 205;
+                    *script = BATTLE_SUBSCRIPT_HELD_ITEM_CNF_RESTORE;
                 }
                 if ((ctx->battleMons[battlerId].status & STATUS_ALL) && (ctx->battleMons[battlerId].status2 & STATUS2_CONFUSION)) {
-                    *script = 206;
+                    *script = BATTLE_SUBSCRIPT_HELD_ITEM_MULTI_RESTORE;
                 }
                 ret = TRUE;
             }
@@ -4397,13 +4397,13 @@ BOOL CheckUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId, u32
                 }
             }
             if (ret == TRUE) {
-                *script = 211;
+                *script = BATTLE_SUBSCRIPT_HELD_ITEM_STATDOWN_RESTORE;
             }
             break;
         case HOLD_EFFECT_HEAL_INFATUATION: //mental herb
             if (ctx->battleMons[battlerId].status2 & STATUS2_ATTRACT_ALL) {
                 ctx->msgTemp = 6;
-                *script = 212;
+                *script = BATTLE_SUBSCRIPT_HELD_ITEM_HEAL_INFATUATION;
                 ret = TRUE;
             }
             break;
@@ -4412,7 +4412,7 @@ BOOL CheckUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId, u32
                 boost /= 2;
             }
             if (ctx->battleMons[battlerId].hp <= (ctx->battleMons[battlerId].maxHp / boost)) {
-                *script = 265;
+                *script = BATTLE_SUBSCRIPT_HELD_ITEM_TEMP_ACC_UP;
                 ret = TRUE;
             }
             break;
@@ -4445,9 +4445,9 @@ BOOL CheckUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId, u32
                 ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp, boost);
                 ctx->msgTemp = 2;
                 if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, FLAVOR_SWEET) == -1) {
-                    *script = 207;
+                    *script = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
                 } else {
-                    *script = 198;
+                    *script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
                 }
                 ret = TRUE;
             }
@@ -4457,9 +4457,9 @@ BOOL CheckUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId, u32
                 ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp, boost);
                 ctx->msgTemp = 3;
                 if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, FLAVOR_BITTER) == -1) {
-                    *script = 207;
+                    *script = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
                 } else {
-                    *script = 198;
+                    *script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
                 }
                 ret = TRUE;
             }
@@ -4469,9 +4469,9 @@ BOOL CheckUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId, u32
                 ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp, boost);
                 ctx->msgTemp = 4;
                 if (GetFlavorPreferenceFromPID(ctx->battleMons[battlerId].personality, FLAVOR_SOUR) == -1) {
-                    *script = 207;
+                    *script = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
                 } else {
-                    *script = 198;
+                    *script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
                 }
                 ret = TRUE;
             }
@@ -4480,9 +4480,9 @@ BOOL CheckUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId, u32
             if (GetBattlerAbility(ctx, battlerId) == ABILITY_GLUTTONY) {
                 boost /= 2;
             }
-            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[1] < 12) {
+            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[1] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
                 ctx->msgTemp = 1;
-                *script = 208;
+                *script = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_STAT;
                 ret = TRUE;
             }
             break;
@@ -4490,9 +4490,9 @@ BOOL CheckUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId, u32
             if (GetBattlerAbility(ctx, battlerId) == ABILITY_GLUTTONY) {
                 boost /= 2;
             }
-            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[2] < 12) {
+            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[2] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
                 ctx->msgTemp = 2;
-                *script = 208;
+                *script = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_STAT;
                 ret = TRUE;
             }
             break;
@@ -4500,9 +4500,9 @@ BOOL CheckUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId, u32
             if (GetBattlerAbility(ctx, battlerId) == ABILITY_GLUTTONY) {
                 boost /= 2;
             }
-            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[3] < 12) {
+            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[3] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
                 ctx->msgTemp = 3;
-                *script = 208;
+                *script = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_STAT;
                 ret = TRUE;
             }
             break;
@@ -4510,9 +4510,9 @@ BOOL CheckUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId, u32
             if (GetBattlerAbility(ctx, battlerId) == ABILITY_GLUTTONY) {
                 boost /= 2;
             }
-            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[4] < 12) {
+            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[4] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
                 ctx->msgTemp = 4;
-                *script = 208;
+                *script = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_STAT;
                 ret = TRUE;
             }
             break;
@@ -4520,9 +4520,9 @@ BOOL CheckUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId, u32
             if (GetBattlerAbility(ctx, battlerId) == ABILITY_GLUTTONY) {
                 boost /= 2;
             }
-            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[5] < 12) {
+            if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && ctx->battleMons[battlerId].statChanges[5] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
                 ctx->msgTemp = 5;
-                *script = 208;
+                *script = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_STAT;
                 ret = TRUE;
             }
             break;
@@ -4531,7 +4531,7 @@ BOOL CheckUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId, u32
                 boost /= 2;
             }
             if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost && !(ctx->battleMons[battlerId].status2 & STATUS2_FOCUS_ENERGY)) {
-                *script = 209;
+                *script = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_CRIT;
                 ret = TRUE;
             }
             break;
@@ -4542,16 +4542,16 @@ BOOL CheckUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId, u32
             if (ctx->battleMons[battlerId].hp <= ctx->battleMons[battlerId].maxHp / boost) {
                 int stat;
                 for (stat = 0; stat < 5; stat++) {
-                    if (ctx->battleMons[battlerId].statChanges[1 + stat] < 12) {
+                    if (ctx->battleMons[battlerId].statChanges[1 + stat] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
                         break;
                     }
                 }
                 if (stat != 5) {
                     do {
                         stat = BattleSystem_Random(bsys) % 5;
-                    } while (ctx->battleMons[battlerId].statChanges[1 + stat] == 12);
+                    } while (ctx->battleMons[battlerId].statChanges[1 + stat] == BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE);
                     ctx->msgTemp = stat + 1;
-                    *script = 210;
+                    *script = BATTLE_SUBSCRIPT_HELD_ITEM_SHARPLY_RAISE_STAT;
                     ret = TRUE;
                 }
             }
@@ -4578,19 +4578,19 @@ BOOL TryHeldItemNegativeEffect(BattleSystem *bsys, BattleContext *ctx, int battl
         case HOLD_EFFECT_PSN_USER: //toxic orb
             ctx->battlerIdStatChange = battlerId;
             ctx->statChangeType = 5;
-            script = 47;
+            script = BATTLE_SUBSCRIPT_BADLY_POISON;
             ret = TRUE;
             break;
         case HOLD_EFFECT_BRN_USER: //flame orb
             ctx->battlerIdStatChange = battlerId;
             ctx->statChangeType = 5;
-            script = 25;
+            script = BATTLE_SUBSCRIPT_BURN;
             ret = TRUE;
             break;
         case HOLD_EFFECT_DMG_USER_CONTACT_XFR: //sticky barb
             if (GetBattlerAbility(ctx, battlerId) != ABILITY_MAGIC_GUARD) {
                 ctx->hpCalc = DamageDivide(ctx->battleMons[battlerId].maxHp * -1, boost);
-                script = 215;
+                script = BATTLE_SUBSCRIPT_LOSE_HP_FROM_ITEM_WITH_MESSAGE;
                 ret = TRUE;
             }
             break;
@@ -4649,7 +4649,7 @@ BOOL CheckItemEffectOnHit(BattleSystem *bsys, BattleContext *ctx, int *script) {
             (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) &&
             !(ctx->battleStatus2 & BATTLE_STATUS2_4) &&
             (ctx->trainerAIData.moveData[ctx->moveNoCur].unkB & 1)) {
-            *script = 216;
+            *script = BATTLE_SUBSCRIPT_TRANSFER_STICKY_BARB;
             ret = TRUE;
         }
         break;
@@ -4659,7 +4659,7 @@ BOOL CheckItemEffectOnHit(BattleSystem *bsys, BattleContext *ctx, int *script) {
             !(ctx->battleStatus2 & BATTLE_STATUS2_4) &&
             ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage) {
             ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp * -1, boost);
-            *script = 266;
+            *script = BATTLE_SUBSCRIPT_HELD_ITEM_RECOIL_WHEN_HIT;
             ret = TRUE;
         }
         break;
@@ -4668,14 +4668,14 @@ BOOL CheckItemEffectOnHit(BattleSystem *bsys, BattleContext *ctx, int *script) {
             GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_MAGIC_GUARD &&
             ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) {
             ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp * -1, boost);
-            *script = 266;
+            *script = BATTLE_SUBSCRIPT_HELD_ITEM_RECOIL_WHEN_HIT;
             ret = TRUE;
         }
         break;
     case HOLD_EFFECT_HP_RESTORE_SE: //enigma berry
         if (ctx->battleMons[ctx->battlerIdTarget].hp && (ctx->moveStatusFlag & MOVE_STATUS_SUPER_EFFECTIVE)) {
             ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdTarget].maxHp, boost);
-            *script = 198;
+            *script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
             ctx->battlerIdTemp = ctx->battlerIdTarget;
             ctx->itemTemp = ctx->battleMons[ctx->battlerIdTarget].item;
             ret = TRUE;
@@ -4773,7 +4773,7 @@ BOOL BattlerCanSwitch(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
 
 BOOL TryEatOpponentBerry(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
     BOOL ret = FALSE;
-    int script = 0;
+    int script = BATTLE_SUBSCRIPT_NONE;
     int item = GetHeldItemStealBerryEffect(ctx, battlerId);
     int mod = GetHeldItemModifier(ctx, battlerId, 1);
     
@@ -4785,44 +4785,44 @@ BOOL TryEatOpponentBerry(BattleSystem *bsys, BattleContext *ctx, int battlerId) 
     case STEAL_EFFECT_RESTORE_HP: //oran berry
         if (ctx->battleMons[ctx->battlerIdAttacker].hp != ctx->battleMons[ctx->battlerIdAttacker].maxHp) {
             ctx->hpCalc = mod;
-            script = 198;
+            script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
         }
         ret = TRUE;
         break;
     case STEAL_EFFECT_RESTORE_HP_PRCT: //sitrus berry
         if (ctx->battleMons[ctx->battlerIdAttacker].hp != ctx->battleMons[ctx->battlerIdAttacker].maxHp) {
             ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp * mod, 100);
-            script = 198;
+            script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
         }
         ret = TRUE;
         break;
     case STEAL_EFFECT_CURE_PARALYSIS: //cheri berry
         if (ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_PARALYSIS) {
-            script = 199;
+            script = BATTLE_SUBSCRIPT_HELD_ITEM_PRZ_RESTORE;
         }
         ret = TRUE;
         break;
     case STEAL_EFFECT_CURE_SLEEP: //chesto berry
         if (ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_SLEEP) {
-            script = 200;
+            script = BATTLE_SUBSCRIPT_HELD_ITEM_SLP_RESTORE;
         }
         ret = TRUE;
         break;
     case STEAL_EFFECT_CURE_POISON: //pecha berry
         if (ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_POISON_ALL) {
-            script = 201;
+            script = BATTLE_SUBSCRIPT_HELD_ITEM_PSN_RESTORE;
         }
         ret = TRUE;
         break;
     case STEAL_EFFECT_CURE_BURN: //rawst berry
         if (ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_BURN) {
-            script = 202;
+            script = BATTLE_SUBSCRIPT_HELD_ITEM_BRN_RESTORE;
         }
         ret = TRUE;
         break;
     case STEAL_EFFECT_CURE_FREEZE: //aspear berry
         if (ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_FREEZE) {
-            script = 203;
+            script = BATTLE_SUBSCRIPT_HELD_ITEM_FRZ_RESTORE;
         }
         ret = TRUE;
         break;
@@ -4844,38 +4844,38 @@ BOOL TryEatOpponentBerry(BattleSystem *bsys, BattleContext *ctx, int battlerId) 
         BattleMon_AddVar(&ctx->battleMons[ctx->battlerIdAttacker], BMON_DATA_MOVE1PP + maxIndex, mod);
         CopyBattleMonToPartyMon(bsys, ctx, ctx->battlerIdAttacker);
         ctx->moveTemp = ctx->battleMons[ctx->battlerIdAttacker].moves[maxIndex];
-        script = 204;
+        script = BATTLE_SUBSCRIPT_HELD_ITEM_PP_RESTORE;
         
         ret = TRUE;
         break;
     case STEAL_EFFECT_CURE_CONFUSION: //persim berry
         if (ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_CONFUSION) {
-            script = 205;
+            script = BATTLE_SUBSCRIPT_HELD_ITEM_CNF_RESTORE;
         }
         ret = TRUE;
         break;
     case STEAL_EFFECT_CURE_ALL: //lum berry
         if ((ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_ALL) || (ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_CONFUSION)) {
             if (ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_PARALYSIS) {
-                script = 199;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_PRZ_RESTORE;
             }
             if (ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_SLEEP) {
-                script = 200;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_SLP_RESTORE;
             }
             if (ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_POISON_ALL) {
-                script = 201;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_PSN_RESTORE;
             }
             if (ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_BURN) {
-                script = 202;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_BRN_RESTORE;
             }
             if (ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_FREEZE) {
-                script = 203;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_FRZ_RESTORE;
             }
             if (ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_CONFUSION) {
-                script = 205;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_CNF_RESTORE;
             }
             if ((ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_ALL) && (ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_CONFUSION)) {
-                script = 206;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_MULTI_RESTORE;
             }
         }
         ret = TRUE;
@@ -4885,9 +4885,9 @@ BOOL TryEatOpponentBerry(BattleSystem *bsys, BattleContext *ctx, int battlerId) 
             ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp, mod);
             ctx->msgTemp = 0;
             if (GetFlavorPreferenceFromPID(ctx->battleMons[ctx->battlerIdAttacker].personality, FLAVOR_SPICY) == -1) {
-                script = 207;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
             } else {
-                script = 198;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
             }
         }
         ret = TRUE;
@@ -4897,9 +4897,9 @@ BOOL TryEatOpponentBerry(BattleSystem *bsys, BattleContext *ctx, int battlerId) 
             ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp, mod);
             ctx->msgTemp = 1;
             if (GetFlavorPreferenceFromPID(ctx->battleMons[ctx->battlerIdAttacker].personality, FLAVOR_DRY) == -1) {
-                script = 207;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
             } else {
-                script = 198;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
             }    
         }
         ret = TRUE;
@@ -4909,9 +4909,9 @@ BOOL TryEatOpponentBerry(BattleSystem *bsys, BattleContext *ctx, int battlerId) 
             ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp, mod);
             ctx->msgTemp = 2;
             if (GetFlavorPreferenceFromPID(ctx->battleMons[ctx->battlerIdAttacker].personality, FLAVOR_SWEET) == -1) {
-                script = 207;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
             } else {
-                script = 198;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
             }
         }
         ret = TRUE;
@@ -4921,9 +4921,9 @@ BOOL TryEatOpponentBerry(BattleSystem *bsys, BattleContext *ctx, int battlerId) 
             ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp, mod);
             ctx->msgTemp = 3;
             if (GetFlavorPreferenceFromPID(ctx->battleMons[ctx->battlerIdAttacker].personality, FLAVOR_BITTER) == -1) {
-                script = 207;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
             } else {
-                script = 198;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
             }
         }
         ret = TRUE;
@@ -4933,72 +4933,72 @@ BOOL TryEatOpponentBerry(BattleSystem *bsys, BattleContext *ctx, int battlerId) 
             ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp, mod);
             ctx->msgTemp = 4;
             if (GetFlavorPreferenceFromPID(ctx->battleMons[ctx->battlerIdAttacker].personality, FLAVOR_SOUR) == -1) {
-                script = 207;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_DISLIKE_FLAVOR;
             } else {
-                script = 198;
+                script = BATTLE_SUBSCRIPT_HELD_ITEM_HP_RESTORE;
             }
         }
         ret = TRUE;
         break;
     case STEAL_EFFECT_ATK_UP: //liechi berry
-        if (ctx->battleMons[ctx->battlerIdAttacker].statChanges[1] < 12) {
+        if (ctx->battleMons[ctx->battlerIdAttacker].statChanges[1] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
             ctx->msgTemp = 1;
-            script = 208;
+            script = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_STAT;
         }
         ret = TRUE;
         break;
     case STEAL_EFFECT_DEF_UP: //ganlon berry
-        if (ctx->battleMons[ctx->battlerIdAttacker].statChanges[2] < 12) {
+        if (ctx->battleMons[ctx->battlerIdAttacker].statChanges[2] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
             ctx->msgTemp = 2;
-            script = 208;
+            script = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_STAT;
         }
         ret = TRUE;
         break;
     case STEAL_EFFECT_SPEED_UP: //salac berry
-        if (ctx->battleMons[ctx->battlerIdAttacker].statChanges[3] < 12) {
+        if (ctx->battleMons[ctx->battlerIdAttacker].statChanges[3] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
             ctx->msgTemp = 3;
-            script = 208;
+            script = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_STAT;
         }
         ret = TRUE;
         break;
     case STEAL_EFFECT_SPATK_UP: //petaya berry
-        if (ctx->battleMons[ctx->battlerIdAttacker].statChanges[4] < 12) {
+        if (ctx->battleMons[ctx->battlerIdAttacker].statChanges[4] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
             ctx->msgTemp = 4;
-            script = 208;
+            script = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_STAT;
         }
         ret = TRUE;
         break;
     case STEAL_EFFECT_SPDEF_UP: //apicot berry
-        if (ctx->battleMons[ctx->battlerIdAttacker].statChanges[5] < 12) {
+        if (ctx->battleMons[ctx->battlerIdAttacker].statChanges[5] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
             ctx->msgTemp = 5;
-            script = 208;
+            script = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_STAT;
         }
         ret = TRUE;
         break;
     case STEAL_EFFECT_RANDOM_UP: //starf berry
         int stat;
         for (stat = 0; stat < 5; stat++) {
-            if (ctx->battleMons[ctx->battlerIdAttacker].statChanges[1 + stat] < 12) {
+            if (ctx->battleMons[ctx->battlerIdAttacker].statChanges[1 + stat] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
                 break;
             }
         }
         if (stat != 5) {
             do {
                 stat = BattleSystem_Random(bsys) % 5;
-            } while (ctx->battleMons[ctx->battlerIdAttacker].statChanges[1 + stat] == 12);
+            } while (ctx->battleMons[ctx->battlerIdAttacker].statChanges[1 + stat] == BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE);
             ctx->msgTemp = stat + 1;
-            script = 210;
+            script = BATTLE_SUBSCRIPT_HELD_ITEM_SHARPLY_RAISE_STAT;
         }
         ret = TRUE;
         break;
     case STEAL_EFFECT_CRITRATE_UP: //apicot berry
         if (!(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_FOCUS_ENERGY)) {
-            script = 209;
+            script = BATTLE_SUBSCRIPT_HELD_ITEM_RAISE_CRIT;
         }
         ret = TRUE;
         break;
     case STEAL_EFFECT_ACC_UP: //micle berry
-        script = 265;
+        script = BATTLE_SUBSCRIPT_HELD_ITEM_TEMP_ACC_UP;
         ret = TRUE;
         break;
     default:
@@ -5205,31 +5205,31 @@ BOOL TryFling(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
         ctx->flingScript = 25;
         break;
     case STEAL_EFFECT_ATK_UP: //liechi berry
-        if (ctx->battleMons[ctx->battlerIdTarget].statChanges[1] < 12) {
+        if (ctx->battleMons[ctx->battlerIdTarget].statChanges[1] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
             ctx->msgTemp = 1;
             ctx->flingScript = 208;
         }
         break;
     case STEAL_EFFECT_DEF_UP: //ganlon berry
-        if (ctx->battleMons[ctx->battlerIdTarget].statChanges[2] < 12) {
+        if (ctx->battleMons[ctx->battlerIdTarget].statChanges[2] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
             ctx->msgTemp = 2;
             ctx->flingScript = 208;
         }
         break;
     case STEAL_EFFECT_SPEED_UP: //salac berry
-        if (ctx->battleMons[ctx->battlerIdTarget].statChanges[3] < 12) {
+        if (ctx->battleMons[ctx->battlerIdTarget].statChanges[3] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
             ctx->msgTemp = 3;
             ctx->flingScript = 208;
         }
         break;
     case STEAL_EFFECT_SPATK_UP: //petaya berry
-        if (ctx->battleMons[ctx->battlerIdTarget].statChanges[4] < 12) {
+        if (ctx->battleMons[ctx->battlerIdTarget].statChanges[4] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
             ctx->msgTemp = 4;
             ctx->flingScript = 208;
         }
         break;
     case STEAL_EFFECT_SPDEF_UP: //apicot berry
-        if (ctx->battleMons[ctx->battlerIdTarget].statChanges[5] < 12) {
+        if (ctx->battleMons[ctx->battlerIdTarget].statChanges[5] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
             ctx->msgTemp = 5;
             ctx->flingScript = 208;
         }
@@ -5237,14 +5237,14 @@ BOOL TryFling(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
     case STEAL_EFFECT_RANDOM_UP: //starf berry
         int stat;
         for (stat = 0; stat < 5; stat++) {
-            if (ctx->battleMons[ctx->battlerIdTarget].statChanges[1 + stat] < 12) {
+            if (ctx->battleMons[ctx->battlerIdTarget].statChanges[1 + stat] < BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE) {
                 break;
             }
         }
         if (stat != 5) {
             do {
                 stat = BattleSystem_Random(bsys) % 5;
-            } while (ctx->battleMons[ctx->battlerIdTarget].statChanges[1 + stat] == 12);
+            } while (ctx->battleMons[ctx->battlerIdTarget].statChanges[1 + stat] == BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE);
             ctx->msgTemp = stat + 1;
             ctx->flingScript = 210;
         }
@@ -5428,7 +5428,7 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BattleContext *ctx, int 
                     ctx->battleMons[ctx->battlerIdTemp].type1 = TYPE_NORMAL;
                     ctx->battleMons[ctx->battlerIdTemp].type2 = TYPE_NORMAL;
                     ctx->battleMons[ctx->battlerIdTemp].form = (u8) CASTFORM_NORMAL;
-                    *script = 262;
+                    *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                     ret = TRUE;
                     break;
                 } else if ((ctx->fieldCondition & FIELD_CONDITION_SUN_ALL) &&
@@ -5437,7 +5437,7 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BattleContext *ctx, int 
                     ctx->battleMons[ctx->battlerIdTemp].type1 = TYPE_FIRE;
                     ctx->battleMons[ctx->battlerIdTemp].type2 = TYPE_FIRE;
                     ctx->battleMons[ctx->battlerIdTemp].form = (u8) CASTFORM_SUNNY;
-                    *script = 262;
+                    *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                     ret = TRUE;
                     break;
                 } else if ((ctx->fieldCondition & FIELD_CONDITION_RAIN_ALL) &&
@@ -5446,7 +5446,7 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BattleContext *ctx, int 
                         ctx->battleMons[ctx->battlerIdTemp].type1 = TYPE_WATER;
                         ctx->battleMons[ctx->battlerIdTemp].type2 = TYPE_WATER;
                         ctx->battleMons[ctx->battlerIdTemp].form = (u8) CASTFORM_RAINY;
-                        *script = 262;
+                        *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                         ret = TRUE;
                         break;
                 } else if ((ctx->fieldCondition & FIELD_CONDITION_HAIL_ALL) &&
@@ -5455,7 +5455,7 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BattleContext *ctx, int 
                         ctx->battleMons[ctx->battlerIdTemp].type1 = TYPE_ICE;
                         ctx->battleMons[ctx->battlerIdTemp].type2 = TYPE_ICE;
                         ctx->battleMons[ctx->battlerIdTemp].form = (u8) CASTFORM_SNOWY;
-                        *script = 262;
+                        *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                         ret = TRUE;
                         break;
                 }
@@ -5464,7 +5464,7 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BattleContext *ctx, int 
                        ctx->battleMons[ctx->battlerIdTemp].type1 = TYPE_NORMAL;
                        ctx->battleMons[ctx->battlerIdTemp].type2 = TYPE_NORMAL;
                        ctx->battleMons[ctx->battlerIdTemp].form = (u8) CASTFORM_NORMAL;
-                        *script = 262;
+                        *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                         ret = TRUE;
                         break;
             }
@@ -5473,28 +5473,28 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BattleContext *ctx, int 
             if (!CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) && !CheckAbilityActive(bsys, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)) {
                 if (!(ctx->fieldCondition & FIELD_CONDITION_WEATHER_CASTFORM) && ctx->battleMons[ctx->battlerIdTemp].form == (u8) CHERRIM_SUNNY) {
                     ctx->battleMons[ctx->battlerIdTemp].form = (u8) CHERRIM_CLOUDY;
-                    *script = 262;
+                    *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                     ret = TRUE;
                     break;
                 } else if ((ctx->fieldCondition & FIELD_CONDITION_SUN_ALL) && ctx->battleMons[ctx->battlerIdTemp].form == (u8) CHERRIM_CLOUDY) {
                     ctx->battleMons[ctx->battlerIdTemp].form = (u8) CHERRIM_SUNNY;
-                    *script = 262;
+                    *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                     ret = TRUE;
                     break;
                 } else if ((ctx->fieldCondition & FIELD_CONDITION_RAIN_ALL) && ctx->battleMons[ctx->battlerIdTemp].form == (u8) CHERRIM_SUNNY) {
                     ctx->battleMons[ctx->battlerIdTemp].form = (u8) CHERRIM_CLOUDY;
-                    *script = 262;
+                    *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                     ret = TRUE;
                     break;
                 } else if ((ctx->fieldCondition & FIELD_CONDITION_HAIL_ALL) && ctx->battleMons[ctx->battlerIdTemp].form == (u8) CHERRIM_SUNNY) {
                     ctx->battleMons[ctx->battlerIdTemp].form = (u8) CHERRIM_CLOUDY;
-                    *script = 262;
+                    *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                     ret = TRUE;
                     break;
                 }
             } else if (ctx->battleMons[ctx->battlerIdTemp].form == (u8) CHERRIM_SUNNY) {
                 ctx->battleMons[ctx->battlerIdTemp].form = (u8) CHERRIM_CLOUDY;
-                *script = 262;
+                *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                 ret = TRUE;
                 break;
             }
@@ -5505,7 +5505,7 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BattleContext *ctx, int 
             form = GetArceusTypeByHeldItemEffect(GetItemAttr(ctx->battleMons[ctx->battlerIdTemp].item, ITEMATTR_HOLD_EFFECT, HEAP_ID_BATTLE));
             if (ctx->battleMons[ctx->battlerIdTemp].form != form) {
                 ctx->battleMons[ctx->battlerIdTemp].form = form;
-                *script = 262;
+                *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                 ret = TRUE;
                 break;
             }
@@ -5543,11 +5543,11 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BattleContext *ctx, int 
                     ctx->battleStatus2 |= BATTLE_STATUS2_26;
                     BattleController_EmitBattleMonToPartyMonCopy(bsys, ctx, ctx->battlerIdTemp);
                     FreeToHeap(mon2);
-                    *script = 262;
+                    *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                     ret = TRUE;
                     break;
                 } else {
-                    *script = 296;
+                    *script = BATTLE_SUBSCRIPT_GIRATINA_FORM_CHANGE;
                     ret = TRUE;
                     break;
                 }
@@ -5956,7 +5956,7 @@ int CalcMoveDamage(BattleSystem *bsys, BattleContext *ctx, u32 moveNo, u32 sideC
     
     for (i = 0; i < NELEMS(sPunchingMoves); i++) {
         if (sPunchingMoves[i] == moveNo && calcAttacker.ability == ABILITY_IRON_FIST) {
-            movePower = movePower * 12 / 10;
+            movePower = movePower * BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE / 10;
             break;
         }
     }
@@ -6339,7 +6339,7 @@ BOOL CheckItemEffectOnUTurn(BattleSystem *bsys, BattleContext *ctx, int *script)
         ctx->battleMons[ctx->battlerIdAttacker].hp) {
         ctx->hpCalc = DamageDivide(ctx->selfTurnData[ctx->battlerIdAttacker].shellBellDamage * -1, modAttacker);
         ctx->battlerIdTemp = ctx->battlerIdAttacker;
-        *script = 213;
+        *script = BATTLE_SUBSCRIPT_RESTORE_A_LITTLE_HP;
         ret = TRUE;
     }
     
@@ -6350,7 +6350,7 @@ BOOL CheckItemEffectOnUTurn(BattleSystem *bsys, BattleContext *ctx, int *script)
         ctx->battleMons[ctx->battlerIdAttacker].hp) {
         ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp * -1, 10);
         ctx->battlerIdTemp = ctx->battlerIdAttacker;
-        *script = 214;
+        *script = BATTLE_SUBSCRIPT_LOSE_HP_FROM_ITEM;
         ret = TRUE;
     }
     
@@ -6359,7 +6359,7 @@ BOOL CheckItemEffectOnUTurn(BattleSystem *bsys, BattleContext *ctx, int *script)
         GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_MAGIC_GUARD &&
         ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage) {
         ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp * -1, modTarget);
-        *script = 266;
+        *script = BATTLE_SUBSCRIPT_HELD_ITEM_RECOIL_WHEN_HIT;
         ret = TRUE;
     }
     
@@ -6369,7 +6369,7 @@ BOOL CheckItemEffectOnUTurn(BattleSystem *bsys, BattleContext *ctx, int *script)
         !(ctx->fieldSideConditionData[side].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[ctx->battlerIdAttacker])) &&
         (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) &&
         (ctx->trainerAIData.moveData[ctx->moveNoCur].unkB & 1)) {
-        *script = 216;
+        *script = BATTLE_SUBSCRIPT_TRANSFER_STICKY_BARB;
         ret = TRUE;
     }
     
@@ -6416,7 +6416,7 @@ int ov12_022581D4(BattleSystem *bsys, BattleContext *ctx, int var, int battlerId
         return ctx->switchInFlag;
     case 11:
         return ctx->trainerAIData.unkA4[battlerId];
-    case 12:
+    case BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE:
         return ctx->playerActions[battlerId].unk8;
     case 13:
         return (int) ctx->command;
@@ -6453,155 +6453,155 @@ void ov12_022582B8(BattleSystem *bsys, BattleContext *ctx, int var, int battlerI
     }
 }
 
-static const int ov12_0226CDCC[145] = {
-    0,
-    18, 
-    22, 
-    25, 
-    27,
-    31, 
-    47, 
-    37, 
-    14,
-    55, 
-    56, 
-    48, 
-    13,
-    58, 
-    63, 
-    12, 
-    12,
-    12, 
-    12, 
-    12, 
-    12,
-    12, 
-    12, 
-    12, 
-    12,
-    12, 
-    12, 
-    12, 
-    12,
-    64, 
-    66, 
-    85, 
-    86,
-    93, 
-    119, 
-    115, 
-    130,
-    138, 
-    147, 
-    12, 
-    12,
-    12, 
-    12, 
-    12, 
-    12,
-    12, 
-    12, 
-    12, 
-    12,
-    12, 
-    12, 
-    12, 
-    12,
-    44, 
-    142, 
-    149, 
-    150,
-    148, 
-    151, 
-    152, 
-    24,
-    33, 
-    34, 
-    35, 
-    43,
-    45, 
-    46, 
-    49, 
-    52,
-    54, 
-    62, 
-    67, 
-    68,
-    70, 
-    73, 
-    77, 
-    78,
-    79, 
-    80, 
-    81, 
-    82,
-    84, 
-    87, 
-    88, 
-    89,
-    91, 
-    92, 
-    95, 
-    96,
-    97, 
-    126, 
-    100, 
-    101,
-    103, 
-    105, 
-    106, 
-    109,
-    112, 
-    113, 
-    114, 
-    120,
-    122, 
-    123, 
-    124, 
-    125,
-    127, 
-    128, 
-    129, 
-    131,
-    132, 
-    134, 
-    135, 
-    140,
-    141, 
-    143, 
-    145, 
-    154,
-    155, 
-    156, 
-    158, 
-    159,
-    160, 
-    161, 
-    162, 
-    163,
-    164, 
-    165, 
-    166, 
-    167,
-    168, 
-    170, 
-    171, 
-    173,
-    175, 
-    218, 
-    219, 
-    220,
-    226, 
-    246, 
-    247, 
-    248,
-    249, 
-    260, 
-    261, 
-    118
+static const int sMoveStatusChangeScripts[145] = {
+    BATTLE_SUBSCRIPT_NONE,
+    BATTLE_SUBSCRIPT_FALL_ASLEEP, 
+    BATTLE_SUBSCRIPT_POISON, 
+    BATTLE_SUBSCRIPT_BURN, 
+    BATTLE_SUBSCRIPT_FREEZE,
+    BATTLE_SUBSCRIPT_PARALYZE, 
+    BATTLE_SUBSCRIPT_BADLY_POISON, 
+    BATTLE_SUBSCRIPT_CONFUSE, 
+    BATTLE_SUBSCRIPT_FLINCH_MON,
+    BATTLE_SUBSCRIPT_REST, 
+    BATTLE_SUBSCRIPT_UPROAR, 
+    BATTLE_SUBSCRIPT_PAY_DAY, 
+    BATTLE_SUBSCRIPT_VANISH_ON_CHARGE_TURN,
+    BATTLE_SUBSCRIPT_BIND_START, 
+    BATTLE_SUBSCRIPT_RECOIL_1_4, 
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE, 
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE,
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE, 
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE, 
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE, 
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE,
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE, 
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE, 
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE, 
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE,
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE, 
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE, 
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE, 
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE,
+    BATTLE_SUBSCRIPT_RECHARGE_TURN, 
+    BATTLE_SUBSCRIPT_SET_RAGE_FLAG, 
+    BATTLE_SUBSCRIPT_STEAL_ITEM, 
+    BATTLE_SUBSCRIPT_MEAN_LOOK,
+    BATTLE_SUBSCRIPT_NIGHTMARE_START, 
+    BATTLE_SUBSCRIPT_BOOST_ALL_STATS, 
+    BATTLE_SUBSCRIPT_RAPID_SPIN, 
+    BATTLE_SUBSCRIPT_HEAL_TARGET_PARALYSIS,
+    BATTLE_SUBSCRIPT_USER_ATK_AND_DEF_DOWN_1_STAGE, 
+    BATTLE_SUBSCRIPT_RECOIL_1_3, 
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE, 
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE,
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE, 
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE, 
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE, 
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE,
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE, 
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE, 
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE, 
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE,
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE, 
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE, 
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE, 
+    BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE,
+    BATTLE_SUBSCRIPT_THRASH, 
+    BATTLE_SUBSCRIPT_KNOCK_OFF, 
+    BATTLE_SUBSCRIPT_USER_DEF_AND_SPDEF_UP_1_STAGE, 
+    BATTLE_SUBSCRIPT_USER_ATK_AND_DEF_UP_1_STAGE,
+    BATTLE_SUBSCRIPT_TARGET_ATK_AND_DEF_DOWN_1_STAGE, 
+    BATTLE_SUBSCRIPT_USER_SPATK_AND_SPDEF_UP_1_STAGE, 
+    BATTLE_SUBSCRIPT_USER_ATK_AND_SPEED_UP_1_STAGE, 
+    BATTLE_SUBSCRIPT_DRAIN_HALF_DAMAGE_DEALT,
+    BATTLE_SUBSCRIPT_DREAM_EATER, 
+    BATTLE_SUBSCRIPT_RESET_ALL_STAT_STAGES, 
+    BATTLE_SUBSCRIPT_BIDE_START, 
+    BATTLE_SUBSCRIPT_STRUGGLE,
+    BATTLE_SUBSCRIPT_CONVERSION, 
+    BATTLE_SUBSCRIPT_RECOVER_HALF_MAX_HP, 
+    BATTLE_SUBSCRIPT_LIGHT_SCREEN, 
+    BATTLE_SUBSCRIPT_REFLECT,
+    BATTLE_SUBSCRIPT_MIST, 
+    BATTLE_SUBSCRIPT_FOCUS_ENERGY, 
+    BATTLE_SUSBEQ_MIMIC, 
+    BATTLE_SUBSCRIPT_LEECH_SEED_START,
+    BATTLE_SUBSCRIPT_DISABLE_START, 
+    BATTLE_SUBSCRIPT_ENCORE_START, 
+    BATTLE_SUBSCRIPT_PAIN_SPLIT, 
+    BATTLE_SUBSCRIPT_CONVERSION_2,
+    BATTLE_SUBSCRIPT_LOCK_ON, 
+    BATTLE_SUBSCRIPT_SKETCH, 
+    BATTLE_SUBSCRIPT_FEINT, 
+    BATTLE_SUBSCRIPT_DESTINY_BOND,
+    BATTLE_SUBSCRIPT_REDUCE_TARGET_PP, 
+    BATTLE_SUBSCRIPT_PROTECT, 
+    BATTLE_SUBSCRIPT_HEAL_BELL, 
+    BATTLE_SUBSCRIPT_TRY_SUBSTITUTE,
+    BATTLE_SUBSCRIPT_FORCE_TARGET_TO_SWITCH_OR_FLEE, 
+    BATTLE_SUSBEQ_TRANSFORM_INTO_TARGET, 
+    BATTLE_SUBSCRIPT_MINIMIZE, 
+    BATTLE_SUBSCRIPT_CURSE_NORMAL,
+    BATTLE_SUBSCRIPT_CURSE_GHOST, 
+    BATTLE_SUBSCRIPT_PRINT_MESSAGE_AND_PLAY_ANIMATION, 
+    BATTLE_SUBSCRIPT_FORESIGHT, 
+    BATTLE_SUBSCRIPT_PERISH_SONG_START,
+    BATTLE_SUBSCRIPT_WEATHER_START, 
+    BATTLE_SUBSCRIPT_SWAGGER, 
+    BATTLE_SUBSCRIPT_INFATUATE, 
+    BATTLE_SUBSCRIPT_SAFEGUARD_START,
+    BATTLE_SUBSCRIPT_PRESENT_HEAL, 
+    BATTLE_SUBSCRIPT_MAGNITUDE, 
+    BATTLE_SUBSCRIPT_BATON_PASS, 
+    BATTLE_SUBSCRIPT_BELLY_DRUM,
+    BATTLE_SUBSCRIPT_TELEPORT, 
+    BATTLE_SUBSCRIPT_FUTURE_SIGHT_START, 
+    BATTLE_SUBSCRIPT_STOCKPILE, 
+    BATTLE_SUBSCRIPT_SWALLOW,
+    BATTLE_SUBSCRIPT_TORMENT_START, 
+    BATTLE_SUBSCRIPT_FLATTER, 
+    BATTLE_SUBSCRIPT_MEMENTO, 
+    BATTLE_SUBSCRIPT_CHARGE,
+    BATTLE_SUBSCRIPT_TAUNT_START, 
+    BATTLE_SUBSCRIPT_EXCHANGE_ITEMS, 
+    BATTLE_SUBSCRIPT_COPY_ABILITY, 
+    BATTLE_SUBSCRIPT_BREAK_SCREENS,
+    BATTLE_SUBSCRIPT_YAWN, 
+    BATTLE_SUBSCRIPT_EXCHANGE_ABILITIES, 
+    BATTLE_SUBSCRIPT_RECOVER_PSN_PRZ_BRN, 
+    BATTLE_SUBSCRIPT_ROOST,
+    BATTLE_SUBSCRIPT_HEAL_TARGET_SLEEP, 
+    BATTLE_SUBSCRIPT_GRAVITY_START, 
+    BATTLE_SUBSCRIPT_MIRACLE_EYE, 
+    BATTLE_SUBSCRIPT_HEALING_WISH,
+    BATTLE_SUBSCRIPT_TAILWIND_START, 
+    BATTLE_SUBSCRIPT_USER_DEF_AND_SPDEF_DOWN_1_STAGE, 
+    BATTLE_SUBSCRIPT_USER_SWAP_ATK_AND_DEF, 
+    BATTLE_SUBSCRIPT_SUPPRESS_TARGET_ABILITY,
+    BATTLE_SUBSCRIPT_LUCKY_CHANT_START, 
+    BATTLE_SUBSCRIPT_EXCHANGE_ATK_AND_SPATK_STAGES, 
+    BATTLE_SUBSCRIPT_EXCHANGE_DEF_AND_SPDEF_STAGES, 
+    BATTLE_SUBSCRIPT_GIVE_TARGET_INSOMNIA,
+    BATTLE_SUBSCRIPT_EXCHANGE_ALL_STAT_STAGES, 
+    BATTLE_SUBSCRIPT_RECOIL_1_3_CHANCE_TO_BURN, 
+    BATTLE_SUBSCRIPT_DEFOG, 
+    BATTLE_SUBSCRIPT_HEAL_BLOCK_START,
+    BATTLE_SUBSCRIPT_ATTACK_THEN_SWITCH_OUT, 
+    BATTLE_SUBSCRIPT_EMBARGO_START, 
+    BATTLE_SUBSCRIPT_PLUCK, 
+    BATTLE_SUBSCRIPT_FLING,
+    BATTLE_SUBSCRIPT_RECOIL_1_3_CHANCE_TO_PARALYZE, 
+    BATTLE_SUBSCRIPT_RECOIL_1_2, 
+    BATTLE_SUBSCRIPT_BURN_OR_FLINCH, 
+    BATTLE_SUBSCRIPT_FREEZE_OR_FLINCH,
+    BATTLE_SUBSCRIPT_PARALYZE_OR_FLINCH, 
+    BATTLE_SUBSCRIPT_CHATTER, 
+    BATTLE_SUBSCRIPT_LUNAR_DANCE, 
+    BATTLE_SUBSCRIPT_GIVE_TARGET_OWN_STATUS
 };
 
-static int ov12_02258348(BattleContext *ctx, int statChangeType, u32 flag) {
+static int GetMoveStatusChangeScript(BattleContext *ctx, int statChangeType, u32 flag) {
     ctx->statChangeType = statChangeType;
     ctx->statChangeParam = flag & (0x7FFFFF);
     ctx->statChangeFlag = flag & (0xFF800000);
@@ -6614,9 +6614,9 @@ static int ov12_02258348(BattleContext *ctx, int statChangeType, u32 flag) {
         ctx->battlerIdStatChange = BATTLER_PLAYER;
     }
     
-    GF_ASSERT(NELEMS(ov12_0226CDCC) > (flag & (0x7FFFFF)));
+    GF_ASSERT(NELEMS(sMoveStatusChangeScripts) > (flag & (0x7FFFFF)));
     
-    return ov12_0226CDCC[flag & (0x7FFFFF)];
+    return sMoveStatusChangeScripts[flag & (0x7FFFFF)];
 }
 
 static int ov12_022583B4(BattleContext *ctx, int battlerId, int typeEffectiveness, int damage, int moveDamage, u32 *flag) {

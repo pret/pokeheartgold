@@ -92,11 +92,11 @@
 .public BattleContext_CheckMoveUnuseableInGravity
 .public BattleContext_CheckMoveHealBlocked
 .public ov12_02252E30
-.public ov12_02252EC8
+.public BattleContext_CheckMoveImmunityFromAbility
 .public ov12_02253068
 .public DamageDivide
 .public TryAbilityOnEntry
-.public ov12_02253DA0
+.public Battler_GetRandomOpposingBattlerId
 .public CheckAbilityEffectOnHit
 .public CheckStatusHealAbility
 .public TrySyncronizeStatus

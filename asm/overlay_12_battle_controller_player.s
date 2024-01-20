@@ -62,7 +62,7 @@
     .public ov12_0224D504
     .public ov12_0224D53C
     .public ov12_0224D540   
-    .public ov12_0224DC74
+    .public TryFaintMon
 
 	thumb_func_start ov12_0224E1BC
 ov12_0224E1BC: ; 0x0224E1BC
@@ -84,7 +84,7 @@ ov12_0224E1BC: ; 0x0224E1BC
 	add r0, r4, #0
 	add r2, r1, #0
 	mov r3, #1
-	bl ov12_0224DC74
+	bl TryFaintMon
 	cmp r0, #1
 	bne _0224E1F4
 	add sp, #8

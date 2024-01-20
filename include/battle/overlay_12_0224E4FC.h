@@ -67,11 +67,11 @@ BOOL BattleContext_CheckMoveUnuseableInGravity(BattleSystem *bsys, BattleContext
 BOOL BattleContext_CheckMoveHealBlocked(BattleSystem *bsys, BattleContext *ctx, int battlerId, int moveNo);
 void ov12_02252E30(BattleSystem *bsys, BattleContext *ctx);
 int GetBattlerLearnedMoveCount(BattleSystem *bsys, BattleContext *ctx, int battlerId);
-int ov12_02252EC8(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget);
+int BattleContext_CheckMoveImmunityFromAbility(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget);
 BOOL ov12_02253068(BattleSystem *bsys, BattleContext *ctx, int battlerId);
 int DamageDivide(int num, int denom);
 int TryAbilityOnEntry(BattleSystem *bsys, BattleContext *ctx);
-int ov12_02253DA0(BattleSystem *bsys, BattleContext *ctx, int battlerId);
+int Battler_GetRandomOpposingBattlerId(BattleSystem *bsys, BattleContext *ctx, int battlerId);
 BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BattleContext *ctx, int *script);
 BOOL CheckStatusHealAbility(BattleSystem *bsys, BattleContext *ctx, int battlerId, int flag);
 BOOL CheckStatusHealSwitch(BattleContext *ctx, int ability, int status);
@@ -127,7 +127,7 @@ BOOL ov12_02251C74(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarge
 //The following functions haven't been decompiled as of now, and are in fact in different files
 void Link_CheckTimeout(BattleContext *ctx);
 BOOL CheckLegalMeFirstMove(BattleContext *ctx, u16 move);
-int ov12_02253DA0(BattleSystem *bsys, BattleContext *ctx, int battlerId);
+int Battler_GetRandomOpposingBattlerId(BattleSystem *bsys, BattleContext *ctx, int battlerId);
 u32 CalcMoneyLoss(Party *party, PlayerProfile *profile);
 int ov12_02251D28(BattleSystem *bsys, BattleContext *ctx, int moveNo, int moveType, int battlerIdAttacker, int battlerIdTarget, int dmg, u32 *statusFlag);
 void ov12_02252D14(BattleSystem *bsys, BattleContext *ctx);

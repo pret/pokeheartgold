@@ -21,6 +21,7 @@
 #include "constants/abilities.h"
 #include "constants/battle.h"
 #include "constants/battle_script.h"
+#include "constants/battle_subscript.h"
 #include "constants/items.h"
 #include "constants/message_tags.h"
 #include "constants/moves.h"
@@ -851,7 +852,7 @@ BOOL BtlCmd_PlayMoveAnimation(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
     u32 battler = BattleScriptReadWord(ctx);
 
-    if (battler == 255) {
+    if (battler == BATTLER_NONE) {
         move = ctx->moveTemp;
     } else {
         move = ctx->moveNoCur;
@@ -863,7 +864,7 @@ BOOL BtlCmd_PlayMoveAnimation(BattleSystem *bsys, BattleContext *ctx) {
     }
 
     if (!BattleSystem_AreBattleAnimationsOn(bsys)) {
-        BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, 0x123);
+        BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_WAIT_MOVE_ANIMATION);
     }
 
     return FALSE;
@@ -877,7 +878,7 @@ BOOL BtlCmd_PlayMoveAnimation2(BattleSystem *bsys, BattleContext *ctx) {
     u32 attackerSide = BattleScriptReadWord(ctx);
     u32 defenderSide = BattleScriptReadWord(ctx);
 
-    if (battler == 255) {
+    if (battler == BATTLER_NONE) {
         move = ctx->moveTemp;
     } else {
         move = ctx->moveNoCur;
@@ -892,7 +893,7 @@ BOOL BtlCmd_PlayMoveAnimation2(BattleSystem *bsys, BattleContext *ctx) {
     }
 
     if (!BattleSystem_AreBattleAnimationsOn(bsys)) {
-        BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, 0x123);
+        BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_WAIT_MOVE_ANIMATION);
     }
 
     return FALSE;
@@ -1166,9 +1167,9 @@ BOOL BtlCmd_JumpToEffectScript(BattleSystem *bsys, BattleContext *ctx) {
         ctx->playerActions[ctx->battlerIdAttacker].unk4 = ctx->battlerIdTarget;
     }
 
-    if (ctx->battlerIdTarget == 255) {
+    if (ctx->battlerIdTarget == BATTLER_NONE) {
         ctx->commandNext = CONTROLLER_COMMAND_39;
-        BattleScriptJump(ctx, NARC_a_0_0_1, 281);
+        BattleScriptJump(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_NO_TARGET);
     } else {
         BattleScriptJump(ctx, NARC_a_0_0_0, ctx->moveNoCur);
     }
@@ -2035,9 +2036,9 @@ BOOL BtlCmd_SetMoveToMirrorMove(BattleSystem *bsys, BattleContext *ctx) {
         ctx->battleStatus &= ~BATTLE_STATUS_MOVE_ANIMATIONS_OFF;
         ctx->moveNoCur = move;
         ctx->battlerIdTarget = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, move, 1, 0);
-        if (ctx->battlerIdTarget == 255) {
+        if (ctx->battlerIdTarget == BATTLER_NONE) {
             ctx->commandNext = CONTROLLER_COMMAND_39;
-            BattleScriptJump(ctx, NARC_a_0_0_1, 281);
+            BattleScriptJump(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_NO_TARGET);
         } else {
             ctx->playerActions[ctx->battlerIdAttacker].unk4 = ctx->battlerIdTarget;
             BattleScriptJump(ctx, NARC_a_0_0_0, move);
@@ -2754,16 +2755,16 @@ BOOL BtlCmd_Counter(BattleSystem *bsys, BattleContext *ctx) {
             ctx->battlerIdTarget = battlerId;
         }
         if (ctx->battleMons[ctx->battlerIdTarget].hp == 0) {
-            ctx->battlerIdTarget = ov12_02253DA0(bsys, ctx, ctx->battlerIdAttacker);
+            ctx->battlerIdTarget = Battler_GetRandomOpposingBattlerId(bsys, ctx, ctx->battlerIdAttacker);
             if (ctx->battleMons[ctx->battlerIdTarget].hp == 0) {
                 ctx->commandNext = CONTROLLER_COMMAND_39;
-                BattleScriptJump(ctx, NARC_a_0_0_1, 281);
+                BattleScriptJump(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_NO_TARGET);
             }
         }
         CheckIgnorePressure(ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget);
     } else {
         ctx->selfTurnData[ctx->battlerIdAttacker].ignorePressure = 1;
-        ctx->moveStatusFlag |= 64;
+        ctx->moveStatusFlag |= MOVE_STATUS_6;
     }
 
     return FALSE;
@@ -2785,16 +2786,16 @@ BOOL BtlCmd_MirrorCoat(BattleSystem *bsys, BattleContext *ctx) {
             ctx->battlerIdTarget = battlerId;
         }
         if (ctx->battleMons[ctx->battlerIdTarget].hp == 0) {
-            ctx->battlerIdTarget = ov12_02253DA0(bsys, ctx, ctx->battlerIdAttacker);
+            ctx->battlerIdTarget = Battler_GetRandomOpposingBattlerId(bsys, ctx, ctx->battlerIdAttacker);
             if (ctx->battleMons[ctx->battlerIdTarget].hp == 0) {
                 ctx->commandNext = CONTROLLER_COMMAND_39;
-                BattleScriptJump(ctx, NARC_a_0_0_1, 281);
+                BattleScriptJump(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_NO_TARGET);
             }
         }
         CheckIgnorePressure(ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget);
     } else {
         ctx->selfTurnData[ctx->battlerIdAttacker].ignorePressure = 1;
-        ctx->moveStatusFlag |= 64;
+        ctx->moveStatusFlag |= MOVE_STATUS_6;
     }
 
     return FALSE;
@@ -3579,7 +3580,7 @@ BOOL BtlCmd_RapidSpin(BattleSystem *bsys, BattleContext *ctx) {
         ctx->battleMons[ctx->battlerIdAttacker].status2 &= ~STATUS2_BINDING_TURNS;
         ctx->battlerIdTemp = ctx->battleMons[ctx->battlerIdAttacker].unk88.battlerIdBinding;
         ctx->moveTemp = ctx->battleMons[ctx->battlerIdAttacker].unk88.bindingMove;
-        BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, 116);
+        BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_BREAK_BIND_EFFECT);
         return FALSE;
     }
 
@@ -3588,7 +3589,7 @@ BOOL BtlCmd_RapidSpin(BattleSystem *bsys, BattleContext *ctx) {
         ctx->battleMons[ctx->battlerIdAttacker].moveEffectFlags &= ~MOVE_EFFECT_FLAG_LEECH_SEED;
         ctx->battleMons[ctx->battlerIdAttacker].moveEffectFlags &= ~3;
         ctx->moveTemp = 73;
-        BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, 117);
+        BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_BLOW_AWAY_HAZARDS);
         return FALSE;
     }
 
@@ -3597,7 +3598,7 @@ BOOL BtlCmd_RapidSpin(BattleSystem *bsys, BattleContext *ctx) {
         ctx->fieldSideConditionFlags[side] &= ~SIDE_CONDITION_SPIKES;
         ctx->fieldSideConditionData[side].spikesLayers = 0;
         ctx->moveTemp = MOVE_SPIKES;
-        BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, 117);
+        BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_BLOW_AWAY_HAZARDS);
         return FALSE;
     }
 
@@ -3606,7 +3607,7 @@ BOOL BtlCmd_RapidSpin(BattleSystem *bsys, BattleContext *ctx) {
         ctx->fieldSideConditionFlags[side] &= ~SIDE_CONDITION_TOXIC_SPIKES;
         ctx->fieldSideConditionData[side].toxicSpikesLayers = 0;
         ctx->moveTemp = MOVE_TOXIC_SPIKES;
-        BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, 117);
+        BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_BLOW_AWAY_HAZARDS);
         return FALSE;
     }
 
@@ -3614,7 +3615,7 @@ BOOL BtlCmd_RapidSpin(BattleSystem *bsys, BattleContext *ctx) {
     if (ctx->fieldSideConditionFlags[side] & SIDE_CONDITION_STEALTH_ROCKS) {
         ctx->fieldSideConditionFlags[side] &= ~SIDE_CONDITION_STEALTH_ROCKS;
         ctx->moveTemp = MOVE_STEALTH_ROCK;
-        BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, 117);
+        BattleScriptGotoSubscript(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_BLOW_AWAY_HAZARDS);
         return FALSE;
     }
 
@@ -4372,10 +4373,10 @@ BOOL BtlCmd_MetalBurstDamageCalc(BattleSystem *bsys, BattleContext *ctx) {
             ctx->battlerIdTarget = ctx->turnData[ctx->battlerIdAttacker].unk38;
         }
         if (ctx->battleMons[ctx->battlerIdTarget].hp == 0) {
-            ctx->battlerIdTarget = ov12_02253DA0(bsys, ctx, ctx->battlerIdAttacker);
+            ctx->battlerIdTarget = Battler_GetRandomOpposingBattlerId(bsys, ctx, ctx->battlerIdAttacker);
             if (ctx->battleMons[ctx->battlerIdTarget].hp == 0) {
                 ctx->commandNext = CONTROLLER_COMMAND_39;
-                BattleScriptJump(ctx, NARC_a_0_0_1, 281);
+                BattleScriptJump(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_NO_TARGET);
             }
         }
         CheckIgnorePressure(ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget);
@@ -5590,7 +5591,7 @@ BOOL BtlCmd_211(BattleSystem *bsys, BattleContext *ctx) {
     int side = BattleScriptReadWord(ctx);
     int battlerId = GetBattlerIDBySide(bsys, ctx, side);
 
-    ctx->battlerIdTarget = ov12_02253DA0(bsys, ctx, battlerId);
+    ctx->battlerIdTarget = Battler_GetRandomOpposingBattlerId(bsys, ctx, battlerId);
 
     return FALSE;
 }
