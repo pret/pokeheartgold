@@ -1,11 +1,12 @@
-#ifndef POKEHEARTGOLD_OVERLAY_60_H
-#define POKEHEARTGOLD_OVERLAY_60_H
+#ifndef POKEHEARTGOLD_TITLE_SCREEN_H
+#define POKEHEARTGOLD_TITLE_SCREEN_H
 
 #include "heap.h"
 #include "palette.h"
 #include "bg_window.h"
 #include "camera.h"
 #include "gf_3d_vramman.h"
+#include "overlay_manager.h"
 
 FS_EXTERN_OVERLAY(OVY_60);
 
@@ -23,34 +24,34 @@ typedef struct TitleScreenAnimObject {
     NNSG3dRenderObj renderObj;
     NNSG3dResMdl *resModel;
     NNSG3dResFileHeader *resFileHeader;
-    void *unk_60[4];
-    NNSG3dAnmObj *unk_70[4];
+    void *_3dResObjsArc[4];
+    NNSG3dAnmObj *_3dAnmObjs[4];
     NNSFndAllocator allocator;
     VecFx32 translation;
     VecFx32 scale;
-    VecFx32 unk_A8;
+    VecFx32 rotationVec;
     Camera *camera;
     int unk_B8;
 } TitleScreenAnimObject; // size: 0xBC
 
 typedef struct TitleScreenAnimData {
     u32 unk_000;
-    TitleScreenAnimObject unk_004;
+    TitleScreenAnimObject hooh_lugia;
     TitleScreenAnimObject unk_0C0;
     u16 unk_17C;
     u8 filler_17E[0x2];
     Window window;
-    VecFx32 unk_190;
-    VecFx32 unk_19C;
+    VecFx32 cameraTarget;
+    VecFx32 cameraPos;
     u32 unk_1A8;
-    VecFx32 unk_1AC;
-    VecFx32 unk_1B8;
-    VecFx32 unk_1C4;
-    VecFx32 unk_1D0;
-    VecFx16 unk_1DC;
-    VecFx16 unk_1E2;
+    VecFx32 cameraPosStart;
+    VecFx32 cameraPosEnd;
+    VecFx32 cameraTargetStart;
+    VecFx32 cameraTargetEnd;
+    VecFx16 light0vec;
+    VecFx16 light1vec;
     int unk_1E8;
-    fx32 unk_1EC;
+    fx32 unused_1EC;
     int unk_1F0;
     int unk_1F4;
     int unk_1F8;
@@ -67,13 +68,15 @@ typedef struct TitleScreenOverlayData {
     BgConfig *bgConfig;
     GF3DVramMan *_3dVramMan;
     u8 filler_0C[0xC0];
-    TitleScreenAnimData unk_0CC;
+    TitleScreenAnimData animData;
     u16 exitMode;
     u8 filler_2E2[0x2];
-    u32 unk_2E4;
+    u32 initialDelay;
     u8 filler_2E8[0x8];
     int timer;
     BOOL needMasterBrightnessNeutral;
 } TitleScreenOverlayData; // size: 0x2F8
 
-#endif //POKEHEARTGOLD_OVERLAY_60_H
+extern const OVY_MGR_TEMPLATE gApplication_TitleScreen;
+
+#endif //POKEHEARTGOLD_TITLE_SCREEN_H
