@@ -51,7 +51,7 @@ typedef struct TitleScreenAnimData {
     VecFx16 light0vec;
     VecFx16 light1vec;
     int unk_1E8;
-    fx32 unused_1EC;
+    fx32 cameraSpeed;
     int cameraScene;
     int cameraSceneTimer;
     int gameTitleFadeInTimer;

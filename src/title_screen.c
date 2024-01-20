@@ -757,7 +757,7 @@ static void TitleScreenAnim_SetCameraInitialPos(TitleScreenAnimData *animData) {
         SetVec(animData->cameraTargetEnd, FX32_CONST(-2), FX32_CONST(124), FX32_CONST(-38));
         SetVec(animData->light0vec, FX16_CONST(0), FX16_CONST(0.635498), FX16_CONST(0));
         SetVec(animData->light1vec, FX16_CONST(0), FX16_CONST(0.476807), FX16_CONST(0));
-        animData->unused_1EC = FX32_CONST(3);
+        animData->cameraSpeed = FX32_CONST(3);
     } else {
         SetVec(animData->cameraPosStart, FX32_CONST(0), FX32_CONST(65), FX32_CONST(72));
         SetVec(animData->cameraPosEnd, FX32_CONST(420), FX32_CONST(87), FX32_CONST(331));
@@ -765,7 +765,7 @@ static void TitleScreenAnim_SetCameraInitialPos(TitleScreenAnimData *animData) {
         SetVec(animData->cameraTargetEnd, FX32_CONST(-2), FX32_CONST(124), FX32_CONST(-38));
         SetVec(animData->light0vec, FX16_CONST(0), FX16_CONST(0.635498), FX16_CONST(0));
         SetVec(animData->light1vec, FX16_CONST(0), FX16_CONST(0.476807), FX16_CONST(0));
-        animData->unused_1EC = FX32_CONST(3);
+        animData->cameraSpeed = FX32_CONST(3);
 
     }
 
@@ -801,29 +801,60 @@ static fx32 fx32_abs(fx32 x) {
     return x < 0 ? -x : x;
 }
 
+#if 0
+// Maybe originally intended, but never used
+#define CAMERA_SPEED (animData->cameraSpeed)
+#else
+#define CAMERA_SPEED (5*FX32_ONE)
+#endif
+
 static void TitleScreenAnim_GetCameraNextPosition(TitleScreenAnimData *animData) {
+#if 0
+    // Use this to give the player control over the camera
+    if (gSystem.heldKeys & PAD_KEY_RIGHT) {
+        animData->cameraPosEnd.x += CAMERA_SPEED;
+    }
+    if (gSystem.heldKeys & PAD_KEY_LEFT) {
+        animData->cameraPosEnd.x -= CAMERA_SPEED;
+    }
+    if (gSystem.heldKeys & PAD_KEY_UP) {
+        animData->cameraPosEnd.z += CAMERA_SPEED;
+    }
+    if (gSystem.heldKeys & PAD_KEY_DOWN) {
+        animData->cameraPosEnd.z -= CAMERA_SPEED;
+    }
+    if (gSystem.heldKeys & PAD_BUTTON_X) {
+        animData->cameraPosEnd.y += CAMERA_SPEED;
+    }
+    if (gSystem.heldKeys & PAD_BUTTON_Y) {
+        animData->cameraPosEnd.y -= CAMERA_SPEED;
+    }
+    Camera_SetLookAtCamPos(&animData->cameraPosEnd, animData->hooh_lugia.camera);
+
+#else
+    // Vanilla auto camera
     const struct CameraScript *cameraScript = animData->gameVersion == VERSION_HEARTGOLD ? sCameraScript_HG : sCameraScript_SS;
     ++animData->cameraSceneTimer;
     if (animData->cameraSceneTimer > cameraScript[animData->cameraScene].duration * 30) {
         VecFx32 pos;
         VEC_Subtract(&cameraScript[animData->cameraScene].pos, &animData->cameraPosEnd, &pos);
         if (pos.x > FX32_ONE) {
-            animData->cameraPosEnd.x += 5 * FX32_ONE;
+            animData->cameraPosEnd.x += CAMERA_SPEED;
         }
         if (pos.x < -FX32_ONE) {
-            animData->cameraPosEnd.x -= 5 * FX32_ONE;
+            animData->cameraPosEnd.x -= CAMERA_SPEED;
         }
         if (pos.y > FX32_ONE) {
-            animData->cameraPosEnd.y += 5 * FX32_ONE;
+            animData->cameraPosEnd.y += CAMERA_SPEED;
         }
         if (pos.y < -FX32_ONE) {
-            animData->cameraPosEnd.y -= 5 * FX32_ONE;
+            animData->cameraPosEnd.y -= CAMERA_SPEED;
         }
         if (pos.z > FX32_ONE) {
-            animData->cameraPosEnd.z += 5 * FX32_ONE;
+            animData->cameraPosEnd.z += CAMERA_SPEED;
         }
         if (pos.z < -FX32_ONE) {
-            animData->cameraPosEnd.z -= 5 * FX32_ONE;
+            animData->cameraPosEnd.z -= CAMERA_SPEED;
         }
         Camera_SetLookAtCamPos(&animData->cameraPosEnd, animData->hooh_lugia.camera);
         if (fx32_abs(pos.x) <= FX32_ONE && fx32_abs(pos.y) <= FX32_ONE && fx32_abs(pos.z) <= FX32_ONE) {
@@ -834,6 +865,7 @@ static void TitleScreenAnim_GetCameraNextPosition(TitleScreenAnimData *animData)
             }
         }
     }
+#endif
 }
 
 static void TitleScreenAnim_FadeInGameTitleLayer(TitleScreenAnimData *animData) {
