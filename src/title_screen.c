@@ -288,12 +288,12 @@ static void TitleScreen_Load3DObjects(TitleScreenAnimObject *animObj, int texFil
 
     GF_ExpHeap_FndInitAllocator(&animObj->allocator, heapID, 4);
     void *pAnim;
-    animObj->resFileHeader = AllocAndReadWholeNarcMemberByIdPair(NARC_a_0_4_6, texFileId, heapID);
+    animObj->resFileHeader = AllocAndReadWholeNarcMemberByIdPair(NARC_demo_title_titledemo, texFileId, heapID);
     sub_0201F51C(&animObj->renderObj, &animObj->resModel, &animObj->resFileHeader);
     NNSG3dResTex *tex = NNS_G3dGetTex(animObj->resFileHeader);
 
     if (anim1Id > 0) {
-        animObj->_3dResObjsArc[0] = AllocAndReadWholeNarcMemberByIdPair(NARC_a_0_4_6, anim1Id, heapID);
+        animObj->_3dResObjsArc[0] = AllocAndReadWholeNarcMemberByIdPair(NARC_demo_title_titledemo, anim1Id, heapID);
         pAnim = NNS_G3dGetAnmByIdx(animObj->_3dResObjsArc[0], 0);
         animObj->_3dAnmObjs[0] = NNS_G3dAllocAnmObj(&animObj->allocator, pAnim, animObj->resModel);
         NNS_G3dAnmObjInit(animObj->_3dAnmObjs[0], pAnim, animObj->resModel, tex);
@@ -301,7 +301,7 @@ static void TitleScreen_Load3DObjects(TitleScreenAnimObject *animObj, int texFil
     }
 
     if (anim2Id > 0) {
-        animObj->_3dResObjsArc[1] = AllocAndReadWholeNarcMemberByIdPair(NARC_a_0_4_6, anim2Id, heapID);
+        animObj->_3dResObjsArc[1] = AllocAndReadWholeNarcMemberByIdPair(NARC_demo_title_titledemo, anim2Id, heapID);
         pAnim = NNS_G3dGetAnmByIdx(animObj->_3dResObjsArc[1], 0);
         animObj->_3dAnmObjs[1] = NNS_G3dAllocAnmObj(&animObj->allocator, pAnim, animObj->resModel);
         NNS_G3dAnmObjInit(animObj->_3dAnmObjs[1], pAnim, animObj->resModel, tex);
@@ -309,7 +309,7 @@ static void TitleScreen_Load3DObjects(TitleScreenAnimObject *animObj, int texFil
     }
 
     if (anim3Id > 0) {
-        animObj->_3dResObjsArc[2] = AllocAndReadWholeNarcMemberByIdPair(NARC_a_0_4_6, anim3Id, heapID);
+        animObj->_3dResObjsArc[2] = AllocAndReadWholeNarcMemberByIdPair(NARC_demo_title_titledemo, anim3Id, heapID);
         pAnim = NNS_G3dGetAnmByIdx(animObj->_3dResObjsArc[2], 0);
         animObj->_3dAnmObjs[2] = NNS_G3dAllocAnmObj(&animObj->allocator, pAnim, animObj->resModel);
         NNS_G3dAnmObjInit(animObj->_3dAnmObjs[2], pAnim, animObj->resModel, tex);
@@ -317,7 +317,7 @@ static void TitleScreen_Load3DObjects(TitleScreenAnimObject *animObj, int texFil
     }
 
     if (anim4Id > 0) {
-        animObj->_3dResObjsArc[3] = AllocAndReadWholeNarcMemberByIdPair(NARC_a_0_4_6, anim4Id, heapID);
+        animObj->_3dResObjsArc[3] = AllocAndReadWholeNarcMemberByIdPair(NARC_demo_title_titledemo, anim4Id, heapID);
         pAnim = NNS_G3dGetAnmByIdx(animObj->_3dResObjsArc[3], 0);
         animObj->_3dAnmObjs[3] = NNS_G3dAllocAnmObj(&animObj->allocator, pAnim, animObj->resModel);
         NNS_G3dAnmObjInit(animObj->_3dAnmObjs[3], pAnim, animObj->resModel, tex);
@@ -630,11 +630,11 @@ static void ov60_021E65B4(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData
     s32 res1, res2;
 
     if (animData->gameVersion == VERSION_HEARTGOLD) {
-        GfGfxLoader_LoadCharData(NARC_a_0_4_6, 34, bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, heapID);
-        GfGfxLoader_LoadScrnData(NARC_a_0_4_6, 35, bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, heapID);
+        GfGfxLoader_LoadCharData(NARC_demo_title_titledemo, 34, bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, heapID);
+        GfGfxLoader_LoadScrnData(NARC_demo_title_titledemo, 35, bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, heapID);
     } else {
-        GfGfxLoader_LoadCharData(NARC_a_0_4_6, 36, bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, heapID);
-        GfGfxLoader_LoadScrnData(NARC_a_0_4_6, 37, bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, heapID);
+        GfGfxLoader_LoadCharData(NARC_demo_title_titledemo, 36, bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, heapID);
+        GfGfxLoader_LoadScrnData(NARC_demo_title_titledemo, 37, bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, heapID);
     }
     BG_ClearCharDataRange(3, 0x20, 0, heapID);
     BgClearTilemapBufferAndCommit(bgConfig, 3);
@@ -646,8 +646,8 @@ static void ov60_021E65B4(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData
         res1 = 2;
         res2 = 14;
     }
-    GfGfxLoader_GXLoadPal(NARC_a_0_4_6, res1, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_0_OFFSET, 0, heapID);
-    GfGfxLoader_GXLoadPal(NARC_a_0_4_6, res2, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_0_OFFSET, 0, heapID);
+    GfGfxLoader_GXLoadPal(NARC_demo_title_titledemo, res1, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_0_OFFSET, 0, heapID);
+    GfGfxLoader_GXLoadPal(NARC_demo_title_titledemo, res2, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_0_OFFSET, 0, heapID);
 
     if (animData->gameVersion == VERSION_HEARTGOLD) {
         res1 = 3;
@@ -656,12 +656,12 @@ static void ov60_021E65B4(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData
         res1 = 1;
         res2 = 2;
     }
-    GfGfxLoader_LoadCharData(NARC_a_0_4_6, res1, bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, heapID);
-    GfGfxLoader_GXLoadPal(NARC_a_0_4_6, res2, GF_PAL_LOCATION_SUB_BGEXT, (enum GFPalSlotOffset)0x4000, 0, heapID);
-    GfGfxLoader_LoadScrnData(NARC_a_0_4_6, 0, bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, heapID);
+    GfGfxLoader_LoadCharData(NARC_demo_title_titledemo, res1, bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, heapID);
+    GfGfxLoader_GXLoadPal(NARC_demo_title_titledemo, res2, GF_PAL_LOCATION_SUB_BGEXT, (enum GFPalSlotOffset)0x4000, 0, heapID);
+    GfGfxLoader_LoadScrnData(NARC_demo_title_titledemo, 0, bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, heapID);
 
-    GfGfxLoader_LoadCharData(NARC_a_0_4_6, 15, bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, heapID);
-    GfGfxLoader_LoadScrnData(NARC_a_0_4_6, 17, bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, heapID);
+    GfGfxLoader_LoadCharData(NARC_demo_title_titledemo, 15, bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, heapID);
+    GfGfxLoader_LoadScrnData(NARC_demo_title_titledemo, 17, bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, heapID);
 
     BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB_BLACK);
     BG_SetMaskColor(GF_BG_LYR_SUB_1, RGB_BLACK);
