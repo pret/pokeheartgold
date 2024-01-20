@@ -20,7 +20,7 @@ typedef enum TitleScreenExitMode {
 } TitleScreenExitMode;
 
 typedef struct TitleScreenAnimObject {
-    int unk_00;
+    int state;
     NNSG3dRenderObj renderObj;
     NNSG3dResMdl *resModel;
     NNSG3dResFileHeader *resFileHeader;
@@ -31,19 +31,19 @@ typedef struct TitleScreenAnimObject {
     VecFx32 scale;
     VecFx32 rotationVec;
     Camera *camera;
-    int unk_B8;
+    int subState;
 } TitleScreenAnimObject; // size: 0xBC
 
 typedef struct TitleScreenAnimData {
-    u32 unk_000;
+    u32 state;
     TitleScreenAnimObject hooh_lugia;
-    TitleScreenAnimObject unk_0C0;
-    u16 unk_17C;
+    TitleScreenAnimObject sparkles;
+    u16 startInstructionFlashTimer;
     u8 filler_17E[0x2];
     Window window;
     VecFx32 cameraTarget;
     VecFx32 cameraPos;
-    u32 unk_1A8;
+    u32 enableStartInstructionFlash;
     VecFx32 cameraPosStart;
     VecFx32 cameraPosEnd;
     VecFx32 cameraTargetStart;
@@ -52,15 +52,15 @@ typedef struct TitleScreenAnimData {
     VecFx16 light1vec;
     int unk_1E8;
     fx32 unused_1EC;
-    int unk_1F0;
-    int unk_1F4;
-    int unk_1F8;
-    int unk_1FC;
+    int cameraScene;
+    int cameraSceneTimer;
+    int gameTitleFadeInTimer;
+    int gameTitleDelayTimer;
     int gameVersion;
     PaletteData *plttData;
-    int unk_208;
-    int unk_20C;
-    int unk_210;
+    int glowState;
+    int glowTimer;
+    int glowFadeStep;
 } TitleScreenAnimData;
 
 typedef struct TitleScreenOverlayData {

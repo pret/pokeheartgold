@@ -44,6 +44,6 @@
 .public String_Delete
 .public Save_GetStatusFlags
 .public memset
-.public _02108278
+.public gApplication_MainMenu
 .public gSystem
 .public gApp_MainMenu

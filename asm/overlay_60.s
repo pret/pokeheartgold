@@ -8278,10 +8278,10 @@ _021EB008:
 
 	; file boundary?
 
-	.public ov60_021EB030
-ov60_021EB030:
+	.public gApplication_IntroMovie
+gApplication_IntroMovie:
 	.word ov60_021E6B68, ov60_021E6C08, ov60_021E6CFC, 0xFFFFFFFF
-	.size ov60_021EB030, .-ov60_021EB030
+	.size gApplication_IntroMovie, .-gApplication_IntroMovie
 _021EB040:
 	.byte 0x4A, 0x00, 0x00, 0x00
 	.size _021EB040, .-_021EB040

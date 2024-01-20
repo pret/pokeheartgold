@@ -25,6 +25,7 @@
 #include "constants/sndseq.h"
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0719.h"
+#include "demo/title/titledemo.naix"
 
 #ifdef HEARTGOLD
 #define TITLE_SCREEN_SPECIES SPECIES_HO_OH
@@ -38,7 +39,7 @@
 
 enum TitleScreenMainState {
     TITLESCREEN_MAIN_WAIT_FADE,
-    START_MUSIC,
+    TITLESCREEN_MAIN_START_MUSIC,
     TITLESCREEN_MAIN_PLAY,
     TITLESCREEN_MAIN_PROCEED_FLASH,
     TITLESCREEN_MAIN_PROCEED_FLASH_2,
@@ -46,9 +47,33 @@ enum TitleScreenMainState {
     TITLESCREEN_MAIN_FADEOUT,
 };
 
-struct UnkTitleScreenStruct_021EAF90 {
-    VecFx32 unk_00;
-    int unk_0C;
+enum TitleScreenModelState {
+    TITLESCREEN_MODEL_OFF,
+    TITLESCREEN_MODEL_STOP,
+    TITLESCREEN_MODEL_RUN,
+};
+
+enum TitleScreenModelSubState {
+    TITLESCREEN_MODELSUB_STOP,
+    TITLESCREEN_MODELSUB_WAIT_STOP,
+    TITLESCREEN_MODELSUB_RUN,
+};
+
+enum TitleScreenAnimState {
+    TITLESCREEN_ANIM_SETUP,
+    TITLESCREEN_ANIM_RUN,
+};
+
+enum TitleScreenTopScreenGlowState {
+    TITLESCREEN_GLOW_SETUP,
+    TITLESCREEN_GLOW_IN,
+    TITLESCREEN_GLOW_OUT,
+    TITLESCREEN_GLOW_PAUSE,
+};
+
+struct CameraScript {
+    VecFx32 pos;
+    int duration;
 };
 
 static BOOL TitleScreen_Init(OVY_MANAGER *man, int *state);
@@ -65,17 +90,17 @@ static void TitleScreenAnimObjs_Run(TitleScreenAnimObject *animObj);
 static void TitleScreen_InitBgs(TitleScreenOverlayData *data);
 static void TitleScreen_DeinitBgs(TitleScreenOverlayData *data);
 static BOOL TitleScreenAnim_InitObjectsAndCamera(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID);
-static BOOL ov60_021E641C(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID);
-static BOOL ov60_021E6544(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID);
-static void ov60_021E65B4(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData *animData);
-static void ov60_021E67E8(TitleScreenAnimData *animData);
-static void ov60_021E68A0(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData *animData);
-static void ov60_021E68B0(TitleScreenAnimData *animData);
-static fx32 ov60_021E69CC(fx32 x);
-static void ov60_021E69D4(TitleScreenAnimData *animData);
-static void ov60_021E6B08(TitleScreenAnimData *animData);
+static BOOL TitleScreenAnim_Run(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID);
+static BOOL TitleScreenAnim_UnloadAndRemoveTopScreenResources(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID);
+static void TitleScreenAnim_Load2dBgGfx(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData *animData);
+static void TitleScreenAnim_RunTopScreenGlow(TitleScreenAnimData *animData);
+static void TitleScreen_RemoveTouchToStartWindow(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData *animData);
+static void TitleScreenAnim_SetCameraInitialPos(TitleScreenAnimData *animData);
+static fx32 fx32_abs(fx32 x);
+static void TitleScreenAnim_GetCameraNextPosition(TitleScreenAnimData *animData);
+static void TitleScreenAnim_FadeInGameTitleLayer(TitleScreenAnimData *animData);
 
-extern const OVY_MGR_TEMPLATE ov60_021EB030;
+extern const OVY_MGR_TEMPLATE gApplication_IntroMovie;
 
 const OVY_MGR_TEMPLATE gApplication_TitleScreen = {
     TitleScreen_Init,
@@ -116,13 +141,13 @@ static BOOL TitleScreen_Exec(OVY_MANAGER *man, int *state) {
     switch (*state) {
     case TITLESCREEN_MAIN_WAIT_FADE:
         if (TitleScreenAnim_InitObjectsAndCamera(&data->animData, data->bgConfig, data->heapID) == TRUE) {
-            data->animData.unk_000 = 0;
+            data->animData.state = 0;
             data->initialDelay = 30;
             gSystem.unk70 = 0;
-            *state = (int)START_MUSIC;
+            *state = (int)TITLESCREEN_MAIN_START_MUSIC;
         }
         break;
-    case START_MUSIC:
+    case TITLESCREEN_MAIN_START_MUSIC:
         sub_02004AD8(0);
         sub_02004EC4(1, SEQ_GS_POKEMON_THEME, 1);
         *state = (int)TITLESCREEN_MAIN_PLAY;
@@ -130,11 +155,11 @@ static BOOL TitleScreen_Exec(OVY_MANAGER *man, int *state) {
     case TITLESCREEN_MAIN_PLAY:
         if (data->initialDelay != 0) {
             --data->initialDelay;
-            data->animData.unk_1A8 = FALSE;
-            ov60_021E641C(&data->animData, data->bgConfig, data->heapID);
+            data->animData.enableStartInstructionFlash = FALSE;
+            TitleScreenAnim_Run(&data->animData, data->bgConfig, data->heapID);
         } else {
-            data->animData.unk_1A8 = TRUE;
-            ov60_021E641C(&data->animData, data->bgConfig, data->heapID);
+            data->animData.enableStartInstructionFlash = TRUE;
+            TitleScreenAnim_Run(&data->animData, data->bgConfig, data->heapID);
             ++data->timer;
             if ((gSystem.newKeys & PAD_BUTTON_A) == PAD_BUTTON_A || (gSystem.newKeys & PAD_BUTTON_START) == PAD_BUTTON_START || gSystem.touchNew) {
                 data->exitMode = TITLESCREEN_EXIT_MENU;
@@ -158,15 +183,15 @@ static BOOL TitleScreen_Exec(OVY_MANAGER *man, int *state) {
                 GF_SndStartFadeOutBGM(0, 60);
                 *state = (int)TITLESCREEN_MAIN_PROCEED_NOFLASH;
             } else {
-                ov60_021E69D4(&data->animData);
-                ov60_021E6B08(&data->animData);
+                TitleScreenAnim_GetCameraNextPosition(&data->animData);
+                TitleScreenAnim_FadeInGameTitleLayer(&data->animData);
             }
         }
         break;
     case TITLESCREEN_MAIN_PROCEED_FLASH:
-        ov60_021E6B08(&data->animData);
-        data->animData.unk_1A8 = FALSE;
-        ov60_021E641C(&data->animData, data->bgConfig, data->heapID);
+        TitleScreenAnim_FadeInGameTitleLayer(&data->animData);
+        data->animData.enableStartInstructionFlash = FALSE;
+        TitleScreenAnim_Run(&data->animData, data->bgConfig, data->heapID);
         if (IsPaletteFadeFinished()) {
             BeginNormalPaletteFade(0, 1, 1, RGB_WHITE, 12, 1, HEAP_ID_30);
             *state = (int)TITLESCREEN_MAIN_PROCEED_FLASH_2;
@@ -178,9 +203,9 @@ static BOOL TitleScreen_Exec(OVY_MANAGER *man, int *state) {
         }
         break;
     case TITLESCREEN_MAIN_PROCEED_FLASH_2:
-        ov60_021E6B08(&data->animData);
-        data->animData.unk_1A8 = FALSE;
-        ov60_021E641C(&data->animData, data->bgConfig, data->heapID);
+        TitleScreenAnim_FadeInGameTitleLayer(&data->animData);
+        data->animData.enableStartInstructionFlash = FALSE;
+        TitleScreenAnim_Run(&data->animData, data->bgConfig, data->heapID);
         if (GF_SndGetFadeTimer() == 0) {
             StopBGM(SEQ_GS_POKEMON_THEME, 0);
             BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapID);
@@ -188,9 +213,9 @@ static BOOL TitleScreen_Exec(OVY_MANAGER *man, int *state) {
         }
         break;
     case TITLESCREEN_MAIN_PROCEED_NOFLASH:
-        ov60_021E6B08(&data->animData);
-        data->animData.unk_1A8 = FALSE;
-        ov60_021E641C(&data->animData, data->bgConfig, data->heapID);
+        TitleScreenAnim_FadeInGameTitleLayer(&data->animData);
+        data->animData.enableStartInstructionFlash = FALSE;
+        TitleScreenAnim_Run(&data->animData, data->bgConfig, data->heapID);
         if (GF_SndGetFadeTimer() == 0) {
             StopBGM(SEQ_GS_POKEMON_THEME, 0);
             BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapID);
@@ -198,8 +223,8 @@ static BOOL TitleScreen_Exec(OVY_MANAGER *man, int *state) {
         }
         break;
     case TITLESCREEN_MAIN_FADEOUT:
-        ov60_021E6B08(&data->animData);
-        if (IsPaletteFadeFinished() == TRUE && ov60_021E6544(&data->animData, data->bgConfig, data->heapID) == TRUE) {
+        TitleScreenAnim_FadeInGameTitleLayer(&data->animData);
+        if (IsPaletteFadeFinished() == TRUE && TitleScreenAnim_UnloadAndRemoveTopScreenResources(&data->animData, data->bgConfig, data->heapID) == TRUE) {
             return TRUE;
         }
         break;
@@ -222,18 +247,18 @@ static BOOL TitleScreen_Exit(OVY_MANAGER *man, int *state) {
     switch (exitMode) {
     default:
     case TITLESCREEN_EXIT_MENU:
-        RegisterMainOverlay((FSOverlayID)-1, &_02108278);
+        RegisterMainOverlay((FSOverlayID)-1, &gApplication_MainMenu);
         break;
     case TITLESCREEN_EXIT_CLEARSAVE:
-        RegisterMainOverlay((FSOverlayID)-1, &_0210820C);
+        RegisterMainOverlay((FSOverlayID)-1, &gApplication_DeleteSave);
         break;
     case TITLESCREEN_EXIT_TIMEOUT:
         sub_02004AD8(0);
-        RegisterMainOverlay(FS_OVERLAY_ID(OVY_60), &ov60_021EB030);
+        RegisterMainOverlay(FS_OVERLAY_ID(OVY_60), &gApplication_IntroMovie);
         break;
     case TITLESCREEN_EXIT_MIC_TEST:
         sub_02004AD8(0);
-        RegisterMainOverlay(FS_OVERLAY_ID(OVY_62), &ov62_021E68CC);
+        RegisterMainOverlay(FS_OVERLAY_ID(OVY_62), &gApplication_MicTest);
         break;
     }
 
@@ -281,7 +306,7 @@ static void TitleScreen_Delete3DVramMan(TitleScreenOverlayData *data) {
     GF_3DVramMan_Delete(data->_3dVramMan);
 }
 
-static void TitleScreen_Load3DObjects(TitleScreenAnimObject *animObj, int texFileId, int anim1Id, int anim2Id, int anim3Id, int anim4Id, HeapID heapID) {
+static void TitleScreen_Load3DObjects(TitleScreenAnimObject *animObj, int texFileId, int nsbcaId, int nsbta, int nsbtp, int nsbma, HeapID heapID) {
     for (int i = 0; i < 4; ++i) {
         animObj->_3dResObjsArc[i] = animObj->_3dAnmObjs[i] = NULL;
     }
@@ -292,32 +317,32 @@ static void TitleScreen_Load3DObjects(TitleScreenAnimObject *animObj, int texFil
     sub_0201F51C(&animObj->renderObj, &animObj->resModel, &animObj->resFileHeader);
     NNSG3dResTex *tex = NNS_G3dGetTex(animObj->resFileHeader);
 
-    if (anim1Id > 0) {
-        animObj->_3dResObjsArc[0] = AllocAndReadWholeNarcMemberByIdPair(NARC_demo_title_titledemo, anim1Id, heapID);
+    if (nsbcaId > 0) {
+        animObj->_3dResObjsArc[0] = AllocAndReadWholeNarcMemberByIdPair(NARC_demo_title_titledemo, nsbcaId, heapID);
         pAnim = NNS_G3dGetAnmByIdx(animObj->_3dResObjsArc[0], 0);
         animObj->_3dAnmObjs[0] = NNS_G3dAllocAnmObj(&animObj->allocator, pAnim, animObj->resModel);
         NNS_G3dAnmObjInit(animObj->_3dAnmObjs[0], pAnim, animObj->resModel, tex);
         NNS_G3dRenderObjAddAnmObj(&animObj->renderObj, animObj->_3dAnmObjs[0]);
     }
 
-    if (anim2Id > 0) {
-        animObj->_3dResObjsArc[1] = AllocAndReadWholeNarcMemberByIdPair(NARC_demo_title_titledemo, anim2Id, heapID);
+    if (nsbta > 0) {
+        animObj->_3dResObjsArc[1] = AllocAndReadWholeNarcMemberByIdPair(NARC_demo_title_titledemo, nsbta, heapID);
         pAnim = NNS_G3dGetAnmByIdx(animObj->_3dResObjsArc[1], 0);
         animObj->_3dAnmObjs[1] = NNS_G3dAllocAnmObj(&animObj->allocator, pAnim, animObj->resModel);
         NNS_G3dAnmObjInit(animObj->_3dAnmObjs[1], pAnim, animObj->resModel, tex);
         NNS_G3dRenderObjAddAnmObj(&animObj->renderObj, animObj->_3dAnmObjs[1]);
     }
 
-    if (anim3Id > 0) {
-        animObj->_3dResObjsArc[2] = AllocAndReadWholeNarcMemberByIdPair(NARC_demo_title_titledemo, anim3Id, heapID);
+    if (nsbtp > 0) {
+        animObj->_3dResObjsArc[2] = AllocAndReadWholeNarcMemberByIdPair(NARC_demo_title_titledemo, nsbtp, heapID);
         pAnim = NNS_G3dGetAnmByIdx(animObj->_3dResObjsArc[2], 0);
         animObj->_3dAnmObjs[2] = NNS_G3dAllocAnmObj(&animObj->allocator, pAnim, animObj->resModel);
         NNS_G3dAnmObjInit(animObj->_3dAnmObjs[2], pAnim, animObj->resModel, tex);
         NNS_G3dRenderObjAddAnmObj(&animObj->renderObj, animObj->_3dAnmObjs[2]);
     }
 
-    if (anim4Id > 0) {
-        animObj->_3dResObjsArc[3] = AllocAndReadWholeNarcMemberByIdPair(NARC_demo_title_titledemo, anim4Id, heapID);
+    if (nsbma > 0) {
+        animObj->_3dResObjsArc[3] = AllocAndReadWholeNarcMemberByIdPair(NARC_demo_title_titledemo, nsbma, heapID);
         pAnim = NNS_G3dGetAnmByIdx(animObj->_3dResObjsArc[3], 0);
         animObj->_3dAnmObjs[3] = NNS_G3dAllocAnmObj(&animObj->allocator, pAnim, animObj->resModel);
         NNS_G3dAnmObjInit(animObj->_3dAnmObjs[3], pAnim, animObj->resModel, tex);
@@ -328,7 +353,7 @@ static void TitleScreen_Load3DObjects(TitleScreenAnimObject *animObj, int texFil
     animObj->translation = (VecFx32){30 * FX32_ONE, 95 * FX32_ONE, 0};
     animObj->scale = (VecFx32){FX32_ONE, FX32_ONE, FX32_ONE};
     animObj->rotationVec = zero;
-    animObj->unk_B8 = 0;
+    animObj->subState = TITLESCREEN_MODELSUB_STOP;
 }
 
 static void TitleScreen_Unload3DObjects(TitleScreenAnimObject *animObj) {
@@ -367,30 +392,30 @@ static void TitleScreenAnimObjs_Run(TitleScreenAnimObject *animObj) {
         0, 0, FX32_ONE,
     };
 
-    switch (animObj->unk_00) {
-    case 0:
+    switch (animObj->state) {
+    case TITLESCREEN_MODEL_OFF:
         break;
-    case 1:
+    case TITLESCREEN_MODEL_STOP:
         Thunk_G3X_Reset();
         sub_02026E50(0, 1);
-        animObj->unk_00 = 0;
+        animObj->state = TITLESCREEN_MODEL_OFF;
         break;
-    case 2:
+    case TITLESCREEN_MODEL_RUN:
         Thunk_G3X_Reset();
         Camera_PushLookAtToNNSGlb();
         sub_02020D2C(&mtx, &animObj->rotationVec);
         Draw3dModel(&animObj->renderObj, &animObj->translation, &mtx, &animObj->scale);
-        switch (animObj->unk_B8) {
-        case 0:
+        switch (animObj->subState) {
+        case TITLESCREEN_MODELSUB_STOP:
             TitleScreen_AdvanceAnimObjsFrame(animObj->_3dAnmObjs, 0);
             break;
-        case 1:
+        case TITLESCREEN_MODELSUB_WAIT_STOP:
             if (animObj->_3dAnmObjs[0]->frame == 0) {
-                animObj->unk_B8 = 0;
+                animObj->subState = TITLESCREEN_MODELSUB_STOP;
                 break;
             }
             // fallthrough
-        case 2:
+        case TITLESCREEN_MODELSUB_RUN:
             TitleScreen_AdvanceAnimObjsFrame(animObj->_3dAnmObjs, FX32_ONE);
             break;
         }
@@ -475,6 +500,7 @@ static void TitleScreen_InitBgs(TitleScreenOverlayData *data) {
         InitBgFromTemplate(data->bgConfig, GF_BG_LYR_MAIN_2, &stack_data, 0);
     }
     {
+        // TOUCH TO START
         BgTemplate stack_data = {
             0, 0,
             0x800,
@@ -523,14 +549,14 @@ static const WindowTemplate sTouchToStartWindow = {
 };
 
 static BOOL TitleScreenAnim_InitObjectsAndCamera(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID) {
-    ov60_021E68B0(animData);
-    ov60_021E65B4(bgConfig, heapID, animData);
+    TitleScreenAnim_SetCameraInitialPos(animData);
+    TitleScreenAnim_Load2dBgGfx(bgConfig, heapID, animData);
     if (animData->gameVersion == VERSION_HEARTGOLD) {
-        TitleScreen_Load3DObjects(&animData->hooh_lugia, 25, 26, 27, 29, 28, heapID);
-        TitleScreen_Load3DObjects(&animData->unk_0C0, 38, 39, -1, 40, -1, heapID);
+        TitleScreen_Load3DObjects(&animData->hooh_lugia, NARC_titledemo_titledemo_00000025_NSBMD, NARC_titledemo_titledemo_00000026_NSBCA, NARC_titledemo_titledemo_00000027_NSBTA, NARC_titledemo_titledemo_00000029_NSBTP, NARC_titledemo_titledemo_00000028_NSBMA, heapID);
+        TitleScreen_Load3DObjects(&animData->sparkles, NARC_titledemo_titledemo_00000038_NSBMD, NARC_titledemo_titledemo_00000039_NSBCA, -1, NARC_titledemo_titledemo_00000040_NSBTP, -1, heapID);
     } else {
-        TitleScreen_Load3DObjects(&animData->hooh_lugia, 20, 21, 22, 23, 24, heapID);
-        TitleScreen_Load3DObjects(&animData->unk_0C0, 41, 42, -1, 43, -1, heapID);
+        TitleScreen_Load3DObjects(&animData->hooh_lugia, NARC_titledemo_titledemo_00000020_NSBMD, NARC_titledemo_titledemo_00000021_NSBCA, NARC_titledemo_titledemo_00000022_NSBTA, NARC_titledemo_titledemo_00000023_NSBTP, NARC_titledemo_titledemo_00000024_NSBMA, heapID);
+        TitleScreen_Load3DObjects(&animData->sparkles, NARC_titledemo_titledemo_00000041_NSBMD, NARC_titledemo_titledemo_00000042_NSBCA, -1, NARC_titledemo_titledemo_00000043_NSBTP, -1, heapID);
     }
     G3X_AntiAlias(TRUE);
     G3X_AlphaBlend(TRUE);
@@ -552,22 +578,22 @@ static BOOL TitleScreenAnim_InitObjectsAndCamera(TitleScreenAnimData *animData, 
     G3X_AntiAlias(TRUE);
     gSystem.screensFlipped = TRUE;
     GfGfx_SwapDisplay();
-    animData->hooh_lugia.unk_00 = 2;
-    animData->unk_0C0.unk_00 = 2;
-    animData->unk_1FC = 0;
-    animData->unk_1F8 = 0;
+    animData->hooh_lugia.state = TITLESCREEN_MODEL_RUN;
+    animData->sparkles.state = TITLESCREEN_MODEL_RUN;
+    animData->gameTitleDelayTimer = 0;
+    animData->gameTitleFadeInTimer = 0;
     animData->plttData = PaletteData_Init(HEAP_ID_30);
     PaletteData_AllocBuffers(animData->plttData, PLTTBUF_SUB_BG, 0x200, HEAP_ID_30);
     PaletteData_LoadPaletteSlotFromHardware(animData->plttData, PLTTBUF_SUB_BG, 0, 0x200);
-    animData->unk_208 = 0;
+    animData->glowState = 0;
     return TRUE;
 }
 
-static BOOL ov60_021E641C(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID) {
+static BOOL TitleScreenAnim_Run(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID) {
     BOOL ret = FALSE;
 
-    switch (animData->unk_000) {
-    case 0:
+    switch (animData->state) {
+    case TITLESCREEN_ANIM_SETUP:
         Camera_SetLookAtCamTarget(&animData->cameraTargetEnd, animData->hooh_lugia.camera);
         Camera_SetLookAtCamPos(&animData->cameraPosEnd, animData->hooh_lugia.camera);
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
@@ -581,44 +607,44 @@ static BOOL ov60_021E641C(TitleScreenAnimData *animData, BgConfig *bgConfig, Hea
         SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2), SCREEN_MASK_MAIN);
         SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BG0 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2), SCREEN_MASK_SUB);
         G2S_SetBlendAlpha(4, 0x39, 0, 0x1F);
-        animData->hooh_lugia.unk_B8 = 2;
-        animData->unk_0C0.unk_B8 = 2;
+        animData->hooh_lugia.subState = TITLESCREEN_MODELSUB_RUN;
+        animData->sparkles.subState = TITLESCREEN_MODELSUB_RUN;
         NNS_G3dGlbLightColor(GX_LIGHTID_1, RGB_WHITE);
-        animData->unk_17C = 0;
-        animData->unk_000 = 1;
+        animData->startInstructionFlashTimer = 0;
+        animData->state = TITLESCREEN_ANIM_RUN;
         break;
-    case 1:
-        if (animData->unk_1A8 == TRUE) {
-            if (animData->unk_17C == 0) {
+    case TITLESCREEN_ANIM_RUN:
+        if (animData->enableStartInstructionFlash == TRUE) {
+            if (animData->startInstructionFlashTimer == 0) {
                 GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_ON);
-            } else if (animData->unk_17C == 30) {
+            } else if (animData->startInstructionFlashTimer == 30) {
                 GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_OFF);
             }
         } else {
             GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_OFF);
         }
-        ++animData->unk_17C;
-        if (animData->unk_17C >= 45) {
-            animData->unk_17C = 0;
+        ++animData->startInstructionFlashTimer;
+        if (animData->startInstructionFlashTimer >= 45) {
+            animData->startInstructionFlashTimer = 0;
         }
         ret = TRUE;
         break;
     }
     TitleScreenAnimObjs_Run(&animData->hooh_lugia);
-    TitleScreenAnimObjs_Run(&animData->unk_0C0);
+    TitleScreenAnimObjs_Run(&animData->sparkles);
     sub_02026E50(0, 1);
-    ov60_021E67E8(animData);
+    TitleScreenAnim_RunTopScreenGlow(animData);
     return ret;
 }
 
-static BOOL ov60_021E6544(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID) {
+static BOOL TitleScreenAnim_UnloadAndRemoveTopScreenResources(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID) {
     PaletteData_FreeBuffers(animData->plttData, PLTTBUF_SUB_BG);
     PaletteData_Free(animData->plttData);
     animData->plttData = NULL;
     Camera_Delete(animData->hooh_lugia.camera);
     TitleScreen_Unload3DObjects(&animData->hooh_lugia);
-    TitleScreen_Unload3DObjects(&animData->unk_0C0);
-    ov60_021E68A0(bgConfig, heapID, animData);
+    TitleScreen_Unload3DObjects(&animData->sparkles);
+    TitleScreen_RemoveTouchToStartWindow(bgConfig, heapID, animData);
     G2_BlendNone();
     G3X_EdgeMarking(FALSE);
     gSystem.screensFlipped = FALSE;
@@ -626,42 +652,42 @@ static BOOL ov60_021E6544(TitleScreenAnimData *animData, BgConfig *bgConfig, Hea
     return TRUE;
 }
 
-static void ov60_021E65B4(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData *animData) {
+static void TitleScreenAnim_Load2dBgGfx(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData *animData) {
     s32 res1, res2;
 
     if (animData->gameVersion == VERSION_HEARTGOLD) {
-        GfGfxLoader_LoadCharData(NARC_demo_title_titledemo, 34, bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, heapID);
-        GfGfxLoader_LoadScrnData(NARC_demo_title_titledemo, 35, bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, heapID);
+        GfGfxLoader_LoadCharData(NARC_demo_title_titledemo, NARC_titledemo_titledemo_00000034_NCGR, bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, heapID);
+        GfGfxLoader_LoadScrnData(NARC_demo_title_titledemo, NARC_titledemo_titledemo_00000035_NSCR, bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, heapID);
     } else {
-        GfGfxLoader_LoadCharData(NARC_demo_title_titledemo, 36, bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, heapID);
-        GfGfxLoader_LoadScrnData(NARC_demo_title_titledemo, 37, bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, heapID);
+        GfGfxLoader_LoadCharData(NARC_demo_title_titledemo, NARC_titledemo_titledemo_00000036_NCGR, bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, heapID);
+        GfGfxLoader_LoadScrnData(NARC_demo_title_titledemo, NARC_titledemo_titledemo_00000037_NSCR, bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, heapID);
     }
-    BG_ClearCharDataRange(3, 0x20, 0, heapID);
+    BG_ClearCharDataRange(GF_BG_LYR_MAIN_3, 0x20, 0, heapID);
     BgClearTilemapBufferAndCommit(bgConfig, 3);
 
     if (animData->gameVersion == VERSION_HEARTGOLD) {
-        res1 = 4;
-        res2 = 13;
+        res1 = NARC_titledemo_titledemo_00000004_NCLR;
+        res2 = NARC_titledemo_titledemo_00000013_NCLR;
     } else {
-        res1 = 2;
-        res2 = 14;
+        res1 = NARC_titledemo_titledemo_00000002_NCLR;
+        res2 = NARC_titledemo_titledemo_00000014_NCLR;
     }
     GfGfxLoader_GXLoadPal(NARC_demo_title_titledemo, res1, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_0_OFFSET, 0, heapID);
     GfGfxLoader_GXLoadPal(NARC_demo_title_titledemo, res2, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_0_OFFSET, 0, heapID);
 
     if (animData->gameVersion == VERSION_HEARTGOLD) {
-        res1 = 3;
-        res2 = 4;
+        res1 = NARC_titledemo_titledemo_00000003_NCGR;
+        res2 = NARC_titledemo_titledemo_00000004_NCLR;
     } else {
-        res1 = 1;
-        res2 = 2;
+        res1 = NARC_titledemo_titledemo_00000001_NCGR;
+        res2 = NARC_titledemo_titledemo_00000002_NCLR;
     }
     GfGfxLoader_LoadCharData(NARC_demo_title_titledemo, res1, bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, heapID);
     GfGfxLoader_GXLoadPal(NARC_demo_title_titledemo, res2, GF_PAL_LOCATION_SUB_BGEXT, (enum GFPalSlotOffset)0x4000, 0, heapID);
-    GfGfxLoader_LoadScrnData(NARC_demo_title_titledemo, 0, bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, heapID);
+    GfGfxLoader_LoadScrnData(NARC_demo_title_titledemo, NARC_titledemo_titledemo_00000000_NSCR, bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, heapID);
 
-    GfGfxLoader_LoadCharData(NARC_demo_title_titledemo, 15, bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, heapID);
-    GfGfxLoader_LoadScrnData(NARC_demo_title_titledemo, 17, bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, heapID);
+    GfGfxLoader_LoadCharData(NARC_demo_title_titledemo, NARC_titledemo_titledemo_00000015_NCGR, bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, heapID);
+    GfGfxLoader_LoadScrnData(NARC_demo_title_titledemo, NARC_titledemo_titledemo_00000017_NSCR, bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, heapID);
 
     BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB_BLACK);
     BG_SetMaskColor(GF_BG_LYR_SUB_1, RGB_BLACK);
@@ -687,43 +713,43 @@ static void ov60_021E65B4(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData
     BG_LoadPlttData(3, &color2, sizeof(u16), 0x44);
 }
 
-static void ov60_021E67E8(TitleScreenAnimData *animData) {
-    switch (animData->unk_208) {
-    case 0:
-        animData->unk_208 = 1;
-        animData->unk_20C = 0;
-        animData->unk_210 = 0;
+static void TitleScreenAnim_RunTopScreenGlow(TitleScreenAnimData *animData) {
+    switch (animData->glowState) {
+    case TITLESCREEN_GLOW_SETUP:
+        animData->glowState = TITLESCREEN_GLOW_IN;
+        animData->glowTimer = 0;
+        animData->glowFadeStep = 0;
         break;
-    case 1:
-        ++animData->unk_210;
-        if (animData->unk_210 > 60) {
-            animData->unk_20C = 0;
-            animData->unk_208 = 2;
+    case TITLESCREEN_GLOW_IN:
+        ++animData->glowFadeStep;
+        if (animData->glowFadeStep > 60) {
+            animData->glowTimer = 0;
+            animData->glowState = TITLESCREEN_GLOW_OUT;
         }
         break;
-    case 2:
-        --animData->unk_210;
-        if (animData->unk_210 == 0) {
-            animData->unk_208 = 3;
-            animData->unk_20C = 0;
+    case TITLESCREEN_GLOW_OUT:
+        --animData->glowFadeStep;
+        if (animData->glowFadeStep == 0) {
+            animData->glowState = TITLESCREEN_GLOW_PAUSE;
+            animData->glowTimer = 0;
         }
         break;
-    case 3:
-        ++animData->unk_20C;
-        if (animData->unk_20C > 20) {
-            animData->unk_208 = 0;
-            animData->unk_20C = 0;
+    case TITLESCREEN_GLOW_PAUSE:
+        ++animData->glowTimer;
+        if (animData->glowTimer > 20) {
+            animData->glowState = TITLESCREEN_GLOW_SETUP;
+            animData->glowTimer = 0;
         }
         break;
     }
-    PaletteData_FadePalettesTowardsColorStep(animData->plttData, 2, 0xFF00, 160, animData->unk_210, RGB(12, 12, 12));
+    PaletteData_FadePalettesTowardsColorStep(animData->plttData, 2, 0xFF00, 160, animData->glowFadeStep, RGB(12, 12, 12));
 }
 
-static void ov60_021E68A0(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData *animData) {
+static void TitleScreen_RemoveTouchToStartWindow(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData *animData) {
     RemoveWindow(&animData->window);
 }
 
-static void ov60_021E68B0(TitleScreenAnimData *animData) {
+static void TitleScreenAnim_SetCameraInitialPos(TitleScreenAnimData *animData) {
     if (animData->gameVersion == VERSION_HEARTGOLD) {
         SetVec(animData->cameraPosStart, FX32_CONST(0), FX32_CONST(65), FX32_CONST(72));
         SetVec(animData->cameraPosEnd, FX32_CONST(625), FX32_CONST(152), FX32_CONST(256));
@@ -744,22 +770,18 @@ static void ov60_021E68B0(TitleScreenAnimData *animData) {
     }
 
     {
-    VecFx32 spC;
-    VecFx32 sp0;
+    VecFx32 light0vec;
+    VecFx32 light0vecNorm;
 
-    SetVec(spC, FX32_CONST(0), FX32_CONST(0.635498), FX32_CONST(0));
-    VEC_Normalize(&spC, &sp0);
-    animData->light0vec.x = sp0.x;
-    animData->light0vec.y = sp0.y;
-    animData->light0vec.z = sp0.z;
+    SetVec(light0vec, FX32_CONST(0), FX32_CONST(0.635498), FX32_CONST(0));
+    VEC_Normalize(&light0vec, &light0vecNorm);
+    animData->light0vec.x = light0vecNorm.x;
+    animData->light0vec.y = light0vecNorm.y;
+    animData->light0vec.z = light0vecNorm.z;
     }
 }
 
-fx32 ov60_021E69CC(fx32 x) {
-    return x < 0 ? -x : x;
-}
-
-static const struct UnkTitleScreenStruct_021EAF90 _021EAF40[5] = {
+static const struct CameraScript sCameraScript_HG[5] = {
     {{FX32_CONST(180), FX32_CONST(177), FX32_CONST(301)}, 10},
     {{FX32_CONST(335), FX32_CONST(-293), FX32_CONST(296)}, 5},
     {{FX32_CONST(180), FX32_CONST(177), FX32_CONST(301)}, 5},
@@ -767,7 +789,7 @@ static const struct UnkTitleScreenStruct_021EAF90 _021EAF40[5] = {
     {{FX32_CONST(0), FX32_CONST(0), FX32_CONST(0)}, 0},
 };
 
-static const struct UnkTitleScreenStruct_021EAF90 _021EAF90[5] = {
+static const struct CameraScript sCameraScript_SS[5] = {
     {{FX32_CONST(105), FX32_CONST(162), FX32_CONST(291)}, 10},
     {{FX32_CONST(395), FX32_CONST(432), FX32_CONST(191)}, 5},
     {{FX32_CONST(105), FX32_CONST(162), FX32_CONST(291)}, 5},
@@ -775,49 +797,53 @@ static const struct UnkTitleScreenStruct_021EAF90 _021EAF90[5] = {
     {{FX32_CONST(0), FX32_CONST(0), FX32_CONST(0)}, 0},
 };
 
-static void ov60_021E69D4(TitleScreenAnimData *animData) {
-    const struct UnkTitleScreenStruct_021EAF90 *r4 = animData->gameVersion == VERSION_HEARTGOLD ? _021EAF40 : _021EAF90;
-    ++animData->unk_1F4;
-    if (animData->unk_1F4 > r4[animData->unk_1F0].unk_0C * 30) {
-        VecFx32 sp0;
-        VEC_Subtract(&r4[animData->unk_1F0].unk_00, &animData->cameraPosEnd, &sp0);
-        if (sp0.x > FX32_ONE) {
+static fx32 fx32_abs(fx32 x) {
+    return x < 0 ? -x : x;
+}
+
+static void TitleScreenAnim_GetCameraNextPosition(TitleScreenAnimData *animData) {
+    const struct CameraScript *cameraScript = animData->gameVersion == VERSION_HEARTGOLD ? sCameraScript_HG : sCameraScript_SS;
+    ++animData->cameraSceneTimer;
+    if (animData->cameraSceneTimer > cameraScript[animData->cameraScene].duration * 30) {
+        VecFx32 pos;
+        VEC_Subtract(&cameraScript[animData->cameraScene].pos, &animData->cameraPosEnd, &pos);
+        if (pos.x > FX32_ONE) {
             animData->cameraPosEnd.x += 5 * FX32_ONE;
         }
-        if (sp0.x < -FX32_ONE) {
+        if (pos.x < -FX32_ONE) {
             animData->cameraPosEnd.x -= 5 * FX32_ONE;
         }
-        if (sp0.y > FX32_ONE) {
+        if (pos.y > FX32_ONE) {
             animData->cameraPosEnd.y += 5 * FX32_ONE;
         }
-        if (sp0.y < -FX32_ONE) {
+        if (pos.y < -FX32_ONE) {
             animData->cameraPosEnd.y -= 5 * FX32_ONE;
         }
-        if (sp0.z > FX32_ONE) {
+        if (pos.z > FX32_ONE) {
             animData->cameraPosEnd.z += 5 * FX32_ONE;
         }
-        if (sp0.z < -FX32_ONE) {
+        if (pos.z < -FX32_ONE) {
             animData->cameraPosEnd.z -= 5 * FX32_ONE;
         }
         Camera_SetLookAtCamPos(&animData->cameraPosEnd, animData->hooh_lugia.camera);
-        if (ov60_021E69CC(sp0.x) <= FX32_ONE && ov60_021E69CC(sp0.y) <= FX32_ONE && ov60_021E69CC(sp0.z) <= FX32_ONE) {
-            animData->unk_1F4 = 0;
-            ++animData->unk_1F0;
-            if (r4[animData->unk_1F0].unk_00.x == 0) {
-                animData->unk_1F0 = 0;
+        if (fx32_abs(pos.x) <= FX32_ONE && fx32_abs(pos.y) <= FX32_ONE && fx32_abs(pos.z) <= FX32_ONE) {
+            animData->cameraSceneTimer = 0;
+            ++animData->cameraScene;
+            if (cameraScript[animData->cameraScene].pos.x == 0) {
+                animData->cameraScene = 0;
             }
         }
     }
 }
 
-static void ov60_021E6B08(TitleScreenAnimData *animData) {
-    ++animData->unk_1FC;
-    if (animData->unk_1FC > 3) {
-        G2S_SetBG2Offset(0, animData->unk_1F8 / 2);
-        ++animData->unk_1F8;
-        if (animData->unk_1F8 > 31) {
-            animData->unk_1F8 = 31;
+static void TitleScreenAnim_FadeInGameTitleLayer(TitleScreenAnimData *animData) {
+    ++animData->gameTitleDelayTimer;
+    if (animData->gameTitleDelayTimer > 3) {
+        G2S_SetBG2Offset(0, animData->gameTitleFadeInTimer / 2);
+        ++animData->gameTitleFadeInTimer;
+        if (animData->gameTitleFadeInTimer > 31) {
+            animData->gameTitleFadeInTimer = 31;
         }
-        G2S_SetBlendAlpha(4, 0x39, animData->unk_1F8, 31 - animData->unk_1F8);
+        G2S_SetBlendAlpha(4, 0x39, animData->gameTitleFadeInTimer, 31 - animData->gameTitleFadeInTimer);
     }
 }
