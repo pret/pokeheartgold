@@ -42,22 +42,22 @@ void *_2DGfxResObj_GetData(struct _2DGfxRawResObj *resource);
 void _2DGfxResObj_ReplaceData(struct _2DGfxRawResObj *resource, void *newPtr);
 
 struct _3DGfxRawResMan *Create3DGfxResMan(int num, HeapID heapId);
-void Destroy3DGfxResMan(struct _3DGfxRawResMan *a0);
-BOOL _3DGfxResMan_DoesNotHaveObjWithId(struct _3DGfxRawResMan *a0, int id);
-struct _3DGfxRawResObj *_3DGfxResMan_AllocObj(struct _3DGfxRawResMan *a0, void *a1, int a2, u32 a3, HeapID heapId);
-struct _3DGfxRawResObj *_3DGfxResMan_AllocObjAndKeys(struct _3DGfxRawResMan *a0, void *a1, int a2, u32 a3, HeapID heapId);
-void _3DGfxResMan_FreeObjById(struct _3DGfxRawResMan *a0, int a1);
-void _3DGfxResMan_FreeAllObjs(struct _3DGfxRawResMan *a0);
-struct _3DGfxRawResObj *_3DGfxResMan_GetObjById(struct _3DGfxRawResMan *a0, int a1);
-NNSG3dResTex *_3DGfxResObj_GetTex(struct _3DGfxRawResObj *a0);
-void _3DGfxResObj_LoadTex(struct _3DGfxRawResObj *a0);
-void _3DGfxResMan_LoadObjTexById(struct _3DGfxRawResMan *a0, int a1);
-void _3DGfxResObj_FreeVramAndSecondaryHeader(struct _3DGfxRawResObj *a0);
-void _3DGfxResMan_FreeObjVramAndSecondaryHeaderById(struct _3DGfxRawResMan *a0, int a1);
-void _3DGfxResObj_AllocVramAndGetKeys(struct _3DGfxRawResObj *a0);
-NNSG3dTexKey _3DGfxResObj_GetTexKey(struct _3DGfxRawResObj *a0);
-NNSG3dTexKey _3DGfxResObj_GetTex4x4Key(struct _3DGfxRawResObj *a0);
-NNSG3dPlttKey _3DGfxResObj_GetPlttKey(struct _3DGfxRawResObj *a0);
+void Destroy3DGfxResMan(struct _3DGfxRawResMan *man);
+BOOL _3DGfxResMan_DoesNotHaveObjWithId(struct _3DGfxRawResMan *man, int id);
+struct _3DGfxRawResObj *_3DGfxResMan_AllocObj(struct _3DGfxRawResMan *man, void *resource, int id, u32 a3, HeapID heapId);
+struct _3DGfxRawResObj *_3DGfxResMan_AllocObjAndKeys(struct _3DGfxRawResMan *man, void *resource, int id, u32 a3, HeapID heapId);
+void _3DGfxResMan_FreeObjById(struct _3DGfxRawResMan *man, int id);
+void _3DGfxResMan_FreeAllObjs(struct _3DGfxRawResMan *man);
+struct _3DGfxRawResObj *_3DGfxResMan_GetObjById(struct _3DGfxRawResMan *man, int a1);
+NNSG3dResTex *_3DGfxResObj_GetTex(struct _3DGfxRawResObj *obj);
+void _3DGfxResObj_LoadTex(struct _3DGfxRawResObj *obj);
+void _3DGfxResMan_LoadObjTexById(struct _3DGfxRawResMan *man, int id);
+void _3DGfxResObj_FreeVramAndSecondaryHeader(struct _3DGfxRawResObj *obj);
+void _3DGfxResMan_FreeObjVramAndSecondaryHeaderById(struct _3DGfxRawResMan *man, int a1);
+void _3DGfxResObj_AllocVramAndGetKeys(struct _3DGfxRawResObj *obj);
+NNSG3dTexKey _3DGfxResObj_GetTexKey(struct _3DGfxRawResObj *obj);
+NNSG3dTexKey _3DGfxResObj_GetTex4x4Key(struct _3DGfxRawResObj *obj);
+NNSG3dPlttKey _3DGfxResObj_GetPlttKey(struct _3DGfxRawResObj *obj);
 u32 G3dResFileHeader_GetSizeWithoutTex(const NNSG3dResFileHeader *header);
 
 #endif //POKEHEARTGOLD_UNK_02025534_H
