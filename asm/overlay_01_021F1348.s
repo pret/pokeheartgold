@@ -546,7 +546,7 @@ ov01_021F1648: ; 0x021F1648
 	str r0, [r4, #0x14]
 	ldr r0, [sp, #0x24]
 	add r1, r5, #0
-	bl sub_02025780
+	bl Create3DGfxResMan
 	str r0, [r4, #0x18]
 	add r0, r7, #0
 	add r1, r4, #0
@@ -579,7 +579,7 @@ ov01_021F16B8: ; 0x021F16B8
 	ldr r0, [r5, #0x14]
 	bl ov01_021FC520
 	ldr r0, [r5, #0x18]
-	bl sub_020257C4
+	bl Destroy3DGfxResMan
 	add r0, r5, #0
 	bl ov01_021F1448
 	mov r0, #0
@@ -662,13 +662,13 @@ ov01_021F1758: ; 0x021F1758
 	bl sub_02026E18
 	ldr r0, [r5, #0x18]
 	ldr r1, [sp, #0x30]
-	bl sub_02025940
+	bl _3DGfxResMan_GetObjById
 	add r4, r0, #0
 	bne _021F178A
 	bl GF_AssertFail
 _021F178A:
 	add r0, r4, #0
-	bl sub_0202599C
+	bl _3DGfxResObj_GetTex
 	ldr r1, [sp, #0x34]
 	cmp r1, #1
 	bne _021F1798
@@ -812,13 +812,13 @@ _021F1866:
 	ldr r0, [sp, #0x1c]
 	cmp r0, #0
 	beq _021F18A0
-	bl sub_02025A9C
+	bl _3DGfxResObj_GetTexKey
 	str r0, [r4, #0x1c]
 	ldr r0, [sp, #0x1c]
-	bl sub_02025AAC
+	bl _3DGfxResObj_GetTex4x4Key
 	str r0, [r4, #0x20]
 	ldr r0, [sp, #0x1c]
-	bl sub_02025ABC
+	bl _3DGfxResObj_GetPlttKey
 	str r0, [r4, #0x24]
 _021F18A0:
 	ldr r0, [sp, #0x20]
@@ -940,7 +940,7 @@ ov01_021F1930: ; 0x021F1930
 	ldr r1, [sp, #4]
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_02025844
+	bl _3DGfxResMan_AllocObjAndKeys
 	cmp r0, #0
 	bne _021F1962
 	bl GF_AssertFail
@@ -956,11 +956,11 @@ _021F1962:
 	thumb_func_start ov01_021F1970
 ov01_021F1970: ; 0x021F1970
 	ldr r0, [r0, #0x20]
-	ldr r3, _021F1978 ; =sub_020258E0
+	ldr r3, _021F1978 ; =_3DGfxResMan_FreeObjById
 	ldr r0, [r0, #0x18]
 	bx r3
 	.balign 4, 0
-_021F1978: .word sub_020258E0
+_021F1978: .word _3DGfxResMan_FreeObjById
 	thumb_func_end ov01_021F1970
 
 	thumb_func_start ov01_021F197C
@@ -997,7 +997,7 @@ ov01_021F19B4: ; 0x021F19B4
 	add r5, r0, #0
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #4]
-	bl sub_020259E0
+	bl _3DGfxResMan_LoadObjTexById
 	mov r0, #1
 	str r0, [r4]
 	add r0, r5, #0
@@ -1016,7 +1016,7 @@ ov01_021F19D0: ; 0x021F19D0
 	bne _021F19F0
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #4]
-	bl sub_02025A48
+	bl _3DGfxResMan_FreeObjVramAndSecondaryHeaderById
 	add r0, r4, #0
 	bl ov01_021F1448
 	add r0, r5, #0
@@ -1155,7 +1155,7 @@ ov01_021F1AD4: ; 0x021F1AD4
 	push {r3, r4, r5, lr}
 	ldr r0, [r0, #0x20]
 	ldr r0, [r0, #0x18]
-	bl sub_02025940
+	bl _3DGfxResMan_GetObjById
 	add r5, r0, #0
 	ldr r4, _021F1AF8 ; =0x00000000
 	bne _021F1AE8
@@ -1164,7 +1164,7 @@ _021F1AE8:
 	cmp r5, #0
 	beq _021F1AF4
 	add r0, r5, #0
-	bl sub_0202599C
+	bl _3DGfxResObj_GetTex
 	add r4, r0, #0
 _021F1AF4:
 	add r0, r4, #0

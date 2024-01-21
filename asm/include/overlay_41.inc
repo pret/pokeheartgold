@@ -179,8 +179,8 @@
 .public GF_AssertFail
 .public Create2DGfxResMan
 .public Destroy2DGfxResMan
-.public sub_020255A0
-.public sub_020255C4
+.public _2DGfxResMan_DoesNotHaveObjWithId
+.public _2DGfxResMan_AllocObj
 .public String_New
 .public String_Delete
 .public TouchHitboxController_Create

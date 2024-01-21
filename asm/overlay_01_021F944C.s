@@ -567,7 +567,7 @@ ov01_021F9808: ; 0x021F9808
 	bl ov01_021FA220
 	ldr r0, [sp, #0x1c]
 	mov r1, #4
-	bl sub_02025780
+	bl Create3DGfxResMan
 	add r1, r0, #0
 	add r0, r5, #0
 	bl ov01_021FA1EC
@@ -597,7 +597,7 @@ ov01_021F9890: ; 0x021F9890
 	bl ov01_021FC520
 	add r0, r4, #0
 	bl ov01_021FA1F4
-	bl sub_020257C4
+	bl Destroy3DGfxResMan
 	pop {r4, pc}
 	.balign 4, 0
 _021F98B4:
@@ -664,7 +664,7 @@ ov01_021F9918: ; 0x021F9918
 	add r6, r1, #0
 	ldr r0, [r0]
 	add r1, r4, #0
-	bl sub_020257E8
+	bl _3DGfxResMan_DoesNotHaveObjWithId
 	cmp r0, #0
 	bne _021F9932
 	mov r0, #0
@@ -1400,7 +1400,7 @@ _021F9E5A:
 	bne _021F9E8C
 	ldr r0, [sp, #4]
 	add r1, r4, #0
-	bl sub_020258E0
+	bl _3DGfxResMan_FreeObjById
 	add r0, r6, #0
 	add r1, r4, #0
 	bl ov01_021FA4F0
@@ -1829,7 +1829,7 @@ _021FA184:
 	add r0, r4, #0
 	bl ov01_021FA1F4
 	add r1, r5, #0
-	bl sub_020258E0
+	bl _3DGfxResMan_FreeObjById
 	add r0, r4, #0
 	add r1, r5, #0
 	bl ov01_021F9E04
@@ -2202,18 +2202,18 @@ ov01_021FA370: ; 0x021FA370
 	add r0, r6, #0
 	bl ov01_021FA1F4
 	add r1, r5, #0
-	bl sub_02025940
+	bl _3DGfxResMan_GetObjById
 	add r6, r0, #0
-	bl sub_0202599C
+	bl _3DGfxResObj_GetTex
 	str r0, [r4, #4]
 	add r0, r6, #0
-	bl sub_02025A9C
+	bl _3DGfxResObj_GetTexKey
 	str r0, [r4, #0x1c]
 	add r0, r6, #0
-	bl sub_02025AAC
+	bl _3DGfxResObj_GetTex4x4Key
 	str r0, [r4, #0x20]
 	add r0, r6, #0
-	bl sub_02025ABC
+	bl _3DGfxResObj_GetPlttKey
 	str r0, [r4, #0x24]
 	add r0, r5, #0
 	bl ov01_021FA2AC
@@ -2573,7 +2573,7 @@ ov01_021FA61C: ; 0x021FA61C
 	ldr r0, [r0]
 	add r2, r4, #0
 	mov r3, #1
-	bl sub_02025844
+	bl _3DGfxResMan_AllocObjAndKeys
 	cmp r0, #0
 	bne _021FA642
 	bl GF_AssertFail
@@ -2693,7 +2693,7 @@ _021FA6FA:
 	cmp r0, #0
 	beq _021FA70E
 	ldr r1, [r5, #4]
-	bl sub_020259E0
+	bl _3DGfxResMan_LoadObjTexById
 	str r7, [r5]
 _021FA70E:
 	mov r0, #0
@@ -2728,7 +2728,7 @@ _021FA734:
 	cmp r0, #0
 	beq _021FA74A
 	ldr r1, [r5, #4]
-	bl sub_02025A48
+	bl _3DGfxResMan_FreeObjVramAndSecondaryHeaderById
 	str r7, [r5]
 	str r7, [r5, #8]
 _021FA74A:

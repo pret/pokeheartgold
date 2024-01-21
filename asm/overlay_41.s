@@ -749,7 +749,7 @@ ov41_022463DC: ; 0x022463DC
 	ldr r0, [r4, #0x34]
 	add r6, r1, #0
 	add r5, r2, #0
-	bl sub_020255C4
+	bl _2DGfxResMan_AllocObj
 	ldr r1, [r4, #0x38]
 	lsl r5, r5, #2
 	add r0, r6, #0
@@ -1783,7 +1783,7 @@ _02246B92:
 	ldr r0, [r7, #0x14]
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_020255C4
+	bl _2DGfxResMan_AllocObj
 	ldr r1, [r7, #8]
 	add r0, r4, #0
 	add r1, r1, #4
@@ -1846,7 +1846,7 @@ _02246BFA:
 	ldr r0, [r4, #0x14]
 	ldr r1, [sp, #0xc]
 	ldr r2, [sp, #4]
-	bl sub_020255C4
+	bl _2DGfxResMan_AllocObj
 	ldr r1, [sp, #4]
 	mov r0, #0xc
 	add r7, r1, #0
@@ -12300,7 +12300,7 @@ _0224B972:
 	add r5, r0, #0
 	ldr r0, [r4, #0x10]
 	add r1, r5, #0
-	bl sub_020255A0
+	bl _2DGfxResMan_DoesNotHaveObjWithId
 	cmp r0, #1
 	bne _0224B9BE
 	mov r0, #1
@@ -12317,7 +12317,7 @@ _0224B972:
 	ldr r0, [r4, #0x10]
 	add r1, r7, #0
 	add r2, r5, #0
-	bl sub_020255C4
+	bl _2DGfxResMan_AllocObj
 	ldr r1, [r4]
 	lsl r5, r5, #3
 	add r1, r1, r5
@@ -12353,7 +12353,7 @@ _0224B9D0:
 	ldr r0, [r4, #0x14]
 	add r1, r5, #0
 	mov r2, #0
-	bl sub_020255C4
+	bl _2DGfxResMan_AllocObj
 	ldr r1, [r4, #8]
 	add r0, r5, #0
 	add r1, r1, #4

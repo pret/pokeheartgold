@@ -60,7 +60,7 @@ ov49_02258830: ; 0x02258830
 	bl NNS_G3dPlttReleasePlttKey
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_02025ACC
+	bl G3dResFileHeader_GetSizeWithoutTex
 	add r6, r0, #0
 	add r0, r7, #0
 	add r1, r6, #0
