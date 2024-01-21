@@ -2,6 +2,7 @@
 #define NNSYS_G3D_GLBSTATE_H_
 
 #include <nitro.h>
+#include <nnsys/g3d/kernel.h>
 
 typedef enum {
     NNS_G3D_GLB_FLAG_FLUSH_WVP              = 0x00000001,

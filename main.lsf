@@ -84,7 +84,6 @@ Static main
 	Object src/timer3.o
 	Object src/error_handling.o
 	Object src/unk_02025534.o
-	Object asm/unk_02025534_s.o
 	Object asm/unk_02025C44.o
 	Object src/font_data.o
 	Object src/pm_string.o
