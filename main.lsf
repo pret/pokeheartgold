@@ -64,7 +64,7 @@ Static main
 	Object src/system.o
 	Object src/heap.o
 	Object src/bg_window.o
-	Object asm/unk_0201F4C4.o
+	Object src/unk_0201F4C4.o
 	Object src/sys_task.o
 	Object asm/unk_0201F990.o
 	Object src/string_control_code.o

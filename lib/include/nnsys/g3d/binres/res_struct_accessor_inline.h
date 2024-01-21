@@ -1,6 +1,8 @@
 #ifndef NNSYS_G3D_BINRES_RES_STRUCT_ACCESSOR_INLINE_H_
 #define NNSYS_G3D_BINRES_RES_STRUCT_ACCESSOR_INLINE_H_
 
+#include "res_struct.h"
+
 static inline void* NNS_G3dGetResDataByIdx(const NNSG3dResDict* dict, u32 idx) {
     NNSG3dResDictEntryHeader* hdr;
 
