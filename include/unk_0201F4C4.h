@@ -4,11 +4,11 @@
 #include "global.h"
 #include "heap.h"
 
-BOOL sub_0201F53C(NNSG3dResTex *tex);
-void sub_0201F51C(NNSG3dRenderObj *obj, NNSG3dResMdl **p_mdl, NNSG3dResFileHeader **p_header);
+BOOL G3dResTexIsLoaded(NNSG3dResTex *tex);
+void G3dRenderObjInit_FromHeader(NNSG3dRenderObj *obj, NNSG3dResMdl **p_mdl, NNSG3dResFileHeader **p_header);
 void Draw3dModel(NNSG3dRenderObj *obj, const VecFx32 *translation, const MtxFx33 *rotation, const VecFx32 *scale);
-void sub_0201F590(HeapID heapID);
-void sub_0201F63C(void);
+void Simple3DVramManager_Init(HeapID heapID);
+void Simple3DVramManager_Delete(void);
 BOOL Bind3dModelSet(NNSG3dResFileHeader *obj, const NNSG3dResTex *tex);
 BOOL AllocAndLoad3dTexResources(NNSG3dResTex *tex);
 

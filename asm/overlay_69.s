@@ -76,7 +76,7 @@ _021E5960:
 	ldr r0, [r5]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_0201F590
+	bl Simple3DVramManager_Init
 	ldr r0, [r5]
 	bl BgConfig_Alloc
 	ldr r1, _021E5A24 ; =0x0000C010
@@ -904,7 +904,7 @@ ov69_021E6080: ; 0x021E6080
 	ldr r0, _021E60EC ; =0x0000C080
 	ldr r0, [r4, r0]
 	bl MessageFormat_Delete
-	bl sub_0201F63C
+	bl Simple3DVramManager_Delete
 	ldr r0, _021E60F0 ; =0x0000C010
 	ldr r0, [r4, r0]
 	bl FreeToHeap
@@ -2612,7 +2612,7 @@ ov69_021E6E88: ; 0x021E6E88
 	add r0, r5, r0
 	add r1, r5, r1
 	add r2, r5, r2
-	bl sub_0201F51C
+	bl G3dRenderObjInit_FromHeader
 	ldr r2, [r5]
 	add r0, r4, #0
 	mov r1, #1
@@ -2626,7 +2626,7 @@ ov69_021E6E88: ; 0x021E6E88
 	add r0, r5, r0
 	add r1, r5, r1
 	add r2, r5, r2
-	bl sub_0201F51C
+	bl G3dRenderObjInit_FromHeader
 	ldr r2, [r5]
 	add r0, r4, #0
 	mov r1, #2
@@ -2640,7 +2640,7 @@ ov69_021E6E88: ; 0x021E6E88
 	add r0, r5, r0
 	add r1, r5, r1
 	add r2, r5, r2
-	bl sub_0201F51C
+	bl G3dRenderObjInit_FromHeader
 	ldr r2, [r5]
 	add r0, r4, #0
 	mov r1, #3
@@ -2653,7 +2653,7 @@ ov69_021E6E88: ; 0x021E6E88
 	add r0, r5, r0
 	add r1, r5, r1
 	add r2, r5, r2
-	bl sub_0201F51C
+	bl G3dRenderObjInit_FromHeader
 	ldr r2, [r5]
 	add r0, r4, #0
 	mov r1, #4
@@ -2666,7 +2666,7 @@ ov69_021E6E88: ; 0x021E6E88
 	add r0, r5, r0
 	add r1, r5, r1
 	add r2, r5, r2
-	bl sub_0201F51C
+	bl G3dRenderObjInit_FromHeader
 	pop {r3, r4, r5, pc}
 	nop
 _021E6F2C: .word 0x0000C0DC

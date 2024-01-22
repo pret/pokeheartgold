@@ -3,14 +3,14 @@
 #include "gf_3d_vramman.h"
 #include "gf_gfx_planes.h"
 
-static GF3DVramMan *_021D15A0;
+static GF3DVramMan *sSimple3DVramManager;
 
-static void sub_0201F4C4(NNSG3dResMdl **ppMdl, NNSG3dResFileHeader **ppHeader);
-static void sub_0201F5B8(void);
+static void getFirstMdlFromSet(NNSG3dResMdl **ppMdl, NNSG3dResFileHeader **ppHeader);
+static void initializeSimple3DVramManager(void);
 
-static void sub_0201F4C4(NNSG3dResMdl **ppMdl, NNSG3dResFileHeader **ppHeader) {
+static void getFirstMdlFromSet(NNSG3dResMdl **ppMdl, NNSG3dResFileHeader **ppHeader) {
     NNSG3dResTex *tex = NNS_G3dGetTex(*ppHeader);
-    if (tex != NULL && !sub_0201F53C(tex)) {
+    if (tex != NULL && !G3dResTexIsLoaded(tex)) {
         DC_FlushRange(*ppHeader, (*ppHeader)->fileSize);
         NNS_G3dResDefaultSetup(*ppHeader);
     }
@@ -19,13 +19,13 @@ static void sub_0201F4C4(NNSG3dResMdl **ppMdl, NNSG3dResFileHeader **ppHeader) {
     *ppMdl = NNS_G3dGetMdlByIdx(mdlSet, 0);
 }
 
-void sub_0201F51C(NNSG3dRenderObj *obj, NNSG3dResMdl **p_mdl, NNSG3dResFileHeader **p_header) {
-    sub_0201F4C4(p_mdl, p_header);
+void G3dRenderObjInit_FromHeader(NNSG3dRenderObj *obj, NNSG3dResMdl **p_mdl, NNSG3dResFileHeader **p_header) {
+    getFirstMdlFromSet(p_mdl, p_header);
     GF_ASSERT(p_mdl != NULL);
     NNS_G3dRenderObjInit(obj, *p_mdl);
 }
 
-BOOL sub_0201F53C(NNSG3dResTex *tex) {
+BOOL G3dResTexIsLoaded(NNSG3dResTex *tex) {
     return (tex->texInfo.flag & NNS_G3D_RESTEX_LOADED) || (tex->tex4x4Info.flag & NNS_G3D_RESTEX_LOADED);
 }
 
@@ -37,11 +37,11 @@ void Draw3dModel(NNSG3dRenderObj *obj, const VecFx32 *translation, const MtxFx33
     NNS_G3dDraw(obj);
 }
 
-void sub_0201F590(HeapID heapID) {
-    _021D15A0 = GF_3DVramMan_Create(heapID, 0, 2, 0, 4, sub_0201F5B8);
+void Simple3DVramManager_Init(HeapID heapID) {
+    sSimple3DVramManager = GF_3DVramMan_Create(heapID, 0, 2, 0, 4, initializeSimple3DVramManager);
 }
 
-static void sub_0201F5B8(void) {
+static void initializeSimple3DVramManager(void) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
     G2_SetBG0Priority(1);
     G3X_SetShading(GX_SHADING_TOON);
@@ -54,8 +54,8 @@ static void sub_0201F5B8(void) {
     G3_ViewPort(0, 0, 255, 191);
 }
 
-void sub_0201F63C(void) {
-    GF_3DVramMan_Delete(_021D15A0);
+void Simple3DVramManager_Delete(void) {
+    GF_3DVramMan_Delete(sSimple3DVramManager);
 }
 
 BOOL Bind3dModelSet(NNSG3dResFileHeader *hdr, const NNSG3dResTex *tex) {

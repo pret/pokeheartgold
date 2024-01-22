@@ -96,7 +96,7 @@
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
-.public sub_0201F51C
+.public G3dRenderObjInit_FromHeader
 .public Draw3dModel
 .public GetLCRNGSeed
 .public SetLCRNGSeed

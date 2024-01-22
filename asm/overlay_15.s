@@ -8759,7 +8759,7 @@ ov15_021FD93C: ; 0x021FD93C
 	sub sp, #0xc
 	add r5, r0, #0
 	mov r0, #6
-	bl sub_0201F590
+	bl Simple3DVramManager_Init
 	ldr r2, _021FDA94 ; =0x04000060
 	ldr r0, _021FDA98 ; =0xFFFFCFFF
 	ldrh r1, [r2]
@@ -9155,7 +9155,7 @@ ov15_021FDC6C: ; 0x021FDC6C
 	ldr r0, _021FDC84 ; =0x00000818
 	ldr r0, [r4, r0]
 	bl Camera_Delete
-	bl sub_0201F63C
+	bl Simple3DVramManager_Delete
 	pop {r4, pc}
 	nop
 _021FDC84: .word 0x00000818
@@ -9317,7 +9317,7 @@ _021FDDB6:
 	add r0, r4, #0
 	add r1, #0x54
 	add r2, #0x58
-	bl sub_0201F51C
+	bl G3dRenderObjInit_FromHeader
 	ldr r0, [r4, #0x58]
 	bl NNS_G3dGetTex
 	str r0, [sp, #0xc]

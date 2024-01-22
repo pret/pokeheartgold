@@ -4299,7 +4299,7 @@ _021F66B6:
 	ldr r0, [r4, #0x14]
 	cmp r0, #0
 	beq _021F66CE
-	bl sub_0201F53C
+	bl G3dResTexIsLoaded
 	cmp r0, #1
 	bne _021F66CE
 	ldr r0, [r4, #0x10]
@@ -4436,7 +4436,7 @@ ov01_021F67B4: ; 0x021F67B4
 	ldr r0, [sp, #0x10]
 	cmp r0, #0
 	beq _021F67DE
-	bl sub_0201F53C
+	bl G3dResTexIsLoaded
 	cmp r0, #1
 	bne _021F67DE
 	ldr r0, [r4]

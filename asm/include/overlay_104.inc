@@ -17,10 +17,10 @@
 .public DestroyHeap
 .public FreeToHeap
 .public GF_ExpHeap_FndInitAllocator
-.public sub_0201F51C
+.public G3dRenderObjInit_FromHeader
 .public Draw3dModel
-.public sub_0201F590
-.public sub_0201F63C
+.public Simple3DVramManager_Init
+.public Simple3DVramManager_Delete
 .public GfGfx_SetBanks
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_DisableEngineBPlanes

@@ -10,7 +10,7 @@
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
 .public FreeToHeap
-.public sub_0201F53C
+.public G3dResTexIsLoaded
 .public sub_020237EC
 .public sub_02023874
 .public sub_02023D44

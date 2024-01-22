@@ -11,7 +11,7 @@
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
 .public FreeToHeap
-.public sub_0201F53C
+.public G3dResTexIsLoaded
 .public Draw3dModel
 .public Bind3dModelSet
 .public SysTask_GetData

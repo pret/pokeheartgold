@@ -300,7 +300,7 @@ static void TitleScreen_Load3DObjects(TitleScreenAnimObject *animObj, int texFil
     GF_ExpHeap_FndInitAllocator(&animObj->allocator, heapID, 4);
     void *pAnim;
     animObj->resFileHeader = AllocAndReadWholeNarcMemberByIdPair(NARC_demo_title_titledemo, texFileId, heapID);
-    sub_0201F51C(&animObj->renderObj, &animObj->resModel, &animObj->resFileHeader);
+    G3dRenderObjInit_FromHeader(&animObj->renderObj, &animObj->resModel, &animObj->resFileHeader);
     NNSG3dResTex *tex = NNS_G3dGetTex(animObj->resFileHeader);
 
     if (nsbcaId > 0) {

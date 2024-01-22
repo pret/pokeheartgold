@@ -5836,7 +5836,7 @@ _021E99DE:
 	add r0, r0, r7
 	add r1, sp, #0x28
 	add r2, r2, r7
-	bl sub_0201F51C
+	bl G3dRenderObjInit_FromHeader
 	ldr r0, [sp, #0xc]
 	add r0, r0, r7
 	add r0, #0xd8
