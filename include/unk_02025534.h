@@ -60,4 +60,4 @@ NNSG3dTexKey _3DGfxResObj_GetTex4x4Key(struct _3DGfxRawResObj *obj);
 NNSG3dPlttKey _3DGfxResObj_GetPlttKey(struct _3DGfxRawResObj *obj);
 u32 G3dResFileHeader_GetSizeWithoutTex(const NNSG3dResFileHeader *header);
 
-#endif //POKEHEARTGOLD_UNK_02025534_H
+#endif // POKEHEARTGOLD_UNK_02025534_H

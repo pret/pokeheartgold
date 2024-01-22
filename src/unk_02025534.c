@@ -255,7 +255,6 @@ static int Get3DGfxRawResObjId(struct _3DGfxRawResObj *obj) {
     return Get2DGfxRawResObjId(obj->obj);
 }
 
-
 NNSG3dResTex *_3DGfxResObj_GetTex(struct _3DGfxRawResObj *obj) {
     GF_ASSERT(obj != NULL);
     return _3DGfxResObj_GetTex_Internal(obj);
