@@ -30,11 +30,11 @@ struct _3DGfxRawResMan {
 };
 
 struct _2DGfxRawResMan *Create2DGfxResMan(int num, HeapID heapId);
-void Destroy2DGfxResMan(struct _2DGfxRawResMan *a0);
+void Destroy2DGfxResMan(struct _2DGfxRawResMan *man);
 BOOL _2DGfxResMan_DoesNotHaveObjWithId(struct _2DGfxRawResMan *resourceMgr, int id);
 struct _2DGfxRawResObj *_2DGfxResMan_AllocObj(struct _2DGfxRawResMan *resourceMgr, void *resource, int id);
 struct _2DGfxRawResObj *_2DGfxResMan_ReadAndAllocObj(struct _2DGfxRawResMan *resourceMgr, const char *name, int id, HeapID heapId);
-void _2DGfxResMan_FreeObj(struct _2DGfxRawResMan *resourceMgr, struct _2DGfxRawResObj *a1);
+void _2DGfxResMan_FreeObj(struct _2DGfxRawResMan *resourceMgr, struct _2DGfxRawResObj *obj);
 void _2DGfxResMan_FreeAllObjs(struct _2DGfxRawResMan *resourceMgr);
 struct _2DGfxRawResObj *_2DGfxResMan_GetObjById(struct _2DGfxRawResMan *resourceMgr, int id);
 int Get2DGfxRawResObjId(struct _2DGfxRawResObj *resource);
@@ -48,12 +48,12 @@ struct _3DGfxRawResObj *_3DGfxResMan_AllocObj(struct _3DGfxRawResMan *man, void 
 struct _3DGfxRawResObj *_3DGfxResMan_AllocObjAndKeys(struct _3DGfxRawResMan *man, void *resource, int id, BOOL shouldCopyWithoutTex, HeapID heapId);
 void _3DGfxResMan_FreeObjById(struct _3DGfxRawResMan *man, int id);
 void _3DGfxResMan_FreeAllObjs(struct _3DGfxRawResMan *man);
-struct _3DGfxRawResObj *_3DGfxResMan_GetObjById(struct _3DGfxRawResMan *man, int a1);
+struct _3DGfxRawResObj *_3DGfxResMan_GetObjById(struct _3DGfxRawResMan *man, int id);
 NNSG3dResTex *_3DGfxResObj_GetTex(struct _3DGfxRawResObj *obj);
 void _3DGfxResObj_LoadTex(struct _3DGfxRawResObj *obj);
 void _3DGfxResMan_LoadObjTexById(struct _3DGfxRawResMan *man, int id);
 void _3DGfxResObj_FreeVramAndSecondaryHeader(struct _3DGfxRawResObj *obj);
-void _3DGfxResMan_FreeObjVramAndSecondaryHeaderById(struct _3DGfxRawResMan *man, int a1);
+void _3DGfxResMan_FreeObjVramAndSecondaryHeaderById(struct _3DGfxRawResMan *man, int id);
 void _3DGfxResObj_AllocVramAndGetKeys(struct _3DGfxRawResObj *obj);
 NNSG3dTexKey _3DGfxResObj_GetTexKey(struct _3DGfxRawResObj *obj);
 NNSG3dTexKey _3DGfxResObj_GetTex4x4Key(struct _3DGfxRawResObj *obj);
