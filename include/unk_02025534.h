@@ -20,8 +20,8 @@ struct _3DGfxRawResObj {
     NNSG3dTexKey tex4x4Key;
     NNSG3dPlttKey plttKey;
     void *resFileHeader;
-    u16 unk_14;
-    u16 unk_16;
+    u16 hasLoadedFromHeader;
+    u16 headerNeedsLoad;
 };
 
 struct _3DGfxRawResMan {
@@ -44,8 +44,8 @@ void _2DGfxResObj_ReplaceData(struct _2DGfxRawResObj *resource, void *newPtr);
 struct _3DGfxRawResMan *Create3DGfxResMan(int num, HeapID heapId);
 void Destroy3DGfxResMan(struct _3DGfxRawResMan *man);
 BOOL _3DGfxResMan_DoesNotHaveObjWithId(struct _3DGfxRawResMan *man, int id);
-struct _3DGfxRawResObj *_3DGfxResMan_AllocObj(struct _3DGfxRawResMan *man, void *resource, int id, u32 a3, HeapID heapId);
-struct _3DGfxRawResObj *_3DGfxResMan_AllocObjAndKeys(struct _3DGfxRawResMan *man, void *resource, int id, u32 a3, HeapID heapId);
+struct _3DGfxRawResObj *_3DGfxResMan_AllocObj(struct _3DGfxRawResMan *man, void *resource, int id, BOOL shouldCopyWithoutTex, HeapID heapId);
+struct _3DGfxRawResObj *_3DGfxResMan_AllocObjAndKeys(struct _3DGfxRawResMan *man, void *resource, int id, BOOL shouldCopyWithoutTex, HeapID heapId);
 void _3DGfxResMan_FreeObjById(struct _3DGfxRawResMan *man, int id);
 void _3DGfxResMan_FreeAllObjs(struct _3DGfxRawResMan *man);
 struct _3DGfxRawResObj *_3DGfxResMan_GetObjById(struct _3DGfxRawResMan *man, int a1);
