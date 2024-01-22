@@ -4,7 +4,7 @@
 #include "unk_0201F4C4.h"
 
 static struct _2DGfxRawResObj *_2DGfxResMan_FindNextFreeObjSlot(struct _2DGfxRawResMan *resourceMgr);
-void _2DGfxResObj_Init(struct _2DGfxRawResObj *resourceObj);
+static void _2DGfxResObj_Init(struct _2DGfxRawResObj *resourceObj);
 static void _3DGfxResMan_FreeObj(struct _3DGfxRawResMan *man, struct _3DGfxRawResObj *obj);
 static int Get3DGfxRawResObjId(struct _3DGfxRawResObj *obj);
 static struct _3DGfxRawResObj *_3DGfxResMan_FindNextFreeObjSlot(const struct _3DGfxRawResMan *man);
@@ -138,7 +138,7 @@ static struct _2DGfxRawResObj *_2DGfxResMan_FindNextFreeObjSlot(struct _2DGfxRaw
     return NULL;
 }
 
-void _2DGfxResObj_Init(struct _2DGfxRawResObj *obj) {
+static void _2DGfxResObj_Init(struct _2DGfxRawResObj *obj) {
     GF_ASSERT(obj != NULL);
     obj->id = -1;
     obj->data = NULL;
