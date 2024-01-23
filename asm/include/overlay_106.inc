@@ -39,8 +39,8 @@
 .public UnkImageStruct_SetSpriteVisibleFlag
 .public UnkImageStruct_SetSpritePriority
 .public UnkImageStruct_SetSpritePositionXY
-.public CreateVWaitSysTask
-.public DestroySysTask
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_020145B4

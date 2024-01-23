@@ -4,8 +4,8 @@
 .public PaletteData_LoadPalette
 .public PlaySE
 .public GfGfxLoader_LoadFromNarc
-.public CreateVWaitSysTask
-.public DestroySysTask
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public sub_020183F0
 .public sub_02018410
 .public sub_02018424

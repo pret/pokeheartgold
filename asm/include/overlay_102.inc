@@ -38,9 +38,9 @@
 .public Sprite_SetPositionXY
 .public Sprite_GetPositionXY
 .public Sprite_AddPositionXY
-.public CreateSysTask
-.public CreateVBlankSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx2
 .public sub_0200E948
 .public BeginNormalPaletteFade

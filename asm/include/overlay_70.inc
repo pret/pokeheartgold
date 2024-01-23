@@ -66,8 +66,8 @@
 .public MessagePrinter_Delete
 .public sub_0200CDAC
 .public PrintUIntOnWindow
-.public CreateVBlankSysTask
-.public DestroySysTask
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
 .public sub_0200E5D4

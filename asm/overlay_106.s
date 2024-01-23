@@ -712,7 +712,7 @@ _021E5E28:
 	ldr r0, _021E5E58 ; =ov106_021E5F24
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateVWaitSysTask
+	bl SysTask_CreateOnVWaitQueue
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -873,7 +873,7 @@ _021E5F6E:
 	mov r0, #1
 	str r0, [r4, #0x30]
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov106_021E5F24
 

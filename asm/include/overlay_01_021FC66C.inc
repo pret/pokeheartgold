@@ -7,8 +7,8 @@
 .public MessageFormat_New_Custom
 .public MessageFormat_Delete
 .public StringExpandPlaceholders
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public ClearFrameAndWindow2
 .public AllocFromHeapAtEnd
 .public FreeToHeap

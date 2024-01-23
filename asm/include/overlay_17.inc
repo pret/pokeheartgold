@@ -55,8 +55,8 @@
 .public sub_0200E2B4
 .public sub_0200E2B8
 .public sub_0200E2EC
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public BeginNormalPaletteFade

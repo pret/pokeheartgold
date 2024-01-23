@@ -68,8 +68,8 @@
 .public MessageFormat_Delete
 .public BufferECWord
 .public StringExpandPlaceholders
-.public CreateVWaitSysTask
-.public DestroySysTask
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public BeginNormalPaletteFade

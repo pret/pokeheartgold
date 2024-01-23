@@ -1582,7 +1582,7 @@ _02247116:
 	add r0, r4, #0
 	bl FreeToHeap
 	ldr r0, [sp, #0x10]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #0x158
 	pop {r3, r4, r5, r6, r7, pc}
 _02247146:
@@ -1653,7 +1653,7 @@ _022471AC:
 	add r0, r4, #0
 	bl FreeToHeap
 	ldr r0, [sp, #0x10]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #0x158
 	pop {r3, r4, r5, r6, r7, pc}
 _022471DC:
@@ -1681,7 +1681,7 @@ _022471F8:
 	add r0, r4, #0
 	bl FreeToHeap
 	ldr r0, [sp, #0x10]
-	bl DestroySysTask
+	bl SysTask_Destroy
 _02247216:
 	add sp, #0x158
 	pop {r3, r4, r5, r6, r7, pc}

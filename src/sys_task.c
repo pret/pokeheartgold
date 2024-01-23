@@ -55,9 +55,9 @@ SysTaskQueue *SysTaskQueue_PlacementNew(u32 num, void *p_mem) {
     GF_ASSERT(p_mem != NULL);
 
     SysTaskQueue *ret = (SysTaskQueue *)p_mem;
-    SysTask **taskStack = (SysTask **)((char *)p_mem + sizeof(SysTaskQueue));
+    SysTask **taskStack = (SysTask **)&ret[1];
     ret->taskStack = taskStack;
-    SysTask *taskList = (SysTask *)((char *)taskStack + num * sizeof(SysTask *));
+    SysTask *taskList = (SysTask *)&taskStack[num];
     ret->taskList = taskList;
     ret->limit = num;
     ret->activeCount = 0;
@@ -142,7 +142,7 @@ SysTask *SysTaskQueue_InsertTaskCore(SysTaskQueue *queue, SysTaskFunc func, void
     return ret;
 }
 
-BOOL SysTask_Delete(SysTask *task) {
+BOOL SysTask_Unlink(SysTask *task) {
     GF_ASSERT(task->func != NULL);
     if (task->queue->nextTask == task) {
         task->queue->nextTask = task->next;

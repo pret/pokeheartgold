@@ -282,7 +282,7 @@ _02258A4A:
 	ldr r0, _02258AF8 ; =ov89_02258FF4
 	ldr r2, _02258AFC ; =0x0000EA60
 	add r1, r5, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r5, #0x18]
 	ldr r0, _02258B00 ; =ov89_0225901C
 	add r1, r5, #0
@@ -800,7 +800,7 @@ ov89_02258F00: ; 0x02258F00
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl ov89_022596DC
 	add r0, r4, #0

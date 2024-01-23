@@ -41,7 +41,7 @@ ov19_022598C0: ; 0x022598C0
 	ldr r0, _02259914 ; =ov19_02259950
 	add r1, r4, #0
 	mov r2, #1
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02259914: .word ov19_02259950
@@ -67,7 +67,7 @@ ov19_02259918: ; 0x02259918
 	add r0, r5, #0
 	add r0, #0xd8
 	ldr r0, [r0]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	add r5, #0xd8
 	str r0, [r5]

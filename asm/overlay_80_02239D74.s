@@ -140,7 +140,7 @@ _02239DFE:
 	ldr r0, _02239EBC ; =ov80_02239ED8
 	ldr r1, [sp, #8]
 	ldr r2, _02239EC0 ; =0x0001368C
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r1, [sp, #8]
 	str r0, [r1]
 	add r0, r1, #0
@@ -160,7 +160,7 @@ ov80_02239EC4: ; 0x02239EC4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -249,7 +249,7 @@ ov80_02239F48: ; 0x02239F48
 	ldr r0, _02239F8C ; =ov80_02239FA8
 	ldr r2, _02239F90 ; =0x0001368D
 	add r1, r4, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4]
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
@@ -263,7 +263,7 @@ ov80_02239F94: ; 0x02239F94
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}

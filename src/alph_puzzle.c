@@ -1312,7 +1312,7 @@ static void AlphPuzzle_CreateQuitTask(AlphPuzzleData *data) {
     AlphPuzzleQuitTaskData *unkStruct = AllocFromHeapAtEnd(data->heapId, sizeof(AlphPuzzleQuitTaskData));
     MI_CpuFill8(unkStruct, 0, sizeof(AlphPuzzleQuitTaskData));
     unkStruct->data = data;
-    CreateSysTask(Task_AlphPuzzle_WaitDropCursorAnimOnQuit, unkStruct, 0);
+    SysTask_CreateOnMainQueue(Task_AlphPuzzle_WaitDropCursorAnimOnQuit, unkStruct, 0);
     AlphPuzzle_ToggleDropCursorSprite(data, 1);
     data->quitTaskActive = 1;
 }
@@ -1324,6 +1324,6 @@ static void Task_AlphPuzzle_WaitDropCursorAnimOnQuit(SysTask *task, void *_data)
         data->data->quitTaskActive = 0;
         MI_CpuFill8(data, 0, sizeof(AlphPuzzleQuitTaskData));
         FreeToHeap(data);
-        DestroySysTask(task);
+        SysTask_Destroy(task);
     }
 }

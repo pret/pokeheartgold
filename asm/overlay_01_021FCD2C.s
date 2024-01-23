@@ -38,7 +38,7 @@ ov01_021FCD2C: ; 0x021FCD2C
 	ldr r0, _021FCD64 ; =ov01_021FCDA8
 	ldr r2, _021FCD68 ; =0x0000FFFF
 	add r1, r4, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021FCD64: .word ov01_021FCDA8
@@ -61,7 +61,7 @@ ov01_021FCD78: ; 0x021FCD78
 	bl SysTask_GetData
 	bl FreeToHeap
 	add r0, r4, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r4, pc}
 	thumb_func_end ov01_021FCD78
 

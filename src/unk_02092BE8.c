@@ -257,14 +257,14 @@ void GearPhone_ToggleRinging(GearPhoneRingManager* ptr, BOOL a1) {
             return;
         }
         MI_CpuClear8(&ptr->gearRing, sizeof(struct PokegearRingingTask));
-        ptr->gearRing.task = CreateSysTask((SysTaskFunc)SysTask_RingGearPhone, ptr, -1);
+        ptr->gearRing.task = SysTask_CreateOnMainQueue((SysTaskFunc)SysTask_RingGearPhone, ptr, -1);
         ptr->unk_var0_3 = TRUE;
     } else {
         if (!ptr->unk_var0_3) {
             return;
         }
         if (ptr->gearRing.task != NULL) {
-            DestroySysTask(ptr->gearRing.task);
+            SysTask_Destroy(ptr->gearRing.task);
         }
         MI_CpuClear8(&ptr->gearRing, sizeof(struct PokegearRingingTask));
         ptr->unk_var0_3 = FALSE;
