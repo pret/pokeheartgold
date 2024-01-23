@@ -1315,7 +1315,7 @@ static void ov17_0220351C(BerryPotsAppData *data) {
 
     args->unk8 = (s8)(diff * 27) / 4;
     args->unkA = data->unk80;
-    CreateSysTask((SysTaskFunc)ov17_022035A4, args, 0);
+    SysTask_CreateOnMainQueue((SysTaskFunc)ov17_022035A4, args, 0);
     data->runningTasks++;
 }
 
@@ -1340,7 +1340,7 @@ static void ov17_022035A4(SysTask *task, SysTaskArgs_ov17_0220351C *args) {
 
     unk0->runningTasks--;
     FreeToHeap(args);
-    DestroySysTask(task);
+    SysTask_Destroy(task);
 }
 
 typedef struct SysTaskArgs_ov17_02203674 {
@@ -1360,7 +1360,7 @@ static void ov17_02203638(BerryPotsAppData *data) {
     args->data = data;
     args->potIndex = data->unk7C;
 
-    CreateSysTask((SysTaskFunc)ov17_02203674, args, 0);
+    SysTask_CreateOnMainQueue((SysTaskFunc)ov17_02203674, args, 0);
     data->runningTasks++;
 }
 
@@ -1383,7 +1383,7 @@ static void ov17_02203674(SysTask *task, SysTaskArgs_ov17_02203674 *args) {
 
             data->runningTasks--;
             FreeToHeap(args);
-            DestroySysTask(task);
+            SysTask_Destroy(task);
             break;
     }
 }
@@ -1493,7 +1493,7 @@ static void ov17_02203928(BerryPotsAppData *data) {
         MI_CpuFill8(args, 0, sizeof(SysTaskArgs_ov17_022039A0));
         args->data = data;
         args->potIndex = i;
-        CreateSysTask((SysTaskFunc)ov17_022039A0, args, 0);
+        SysTask_CreateOnMainQueue((SysTaskFunc)ov17_022039A0, args, 0);
         data->runningTasks++;
     }
 }
@@ -1520,7 +1520,7 @@ static void ov17_022039A0(SysTask *task, SysTaskArgs_ov17_022039A0 *args) {
 
                 data->runningTasks--;
                 FreeToHeap(args);
-                DestroySysTask(task);
+                SysTask_Destroy(task);
             }
 
             break;
@@ -1665,21 +1665,20 @@ static BOOL ov17_02203C20(BerryPotsAppData *data, BOOL *a1) {
 }
 
 static int ov17_02203C78(BerryPotsAppData *data) {
-    // touch screen coordinates?
-    TouchscreenHitbox unkArray;
+    TouchscreenHitbox touchHitbox;
 
     for (int i = 0, xOffsetMaybe = 16; i < MAX_BERRY_POT; xOffsetMaybe += 28, i++) {
-        unkArray.rect.left = xOffsetMaybe;
-        unkArray.rect.right = unkArray.rect.left + 22;
+        touchHitbox.rect.left = xOffsetMaybe;
+        touchHitbox.rect.right = touchHitbox.rect.left + 22;
         if (data->unk20[i].growthStage < BERRY_POT_GROWTH_STAGE_GROWING) {
-            unkArray.rect.top = 88;
-            unkArray.rect.bottom = unkArray.rect.top + 24;
+            touchHitbox.rect.top = 88;
+            touchHitbox.rect.bottom = touchHitbox.rect.top + 24;
         } else {
-            unkArray.rect.top = 72;
-            unkArray.rect.bottom = unkArray.rect.top + 32;
+            touchHitbox.rect.top = 72;
+            touchHitbox.rect.bottom = touchHitbox.rect.top + 32;
         }
 
-        if (TouchscreenHitbox_TouchNewIsIn(&unkArray)) {
+        if (TouchscreenHitbox_TouchNewIsIn(&touchHitbox)) {
             return i;
         }
     }

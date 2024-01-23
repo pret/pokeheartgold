@@ -118,8 +118,8 @@
 .public sub_0200E0AC
 .public sub_0200E0CC
 .public sub_0200E0FC
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_02014510

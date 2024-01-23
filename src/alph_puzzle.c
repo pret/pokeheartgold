@@ -91,7 +91,7 @@ typedef struct AlphPuzzleData {
     int menuIgnoreTouchFlag;
     int unkState;
     u16 subState;
-    u16 sceneTImer;
+    u16 sceneTimer;
     UnkAlphSub_10 *args;
     BgConfig *bgConfig;
     u8 unk18;
@@ -100,8 +100,8 @@ typedef struct AlphPuzzleData {
     u8 selectedTileIndex;
     s16 tileHoverPixelX;
     s16 tileHoverPixelY;
-    u8 unk20;
-    u8 unk21;
+    u8 tileLastHoverPixelX;
+    u8 tileLastHoverPixelY;
     u8 tileHoverTileX;
     u8 tileHoverTileY;
     u8 textPrinterId;
@@ -115,7 +115,7 @@ typedef struct AlphPuzzleData {
     String *hintText[ALPH_PUZZLE_MAX];
     String *confirmQuitText[1];
     Window window[3];
-    YesNoPromptState *yesNoPrompt;
+    YesNoPrompt *yesNoPrompt;
     PaletteData *palette;
     SpriteRenderer *spriteRenderer;
     void *spriteGfxHandler;
@@ -164,15 +164,15 @@ static void AlphPuzzle_SetGraphicsBanks();
 static void AlphPuzzle_AllocBackgroundBuffers(AlphPuzzleData *data);
 static void AlphPuzzle_FreeBackgroundBuffers(AlphPuzzleData *data);
 static void AlphPuzzle_LoadBackgroundGraphics(AlphPuzzleData *data);
-static void AlphPuzzle_UnloadBackgroundGraphics(AlphPuzzleData *data);
+static void AlphPuzzle_FreeBackgroundGraphics(AlphPuzzleData *data);
 static void AlphPuzzle_InitText(AlphPuzzleData *data);
 static void AlphPuzzle_DeleteText(AlphPuzzleData *data);
 static void AlphPuzzle_CreateWindows(AlphPuzzleData *data);
 static void AlphPuzzle_DestroyWindows(AlphPuzzleData *data);
-static void AlphPuzzle_CreateSpriteGraphicsEngine(AlphPuzzleData *data);
-static void AlphPuzzle_DestroySpriteGraphicsEngine(AlphPuzzleData *data);
 static void AlphPuzzle_InitSpriteGraphics(AlphPuzzleData *data);
-static void AlphPuzzle_DeinitSpriteGraphics(AlphPuzzleData *data);
+static void AlphPuzzle_DestroySpriteGraphicsEngine(AlphPuzzleData *data);
+static void AlphPuzzle_CreateSpriteGraphics(AlphPuzzleData *data);
+static void AlphPuzzle_DeleteSpriteGraphics(AlphPuzzleData *data);
 static void AlphPuzzle_CreateSprites(AlphPuzzleData *data);
 static void AlphPuzzle_DeleteSprites(AlphPuzzleData *data);
 static BOOL AlphPuzzle_CheckComplete(AlphPuzzleData *data);
@@ -475,7 +475,6 @@ static const UnkStruct_0200D2B4 sSpriteTemplates[3] = {
     {ALPH_SPRITE_RES_PUZZLETILES, 208, 168, 0, 0, 2, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0}
 };
 
-// related to text color
 static const u32 sQuitButtonTextColors[3] = {
     MAKE_TEXT_COLOR(1, 2, 0),
     MAKE_TEXT_COLOR(3, 4, 0),
@@ -662,15 +661,15 @@ static void AlphPuzzle_SetupGraphics(AlphPuzzleData *data) {
     AlphPuzzle_LoadBackgroundGraphics(data);
     AlphPuzzle_InitText(data);
     AlphPuzzle_CreateWindows(data);
-    AlphPuzzle_InitSpriteGraphics(data);
+    AlphPuzzle_CreateSpriteGraphics(data);
     Main_SetVBlankIntrCB(AlphPuzzle_VBlankCB, data);
 }
 
 static void AlphPuzzle_TeardownGraphics(AlphPuzzleData *data) {
-    AlphPuzzle_DeinitSpriteGraphics(data);
+    AlphPuzzle_DeleteSpriteGraphics(data);
     AlphPuzzle_DestroyWindows(data);
     AlphPuzzle_DeleteText(data);
-    AlphPuzzle_UnloadBackgroundGraphics(data);
+    AlphPuzzle_FreeBackgroundGraphics(data);
     AlphPuzzle_FreeBackgroundBuffers(data);
 }
 
@@ -703,11 +702,11 @@ static int AlphPuzzle_CheckInput(AlphPuzzleData *data) {
 
 static int AlphPuzzleMainSeq_PickupTile_impl(AlphPuzzleData *data) {
     if (!System_GetTouchHeld()) {
-        data->sceneTImer = 0;
+        data->sceneTimer = 0;
         return ALPH_PUZZLE_STATE_ROTATE_TILE;
     }
-    if (data->sceneTImer++ >= 2) {
-        data->sceneTImer = 0;
+    if (data->sceneTimer++ >= 2) {
+        data->sceneTimer = 0;
         data->tileHoverPixelX = (data->selectedTile->x * 32) + 64;
         data->tileHoverPixelY = (data->selectedTile->y * 32) + 32;
         data->tileHoverTileX = data->selectedTile->x;
@@ -808,8 +807,8 @@ static int AlphPuzzleMainSeq_HoldingTile_impl(AlphPuzzleData *data) {
     s16 x = gSystem.touchX;
     s16 y = gSystem.touchY;
 
-    data->unk20 = data->tileHoverPixelX;
-    data->unk21 = data->tileHoverPixelY;
+    data->tileLastHoverPixelX = data->tileHoverPixelX;
+    data->tileLastHoverPixelY = data->tileHoverPixelY;
 
     if (y < 16) {
         y = 16;
@@ -851,9 +850,9 @@ static int AlphPuzzleMainSeq_RotateTile_impl(AlphPuzzleData *data) {
         break;
     case 1:
     {
-        u16 temp = data->sceneTImer++;
+        u16 temp = data->sceneTimer++;
         sub_02024818(data->selectedTile->sprite, (u16)((u16)(temp << 0xb) + (data->selectedTile->rotation << 0xe)));
-        if (data->sceneTImer >= 8) {
+        if (data->sceneTimer >= 8) {
             data->subState++;
         }
         break;
@@ -863,7 +862,7 @@ static int AlphPuzzleMainSeq_RotateTile_impl(AlphPuzzleData *data) {
 
         AlphPuzzle_UpdateSelectedTile(data, -1, FALSE);
 
-        data->sceneTImer = 0;
+        data->sceneTimer = 0;
         data->subState = 0;
 
         if (AlphPuzzle_CheckComplete(data)) {
@@ -908,20 +907,20 @@ static int AlphPuzzleMainSeq_Clear_impl(AlphPuzzleData *data) {
         data->subState++;
         break;
     case 1:
-        sub_02003E5C(data->palette, 2, 0x2b, 5, data->sceneTImer, 0x7FFF);
-        if (data->sceneTImer++ >= 15) {
+        sub_02003E5C(data->palette, 2, 0x2b, 5, data->sceneTimer, 0x7FFF);
+        if (data->sceneTimer++ >= 15) {
             data->subState++;
         }
         break;
     case 2:
-        sub_02003E5C(data->palette, 2, 0x2b, 5, data->sceneTImer, 0x7FFF);
-        if (data->sceneTImer-- == 0) {
+        sub_02003E5C(data->palette, 2, 0x2b, 5, data->sceneTimer, 0x7FFF);
+        if (data->sceneTimer-- == 0) {
             data->subState++;
         }
         break;
     default:
         data->subState = 0;
-        data->sceneTImer = 0;
+        data->sceneTimer = 0;
         data->puzzleSolved = 1;
         return ALPH_PUZZLE_STATE_FADE_OUT;
     }
@@ -1024,7 +1023,7 @@ static void AlphPuzzle_FreeBackgroundBuffers(AlphPuzzleData *data) {
 }
 
 static void AlphPuzzle_LoadBackgroundGraphics(AlphPuzzleData *data) {
-    NARC *narc = NARC_New(NARC_files_application_annon_puzzle_gra, data->heapId);
+    NARC *narc = NARC_New(NARC_application_annon_puzzle_gra, data->heapId);
     data->palette = PaletteData_Init(data->heapId);
 
     PaletteData_AllocBuffers(data->palette, 0, 256, data->heapId);
@@ -1053,7 +1052,7 @@ static void AlphPuzzle_LoadBackgroundGraphics(AlphPuzzleData *data) {
     sub_0200398C(data->palette);
 }
 
-static void AlphPuzzle_UnloadBackgroundGraphics(AlphPuzzleData *data) {
+static void AlphPuzzle_FreeBackgroundGraphics(AlphPuzzleData *data) {
     FreeToHeap(data->screenDataAlloc);
     PaletteData_FreeBuffers(data->palette, 2);
     PaletteData_FreeBuffers(data->palette, 1);
@@ -1105,7 +1104,7 @@ static void AlphPuzzle_DestroyWindows(AlphPuzzleData *data) {
     YesNoPrompt_Destroy(data->yesNoPrompt);
 }
 
-static void AlphPuzzle_CreateSpriteGraphicsEngine(AlphPuzzleData *data) {
+static void AlphPuzzle_InitSpriteGraphics(AlphPuzzleData *data) {
     GF_CreateVramTransferManager(32, data->heapId);
     data->spriteRenderer = SpriteRenderer_Create(data->heapId);
     sub_0200CF70(data->spriteRenderer, &ov110_021E6EA4, &ov110_021E6DD0, 3);
@@ -1125,13 +1124,13 @@ static void AlphPuzzle_DestroySpriteGraphicsEngine(AlphPuzzleData *data) {
     sub_0200B2E0(data->heapId);
 }
 
-static void AlphPuzzle_InitSpriteGraphics(AlphPuzzleData *data) {
-    AlphPuzzle_CreateSpriteGraphicsEngine(data);
+static void AlphPuzzle_CreateSpriteGraphics(AlphPuzzleData *data) {
+    AlphPuzzle_InitSpriteGraphics(data);
     AlphPuzzle_CreateSprites(data);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
-static void AlphPuzzle_DeinitSpriteGraphics(AlphPuzzleData *data) {
+static void AlphPuzzle_DeleteSpriteGraphics(AlphPuzzleData *data) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
     AlphPuzzle_DeleteSprites(data);
     AlphPuzzle_DestroySpriteGraphicsEngine(data);
@@ -1149,7 +1148,7 @@ static void AlphPuzzle_CreateSprites(AlphPuzzleData *data) {
     sub_02024B78(data->sprites[ALPH_SPRITE_INDEX_PREV_CURSOR], GX_OAM_MODE_NORMAL);
     Sprite_SetPriority(data->sprites[ALPH_SPRITE_INDEX_PREV_CURSOR], 2);
     sub_02024B78(data->sprites[ALPH_SPRITE_INDEX_PREV_CURSOR], GX_OAM_MODE_XLU);
-    sub_0200E248(data->spriteRenderer, data->spriteGfxHandler, NARC_files_application_annon_puzzle_gra, data->puzzleIndex + NARC_puzzle_gra_puzzle_gra_00000004_NCGR, 0, 1);
+    sub_0200E248(data->spriteRenderer, data->spriteGfxHandler, NARC_application_annon_puzzle_gra, data->puzzleIndex + NARC_puzzle_gra_puzzle_gra_00000004_NCGR, 0, 1);
     for (i = 0; i < 16; i++) {
         u8 index = i + ALPH_SPRITE_INDEX_TILE_00;
         data->sprites[index] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler, &sSpriteTemplates[ALPH_SPRITE_INDEX_TILE_00]);
@@ -1317,7 +1316,7 @@ static void AlphPuzzle_CreateQuitTask(AlphPuzzleData *data) {
     AlphPuzzleQuitTaskData *unkStruct = AllocFromHeapAtEnd(data->heapId, sizeof(AlphPuzzleQuitTaskData));
     MI_CpuFill8(unkStruct, 0, sizeof(AlphPuzzleQuitTaskData));
     unkStruct->data = data;
-    CreateSysTask(Task_AlphPuzzle_WaitDropCursorAnimOnQuit, unkStruct, 0);
+    SysTask_CreateOnMainQueue(Task_AlphPuzzle_WaitDropCursorAnimOnQuit, unkStruct, 0);
     AlphPuzzle_ToggleDropCursorSprite(data, 1);
     data->quitTaskActive = 1;
 }
@@ -1329,6 +1328,6 @@ static void Task_AlphPuzzle_WaitDropCursorAnimOnQuit(SysTask *task, void *_data)
         data->data->quitTaskActive = 0;
         MI_CpuFill8(data, 0, sizeof(AlphPuzzleQuitTaskData));
         FreeToHeap(data);
-        DestroySysTask(task);
+        SysTask_Destroy(task);
     }
 }

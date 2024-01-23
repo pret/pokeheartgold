@@ -42,8 +42,8 @@
 .public sub_0200D9DC
 .public UnkImageStruct_SetSpriteVisibleFlag
 .public sub_0200E128
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx1
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2

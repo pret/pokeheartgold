@@ -3,8 +3,8 @@
 .public PlaySE
 .public NARC_New
 .public NARC_Delete
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public AllocFromHeap
 .public FreeToHeap
 .public SysTask_GetData

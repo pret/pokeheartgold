@@ -6,8 +6,8 @@
 .public UnloadOverlayByID
 .public HandleLoadOverlay
 .public NARC_AllocAndReadWholeMember
-.public CreateVWaitSysTask
-.public DestroySysTask
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public GF_CreateNewVramTransferTask

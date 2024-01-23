@@ -34,7 +34,7 @@ SysTaskQueue *SysTaskQueue_PlacementNew(u32 num, void *p_mem);
 void *SysTask_GetData(SysTask *task);
 SysTask *SysTaskQueue_InsertTask(SysTaskQueue *queue, SysTaskFunc func, void *arg, u32 priority);
 void SysTask_SetFunc(SysTask *task, SysTaskFunc func);
-BOOL SysTask_Delete(SysTask *task);
+BOOL SysTask_Unlink(SysTask *task);
 u32 SysTask_GetPriority(SysTask *task);
 
 #endif // POKEHEARTGOLD_SYS_TASK_H

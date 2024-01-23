@@ -19,8 +19,8 @@
 .public BufferPlayersName
 .public BufferIntegerAsString
 .public StringExpandPlaceholders
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public sub_020183F0
 .public sub_02018410
 .public AllocFromHeap

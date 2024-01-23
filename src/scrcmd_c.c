@@ -1222,14 +1222,14 @@ void _ScheduleObjectEventMovement(FieldSystem *fieldSystem, EventObjectMovementM
     env->fieldSystem = fieldSystem;
     env->mvtMan = mvtMan;
     env->cmd = a2;
-    env->task = CreateSysTask((SysTaskFunc)_RunObjectEventMovement, env, 0);
+    env->task = SysTask_CreateOnMainQueue((SysTaskFunc)_RunObjectEventMovement, env, 0);
 }
 
 void _RunObjectEventMovement(SysTask *task, struct ObjectMovementTaskEnv *env) {
     u8 *mvtCnt = FieldSysGetAttrAddr(env->fieldSystem, SCRIPTENV_ACTIVE_MOVEMENT_COUNTER);
     if (EventObjectMovementMan_IsFinish(env->mvtMan) == TRUE) {
         EventObjectMovementMan_Delete(env->mvtMan);
-        DestroySysTask(env->task);
+        SysTask_Destroy(env->task);
         if (env->cmd != NULL) {
             FreeToHeap(env->cmd);
         }

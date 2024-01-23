@@ -2,8 +2,8 @@
 #pragma once
 .public CreateSysTaskAndEnvironment
 .public DestroySysTaskAndEnvironment
-.public CreateVWaitSysTask
-.public DestroySysTask
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public SysTask_GetData
 .public GX_SetGraphicsMode
 .public GX_SetBankForLCDC

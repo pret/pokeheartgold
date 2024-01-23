@@ -336,7 +336,7 @@ _0222B9FE:
 	bl NARC_Delete
 	ldr r0, _0222BA84 ; =0x0000416C
 	ldr r0, [r5, r0]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, [r5, #0x18]
 	ldr r1, [r5, #0x1c]
 	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
@@ -2322,7 +2322,7 @@ _0222C9E2:
 	ldr r0, _0222CA88 ; =ov40_0222D048
 	ldr r1, [sp, #4]
 	mov r2, #5
-	bl CreateVBlankSysTask
+	bl SysTask_CreateOnVBlankQueue
 	mov r1, #7
 	lsl r1, r1, #8
 	str r0, [r4, r1]
@@ -2429,7 +2429,7 @@ ov40_0222CABC: ; 0x0222CABC
 	lsl r6, r6, #8
 _0222CAC6:
 	ldr r0, [r5, r6]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r4, r4, #1
 	add r5, #0x30
 	cmp r4, #6
@@ -8560,7 +8560,7 @@ ov40_0222FB74: ; 0x0222FB74
 	mov r0, #1
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov40_0222FB74
 
@@ -8573,13 +8573,13 @@ ov40_0222FB90: ; 0x0222FB90
 	add r0, r2, #4
 	str r1, [r3, r0]
 	add r1, r3, r2
-	ldr r3, _0222FBAC ; =CreateVBlankSysTask
+	ldr r3, _0222FBAC ; =SysTask_CreateOnVBlankQueue
 	ldr r0, _0222FBB0 ; =ov40_0222FB74
 	mov r2, #4
 	bx r3
 	nop
 _0222FBA8: .word 0x0000052C
-_0222FBAC: .word CreateVBlankSysTask
+_0222FBAC: .word SysTask_CreateOnVBlankQueue
 _0222FBB0: .word ov40_0222FB74
 	thumb_func_end ov40_0222FB90
 
@@ -8629,7 +8629,7 @@ ov40_0222FBF8: ; 0x0222FBF8
 	ldr r0, _0222FC0C ; =ov40_0222FBBC
 	add r1, r4, #0
 	mov r2, #5
-	bl CreateVBlankSysTask
+	bl SysTask_CreateOnVBlankQueue
 	ldr r1, _0222FC10 ; =0x0000416C
 	str r0, [r4, r1]
 	pop {r4, pc}
@@ -10151,7 +10151,7 @@ ov40_022307FC: ; 0x022307FC
 	ldr r1, [r4, r2]
 	cmp r1, #7
 	blt _02230846
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, _0223085C ; =0x00004160
 	mov r2, #0
 	str r2, [r4, r0]
@@ -10202,7 +10202,7 @@ ov40_02230864: ; 0x02230864
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0223087E
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0223087E:
 	ldr r0, _02230930 ; =0x00004168
 	mov r1, #0
@@ -10263,7 +10263,7 @@ _02230894:
 	ldr r0, _02230940 ; =ov40_022307FC
 	add r1, r4, #0
 	lsl r2, r2, #0xc
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r2, _02230930 ; =0x00004168
 	str r0, [r4, r2]
 	ldr r0, [r4, r2]
@@ -12453,7 +12453,7 @@ _02231994:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov40_022318C8
@@ -12568,7 +12568,7 @@ _02231A72:
 	ldr r0, _02231C64 ; =ov40_022318C8
 	add r1, r5, #0
 	lsl r2, r2, #0xc
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	mov r0, #0x6e
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -12730,7 +12730,7 @@ _02231BB6:
 	ldr r0, _02231C64 ; =ov40_022318C8
 	add r1, r5, #0
 	lsl r2, r2, #0xc
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r0, _02231C70 ; =0x000006D8
 	add r7, r7, #1
 	ldr r0, [r4, r0]
@@ -12918,7 +12918,7 @@ _02231D2A:
 	ldr r0, _02231E9C ; =ov40_022318C8
 	add r1, r4, #0
 	lsl r2, r2, #0xc
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r0, _02231E98 ; =0x000006D8
 	add r6, r6, #1
 	ldr r0, [r5, r0]
@@ -13001,7 +13001,7 @@ _02231DD4:
 	ldr r0, _02231E9C ; =ov40_022318C8
 	add r1, r4, #0
 	lsl r2, r2, #0xc
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	mov r0, #0x6e
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]

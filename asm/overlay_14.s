@@ -11490,7 +11490,7 @@ _021EB08C:
 	ldr r0, _021EB0E0 ; =ov14_021E59AC
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateVBlankSysTask
+	bl SysTask_CreateOnVBlankQueue
 	ldr r1, [r4, #0x34]
 	str r0, [r1]
 	mov r0, #1
@@ -11514,7 +11514,7 @@ ov14_021EB0E4: ; 0x021EB0E4
 	bl ov14_021E6048
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl ov14_021F6B10
 	add r0, r4, #0

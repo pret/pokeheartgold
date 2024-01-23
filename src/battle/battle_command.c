@@ -1254,7 +1254,7 @@ BOOL BtlCmd_InitGetExp(BattleSystem *bsys, BattleContext *ctx) {
     ctx->getterWork->state = 0;
     ctx->getterWork->unk30[6] = 0;
 
-    CreateSysTask(Task_GetExp, ctx->getterWork, 0);
+    SysTask_CreateOnMainQueue(Task_GetExp, ctx->getterWork, 0);
 
     return FALSE;
 }
@@ -1421,7 +1421,7 @@ BOOL BtlCmd_InitGetPokemon(BattleSystem *bsys, BattleContext *ctx) {
     ctx->getterWork->unk24 = unkA;
     ctx->getterWork->unk2C = ItemToBallId(ctx->itemTemp);
 
-    CreateSysTask(Task_GetPokemon, ctx->getterWork, 0);
+    SysTask_CreateOnMainQueue(Task_GetPokemon, ctx->getterWork, 0);
 
     return FALSE;
 }
@@ -6471,7 +6471,7 @@ static void Task_GetExp(SysTask *task, void *inData)
     case STATE_GET_EXP_DONE:
         data->ctx->getterWork = NULL;
         FreeToHeap(inData);
-        DestroySysTask(task);
+        SysTask_Destroy(task);
         break;
     }
 }

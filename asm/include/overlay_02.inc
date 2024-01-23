@@ -55,10 +55,10 @@
 .public BufferFashionName
 .public BufferFashionNameWithArticle
 .public StringExpandPlaceholders
-.public CreateSysTask
-.public CreateVBlankSysTask
-.public CreateVWaitSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public ClearFrameAndWindow2
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished

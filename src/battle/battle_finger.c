@@ -54,7 +54,7 @@ BattleFinger *BattleFinger_New(void *a0, void *a1, HeapID heapId, u32 character,
     UnkImageStruct_SetSpriteVisibleFlag(finger->unk0, 0);
 
     finger->unk14 = 0xC0000;
-    finger->task = CreateSysTask(BattleFinger_Update, finger, 0x3e7);
+    finger->task = SysTask_CreateOnMainQueue(BattleFinger_Update, finger, 0x3e7);
 
     return finger;
 }
@@ -62,7 +62,7 @@ BattleFinger *BattleFinger_New(void *a0, void *a1, HeapID heapId, u32 character,
 //BattleFinger_Delete
 void BattleFinger_Delete(BattleFinger *finger) {
     sub_0200D9DC(finger->unk0);
-    DestroySysTask(finger->task);
+    SysTask_Destroy(finger->task);
     FreeToHeap(finger);
 }
 

@@ -487,7 +487,7 @@ sub_02018744: ; 0x02018744
 	ldrb r0, [r5, #3]
 	strb r0, [r4, #5]
 	ldr r0, _020187BC ; =sub_020187C0
-	bl CreateVWaitSysTask
+	bl SysTask_CreateOnVWaitQueue
 	cmp r7, #0
 	beq _020187B8
 	ldrb r0, [r5, #2]
@@ -560,7 +560,7 @@ _02018802:
 	bl GXS_LoadBGPltt
 _0201880E:
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r3, r4, r5, pc}

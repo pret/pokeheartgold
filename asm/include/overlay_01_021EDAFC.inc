@@ -21,8 +21,8 @@
 .public MessageFormat_Delete
 .public BufferIntegerAsString
 .public StringExpandPlaceholders
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
 .public sub_0200E5D4
