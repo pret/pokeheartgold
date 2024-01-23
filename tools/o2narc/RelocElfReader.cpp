@@ -20,7 +20,8 @@ void Elf::open(const string &filename, ios::openmode openmode) {
     handle.read((char *)shdr.data(), static_cast<streamsize>(ehdr.e_shnum * sizeof(Elf32_Shdr)));
     for (const auto & sec : shdr) {
         switch (sec.sh_type) {
-        case SHT_STRTAB: {
+        case SHT_STRTAB:
+        {
             char *&_strtab = (&sec - shdr.data() == ehdr.e_shstrndx) ? shstrtab : strtab;
             ELF_ASSERT(_strtab == nullptr);
             _strtab = new char[sec.sh_size];

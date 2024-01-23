@@ -6192,7 +6192,8 @@ static void Task_GetExp(SysTask *task, void *inData)
         data->state = STATE_GET_EXP_LEVEL_UP_SUMMARY_INIT;
         break;
 
-    case STATE_GET_EXP_LEVEL_UP_SUMMARY_INIT: {
+    case STATE_GET_EXP_LEVEL_UP_SUMMARY_INIT:
+    {
         BgConfig *bgConfig = BattleSystem_GetBgConfig(data->bsys);
         Window *window = BattleSystem_GetWindow(data->bsys, 1);
         PaletteData *palette = BattleSystem_GetPaletteData(data->bsys);
@@ -6212,7 +6213,8 @@ static void Task_GetExp(SysTask *task, void *inData)
         data->state = STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF;
         break;
     }
-    case STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF: {
+    case STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF:
+    {
         TempStatsStruct stats = ov12_0226C36C;
         TempStatsStruct monData = ov12_0226C384;
 
@@ -6237,7 +6239,8 @@ static void Task_GetExp(SysTask *task, void *inData)
         data->state = STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF_WAIT;
         break;
     }
-    case STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_TRUE: {
+    case STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_TRUE:
+    {
         TempStatsStruct monData = ov12_0226C33C;
         Window *window = BattleSystem_GetWindow(data->bsys, 1);
 

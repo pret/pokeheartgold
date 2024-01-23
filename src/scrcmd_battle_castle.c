@@ -77,7 +77,8 @@ BOOL ScrCmd_637(ScriptContext *ctx) {
         case 3: // Unused
             sub_0204FA14(ctx->fieldSystem->saveData, unk0, arg1);
             break;
-        case 4: {
+        case 4:
+        {
             BattleCastleChallengeType challengeType;
             if (arg1 == 0) {
                 challengeType = BATTLE_CASTLE_CHALLENGE_TYPE_SINGLE;

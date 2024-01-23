@@ -296,7 +296,8 @@ void CreateNPCTrainerParty(BattleSetup *enemies, int partyIndex, HeapID heapId) 
     // Game Freak didn't do it that way, instead using a switch statement and a lot
     // of code duplication. This has been the case since the 2nd generation games.
     switch (enemies->trainer[partyIndex].data.trainerType) {
-    case TRTYPE_MON: {
+    case TRTYPE_MON:
+    {
         TRPOKE_NOITEM_DFLTMOVES *monSpecies;
         u16 species;
         u8 form;
@@ -343,7 +344,8 @@ void CreateNPCTrainerParty(BattleSetup *enemies, int partyIndex, HeapID heapId) 
         }
         break;
     }
-    case TRTYPE_MON_MOVES: {
+    case TRTYPE_MON_MOVES:
+    {
         TRPOKE_NOITEM_CUSTMOVES *monSpeciesMoves;
         u16 species;
         u8 form;
@@ -370,7 +372,8 @@ void CreateNPCTrainerParty(BattleSetup *enemies, int partyIndex, HeapID heapId) 
         }
         break;
     }
-    case TRTYPE_MON_ITEM: {
+    case TRTYPE_MON_ITEM:
+    {
         TRPOKE_ITEM_DFLTMOVES *monSpeciesItem;
         u16 species;
         u8 form;
@@ -395,7 +398,8 @@ void CreateNPCTrainerParty(BattleSetup *enemies, int partyIndex, HeapID heapId) 
         }
         break;
     }
-    case TRTYPE_MON_ITEM_MOVES: {
+    case TRTYPE_MON_ITEM_MOVES:
+    {
         TRPOKE_ITEM_CUSTMOVES *monSpeciesItemMoves;
         u16 species;
         u8 form;
