@@ -156,7 +156,7 @@ static const u16 ov54_021E6D00[MENU_ENTRY_COUNT][3] = {
     { 0, 0, 0 },
 };
 
-static const int ov54_021E6D2C[5][3] = {
+static const int sActiveButtonXCoords[5][3] = {
     { 112, 160, 208 },
     { 112, 160, 208 },
     { 112, 192, 0 },
@@ -434,8 +434,8 @@ static void ov54_021E6A64(OptionsApp_Data *data);
 static void OptionsApp_SetupSpriteRenderer(OptionsApp_Data *data);
 static void OptionsApp_FreeSpriteRenderer(OptionsApp_Data *data);
 static void OptionsApp_SetupSprites(OptionsApp_Data *data);
-static void ov54_021E6BB8(OptionsApp_Data *data);
-static BOOL ov54_021E6C08(OptionsApp_Data *data);
+static void OptionsApp_SetActiveButtonsXPosition(OptionsApp_Data *data);
+static BOOL OptionsApp_ConfirmAndQuitButtonsAreDoneAnimating(OptionsApp_Data *data);
 
 BOOL OptionsApp_Init(OVY_MANAGER *manager, int *state) {
     OptionsApp_Args *args = OverlayManager_GetArgs(manager);
@@ -511,7 +511,7 @@ BOOL OptionsApp_Exit(OVY_MANAGER *manager, int *state) {
 
             data->unkC = 0;
             BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapId);
-            ov54_021E6BB8(data);
+            OptionsApp_SetActiveButtonsXPosition(data);
             sub_0200D020(data->spriteGfxHandler);
             break;
         case 1:
@@ -530,7 +530,7 @@ BOOL OptionsApp_Exit(OVY_MANAGER *manager, int *state) {
             return FALSE;
         case 3:
             sub_0200D020(data->spriteGfxHandler);
-            if (!ov54_021E6C08(data)) {
+            if (!OptionsApp_ConfirmAndQuitButtonsAreDoneAnimating(data)) {
                 data->unkC = 0;
                 BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapId);
                 break;
@@ -1087,7 +1087,7 @@ static void OptionsApp_HandleKeyInput(OptionsApp_Data *data, OptionsApp_MenuEntr
             ov54_021E6418(data, data->currentMenuEntryId);
             PlaySE(SEQ_SE_DP_SELECT);
         }
-        ov54_021E6BB8(data);
+        OptionsApp_SetActiveButtonsXPosition(data);
     } else {
         if (gSystem.newKeys & PAD_KEY_LEFT) {
             if (data->menuEntries[data->currentMenuEntryId].value == 0) {
@@ -1147,7 +1147,7 @@ static void OptionsApp_HandleInput(OptionsApp_Data *data) {
 
             case 13:
                 data->currentMenuEntryId = ov54_021E6DA8[hitboxIndex * 2];
-                ov54_021E6BB8(data);
+                OptionsApp_SetActiveButtonsXPosition(data);
                 ov54_021E6A64(data);
                 data->unk10_0 = 1;
                 PlaySE(SEQ_SE_DP_SAVE);
@@ -1160,7 +1160,7 @@ static void OptionsApp_HandleInput(OptionsApp_Data *data) {
 
             case 14:
                 data->currentMenuEntryId = ov54_021E6DA8[hitboxIndex * 2];
-                ov54_021E6BB8(data);
+                OptionsApp_SetActiveButtonsXPosition(data);
                 ov54_021E6A64(data);
                 data->unk10_0 = 2;
                 PlaySE(SEQ_SE_GS_GEARCANCEL);
@@ -1185,7 +1185,7 @@ static void OptionsApp_HandleInput(OptionsApp_Data *data) {
                 }
                 ov54_021E6418(data, data->currentMenuEntryId);
                 ov54_021E69D4(data, data->currentMenuEntryId);
-                ov54_021E6BB8(data);
+                OptionsApp_SetActiveButtonsXPosition(data);
                 ov54_021E6A64(data);
                 data->unk320 = 1;
                 PlaySE(SEQ_SE_DP_SELECT);
@@ -1230,7 +1230,7 @@ _021E6844:
     orr r0, r1
     str r0, [r4, #0x10]
     add r0, r4, #0
-    bl ov54_021E6BB8
+    bl OptionsApp_SetActiveButtonsXPosition
     add r0, r4, #0
     bl ov54_021E6A64
     ldr r1, [r4, #0x10]
@@ -1279,7 +1279,7 @@ _021E68B0:
     orr r0, r1
     str r0, [r4, #0x10]
     add r0, r4, #0
-    bl ov54_021E6BB8
+    bl OptionsApp_SetActiveButtonsXPosition
     add r0, r4, #0
     bl ov54_021E6A64
     ldr r1, [r4, #0x10]
@@ -1365,7 +1365,7 @@ _021E6960:
     lsr r1, r1, #0x1d
     bl ov54_021E69D4
     add r0, r4, #0
-    bl ov54_021E6BB8
+    bl OptionsApp_SetActiveButtonsXPosition
     add r0, r4, #0
     bl ov54_021E6A64
     mov r0, #0x32
@@ -1461,16 +1461,16 @@ static void OptionsApp_SetupSprites(OptionsApp_Data *data) {
     Set2dSpriteVisibleFlag(data->sprites[7], TRUE);
 }
 
-static void ov54_021E6BB8(OptionsApp_Data *data) {
+static void OptionsApp_SetActiveButtonsXPosition(OptionsApp_Data *data) {
     for (int i = 0; i < 5; i++) {
         s16 x, y;
         Sprite_GetPositionXY(data->sprites[i], &x, &y);
-        x = ov54_021E6D2C[i][data->menuEntries[i].value];
+        x = sActiveButtonXCoords[i][data->menuEntries[i].value];
         Sprite_SetPositionXY(data->sprites[i], x, y);
     }
 }
 
-static BOOL ov54_021E6C08(OptionsApp_Data *data) {
+static BOOL OptionsApp_ConfirmAndQuitButtonsAreDoneAnimating(OptionsApp_Data *data) {
     if (Sprite_IsCellAnimationFinished(data->sprites[7]) == 0 && Sprite_IsCellAnimationFinished(data->sprites[8]) == 0) {
         return FALSE;
     }
