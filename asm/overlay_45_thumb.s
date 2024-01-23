@@ -57,7 +57,7 @@ _02229F18:
 	ldr r0, _02229F6C ; =ov45_02229FE0
 	add r1, r5, #0
 	mov r2, #0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	str r0, [r5, #0xc]
 	ldr r0, [r5, #8]
 	bl ov45_0222CD84
@@ -95,7 +95,7 @@ ov45_02229F94: ; 0x02229F94
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB

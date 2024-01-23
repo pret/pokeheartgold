@@ -2711,7 +2711,7 @@ _021F2FBC:
 	ldr r0, _021F2FE8 ; =ov01_021F3030
 	ldr r2, _021F2FEC ; =0x0000FFFF
 	add r1, r5, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	add r4, r0, #0
 	bne _021F2FE2
 	bl GF_AssertFail
@@ -2728,7 +2728,7 @@ Field_PlayerMovementSavingClear: ; 0x021F2FF0
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	beq _021F302E
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r6, r0, #0
 	ldr r0, [r6, #4]
 	ldr r4, [r6, #0xc]
@@ -2751,7 +2751,7 @@ _021F3022:
 	add r0, r6, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _021F302E:
 	pop {r4, r5, r6, pc}
 	thumb_func_end Field_PlayerMovementSavingClear

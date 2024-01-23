@@ -3,11 +3,11 @@
 .public PlaySE
 .public NARC_New
 .public NARC_Delete
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public AllocFromHeap
 .public FreeToHeap
-.public sub_0201F988
+.public SysTask_GetData
 .public GF_AssertFail
 .public MI_CpuFill8
 .public ov12_0223A900

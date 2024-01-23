@@ -44,7 +44,7 @@
 .public ClearWindowTilemapAndScheduleTransfer
 .public FillWindowPixelBuffer
 .public ScheduleBgTilemapBufferTransfer
-.public sub_0201F988
+.public SysTask_GetData
 .public GF_SinDeg
 .public GF_CosDeg
 .public GF_DegreeToSinCosIdx

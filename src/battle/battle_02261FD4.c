@@ -8,13 +8,13 @@ static void ov12_0226203C(SysTask *task, void *_data);
 void ov12_02261FD4(OpponentData *data, BattleSystem *bsys) {
     if (data->unk198 == NULL && !(BattleSystem_GetBattleType(bsys) & (BATTLE_TYPE_SAFARI | BATTLE_TYPE_PAL_PARK))) {
         data->unk19C = 180;
-        data->unk198 = CreateSysTask(ov12_0226203C, data, 0x3F2);
+        data->unk198 = SysTask_CreateOnMainQueue(ov12_0226203C, data, 0x3F2);
     }
 }
 
 void ov12_02262014(OpponentData *data) {
     if (data->unk198 != NULL) {
-        DestroySysTask(data->unk198);
+        SysTask_Destroy(data->unk198);
         data->unk198 = NULL;
         data->unk19C = 0;
         sub_020087A4(data->unk20, 4, 0);

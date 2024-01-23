@@ -1,8 +1,8 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public PlaySE
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public MailMsg_Init_WithBank
 .public CreateHeapAtEnd
 .public DestroyHeap

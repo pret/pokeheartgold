@@ -2084,7 +2084,7 @@ ov72_0223897C: ; 0x0223897C
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _02238996
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, _022389C0 ; =0x00000FD8
 	mov r1, #0
 	str r1, [r4, r0]
@@ -2623,7 +2623,7 @@ _02238DDE:
 	ldr r0, _02238E38 ; =ov72_02238E3C
 	add r1, r1, r2
 	mov r2, #0x14
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	ldr r2, _02238E28 ; =0x00000FD8
 	ldr r1, [sp, #0x10]
 	str r0, [r1, r2]

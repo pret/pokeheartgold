@@ -624,18 +624,18 @@ _02237FD8:
 	ldr r0, _02238338 ; =ov12_02239810
 	ldr r2, _0223833C ; =0x0000EA60
 	add r1, r4, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #0x1c]
 	ldr r0, _02238340 ; =ov12_02239854
 	ldr r2, _02238344 ; =0x0000C350
 	add r1, r4, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #0x20]
 	mov r2, #0x4b
 	ldr r0, _02238348 ; =ov12_0223998C
 	add r1, r4, #0
 	lsl r2, r2, #4
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	str r0, [r4, #0x24]
 	mov r1, #0x32
 	ldr r0, _0223834C ; =0x00002438
@@ -1130,9 +1130,9 @@ _022386C0:
 	ldr r0, [r4, r0]
 	bl MessagePrinter_Delete
 	ldr r0, [r4, #0x1c]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, [r4, #0x20]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	bl sub_02021238
 	ldr r0, [r4]
 	bl ov12_022396E8
@@ -3410,7 +3410,7 @@ ov12_0223998C: ; 0x0223998C
 	cmp r0, #0
 	bne _022399B4
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _022399B4:
 	pop {r3, r4, r5, pc}
 	nop

@@ -3993,7 +3993,7 @@ ov48_0225A5C4: ; 0x0225A5C4
 	ldr r0, _0225A630 ; =ov48_0225A680
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	str r0, [r4, #0xc]
 	pop {r4, r5, r6, pc}
 	nop
@@ -4007,7 +4007,7 @@ _0225A630: .word ov48_0225A680
 ov48_0225A634: ; 0x0225A634
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r2, _0225A648 ; =0x04001000
 	ldr r0, _0225A64C ; =0xFFFF1FFF
 	ldr r1, [r2]

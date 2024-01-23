@@ -4,6 +4,7 @@
 #include "gf_gfx_loader.h"
 #include "system.h"
 #include "unk_02005D10.h"
+#include "sys_task_api.h"
 
 struct UnkStruct_02016C28 {
     BgConfig *bgConfig;
@@ -321,7 +322,7 @@ static SysTask *LoadPixelDataFromNarcAndScheduleTransfer(NarcId narcId, s32 file
     buffer->bgConfig = bgConfig;
     buffer->bgId = bgId;
     buffer->tileStart = tileStart;
-    return sub_0200E374(SysTask_LoadBGPixels, buffer, 0x80);
+    return SysTask_CreateOnVWaitQueue(SysTask_LoadBGPixels, buffer, 0x80);
 }
 
 static SysTask *LoadPlttFromNarcAndScheduleTransfer(NarcId narcId, s32 fileId, int bgId, u32 offset, u32 size, HeapID heapId) {
@@ -331,14 +332,14 @@ static SysTask *LoadPlttFromNarcAndScheduleTransfer(NarcId narcId, s32 fileId, i
     buffer->bgId = bgId;
     buffer->offset = offset;
     buffer->size = size;
-    return sub_0200E374(SysTask_LoadBGPltt, buffer, 0x80);
+    return SysTask_CreateOnVWaitQueue(SysTask_LoadBGPltt, buffer, 0x80);
 }
 
 static void SysTask_LoadBGPixels(SysTask *task, void *voidptr) {
     struct SysTaskState_02016DBC *data = (struct SysTaskState_02016DBC *)voidptr;
     DC_FlushRange(data->charData->pRawData, data->charData->szByte);
     BG_LoadCharTilesData(data->bgConfig, data->bgId, data->charData->pRawData, data->charData->szByte, data->tileStart);
-    DestroySysTask(task);
+    SysTask_Destroy(task);
     FreeToHeap(data->charDataRaw);
     FreeToHeap(data);
 }
@@ -351,7 +352,7 @@ static void SysTask_LoadBGPltt(SysTask *task, void *voidptr) {
     } else if (data->bgId == 4) {
         GXS_LoadBGPltt(data->plttData->pRawData, data->offset, data->size);
     }
-    DestroySysTask(task);
+    SysTask_Destroy(task);
     FreeToHeap(data->plttDataRaw);
     FreeToHeap(data);
 }

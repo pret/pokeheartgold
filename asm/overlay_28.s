@@ -26,7 +26,7 @@ ov28_0225D520: ; 0x0225D520
 	mov r3, #8
 	bl CreateSysTaskAndEnvironment
 	add r6, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	str r5, [r4, #0x10]
 	ldr r0, [sp]
@@ -98,7 +98,7 @@ ov28_0225D5EC: ; 0x0225D5EC
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r0, r5, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	bl DowsingMchn_FreeHiddenItemLocs
 	add r0, r4, #0

@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_CAMERA_TRANSLATION_H
 #define POKEHEARTGOLD_CAMERA_TRANSLATION_H
 
-#include "unk_0200E320.h"
+#include "sys_task_api.h"
 #include "camera.h"
 
 struct CameraTranslationPathTemplate {
@@ -19,7 +19,7 @@ typedef struct GFCameraTranslationWrapper {
     u8 active;
     struct CameraTranslationPathTemplate init;
     struct CameraTranslationPathTemplate target;
-    SysTask *task; // returned from CreateSysTask
+    SysTask *task; // returned from SysTask_CreateOnMainQueue
 } GFCameraTranslationWrapper;
 
 GFCameraTranslationWrapper *CreateCameraTranslationWrapper(HeapID heapId, Camera *camera);

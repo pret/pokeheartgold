@@ -7,13 +7,13 @@
 .public MessageFormat_New_Custom
 .public MessageFormat_Delete
 .public StringExpandPlaceholders
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public ClearFrameAndWindow2
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public RemoveWindow
-.public sub_0201F988
+.public SysTask_GetData
 .public LCRandom
 .public GF_AssertFail
 .public String_New

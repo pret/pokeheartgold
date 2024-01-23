@@ -5386,7 +5386,7 @@ ov74_02229B68: ; 0x02229B68
 	strh r1, [r0, #0x24]
 	ldr r0, _02229BBC ; =ov74_02229CB8
 	mov r1, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r1, _02229BB8 ; =ov74_0223D0A4
 	ldr r2, [r1]
 	str r0, [r2, #0x1c]
@@ -5552,7 +5552,7 @@ ov74_02229CB8: ; 0x02229CB8
 	ldr r2, [r1]
 	cmp r2, #0
 	bne _02229CC8
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r3, pc}
 _02229CC8:
 	ldr r1, [r2, #0x20]
@@ -8463,7 +8463,7 @@ _0222B34C:
 	add r0, r5, #0
 	add r0, #0xd0
 	ldr r0, [r0]
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0222B36A:
 	add r4, r4, #1
 	add r5, #0x4c
@@ -8486,7 +8486,7 @@ _0222B37E:
 	ldr r0, _0222B3A0 ; =0x00001854
 	str r6, [r5, r0]
 	ldr r0, [r5, r7]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r4, r4, #1
 	add r5, #0x4c
 	cmp r4, #0x50
@@ -8753,7 +8753,7 @@ _0222B5A0:
 	ldr r0, _0222B5F4 ; =ov74_0222BA48
 	ldr r1, [sp]
 	mov r2, #6
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	add r1, r5, #0
 	add r1, #0xd0
 	str r0, [r1]
@@ -8933,7 +8933,7 @@ _0222B6AC:
 	ldr r0, _0222B75C ; =ov74_0222BA48
 	add r1, r7, #0
 	mov r2, #6
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	add r1, r5, #0
 	add r1, #0xd0
 	str r0, [r1]
@@ -9155,7 +9155,7 @@ _0222B8C0:
 	ldr r0, _0222B948 ; =ov74_0222BA48
 	add r1, r6, #0
 	mov r2, #6
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r1, _0222B94C ; =0x00001890
 	add r4, r4, #1
 	str r0, [r5, r1]
@@ -10358,7 +10358,7 @@ _0222C2BC:
 	mov r2, #0
 	ldr r1, [r4, r1]
 	str r2, [r1]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r3, r4, r5, r6, r7, pc}
@@ -10638,7 +10638,7 @@ _0222C4CE:
 	ldr r0, _0222C668 ; =ov74_0222C04C
 	add r1, r6, #0
 	mov r2, #5
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	b _0222C548
 _0222C53A:
 	ldr r0, [r4]
@@ -13805,7 +13805,7 @@ _0222DEBE:
 	ldr r0, _0222DEEC ; =ov74_0222DE68
 	add r1, r4, #0
 	lsl r2, r2, #0xa
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	ldr r1, _0222DEE8 ; =0x00000C04
 	str r0, [r4, r1]
 _0222DED6:
@@ -13837,7 +13837,7 @@ _0222DF04:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0222DF10
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0222DF10:
 	mov r0, #3
 	mov r1, #0
@@ -16703,7 +16703,7 @@ _0222F656:
 	ldr r0, _0222F684 ; =ov74_0222F600
 	add r1, r4, #0
 	lsl r2, r2, #0xa
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	ldr r1, _0222F680 ; =0x00000C04
 	str r0, [r4, r1]
 _0222F66E:
@@ -16735,7 +16735,7 @@ _0222F69C:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0222F6A8
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0222F6A8:
 	mov r0, #3
 	mov r1, #0

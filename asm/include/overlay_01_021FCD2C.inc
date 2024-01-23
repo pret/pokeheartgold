@@ -1,10 +1,10 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public AllocFromHeapAtEnd
 .public FreeToHeap
-.public sub_0201F988
+.public SysTask_GetData
 .public Camera_SetDistance
 .public Camera_GetDistance
 .public memset

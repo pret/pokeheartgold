@@ -32,8 +32,8 @@
 .public sub_020040AC
 .public GfGfxLoader_GetPlttData
 .public GfGfxLoader_GetPlttDataFromOpenNarc
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public AllocFromHeap
 .public FreeToHeap
 .public FreeToHeapExplicit

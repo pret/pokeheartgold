@@ -90,7 +90,7 @@
 .public GetWindowWidth
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
-.public sub_0201F988
+.public SysTask_GetData
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized
 .public AddTextPrinterParameterizedWithColor

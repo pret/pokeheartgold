@@ -2621,7 +2621,7 @@ ov39_02228370: ; 0x02228370
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02228394
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0xa8
@@ -3120,7 +3120,7 @@ _022287A2:
 	ldr r0, _022287F4 ; =ov39_022287F8
 	add r1, #0xa8
 	mov r2, #0x14
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	ldr r1, [sp, #0x10]
 	add r1, #0xa8
 	str r0, [r1]

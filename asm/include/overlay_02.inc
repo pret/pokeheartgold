@@ -55,10 +55,10 @@
 .public BufferFashionName
 .public BufferFashionNameWithArticle
 .public StringExpandPlaceholders
-.public CreateSysTask
-.public sub_0200E33C
-.public sub_0200E374
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public ClearFrameAndWindow2
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
@@ -97,7 +97,7 @@
 .public FillWindowPixelBuffer
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
-.public sub_0201F988
+.public SysTask_GetData
 .public GF_SinDeg
 .public GF_CosDeg
 .public GF_DegreeToSinCosIdxNoWrap

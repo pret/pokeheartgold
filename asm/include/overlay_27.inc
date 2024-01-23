@@ -63,7 +63,7 @@
 .public GetWindowX
 .public GetWindowY
 .public ScheduleBgTilemapBufferTransfer
-.public sub_0201F988
+.public SysTask_GetData
 .public AddTextPrinterParameterizedWithColor
 .public GfGfx_EngineBTogglePlanes
 .public SpriteList_Delete

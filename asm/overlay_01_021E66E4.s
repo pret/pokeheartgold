@@ -39,14 +39,14 @@ ov01_021E66E4: ; 0x021E66E4
 	add r2, r7, #0
 	bl MIi_CpuClear32
 	add r0, r6, #0
-	bl sub_0201F82C
+	bl SysTaskQueue_GetArenaSize
 	add r1, r0, #0
 	add r0, r5, #0
 	bl AllocFromHeap
 	str r0, [r4, #0x10]
 	ldr r1, [r4, #0x10]
 	add r0, r6, #0
-	bl sub_0201F834
+	bl SysTaskQueue_PlacementNew
 	str r0, [r4, #0x10]
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -82,11 +82,11 @@ _021E6754:
 
 	thumb_func_start ov01_021E6768
 ov01_021E6768: ; 0x021E6768
-	ldr r3, _021E6770 ; =sub_0201F880
+	ldr r3, _021E6770 ; =SysTaskQueue_RunTasks
 	ldr r0, [r0, #0x10]
 	bx r3
 	nop
-_021E6770: .word sub_0201F880
+_021E6770: .word SysTaskQueue_RunTasks
 	thumb_func_end ov01_021E6768
 
 	thumb_func_start ov01_021E6774
@@ -150,13 +150,13 @@ _021E67CC:
 	ldr r0, _021E6834 ; =ov01_021E6774
 	ldr r2, [r6]
 	add r1, r4, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #4]
 	ldr r0, [r5, #0x10]
 	ldr r1, _021E6838 ; =ov01_021E6798
 	ldr r3, [r6]
 	add r2, r4, #0
-	bl sub_0201F8C0
+	bl SysTaskQueue_InsertTask
 	str r0, [r4, #8]
 	str r5, [r4]
 	str r6, [r4, #0xc]
@@ -225,9 +225,9 @@ _021E6856:
 	bl FreeToHeap
 _021E6864:
 	ldr r0, [r4, #4]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, [r4, #8]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	add r1, r4, #0
 	mov r2, #0x14

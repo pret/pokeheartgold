@@ -4,12 +4,12 @@
 .public PlaySE
 .public PlayCry
 .public IsCryFinished
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public FreeToHeapExplicit
-.public sub_0201F988
+.public SysTask_GetData
 .public GF_AssertFail
 .public StartScriptFromMenu
 .public FieldSystem_FlagSet

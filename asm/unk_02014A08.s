@@ -207,7 +207,7 @@ _02014B26:
 	ldr r0, _02014B94 ; =sub_02014CBC
 	ldr r2, [sp, #0x28]
 	add r1, r5, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r1, _02014B88 ; =0x00000604
 	mov r2, #3
 	str r0, [r5, r1]
@@ -242,7 +242,7 @@ _02014BA6:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _02014BCC
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, _02014BD0 ; =0x00000604
 	mov r1, #0
 	str r1, [r4, r0]

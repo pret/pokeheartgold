@@ -979,11 +979,11 @@ ov01_021F197C: ; 0x021F197C
 	add r1, r4, #0
 	mov r2, #0xff
 	str r6, [r4, #8]
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	ldr r0, _021F19B0 ; =ov01_021F19D0
 	add r1, r4, #0
 	mov r2, #0xff
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	pop {r4, r5, r6, pc}
 	nop
 _021F19AC: .word ov01_021F19B4
@@ -1001,7 +1001,7 @@ ov01_021F19B4: ; 0x021F19B4
 	mov r0, #1
 	str r0, [r4]
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021F19B4
@@ -1020,7 +1020,7 @@ ov01_021F19D0: ; 0x021F19D0
 	add r0, r4, #0
 	bl ov01_021F1448
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _021F19F0:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

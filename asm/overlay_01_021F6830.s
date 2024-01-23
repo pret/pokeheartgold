@@ -130,7 +130,7 @@ ov01_021F68DC: ; 0x021F68DC
 	mov r3, #4
 	bl CreateSysTaskAndEnvironment
 	add r4, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r1, [r5, #0x1c]
 	strb r1, [r0]
 	mov r1, #0
@@ -151,7 +151,7 @@ ov01_021F690C: ; 0x021F690C
 	add r4, r0, #0
 	add r0, #0xd8
 	ldr r0, [r0]
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r2, r0, #0
 	ldr r1, [r2, #4]
 	ldrb r2, [r2]
@@ -171,7 +171,7 @@ ov01_021F6930: ; 0x021F6930
 	add r5, r0, #0
 	add r0, #0xd8
 	ldr r0, [r0]
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	ldrb r1, [r4]
 	ldr r0, [r5, #8]
@@ -366,7 +366,7 @@ ov01_021F6A9C: ; 0x021F6A9C
 	ldr r0, [r0]
 	add r5, r1, #0
 	add r4, r2, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldrb r1, [r0, #1]
 	cmp r1, #1
 	bne _021F6AB8
@@ -388,9 +388,9 @@ ov01_021F6ABC: ; 0x021F6ABC
 	add r6, r1, #0
 	add r7, r2, #0
 	str r3, [sp]
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r0, [r0, #4]
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ov01_021F6B00
@@ -409,9 +409,9 @@ ov01_021F6AEC: ; 0x021F6AEC
 	push {r3, lr}
 	add r0, #0xd8
 	ldr r0, [r0]
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r0, [r0, #4]
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r0, [r0]
 	pop {r3, pc}
 	thumb_func_end ov01_021F6AEC
@@ -421,7 +421,7 @@ ov01_021F6B00: ; 0x021F6B00
 	push {r3, lr}
 	add r0, #0xd8
 	ldr r0, [r0]
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldrb r0, [r0]
 	pop {r3, pc}
 	.balign 4, 0
@@ -432,7 +432,7 @@ ov01_021F6B10: ; 0x021F6B10
 	push {r3, lr}
 	add r0, #0xd8
 	ldr r0, [r0]
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldrb r0, [r0, #1]
 	pop {r3, pc}
 	.balign 4, 0
@@ -443,9 +443,9 @@ ov01_021F6B20: ; 0x021F6B20
 	push {r3, lr}
 	add r0, #0xd8
 	ldr r0, [r0]
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r0, [r0, #4]
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r0, #0xc
 	pop {r3, pc}
 	thumb_func_end ov01_021F6B20
@@ -457,7 +457,7 @@ ov01_021F6B34: ; 0x021F6B34
 	ldr r0, [r0]
 	add r5, r1, #0
 	add r4, r2, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r0, [r0, #4]
 	add r1, r5, #0
 	add r2, r4, #0
@@ -471,7 +471,7 @@ ov01_021F6B50: ; 0x021F6B50
 	push {r3, lr}
 	add r0, #0xd8
 	ldr r0, [r0]
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r0, [r0, #4]
 	bl ov27_0225A2CC
 	pop {r3, pc}
@@ -484,7 +484,7 @@ ov01_021F6B64: ; 0x021F6B64
 	add r0, #0xd8
 	ldr r0, [r0]
 	add r5, r1, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	cmp r5, #0
 	ble _021F6B7A

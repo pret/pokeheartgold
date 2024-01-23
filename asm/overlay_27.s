@@ -46,7 +46,7 @@ ov27_02259F80: ; 0x02259F80
 	mov r3, #8
 	bl CreateSysTaskAndEnvironment
 	add r7, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	str r7, [r4, #8]
 	mov r0, #0
@@ -241,7 +241,7 @@ ov27_0225A19C: ; 0x0225A19C
 	str r0, [sp]
 	add r0, r1, #0
 	str r1, [sp, #4]
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r6, r0, #0
 	ldr r1, _0225A2B0 ; =FS_OVERLAY_ID(OVY_123)
 	mov r0, #0
@@ -374,7 +374,7 @@ ov27_0225A2C8: ; 0x0225A2C8
 	thumb_func_start ov27_0225A2CC
 ov27_0225A2CC: ; 0x0225A2CC
 	push {r4, lr}
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	bne _0225A2DA
 	bl GF_AssertFail
@@ -393,7 +393,7 @@ _0225A2E8: .word 0x0000051C
 ov27_0225A2EC: ; 0x0225A2EC
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	bne _0225A2FC
 	bl GF_AssertFail
@@ -4459,7 +4459,7 @@ ov27_0225C250: ; 0x0225C250
 	mov r3, #8
 	bl CreateSysTaskAndEnvironment
 	add r6, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	str r6, [r4, #0x1c]
 	mov r0, #0
@@ -4535,7 +4535,7 @@ ov27_0225C398: ; 0x0225C398
 	str r0, [sp]
 	add r0, r1, #0
 	str r1, [sp, #4]
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r7, r0, #0
 	mov r0, #0xd5
 	lsl r0, r0, #2
@@ -4595,7 +4595,7 @@ ov27_0225C41C: ; 0x0225C41C
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r2, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	mov r1, #0xe7
 	lsl r1, r1, #2
 	str r5, [r0, r1]

@@ -11,7 +11,7 @@
 #include "bug_contest_internal.h"
 #include "constants/vars.h"
 #include "overlay_manager.h"
-#include "unk_0200E320.h"
+#include "sys_task_api.h"
 #include "list_menu_2d.h"
 #include "render_window.h"
 #include "camera.h"

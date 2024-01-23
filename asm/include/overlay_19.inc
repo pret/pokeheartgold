@@ -19,8 +19,8 @@
 .public BufferPlayersName
 .public BufferIntegerAsString
 .public StringExpandPlaceholders
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public sub_020183F0
 .public sub_02018410
 .public AllocFromHeap
@@ -38,7 +38,7 @@
 .public ClearWindowTilemapAndCopyToVram
 .public FillWindowPixelBuffer
 .public ScheduleBgTilemapBufferTransfer
-.public sub_0201F988
+.public SysTask_GetData
 .public AddTextPrinterParameterizedWithColor
 .public GfGfx_EngineBTogglePlanes
 .public sub_0202457C

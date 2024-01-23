@@ -13,9 +13,9 @@
 #include "text.h"
 #include "touch_save_app.h"
 #include "unk_02005D10.h"
-#include "unk_0200E320.h"
+#include "sys_task_api.h"
 #include "yes_no_prompt.h"
-#include "unk_0201F79C.h"
+#include "sys_task.h"
 #include "unk_020183F0.h"
 
 FS_EXTERN_OVERLAY(OVY_123);
@@ -189,7 +189,7 @@ SysTask *ov30_0225D520(BgConfig *bgConfig, void* a1, FieldSystem *fieldSystem, v
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
 
     SysTask *task = CreateSysTaskAndEnvironment((SysTaskFunc)ov30_0225D700, sizeof(TouchSaveAppData), 10, HEAP_ID_8);
-    TouchSaveAppData *data = sub_0201F988(task);
+    TouchSaveAppData *data = SysTask_GetData(task);
     data->task = task;
     data->unk0 = 0;
     data->bgConfig = bgConfig;
@@ -213,7 +213,7 @@ SysTask *ov30_0225D520(BgConfig *bgConfig, void* a1, FieldSystem *fieldSystem, v
 }
 
 void ov30_0225D64C(BgConfig *bgConfig, SysTask *task) {
-    TouchSaveAppData *data = sub_0201F988(task);
+    TouchSaveAppData *data = SysTask_GetData(task);
 
     FS_LoadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(OVY_123));
 

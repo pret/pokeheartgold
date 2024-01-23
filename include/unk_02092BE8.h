@@ -6,7 +6,7 @@
 #include "save_vars_flags.h"
 #include "script.h"
 #include "gear_phone.h"
-#include "unk_0200E320.h"
+#include "sys_task_api.h"
 
 typedef struct UnkPokegearstruct_2c{
     u8 unk00;

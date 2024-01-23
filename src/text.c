@@ -2,7 +2,7 @@
 #include "font.h"
 #include "gf_gfx_loader.h"
 #include "text.h"
-#include "unk_0201F79C.h"
+#include "sys_task.h"
 
 static const struct FontInfo *sFonts;
 
@@ -31,7 +31,7 @@ static u8 CreateTextPrinterSysTask(SysTaskFunc taskFunc, TextPrinter *printer, u
             continue;
         }
 
-        sTextPrinterTasks[i] = sub_0200E358(taskFunc, printer, priority);
+        sTextPrinterTasks[i] = SysTask_CreateOnPrintQueue(taskFunc, printer, priority);
         if (sTextPrinterTasks[i] == NULL) {
             i = MAX_TEXT_PRINTERS;
         }
@@ -47,13 +47,13 @@ static void DestroyTextPrinterSysTask(u8 printerId) {
         return;
     }
 
-    TextPrinter *printer = sub_0201F988(sTextPrinterTasks[printerId]);
+    TextPrinter *printer = SysTask_GetData(sTextPrinterTasks[printerId]);
     if (printer != NULL) {
         sub_02020548(printer);
         FreeToHeap(printer);
     }
 
-    DestroySysTask(sTextPrinterTasks[printerId]);
+    SysTask_Destroy(sTextPrinterTasks[printerId]);
     sTextPrinterTasks[printerId] = NULL;
 }
 

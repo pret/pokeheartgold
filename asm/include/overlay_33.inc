@@ -30,7 +30,7 @@
 .public FillWindowPixelBuffer
 .public GetWindowWidth
 .public ScheduleBgTilemapBufferTransfer
-.public sub_0201F988
+.public SysTask_GetData
 .public AddTextPrinterParameterizedWithColor
 .public TouchscreenHitbox_FindRectAtTouchHeld
 .public TouchscreenHitbox_FindRectAtTouchNew
