@@ -82,7 +82,7 @@ static const BgTemplate sGameClearSaveBgTemplate = {
     .mosaic     = FALSE,
 };
 
-BOOL Task_GameClear(TaskManager *taskman);
+static BOOL Task_GameClear(TaskManager *taskman);
 static void GameClearSave_InitGraphics(FieldSystem *fieldSystem, GameClearWork *env);
 static void GameClearSave_PrintSaving(FieldSystem *fieldSystem, GameClearWork *env);
 static BOOL GameClearSave_IsPrintFinished(GameClearWork *env);
@@ -92,34 +92,34 @@ static void GameClearSave_Free(FieldSystem *fieldSystem, GameClearWork *env);
 
 BOOL sub_0205298C(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
-    int *state = TaskManager_GetStatePtr(taskman);
+    u32 *state = TaskManager_GetStatePtr(taskman);
 
     switch (*state) {
     case 0:
         BugContest_WarpToJudging(taskman, fieldSystem);
         FieldSystem_ClearFollowingTrainer(fieldSystem);
         HealParty(SaveArray_Party_Get(fieldSystem->saveData));
-        *state += 1;
+        ++(*state);
         break;
     case 1:
         GF_SndStartFadeOutBGM(0, 20);
-        *state += 1;
+        ++(*state);
         break;
     case 2:
         if (!GF_SndGetFadeTimer()) {
             sub_02054F14();
-            *state += 1;
+            ++(*state);
             break;
         }
         break;
     case 3:
         CallTask_RestoreOverworld(taskman);
-        *state += 1;
+        ++(*state);
         break;
     case 4:
         BeginNormalPaletteFade(0, 1, 1, RGB_WHITE, 8, 1, HEAP_ID_32);
         reg_G2_BLDCNT = 0;
-        *state += 1;
+        ++(*state);
         break;
     case 5:
         if (IsPaletteFadeFinished()) {
@@ -151,13 +151,13 @@ static void AddHallOfFameEntry(FieldSystem *fieldSystem, BOOL gameCleared) {
 static BOOL Task_GameClear(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     GameClearWork *env = TaskManager_GetEnvironment(taskman);
-    int *state = TaskManager_GetStatePtr(taskman);
+    u32 *state = TaskManager_GetStatePtr(taskman);
 
     switch (*state) {
     case 0:
         if (!env->vsTrainerRed) {
             LaunchHOFCongratsApp(fieldSystem, &env->hofCongratsArgs);
-            *state += 1;
+            ++(*state);
             break;
         }
         GameClearSave_InitGraphics(fieldSystem, env);
@@ -169,14 +169,14 @@ static BOOL Task_GameClear(TaskManager *taskman) {
             CreateHeap(HEAP_ID_3, HEAP_ID_4, 0x20000);
             GameClearSave_InitGraphics(fieldSystem, env);
             BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 8, 1, HEAP_ID_32);
-            *state += 1;
+            ++(*state);
         }
         break;
     case 2:
         if (IsPaletteFadeFinished()) {
             if (!Save_FileDoesNotBelongToPlayer(fieldSystem->saveData)) {
                 GameClearSave_PrintSaving(fieldSystem, env);
-                *state += 1;
+                ++(*state);
                 break;
             }
             *state = 7;
@@ -184,7 +184,7 @@ static BOOL Task_GameClear(TaskManager *taskman) {
         break;
     case 3:
         if (GameClearSave_IsPrintFinished(env)) {
-            *state += 1;
+            ++(*state);
         }
         break;
     case 4:
@@ -195,13 +195,13 @@ static BOOL Task_GameClear(TaskManager *taskman) {
         }
         sub_02052E70(env);
         GameClearSave_PrintSaveStatus(fieldSystem, env, writeStatus);
-        *state += 1;
+        ++(*state);
         break;
     case 5:
         if (GameClearSave_IsPrintFinished(env)) {
             PlaySE(SEQ_SE_DP_SAVE);
             env->timer = WAIT_SE_SAVE_FRAMES;
-            *state += 1;
+            ++(*state);
         }
         break;
     case 6:
@@ -209,12 +209,12 @@ static BOOL Task_GameClear(TaskManager *taskman) {
             env->timer--;
             break;
         }
-        *state += 1;
+        ++(*state);
         break;
     case 7:
         BeginNormalPaletteFade(3, 0, 0, RGB_BLACK, 8, 1, HEAP_ID_32);
         env->bgmVolume = 127;
-        *state += 1;
+        ++(*state);
         break;
     case 8:
         env->bgmVolume--;
@@ -223,7 +223,7 @@ static BOOL Task_GameClear(TaskManager *taskman) {
             StopBGM(GF_GetCurrentPlayingBGM(), 0);
             sub_0200616C(0);
             env->timer = SCREEN_FADEOUT_FRAMES;
-            *state += 1;
+            ++(*state);
         }
         break;
     case 9:
@@ -231,14 +231,14 @@ static BOOL Task_GameClear(TaskManager *taskman) {
             env->timer--;
             break;
         }
-        *state += 1;
+        ++(*state);
         break;
     case 10:
         if (IsPaletteFadeFinished()) {
             GameClearSave_Free(fieldSystem, env);
             Sound_SetMasterVolume(127);
             LaunchCreditsApp(fieldSystem, &env->creditsArgs);
-            *state += 1;
+            ++(*state);
         }
         break;
     case 11:

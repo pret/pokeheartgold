@@ -419,6 +419,7 @@ static u32 ov17_02201F18(BerryPotsAppData *data) {
             data->state70++;
             break;
         case 1:
+        {
             int unk = ov17_02202A50(data);
             if (unk == -1) {
                 break;
@@ -450,6 +451,7 @@ static u32 ov17_02201F18(BerryPotsAppData *data) {
             }
 
             return 1;
+        }
     }
 
     return 3;
@@ -464,6 +466,7 @@ static u32 ov17_02201FE8(BerryPotsAppData *data) {
             data->state70++;
             break;
         case 1:
+        {
             int unk = ov17_02202A50(data);
             if (unk == -1) {
                 break;
@@ -486,6 +489,7 @@ static u32 ov17_02201FE8(BerryPotsAppData *data) {
                 data->args->unk14 = 2;
                 return 1;
             }
+        }
     }
 
     return 4;
@@ -500,6 +504,7 @@ static u32 ov17_02202094(BerryPotsAppData *data) {
             data->state70++;
             break;
         case 1:
+        {
             int unk = ov17_02202A50(data);
             if (unk == -1) {
                 break;
@@ -515,6 +520,7 @@ static u32 ov17_02202094(BerryPotsAppData *data) {
             ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_3, 4, FALSE);
             data->state70++;
             break;
+        }
         case 2:
             if (!ov17_022025B8(data)) {
                 break;
@@ -551,6 +557,7 @@ static u32 ov17_02202184(BerryPotsAppData* data) {
             break;
 
         case 1:
+        {
             int unk = ov17_02202A50(data);
             if (unk == -1) {
                 break;
@@ -573,7 +580,7 @@ static u32 ov17_02202184(BerryPotsAppData* data) {
             }
 
             break;
-
+        }
         case 2:
             if (ov17_02202460(data)) {
                 data->state70 = 0;
@@ -1400,10 +1407,12 @@ static void ov17_022036FC(BerryPotsAppData *data, enum BerryPotsApp_022036FC_Act
         case BERRY_POTS_APP_022036FC_ACTION_12:
         case BERRY_POTS_APP_022036FC_ACTION_15:
         case BERRY_POTS_APP_022036FC_ACTION_16:
+        {
             String *berryName = GetNutName(unk->berryId, data->heapId);
             BufferString(data->msgFmt, 0, berryName, 0, 0, 2);
             String_Delete(berryName);
             break;
+        }
         default:
             String_Copy(data->currentStatusString, data->statusStrings[action]);
             return;

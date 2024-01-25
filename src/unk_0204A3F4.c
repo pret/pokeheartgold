@@ -576,7 +576,8 @@ u32 sub_0204B120(UnkStruct_Fsys_A0 *a0, SaveData *saveData, u32 a2) {
     switch (a2) {
         case 0:
             return sub_0202D488(frontierData, 0);
-        case 1: {
+        case 1:
+        {
             sub_0202D5DC(frontierData, 4, 2);
             s32 unk0 = sub_0202D488(frontierData, 0);
             if (unk0 == 10) {
@@ -590,6 +591,7 @@ u32 sub_0204B120(UnkStruct_Fsys_A0 *a0, SaveData *saveData, u32 a2) {
             return 1;
         }
         case 2:
+        {
             u32 unk4 = sub_0202D450(frontierData, 3);
             s32 unk0 = sub_0202D488(frontierData, 0);
             if (unk0 == 1) {
@@ -603,6 +605,7 @@ u32 sub_0204B120(UnkStruct_Fsys_A0 *a0, SaveData *saveData, u32 a2) {
                 return 1;
             }
             return 0;
+        }
     }
     return 0;
 }

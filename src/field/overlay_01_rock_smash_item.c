@@ -174,7 +174,7 @@ static BOOL CheckRockSmashItemDrop(FieldSystem *fieldSystem, RockSmashItemCheckW
 static BOOL Task_GetRockSmashItem(TaskManager *taskman) {
     LocalMapObject *obj;
 
-    int *state_p = TaskManager_GetStatePtr(taskman);
+    u32 *state_p = TaskManager_GetStatePtr(taskman);
     RockSmashItemCheckWork *env = TaskManager_GetEnvironment(taskman);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
 
@@ -186,15 +186,16 @@ static BOOL Task_GetRockSmashItem(TaskManager *taskman) {
             obj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
         }
         env->unk14 = ov01_02200540(obj, 0, 1);
-        *state_p += 1;
+        ++(*state_p);
         break;
     case 1:
         if (ov01_022003F4(env->unk14)) {
             sub_02068B48(env->unk14);
-            *state_p += 1;
+            ++(*state_p);
         }
         break;
     case 2:
+    {
         u32 idx = DrawRockSmashIdx(fieldSystem);
         if ((env->ability == ABILITY_SERENE_GRACE || env->ability == ABILITY_SUPER_LUCK) && idx < 7) {
             idx = (u8)(idx + 1);
@@ -223,6 +224,7 @@ static BOOL Task_GetRockSmashItem(TaskManager *taskman) {
         *env->item = item;
         FreeToHeap(env);
         return TRUE;
+    }
     }
     return FALSE;
 }

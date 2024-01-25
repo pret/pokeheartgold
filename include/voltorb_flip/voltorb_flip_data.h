@@ -25,8 +25,8 @@ typedef struct BgTemplates {
     BgTemplate unk0[6];
 } BgTemplates;
 
-const u8 sMainMenuMsgNos[];
-const u8 sGameInfoMsgNos[];
-const u8 ov122_021E9270[];
+extern const u8 sMainMenuMsgNos[];
+extern const u8 sGameInfoMsgNos[];
+extern const u8 ov122_021E9270[];
 
 #endif //POKEHEARTGOLD_VOLTORB_FLIP_DATA_H

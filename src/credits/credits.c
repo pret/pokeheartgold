@@ -274,6 +274,7 @@ BOOL CreditsApp_OvyExit(OVY_MANAGER *man, int *state) {
         *state += 1;
         break;
     case 1:
+    {
         PageWork *ptr = &work->pageWork;
         RemoveWindow(&ptr->window);
         DestroyMsgData(ptr->msgData);
@@ -286,6 +287,7 @@ BOOL CreditsApp_OvyExit(OVY_MANAGER *man, int *state) {
         FreePageSysTasks(work);
         *state += 1;
         break;
+    }
     case 2:
         NARC_Delete(work->cutsceneWork.narc);
         ov76_021E62B4(work);

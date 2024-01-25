@@ -78,6 +78,7 @@ BOOL ScrCmd_643(ScriptContext *ctx) {
             sub_0204FFB0(ctx->fieldSystem->saveData, unk0, arg1);
             break;
         case 4:
+        {
             BattleArcadeChallengeType challengeType;
             if (arg1 == 0) {
                 challengeType = BATTLE_ARCADE_CHALLENGE_TYPE_SINGLE;
@@ -88,6 +89,7 @@ BOOL ScrCmd_643(ScriptContext *ctx) {
             }
             sub_0205011C(ctx->taskman, unk1, challengeType);
             return TRUE;
+        }
         default:
             GF_ASSERT(FALSE);
             *result = 0;

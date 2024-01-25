@@ -8,7 +8,7 @@
 #define POKEDEX_MAGIC (0xBEEFCAFE)
 #define ASSERT_POKEDEX(pokedex) do { GF_ASSERT((pokedex)->magic == POKEDEX_MAGIC);} while (0)
 
-void Pokedex_InitDeoxysFormOrder(Pokedex *pokedex);
+static void Pokedex_InitDeoxysFormOrder(Pokedex *pokedex);
 u16 *LoadSpeciesToJohtoDexNoLUT(void);
 void Pokedex_SetInternationalViewFlag(Pokedex *pokedex);
 

@@ -136,7 +136,7 @@ static BOOL ov01_02204EFC(TaskManager *taskManager) {
     }
     FreeToHeap(unk4);
     FreeToHeap(didHeadbuttStartBattle);
-    return TRUE;  
+    return TRUE;
 }
 
 static s8 ov01_02204FE0(u16 a0, u16 a1, u32 trainerId, u32 x, u32 y, s16 a5[][2]) {
@@ -178,7 +178,7 @@ static s8 ov01_02205074(u8 a0, u8 a1, u32 trainerId) {
 }
 
 static void ov01_022050F8(FieldSystem *fieldSystem, u32 *x, u32 *y) {
-    u32 inFrontX, inFrontY;
+    int inFrontX, inFrontY;
     PlayerAvatar_GetCoordsInFront(fieldSystem->playerAvatar, &inFrontX, &inFrontY);
     if (FollowingPokemon_IsActive(fieldSystem)) {
         LocalMapObject *object = FollowingPokemon_GetMapObject(fieldSystem);
