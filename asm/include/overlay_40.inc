@@ -97,9 +97,9 @@
 .public sub_0200E188
 .public sub_0200E1E8
 .public sub_0200E2B0
-.public CreateSysTask
-.public CreateVBlankSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_Destroy
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_02013534

@@ -109,7 +109,7 @@ _02056DAA:
 	ldr r0, _02056E34 ; =sub_020572DC
 	ldr r1, [r1, #0x30]
 	mov r2, #0xc8
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r1, _02056E2C ; =_021D41C4
 	ldr r1, [r1]
 	str r0, [r1, #0x2c]
@@ -202,7 +202,7 @@ _02056EB0:
 	ldr r0, _02056EDC ; =_021D41C4
 	ldr r0, [r0]
 	ldr r0, [r0, #0x2c]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, _02056EDC ; =_021D41C4
 	ldr r0, [r0]
 	bl FreeToHeap

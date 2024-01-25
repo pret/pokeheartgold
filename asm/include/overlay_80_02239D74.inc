@@ -6,8 +6,8 @@
 .public NARC_Delete
 .public GfGfxLoader_GetCharDataFromOpenNarc
 .public GfGfxLoader_GetScrnDataFromOpenNarc
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public AllocFromHeap
 .public FreeToHeap
 .public BG_LoadScreenTilemapData

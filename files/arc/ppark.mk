@@ -9,4 +9,6 @@ $(PPARK_NARC): %.narc: $(PPARK_JSON) $(PPARK_TEMPLATE)
 	$(WINE) $(MWCC) $(MWCFLAGS) -c -o $*.o $*.c
 	$(O2NARC) $*.o $@ -n
 
+$(PPARK_JSON): | $(WORK_DIR)/include/global.h
+
 FS_CLEAN_TARGETS += $(PPARK_NARC)

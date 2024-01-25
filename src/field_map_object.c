@@ -523,7 +523,7 @@ void sub_0205EAF0(MapObjectManager* manager, LocalMapObject* object) {
         priority += 2;
     }
 
-    SysTask* task = CreateSysTask((SysTaskFunc)sub_0205F12C, object, priority);
+    SysTask* task = SysTask_CreateOnMainQueue((SysTaskFunc)sub_0205F12C, object, priority);
     GF_ASSERT(task != NULL);
 
     sub_0205F338(object, task);
@@ -1115,7 +1115,7 @@ SysTask* sub_0205F340(LocalMapObject* object) {
 }
 
 void sub_0205F348(LocalMapObject* object) {
-    DestroySysTask(sub_0205F340(object));
+    SysTask_Destroy(sub_0205F340(object));
 }
 
 void sub_0205F354(LocalMapObject* object, MapObjectManager* manager) {

@@ -60,8 +60,8 @@
 .public sub_0200E0B8
 .public sub_0200E0F4
 .public sub_0200E188
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public DrawFrameAndWindow1
 .public sub_0200E5D4
 .public DrawFrameAndWindow2

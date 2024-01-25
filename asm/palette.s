@@ -485,7 +485,7 @@ _02003406:
 	ldr r0, _02003470 ; =sub_020036B0
 	add r1, r5, #0
 	sub r2, r2, #2
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 _02003460:
 	add r0, r6, #0
 	add sp, #0x10
@@ -603,7 +603,7 @@ _020034F6:
 	ldr r0, _0200355C ; =sub_020036B0
 	add r1, r5, #0
 	sub r2, r2, #2
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 _0200354A:
 	add r0, r6, #0
 	add sp, #0x10
@@ -833,7 +833,7 @@ sub_020036B0: ; 0x020036B0
 	sub r1, r1, #2
 	and r2, r3
 	strh r2, [r4, r1]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r4, r5, r6, pc}
 _020036F0:
 	sub r0, r1, #4
@@ -870,7 +870,7 @@ _020036F0:
 	add r0, r1, #2
 	strh r2, [r4, r0]
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0200373C:
 	pop {r4, r5, r6, pc}
 	nop

@@ -544,7 +544,7 @@ ov63_0221C228: ; 0x0221C228
 	strh r2, [r4, r0]
 	ldr r0, _0221C260 ; =ov63_0221BFCC
 	add r1, r4, #0
-	bl CreateVBlankSysTask
+	bl SysTask_CreateOnVBlankQueue
 	str r0, [r4, #4]
 	add r0, r4, #0
 	mov r1, #3
@@ -693,7 +693,7 @@ ov63_0221C368: ; 0x0221C368
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl ov63_0221CE7C
 	add r0, r4, #0
@@ -724,7 +724,7 @@ ov63_0221C384: ; 0x0221C384
 	ldr r0, _0221C3C8 ; =ov63_0221E8FC
 	add r1, r4, #0
 	mov r2, #4
-	bl CreateVBlankSysTask
+	bl SysTask_CreateOnVBlankQueue
 	str r0, [r4, #4]
 	add r0, r4, #0
 	mov r1, #6
@@ -963,7 +963,7 @@ ov63_0221C5A0: ; 0x0221C5A0
 	b _0221C606
 _0221C5B6:
 	ldr r0, [r4, #4]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	add r0, #0xfc
 	ldr r0, [r0]
@@ -4712,7 +4712,7 @@ _0221E4C6:
 	ldr r0, _0221E4DC ; =ov63_0221E4E0
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0221E4D4: .word 0x0000328C
@@ -4776,7 +4776,7 @@ _0221E548:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -6358,7 +6358,7 @@ ov63_0221F238: ; 0x0221F238
 	ldr r0, _0221F288 ; =ov63_0221F2E8
 	add r1, r4, #0
 	mov r2, #3
-	bl CreateVBlankSysTask
+	bl SysTask_CreateOnVBlankQueue
 	ldr r1, _0221F28C ; =0x00000838
 	mov r2, #1
 	str r0, [r4, r1]
@@ -6366,7 +6366,7 @@ ov63_0221F238: ; 0x0221F238
 	str r5, [r4, r1]
 	ldr r0, _0221F290 ; =ov63_0221F294
 	add r1, r4, #0
-	bl CreateVBlankSysTask
+	bl SysTask_CreateOnVBlankQueue
 	pop {r3, r4, r5, pc}
 	nop
 _0221F278: .word 0x00000844
@@ -6408,7 +6408,7 @@ _0221F2C8:
 	ldr r2, [r1]
 	sub r2, r2, #1
 	str r2, [r1]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r4, pc}
 	nop
 _0221F2D8: .word _022203C0
@@ -6439,7 +6439,7 @@ _0221F30A:
 	ldr r2, [r1]
 	sub r2, r2, #1
 	str r2, [r1]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r4, pc}
 	.balign 4, 0
 _0221F318: .word _022203C0
@@ -6538,7 +6538,7 @@ ov63_0221F368: ; 0x0221F368
 	strh r3, [r1, r0]
 	ldr r0, _0221F3F0 ; =ov63_0221F3F4
 	mov r2, #2
-	bl CreateVBlankSysTask
+	bl SysTask_CreateOnVBlankQueue
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0221F3DC: .word 0x00000838
@@ -6722,7 +6722,7 @@ _0221F552:
 	ldr r2, [r1]
 	sub r2, r2, #1
 	str r2, [r1]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -7007,7 +7007,7 @@ _0221F784:
 	str r1, [r0]
 	ldr r0, _0221F7C0 ; =ov63_0221F7EC
 	ldr r1, [sp, #0x28]
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -7028,7 +7028,7 @@ ov63_0221F7C4: ; 0x0221F7C4
 	bl SysTask_GetData
 	bl FreeToHeap
 	add r0, r4, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0221F7D8:
 	pop {r4, pc}
 	.balign 4, 0

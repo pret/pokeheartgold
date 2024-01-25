@@ -707,7 +707,7 @@ _0222A37A:
 	ldr r0, _0222A400 ; =ov44_0222A40C
 	add r1, r1, r2
 	mov r2, #0x14
-	bl CreateVBlankSysTask
+	bl SysTask_CreateOnVBlankQueue
 	ldr r2, _0222A3F4 ; =0x00000D68
 	ldr r1, [sp, #4]
 	str r0, [r1, r2]
@@ -1072,7 +1072,7 @@ ov44_0222A68C: ; 0x0222A68C
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _0222A6AE
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, _0222A74C ; =0x00000D68
 	mov r1, #0
 	str r1, [r5, r0]
