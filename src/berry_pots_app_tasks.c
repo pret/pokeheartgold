@@ -37,22 +37,22 @@ void ov17_0220351C(BerryPotsAppData *data) {
         diff = -diff;
     }
 
-    args->unk8 = (s8)(diff * 27) / 4;
+    args->unk8 = (diff *= 27) / 4;
     args->unkA = data->unk80;
     SysTask_CreateOnMainQueue((SysTaskFunc)ov17_022035A4, args, 0);
     data->runningTasks++;
 }
 
 static void ov17_022035A4(SysTask *task, SysTaskArgs_ov17_0220351C *args) {
-    BerryPotsAppData *unk0 = args->data;
+    BerryPotsAppData *data = args->data;
 
-    Sprite_AddPositionXY(unk0->sprites[2], args->sign * 4, 0);
+    Sprite_AddPositionXY(data->sprites[2], args->sign * 4, 0);
     s16 x, y;
-    Sprite_GetPositionXY(unk0->sprites[2], &x, &y);
+    Sprite_GetPositionXY(data->sprites[2], &x, &y);
 
     u8 potIndex = (x - 31) / 27;
     if (potIndex != args->unkA && potIndex != args->unk7) {
-        ov17_02202B58(unk0, potIndex);
+        ov17_02202B58(data, potIndex);
         args->unkA = potIndex;
     }
 
@@ -60,9 +60,9 @@ static void ov17_022035A4(SysTask *task, SysTaskArgs_ov17_0220351C *args) {
         return;
     }
 
-    Sprite_SetPositionXY(unk0->sprites[2], args->unk7 * 27 + 31, 56);
+    Sprite_SetPositionXY(data->sprites[2], args->unk7 * 27 + 31, 56);
 
-    unk0->runningTasks--;
+    data->runningTasks--;
     FreeToHeap(args);
     SysTask_Destroy(task);
 }
@@ -262,11 +262,11 @@ u32 ov17_02203A34(BerryPotsAppData *data) {
 
 BOOL ov17_02203A54(BerryPotsAppData *data) {
     BOOL flag = FALSE;
-    BOOL r0 = ov17_02203C20(data, &flag);
+    BOOL ret = ov17_02203C20(data, &flag);
     if (!flag) {
-        r0 = ov17_02203B88(data);
+        ret = ov17_02203B88(data);
     }
-    return r0;
+    return ret;
 }
 
 static u32 ov17_02203A74(BerryPotsAppData *data, u32 a1) {
@@ -297,7 +297,7 @@ static u32 ov17_02203A74(BerryPotsAppData *data, u32 a1) {
 }
 
 static u32 ov17_02203AD4(BerryPotsAppData *data) {
-    BOOL r3 = FALSE;
+    BOOL flag = FALSE;
 
     if (gSystem.newKeys & (PAD_BUTTON_Y | PAD_BUTTON_X | PAD_KEY_DOWN | PAD_KEY_UP | PAD_KEY_LEFT | PAD_KEY_RIGHT | PAD_BUTTON_B | PAD_BUTTON_A)) {
         data->unk74 = 0;
@@ -315,13 +315,13 @@ static u32 ov17_02203AD4(BerryPotsAppData *data) {
 
     if (newKeys & PAD_KEY_LEFT) {
         data->unk7C = (data->unk7C + (MAX_BERRY_POT - 1)) % MAX_BERRY_POT;
-        r3 = TRUE;
+        flag = TRUE;
     } else if (newKeys & PAD_KEY_RIGHT) {
         data->unk7C = (data->unk7C + 1) % MAX_BERRY_POT;
-        r3 = TRUE;
+        flag = TRUE;
     }
 
-    if (r3) {
+    if (flag) {
         return ov17_02203A74(data, data->unk7C);
     } else {
         return 2;
@@ -436,7 +436,6 @@ static u32 ov17_02203D00(BerryPotsAppData *data) {
             return 5;
         case BERRY_POT_GROWTH_STAGE_BERRIES:
             return 6;
-
         case 0xFF:
         default:
             return 2;

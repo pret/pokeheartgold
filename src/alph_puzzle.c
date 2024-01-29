@@ -440,11 +440,11 @@ static const BgTemplate sBgTemplate5 = {
     0x000,
     GF_BG_SCR_SIZE_256x256,
     GX_BG_COLORMODE_16,
-    30,
-    0,
-    0,
+    GX_BG_SCRBASE_0xf000,
+    GX_BG_CHARBASE_0x00000,
+    GX_BG_EXTPLTT_01,
     2,
-    0,
+    GX_BG_AREAOVER_XLU,
     0,
     FALSE
 };
