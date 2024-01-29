@@ -332,7 +332,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BattleConte
                             ctx->unk_0[battlerId] = SSI_STATE_END;
                             ctx->unk_4[battlerId] = SSI_STATE_13;
                             ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_CATCHING_CONSTEST_THROW_BALL;
-                        } else if (BattleSystem_GetBattleType(bsys) & (BATTLE_TYPE_LINK | BATTLE_TYPE_TOWER)) {
+                        } else if (BattleSystem_GetBattleType(bsys) & (BATTLE_TYPE_LINK | BATTLE_TYPE_FRONTIER)) {
                             msg.id = msg_0197_00593; //Items can't be used here
                             msg.tag = TAG_NONE;
                             ov12_022639B8(bsys, battlerId, msg);
@@ -437,7 +437,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BattleConte
 
             v8 = BattlerCanSwitch(bsys, ctx, battlerId);
 
-            if (((ov12_0223AB0C(bsys, battlerId) == 4) || (ov12_0223AB0C(bsys, battlerId) == 5)) && ((battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES)) || (battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_LINK)) || (battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TOWER)) || ((battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_INGAME_PARTNER)) && (ov12_0223AB0C(bsys, battlerId) == 4)))) {
+            if (((ov12_0223AB0C(bsys, battlerId) == 4) || (ov12_0223AB0C(bsys, battlerId) == 5)) && ((battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES)) || (battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_LINK)) || (battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_FRONTIER)) || ((battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_INGAME_PARTNER)) && (ov12_0223AB0C(bsys, battlerId) == 4)))) {
                 partnerId = BattleSystem_GetBattlerIdPartner(bsys, battlerId);
 
                 if (ctx->playerActions[partnerId].command == CONTROLLER_COMMAND_POKEMON_INPUT) {
@@ -458,7 +458,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BattleConte
             }
             break;
         case SSI_STATE_11: //Flee after a mon fainted..?
-            if (battleType & BATTLE_TYPE_TOWER) {
+            if (battleType & BATTLE_TYPE_FRONTIER) {
                 BattleController_EmitDrawYesNoBox(bsys, ctx, battlerId, 955, 0, 0, 0);
                 ctx->unk_0[battlerId] = SSI_STATE_12;
             } else if ((battleType & BATTLE_TYPE_TRAINER) && !(battleType & BATTLE_TYPE_LINK)) {
@@ -486,7 +486,7 @@ void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BattleConte
             }
             break;
         case SSI_STATE_12:
-            if (battleType & BATTLE_TYPE_TOWER) {
+            if (battleType & BATTLE_TYPE_FRONTIER) {
                 if (BattleBuffer_GetNext(ctx, battlerId)) {
                     if (BattleBuffer_GetNext(ctx, battlerId) == 0xff) {
                         ctx->unk_0[battlerId] = SSI_STATE_SELECT_COMMAND_INIT;
@@ -1825,7 +1825,7 @@ u32 TryDisobedience(BattleSystem *bsys, BattleContext *ctx, int *script) {
     battleType = BattleSystem_GetBattleType(bsys);
     profile = BattleSystem_GetPlayerProfile(bsys, 0);
 
-    if (battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_TOWER)) {
+    if (battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_FRONTIER)) {
         return 0;
     }
 
@@ -1833,7 +1833,7 @@ u32 TryDisobedience(BattleSystem *bsys, BattleContext *ctx, int *script) {
         return 0;
     }
 
-    if ((battleType & BATTLE_TYPE_6) && ov12_0223AB0C(bsys, ctx->battlerIdAttacker) == 4) {
+    if ((battleType & BATTLE_TYPE_AI) && ov12_0223AB0C(bsys, ctx->battlerIdAttacker) == 4) {
         return 0;
     }
 
@@ -3765,7 +3765,7 @@ BOOL ov12_0224D7EC(BattleSystem *bsys, BattleContext *ctx) {
     } 
 
     if ((battleOutcome == BATTLE_OUTCOME_WIN && battleType & BATTLE_TYPE_TRAINER && !(battleType & BATTLE_TYPE_LINK)) ||
-         (battleOutcome == BATTLE_OUTCOME_WIN && battleType & BATTLE_TYPE_TOWER && !(battleType & BATTLE_TYPE_LINK))) {
+         (battleOutcome == BATTLE_OUTCOME_WIN && battleType & BATTLE_TYPE_FRONTIER && !(battleType & BATTLE_TYPE_LINK))) {
         Trainer *trainer = BattleSystem_GetTrainer(bsys, BATTLER_ENEMY);
         
         switch (trainer->data.trainerClass) {

@@ -1256,7 +1256,7 @@ u8 ov12_0223C140(BattleSystem *bsys, u32 battlerId) {
     if (battlerId >= 4) {
         return 0xFF;
     }
-    if (bsys->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_SAFARI | BATTLE_TYPE_TOWER | BATTLE_TYPE_PAL_PARK)) {
+    if (bsys->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_SAFARI | BATTLE_TYPE_FRONTIER | BATTLE_TYPE_PAL_PARK)) {
         return 0xFF;
     }
     
@@ -1336,8 +1336,8 @@ void BattleSystem_SetPokedexSeen(BattleSystem *bsys, int battlerId) {
     u32 flag = ov12_02261258(bsys->opponentData[battlerId]);
     Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, ov12_022581D4(bsys, bsys->ctx, 2, battlerId));
 
-    if (!(bsys->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_TOWER))) {
-        if ((flag & 1) || bsys->battleType == (BATTLE_TYPE_6 | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI) || bsys->battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_6 | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI)) {
+    if (!(bsys->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_FRONTIER))) {
+        if ((flag & 1) || bsys->battleType == (BATTLE_TYPE_AI | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI) || bsys->battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_AI | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI)) {
             Pokedex_SetMonSeenFlag(bsys->pokedex, mon);
         }
     }
@@ -1349,7 +1349,7 @@ void BattleSystem_SetPokedexSeen(BattleSystem *bsys, int battlerId) {
 void BattleSystem_SetPokedexCaught(BattleSystem *bsys, int battlerId) {
     u32 flag = ov12_02261258(bsys->opponentData[battlerId]);
     
-    if (!(bsys->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_TOWER)) && (flag & 1)) {
+    if (!(bsys->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_FRONTIER)) && (flag & 1)) {
         int selectedMonIndex = ov12_022581D4(bsys, bsys->ctx, 2, battlerId);
         Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, selectedMonIndex);
         Pokedex_SetMonCaughtFlag(bsys->pokedex, mon);
@@ -1368,7 +1368,7 @@ u8 BattleSystem_PrintTrainerMessage(BattleSystem *bsys, int trainerId, int battl
     Window *window = BattleSystem_GetWindow(bsys, 0);
     int index;
     
-    if (bsys->battleType & BATTLE_TYPE_TOWER) {
+    if (bsys->battleType & BATTLE_TYPE_FRONTIER) {
         if (trainerId == 0x2710 || bsys->battleType & BATTLE_TYPE_13) {
             String *msg;
 

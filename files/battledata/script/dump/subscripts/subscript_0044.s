@@ -1,0 +1,10 @@
+    .include "macros/btlcmd.inc"
+
+    .data
+
+_000:
+    Random 1, 2
+    UpdateVar OPCODE_LEFT_SHIFT, BTLVAR_CALC_TEMP, 0x0000000A
+    UpdateMonDataFromVar OPCODE_FLAG_ON, BTLSCR_ATTACKER, BATTLEMON_VOLATILE_STATUS, BTLVAR_CALC_TEMP
+    UpdateVarFromVar OPCODE_SET, BTLVAR_ATTACKER_LOCKED_MOVE, BTLVAR_CURRENT_MOVE
+    End 

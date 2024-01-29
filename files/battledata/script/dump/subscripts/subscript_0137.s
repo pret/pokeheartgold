@@ -1,0 +1,23 @@
+    .include "macros/btlcmd.inc"
+
+    .data
+
+_000:
+    PlayBattleAnimation BTLSCR_MSG_TEMP, BATTLE_ANIMATION_DAMAGE_INGRAIN
+    Wait 
+    // {0} absorbed nutrients with its roots!
+    PrintMessage msg_00000197_00539, TAG_NICKNAME, BTLSCR_MSG_TEMP
+    Wait 
+    WaitButtonABTime 30
+    UpdateMonDataFromVar OPCODE_GET, BTLSCR_MSG_TEMP, BATTLEMON_MAX_HP, BTLVAR_HP_CALC_TEMP
+    DivideVarByValue BTLVAR_HP_CALC_TEMP, 16
+    CheckItemHoldEffect CHECK_NOT_HAVE, BTLSCR_MSG_TEMP, HOLD_EFFECT_LEECH_BOOST, _038
+    GetItemEffectParam BTLSCR_MSG_TEMP, BTLVAR_CALC_TEMP
+    UpdateVar OPCODE_ADD, BTLVAR_CALC_TEMP, 0x00000064
+    UpdateVarFromVar OPCODE_MUL, BTLVAR_HP_CALC_TEMP, BTLVAR_CALC_TEMP
+    UpdateVar OPCODE_DIV, BTLVAR_HP_CALC_TEMP, 100
+
+_038:
+    UpdateVar OPCODE_FLAG_ON, BTLVAR_BATTLE_CTX_STATUS, SYSCTL_SKIP_SPRITE_BLINK
+    Call BATTLE_SUBSCRIPT_UPDATE_HP
+    End 

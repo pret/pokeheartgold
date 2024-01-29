@@ -5795,11 +5795,11 @@ int CalcMoveDamage(BattleSystem *bsys, BattleContext *ctx, u32 moveNo, u32 sideC
         monSpAtk = monSpAtk * 150 / 100;
     }
     
-    if (calcAttacker.item == HOLD_EFFECT_LATI_SPECIAL && !(battleType & BATTLE_TYPE_TOWER) && (calcAttacker.species == SPECIES_LATIOS || calcAttacker.species == SPECIES_LATIAS)) {
+    if (calcAttacker.item == HOLD_EFFECT_LATI_SPECIAL && !(battleType & BATTLE_TYPE_FRONTIER) && (calcAttacker.species == SPECIES_LATIOS || calcAttacker.species == SPECIES_LATIAS)) {
         monSpAtk = monSpAtk * 150 / 100;
     }
     
-    if (calcTarget.item == HOLD_EFFECT_LATI_SPECIAL && !(battleType & BATTLE_TYPE_TOWER) && (calcTarget.species == SPECIES_LATIOS || calcTarget.species == SPECIES_LATIAS)) {
+    if (calcTarget.item == HOLD_EFFECT_LATI_SPECIAL && !(battleType & BATTLE_TYPE_FRONTIER) && (calcTarget.species == SPECIES_LATIOS || calcTarget.species == SPECIES_LATIAS)) {
         monSpDef = monSpDef * 150 / 100;
     }
     

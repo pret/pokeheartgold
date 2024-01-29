@@ -1,0 +1,16 @@
+    .include "macros/btlcmd.inc"
+
+    .data
+
+_000:
+    UpdateMonDataFromVar OPCODE_GET, BTLSCR_ATTACKER, BATTLEMON_MAX_HP, BTLVAR_HP_CALC_TEMP
+    DivideVarByValue BTLVAR_HP_CALC_TEMP, 2
+    UpdateVarFromVar OPCODE_SET, BTLVAR_MSG_BATTLER_TEMP, BTLVAR_ATTACKER
+    PrintAttackMessage 
+    Wait 
+    Call BATTLE_SUBSCRIPT_RECOVER_HP
+    CompareVarToValue OPCODE_FLAG_SET, BTLVAR_MOVE_STATUS_FLAGS, MOVE_STATUS_NO_MORE_WORK, _024
+    SetTurnFlag BTLSCR_ATTACKER, TURN_FLAG_ROOSTING, 1
+
+_024:
+    End 

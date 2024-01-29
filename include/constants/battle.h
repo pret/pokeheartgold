@@ -108,11 +108,11 @@ typedef enum Terrain {
 #define BATTLE_TYPE_DOUBLES                 (1 << 1)
 #define BATTLE_TYPE_LINK                    (1 << 2)
 #define BATTLE_TYPE_MULTI                   (1 << 3)
-#define BATTLE_TYPE_INGAME_PARTNER          (1 << 4)
+#define BATTLE_TYPE_TAG                     (1 << 4)
 #define BATTLE_TYPE_SAFARI                  (1 << 5)
-#define BATTLE_TYPE_6                       (1 << 6)
-#define BATTLE_TYPE_TOWER                   (1 << 7)
-#define BATTLE_TYPE_8                       (1 << 8)
+#define BATTLE_TYPE_AI                      (1 << 6)
+#define BATTLE_TYPE_FRONTIER                (1 << 7)
+#define BATTLE_TYPE_ROAMER                  (1 << 8)
 #define BATTLE_TYPE_PAL_PARK                (1 << 9)
 #define BATTLE_TYPE_TUTORIAL                (1 << 10)
 #define BATTLE_TYPE_11                      (1 << 11)
@@ -120,7 +120,7 @@ typedef enum Terrain {
 #define BATTLE_TYPE_13                      (1 << 13)
 #define BATTLE_TYPE_DEBUG                   (1 << 31)
 
-#define BATTLE_TYPE_NO_EXP                  (BATTLE_TYPE_LINK | BATTLE_TYPE_SAFARI | BATTLE_TYPE_TOWER | BATTLE_TYPE_PAL_PARK)
+#define BATTLE_TYPE_NO_EXP                  (BATTLE_TYPE_LINK | BATTLE_TYPE_SAFARI | BATTLE_TYPE_FRONTIER | BATTLE_TYPE_PAL_PARK)
 
 //Battle Special Flags
 #define BATTLE_SPECIAL_FIRST_RIVAL          (1 << 0)

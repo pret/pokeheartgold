@@ -33,7 +33,7 @@ void ov10_0221BE20(BattleSystem *bsys, BattleContext *ctx, u8 battlerId, u8 a3) 
 
     ctx->trainerAIData.unk98 = 0;
 
-    if (bsys->battleType & BATTLE_TYPE_8) {
+    if (bsys->battleType & BATTLE_TYPE_ROAMER) {
         ctx->trainerAIData.aiFlags = AI_29;
     } else {
         ctx->trainerAIData.aiFlags = bsys->trainers[battlerId].data.aiFlags;

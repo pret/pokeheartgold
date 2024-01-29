@@ -1198,7 +1198,7 @@ BOOL BtlCmd_ShouldGetExp(BattleSystem *bsys, BattleContext *ctx) {
 
     adrs = BattleScriptReadWord(ctx);
 
-    if ((opponentData->unk195 & 1) && !(battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_SAFARI | BATTLE_TYPE_TOWER | BATTLE_TYPE_PAL_PARK))) {
+    if ((opponentData->unk195 & 1) && !(battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_SAFARI | BATTLE_TYPE_FRONTIER | BATTLE_TYPE_PAL_PARK))) {
         int expMonsCnt = 0;
         int expShareMonsCnt = 0;
         u16 totalExp;
@@ -2155,7 +2155,7 @@ u32 CalcPrizeMoney(BattleSystem *bsys, BattleContext *ctx, int trainerIndex) {
         if (i >= (int)NELEMS(sPrizeMoneyTbl)) {
             i = 2;
         }
-        if (bsys->battleType & BATTLE_TYPE_INGAME_PARTNER || bsys->battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_6)) {
+        if (bsys->battleType & BATTLE_TYPE_INGAME_PARTNER || bsys->battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI)) {
             prizeMoney = level*4*ctx->prizeMoneyValue*sPrizeMoneyTbl[i][1];
             break;
         } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
@@ -2180,7 +2180,7 @@ BOOL BtlCmd_CalcPrizeMoney(BattleSystem *bsys, BattleContext *ctx) {
 
     if (bsys->battleOutcomeFlag == 1) {
         prizeMoney = CalcPrizeMoney(bsys, ctx, 1);
-        if (bsys->battleType & BATTLE_TYPE_INGAME_PARTNER || bsys->battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_6)) {
+        if (bsys->battleType & BATTLE_TYPE_INGAME_PARTNER || bsys->battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI)) {
             prizeMoney += CalcPrizeMoney(bsys, ctx, 3);
         }
         PlayerProfile_AddMoney(BattleSystem_GetPlayerProfile(bsys, 0), prizeMoney);
@@ -3050,7 +3050,7 @@ BOOL BtlCmd_TryThief(BattleSystem *bsys, BattleContext *ctx) {
     u32 battleType = BattleSystem_GetBattleType(bsys);
     int fieldSide = BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker);
 
-    if (BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker) && !(battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_TOWER))) {
+    if (BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker) && !(battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_FRONTIER))) {
         BattleScriptIncrementPointer(ctx, adrs1);
     } else if (ctx->fieldSideConditionData[fieldSide].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[ctx->battlerIdAttacker])) {
         BattleScriptIncrementPointer(ctx, adrs1);
@@ -3854,7 +3854,7 @@ BOOL BtlCmd_TryTrick(BattleSystem *bsys, BattleContext *ctx) {
     int sideAttacker = BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker);
     int sideTarget = BattleSystem_GetFieldSide(bsys, ctx->battlerIdTarget);
 
-    if (BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker) && (battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_TOWER)) == 0) {
+    if (BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker) && (battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_FRONTIER)) == 0) {
         BattleScriptIncrementPointer(ctx, adrsA);
     } else if ((ctx->fieldSideConditionData[sideAttacker].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[ctx->battlerIdAttacker])) ||
               (ctx->fieldSideConditionData[sideTarget].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[ctx->battlerIdTarget]))) {
@@ -6006,7 +6006,7 @@ static void Task_GetExp(SysTask *task, void *inData)
     if (slot == BattleSystem_GetPartySize(data->bsys, expBattler)) {
         data->state = STATE_GET_EXP_DONE;
     } else if ((battleType & BATTLE_TYPE_DOUBLES)
-            && !(battleType & BATTLE_TYPE_6)
+            && !(battleType & BATTLE_TYPE_AI)
             && data->ctx->selectedMonIndex[BATTLER_PLAYER2] == slot) {
         expBattler = 2;
     }
