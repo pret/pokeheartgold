@@ -78,6 +78,7 @@ BOOL ScrCmd_637(ScriptContext *ctx) {
             sub_0204FA14(ctx->fieldSystem->saveData, unk0, arg1);
             break;
         case 4:
+        {
             BattleCastleChallengeType challengeType;
             if (arg1 == 0) {
                 challengeType = BATTLE_CASTLE_CHALLENGE_TYPE_SINGLE;
@@ -88,6 +89,7 @@ BOOL ScrCmd_637(ScriptContext *ctx) {
             }
             sub_0204FBDC(ctx->taskman, unk1, challengeType);
             return TRUE;
+        }
         default:
             GF_ASSERT(FALSE);
             *result = 0;
@@ -109,9 +111,9 @@ static void sub_0204FA14(SaveData *saveData, u32 a1, u8 a2) {
     if (a2 == 3) {
         sub_02031108(sub_0203107C(saveData), 108, sub_0205C268(108), 0);
     }
-    sub_02031108(sub_0203107C(saveData), sub_0205C1A0(a2), sub_0205C268(sub_0205C1A0(a2)), 0);    
+    sub_02031108(sub_0203107C(saveData), sub_0205C1A0(a2), sub_0205C268(sub_0205C1A0(a2)), 0);
     sub_02031108(sub_0203107C(saveData), sub_0205C1F0(a2), sub_0205C268(sub_0205C1F0(a2)), 0);
-    for (s32 i = 0; i < 3; i++) {    
+    for (s32 i = 0; i < 3; i++) {
         sub_02031108(sub_0203107C(saveData), sub_0205C174(a2, i), sub_0205C268(sub_0205C174(a2, i)), 1);
     }
 }

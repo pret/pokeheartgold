@@ -2939,22 +2939,22 @@ _021FA882:
 	ldr r0, _021FA8E8 ; =ov01_021FA564
 	add r1, r5, #0
 	add r2, r6, #1
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #0x18]
 	ldr r0, _021FA8EC ; =ov01_021FA7F8
 	add r1, r5, #0
 	add r2, r6, #2
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #0x1c]
 	ldr r0, _021FA8F0 ; =ov01_021FA6E0
 	add r1, r5, #0
 	mov r2, #0xff
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	str r0, [r4, #0x20]
 	ldr r0, _021FA8F4 ; =ov01_021FA71C
 	add r1, r5, #0
 	mov r2, #0xff
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	str r0, [r4, #0x24]
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -2975,13 +2975,13 @@ ov01_021FA8F8: ; 0x021FA8F8
 	mov r0, #1
 	strh r0, [r4, #6]
 	ldr r0, [r4, #0x18]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, [r4, #0x1c]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, [r4, #0x20]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, [r4, #0x24]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl FreeToHeap
 	mov r0, #1
@@ -3249,7 +3249,7 @@ _021FAB4A:
 	ldr r0, _021FAB98 ; =ov01_021FAB9C
 	add r1, r5, #0
 	mov r2, #0xff
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	add r4, r0, #0
 	bne _021FAB82
 	bl GF_AssertFail
@@ -3303,7 +3303,7 @@ _021FABCE:
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r4, r5, r6, pc}
 _021FABF4:
 	add r0, r4, #0
@@ -3336,7 +3336,7 @@ _021FAC1C:
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _021FAC40:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

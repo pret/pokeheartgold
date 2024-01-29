@@ -61,11 +61,13 @@ static LocalMapObject* ov26_02259A24(FieldSystem* fieldSystem, LocalMapObject* a
         case 7:
         case 8:
         case 1:
+        {
             u32 script2 = MapObject_GetScript(object);
             u32 trainer2 = ScriptNumToTrainerNum((u16)script2);
             if (script != script2 && (u32)trainer == trainer2) {
                 return object;
             }
+        }
         }
     }
 

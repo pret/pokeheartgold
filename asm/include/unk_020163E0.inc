@@ -8,7 +8,7 @@
 .public sub_0201649C
 .public sub_020164C4
 .public BG_LoadPlttData
-.public sub_0201F988
+.public SysTask_GetData
 .public sub_02026E84
 .public sub_02026E94
 .public MIi_CpuCopy16

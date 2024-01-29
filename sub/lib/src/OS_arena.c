@@ -100,7 +100,8 @@ void *OS_GetInitArenaHi(OSArenaId id) {
         }
     case OS_ARENA_ITCM:
         return (void *)HW_ITCM_ARENA_HI_DEFAULT;
-    case OS_ARENA_DTCM: {
+    case OS_ARENA_DTCM:
+    {
         u32 irqStackLo;
         u32 sysStackLo;
 

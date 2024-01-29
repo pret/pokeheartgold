@@ -2,7 +2,7 @@
 #define POKEHEARTGOLD_BATTLE_CURSOR_H
 
 #include "battle/battle.h"
-#include "unk_0200E320.h"
+#include "sys_task_api.h"
 
 typedef struct BattleCursor {
     void *unk0[5];

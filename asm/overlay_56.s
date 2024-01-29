@@ -1043,7 +1043,7 @@ ov56_021E63FC: ; 0x021E63FC
 	ldr r1, [r4, #0x30]
 	cmp r1, #0
 	bne _021E6410
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #8
 	pop {r4, pc}
 _021E6410:
@@ -1634,7 +1634,7 @@ _021E6768:
 	ldr r0, _021E6920 ; =ov56_021E63FC
 	add r1, r5, #0
 	strb r2, [r5, #0x15]
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r0, _021E6924 ; =ov56_021E5D40
 	str r0, [r5, #0x34]
 	ldr r0, _021E6928 ; =ov56_021E5D34

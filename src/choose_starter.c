@@ -72,7 +72,8 @@ static BOOL CreateStarter(TaskManager *taskManager) {
         }
         env->state = 3;
         break;
-    case 3: {
+    case 3:
+    {
         Pokedex *pokedex = Save_Pokedex_Get(fieldSystem->saveData);
         party = SaveArray_Party_Get(fieldSystem->saveData);
         Pokemon *myChoice = &env->args->starters[env->args->cursorPos];

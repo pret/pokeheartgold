@@ -3189,7 +3189,7 @@ ov41_022476B8: ; 0x022476B8
 	mov r2, #0xa
 	mov r3, #0xd
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	str r5, [r0]
 	str r4, [r0, #4]
 	mov r1, #0
@@ -3379,7 +3379,7 @@ ov41_02247828: ; 0x02247828
 	mov r2, #0xa
 	mov r3, #0xd
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	str r5, [r0]
 	str r4, [r0, #4]
 	mov r1, #0
@@ -6099,7 +6099,7 @@ ov41_02248B84: ; 0x02248B84
 	mov r2, #0
 	mov r3, #0xd
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	str r5, [r4]
 	str r6, [r4, #4]
@@ -7309,7 +7309,7 @@ ov41_02249480: ; 0x02249480
 	mov r2, #0
 	mov r3, #0xd
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	ldr r0, [r5, #8]
 	add r1, sp, #8
@@ -8614,7 +8614,7 @@ ov41_02249DB4: ; 0x02249DB4
 	mov r2, #0
 	mov r3, #0xd
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	str r6, [r4]
 	add r7, r5, #0
@@ -8934,7 +8934,7 @@ _0224A018:
 	ldr r0, _0224A048 ; =ov41_0224A094
 	add r1, r4, #0
 	mov r2, #0x80
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -8973,7 +8973,7 @@ _0224A066:
 	ldr r0, _0224A090 ; =ov41_0224A0D0
 	add r1, r4, #0
 	mov r2, #0x80
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0224A090: .word ov41_0224A0D0
@@ -8999,7 +8999,7 @@ ov41_0224A094: ; 0x0224A094
 	lsr r1, r1, #0x18
 	bl BG_LoadCharTilesData
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, [r4, #8]
 	bl FreeToHeap
 	add r0, r4, #0
@@ -9036,7 +9036,7 @@ _0224A0F4:
 	bl GXS_LoadBGPltt
 _0224A104:
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, [r4, #4]
 	bl FreeToHeap
 	add r0, r4, #0
@@ -11312,12 +11312,12 @@ ov41_0224B21C: ; 0x0224B21C
 	add r4, r1, #0
 	cmp r0, #0
 	beq _0224B22C
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0224B22C:
 	ldr r0, [r5, #0x28]
 	cmp r0, #0
 	beq _0224B236
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0224B236:
 	add r0, r5, #0
 	add r1, r4, #0

@@ -3,8 +3,8 @@
 .public PlaySE
 .public StopSE
 .public IsSEPlaying
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public CreateCameraTranslationWrapper
 .public DeleteCameraTranslationWrapper
 .public SetCameraTranslationPath

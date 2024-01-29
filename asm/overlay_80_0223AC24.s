@@ -21,7 +21,7 @@ ov80_0223AC24: ; 0x0223AC24
 	ldr r0, _0223AC64 ; =ov80_0223AC68
 	add r1, r4, #0
 	mov r2, #5
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r5, [r4, #0x48]
 	cmp r5, #0
 	beq _0223AC54
@@ -154,7 +154,7 @@ _0223AD30:
 	mov r1, #1
 	str r1, [r2]
 _0223AD40:
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #4
@@ -203,7 +203,7 @@ ov80_0223AD88: ; 0x0223AD88
 	ldr r0, _0223ADA0 ; =ov80_0223ADA4
 	add r1, r5, #0
 	mov r2, #0xa
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -218,7 +218,7 @@ ov80_0223ADA4: ; 0x0223ADA4
 	ldr r1, [r1]
 	bl ov80_0223AD5C
 	add r0, r4, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r4, pc}
 	thumb_func_end ov80_0223ADA4
 
@@ -1059,14 +1059,14 @@ _0223B3E8: .word 0x00000187
 
 	thumb_func_start ov80_0223B3EC
 ov80_0223B3EC: ; 0x0223B3EC
-	ldr r3, _0223B3F8 ; =sub_0200E33C
+	ldr r3, _0223B3F8 ; =SysTask_CreateOnVBlankQueue
 	mov r2, #1
 	add r1, r0, #0
 	ldr r0, _0223B3FC ; =ov80_0223B400
 	lsl r2, r2, #0xa
 	bx r3
 	.balign 4, 0
-_0223B3F8: .word sub_0200E33C
+_0223B3F8: .word SysTask_CreateOnVBlankQueue
 _0223B3FC: .word ov80_0223B400
 	thumb_func_end ov80_0223B3EC
 
@@ -1187,12 +1187,12 @@ _0223B4B2:
 	ldr r0, gApp_MainMenu_SelectOption_MigrateFromAgb ; =ov80_0223B468
 	str r7, [r5, #0x14]
 	add r1, r5, #0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	str r0, [r5, #4]
 	ldr r0, _0223B4DC ; =ov80_0223B484
 	add r1, r5, #0
 	mov r2, #0
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	str r0, [r5]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1210,12 +1210,12 @@ _0223B4EA:
 	ldr r0, [r4, #4]
 	cmp r0, #0
 	beq _0223B4F4
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0223B4F4:
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _0223B4FE
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0223B4FE:
 	bl sub_02014AA0
 	pop {r4, pc}

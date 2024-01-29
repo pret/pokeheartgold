@@ -84,7 +84,7 @@
 .public BlitBitmapRectToWindow
 .public FillWindowPixelRect
 .public GetWindowWidth
-.public sub_0201F988
+.public SysTask_GetData
 .public GF_SinDeg
 .public LCRandom
 .public TextPrinterCheckActive

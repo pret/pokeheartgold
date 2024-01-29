@@ -8,7 +8,7 @@
 #include "map_matrix.h"
 #include "overlay_manager.h"
 #include "save_pokegear.h"
-#include "unk_0200E320.h"
+#include "sys_task_api.h"
 #include "camera.h"
 #include "bg_window.h"
 #include "scrcmd_9.h"

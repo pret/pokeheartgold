@@ -13,7 +13,7 @@ ov05_0221BA00: ; 0x0221BA00
 	ldr r3, [r5, #0x24]
 	mov r2, #0x64
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r2, _0221BA60 ; =0x00000BD4
 	mov r1, #0
 	add r4, r0, #0

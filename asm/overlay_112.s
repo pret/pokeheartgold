@@ -14791,7 +14791,7 @@ ov112_021ED0D0: ; 0x021ED0D0
 	ldr r0, _021ED134 ; =ov112_021ED13C
 	add r1, r4, #0
 	mov r2, #2
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r1, _021ED138 ; =0x0001F2D8
 	str r0, [r4, r1]
 	add sp, #4
@@ -14835,7 +14835,7 @@ _021ED154:
 	cmp r0, #0x1f
 	bne _021ED176
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _021ED176:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -14856,7 +14856,7 @@ ov112_021ED180: ; 0x021ED180
 	cmp r4, r3
 	bls _021ED19A
 	strh r3, [r1, r2]
-	bl DestroySysTask
+	bl SysTask_Destroy
 _021ED19A:
 	pop {r4, pc}
 	.balign 4, 0
@@ -15022,7 +15022,7 @@ ov112_021ED2F4: ; 0x021ED2F4
 	ldr r0, _021ED30C ; =ov112_021ED180
 	add r1, r4, #0
 	mov r2, #2
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r1, _021ED310 ; =0x0001F2DC
 	str r0, [r4, r1]
 	pop {r4, pc}

@@ -68,8 +68,8 @@
 .public MessageFormat_Delete
 .public BufferECWord
 .public StringExpandPlaceholders
-.public sub_0200E374
-.public DestroySysTask
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public BeginNormalPaletteFade
@@ -135,7 +135,7 @@
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
-.public sub_0201F988
+.public SysTask_GetData
 .public MTRandom
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterizedWithColor

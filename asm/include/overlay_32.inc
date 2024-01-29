@@ -53,7 +53,7 @@
 .public FillWindowPixelBuffer
 .public GetWindowWidth
 .public ScheduleBgTilemapBufferTransfer
-.public sub_0201F988
+.public SysTask_GetData
 .public AddTextPrinterParameterizedWithColor
 .public SpriteList_Delete
 .public sub_0202457C

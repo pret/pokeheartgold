@@ -38,9 +38,9 @@
 .public Sprite_SetPositionXY
 .public Sprite_GetPositionXY
 .public Sprite_AddPositionXY
-.public CreateSysTask
-.public sub_0200E33C
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx2
 .public sub_0200E948
 .public BeginNormalPaletteFade
@@ -108,7 +108,7 @@
 .public FillWindowPixelRect
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
-.public sub_0201F988
+.public SysTask_GetData
 .public MsgArray_SkipControlCode
 .public AddTextPrinterParameterizedWithColor
 .public sub_020215A0

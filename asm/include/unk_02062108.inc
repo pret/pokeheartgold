@@ -1,11 +1,11 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public PlaySE
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public AllocFromHeapAtEnd
 .public FreeToHeapExplicit
-.public sub_0201F988
+.public SysTask_GetData
 .public GF_AssertFail
 .public MapObjectManager_GetHeapID
 .public MapObject_SetFlagsBits

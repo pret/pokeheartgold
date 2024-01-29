@@ -2203,7 +2203,7 @@ _02083AFE:
 	str r0, [r4, r1]
 	add r0, r1, #0
 	ldr r0, [r4, r0]
-	bl sub_0201F988
+	bl SysTask_GetData
 	mov r1, #0xd2
 	lsl r1, r1, #2
 	ldr r1, [r6, r1]
@@ -2583,7 +2583,7 @@ _02083DE6:
 	mov r2, #0
 	mov r3, #0x12
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r7, r0, #0
 	ldr r0, [sp, #0x48]
 	ldr r0, [r0, #0x1c]

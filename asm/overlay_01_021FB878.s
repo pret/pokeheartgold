@@ -625,7 +625,7 @@ _021FBD18:
 	ldr r0, _021FBD34 ; =ov01_021FBD8C
 	add r1, r4, #0
 	lsl r2, r2, #0xa
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 _021FBD32:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -673,7 +673,7 @@ _021FBD6C:
 	ldr r0, _021FBD88 ; =ov01_021FBD8C
 	add r1, r4, #0
 	lsl r2, r2, #0xa
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 _021FBD86:
 	pop {r4, pc}
 	.balign 4, 0
@@ -691,7 +691,7 @@ ov01_021FBD8C: ; 0x021FBD8C
 	ldr r1, [r4, #0xc]
 	bl Bind3dModelSet
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021FBD8C
 

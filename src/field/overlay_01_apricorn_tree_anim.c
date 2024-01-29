@@ -46,7 +46,7 @@ static const s8 sApricornJumpDy[APRICORN_JUMP_FRAMES] = {
 static BOOL Task_AnimApricornTree(TaskManager *taskman);
 static BOOL Task_AnimPlayerShakeTree(TaskManager *taskman);
 static LocalMapObject *CreateJumpingApricornObj(MapObjectManager *taskman, u32 sprite, u32 x, u32 z);
-BOOL DoApricornJump(AnimApricornTreeWork *env);
+static BOOL DoApricornJump(AnimApricornTreeWork *env);
 
 void FieldSystem_AnimApricornTree(FieldSystem *fieldSystem, LocalMapObject *tree, u16 *a2) {
     AnimApricornTreeWork *env = AllocFromHeap(HEAP_ID_32, sizeof(AnimApricornTreeWork));
@@ -213,13 +213,13 @@ static BOOL DoApricornJump(AnimApricornTreeWork *env) {
 static BOOL Task_AnimPlayerShakeTree(TaskManager *taskman) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     LocalMapObject *playerObj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
-    int *state_p = TaskManager_GetStatePtr(taskman);
+    u32 *state_p = TaskManager_GetStatePtr(taskman);
     AnimPlayerShakeTreeWork *env = TaskManager_GetEnvironment(taskman);
 
     switch (*state_p) {
     case 0:
         MapObject_UnpauseMovement(playerObj);
-        *state_p += 1;
+        ++(*state_p);
         break;
     case 1:
         if (MapObject_AreBitsSetForMovementScriptInit(playerObj) == TRUE) {
@@ -228,7 +228,7 @@ static BOOL Task_AnimPlayerShakeTree(TaskManager *taskman) {
             Field_PlayerAvatar_ApplyTransitionFlags(fieldSystem->playerAvatar);
             sub_0205F328(playerObj, 0);
             env->timer = 0;
-            *state_p += 1;
+            ++(*state_p);
         }
         break;
     case 2:
@@ -238,7 +238,7 @@ static BOOL Task_AnimPlayerShakeTree(TaskManager *taskman) {
                 int flags = PlayerAvatar_GetTransitionBits(PlayerAvatar_GetState(fieldSystem->playerAvatar));
                 Field_PlayerAvatar_OrrTransitionFlags(fieldSystem->playerAvatar, flags);
                 Field_PlayerAvatar_ApplyTransitionFlags(fieldSystem->playerAvatar);
-                *state_p += 1;
+                ++(*state_p);
             }
         }
         break;

@@ -433,6 +433,7 @@ static u32 ov17_02201F18(BerryPotsAppData *data) {
             data->state70++;
             break;
         case 1:
+        {
             int unk = ov17_02202A50(data);
             if (unk == -1) {
                 break;
@@ -464,6 +465,7 @@ static u32 ov17_02201F18(BerryPotsAppData *data) {
             }
 
             return 1;
+        }
     }
 
     return 3;
@@ -478,6 +480,7 @@ static u32 ov17_02201FE8(BerryPotsAppData *data) {
             data->state70++;
             break;
         case 1:
+        {
             int unk = ov17_02202A50(data);
             if (unk == -1) {
                 break;
@@ -500,6 +503,7 @@ static u32 ov17_02201FE8(BerryPotsAppData *data) {
                 data->args->unk14 = 2;
                 return 1;
             }
+        }
     }
 
     return 4;
@@ -514,6 +518,7 @@ static u32 ov17_02202094(BerryPotsAppData *data) {
             data->state70++;
             break;
         case 1:
+        {
             int unk = ov17_02202A50(data);
             if (unk == -1) {
                 break;
@@ -529,6 +534,7 @@ static u32 ov17_02202094(BerryPotsAppData *data) {
             ov17_02202944(data, BERRY_POTS_APP_022036FC_ACTION_3, 4, FALSE);
             data->state70++;
             break;
+        }
         case 2:
             if (!ov17_022025B8(data)) {
                 break;
@@ -565,6 +571,7 @@ static u32 ov17_02202184(BerryPotsAppData* data) {
             break;
 
         case 1:
+        {
             int unk = ov17_02202A50(data);
             if (unk == -1) {
                 break;
@@ -587,7 +594,7 @@ static u32 ov17_02202184(BerryPotsAppData* data) {
             }
 
             break;
-
+        }
         case 2:
             if (ov17_02202460(data)) {
                 data->state70 = 0;
@@ -1322,7 +1329,7 @@ static void ov17_0220351C(BerryPotsAppData *data) {
 
     args->unk8 = (s8)(diff * 27) / 4;
     args->unkA = data->unk80;
-    CreateSysTask((SysTaskFunc)ov17_022035A4, args, 0);
+    SysTask_CreateOnMainQueue((SysTaskFunc)ov17_022035A4, args, 0);
     data->runningTasks++;
 }
 
@@ -1347,7 +1354,7 @@ static void ov17_022035A4(SysTask *task, SysTaskArgs_ov17_0220351C *args) {
 
     unk0->runningTasks--;
     FreeToHeap(args);
-    DestroySysTask(task);
+    SysTask_Destroy(task);
 }
 
 typedef struct SysTaskArgs_ov17_02203674 {
@@ -1367,7 +1374,7 @@ static void ov17_02203638(BerryPotsAppData *data) {
     args->data = data;
     args->potIndex = data->unk7C;
 
-    CreateSysTask((SysTaskFunc)ov17_02203674, args, 0);
+    SysTask_CreateOnMainQueue((SysTaskFunc)ov17_02203674, args, 0);
     data->runningTasks++;
 }
 
@@ -1390,7 +1397,7 @@ static void ov17_02203674(SysTask *task, SysTaskArgs_ov17_02203674 *args) {
 
             data->runningTasks--;
             FreeToHeap(args);
-            DestroySysTask(task);
+            SysTask_Destroy(task);
             break;
     }
 }
@@ -1414,10 +1421,12 @@ static void ov17_022036FC(BerryPotsAppData *data, enum BerryPotsApp_022036FC_Act
         case BERRY_POTS_APP_022036FC_ACTION_12:
         case BERRY_POTS_APP_022036FC_ACTION_15:
         case BERRY_POTS_APP_022036FC_ACTION_16:
+        {
             String *berryName = GetNutName(unk->berryId, data->heapId);
             BufferString(data->msgFmt, 0, berryName, 0, 0, 2);
             String_Delete(berryName);
             break;
+        }
         default:
             String_Copy(data->currentStatusString, data->statusStrings[action]);
             return;
@@ -1498,7 +1507,7 @@ static void ov17_02203928(BerryPotsAppData *data) {
         MI_CpuFill8(args, 0, sizeof(SysTaskArgs_ov17_022039A0));
         args->data = data;
         args->potIndex = i;
-        CreateSysTask((SysTaskFunc)ov17_022039A0, args, 0);
+        SysTask_CreateOnMainQueue((SysTaskFunc)ov17_022039A0, args, 0);
         data->runningTasks++;
     }
 }
@@ -1525,7 +1534,7 @@ static void ov17_022039A0(SysTask *task, SysTaskArgs_ov17_022039A0 *args) {
 
                 data->runningTasks--;
                 FreeToHeap(args);
-                DestroySysTask(task);
+                SysTask_Destroy(task);
             }
 
             break;

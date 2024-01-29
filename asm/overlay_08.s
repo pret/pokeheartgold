@@ -20,7 +20,7 @@ _0221BE2E:
 	ldr r3, [r5, #0xc]
 	mov r2, #0
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r2, _0221BE8C ; =0x00002090
 	add r4, r0, #0
 	mov r1, #0
@@ -12721,7 +12721,7 @@ ov08_022225D4: ; 0x022225D4
 	ldr r3, [r5, #0xc]
 	mov r2, #0x64
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r2, _02222668 ; =0x0000115C
 	add r4, r0, #0
 	mov r1, #0

@@ -168,6 +168,7 @@ BOOL ScrCmd_633(ScriptContext *ctx) {
             sub_0204F878(ctx->fieldSystem->saveData, sp04, r5);
             break;
         case 4:
+        {
             BattleHallChallengeType challengeType;
             if (r5 == 0) {
                 challengeType = BATTLE_HALL_CHALLENGE_TYPE_SINGLE;
@@ -178,6 +179,7 @@ BOOL ScrCmd_633(ScriptContext *ctx) {
             }
             sub_0204F284(ctx->taskman, r1, challengeType);
             return TRUE;
+        }
         default:
             GF_ASSERT(FALSE);
             *resultPtr = 0;

@@ -46,7 +46,7 @@ _02266110:
 	str r0, [r6, r2]
 	ldr r0, _022662F4 ; =ov12_022698C4
 	add r2, #0x52
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r1, _022662F8 ; =0x00000698
 	mov r4, #0
 	str r0, [r6, r1]
@@ -258,7 +258,7 @@ _022662CA:
 	ldr r0, _02266314 ; =ov12_02269954
 	ldr r2, _02266318 ; =0x0000D6D8
 	add r1, r6, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r6, #0x68]
 	add r0, r6, #0
 	add sp, #0x24
@@ -301,7 +301,7 @@ _0226632E:
 	bl sub_020135AC
 	ldr r0, _0226638C ; =0x00000698
 	ldr r0, [r6, r0]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r4, #0
 	add r5, r6, #0
 _02266354:
@@ -320,7 +320,7 @@ _02266354:
 	ldr r0, [r6, #0x64]
 	bl FreeToHeap
 	ldr r0, [r6, #0x68]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r6, #0
 	bl FreeToHeap
 	pop {r4, r5, r6, pc}
@@ -636,7 +636,7 @@ _0226661A:
 	ldr r0, _02266640 ; =ov12_02269830
 	add r1, r7, #0
 	mov r2, #0xa
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -794,7 +794,7 @@ _02266774:
 	ldr r0, _022667EC ; =ov12_022668D0
 	ldr r1, [sp, #0x14]
 	ldr r2, _022667F0 ; =0x00000514
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r1, [sp, #0x14]
 	str r0, [r1, #8]
 	add r0, r1, #0
@@ -910,7 +910,7 @@ _02266864:
 	cmp r4, #6
 	blt _02266864
 	ldr r0, [r6, #8]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r3, _022668C4 ; =0x00004FAB
 	mov r0, #0
 	str r0, [r6, #8]
@@ -1615,7 +1615,7 @@ ov12_02266D98: ; 0x02266D98
 	ldr r0, _02266DC0 ; =ov12_02266DC4
 	add r1, r3, #0
 	lsl r2, r2, #4
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 _02266DBA:
 	pop {r4, pc}
 	.balign 4, 0
@@ -1692,7 +1692,7 @@ _02266E0A:
 	and r0, r1
 	str r0, [r2]
 	ldr r0, [sp]
-	bl DestroySysTask
+	bl SysTask_Destroy
 _02266E54:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -1789,7 +1789,7 @@ ov12_02266E6C: ; 0x02266E6C
 	ldr r0, _02266F60 ; =ov12_02269568
 	ldr r2, _02266F64 ; =0x000004BA
 	add r1, r4, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r0, _02266F68 ; =ov12_02269774
 	add r1, r4, #0
 	bl Main_SetHBlankIntrCB
@@ -1800,7 +1800,7 @@ _02266F32:
 	ldr r0, _02266F6C ; =ov12_02269668
 	add r1, r4, #0
 	mov r2, #0xa
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	str r0, [r4, #4]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4074,7 +4074,7 @@ _02268280:
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _02268290
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, _022682B4 ; =0x00000638
 	str r7, [r5, r0]
 _02268290:
@@ -4272,7 +4272,7 @@ _022683F4:
 	str r6, [r1, r0]
 	ldr r0, _0226843C ; =ov12_022684EC
 	add r1, r6, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	lsl r1, r5, #2
 	add r2, r4, r1
 	ldr r1, _02268420 ; =0x00000638
@@ -5505,7 +5505,7 @@ _02268D96:
 	ldr r0, _02268DA8 ; =ov12_0226989C
 	add r1, r5, #0
 	mov r2, #0xa
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 _02268DA4:
 	pop {r3, r4, r5, pc}
 	nop
@@ -5650,7 +5650,7 @@ _02268E94:
 	ldr r2, _02268EB4 ; =0x00000514
 	add r0, r5, #0
 	add r1, r4, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #0xc]
 	pop {r3, r4, r5, pc}
 	nop
@@ -5665,7 +5665,7 @@ ov12_02268EB8: ; 0x02268EB8
 	ldr r0, [r4, #0xc]
 	cmp r0, #0
 	beq _02268ED4
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, _02268ED8 ; =0x0000069C
 	mov r1, #0
 	add r0, r4, r0
@@ -6597,7 +6597,7 @@ _022695DA:
 	mov r2, #0
 	strb r2, [r1, r0]
 	ldr r0, [r5, #4]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	bl HBlankInterruptDisable
 	ldr r2, _02269660 ; =0x04001000
 	ldr r0, _02269664 ; =0xFFFF1FFF
@@ -6643,7 +6643,7 @@ _02269606:
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _02269656:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -6927,7 +6927,7 @@ _02269870:
 	cmp r4, #4
 	blt _02269870
 	ldr r0, [sp]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02269890: .word 0x0000068B
@@ -6941,7 +6941,7 @@ ov12_0226989C: ; 0x0226989C
 	add r4, r0, #0
 	bl ov12_02268D5C
 	add r0, r4, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r4, pc}
 	thumb_func_end ov12_0226989C
 

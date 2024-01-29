@@ -83,9 +83,9 @@
 .public UnkImageStruct_TickSpriteAnimation1Frame
 .public UnkImageStruct_TickSpriteAnimationNFrames
 .public sub_0200DCA0
-.public CreateSysTask
-.public sub_0200E33C
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
 .public sub_0200E640

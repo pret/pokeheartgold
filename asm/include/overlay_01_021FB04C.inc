@@ -1,12 +1,12 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public NARC_ReadFile
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
 .public FreeToHeap
-.public sub_0201F988
+.public SysTask_GetData
 .public GF_AssertFail
 .public MIi_CpuClear32
 .public ov01_021FB254

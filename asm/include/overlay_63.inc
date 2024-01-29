@@ -63,9 +63,9 @@
 .public sub_0200DF98
 .public sub_0200E024
 .public sub_0200E0FC
-.public CreateSysTask
-.public sub_0200E33C
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_Destroy
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_020143E0
@@ -93,7 +93,7 @@
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
-.public sub_0201F988
+.public SysTask_GetData
 .public GF_SinDegNoWrap
 .public GF_CosDegNoWrap
 .public SetLCRNGSeed

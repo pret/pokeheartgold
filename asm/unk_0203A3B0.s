@@ -78,7 +78,7 @@ sub_0203A3B0: ; 0x0203A3B0
 	ldr r0, _0203A428 ; =sub_0203A42C
 	add r1, r4, #0
 	mov r2, #5
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	str r0, [r4, #0x18]
 	ldr r2, [sp, #0x1c]
 	strh r5, [r4, #0xc]
@@ -142,7 +142,7 @@ sub_0203A444: ; 0x0203A444
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #7
 	ldr r2, _0203A470 ; =0x40000200
 	lsl r0, r0, #0x18

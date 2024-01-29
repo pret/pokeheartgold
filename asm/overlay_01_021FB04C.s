@@ -273,7 +273,7 @@ _021FB21A:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r3, r4, r5, pc}
 _021FB22E:
 	cmp r2, #1
@@ -427,7 +427,7 @@ ov01_021FB308: ; 0x021FB308
 	str r2, [r0]
 	ldr r0, _021FB350 ; =ov01_021FB174
 	mov r2, #1
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021FB350: .word ov01_021FB174
@@ -436,7 +436,7 @@ _021FB350: .word ov01_021FB174
 	thumb_func_start ov01_021FB354
 ov01_021FB354: ; 0x021FB354
 	push {r3, lr}
-	bl sub_0201F988
+	bl SysTask_GetData
 	mov r1, #1
 	str r1, [r0, #0x74]
 	pop {r3, pc}

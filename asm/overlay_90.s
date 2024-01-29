@@ -205,11 +205,11 @@ ov90_02258938: ; 0x02258938
 	add r5, r0, #0
 	ldr r0, _022589B8 ; =0x000005EC
 	ldr r0, [r5, r0]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0x5f
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0xb9
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -319,10 +319,10 @@ ov90_02258A04: ; 0x02258A04
 	add r5, r0, #0
 	ldr r0, _02258A90 ; =0x00000644
 	ldr r0, [r5, r0]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, _02258A94 ; =0x00000648
 	ldr r0, [r5, r0]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0xcf
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -628,7 +628,7 @@ ov90_02258C38: ; 0x02258C38
 	ldr r0, [r4, #0x2c]
 	cmp r0, #0
 	beq _02258C4A
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	str r0, [r4, #0x2c]
 _02258C4A:
@@ -676,7 +676,7 @@ _02258C9A:
 	ldr r0, _02258CAC ; =ov90_0225BEE0
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #0x2c]
 	mov r0, #1
 	strh r0, [r4, #4]
@@ -697,7 +697,7 @@ _02258CBE:
 	ldr r0, _02258CD8 ; =ov90_0225C06C
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #0x2c]
 	mov r0, #1
 	strh r0, [r4, #4]
@@ -1986,13 +1986,13 @@ _022595B4:
 	ldr r0, _022596BC ; =ov90_02259794
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r1, _022596C0 ; =0x000005EC
 	mov r2, #0
 	str r0, [r4, r1]
 	ldr r0, _022596C4 ; =ov90_02259B18
 	add r1, r4, #0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	mov r1, #0x5f
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -4231,7 +4231,7 @@ _0225A7CE:
 	ldr r0, _0225A83C ; =ov90_0225A980
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r1, _0225A840 ; =0x00000644
 	str r0, [r4, r1]
 	b _0225A800
@@ -4239,7 +4239,7 @@ _0225A7DE:
 	ldr r0, _0225A844 ; =ov90_0225AE4C
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r1, _0225A840 ; =0x00000644
 	str r0, [r4, r1]
 	b _0225A800
@@ -4248,14 +4248,14 @@ _0225A7EE:
 	ldr r0, _0225A83C ; =ov90_0225A980
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r1, _0225A840 ; =0x00000644
 	str r0, [r4, r1]
 _0225A800:
 	ldr r0, _0225A848 ; =ov90_0225B230
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	ldr r1, _0225A84C ; =0x00000648
 	str r0, [r4, r1]
 	ldrb r0, [r4, #0x16]
@@ -7052,7 +7052,7 @@ ov90_0225BD08: ; 0x0225BD08
 	ldr r0, [r6, r0]
 	cmp r0, #0
 	beq _0225BD22
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0x63
 	mov r1, #0
 	lsl r0, r0, #2
@@ -7149,7 +7149,7 @@ _0225BDC0:
 	ldr r0, _0225BDE0 ; =ov90_0225BDE4
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -7172,7 +7172,7 @@ ov90_0225BDE4: ; 0x0225BDE4
 	mov r0, #0x63
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0x63
 	mov r1, #0
 	lsl r0, r0, #2
@@ -7483,7 +7483,7 @@ _0225C03A:
 	add r0, #0x34
 	bl ov90_0225BD08
 	ldr r0, [r4, #0x2c]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	str r0, [r4, #0x2c]
 _0225C05E:
@@ -7601,7 +7601,7 @@ _0225C128:
 	add r0, #0x34
 	bl ov90_0225BD08
 	ldr r0, [r4, #0x2c]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	str r0, [r4, #0x2c]
 _0225C14C:

@@ -195,7 +195,7 @@ ov01_021EFC94: ; 0x021EFC94
 	mov r2, #5
 	mov r3, #4
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	str r5, [r4, #0x10]
 	str r6, [r4, #0x14]
@@ -249,7 +249,7 @@ ov01_021EFCF8: ; 0x021EFCF8
 	ldr r0, _021EFD38 ; =ov01_021EFD3C
 	add r1, r4, #0
 	mov r2, #5
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r5, [r4, #0x48]
 	cmp r5, #0
 	beq _021EFD28
@@ -382,7 +382,7 @@ _021EFE04:
 	mov r1, #1
 	str r1, [r2]
 _021EFE14:
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #4
@@ -630,7 +630,7 @@ ov01_021EFFBC: ; 0x021EFFBC
 	ldr r0, _021EFFD4 ; =ov01_021EFFD8
 	add r1, r5, #0
 	mov r2, #0xa
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -645,7 +645,7 @@ ov01_021EFFD8: ; 0x021EFFD8
 	ldr r1, [r1]
 	bl ov01_021EFF90
 	add r0, r4, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r4, pc}
 	thumb_func_end ov01_021EFFD8
 
@@ -766,7 +766,7 @@ _021F00C4:
 	ldr r0, _021F00D8 ; =ov01_021F00DC
 	add r1, r5, #0
 	lsl r2, r2, #0xa
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -782,7 +782,7 @@ ov01_021F00DC: ; 0x021F00DC
 	ldr r0, _021F0104 ; =ov01_021F010C
 	add r4, r1, #0
 	lsl r2, r2, #0xa
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	str r0, [r4, #0x28]
 	ldr r0, [r4, #0x20]
 	ldr r1, _021F0108 ; =ov01_021F01D0
@@ -790,7 +790,7 @@ ov01_021F00DC: ; 0x021F00DC
 	bl ov01_021FB530
 	str r0, [r4, #0x24]
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r3, r4, r5, pc}
 	nop
 _021F0104: .word ov01_021F010C
@@ -892,7 +892,7 @@ ov01_021F0174: ; 0x021F0174
 	mov r0, #0
 	str r0, [r4, #0x24]
 	ldr r0, [r4, #0x28]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	str r0, [r4, #0x28]
 	pop {r4, pc}
@@ -1074,7 +1074,7 @@ _021F02D8:
 	ldr r0, _021F032C ; =ov01_021F0330
 	add r1, r4, #0
 	lsr r2, r2, #0x10
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021F0328: .word 0x04000040
@@ -1089,7 +1089,7 @@ ov01_021F0330: ; 0x021F0330
 	ldr r0, _021F0358 ; =ov01_021F0360
 	add r4, r1, #0
 	lsl r2, r2, #0xa
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	str r0, [r4, #0x40]
 	ldr r0, [r4, #0x38]
 	ldr r1, _021F035C ; =ov01_021F03C8
@@ -1097,7 +1097,7 @@ ov01_021F0330: ; 0x021F0330
 	bl ov01_021FB530
 	str r0, [r4, #0x3c]
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r3, r4, r5, pc}
 	nop
 _021F0358: .word ov01_021F0360
@@ -1225,7 +1225,7 @@ ov01_021F03F8: ; 0x021F03F8
 	mov r0, #0
 	str r0, [r4, #0x3c]
 	ldr r0, [r4, #0x40]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	str r0, [r4, #0x40]
 	pop {r4, pc}
@@ -2296,7 +2296,7 @@ _021F0BEA:
 	ldr r0, _021F0C3C ; =ov01_021F0C40
 	add r1, r7, #0
 	lsl r2, r2, #5
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021F0C34: .word 0x04000048
@@ -2322,11 +2322,11 @@ ov01_021F0C40: ; 0x021F0C40
 	ldr r0, _021F0C78 ; =ov01_021F0C7C
 	add r1, r4, #0
 	lsl r2, r2, #0xa
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	add r4, #0xe0
 	str r0, [r4]
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r3, r4, r5, pc}
 	nop
 _021F0C74: .word ov01_021F0CA8
@@ -2416,7 +2416,7 @@ ov01_021F0CDC: ; 0x021F0CDC
 	add r0, r4, #0
 	add r0, #0xe0
 	ldr r0, [r0]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	add r4, #0xe0
 	str r0, [r4]
@@ -2516,7 +2516,7 @@ ov01_021F0DB0: ; 0x021F0DB0
 	ldr r1, [r1]
 	bl GXx_SetMasterBrightness_
 	add r0, r4, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r4, pc}
 	.balign 4, 0
 _021F0DC4: .word 0x0400006C
@@ -2524,14 +2524,14 @@ _021F0DC4: .word 0x0400006C
 
 	thumb_func_start ov01_021F0DC8
 ov01_021F0DC8: ; 0x021F0DC8
-	ldr r3, _021F0DD4 ; =sub_0200E374
+	ldr r3, _021F0DD4 ; =SysTask_CreateOnVWaitQueue
 	mov r2, #1
 	add r1, r0, #0
 	ldr r0, _021F0DD8 ; =ov01_021F0DB0
 	lsl r2, r2, #0xa
 	bx r3
 	.balign 4, 0
-_021F0DD4: .word sub_0200E374
+_021F0DD4: .word SysTask_CreateOnVWaitQueue
 _021F0DD8: .word ov01_021F0DB0
 	thumb_func_end ov01_021F0DC8
 
@@ -2586,13 +2586,13 @@ _021F0DFC:
 	ldr r0, _021F0E6C ; =ov01_021F1094
 	ldr r1, [r1]
 	lsr r2, r2, #0x10
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	ldr r1, _021F0E5C ; =ov01_02209B64
 	mov r2, #1
 	ldr r0, _021F0E70 ; =ov01_021F10C8
 	ldr r1, [r1]
 	lsl r2, r2, #0xa
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r4, pc}
 	.balign 4, 0
 _021F0E5C: .word ov01_02209B64
@@ -2914,7 +2914,7 @@ _021F10AC:
 	ldr r0, [r4, #4]
 	bl ov01_021F1148
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldrh r0, [r4]
 	add r0, r0, #1
 	strh r0, [r4]
@@ -2970,7 +2970,7 @@ ov01_021F10C8: ; 0x021F10C8
 	mov r0, #1
 	strb r0, [r4, #2]
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _021F1136:
 	add sp, #0x3c
 	pop {r4, r5, pc}
@@ -3132,14 +3132,14 @@ _021F1278: .word ov01_02209B64
 
 	thumb_func_start ov01_021F127C
 ov01_021F127C: ; 0x021F127C
-	ldr r3, _021F1288 ; =sub_0200E33C
+	ldr r3, _021F1288 ; =SysTask_CreateOnVBlankQueue
 	mov r2, #1
 	add r1, r0, #0
 	ldr r0, _021F128C ; =ov01_021F1290
 	lsl r2, r2, #0xa
 	bx r3
 	.balign 4, 0
-_021F1288: .word sub_0200E33C
+_021F1288: .word SysTask_CreateOnVBlankQueue
 _021F128C: .word ov01_021F1290
 	thumb_func_end ov01_021F127C
 
@@ -3185,7 +3185,7 @@ ov01_021F12D0: ; 0x021F12D0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, [r4]
 	bl sub_02014B9C
 	ldr r0, [r4]
