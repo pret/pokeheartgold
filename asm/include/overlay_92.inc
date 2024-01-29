@@ -140,7 +140,7 @@
 .public GF_AssertFail
 .public String_Delete
 .public Thunk_G3X_Reset
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
 .public PlayerProfile_GetPlayerName_NewString

@@ -9238,7 +9238,7 @@ _021FDC94:
 	bl Draw3dModel
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	add sp, #0x3c
 	pop {r4, r5, pc}
 	.balign 4, 0

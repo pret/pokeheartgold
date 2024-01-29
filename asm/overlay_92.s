@@ -2841,7 +2841,7 @@ _0225DCA6:
 _0225DCF0:
 	mov r0, #0
 	mov r1, #1
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	ldr r0, [r5, #0x54]
 	bl sub_0200D020
 	add sp, #0x24

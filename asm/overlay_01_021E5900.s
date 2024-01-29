@@ -1170,7 +1170,7 @@ _021E6294:
 	ldr r1, _021E6318 ; =gG3dDepthBufferingMode
 	add r0, r5, #0
 	ldr r1, [r1]
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	add sp, #0x88
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

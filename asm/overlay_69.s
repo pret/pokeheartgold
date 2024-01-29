@@ -3334,7 +3334,7 @@ _021E7414:
 	bl Thunk_G3X_Reset
 	mov r0, #0
 	mov r1, #1
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	ldr r0, _021E74FC ; =0x0000C2F8
 	mov r1, #0
 	add sp, #0x70
@@ -3423,7 +3423,7 @@ _021E74DE:
 _021E74EA:
 	mov r0, #0
 	mov r1, #1
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 _021E74F2:
 	add sp, #0x70
 	pop {r3, r4, r5, r6, r7, pc}

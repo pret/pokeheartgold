@@ -934,7 +934,7 @@ _0222BF0E:
 	bl sub_02008120
 	mov r0, #1
 	mov r1, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	add r0, r4, #0
 	bl ov40_0223D5E8
 	mov r0, #0
@@ -17675,7 +17675,7 @@ _02234446:
 	bl ov41_0224B554
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 _02234466:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -17722,7 +17722,7 @@ _022344AA:
 	bl ov41_0224B554
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 _022344CA:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -19298,7 +19298,7 @@ _02235254:
 	bl ov41_0224B554
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 _02235274:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -19390,7 +19390,7 @@ _02235316:
 	bl ov41_0224B554
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 _02235336:
 	mov r0, #0
 	pop {r3, r4, r5, pc}

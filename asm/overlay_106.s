@@ -505,7 +505,7 @@ _021E5C96:
 _021E5CBA:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	add sp, #0x40
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

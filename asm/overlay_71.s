@@ -2231,7 +2231,7 @@ ov71_022479C8: ; 0x022479C8
 	bl ov71_022474CC
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -3472,7 +3472,7 @@ ov71_022483E4: ; 0x022483E4
 	bl ov71_022474CC
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 _02248404:
 	pop {r4, pc}
 	.balign 4, 0
@@ -5671,7 +5671,7 @@ ov71_02249538: ; 0x02249538
 	bl ov71_022474CC
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 _02249554:
 	pop {r4, pc}
 	.balign 4, 0
@@ -8115,7 +8115,7 @@ ov71_0224A8B0: ; 0x0224A8B0
 	bl ov71_022474CC
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 _0224A8CE:
 	ldr r0, [r4, #0xc]
 	cmp r0, #0
@@ -8269,7 +8269,7 @@ ov71_0224A9C4: ; 0x0224A9C4
 	bl ov71_022474CC
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 _0224A9F6:
 	pop {r4, pc}
 	thumb_func_end ov71_0224A9C4
@@ -9323,7 +9323,7 @@ ov71_0224B234: ; 0x0224B234
 _0224B272:
 	mov r0, #0
 	add r1, r0, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0

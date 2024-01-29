@@ -381,7 +381,7 @@ static void TitleScreenAnimObjs_Run(TitleScreenAnimObject *animObj) {
         break;
     case TITLESCREEN_MODEL_STOP:
         Thunk_G3X_Reset();
-        sub_02026E50(0, 1);
+        RequestSwap3DBuffers(GX_SORTMODE_AUTO, GX_BUFFERMODE_W);
         animObj->state = TITLESCREEN_MODEL_OFF;
         break;
     case TITLESCREEN_MODEL_RUN:
@@ -554,7 +554,7 @@ static BOOL TitleScreenAnim_Run(TitleScreenAnimData *animData, BgConfig *bgConfi
     }
     TitleScreenAnimObjs_Run(&animData->hooh_lugia);
     TitleScreenAnimObjs_Run(&animData->sparkles);
-    sub_02026E50(0, 1);
+    RequestSwap3DBuffers(GX_SORTMODE_AUTO, GX_BUFFERMODE_W);
     TitleScreenAnim_RunTopScreenGlow(animData);
     return ret;
 }

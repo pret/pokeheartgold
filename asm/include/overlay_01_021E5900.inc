@@ -48,7 +48,7 @@
 .public sub_02023910
 .public GF_AssertFail
 .public Thunk_G3X_Reset
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public Save_GetGymmickPtr
 .public Save_Gymmick_GetType
 .public MapMatrix_GetMapHeader

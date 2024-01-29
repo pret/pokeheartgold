@@ -648,7 +648,7 @@ static void update3dObjectsMain(struct ChooseStarterAppWork *work) {
     Camera_PushLookAtToNNSGlb();
     updateBaseAndBallsRotation(work);
     NNS_G3dGePopMtx(1);
-    sub_02026E50(0, 0);
+    RequestSwap3DBuffers(GX_SORTMODE_AUTO, GX_BUFFERMODE_Z);
 }
 
 static inline void id_roty_mtx33(MtxFx33 *mtx, u16 index) {

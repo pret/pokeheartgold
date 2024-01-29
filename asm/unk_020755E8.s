@@ -933,7 +933,7 @@ sub_02075D08: ; 0x02075D08
 	bl sub_020774E0
 	mov r0, #1
 	mov r1, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 _02075D2C:
 	add r4, #0x67
 	ldrb r0, [r4]

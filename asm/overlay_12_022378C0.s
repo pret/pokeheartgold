@@ -3240,7 +3240,7 @@ _02239830:
 	bl sub_0200D03C
 	mov r0, #1
 	mov r1, #0
-	bl sub_02026E50
+	bl RequestSwap3DBuffers
 _0223984E:
 	pop {r4, pc}
 	.balign 4, 0

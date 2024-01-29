@@ -33,7 +33,7 @@
 .public Camera_Init_FromTargetDistanceAndAngle
 .public Camera_OffsetLookAtPosAndTarget
 .public Thunk_G3X_Reset
-.public sub_02026E50
+.public RequestSwap3DBuffers
 .public sub_020880CC
 .public NNS_G3dAnmObjInit
 .public NNS_G3dRenderObjAddAnmObj
