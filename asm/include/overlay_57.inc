@@ -74,8 +74,8 @@
 .public sub_0200E0FC
 .public sub_0200E188
 .public sub_0200E2B0
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public sub_0200E3D8
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1

@@ -617,7 +617,8 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void * dest) {
     case MON_DATA_CARNIVAL_RIBBON:
     case MON_DATA_CLASSIC_RIBBON:
     case MON_DATA_PREMIER_RIBBON:
-    case MON_DATA_SINNOH_RIBBON_53: {
+    case MON_DATA_SINNOH_RIBBON_53:
+    {
         if (blockA->sinnohRibbons & (1ll << (attr - MON_DATA_SINNOH_CHAMP_RIBBON))) {
             ret = TRUE;
         } else {
@@ -787,7 +788,8 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void * dest) {
             ret = FALSE;
         }
         break;
-    case MON_DATA_OT_NAME: {
+    case MON_DATA_OT_NAME:
+    {
         u16 * dest16 = (u16 *)dest;
         for (ret = 0; ret < PLAYER_NAME_LENGTH; ret++) {
             dest16[ret] = blockD->otTrainerName[ret];
@@ -1418,7 +1420,8 @@ static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value) {
             blockA->exp += value;
         }
         break;
-    case MON_DATA_FRIENDSHIP: {
+    case MON_DATA_FRIENDSHIP:
+    {
         int friendship = blockA->friendship;
         if (friendship + value > FRIENDSHIP_MAX) {
             friendship = FRIENDSHIP_MAX;

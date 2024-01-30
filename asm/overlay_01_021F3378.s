@@ -144,7 +144,7 @@ _021F345E:
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r7, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _021F347A:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
@@ -284,7 +284,7 @@ _021F3590:
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _021F35B4:
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
@@ -317,13 +317,13 @@ ov01_021F35C4: ; 0x021F35C4
 	ldr r0, _021F3608 ; =ov01_021F33B8
 	add r1, r4, #0
 	mov r2, #0x64
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r3, r4, r5, r6, r7, pc}
 _021F35FA:
 	ldr r0, _021F360C ; =ov01_021F348C
 	add r1, r4, #0
 	mov r2, #0x64
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021F3608: .word ov01_021F33B8

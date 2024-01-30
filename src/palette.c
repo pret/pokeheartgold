@@ -148,7 +148,7 @@ u8 PaletteData_BeginPaletteFade(PaletteData *data, u16 toSelect, u16 opaqueBit, 
             data->callbackFlag = TRUE;
             data->selectedFlag = 1;
             data->forceExit = FALSE;
-            CreateSysTask(SysTask_TimedPaletteFade, data, -2);
+            SysTask_CreateOnMainQueue(SysTask_TimedPaletteFade, data, -2);
         }
     }
 
@@ -181,7 +181,7 @@ u8 PaletteData_ForceBeginPaletteFade(PaletteData *data, u16 toSelect, u16 opaque
             data->callbackFlag = TRUE;
             data->selectedFlag = 1;
             data->forceExit = FALSE;
-            CreateSysTask(SysTask_TimedPaletteFade, data, -2);
+            SysTask_CreateOnMainQueue(SysTask_TimedPaletteFade, data, -2);
         }
     }
 
@@ -240,7 +240,7 @@ static void SysTask_TimedPaletteFade(SysTask *task, void *taskData) {
         data->transparentBit = 0;
         data->selectedBuffer = 0;
         data->callbackFlag = 0;
-        DestroySysTask(task);
+        SysTask_Destroy(task);
         return;
     }
 
@@ -250,7 +250,7 @@ static void SysTask_TimedPaletteFade(SysTask *task, void *taskData) {
         PaletteData_TryApplyScheduledBlendStepToExBuffersHandleDelay(data);
         if (data->selectedBuffer == 0) {
             data->callbackFlag = 0;
-            DestroySysTask(task);
+            SysTask_Destroy(task);
             return;
         }
     }

@@ -4,7 +4,7 @@
 .public SysTaskQueue_PlacementNew
 .public SysTaskQueue_RunTasks
 .public SysTaskQueue_InsertTask
-.public SysTask_Delete
+.public SysTask_Unlink
 .public SysTask_SetFunc
 .public SysTask_GetData
 .public SysTask_GetPriority

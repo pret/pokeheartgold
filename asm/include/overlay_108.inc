@@ -69,8 +69,8 @@
 .public Sprite_AddPositionXY
 .public UnkImageStruct_AddSpritePositionXY
 .public sub_0200E2B0
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2

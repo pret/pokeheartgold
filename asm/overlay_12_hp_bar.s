@@ -404,7 +404,7 @@ ov12_02264B28: ; 0x02264B28
 	ldr r0, [r4, #0x50]
 	cmp r0, #0
 	beq _02264B3A
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	str r0, [r4, #0x50]
 _02264B3A:
@@ -1079,7 +1079,7 @@ _02265040:
 	ldr r0, _0226504C ; =ov12_02265054
 	ldr r2, _02265050 ; =0x000003DE
 	add r1, r4, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0226504C: .word ov12_02265054
@@ -1225,7 +1225,7 @@ _0226514C:
 	orr r0, r1
 	strb r0, [r5]
 	add r0, r7, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _02265164:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -2650,7 +2650,7 @@ ov12_02265C54: ; 0x02265C54
 	add r1, r4, #0
 	lsl r2, r2, #2
 	str r6, [r4, #4]
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r4, r5, r6, pc}
 	nop
 _02265C84: .word ov12_02265C88
@@ -2760,7 +2760,7 @@ _02265D38:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r7, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -2795,7 +2795,7 @@ ov12_02265D78: ; 0x02265D78
 	ldr r0, _02265D98 ; =ov12_02265DC4
 	ldr r2, _02265D9C ; =0x000003F2
 	add r1, r4, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #0x50]
 _02265D96:
 	pop {r4, pc}
@@ -2811,7 +2811,7 @@ ov12_02265DA0: ; 0x02265DA0
 	ldr r0, [r4, #0x50]
 	cmp r0, #0
 	beq _02265DB2
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	str r0, [r4, #0x50]
 _02265DB2:

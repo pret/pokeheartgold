@@ -40,7 +40,7 @@ ov80_022384FC: ; 0x022384FC
 	ldr r0, _02238528 ; =ov80_02238530
 	ldr r2, _0223852C ; =0x0001368C
 	add r1, r4, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4]
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
@@ -140,7 +140,7 @@ ov80_022385C4: ; 0x022385C4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}

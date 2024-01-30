@@ -3,10 +3,10 @@
 
 #include "sys_task.h"
 
-SysTask *CreateSysTask(SysTaskFunc func, void *data, u32 priority);
-SysTask *CreateVBlankSysTask(SysTaskFunc func, void *data, u32 priority);
-SysTask *CreatePrintSysTask(SysTaskFunc func, void *data, u32 priority);
-SysTask *CreateVWaitSysTask(SysTaskFunc func, void *data, u32 priority);
-void DestroySysTask(SysTask *task);
+SysTask *SysTask_CreateOnMainQueue(SysTaskFunc func, void *data, u32 priority);
+SysTask *SysTask_CreateOnVBlankQueue(SysTaskFunc func, void *data, u32 priority);
+SysTask *SysTask_CreateOnPrintQueue(SysTaskFunc func, void *data, u32 priority);
+SysTask *SysTask_CreateOnVWaitQueue(SysTaskFunc func, void *data, u32 priority);
+void SysTask_Destroy(SysTask *task);
 
 #endif //POKEHEARTGOLD_SYS_TASK_API_H

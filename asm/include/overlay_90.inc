@@ -51,9 +51,9 @@
 .public BufferWiFiPlazaInstrumentName
 .public StringExpandPlaceholders
 .public MessageFormat_ResetBuffers
-.public CreateSysTask
-.public CreateVWaitSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2

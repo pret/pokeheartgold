@@ -656,16 +656,16 @@ static void InitCutsceneSpriteResources(u8 idx, CreditsAppWork *work, u8 sprtRes
 
 static void SetPageSysTasks(CreditsAppWork *work) {
     PageWork *ptr = &work->pageWork;
-    ptr->pageDisplayWork.sysTask = CreateVBlankSysTask(TogglePageDisplayCB, &ptr->pageDisplayWork, 0);
-    work->pageWork.scrFlipWork.sysTask = CreateVBlankSysTask(FlipScreensCB, &work->pageWork.scrFlipWork, 1);
+    ptr->pageDisplayWork.sysTask = SysTask_CreateOnVBlankQueue(TogglePageDisplayCB, &ptr->pageDisplayWork, 0);
+    work->pageWork.scrFlipWork.sysTask = SysTask_CreateOnVBlankQueue(FlipScreensCB, &work->pageWork.scrFlipWork, 1);
 }
 
 static void FreePageSysTasks(CreditsAppWork *work) {
     PageWork *ptr = &work->pageWork;
-    DestroySysTask(ptr->pageDisplayWork.sysTask);
+    SysTask_Destroy(ptr->pageDisplayWork.sysTask);
     ptr->pageDisplayWork.sysTask = NULL;
 
-    DestroySysTask(work->pageWork.scrFlipWork.sysTask);
+    SysTask_Destroy(work->pageWork.scrFlipWork.sysTask);
     work->pageWork.scrFlipWork.sysTask = NULL;
 }
 
