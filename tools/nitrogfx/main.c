@@ -288,7 +288,7 @@ void HandleNtrToPngCommand(char *inputPath, char *outputPath, int argc, char **a
             if (!ParseNumber(argv[i], NULL, 10, &options.palIndex))
                 FATAL_ERROR("Failed to parse palette index.\n");
 
-            if (options.width < 1)
+            if (options.palIndex < 1)
                 FATAL_ERROR("Palette index must be positive.\n");
         }
         else if (strcmp(option, "-width") == 0)
