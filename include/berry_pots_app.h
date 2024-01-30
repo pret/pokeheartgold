@@ -7,5 +7,6 @@ void ov17_02201BC0(void);
 BOOL BerryPotsApp_Initialize(OVY_MANAGER *manager, int *state);
 BOOL BerryPotsApp_Run(OVY_MANAGER *manager, int *state);
 BOOL BerryPotsApp_Exit(OVY_MANAGER *manager, int *state);
+u8 BerryPots_DeadstrippedFunction(int a1, int a2);
 
 #endif
