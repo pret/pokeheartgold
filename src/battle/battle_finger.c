@@ -36,7 +36,7 @@ static const UnkTemplate_0200D748 ov12_0226EBD4 = {
     .vramTransfer = 0
 };
 
-BattleFinger *BattleFinger_New(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation, u32 a7, u32 a8) {
+BattleFinger *BattleFinger_New(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation, u32 spritePriority, u32 bgPriority) {
     BattleFinger *finger;
     UnkTemplate_0200D748 unkStruct = ov12_0226EBD4;
 
@@ -44,8 +44,8 @@ BattleFinger *BattleFinger_New(SpriteRenderer *renderer, SpriteGfxHandler *gfxHa
     unkStruct.resIdList[1] = pal;
     unkStruct.resIdList[2] = cell;
     unkStruct.resIdList[3] = animation;
-    unkStruct.spritePriority = a7;
-    unkStruct.bgPriority = a8;
+    unkStruct.spritePriority = spritePriority;
+    unkStruct.bgPriority = bgPriority;
 
     finger = AllocFromHeap(heapId, sizeof(BattleFinger));
     MI_CpuFill8(finger, 0, sizeof(BattleFinger));
