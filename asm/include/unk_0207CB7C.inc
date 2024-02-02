@@ -24,8 +24,8 @@
 .public DrawFrameAndWindow2
 .public ListMenuItems_New
 .public ListMenuItems_AddItem
-.public sub_0201660C
-.public sub_020166FC
+.public YesNoPrompt_Create
+.public YesNoPrompt_InitFromTemplate
 .public AllocFromHeap
 .public FreeToHeap
 .public BgCommitTilemapBufferToVram
@@ -43,12 +43,12 @@
 .public FillWindowPixelRect
 .public GetWindowWidth
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimSeqNo
 .public Get2dSpriteCurrentAnimSeqNo
 .public Sprite_SetAnimCtrlCurrentFrame
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public String_Delete
 .public Options_GetTextFrameDelay

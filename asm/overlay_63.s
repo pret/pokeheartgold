@@ -544,7 +544,7 @@ ov63_0221C228: ; 0x0221C228
 	strh r2, [r4, r0]
 	ldr r0, _0221C260 ; =ov63_0221BFCC
 	add r1, r4, #0
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	str r0, [r4, #4]
 	add r0, r4, #0
 	mov r1, #3
@@ -693,7 +693,7 @@ ov63_0221C368: ; 0x0221C368
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl ov63_0221CE7C
 	add r0, r4, #0
@@ -724,7 +724,7 @@ ov63_0221C384: ; 0x0221C384
 	ldr r0, _0221C3C8 ; =ov63_0221E8FC
 	add r1, r4, #0
 	mov r2, #4
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	str r0, [r4, #4]
 	add r0, r4, #0
 	mov r1, #6
@@ -963,7 +963,7 @@ ov63_0221C5A0: ; 0x0221C5A0
 	b _0221C606
 _0221C5B6:
 	ldr r0, [r4, #4]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	add r0, #0xfc
 	ldr r0, [r0]
@@ -1445,7 +1445,7 @@ ov63_0221C99C: ; 0x0221C99C
 	mov r1, #1
 	bl NNS_G2dGetImagePaletteLocation
 	add r6, r0, #0
-	bl sub_02026EA4
+	bl GetMainObjPlttAddr
 	mov r1, #1
 	bic r6, r1
 	mov r1, #1
@@ -2019,7 +2019,7 @@ _0221CE06:
 	ldr r2, [r2]
 	add r0, #0x14
 	sub r3, r3, r4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r7, #0x14
 	add r0, r7, #0
 	bl CopyWindowPixelsToVram_TextMode
@@ -2104,7 +2104,7 @@ ov63_0221CE94: ; 0x0221CE94
 	ldr r2, [r2]
 	add r0, r5, r6
 	mov r3, #2
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, r6
 	bl CopyWindowPixelsToVram_TextMode
 	add r0, r5, r6
@@ -2190,7 +2190,7 @@ _0221CF84:
 	ldr r2, [r2]
 	add r0, #0x10
 	mov r3, #2
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	add r2, r4, #0
 	add r0, #0x84
@@ -2233,7 +2233,7 @@ _0221CF84:
 	ldr r2, [r2]
 	add r0, #0x10
 	mov r3, #2
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, r6
 	add r0, #0x10
 	bl CopyWindowPixelsToVram_TextMode
@@ -2278,7 +2278,7 @@ _0221CF84:
 	ldr r2, [r2]
 	add r0, #0x20
 	mov r3, #2
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r2, [r4]
 	ldr r1, [sp, #0x14]
 	ldr r2, [r2]
@@ -2456,7 +2456,7 @@ _0221D1DA:
 	ldr r2, [r4]
 	add r0, #0x20
 	mov r3, #2
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, r6
 	add r0, #0x20
 	bl CopyWindowPixelsToVram_TextMode
@@ -4712,7 +4712,7 @@ _0221E4C6:
 	ldr r0, _0221E4DC ; =ov63_0221E4E0
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0221E4D4: .word 0x0000328C
@@ -4776,7 +4776,7 @@ _0221E548:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -5504,7 +5504,7 @@ _0221EAB6:
 	ldr r2, [r2]
 	add r0, #0x14
 	sub r3, r3, r4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	add r0, #0x14
 	bl CopyWindowToVram
@@ -5599,7 +5599,7 @@ _0221EAB6:
 	ldr r2, [r2]
 	add r0, #0x24
 	sub r3, r3, r4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r5, #0x24
 	add r0, r5, #0
 	bl CopyWindowToVram
@@ -6358,7 +6358,7 @@ ov63_0221F238: ; 0x0221F238
 	ldr r0, _0221F288 ; =ov63_0221F2E8
 	add r1, r4, #0
 	mov r2, #3
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	ldr r1, _0221F28C ; =0x00000838
 	mov r2, #1
 	str r0, [r4, r1]
@@ -6366,7 +6366,7 @@ ov63_0221F238: ; 0x0221F238
 	str r5, [r4, r1]
 	ldr r0, _0221F290 ; =ov63_0221F294
 	add r1, r4, #0
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	pop {r3, r4, r5, pc}
 	nop
 _0221F278: .word 0x00000844
@@ -6408,7 +6408,7 @@ _0221F2C8:
 	ldr r2, [r1]
 	sub r2, r2, #1
 	str r2, [r1]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r4, pc}
 	nop
 _0221F2D8: .word _022203C0
@@ -6439,7 +6439,7 @@ _0221F30A:
 	ldr r2, [r1]
 	sub r2, r2, #1
 	str r2, [r1]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r4, pc}
 	.balign 4, 0
 _0221F318: .word _022203C0
@@ -6452,7 +6452,7 @@ ov63_0221F324: ; 0x0221F324
 	push {r4, r5, r6, lr}
 	add r5, r1, #0
 	add r6, r2, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r1, _0221F360 ; =0x0000083C
 	add r4, r0, #0
 	ldr r3, [r4, r1]
@@ -6538,7 +6538,7 @@ ov63_0221F368: ; 0x0221F368
 	strh r3, [r1, r0]
 	ldr r0, _0221F3F0 ; =ov63_0221F3F4
 	mov r2, #2
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0221F3DC: .word 0x00000838
@@ -6722,7 +6722,7 @@ _0221F552:
 	ldr r2, [r1]
 	sub r2, r2, #1
 	str r2, [r1]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -6740,7 +6740,7 @@ ov63_0221F580: ; 0x0221F580
 	push {r3, lr}
 	cmp r0, #0
 	beq _0221F5A6
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r3, r0, #0
 	ldr r0, _0221F5A8 ; =0x04000444
 	mov r1, #0
@@ -6770,7 +6770,7 @@ ov63_0221F5B4: ; 0x0221F5B4
 	str r2, [r1]
 	cmp r0, #0
 	beq _0221F5F0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r6, r0, #0
 	ldr r0, _0221F5F8 ; =0x0000083C
 	mov r4, #0
@@ -6782,7 +6782,7 @@ ov63_0221F5B4: ; 0x0221F5B4
 _0221F5D4:
 	ldr r0, _0221F5FC ; =0x00000818
 	ldr r0, [r5, r0]
-	bl sub_0201F988
+	bl SysTask_GetData
 	bl FreeToHeap
 	ldr r0, [r6, r7]
 	add r4, r4, #1
@@ -7007,7 +7007,7 @@ _0221F784:
 	str r1, [r0]
 	ldr r0, _0221F7C0 ; =ov63_0221F7EC
 	ldr r1, [sp, #0x28]
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -7025,10 +7025,10 @@ ov63_0221F7C4: ; 0x0221F7C4
 	push {r4, lr}
 	add r4, r0, #0
 	beq _0221F7D8
-	bl sub_0201F988
+	bl SysTask_GetData
 	bl FreeToHeap
 	add r0, r4, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0221F7D8:
 	pop {r4, pc}
 	.balign 4, 0
@@ -7039,7 +7039,7 @@ ov63_0221F7DC: ; 0x0221F7DC
 	push {r3, lr}
 	cmp r0, #0
 	beq _0221F7EA
-	bl sub_0201F988
+	bl SysTask_GetData
 	mov r1, #1
 	str r1, [r0]
 _0221F7EA:
@@ -7365,7 +7365,7 @@ ov63_0221FAA0: ; 0x0221FAA0
 	push {r4, lr}
 	cmp r0, #0
 	beq _0221FAD0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	cmp r0, #0

@@ -46,7 +46,7 @@ ov27_02259F80: ; 0x02259F80
 	mov r3, #8
 	bl CreateSysTaskAndEnvironment
 	add r7, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	str r7, [r4, #8]
 	mov r0, #0
@@ -129,7 +129,7 @@ ov27_02259F80: ; 0x02259F80
 	add r2, #0xe4
 	ldr r2, [r4, r2]
 	mov r1, #4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r1, #0
 	mov r2, #0x3e
 	str r1, [sp]
@@ -143,7 +143,7 @@ ov27_02259F80: ; 0x02259F80
 	add r2, #0xe4
 	ldr r2, [r4, r2]
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl ov27_0225BCE8
 	add r0, r4, #0
@@ -241,7 +241,7 @@ ov27_0225A19C: ; 0x0225A19C
 	str r0, [sp]
 	add r0, r1, #0
 	str r1, [sp, #4]
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r6, r0, #0
 	ldr r1, _0225A2B0 ; =FS_OVERLAY_ID(OVY_123)
 	mov r0, #0
@@ -374,7 +374,7 @@ ov27_0225A2C8: ; 0x0225A2C8
 	thumb_func_start ov27_0225A2CC
 ov27_0225A2CC: ; 0x0225A2CC
 	push {r4, lr}
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	bne _0225A2DA
 	bl GF_AssertFail
@@ -393,7 +393,7 @@ _0225A2E8: .word 0x0000051C
 ov27_0225A2EC: ; 0x0225A2EC
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	bne _0225A2FC
 	bl GF_AssertFail
@@ -539,10 +539,10 @@ _0225A408:
 	bl ov27_0225B4D8
 _0225A412:
 	ldr r0, _0225A464 ; =ov27_0225CECC
-	bl sub_02025204
+	bl TouchscreenHitbox_FindRectAtTouchHeld
 	add r6, r0, #0
 	ldr r0, _0225A464 ; =ov27_0225CECC
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
@@ -826,7 +826,7 @@ ov27_0225A61C: ; 0x0225A61C
 	add r2, #0xe0
 	ldr r2, [r4, r2]
 	mov r1, #4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0xf
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
@@ -2708,7 +2708,7 @@ _0225B54A:
 	pop {r4, r5, r6, pc}
 _0225B55A:
 	ldr r0, _0225B62C ; =ov27_0225CF68
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r4, r0, #0
 	cmp r4, #0
 	ble _0225B57E
@@ -3445,7 +3445,7 @@ ov27_0225BB38: ; 0x0225BB38
 	add r2, r6, #0
 	mov r3, #3
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -3672,7 +3672,7 @@ _0225BCF6:
 	add r0, r4, #0
 	mov r1, #0
 	asr r3, r7, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _0225BD2C:
 	add r6, r6, #1
 	add r5, #8
@@ -3972,7 +3972,7 @@ _0225BF48:
 	str r0, [sp, #8]
 	add r0, sp, #0x14
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add r0, sp, #0x14
@@ -4459,7 +4459,7 @@ ov27_0225C250: ; 0x0225C250
 	mov r3, #8
 	bl CreateSysTaskAndEnvironment
 	add r6, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	str r6, [r4, #0x1c]
 	mov r0, #0
@@ -4535,7 +4535,7 @@ ov27_0225C398: ; 0x0225C398
 	str r0, [sp]
 	add r0, r1, #0
 	str r1, [sp, #4]
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r7, r0, #0
 	mov r0, #0xd5
 	lsl r0, r0, #2
@@ -4595,7 +4595,7 @@ ov27_0225C41C: ; 0x0225C41C
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r2, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	mov r1, #0xe7
 	lsl r1, r1, #2
 	str r5, [r0, r1]
@@ -4931,7 +4931,7 @@ _0225C6B0:
 	ldr r2, [r7]
 	add r0, r4, #0
 	mov r3, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	add r5, r5, #1
@@ -5205,7 +5205,7 @@ ov27_0225C8D0: ; 0x0225C8D0
 	add r0, r5, #0
 	add r2, r4, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
@@ -5298,7 +5298,7 @@ ov27_0225C994: ; 0x0225C994
 	mov r0, #0xe2
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _0225C9C6
 	mov r0, #0xe2
@@ -5453,7 +5453,7 @@ ov27_0225CA98: ; 0x0225CA98
 	lsl r1, r0, #2
 	ldr r0, _0225CC84 ; =ov27_0225D49C
 	ldr r0, [r0, r1]
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -5690,7 +5690,7 @@ ov27_0225CC90: ; 0x0225CC90
 	mov r0, #0xe2
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _0225CCB8
 	mov r0, #0xe2
@@ -5827,7 +5827,7 @@ ov27_0225CD94: ; 0x0225CD94
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, _0225CEA0 ; =ov27_0225D120
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1

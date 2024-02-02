@@ -74,8 +74,8 @@
 .public BufferSPGreeting
 .public StringExpandPlaceholders
 .public MessageFormat_ResetBuffers
-.public sub_0200E374
-.public DestroySysTask
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
 .public sub_0200E5D4
@@ -150,9 +150,9 @@
 .public GF_DegreeToSinCosIdx
 .public MTRandom
 .public TextPrinterCheckActive
-.public sub_020200A0
+.public RemoveTextPrinter
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks
@@ -192,9 +192,9 @@
 .public String_Delete
 .public String_Copy
 .public String_GetLength
-.public sub_02026C44
-.public sub_02026CAC
-.public sub_02026CC4
+.public TouchHitboxController_Create
+.public TouchHitboxController_Destroy
+.public TouchHitboxController_IsTriggered
 .public Thunk_G3X_Reset
 .public sub_02026E50
 .public GF_3DVramMan_Create

@@ -114,7 +114,7 @@ _020933AA:
 	ldr r0, [r5, r0]
 	bl FreeToHeap
 	ldr r0, [r5, #8]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	ldr r0, _02093434 ; =0x000007E4
 	ldr r0, [r5, r0]
 	bl FreeToHeap
@@ -166,7 +166,7 @@ sub_02093440: ; 0x02093440
 	add r4, r1, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	str r0, [r5, #8]
 	ldr r0, _02093580 ; =0x0000463C
 	ldr r2, [sp, #0x48]
@@ -529,7 +529,7 @@ _0209372C:
 	str r1, [r5, r0]
 	ldr r0, _02093890 ; =0x000007E4
 	ldr r0, [r5, r0]
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r4, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -715,7 +715,7 @@ sub_0209389C: ; 0x0209389C
 	strb r1, [r0, #0x11]
 	ldr r0, [r4, #8]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	ldrb r0, [r4, #0xd]
 	cmp r0, #1
 	bne _020938EC
@@ -748,7 +748,7 @@ sub_02093908: ; 0x02093908
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #8]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _0209391C
 	cmp r0, #2
@@ -760,7 +760,7 @@ _0209391C:
 	add r0, r4, r0
 	bl sub_020950F8
 	ldr r0, [r4, #8]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	mov r0, #6
 	str r0, [r4, #0x14]
 	pop {r4, pc}
@@ -770,7 +770,7 @@ _02093932:
 	add r0, r4, r0
 	bl sub_020950F8
 	ldr r0, [r4, #8]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	ldr r1, _02093968 ; =0x000046B0
 	add r0, r4, #0
 	ldr r1, [r4, r1]
@@ -813,7 +813,7 @@ sub_0209396C: ; 0x0209396C
 	strb r1, [r0, #0x11]
 	ldr r0, [r4, #8]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add r0, r4, #0
 	mov r1, #4
 	mov r2, #0
@@ -831,7 +831,7 @@ sub_020939B8: ; 0x020939B8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #8]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _020939CC
 	cmp r0, #2
@@ -843,7 +843,7 @@ _020939CC:
 	add r0, r4, r0
 	bl sub_020950F8
 	ldr r0, [r4, #8]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	ldr r1, _02093A38 ; =0x00004684
 	add r0, r4, #0
 	ldr r1, [r4, r1]
@@ -871,7 +871,7 @@ _02093A10:
 	add r0, r4, r0
 	bl sub_020950F8
 	ldr r0, [r4, #8]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	bl sub_02094A90
@@ -2876,7 +2876,7 @@ sub_020949F4: ; 0x020949F4
 	beq _02094A5E
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	ldr r0, [sp, #4]
 	add r5, sp, #0x14
 	lsl r0, r0, #0xc
@@ -3247,7 +3247,7 @@ _02094CC8:
 	ldr r0, _02094D14 ; =0x00004650
 	str r1, [sp, #0xc]
 	add r0, r5, r0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, _02094D14 ; =0x00004650
 	add r0, r5, r0
 	bl CopyWindowToVram
@@ -3303,7 +3303,7 @@ sub_02094D1C: ; 0x02094D1C
 	str r1, [sp, #0xc]
 	add r0, r5, r0
 	mov r1, #4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _02094D78:
 	ldr r0, _02094D94 ; =0x00004670
 	add r0, r5, r0
@@ -3682,7 +3682,7 @@ sub_0209501C: ; 0x0209501C
 	add r2, r5, #0
 	add r0, r4, r0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	add r0, r7, #0

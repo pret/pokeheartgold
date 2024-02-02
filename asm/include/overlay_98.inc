@@ -6,7 +6,7 @@
 .public FontID_String_GetWidthMultiline
 .public PaletteData_Init
 .public PaletteData_Free
-.public sub_02003F04
+.public TintPalette_GrayScale
 .public NARC_New
 .public NARC_Delete
 .public GfGfxLoader_GXLoadPal
@@ -56,7 +56,7 @@
 .public FillWindowPixelBuffer
 .public GetWindowWidth
 .public SetWindowY
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GfGfx_SetBanks
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_EngineATogglePlanes
@@ -65,7 +65,7 @@
 .public sub_02024B1C
 .public sub_02024B34
 .public Sprite_GetVramType
-.public sub_02025320
+.public TouchscreenHitbox_TouchNewIsIn
 .public GF_AssertFail
 .public String_New
 .public String_Delete

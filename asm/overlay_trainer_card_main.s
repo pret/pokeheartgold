@@ -1921,7 +1921,7 @@ ov51_021E6AAC: ; 0x021E6AAC
 	pop {r3, r4, r5, pc}
 _021E6ABE:
 	ldr r0, _021E6B28 ; =_021E7DB8
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _021E6AD8
 	mov r0, #1
@@ -1942,7 +1942,7 @@ _021E6AD8:
 	lsr r0, r0, #0x1f
 	bne _021E6B02
 	ldr r0, _021E6B34 ; =ov51_021E7DBC
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _021E6B02
 	mov r0, #1
@@ -1953,7 +1953,7 @@ _021E6AD8:
 	pop {r3, r4, r5, pc}
 _021E6B02:
 	ldr r0, _021E6B3C ; =ov51_021E7DC0
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _021E6B24
 	ldr r1, _021E6B40 ; =gSystem + 0x40
@@ -2430,7 +2430,7 @@ _021E6E6C:
 	mov r2, #0x19
 	bl LoadFontPal0
 	mov r0, #0x19
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	mov r1, #0xcf
 	lsl r1, r1, #6
 	str r0, [r5, r1]
@@ -2455,7 +2455,7 @@ ov51_021E6EF0: ; 0x021E6EF0
 	mov r0, #0xcf
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r5, #0
 	add r4, r4, #4
 _021E6F02:
@@ -2512,7 +2512,7 @@ _021E6F44:
 	ldr r2, [r3, r2]
 	add r0, r6, r0
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _021E6F68:
 	add r0, r4, #1
 	lsl r0, r0, #0x18
@@ -2595,7 +2595,7 @@ _021E6F68:
 	add r0, r6, #0
 	add r0, #0x20
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldrb r0, [r5, #4]
 	lsl r0, r0, #0x1c
 	lsr r0, r0, #0x1f
@@ -2633,7 +2633,7 @@ _021E6F68:
 	add r0, r6, #0
 	add r0, #0x30
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _021E7076:
 	ldr r0, [sp, #0x14]
 	mov r2, #0
@@ -2722,7 +2722,7 @@ _021E710A:
 	add r0, r6, #0
 	add r0, #0x50
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r1, #2
 	add r2, r5, #0
 	str r1, [sp]
@@ -2772,7 +2772,7 @@ _021E710A:
 	ldr r2, [sp, #0x18]
 	add r0, r6, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x1c]
 	bl String_Delete
 	add r0, r4, #0
@@ -2850,7 +2850,7 @@ _021E721C:
 	add r0, r5, r7
 	add r1, r6, #0
 	add r3, r6, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -2967,7 +2967,7 @@ _021E7324:
 	add r0, r5, #0
 	add r0, #0x70
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x1c]
 	mov r1, #0x14
 	add r2, r7, #0
@@ -2993,7 +2993,7 @@ _021E7324:
 	add r0, #0x70
 	add r2, r4, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #1
@@ -3028,7 +3028,7 @@ _021E7324:
 	add r0, r5, #0
 	add r0, #0x80
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x1c]
 	mov r1, #0x17
 	add r2, r4, #0
@@ -3044,7 +3044,7 @@ _021E7324:
 	add r0, #0x90
 	mov r3, #0x70
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r2, #0
 	ldr r0, [sp, #0x18]
 	str r4, [sp]
@@ -3076,7 +3076,7 @@ _021E7324:
 	add r0, #0x90
 	mov r3, #0xb0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x18]
 	str r4, [sp]
 	ldr r0, [r0, #0x3c]
@@ -3127,7 +3127,7 @@ _021E7324:
 	add r0, r5, #0
 	add r2, r4, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r6, #0
@@ -3194,7 +3194,7 @@ ov51_021E74F4: ; 0x021E74F4
 	add r0, r7, #0
 	sub r3, r5, r3
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3225,7 +3225,7 @@ ov51_021E7540: ; 0x021E7540
 	add r0, r7, #0
 	sub r3, r5, r3
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -3316,7 +3316,7 @@ _021E758E:
 	add r0, r7, #0
 	add r2, r4, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x10]
 	bl DestroyMsgData
 	add r0, r4, #0
@@ -3346,7 +3346,7 @@ ov51_021E7664: ; 0x021E7664
 	str r3, [sp, #8]
 	mov r3, #0xcd
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, pc}
 _021E7684:
@@ -3394,7 +3394,7 @@ ov51_021E76A4: ; 0x021E76A4
 	ldr r2, [r5, r2]
 	add r0, #0xd4
 	lsr r3, r4, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -3446,7 +3446,7 @@ _021E7712:
 	add r0, r4, #0
 	ldr r2, [r5, r2]
 	lsr r3, r3, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, _021E7798 ; =0x0000311C
 	mov r1, #1
 	add r0, r5, r0
@@ -3470,7 +3470,7 @@ _021E7756:
 	ldr r2, [r5, r2]
 	add r0, r4, #0
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, _021E7798 ; =0x0000311C
 	mov r1, #1
 	add r0, r5, r0
@@ -3519,7 +3519,7 @@ _021E77B6:
 	ldr r2, [r4, r2]
 	add r0, #0xb4
 	mov r1, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r1, _021E7800 ; =0x0000343C
 	strb r0, [r5, r1]
 	ldr r0, [r5]
@@ -3575,7 +3575,7 @@ ov51_021E7804: ; 0x021E7804
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	ldr r0, [r4]
 	mov r1, #4
 	bl ScheduleBgTilemapBufferTransfer
@@ -3594,7 +3594,7 @@ ov51_021E786C: ; 0x021E786C
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	add r6, r1, #0
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _021E7886
 	cmp r0, #2
@@ -3614,13 +3614,13 @@ _021E7894:
 	mov r0, #0xcf
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_020169C0
+	bl YesNoPrompt_IsInTouchMode
 	ldr r1, _021E78CC ; =0x0000310C
 	str r0, [r5, r1]
 	mov r0, #0xcf
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	cmp r4, #0
 	beq _021E78B4
 	cmp r6, #0

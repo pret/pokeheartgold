@@ -3582,7 +3582,7 @@ ov65_0221DC34: ; 0x0221DC34
 	cmp r0, #6
 	bge _0221DCAA
 	ldr r0, _0221DCAC ; =ov65_0221FE6C
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -4048,7 +4048,7 @@ ov65_0221DFB8: ; 0x0221DFB8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, _0221E034 ; =ov65_0221FE6C
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -7443,7 +7443,7 @@ _0221FB70:
 	add r0, r5, #0
 	add r2, r6, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -7491,7 +7491,7 @@ _0221FBC6:
 	add r0, r5, #0
 	add r2, r6, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r4, r0, #0
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
@@ -7536,10 +7536,10 @@ ov65_0221FC08: ; 0x0221FC08
 	mov r1, #0xf0
 	bic r3, r1
 	strb r3, [r2, #0x12]
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	add r1, sp, #0
 	add r4, r0, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add r0, r4, #0
 	add sp, #0x14
 	pop {r3, r4, pc}
@@ -7572,11 +7572,11 @@ _0221FC7A:
 	b _0221FC9A
 _0221FC82:
 	ldr r0, [r4]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	add r6, r0, #0
 	beq _0221FC9A
 	ldr r0, [r4]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	bl ov65_0221F8B4
 	mov r0, #0
 	str r0, [r5]

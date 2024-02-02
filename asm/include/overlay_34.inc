@@ -45,8 +45,8 @@
 .public CopyWindowToVram
 .public ScheduleWindowCopyToVram
 .public FillWindowPixelBuffer
-.public sub_0201F988
-.public AddTextPrinterParameterized2
+.public SysTask_GetData
+.public AddTextPrinterParameterizedWithColor
 .public GfGfx_EngineBTogglePlanes
 .public SpriteList_Delete
 .public sub_0202457C
@@ -59,8 +59,8 @@
 .public Get2dSpriteCurrentAnimSeqNo
 .public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_GetAnimCtrlCurrentFrame
-.public sub_02025204
-.public sub_02025364
+.public TouchscreenHitbox_FindRectAtTouchHeld
+.public System_GetTouchHeldCoords
 .public GF_AssertFail
 .public String_New
 .public String_Delete

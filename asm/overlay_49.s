@@ -4818,7 +4818,7 @@ ov49_0225AB14: ; 0x0225AB14
 	ldr r0, [r4, #0x10]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _0225AB30:
 	add r0, r4, #0
 	bl ov49_0225AC38
@@ -4844,7 +4844,7 @@ ov49_0225AB44: ; 0x0225AB44
 	ldr r0, [r5, #0x10]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _0225AB64:
 	add r0, r5, #0
 	mov r1, #0xf
@@ -4862,7 +4862,7 @@ _0225AB64:
 	str r3, [sp, #0xc]
 	ldr r2, [r5, #0x18]
 	add r0, r5, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r1, #1
 	str r0, [r5, #0x10]
 	add r0, r5, #0
@@ -4890,7 +4890,7 @@ ov49_0225ABA4: ; 0x0225ABA4
 	ldr r0, [r5, #0x10]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _0225ABC4:
 	add r0, r5, #0
 	mov r1, #0xf
@@ -4908,7 +4908,7 @@ _0225ABC4:
 	str r3, [sp, #0xc]
 	ldr r2, [r5, #0x18]
 	add r0, r5, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r1, #1
 	add r0, r5, #0
 	add r2, r1, #0
@@ -5009,7 +5009,7 @@ ov49_0225AC74: ; 0x0225AC74
 	ldr r0, [r4, #0x10]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _0225AC90:
 	add r0, r4, #0
 	bl ov49_0225AC38
@@ -5057,7 +5057,7 @@ ov49_0225ACC4: ; 0x0225ACC4
 	ldr r0, [r5, #0x10]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _0225ACE4:
 	add r0, r5, #0
 	mov r1, #0xf
@@ -5671,7 +5671,7 @@ ov49_0225B148: ; 0x0225B148
 	add r2, r6, #0
 	add r3, r5, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	add sp, #0x10
@@ -5811,7 +5811,7 @@ ov49_0225B24C: ; 0x0225B24C
 	str r3, [sp, #8]
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	mov r1, #1
 	mov r2, #0x55
@@ -6920,12 +6920,12 @@ ov49_0225BA40: ; 0x0225BA40
 	strh r2, [r1, r0]
 	add r0, r0, #2
 	strh r3, [r1, r0]
-	ldr r3, _0225BA54 ; =sub_0200E374
+	ldr r3, _0225BA54 ; =SysTask_CreateOnVWaitQueue
 	ldr r0, _0225BA58 ; =ov49_0225BA5C
 	mov r2, #0
 	bx r3
 	.balign 4, 0
-_0225BA54: .word sub_0200E374
+_0225BA54: .word SysTask_CreateOnVWaitQueue
 _0225BA58: .word ov49_0225BA5C
 	thumb_func_end ov49_0225BA40
 
@@ -6968,7 +6968,7 @@ ov49_0225BA5C: ; 0x0225BA5C
 	lsl r3, r3, #4
 	bl GfGfxLoader_GXLoadPal
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -8143,7 +8143,7 @@ ov49_0225C3DC: ; 0x0225C3DC
 	lsl r0, r4, #4
 	ldrb r3, [r3, #0x10]
 	add r0, r5, r0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -8183,7 +8183,7 @@ _0225C43C:
 	add r0, r2, r0
 	add r2, r6, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -8726,7 +8726,7 @@ _0225C862:
 	ldr r3, [sp, #4]
 	mov r1, #1
 	str r7, [sp]
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, [sp, #4]
 	str r0, [r1, #0x1c]
 	ldr r0, [sp, #4]
@@ -8745,7 +8745,7 @@ ov49_0225C8A8: ; 0x0225C8A8
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	ldr r0, [r6, #0x1c]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r0, r6, #0
 	add r0, #0xc
 	bl RemoveWindow
@@ -8778,7 +8778,7 @@ ov49_0225C8D4: ; 0x0225C8D4
 	cmp r0, #0
 	bne _0225C8F2
 	ldr r0, [r5, #0x1c]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	b _0225C8F6
 _0225C8F2:
 	mov r0, #1
@@ -8915,7 +8915,7 @@ ov49_0225C970: ; 0x0225C970
 	str r1, [sp, #0xc]
 	add r0, #0xc
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldrb r0, [r5, #2]
 	cmp r0, #0
 	str r4, [sp]

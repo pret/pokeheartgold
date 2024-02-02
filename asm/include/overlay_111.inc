@@ -54,11 +54,11 @@
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_0200FBDC
-.public sub_0201660C
-.public sub_02016624
-.public sub_020166FC
-.public sub_020168F4
-.public sub_020169CC
+.public YesNoPrompt_Create
+.public YesNoPrompt_Destroy
+.public YesNoPrompt_InitFromTemplate
+.public YesNoPrompt_HandleInput
+.public YesNoPrompt_Reset
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
 .public CreateHeap
@@ -87,8 +87,8 @@
 .public ScheduleSetBgPosText
 .public ResetAllTextPrinters
 .public TextPrinterCheckActive
-.public sub_020200A0
-.public AddTextPrinterParameterized2
+.public RemoveTextPrinter
+.public AddTextPrinterParameterizedWithColor
 .public GfGfx_SetBanks
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_EngineATogglePlanes

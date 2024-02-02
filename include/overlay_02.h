@@ -3,7 +3,7 @@
 
 #include "battle/battle_setup.h"
 #include "script.h"
-#include "unk_0201F79C.h"
+#include "sys_task.h"
 #include "unk_0203BC10.h"
 
 struct FieldLongWarpTaskData;
@@ -35,9 +35,9 @@ typedef struct UnkStruct_Ov02_0224E4EC {
     u8 *unk20; // points to fieldSystem->unk_111
 } UnkStruct_Ov02_0224E4EC;
 
-UNK_0201F79C_Sub *ov02_0224B418(FieldSystem *fieldSystem, int gender);
-BOOL ov02_0224B43C(UNK_0201F79C_Sub *unk);
-void ov02_0224B448(UNK_0201F79C_Sub *unk);
+SysTask *ov02_0224B418(FieldSystem *fieldSystem, int gender);
+BOOL ov02_0224B43C(SysTask *unk);
+void ov02_0224B448(SysTask *unk);
 struct FieldLongWarpTaskData *CreateFieldEscapeRopeTaskEnv(FieldSystem *fieldSystem, HeapID heapId);
 struct FieldLongWarpTaskData *CreateFieldTeleportTaskEnv(FieldSystem *fieldSystem, Pokemon *mon, u8 slotno, HeapID heapId);
 struct FieldLongWarpTaskData *CreateFieldDigTaskEnv(FieldSystem *fieldSystem, Pokemon *mon, u8 slotno, HeapID heapId);

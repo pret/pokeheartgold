@@ -6,8 +6,8 @@
 .public sub_02008C2C
 .public sub_020090B4
 .public sub_02009138
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public sub_02016EDC
 .public sub_02016F2C
 .public sub_02016F40

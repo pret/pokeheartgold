@@ -1061,7 +1061,7 @@ _021E6102:
 	ldrb r1, [r4, #8]
 	add r0, r5, #0
 	mov r3, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r5, #0
@@ -1512,9 +1512,9 @@ ov62_021E6480: ; 0x021E6480
 	add r4, r1, #0
 	mov r2, #0
 	add r6, r3, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #0x2c]
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	ldr r0, [sp, #0x24]
 	str r7, [r4]
@@ -1680,7 +1680,7 @@ _021E65C6:
 	mov r1, #0
 	bl UnkImageStruct_SetSpriteVisibleFlag
 	add r0, r7, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	str r0, [r5, #0x2c]
 _021E65FC:
@@ -1698,7 +1698,7 @@ _021E6608:
 	ldr r0, [r5, #0x50]
 	cmp r0, #0
 	beq _021E6614
-	bl DestroySysTask
+	bl SysTask_Destroy
 	str r6, [r5, #0x50]
 _021E6614:
 	add r4, r4, #1
@@ -1711,11 +1711,11 @@ _021E6614:
 
 	thumb_func_start ov62_021E6620
 ov62_021E6620: ; 0x021E6620
-	ldr r3, _021E6628 ; =sub_02025224
+	ldr r3, _021E6628 ; =TouchscreenHitbox_FindRectAtTouchNew
 	ldr r0, _021E662C ; =_021E6650
 	bx r3
 	nop
-_021E6628: .word sub_02025224
+_021E6628: .word TouchscreenHitbox_FindRectAtTouchNew
 _021E662C: .word _021E6650
 	thumb_func_end ov62_021E6620
 

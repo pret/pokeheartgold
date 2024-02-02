@@ -6,20 +6,20 @@
 static void BattleFinger_Update(SysTask *task, void *data);
 static void ov12_0226BEB8(BattleFinger *finger);
 
-void BattleFinger_LoadResources(void *a0, void *a1, HeapID heapId, void *a3, u32 character, u32 pal, u32 cell, u32 animation) {
+void BattleFinger_LoadResources(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, HeapID heapId, PaletteData *plttData, u32 character, u32 pal, u32 cell, u32 animation) {
     NARC *narc = NARC_New(NARC_a_1_6_4, heapId);
-    sub_0200D68C(a3, 3, a0, a1, narc, 1, 0, 1, 2, pal);
-    SpriteRenderer_LoadCharResObjFromOpenNarc(a0, a1, narc, 0, 0, 2, character);
-    SpriteRenderer_LoadCellResObjFromOpenNarc(a0, a1, narc, 2, 0, cell);
-    SpriteRenderer_LoadAnimResObjFromOpenNarc(a0, a1, narc, 3, 0, animation);
+    sub_0200D68C(plttData, PLTTBUF_SUB_OBJ, renderer, gfxHandler, narc, 1, 0, 1, 2, pal);
+    SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 0, 0, 2, character);
+    SpriteRenderer_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, 2, 0, cell);
+    SpriteRenderer_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, narc, 3, 0, animation);
     NARC_Delete(narc);
 }
 
-void BattleFinger_FreeResources(void *a0, u32 character, u32 pal, u32 cell, u32 animation) {
-    SpriteGfxHandler_UnloadCharObjById(a0, character);
-    SpriteGfxHandler_UnloadPlttObjById(a0, pal);
-    SpriteGfxHandler_UnloadCellObjById(a0, cell);
-    SpriteGfxHandler_UnloadAnimObjById(a0, animation);
+void BattleFinger_FreeResources(SpriteGfxHandler *gfxHandler, u32 character, u32 pal, u32 cell, u32 animation) {
+    SpriteGfxHandler_UnloadCharObjById(gfxHandler, character);
+    SpriteGfxHandler_UnloadPlttObjById(gfxHandler, pal);
+    SpriteGfxHandler_UnloadCellObjById(gfxHandler, cell);
+    SpriteGfxHandler_UnloadAnimObjById(gfxHandler, animation);
 }
 
 
@@ -36,7 +36,7 @@ static const UnkTemplate_0200D748 ov12_0226EBD4 = {
     .vramTransfer = 0
 };
 
-BattleFinger *BattleFinger_New(void *a0, void *a1, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation, u32 a7, u32 a8) {
+BattleFinger *BattleFinger_New(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation, u32 spritePriority, u32 bgPriority) {
     BattleFinger *finger;
     UnkTemplate_0200D748 unkStruct = ov12_0226EBD4;
 
@@ -44,17 +44,17 @@ BattleFinger *BattleFinger_New(void *a0, void *a1, HeapID heapId, u32 character,
     unkStruct.resIdList[1] = pal;
     unkStruct.resIdList[2] = cell;
     unkStruct.resIdList[3] = animation;
-    unkStruct.spritePriority = a7;
-    unkStruct.bgPriority = a8;
+    unkStruct.spritePriority = spritePriority;
+    unkStruct.bgPriority = bgPriority;
 
     finger = AllocFromHeap(heapId, sizeof(BattleFinger));
     MI_CpuFill8(finger, 0, sizeof(BattleFinger));
 
-    finger->unk0 = SpriteRenderer_LoadResourcesAndCreateSprite(a0, a1, &unkStruct);
+    finger->unk0 = SpriteRenderer_LoadResourcesAndCreateSprite(renderer, gfxHandler, &unkStruct);
     UnkImageStruct_SetSpriteVisibleFlag(finger->unk0, 0);
 
     finger->unk14 = 0xC0000;
-    finger->task = CreateSysTask(BattleFinger_Update, finger, 0x3e7);
+    finger->task = SysTask_CreateOnMainQueue(BattleFinger_Update, finger, 0x3e7);
 
     return finger;
 }
@@ -62,7 +62,7 @@ BattleFinger *BattleFinger_New(void *a0, void *a1, HeapID heapId, u32 character,
 //BattleFinger_Delete
 void BattleFinger_Delete(BattleFinger *finger) {
     sub_0200D9DC(finger->unk0);
-    DestroySysTask(finger->task);
+    SysTask_Destroy(finger->task);
     FreeToHeap(finger);
 }
 

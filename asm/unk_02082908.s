@@ -2203,7 +2203,7 @@ _02083AFE:
 	str r0, [r4, r1]
 	add r0, r1, #0
 	ldr r0, [r4, r0]
-	bl sub_0201F988
+	bl SysTask_GetData
 	mov r1, #0xd2
 	lsl r1, r1, #2
 	ldr r1, [r6, r1]
@@ -2583,7 +2583,7 @@ _02083DE6:
 	mov r2, #0
 	mov r3, #0x12
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r7, r0, #0
 	ldr r0, [sp, #0x48]
 	ldr r0, [r0, #0x1c]
@@ -2771,7 +2771,7 @@ _02083F70:
 	add r2, r7, #0
 	add r3, r4, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl CopyWindowToVram
 	add sp, #0x10
@@ -3598,7 +3598,7 @@ _020845CE:
 	ldr r2, [sp, #0x28]
 	mov r1, #0
 	add r3, r5, r3
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _0208461A:
 	add r4, r4, #1
 _0208461C:
@@ -3634,7 +3634,7 @@ sub_02084640: ; 0x02084640
 	add r3, r5, #0
 	add r4, r0, #0
 	str r5, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r4, #0xc]
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
@@ -4877,7 +4877,7 @@ sub_02084FCC: ; 0x02084FCC
 	mov r0, #0xd3
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _02085038
 	mov r0, #0x56

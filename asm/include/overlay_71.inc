@@ -46,11 +46,11 @@
 .public BufferPlayersName
 .public BufferBoxMonNickname
 .public StringExpandPlaceholders
-.public CreateSysTask
-.public sub_0200E33C
-.public sub_0200E358
-.public sub_0200E374
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_CreateOnPrintQueue
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx2
 .public sub_0200E948
 .public ClearFrameAndWindow2
@@ -86,8 +86,8 @@
 .public Draw3dModel
 .public Bind3dModelSet
 .public AllocAndLoad3dTexResources
-.public sub_0201F984
-.public sub_0201F988
+.public SysTask_SetFunc
+.public SysTask_GetData
 .public sub_0201F990
 .public GF_SinDegNoWrap
 .public GF_CosDegNoWrap
@@ -123,7 +123,7 @@
 .public Sprite_GetMatrixPtr
 .public Set2dSpriteAnimSeqNo
 .public Sprite_SetPriority
-.public sub_02024B68
+.public Sprite_IsCellAnimationFinished
 .public GF_AssertFail
 .public String_New
 .public String_Delete

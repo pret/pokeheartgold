@@ -8,10 +8,10 @@
 .public PaletteData_LoadPalette
 .public PaletteData_LoadFromNarc
 .public PaletteData_LoadNarc
-.public sub_020032A4
-.public sub_0200398C
-.public sub_02003B50
-.public sub_02003EA4
+.public PaletteData_LoadPaletteSlotFromHardware
+.public PaletteData_PushTransparentBuffers
+.public PaletteData_SetAutoTransparent
+.public PaletteData_BlendPalettes
 .public PlaySE
 .public StopSE
 .public IsSEPlaying
@@ -65,8 +65,8 @@
 .public sub_0200E060
 .public sub_0200E0FC
 .public sub_0200E2B0
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public sub_0200E3D8
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
@@ -117,7 +117,7 @@
 .public SetLCRNGSeed
 .public LCRandom
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized3
+.public AddTextPrinterParameterizedWithColorAndSpacing
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks
@@ -135,8 +135,8 @@
 .public Camera_PushLookAtToNNSGlb
 .public Camera_SetPerspectiveClippingPlane
 .public Camera_Init_FromTargetAndPos
-.public sub_02025364
-.public sub_0202539C
+.public System_GetTouchHeldCoords
+.public TouchscreenHitbox_FindHitboxAtPoint
 .public GF_AssertFail
 .public String_Delete
 .public Thunk_G3X_Reset

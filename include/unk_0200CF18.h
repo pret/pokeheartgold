@@ -8,7 +8,7 @@
 #include "palette.h"
 
 typedef struct UnkStruct_0200D2B4 {
-    int unk_00;
+    int resourceSet;
     s16 x;
     s16 y;
     s16 z;
@@ -103,8 +103,8 @@ BOOL SpriteRenderer_LoadCharResObjFromNarcId(SpriteRenderer* renderer, SpriteGfx
 BOOL SpriteRenderer_LoadCharResObjFromOpenNarc(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, int vram, int resId);
 s8 SpriteRenderer_LoadPlttResObjFromNarcId(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId SpriteRenderer_LoadPlttResObjFromNarcId, int fileId, BOOL compressed, int pltt_num, int vram, int resId);
 s8 SpriteRenderer_LoadPlttResObjFromOpenNarc(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* SpriteRenderer_LoadPlttResObjFromNarcId, int fileId, BOOL compressed, int pltt_num, int vram, int resId);
-u8 sub_0200D644(PaletteData* plttData, u32 bufferId, SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int pltt_num, int vram, int resId);
-u8 sub_0200D68C(PaletteData* plttData, u32 bufferId, SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, int pltt_num, int vram, int resId);
+u8 sub_0200D644(PaletteData* plttData, PaletteBufferId bufferId, SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int pltt_num, int vram, int resId);
+u8 sub_0200D68C(PaletteData* plttData, PaletteBufferId bufferId, SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, int pltt_num, int vram, int resId);
 BOOL SpriteRenderer_LoadCellResObjFromNarcId(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int resId);
 BOOL SpriteRenderer_LoadCellResObjFromOpenNarc(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NARC* narc, int fileId, BOOL compressed, int resId);
 BOOL SpriteRenderer_LoadAnimResObjFromNarcId(SpriteRenderer* renderer, SpriteGfxHandler* gfxHandler, NarcId narcId, int fileId, BOOL compressed, int resId);
@@ -155,7 +155,7 @@ void UnkImageStruct_SetSpriteDrawPriority(UnkImageStruct* unk, u16 a1);
 u16 thunk_Sprite_GetDrawPriority(Sprite* sprite);
 u16 UnkImageStruct_GetSpriteDrawPriority(UnkImageStruct* unk);
 void Sprite_SetPositionXY(Sprite* sprite, s16 x, s16 y);
-void UnkImageStruct_SetSpritePositionXY(UnkImageStruct*, s16, s16);
+void UnkImageStruct_SetSpritePositionXY(UnkImageStruct* sprite, s16 x, s16 y);
 void Sprite_SetPositionXY_CustomScreenYOffset(Sprite* sprite, s16 x, s16 y, fx32 yOffset);
 void UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset(UnkImageStruct* a0, s16 x, s16 y, fx32 yOffset);
 void Sprite_GetPositionXY(Sprite* sprite, s16* x, s16* y);

@@ -60,9 +60,9 @@
 .public BufferIntegerAsString
 .public BufferMonthNameAbbr
 .public StringExpandPlaceholders
-.public CreateSysTask
-.public sub_0200E33C
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
 .public sub_0200E5D4
@@ -87,11 +87,11 @@
 .public sub_02014A8C
 .public sub_02014AA0
 .public sub_02014AB0
-.public sub_0201660C
-.public sub_02016624
-.public sub_020166FC
-.public sub_020168F4
-.public sub_020169CC
+.public YesNoPrompt_Create
+.public YesNoPrompt_Destroy
+.public YesNoPrompt_InitFromTemplate
+.public YesNoPrompt_HandleInput
+.public YesNoPrompt_Reset
 .public Main_SetVBlankIntrCB
 .public sub_0201A4B0
 .public Sys_SetSleepDisableFlag
@@ -137,7 +137,7 @@
 .public LCRandom
 .public ResetAllTextPrinters
 .public TextPrinterCheckActive
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GF_RunVramTransferTasks
 .public sub_020215A0
 .public sub_020215C0
@@ -173,7 +173,7 @@
 .public Sprite_SetDrawPriority
 .public sub_02024B1C
 .public sub_02024B34
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New

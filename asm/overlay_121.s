@@ -186,7 +186,7 @@ _021E5A5A:
 	add r0, r4, #0
 	add r0, #0x94
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0x8b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -264,7 +264,7 @@ ov121_021E5AEC: ; 0x021E5AEC
 	add r0, r5, #0
 	bl ov121_021E60D4
 	mov r0, #0x9e
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	add r1, r5, #0
 	add r1, #0x94
 	str r0, [r1]
@@ -484,7 +484,7 @@ ov121_021E5D08: ; 0x021E5D08
 	add r4, r0, #0
 	add r0, #0x94
 	ldr r0, [r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _021E5D1E
 	cmp r0, #2
@@ -494,7 +494,7 @@ _021E5D1E:
 	add r0, r4, #0
 	add r0, #0x94
 	ldr r0, [r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	bl ov121_021E6F6C
 	ldr r0, _021E5D58 ; =0x00000233
 	mov r1, #4
@@ -506,7 +506,7 @@ _021E5D3A:
 	add r0, r4, #0
 	add r0, #0x94
 	ldr r0, [r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	bl ov121_021E6F6C
 	ldr r0, _021E5D58 ; =0x00000233
 	mov r1, #1
@@ -1322,7 +1322,7 @@ _021E63A2:
 	mov r0, #0x8b
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -2311,7 +2311,7 @@ _021E6B0E:
 	str r0, [sp, #0xc]
 	ldr r2, [r4, #0x6c]
 	add r0, r4, #4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #2
@@ -2338,7 +2338,7 @@ _021E6B0E:
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x28]
 	ldr r2, [r4, #0x6c]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #1
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2375,7 +2375,7 @@ _021E6B0E:
 	ldr r2, [r4, #0x6c]
 	mov r1, #0
 	sub r3, r3, r6
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x1c]
 	add r2, r4, r0
@@ -2466,7 +2466,7 @@ ov121_021E6C5C: ; 0x021E6C5C
 	add r0, #0x44
 	add r2, r4, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add r5, #0x44
@@ -2501,7 +2501,7 @@ ov121_021E6CA4: ; 0x021E6CA4
 	add r0, #0x34
 	add r2, r4, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add r5, #0x34
@@ -2570,7 +2570,7 @@ ov121_021E6CEC: ; 0x021E6CEC
 	add r0, #0x54
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add r5, #0x54
@@ -2612,7 +2612,7 @@ ov121_021E6D80: ; 0x021E6D80
 	add r0, #0x54
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add r5, #0x54
@@ -2666,7 +2666,7 @@ _021E6DF6:
 	add r0, #0x24
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #0xff
@@ -2679,7 +2679,7 @@ _021E6DF6:
 	add r2, r5, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl String_Delete
 	add r0, r5, #0
@@ -2722,7 +2722,7 @@ ov121_021E6E68: ; 0x021E6E68
 	add r0, #0x54
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add r5, #0x54
@@ -2794,7 +2794,7 @@ _021E6F0C:
 	add r0, #0x94
 	ldr r0, [r0]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add r0, r4, #0
 	bl ov121_021E6CEC
 	bl ov121_021E6F58

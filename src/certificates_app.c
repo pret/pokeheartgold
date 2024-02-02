@@ -174,7 +174,7 @@ static void CertificatesApp_FreeSpriteRenderer(CertificatesApp_Data *data);
 static void ov78_021E636C(CertificatesApp_Data *data);
 static void ov78_021E652C(CertificatesApp_Data *data);
 static void ov78_021E656C(Sprite *sprite, void *unkBuffer, u32 unkBufferSize, u32 srcOffset);
-static void ov78_021E65BC(Sprite *sprite, u32 narcMemberNum, u32 a2, HeapID heapId);
+static void ov78_021E65BC(Sprite *sprite, s32 narcMemberNum, u8 a2, HeapID heapId);
 static void ov78_021E6664(Sprite *sprite, PlayerProfile *profile, HeapID heapId);
 static u32 ov78_021E6688(int species, int form, int gender);
 static void ov78_021E66D4(Sprite *sprite, Pokemon *pokemon, HeapID heapId, u32 a3);
@@ -533,8 +533,8 @@ static void ov78_021E6068(CertificatesApp_Data *data) {
 
     BufferPlayersName(data->msgFmt, 0, data->profile);
     StringExpandPlaceholders(data->msgFmt, string, tempString);
-    AddTextPrinterParameterized2(&data->window1, 0, string, x1, y1, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
-    AddTextPrinterParameterized2(&data->window2, 0, string, x1, y1, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&data->window1, 0, string, x1, y1, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&data->window2, 0, string, x1, y1, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     String_Delete(tempString);
 
     u32 msgNum;
@@ -546,13 +546,13 @@ static void ov78_021E6068(CertificatesApp_Data *data) {
         msgNum = msg_0004_00005;
     }
     ReadMsgDataIntoString(data->msgData, msgNum, string);
-    AddTextPrinterParameterized2(&data->window1, 0, string, x2, y2, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
-    AddTextPrinterParameterized2(&data->window2, 0, string, x2, y2, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&data->window1, 0, string, x2, y2, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&data->window2, 0, string, x2, y2, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 
     if (data->certificateId != CERTIFICATE_SHINY_LEAVES) {
         ReadMsgDataIntoString(data->msgData, msg_0004_00003, string);
-        AddTextPrinterParameterized2(&data->window1, 0, string, 138, 144, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
-        AddTextPrinterParameterized2(&data->window2, 0, string, 138, 144, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&data->window1, 0, string, 138, 144, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&data->window2, 0, string, 138, 144, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     }
 
     String_Delete(string);
@@ -679,23 +679,21 @@ static void ov78_021E656C(Sprite *sprite, void *unkBuffer, u32 unkBufferSize, u3
     GXS_LoadOBJ(unkBuffer, (u32)((void*)NNS_G2dGetImageLocation(proxy, NNS_G2D_VRAM_TYPE_2DSUB) + srcOffset), unkBufferSize);
 }
 
-// https://decomp.me/scratch/DGOQR
-#ifdef NONMATCHING
-static void ov78_021E65BC(Sprite *sprite, u32 narcMemberNum, u32 a2, HeapID heapId) {
+void ov78_021E65BC(Sprite *sprite, s32 narcMemberNum, u8 a2, HeapID heapId) {
     thunk_Set2dSpriteVisibleFlag(sprite, FALSE);
 
     NARC *narc = NARC_New(NARC_data_mmodel_mmodel, heapId);
     NNSG3dResFileHeader *header = NARC_AllocAndReadWholeMember(narc, narcMemberNum, heapId);
     NNSG3dResTex *tex = NNS_G3dGetTex(header);
 
-    void *address = (void*)tex + tex->texInfo.ofsTex;
+    const void *address = NNS_G3dGetTexData(tex);
     void *buffer = AllocFromHeapAtEnd(heapId, 0x200);
     sub_020145B4(address + (a2 * 0x200), 4, 0, 0, 4, 4, buffer);
     ov78_021E656C(sprite, buffer, 0x200, 0);
     FreeToHeap(buffer);
 
     Sprite_GetVramType(sprite);
-    address = (void*)tex + tex->plttInfo.ofsPlttData;
+    address = NNS_G3dGetPlttData(tex);
     DC_FlushRange(address, 0x20);
     sub_02024B34(sprite);
     GX_LoadOBJPltt(address, 0x40, 0x20);
@@ -706,78 +704,6 @@ static void ov78_021E65BC(Sprite *sprite, u32 narcMemberNum, u32 a2, HeapID heap
 
     thunk_Set2dSpriteVisibleFlag(sprite, TRUE);
 }
-#else
-static asm void ov78_021E65BC(Sprite *sprite, u32 narcMemberNum, u32 a2, HeapID heapId) {
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x18
-	add r5, r1, #0
-	add r4, r3, #0
-	mov r1, #0
-	add r6, r0, #0
-	str r2, [sp, #0xc]
-	bl thunk_Set2dSpriteVisibleFlag
-	mov r0, #0x51
-	add r1, r4, #0
-	bl NARC_New
-	add r1, r5, #0
-	add r2, r4, #0
-	str r0, [sp, #0x10]
-	bl NARC_AllocAndReadWholeMember
-	str r0, [sp, #0x14]
-	bl NNS_G3dGetTex
-	add r5, r0, #0
-	ldr r0, [r5, #0x14]
-	mov r1, #2
-	add r7, r5, r0
-	add r0, r4, #0
-	lsl r1, r1, #8
-	bl AllocFromHeapAtEnd
-	mov r1, #4
-	str r1, [sp]
-	mov r2, #0
-	add r4, r0, #0
-	str r1, [sp, #4]
-	str r4, [sp, #8]
-	ldr r0, [sp, #0xc]
-	add r3, r2, #0
-	lsl r0, r0, #9
-	add r0, r7, r0
-	bl sub_020145B4
-	mov r2, #2
-	add r0, r6, #0
-	add r1, r4, #0
-	lsl r2, r2, #8
-	mov r3, #0
-	bl ov78_021E656C
-	add r0, r4, #0
-	bl FreeToHeap
-	add r0, r6, #0
-	bl Sprite_GetVramType
-	ldr r4, [r5, #0x38]
-	mov r1, #0x20
-	add r0, r5, r4
-	bl DC_FlushRange
-	add r0, r6, #0
-	bl sub_02024B34
-	add r0, r5, r4
-	mov r1, #0x40
-	mov r2, #0x20
-	bl GX_LoadOBJPltt
-	add r0, r5, r4
-	mov r1, #0x40
-	mov r2, #0x20
-	bl GXS_LoadOBJPltt
-	ldr r0, [sp, #0x14]
-	bl FreeToHeap
-	ldr r0, [sp, #0x10]
-	bl NARC_Delete
-	add r0, r6, #0
-	mov r1, #1
-	bl thunk_Set2dSpriteVisibleFlag
-	add sp, #0x18
-	pop {r3, r4, r5, r6, r7, pc}
-}
-#endif
 
 static void ov78_021E6664(Sprite *sprite, PlayerProfile *profile, HeapID heapId) {
     u32 narcMemberNum = (PlayerProfile_GetTrainerGender(profile) == PLAYER_GENDER_MALE) ? MMODEL_HERO : MMODEL_HEROINE;

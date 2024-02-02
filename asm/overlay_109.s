@@ -955,7 +955,7 @@ ov109_021E5FFC: ; 0x021E5FFC
 	add r5, r0, #0
 	ldr r0, _021E6050 ; =ov109_021E7A18
 	add r6, r1, #0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r4, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -1420,7 +1420,7 @@ ov109_021E638C: ; 0x021E638C
 	add r5, r0, #0
 	ldr r0, _021E63E0 ; =ov109_021E7A18
 	add r6, r1, #0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r4, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -2685,7 +2685,7 @@ _021E6D90:
 	cmp r6, #3
 	blt _021E6D90
 	ldr r0, [r7]
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	add r7, #0x8c
 	str r0, [r7]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2711,7 +2711,7 @@ _021E6DC6:
 	blt _021E6DC6
 	add r6, #0x8c
 	ldr r0, [r6]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov109_021E6DBC
 
@@ -3411,7 +3411,7 @@ _021E7342:
 	add r0, r5, #0
 	ldr r2, [r5, #0x2c]
 	add r0, #0x70
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	add r0, #0x70
 	bl ScheduleWindowCopyToVram
@@ -3473,7 +3473,7 @@ _021E73B2:
 	ldr r2, [r4, #0x30]
 	add r0, #0x50
 	mov r1, #4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	add r0, #0x50
 	bl ScheduleWindowCopyToVram
@@ -3520,7 +3520,7 @@ _021E7412:
 	ldr r2, [r2, #0x34]
 	add r0, #0x60
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	b _021E7462
 _021E7440:
 	mov r1, #0
@@ -3535,7 +3535,7 @@ _021E7440:
 	ldr r2, [r2, #0x34]
 	add r0, #0x60
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r1, r5, #0
 	add r1, #0x21
 	strb r0, [r1]
@@ -3921,7 +3921,7 @@ ov109_021E76F0: ; 0x021E76F0
 	strb r1, [r0, #0x12]
 	ldr r0, [r4]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add sp, #0x14
 	pop {r4, r5, pc}
 	thumb_func_end ov109_021E76F0
@@ -3932,7 +3932,7 @@ ov109_021E7748: ; 0x021E7748
 	add r5, r0, #0
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	add r4, r0, #0
 	cmp r4, #1
 	beq _021E7760
@@ -3951,7 +3951,7 @@ _021E776E:
 	add r0, r5, #0
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl sub_020169C0
+	bl YesNoPrompt_IsInTouchMode
 	ldr r1, [r5, #0xc]
 	cmp r0, r1
 	beq _021E7780
@@ -3960,7 +3960,7 @@ _021E7780:
 	add r0, r5, #0
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r5, #0
 	mov r1, #0
 	bl ov109_021E74D4
@@ -4010,7 +4010,7 @@ ov109_021E77D4: ; 0x021E77D4
 	add r1, r5, #0
 	mov r2, #0
 	str r4, [r5]
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	add r0, r4, #0
 	mov r1, #1
 	bl ov109_021E7388
@@ -4033,7 +4033,7 @@ ov109_021E7810: ; 0x021E7810
 	ldr r0, [r4]
 	add r0, #0xa8
 	ldr r0, [r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _021E784C
 	ldr r0, [r4]
@@ -4051,7 +4051,7 @@ ov109_021E7810: ; 0x021E7810
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _021E784C:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

@@ -63,8 +63,8 @@
 .public GetWindowX
 .public GetWindowY
 .public ScheduleBgTilemapBufferTransfer
-.public sub_0201F988
-.public AddTextPrinterParameterized2
+.public SysTask_GetData
+.public AddTextPrinterParameterizedWithColor
 .public GfGfx_EngineBTogglePlanes
 .public SpriteList_Delete
 .public sub_0202457C
@@ -79,10 +79,10 @@
 .public Get2dSpriteCurrentAnimSeqNo
 .public Sprite_SetPriority
 .public sub_02024AA8
-.public sub_02024B68
+.public Sprite_IsCellAnimationFinished
 .public sub_02024B78
-.public sub_02025204
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchHeld
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_Delete

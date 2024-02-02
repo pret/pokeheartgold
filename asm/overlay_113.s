@@ -701,7 +701,7 @@ _021E5DF6:
 	add r0, r4, #0
 	ldr r2, [r4, #0x50]
 	add r0, #0x98
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	add r0, #0x78
 	bl ScheduleWindowCopyToVram
@@ -754,7 +754,7 @@ ov113_021E5E64: ; 0x021E5E64
 	ldr r2, [r4, #0x54]
 	add r0, #0x68
 	mov r1, #4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r4, #0x68
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
@@ -766,12 +766,12 @@ _021E5EC0: .word 0x00070F00
 
 	thumb_func_start ov113_021E5EC4
 ov113_021E5EC4: ; 0x021E5EC4
-	ldr r3, _021E5ECC ; =sub_02024B68
+	ldr r3, _021E5ECC ; =Sprite_IsCellAnimationFinished
 	add r0, #0xb8
 	ldr r0, [r0]
 	bx r3
 	.balign 4, 0
-_021E5ECC: .word sub_02024B68
+_021E5ECC: .word Sprite_IsCellAnimationFinished
 	thumb_func_end ov113_021E5EC4
 
 	thumb_func_start ov113_021E5ED0
@@ -884,7 +884,7 @@ ov113_021E5F94: ; 0x021E5F94
 	add r5, r0, #0
 	ldr r0, _021E5FBC ; =ov113_021E6B82
 	add r4, r1, #0
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	add r1, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -1262,7 +1262,7 @@ ov113_021E6274: ; 0x021E6274
 	str r1, [sp, #0xc]
 	add r1, r2, #0
 	add r2, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0
@@ -1825,7 +1825,7 @@ _021E6728:
 	cmp r6, #4
 	blt _021E6728
 	ldr r0, [r7]
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	add r7, #0xa8
 	str r0, [r7]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1851,7 +1851,7 @@ _021E675E:
 	blt _021E675E
 	add r6, #0xa8
 	ldr r0, [r6]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov113_021E6754
 

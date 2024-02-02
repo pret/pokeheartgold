@@ -1418,7 +1418,7 @@ _0200685C:
 	ldr r0, _02006880 ; =sub_02006884
 	add r1, r4, #0
 	str r5, [r4]
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #4]
 	str r0, [r6]
 	pop {r4, r5, r6, pc}
@@ -1491,10 +1491,10 @@ sub_020068F8: ; 0x020068F8
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _0200691A
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r5, #0
 	bl FreeToHeap
 _0200691A:

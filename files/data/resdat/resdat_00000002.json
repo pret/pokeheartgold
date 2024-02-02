@@ -1,0 +1,25 @@
+{
+  "kind": "char",
+  "graphics": [
+    {
+      "narc": 171,
+      "file": 1,
+      "compressed": false,
+      "id": 0,
+      "extra": [
+        1,
+        171
+      ]
+    },
+    {
+      "narc": 171,
+      "file": 1,
+      "compressed": false,
+      "id": 1,
+      "extra": [
+        2,
+        171
+      ]
+    }
+  ]
+}

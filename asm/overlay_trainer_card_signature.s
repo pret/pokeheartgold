@@ -513,7 +513,7 @@ _021E84DC:
 	mov r1, #msg_0252_00009 ; Sign your autograph!
 	bl ReadMsgDataIntoString
 	mov r0, #0x27
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	ldr r1, _021E8564 ; =0x00005C9C
 	mov r2, #5
 	str r0, [r7, r1]
@@ -535,7 +535,7 @@ ov52_021E8568: ; 0x021E8568
 	add r6, r0, #0
 	ldr r0, _021E859C ; =0x00005C9C
 	ldr r0, [r6, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r4, #0
 	add r5, r6, #0
 _021E8578:
@@ -1062,7 +1062,7 @@ ov52_021E8994: ; 0x021E8994
 	lsr r3, r4, #0x1f
 	add r3, r4, r3
 	asr r3, r3, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r5, #0xc]
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1223,7 +1223,7 @@ _021E8A8A:
 	add r0, r5, r0
 	mov r1, #1
 	asr r3, r3, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0
 	str r0, [sp, #0x14]
 	mov r0, #0x9d
@@ -1322,7 +1322,7 @@ ov52_021E8BDC: ; 0x021E8BDC
 	sub sp, #0x44
 	add r4, r0, #0
 	ldr r0, _021E8CA4 ; =ov52_021E94BA
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r1, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -1358,7 +1358,7 @@ _021E8C22:
 	bl ov52_021E8CBC
 _021E8C30:
 	ldr r0, _021E8CB0 ; =ov52_021E94B2
-	bl sub_02025204
+	bl TouchscreenHitbox_FindRectAtTouchHeld
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -1531,7 +1531,7 @@ ov52_021E8D64: ; 0x021E8D64
 	strb r2, [r0, #0x11]
 	add r0, r1, #0
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add sp, #0x14
 	pop {pc}
 	thumb_func_end ov52_021E8D64
@@ -1573,7 +1573,7 @@ ov52_021E8DC4: ; 0x021E8DC4
 	ldr r0, _021E8E5C ; =0x00005C9C
 	add r4, r1, #0
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _021E8DDE
 	cmp r0, #2
@@ -1593,7 +1593,7 @@ _021E8DDE:
 	bl ClearFrameAndWindow2
 	ldr r0, _021E8E5C ; =0x00005C9C
 	ldr r0, [r5, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #1
@@ -1624,7 +1624,7 @@ _021E8E20:
 	bl ClearFrameAndWindow2
 	ldr r0, _021E8E5C ; =0x00005C9C
 	ldr r0, [r5, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 _021E8E46:
 	ldr r1, _021E8E60 ; =0x0000432C
 	mov r0, #0xf0
@@ -1648,7 +1648,7 @@ ov52_021E8E64: ; 0x021E8E64
 	ldr r0, _021E8ED8 ; =0x00005C9C
 	add r4, r1, #0
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _021E8E7C
 	cmp r0, #2
@@ -1664,7 +1664,7 @@ _021E8E7C:
 	bl ClearFrameAndWindow2
 	ldr r0, _021E8ED8 ; =0x00005C9C
 	ldr r0, [r5, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r5, #0
 	mov r1, #0
 	bl ov52_021E9488
@@ -1688,7 +1688,7 @@ _021E8EB4:
 	bl ClearFrameAndWindow2
 	ldr r0, _021E8ED8 ; =0x00005C9C
 	ldr r0, [r5, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r5, #0
 	mov r1, #0
 	bl ov52_021E9488

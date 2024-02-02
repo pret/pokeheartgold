@@ -70,12 +70,12 @@
 .public ListMenuItems_New
 .public ListMenuItems_Delete
 .public ListMenuItems_AppendFromMsgData
-.public sub_0201660C
-.public sub_02016624
-.public sub_020166FC
-.public sub_020168F4
-.public sub_020169C0
-.public sub_020169CC
+.public YesNoPrompt_Create
+.public YesNoPrompt_Destroy
+.public YesNoPrompt_InitFromTemplate
+.public YesNoPrompt_HandleInput
+.public YesNoPrompt_IsInTouchMode
+.public YesNoPrompt_Reset
 .public sub_020183F0
 .public sub_02018410
 .public sub_02019BA4
@@ -109,7 +109,7 @@
 .public ScheduleBgTilemapBufferTransfer
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks

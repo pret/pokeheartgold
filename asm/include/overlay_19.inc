@@ -19,8 +19,8 @@
 .public BufferPlayersName
 .public BufferIntegerAsString
 .public StringExpandPlaceholders
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public sub_020183F0
 .public sub_02018410
 .public AllocFromHeap
@@ -38,8 +38,8 @@
 .public ClearWindowTilemapAndCopyToVram
 .public FillWindowPixelBuffer
 .public ScheduleBgTilemapBufferTransfer
-.public sub_0201F988
-.public AddTextPrinterParameterized2
+.public SysTask_GetData
+.public AddTextPrinterParameterizedWithColor
 .public GfGfx_EngineBTogglePlanes
 .public sub_0202457C
 .public Sprite_Delete
@@ -47,8 +47,8 @@
 .public Set2dSpriteAnimActiveFlag
 .public Set2dSpriteAnimSeqNo
 .public Sprite_ResetAnimCtrlState
-.public sub_02024B68
-.public sub_02025224
+.public Sprite_IsCellAnimationFinished
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public String_New
 .public String_Delete
 .public CopyU16ArrayToString

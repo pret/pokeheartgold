@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_SYSTEM_H
 #define POKEHEARTGOLD_SYSTEM_H
 
-#include "unk_0201F79C.h"
+#include "sys_task.h"
 #include "heap.h"
 
 #define BUTTONMODE_NORMAL         0
@@ -25,13 +25,13 @@ struct System {
     void *hBlankIntrArg;
     void (*unk10)(void);
     void (*unk14)(void);
-    UNK_0201F79C *unk18;
-    UNK_0201F79C *unk1C;
-    UNK_0201F79C *unk20;
-    UNK_0201F79C *unk24;
+    SysTaskQueue *mainTaskQueue;
+    SysTaskQueue *vblankTaskQueue;
+    SysTaskQueue *vwaitTaskQueue;
+    SysTaskQueue *printTaskQueue;
     u32 *unk28;
     u32 vblankCounter;
-    u32 unk30;
+    u32 frameCounter;
     int buttonMode;
     int heldKeysRaw;
     int newKeysRaw;

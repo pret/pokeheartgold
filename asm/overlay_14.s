@@ -109,7 +109,7 @@ _021E59C6:
 	bl ov14_021E5A14
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x18]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x14]
 	bl DoScheduledBgGpuUpdates
@@ -737,7 +737,7 @@ ov14_021E5ED0: ; 0x021E5ED0
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0xa
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	ldr r2, [r4, #0x34]
 	ldr r1, _021E5EE4 ; =0x00000434
 	str r0, [r2, r1]
@@ -750,12 +750,12 @@ _021E5EE4: .word 0x00000434
 ov14_021E5EE8: ; 0x021E5EE8
 	ldr r1, [r0, #0x34]
 	ldr r0, _021E5EF4 ; =0x00000434
-	ldr r3, _021E5EF8 ; =sub_02016624
+	ldr r3, _021E5EF8 ; =YesNoPrompt_Destroy
 	ldr r0, [r1, r0]
 	bx r3
 	nop
 _021E5EF4: .word 0x00000434
-_021E5EF8: .word sub_02016624
+_021E5EF8: .word YesNoPrompt_Destroy
 	thumb_func_end ov14_021E5EE8
 
 	thumb_func_start ov14_021E5EFC
@@ -795,7 +795,7 @@ ov14_021E5EFC: ; 0x021E5EFC
 	ldr r0, [r0, #0x34]
 	add r1, sp, #0
 	ldr r0, [r0, r4]
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -6790,7 +6790,7 @@ ov14_021E8BA4: ; 0x021E8BA4
 _021E8BF4:
 	add r0, sp, #0xc
 	add r1, sp, #8
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	cmp r0, #0
 	bne _021E8C86
 	add r0, r5, #0
@@ -7001,7 +7001,7 @@ _021E8D84:
 _021E8DA8:
 	add r0, sp, #8
 	add r1, sp, #4
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	cmp r0, #0
 	bne _021E8EA8
 	add r1, r4, #0
@@ -7296,7 +7296,7 @@ _021E900A:
 _021E900C:
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	cmp r0, #0
 	bne _021E90B2
 	add r0, r5, #0
@@ -8715,7 +8715,7 @@ _021E9AA0:
 _021E9ABA:
 	add r0, sp, #0xc
 	add r1, sp, #8
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	cmp r0, #0
 	ldr r0, [r4, #0x34]
 	bne _021E9B68
@@ -8991,7 +8991,7 @@ _021E9CDE:
 _021E9CF8:
 	add r0, sp, #0xc
 	add r1, sp, #8
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	cmp r0, #0
 	ldr r0, _021E9F0C ; =0x0000044A
 	bne _021E9D78
@@ -10090,7 +10090,7 @@ _021EA56A:
 _021EA588:
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	cmp r0, #0
 	bne _021EA608
 	ldr r1, [r4, #0x34]
@@ -10408,7 +10408,7 @@ _021EA7EA:
 _021EA7FE:
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	cmp r0, #0
 	bne _021EA87C
 	ldr r1, [r4, #0x34]
@@ -11125,7 +11125,7 @@ _021EAD80:
 _021EADA4:
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	cmp r0, #0
 	bne _021EAE60
 	ldr r1, [r4, #0x34]
@@ -11490,7 +11490,7 @@ _021EB08C:
 	ldr r0, _021EB0E0 ; =ov14_021E59AC
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	ldr r1, [r4, #0x34]
 	str r0, [r1]
 	mov r0, #1
@@ -11514,7 +11514,7 @@ ov14_021EB0E4: ; 0x021EB0E4
 	bl ov14_021E6048
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl ov14_021F6B10
 	add r0, r4, #0
@@ -11585,7 +11585,7 @@ ov14_021EB18C: ; 0x021EB18C
 	add r4, r0, #0
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x18]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _021EB1A0
 	ldr r0, [r4, #0x30]
@@ -11669,7 +11669,7 @@ ov14_021EB218: ; 0x021EB218
 	ldr r1, [r4, #0x34]
 	ldr r0, _021EB26C ; =0x00000434
 	ldr r0, [r1, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _021EB230
 	cmp r0, #2
@@ -11679,7 +11679,7 @@ _021EB230:
 	ldr r1, [r4, #0x34]
 	ldr r0, _021EB26C ; =0x00000434
 	ldr r0, [r1, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	ldr r2, [r4, #0x34]
 	ldr r1, _021EB270 ; =0x00000438
 	add r0, r4, #0
@@ -11693,7 +11693,7 @@ _021EB24C:
 	ldr r1, [r4, #0x34]
 	ldr r0, _021EB26C ; =0x00000434
 	ldr r0, [r1, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	ldr r2, [r4, #0x34]
 	ldr r1, _021EB270 ; =0x00000438
 	add r0, r4, #0
@@ -11878,7 +11878,7 @@ ov14_021EB388: ; 0x021EB388
 	add r0, r2, r1
 	add r1, r1, #4
 	add r1, r2, r1
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	mov r0, #0x2f
 	ldr r1, [r4, #0x34]
 	lsl r0, r0, #4
@@ -13858,7 +13858,7 @@ ov14_021EC3D8: ; 0x021EC3D8
 	add r0, r2, r1
 	add r1, r1, #4
 	add r1, r2, r1
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	mov r0, #0x2f
 	ldr r1, [r4, #0x34]
 	lsl r0, r0, #4
@@ -14448,7 +14448,7 @@ ov14_021EC8D0: ; 0x021EC8D0
 	add r0, r2, r1
 	add r1, r1, #4
 	add r1, r2, r1
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	add r1, r5, #0
 	add r0, r4, #0
 	add r1, #0x1e
@@ -14522,7 +14522,7 @@ _021EC97E:
 	add r0, r2, r1
 	add r1, r1, #4
 	add r1, r2, r1
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	add r0, r4, #0
 	add r1, r5, #0
 	bl ov14_021E7588
@@ -16490,7 +16490,7 @@ ov14_021ED9AC: ; 0x021ED9AC
 	ldr r0, [r0, #0x18]
 	add r2, r1, #0
 	lsl r3, r3, #8
-	bl sub_020032A4
+	bl PaletteData_LoadPaletteSlotFromHardware
 	mov r3, #0
 	mov r2, #3
 	str r3, [sp]
@@ -16502,7 +16502,7 @@ ov14_021ED9AC: ; 0x021ED9AC
 	ldr r0, [r4, #0x34]
 	lsl r2, r2, #0xe
 	ldr r0, [r0, #0x18]
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x46
 	str r0, [r4, #0x30]
 	mov r0, #3
@@ -16528,7 +16528,7 @@ ov14_021ED9EC: ; 0x021ED9EC
 	ldr r0, [r0, #0x18]
 	mov r1, #1
 	lsl r2, r2, #0xe
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x42
 	str r0, [r4, #0x30]
 	mov r0, #3
@@ -16591,7 +16591,7 @@ ov14_021EDA4C: ; 0x021EDA4C
 	add r0, r2, r1
 	add r1, r1, #4
 	add r1, r2, r1
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	mov r0, #0x2f
 	ldr r1, [r4, #0x34]
 	lsl r0, r0, #4
@@ -17220,7 +17220,7 @@ ov14_021EDFA0: ; 0x021EDFA0
 	add r0, r2, r1
 	add r1, r1, #4
 	add r1, r2, r1
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	mov r0, #0x2f
 	ldr r1, [r4, #0x34]
 	lsl r0, r0, #4
@@ -18334,7 +18334,7 @@ ov14_021EE87C: ; 0x021EE87C
 	add r0, r2, r1
 	add r1, r1, #4
 	add r1, r2, r1
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	add r0, r4, #0
 	add r1, r5, #0
 	bl ov14_021E7588
@@ -20556,7 +20556,7 @@ ov14_021EFB64: ; 0x021EFB64
 	add r0, r2, r1
 	add r1, r1, #4
 	add r1, r2, r1
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	add r1, r5, #0
 	add r0, r4, #0
 	add r1, #0x1e
@@ -31100,7 +31100,7 @@ _021F4F66:
 	add r0, r7, #0
 	add r1, r4, #0
 	add r3, r5, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov14_021F4F24
@@ -34530,7 +34530,7 @@ _021F6996:
 	add r0, #0x30
 	ldr r2, [r2, #0x28]
 	add r0, r0, r4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl DestroyMsgData
 	add sp, #0x10
@@ -34562,31 +34562,31 @@ _021F6A10: .word 0x0000038E
 
 	thumb_func_start ov14_021F6A14
 ov14_021F6A14: ; 0x021F6A14
-	ldr r3, _021F6A1C ; =sub_02025224
+	ldr r3, _021F6A1C ; =TouchscreenHitbox_FindRectAtTouchNew
 	ldr r0, _021F6A20 ; =ov14_021F864C
 	bx r3
 	nop
-_021F6A1C: .word sub_02025224
+_021F6A1C: .word TouchscreenHitbox_FindRectAtTouchNew
 _021F6A20: .word ov14_021F864C
 	thumb_func_end ov14_021F6A14
 
 	thumb_func_start ov14_021F6A24
 ov14_021F6A24: ; 0x021F6A24
-	ldr r3, _021F6A2C ; =sub_02025224
+	ldr r3, _021F6A2C ; =TouchscreenHitbox_FindRectAtTouchNew
 	ldr r0, _021F6A30 ; =ov14_021F8614
 	bx r3
 	nop
-_021F6A2C: .word sub_02025224
+_021F6A2C: .word TouchscreenHitbox_FindRectAtTouchNew
 _021F6A30: .word ov14_021F8614
 	thumb_func_end ov14_021F6A24
 
 	thumb_func_start ov14_021F6A34
 ov14_021F6A34: ; 0x021F6A34
-	ldr r3, _021F6A3C ; =sub_02025224
+	ldr r3, _021F6A3C ; =TouchscreenHitbox_FindRectAtTouchNew
 	ldr r0, _021F6A40 ; =ov14_021F8630
 	bx r3
 	nop
-_021F6A3C: .word sub_02025224
+_021F6A3C: .word TouchscreenHitbox_FindRectAtTouchNew
 _021F6A40: .word ov14_021F8630
 	thumb_func_end ov14_021F6A34
 
@@ -36850,7 +36850,7 @@ _021F7B92:
 	pop {r3, pc}
 _021F7BA2:
 	ldr r0, _021F7BB8 ; =ov14_021F86C8
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #1
 	bne _021F7BB0
 	mov r0, #1

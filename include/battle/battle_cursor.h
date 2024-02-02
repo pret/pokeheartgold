@@ -2,16 +2,16 @@
 #define POKEHEARTGOLD_BATTLE_CURSOR_H
 
 #include "battle/battle.h"
-#include "unk_0200E320.h"
+#include "sys_task_api.h"
 
 typedef struct BattleCursor {
     void *unk0[5];
     SysTask *task;
 } BattleCursor;
 
-void BattleCursor_LoadResources(void *a0, void *a1, void *a3, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation);
-void BattleCursor_FreeResources(void *a0, u32 character, u32 pal, u32 cell, u32 animation);
-BattleCursor *BattleCursor_New(void *a0, void *a1, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation, u32 a7, u32 a8);
+void BattleCursor_LoadResources(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, PaletteData *plttData, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation);
+void BattleCursor_FreeResources(SpriteGfxHandler *gfxHandler, u32 character, u32 pal, u32 cell, u32 animation);
+BattleCursor *BattleCursor_New(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation, u32 a7, u32 a8);
 void BattleCursor_Delete(BattleCursor *cursor);
 void ov12_0226BA4C(BattleCursor *cursor, int x0, int y0, int x1, int y1, int x2, int y2, int x3, int y3, fx32 a9);
 void ov12_0226BAD4(BattleCursor *cursor, int x0, int y0, int x1, int y1, int x2, int y2, int x3, int y3);

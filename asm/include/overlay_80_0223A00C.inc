@@ -3,8 +3,8 @@
 .public FontID_String_GetWidth
 .public PaletteData_LoadPalette
 .public PaletteData_LoadNarc
-.public sub_02003E5C
-.public sub_02003EA4
+.public PaletteData_BlendPalette
+.public PaletteData_BlendPalettes
 .public CreateSysTaskAndEnvironment
 .public DestroySysTaskAndEnvironment
 .public NARC_New
@@ -27,9 +27,9 @@
 .public UnkImageStruct_SetSpriteVisibleFlag
 .public UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 .public sub_0200E2B0
-.public CreateSysTask
-.public sub_0200E374
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_0200FBF4
@@ -51,8 +51,8 @@
 .public RemoveWindow
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
-.public sub_0201F988
-.public AddTextPrinterParameterized3
+.public SysTask_GetData
+.public AddTextPrinterParameterizedWithColorAndSpacing
 .public sub_02021AC8
 .public sub_02021B5C
 .public sub_020247F4

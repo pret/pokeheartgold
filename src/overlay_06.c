@@ -10,10 +10,10 @@ const u16 *ov06_0221BA00(int param_1) {
     return ov06_0221BB6C;
 }
 
-void ov06_0221BA1C(PaletteData *palData, int param_2, int unused, int param_4, u32 param_5) {
-    const u16 *puVar1 = ov06_0221BA00(param_2);
+void ov06_0221BA1C(PaletteData *palData, int param_2, int unused, PaletteBufferId bufferId, u32 paletteSlot) {
+    const u16 *srcData = ov06_0221BA00(param_2);
 
-    PaletteData_LoadPalette(palData, puVar1, param_4, ((param_5 << 20) >> 16), 32);
+    PaletteData_LoadPalette(palData, srcData, bufferId, paletteSlot * 16, 32);
 }
 
 ParticleSystem *ov06_0221BA40(HeapID heapId) {

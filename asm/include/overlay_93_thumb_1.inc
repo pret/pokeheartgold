@@ -10,11 +10,11 @@
 .public PaletteData_FreeBuffers
 .public PaletteData_LoadFromNarc
 .public PaletteData_LoadNarc
-.public sub_020032A4
-.public sub_0200398C
-.public sub_02003B50
-.public sub_02003D5C
-.public sub_02003DE8
+.public PaletteData_LoadPaletteSlotFromHardware
+.public PaletteData_PushTransparentBuffers
+.public PaletteData_SetAutoTransparent
+.public PaletteData_FillPaletteInBuffer
+.public BlendPalette
 .public PlaySE
 .public OverlayManager_New
 .public OverlayManager_Delete
@@ -56,8 +56,8 @@
 .public SpriteRenderer_LoadAnimResObjFromOpenNarc
 .public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
 .public sub_0200E2B0
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
 .public BeginNormalPaletteFade
@@ -116,7 +116,7 @@
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public AllocAndLoad3dTexResources
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks

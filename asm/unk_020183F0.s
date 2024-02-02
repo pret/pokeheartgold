@@ -487,7 +487,7 @@ sub_02018744: ; 0x02018744
 	ldrb r0, [r5, #3]
 	strb r0, [r4, #5]
 	ldr r0, _020187BC ; =sub_020187C0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	cmp r7, #0
 	beq _020187B8
 	ldrb r0, [r5, #2]
@@ -560,7 +560,7 @@ _02018802:
 	bl GXS_LoadBGPltt
 _0201880E:
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r3, r4, r5, pc}
@@ -1197,7 +1197,7 @@ _02018CC8:
 	ldr r0, [r5, #0x1c]
 	ldr r2, [r2, r6]
 	add r0, r0, r4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r5, #0x1c]
 	add r0, r0, r4
 	bl ScheduleWindowCopyToVram
@@ -1274,7 +1274,7 @@ _02018D50:
 	ldr r3, [sp, #0x10]
 	add r0, r0, r6
 	mov r1, #4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r5, #0x1c]
 	add r0, r0, r6
 	bl ScheduleWindowCopyToVram
@@ -1356,7 +1356,7 @@ sub_02018E08: ; 0x02018E08
 	add r5, r0, #0
 	ldr r0, [r5, #0x20]
 	add r4, r1, #0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r6, r0, #0
 	mov r0, #0
 	mvn r0, r0

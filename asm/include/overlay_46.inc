@@ -3,7 +3,7 @@
 .public LoadFontPal0
 .public LoadFontPal1
 .public FontID_String_GetCenterAlignmentX
-.public sub_02003DE8
+.public BlendPalette
 .public sub_02004EC4
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
@@ -21,8 +21,8 @@
 .public MessageFormat_Delete
 .public BufferIntegerAsString
 .public StringExpandPlaceholders
-.public sub_0200E33C
-.public DestroySysTask
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
 .public sub_0200E5D4
@@ -34,10 +34,10 @@
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public GF_RTC_DateTimeToSec
-.public sub_0201660C
-.public sub_02016624
-.public sub_020166FC
-.public sub_020168F4
+.public YesNoPrompt_Create
+.public YesNoPrompt_Destroy
+.public YesNoPrompt_InitFromTemplate
+.public YesNoPrompt_HandleInput
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
 .public CreateHeap
@@ -57,9 +57,9 @@
 .public FillWindowPixelBuffer
 .public DoScheduledBgGpuUpdates
 .public TextPrinterCheckActive
-.public sub_020200A0
+.public RemoveTextPrinter
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GfGfx_SetBanks
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_SwapDisplay

@@ -4,8 +4,8 @@
 .public PaletteData_Free
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
-.public sub_0200398C
-.public sub_02003B50
+.public PaletteData_PushTransparentBuffers
+.public PaletteData_SetAutoTransparent
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
@@ -39,7 +39,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public sub_02026CAC
+.public TouchHitboxController_Destroy
 .public sub_0203A880
 .public sub_0203A914
 .public sub_0203A930

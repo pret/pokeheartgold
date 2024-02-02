@@ -4,20 +4,20 @@
 
 static void BattleCursor_Update(SysTask *task, void *data);
 
-void BattleCursor_LoadResources(void *a0, void *a1, void *a3, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation) {
+void BattleCursor_LoadResources(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, PaletteData *plttData, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation) {
     NARC *narc = NARC_New(NARC_a_0_0_8, heapId);
-    sub_0200D68C(a3, 3, a0, a1, narc, 80, 0, 1, 2, pal);
-    SpriteRenderer_LoadCharResObjFromOpenNarc(a0, a1, narc, 250, 1, 2, character);
-    SpriteRenderer_LoadCellResObjFromOpenNarc(a0, a1, narc, 251, 1, cell);
-    SpriteRenderer_LoadAnimResObjFromOpenNarc(a0, a1, narc, 252, 1, animation);
+    sub_0200D68C(plttData, PLTTBUF_SUB_OBJ, renderer, gfxHandler, narc, 80, 0, 1, 2, pal);
+    SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 250, 1, 2, character);
+    SpriteRenderer_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, 251, 1, cell);
+    SpriteRenderer_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, narc, 252, 1, animation);
     NARC_Delete(narc);
 }
 
-void BattleCursor_FreeResources(void *a0, u32 character, u32 pal, u32 cell, u32 animation) {
-    SpriteGfxHandler_UnloadCharObjById(a0, character);
-    SpriteGfxHandler_UnloadPlttObjById(a0, pal);
-    SpriteGfxHandler_UnloadCellObjById(a0, cell);
-    SpriteGfxHandler_UnloadAnimObjById(a0, animation);
+void BattleCursor_FreeResources(SpriteGfxHandler *gfxHandler, u32 character, u32 pal, u32 cell, u32 animation) {
+    SpriteGfxHandler_UnloadCharObjById(gfxHandler, character);
+    SpriteGfxHandler_UnloadPlttObjById(gfxHandler, pal);
+    SpriteGfxHandler_UnloadCellObjById(gfxHandler, cell);
+    SpriteGfxHandler_UnloadAnimObjById(gfxHandler, animation);
 }
 
 static const UnkTemplate_0200D748 ov12_0226EBA0 = {
@@ -33,7 +33,7 @@ static const UnkTemplate_0200D748 ov12_0226EBA0 = {
     .vramTransfer = 0
 };
 
-BattleCursor *BattleCursor_New(void *a0, void *a1, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation, u32 a7, u32 a8) {
+BattleCursor *BattleCursor_New(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation, u32 a7, u32 a8) {
     BattleCursor *cursor;
     UnkTemplate_0200D748 unkStruct;
     int i;
@@ -50,11 +50,11 @@ BattleCursor *BattleCursor_New(void *a0, void *a1, HeapID heapId, u32 character,
     MI_CpuFill8(cursor, 0, sizeof(BattleCursor));
 
     for (i = 0; i < 5; i++) {
-        cursor->unk0[i] = SpriteRenderer_LoadResourcesAndCreateSprite(a0, a1, &unkStruct);
+        cursor->unk0[i] = SpriteRenderer_LoadResourcesAndCreateSprite(renderer, gfxHandler, &unkStruct);
         UnkImageStruct_SetSpriteVisibleFlag(cursor->unk0[i], FALSE);
     }
 
-    cursor->task = CreateSysTask(BattleCursor_Update, cursor, 0x9C40);
+    cursor->task = SysTask_CreateOnMainQueue(BattleCursor_Update, cursor, 0x9C40);
 
     return cursor;
 }
@@ -64,7 +64,7 @@ void BattleCursor_Delete(BattleCursor *cursor) {
         sub_0200D9DC(cursor->unk0[i]);
     }
 
-    DestroySysTask(cursor->task);
+    SysTask_Destroy(cursor->task);
     FreeToHeap(cursor);
 }
 

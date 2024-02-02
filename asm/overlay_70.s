@@ -2495,7 +2495,7 @@ ov70_02238C2C: ; 0x02238C2C
 	add r4, r1, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	str r0, [sp]
 	add r0, sp, #0x20
 	ldrb r0, [r0, #0x14]
@@ -2530,7 +2530,7 @@ _02238C56:
 	strb r0, [r1, #0x13]
 	ldr r0, [sp]
 	add r1, sp, #4
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	ldr r0, [sp]
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2542,7 +2542,7 @@ ov70_02238C8C: ; 0x02238C8C
 	push {r4, lr}
 	ldr r1, _02238CA8 ; =0x000011C8
 	ldr r0, [r0, r1]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	add r4, r0, #0
 	sub r0, r4, #1
 	cmp r0, #1
@@ -3616,7 +3616,7 @@ ov70_022394B8: ; 0x022394B8
 	ldr r2, [r7, r2]
 	add r0, r7, r0
 	mov r1, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0
 	str r0, [sp, #0x14]
 	ldr r0, _022395B8 ; =0x00000F58
@@ -3899,11 +3899,11 @@ _0223972C: .word 0x00000DCC
 
 	thumb_func_start ov70_02239730
 ov70_02239730: ; 0x02239730
-	ldr r3, _02239738 ; =sub_02025224
+	ldr r3, _02239738 ; =TouchscreenHitbox_FindRectAtTouchNew
 	ldr r0, _0223973C ; =ov70_0224524C
 	bx r3
 	nop
-_02239738: .word sub_02025224
+_02239738: .word TouchscreenHitbox_FindRectAtTouchNew
 _0223973C: .word ov70_0224524C
 	thumb_func_end ov70_02239730
 
@@ -4266,7 +4266,7 @@ ov70_02239A10: ; 0x02239A10
 	bne _02239A62
 	ldr r0, _02239A9C ; =0x000011C8
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	ldr r0, _02239AA0 ; =0x00001158
 	mov r1, #1
 	add r0, r4, r0
@@ -4297,7 +4297,7 @@ _02239A62:
 	bne _02239A98
 	ldr r0, _02239A9C ; =0x000011C8
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	ldr r0, _02239AA0 ; =0x00001158
 	mov r1, #1
 	add r0, r4, r0
@@ -4542,7 +4542,7 @@ ov70_02239C34: ; 0x02239C34
 	add r1, r6, #0
 	add r2, r4, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add sp, #0x10
@@ -5394,7 +5394,7 @@ ov70_0223A324: ; 0x0223A324
 	bne _0223A354
 	ldr r0, _0223A378 ; =0x000011C8
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #2
 	str r0, [r4, #0x2c]
 	ldr r0, _0223A37C ; =0x000011FC
@@ -5412,7 +5412,7 @@ _0223A354:
 	bne _0223A372
 	ldr r0, _0223A378 ; =0x000011C8
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	ldr r0, _0223A380 ; =0x00000F18
 	mov r1, #0
 	add r0, r4, r0
@@ -7008,7 +7008,7 @@ _0223B0A0:
 	bl ov70_0223AFA8
 _0223B0BA:
 	ldr r0, _0223B128 ; =ov70_02245498
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	cmp r0, #0
 	bne _0223B0E6
 	ldr r0, _0223B118 ; =0x00000F0F
@@ -7139,7 +7139,7 @@ ov70_0223B1B8: ; 0x0223B1B8
 	bne _0223B202
 	ldr r0, _0223B240 ; =0x000011C8
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #2
 	str r0, [r4, #0x2c]
 	add r0, r4, #0
@@ -7168,7 +7168,7 @@ _0223B202:
 	bne _0223B23C
 	ldr r0, _0223B240 ; =0x000011C8
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	ldr r0, _0223B24C ; =0x00000F18
 	mov r1, #0
 	add r0, r4, r0
@@ -8542,11 +8542,11 @@ _0223BD7C: .word 0x0400006C
 
 	thumb_func_start ov70_0223BD80
 ov70_0223BD80: ; 0x0223BD80
-	ldr r3, _0223BD88 ; =sub_02025224
+	ldr r3, _0223BD88 ; =TouchscreenHitbox_FindRectAtTouchNew
 	ldr r0, _0223BD8C ; =ov70_022456C8
 	bx r3
 	nop
-_0223BD88: .word sub_02025224
+_0223BD88: .word TouchscreenHitbox_FindRectAtTouchNew
 _0223BD8C: .word ov70_022456C8
 	thumb_func_end ov70_0223BD80
 
@@ -9986,7 +9986,7 @@ ov70_0223C8DC: ; 0x0223C8DC
 	bne _0223C90E
 	ldr r0, _0223C924 ; =0x000011C8
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #2
 	str r0, [r4, #0x2c]
 	add r0, r4, #0
@@ -10005,7 +10005,7 @@ _0223C90E:
 	bne _0223C91E
 	ldr r0, _0223C924 ; =0x000011C8
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0
 	str r0, [r4, #0x2c]
 _0223C91E:
@@ -11631,11 +11631,11 @@ _0223D67C: .word 0x000005DC
 
 	thumb_func_start ov70_0223D680
 ov70_0223D680: ; 0x0223D680
-	ldr r3, _0223D688 ; =sub_02025224
+	ldr r3, _0223D688 ; =TouchscreenHitbox_FindRectAtTouchNew
 	ldr r0, _0223D68C ; =ov70_02245884
 	bx r3
 	nop
-_0223D688: .word sub_02025224
+_0223D688: .word TouchscreenHitbox_FindRectAtTouchNew
 _0223D68C: .word ov70_02245884
 	thumb_func_end ov70_0223D680
 
@@ -12521,7 +12521,7 @@ ov70_0223DD94: ; 0x0223DD94
 	bne _0223DDB8
 	ldr r0, _0223DDCC ; =0x000011C8
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #2
 	mov r1, #0
 	str r0, [r4, #0x2c]
@@ -12534,7 +12534,7 @@ _0223DDB8:
 	bne _0223DDC8
 	ldr r0, _0223DDCC ; =0x000011C8
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0
 	str r0, [r4, #0x2c]
 _0223DDC8:
@@ -12600,7 +12600,7 @@ ov70_0223DE28: ; 0x0223DE28
 	bne _0223DE44
 	ldr r0, _0223DE64 ; =0x000011C8
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	add r0, r4, #0
 	bl ov70_0223DE6C
 	b _0223DE5E
@@ -12609,7 +12609,7 @@ _0223DE44:
 	bne _0223DE5E
 	ldr r0, _0223DE64 ; =0x000011C8
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	ldr r0, _0223DE68 ; =0x00001158
 	mov r1, #0
 	add r0, r4, r0
@@ -12761,7 +12761,7 @@ ov70_0223DF6C: ; 0x0223DF6C
 	bne _0223DFAA
 	ldr r0, _0223DFC8 ; =0x000011C8
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r3, #0x12
 	lsl r3, r3, #4
 	ldr r1, [r4]
@@ -12786,7 +12786,7 @@ _0223DFAA:
 	bne _0223DFC4
 	ldr r0, _0223DFC8 ; =0x000011C8
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	ldr r0, _0223DFCC ; =0x00001158
 	mov r1, #0
 	add r0, r4, r0
@@ -15007,7 +15007,7 @@ ov70_0223F108: ; 0x0223F108
 	bne _0223F13E
 	ldr r0, _0223F15C ; =0x000011C8
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r1, #7
 	add r0, r4, #0
 	add r2, r1, #0
@@ -15028,7 +15028,7 @@ _0223F13E:
 	bne _0223F158
 	ldr r0, _0223F15C ; =0x000011C8
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r1, #5
 	add r0, r4, #0
 	add r2, r1, #0
@@ -15158,7 +15158,7 @@ ov70_0223F20C: ; 0x0223F20C
 	add r0, r6, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 _0223F240:
@@ -15314,7 +15314,7 @@ _0223F334:
 	add r0, r6, #0
 	add r2, r4, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 _0223F368:
@@ -18919,7 +18919,7 @@ ov70_02240EF4: ; 0x02240EF4
 	ldr r1, _02240F34 ; =0x000011D8
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
-	bl sub_0201F988
+	bl SysTask_GetData
 	mov r1, #0
 	add r2, r1, #0
 	str r1, [r0]
@@ -18996,7 +18996,7 @@ _02240F8E:
 _02240FA0:
 	ldr r0, _02240FF8 ; =0x00000EE4
 	ldr r0, [r5, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _02240FF6
 	add r0, r4, #0
@@ -19056,7 +19056,7 @@ ov70_02241004: ; 0x02241004
 	ldr r1, _02241040 ; =0x000011D8
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
-	bl sub_0201F988
+	bl SysTask_GetData
 	mov r1, #0
 	str r1, [r0]
 	mov r1, #0x8a
@@ -19116,7 +19116,7 @@ _0224107E:
 _02241090:
 	ldr r0, _022410E4 ; =0x00000EE4
 	ldr r0, [r5, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _022410E0
 	add r0, r4, #0
@@ -19219,7 +19219,7 @@ ov70_02241164: ; 0x02241164
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, _02241180 ; =ov70_02245D26
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -21268,27 +21268,27 @@ _02242176: ; jump table
 	.short _022421AE - _02242176 - 2 ; case 7
 _02242186:
 	ldr r0, _022421B8 ; =ov70_02245ED0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	pop {r3, pc}
 _0224218E:
 	ldr r0, _022421BC ; =ov70_02245F28
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	pop {r3, pc}
 _02242196:
 	ldr r0, _022421C0 ; =ov70_02245E3E
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	pop {r3, pc}
 _0224219E:
 	ldr r0, _022421C4 ; =ov70_02245DD0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	pop {r3, pc}
 _022421A6:
 	ldr r0, _022421C8 ; =ov70_02245E5E
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	pop {r3, pc}
 _022421AE:
 	ldr r0, _022421CC ; =ov70_02245DE4
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 _022421B4:
 	pop {r3, pc}
 	nop
@@ -23121,7 +23121,7 @@ ov70_02242FC4: ; 0x02242FC4
 	str r0, [sp, #8]
 	add r0, r4, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl CopyWindowPixelsToVram_TextMode
 	add r0, r5, #0
@@ -25053,7 +25053,7 @@ ov70_02243EB8: ; 0x02243EB8
 	add r0, r5, #0
 	add r2, r4, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl CopyWindowPixelsToVram_TextMode
 	add r0, r6, #0
@@ -25368,7 +25368,7 @@ ov70_02244154: ; 0x02244154
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0224416E
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, _0224419C ; =0x000012D0
 	mov r1, #0
 	str r1, [r4, r0]
@@ -25709,7 +25709,7 @@ _02244438:
 	mov r2, #1
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_02003DE8
+	bl BlendPalette
 	add r7, r7, #1
 	add r4, r4, #2
 	add r6, r6, #2
@@ -25765,7 +25765,7 @@ _02244482:
 	ldr r0, _022444E0 ; =ov70_022444E4
 	add r1, r1, r2
 	mov r2, #0x14
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	ldr r2, _022444CC ; =0x000012D0
 	ldr r1, [sp, #0x10]
 	str r0, [r1, r2]
@@ -26063,7 +26063,7 @@ ov70_02244708: ; 0x02244708
 	bne _02244742
 	ldr r0, _02244768 ; =0x000011C8
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	ldr r0, _0224476C ; =0x00000F0F
 	mov r2, #1
 	str r0, [sp]
@@ -26084,7 +26084,7 @@ _02244742:
 	bne _02244760
 	ldr r0, _02244768 ; =0x000011C8
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	bl sub_0203946C
 	mov r1, #0
 	add r0, r4, #0
@@ -26878,7 +26878,7 @@ ov70_02244D44: ; 0x02244D44
 	bne _02244D68
 	ldr r0, _02244D7C ; =0x000011C8
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r1, #0
 	add r0, r4, #0
 	add r2, r1, #0
@@ -26891,7 +26891,7 @@ _02244D68:
 	bne _02244D78
 	ldr r0, _02244D7C ; =0x000011C8
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0
 	str r0, [r4, #0x2c]
 _02244D78:
@@ -27312,7 +27312,7 @@ ov70_02245050: ; 0x02245050
 	add r0, r5, #0
 	mov r1, #1
 	add r2, r6, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov70_02245050
@@ -27339,7 +27339,7 @@ ov70_02245084: ; 0x02245084
 	add r0, r5, #0
 	add r2, r6, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -27368,7 +27368,7 @@ ov70_022450B8: ; 0x022450B8
 	add r0, r5, #0
 	mov r1, #4
 	add r2, r6, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov70_022450B8

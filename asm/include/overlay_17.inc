@@ -55,8 +55,8 @@
 .public sub_0200E2B4
 .public sub_0200E2B8
 .public sub_0200E2EC
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public BeginNormalPaletteFade
@@ -67,8 +67,8 @@
 .public ListMenuItems_New
 .public ListMenuItems_Delete
 .public ListMenuItems_AppendFromMsgData
-.public sub_0201660C
-.public sub_02016624
+.public YesNoPrompt_Create
+.public YesNoPrompt_Destroy
 .public sub_020183F0
 .public sub_02018410
 .public sub_02018424
@@ -97,7 +97,7 @@
 .public FillWindowPixelBuffer
 .public DoScheduledBgGpuUpdates
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public sub_020210BC
@@ -113,7 +113,7 @@
 .public Set2dSpriteAnimSeqNo
 .public Sprite_ResetAnimCtrlState
 .public Sprite_SetAnimCtrlCurrentFrame
-.public sub_02025320
+.public TouchscreenHitbox_TouchNewIsIn
 .public System_GetTouchNew
 .public String_New
 .public String_Delete

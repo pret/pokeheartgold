@@ -192,7 +192,7 @@ _02062230:
 	sub r2, r0, #1
 	ldr r0, _0206225C ; =MovementScriptMachine
 	add r1, r4, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	add r7, r0, #0
 	bne _02062254
 	bl GF_AssertFail
@@ -208,7 +208,7 @@ _0206225C: .word MovementScriptMachine
 	thumb_func_start EventObjectMovementMan_IsFinish
 EventObjectMovementMan_IsFinish: ; 0x02062260
 	push {r3, lr}
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r0, [r0, #4]
 	pop {r3, pc}
 	.balign 4, 0
@@ -218,7 +218,7 @@ EventObjectMovementMan_IsFinish: ; 0x02062260
 EventObjectMovementMan_Delete: ; 0x0206226C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
 	bl MapObject_IsMovementPaused
@@ -232,7 +232,7 @@ _02062284:
 	add r1, r4, #0
 	bl FreeToHeapExplicit
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end EventObjectMovementMan_Delete

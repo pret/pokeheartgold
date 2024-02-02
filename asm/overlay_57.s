@@ -165,7 +165,7 @@ _022379D6:
 	add r0, #0xe8
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	add r0, r4, #0
 	add r0, #0xe8
 	mov r2, #2
@@ -385,7 +385,7 @@ ov57_02237B20: ; 0x02237B20
 	mov r0, #0x7b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0x71
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -625,7 +625,7 @@ ov57_02237E38: ; 0x02237E38
 	add r0, r4, #0
 	add r0, #0xe8
 	ldr r0, [r0]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	add r4, #0xe4
 	ldr r0, [r4]
 	bl DoScheduledBgGpuUpdates
@@ -858,7 +858,7 @@ _02237FBA:
 	str r0, [sp]
 	add r0, sp, #8
 	add r1, sp, #4
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	ldr r0, [sp, #8]
 	strb r0, [r7, r5]
 	ldr r1, [sp, #4]
@@ -1789,7 +1789,7 @@ ov57_0223866C: ; 0x0223866C
 	mov r1, #4
 	add r2, r4, #0
 	lsr r3, r3, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add r0, r6, #0
@@ -1974,7 +1974,7 @@ ov57_022387E0: ; 0x022387E0
 	add r0, sp, #0x1c
 	mov r1, #2
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, sp, #0x1c
 	mov r1, #2
 	mov r2, #0x34
@@ -4303,7 +4303,7 @@ _02239A22:
 	add r0, r5, #0
 	add r2, r4, #0
 	mov r3, #7
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
@@ -4369,7 +4369,7 @@ _02239AB8:
 	add r0, r5, r4
 	mov r3, #7
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, r4
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x10]
@@ -5506,12 +5506,12 @@ _0223A414:
 	mov r0, #0x7b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	b _0223A4DE
 _0223A42A:
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	mov r1, #0xff
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
@@ -6112,7 +6112,7 @@ _0223A930:
 	ldr r0, [r0]
 	ldr r2, _0223AB48 ; =0x0000080B
 	mov r1, #2
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xa
@@ -6123,7 +6123,7 @@ _0223A930:
 	ldr r0, [r0]
 	ldr r2, _0223AB4C ; =0x0000FFFF
 	mov r1, #8
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	add r0, r4, #0
 	mov r1, #0
 	bl ov57_0223B948
@@ -6138,7 +6138,7 @@ _0223A930:
 _0223A97A:
 	add r0, #0xe8
 	ldr r0, [r0]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	beq _0223A988
 _0223A986:
@@ -6148,7 +6148,7 @@ _0223A988:
 	add r0, #0xe8
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0x1b
@@ -6195,13 +6195,13 @@ _0223A988:
 	orr r0, r1
 	strb r0, [r2, #0x12]
 	mov r0, #0x34
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	mov r1, #0x91
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	add r1, sp, #0x10
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -6226,7 +6226,7 @@ _0223AA30:
 	mov r0, #0x91
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	add r5, r0, #0
 	beq _0223AB3C
 	cmp r5, #1
@@ -6237,7 +6237,7 @@ _0223AA46:
 	mov r0, #0x91
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_020169C0
+	bl YesNoPrompt_IsInTouchMode
 	ldr r1, _0223AB50 ; =0x0000040C
 	str r0, [r4, r1]
 	sub r0, r1, #4
@@ -6246,15 +6246,15 @@ _0223AA46:
 	add r0, #0xe8
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r0, #0x91
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	mov r0, #0x91
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -6280,7 +6280,7 @@ _0223AA98:
 	ldr r0, [r0]
 	ldr r2, _0223AB48 ; =0x0000080B
 	mov r1, #2
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0xa
 	str r0, [sp]
 	mov r3, #0
@@ -6291,7 +6291,7 @@ _0223AA98:
 	ldr r0, [r0]
 	ldr r2, _0223AB4C ; =0x0000FFFF
 	mov r1, #8
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, _0223AB44 ; =0x00000404
 	ldr r1, [r4, r0]
 	add r1, r1, #1
@@ -6300,7 +6300,7 @@ _0223AA98:
 _0223AAD2:
 	add r0, #0xe8
 	ldr r0, [r0]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _0223AB3C
 	ldr r0, _0223AB54 ; =0x00000408
@@ -6399,7 +6399,7 @@ _0223AB84:
 	ldr r0, [r0]
 	ldr r2, _0223AE94 ; =0x0000080B
 	mov r1, #2
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xa
@@ -6410,7 +6410,7 @@ _0223AB84:
 	ldr r0, [r0]
 	ldr r2, _0223AE98 ; =0x0000FFFF
 	mov r1, #8
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	add r0, r4, #0
 	mov r1, #0
 	bl ov57_0223B948
@@ -6438,7 +6438,7 @@ _0223AB84:
 _0223ABF6:
 	add r0, #0xe8
 	ldr r0, [r0]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	beq _0223AC04
 	b _0223AE88
@@ -6683,7 +6683,7 @@ _0223ADE2:
 	ldr r0, [r0]
 	ldr r2, _0223AE94 ; =0x0000080B
 	mov r1, #2
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0xa
 	str r0, [sp]
 	mov r3, #0
@@ -6694,7 +6694,7 @@ _0223ADE2:
 	ldr r0, [r0]
 	ldr r2, _0223AE98 ; =0x0000FFFF
 	mov r1, #8
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	add r0, r4, #0
 	mov r1, #1
 	bl ov57_0223BB38
@@ -6713,7 +6713,7 @@ _0223AE4C:
 	add r0, r4, #0
 	add r0, #0xe8
 	ldr r0, [r0]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _0223AE88
 	mov r0, #0x10
@@ -7649,7 +7649,7 @@ _0223B5A2:
 _0223B5AA:
 	add r0, r7, #0
 	strb r5, [r6, #3]
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _0223B5C0
 	ldr r0, [sp, #0xc]
@@ -7671,7 +7671,7 @@ _0223B5C0:
 	cmp r0, #3
 	blt _0223B5A2
 	ldr r0, _0223B618 ; =ov57_0223BEB0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r4, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -8109,7 +8109,7 @@ _0223B8E4:
 	mov r1, #0
 	bl UnkImageStruct_SetSpriteAnimCtrlCurrentFrame
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r3, r4, r5, pc}
@@ -8141,7 +8141,7 @@ ov57_0223B90C: ; 0x0223B90C
 	ldr r0, _0223B93C ; =ov57_0223B8B8
 	add r1, r4, #0
 	lsl r2, r2, #2
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0223B93C: .word ov57_0223B8B8
@@ -8539,7 +8539,7 @@ _0223BC1E:
 	ldr r2, _0223BC48 ; =ov57_0223AEA8
 	ldr r3, [sp, #4]
 	mov r1, #0x15
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r2, #0x7b
 	ldr r1, [sp, #4]
 	lsl r2, r2, #2

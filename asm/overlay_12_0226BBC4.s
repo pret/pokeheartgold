@@ -132,7 +132,7 @@ _0226BC78:
 	ldr r0, _0226BCDC ; =ov12_0226BD54
 	ldr r2, _0226BCE0 ; =0x000003E7
 	add r1, r4, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #4]
 	add r0, r4, #0
 	add sp, #0x38
@@ -150,7 +150,7 @@ ov12_0226BCE4: ; 0x0226BCE4
 	ldr r0, [r4]
 	bl sub_0200D9DC
 	ldr r0, [r4, #4]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}

@@ -31,7 +31,7 @@ ov100_021E5924: ; 0x021E5924
 	sub sp, #8
 	add r5, r0, #0
 	ldr r0, _021E59C0 ; =ov100_021E74C4
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r4, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -592,7 +592,7 @@ _021E5D4E:
 	ldr r0, [r4, #0x78]
 	add r2, r1, #0
 	mov r3, #0xe0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	ldrb r1, [r4, #9]
 	mov r0, #0x10
 	mov r2, #0x40
@@ -605,7 +605,7 @@ _021E5D4E:
 	ldr r0, [r4, #0x78]
 	mov r1, #2
 	mov r3, #0xc0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	b _021E5DAC
 _021E5D88:
 	str r2, [sp]
@@ -614,7 +614,7 @@ _021E5D88:
 	ldr r0, [r4, #0x78]
 	add r2, r1, #0
 	mov r3, #0xe0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	ldrb r0, [r4, #9]
 	mov r1, #2
 	mov r2, #0x40
@@ -623,7 +623,7 @@ _021E5D88:
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x78]
 	mov r3, #0xc0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 _021E5DAC:
 	ldrb r0, [r4, #9]
 	cmp r0, #0x10
@@ -804,7 +804,7 @@ ov100_021E5EB4: ; 0x021E5EB4
 	ldr r3, [r5]
 	add r1, r6, #0
 	add r2, #0x1e
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0x80
@@ -817,7 +817,7 @@ ov100_021E5EB4: ; 0x021E5EB4
 	ldr r3, [r5]
 	add r1, r6, #0
 	add r2, #0x18
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #2
 	str r0, [sp]
 	mov r0, #0x80
@@ -829,7 +829,7 @@ ov100_021E5EB4: ; 0x021E5EB4
 	ldr r3, [r5]
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #3
 	str r0, [sp]
 	mov r0, #0x80
@@ -841,7 +841,7 @@ ov100_021E5EB4: ; 0x021E5EB4
 	ldr r3, [r5]
 	add r1, r6, #0
 	add r2, r4, #0
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	add r2, r5, #0
 	add r2, #0xc4
 	add r1, r4, #0
@@ -1669,7 +1669,7 @@ _021E6602:
 	ldr r0, [r4, #0x78]
 	cmp r0, #0
 	beq _021E660C
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 _021E660C:
 	add r0, r4, #0
 	add r0, #0x8c

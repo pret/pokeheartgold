@@ -13,9 +13,9 @@
 #include "text.h"
 #include "touch_save_app.h"
 #include "unk_02005D10.h"
-#include "unk_0200E320.h"
-#include "unk_0201660C.h"
-#include "unk_0201F79C.h"
+#include "sys_task_api.h"
+#include "yes_no_prompt.h"
+#include "sys_task.h"
 #include "unk_020183F0.h"
 
 FS_EXTERN_OVERLAY(OVY_123);
@@ -57,7 +57,7 @@ typedef struct TouchSaveAppData {
     MessageFormat *messageFormat;
     UnkStruct_field_021F4360 *unk40;
     Options *options;
-    void *unk48;
+    YesNoPrompt *yesNoPrompt;
     Window window;
     String *string;
     u32 textPrinter;
@@ -189,7 +189,7 @@ SysTask *ov30_0225D520(BgConfig *bgConfig, void* a1, FieldSystem *fieldSystem, v
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
 
     SysTask *task = CreateSysTaskAndEnvironment((SysTaskFunc)ov30_0225D700, sizeof(TouchSaveAppData), 10, HEAP_ID_8);
-    TouchSaveAppData *data = sub_0201F988(task);
+    TouchSaveAppData *data = SysTask_GetData(task);
     data->task = task;
     data->unk0 = 0;
     data->bgConfig = bgConfig;
@@ -213,7 +213,7 @@ SysTask *ov30_0225D520(BgConfig *bgConfig, void* a1, FieldSystem *fieldSystem, v
 }
 
 void ov30_0225D64C(BgConfig *bgConfig, SysTask *task) {
-    TouchSaveAppData *data = sub_0201F988(task);
+    TouchSaveAppData *data = SysTask_GetData(task);
 
     FS_LoadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(OVY_123));
 
@@ -298,23 +298,23 @@ static void TouchSaveApp_DestroyText(TouchSaveAppData *data) {
 }
 
 static void ov30_0225D880(TouchSaveAppData *data) {
-    Unk122_021E6900 unkStruct;
-    MI_CpuFill8(&unkStruct, 0, sizeof(Unk122_021E6900));
-    unkStruct.bgConfig = data->bgConfig;
-    unkStruct.unk8 = 1;
-    unkStruct.unkC = 12;
-    unkStruct.unk4 = 6;
-    unkStruct.unk10 = 26;
-    unkStruct.unk11 = 10;
-    unkStruct.unk12_0 = 0;
-    unkStruct.unk12_4 = 0;
+    YesNoPromptTemplate template;
+    MI_CpuFill8(&template, 0, sizeof(YesNoPromptTemplate));
+    template.bgConfig = data->bgConfig;
+    template.tileStart = 1;
+    template.plttSlot = 12;
+    template.bgId = 6;
+    template.x = 26;
+    template.y = 10;
+    template.ignoreTouchFlag = 0;
+    template.initialCursorPos = 0;
 
     BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_2);
 
-    void* unk = sub_0201660C(HEAP_ID_4);
-    data->unk48 = unk;
+    YesNoPrompt* unk = YesNoPrompt_Create(HEAP_ID_4);
+    data->yesNoPrompt = unk;
 
-    sub_020166FC(unk, &unkStruct);
+    YesNoPrompt_InitFromTemplate(unk, &template);
 }
 
 static void TouchSaveApp_SetupWaitForTextPrinter(TouchSaveAppData *data, enum TouchSaveApp_State nextState) {
@@ -361,20 +361,22 @@ static BOOL TouchSaveApp_GetSaveConfirmation(TouchSaveAppData *data) {
 }
 
 static BOOL TouchSaveApp_HandleSaveConfirmation(TouchSaveAppData *data) {
-    switch (sub_02016748(data->unk48)) {
-        case 1: // Yes
-            ov30_0225DC00(&data->fieldSystem->unk_10C, sub_020169C0(data->unk48));
-            sub_02016624(data->unk48);
+    switch (YesNoPrompt_HandleInputForSave(data->yesNoPrompt)) {
+        case YESNORESPONSE_YES:
+            ov30_0225DC00(&data->fieldSystem->unk_10C, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
+            YesNoPrompt_Destroy(data->yesNoPrompt);
             if (Save_FileExists(data->fieldSystem->saveData) == TRUE) {
                 data->state = TOUCHSAVEAPP_STATE_PRINT_OVERWRITE_MESSAGE;
             } else {
                 data->state = TOUCHSAVEAPP_STATE_PRINT_SAVING_MESSAGE;
             }
             break;
-        case 2: // No
-            ov30_0225DC00(&data->fieldSystem->unk_10C, sub_020169C0(data->unk48));
-            sub_02016624(data->unk48);
+        case YESNORESPONSE_NO:
+            ov30_0225DC00(&data->fieldSystem->unk_10C, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
+            YesNoPrompt_Destroy(data->yesNoPrompt);
             return TRUE;
+        default:  // clang(-Wswitch)
+            break;
     }
 
     return FALSE;
@@ -397,16 +399,18 @@ static BOOL TouchSaveApp_GetOverwriteConfirmation(TouchSaveAppData *data) {
 }
 
 static BOOL TouchSaveApp_HandleOverwriteConfirmation(TouchSaveAppData *data) {
-    switch (sub_02016748(data->unk48)) {
-        case 1: // Yes
-            ov30_0225DC00(&data->fieldSystem->unk_10C, sub_020169C0(data->unk48));
-            sub_02016624(data->unk48);
+    switch (YesNoPrompt_HandleInputForSave(data->yesNoPrompt)) {
+        case YESNORESPONSE_YES:
+            ov30_0225DC00(&data->fieldSystem->unk_10C, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
+            YesNoPrompt_Destroy(data->yesNoPrompt);
             data->state = TOUCHSAVEAPP_STATE_PRINT_SAVING_MESSAGE;
             break;
-        case 2: // No
-            ov30_0225DC00(&data->fieldSystem->unk_10C, sub_020169C0(data->unk48));
-            sub_02016624(data->unk48);
+        case YESNORESPONSE_NO:
+            ov30_0225DC00(&data->fieldSystem->unk_10C, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
+            YesNoPrompt_Destroy(data->yesNoPrompt);
             return TRUE;
+        default:  // clang(-Wswitch)
+            break;
     }
 
     return FALSE;

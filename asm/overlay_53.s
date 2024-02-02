@@ -1282,7 +1282,7 @@ _021E632E:
 	ldr r2, [r4, r2]
 	add r0, #0x1c
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	b _021E63E2
 _021E6384:
 	ldr r1, _021E649C ; =ov53_021E84F8
@@ -1329,7 +1329,7 @@ _021E63A6:
 	ldr r2, [r4, r2]
 	add r0, #0x1c
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _021E63E2:
 	mov r0, #0x11
 	lsl r0, r0, #4
@@ -1533,7 +1533,7 @@ _021E650C:
 	lsr r3, r5, #0x1f
 	add r3, r5, r3
 	asr r3, r3, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl CopyWindowToVram
 	add r0, r6, #0
@@ -2091,7 +2091,7 @@ _021E69C2:
 	add r1, sp, #0
 	lsl r0, r4, #4
 	add r0, r1, r0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r6, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -2503,7 +2503,7 @@ _021E6CEE:
 	cmp r0, #0
 	beq _021E6D38
 	add r0, sp, #0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r6, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -3743,7 +3743,7 @@ _021E771C:
 _021E775E:
 	add r0, #0xec
 	ldr r0, [r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _021E77AC
 	mov r2, #5
@@ -4514,7 +4514,7 @@ ov53_021E7D70: ; 0x021E7D70
 	mov r1, #4
 	add r2, r6, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl CopyWindowToVram
 	add r0, r4, #0
@@ -4664,7 +4664,7 @@ ov53_021E7ECC: ; 0x021E7ECC
 	cmp r0, #0
 	beq _021E7F18
 	ldr r0, _021E7F1C ; =ov53_021E8510
-	bl sub_02025204
+	bl TouchscreenHitbox_FindRectAtTouchHeld
 	add r5, r0, #0
 	bne _021E7EFA
 	bl System_GetTouchNew
@@ -5244,7 +5244,7 @@ ov53_021E8330: ; 0x021E8330
 	mov r1, #4
 	add r2, r5, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl CopyWindowToVram
 	add r0, r7, #0
@@ -5302,7 +5302,7 @@ ov53_021E83D4: ; 0x021E83D4
 	add r5, r0, #0
 	ldr r0, _021E84C8 ; =ov53_021E887C
 	mov r4, #0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r6, r0, #0
 	sub r0, r4, #1
 	cmp r6, r0
@@ -5435,7 +5435,7 @@ ov53_021E84D4: ; 0x021E84D4
 	bl GF_AssertFail
 _021E84E6:
 	ldr r0, [r4, #0x10]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _021E84F4
 	mov r0, #1

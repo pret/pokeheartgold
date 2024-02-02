@@ -1,13 +1,13 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_02003DE8
-.public sub_02003F04
+.public BlendPalette
+.public TintPalette_GrayScale
 .public TintPalette_CustomTone
 .public UnloadOverlayByID
 .public HandleLoadOverlay
 .public NARC_AllocAndReadWholeMember
-.public sub_0200E374
-.public DestroySysTask
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public GF_CreateNewVramTransferTask

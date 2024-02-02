@@ -19,7 +19,7 @@
 #include "unk_0203A3B0.h"
 #include "unk_02035900.h"
 #include "unk_02005D10.h"
-#include "unk_02025154.h"
+#include "touchscreen.h"
 #include "unk_02022588.h"
 #include "unk_020215A0.h"
 #include "unk_0200A090.h"
@@ -519,8 +519,8 @@ static void BattleArcadeGameBoard_Delete(GAME_BOARD_WORK *work) {
 
     sub_0203A914();
 
-    PaletteData_FreeBuffers(work->unk3D4, 2);
-    PaletteData_FreeBuffers(work->unk3D4, 0);
+    PaletteData_FreeBuffers(work->unk3D4, PLTTBUF_MAIN_OBJ);
+    PaletteData_FreeBuffers(work->unk3D4, PLTTBUF_MAIN_BG);
 
     PaletteData_Free(work->unk3D4);
     work->unk3D4 = NULL;
@@ -619,8 +619,8 @@ static void ov84_0223E8DC(GAME_BOARD_WORK *work) {
 
     work->unk3D4 = PaletteData_Init(HEAP_ID_GAME_BOARD);
 
-    PaletteData_AllocBuffers(work->unk3D4, 2, 0x200, HEAP_ID_GAME_BOARD);
-    PaletteData_AllocBuffers(work->unk3D4, 0, 0x200, HEAP_ID_GAME_BOARD);
+    PaletteData_AllocBuffers(work->unk3D4, PLTTBUF_MAIN_OBJ, 0x200, HEAP_ID_GAME_BOARD);
+    PaletteData_AllocBuffers(work->unk3D4, PLTTBUF_MAIN_BG, 0x200, HEAP_ID_GAME_BOARD);
 
     ov84_0223EAAC(work, GF_BG_LYR_MAIN_3);
     ov84_0223EB44();
@@ -644,7 +644,7 @@ static void BattleArcade_VBlank(void *_work) {
     GAME_BOARD_WORK *work = _work;
 
     if (work->unk3D4 != NULL) {
-        sub_0200398C(work->unk3D4);
+        PaletteData_PushTransparentBuffers(work->unk3D4);
     }
 
     DoScheduledBgGpuUpdates(work->bgConfig);
@@ -1186,10 +1186,10 @@ static void ov84_0223F1BC(GAME_BOARD_WORK *work) {
     }
 }
 
-extern STRUCT_0223F90B ov84_0223F90B[2];
+extern TouchscreenHitbox ov84_0223F90B[2];
 
 static BOOL BattleArcadeGameBoard_CheckButtonPress(GAME_BOARD_WORK *work) {
-    int var = sub_0202529C(ov84_0223F90B);
+    int var = TouchscreenHitbox_FindHitboxAtTouchNew(ov84_0223F90B);
 
     if (var == 0) {
         ov84_0223F28C(work);

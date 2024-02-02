@@ -769,20 +769,31 @@ void WriteGbaPalette(char *path, struct Palette *palette)
     fclose(fp);
 }
 
-void WriteNtrPalette(char *path, struct Palette *palette, bool ncpr, bool ir, int bitdepth, bool pad, int compNum)
+void WriteNtrPalette(char *path, struct Palette *palette, bool ncpr, bool ir, int bitdepth, bool pad, int compNum, bool pcmp)
 {
     FILE *fp = fopen(path, "wb");
 
     if (fp == NULL)
         FATAL_ERROR("Failed to open \"%s\" for writing.\n", path);
 
-    int colourNum = pad ? 256 : 16;
+    int colourNum = pad ? 256 : palette->numColors;
 
     uint32_t size = colourNum * 2; //todo check if there's a better way to detect :/
     uint32_t extSize = size + (ncpr ? 0x10 : 0x18);
+    int numSections = 1;
+    int pcmpColorNum = 0;
+    uint32_t pcmpSize = 0;
+    if (pcmp) {
+        pcmpColorNum = colourNum / (bitdepth == 4 ? 16 : 256);
+        if (pcmpColorNum == 0) {
+            FATAL_ERROR("colourNum=%d palette->bitDepth=%d\n", colourNum, bitdepth);
+        }
+        pcmpSize = 16 + pcmpColorNum * 2;
+        ++numSections;
+    }
 
     //NCLR header
-    WriteGenericNtrHeader(fp, (ncpr ? "RPCN" : "RLCN"), extSize, !ncpr, false, 1);
+    WriteGenericNtrHeader(fp, (ncpr ? "RPCN" : "RLCN"), extSize + pcmpSize, !ncpr, false, numSections);
 
     unsigned char palHeader[0x18] =
             {
@@ -847,6 +858,28 @@ void WriteNtrPalette(char *path, struct Palette *palette, bool ncpr, bool ir, in
 
     fwrite(colours, 1, colourNum * 2, fp);
     free(colours);
+
+    if (pcmp) {
+        uint8_t pcmp_header[16] = {0x50, 0x4D, 0x43, 0x50, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xEF, 0xBE, 0x08, 0x00, 0x00, 0x00};
+        pcmp_header[4] = pcmpSize & 0xFF;
+        pcmp_header[5] = (pcmpSize >> 8) & 0xFF;
+        pcmp_header[6] = (pcmpSize >> 16) & 0xFF;
+        pcmp_header[7] = (pcmpSize >> 24) & 0xFF;
+        pcmp_header[8] = pcmpColorNum & 0xFF;
+        pcmp_header[9] = (pcmpColorNum >> 8) & 0xFF;
+        fwrite(pcmp_header, 1, 16, fp);
+
+        uint8_t *pcmp_data = malloc(2 * pcmpColorNum);
+        if (pcmp_data == NULL) {
+            FATAL_ERROR("failed to alloc pcmp_data\n");
+        }
+        for (int i = 0; i < pcmpColorNum; ++i) {
+            pcmp_data[i * 2] = i & 0xFF;
+            pcmp_data[i * 2 + 1] = (i >> 8) & 0xFF;
+        }
+        fwrite(pcmp_data, 1, pcmpColorNum * 2, fp);
+        free(pcmp_data);
+    }
 
     fclose(fp);
 }
@@ -1322,7 +1355,7 @@ void ReadNtrAnimation(char *path, struct JsonToAnimationOptions *options)
     {
         options->animationResults[i] = malloc(sizeof(struct AnimationResults));
     }
-    
+
     int resultOffset = 0;
     for (int i = 0; i < options->resultCount; i++)
     {

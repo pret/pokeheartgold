@@ -80,7 +80,7 @@
 .public CopyWindowPixelsToVram_TextMode
 .public FillWindowPixelBuffer
 .public DoScheduledBgGpuUpdates
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public sub_020210BC
 .public sub_02021148
 .public sub_02021238
@@ -91,7 +91,7 @@
 .public GfGfx_EngineBSetPlanes
 .public sub_02024B1C
 .public sub_02024B34
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public String_New
 .public String_Delete
 .public Save_HOF_GetNumRecords

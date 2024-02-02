@@ -20,7 +20,7 @@ ov03_02253E20: ; 0x02253E20
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _02253E42:
 	cmp r4, #0
 	beq _02253E64
@@ -635,7 +635,7 @@ _02254302:
 	ldr r0, _022543A0 ; =ov03_02254D64
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r0, _02254398 ; =ov03_022598A0
 	ldr r0, [r0]
 	bl ov03_022543AC
@@ -1108,7 +1108,7 @@ _02254714:
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _02254730:
 	ldr r0, _022547D0 ; =ov03_022598A0
 	mov r1, #2
@@ -1271,7 +1271,7 @@ _0225486A:
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _022548A6:
 	add r0, r6, #0
 	add r1, r4, #0
@@ -1620,7 +1620,7 @@ ov03_02254B58: ; 0x02254B58
 	ldr r0, _02254BDC ; =ov03_02254D64
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	bl ov03_02254BEC
 	ldr r0, _02254BE0 ; =ov03_022598A0
 	ldr r0, [r0]
@@ -2819,7 +2819,7 @@ _0225552C:
 	ldr r0, _02255548 ; =ov03_0225554C
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	add sp, #0x54
 	pop {r4, r5, pc}
 	nop
@@ -2854,7 +2854,7 @@ _02255572:
 	add r0, #0x88
 	str r1, [r0]
 	add r0, r4, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _02255582:
 	pop {r4, pc}
 	.balign 4, 0
@@ -3125,7 +3125,7 @@ _022557BC:
 	cmp r5, #0
 	beq _022557C6
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _022557C6:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -3148,7 +3148,7 @@ ov03_022557CC: ; 0x022557CC
 	ldr r0, _022557FC ; =ov03_02254D64
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r0, _02255800 ; =ov03_02255860
 	bl ov03_02254B4C
 	pop {r4, pc}
@@ -3183,7 +3183,7 @@ ov03_02255804: ; 0x02255804
 	ldr r0, _02255858 ; =ov03_02254D64
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r0, _0225585C ; =ov03_02255860
 	bl ov03_02254B4C
 	ldr r0, _02255854 ; =ov03_022598A0
@@ -3314,7 +3314,7 @@ _02255932:
 	ldr r0, [r0]
 	add r0, #0x94
 	ldrb r0, [r0]
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _02255960:
 	bl sub_02037454
 	add r1, r4, #0
@@ -3323,7 +3323,7 @@ _02255960:
 	add r0, r4, #0
 	bl ov03_02255B44
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #0x54
 	pop {r4, r5, pc}
 _0225597A:
@@ -3438,7 +3438,7 @@ ov03_02255A2C: ; 0x02255A2C
 	bne _02255A66
 _02255A52:
 	add r0, r4, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	bl ov03_02254B44
 	ldr r0, _02255A68 ; =ov03_022598A0
 	mov r1, #1
@@ -3475,7 +3475,7 @@ ov03_02255A70: ; 0x02255A70
 	ldr r0, _02255AAC ; =ov03_02255AB0
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r4, pc}
 	.balign 4, 0
 _02255AA8: .word ov03_022598A0
@@ -3498,7 +3498,7 @@ ov03_02255AB0: ; 0x02255AB0
 	add r0, r4, #0
 	bl ov03_022542C8
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _02255AD6:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -3520,7 +3520,7 @@ _02255AE6:
 	ldr r0, _02255B00 ; =ov03_02255B04
 	add r1, r5, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r3, r4, r5, pc}
 	nop
 _02255B00: .word ov03_02255B04
@@ -3550,7 +3550,7 @@ _02255B2C:
 	add r0, r4, #0
 	bl ov03_022542C8
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _02255B38:
 	pop {r3, r4, r5, pc}
 	nop
@@ -6097,7 +6097,7 @@ _02256EF6:
 _02256EFC:
 	sub r1, #0x52
 	ldr r0, [r4, r1]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	beq _02256F0A
 _02256F08:
@@ -6821,7 +6821,7 @@ _022574AA:
 	add r0, #0x18
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl String_Delete
 	add r0, r4, #0
@@ -10246,7 +10246,7 @@ ov03_02258F48: ; 0x02258F48
 	ldr r2, [r5, #0x3c]
 	add r0, #0x10
 	mov r3, #8
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	str r4, [sp]
 	mov r0, #0xff
 	str r0, [sp, #4]
@@ -10258,7 +10258,7 @@ ov03_02258F48: ; 0x02258F48
 	ldr r2, [r5, #0x38]
 	add r0, #0x10
 	mov r3, #8
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -10287,7 +10287,7 @@ ov03_02258F8C: ; 0x02258F8C
 	ldr r2, [r5, #0x34]
 	add r0, #0x10
 	mov r3, #8
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r5, #0x24]
 	add r1, r6, #0
 	bl ov03_02259070
@@ -10363,7 +10363,7 @@ _02259036:
 	ldr r2, [r5, #0x34]
 	add r0, #0x10
 	sub r3, #8
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

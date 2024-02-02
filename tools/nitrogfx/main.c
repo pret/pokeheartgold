@@ -565,6 +565,7 @@ void HandlePngToNtrPaletteCommand(char *inputPath, char *outputPath, int argc, c
     bool nopad = false;
     int bitdepth = 0;
     int compNum = 0;
+    bool pcmp = false;
 
     for (int i = 3; i < argc; i++)
     {
@@ -608,6 +609,9 @@ void HandlePngToNtrPaletteCommand(char *inputPath, char *outputPath, int argc, c
             if (compNum > 255)
                 FATAL_ERROR("Compression value must be 255 or below.\n");
         }
+        else if (strcmp(option, "-pcmp") == 0) {
+            pcmp = true;
+        }
         else
         {
             FATAL_ERROR("Unrecognized option \"%s\".\n", option);
@@ -615,7 +619,7 @@ void HandlePngToNtrPaletteCommand(char *inputPath, char *outputPath, int argc, c
     }
 
     ReadPngPalette(inputPath, &palette);
-    WriteNtrPalette(outputPath, &palette, ncpr, ir, bitdepth, !nopad, compNum);
+    WriteNtrPalette(outputPath, &palette, ncpr, ir, bitdepth, !nopad, compNum, pcmp);
 }
 
 void HandleGbaToJascPaletteCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
@@ -703,6 +707,7 @@ void HandleJascToNtrPaletteCommand(char *inputPath, char *outputPath, int argc, 
     bool nopad = false;
     int bitdepth = 0;
     int compNum = 0;
+    bool pcmp = false;
 
     for (int i = 3; i < argc; i++)
     {
@@ -759,6 +764,9 @@ void HandleJascToNtrPaletteCommand(char *inputPath, char *outputPath, int argc, 
         {
             nopad = true;
         }
+        else if (strcmp(option, "-pcmp") == 0) {
+            pcmp = true;
+        }
         else
         {
             FATAL_ERROR("Unrecognized option \"%s\".\n", option);
@@ -772,7 +780,7 @@ void HandleJascToNtrPaletteCommand(char *inputPath, char *outputPath, int argc, 
     if (numColors != 0)
         palette.numColors = numColors;
 
-    WriteNtrPalette(outputPath, &palette, ncpr, ir, bitdepth, !nopad, compNum);
+    WriteNtrPalette(outputPath, &palette, ncpr, ir, bitdepth, !nopad, compNum, pcmp);
 }
 
 void HandleJsonToNtrCellCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)

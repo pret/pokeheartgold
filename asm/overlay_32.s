@@ -26,7 +26,7 @@ ov32_0225D520: ; 0x0225D520
 	mov r3, #8
 	bl CreateSysTaskAndEnvironment
 	add r7, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r5, r0, #0
 	ldr r0, [sp]
 	str r6, [r5]
@@ -83,7 +83,7 @@ ov32_0225D5CC: ; 0x0225D5CC
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r0, r5, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	bl ov32_0225DDAC
 	add r0, r4, #0
@@ -359,7 +359,7 @@ _0225D796:
 	str r1, [sp, #0xc]
 	add r0, #0x24
 	mov r1, #4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl String_Delete
 	add r0, r5, #0
@@ -435,7 +435,7 @@ ov32_0225D84C: ; 0x0225D84C
 	add r0, #0x34
 	add r3, r4, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl String_Delete
 	mov r0, #4
@@ -474,7 +474,7 @@ ov32_0225D84C: ; 0x0225D84C
 	add r0, #0x34
 	add r3, r4, r7
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x10]
 	bl String_Delete
 	mov r0, #0x51
@@ -517,7 +517,7 @@ ov32_0225D84C: ; 0x0225D84C
 	add r0, r5, #0
 	add r0, #0x34
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r6, #0
@@ -620,7 +620,7 @@ _0225D9D4:
 	add r0, r5, r0
 	mov r1, #4
 	sub r3, r3, r6
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x20]
 	add r0, r5, r0
 	bl CopyWindowPixelsToVram_TextMode
@@ -1154,7 +1154,7 @@ ov32_0225DE34: ; 0x0225DE34
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, _0225DF6C ; =_0225E15C
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	cmp r0, #0
 	bne _0225DE56
 	mov r0, #0x5e

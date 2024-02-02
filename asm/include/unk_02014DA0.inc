@@ -1,8 +1,8 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public AllocAndReadWholeNarcMemberByIdPair
-.public sub_0200E374
-.public DestroySysTask
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public sub_02014DA0
 .public sub_02014DB4
 .public sub_02014EBC
@@ -48,7 +48,7 @@
 .public AllocFromHeap
 .public FreeToHeap
 .public CopyWindowPixelsToVram_TextMode
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public Camera_New
 .public Camera_Delete
 .public Camera_SetStaticPtr

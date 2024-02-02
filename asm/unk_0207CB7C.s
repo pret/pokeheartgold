@@ -964,7 +964,7 @@ sub_0207D2E4: ; 0x0207D2E4
 	ldr r2, [r3, r2]
 	add r0, r4, r6
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, _0207D3D0 ; =0x00000838
 	add r1, r5, r7
 	ldrb r0, [r1, r0]
@@ -992,7 +992,7 @@ _0207D328:
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #2
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r2, _0207D3D8 ; =0x00000836
 	add r0, r5, r2
 	ldrh r0, [r0, r7]
@@ -1021,7 +1021,7 @@ _0207D328:
 	ldr r2, [r5, r2]
 	add r0, r4, r6
 	mov r3, #0x40
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	b _0207D3BE
 _0207D390:
 	cmp r0, #1
@@ -1044,7 +1044,7 @@ _0207D390:
 	ldr r2, [r5, r2]
 	add r0, r4, r6
 	mov r3, #0x40
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _0207D3BE:
 	add r0, r4, r6
 	bl ScheduleWindowCopyToVram
@@ -1826,7 +1826,7 @@ sub_0207D998: ; 0x0207D998
 	ldr r2, _0207DA58 ; =0x000007CC
 	str r1, [sp, #0xc]
 	ldr r2, [r5, r2]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0x79
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -1861,7 +1861,7 @@ _0207DA04:
 	ldr r2, _0207DA58 ; =0x000007CC
 	str r1, [sp, #0xc]
 	ldr r2, [r5, r2]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0x7d
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -2072,7 +2072,7 @@ sub_0207DBCC: ; 0x0207DBCC
 	sub sp, #0x14
 	add r4, r0, #0
 	mov r0, #0xc
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	ldr r2, _0207DC1C ; =0x00000C88
 	mov r1, #0x26
 	str r0, [r4, r2]
@@ -2100,7 +2100,7 @@ sub_0207DBCC: ; 0x0207DBCC
 	strb r0, [r3, #0x13]
 	ldr r0, [r4, r2]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	bl sub_0207CB7C
 	add sp, #0x14
 	pop {r4, r5, pc}
@@ -2153,7 +2153,7 @@ _0207DC62:
 	add r0, r4, r6
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x10]
 	bl String_Delete
 	add r0, r4, r6
@@ -2219,7 +2219,7 @@ _0207DCE6:
 	add r0, r4, r7
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x10]
 	bl String_Delete
 	add r0, r4, r7
@@ -2270,7 +2270,7 @@ _0207DD4C:
 	add r0, r4, r6
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	add r0, r4, r6
@@ -2333,7 +2333,7 @@ _0207DDCE:
 	add r0, r4, r7
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	add r0, r4, r7
@@ -2684,7 +2684,7 @@ sub_0207E068: ; 0x0207E068
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	ldr r0, _0207E168 ; =0x00000654
@@ -2729,7 +2729,7 @@ sub_0207E068: ; 0x0207E068
 	ldr r2, [r5, r2]
 	add r0, r5, r0
 	mov r3, #2
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	mov r0, #0x95
@@ -2990,7 +2990,7 @@ _0207E30C:
 	ldr r2, [r3, r2]
 	ldr r3, [sp, #0x14]
 	add r0, r4, r7
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, r7
 	bl ScheduleWindowCopyToVram
 	add sp, #0x20
@@ -3587,7 +3587,7 @@ _0207E79C:
 	pop {r3, r4, r5, r6, r7, pc}
 _0207E7A2:
 	ldr r0, _0207E930 ; =_02110180
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r7, r0, #0
 	sub r0, r4, #1
 	cmp r7, r0
@@ -3805,7 +3805,7 @@ _0207E960:
 	pop {r3, r4, r5, r6, r7, pc}
 _0207E966:
 	ldr r0, _0207EB18 ; =_02110168
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r7, r0, #0
 	sub r0, r6, #1
 	cmp r7, r0

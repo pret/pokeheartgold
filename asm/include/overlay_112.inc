@@ -105,8 +105,8 @@
 .public UnkImageStruct_GetSpritePositionXY
 .public sub_0200DF98
 .public sub_0200E0FC
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public WaitingIcon_New
@@ -158,7 +158,7 @@
 .public GF_CalcCRC16
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks
@@ -188,8 +188,8 @@
 .public sub_02024B1C
 .public sub_02024B34
 .public Sprite_GetVramType
-.public sub_02025224
-.public sub_02025320
+.public TouchscreenHitbox_FindRectAtTouchNew
+.public TouchscreenHitbox_TouchNewIsIn
 .public GF_AssertFail
 .public String_New
 .public String_Delete

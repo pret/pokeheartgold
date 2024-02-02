@@ -280,12 +280,14 @@ BOOL sub_020560C4(TaskManager *man) {
         fenv->transitionState++;
         break;
     case 1:
+    {
         FieldEnvSubUnk18 *info = fenv->unk18;
         if (ov01_021E98F0(fieldSystem, info, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar))) {
             ov01_021E90D4(fenv->unk18);
             fenv->transitionState++;
         }
         break;
+    }
     case 2:
         return TRUE;
     }
@@ -308,6 +310,7 @@ BOOL sub_0205613C(TaskManager *man) {
         }
         break;
     case 1:
+    {
         int dir = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
         obj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
         if (dir == DIR_WEST) {
@@ -319,13 +322,16 @@ BOOL sub_0205613C(TaskManager *man) {
         }
         fenv->transitionState++;
         break;
+    }
     case 2:
+    {
         obj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
         if (MapObject_IsMovementPaused(obj) == TRUE) {
             MapObject_ClearHeldMovementIfActive(obj);
             fenv->transitionState++;
         }
         break;
+    }
     case 3:
         PlaySE(SEQ_SE_DP_KAIDAN2);
         ov01_021E636C(FALSE);
@@ -521,6 +527,7 @@ BOOL sub_02056530(TaskManager *man) {
         fenv->transitionState++;
         break;
     case 2:
+    {
         FieldEnvSubUnk18 *unk = fenv->unk18;
         if (ov01_021E9374(fieldSystem, unk)) {
             ov01_021E90D4(unk);
@@ -528,6 +535,7 @@ BOOL sub_02056530(TaskManager *man) {
             return TRUE;
         }
         break;
+    }
     case 3:
         return TRUE;
     }
@@ -539,6 +547,7 @@ BOOL sub_020565FC(TaskManager *man) {
     FieldTransitionEnvironment *fenv = TaskManager_GetEnvironment(man);
     switch (fenv->transitionState) {
     case 0:
+    {
         LocalMapObject *mapObj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
         if (sub_0205B70C(GetMetatileBehaviorAt(fieldSystem, GetPlayerXCoord(fieldSystem->playerAvatar), GetPlayerYCoord(fieldSystem->playerAvatar)))) {
             MapObject_SetVisible(mapObj, TRUE);
@@ -550,6 +559,7 @@ BOOL sub_020565FC(TaskManager *man) {
             fenv->transitionState++;
             break;
         }
+    }
     case 1:
         return TRUE;
     }

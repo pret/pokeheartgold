@@ -1060,7 +1060,7 @@ _021E6186:
 	add r0, r6, r0
 	mov r1, #4
 	sub r3, r3, r4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0x42
 	lsl r0, r0, #2
 	add r0, r6, r0
@@ -1222,7 +1222,7 @@ _021E62E2: ; jump table
 	.short _021E64D4 - _021E62E2 - 2 ; case 4
 _021E62EC:
 	ldr r0, _021E64E8 ; =_021E6E7C
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	cmp r0, #0
 	bne _021E6324
 	mov r1, #0x6d
@@ -1751,7 +1751,7 @@ _021E6656:
 	ldr r2, [r5, r2]
 	add r0, r4, r6
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, r6
 	bl CopyWindowPixelsToVram_TextMode
 	add r0, r4, r6
@@ -2011,7 +2011,7 @@ _021E6920:
 	add r0, r3, r0
 	ldr r2, [r5, r2]
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r2, #0x47
 	lsl r2, r2, #2
 	add r1, r2, #0
@@ -2036,7 +2036,7 @@ _021E6920:
 	ldr r2, [r5, r2]
 	add r0, r6, r7
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r2, #0x66
 	lsl r2, r2, #2
 	ldrh r0, [r5, r2]
@@ -2072,7 +2072,7 @@ _021E6920:
 	ldr r2, [r5, r2]
 	add r0, r6, r7
 	add r3, #8
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	b _021E6A18
 _021E69DA:
 	cmp r0, #1
@@ -2102,7 +2102,7 @@ _021E69DA:
 	ldr r2, [r5, r2]
 	add r0, r6, r7
 	add r3, #8
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _021E6A18:
 	mov r2, #0x46
 	lsl r2, r2, #2
@@ -2143,7 +2143,7 @@ _021E6A18:
 	ldr r2, [r5, r2]
 	add r0, r6, r7
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r2, #0x46
 	lsl r2, r2, #2
 	ldr r0, [r5, r2]
@@ -2166,7 +2166,7 @@ _021E6A18:
 	ldr r2, [r5, r2]
 	add r0, r6, r7
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r1, #0x4a
 	lsl r1, r1, #2
 	mov r0, #0
@@ -2190,7 +2190,7 @@ _021E6ACC:
 	str r1, [sp, #0xc]
 	ldr r2, [r5, r2]
 	add r0, r6, r7
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0
 	str r0, [sp, #0x14]
 	add r0, r5, #0
@@ -2238,7 +2238,7 @@ _021E6AEA:
 	ldr r2, [r5, r2]
 	mov r1, #0
 	sub r3, r3, r6
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _021E6B3E:
 	ldr r0, [sp, #0x38]
 	add r7, r7, #1

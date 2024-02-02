@@ -63,9 +63,9 @@
 .public sub_0200DF98
 .public sub_0200E024
 .public sub_0200E0FC
-.public CreateSysTask
-.public sub_0200E33C
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_Destroy
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_020143E0
@@ -93,12 +93,12 @@
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
-.public sub_0201F988
+.public SysTask_GetData
 .public GF_SinDegNoWrap
 .public GF_CosDegNoWrap
 .public SetLCRNGSeed
 .public LCRandom
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GfGfx_SetBanks
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_EngineASetPlanes
@@ -116,7 +116,7 @@
 .public String_New
 .public String_Delete
 .public String_Compare
-.public sub_02026EA4
+.public GetMainObjPlttAddr
 .public GF_3DVramMan_InitFrameTexVramManager
 .public GF_3DVramMan_InitFramePlttVramManager
 .public PlayerName_FlatToString

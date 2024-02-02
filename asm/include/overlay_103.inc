@@ -64,11 +64,11 @@
 .public ListMenuItems_AppendFromMsgData
 .public MailMsg_GetExpandedString
 .public MailMsg_IsInit
-.public sub_0201660C
-.public sub_02016624
-.public sub_020166FC
-.public sub_020168F4
-.public sub_020169CC
+.public YesNoPrompt_Create
+.public YesNoPrompt_Destroy
+.public YesNoPrompt_InitFromTemplate
+.public YesNoPrompt_HandleInput
+.public YesNoPrompt_Reset
 .public sub_02018424
 .public sub_02018474
 .public sub_020185FC
@@ -114,7 +114,7 @@
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public TextPrinterCheckActive
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public sub_020210BC
 .public sub_02021148
 .public sub_02021238
@@ -124,7 +124,7 @@
 .public GfGfx_EngineBTogglePlanes
 .public GfGfx_EngineBSetPlanes
 .public sub_02024B1C
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchNew
 .public String_New
 .public String_Delete

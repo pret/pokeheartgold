@@ -9,7 +9,7 @@
 .public PaletteData_Free
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
-.public sub_0200398C
+.public PaletteData_PushTransparentBuffers
 .public PlaySE
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
@@ -88,15 +88,15 @@
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public sub_02020A0C
 .public GfGfx_SetBanks
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_DisableEngineBPlanes
 .public GfGfx_EngineBTogglePlanes
-.public sub_02025224
-.public sub_02025320
+.public TouchscreenHitbox_FindRectAtTouchNew
+.public TouchscreenHitbox_TouchNewIsIn
 .public String_New
 .public String_Delete
 .public Save_PlayerData_GetOptionsAddr

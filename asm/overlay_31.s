@@ -23,7 +23,7 @@ ov31_0225D520: ; 0x0225D520
 	mov r3, #8
 	bl CreateSysTaskAndEnvironment
 	add r5, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	str r5, [r4, #8]
 	mov r1, #0
@@ -203,7 +203,7 @@ ov31_0225D684: ; 0x0225D684
 	add r0, #0x64
 	add r3, #8
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	b _0225D6F8
 _0225D6DE:
 	mov r1, #0
@@ -217,7 +217,7 @@ _0225D6DE:
 	add r0, #0x64
 	mov r3, #5
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _0225D6F8:
 	add r5, #0x64
 	add r0, r5, #0
@@ -236,7 +236,7 @@ ov31_0225D710: ; 0x0225D710
 	add r6, r1, #0
 	add r5, r0, #0
 	add r0, r6, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	mov r0, #0
 	bl sub_02002B8C
@@ -675,7 +675,7 @@ _0225DAB2:
 	ldr r0, _0225DAC0 ; =_0225EF40
 	lsl r1, r4, #2
 	ldr r0, [r0, r1]
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	pop {r4, pc}
 	nop
 _0225DAC0: .word _0225EF40
@@ -1100,7 +1100,7 @@ ov31_0225DE00: ; 0x0225DE00
 	add r0, r1, #0
 	add r1, r3, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, pc}
 	nop
@@ -1146,7 +1146,7 @@ _0225DE3A:
 	add r2, r4, #0
 	mov r3, #0x24
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add sp, #0x10
@@ -1196,7 +1196,7 @@ _0225DEBC:
 	add r0, #0x74
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	mov r0, #0x10
@@ -1268,7 +1268,7 @@ _0225DF2A:
 	add r2, r4, #0
 	sub r3, r3, r6
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r4, #0
@@ -1358,7 +1358,7 @@ _0225DFEC:
 	add r0, #0x54
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r6, #0
@@ -1615,7 +1615,7 @@ ov31_0225E20C: ; 0x0225E20C
 	add r2, r4, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	mov r0, #5
@@ -1667,7 +1667,7 @@ ov31_0225E20C: ; 0x0225E20C
 	add r2, r4, #0
 	sub r3, r3, r6
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add r0, r7, #0
@@ -1765,7 +1765,7 @@ ov31_0225E2D4: ; 0x0225E2D4
 	add r2, r6, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #4
 	str r0, [sp]
 	mov r2, #0xff
@@ -1778,7 +1778,7 @@ ov31_0225E2D4: ; 0x0225E2D4
 	add r2, r7, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl String_Delete
 	add r0, r7, #0
@@ -1848,7 +1848,7 @@ ov31_0225E2D4: ; 0x0225E2D4
 	add r2, r6, #0
 	sub r3, r3, r4
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl String_Delete
 	add r0, r7, #0
@@ -1885,7 +1885,7 @@ ov31_0225E474: ; 0x0225E474
 	add r2, r4, #0
 	mov r3, #4
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0x45
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -2236,13 +2236,13 @@ ov31_0225E700: ; 0x0225E700
 	mov r1, #5
 	bl BgClearTilemapBufferAndCommit
 	mov r0, #8
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	mov r1, #0x17
 	lsl r1, r1, #4
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add sp, #0x14
 	pop {r3, r4, pc}
 	thumb_func_end ov31_0225E700
@@ -2259,7 +2259,7 @@ ov31_0225E774: ; 0x0225E774
 	mov r0, #0
 	pop {r4, pc}
 _0225E786:
-	bl sub_02016748
+	bl YesNoPrompt_HandleInputForSave
 	cmp r0, #1
 	beq _0225E794
 	cmp r0, #2
@@ -2269,7 +2269,7 @@ _0225E794:
 	mov r0, #0x17
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0x17
 	mov r2, #0
 	lsl r0, r0, #4
@@ -2284,7 +2284,7 @@ _0225E7B2:
 	mov r0, #0x17
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0x17
 	mov r1, #0
 	lsl r0, r0, #4

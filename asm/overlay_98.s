@@ -636,7 +636,7 @@ _0221EA92:
 _0221EA94:
 	add r0, r5, r0
 	mov r1, #0x20
-	bl sub_02003F04
+	bl TintPalette_GrayScale
 _0221EA9C:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -911,7 +911,7 @@ _0221EC8A:
 	ldr r0, [r5, #4]
 	add r0, r0, r6
 	add r3, r4, r3
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r5, #4]
 	add r0, r0, r6
 	bl ScheduleWindowCopyToVram
@@ -961,7 +961,7 @@ ov98_0221ECD0: ; 0x0221ECD0
 	ldr r2, [r5, #0x14]
 	add r0, r0, r4
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r5, #4]
 	add r0, r0, r4
 	bl ScheduleWindowCopyToVram
@@ -1014,7 +1014,7 @@ ov98_0221ED48: ; 0x0221ED48
 	ldr r0, [r4, #4]
 	ldr r2, [r4, #0x14]
 	add r0, r0, r5
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r4, #4]
 	add r0, r0, r5
 	bl ScheduleWindowCopyToVram
@@ -1079,7 +1079,7 @@ ov98_0221EDC4: ; 0x0221EDC4
 	ldr r2, [r5, #0x14]
 	add r0, r0, r4
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r5, #4]
 	add r0, r0, r4
 	bl ScheduleWindowCopyToVram
@@ -1124,7 +1124,7 @@ _0221EE3E:
 	ldr r0, [r5, #4]
 	ldr r2, [r5, #0x14]
 	add r0, r0, r4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r5, #4]
 	add r0, r0, r4
 	bl ScheduleWindowCopyToVram
@@ -1172,7 +1172,7 @@ ov98_0221EE9C: ; 0x0221EE9C
 	ldr r0, [r4, #4]
 	add r3, r7, #0
 	add r0, r0, r5
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r4, #4]
 	add r0, r0, r5
 	bl ScheduleWindowCopyToVram
@@ -1249,7 +1249,7 @@ ov98_0221EF24: ; 0x0221EF24
 	ldrb r2, [r2, #3]
 	strb r3, [r1, #2]
 	strb r2, [r1, #3]
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	bne _0221EF52
 	ldr r0, _0221EF60 ; =gSystem

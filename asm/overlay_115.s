@@ -361,7 +361,7 @@ _0225F2DE:
 	add r0, r4, r0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x14]
 	bl String_Delete
 	add r0, r4, #0
@@ -1659,7 +1659,7 @@ _0225FC0E:
 	add r2, r5, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	mov r0, #3
@@ -2283,7 +2283,7 @@ ov115_02260254: ; 0x02260254
 	ldr r0, [sp, #8]
 	ldr r3, [sp, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_02003DE8
+	bl BlendPalette
 	add r0, r7, #0
 	bl sub_02024B34
 	add r6, r0, #0

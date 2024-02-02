@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_02003E5C
+.public PaletteData_BlendPalette
 .public NARC_New
 .public NARC_Delete
 .public NewString_ReadMsgData
@@ -25,14 +25,14 @@
 .public Sprite_SetPositionXY
 .public UnkImageStruct_SetSpritePositionXY
 .public UnkImageStruct_GetSpritePositionXY
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public AllocFromHeap
 .public FreeToHeap
 .public AddTextWindowTopLeftCorner
 .public RemoveWindow
 .public GF_SinDegNoWrap
-.public AddTextPrinterParameterized3
+.public AddTextPrinterParameterizedWithColorAndSpacing
 .public Set2dSpriteAnimActiveFlag
 .public Sprite_SetAnimCtrlCurrentFrame
 .public sub_02024B1C

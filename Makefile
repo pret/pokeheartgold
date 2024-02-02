@@ -37,6 +37,7 @@ all:
 	$(MAKE) $(ROM)
 
 tidy:
+	@$(MAKE) -C lib/syscall tidy
 	@$(MAKE) -C sub tidy
 	$(RM) -r $(BUILD_DIR)
 	$(RM) -r $(PROJECT_CLEAN_TARGETS)
@@ -50,20 +51,20 @@ SBIN_LZ        := $(SBIN)_LZ
 .PHONY: main_lz
 
 sdk9 sdk7: sdk
-main filesystem: | sdk9
+main files_for_compile: | sdk9
 sub: | sdk7
 
-main: $(SBIN) $(ELF) 
+main: $(SBIN) $(ELF)
 main_lz: $(SBIN_LZ)
 sub: ; @$(MAKE) -C sub
 
 ROMSPEC        := rom.rsf
 MAKEROM_FLAGS  := $(DEFINES)
 
-$(ALL_OBJS): filesystem
-$(ELF): filesystem libsyscall
+$(ALL_OBJS): files_for_compile
+$(ELF): files_for_compile libsyscall
 
-libsyscall: filesystem
+libsyscall: files_for_compile
 	$(MAKE) -C lib/syscall all install INSTALL_PREFIX=$(abspath $(WORK_DIR)/$(BUILD_DIR)) GAME_CODE=$(GAME_CODE)
 
 $(SBIN_LZ): $(BUILD_DIR)/component.files
@@ -86,7 +87,7 @@ $(BANNER): $(BANNER_SPEC) $(ICON_PNG:%.png=%.nbfp) $(ICON_PNG:%.png=%.nbfc)
 # TODO: move to NitroSDK makefile
 FX_CONST_H := $(WORK_DIR)/lib/include/nitro/fx/fx_const.h
 PROJECT_CLEAN_TARGETS += $(FX_CONST_H)
-$(FX_CONST_H): $(TOOLSDIR)/gen_fx_consts/fx_const.csv
+$(FX_CONST_H): $(MKFXCONST) $(TOOLSDIR)/gen_fx_consts/fx_const.csv
 	$(MKFXCONST) $@
 sdk: $(FX_CONST_H)
 $(WORK_DIR)/include/global.h: $(FX_CONST_H) ;

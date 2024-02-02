@@ -24,7 +24,7 @@ ov01_021F4464: ; 0x021F4464
 	mov r2, #5
 	bl CreateSysTaskAndEnvironment
 	add r6, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	add r2, r4, #4
 	mov r3, #5
@@ -45,7 +45,7 @@ _021F4480:
 	ldr r0, _021F44B0 ; =ov01_021F4584
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -211,7 +211,7 @@ _021F45CE:
 	mov r0, #1
 	str r0, [r4, #0x30]
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021F4584
 

@@ -377,14 +377,14 @@ void sub_0200A908(const _2DGfxResHeaderNarcList *a0, struct _2DGfxResHeader *hea
     GF_ASSERT(header != NULL);
     header->type = a0->type;
     header->isNarc = TRUE;
-    header->num = sub_0200AC88(&a0->internal);
+    header->num = sub_0200AC88(a0->internal);
     if (header->num > 0) {
         header->table = AllocFromHeap(heapId, header->num * sizeof(struct _2DGfxResHeaderNarc));
     } else {
         header->table = NULL;
     }
     if (header->table != NULL) {
-        memcpy(header->table, &a0->internal, header->num * sizeof(struct _2DGfxResHeaderNarc));
+        memcpy(header->table, a0->internal, header->num * sizeof(struct _2DGfxResHeaderNarc));
     }
 }
 

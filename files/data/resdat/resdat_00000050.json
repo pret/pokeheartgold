@@ -1,0 +1,125 @@
+{
+  "kind": "char",
+  "graphics": [
+    {
+      "narc": 21,
+      "file": 2,
+      "compressed": false,
+      "id": 0,
+      "extra": [
+        1,
+        21
+      ]
+    },
+    {
+      "narc": 21,
+      "file": 7,
+      "compressed": false,
+      "id": 1,
+      "extra": [
+        1,
+        21
+      ]
+    },
+    {
+      "narc": 21,
+      "file": 11,
+      "compressed": false,
+      "id": 2,
+      "extra": [
+        1,
+        21
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 64,
+      "compressed": false,
+      "id": 3,
+      "extra": [
+        3,
+        39
+      ]
+    },
+    {
+      "narc": 20,
+      "file": 7,
+      "compressed": false,
+      "id": 4,
+      "extra": [
+        3,
+        20
+      ]
+    },
+    {
+      "narc": 20,
+      "file": 7,
+      "compressed": false,
+      "id": 5,
+      "extra": [
+        3,
+        20
+      ]
+    },
+    {
+      "narc": 20,
+      "file": 7,
+      "compressed": false,
+      "id": 6,
+      "extra": [
+        3,
+        20
+      ]
+    },
+    {
+      "narc": 20,
+      "file": 7,
+      "compressed": false,
+      "id": 7,
+      "extra": [
+        3,
+        20
+      ]
+    },
+    {
+      "narc": 20,
+      "file": 7,
+      "compressed": false,
+      "id": 8,
+      "extra": [
+        3,
+        20
+      ]
+    },
+    {
+      "narc": 20,
+      "file": 7,
+      "compressed": false,
+      "id": 9,
+      "extra": [
+        3,
+        20
+      ]
+    },
+    {
+      "narc": 21,
+      "file": 20,
+      "compressed": false,
+      "id": 10,
+      "extra": [
+        3,
+        21
+      ]
+    },
+    {
+      "narc": 15,
+      "file": 29,
+      "compressed": false,
+      "id": 11,
+      "extra": [
+        2,
+        15
+      ]
+    }
+  ]
+}

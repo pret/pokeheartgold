@@ -1806,7 +1806,7 @@ ov82_0223EC0C: ; 0x0223EC0C
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0223EC24
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 _0223EC24:
 	ldr r0, [r4, #0x48]
 	bl DoScheduledBgGpuUpdates
@@ -2226,7 +2226,7 @@ ov82_0223EF1C: ; 0x0223EF1C
 	ldrb r1, [r1]
 	ldr r2, [r5, #0x28]
 	add r0, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov82_0223EF1C
@@ -2320,7 +2320,7 @@ ov82_0223EFCC: ; 0x0223EFCC
 	add r0, r5, #0
 	add r2, r6, #0
 	add r3, r7, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl String_Delete
 	add r0, r5, #0
@@ -2399,7 +2399,7 @@ _0223F090:
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x10]
 	add r3, r6, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _0223F0D4:
 	add r4, r4, #1
 	add r6, #0x40
@@ -2556,7 +2556,7 @@ ov82_0223F1AC: ; 0x0223F1AC
 	add r0, r5, #0
 	add r2, r6, #0
 	add r3, r7, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl String_Delete
 	ldr r0, [sp, #0x10]
@@ -3449,7 +3449,7 @@ ov82_0223F834: ; 0x0223F834
 	strb r1, [r0, #0xf]
 	add r0, #0x8c
 	ldr r0, [r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 _0223F848:
 	pop {r3, pc}
 	.balign 4, 0
@@ -4151,18 +4151,18 @@ _0223FDB4: .word 0x000003D9
 
 	thumb_func_start ov82_0223FDB8
 ov82_0223FDB8: ; 0x0223FDB8
-	ldr r3, _0223FDBC ; =sub_0201660C
+	ldr r3, _0223FDBC ; =YesNoPrompt_Create
 	bx r3
 	.balign 4, 0
-_0223FDBC: .word sub_0201660C
+_0223FDBC: .word YesNoPrompt_Create
 	thumb_func_end ov82_0223FDB8
 
 	thumb_func_start ov82_0223FDC0
 ov82_0223FDC0: ; 0x0223FDC0
-	ldr r3, _0223FDC4 ; =sub_02016624
+	ldr r3, _0223FDC4 ; =YesNoPrompt_Destroy
 	bx r3
 	.balign 4, 0
-_0223FDC4: .word sub_02016624
+_0223FDC4: .word YesNoPrompt_Destroy
 	thumb_func_end ov82_0223FDC0
 
 	thumb_func_start ov82_0223FDC8
@@ -4202,17 +4202,17 @@ ov82_0223FDC8: ; 0x0223FDC8
 	strb r2, [r0, #0x13]
 	add r0, r6, #0
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov82_0223FDC8
 
 	thumb_func_start ov82_0223FE18
 ov82_0223FE18: ; 0x0223FE18
-	ldr r3, _0223FE1C ; =sub_020168F4
+	ldr r3, _0223FE1C ; =YesNoPrompt_HandleInput
 	bx r3
 	.balign 4, 0
-_0223FE1C: .word sub_020168F4
+_0223FE1C: .word YesNoPrompt_HandleInput
 	thumb_func_end ov82_0223FE18
 
 	.rodata

@@ -1,0 +1,365 @@
+{
+  "kind": null,
+  "entries": [
+    {
+      "graphics": 0,
+      "palette": 6,
+      "cell": 0,
+      "anim": 0,
+      "transfer": 0,
+      "priority": 0
+    },
+    {
+      "graphics": 1,
+      "palette": 0,
+      "cell": 1,
+      "anim": 1,
+      "transfer": 0,
+      "priority": 0
+    },
+    {
+      "graphics": 2,
+      "palette": 0,
+      "cell": 2,
+      "anim": 2,
+      "transfer": 0,
+      "priority": 0
+    },
+    {
+      "graphics": 3,
+      "palette": 1,
+      "cell": 3,
+      "anim": 3,
+      "transfer": 0,
+      "priority": 0
+    },
+    {
+      "graphics": 4,
+      "palette": 1,
+      "cell": 3,
+      "anim": 3,
+      "transfer": 0,
+      "priority": 0
+    },
+    {
+      "graphics": 5,
+      "palette": 1,
+      "cell": 3,
+      "anim": 3,
+      "transfer": 0,
+      "priority": 0
+    },
+    {
+      "graphics": 6,
+      "palette": 1,
+      "cell": 3,
+      "anim": 3,
+      "transfer": 0,
+      "priority": 0
+    },
+    {
+      "graphics": 7,
+      "palette": 1,
+      "cell": 3,
+      "anim": 3,
+      "transfer": 0,
+      "priority": 0
+    },
+    {
+      "graphics": 8,
+      "palette": 1,
+      "cell": 3,
+      "anim": 3,
+      "transfer": 0,
+      "priority": 0
+    },
+    {
+      "graphics": 9,
+      "palette": 1,
+      "cell": 3,
+      "anim": 3,
+      "transfer": 0,
+      "priority": 0
+    },
+    {
+      "graphics": 10,
+      "palette": 1,
+      "cell": 3,
+      "anim": 3,
+      "transfer": 0,
+      "priority": 0
+    },
+    {
+      "graphics": 11,
+      "palette": 8,
+      "cell": 4,
+      "anim": 4,
+      "transfer": 0,
+      "priority": 0
+    },
+    {
+      "graphics": 12,
+      "palette": 3,
+      "cell": 5,
+      "anim": 5,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 13,
+      "palette": 0,
+      "cell": 6,
+      "anim": 6,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 14,
+      "palette": 0,
+      "cell": 7,
+      "anim": 7,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 16,
+      "palette": 0,
+      "cell": 10,
+      "anim": 10,
+      "transfer": 0,
+      "priority": 0
+    },
+    {
+      "graphics": 17,
+      "palette": 0,
+      "cell": 10,
+      "anim": 10,
+      "transfer": 0,
+      "priority": 0
+    },
+    {
+      "graphics": 15,
+      "palette": 0,
+      "cell": 8,
+      "anim": 8,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 21,
+      "palette": 0,
+      "cell": 8,
+      "anim": 8,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 20,
+      "palette": 0,
+      "cell": 8,
+      "anim": 8,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 22,
+      "palette": 0,
+      "cell": 8,
+      "anim": 8,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 18,
+      "palette": 0,
+      "cell": 8,
+      "anim": 8,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 19,
+      "palette": 0,
+      "cell": 8,
+      "anim": 8,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 23,
+      "palette": 0,
+      "cell": 8,
+      "anim": 8,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 24,
+      "palette": 0,
+      "cell": 11,
+      "anim": 11,
+      "transfer": 0,
+      "priority": 0
+    },
+    {
+      "graphics": 25,
+      "palette": 5,
+      "cell": 12,
+      "anim": 12,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 26,
+      "palette": 5,
+      "cell": 12,
+      "anim": 12,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 27,
+      "palette": 5,
+      "cell": 12,
+      "anim": 12,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 28,
+      "palette": 5,
+      "cell": 12,
+      "anim": 12,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 29,
+      "palette": 5,
+      "cell": 12,
+      "anim": 12,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 30,
+      "palette": 5,
+      "cell": 12,
+      "anim": 12,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 31,
+      "palette": 5,
+      "cell": 12,
+      "anim": 12,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 32,
+      "palette": 5,
+      "cell": 12,
+      "anim": 12,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 33,
+      "palette": 5,
+      "cell": 12,
+      "anim": 12,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 34,
+      "palette": 9,
+      "cell": 15,
+      "anim": 15,
+      "transfer": 0,
+      "priority": 2
+    },
+    {
+      "graphics": 35,
+      "palette": 0,
+      "cell": 13,
+      "anim": 13,
+      "transfer": 0,
+      "priority": 0
+    },
+    {
+      "graphics": 36,
+      "palette": 0,
+      "cell": 0,
+      "anim": 0,
+      "transfer": 0,
+      "priority": 0
+    },
+    {
+      "graphics": 37,
+      "palette": 0,
+      "cell": 16,
+      "anim": 16,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 38,
+      "palette": 8,
+      "cell": 4,
+      "anim": 4,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 39,
+      "palette": 8,
+      "cell": 4,
+      "anim": 4,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 40,
+      "palette": 8,
+      "cell": 4,
+      "anim": 4,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 41,
+      "palette": 8,
+      "cell": 4,
+      "anim": 4,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 42,
+      "palette": 8,
+      "cell": 4,
+      "anim": 4,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 43,
+      "palette": 8,
+      "cell": 4,
+      "anim": 4,
+      "transfer": 0,
+      "priority": 3
+    },
+    {
+      "graphics": 44,
+      "palette": 7,
+      "cell": 17,
+      "anim": 17,
+      "transfer": 0,
+      "priority": 1
+    }
+  ]
+}

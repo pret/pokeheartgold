@@ -1866,7 +1866,7 @@ _0225FDD6:
 _0225FDF4:
 	mov r1, #0
 	str r1, [r4, #0x18]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #4
 	pop {r3, r4, pc}
 _0225FE00:
@@ -1923,7 +1923,7 @@ _0225FE2C:
 	ldr r0, _0225FEC8 ; =ov120_0225FDA0
 	strh r2, [r5, #0x1e]
 	add r1, r5, #0
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	str r0, [r5, #0x18]
 	ldrh r0, [r5, #0x1c]
 	add sp, #8
@@ -1959,7 +1959,7 @@ _0225FEA4:
 	mov r0, #0
 	str r0, [r5, #0x14]
 	add r0, r6, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #8
 	pop {r4, r5, r6, pc}
 _0225FEBE:
@@ -1981,7 +1981,7 @@ ov120_0225FECC: ; 0x0225FECC
 	ldr r0, _0225FEE4 ; =ov120_0225FE08
 	add r1, r4, #0
 	mov r2, #1
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #0x14]
 	pop {r4, pc}
 	.balign 4, 0

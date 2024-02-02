@@ -1689,11 +1689,11 @@ _02238664: .word 0x00000E14
 ov72_02238668: ; 0x02238668
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	add r4, r0, #0
 	beq _0223867A
 	add r0, r5, #0
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 _0223867A:
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
@@ -2084,7 +2084,7 @@ ov72_0223897C: ; 0x0223897C
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _02238996
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, _022389C0 ; =0x00000FD8
 	mov r1, #0
 	str r1, [r4, r0]
@@ -2567,7 +2567,7 @@ _02238D92:
 	str r0, [sp]
 	add r0, r5, #0
 	mov r2, #1
-	bl sub_02003DE8
+	bl BlendPalette
 	add r7, r7, #1
 	add r4, r4, #2
 	add r6, r6, #2
@@ -2623,7 +2623,7 @@ _02238DDE:
 	ldr r0, _02238E38 ; =ov72_02238E3C
 	add r1, r1, r2
 	mov r2, #0x14
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	ldr r2, _02238E28 ; =0x00000FD8
 	ldr r1, [sp, #0x10]
 	str r0, [r1, r2]
@@ -5502,7 +5502,7 @@ ov72_0223A3E0: ; 0x0223A3E0
 	add r0, r5, #0
 	mov r1, #1
 	add r2, r6, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov72_0223A3E0
@@ -5918,11 +5918,11 @@ ov72_0223A738: ; 0x0223A738
 	cmp r0, #0x64
 	bne _0223A74A
 	ldr r0, _0223A758 ; =ov72_0223B774
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	pop {r3, pc}
 _0223A74A:
 	ldr r0, _0223A75C ; =ov72_0223B7B8
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	pop {r3, pc}
 	nop
 _0223A754: .word 0x0000130D
@@ -6736,7 +6736,7 @@ ov72_0223AD20: ; 0x0223AD20
 	mov r1, #4
 	add r2, r4, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl CopyWindowToVram
 	add r0, r4, #0
@@ -7030,7 +7030,7 @@ ov72_0223AF7C: ; 0x0223AF7C
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, _0223B078 ; =ov72_0223B4C8
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r5, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -7161,7 +7161,7 @@ ov72_0223B088: ; 0x0223B088
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	beq _0223B09A
 	mov r0, #0
@@ -7393,7 +7393,7 @@ ov72_0223B1C8: ; 0x0223B1C8
 	mov r1, #4
 	add r2, r6, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, _0223B2BC ; =0x000F0100
@@ -7404,7 +7404,7 @@ ov72_0223B1C8: ; 0x0223B1C8
 	mov r1, #4
 	add r2, r7, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	add r0, #8
 	bl CopyWindowToVram

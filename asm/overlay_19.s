@@ -41,7 +41,7 @@ ov19_022598C0: ; 0x022598C0
 	ldr r0, _02259914 ; =ov19_02259950
 	add r1, r4, #0
 	mov r2, #1
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02259914: .word ov19_02259950
@@ -53,7 +53,7 @@ ov19_02259918: ; 0x02259918
 	add r5, r0, #0
 	add r0, #0xd8
 	ldr r0, [r0]
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	mov r0, #0x43
 	lsl r0, r0, #2
@@ -67,7 +67,7 @@ ov19_02259918: ; 0x02259918
 	add r0, r5, #0
 	add r0, #0xd8
 	ldr r0, [r0]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	add r5, #0xd8
 	str r0, [r5]
@@ -270,7 +270,7 @@ _02259AB8: .word gSystem
 ov19_02259ABC: ; 0x02259ABC
 	push {r3, lr}
 	ldr r0, _02259AD4 ; =ov19_0225A05E
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -728,7 +728,7 @@ ov19_02259E44: ; 0x02259E44
 	lsl r2, r2, #2
 	add r0, r0, r2
 	ldr r0, [r0, r1]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _02259E60
 	mov r0, #1
@@ -889,7 +889,7 @@ ov19_02259F64: ; 0x02259F64
 	ldr r2, [r4, #0x30]
 	add r0, #0x3c
 	mov r1, #4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	add r0, #0x3c
 	bl ScheduleWindowCopyToVram
@@ -929,7 +929,7 @@ _02259FD4:
 	add r0, r4, #0
 	ldr r2, [r4, #0x2c]
 	add r0, #0x4c
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	add r0, #0x4c
 	bl ScheduleWindowCopyToVram

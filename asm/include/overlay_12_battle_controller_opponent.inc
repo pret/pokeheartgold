@@ -2,9 +2,9 @@
 #pragma once
 .public PaletteData_GetUnfadedBuf
 .public PaletteData_GetFadedBuf
-.public sub_02003370
-.public sub_02003B44
-.public sub_02003E5C
+.public PaletteData_BeginPaletteFade
+.public PaletteData_GetSelectedBuffersBitmask
+.public PaletteData_BlendPalette
 .public sub_02005B58
 .public PlayBGM
 .public GF_SndStartFadeOutBGM
@@ -50,8 +50,8 @@
 .public UnkImageStruct_GetSpritePositionXY
 .public UnkImageStruct_AddSpritePositionXY
 .public sub_0200E11C
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public WaitingIcon_New
 .public sub_0200F450
 .public sub_02014540

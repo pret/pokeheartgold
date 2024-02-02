@@ -691,7 +691,7 @@ _021E5E46:
 	ldr r1, _021E5F18 ; =0x000043C8
 	str r0, [r7, r1]
 	mov r0, #0x27
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	ldr r1, _021E5F1C ; =0x000093F0
 	str r0, [r7, r1]
 	mov r0, #0xc5
@@ -719,7 +719,7 @@ ov37_021E5F20: ; 0x021E5F20
 	bl FreeToHeap
 	ldr r0, _021E5F58 ; =0x000093F0
 	ldr r0, [r6, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r4, #0
 	add r5, r6, #0
 _021E5F38:
@@ -1401,7 +1401,7 @@ ov37_021E6418: ; 0x021E6418
 	add r0, r7, r0
 	mov r1, #1
 	add r3, r3, #2
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0
 	str r0, [sp, #0x14]
 	mov r0, #0x9e
@@ -1545,7 +1545,7 @@ ov37_021E65EC: ; 0x021E65EC
 	mov r0, #0
 	str r0, [sp, #4]
 	ldr r0, _021E67E8 ; =ov37_021E7A4C
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	str r0, [sp, #8]
@@ -1712,7 +1712,7 @@ _021E672A:
 	bl PlaySE
 _021E6752:
 	ldr r0, _021E6808 ; =ov37_021E7970
-	bl sub_02025204
+	bl TouchscreenHitbox_FindRectAtTouchHeld
 	add r4, r0, #0
 	bl sub_0203769C
 	lsl r1, r0, #2
@@ -2083,7 +2083,7 @@ _021E6A36:
 _021E6A50:
 	ldr r0, _021E6B34 ; =0x000093F0
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _021E6A62
 	cmp r0, #2
@@ -2426,7 +2426,7 @@ ov37_021E6D14: ; 0x021E6D14
 	ldr r0, _021E6DC4 ; =0x000093F0
 	add r6, r1, #0
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	add r4, r0, #0
 	bl ov37_021E75C4
 	mov r1, #0xc6
@@ -2640,7 +2640,7 @@ ov37_021E6EB4: ; 0x021E6EB4
 	ldr r0, [r5, #0x30]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _021E6ED2:
 	add r0, r5, #0
 	mov r1, #2
@@ -3493,7 +3493,7 @@ _021E74F0:
 	ldr r2, [r4, #0x14]
 	add r0, r5, #0
 	mov r3, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	b _021E7540
 _021E7524:
 	mov r0, #0
@@ -3508,7 +3508,7 @@ _021E7524:
 	ldr r2, [r4, #0x14]
 	add r0, r5, #0
 	mov r3, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _021E7540:
 	add r0, r5, #0
 	bl CopyWindowToVram
@@ -3965,7 +3965,7 @@ ov37_021E7880: ; 0x021E7880
 	bne _021E789C
 	sub r0, #8
 	ldr r0, [r4, r0]
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	ldr r1, _021E78A0 ; =0x000093F8
 	mov r0, #1
 	str r0, [r4, r1]
@@ -3987,7 +3987,7 @@ ov37_021E78A4: ; 0x021E78A4
 	beq _021E78BE
 	sub r0, #8
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	ldr r0, _021E78C0 ; =0x000093F8
 	mov r1, #0
 	str r1, [r4, r0]
@@ -4001,7 +4001,7 @@ _021E78C0: .word 0x000093F8
 ov37_021E78C4: ; 0x021E78C4
 	push {r3, lr}
 	ldr r0, _021E78DC ; =_021E7968
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1

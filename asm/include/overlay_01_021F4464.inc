@@ -2,9 +2,9 @@
 #pragma once
 .public CreateSysTaskAndEnvironment
 .public DestroySysTaskAndEnvironment
-.public sub_0200E374
-.public DestroySysTask
-.public sub_0201F988
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
+.public SysTask_GetData
 .public GX_SetGraphicsMode
 .public GX_SetBankForLCDC
 .public GX_GetBankForLCDC

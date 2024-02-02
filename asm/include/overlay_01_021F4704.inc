@@ -5,8 +5,8 @@
 .public NARC_Delete
 .public NARC_ReadFromMember
 .public NARC_ReadFile
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public sub_0201A430
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
@@ -14,7 +14,7 @@
 .public sub_0201F53C
 .public Draw3dModel
 .public Bind3dModelSet
-.public sub_0201F988
+.public SysTask_GetData
 .public GF_AssertFail
 .public Save_PlayerData_GetProfileAddr
 .public PlayerProfile_GetTrainerGender

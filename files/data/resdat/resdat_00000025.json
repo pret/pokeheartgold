@@ -1,0 +1,65 @@
+{
+  "kind": "cell",
+  "graphics": [
+    {
+      "narc": 8,
+      "file": 242,
+      "compressed": true,
+      "id": 0,
+      "extra": [
+        8,
+        8
+      ]
+    },
+    {
+      "narc": 120,
+      "file": 53,
+      "compressed": false,
+      "id": 1,
+      "extra": [
+        120,
+        120
+      ]
+    },
+    {
+      "narc": 120,
+      "file": 55,
+      "compressed": false,
+      "id": 2,
+      "extra": [
+        120,
+        120
+      ]
+    },
+    {
+      "narc": 120,
+      "file": 61,
+      "compressed": false,
+      "id": 3,
+      "extra": [
+        120,
+        120
+      ]
+    },
+    {
+      "narc": 239,
+      "file": 13,
+      "compressed": false,
+      "id": 4,
+      "extra": [
+        239,
+        239
+      ]
+    },
+    {
+      "narc": 120,
+      "file": 65,
+      "compressed": false,
+      "id": 5,
+      "extra": [
+        120,
+        120
+      ]
+    }
+  ]
+}

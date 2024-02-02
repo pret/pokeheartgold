@@ -1,0 +1,25 @@
+{
+  "kind": "anim",
+  "graphics": [
+    {
+      "narc": 218,
+      "file": 9,
+      "compressed": false,
+      "id": 0,
+      "extra": [
+        218,
+        218
+      ]
+    },
+    {
+      "narc": 218,
+      "file": 11,
+      "compressed": false,
+      "id": 1,
+      "extra": [
+        218,
+        218
+      ]
+    }
+  ]
+}

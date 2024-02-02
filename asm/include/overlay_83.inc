@@ -9,7 +9,7 @@
 .public PaletteData_Free
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
-.public sub_0200398C
+.public PaletteData_PushTransparentBuffers
 .public PlaySE
 .public StopSE
 .public UnloadOverlayByID
@@ -81,11 +81,11 @@
 .public ListMenuItems_New
 .public ListMenuItems_Delete
 .public ListMenuItems_AppendFromMsgData
-.public sub_0201660C
-.public sub_02016624
-.public sub_020166FC
-.public sub_020168F4
-.public sub_020169CC
+.public YesNoPrompt_Create
+.public YesNoPrompt_Destroy
+.public YesNoPrompt_InitFromTemplate
+.public YesNoPrompt_HandleInput
+.public YesNoPrompt_Reset
 .public sub_02018424
 .public sub_02018474
 .public sub_020185FC
@@ -125,7 +125,7 @@
 .public GetWindowWidth
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks
@@ -155,9 +155,9 @@
 .public sub_02024AA8
 .public sub_02024B1C
 .public sub_02024B34
-.public sub_02024B68
+.public Sprite_IsCellAnimationFinished
 .public sub_02024B78
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New

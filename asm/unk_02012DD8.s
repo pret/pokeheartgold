@@ -137,7 +137,7 @@ sub_02012E6C: ; 0x02012E6C
 	ldr r0, _02012F48 ; =sub_02010F00
 	ldr r2, _02012F4C ; =0x000003FF
 	add r1, r5, #0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	add r0, r5, #0
 	mov r1, #0
 	bl sub_02010EE0
@@ -266,7 +266,7 @@ _02012FD0:
 	ldr r0, _02012FFC ; =sub_02010F00
 	ldr r2, _02013000 ; =0x000003FF
 	add r1, r4, #0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	b _02012FF0
 _02012FE2:
 	ldr r0, [r4, #0x48]
@@ -885,7 +885,7 @@ sub_02013424: ; 0x02013424
 	ldr r0, _0201343C ; =sub_020134BC
 	add r1, r4, #0
 	mov r2, #1
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	pop {r4, pc}
 	nop
 _0201343C: .word sub_020134BC
@@ -907,7 +907,7 @@ sub_02013440: ; 0x02013440
 	add r1, r4, #0
 	mov r2, #1
 	str r5, [r4, #0xc]
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	pop {r4, r5, r6, pc}
 	nop
 _02013464: .word sub_020134D0
@@ -926,7 +926,7 @@ sub_02013468: ; 0x02013468
 	add r1, r5, #0
 	mov r2, #1
 	str r3, [r5, #8]
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02013484: .word sub_020134EC
@@ -954,7 +954,7 @@ sub_02013488: ; 0x02013488
 	ldr r0, _020134B8 ; =sub_02013504
 	mov r2, #1
 	str r5, [r1, #0xc]
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _020134B8: .word sub_02013504
@@ -967,7 +967,7 @@ sub_020134BC: ; 0x020134BC
 	ldmia r1!, {r0, r1}
 	bl sub_020131F4
 	add r0, r4, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_020134BC
@@ -983,7 +983,7 @@ sub_020134D0: ; 0x020134D0
 	ldr r3, [r3, #0xc]
 	bl sub_02013220
 	add r0, r4, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_020134D0
@@ -998,7 +998,7 @@ sub_020134EC: ; 0x020134EC
 	ldr r2, [r2, #8]
 	bl sub_020132A8
 	add r0, r4, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r4, pc}
 	thumb_func_end sub_020134EC
 
@@ -1022,7 +1022,7 @@ sub_02013504: ; 0x02013504
 	ldrsh r3, [r3, r5]
 	bl sub_02013364
 	add r0, r4, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

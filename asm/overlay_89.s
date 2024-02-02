@@ -83,7 +83,7 @@ ov89_02258800: ; 0x02258800
 	bl PaletteData_Init
 	str r0, [r5, #0xc]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r2, #2
 	ldr r0, [r5, #0xc]
 	mov r1, #0
@@ -109,7 +109,7 @@ ov89_02258800: ; 0x02258800
 	bl PaletteData_AllocBuffers
 	ldr r0, [r5, #0xc]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r0, #0x7d
 	bl BgConfig_Alloc
 	str r0, [r5, #8]
@@ -225,7 +225,7 @@ ov89_02258800: ; 0x02258800
 	add r0, r5, #0
 	bl ov89_022598D0
 	mov r0, #0x7d
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	str r0, [r5, #0x24]
 	mov r0, #6
 	str r0, [sp]
@@ -282,7 +282,7 @@ _02258A4A:
 	ldr r0, _02258AF8 ; =ov89_02258FF4
 	ldr r2, _02258AFC ; =0x0000EA60
 	add r1, r5, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r5, #0x18]
 	ldr r0, _02258B00 ; =ov89_0225901C
 	add r1, r5, #0
@@ -459,7 +459,7 @@ _02258C14:
 	ldr r0, [r4, #0xc]
 	mov r2, #9
 	mov r3, #1
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #8
 	str r0, [sp]
 	mov r0, #0
@@ -471,7 +471,7 @@ _02258C14:
 	mov r3, #0x10
 	lsl r2, r2, #0x14
 	lsr r2, r2, #0x10
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #3
 	str r0, [r5]
 	b _02258E4A
@@ -537,7 +537,7 @@ _02258CAC:
 	strb r1, [r0, #0x13]
 	ldr r0, [r4, #0x24]
 	add r1, sp, #0xc
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add r0, r4, #0
 	mov r1, #1
 	add r0, #0x28
@@ -551,9 +551,9 @@ _02258CF0:
 	mov r1, #0
 	mov r2, #0xb0
 	mov r3, #0x40
-	bl sub_020032A4
+	bl PaletteData_LoadPaletteSlotFromHardware
 	ldr r0, [r4, #0x24]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _02258D0C
 	cmp r0, #2
@@ -562,7 +562,7 @@ _02258D0A:
 	b _02258E4A
 _02258D0C:
 	ldr r0, [r4, #0x24]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0x28
@@ -582,7 +582,7 @@ _02258D0C:
 	b _02258E4A
 _02258D36:
 	ldr r0, [r4, #0x24]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0x28
@@ -596,7 +596,7 @@ _02258D36:
 	ldr r0, [r4, #0xc]
 	mov r2, #9
 	mov r3, #1
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -607,7 +607,7 @@ _02258D36:
 	mov r3, #0x10
 	lsl r2, r2, #0x14
 	lsr r2, r2, #0x10
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #2
 	str r0, [r5]
 	b _02258E4A
@@ -759,7 +759,7 @@ _02258EA8:
 	cmp r0, #1
 	bne _02258EBE
 	ldr r0, [r4, #0x24]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 _02258EBE:
 	mov r0, #0x5a
 	mov r1, #0
@@ -800,13 +800,13 @@ ov89_02258F00: ; 0x02258F00
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl ov89_022596DC
 	add r0, r4, #0
 	bl ov89_022598A8
 	ldr r0, [r4, #0x24]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0x65
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -915,7 +915,7 @@ ov89_0225901C: ; 0x0225901C
 	bl GF_RunVramTransferTasks
 	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #0xc]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r4, #8]
 	bl DoScheduledBgGpuUpdates
 	ldr r3, _02259054 ; =0x027E0000
@@ -1474,7 +1474,7 @@ _022594E8:
 	mov r1, #2
 	ldr r0, [r5, #0xc]
 	add r2, r1, #0
-	bl sub_02003D5C
+	bl PaletteData_FillPaletteInBuffer
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #1
@@ -2051,7 +2051,7 @@ _02259966:
 	ldr r1, [sp, #0x28]
 	add r1, r1, r2
 	mov r2, #1
-	bl sub_02003DE8
+	bl BlendPalette
 	ldr r0, [sp, #0x14]
 	add r0, #0x42
 	ldrh r1, [r0]
@@ -2777,7 +2777,7 @@ _02259F20:
 	ldr r0, [r4, #0xc]
 	mov r1, #1
 	mov r2, #2
-	bl sub_02003D5C
+	bl PaletteData_FillPaletteInBuffer
 _02259F7E:
 	ldr r0, _02259F98 ; =0x000005EB
 	bl PlaySE
@@ -3115,7 +3115,7 @@ ov89_0225A1D8: ; 0x0225A1D8
 	add r1, r5, r1
 	mov r2, #1
 	mov r3, #6
-	bl sub_02003DE8
+	bl BlendPalette
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -3205,7 +3205,7 @@ _0225A278:
 	ldr r2, [sp, #0x18]
 	add r0, sp, #0x38
 	str r3, [sp, #0x14]
-	bl AddTextPrinterParameterized3
+	bl AddTextPrinterParameterizedWithColorAndSpacing
 	add r0, sp, #0x38
 	mov r1, #1
 	mov r2, #0x7d
@@ -8193,7 +8193,7 @@ _0225C7D8:
 	add r2, r7, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, r5
 	bl CopyWindowToVram
 	ldr r0, [sp, #0x1c]
@@ -8251,7 +8251,7 @@ ov89_0225C84C: ; 0x0225C84C
 	ldr r0, _0225C888 ; =ov89_0225CE50
 	add r6, r1, #0
 	mov r4, #0xff
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	cmp r0, #6
 	bge _0225C87A
 	cmp r6, r0

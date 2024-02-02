@@ -272,7 +272,7 @@ _021E5AEA:
 	b _021E5BC6
 _021E5AF6:
 	ldr r0, [r4, #0x18]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _021E5B06
 	cmp r0, #2
@@ -280,7 +280,7 @@ _021E5AF6:
 	b _021E5BC6
 _021E5B06:
 	ldr r0, [r4, #0x18]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	ldr r0, [r4, #0x14]
 	mov r1, #0
 	bl UnkImageStruct_SetSpriteVisibleFlag
@@ -302,7 +302,7 @@ _021E5B06:
 	b _021E5BC6
 _021E5B3A:
 	ldr r0, [r4, #0x18]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	ldr r0, [r4, #0x14]
 	mov r1, #0
 	bl UnkImageStruct_SetSpriteVisibleFlag
@@ -461,7 +461,7 @@ ov111_021E5C54: ; 0x021E5C54
 	bic r4, r2
 	strb r4, [r3, #0x12]
 	ldr r0, [r0, #0x18]
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add sp, #0x14
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -741,7 +741,7 @@ _021E5E46:
 	add r0, r4, #0
 	bl ov111_021E6180
 	ldr r0, [r4]
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	str r0, [r4, #0x18]
 	ldr r0, [r4]
 	bl ov111_021E67C4
@@ -787,7 +787,7 @@ ov111_021E5F04: ; 0x021E5F04
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4, #0x18]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	ldr r0, [r4, #0x20]
 	bl ov111_021E6710
 	ldr r0, [r4, #0x24]
@@ -2209,7 +2209,7 @@ ov111_021E69F4: ; 0x021E69F4
 	beq _021E6A0A
 	lsl r0, r1, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _021E6A0A:
 	ldr r0, [r4, #0x1c]
 	cmp r0, #0
@@ -2342,7 +2342,7 @@ _021E6ADE:
 	ldr r2, [r6]
 	add r0, r4, #0
 	mov r1, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r5, r0, #0
 	ldr r2, _021E6B28 ; =0x000003D2
 	add r0, r4, #0
@@ -2384,7 +2384,7 @@ ov111_021E6B30: ; 0x021E6B30
 	str r1, [sp, #0xc]
 	ldrb r3, [r3, #0x18]
 	add r0, r5, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add sp, #0x10

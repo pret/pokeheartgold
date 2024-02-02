@@ -53,7 +53,7 @@ ov40_0222B6E0: ; 0x0222B6E0
 	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r4, #0x28]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r2, #2
 	ldr r0, [r4, #0x28]
 	mov r1, #0
@@ -336,7 +336,7 @@ _0222B9FE:
 	bl NARC_Delete
 	ldr r0, _0222BA84 ; =0x0000416C
 	ldr r0, [r5, r0]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, [r5, #0x18]
 	ldr r1, [r5, #0x1c]
 	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
@@ -345,7 +345,7 @@ _0222B9FE:
 	bl sub_0203A914
 	bl sub_02021238
 	ldr r0, [r5, #0x2c]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0
 	bl sub_02002B8C
 	ldr r7, _0222BA88 ; =0x0000087C
@@ -669,7 +669,7 @@ ov40_0222BD04: ; 0x0222BD04
 	add r4, r0, #0
 	bl GF_RunVramTransferTasks
 	ldr r0, [r4, #0x28]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r4, #0x24]
 	bl DoScheduledBgGpuUpdates
 	ldr r3, _0222BD28 ; =0x027E0000
@@ -1492,7 +1492,7 @@ _0222C370:
 	add r0, #0x30
 	mov r1, #5
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	str r0, [r4, #0x2c]
 	add sp, #4
 	pop {r3, r4, pc}
@@ -1619,11 +1619,11 @@ _0222C470: .word 0x000005FC
 
 	thumb_func_start ov40_0222C474
 ov40_0222C474: ; 0x0222C474
-	ldr r3, _0222C47C ; =sub_02026CC4
+	ldr r3, _0222C47C ; =TouchHitboxController_IsTriggered
 	ldr r0, [r0, #0x2c]
 	bx r3
 	nop
-_0222C47C: .word sub_02026CC4
+_0222C47C: .word TouchHitboxController_IsTriggered
 	thumb_func_end ov40_0222C474
 
 	thumb_func_start ov40_0222C480
@@ -1912,7 +1912,7 @@ _0222C680:
 	add r0, r5, #0
 	mov r2, #2
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov40_0222C4F8
@@ -2322,7 +2322,7 @@ _0222C9E2:
 	ldr r0, _0222CA88 ; =ov40_0222D048
 	ldr r1, [sp, #4]
 	mov r2, #5
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	mov r1, #7
 	lsl r1, r1, #8
 	str r0, [r4, r1]
@@ -2429,7 +2429,7 @@ ov40_0222CABC: ; 0x0222CABC
 	lsl r6, r6, #8
 _0222CAC6:
 	ldr r0, [r5, r6]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r4, r4, #1
 	add r5, #0x30
 	cmp r4, #6
@@ -2890,7 +2890,7 @@ _0222CE4C:
 	ldr r0, [sp, #4]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add sp, #0x50
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3735,7 +3735,7 @@ _0222D504:
 	add r0, sp, #0x1c
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x10]
 	ldr r1, [sp, #0x10]
 	ldr r0, [r0, #0x14]
@@ -3914,7 +3914,7 @@ ov40_0222D66C: ; 0x0222D66C
 	str r1, [sp, #0xc]
 	add r0, sp, #0x10
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r5, #8]
 	ldr r1, [r5, #0xc]
 	add r2, sp, #0x10
@@ -4759,7 +4759,7 @@ ov40_0222DD08: ; 0x0222DD08
 	ldr r0, [r4, #0x28]
 	mov r1, #2
 	mov r3, #0
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #0
 	lsl r0, r0, #0x10
@@ -4768,7 +4768,7 @@ ov40_0222DD08: ; 0x0222DD08
 	ldr r0, [r4, #0x28]
 	ldr r2, _0222DD64 ; =0x0000FFFF
 	add r3, r1, #0
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _0222DD64 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -4777,7 +4777,7 @@ ov40_0222DD08: ; 0x0222DD08
 	ldr r0, [r4, #0x28]
 	mov r1, #3
 	mov r3, #0
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _0222DD64 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -4786,7 +4786,7 @@ ov40_0222DD08: ; 0x0222DD08
 	ldr r0, [r4, #0x28]
 	mov r1, #1
 	mov r3, #0
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add sp, #4
 	pop {r3, r4, pc}
 	nop
@@ -4886,7 +4886,7 @@ ov40_0222DD9C: ; 0x0222DD9C
 	add r0, r5, r4
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, r4
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
@@ -5026,7 +5026,7 @@ ov40_0222DED0: ; 0x0222DED0
 	add r0, r5, r4
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, r4
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
@@ -5065,7 +5065,7 @@ ov40_0222DF60: ; 0x0222DF60
 	add r0, r5, r6
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, r6
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
@@ -5175,7 +5175,7 @@ ov40_0222DFE8: ; 0x0222DFE8
 	add r0, r5, r4
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, r4
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
@@ -5277,7 +5277,7 @@ _0222E0D6:
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	add r2, r6, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	mov r0, #4
@@ -5353,7 +5353,7 @@ _0222E0D6:
 	str r0, [sp, #8]
 	add r0, r5, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x2c]
@@ -5408,7 +5408,7 @@ _0222E0D6:
 	str r0, [sp, #8]
 	add r0, r5, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x38]
@@ -5441,7 +5441,7 @@ _0222E0D6:
 	str r0, [sp, #8]
 	add r0, r5, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
@@ -5473,7 +5473,7 @@ _0222E0D6:
 	add r0, r5, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
@@ -5506,7 +5506,7 @@ _0222E33C:
 	add r0, r5, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x44]
@@ -5549,7 +5549,7 @@ _0222E33C:
 	ldr r0, [sp, #0x18]
 	mov r3, #4
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x18]
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
@@ -5587,7 +5587,7 @@ _0222E434:
 	str r0, [sp, #8]
 	add r0, r5, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
@@ -5619,7 +5619,7 @@ _0222E46A:
 	ldr r0, [sp, #0x14]
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x14]
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
@@ -6138,7 +6138,7 @@ _0222E890:
 	add r0, r5, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x14]
@@ -6245,7 +6245,7 @@ _0222E95C:
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x18]
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x1c]
 	bl String_Delete
 	ldr r0, [r4]
@@ -6384,7 +6384,7 @@ _0222EA72:
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x20]
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x24]
 	bl String_Delete
 	ldr r0, [r4, #0x10]
@@ -6451,7 +6451,7 @@ _0222EAC0:
 	mov r6, ip
 	mov r1, #0
 	sub r3, r3, r6
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	str r5, [sp]
 	mov r0, #0xff
 	str r0, [sp, #4]
@@ -6463,7 +6463,7 @@ _0222EAC0:
 	ldr r0, [sp, #0x20]
 	mov r1, #0
 	mov r3, #0x10
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	str r5, [sp]
 	mov r0, #0xff
 	str r0, [sp, #4]
@@ -6475,7 +6475,7 @@ _0222EAC0:
 	ldr r0, [sp, #0x20]
 	add r2, r7, #0
 	mov r3, #0x16
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 	ldr r0, [sp, #0x2c]
@@ -6820,7 +6820,7 @@ _0222EDA8:
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x50]
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r4, #0x28]
 	ldr r0, [r0, #8]
 	cmp r0, #2
@@ -6858,7 +6858,7 @@ _0222EDA8:
 	mov r0, #0
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x50]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _0222EE7A:
 	ldr r0, [sp, #0x4c]
 	bl String_Delete
@@ -6997,7 +6997,7 @@ _0222EF7C:
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x14]
 	ldr r2, [r5]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r7, #8]
 	mov r1, #0
 	lsl r0, r0, #3
@@ -7013,7 +7013,7 @@ _0222EF7C:
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x14]
 	ldr r2, [r5, #4]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r6, #0x10]
 	add r4, r4, #1
 	add r5, #8
@@ -7095,7 +7095,7 @@ _0222F030:
 	mov r0, #0
 	str r0, [sp, #0xc]
 	add r0, r7, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r5, #0x28]
 	mov r1, #0
 	ldr r0, [r0, #8]
@@ -7112,7 +7112,7 @@ _0222F030:
 	str r0, [sp, #0xc]
 	ldr r2, [r4, #4]
 	add r0, r7, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _0222F07C:
 	ldr r0, [r5, #0x10]
 	add r6, r6, #1
@@ -7412,7 +7412,7 @@ _0222F258:
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x58]
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r4, #0x28]
 	ldr r0, [r0, #8]
 	cmp r0, #2
@@ -7450,7 +7450,7 @@ _0222F258:
 	mov r0, #0
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x58]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _0222F32A:
 	ldr r0, [sp, #0x44]
 	add r0, r0, #1
@@ -7516,7 +7516,7 @@ _0222F3AA:
 	ldr r0, [r5, #0x28]
 	ldr r0, [r0, #0x28]
 	add r0, r0, r4
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _0222F3D0
 	add r0, r7, #0
@@ -7602,7 +7602,7 @@ _0222F42C:
 	mov r0, #0
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x18]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 	ldr r0, [sp, #0x10]
@@ -7740,7 +7740,7 @@ _0222F500:
 	mov r1, #0
 	add r2, r7, #0
 	sub r3, r3, r6
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	str r4, [sp]
 	mov r0, #0xff
 	str r0, [sp, #4]
@@ -7752,7 +7752,7 @@ _0222F500:
 	ldr r0, [sp, #0x28]
 	mov r1, #0
 	mov r3, #0x10
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	str r4, [sp]
 	mov r0, #0xff
 	str r0, [sp, #4]
@@ -7764,7 +7764,7 @@ _0222F500:
 	ldr r0, [sp, #0x28]
 	add r2, r5, #0
 	mov r3, #0x16
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	add r0, r7, #0
@@ -8432,7 +8432,7 @@ ov40_0222FA88: ; 0x0222FA88
 	add r0, sp, #4
 	add r1, sp, #0
 	mov r4, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	add r6, r0, #0
 	ldr r0, [r5, #0x14]
 	cmp r0, #0
@@ -8457,11 +8457,11 @@ _0222FAAC:
 	pop {r4, r5, r6, pc}
 _0222FAC6:
 	ldr r0, _0222FB20 ; =ov40_02244E08
-	bl sub_020252F4
+	bl TouchscreenHitbox_TouchHeldIsIn
 	cmp r0, #0
 	bne _0222FADA
 	ldr r0, _0222FB24 ; =ov40_02244E0C
-	bl sub_020252F4
+	bl TouchscreenHitbox_TouchHeldIsIn
 	cmp r0, #0
 	beq _0222FADC
 _0222FADA:
@@ -8560,7 +8560,7 @@ ov40_0222FB74: ; 0x0222FB74
 	mov r0, #1
 	str r0, [r4, #4]
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov40_0222FB74
 
@@ -8573,13 +8573,13 @@ ov40_0222FB90: ; 0x0222FB90
 	add r0, r2, #4
 	str r1, [r3, r0]
 	add r1, r3, r2
-	ldr r3, _0222FBAC ; =sub_0200E33C
+	ldr r3, _0222FBAC ; =SysTask_CreateOnVBlankQueue
 	ldr r0, _0222FBB0 ; =ov40_0222FB74
 	mov r2, #4
 	bx r3
 	nop
 _0222FBA8: .word 0x0000052C
-_0222FBAC: .word sub_0200E33C
+_0222FBAC: .word SysTask_CreateOnVBlankQueue
 _0222FBB0: .word ov40_0222FB74
 	thumb_func_end ov40_0222FB90
 
@@ -8629,7 +8629,7 @@ ov40_0222FBF8: ; 0x0222FBF8
 	ldr r0, _0222FC0C ; =ov40_0222FBBC
 	add r1, r4, #0
 	mov r2, #5
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	ldr r1, _0222FC10 ; =0x0000416C
 	str r0, [r4, r1]
 	pop {r4, pc}
@@ -9181,7 +9181,7 @@ _0222FFAE:
 	str r0, [sp, #0xc]
 	add r0, r5, #0
 	add r2, r6, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	mov r0, #4
@@ -9257,7 +9257,7 @@ _02230062:
 	str r0, [sp, #8]
 	add r0, r5, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x44]
@@ -9293,7 +9293,7 @@ _02230062:
 	add r0, r5, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
@@ -9358,7 +9358,7 @@ _02230062:
 	str r0, [sp, #8]
 	add r0, r5, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x50]
@@ -9525,7 +9525,7 @@ _022302BA:
 	str r0, [sp, #8]
 	ldr r0, [sp, #0x14]
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x14]
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x38]
@@ -10151,7 +10151,7 @@ ov40_022307FC: ; 0x022307FC
 	ldr r1, [r4, r2]
 	cmp r1, #7
 	blt _02230846
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, _0223085C ; =0x00004160
 	mov r2, #0
 	str r2, [r4, r0]
@@ -10202,7 +10202,7 @@ ov40_02230864: ; 0x02230864
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0223087E
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0223087E:
 	ldr r0, _02230930 ; =0x00004168
 	mov r1, #0
@@ -10229,7 +10229,7 @@ _02230894:
 	str r1, [r4, r0]
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	ldr r0, _0223093C ; =0x00004164
 	ldr r0, [r4, r0]
 	bl sub_02087A30
@@ -10263,7 +10263,7 @@ _02230894:
 	ldr r0, _02230940 ; =ov40_022307FC
 	add r1, r4, #0
 	lsl r2, r2, #0xc
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r2, _02230930 ; =0x00004168
 	str r0, [r4, r2]
 	ldr r0, [r4, r2]
@@ -11084,7 +11084,7 @@ ov40_02230E34: ; 0x02230E34
 	str r0, [sp, #8]
 	add r0, r5, r4
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl String_Delete
 	add r0, r5, r4
@@ -11169,7 +11169,7 @@ _02230F12:
 	ldr r2, _022310E8 ; =0x0000FFFE
 	mov r1, #2
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add r0, r4, #0
 	bl ov40_0222DAF0
 	lsl r0, r0, #0x10
@@ -11179,7 +11179,7 @@ _02230F12:
 	ldr r2, _022310EC ; =0x0000BFFF
 	mov r1, #0
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add r0, r4, #0
 	bl ov40_0222DAF0
 	lsl r0, r0, #0x10
@@ -11189,7 +11189,7 @@ _02230F12:
 	ldr r2, _022310F0 ; =0x00003FFE
 	mov r1, #3
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add r0, r4, #0
 	bl ov40_0222DAF0
 	lsl r0, r0, #0x10
@@ -11199,7 +11199,7 @@ _02230F12:
 	ldr r2, _022310F4 ; =0x0000FFFF
 	mov r1, #1
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, _022310F8 ; =0x000006F4
 	ldr r0, [r4, r0]
 	bl sub_02087A30
@@ -11308,7 +11308,7 @@ _02231056:
 	mov r1, #0
 	lsl r2, r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _022310E2
 _02231078:
 	add r0, r1, #1
@@ -11329,7 +11329,7 @@ _0223107E:
 	mov r1, #0
 	lsl r2, r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _022310E2
 _022310A0:
 	add r0, r1, #1
@@ -11509,7 +11509,7 @@ _02231202:
 	ldr r2, _0223130C ; =0x0000FFFE
 	mov r1, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add r0, r4, #0
 	bl ov40_0222DAF0
 	lsl r0, r0, #0x10
@@ -11521,7 +11521,7 @@ _02231202:
 	ldr r2, _02231310 ; =0x0000FFFF
 	mov r1, #0
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add r0, r4, #0
 	bl ov40_0222DAF0
 	lsl r0, r0, #0x10
@@ -11533,7 +11533,7 @@ _02231202:
 	ldr r2, _02231314 ; =0x00003FFE
 	mov r1, #3
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add r0, r4, #0
 	bl ov40_0222DAF0
 	lsl r0, r0, #0x10
@@ -11545,7 +11545,7 @@ _02231202:
 	ldr r2, _02231310 ; =0x0000FFFF
 	mov r1, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _022312FC
 _0223127E:
 	ldr r0, [r4, #0x58]
@@ -11556,7 +11556,7 @@ _0223127E:
 	ldr r0, [r4, #0x28]
 	mov r2, #2
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #2
 	lsl r0, r0, #0x10
@@ -11565,7 +11565,7 @@ _0223127E:
 	ldr r0, [r4, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -11673,7 +11673,7 @@ _02231330:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0xc]
 	cmp r0, #2
 	bne _022313EA
@@ -11694,7 +11694,7 @@ _02231398:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -11713,7 +11713,7 @@ _022313B8:
 	ldr r0, [r4, #0x28]
 	lsl r3, r3, #0x18
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0xc]
 	cmp r0, #0
 	bne _022313EA
@@ -11796,7 +11796,7 @@ _0223143E:
 	ldr r0, [r5, #0x28]
 	mov r1, #2
 	mov r2, #0xc
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r0, #0
 	str r0, [sp, #0x14]
 	mov r0, #0x6e
@@ -11910,7 +11910,7 @@ _0223152A:
 	ldrb r3, [r3]
 	ldr r0, [r5, #0x28]
 	mov r2, #0xc
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02231560:
 	mov r0, #0
 	str r0, [sp, #0xc]
@@ -12121,14 +12121,14 @@ _022316FC: .word 0x0000057B
 ov40_02231700: ; 0x02231700
 	push {r3, lr}
 	ldr r0, _02231724 ; =ov40_02245100
-	bl sub_020252F4
+	bl TouchscreenHitbox_TouchHeldIsIn
 	cmp r0, #0
 	beq _02231710
 	mov r0, #1
 	pop {r3, pc}
 _02231710:
 	ldr r0, _02231728 ; =ov40_02245104
-	bl sub_020252F4
+	bl TouchscreenHitbox_TouchHeldIsIn
 	cmp r0, #0
 	beq _0223171E
 	mov r0, #2
@@ -12204,7 +12204,7 @@ _02231788:
 	ldr r2, _0223185C ; =0x0000FFFE
 	mov r1, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add r0, r4, #0
 	bl ov40_0222DAF0
 	lsl r0, r0, #0x10
@@ -12216,7 +12216,7 @@ _02231788:
 	ldr r2, _02231860 ; =0x0000FFFF
 	mov r1, #0
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add r0, r4, #0
 	bl ov40_0222DAF0
 	lsl r0, r0, #0x10
@@ -12228,7 +12228,7 @@ _02231788:
 	ldr r2, _02231864 ; =0x00003FFE
 	mov r1, #3
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add r0, r4, #0
 	bl ov40_0222DAF0
 	lsl r0, r0, #0x10
@@ -12240,7 +12240,7 @@ _02231788:
 	ldr r2, _02231860 ; =0x0000FFFF
 	mov r1, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02231850
 _02231802:
 	mov r0, #0x10
@@ -12453,7 +12453,7 @@ _02231994:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov40_022318C8
@@ -12568,7 +12568,7 @@ _02231A72:
 	ldr r0, _02231C64 ; =ov40_022318C8
 	add r1, r5, #0
 	lsl r2, r2, #0xc
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	mov r0, #0x6e
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -12606,7 +12606,7 @@ _02231A9A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02231AC8:
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0xc]
@@ -12730,7 +12730,7 @@ _02231BB6:
 	ldr r0, _02231C64 ; =ov40_022318C8
 	add r1, r5, #0
 	lsl r2, r2, #0xc
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r0, _02231C70 ; =0x000006D8
 	add r7, r7, #1
 	ldr r0, [r4, r0]
@@ -12918,7 +12918,7 @@ _02231D2A:
 	ldr r0, _02231E9C ; =ov40_022318C8
 	add r1, r4, #0
 	lsl r2, r2, #0xc
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r0, _02231E98 ; =0x000006D8
 	add r6, r6, #1
 	ldr r0, [r5, r0]
@@ -13001,7 +13001,7 @@ _02231DD4:
 	ldr r0, _02231E9C ; =ov40_022318C8
 	add r1, r4, #0
 	lsl r2, r2, #0xc
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	mov r0, #0x6e
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -13066,7 +13066,7 @@ _02231E38:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02231E60:
 	ldr r0, [r4, #4]
 	cmp r0, #0
@@ -13168,7 +13168,7 @@ _02231F0C:
 	lsl r3, r3, #0x18
 	mov r1, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232090 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13179,7 +13179,7 @@ _02231F0C:
 	lsl r3, r3, #0x18
 	mov r1, #0
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232090 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13190,7 +13190,7 @@ _02231F0C:
 	lsl r3, r3, #0x18
 	mov r1, #3
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232090 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13201,7 +13201,7 @@ _02231F0C:
 	lsl r3, r3, #0x18
 	mov r1, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02232088
 _02231F6E:
 	mov r0, #0x10
@@ -13225,7 +13225,7 @@ _02231F6E:
 	lsl r3, r3, #0x18
 	mov r1, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232090 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13236,7 +13236,7 @@ _02231F6E:
 	lsl r3, r3, #0x18
 	mov r1, #0
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232090 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13247,7 +13247,7 @@ _02231F6E:
 	lsl r3, r3, #0x18
 	mov r1, #3
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232090 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13258,7 +13258,7 @@ _02231F6E:
 	lsl r3, r3, #0x18
 	mov r1, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -13295,7 +13295,7 @@ _0223201E:
 	lsl r3, r3, #0x18
 	mov r1, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232090 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13306,7 +13306,7 @@ _0223201E:
 	lsl r3, r3, #0x18
 	mov r1, #0
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232090 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13317,7 +13317,7 @@ _0223201E:
 	lsl r3, r3, #0x18
 	mov r1, #3
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232090 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13328,7 +13328,7 @@ _0223201E:
 	lsl r3, r3, #0x18
 	mov r1, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02232088
 _02232080:
 	add r0, r4, #0
@@ -13410,7 +13410,7 @@ _02232100:
 	lsl r3, r3, #0x18
 	mov r1, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232284 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13421,7 +13421,7 @@ _02232100:
 	lsl r3, r3, #0x18
 	mov r1, #0
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232284 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13432,7 +13432,7 @@ _02232100:
 	lsl r3, r3, #0x18
 	mov r1, #3
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232284 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13443,7 +13443,7 @@ _02232100:
 	lsl r3, r3, #0x18
 	mov r1, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223227E
 _02232162:
 	mov r0, #0x10
@@ -13467,7 +13467,7 @@ _02232162:
 	lsl r3, r3, #0x18
 	mov r1, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232284 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13478,7 +13478,7 @@ _02232162:
 	lsl r3, r3, #0x18
 	mov r1, #0
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232284 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13489,7 +13489,7 @@ _02232162:
 	lsl r3, r3, #0x18
 	mov r1, #3
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232284 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13500,7 +13500,7 @@ _02232162:
 	lsl r3, r3, #0x18
 	mov r1, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -13537,7 +13537,7 @@ _02232212:
 	lsl r3, r3, #0x18
 	mov r1, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232284 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13548,7 +13548,7 @@ _02232212:
 	lsl r3, r3, #0x18
 	mov r1, #0
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232284 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13559,7 +13559,7 @@ _02232212:
 	lsl r3, r3, #0x18
 	mov r1, #3
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02232284 ; =0x0000FFFF
 	lsl r0, r0, #0x10
@@ -13570,7 +13570,7 @@ _02232212:
 	lsl r3, r3, #0x18
 	mov r1, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223227E
 _02232274:
 	mov r1, #0
@@ -13660,7 +13660,7 @@ _0223230C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -13671,7 +13671,7 @@ _0223230C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #1
 	lsl r0, r0, #0x10
@@ -13682,7 +13682,7 @@ _0223230C:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02232460
 _02232356:
 	mov r1, #1
@@ -13854,7 +13854,7 @@ _022324AC:
 	ldr r2, _02232594 ; =ov40_02232ED4
 	mov r1, #3
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x5d
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -13937,7 +13937,7 @@ _0223256A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223258C
 _02232584:
 	add r0, r4, #0
@@ -13960,7 +13960,7 @@ ov40_02232598: ; 0x02232598
 	mov r0, #0x5d
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -14159,7 +14159,7 @@ ov40_022326DC: ; 0x022326DC
 	str r0, [sp, #8]
 	add r0, r4, r6
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r4, r6
@@ -14201,7 +14201,7 @@ ov40_022326DC: ; 0x022326DC
 	str r0, [sp, #8]
 	add r0, r4, r6
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	add r0, r4, r6
@@ -14270,7 +14270,7 @@ _02232820:
 	mov r0, #0x5d
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #4
 	mov r1, #0
 	bl GfGfx_EngineBTogglePlanes
@@ -14341,7 +14341,7 @@ _022328B2:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02232A30
 _022328CC:
 	bl ov40_022326DC
@@ -14402,11 +14402,11 @@ _0223293A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02232A30
 _02232954:
 	ldr r0, _02232A38 ; =ov40_0224512C
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _02232994
 	mov r0, #0x66
@@ -14436,7 +14436,7 @@ _0223298C:
 	b _02232A30
 _02232994:
 	ldr r0, _02232A44 ; =ov40_02245130
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _02232A30
 	mov r0, #0x66
@@ -14490,7 +14490,7 @@ _022329F4:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02232A30
 _02232A0E:
 	mov r0, #0x66
@@ -14673,7 +14673,7 @@ _02232B70:
 	mov r0, #0x5d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r0, r5, #0
 	bl ov40_02232FCC
 	add r0, r5, #0
@@ -14733,7 +14733,7 @@ _02232BF2:
 	mov r0, #0x5d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #4
 	mov r1, #0
 	bl GfGfx_EngineBTogglePlanes
@@ -14788,7 +14788,7 @@ _02232C5C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02232D3E
 _02232C76:
 	mov r1, #1
@@ -14840,7 +14840,7 @@ _02232CBA:
 	ldr r0, [r5, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r5, #0x10]
 	add r0, r5, #0
@@ -14863,7 +14863,7 @@ _02232D0E:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #1
 	lsl r0, r0, #0x10
@@ -14874,7 +14874,7 @@ _02232D0E:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02232D3E:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -14929,7 +14929,7 @@ _02232D90:
 	ldr r2, _02232ECC ; =ov40_02232ED4
 	mov r1, #3
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x5d
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -15025,7 +15025,7 @@ _02232E64:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02232EC2
 _02232E7E:
 	mov r0, #6
@@ -15249,7 +15249,7 @@ ov40_02232FEC: ; 0x02232FEC
 	str r0, [sp, #8]
 	add r0, r4, r6
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	add r0, r4, r6
@@ -15954,7 +15954,7 @@ _022335D8:
 	blt _022335A4
 	ldr r0, [sp, #4]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	add sp, #0x44
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -16894,7 +16894,7 @@ _02233D9C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -16905,7 +16905,7 @@ _02233D9C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #1
 	lsl r0, r0, #0x10
@@ -16916,7 +16916,7 @@ _02233D9C:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02233ED8
 _02233DE6:
 	add r0, r4, #0
@@ -16951,7 +16951,7 @@ _02233DE6:
 	lsl r3, r3, #0x18
 	mov r2, #0x1c
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #8]
 	add r0, r0, #1
 	str r0, [r4, #8]
@@ -17015,7 +17015,7 @@ _02233EB6:
 	lsl r3, r3, #0x18
 	mov r2, #0x1c
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02233ED8
 _02233ED0:
 	add r0, r4, #0
@@ -17037,7 +17037,7 @@ ov40_02233EE8: ; 0x02233EE8
 	add r4, r0, #0
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	cmp r0, #0
 	beq _02233F1C
 	ldr r0, [sp, #4]
@@ -17110,7 +17110,7 @@ _02233F66:
 	lsl r3, r3, #0x18
 	mov r2, #0x1c
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	ldr r2, _02234140 ; =0x00004018
 	lsl r0, r0, #0x10
@@ -17121,7 +17121,7 @@ _02233F66:
 	lsl r3, r3, #0x18
 	mov r1, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add r0, r4, #0
 	bl ov40_02233AEC
 	cmp r0, #0
@@ -17215,7 +17215,7 @@ _0223404A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -17226,7 +17226,7 @@ _0223404A:
 	lsl r3, r3, #0x18
 	mov r2, #0x1c
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #1
 	lsl r0, r0, #0x10
@@ -17237,7 +17237,7 @@ _0223404A:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02234136
 _0223409E:
 	add r0, r5, #0
@@ -17273,7 +17273,7 @@ _0223409E:
 	ldr r0, [r4, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r4, #0x10]
 	add r0, r4, #0
@@ -17294,7 +17294,7 @@ _02234106:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #1
 	lsl r0, r0, #0x10
@@ -17305,7 +17305,7 @@ _02234106:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02234136:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -17420,7 +17420,7 @@ _02234210:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -17431,7 +17431,7 @@ _02234210:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #1
 	lsl r0, r0, #0x10
@@ -17442,7 +17442,7 @@ _02234210:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02234328
 _0223425A:
 	mov r0, #0
@@ -17618,7 +17618,7 @@ _022343DA:
 	ldr r0, [r5, #0x28]
 	add r2, r1, #0
 	lsl r3, r3, #8
-	bl sub_020032A4
+	bl PaletteData_LoadPaletteSlotFromHardware
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -17657,7 +17657,7 @@ _02234426:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02234446
 _02234440:
 	mov r1, #3
@@ -17691,7 +17691,7 @@ ov40_02234470: ; 0x02234470
 	lsl r0, r0, #4
 	ldr r4, [r5, r0]
 	ldr r0, _022344D0 ; =ov40_022451C8
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _02234492
 	add r0, r5, #0
@@ -17701,7 +17701,7 @@ ov40_02234470: ; 0x02234470
 	bl ov40_0222BF80
 _02234492:
 	ldr r0, _022344D4 ; =ov40_022451CC
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _022344AA
 	add r0, r5, #0
@@ -17858,7 +17858,7 @@ _022345E0:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _022347F2
 _022345FA:
 	mov r1, #0x6f
@@ -18037,7 +18037,7 @@ _02234776:
 	ldr r0, [r4, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r4, #0x10]
 	add r0, r4, #0
@@ -18065,7 +18065,7 @@ _022347C2:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -18076,7 +18076,7 @@ _022347C2:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _022347F2:
 	mov r0, #0
 	add sp, #8
@@ -18189,7 +18189,7 @@ _022348DE:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02234A08
 _022348F8:
 	add r4, #8
@@ -18264,7 +18264,7 @@ _02234984:
 	ldr r0, [r5, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r5, #0x10]
 	add r0, r5, #0
@@ -18292,7 +18292,7 @@ _022349D8:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -18303,7 +18303,7 @@ _022349D8:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02234A08:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -18380,7 +18380,7 @@ _02234A60:
 	ldr r2, _02234BB4 ; =ov40_02235FD0
 	mov r1, #9
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x1d
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -18419,15 +18419,15 @@ _02234AD4:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02234BAC
 _02234AEE:
 	mov r0, #0x1d
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	ldr r0, _02234BB8 ; =ov40_022451C4
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	bne _02234B0C
 	mov r0, #0x79
@@ -18447,7 +18447,7 @@ _02234B1A:
 	mov r0, #0x1d
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r0, r4, #0
 	bl ov40_0222DFB0
 	ldr r0, [r4, #8]
@@ -18496,7 +18496,7 @@ _02234B76:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02234BAC
 _02234B90:
 	mov r0, #0x79
@@ -18657,7 +18657,7 @@ _02234CA0:
 	str r0, [r4, #8]
 _02234CD4:
 	ldr r0, _02234D90 ; =ov40_022451C4
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _02234D7C
 	add r0, r4, #0
@@ -18713,7 +18713,7 @@ _02234D40:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02234D7C
 _02234D5A:
 	add r0, r4, #0
@@ -18840,7 +18840,7 @@ _02234E60:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02234F8A
 _02234E7A:
 	add r4, #8
@@ -18915,7 +18915,7 @@ _02234F06:
 	ldr r0, [r5, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r5, #0x10]
 	add r0, r5, #0
@@ -18943,7 +18943,7 @@ _02234F5A:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -18954,7 +18954,7 @@ _02234F5A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02234F8A:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -19231,7 +19231,7 @@ _022351D0:
 	ldr r0, [r5, #0x28]
 	add r2, r1, #0
 	lsl r3, r3, #8
-	bl sub_020032A4
+	bl PaletteData_LoadPaletteSlotFromHardware
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -19280,7 +19280,7 @@ _02235234:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02235254
 _0223524E:
 	mov r1, #8
@@ -19314,7 +19314,7 @@ ov40_0223527C: ; 0x0223527C
 	lsl r0, r0, #4
 	ldr r4, [r5, r0]
 	ldr r0, _0223533C ; =ov40_022451C4
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _0223529E
 	add r0, r5, #0
@@ -19324,7 +19324,7 @@ ov40_0223527C: ; 0x0223527C
 	bl ov40_0222BF80
 _0223529E:
 	ldr r0, _02235340 ; =ov40_022451D0
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _022352B6
 	add r0, r5, #0
@@ -19334,7 +19334,7 @@ _0223529E:
 	bl ov40_0222BF80
 _022352B6:
 	ldr r0, _02235344 ; =ov40_022451D4
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _022352E4
 	mov r1, #0x8d
@@ -19357,7 +19357,7 @@ _022352D2:
 	bl ov40_0222BF80
 _022352E4:
 	ldr r0, _02235348 ; =ov40_022451D8
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _02235316
 	mov r1, #0x8d
@@ -19500,7 +19500,7 @@ _02235410:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02235430
 _0223542A:
 	mov r1, #3
@@ -19694,7 +19694,7 @@ _022355AE:
 	ldr r0, [r5, #0x28]
 	add r2, r1, #0
 	lsl r3, r3, #8
-	bl sub_020032A4
+	bl PaletteData_LoadPaletteSlotFromHardware
 _022355C2:
 	ldr r0, [r5, #8]
 	add r0, r0, #1
@@ -19946,7 +19946,7 @@ _022357C6:
 	ldr r0, [r5, #0x28]
 	add r2, r1, #0
 	lsl r3, r3, #8
-	bl sub_020032A4
+	bl PaletteData_LoadPaletteSlotFromHardware
 _022357DA:
 	ldr r0, [r5, #8]
 	add r0, r0, #1
@@ -20050,7 +20050,7 @@ ov40_02235868: ; 0x02235868
 	str r0, [sp, #8]
 	add r0, r4, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	add r0, r4, #0
@@ -20110,7 +20110,7 @@ ov40_02235900: ; 0x02235900
 _02235918:
 	bl GF_RunVramTransferTasks
 	ldr r0, [r4, #0x28]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r4, #0x24]
 	bl DoScheduledBgGpuUpdates
 	ldr r3, _02235938 ; =0x027E0000
@@ -20488,7 +20488,7 @@ _02235C18:
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x20]
 	add r2, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x14]
 	add r5, r5, #1
 	add r6, #0x10
@@ -20624,7 +20624,7 @@ _02235D48:
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x20]
 	add r2, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x14]
 	add r5, r5, #1
 	add r6, #0x10
@@ -21049,7 +21049,7 @@ _02236014:
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	mov r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	b _022360DA
 _022360BE:
 	ldr r0, [sp, #0x18]
@@ -21064,7 +21064,7 @@ _022360BE:
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	mov r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _022360DA:
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
@@ -21767,7 +21767,7 @@ ov40_022365A0: ; 0x022365A0
 	ldr r2, _022366AC ; =ov40_02236230
 	mov r1, #4
 	add r3, r5, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x33
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -21777,7 +21777,7 @@ ov40_022365A0: ; 0x022365A0
 	ldr r2, _022366B4 ; =ov40_022362E4
 	mov r1, #7
 	add r3, r5, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0xcd
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -21787,7 +21787,7 @@ ov40_022365A0: ; 0x022365A0
 	ldr r2, _022366B8 ; =ov40_02236320
 	mov r1, #7
 	add r3, r5, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0xce
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -21797,7 +21797,7 @@ ov40_022365A0: ; 0x022365A0
 	ldr r2, _022366C0 ; =ov40_0223635C
 	mov r1, #3
 	add r3, r5, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0xcf
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -21807,7 +21807,7 @@ ov40_022365A0: ; 0x022365A0
 	ldr r2, _022366C8 ; =ov40_022363BC
 	mov r1, #2
 	add r3, r5, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0xd
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -21878,7 +21878,7 @@ _022366FC:
 	mov r1, #2
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r3, #0x6b
 	lsl r0, r0, #0x10
@@ -21891,7 +21891,7 @@ _022366FC:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r3, #0x6b
 	lsl r0, r0, #0x10
@@ -21904,7 +21904,7 @@ _022366FC:
 	mov r1, #1
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _022367B2
 _02236752:
 	mov r1, #1
@@ -22219,7 +22219,7 @@ _022369D8:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02236A4E
 _022369F6:
 	mov r0, #0x6b
@@ -22260,7 +22260,7 @@ _02236A32:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02236A4E:
 	mov r0, #0
 	add sp, #0x10
@@ -22278,7 +22278,7 @@ ov40_02236A58: ; 0x02236A58
 	mov r0, #0xcd
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -22396,7 +22396,7 @@ _02236B40:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02236C50
 _02236B5E:
 	add r0, r0, #1
@@ -22592,7 +22592,7 @@ _02236CE6:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02236D52
 _02236D04:
 	mov r0, #0x6b
@@ -22629,7 +22629,7 @@ _02236D36:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02236D52:
 	mov r0, #0
 	add sp, #0x10
@@ -22718,7 +22718,7 @@ _02236DEE:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02236E12
 _02236E0C:
 	mov r1, #0xa
@@ -22797,7 +22797,7 @@ _02236E88:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02236EAC
 _02236EA6:
 	mov r1, #0xd
@@ -22932,7 +22932,7 @@ _02236F50:
 	ldr r3, [sp, #0x1c]
 	add r0, r4, #0
 	mov r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x18]
@@ -23024,7 +23024,7 @@ ov40_02237030: ; 0x02237030
 	add r0, r5, r6
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, r6
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
@@ -23103,7 +23103,7 @@ ov40_0223707C: ; 0x0223707C
 	add r0, r4, r0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0x75
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -23155,7 +23155,7 @@ ov40_02237144: ; 0x02237144
 	add r0, r5, r6
 	add r2, r4, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, r6
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
@@ -23271,7 +23271,7 @@ _02237238:
 	add r0, r4, r7
 	add r2, r5, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, r7
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
@@ -23976,7 +23976,7 @@ _022377F8:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02237814:
 	mov r0, #0
 	add sp, #0x10
@@ -23994,7 +23994,7 @@ ov40_02237820: ; 0x02237820
 	mov r0, #0xd1
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -24046,7 +24046,7 @@ _02237894:
 	mov r0, #0x33
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #5
@@ -24095,7 +24095,7 @@ _022378DE:
 	ldr r0, [r5, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r5, #0x10]
 	add r0, r5, #0
@@ -24124,7 +24124,7 @@ _02237938:
 	mov r1, #1
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r3, #0x6b
 	lsl r0, r0, #0x10
@@ -24137,7 +24137,7 @@ _02237938:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02237970:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -24274,7 +24274,7 @@ _02237A7C:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02237A98:
 	mov r0, #0
 	add sp, #0x10
@@ -24293,7 +24293,7 @@ ov40_02237AA8: ; 0x02237AA8
 	mov r0, #0xce
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -24363,7 +24363,7 @@ _02237AE6:
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	mov r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	ldrb r1, [r5, #2]
@@ -24419,7 +24419,7 @@ ov40_02237B7C: ; 0x02237B7C
 	str r0, [sp, #8]
 	add r0, r4, r6
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	add r0, r4, r6
@@ -24479,7 +24479,7 @@ ov40_02237BD4: ; 0x02237BD4
 	str r0, [sp, #8]
 	add r0, r4, r6
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, r6
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
@@ -24605,7 +24605,7 @@ _02237D16:
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	add r2, r6, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl String_Delete
 _02237D3C:
@@ -24785,7 +24785,7 @@ _02237E8A:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02238272
 _02237EA8:
 	mov r1, #0x6f
@@ -25066,7 +25066,7 @@ _02238104:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02238272
 	nop
 _02238124: .word 0x000006F4
@@ -25197,7 +25197,7 @@ _0223823A:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r3, #0x6b
 	lsl r0, r0, #0x10
@@ -25210,7 +25210,7 @@ _0223823A:
 	mov r1, #2
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02238272:
 	mov r0, #0
 	add sp, #0x14
@@ -25369,7 +25369,7 @@ _022383A6:
 	mov r0, #0xcf
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -25856,7 +25856,7 @@ _022387D8:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _022387F4:
 	mov r0, #0
 	add sp, #0x10
@@ -25882,7 +25882,7 @@ ov40_02238820: ; 0x02238820
 	mov r0, #0xd
 	lsl r0, r0, #6
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -26536,7 +26536,7 @@ _02238DD4:
 	mov r0, #0x33
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #5
@@ -26585,7 +26585,7 @@ _02238E1E:
 	ldr r0, [r5, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r5, #0x10]
 	add r0, r5, #0
@@ -26614,7 +26614,7 @@ _02238E78:
 	mov r1, #1
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r3, #0x6b
 	lsl r0, r0, #0x10
@@ -26627,7 +26627,7 @@ _02238E78:
 	mov r1, #3
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02238EB0:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -27286,7 +27286,7 @@ _02239358:
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	add r2, r7, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
@@ -27428,7 +27428,7 @@ _022394B4:
 	ldr r2, [sp, #0x20]
 	add r0, r4, #0
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x20]
@@ -27556,7 +27556,7 @@ _022395CE:
 	add r0, #0x24
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	add r0, #0x24
 	bl ScheduleWindowCopyToVram
@@ -27590,7 +27590,7 @@ _0223961A:
 	add r0, #0x34
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	add r0, #0x34
 	bl ScheduleWindowCopyToVram
@@ -27731,7 +27731,7 @@ _0223973A:
 	add r0, #0x34
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r4, #0x34
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
@@ -28059,7 +28059,7 @@ _022399EE:
 	ldr r2, _02239A54 ; =ov40_02239954
 	mov r1, #3
 	add r3, r5, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	add r4, #0xdc
 	str r0, [r4]
 	add r0, r5, #0
@@ -28108,7 +28108,7 @@ _02239A82:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -28119,7 +28119,7 @@ _02239A82:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #1
 	lsl r0, r0, #0x10
@@ -28130,7 +28130,7 @@ _02239A82:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02239B52
 _02239ACC:
 	mov r1, #1
@@ -28488,7 +28488,7 @@ _02239DBA:
 	add r0, r5, #0
 	add r0, #0xdc
 	ldr r0, [r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r5, #8
 	add r0, r5, #0
 	bl ov40_0222DAA8
@@ -28540,7 +28540,7 @@ _02239E18:
 	ldr r0, [r4, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r4, #0x10]
 	add r0, r4, #0
@@ -28563,7 +28563,7 @@ _02239E6E:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -28574,7 +28574,7 @@ _02239E6E:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02239EC8
 _02239EA0:
 	add r0, r4, #0
@@ -28731,7 +28731,7 @@ _02239FF0:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #2
 	lsl r0, r0, #0x10
@@ -28742,7 +28742,7 @@ _02239FF0:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223A028
 _0223A022:
 	mov r1, #6
@@ -28781,7 +28781,7 @@ ov40_0223A034: ; 0x0223A034
 	bl ov40_0222F09C
 	add r4, #0xdc
 	ldr r0, [r4]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
@@ -28865,7 +28865,7 @@ _0223A10C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #2
 	lsl r0, r0, #0x10
@@ -28876,7 +28876,7 @@ _0223A10C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223A144
 _0223A13E:
 	mov r1, #8
@@ -28918,7 +28918,7 @@ _0223A16E:
 	bl ov40_02230964
 	add r4, #0xdc
 	ldr r0, [r4]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -28976,7 +28976,7 @@ _0223A1EA:
 	ldr r0, [r5, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r5, #0x10]
 	add r0, r5, #0
@@ -28999,7 +28999,7 @@ _0223A23E:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -29010,7 +29010,7 @@ _0223A23E:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _0223A26E:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -29464,7 +29464,7 @@ _0223A602:
 	add r3, r1, #0
 	add r0, r5, r0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, _0223A638 ; =0x000008A4
 	add r0, r5, r0
 	bl ScheduleWindowCopyToVram
@@ -29561,7 +29561,7 @@ _0223A6CE:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223A812
 _0223A6E8:
 	add r0, r4, #0
@@ -29742,7 +29742,7 @@ ov40_0223A85C: ; 0x0223A85C
 	mov r0, #0x19
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -29824,7 +29824,7 @@ _0223A8FE:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223A91E
 _0223A918:
 	mov r1, #0xc
@@ -29906,7 +29906,7 @@ _0223A99C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223ABFC
 _0223A9B6:
 	ldr r2, _0223AC08 ; =0x000004D4
@@ -30052,15 +30052,15 @@ _0223AAF0:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0x63
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0x19
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r0, r4, #0
 	bl ov40_0223A83C
 	add r5, #8
@@ -30108,7 +30108,7 @@ _0223AB4A:
 	ldr r0, [r4, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r4, #0x10]
 	add r0, r4, #0
@@ -30147,7 +30147,7 @@ _0223ABCC:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -30158,7 +30158,7 @@ _0223ABCC:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _0223ABFC:
 	mov r0, #0
 	add sp, #8
@@ -30230,7 +30230,7 @@ _0223AC80:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223ACC6
 _0223AC9A:
 	add r0, r4, #0
@@ -30327,7 +30327,7 @@ _0223AD40:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223AF18
 _0223AD5A:
 	add r0, #0xc
@@ -30509,7 +30509,7 @@ _0223AED2:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223AF18
 _0223AEEC:
 	ldr r1, _0223AF20 ; =0x00004138
@@ -30552,7 +30552,7 @@ ov40_0223AF24: ; 0x0223AF24
 	mov r0, #0x63
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -30633,7 +30633,7 @@ _0223AFC2:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223B180
 _0223AFDC:
 	bl ov40_0223A430
@@ -30804,7 +30804,7 @@ _0223B13A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223B180
 _0223B154:
 	ldr r1, _0223B18C ; =0x00004138
@@ -30856,15 +30856,15 @@ _0223B1A6:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0x63
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0x19
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #4
 	mov r1, #0
 	bl GfGfx_EngineBTogglePlanes
@@ -30954,7 +30954,7 @@ _0223B278:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223B298
 _0223B292:
 	mov r1, #3
@@ -31040,7 +31040,7 @@ _0223B31A:
 	add r0, sp, #0x18
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x10]
 	ldr r1, [sp, #0x10]
 	ldr r0, [r0, #8]
@@ -31442,7 +31442,7 @@ _0223B65A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -31453,7 +31453,7 @@ _0223B65A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #1
 	lsl r0, r0, #0x10
@@ -31464,7 +31464,7 @@ _0223B65A:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223B756
 _0223B6A4:
 	mov r0, #0
@@ -31790,7 +31790,7 @@ _0223B940:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223BA58
 _0223B95A:
 	add r0, r4, #0
@@ -31837,7 +31837,7 @@ _0223B98E:
 	ldr r0, [r4, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r4, #0x10]
 	add r0, r4, #0
@@ -31872,7 +31872,7 @@ _0223BA04:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -31883,7 +31883,7 @@ _0223BA04:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223BA58
 _0223BA36:
 	mov r0, #0x6f
@@ -31963,7 +31963,7 @@ ov40_0223BA70: ; 0x0223BA70
 	add r0, r6, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
@@ -32009,7 +32009,7 @@ ov40_0223BA70: ; 0x0223BA70
 	str r0, [sp, #8]
 	add r0, r6, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
@@ -32239,7 +32239,7 @@ _0223BD3C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #2
 	lsl r0, r0, #0x10
@@ -32250,7 +32250,7 @@ _0223BD3C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223BD74
 _0223BD6E:
 	mov r1, #4
@@ -32314,7 +32314,7 @@ _0223BDB4:
 	add r0, r5, #0
 	bl ov40_0223D244
 	ldr r0, _0223BF70 ; =ov40_02245494
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _0223BE22
 	add r0, r5, #0
@@ -32337,7 +32337,7 @@ _0223BDB4:
 	str r0, [r5, #8]
 _0223BE22:
 	ldr r0, _0223BF80 ; =ov40_02245498
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	bne _0223BE2E
 	b _0223BF5E
@@ -32460,7 +32460,7 @@ _0223BF24:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #2
 	lsl r0, r0, #0x10
@@ -32471,7 +32471,7 @@ _0223BF24:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223BF5E
 _0223BF56:
 	ldr r1, _0223BF7C ; =0x00002034
@@ -32551,7 +32551,7 @@ _0223BFF0:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223C0D4
 _0223C00A:
 	add r4, #8
@@ -32592,7 +32592,7 @@ _0223C030:
 	ldr r0, [r5, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r5, #0x10]
 	add r0, r5, #0
@@ -32627,7 +32627,7 @@ _0223C0A4:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -32638,7 +32638,7 @@ _0223C0A4:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _0223C0D4:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -32683,7 +32683,7 @@ _0223C10E:
 	ldr r2, _0223C22C ; =ov40_0223CE64
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x62
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -32693,7 +32693,7 @@ _0223C10E:
 	ldr r2, _0223C234 ; =ov40_0223CF00
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -32703,7 +32703,7 @@ _0223C10E:
 	ldr r2, _0223C23C ; =ov40_0223CF70
 	mov r1, #2
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x19
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -32790,7 +32790,7 @@ _0223C200:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223C222
 _0223C21A:
 	add r0, r4, #0
@@ -32817,7 +32817,7 @@ ov40_0223C240: ; 0x0223C240
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -33047,15 +33047,15 @@ _0223C416:
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0x63
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0x19
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r0, r5, #0
 	bl ov40_0223A83C
 	add r0, r5, #0
@@ -33229,7 +33229,7 @@ _0223C592:
 	ldr r2, _0223C6F8 ; =ov40_0223CE64
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x62
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -33239,7 +33239,7 @@ _0223C592:
 	ldr r2, _0223C700 ; =ov40_0223CF00
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -33249,7 +33249,7 @@ _0223C592:
 	ldr r2, _0223C708 ; =ov40_0223CF70
 	mov r1, #2
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x19
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -33336,7 +33336,7 @@ _0223C684:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223C6E2
 _0223C69E:
 	mov r0, #6
@@ -33487,7 +33487,7 @@ _0223C7CE:
 	add r3, r1, #0
 	add r0, r5, r0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, _0223C804 ; =0x000008A4
 	add r0, r5, r0
 	bl ScheduleWindowCopyToVram
@@ -33623,7 +33623,7 @@ _0223C902:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223CC98
 _0223C91C:
 	ldr r1, _0223CC40 ; =0x00000115
@@ -33691,7 +33691,7 @@ _0223C99A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223CC98
 _0223C9B4:
 	add r0, r4, #0
@@ -33869,7 +33869,7 @@ _0223CB24:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223CC98
 _0223CB3E:
 	ldr r1, _0223CC48 ; =0x00004138
@@ -33987,7 +33987,7 @@ _0223CC24:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223CC98
 	nop
 _0223CC40: .word 0x00000115
@@ -34023,7 +34023,7 @@ _0223CC76:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223CC98
 _0223CC90:
 	add r0, r4, #0
@@ -34082,7 +34082,7 @@ ov40_0223CCBC: ; 0x0223CCBC
 	str r0, [sp, #8]
 	add r0, r4, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	add r0, r4, #0
@@ -34174,7 +34174,7 @@ ov40_0223CD58: ; 0x0223CD58
 	str r0, [sp, #8]
 	add r0, r6, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r6, #0
@@ -34216,7 +34216,7 @@ ov40_0223CD58: ; 0x0223CD58
 	str r0, [sp, #8]
 	add r0, r4, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	add r0, r4, #0
@@ -36151,7 +36151,7 @@ _0223DC94:
 	add r0, r4, #0
 	add r2, r6, #0
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
@@ -36228,7 +36228,7 @@ _0223DD38:
 	add r0, r6, r7
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, r7
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
@@ -36285,7 +36285,7 @@ _0223DDB0:
 	add r0, r4, r7
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, r7
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
@@ -36381,7 +36381,7 @@ _0223DE84:
 	add r3, r1, #0
 	add r0, r7, r0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, _0223DEB0 ; =0x00000664
 	add r0, r7, r0
 	bl ScheduleWindowCopyToVram
@@ -36427,7 +36427,7 @@ _0223DED2:
 	add r0, r5, r6
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, r6
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
@@ -36545,7 +36545,7 @@ _0223DFC6:
 	add r0, r5, #0
 	add r2, r4, #0
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
@@ -36678,7 +36678,7 @@ ov40_0223E0A4: ; 0x0223E0A4
 	add r0, r4, r6
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, r6
 	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
@@ -36723,7 +36723,7 @@ ov40_0223E0A4: ; 0x0223E0A4
 	str r0, [sp, #8]
 	add r0, r4, r6
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, r6
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
@@ -36812,7 +36812,7 @@ _0223E1A8:
 	ldr r2, _0223E304 ; =ov40_02241D10
 	mov r1, #5
 	add r3, r5, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, _0223E308 ; =0x00000608
 	ldr r2, _0223E30C ; =ov40_02241E14
 	str r0, [r4, r1]
@@ -36821,7 +36821,7 @@ _0223E1A8:
 	ldr r0, _0223E310 ; =ov40_02245708
 	mov r1, #9
 	add r3, r5, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, _0223E314 ; =0x0000060C
 	add r5, #8
 	str r0, [r4, r1]
@@ -36896,7 +36896,7 @@ _0223E2D4:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223E2F4
 _0223E2EE:
 	mov r1, #3
@@ -36926,7 +36926,7 @@ ov40_0223E324: ; 0x0223E324
 	ldr r1, [r0, r1]
 	ldr r0, _0223E338 ; =0x00000608
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -36956,10 +36956,10 @@ _0223E356:
 	bl ov40_0222DFB0
 	ldr r0, _0223E48C ; =0x00000608
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	ldr r0, _0223E490 ; =0x0000060C
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -36990,7 +36990,7 @@ _0223E39E:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223E486
 _0223E3B8:
 	mov r1, #1
@@ -37032,7 +37032,7 @@ _0223E3E2:
 	ldr r0, [r5, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r5, #0x10]
 	add r0, r5, #0
@@ -37067,7 +37067,7 @@ _0223E456:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -37078,7 +37078,7 @@ _0223E456:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _0223E486:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -37131,7 +37131,7 @@ _0223E4D4:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223E516
 _0223E4EE:
 	ldr r1, _0223E51C ; =0x000004C5
@@ -37270,7 +37270,7 @@ _0223E5F2:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223E6D0
 _0223E60C:
 	ldr r0, _0223E6D8 ; =0x0000047C
@@ -37296,7 +37296,7 @@ _0223E60C:
 	str r0, [r4, #8]
 _0223E63E:
 	ldr r0, _0223E6E8 ; =ov40_02245650
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _0223E6D0
 	add r0, r4, #0
@@ -37354,7 +37354,7 @@ _0223E6AE:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223E6D0
 _0223E6C8:
 	add r0, r4, #0
@@ -37499,7 +37499,7 @@ _0223E74A:
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	mov r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	b _0223E810
 _0223E7F4:
 	ldr r0, [sp, #0x18]
@@ -37514,7 +37514,7 @@ _0223E7F4:
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	mov r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _0223E810:
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
@@ -37621,14 +37621,14 @@ _0223E8CC:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223E994
 _0223E8E6:
 	ldr r0, _0223E998 ; =0x0000060C
 	ldr r0, [r5, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	ldr r0, _0223E99C ; =ov40_02245650
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	bne _0223E900
 	ldr r0, _0223E9A0 ; =0x000004D8
@@ -37692,7 +37692,7 @@ _0223E960:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223E994
 _0223E97A:
 	ldr r0, _0223E9A0 ; =0x000004D8
@@ -37852,7 +37852,7 @@ _0223EA88:
 	str r0, [r4, #8]
 _0223EABC:
 	ldr r0, _0223EBB0 ; =ov40_02245650
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _0223EB96
 	mov r0, #0x13
@@ -37920,7 +37920,7 @@ _0223EB40:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223EB96
 _0223EB5A:
 	add r0, r5, #0
@@ -38343,7 +38343,7 @@ _0223EE9C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223EF84
 _0223EEB6:
 	ldr r0, _0223EF8C ; =0x0000047C
@@ -38380,7 +38380,7 @@ _0223EEB6:
 	str r0, [r4, #8]
 _0223EF02:
 	ldr r0, _0223EFA0 ; =ov40_02245650
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _0223EF84
 	add r0, r4, #0
@@ -38432,7 +38432,7 @@ _0223EF62:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223EF84
 _0223EF7C:
 	add r0, r4, #0
@@ -38508,7 +38508,7 @@ _0223F004:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223F024
 _0223F01E:
 	mov r1, #3
@@ -38695,10 +38695,10 @@ _0223F182:
 	bl ov40_0222DFB0
 	ldr r0, _0223F1F8 ; =0x00000608
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	ldr r0, _0223F1FC ; =0x0000060C
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	ldr r0, [r5, #8]
 	add r0, r0, #1
 	str r0, [r5, #8]
@@ -38732,7 +38732,7 @@ _0223F1D2:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223F1F2
 _0223F1EC:
 	mov r1, #0xe
@@ -38929,7 +38929,7 @@ _0223F38A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #2
 	lsl r0, r0, #0x10
@@ -38940,7 +38940,7 @@ _0223F38A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223F3C2
 _0223F3BC:
 	mov r1, #0xf
@@ -39002,7 +39002,7 @@ _0223F3FE:
 	add r0, r5, #0
 	bl ov40_0223D8D4
 	ldr r0, _0223F590 ; =ov40_0224564C
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _0223F456
 	add r0, r5, #0
@@ -39014,7 +39014,7 @@ _0223F3FE:
 	str r0, [r5, #8]
 _0223F456:
 	ldr r0, _0223F594 ; =ov40_02245650
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	bne _0223F462
 	b _0223F57E
@@ -39128,7 +39128,7 @@ _0223F546:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #2
 	lsl r0, r0, #0x10
@@ -39139,7 +39139,7 @@ _0223F546:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223F57E
 _0223F578:
 	ldr r1, [r4, #0xc]
@@ -39186,7 +39186,7 @@ _0223F5B2:
 	ldr r2, _0223F6A0 ; =ov40_02241D10
 	mov r1, #5
 	add r3, r5, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, _0223F6A4 ; =0x00000608
 	ldr r2, _0223F6A8 ; =ov40_02241E14
 	str r0, [r4, r1]
@@ -39195,7 +39195,7 @@ _0223F5B2:
 	ldr r0, _0223F6AC ; =ov40_02245708
 	mov r1, #9
 	add r3, r5, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, _0223F6B0 ; =0x0000060C
 	str r0, [r4, r1]
 	add r0, r5, #0
@@ -39264,7 +39264,7 @@ _0223F678:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223F698
 _0223F692:
 	mov r1, #3
@@ -39322,7 +39322,7 @@ _0223F6F2:
 	ldr r2, _0223F814 ; =ov40_02241E40
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, _0223F818 ; =0x00000608
 	ldr r2, _0223F81C ; =ov40_02241ED4
 	str r0, [r5, r1]
@@ -39331,7 +39331,7 @@ _0223F6F2:
 	ldr r0, _0223F820 ; =ov40_02245674
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, _0223F824 ; =0x0000060C
 	ldr r2, _0223F828 ; =ov40_02241F3C
 	str r0, [r5, r1]
@@ -39340,7 +39340,7 @@ _0223F6F2:
 	ldr r0, _0223F82C ; =ov40_02245654
 	mov r1, #2
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x61
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -39431,7 +39431,7 @@ _0223F7E8:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223F80A
 _0223F802:
 	add r0, r4, #0
@@ -39459,7 +39459,7 @@ ov40_0223F830: ; 0x0223F830
 	ldr r1, [r0, r1]
 	ldr r0, _0223F844 ; =0x00000608
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -39516,14 +39516,14 @@ ov40_0223F880: ; 0x0223F880
 _0223F896:
 	ldr r0, _0223F97C ; =0x00000608
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	ldr r0, _0223F980 ; =0x0000060C
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0x61
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #4
 	mov r1, #0
 	bl GfGfx_EngineBTogglePlanes
@@ -39607,7 +39607,7 @@ _0223F958:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223F978
 _0223F972:
 	mov r1, #0xe
@@ -39736,7 +39736,7 @@ _0223FA68:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223FC8C
 _0223FA82:
 	ldr r1, _0223FC94 ; =0x00000115
@@ -39941,7 +39941,7 @@ _0223FC32:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223FC8C
 _0223FC4C:
 	ldr r1, _0223FC9C ; =0x00004138
@@ -39994,7 +39994,7 @@ ov40_0223FCA0: ; 0x0223FCA0
 	ldr r1, [r0, r1]
 	ldr r0, _0223FCB4 ; =0x0000060C
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -40099,7 +40099,7 @@ ov40_0223FD50: ; 0x0223FD50
 	mov r0, #0x61
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -40213,7 +40213,7 @@ _0223FE1A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0223FF68
 _0223FE34:
 	add r0, r4, #0
@@ -40515,7 +40515,7 @@ _022400AE:
 	ldr r2, _02240218 ; =ov40_02241E40
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, _0224021C ; =0x00000608
 	ldr r2, _02240220 ; =ov40_02241ED4
 	str r0, [r5, r1]
@@ -40524,7 +40524,7 @@ _022400AE:
 	ldr r0, _02240224 ; =ov40_02245674
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, _02240228 ; =0x0000060C
 	ldr r2, _0224022C ; =ov40_02241F3C
 	str r0, [r5, r1]
@@ -40533,7 +40533,7 @@ _022400AE:
 	ldr r0, _02240230 ; =ov40_02245654
 	mov r1, #2
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x61
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -40620,7 +40620,7 @@ _0224019C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _022401FA
 _022401B6:
 	mov r0, #6
@@ -40750,7 +40750,7 @@ _022402BA:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -40761,7 +40761,7 @@ _022402BA:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #1
 	lsl r0, r0, #0x10
@@ -40772,7 +40772,7 @@ _022402BA:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02240414
 _02240304:
 	mov r1, #1
@@ -41016,7 +41016,7 @@ _022404F6:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02240516
 _02240510:
 	mov r1, #3
@@ -41115,7 +41115,7 @@ _022405B6:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _022405E6
 _022405D0:
 	add r1, #0xf4
@@ -41181,7 +41181,7 @@ _02240626:
 	ldr r0, [r5, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r5, #0x10]
 	add r0, r5, #0
@@ -41216,7 +41216,7 @@ _02240692:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #1
 	lsl r0, r0, #0x10
@@ -41227,7 +41227,7 @@ _02240692:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _022406C2:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -41633,7 +41633,7 @@ _0224096C:
 	ldr r2, _02240B24 ; =ov40_02241C10
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, _02240B28 ; =0x00000608
 	ldr r2, _02240B2C ; =ov40_02241C70
 	str r0, [r5, r1]
@@ -41642,7 +41642,7 @@ _0224096C:
 	ldr r0, _02240B30 ; =ov40_02245674
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, _02240B34 ; =0x0000060C
 	ldr r2, _02240B38 ; =ov40_02241CD8
 	str r0, [r5, r1]
@@ -41651,7 +41651,7 @@ _0224096C:
 	ldr r0, _02240B3C ; =ov40_02245654
 	mov r1, #2
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x61
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -41741,7 +41741,7 @@ _02240AF6:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02240B18
 _02240B10:
 	add r0, r4, #0
@@ -41770,7 +41770,7 @@ ov40_02240B40: ; 0x02240B40
 	ldr r1, [r0, r1]
 	ldr r0, _02240B54 ; =0x00000608
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -41837,14 +41837,14 @@ _02240BAE: ; jump table
 _02240BB6:
 	ldr r0, _02240D48 ; =0x00000608
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	ldr r0, _02240D4C ; =0x0000060C
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0x61
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #4
 	mov r1, #0
 	bl GfGfx_EngineBTogglePlanes
@@ -41909,7 +41909,7 @@ _02240C4A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02240D42
 _02240C64:
 	add r5, #8
@@ -41953,7 +41953,7 @@ _02240C92:
 	ldr r0, [r4, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r4, #0x10]
 	add r0, r4, #0
@@ -41992,7 +41992,7 @@ _02240D12:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -42003,7 +42003,7 @@ _02240D12:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02240D42:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -42088,7 +42088,7 @@ _02240DCE:
 	add r0, sp, #0x18
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x10]
 	ldr r1, [sp, #0x10]
 	ldr r0, [r0, #8]
@@ -42205,7 +42205,7 @@ _02240EE4:
 	add r3, r1, #0
 	add r0, r5, r0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, _02240F1C ; =0x000008A4
 	add r0, r5, r0
 	bl ScheduleWindowCopyToVram
@@ -42337,7 +42337,7 @@ _02241014:
 	add r3, r1, #0
 	add r0, r5, r0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, _0224104C ; =0x000008A4
 	add r0, r5, r0
 	bl ScheduleWindowCopyToVram
@@ -42583,7 +42583,7 @@ _02241226:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _022413DC
 _02241240:
 	ldr r1, _022413E0 ; =0x00000115
@@ -42645,19 +42645,19 @@ _022412AE:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _022413DC
 _022412C8:
 	ldr r0, _022413E4 ; =0x00000608
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	ldr r0, _022413E8 ; =0x0000060C
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0x61
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r5, #8
 	add r0, r5, #0
 	bl ov40_0222DAA8
@@ -42702,7 +42702,7 @@ _02241316:
 	ldr r0, [r4, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r4, #0x10]
 	add r0, r4, #0
@@ -42741,7 +42741,7 @@ _02241398:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -42752,7 +42752,7 @@ _02241398:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _022413DC
 _022413CA:
 	add r0, r4, #0
@@ -42779,7 +42779,7 @@ ov40_022413EC: ; 0x022413EC
 	ldr r1, [r0, r1]
 	ldr r0, _02241400 ; =0x0000060C
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -42840,7 +42840,7 @@ ov40_0224144C: ; 0x0224144C
 	mov r0, #0x61
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -43004,7 +43004,7 @@ _02241562:
 	ldr r2, _02241784 ; =ov40_02241C10
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, _02241788 ; =0x00000608
 	ldr r2, _0224178C ; =ov40_02241C70
 	str r0, [r5, r1]
@@ -43013,7 +43013,7 @@ _02241562:
 	ldr r0, _02241790 ; =ov40_02245674
 	mov r1, #4
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	ldr r1, _02241794 ; =0x0000060C
 	ldr r2, _02241798 ; =ov40_02241CD8
 	str r0, [r5, r1]
@@ -43022,7 +43022,7 @@ _02241562:
 	ldr r0, _0224179C ; =ov40_02245654
 	mov r1, #2
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x61
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -43172,7 +43172,7 @@ _0224170C:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0224176A
 _02241726:
 	mov r0, #6
@@ -43476,7 +43476,7 @@ _0224198C:
 	ldr r0, [r5, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r5, #0x10]
 	add r0, r5, #0
@@ -43511,7 +43511,7 @@ _02241A00:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -43522,7 +43522,7 @@ _02241A00:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _02241A30:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
@@ -43575,7 +43575,7 @@ ov40_02241A54: ; 0x02241A54
 	str r0, [sp, #8]
 	add r0, r4, r6
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	add r0, r4, r6
@@ -43670,7 +43670,7 @@ ov40_02241AFC: ; 0x02241AFC
 	str r0, [sp, #8]
 	add r0, r4, r6
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r4, r6
@@ -43712,7 +43712,7 @@ ov40_02241AFC: ; 0x02241AFC
 	str r0, [sp, #8]
 	add r0, r4, r6
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	add r0, r4, r6
@@ -44763,7 +44763,7 @@ _0224242A:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0224248C
 _02242444:
 	add r0, r4, #0
@@ -44795,7 +44795,7 @@ _0224246E:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0224248C
 _02242488:
 	mov r0, #1
@@ -44862,7 +44862,7 @@ _022424EE:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02242534
 _02242508:
 	add r0, r4, #0
@@ -44968,7 +44968,7 @@ _022425C6:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _022425E4
 _022425E0:
 	mov r0, #1
@@ -45049,7 +45049,7 @@ _02242660:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _022428AE
 _0224267A:
 	mov r1, #0x72
@@ -45189,14 +45189,14 @@ _02242764:
 _022427A6:
 	ldr r0, _022428CC ; =0x00000608
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	ldr r0, _022428D0 ; =0x0000060C
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0x61
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r5, #8
 	add r0, r5, #0
 	bl ov40_0222DAA8
@@ -45244,7 +45244,7 @@ _022427FC:
 	ldr r0, [r4, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r4, #0x10]
 	add r0, r4, #0
@@ -45283,7 +45283,7 @@ _0224287E:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r4, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -45294,7 +45294,7 @@ _0224287E:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _022428AE:
 	mov r0, #0
 	add sp, #8
@@ -45377,7 +45377,7 @@ _02242944:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02242AE6
 _0224295E:
 	add r0, #0xc
@@ -45551,7 +45551,7 @@ _02242AC6:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02242AE6
 _02242AE0:
 	add sp, #0x10
@@ -45633,7 +45633,7 @@ _02242B66:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02242CF0
 _02242B80:
 	bl ov40_02242110
@@ -45797,7 +45797,7 @@ _02242CD0:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02242CF0
 _02242CEA:
 	add sp, #0x10
@@ -45875,14 +45875,14 @@ _02242D6E:
 	bl ov40_02230964
 	ldr r0, _02242DE4 ; =0x00000608
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	ldr r0, _02242DE8 ; =0x0000060C
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0x61
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r0, r5, #0
 	mov r1, #1
 	bl ov40_02230964
@@ -46099,7 +46099,7 @@ ov40_02242E4C: ; 0x02242E4C
 	add r3, r1, #0
 	add r0, r5, r0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, _02242FA4 ; =0x000008A4
 	add r0, r5, r0
 	bl ScheduleWindowCopyToVram
@@ -46503,7 +46503,7 @@ ov40_0224326C: ; 0x0224326C
 	mov r0, #0x8d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r0, r4, #0
 	bl ov40_02243B94
 	mov r0, #1
@@ -46527,7 +46527,7 @@ _02243298:
 	mov r0, #0x8d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 _022432A6:
 	mov r0, #0
 	pop {r4, pc}
@@ -47181,7 +47181,7 @@ _02243764:
 	add r0, r4, r0
 	mov r1, #0x18
 	add r3, r4, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	mov r1, #0x8d
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -48748,7 +48748,7 @@ _02244372:
 	add r3, r1, #0
 	add r0, r5, r0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, _022443AC ; =0x000008A4
 	add r0, r5, r0
 	bl ScheduleWindowCopyToVram
@@ -48808,7 +48808,7 @@ ov40_022443B4: ; 0x022443B4
 	str r0, [sp, #8]
 	add r0, r6, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r6, #0
@@ -48850,7 +48850,7 @@ ov40_022443B4: ; 0x022443B4
 	str r0, [sp, #8]
 	add r0, r4, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	add r0, r4, #0
@@ -48956,7 +48956,7 @@ _02244540:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -48967,7 +48967,7 @@ _02244540:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #1
 	lsl r0, r0, #0x10
@@ -48978,7 +48978,7 @@ _02244540:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _02244626
 _0224458A:
 	mov r0, #0
@@ -49147,11 +49147,11 @@ _022446E2:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0224481E
 _022446FC:
 	ldr r0, _0224482C ; =ov40_02245CA0
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _0224471E
 	add r0, r4, #0
@@ -49166,7 +49166,7 @@ _022446FC:
 	b _0224481E
 _0224471E:
 	ldr r0, _02244834 ; =ov40_02245CA4
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _0224481E
 	add r0, r4, #0
@@ -49180,7 +49180,7 @@ _0224471E:
 	b _0224481E
 _0224473E:
 	ldr r0, _0224482C ; =ov40_02245CA0
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _02244760
 	add r0, r4, #0
@@ -49195,7 +49195,7 @@ _0224473E:
 	b _0224481E
 _02244760:
 	ldr r0, _02244834 ; =ov40_02245CA4
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	beq _0224481E
 	add r0, r4, #0
@@ -49248,7 +49248,7 @@ _022447BE:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	b _0224481E
 _022447D8:
 	bl ov40_022306F0
@@ -49360,7 +49360,7 @@ _02244896:
 	ldr r0, [r5, #0x28]
 	mov r2, #0xc
 	mov r3, #0x10
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r1, #1
 	ldr r3, [r5, #0x10]
 	add r0, r5, #0
@@ -49383,7 +49383,7 @@ _022448EA:
 	lsl r3, r3, #0x18
 	mov r2, #2
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	ldr r0, [r5, #0x58]
 	mov r1, #3
 	lsl r0, r0, #0x10
@@ -49394,7 +49394,7 @@ _022448EA:
 	lsl r3, r3, #0x18
 	mov r2, #0xc
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 _0224491A:
 	mov r0, #0
 	pop {r3, r4, r5, pc}

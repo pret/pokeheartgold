@@ -26,7 +26,7 @@ ov28_0225D520: ; 0x0225D520
 	mov r3, #8
 	bl CreateSysTaskAndEnvironment
 	add r6, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	str r5, [r4, #0x10]
 	ldr r0, [sp]
@@ -98,7 +98,7 @@ ov28_0225D5EC: ; 0x0225D5EC
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r0, r5, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	bl DowsingMchn_FreeHiddenItemLocs
 	add r0, r4, #0
@@ -379,7 +379,7 @@ _0225D7FC:
 	add r0, r4, #0
 	mov r1, #4
 	mov r3, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl CopyWindowPixelsToVram_TextMode
 	ldr r0, [sp, #0x10]
@@ -912,7 +912,7 @@ _0225DC56:
 	cmp r0, #0
 	bne _0225DC76
 	ldr r0, _0225DD1C ; =ov28_0225EA88
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -927,7 +927,7 @@ _0225DC76:
 	cmp r0, #1
 	beq _0225DC98
 	ldr r0, _0225DD1C ; =ov28_0225EA88
-	bl sub_02025244
+	bl TouchscreenHitbox_FindHitboxAtTouchHeld
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -2422,7 +2422,7 @@ ov28_0225E7D4: ; 0x0225E7D4
 	add r4, r0, #0
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	mov r1, #0x85
 	lsl r1, r1, #2
 	ldr r0, [sp, #4]
@@ -2538,7 +2538,7 @@ ov28_0225E8B8: ; 0x0225E8B8
 	add r5, r1, #0
 	str r2, [sp]
 	add r6, r3, #0
-	bl sub_020252F4
+	bl TouchscreenHitbox_TouchHeldIsIn
 	add r4, r0, #0
 	add r0, r5, #0
 	bl Get2dSpriteCurrentAnimSeqNo
@@ -2636,7 +2636,7 @@ _0225E96C:
 	mov r1, #1
 	bl Set2dSpriteVisibleFlag
 	ldr r0, _0225E9DC ; =ov28_0225EA84
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #1
 	bne _0225E9DA
 	ldr r0, [r5, #0x18]

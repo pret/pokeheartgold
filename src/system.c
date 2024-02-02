@@ -8,28 +8,28 @@
 struct System gSystem;
 struct FSCacheEntry gFileCache[128];
 
-void sub_0201A08C(void);
-void sub_0201A0C0(void);
+void VBlankCB_DmaTasksFramecounter(void);
+void VBlankCB_DmaOnly(void);
 void CallHBlankIntrCallback(void);
 void HBlankIntrRegsToggle(BOOL enable);
 void sub_0201A1B4(void);
 void sub_0201A5E8(void);
 
-void sub_0201A08C(void) {
+void VBlankCB_DmaTasksFramecounter(void) {
     OS_SetIrqCheckFlag(OS_IE_VBLANK);
     MI_WaitDma(GX_DEFAULT_DMAID);
-    sub_0201F880(gSystem.unk1C);
-    gSystem.unk30++;
+    SysTaskQueue_RunTasks(gSystem.vblankTaskQueue);
+    gSystem.frameCounter++;
 }
 
-void sub_0201A0C0(void) {
+void VBlankCB_DmaOnly(void) {
     OS_SetIrqCheckFlag(OS_IE_VBLANK);
     MI_WaitDma(GX_DEFAULT_DMAID);
 }
 
 void sub_0201A0E0(void) {
     OS_DisableIrqMask(OS_IE_VBLANK);
-    OS_SetIrqFunction(OS_IE_VBLANK, sub_0201A0C0);
+    OS_SetIrqFunction(OS_IE_VBLANK, VBlankCB_DmaOnly);
     OS_EnableIrqMask(OS_IE_VBLANK);
 }
 
@@ -118,14 +118,14 @@ void InitSystemForTheGame(void) {
     GX_Init();
     OS_InitTick();
     sub_0201A1B4();
-    gSystem.unk18 = sub_0201F834(160, OS_AllocFromArenaLo(OS_ARENA_MAIN, sub_0201F82C(160), 4));
-    gSystem.unk1C = sub_0201F834(32, OS_AllocFromArenaLo(OS_ARENA_MAIN, sub_0201F82C(32), 4));
-    gSystem.unk20 = sub_0201F834(32, OS_AllocFromArenaLo(OS_ARENA_MAIN, sub_0201F82C(32), 4));
-    gSystem.unk24 = sub_0201F834(4, OS_AllocFromArenaLo(OS_ARENA_MAIN, sub_0201F82C(4), 4));
+    gSystem.mainTaskQueue = SysTaskQueue_PlacementNew(160, OS_AllocFromArenaLo(OS_ARENA_MAIN, SysTaskQueue_GetArenaSize(160), 4));
+    gSystem.vblankTaskQueue = SysTaskQueue_PlacementNew(32, OS_AllocFromArenaLo(OS_ARENA_MAIN, SysTaskQueue_GetArenaSize(32), 4));
+    gSystem.vwaitTaskQueue = SysTaskQueue_PlacementNew(32, OS_AllocFromArenaLo(OS_ARENA_MAIN, SysTaskQueue_GetArenaSize(32), 4));
+    gSystem.printTaskQueue = SysTaskQueue_PlacementNew(4, OS_AllocFromArenaLo(OS_ARENA_MAIN, SysTaskQueue_GetArenaSize(4), 4));
     GX_DispOff();
     GXS_DispOff();
     GX_SetDispSelect(GX_DISP_SELECT_MAIN_SUB);
-    OS_SetIrqFunction(OS_IE_VBLANK, sub_0201A08C);
+    OS_SetIrqFunction(OS_IE_VBLANK, VBlankCB_DmaTasksFramecounter);
     OS_EnableIrqMask(OS_IE_VBLANK);
     OS_EnableIrqMask(OS_IE_SPFIFO_RECV);
     OS_EnableIrq();

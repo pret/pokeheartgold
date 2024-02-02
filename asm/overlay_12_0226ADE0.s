@@ -346,7 +346,7 @@ _0226B05C:
 	ldr r0, _0226B090 ; =ov12_0226B098
 	add r1, r5, #0
 	lsl r2, r2, #2
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r5, #4]
 	ldr r0, _0226B094 ; =0x00000711
 	bl PlaySE
@@ -439,7 +439,7 @@ _0226B116:
 	add sp, #4
 	pop {r3, r4, pc}
 _0226B12E:
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	str r0, [r4, #4]
 	add sp, #4
@@ -476,7 +476,7 @@ _0226B168:
 	ldr r0, _0226B17C ; =ov12_0226B180
 	add r1, r5, #0
 	lsl r2, r2, #2
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r5, #4]
 	pop {r3, r4, r5, pc}
 	nop
@@ -614,7 +614,7 @@ _0226B264:
 _0226B27A:
 	bl BattleSystem_SetDefaultBlend
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	str r0, [r4, #4]
 	add sp, #8
@@ -739,14 +739,14 @@ _0226B35C:
 	strh r0, [r5, #0x28]
 	ldr r0, _0226B3A8 ; =ov12_0226B3B0
 	add r1, r5, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r5, #4]
 	pop {r3, r4, r5, r6, r7, pc}
 _0226B382:
 	ldr r0, _0226B3AC ; =ov12_0226B5B0
 	strh r1, [r5, #0x28]
 	add r1, r5, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r5, #4]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1017,7 +1017,7 @@ _0226B592:
 	ldr r0, [r0]
 	bl Sprite_SetAnimCtrlCurrentFrame
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	str r0, [r4, #4]
 _0226B5A6:
@@ -1135,7 +1135,7 @@ _0226B666:
 	add sp, #4
 	pop {r3, r4, pc}
 _0226B67E:
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	str r0, [r4, #4]
 	add sp, #4
@@ -1178,7 +1178,7 @@ _0226B6AE:
 	strb r1, [r0]
 	ldr r0, _0226B6F0 ; =ov12_0226B6F8
 	add r1, r5, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r5, #4]
 	pop {r3, r4, r5, r6, r7, pc}
 _0226B6D8:
@@ -1188,7 +1188,7 @@ _0226B6D8:
 	strb r1, [r0]
 	ldr r0, _0226B6F4 ; =ov12_0226B82C
 	add r1, r5, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r5, #4]
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1346,7 +1346,7 @@ _0226B808:
 	ldr r0, [r0]
 	bl thunk_Set2dSpriteVisibleFlag
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	str r0, [r4, #4]
 	pop {r3, r4, r5, pc}
@@ -1397,7 +1397,7 @@ _0226B86C:
 	ldr r0, [r0]
 	bl thunk_Set2dSpriteVisibleFlag
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	str r0, [r4, #4]
 _0226B880:

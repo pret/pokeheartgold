@@ -42,8 +42,8 @@
 .public UnkImageStruct_SetSpritePriority
 .public UnkImageStruct_SetSpritePositionXY
 .public sub_0200E0C0
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_0200FBDC
@@ -68,10 +68,10 @@
 .public ClearWindowTilemapAndCopyToVram
 .public FillWindowPixelBuffer
 .public DoScheduledBgGpuUpdates
-.public sub_0201F988
+.public SysTask_GetData
 .public GF_SinDegNoWrap
 .public LCRandom
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GfGfx_SetBanks
@@ -79,7 +79,7 @@
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_DisableEngineBPlanes
 .public GfGfx_EngineBTogglePlanes
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public String_Delete
 .public NNS_GfdDoVramTransfer

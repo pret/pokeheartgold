@@ -2053,7 +2053,7 @@ _02010F14:
 	blt _02010F14
 _02010F2C:
 	ldr r0, [sp]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02010F00
 
@@ -2264,13 +2264,13 @@ _020110AA:
 
 	thumb_func_start sub_020110C4
 sub_020110C4: ; 0x020110C4
-	ldr r3, _020110D0 ; =sub_0200E374
+	ldr r3, _020110D0 ; =SysTask_CreateOnVWaitQueue
 	add r1, r0, #0
 	ldr r0, _020110D4 ; =sub_02011104
 	ldr r2, _020110D8 ; =0x000003FF
 	bx r3
 	nop
-_020110D0: .word sub_0200E374
+_020110D0: .word SysTask_CreateOnVWaitQueue
 _020110D4: .word sub_02011104
 _020110D8: .word 0x000003FF
 	thumb_func_end sub_020110C4
@@ -2320,7 +2320,7 @@ _02011112:
 	cmp r4, #2
 	blt _02011112
 	ldr r0, [sp]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end sub_02011104
@@ -3450,7 +3450,7 @@ sub_02011918: ; 0x02011918
 	ldr r0, _020119E8 ; =sub_02010F00
 	ldr r2, _020119EC ; =0x000003FF
 	add r1, r5, #0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	add r0, r5, #0
 	mov r1, #0
 	bl sub_02010EE0
@@ -3530,7 +3530,7 @@ sub_020119F4: ; 0x020119F4
 	ldr r0, _02011A3C ; =sub_02010F00
 	ldr r2, _02011A40 ; =0x000003FF
 	add r1, r4, #0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	b _02011A38
 _02011A2A:
 	ldr r0, [r4, #0x34]
@@ -3817,7 +3817,7 @@ sub_02011BF0: ; 0x02011BF0
 	ldr r0, _02011CAC ; =sub_02010F00
 	ldr r2, _02011CB0 ; =0x000003FF
 	add r1, r5, #0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	add r0, r5, #0
 	mov r1, #0
 	bl sub_02010EE0
@@ -3897,7 +3897,7 @@ sub_02011CB8: ; 0x02011CB8
 	ldr r0, _02011D00 ; =sub_02010F00
 	ldr r2, _02011D04 ; =0x000003FF
 	add r1, r4, #0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	b _02011CFC
 _02011CEE:
 	ldr r0, [r4, #0x28]
@@ -4081,7 +4081,7 @@ sub_02011DEC: ; 0x02011DEC
 	ldr r0, _02011EB4 ; =sub_02010F00
 	ldr r2, _02011EB8 ; =0x000003FF
 	add r1, r5, #0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	add r0, r5, #0
 	mov r1, #0
 	bl sub_02010EE0
@@ -4161,7 +4161,7 @@ sub_02011EC0: ; 0x02011EC0
 	ldr r0, _02011F08 ; =sub_02010F00
 	ldr r2, _02011F0C ; =0x000003FF
 	add r1, r4, #0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	b _02011F04
 _02011EF6:
 	ldr r0, [r4, #0x2c]
@@ -4450,7 +4450,7 @@ _020120F8:
 	ldr r0, _02012198 ; =sub_02010F00
 	ldr r2, _0201219C ; =0x000003FF
 	add r1, r6, #0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	add r0, r6, #0
 	mov r1, #0
 	bl sub_02010EE0
@@ -4528,7 +4528,7 @@ sub_020121A4: ; 0x020121A4
 	ldr r0, _020121EC ; =sub_02010F00
 	ldr r2, _020121F0 ; =0x000003FF
 	add r1, r4, #0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	b _020121E6
 _020121D8:
 	ldr r0, [r4, #0x28]
@@ -4789,7 +4789,7 @@ sub_02012358: ; 0x02012358
 	ldr r0, _02012448 ; =sub_02010F00
 	ldr r2, _0201244C ; =0x000003FF
 	add r1, r5, #0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	add r0, r5, #0
 	mov r1, #0
 	bl sub_02010EE0
@@ -4888,7 +4888,7 @@ sub_02012454: ; 0x02012454
 	ldr r0, _020124A4 ; =sub_02010F00
 	ldr r2, _020124A8 ; =0x000003FF
 	add r1, r4, #0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	b _0201249E
 _02012490:
 	ldr r0, [r4, #0x34]
@@ -5204,7 +5204,7 @@ sub_0201268C: ; 0x0201268C
 	ldr r0, _02012750 ; =sub_02010F00
 	ldr r2, _02012754 ; =0x000003FF
 	add r1, r5, #0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	add r0, r5, #0
 	mov r1, #0
 	bl sub_02010EE0
@@ -5287,7 +5287,7 @@ sub_0201275C: ; 0x0201275C
 	ldr r0, _020127AC ; =sub_02010F00
 	ldr r2, _020127B0 ; =0x000003FF
 	add r1, r4, #0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	b _020127A6
 _02012798:
 	ldr r0, [r4, #0x34]

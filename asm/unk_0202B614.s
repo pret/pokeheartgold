@@ -736,8 +736,8 @@ _0202BAFE:
 	pop {r4, r5, r6, pc}
 	thumb_func_end FashionCase_CountWallpapers
 
-	thumb_func_start sub_0202BB08
-sub_0202BB08: ; 0x0202BB08
+	thumb_func_start FashionCase_GiveFashionItem
+FashionCase_GiveFashionItem: ; 0x0202BB08
 	push {r4, r5, r6, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -794,7 +794,7 @@ _0202BB64:
 	bl sub_0202B808
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end sub_0202BB08
+	thumb_func_end FashionCase_GiveFashionItem
 
 	thumb_func_start sub_0202BB7C
 sub_0202BB7C: ; 0x0202BB7C
@@ -845,8 +845,8 @@ _0202BBC2:
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_0202BB7C
 
-	thumb_func_start sub_0202BBD8
-sub_0202BBD8: ; 0x0202BBD8
+	thumb_func_start FashionCase_GiveContestBackground
+FashionCase_GiveContestBackground: ; 0x0202BBD8
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -873,7 +873,7 @@ _0202BBE6:
 _0202BC0C:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0202BBD8
+	thumb_func_end FashionCase_GiveContestBackground
 
 	thumb_func_start sub_0202BC10
 sub_0202BC10: ; 0x0202BC10

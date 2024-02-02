@@ -101,7 +101,7 @@ u8 Sprite_GetPriority(Sprite*);
 void Sprite_SetDrawPriority(Sprite*, u16);
 u16 Sprite_GetDrawPriority(Sprite*);
 NNSG2dImageProxy *sub_02024B1C(Sprite *);
-int sub_02024B68(Sprite *);
+int Sprite_IsCellAnimationFinished(Sprite *);
 NNSG2dCellAnimation *sub_02024CB8(Sprite *a0);
 
 #endif //POKEHEARTGOLD_UNK_02023694_H

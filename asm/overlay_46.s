@@ -228,12 +228,12 @@ _022589D0:
 	add r0, r5, #0
 	add r0, #0xd0
 	ldr r0, [r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	bne _022589EC
 	add r5, #0xd0
 	ldr r0, [r5]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #4
 	str r0, [r4]
 	b _02258C28
@@ -246,7 +246,7 @@ _022589F2:
 	add r0, r5, #0
 	add r0, #0xd0
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	add r5, #0x40
 	add r0, r5, #0
 	bl ov46_022593F8
@@ -420,12 +420,12 @@ _02258B74:
 	add r0, r5, #0
 	add r0, #0xd0
 	ldr r0, [r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	bne _02258B94
 	add r5, #0xd0
 	ldr r0, [r5]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	bl sub_020397C8
 	mov r0, #0xd
 	str r0, [r4]
@@ -435,7 +435,7 @@ _02258B94:
 	bne _02258C28
 	add r5, #0xd0
 	ldr r0, [r5]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #0xe
 	str r0, [r4]
 	b _02258C28
@@ -522,7 +522,7 @@ ov46_02258C38: ; 0x02258C38
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02258C68
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0xd4
@@ -858,7 +858,7 @@ ov46_02258EFC: ; 0x02258EFC
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02258F2C
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0xd4
@@ -1133,7 +1133,7 @@ _0225915A:
 	str r0, [sp]
 	add r0, r5, #0
 	mov r2, #1
-	bl sub_02003DE8
+	bl BlendPalette
 	add r7, r7, #1
 	add r6, r6, #2
 	add r4, r4, #2
@@ -1190,7 +1190,7 @@ _022591A6:
 	ldr r0, _0225920C ; =ov46_02259210
 	add r1, #0xd4
 	mov r2, #0x14
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	ldr r1, [sp, #0x10]
 	add r1, #0xd4
 	str r0, [r1]
@@ -1411,7 +1411,7 @@ ov46_02259374: ; 0x02259374
 	ldr r0, [r5, #0x2c]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _02259394:
 	add r0, r5, #0
 	add r0, #8
@@ -1473,7 +1473,7 @@ ov46_022593F8: ; 0x022593F8
 	ldr r0, [r4, #0x2c]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _02259414:
 	ldr r0, [r4, #0x20]
 	cmp r0, #0
@@ -1559,7 +1559,7 @@ ov46_02259494: ; 0x02259494
 	ldr r0, [r4, #0x2c]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _022594B0:
 	ldr r0, [r4, #0x24]
 	cmp r0, #0
@@ -1615,7 +1615,7 @@ ov46_022594E0: ; 0x022594E0
 	ldr r2, [r4, #0x18]
 	add r0, #8
 	mov r1, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -1646,7 +1646,7 @@ ov46_02259550: ; 0x02259550
 	add r5, r0, #0
 	mov r0, #0x77
 	add r4, r1, #0
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	mov r1, #1
 	str r1, [sp, #4]
 	mov r1, #0xd
@@ -1670,7 +1670,7 @@ ov46_02259550: ; 0x02259550
 	mov r1, #0
 	strb r1, [r2, #0x13]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add r0, r6, #0
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}

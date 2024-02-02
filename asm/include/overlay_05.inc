@@ -8,10 +8,10 @@
 .public PaletteData_Free
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
-.public sub_020032A4
+.public PaletteData_LoadPaletteSlotFromHardware
 .public PaletteData_CopyPalette
-.public sub_0200398C
-.public sub_02003B74
+.public PaletteData_PushTransparentBuffers
+.public PaletteData_SetSelectedBufferAll
 .public PlaySE
 .public CreateSysTaskAndEnvironment
 .public DestroySysTaskAndEnvironment
@@ -109,10 +109,10 @@
 .public DoScheduledBgGpuUpdates
 .public ScheduleBgTilemapBufferTransfer
 .public ScheduleSetBgPosText
-.public sub_0201F988
+.public SysTask_GetData
 .public LCRandom
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks

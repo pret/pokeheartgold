@@ -763,7 +763,7 @@ sub_02087878: ; 0x02087878
 	ldr r0, _020878AC ; =sub_020873D4
 	add r1, r5, #0
 	lsl r2, r2, #0xc
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	add r5, #0xf4
 	str r0, [r5]
 	mov r0, #1
@@ -931,7 +931,7 @@ _0208799C:
 _020879B0:
 	add r0, #0xf4
 	ldr r0, [r0]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]

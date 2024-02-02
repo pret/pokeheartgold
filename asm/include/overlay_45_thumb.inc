@@ -30,8 +30,8 @@
 .public BufferWiFiPlazaEventName
 .public BufferWiFiPlazaInstrumentName
 .public StringExpandPlaceholders
-.public sub_0200E374
-.public DestroySysTask
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public WallpaperPasswordBank_Create
 .public WallpaperPasswordBank_Delete
 .public WallpaperPasswordBank_GetCount

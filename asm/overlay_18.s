@@ -452,7 +452,7 @@ ov18_021E5C40: ; 0x021E5C40
 	mov r0, #0x85
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	add r0, r4, #0
 	bl ov18_021E7A3C
 	ldr r0, [r4, #4]
@@ -1085,7 +1085,7 @@ ov18_021E61A4: ; 0x021E61A4
 	str r0, [r4, r1]
 	mov r0, #0xf
 	mov r1, #0x25
-	bl sub_02003BA8
+	bl ZeroPalettesByBitmask
 	mov r0, #0x85
 	lsl r0, r0, #4
 	mov r2, #2
@@ -2020,7 +2020,7 @@ ov18_021E6868: ; 0x021E6868
 	ldr r1, [r4, r1]
 	mov r2, #2
 	mov r3, #0x25
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -2105,7 +2105,7 @@ _021E69C6:
 	ldr r1, [r4, r1]
 	mov r2, #0x12
 	mov r3, #0x25
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	ldr r0, _021E6A6C ; =0x00001860
 	ldr r0, [r4, r0]
 	cmp r0, #0
@@ -2995,7 +2995,7 @@ ov18_021E7048: ; 0x021E7048
 	ldr r1, [r4, r1]
 	mov r2, #2
 	mov r3, #0x25
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3060,7 +3060,7 @@ ov18_021E7048: ; 0x021E7048
 	ldr r1, [r4, r1]
 	mov r2, #0x12
 	mov r3, #0x25
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	ldr r0, [r4, #4]
 	mov r1, #0
 	bl ScheduleBgTilemapBufferTransfer
@@ -4418,7 +4418,7 @@ _021E7C4E:
 	ldr r1, [r4, r1]
 	mov r2, #2
 	mov r3, #0x25
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4483,7 +4483,7 @@ _021E7C4E:
 	ldr r1, [r4, r1]
 	mov r2, #0x12
 	mov r3, #0x25
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	ldr r0, [r4, #4]
 	mov r1, #0
 	bl ScheduleBgTilemapBufferTransfer
@@ -4586,7 +4586,7 @@ ov18_021E7D90: ; 0x021E7D90
 	ldr r1, [r4, r1]
 	mov r2, #2
 	mov r3, #0x25
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4625,7 +4625,7 @@ ov18_021E7D90: ; 0x021E7D90
 	ldr r1, [r4, r1]
 	mov r2, #0x12
 	mov r3, #0x25
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	ldr r0, [r4, #8]
 	mov r1, #0x10
 	mov r2, #0
@@ -4729,7 +4729,7 @@ ov18_021E7ED8: ; 0x021E7ED8
 	ldr r1, [r4, r1]
 	mov r2, #2
 	mov r3, #0x25
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4768,7 +4768,7 @@ ov18_021E7ED8: ; 0x021E7ED8
 	ldr r1, [r4, r1]
 	mov r2, #0x12
 	mov r3, #0x25
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	ldr r0, [r4, #4]
 	mov r1, #0
 	bl ScheduleBgTilemapBufferTransfer
@@ -4888,7 +4888,7 @@ ov18_021E800C: ; 0x021E800C
 	ldr r1, [r5, r1]
 	mov r2, #2
 	mov r3, #0x25
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -4927,7 +4927,7 @@ ov18_021E800C: ; 0x021E800C
 	ldr r1, [r5, r1]
 	mov r2, #0x12
 	mov r3, #0x25
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	ldr r0, _021E81A4 ; =0x000018C4
 	ldrsb r0, [r5, r0]
 	cmp r0, #1
@@ -6564,7 +6564,7 @@ ov18_021E8DC8: ; 0x021E8DC8
 	mov r0, #0x85
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _021E8DE0
 	ldr r0, _021E8DE4 ; =0x0000085C
@@ -6680,7 +6680,7 @@ ov18_021E8E8C: ; 0x021E8E8C
 	ldr r0, [r4, r0]
 	ldr r2, _021E8EC8 ; =0x0000FFFF
 	sub r3, #0x8e
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x86
 	mov r1, #6
 	lsl r0, r0, #4
@@ -6779,7 +6779,7 @@ _021E8F74:
 	add r5, r4, r0
 	add r0, r5, #0
 	add r1, r5, #4
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	add r0, r4, #0
 	bl ov18_021F2B9C
 	strh r0, [r5, #8]
@@ -6791,7 +6791,7 @@ _021E8F74:
 _021E8F94:
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r4, #0
@@ -6820,7 +6820,7 @@ ov18_021E8FCC: ; 0x021E8FCC
 	add r4, r0, #0
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	cmp r0, #0
 	bne _021E8FEA
 	add r0, r4, #0
@@ -6914,7 +6914,7 @@ ov18_021E9070: ; 0x021E9070
 _021E9086:
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	cmp r0, #0
 	bne _021E90B8
 	ldr r0, [r5, #4]
@@ -7190,7 +7190,7 @@ _021E92C4:
 	ldr r0, [r4, r0]
 	ldr r2, _021E93D0 ; =0x0000FFFE
 	mov r1, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0x10
@@ -7201,7 +7201,7 @@ _021E92C4:
 	ldr r0, [r4, r0]
 	ldr r2, _021E93D4 ; =0x0000FFFF
 	mov r1, #0xe
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, _021E93CC ; =0x00000868
 	ldrb r1, [r4, r0]
 	add r1, r1, #1
@@ -7210,7 +7210,7 @@ _021E92C4:
 _021E9302:
 	sub r1, #0x18
 	ldr r0, [r4, r1]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _021E9318
 	ldr r0, _021E93CC ; =0x00000868
@@ -7282,7 +7282,7 @@ _021E9380:
 	bl ScheduleSetBgPosText
 	mov r0, #0xf
 	mov r1, #0x25
-	bl sub_02003BA8
+	bl ZeroPalettesByBitmask
 	add r0, r4, #0
 	bl ov18_021EE388
 	add r0, r4, #0
@@ -7508,7 +7508,7 @@ _021E9550:
 _021E9580:
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	ldr r2, [sp, #4]
 	ldr r3, [sp]
 	add r0, r4, #0
@@ -7533,7 +7533,7 @@ _021E95B0:
 	ldr r0, _021E95F8 ; =0x00000868
 	add r0, r4, r0
 	add r1, r0, #4
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	ldr r0, [r4, #8]
 	mov r1, #4
 	bl sub_0201980C
@@ -7952,7 +7952,7 @@ ov18_021E9940: ; 0x021E9940
 	add r5, r0, #0
 	add r0, sp, #8
 	add r1, sp, #4
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	cmp r0, #0
 	bne _021E9958
 	add sp, #0xc
@@ -8081,7 +8081,7 @@ ov18_021E9A4C: ; 0x021E9A4C
 _021E9A62:
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	cmp r0, #0
 	bne _021E9A94
 	ldr r0, [r5, #4]
@@ -8290,7 +8290,7 @@ _021E9BF4:
 	ldr r0, [r4, r0]
 	ldr r2, _021E9CC8 ; =0x0000FFFE
 	mov r1, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0x10
@@ -8301,7 +8301,7 @@ _021E9BF4:
 	ldr r0, [r4, r0]
 	ldr r2, _021E9CCC ; =0x0000FFFF
 	mov r1, #0xe
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r1, _021E9CD0 ; =0x0000085C
 	mov r0, #0x12
 	str r0, [r4, r1]
@@ -8332,7 +8332,7 @@ _021E9C66:
 	bl ScheduleSetBgPosText
 	mov r0, #0xf
 	mov r1, #0x25
-	bl sub_02003BA8
+	bl ZeroPalettesByBitmask
 	add r0, r4, #0
 	bl ov18_021EE388
 	add r0, r4, #0
@@ -8395,7 +8395,7 @@ _021E9CEC:
 	ldr r0, [r4, r0]
 	ldr r2, _021E9D68 ; =0x0000FFEF
 	mov r1, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x10
 	str r0, [sp]
 	mov r3, #0
@@ -8406,7 +8406,7 @@ _021E9CEC:
 	ldr r0, [r4, r0]
 	ldr r2, _021E9D6C ; =0x0000FFFF
 	mov r1, #0xe
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, _021E9D64 ; =0x00000868
 	add sp, #0xc
 	ldrb r1, [r4, r0]
@@ -9195,7 +9195,7 @@ _021EA398:
 	ldr r0, [r4, r0]
 	ldr r2, _021EA424 ; =0x0000FFEF
 	mov r1, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0x10
@@ -9206,7 +9206,7 @@ _021EA398:
 	ldr r0, [r4, r0]
 	ldr r2, _021EA428 ; =0x0000FFFF
 	mov r1, #0xe
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r1, _021EA42C ; =0x0000085C
 	mov r0, #0x19
 	str r0, [r4, r1]
@@ -9222,7 +9222,7 @@ _021EA398:
 _021EA3EE:
 	mov r0, #0xf
 	mov r1, #0x25
-	bl sub_02003BA8
+	bl ZeroPalettesByBitmask
 	add r0, r4, #0
 	bl ov18_021F7B74
 	add r0, r4, #0
@@ -9345,7 +9345,7 @@ _021EA4B8:
 	ldr r0, [r4, r0]
 	ldr r2, _021EA59C ; =0x0000FFFE
 	mov r1, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x10
 	str r0, [sp]
 	mov r3, #0
@@ -9356,7 +9356,7 @@ _021EA4B8:
 	ldr r0, [r4, r0]
 	ldr r2, _021EA5A0 ; =0x0000FFFF
 	mov r1, #0xe
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r1, _021EA5A4 ; =0x0000085C
 	mov r0, #0x13
 	str r0, [r4, r1]
@@ -9554,7 +9554,7 @@ _021EA69E:
 	ldr r0, [r5, r0]
 	ldr r2, _021EA754 ; =0x0000FFEF
 	mov r1, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0x10
@@ -9565,7 +9565,7 @@ _021EA69E:
 	ldr r0, [r5, r0]
 	ldr r2, _021EA758 ; =0x0000FFFF
 	mov r1, #0xe
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, _021EA75C ; =0x0000085C
 	mov r1, #0x1a
 	str r1, [r5, r0]
@@ -9593,7 +9593,7 @@ _021EA6EE:
 	ldr r0, [r5, r0]
 	ldr r2, _021EA754 ; =0x0000FFEF
 	mov r1, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x10
 	str r0, [sp]
 	mov r3, #0
@@ -9604,7 +9604,7 @@ _021EA6EE:
 	ldr r0, [r5, r0]
 	ldr r2, _021EA758 ; =0x0000FFFF
 	mov r1, #0xe
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldrb r1, [r4, #1]
 	ldr r0, _021EA75C ; =0x0000085C
 	mov r2, #0x10
@@ -9656,7 +9656,7 @@ _021EA776:
 	ldr r0, [r5, r0]
 	ldr r2, _021EA82C ; =0x0000FFEF
 	mov r1, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0x10
@@ -9667,7 +9667,7 @@ _021EA776:
 	ldr r0, [r5, r0]
 	ldr r2, _021EA830 ; =0x0000FFFF
 	mov r1, #0xe
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, _021EA834 ; =0x0000085C
 	mov r1, #0x1b
 	str r1, [r5, r0]
@@ -9695,7 +9695,7 @@ _021EA7C6:
 	ldr r0, [r5, r0]
 	ldr r2, _021EA82C ; =0x0000FFEF
 	mov r1, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x10
 	str r0, [sp]
 	mov r3, #0
@@ -9706,7 +9706,7 @@ _021EA7C6:
 	ldr r0, [r5, r0]
 	ldr r2, _021EA830 ; =0x0000FFFF
 	mov r1, #0xe
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldrb r1, [r4, #1]
 	ldr r0, _021EA834 ; =0x0000085C
 	mov r2, #0x10
@@ -11709,7 +11709,7 @@ _021EB7BE:
 _021EB7EE:
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	ldr r2, [sp, #4]
 	ldr r3, [sp]
 	add r0, r4, #0
@@ -12048,7 +12048,7 @@ ov18_021EBAC4: ; 0x021EBAC4
 	add r5, r0, #0
 	add r0, sp, #8
 	add r1, sp, #4
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	cmp r0, #0
 	bne _021EBADC
 	add sp, #0xc
@@ -12260,7 +12260,7 @@ _021EBC30:
 	ldr r0, [r4, r0]
 	ldr r2, _021EBD1C ; =0x0000FFFE
 	mov r1, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0x10
@@ -12271,7 +12271,7 @@ _021EBC30:
 	ldr r0, [r4, r0]
 	ldr r2, _021EBD20 ; =0x0000FFFF
 	mov r1, #0xe
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, _021EBD24 ; =0x0000085C
 	mov r1, #0x3e
 	str r1, [r4, r0]
@@ -12292,7 +12292,7 @@ _021EBCD8:
 	bne _021EBD0A
 	mov r0, #0xf
 	mov r1, #0x25
-	bl sub_02003BA8
+	bl ZeroPalettesByBitmask
 	add r0, r4, #0
 	bl ov18_021EE388
 	add r0, r4, #0
@@ -12559,7 +12559,7 @@ _021EBEF0:
 	ldr r0, [r4, r0]
 	ldr r2, _021EBFB0 ; =0x0000FFFE
 	mov r1, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0x10
@@ -12570,7 +12570,7 @@ _021EBEF0:
 	ldr r0, [r4, r0]
 	ldr r2, _021EBFB4 ; =0x0000FFFF
 	mov r1, #0xe
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r1, _021EBFB8 ; =0x0000085C
 	mov r0, #0x40
 	str r0, [r4, r1]
@@ -12806,7 +12806,7 @@ _021EC166:
 	ldr r0, [r4, r0]
 	ldr r2, _021EC1D4 ; =0x0000FFEF
 	mov r1, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x10
 	str r0, [sp]
 	mov r3, #0
@@ -12817,7 +12817,7 @@ _021EC166:
 	ldr r0, [r4, r0]
 	ldr r2, _021EC1D8 ; =0x0000FFFF
 	mov r1, #0xe
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, _021EC1C8 ; =0x00000868
 	add sp, #0x10
 	ldrb r1, [r4, r0]
@@ -12996,7 +12996,7 @@ _021EC2DA:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldrb r0, [r4, #2]
 	mov r3, #0
 	ldr r2, _021EC3D8 ; =0x0000FFFF
@@ -13008,7 +13008,7 @@ _021EC2DA:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0xe
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldrh r0, [r4]
 	mov r1, #0x43
 	add sp, #0xc
@@ -13026,7 +13026,7 @@ _021EC32E:
 	bne _021EC3CA
 	mov r0, #0xf
 	mov r1, #0x25
-	bl sub_02003BA8
+	bl ZeroPalettesByBitmask
 	ldr r0, _021EC3E0 ; =0x0000185B
 	ldrb r0, [r5, r0]
 	cmp r0, #3
@@ -13159,7 +13159,7 @@ _021EC452:
 	ldr r0, [r4, r0]
 	ldr r2, _021EC4EC ; =0x0000F7BE
 	sub r3, r1, #3
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #0
@@ -13171,7 +13171,7 @@ _021EC452:
 	ldr r0, [r4, r0]
 	ldr r2, _021EC4F0 ; =0x0000FFEF
 	sub r3, r1, #6
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #0
@@ -13184,7 +13184,7 @@ _021EC452:
 	ldr r0, [r4, r0]
 	ldr r2, _021EC4F4 ; =0x0000FFFF
 	sub r3, #0xc
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, _021EC4E4 ; =0x00000868
 	add sp, #0xc
 	ldrb r1, [r4, r0]
@@ -13426,7 +13426,7 @@ _021EC674:
 _021EC67A:
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r4, #0
@@ -13599,7 +13599,7 @@ _021EC7C2:
 	ldr r0, [r5, r1]
 	mov r1, #1
 	sub r3, r1, #3
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldrb r0, [r4, #2]
 	mov r1, #4
 	ldr r2, _021EC87C ; =0x0000FFEF
@@ -13612,7 +13612,7 @@ _021EC7C2:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	sub r3, r1, #6
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldrb r0, [r4, #2]
 	mov r1, #0xa
 	add r3, r1, #0
@@ -13626,7 +13626,7 @@ _021EC7C2:
 	ldr r0, [r5, r0]
 	ldr r2, _021EC880 ; =0x0000FFFF
 	sub r3, #0xc
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldrh r0, [r4]
 	mov r1, #0x46
 	add sp, #0xc
@@ -13889,7 +13889,7 @@ ov18_021ECA2C: ; 0x021ECA2C
 	bl ov18_021EE26C
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	cmp r0, #0
 	bne _021ECA48
 	add sp, #8
@@ -14128,7 +14128,7 @@ _021ECC14:
 	ldr r0, [r4, r0]
 	ldr r2, _021ECCA0 ; =0x0000F7BE
 	sub r3, r1, #3
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #0
@@ -14140,7 +14140,7 @@ _021ECC14:
 	ldr r0, [r4, r0]
 	ldr r2, _021ECCA4 ; =0x0000FFEF
 	sub r3, r1, #6
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #0
@@ -14153,7 +14153,7 @@ _021ECC14:
 	ldr r0, [r4, r0]
 	ldr r2, _021ECCA8 ; =0x0000FFFF
 	sub r3, #0xc
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, _021ECC9C ; =0x00000868
 	add sp, #0xc
 	ldrb r1, [r4, r0]
@@ -14341,7 +14341,7 @@ _021ECDDE:
 	ldr r0, [r5, r1]
 	mov r1, #1
 	sub r3, r1, #3
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldrb r0, [r4, #2]
 	mov r1, #4
 	ldr r2, _021ECE90 ; =0x0000FFEF
@@ -14354,7 +14354,7 @@ _021ECDDE:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	sub r3, r1, #6
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldrb r0, [r4, #2]
 	mov r1, #0xa
 	add r3, r1, #0
@@ -14368,7 +14368,7 @@ _021ECDDE:
 	ldr r0, [r5, r0]
 	ldr r2, _021ECE94 ; =0x0000FFFF
 	sub r3, #0xc
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldrh r0, [r4]
 	mov r1, #0x4e
 	add sp, #0xc
@@ -14451,7 +14451,7 @@ _021ECEB4:
 	ldr r0, [r4, r0]
 	ldr r2, _021ECF48 ; =0x0000F7BE
 	sub r3, r1, #3
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #0
@@ -14463,7 +14463,7 @@ _021ECEB4:
 	ldr r0, [r4, r0]
 	ldr r2, _021ECF4C ; =0x0000FFEF
 	sub r3, r1, #6
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #0
@@ -14476,7 +14476,7 @@ _021ECEB4:
 	ldr r0, [r4, r0]
 	ldr r2, _021ECF50 ; =0x0000FFFF
 	sub r3, #0xc
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, _021ECF40 ; =0x00000868
 	add sp, #0xc
 	ldrb r1, [r4, r0]
@@ -14704,7 +14704,7 @@ _021ED0C4:
 _021ED0CA:
 	add r0, sp, #0x10
 	add r1, sp, #0xc
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0xc]
 	add r0, r4, #0
@@ -14797,7 +14797,7 @@ _021ED172:
 	ldr r0, [r5, r1]
 	mov r1, #1
 	sub r3, r1, #3
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldrb r0, [r4, #2]
 	mov r1, #4
 	ldr r2, _021ED214 ; =0x0000FFEF
@@ -14810,7 +14810,7 @@ _021ED172:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	sub r3, r1, #6
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldrb r0, [r4, #2]
 	mov r1, #0xa
 	add r3, r1, #0
@@ -14824,7 +14824,7 @@ _021ED172:
 	ldr r0, [r5, r0]
 	ldr r2, _021ED218 ; =0x0000FFFF
 	sub r3, #0xc
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldrh r0, [r4]
 	mov r1, #0x51
 	add sp, #0xc
@@ -15091,7 +15091,7 @@ ov18_021ED3E8: ; 0x021ED3E8
 	add r4, r0, #0
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	cmp r0, #0
 	bne _021ED400
 	add sp, #8
@@ -15204,7 +15204,7 @@ _021ED4C8:
 	ldr r0, [r4, r0]
 	ldr r2, _021ED5EC ; =0x0000F7BE
 	mov r1, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0x10
@@ -15215,7 +15215,7 @@ _021ED4C8:
 	ldr r0, [r4, r0]
 	ldr r2, _021ED5F0 ; =0x0000FFEF
 	mov r1, #4
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0x10
@@ -15226,7 +15226,7 @@ _021ED4C8:
 	ldr r0, [r4, r0]
 	ldr r2, _021ED5F4 ; =0x0000FFFF
 	mov r1, #0xa
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, _021ED5E8 ; =0x00000868
 	add sp, #0xc
 	ldrb r1, [r4, r0]
@@ -15286,7 +15286,7 @@ _021ED570:
 	ldr r0, [r4, r0]
 	ldr r2, _021ED5EC ; =0x0000F7BE
 	mov r1, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x10
 	str r0, [sp]
 	mov r3, #0
@@ -15297,7 +15297,7 @@ _021ED570:
 	ldr r0, [r4, r0]
 	ldr r2, _021ED5F0 ; =0x0000FFEF
 	mov r1, #4
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x10
 	str r0, [sp]
 	mov r3, #0
@@ -15308,7 +15308,7 @@ _021ED570:
 	ldr r0, [r4, r0]
 	ldr r2, _021ED5F4 ; =0x0000FFFF
 	mov r1, #0xa
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, _021ED5E8 ; =0x00000868
 	mov r1, #0
 	strb r1, [r4, r0]
@@ -15572,7 +15572,7 @@ _021ED7D4:
 	ldr r0, [r4, r1]
 	ldr r2, _021ED8D8 ; =0x0000F7BE
 	mov r1, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0x10
@@ -15583,7 +15583,7 @@ _021ED7D4:
 	ldr r0, [r4, r0]
 	ldr r2, _021ED8DC ; =0x0000FFEF
 	mov r1, #4
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0x10
@@ -15594,7 +15594,7 @@ _021ED7D4:
 	ldr r0, [r4, r0]
 	ldr r2, _021ED8E0 ; =0x0000FFFF
 	mov r1, #0xa
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, _021ED8D4 ; =0x00000868
 	add sp, #0xc
 	ldrb r1, [r4, r0]
@@ -15627,7 +15627,7 @@ _021ED82E:
 	ldr r0, [r4, r0]
 	ldr r2, _021ED8D8 ; =0x0000F7BE
 	mov r1, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x10
 	str r0, [sp]
 	mov r3, #0
@@ -15638,7 +15638,7 @@ _021ED82E:
 	ldr r0, [r4, r0]
 	ldr r2, _021ED8DC ; =0x0000FFEF
 	mov r1, #4
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x10
 	str r0, [sp]
 	mov r3, #0
@@ -15649,7 +15649,7 @@ _021ED82E:
 	ldr r0, [r4, r0]
 	ldr r2, _021ED8E0 ; =0x0000FFFF
 	mov r1, #0xa
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, _021ED8D4 ; =0x00000868
 	add sp, #0xc
 	ldrb r1, [r4, r0]
@@ -15713,7 +15713,7 @@ _021ED8F8:
 	ldr r0, [r4, r0]
 	ldr r2, _021ED97C ; =0x0000F7BE
 	sub r3, r1, #3
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #0
@@ -15725,7 +15725,7 @@ _021ED8F8:
 	ldr r0, [r4, r0]
 	ldr r2, _021ED980 ; =0x0000FFEF
 	sub r3, r1, #6
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #0
@@ -15738,7 +15738,7 @@ _021ED8F8:
 	ldr r0, [r4, r0]
 	ldr r2, _021ED984 ; =0x0000FFFF
 	sub r3, #0xc
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, _021ED978 ; =0x00000868
 	add sp, #0xc
 	ldrb r1, [r4, r0]
@@ -15903,7 +15903,7 @@ _021EDA76:
 	ldr r0, [r5, r1]
 	mov r1, #1
 	sub r3, r1, #3
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldrb r0, [r4, #2]
 	mov r1, #4
 	ldr r2, _021EDB18 ; =0x0000FFEF
@@ -15916,7 +15916,7 @@ _021EDA76:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	sub r3, r1, #6
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldrb r0, [r4, #2]
 	mov r1, #0xa
 	add r3, r1, #0
@@ -15930,7 +15930,7 @@ _021EDA76:
 	ldr r0, [r5, r0]
 	ldr r2, _021EDB1C ; =0x0000FFFF
 	sub r3, #0xc
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldrh r0, [r4]
 	mov r1, #0x5b
 	add sp, #0xc
@@ -23999,7 +23999,7 @@ _021F1AC8:
 	mov r1, #3
 	lsr r2, r2, #0x10
 	mov r3, #0x20
-	bl sub_020032A4
+	bl PaletteData_LoadPaletteSlotFromHardware
 	b _021F1BB4
 _021F1B6E:
 	cmp r0, #1
@@ -24035,7 +24035,7 @@ _021F1B94:
 	mov r1, #3
 	mov r2, #2
 	mov r3, #0
-	bl sub_02003D5C
+	bl PaletteData_FillPaletteInBuffer
 _021F1BB4:
 	add r0, r7, #0
 	bl FreeToHeap
@@ -33959,7 +33959,7 @@ ov18_021F6B00: ; 0x021F6B00
 	cmp r0, #1
 	bne _021F6B3A
 	ldr r0, _021F6BAC ; =_021FB72C
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -34060,11 +34060,11 @@ ov18_021F6BBC: ; 0x021F6BBC
 	str r1, [r5, r0]
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	cmp r0, #1
 	bne _021F6C5C
 	ldr r0, _021F6DC0 ; =_021FB8A4
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -35111,7 +35111,7 @@ _021F73EE:
 	pop {r4, r5, r6, pc}
 _021F73F8:
 	ldr r0, _021F7440 ; =_021FB718
-	bl sub_02025204
+	bl TouchscreenHitbox_FindRectAtTouchHeld
 	add r6, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -35303,7 +35303,7 @@ _021F7572:
 	pop {r4, r5, r6, pc}
 _021F757C:
 	ldr r0, _021F75C4 ; =_021FB718
-	bl sub_02025204
+	bl TouchscreenHitbox_FindRectAtTouchHeld
 	add r6, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -35413,7 +35413,7 @@ ov18_021F7648: ; 0x021F7648
 ov18_021F765C: ; 0x021F765C
 	push {r3, lr}
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov18_021F765C
@@ -35811,11 +35811,11 @@ ov18_021F7974: ; 0x021F7974
 	add r4, r1, #0
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	cmp r0, #1
 	bne _021F7A1A
 	ldr r0, _021F7B58 ; =_021FB8A4
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -36100,7 +36100,7 @@ ov18_021F7B94: ; 0x021F7B94
 	cmp r0, #1
 	bne _021F7BE8
 	ldr r0, _021F7C04 ; =_021FB704
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r6, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -36108,7 +36108,7 @@ ov18_021F7B94: ; 0x021F7B94
 	beq _021F7BFE
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	ldr r0, _021F7C08 ; =_021FB698
 	lsl r1, r6, #2
 	ldr r6, [r0, r1]
@@ -36168,7 +36168,7 @@ ov18_021F7C14: ; 0x021F7C14
 	cmp r0, #1
 	bne _021F7C4C
 	ldr r0, _021F7CE8 ; =_021FB934
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -36324,7 +36324,7 @@ ov18_021F7D30: ; 0x021F7D30
 	cmp r0, #1
 	bne _021F7D68
 	ldr r0, _021F7DBC ; =_021FB804
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -36403,7 +36403,7 @@ ov18_021F7DCC: ; 0x021F7DCC
 	cmp r0, #1
 	bne _021F7DF8
 	ldr r0, _021F7E60 ; =_021FB7E0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -36497,7 +36497,7 @@ ov18_021F7E70: ; 0x021F7E70
 	cmp r0, #1
 	bne _021F7EA2
 	ldr r0, _021F7ECC ; =_021FB630
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -37988,7 +37988,7 @@ _021F8992:
 	str r2, [r4, r0]
 	ldr r0, _021F89C4 ; =ov18_021F89F8
 	add r1, r4, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #0x18]
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
@@ -38016,7 +38016,7 @@ ov18_021F89D0: ; 0x021F89D0
 	ldr r0, [r4, #0x1c]
 	bl NARC_Delete
 	ldr r0, [r4, #0x18]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -38252,7 +38252,7 @@ ov18_021F8B10: ; 0x021F8B10
 	ldr r1, [r4, #0x1c]
 	ldr r3, [r4, #0x14]
 	mov r2, #0x12
-	bl sub_02003284
+	bl PaletteData_LoadOpenNarc
 	add sp, #0x64
 	pop {r4, r5, pc}
 	nop
@@ -38292,7 +38292,7 @@ ov18_021F8C0C: ; 0x021F8C0C
 	ldr r2, _021F8C44 ; =0x0000FFFF
 	mov r1, #5
 	mov r3, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r2, #0
 	str r2, [sp]
 	ldr r0, [r4, #0x20]
@@ -38301,7 +38301,7 @@ ov18_021F8C0C: ; 0x021F8C0C
 	bl sub_020090B4
 	ldr r0, [r4, #4]
 	mov r1, #0
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	add sp, #0xc
 	pop {r3, r4, pc}
 	nop
@@ -38313,7 +38313,7 @@ ov18_021F8C48: ; 0x021F8C48
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _021F8C64
 	ldr r0, [r4, #0x20]
@@ -38800,7 +38800,7 @@ ov18_021F8FF8: ; 0x021F8FF8
 	mov r1, #2
 	lsr r2, r2, #0x10
 	mov r3, #0x40
-	bl sub_020032A4
+	bl PaletteData_LoadPaletteSlotFromHardware
 	add sp, #0x24
 	pop {r3, r4, pc}
 	nop
@@ -38890,7 +38890,7 @@ ov18_021F9068: ; 0x021F9068
 	mov r1, #2
 	lsr r2, r2, #0x10
 	mov r3, #0x80
-	bl sub_020032A4
+	bl PaletteData_LoadPaletteSlotFromHardware
 	add sp, #0x24
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -38989,7 +38989,7 @@ ov18_021F9150: ; 0x021F9150
 	mov r1, #2
 	lsr r2, r2, #0x10
 	mov r3, #0x20
-	bl sub_020032A4
+	bl PaletteData_LoadPaletteSlotFromHardware
 	add r0, r4, #0
 	bl NARC_Delete
 	add sp, #0x24
@@ -39567,7 +39567,7 @@ _021F962A:
 	add r0, r6, #0
 	add r2, r7, #0
 	add r3, r5, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov18_021F95FC

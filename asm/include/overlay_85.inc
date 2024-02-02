@@ -12,9 +12,9 @@
 .public PaletteData_FreeBuffers
 .public PaletteData_LoadPalette
 .public PaletteData_LoadNarc
-.public sub_0200398C
-.public sub_02003B50
-.public sub_02003EA4
+.public PaletteData_PushTransparentBuffers
+.public PaletteData_SetAutoTransparent
+.public PaletteData_BlendPalettes
 .public GF_GetCurrentPlayingBGM
 .public sub_02004EC4
 .public PlaySE
@@ -83,9 +83,9 @@
 .public UnkImageStruct_TickSpriteAnimation1Frame
 .public UnkImageStruct_TickSpriteAnimationNFrames
 .public sub_0200DCA0
-.public CreateSysTask
-.public sub_0200E33C
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
 .public sub_0200E640
@@ -128,9 +128,9 @@
 .public GF_SinDeg
 .public LCRandom
 .public TextPrinterCheckActive
-.public sub_020200A0
+.public RemoveTextPrinter
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks

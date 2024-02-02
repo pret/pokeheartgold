@@ -1,9 +1,9 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public PaletteData_LoadNarc
-.public sub_02003370
-.public sub_02003B44
-.public sub_02003B50
+.public PaletteData_BeginPaletteFade
+.public PaletteData_GetSelectedBuffersBitmask
+.public PaletteData_SetAutoTransparent
 .public PlayBGM
 .public sub_0200602C
 .public PlaySE
@@ -35,7 +35,7 @@
 .public UnkImageStruct_TickSpriteAnimation1Frame
 .public sub_0200E188
 .public sub_0200E2B0
-.public DestroySysTask
+.public SysTask_Destroy
 .public sub_0200E398
 .public sub_0200E3D8
 .public DrawFrameAndWindow1
@@ -58,7 +58,7 @@
 .public FillWindowPixelBuffer
 .public FillWindowPixelRect
 .public TextPrinterCheckActive
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public sub_02021AC8
 .public sub_02021B5C
 .public sub_02021BD0

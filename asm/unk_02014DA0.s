@@ -827,7 +827,7 @@ _020152EE:
 	ldr r0, _020152FC ; =sub_02015340
 	add r1, r5, #0
 	mov r2, #5
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _020152FC: .word sub_02015340
@@ -875,7 +875,7 @@ sub_02015340: ; 0x02015340
 	add r0, r1, #0
 	bl sub_02015300
 	add r0, r4, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_02015340
@@ -1634,7 +1634,7 @@ ListMenuUpdateCursorObj: ; 0x020157F0
 	ldr r2, [r6, #4]
 	add r0, r5, #0
 	add r3, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl CopyWindowPixelsToVram_TextMode
 	add sp, #0x10

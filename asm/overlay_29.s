@@ -26,7 +26,7 @@ ov29_0225D520: ; 0x0225D520
 	mov r3, #8
 	bl CreateSysTaskAndEnvironment
 	str r0, [sp, #4]
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	ldr r0, [sp]
 	mov r1, #0x7f
@@ -104,7 +104,7 @@ ov29_0225D5EC: ; 0x0225D5EC
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r0, r5, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	bl ov29_0225DC34
 	add r0, r4, #0
@@ -314,7 +314,7 @@ _0225D73A:
 	mov r0, #0
 	str r0, [sp, #0xc]
 	add r0, r5, r4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r5, r4
@@ -1004,7 +1004,7 @@ _0225DCEA:
 	lsl r1, r0, #2
 	ldr r0, _0225DEA8 ; =ov29_0225E1AC
 	ldr r0, [r0, r1]
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	add r5, r0, #0
 	mvn r1, r1

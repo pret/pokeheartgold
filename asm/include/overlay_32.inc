@@ -53,8 +53,8 @@
 .public FillWindowPixelBuffer
 .public GetWindowWidth
 .public ScheduleBgTilemapBufferTransfer
-.public sub_0201F988
-.public AddTextPrinterParameterized2
+.public SysTask_GetData
+.public AddTextPrinterParameterizedWithColor
 .public SpriteList_Delete
 .public sub_0202457C
 .public CreateSprite
@@ -62,7 +62,7 @@
 .public Sprite_SetMatrix
 .public Set2dSpriteAnimSeqNo
 .public Sprite_TickCellOrMulticellAnimation
-.public sub_02025224
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public String_New
 .public String_Delete
 .public PlayerProfile_New

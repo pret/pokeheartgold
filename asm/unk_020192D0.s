@@ -1273,7 +1273,7 @@ _02019BF0:
 	cmp r0, #0xff
 	beq _02019C1A
 	add r0, r2, r1
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #1
 	bne _02019C12
 	add r0, r5, #0
@@ -1437,7 +1437,7 @@ _02019D24:
 	cmp r0, #0xff
 	beq _02019D4E
 	add r0, r2, r1
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #1
 	bne _02019D46
 	add r0, r5, #0

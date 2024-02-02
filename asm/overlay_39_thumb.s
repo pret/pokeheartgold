@@ -2621,7 +2621,7 @@ ov39_02228370: ; 0x02228370
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02228394
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0xa8
@@ -3062,7 +3062,7 @@ _02228756:
 	str r0, [sp]
 	add r0, r5, #0
 	mov r2, #1
-	bl sub_02003DE8
+	bl BlendPalette
 	add r7, r7, #1
 	add r6, r6, #2
 	add r4, r4, #2
@@ -3120,7 +3120,7 @@ _022287A2:
 	ldr r0, _022287F4 ; =ov39_022287F8
 	add r1, #0xa8
 	mov r2, #0x14
-	bl sub_0200E33C
+	bl SysTask_CreateOnVBlankQueue
 	ldr r1, [sp, #0x10]
 	add r1, #0xa8
 	str r0, [r1]
@@ -3374,7 +3374,7 @@ ov39_0222899C: ; 0x0222899C
 	add r0, r5, #0
 	mov r1, #1
 	add r2, r6, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov39_0222899C
@@ -3518,7 +3518,7 @@ ov39_02228AC0: ; 0x02228AC0
 	add r5, r0, #0
 	mov r0, #0x7c
 	add r4, r1, #0
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	mov r1, #0
 	mov r2, #0xe
 	str r2, [sp, #0xc]
@@ -3541,7 +3541,7 @@ ov39_02228AC0: ; 0x02228AC0
 	strb r4, [r3, #0x12]
 	strb r1, [r3, #0x13]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add r0, r6, #0
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
@@ -3715,13 +3715,13 @@ _02228C30:
 	add r0, r4, #0
 	add r0, #0x84
 	ldr r0, [r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	bne _02228C56
 	add r0, r4, #0
 	add r0, #0x84
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	add r0, r4, #0
 	add r0, #0x94
 	ldr r0, [r0]
@@ -3735,7 +3735,7 @@ _02228C56:
 	add r0, r4, #0
 	add r0, #0x84
 	ldr r0, [r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	mov r0, #8
 	str r0, [r4, #8]
 	b _02228C6E

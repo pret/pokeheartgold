@@ -590,13 +590,13 @@ ov81_0223E234: ; 0x0223E234
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	beq _0223E260
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0200374C
+	bl PaletteData_ScheduleFadeTaskEndIfNoSelectedBuffers
 	ldr r0, _0223E308 ; =0x00000478
 	mov r1, #0xff
 	str r1, [r4, r0]
@@ -2065,13 +2065,13 @@ _0223EE64:
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	beq _0223EE8C
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0200374C
+	bl PaletteData_ScheduleFadeTaskEndIfNoSelectedBuffers
 	ldr r0, _0223EF54 ; =0x00000478
 	mov r1, #0xff
 	str r1, [r4, r0]
@@ -2532,7 +2532,7 @@ _0223F214:
 _0223F244:
 	ldr r0, _0223F310 ; =0x0000046C
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _0223F256
 	cmp r0, #2
@@ -2542,7 +2542,7 @@ _0223F254:
 _0223F256:
 	ldr r0, _0223F310 ; =0x0000046C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	bl ov81_02242694
@@ -2553,7 +2553,7 @@ _0223F256:
 _0223F26E:
 	ldr r0, _0223F310 ; =0x0000046C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	bl ov81_02242694
@@ -2935,13 +2935,13 @@ _0223F598:
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	beq _0223F5C0
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0200374C
+	bl PaletteData_ScheduleFadeTaskEndIfNoSelectedBuffers
 	ldr r0, _0223F67C ; =0x00000478
 	mov r1, #0xff
 	str r1, [r4, r0]
@@ -3088,7 +3088,7 @@ _0223F6BC:
 _0223F6DE:
 	ldr r0, _0223F750 ; =0x0000046C
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _0223F6F0
 	cmp r0, #2
@@ -3097,7 +3097,7 @@ _0223F6DE:
 _0223F6F0:
 	ldr r0, _0223F750 ; =0x0000046C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	bl ov81_02242694
@@ -3117,7 +3117,7 @@ _0223F714:
 _0223F71C:
 	ldr r0, _0223F750 ; =0x0000046C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	bl ov81_02242694
@@ -3491,7 +3491,7 @@ _0223FA28:
 _0223FA4A:
 	ldr r0, _0223FB20 ; =0x0000046C
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _0223FA5C
 	cmp r0, #2
@@ -3501,7 +3501,7 @@ _0223FA5A:
 _0223FA5C:
 	ldr r0, _0223FB20 ; =0x0000046C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	bl ov81_02242694
@@ -3523,7 +3523,7 @@ _0223FA86:
 _0223FA8E:
 	ldr r0, _0223FB20 ; =0x0000046C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	bl ov81_02242694
@@ -3690,7 +3690,7 @@ _0223FBC0:
 _0223FBE2:
 	ldr r0, _0223FC5C ; =0x0000046C
 	ldr r0, [r4, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _0223FBF4
 	cmp r0, #2
@@ -3699,7 +3699,7 @@ _0223FBE2:
 _0223FBF4:
 	ldr r0, _0223FC5C ; =0x0000046C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	bl ov81_02242694
@@ -3723,7 +3723,7 @@ _0223FC20:
 _0223FC28:
 	ldr r0, _0223FC5C ; =0x0000046C
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	mov r1, #0
 	bl ov81_02242694
@@ -4436,7 +4436,7 @@ ov81_022401C8: ; 0x022401C8
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _022401EA
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 _022401EA:
 	ldr r0, [r4, #0x4c]
 	bl DoScheduledBgGpuUpdates
@@ -5264,7 +5264,7 @@ ov81_0224080C: ; 0x0224080C
 	ldrb r1, [r1]
 	ldr r2, [r5, #0x24]
 	add r0, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov81_0224080C
@@ -5366,7 +5366,7 @@ _0224090C:
 	ldr r3, [sp, #0x10]
 	add r0, r5, #0
 	add r2, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add r0, r5, #0
@@ -5420,7 +5420,7 @@ _02240980:
 	ldr r3, [sp, #0x10]
 	add r0, r5, #0
 	add r2, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add r0, r5, #0
@@ -5488,7 +5488,7 @@ ov81_022409B0: ; 0x022409B0
 	ldr r3, [sp, #0x10]
 	add r0, r4, #0
 	add r1, r6, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x1c]
 	bl String_Delete
 	ldr r0, [sp, #0x18]
@@ -5528,7 +5528,7 @@ ov81_022409B0: ; 0x022409B0
 	str r0, [sp, #0xc]
 	ldr r3, [sp, #0x14]
 	add r0, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	b _02240AC8
@@ -5552,7 +5552,7 @@ _02240A96:
 	ldr r3, [sp, #0x14]
 	add r0, r4, #0
 	add r2, r5, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 _02240AC8:
@@ -5610,7 +5610,7 @@ ov81_02240AD8: ; 0x02240AD8
 	ldr r1, [sp, #0x1c]
 	add r0, r5, #0
 	add r2, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl GetWindowWidth
 	sub r0, r0, #1
@@ -5660,7 +5660,7 @@ _02240B6C:
 	add r0, r5, #0
 	add r2, r4, #0
 	lsl r3, r3, #3
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _02240BA0:
 	add r0, r4, #0
 	bl String_Delete
@@ -7676,7 +7676,7 @@ ov81_02241BB8: ; 0x02241BB8
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x64
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	str r0, [r4]
 	pop {r4, pc}
 	.balign 4, 0
@@ -7684,10 +7684,10 @@ ov81_02241BB8: ; 0x02241BB8
 
 	thumb_func_start ov81_02241BC8
 ov81_02241BC8: ; 0x02241BC8
-	ldr r3, _02241BCC ; =sub_02016624
+	ldr r3, _02241BCC ; =YesNoPrompt_Destroy
 	bx r3
 	.balign 4, 0
-_02241BCC: .word sub_02016624
+_02241BCC: .word YesNoPrompt_Destroy
 	thumb_func_end ov81_02241BC8
 
 	thumb_func_start ov81_02241BD0
@@ -7718,7 +7718,7 @@ ov81_02241BD0: ; 0x02241BD0
 	mov r1, #0
 	strb r1, [r2, #0x13]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add sp, #0x14
 	pop {pc}
 	thumb_func_end ov81_02241BD0
@@ -8942,7 +8942,7 @@ ov81_02242500: ; 0x02242500
 	mov r1, #2
 	mov r2, #0
 	lsl r3, r1, #8
-	bl sub_020032A4
+	bl PaletteData_LoadPaletteSlotFromHardware
 	pop {r3, pc}
 	thumb_func_end ov81_02242500
 
@@ -8960,7 +8960,7 @@ ov81_02242514: ; 0x02242514
 	ldr r1, [r4, r1]
 	cmp r1, #0xff
 	beq _02242580
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _02242580
 	ldr r0, _02242584 ; =0x00000478
@@ -8979,7 +8979,7 @@ ov81_02242514: ; 0x02242514
 	ldr r0, [r4, r0]
 	mov r2, #8
 	mov r3, #2
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	b _02242576
 _0224255A:
 	mov r0, #0x10
@@ -8994,7 +8994,7 @@ _0224255A:
 	ldr r0, [r4, r0]
 	mov r2, #8
 	mov r3, #2
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 _02242576:
 	ldr r1, _02242584 ; =0x00000478
 	mov r0, #1
@@ -10097,11 +10097,11 @@ _02242DD4: .word Sprite_SetMatrix
 
 	thumb_func_start ov81_02242DD8
 ov81_02242DD8: ; 0x02242DD8
-	ldr r3, _02242DE0 ; =sub_02024B68
+	ldr r3, _02242DE0 ; =Sprite_IsCellAnimationFinished
 	ldr r0, [r0, #8]
 	bx r3
 	nop
-_02242DE0: .word sub_02024B68
+_02242DE0: .word Sprite_IsCellAnimationFinished
 	thumb_func_end ov81_02242DD8
 
 	thumb_func_start ov81_02242DE4
@@ -10523,7 +10523,7 @@ _02243096:
 	add r0, r6, #0
 	add r2, r7, #0
 	add r3, r5, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov81_02243068

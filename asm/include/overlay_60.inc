@@ -6,9 +6,9 @@
 .public PaletteData_Free
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
-.public sub_020032A4
-.public sub_0200398C
-.public sub_020040AC
+.public PaletteData_LoadPaletteSlotFromHardware
+.public PaletteData_PushTransparentBuffers
+.public PaletteData_FadePalettesTowardsColorStep
 .public sub_02004AD8
 .public sub_02004EC4
 .public GF_SetVolumeBySeqNo
@@ -48,9 +48,9 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
-.public CreateSysTask
-.public sub_0200E33C
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_Destroy
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_0200FB70
@@ -100,7 +100,7 @@
 .public Draw3dModel
 .public GetLCRNGSeed
 .public SetLCRNGSeed
-.public AddTextPrinterParameterized3
+.public AddTextPrinterParameterizedWithColorAndSpacing
 .public sub_02020D2C
 .public sub_020215A0
 .public sub_0202168C
@@ -137,7 +137,7 @@
 .public sub_0202487C
 .public Sprite_GetMatrixPtr
 .public Set2dSpriteAnimSeqNo
-.public sub_02024B68
+.public Sprite_IsCellAnimationFinished
 .public GF_AssertFail
 .public String_New
 .public String_Delete

@@ -2805,7 +2805,7 @@ ov48_02259D00: ; 0x02259D00
 	str r1, [sp, #0xc]
 	add r0, #0x1c
 	mov r1, #2
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #2
 	bl FontID_Release
 	add r5, #0x1c
@@ -3026,7 +3026,7 @@ ov48_02259EAC: ; 0x02259EAC
 	mov r1, #5
 	bl ov48_0225B0D4
 	ldr r0, [sp, #0x28]
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	str r0, [r5, #0x20]
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
@@ -3045,12 +3045,12 @@ ov48_02259F14: ; 0x02259F14
 	ldr r0, [r4, #4]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _02259F30:
 	ldr r0, [r4, #0xc]
 	bl String_Delete
 	ldr r0, [r4, #0x20]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	add r4, #0x10
 	add r0, r4, #0
 	bl RemoveWindow
@@ -3125,14 +3125,14 @@ _02259F9E:
 	str r0, [sp]
 	ldr r0, [r5, #0x20]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
 	b _02259FE0
 _02259FD8:
 	ldr r0, [r5, #0x20]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	add r4, r0, #0
 _02259FE0:
 	add r0, r4, #0
@@ -3147,7 +3147,7 @@ ov48_02259FEC: ; 0x02259FEC
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x20]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	add r0, #0x10
 	mov r1, #1
@@ -3993,7 +3993,7 @@ ov48_0225A5C4: ; 0x0225A5C4
 	ldr r0, _0225A630 ; =ov48_0225A680
 	add r1, r4, #0
 	mov r2, #0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	str r0, [r4, #0xc]
 	pop {r4, r5, r6, pc}
 	nop
@@ -4007,7 +4007,7 @@ _0225A630: .word ov48_0225A680
 ov48_0225A634: ; 0x0225A634
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r2, _0225A648 ; =0x04001000
 	ldr r0, _0225A64C ; =0xFFFF1FFF
 	ldr r1, [r2]
@@ -4237,7 +4237,7 @@ _0225A7A4:
 	str r0, [sp, #8]
 	str r3, [sp, #0xc]
 	add r0, r5, r4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r1, [r6, #4]
 	add r0, r7, #0
 	bl ov48_0225B0E0
@@ -4252,7 +4252,7 @@ _0225A7A4:
 	str r3, [sp, #0xc]
 	add r0, r5, r4
 	mov r1, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r1, [r6, #4]
 	ldr r2, [r6, #8]
 	add r0, r7, #0
@@ -4268,7 +4268,7 @@ _0225A7A4:
 	add r0, r5, r4
 	mov r1, #1
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

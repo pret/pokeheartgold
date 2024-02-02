@@ -387,7 +387,7 @@ ov67_021E5C04: ; 0x021E5C04
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, _021E5C34 ; =_021E6D4C
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #1
 	beq _021E5C1C
 	ldr r0, _021E5C38 ; =gSystem
@@ -483,7 +483,7 @@ _021E5CBE:
 	bl PlaySE
 _021E5CCC:
 	ldr r0, _021E5D9C ; =ov67_021E6D50
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	cmp r0, #0
 	beq _021E5CDC
 	cmp r0, #1
@@ -1037,7 +1037,7 @@ _021E6146:
 	add r0, r6, #0
 	add r2, r7, #0
 	add r3, r5, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov67_021E6118

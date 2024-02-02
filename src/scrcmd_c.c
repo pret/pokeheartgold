@@ -787,7 +787,7 @@ BOOL ScrCmd_DirectionSignpost(ScriptContext* ctx) {
     ReadMsgDataIntoString(ctx->msgdata, msg_no, *tmp_str);
     StringExpandPlaceholders(*msg_fmt, *unk1, *tmp_str);
     Window* window = ov01_021F3D80(fieldSystem->unk68);
-    AddTextPrinterParameterized2(window, 1, *unk1, 0, 0, 0, MAKE_TEXT_COLOR(2, 10, 15), NULL);
+    AddTextPrinterParameterizedWithColor(window, 1, *unk1, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(2, 10, 15), NULL);
 
     return TRUE;
 }
@@ -846,7 +846,7 @@ BOOL ScrCmd_TrainerTips(ScriptContext* ctx) {
 
     Window* window = ov01_021F3D80(fieldSystem->unk68);
     u8 text_speed = Options_GetTextFrameDelay(Save_PlayerData_GetOptionsAddr(fieldSystem->saveData));
-    *printer_id_ptr = AddTextPrinterParameterized2(window, 1, *unk, 0, 0, text_speed, MAKE_TEXT_COLOR(2, 10, 15), NULL);
+    *printer_id_ptr = AddTextPrinterParameterizedWithColor(window, 1, *unk, 0, 0, text_speed, MAKE_TEXT_COLOR(2, 10, 15), NULL);
 
     ctx->data[0] = result_var_id;
     SetupNativeScript(ctx, sub_02041520);
@@ -878,7 +878,7 @@ static BOOL sub_02041520(ScriptContext* ctx) {
     }
 
     if (direction != 0xFFFF) {
-        sub_020200A0(*printer_id_ptr);
+        RemoveTextPrinter(*printer_id_ptr);
         PlayerAvatar_SetFacingDirection(ctx->fieldSystem->playerAvatar, direction);
         *ret_ptr = 0;
         ctx->fieldSystem->unkD2_6 = 0;
@@ -1222,14 +1222,14 @@ void _ScheduleObjectEventMovement(FieldSystem *fieldSystem, EventObjectMovementM
     env->fieldSystem = fieldSystem;
     env->mvtMan = mvtMan;
     env->cmd = a2;
-    env->task = CreateSysTask((SysTaskFunc)_RunObjectEventMovement, env, 0);
+    env->task = SysTask_CreateOnMainQueue((SysTaskFunc)_RunObjectEventMovement, env, 0);
 }
 
 void _RunObjectEventMovement(SysTask *task, struct ObjectMovementTaskEnv *env) {
     u8 *mvtCnt = FieldSysGetAttrAddr(env->fieldSystem, SCRIPTENV_ACTIVE_MOVEMENT_COUNTER);
     if (EventObjectMovementMan_IsFinish(env->mvtMan) == TRUE) {
         EventObjectMovementMan_Delete(env->mvtMan);
-        DestroySysTask(env->task);
+        SysTask_Destroy(env->task);
         if (env->cmd != NULL) {
             FreeToHeap(env->cmd);
         }
@@ -3261,7 +3261,7 @@ BOOL ScrCmd_381(ScriptContext *ctx) {
 BOOL ScrCmd_403(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
     u16 r6 = ScriptGetVar(ctx);
-    sub_0202BB08(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->saveData)), r4, r6);
+    FashionCase_GiveFashionItem(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->saveData)), r4, r6);
     return FALSE;
 }
 
@@ -3283,7 +3283,7 @@ BOOL ScrCmd_405(ScriptContext *ctx) {
 
 BOOL ScrCmd_406(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
-    sub_0202BBD8(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->saveData)), r4);
+    FashionCase_GiveContestBackground(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->saveData)), r4);
     return FALSE;
 }
 

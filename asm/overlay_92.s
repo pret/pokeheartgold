@@ -652,7 +652,7 @@ _0225CA6C:
 	ldr r0, [r5, #0x5c]
 	mov r2, #0
 	lsl r3, r1, #8
-	bl sub_020032A4
+	bl PaletteData_LoadPaletteSlotFromHardware
 	add r5, #0x88
 	ldr r0, [r5]
 	ldr r0, [r0, #0x3c]
@@ -1801,7 +1801,7 @@ ov92_0225D3CC: ; 0x0225D3CC
 	bl ov92_0225DD88
 	ldr r0, [r4, #0x5c]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r2, #2
 	ldr r0, [r4, #0x5c]
 	mov r1, #0
@@ -2302,7 +2302,7 @@ ov92_0225D894: ; 0x0225D894
 	bl GF_RunVramTransferTasks
 	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #0x5c]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r4, #0x58]
 	bl DoScheduledBgGpuUpdates
 	ldr r3, _0225D8BC ; =0x027E0000
@@ -3637,7 +3637,7 @@ _0225E246:
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	add r2, r7, #0
-	bl AddTextPrinterParameterized3
+	bl AddTextPrinterParameterizedWithColorAndSpacing
 	b _0225E32E
 _0225E312:
 	mov r0, #0
@@ -3652,7 +3652,7 @@ _0225E312:
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	add r2, r7, #0
-	bl AddTextPrinterParameterized3
+	bl AddTextPrinterParameterizedWithColorAndSpacing
 _0225E32E:
 	add r0, r7, #0
 	bl String_Delete
@@ -4983,7 +4983,7 @@ ov92_0225EDB4: ; 0x0225EDB4
 	ldr r0, [r5, #0x14]
 	str r0, [r4, #0x2c]
 	ldr r0, _0225EE00 ; =ov92_0225F254
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r4, r5, r6, pc}
 	nop
 _0225EE00: .word ov92_0225F254
@@ -5028,7 +5028,7 @@ ov92_0225EE04: ; 0x0225EE04
 	add r1, r3, #0
 	str r0, [r3, #0x3c]
 	ldr r0, _0225EE5C ; =ov92_0225F338
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 _0225EE52:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -5071,7 +5071,7 @@ ov92_0225EE60: ; 0x0225EE60
 	ldr r0, [r0, #0x14]
 	str r0, [r1, #0x3c]
 	ldr r0, _0225EEB8 ; =ov92_0225F530
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 _0225EEA4:
 	pop {r3, pc}
 	nop
@@ -5138,7 +5138,7 @@ ov92_0225EEBC: ; 0x0225EEBC
 	ldr r0, _0225EF48 ; =ov92_0225EF4C
 	add r1, r4, #0
 	lsl r2, r2, #0xc
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r3, r4, r5, pc}
 	nop
 _0225EF3C: .word 0x00001FC8
@@ -5166,7 +5166,7 @@ ov92_0225EF4C: ; 0x0225EF4C
 	bne _0225EF7C
 _0225EF6C:
 	add r0, r6, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #0xc
@@ -5517,7 +5517,7 @@ _0225F21C:
 	lsl r0, r0, #2
 	str r2, [r1, r0]
 	add r0, r6, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl FreeToHeap
 _0225F23A:
@@ -5549,7 +5549,7 @@ ov92_0225F254: ; 0x0225F254
 	bne _0225F284
 _0225F274:
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl FreeToHeap
 	add sp, #0x10
@@ -5637,7 +5637,7 @@ _0225F31E:
 	cmp r0, #0xa
 	blt _0225F332
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl FreeToHeap
 _0225F332:
@@ -5664,7 +5664,7 @@ _0225F352:
 	mov r0, #0
 	str r0, [r4, #0x30]
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #8
 	pop {r3, r4, r5, pc}
 _0225F360:
@@ -5875,7 +5875,7 @@ _0225F4F2:
 	mov r0, #0
 	str r0, [r4, #0x30]
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0225F520:
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -5930,7 +5930,7 @@ _0225F550:
 	mov r0, #0
 	str r0, [r4, #0x30]
 	add r0, r7, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 _0225F59A:
@@ -6261,7 +6261,7 @@ _0225F81E:
 	mov r0, #0
 	str r0, [r4, #0x30]
 	add r0, r7, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0225F864:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -6833,7 +6833,7 @@ ov92_0225FC9C: ; 0x0225FC9C
 	add r5, r0, #0
 	add r0, sp, #0x10
 	add r1, sp, #0xc
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	ldr r0, _0225FE78 ; =0x00002B84
 	mov r1, #0
 	str r1, [r5, r0]
@@ -6844,13 +6844,13 @@ ov92_0225FC9C: ; 0x0225FC9C
 	ldr r0, _0225FE7C ; =ov92_02263C3C
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0xc]
-	bl sub_0202539C
+	bl TouchscreenHitbox_FindHitboxAtPoint
 	b _0225FCCE
 _0225FCC4:
 	ldr r0, _0225FE80 ; =ov92_02263C34
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0xc]
-	bl sub_0202539C
+	bl TouchscreenHitbox_FindHitboxAtPoint
 _0225FCCE:
 	mov r1, #0
 	mvn r1, r1
@@ -8336,7 +8336,7 @@ _022608FE:
 	mov r1, #0
 	str r1, [r0]
 	add r0, r6, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #0x74
 	pop {r4, r5, r6, r7, pc}
 _0226091C:
@@ -8470,7 +8470,7 @@ _02260A0A:
 	mov r1, #0
 	str r1, [r0]
 	add r0, r6, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _02260A24:
 	add sp, #0x74
 	pop {r4, r5, r6, r7, pc}
@@ -8548,7 +8548,7 @@ _02260A84:
 	add r1, r2, r1
 	mov r2, #1
 	lsl r2, r2, #0xc
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 _02260AC4:
@@ -8586,7 +8586,7 @@ _02260AFC:
 	ldr r0, [r0, #0x10]
 	str r1, [r0]
 	add r0, r4, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, [sp]
 	bl FreeToHeap
 	add sp, #0x30
@@ -9307,7 +9307,7 @@ _022610BE:
 	ldr r0, [sp]
 	bl FreeToHeap
 	add r0, r4, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _022610D6:
 	ldr r0, [sp]
 	ldr r0, [r0]
@@ -9335,7 +9335,7 @@ ov92_022610E8: ; 0x022610E8
 	ldr r0, _02261114 ; =ov92_02260AE0
 	lsl r2, r2, #0xc
 	str r4, [r1, #0x10]
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r3, r4, r5, pc}
 	nop
 _02261110: .word 0x00000764
@@ -9390,7 +9390,7 @@ _0226115A:
 	lsl r3, r3, #0x18
 	mov r2, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #1
@@ -9401,7 +9401,7 @@ _0226115A:
 	lsl r3, r3, #0x18
 	add r2, r1, #0
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	pop {r3, r4, r5, r6, r7, pc}
 _0226118A:
 	mov r1, #1
@@ -9448,7 +9448,7 @@ _022611CA:
 	lsl r3, r3, #0x18
 	mov r2, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #1
@@ -9459,7 +9459,7 @@ _022611CA:
 	lsl r3, r3, #0x18
 	add r2, r1, #0
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	pop {r3, r4, r5, r6, r7, pc}
 _022611FA:
 	mov r1, #0
@@ -9799,7 +9799,7 @@ ov92_02261448: ; 0x02261448
 	bne _0226146C
 _02261464:
 	add r0, r6, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r4, r5, r6, pc}
 _0226146C:
 	ldr r0, [r4, #4]
@@ -10097,7 +10097,7 @@ _022616A4:
 	ldr r0, _022616D0 ; =ov92_02261448
 	add r1, r4, r1
 	lsl r2, r2, #0xc
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r1, _022616D4 ; =0x00002488
 	str r0, [r4, r1]
 	add sp, #8
@@ -10276,7 +10276,7 @@ _02261802:
 	ldr r0, [r0, #0x14]
 	mov r2, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r0, #0
 	str r0, [sp]
 	ldr r3, [sp, #8]
@@ -10292,7 +10292,7 @@ _02261802:
 	ldr r0, [r0, #0x14]
 	add r2, r1, #0
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -10462,7 +10462,7 @@ _02261978:
 	ldr r0, [r0, #0x14]
 	mov r2, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	mov r0, #0
 	str r0, [sp]
 	ldr r3, [sp, #8]
@@ -10478,7 +10478,7 @@ _02261978:
 	ldr r0, [r0, #0x14]
 	add r2, r1, #0
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -10564,7 +10564,7 @@ ov92_02261A18: ; 0x02261A18
 	bne _02261A44
 _02261A3C:
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r3, r4, r5, r6, r7, pc}
 _02261A44:
 	add r0, r1, #0
@@ -10637,7 +10637,7 @@ _02261AA8:
 	ldr r2, _02261B14 ; =0x00001001
 	ldr r0, [r1, r0]
 	add r1, r6, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	b _02261AF2
 _02261AD8:
 	bne _02261AF2
@@ -10725,7 +10725,7 @@ _02261B5C:
 	ldr r0, _02261B98 ; =ov92_02261A18
 	add r1, r4, r1
 	lsl r2, r2, #0xc
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r1, _02261B9C ; =0x00002184
 	str r0, [r4, r1]
 	pop {r4, r5, r6, pc}
@@ -10755,7 +10755,7 @@ ov92_02261BA0: ; 0x02261BA0
 	bne _02261BC8
 _02261BBE:
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #8
 	pop {r4, r5, r6, pc}
 _02261BC8:
@@ -11074,7 +11074,7 @@ _02261E2E:
 	pop {r4, r5, r6, pc}
 _02261E74:
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _02261E7A:
 	add sp, #8
 	pop {r4, r5, r6, pc}
@@ -11517,7 +11517,7 @@ ov92_022621A4: ; 0x022621A4
 	bne _022621D8
 _022621CE:
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 _022621D8:
@@ -11926,7 +11926,7 @@ _0226252A:
 	pop {r4, r5, r6, r7, pc}
 _0226253E:
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _02262544:
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
@@ -11956,7 +11956,7 @@ ov92_02262548: ; 0x02262548
 	bne _0226257C
 _02262572:
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 _0226257C:
@@ -12366,7 +12366,7 @@ _022628D0:
 	pop {r4, r5, r6, r7, pc}
 _022628E4:
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _022628EA:
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
@@ -12397,7 +12397,7 @@ ov92_022628F0: ; 0x022628F0
 	bne _02262924
 _0226291A:
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 _02262924:
@@ -12848,7 +12848,7 @@ _02262CCE:
 	pop {r4, r5, r6, r7, pc}
 _02262CE2:
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _02262CE8:
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
@@ -12878,7 +12878,7 @@ ov92_02262CEC: ; 0x02262CEC
 	bne _02262D20
 _02262D16:
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 _02262D20:
@@ -13329,7 +13329,7 @@ _022630CA:
 	pop {r4, r5, r6, r7, pc}
 _022630DE:
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _022630E4:
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}

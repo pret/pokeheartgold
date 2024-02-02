@@ -24,7 +24,7 @@ ov34_0225D520: ; 0x0225D520
 	add r2, r4, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add sp, #0x10
@@ -336,7 +336,7 @@ ov34_0225D7A8: ; 0x0225D7A8
 	add r3, r2, #0
 	bl CreateSysTaskAndEnvironment
 	add r6, r0, #0
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	str r5, [r4, #0xc]
 	ldr r0, [r5, #8]
@@ -928,7 +928,7 @@ ov34_0225DC18: ; 0x0225DC18
 	str r3, [sp, #0xc]
 	ldr r2, [r6]
 	add r0, r7, r4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xff
@@ -940,7 +940,7 @@ ov34_0225DC18: ; 0x0225DC18
 	ldr r0, [sp, #0x1c]
 	ldr r2, [r6, #4]
 	add r0, r0, r4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, r4
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x1c]
@@ -958,7 +958,7 @@ ov34_0225DC18: ; 0x0225DC18
 	str r0, [sp, #8]
 	add r0, r5, r4
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _0225DCF0:
 	add r0, r5, r4
 	bl ScheduleWindowCopyToVram
@@ -1177,7 +1177,7 @@ ov34_0225DE94: ; 0x0225DE94
 	push {r3, r4, r5, r6, r7, lr}
 	add r4, r0, #0
 	ldr r0, _0225E00C ; =ov34_0225E730
-	bl sub_02025204
+	bl TouchscreenHitbox_FindRectAtTouchHeld
 	add r7, r0, #0
 	add r0, r4, #0
 	bl ov34_0225E5D4
@@ -1376,7 +1376,7 @@ ov34_0225E020: ; 0x0225E020
 	sub sp, #0xc
 	add r7, r0, #0
 	ldr r0, _0225E0E0 ; =ov34_0225E6AC
-	bl sub_02025204
+	bl TouchscreenHitbox_FindRectAtTouchHeld
 	mov r1, #0
 	mvn r1, r1
 	str r0, [sp]
@@ -1389,7 +1389,7 @@ ov34_0225E020: ; 0x0225E020
 	bl ov34_0225E5DC
 	add r0, sp, #8
 	add r1, sp, #4
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r7, r0]

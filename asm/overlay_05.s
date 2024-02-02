@@ -13,7 +13,7 @@ ov05_0221BA00: ; 0x0221BA00
 	ldr r3, [r5, #0x24]
 	mov r2, #0x64
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	ldr r2, _0221BA60 ; =0x00000BD4
 	mov r1, #0
 	add r4, r0, #0
@@ -2212,7 +2212,7 @@ _0221CBCE:
 _0221CBE2:
 	ldr r0, [r4, #8]
 	mov r1, #1
-	bl sub_02003B74
+	bl PaletteData_SetSelectedBufferAll
 	ldr r0, _0221CBFC ; =0x0000071B
 	bl PlaySE
 	ldr r0, _0221CC00 ; =0x00000B81
@@ -2563,7 +2563,7 @@ ov05_0221CE88: ; 0x0221CE88
 	ldr r0, [r4, #0xc]
 	bl DoScheduledBgGpuUpdates
 	ldr r0, [r4, #8]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	bl GF_RunVramTransferTasks
 	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r3, _0221CEB0 ; =0x027E0000
@@ -2875,7 +2875,7 @@ ov05_0221D094: ; 0x0221D094
 	ldr r0, [r5, #8]
 	add r2, r1, #0
 	mov r3, #0xa0
-	bl sub_020032A4
+	bl PaletteData_LoadPaletteSlotFromHardware
 	ldr r1, _0221D13C ; =0x000018C6
 	mov r0, #1
 	bl BG_SetMaskColor
@@ -2931,7 +2931,7 @@ _0221D168:
 	mov r1, #0
 	mov r2, #0xf0
 	mov r3, #0x20
-	bl sub_020032A4
+	bl PaletteData_LoadPaletteSlotFromHardware
 	mov r1, #0
 	str r1, [sp]
 	ldr r0, [r4]
@@ -2945,7 +2945,7 @@ _0221D168:
 	mov r1, #0
 	mov r2, #0xe0
 	mov r3, #0x20
-	bl sub_020032A4
+	bl PaletteData_LoadPaletteSlotFromHardware
 	ldr r2, [r4]
 	mov r1, #0x1a
 	ldr r2, [r2, #0x24]
@@ -2956,7 +2956,7 @@ _0221D168:
 	mov r1, #0
 	mov r2, #0xd0
 	mov r3, #0x20
-	bl sub_020032A4
+	bl PaletteData_LoadPaletteSlotFromHardware
 	mov r0, #0x13
 	str r0, [sp]
 	mov r0, #0x1b
@@ -3404,7 +3404,7 @@ ov05_0221D530: ; 0x0221D530
 	add r2, r7, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, _0221D5D0 ; =0x00000B44
 	ldr r0, [r4, r0]
 	str r0, [sp, #0x10]
@@ -5550,7 +5550,7 @@ _0221E656:
 	add r3, r1, #0
 	add r0, r7, r0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0x18
 	mul r0, r4
 	add r2, r5, r0
@@ -5578,7 +5578,7 @@ _0221E656:
 	add r0, r7, r0
 	mov r3, #0x40
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 _0221E6DC:
@@ -5599,7 +5599,7 @@ _0221E6DC:
 	mov r3, #0x40
 	add r0, r7, r0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _0221E704:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}

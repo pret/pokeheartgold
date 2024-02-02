@@ -113,7 +113,7 @@ void BattleSystem_HpBar_Delete(BattleSystem *bsys);
 u8 BattleSystem_GetBattleOutcomeFlags(BattleSystem *bsys);
 void BattleSystem_SetBattleOutcomeFlags(BattleSystem *bsys, u8 battleOutcomeFlag);
 u8 BattleSystem_GetCriticalHpMusicFlag(BattleSystem *bsys);
-u8 BattleSystem_SetCriticalHpMusicFlag(BattleSystem *bsys, u8 flag);
+void BattleSystem_SetCriticalHpMusicFlag(BattleSystem *bsys, u8 flag);
 u8 BattleSystem_GetCriticalHpMusicDelay(BattleSystem *bsys);
 void BattleSystem_SetCriticalHpMusicDelay(BattleSystem *bsys, u8 delay);
 void ov12_0223BD8C(BattleSystem *bsys, int a1);

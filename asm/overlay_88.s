@@ -2034,7 +2034,7 @@ _02259766:
 	ldr r0, [sp, #0x14]
 	mov r1, #0
 	add r2, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x30]
 	add r7, r7, #1
 	add r6, #0x10
@@ -2235,7 +2235,7 @@ _022598D0:
 	add r1, r4, #4
 	mov r2, #1
 	lsr r3, r3, #0x18
-	bl sub_02003DE8
+	bl BlendPalette
 	add r0, r4, #4
 	mov r1, #2
 	bl DC_FlushRange

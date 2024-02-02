@@ -8,10 +8,10 @@
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
 .public PaletteData_LoadNarc
-.public sub_020032A4
-.public sub_0200398C
-.public sub_02003B50
-.public sub_02003D5C
+.public PaletteData_LoadPaletteSlotFromHardware
+.public PaletteData_PushTransparentBuffers
+.public PaletteData_SetAutoTransparent
+.public PaletteData_FillPaletteInBuffer
 .public sub_02004AC8
 .public NARC_New
 .public NARC_Delete
@@ -48,9 +48,9 @@
 .public UnkImageStruct_SetSpritePositionXY
 .public UnkImageStruct_GetSpritePositionXY
 .public sub_0200E2B0
-.public CreateSysTask
-.public sub_0200E33C
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx1
 .public LoadUserFrameGfx2
 .public Main_SetVBlankIntrCB

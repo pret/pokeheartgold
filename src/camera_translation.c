@@ -1,5 +1,5 @@
 #include "camera_translation.h"
-#include "unk_0200E320.h"
+#include "sys_task_api.h"
 
 static void sysTask_MoveCameraAlongTrack(SysTask *unk, GFCameraTranslationWrapper *wrapper);
 static void stepCamera(Camera *camera, struct CameraTranslationPathTemplate *first, struct CameraTranslationPathTemplate *last, u8 step, u8 duration);
@@ -53,7 +53,7 @@ void SetCameraTranslationPath(GFCameraTranslationWrapper *wrapper, struct Camera
         wrapper->init.distance = Camera_GetDistance(wrapper->camera);
         wrapper->duration = duration;
         wrapper->step = 0;
-        wrapper->task = CreateSysTask((SysTaskFunc)sysTask_MoveCameraAlongTrack, wrapper, 0);
+        wrapper->task = SysTask_CreateOnMainQueue((SysTaskFunc)sysTask_MoveCameraAlongTrack, wrapper, 0);
     }
 }
 
@@ -79,7 +79,7 @@ static void sysTask_MoveCameraAlongTrack(SysTask *unk, GFCameraTranslationWrappe
 
 static void resetWrapper(GFCameraTranslationWrapper *wrapper) {
     if (wrapper->task != NULL) {
-        DestroySysTask(wrapper->task);
+        SysTask_Destroy(wrapper->task);
         wrapper->task = NULL;
     }
     wrapper->duration = 0;

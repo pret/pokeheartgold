@@ -84,12 +84,12 @@
 .public BlitBitmapRectToWindow
 .public FillWindowPixelRect
 .public GetWindowWidth
-.public sub_0201F988
+.public SysTask_GetData
 .public GF_SinDeg
 .public LCRandom
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GF_RunVramTransferTasks
 .public sub_020215A0
 .public sub_0202168C
@@ -114,7 +114,7 @@
 .public Set2dSpriteAnimSeqNo
 .public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_SetDrawPriority
-.public sub_02024B68
+.public Sprite_IsCellAnimationFinished
 .public sub_02024B78
 .public GF_AssertFail
 .public String_New

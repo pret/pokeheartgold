@@ -80,7 +80,7 @@ _0208512C:
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r2, #0xbf
 	lsl r2, r2, #2
 	ldr r0, [r4, r2]
@@ -305,7 +305,7 @@ _02085294:
 	mov r0, #3
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x6c
@@ -576,7 +576,7 @@ sub_020855CC: ; 0x020855CC
 	mov r0, #0xbf
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	mov r0, #0xbe
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]

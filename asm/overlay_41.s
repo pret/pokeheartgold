@@ -65,7 +65,7 @@ ov41_02245F04: ; 0x02245F04
 	add r1, sp, #0
 	bl ov41_022460DC
 	add r0, sp, #0
-	bl sub_020252F4
+	bl TouchscreenHitbox_TouchHeldIsIn
 	pop {r3, pc}
 	thumb_func_end ov41_02245F04
 
@@ -2153,7 +2153,7 @@ _02246E42:
 	add r3, r4, #0
 	bl ov41_02248F18
 	mov r0, #0xd
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	ldr r1, _02246F00 ; =0x000006B8
 	str r0, [r4, r1]
 	mov r0, #0xd
@@ -2512,7 +2512,7 @@ _0224719C:
 _022471AA:
 	ldr r0, _02247234 ; =0x000006B8
 	ldr r0, [r4, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	ldr r0, _02247238 ; =0x000006BC
 	mov r1, #1
 	ldr r0, [r4, r0]
@@ -3189,7 +3189,7 @@ ov41_022476B8: ; 0x022476B8
 	mov r2, #0xa
 	mov r3, #0xd
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	str r5, [r0]
 	str r4, [r0, #4]
 	mov r1, #0
@@ -3379,7 +3379,7 @@ ov41_02247828: ; 0x02247828
 	mov r2, #0xa
 	mov r3, #0xd
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	str r5, [r0]
 	str r4, [r0, #4]
 	mov r1, #0
@@ -3751,7 +3751,7 @@ ov41_02247AB4: ; 0x02247AB4
 	strb r0, [r3, #0x12]
 	ldr r0, [r4, r2]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add r0, r4, #0
 	mov r1, #1
 	bl ov41_02247D1C
@@ -3788,7 +3788,7 @@ ov41_02247B5C: ; 0x02247B5C
 	add r4, r0, #0
 	ldr r0, _02247B78 ; =0x000006B8
 	ldr r0, [r4, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	bl ov41_02247D3C
 	ldr r0, [r4, #0x40]
@@ -3805,7 +3805,7 @@ ov41_02247B7C: ; 0x02247B7C
 	add r5, r0, #0
 	ldr r0, _02247BB0 ; =0x000006B8
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	add r4, r0, #0
 	beq _02247B96
 	cmp r4, #1
@@ -3824,7 +3824,7 @@ _02247B9E:
 _02247BA0:
 	ldr r0, _02247BB0 ; =0x000006B8
 	ldr r0, [r5, r0]
-	bl sub_020169C0
+	bl YesNoPrompt_IsInTouchMode
 	ldr r1, _02247BB4 ; =0x000006EC
 	str r0, [r5, r1]
 	add r0, r4, #0
@@ -3905,7 +3905,7 @@ ov41_02247BB8: ; 0x02247BB8
 	ldr r0, [r5, r0]
 	mov r1, #1
 	add r2, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add r0, r6, #0
@@ -3960,7 +3960,7 @@ ov41_02247C7C: ; 0x02247C7C
 	ldr r0, [r5, r0]
 	mov r1, #1
 	add r2, r4, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add r0, r6, #0
@@ -4076,11 +4076,11 @@ ov41_02247D64: ; 0x02247D64
 	orr r0, r1
 	strb r0, [r3, #0x12]
 	ldr r0, [r4, r2]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	ldr r0, _02247DF0 ; =0x000006B8
 	add r1, sp, #0
 	ldr r0, [r4, r0]
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add r0, r4, #0
 	mov r1, #2
 	bl ov41_02247D34
@@ -4118,7 +4118,7 @@ ov41_02247DF8: ; 0x02247DF8
 	add r5, r0, #0
 	ldr r0, _02247E2C ; =0x000006B8
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	add r4, r0, #0
 	beq _02247E12
 	cmp r4, #1
@@ -4137,7 +4137,7 @@ _02247E1A:
 _02247E1C:
 	ldr r0, _02247E2C ; =0x000006B8
 	ldr r0, [r5, r0]
-	bl sub_020169C0
+	bl YesNoPrompt_IsInTouchMode
 	ldr r1, _02247E30 ; =0x000006EC
 	str r0, [r5, r1]
 	add r0, r4, #0
@@ -4679,7 +4679,7 @@ ov41_022481BC: ; 0x022481BC
 	mov r1, #0xf6
 	strb r1, [r0, #3]
 	add r0, sp, #0
-	bl sub_020252F4
+	bl TouchscreenHitbox_TouchHeldIsIn
 	pop {r3, pc}
 	thumb_func_end ov41_022481BC
 
@@ -4696,7 +4696,7 @@ ov41_022481D8: ; 0x022481D8
 	mov r3, #0xf6
 	strb r3, [r0, #3]
 	add r0, sp, #0
-	bl sub_020253F0
+	bl TouchscreenHitbox_PointIsIn
 	pop {r3, pc}
 	thumb_func_end ov41_022481D8
 
@@ -5588,7 +5588,7 @@ ov41_02248820: ; 0x02248820
 	mov r1, #0x76
 	strb r1, [r0, #3]
 	add r0, sp, #0
-	bl sub_020252F4
+	bl TouchscreenHitbox_TouchHeldIsIn
 	pop {r3, pc}
 	thumb_func_end ov41_02248820
 
@@ -5605,7 +5605,7 @@ ov41_0224883C: ; 0x0224883C
 	mov r3, #0x76
 	strb r3, [r0, #3]
 	add r0, sp, #0
-	bl sub_020253F0
+	bl TouchscreenHitbox_PointIsIn
 	pop {r3, pc}
 	thumb_func_end ov41_0224883C
 
@@ -6099,7 +6099,7 @@ ov41_02248B84: ; 0x02248B84
 	mov r2, #0
 	mov r3, #0xd
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	str r5, [r4]
 	str r6, [r4, #4]
@@ -7309,7 +7309,7 @@ ov41_02249480: ; 0x02249480
 	mov r2, #0
 	mov r3, #0xd
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	ldr r0, [r5, #8]
 	add r1, sp, #8
@@ -7685,20 +7685,20 @@ ov41_0224971C: ; 0x0224971C
 
 	thumb_func_start ov41_02249768
 ov41_02249768: ; 0x02249768
-	ldr r3, _02249770 ; =sub_020252F4
+	ldr r3, _02249770 ; =TouchscreenHitbox_TouchHeldIsIn
 	add r0, r0, #4
 	bx r3
 	nop
-_02249770: .word sub_020252F4
+_02249770: .word TouchscreenHitbox_TouchHeldIsIn
 	thumb_func_end ov41_02249768
 
 	thumb_func_start ov41_02249774
 ov41_02249774: ; 0x02249774
-	ldr r3, _0224977C ; =sub_020253F0
+	ldr r3, _0224977C ; =TouchscreenHitbox_PointIsIn
 	add r0, r0, #4
 	bx r3
 	nop
-_0224977C: .word sub_020253F0
+_0224977C: .word TouchscreenHitbox_PointIsIn
 	thumb_func_end ov41_02249774
 
 	thumb_func_start ov41_02249780
@@ -8614,7 +8614,7 @@ ov41_02249DB4: ; 0x02249DB4
 	mov r2, #0
 	mov r3, #0xd
 	bl CreateSysTaskAndEnvironment
-	bl sub_0201F988
+	bl SysTask_GetData
 	add r4, r0, #0
 	str r6, [r4]
 	add r7, r5, #0
@@ -8934,7 +8934,7 @@ _0224A018:
 	ldr r0, _0224A048 ; =ov41_0224A094
 	add r1, r4, #0
 	mov r2, #0x80
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -8973,7 +8973,7 @@ _0224A066:
 	ldr r0, _0224A090 ; =ov41_0224A0D0
 	add r1, r4, #0
 	mov r2, #0x80
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0224A090: .word ov41_0224A0D0
@@ -8999,7 +8999,7 @@ ov41_0224A094: ; 0x0224A094
 	lsr r1, r1, #0x18
 	bl BG_LoadCharTilesData
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, [r4, #8]
 	bl FreeToHeap
 	add r0, r4, #0
@@ -9036,7 +9036,7 @@ _0224A0F4:
 	bl GXS_LoadBGPltt
 _0224A104:
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, [r4, #4]
 	bl FreeToHeap
 	add r0, r4, #0
@@ -9417,7 +9417,7 @@ ov41_0224A27C: ; 0x0224A27C
 	add r0, #0x6c
 	mov r1, #5
 	add r3, r5, #0
-	bl sub_02026C44
+	bl TouchHitboxController_Create
 	str r0, [r5, #0x68]
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
@@ -9465,7 +9465,7 @@ _0224A418:
 	ldr r0, [r6, #0x64]
 	bl sub_020135AC
 	ldr r0, [r6, #0x68]
-	bl sub_02026CAC
+	bl TouchHitboxController_Destroy
 	mov r0, #0
 	str r0, [r6, #0x68]
 	pop {r4, r5, r6, pc}
@@ -9639,7 +9639,7 @@ _0224A55A:
 	pop {r4, pc}
 _0224A578:
 	ldr r0, [r4, #0x68]
-	bl sub_02026CC4
+	bl TouchHitboxController_IsTriggered
 _0224A57E:
 	pop {r4, pc}
 	thumb_func_end ov41_0224A54C
@@ -10184,7 +10184,7 @@ _0224A940:
 	str r1, [sp, #0xc]
 	add r0, r4, #0
 	mov r1, #2
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	add r0, r7, #0
@@ -10827,7 +10827,7 @@ _0224AE3C:
 	mov r0, #0
 	str r0, [sp, #0xc]
 	add r0, r6, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r6, r0, #0
 	add r0, r4, #0
 	bl String_Delete
@@ -10878,7 +10878,7 @@ _0224AEA4:
 	str r0, [sp, #0xc]
 	ldr r2, [r4]
 	add r0, r7, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r4, r0, #0
 	add r0, r5, #0
 	bl DestroyMsgData
@@ -11312,12 +11312,12 @@ ov41_0224B21C: ; 0x0224B21C
 	add r4, r1, #0
 	cmp r0, #0
 	beq _0224B22C
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0224B22C:
 	ldr r0, [r5, #0x28]
 	cmp r0, #0
 	beq _0224B236
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0224B236:
 	add r0, r5, #0
 	add r1, r4, #0
@@ -12976,7 +12976,7 @@ _0224BE9C:
 	ldr r0, [r5, r0]
 	add r2, r7, #0
 	sub r3, r3, r4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 	ldr r0, [r5]
@@ -13018,7 +13018,7 @@ _0224BE9C:
 	mov r3, #0x80
 	add r2, r4, #0
 	sub r3, r3, r5
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add r0, r7, #0

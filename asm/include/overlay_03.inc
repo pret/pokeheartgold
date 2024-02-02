@@ -34,8 +34,8 @@
 .public StringExpandPlaceholders
 .public thunk_Sprite_SetPalIndex
 .public Sprite_SetPositionXY
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
 .public sub_0200E5D4
@@ -67,9 +67,9 @@
 .public FillWindowPixelRect
 .public GetWindowWidth
 .public ScheduleBgTilemapBufferTransfer
-.public sub_020200A0
+.public RemoveTextPrinter
 .public AddTextPrinterParameterized
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_EngineASetPlanes
 .public GfGfx_EngineBTogglePlanes
@@ -88,7 +88,7 @@
 .public Sprite_TickCellOrMulticellAnimation
 .public Sprite_SetAnimCtrlCurrentFrame
 .public Sprite_SetPriority
-.public sub_02024B68
+.public Sprite_IsCellAnimationFinished
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New

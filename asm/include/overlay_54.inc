@@ -65,8 +65,8 @@
 .public FillWindowPixelRect
 .public DoScheduledBgGpuUpdates
 .public TextPrinterCheckActive
-.public sub_020200A0
-.public AddTextPrinterParameterized2
+.public RemoveTextPrinter
+.public AddTextPrinterParameterizedWithColor
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GfGfx_SetBanks
@@ -77,8 +77,8 @@
 .public Set2dSpriteVisibleFlag
 .public Set2dSpriteAnimActiveFlag
 .public Set2dSpriteAnimSeqNo
-.public sub_02024B68
-.public sub_02025224
+.public Sprite_IsCellAnimationFinished
+.public TouchscreenHitbox_FindRectAtTouchNew
 .public String_New
 .public String_Delete
 .public String_SetEmpty

@@ -4,8 +4,8 @@
 .public GfGfxLoader_GetPlttData
 .public NewMsgDataFromNarc
 .public DestroyMsgData
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public AllocFromHeap
 .public FreeToHeap
 .public BgSetPosTextAndCommit
@@ -16,7 +16,7 @@
 .public ClearWindowTilemapAndCopyToVram
 .public FillWindowPixelBuffer
 .public BlitBitmapRectToWindow
-.public AddTextPrinterParameterized2
+.public AddTextPrinterParameterizedWithColor
 .public GF_AssertFail
 .public String_New
 .public String_Delete

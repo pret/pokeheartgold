@@ -6705,7 +6705,7 @@ ov112_021E90FC: ; 0x021E90FC
 	add r0, r5, #0
 	mov r1, #5
 	mov r3, #2
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #5
 	bl FontID_Release
 	add r0, r4, #0
@@ -6757,7 +6757,7 @@ _021E9170:
 	add r0, r5, #0
 	add r2, r6, #0
 	mov r3, #2
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl String_Delete
 	add r7, r7, #1
@@ -6794,7 +6794,7 @@ _021E91B4:
 	add r0, r0, r1
 	mov r1, #5
 	mov r3, #2
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add r5, r5, #1
@@ -6821,7 +6821,7 @@ _021E91B4:
 	add r0, #0xd0
 	mov r1, #5
 	mov r3, #2
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	mov r0, #0xc
@@ -6848,7 +6848,7 @@ _021E91B4:
 	add r0, #0xe0
 	mov r3, #2
 	str r0, [sp, #0x10]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	mov r0, #5
@@ -7669,7 +7669,7 @@ _021E9894:
 	ldr r0, _021E98A0 ; =ov112_021FF514
 	lsl r1, r4, #2
 	ldr r0, [r0, r1]
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	pop {r4, pc}
 	.balign 4, 0
 _021E98A0: .word ov112_021FF514
@@ -8535,7 +8535,7 @@ ov112_021E9FA4: ; 0x021E9FA4
 	add r1, r7, #0
 	add r2, r6, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -8563,7 +8563,7 @@ ov112_021E9FD8: ; 0x021E9FD8
 	add r1, r7, #0
 	add r2, r6, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -8592,7 +8592,7 @@ ov112_021EA010: ; 0x021EA010
 	add r1, r7, #0
 	add r2, r6, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -14791,7 +14791,7 @@ ov112_021ED0D0: ; 0x021ED0D0
 	ldr r0, _021ED134 ; =ov112_021ED13C
 	add r1, r4, #0
 	mov r2, #2
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r1, _021ED138 ; =0x0001F2D8
 	str r0, [r4, r1]
 	add sp, #4
@@ -14835,7 +14835,7 @@ _021ED154:
 	cmp r0, #0x1f
 	bne _021ED176
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _021ED176:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -14856,7 +14856,7 @@ ov112_021ED180: ; 0x021ED180
 	cmp r4, r3
 	bls _021ED19A
 	strh r3, [r1, r2]
-	bl DestroySysTask
+	bl SysTask_Destroy
 _021ED19A:
 	pop {r4, pc}
 	.balign 4, 0
@@ -15022,7 +15022,7 @@ ov112_021ED2F4: ; 0x021ED2F4
 	ldr r0, _021ED30C ; =ov112_021ED180
 	add r1, r4, #0
 	mov r2, #2
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r1, _021ED310 ; =0x0001F2DC
 	str r0, [r4, r1]
 	pop {r4, pc}
@@ -21641,7 +21641,7 @@ ov112_021F06CC: ; 0x021F06CC
 	add r0, r5, #0
 	ldr r2, [r5, #0x70]
 	add r0, #0x38
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	add r0, #0x38
 	bl CopyWindowToVram
@@ -21680,7 +21680,7 @@ ov112_021F06CC: ; 0x021F06CC
 	add r0, #8
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	add r0, #8
 	bl CopyWindowToVram
@@ -21724,7 +21724,7 @@ ov112_021F06CC: ; 0x021F06CC
 	add r0, r5, #0
 	add r0, #0x18
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	add r0, #0x18
 	bl CopyWindowToVram
@@ -21752,7 +21752,7 @@ ov112_021F06CC: ; 0x021F06CC
 	add r0, #0x48
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	add r0, #0x48
 	bl CopyWindowToVram
@@ -21782,7 +21782,7 @@ _021F0820:
 	add r2, r4, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	add r0, #0x48
 	bl CopyWindowToVram
@@ -21817,7 +21817,7 @@ _021F0876:
 	add r0, #0x28
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	add r0, #0x28
 	bl CopyWindowToVram
@@ -21848,7 +21848,7 @@ _021F0876:
 	add r0, #0x58
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r5, #0x58
 	add r0, r5, #0
 	bl CopyWindowToVram
@@ -22565,7 +22565,7 @@ ov112_021F0E60: ; 0x021F0E60
 	ldrb r2, [r2, #0xe]
 	strb r3, [r1, #2]
 	strb r2, [r1, #3]
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	bne _021F0E8E
 	ldr r0, _021F0EAC ; =gSystem
@@ -22609,7 +22609,7 @@ ov112_021F0EB4: ; 0x021F0EB4
 	ldrb r2, [r2, #6]
 	strb r3, [r1, #2]
 	strb r2, [r1, #3]
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	bne _021F0EE6
 	ldr r0, _021F0EF8 ; =gSystem
@@ -22650,7 +22650,7 @@ ov112_021F0EFC: ; 0x021F0EFC
 	ldrb r2, [r2, #0xa]
 	strb r3, [r1, #2]
 	strb r2, [r1, #3]
-	bl sub_02025320
+	bl TouchscreenHitbox_TouchNewIsIn
 	cmp r0, #0
 	bne _021F0F34
 	ldr r0, _021F0F44 ; =gSystem
@@ -23260,7 +23260,7 @@ _021F1370:
 	ldr r1, [sp, #0x28]
 	ldr r3, [sp, #0x10]
 	add r0, r4, r6
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	add r0, r4, r6
@@ -23337,7 +23337,7 @@ ov112_021F13CC: ; 0x021F13CC
 	ldr r0, [sp, #0x10]
 	add r2, r4, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r4, #0
@@ -23354,7 +23354,7 @@ _021F145A:
 	ldr r0, [sp, #0x10]
 	add r2, r6, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _021F1472:
 	add r0, r6, #0
 	bl String_Delete

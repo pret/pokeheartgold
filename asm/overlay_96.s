@@ -1742,7 +1742,7 @@ _021E6512:
 	ldr r0, _021E654C ; =ov96_021E81D8
 	add r1, r5, #0
 	mov r2, #1
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r5, #0xc]
 	mov r0, #0xd3
 	lsl r0, r0, #4
@@ -1772,7 +1772,7 @@ _021E6558:
 	str r6, [r5, r0]
 	add r0, r0, #4
 	ldr r0, [r5, r0]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0x35
 	mov r1, #0
 	lsl r0, r0, #6
@@ -1880,7 +1880,7 @@ ov96_021E661C: ; 0x021E661C
 _021E662C:
 	sub r0, #0xc
 	ldr r0, [r5, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _021E6664
 	ldr r0, _021E6668 ; =0x00000728
@@ -6378,7 +6378,7 @@ ov96_021E883C: ; 0x021E883C
 	ldr r0, _021E887C ; =ov96_021E8884
 	ldr r2, _021E8880 ; =0x00001388
 	add r1, r4, #0
-	bl sub_0200E374
+	bl SysTask_CreateOnVWaitQueue
 	mov r1, #0x73
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -6463,7 +6463,7 @@ ov96_021E88FC: ; 0x021E88FC
 	mov r0, #0x73
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl FreeToHeap
 	pop {r4, pc}
@@ -6819,7 +6819,7 @@ _021E8B78:
 	ldr r0, _021E8B84 ; =ov96_021E8FB4
 	ldr r2, [sp, #0x18]
 	mov r1, ip
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021E8B84: .word ov96_021E8FB4
@@ -7391,7 +7391,7 @@ _021E8FBA:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r3, r4, r5, pc}
 _021E8FD8:
 	ldr r0, [r4, #0x10]
@@ -10833,7 +10833,7 @@ _021EA9D2:
 	ldr r0, _021EA9FC ; =ov96_021EAA24
 	ldr r2, [sp, #0x14]
 	add r1, r6, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -10916,7 +10916,7 @@ _021EAA76:
 	mov r1, #1
 	str r1, [r0, #0xc]
 	ldr r0, [sp]
-	bl DestroySysTask
+	bl SysTask_Destroy
 _021EAA82:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -11362,7 +11362,7 @@ ov96_021EAD78: ; 0x021EAD78
 	push {r3, lr}
 	ldr r0, [r0]
 	bl ov96_021E8BAC
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov96_021EAD78
@@ -12477,11 +12477,11 @@ _021EB578: .word TryChange2dSpriteAnimSeqNo
 
 	thumb_func_start ov96_021EB57C
 ov96_021EB57C: ; 0x021EB57C
-	ldr r3, _021EB584 ; =sub_02024B68
+	ldr r3, _021EB584 ; =Sprite_IsCellAnimationFinished
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_021EB584: .word sub_02024B68
+_021EB584: .word Sprite_IsCellAnimationFinished
 	thumb_func_end ov96_021EB57C
 
 	thumb_func_start ov96_021EB588
@@ -13053,7 +13053,7 @@ _021EB95E:
 	ldr r0, [r0]
 	bl FreeToHeap
 	ldr r0, [r4, #8]
-	bl DestroySysTask
+	bl SysTask_Destroy
 _021EB978:
 	ldr r0, [r4, #0xc]
 	bl ov96_021EE944
@@ -14037,7 +14037,7 @@ _021EC156:
 	ldr r0, [r0]
 	bl FreeToHeap
 	ldr r0, [r4, #8]
-	bl DestroySysTask
+	bl SysTask_Destroy
 _021EC170:
 	ldr r0, [r4, #0xc]
 	bl ov96_021EE944
@@ -14179,7 +14179,7 @@ _021EC25A:
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r4, r5, r6, pc}
 _021EC290:
 	bl GF_AssertFail
@@ -14216,7 +14216,7 @@ ov96_021EC298: ; 0x021EC298
 	str r0, [r4, #0xc]
 	ldr r0, _021EC2DC ; =ov96_021EC218
 	add r1, r4, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r5, #8]
 	pop {r4, r5, r6, pc}
 	nop
@@ -18949,7 +18949,7 @@ ov96_021EE700: ; 0x021EE700
 	add r0, r5, #0
 	add r2, r4, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add sp, #0x10
@@ -19235,7 +19235,7 @@ ov96_021EE944: ; 0x021EE944
 	beq _021EE95A
 	lsl r0, r1, #0x18
 	lsr r0, r0, #0x18
-	bl sub_020200A0
+	bl RemoveTextPrinter
 _021EE95A:
 	ldr r0, [r4, #0x18]
 	cmp r0, #0
@@ -19377,7 +19377,7 @@ _021EEA36:
 	ldr r2, [r4]
 	add r0, r5, #0
 	mov r1, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r4, r0, #0
 	ldr r2, _021EEA7C ; =0x000003D2
 	add r0, r5, #0
@@ -19819,7 +19819,7 @@ _021EEDB6:
 _021EEDB8:
 	add r0, r5, r0
 	mov r1, #0x20
-	bl sub_02003F04
+	bl TintPalette_GrayScale
 _021EEDC0:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -21937,7 +21937,7 @@ _021EFED2:
 	cmp r0, #0
 	beq _021EFF2E
 	ldr r0, _021EFF34 ; =ov96_0221BA20
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -22020,7 +22020,7 @@ _021EFF7A:
 	cmp r0, #0
 	beq _021EFFD2
 	ldr r0, _021EFFDC ; =ov96_0221BA2C
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	cmp r0, #0
 	bne _021EFFA2
 	ldr r0, _021EFFE0 ; =0x000005DC
@@ -22100,7 +22100,7 @@ _021F0022:
 	cmp r0, #0
 	beq _021F007A
 	ldr r0, _021F0084 ; =ov96_0221BA38
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	cmp r0, #0
 	bne _021F004A
 	ldr r0, _021F0088 ; =0x000005DC
@@ -22667,7 +22667,7 @@ _021F04C6:
 	mov r1, #0x10
 	add r0, r5, r0
 	add r0, #0x68
-	bl sub_02003F04
+	bl TintPalette_GrayScale
 	ldr r0, [sp, #0x28]
 	add r4, r4, #1
 	add r0, #0x10
@@ -27458,12 +27458,12 @@ ov96_021F2B68: ; 0x021F2B68
 	strb r2, [r4]
 	add r1, r4, #0
 	add r5, r3, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #4]
 	ldr r0, _021F2BA8 ; =ov96_021F2C04
 	add r1, r4, #0
 	mov r2, #1
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #0xc]
 	mov r1, #2
 	ldr r0, _021F2BAC ; =0x04000018
@@ -27473,7 +27473,7 @@ ov96_021F2B68: ; 0x021F2B68
 	ldr r0, _021F2BB0 ; =ov96_021F2CD0
 	add r1, r4, #0
 	mov r2, #2
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #8]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -27500,7 +27500,7 @@ _021F2BC6:
 	bne _021F2BFE
 	ldr r0, _021F2C00 ; =ov96_021F2D68
 	mov r2, #3
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #0x10]
 	ldrb r0, [r4]
 	add r0, r0, #1
@@ -27519,7 +27519,7 @@ _021F2BDE:
 	mov r1, #1
 	strb r1, [r0, #8]
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _021F2BFE:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -27620,7 +27620,7 @@ _021F2CB8:
 	str r1, [r4, #0xc]
 	strh r1, [r4, #0x18]
 	strb r1, [r4, #1]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -27700,7 +27700,7 @@ _021F2D2E:
 	str r0, [r4, #8]
 	strb r0, [r4, #2]
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _021F2D5E:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -27729,7 +27729,7 @@ ov96_021F2D68: ; 0x021F2D68
 	strh r2, [r1, #0x24]
 	str r2, [r1, #0x10]
 	strh r2, [r1, #0x26]
-	bl DestroySysTask
+	bl SysTask_Destroy
 _021F2D92:
 	pop {r4, pc}
 	.balign 4, 0
@@ -27752,35 +27752,35 @@ ov96_021F2D98: ; 0x021F2D98
 	mov r1, #1
 	strb r1, [r0, #8]
 	ldr r0, [r4, #4]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	str r0, [r4, #4]
 _021F2DC0:
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	beq _021F2DCE
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	str r0, [r4, #8]
 _021F2DCE:
 	ldr r0, [r4, #0xc]
 	cmp r0, #0
 	beq _021F2DDC
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	str r0, [r4, #0xc]
 _021F2DDC:
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
 	beq _021F2DEA
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	str r0, [r4, #0x10]
 _021F2DEA:
 	ldr r0, [r4, #0x14]
 	cmp r0, #0
 	beq _021F2DF8
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	str r0, [r4, #0x14]
 _021F2DF8:
@@ -27822,7 +27822,7 @@ ov96_021F2E2C: ; 0x021F2E2C
 	str r1, [r4, #0x28]
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #0x14]
 _021F2E44:
 	pop {r4, pc}
@@ -27853,7 +27853,7 @@ ov96_021F2E4C: ; 0x021F2E4C
 	strh r2, [r1, #0x2e]
 	mov r2, #0xc
 	str r2, [r1, #0x28]
-	bl DestroySysTask
+	bl SysTask_Destroy
 _021F2E7A:
 	pop {r4, pc}
 	.balign 4, 0
@@ -27964,7 +27964,7 @@ ov96_021F2EFC: ; 0x021F2EFC
 	add r0, r5, #4
 	add r2, r7, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r6, #0
@@ -30512,7 +30512,7 @@ _021F425A:
 	add r0, #0xc
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	mov r0, #0x13
@@ -30557,7 +30557,7 @@ _021F42D2:
 	add r0, r0, r1
 	mov r1, #0
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 	lsl r0, r6, #2
@@ -30932,7 +30932,7 @@ ov96_021F459C: ; 0x021F459C
 	add r2, r5, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	add sp, #0x10
@@ -36145,7 +36145,7 @@ _021F6F8E:
 	add r0, r7, #4
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add r0, r7, #4
@@ -36176,7 +36176,7 @@ _021F6FE4:
 	add r0, r0, r1
 	mov r1, #0
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl String_Delete
 	add r0, r4, #1
@@ -36293,7 +36293,7 @@ ov96_021F70AC: ; 0x021F70AC
 	add r0, #0x44
 	add r2, r7, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r6, #0
@@ -37360,7 +37360,7 @@ ov96_021F78C4: ; 0x021F78C4
 	add r0, r4, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	add r0, r6, #0
@@ -40026,7 +40026,7 @@ ov96_021F8DF4: ; 0x021F8DF4
 	str r1, [sp, #0x14]
 	add r0, r4, #0
 	add r2, r7, #0
-	bl AddTextPrinterParameterized3
+	bl AddTextPrinterParameterizedWithColorAndSpacing
 	mov r1, #1
 	ldr r0, [r4, #0x14]
 	add r2, r1, #0
@@ -40428,7 +40428,7 @@ ov96_021F9134: ; 0x021F9134
 	str r1, [sp, #0x14]
 	add r0, r4, #0
 	add r2, r7, #0
-	bl AddTextPrinterParameterized3
+	bl AddTextPrinterParameterizedWithColorAndSpacing
 	ldr r0, [r4, #0x14]
 	mov r1, #1
 	mov r2, #2
@@ -45251,7 +45251,7 @@ ov96_021FB808: ; 0x021FB808
 	add r0, #8
 	add r2, r6, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl String_Delete
 	add r0, r4, #0
@@ -54009,7 +54009,7 @@ _021FFDB0:
 	add r0, r5, #4
 	add r2, r7, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r4, #0
@@ -55777,7 +55777,7 @@ ov96_02200BD8: ; 0x02200BD8
 	add r0, #0xc
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	add r4, #0xc
@@ -55812,7 +55812,7 @@ ov96_02200C40: ; 0x02200C40
 	add r0, #0x1c
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add r5, #0x1c
@@ -60625,7 +60625,7 @@ ov96_0220337C: ; 0x0220337C
 	add r0, r5, #4
 	add r2, r7, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r6, #0
@@ -61240,7 +61240,7 @@ _02203846:
 	add r0, r5, #0
 	add r2, r6, #0
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
 	bl String_Delete
 	add r0, r5, #0
@@ -62233,7 +62233,7 @@ ov96_02203FFC: ; 0x02203FFC
 	add r0, #0xc
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add r5, #0xc
@@ -69121,7 +69121,7 @@ ov96_02207774: ; 0x02207774
 	add r0, r5, #4
 	add r2, r7, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r6, #0
@@ -71334,7 +71334,7 @@ ov96_022088AC: ; 0x022088AC
 	add r0, #0xc
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	add r4, #0xc
@@ -74177,7 +74177,7 @@ ov96_02209F40: ; 0x02209F40
 	add r0, r5, #0
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add r0, r5, #0
@@ -74596,7 +74596,7 @@ ov96_0220A298: ; 0x0220A298
 	beq _0220A322
 	add r0, sp, #0xc
 	add r1, sp, #8
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	mov r1, #0
 	ldr r0, [sp, #0xc]
 	add r2, r1, #0
@@ -74688,7 +74688,7 @@ _0220A35C:
 	beq _0220A3A2
 	add r0, sp, #4
 	add r1, sp, #0
-	bl sub_02025364
+	bl System_GetTouchHeldCoords
 	ldr r1, [r5, r4]
 	ldr r0, _0220A410 ; =0xFF00FFFF
 	and r1, r0
@@ -74725,7 +74725,7 @@ _0220A3A2:
 	bgt _0220A408
 _0220A3B2:
 	ldr r0, _0220A418 ; =ov96_0221CC04
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -75031,7 +75031,7 @@ ov96_0220A5DC: ; 0x0220A5DC
 	add r0, r4, r0
 	add r2, r5, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	mov r0, #0x8e
@@ -75116,7 +75116,7 @@ _0220A676:
 	lsl r0, r0, #2
 	str r1, [r5, r0]
 	add r0, r6, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0220A6FC:
 	pop {r4, r5, r6, pc}
 	nop
@@ -75134,7 +75134,7 @@ ov96_0220A704: ; 0x0220A704
 	add r6, r2, #0
 	cmp r0, #0
 	beq _0220A71A
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0220A71A:
 	ldr r0, _0220A73C ; =0x0000026E
 	mov r1, #0
@@ -75146,7 +75146,7 @@ _0220A71A:
 	ldr r0, _0220A740 ; =ov96_0220A660
 	add r1, r5, #0
 	mov r2, #2
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	mov r1, #0x9a
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -75431,7 +75431,7 @@ _0220A93A:
 	bl ov96_0220B148
 	add r0, sp, #0x18
 	add r1, sp, #0x14
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	add r1, sp, #0x10
 	mov r0, #0
 	ldrsh r0, [r1, r0]
@@ -75650,7 +75650,7 @@ _0220AB04:
 _0220AB16:
 	add r0, sp, #0x20
 	add r1, sp, #0x1c
-	bl sub_02025380
+	bl System_GetTouchNewCoords
 	ldr r1, [sp, #0x20]
 	ldr r2, [sp, #0x1c]
 	lsl r1, r1, #0x10
@@ -76424,7 +76424,7 @@ _0220B11E:
 	lsl r1, r5, #2
 	add r0, sp, #4
 	strb r2, [r0, r1]
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -77494,7 +77494,7 @@ _0220B8FC:
 	ldr r0, [r6, #0x34]
 	cmp r0, #0
 	beq _0220B91C
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	str r0, [r6, #0x34]
 _0220B91C:
@@ -78850,7 +78850,7 @@ _0220C3B6:
 	ldr r1, _0220C3DC ; =0xFFFFBFFF
 	and r1, r2
 	str r1, [r4, #0x38]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add sp, #8
 	pop {r3, r4, r5, pc}
 _0220C3CA:
@@ -78880,7 +78880,7 @@ ov96_0220C3E0: ; 0x0220C3E0
 	str r0, [r4, #0x38]
 	ldr r0, _0220C408 ; =ov96_0220C15C
 	add r1, r4, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #0x34]
 	pop {r4, pc}
 	.balign 4, 0
@@ -81014,7 +81014,7 @@ _0220D3C2:
 	mov r0, #0
 	str r0, [r5, #8]
 	add r0, r6, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0220D406:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov96_0220D360
@@ -81063,7 +81063,7 @@ _0220D444:
 	ldr r0, [r5, #8]
 	cmp r0, #0
 	beq _0220D44E
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0220D44E:
 	mov r0, #0
 	str r0, [r5, #0x10]
@@ -81072,7 +81072,7 @@ _0220D44E:
 	add r1, r5, #0
 	mov r2, #2
 	strb r6, [r5, #0xd]
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r5, #8]
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -81150,7 +81150,7 @@ _0220D4C4:
 	add r2, r1, #0
 	bl ov96_021EB10C
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r3, r4, r5, pc}
 _0220D506:
 	mov r1, #0xfe
@@ -81179,7 +81179,7 @@ ov96_0220D52C: ; 0x0220D52C
 	add r4, r1, #0
 	cmp r0, #0
 	beq _0220D53C
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0220D53C:
 	str r4, [r5]
 	mov r2, #0
@@ -81187,7 +81187,7 @@ _0220D53C:
 	ldr r0, _0220D550 ; =ov96_0220D468
 	add r1, r5, #0
 	strh r2, [r5, #0xe]
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r5, #4]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -83830,7 +83830,7 @@ ov96_0220E9A0: ; 0x0220E9A0
 	add r0, #0x24
 	add r2, r5, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	add r4, #0x24
@@ -86897,7 +86897,7 @@ _022101E2:
 	ldr r0, [r5, #0x44]
 	cmp r0, #0
 	beq _022101F2
-	bl DestroySysTask
+	bl SysTask_Destroy
 _022101F2:
 	add r4, r4, #1
 	add r5, #0x1c
@@ -87577,7 +87577,7 @@ _022106E4:
 	ldr r2, [sp, #0x20]
 	add r0, r6, r7
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, r7
 	bl CopyWindowToVram
 	ldr r0, [sp, #0x20]
@@ -93589,7 +93589,7 @@ ov96_022136A4: ; 0x022136A4
 	add r0, #8
 	add r2, r7, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r6, #0
@@ -94886,7 +94886,7 @@ _0221408A:
 	str r0, [sp, #8]
 	add r0, r4, r7
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	b _022140D4
 _022140A2:
 	ldr r0, [sp, #0x10]
@@ -94914,7 +94914,7 @@ _022140B6:
 	ldr r2, _022140F0 ; =0x000007C4
 	mov r1, #4
 	ldr r2, [r5, r2]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _022140D4:
 	add r0, r4, r7
 	bl CopyWindowToVram
@@ -95063,7 +95063,7 @@ _02214202:
 	str r6, [r5, #8]
 	add r1, r5, #0
 	mov r2, #1
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r5, #4]
 	add r0, r4, #1
 	lsl r0, r0, #0x18
@@ -95086,7 +95086,7 @@ _0221423C:
 	lsl r0, r4, #4
 	add r0, r5, r0
 	ldr r0, [r0, r6]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -95890,7 +95890,7 @@ ov96_022147FC: ; 0x022147FC
 	add r0, #0x14
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add r5, #0x14
@@ -95927,7 +95927,7 @@ ov96_02214854: ; 0x02214854
 	add r0, #0x24
 	add r3, r1, #0
 	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add r5, #0x24
@@ -98064,7 +98064,7 @@ _0221575A:
 	mov r0, #0
 	str r0, [r5, #8]
 	add r0, r7, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _02215860:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -98114,7 +98114,7 @@ _022158A0:
 	ldr r0, [r5, #8]
 	cmp r0, #0
 	beq _022158AA
-	bl DestroySysTask
+	bl SysTask_Destroy
 _022158AA:
 	mov r0, #0
 	str r0, [r5, #0x18]
@@ -98129,7 +98129,7 @@ _022158AA:
 	ldr r0, _022158D0 ; =ov96_02215710
 	add r1, r5, #0
 	mov r2, #2
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r5, #8]
 	pop {r4, r5, r6, pc}
 	nop
@@ -101791,7 +101791,7 @@ _022175A0:
 	bl MI_CpuCopy8
 	add r0, r5, #0
 	mov r1, #0x10
-	bl sub_02003F04
+	bl TintPalette_GrayScale
 	add r7, r7, #1
 	add r6, r6, #1
 	add r4, #0x40
@@ -105788,7 +105788,7 @@ ov96_022193F8: ; 0x022193F8
 	add r0, #0x20
 	add r2, r5, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl String_Delete
 	add r4, #0x20
@@ -106733,7 +106733,7 @@ ov96_02219B30: ; 0x02219B30
 	str r1, [sp, #0xc]
 	add r0, #0x30
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [r5, #4]
 	mov r3, #0x13
 	str r0, [sp]
@@ -106820,7 +106820,7 @@ ov96_02219BDC: ; 0x02219BDC
 	str r1, [sp, #0xc]
 	ldrsh r3, [r3, r6]
 	add r0, r5, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
 	bl String_Delete
 	add r0, r5, #0

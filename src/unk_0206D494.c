@@ -286,7 +286,7 @@ BOOL MonIsFromTogepiEgg(Pokemon *mon, SaveData *saveData) {
     // to explicit variables before being compared for the function to match,
     // even though the values are never used again afterwards. Also, the same
     // variables are used for different calls to GetMonData.
-    u32 word = GetMonData(mon, MON_DATA_OTID, NULL);
+    int word = GetMonData(mon, MON_DATA_OTID, NULL);
     if (word != PlayerProfile_GetTrainerID(profile)) {
         return FALSE;
     }
@@ -412,10 +412,12 @@ static BOOL Task_BugContest_PromptSwapPokemon(TaskManager *taskManager) {
     u32 *state = TaskManager_GetStatePtr(taskManager);
     switch (*state) {
         case 0:
+        {
             u32 noPokemonCaught = contest->caught_poke == SPECIES_NONE;
             unkStruct->unk08 = sub_0203EDDC(fieldSystem, unkStruct->unk04, contest->mon, noPokemonCaught);
             (*state)++;
             break;
+        }
         case 1:
             if (FieldSystem_ApplicationIsRunning(fieldSystem) == FALSE) {
                 if (unkStruct->unk08->unk10 != contest->mon) {

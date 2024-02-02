@@ -968,7 +968,7 @@ _0223845A:
 	mov r0, #0x9f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	bne _022384DA
 	ldr r0, _022384E0 ; =0x000008E6
@@ -1307,7 +1307,7 @@ ov59_022386D0: ; 0x022386D0
 	ldr r2, [r4, #0x64]
 	add r0, r4, r0
 	asr r3, r3, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r5, #0
 _0223871E:
 	lsl r1, r5, #0x18
@@ -1434,7 +1434,7 @@ ov59_022387D0: ; 0x022387D0
 	ldr r2, [r4, #0x6c]
 	mov r1, #4
 	lsr r3, r3, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0x52
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -1489,7 +1489,7 @@ ov59_02238834: ; 0x02238834
 	add r0, r7, r0
 	mov r1, #4
 	asr r3, r3, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x18]
 	add r0, r7, r0
 	bl ScheduleWindowCopyToVram
@@ -1652,7 +1652,7 @@ _0223896C:
 	add r4, r3, r4
 	add r0, r6, r7
 	asr r3, r4, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, r7
 	bl ScheduleWindowCopyToVram
 _022389E0:
@@ -1729,7 +1729,7 @@ _02238A32:
 	ldrb r3, [r6]
 	ldr r2, [r5, #0x64]
 	add r0, r4, r0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x14]
 	add r0, r4, r0
 	bl ScheduleWindowCopyToVram
@@ -1810,7 +1810,7 @@ ov59_02238AB0: ; 0x02238AB0
 	add r2, r5, r2
 	add r2, #0xd0
 	ldr r2, [r2]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0x5e
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -1835,7 +1835,7 @@ ov59_02238AB0: ; 0x02238AB0
 	add r0, r5, r2
 	ldr r2, [r5, #0x68]
 	mov r3, #2
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0x72
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -2377,7 +2377,7 @@ ov59_02238F58: ; 0x02238F58
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, sp, #0
-	bl sub_020166FC
+	bl YesNoPrompt_InitFromTemplate
 	add sp, #0x14
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -2390,7 +2390,7 @@ ov59_02238FB4: ; 0x02238FB4
 	mov r0, #0x92
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020168F4
+	bl YesNoPrompt_HandleInput
 	cmp r0, #1
 	beq _02238FCC
 	cmp r0, #2
@@ -2410,12 +2410,12 @@ _02238FDA:
 	mov r0, #0x92
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020169C0
+	bl YesNoPrompt_IsInTouchMode
 	str r0, [r5, #0x40]
 	mov r0, #0x92
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_020169CC
+	bl YesNoPrompt_Reset
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov59_02238FB4
@@ -2896,7 +2896,7 @@ _02239396:
 	ldr r0, _022393D0 ; =ov59_02239C90
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	add r0, r7, #0
 	add r0, #0x50
 	ldrb r0, [r0]
@@ -3478,7 +3478,7 @@ _02239826:
 	blt _02239826
 	ldr r0, [sp, #0x14]
 	ldr r0, [r0]
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	mov r2, #0x92
 	ldr r1, [sp, #0x14]
 	lsl r2, r2, #2
@@ -3509,7 +3509,7 @@ _022398AC:
 	mov r0, #0x92
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov59_022398A0
 
@@ -4037,7 +4037,7 @@ _02239CDE:
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _02239D04:
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
@@ -4371,7 +4371,7 @@ ov59_02239F38: ; 0x02239F38
 	ldrsh r1, [r3, r1]
 	ldrsh r2, [r3, r2]
 	ldr r0, _0223A028 ; =ov59_0223C940
-	bl sub_020253F0
+	bl TouchscreenHitbox_PointIsIn
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	bl System_GetTouchHeld
@@ -4599,7 +4599,7 @@ ov59_0223A120: ; 0x0223A120
 	add r4, r0, #0
 	ldr r0, _0223A190 ; =ov59_0223C924
 	add r5, r1, #0
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	add r1, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -4817,7 +4817,7 @@ ov59_0223A2D0: ; 0x0223A2D0
 	add r4, r0, #0
 	ldr r0, _0223A34C ; =ov59_0223C924
 	add r5, r1, #0
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	add r1, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -4990,7 +4990,7 @@ ov59_0223A418: ; 0x0223A418
 	add r4, r0, #0
 	ldr r0, _0223A488 ; =ov59_0223C924
 	add r5, r1, #0
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	add r1, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -5263,7 +5263,7 @@ ov59_0223A614: ; 0x0223A614
 	add r5, r0, #0
 	ldr r0, _0223A674 ; =ov59_0223C908
 	str r1, [sp]
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	add r4, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -6299,7 +6299,7 @@ ov59_0223AD84: ; 0x0223AD84
 	add r0, r5, r2
 	ldr r2, [r5, #0x68]
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0x79
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -6331,7 +6331,7 @@ _0223ADC8:
 	ldr r2, [r5, #0x68]
 	add r0, r7, r0
 	mov r3, #4
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x10]
 	add r0, r7, r0
 	bl ScheduleWindowCopyToVram
@@ -6492,7 +6492,7 @@ _0223AF08:
 	ldr r2, [r4, #0x68]
 	add r0, r4, r0
 	mov r3, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0x26
 	ldr r1, [sp, #0x10]
 	lsl r0, r0, #4
@@ -6578,7 +6578,7 @@ _0223AFC4:
 	mov r0, #0x26
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	beq _0223AFD8
 	add sp, #0xc
@@ -6620,7 +6620,7 @@ _0223B024:
 	mov r0, #0x9a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	beq _0223B038
 	add sp, #0xc
@@ -6647,7 +6647,7 @@ _0223B05C:
 	mov r0, #0x9a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02024B68
+	bl Sprite_IsCellAnimationFinished
 	cmp r0, #0
 	beq _0223B070
 	add sp, #0xc
@@ -7089,7 +7089,7 @@ ov59_0223B3B0: ; 0x0223B3B0
 	add r5, r0, #0
 	ldr r0, _0223B3D8 ; =ov59_0223C95C
 	add r4, r1, #0
-	bl sub_0202529C
+	bl TouchscreenHitbox_FindHitboxAtTouchNew
 	add r1, r0, #0
 	mov r0, #0
 	mvn r0, r0
@@ -7579,7 +7579,7 @@ _0223B780:
 	blt _0223B780
 	ldr r0, [sp, #0x14]
 	ldr r0, [r0]
-	bl sub_0201660C
+	bl YesNoPrompt_Create
 	mov r2, #0x95
 	ldr r1, [sp, #0x14]
 	lsl r2, r2, #2
@@ -7610,7 +7610,7 @@ _0223B7E4:
 	mov r0, #0x95
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_02016624
+	bl YesNoPrompt_Destroy
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov59_0223B7D8
 
@@ -8178,7 +8178,7 @@ _0223BC48:
 	ldr r2, [r4, #0x68]
 	add r0, r4, r0
 	mov r1, #1
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r1, r4, #0
 	add r1, #0x4d
 	strb r0, [r1]
@@ -8221,7 +8221,7 @@ ov59_0223BC88: ; 0x0223BC88
 	add r0, r5, r2
 	ldr r2, [r4, #0xc]
 	add r3, r1, #0
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	ldrb r0, [r4, #7]
 	cmp r0, #2
 	beq _0223BCE4
@@ -8239,7 +8239,7 @@ ov59_0223BC88: ; 0x0223BC88
 	add r2, r5, r2
 	ldr r2, [r2, #0x70]
 	mov r3, #0x40
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 _0223BCE4:
 	mov r1, #0
 	str r1, [sp]
@@ -8264,7 +8264,7 @@ _0223BCE4:
 	str r1, [sp, #0xc]
 	add r0, r5, r2
 	ldr r2, [r5, #0x68]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	mov r0, #0x7d
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -8581,7 +8581,7 @@ _0223BF5C:
 	ldr r0, _0223BFC4 ; =ov59_0223BFC8
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	add r0, r5, #0
 	add r0, #0x4f
 	ldrb r0, [r0]
@@ -8666,7 +8666,7 @@ _0223C03A:
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov59_0223BFC8
 
@@ -8691,7 +8691,7 @@ ov59_0223C054: ; 0x0223C054
 	ldr r0, _0223C098 ; =ov59_0223C09C
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	add r0, r5, #0
 	add r0, #0x4f
 	ldrb r0, [r0]
@@ -8775,7 +8775,7 @@ _0223C0E8:
 	add r0, r5, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0223C134:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -8796,7 +8796,7 @@ ov59_0223C138: ; 0x0223C138
 	add r1, r5, #0
 	mov r2, #0
 	str r4, [r5]
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	add r0, r4, #0
 	add r0, #0x4f
 	ldrb r0, [r0]
@@ -8943,7 +8943,7 @@ _0223C25C:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r6, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0223C288:
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}

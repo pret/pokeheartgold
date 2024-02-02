@@ -3,7 +3,7 @@
 .public FontID_String_GetWidthMultiline
 .public PaletteData_GetUnfadedBuf
 .public PaletteData_GetFadedBuf
-.public sub_02003DBC
+.public PaletteData_GetBufferColorAtIndex
 .public PlaySE
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
@@ -53,7 +53,7 @@
 .public GF_SinDegFX32
 .public GF_CosDegFX32
 .public LCRandom
-.public AddTextPrinterParameterized3
+.public AddTextPrinterParameterizedWithColorAndSpacing
 .public sub_02021AC8
 .public sub_02021B5C
 .public GF_AssertFail

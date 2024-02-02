@@ -1,0 +1,21 @@
+{
+  "kind": null,
+  "entries": [
+    {
+      "graphics": 0,
+      "palette": 0,
+      "cell": 0,
+      "anim": 0,
+      "transfer": 0,
+      "priority": 2
+    },
+    {
+      "graphics": 1,
+      "palette": 1,
+      "cell": 0,
+      "anim": 0,
+      "transfer": 0,
+      "priority": 2
+    }
+  ]
+}

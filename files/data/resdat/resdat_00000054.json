@@ -1,0 +1,455 @@
+{
+  "kind": "char",
+  "graphics": [
+    {
+      "narc": 162,
+      "file": 25,
+      "compressed": false,
+      "id": 0,
+      "extra": [
+        1,
+        162
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 129,
+      "compressed": false,
+      "id": 1,
+      "extra": [
+        1,
+        39
+      ]
+    },
+    {
+      "narc": 162,
+      "file": 64,
+      "compressed": false,
+      "id": 2,
+      "extra": [
+        2,
+        162
+      ]
+    },
+    {
+      "narc": 8,
+      "file": 234,
+      "compressed": true,
+      "id": 3,
+      "extra": [
+        2,
+        8
+      ]
+    },
+    {
+      "narc": 8,
+      "file": 234,
+      "compressed": true,
+      "id": 4,
+      "extra": [
+        2,
+        8
+      ]
+    },
+    {
+      "narc": 8,
+      "file": 234,
+      "compressed": true,
+      "id": 5,
+      "extra": [
+        2,
+        8
+      ]
+    },
+    {
+      "narc": 8,
+      "file": 234,
+      "compressed": true,
+      "id": 6,
+      "extra": [
+        2,
+        8
+      ]
+    },
+    {
+      "narc": 8,
+      "file": 234,
+      "compressed": true,
+      "id": 7,
+      "extra": [
+        2,
+        8
+      ]
+    },
+    {
+      "narc": 8,
+      "file": 234,
+      "compressed": true,
+      "id": 8,
+      "extra": [
+        2,
+        8
+      ]
+    },
+    {
+      "narc": 8,
+      "file": 234,
+      "compressed": true,
+      "id": 9,
+      "extra": [
+        2,
+        8
+      ]
+    },
+    {
+      "narc": 8,
+      "file": 245,
+      "compressed": true,
+      "id": 10,
+      "extra": [
+        2,
+        8
+      ]
+    },
+    {
+      "narc": 162,
+      "file": 76,
+      "compressed": false,
+      "id": 11,
+      "extra": [
+        2,
+        162
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 64,
+      "compressed": false,
+      "id": 12,
+      "extra": [
+        1,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 68,
+      "compressed": false,
+      "id": 13,
+      "extra": [
+        1,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 61,
+      "compressed": false,
+      "id": 14,
+      "extra": [
+        1,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 52,
+      "compressed": false,
+      "id": 15,
+      "extra": [
+        1,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 19,
+      "compressed": false,
+      "id": 16,
+      "extra": [
+        1,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 20,
+      "compressed": false,
+      "id": 17,
+      "extra": [
+        1,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 53,
+      "compressed": false,
+      "id": 18,
+      "extra": [
+        1,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 54,
+      "compressed": false,
+      "id": 19,
+      "extra": [
+        1,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 55,
+      "compressed": false,
+      "id": 20,
+      "extra": [
+        1,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 56,
+      "compressed": false,
+      "id": 21,
+      "extra": [
+        1,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 57,
+      "compressed": false,
+      "id": 22,
+      "extra": [
+        1,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 58,
+      "compressed": false,
+      "id": 23,
+      "extra": [
+        1,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 46,
+      "compressed": false,
+      "id": 24,
+      "extra": [
+        1,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 72,
+      "compressed": false,
+      "id": 25,
+      "extra": [
+        2,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 72,
+      "compressed": false,
+      "id": 26,
+      "extra": [
+        2,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 72,
+      "compressed": false,
+      "id": 27,
+      "extra": [
+        2,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 72,
+      "compressed": false,
+      "id": 28,
+      "extra": [
+        2,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 72,
+      "compressed": false,
+      "id": 29,
+      "extra": [
+        2,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 72,
+      "compressed": false,
+      "id": 30,
+      "extra": [
+        2,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 72,
+      "compressed": false,
+      "id": 31,
+      "extra": [
+        2,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 72,
+      "compressed": false,
+      "id": 32,
+      "extra": [
+        2,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 72,
+      "compressed": false,
+      "id": 33,
+      "extra": [
+        2,
+        39
+      ]
+    },
+    {
+      "narc": 162,
+      "file": 8,
+      "compressed": false,
+      "id": 34,
+      "extra": [
+        2,
+        162
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 124,
+      "compressed": false,
+      "id": 35,
+      "extra": [
+        1,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 49,
+      "compressed": false,
+      "id": 36,
+      "extra": [
+        1,
+        39
+      ]
+    },
+    {
+      "narc": 39,
+      "file": 135,
+      "compressed": false,
+      "id": 37,
+      "extra": [
+        1,
+        39
+      ]
+    },
+    {
+      "narc": 162,
+      "file": 76,
+      "compressed": false,
+      "id": 38,
+      "extra": [
+        2,
+        162
+      ]
+    },
+    {
+      "narc": 162,
+      "file": 76,
+      "compressed": false,
+      "id": 39,
+      "extra": [
+        2,
+        162
+      ]
+    },
+    {
+      "narc": 162,
+      "file": 76,
+      "compressed": false,
+      "id": 40,
+      "extra": [
+        2,
+        162
+      ]
+    },
+    {
+      "narc": 162,
+      "file": 76,
+      "compressed": false,
+      "id": 41,
+      "extra": [
+        2,
+        162
+      ]
+    },
+    {
+      "narc": 162,
+      "file": 76,
+      "compressed": false,
+      "id": 42,
+      "extra": [
+        2,
+        162
+      ]
+    },
+    {
+      "narc": 162,
+      "file": 76,
+      "compressed": false,
+      "id": 43,
+      "extra": [
+        2,
+        162
+      ]
+    },
+    {
+      "narc": 162,
+      "file": 66,
+      "compressed": false,
+      "id": 44,
+      "extra": [
+        1,
+        162
+      ]
+    }
+  ]
+}

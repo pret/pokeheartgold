@@ -347,7 +347,7 @@ sub_02075804: ; 0x02075804
 	mov r1, #4
 	add r2, r4, #0
 	str r3, [sp, #0xc]
-	bl AddTextPrinterParameterized2
+	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
 	bl CopyWindowToVram
 	add r0, r4, #0
@@ -426,7 +426,7 @@ sub_020758D0: ; 0x020758D0
 	add r5, r0, #0
 	ldr r0, _020759C0 ; =_020FFECC
 	mov r4, #0
-	bl sub_02025224
+	bl TouchscreenHitbox_FindRectAtTouchNew
 	add r6, r0, #0
 	add r0, r5, #0
 	add r0, #0xb8
@@ -665,14 +665,14 @@ sub_02075A7C: ; 0x02075A7C
 	bl MIi_CpuClearFast
 	bl sub_02026E8C
 	str r0, [sp, #0x1c]
-	bl sub_02026E84
+	bl GetMainBgPlttAddr
 	add r1, r0, #0
 	ldr r2, [sp, #0x1c]
 	mov r0, #0
 	bl MIi_CpuClear16
 	bl sub_02026E9C
 	str r0, [sp, #0x20]
-	bl sub_02026E94
+	bl GetSubBgPlttAddr
 	add r1, r0, #0
 	ldr r2, [sp, #0x20]
 	mov r0, #0
@@ -730,7 +730,7 @@ sub_02075A7C: ; 0x02075A7C
 	bl PaletteData_Init
 	str r0, [r4, #0x14]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r2, #2
 	ldr r0, [r4, #0x14]
 	mov r1, #0
@@ -885,7 +885,7 @@ sub_02075A7C: ; 0x02075A7C
 	ldr r2, _02075D00 ; =0x0000FFFF
 	mov r1, #0xf
 	mov r3, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r2, #0
 	str r2, [sp]
 	ldr r0, [r4, #0x18]
@@ -903,7 +903,7 @@ sub_02075A7C: ; 0x02075A7C
 	ldr r0, _02075D04 ; =sub_02075D08
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	mov r0, #1
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #1
@@ -940,7 +940,7 @@ _02075D2C:
 	cmp r0, #0
 	beq _02075D3A
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _02075D3A:
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02075D08
@@ -1161,7 +1161,7 @@ _02075EF0:
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x14]
 	mov r1, #0xf
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	add r0, r4, #0
 	mov r1, #0x29
 	add r0, #0x64
@@ -1270,7 +1270,7 @@ _02075FE8:
 	pop {r4, pc}
 _02075FF2:
 	ldr r0, [r4, #0x14]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _0207602A
 	mov r1, #0xe5
@@ -1305,7 +1305,7 @@ _0207602E:
 	pop {r4, pc}
 _02076038:
 	ldr r0, [r4, #0x14]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _02076132
 	mov r0, #2
@@ -1578,7 +1578,7 @@ _02076262:
 	ldr r0, [r4, #0x14]
 	mov r1, #0xf
 	mov r3, #2
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, [r4, #0x1c]
 	mov r1, #0xc
 	mov r2, #0
@@ -1637,7 +1637,7 @@ _020762F4:
 	strb r1, [r0]
 _0207631A:
 	ldr r0, [r4, #0x14]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _02076396
 	add r0, r4, #0
@@ -1665,7 +1665,7 @@ _0207631A:
 	ldr r0, [r4, #0x14]
 	mov r1, #0xf
 	mov r3, #4
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, _020765D8 ; =0x00007FFF
 	mov r1, #0x10
 	str r0, [sp]
@@ -1685,7 +1685,7 @@ _0207631A:
 	pop {r4, pc}
 _02076382:
 	ldr r0, [r4, #0x14]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _02076396
 	ldr r0, [r4, #0x30]
@@ -2052,7 +2052,7 @@ _02076682:
 	ldr r2, _020769A0 ; =0x0000FFFF
 	mov r1, #0xf
 	mov r3, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r1, #0
 	str r1, [sp]
 	ldr r0, [r4, #0x18]
@@ -2069,7 +2069,7 @@ _020766B2:
 	pop {r4, pc}
 _020766BC:
 	ldr r0, [r4, #0x14]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _02076752
 	mov r0, #0
@@ -2172,7 +2172,7 @@ _02076754:
 	ldr r2, _020769A0 ; =0x0000FFFF
 	mov r1, #0xf
 	mov r3, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r2, #0
 	str r2, [sp]
 	ldr r0, [r4, #0x18]
@@ -2194,7 +2194,7 @@ _020767D0:
 	mov r0, #1
 	bl SetMasterBrightnessNeutral
 	ldr r0, [r4, #0x14]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _020768D4
 	ldr r0, [r4, #0x3c]
@@ -2504,7 +2504,7 @@ _02076A50:
 	ldr r2, _02076C7C ; =0x0000FFFF
 	mov r1, #0xf
 	mov r3, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r1, #0
 	str r1, [sp]
 	ldr r0, [r4, #0x18]
@@ -2521,7 +2521,7 @@ _02076A50:
 	pop {r4, pc}
 _02076A84:
 	ldr r0, [r4, #0x14]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _02076B54
 	ldr r0, [r4, #0x30]
@@ -2535,7 +2535,7 @@ _02076A84:
 	pop {r4, pc}
 _02076AA4:
 	ldr r0, [r4, #0x14]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _02076B54
 	mov r1, #0xc
@@ -2569,7 +2569,7 @@ _02076AA4:
 	ldr r0, [r4, #0x14]
 	ldr r2, _02076C84 ; =0x0000F3FF
 	mov r1, #0xf
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	ldr r0, _02076C80 ; =0x00007FFF
 	mov r2, #0
 	str r0, [sp]
@@ -2609,7 +2609,7 @@ _02076AA4:
 	pop {r4, pc}
 _02076B4A:
 	ldr r0, [r4, #0x14]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	beq _02076B56
 _02076B54:
@@ -2724,7 +2724,7 @@ _02076C0C:
 	ldr r2, _02076C7C ; =0x0000FFFF
 	mov r1, #0xf
 	mov r3, #1
-	bl sub_02003370
+	bl PaletteData_BeginPaletteFade
 	mov r1, #0
 	str r1, [sp]
 	ldr r0, [r4, #0x18]
@@ -2741,7 +2741,7 @@ _02076C0C:
 	pop {r4, pc}
 _02076C66:
 	ldr r0, [r4, #0x14]
-	bl sub_02003B44
+	bl PaletteData_GetSelectedBuffersBitmask
 	cmp r0, #0
 	bne _02076C76
 	mov r0, #1
@@ -3479,7 +3479,7 @@ _020772C0:
 _020772CE:
 	bl GF_RunVramTransferTasks
 	ldr r0, [r4, #0x14]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r4]
 	bl DoScheduledBgGpuUpdates
 	ldr r3, _020772F0 ; =OS_IRQTable
