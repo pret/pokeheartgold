@@ -53,10 +53,10 @@
 .public sub_0200E074
 .public sub_0200E098
 .public sub_0200E2B0
-.public CreateSysTask
-.public CreateVBlankSysTask
-.public CreateVWaitSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx1
 .public sub_02013534
 .public sub_020135AC

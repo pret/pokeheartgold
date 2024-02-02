@@ -87,7 +87,8 @@ BOOL ScrCmd_PalParkScoreGet(ScriptContext *ctx) {
     case 2:
         *retPtr = PalPark_CalcTypesScore(ctx->fieldSystem);
         break;
-    case 3: {
+    case 3:
+    {
         int val0 = PalPark_CalcTimeScore(ctx->fieldSystem);
         int val1 = PalPark_CalcSpeciesScore(ctx->fieldSystem);
         int val2 = PalPark_CalcTypesScore(ctx->fieldSystem);

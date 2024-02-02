@@ -78,7 +78,7 @@ _0223A05E:
 	ldr r0, _0223A0BC ; =ov80_0223A0EC
 	add r1, r4, #0
 	mov r2, #1
-	bl CreateVWaitSysTask
+	bl SysTask_CreateOnVWaitQueue
 	str r0, [r4, #0x34]
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -95,9 +95,9 @@ ov80_0223A0C0: ; 0x0223A0C0
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	add r4, r1, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, [r5, #0x34]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, [r5, #0x24]
 	bl NARC_Delete
 	ldr r1, [r5, #0xc]
@@ -1283,7 +1283,7 @@ ov80_0223A938: ; 0x0223A938
 	ldr r0, _0223AA44 ; =ov80_0223AA4C
 	ldr r2, _0223AA48 ; =0x0000044C
 	add r1, r5, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	mov r1, #5
 	lsl r1, r1, #6
 	str r0, [r5, r1]
@@ -1348,7 +1348,7 @@ ov80_0223AA80: ; 0x0223AA80
 	ldr r0, _0223AAC8 ; =ov80_0223AAD0
 	add r1, r4, #0
 	lsl r2, r2, #2
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r3, r4, r5, pc}
 _0223AAAE:
 	mov r0, #0x2e
@@ -1361,7 +1361,7 @@ _0223AAAE:
 	ldr r0, _0223AACC ; =ov80_0223AB34
 	add r1, r4, #0
 	lsl r2, r2, #2
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0223AAC8: .word ov80_0223AAD0
@@ -1418,7 +1418,7 @@ _0223AB00:
 _0223AB28:
 	mov r2, #1
 	strb r2, [r1, #8]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov80_0223AAD0
@@ -1471,7 +1471,7 @@ _0223AB60:
 _0223AB88:
 	mov r2, #1
 	strb r2, [r1, #8]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov80_0223AB34

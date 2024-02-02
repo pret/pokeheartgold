@@ -52,8 +52,8 @@
 .public Sprite_SetPositionXY
 .public Sprite_GetPositionXY
 .public Sprite_AddPositionXY
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2

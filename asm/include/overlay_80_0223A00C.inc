@@ -27,9 +27,9 @@
 .public UnkImageStruct_SetSpriteVisibleFlag
 .public UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 .public sub_0200E2B0
-.public CreateSysTask
-.public CreateVWaitSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_0200FBF4

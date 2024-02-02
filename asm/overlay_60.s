@@ -232,7 +232,7 @@ ov60_021E6CFC: ; 0x021E6CFC
 	ldr r0, [r6, r0]
 	cmp r0, #0
 	beq _021E6D38
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0x47
 	mov r1, #0
 	lsl r0, r0, #4
@@ -242,7 +242,7 @@ _021E6D38:
 	ldr r0, [r6, r0]
 	cmp r0, #0
 	beq _021E6D4A
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, _021E6DF0 ; =0x00000488
 	mov r1, #0
 	str r1, [r6, r0]
@@ -255,7 +255,7 @@ _021E6D50:
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _021E6D60
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, _021E6DF4 ; =0x000004AC
 	str r7, [r5, r0]
 _021E6D60:
@@ -271,7 +271,7 @@ _021E6D6E:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E6D7E
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, _021E6DF8 ; =0x00000588
 	str r7, [r4, r0]
 _021E6D7E:
@@ -283,7 +283,7 @@ _021E6D7E:
 	ldr r0, [r6, r0]
 	cmp r0, #0
 	beq _021E6D98
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, _021E6DFC ; =0x0000061C
 	mov r1, #0
 	str r1, [r6, r0]
@@ -596,7 +596,7 @@ ov60_021E6FD0: ; 0x021E6FD0
 	ldr r0, _021E6FF8 ; =ov60_021E6FFC
 	add r1, r5, #0
 	add r2, r4, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r5, #4]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -623,7 +623,7 @@ ov60_021E6FFC: ; 0x021E6FFC
 	mov r0, #0x1f
 	strb r0, [r4, #2]
 	ldr r0, [r4, #4]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	str r0, [r4, #4]
 	mov r0, #1
@@ -741,7 +741,7 @@ _021E70DE:
 	mov r0, #1
 	str r0, [r4, #4]
 	ldr r0, _021E711C ; =ov60_021E71CC
-	bl CreateVBlankSysTask
+	bl SysTask_CreateOnVBlankQueue
 	str r0, [r4, #0x10]
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -824,7 +824,7 @@ _021E718A:
 	mov r0, #1
 	str r0, [r4, #4]
 	ldr r0, _021E71C8 ; =ov60_021E7264
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #0x10]
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -883,7 +883,7 @@ _021E71F8:
 	cmp r4, r6
 	blt _021E7242
 	ldr r0, [r5, #0x10]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r1, #0
 	str r1, [r5, #0x10]
 	mov r0, #1
@@ -958,7 +958,7 @@ _021E7290:
 	cmp r4, r6
 	blt _021E72DA
 	ldr r0, [r5, #0x10]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r1, #0
 	str r1, [r5, #0x10]
 	mov r0, #1
@@ -1020,7 +1020,7 @@ ov60_021E7324: ; 0x021E7324
 	cmp r0, #0
 	beq _021E734A
 	ldr r0, [r4, #0x10]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r1, #0
 	str r1, [r4, #0x10]
 	mov r0, #1
@@ -1153,7 +1153,7 @@ _021E73E2:
 	ldr r0, _021E7430 ; =ov60_021E7454
 	add r1, r5, #0
 	mov r2, #0
-	bl CreateVBlankSysTask
+	bl SysTask_CreateOnVBlankQueue
 	str r0, [r5, #0xc]
 	add r0, r5, #0
 	add sp, #8
@@ -1244,7 +1244,7 @@ ov60_021E7454: ; 0x021E7454
 	cmp r1, r0
 	blt _021E74DC
 	ldr r0, [r5, #0xc]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r1, #0
 	str r1, [r5, #0xc]
 	mov r0, #1
@@ -1618,7 +1618,7 @@ _021E7778:
 	ldr r0, _021E7798 ; =ov60_021E77C0
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #8]
 	ldr r0, _021E779C ; =ov60_021E7864
 	add r1, r4, #0
@@ -1682,7 +1682,7 @@ ov60_021E77C0: ; 0x021E77C0
 	cmp r1, r0
 	blo _021E7850
 	ldr r0, [r4, #8]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	str r0, [r4, #8]
 	mov r1, #1
@@ -3449,7 +3449,7 @@ _021E8608:
 	ldr r0, [r5, #0x6c]
 	cmp r0, #0
 	beq _021E861A
-	bl DestroySysTask
+	bl SysTask_Destroy
 	str r7, [r5, #0x6c]
 _021E861A:
 	add r0, r4, #1
@@ -4062,7 +4062,7 @@ _021E8B14:
 	ldr r0, _021E8B54 ; =ov60_021E8B7C
 	add r1, r4, #0
 	str r6, [r4, #0x10]
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #8]
 	pop {r4, r5, r6, pc}
 	nop
@@ -4130,7 +4130,7 @@ ov60_021E8B7C: ; 0x021E8B7C
 	cmp r4, r6
 	blt _021E8BD0
 	ldr r0, [r5, #8]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r1, #0
 	str r1, [r5, #8]
 	mov r0, #1
@@ -6831,7 +6831,7 @@ _021EA28A:
 	ldr r0, [r5, #0x6c]
 	cmp r0, #0
 	beq _021EA298
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	str r0, [r5, #0x6c]
 _021EA298:
@@ -7686,7 +7686,7 @@ ov60_021EA990: ; 0x021EA990
 	ldr r0, _021EA9A4 ; =ov60_021EA9A8
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateVBlankSysTask
+	bl SysTask_CreateOnVBlankQueue
 	str r0, [r4, #0x6c]
 	pop {r4, pc}
 	.balign 4, 0
@@ -7735,7 +7735,7 @@ _021EA9DA:
 _021EAA00:
 	bl GfGfx_SwapDisplay
 	ldr r0, [r4, #0x6c]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	str r0, [r4, #0x6c]
 	pop {r4, pc}

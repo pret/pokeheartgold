@@ -75,8 +75,8 @@
 .public sub_0200DCA0
 .public UnkImageStruct_SetSpriteVisibleFlag
 .public UnkImageStruct_SetSpritePositionXY
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public sub_0200E398
 .public sub_0200E3D8
 .public sub_0200E640

@@ -326,7 +326,7 @@ _021EDCD8:
 	ldr r0, _021EDD64 ; =ov01_021EDE8C
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #4]
 	add sp, #0x14
 	pop {r3, r4, pc}
@@ -605,7 +605,7 @@ ov01_021EDF38: ; 0x021EDF38
 	ldr r0, [r0]
 	bl RemoveWindow
 	ldr r0, [r4, #4]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	bl ov01_021EDF00
 	pop {r4, pc}
@@ -804,7 +804,7 @@ _021EE08A:
 	ldr r0, _021EE0E8 ; =ov01_021EE49C
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #4]
 	add sp, #0x14
 	pop {r3, r4, pc}
@@ -977,7 +977,7 @@ _021EE1C2:
 	ldr r0, _021EE240 ; =ov01_021EE49C
 	add r1, r5, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r5, #4]
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
@@ -1444,7 +1444,7 @@ _021EE598:
 	bl DestroyMsgData
 _021EE5BE:
 	ldr r0, [r6, #4]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r6, #0
 	bl FreeToHeap
 	pop {r4, r5, r6, pc}
@@ -1630,7 +1630,7 @@ _021EE698:
 	ldr r0, _021EE750 ; =ov01_021EE7B8
 	add r1, r5, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r5, #4]
 	add sp, #0x18
 	pop {r4, r5, r6, pc}
@@ -1728,7 +1728,7 @@ _021EE7E4:
 	bl DestroyMsgData
 _021EE80A:
 	ldr r0, [r6, #4]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r6, #0
 	bl FreeToHeap
 _021EE816:
@@ -2040,7 +2040,7 @@ _021EE9B2:
 	ldr r0, _021EEA40 ; =ov01_021EDE8C
 	add r1, r5, #0
 	mov r2, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r5, #4]
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}

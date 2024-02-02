@@ -133,7 +133,7 @@ ov01_021FC748: ; 0x021FC748
 	ldr r0, _021FC768 ; =ov01_021FC798
 	mov r2, #0x80
 	str r6, [r1]
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021FC768: .word ov01_021FC798
@@ -164,7 +164,7 @@ ov01_021FC784: ; 0x021FC784
 	bl SysTask_GetData
 	bl FreeToHeap
 	add r0, r4, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r4, pc}
 	thumb_func_end ov01_021FC784
 

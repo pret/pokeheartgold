@@ -4384,7 +4384,7 @@ _021F6758:
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _021F676A:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov01_021F6620
@@ -4420,7 +4420,7 @@ ov01_021F676C: ; 0x021F676C
 	str r2, [r1, #0x20]
 	ldr r0, _021F67B0 ; =ov01_021F6620
 	mov r2, #1
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021F67B0: .word ov01_021F6620

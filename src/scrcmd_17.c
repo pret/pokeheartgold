@@ -141,7 +141,8 @@ BOOL ScrCmd_StrengthFlagAction(ScriptContext *ctx) {
     case FLAG_ACTION_CLEAR:
         StrengthFlagAction(state, FLAG_ACTION_CLEAR);
         break;
-    case FLAG_ACTION_CHECK: {
+    case FLAG_ACTION_CHECK:
+    {
         u16 *ret = ScriptGetVarPointer(ctx);
         *ret = StrengthFlagAction(state, FLAG_ACTION_CHECK);
         break;
@@ -162,7 +163,8 @@ BOOL ScrCmd_FlashAction(ScriptContext *ctx) {
     case FLAG_ACTION_CLEAR:
         SysFlagFlashClear(state);
         break;
-    case FLAG_ACTION_CHECK: {
+    case FLAG_ACTION_CHECK:
+    {
         u16 *ret = ScriptGetVarPointer(ctx);
         *ret = SysFlagFlashCheck(state);
         break;
@@ -184,7 +186,8 @@ BOOL ScrCmd_DefogAction(ScriptContext *ctx) {
     case FLAG_ACTION_CLEAR:
         SysFlagDefogClear(state);
         break;
-    case FLAG_ACTION_CHECK: {
+    case FLAG_ACTION_CHECK:
+    {
         u16 *ret = ScriptGetVarPointer(ctx);
         *ret = SysFlagDefogCheck(state);
         break;

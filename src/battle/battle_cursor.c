@@ -54,7 +54,7 @@ BattleCursor *BattleCursor_New(SpriteRenderer *renderer, SpriteGfxHandler *gfxHa
         UnkImageStruct_SetSpriteVisibleFlag(cursor->unk0[i], FALSE);
     }
 
-    cursor->task = CreateSysTask(BattleCursor_Update, cursor, 0x9C40);
+    cursor->task = SysTask_CreateOnMainQueue(BattleCursor_Update, cursor, 0x9C40);
 
     return cursor;
 }
@@ -64,7 +64,7 @@ void BattleCursor_Delete(BattleCursor *cursor) {
         sub_0200D9DC(cursor->unk0[i]);
     }
 
-    DestroySysTask(cursor->task);
+    SysTask_Destroy(cursor->task);
     FreeToHeap(cursor);
 }
 
