@@ -636,7 +636,7 @@ _0221EA92:
 _0221EA94:
 	add r0, r5, r0
 	mov r1, #0x20
-	bl sub_02003F04
+	bl TintPalette_GrayScale
 _0221EA9C:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}

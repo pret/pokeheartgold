@@ -650,7 +650,7 @@ _0222A32E:
 	str r0, [sp]
 	add r0, r5, #0
 	mov r2, #1
-	bl sub_02003DE8
+	bl BlendPalette
 	add r7, r7, #1
 	add r4, r4, #2
 	add r6, r6, #2

@@ -928,8 +928,9 @@ static int AlphPuzzleMainSeq_RotateTile_impl(AlphPuzzleData *data) {
         break;
     case 1:
     {
-        u16 temp = data->sceneTimer++;
-        sub_02024818(data->selectedTile->sprite, (u16)((u16)(temp << 0xb) + (data->selectedTile->rotation << 0xe)));
+        u16 rotationOffset = (data->sceneTimer++) * 0x800;
+        u16 rotation = data->selectedTile->rotation * 0x4000 + rotationOffset;
+        sub_02024818(data->selectedTile->sprite, rotation);
         if (data->sceneTimer >= 8) {
             data->subState++;
         }
@@ -985,13 +986,13 @@ static int AlphPuzzleMainSeq_Clear_impl(AlphPuzzleData *data) {
         data->subState++;
         break;
     case 1:
-        sub_02003E5C(data->palette, 2, 0x2b, 5, data->sceneTimer, 0x7FFF);
+        PaletteData_BlendPalette(data->palette, PLTTBUF_MAIN_OBJ, 0x2b, 5, data->sceneTimer, 0x7FFF);
         if (data->sceneTimer++ >= 15) {
             data->subState++;
         }
         break;
     case 2:
-        sub_02003E5C(data->palette, 2, 0x2b, 5, data->sceneTimer, 0x7FFF);
+        PaletteData_BlendPalette(data->palette, PLTTBUF_MAIN_OBJ, 0x2b, 5, data->sceneTimer, 0x7FFF);
         if (data->sceneTimer-- == 0) {
             data->subState++;
         }
@@ -1009,7 +1010,7 @@ static int AlphPuzzleMainSeq_Clear_impl(AlphPuzzleData *data) {
 static void AlphPuzzle_VBlankCB(void *dat) {
     AlphPuzzleData *data = dat;
     if (data->palette) {
-        sub_0200398C(data->palette);
+        PaletteData_PushTransparentBuffers(data->palette);
     }
     if (data->spriteRenderer) {
         thunk_OamManager_ApplyAndResetBuffers();
@@ -1104,13 +1105,13 @@ static void AlphPuzzle_LoadBackgroundGraphics(AlphPuzzleData *data) {
     NARC *narc = NARC_New(NARC_application_annon_puzzle_gra, data->heapId);
     data->palette = PaletteData_Init(data->heapId);
 
-    PaletteData_AllocBuffers(data->palette, 0, 256, data->heapId);
-    PaletteData_AllocBuffers(data->palette, 1, 256, data->heapId);
-    PaletteData_AllocBuffers(data->palette, 2, 256, data->heapId);
+    PaletteData_AllocBuffers(data->palette, PLTTBUF_MAIN_BG, 256, data->heapId);
+    PaletteData_AllocBuffers(data->palette, PLTTBUF_SUB_BG, 256, data->heapId);
+    PaletteData_AllocBuffers(data->palette, PLTTBUF_MAIN_OBJ, 256, data->heapId);
 
-    sub_02003220(data->palette, narc, NARC_puzzle_gra_puzzle_gra_00000010_NCLR, data->heapId, 0, 256, 0, 0);
-    sub_02003220(data->palette, narc, NARC_puzzle_gra_puzzle_gra_00000010_NCLR, data->heapId, 1, 256, 0, 0);
-    sub_02003220(data->palette, narc, NARC_puzzle_gra_puzzle_gra_00000000_NCLR, data->heapId, 2, 256, 0, 0);
+    PaletteData_LoadFromOpenNarc(data->palette, narc, NARC_puzzle_gra_puzzle_gra_00000010_NCLR, data->heapId, PLTTBUF_MAIN_BG, 256, 0, 0);
+    PaletteData_LoadFromOpenNarc(data->palette, narc, NARC_puzzle_gra_puzzle_gra_00000010_NCLR, data->heapId, PLTTBUF_SUB_BG, 256, 0, 0);
+    PaletteData_LoadFromOpenNarc(data->palette, narc, NARC_puzzle_gra_puzzle_gra_00000000_NCLR, data->heapId, PLTTBUF_MAIN_OBJ, 256, 0, 0);
 
     GfGfxLoader_LoadCharDataFromOpenNarc(narc, NARC_puzzle_gra_puzzle_gra_00000011_NCGR, data->bgConfig, GF_BG_LYR_SUB_3, 0, 0, 0, data->heapId);
     GfGfxLoader_LoadScrnDataFromOpenNarc(narc, NARC_puzzle_gra_puzzle_gra_00000014_NSCR, data->bgConfig, GF_BG_LYR_SUB_3, 0, 0, 0, data->heapId);
@@ -1122,19 +1123,19 @@ static void AlphPuzzle_LoadBackgroundGraphics(AlphPuzzleData *data) {
 
     NARC_Delete(narc);
 
-    PaletteData_LoadNarc(data->palette, NARC_a_0_3_8, data->frame + 26, data->heapId, 0, 32, 80);
-    PaletteData_LoadNarc(data->palette, NARC_graphic_font, 8, data->heapId, 0, 32, 64);
+    PaletteData_LoadNarc(data->palette, NARC_a_0_3_8, data->frame + 26, data->heapId, PLTTBUF_MAIN_BG, 32, 80);
+    PaletteData_LoadNarc(data->palette, NARC_graphic_font, 8, data->heapId, PLTTBUF_MAIN_BG, 32, 64);
 
     LoadUserFrameGfx2(data->bgConfig, GF_BG_LYR_MAIN_0, 1, 5, data->frame, data->heapId);
-    sub_02003B50(data->palette, 1);
-    sub_0200398C(data->palette);
+    PaletteData_SetAutoTransparent(data->palette, TRUE);
+    PaletteData_PushTransparentBuffers(data->palette);
 }
 
 static void AlphPuzzle_FreeBackgroundGraphics(AlphPuzzleData *data) {
     FreeToHeap(data->screenDataAlloc);
-    PaletteData_FreeBuffers(data->palette, 2);
-    PaletteData_FreeBuffers(data->palette, 1);
-    PaletteData_FreeBuffers(data->palette, 0);
+    PaletteData_FreeBuffers(data->palette, PLTTBUF_MAIN_OBJ);
+    PaletteData_FreeBuffers(data->palette, PLTTBUF_SUB_BG);
+    PaletteData_FreeBuffers(data->palette, PLTTBUF_MAIN_BG);
     PaletteData_Free(data->palette);
 }
 

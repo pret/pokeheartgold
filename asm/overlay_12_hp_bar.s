@@ -2715,7 +2715,7 @@ _02265CE8:
 	add r0, r6, #0
 	lsl r2, r2, #0x14
 	lsr r2, r2, #0x10
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 _02265D04:
@@ -2742,7 +2742,7 @@ _02265D1C:
 	add r0, r6, #0
 	lsl r2, r2, #0x14
 	lsr r2, r2, #0x10
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 _02265D38:

@@ -6,7 +6,7 @@
 .public FontID_String_GetWidthMultiline
 .public PaletteData_Init
 .public PaletteData_Free
-.public sub_02003F04
+.public TintPalette_GrayScale
 .public NARC_New
 .public NARC_Delete
 .public GfGfxLoader_GXLoadPal

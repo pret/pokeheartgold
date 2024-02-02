@@ -7,7 +7,7 @@
 .public FontID_Alloc
 .public FontID_Release
 .public LoadFontPal0
-.public sub_02003F04
+.public TintPalette_GrayScale
 .public GF_GetCurrentPlayingBGM
 .public sub_02004AD8
 .public sub_02004EC4

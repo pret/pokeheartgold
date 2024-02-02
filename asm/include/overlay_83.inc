@@ -9,7 +9,7 @@
 .public PaletteData_Free
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
-.public sub_0200398C
+.public PaletteData_PushTransparentBuffers
 .public PlaySE
 .public StopSE
 .public UnloadOverlayByID

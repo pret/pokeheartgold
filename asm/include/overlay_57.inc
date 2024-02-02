@@ -9,10 +9,10 @@
 .public PaletteData_FreeBuffers
 .public PaletteData_LoadFromNarc
 .public PaletteData_LoadNarc
-.public sub_02003370
-.public sub_0200398C
-.public sub_02003B44
-.public sub_02003B50
+.public PaletteData_BeginPaletteFade
+.public PaletteData_PushTransparentBuffers
+.public PaletteData_GetSelectedBuffersBitmask
+.public PaletteData_SetAutoTransparent
 .public PlaySE
 .public UnloadOverlayByID
 .public HandleLoadOverlay

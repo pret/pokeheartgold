@@ -483,7 +483,7 @@ ov86_021E5CDC: ; 0x021E5CDC
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E5CEE
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 _021E5CEE:
 	ldr r0, [r4, #0xc]
 	bl DoScheduledBgGpuUpdates

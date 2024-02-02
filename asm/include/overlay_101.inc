@@ -10,10 +10,10 @@
 .public FontID_Alloc
 .public FontID_Release
 .public FontID_String_GetWidth
-.public sub_02003220
-.public sub_0200398C
-.public sub_02003B50
-.public sub_02003E5C
+.public PaletteData_LoadFromOpenNarc
+.public PaletteData_PushTransparentBuffers
+.public PaletteData_SetAutoTransparent
+.public PaletteData_BlendPalette
 .public SndRadio_StartSeq
 .public SndRadio_StopSeq
 .public SndRadio_CountPlayingSeq

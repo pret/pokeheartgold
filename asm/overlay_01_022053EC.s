@@ -721,7 +721,7 @@ ov01_0220589C: ; 0x0220589C
 	add r0, r4, #0
 	add r0, #8
 	mov r1, #0x10
-	bl sub_02003F04
+	bl TintPalette_GrayScale
 	mov r0, #0
 	mov r1, #0x10
 	str r0, [sp]
@@ -1802,7 +1802,7 @@ _022061A6:
 	add r0, r4, #4
 	add r1, #0x44
 	mov r2, #0x20
-	bl sub_02003DE8
+	bl BlendPalette
 	ldr r0, [r6, #0x3c]
 	bl ov01_021F771C
 	add r6, r0, #0
@@ -1851,7 +1851,7 @@ _0220620C:
 	add r0, r4, #4
 	add r1, #0x44
 	mov r2, #0x20
-	bl sub_02003DE8
+	bl BlendPalette
 	ldr r0, [r6, #0x3c]
 	bl ov01_021F771C
 	add r6, r0, #0

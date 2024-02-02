@@ -83,7 +83,7 @@ ov89_02258800: ; 0x02258800
 	bl PaletteData_Init
 	str r0, [r5, #0xc]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r2, #2
 	ldr r0, [r5, #0xc]
 	mov r1, #0
@@ -109,7 +109,7 @@ ov89_02258800: ; 0x02258800
 	bl PaletteData_AllocBuffers
 	ldr r0, [r5, #0xc]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r0, #0x7d
 	bl BgConfig_Alloc
 	str r0, [r5, #8]
@@ -459,7 +459,7 @@ _02258C14:
 	ldr r0, [r4, #0xc]
 	mov r2, #9
 	mov r3, #1
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #8
 	str r0, [sp]
 	mov r0, #0
@@ -471,7 +471,7 @@ _02258C14:
 	mov r3, #0x10
 	lsl r2, r2, #0x14
 	lsr r2, r2, #0x10
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #3
 	str r0, [r5]
 	b _02258E4A
@@ -551,7 +551,7 @@ _02258CF0:
 	mov r1, #0
 	mov r2, #0xb0
 	mov r3, #0x40
-	bl sub_020032A4
+	bl PaletteData_LoadPaletteSlotFromHardware
 	ldr r0, [r4, #0x24]
 	bl YesNoPrompt_HandleInput
 	cmp r0, #1
@@ -596,7 +596,7 @@ _02258D36:
 	ldr r0, [r4, #0xc]
 	mov r2, #9
 	mov r3, #1
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -607,7 +607,7 @@ _02258D36:
 	mov r3, #0x10
 	lsl r2, r2, #0x14
 	lsr r2, r2, #0x10
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #2
 	str r0, [r5]
 	b _02258E4A
@@ -915,7 +915,7 @@ ov89_0225901C: ; 0x0225901C
 	bl GF_RunVramTransferTasks
 	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r0, [r4, #0xc]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r4, #8]
 	bl DoScheduledBgGpuUpdates
 	ldr r3, _02259054 ; =0x027E0000
@@ -1474,7 +1474,7 @@ _022594E8:
 	mov r1, #2
 	ldr r0, [r5, #0xc]
 	add r2, r1, #0
-	bl sub_02003D5C
+	bl PaletteData_FillPaletteInBuffer
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #1
@@ -2051,7 +2051,7 @@ _02259966:
 	ldr r1, [sp, #0x28]
 	add r1, r1, r2
 	mov r2, #1
-	bl sub_02003DE8
+	bl BlendPalette
 	ldr r0, [sp, #0x14]
 	add r0, #0x42
 	ldrh r1, [r0]
@@ -2777,7 +2777,7 @@ _02259F20:
 	ldr r0, [r4, #0xc]
 	mov r1, #1
 	mov r2, #2
-	bl sub_02003D5C
+	bl PaletteData_FillPaletteInBuffer
 _02259F7E:
 	ldr r0, _02259F98 ; =0x000005EB
 	bl PlaySE
@@ -3115,7 +3115,7 @@ ov89_0225A1D8: ; 0x0225A1D8
 	add r1, r5, r1
 	mov r2, #1
 	mov r3, #6
-	bl sub_02003DE8
+	bl BlendPalette
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0

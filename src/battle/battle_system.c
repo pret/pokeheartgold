@@ -256,9 +256,9 @@ int ov12_0223AAD8(BattleSystem *bsys, int a1) {
             break;
         }
     }
-    
+
     GF_ASSERT(battlerId < bsys->maxBattlers);
-    
+
     return battlerId;
 }
 
@@ -297,17 +297,17 @@ int BattleSystem_GetBattlerIdPartner(BattleSystem *bsys, int battlerId) {
     int battlerIdPartner;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     u32 battleType = BattleSystem_GetBattleType(bsys);
-    
+
     if (!(battleType & BATTLE_TYPE_DOUBLES)) {
         return battlerId;
     }
-    
+
     for (battlerIdPartner = 0; battlerIdPartner < maxBattlers; battlerIdPartner++) {
         if (battlerIdPartner != battlerId && BattleSystem_GetFieldSide(bsys, battlerIdPartner) == BattleSystem_GetFieldSide(bsys, battlerId)) {
             break;
         }
     }
-    
+
     return battlerIdPartner;
 }
 
@@ -315,17 +315,17 @@ int ov12_0223ABB8(BattleSystem *bsys, int battlerId, int side) {
     int battlerIdOpponent;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     u32 battleType = BattleSystem_GetBattleType(bsys);
-    
+
     if (!(battleType & BATTLE_TYPE_DOUBLES)) {
         return battlerId ^ 1;
     }
-    
+
     for (battlerIdOpponent = 0; battlerIdOpponent < maxBattlers; battlerIdOpponent++) {
         if (battlerIdOpponent != battlerId && (ov12_0223AB0C(bsys, battlerIdOpponent) & 2) == side && BattleSystem_GetFieldSide(bsys, battlerIdOpponent) != BattleSystem_GetFieldSide(bsys, battlerId)) {
             break;
         }
     }
-    
+
     return battlerIdOpponent;
 }
 
@@ -337,7 +337,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
     int index1 = ov12_022581D4(bsys, ctx, 2, battlerId);
     int index2;
     int friendship;
-    
+
     if (BattleSystem_GetBattleType(bsys) == (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TRAINER) || ((BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_INGAME_PARTNER) && !(ov12_0223AB0C(bsys, battlerId) & 1))) {
         index2 = ov12_022581D4(bsys, ctx, 2, BattleSystem_GetBattlerIdPartner(bsys, battlerId));
         if (index2 == selectedMonIndex) {
@@ -348,7 +348,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
     }
     mon = BattleSystem_GetPartyMon(bsys, battlerId, selectedMonIndex);
     friendship = 0;
-    
+
     if (GetItemAttr(item, ITEMATTR_SLP_HEAL, HEAP_ID_BATTLE)) {
         data = GetMonData(mon, MON_DATA_STATUS, NULL);
         if (data & STATUS_SLEEP) {
@@ -463,7 +463,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
             }
         }
     }
-  
+
     if (GetItemAttr(item, ITEMATTR_DEF_STAGES, HEAP_ID_BATTLE)) {
         if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
             if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_DEF, NULL) < STAT_UP_6) {
@@ -471,8 +471,8 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
                 ret = TRUE;
             }
         }
-    }  
-    
+    }
+
     if (GetItemAttr(item, ITEMATTR_SPATK_STAGES, HEAP_ID_BATTLE)) {
         if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
             if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPATK, NULL) < STAT_UP_6) {
@@ -481,7 +481,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
             }
         }
     }
-    
+
     if (GetItemAttr(item, ITEMATTR_SPDEF_STAGES, HEAP_ID_BATTLE)) {
         if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
             if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_SPDEF, NULL) < STAT_UP_6) {
@@ -499,7 +499,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
             }
         }
     }
-    
+
     if (GetItemAttr(item, ITEMATTR_ACCURACY_STAGES, HEAP_ID_BATTLE)) {
         if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
             if (GetBattlerVar(ctx, battlerId, BMON_DATA_STAT_CHANGE_ACC, NULL) < STAT_UP_6) {
@@ -508,7 +508,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
             }
         }
     }
-    
+
     if (GetItemAttr(item, ITEMATTR_CRITRATE_STAGES, HEAP_ID_BATTLE)) {
         if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
             data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL);
@@ -519,7 +519,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
             }
         }
     }
-    
+
     if (GetItemAttr(item, ITEMATTR_PP_RESTORE, HEAP_ID_BATTLE)) {
         data = GetItemAttr(item, ITEMATTR_PP_RESTORE_PARAM, HEAP_ID_BATTLE);
         if (GetMonData(mon, MON_DATA_MOVE1PP + movePos, NULL) != GetMonData(mon, MON_DATA_MOVE1MAXPP + movePos, NULL)) {
@@ -547,7 +547,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
             }
         }
     }
-    
+
     if (GetItemAttr(item, ITEMATTR_HP_RESTORE, HEAP_ID_BATTLE)) {
         data = 0;
         if (GetItemAttr(item, ITEMATTR_REVIVE, HEAP_ID_BATTLE)) {
@@ -589,7 +589,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
             ret = TRUE;
         }
     }
-    
+
     if (GetItemAttr(item, ITEMATTR_FRIENDSHIP_MOD_LO, HEAP_ID_BATTLE)) {
         if (GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) < 100 && ret == TRUE) {
             friendship = GetItemAttr(item, ITEMATTR_FRIENDSHIP_MOD_LO_PARAM, HEAP_ID_BATTLE);
@@ -607,7 +607,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
             friendship = GetItemAttr(item, ITEMATTR_FRIENDSHIP_MOD_HI_PARAM, HEAP_ID_BATTLE);
         }
     }
-    
+
     if (friendship) {
         if (friendship > 0) {
             if (BallToItemId(BattleSystem_GetMonBall(bsys, mon)) == ITEM_LUXURY_BALL) {
@@ -630,7 +630,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
     if (ret == TRUE) {
         ApplyItemEffectOnMonMood(mon, item);
     }
-    
+
     return ret;
 }
 
@@ -644,7 +644,7 @@ int BattleSystem_GetTimezone(BattleSystem *bsys) {
 
 int ov12_0223B52C(BattleSystem *bsys) {
     int ret;
-    
+
     switch (bsys->unk2404) {
     case 0:
     case 1:
@@ -670,13 +670,13 @@ int ov12_0223B52C(BattleSystem *bsys) {
         ret = 0;
         break;
     }
-    
+
     return ret;
 }
 
 u8 ov12_0223B580(BattleSystem *bsys, int battlerId, u8 a2) {
     u16 item;
-    
+
     if (ov12_0223AB0C(bsys, battlerId) == 4 && !(bsys->battleType & BATTLE_TYPE_MULTI)) {
         if (bsys->battleType & BATTLE_TYPE_LINK) {
             if (!(a2 & MaskOfFlagNo(BattleSystem_GetBattlerIdPartner(bsys, battlerId)))) {
@@ -697,11 +697,11 @@ u8 ov12_0223B580(BattleSystem *bsys, int battlerId, u8 a2) {
 u16 BattleSystem_CheckEvolution(BattleSetup *setup, int *selectedMonIndex, int *evolutionCondition) {
     Pokemon *mon;
     u16 species = 0;
-    
+
     if (setup->winFlag != BATTLE_OUTCOME_WIN && setup->winFlag != BATTLE_OUTCOME_MON_CAUGHT && setup->winFlag != BATTLE_OUTCOME_PLAYER_FLED) {
         return 0;
     }
-    
+
     while (setup->levelUpFlag) {
         for (*selectedMonIndex = 0; *selectedMonIndex < PARTY_SIZE; (*selectedMonIndex)++) {
             if (setup->levelUpFlag & MaskOfFlagNo(*selectedMonIndex)) {
@@ -782,11 +782,11 @@ void BattleSystem_TryChangeForm(BattleSystem *bsys) {
     AlternateForms form;
     Pokemon *mon;
     u16 species;
-    
+
     if (bsys->battleType & BATTLE_TYPE_NO_EXP) {
         return;
     }
-    
+
     for (i = 0; i < BattleSystem_GetPartySize(bsys, BATTLER_PLAYER); i++) {
         mon = BattleSystem_GetPartyMon(bsys, BATTLER_PLAYER, i);
         species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL);
@@ -835,7 +835,7 @@ void ov12_0223B854(BattleSystem *bsys, int battlerId, int selectedMonIndex) {
 
 //used to be related to poketch in dppt
 void ov12_0223B870() {
-    
+
 }
 
 void BattleSystem_SetBackground(BattleSystem *bsys) {
@@ -844,19 +844,19 @@ void BattleSystem_SetBackground(BattleSystem *bsys) {
     u8 *vram;
     u32* src;
     u32* dst;
-    
+
     bsys->unk230 = AllocFromHeap(HEAP_ID_BATTLE, 0x10000);
     bsys->unk234 = AllocFromHeap(HEAP_ID_BATTLE, 0x200);
-    
+
     MIi_CpuCopy32((void *)0x6010000, (u32 *)bsys->unk230, 0x10000);
     dst = (u32 *)bsys->unk234;
-    src = (u32 *)PaletteData_GetUnfadedBuf(bsys->palette, 0);
+    src = (u32 *)PaletteData_GetUnfadedBuf(bsys->palette, PLTTBUF_MAIN_BG);
     MIi_CpuCopy32(src, dst, 0x200);
 
     vram = (u8 *)0x6400000;
     image = sub_02024B1C(bsys->unk17C[1].unk0->sprite);
     vram += image->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN];
-    
+
     for (bgY = 20; bgY < 28; bgY++) {
         for (bgX = 16; bgX < 32; bgX++) {
             objX = bgX - 16;
@@ -879,11 +879,11 @@ void BattleSystem_SetBackground(BattleSystem *bsys) {
             }
         }
     }
-    
+
     vram = (u8 *)0x6400000;
     image = sub_02024B1C(bsys->unk17C[0].unk0->sprite);
     vram += image->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN];
-    
+
     for (i = 0; i < 0x800; i++) {
         if (i & 1) {
             data = (vram[i / 2] & 0xF0) >> 4;
@@ -894,7 +894,7 @@ void BattleSystem_SetBackground(BattleSystem *bsys) {
             bsys->unk230[0x9800 + i] = data + 0x70;
         }
     }
-    
+
     for (bgY = 28; bgY < 32; bgY++) {
         for (bgX = 0; bgX < 24; bgX++) {
             objX = bgX;
@@ -911,9 +911,9 @@ void BattleSystem_SetBackground(BattleSystem *bsys) {
             }
         }
     }
-    
+
     BG_LoadCharTilesData(bsys->bgConfig, 3, bsys->unk230, 0x10000, 0);
-    
+
     ov12_02266008(&bsys->unk17C[0]);
     ov12_02266008(&bsys->unk17C[1]);
 }
@@ -1035,7 +1035,7 @@ BattleHpBar *BattleSystem_GetHpBar(BattleSystem *bsys, int battlerId) {
 void BattleSystem_HpBar_Init(BattleSystem *bsys) {
     int i;
     BattleHpBar *hpBar;
-    
+
     for (i = 0; i < bsys->maxBattlers; i++) {
         hpBar = OpponentData_GetHpBar(bsys->opponentData[i]);
         hpBar->bsys = bsys;
@@ -1048,7 +1048,7 @@ void BattleSystem_HpBar_Init(BattleSystem *bsys) {
 void BattleSystem_SetHpBarEnabled(BattleSystem *bsys) {
     int i;
     BattleHpBar *hpBar;
-    
+
     for (i = 0; i < bsys->maxBattlers; i++) {
         hpBar = OpponentData_GetHpBar(bsys->opponentData[i]);
         if (hpBar->hp) {
@@ -1060,7 +1060,7 @@ void BattleSystem_SetHpBarEnabled(BattleSystem *bsys) {
 void BattleSystem_SetHpBarDisabled(BattleSystem *bsys) {
     int i;
     BattleHpBar *hpBar;
-    
+
     for (i = 0; i < bsys->maxBattlers; i++) {
         hpBar = OpponentData_GetHpBar(bsys->opponentData[i]);
         BattleHpBar_SetEnabled(hpBar, FALSE);
@@ -1089,7 +1089,7 @@ u8 BattleSystem_GetCriticalHpMusicFlag(BattleSystem *bsys) {
     return bsys->criticalHpMusic;
 }
 
-u8 BattleSystem_SetCriticalHpMusicFlag(BattleSystem *bsys, u8 flag) {
+void BattleSystem_SetCriticalHpMusicFlag(BattleSystem *bsys, u8 flag) {
     bsys->criticalHpMusic = flag;
 }
 
@@ -1143,7 +1143,7 @@ u8 ov12_0223BE68(BattleSystem *bsys, u8 *buffer) {
     u8 i;
     u8 battlerId;
     u8 index = 0;
-    
+
     for (battlerId = 0; battlerId < bsys->maxBattlers; battlerId++) {
         if (bsys->unk245C[battlerId] != bsys->unk244C[battlerId]) {
             buffer[index++] = battlerId;
@@ -1154,9 +1154,9 @@ u8 ov12_0223BE68(BattleSystem *bsys, u8 *buffer) {
             bsys->unk244C[battlerId] = bsys->unk245C[battlerId];
         }
     }
-    
+
     GF_ASSERT(index <= 28);
-    
+
     return index;
 }
 
@@ -1165,15 +1165,15 @@ void ov12_0223BF14(BattleSystem *bsys, u16 size, u8 *buffer) {
     u8 battlerId;
     u8 byte;
     u8 index = 0;
-    
+
     if (!(bsys->battleType & BATTLE_TYPE_LINK)) {
         return;
     }
-    
+
     if (bsys->unk23FC) {
         return;
     }
-    
+
     while (size) {
         battlerId = ov12_0223BFB0(buffer, &index, &size);
         byte = ov12_0223BFB0(buffer, &index, &size);
@@ -1206,13 +1206,13 @@ BOOL ov12_0223BFEC(BattleSystem *bsys) {
 }
 
 void ov12_0223BFFC(BattleSystem *bsys, u32 flag) {
-    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) || 
+    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) ||
         bsys->unk2474_0 ||
         ov12_022581D4(bsys, bsys->ctx, 13, 0) == 44 ||
         ov12_022581D4(bsys, bsys->ctx, 14, 0) == 44) {
         return;
     }
-    
+
     ov12_0226AA8C(bsys->unk19C, flag);
     BeginNormalPaletteFade(3, 0, 0, 0, 16, 2, HEAP_ID_BATTLE);
     Sound_Stop();
@@ -1221,7 +1221,7 @@ void ov12_0223BFFC(BattleSystem *bsys, u32 flag) {
 }
 
 BOOL ov12_0223C080(BattleSystem *bsys) {
-    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) || 
+    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDED) ||
         bsys->unk2474_0 ||
         ov12_022581D4(bsys, bsys->ctx, 13, 0) == 44 ||
         ov12_022581D4(bsys, bsys->ctx, 14, 0) == 44) {
@@ -1259,7 +1259,7 @@ u8 ov12_0223C140(BattleSystem *bsys, u32 battlerId) {
     if (bsys->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_SAFARI | BATTLE_TYPE_TOWER | BATTLE_TYPE_PAL_PARK)) {
         return 0xFF;
     }
-    
+
     if ((bsys->battleType & BATTLE_TYPE_DOUBLES) && (ov12_0223AB0C(bsys, battlerId) & 1)) {
         return 0xFF;
     }
@@ -1282,11 +1282,11 @@ void ov12_0223C1A0(BattleSystem *bsys, u8 *buffer) {
 
 void ov12_0223C1C4(BattleSystem *bsys, u8 *buffer) {
     int i;
-    
+
     for (i = 0; i < 4; i++) {
         buffer[i] = 0xFF;
     }
-    
+
     for (i = 0; i < bsys->maxBattlers; i++) {
         buffer[i] = ov12_02261258(bsys->opponentData[i]);
     }
@@ -1294,11 +1294,11 @@ void ov12_0223C1C4(BattleSystem *bsys, u8 *buffer) {
 
 void ov12_0223C1F4(BattleSystem *bsys, void **a1) {
     int i;
-    
+
     for (i = 0; i < 4; i++) {
         a1[i] = NULL;
     }
-    
+
     for (i = 0; i < bsys->maxBattlers; i++) {
         a1[i] = ov12_02261270(bsys->opponentData[i]);
     }
@@ -1307,7 +1307,7 @@ void ov12_0223C1F4(BattleSystem *bsys, void **a1) {
 void ov12_0223C224(BattleSystem *bsys, int a1) {
     int i;
     BattleHpBar *hpBar;
-    
+
     for (i = 0; i < bsys->maxBattlers; i++) {
         hpBar = OpponentData_GetHpBar(bsys->opponentData[i]);
         ov12_02264EE0(hpBar, a1);
@@ -1324,11 +1324,11 @@ u32 CalcMoneyLoss(Party *party, PlayerProfile *profile) {
     }
     u32 loss = Party_GetMaxLevel(party) * 4 * sBadgePenalty[badgeCount];
     u32 money = PlayerProfile_GetMoney(profile);
-    
+
     if (loss > money) {
         loss = money;
     }
-    
+
     return loss;
 }
 
@@ -1348,7 +1348,7 @@ void BattleSystem_SetPokedexSeen(BattleSystem *bsys, int battlerId) {
 
 void BattleSystem_SetPokedexCaught(BattleSystem *bsys, int battlerId) {
     u32 flag = ov12_02261258(bsys->opponentData[battlerId]);
-    
+
     if (!(bsys->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_TOWER)) && (flag & 1)) {
         int selectedMonIndex = ov12_022581D4(bsys, bsys->ctx, 2, battlerId);
         Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, selectedMonIndex);
@@ -1367,7 +1367,7 @@ void BattleSystem_SetDefaultBlend() {
 u8 BattleSystem_PrintTrainerMessage(BattleSystem *bsys, int trainerId, int battlerId, int a2, int delay) {
     Window *window = BattleSystem_GetWindow(bsys, 0);
     int index;
-    
+
     if (bsys->battleType & BATTLE_TYPE_TOWER) {
         if (trainerId == 0x2710 || bsys->battleType & BATTLE_TYPE_13) {
             String *msg;
@@ -1387,25 +1387,25 @@ u8 BattleSystem_PrintTrainerMessage(BattleSystem *bsys, int trainerId, int battl
             int stringId;
             u32 msgId;
             int i;
-    
+
             if (a2 == 0x64) {
                 stringId = trainerId * 3 + 1;
             } else {
                 stringId = trainerId * 3 + 2;
             }
-            
+
             for (i = 0; i < 4; i++) {
                 if (PlayerProfile_GetVersion(bsys->playerProfile[i]) == 0) {
                     break;
                 }
             }
-    
+
             if (i == 4) {
                 msgId = msg_0197_00724;
             } else {
                 msgId = msg_0197_00723;
             }
-    
+
             data = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msgId, HEAP_ID_BATTLE);
             msg = NewString_ReadMsgData(data, stringId);
             FillWindowPixelBuffer(window, 0xFF);
@@ -1433,38 +1433,38 @@ u32 BattleSystem_PrintBattleMessage(BattleSystem *bsys, MsgData *data, BattleMes
 
 u32 ov12_0223C4E8(BattleSystem *bsys, Window *window, MsgData *data, BattleMessage *msg, int x, int y, int flag, int width, int delay) {
     int dx;
-    
+
     BattleSystem_AdjustMessageForSide(bsys, msg);
     BattleSystem_BufferMessage(bsys, msg);
     BattleMessage_ExpandPlaceholders(bsys, data, msg);
-    
+
     if (flag & 1) {
         FillWindowPixelBuffer(window, 0xFF);
     }
-    
+
     if (flag & 2) {
-        dx = width - FontID_String_GetWidth(0, bsys->msgBuffer, 0);  
+        dx = width - FontID_String_GetWidth(0, bsys->msgBuffer, 0);
     } else {
         dx = 0;
     }
-    
+
     return AddTextPrinterParameterized(window, 0, bsys->msgBuffer, x + dx, y, delay, ov12_0223CF14);
 }
 
 static void BattleSystem_AdjustMessageForSide(BattleSystem *bsys, BattleMessage *msg) {
     u32 battleType = BattleSystem_GetBattleType(bsys);
-    
+
     if (msg->tag & 0x80) {
         return;
     }
-    
+
     if (msg->tag & 0x40) {
         if (BattleSystem_GetFieldSide(bsys, msg->battlerId)) {
             msg->id++;
         }
         return;
     }
-    
+
     switch (msg->tag & 0x3F) {
     case TAG_NONE:
     case TAG_MOVE:
@@ -1644,23 +1644,23 @@ static void BattleSystem_BufferMessage(BattleSystem *bsys, BattleMessage *msg) {
         BattleMessage_BufferNickname(bsys, 0, msg->param[0]);
         BattleMessage_BufferPoffin(bsys, 1, msg->param[1]);
         break;
-    case TAG_NICKNAME_NUM: 
+    case TAG_NICKNAME_NUM:
         BattleMessage_BufferNickname(bsys, 0, msg->param[0]);
         BattleMessage_BufferNumber(bsys, 1, msg->param[1]);
         break;
-    case TAG_NICKNAME_TRNAME: 
+    case TAG_NICKNAME_TRNAME:
         BattleMessage_BufferNickname(bsys, 0, msg->param[0]);
         BattleMessage_BufferTrainerName(bsys, 1, msg->param[1]);
         break;
-    case TAG_NICKNAME_BOX: 
+    case TAG_NICKNAME_BOX:
         BattleMessage_BufferNickname(bsys, 0, msg->param[0]);
-        BattleMessage_BufferBoxName(bsys, 1, msg->param[1]);    
+        BattleMessage_BufferBoxName(bsys, 1, msg->param[1]);
         break;
-    case TAG_MOVE_NICKNAME: 
+    case TAG_MOVE_NICKNAME:
         BattleMessage_BufferMove(bsys, 0, msg->param[0]);
         BattleMessage_BufferNickname(bsys, 1, msg->param[1]);
-        break;    
-    case TAG_MOVE_MOVE: 
+        break;
+    case TAG_MOVE_MOVE:
         BattleMessage_BufferMove(bsys, 0, msg->param[0]);
         BattleMessage_BufferMove(bsys, 1, msg->param[1]);
         break;
@@ -1691,7 +1691,7 @@ static void BattleSystem_BufferMessage(BattleSystem *bsys, BattleMessage *msg) {
     case TAG_TRNAME_NUM:
         BattleMessage_BufferTrainerName(bsys, 0, msg->param[0]);
         BattleMessage_BufferNumber(bsys, 1, msg->param[1]);
-        break;    
+        break;
     case TAG_TRCLASS_TRNAME:
         BattleMessage_BufferTrainerClass(bsys, 0, msg->param[0]);
         BattleMessage_BufferTrainerName(bsys, 1, msg->param[1]);
@@ -1885,7 +1885,7 @@ static void BattleMessage_BufferNumbers(BattleSystem *bsys, int bufferIndex, int
     } else {
         BufferIntegerAsString(bsys->msgFormat, bufferIndex, param, 5, PRINTING_MODE_RIGHT_ALIGN, TRUE);
     }
-    
+
 }
 
 static void BattleMessage_BufferType(BattleSystem *bsys, int bufferIndex, int param) {
@@ -1939,7 +1939,7 @@ static void BattleMessage_ExpandPlaceholders(BattleSystem *bsys, MsgData *data, 
 
 static BOOL ov12_0223CF14(struct TextPrinterTemplate *template, u16 glyphId) {
     BOOL ret = FALSE;
-    
+
     switch (glyphId) {
     case 1:
         ret = GF_IsAnySEPlaying();
@@ -1959,6 +1959,6 @@ static BOOL ov12_0223CF14(struct TextPrinterTemplate *template, u16 glyphId) {
     default:
         break;
     }
-    
+
     return ret;
 }

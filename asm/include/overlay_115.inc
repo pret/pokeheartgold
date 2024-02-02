@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_02003DE8
+.public BlendPalette
 .public GfGfxLoader_GetPlttData
 .public GfGfxLoader_GXLoadPalFromOpenNarc
 .public SetBlendBrightness
