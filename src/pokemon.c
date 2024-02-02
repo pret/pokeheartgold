@@ -3042,26 +3042,26 @@ u16 GetEggSpecies(u16 species) {
 
 void InitBoxMonMoveset(BoxPokemon *boxMon) {
     BOOL decry;
-    u16 * wotbl;
+    u16 *levelUpLearnset;
     int i;
     u16 species;
     u32 form;
     u8 level;
     u16 move;
-    wotbl = AllocFromHeap(HEAP_ID_DEFAULT, 22 * sizeof(u16));
+    levelUpLearnset = AllocFromHeap(HEAP_ID_DEFAULT, 22 * sizeof(u16));
     decry = AcquireBoxMonLock(boxMon);
     species = (u16)GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
     form = GetBoxMonData(boxMon, MON_DATA_FORM, NULL);
     level = (u8)CalcBoxMonLevel(boxMon);
-    LoadWotbl_HandleAlternateForm(species, (int)form, wotbl);
-    for (i = 0; wotbl[i] != WOTBL_END; i++) {
-        if ((wotbl[i] & WOTBL_LEVEL_MASK) > (level << WOTBL_LEVEL_SHIFT))
+    LoadLevelUpLearnset_HandleAlternateForm(species, (int)form, levelUpLearnset);
+    for (i = 0; levelUpLearnset[i] != LEVEL_UP_LEARNSET_END; i++) {
+        if ((levelUpLearnset[i] & LEVEL_UP_LEARNSET_LEVEL_MASK) > (level << LEVEL_UP_LEARNSET_LEVEL_SHIFT))
             break;
-        move = WOTBL_MOVE(wotbl[i]);
+        move = LEVEL_UP_LEARNSET_MOVE(levelUpLearnset[i]);
         if (TryAppendBoxMonMove(boxMon, move) == MOVE_APPEND_FULL)
             DeleteBoxMonFirstMoveAndAppend(boxMon, move);
     }
-    FreeToHeap(wotbl);
+    FreeToHeap(levelUpLearnset);
     ReleaseBoxMonLock(boxMon, decry);
 }
 
@@ -3147,29 +3147,29 @@ void BoxMonSetMoveInSlot(BoxPokemon *boxMon, u16 move, u8 slot) {
 
 u32 MonTryLearnMoveOnLevelUp(Pokemon *mon, int * last_i, u16 * sp0) {
     u32 ret = 0;
-    u16 * wotbl = AllocFromHeap(HEAP_ID_DEFAULT, 22 * sizeof(u16));
+    u16 *levelUpLearnset = AllocFromHeap(HEAP_ID_DEFAULT, 22 * sizeof(u16));
     u16 species = (u16)GetMonData(mon, MON_DATA_SPECIES, NULL);
     u32 form = GetMonData(mon, MON_DATA_FORM, NULL);
     u8 level = (u8)GetMonData(mon, MON_DATA_LEVEL, NULL);
-    LoadWotbl_HandleAlternateForm(species, (int)form, wotbl);
+    LoadLevelUpLearnset_HandleAlternateForm(species, (int)form, levelUpLearnset);
 
-    if (wotbl[*last_i] == WOTBL_END) {
-        FreeToHeap(wotbl);
+    if (levelUpLearnset[*last_i] == LEVEL_UP_LEARNSET_END) {
+        FreeToHeap(levelUpLearnset);
         return 0;
     }
-    while ((wotbl[*last_i] & WOTBL_LEVEL_MASK) != (level << WOTBL_LEVEL_SHIFT)) {
+    while ((levelUpLearnset[*last_i] & LEVEL_UP_LEARNSET_LEVEL_MASK) != (level << LEVEL_UP_LEARNSET_LEVEL_SHIFT)) {
         (*last_i)++;
-        if (wotbl[*last_i] == WOTBL_END) {
-            FreeToHeap(wotbl);
+        if (levelUpLearnset[*last_i] == LEVEL_UP_LEARNSET_END) {
+            FreeToHeap(levelUpLearnset);
             return 0;
         }
     }
-    if ((wotbl[*last_i] & WOTBL_LEVEL_MASK) == (level << WOTBL_LEVEL_SHIFT)) {
-        *sp0 = WOTBL_MOVE(wotbl[*last_i]);
+    if ((levelUpLearnset[*last_i] & LEVEL_UP_LEARNSET_LEVEL_MASK) == (level << LEVEL_UP_LEARNSET_LEVEL_SHIFT)) {
+        *sp0 = LEVEL_UP_LEARNSET_MOVE(levelUpLearnset[*last_i]);
         (*last_i)++;
         ret = TryAppendMonMove(mon, *sp0);
     }
-    FreeToHeap(wotbl);
+    FreeToHeap(levelUpLearnset);
     return ret;
 }
 
@@ -3304,12 +3304,12 @@ s8 GetFlavorPreferenceFromPID(u32 personality, int flavor) {
 
 int Species_LoadLearnsetTable(u32 species, u32 form, u16 * dest) {
     int i;
-    u16 * wotbl = AllocFromHeap(HEAP_ID_DEFAULT, 22 * sizeof(u16));
-    LoadWotbl_HandleAlternateForm(species, (int)form, wotbl);
-    for (i = 0; wotbl[i] != WOTBL_END; i++) {
-        dest[i] = WOTBL_MOVE(wotbl[i]);
+    u16 *levelUpLearnset = AllocFromHeap(HEAP_ID_DEFAULT, 22 * sizeof(u16));
+    LoadLevelUpLearnset_HandleAlternateForm(species, (int)form, levelUpLearnset);
+    for (i = 0; levelUpLearnset[i] != LEVEL_UP_LEARNSET_END; i++) {
+        dest[i] = LEVEL_UP_LEARNSET_MOVE(levelUpLearnset[i]);
     }
-    FreeToHeap(wotbl);
+    FreeToHeap(levelUpLearnset);
     return i;
 }
 
@@ -3670,8 +3670,8 @@ BOOL Mon_UpdateRotomForm(Pokemon *mon, int form, int defaultSlot) {
     return TRUE;
 }
 
-void LoadWotbl_HandleAlternateForm(int species, int form, u16 * wotbl) {
-    ReadWholeNarcMemberByIdPair(wotbl, NARC_poketool_personal_wotbl, ResolveMonForm(species, form));
+void LoadLevelUpLearnset_HandleAlternateForm(int species, int form, u16 *levelUpLearnset) {
+    ReadWholeNarcMemberByIdPair(levelUpLearnset, NARC_poketool_personal_wotbl, ResolveMonForm(species, form));
 }
 
 void sub_02071FDC(SOUND_CHATOT *r6, u32 r5, u16 r4, s32 unused, s32 sp18, u32 sp1C, u32 sp20, u32 sp24) {

@@ -22,19 +22,19 @@ u16 *MoveRelearner_GetEligibleLevelUpMoves(Pokemon *mon, HeapID heapId) {
         moves[i] = (u16)GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
     }
 
-    u16 *tableFromFile = AllocFromHeap(heapId, WOTBL_MAX * 2);
-    u16 *returnTable = AllocFromHeap(heapId, WOTBL_MAX * 2);
+    u16 *tableFromFile = AllocFromHeap(heapId, LEVEL_UP_LEARNSET_MAX * 2);
+    u16 *returnTable = AllocFromHeap(heapId, LEVEL_UP_LEARNSET_MAX * 2);
 
-    LoadWotbl_HandleAlternateForm(species, form, tableFromFile);
+    LoadLevelUpLearnset_HandleAlternateForm(species, form, tableFromFile);
 
-    for (u8 i = 0, j, k = 0; i < WOTBL_MAX; i++) {
-        if (tableFromFile[i] == WOTBL_END) {
-            returnTable[k] = WOTBL_END;
+    for (u8 i = 0, j, k = 0; i < LEVEL_UP_LEARNSET_MAX; i++) {
+        if (tableFromFile[i] == LEVEL_UP_LEARNSET_END) {
+            returnTable[k] = LEVEL_UP_LEARNSET_END;
             break;
-        } else if (WOTBL_LVL(tableFromFile[i]) > level) {
+        } else if (LEVEL_UP_LEARNSET_LVL(tableFromFile[i]) > level) {
             continue;
         } else {
-            tableFromFile[i] = WOTBL_MOVE(tableFromFile[i]);
+            tableFromFile[i] = LEVEL_UP_LEARNSET_MOVE(tableFromFile[i]);
             for (j = 0; j < MAX_MON_MOVES; j++) {
                 if (tableFromFile[i] == moves[j]) {
                     break;
@@ -58,5 +58,5 @@ u16 *MoveRelearner_GetEligibleLevelUpMoves(Pokemon *mon, HeapID heapId) {
 }
 
 BOOL sub_0209186C(const u16 *ptr) { //MoveRelearner_IsValidMove?
-    return *ptr != WOTBL_END;
+    return *ptr != LEVEL_UP_LEARNSET_END;
 }
