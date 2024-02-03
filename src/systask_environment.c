@@ -15,7 +15,7 @@ SysTask *CreateSysTaskAndEnvironment(SysTaskFunc function, u32 environmentSize, 
         environment = NULL;
     }
 
-    return CreateSysTask(function, environment, priority);
+    return SysTask_CreateOnMainQueue(function, environment, priority);
 }
 
 void DestroySysTaskAndEnvironment(SysTask *task) {
@@ -24,5 +24,5 @@ void DestroySysTaskAndEnvironment(SysTask *task) {
         FreeToHeap(environment);
     }
 
-    DestroySysTask(task);
+    SysTask_Destroy(task);
 }

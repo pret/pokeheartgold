@@ -148,7 +148,7 @@ u8 PaletteData_BeginPaletteFade(PaletteData *data, u16 toSelect, u16 opaqueBit, 
             data->callbackFlag = TRUE;
             data->selectedFlag = 1;
             data->forceExit = FALSE;
-            CreateSysTask(SysTask_TimedPaletteFade, data, -2);
+            SysTask_CreateOnMainQueue(SysTask_TimedPaletteFade, data, -2);
         }
     }
 
@@ -181,7 +181,7 @@ u8 PaletteData_ForceBeginPaletteFade(PaletteData *data, u16 toSelect, u16 opaque
             data->callbackFlag = TRUE;
             data->selectedFlag = 1;
             data->forceExit = FALSE;
-            CreateSysTask(SysTask_TimedPaletteFade, data, -2);
+            SysTask_CreateOnMainQueue(SysTask_TimedPaletteFade, data, -2);
         }
     }
 
@@ -240,7 +240,7 @@ static void SysTask_TimedPaletteFade(SysTask *task, void *taskData) {
         data->transparentBit = 0;
         data->selectedBuffer = 0;
         data->callbackFlag = 0;
-        DestroySysTask(task);
+        SysTask_Destroy(task);
         return;
     }
 
@@ -250,7 +250,7 @@ static void SysTask_TimedPaletteFade(SysTask *task, void *taskData) {
         PaletteData_TryApplyScheduledBlendStepToExBuffersHandleDelay(data);
         if (data->selectedBuffer == 0) {
             data->callbackFlag = 0;
-            DestroySysTask(task);
+            SysTask_Destroy(task);
             return;
         }
     }
@@ -424,7 +424,7 @@ void PaletteData_SetAutoTransparent(PaletteData *plttData, BOOL autoTransparent)
 
 void PaletteData_SetSelectedBufferAll(PaletteData *plttData, BOOL a1) {
     plttData->selectedFlag = a1 & 1;
-    plttData->selectedBuffer = 0x3FFF;
+    plttData->selectedBuffer = PLTTBUF_ALL_F;
 }
 
 void ZeroPalettesByBitmask(u16 selectedBuffer, HeapID heapId) {
@@ -434,16 +434,16 @@ void ZeroPalettesByBitmask(u16 selectedBuffer, HeapID heapId) {
     memset(tmp, 0, 0x200);
     DC_FlushRange(tmp, 0x200);
 
-    if (selectedBuffer & (1 << PLTTBUF_MAIN_BG)) {
+    if (selectedBuffer & PLTTBUF_MAIN_BG_F) {
         GX_LoadBGPltt(tmp, 0, 0x200);
     }
-    if (selectedBuffer & (1 << PLTTBUF_SUB_BG)) {
+    if (selectedBuffer & PLTTBUF_SUB_BG_F) {
         GXS_LoadBGPltt(tmp, 0, 0x200);
     }
-    if (selectedBuffer & (1 << PLTTBUF_MAIN_OBJ)) {
+    if (selectedBuffer & PLTTBUF_MAIN_OBJ_F) {
         GX_LoadOBJPltt(tmp, 0, 0x200);
     }
-    if (selectedBuffer & (1 << PLTTBUF_SUB_OBJ)) {
+    if (selectedBuffer & PLTTBUF_SUB_OBJ_F) {
         GXS_LoadOBJPltt(tmp, 0, 0x200);
     }
 
@@ -453,52 +453,52 @@ void ZeroPalettesByBitmask(u16 selectedBuffer, HeapID heapId) {
     memset(tmp, 0, 0x2000);
     DC_FlushRange(tmp, 0x2000);
 
-    if (selectedBuffer & (1 << PLTTBUF_MAIN_EX_BG_0)) {
+    if (selectedBuffer & PLTTBUF_MAIN_EX_BG_0_F) {
         GX_BeginLoadBGExtPltt();
         GX_LoadBGExtPltt(tmp, 0, 0x2000);
         GX_EndLoadBGExtPltt();
     }
-    if (selectedBuffer & (1 << PLTTBUF_MAIN_EX_BG_1)) {
+    if (selectedBuffer & PLTTBUF_MAIN_EX_BG_1_F) {
         GX_BeginLoadBGExtPltt();
         GX_LoadBGExtPltt(tmp, 0x2000, 0x2000);
         GX_EndLoadBGExtPltt();
     }
-    if (selectedBuffer & (1 << PLTTBUF_MAIN_EX_BG_2)) {
+    if (selectedBuffer & PLTTBUF_MAIN_EX_BG_2_F) {
         GX_BeginLoadBGExtPltt();
         GX_LoadBGExtPltt(tmp, 0x4000, 0x2000);
         GX_EndLoadBGExtPltt();
     }
-    if (selectedBuffer & (1 << PLTTBUF_MAIN_EX_BG_3)) {
+    if (selectedBuffer & PLTTBUF_MAIN_EX_BG_3_F) {
         GX_BeginLoadBGExtPltt();
         GX_LoadBGExtPltt(tmp, 0x6000, 0x2000);
         GX_EndLoadBGExtPltt();
     }
-    if (selectedBuffer & (1 << PLTTBUF_SUB_EX_BG_0)) {
+    if (selectedBuffer & PLTTBUF_SUB_EX_BG_0_F) {
         GXS_BeginLoadBGExtPltt();
         GXS_LoadBGExtPltt(tmp, 0, 0x2000);
         GXS_EndLoadBGExtPltt();
     }
-    if (selectedBuffer & (1 << PLTTBUF_SUB_EX_BG_1)) {
+    if (selectedBuffer & PLTTBUF_SUB_EX_BG_1_F) {
         GXS_BeginLoadBGExtPltt();
         GXS_LoadBGExtPltt(tmp, 0x2000, 0x2000);
         GXS_EndLoadBGExtPltt();
     }
-    if (selectedBuffer & (1 << PLTTBUF_SUB_EX_BG_2)) {
+    if (selectedBuffer & PLTTBUF_SUB_EX_BG_2_F) {
         GXS_BeginLoadBGExtPltt();
         GXS_LoadBGExtPltt(tmp, 0x4000, 0x2000);
         GXS_EndLoadBGExtPltt();
     }
-    if (selectedBuffer & (1 << PLTTBUF_SUB_EX_BG_3)) {
+    if (selectedBuffer & PLTTBUF_SUB_EX_BG_3_F) {
         GXS_BeginLoadBGExtPltt();
         GXS_LoadBGExtPltt(tmp, 0x6000, 0x2000);
         GXS_EndLoadBGExtPltt();
     }
-    if (selectedBuffer & (1 << PLTTBUF_MAIN_EX_OBJ)) {
+    if (selectedBuffer & PLTTBUF_MAIN_EX_OBJ_F) {
         GX_BeginLoadOBJExtPltt();
         GX_LoadOBJExtPltt(tmp, 0, 0x2000);
         GX_EndLoadOBJExtPltt();
     }
-    if (selectedBuffer & (1 << PLTTBUF_SUB_EX_OBJ)) {
+    if (selectedBuffer & PLTTBUF_SUB_EX_OBJ_F) {
         GXS_BeginLoadOBJExtPltt();
         GXS_LoadOBJExtPltt(tmp, 0, 0x2000);
         GXS_EndLoadOBJExtPltt();

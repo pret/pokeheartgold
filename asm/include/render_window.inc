@@ -13,9 +13,9 @@
 .public sub_0200AF00
 .public sub_0200B0F8
 .public sub_0200D9DC
-.public CreateVBlankSysTask
-.public CreateVWaitSysTask
-.public DestroySysTask
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public sub_0200E398
 .public sub_0200E3D8
 .public LoadUserFrameGfx1

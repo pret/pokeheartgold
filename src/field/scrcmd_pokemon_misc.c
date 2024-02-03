@@ -248,7 +248,7 @@ static void ov01_02200E00(SCR_648_STRUCT *unkPtr) {
     DrawFrameAndWindow1(&unkPtr->window_8, TRUE, 0x3D9, 11);
     ov01_02200F54(unkPtr);
     unkPtr->listMenu_23C = ListMenuInit(&unkPtr->listMenuTemplate, *unkPtr->cursorPos, *unkPtr->itemsAbove, HEAP_ID_4);
-    unkPtr->sysTask = CreateSysTask(ov01_022010CC, unkPtr, 0);
+    unkPtr->sysTask = SysTask_CreateOnMainQueue(ov01_022010CC, unkPtr, 0);
 }
 
 static void ov01_02200EC8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3) {
@@ -354,7 +354,7 @@ static void ov01_0220116C(SCR_648_STRUCT *unkPtr) {
         DestroyMsgData(unkPtr->msgdata);
     }
 
-    DestroySysTask(unkPtr->sysTask);
+    SysTask_Destroy(unkPtr->sysTask);
 
     FreeToHeap(unkPtr);
 }

@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public CreateVWaitSysTask
-.public DestroySysTask
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public BeginNormalPaletteFade
 .public HandleFadeUpdateFrame
 .public IsPaletteFadeFinished

@@ -16,8 +16,8 @@
 .public UnkImageStruct_SetSpriteVisibleFlag
 .public UnkImageStruct_GetSpriteVisibleFlag
 .public UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public AllocFromHeap
 .public FreeToHeap
 .public GF_SinDegNoWrap

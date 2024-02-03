@@ -25,8 +25,8 @@
 .public Sprite_SetPositionXY
 .public UnkImageStruct_SetSpritePositionXY
 .public UnkImageStruct_GetSpritePositionXY
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public AllocFromHeap
 .public FreeToHeap
 .public AddTextWindowTopLeftCorner

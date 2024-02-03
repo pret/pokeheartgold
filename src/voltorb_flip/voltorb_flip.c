@@ -980,7 +980,7 @@ BOOL ov122_021E6900(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
 BOOL AwaitQuitYesNoSelection(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     int var1 = YesNoPrompt_HandleInput(work->unk13C);
     switch (var1) {
-    case YESNORESPONSE_YES: // YES
+    case YESNORESPONSE_YES:
     {
         int payout = GamePayout(work->game);
 
@@ -994,7 +994,7 @@ BOOL AwaitQuitYesNoSelection(WorkflowEngine *workflow, VoltorbFlipAppWork *work)
         }
         return TRUE;
     }
-    case YESNORESPONSE_NO: // NO
+    case YESNORESPONSE_NO:
         BgClearTilemapBufferAndCommit(work->bgConfig, 3);
         ov122_021E78B4(&work->unk25C);
         if (work->unk238 != 0) {

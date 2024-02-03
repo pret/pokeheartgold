@@ -155,7 +155,7 @@ void UnkImageStruct_SetSpriteDrawPriority(UnkImageStruct* unk, u16 a1);
 u16 thunk_Sprite_GetDrawPriority(Sprite* sprite);
 u16 UnkImageStruct_GetSpriteDrawPriority(UnkImageStruct* unk);
 void Sprite_SetPositionXY(Sprite* sprite, s16 x, s16 y);
-void UnkImageStruct_SetSpritePositionXY(UnkImageStruct*, s16, s16);
+void UnkImageStruct_SetSpritePositionXY(UnkImageStruct* sprite, s16 x, s16 y);
 void Sprite_SetPositionXY_CustomScreenYOffset(Sprite* sprite, s16 x, s16 y, fx32 yOffset);
 void UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset(UnkImageStruct* a0, s16 x, s16 y, fx32 yOffset);
 void Sprite_GetPositionXY(Sprite* sprite, s16* x, s16* y);

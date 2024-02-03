@@ -4,9 +4,9 @@
 .public NARC_Delete
 .public NARC_ReadWholeMember
 .public NARC_GetMemberSize
-.public CreateVBlankSysTask
-.public CreateVWaitSysTask
-.public DestroySysTask
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
 .public FreeToHeap

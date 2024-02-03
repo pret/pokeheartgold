@@ -105,8 +105,8 @@
 .public UnkImageStruct_GetSpritePositionXY
 .public sub_0200DF98
 .public sub_0200E0FC
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public WaitingIcon_New

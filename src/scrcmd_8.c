@@ -19,43 +19,50 @@ BOOL ScrCmd_465(ScriptContext *ctx) {
 
     u16 var = ScriptReadHalfword(ctx);
     switch (var) {
-    case 0: {
+    case 0:
+    {
         u16 var0 = ScriptGetVar(ctx);
         u16 *retPtr = ScriptGetVarPointer(ctx);
         *retPtr = sub_0202C860(group, var0);
         return FALSE;
     }
-    case 1: {
+    case 1:
+    {
         u16 var0 = ScriptGetVar(ctx);
         u16 *retPtr = ScriptGetVarPointer(ctx);
         *retPtr = sub_0202C878(group, var0);
         return FALSE;
     }
-    case 2: {
+    case 2:
+    {
         u16 groupId = ScriptGetVar(ctx);
         u16 fieldNo = ScriptGetVar(ctx);
         BufferGroupName(*msg, save, groupId, fieldNo, 0);
         break;
     }
-    case 3: {
+    case 3:
+    {
         u16 groupId = ScriptGetVar(ctx);
         u16 fieldNo = ScriptGetVar(ctx);
         BufferGroupName(*msg, save, groupId, fieldNo, 1);
         break;
     }
-    case 4: {
+    case 4:
+    {
         u16 *r5 = sub_0202C7E0(group, 0, 0);
         u16 *retPtr = ScriptGetVarPointer(ctx);
         CreateNamingScreen(ctx->taskman, NAMINGSCREEN_GROUP, 0, PLAYER_NAME_LENGTH, 0, r5, retPtr);
         return TRUE;
     }
-    case 5: {
+    case 5:
+    {
         u16 var0 = ScriptGetVar(ctx);
         sub_0202C860(group, 1);
         sub_0202C738(group, var0, 1);
         return FALSE;
     }
-    case 6: {
+    case 6:
+    {
         String *str = String_New(64, HEAP_ID_32);
         PlayerProfile *profile = Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData);
         PlayerName_FlatToString(profile, str);
@@ -67,7 +74,8 @@ BOOL ScrCmd_465(ScriptContext *ctx) {
         sub_0202C738(group, 0, 1);
         break;
     }
-    case 7: {
+    case 7:
+    {
         u16 *retPtr = ScriptGetVarPointer(ctx);
         u16 i, count;
         for (count = 0, i = 0; i < FGRP_MAX; i++) {

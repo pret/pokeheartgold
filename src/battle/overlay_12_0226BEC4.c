@@ -13,12 +13,12 @@ SysTask *ov12_0226BEC4(BattleSystem *bsys) {
     unk = AllocFromHeap(HEAP_ID_BATTLE, sizeof(UnkBattleStruct_0226BEC4));
     MI_CpuFill8(unk, 0, sizeof(UnkBattleStruct_0226BEC4));
     unk->bsys = bsys;
-    return CreateSysTask(ov12_0226BF04, unk, 1000);
+    return SysTask_CreateOnMainQueue(ov12_0226BF04, unk, 1000);
 }
 
 void ov12_0226BEF0(SysTask *task) {
     FreeToHeap(SysTask_GetData(task));
-    DestroySysTask(task);
+    SysTask_Destroy(task);
 }
 
 static void ov12_0226BF04(SysTask *task, void *_data) {

@@ -25368,7 +25368,7 @@ ov70_02244154: ; 0x02244154
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0224416E
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, _0224419C ; =0x000012D0
 	mov r1, #0
 	str r1, [r4, r0]
@@ -25765,7 +25765,7 @@ _02244482:
 	ldr r0, _022444E0 ; =ov70_022444E4
 	add r1, r1, r2
 	mov r2, #0x14
-	bl CreateVBlankSysTask
+	bl SysTask_CreateOnVBlankQueue
 	ldr r2, _022444CC ; =0x000012D0
 	ldr r1, [sp, #0x10]
 	str r0, [r1, r2]

@@ -440,11 +440,11 @@ static const BgTemplate sBgTemplate5 = {
     0x000,
     GF_BG_SCR_SIZE_256x256,
     GX_BG_COLORMODE_16,
-    30,
-    0,
-    0,
+    GX_BG_SCRBASE_0xf000,
+    GX_BG_CHARBASE_0x00000,
+    GX_BG_EXTPLTT_01,
     2,
-    0,
+    GX_BG_AREAOVER_XLU,
     0,
     FALSE
 };
@@ -1395,7 +1395,7 @@ static void AlphPuzzle_CreateQuitTask(AlphPuzzleData *data) {
     AlphPuzzleQuitTaskData *unkStruct = AllocFromHeapAtEnd(data->heapId, sizeof(AlphPuzzleQuitTaskData));
     MI_CpuFill8(unkStruct, 0, sizeof(AlphPuzzleQuitTaskData));
     unkStruct->data = data;
-    CreateSysTask(Task_AlphPuzzle_WaitDropCursorAnimOnQuit, unkStruct, 0);
+    SysTask_CreateOnMainQueue(Task_AlphPuzzle_WaitDropCursorAnimOnQuit, unkStruct, 0);
     AlphPuzzle_ToggleDropCursorSprite(data, 1);
     data->quitTaskActive = 1;
 }
@@ -1407,6 +1407,6 @@ static void Task_AlphPuzzle_WaitDropCursorAnimOnQuit(SysTask *task, void *_data)
         data->data->quitTaskActive = 0;
         MI_CpuFill8(data, 0, sizeof(AlphPuzzleQuitTaskData));
         FreeToHeap(data);
-        DestroySysTask(task);
+        SysTask_Destroy(task);
     }
 }

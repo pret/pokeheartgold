@@ -150,7 +150,7 @@ _021E67CC:
 	ldr r0, _021E6834 ; =ov01_021E6774
 	ldr r2, [r6]
 	add r1, r4, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	str r0, [r4, #4]
 	ldr r0, [r5, #0x10]
 	ldr r1, _021E6838 ; =ov01_021E6798
@@ -225,9 +225,9 @@ _021E6856:
 	bl FreeToHeap
 _021E6864:
 	ldr r0, [r4, #4]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, [r4, #8]
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #0
 	add r1, r4, #0
 	mov r2, #0x14

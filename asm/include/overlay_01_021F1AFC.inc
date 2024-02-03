@@ -4,8 +4,8 @@
 .public PlaySE
 .public PlayCry
 .public IsCryFinished
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public FreeToHeapExplicit

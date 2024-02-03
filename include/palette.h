@@ -23,6 +23,22 @@ typedef enum PaletteBufferId {
     PLTTBUF_MAX,
 } PaletteBufferId;
 
+#define PLTTBUF_MAIN_BG_F                      (1<<PLTTBUF_MAIN_BG)
+#define PLTTBUF_SUB_BG_F                       (1<<PLTTBUF_SUB_BG)
+#define PLTTBUF_MAIN_OBJ_F                     (1<<PLTTBUF_MAIN_OBJ)
+#define PLTTBUF_SUB_OBJ_F                      (1<<PLTTBUF_SUB_OBJ)
+#define PLTTBUF_MAIN_EX_BG_0_F                 (1<<PLTTBUF_MAIN_EX_BG_0)
+#define PLTTBUF_MAIN_EX_BG_1_F                 (1<<PLTTBUF_MAIN_EX_BG_1)
+#define PLTTBUF_MAIN_EX_BG_2_F                 (1<<PLTTBUF_MAIN_EX_BG_2)
+#define PLTTBUF_MAIN_EX_BG_3_F                 (1<<PLTTBUF_MAIN_EX_BG_3)
+#define PLTTBUF_SUB_EX_BG_0_F                  (1<<PLTTBUF_SUB_EX_BG_0)
+#define PLTTBUF_SUB_EX_BG_1_F                  (1<<PLTTBUF_SUB_EX_BG_1)
+#define PLTTBUF_SUB_EX_BG_2_F                  (1<<PLTTBUF_SUB_EX_BG_2)
+#define PLTTBUF_SUB_EX_BG_3_F                  (1<<PLTTBUF_SUB_EX_BG_3)
+#define PLTTBUF_MAIN_EX_OBJ_F                  (1<<PLTTBUF_MAIN_EX_OBJ)
+#define PLTTBUF_SUB_EX_OBJ_F                   (1<<PLTTBUF_SUB_EX_OBJ)
+#define PLTTBUF_ALL_F                          ((1<<PLTTBUF_MAX)-1)
+
 typedef enum PaletteSelector {
     PLTTSEL_TRANSPARENT,
     PLTTSEL_OPAQUE,

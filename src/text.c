@@ -31,7 +31,7 @@ static u8 CreateTextPrinterSysTask(SysTaskFunc taskFunc, TextPrinter *printer, u
             continue;
         }
 
-        sTextPrinterTasks[i] = CreatePrintSysTask(taskFunc, printer, priority);
+        sTextPrinterTasks[i] = SysTask_CreateOnPrintQueue(taskFunc, printer, priority);
         if (sTextPrinterTasks[i] == NULL) {
             i = MAX_TEXT_PRINTERS;
         }
@@ -53,7 +53,7 @@ static void DestroyTextPrinterSysTask(u8 printerId) {
         FreeToHeap(printer);
     }
 
-    DestroySysTask(sTextPrinterTasks[printerId]);
+    SysTask_Destroy(sTextPrinterTasks[printerId]);
     sTextPrinterTasks[printerId] = NULL;
 }
 

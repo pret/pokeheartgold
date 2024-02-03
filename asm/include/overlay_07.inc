@@ -87,10 +87,10 @@
 .public sub_0200E0CC
 .public sub_0200E0E8
 .public sub_0200E0FC
-.public CreateSysTask
-.public CreateVBlankSysTask
-.public CreateVWaitSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public sub_02014400
 .public sub_02014540
 .public sub_02014A08

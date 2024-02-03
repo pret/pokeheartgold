@@ -8934,7 +8934,7 @@ _0224A018:
 	ldr r0, _0224A048 ; =ov41_0224A094
 	add r1, r4, #0
 	mov r2, #0x80
-	bl CreateVWaitSysTask
+	bl SysTask_CreateOnVWaitQueue
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -8973,7 +8973,7 @@ _0224A066:
 	ldr r0, _0224A090 ; =ov41_0224A0D0
 	add r1, r4, #0
 	mov r2, #0x80
-	bl CreateVWaitSysTask
+	bl SysTask_CreateOnVWaitQueue
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0224A090: .word ov41_0224A0D0
@@ -8999,7 +8999,7 @@ ov41_0224A094: ; 0x0224A094
 	lsr r1, r1, #0x18
 	bl BG_LoadCharTilesData
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, [r4, #8]
 	bl FreeToHeap
 	add r0, r4, #0
@@ -9036,7 +9036,7 @@ _0224A0F4:
 	bl GXS_LoadBGPltt
 _0224A104:
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	ldr r0, [r4, #4]
 	bl FreeToHeap
 	add r0, r4, #0
@@ -11312,12 +11312,12 @@ ov41_0224B21C: ; 0x0224B21C
 	add r4, r1, #0
 	cmp r0, #0
 	beq _0224B22C
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0224B22C:
 	ldr r0, [r5, #0x28]
 	cmp r0, #0
 	beq _0224B236
-	bl DestroySysTask
+	bl SysTask_Destroy
 _0224B236:
 	add r0, r5, #0
 	add r1, r4, #0
