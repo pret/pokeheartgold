@@ -638,7 +638,7 @@ _0222FAD6:
 	add r1, r0, #0
 	ldr r0, _0222FC00 ; =ov80_0222FC08
 	mov r2, #5
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	mov r1, #5
 	lsl r1, r1, #8
 	str r0, [r4, r1]
@@ -649,7 +649,7 @@ _0222FAEE:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0222FBE6
-	bl DestroySysTask
+	bl SysTask_Destroy
 	mov r0, #5
 	mov r1, #0
 	lsl r0, r0, #8

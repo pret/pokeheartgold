@@ -48,9 +48,9 @@
 .public UnkImageStruct_SetSpritePositionXY
 .public UnkImageStruct_GetSpritePositionXY
 .public sub_0200E2B0
-.public CreateSysTask
-.public CreateVBlankSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx1
 .public LoadUserFrameGfx2
 .public Main_SetVBlankIntrCB

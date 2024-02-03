@@ -19,7 +19,7 @@ typedef struct GFCameraTranslationWrapper {
     u8 active;
     struct CameraTranslationPathTemplate init;
     struct CameraTranslationPathTemplate target;
-    SysTask *task; // returned from CreateSysTask
+    SysTask *task; // returned from SysTask_CreateOnMainQueue
 } GFCameraTranslationWrapper;
 
 GFCameraTranslationWrapper *CreateCameraTranslationWrapper(HeapID heapId, Camera *camera);

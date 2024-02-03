@@ -21,7 +21,7 @@ static const TouchscreenHitbox ov17_02203FC0 = {
     .rect = {160, 192, 192, 0}
 };
 
-void ov17_022035A4(SysTask *task, SysTaskArgs_ov17_0220351C *args);
+static void ov17_022035A4(SysTask *task, SysTaskArgs_ov17_0220351C *args);
 
 void ov17_0220351C(BerryPotsAppData *data) {
     SysTaskArgs_ov17_0220351C *args = AllocFromHeap(data->heapId, sizeof(SysTaskArgs_ov17_0220351C));
@@ -37,22 +37,22 @@ void ov17_0220351C(BerryPotsAppData *data) {
         diff = -diff;
     }
 
-    args->unk8 = (s8)(diff * 27) / 4;
+    args->unk8 = (diff *= 27) / 4;
     args->unkA = data->unk80;
-    CreateSysTask((SysTaskFunc)ov17_022035A4, args, 0);
+    SysTask_CreateOnMainQueue((SysTaskFunc)ov17_022035A4, args, 0);
     data->runningTasks++;
 }
 
-void ov17_022035A4(SysTask *task, SysTaskArgs_ov17_0220351C *args) {
-    BerryPotsAppData *unk0 = args->data;
+static void ov17_022035A4(SysTask *task, SysTaskArgs_ov17_0220351C *args) {
+    BerryPotsAppData *data = args->data;
 
-    Sprite_AddPositionXY(unk0->sprites[2], args->sign * 4, 0);
+    Sprite_AddPositionXY(data->sprites[2], args->sign * 4, 0);
     s16 x, y;
-    Sprite_GetPositionXY(unk0->sprites[2], &x, &y);
+    Sprite_GetPositionXY(data->sprites[2], &x, &y);
 
     u8 potIndex = (x - 31) / 27;
     if (potIndex != args->unkA && potIndex != args->unk7) {
-        ov17_02202B58(unk0, potIndex);
+        ov17_02202B58(data, potIndex);
         args->unkA = potIndex;
     }
 
@@ -60,11 +60,11 @@ void ov17_022035A4(SysTask *task, SysTaskArgs_ov17_0220351C *args) {
         return;
     }
 
-    Sprite_SetPositionXY(unk0->sprites[2], args->unk7 * 27 + 31, 56);
+    Sprite_SetPositionXY(data->sprites[2], args->unk7 * 27 + 31, 56);
 
-    unk0->runningTasks--;
+    data->runningTasks--;
     FreeToHeap(args);
-    DestroySysTask(task);
+    SysTask_Destroy(task);
 }
 
 typedef struct SysTaskArgs_ov17_02203674 {
@@ -75,7 +75,7 @@ typedef struct SysTaskArgs_ov17_02203674 {
     UnkImageStruct *berrySprite;
 } SysTaskArgs_ov17_02203674;
 
-void ov17_02203674(SysTask *, SysTaskArgs_ov17_02203674 *);
+static void ov17_02203674(SysTask*, SysTaskArgs_ov17_02203674*);
 
 void ov17_02203638(BerryPotsAppData *data) {
     SysTaskArgs_ov17_02203674 *args = AllocFromHeap(data->heapId, sizeof(SysTaskArgs_ov17_02203674));
@@ -84,31 +84,31 @@ void ov17_02203638(BerryPotsAppData *data) {
     args->data = data;
     args->potIndex = data->unk7C;
 
-    CreateSysTask((SysTaskFunc)ov17_02203674, args, 0);
+    SysTask_CreateOnMainQueue((SysTaskFunc)ov17_02203674, args, 0);
     data->runningTasks++;
 }
 
-void ov17_02203674(SysTask *task, SysTaskArgs_ov17_02203674 *args) {
+static void ov17_02203674(SysTask *task, SysTaskArgs_ov17_02203674 *args) {
     BerryPotsAppData *data = args->data;
     switch (args->state) {
-    case 0:
-        args->berrySprite = ov17_022034C8(data, args->potIndex * 27 + 35, 80, data->unk7E + 2);
-        PlaySE(SEQ_SE_DP_DECIDE);
-        args->state++;
-        break;
-    case 1:
-        UnkImageStruct_AddSpritePositionXY(args->berrySprite, 2, -2);
-        if (args->framesOnScreen++ >= 8) {
+        case 0:
+            args->berrySprite = ov17_022034C8(data, args->potIndex * 27 + 35, 80, data->unk7E + 2);
+            PlaySE(SEQ_SE_DP_DECIDE);
             args->state++;
-        }
-        break;
-    case 2:
-        sub_0200D9DC(args->berrySprite);
+            break;
+        case 1:
+            UnkImageStruct_AddSpritePositionXY(args->berrySprite, 2, -2);
+            if (args->framesOnScreen++ >= 8) {
+                args->state++;
+            }
+            break;
+        case 2:
+            sub_0200D9DC(args->berrySprite);
 
-        data->runningTasks--;
-        FreeToHeap(args);
-        DestroySysTask(task);
-        break;
+            data->runningTasks--;
+            FreeToHeap(args);
+            SysTask_Destroy(task);
+            break;
     }
 }
 
@@ -116,29 +116,30 @@ void ov17_022036FC(BerryPotsAppData *data, enum BerryPotsApp_022036FC_Action act
     BerryPotsAppData_UnkSub20 *unk = &data->unk20[potIndex];
 
     switch (action) {
-    case BERRY_POTS_APP_022036FC_ACTION_5:
-    case BERRY_POTS_APP_022036FC_ACTION_11:
-        BufferItemName(data->msgFmt, 2, MulchIdToItemId(unk->mulch));
-        break;
-    case BERRY_POTS_APP_022036FC_ACTION_10:
-    case BERRY_POTS_APP_022036FC_ACTION_14:
-        BufferIntegerAsString(data->msgFmt, 1, unk->quantityOrYieldMaybe, 2, PRINTING_MODE_LEFT_ALIGN, 0);
+        case BERRY_POTS_APP_022036FC_ACTION_5:
+        case BERRY_POTS_APP_022036FC_ACTION_11:
+            BufferItemName(data->msgFmt, 2, MulchIdToItemId(unk->mulch));
+            break;
+        case BERRY_POTS_APP_022036FC_ACTION_10:
+        case BERRY_POTS_APP_022036FC_ACTION_14:
+            BufferIntegerAsString(data->msgFmt, 1, unk->quantityOrYieldMaybe, 2, PRINTING_MODE_LEFT_ALIGN, 0);
             // fallthrough
-    case BERRY_POTS_APP_022036FC_ACTION_6:
-    case BERRY_POTS_APP_022036FC_ACTION_7:
-    case BERRY_POTS_APP_022036FC_ACTION_8:
-    case BERRY_POTS_APP_022036FC_ACTION_9:
-    case BERRY_POTS_APP_022036FC_ACTION_12:
-    case BERRY_POTS_APP_022036FC_ACTION_15:
-    case BERRY_POTS_APP_022036FC_ACTION_16: {
-        String *berryName = GetNutName(unk->berryId, data->heapId);
-        BufferString(data->msgFmt, 0, berryName, 0, 0, 2);
-        String_Delete(berryName);
-        break;
-    }
-    default:
-        String_Copy(data->currentStatusString, data->statusStrings[action]);
-        return;
+        case BERRY_POTS_APP_022036FC_ACTION_6:
+        case BERRY_POTS_APP_022036FC_ACTION_7:
+        case BERRY_POTS_APP_022036FC_ACTION_8:
+        case BERRY_POTS_APP_022036FC_ACTION_9:
+        case BERRY_POTS_APP_022036FC_ACTION_12:
+        case BERRY_POTS_APP_022036FC_ACTION_15:
+        case BERRY_POTS_APP_022036FC_ACTION_16:
+        {
+            String *berryName = GetNutName(unk->berryId, data->heapId);
+            BufferString(data->msgFmt, 0, berryName, 0, 0, 2);
+            String_Delete(berryName);
+            break;
+        }
+        default:
+            String_Copy(data->currentStatusString, data->statusStrings[action]);
+            return;
     }
 
     StringExpandPlaceholders(data->msgFmt, data->currentStatusString, data->statusStrings[action]);
@@ -195,9 +196,9 @@ typedef struct SysTaskArgs_ov17_022039A0 {
     u8 state;
 } SysTaskArgs_ov17_022039A0;
 
-void ov17_022039A0(SysTask *task, SysTaskArgs_ov17_022039A0 *args);
+static void ov17_022039A0(SysTask *task, SysTaskArgs_ov17_022039A0 *args);
 
-void ov17_02203928(BerryPotsAppData *data) {
+static void ov17_02203928(BerryPotsAppData *data) {
     for (int i = 0; i < MAX_BERRY_POT; i++) {
         BerryPotsAppData_UnkSub20 *sub = &data->unk20[i];
 
@@ -216,37 +217,37 @@ void ov17_02203928(BerryPotsAppData *data) {
         MI_CpuFill8(args, 0, sizeof(SysTaskArgs_ov17_022039A0));
         args->data = data;
         args->potIndex = i;
-        CreateSysTask((SysTaskFunc)ov17_022039A0, args, 0);
+        SysTask_CreateOnMainQueue((SysTaskFunc)ov17_022039A0, args, 0);
         data->runningTasks++;
     }
 }
 
-void ov17_022039A0(SysTask *task, SysTaskArgs_ov17_022039A0 *args) {
+static void ov17_022039A0(SysTask *task, SysTaskArgs_ov17_022039A0 *args) {
     BerryPotsAppData *data = args->data;
 
     switch (args->state) {
-    case 0:
-        Set2dSpriteVisibleFlag(data->sprites[7 + args->potIndex], TRUE);
-        PlaySE(SEQ_SE_PL_EFF05);
-        args->state++;
-        break;
-    case 1:
-        if (args->unk5++ == 15) {
-            ov17_02202A84(data, args->potIndex);
-            if (data->unk7C == args->potIndex) {
-                ov17_022028B8(data);
+        case 0:
+            Set2dSpriteVisibleFlag(data->sprites[7 + args->potIndex], TRUE);
+            PlaySE(SEQ_SE_PL_EFF05);
+            args->state++;
+            break;
+        case 1:
+            if (args->unk5++ == 15) {
+                ov17_02202A84(data, args->potIndex);
+                if (data->unk7C == args->potIndex) {
+                    ov17_022028B8(data);
+                }
             }
-        }
 
-        if (args->unk5 >= 30) {
-            Set2dSpriteVisibleFlag(data->sprites[7 + args->potIndex], FALSE);
+            if (args->unk5 >= 30) {
+                Set2dSpriteVisibleFlag(data->sprites[7 + args->potIndex], FALSE);
 
-            data->runningTasks--;
-            FreeToHeap(args);
-            DestroySysTask(task);
-        }
+                data->runningTasks--;
+                FreeToHeap(args);
+                SysTask_Destroy(task);
+            }
 
-        break;
+            break;
     }
 }
 
@@ -261,42 +262,42 @@ u32 ov17_02203A34(BerryPotsAppData *data) {
 
 BOOL ov17_02203A54(BerryPotsAppData *data) {
     BOOL flag = FALSE;
-    BOOL r0 = ov17_02203C20(data, &flag);
+    BOOL ret = ov17_02203C20(data, &flag);
     if (!flag) {
-        r0 = ov17_02203B88(data);
+        ret = ov17_02203B88(data);
     }
-    return r0;
+    return ret;
 }
 
-u32 ov17_02203A74(BerryPotsAppData *data, u32 a1) {
+static u32 ov17_02203A74(BerryPotsAppData *data, u32 a1) {
     switch (a1) {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
-        PlaySE(SEQ_SE_DP_SELECT);
-        ov17_022028B8(data);
-        break;
-    case 4:
-        if (data->runningTasks == 0) {
-            return ov17_02203D00(data);
-        }
-        break;
-    case 5:
-    default:
-        if (data->runningTasks == 0) {
+        case 0:
+        case 1:
+        case 2:
+        case 3:
             PlaySE(SEQ_SE_DP_SELECT);
-            ov17_02202850(data, 1);
-            return 1;
-        }
-        break;
+            ov17_022028B8(data);
+            break;
+        case 4:
+            if (data->runningTasks == 0) {
+                return ov17_02203D00(data);
+            }
+            break;
+        case 5:
+        default:
+            if (data->runningTasks == 0) {
+                PlaySE(SEQ_SE_DP_SELECT);
+                ov17_02202850(data, 1);
+                return 1;
+            }
+            break;
     }
 
     return 2;
 }
 
-u32 ov17_02203AD4(BerryPotsAppData *data) {
-    BOOL r3 = FALSE;
+static u32 ov17_02203AD4(BerryPotsAppData *data) {
+    BOOL flag = FALSE;
 
     if (gSystem.newKeys & (PAD_BUTTON_Y | PAD_BUTTON_X | PAD_KEY_DOWN | PAD_KEY_UP | PAD_KEY_LEFT | PAD_KEY_RIGHT | PAD_BUTTON_B | PAD_BUTTON_A)) {
         data->unk74 = 0;
@@ -314,20 +315,20 @@ u32 ov17_02203AD4(BerryPotsAppData *data) {
 
     if (newKeys & PAD_KEY_LEFT) {
         data->unk7C = (data->unk7C + (MAX_BERRY_POT - 1)) % MAX_BERRY_POT;
-        r3 = TRUE;
+        flag = TRUE;
     } else if (newKeys & PAD_KEY_RIGHT) {
         data->unk7C = (data->unk7C + 1) % MAX_BERRY_POT;
-        r3 = TRUE;
+        flag = TRUE;
     }
 
-    if (r3) {
+    if (flag) {
         return ov17_02203A74(data, data->unk7C);
     } else {
         return 2;
     }
 }
 
-u32 ov17_02203B68(BerryPotsAppData *data, BOOL *a1) {
+static u32 ov17_02203B68(BerryPotsAppData *data, BOOL *a1) {
     int unk = ov17_02203CC8(data);
     if (unk < 0) {
         return 2;
@@ -338,7 +339,7 @@ u32 ov17_02203B68(BerryPotsAppData *data, BOOL *a1) {
     return ov17_02203A74(data, unk);
 }
 
-BOOL ov17_02203B88(BerryPotsAppData *data) {
+static BOOL ov17_02203B88(BerryPotsAppData *data) {
     BOOL unk = FALSE;
 
     if (data->unk81 != 0xFF) {
@@ -367,7 +368,7 @@ BOOL ov17_02203B88(BerryPotsAppData *data) {
     return FALSE;
 }
 
-BOOL ov17_02203C20(BerryPotsAppData *data, BOOL *a1) {
+static BOOL ov17_02203C20(BerryPotsAppData *data, BOOL *a1) {
     if (data->unk81 != 0xFF) {
         return FALSE;
     }
@@ -387,29 +388,28 @@ BOOL ov17_02203C20(BerryPotsAppData *data, BOOL *a1) {
     return TRUE;
 }
 
-int ov17_02203C78(BerryPotsAppData *data) {
-    // touch screen coordinates?
-    TouchscreenHitbox unkArray;
+static int ov17_02203C78(BerryPotsAppData *data) {
+    TouchscreenHitbox touchHitbox;
 
     for (int i = 0, xOffsetMaybe = 16; i < MAX_BERRY_POT; xOffsetMaybe += 28, i++) {
-        unkArray.rect.left = xOffsetMaybe;
-        unkArray.rect.right = unkArray.rect.left + 22;
+        touchHitbox.rect.left = xOffsetMaybe;
+        touchHitbox.rect.right = touchHitbox.rect.left + 22;
         if (data->unk20[i].growthStage < BERRY_POT_GROWTH_STAGE_GROWING) {
-            unkArray.rect.top = 88;
-            unkArray.rect.bottom = unkArray.rect.top + 24;
+            touchHitbox.rect.top = 88;
+            touchHitbox.rect.bottom = touchHitbox.rect.top + 24;
         } else {
-            unkArray.rect.top = 72;
-            unkArray.rect.bottom = unkArray.rect.top + 32;
+            touchHitbox.rect.top = 72;
+            touchHitbox.rect.bottom = touchHitbox.rect.top + 32;
         }
 
-        if (TouchscreenHitbox_TouchNewIsIn(&unkArray)) {
+        if (TouchscreenHitbox_TouchNewIsIn(&touchHitbox)) {
             return i;
         }
     }
     return -1;
 }
 
-int ov17_02203CC8(BerryPotsAppData *data) {
+static int ov17_02203CC8(BerryPotsAppData *data) {
     if (TouchscreenHitbox_TouchNewIsIn(&ov17_02203FC0)) {
         return 5;
     }
@@ -424,21 +424,20 @@ int ov17_02203CC8(BerryPotsAppData *data) {
     return -1;
 }
 
-u32 ov17_02203D00(BerryPotsAppData *data) {
+static u32 ov17_02203D00(BerryPotsAppData *data) {
     BerryPotsAppData_UnkSub20 *unk = &data->unk20[data->unk7C];
     switch (unk->growthStage) {
-    case BERRY_POT_GROWTH_STAGE_NONE:
-        return (unk->mulch != MULCH_NONE) ? 4 : 3;
-    case BERRY_POT_GROWTH_STAGE_PLANTED:
-    case BERRY_POT_GROWTH_STAGE_SPROUTED:
-    case BERRY_POT_GROWTH_STAGE_GROWING:
-    case BERRY_POT_GROWTH_STAGE_BLOOM:
-        return 5;
-    case BERRY_POT_GROWTH_STAGE_BERRIES:
-        return 6;
-
-    case 0xFF:
-    default:
-        return 2;
+        case BERRY_POT_GROWTH_STAGE_NONE:
+            return (unk->mulch != MULCH_NONE) ? 4 : 3;
+        case BERRY_POT_GROWTH_STAGE_PLANTED:
+        case BERRY_POT_GROWTH_STAGE_SPROUTED:
+        case BERRY_POT_GROWTH_STAGE_GROWING:
+        case BERRY_POT_GROWTH_STAGE_BLOOM:
+            return 5;
+        case BERRY_POT_GROWTH_STAGE_BERRIES:
+            return 6;
+        case 0xFF:
+        default:
+            return 2;
     }
 }

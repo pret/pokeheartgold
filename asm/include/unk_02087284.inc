@@ -21,8 +21,8 @@
 .public UnkImageStruct_AddSpritePrecisePositionXY
 .public UnkImageStruct_SetSpritePrecisePositionXY
 .public UnkImageStruct_GetSpritePrecisePositionXY
-.public CreateVBlankSysTask
-.public DestroySysTask
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_Destroy
 .public AllocFromHeap
 .public FreeToHeap
 .public GF_SinDeg

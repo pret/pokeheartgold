@@ -169,7 +169,7 @@ _021E5A12:
 	ldr r0, _021E5BD0 ; =sub_0203E348
 	mov r1, #0
 	mov r2, #0x7b
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 _021E5A50:
 	bl ov01_021E6028
 	mov r0, #0x80
@@ -201,7 +201,7 @@ _021E5A50:
 	ldr r0, _021E5BD0 ; =sub_0203E348
 	ldr r2, _021E5BD8 ; =0x00000315
 	mov r1, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 _021E5AA8:
 	mov r0, #4
 	bl ov02_0224F864
@@ -298,11 +298,11 @@ _021E5B70:
 	ldr r0, _021E5BDC ; =sub_02096594
 	mov r1, #0
 	lsl r2, r2, #2
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	ldr r0, _021E5BDC ; =sub_02096594
 	ldr r2, _021E5BE0 ; =0x00000578
 	mov r1, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 _021E5B8E:
 	ldr r0, [r6]
 	add r0, r0, #1
@@ -484,7 +484,7 @@ _021E5CFA:
 	ldr r0, _021E5E9C ; =sub_0203E348
 	ldr r2, _021E5EA0 ; =0x00001EA5
 	mov r1, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 _021E5D34:
 	ldr r0, [r4, #0x3c]
 	bl sub_0205E4C8
@@ -508,7 +508,7 @@ _021E5D34:
 	ldr r0, _021E5E9C ; =sub_0203E348
 	ldr r2, _021E5EA8 ; =0x000004DD
 	mov r1, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 _021E5D72:
 	add r4, #0x9c
 	ldr r0, [r4]

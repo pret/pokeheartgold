@@ -9645,7 +9645,7 @@ _021EA5CC:
 	ldr r0, _021EA5E0 ; =ov108_021EA5E4
 	ldr r2, [sp]
 	add r1, r4, #0
-	bl CreateSysTask
+	bl SysTask_CreateOnMainQueue
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021EA5D8: .word 0x00000444
@@ -9678,7 +9678,7 @@ ov108_021EA5E4: ; 0x021EA5E4
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 _021EA61E:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

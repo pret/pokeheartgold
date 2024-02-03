@@ -50,8 +50,8 @@
 .public UnkImageStruct_GetSpritePositionXY
 .public UnkImageStruct_AddSpritePositionXY
 .public sub_0200E11C
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public WaitingIcon_New
 .public sub_0200F450
 .public sub_02014540

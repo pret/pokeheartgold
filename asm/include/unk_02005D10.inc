@@ -83,8 +83,8 @@
 .public sub_02006D04
 .public sub_02006DB8
 .public sub_02006E3C
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public AllocFromHeap
 .public FreeToHeap
 .public SysTask_GetData

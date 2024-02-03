@@ -38,8 +38,8 @@
 .public sub_0200D2A4
 .public SpriteRenderer_CreateSprite
 .public Sprite_SetPositionXY
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public BeginNormalPaletteFade

@@ -1792,7 +1792,7 @@ _0200F12E:
 	strb r3, [r4, r0]
 	ldr r0, _0200F1D0 ; =sub_0200F3D0
 	add r1, r4, #0
-	bl CreateVBlankSysTask
+	bl SysTask_CreateOnVBlankQueue
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_0200F1D4
@@ -2065,7 +2065,7 @@ sub_0200F3D0: ; 0x0200F3D0
 	bl sub_0200F1D4
 _0200F3EA:
 	add r0, r4, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r3, r4, r5, pc}
 _0200F3F2:
 	sub r2, r0, #2
@@ -2113,7 +2113,7 @@ sub_0200F43C: ; 0x0200F43C
 	add r0, r1, #0
 	bl FreeToHeap
 	add r0, r4, #0
-	bl DestroySysTask
+	bl SysTask_Destroy
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_0200F43C
@@ -2125,7 +2125,7 @@ sub_0200F450: ; 0x0200F450
 	ldr r0, _0200F470 ; =sub_0200F43C
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateVWaitSysTask
+	bl SysTask_CreateOnVWaitQueue
 	ldr r1, _0200F474 ; =0x00000488
 	mov r0, #3
 	ldrb r2, [r4, r1]
@@ -2146,7 +2146,7 @@ sub_0200F478: ; 0x0200F478
 	ldr r0, _0200F498 ; =sub_0200F43C
 	add r1, r4, #0
 	mov r2, #0
-	bl CreateVWaitSysTask
+	bl SysTask_CreateOnVWaitQueue
 	ldr r1, _0200F49C ; =0x00000488
 	mov r0, #3
 	ldrb r2, [r4, r1]

@@ -66,8 +66,8 @@
 .public UnkImageStruct_SetSpriteVisibleFlag
 .public UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
 .public sub_0200E2B0
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public sub_0200E640
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2

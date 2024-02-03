@@ -8,7 +8,7 @@
 .public OamManager_Create
 .public OamManager_ApplyAndResetBuffers
 .public OamManager_Free
-.public CreateSysTask
+.public SysTask_CreateOnMainQueue
 .public BeginNormalPaletteFade
 .public sub_0200FBDC
 .public Main_SetVBlankIntrCB

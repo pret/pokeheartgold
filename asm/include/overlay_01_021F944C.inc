@@ -1,9 +1,9 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public CreateSysTask
-.public CreateVBlankSysTask
-.public CreateVWaitSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_CreateOnVBlankQueue
+.public SysTask_CreateOnVWaitQueue
+.public SysTask_Destroy
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
 .public FreeToHeap

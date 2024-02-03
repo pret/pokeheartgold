@@ -19,8 +19,8 @@
 .public UnkImageStruct_GetSpritePositionXY
 .public sub_0200E0FC
 .public sub_0200E110
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public AllocFromHeap
 .public FreeToHeap
 .public Set2dSpriteAnimSeqNo

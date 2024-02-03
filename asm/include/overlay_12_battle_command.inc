@@ -35,7 +35,7 @@
 .public UnkImageStruct_TickSpriteAnimation1Frame
 .public sub_0200E188
 .public sub_0200E2B0
-.public DestroySysTask
+.public SysTask_Destroy
 .public sub_0200E398
 .public sub_0200E3D8
 .public DrawFrameAndWindow1

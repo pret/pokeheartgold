@@ -5,8 +5,8 @@
 .public NARC_Delete
 .public NARC_ReadFromMember
 .public NARC_ReadFile
-.public CreateSysTask
-.public DestroySysTask
+.public SysTask_CreateOnMainQueue
+.public SysTask_Destroy
 .public sub_0201A430
 .public AllocFromHeap
 .public AllocFromHeapAtEnd

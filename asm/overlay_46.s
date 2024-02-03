@@ -522,7 +522,7 @@ ov46_02258C38: ; 0x02258C38
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02258C68
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0xd4
@@ -858,7 +858,7 @@ ov46_02258EFC: ; 0x02258EFC
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02258F2C
-	bl DestroySysTask
+	bl SysTask_Destroy
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0xd4
@@ -1190,7 +1190,7 @@ _022591A6:
 	ldr r0, _0225920C ; =ov46_02259210
 	add r1, #0xd4
 	mov r2, #0x14
-	bl CreateVBlankSysTask
+	bl SysTask_CreateOnVBlankQueue
 	ldr r1, [sp, #0x10]
 	add r1, #0xd4
 	str r0, [r1]
