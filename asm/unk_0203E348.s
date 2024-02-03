@@ -73,7 +73,7 @@ _020FA334:
 _020FA344:
 	.word ov99_021E5900, ov99_021E5A38, ov99_021E5A04, FS_OVERLAY_ID(OVY_99)
 _020FA354:
-	.word OptionsApp_Init, OptionsApp_Exit, OptionsApp_Run, FS_OVERLAY_ID(options_app)
+	.word OptionsApp_Init, OptionsApp_Exit, OptionsApp_Main, FS_OVERLAY_ID(options_app)
 _020FA364:
 	.word ov111_021E5900, ov111_021E59B8, ov111_021E5960, FS_OVERLAY_ID(OVY_111)
 _020FA374:

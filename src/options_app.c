@@ -1,4 +1,5 @@
 #include "global.h"
+#include <nitro/spi/ARM9/pm.h>
 #include "bg_window.h"
 #include "data/resdat.naix"
 #include "font.h"
@@ -19,13 +20,6 @@
 #include "system.h"
 #include "touchscreen.h"
 #include "vram_transfer_manager.h"
-
-// FIXME: Import this from field/launch_application when #290 is merged
-typedef struct OptionsApp_Args {
-    u32 unk0;
-    Options *options;
-    u32 *unk8;
-} OptionsApp_Args;
 
 // Not to be confused with `Options`, which is almost exactly the same, save for two members being swapped. SMH
 typedef struct OptionsApp_Options {
@@ -59,7 +53,7 @@ typedef struct OptionsApp_Data {
     HeapID heapId;
     u32 exitState;
     u32 setupAndFreeState;
-    u32 unkC; // unused, game writes 0 here when it's about to start a fade, but never reads from here
+    u32 fadeUnused; // unused, game writes 0 here when it's about to start a fade, but never reads from here
     u32 unk10_0:2;
     u32 currentMenuEntryId:3;
     u32 unk10_5:16; // unused
@@ -67,12 +61,21 @@ typedef struct OptionsApp_Data {
     u32 unk10_22:10; // unused
     BgConfig *bgConfig;
     OptionsApp_Options options;
-    Options *filler1C; // unused copy of playerOptions
+    Options *playerOptionsUnused; // unused copy of playerOptions
     u32 *unk20;
     Options *playerOptions;
     MsgData *msgData;
     u8 filler2C[0x8];
-    Window windows[5];
+    union {
+        Window asArray[5];
+        struct {
+            Window optionsTitle;
+            Window selectedOption;
+            Window frameAndTextSpeedTest;
+            Window quitButton;
+            Window confirmButton;
+        };
+    } windows;
     OptionsApp_MenuEntry menuEntries[MENU_ENTRY_COUNT];
     SpriteRenderer *spriteRenderer;
     SpriteGfxHandler *spriteGfxHandler;
@@ -83,11 +86,11 @@ typedef struct OptionsApp_Data {
     u8 textPrinter;
 } OptionsApp_Data; // size: 0x32c
 
-static const s8 ov54_021E6C30[MENU_ENTRY_COUNT] = {
+static const s8 sOptionsApp_UnkWindowWidthOffsets[MENU_ENTRY_COUNT] = {
     0, 0, 0, 0, 0, -0x10, 0,
 };
 
-extern const u16 ov54_021E6C38[7] = {
+extern const u16 sOptionsAppResourceDataFileNums[7] = {
     NARC_resdat_resdat_00000022_bin,
     NARC_resdat_resdat_00000023_bin,
     NARC_resdat_resdat_00000021_bin,
@@ -97,7 +100,7 @@ extern const u16 ov54_021E6C38[7] = {
     NARC_resdat_resdat_00000077_bin,
 };
 
-static const u32 ov54_021E6C58[5] = {
+static const u32 sOptionsAppBgLayers[5] = {
     GF_BG_LYR_MAIN_0,
     GF_BG_LYR_MAIN_1,
     GF_BG_LYR_MAIN_2,
@@ -120,11 +123,11 @@ static const Unk122_021E92D0 ov54_021E6C6C = {
     .unk10 = 0x10,
 };
 
-static const int ov54_021E6C80[7] = {
+static const int sMenuEntryBorderYCoords[MENU_ENTRY_COUNT] = {
     -8, -32, -56, -80, -104, -128, -156
 };
 
-static const int sNumChoicesPerMenuEntry[7] = {
+static const int sNumChoicesPerMenuEntry[MENU_ENTRY_COUNT] = {
     3, 2, 2, 2, 2, 20, 2
 };
 
@@ -146,7 +149,7 @@ static const GraphicsBanks sOptionsAppGraphicsBanks = {
     .subobj = GX_VRAM_SUB_OBJ_16_I,
 };
 
-static const u16 ov54_021E6D00[MENU_ENTRY_COUNT][3] = {
+static const u16 sOptionChoiceLabelXCoords[MENU_ENTRY_COUNT][3] = {
     { 124, 172, 220 },
     { 124, 172, 0 },
     { 132, 212, 0 },
@@ -164,7 +167,7 @@ static const int sActiveButtonXCoords[5][3] = {
     { 112, 192, 0 },
 };
 
-static const TouchscreenHitbox ov54_021E6D68[16] = {
+static const TouchscreenHitbox sOptionsAppTouchscreenHitboxes[16] = {
     { .rect = { .top = 26, .bottom = 46, .left = 112, .right = 151 } },
     { .rect = { .top = 26, .bottom = 46, .left = 160, .right = 200 } },
     { .rect = { .top = 26, .bottom = 46, .left = 208, .right = 248 } },
@@ -180,7 +183,7 @@ static const TouchscreenHitbox ov54_021E6D68[16] = {
     { .rect = { .top = 146, .bottom = 166, .left = 208, .right = 253 } },
     { .rect = { .top = 172, .bottom = 191, .left = 128, .right = 180 } },
     { .rect = { .top = 172, .bottom = 191, .left = 183, .right = 255 } },
-    { 0xFF, 0, 0, 0 },
+    { TOUCHSCREEN_RECTLIST_END },
 };
 
 // not sure if this is 1d (30) or 2d (15x2)
@@ -202,7 +205,7 @@ static const u32 ov54_021E6DA8[15][2] = {
     { 6, 6 },
 };
 
-static const BgTemplate ov54_021E6E20[5] = {
+static const BgTemplate sOptionsAppBgTemplates[5] = {
     {
         .x = 0,
         .y = 0,
@@ -404,12 +407,6 @@ static const UnkStruct_0200D2B4 ov54_021E6EAC[9] = {
     },
 };
 
-#define wOptionsTitle          &data->windows[0]
-#define w1                     &data->windows[1]
-#define wFrameAndTextSpeedTest &data->windows[2]
-#define wQuitButton            &data->windows[3]
-#define wConfirmButton         &data->windows[4]
-
 extern void sub_0203A964(void);
 
 static void OptionsApp_SetupGraphicsBanks(void);
@@ -426,7 +423,7 @@ static void OptionsApp_PrintTextFrameString(OptionsApp_Data *data, String *frame
 static void OptionsApp_SetupInterfaceText(OptionsApp_Data *data);
 static void OptionsApp_LoadMenuEntriesData(OptionsApp_Data *data);
 static void ov54_021E6418(OptionsApp_Data *data, u16 menuEntryId);
-static void ov54_021E65D0(OptionsApp_Data *data, u32 menuEntryId, OptionsApp_MenuEntry *menuEntry, s32 a3);
+static void OptionsApp_UpdateMenuEntryValueFromKeyPress(OptionsApp_Data *data, u32 menuEntryId, OptionsApp_MenuEntry *menuEntry, s32 offset);
 static void OptionsApp_HandleKeyInput(OptionsApp_Data *data, OptionsApp_MenuEntry *menuEntry);
 static void OptionsApp_HandleInput(OptionsApp_Data *data);
 static void ov54_021E69D4(OptionsApp_Data *data, u32 menuEntryId);
@@ -452,7 +449,7 @@ BOOL OptionsApp_Init(OVY_MANAGER *manager, int *state) {
     data->options.frame = Options_GetFrame(args->options);
 
     data->unk20 = args->unk8;
-    data->filler1C = args->options;
+    data->playerOptionsUnused = args->options;
     data->heapId = HEAP_ID_OPTIONS_APP;
     data->playerOptions = args->options;
     data->unk320 = sub_020183F0(data->unk20);
@@ -461,13 +458,13 @@ BOOL OptionsApp_Init(OVY_MANAGER *manager, int *state) {
     TextFlags_SetCanABSpeedUpPrint(FALSE);
     sub_02002B8C(FALSE);
 
-    sub_0200FBF4(0, 0);
-    sub_0200FBF4(1, 0);
+    sub_0200FBF4(PM_LCD_TOP, 0);
+    sub_0200FBF4(PM_LCD_BOTTOM, 0);
 
     return TRUE;
 }
 
-BOOL OptionsApp_Run(OVY_MANAGER *manager, int *state) {
+BOOL OptionsApp_Main(OVY_MANAGER *manager, int *state) {
     OptionsApp_Data *data = OverlayManager_GetData(manager);
 
     if (data->unk10_0 == 1) {
@@ -509,7 +506,7 @@ BOOL OptionsApp_Exit(OVY_MANAGER *manager, int *state) {
                 return FALSE;
             }
 
-            data->unkC = 0;
+            data->fadeUnused = 0;
             BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapId);
             OptionsApp_SetActiveButtonsXPosition(data);
             sub_0200D020(data->spriteGfxHandler);
@@ -531,7 +528,7 @@ BOOL OptionsApp_Exit(OVY_MANAGER *manager, int *state) {
         case 3:
             sub_0200D020(data->spriteGfxHandler);
             if (!OptionsApp_ConfirmAndQuitButtonsAreDoneAnimating(data)) {
-                data->unkC = 0;
+                data->fadeUnused = 0;
                 BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapId);
                 break;
             }
@@ -657,11 +654,11 @@ static void OptionsApp_SetupBgConfig(OptionsApp_Data *data) {
     SetBothScreensModesAndDisable(&modes);
 
     BgTemplate templates[5];
-    templates = ov54_021E6E20;
+    templates = sOptionsAppBgTemplates;
 
     for (int i = 0; i < 5; i++) {
-        InitBgFromTemplate(data->bgConfig, ov54_021E6C58[i], &templates[i], GF_BG_TYPE_TEXT);
-        BgClearTilemapBufferAndCommit(data->bgConfig, ov54_021E6C58[i]);
+        InitBgFromTemplate(data->bgConfig, sOptionsAppBgLayers[i], &templates[i], GF_BG_TYPE_TEXT);
+        BgClearTilemapBufferAndCommit(data->bgConfig, sOptionsAppBgLayers[i]);
     }
 
     BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 32, 0, data->heapId);
@@ -688,7 +685,7 @@ static void OptionsApp_SetupGraphicsData(OptionsApp_Data *data) {
     GfGfxLoader_LoadScrnData(NARC_a_0_7_2, 17, data->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, FALSE, data->heapId);
     GfGfxLoader_LoadScrnData(NARC_a_0_7_2, 18, data->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, FALSE, data->heapId);
 
-    BgSetPosTextAndCommit(data->bgConfig, 0, BG_POS_OP_SET_Y, ov54_021E6C80[data->currentMenuEntryId]);
+    BgSetPosTextAndCommit(data->bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_SET_Y, sMenuEntryBorderYCoords[data->currentMenuEntryId]);
 }
 
 static void ov54_021E6000(OptionsApp_Data *data) {
@@ -696,11 +693,11 @@ static void ov54_021E6000(OptionsApp_Data *data) {
 }
 
 static void OptionsApp_SetupWindows(OptionsApp_Data *data) {
-    AddWindowParameterized(data->bgConfig, wOptionsTitle, GF_BG_LYR_MAIN_1, 1, 0, 12, 3, 13, 0xA);
-    AddWindowParameterized(data->bgConfig, w1, GF_BG_LYR_MAIN_1, 1, 3, 30, 18, 13, 0x2E);
-    AddWindowParameterized(data->bgConfig, wQuitButton, GF_BG_LYR_MAIN_1, 24, 21, 7, 3, 13, 0x24A);
-    AddWindowParameterized(data->bgConfig, wFrameAndTextSpeedTest, GF_BG_LYR_SUB_1, 2, 19, 27, 4, 12, 0x1);
-    AddWindowParameterized(data->bgConfig, wConfirmButton, GF_BG_LYR_MAIN_1, 15, 21, 7, 3, 13, 0x25F);
+    AddWindowParameterized(data->bgConfig, &data->windows.optionsTitle, GF_BG_LYR_MAIN_1, 1, 0, 12, 3, 13, 0xA);
+    AddWindowParameterized(data->bgConfig, &data->windows.selectedOption, GF_BG_LYR_MAIN_1, 1, 3, 30, 18, 13, 0x2E);
+    AddWindowParameterized(data->bgConfig, &data->windows.quitButton, GF_BG_LYR_MAIN_1, 24, 21, 7, 3, 13, 0x24A);
+    AddWindowParameterized(data->bgConfig, &data->windows.frameAndTextSpeedTest, GF_BG_LYR_SUB_1, 2, 19, 27, 4, 12, 0x1);
+    AddWindowParameterized(data->bgConfig, &data->windows.confirmButton, GF_BG_LYR_MAIN_1, 15, 21, 7, 3, 13, 0x25F);
 
     LoadUserFrameGfx2(data->bgConfig, GF_BG_LYR_SUB_1, 0x6D, 15, data->options.frame, data->heapId);
     LoadFontPal0(GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_13_OFFSET, data->heapId);
@@ -708,28 +705,28 @@ static void OptionsApp_SetupWindows(OptionsApp_Data *data) {
     LoadFontPal1(GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_12_OFFSET, data->heapId);
     LoadFontPal1(GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_12_OFFSET, data->heapId);
 
-    FillWindowPixelBuffer(wOptionsTitle, 0x00);
-    FillWindowPixelBuffer(w1, 0x00);
-    FillWindowPixelBuffer(wQuitButton, 0x00);
-    FillWindowPixelBuffer(wConfirmButton, 0x00);
-    FillWindowPixelBuffer(wFrameAndTextSpeedTest, 0xFF);
+    FillWindowPixelBuffer(&data->windows.optionsTitle, 0x00);
+    FillWindowPixelBuffer(&data->windows.selectedOption, 0x00);
+    FillWindowPixelBuffer(&data->windows.quitButton, 0x00);
+    FillWindowPixelBuffer(&data->windows.confirmButton, 0x00);
+    FillWindowPixelBuffer(&data->windows.frameAndTextSpeedTest, 0xFF);
 
-    ClearWindowTilemap(wFrameAndTextSpeedTest);
-    ClearWindowTilemap(w1);
-    ClearWindowTilemap(wOptionsTitle);
+    ClearWindowTilemap(&data->windows.frameAndTextSpeedTest);
+    ClearWindowTilemap(&data->windows.selectedOption);
+    ClearWindowTilemap(&data->windows.optionsTitle);
 
-    DrawFrameAndWindow2(wFrameAndTextSpeedTest, TRUE, 0x6D, 15);
+    DrawFrameAndWindow2(&data->windows.frameAndTextSpeedTest, TRUE, 0x6D, 15);
 }
 
 static void OptionsApp_FreeWindows(OptionsApp_Data *data) {
-    sub_0200E5D4(w1, FALSE);
-    ClearFrameAndWindow2(wFrameAndTextSpeedTest, FALSE);
+    sub_0200E5D4(&data->windows.selectedOption, FALSE);
+    ClearFrameAndWindow2(&data->windows.frameAndTextSpeedTest, FALSE);
 
-    for (u16 i = 0; i < NELEMS(data->windows); i++) {
-        ClearWindowTilemapAndCopyToVram(&data->windows[i]);
-        FillWindowPixelBuffer(&data->windows[i], 0x00);
-        ClearWindowTilemap(&data->windows[i]);
-        RemoveWindow(&data->windows[i]);
+    for (u16 i = 0; i < NELEMS(data->windows.asArray); i++) {
+        ClearWindowTilemapAndCopyToVram(&data->windows.asArray[i]);
+        FillWindowPixelBuffer(&data->windows.asArray[i], 0x00);
+        ClearWindowTilemap(&data->windows.asArray[i]);
+        RemoveWindow(&data->windows.asArray[i]);
     }
 }
 
@@ -742,12 +739,12 @@ static void OptionsApp_PrintTextFrameString(OptionsApp_Data *data, String *frame
 
     ReadMsgDataIntoString(data->msgData, msg_0045_00040 + data->menuEntries[MENU_ENTRY_FRAME].value, frameNumText);
 
-    FillWindowPixelBuffer(wFrameAndTextSpeedTest, 0xFF);
+    FillWindowPixelBuffer(&data->windows.frameAndTextSpeedTest, 0xFF);
 
     if (instantTextSpeed) {
-        AddTextPrinterParameterizedWithColor(wFrameAndTextSpeedTest, 1, frameNumText, 4, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 15), NULL);
+        AddTextPrinterParameterizedWithColor(&data->windows.frameAndTextSpeedTest, 1, frameNumText, 4, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 15), NULL);
     } else {
-        data->textPrinter = AddTextPrinterParameterizedWithColor(wFrameAndTextSpeedTest, 1, frameNumText, 4, 0, textFrameDelay, MAKE_TEXT_COLOR(1, 2, 15), NULL);
+        data->textPrinter = AddTextPrinterParameterizedWithColor(&data->windows.frameAndTextSpeedTest, 1, frameNumText, 4, 0, textFrameDelay, MAKE_TEXT_COLOR(1, 2, 15), NULL);
     }
 }
 
@@ -756,7 +753,7 @@ static void OptionsApp_SetupInterfaceText(OptionsApp_Data *data) {
     String *tmpString = String_New(40, data->heapId);
 
     ReadMsgDataIntoString(data->msgData, msg_0045_00000, tmpString);
-    AddTextPrinterParameterizedWithColor(wOptionsTitle, 0, tmpString, 2, 5, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&data->windows.optionsTitle, 0, tmpString, 2, 5, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 2, 0), NULL);
 
     String_SetEmpty(tmpString);
     OptionsApp_PrintTextFrameString(data, tmpString, TRUE);
@@ -764,25 +761,25 @@ static void OptionsApp_SetupInterfaceText(OptionsApp_Data *data) {
     for (i = 0; i < MENU_ENTRY_COUNT - 1; i++) {
         String_SetEmpty(tmpString);
         ReadMsgDataIntoString(data->msgData, msg_0045_00001 + i, tmpString);
-        AddTextPrinterParameterizedWithColor(w1, 0, tmpString, 4, i * 24 + 5, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&data->windows.selectedOption, 0, tmpString, 4, i * 24 + 5, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
     }
 
     String_SetEmpty(tmpString);
     ReadMsgDataIntoString(data->msgData, msg_0045_00008, tmpString);
-    AddTextPrinterParameterizedWithColor(wQuitButton, 0, tmpString, 0, 6, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&data->windows.quitButton, 0, tmpString, 0, 6, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
     String_SetEmpty(tmpString);
     ReadMsgDataIntoString(data->msgData, msg_0045_00007, tmpString);
-    AddTextPrinterParameterizedWithColor(wConfirmButton, 0, tmpString, 0, 6, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&data->windows.confirmButton, 0, tmpString, 0, 6, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
 
     for (i = 0; i < MENU_ENTRY_COUNT; i++) {
         ov54_021E6418(data, i);
     }
 
-    CopyWindowToVram(wOptionsTitle);
-    CopyWindowToVram(w1);
-    CopyWindowToVram(wQuitButton);
-    CopyWindowToVram(wConfirmButton);
-    CopyWindowToVram(wFrameAndTextSpeedTest);
+    CopyWindowToVram(&data->windows.optionsTitle);
+    CopyWindowToVram(&data->windows.selectedOption);
+    CopyWindowToVram(&data->windows.quitButton);
+    CopyWindowToVram(&data->windows.confirmButton);
+    CopyWindowToVram(&data->windows.frameAndTextSpeedTest);
 
     String_Delete(tmpString);
 }
@@ -810,13 +807,13 @@ static void OptionsApp_LoadMenuEntriesData(OptionsApp_Data *data) {
 #ifdef NONMATCHING
 static void ov54_021E6418(OptionsApp_Data *data, u16 menuEntryId) {
     u32 y = menuEntryId * 24 + 5;
-    FillWindowPixelRect(w1, 0, 108 + ov54_021E6C30[menuEntryId], y, 384, 24);
+    FillWindowPixelRect(&data->windows.selectedOption, 0, 108 + sOptionsApp_UnkWindowWidthOffsets[menuEntryId], y, 384, 24);
 
     switch (menuEntryId) {
         case MENU_ENTRY_FRAME:
-            u16 x = ov54_021E6D00[menuEntryId][0] - FontID_String_GetWidth(0, data->menuEntries[menuEntryId].strings[data->menuEntries[menuEntryId].value], 0) / 2;
-            AddTextPrinterParameterizedWithColor(w1, 0, data->menuEntries[menuEntryId].strings[data->menuEntries[menuEntryId].value], x, y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
-            CopyWindowToVram(w1);
+            u16 x = sOptionChoiceLabelXCoords[menuEntryId][0] - FontID_String_GetWidth(0, data->menuEntries[menuEntryId].strings[data->menuEntries[menuEntryId].value], 0) / 2;
+            AddTextPrinterParameterizedWithColor(&data->windows.selectedOption, 0, data->menuEntries[menuEntryId].strings[data->menuEntries[menuEntryId].value], x, y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+            CopyWindowToVram(&data->windows.selectedOption);
             OptionsApp_PrintTextFrameString(data, data->frameNumText, TRUE);
             data->unk10_21 = TRUE;
             return;
@@ -835,11 +832,11 @@ static void ov54_021E6418(OptionsApp_Data *data, u16 menuEntryId) {
     // if (data->menuEntries[menuEntryId].numStrings > 0)
     for (u16 i = 0; i < data->menuEntries[menuEntryId].numStrings; i++) {
         u32 color = (i == data->menuEntries[menuEntryId].value) ? MAKE_TEXT_COLOR(1, 2, 0) : MAKE_TEXT_COLOR(15, 2, 0);
-        u16 x = ov54_021E6D00[menuEntryId][i] - (FontID_String_GetWidth(0, data->menuEntries[menuEntryId].strings[i], 0) / 2);
-        AddTextPrinterParameterizedWithColor(w1, 0, data->menuEntries[menuEntryId].strings[i], x, y, TEXT_SPEED_NOTRANSFER, color, NULL);
+        u16 x = sOptionChoiceLabelXCoords[menuEntryId][i] - (FontID_String_GetWidth(0, data->menuEntries[menuEntryId].strings[i], 0) / 2);
+        AddTextPrinterParameterizedWithColor(&data->windows.selectedOption, 0, data->menuEntries[menuEntryId].strings[i], x, y, TEXT_SPEED_NOTRANSFER, color, NULL);
     }
 
-    CopyWindowToVram(w1);
+    CopyWindowToVram(&data->windows.selectedOption);
 }
 #else
 static asm void ov54_021E6418(OptionsApp_Data *data, u16 menuEntryId) {
@@ -847,7 +844,7 @@ static asm void ov54_021E6418(OptionsApp_Data *data, u16 menuEntryId) {
     sub sp, #0x20
     add r6, r1, #0
     str r0, [sp, #0x10]
-    ldr r2, [pc, #0x19C] // _021E65C0 ; =_021E6C30
+    ldr r2, =sOptionsApp_UnkWindowWidthOffsets
     mov r1, #0x18
     add r0, r6, #0
     mul r0, r1
@@ -900,7 +897,7 @@ _021E6466:
     mov r1, #6
     add r2, r6, #0
     mul r2, r1
-    ldr r1, [pc, #0x138] // _021E65C4 ; =ov54_021E6D00
+    ldr r1, =sOptionChoiceLabelXCoords
     lsr r0, r0, #1
     ldrh r1, [r1, r2]
     sub r0, r1, r0
@@ -911,7 +908,7 @@ _021E6466:
     str r0, [sp]
     mov r0, #0xff
     str r0, [sp, #4]
-    ldr r0, [pc, #0x124] // _021E65C8 ; =0x00010200
+    ldr r0, =0x00010200
     str r0, [sp, #8]
     str r1, [sp, #0xc]
     ldrh r2, [r4, r7]
@@ -992,7 +989,7 @@ _021E652E:
     bls _021E65B2
     bls _021E65B2
     mov r0, #6
-    ldr r1, [pc, #0x78] // _021E65C4 ; =ov54_021E6D00
+    ldr r1, =sOptionChoiceLabelXCoords
     mul r0, r6
     add r0, r1, r0
     str r0, [sp, #0x18]
@@ -1006,10 +1003,10 @@ _021E6558:
     ldrh r0, [r0]
     cmp r4, r0
     bne _021E6566
-    ldr r6, [pc, #0x64] // _021E65C8 ; =0x00010200
+    ldr r6, =0x00010200
     b _021E6568
 _021E6566:
-    ldr r6, [pc, #0x64] // _021E65CC ; =0x000F0200
+    ldr r6, =0x000F0200
 _021E6568:
     lsl r7, r4, #2
     add r1, r5, r7
@@ -1053,25 +1050,21 @@ _021E65B2:
     bl CopyWindowToVram
     add sp, #0x20
     pop {r3, r4, r5, r6, r7, pc}
-_021E65C0: DCD ov54_021E6C30
-_021E65C4: DCD ov54_021E6D00
-_021E65C8: DCD 0x00010200
-_021E65CC: DCD 0x000F0200
 }
 #endif
 
-static void ov54_021E65D0(OptionsApp_Data *data, u32 menuEntryId, OptionsApp_MenuEntry *menuEntry, s32 a3) {
+static void OptionsApp_UpdateMenuEntryValueFromKeyPress(OptionsApp_Data *data, u32 menuEntryId, OptionsApp_MenuEntry *menuEntry, s32 offset) {
     if (menuEntryId == MENU_ENTRY_FRAME) {
-        if (a3 == -1) {
+        if (offset == -1) {
             Set2dSpriteAnimSeqNo(data->sprites[5], 1);
-        } else if (a3 == 1) {
+        } else if (offset == 1) {
             Set2dSpriteAnimSeqNo(data->sprites[6], 1);
         }
     }
 
-    if (a3 > 0) {
-        menuEntry->value = (menuEntry->value + a3) % menuEntry->numStrings;
-    } else if (a3 < 0) {
+    if (offset > 0) {
+        menuEntry->value = (menuEntry->value + offset) % menuEntry->numStrings;
+    } else if (offset < 0) {
         menuEntry->value = (menuEntry->value + menuEntry->numStrings - 1) % menuEntry->numStrings;
     }
 }
@@ -1079,11 +1072,11 @@ static void ov54_021E65D0(OptionsApp_Data *data, u32 menuEntryId, OptionsApp_Men
 static void OptionsApp_HandleKeyInput(OptionsApp_Data *data, OptionsApp_MenuEntry *menuEntry) {
     if (data->currentMenuEntryId != MENU_ENTRY_6) {
         if (gSystem.newKeys & PAD_KEY_RIGHT) {
-            ov54_021E65D0(data, data->currentMenuEntryId, menuEntry, 1);
+            OptionsApp_UpdateMenuEntryValueFromKeyPress(data, data->currentMenuEntryId, menuEntry, 1);
             ov54_021E6418(data, data->currentMenuEntryId);
             PlaySE(SEQ_SE_DP_SELECT);
         } else if (gSystem.newKeys & PAD_KEY_LEFT) {
-            ov54_021E65D0(data, data->currentMenuEntryId, menuEntry, -1);
+            OptionsApp_UpdateMenuEntryValueFromKeyPress(data, data->currentMenuEntryId, menuEntry, -1);
             ov54_021E6418(data, data->currentMenuEntryId);
             PlaySE(SEQ_SE_DP_SELECT);
         }
@@ -1140,7 +1133,7 @@ static void OptionsApp_HandleKeyInput(OptionsApp_Data *data, OptionsApp_MenuEntr
 #ifdef NONMATCHING
 static void OptionsApp_HandleInput(OptionsApp_Data *data) {
     if (gSystem.touchNew != 0) {
-        const int hitboxIndex = TouchscreenHitbox_FindHitboxAtTouchNew(&ov54_021E6D68);
+        const int hitboxIndex = TouchscreenHitbox_FindHitboxAtTouchNew(&sOptionsAppTouchscreenHitboxes);
         switch (hitboxIndex) {
             case -1:
                 break;
@@ -1198,14 +1191,14 @@ static void OptionsApp_HandleInput(OptionsApp_Data *data) {
 #else
 static asm void OptionsApp_HandleInput(OptionsApp_Data *data) {
     push {r3, r4, r5, lr}
-    ldr r1, [pc, #408] // _021E69B8 ; =gSystem + 0x40
+    ldr r1, =gSystem + 0x40
     add r4, r0, #0
     ldrh r1, [r1, #0x24]
     cmp r1, #0
     bne _021E682A
     b _021E6998
 _021E682A:
-    ldr r0, [pc, #400] // _021E69BC ; =ov54_021E6D68
+    ldr r0, =sOptionsAppTouchscreenHitboxes
     bl TouchscreenHitbox_FindRectAtTouchNew
     mov r3, #0
     mvn r3, r3
@@ -1223,7 +1216,7 @@ _021E6844:
     mov r2, #0x1c
     bic r1, r2
     lsl r2, r0, #3
-    ldr r0, [pc, #368] // _021E69C0 ; =ov54_021E6DA8
+    ldr r0, =ov54_021E6DA8
     ldr r0, [r0, r2]
     lsl r0, r0, #0x1d
     lsr r0, r0, #0x1b
@@ -1239,7 +1232,7 @@ _021E6844:
     mov r0, #1
     orr r0, r1
     str r0, [r4, #0x10]
-    ldr r0, [pc, #336] // _021E69C4 ; =0x0000061A
+    ldr r0, =0x0000061A
     bl PlaySE
     mov r0, #0x32
     mov r1, #1
@@ -1272,7 +1265,7 @@ _021E68B0:
     mov r2, #0x1c
     bic r1, r2
     lsl r2, r0, #3
-    ldr r0, [pc, #260] // _021E69C0 ; =ov54_021E6DA8
+    ldr r0, =ov54_021E6DA8
     ldr r0, [r0, r2]
     lsl r0, r0, #0x1d
     lsr r0, r0, #0x1b
@@ -1322,7 +1315,7 @@ _021E691E:
     ldr r0, [r4, #0x10]
     mov r1, #0x1c
     bic r0, r1
-    ldr r1, [pc, #152] // _021E69C0 ; =ov54_021E6DA8
+    ldr r1, =ov54_021E6DA8
     add r2, r4, #0
     ldr r1, [r1, r5]
     add r2, #0x84
@@ -1335,19 +1328,19 @@ _021E691E:
     mov r0, #0x54
     mul r0, r1
     add r2, r2, r0
-    ldr r0, [pc, #132] // _021E69C8 ; =ov54_021E6DA8+4
+    ldr r0, =ov54_021E6DA8+4
     ldr r0, [r0, r5]
     cmp r0, #3
     bne _021E6950
     add r0, r4, #0
-    bl ov54_021E65D0
+    bl OptionsApp_UpdateMenuEntryValueFromKeyPress
     b _021E6960
 _021E6950:
     cmp r0, #4
     bne _021E695E
     add r0, r4, #0
     mov r3, #1
-    bl ov54_021E65D0
+    bl OptionsApp_UpdateMenuEntryValueFromKeyPress
     b _021E6960
 _021E695E:
     strh r0, [r2, #2]
@@ -1372,11 +1365,11 @@ _021E6960:
     mov r1, #1
     lsl r0, r0, #4
     str r1, [r4, r0]
-    ldr r0, [pc, #56] // _021E69CC ; =0x000005DC
+    ldr r0, =0x000005DC
     bl PlaySE
     pop {r3, r4, r5, pc}
 _021E6998:
-    ldr r1, [pc, #52] // _021E69D0 ; =gSystem
+    ldr r1, =gSystem
     ldr r1, [r1, #0x48]
     cmp r1, #0
     beq _021E69B4
@@ -1392,13 +1385,6 @@ _021E6998:
 _021E69B4:
     pop {r3, r4, r5, pc}
     nop
-_021E69B8: DCD gSystem + 0x40
-_021E69BC: DCD ov54_021E6D68
-_021E69C0: DCD ov54_021E6DA8
-_021E69C4: DCD 0x0000061A
-_021E69C8: DCD ov54_021E6DA8+4
-_021E69CC: DCD 0x000005DC
-_021E69D0: DCD gSystem
 }
 #endif
 
@@ -1413,7 +1399,7 @@ static void ov54_021E69D4(OptionsApp_Data *data, u32 menuEntryId) {
             Set2dSpriteAnimSeqNo(data->sprites[8], 1);
         }
     } else {
-        BgSetPosTextAndCommit(data->bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_SET_Y, ov54_021E6C80[data->currentMenuEntryId]);
+        BgSetPosTextAndCommit(data->bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_SET_Y, sMenuEntryBorderYCoords[data->currentMenuEntryId]);
         Set2dSpriteAnimSeqNo(data->sprites[7], 0);
         Set2dSpriteAnimSeqNo(data->sprites[8], 0);
         ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_ON);
@@ -1439,7 +1425,7 @@ static void OptionsApp_SetupSpriteRenderer(OptionsApp_Data *data) {
     sub_0200CFF4(data->spriteRenderer, data->spriteGfxHandler, 9);
 
     u16 fileIdList[7];
-    fileIdList = ov54_021E6C38;
+    fileIdList = sOptionsAppResourceDataFileNums;
     sub_0200D294(data->spriteRenderer, data->spriteGfxHandler, fileIdList);
 
     G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(data->spriteRenderer), FX32_CONST(0), FX32_CONST(256));
