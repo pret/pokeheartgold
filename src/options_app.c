@@ -186,23 +186,22 @@ static const TouchscreenHitbox sOptionsAppTouchscreenHitboxes[16] = {
     { TOUCHSCREEN_RECTLIST_END },
 };
 
-// not sure if this is 1d (30) or 2d (15x2)
 static const u32 ov54_021E6DA8[15][2] = {
-    { 0, 0 },
-    { 0, 1 },
-    { 0, 2 },
-    { 1, 0 },
-    { 1, 1 },
-    { 2, 0 },
-    { 2, 1 },
-    { 3, 0 },
-    { 3, 1 },
-    { 4, 0 },
-    { 4, 1 },
-    { 5, 3 },
-    { 5, 4 },
-    { 6, 5 },
-    { 6, 6 },
+    { MENU_ENTRY_TEXT_SPEED, 0 },
+    { MENU_ENTRY_TEXT_SPEED, 1 },
+    { MENU_ENTRY_TEXT_SPEED, 2 },
+    { MENU_ENTRY_BATTLE_SCENE, 0 },
+    { MENU_ENTRY_BATTLE_SCENE, 1 },
+    { MENU_ENTRY_BATTLE_STYLE, 0 },
+    { MENU_ENTRY_BATTLE_STYLE, 1 },
+    { MENU_ENTRY_SOUND_METHOD, 0 },
+    { MENU_ENTRY_SOUND_METHOD, 1 },
+    { MENU_ENTRY_BUTTON_MODE, 0 },
+    { MENU_ENTRY_BUTTON_MODE, 1 },
+    { MENU_ENTRY_FRAME, 3 },
+    { MENU_ENTRY_FRAME, 4 },
+    { MENU_ENTRY_6, 5 },
+    { MENU_ENTRY_6, 6 },
 };
 
 static const BgTemplate sOptionsAppBgTemplates[5] = {
@@ -423,7 +422,7 @@ static void OptionsApp_PrintTextFrameString(OptionsApp_Data *data, String *frame
 static void OptionsApp_SetupInterfaceText(OptionsApp_Data *data);
 static void OptionsApp_LoadMenuEntriesData(OptionsApp_Data *data);
 static void ov54_021E6418(OptionsApp_Data *data, u16 menuEntryId);
-static void OptionsApp_UpdateMenuEntryValueFromKeyPress(OptionsApp_Data *data, u32 menuEntryId, OptionsApp_MenuEntry *menuEntry, s32 offset);
+static void OptionsApp_UpdateMenuEntryCarousel(OptionsApp_Data *data, u32 menuEntryId, OptionsApp_MenuEntry *menuEntry, s32 offset);
 static void OptionsApp_HandleKeyInput(OptionsApp_Data *data, OptionsApp_MenuEntry *menuEntry);
 static void OptionsApp_HandleInput(OptionsApp_Data *data);
 static void ov54_021E69D4(OptionsApp_Data *data, u32 menuEntryId);
@@ -1053,7 +1052,7 @@ _021E65B2:
 }
 #endif
 
-static void OptionsApp_UpdateMenuEntryValueFromKeyPress(OptionsApp_Data *data, u32 menuEntryId, OptionsApp_MenuEntry *menuEntry, s32 offset) {
+static void OptionsApp_UpdateMenuEntryCarousel(OptionsApp_Data *data, u32 menuEntryId, OptionsApp_MenuEntry *menuEntry, s32 offset) {
     if (menuEntryId == MENU_ENTRY_FRAME) {
         if (offset == -1) {
             Set2dSpriteAnimSeqNo(data->sprites[5], 1);
@@ -1072,11 +1071,11 @@ static void OptionsApp_UpdateMenuEntryValueFromKeyPress(OptionsApp_Data *data, u
 static void OptionsApp_HandleKeyInput(OptionsApp_Data *data, OptionsApp_MenuEntry *menuEntry) {
     if (data->currentMenuEntryId != MENU_ENTRY_6) {
         if (gSystem.newKeys & PAD_KEY_RIGHT) {
-            OptionsApp_UpdateMenuEntryValueFromKeyPress(data, data->currentMenuEntryId, menuEntry, 1);
+            OptionsApp_UpdateMenuEntryCarousel(data, data->currentMenuEntryId, menuEntry, 1);
             ov54_021E6418(data, data->currentMenuEntryId);
             PlaySE(SEQ_SE_DP_SELECT);
         } else if (gSystem.newKeys & PAD_KEY_LEFT) {
-            OptionsApp_UpdateMenuEntryValueFromKeyPress(data, data->currentMenuEntryId, menuEntry, -1);
+            OptionsApp_UpdateMenuEntryCarousel(data, data->currentMenuEntryId, menuEntry, -1);
             ov54_021E6418(data, data->currentMenuEntryId);
             PlaySE(SEQ_SE_DP_SELECT);
         }
@@ -1129,17 +1128,15 @@ static void OptionsApp_HandleKeyInput(OptionsApp_Data *data, OptionsApp_MenuEntr
     }
 }
 
-// https://decomp.me/scratch/s3cDE
-#ifdef NONMATCHING
 static void OptionsApp_HandleInput(OptionsApp_Data *data) {
     if (gSystem.touchNew != 0) {
-        const int hitboxIndex = TouchscreenHitbox_FindHitboxAtTouchNew(&sOptionsAppTouchscreenHitboxes);
+        const int hitboxIndex = TouchscreenHitbox_FindRectAtTouchNew(sOptionsAppTouchscreenHitboxes);
         switch (hitboxIndex) {
             case -1:
                 break;
 
-            case 13:
-                data->currentMenuEntryId = ov54_021E6DA8[hitboxIndex * 2];
+            case 13: // Confirm button
+                data->currentMenuEntryId = ov54_021E6DA8[hitboxIndex][0];
                 OptionsApp_SetActiveButtonsXPosition(data);
                 ov54_021E6A64(data);
                 data->unk10_0 = 1;
@@ -1151,8 +1148,8 @@ static void OptionsApp_HandleInput(OptionsApp_Data *data) {
                 Set2dSpriteAnimSeqNo(data->sprites[8], 3);
                 break;
 
-            case 14:
-                data->currentMenuEntryId = ov54_021E6DA8[hitboxIndex * 2];
+            case 14: // Quit button
+                data->currentMenuEntryId = ov54_021E6DA8[hitboxIndex][0];
                 OptionsApp_SetActiveButtonsXPosition(data);
                 ov54_021E6A64(data);
                 data->unk10_0 = 2;
@@ -1164,17 +1161,17 @@ static void OptionsApp_HandleInput(OptionsApp_Data *data) {
                 Set2dSpriteAnimSeqNo(data->sprites[7], 3);
                 break;
 
-            default:
-                data->currentMenuEntryId = ov54_021E6DA8[hitboxIndex * 2];
-                u32 entryIdPlusOne = data->currentMenuEntryId + 1;
+            default: {
+                data->currentMenuEntryId = ov54_021E6DA8[hitboxIndex][0];
                 OptionsApp_MenuEntry *entry = &data->menuEntries[data->currentMenuEntryId];
-                u32 meme = ov54_021E6DA8[entryIdPlusOne];
-                if (meme == 3) {
-                    ov54_021E6D50(data, data->currentMenuEntryId, entry, -1);
-                } else if (meme == 4) {
-                    ov54_021E6D50(data, data->currentMenuEntryId, entry, 1);
+
+                u32 value = ov54_021E6DA8[hitboxIndex][1];
+                if (value == 3) {
+                    OptionsApp_UpdateMenuEntryCarousel(data, data->currentMenuEntryId, entry, -1);
+                } else if (value == 4) {
+                    OptionsApp_UpdateMenuEntryCarousel(data, data->currentMenuEntryId, entry, 1);
                 } else {
-                    entry->value = meme;
+                    entry->value = value;
                 }
                 ov54_021E6418(data, data->currentMenuEntryId);
                 ov54_021E69D4(data, data->currentMenuEntryId);
@@ -1183,210 +1180,12 @@ static void OptionsApp_HandleInput(OptionsApp_Data *data) {
                 data->unk320 = 1;
                 PlaySE(SEQ_SE_DP_SELECT);
                 break;
+            }
         }
     } else if (gSystem.newKeys != 0) {
         OptionsApp_HandleKeyInput(data, &data->menuEntries[data->currentMenuEntryId]);
     }
 }
-#else
-static asm void OptionsApp_HandleInput(OptionsApp_Data *data) {
-    push {r3, r4, r5, lr}
-    ldr r1, =gSystem + 0x40
-    add r4, r0, #0
-    ldrh r1, [r1, #0x24]
-    cmp r1, #0
-    bne _021E682A
-    b _021E6998
-_021E682A:
-    ldr r0, =sOptionsAppTouchscreenHitboxes
-    bl TouchscreenHitbox_FindRectAtTouchNew
-    mov r3, #0
-    mvn r3, r3
-    cmp r0, r3
-    bne _021E683A
-    b _021E69B4
-_021E683A:
-    cmp r0, #0xd
-    beq _021E6844
-    cmp r0, #0xe
-    beq _021E68B0
-    b _021E691E
-_021E6844:
-    ldr r1, [r4, #0x10]
-    mov r2, #0x1c
-    bic r1, r2
-    lsl r2, r0, #3
-    ldr r0, =ov54_021E6DA8
-    ldr r0, [r0, r2]
-    lsl r0, r0, #0x1d
-    lsr r0, r0, #0x1b
-    orr r0, r1
-    str r0, [r4, #0x10]
-    add r0, r4, #0
-    bl OptionsApp_SetActiveButtonsXPosition
-    add r0, r4, #0
-    bl ov54_021E6A64
-    ldr r1, [r4, #0x10]
-    mov r0, #3
-    bic r1, r0
-    mov r0, #1
-    orr r0, r1
-    str r0, [r4, #0x10]
-    ldr r0, =0x0000061A
-    bl PlaySE
-    mov r0, #0x32
-    mov r1, #1
-    lsl r0, r0, #4
-    str r1, [r4, r0]
-    ldr r0, [r4, #0x20]
-    bl sub_02018410
-    ldr r1, [r4, #0x10]
-    mov r0, #1
-    lsl r1, r1, #0x1b
-    lsr r2, r1, #0x1d
-    mov r1, #0x54
-    mul r1, r2
-    add r1, r4, r1
-    add r1, #0x86
-    strh r0, [r1]
-    ldr r1, [r4, #0x10]
-    add r0, r4, #0
-    lsl r1, r1, #0x1b
-    lsr r1, r1, #0x1d
-    bl ov54_021E69D4
-    mov r0, #0xbe
-    lsl r0, r0, #2
-    ldr r0, [r4, r0]
-    mov r1, #3
-    bl Set2dSpriteAnimSeqNo
-    pop {r3, r4, r5, pc}
-_021E68B0:
-    ldr r1, [r4, #0x10]
-    mov r2, #0x1c
-    bic r1, r2
-    lsl r2, r0, #3
-    ldr r0, =ov54_021E6DA8
-    ldr r0, [r0, r2]
-    lsl r0, r0, #0x1d
-    lsr r0, r0, #0x1b
-    orr r0, r1
-    str r0, [r4, #0x10]
-    add r0, r4, #0
-    bl OptionsApp_SetActiveButtonsXPosition
-    add r0, r4, #0
-    bl ov54_021E6A64
-    ldr r1, [r4, #0x10]
-    mov r0, #3
-    bic r1, r0
-    mov r0, #2
-    orr r0, r1
-    str r0, [r4, #0x10]
-    mov r0, #0x25
-    lsl r0, r0, #6
-    bl PlaySE
-    mov r0, #0x32
-    mov r1, #1
-    lsl r0, r0, #4
-    str r1, [r4, r0]
-    ldr r0, [r4, #0x20]
-    bl sub_02018410
-    ldr r1, [r4, #0x10]
-    mov r0, #0
-    lsl r1, r1, #0x1b
-    lsr r2, r1, #0x1d
-    mov r1, #0x54
-    mul r1, r2
-    add r1, r4, r1
-    add r1, #0x86
-    strh r0, [r1]
-    ldr r1, [r4, #0x10]
-    add r0, r4, #0
-    lsl r1, r1, #0x1b
-    lsr r1, r1, #0x1d
-    bl ov54_021E69D4
-    mov r0, #0xbd
-    lsl r0, r0, #2
-    ldr r0, [r4, r0]
-    mov r1, #3
-    bl Set2dSpriteAnimSeqNo
-    pop {r3, r4, r5, pc}
-_021E691E:
-    lsl r5, r0, #3
-    ldr r0, [r4, #0x10]
-    mov r1, #0x1c
-    bic r0, r1
-    ldr r1, =ov54_021E6DA8
-    add r2, r4, #0
-    ldr r1, [r1, r5]
-    add r2, #0x84
-    lsl r1, r1, #0x1d
-    lsr r1, r1, #0x1b
-    orr r0, r1
-    str r0, [r4, #0x10]
-    lsl r0, r0, #0x1b
-    lsr r1, r0, #0x1d
-    mov r0, #0x54
-    mul r0, r1
-    add r2, r2, r0
-    ldr r0, =ov54_021E6DA8+4
-    ldr r0, [r0, r5]
-    cmp r0, #3
-    bne _021E6950
-    add r0, r4, #0
-    bl OptionsApp_UpdateMenuEntryValueFromKeyPress
-    b _021E6960
-_021E6950:
-    cmp r0, #4
-    bne _021E695E
-    add r0, r4, #0
-    mov r3, #1
-    bl OptionsApp_UpdateMenuEntryValueFromKeyPress
-    b _021E6960
-_021E695E:
-    strh r0, [r2, #2]
-_021E6960:
-    ldr r1, [r4, #0x10]
-    add r0, r4, #0
-    lsl r1, r1, #0x1b
-    lsr r1, r1, #0x1d
-    lsl r1, r1, #0x10
-    lsr r1, r1, #0x10
-    bl ov54_021E6418
-    ldr r1, [r4, #0x10]
-    add r0, r4, #0
-    lsl r1, r1, #0x1b
-    lsr r1, r1, #0x1d
-    bl ov54_021E69D4
-    add r0, r4, #0
-    bl OptionsApp_SetActiveButtonsXPosition
-    add r0, r4, #0
-    bl ov54_021E6A64
-    mov r0, #0x32
-    mov r1, #1
-    lsl r0, r0, #4
-    str r1, [r4, r0]
-    ldr r0, =0x000005DC
-    bl PlaySE
-    pop {r3, r4, r5, pc}
-_021E6998:
-    ldr r1, =gSystem
-    ldr r1, [r1, #0x48]
-    cmp r1, #0
-    beq _021E69B4
-    ldr r2, [r4, #0x10]
-    add r1, r4, #0
-    lsl r2, r2, #0x1b
-    lsr r3, r2, #0x1d
-    mov r2, #0x54
-    add r1, #0x84
-    mul r2, r3
-    add r1, r1, r2
-    bl OptionsApp_HandleKeyInput
-_021E69B4:
-    pop {r3, r4, r5, pc}
-    nop
-}
-#endif
 
 static void ov54_021E69D4(OptionsApp_Data *data, u32 menuEntryId) {
     if (menuEntryId == MENU_ENTRY_6) {
