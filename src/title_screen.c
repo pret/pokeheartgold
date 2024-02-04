@@ -77,7 +77,7 @@ struct CameraScript {
 };
 
 static BOOL TitleScreen_Init(OVY_MANAGER *man, int *state);
-static BOOL TitleScreen_Exec(OVY_MANAGER *man, int *state);
+static BOOL TitleScreen_Main(OVY_MANAGER *man, int *state);
 static BOOL TitleScreen_Exit(OVY_MANAGER *man, int *state);
 static void TitleScreen_VBlankCB(void *pVoid);
 static void TitleScreen_SetGfxBanks(void);
@@ -102,7 +102,7 @@ static void TitleScreenAnim_FadeInGameTitleLayer(TitleScreenAnimData *animData);
 
 extern const OVY_MGR_TEMPLATE gApplication_IntroMovie;
 
-const OVY_MGR_TEMPLATE gApplication_TitleScreen = {TitleScreen_Init, TitleScreen_Exec, TitleScreen_Exit, (FSOverlayID)-1};
+const OVY_MGR_TEMPLATE gApplication_TitleScreen = {TitleScreen_Init, TitleScreen_Main, TitleScreen_Exit, FS_OVERLAY_ID_NONE};
 
 static BOOL TitleScreen_Init(OVY_MANAGER *man, int *state) {
     sub_0200FBF4(PM_LCD_TOP, RGB_WHITE);
@@ -131,7 +131,7 @@ static BOOL TitleScreen_Init(OVY_MANAGER *man, int *state) {
     return TRUE;
 }
 
-static BOOL TitleScreen_Exec(OVY_MANAGER *man, int *state) {
+static BOOL TitleScreen_Main(OVY_MANAGER *man, int *state) {
     TitleScreenOverlayData *data = OverlayManager_GetData(man);
     switch (*state) {
     case TITLESCREEN_MAIN_WAIT_FADE:
@@ -242,10 +242,10 @@ static BOOL TitleScreen_Exit(OVY_MANAGER *man, int *state) {
     switch (exitMode) {
     default:
     case TITLESCREEN_EXIT_MENU:
-        RegisterMainOverlay((FSOverlayID)-1, &gApplication_MainMenu);
+        RegisterMainOverlay(FS_OVERLAY_ID_NONE, &gApplication_MainMenu);
         break;
     case TITLESCREEN_EXIT_CLEARSAVE:
-        RegisterMainOverlay((FSOverlayID)-1, &gApplication_DeleteSave);
+        RegisterMainOverlay(FS_OVERLAY_ID_NONE, &gApplication_DeleteSave);
         break;
     case TITLESCREEN_EXIT_TIMEOUT:
         sub_02004AD8(0);
@@ -373,7 +373,9 @@ static void TitleScreen_AdvanceAnimObjsFrame(NNSG3dAnmObj **ppAnmObj, fx32 frame
 
 static void TitleScreenAnimObjs_Run(TitleScreenAnimObject *animObj) {
     MtxFx33 mtx = {
-        FX32_ONE, 0, 0, 0, FX32_ONE, 0, 0, 0, FX32_ONE,
+        FX32_ONE,        0,        0,
+               0, FX32_ONE,        0,
+               0,        0, FX32_ONE,
     };
 
     switch (animObj->state) {
@@ -664,7 +666,7 @@ static void TitleScreenAnim_RunTopScreenGlow(TitleScreenAnimData *animData) {
         }
         break;
     }
-    PaletteData_FadePalettesTowardsColorStep(animData->plttData, 2, 0xFF00, 160, animData->glowFadeStep, RGB(12, 12, 12));
+    PaletteData_FadePalettesTowardsColorStep(animData->plttData, 0x0002, 0xFF00, 160, animData->glowFadeStep, RGB(12, 12, 12));
 }
 
 static void TitleScreen_RemoveTouchToStartWindow(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData *animData) {
