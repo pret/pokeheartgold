@@ -1,5 +1,6 @@
 #include "global.h"
 #include "intro_movie.h"
+#include "intro_movie_internal.h"
 #include "constants/sndseq.h"
 #include "bg_window.h"
 #include "brightness.h"
@@ -10,104 +11,11 @@
 #include "sys_task_api.h"
 #include "system.h"
 #include "title_screen.h"
+#include "unk_0200B150.h"
 #include "unk_0200FA24.h"
+#include "unk_020215A0.h"
+#include "unk_02022588.h"
 #include "unk_02023694.h"
-
-struct IntroMovieSub_150 {
-    u8 unk_000;
-    u8 *unk_004;
-    u8 filler_008[0x10];
-    Sprite *unk_018;
-    void *unk_01C;
-};
-
-struct IntroMovieSub_170_Sub_064 {
-    BOOL unk_000;
-    u16 unk_004;
-    u8 unk_006;
-    u8 unk_007;
-    SysTask *unk_008;
-    int unk_00C;
-    int unk_010;
-    int unk_014;
-    int unk_018;
-    Sprite *unk_01C;
-    Sprite *unk_020;
-    Sprite *unk_024;
-};
-
-struct IntroMovieSub_170 {
-    u8 unk_000;
-    u8 unk_001;
-    u8 unk_002;
-    u8 unk_003;
-    _2DGfxResObj *unk_004[2][4];
-    Sprite *unk_024;
-    Sprite *unk_028;
-    Sprite *unk_02C;
-    Sprite *unk_030;
-    Sprite *unk_034;
-    Sprite *unk_038;
-    Sprite *unk_03C[10];
-    struct IntroMovieSub_170_Sub_064 unk_064;
-    struct IntroMovieSub_170_Sub_064 unk_08C;
-};
-
-struct IntroMovieSub_224 {
-    u8 unk_000;
-    u8 padding_001[3];
-    u8 filler_004[0x1D0];
-};
-
-struct IntroMovieSub_3F8 {
-    u8 unk_000;
-    u8 padding_001[3];
-    u8 filler_004[0x6C];
-};
-
-struct IntroMovieSub_468 {
-    u8 unk_000;
-    u8 unk_001;
-};
-
-struct IntroMovieSub_494 {
-    u8 filler_00[0x18];
-    SysTask *unk_18;
-};
-
-struct IntroMovieSub_574 {
-    u8 filler_00[0x14];
-    SysTask *unk_14;
-    u8 filler_18[0x34];
-};
-
-typedef struct IntroMovieOvyData {
-    HeapID heapID;
-    int unk_004;
-    BOOL unk_008;
-    BgConfig *bgConfig;
-    u8 filler_010[0x13C];
-    u32 unk_14C;
-    struct IntroMovieSub_150 unk_150;
-    struct IntroMovieSub_170 unk_170;
-    struct IntroMovieSub_224 unk_224;
-    struct IntroMovieSub_3F8 unk_3F8;
-    struct IntroMovieSub_468 unk_468;
-    u8 filler_46C[4];
-    SysTask *unk_470;
-    u8 filler_unk_474[0x14];
-    SysTask *unk_488;
-    u8 filler_48C[0x8];
-    struct IntroMovieSub_494 unk_494[8];
-    struct IntroMovieSub_574 unk_574[2];
-    u8 filler_60C[0x10];
-    SysTask *unk_61C;
-    u8 filler_620[8];
-    u8 unk_628;
-    u8 unk_629;
-    u8 unk_62A;
-    u8 unk_62B;
-} IntroMovieOvyData; // size: 0x62C
 
 BOOL IntroMovie_Init(OVY_MANAGER *man, int *state);
 BOOL IntroMovie_Exec(OVY_MANAGER *man, int *state);
@@ -117,11 +25,6 @@ void ov60_021E6E34(IntroMovieOvyData *data);
 void ov60_021E6E40(IntroMovieOvyData *data);
 void ov60_021E6EC0(IntroMovieOvyData *data);
 void *ov60_021E7900(IntroMovieOvyData *data);
-BOOL ov60_021E7984(IntroMovieOvyData *data, void *a1);
-BOOL ov60_021E80E0(IntroMovieOvyData *data, void *a1);
-BOOL ov60_021E8BF8(IntroMovieOvyData *data, void *a1);
-BOOL ov60_021E9D08(IntroMovieOvyData *data, void *a1);
-BOOL ov60_021EAA14(IntroMovieOvyData *data, void *a1);
 
 BOOL (*_021EB860[])(IntroMovieOvyData *data, void *a1) = {
     ov60_021E7984,
@@ -243,4 +146,36 @@ BOOL IntroMovie_Exit(OVY_MANAGER *man, int *state) {
     DestroyHeap(HEAP_ID_INTRO_MOVIE);
     RegisterMainOverlay(FS_OVERLAY_ID(OVY_60), &gApplication_TitleScreen);
     return TRUE;
+}
+
+void ov60_021E6E14(void) {
+    extern const GraphicsBanks _021EB008;
+    GraphicsBanks banks = _021EB008;
+    GfGfx_SetBanks(&banks);
+}
+
+void ov60_021E6E34(IntroMovieOvyData *data) {
+    sub_0202457C(data->unk_010);
+}
+
+void ov60_021E6E40(IntroMovieOvyData *data) {
+    GX_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_32K);
+    GXS_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_32K);
+
+    extern const UnkStruct_020215A0 _021EAFF8;
+    UnkStruct_020215A0 sp14 = _021EAFF8;
+    sub_020215A0(&sp14);
+    sub_02022588(10, HEAP_ID_INTRO_MOVIE);
+    sub_020216C8();
+    sub_02022638();
+    NNS_G2dInitOamManagerModule();
+    OamManager_Create(0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20, HEAP_ID_INTRO_MOVIE);
+    data->unk_010 = G2dRenderer_Init(20, &data->unk_014, HEAP_ID_INTRO_MOVIE);
+}
+
+void ov60_021E6EC0(IntroMovieOvyData *data) {
+    SpriteList_Delete(data->unk_010);
+    OamManager_Free();
+    sub_0202168C();
+    sub_02022608();
 }

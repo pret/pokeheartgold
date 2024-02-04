@@ -10,106 +10,6 @@
 
 	.text
 
-	thumb_func_start ov60_021E6E14
-ov60_021E6E14: ; 0x021E6E14
-	push {r4, lr}
-	sub sp, #0x28
-	ldr r4, _021E6E30 ; =_021EB008
-	add r3, sp, #0
-	mov r2, #5
-_021E6E1E:
-	ldmia r4!, {r0, r1}
-	stmia r3!, {r0, r1}
-	sub r2, r2, #1
-	bne _021E6E1E
-	add r0, sp, #0
-	bl GfGfx_SetBanks
-	add sp, #0x28
-	pop {r4, pc}
-	.balign 4, 0
-_021E6E30: .word _021EB008
-	thumb_func_end ov60_021E6E14
-
-	thumb_func_start ov60_021E6E34
-ov60_021E6E34: ; 0x021E6E34
-	ldr r3, _021E6E3C ; =sub_0202457C
-	ldr r0, [r0, #0x10]
-	bx r3
-	nop
-_021E6E3C: .word sub_0202457C
-	thumb_func_end ov60_021E6E34
-
-	thumb_func_start ov60_021E6E40
-ov60_021E6E40: ; 0x021E6E40
-	push {r4, r5, lr}
-	sub sp, #0x24
-	mov r2, #1
-	lsl r2, r2, #0x1a
-	ldr r1, [r2]
-	add r4, r0, #0
-	add r3, r1, #0
-	ldr r0, _021E6EB4 ; =0xFFCFFFEF
-	mov r1, #0x10
-	and r3, r0
-	orr r3, r1
-	str r3, [r2]
-	ldr r3, _021E6EB8 ; =0x04001000
-	ldr r5, _021E6EBC ; =_021EAFF8
-	ldr r2, [r3]
-	and r0, r2
-	orr r0, r1
-	str r0, [r3]
-	add r3, sp, #0x14
-	add r2, r3, #0
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	add r0, r2, #0
-	bl sub_020215A0
-	mov r0, #0xa
-	mov r1, #0x4a
-	bl sub_02022588
-	bl sub_020216C8
-	bl sub_02022638
-	bl NNS_G2dInitOamManagerModule
-	mov r0, #0
-	str r0, [sp]
-	mov r1, #0x80
-	str r1, [sp, #4]
-	str r0, [sp, #8]
-	mov r3, #0x20
-	str r3, [sp, #0xc]
-	mov r2, #0x4a
-	str r2, [sp, #0x10]
-	add r2, r0, #0
-	bl OamManager_Create
-	add r1, r4, #0
-	mov r0, #0x14
-	add r1, #0x14
-	mov r2, #0x4a
-	bl G2dRenderer_Init
-	str r0, [r4, #0x10]
-	add sp, #0x24
-	pop {r4, r5, pc}
-	.balign 4, 0
-_021E6EB4: .word 0xFFCFFFEF
-_021E6EB8: .word 0x04001000
-_021E6EBC: .word _021EAFF8
-	thumb_func_end ov60_021E6E40
-
-	thumb_func_start ov60_021E6EC0
-ov60_021E6EC0: ; 0x021E6EC0
-	push {r3, lr}
-	ldr r0, [r0, #0x10]
-	bl SpriteList_Delete
-	bl OamManager_Free
-	bl sub_0202168C
-	bl sub_02022608
-	pop {r3, pc}
-	.balign 4, 0
-	thumb_func_end ov60_021E6EC0
-
 	thumb_func_start ov60_021E6ED8
 ov60_021E6ED8: ; 0x021E6ED8
 	push {r3, r4, r5, r6, r7, lr}
@@ -7941,10 +7841,12 @@ ov60_021EAE18: ; 0x021EAE18
 _021EAFF0:
 	.byte 0x4A, 0x00, 0x00, 0x00, 0x4A, 0x00, 0x00, 0x00
 	.size _021EAFF0,.-_021EAFF0
+	.public _021EAFF8
 _021EAFF8:
 	.byte 0x0A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x4A, 0x00, 0x00, 0x00
 	.size _021EAFF8,.-_021EAFF8
+	.public _021EB008
 _021EB008:
 	.byte 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
