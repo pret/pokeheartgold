@@ -736,7 +736,7 @@ static void OptionsApp_PrintTextFrameString(OptionsApp_Data *data, String *frame
         RemoveTextPrinter(data->textPrinter);
     }
 
-    ReadMsgDataIntoString(data->msgData, msg_0045_00040 + data->menuEntries[MENU_ENTRY_FRAME].value, frameNumText);
+    ReadMsgDataIntoString(data->msgData, msg_0045_00040 + data->menuEntries[MENU_ENTRY_FRAME].value, frameNumText); // WINDOW TYPE XX
 
     FillWindowPixelBuffer(&data->windows.frameAndTextSpeedTest, 0xFF);
 
@@ -751,7 +751,7 @@ static void OptionsApp_SetupInterfaceText(OptionsApp_Data *data) {
     u16 i;
     String *tmpString = String_New(40, data->heapId);
 
-    ReadMsgDataIntoString(data->msgData, msg_0045_00000, tmpString);
+    ReadMsgDataIntoString(data->msgData, msg_0045_00000, tmpString); // OPTIONS
     AddTextPrinterParameterizedWithColor(&data->windows.optionsTitle, 0, tmpString, 2, 5, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 2, 0), NULL);
 
     String_SetEmpty(tmpString);
@@ -759,15 +759,15 @@ static void OptionsApp_SetupInterfaceText(OptionsApp_Data *data) {
 
     for (i = 0; i < MENU_ENTRY_COUNT - 1; i++) {
         String_SetEmpty(tmpString);
-        ReadMsgDataIntoString(data->msgData, msg_0045_00001 + i, tmpString);
+        ReadMsgDataIntoString(data->msgData, msg_0045_00001 + i, tmpString); // Option names
         AddTextPrinterParameterizedWithColor(&data->windows.selectedOption, 0, tmpString, 4, i * 24 + 5, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
     }
 
     String_SetEmpty(tmpString);
-    ReadMsgDataIntoString(data->msgData, msg_0045_00008, tmpString);
+    ReadMsgDataIntoString(data->msgData, msg_0045_00008, tmpString); // QUIT
     AddTextPrinterParameterizedWithColor(&data->windows.quitButton, 0, tmpString, 0, 6, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
     String_SetEmpty(tmpString);
-    ReadMsgDataIntoString(data->msgData, msg_0045_00007, tmpString);
+    ReadMsgDataIntoString(data->msgData, msg_0045_00007, tmpString); // CONFIRM
     AddTextPrinterParameterizedWithColor(&data->windows.confirmButton, 0, tmpString, 0, 6, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
 
     for (i = 0; i < MENU_ENTRY_COUNT; i++) {
@@ -789,7 +789,7 @@ static void OptionsApp_LoadMenuEntriesData(OptionsApp_Data *data) {
     for (i = 0; i < MENU_ENTRY_COUNT - 1; i++) {
         data->menuEntries[i].numStrings = sNumChoicesPerMenuEntry[i];
         for (j = 0; j < sNumChoicesPerMenuEntry[i]; j++) {
-            data->menuEntries[i].strings[j] = NewString_ReadMsgData(data->msgData, msg_0045_00009 + msgNum++);
+            data->menuEntries[i].strings[j] = NewString_ReadMsgData(data->msgData, msg_0045_00009 + msgNum++); // Option values
         }
     }
 
