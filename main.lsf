@@ -835,6 +835,7 @@ Overlay OVY_60
 {
     After main
 	Object src/title_screen.o
+	Object src/intro_movie.o
     Object asm/overlay_60.o
 }
 Overlay OVY_61
