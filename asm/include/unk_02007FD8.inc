@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_02003DE8
+.public BlendPalette
 .public AllocAndReadWholeNarcMemberByIdPair
 .public sub_02007FD4
 .public sub_02008120

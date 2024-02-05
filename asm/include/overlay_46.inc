@@ -3,7 +3,7 @@
 .public LoadFontPal0
 .public LoadFontPal1
 .public FontID_String_GetCenterAlignmentX
-.public sub_02003DE8
+.public BlendPalette
 .public sub_02004EC4
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData

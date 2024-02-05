@@ -3,8 +3,8 @@
 .public FontID_String_GetWidth
 .public PaletteData_LoadPalette
 .public PaletteData_LoadNarc
-.public sub_02003E5C
-.public sub_02003EA4
+.public PaletteData_BlendPalette
+.public PaletteData_BlendPalettes
 .public CreateSysTaskAndEnvironment
 .public DestroySysTaskAndEnvironment
 .public NARC_New

@@ -2002,7 +2002,7 @@ ov85_021E6764: ; 0x021E6764
 	bl thunk_OamManager_ApplyAndResetBuffers
 	ldr r0, _021E6784 ; =0x00000D9C
 	ldr r0, [r4, r0]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, _021E6788 ; =0x00000D84
 	ldr r0, [r4, r0]
 	bl DoScheduledBgGpuUpdates
@@ -2507,7 +2507,7 @@ ov85_021E6B68: ; 0x021E6B68
 	ldr r0, [r4, r0]
 	mov r1, #1
 	mov r3, #8
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	add r0, r4, #0
 	mov r1, #0x10
 	mov r2, #0
@@ -2769,7 +2769,7 @@ ov85_021E6E14: ; 0x021E6E14
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	ldr r0, _021E6E68 ; =0x00000D9C
 	mov r2, #2
 	ldr r0, [r4, r0]
@@ -2841,7 +2841,7 @@ ov85_021E6EA8: ; 0x021E6EA8
 	ldr r2, _021E6EC8 ; =0x0000FFFF
 	mov r1, #1
 	lsr r3, r3, #0x18
-	bl sub_02003EA4
+	bl PaletteData_BlendPalettes
 	pop {r3, pc}
 	nop
 _021E6EC4: .word 0x00000D9C

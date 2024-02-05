@@ -71,6 +71,7 @@ BOOL BtlCmd_PokemonEncounter(BattleSystem *bsys, BattleContext *ctx) {
     case B_SIDE_PLAYER:
         break;
     case B_SIDE_OPPONENT:
+    {
         OpponentData *opponentData;
         for (battlerId = 0; battlerId < battlersMax; battlerId++) {
             opponentData = BattleSystem_GetOpponentData(bsys, battlerId);
@@ -80,6 +81,7 @@ BOOL BtlCmd_PokemonEncounter(BattleSystem *bsys, BattleContext *ctx) {
             }
         }
         break;
+    }
     }
 
     return FALSE;
@@ -1240,7 +1242,7 @@ BOOL BtlCmd_ShouldGetExp(BattleSystem *bsys, BattleContext *ctx) {
     return FALSE;
 }
 
-void Task_GetExp(SysTask *task, void *data);
+static void Task_GetExp(SysTask *task, void *data);
 
 BOOL BtlCmd_InitGetExp(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
@@ -1493,9 +1495,11 @@ BOOL BtlCmd_ChangeVar(BattleSystem *bsys, BattleContext *ctx) {
         *var <<= val;
         break;
     case 15:
+    {
         u32 uvar = *var;
         *var = uvar >> val;
         break;
+    }
     case 16:
         *var = MaskOfFlagNo(val);
         break;
@@ -1736,9 +1740,11 @@ BOOL BtlCmd_ChangeMonDataVar(BattleSystem *bsys, BattleContext *ctx) {
         var <<= val;
         break;
     case 15:
+    {
         u32 uvar = var;
         var = uvar >> val;
         break;
+    }
     case 16:
         var = MaskOfFlagNo(val);
         break;
@@ -1887,9 +1893,11 @@ BOOL BtlCmd_ChangeVar2(BattleSystem *bsys, BattleContext *ctx) {
         *var <<= *val;
         break;
     case 15:
+    {
         u32 uvar = *var;
         *var = uvar >> *val;
         break;
+    }
     case 16:
         *var = MaskOfFlagNo(*val);
         break;
@@ -1955,9 +1963,11 @@ BOOL BtlCmd_ChangeMonDataByVar(BattleSystem *bsys, BattleContext *ctx) {
         var <<= *val;
         break;
     case 15:
+    {
         u32 uvar = var;
         var = uvar >> *val;
         break;
+    }
     case 16:
         var = MaskOfFlagNo(*val);
         break;
@@ -2122,21 +2132,29 @@ u32 CalcPrizeMoney(BattleSystem *bsys, BattleContext *ctx, int trainerIndex) {
     switch (trainer.data.trainerType) {
     default:
     case 0:
+    {
         TRPOKE_NOITEM_DFLTMOVES *pokeDef = (TRPOKE_NOITEM_DFLTMOVES *)trPoke;
         level = pokeDef[trainer.data.npoke-1].level;
         break;
+    }
     case 1:
+    {
         TRPOKE_NOITEM_CUSTMOVES *pokeCust = (TRPOKE_NOITEM_CUSTMOVES *)trPoke;
         level = pokeCust[trainer.data.npoke-1].level;
         break;
+    }
     case 2:
+    {
         TRPOKE_ITEM_DFLTMOVES *pokeItem = (TRPOKE_ITEM_DFLTMOVES *)trPoke;
         level = pokeItem[trainer.data.npoke-1].level;
         break;
+    }
     case 3:
+    {
         TRPOKE_ITEM_CUSTMOVES *pokeCustItem = (TRPOKE_ITEM_CUSTMOVES *)trPoke;
         level = pokeCustItem[trainer.data.npoke-1].level;
         break;
+    }
     }
 
     i = 0;
@@ -6011,7 +6029,7 @@ static void Task_GetExp(SysTask *task, void *inData)
     }
 
     switch (data->state) {
-    case STATE_GET_EXP_START: 
+    case STATE_GET_EXP_START:
         item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
         itemEffect = GetItemAttr(item, ITEM_VAR_HOLD_EFFECT, HEAP_ID_BATTLE);
 
@@ -6083,7 +6101,7 @@ static void Task_GetExp(SysTask *task, void *inData)
         }
 
         break;
-    
+
     case STATE_GET_EXP_WAIT_MESSAGE_PRINT:
         if (!TextPrinterCheckActive(data->unk30[0])) {
             data->state++;
@@ -6174,19 +6192,20 @@ static void Task_GetExp(SysTask *task, void *inData)
         data->state = STATE_GET_EXP_LEVEL_UP_SUMMARY_INIT;
         break;
 
-    case STATE_GET_EXP_LEVEL_UP_SUMMARY_INIT: {
+    case STATE_GET_EXP_LEVEL_UP_SUMMARY_INIT:
+    {
         BgConfig *bgConfig = BattleSystem_GetBgConfig(data->bsys);
         Window *window = BattleSystem_GetWindow(data->bsys, 1);
         PaletteData *palette = BattleSystem_GetPaletteData(data->bsys);
 
-        G2_SetBG0Priority(2); 
+        G2_SetBG0Priority(2);
         SetBgPriority(GF_BG_LYR_MAIN_1, 1);
         SetBgPriority(GF_BG_LYR_MAIN_2, 0);
 
-        ov12_0223C224(data->bsys, 1); 
+        ov12_0223C224(data->bsys, 1);
 
         sub_0200E398(bgConfig, 2, 1, 0, HEAP_ID_BATTLE);
-        PaletteData_LoadNarc(palette, NARC_a_0_3_8, sub_0200E3D8(), HEAP_ID_BATTLE, 0, 0x20, 8 * 0x10);
+        PaletteData_LoadNarc(palette, NARC_a_0_3_8, sub_0200E3D8(), HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 0x20, 8 * 0x10);
         AddWindowParameterized(bgConfig, window, GF_BG_LYR_MAIN_2, 0x11, 0x7, 14, 12, 11, (9 + 1));
         FillWindowPixelBuffer(window, 0xFF);
         DrawFrameAndWindow1(window, FALSE, 1, 8);
@@ -6194,10 +6213,11 @@ static void Task_GetExp(SysTask *task, void *inData)
         data->state = STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF;
         break;
     }
-    case STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF: {
+    case STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF:
+    {
         TempStatsStruct stats = ov12_0226C36C;
         TempStatsStruct monData = ov12_0226C384;
-        
+
         Window *window = BattleSystem_GetWindow(data->bsys, 1);
         PokemonStats *oldStats = data->ctx->prevLevelStats;
 
@@ -6219,7 +6239,8 @@ static void Task_GetExp(SysTask *task, void *inData)
         data->state = STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF_WAIT;
         break;
     }
-    case STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_TRUE: {
+    case STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_TRUE:
+    {
         TempStatsStruct monData = ov12_0226C33C;
         Window *window = BattleSystem_GetWindow(data->bsys, 1);
 
@@ -6245,7 +6266,8 @@ static void Task_GetExp(SysTask *task, void *inData)
         }
         break;
 
-    case STATE_GET_EXP_LEVEL_UP_CLEAR: 
+    case STATE_GET_EXP_LEVEL_UP_CLEAR:
+    {
         Window *window = BattleSystem_GetWindow(data->bsys, 1);
 
         sub_0200E5D4(window, 0);
@@ -6264,8 +6286,10 @@ static void Task_GetExp(SysTask *task, void *inData)
         FreeToHeap(data->ctx->prevLevelStats);
         data->state = STATE_GET_EXP_CHECK_LEARN_MOVE;
         break;
+    }
 
-    case STATE_GET_EXP_CHECK_LEARN_MOVE: 
+    case STATE_GET_EXP_CHECK_LEARN_MOVE:
+    {
         u16 move;
         BgConfig *bgConfig = BattleSystem_GetBgConfig(data->bsys); // unused, but must be kept to match
 
@@ -6293,7 +6317,7 @@ static void Task_GetExp(SysTask *task, void *inData)
             break;
         }
         break;
-        
+    }
 
     case STATE_GET_EXP_WANTS_TO_LEARN_MOVE_PRINT:
         msg.id = msg_0197_01178; // "{0} wants to learn the move {1}."
@@ -6399,7 +6423,7 @@ static void Task_GetExp(SysTask *task, void *inData)
         data->unk30[0] = BattleSystem_PrintBattleMessage(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
         data->state++;
         break;
-        
+
     case STATE_GET_EXP_FORGOT_HOW_TO_USE:
         msg.id = msg_0197_01190; // "{0} forgot how to use {1}."
         msg.tag = TAG_NICKNAME_MOVE;
@@ -6415,14 +6439,14 @@ static void Task_GetExp(SysTask *task, void *inData)
         data->unk30[0] = BattleSystem_PrintBattleMessage(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
         data->state++;
         break;
-        
+
     case STATE_GET_EXP_LEARNED_MOVE:
         msg.id = msg_0197_01192; // "{0} learned {1}!"
         msg.tag = TAG_NICKNAME_MOVE;
         msg.param[0] = expBattler | (slot << 8);
         msg.param[1] = data->unk30[4];
         data->unk30[0] = BattleSystem_PrintBattleMessage(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
-    
+
         i = 0;
         SetMonData(mon, MON_DATA_MOVE1PPUP + data->unk30[5], &i);
         MonSetMoveInSlot(mon, data->unk30[4], data->unk30[5]);

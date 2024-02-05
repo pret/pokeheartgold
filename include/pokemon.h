@@ -13,16 +13,16 @@
 #include "sound_chatot.h"
 #include "filesystem.h"
 
-#define WOTBL_END             0xFFFF
-#define WOTBL_MAX                 21
+#define LEVEL_UP_LEARNSET_END             0xFFFF
+#define LEVEL_UP_LEARNSET_MAX                 21
 
-#define WOTBL_MOVEID_MASK     0x01FF
-#define WOTBL_MOVEID_SHIFT         0
-#define WOTBL_LEVEL_MASK      0xFE00
-#define WOTBL_LEVEL_SHIFT          9
+#define LEVEL_UP_LEARNSET_MOVEID_MASK     0x01FF
+#define LEVEL_UP_LEARNSET_MOVEID_SHIFT         0
+#define LEVEL_UP_LEARNSET_LEVEL_MASK      0xFE00
+#define LEVEL_UP_LEARNSET_LEVEL_SHIFT          9
 
-#define WOTBL_MOVE(x) ((u16)(((x) & WOTBL_MOVEID_MASK) >> WOTBL_MOVEID_SHIFT))
-#define WOTBL_LVL(x) ((u8)(((x) & WOTBL_LEVEL_MASK) >> WOTBL_LEVEL_SHIFT))
+#define LEVEL_UP_LEARNSET_MOVE(x) ((u16)(((x) & LEVEL_UP_LEARNSET_MOVEID_MASK) >> LEVEL_UP_LEARNSET_MOVEID_SHIFT))
+#define LEVEL_UP_LEARNSET_LVL(x) (((x) & LEVEL_UP_LEARNSET_LEVEL_MASK) >> LEVEL_UP_LEARNSET_LEVEL_SHIFT)
 
 #define MOVE_APPEND_FULL    0xFFFFu
 #define MOVE_APPEND_KNOWN   0xFFFEu
@@ -50,7 +50,7 @@ void CalcMonStats(Pokemon *mon);
 u32 GetMonData(Pokemon *mon, int attr, void * ptr);
 u32 GetBoxMonData(BoxPokemon *boxMon, int attr, void * ptr);
 void SetMonData(Pokemon *mon, int attr, const void * ptr);
-void SetBoxMonData(BoxPokemon *boxMon, int attr, void * ptr);
+void SetBoxMonData(BoxPokemon *boxMon, int attr, const void * ptr);
 void AddMonData(Pokemon *mon, int attr, int amount);
 //void AddBoxMonData(BoxPokemon *boxMon, int attr, int amount);
 BASE_STATS * AllocAndLoadMonPersonal_HandleAlternateForm(int species, int form, HeapID heapId);
@@ -89,7 +89,7 @@ u32 TryAppendBoxMonMove(BoxPokemon *boxMon, u16 move);
 void BoxMonSetMoveInSlot(BoxPokemon *boxMon, u16 move, u8 slot);
 void DeleteMonFirstMoveAndAppend(Pokemon *mon, u16 move);
 void DeleteBoxMonFirstMoveAndAppend(BoxPokemon *boxMon, u16 move);
-void LoadWotbl_HandleAlternateForm(int species, int form, u16 *wotbl);
+void LoadLevelUpLearnset_HandleAlternateForm(int species, int form, u16 *levelUpLearnset);
 void MonSwapMoves(Pokemon *mon, int a, int b);
 void BoxMonSwapMoves(BoxPokemon *boxMon, int a, int b);
 BoxPokemon *Mon_GetBoxMon(Pokemon *mon);
@@ -149,8 +149,8 @@ u8 sub_02070848(BoxPokemon *boxMon, u8 whichFacing);
 u8 sub_02070854(BoxPokemon *boxMon, u8 whichFacing, BOOL a2);
 u8 sub_020708D8(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid);
 u8 sub_02070A64(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid);
-struct UnkImageStruct *sub_02070C24(SpriteRenderer *r6, SpriteGfxHandler *sp18, void *sp1C, int sp20, int sp88, int trainerClass, int sp90, int sp94, int r5, HeapID heapId);
-void sub_02070D3C(s32 trainer_class, s32 a1, s32 a2, struct UnkStruct_02070D3C *a3);
+struct UnkImageStruct *sub_02070C24(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, PaletteData *plttData, int x, int y, int trainerClass, int battlerPosition, BOOL isLink, int resTag, HeapID heapId);
+void sub_02070D3C(s32 trainer_class, s32 a1, BOOL a2, struct UnkStruct_02070D3C *a3);
 void sub_02070D84(s32 trainer_class, s32 a1, struct UnkStruct_02070D3C *a2);
 u32 sub_02070D90(void);
 u32 sub_02070D94(void);
@@ -192,7 +192,7 @@ u32 MaskOfFlagNo(int flagno);
 BOOL SpeciesIsMythical(u16 species);
 BOOL MonCheckFrontierIneligibility(Pokemon *mon);
 BOOL BoxmonBelongsToPlayer(BoxPokemon *boxMon, PlayerProfile * profile, HeapID heapId);
-int TrainerClassToBackpicID(int trainerClass, int a1);
+int TrainerClassToBackpicID(int trainerClass, BOOL a1);
 void sub_02072914(NARC *narc, struct UnkStruct_02072914_sub *dest, u16 a2, u16 a3);
 void sub_0207294C(NARC *narc, void *a1, void *a2, u16 a3, int a4, int a5, int a6);
 void sub_020729A4(NARC *narc, u8 *ret, u16 a2, u16 a3);

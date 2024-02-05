@@ -11,10 +11,10 @@
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
 .public PaletteData_LoadNarc
-.public sub_020032A4
-.public sub_02003370
-.public sub_0200398C
-.public sub_02003B44
+.public PaletteData_LoadPaletteSlotFromHardware
+.public PaletteData_BeginPaletteFade
+.public PaletteData_PushTransparentBuffers
+.public PaletteData_GetSelectedBuffersBitmask
 .public PlaySE
 .public UnloadOverlayByID
 .public HandleLoadOverlay

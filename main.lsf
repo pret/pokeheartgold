@@ -16,7 +16,7 @@ Static main
 	Object src/string_util.o
 	Object asm/render_text.o
 	Object src/font.o
-	Object asm/palette.o
+	Object src/palette.o
 	Object src/sound.o
 	Object src/sound_radio_sys.o
 	Object asm/unk_02004A44.o
@@ -299,7 +299,7 @@ Static main
 	Object asm/unk_02091564.o
 	Object asm/unk_020915B0.o
 	Object asm/unk_02091664.o
-	Object src/field_blackthorn_tutors.o
+	Object src/move_relearner.o
 	Object asm/unk_02091880.o
 	Object asm/unk_02091CDC.o
 	Object asm/unk_020921A4.o
@@ -615,7 +615,7 @@ Overlay OVY_17
 {
     After OVY_16
     Object src/berry_pots_app.o
-    Object asm/berry_pots_app_rodata.o
+	Object src/berry_pots_app_tasks.o
 }
 Overlay OVY_18
 {

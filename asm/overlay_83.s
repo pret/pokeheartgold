@@ -3030,7 +3030,7 @@ ov83_0223F7A0: ; 0x0223F7A0
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0223F7B2
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 _0223F7B2:
 	ldr r0, [r4, #0x4c]
 	bl DoScheduledBgGpuUpdates
@@ -12404,7 +12404,7 @@ ov83_02244488: ; 0x02244488
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0224449A
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 _0224449A:
 	ldr r0, [r4, #0x4c]
 	bl DoScheduledBgGpuUpdates

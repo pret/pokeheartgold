@@ -875,7 +875,7 @@ _021E7DAA:
 	ldr r0, [r5, #0x10]
 	mov r1, #1
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -883,7 +883,7 @@ _021E7DAA:
 	add r2, r1, #0
 	ldr r0, [r0, #0x78]
 	mov r3, #0xe0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -892,14 +892,14 @@ _021E7DAA:
 	ldr r0, [r0, #0x78]
 	mov r2, #0x40
 	mov r3, #0xc0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x78]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r5, #0x10]
 	mov r1, #0
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r0, #0x10
 	mov r1, #1
 	bl GfGfx_EngineATogglePlanes
@@ -1007,7 +1007,7 @@ _021E7EAC:
 	ldr r0, [r5, #0x10]
 	mov r1, #1
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	ldr r0, _021E7F1C ; =0x00000135
 	mov r4, #0
 	strb r4, [r5, r0]
@@ -1048,7 +1048,7 @@ _021E7F02:
 	ldr r0, [r5, #0x10]
 	mov r1, #0
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r0, #0
 	str r0, [r5, #4]
 	str r0, [r5, #0x30]
@@ -1078,7 +1078,7 @@ _021E7F36:
 	ldr r0, [r5, #0x10]
 	mov r1, #1
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r4, #0
 	mov r6, #1
 _021E7F44:
@@ -1124,7 +1124,7 @@ _021E7F8C:
 	add r2, r1, #0
 	ldr r0, [r0, #0x78]
 	mov r3, #0xe0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #0
@@ -1134,10 +1134,10 @@ _021E7F8C:
 	ldr r0, [r0, #0x78]
 	mov r2, #0x40
 	mov r3, #0xc0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x78]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	mov r4, #0
 	add r6, r4, #0
 _021E7FC2:
@@ -1152,7 +1152,7 @@ _021E7FC2:
 	ldr r0, [r5, #0x10]
 	mov r1, #0
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r0, #0
 	str r0, [r5, #4]
 	str r0, [r5, #0x30]
@@ -2143,7 +2143,7 @@ ov101_021E8790: ; 0x021E8790
 	ldr r0, [r0, #0x78]
 	add r1, r4, #0
 	add r2, #0x14
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #6
@@ -2158,7 +2158,7 @@ ov101_021E8790: ; 0x021E8790
 	ldr r3, [r5]
 	add r1, r4, #0
 	add r2, r6, #0
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #2
 	str r0, [sp]
 	mov r0, #0x16
@@ -2172,7 +2172,7 @@ ov101_021E8790: ; 0x021E8790
 	ldr r3, [r5]
 	ldr r0, [r0, #0x78]
 	add r1, r4, #0
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #3
 	str r0, [sp]
 	mov r0, #0x16
@@ -2186,11 +2186,11 @@ ov101_021E8790: ; 0x021E8790
 	ldr r3, [r5]
 	ldr r0, [r0, #0x78]
 	add r1, r4, #0
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	ldr r0, [r5, #0x10]
 	mov r1, #1
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r0, #0x10
 	mov r1, #0
 	str r0, [sp]
@@ -2199,7 +2199,7 @@ ov101_021E8790: ; 0x021E8790
 	add r2, r1, #0
 	ldr r0, [r0, #0x78]
 	mov r3, #0xe0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #0
@@ -2209,14 +2209,14 @@ ov101_021E8790: ; 0x021E8790
 	ldr r0, [r0, #0x78]
 	mov r2, #0x40
 	mov r3, #0xc0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x78]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r5, #0x10]
 	mov r1, #0
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	add r0, r4, #0
 	bl NARC_Delete
 	add sp, #0x10
@@ -4802,7 +4802,7 @@ _021E9CE8:
 	add r2, r1, #0
 	ldr r0, [r0, #0x78]
 	mov r3, #0xe0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	ldr r0, _021E9D70 ; =0x00000135
 	mov r2, #0x40
 	ldrb r1, [r4, r0]
@@ -4817,7 +4817,7 @@ _021E9CE8:
 	ldr r0, [r4, #0x10]
 	mov r1, #2
 	ldr r0, [r0, #0x78]
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	b _021E9D52
 _021E9D28:
 	str r2, [sp]
@@ -4827,7 +4827,7 @@ _021E9D28:
 	add r2, r1, #0
 	ldr r0, [r0, #0x78]
 	mov r3, #0xe0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	ldr r0, _021E9D70 ; =0x00000135
 	mov r1, #2
 	ldrb r0, [r4, r0]
@@ -4838,7 +4838,7 @@ _021E9D28:
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x78]
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 _021E9D52:
 	ldr r0, _021E9D70 ; =0x00000135
 	ldrb r1, [r4, r0]
@@ -14857,7 +14857,7 @@ _021EEB20:
 	ldr r0, [r5, #0xc]
 	mov r1, #1
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -14865,7 +14865,7 @@ _021EEB20:
 	add r2, r1, #0
 	ldr r0, [r0, #0x78]
 	mov r3, #0xe0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -14874,14 +14874,14 @@ _021EEB20:
 	ldr r0, [r0, #0x78]
 	mov r2, #0x40
 	mov r3, #0xc0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	ldr r0, [r5, #0xc]
 	ldr r0, [r0, #0x78]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r5, #0xc]
 	mov r1, #0
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r0, #0x10
 	mov r1, #1
 	bl GfGfx_EngineATogglePlanes
@@ -14977,7 +14977,7 @@ _021EEC18:
 	ldr r0, [r5, #0xc]
 	mov r1, #1
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r0, #0
 	mov r1, #0xe
 	mov r2, #1
@@ -15020,7 +15020,7 @@ _021EEC72:
 	ldr r0, [r5, #0xc]
 	mov r1, #0
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	ldr r0, [r5, #0xc]
 	mov r1, #0
 	strb r1, [r0, #9]
@@ -15049,7 +15049,7 @@ _021EECA2:
 	ldr r0, [r5, #0xc]
 	mov r1, #1
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	ldr r0, [r5, #0xc]
 	mov r1, #0
 	strb r1, [r0, #9]
@@ -15076,7 +15076,7 @@ _021EECCE:
 	add r2, r1, #0
 	ldr r0, [r0, #0x78]
 	mov r3, #0xe0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #0
@@ -15086,10 +15086,10 @@ _021EECCE:
 	ldr r0, [r0, #0x78]
 	mov r2, #0x40
 	mov r3, #0xc0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	ldr r0, [r5, #0xc]
 	ldr r0, [r0, #0x78]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	mov r4, #0
 	add r6, r4, #0
 	add r7, r4, #0
@@ -15110,7 +15110,7 @@ _021EED06:
 	ldr r0, [r5, #0xc]
 	mov r1, #0
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	ldr r0, [r5, #0xc]
 	mov r1, #0
 	strb r1, [r0, #9]
@@ -15823,7 +15823,7 @@ ov101_021EF26C: ; 0x021EF26C
 	ldr r0, [r0, #0x78]
 	add r1, r4, #0
 	add r2, r2, #4
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #6
@@ -15840,7 +15840,7 @@ ov101_021EF26C: ; 0x021EF26C
 	ldr r0, [r0, #0x78]
 	add r1, r4, #0
 	add r2, r2, #4
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	cmp r6, #0
 	beq _021EF304
 	mov r0, #2
@@ -15856,7 +15856,7 @@ ov101_021EF26C: ; 0x021EF26C
 	ldr r3, [r5]
 	ldr r0, [r0, #0x78]
 	add r1, r4, #0
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #3
 	str r0, [sp]
 	mov r0, #0x16
@@ -15870,12 +15870,12 @@ ov101_021EF26C: ; 0x021EF26C
 	ldr r3, [r5]
 	ldr r0, [r0, #0x78]
 	add r1, r4, #0
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 _021EF304:
 	ldr r0, [r5, #0xc]
 	mov r1, #1
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	cmp r6, #0
 	beq _021EF33E
 	mov r0, #0x10
@@ -15886,7 +15886,7 @@ _021EF304:
 	add r2, r1, #0
 	ldr r0, [r0, #0x78]
 	mov r3, #0xe0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #0
@@ -15896,7 +15896,7 @@ _021EF304:
 	ldr r0, [r0, #0x78]
 	mov r2, #0x40
 	mov r3, #0xc0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	b _021EF366
 _021EF33E:
 	mov r1, #0
@@ -15907,7 +15907,7 @@ _021EF33E:
 	ldr r0, [r0, #0x78]
 	add r2, r1, #0
 	lsl r3, r3, #8
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r2, #0
 	str r2, [sp]
 	str r2, [sp, #4]
@@ -15916,15 +15916,15 @@ _021EF33E:
 	add r3, r1, #0
 	ldr r0, [r0, #0x78]
 	add r3, #0xfe
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 _021EF366:
 	ldr r0, [r5, #0xc]
 	ldr r0, [r0, #0x78]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r5, #0xc]
 	mov r1, #0
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	add r0, r4, #0
 	bl NARC_Delete
 	add sp, #0x10
@@ -17049,7 +17049,7 @@ _021EFBE4:
 	ldr r0, [r5, #0xc]
 	mov r1, #1
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r0, #0
 	mov r1, #0xe
 	mov r2, #1
@@ -17092,7 +17092,7 @@ _021EFC3E:
 	ldr r0, [r5, #0xc]
 	mov r1, #0
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	ldr r0, [r5, #0xc]
 	mov r1, #0
 	strb r1, [r0, #9]
@@ -17127,7 +17127,7 @@ _021EFC78:
 	ldr r0, [r4, #0xc]
 	mov r1, #1
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	strb r1, [r0, #9]
@@ -17154,7 +17154,7 @@ _021EFCA4:
 	add r2, r1, #0
 	ldr r0, [r0, #0x78]
 	mov r3, #0xe0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #0
@@ -17164,10 +17164,10 @@ _021EFCA4:
 	ldr r0, [r0, #0x78]
 	mov r2, #0x40
 	mov r3, #0xc0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0x78]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	mov r5, #0
 	add r6, r5, #0
 	add r7, r5, #0
@@ -17193,7 +17193,7 @@ _021EFD02:
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	strb r1, [r0, #9]
@@ -17483,7 +17483,7 @@ _021EFF26:
 	mov r2, #0xb0
 	ldr r0, [r0, #0x78]
 	mov r3, #0x30
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -17492,7 +17492,7 @@ _021EFF26:
 	ldr r0, [r0, #0x78]
 	mov r2, #0x40
 	mov r3, #0xc0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 _021EFF6C:
 	add r1, r5, #0
 	add r1, #0xcb
@@ -18030,7 +18030,7 @@ ov101_021F0388: ; 0x021F0388
 	ldr r3, [r5]
 	add r1, r4, #0
 	add r2, #0xa
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #6
@@ -18045,7 +18045,7 @@ ov101_021F0388: ; 0x021F0388
 	ldr r3, [r5]
 	add r1, r4, #0
 	add r2, r2, #4
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #2
 	str r0, [sp]
 	mov r0, #0x16
@@ -18059,7 +18059,7 @@ ov101_021F0388: ; 0x021F0388
 	ldr r3, [r5]
 	ldr r0, [r0, #0x78]
 	add r1, r4, #0
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #3
 	str r0, [sp]
 	mov r0, #0x16
@@ -18073,11 +18073,11 @@ ov101_021F0388: ; 0x021F0388
 	ldr r3, [r5]
 	ldr r0, [r0, #0x78]
 	add r1, r4, #0
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	ldr r0, [r5, #0xc]
 	mov r1, #1
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r0, #0x10
 	mov r1, #0
 	str r0, [sp]
@@ -18086,7 +18086,7 @@ ov101_021F0388: ; 0x021F0388
 	add r2, r1, #0
 	ldr r0, [r0, #0x78]
 	mov r3, #0xe0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #0
@@ -18096,14 +18096,14 @@ ov101_021F0388: ; 0x021F0388
 	ldr r0, [r0, #0x78]
 	mov r2, #0x40
 	mov r3, #0xc0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	ldr r0, [r5, #0xc]
 	ldr r0, [r0, #0x78]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r5, #0xc]
 	mov r1, #0
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	add r0, r4, #0
 	bl NARC_Delete
 	add sp, #0x10
@@ -18138,7 +18138,7 @@ ov101_021F0464: ; 0x021F0464
 	add r2, r1, #0
 	ldr r0, [r0, #0x78]
 	mov r3, #0xb0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #8
 	str r0, [sp]
 	mov r1, #0
@@ -18147,7 +18147,7 @@ ov101_021F0464: ; 0x021F0464
 	mov r2, #0xe0
 	ldr r0, [r0, #0x78]
 	mov r3, #0x20
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #8
 	str r0, [sp]
 	mov r0, #0
@@ -18157,7 +18157,7 @@ ov101_021F0464: ; 0x021F0464
 	ldr r0, [r0, #0x78]
 	mov r2, #0x60
 	mov r3, #0x20
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #8
 	str r0, [sp]
 	mov r2, #0
@@ -18166,7 +18166,7 @@ ov101_021F0464: ; 0x021F0464
 	mov r1, #2
 	ldr r0, [r0, #0x78]
 	mov r3, #0x40
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	add r1, r5, #0
 	add r0, r5, #0
 	add r1, #0xc8
@@ -18194,7 +18194,7 @@ _021F0508:
 	add r2, r1, #0
 	ldr r0, [r0, #0x78]
 	mov r3, #0xe0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -18202,7 +18202,7 @@ _021F0508:
 	mov r2, #0xe0
 	ldr r0, [r0, #0x78]
 	mov r3, #0x20
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -18211,7 +18211,7 @@ _021F0508:
 	ldr r0, [r0, #0x78]
 	mov r2, #0x40
 	mov r3, #0xc0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r2, #0
 	str r2, [sp]
 	str r2, [sp, #4]
@@ -18219,19 +18219,19 @@ _021F0508:
 	mov r1, #2
 	ldr r0, [r0, #0x78]
 	mov r3, #0x40
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 _021F0552:
 	ldr r0, [r5, #0xc]
 	mov r1, #1
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	ldr r0, [r5, #0xc]
 	ldr r0, [r0, #0x78]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r5, #0xc]
 	mov r1, #0
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -22222,14 +22222,14 @@ ov101_021F2384: ; 0x021F2384
 	mov r2, #0x10
 	ldr r0, [r4, #0x18]
 	add r3, r2, #0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
 	ldr r0, [r4, #0x18]
 	mov r2, #0xa0
 	mov r3, #0x10
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	b _021F23D4
 _021F23B0:
 	mov r0, #8
@@ -22239,7 +22239,7 @@ _021F23B0:
 	mov r2, #0x10
 	ldr r0, [r4, #0x18]
 	add r3, r2, #0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #8
 	str r0, [sp]
 	mov r1, #0
@@ -22247,16 +22247,16 @@ _021F23B0:
 	ldr r0, [r4, #0x18]
 	mov r2, #0xa0
 	mov r3, #0x10
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 _021F23D4:
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	ldr r0, [r4, #0x18]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r4, #0x18]
 	mov r1, #0
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
@@ -27048,7 +27048,7 @@ _021F4790:
 	ldr r0, [r5, #0xc]
 	mov r1, #1
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -27056,7 +27056,7 @@ _021F4790:
 	add r2, r1, #0
 	ldr r0, [r0, #0x78]
 	mov r3, #0xe0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -27065,14 +27065,14 @@ _021F4790:
 	ldr r0, [r0, #0x78]
 	mov r2, #0x40
 	mov r3, #0xc0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	ldr r0, [r5, #0xc]
 	ldr r0, [r0, #0x78]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r5, #0xc]
 	mov r1, #0
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r0, #0x10
 	mov r1, #1
 	bl GfGfx_EngineATogglePlanes
@@ -27174,7 +27174,7 @@ _021F489C:
 	ldr r0, [r5, #0xc]
 	mov r1, #1
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	add r0, r5, #0
 	mov r1, #0
 	bl ov101_021F50F0
@@ -27221,7 +27221,7 @@ _021F4904:
 	ldr r0, [r5, #0xc]
 	mov r1, #0
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	ldr r0, [r5, #0xc]
 	mov r1, #0
 	strb r1, [r0, #9]
@@ -27256,7 +27256,7 @@ _021F493E:
 	ldr r0, [r5, #0xc]
 	mov r1, #1
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	ldr r0, [r5, #0xc]
 	mov r1, #0
 	strb r1, [r0, #9]
@@ -27288,7 +27288,7 @@ _021F497C:
 	add r2, r1, #0
 	ldr r0, [r0, #0x78]
 	mov r3, #0xe0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #0
@@ -27298,10 +27298,10 @@ _021F497C:
 	ldr r0, [r0, #0x78]
 	mov r2, #0x40
 	mov r3, #0xc0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	ldr r0, [r5, #0xc]
 	ldr r0, [r0, #0x78]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	add r0, r5, #0
 	bl ov101_021F5048
 	mov r4, #0
@@ -27324,7 +27324,7 @@ _021F49BA:
 	ldr r0, [r5, #0xc]
 	mov r1, #0
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	ldr r0, [r5, #0xc]
 	mov r1, #0
 	strb r1, [r0, #9]
@@ -27732,7 +27732,7 @@ ov101_021F4CE8: ; 0x021F4CE8
 	ldr r3, [r5]
 	add r1, r4, #0
 	add r2, #0xa
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #6
@@ -27749,7 +27749,7 @@ ov101_021F4CE8: ; 0x021F4CE8
 	ldr r3, [r5]
 	add r1, r4, #0
 	add r2, r2, #4
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #2
 	str r0, [sp]
 	mov r0, #6
@@ -27763,7 +27763,7 @@ ov101_021F4CE8: ; 0x021F4CE8
 	ldr r3, [r5]
 	ldr r0, [r0, #0x78]
 	add r1, r4, #0
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	mov r0, #3
 	str r0, [sp]
 	lsl r0, r0, #7
@@ -27776,11 +27776,11 @@ ov101_021F4CE8: ; 0x021F4CE8
 	ldr r3, [r5]
 	ldr r0, [r0, #0x78]
 	add r1, r4, #0
-	bl sub_02003220
+	bl PaletteData_LoadFromOpenNarc
 	ldr r0, [r5, #0xc]
 	mov r1, #1
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	mov r0, #0x10
 	mov r1, #0
 	str r0, [sp]
@@ -27789,7 +27789,7 @@ ov101_021F4CE8: ; 0x021F4CE8
 	add r2, r1, #0
 	ldr r0, [r0, #0x78]
 	mov r3, #0xe0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	mov r0, #0x10
 	str r0, [sp]
 	mov r0, #0
@@ -27799,14 +27799,14 @@ ov101_021F4CE8: ; 0x021F4CE8
 	ldr r0, [r0, #0x78]
 	mov r2, #0x40
 	mov r3, #0xc0
-	bl sub_02003E5C
+	bl PaletteData_BlendPalette
 	ldr r0, [r5, #0xc]
 	ldr r0, [r0, #0x78]
-	bl sub_0200398C
+	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r5, #0xc]
 	mov r1, #0
 	ldr r0, [r0, #0x78]
-	bl sub_02003B50
+	bl PaletteData_SetAutoTransparent
 	add r0, r4, #0
 	bl NARC_Delete
 	add sp, #0x10

@@ -2,9 +2,9 @@
 #pragma once
 .public PaletteData_GetUnfadedBuf
 .public PaletteData_GetFadedBuf
-.public sub_02003370
-.public sub_02003B44
-.public sub_02003E5C
+.public PaletteData_BeginPaletteFade
+.public PaletteData_GetSelectedBuffersBitmask
+.public PaletteData_BlendPalette
 .public sub_02005B58
 .public PlayBGM
 .public GF_SndStartFadeOutBGM

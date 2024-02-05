@@ -24,4 +24,12 @@ static inline NNSG3dResMdl* NNS_G3dGetMdlByIdx(const NNSG3dResMdlSet* mdlSet, u3
     return NULL;
 }
 
+static inline const void* NNS_G3dGetTexData(const NNSG3dResTex* tex) {
+    return (u8*)tex + tex->texInfo.ofsTex;
+}
+
+static inline const void* NNS_G3dGetPlttData(const NNSG3dResTex* tex) {
+    return (u8*)tex + tex->plttInfo.ofsPlttData;
+}
+
 #endif //NNSYS_G3D_BINRES_RES_STRUCT_ACCESSOR_INLINE_H_

@@ -2283,7 +2283,7 @@ ov115_02260254: ; 0x02260254
 	ldr r0, [sp, #8]
 	ldr r3, [sp, #4]
 	ldr r0, [r0, #0xc]
-	bl sub_02003DE8
+	bl BlendPalette
 	add r0, r7, #0
 	bl sub_02024B34
 	add r6, r0, #0

@@ -7,11 +7,11 @@
 .public FontID_String_GetWidth
 .public PaletteData_LoadPalette
 .public PaletteData_LoadNarc
-.public sub_020032A4
+.public PaletteData_LoadPaletteSlotFromHardware
 .public PaletteData_GetUnfadedBuf
 .public PaletteData_GetFadedBuf
-.public sub_02003B44
-.public sub_02003E5C
+.public PaletteData_GetSelectedBuffersBitmask
+.public PaletteData_BlendPalette
 .public PlaySE
 .public NARC_New
 .public NARC_Delete
