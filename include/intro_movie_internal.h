@@ -5,15 +5,15 @@
 #include "sys_task.h"
 #include "unk_02023694.h"
 
-struct IntroMovieSub_150 {
+typedef struct IntroMovieScene1Data {
     u8 unk_000;
     u8 *unk_004;
     u8 filler_008[0x10];
     Sprite *unk_018;
     void *unk_01C;
-};
+} IntroMovieScene1Data;
 
-struct IntroMovieSub_170_Sub_064 {
+typedef struct IntroMovieScene2DataSub_064 {
     BOOL unk_000;
     u16 unk_004;
     u8 unk_006;
@@ -26,9 +26,9 @@ struct IntroMovieSub_170_Sub_064 {
     Sprite *unk_01C;
     Sprite *unk_020;
     Sprite *unk_024;
-};
+} IntroMovieScene2DataSub_064;
 
-struct IntroMovieSub_170 {
+typedef struct IntroMovieScene2Data {
     u8 unk_000;
     u8 unk_001;
     u8 unk_002;
@@ -41,37 +41,64 @@ struct IntroMovieSub_170 {
     Sprite *unk_034;
     Sprite *unk_038;
     Sprite *unk_03C[10];
-    struct IntroMovieSub_170_Sub_064 unk_064;
-    struct IntroMovieSub_170_Sub_064 unk_08C;
-};
+    struct IntroMovieScene2DataSub_064 unk_064;
+    struct IntroMovieScene2DataSub_064 unk_08C;
+} IntroMovieScene2Data;
 
-struct IntroMovieSub_224 {
+typedef struct IntroMovieScene3Data {
     u8 unk_000;
     u8 padding_001[3];
     u8 filler_004[0x1D0];
-};
+} IntroMovieScene3Data;
 
-struct IntroMovieSub_3F8 {
+typedef struct IntroMovieScene4Data {
     u8 unk_000;
     u8 padding_001[3];
     u8 filler_004[0x6C];
-};
+} IntroMovieScene4Data;
 
-struct IntroMovieSub_468 {
+typedef struct IntroMovieScene5Data {
     u8 unk_000;
     u8 unk_001;
-};
+} IntroMovieScene5Data;
 
-struct IntroMovieSub_494 {
-    u8 filler_00[0x18];
-    SysTask *unk_18;
-};
+typedef struct IntroMovieSub_46C_000 {
+    u8 counter;
+    u8 rate;
+    u8 ev;
+    u8 stopped;
+    SysTask *task;
+    int plane1;
+    int plane2;
+    int topScreen;
+    int direction;
+} IntroMovieSub_46C_000;
 
-struct IntroMovieSub_574 {
-    u8 filler_00[0x14];
-    SysTask *unk_14;
-    u8 filler_18[0x34];
-};
+typedef struct IntroMovieSub_46C_030 {
+    BgConfig *bgConfig;
+    int running;
+    enum GFBgLayer bgId;
+    fx16 rate;
+    u8 counter;
+    u8 stopped;
+    SysTask *task;
+    fx16 xChange;
+    fx16 yChange;
+    fx16 xOrig;
+    fx16 yOrig;
+} IntroMovieSub_46C_030;
+
+typedef struct IntroMovieSub_46C_110 {
+    u8 filler_00[0xC];
+    SysTask *unk_0C;
+    u8 filler_10[0x3C];
+} IntroMovieSub_46C_110;
+
+typedef struct IntroMovieSub_46C {
+    IntroMovieSub_46C_000 unk_000[2];
+    IntroMovieSub_46C_030 unk_030[8];
+    IntroMovieSub_46C_110 unk_110[2];
+} IntroMovieSub_46C;
 
 typedef struct IntroMovieOvyData {
     HeapID heapID;
@@ -80,21 +107,15 @@ typedef struct IntroMovieOvyData {
     BgConfig *bgConfig;
     SpriteList *unk_010;
     GF_G2dRenderer unk_014;
-    u8 filler_13C[0x10];
+    _2DGfxResMan *unk_13C[4];
     u32 unk_14C;
-    struct IntroMovieSub_150 unk_150;
-    struct IntroMovieSub_170 unk_170;
-    struct IntroMovieSub_224 unk_224;
-    struct IntroMovieSub_3F8 unk_3F8;
-    struct IntroMovieSub_468 unk_468;
-    u8 filler_46C[4];
-    SysTask *unk_470;
-    u8 filler_unk_474[0x14];
-    SysTask *unk_488;
-    u8 filler_48C[0x8];
-    struct IntroMovieSub_494 unk_494[8];
-    struct IntroMovieSub_574 unk_574[2];
-    u8 filler_60C[0x10];
+    IntroMovieScene1Data unk_150;
+    IntroMovieScene2Data unk_170;
+    IntroMovieScene3Data unk_224;
+    IntroMovieScene4Data unk_3F8;
+    IntroMovieScene5Data unk_468;
+    IntroMovieSub_46C unk_46C;
+    u8 filler_614[0x8];
     SysTask *unk_61C;
     u8 filler_620[8];
     u8 unk_628;
@@ -103,10 +124,23 @@ typedef struct IntroMovieOvyData {
     u8 unk_62B;
 } IntroMovieOvyData; // size: 0x62C
 
-BOOL ov60_021E7984(IntroMovieOvyData *data, void *a1);
-BOOL ov60_021E80E0(IntroMovieOvyData *data, void *a1);
-BOOL ov60_021E8BF8(IntroMovieOvyData *data, void *a1);
-BOOL ov60_021E9D08(IntroMovieOvyData *data, void *a1);
-BOOL ov60_021EAA14(IntroMovieOvyData *data, void *a1);
+BOOL IntroMovie_Scene1(IntroMovieOvyData *data, void *a1);
+BOOL IntroMovie_Scene2(IntroMovieOvyData *data, void *a1);
+BOOL IntroMovie_Scene3(IntroMovieOvyData *data, void *a1);
+BOOL IntroMovie_Scene4(IntroMovieOvyData *data, void *a1);
+BOOL IntroMovie_Scene5(IntroMovieOvyData *data, void *a1);
+
+void ov60_021E6ED8(IntroMovieOvyData *data, const u8 *counts);
+void ov60_021E6F00(IntroMovieOvyData *data);
+_2DGfxResMan **ov60_021E6F20(IntroMovieOvyData *data);
+void ov60_021E6F28(Sprite *sprite, BOOL active);
+void ov60_021E6F3C(int resId, IntroMovieOvyData *data, int priority, NNS_G2D_VRAM_TYPE whichScreen, SpriteTemplate *template, SpriteResourcesHeader *header);
+void ov60_021E6FAC(IntroMovieOvyData *data, int mainx, int mainy, int subx, int suby);
+void ov60_021E6FD0(IntroMovieSub_46C_000 *data, int plane1, int plane2, u8 rate, int direction, int screen);
+void ov60_021E7074(BgConfig *bgConfig, IntroMovieSub_46C_030 *data, enum GFBgLayer bgId, fx16 xChange, fx16 yChange, fx32 rate);
+void ov60_021E7120(BgConfig *bgConfig, IntroMovieSub_46C_030 *data, enum GFBgLayer bgId, fx16 xChange, fx16 yChange, fx32 rate);
+int ov60_021E734C(enum GFBgLayer bgId);
+BOOL ov60_021E72FC(IntroMovieSub_46C_030 *data, enum GFBgLayer bgId);
+void ov60_021E7324(IntroMovieSub_46C_030 *data, enum GFBgLayer bgId);
 
 #endif //POKEHEARTGOLD_INTRO_MOVIE_INTERNAL

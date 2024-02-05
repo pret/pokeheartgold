@@ -4,658 +4,19 @@
 	.include "overlay_60.inc"
 	.include "global.inc"
 
-	.extern IntroMovie_Init
-	.extern IntroMovie_Exec
-	.extern IntroMovie_Exit
-
 	.text
 
-	thumb_func_start ov60_021E6ED8
-ov60_021E6ED8: ; 0x021E6ED8
-	push {r3, r4, r5, r6, r7, lr}
-	mov r7, #0x4f
-	add r5, r0, #0
-	add r6, r1, #0
-	mov r4, #0
-	lsl r7, r7, #2
-_021E6EE4:
-	ldrb r0, [r6, r4]
-	add r1, r4, #0
-	mov r2, #0x4a
-	bl Create2DGfxResObjMan
-	lsl r1, r4, #2
-	add r1, r5, r1
-	str r0, [r1, r7]
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, #4
-	blo _021E6EE4
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov60_021E6ED8
-
-	thumb_func_start ov60_021E6F00
-ov60_021E6F00: ; 0x021E6F00
-	push {r4, r5, r6, lr}
-	mov r6, #0x4f
-	add r5, r0, #0
-	mov r4, #0
-	lsl r6, r6, #2
-_021E6F0A:
-	lsl r0, r4, #2
-	add r0, r5, r0
-	ldr r0, [r0, r6]
-	bl Destroy2DGfxResObjMan
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	lsr r4, r0, #0x18
-	cmp r4, #4
-	blo _021E6F0A
-	pop {r4, r5, r6, pc}
-	thumb_func_end ov60_021E6F00
-
-	thumb_func_start ov60_021E6F20
-ov60_021E6F20: ; 0x021E6F20
-	mov r1, #0x4f
-	lsl r1, r1, #2
-	add r0, r0, r1
-	bx lr
-	thumb_func_end ov60_021E6F20
-
-	thumb_func_start ov60_021E6F28
-ov60_021E6F28: ; 0x021E6F28
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	bl Set2dSpriteAnimActiveFlag
-	add r0, r5, #0
-	add r1, r4, #0
-	bl Set2dSpriteVisibleFlag
-	pop {r3, r4, r5, pc}
-	thumb_func_end ov60_021E6F28
-
-	thumb_func_start ov60_021E6F3C
-ov60_021E6F3C: ; 0x021E6F3C
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0x2c
-	add r7, r0, #0
-	mov r0, #0
-	str r7, [sp]
-	mvn r0, r0
-	str r0, [sp, #4]
-	add r5, r1, #0
-	str r0, [sp, #8]
-	mov r1, #0
-	mov r0, #0x4f
-	str r1, [sp, #0xc]
-	lsl r0, r0, #2
-	str r2, [sp, #0x10]
-	ldr r2, [r5, r0]
-	add r6, r3, #0
-	str r2, [sp, #0x14]
-	add r2, r0, #4
-	ldr r2, [r5, r2]
-	add r3, r7, #0
-	str r2, [sp, #0x18]
-	add r2, r0, #0
-	add r2, #8
-	ldr r2, [r5, r2]
-	add r0, #0xc
-	str r2, [sp, #0x1c]
-	ldr r0, [r5, r0]
-	add r2, r7, #0
-	str r0, [sp, #0x20]
-	str r1, [sp, #0x24]
-	str r1, [sp, #0x28]
-	ldr r0, [sp, #0x44]
-	add r1, r7, #0
-	ldr r4, [sp, #0x40]
-	bl CreateSpriteResourcesHeader
-	ldr r0, [r5, #0x10]
-	mov r1, #0
-	str r0, [r4]
-	ldr r0, [sp, #0x44]
-	str r0, [r4, #4]
-	str r1, [r4, #8]
-	str r1, [r4, #0xc]
-	mov r0, #1
-	str r1, [r4, #0x10]
-	lsl r0, r0, #0xc
-	str r0, [r4, #0x14]
-	str r0, [r4, #0x18]
-	str r0, [r4, #0x1c]
-	strh r1, [r4, #0x20]
-	str r1, [r4, #0x24]
-	str r6, [r4, #0x28]
-	mov r0, #0x4a
-	str r0, [r4, #0x2c]
-	add sp, #0x2c
-	pop {r4, r5, r6, r7, pc}
-	thumb_func_end ov60_021E6F3C
-
-	thumb_func_start ov60_021E6FAC
-ov60_021E6FAC: ; 0x021E6FAC
-	push {r4, r5, r6, lr}
-	add r6, r2, #0
-	ldr r2, [sp, #0x10]
-	add r5, r0, #0
-	add r4, r1, #0
-	add r0, #0x14
-	lsl r1, r3, #0xc
-	lsl r2, r2, #0xc
-	bl G2dRenderer_SetSubSurfaceCoords
-	add r5, #0x14
-	add r0, r5, #0
-	lsl r1, r4, #0xc
-	lsl r2, r6, #0xc
-	bl G2dRenderer_SetMainSurfaceCoords
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end ov60_021E6FAC
-
-	thumb_func_start ov60_021E6FD0
-ov60_021E6FD0: ; 0x021E6FD0
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	mov r4, #0
-	strb r4, [r5]
-	strb r4, [r5, #2]
-	ldr r0, [sp, #0x14]
-	strb r4, [r5, #3]
-	str r0, [r5, #0x10]
-	str r1, [r5, #8]
-	str r2, [r5, #0xc]
-	ldr r0, [sp, #0x10]
-	strb r3, [r5, #1]
-	str r0, [r5, #0x14]
-	ldr r0, _021E6FF8 ; =ov60_021E6FFC
-	add r1, r5, #0
-	add r2, r4, #0
-	bl SysTask_CreateOnMainQueue
-	str r0, [r5, #4]
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-_021E6FF8: .word ov60_021E6FFC
-	thumb_func_end ov60_021E6FD0
-
-	thumb_func_start ov60_021E6FFC
-ov60_021E6FFC: ; 0x021E6FFC
-	push {r3, r4, lr}
-	sub sp, #4
-	add r4, r1, #0
-	ldrb r0, [r4]
-	add r0, r0, #1
-	strb r0, [r4]
-	ldrb r1, [r4]
-	mov r0, #0x1f
-	mul r0, r1
-	ldrb r1, [r4, #1]
-	bl _s32_div_f
-	strb r0, [r4, #2]
-	ldrb r0, [r4, #2]
-	cmp r0, #0x1f
-	blo _021E702E
-	mov r0, #0x1f
-	strb r0, [r4, #2]
-	ldr r0, [r4, #4]
-	bl SysTask_Destroy
-	mov r0, #0
-	str r0, [r4, #4]
-	mov r0, #1
-	strb r0, [r4, #3]
-_021E702E:
-	ldr r0, [r4, #0x14]
-	cmp r0, #0
-	bne _021E7038
-	ldrb r3, [r4, #2]
-	b _021E703E
-_021E7038:
-	ldrb r1, [r4, #2]
-	mov r0, #0x1f
-	sub r3, r0, r1
-_021E703E:
-	ldr r0, [r4, #0x10]
-	cmp r0, #0
-	beq _021E7058
-	mov r0, #0x1f
-	sub r0, r0, r3
-	str r0, [sp]
-	ldr r0, _021E706C ; =0x04000050
-	ldr r1, [r4, #8]
-	ldr r2, [r4, #0xc]
-	bl G2x_SetBlendAlpha_
-	add sp, #4
-	pop {r3, r4, pc}
-_021E7058:
-	mov r0, #0x1f
-	sub r0, r0, r3
-	str r0, [sp]
-	ldr r0, _021E7070 ; =0x04001050
-	ldr r1, [r4, #8]
-	ldr r2, [r4, #0xc]
-	bl G2x_SetBlendAlpha_
-	add sp, #4
-	pop {r3, r4, pc}
-	.balign 4, 0
-_021E706C: .word 0x04000050
-_021E7070: .word 0x04001050
-	thumb_func_end ov60_021E6FFC
-
-	thumb_func_start ov60_021E7074
-ov60_021E7074: ; 0x021E7074
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #8
-	add r5, r2, #0
-	add r6, r0, #0
-	add r0, r5, #0
-	add r4, r1, #0
-	add r7, r3, #0
-	bl ov60_021E734C
-	mov r1, #0x1c
-	mul r1, r0
-	add r4, r4, r1
-	ldr r0, [r4, #4]
-	cmp r0, #0
-	beq _021E709A
-	bl GF_AssertFail
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-_021E709A:
-	ldr r1, [sp, #0x24]
-	cmp r1, #0
-	bne _021E70DE
-	add r0, r6, #0
-	add r1, r5, #0
-	bl Bg_GetXpos
-	str r0, [sp]
-	add r0, r6, #0
-	add r1, r5, #0
-	bl Bg_GetYpos
-	str r0, [sp, #4]
-	ldr r3, [sp]
-	add r1, sp, #0x10
-	mov r0, #0x10
-	ldrsh r4, [r1, r0]
-	lsl r1, r5, #0x18
-	add r0, r6, #0
-	lsr r1, r1, #0x18
-	mov r2, #0
-	add r3, r7, r3
-	bl BgSetPosTextAndCommit
-	ldr r3, [sp, #4]
-	lsl r1, r5, #0x18
-	add r0, r6, #0
-	lsr r1, r1, #0x18
-	mov r2, #3
-	add r3, r4, r3
-	bl BgSetPosTextAndCommit
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-_021E70DE:
-	str r6, [r4]
-	str r5, [r4, #8]
-	mov r0, #0
-	strb r0, [r4, #0xe]
-	strb r0, [r4, #0xf]
-	strh r1, [r4, #0xc]
-	add r0, r6, #0
-	add r1, r5, #0
-	bl Bg_GetXpos
-	strh r0, [r4, #0x18]
-	add r0, r6, #0
-	add r1, r5, #0
-	bl Bg_GetYpos
-	strh r0, [r4, #0x1a]
-	strh r7, [r4, #0x14]
-	add r1, sp, #0x10
-	mov r0, #0x10
-	ldrsh r0, [r1, r0]
-	add r1, r4, #0
-	mov r2, #0
-	strh r0, [r4, #0x16]
-	mov r0, #1
-	str r0, [r4, #4]
-	ldr r0, _021E711C ; =ov60_021E71CC
-	bl SysTask_CreateOnVBlankQueue
-	str r0, [r4, #0x10]
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_021E711C: .word ov60_021E71CC
-	thumb_func_end ov60_021E7074
-
-	thumb_func_start ov60_021E7120
-ov60_021E7120: ; 0x021E7120
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #8
-	add r5, r2, #0
-	add r6, r0, #0
-	add r0, r5, #0
-	add r4, r1, #0
-	add r7, r3, #0
-	bl ov60_021E734C
-	mov r1, #0x1c
-	mul r1, r0
-	add r4, r4, r1
-	ldr r0, [r4, #4]
-	cmp r0, #0
-	beq _021E7146
-	bl GF_AssertFail
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-_021E7146:
-	ldr r1, [sp, #0x24]
-	cmp r1, #0
-	bne _021E718A
-	add r0, r6, #0
-	add r1, r5, #0
-	bl Bg_GetXpos
-	str r0, [sp]
-	add r0, r6, #0
-	add r1, r5, #0
-	bl Bg_GetYpos
-	str r0, [sp, #4]
-	ldr r3, [sp]
-	add r1, sp, #0x10
-	mov r0, #0x10
-	ldrsh r4, [r1, r0]
-	lsl r1, r5, #0x18
-	add r0, r6, #0
-	lsr r1, r1, #0x18
-	mov r2, #0
-	add r3, r7, r3
-	bl BgSetPosTextAndCommit
-	ldr r3, [sp, #4]
-	lsl r1, r5, #0x18
-	add r0, r6, #0
-	lsr r1, r1, #0x18
-	mov r2, #3
-	add r3, r4, r3
-	bl BgSetPosTextAndCommit
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-_021E718A:
-	str r6, [r4]
-	str r5, [r4, #8]
-	mov r0, #0
-	strb r0, [r4, #0xe]
-	strb r0, [r4, #0xf]
-	strh r1, [r4, #0xc]
-	add r0, r6, #0
-	add r1, r5, #0
-	bl Bg_GetXpos
-	strh r0, [r4, #0x18]
-	add r0, r6, #0
-	add r1, r5, #0
-	bl Bg_GetYpos
-	strh r0, [r4, #0x1a]
-	strh r7, [r4, #0x14]
-	add r1, sp, #0x10
-	mov r0, #0x10
-	ldrsh r0, [r1, r0]
-	add r1, r4, #0
-	mov r2, #0
-	strh r0, [r4, #0x16]
-	mov r0, #1
-	str r0, [r4, #4]
-	ldr r0, _021E71C8 ; =ov60_021E7264
-	bl SysTask_CreateOnMainQueue
-	str r0, [r4, #0x10]
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_021E71C8: .word ov60_021E7264
-	thumb_func_end ov60_021E7120
-
-	thumb_func_start ov60_021E71CC
-ov60_021E71CC: ; 0x021E71CC
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	mov r0, #0xc
-	ldrsh r1, [r5, r0]
-	cmp r1, #0
-	bge _021E71F8
-	ldr r0, [r5]
-	ldr r1, [r5, #8]
-	bl Bg_GetXpos
-	mov r1, #0x14
-	ldrsh r1, [r5, r1]
-	add r0, r1, r0
-	str r0, [sp]
-	ldr r0, [r5]
-	ldr r1, [r5, #8]
-	bl Bg_GetYpos
-	mov r1, #0x16
-	ldrsh r1, [r5, r1]
-	add r7, r1, r0
-	b _021E7242
-_021E71F8:
-	ldrb r1, [r5, #0xe]
-	add r1, r1, #1
-	strb r1, [r5, #0xe]
-	ldrsh r6, [r5, r0]
-	mov r0, #0x14
-	ldrsh r1, [r5, r0]
-	ldrb r4, [r5, #0xe]
-	add r0, r1, #0
-	mul r0, r4
-	add r1, r6, #0
-	bl _s32_div_f
-	add r7, r0, #0
-	mov r0, #0x16
-	ldrsh r1, [r5, r0]
-	add r0, r1, #0
-	mul r0, r4
-	add r1, r6, #0
-	bl _s32_div_f
-	mov r1, #0x18
-	ldrsh r1, [r5, r1]
-	add r1, r7, r1
-	str r1, [sp]
-	mov r1, #0x1a
-	ldrsh r1, [r5, r1]
-	add r7, r0, r1
-	cmp r4, r6
-	blt _021E7242
-	ldr r0, [r5, #0x10]
-	bl SysTask_Destroy
-	mov r1, #0
-	str r1, [r5, #0x10]
-	mov r0, #1
-	strb r0, [r5, #0xf]
-	str r1, [r5, #4]
-_021E7242:
-	ldr r1, [r5, #8]
-	ldr r0, [r5]
-	lsl r1, r1, #0x18
-	ldr r3, [sp]
-	lsr r1, r1, #0x18
-	mov r2, #0
-	bl BgSetPosTextAndCommit
-	ldr r1, [r5, #8]
-	ldr r0, [r5]
-	lsl r1, r1, #0x18
-	lsr r1, r1, #0x18
-	mov r2, #3
-	add r3, r7, #0
-	bl BgSetPosTextAndCommit
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov60_021E71CC
-
-	thumb_func_start ov60_021E7264
-ov60_021E7264: ; 0x021E7264
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r1, #0
-	mov r0, #0xc
-	ldrsh r1, [r5, r0]
-	cmp r1, #0
-	bge _021E7290
-	ldr r0, [r5]
-	ldr r1, [r5, #8]
-	bl Bg_GetXpos
-	mov r1, #0x14
-	ldrsh r1, [r5, r1]
-	add r0, r1, r0
-	str r0, [sp]
-	ldr r0, [r5]
-	ldr r1, [r5, #8]
-	bl Bg_GetYpos
-	mov r1, #0x16
-	ldrsh r1, [r5, r1]
-	add r7, r1, r0
-	b _021E72DA
-_021E7290:
-	ldrb r1, [r5, #0xe]
-	add r1, r1, #1
-	strb r1, [r5, #0xe]
-	ldrsh r6, [r5, r0]
-	mov r0, #0x14
-	ldrsh r1, [r5, r0]
-	ldrb r4, [r5, #0xe]
-	add r0, r1, #0
-	mul r0, r4
-	add r1, r6, #0
-	bl _s32_div_f
-	add r7, r0, #0
-	mov r0, #0x16
-	ldrsh r1, [r5, r0]
-	add r0, r1, #0
-	mul r0, r4
-	add r1, r6, #0
-	bl _s32_div_f
-	mov r1, #0x18
-	ldrsh r1, [r5, r1]
-	add r1, r7, r1
-	str r1, [sp]
-	mov r1, #0x1a
-	ldrsh r1, [r5, r1]
-	add r7, r0, r1
-	cmp r4, r6
-	blt _021E72DA
-	ldr r0, [r5, #0x10]
-	bl SysTask_Destroy
-	mov r1, #0
-	str r1, [r5, #0x10]
-	mov r0, #1
-	strb r0, [r5, #0xf]
-	str r1, [r5, #4]
-_021E72DA:
-	ldr r1, [r5, #8]
-	ldr r0, [r5]
-	lsl r1, r1, #0x18
-	ldr r3, [sp]
-	lsr r1, r1, #0x18
-	mov r2, #0
-	bl ScheduleSetBgPosText
-	ldr r1, [r5, #8]
-	ldr r0, [r5]
-	lsl r1, r1, #0x18
-	lsr r1, r1, #0x18
-	mov r2, #3
-	add r3, r7, #0
-	bl ScheduleSetBgPosText
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov60_021E7264
-
-	thumb_func_start ov60_021E72FC
-ov60_021E72FC: ; 0x021E72FC
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r0, r1, #0
-	mov r4, #0
-	bl ov60_021E734C
-	mov r1, #0x1c
-	mul r1, r0
-	add r1, r5, r1
-	ldr r0, [r1, #4]
-	cmp r0, #0
-	bne _021E7318
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-_021E7318:
-	ldrb r0, [r1, #0xf]
-	cmp r0, #0
-	beq _021E7320
-	mov r4, #1
-_021E7320:
-	add r0, r4, #0
-	pop {r3, r4, r5, pc}
-	thumb_func_end ov60_021E72FC
-
-	thumb_func_start ov60_021E7324
-ov60_021E7324: ; 0x021E7324
-	push {r4, lr}
-	add r4, r0, #0
-	add r0, r1, #0
-	bl ov60_021E734C
-	mov r1, #0x1c
-	mul r1, r0
-	add r4, r4, r1
-	ldr r0, [r4, #4]
-	cmp r0, #0
-	beq _021E734A
-	ldr r0, [r4, #0x10]
-	bl SysTask_Destroy
-	mov r1, #0
-	str r1, [r4, #0x10]
-	mov r0, #1
-	strb r0, [r4, #0xf]
-	str r1, [r4, #4]
-_021E734A:
-	pop {r4, pc}
-	thumb_func_end ov60_021E7324
-
-	thumb_func_start ov60_021E734C
-ov60_021E734C: ; 0x021E734C
-	push {r4, lr}
-	mov r4, #0
-	cmp r0, #7
-	bhi _021E738E
-	add r0, r0, r0
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_021E7360: ; jump table
-	.short _021E7370 - _021E7360 - 2 ; case 0
-	.short _021E7372 - _021E7360 - 2 ; case 1
-	.short _021E7376 - _021E7360 - 2 ; case 2
-	.short _021E737A - _021E7360 - 2 ; case 3
-	.short _021E737E - _021E7360 - 2 ; case 4
-	.short _021E7382 - _021E7360 - 2 ; case 5
-	.short _021E7386 - _021E7360 - 2 ; case 6
-	.short _021E738A - _021E7360 - 2 ; case 7
-_021E7370:
-	b _021E7392
-_021E7372:
-	mov r4, #1
-	b _021E7392
-_021E7376:
-	mov r4, #2
-	b _021E7392
-_021E737A:
-	mov r4, #3
-	b _021E7392
-_021E737E:
-	mov r4, #4
-	b _021E7392
-_021E7382:
-	mov r4, #5
-	b _021E7392
-_021E7386:
-	mov r4, #6
-	b _021E7392
-_021E738A:
-	mov r4, #7
-	b _021E7392
-_021E738E:
-	bl GF_AssertFail
-_021E7392:
-	add r0, r4, #0
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end ov60_021E734C
+	.extern ov60_021E6ED8
+	.extern ov60_021E6F00
+	.extern ov60_021E6F20
+	.extern ov60_021E6F28
+	.extern ov60_021E6F3C
+	.extern ov60_021E6FAC
+	.extern ov60_021E6FD0
+	.extern ov60_021E7074
+	.extern ov60_021E7120
+	.extern ov60_021E72FC
+	.extern ov60_021E7324
 
 	thumb_func_start ov60_021E7398
 ov60_021E7398: ; 0x021E7398
@@ -1394,8 +755,8 @@ _021E78F8: .word 0x04000006
 _021E78FC: .word 0xFFFFF000
 	thumb_func_end ov60_021E7864
 
-	thumb_func_start ov60_021E7900
-ov60_021E7900: ; 0x021E7900
+	thumb_func_start IntroMovie_GetSceneDataPtr
+IntroMovie_GetSceneDataPtr: ; 0x021E7900
 	push {r4, lr}
 	ldr r1, _021E7950 ; =0x0000062B
 	mov r4, #0
@@ -1446,7 +807,7 @@ _021E794C:
 	.balign 4, 0
 _021E7950: .word 0x0000062B
 _021E7954: .word 0x00000468
-	thumb_func_end ov60_021E7900
+	thumb_func_end IntroMovie_GetSceneDataPtr
 
 	thumb_func_start ov60_021E7958
 ov60_021E7958: ; 0x021E7958
@@ -1480,8 +841,10 @@ ov60_021E7978: ; 0x021E7978
 _021E7980: .word 0x0000062A
 	thumb_func_end ov60_021E7978
 
-	thumb_func_start ov60_021E7984
-ov60_021E7984: ; 0x021E7984
+	; file boundary
+
+	thumb_func_start IntroMovie_Scene1
+IntroMovie_Scene1: ; 0x021E7984
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -1530,7 +893,7 @@ _021E79DE:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov60_021E7984
+	thumb_func_end IntroMovie_Scene1
 
 	thumb_func_start ov60_021E79E4
 ov60_021E79E4: ; 0x021E79E4
@@ -2405,8 +1768,10 @@ ov60_021E8050: ; 0x021E8050
 	pop {r4, r5, pc}
 	thumb_func_end ov60_021E8050
 
-	thumb_func_start ov60_021E80E0
-ov60_021E80E0: ; 0x021E80E0
+	; file boundary
+
+	thumb_func_start IntroMovie_Scene2
+IntroMovie_Scene2: ; 0x021E80E0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -2455,7 +1820,7 @@ _021E813A:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov60_021E80E0
+	thumb_func_end IntroMovie_Scene2
 
 	thumb_func_start ov60_021E8140
 ov60_021E8140: ; 0x021E8140
@@ -3731,8 +3096,10 @@ _021E8BD0:
 	.balign 4, 0
 	thumb_func_end ov60_021E8B7C
 
-	thumb_func_start ov60_021E8BF8
-ov60_021E8BF8: ; 0x021E8BF8
+	; file boundary
+
+	thumb_func_start IntroMovie_Scene3
+IntroMovie_Scene3: ; 0x021E8BF8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -3781,7 +3148,7 @@ _021E8C52:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov60_021E8BF8
+	thumb_func_end IntroMovie_Scene3
 
 	thumb_func_start ov60_021E8C58
 ov60_021E8C58: ; 0x021E8C58
@@ -5764,8 +5131,10 @@ _021E9D00: .word _021EB1FC
 _021E9D04: .word _021EB20E
 	thumb_func_end ov60_021E9C84
 
-	thumb_func_start ov60_021E9D08
-ov60_021E9D08: ; 0x021E9D08
+	; file boundary
+
+	thumb_func_start IntroMovie_Scene4
+IntroMovie_Scene4: ; 0x021E9D08
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -5814,7 +5183,7 @@ _021E9D62:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov60_021E9D08
+	thumb_func_end IntroMovie_Scene4
 
 	thumb_func_start ov60_021E9D68
 ov60_021E9D68: ; 0x021E9D68
@@ -7318,8 +6687,10 @@ _021EAA00:
 _021EAA10: .word gSystem + 0x60
 	thumb_func_end ov60_021EA9A8
 
-	thumb_func_start ov60_021EAA14
-ov60_021EAA14: ; 0x021EAA14
+	; file boundary
+
+	thumb_func_start IntroMovie_Scene5
+IntroMovie_Scene5: ; 0x021EAA14
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -7368,7 +6739,7 @@ _021EAA6E:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end ov60_021EAA14
+	thumb_func_end IntroMovie_Scene5
 
 	thumb_func_start ov60_021EAA74
 ov60_021EAA74: ; 0x021EAA74
@@ -7838,29 +7209,9 @@ ov60_021EAE18: ; 0x021EAE18
 
 	.rodata
 
-_021EAFF0:
-	.byte 0x4A, 0x00, 0x00, 0x00, 0x4A, 0x00, 0x00, 0x00
-	.size _021EAFF0,.-_021EAFF0
-	.public _021EAFF8
-_021EAFF8:
-	.byte 0x0A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x4A, 0x00, 0x00, 0x00
-	.size _021EAFF8,.-_021EAFF8
-	.public _021EB008
-_021EB008:
-	.byte 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00
-	.size _021EB008,.-_021EB008
-
 	; file boundary?
-
-	.public gApplication_IntroMovie
-gApplication_IntroMovie:
-	.word IntroMovie_Init, IntroMovie_Exec, IntroMovie_Exit, 0xFFFFFFFF
-	.size gApplication_IntroMovie, .-gApplication_IntroMovie
 _021EB040:
-	.byte 0x4A, 0x00, 0x00, 0x00
+	.word 74 ; HEAP_ID_INTRO_MOVE
 	.size _021EB040, .-_021EB040
 _021EB044:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

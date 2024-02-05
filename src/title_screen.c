@@ -248,7 +248,7 @@ static BOOL TitleScreen_Exit(OVY_MANAGER *man, int *state) {
         break;
     case TITLESCREEN_EXIT_TIMEOUT:
         sub_02004AD8(0);
-        RegisterMainOverlay(FS_OVERLAY_ID(OVY_60), &gApplication_IntroMovie);
+        RegisterMainOverlay(FS_OVERLAY_ID(intro_title), &gApplication_IntroMovie);
         break;
     case TITLESCREEN_EXIT_MIC_TEST:
         sub_02004AD8(0);

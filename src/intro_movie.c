@@ -18,21 +18,29 @@
 #include "unk_02023694.h"
 
 BOOL IntroMovie_Init(OVY_MANAGER *man, int *state);
-BOOL IntroMovie_Exec(OVY_MANAGER *man, int *state);
+BOOL IntroMovie_Main(OVY_MANAGER *man, int *state);
 BOOL IntroMovie_Exit(OVY_MANAGER *man, int *state);
 void ov60_021E6E14(void);
 void ov60_021E6E34(IntroMovieOvyData *data);
 void ov60_021E6E40(IntroMovieOvyData *data);
 void ov60_021E6EC0(IntroMovieOvyData *data);
-void *ov60_021E7900(IntroMovieOvyData *data);
+void *IntroMovie_GetSceneDataPtr(IntroMovieOvyData *data);
 
-BOOL (*_021EB860[])(IntroMovieOvyData *data, void *a1) = {
-    ov60_021E7984,
-    ov60_021E80E0,
-    ov60_021E8BF8,
-    ov60_021E9D08,
-    ov60_021EAA14,
+const OVY_MGR_TEMPLATE gApplication_IntroMovie = {IntroMovie_Init, IntroMovie_Main, IntroMovie_Exit, FS_OVERLAY_ID_NONE};
+
+static BOOL (*sIntroMovieSceneFuncs[])(IntroMovieOvyData *data, void *a1) = {
+    IntroMovie_Scene1,
+    IntroMovie_Scene2,
+    IntroMovie_Scene3,
+    IntroMovie_Scene4,
+    IntroMovie_Scene5,
 };
+
+HeapID _deadstrip_00(int idx);
+HeapID _deadstrip_00(int idx) {
+    static const HeapID sDeadstrippedRodata[2] = {HEAP_ID_INTRO_MOVIE, HEAP_ID_INTRO_MOVIE};
+    return sDeadstrippedRodata[idx];
+}
 
 BOOL IntroMovie_Init(OVY_MANAGER *man, int *state) {
     ScreenBrightnessData_InitAll();
@@ -60,7 +68,7 @@ BOOL IntroMovie_Init(OVY_MANAGER *man, int *state) {
     return TRUE;
 }
 
-BOOL IntroMovie_Exec(OVY_MANAGER *man, int *state) {
+BOOL IntroMovie_Main(OVY_MANAGER *man, int *state) {
     IntroMovieOvyData *data = OverlayManager_GetData(man);
     if (data->unk_628 && ((gSystem.newKeys & PAD_BUTTON_A) || (gSystem.newKeys & PAD_BUTTON_START) || gSystem.touchNew)) {
         data->unk_008 = TRUE;
@@ -76,7 +84,7 @@ BOOL IntroMovie_Exec(OVY_MANAGER *man, int *state) {
         ++(*state);
         break;
     case 1:
-        if (_021EB860[data->unk_62B](data, ov60_021E7900(data))) {
+        if (sIntroMovieSceneFuncs[data->unk_62B](data, IntroMovie_GetSceneDataPtr(data))) {
             ++data->unk_62B;
             data->unk_629 = 0;
             data->unk_62A = 0;
@@ -110,24 +118,24 @@ BOOL IntroMovie_Exit(OVY_MANAGER *man, int *state) {
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_WHITE);
     ov60_021E6EC0(data);
     FreeToHeap(data->bgConfig);
-    if (data->unk_470 != NULL) {
-        SysTask_Destroy(data->unk_470);
-        data->unk_470 = NULL;
+    if (data->unk_46C.unk_000[0].task != NULL) {
+        SysTask_Destroy(data->unk_46C.unk_000[0].task);
+        data->unk_46C.unk_000[0].task = NULL;
     }
-    if (data->unk_488 != NULL) {
-        SysTask_Destroy(data->unk_488);
-        data->unk_488 = NULL;
+    if (data->unk_46C.unk_000[1].task != NULL) {
+        SysTask_Destroy(data->unk_46C.unk_000[1].task);
+        data->unk_46C.unk_000[1].task = NULL;
     }
     for (i = 0; i < 8; ++i) {
-        if (data->unk_494[i].unk_18 != NULL) {
-            SysTask_Destroy(data->unk_494[i].unk_18);
-            data->unk_494[i].unk_18 = NULL;
+        if (data->unk_46C.unk_030[i].task != NULL) {
+            SysTask_Destroy(data->unk_46C.unk_030[i].task);
+            data->unk_46C.unk_030[i].task = NULL;
         }
     }
     for (i = 0; i < 2; ++i) {
-        if (data->unk_574[i].unk_14 != NULL) {
-            SysTask_Destroy(data->unk_574[i].unk_14);
-            data->unk_574[i].unk_14 = NULL;
+        if (data->unk_46C.unk_110[i].unk_0C != NULL) {
+            SysTask_Destroy(data->unk_46C.unk_110[i].unk_0C);
+            data->unk_46C.unk_110[i].unk_0C = NULL;
         }
     }
     if (data->unk_61C != NULL) {
@@ -144,13 +152,23 @@ BOOL IntroMovie_Exit(OVY_MANAGER *man, int *state) {
     SetLCRNGSeed(data->unk_14C);
     OverlayManager_FreeData(man);
     DestroyHeap(HEAP_ID_INTRO_MOVIE);
-    RegisterMainOverlay(FS_OVERLAY_ID(OVY_60), &gApplication_TitleScreen);
+    RegisterMainOverlay(FS_OVERLAY_ID(intro_title), &gApplication_TitleScreen);
     return TRUE;
 }
 
 void ov60_021E6E14(void) {
-    extern const GraphicsBanks _021EB008;
-    GraphicsBanks banks = _021EB008;
+    GraphicsBanks banks = {
+        GX_VRAM_BG_128_B,
+        GX_VRAM_BGEXTPLTT_NONE,
+        GX_VRAM_SUB_BG_128_C,
+        GX_VRAM_SUB_BGEXTPLTT_NONE,
+        GX_VRAM_OBJ_32_FG,
+        GX_VRAM_OBJEXTPLTT_NONE,
+        GX_VRAM_SUB_OBJ_16_I,
+        GX_VRAM_SUB_OBJEXTPLTT_NONE,
+        GX_VRAM_TEX_0_A,
+        GX_VRAM_TEXPLTT_0123_E
+    };
     GfGfx_SetBanks(&banks);
 }
 
@@ -162,8 +180,7 @@ void ov60_021E6E40(IntroMovieOvyData *data) {
     GX_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_32K);
     GXS_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_32K);
 
-    extern const UnkStruct_020215A0 _021EAFF8;
-    UnkStruct_020215A0 sp14 = _021EAFF8;
+    UnkStruct_020215A0 sp14 = {10, 0, 0, HEAP_ID_INTRO_MOVIE};
     sub_020215A0(&sp14);
     sub_02022588(10, HEAP_ID_INTRO_MOVIE);
     sub_020216C8();
