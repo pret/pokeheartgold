@@ -33,7 +33,7 @@ BOOL ScrCmd_466(ScriptContext *ctx) {
     Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
     Pokemon *mon = Party_GetMonByIndex(party, slot);
     u16 *eligibleMoves = MoveRelearner_GetEligibleLevelUpMoves(mon, HEAP_ID_32);
-    *retPtr = sub_0209186C(eligibleMoves);
+    *retPtr = MoveRelearner_IsValidMove(eligibleMoves);
     FreeToHeap(eligibleMoves);
     return FALSE;
 }
