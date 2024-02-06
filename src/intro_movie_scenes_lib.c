@@ -6,6 +6,9 @@
 void ov60_021E6FFC(SysTask *task, void *pVoid);
 void ov60_021E71CC(SysTask *task, void *pVoid);
 void ov60_021E7264(SysTask *task, void *pVoid);
+void ov60_021E7454(SysTask *task, void *pVoid);
+void ov60_021E74F0(int a0, int a1, u8 a2, u8 a3, int a4);
+void ov60_021E75C4(int a0, int a1, int a2, int a3, int a4);
 
 void ov60_021E6ED8(IntroMovieOvyData *data, const u8 *counts) {
     for (u8 i = 0; i < 4; ++i) {
@@ -258,3 +261,133 @@ int ov60_021E734C(enum GFBgLayer bgId) {
 
     return ret;
 }
+
+IntroMovieSub_46C_110 *ov60_021E7398(IntroMovieSub_46C_110 *data, int a1, int a2, const IntroMovieSub_46C_110_template *a3) {
+    ov60_021E74F0(a3->unk_20, a3->unk_24, a3->unk_28, a3->unk_2A, a2);
+    if (a1 <= 0) {
+        ov60_021E75C4(a3->unk_10, a3->unk_14, a3->unk_18, a3->unk_1C, a2);
+        return NULL;
+    }
+    IntroMovieSub_46C_110 *ret = a2 == 0 ? &data[1] : &data[0];
+    ret->unk_10 = *a3;
+    ret->unk_08 = a1;
+    ret->unk_0A = 0;
+    ret->unk_0B = TRUE;
+    ret->unk_00 = TRUE;
+    ret->unk_04 = a2;
+    ret->unk_3C = a3->unk_00;
+    ret->unk_40 = a3->unk_04;
+    ret->unk_44 = a3->unk_08;
+    ret->unk_48 = a3->unk_0C;
+    ov60_021E75C4(a3->unk_00, a3->unk_04, a3->unk_08, a3->unk_0C, a2);
+    ret->unk_0C = SysTask_CreateOnVBlankQueue(ov60_021E7454, ret, 0);
+    return ret;
+}
+
+BOOL ov60_021E7434(IntroMovieSub_46C_110 *data, int a1) {
+    IntroMovieSub_46C_110 *which = a1 == 0 ? &data[1] : &data[0];
+    if (which->unk_00 == 0) {
+        return TRUE;
+    }
+    return which->unk_0B != 0;
+}
+
+// https://decomp.me/scratch/b19bs
+#ifdef NONMATCHING
+void ov60_021E7454(SysTask *task, void *pVoid) {
+    IntroMovieSub_46C_110 *data = (IntroMovieSub_46C_110 *)pVoid;
+    ++data->unk_0A;
+    int spC = data->unk_10.unk_00 + (data->unk_10.unk_10 - data->unk_10.unk_00) * data->unk_0A / data->unk_08;
+    int sp8 = data->unk_10.unk_04 + (data->unk_10.unk_14 - data->unk_10.unk_04) * data->unk_0A / data->unk_08;
+    int r7 = data->unk_10.unk_08 + (data->unk_10.unk_18 - data->unk_10.unk_08) * data->unk_0A / data->unk_08;
+    int r4 = data->unk_10.unk_0C + (data->unk_10.unk_1C - data->unk_10.unk_0C) * data->unk_0A / data->unk_08;
+    data->unk_3C = spC;
+    data->unk_40 = sp8;
+    data->unk_44 = r7;
+    data->unk_48 = r4;
+    if (data->unk_0A >= data->unk_08) {
+        SysTask_Destroy(data->unk_0C);
+        data->unk_0C = NULL;
+        data->unk_0B = TRUE;
+        data->unk_00 = FALSE;
+    }
+    ov60_021E75C4(spC, sp8, r7, r4, data->unk_04);
+}
+#else
+extern s32 _s32_div_f(s32, s32);
+asm void ov60_021E7454(SysTask *task, void *pVoid) {
+    push {r3, r4, r5, r6, r7, lr}
+	sub sp, #0x10
+	add r5, r1, #0
+	ldrb r0, [r5, #0xa]
+	add r0, r0, #1
+	strb r0, [r5, #0xa]
+	ldr r7, [r5, #0x10]
+	ldr r0, [r5, #0x20]
+	ldrb r4, [r5, #0xa]
+	sub r1, r0, r7
+	mov r0, #8
+	ldrsh r6, [r5, r0]
+	add r0, r1, #0
+	mul r0, r4
+	add r1, r6, #0
+	bl _s32_div_f
+	add r0, r7, r0
+	str r0, [sp, #0xc]
+	ldr r7, [r5, #0x14]
+	ldr r0, [r5, #0x24]
+	sub r1, r0, r7
+	add r0, r1, #0
+	mul r0, r4
+	add r1, r6, #0
+	bl _s32_div_f
+	add r0, r7, r0
+	str r0, [sp, #8]
+	ldr r7, [r5, #0x18]
+	ldr r0, [r5, #0x28]
+	sub r1, r0, r7
+	add r0, r1, #0
+	mul r0, r4
+	add r1, r6, #0
+	bl _s32_div_f
+	add r7, r7, r0
+	ldr r0, [r5, #0x1c]
+	ldr r1, [r5, #0x2c]
+	str r0, [sp, #4]
+	sub r1, r1, r0
+	add r0, r1, #0
+	mul r0, r4
+	add r1, r6, #0
+	bl _s32_div_f
+	ldr r1, [sp, #4]
+	add r4, r1, r0
+	ldr r0, [sp, #0xc]
+	str r0, [r5, #0x3c]
+	ldr r0, [sp, #8]
+	str r0, [r5, #0x40]
+	str r7, [r5, #0x44]
+	str r4, [r5, #0x48]
+	mov r0, #8
+	ldrb r1, [r5, #0xa]
+	ldrsh r0, [r5, r0]
+	cmp r1, r0
+	blt @_021E74DC
+	ldr r0, [r5, #0xc]
+	bl SysTask_Destroy
+	mov r1, #0
+	str r1, [r5, #0xc]
+	mov r0, #1
+	strb r0, [r5, #0xb]
+	str r1, [r5]
+@_021E74DC:
+	ldr r0, [r5, #4]
+	ldr r1, [sp, #8]
+	str r0, [sp]
+	ldr r0, [sp, #0xc]
+	add r2, r7, #0
+	add r3, r4, #0
+	bl ov60_021E75C4
+	add sp, #0x10
+	pop {r3, r4, r5, r6, r7, pc}
+}
+#endif //NONMATCHING

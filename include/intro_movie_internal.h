@@ -88,10 +88,33 @@ typedef struct IntroMovieSub_46C_030 {
     fx16 yOrig;
 } IntroMovieSub_46C_030;
 
+typedef struct IntroMovieSub_46C_110_template {
+    int unk_00;
+    int unk_04;
+    int unk_08;
+    int unk_0C;
+    int unk_10;
+    int unk_14;
+    int unk_18;
+    int unk_1C;
+    int unk_20;
+    int unk_24;
+    u16 unk_28;
+    u16 unk_2A;
+} IntroMovieSub_46C_110_template;
+
 typedef struct IntroMovieSub_46C_110 {
-    u8 filler_00[0xC];
+    int unk_00;
+    int unk_04;
+    s16 unk_08;
+    u8 unk_0A;
+    u8 unk_0B;
     SysTask *unk_0C;
-    u8 filler_10[0x3C];
+    IntroMovieSub_46C_110_template unk_10;
+    int unk_3C;
+    int unk_40;
+    int unk_44;
+    int unk_48;
 } IntroMovieSub_46C_110;
 
 typedef struct IntroMovieSub_46C {
@@ -142,5 +165,7 @@ void ov60_021E7120(BgConfig *bgConfig, IntroMovieSub_46C_030 *data, enum GFBgLay
 int ov60_021E734C(enum GFBgLayer bgId);
 BOOL ov60_021E72FC(IntroMovieSub_46C_030 *data, enum GFBgLayer bgId);
 void ov60_021E7324(IntroMovieSub_46C_030 *data, enum GFBgLayer bgId);
+IntroMovieSub_46C_110 *ov60_021E7398(IntroMovieSub_46C_110 *data, int a1, int a2, const IntroMovieSub_46C_110_template *a3);
+BOOL ov60_021E7434(IntroMovieSub_46C_110 *data, int a1);
 
 #endif //POKEHEARTGOLD_INTRO_MOVIE_INTERNAL
