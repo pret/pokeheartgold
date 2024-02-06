@@ -18,18 +18,18 @@ Options* Options_New(HeapID heapId);
 void Options_Copy(Options* src, Options* dest);
 void Options_Init(Options* options);
 void Options_SetButtonModeOnMain(SaveData* saveData, u32 buttonMode);
-u16 Options_GetTextSpeed(Options* options);
+u32 Options_GetTextSpeed(Options* options);
 void Options_SetTextSpeed(Options* options, u32 textSpeed);
 u8 Options_GetTextFrameDelay(Options* options);
-u16 Options_GetSoundMethod(Options* options);
+u32 Options_GetSoundMethod(Options* options);
 void Options_SetSoundMethod(Options* options, u32 soundMethod);
-u16 Options_GetBattleScene(Options* options);
+u32 Options_GetBattleScene(Options* options);
 void Options_SetBattleScene(Options* options, u32 battleScene);
-u16 Options_GetBattleStyle(Options* options);
+u32 Options_GetBattleStyle(Options* options);
 void Options_SetBattleStyle(Options* options, u32 battleStyle);
-u16 Options_GetButtonMode(Options* options);
+u32 Options_GetButtonMode(Options* options);
 void Options_SetButtonMode(Options* options, u32 buttonMode);
-u16 Options_GetFrame(Options* options);
+u32 Options_GetFrame(Options* options);
 void Options_SetFrame(Options* options, u32 frame);
 
 #endif //POKEHEARTGOLD_OPTIONS_H
