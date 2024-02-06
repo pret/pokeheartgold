@@ -88,7 +88,7 @@ static void TitleScreen_Unload3DObjects(TitleScreenAnimObject *animObj);
 static void TitleScreen_AdvanceAnimObjsFrame(NNSG3dAnmObj **ppAnmObj, fx32 a1);
 static void TitleScreenAnimObjs_Run(TitleScreenAnimObject *animObj);
 static void TitleScreen_InitBgs(TitleScreenOverlayData *data);
-static void TitleScreen_DeinitBgs(TitleScreenOverlayData *data);
+static void TitleScreen_ReleaseBgs(TitleScreenOverlayData *data);
 static BOOL TitleScreenAnim_InitObjectsAndCamera(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID);
 static BOOL TitleScreenAnim_Run(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID);
 static BOOL TitleScreenAnim_UnloadAndRemoveTopScreenResources(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID);
@@ -235,7 +235,7 @@ static BOOL TitleScreen_Exit(OVY_MANAGER *man, int *state) {
 
     Main_SetVBlankIntrCB(NULL, NULL);
     TitleScreen_Delete3DVramMan(data);
-    TitleScreen_DeinitBgs(data);
+    TitleScreen_ReleaseBgs(data);
     OverlayManager_FreeData(man);
     DestroyHeap(heapID);
 
@@ -452,7 +452,7 @@ static void TitleScreen_InitBgs(TitleScreenOverlayData *data) {
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB_BLACK);
 }
 
-static void TitleScreen_DeinitBgs(TitleScreenOverlayData *data) {
+static void TitleScreen_ReleaseBgs(TitleScreenOverlayData *data) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_OFF);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
@@ -495,9 +495,9 @@ static BOOL TitleScreenAnim_InitObjectsAndCamera(TitleScreenAnimData *animData, 
     Camera_SetPerspectiveClippingPlane(0, FX32_CONST(0.5), animData->hooh_lugia.camera);
     Camera_ApplyPerspectiveType(0, animData->hooh_lugia.camera);
     Camera_SetStaticPtr(animData->hooh_lugia.camera);
-    NNS_G3dGlbLightVector(GX_LIGHTID_0, animData->light0vec.x, animData->light0vec.y, animData->light0vec.z);
+    NNS_G3dGlbLightVector(GX_LIGHTID_0, animData->light0Vec.x, animData->light0Vec.y, animData->light0Vec.z);
     NNS_G3dGlbLightColor(GX_LIGHTID_0, RGB_WHITE);
-    NNS_G3dGlbLightVector(GX_LIGHTID_1, animData->light1vec.x, animData->light1vec.y, animData->light1vec.z);
+    NNS_G3dGlbLightVector(GX_LIGHTID_1, animData->light1Vec.x, animData->light1Vec.y, animData->light1Vec.z);
     NNS_G3dGlbLightColor(GX_LIGHTID_1, RGB_WHITE);
     G3X_AntiAlias(TRUE);
     gSystem.screensFlipped = TRUE;
@@ -679,16 +679,16 @@ static void TitleScreenAnim_SetCameraInitialPos(TitleScreenAnimData *animData) {
         SetVec(animData->cameraPosEnd, FX32_CONST(625), FX32_CONST(152), FX32_CONST(256));
         SetVec(animData->cameraTargetStart, FX32_CONST(0), FX32_CONST(90), FX32_CONST(0));
         SetVec(animData->cameraTargetEnd, FX32_CONST(-2), FX32_CONST(124), FX32_CONST(-38));
-        SetVec(animData->light0vec, FX16_CONST(0), FX16_CONST(0.635498), FX16_CONST(0));
-        SetVec(animData->light1vec, FX16_CONST(0), FX16_CONST(0.476807), FX16_CONST(0));
+        SetVec(animData->light0Vec, FX16_CONST(0), FX16_CONST(0.635498), FX16_CONST(0));
+        SetVec(animData->light1Vec, FX16_CONST(0), FX16_CONST(0.476807), FX16_CONST(0));
         animData->cameraSpeed = FX32_CONST(3);
     } else {
         SetVec(animData->cameraPosStart, FX32_CONST(0), FX32_CONST(65), FX32_CONST(72));
         SetVec(animData->cameraPosEnd, FX32_CONST(420), FX32_CONST(87), FX32_CONST(331));
         SetVec(animData->cameraTargetStart, FX32_CONST(0), FX32_CONST(90), FX32_CONST(0));
         SetVec(animData->cameraTargetEnd, FX32_CONST(-2), FX32_CONST(124), FX32_CONST(-38));
-        SetVec(animData->light0vec, FX16_CONST(0), FX16_CONST(0.635498), FX16_CONST(0));
-        SetVec(animData->light1vec, FX16_CONST(0), FX16_CONST(0.476807), FX16_CONST(0));
+        SetVec(animData->light0Vec, FX16_CONST(0), FX16_CONST(0.635498), FX16_CONST(0));
+        SetVec(animData->light1Vec, FX16_CONST(0), FX16_CONST(0.476807), FX16_CONST(0));
         animData->cameraSpeed = FX32_CONST(3);
     }
 
@@ -698,9 +698,9 @@ static void TitleScreenAnim_SetCameraInitialPos(TitleScreenAnimData *animData) {
 
         SetVec(light0vec, FX32_CONST(0), FX32_CONST(0.635498), FX32_CONST(0));
         VEC_Normalize(&light0vec, &light0vecNorm);
-        animData->light0vec.x = light0vecNorm.x;
-        animData->light0vec.y = light0vecNorm.y;
-        animData->light0vec.z = light0vecNorm.z;
+        animData->light0Vec.x = light0vecNorm.x;
+        animData->light0Vec.y = light0vecNorm.y;
+        animData->light0Vec.z = light0vecNorm.z;
     }
 }
 
@@ -732,30 +732,6 @@ static fx32 fx32_abs(fx32 x) {
 #endif
 
 static void TitleScreenAnim_GetCameraNextPosition(TitleScreenAnimData *animData) {
-#if 0
-    // Use this to give the player control over the camera
-    if (gSystem.heldKeys & PAD_KEY_RIGHT) {
-        animData->cameraPosEnd.x += CAMERA_SPEED;
-    }
-    if (gSystem.heldKeys & PAD_KEY_LEFT) {
-        animData->cameraPosEnd.x -= CAMERA_SPEED;
-    }
-    if (gSystem.heldKeys & PAD_KEY_UP) {
-        animData->cameraPosEnd.z += CAMERA_SPEED;
-    }
-    if (gSystem.heldKeys & PAD_KEY_DOWN) {
-        animData->cameraPosEnd.z -= CAMERA_SPEED;
-    }
-    if (gSystem.heldKeys & PAD_BUTTON_X) {
-        animData->cameraPosEnd.y += CAMERA_SPEED;
-    }
-    if (gSystem.heldKeys & PAD_BUTTON_Y) {
-        animData->cameraPosEnd.y -= CAMERA_SPEED;
-    }
-    Camera_SetLookAtCamPos(&animData->cameraPosEnd, animData->hooh_lugia.camera);
-
-#else
-    // Vanilla auto camera
     const struct CameraScript *cameraScript = animData->gameVersion == VERSION_HEARTGOLD ? sCameraScript_HG : sCameraScript_SS;
     ++animData->cameraSceneTimer;
     if (animData->cameraSceneTimer > cameraScript[animData->cameraScene].duration * 30) {
@@ -788,7 +764,6 @@ static void TitleScreenAnim_GetCameraNextPosition(TitleScreenAnimData *animData)
             }
         }
     }
-#endif
 }
 
 static void TitleScreenAnim_FadeInGameTitleLayer(TitleScreenAnimData *animData) {
