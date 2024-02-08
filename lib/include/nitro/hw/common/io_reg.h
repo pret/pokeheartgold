@@ -529,6 +529,22 @@
 #define REG_PAD_KEYCNT_A_SIZE                              1
 #define REG_PAD_KEYCNT_A_MASK                              0x0001
 
+#define REG_G2_WININ_WIN1IN_SHIFT                          8
+#define REG_G2_WININ_WIN1IN_SIZE                           6
+#define REG_G2_WININ_WIN1IN_MASK                           0x3f00
+
+#define REG_G2_WININ_WIN0IN_SHIFT                          0
+#define REG_G2_WININ_WIN0IN_SIZE                           6
+#define REG_G2_WININ_WIN0IN_MASK                           0x003f
+
+#define REG_G2S_DB_WININ_WIN1IN_SHIFT                      8
+#define REG_G2S_DB_WININ_WIN1IN_SIZE                       6
+#define REG_G2S_DB_WININ_WIN1IN_MASK                       0x3f00
+
+#define REG_G2S_DB_WININ_WIN0IN_SHIFT                      0
+#define REG_G2S_DB_WININ_WIN0IN_SIZE                       6
+#define REG_G2S_DB_WININ_WIN0IN_MASK                       0x003f
+
 #define REG_G2_WINOUT_OBJWININ_SHIFT                       8
 #define REG_G2_WINOUT_OBJWININ_SIZE                        6
 #define REG_G2_WINOUT_OBJWININ_MASK                        0x3f00
@@ -537,10 +553,162 @@
 #define REG_G2_WINOUT_WINOUT_SIZE                          6
 #define REG_G2_WINOUT_WINOUT_MASK                          0x003f
 
+#ifndef SDK_ASM
 #define REG_G2_WINOUT_FIELD( objwinin, winout ) \
     (u16)( \
     ((u32)(objwinin) << REG_G2_WINOUT_OBJWININ_SHIFT) | \
     ((u32)(winout) << REG_G2_WINOUT_WINOUT_SHIFT))
+#endif
+
+#define REG_G2S_DB_WINOUT_OBJWININ_SHIFT                   8
+#define REG_G2S_DB_WINOUT_OBJWININ_SIZE                    6
+#define REG_G2S_DB_WINOUT_OBJWININ_MASK                    0x3f00
+
+#define REG_G2S_DB_WINOUT_WINOUT_SHIFT                     0
+#define REG_G2S_DB_WINOUT_WINOUT_SIZE                      6
+#define REG_G2S_DB_WINOUT_WINOUT_MASK                      0x003f
+
+/* WIN0H */
+
+#define REG_G2_WIN0H_LEFTX_SHIFT                           8
+#define REG_G2_WIN0H_LEFTX_SIZE                            8
+#define REG_G2_WIN0H_LEFTX_MASK                            0xff00
+
+#define REG_G2_WIN0H_RIGHTX_SHIFT                          0
+#define REG_G2_WIN0H_RIGHTX_SIZE                           8
+#define REG_G2_WIN0H_RIGHTX_MASK                           0x00ff
+
+#ifndef SDK_ASM
+#define REG_G2_WIN0H_FIELD( leftx, rightx ) \
+    (u16)( \
+    ((u32)(leftx) << REG_G2_WIN0H_LEFTX_SHIFT) | \
+    ((u32)(rightx) << REG_G2_WIN0H_RIGHTX_SHIFT))
+#endif
+
+
+/* WIN1H */
+
+#define REG_G2_WIN1H_LEFTX_SHIFT                           8
+#define REG_G2_WIN1H_LEFTX_SIZE                            8
+#define REG_G2_WIN1H_LEFTX_MASK                            0xff00
+
+#define REG_G2_WIN1H_RIGHTX_SHIFT                          0
+#define REG_G2_WIN1H_RIGHTX_SIZE                           8
+#define REG_G2_WIN1H_RIGHTX_MASK                           0x00ff
+
+#ifndef SDK_ASM
+#define REG_G2_WIN1H_FIELD( leftx, rightx ) \
+    (u16)( \
+    ((u32)(leftx) << REG_G2_WIN1H_LEFTX_SHIFT) | \
+    ((u32)(rightx) << REG_G2_WIN1H_RIGHTX_SHIFT))
+#endif
+
+
+/* WIN0V */
+
+#define REG_G2_WIN0V_UPY_SHIFT                             8
+#define REG_G2_WIN0V_UPY_SIZE                              8
+#define REG_G2_WIN0V_UPY_MASK                              0xff00
+
+#define REG_G2_WIN0V_DOWNY_SHIFT                           0
+#define REG_G2_WIN0V_DOWNY_SIZE                            8
+#define REG_G2_WIN0V_DOWNY_MASK                            0x00ff
+
+#ifndef SDK_ASM
+#define REG_G2_WIN0V_FIELD( upy, downy ) \
+    (u16)( \
+    ((u32)(upy) << REG_G2_WIN0V_UPY_SHIFT) | \
+    ((u32)(downy) << REG_G2_WIN0V_DOWNY_SHIFT))
+#endif
+
+
+/* WIN1V */
+
+#define REG_G2_WIN1V_UPY_SHIFT                             8
+#define REG_G2_WIN1V_UPY_SIZE                              8
+#define REG_G2_WIN1V_UPY_MASK                              0xff00
+
+#define REG_G2_WIN1V_DOWNY_SHIFT                           0
+#define REG_G2_WIN1V_DOWNY_SIZE                            8
+#define REG_G2_WIN1V_DOWNY_MASK                            0x00ff
+
+#ifndef SDK_ASM
+#define REG_G2_WIN1V_FIELD( upy, downy ) \
+    (u16)( \
+    ((u32)(upy) << REG_G2_WIN1V_UPY_SHIFT) | \
+    ((u32)(downy) << REG_G2_WIN1V_DOWNY_SHIFT))
+#endif
+
+/* DB_WIN0H */
+
+#define REG_G2S_DB_WIN0H_LEFTX_SHIFT                       8
+#define REG_G2S_DB_WIN0H_LEFTX_SIZE                        8
+#define REG_G2S_DB_WIN0H_LEFTX_MASK                        0xff00
+
+#define REG_G2S_DB_WIN0H_RIGHTX_SHIFT                      0
+#define REG_G2S_DB_WIN0H_RIGHTX_SIZE                       8
+#define REG_G2S_DB_WIN0H_RIGHTX_MASK                       0x00ff
+
+#ifndef SDK_ASM
+#define REG_G2S_DB_WIN0H_FIELD( leftx, rightx ) \
+    (u16)( \
+    ((u32)(leftx) << REG_G2S_DB_WIN0H_LEFTX_SHIFT) | \
+    ((u32)(rightx) << REG_G2S_DB_WIN0H_RIGHTX_SHIFT))
+#endif
+
+
+/* DB_WIN1H */
+
+#define REG_G2S_DB_WIN1H_LEFTX_SHIFT                       8
+#define REG_G2S_DB_WIN1H_LEFTX_SIZE                        8
+#define REG_G2S_DB_WIN1H_LEFTX_MASK                        0xff00
+
+#define REG_G2S_DB_WIN1H_RIGHTX_SHIFT                      0
+#define REG_G2S_DB_WIN1H_RIGHTX_SIZE                       8
+#define REG_G2S_DB_WIN1H_RIGHTX_MASK                       0x00ff
+
+#ifndef SDK_ASM
+#define REG_G2S_DB_WIN1H_FIELD( leftx, rightx ) \
+    (u16)( \
+    ((u32)(leftx) << REG_G2S_DB_WIN1H_LEFTX_SHIFT) | \
+    ((u32)(rightx) << REG_G2S_DB_WIN1H_RIGHTX_SHIFT))
+#endif
+
+
+/* DB_WIN0V */
+
+#define REG_G2S_DB_WIN0V_UPY_SHIFT                         8
+#define REG_G2S_DB_WIN0V_UPY_SIZE                          8
+#define REG_G2S_DB_WIN0V_UPY_MASK                          0xff00
+
+#define REG_G2S_DB_WIN0V_DOWNY_SHIFT                       0
+#define REG_G2S_DB_WIN0V_DOWNY_SIZE                        8
+#define REG_G2S_DB_WIN0V_DOWNY_MASK                        0x00ff
+
+#ifndef SDK_ASM
+#define REG_G2S_DB_WIN0V_FIELD( upy, downy ) \
+    (u16)( \
+    ((u32)(upy) << REG_G2S_DB_WIN0V_UPY_SHIFT) | \
+    ((u32)(downy) << REG_G2S_DB_WIN0V_DOWNY_SHIFT))
+#endif
+
+
+/* DB_WIN1V */
+
+#define REG_G2S_DB_WIN1V_UPY_SHIFT                         8
+#define REG_G2S_DB_WIN1V_UPY_SIZE                          8
+#define REG_G2S_DB_WIN1V_UPY_MASK                          0xff00
+
+#define REG_G2S_DB_WIN1V_DOWNY_SHIFT                       0
+#define REG_G2S_DB_WIN1V_DOWNY_SIZE                        8
+#define REG_G2S_DB_WIN1V_DOWNY_MASK                        0x00ff
+
+#ifndef SDK_ASM
+#define REG_G2S_DB_WIN1V_FIELD( upy, downy ) \
+    (u16)( \
+    ((u32)(upy) << REG_G2S_DB_WIN1V_UPY_SHIFT) | \
+    ((u32)(downy) << REG_G2S_DB_WIN1V_DOWNY_SHIFT))
+#endif
 
 #ifndef SDK_ASM
 #define REG_PAD_KEYCNT_FIELD( logic, intr, l, r, down, up, left, right, start, sel, b, a ) \

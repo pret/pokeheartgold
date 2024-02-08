@@ -7,8 +7,6 @@ void ov60_021E6FFC(SysTask *task, void *pVoid);
 void ov60_021E71CC(SysTask *task, void *pVoid);
 void ov60_021E7264(SysTask *task, void *pVoid);
 void ov60_021E7454(SysTask *task, void *pVoid);
-void ov60_021E74F0(int a0, int a1, u8 a2, u8 a3, int a4);
-void ov60_021E75C4(int a0, int a1, int a2, int a3, int a4);
 
 void ov60_021E6ED8(IntroMovieOvyData *data, const u8 *counts) {
     for (u8 i = 0; i < 4; ++i) {
@@ -391,3 +389,62 @@ asm void ov60_021E7454(SysTask *task, void *pVoid) {
 	pop {r3, r4, r5, r6, r7, pc}
 }
 #endif //NONMATCHING
+
+void ov60_021E74F0(int a0, int a1, u8 a2, u8 a3, int a4) {
+    if (a4) {
+        GX_SetVisibleWnd(3);
+        G2_SetWnd0InsidePlane(a0, a2);
+        G2_SetWnd1InsidePlane(a0, a2);
+        G2_SetWndOutsidePlane(a1, a2);
+    } else {
+        GXS_SetVisibleWnd(3);
+        G2S_SetWnd0InsidePlane(a0, a3);
+        G2S_SetWnd1InsidePlane(a0, a3);
+        G2S_SetWndOutsidePlane(a1, a3);
+    }
+}
+
+void ov60_021E75C4(int a0, int a1, int a2, int a3, int a4) {
+    if (a0 == 0 && a2 == 0xFF) {
+        if (a4) {
+            G2_SetWnd1Position(0, a1, 1, a3);
+            G2_SetWnd0Position(1, a1, 0, a3);
+        } else {
+            G2S_SetWnd1Position(0, a1, 1, a3);
+            G2S_SetWnd0Position(1, a1, 0, a3);
+        }
+    } else {
+        if (a4) {
+            G2_SetWnd0Position(a0, a1, a2, a3);
+        } else {
+            G2S_SetWnd0Position(a0, a1, a2, a3);
+        }
+    }
+}
+
+BgConfig *ov60_021E7688(IntroMovieOvyData *data) {
+    return data->bgConfig;
+}
+
+IntroMovieSub_46C *ov60_021E768C(IntroMovieOvyData *data) {
+    return &data->unk_46C;
+}
+
+BOOL ov60_021E7698(IntroMovieOvyData *data) {
+    return data->unk_008;
+}
+
+int ov60_021E769C(IntroMovieOvyData *data) {
+    return data->unk_004;
+}
+
+void ov60_021E76A0(IntroMovieOvyData *data) {
+    G2_BlendNone();
+    G2S_BlendNone();
+    GX_SetVisibleWnd(0);
+    GXS_SetVisibleWnd(0);
+    for (int i = 0; i < 8; ++i) {
+        BgSetPosTextAndCommit(data->bgConfig, i, BG_POS_OP_SET_X, 0);
+        BgSetPosTextAndCommit(data->bgConfig, i, BG_POS_OP_SET_Y, 0);
+    }
+}

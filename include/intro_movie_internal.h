@@ -167,5 +167,12 @@ BOOL ov60_021E72FC(IntroMovieSub_46C_030 *data, enum GFBgLayer bgId);
 void ov60_021E7324(IntroMovieSub_46C_030 *data, enum GFBgLayer bgId);
 IntroMovieSub_46C_110 *ov60_021E7398(IntroMovieSub_46C_110 *data, int a1, int a2, const IntroMovieSub_46C_110_template *a3);
 BOOL ov60_021E7434(IntroMovieSub_46C_110 *data, int a1);
+void ov60_021E74F0(int a0, int a1, u8 a2, u8 a3, int a4);
+void ov60_021E75C4(int a0, int a1, int a2, int a3, int a4);
+BgConfig *ov60_021E7688(IntroMovieOvyData *data);
+IntroMovieSub_46C *ov60_021E768C(IntroMovieOvyData *data);
+BOOL ov60_021E7698(IntroMovieOvyData *data);
+int ov60_021E769C(IntroMovieOvyData *data);
+void ov60_021E76A0(IntroMovieOvyData *data);
 
 #endif //POKEHEARTGOLD_INTRO_MOVIE_INTERNAL
