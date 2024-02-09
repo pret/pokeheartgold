@@ -21,367 +21,26 @@
 	.extern ov60_021E7434
 	.extern ov60_021E74F0
 	.extern ov60_021E75C4
-	.extern ov60_021E7688
+	.extern IntroMovie_GetBgConfig
 	.extern ov60_021E768C
 	.extern ov60_021E7698
 	.extern ov60_021E769C
 	.extern ov60_021E76A0
 	.extern ov60_021E76F4
 	.extern ov60_021E77A0
-	.extern ov60_021E7958
-	.extern ov60_021E796C
-	.extern ov60_021E7978
+	.extern IntroMovie_AdvanceSceneStep
+	.extern IntroMovie_GetSceneStep
+	.extern IntroMovie_GetSceneStepTimer
+	.extern ov60_021E79E4
 
 	; file boundary
 
-	thumb_func_start IntroMovie_Scene1
-IntroMovie_Scene1: ; 0x021E7984
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	bl ov60_021E7698
-	cmp r0, #0
-	beq _021E7996
-	mov r0, #2
-	strb r0, [r4]
-_021E7996:
-	ldrb r0, [r4]
-	cmp r0, #0
-	beq _021E79A6
-	cmp r0, #1
-	beq _021E79B6
-	cmp r0, #2
-	beq _021E79D2
-	b _021E79DE
-_021E79A6:
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov60_021E79F4
-	ldrb r0, [r4]
-	add r0, r0, #1
-	strb r0, [r4]
-	b _021E79DE
-_021E79B6:
-	add r0, r5, #0
-	bl ov60_021E769C
-	add r2, r0, #0
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov60_021E7A50
-	cmp r0, #0
-	beq _021E79DE
-	ldrb r0, [r4]
-	add r0, r0, #1
-	strb r0, [r4]
-	b _021E79DE
-_021E79D2:
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov60_021E7C5C
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-_021E79DE:
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end IntroMovie_Scene1
-
-	thumb_func_start ov60_021E79E4
-ov60_021E79E4: ; 0x021E79E4
-	push {r3, lr}
-	bl ov60_021E7688
-	bl DoScheduledBgGpuUpdates
-	bl OamManager_ApplyAndResetBuffers
-	pop {r3, pc}
-	thumb_func_end ov60_021E79E4
-
-	thumb_func_start ov60_021E79F4
-ov60_021E79F4: ; 0x021E79F4
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	bl ov60_021E7688
-	add r6, r0, #0
-	bl sub_020216C8
-	bl sub_02022638
-	ldr r0, _021E7A48 ; =gSystem + 0x60
-	mov r1, #1
-	strb r1, [r0, #9]
-	bl GfGfx_SwapDisplay
-	add r0, r5, #0
-	bl ov60_021E7CC4
-	add r0, r5, #0
-	bl ov60_021E76A0
-	ldr r0, _021E7A4C ; =ov60_021E79E4
-	add r1, r5, #0
-	bl Main_SetVBlankIntrCB
-	add r0, r6, #0
-	bl ov60_021E7E0C
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov60_021E7F94
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov60_021E8050
-	add r0, r5, #0
-	bl ov60_021E7F74
-	mov r0, #1
-	strb r0, [r4, #1]
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-_021E7A48: .word gSystem + 0x60
-_021E7A4C: .word ov60_021E79E4
-	thumb_func_end ov60_021E79F4
-
-	thumb_func_start ov60_021E7A50
-ov60_021E7A50: ; 0x021E7A50
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x10
-	add r5, r0, #0
-	add r7, r1, #0
-	bl ov60_021E7688
-	str r0, [sp, #0xc]
-	add r0, r5, #0
-	bl ov60_021E768C
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov60_021E7978
-	add r6, r0, #0
-	add r0, r5, #0
-	bl ov60_021E796C
-	cmp r0, #0xa
-	bhi _021E7B42
-	add r0, r0, r0
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_021E7A84: ; jump table
-	.short _021E7A9A - _021E7A84 - 2 ; case 0
-	.short _021E7ABE - _021E7A84 - 2 ; case 1
-	.short _021E7AEE - _021E7A84 - 2 ; case 2
-	.short _021E7B02 - _021E7A84 - 2 ; case 3
-	.short _021E7B3E - _021E7A84 - 2 ; case 4
-	.short _021E7B4C - _021E7A84 - 2 ; case 5
-	.short _021E7B6C - _021E7A84 - 2 ; case 6
-	.short _021E7BD6 - _021E7A84 - 2 ; case 7
-	.short _021E7C06 - _021E7A84 - 2 ; case 8
-	.short _021E7C1A - _021E7A84 - 2 ; case 9
-	.short _021E7C3E - _021E7A84 - 2 ; case 10
-_021E7A9A:
-	ldr r0, [sp, #0xc]
-	mov r1, #0
-	mov r2, #3
-	mov r3, #0x80
-	bl BgSetPosTextAndCommit
-	mov r0, #1
-	add r1, r0, #0
-	bl GfGfx_EngineATogglePlanes
-	mov r0, #1
-	add r1, r0, #0
-	bl GfGfx_EngineBTogglePlanes
-	add r0, r5, #0
-	bl ov60_021E7958
-	b _021E7C4C
-_021E7ABE:
-	cmp r6, #0x1e
-	blo _021E7B42
-	mov r1, #1
-	str r1, [sp]
-	mov r0, #0
-	str r0, [sp, #4]
-	add r0, r4, #0
-	mov r2, #0x20
-	mov r3, #0x3c
-	bl ov60_021E6FD0
-	mov r1, #1
-	add r4, #0x18
-	str r1, [sp]
-	add r0, r4, #0
-	mov r2, #0x20
-	mov r3, #0x3c
-	str r1, [sp, #4]
-	bl ov60_021E6FD0
-	add r0, r5, #0
-	bl ov60_021E7958
-	b _021E7C4C
-_021E7AEE:
-	ldrb r0, [r4, #3]
-	cmp r0, #0
-	beq _021E7B42
-	ldrb r0, [r4, #0x1b]
-	cmp r0, #0
-	beq _021E7B42
-	add r0, r5, #0
-	bl ov60_021E7958
-	b _021E7C4C
-_021E7B02:
-	cmp r6, #0x14
-	blo _021E7B42
-	ldr r1, [r7, #4]
-	mov r0, #1
-	strb r0, [r1]
-	mov r1, #0
-	bl GfGfx_EngineBTogglePlanes
-	mov r0, #2
-	mov r1, #1
-	bl GfGfx_EngineBTogglePlanes
-	mov r1, #0
-	ldr r0, [sp, #0xc]
-	mov r2, #3
-	add r3, r1, #0
-	bl BgSetPosTextAndCommit
-	mov r0, #0
-	str r0, [sp]
-	ldr r0, _021E7C54 ; =0x04000050
-	mov r1, #1
-	mov r2, #0x20
-	mov r3, #0x1f
-	bl G2x_SetBlendAlpha_
-	add r0, r5, #0
-	bl ov60_021E7958
-	b _021E7C4C
-_021E7B3E:
-	cmp r6, #0x6e
-	bhs _021E7B44
-_021E7B42:
-	b _021E7C4C
-_021E7B44:
-	add r0, r5, #0
-	bl ov60_021E7958
-	b _021E7C4C
-_021E7B4C:
-	mov r0, #0xe
-	mov r1, #1
-	bl GfGfx_EngineATogglePlanes
-	mov r0, #8
-	mov r1, #1
-	bl GfGfx_EngineBTogglePlanes
-	ldr r0, [r7, #0x18]
-	mov r1, #1
-	bl Set2dSpriteVisibleFlag
-	add r0, r5, #0
-	bl ov60_021E7958
-	b _021E7C4C
-_021E7B6C:
-	cmp r6, #1
-	blo _021E7C4C
-	mov r1, #1
-	str r1, [sp]
-	add r0, r4, #0
-	mov r2, #0x1e
-	mov r3, #0x50
-	str r1, [sp, #4]
-	bl ov60_021E6FD0
-	mov r0, #1
-	str r0, [sp]
-	mov r0, #0
-	str r0, [sp, #4]
-	add r0, r4, #0
-	add r0, #0x18
-	mov r1, #2
-	mov r2, #0x1e
-	mov r3, #0x50
-	bl ov60_021E6FD0
-	mov r0, #0x1f
-	mvn r0, r0
-	str r0, [sp]
-	mov r0, #0xf0
-	str r0, [sp, #4]
-	add r1, r4, #0
-	ldr r0, [sp, #0xc]
-	add r1, #0x30
-	mov r2, #1
-	mov r3, #0
-	bl ov60_021E7074
-	mov r0, #0xf
-	mvn r0, r0
-	str r0, [sp]
-	mov r0, #0xf0
-	str r0, [sp, #4]
-	add r4, #0x30
-	ldr r0, [sp, #0xc]
-	add r1, r4, #0
-	mov r2, #2
-	mov r3, #0
-	bl ov60_021E7074
-	ldr r0, [r7, #0x18]
-	mov r1, #1
-	bl ov60_021E6F28
-	add r0, r5, #0
-	bl ov60_021E7958
-	b _021E7C4C
-_021E7BD6:
-	ldrb r0, [r4, #3]
-	cmp r0, #0
-	beq _021E7C4C
-	ldrb r0, [r4, #0x1b]
-	cmp r0, #0
-	beq _021E7C4C
-	add r0, r4, #0
-	add r0, #0x30
-	mov r1, #1
-	bl ov60_021E72FC
-	cmp r0, #0
-	beq _021E7C4C
-	add r4, #0x30
-	add r0, r4, #0
-	mov r1, #2
-	bl ov60_021E72FC
-	cmp r0, #0
-	beq _021E7C4C
-	add r0, r5, #0
-	bl ov60_021E7958
-	b _021E7C4C
-_021E7C06:
-	cmp r6, #0x80
-	blo _021E7C4C
-	ldr r0, [r7, #0x1c]
-	mov r1, #1
-	bl ov60_021E6F28
-	add r0, r5, #0
-	bl ov60_021E7958
-	b _021E7C4C
-_021E7C1A:
-	cmp r6, #0x5a
-	blo _021E7C4C
-	mov r0, #0x41
-	str r0, [sp]
-	mov r0, #1
-	str r0, [sp, #4]
-	mov r0, #0x4a
-	str r0, [sp, #8]
-	mov r0, #0
-	ldr r3, _021E7C58 ; =0x00007FFF
-	add r1, r0, #0
-	add r2, r0, #0
-	bl BeginNormalPaletteFade
-	add r0, r5, #0
-	bl ov60_021E7958
-	b _021E7C4C
-_021E7C3E:
-	bl IsPaletteFadeFinished
-	cmp r0, #0
-	beq _021E7C4C
-	add sp, #0x10
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-_021E7C4C:
-	mov r0, #0
-	add sp, #0x10
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_021E7C54: .word 0x04000050
-_021E7C58: .word 0x00007FFF
-	thumb_func_end ov60_021E7A50
-
-	thumb_func_start ov60_021E7C5C
-ov60_021E7C5C: ; 0x021E7C5C
+	thumb_func_start IntroMovie_Scene1_Exit
+IntroMovie_Scene1_Exit: ; 0x021E7C5C
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	add r5, r1, #0
-	bl ov60_021E7688
+	bl IntroMovie_GetBgConfig
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
@@ -420,13 +79,13 @@ ov60_021E7C5C: ; 0x021E7C5C
 	strb r0, [r5, #1]
 _021E7CC2:
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov60_021E7C5C
+	thumb_func_end IntroMovie_Scene1_Exit
 
 	thumb_func_start ov60_021E7CC4
 ov60_021E7CC4: ; 0x021E7CC4
 	push {r3, r4, r5, lr}
 	sub sp, #0xf0
-	bl ov60_021E7688
+	bl IntroMovie_GetBgConfig
 	add r3, sp, #0xe0
 	ldr r5, _021E7DE8 ; =_021EB044
 	add r4, r0, #0
@@ -1016,7 +675,7 @@ _021E813A:
 	thumb_func_start ov60_021E8140
 ov60_021E8140: ; 0x021E8140
 	push {r3, lr}
-	bl ov60_021E7688
+	bl IntroMovie_GetBgConfig
 	bl DoScheduledBgGpuUpdates
 	bl OamManager_ApplyAndResetBuffers
 	pop {r3, pc}
@@ -1035,7 +694,7 @@ ov60_021E8150: ; 0x021E8150
 	mov r0, #1
 	bl sub_0200FBF4
 	add r0, r5, #0
-	bl ov60_021E7688
+	bl IntroMovie_GetBgConfig
 	add r6, r0, #0
 	bl sub_020216C8
 	bl sub_02022638
@@ -1135,16 +794,16 @@ ov60_021E8240: ; 0x021E8240
 	sub sp, #0x10
 	add r6, r0, #0
 	add r4, r1, #0
-	bl ov60_021E7688
+	bl IntroMovie_GetBgConfig
 	add r7, r0, #0
 	add r0, r6, #0
 	bl ov60_021E768C
 	add r5, r0, #0
 	add r0, r6, #0
-	bl ov60_021E7978
+	bl IntroMovie_GetSceneStepTimer
 	str r0, [sp, #0xc]
 	add r0, r6, #0
-	bl ov60_021E796C
+	bl IntroMovie_GetSceneStep
 	cmp r0, #7
 	bls _021E826A
 	b _021E85D8
@@ -1178,7 +837,7 @@ _021E8286:
 	mov r0, #0
 	strb r0, [r4, #3]
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E85D8
 _021E82A8:
 	ldrb r0, [r4, #3]
@@ -1249,7 +908,7 @@ _021E82CA:
 	add r3, r1, #0
 	bl BeginNormalPaletteFade
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E85D8
 _021E8340:
 	add r0, r5, #0
@@ -1316,7 +975,7 @@ _021E837E:
 	mov r3, #0
 	bl ov60_021E8AE0
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E85D8
 _021E83D4:
 	add r0, r5, #0
@@ -1377,7 +1036,7 @@ _021E83D4:
 	mov r3, #0
 	bl ov60_021E8AE0
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E85D8
 _021E845E:
 	add r0, r5, #0
@@ -1441,7 +1100,7 @@ _021E8494:
 	mov r3, #0
 	bl ov60_021E8AE0
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E85D8
 _021E84EA:
 	add r0, r5, #0
@@ -1503,7 +1162,7 @@ _021E84EA:
 	mov r3, #0x80
 	bl ov60_021E8AE0
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E85D8
 _021E8576:
 	add r0, r5, #0
@@ -1534,7 +1193,7 @@ _021E8576:
 	mov r3, #8
 	bl ov60_021E76F4
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E85D8
 	nop
 _021E85C0: .word 0x00007FFF
@@ -1563,7 +1222,7 @@ ov60_021E85E0: ; 0x021E85E0
 	bl ov60_021E768C
 	str r0, [sp, #4]
 	ldr r0, [sp]
-	bl ov60_021E7688
+	bl IntroMovie_GetBgConfig
 	str r0, [sp, #8]
 	mov r0, #0
 	add r1, r0, #0
@@ -1624,7 +1283,7 @@ _021E8666:
 ov60_021E866C: ; 0x021E866C
 	push {r3, r4, r5, lr}
 	sub sp, #0x80
-	bl ov60_021E7688
+	bl IntroMovie_GetBgConfig
 	add r3, sp, #0x70
 	ldr r5, _021E8710 ; =_021EB14C
 	add r4, r0, #0
@@ -2344,7 +2003,7 @@ _021E8C52:
 	thumb_func_start ov60_021E8C58
 ov60_021E8C58: ; 0x021E8C58
 	push {r3, lr}
-	bl ov60_021E7688
+	bl IntroMovie_GetBgConfig
 	bl DoScheduledBgGpuUpdates
 	bl OamManager_ApplyAndResetBuffers
 	pop {r3, pc}
@@ -2356,7 +2015,7 @@ ov60_021E8C68: ; 0x021E8C68
 	sub sp, #8
 	add r5, r0, #0
 	add r4, r1, #0
-	bl ov60_021E7688
+	bl IntroMovie_GetBgConfig
 	add r6, r0, #0
 	bl sub_020216C8
 	bl sub_02022638
@@ -2446,18 +2105,18 @@ ov60_021E8D38: ; 0x021E8D38
 	sub sp, #8
 	add r6, r0, #0
 	add r5, r1, #0
-	bl ov60_021E7688
+	bl IntroMovie_GetBgConfig
 	add r7, r0, #0
 	add r0, r6, #0
 	bl ov60_021E768C
 	add r4, r0, #0
 	add r0, r6, #0
-	bl ov60_021E7978
+	bl IntroMovie_GetSceneStepTimer
 	str r0, [sp, #0x10]
 	add r0, r5, #0
 	bl ov60_021E9B60
 	add r0, r6, #0
-	bl ov60_021E796C
+	bl IntroMovie_GetSceneStep
 	cmp r0, #0x17
 	bhi _021E8DEA
 	add r0, r0, r0
@@ -2504,7 +2163,7 @@ _021E8DA4:
 	mov r3, #8
 	bl ov60_021E76F4
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E8DC6:
 	ldr r0, [sp, #0x10]
@@ -2516,7 +2175,7 @@ _021E8DC6:
 	mov r3, #8
 	bl ov60_021E76F4
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E8DE0:
 	add r0, r6, #0
@@ -2540,7 +2199,7 @@ _021E8DEC:
 	lsr r0, r0, #0x18
 	bl ov60_021E9C84
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E8E12:
 	ldr r0, [sp, #0x10]
@@ -2552,7 +2211,7 @@ _021E8E12:
 	mov r3, #8
 	bl ov60_021E76F4
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E8E2C:
 	add r0, r6, #0
@@ -2573,7 +2232,7 @@ _021E8E2C:
 	lsr r0, r0, #0x18
 	bl ov60_021E9C84
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E8E5C:
 	ldr r0, [sp, #0x10]
@@ -2585,7 +2244,7 @@ _021E8E5C:
 	mov r3, #8
 	bl ov60_021E76F4
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E8E76:
 	add r0, r6, #0
@@ -2597,7 +2256,7 @@ _021E8E76:
 	lsl r0, r0, #4
 	str r1, [r5, r0]
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E8E90:
 	add r0, r6, #0
@@ -2606,7 +2265,7 @@ _021E8E90:
 	mov r3, #8
 	bl ov60_021E76F4
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E8EA4:
 	add r0, r6, #0
@@ -2614,7 +2273,7 @@ _021E8EA4:
 	cmp r0, #0
 	beq _021E8F0E
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E8EB6:
 	ldr r3, _021E91AC ; =_021EB250
@@ -2652,7 +2311,7 @@ _021E8EB6:
 	mov r1, #0
 	bl ov60_021E6F28
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E8F08:
 	ldr r0, [sp, #0x10]
@@ -2675,7 +2334,7 @@ _021E8F10:
 	mov r1, #4
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E8F38:
 	ldr r0, [sp, #0x10]
@@ -2741,7 +2400,7 @@ _021E8F6C:
 	add r1, r0, #0
 	bl GfGfx_EngineBTogglePlanes
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E8FBE:
 	add r0, r4, #0
@@ -2782,7 +2441,7 @@ _021E8FD2:
 	mov r1, #1
 	bl GfGfx_EngineBTogglePlanes
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E9016:
 	add r0, r4, #0
@@ -2826,7 +2485,7 @@ _021E902C:
 	mov r1, #1
 	bl GfGfx_EngineBTogglePlanes
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E9070:
 	add r4, #0x30
@@ -2859,7 +2518,7 @@ _021E9070:
 	mov r3, #7
 	bl GfGfxLoader_LoadCharData
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E90B6:
 	ldr r0, [sp, #0x10]
@@ -2890,7 +2549,7 @@ _021E90C2:
 	orr r0, r1
 	str r0, [r2]
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E90F4:
 	mov r0, #0x11
@@ -2901,7 +2560,7 @@ _021E90F4:
 	cmp r0, #0
 	beq _021E912E
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E910C:
 	ldr r0, [sp, #0x10]
@@ -2967,7 +2626,7 @@ _021E9136:
 	sub r3, #0x79
 	bl ov60_021E7074
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E918E:
 	add r0, r4, #0
@@ -3015,7 +2674,7 @@ _021E91E8:
 	add r3, sp, #0xc4
 	bl ov60_021E7398
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E920C:
 	ldr r0, [r5, #0x70]
@@ -3067,7 +2726,7 @@ _021E9220:
 	sub r3, #0x7a
 	bl ov60_021E7074
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E9278:
 	add r0, r4, #0
@@ -3175,7 +2834,7 @@ _021E92A6:
 	mov r1, #1
 	bl GfGfx_EngineBTogglePlanes
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E936E:
 	ldr r0, [r5, #0x74]
@@ -3226,7 +2885,7 @@ _021E9382:
 	mov r2, #4
 	bl ov60_021E7074
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E93D8:
 	add r0, r4, #0
@@ -3289,7 +2948,7 @@ _021E93F4:
 	mov r3, #0
 	bl ov60_021E7074
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E9460:
 	add r4, #0x30
@@ -3324,7 +2983,7 @@ ov60_021E94A0: ; 0x021E94A0
 	sub sp, #0xc
 	str r0, [sp]
 	add r7, r1, #0
-	bl ov60_021E7688
+	bl IntroMovie_GetBgConfig
 	str r0, [sp, #4]
 	mov r0, #0
 	add r1, r0, #0
@@ -3427,7 +3086,7 @@ _021E957C:
 ov60_021E9580: ; 0x021E9580
 	push {r3, r4, r5, lr}
 	sub sp, #0x80
-	bl ov60_021E7688
+	bl IntroMovie_GetBgConfig
 	add r3, sp, #0x70
 	ldr r5, _021E9624 ; =_021EB268
 	add r4, r0, #0
@@ -4379,7 +4038,7 @@ _021E9D62:
 	thumb_func_start ov60_021E9D68
 ov60_021E9D68: ; 0x021E9D68
 	push {r3, lr}
-	bl ov60_021E7688
+	bl IntroMovie_GetBgConfig
 	bl DoScheduledBgGpuUpdates
 	bl OamManager_ApplyAndResetBuffers
 	pop {r3, pc}
@@ -4391,7 +4050,7 @@ ov60_021E9D78: ; 0x021E9D78
 	sub sp, #8
 	add r5, r0, #0
 	add r4, r1, #0
-	bl ov60_021E7688
+	bl IntroMovie_GetBgConfig
 	add r6, r0, #0
 	bl sub_020216C8
 	bl sub_02022638
@@ -4500,16 +4159,16 @@ ov60_021E9E84: ; 0x021E9E84
 	sub sp, #0xc0
 	add r6, r0, #0
 	add r4, r1, #0
-	bl ov60_021E7688
+	bl IntroMovie_GetBgConfig
 	str r0, [sp, #0xc]
 	add r0, r6, #0
 	bl ov60_021E768C
 	add r5, r0, #0
 	add r0, r6, #0
-	bl ov60_021E7978
+	bl IntroMovie_GetSceneStepTimer
 	add r7, r0, #0
 	add r0, r6, #0
-	bl ov60_021E796C
+	bl IntroMovie_GetSceneStep
 	cmp r0, #0x14
 	bls _021E9EAE
 	b _021EA1FA
@@ -4555,14 +4214,14 @@ _021E9EE4:
 	add r3, r0, #0
 	bl BeginNormalPaletteFade
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
 _021E9F04:
 	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021E9FD6
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
 _021E9F14:
 	ldr r3, _021EA204 ; =_021EB73C
@@ -4633,7 +4292,7 @@ _021E9F3C:
 	mov r1, #1
 	bl GfGfx_EngineBTogglePlanes
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
 _021E9FAE:
 	add r0, r5, #0
@@ -4649,7 +4308,7 @@ _021E9FAE:
 	cmp r0, #0
 	beq _021E9FD6
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
 _021E9FD2:
 	cmp r7, #0x19
@@ -4658,7 +4317,7 @@ _021E9FD6:
 	b _021EA1FA
 _021E9FD8:
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
 _021E9FE0:
 	ldr r4, _021EA20C ; =_021EB794
@@ -4717,7 +4376,7 @@ _021EA008:
 	sub r3, #0xc1
 	bl ov60_021E7074
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
 _021EA05A:
 	add r0, r5, #0
@@ -4755,21 +4414,21 @@ _021EA05A:
 	and r0, r1
 	str r0, [r2]
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
 _021EA0B2:
 	ldr r0, [r4, #0x50]
 	mov r1, #1
 	bl ov60_021E6F28
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
 _021EA0C2:
 	add r0, r4, #0
 	mov r1, #0
 	bl ov60_021EA8C8
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
 _021EA0D2:
 	ldr r0, [r4, #0x64]
@@ -4780,28 +4439,28 @@ _021EA0DC:
 	b _021EA1FA
 _021EA0DE:
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
 _021EA0E6:
 	add r0, r4, #0
 	mov r1, #0
 	bl ov60_021EA990
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
 _021EA0F6:
 	ldr r0, [r4, #0x54]
 	mov r1, #1
 	bl ov60_021E6F28
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
 _021EA106:
 	add r0, r4, #0
 	mov r1, #1
 	bl ov60_021EA8C8
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
 _021EA116:
 	ldr r0, [r4, #0x64]
@@ -4809,28 +4468,28 @@ _021EA116:
 	cmp r0, #0
 	bne _021EA1FA
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
 _021EA128:
 	add r0, r4, #0
 	mov r1, #1
 	bl ov60_021EA990
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
 _021EA138:
 	ldr r0, [r4, #0x58]
 	mov r1, #1
 	bl ov60_021E6F28
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
 _021EA148:
 	add r0, r4, #0
 	mov r1, #2
 	bl ov60_021EA8C8
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
 _021EA158:
 	ldr r0, [r4, #0x64]
@@ -4849,7 +4508,7 @@ _021EA158:
 	add r3, r0, #0
 	bl BeginNormalPaletteFade
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
 _021EA182:
 	bl IsPaletteFadeFinished
@@ -4884,7 +4543,7 @@ _021EA1B6:
 	cmp r5, #3
 	blo _021EA1B6
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
 _021EA1D4:
 	mov r0, #0
@@ -4893,7 +4552,7 @@ _021EA1D4:
 	mov r1, #1
 	bl ov60_021E6F28
 	add r0, r6, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
 _021EA1EA:
 	ldr r0, [r4, #0x4c]
@@ -4922,7 +4581,7 @@ ov60_021EA21C: ; 0x021EA21C
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	add r5, r1, #0
-	bl ov60_021E7688
+	bl IntroMovie_GetBgConfig
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
@@ -4979,7 +4638,7 @@ _021EA29C: .word 0x04000050
 ov60_021EA2A0: ; 0x021EA2A0
 	push {r3, r4, r5, lr}
 	sub sp, #0xb8
-	bl ov60_021E7688
+	bl IntroMovie_GetBgConfig
 	add r3, sp, #0xa8
 	ldr r5, _021EA384 ; =_021EB634
 	add r4, r0, #0
@@ -5935,7 +5594,7 @@ _021EAA6E:
 	thumb_func_start ov60_021EAA74
 ov60_021EAA74: ; 0x021EAA74
 	push {r3, lr}
-	bl ov60_021E7688
+	bl IntroMovie_GetBgConfig
 	bl DoScheduledBgGpuUpdates
 	bl OamManager_ApplyAndResetBuffers
 	pop {r3, pc}
@@ -5947,7 +5606,7 @@ ov60_021EAA84: ; 0x021EAA84
 	sub sp, #4
 	add r5, r0, #0
 	add r4, r1, #0
-	bl ov60_021E7688
+	bl IntroMovie_GetBgConfig
 	add r6, r0, #0
 	ldr r0, _021EAAFC ; =gSystem + 0x60
 	mov r1, #1
@@ -6000,16 +5659,16 @@ ov60_021EAB04: ; 0x021EAB04
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r0, #0
-	bl ov60_021E7688
+	bl IntroMovie_GetBgConfig
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ov60_021E768C
 	add r5, r0, #0
 	add r0, r4, #0
-	bl ov60_021E7978
+	bl IntroMovie_GetSceneStepTimer
 	add r7, r0, #0
 	add r0, r4, #0
-	bl ov60_021E796C
+	bl IntroMovie_GetSceneStep
 	cmp r0, #4
 	bhi _021EAC08
 	add r0, r0, r0
@@ -6036,14 +5695,14 @@ _021EAB40:
 	mov r3, #0
 	bl BeginNormalPaletteFade
 	add r0, r4, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021EAC08
 _021EAB5E:
 	bl IsPaletteFadeFinished
 	cmp r0, #0
 	beq _021EAC08
 	add r0, r4, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021EAC08
 _021EAB6E:
 	mov r0, #0x3f
@@ -6103,7 +5762,7 @@ _021EAB6E:
 	mov r3, #0
 	bl ov60_021E7074
 	add r0, r4, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021EAC08
 _021EABD6:
 	cmp r7, #0x14
@@ -6120,7 +5779,7 @@ _021EABD6:
 	add r2, r0, #0
 	bl BeginNormalPaletteFade
 	add r0, r4, #0
-	bl ov60_021E7958
+	bl IntroMovie_AdvanceSceneStep
 	b _021EAC08
 _021EABFA:
 	bl IsPaletteFadeFinished
@@ -6144,7 +5803,7 @@ ov60_021EAC14: ; 0x021EAC14
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	add r5, r1, #0
-	bl ov60_021E7688
+	bl IntroMovie_GetBgConfig
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
@@ -6177,7 +5836,7 @@ _021EAC5A:
 ov60_021EAC5C: ; 0x021EAC5C
 	push {r3, r4, r5, lr}
 	sub sp, #0x80
-	bl ov60_021E7688
+	bl IntroMovie_GetBgConfig
 	add r3, sp, #0x70
 	ldr r5, _021EAD00 ; =_021EB7C0
 	add r4, r0, #0

@@ -55,8 +55,8 @@ BOOL IntroMovie_Init(OVY_MANAGER *man, int *state) {
     IntroMovieOvyData *data = OverlayManager_CreateAndGetData(man, sizeof(IntroMovieOvyData), HEAP_ID_INTRO_MOVIE);
     memset(data, 0, sizeof(IntroMovieOvyData));
     data->heapID = HEAP_ID_INTRO_MOVIE;
-    data->unk_008 = FALSE;
-    data->unk_628 = 0;
+    data->introSkipped = FALSE;
+    data->skipAllowed = FALSE;
     gSystem.screensFlipped = TRUE;
     GfGfx_SwapDisplay();
     data->unk_14C = GetLCRNGSeed();
@@ -69,8 +69,8 @@ BOOL IntroMovie_Init(OVY_MANAGER *man, int *state) {
 
 BOOL IntroMovie_Main(OVY_MANAGER *man, int *state) {
     IntroMovieOvyData *data = OverlayManager_GetData(man);
-    if (data->unk_628 && ((gSystem.newKeys & PAD_BUTTON_A) || (gSystem.newKeys & PAD_BUTTON_START) || gSystem.touchNew)) {
-        data->unk_008 = TRUE;
+    if (data->skipAllowed && ((gSystem.newKeys & PAD_BUTTON_A) || (gSystem.newKeys & PAD_BUTTON_START) || gSystem.touchNew)) {
+        data->introSkipped = TRUE;
         gSystem.unk70 = FALSE;
         sub_0200FBF4(PM_LCD_TOP, RGB_WHITE);
         sub_0200FBF4(PM_LCD_BOTTOM, RGB_WHITE);
@@ -78,20 +78,20 @@ BOOL IntroMovie_Main(OVY_MANAGER *man, int *state) {
 
     switch (*state) {
     case 0:
-        data->unk_150.unk_004 = &data->unk_628;
+        data->scene1Data.skipAllowedPtr = &data->skipAllowed;
         sub_02004EC4(2, SEQ_GS_TITLE, 1);
         ++(*state);
         break;
     case 1:
-        if (sIntroMovieSceneFuncs[data->unk_62B](data, IntroMovie_GetSceneDataPtr(data))) {
-            ++data->unk_62B;
-            data->unk_629 = 0;
-            data->unk_62A = 0;
-            if (data->unk_62B >= 5) {
+        if (sIntroMovieSceneFuncs[data->sceneNumber](data, IntroMovie_GetSceneDataPtr(data))) {
+            ++data->sceneNumber;
+            data->sceneStep = 0;
+            data->sceneTimer = 0;
+            if (data->sceneNumber >= 5) {
                 ++(*state);
             }
         } else {
-            ++data->unk_62A;
+            ++data->sceneTimer;
         }
         break;
     case 2:
@@ -100,7 +100,7 @@ BOOL IntroMovie_Main(OVY_MANAGER *man, int *state) {
         GF_ASSERT(FALSE);
     }
 
-    if (data->unk_008) {
+    if (data->introSkipped) {
         return TRUE;
     }
 

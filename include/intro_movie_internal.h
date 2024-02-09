@@ -7,7 +7,8 @@
 
 typedef struct IntroMovieScene1Data {
     u8 unk_000;
-    u8 *unk_004;
+    u8 unk_001;
+    u8 *skipAllowedPtr;
     u8 filler_008[0x10];
     Sprite *unk_018;
     void *unk_01C;
@@ -138,30 +139,30 @@ typedef struct IntroMovieSub_614 {
 typedef struct IntroMovieOvyData {
     HeapID heapID;
     int unk_004;
-    BOOL unk_008;
+    BOOL introSkipped;
     BgConfig *bgConfig;
     SpriteList *unk_010;
     GF_G2dRenderer unk_014;
     _2DGfxResMan *unk_13C[4];
     u32 unk_14C;
-    IntroMovieScene1Data unk_150;
-    IntroMovieScene2Data unk_170;
-    IntroMovieScene3Data unk_224;
-    IntroMovieScene4Data unk_3F8;
-    IntroMovieScene5Data unk_468;
+    IntroMovieScene1Data scene1Data;
+    IntroMovieScene2Data scene2Data;
+    IntroMovieScene3Data scene3Data;
+    IntroMovieScene4Data scene4Data;
+    IntroMovieScene5Data scene5Data;
     IntroMovieSub_46C unk_46C;
     IntroMovieSub_614 unk_614;
-    u8 unk_628;
-    u8 unk_629;
-    u8 unk_62A;
-    u8 unk_62B;
+    u8 skipAllowed;
+    u8 sceneStep;
+    u8 sceneTimer;
+    u8 sceneNumber;
 } IntroMovieOvyData; // size: 0x62C
 
-BOOL IntroMovie_Scene1(IntroMovieOvyData *data, void *a1);
-BOOL IntroMovie_Scene2(IntroMovieOvyData *data, void *a1);
-BOOL IntroMovie_Scene3(IntroMovieOvyData *data, void *a1);
-BOOL IntroMovie_Scene4(IntroMovieOvyData *data, void *a1);
-BOOL IntroMovie_Scene5(IntroMovieOvyData *data, void *a1);
+BOOL IntroMovie_Scene1(IntroMovieOvyData *data, void *pVoid);
+BOOL IntroMovie_Scene2(IntroMovieOvyData *data, void *pVoid);
+BOOL IntroMovie_Scene3(IntroMovieOvyData *data, void *pVoid);
+BOOL IntroMovie_Scene4(IntroMovieOvyData *data, void *pVoid);
+BOOL IntroMovie_Scene5(IntroMovieOvyData *data, void *pVoid);
 
 void ov60_021E6ED8(IntroMovieOvyData *data, const u8 *counts);
 void ov60_021E6F00(IntroMovieOvyData *data);
@@ -179,7 +180,7 @@ IntroMovieSub_46C_110 *ov60_021E7398(IntroMovieSub_46C_110 *data, int a1, int a2
 BOOL ov60_021E7434(IntroMovieSub_46C_110 *data, int a1);
 void ov60_021E74F0(int a0, int a1, u8 a2, u8 a3, int a4);
 void ov60_021E75C4(int a0, int a1, int a2, int a3, int a4);
-BgConfig *ov60_021E7688(IntroMovieOvyData *data);
+BgConfig *IntroMovie_GetBgConfig(IntroMovieOvyData *data);
 IntroMovieSub_46C *ov60_021E768C(IntroMovieOvyData *data);
 BOOL ov60_021E7698(IntroMovieOvyData *data);
 int ov60_021E769C(IntroMovieOvyData *data);
@@ -187,8 +188,8 @@ void ov60_021E76A0(IntroMovieOvyData *data);
 void ov60_021E76F4(IntroMovieOvyData *data, int a1, int a2, int a3);
 BOOL ov60_021E77A0(IntroMovieOvyData *data);
 void *IntroMovie_GetSceneDataPtr(IntroMovieOvyData *data);
-void ov60_021E7958(IntroMovieOvyData *data);
-u8 ov60_021E796C(IntroMovieOvyData *data);
-u8 ov60_021E7978(IntroMovieOvyData *data);
+void IntroMovie_AdvanceSceneStep(IntroMovieOvyData *data);
+u8 IntroMovie_GetSceneStep(IntroMovieOvyData *data);
+u8 IntroMovie_GetSceneStepTimer(IntroMovieOvyData *data);
 
 #endif //POKEHEARTGOLD_INTRO_MOVIE_INTERNAL

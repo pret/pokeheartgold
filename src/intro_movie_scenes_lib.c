@@ -426,7 +426,7 @@ void ov60_021E75C4(int x1, int y1, int x2, int y2, int whichScreen) {
     }
 }
 
-BgConfig *ov60_021E7688(IntroMovieOvyData *data) {
+BgConfig *IntroMovie_GetBgConfig(IntroMovieOvyData *data) {
     return data->bgConfig;
 }
 
@@ -435,7 +435,7 @@ IntroMovieSub_46C *ov60_021E768C(IntroMovieOvyData *data) {
 }
 
 BOOL ov60_021E7698(IntroMovieOvyData *data) {
-    return data->unk_008;
+    return data->introSkipped;
 }
 
 int ov60_021E769C(IntroMovieOvyData *data) {
@@ -561,21 +561,21 @@ void ov60_021E7864(void *pVoid) {
 
 void *IntroMovie_GetSceneDataPtr(IntroMovieOvyData *data) {
     void *ret = NULL;
-    switch (data->unk_62B) {
+    switch (data->sceneNumber) {
     case 0:
-        ret = &data->unk_150;
+        ret = &data->scene1Data;
         break;
     case 1:
-        ret = &data->unk_170;
+        ret = &data->scene2Data;
         break;
     case 2:
-        ret = &data->unk_224;
+        ret = &data->scene3Data;
         break;
     case 3:
-        ret = &data->unk_3F8;
+        ret = &data->scene4Data;
         break;
     case 4:
-        ret = &data->unk_468;
+        ret = &data->scene5Data;
         break;
     default:
         GF_ASSERT(FALSE);
@@ -584,15 +584,15 @@ void *IntroMovie_GetSceneDataPtr(IntroMovieOvyData *data) {
     return ret;
 }
 
-void ov60_021E7958(IntroMovieOvyData *data) {
-    ++data->unk_629;
-    data->unk_62A = 0;
+void IntroMovie_AdvanceSceneStep(IntroMovieOvyData *data) {
+    ++data->sceneStep;
+    data->sceneTimer = 0;
 }
 
-u8 ov60_021E796C(IntroMovieOvyData *data) {
-    return data->unk_629;
+u8 IntroMovie_GetSceneStep(IntroMovieOvyData *data) {
+    return data->sceneStep;
 }
 
-u8 ov60_021E7978(IntroMovieOvyData *data) {
-    return data->unk_62A;
+u8 IntroMovie_GetSceneStepTimer(IntroMovieOvyData *data) {
+    return data->sceneTimer;
 }
