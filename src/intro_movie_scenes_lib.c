@@ -1,12 +1,16 @@
 #include "global.h"
 #include "intro_movie_internal.h"
 #include "math_util.h"
+#include "system.h"
 #include "sys_task_api.h"
+#include "unk_0200FA24.h"
 
 void ov60_021E6FFC(SysTask *task, void *pVoid);
 void ov60_021E71CC(SysTask *task, void *pVoid);
 void ov60_021E7264(SysTask *task, void *pVoid);
 void ov60_021E7454(SysTask *task, void *pVoid);
+void ov60_021E77C0(SysTask *task, void *pVoid);
+void ov60_021E7864(void *pVoid);
 
 void ov60_021E6ED8(IntroMovieOvyData *data, const u8 *counts) {
     for (u8 i = 0; i < 4; ++i) {
@@ -390,34 +394,34 @@ asm void ov60_021E7454(SysTask *task, void *pVoid) {
 }
 #endif //NONMATCHING
 
-void ov60_021E74F0(int a0, int a1, u8 a2, u8 a3, int a4) {
-    if (a4) {
-        GX_SetVisibleWnd(3);
-        G2_SetWnd0InsidePlane(a0, a2);
-        G2_SetWnd1InsidePlane(a0, a2);
-        G2_SetWndOutsidePlane(a1, a2);
+void ov60_021E74F0(int winIn, int winOut, u8 topScreenEffect, u8 bottomScreenEffect, int whichScreen) {
+    if (whichScreen) {
+        GX_SetVisibleWnd(3);  // both
+        G2_SetWnd0InsidePlane(winIn, topScreenEffect);
+        G2_SetWnd1InsidePlane(winIn, topScreenEffect);
+        G2_SetWndOutsidePlane(winOut, topScreenEffect);
     } else {
-        GXS_SetVisibleWnd(3);
-        G2S_SetWnd0InsidePlane(a0, a3);
-        G2S_SetWnd1InsidePlane(a0, a3);
-        G2S_SetWndOutsidePlane(a1, a3);
+        GXS_SetVisibleWnd(3);  // both
+        G2S_SetWnd0InsidePlane(winIn, bottomScreenEffect);
+        G2S_SetWnd1InsidePlane(winIn, bottomScreenEffect);
+        G2S_SetWndOutsidePlane(winOut, bottomScreenEffect);
     }
 }
 
-void ov60_021E75C4(int a0, int a1, int a2, int a3, int a4) {
-    if (a0 == 0 && a2 == 0xFF) {
-        if (a4) {
-            G2_SetWnd1Position(0, a1, 1, a3);
-            G2_SetWnd0Position(1, a1, 0, a3);
+void ov60_021E75C4(int x1, int y1, int x2, int y2, int whichScreen) {
+    if (x1 == 0 && x2 == 0xFF) {
+        if (whichScreen) {
+            G2_SetWnd1Position(0, y1, 1, y2);
+            G2_SetWnd0Position(1, y1, 0, y2);
         } else {
-            G2S_SetWnd1Position(0, a1, 1, a3);
-            G2S_SetWnd0Position(1, a1, 0, a3);
+            G2S_SetWnd1Position(0, y1, 1, y2);
+            G2S_SetWnd0Position(1, y1, 0, y2);
         }
     } else {
-        if (a4) {
-            G2_SetWnd0Position(a0, a1, a2, a3);
+        if (whichScreen) {
+            G2_SetWnd0Position(x1, y1, x2, y2);
         } else {
-            G2S_SetWnd0Position(a0, a1, a2, a3);
+            G2S_SetWnd0Position(x1, y1, x2, y2);
         }
     }
 }
@@ -447,4 +451,148 @@ void ov60_021E76A0(IntroMovieOvyData *data) {
         BgSetPosTextAndCommit(data->bgConfig, i, BG_POS_OP_SET_X, 0);
         BgSetPosTextAndCommit(data->bgConfig, i, BG_POS_OP_SET_Y, 0);
     }
+}
+
+void ov60_021E76F4(IntroMovieOvyData *data, int a1, int a2, int a3) {
+    int sp8 = 0x1F;
+    IntroMovieSub_614 *r4 = &data->unk_614;
+    BOOL r5 = 0;
+    PMLCDTarget r7 = PM_LCD_BOTTOM;
+    int sp4 = 0;
+    r4->active = 1;
+    r4->finished = 0;
+    r4->duration = a3;
+    r4->counter = 0;
+    r4->whichScreen = a2;
+    r4->x = FX16_ONE;
+    r4->y = 0;
+    r4->kind = a1;
+    int r2;
+    int color;
+    if (a2) {
+        r2 = GF_BG_LYR_MAIN_0;
+        r7 = PM_LCD_TOP;
+    } else {
+        r2 = GF_BG_LYR_SUB_0;
+        r7 = PM_LCD_BOTTOM;
+    }
+    if (r4->kind == 0 || r4->kind == 1) {
+        color = RGB_WHITE;
+    } else {
+        color = RGB_BLACK;
+    }
+    BG_SetMaskColor(r2, color);
+    if (r4->kind == 0 || r4->kind == 2) {
+        sp8 = 0;
+        sp4 = 0x1F;
+        r5 = TRUE;
+    }
+    ov60_021E75C4(0, 0, 255, 192, a2);
+    ov60_021E74F0(sp8, sp4, 1, 1, a2);
+    if (r5) {
+        SetMasterBrightnessNeutral(r7);
+    }
+    r4->task = SysTask_CreateOnMainQueue(ov60_021E77C0, r4, 0);
+    Main_SetHBlankIntrCB(ov60_021E7864, r4);
+}
+
+BOOL ov60_021E77A0(IntroMovieOvyData *data) {
+    IntroMovieSub_614 *unk_614 = &data->unk_614;
+    if (!unk_614->active) {
+        return TRUE;
+    }
+    if (unk_614->finished) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+void ov60_021E77C0(SysTask *task, void *pVoid) {
+    IntroMovieSub_614 *data = (IntroMovieSub_614 *)pVoid;
+
+    u16 idx = FX32_CONST(8) * data->counter / data->duration;
+    data->x = FX_CosIdx(idx);
+    data->y = FX_SinIdx(idx);
+    ++data->counter;
+    if (data->counter >= data->duration) {
+        SysTask_Destroy(data->task);
+        data->task = NULL;
+        data->finished = 1;
+        data->active = 0;
+
+        u8 screen = data->whichScreen == 0 ? PM_LCD_BOTTOM : PM_LCD_TOP;
+        if (data->kind == 1) {
+            sub_0200FBF4(screen, RGB_WHITE);
+        } else if (data->kind == 3) {
+            sub_0200FBF4(screen, RGB_BLACK);
+        } else {
+            if (data->whichScreen) {
+                GX_SetVisibleWnd(0);
+            } else {
+                GXS_SetVisibleWnd(0);
+            }
+            SetMasterBrightnessNeutral(screen);
+        }
+        Main_SetHBlankIntrCB(NULL, NULL);
+    }
+}
+
+void ov60_021E7864(void *pVoid) {
+    IntroMovieSub_614 *data = (IntroMovieSub_614 *)pVoid;
+
+    int vcount = GX_GetVCount();
+    if (vcount > 0xBF) {
+        ov60_021E75C4(0, 0, 0x7F, 0xC0, data->whichScreen);
+    } else if (data->x == FX16_ONE) {
+        ov60_021E75C4(0, 0, 0xFF, 0xC0, data->whichScreen);
+    } else if (data->x == -FX16_ONE) {
+        ov60_021E75C4(0, 0, 0, 0xC0, data->whichScreen);
+    } else {
+        int y = data->y <= 0 ? 0 : vcount * data->x / data->y;
+        y += 0x7F;
+        if (y > 0xFF) {
+            y = 0xFF;
+        } else if (y < 0) {
+            y = 0;
+        }
+        ov60_021E75C4(0, 0, y, 0xC0, data->whichScreen);
+    }
+}
+
+void *IntroMovie_GetSceneDataPtr(IntroMovieOvyData *data) {
+    void *ret = NULL;
+    switch (data->unk_62B) {
+    case 0:
+        ret = &data->unk_150;
+        break;
+    case 1:
+        ret = &data->unk_170;
+        break;
+    case 2:
+        ret = &data->unk_224;
+        break;
+    case 3:
+        ret = &data->unk_3F8;
+        break;
+    case 4:
+        ret = &data->unk_468;
+        break;
+    default:
+        GF_ASSERT(FALSE);
+        break;
+    }
+    return ret;
+}
+
+void ov60_021E7958(IntroMovieOvyData *data) {
+    ++data->unk_629;
+    data->unk_62A = 0;
+}
+
+u8 ov60_021E796C(IntroMovieOvyData *data) {
+    return data->unk_629;
+}
+
+u8 ov60_021E7978(IntroMovieOvyData *data) {
+    return data->unk_62A;
 }

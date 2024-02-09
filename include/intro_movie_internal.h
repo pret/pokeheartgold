@@ -123,6 +123,18 @@ typedef struct IntroMovieSub_46C {
     IntroMovieSub_46C_110 unk_110[2];
 } IntroMovieSub_46C;
 
+typedef struct IntroMovieSub_614 {
+    int active;
+    int whichScreen;
+    SysTask *task;
+    fx16 x;
+    fx16 y;
+    u8 duration;
+    u8 counter;
+    u8 finished;
+    u8 kind;
+} IntroMovieSub_614;
+
 typedef struct IntroMovieOvyData {
     HeapID heapID;
     int unk_004;
@@ -138,9 +150,7 @@ typedef struct IntroMovieOvyData {
     IntroMovieScene4Data unk_3F8;
     IntroMovieScene5Data unk_468;
     IntroMovieSub_46C unk_46C;
-    u8 filler_614[0x8];
-    SysTask *unk_61C;
-    u8 filler_620[8];
+    IntroMovieSub_614 unk_614;
     u8 unk_628;
     u8 unk_629;
     u8 unk_62A;
@@ -174,5 +184,11 @@ IntroMovieSub_46C *ov60_021E768C(IntroMovieOvyData *data);
 BOOL ov60_021E7698(IntroMovieOvyData *data);
 int ov60_021E769C(IntroMovieOvyData *data);
 void ov60_021E76A0(IntroMovieOvyData *data);
+void ov60_021E76F4(IntroMovieOvyData *data, int a1, int a2, int a3);
+BOOL ov60_021E77A0(IntroMovieOvyData *data);
+void *IntroMovie_GetSceneDataPtr(IntroMovieOvyData *data);
+void ov60_021E7958(IntroMovieOvyData *data);
+u8 ov60_021E796C(IntroMovieOvyData *data);
+u8 ov60_021E7978(IntroMovieOvyData *data);
 
 #endif //POKEHEARTGOLD_INTRO_MOVIE_INTERNAL

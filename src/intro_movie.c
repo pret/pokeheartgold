@@ -24,7 +24,6 @@ void ov60_021E6E14(void);
 void ov60_021E6E34(IntroMovieOvyData *data);
 void ov60_021E6E40(IntroMovieOvyData *data);
 void ov60_021E6EC0(IntroMovieOvyData *data);
-void *IntroMovie_GetSceneDataPtr(IntroMovieOvyData *data);
 
 const OVY_MGR_TEMPLATE gApplication_IntroMovie = {IntroMovie_Init, IntroMovie_Main, IntroMovie_Exit, FS_OVERLAY_ID_NONE};
 
@@ -138,9 +137,9 @@ BOOL IntroMovie_Exit(OVY_MANAGER *man, int *state) {
             data->unk_46C.unk_110[i].unk_0C = NULL;
         }
     }
-    if (data->unk_61C != NULL) {
-        SysTask_Destroy(data->unk_61C);
-        data->unk_61C = NULL;
+    if (data->unk_614.task != NULL) {
+        SysTask_Destroy(data->unk_614.task);
+        data->unk_614.task = NULL;
     }
     Main_SetVBlankIntrCB(NULL, NULL);
     Main_SetHBlankIntrCB(NULL, NULL);
