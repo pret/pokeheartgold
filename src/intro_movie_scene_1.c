@@ -69,9 +69,9 @@ void IntroMovie_Scene1_Init(IntroMovieOvyData *data, IntroMovieScene1Data *scene
     sceneData->unk_001 = 1;
 }
 
-BOOL IntroMovie_Scene1_Main(IntroMovieOvyData *data, IntroMovieScene1Data *sceneData, int a2) {
+BOOL IntroMovie_Scene1_Main(IntroMovieOvyData *data, IntroMovieScene1Data *sceneData, int totalFrames) {
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
-    IntroMovieSub_46C *r4 = ov60_021E768C(data);
+    IntroMovieSub_46C *unk_46C = ov60_021E768C(data);
     u8 timer = IntroMovie_GetSceneStepTimer(data);
     switch (IntroMovie_GetSceneStep(data)) {
     case 0:
@@ -82,13 +82,13 @@ BOOL IntroMovie_Scene1_Main(IntroMovieOvyData *data, IntroMovieScene1Data *scene
         break;
     case 1:
         if (timer >= 30) {
-            ov60_021E6FD0(&r4->unk_000[0], 1, 0x20, 60, 1, 0);
-            ov60_021E6FD0(&r4->unk_000[1], 1, 0x20, 60, 1, 1);
+            ov60_021E6FD0(&unk_46C->unk_000[0], 1, 0x20, 60, 1, 0);
+            ov60_021E6FD0(&unk_46C->unk_000[1], 1, 0x20, 60, 1, 1);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
     case 2:
-        if (r4->unk_000[0].stopped && r4->unk_000[1].stopped) {
+        if (unk_46C->unk_000[0].stopped && unk_46C->unk_000[1].stopped) {
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
@@ -115,16 +115,16 @@ BOOL IntroMovie_Scene1_Main(IntroMovieOvyData *data, IntroMovieScene1Data *scene
         break;
     case 6:
         if (timer >= 1) {
-            ov60_021E6FD0(&r4->unk_000[0], 1, 0x1E, 0x50, 1, 1);
-            ov60_021E6FD0(&r4->unk_000[1], 2, 0x1E, 0x50, 1, 0);
-            ov60_021E7074(bgConfig, r4->unk_030, GF_BG_LYR_MAIN_1, 0, -0x20, 0xF0);
-            ov60_021E7074(bgConfig, r4->unk_030, GF_BG_LYR_MAIN_2, 0, -0x10, 0xF0);
+            ov60_021E6FD0(&unk_46C->unk_000[0], 1, 0x1E, 0x50, 1, 1);
+            ov60_021E6FD0(&unk_46C->unk_000[1], 2, 0x1E, 0x50, 1, 0);
+            ov60_021E7074(bgConfig, unk_46C->unk_030, GF_BG_LYR_MAIN_1, 0, -0x20, 0xF0);
+            ov60_021E7074(bgConfig, unk_46C->unk_030, GF_BG_LYR_MAIN_2, 0, -0x10, 0xF0);
             ov60_021E6F28(sceneData->unk_018, TRUE);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
     case 7:
-        if (r4->unk_000[0].stopped && r4->unk_000[1].stopped && ov60_021E72FC(r4->unk_030, GF_BG_LYR_MAIN_1) && ov60_021E72FC(r4->unk_030, GF_BG_LYR_MAIN_2)) {
+        if (unk_46C->unk_000[0].stopped && unk_46C->unk_000[1].stopped && ov60_021E72FC(unk_46C->unk_030, GF_BG_LYR_MAIN_1) && ov60_021E72FC(unk_46C->unk_030, GF_BG_LYR_MAIN_2)) {
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
