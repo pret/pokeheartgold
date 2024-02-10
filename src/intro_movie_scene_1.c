@@ -24,7 +24,7 @@ const u8 _021EB134[4] = {1, 1, 1, 1};
 BOOL IntroMovie_Scene1(IntroMovieOvyData *data, void *pVoid) {
     IntroMovieScene1Data *sceneData = (IntroMovieScene1Data *)pVoid;
 
-    if (ov60_021E7698(data)) {
+    if (IntroMovie_GetIntroSkippedFlag(data)) {
         sceneData->unk_000 = 2;
     }
 
@@ -34,7 +34,7 @@ BOOL IntroMovie_Scene1(IntroMovieOvyData *data, void *pVoid) {
         ++sceneData->unk_000;
         break;
     case 1:
-        if (IntroMovie_Scene1_Main(data, sceneData, ov60_021E769C(data))) {
+        if (IntroMovie_Scene1_Main(data, sceneData, IntroMovie_GetTotalFrameCount(data))) {
             ++sceneData->unk_000;
         }
         break;

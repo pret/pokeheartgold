@@ -105,7 +105,7 @@ BOOL IntroMovie_Main(OVY_MANAGER *man, int *state) {
     }
 
     ov60_021E6E34(data);
-    ++data->unk_004;
+    ++data->totalFrameCount;
     return FALSE;
 }
 

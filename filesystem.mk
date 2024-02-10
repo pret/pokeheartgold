@@ -441,6 +441,7 @@ $(eval $(call arc_strip_name,files/resource/eng/pms_aikotoba/pms_aikotoba.narc,f
 $(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_data_gira.narc,files/a/2/1/4))
 $(eval $(call arc_strip_name,files/fielddata/sodateya/kowaza_list.narc,files/a/2/2/9))
 $(eval $(call arc_strip_name,files/a/2/5/2.$(buildname),files/a/2/5/2))
+$(eval $(call arc_strip_name,files/demo/opening/gs_opening.narc,files/a/2/6/2))
 $(eval $(call arc_strip_name,files/application/voltorb_flip.narc,files/a/2/6/4))
 
 $(DIFF_ARCS):

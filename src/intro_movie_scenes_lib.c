@@ -434,12 +434,12 @@ IntroMovieSub_46C *ov60_021E768C(IntroMovieOvyData *data) {
     return &data->unk_46C;
 }
 
-BOOL ov60_021E7698(IntroMovieOvyData *data) {
+BOOL IntroMovie_GetIntroSkippedFlag(IntroMovieOvyData *data) {
     return data->introSkipped;
 }
 
-int ov60_021E769C(IntroMovieOvyData *data) {
-    return data->unk_004;
+int IntroMovie_GetTotalFrameCount(IntroMovieOvyData *data) {
+    return data->totalFrameCount;
 }
 
 void ov60_021E76A0(IntroMovieOvyData *data) {

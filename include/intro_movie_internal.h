@@ -141,7 +141,7 @@ typedef struct IntroMovieSub_614 {
 
 typedef struct IntroMovieOvyData {
     HeapID heapID;
-    int unk_004;
+    int totalFrameCount;
     BOOL introSkipped;
     BgConfig *bgConfig;
     SpriteList *unk_010;
@@ -185,8 +185,8 @@ void ov60_021E74F0(int a0, int a1, u8 a2, u8 a3, int a4);
 void ov60_021E75C4(int a0, int a1, int a2, int a3, int a4);
 BgConfig *IntroMovie_GetBgConfig(IntroMovieOvyData *data);
 IntroMovieSub_46C *ov60_021E768C(IntroMovieOvyData *data);
-BOOL ov60_021E7698(IntroMovieOvyData *data);
-int ov60_021E769C(IntroMovieOvyData *data);
+BOOL IntroMovie_GetIntroSkippedFlag(IntroMovieOvyData *data);
+int IntroMovie_GetTotalFrameCount(IntroMovieOvyData *data);
 void ov60_021E76A0(IntroMovieOvyData *data);
 void ov60_021E76F4(IntroMovieOvyData *data, int a1, int a2, int a3);
 BOOL ov60_021E77A0(IntroMovieOvyData *data);

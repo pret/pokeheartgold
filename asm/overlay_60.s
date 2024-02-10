@@ -12,26 +12,22 @@
 	.extern ov60_021E6F28
 	.extern ov60_021E6F3C
 	.extern ov60_021E6FAC
-	.extern ov60_021E6FD0
 	.extern ov60_021E7074
 	.extern ov60_021E7120
 	.extern ov60_021E72FC
 	.extern ov60_021E7324
 	.extern ov60_021E7398
 	.extern ov60_021E7434
-	.extern ov60_021E74F0
-	.extern ov60_021E75C4
 	.extern IntroMovie_GetBgConfig
 	.extern ov60_021E768C
-	.extern ov60_021E7698
-	.extern ov60_021E769C
+	.extern IntroMovie_GetIntroSkippedFlag
+	.extern IntroMovie_GetTotalFrameCount
 	.extern ov60_021E76A0
 	.extern ov60_021E76F4
 	.extern ov60_021E77A0
 	.extern IntroMovie_AdvanceSceneStep
 	.extern IntroMovie_GetSceneStep
 	.extern IntroMovie_GetSceneStepTimer
-	.extern ov60_021E79E4
 
 	; file boundary
 
@@ -40,7 +36,7 @@ IntroMovie_Scene2: ; 0x021E80E0
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl ov60_021E7698
+	bl IntroMovie_GetIntroSkippedFlag
 	cmp r0, #0
 	beq _021E80F2
 	mov r0, #2
@@ -57,18 +53,18 @@ _021E80F2:
 _021E8102:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov60_021E8150
+	bl IntroMovie_Scene2_Init
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
 	b _021E813A
 _021E8112:
 	add r0, r5, #0
-	bl ov60_021E769C
+	bl IntroMovie_GetTotalFrameCount
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov60_021E8240
+	bl IntroMovie_Scene2_Main
 	cmp r0, #0
 	beq _021E813A
 	ldrb r0, [r4]
@@ -78,7 +74,7 @@ _021E8112:
 _021E812E:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov60_021E85E0
+	bl IntroMovie_Scene2_Exit
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021E813A:
@@ -96,8 +92,8 @@ ov60_021E8140: ; 0x021E8140
 	pop {r3, pc}
 	thumb_func_end ov60_021E8140
 
-	thumb_func_start ov60_021E8150
-ov60_021E8150: ; 0x021E8150
+	thumb_func_start IntroMovie_Scene2_Init
+IntroMovie_Scene2_Init: ; 0x021E8150
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r4, r1, #0
@@ -150,7 +146,7 @@ ov60_021E8150: ; 0x021E8150
 _021E81CC: .word 0x00007FFF
 _021E81D0: .word gSystem + 0x60
 _021E81D4: .word ov60_021E8140
-	thumb_func_end ov60_021E8150
+	thumb_func_end IntroMovie_Scene2_Init
 
 	thumb_func_start ov60_021E81D8
 ov60_021E81D8: ; 0x021E81D8
@@ -203,8 +199,8 @@ ov60_021E81D8: ; 0x021E81D8
 	.balign 4, 0
 	thumb_func_end ov60_021E81D8
 
-	thumb_func_start ov60_021E8240
-ov60_021E8240: ; 0x021E8240
+	thumb_func_start IntroMovie_Scene2_Main
+IntroMovie_Scene2_Main: ; 0x021E8240
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r6, r0, #0
@@ -626,10 +622,10 @@ _021E85D8:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov60_021E8240
+	thumb_func_end IntroMovie_Scene2_Main
 
-	thumb_func_start ov60_021E85E0
-ov60_021E85E0: ; 0x021E85E0
+	thumb_func_start IntroMovie_Scene2_Exit
+IntroMovie_Scene2_Exit: ; 0x021E85E0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	str r0, [sp]
@@ -692,7 +688,7 @@ _021E8666:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end ov60_021E85E0
+	thumb_func_end IntroMovie_Scene2_Exit
 
 	thumb_func_start ov60_021E866C
 ov60_021E866C: ; 0x021E866C
@@ -1368,7 +1364,7 @@ IntroMovie_Scene3: ; 0x021E8BF8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl ov60_021E7698
+	bl IntroMovie_GetIntroSkippedFlag
 	cmp r0, #0
 	beq _021E8C0A
 	mov r0, #2
@@ -1385,18 +1381,18 @@ _021E8C0A:
 _021E8C1A:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov60_021E8C68
+	bl IntroMovie_Scene3_Init
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
 	b _021E8C52
 _021E8C2A:
 	add r0, r5, #0
-	bl ov60_021E769C
+	bl IntroMovie_GetTotalFrameCount
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov60_021E8D38
+	bl IntroMovie_Scene3_Main
 	cmp r0, #0
 	beq _021E8C52
 	ldrb r0, [r4]
@@ -1406,7 +1402,7 @@ _021E8C2A:
 _021E8C46:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov60_021E94A0
+	bl IntroMovie_Scene3_Exit
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021E8C52:
@@ -1424,8 +1420,8 @@ ov60_021E8C58: ; 0x021E8C58
 	pop {r3, pc}
 	thumb_func_end ov60_021E8C58
 
-	thumb_func_start ov60_021E8C68
-ov60_021E8C68: ; 0x021E8C68
+	thumb_func_start IntroMovie_Scene3_Init
+IntroMovie_Scene3_Init: ; 0x021E8C68
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -1487,7 +1483,7 @@ ov60_021E8C68: ; 0x021E8C68
 _021E8CF8: .word gSystem + 0x60
 _021E8CFC: .word ov60_021E8C58
 _021E8D00: .word ov60_021E9BFC
-	thumb_func_end ov60_021E8C68
+	thumb_func_end IntroMovie_Scene3_Init
 
 	thumb_func_start ov60_021E8D04
 ov60_021E8D04: ; 0x021E8D04
@@ -1513,8 +1509,8 @@ ov60_021E8D04: ; 0x021E8D04
 	pop {r3, pc}
 	thumb_func_end ov60_021E8D04
 
-	thumb_func_start ov60_021E8D38
-ov60_021E8D38: ; 0x021E8D38
+	thumb_func_start IntroMovie_Scene3_Main
+IntroMovie_Scene3_Main: ; 0x021E8D38
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x1fc
 	sub sp, #8
@@ -2390,10 +2386,10 @@ _021E9490: .word 0xFFFFC0FF
 _021E9494: .word _021EB528
 _021E9498: .word _021EB370
 _021E949C: .word _021EB39C
-	thumb_func_end ov60_021E8D38
+	thumb_func_end IntroMovie_Scene3_Main
 
-	thumb_func_start ov60_021E94A0
-ov60_021E94A0: ; 0x021E94A0
+	thumb_func_start IntroMovie_Scene3_Exit
+IntroMovie_Scene3_Exit: ; 0x021E94A0
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	str r0, [sp]
@@ -2495,7 +2491,7 @@ _021E9536:
 _021E957C:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
-	thumb_func_end ov60_021E94A0
+	thumb_func_end IntroMovie_Scene3_Exit
 
 	thumb_func_start ov60_021E9580
 ov60_021E9580: ; 0x021E9580
@@ -3403,7 +3399,7 @@ IntroMovie_Scene4: ; 0x021E9D08
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl ov60_021E7698
+	bl IntroMovie_GetIntroSkippedFlag
 	cmp r0, #0
 	beq _021E9D1A
 	mov r0, #2
@@ -3420,18 +3416,18 @@ _021E9D1A:
 _021E9D2A:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov60_021E9D78
+	bl IntroMovie_Scene4_Init
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
 	b _021E9D62
 _021E9D3A:
 	add r0, r5, #0
-	bl ov60_021E769C
+	bl IntroMovie_GetTotalFrameCount
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov60_021E9E84
+	bl IntroMovie_Scene4_Main
 	cmp r0, #0
 	beq _021E9D62
 	ldrb r0, [r4]
@@ -3441,7 +3437,7 @@ _021E9D3A:
 _021E9D56:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov60_021EA21C
+	bl IntroMovie_Scene4_Exit
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021E9D62:
@@ -3459,8 +3455,8 @@ ov60_021E9D68: ; 0x021E9D68
 	pop {r3, pc}
 	thumb_func_end ov60_021E9D68
 
-	thumb_func_start ov60_021E9D78
-ov60_021E9D78: ; 0x021E9D78
+	thumb_func_start IntroMovie_Scene4_Init
+IntroMovie_Scene4_Init: ; 0x021E9D78
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -3566,10 +3562,10 @@ _021E9E74: .word ov60_021EA918
 _021E9E78: .word ov60_021EA828
 _021E9E7C: .word ov60_021EA84C
 _021E9E80: .word 0x04000050
-	thumb_func_end ov60_021E9D78
+	thumb_func_end IntroMovie_Scene4_Init
 
-	thumb_func_start ov60_021E9E84
-ov60_021E9E84: ; 0x021E9E84
+	thumb_func_start IntroMovie_Scene4_Main
+IntroMovie_Scene4_Main: ; 0x021E9E84
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0xc0
 	add r6, r0, #0
@@ -3989,10 +3985,10 @@ _021EA20C: .word _021EB794
 _021EA210: .word _021EB710
 _021EA214: .word 0xFFFF1FFF
 _021EA218: .word 0x04001000
-	thumb_func_end ov60_021E9E84
+	thumb_func_end IntroMovie_Scene4_Main
 
-	thumb_func_start ov60_021EA21C
-ov60_021EA21C: ; 0x021EA21C
+	thumb_func_start IntroMovie_Scene4_Exit
+IntroMovie_Scene4_Exit: ; 0x021EA21C
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	add r5, r1, #0
@@ -4047,7 +4043,7 @@ _021EA298:
 	pop {r4, r5, r6, pc}
 	nop
 _021EA29C: .word 0x04000050
-	thumb_func_end ov60_021EA21C
+	thumb_func_end IntroMovie_Scene4_Exit
 
 	thumb_func_start ov60_021EA2A0
 ov60_021EA2A0: ; 0x021EA2A0
@@ -4959,7 +4955,7 @@ IntroMovie_Scene5: ; 0x021EAA14
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl ov60_021E7698
+	bl IntroMovie_GetIntroSkippedFlag
 	cmp r0, #0
 	beq _021EAA26
 	mov r0, #2
@@ -4976,18 +4972,18 @@ _021EAA26:
 _021EAA36:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov60_021EAA84
+	bl IntroMovie_Scene5_Init
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
 	b _021EAA6E
 _021EAA46:
 	add r0, r5, #0
-	bl ov60_021E769C
+	bl IntroMovie_GetTotalFrameCount
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov60_021EAB04
+	bl IntroMovie_Scene5_Main
 	cmp r0, #0
 	beq _021EAA6E
 	ldrb r0, [r4]
@@ -4997,7 +4993,7 @@ _021EAA46:
 _021EAA62:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ov60_021EAC14
+	bl IntroMovie_Scene5_Exit
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021EAA6E:
@@ -5015,8 +5011,8 @@ ov60_021EAA74: ; 0x021EAA74
 	pop {r3, pc}
 	thumb_func_end ov60_021EAA74
 
-	thumb_func_start ov60_021EAA84
-ov60_021EAA84: ; 0x021EAA84
+	thumb_func_start IntroMovie_Scene5_Init
+IntroMovie_Scene5_Init: ; 0x021EAA84
 	push {r3, r4, r5, r6, lr}
 	sub sp, #4
 	add r5, r0, #0
@@ -5067,10 +5063,10 @@ ov60_021EAA84: ; 0x021EAA84
 	nop
 _021EAAFC: .word gSystem + 0x60
 _021EAB00: .word ov60_021EAA74
-	thumb_func_end ov60_021EAA84
+	thumb_func_end IntroMovie_Scene5_Init
 
-	thumb_func_start ov60_021EAB04
-ov60_021EAB04: ; 0x021EAB04
+	thumb_func_start IntroMovie_Scene5_Main
+IntroMovie_Scene5_Main: ; 0x021EAB04
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -5211,10 +5207,10 @@ _021EAC08:
 	nop
 #endif
 _021EAC10: .word 0x00007FFF
-	thumb_func_end ov60_021EAB04
+	thumb_func_end IntroMovie_Scene5_Main
 
-	thumb_func_start ov60_021EAC14
-ov60_021EAC14: ; 0x021EAC14
+	thumb_func_start IntroMovie_Scene5_Exit
+IntroMovie_Scene5_Exit: ; 0x021EAC14
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
 	add r5, r1, #0
@@ -5245,7 +5241,7 @@ ov60_021EAC14: ; 0x021EAC14
 	strb r0, [r5, #1]
 _021EAC5A:
 	pop {r4, r5, r6, pc}
-	thumb_func_end ov60_021EAC14
+	thumb_func_end IntroMovie_Scene5_Exit
 
 	thumb_func_start ov60_021EAC5C
 ov60_021EAC5C: ; 0x021EAC5C
@@ -5475,7 +5471,8 @@ ov60_021EAE18: ; 0x021EAE18
 	.rodata
 
 _021EB138:
-	.byte 0x02, 0x02, 0x02, 0x02, 0x4A, 0x00, 0x00, 0x00
+	.byte 0x02, 0x02, 0x02, 0x02
+	.word 0x4A
 	.size _021EB138,.-_021EB138
 _021EB140:
 	.byte 0x00, 0x01, 0x02, 0x03, 0x00, 0x01, 0x02, 0x03, 0x00, 0x01, 0x00, 0x00
@@ -5512,7 +5509,8 @@ _021EB1CC:
 	; file boundary?
 
 _021EB1F4:
-	.byte 0x02, 0x02, 0x02, 0x02, 0x4A, 0x00, 0x00, 0x00
+	.byte 0x02, 0x02, 0x02, 0x02
+	.word 0x4A
 	.size _021EB1F4,.-_021EB1F4
 _021EB1FC:
 	.byte 0x10, 0x42, 0xCE, 0x41
@@ -5677,7 +5675,8 @@ _021EB554:
 	; file boundary?
 
 _021EB5E4:
-	.byte 0x04, 0x04, 0x04, 0x04, 0x4A, 0x00, 0x00, 0x00
+	.byte 0x04, 0x04, 0x04, 0x04
+	.word 0x4A
 	.size _021EB5E4,.-_021EB5E4
 _021EB5EC:
 	.byte 0x56, 0x00, 0x00, 0x00
