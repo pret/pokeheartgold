@@ -73,6 +73,7 @@ usage () {
     echo "  START, END    Start and end virtual addresses to diff"
     echo ""
     echo "Options:"
+    echo "  -S            SoulSilver diff. Requires baserom.soulsilver.nds (default: HeartGold)"
     echo "  -7            Diff the ARM7 module (default: ARM9)"
     echo "  -a AUTOLOAD   Diff the indicated autoload module (default: static module)"
     echo "  -m OVERLAY    Diff the indicated overlay module (default: static module)"
@@ -128,6 +129,11 @@ while [[ $# -gt 0 ]]; do
   -d)
     builddir="$2"
     shift 2
+    ;;
+  -S)
+    baserom="${baserom:-baserom.soulsilver.nds}"
+    builddir="${builddir:-build/soulsilver.us}"
+    shift
     ;;
   -*)
     usage

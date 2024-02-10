@@ -9,7 +9,10 @@ typedef struct IntroMovieScene1Data {
     u8 unk_000;
     u8 unk_001;
     u8 *skipAllowedPtr;
-    u8 filler_008[0x10];
+    _2DGfxResObj *unk_008;
+    _2DGfxResObj *unk_00C;
+    _2DGfxResObj *unk_010;
+    _2DGfxResObj *unk_014;
     Sprite *unk_018;
     void *unk_01C;
 } IntroMovieScene1Data;
