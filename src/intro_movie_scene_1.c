@@ -8,7 +8,7 @@
 #include "unk_02022588.h"
 #include "system.h"
 
-void ov60_021E79E4(void *pVoid);
+void IntroMovie_Scene1_VBlankCB(void *pVoid);
 void IntroMovie_Scene1_Init(IntroMovieOvyData *data, IntroMovieScene1Data *sceneData);
 BOOL IntroMovie_Scene1_Main(IntroMovieOvyData *data, IntroMovieScene1Data *sceneData, int a2);
 void IntroMovie_Scene1_Exit(IntroMovieOvyData *data, IntroMovieScene1Data *sceneData);
@@ -46,7 +46,7 @@ BOOL IntroMovie_Scene1(IntroMovieOvyData *data, void *pVoid) {
     return FALSE;
 }
 
-void ov60_021E79E4(void *pVoid) {
+void IntroMovie_Scene1_VBlankCB(void *pVoid) {
     IntroMovieOvyData *data = (IntroMovieOvyData *)pVoid;
 
     DoScheduledBgGpuUpdates(IntroMovie_GetBgConfig(data));
@@ -61,7 +61,7 @@ void IntroMovie_Scene1_Init(IntroMovieOvyData *data, IntroMovieScene1Data *scene
     GfGfx_SwapDisplay();
     ov60_021E7CC4(data);
     ov60_021E76A0(data);
-    Main_SetVBlankIntrCB(ov60_021E79E4, data);
+    Main_SetVBlankIntrCB(IntroMovie_Scene1_VBlankCB, data);
     ov60_021E7E0C(bgConfig);
     ov60_021E7F94(data, sceneData);
     ov60_021E8050(data, sceneData);
