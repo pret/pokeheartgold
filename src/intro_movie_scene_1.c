@@ -353,19 +353,19 @@ void ov60_021E7CC4(IntroMovieOvyData *data) {
 #endif //HEARTGOLD
 
 void ov60_021E7E0C(BgConfig *bgConfig) {
-    GfGfxLoader_LoadCharData(NARC_a_2_6_2, 4, bgConfig, GF_BG_LYR_SUB_1, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
-    GfGfxLoader_LoadCharData(NARC_a_2_6_2, 5, bgConfig, GF_BG_LYR_MAIN_0, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
-    GfGfxLoader_LoadScrnData(NARC_a_2_6_2, 12, bgConfig, GF_BG_LYR_SUB_1, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
-    GfGfxLoader_LoadScrnData(NARC_a_2_6_2, 13, bgConfig, GF_BG_LYR_MAIN_0, 0, 0, FALSE, HEAP_ID_INTRO_MOVIE);
-    GfGfxLoader_LoadScrnData(NARC_a_2_6_2, 14, bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
-    GfGfxLoader_LoadCharData(NARC_a_2_6_2, INTRO_MOVIE_SCENE1_CHARDATA_SUB3, bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
-    GfGfxLoader_LoadCharData(NARC_a_2_6_2, INTRO_MOVIE_SCENE1_CHARDATA_MAIN3, bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
-    GfGfxLoader_LoadScrnData(NARC_a_2_6_2, INTRO_MOVIE_SCENE1_SCRNDATA_SUB3, bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
-    GfGfxLoader_LoadScrnData(NARC_a_2_6_2, INTRO_MOVIE_SCENE1_SCRNDATA_MAIN3, bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
-    GfGfxLoader_LoadScrnData(NARC_a_2_6_2, INTRO_MOVIE_SCENE1_SCRNDATA_MAIN2, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
-    GfGfxLoader_LoadScrnData(NARC_a_2_6_2, INTRO_MOVIE_SCENE1_SCRNDATA_MAIN1, bgConfig, GF_BG_LYR_MAIN_1, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
-    GfGfxLoader_GXLoadPal(NARC_a_2_6_2, INTRO_MOVIE_SCENE1_PALDATA_SUB, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0, 0x140, HEAP_ID_INTRO_MOVIE);
-    GfGfxLoader_GXLoadPal(NARC_a_2_6_2, INTRO_MOVIE_SCENE1_PALDATA_MAIN, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0x140, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_LoadCharData(NARC_demo_opening_gs_opening, 4, bgConfig, GF_BG_LYR_SUB_1, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_LoadCharData(NARC_demo_opening_gs_opening, 5, bgConfig, GF_BG_LYR_MAIN_0, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_LoadScrnData(NARC_demo_opening_gs_opening, 12, bgConfig, GF_BG_LYR_SUB_1, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_LoadScrnData(NARC_demo_opening_gs_opening, 13, bgConfig, GF_BG_LYR_MAIN_0, 0, 0, FALSE, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_LoadScrnData(NARC_demo_opening_gs_opening, 14, bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_LoadCharData(NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_CHARDATA_SUB3, bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_LoadCharData(NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_CHARDATA_MAIN3, bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_LoadScrnData(NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_SCRNDATA_SUB3, bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_LoadScrnData(NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_SCRNDATA_MAIN3, bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_LoadScrnData(NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_SCRNDATA_MAIN2, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_LoadScrnData(NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_SCRNDATA_MAIN1, bgConfig, GF_BG_LYR_MAIN_1, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_GXLoadPal(NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_PALDATA_SUB, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0, 0x140, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_GXLoadPal(NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_PALDATA_MAIN, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0x140, HEAP_ID_INTRO_MOVIE);
     GfGfx_EngineATogglePlanes((GXPlaneMask)(GX_PLANEMASK_BG0 | GX_PLANEMASK_BG1 | GX_PLANEMASK_BG2 | GX_PLANEMASK_BG3), GF_PLANE_TOGGLE_OFF);
     GfGfx_EngineBTogglePlanes((GXPlaneMask)(GX_PLANEMASK_BG0 | GX_PLANEMASK_BG1 | GX_PLANEMASK_BG2 | GX_PLANEMASK_BG3), GF_PLANE_TOGGLE_OFF);
     OS_WaitIrq(TRUE, OS_IE_V_BLANK);
@@ -382,10 +382,10 @@ void ov60_021E7F74(IntroMovieOvyData *data) {
 void ov60_021E7F94(IntroMovieOvyData *data, IntroMovieScene1Data *sceneData) {
     ov60_021E6ED8(data, _021EB134);
     _2DGfxResMan **ppMgr = ov60_021E6F20(data);
-    sceneData->unk_008 = AddCharResObjFromNarc(ppMgr[GF_GFX_RES_TYPE_CHAR], NARC_a_2_6_2, INTRO_MOVIE_SCENE1_BIRD_CHARRES, TRUE, 1, 1, HEAP_ID_INTRO_MOVIE);
-    sceneData->unk_00C = AddPlttResObjFromNarc(ppMgr[GF_GFX_RES_TYPE_PLTT], NARC_a_2_6_2, INTRO_MOVIE_SCENE1_BIRD_PLTTRES, FALSE, 1, 1, 2, HEAP_ID_INTRO_MOVIE);
-    sceneData->unk_010 = AddCellOrAnimResObjFromNarc(ppMgr[GF_GFX_RES_TYPE_CELL], NARC_a_2_6_2, INTRO_MOVIE_SCENE1_BIRD_CELLRES, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_INTRO_MOVIE);
-    sceneData->unk_014 = AddCellOrAnimResObjFromNarc(ppMgr[GF_GFX_RES_TYPE_ANIM], NARC_a_2_6_2, INTRO_MOVIE_SCENE1_BIRD_ANIMRES, TRUE, 1, GF_GFX_RES_TYPE_ANIM, HEAP_ID_INTRO_MOVIE);
+    sceneData->unk_008 = AddCharResObjFromNarc(ppMgr[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_BIRD_CHARRES, TRUE, 1, 1, HEAP_ID_INTRO_MOVIE);
+    sceneData->unk_00C = AddPlttResObjFromNarc(ppMgr[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_BIRD_PLTTRES, FALSE, 1, 1, 2, HEAP_ID_INTRO_MOVIE);
+    sceneData->unk_010 = AddCellOrAnimResObjFromNarc(ppMgr[GF_GFX_RES_TYPE_CELL], NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_BIRD_CELLRES, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_INTRO_MOVIE);
+    sceneData->unk_014 = AddCellOrAnimResObjFromNarc(ppMgr[GF_GFX_RES_TYPE_ANIM], NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_BIRD_ANIMRES, TRUE, 1, GF_GFX_RES_TYPE_ANIM, HEAP_ID_INTRO_MOVIE);
     sub_0200ACF0(sceneData->unk_008);
     sub_0200AF94(sceneData->unk_00C);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);

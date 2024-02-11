@@ -18,15 +18,15 @@ typedef struct IntroMovieScene1Data {
 } IntroMovieScene1Data;
 
 typedef struct IntroMovieScene2DataSub_064 {
-    BOOL unk_000;
-    u16 unk_004;
-    u8 unk_006;
-    u8 unk_007;
-    SysTask *unk_008;
-    int unk_00C;
-    int unk_010;
-    int unk_014;
-    int unk_018;
+    BOOL active;
+    s16 duration;
+    u8 counter;
+    u8 finished;
+    SysTask *task;
+    int xSpeed;
+    int ySpeed;
+    int xOffset;
+    int yOffset;
     Sprite *unk_01C;
     Sprite *unk_020;
     Sprite *unk_024;
@@ -45,8 +45,7 @@ typedef struct IntroMovieScene2Data {
     Sprite *unk_034;
     Sprite *unk_038;
     Sprite *unk_03C[10];
-    struct IntroMovieScene2DataSub_064 unk_064;
-    struct IntroMovieScene2DataSub_064 unk_08C;
+    struct IntroMovieScene2DataSub_064 unk_064[2];
 } IntroMovieScene2Data;
 
 typedef struct IntroMovieScene3Data {
