@@ -5,35 +5,36 @@
 #include "sys_task_api.h"
 #include "unk_0200FA24.h"
 
-void ov60_021E6FFC(SysTask *task, void *pVoid);
-void ov60_021E71CC(SysTask *task, void *pVoid);
-void ov60_021E7264(SysTask *task, void *pVoid);
-void ov60_021E7454(SysTask *task, void *pVoid);
-void ov60_021E77C0(SysTask *task, void *pVoid);
-void ov60_021E7864(void *pVoid);
+void Task_IntroMovie_BlendFadeEffect(SysTask *task, void *pVoid);
+int IntroMovie_BgLayerToScrollEffectSlot(enum GFBgLayer bgId);
+void Task_IntroMovie_BgScroll_VBlank(SysTask *task, void *pVoid);
+void Task_IntroMovie_BgScroll_NotVBlank(SysTask *task, void *pVoid);
+void Task_IntroMovie_WindowPanEffect(SysTask *task, void *pVoid);
+void Task_IntroMovie_CircleWipeEffect(SysTask *task, void *pVoid);
+void IntroMovie_CircleWipeEffect_HBlankCB(void *pVoid);
 
-void ov60_021E6ED8(IntroMovieOvyData *data, const u8 *counts) {
+void IntroMovie_CreateSpriteResourceManagers(IntroMovieOvyData *data, const u8 *counts) {
     for (u8 i = 0; i < 4; ++i) {
-        data->unk_13C[i] = Create2DGfxResObjMan(counts[i], (GfGfxResType)i, HEAP_ID_INTRO_MOVIE);
+        data->spriteResManagers[i] = Create2DGfxResObjMan(counts[i], (GfGfxResType)i, HEAP_ID_INTRO_MOVIE);
     }
 }
 
-void ov60_021E6F00(IntroMovieOvyData *data) {
+void IntroMovie_DestroySpriteResourceManagers(IntroMovieOvyData *data) {
     for (u8 i = 0; i < 4; ++i) {
-        Destroy2DGfxResObjMan(data->unk_13C[i]);
+        Destroy2DGfxResObjMan(data->spriteResManagers[i]);
     }
 }
 
-_2DGfxResMan **ov60_021E6F20(IntroMovieOvyData *data) {
-    return data->unk_13C;
+_2DGfxResMan **IntroMovie_GetSpriteResourceManagersArray(IntroMovieOvyData *data) {
+    return data->spriteResManagers;
 }
 
-void ov60_021E6F28(Sprite *sprite, BOOL active) {
+void IntroMovie_StartSpriteAnimAndMakeVisible(Sprite *sprite, BOOL active) {
     Set2dSpriteAnimActiveFlag(sprite, active);
     Set2dSpriteVisibleFlag(sprite, active);
 }
 
-void ov60_021E6F3C(int resId, IntroMovieOvyData *data, int priority, NNS_G2D_VRAM_TYPE whichScreen, SpriteTemplate *template, SpriteResourcesHeader *header) {
+void IntroMovie_BuildSpriteResourcesHeaderAndTemplate(int resId, IntroMovieOvyData *data, int priority, NNS_G2D_VRAM_TYPE whichScreen, SpriteTemplate *template, SpriteResourcesHeader *header) {
     CreateSpriteResourcesHeader(
         header,
         resId,
@@ -44,14 +45,14 @@ void ov60_021E6F3C(int resId, IntroMovieOvyData *data, int priority, NNS_G2D_VRA
         -1,
         0,
         priority,
-        data->unk_13C[0],
-        data->unk_13C[1],
-        data->unk_13C[2],
-        data->unk_13C[3],
+        data->spriteResManagers[GF_GFX_RES_TYPE_CHAR],
+        data->spriteResManagers[GF_GFX_RES_TYPE_PLTT],
+        data->spriteResManagers[GF_GFX_RES_TYPE_CELL],
+        data->spriteResManagers[GF_GFX_RES_TYPE_ANIM],
         NULL,
         NULL
     );
-    template->spriteList = data->unk_010;
+    template->spriteList = data->spriteList;
     template->header = header;
     SetVec(template->position, 0, 0, 0);
     SetVec(template->scale, FX32_ONE, FX32_ONE, FX32_ONE);
@@ -61,12 +62,14 @@ void ov60_021E6F3C(int resId, IntroMovieOvyData *data, int priority, NNS_G2D_VRA
     template->heapId = HEAP_ID_INTRO_MOVIE;
 }
 
-void ov60_021E6FAC(IntroMovieOvyData *data, int mainx, int mainy, int subx, int suby) {
-    G2dRenderer_SetSubSurfaceCoords(&data->unk_014, subx * FX32_ONE, suby * FX32_ONE);
-    G2dRenderer_SetMainSurfaceCoords(&data->unk_014, mainx * FX32_ONE, mainy * FX32_ONE);
+void IntroMovie_RendererSetSurfaceCoords(IntroMovieOvyData *data, fx32 mainx, fx32 mainy, fx32 subx, fx32 suby) {
+    G2dRenderer_SetSubSurfaceCoords(&data->spriteRenderer, subx * FX32_ONE, suby * FX32_ONE);
+    G2dRenderer_SetMainSurfaceCoords(&data->spriteRenderer, mainx * FX32_ONE, mainy * FX32_ONE);
 }
 
-void ov60_021E6FD0(IntroMovieSub_46C_000 *data, int plane1, int plane2, u8 rate, int direction, int screen) {
+// ---------------------------
+
+void IntroMovie_StartBlendFadeEffect(IntroMovieBgBlendAnim *data, int plane1, int plane2, u8 rate, int direction, int screen) {
     data->counter = 0;
     data->ev = 0;
     data->stopped = 0;
@@ -75,11 +78,11 @@ void ov60_021E6FD0(IntroMovieSub_46C_000 *data, int plane1, int plane2, u8 rate,
     data->plane2 = plane2;
     data->rate = rate;
     data->direction = direction;
-    data->task = SysTask_CreateOnMainQueue(ov60_021E6FFC, data, 0);
+    data->task = SysTask_CreateOnMainQueue(Task_IntroMovie_BlendFadeEffect, data, 0);
 }
 
-void ov60_021E6FFC(SysTask *task, void *pVoid) {
-    IntroMovieSub_46C_000 *data = (IntroMovieSub_46C_000 *)pVoid;
+void Task_IntroMovie_BlendFadeEffect(SysTask *task, void *pVoid) {
+    IntroMovieBgBlendAnim *data = (IntroMovieBgBlendAnim *)pVoid;
 
     ++data->counter;
     data->ev = data->counter * 31 / data->rate;
@@ -102,9 +105,11 @@ void ov60_021E6FFC(SysTask *task, void *pVoid) {
     }
 }
 
-void ov60_021E7074(BgConfig *bgConfig, IntroMovieSub_46C_030 *data, enum GFBgLayer bgId, fx16 xChange, fx16 yChange, fx32 rate) {
-    IntroMovieSub_46C_030 *obj = &data[ov60_021E734C(bgId)];
-    if (obj->running) {
+// ---------------------------
+
+void IntroMovie_StartBgScroll_VBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, enum GFBgLayer bgId, fx16 xChange, fx16 yChange, int rate) {
+    IntroMovieBgScrollAnim *obj = &data[IntroMovie_BgLayerToScrollEffectSlot(bgId)];
+    if (obj->active) {
         GF_ASSERT(FALSE);
         return;
     }
@@ -120,19 +125,19 @@ void ov60_021E7074(BgConfig *bgConfig, IntroMovieSub_46C_030 *data, enum GFBgLay
     obj->bgConfig = bgConfig;
     obj->bgId = bgId;
     obj->counter = 0;
-    obj->stopped = 0;
+    obj->finished = FALSE;
     obj->rate = rate;
     obj->xOrig = Bg_GetXpos(bgConfig, bgId);
     obj->yOrig = Bg_GetYpos(bgConfig, bgId);
     obj->xChange = xChange;
     obj->yChange = yChange;
-    obj->running = TRUE;
-    obj->task = SysTask_CreateOnVBlankQueue(ov60_021E71CC, obj, 0);
+    obj->active = TRUE;
+    obj->task = SysTask_CreateOnVBlankQueue(Task_IntroMovie_BgScroll_VBlank, obj, 0);
 }
 
-void ov60_021E7120(BgConfig *bgConfig, IntroMovieSub_46C_030 *data, enum GFBgLayer bgId, fx16 xChange, fx16 yChange, fx32 rate) {
-    IntroMovieSub_46C_030 *obj = &data[ov60_021E734C(bgId)];
-    if (obj->running) {
+void IntroMovie_StartBgScroll_NotVBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, enum GFBgLayer bgId, fx16 xChange, fx16 yChange, int rate) {
+    IntroMovieBgScrollAnim *obj = &data[IntroMovie_BgLayerToScrollEffectSlot(bgId)];
+    if (obj->active) {
         GF_ASSERT(FALSE);
         return;
     }
@@ -148,18 +153,18 @@ void ov60_021E7120(BgConfig *bgConfig, IntroMovieSub_46C_030 *data, enum GFBgLay
     obj->bgConfig = bgConfig;
     obj->bgId = bgId;
     obj->counter = 0;
-    obj->stopped = 0;
+    obj->finished = FALSE;
     obj->rate = rate;
     obj->xOrig = Bg_GetXpos(bgConfig, bgId);
     obj->yOrig = Bg_GetYpos(bgConfig, bgId);
     obj->xChange = xChange;
     obj->yChange = yChange;
-    obj->running = TRUE;
-    obj->task = SysTask_CreateOnMainQueue(ov60_021E7264, obj, 0);
+    obj->active = TRUE;
+    obj->task = SysTask_CreateOnMainQueue(Task_IntroMovie_BgScroll_NotVBlank, obj, 0);
 }
 
-void ov60_021E71CC(SysTask *task, void *pVoid) {
-    IntroMovieSub_46C_030 *data = (IntroMovieSub_46C_030 *)pVoid;
+void Task_IntroMovie_BgScroll_VBlank(SysTask *task, void *pVoid) {
+    IntroMovieBgScrollAnim *data = (IntroMovieBgScrollAnim *)pVoid;
     fx32 x;
     fx32 y;
 
@@ -175,16 +180,16 @@ void ov60_021E71CC(SysTask *task, void *pVoid) {
         if (data->counter >= data->rate) {
             SysTask_Destroy(data->task);
             data->task = NULL;
-            data->stopped = 1;
-            data->running = FALSE;
+            data->finished = TRUE;
+            data->active = FALSE;
         }
     }
     BgSetPosTextAndCommit(data->bgConfig, data->bgId, BG_POS_OP_SET_X, x);
     BgSetPosTextAndCommit(data->bgConfig, data->bgId, BG_POS_OP_SET_Y, y);
 }
 
-void ov60_021E7264(SysTask *task, void *pVoid) {
-    IntroMovieSub_46C_030 *data = (IntroMovieSub_46C_030 *)pVoid;
+void Task_IntroMovie_BgScroll_NotVBlank(SysTask *task, void *pVoid) {
+    IntroMovieBgScrollAnim *data = (IntroMovieBgScrollAnim *)pVoid;
     fx32 x;
     fx32 y;
 
@@ -200,37 +205,37 @@ void ov60_021E7264(SysTask *task, void *pVoid) {
         if (data->counter >= data->rate) {
             SysTask_Destroy(data->task);
             data->task = NULL;
-            data->stopped = 1;
-            data->running = FALSE;
+            data->finished = TRUE;
+            data->active = FALSE;
         }
     }
     ScheduleSetBgPosText(data->bgConfig, data->bgId, BG_POS_OP_SET_X, x);
     ScheduleSetBgPosText(data->bgConfig, data->bgId, BG_POS_OP_SET_Y, y);
 }
 
-BOOL ov60_021E72FC(IntroMovieSub_46C_030 *data, enum GFBgLayer bgId) {
+BOOL IntroMovie_WaitBgScrollAnim(IntroMovieBgScrollAnim *data, enum GFBgLayer bgId) {
     BOOL ret = FALSE;
-    IntroMovieSub_46C_030 *obj = &data[ov60_021E734C(bgId)];
-    if (!obj->running) {
+    IntroMovieBgScrollAnim *obj = &data[IntroMovie_BgLayerToScrollEffectSlot(bgId)];
+    if (!obj->active) {
         return TRUE;
     }
-    if (obj->stopped) {
+    if (obj->finished) {
         ret = TRUE;
     }
     return ret;
 }
 
-void ov60_021E7324(IntroMovieSub_46C_030 *data, enum GFBgLayer bgId) {
-    IntroMovieSub_46C_030 *obj = &data[ov60_021E734C(bgId)];
-    if (obj->running) {
+void IntroMovie_CancelBgScrollAnim(IntroMovieBgScrollAnim *data, enum GFBgLayer bgId) {
+    IntroMovieBgScrollAnim *obj = &data[IntroMovie_BgLayerToScrollEffectSlot(bgId)];
+    if (obj->active) {
         SysTask_Destroy(obj->task);
         obj->task = NULL;
-        obj->stopped = TRUE;
-        obj->running = FALSE;
+        obj->finished = TRUE;
+        obj->active = FALSE;
     }
 }
 
-int ov60_021E734C(enum GFBgLayer bgId) {
+int IntroMovie_BgLayerToScrollEffectSlot(enum GFBgLayer bgId) {
     int ret = 0;
     switch (bgId) {
     case GF_BG_LYR_MAIN_0:
@@ -264,137 +269,67 @@ int ov60_021E734C(enum GFBgLayer bgId) {
     return ret;
 }
 
-IntroMovieSub_46C_110 *ov60_021E7398(IntroMovieSub_46C_110 *data, int a1, int a2, const IntroMovieSub_46C_110_template *a3) {
-    ov60_021E74F0(a3->unk_20, a3->unk_24, a3->unk_28, a3->unk_2A, a2);
-    if (a1 <= 0) {
-        ov60_021E75C4(a3->unk_10, a3->unk_14, a3->unk_18, a3->unk_1C, a2);
+// ---------------------------
+
+IntroMovieBgWindowAnim *IntroMovie_StartWindowPanEffect(IntroMovieBgWindowAnim *data, int duration, int whichScreen, const IntroMovieBgWindowAnimParam *param) {
+    IntroMovie_WindowsOn_SetInsideOutsidePlanes(param->winIn, param->winOut, param->topScreenEffect, param->bottomScreenEffect, whichScreen);
+    if (duration <= 0) {
+        IntroMovie_SetBgWindowsPosition(param->x1End, param->y1End, param->x2End, param->y2End, whichScreen);
         return NULL;
     }
-    IntroMovieSub_46C_110 *ret = a2 == 0 ? &data[1] : &data[0];
-    ret->unk_10 = *a3;
-    ret->unk_08 = a1;
-    ret->unk_0A = 0;
-    ret->unk_0B = TRUE;
-    ret->unk_00 = TRUE;
-    ret->unk_04 = a2;
-    ret->unk_3C = a3->unk_00;
-    ret->unk_40 = a3->unk_04;
-    ret->unk_44 = a3->unk_08;
-    ret->unk_48 = a3->unk_0C;
-    ov60_021E75C4(a3->unk_00, a3->unk_04, a3->unk_08, a3->unk_0C, a2);
-    ret->unk_0C = SysTask_CreateOnVBlankQueue(ov60_021E7454, ret, 0);
+    IntroMovieBgWindowAnim *ret = whichScreen == 0 ? &data[1] : &data[0];
+    ret->param = *param;
+    ret->duration = duration;
+    ret->counter = 0;
+    ret->finished = TRUE;
+    ret->active = TRUE;
+    ret->whichScreen = whichScreen;
+    ret->x1 = param->x1Start;
+    ret->y1 = param->y1Start;
+    ret->x2 = param->x2Start;
+    ret->y2 = param->y2Start;
+    IntroMovie_SetBgWindowsPosition(param->x1Start, param->y1Start, param->x2Start, param->y2Start, whichScreen);
+    ret->task = SysTask_CreateOnVBlankQueue(Task_IntroMovie_WindowPanEffect, ret, 0);
     return ret;
 }
 
-BOOL ov60_021E7434(IntroMovieSub_46C_110 *data, int a1) {
-    IntroMovieSub_46C_110 *which = a1 == 0 ? &data[1] : &data[0];
-    if (which->unk_00 == 0) {
+BOOL IntroMovie_WaitWindowPanEffect(IntroMovieBgWindowAnim *data, int a1) {
+    IntroMovieBgWindowAnim *which = a1 == 0 ? &data[1] : &data[0];
+    if (which->active == 0) {
         return TRUE;
     }
-    return which->unk_0B != 0;
+    return which->finished != 0;
 }
 
-// https://decomp.me/scratch/b19bs
-#ifdef NONMATCHING
-void ov60_021E7454(SysTask *task, void *pVoid) {
-    IntroMovieSub_46C_110 *data = (IntroMovieSub_46C_110 *)pVoid;
-    ++data->unk_0A;
-    int spC = data->unk_10.unk_00 + (data->unk_10.unk_10 - data->unk_10.unk_00) * data->unk_0A / data->unk_08;
-    int sp8 = data->unk_10.unk_04 + (data->unk_10.unk_14 - data->unk_10.unk_04) * data->unk_0A / data->unk_08;
-    int r7 = data->unk_10.unk_08 + (data->unk_10.unk_18 - data->unk_10.unk_08) * data->unk_0A / data->unk_08;
-    int r4 = data->unk_10.unk_0C + (data->unk_10.unk_1C - data->unk_10.unk_0C) * data->unk_0A / data->unk_08;
-    data->unk_3C = spC;
-    data->unk_40 = sp8;
-    data->unk_44 = r7;
-    data->unk_48 = r4;
-    if (data->unk_0A >= data->unk_08) {
-        SysTask_Destroy(data->unk_0C);
-        data->unk_0C = NULL;
-        data->unk_0B = TRUE;
-        data->unk_00 = FALSE;
+#define scalePos(start, end, pos, rate) ({ \
+    int diff = (end) - (start);            \
+    diff = diff * (pos) / (rate);          \
+    (start) + diff;                        \
+})
+
+void Task_IntroMovie_WindowPanEffect(SysTask *task, void *pVoid) {
+    IntroMovieBgWindowAnim *data = (IntroMovieBgWindowAnim *)pVoid;
+    ++data->counter;
+    int x1 = scalePos(data->param.x1Start, data->param.x1End, data->counter, data->duration);
+    int y1 = scalePos(data->param.y1Start, data->param.y1End, data->counter, data->duration);
+    int x2 = scalePos(data->param.x2Start, data->param.x2End, data->counter, data->duration);
+    int y2 = scalePos(data->param.y2Start, data->param.y2End, data->counter, data->duration);
+    data->x1 = x1;
+    data->y1 = y1;
+    data->x2 = x2;
+    data->y2 = y2;
+    if (data->counter >= data->duration) {
+        SysTask_Destroy(data->task);
+        data->task = NULL;
+        data->finished = TRUE;
+        data->active = FALSE;
     }
-    ov60_021E75C4(spC, sp8, r7, r4, data->unk_04);
+    IntroMovie_SetBgWindowsPosition(x1, y1, x2, y2, data->whichScreen);
 }
-#else
-extern s32 _s32_div_f(s32, s32);
-asm void ov60_021E7454(SysTask *task, void *pVoid) {
-    push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x10
-	add r5, r1, #0
-	ldrb r0, [r5, #0xa]
-	add r0, r0, #1
-	strb r0, [r5, #0xa]
-	ldr r7, [r5, #0x10]
-	ldr r0, [r5, #0x20]
-	ldrb r4, [r5, #0xa]
-	sub r1, r0, r7
-	mov r0, #8
-	ldrsh r6, [r5, r0]
-	add r0, r1, #0
-	mul r0, r4
-	add r1, r6, #0
-	bl _s32_div_f
-	add r0, r7, r0
-	str r0, [sp, #0xc]
-	ldr r7, [r5, #0x14]
-	ldr r0, [r5, #0x24]
-	sub r1, r0, r7
-	add r0, r1, #0
-	mul r0, r4
-	add r1, r6, #0
-	bl _s32_div_f
-	add r0, r7, r0
-	str r0, [sp, #8]
-	ldr r7, [r5, #0x18]
-	ldr r0, [r5, #0x28]
-	sub r1, r0, r7
-	add r0, r1, #0
-	mul r0, r4
-	add r1, r6, #0
-	bl _s32_div_f
-	add r7, r7, r0
-	ldr r0, [r5, #0x1c]
-	ldr r1, [r5, #0x2c]
-	str r0, [sp, #4]
-	sub r1, r1, r0
-	add r0, r1, #0
-	mul r0, r4
-	add r1, r6, #0
-	bl _s32_div_f
-	ldr r1, [sp, #4]
-	add r4, r1, r0
-	ldr r0, [sp, #0xc]
-	str r0, [r5, #0x3c]
-	ldr r0, [sp, #8]
-	str r0, [r5, #0x40]
-	str r7, [r5, #0x44]
-	str r4, [r5, #0x48]
-	mov r0, #8
-	ldrb r1, [r5, #0xa]
-	ldrsh r0, [r5, r0]
-	cmp r1, r0
-	blt @_021E74DC
-	ldr r0, [r5, #0xc]
-	bl SysTask_Destroy
-	mov r1, #0
-	str r1, [r5, #0xc]
-	mov r0, #1
-	strb r0, [r5, #0xb]
-	str r1, [r5]
-@_021E74DC:
-	ldr r0, [r5, #4]
-	ldr r1, [sp, #8]
-	str r0, [sp]
-	ldr r0, [sp, #0xc]
-	add r2, r7, #0
-	add r3, r4, #0
-	bl ov60_021E75C4
-	add sp, #0x10
-	pop {r3, r4, r5, r6, r7, pc}
-}
-#endif //NONMATCHING
 
-void ov60_021E74F0(int winIn, int winOut, u8 topScreenEffect, u8 bottomScreenEffect, int whichScreen) {
+#undef scalePos
+
+void IntroMovie_WindowsOn_SetInsideOutsidePlanes(int winIn, int winOut, u8 topScreenEffect, u8 bottomScreenEffect, int whichScreen) {
     if (whichScreen) {
         GX_SetVisibleWnd(3);  // both
         G2_SetWnd0InsidePlane(winIn, topScreenEffect);
@@ -408,7 +343,7 @@ void ov60_021E74F0(int winIn, int winOut, u8 topScreenEffect, u8 bottomScreenEff
     }
 }
 
-void ov60_021E75C4(int x1, int y1, int x2, int y2, int whichScreen) {
+void IntroMovie_SetBgWindowsPosition(int x1, int y1, int x2, int y2, int whichScreen) {
     if (x1 == 0 && x2 == 0xFF) {
         if (whichScreen) {
             G2_SetWnd1Position(0, y1, 1, y2);
@@ -426,12 +361,14 @@ void ov60_021E75C4(int x1, int y1, int x2, int y2, int whichScreen) {
     }
 }
 
+// ---------------------------
+
 BgConfig *IntroMovie_GetBgConfig(IntroMovieOvyData *data) {
     return data->bgConfig;
 }
 
-IntroMovieSub_46C *ov60_021E768C(IntroMovieOvyData *data) {
-    return &data->unk_46C;
+IntroMovieBgLinearAnims *IntroMovie_GetBgLinearAnimsController(IntroMovieOvyData *data) {
+    return &data->bgAnimCnt;
 }
 
 BOOL IntroMovie_GetIntroSkippedFlag(IntroMovieOvyData *data) {
@@ -442,7 +379,7 @@ int IntroMovie_GetTotalFrameCount(IntroMovieOvyData *data) {
     return data->totalFrameCount;
 }
 
-void ov60_021E76A0(IntroMovieOvyData *data) {
+void IntroMovie_InitBgAnimGxState(IntroMovieOvyData *data) {
     G2_BlendNone();
     G2S_BlendNone();
     GX_SetVisibleWnd(0);
@@ -453,80 +390,80 @@ void ov60_021E76A0(IntroMovieOvyData *data) {
     }
 }
 
-void ov60_021E76F4(IntroMovieOvyData *data, int a1, int a2, int a3) {
-    int sp8 = 0x1F;
-    IntroMovieSub_614 *r4 = &data->unk_614;
-    BOOL r5 = 0;
-    PMLCDTarget r7 = PM_LCD_BOTTOM;
-    int sp4 = 0;
-    r4->active = 1;
-    r4->finished = 0;
-    r4->duration = a3;
-    r4->counter = 0;
-    r4->whichScreen = a2;
-    r4->x = FX16_ONE;
-    r4->y = 0;
-    r4->kind = a1;
-    int r2;
+void IntroMovie_BeginCirleWipeEffect(IntroMovieOvyData *data, int kind, int isTopScreen, int duration) {
+    int winIn = 0x1F;
+    IntroMovieCircleWipeEffect *effectData = &data->circleWipeEffect;
+    BOOL setBrightnessNeutral = 0;
+    PMLCDTarget screenId = PM_LCD_BOTTOM;
+    int winOut = 0;
+    effectData->active = TRUE;
+    effectData->finished = FALSE;
+    effectData->duration = duration;
+    effectData->counter = 0;
+    effectData->whichScreen = isTopScreen;
+    effectData->x = FX16_ONE;
+    effectData->y = 0;
+    effectData->kind = kind;
+    int bgId;
     int color;
-    if (a2) {
-        r2 = GF_BG_LYR_MAIN_0;
-        r7 = PM_LCD_TOP;
+    if (isTopScreen) {
+        bgId = GF_BG_LYR_MAIN_0;
+        screenId = PM_LCD_TOP;
     } else {
-        r2 = GF_BG_LYR_SUB_0;
-        r7 = PM_LCD_BOTTOM;
+        bgId = GF_BG_LYR_SUB_0;
+        screenId = PM_LCD_BOTTOM;
     }
-    if (r4->kind == 0 || r4->kind == 1) {
+    if (effectData->kind == 0 || effectData->kind == 1) {
         color = RGB_WHITE;
     } else {
         color = RGB_BLACK;
     }
-    BG_SetMaskColor(r2, color);
-    if (r4->kind == 0 || r4->kind == 2) {
-        sp8 = 0;
-        sp4 = 0x1F;
-        r5 = TRUE;
+    BG_SetMaskColor(bgId, color);
+    if (effectData->kind == 0 || effectData->kind == 2) {
+        winIn = 0;
+        winOut = 0x1F;
+        setBrightnessNeutral = TRUE;
     }
-    ov60_021E75C4(0, 0, 255, 192, a2);
-    ov60_021E74F0(sp8, sp4, 1, 1, a2);
-    if (r5) {
-        SetMasterBrightnessNeutral(r7);
+    IntroMovie_SetBgWindowsPosition(0, 0, 255, 192, isTopScreen);
+    IntroMovie_WindowsOn_SetInsideOutsidePlanes(winIn, winOut, 1, 1, isTopScreen);
+    if (setBrightnessNeutral) {
+        SetMasterBrightnessNeutral(screenId);
     }
-    r4->task = SysTask_CreateOnMainQueue(ov60_021E77C0, r4, 0);
-    Main_SetHBlankIntrCB(ov60_021E7864, r4);
+    effectData->task = SysTask_CreateOnMainQueue(Task_IntroMovie_CircleWipeEffect, effectData, 0);
+    Main_SetHBlankIntrCB(IntroMovie_CircleWipeEffect_HBlankCB, effectData);
 }
 
-BOOL ov60_021E77A0(IntroMovieOvyData *data) {
-    IntroMovieSub_614 *unk_614 = &data->unk_614;
-    if (!unk_614->active) {
+BOOL IntroMovie_WaitCircleWipeEffect(IntroMovieOvyData *data) {
+    IntroMovieCircleWipeEffect *effectData = &data->circleWipeEffect;
+    if (!effectData->active) {
         return TRUE;
     }
-    if (unk_614->finished) {
+    if (effectData->finished) {
         return TRUE;
     }
     return FALSE;
 }
 
-void ov60_021E77C0(SysTask *task, void *pVoid) {
-    IntroMovieSub_614 *data = (IntroMovieSub_614 *)pVoid;
+void Task_IntroMovie_CircleWipeEffect(SysTask *task, void *pVoid) {
+    IntroMovieCircleWipeEffect *effectData = (IntroMovieCircleWipeEffect *)pVoid;
 
-    u16 idx = FX32_CONST(8) * data->counter / data->duration;
-    data->x = FX_CosIdx(idx);
-    data->y = FX_SinIdx(idx);
-    ++data->counter;
-    if (data->counter >= data->duration) {
-        SysTask_Destroy(data->task);
-        data->task = NULL;
-        data->finished = 1;
-        data->active = 0;
+    u16 idx = FX_DEG_TO_IDX(180 * FX32_ONE) * effectData->counter / effectData->duration;
+    effectData->x = FX_CosIdx(idx);
+    effectData->y = FX_SinIdx(idx);
+    ++effectData->counter;
+    if (effectData->counter >= effectData->duration) {
+        SysTask_Destroy(effectData->task);
+        effectData->task = NULL;
+        effectData->finished = TRUE;
+        effectData->active = FALSE;
 
-        u8 screen = data->whichScreen == 0 ? PM_LCD_BOTTOM : PM_LCD_TOP;
-        if (data->kind == 1) {
+        u8 screen = effectData->whichScreen == 0 ? PM_LCD_BOTTOM : PM_LCD_TOP;
+        if (effectData->kind == 1) {
             sub_0200FBF4(screen, RGB_WHITE);
-        } else if (data->kind == 3) {
+        } else if (effectData->kind == 3) {
             sub_0200FBF4(screen, RGB_BLACK);
         } else {
-            if (data->whichScreen) {
+            if (effectData->whichScreen) {
                 GX_SetVisibleWnd(0);
             } else {
                 GXS_SetVisibleWnd(0);
@@ -537,16 +474,16 @@ void ov60_021E77C0(SysTask *task, void *pVoid) {
     }
 }
 
-void ov60_021E7864(void *pVoid) {
-    IntroMovieSub_614 *data = (IntroMovieSub_614 *)pVoid;
+void IntroMovie_CircleWipeEffect_HBlankCB(void *pVoid) {
+    IntroMovieCircleWipeEffect *data = (IntroMovieCircleWipeEffect *)pVoid;
 
     int vcount = GX_GetVCount();
     if (vcount > 0xBF) {
-        ov60_021E75C4(0, 0, 0x7F, 0xC0, data->whichScreen);
+        IntroMovie_SetBgWindowsPosition(0, 0, 0x7F, 0xC0, data->whichScreen);
     } else if (data->x == FX16_ONE) {
-        ov60_021E75C4(0, 0, 0xFF, 0xC0, data->whichScreen);
+        IntroMovie_SetBgWindowsPosition(0, 0, 0xFF, 0xC0, data->whichScreen);
     } else if (data->x == -FX16_ONE) {
-        ov60_021E75C4(0, 0, 0, 0xC0, data->whichScreen);
+        IntroMovie_SetBgWindowsPosition(0, 0, 0, 0xC0, data->whichScreen);
     } else {
         int y = data->y <= 0 ? 0 : vcount * data->x / data->y;
         y += 0x7F;
@@ -555,7 +492,7 @@ void ov60_021E7864(void *pVoid) {
         } else if (y < 0) {
             y = 0;
         }
-        ov60_021E75C4(0, 0, y, 0xC0, data->whichScreen);
+        IntroMovie_SetBgWindowsPosition(0, 0, y, 0xC0, data->whichScreen);
     }
 }
 

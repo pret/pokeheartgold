@@ -6,25 +6,25 @@
 
 	.text
 
-	.extern ov60_021E6ED8
-	.extern ov60_021E6F00
-	.extern ov60_021E6F20
-	.extern ov60_021E6F28
-	.extern ov60_021E6F3C
-	.extern ov60_021E6FAC
-	.extern ov60_021E7074
-	.extern ov60_021E7120
-	.extern ov60_021E72FC
-	.extern ov60_021E7324
-	.extern ov60_021E7398
-	.extern ov60_021E7434
+	.extern IntroMovie_CreateSpriteResourceManagers
+	.extern IntroMovie_DestroySpriteResourceManagers
+	.extern IntroMovie_GetSpriteResourceManagersArray
+	.extern IntroMovie_StartSpriteAnimAndMakeVisible
+	.extern IntroMovie_BuildSpriteResourcesHeaderAndTemplate
+	.extern IntroMovie_RendererSetSurfaceCoords
+	.extern IntroMovie_StartBgScroll_VBlank
+	.extern IntroMovie_StartBgScroll_NotVBlank
+	.extern IntroMovie_WaitBgScrollAnim
+	.extern IntroMovie_CancelBgScrollAnim
+	.extern IntroMovie_StartWindowPanEffect
+	.extern IntroMovie_WaitWindowPanEffect
 	.extern IntroMovie_GetBgConfig
-	.extern ov60_021E768C
+	.extern IntroMovie_GetBgLinearAnimsController
 	.extern IntroMovie_GetIntroSkippedFlag
 	.extern IntroMovie_GetTotalFrameCount
-	.extern ov60_021E76A0
-	.extern ov60_021E76F4
-	.extern ov60_021E77A0
+	.extern IntroMovie_InitBgAnimGxState
+	.extern IntroMovie_BeginCirleWipeEffect
+	.extern IntroMovie_WaitCircleWipeEffect
 	.extern IntroMovie_AdvanceSceneStep
 	.extern IntroMovie_GetSceneStep
 	.extern IntroMovie_GetSceneStepTimer
@@ -109,7 +109,7 @@ IntroMovie_Scene3_Init: ; 0x021E8C68
 	add r0, r5, #0
 	bl ov60_021E9580
 	add r0, r5, #0
-	bl ov60_021E76A0
+	bl IntroMovie_InitBgAnimGxState
 	ldr r0, _021E8CFC ; =ov60_021E8C58
 	add r1, r5, #0
 	bl Main_SetVBlankIntrCB
@@ -123,7 +123,7 @@ IntroMovie_Scene3_Init: ; 0x021E8C68
 	add r0, r5, #0
 	add r2, r1, #0
 	add r3, r1, #0
-	bl ov60_021E6FAC
+	bl IntroMovie_RendererSetSurfaceCoords
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov60_021E9768
@@ -162,7 +162,7 @@ ov60_021E8D04: ; 0x021E8D04
 	push {r3, lr}
 	ldr r0, [r0, #0x64]
 	mov r1, #1
-	bl ov60_021E6F28
+	bl IntroMovie_StartSpriteAnimAndMakeVisible
 	mov r0, #6
 	mov r1, #0
 	bl GfGfx_EngineBTogglePlanes
@@ -191,7 +191,7 @@ IntroMovie_Scene3_Main: ; 0x021E8D38
 	bl IntroMovie_GetBgConfig
 	add r7, r0, #0
 	add r0, r6, #0
-	bl ov60_021E768C
+	bl IntroMovie_GetBgLinearAnimsController
 	add r4, r0, #0
 	add r0, r6, #0
 	bl IntroMovie_GetSceneStepTimer
@@ -244,7 +244,7 @@ _021E8DA4:
 	mov r1, #0
 	mov r2, #1
 	mov r3, #8
-	bl ov60_021E76F4
+	bl IntroMovie_BeginCirleWipeEffect
 	add r0, r6, #0
 	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
@@ -256,13 +256,13 @@ _021E8DC6:
 	mov r1, #3
 	mov r2, #1
 	mov r3, #8
-	bl ov60_021E76F4
+	bl IntroMovie_BeginCirleWipeEffect
 	add r0, r6, #0
 	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E8DE0:
 	add r0, r6, #0
-	bl ov60_021E77A0
+	bl IntroMovie_WaitCircleWipeEffect
 	cmp r0, #0
 	bne _021E8DEC
 _021E8DEA:
@@ -272,7 +272,7 @@ _021E8DEC:
 	mov r1, #2
 	mov r2, #1
 	mov r3, #8
-	bl ov60_021E76F4
+	bl IntroMovie_BeginCirleWipeEffect
 	mov r0, #0x1d
 	mov r1, #1
 	lsl r0, r0, #4
@@ -292,20 +292,20 @@ _021E8E12:
 	mov r1, #3
 	mov r2, #1
 	mov r3, #8
-	bl ov60_021E76F4
+	bl IntroMovie_BeginCirleWipeEffect
 	add r0, r6, #0
 	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E8E2C:
 	add r0, r6, #0
-	bl ov60_021E77A0
+	bl IntroMovie_WaitCircleWipeEffect
 	cmp r0, #0
 	beq _021E8F0E
 	add r0, r6, #0
 	mov r1, #2
 	mov r2, #1
 	mov r3, #8
-	bl ov60_021E76F4
+	bl IntroMovie_BeginCirleWipeEffect
 	mov r0, #0x1d
 	mov r1, #2
 	lsl r0, r0, #4
@@ -325,13 +325,13 @@ _021E8E5C:
 	mov r1, #3
 	mov r2, #1
 	mov r3, #8
-	bl ov60_021E76F4
+	bl IntroMovie_BeginCirleWipeEffect
 	add r0, r6, #0
 	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E8E76:
 	add r0, r6, #0
-	bl ov60_021E77A0
+	bl IntroMovie_WaitCircleWipeEffect
 	cmp r0, #0
 	beq _021E8F0E
 	mov r0, #0x1d
@@ -346,13 +346,13 @@ _021E8E90:
 	mov r1, #2
 	mov r2, #0
 	mov r3, #8
-	bl ov60_021E76F4
+	bl IntroMovie_BeginCirleWipeEffect
 	add r0, r6, #0
 	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E8EA4:
 	add r0, r6, #0
-	bl ov60_021E77A0
+	bl IntroMovie_WaitCircleWipeEffect
 	cmp r0, #0
 	beq _021E8F0E
 	add r0, r6, #0
@@ -392,7 +392,7 @@ _021E8EB6:
 	blo _021E8F0E
 	ldr r0, [r5, #0x64]
 	mov r1, #0
-	bl ov60_021E6F28
+	bl IntroMovie_StartSpriteAnimAndMakeVisible
 	add r0, r6, #0
 	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
@@ -439,7 +439,7 @@ _021E8F44:
 	add r0, r4, r0
 	mov r2, #0
 	add r3, sp, #0x1cc
-	bl ov60_021E7398
+	bl IntroMovie_StartWindowPanEffect
 _021E8F60:
 	ldr r0, [sp, #0x10]
 	cmp r0, #0x2c
@@ -460,7 +460,7 @@ _021E8F6C:
 	add r0, r4, r0
 	mov r2, #0
 	add r3, sp, #0x1a0
-	bl ov60_021E7398
+	bl IntroMovie_StartWindowPanEffect
 	ldr r2, _021E91B8 ; =0x04001000
 	mov r3, #0xff
 	ldr r1, [r2]
@@ -478,7 +478,7 @@ _021E8F6C:
 	add r1, r4, #0
 	mov r2, #4
 	mvn r3, r3
-	bl ov60_021E7074
+	bl IntroMovie_StartBgScroll_VBlank
 	mov r0, #1
 	add r1, r0, #0
 	bl GfGfx_EngineBTogglePlanes
@@ -489,7 +489,7 @@ _021E8FBE:
 	add r0, r4, #0
 	add r0, #0x30
 	mov r1, #4
-	bl ov60_021E72FC
+	bl IntroMovie_WaitBgScrollAnim
 	cmp r0, #0
 	beq _021E9024
 	ldr r3, _021E91C0 ; =_021EB420
@@ -508,7 +508,7 @@ _021E8FD2:
 	add r0, r4, r0
 	mov r2, #0
 	add r3, sp, #0x174
-	bl ov60_021E7398
+	bl IntroMovie_StartWindowPanEffect
 	mov r0, #0
 	mov r2, #5
 	str r0, [sp]
@@ -519,7 +519,7 @@ _021E8FD2:
 	add r0, r7, #0
 	add r1, r4, #0
 	add r3, #0xfb
-	bl ov60_021E7074
+	bl IntroMovie_StartBgScroll_VBlank
 	mov r0, #2
 	mov r1, #1
 	bl GfGfx_EngineBTogglePlanes
@@ -530,7 +530,7 @@ _021E9016:
 	add r0, r4, #0
 	add r0, #0x30
 	mov r1, #5
-	bl ov60_021E72FC
+	bl IntroMovie_WaitBgScrollAnim
 	cmp r0, #0
 	bne _021E9026
 _021E9024:
@@ -552,7 +552,7 @@ _021E902C:
 	add r0, r4, r0
 	mov r2, #0
 	add r3, sp, #0x148
-	bl ov60_021E7398
+	bl IntroMovie_StartWindowPanEffect
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #1
@@ -563,7 +563,7 @@ _021E902C:
 	add r1, r4, #0
 	mov r2, #6
 	mvn r3, r3
-	bl ov60_021E7074
+	bl IntroMovie_StartBgScroll_VBlank
 	mov r0, #4
 	mov r1, #1
 	bl GfGfx_EngineBTogglePlanes
@@ -574,7 +574,7 @@ _021E9070:
 	add r4, #0x30
 	add r0, r4, #0
 	mov r1, #6
-	bl ov60_021E72FC
+	bl IntroMovie_WaitBgScrollAnim
 	cmp r0, #0
 	beq _021E912E
 	mov r0, #1
@@ -623,7 +623,7 @@ _021E90C2:
 	add r0, r4, r0
 	mov r2, #0
 	add r3, sp, #0x11c
-	bl ov60_021E7398
+	bl IntroMovie_StartWindowPanEffect
 	ldr r2, _021E91B8 ; =0x04001000
 	ldr r0, _021E91BC ; =0xFFFF1FFF
 	ldr r1, [r2]
@@ -639,7 +639,7 @@ _021E90F4:
 	lsl r0, r0, #4
 	add r0, r4, r0
 	mov r1, #0
-	bl ov60_021E7434
+	bl IntroMovie_WaitWindowPanEffect
 	cmp r0, #0
 	beq _021E912E
 	add r0, r6, #0
@@ -651,14 +651,14 @@ _021E910C:
 	bne _021E911A
 	ldr r0, [r5, #0x68]
 	mov r1, #1
-	bl ov60_021E6F28
+	bl IntroMovie_StartSpriteAnimAndMakeVisible
 _021E911A:
 	ldr r0, [sp, #0x10]
 	cmp r0, #0x91
 	bne _021E9128
 	ldr r0, [r5, #0x6c]
 	mov r1, #1
-	bl ov60_021E6F28
+	bl IntroMovie_StartSpriteAnimAndMakeVisible
 _021E9128:
 	ldr r0, [sp, #0x10]
 	cmp r0, #0x91
@@ -682,7 +682,7 @@ _021E9136:
 	add r0, r4, r0
 	mov r2, #0
 	add r3, sp, #0xf0
-	bl ov60_021E7398
+	bl IntroMovie_StartWindowPanEffect
 	ldr r1, _021E91D0 ; =0x000046B9
 	ldr r0, _021E91D4 ; =0x04001042
 	add r4, #0x30
@@ -707,7 +707,7 @@ _021E9136:
 	add r0, r7, #0
 	add r1, r4, #0
 	sub r3, #0x79
-	bl ov60_021E7074
+	bl IntroMovie_StartBgScroll_VBlank
 	add r0, r6, #0
 	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
@@ -715,7 +715,7 @@ _021E918E:
 	add r0, r4, #0
 	add r0, #0x30
 	mov r1, #5
-	bl ov60_021E72FC
+	bl IntroMovie_WaitBgScrollAnim
 	cmp r0, #0
 	beq _021E9294
 	mov r0, #2
@@ -755,14 +755,14 @@ _021E91E8:
 	add r0, r4, r0
 	add r2, r1, #0
 	add r3, sp, #0xc4
-	bl ov60_021E7398
+	bl IntroMovie_StartWindowPanEffect
 	add r0, r6, #0
 	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
 _021E920C:
 	ldr r0, [r5, #0x70]
 	mov r1, #1
-	bl ov60_021E6F28
+	bl IntroMovie_StartSpriteAnimAndMakeVisible
 	ldr r0, [sp, #0x10]
 	cmp r0, #0xa
 	blo _021E9294
@@ -782,7 +782,7 @@ _021E9220:
 	add r0, r4, r0
 	mov r2, #0
 	add r3, sp, #0x98
-	bl ov60_021E7398
+	bl IntroMovie_StartWindowPanEffect
 	ldr r1, _021E9484 ; =0x000046B9
 	ldr r0, _021E9488 ; =0x04001042
 	add r4, #0x30
@@ -807,7 +807,7 @@ _021E9220:
 	add r0, r7, #0
 	add r1, r4, #0
 	sub r3, #0x7a
-	bl ov60_021E7074
+	bl IntroMovie_StartBgScroll_VBlank
 	add r0, r6, #0
 	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
@@ -815,13 +815,13 @@ _021E9278:
 	add r0, r4, #0
 	add r0, #0x30
 	mov r1, #5
-	bl ov60_021E72FC
+	bl IntroMovie_WaitBgScrollAnim
 	cmp r0, #0
 	beq _021E9294
 	add r0, r4, #0
 	add r0, #0x30
 	mov r1, #6
-	bl ov60_021E72FC
+	bl IntroMovie_WaitBgScrollAnim
 	cmp r0, #0
 	bne _021E9296
 _021E9294:
@@ -849,7 +849,7 @@ _021E92A6:
 	add r0, r4, r0
 	add r2, r1, #0
 	add r3, sp, #0x6c
-	bl ov60_021E7398
+	bl IntroMovie_StartWindowPanEffect
 	ldr r3, [r5, #0x38]
 	add r0, r7, #0
 	add r2, r3, #0
@@ -922,7 +922,7 @@ _021E92A6:
 _021E936E:
 	ldr r0, [r5, #0x74]
 	mov r1, #1
-	bl ov60_021E6F28
+	bl IntroMovie_StartSpriteAnimAndMakeVisible
 	ldr r0, [sp, #0x10]
 	cmp r0, #0x1e
 	blo _021E9476
@@ -942,7 +942,7 @@ _021E9382:
 	add r0, r4, r0
 	mov r2, #0
 	add r3, sp, #0x40
-	bl ov60_021E7398
+	bl IntroMovie_StartWindowPanEffect
 	ldr r1, _021E9484 ; =0x000046B9
 	ldr r0, _021E9488 ; =0x04001042
 	add r4, #0x30
@@ -966,7 +966,7 @@ _021E9382:
 	add r0, r7, #0
 	add r1, r4, #0
 	mov r2, #4
-	bl ov60_021E7074
+	bl IntroMovie_StartBgScroll_VBlank
 	add r0, r6, #0
 	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
@@ -974,7 +974,7 @@ _021E93D8:
 	add r0, r4, #0
 	add r0, #0x30
 	mov r1, #4
-	bl ov60_021E72FC
+	bl IntroMovie_WaitBgScrollAnim
 	cmp r0, #0
 	beq _021E9476
 	mov r0, #1
@@ -996,7 +996,7 @@ _021E93F4:
 	add r0, r4, r0
 	mov r2, #0
 	add r3, sp, #0x14
-	bl ov60_021E7398
+	bl IntroMovie_StartWindowPanEffect
 	mov r0, #0x2f
 	mvn r0, r0
 	str r0, [sp]
@@ -1007,7 +1007,7 @@ _021E93F4:
 	add r1, #0x30
 	mov r2, #5
 	mov r3, #0
-	bl ov60_021E7074
+	bl IntroMovie_StartBgScroll_VBlank
 	mov r0, #0x1f
 	mvn r0, r0
 	str r0, [sp]
@@ -1018,7 +1018,7 @@ _021E93F4:
 	add r1, #0x30
 	mov r2, #6
 	mov r3, #0
-	bl ov60_021E7074
+	bl IntroMovie_StartBgScroll_VBlank
 	mov r0, #7
 	mvn r0, r0
 	str r0, [sp]
@@ -1029,7 +1029,7 @@ _021E93F4:
 	add r1, r4, #0
 	mov r2, #7
 	mov r3, #0
-	bl ov60_021E7074
+	bl IntroMovie_StartBgScroll_VBlank
 	add r0, r6, #0
 	bl IntroMovie_AdvanceSceneStep
 	b _021E9476
@@ -1037,7 +1037,7 @@ _021E9460:
 	add r4, #0x30
 	add r0, r4, #0
 	mov r1, #5
-	bl ov60_021E72FC
+	bl IntroMovie_WaitBgScrollAnim
 	cmp r0, #0
 	beq _021E9476
 	add sp, #0x1fc
@@ -1402,9 +1402,9 @@ ov60_021E9768: ; 0x021E9768
 	add r5, r1, #0
 	ldr r1, _021E9874 ; =_021EB1F4
 	add r4, r0, #0
-	bl ov60_021E6ED8
+	bl IntroMovie_CreateSpriteResourceManagers
 	add r0, r4, #0
-	bl ov60_021E6F20
+	bl IntroMovie_GetSpriteResourceManagersArray
 	add r4, r0, #0
 	mov r0, #2
 	str r0, [sp]
@@ -1552,7 +1552,7 @@ _021E989E:
 	cmp r4, #2
 	blo _021E989E
 	add r0, r7, #0
-	bl ov60_021E6F00
+	bl IntroMovie_DestroySpriteResourceManagers
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov60_021E9878
 
@@ -1582,7 +1582,7 @@ ov60_021E98C0: ; 0x021E98C0
 	mov r0, #2
 	mov r2, #0
 	add r3, r0, #0
-	bl ov60_021E6F3C
+	bl IntroMovie_BuildSpriteResourcesHeaderAndTemplate
 	mov r0, #2
 	lsl r0, r0, #0x12
 	str r0, [sp, #0x2c]
@@ -1608,7 +1608,7 @@ ov60_021E98C0: ; 0x021E98C0
 	mov r0, #3
 	mov r2, #0
 	mov r3, #2
-	bl ov60_021E6F3C
+	bl IntroMovie_BuildSpriteResourcesHeaderAndTemplate
 	mov r0, #2
 	lsl r0, r0, #0x10
 	str r0, [sp, #0x2c]
@@ -1638,7 +1638,7 @@ _021E9962:
 	mov r0, #3
 	mov r2, #0
 	mov r3, #2
-	bl ov60_021E6F3C
+	bl IntroMovie_BuildSpriteResourcesHeaderAndTemplate
 	mov r0, #2
 	lsl r0, r0, #0x12
 	str r0, [sp, #0x2c]
@@ -2150,7 +2150,7 @@ IntroMovie_Scene4_Init: ; 0x021E9D78
 	add r0, r5, #0
 	bl ov60_021EA2A0
 	add r0, r5, #0
-	bl ov60_021E76A0
+	bl IntroMovie_InitBgAnimGxState
 	ldr r0, _021E9E70 ; =ov60_021E9D68
 	add r1, r5, #0
 	bl Main_SetVBlankIntrCB
@@ -2164,7 +2164,7 @@ IntroMovie_Scene4_Init: ; 0x021E9D78
 	add r0, r5, #0
 	add r2, r1, #0
 	add r3, r1, #0
-	bl ov60_021E6FAC
+	bl IntroMovie_RendererSetSurfaceCoords
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov60_021EA508
@@ -2245,7 +2245,7 @@ IntroMovie_Scene4_Main: ; 0x021E9E84
 	bl IntroMovie_GetBgConfig
 	str r0, [sp, #0xc]
 	add r0, r6, #0
-	bl ov60_021E768C
+	bl IntroMovie_GetBgLinearAnimsController
 	add r5, r0, #0
 	add r0, r6, #0
 	bl IntroMovie_GetSceneStepTimer
@@ -2323,7 +2323,7 @@ _021E9F1A:
 	add r0, r5, r0
 	mov r2, #0
 	add r3, sp, #0x94
-	bl ov60_021E7398
+	bl IntroMovie_StartWindowPanEffect
 	ldr r3, _021EA208 ; =_021EB768
 	add r2, sp, #0x68
 	mov r7, #5
@@ -2340,7 +2340,7 @@ _021E9F3C:
 	add r0, r5, r0
 	mov r2, #1
 	add r3, sp, #0x68
-	bl ov60_021E7398
+	bl IntroMovie_StartWindowPanEffect
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0xa
@@ -2350,7 +2350,7 @@ _021E9F3C:
 	add r1, #0x30
 	mov r2, #5
 	mov r3, #0xc0
-	bl ov60_021E7074
+	bl IntroMovie_StartBgScroll_VBlank
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0xa
@@ -2361,13 +2361,13 @@ _021E9F3C:
 	ldr r0, [sp, #0xc]
 	add r1, r5, #0
 	sub r3, #0xc1
-	bl ov60_021E7074
+	bl IntroMovie_StartBgScroll_VBlank
 	ldr r0, [r4, #0x44]
 	mov r1, #1
-	bl ov60_021E6F28
+	bl IntroMovie_StartSpriteAnimAndMakeVisible
 	ldr r0, [r4, #0x48]
 	mov r1, #1
-	bl ov60_021E6F28
+	bl IntroMovie_StartSpriteAnimAndMakeVisible
 	mov r0, #2
 	mov r1, #1
 	bl GfGfx_EngineATogglePlanes
@@ -2381,13 +2381,13 @@ _021E9FAE:
 	add r0, r5, #0
 	add r0, #0x30
 	mov r1, #5
-	bl ov60_021E72FC
+	bl IntroMovie_WaitBgScrollAnim
 	cmp r0, #0
 	beq _021E9FD6
 	add r5, #0x30
 	add r0, r5, #0
 	mov r1, #1
-	bl ov60_021E72FC
+	bl IntroMovie_WaitBgScrollAnim
 	cmp r0, #0
 	beq _021E9FD6
 	add r0, r6, #0
@@ -2419,7 +2419,7 @@ _021E9FE6:
 	add r0, r5, r0
 	mov r2, #0
 	add r3, sp, #0x3c
-	bl ov60_021E7398
+	bl IntroMovie_StartWindowPanEffect
 	ldr r4, _021EA210 ; =_021EB710
 	add r3, sp, #0x10
 	mov r2, #5
@@ -2436,7 +2436,7 @@ _021EA008:
 	add r0, r5, r0
 	mov r2, #1
 	add r3, sp, #0x10
-	bl ov60_021E7398
+	bl IntroMovie_StartWindowPanEffect
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0xa
@@ -2446,7 +2446,7 @@ _021EA008:
 	add r1, #0x30
 	mov r2, #5
 	mov r3, #0xc0
-	bl ov60_021E7074
+	bl IntroMovie_StartBgScroll_VBlank
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0xa
@@ -2457,7 +2457,7 @@ _021EA008:
 	ldr r0, [sp, #0xc]
 	add r1, r5, #0
 	sub r3, #0xc1
-	bl ov60_021E7074
+	bl IntroMovie_StartBgScroll_VBlank
 	add r0, r6, #0
 	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
@@ -2465,21 +2465,21 @@ _021EA05A:
 	add r0, r5, #0
 	add r0, #0x30
 	mov r1, #5
-	bl ov60_021E72FC
+	bl IntroMovie_WaitBgScrollAnim
 	cmp r0, #0
 	beq _021EA0DC
 	add r5, #0x30
 	add r0, r5, #0
 	mov r1, #1
-	bl ov60_021E72FC
+	bl IntroMovie_WaitBgScrollAnim
 	cmp r0, #0
 	beq _021EA0DC
 	ldr r0, [r4, #0x44]
 	mov r1, #0
-	bl ov60_021E6F28
+	bl IntroMovie_StartSpriteAnimAndMakeVisible
 	ldr r0, [r4, #0x48]
 	mov r1, #0
-	bl ov60_021E6F28
+	bl IntroMovie_StartSpriteAnimAndMakeVisible
 	mov r0, #2
 	mov r1, #0
 	bl GfGfx_EngineATogglePlanes
@@ -2502,7 +2502,7 @@ _021EA05A:
 _021EA0B2:
 	ldr r0, [r4, #0x50]
 	mov r1, #1
-	bl ov60_021E6F28
+	bl IntroMovie_StartSpriteAnimAndMakeVisible
 	add r0, r6, #0
 	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
@@ -2534,7 +2534,7 @@ _021EA0E6:
 _021EA0F6:
 	ldr r0, [r4, #0x54]
 	mov r1, #1
-	bl ov60_021E6F28
+	bl IntroMovie_StartSpriteAnimAndMakeVisible
 	add r0, r6, #0
 	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
@@ -2563,7 +2563,7 @@ _021EA128:
 _021EA138:
 	ldr r0, [r4, #0x58]
 	mov r1, #1
-	bl ov60_021E6F28
+	bl IntroMovie_StartSpriteAnimAndMakeVisible
 	add r0, r6, #0
 	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
@@ -2619,7 +2619,7 @@ _021EA1B6:
 	add r0, r4, r0
 	ldr r0, [r0, #0x50]
 	add r1, r7, #0
-	bl ov60_021E6F28
+	bl IntroMovie_StartSpriteAnimAndMakeVisible
 	add r0, r5, #1
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
@@ -2633,7 +2633,7 @@ _021EA1D4:
 	bl SetMasterBrightnessNeutral
 	ldr r0, [r4, #0x4c]
 	mov r1, #1
-	bl ov60_021E6F28
+	bl IntroMovie_StartSpriteAnimAndMakeVisible
 	add r0, r6, #0
 	bl IntroMovie_AdvanceSceneStep
 	b _021EA1FA
@@ -2965,7 +2965,7 @@ ov60_021EA4AC: ; 0x021EA4AC
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r5, r1, #0
-	bl ov60_021E768C
+	bl IntroMovie_GetBgLinearAnimsController
 	add r4, r0, #0
 	mov r0, #0
 	mov r2, #5
@@ -2976,7 +2976,7 @@ ov60_021EA4AC: ; 0x021EA4AC
 	add r0, r5, #0
 	add r1, #0x30
 	sub r3, #0xc5
-	bl ov60_021E7074
+	bl IntroMovie_StartBgScroll_VBlank
 	mov r0, #0
 	str r0, [sp]
 	add r4, #0x30
@@ -2985,7 +2985,7 @@ ov60_021EA4AC: ; 0x021EA4AC
 	add r1, r4, #0
 	mov r2, #1
 	mov r3, #0xc0
-	bl ov60_021E7074
+	bl IntroMovie_StartBgScroll_VBlank
 	mov r0, #4
 	mov r1, #0
 	bl GfGfx_EngineATogglePlanes
@@ -3041,9 +3041,9 @@ ov60_021EA508: ; 0x021EA508
 	ldr r1, _021EA6A8 ; =_021EB5E4
 	str r0, [r2]
 	add r0, r4, #0
-	bl ov60_021E6ED8
+	bl IntroMovie_CreateSpriteResourceManagers
 	add r0, r4, #0
-	bl ov60_021E6F20
+	bl IntroMovie_GetSpriteResourceManagersArray
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -3236,7 +3236,7 @@ _021EA6DC:
 	cmp r4, #4
 	blo _021EA6DC
 	add r0, r7, #0
-	bl ov60_021E6F00
+	bl IntroMovie_DestroySpriteResourceManagers
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov60_021EA6AC
@@ -3261,7 +3261,7 @@ ov60_021EA700: ; 0x021EA700
 	mov r0, #0
 	add r2, r0, #0
 	mov r3, #2
-	bl ov60_021E6F3C
+	bl IntroMovie_BuildSpriteResourcesHeaderAndTemplate
 	mov r0, #2
 	lsl r0, r0, #0x12
 	str r0, [sp, #0x1c]
@@ -3287,7 +3287,7 @@ ov60_021EA700: ; 0x021EA700
 	add r1, r7, #0
 	add r2, r0, #0
 	mov r3, #1
-	bl ov60_021E6F3C
+	bl IntroMovie_BuildSpriteResourcesHeaderAndTemplate
 	mov r0, #2
 	lsl r0, r0, #0x12
 	str r0, [sp, #0x1c]
@@ -3313,7 +3313,7 @@ ov60_021EA700: ; 0x021EA700
 	add r1, r7, #0
 	add r2, r0, #0
 	mov r3, #1
-	bl ov60_021E6F3C
+	bl IntroMovie_BuildSpriteResourcesHeaderAndTemplate
 	mov r0, #2
 	lsl r0, r0, #0x12
 	str r0, [sp, #0x1c]
@@ -3343,7 +3343,7 @@ _021EA7D0:
 	add r1, r7, #0
 	mov r2, #0
 	mov r3, #1
-	bl ov60_021E6F3C
+	bl IntroMovie_BuildSpriteResourcesHeaderAndTemplate
 	mov r0, #2
 	lsl r0, r0, #0x12
 	str r0, [sp, #0x1c]
@@ -3704,7 +3704,7 @@ IntroMovie_Scene5_Init: ; 0x021EAA84
 	add r0, r5, #0
 	bl ov60_021EAC5C
 	add r0, r5, #0
-	bl ov60_021E76A0
+	bl IntroMovie_InitBgAnimGxState
 	ldr r0, _021EAB00 ; =ov60_021EAA74
 	add r1, r5, #0
 	bl Main_SetVBlankIntrCB
@@ -3718,7 +3718,7 @@ IntroMovie_Scene5_Init: ; 0x021EAA84
 	add r0, r5, #0
 	add r2, r1, #0
 	add r3, r1, #0
-	bl ov60_021E6FAC
+	bl IntroMovie_RendererSetSurfaceCoords
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov60_021EAE10
@@ -3745,7 +3745,7 @@ IntroMovie_Scene5_Main: ; 0x021EAB04
 	bl IntroMovie_GetBgConfig
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov60_021E768C
+	bl IntroMovie_GetBgLinearAnimsController
 	add r5, r0, #0
 	add r0, r4, #0
 	bl IntroMovie_GetSceneStepTimer
@@ -3798,7 +3798,7 @@ _021EAB6E:
 	add r1, #0x30
 	mov r2, #1
 	mov r3, #0
-	bl ov60_021E7074
+	bl IntroMovie_StartBgScroll_VBlank
 #ifdef HEARTGOLD
 	mov r0, #0x3f
 	mvn r0, r0
@@ -3813,7 +3813,7 @@ _021EAB6E:
 	add r1, #0x30
 	mov r2, #2
 	mov r3, #0
-	bl ov60_021E7074
+	bl IntroMovie_StartBgScroll_VBlank
 #ifdef HEARTGOLD
 	mov r0, #0x3f
 	mvn r0, r0
@@ -3828,7 +3828,7 @@ _021EAB6E:
 	add r1, #0x30
 	mov r2, #5
 	mov r3, #0
-	bl ov60_021E7074
+	bl IntroMovie_StartBgScroll_VBlank
 #ifdef HEARTGOLD
 	mov r0, #0x3f
 	mvn r0, r0
@@ -3843,7 +3843,7 @@ _021EAB6E:
 	add r1, r5, #0
 	mov r2, #6
 	mov r3, #0
-	bl ov60_021E7074
+	bl IntroMovie_StartBgScroll_VBlank
 	add r0, r4, #0
 	bl IntroMovie_AdvanceSceneStep
 	b _021EAC08

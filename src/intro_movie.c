@@ -117,29 +117,29 @@ BOOL IntroMovie_Exit(OVY_MANAGER *man, int *state) {
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_WHITE);
     ov60_021E6EC0(data);
     FreeToHeap(data->bgConfig);
-    if (data->unk_46C.unk_000[0].task != NULL) {
-        SysTask_Destroy(data->unk_46C.unk_000[0].task);
-        data->unk_46C.unk_000[0].task = NULL;
+    if (data->bgAnimCnt.blend[0].task != NULL) {
+        SysTask_Destroy(data->bgAnimCnt.blend[0].task);
+        data->bgAnimCnt.blend[0].task = NULL;
     }
-    if (data->unk_46C.unk_000[1].task != NULL) {
-        SysTask_Destroy(data->unk_46C.unk_000[1].task);
-        data->unk_46C.unk_000[1].task = NULL;
+    if (data->bgAnimCnt.blend[1].task != NULL) {
+        SysTask_Destroy(data->bgAnimCnt.blend[1].task);
+        data->bgAnimCnt.blend[1].task = NULL;
     }
     for (i = 0; i < 8; ++i) {
-        if (data->unk_46C.unk_030[i].task != NULL) {
-            SysTask_Destroy(data->unk_46C.unk_030[i].task);
-            data->unk_46C.unk_030[i].task = NULL;
+        if (data->bgAnimCnt.scroll[i].task != NULL) {
+            SysTask_Destroy(data->bgAnimCnt.scroll[i].task);
+            data->bgAnimCnt.scroll[i].task = NULL;
         }
     }
     for (i = 0; i < 2; ++i) {
-        if (data->unk_46C.unk_110[i].unk_0C != NULL) {
-            SysTask_Destroy(data->unk_46C.unk_110[i].unk_0C);
-            data->unk_46C.unk_110[i].unk_0C = NULL;
+        if (data->bgAnimCnt.window[i].task != NULL) {
+            SysTask_Destroy(data->bgAnimCnt.window[i].task);
+            data->bgAnimCnt.window[i].task = NULL;
         }
     }
-    if (data->unk_614.task != NULL) {
-        SysTask_Destroy(data->unk_614.task);
-        data->unk_614.task = NULL;
+    if (data->circleWipeEffect.task != NULL) {
+        SysTask_Destroy(data->circleWipeEffect.task);
+        data->circleWipeEffect.task = NULL;
     }
     Main_SetVBlankIntrCB(NULL, NULL);
     Main_SetHBlankIntrCB(NULL, NULL);
@@ -172,7 +172,7 @@ void ov60_021E6E14(void) {
 }
 
 void ov60_021E6E34(IntroMovieOvyData *data) {
-    sub_0202457C(data->unk_010);
+    sub_0202457C(data->spriteList);
 }
 
 void ov60_021E6E40(IntroMovieOvyData *data) {
@@ -186,11 +186,11 @@ void ov60_021E6E40(IntroMovieOvyData *data) {
     sub_02022638();
     NNS_G2dInitOamManagerModule();
     OamManager_Create(0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20, HEAP_ID_INTRO_MOVIE);
-    data->unk_010 = G2dRenderer_Init(20, &data->unk_014, HEAP_ID_INTRO_MOVIE);
+    data->spriteList = G2dRenderer_Init(20, &data->spriteRenderer, HEAP_ID_INTRO_MOVIE);
 }
 
 void ov60_021E6EC0(IntroMovieOvyData *data) {
-    SpriteList_Delete(data->unk_010);
+    SpriteList_Delete(data->spriteList);
     OamManager_Free();
     sub_0202168C();
     sub_02022608();

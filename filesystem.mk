@@ -490,6 +490,7 @@ include files/application/voltorb_flip.mk
 include files/application/annon/puzzle_gra.mk
 include files/data/resdat.mk
 include files/demo/title/titledemo.mk
+include files/demo/opening/gs_opening.mk
 
 $(filter-out $(DIFF_ARCS) $(FS_RULE_OVERRIDES),$(NITROFS_FILES)): ;
 
