@@ -69,14 +69,14 @@ void IntroMovie_RendererSetSurfaceCoords(IntroMovieOvyData *data, fx32 mainx, fx
 
 // ---------------------------
 
-void IntroMovie_StartBlendFadeEffect(IntroMovieBgBlendAnim *data, int plane1, int plane2, u8 rate, int direction, int screen) {
+void IntroMovie_StartBlendFadeEffect(IntroMovieBgBlendAnim *data, int plane1, int plane2, u8 duration, int direction, int screen) {
     data->counter = 0;
     data->ev = 0;
-    data->stopped = 0;
+    data->finished = 0;
     data->topScreen = screen;
     data->plane1 = plane1;
     data->plane2 = plane2;
-    data->rate = rate;
+    data->duration = duration;
     data->direction = direction;
     data->task = SysTask_CreateOnMainQueue(Task_IntroMovie_BlendFadeEffect, data, 0);
 }
@@ -85,12 +85,12 @@ void Task_IntroMovie_BlendFadeEffect(SysTask *task, void *pVoid) {
     IntroMovieBgBlendAnim *data = (IntroMovieBgBlendAnim *)pVoid;
 
     ++data->counter;
-    data->ev = data->counter * 31 / data->rate;
+    data->ev = data->counter * 31 / data->duration;
     if (data->ev >= 31) {
         data->ev = 31;
         SysTask_Destroy(data->task);
         data->task = NULL;
-        data->stopped = 1;
+        data->finished = 1;
     }
     int ev;
     if (data->direction == 0) {
@@ -107,14 +107,14 @@ void Task_IntroMovie_BlendFadeEffect(SysTask *task, void *pVoid) {
 
 // ---------------------------
 
-void IntroMovie_StartBgScroll_VBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, enum GFBgLayer bgId, fx16 xChange, fx16 yChange, int rate) {
+void IntroMovie_StartBgScroll_VBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, enum GFBgLayer bgId, fx16 xChange, fx16 yChange, int duration) {
     IntroMovieBgScrollAnim *obj = &data[IntroMovie_BgLayerToScrollEffectSlot(bgId)];
     if (obj->active) {
         GF_ASSERT(FALSE);
         return;
     }
 
-    if (rate == 0) {
+    if (duration == 0) {
         fx32 x = xChange + Bg_GetXpos(bgConfig, bgId);
         fx32 y = yChange + Bg_GetYpos(bgConfig, bgId);
         BgSetPosTextAndCommit(bgConfig, bgId, BG_POS_OP_SET_X, x);
@@ -126,7 +126,7 @@ void IntroMovie_StartBgScroll_VBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim 
     obj->bgId = bgId;
     obj->counter = 0;
     obj->finished = FALSE;
-    obj->rate = rate;
+    obj->duration = duration;
     obj->xOrig = Bg_GetXpos(bgConfig, bgId);
     obj->yOrig = Bg_GetYpos(bgConfig, bgId);
     obj->xChange = xChange;
@@ -135,14 +135,14 @@ void IntroMovie_StartBgScroll_VBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim 
     obj->task = SysTask_CreateOnVBlankQueue(Task_IntroMovie_BgScroll_VBlank, obj, 0);
 }
 
-void IntroMovie_StartBgScroll_NotVBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, enum GFBgLayer bgId, fx16 xChange, fx16 yChange, int rate) {
+void IntroMovie_StartBgScroll_NotVBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, enum GFBgLayer bgId, fx16 xChange, fx16 yChange, int duration) {
     IntroMovieBgScrollAnim *obj = &data[IntroMovie_BgLayerToScrollEffectSlot(bgId)];
     if (obj->active) {
         GF_ASSERT(FALSE);
         return;
     }
 
-    if (rate == 0) {
+    if (duration == 0) {
         fx32 x = xChange + Bg_GetXpos(bgConfig, bgId);
         fx32 y = yChange + Bg_GetYpos(bgConfig, bgId);
         BgSetPosTextAndCommit(bgConfig, bgId, BG_POS_OP_SET_X, x);
@@ -154,7 +154,7 @@ void IntroMovie_StartBgScroll_NotVBlank(BgConfig *bgConfig, IntroMovieBgScrollAn
     obj->bgId = bgId;
     obj->counter = 0;
     obj->finished = FALSE;
-    obj->rate = rate;
+    obj->duration = duration;
     obj->xOrig = Bg_GetXpos(bgConfig, bgId);
     obj->yOrig = Bg_GetYpos(bgConfig, bgId);
     obj->xChange = xChange;
@@ -168,16 +168,16 @@ void Task_IntroMovie_BgScroll_VBlank(SysTask *task, void *pVoid) {
     fx32 x;
     fx32 y;
 
-    if (data->rate < 0) {
+    if (data->duration < 0) {
         x = data->xChange + Bg_GetXpos(data->bgConfig, data->bgId);
         y = data->yChange + Bg_GetYpos(data->bgConfig, data->bgId);
     } else {
         ++data->counter;
-        x = data->xChange * data->counter / data->rate;
-        y = data->yChange * data->counter / data->rate;
+        x = data->xChange * data->counter / data->duration;
+        y = data->yChange * data->counter / data->duration;
         x += data->xOrig;
         y += data->yOrig;
-        if (data->counter >= data->rate) {
+        if (data->counter >= data->duration) {
             SysTask_Destroy(data->task);
             data->task = NULL;
             data->finished = TRUE;
@@ -193,16 +193,16 @@ void Task_IntroMovie_BgScroll_NotVBlank(SysTask *task, void *pVoid) {
     fx32 x;
     fx32 y;
 
-    if (data->rate < 0) {
+    if (data->duration < 0) {
         x = data->xChange + Bg_GetXpos(data->bgConfig, data->bgId);
         y = data->yChange + Bg_GetYpos(data->bgConfig, data->bgId);
     } else {
         ++data->counter;
-        x = data->xChange * data->counter / data->rate;
-        y = data->yChange * data->counter / data->rate;
+        x = data->xChange * data->counter / data->duration;
+        y = data->yChange * data->counter / data->duration;
         x += data->xOrig;
         y += data->yOrig;
-        if (data->counter >= data->rate) {
+        if (data->counter >= data->duration) {
             SysTask_Destroy(data->task);
             data->task = NULL;
             data->finished = TRUE;
@@ -301,9 +301,9 @@ BOOL IntroMovie_WaitWindowPanEffect(IntroMovieBgWindowAnim *data, int a1) {
     return which->finished != 0;
 }
 
-#define scalePos(start, end, pos, rate) ({ \
+#define scalePos(start, end, pos, duration) ({ \
     int diff = (end) - (start);            \
-    diff = diff * (pos) / (rate);          \
+    diff = diff * (pos) / (duration);          \
     (start) + diff;                        \
 })
 

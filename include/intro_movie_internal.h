@@ -6,18 +6,18 @@
 #include "unk_02023694.h"
 
 typedef struct IntroMovieScene1Data {
-    u8 unk_000;
-    u8 unk_001;
+    u8 state;
+    u8 needFreeGfx;
     u8 *skipAllowedPtr;
     _2DGfxResObj *charResObj;
     _2DGfxResObj *plttResObj;
     _2DGfxResObj *cellResObj;
     _2DGfxResObj *animResObj;
-    Sprite *unk_018;
-    void *unk_01C;
+    Sprite *sunSprite;
+    void *birdSprite;
 } IntroMovieScene1Data;
 
-typedef struct IntroMovieScene2DataSub_064 {
+typedef struct IntroMovieScene2SpritePanController {
     BOOL active;
     s16 duration;
     u8 counter;
@@ -27,25 +27,25 @@ typedef struct IntroMovieScene2DataSub_064 {
     int ySpeed;
     int xOffset;
     int yOffset;
-    Sprite *unk_01C;
-    Sprite *unk_020;
-    Sprite *unk_024;
-} IntroMovieScene2DataSub_064;
+    Sprite *sprite0;
+    Sprite *sprite1;
+    Sprite *sprite2;
+} IntroMovieScene2SpritePanController;
 
 typedef struct IntroMovieScene2Data {
-    u8 unk_000;
-    u8 unk_001;
+    u8 state;
+    u8 needFreeGfx;
     u8 unk_002;
     u8 flowerIndex;
-    _2DGfxResObj *unk_004[2][4];
-    Sprite *unk_024;
-    Sprite *unk_028;
-    Sprite *unk_02C;
-    Sprite *unk_030;
-    Sprite *unk_034;
-    Sprite *unk_038;
+    _2DGfxResObj *spriteGfxRes[2][4];
+    Sprite *ethanSprite0;
+    Sprite *lyraSprite0;
+    Sprite *ethanSprite1;
+    Sprite *lyraSprite1;
+    Sprite *ethanSprite2;
+    Sprite *lyraSprite2;
     Sprite *flowerSprites[10];
-    struct IntroMovieScene2DataSub_064 unk_064[2];
+    IntroMovieScene2SpritePanController spritePanCnt[2];
 } IntroMovieScene2Data;
 
 typedef struct IntroMovieScene3Data {
@@ -67,9 +67,9 @@ typedef struct IntroMovieScene5Data {
 
 typedef struct IntroMovieSub_46C_000 {
     u8 counter;
-    u8 rate;
+    u8 duration;
     u8 ev;
-    u8 stopped;
+    u8 finished;
     SysTask *task;
     int plane1;
     int plane2;
@@ -81,7 +81,7 @@ typedef struct IntroMovieBgScrollAnim {
     BgConfig *bgConfig;
     BOOL active;
     enum GFBgLayer bgId;
-    s16 rate;
+    s16 duration;
     u8 counter;
     u8 finished;
     SysTask *task;
@@ -172,9 +172,9 @@ _2DGfxResMan **IntroMovie_GetSpriteResourceManagersArray(IntroMovieOvyData *data
 void IntroMovie_StartSpriteAnimAndMakeVisible(Sprite *sprite, BOOL active);
 void IntroMovie_BuildSpriteResourcesHeaderAndTemplate(int resId, IntroMovieOvyData *data, int priority, NNS_G2D_VRAM_TYPE whichScreen, SpriteTemplate *template, SpriteResourcesHeader *header);
 void IntroMovie_RendererSetSurfaceCoords(IntroMovieOvyData *data, fx32 mainx, fx32 mainy, fx32 subx, fx32 suby);
-void IntroMovie_StartBlendFadeEffect(IntroMovieBgBlendAnim *data, int plane1, int plane2, u8 rate, int direction, int screen);
-void IntroMovie_StartBgScroll_VBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, enum GFBgLayer bgId, fx16 xChange, fx16 yChange, int rate);
-void IntroMovie_StartBgScroll_NotVBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, enum GFBgLayer bgId, fx16 xChange, fx16 yChange, int rate);
+void IntroMovie_StartBlendFadeEffect(IntroMovieBgBlendAnim *data, int plane1, int plane2, u8 duration, int direction, int screen);
+void IntroMovie_StartBgScroll_VBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, enum GFBgLayer bgId, fx16 xChange, fx16 yChange, int duration);
+void IntroMovie_StartBgScroll_NotVBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, enum GFBgLayer bgId, fx16 xChange, fx16 yChange, int duration);
 BOOL IntroMovie_WaitBgScrollAnim(IntroMovieBgScrollAnim *data, enum GFBgLayer bgId);
 void IntroMovie_CancelBgScrollAnim(IntroMovieBgScrollAnim *data, enum GFBgLayer bgId);
 IntroMovieBgWindowAnim *IntroMovie_StartWindowPanEffect(IntroMovieBgWindowAnim *data, int duration, int whichScreen, const IntroMovieBgWindowAnimParam *param);

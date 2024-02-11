@@ -7,6 +7,7 @@
 #include "unk_020215A0.h"
 #include "unk_02022588.h"
 #include "system.h"
+#include "demo/opening/gs_opening.naix"
 
 // Copyright, Gamefreak logo, and sunrise
 
@@ -27,17 +28,17 @@ BOOL IntroMovie_Scene1(IntroMovieOvyData *data, void *pVoid) {
     IntroMovieScene1Data *sceneData = (IntroMovieScene1Data *)pVoid;
 
     if (IntroMovie_GetIntroSkippedFlag(data)) {
-        sceneData->unk_000 = 2;
+        sceneData->state = 2;
     }
 
-    switch (sceneData->unk_000) {
+    switch (sceneData->state) {
     case 0:
         IntroMovie_Scene1_Init(data, sceneData);
-        ++sceneData->unk_000;
+        ++sceneData->state;
         break;
     case 1:
         if (IntroMovie_Scene1_Main(data, sceneData, IntroMovie_GetTotalFrameCount(data))) {
-            ++sceneData->unk_000;
+            ++sceneData->state;
         }
         break;
     case 2:
@@ -68,7 +69,7 @@ void IntroMovie_Scene1_Init(IntroMovieOvyData *data, IntroMovieScene1Data *scene
     IntroMovie_Scene1_LoadSpriteGfx(data, sceneData);
     IntroMovie_Scene1_CreateSprites(data, sceneData);
     IntroMovie_Scene1_SetBrightnessAndBgMaskColor(data);
-    sceneData->unk_001 = 1;
+    sceneData->needFreeGfx = 1;
 }
 
 BOOL IntroMovie_Scene1_Main(IntroMovieOvyData *data, IntroMovieScene1Data *sceneData, int totalFrames) {
@@ -76,25 +77,25 @@ BOOL IntroMovie_Scene1_Main(IntroMovieOvyData *data, IntroMovieScene1Data *scene
     IntroMovieBgLinearAnims *bgAnimCnt = IntroMovie_GetBgLinearAnimsController(data);
     u8 timer = IntroMovie_GetSceneStepTimer(data);
     switch (IntroMovie_GetSceneStep(data)) {
-    case 0:
+    case 0:  // Copyright appear
         BgSetPosTextAndCommit(bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_SET_Y, 0x80);
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
         GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
         IntroMovie_AdvanceSceneStep(data);
         break;
-    case 1:
+    case 1:  // Wait 30 frames then start fade out
         if (timer >= 30) {
             IntroMovie_StartBlendFadeEffect(&bgAnimCnt->blend[0], 1, 0x20, 60, 1, 0);
             IntroMovie_StartBlendFadeEffect(&bgAnimCnt->blend[1], 1, 0x20, 60, 1, 1);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 2:
-        if (bgAnimCnt->blend[0].stopped && bgAnimCnt->blend[1].stopped) {
+    case 2:  // Wait for fade out (60 frames)
+        if (bgAnimCnt->blend[0].finished && bgAnimCnt->blend[1].finished) {
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 3:
+    case 3:  // Delay 20 frames then appear GameFreak logo
         if (timer >= 20) {
             *sceneData->skipAllowedPtr = TRUE;
             GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_OFF);
@@ -104,45 +105,45 @@ BOOL IntroMovie_Scene1_Main(IntroMovieOvyData *data, IntroMovieScene1Data *scene
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 4:
+    case 4:  // Delay 110 frames
         if (timer >= 110) {
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 5:
+    case 5:  // Appear sunrise or sunset background
         GfGfx_EngineATogglePlanes((GXPlaneMask)(GX_PLANEMASK_BG1 | GX_PLANEMASK_BG2 | GX_PLANEMASK_BG3), GF_PLANE_TOGGLE_ON);
         GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_ON);
-        Set2dSpriteVisibleFlag(sceneData->unk_018, TRUE);
+        Set2dSpriteVisibleFlag(sceneData->sunSprite, TRUE);
         IntroMovie_AdvanceSceneStep(data);
         break;
-    case 6:
+    case 6:  // Start scrolling background
         if (timer >= 1) {
             IntroMovie_StartBlendFadeEffect(&bgAnimCnt->blend[0], 1, 0x1E, 0x50, 1, 1);
             IntroMovie_StartBlendFadeEffect(&bgAnimCnt->blend[1], 2, 0x1E, 0x50, 1, 0);
             IntroMovie_StartBgScroll_VBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_MAIN_1, 0, -0x20, 0xF0);
             IntroMovie_StartBgScroll_VBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_MAIN_2, 0, -0x10, 0xF0);
-            IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->unk_018, TRUE);
+            IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->sunSprite, TRUE);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 7:
-        if (bgAnimCnt->blend[0].stopped && bgAnimCnt->blend[1].stopped && IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_MAIN_1) && IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_MAIN_2)) {
+    case 7:  // Wait blend and scroll effects (240 frames)
+        if (bgAnimCnt->blend[0].finished && bgAnimCnt->blend[1].finished && IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_MAIN_1) && IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_MAIN_2)) {
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 8:
+    case 8:  // Delay 128 frames then start box legendary anim
         if (timer >= 128) {
-            IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->unk_01C, TRUE);
+            IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->birdSprite, TRUE);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 9:
+    case 9:  // Run anim 90 frames then start fade to white
         if (timer >= 90) {
             BeginNormalPaletteFade(0, 0, 0, RGB_WHITE, 65, 1, HEAP_ID_INTRO_MOVIE);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 10:
+    case 10:  // Wait fade to white (65 frames)
         if (IsPaletteFadeFinished()) {
             return TRUE;
         }
@@ -154,7 +155,7 @@ BOOL IntroMovie_Scene1_Main(IntroMovieOvyData *data, IntroMovieScene1Data *scene
 void IntroMovie_Scene1_Exit(IntroMovieOvyData *data, IntroMovieScene1Data *sceneData) {
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     Main_SetVBlankIntrCB(NULL, NULL);
-    if (sceneData->unk_001) {
+    if (sceneData->needFreeGfx) {
         IntroMovie_Scene1_DestroySpritesAndObjectGfx(data, sceneData);
         FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_SUB_0);
         FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_SUB_1);
@@ -164,7 +165,7 @@ void IntroMovie_Scene1_Exit(IntroMovieOvyData *data, IntroMovieScene1Data *scene
         FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_1);
         FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_2);
         FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_3);
-        sceneData->unk_001 = FALSE;
+        sceneData->needFreeGfx = FALSE;
     }
 }
 
@@ -327,31 +328,31 @@ void IntroMovie_Scene1_InitBgs(IntroMovieOvyData *data) {
 }
 
 #ifdef HEARTGOLD
-#define INTRO_MOVIE_SCENE1_PALDATA_SUB         0
-#define INTRO_MOVIE_SCENE1_PALDATA_MAIN        1
-#define INTRO_MOVIE_SCENE1_CHARDATA_SUB3       6
-#define INTRO_MOVIE_SCENE1_CHARDATA_MAIN3      7
-#define INTRO_MOVIE_SCENE1_SCRNDATA_SUB3      15
-#define INTRO_MOVIE_SCENE1_SCRNDATA_MAIN1     16
-#define INTRO_MOVIE_SCENE1_SCRNDATA_MAIN2     17
-#define INTRO_MOVIE_SCENE1_SCRNDATA_MAIN3     18
-#define INTRO_MOVIE_SCENE1_BIRD_PLTTRES       23
-#define INTRO_MOVIE_SCENE1_BIRD_CHARRES       24
-#define INTRO_MOVIE_SCENE1_BIRD_ANIMRES       25
-#define INTRO_MOVIE_SCENE1_BIRD_CELLRES       26
+#define INTRO_MOVIE_SCENE1_PALDATA_SUB        NARC_gs_opening_gs_opening_00000000_NCLR
+#define INTRO_MOVIE_SCENE1_PALDATA_MAIN       NARC_gs_opening_gs_opening_00000001_NCLR
+#define INTRO_MOVIE_SCENE1_CHARDATA_SUB3      NARC_gs_opening_gs_opening_00000006_NCGR_lz
+#define INTRO_MOVIE_SCENE1_CHARDATA_MAIN3     NARC_gs_opening_gs_opening_00000007_NCGR_lz
+#define INTRO_MOVIE_SCENE1_SCRNDATA_SUB3      NARC_gs_opening_gs_opening_00000015_NSCR_lz
+#define INTRO_MOVIE_SCENE1_SCRNDATA_MAIN1     NARC_gs_opening_gs_opening_00000016_NSCR_lz
+#define INTRO_MOVIE_SCENE1_SCRNDATA_MAIN2     NARC_gs_opening_gs_opening_00000017_NSCR_lz
+#define INTRO_MOVIE_SCENE1_SCRNDATA_MAIN3     NARC_gs_opening_gs_opening_00000018_NSCR_lz
+#define INTRO_MOVIE_SCENE1_BIRD_PLTTRES       NARC_gs_opening_gs_opening_00000023_NCLR
+#define INTRO_MOVIE_SCENE1_BIRD_CHARRES       NARC_gs_opening_gs_opening_00000024_NCGR_lz
+#define INTRO_MOVIE_SCENE1_BIRD_ANIMRES       NARC_gs_opening_gs_opening_00000025_NANR_lz
+#define INTRO_MOVIE_SCENE1_BIRD_CELLRES       NARC_gs_opening_gs_opening_00000026_NCER_lz
 #else
-#define INTRO_MOVIE_SCENE1_PALDATA_SUB         2
-#define INTRO_MOVIE_SCENE1_PALDATA_MAIN        3
-#define INTRO_MOVIE_SCENE1_CHARDATA_SUB3       8
-#define INTRO_MOVIE_SCENE1_CHARDATA_MAIN3      9
-#define INTRO_MOVIE_SCENE1_SCRNDATA_SUB3      19
-#define INTRO_MOVIE_SCENE1_SCRNDATA_MAIN1     20
-#define INTRO_MOVIE_SCENE1_SCRNDATA_MAIN2     21
-#define INTRO_MOVIE_SCENE1_SCRNDATA_MAIN3     22
-#define INTRO_MOVIE_SCENE1_BIRD_PLTTRES       27
-#define INTRO_MOVIE_SCENE1_BIRD_CHARRES       28
-#define INTRO_MOVIE_SCENE1_BIRD_ANIMRES       29
-#define INTRO_MOVIE_SCENE1_BIRD_CELLRES       30
+#define INTRO_MOVIE_SCENE1_PALDATA_SUB        NARC_gs_opening_gs_opening_00000002_NCLR
+#define INTRO_MOVIE_SCENE1_PALDATA_MAIN       NARC_gs_opening_gs_opening_00000003_NCLR
+#define INTRO_MOVIE_SCENE1_CHARDATA_SUB3      NARC_gs_opening_gs_opening_00000008_NCGR_lz
+#define INTRO_MOVIE_SCENE1_CHARDATA_MAIN3     NARC_gs_opening_gs_opening_00000009_NCGR_lz
+#define INTRO_MOVIE_SCENE1_SCRNDATA_SUB3      NARC_gs_opening_gs_opening_00000019_NSCR_lz
+#define INTRO_MOVIE_SCENE1_SCRNDATA_MAIN1     NARC_gs_opening_gs_opening_00000020_NSCR_lz
+#define INTRO_MOVIE_SCENE1_SCRNDATA_MAIN2     NARC_gs_opening_gs_opening_00000021_NSCR_lz
+#define INTRO_MOVIE_SCENE1_SCRNDATA_MAIN3     NARC_gs_opening_gs_opening_00000022_NSCR_lz
+#define INTRO_MOVIE_SCENE1_BIRD_PLTTRES       NARC_gs_opening_gs_opening_00000027_NCLR
+#define INTRO_MOVIE_SCENE1_BIRD_CHARRES       NARC_gs_opening_gs_opening_00000028_NCGR_lz
+#define INTRO_MOVIE_SCENE1_BIRD_ANIMRES       NARC_gs_opening_gs_opening_00000029_NANR_lz
+#define INTRO_MOVIE_SCENE1_BIRD_CELLRES       NARC_gs_opening_gs_opening_00000030_NCER_lz
 #endif //HEARTGOLD
 
 void IntroMovie_Scene1_LoadBgGfx(BgConfig *bgConfig) {
@@ -394,8 +395,8 @@ void IntroMovie_Scene1_LoadSpriteGfx(IntroMovieOvyData *data, IntroMovieScene1Da
 }
 
 void IntroMovie_Scene1_DestroySpritesAndObjectGfx(IntroMovieOvyData *data, IntroMovieScene1Data *sceneData) {
-    Sprite_Delete(sceneData->unk_018);
-    Sprite_Delete(sceneData->unk_01C);
+    Sprite_Delete(sceneData->sunSprite);
+    Sprite_Delete(sceneData->birdSprite);
     sub_0200AEB0(sceneData->charResObj);
     sub_0200B0A8(sceneData->plttResObj);
     IntroMovie_DestroySpriteResourceManagers(data);
@@ -408,19 +409,19 @@ void IntroMovie_Scene1_CreateSprites(IntroMovieOvyData *data, IntroMovieScene1Da
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(1, data, 1, NNS_G2D_VRAM_TYPE_2DMAIN, &spriteTemplate, &spriteResourcesHeader);
     spriteTemplate.position.x = 128 * FX32_ONE;
     spriteTemplate.position.y = 96 * FX32_ONE;
-    sceneData->unk_018 = CreateSprite(&spriteTemplate);
-    Set2dSpriteAnimActiveFlag(sceneData->unk_018, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->unk_018, FALSE);
-    Set2dSpriteAnimSeqNo(sceneData->unk_018, 0);
+    sceneData->sunSprite = CreateSprite(&spriteTemplate);
+    Set2dSpriteAnimActiveFlag(sceneData->sunSprite, FALSE);
+    Set2dSpriteVisibleFlag(sceneData->sunSprite, FALSE);
+    Set2dSpriteAnimSeqNo(sceneData->sunSprite, 0);
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(1, data, 0, NNS_G2D_VRAM_TYPE_2DMAIN, &spriteTemplate, &spriteResourcesHeader);
     spriteTemplate.position.x = 128 * FX32_ONE;
     spriteTemplate.position.y = 96 * FX32_ONE;
-    sceneData->unk_01C = CreateSprite(&spriteTemplate);
-    Set2dSpriteAnimActiveFlag(sceneData->unk_01C, FALSE);
-    Set2dSpriteVisibleFlag(sceneData->unk_01C, FALSE);
-    Set2dSpriteAnimSeqNo(sceneData->unk_01C, 1);
-    sub_0202487C(sceneData->unk_01C, 2);
+    sceneData->birdSprite = CreateSprite(&spriteTemplate);
+    Set2dSpriteAnimActiveFlag(sceneData->birdSprite, FALSE);
+    Set2dSpriteVisibleFlag(sceneData->birdSprite, FALSE);
+    Set2dSpriteAnimSeqNo(sceneData->birdSprite, 1);
+    sub_0202487C(sceneData->birdSprite, 2);
 }
 
 HeapID _deadstrip_01(int idx);
