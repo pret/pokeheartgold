@@ -22,7 +22,7 @@ void IntroMovie_Scene1_LoadSpriteGfx(IntroMovieOvyData *data, IntroMovieScene1Da
 void IntroMovie_Scene1_DestroySpritesAndObjectGfx(IntroMovieOvyData *data, IntroMovieScene1Data *sceneData);
 void IntroMovie_Scene1_CreateSprites(IntroMovieOvyData *data, IntroMovieScene1Data *sceneData);
 
-const u8 _021EB134[4] = {1, 1, 1, 1};
+const u8 sIntroMovieScene1SpriteResCounts[4] = {1, 1, 1, 1};
 
 BOOL IntroMovie_Scene1(IntroMovieOvyData *data, void *pVoid) {
     IntroMovieScene1Data *sceneData = (IntroMovieScene1Data *)pVoid;
@@ -383,7 +383,7 @@ void IntroMovie_Scene1_SetBrightnessAndBgMaskColor(IntroMovieOvyData *data) {
 }
 
 void IntroMovie_Scene1_LoadSpriteGfx(IntroMovieOvyData *data, IntroMovieScene1Data *sceneData) {
-    IntroMovie_CreateSpriteResourceManagers(data, _021EB134);
+    IntroMovie_CreateSpriteResourceManagers(data, sIntroMovieScene1SpriteResCounts);
     _2DGfxResMan **ppMgr = IntroMovie_GetSpriteResourceManagersArray(data);
     sceneData->charResObj = AddCharResObjFromNarc(ppMgr[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_BIRD_CHARRES, TRUE, 1, 1, HEAP_ID_INTRO_MOVIE);
     sceneData->plttResObj = AddPlttResObjFromNarc(ppMgr[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_BIRD_PLTTRES, FALSE, 1, 1, 2, HEAP_ID_INTRO_MOVIE);

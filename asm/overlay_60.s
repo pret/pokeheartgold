@@ -23,1042 +23,12 @@
 	.extern IntroMovie_GetIntroSkippedFlag
 	.extern IntroMovie_GetTotalFrameCount
 	.extern IntroMovie_InitBgAnimGxState
-	.extern IntroMovie_BeginCirleWipeEffect
+	.extern IntroMovie_BeginCircleWipeEffect
 	.extern IntroMovie_WaitCircleWipeEffect
 	.extern IntroMovie_AdvanceSceneStep
 	.extern IntroMovie_GetSceneStep
 	.extern IntroMovie_GetSceneStepTimer
-	.extern IntroMovie_Scene2_VBlankCB
-	.extern ov60_021EB724
-
-	thumb_func_start IntroMovie_Scene3
-IntroMovie_Scene3: ; 0x021E8BF8
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	bl IntroMovie_GetIntroSkippedFlag
-	cmp r0, #0
-	beq _021E8C0A
-	mov r0, #2
-	strb r0, [r4]
-_021E8C0A:
-	ldrb r0, [r4]
-	cmp r0, #0
-	beq _021E8C1A
-	cmp r0, #1
-	beq _021E8C2A
-	cmp r0, #2
-	beq _021E8C46
-	b _021E8C52
-_021E8C1A:
-	add r0, r5, #0
-	add r1, r4, #0
-	bl IntroMovie_Scene3_Init
-	ldrb r0, [r4]
-	add r0, r0, #1
-	strb r0, [r4]
-	b _021E8C52
-_021E8C2A:
-	add r0, r5, #0
-	bl IntroMovie_GetTotalFrameCount
-	add r2, r0, #0
-	add r0, r5, #0
-	add r1, r4, #0
-	bl IntroMovie_Scene3_Main
-	cmp r0, #0
-	beq _021E8C52
-	ldrb r0, [r4]
-	add r0, r0, #1
-	strb r0, [r4]
-	b _021E8C52
-_021E8C46:
-	add r0, r5, #0
-	add r1, r4, #0
-	bl IntroMovie_Scene3_Exit
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-_021E8C52:
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end IntroMovie_Scene3
-
-	thumb_func_start ov60_021E8C58
-ov60_021E8C58: ; 0x021E8C58
-	push {r3, lr}
-	bl IntroMovie_GetBgConfig
-	bl DoScheduledBgGpuUpdates
-	bl OamManager_ApplyAndResetBuffers
-	pop {r3, pc}
-	thumb_func_end ov60_021E8C58
-
-	thumb_func_start IntroMovie_Scene3_Init
-IntroMovie_Scene3_Init: ; 0x021E8C68
-	push {r4, r5, r6, lr}
-	sub sp, #8
-	add r5, r0, #0
-	add r4, r1, #0
-	bl IntroMovie_GetBgConfig
-	add r6, r0, #0
-	bl sub_020216C8
-	bl sub_02022638
-	ldr r0, _021E8CF8 ; =gSystem + 0x60
-	mov r1, #0
-	strb r1, [r0, #9]
-	bl GfGfx_SwapDisplay
-	add r0, r5, #0
-	bl ov60_021E9580
-	add r0, r5, #0
-	bl IntroMovie_InitBgAnimGxState
-	ldr r0, _021E8CFC ; =ov60_021E8C58
-	add r1, r5, #0
-	bl Main_SetVBlankIntrCB
-	add r0, r6, #0
-	add r1, r4, #0
-	bl ov60_021E9638
-	mov r1, #0
-	mov r0, #2
-	lsl r0, r0, #8
-	str r0, [sp]
-	add r0, r5, #0
-	add r2, r1, #0
-	add r3, r1, #0
-	bl IntroMovie_RendererSetSurfaceCoords
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov60_021E9768
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov60_021E98C0
-	mov r0, #4
-	str r0, [sp]
-	ldr r0, _021E8D00 ; =ov60_021E9BFC
-	mov r1, #0
-	str r0, [sp, #4]
-	mov r0, #0x4a
-	mov r2, #1
-	add r3, r1, #0
-	bl GF_3DVramMan_Create
-	mov r1, #0x6f
-	lsl r1, r1, #2
-	str r0, [r4, r1]
-	add r0, r4, #0
-	bl ov60_021E99B8
-	add r0, r4, #0
-	add r1, r6, #0
-	bl ov60_021E8D04
-	mov r0, #1
-	strb r0, [r4, #1]
-	add sp, #8
-	pop {r4, r5, r6, pc}
-	nop
-_021E8CF8: .word gSystem + 0x60
-_021E8CFC: .word ov60_021E8C58
-_021E8D00: .word ov60_021E9BFC
-	thumb_func_end IntroMovie_Scene3_Init
-
-	thumb_func_start ov60_021E8D04
-ov60_021E8D04: ; 0x021E8D04
-	push {r3, lr}
-	ldr r0, [r0, #0x64]
-	mov r1, #1
-	bl IntroMovie_StartSpriteAnimAndMakeVisible
-	mov r0, #6
-	mov r1, #0
-	bl GfGfx_EngineBTogglePlanes
-	mov r0, #1
-	add r1, r0, #0
-	bl GfGfx_EngineATogglePlanes
-	mov r0, #0
-	add r1, r0, #0
-	bl BG_SetMaskColor
-	mov r0, #4
-	mov r1, #0
-	bl BG_SetMaskColor
-	mov r0, #1
-	mov r1, #0
-	bl sub_0200FBF4
-	pop {r3, pc}
-	thumb_func_end ov60_021E8D04
-
-	thumb_func_start IntroMovie_Scene3_Main
-IntroMovie_Scene3_Main: ; 0x021E8D38
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0x1fc
-	sub sp, #8
-	add r6, r0, #0
-	add r5, r1, #0
-	bl IntroMovie_GetBgConfig
-	add r7, r0, #0
-	add r0, r6, #0
-	bl IntroMovie_GetBgLinearAnimsController
-	add r4, r0, #0
-	add r0, r6, #0
-	bl IntroMovie_GetSceneStepTimer
-	str r0, [sp, #0x10]
-	add r0, r5, #0
-	bl ov60_021E9B60
-	add r0, r6, #0
-	bl IntroMovie_GetSceneStep
-	cmp r0, #0x17
-	bhi _021E8DEA
-	add r0, r0, r0
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_021E8D74: ; jump table
-	.short _021E8DA4 - _021E8D74 - 2 ; case 0
-	.short _021E8DC6 - _021E8D74 - 2 ; case 1
-	.short _021E8DE0 - _021E8D74 - 2 ; case 2
-	.short _021E8E12 - _021E8D74 - 2 ; case 3
-	.short _021E8E2C - _021E8D74 - 2 ; case 4
-	.short _021E8E5C - _021E8D74 - 2 ; case 5
-	.short _021E8E76 - _021E8D74 - 2 ; case 6
-	.short _021E8E90 - _021E8D74 - 2 ; case 7
-	.short _021E8EA4 - _021E8D74 - 2 ; case 8
-	.short _021E8EB6 - _021E8D74 - 2 ; case 9
-	.short _021E8F08 - _021E8D74 - 2 ; case 10
-	.short _021E8F38 - _021E8D74 - 2 ; case 11
-	.short _021E8FBE - _021E8D74 - 2 ; case 12
-	.short _021E9016 - _021E8D74 - 2 ; case 13
-	.short _021E9070 - _021E8D74 - 2 ; case 14
-	.short _021E90B6 - _021E8D74 - 2 ; case 15
-	.short _021E90F4 - _021E8D74 - 2 ; case 16
-	.short _021E910C - _021E8D74 - 2 ; case 17
-	.short _021E918E - _021E8D74 - 2 ; case 18
-	.short _021E920C - _021E8D74 - 2 ; case 19
-	.short _021E9278 - _021E8D74 - 2 ; case 20
-	.short _021E936E - _021E8D74 - 2 ; case 21
-	.short _021E93D8 - _021E8D74 - 2 ; case 22
-	.short _021E9460 - _021E8D74 - 2 ; case 23
-_021E8DA4:
-	mov r0, #0x1d
-	lsl r0, r0, #4
-	ldr r0, [r5, r0]
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	bl ov60_021E9C84
-	add r0, r6, #0
-	mov r1, #0
-	mov r2, #1
-	mov r3, #8
-	bl IntroMovie_BeginCirleWipeEffect
-	add r0, r6, #0
-	bl IntroMovie_AdvanceSceneStep
-	b _021E9476
-_021E8DC6:
-	ldr r0, [sp, #0x10]
-	cmp r0, #0x28
-	bls _021E8DEA
-	add r0, r6, #0
-	mov r1, #3
-	mov r2, #1
-	mov r3, #8
-	bl IntroMovie_BeginCirleWipeEffect
-	add r0, r6, #0
-	bl IntroMovie_AdvanceSceneStep
-	b _021E9476
-_021E8DE0:
-	add r0, r6, #0
-	bl IntroMovie_WaitCircleWipeEffect
-	cmp r0, #0
-	bne _021E8DEC
-_021E8DEA:
-	b _021E9476
-_021E8DEC:
-	add r0, r6, #0
-	mov r1, #2
-	mov r2, #1
-	mov r3, #8
-	bl IntroMovie_BeginCirleWipeEffect
-	mov r0, #0x1d
-	mov r1, #1
-	lsl r0, r0, #4
-	str r1, [r5, r0]
-	ldr r0, [r5, r0]
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	bl ov60_021E9C84
-	add r0, r6, #0
-	bl IntroMovie_AdvanceSceneStep
-	b _021E9476
-_021E8E12:
-	ldr r0, [sp, #0x10]
-	cmp r0, #0x2e
-	bls _021E8F0E
-	add r0, r6, #0
-	mov r1, #3
-	mov r2, #1
-	mov r3, #8
-	bl IntroMovie_BeginCirleWipeEffect
-	add r0, r6, #0
-	bl IntroMovie_AdvanceSceneStep
-	b _021E9476
-_021E8E2C:
-	add r0, r6, #0
-	bl IntroMovie_WaitCircleWipeEffect
-	cmp r0, #0
-	beq _021E8F0E
-	add r0, r6, #0
-	mov r1, #2
-	mov r2, #1
-	mov r3, #8
-	bl IntroMovie_BeginCirleWipeEffect
-	mov r0, #0x1d
-	mov r1, #2
-	lsl r0, r0, #4
-	str r1, [r5, r0]
-	ldr r0, [r5, r0]
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	bl ov60_021E9C84
-	add r0, r6, #0
-	bl IntroMovie_AdvanceSceneStep
-	b _021E9476
-_021E8E5C:
-	ldr r0, [sp, #0x10]
-	cmp r0, #0x62
-	bls _021E8F0E
-	add r0, r6, #0
-	mov r1, #3
-	mov r2, #1
-	mov r3, #8
-	bl IntroMovie_BeginCirleWipeEffect
-	add r0, r6, #0
-	bl IntroMovie_AdvanceSceneStep
-	b _021E9476
-_021E8E76:
-	add r0, r6, #0
-	bl IntroMovie_WaitCircleWipeEffect
-	cmp r0, #0
-	beq _021E8F0E
-	mov r0, #0x1d
-	ldr r1, _021E91A8 ; =0x0000FFFF
-	lsl r0, r0, #4
-	str r1, [r5, r0]
-	add r0, r6, #0
-	bl IntroMovie_AdvanceSceneStep
-	b _021E9476
-_021E8E90:
-	add r0, r6, #0
-	mov r1, #2
-	mov r2, #0
-	mov r3, #8
-	bl IntroMovie_BeginCirleWipeEffect
-	add r0, r6, #0
-	bl IntroMovie_AdvanceSceneStep
-	b _021E9476
-_021E8EA4:
-	add r0, r6, #0
-	bl IntroMovie_WaitCircleWipeEffect
-	cmp r0, #0
-	beq _021E8F0E
-	add r0, r6, #0
-	bl IntroMovie_AdvanceSceneStep
-	b _021E9476
-_021E8EB6:
-	ldr r3, _021E91AC ; =_021EB250
-	add r2, sp, #0x1f8
-	ldmia r3!, {r0, r1}
-	add r4, r2, #0
-	stmia r2!, {r0, r1}
-	ldr r0, [r3]
-	str r0, [r2]
-	ldrb r2, [r5, #3]
-	lsl r0, r2, #2
-	ldr r1, [r4, r0]
-	ldr r0, [sp, #0x10]
-	cmp r0, r1
-	blt _021E8F0E
-	add r0, r2, #1
-	strb r0, [r5, #3]
-	ldrb r0, [r5, #3]
-	mov r1, #4
-	lsl r0, r0, #2
-	add r0, r5, r0
-	ldr r3, [r0, #0x24]
-	add r0, r7, #0
-	add r2, r3, #0
-	ldr r3, [r3, #8]
-	add r2, #0xc
-	bl BG_LoadScreenTilemapData
-	add r0, r7, #0
-	mov r1, #4
-	bl ScheduleBgTilemapBufferTransfer
-	ldrb r0, [r5, #3]
-	cmp r0, #3
-	blo _021E8F0E
-	ldr r0, [r5, #0x64]
-	mov r1, #0
-	bl IntroMovie_StartSpriteAnimAndMakeVisible
-	add r0, r6, #0
-	bl IntroMovie_AdvanceSceneStep
-	b _021E9476
-_021E8F08:
-	ldr r0, [sp, #0x10]
-	cmp r0, #0xa
-	bhs _021E8F10
-_021E8F0E:
-	b _021E9476
-_021E8F10:
-	mov r0, #1
-	mov r1, #0
-	bl GfGfx_EngineBTogglePlanes
-	ldr r3, [r5, #0x34]
-	add r0, r7, #0
-	add r2, r3, #0
-	ldr r3, [r3, #8]
-	mov r1, #4
-	add r2, #0xc
-	bl BG_LoadScreenTilemapData
-	add r0, r7, #0
-	mov r1, #4
-	bl ScheduleBgTilemapBufferTransfer
-	add r0, r6, #0
-	bl IntroMovie_AdvanceSceneStep
-	b _021E9476
-_021E8F38:
-	ldr r0, [sp, #0x10]
-	cmp r0, #5
-	bne _021E8F60
-	ldr r3, _021E91B0 ; =_021EB3C8
-	add r2, sp, #0x1cc
-	mov r5, #5
-_021E8F44:
-	ldmia r3!, {r0, r1}
-	stmia r2!, {r0, r1}
-	sub r5, r5, #1
-	bne _021E8F44
-	ldr r0, [r3]
-	mov r1, #5
-	str r0, [r2]
-	mov r0, #0x11
-	lsl r0, r0, #4
-	add r0, r4, r0
-	mov r2, #0
-	add r3, sp, #0x1cc
-	bl IntroMovie_StartWindowPanEffect
-_021E8F60:
-	ldr r0, [sp, #0x10]
-	cmp r0, #0x2c
-	blo _021E9024
-	ldr r3, _021E91B4 ; =_021EB3F4
-	add r2, sp, #0x1a0
-	mov r5, #5
-_021E8F6C:
-	ldmia r3!, {r0, r1}
-	stmia r2!, {r0, r1}
-	sub r5, r5, #1
-	bne _021E8F6C
-	ldr r0, [r3]
-	mov r1, #7
-	str r0, [r2]
-	mov r0, #0x11
-	lsl r0, r0, #4
-	add r0, r4, r0
-	mov r2, #0
-	add r3, sp, #0x1a0
-	bl IntroMovie_StartWindowPanEffect
-	ldr r2, _021E91B8 ; =0x04001000
-	mov r3, #0xff
-	ldr r1, [r2]
-	ldr r0, _021E91BC ; =0xFFFF1FFF
-	add r4, #0x30
-	and r1, r0
-	lsr r0, r2, #0xd
-	orr r0, r1
-	str r0, [r2]
-	mov r0, #0
-	str r0, [sp]
-	mov r0, #7
-	str r0, [sp, #4]
-	add r0, r7, #0
-	add r1, r4, #0
-	mov r2, #4
-	mvn r3, r3
-	bl IntroMovie_StartBgScroll_VBlank
-	mov r0, #1
-	add r1, r0, #0
-	bl GfGfx_EngineBTogglePlanes
-	add r0, r6, #0
-	bl IntroMovie_AdvanceSceneStep
-	b _021E9476
-_021E8FBE:
-	add r0, r4, #0
-	add r0, #0x30
-	mov r1, #4
-	bl IntroMovie_WaitBgScrollAnim
-	cmp r0, #0
-	beq _021E9024
-	ldr r3, _021E91C0 ; =_021EB420
-	add r2, sp, #0x174
-	mov r5, #5
-_021E8FD2:
-	ldmia r3!, {r0, r1}
-	stmia r2!, {r0, r1}
-	sub r5, r5, #1
-	bne _021E8FD2
-	ldr r0, [r3]
-	mov r1, #7
-	str r0, [r2]
-	mov r0, #0x11
-	lsl r0, r0, #4
-	add r0, r4, r0
-	mov r2, #0
-	add r3, sp, #0x174
-	bl IntroMovie_StartWindowPanEffect
-	mov r0, #0
-	mov r2, #5
-	str r0, [sp]
-	mov r0, #7
-	add r4, #0x30
-	add r3, r2, #0
-	str r0, [sp, #4]
-	add r0, r7, #0
-	add r1, r4, #0
-	add r3, #0xfb
-	bl IntroMovie_StartBgScroll_VBlank
-	mov r0, #2
-	mov r1, #1
-	bl GfGfx_EngineBTogglePlanes
-	add r0, r6, #0
-	bl IntroMovie_AdvanceSceneStep
-	b _021E9476
-_021E9016:
-	add r0, r4, #0
-	add r0, #0x30
-	mov r1, #5
-	bl IntroMovie_WaitBgScrollAnim
-	cmp r0, #0
-	bne _021E9026
-_021E9024:
-	b _021E9476
-_021E9026:
-	ldr r3, _021E91C4 ; =_021EB44C
-	add r2, sp, #0x148
-	mov r5, #5
-_021E902C:
-	ldmia r3!, {r0, r1}
-	stmia r2!, {r0, r1}
-	sub r5, r5, #1
-	bne _021E902C
-	ldr r0, [r3]
-	mov r1, #1
-	str r0, [r2]
-	mov r0, #0x11
-	lsl r0, r0, #4
-	add r0, r4, r0
-	mov r2, #0
-	add r3, sp, #0x148
-	bl IntroMovie_StartWindowPanEffect
-	mov r0, #0
-	str r0, [sp]
-	mov r0, #1
-	add r4, #0x30
-	mov r3, #0xff
-	str r0, [sp, #4]
-	add r0, r7, #0
-	add r1, r4, #0
-	mov r2, #6
-	mvn r3, r3
-	bl IntroMovie_StartBgScroll_VBlank
-	mov r0, #4
-	mov r1, #1
-	bl GfGfx_EngineBTogglePlanes
-	add r0, r6, #0
-	bl IntroMovie_AdvanceSceneStep
-	b _021E9476
-_021E9070:
-	add r4, #0x30
-	add r0, r4, #0
-	mov r1, #6
-	bl IntroMovie_WaitBgScrollAnim
-	cmp r0, #0
-	beq _021E912E
-	mov r0, #1
-	lsl r0, r0, #0x1a
-	ldr r2, [r0]
-	ldr r1, _021E91BC ; =0xFFFF1FFF
-	ldr r3, _021E91B8 ; =0x04001000
-	and r2, r1
-	str r2, [r0]
-	ldr r2, [r3]
-	lsr r0, r0, #0xc
-	and r1, r2
-	str r1, [r3]
-	mov r1, #0
-	str r1, [sp]
-	str r0, [sp, #4]
-	mov r0, #1
-	str r0, [sp, #8]
-	mov r0, #0x4a
-	str r0, [sp, #0xc]
-	add r0, #0xbe
-	mov r1, #0x29
-	add r2, r7, #0
-	mov r3, #7
-	bl GfGfxLoader_LoadCharData
-	add r0, r6, #0
-	bl IntroMovie_AdvanceSceneStep
-	b _021E9476
-_021E90B6:
-	ldr r0, [sp, #0x10]
-	cmp r0, #0x2a
-	blo _021E912E
-	ldr r5, _021E91C8 ; =_021EB478
-	add r3, sp, #0x11c
-	mov r2, #5
-_021E90C2:
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	sub r2, r2, #1
-	bne _021E90C2
-	ldr r0, [r5]
-	mov r1, #3
-	str r0, [r3]
-	mov r0, #0x11
-	lsl r0, r0, #4
-	add r0, r4, r0
-	mov r2, #0
-	add r3, sp, #0x11c
-	bl IntroMovie_StartWindowPanEffect
-	ldr r2, _021E91B8 ; =0x04001000
-	ldr r0, _021E91BC ; =0xFFFF1FFF
-	ldr r1, [r2]
-	and r1, r0
-	lsr r0, r2, #0xd
-	orr r0, r1
-	str r0, [r2]
-	add r0, r6, #0
-	bl IntroMovie_AdvanceSceneStep
-	b _021E9476
-_021E90F4:
-	mov r0, #0x11
-	lsl r0, r0, #4
-	add r0, r4, r0
-	mov r1, #0
-	bl IntroMovie_WaitWindowPanEffect
-	cmp r0, #0
-	beq _021E912E
-	add r0, r6, #0
-	bl IntroMovie_AdvanceSceneStep
-	b _021E9476
-_021E910C:
-	ldr r0, [sp, #0x10]
-	cmp r0, #0x38
-	bne _021E911A
-	ldr r0, [r5, #0x68]
-	mov r1, #1
-	bl IntroMovie_StartSpriteAnimAndMakeVisible
-_021E911A:
-	ldr r0, [sp, #0x10]
-	cmp r0, #0x91
-	bne _021E9128
-	ldr r0, [r5, #0x6c]
-	mov r1, #1
-	bl IntroMovie_StartSpriteAnimAndMakeVisible
-_021E9128:
-	ldr r0, [sp, #0x10]
-	cmp r0, #0x91
-	bhs _021E9130
-_021E912E:
-	b _021E9476
-_021E9130:
-	ldr r3, _021E91CC ; =_021EB4A4
-	add r2, sp, #0xf0
-	mov r5, #5
-_021E9136:
-	ldmia r3!, {r0, r1}
-	stmia r2!, {r0, r1}
-	sub r5, r5, #1
-	bne _021E9136
-	ldr r0, [r3]
-	mov r1, #0xa
-	str r0, [r2]
-	mov r0, #0x11
-	lsl r0, r0, #4
-	add r0, r4, r0
-	mov r2, #0
-	add r3, sp, #0xf0
-	bl IntroMovie_StartWindowPanEffect
-	ldr r1, _021E91D0 ; =0x000046B9
-	ldr r0, _021E91D4 ; =0x04001042
-	add r4, #0x30
-	strh r1, [r0]
-	ldr r1, _021E91D8 ; =0x000040C0
-	strh r1, [r0, #4]
-	ldrh r2, [r0, #6]
-	ldr r1, _021E91DC ; =0xFFFFC0FF
-	and r2, r1
-	mov r1, #0x1d
-	lsl r1, r1, #8
-	orr r2, r1
-	lsr r1, r0, #0xd
-	orr r1, r2
-	strh r1, [r0, #6]
-	mov r0, #0
-	mov r2, #5
-	str r0, [sp]
-	mov r0, #0xa
-	add r3, r2, #0
-	str r0, [sp, #4]
-	add r0, r7, #0
-	add r1, r4, #0
-	sub r3, #0x79
-	bl IntroMovie_StartBgScroll_VBlank
-	add r0, r6, #0
-	bl IntroMovie_AdvanceSceneStep
-	b _021E9476
-_021E918E:
-	add r0, r4, #0
-	add r0, #0x30
-	mov r1, #5
-	bl IntroMovie_WaitBgScrollAnim
-	cmp r0, #0
-	beq _021E9294
-	mov r0, #2
-	mov r1, #0
-	bl GfGfx_EngineBTogglePlanes
-	ldr r5, _021E91E0 ; =_021EB4D0
-	b _021E91E4
-	.balign 4, 0
-_021E91A8: .word 0x0000FFFF
-_021E91AC: .word _021EB250
-_021E91B0: .word _021EB3C8
-_021E91B4: .word _021EB3F4
-_021E91B8: .word 0x04001000
-_021E91BC: .word 0xFFFF1FFF
-_021E91C0: .word _021EB420
-_021E91C4: .word _021EB44C
-_021E91C8: .word _021EB478
-_021E91CC: .word _021EB4A4
-_021E91D0: .word 0x000046B9
-_021E91D4: .word 0x04001042
-_021E91D8: .word 0x000040C0
-_021E91DC: .word 0xFFFFC0FF
-_021E91E0: .word _021EB4D0
-_021E91E4:
-	add r3, sp, #0xc4
-	mov r2, #5
-_021E91E8:
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	sub r2, r2, #1
-	bne _021E91E8
-	ldr r0, [r5]
-	mov r1, #0
-	str r0, [r3]
-	mov r0, #0x11
-	lsl r0, r0, #4
-	add r0, r4, r0
-	add r2, r1, #0
-	add r3, sp, #0xc4
-	bl IntroMovie_StartWindowPanEffect
-	add r0, r6, #0
-	bl IntroMovie_AdvanceSceneStep
-	b _021E9476
-_021E920C:
-	ldr r0, [r5, #0x70]
-	mov r1, #1
-	bl IntroMovie_StartSpriteAnimAndMakeVisible
-	ldr r0, [sp, #0x10]
-	cmp r0, #0xa
-	blo _021E9294
-	ldr r3, _021E9480 ; =_021EB4FC
-	add r2, sp, #0x98
-	mov r5, #5
-_021E9220:
-	ldmia r3!, {r0, r1}
-	stmia r2!, {r0, r1}
-	sub r5, r5, #1
-	bne _021E9220
-	ldr r0, [r3]
-	mov r1, #0xa
-	str r0, [r2]
-	mov r0, #0x11
-	lsl r0, r0, #4
-	add r0, r4, r0
-	mov r2, #0
-	add r3, sp, #0x98
-	bl IntroMovie_StartWindowPanEffect
-	ldr r1, _021E9484 ; =0x000046B9
-	ldr r0, _021E9488 ; =0x04001042
-	add r4, #0x30
-	strh r1, [r0]
-	ldr r1, _021E948C ; =0x00004080
-	strh r1, [r0, #4]
-	ldrh r2, [r0, #6]
-	ldr r1, _021E9490 ; =0xFFFFC0FF
-	and r2, r1
-	mov r1, #0x19
-	lsl r1, r1, #8
-	orr r2, r1
-	lsr r1, r0, #0xd
-	orr r1, r2
-	strh r1, [r0, #6]
-	mov r0, #0
-	mov r2, #6
-	str r0, [sp]
-	mov r0, #0xa
-	add r3, r2, #0
-	str r0, [sp, #4]
-	add r0, r7, #0
-	add r1, r4, #0
-	sub r3, #0x7a
-	bl IntroMovie_StartBgScroll_VBlank
-	add r0, r6, #0
-	bl IntroMovie_AdvanceSceneStep
-	b _021E9476
-_021E9278:
-	add r0, r4, #0
-	add r0, #0x30
-	mov r1, #5
-	bl IntroMovie_WaitBgScrollAnim
-	cmp r0, #0
-	beq _021E9294
-	add r0, r4, #0
-	add r0, #0x30
-	mov r1, #6
-	bl IntroMovie_WaitBgScrollAnim
-	cmp r0, #0
-	bne _021E9296
-_021E9294:
-	b _021E9476
-_021E9296:
-	mov r0, #4
-	mov r1, #0
-	bl GfGfx_EngineBTogglePlanes
-	mov r0, #5
-	ldr r2, _021E9494 ; =_021EB528
-	add r3, sp, #0x6c
-	mov ip, r0
-_021E92A6:
-	ldmia r2!, {r0, r1}
-	stmia r3!, {r0, r1}
-	mov r0, ip
-	sub r0, r0, #1
-	mov ip, r0
-	bne _021E92A6
-	ldr r0, [r2]
-	mov r1, #0
-	str r0, [r3]
-	mov r0, #0x11
-	lsl r0, r0, #4
-	add r0, r4, r0
-	add r2, r1, #0
-	add r3, sp, #0x6c
-	bl IntroMovie_StartWindowPanEffect
-	ldr r3, [r5, #0x38]
-	add r0, r7, #0
-	add r2, r3, #0
-	ldr r3, [r3, #8]
-	mov r1, #5
-	add r2, #0xc
-	bl BG_LoadScreenTilemapData
-	ldr r3, [r5, #0x3c]
-	add r0, r7, #0
-	add r2, r3, #0
-	ldr r3, [r3, #8]
-	mov r1, #6
-	add r2, #0xc
-	bl BG_LoadScreenTilemapData
-	ldr r3, [r5, #0x40]
-	add r0, r7, #0
-	add r2, r3, #0
-	ldr r3, [r3, #8]
-	mov r1, #7
-	add r2, #0xc
-	bl BG_LoadScreenTilemapData
-	add r0, r7, #0
-	mov r1, #5
-	bl ScheduleBgTilemapBufferTransfer
-	add r0, r7, #0
-	mov r1, #6
-	bl ScheduleBgTilemapBufferTransfer
-	add r0, r7, #0
-	mov r1, #7
-	bl ScheduleBgTilemapBufferTransfer
-	mov r2, #0
-	add r0, r7, #0
-	mov r1, #5
-	add r3, r2, #0
-	bl BgSetPosTextAndCommit
-	add r0, r7, #0
-	mov r1, #5
-	mov r2, #3
-	mov r3, #0
-	bl BgSetPosTextAndCommit
-	mov r2, #0
-	add r0, r7, #0
-	mov r1, #6
-	add r3, r2, #0
-	bl BgSetPosTextAndCommit
-	add r0, r7, #0
-	mov r1, #6
-	mov r2, #3
-	mov r3, #0
-	bl BgSetPosTextAndCommit
-	mov r2, #0
-	add r0, r7, #0
-	mov r1, #7
-	add r3, r2, #0
-	bl BgSetPosTextAndCommit
-	add r0, r7, #0
-	mov r1, #7
-	mov r2, #3
-	mov r3, #0
-	bl BgSetPosTextAndCommit
-	mov r0, #2
-	mov r1, #1
-	bl GfGfx_EngineBTogglePlanes
-	mov r0, #4
-	mov r1, #1
-	bl GfGfx_EngineBTogglePlanes
-	add r0, r6, #0
-	bl IntroMovie_AdvanceSceneStep
-	b _021E9476
-_021E936E:
-	ldr r0, [r5, #0x74]
-	mov r1, #1
-	bl IntroMovie_StartSpriteAnimAndMakeVisible
-	ldr r0, [sp, #0x10]
-	cmp r0, #0x1e
-	blo _021E9476
-	ldr r3, _021E9498 ; =_021EB370
-	add r2, sp, #0x40
-	mov r5, #5
-_021E9382:
-	ldmia r3!, {r0, r1}
-	stmia r2!, {r0, r1}
-	sub r5, r5, #1
-	bne _021E9382
-	ldr r0, [r3]
-	mov r1, #0xa
-	str r0, [r2]
-	mov r0, #0x11
-	lsl r0, r0, #4
-	add r0, r4, r0
-	mov r2, #0
-	add r3, sp, #0x40
-	bl IntroMovie_StartWindowPanEffect
-	ldr r1, _021E9484 ; =0x000046B9
-	ldr r0, _021E9488 ; =0x04001042
-	add r4, #0x30
-	strh r1, [r0]
-	ldr r1, _021E948C ; =0x00004080
-	mov r3, #0x74
-	strh r1, [r0, #4]
-	ldrh r2, [r0, #6]
-	ldr r1, _021E9490 ; =0xFFFFC0FF
-	and r2, r1
-	mov r1, #0x1e
-	lsl r1, r1, #8
-	orr r2, r1
-	lsr r1, r0, #0xd
-	orr r1, r2
-	strh r1, [r0, #6]
-	mov r0, #0
-	str r0, [sp]
-	mov r0, #0xa
-	str r0, [sp, #4]
-	add r0, r7, #0
-	add r1, r4, #0
-	mov r2, #4
-	bl IntroMovie_StartBgScroll_VBlank
-	add r0, r6, #0
-	bl IntroMovie_AdvanceSceneStep
-	b _021E9476
-_021E93D8:
-	add r0, r4, #0
-	add r0, #0x30
-	mov r1, #4
-	bl IntroMovie_WaitBgScrollAnim
-	cmp r0, #0
-	beq _021E9476
-	mov r0, #1
-	mov r1, #0
-	bl GfGfx_EngineBTogglePlanes
-	ldr r3, _021E949C ; =_021EB39C
-	add r2, sp, #0x14
-	mov r5, #5
-_021E93F4:
-	ldmia r3!, {r0, r1}
-	stmia r2!, {r0, r1}
-	sub r5, r5, #1
-	bne _021E93F4
-	ldr r0, [r3]
-	mov r1, #0xfd
-	str r0, [r2]
-	mov r0, #0x11
-	lsl r0, r0, #4
-	add r0, r4, r0
-	mov r2, #0
-	add r3, sp, #0x14
-	bl IntroMovie_StartWindowPanEffect
-	mov r0, #0x2f
-	mvn r0, r0
-	str r0, [sp]
-	mov r0, #0xfe
-	add r1, r4, #0
-	str r0, [sp, #4]
-	add r0, r7, #0
-	add r1, #0x30
-	mov r2, #5
-	mov r3, #0
-	bl IntroMovie_StartBgScroll_VBlank
-	mov r0, #0x1f
-	mvn r0, r0
-	str r0, [sp]
-	mov r0, #0xfe
-	add r1, r4, #0
-	str r0, [sp, #4]
-	add r0, r7, #0
-	add r1, #0x30
-	mov r2, #6
-	mov r3, #0
-	bl IntroMovie_StartBgScroll_VBlank
-	mov r0, #7
-	mvn r0, r0
-	str r0, [sp]
-	mov r0, #0xfe
-	add r4, #0x30
-	str r0, [sp, #4]
-	add r0, r7, #0
-	add r1, r4, #0
-	mov r2, #7
-	mov r3, #0
-	bl IntroMovie_StartBgScroll_VBlank
-	add r0, r6, #0
-	bl IntroMovie_AdvanceSceneStep
-	b _021E9476
-_021E9460:
-	add r4, #0x30
-	add r0, r4, #0
-	mov r1, #5
-	bl IntroMovie_WaitBgScrollAnim
-	cmp r0, #0
-	beq _021E9476
-	add sp, #0x1fc
-	add sp, #8
-	mov r0, #1
-	pop {r4, r5, r6, r7, pc}
-_021E9476:
-	mov r0, #0
-	add sp, #0x1fc
-	add sp, #8
-	pop {r4, r5, r6, r7, pc}
-	nop
-_021E9480: .word _021EB4FC
-_021E9484: .word 0x000046B9
-_021E9488: .word 0x04001042
-_021E948C: .word 0x00004080
-_021E9490: .word 0xFFFFC0FF
-_021E9494: .word _021EB528
-_021E9498: .word _021EB370
-_021E949C: .word _021EB39C
-	thumb_func_end IntroMovie_Scene3_Main
+	.extern IntroMovie_Scene3_VBlankCB
 
 	thumb_func_start IntroMovie_Scene3_Exit
 IntroMovie_Scene3_Exit: ; 0x021E94A0
@@ -4142,157 +3112,192 @@ ov60_021EAE18: ; 0x021EAE18
 
 	.rodata
 
+	.public _021EB1F4
 _021EB1F4:
 	.byte 0x02, 0x02, 0x02, 0x02
 	.word 0x4A
 	.size _021EB1F4,.-_021EB1F4
+	.public _021EB1FC
 _021EB1FC:
 	.byte 0x10, 0x42, 0xCE, 0x41
 	.byte 0x31, 0x46
 	.size _021EB1FC,.-_021EB1FC
+	.public _021EB202
 _021EB202:
 	.byte 0xEF, 0x3D, 0xCE, 0x41, 0xEF, 0x3D
 	.size _021EB202,.-_021EB202
+	.public _021EB208
 _021EB208:
 	.byte 0x69, 0x2D, 0x4A, 0x29, 0x8B, 0x31
 	.size _021EB208,.-_021EB208
+	.public _021EB20E
 _021EB20E:
 	.byte 0xCE, 0x39
 	.byte 0x08, 0x2D, 0x08, 0x1D
 	.size _021EB20E,.-_021EB20E
+	.public _021EB214
 _021EB214:
 	.byte 0x20, 0x02, 0x00, 0x00, 0xA0, 0x02, 0x00, 0x00, 0x60, 0x02, 0x00, 0x00
 	.size _021EB214,.-_021EB214
+	.public _021EB220
 _021EB220:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
 	.size _021EB220,.-_021EB220
+	.public _021EB22C
 _021EB22C:
 	.byte 0x67, 0x00, 0x00, 0x00
 	.byte 0x64, 0x00, 0x00, 0x00, 0x61, 0x00, 0x00, 0x00
 	.size _021EB22C,.-_021EB22C
+	.public _021EB238
 _021EB238:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x06, 0x00
 	.size _021EB238,.-_021EB238
+	.public _021EB244
 _021EB244:
 	.byte 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00
 	.size _021EB244,.-_021EB244
+	.public _021EB250
 _021EB250:
 	.byte 0x38, 0x00, 0x00, 0x00, 0x49, 0x00, 0x00, 0x00, 0x5C, 0x00, 0x00, 0x00
 	.size _021EB250,.-_021EB250
+	.public _021EB25C
 _021EB25C:
 	.byte 0x32, 0x00, 0x00, 0x00
 	.byte 0x33, 0x00, 0x00, 0x00, 0x34, 0x00, 0x00, 0x00
 	.size _021EB25C,.-_021EB25C
+	.public _021EB268
 _021EB268:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.size _021EB268,.-_021EB268
+	.public _021EB278
 _021EB278:
 	.byte 0x00, 0x00, 0x84, 0x10, 0x84, 0x10, 0x84, 0x10
 	.byte 0x84, 0x10, 0x84, 0x10, 0x84, 0x10, 0x84, 0x10
 	.size _021EB278,.-_021EB278
+	.public _021EB288
 _021EB288:
 	.byte 0x2A, 0x00, 0x00, 0x00, 0x2B, 0x00, 0x00, 0x00
 	.byte 0x2C, 0x00, 0x00, 0x00, 0x2D, 0x00, 0x00, 0x00, 0xC1, 0xAE, 0x19, 0x00
 	.size _021EB288,.-_021EB288
+	.public _021EB29C
 _021EB29C:
 	.byte 0x02, 0xD6, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC1, 0x05, 0x00, 0x00, 0x00, 0x00
 	.size _021EB29C,.-_021EB29C
+	.public _021EB2AC
 _021EB2AC:
 	.byte 0xD6, 0x52, 0x00, 0x00
 	.byte 0x80, 0x24, 0x00, 0x00, 0x6B, 0x41, 0x00, 0x00, 0x52, 0x01, 0x00, 0x00, 0x13, 0x32, 0x00, 0x00
 	.byte 0xD0, 0x00, 0x00, 0x00
 	.size _021EB2AC,.-_021EB2AC
+	.public _021EB2C4
 _021EB2C4:
 	.byte 0x68, 0x00, 0x00, 0x00, 0x69, 0x00, 0x00, 0x00, 0x65, 0x00, 0x00, 0x00
 	.byte 0x66, 0x00, 0x00, 0x00, 0x62, 0x00, 0x00, 0x00, 0x63, 0x00, 0x00, 0x00
 	.size _021EB2C4,.-_021EB2C4
+	.public _021EB2DC
 _021EB2DC:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x01
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.size _021EB2DC,.-_021EB2DC
+	.public _021EB2F8
 _021EB2F8:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x01, 0x00, 0x01, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00
 	.size _021EB2F8,.-_021EB2F8
+	.public _021EB314
 _021EB314:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x02, 0x01, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.size _021EB314,.-_021EB314
+	.public _021EB330
 _021EB330:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x03, 0x01, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.size _021EB330,.-_021EB330
+	.public _021EB34C
 _021EB34C:
 	.byte 0x00, 0x10, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00
 	.size _021EB34C,.-_021EB34C
+	.public _021EB370
 _021EB370:
 	.byte 0x46, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0xB9, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00
 	.byte 0x46, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x46, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00
 	.byte 0x1F, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00
 	.size _021EB370,.-_021EB370
+	.public _021EB39C
 _021EB39C:
 	.byte 0x46, 0x00, 0x00, 0x00
 	.byte 0x40, 0x00, 0x00, 0x00, 0xB9, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0xC0, 0x00, 0x00, 0x00, 0x1F, 0x00, 0x00, 0x00
 	.byte 0x10, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00
 	.size _021EB39C,.-_021EB39C
+	.public _021EB3C8
 _021EB3C8:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0x00, 0x00, 0x00, 0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00
 	.byte 0xFF, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x1F, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x01, 0x00
 	.size _021EB3C8,.-_021EB3C8
+	.public _021EB3F4
 _021EB3F4:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00
 	.byte 0x80, 0x00, 0x00, 0x00, 0x1F, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00
 	.size _021EB3F4,.-_021EB3F4
+	.public _021EB420
 _021EB420:
 	.byte 0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00
 	.byte 0x1F, 0x00, 0x00, 0x00, 0x11, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00
 	.size _021EB420,.-_021EB420
+	.public _021EB44C
 _021EB44C:
 	.byte 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00, 0xC0, 0x00, 0x00, 0x00, 0x1F, 0x00, 0x00, 0x00
 	.byte 0x13, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00
 	.size _021EB44C,.-_021EB44C
+	.public _021EB478
 _021EB478:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xFF, 0x00, 0x00, 0x00, 0xC0, 0x00, 0x00, 0x00, 0x46, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0xB9, 0x00, 0x00, 0x00, 0xC0, 0x00, 0x00, 0x00, 0x1F, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x01, 0x00
 	.size _021EB478,.-_021EB478
+	.public _021EB4A4
 _021EB4A4:
 	.byte 0x46, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xB9, 0x00, 0x00, 0x00
 	.byte 0xC0, 0x00, 0x00, 0x00, 0xB9, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xB9, 0x00, 0x00, 0x00
 	.byte 0xC0, 0x00, 0x00, 0x00, 0x1F, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00
 	.size _021EB4A4,.-_021EB4A4
+	.public _021EB4D0
 _021EB4D0:
 	.byte 0x46, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0xB9, 0x00, 0x00, 0x00, 0xC0, 0x00, 0x00, 0x00
 	.byte 0x46, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 0xB9, 0x00, 0x00, 0x00, 0xC0, 0x00, 0x00, 0x00
 	.byte 0x1F, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00
 	.size _021EB4D0,.-_021EB4D0
+	.public _021EB4FC
 _021EB4FC:
 	.byte 0x46, 0x00, 0x00, 0x00
 	.byte 0x40, 0x00, 0x00, 0x00, 0xB9, 0x00, 0x00, 0x00, 0xC0, 0x00, 0x00, 0x00, 0xB9, 0x00, 0x00, 0x00
 	.byte 0x40, 0x00, 0x00, 0x00, 0xB9, 0x00, 0x00, 0x00, 0xC0, 0x00, 0x00, 0x00, 0x1F, 0x00, 0x00, 0x00
 	.byte 0x10, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00
 	.size _021EB4FC,.-_021EB4FC
+	.public _021EB528
 _021EB528:
 	.byte 0x46, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00
 	.byte 0xB9, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x46, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00
 	.byte 0xB9, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x1F, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x01, 0x00
 	.size _021EB528,.-_021EB528
+	.public _021EB554
 _021EB554:
 	.byte 0x7E, 0xF8, 0xFF, 0xFF, 0x24, 0xF2, 0xFF, 0xFF, 0xD8, 0xFE, 0xFF, 0xFF
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00

@@ -3,6 +3,7 @@
 
 #include "bg_window.h"
 #include "sys_task.h"
+#include "gf_3d_vramman.h"
 #include "unk_02023694.h"
 
 typedef struct IntroMovieScene1Data {
@@ -49,10 +50,27 @@ typedef struct IntroMovieScene2Data {
 } IntroMovieScene2Data;
 
 typedef struct IntroMovieScene3Data {
-    u8 unk_000;
-    u8 padding_001[3];
-    u8 filler_004[0x1D0];
-} IntroMovieScene3Data;
+    u8 state;
+    u8 unk_001;
+    u8 unk_002;
+    u8 unk_003;
+    u8 filler_004[0x20];
+    NNSG2dScreenData *unk_024[4];
+    NNSG2dScreenData *unk_034;
+    NNSG2dScreenData *unk_038;
+    NNSG2dScreenData *unk_03C;
+    NNSG2dScreenData *unk_040;
+    u8 filler_044[0x20];
+    Sprite *unk_064;
+    Sprite *unk_068;
+    Sprite *unk_06C;
+    Sprite *unk_070;
+    Sprite *unk_074;
+    u8 filler_078[0x144];
+    GF3DVramMan *unk_1BC;
+    u8 filler_1C0[0x10];
+    int unk_1D0;
+} IntroMovieScene3Data; // size: 0x1D4
 
 typedef struct IntroMovieScene4Data {
     u8 unk_000;
@@ -178,7 +196,7 @@ void IntroMovie_StartBgScroll_NotVBlank(BgConfig *bgConfig, IntroMovieBgScrollAn
 BOOL IntroMovie_WaitBgScrollAnim(IntroMovieBgScrollAnim *data, enum GFBgLayer bgId);
 void IntroMovie_CancelBgScrollAnim(IntroMovieBgScrollAnim *data, enum GFBgLayer bgId);
 IntroMovieBgWindowAnim *IntroMovie_StartWindowPanEffect(IntroMovieBgWindowAnim *data, int duration, int whichScreen, const IntroMovieBgWindowAnimParam *param);
-BOOL IntroMovie_WaitWindowPanEffect(IntroMovieBgWindowAnim *data, int a1);
+BOOL IntroMovie_WaitWindowPanEffect(IntroMovieBgWindowAnim *data, int whichScreen);
 void IntroMovie_WindowsOn_SetInsideOutsidePlanes(int winIn, int winOut, u8 topScreenEffect, u8 bottomSCreenEffect, int whichScreen);
 void IntroMovie_SetBgWindowsPosition(int x1, int y1, int x2, int y2, int whichScreen);
 BgConfig *IntroMovie_GetBgConfig(IntroMovieOvyData *data);
@@ -186,7 +204,7 @@ IntroMovieBgLinearAnims *IntroMovie_GetBgLinearAnimsController(IntroMovieOvyData
 BOOL IntroMovie_GetIntroSkippedFlag(IntroMovieOvyData *data);
 int IntroMovie_GetTotalFrameCount(IntroMovieOvyData *data);
 void IntroMovie_InitBgAnimGxState(IntroMovieOvyData *data);
-void IntroMovie_BeginCirleWipeEffect(IntroMovieOvyData *data, int a1, int a2, int a3);
+void IntroMovie_BeginCircleWipeEffect(IntroMovieOvyData *data, int kind, BOOL isTopScreen, int duration);
 BOOL IntroMovie_WaitCircleWipeEffect(IntroMovieOvyData *data);
 void *IntroMovie_GetSceneDataPtr(IntroMovieOvyData *data);
 void IntroMovie_AdvanceSceneStep(IntroMovieOvyData *data);

@@ -16,11 +16,11 @@ void IntroMovie_Scene2_Init(IntroMovieOvyData *data, IntroMovieScene2Data *scene
 BOOL IntroMovie_Scene2_Main(IntroMovieOvyData *data, IntroMovieScene2Data *sceneData, int a2);
 void IntroMovie_Scene2_Exit(IntroMovieOvyData *data, IntroMovieScene2Data *sceneData);
 void IntroMovie_Scene2_InitFlyoverGrassBgScrollAnims(IntroMovieOvyData *data, BgConfig *bgConfig);
-void ov60_021E866C(IntroMovieOvyData *data);
-void ov60_021E8724(BgConfig *bgConfig);
-void ov60_021E87FC(IntroMovieOvyData *data, IntroMovieScene2Data *sceneData);
+void IntroMovie_Scene2_InitBgs(IntroMovieOvyData *data);
+void IntroMovie_Scene2_LoadBgGfx(BgConfig *bgConfig);
+void IntroMovie_Scene2_LoadSpriteGfx(IntroMovieOvyData *data, IntroMovieScene2Data *sceneData);
 void IntroMovie_Scene2_DeleteSprites(IntroMovieOvyData *data, IntroMovieScene2Data *sceneData);
-void ov60_021E8978(IntroMovieOvyData *data, IntroMovieScene2Data *sceneData);
+void IntroMovie_Scene2_CreateSprites(IntroMovieOvyData *data, IntroMovieScene2Data *sceneData);
 void IntroMovie_Scene2_StartSpritePanEffect(IntroMovieScene2Data *sceneData, int whichSprites, int xSpeed, int ySpeed, int duration);
 BOOL IntroMovie_Scene2_WaitSpritePanEffect(IntroMovieScene2Data *sceneData, int whichSprites);
 void ov60_021E8B7C(SysTask *task, void *pVoid);
@@ -38,7 +38,7 @@ const int sIntroMovie_Scene2_FlowerSpriteAppearTiming[10] = {
     48,
 };
 
-const u8 _021EB138[4] = {2, 2, 2, 2};
+const u8 sIntroMovieScene2SpriteResCounts[4] = {2, 2, 2, 2};
 
 BOOL IntroMovie_Scene2(IntroMovieOvyData *data, void *pVoid) {
     IntroMovieScene2Data *sceneData = (IntroMovieScene2Data *)pVoid;
@@ -79,13 +79,13 @@ void IntroMovie_Scene2_Init(IntroMovieOvyData *data, IntroMovieScene2Data *scene
     sub_02022638();
     gSystem.screensFlipped = FALSE;
     GfGfx_SwapDisplay();
-    ov60_021E866C(data);
+    IntroMovie_Scene2_InitBgs(data);
     IntroMovie_InitBgAnimGxState(data);
     Main_SetVBlankIntrCB(IntroMovie_Scene2_VBlankCB, data);
-    ov60_021E8724(bgConfig);
+    IntroMovie_Scene2_LoadBgGfx(bgConfig);
     IntroMovie_RendererSetSurfaceCoords(data, 0, 0, 0, 0xC0);
-    ov60_021E87FC(data, sceneData);
-    ov60_021E8978(data, sceneData);
+    IntroMovie_Scene2_LoadSpriteGfx(data, sceneData);
+    IntroMovie_Scene2_CreateSprites(data, sceneData);
     IntroMovie_Scene2_InitFlyoverGrassBgScrollAnims(data, bgConfig);
     sceneData->needFreeGfx = 1;
 }
@@ -160,7 +160,7 @@ BOOL IntroMovie_Scene2_Main(IntroMovieOvyData *data, IntroMovieScene2Data *scene
         break;
     case 6:
         if (IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_MAIN_1) && IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_MAIN_0) && IntroMovie_Scene2_WaitSpritePanEffect(sceneData, 0) && IntroMovie_Scene2_WaitSpritePanEffect(sceneData, 1)) {
-            IntroMovie_BeginCirleWipeEffect(data, 1, 1, 8);
+            IntroMovie_BeginCircleWipeEffect(data, 1, 1, 8);
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
@@ -199,7 +199,7 @@ void IntroMovie_Scene2_Exit(IntroMovieOvyData *data, IntroMovieScene2Data *scene
     }
 }
 
-void ov60_021E866C(IntroMovieOvyData *data) {
+void IntroMovie_Scene2_InitBgs(IntroMovieOvyData *data) {
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     {
         GraphicsModes graphicsModes = {
@@ -284,7 +284,7 @@ void ov60_021E866C(IntroMovieOvyData *data) {
     }
 }
 
-void ov60_021E8724(BgConfig *bgConfig) {
+void IntroMovie_Scene2_LoadBgGfx(BgConfig *bgConfig) {
     GfGfxLoader_LoadCharData(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000033_NCGR_lz, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
     GfGfxLoader_LoadCharData(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000034_NCGR_lz, bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
     GfGfxLoader_LoadScrnData(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000035_NSCR_lz, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
@@ -297,8 +297,8 @@ void ov60_021E8724(BgConfig *bgConfig) {
     GfGfx_BothDispOn();
 }
 
-void ov60_021E87FC(IntroMovieOvyData *data, IntroMovieScene2Data *sceneData) {
-    IntroMovie_CreateSpriteResourceManagers(data, _021EB138);
+void IntroMovie_Scene2_LoadSpriteGfx(IntroMovieOvyData *data, IntroMovieScene2Data *sceneData) {
+    IntroMovie_CreateSpriteResourceManagers(data, sIntroMovieScene2SpriteResCounts);
     _2DGfxResMan **resMen = IntroMovie_GetSpriteResourceManagersArray(data);
     sceneData->spriteGfxRes[0][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(resMen[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000078_NCGR_lz, TRUE, 0, 3, HEAP_ID_INTRO_MOVIE);
     sceneData->spriteGfxRes[0][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(resMen[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000077_NCLR, FALSE, 0, 3, 1, HEAP_ID_INTRO_MOVIE);
@@ -333,10 +333,10 @@ void IntroMovie_Scene2_DeleteSprites(IntroMovieOvyData *data, IntroMovieScene2Da
     IntroMovie_DestroySpriteResourceManagers(data);
 }
 
-void ov60_021E8978(IntroMovieOvyData *data, IntroMovieScene2Data *sceneData) {
+void IntroMovie_Scene2_CreateSprites(IntroMovieOvyData *data, IntroMovieScene2Data *sceneData) {
     SpriteResourcesHeader spriteHeader;
     SpriteTemplate spriteTemplate;
-    u8 spC[10] = {
+    u8 anims[10] = {
         0, 1, 2, 3, 0, 1, 2, 3, 0, 1,
     };
 
@@ -348,7 +348,7 @@ void ov60_021E8978(IntroMovieOvyData *data, IntroMovieScene2Data *sceneData) {
         sceneData->flowerSprites[i] = CreateSprite(&spriteTemplate);
         Set2dSpriteAnimActiveFlag(sceneData->flowerSprites[i], FALSE);
         Set2dSpriteVisibleFlag(sceneData->flowerSprites[i], FALSE);
-        Set2dSpriteAnimSeqNo(sceneData->flowerSprites[i], spC[i]);
+        Set2dSpriteAnimSeqNo(sceneData->flowerSprites[i], anims[i]);
     }
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(1, data, 1, NNS_G2D_VRAM_TYPE_2DMAIN, &spriteTemplate, &spriteHeader);
@@ -398,7 +398,7 @@ void IntroMovie_Scene2_StartSpritePanEffect(IntroMovieScene2Data *sceneData, int
         spritePanEffect->sprite1 = sceneData->lyraSprite1;
         spritePanEffect->sprite2 = sceneData->lyraSprite2;
     }
-    GF_ASSERT(!spritePanCnt->active);
+    GF_ASSERT(!spritePanEffect->active);
     spritePanEffect->active = TRUE;
     spritePanEffect->duration = duration;
     spritePanEffect->counter = 0;

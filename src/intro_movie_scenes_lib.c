@@ -390,7 +390,7 @@ void IntroMovie_InitBgAnimGxState(IntroMovieOvyData *data) {
     }
 }
 
-void IntroMovie_BeginCirleWipeEffect(IntroMovieOvyData *data, int kind, int isTopScreen, int duration) {
+void IntroMovie_BeginCircleWipeEffect(IntroMovieOvyData *data, int kind, BOOL isTopScreen, int duration) {
     int winIn = 0x1F;
     IntroMovieCircleWipeEffect *effectData = &data->circleWipeEffect;
     BOOL setBrightnessNeutral = 0;
