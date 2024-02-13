@@ -1,7 +1,7 @@
-#include "gf_gfx_loader.h"
 #include "global.h"
 #include "intro_movie_internal.h"
 #include "system.h"
+#include "gf_gfx_loader.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
 #include "unk_020215A0.h"
@@ -16,6 +16,7 @@ void ov60_021E8D04(IntroMovieScene3Data *sceneData, BgConfig *bgConfig);
 void ov60_021E9580(IntroMovieOvyData *data);
 void ov60_021E9638(BgConfig *bgConfig, IntroMovieScene3Data *sceneData);
 void ov60_021E9768(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData);
+void ov60_021E9878(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData);
 void ov60_021E98C0(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData);
 void ov60_021E9BFC(void);
 void ov60_021E99B8(IntroMovieScene3Data *sceneData);
@@ -134,11 +135,11 @@ BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *scene
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
-    case 7:
+    case 7:  // uhhh
         IntroMovie_BeginCircleWipeEffect(data, 2, FALSE, 8);
         IntroMovie_AdvanceSceneStep(data);
         break;
-    case 8:
+    case 8:  // kill me now
         if (IntroMovie_WaitCircleWipeEffect(data)) {
             IntroMovie_AdvanceSceneStep(data);
         }
@@ -323,4 +324,35 @@ BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *scene
     }
 
     return FALSE;
+}
+
+void IntroMovie_Scene3_Exit(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData) {
+    u8 i, j;
+    BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
+    Main_SetVBlankIntrCB(NULL, NULL);
+    if (sceneData->unk_001) {
+        Camera_UnsetStaticPtr();
+        Camera_Delete(sceneData->unk_080);
+        for (i = 0; i < 3; ++i) {
+            for (j = 0; j < 2; ++j) {
+                NNS_G3dFreeAnmObj(&sceneData->unk_1C0, sceneData->unk_084[i].unk_60[j]);
+                FreeToHeap(sceneData->unk_084[i].unk_58[j]);
+            }
+            FreeToHeap(sceneData->unk_084[i].unk_54);
+        }
+        GF_3DVramMan_Delete(sceneData->unk_1BC);
+        for (i = 0; i < 4; ++i) {
+            FreeToHeap(sceneData->unk_004[i]);
+        }
+        for (i = 0; i < 3; ++i) {
+            FreeToHeap(sceneData->unk_018[i]);
+        }
+        FreeToHeap(sceneData->unk_014);
+        ov60_021E9878(data, sceneData);
+        FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_SUB_0);
+        FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_SUB_1);
+        FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_SUB_2);
+        FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_SUB_3);
+        sceneData->unk_001 = FALSE;
+    }
 }

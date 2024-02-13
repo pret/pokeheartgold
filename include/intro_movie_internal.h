@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_INTRO_MOVIE_INTERNAL
 #define POKEHEARTGOLD_INTRO_MOVIE_INTERNAL
 
+#include "camera.h"
 #include "bg_window.h"
 #include "sys_task.h"
 #include "gf_3d_vramman.h"
@@ -49,12 +50,21 @@ typedef struct IntroMovieScene2Data {
     IntroMovieScene2SpritePanController spritePanCnt[2];
 } IntroMovieScene2Data;
 
+typedef struct IntroMovieScene3Sub_084 {
+    u8 filler_00[0x54];
+    void *unk_54;
+    void *unk_58[2];
+    NNSG3dAnmObj *unk_60[2];
+} IntroMovieScene3Sub_084;
+
 typedef struct IntroMovieScene3Data {
     u8 state;
     u8 unk_001;
     u8 unk_002;
     u8 unk_003;
-    u8 filler_004[0x20];
+    void *unk_004[4];
+    void *unk_014;
+    void *unk_018[3];
     NNSG2dScreenData *unk_024[4];
     NNSG2dScreenData *unk_034;
     NNSG2dScreenData *unk_038;
@@ -66,9 +76,11 @@ typedef struct IntroMovieScene3Data {
     Sprite *unk_06C;
     Sprite *unk_070;
     Sprite *unk_074;
-    u8 filler_078[0x144];
+    u8 filler_078[0x8];
+    Camera *unk_080;
+    IntroMovieScene3Sub_084 unk_084[3];
     GF3DVramMan *unk_1BC;
-    u8 filler_1C0[0x10];
+    NNSFndAllocator unk_1C0;
     int unk_1D0;
 } IntroMovieScene3Data; // size: 0x1D4
 
