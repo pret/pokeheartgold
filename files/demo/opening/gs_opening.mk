@@ -109,3 +109,4 @@ GSOPENING_FILES := \
 	files/demo/opening/gs_opening/gs_opening_00000105.NSBTA
 
 $(GSOPENING_NARC): $(GSOPENING_FILES)
+FS_CLEAN_TARGETS += $(GSOPENING_NARC) $(filter %.lz,$(GSOPENING_FILES))
