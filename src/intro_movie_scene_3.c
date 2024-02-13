@@ -2,6 +2,7 @@
 #include "intro_movie_internal.h"
 #include "system.h"
 #include "gf_gfx_loader.h"
+#include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
 #include "unk_020215A0.h"
@@ -10,9 +11,9 @@
 
 void IntroMovie_Scene3_VBlankCB(void *pVoid);
 void IntroMovie_Scene3_Init(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData);
+void ov60_021E8D04(IntroMovieScene3Data *sceneData, BgConfig *bgConfig);
 BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData, int a2);
 void IntroMovie_Scene3_Exit(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData);
-void ov60_021E8D04(IntroMovieScene3Data *sceneData, BgConfig *bgConfig);
 void ov60_021E9580(IntroMovieOvyData *data);
 void ov60_021E9638(BgConfig *bgConfig, IntroMovieScene3Data *sceneData);
 void ov60_021E9768(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData);
@@ -22,6 +23,8 @@ void ov60_021E9BFC(void);
 void ov60_021E99B8(IntroMovieScene3Data *sceneData);
 void ov60_021E9B60(IntroMovieScene3Data *sceneData);
 void ov60_021E9C84(u8 a0);
+
+extern const u8 _021EB1F4[4];
 
 BOOL IntroMovie_Scene3(IntroMovieOvyData *data, void *pVoid) {
     IntroMovieScene3Data *sceneData = (IntroMovieScene3Data *)pVoid;
@@ -237,7 +240,7 @@ BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *scene
             IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->unk_068, TRUE);
         }
         if (stepTimer == 145) {
-            IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->unk_06C, TRUE);
+            IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->unk_06C[0], TRUE);
         }
         if (stepTimer >= 145) {
             extern const IntroMovieBgWindowAnimParam _021EB4A4;
@@ -259,7 +262,7 @@ BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *scene
         }
         break;
     case 19:
-        IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->unk_070, TRUE);
+        IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->unk_06C[1], TRUE);
         if (stepTimer >= 10) {
             extern const IntroMovieBgWindowAnimParam _021EB4FC;
             IntroMovieBgWindowAnimParam sp098 = _021EB4FC;
@@ -276,9 +279,9 @@ BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *scene
             extern const IntroMovieBgWindowAnimParam _021EB528;
             IntroMovieBgWindowAnimParam sp06C = _021EB528;
             IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 0, 0, &sp06C);
-            BG_LoadScreenTilemapData(bgConfig, GF_BG_LYR_SUB_1, sceneData->unk_038->rawData, sceneData->unk_038->szByte);
-            BG_LoadScreenTilemapData(bgConfig, GF_BG_LYR_SUB_2, sceneData->unk_03C->rawData, sceneData->unk_03C->szByte);
-            BG_LoadScreenTilemapData(bgConfig, GF_BG_LYR_SUB_3, sceneData->unk_040->rawData, sceneData->unk_040->szByte);
+            BG_LoadScreenTilemapData(bgConfig, GF_BG_LYR_SUB_1, sceneData->unk_038[0]->rawData, sceneData->unk_038[0]->szByte);
+            BG_LoadScreenTilemapData(bgConfig, GF_BG_LYR_SUB_2, sceneData->unk_038[1]->rawData, sceneData->unk_038[1]->szByte);
+            BG_LoadScreenTilemapData(bgConfig, GF_BG_LYR_SUB_3, sceneData->unk_038[2]->rawData, sceneData->unk_038[2]->szByte);
             ScheduleBgTilemapBufferTransfer(bgConfig, GF_BG_LYR_SUB_1);
             ScheduleBgTilemapBufferTransfer(bgConfig, GF_BG_LYR_SUB_2);
             ScheduleBgTilemapBufferTransfer(bgConfig, GF_BG_LYR_SUB_3);
@@ -294,7 +297,7 @@ BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *scene
         }
         break;
     case 21:
-        IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->unk_074, TRUE);
+        IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->unk_06C[2], TRUE);
         if (stepTimer >= 30) {
             extern const IntroMovieBgWindowAnimParam _021EB370;
             IntroMovieBgWindowAnimParam sp040 = _021EB370;
@@ -354,5 +357,153 @@ void IntroMovie_Scene3_Exit(IntroMovieOvyData *data, IntroMovieScene3Data *scene
         FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_SUB_2);
         FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_SUB_3);
         sceneData->unk_001 = FALSE;
+    }
+}
+
+void ov60_021E9580(IntroMovieOvyData *data) {
+    BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
+
+    {
+        extern const GraphicsModes _021EB268;
+        GraphicsModes graphicsModes = _021EB268;
+        SetBothScreensModesAndDisable(&graphicsModes);
+    }
+    {
+        extern const BgTemplate _021EB2DC;
+        BgTemplate bgTemplate = _021EB2DC;
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_0, &bgTemplate, 0);
+    }
+    {
+        extern const BgTemplate _021EB2F8;
+        BgTemplate bgTemplate = _021EB2F8;
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_1, &bgTemplate, 0);
+    }
+    {
+        extern const BgTemplate _021EB314;
+        BgTemplate bgTemplate = _021EB314;
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_2, &bgTemplate, 0);
+    }
+    {
+        extern const BgTemplate _021EB330;
+        BgTemplate bgTemplate = _021EB330;
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_3, &bgTemplate, 0);
+    }
+}
+
+void ov60_021E9638(BgConfig *bgConfig, IntroMovieScene3Data *sceneData) {
+    int sp20[4];
+    {
+    extern const int _021EB288[4];
+    struct _s {
+        int _f[4];
+    };
+    *(struct _s *)sp20 = *(struct _s *)_021EB288;
+    }
+    int sp14[3];
+    {
+    extern const int _021EB25C[3];
+    struct _s {
+        int _f[3];
+    };
+    *(struct _s *)sp14 = *(struct _s *)_021EB25C;
+    }
+    u8 i;
+
+    GfGfxLoader_LoadCharData(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000040_NCGR_lz, bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_LoadScrnData(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000046_NSCR_lz, bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
+
+    for (i = 0; i < 4; ++i) {
+        sceneData->unk_004[i] = GfGfxLoader_GetScrnData(NARC_demo_opening_gs_opening, sp20[i], TRUE, &sceneData->unk_024[i], HEAP_ID_INTRO_MOVIE);
+    }
+
+    for (i = 0; i < 3; ++i) {
+        sceneData->unk_018[i] = GfGfxLoader_GetScrnData(NARC_demo_opening_gs_opening, sp14[i], TRUE, &sceneData->unk_038[i], HEAP_ID_INTRO_MOVIE);
+    }
+
+    sceneData->unk_014 = GfGfxLoader_GetScrnData(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000047_NSCR_lz, TRUE, &sceneData->unk_034, HEAP_ID_INTRO_MOVIE);
+    BgCopyOrUncompressTilemapBufferRangeToVram(bgConfig, GF_BG_LYR_SUB_0, sceneData->unk_024[0]->rawData, sceneData->unk_024[0]->szByte, 0);
+    GfGfxLoader_LoadScrnData(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000048_NSCR_lz, bgConfig, GF_BG_LYR_SUB_1, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_LoadScrnData(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000049_NSCR_lz, bgConfig, GF_BG_LYR_SUB_2, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_GXLoadPal(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000039_NCLR, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0, 0x200, HEAP_ID_INTRO_MOVIE);
+    OS_WaitIrq(TRUE, OS_IE_V_BLANK);
+    GfGfx_BothDispOn();
+}
+
+void ov60_021E9768(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData) {
+    IntroMovie_CreateSpriteResourceManagers(data, _021EB1F4);
+    _2DGfxResMan **resMen = IntroMovie_GetSpriteResourceManagersArray(data);
+
+    sceneData->unk_044[0][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(resMen[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000066_NCGR_lz, TRUE, 2, 2, HEAP_ID_INTRO_MOVIE);
+    sceneData->unk_044[0][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(resMen[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000065_NCLR, FALSE, 2, 2, 1, HEAP_ID_INTRO_MOVIE);
+    sceneData->unk_044[0][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(resMen[GF_GFX_RES_TYPE_CELL], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000068_NCER_lz, TRUE, 2, GF_GFX_RES_TYPE_CELL, HEAP_ID_INTRO_MOVIE);
+    sceneData->unk_044[0][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromNarc(resMen[GF_GFX_RES_TYPE_ANIM], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000067_NANR_lz, TRUE, 2, GF_GFX_RES_TYPE_ANIM, HEAP_ID_INTRO_MOVIE);
+
+    sceneData->unk_044[1][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(resMen[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000070_NCGR_lz, TRUE, 3, 2, HEAP_ID_INTRO_MOVIE);
+    sceneData->unk_044[1][GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(resMen[GF_GFX_RES_TYPE_PLTT], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000069_NCLR, FALSE, 3, 2, 2, HEAP_ID_INTRO_MOVIE);
+    sceneData->unk_044[1][GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(resMen[GF_GFX_RES_TYPE_CELL], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000072_NCER_lz, TRUE, 3, GF_GFX_RES_TYPE_CELL, HEAP_ID_INTRO_MOVIE);
+    sceneData->unk_044[1][GF_GFX_RES_TYPE_ANIM] = AddCellOrAnimResObjFromNarc(resMen[GF_GFX_RES_TYPE_ANIM], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000071_NANR_lz, TRUE, 3, GF_GFX_RES_TYPE_ANIM, HEAP_ID_INTRO_MOVIE);
+
+    for (u8 i = 0; i < 2; ++i) {
+        sub_0200ACF0(sceneData->unk_044[i][GF_GFX_RES_TYPE_CHAR]);
+        sub_0200AF94(sceneData->unk_044[i][GF_GFX_RES_TYPE_PLTT]);
+    }
+
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
+}
+
+void ov60_021E9878(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData) {
+    Sprite_Delete(sceneData->unk_064);
+    Sprite_Delete(sceneData->unk_068);
+    Sprite_Delete(sceneData->unk_06C[0]);
+    Sprite_Delete(sceneData->unk_06C[1]);
+    Sprite_Delete(sceneData->unk_06C[2]);
+
+    for (u8 i = 0; i < 2; ++i) {
+        sub_0200AEB0(sceneData->unk_044[i][GF_GFX_RES_TYPE_CHAR]);
+        sub_0200B0A8(sceneData->unk_044[i][GF_GFX_RES_TYPE_PLTT]);
+    }
+    IntroMovie_DestroySpriteResourceManagers(data);
+}
+
+void ov60_021E98C0(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData) {
+    SpriteResourcesHeader header;
+    SpriteTemplate template;
+    int sp18[3];
+    int sp0C[3];
+
+    {
+        struct _s {
+            int _f[3];
+        };
+        extern const int _021EB214[3];
+        extern const int _021EB220[3];
+        *(struct _s *)sp18 = *(struct _s *)_021EB214;
+        *(struct _s *)sp0C = *(struct _s *)_021EB220;
+    }
+
+    IntroMovie_BuildSpriteResourcesHeaderAndTemplate(2, data, 0, NNS_G2D_VRAM_TYPE_2DSUB, &template, &header);
+    template.position.x = 128 * FX32_ONE;
+    template.position.y = 608 * FX32_ONE;
+    sceneData->unk_064 = CreateSprite(&template);
+    Set2dSpriteAnimActiveFlag(sceneData->unk_064, FALSE);
+    Set2dSpriteVisibleFlag(sceneData->unk_064, FALSE);
+    Set2dSpriteAnimSeqNo(sceneData->unk_064, 0);
+
+    IntroMovie_BuildSpriteResourcesHeaderAndTemplate(3, data, 0, NNS_G2D_VRAM_TYPE_2DSUB, &template, &header);
+    template.position.x = 32 * FX32_ONE;
+    template.position.y = 608 * FX32_ONE;
+    sceneData->unk_068 = CreateSprite(&template);
+    Set2dSpriteAnimActiveFlag(sceneData->unk_068, FALSE);
+    Set2dSpriteVisibleFlag(sceneData->unk_068, FALSE);
+    Set2dSpriteAnimSeqNo(sceneData->unk_068, 0);
+
+    for (int i = 0; i < 3; ++i) {
+        IntroMovie_BuildSpriteResourcesHeaderAndTemplate(3, data, 0, NNS_G2D_VRAM_TYPE_2DSUB, &template, &header);
+        template.position.x = 128 * FX32_ONE;
+        template.position.y = sp18[i] * FX32_ONE;
+        sceneData->unk_06C[i] = CreateSprite(&template);
+        Set2dSpriteAnimActiveFlag(sceneData->unk_06C[i], FALSE);
+        Set2dSpriteVisibleFlag(sceneData->unk_06C[i], FALSE);
+        Set2dSpriteAnimSeqNo(sceneData->unk_06C[i], sp0C[i]);
     }
 }

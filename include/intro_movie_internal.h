@@ -67,15 +67,11 @@ typedef struct IntroMovieScene3Data {
     void *unk_018[3];
     NNSG2dScreenData *unk_024[4];
     NNSG2dScreenData *unk_034;
-    NNSG2dScreenData *unk_038;
-    NNSG2dScreenData *unk_03C;
-    NNSG2dScreenData *unk_040;
-    u8 filler_044[0x20];
+    NNSG2dScreenData *unk_038[3];
+    _2DGfxResObj *unk_044[2][4];
     Sprite *unk_064;
     Sprite *unk_068;
-    Sprite *unk_06C;
-    Sprite *unk_070;
-    Sprite *unk_074;
+    Sprite *unk_06C[3];
     u8 filler_078[0x8];
     Camera *unk_080;
     IntroMovieScene3Sub_084 unk_084[3];
