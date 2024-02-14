@@ -21,15 +21,22 @@ void ov60_021E9638(BgConfig *bgConfig, IntroMovieScene3Data *sceneData);
 void ov60_021E9768(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData);
 void ov60_021E9878(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData);
 void ov60_021E98C0(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData);
-void ov60_021E9BFC(void);
 void ov60_021E99B8(IntroMovieScene3Data *sceneData);
 void ov60_021E9B60(IntroMovieScene3Data *sceneData);
+void ov60_021E9BFC(void);
 void ov60_021E9C84(u8 a0);
 
 extern const u8 _021EB1F4[4];
 extern const int _021EB22C[3];
 extern const int _021EB2C4[3][2];
 extern const CameraAngle _021EB29C;
+extern const GXRgb _021EB278[8];
+extern const VecFx32 _021EB554[3][4];
+extern const GXRgb _021EB2AC[3][4];
+extern const GXRgb _021EB202[3];
+extern const GXRgb _021EB208[3];
+extern const GXRgb _021EB1FC[3];
+extern const GXRgb _021EB20E[3];
 
 BOOL IntroMovie_Scene3(IntroMovieOvyData *data, void *pVoid) {
     IntroMovieScene3Data *sceneData = (IntroMovieScene3Data *)pVoid;
@@ -571,4 +578,26 @@ void ov60_021E9B60(IntroMovieScene3Data *sceneData) {
         Draw3dModel(&sceneData->unk_084[r1].unk_00, &sp00, &sp18, &sp0C);
         sub_02026E50(0, 1);
     }
+}
+
+void ov60_021E9BFC(void) {
+    G2_SetBG0Priority(0);
+    G3X_SetShading(GX_SHADING_TOON);
+    G3X_AntiAlias(TRUE);
+    G3X_AlphaTest(FALSE, 0);
+    G3X_AlphaBlend(TRUE);
+    G3X_EdgeMarking(TRUE);
+    G3X_SetEdgeColorTable(_021EB278);
+    G3X_SetFog(FALSE, GX_FOGBLEND_COLOR_ALPHA, GX_FOGSLOPE_0x8000, 0);
+    G3X_SetClearColor(RGB_BLACK, 0, 0x7FFF, 0x3F, FALSE);
+    G3_ViewPort(0, 0, 255, 191);
+}
+
+void ov60_021E9C84(u8 a0) {
+    for (u8 i = 0; i < 4; ++i) {
+        NNS_G3dGlbLightVector((GXLightId)i, _021EB554[a0][i].x, _021EB554[a0][i].y, _021EB554[a0][i].z);
+        NNS_G3dGlbLightColor((GXLightId)i, _021EB2AC[a0][i]);
+    }
+    NNS_G3dGlbMaterialColorDiffAmb(_021EB202[a0], _021EB208[a0], FALSE);
+    NNS_G3dGlbMaterialColorSpecEmi(_021EB1FC[a0], _021EB20E[a0], FALSE);
 }
