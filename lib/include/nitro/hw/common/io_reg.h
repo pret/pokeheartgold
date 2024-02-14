@@ -1370,4 +1370,66 @@
     ((u32)(tme) << REG_G3X_DISP3DCNT_TME_SHIFT))
 #endif
 
+/* POLYGON_ATTR */
+
+#define REG_G3_POLYGON_ATTR_ID_SHIFT                       24
+#define REG_G3_POLYGON_ATTR_ID_SIZE                        6
+#define REG_G3_POLYGON_ATTR_ID_MASK                        0x3f000000
+
+#define REG_G3_POLYGON_ATTR_ALPHA_SHIFT                    16
+#define REG_G3_POLYGON_ATTR_ALPHA_SIZE                     5
+#define REG_G3_POLYGON_ATTR_ALPHA_MASK                     0x001f0000
+
+#define REG_G3_POLYGON_ATTR_FE_SHIFT                       15
+#define REG_G3_POLYGON_ATTR_FE_SIZE                        1
+#define REG_G3_POLYGON_ATTR_FE_MASK                        0x00008000
+
+#define REG_G3_POLYGON_ATTR_DT_SHIFT                       14
+#define REG_G3_POLYGON_ATTR_DT_SIZE                        1
+#define REG_G3_POLYGON_ATTR_DT_MASK                        0x00004000
+
+#define REG_G3_POLYGON_ATTR_D1_SHIFT                       13
+#define REG_G3_POLYGON_ATTR_D1_SIZE                        1
+#define REG_G3_POLYGON_ATTR_D1_MASK                        0x00002000
+
+#define REG_G3_POLYGON_ATTR_FC_SHIFT                       12
+#define REG_G3_POLYGON_ATTR_FC_SIZE                        1
+#define REG_G3_POLYGON_ATTR_FC_MASK                        0x00001000
+
+#define REG_G3_POLYGON_ATTR_XL_SHIFT                       11
+#define REG_G3_POLYGON_ATTR_XL_SIZE                        1
+#define REG_G3_POLYGON_ATTR_XL_MASK                        0x00000800
+
+#define REG_G3_POLYGON_ATTR_FR_SHIFT                       7
+#define REG_G3_POLYGON_ATTR_FR_SIZE                        1
+#define REG_G3_POLYGON_ATTR_FR_MASK                        0x00000080
+
+#define REG_G3_POLYGON_ATTR_BK_SHIFT                       6
+#define REG_G3_POLYGON_ATTR_BK_SIZE                        1
+#define REG_G3_POLYGON_ATTR_BK_MASK                        0x00000040
+
+#define REG_G3_POLYGON_ATTR_PM_SHIFT                       4
+#define REG_G3_POLYGON_ATTR_PM_SIZE                        2
+#define REG_G3_POLYGON_ATTR_PM_MASK                        0x00000030
+
+#define REG_G3_POLYGON_ATTR_LE_SHIFT                       0
+#define REG_G3_POLYGON_ATTR_LE_SIZE                        4
+#define REG_G3_POLYGON_ATTR_LE_MASK                        0x0000000f
+
+#ifndef SDK_ASM
+#define REG_G3_POLYGON_ATTR_FIELD( id, alpha, fe, dt, d1, fc, xl, fr, bk, pm, le ) \
+    (u32)( \
+    ((u32)(id) << REG_G3_POLYGON_ATTR_ID_SHIFT) | \
+    ((u32)(alpha) << REG_G3_POLYGON_ATTR_ALPHA_SHIFT) | \
+    ((u32)(fe) << REG_G3_POLYGON_ATTR_FE_SHIFT) | \
+    ((u32)(dt) << REG_G3_POLYGON_ATTR_DT_SHIFT) | \
+    ((u32)(d1) << REG_G3_POLYGON_ATTR_D1_SHIFT) | \
+    ((u32)(fc) << REG_G3_POLYGON_ATTR_FC_SHIFT) | \
+    ((u32)(xl) << REG_G3_POLYGON_ATTR_XL_SHIFT) | \
+    ((u32)(fr) << REG_G3_POLYGON_ATTR_FR_SHIFT) | \
+    ((u32)(bk) << REG_G3_POLYGON_ATTR_BK_SHIFT) | \
+    ((u32)(pm) << REG_G3_POLYGON_ATTR_PM_SHIFT) | \
+    ((u32)(le) << REG_G3_POLYGON_ATTR_LE_SHIFT))
+#endif
+
 #endif //NITRO_HW_IO_REG_SHARED_H_

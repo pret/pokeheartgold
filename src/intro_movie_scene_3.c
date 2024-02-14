@@ -5,9 +5,11 @@
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
+#include "unk_0201F4C4.h"
 #include "unk_020215A0.h"
 #include "unk_02022588.h"
 #include "demo/opening/gs_opening.naix"
+#include "unk_02026E30.h"
 
 void IntroMovie_Scene3_VBlankCB(void *pVoid);
 void IntroMovie_Scene3_Init(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData);
@@ -25,6 +27,9 @@ void ov60_021E9B60(IntroMovieScene3Data *sceneData);
 void ov60_021E9C84(u8 a0);
 
 extern const u8 _021EB1F4[4];
+extern const int _021EB22C[3];
+extern const int _021EB2C4[3][2];
+extern const CameraAngle _021EB29C;
 
 BOOL IntroMovie_Scene3(IntroMovieOvyData *data, void *pVoid) {
     IntroMovieScene3Data *sceneData = (IntroMovieScene3Data *)pVoid;
@@ -505,5 +510,65 @@ void ov60_021E98C0(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData) {
         Set2dSpriteAnimActiveFlag(sceneData->unk_06C[i], FALSE);
         Set2dSpriteVisibleFlag(sceneData->unk_06C[i], FALSE);
         Set2dSpriteAnimSeqNo(sceneData->unk_06C[i], sp0C[i]);
+    }
+}
+
+void ov60_021E99B8(IntroMovieScene3Data *sceneData) {
+    u8 j, i;
+    NARC *narc = NARC_New(NARC_demo_opening_gs_opening, HEAP_ID_INTRO_MOVIE);
+    GF_ExpHeap_FndInitAllocator(&sceneData->unk_1C0, HEAP_ID_INTRO_MOVIE, 4);
+    for (i = 0; i < 3; ++i) {
+        NNSG3dResMdl *sp28;
+        sceneData->unk_084[i].unk_54 = NARC_AllocAndReadWholeMember(narc, _021EB22C[i], HEAP_ID_INTRO_MOVIE);
+        sub_0201F51C(&sceneData->unk_084[i].unk_00, &sp28, &sceneData->unk_084[i].unk_54);
+        NNSG3dResTex *sp14 = NNS_G3dGetTex(sceneData->unk_084[i].unk_54);
+        NNS_G3dMdlUseGlbDiff(sp28);
+        NNS_G3dMdlUseGlbAmb(sp28);
+        NNS_G3dMdlUseGlbSpec(sp28);
+        NNS_G3dMdlUseGlbEmi(sp28);
+        NNS_G3dMdlUseGlbLightEnableFlag(sp28);
+        for (j = 0; j < 2; ++j) {
+            sceneData->unk_084[i].unk_58[j] = NARC_AllocAndReadWholeMember(narc, _021EB2C4[i][j], HEAP_ID_INTRO_MOVIE);
+            NNSG3dAnmObj *sp24 = NNS_G3dGetAnmByIdx(sceneData->unk_084[i].unk_58[j], 0);
+            sceneData->unk_084[i].unk_60[j] = NNS_G3dAllocAnmObj(&sceneData->unk_1C0, sp24, sp28);
+            NNS_G3dAnmObjInit(sceneData->unk_084[i].unk_60[j], sp24, sp28, sp14);
+            NNS_G3dRenderObjAddAnmObj(&sceneData->unk_084[i].unk_00, sceneData->unk_084[i].unk_60[j]);
+        }
+    }
+    NARC_Delete(narc);
+
+    sceneData->unk_080 = Camera_New(HEAP_ID_INTRO_MOVIE);
+
+    extern const VecFx32 _021EB238;
+    VecFx32 sp2C = _021EB238;
+    Camera_Init_FromTargetDistanceAndAngle(&sp2C, FX32_CONST(410.922119140625), &_021EB29C, 0x5C1, 0, FALSE, sceneData->unk_080);
+    Camera_SetPerspectiveAngle(0x981, sceneData->unk_080);
+    Camera_SetStaticPtr(sceneData->unk_080);
+    NNS_G3dGlbPolygonAttr(5, GX_POLYGONMODE_MODULATE, GX_CULL_BACK, 0, 0x1F, 0x8000);
+}
+
+void ov60_021E9B60(IntroMovieScene3Data *sceneData) {
+    u8 i, r1;
+    extern const MtxFx33 _021EB34C;
+    MtxFx33 sp18 = _021EB34C;
+
+    extern const VecFx32 _021EB244;
+    VecFx32 sp0C = _021EB244;
+
+    VecFx32 sp00 = {0, 0, 0};
+
+    int r4 = sceneData->unk_1D0;
+    if (r4 != 0xFFFF) {
+        Thunk_G3X_Reset();
+        Camera_PushLookAtToNNSGlb();
+        r1 = (u8)r4; // todo: is this an inline?
+        for (i = 0; i < 2; ++i) {
+            fx32 frame = sceneData->unk_084[r1].unk_60[i]->frame + FX32_ONE;
+            if (frame < NNS_G3dAnmObjGetNumFrame(sceneData->unk_084[r1].unk_60[i])) {
+                sceneData->unk_084[r1].unk_60[i]->frame = frame;
+            }
+        }
+        Draw3dModel(&sceneData->unk_084[r1].unk_00, &sp00, &sp18, &sp0C);
+        sub_02026E50(0, 1);
     }
 }

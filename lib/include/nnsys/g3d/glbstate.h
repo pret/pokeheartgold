@@ -1,6 +1,9 @@
 #ifndef NNSYS_G3D_GLBSTATE_H_
 #define NNSYS_G3D_GLBSTATE_H_
 
+#include <nitro.h>
+#include <nnsys/g3d/kernel.h>
+
 typedef enum {
     NNS_G3D_GLB_FLAG_FLUSH_WVP              = 0x00000001,
     NNS_G3D_GLB_FLAG_FLUSH_VP               = 0x00000002,
@@ -59,5 +62,6 @@ void NNS_G3dGlbLightVector(GXLightId lightID, fx16 x, fx16 y, fx16 z);
 void NNS_G3dGlbLightColor(GXLightId lightID, GXRgb rgb);
 void NNS_G3dGlbMaterialColorDiffAmb(GXRgb diffuse, GXRgb ambient, BOOL IsSetVtxColor);
 void NNS_G3dGlbMaterialColorSpecEmi(GXRgb specular, GXRgb emission, BOOL IsShininess);
+void NNS_G3dGlbPolygonAttr(int light, GXPolygonMode polyMode, GXCull cullMode, int polygonID, int alpha, int misc /* GXPolygonAttrMisc */);
 
 #endif //NNSYS_G3D_GLBSTATE_H_

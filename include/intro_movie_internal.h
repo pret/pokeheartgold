@@ -51,8 +51,8 @@ typedef struct IntroMovieScene2Data {
 } IntroMovieScene2Data;
 
 typedef struct IntroMovieScene3Sub_084 {
-    u8 filler_00[0x54];
-    void *unk_54;
+    NNSG3dRenderObj unk_00;
+    NNSG3dResFileHeader *unk_54;
     void *unk_58[2];
     NNSG3dAnmObj *unk_60[2];
 } IntroMovieScene3Sub_084;

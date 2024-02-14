@@ -149,4 +149,18 @@ typedef enum {
 
 #define GX_PACK_VIEWPORT_PARAM(x1, y1, x2, y2)  ((u32)((x1) | ((y1) << 8) | ((x2) << 16) | ((y2) << 24)))
 
+typedef enum {
+    GX_POLYGONMODE_MODULATE = 0,
+    GX_POLYGONMODE_DECAL = 1,
+    GX_POLYGONMODE_TOON = 2,
+    GX_POLYGONMODE_SHADOW = 3
+} GXPolygonMode;
+
+typedef enum {
+    GX_CULL_ALL = 0,
+    GX_CULL_FRONT = 1,
+    GX_CULL_BACK = 2,
+    GX_CULL_NONE = 3
+} GXCull;
+
 #endif //NITRO_GX_G3_H_

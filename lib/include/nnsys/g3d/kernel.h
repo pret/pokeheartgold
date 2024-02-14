@@ -1,6 +1,10 @@
 #ifndef NNSYS_G3D_KERNEL_H_
 #define NNSYS_G3D_KERNEL_H_
 
+#include <nitro/fx/fx.h>
+#include <nnsys/g3d/config.h>
+#include <nnsys/g3d/binres/res_struct.h>
+
 typedef struct NNSG3dAnmObj_ {
     fx32 frame;
     fx32 ratio;
