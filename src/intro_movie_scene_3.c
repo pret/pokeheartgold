@@ -26,17 +26,92 @@ void ov60_021E9B60(IntroMovieScene3Data *sceneData);
 void ov60_021E9BFC(void);
 void ov60_021E9C84(u8 a0);
 
-extern const u8 _021EB1F4[4];
-extern const int _021EB22C[3];
-extern const int _021EB2C4[3][2];
-extern const CameraAngle _021EB29C;
-extern const GXRgb _021EB278[8];
-extern const VecFx32 _021EB554[3][4];
-extern const GXRgb _021EB2AC[3][4];
-extern const GXRgb _021EB202[3];
-extern const GXRgb _021EB208[3];
-extern const GXRgb _021EB1FC[3];
-extern const GXRgb _021EB20E[3];
+const u8 _021EB1F4[4] = {2, 2, 2, 2};
+const int _021EB22C[3] = {
+    NARC_gs_opening_gs_opening_00000103_NSBMD,
+    NARC_gs_opening_gs_opening_00000100_NSBMD,
+    NARC_gs_opening_gs_opening_00000097_NSBMD,
+};
+const int _021EB2C4[3][2] = {
+    {
+        NARC_gs_opening_gs_opening_00000104_NSBCA,
+        NARC_gs_opening_gs_opening_00000105_NSBTA,
+    }, {
+        NARC_gs_opening_gs_opening_00000101_NSBCA,
+        NARC_gs_opening_gs_opening_00000102_NSBTA,
+    }, {
+        NARC_gs_opening_gs_opening_00000098_NSBCA,
+        NARC_gs_opening_gs_opening_00000099_NSBTA,
+    }
+};
+const CameraAngle _021EB29C[2] = {
+    {
+        0xd602,
+        0x0000,
+        0x0000
+    }, {
+        0x0000,
+        0x05C1,
+        0x0000
+}
+};
+const GXRgb _021EB278[8] = {
+    RGB(0, 0, 0),
+    RGB(4, 4, 4),
+    RGB(4, 4, 4),
+    RGB(4, 4, 4),
+    RGB(4, 4, 4),
+    RGB(4, 4, 4),
+    RGB(4, 4, 4),
+    RGB(4, 4, 4),
+};
+const VecFx32 _021EB554[3][4] = {
+    {
+        {FX32_CONST(-0.46923828125), FX32_CONST(-0.8662109375), FX32_CONST(-0.072265625)},
+        {0, 0, 0},
+        {0, 0, FX32_ONE},
+        {0, 0, FX32_ONE},
+    }, {
+        {FX32_CONST(-0.46728515625), FX32_CONST(-0.8662109375), FX32_CONST(-0.072265625)},
+        {0, 0, 0},
+        {0, 0, FX32_ONE},
+        {0, 0, FX32_ONE},
+    }, {
+        {FX32_CONST(-0.46728515625), FX32_CONST(-0.8662109375), FX32_CONST(-0.072265625)},
+        {0, 0, 0},
+        {0, 0, FX32_ONE},
+        {0, 0, FX32_ONE},
+    },
+};
+const GXRgb _021EB2AC[3][4] = {
+    {
+        RGB(22, 22, 20), RGB(0, 0, 0), RGB(0, 4, 9), RGB(0, 0, 0)
+    }, {
+        RGB(11, 11, 16), RGB(0, 0, 0), RGB(18, 10, 0), RGB(0, 0, 0)
+    }, {
+        RGB(19, 16, 12), RGB(0, 0, 0), RGB(16, 6, 0), RGB(0, 0, 0)
+    },
+};
+const GXRgb _021EB202[3] = {
+    RGB(15, 15, 15),
+    RGB(14, 14, 16),
+    RGB(15, 15, 15),
+};
+const GXRgb _021EB208[3] = {
+    RGB(9, 11, 11),
+    RGB(10, 10, 10),
+    RGB(11, 12, 12),
+};
+const GXRgb _021EB1FC[3] = {
+    RGB(16, 16, 17),
+    RGB(14, 14, 16),
+    RGB(17, 17, 17),
+};
+const GXRgb _021EB20E[3] = {
+    RGB(14, 14, 14),
+    RGB(8, 8, 11),
+    RGB(8, 8, 7),
+};
 
 BOOL IntroMovie_Scene3(IntroMovieOvyData *data, void *pVoid) {
     IntroMovieScene3Data *sceneData = (IntroMovieScene3Data *)pVoid;
@@ -160,15 +235,7 @@ BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *scene
         }
         break;
     case 9: {
-        // temporary
-        // mwccarm the big dumb
-        // TODO: inline rodata
-        extern const int _021EB250[3];  // = {56, 73, 92}
-        int sp1F8[3];
-        struct _s {
-            int _f[3];
-        };
-        *(struct _s *)sp1F8 = *(struct _s *)_021EB250;
+        int sp1F8[3] = {56, 73, 92};
 
         if (stepTimer >= sp1F8[sceneData->unk_003]) {
             ++sceneData->unk_003;
@@ -191,13 +258,19 @@ BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *scene
         break;
     case 11:
         if (stepTimer == 5) {
-            extern const IntroMovieBgWindowAnimParam _021EB3C8;
-            IntroMovieBgWindowAnimParam sp1CC = _021EB3C8;
+            IntroMovieBgWindowAnimParam sp1CC = {
+                0x00, 0x00, 0xFF, 0xC0,
+                0x00, 0x40, 0xFF, 0x80,
+                0x1F, 0x10, 1, 1
+            };
             IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 5, 0, &sp1CC);
         }
         if (stepTimer >= 44) {
-            extern const IntroMovieBgWindowAnimParam _021EB3F4;
-            IntroMovieBgWindowAnimParam sp1A0 = _021EB3F4;
+            IntroMovieBgWindowAnimParam sp1A0 = {
+                0x00, 0x40, 0x01, 0x80,
+                0x00, 0x40, 0xFF, 0x80,
+                0x1F, 0x10, 1, 1
+            };
             IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 7, 0, &sp1A0);
             GXS_SetVisibleWnd(1);
             IntroMovie_StartBgScroll_VBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_SUB_0, -256, 0, 7);
@@ -207,8 +280,11 @@ BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *scene
         break;
     case 12:
         if (IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_SUB_0)) {
-            extern const IntroMovieBgWindowAnimParam _021EB420;
-            IntroMovieBgWindowAnimParam sp174 = _021EB420;
+            IntroMovieBgWindowAnimParam sp174 = {
+                0xFE, 0x00, 0xFF, 0x80,
+                0x00, 0x00, 0xFF, 0x80,
+                0x1F, 0x11, 1, 1
+            };
             IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 7, 0, &sp174);
             IntroMovie_StartBgScroll_VBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_SUB_1, 256, 0, 7);
             GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_ON);
@@ -217,8 +293,11 @@ BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *scene
         break;
     case 13:
         if (IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_SUB_1)) {
-            extern const IntroMovieBgWindowAnimParam _021EB44C;
-            IntroMovieBgWindowAnimParam sp148 = _021EB44C;
+            IntroMovieBgWindowAnimParam sp148 = {
+                0x00, 0x00, 0x01, 0xC0,
+                0x00, 0x00, 0xFF, 0xC0,
+                0x1F, 0x13, 1, 1
+            };
             IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 1, 0, &sp148);
             IntroMovie_StartBgScroll_VBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_SUB_2, -256, 0, 1);
             GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_ON);
@@ -235,8 +314,11 @@ BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *scene
         break;
     case 15:
         if (stepTimer >= 42) {
-            extern const IntroMovieBgWindowAnimParam _021EB478;
-            IntroMovieBgWindowAnimParam sp11C = _021EB478;
+            IntroMovieBgWindowAnimParam sp11C = {
+                0x00, 0x00, 0xFF, 0xC0,
+                0x46, 0x00, 0xB9, 0xC0,
+                0x1F, 0x10, 1, 1
+            };
             IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 3, 0, &sp11C);
             GXS_SetVisibleWnd(1);
             IntroMovie_AdvanceSceneStep(data);
@@ -255,8 +337,11 @@ BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *scene
             IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->unk_06C[0], TRUE);
         }
         if (stepTimer >= 145) {
-            extern const IntroMovieBgWindowAnimParam _021EB4A4;
-            IntroMovieBgWindowAnimParam sp0F0 = _021EB4A4;
+            IntroMovieBgWindowAnimParam sp0F0 = {
+                0x46, 0x00, 0xB9, 0xC0,
+                0xB9, 0x00, 0xB9, 0xC0,
+                0x1F, 0x10, 1, 1
+            };
             IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 10, 0, &sp0F0);
             G2S_SetWnd1Position(0x46, 0x40, 0xb9, 0xc0);
             G2S_SetWnd1InsidePlane(0x1D, TRUE);
@@ -267,8 +352,11 @@ BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *scene
     case 18:
         if (IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_SUB_1)) {
             GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
-            extern const IntroMovieBgWindowAnimParam _021EB4D0;
-            IntroMovieBgWindowAnimParam sp0C4 = _021EB4D0;
+            IntroMovieBgWindowAnimParam sp0C4 = {
+                0x46, 0x40, 0xB9, 0xC0,
+                0x46, 0x40, 0xB9, 0xC0,
+                0x1F, 0x10, 1, 1
+            };
             IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 0, 0, &sp0C4);
             IntroMovie_AdvanceSceneStep(data);
         }
@@ -276,8 +364,11 @@ BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *scene
     case 19:
         IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->unk_06C[1], TRUE);
         if (stepTimer >= 10) {
-            extern const IntroMovieBgWindowAnimParam _021EB4FC;
-            IntroMovieBgWindowAnimParam sp098 = _021EB4FC;
+            IntroMovieBgWindowAnimParam sp098 = {
+                0x46, 0x40, 0xB9, 0xC0,
+                0xB9, 0x40, 0xB9, 0xC0,
+                0x1F, 0x10, 1, 1
+            };
             IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 10, 0, &sp098);
             G2S_SetWnd1Position(0x46, 0x40, 0xB9, 0x80);
             G2S_SetWnd1InsidePlane(0x19, TRUE);
@@ -288,8 +379,11 @@ BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *scene
     case 20:
         if (IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_SUB_1) && IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_SUB_2)) {
             GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
-            extern const IntroMovieBgWindowAnimParam _021EB528;
-            IntroMovieBgWindowAnimParam sp06C = _021EB528;
+            IntroMovieBgWindowAnimParam sp06C = {
+                0x46, 0x40, 0xB9, 0x80,
+                0x46, 0x40, 0xB9, 0x80,
+                0x1F, 0x10, 1, 1
+            };
             IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 0, 0, &sp06C);
             BG_LoadScreenTilemapData(bgConfig, GF_BG_LYR_SUB_1, sceneData->unk_038[0]->rawData, sceneData->unk_038[0]->szByte);
             BG_LoadScreenTilemapData(bgConfig, GF_BG_LYR_SUB_2, sceneData->unk_038[1]->rawData, sceneData->unk_038[1]->szByte);
@@ -311,8 +405,11 @@ BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *scene
     case 21:
         IntroMovie_StartSpriteAnimAndMakeVisible(sceneData->unk_06C[2], TRUE);
         if (stepTimer >= 30) {
-            extern const IntroMovieBgWindowAnimParam _021EB370;
-            IntroMovieBgWindowAnimParam sp040 = _021EB370;
+            IntroMovieBgWindowAnimParam sp040 = {
+                0x46, 0x40, 0xB9, 0x80,
+                0x46, 0x40, 0x46, 0x80,
+                0x1F, 0x10, 1, 1
+            };
             IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 10, 0, &sp040);
             G2S_SetWnd1Position(0x46, 0x40, 0xB9, 0x80);
             G2S_SetWnd1InsidePlane(0x1E, TRUE);
@@ -323,8 +420,11 @@ BOOL IntroMovie_Scene3_Main(IntroMovieOvyData *data, IntroMovieScene3Data *scene
     case 22:
         if (IntroMovie_WaitBgScrollAnim(bgAnimCnt->scroll, GF_BG_LYR_SUB_0)) {
             GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_OFF);
-            extern const IntroMovieBgWindowAnimParam _021EB39C;
-            IntroMovieBgWindowAnimParam sp014 = _021EB39C;
+            IntroMovieBgWindowAnimParam sp014 = {
+                0x46, 0x40, 0xB9, 0x80,
+                0x00, 0x00, 0xFF, 0xC0,
+                0x1F, 0x10, 1, 1
+            };
             IntroMovie_StartWindowPanEffect(bgAnimCnt->window, 253, 0, &sp014);
             IntroMovie_StartBgScroll_VBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_SUB_1, 0, -0x30, 254);
             IntroMovie_StartBgScroll_VBlank(bgConfig, bgAnimCnt->scroll, GF_BG_LYR_SUB_2, 0, -0x20, 254);
@@ -376,49 +476,96 @@ void ov60_021E9580(IntroMovieOvyData *data) {
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
 
     {
-        extern const GraphicsModes _021EB268;
-        GraphicsModes graphicsModes = _021EB268;
+        GraphicsModes graphicsModes = {
+            GX_DISPMODE_VRAM_A,
+            GX_BGMODE_0,
+            GX_BGMODE_0,
+            GX_BG0_AS_3D,
+        };
         SetBothScreensModesAndDisable(&graphicsModes);
     }
     {
-        extern const BgTemplate _021EB2DC;
-        BgTemplate bgTemplate = _021EB2DC;
+        BgTemplate bgTemplate = {
+            0, 0,
+            GF_BG_BUF_SIZE_256x256_4BPP,
+            0,
+            GF_BG_SCR_SIZE_256x256,
+            GX_BG_COLORMODE_16,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+        };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_0, &bgTemplate, 0);
     }
     {
-        extern const BgTemplate _021EB2F8;
-        BgTemplate bgTemplate = _021EB2F8;
+        BgTemplate bgTemplate = {
+            0, 0,
+            GF_BG_BUF_SIZE_256x256_4BPP,
+            0,
+            GF_BG_SCR_SIZE_256x256,
+            GX_BG_COLORMODE_16,
+            01,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0
+        };;
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_1, &bgTemplate, 0);
     }
     {
-        extern const BgTemplate _021EB314;
-        BgTemplate bgTemplate = _021EB314;
+        BgTemplate bgTemplate = {
+            0, 0,
+            GF_BG_BUF_SIZE_256x256_4BPP,
+            0,
+            GF_BG_SCR_SIZE_256x256,
+            GX_BG_COLORMODE_16,
+            2,
+            1,
+            0,
+            2,
+            0,
+            0,
+            0
+        };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_2, &bgTemplate, 0);
     }
     {
-        extern const BgTemplate _021EB330;
-        BgTemplate bgTemplate = _021EB330;
+        BgTemplate bgTemplate = {
+            0, 0,
+            GF_BG_BUF_SIZE_256x256_4BPP,
+            0,
+            GF_BG_SCR_SIZE_256x256,
+            GX_BG_COLORMODE_16,
+            3,
+            1,
+            0,
+            3,
+            0,
+            0,
+            0
+        };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_3, &bgTemplate, 0);
     }
 }
 
 void ov60_021E9638(BgConfig *bgConfig, IntroMovieScene3Data *sceneData) {
-    int sp20[4];
-    {
-    extern const int _021EB288[4];
-    struct _s {
-        int _f[4];
+    int sp20[4] = {
+        NARC_gs_opening_gs_opening_00000042_NSCR_lz,
+        NARC_gs_opening_gs_opening_00000043_NSCR_lz,
+        NARC_gs_opening_gs_opening_00000044_NSCR_lz,
+        NARC_gs_opening_gs_opening_00000045_NSCR_lz,
     };
-    *(struct _s *)sp20 = *(struct _s *)_021EB288;
-    }
-    int sp14[3];
-    {
-    extern const int _021EB25C[3];
-    struct _s {
-        int _f[3];
+    int sp14[3] = {
+        NARC_gs_opening_gs_opening_00000050_NSCR_lz,
+        NARC_gs_opening_gs_opening_00000051_NSCR_lz,
+        NARC_gs_opening_gs_opening_00000052_NSCR_lz,
     };
-    *(struct _s *)sp14 = *(struct _s *)_021EB25C;
-    }
     u8 i;
 
     GfGfxLoader_LoadCharData(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000040_NCGR_lz, bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
@@ -480,18 +627,8 @@ void ov60_021E9878(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData) {
 void ov60_021E98C0(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData) {
     SpriteResourcesHeader header;
     SpriteTemplate template;
-    int sp18[3];
-    int sp0C[3];
-
-    {
-        struct _s {
-            int _f[3];
-        };
-        extern const int _021EB214[3];
-        extern const int _021EB220[3];
-        *(struct _s *)sp18 = *(struct _s *)_021EB214;
-        *(struct _s *)sp0C = *(struct _s *)_021EB220;
-    }
+    int sp18[3] = {544, 672, 608};
+    int sp0C[3] = {1, 2, 3};
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(2, data, 0, NNS_G2D_VRAM_TYPE_2DSUB, &template, &header);
     template.position.x = 128 * FX32_ONE;
@@ -546,9 +683,8 @@ void ov60_021E99B8(IntroMovieScene3Data *sceneData) {
 
     sceneData->unk_080 = Camera_New(HEAP_ID_INTRO_MOVIE);
 
-    extern const VecFx32 _021EB238;
-    VecFx32 sp2C = _021EB238;
-    Camera_Init_FromTargetDistanceAndAngle(&sp2C, FX32_CONST(410.922119140625), &_021EB29C, 0x5C1, 0, FALSE, sceneData->unk_080);
+    VecFx32 sp2C = {0, 0, 96 * FX32_ONE};
+    Camera_Init_FromTargetDistanceAndAngle(&sp2C, FX32_CONST(410.922119140625), _021EB29C, 0x5C1, 0, FALSE, sceneData->unk_080);
     Camera_SetPerspectiveAngle(0x981, sceneData->unk_080);
     Camera_SetStaticPtr(sceneData->unk_080);
     NNS_G3dGlbPolygonAttr(5, GX_POLYGONMODE_MODULATE, GX_CULL_BACK, 0, 0x1F, 0x8000);
@@ -556,11 +692,13 @@ void ov60_021E99B8(IntroMovieScene3Data *sceneData) {
 
 void ov60_021E9B60(IntroMovieScene3Data *sceneData) {
     u8 i, r1;
-    extern const MtxFx33 _021EB34C;
-    MtxFx33 sp18 = _021EB34C;
+    MtxFx33 sp18 = {
+        FX32_ONE,        0,        0,
+               0, FX32_ONE,        0,
+               0,        0, FX32_ONE,
+    };
 
-    extern const VecFx32 _021EB244;
-    VecFx32 sp0C = _021EB244;
+    VecFx32 sp0C = {FX32_ONE, FX32_ONE, FX32_ONE};
 
     VecFx32 sp00 = {0, 0, 0};
 
@@ -600,4 +738,16 @@ void ov60_021E9C84(u8 a0) {
     }
     NNS_G3dGlbMaterialColorDiffAmb(_021EB202[a0], _021EB208[a0], FALSE);
     NNS_G3dGlbMaterialColorSpecEmi(_021EB1FC[a0], _021EB20E[a0], FALSE);
+}
+
+HeapID _deadstrip_03(int idx);
+HeapID _deadstrip_03(int idx) {
+    static const HeapID sDeadstrippedRodata[1] = {HEAP_ID_INTRO_MOVIE};
+    return sDeadstrippedRodata[idx];
+}
+
+fx32 _deadstrip_04(int idx);
+fx32 _deadstrip_04(int idx) {
+    static const float sDeadstrippedRodata[1] = {FX32_CONST(410.922119140625)};
+    return sDeadstrippedRodata[idx];
 }
