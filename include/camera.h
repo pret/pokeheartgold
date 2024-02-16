@@ -40,6 +40,14 @@ typedef struct CameraPerspective {
     fx32 far;
 } CameraPerspective;
 
+typedef struct CameraParam {
+    fx32 distance;
+    CameraAngle angle;
+    u8 perspectiveType;
+    u16 perspective;
+    BOOL setReference;
+} CameraParam;
+
 typedef struct CameraLookAt {
     VecFx32 camPos;
     VecFx32 camTarget;
