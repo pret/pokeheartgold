@@ -83,6 +83,7 @@ usage () {
     echo "  -F FSDIR      Filesystem path on the home system"
     echo "  -t            Force THUMB instructions (default: ARM)"
     echo "  -h            Show this message and exit"
+    echo "  -c            Clear caches and exit"
 }
 
 while [[ $# -gt 0 ]]; do
@@ -90,6 +91,10 @@ while [[ $# -gt 0 ]]; do
   case $key in
   -h)
     usage
+    exit 0
+    ;;
+  -c)
+    rm -rf "${MYDIR}"/.bins "${MYDIR}"/.files "${MYDIR}"/ntrextractfile "${MYDIR}"/ntruncompbw
     exit 0
     ;;
   -7)

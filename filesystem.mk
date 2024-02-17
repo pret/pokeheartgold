@@ -467,6 +467,7 @@ include files/fielddata/script/scr_seq.mk
 # and serves to enforce build order.
 $(SCRIPT_BINS): $(FIRST_MSG_H_GEN)
 
+include files/graphic/font.mk
 include files/fielddata/eventdata/zone_event.mk
 include files/data/sound/sound_data.mk
 include files/data/gs_areawindow.mk

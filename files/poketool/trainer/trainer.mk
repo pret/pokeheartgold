@@ -8,13 +8,17 @@ $(TRDATA_NARC): %.narc: $(TRAINER_JSON) $(TRDATA_TEMPLATE)
 	$(JSONPROC) $^ $*.c
 	$(WINE) $(MWCC) $(MWCFLAGS) -c -o $*.o $*.c
 	$(O2NARC) $*.o $@ -n
+	@$(RM) $*.o $*.c
 
 $(TRPOKE_NARC): %.narc: $(TRAINER_JSON) $(TRPOKE_TEMPLATE)
 	$(JSONPROC) $^ $*.s
 	$(WINE) $(MWAS) $(MWASFLAGS) -DPM_ASM -o $*.o $*.s
 	$(O2NARC) $*.o $@ -n -p 0x00
+	@$(RM) $*.o $*.s
 
 $(TRDATA_NARC): MWCFLAGS += -include global.h
 $(TRAINER_JSON): | $(WORK_DIR)/include/global.h
 
-FS_CLEAN_TARGETS += $(TRDATA_NARC) $(TRPOKE_NARC)
+FS_CLEAN_TARGETS += $(TRDATA_NARC) $(TRPOKE_NARC) \
+	$(TRDATA_NARC:%.narc=%.o) $(TRPOKE_NARC:%.narc=%.o) \
+	$(TRDATA_NARC:%.narc=%.c) $(TRPOKE_NARC:%.narc=%.s)
