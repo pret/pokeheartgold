@@ -51,34 +51,34 @@ typedef struct IntroMovieScene2Data {
     IntroMovieScene2SpritePanController spritePanCnt[2];
 } IntroMovieScene2Data;
 
-typedef struct IntroMovieScene3Sub_084 {
-    NNSG3dRenderObj unk_00;
-    NNSG3dResFileHeader *unk_54;
-    void *unk_58[2];
-    NNSG3dAnmObj *unk_60[2];
-} IntroMovieScene3Sub_084;
+typedef struct IntroMovieScene3MapRender {
+    NNSG3dRenderObj renderObj;
+    NNSG3dResFileHeader *resFileHeader;
+    void *rawData[2];
+    NNSG3dAnmObj *animObjs[2];
+} IntroMovieScene3MapRender;
 
 typedef struct IntroMovieScene3Data {
     u8 state;
-    u8 unk_001;
+    u8 needFreeGfx;
     u8 unk_002;
-    u8 unk_003;
+    u8 silverBgAppearCounter;
     void *unk_004[4];
     void *unk_014;
     void *unk_018[3];
     NNSG2dScreenData *unk_024[4];
     NNSG2dScreenData *unk_034;
     NNSG2dScreenData *unk_038[3];
-    _2DGfxResObj *unk_044[2][4];
-    Sprite *unk_064;
-    Sprite *unk_068;
-    Sprite *unk_06C[3];
+    _2DGfxResObj *spriteResObjs[2][4];
+    Sprite *silverSilhouetteSprite;
+    Sprite *eusineSprite;
+    Sprite *unownSprites[3];
     u8 filler_078[0x8];
-    Camera *unk_080;
-    IntroMovieScene3Sub_084 unk_084[3];
-    GF3DVramMan *unk_1BC;
-    NNSFndAllocator unk_1C0;
-    int unk_1D0;
+    Camera *camera;
+    IntroMovieScene3MapRender mapRender[3];
+    GF3DVramMan *_3dVramMan;
+    NNSFndAllocator allocator;
+    int whichMap;
 } IntroMovieScene3Data; // size: 0x1D4
 
 typedef struct IntroMovieScene4Data {
