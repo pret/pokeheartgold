@@ -13,16 +13,16 @@
 #include "sound_chatot.h"
 #include "filesystem.h"
 
-#define WOTBL_END             0xFFFF
-#define WOTBL_MAX                 21
+#define LEVEL_UP_LEARNSET_END             0xFFFF
+#define LEVEL_UP_LEARNSET_MAX                 21
 
-#define WOTBL_MOVEID_MASK     0x01FF
-#define WOTBL_MOVEID_SHIFT         0
-#define WOTBL_LEVEL_MASK      0xFE00
-#define WOTBL_LEVEL_SHIFT          9
+#define LEVEL_UP_LEARNSET_MOVEID_MASK     0x01FF
+#define LEVEL_UP_LEARNSET_MOVEID_SHIFT         0
+#define LEVEL_UP_LEARNSET_LEVEL_MASK      0xFE00
+#define LEVEL_UP_LEARNSET_LEVEL_SHIFT          9
 
-#define WOTBL_MOVE(x) ((u16)(((x) & WOTBL_MOVEID_MASK) >> WOTBL_MOVEID_SHIFT))
-#define WOTBL_LVL(x) ((u8)(((x) & WOTBL_LEVEL_MASK) >> WOTBL_LEVEL_SHIFT))
+#define LEVEL_UP_LEARNSET_MOVE(x) ((u16)(((x) & LEVEL_UP_LEARNSET_MOVEID_MASK) >> LEVEL_UP_LEARNSET_MOVEID_SHIFT))
+#define LEVEL_UP_LEARNSET_LVL(x) (((x) & LEVEL_UP_LEARNSET_LEVEL_MASK) >> LEVEL_UP_LEARNSET_LEVEL_SHIFT)
 
 #define MOVE_APPEND_FULL    0xFFFFu
 #define MOVE_APPEND_KNOWN   0xFFFEu
@@ -89,7 +89,7 @@ u32 TryAppendBoxMonMove(BoxPokemon *boxMon, u16 move);
 void BoxMonSetMoveInSlot(BoxPokemon *boxMon, u16 move, u8 slot);
 void DeleteMonFirstMoveAndAppend(Pokemon *mon, u16 move);
 void DeleteBoxMonFirstMoveAndAppend(BoxPokemon *boxMon, u16 move);
-void LoadWotbl_HandleAlternateForm(int species, int form, u16 *wotbl);
+void LoadLevelUpLearnset_HandleAlternateForm(int species, int form, u16 *levelUpLearnset);
 void MonSwapMoves(Pokemon *mon, int a, int b);
 void BoxMonSwapMoves(BoxPokemon *boxMon, int a, int b);
 BoxPokemon *Mon_GetBoxMon(Pokemon *mon);
