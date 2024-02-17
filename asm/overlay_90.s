@@ -7442,7 +7442,7 @@ _0225BFEA:
 	strh r0, [r4, #6]
 _0225BFFC:
 	ldr r0, [r4, #0x30]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _0225C05E
 	ldrh r0, [r4, #4]

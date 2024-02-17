@@ -137,7 +137,7 @@
 .public sub_0202487C
 .public Sprite_GetMatrixPtr
 .public Set2dSpriteAnimSeqNo
-.public Sprite_IsCellAnimationFinished
+.public Sprite_IsCellAnimationRunning
 .public GF_AssertFail
 .public String_New
 .public String_Delete

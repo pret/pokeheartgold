@@ -6097,7 +6097,7 @@ _02256EF6:
 _02256EFC:
 	sub r1, #0x52
 	ldr r0, [r4, r1]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	beq _02256F0A
 _02256F08:

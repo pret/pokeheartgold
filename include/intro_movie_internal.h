@@ -61,19 +61,19 @@ typedef struct IntroMovieScene3MapRender {
 typedef struct IntroMovieScene3Data {
     u8 state;
     u8 needFreeGfx;
-    u8 unk_002;
+    u8 unk_002;  // unreferenced
     u8 silverBgAppearCounter;
-    void *unk_004[4];
-    void *unk_014;
-    void *unk_018[3];
-    NNSG2dScreenData *unk_024[4];
-    NNSG2dScreenData *unk_034;
-    NNSG2dScreenData *unk_038[3];
+    void *rivalGraphicSectionsRawData[4];
+    void *rivalGraphicWholeRawData;
+    void *beastGraphicRawData[3];
+    NNSG2dScreenData *rivalGraphicSectionsScrnData[4];
+    NNSG2dScreenData *rivalGraphicWholeScrnData;
+    NNSG2dScreenData *beastGraphicScrnData[3];
     _2DGfxResObj *spriteResObjs[2][4];
     Sprite *silverSilhouetteSprite;
     Sprite *eusineSprite;
     Sprite *unownSprites[3];
-    u8 filler_078[0x8];
+    u8 filler_078[0x8];  // unused
     Camera *camera;
     IntroMovieScene3MapRender mapRender[3];
     GF3DVramMan *_3dVramMan;
@@ -85,7 +85,11 @@ typedef struct IntroMovieScene4Data {
     u8 state;
     u8 unk_001;
     u8 filler_002[2];
-    u8 filler_004[0x58];
+    u8 filler_004[0x40];
+    Sprite *unk_044;
+    Sprite *unk_048;
+    Sprite *unk_04C;
+    Sprite *unk_050[3];
     GF3DVramMan *unk_05C;
     void *unk_060;
     ParticleSystem *unk_064;

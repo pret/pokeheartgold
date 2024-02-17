@@ -18582,11 +18582,11 @@ ov83_0224760C: ; 0x0224760C
 
 	thumb_func_start ov83_02247624
 ov83_02247624: ; 0x02247624
-	ldr r3, _0224762C ; =Sprite_IsCellAnimationFinished
+	ldr r3, _0224762C ; =Sprite_IsCellAnimationRunning
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_0224762C: .word Sprite_IsCellAnimationFinished
+_0224762C: .word Sprite_IsCellAnimationRunning
 	thumb_func_end ov83_02247624
 
 	thumb_func_start ov83_02247630

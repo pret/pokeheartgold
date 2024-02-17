@@ -18996,7 +18996,7 @@ _02240F8E:
 _02240FA0:
 	ldr r0, _02240FF8 ; =0x00000EE4
 	ldr r0, [r5, r0]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _02240FF6
 	add r0, r4, #0
@@ -19116,7 +19116,7 @@ _0224107E:
 _02241090:
 	ldr r0, _022410E4 ; =0x00000EE4
 	ldr r0, [r5, r0]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _022410E0
 	add r0, r4, #0

@@ -4033,7 +4033,7 @@ ov109_021E7810: ; 0x021E7810
 	ldr r0, [r4]
 	add r0, #0xa8
 	ldr r0, [r0]
-	bl Sprite_IsCellAnimationFinished
+	bl Sprite_IsCellAnimationRunning
 	cmp r0, #0
 	bne _021E784C
 	ldr r0, [r4]
