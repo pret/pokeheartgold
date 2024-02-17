@@ -6,6 +6,7 @@
 #include "sys_task.h"
 #include "gf_3d_vramman.h"
 #include "unk_02023694.h"
+#include "unk_02014DA0.h"
 
 typedef struct IntroMovieScene1Data {
     u8 state;
@@ -81,9 +82,14 @@ typedef struct IntroMovieScene3Data {
 } IntroMovieScene3Data; // size: 0x1D4
 
 typedef struct IntroMovieScene4Data {
-    u8 unk_000;
-    u8 padding_001[3];
-    u8 filler_004[0x6C];
+    u8 state;
+    u8 unk_001;
+    u8 filler_002[2];
+    u8 filler_004[0x58];
+    GF3DVramMan *unk_05C;
+    void *unk_060;
+    ParticleSystem *unk_064;
+    u8 filler_068[0x8];
 } IntroMovieScene4Data;
 
 typedef struct IntroMovieScene5Data {
