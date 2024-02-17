@@ -93,7 +93,8 @@ typedef struct IntroMovieScene4Data {
     GF3DVramMan *unk_05C;
     void *unk_060;
     ParticleSystem *unk_064;
-    u8 filler_068[0x8];
+    u8 filler_068[0x4];
+    SysTask *unk_06C;
 } IntroMovieScene4Data;
 
 typedef struct IntroMovieScene5Data {

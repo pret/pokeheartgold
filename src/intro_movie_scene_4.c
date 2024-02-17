@@ -1,5 +1,8 @@
+#include "demo/opening/gs_opening.naix"
+#include "gf_gfx_loader.h"
 #include "global.h"
 #include "intro_movie_internal.h"
+#include "sys_task_api.h"
 #include "system.h"
 #include "unk_0200B150.h"
 #include "unk_0200FA24.h"
@@ -14,6 +17,7 @@ void ov60_021EA2A0(IntroMovieOvyData *data);
 void ov60_021EA3A0(BgConfig *bgConfig, IntroMovieScene4Data *sceneData);
 void ov60_021EA4AC(IntroMovieOvyData *data, BgConfig *bgConfig);
 void ov60_021EA508(IntroMovieOvyData *data, IntroMovieScene4Data *sceneData);
+void ov60_021EA6AC(IntroMovieOvyData *data, IntroMovieScene4Data *sceneData);
 void ov60_021EA700(IntroMovieOvyData *data, IntroMovieScene4Data *sceneData);
 u32 ov60_021EA828(u32 size, BOOL is4x4comp);
 u32 ov60_021EA84C(u32 size, BOOL is4pltt);
@@ -222,4 +226,98 @@ BOOL IntroMovie_Scene4_Main(IntroMovieOvyData *data, IntroMovieScene4Data *scene
 
     ov60_021EA8B0();
     return FALSE;
+}
+
+void IntroMovie_Scene4_Exit(IntroMovieOvyData *data, IntroMovieScene4Data *sceneData) {
+    BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
+    Main_SetVBlankIntrCB(NULL, NULL);
+    if (sceneData->unk_001) {
+        G2_BlendNone();
+        sub_02014EBC(sceneData->unk_064);
+        FreeToHeap(sceneData->unk_060);
+        GF_3DVramMan_Delete(sceneData->unk_05C);
+        ov60_021EA6AC(data, sceneData);
+        FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_1);
+        FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_2);
+        FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_3);
+        FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_SUB_1);
+        FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_SUB_2);
+        FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_SUB_3);
+        sceneData->unk_001 = FALSE;
+    }
+    if (sceneData->unk_06C != NULL) {
+        SysTask_Destroy(sceneData->unk_06C);
+        sceneData->unk_06C = NULL;
+    }
+}
+
+void ov60_021EA2A0(IntroMovieOvyData *data) {
+    BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
+
+    {
+        extern const GraphicsModes _021EB634;
+        GraphicsModes spA8 = _021EB634;
+        SetBothScreensModesAndDisable(&spA8);
+    }
+
+    {
+        extern const BgTemplate _021EB644;
+        BgTemplate sp8C = _021EB644;
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_1, &sp8C, 0);
+    }
+
+    {
+        extern const BgTemplate _021EB660;
+        BgTemplate sp70 = _021EB660;
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_2, &sp70, 0);
+    }
+
+    {
+        extern const BgTemplate _021EB67C;
+        BgTemplate sp54 = _021EB67C;
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_3, &sp54, 0);
+    }
+
+    {
+        extern const BgTemplate _021EB698;
+        BgTemplate sp38 = _021EB698;
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_1, &sp38, 0);
+    }
+
+    {
+        extern const BgTemplate _021EB6B4;
+        BgTemplate sp1C = _021EB6B4;
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_2, &sp1C, 0);
+    }
+
+    {
+        extern const BgTemplate _021EB6D0;
+        BgTemplate sp00 = _021EB6D0;
+        InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_3, &sp00, 0);
+    }
+}
+
+void ov60_021EA3A0(BgConfig *bgConfig, IntroMovieScene4Data *sceneData) {
+    GfGfxLoader_LoadCharData(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000054_NCGR_lz, bgConfig, GF_BG_LYR_MAIN_1, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_LoadCharData(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000054_NCGR_lz, bgConfig, GF_BG_LYR_SUB_1, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_LoadScrnData(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000058_NSCR_lz, bgConfig, GF_BG_LYR_MAIN_1, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_LoadScrnData(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000055_NSCR_lz, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_LoadScrnData(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000056_NSCR_lz, bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_LoadScrnData(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000057_NSCR_lz, bgConfig, GF_BG_LYR_SUB_1, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_LoadScrnData(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000055_NSCR_lz, bgConfig, GF_BG_LYR_SUB_2, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_LoadScrnData(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000056_NSCR_lz, bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_GXLoadPal(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000053_NCLR, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0x80, HEAP_ID_INTRO_MOVIE);
+    GfGfxLoader_GXLoadPal(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000053_NCLR, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0, 0x80, HEAP_ID_INTRO_MOVIE);
+    OS_WaitIrq(TRUE, OS_IE_V_BLANK);
+    GfGfx_BothDispOn();
+}
+
+void ov60_021EA4AC(IntroMovieOvyData *data, BgConfig *bgConfig) {
+    IntroMovieBgLinearAnims *animCnt = IntroMovie_GetBgLinearAnimsController(data);
+    IntroMovie_StartBgScroll_VBlank(bgConfig, animCnt->scroll, GF_BG_LYR_SUB_1, -0xC0, 0, 0);
+    IntroMovie_StartBgScroll_VBlank(bgConfig, animCnt->scroll, GF_BG_LYR_MAIN_1, 0xC0, 0, 0);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
 }
