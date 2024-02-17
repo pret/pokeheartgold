@@ -31,9 +31,13 @@ void ov60_021EA918(void);
 void ov60_021EA990(IntroMovieScene4Data *sceneData, int whichScreen);
 void ov60_021EA9A8(SysTask *task, void *pVoid);
 
-extern const u8 _021EB5E4[4];
+const int _021EB6EC[3][3] = {
+    { 6, 7, 8 },
+    { 3, 4, 5 },
+    { 0, 1, 2 }
+};
 
-extern const int _021EB6EC[3][3];
+const u8 _021EB5E4[4] = {4, 4, 4, 4};
 
 BOOL IntroMovie_Scene4(IntroMovieOvyData *data, void *pVoid) {
     IntroMovieScene4Data *sceneData = (IntroMovieScene4Data *)pVoid;
@@ -108,12 +112,18 @@ BOOL IntroMovie_Scene4_Main(IntroMovieOvyData *data, IntroMovieScene4Data *scene
         }
         break;
     case 2: {
-        extern const IntroMovieBgWindowAnimParam _021EB73C;
-        IntroMovieBgWindowAnimParam sp94 = _021EB73C;
+        IntroMovieBgWindowAnimParam sp94 = {  // 021EB73C
+            255, 0, 255, 192,
+            0, 0, 255, 192,
+            30, 28, 1, 1
+        };
         IntroMovie_StartWindowPanEffect(animCnt->window, 10, PM_LCD_TOP, &sp94);
 
-        extern const IntroMovieBgWindowAnimParam _021EB768;
-        IntroMovieBgWindowAnimParam sp68 = _021EB768;
+        IntroMovieBgWindowAnimParam sp68 = {  // 021EB768
+            0, 0, 0, 192,
+            0, 0, 255, 192,
+            30, 28, 1, 1
+        };
         IntroMovie_StartWindowPanEffect(animCnt->window, 10, PM_LCD_BOTTOM, &sp68);
 
         IntroMovie_StartBgScroll_VBlank(bgConfig, animCnt->scroll, GF_BG_LYR_SUB_1, 0xC0, 0, 10);
@@ -136,12 +146,18 @@ BOOL IntroMovie_Scene4_Main(IntroMovieOvyData *data, IntroMovieScene4Data *scene
         }
         break;
     case 5: {
-        extern const IntroMovieBgWindowAnimParam _021EB794;
-        IntroMovieBgWindowAnimParam sp3C = _021EB794;
+        IntroMovieBgWindowAnimParam sp3C = {  // 021EB794
+            0, 0, 255, 192,
+            0, 0, 0, 192,
+            30, 28, 1, 1
+        };
         IntroMovie_StartWindowPanEffect(animCnt->window, 10, PM_LCD_TOP, &sp3C);
 
-        extern const IntroMovieBgWindowAnimParam _021EB710;
-        IntroMovieBgWindowAnimParam sp10 = _021EB710;
+        IntroMovieBgWindowAnimParam sp10 = {  // 021EB710
+            0, 0, 255, 192,
+            255, 0, 255, 192,
+            30, 28, 1, 1
+        };
         IntroMovie_StartWindowPanEffect(animCnt->window, 10, PM_LCD_BOTTOM, &sp10);
 
         IntroMovie_StartBgScroll_VBlank(bgConfig, animCnt->scroll, GF_BG_LYR_SUB_1, 0xC0, 0, 10);
@@ -264,44 +280,120 @@ void ov60_021EA2A0(IntroMovieOvyData *data) {
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
 
     {
-        extern const GraphicsModes _021EB634;
-        GraphicsModes spA8 = _021EB634;
+        GraphicsModes spA8 = {  // 021EB634
+            GX_DISPMODE_GRAPHICS,
+            GX_BGMODE_0,
+            GX_BGMODE_0,
+            GX_BG0_AS_3D,
+        };
         SetBothScreensModesAndDisable(&spA8);
     }
 
     {
-        extern const BgTemplate _021EB644;
-        BgTemplate sp8C = _021EB644;
+        BgTemplate sp8C = {  // 021EB644
+            0, 0,
+            GF_BG_BUF_SIZE_256x256_4BPP,
+            0,
+            GF_BG_SCR_SIZE_256x256,
+            GX_BG_COLORMODE_16,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0
+        };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_1, &sp8C, 0);
     }
 
     {
-        extern const BgTemplate _021EB660;
-        BgTemplate sp70 = _021EB660;
+        BgTemplate sp70 = {  // 021EB660
+            0, 0,
+            GF_BG_BUF_SIZE_256x256_4BPP,
+            0,
+            GF_BG_SCR_SIZE_256x256,
+            GX_BG_COLORMODE_16,
+            1,
+            1,
+            0,
+            2,
+            0,
+            0,
+            0
+        };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_2, &sp70, 0);
     }
 
     {
-        extern const BgTemplate _021EB67C;
-        BgTemplate sp54 = _021EB67C;
+        BgTemplate sp54 = {  // 021EB67C
+            0, 0,
+            GF_BG_BUF_SIZE_256x256_4BPP,
+            0,
+            GF_BG_SCR_SIZE_256x256,
+            GX_BG_COLORMODE_16,
+            2,
+            1,
+            0,
+            3,
+            0,
+            0,
+            0
+        };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_3, &sp54, 0);
     }
 
     {
-        extern const BgTemplate _021EB698;
-        BgTemplate sp38 = _021EB698;
+        BgTemplate sp38 = {  // 021EB698
+            0, 0,
+            GF_BG_BUF_SIZE_256x256_4BPP,
+            0,
+            GF_BG_SCR_SIZE_256x256,
+            GX_BG_COLORMODE_16,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0
+        };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_1, &sp38, 0);
     }
 
     {
-        extern const BgTemplate _021EB6B4;
-        BgTemplate sp1C = _021EB6B4;
+        BgTemplate sp1C = {  // 021EB6B4
+            0, 0,
+            GF_BG_BUF_SIZE_256x256_4BPP,
+            0,
+            GF_BG_SCR_SIZE_256x256,
+            GX_BG_COLORMODE_16,
+            1,
+            1,
+            0,
+            2,
+            0,
+            0,
+            0
+        };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_2, &sp1C, 0);
     }
 
     {
-        extern const BgTemplate _021EB6D0;
-        BgTemplate sp00 = _021EB6D0;
+        BgTemplate sp00 = {  // 021EB6D0
+            0, 0,
+            GF_BG_BUF_SIZE_256x256_4BPP,
+            0,
+            GF_BG_SCR_SIZE_256x256,
+            GX_BG_COLORMODE_16,
+            2,
+            1,
+            0,
+            3,
+            0,
+            0,
+            0
+        };
         InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_3, &sp00, 0);
     }
 }
@@ -332,31 +424,29 @@ void ov60_021EA4AC(IntroMovieOvyData *data, BgConfig *bgConfig) {
 }
 
 void ov60_021EA508(IntroMovieOvyData *data, IntroMovieScene4Data *sceneData) {
-    int sp48[3];
-    int sp3C[3];
-    int sp30[3];
-    int sp24[3];
-    int sp18[3];
+    int sp48[3] = {  // _021EB610
+        NARC_gs_opening_gs_opening_00000085_NCLR,
+        NARC_gs_opening_gs_opening_00000093_NCLR,
+        NARC_gs_opening_gs_opening_00000089_NCLR,
+    };
+    int sp3C[3] = {  // _021EB5EC
+        NARC_gs_opening_gs_opening_00000086_NCGR_lz,
+        NARC_gs_opening_gs_opening_00000094_NCGR_lz,
+        NARC_gs_opening_gs_opening_00000090_NCGR_lz,
+    };
+    int sp30[3] = {  // _021EB604
+        NARC_gs_opening_gs_opening_00000087_NANR_lz,
+        NARC_gs_opening_gs_opening_00000095_NANR_lz,
+        NARC_gs_opening_gs_opening_00000091_NANR_lz,
+    };
+    int sp24[3] = {  // _021EB628
+        NARC_gs_opening_gs_opening_00000088_NCER_lz,
+        NARC_gs_opening_gs_opening_00000096_NCER_lz,
+        NARC_gs_opening_gs_opening_00000092_NCER_lz,
+    };
+    int sp18[3] = {1, 2, 3};  // _021EB5F8
     u8 i;
     _2DGfxResMan **resMen;
-
-    {
-        struct _s {
-            int _f[3];
-        };
-
-        extern const int _021EB610[3];
-        extern const int _021EB5EC[3];
-        extern const int _021EB604[3];
-        extern const int _021EB628[3];
-        extern const int _021EB5F8[3];
-
-        *(struct _s *)sp48 = *(const struct _s *)_021EB610;
-        *(struct _s *)sp3C = *(const struct _s *)_021EB5EC;
-        *(struct _s *)sp30 = *(const struct _s *)_021EB604;
-        *(struct _s *)sp24 = *(const struct _s *)_021EB628;
-        *(struct _s *)sp18 = *(const struct _s *)_021EB5F8;
-    }
 
     IntroMovie_CreateSpriteResourceManagers(data, _021EB5E4);
     resMen = IntroMovie_GetSpriteResourceManagersArray(data);
@@ -399,15 +489,7 @@ void ov60_021EA6AC(IntroMovieOvyData *data, IntroMovieScene4Data *sceneData) {
 void ov60_021EA700(IntroMovieOvyData *data, IntroMovieScene4Data *sceneData) {
     SpriteResourcesHeader header;
     SpriteTemplate template;
-    int sp08[3];
-    {
-        struct _s {
-            int _f[3];
-        };
-
-        extern const int _021EB61C[3];
-        *(struct _s *)sp08 = *(const struct _s *)_021EB61C;
-    }
+    int sp08[3] = {1, 2, 3};  // 021EB61C
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(0, data, 0, NNS_G2D_VRAM_TYPE_2DSUB, &template, &header);
     template.position.x = FX32_ONE * 128;
@@ -517,4 +599,10 @@ void ov60_021EA9A8(SysTask *task, void *pVoid) {
     GfGfx_SwapDisplay();
     SysTask_Destroy(sceneData->unk_06C);
     sceneData->unk_06C = NULL;
+}
+
+HeapID _deadstrip_04(int idx);
+HeapID _deadstrip_04(int idx) {
+    static const HeapID sDeadstrippedRodata[1] = {HEAP_ID_INTRO_MOVIE};
+    return sDeadstrippedRodata[idx];
 }
