@@ -83,7 +83,7 @@ void IntroMovie_Scene2_Init(IntroMovieOvyData *data, IntroMovieScene2Data *scene
     IntroMovie_InitBgAnimGxState(data);
     Main_SetVBlankIntrCB(IntroMovie_Scene2_VBlankCB, data);
     IntroMovie_Scene2_LoadBgGfx(bgConfig);
-    IntroMovie_RendererSetSurfaceCoords(data, 0, 0, 0, 0xC0);
+    IntroMovie_RendererSetSurfaceCoords(data, 0, 0, 0, 192);
     IntroMovie_Scene2_LoadSpriteGfx(data, sceneData);
     IntroMovie_Scene2_CreateSprites(data, sceneData);
     IntroMovie_Scene2_InitFlyoverGrassBgScrollAnims(data, bgConfig);

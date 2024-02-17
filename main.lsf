@@ -841,7 +841,7 @@ Overlay intro_title
 	Object src/intro_movie_scene_2.o
 	Object src/intro_movie_scene_3.o
 	Object src/intro_movie_scene_4.o
-    Object asm/overlay_60.o
+	Object src/intro_movie_scene_5.o
 }
 Overlay OVY_61
 {

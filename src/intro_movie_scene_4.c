@@ -83,7 +83,7 @@ void IntroMovie_Scene4_Init(IntroMovieOvyData *data, IntroMovieScene4Data *scene
     IntroMovie_InitBgAnimGxState(data);
     Main_SetVBlankIntrCB(IntroMovie_Scene4_VBlankCB, data);
     InroMovie_Scene4_LoadBgGfx(bgConfig, sceneData);
-    IntroMovie_RendererSetSurfaceCoords(data, 0, 0, 0, FX32_CONST(0.0625));
+    IntroMovie_RendererSetSurfaceCoords(data, 0, 0, 0, 256);
     IntroMovie_Scene4_LoadSpriteGfx(data, sceneData);
     IntroMovie_Scene4_CreateSprites(data, sceneData);
     sceneData->gf3dVramMan = GF_3DVramMan_Create(HEAP_ID_INTRO_MOVIE, 0, 1, 0, 4, IntroMovie_Scene4_3DVRamManInit);

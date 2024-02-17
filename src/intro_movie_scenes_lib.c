@@ -62,7 +62,7 @@ void IntroMovie_BuildSpriteResourcesHeaderAndTemplate(int resId, IntroMovieOvyDa
     template->heapId = HEAP_ID_INTRO_MOVIE;
 }
 
-void IntroMovie_RendererSetSurfaceCoords(IntroMovieOvyData *data, fx32 mainx, fx32 mainy, fx32 subx, fx32 suby) {
+void IntroMovie_RendererSetSurfaceCoords(IntroMovieOvyData *data, int mainx, int mainy, int subx, int suby) {
     G2dRenderer_SetSubSurfaceCoords(&data->spriteRenderer, subx * FX32_ONE, suby * FX32_ONE);
     G2dRenderer_SetMainSurfaceCoords(&data->spriteRenderer, mainx * FX32_ONE, mainy * FX32_ONE);
 }

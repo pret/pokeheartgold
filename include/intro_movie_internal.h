@@ -208,7 +208,7 @@ void IntroMovie_DestroySpriteResourceManagers(IntroMovieOvyData *data);
 _2DGfxResMan **IntroMovie_GetSpriteResourceManagersArray(IntroMovieOvyData *data);
 void IntroMovie_StartSpriteAnimAndMakeVisible(Sprite *sprite, BOOL active);
 void IntroMovie_BuildSpriteResourcesHeaderAndTemplate(int resId, IntroMovieOvyData *data, int priority, NNS_G2D_VRAM_TYPE whichScreen, SpriteTemplate *template, SpriteResourcesHeader *header);
-void IntroMovie_RendererSetSurfaceCoords(IntroMovieOvyData *data, fx32 mainx, fx32 mainy, fx32 subx, fx32 suby);
+void IntroMovie_RendererSetSurfaceCoords(IntroMovieOvyData *data, int mainx, int mainy, int subx, int suby);
 void IntroMovie_StartBlendFadeEffect(IntroMovieBgBlendAnim *data, int plane1, int plane2, u8 duration, int direction, int screen);
 void IntroMovie_StartBgScroll_VBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, enum GFBgLayer bgId, fx16 xChange, fx16 yChange, int duration);
 void IntroMovie_StartBgScroll_NotVBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, enum GFBgLayer bgId, fx16 xChange, fx16 yChange, int duration);
