@@ -83,23 +83,23 @@ typedef struct IntroMovieScene3Data {
 
 typedef struct IntroMovieScene4Data {
     u8 state;
-    u8 unk_001;
+    u8 needFreeGfx;
     u8 filler_002[2];
-    _2DGfxResObj *unk_004[4][4];
-    Sprite *unk_044;
-    Sprite *unk_048;
-    Sprite *unk_04C;
-    Sprite *unk_050[3];
-    GF3DVramMan *unk_05C;
-    void *unk_060;
-    ParticleSystem *unk_064;
-    int unk_068;
-    SysTask *unk_06C;
+    _2DGfxResObj *spriteResObjs[4][4];
+    Sprite *hand1Sprite;
+    Sprite *hand2Sprite;
+    Sprite *sparklesSprite;
+    Sprite *starterSprites[3];
+    GF3DVramMan *gf3dVramMan;
+    void *particleHeap;
+    ParticleSystem *particleSystem;
+    int flipScreensTaskArg;
+    SysTask *flipScreensTask;
 } IntroMovieScene4Data;
 
 typedef struct IntroMovieScene5Data {
-    u8 unk_000;
-    u8 unk_001;
+    u8 state;
+    u8 needFreeGfx;
 } IntroMovieScene5Data;
 
 typedef struct IntroMovieSub_46C_000 {

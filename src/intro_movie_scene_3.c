@@ -26,7 +26,7 @@ void IntroMovie_Scene3_Animate3DMap(IntroMovieScene3Data *sceneData);
 void IntroMovie_Scene3_3DVRamManInit(void);
 void IntroMovie_Scene3_SetMapLightingAndColorParams(u8 a0);
 
-const u8 _021EB1F4[4] = {2, 2, 2, 2};
+const u8 sIntroMovieScene3SpriteResCounts[4] = {2, 2, 2, 2};
 
 static const int sMap3dResHeaderFileIds[3] = {
     NARC_gs_opening_gs_opening_00000103_NSBMD,
@@ -60,7 +60,7 @@ static const CameraParam sCameraParam = {
     FALSE,
 };
 
-static const GXRgb _021EB278[8] = {
+static const GXRgb sEdgeColors[8] = {
     RGB(0, 0, 0),
     RGB(4, 4, 4),
     RGB(4, 4, 4),
@@ -606,7 +606,7 @@ void IntroMovie_Scene3_LoadBGGraphics(BgConfig *bgConfig, IntroMovieScene3Data *
 }
 
 void IntroMovie_Scene3_LoadOBJGraphics(IntroMovieOvyData *data, IntroMovieScene3Data *sceneData) {
-    IntroMovie_CreateSpriteResourceManagers(data, _021EB1F4);
+    IntroMovie_CreateSpriteResourceManagers(data, sIntroMovieScene3SpriteResCounts);
     _2DGfxResMan **resMen = IntroMovie_GetSpriteResourceManagersArray(data);
 
     sceneData->spriteResObjs[0][GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(resMen[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000066_NCGR_lz, TRUE, 2, 2, HEAP_ID_INTRO_MOVIE);
@@ -749,7 +749,7 @@ void IntroMovie_Scene3_3DVRamManInit(void) {
     G3X_AlphaTest(FALSE, 0);
     G3X_AlphaBlend(TRUE);
     G3X_EdgeMarking(TRUE);
-    G3X_SetEdgeColorTable(_021EB278);
+    G3X_SetEdgeColorTable(sEdgeColors);
     G3X_SetFog(FALSE, GX_FOGBLEND_COLOR_ALPHA, GX_FOGSLOPE_0x8000, 0);
     G3X_SetClearColor(RGB_BLACK, 0, 0x7FFF, 0x3F, FALSE);
     G3_ViewPort(0, 0, 255, 191);
