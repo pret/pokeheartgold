@@ -25,5 +25,6 @@ int sub_0201543C(void);
 void sub_02015460(void);
 void *sub_020154D0(ParticleSystem *particleSystem);
 int sub_02015420(void);
+void sub_02015528(ParticleSystem *particleSystem, int a1);
 
 #endif //POKEHEARTGOLD_UNK_02014DA0_H
